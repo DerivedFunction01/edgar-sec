@@ -11,6 +11,7 @@ from types import TracebackType
 from typing import Any, Self
 
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.paths import PUBLICATION_LOCK_FILE
 from .manifest import DAGNodeManifest
 
 
@@ -29,7 +30,13 @@ class PublicationLock:
         import fcntl
         import os
 
-        self.path = Path(getattr(lock_path, "publication_lock_path", lock_path))
+        raw = getattr(lock_path, "publication_lock_path", lock_path)
+        resolved = Path(raw)
+        self.path = (
+            resolved / PUBLICATION_LOCK_FILE
+            if isinstance(raw, (Path, str)) and resolved.is_dir()
+            else resolved
+        )
         self.path.parent.mkdir(parents=True, exist_ok=True)
         self._descriptor = os.open(self.path, os.O_CREAT | os.O_RDWR, 0o600)
         operation = fcntl.LOCK_EX | (0 if blocking else fcntl.LOCK_NB)
@@ -84,24 +91,19 @@ def publish_node(
     branch_name: str | None = None,
     blocking_lock: bool = True,
 ) -> Path:
-    """Atomically record a node in DAGCatalog and advance the branch pointer."""
+    """Atomically record a node in DAGCatalog and advance the branch pointer.
+    The compare-and-move runs under one exclusive lock; a stale tip leaves the
+    pointer unchanged. expected_parent_id guards the tip, distinct from parents."""
     root = Path(snapshots_root)
     catalog = DAGCatalog(root)
     target_branch = branch_name or "main"
 
-    current = catalog.read_pointer(target_branch)
-    current_id = current["snapshot_id"] if current else None
-    if current_id != expected_parent_id:
-        raise StaleParentError(
-            f"expected parent {expected_parent_id!r}, current is {current_id!r}"
-        )
-
-    if expected_parent_id is not None:
-        parent_ids = {p.snapshot_id for p in manifest.parents}
-        if expected_parent_id not in parent_ids:
-            raise ValueError(
-                f"cannot publish to branch: expected parent {expected_parent_id!r} "
-                f"is not among manifest parents {parent_ids!r}"
+    with PublicationLock(catalog.catalog_file, blocking=blocking_lock):
+        current = catalog.read_pointer(target_branch)
+        current_id = current["snapshot_id"] if current else None
+        if current_id != expected_parent_id:
+            raise StaleParentError(
+                f"expected parent {expected_parent_id!r}, current is {current_id!r}"
             )
 
     target_dir = root / manifest.snapshot_id

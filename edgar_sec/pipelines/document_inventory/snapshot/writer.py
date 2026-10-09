@@ -65,6 +65,7 @@ from edgar_sec.infra.storage.dag.publication import (
     PublicationLock,
     PublicationLockError,
     StaleParentError,
+    publish_node,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.specs import (
     INVENTORY_ACCESSIONS_SPEC,
@@ -502,9 +503,13 @@ def publish_committed_chunks(
     cohort_accessions_path: Path | str,
     cohort_sources_path: Path | str,
     expected_parent_snapshot_id: str | None,
+    branch_name: str = "main",
+    expected_branch_tip: str | None = None,
     profile: RuntimeResourceProfile | None = None,
 ) -> SnapshotPublication:
-    """Merge a run's complete validated S4 attempts into an immutable snapshot."""
+    """Merge a run's complete validated attempts into an immutable snapshot via a
+    CAS pointer update under an exclusive publication lock.
+    """
     if run.run_id != run_paths.run_id:
         raise ValidationFailedError("S4 run manifest identity differs from its paths")
     if read_run_manifest(run_paths) != run:
@@ -518,7 +523,19 @@ def publish_committed_chunks(
     _validate_input(cohort_accessions, _COHORT_ACCESSIONS_SCHEMA, "cohort accessions")
     _validate_input(cohort_sources, SNAPSHOT_ACCESSION_SOURCES_SCHEMA, "cohort sources")
     inventory_paths = InventoryPaths(run_paths.artifacts_root)
-    current_id = _read_pointer(inventory_paths)
+
+    current = DAGCatalog(inventory_paths.snapshots_root).read_pointer(branch_name)
+    observed_tip = str(current["snapshot_id"]) if current else None
+    if expected_parent_snapshot_id is not None:
+        if expected_parent_snapshot_id != observed_tip:
+            raise StaleParentError(
+                f"delta parent {expected_parent_snapshot_id!r} must match the tip of "
+                f"branch {branch_name!r} ({observed_tip!r}); refresh the base or "
+                "publish to a branch created at the base"
+            )
+    if expected_branch_tip is None:
+        expected_branch_tip = observed_tip
+    current_id = observed_tip
     if current_id != expected_parent_snapshot_id:
         raise StaleParentError(
             f"expected parent {expected_parent_snapshot_id!r}, current is {current_id!r}"
@@ -591,11 +608,14 @@ def publish_committed_chunks(
                 ).fetchone()[0]
             ):
                 with PublicationLock(inventory_paths):
-                    actual_parent = _read_pointer(inventory_paths)
-                    if actual_parent != expected_parent_snapshot_id:
+                    actual = DAGCatalog(inventory_paths.snapshots_root).read_pointer(
+                        branch_name
+                    )
+                    actual_tip = str(actual["snapshot_id"]) if actual else None
+                    if actual_tip != expected_branch_tip:
                         raise StaleParentError(
-                            f"expected parent {expected_parent_snapshot_id!r}, "
-                            f"current is {actual_parent!r}"
+                            f"expected branch tip {expected_branch_tip!r}, current is "
+                            f"{actual_tip!r}"
                         )
                     return SnapshotPublication.no_op(parent_metadata)
             accession_query = (
@@ -696,23 +716,13 @@ def publish_committed_chunks(
             staged_root=staged_snapshot,
             profile=profile,
         )
-        with PublicationLock(inventory_paths):
-            actual_parent = _read_pointer(inventory_paths)
-            if actual_parent != expected_parent_snapshot_id:
-                raise StaleParentError(
-                    f"expected parent {expected_parent_snapshot_id!r}, current is {actual_parent!r}"
-                )
-            installed = _install_snapshot(
-                inventory_paths, snapshot_id, staged_snapshot, profile
-            )
-            catalog.record_node(dag_manifest)
-            validate_snapshot(
-                inventory_paths,
-                snapshot_id,
-                manifest=dag_manifest,
-                profile=profile,
-            )
-            catalog.write_pointer("main", snapshot_id)
+        publish_node(
+            inventory_paths.snapshots_root,
+            dag_manifest,
+            staged_dir=staged_snapshot,
+            expected_parent_id=expected_branch_tip,
+            branch_name=branch_name,
+        )
         return SnapshotPublication.published(metadata)
     finally:
         shutil.rmtree(stage_parent, ignore_errors=True)

@@ -63,6 +63,21 @@ def _add_common(sub: argparse.ArgumentParser) -> None:
     )
 
 
+def _add_branch_guard(sub: argparse.ArgumentParser) -> None:
+    """Attach the shared DAG branch and expected-tip publication guard."""
+    sub.add_argument(
+        "--branch",
+        default="main",
+        help="DAG branch to advance (default: main)",
+    )
+    sub.add_argument(
+        "--expected-branch-tip",
+        default=None,
+        help="snapshot id the branch tip must still name; defaults to the tip "
+        "observed when the command starts",
+    )
+
+
 def _add_plan_reference(sub: argparse.ArgumentParser) -> None:
     """Attach an explicit plan, bundle, or published cohort reference."""
     group = sub.add_mutually_exclusive_group()
@@ -105,6 +120,8 @@ def _run_options(args: argparse.Namespace) -> RunOptions:
         worker_id=getattr(args, "worker", "") or "",
         chunk_ids=_chunk_selection(args),
         workers=args.workers,
+        branch_name=getattr(args, "branch", "main") or "main",
+        expected_branch_tip=getattr(args, "expected_branch_tip", None),
     )
 
 
@@ -153,6 +170,7 @@ def build_parser() -> argparse.ArgumentParser:
     merge_parser = subparsers.add_parser("merge", help="publish a snapshot")
     _add_plan_reference(merge_parser)
     _add_common(merge_parser)
+    _add_branch_guard(merge_parser)
     merge_parser.set_defaults(func=lambda args: cmd_merge(_run_options(args)))
 
     attach_distrib_subparser(
@@ -169,6 +187,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_cohort_source(augment_parser, with_limit=False)
     _add_common(augment_parser)
+    _add_branch_guard(augment_parser)
     augment_parser.add_argument("--base-snapshot-id", required=True)
     augment_parser.add_argument(
         "--new-snapshot-id",
@@ -208,6 +227,8 @@ def _augment_from_args(args: argparse.Namespace) -> int:
         base_snapshot_id=args.base_snapshot_id,
         new_snapshot_id=args.new_snapshot_id,
         workers=args.workers,
+        branch_name=getattr(args, "branch", "main") or "main",
+        expected_branch_tip=getattr(args, "expected_branch_tip", None),
     )
 
 

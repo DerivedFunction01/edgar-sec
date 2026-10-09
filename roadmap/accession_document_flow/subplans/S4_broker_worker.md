@@ -318,8 +318,9 @@ statement at a sink, it must declare itself in
   current progress journal reusable without advancing the incomplete attempt pointer.
 - A DuckDB crash/reopen test proves transactions that committed before interruption
   remain complete and the interrupted accession transaction leaves no completion key.
-- Run lock contention refuses a second owner; explicit stale-lock recovery requires
-  operator-confirmed owner state.
+- Run lock contention refuses a second owner; recovery requires operator attestation that
+  the previous owner has stopped. The lock code does not independently establish owner
+  liveness or staleness.
 - All accessions validated before the first request.
 - Pool derives its size from resources without hardcoded worker limits.
 - Explicit worker overrides cannot exceed the safe resource-derived ceiling.

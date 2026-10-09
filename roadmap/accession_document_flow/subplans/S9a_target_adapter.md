@@ -4,13 +4,14 @@
 
 - Owning stage in [S9](S9_acquisition.md): acquisition work-order boundary.
 - Status: typed adapter design only; no S6 target-row adapter is implemented.
-- Depends on: S6 target-plan schema, S5 snapshot reader for bundle metadata.
+- Depends on: S6 target-plan schema and S4 broker lifecycle; the target bundle is
+  self-contained for acquisition.
 
 ## Current tracked-code audit (2026-10-08)
 
 - **Status: not implemented; a related legacy reader exists.** `document_storage.catalog_plan.CatalogPlan` validates filing-catalog locator plans and streams locator chunks, but it does not validate S6 profile target rows or resolve `DirectUrlWork` / `BundleSequenceWork` records.
 - **Evidence:** [`document_storage/catalog_plan.py`](../../../edgar_sec/pipelines/document_storage/catalog_plan.py), [`document_storage/work_order.py`](../../../edgar_sec/pipelines/document_storage/work_order.py), and [`test_catalog_plan.py`](../../../tests/pipelines/document_storage/test_catalog_plan.py) cover the legacy plan/chunk boundary. The disposition document identifies this as a rebuild point for S9a.
-- **Next step:** implement the target-row validator and work-order mapper against the delivered S6 bundle; pin and verify its source artifacts before any broker calls.
+- **Next step:** implement the target-row validator and work-order mapper against the delivered S6 bundle; verify the bundle and preserve its source pins without opening upstream artifacts.
 
 ## Objective
 
@@ -29,7 +30,7 @@ class AcquisitionTargetRef:
     accession: AccessionNumber
     request_id: str
     target_role: str
-    selector: str
+    target_type: str
     optional: bool
     source_origin: SourceOrigin
     target_status: Literal["matched"]
@@ -79,7 +80,7 @@ load_acquisition_work_order(
 ) -> AcquisitionWorkOrder
 ```
 
-The loader verifies the target-plan manifest, target table digest, source artifact IDs, and schema versions. It selects only `status="matched"` rows with `direct_url` or `bundle_sequence`; other outcomes are retained in `skipped` and cause no HTTP request. A constructed package candidate is not executable in S9 without explicit S0 authorization.
+The loader verifies the target-plan manifest, target-part digests, pinned source identity/digest fields, and schema versions. It does not open or revalidate the original inventory snapshot or catalog plan. It selects only `status="matched"` rows with `direct_url` or `bundle_sequence`; other outcomes are retained in `skipped` and cause no HTTP request. A constructed package candidate is not executable in S9 without explicit S0 authorization.
 
 For an inventory-index direct target, `fetch_url` is the observed URL in `target_url`. For a catalog-direct target, it is the catalog-derived URL already pinned in the plan. For a bundle target, `target_url` contains the accession's advertised bundle URL and the target row supplies an exact sequence. The plan is self-contained for acquisition; S9 does not reopen its source snapshot. Catalog-direct bundle extraction is not part of v1.
 
@@ -87,7 +88,17 @@ For an inventory-index direct target, `fetch_url` is the observed URL in `target
 
 For a successful direct fetch, S9 sets `selected_filename` from the validated document-path basename. For a bundle target, it uses the actual selected SGML header filename; the expected inventory filename is only a consistency check.
 
-URLs must use HTTPS, belong to the SEC archive host policy, and resolve beneath the target accession's archive directory. Validate parsed URL components; never use raw prefix checks or target text as a filesystem path. Direct-target size is advisory; the observed response size remains authoritative.
+Every direct or bundle URL must satisfy the S6 archive-locator contract: HTTPS, exact
+host `www.sec.gov`, no user information/port/query/fragment, and a path under
+`/Archives/edgar/data/{filing_cik}/{accession_without_hyphens}/` for the same target
+accession. `filing_cik` is the unpadded numeric CIK encoded by the accession prefix.
+The bundle URL must be the canonical hyphenated-accession `.txt` file at that directory;
+direct documents may be nested beneath it. Reject dot segments, encoded separators,
+backslashes, and paths outside the accession directory. Use parsed URL components and
+the shared SEC archive URL parser; never use raw prefix checks or target text as a
+filesystem path. Redirects must remain on `www.sec.gov` and inside the same accession
+directory. Direct-target size is advisory; the observed response size remains
+authoritative.
 
 ## Tests
 

@@ -117,6 +117,8 @@ def build_inventory(
     profile: RuntimeResourceProfile | None = None,
     artifacts_root: Path | str | None = None,
     workers: int | None = None,
+    branch_name: str = "main",
+    expected_branch_tip: str | None = None,
 ) -> SnapshotPublication:
     """Connect projection, S4, and S5 into a single deterministic build pipeline."""
     resolved_root = (
@@ -128,13 +130,15 @@ def build_inventory(
     resources = profile or derive_resources()
     effective_chunk_size = _effective_chunk_size(chunk_size)
 
-    # Step 1: Plan validation & projection
+    # Step 1: Plan validation & projection; observe the branch tip before fetch.
     projection = project_catalog_plan(
         catalog_plan_id,
         artifacts_root=resolved_root,
         profile=resources,
         explicit_refresh=explicit_refresh,
         chunk_size=effective_chunk_size,
+        base_snapshot_id=base_snapshot_id,
+        branch_name=branch_name,
     )
 
     # Step 2: No-op & delta inspection
@@ -172,7 +176,11 @@ def build_inventory(
             reason=f"{summary.refusal_count} work items refused or failed"
         )
 
-    # Step 4: S5 Publication
+    # Step 4: S5 Publication. Resolve the CAS guard from the branch tip if unset.
+    if expected_branch_tip is None:
+        current = DAGCatalog(inventory_paths.snapshots_root).read_pointer(branch_name)
+        expected_branch_tip = str(current["snapshot_id"]) if current else None
+    catalog = DAGCatalog(inventory_paths.snapshots_root)
     run_manifest = read_run_manifest(run_paths)
     if run_manifest is None:
         return SnapshotPublication.failed(
@@ -185,6 +193,8 @@ def build_inventory(
         cohort_accessions_path=projection.paths.cohort_accessions_path(),
         cohort_sources_path=projection.paths.cohort_sources_path(),
         expected_parent_snapshot_id=projection.base_snapshot_id,
+        branch_name=branch_name,
+        expected_branch_tip=expected_branch_tip,
         profile=resources,
     )
 

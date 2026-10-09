@@ -56,7 +56,14 @@ def build_parser() -> argparse.ArgumentParser:
         "build", help="build and publish an immutable inventory snapshot"
     )
     build_cmd.add_argument("--catalog-plan", required=True, help="published plan id")
-    build_cmd.add_argument("--base-snapshot", help="base snapshot id override")
+    build_cmd.add_argument(
+        "--base-snapshot-id", default=None, help="base snapshot id override"
+    )
+    build_cmd.add_argument(
+        "--branch",
+        default="main",
+        help="DAG branch to advance on publication (default: main)",
+    )
     build_cmd.add_argument(
         "--explicit-refresh",
         action="store_true",

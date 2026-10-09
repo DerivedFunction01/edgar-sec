@@ -6,9 +6,10 @@
 - Status: integrated CLI and vertical verification remain design-only; existing
   inventory and catalog commands are separate partial foundations.
 - Depends on: S1–S11 public contracts, including S9a–S9d.
-- Non-blocking: interactive UX and `document_storage` decommissioning.
+- Non-blocking: the integrated cross-stage operator and `document_storage`
+  decommissioning. Stage-owned S6 CLI/operator work belongs to S6.
 
-## Current tracked-code audit (2026-10-08)
+## Current tracked-code audit (2026-10-09)
 
 - **Status: inventory CLI foundations exist; the S12 command surface and offline vertical gate are not implemented.** Inventory build/query/review commands are tracked, and filing-catalog planning is a separate CLI; there is no integrated `documents plan` command or fixture-driven plan-to-acquisition-to-processing-to-vacuum-to-review run matching this contract.
 - **Evidence:** [`document_inventory/cli.py`](../../../edgar_sec/edgar_sec/pipelines/document_inventory/cli.py) registers inventory commands and review/DAG/distribution subcommands. Mirrored inventory and catalog tests cover those owners, while `document_storage` retains a separate legacy CLI and tests.
@@ -31,8 +32,8 @@ inventory query --snapshot <id|current> --source-cik <cik>
 inventory query --snapshot <id|current> --form <form> [--filing-cik <cik>] [--source-cik <cik>]
 inventory vacuum --snapshot <snapshot-id|current> --retention <policy-id>
 
-documents plan --inventory <snapshot-id|current> --profile <path>
-documents plan --catalog-plan <plan-id> --profile <path>
+documents plan --inventory <snapshot-id|current> --profile-id <id>
+documents plan --catalog-plan <plan-id> --profile-id <id>
 
 inventory fill --catalog-plan <plan-id> --fixture <fixture-id>
 inventory build --fixture <fixture-id>
@@ -50,7 +51,10 @@ not interchangeable, and the latter is not a verified legal co-filer list.
 `current`; a stale snapshot ID refuses without moving the pointer. Vacuum/purge
 never triggers network work.
 
-Acquisition and processing do not gain production SEC-fetch CLI commands in this stage. They run from the S9 work order and S9d fixture replay contracts; an interactive operator remains a later UX decision.
+Acquisition and processing do not gain production SEC-fetch CLI commands in this stage.
+They run from the S9 work order and S9d fixture replay contracts. The S6 package-local
+operator is specified by the S6 subplan; an integrated operator that moves among
+inventory, planning, acquisition, processing, and review remains a later S12 decision.
 
 ## Summary schemas
 
@@ -69,7 +73,7 @@ The quality-gate integration fixture performs these stages in a temporary artifa
 
 1. **Project cohort (S1):** read a small committed catalog-plan fixture, including an accession whose prefix `filing_cik` differs from its contributing `source_cik`, and verify one work item per accession with all source-CIK relations retained.
 2. **Replay index pages (S2):** select committed `-index.html` fixture responses. No live capture or SEC call is allowed in this run.
-3. **Parse and publish (S4/S5):** run the bounded worker path using the fixture transport, publish an annual-partition snapshot, and verify manifest inheritance/tombstone metadata and atomic `current` update.
+3. **Parse and publish (S4/S5):** run the bounded worker path using the fixture transport, publish an annual-partition snapshot, and verify manifest inheritance, accession-scoped `scoped_mask` metadata, and atomic `current` update. A refresh test must show the new tip hides prior entries while the old named tip still returns them; no direct prior-entry-ID map is required.
 4. **Query (S5):** compare accession, form/date, filing-CIK, and source-CIK results with expected rows; instrument the reader to prove DuckDB query execution prunes non-matching Parquet parts using `(key_min, key_max)` manifest metadata and row-group footer statistics, and keeps the CIK meanings distinct.
 5. **Plan (S6):** create an inventory-backed target plan and a separate catalog-direct plan from local fixtures. Assert identical target schema, distinct `source_origin`, zero HTTP, and no inventory mutation. The two source plans remain separate; this test does not imply hybrid precedence.
 6. **Acquire (S9):** replay direct-URL and bundle-sequence acquisition cases from S9d. Verify body/source/selected digests, exact sequence, and zero HTTP.

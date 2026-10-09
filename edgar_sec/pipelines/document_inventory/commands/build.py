@@ -16,12 +16,13 @@ def cmd_build(args: argparse.Namespace) -> int:
     root = resolve_artifacts_root(args.artifacts_root)
     publication = builder.build_inventory(
         args.catalog_plan,
-        base_snapshot_id=args.base_snapshot,
+        base_snapshot_id=args.base_snapshot_id,
         explicit_refresh=args.explicit_refresh,
         chunk_size=args.chunk_size,
         retry_failures=args.retry_failures,
         workers=args.workers,
         artifacts_root=root,
+        branch_name=args.branch or "main",
     )
     payload = {
         "status": publication.status,

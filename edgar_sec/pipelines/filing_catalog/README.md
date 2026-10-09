@@ -78,6 +78,15 @@ what a consumer can rely on.
 - **Only the durable tree advances `current`.** With an explicit artifacts root the
   snapshot directory is still written atomically but the pointer is not moved, so a
   scratch directory can be planned from without disturbing published state.
+- **Durable publication is CAS-backed.** A durable `materialize` stages the catalog and
+  compares-and-swaps the target branch pointer under the shared publication lock
+  (`--branch`, default `main`; `--expected-branch-tip` pins the branch tip expected at
+  commit). A stale tip leaves the pointer unchanged. Scratch materialization (an explicit
+  artifacts root) writes the snapshot but never moves the pointer.
+- **`plan --catalog` selects input; it does not publish.** It is a read selector over
+  published Phase 1 snapshots for later `materialize`/`plan` use. Source identity,
+  inferred lineage, and scratch roots are governed by `materialize`, whose durable path
+  advances the DAG catalog pointer.
 - **Plan identity is a function of the request.** The same catalog and the same
   filters always resolve to the same published bundle, and an exact rerun reuses it
   instead of forking a new one. A directory that exists but describes a different
@@ -194,7 +203,7 @@ are in the [root README](../../../README.md#filing-catalog-pipeline-zero-network
 
 | Subcommand | Flags | Returns |
 | :--- | :--- | :--- |
-| `materialize` | `--source` (one Parquet part, treated as a one-part dataset), `--source-manifest` (Phase 1 snapshot manifest; its declared parts are resolved and verified), `--artifacts` | 0 with the manifest JSON on stdout, or 1 on `CatalogError` with `error: <msg>` on stderr. |
+| `materialize` | `--source` (one Parquet part, treated as a one-part dataset), `--source-manifest` (Phase 1 snapshot manifest; its declared parts are resolved and verified), `--artifacts`, `--branch` (default `main`; advances that branch's tip under a shared CAS lock), `--expected-branch-tip` | 0 with the manifest JSON on stdout, or 1 on `CatalogError` with `error: <msg>` on stderr. |
 | `plan` | `--catalog` (**required**), `--scope` (`deterministic` default; choices `deterministic`, `policy`), `--policy`, `--auto-policy`, `--cohort` (deterministic CIK filter), `--seed-cohort` (policy seeds, replacing configured CSV seeds), `--artifacts`, `--forms` (nargs `*`), `--suffixes` (nargs `*`), `--dates` (one comma-separated union; blank selects every date), `--limit` | 0 with the plan document on stdout, or 1 on planning/input errors. |
 | `expand` | `--parent-plan` (**required**, a published policy plan directory), `--target-units` (**required**, int), `--artifacts` | 0 with the child plan document, or 1 on `PlanConflictError`, `ParentPlanError`, `ValueError`, or `OSError`. |
 | `status` | `--artifacts` | 0, with the published-state JSON on stdout. |

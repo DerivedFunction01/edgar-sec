@@ -43,11 +43,14 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 - `run_missing_accessions` returns aggregate run counters and a bounded prefix of per-chunk details, rather than retaining one result object per work-order chunk.
 - Snapshot candidate staging writes outcomes, entries, and source-CIK edges incrementally. The anti-join runs in resource-configured DuckDB and emits Parquet relations without collecting full accession keys in Python.
 - The S5 projection validates a published catalog plan, writes normalized cohort relations, and pins a sorted pre-fetch work order before any SEC request.
+- Durable publication pins the branch tip. `base_snapshot_id` selects the delta's lineage base and the S5/S4 identity; when omitted, the tip of the selected branch (default `main`) is used. An explicit base must match the branch tip, so historical bases require a branch created at that tip. `--expected-branch-tip` pins the branch pointer expected at commit; a concurrent move refuses publication without moving the pointer, and a retry re-anti-joins against the new parent.
 
 ## Command surface
 
 ```text
-python run.py inventory build --catalog-plan PLAN [--base-snapshot ID] [--explicit-refresh]
+python run.py inventory build --catalog-plan PLAN
+                    [--base-snapshot-id ID] [--branch <name>]
+                    [--expected-branch-tip ID] [--explicit-refresh]
 python run.py inventory query [--accession ACC] [--form FORM] [--filing-cik CIK] [--source-cik CIK]
 python run.py inventory fixture create --fixture ID --catalog-plan PLAN [--limit N]
 python run.py inventory fixture fill --fixture ID --catalog-plan PLAN [--limit N]

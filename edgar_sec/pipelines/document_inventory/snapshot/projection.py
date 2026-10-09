@@ -312,8 +312,13 @@ def project_catalog_plan(
     chunk_size: int | None = None,
     explicit_refresh: bool = False,
     explicit_refresh_salt: str | None = None,
+    base_snapshot_id: str | None = None,
+    branch_name: str = "main",
 ) -> PrefetchProjection:
-    """Persist the full cohort projection and pre-fetch missing-accession work order."""
+    """Persist the full cohort projection and pre-fetch missing-accession work order.
+    ``base_snapshot_id`` selects the lineage base; an explicit base must match the
+    branch tip, so historical bases require a branch created at that tip first.
+    """
     if not archive_base_url.startswith(("https://", "http://")):
         raise ValueError("archive_base_url must be an HTTP(S) URL")
     if explicit_refresh_salt is not None and (
@@ -338,7 +343,21 @@ def project_catalog_plan(
     )
     locator_path = plan_root / "locator_groups.parquet"
     base_paths = inventory_paths(artifacts_root)
-    base_snapshot_id, base_parts, base_manifest_sha = base_snapshot_parts(base_paths)
+
+    if base_snapshot_id is not None:
+        catalog = DAGCatalog(base_paths.snapshots_root)
+        current = catalog.read_pointer(branch_name)
+        observed_tip = str(current["snapshot_id"]) if current else None
+        if observed_tip != base_snapshot_id:
+            raise BaseSnapshotError(
+                f"base snapshot {base_snapshot_id!r} does not match the tip of "
+                f"branch {branch_name!r} ({observed_tip!r}); create a branch at the "
+                "requested base with 'inventory dag branch create --from <id>' "
+                "before publishing there"
+            )
+    snapshot_id, base_parts, base_manifest_sha = base_snapshot_parts(
+        base_paths, snapshot_id=base_snapshot_id, branch_name=branch_name
+    )
     source_id = f"plan:{catalog_plan_id}"
 
     staging_parent = base_paths.projection_staging_root

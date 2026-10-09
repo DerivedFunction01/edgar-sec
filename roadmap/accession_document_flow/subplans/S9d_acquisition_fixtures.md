@@ -47,7 +47,7 @@ CREATE TABLE acquisition_cases (
     accession TEXT NOT NULL,
     request_id TEXT NOT NULL,
     target_role TEXT NOT NULL,
-    selector TEXT NOT NULL,
+    target_type TEXT NOT NULL,
     optional INTEGER NOT NULL CHECK (optional IN (0, 1)),
     source_origin TEXT NOT NULL CHECK (source_origin IN ('inventory_index', 'catalog_direct')),
     retrieval_mode TEXT NOT NULL CHECK (retrieval_mode IN ('direct_url', 'bundle_sequence')),
@@ -82,7 +82,7 @@ The manifest uses `foundation.runtime.fixtures` for dataset-scoped location and 
 common `fixture_kind`, `manifest_version`, identity, storage-reference, and timestamp
 envelope. Acquisition-specific schema versions, target-plan IDs and digests, source
 snapshot/catalog IDs and digests, counts, relative body root, and lineage live under
-`details`. `acquisition_cases` records the S6 target identity, selector, source
+`details`. `acquisition_cases` records the S6 target identity, role/type, source
 provenance, and retrieval fields needed for review plus the source and selected-body
 evidence; `target_status` is copied from S6 and is never overwritten by
 `acquisition_status`. Failed transport cases have no response foreign key. All SQLite

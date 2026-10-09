@@ -67,7 +67,7 @@ flowchart TD
     end
 
     subgraph S3["Stage 3 · document_planning (intent, zero network)"]
-        RULES["Profile or explicit request<br/>form → roles and selectors"]
+        RULES["Profile or explicit request<br/>form → role/type targets"]
         PLAN["Match against one selected source<br/>inventory snapshot or catalog plan"]
         TARGET["Independent immutable target plan<br/>pins source and provenance"]
     end
@@ -118,7 +118,7 @@ same work:
 | Accession | `accession` | The targeting, indexing, and fetch unit. One page response and one observed-entry set per accession, regardless of how many CIK plans include it. |
 | Inventory query | `(accession)` or `filing_form` | Snapshot seek indexes return one accession's child rows or the selected form's filings locally, without fetching pages. |
 | Observed entry | `(accession, table_kind, row_ordinal)` | One source row from a document/data-file table; sequence and filename may be absent or duplicated. |
-| Target plan row | `(plan_id, accession, request_id, source_origin, inventory_entry_id)` | Request-specific outcome and provenance stored separately from inventory. |
+| Target plan row | `(plan_id, accession, request_id, source_origin, inventory_entry_id)` | `request_id` is derived from profile role/type; outcomes and provenance stay separate from inventory. |
 | Payload | To be decided | Whether identical bytes deduplicate is a future policy, not a committed storage contract. |
 
 **Merger lineage is a selection concern, not a dedup key.** If B and C merge

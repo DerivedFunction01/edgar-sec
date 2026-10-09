@@ -5,7 +5,8 @@
 - Owning stage in [implementation.md](../implementation.md): **S9**.
 - Status: replacement acquisition remains design-only; legacy byte-oriented
   acquisition components do not satisfy the staged S9 contracts.
-- Depends on: S6 target plans; S5 snapshot reads for inventory bundle metadata; S4 broker lifecycle.
+- Depends on: validated S6 target-plan bundles and S4 broker lifecycle. S9 does not read
+  S5 or catalog source artifacts.
 - Non-blocking: S10 processing uses the staged selected-body reference and fixture replay API.
 
 ## Current tracked-code audit (2026-10-08)
@@ -20,11 +21,16 @@ Acquire only executable targets from immutable target plans, retain source prove
 
 ## Target and result boundary
 
-S9 reads target-plan rows and their pinned source manifests. `source_origin` selects a resolver, not a separate downstream data shape:
+S9 validates the target-plan bundle and reads its target rows. Pinned source IDs/digests
+remain provenance fields; acquisition never opens the upstream inventory snapshot or
+catalog plan. `source_origin` selects a resolver, not a separate downstream data shape:
 
 - `inventory_index` direct targets fetch their observed URL.
 - `inventory_index` bundle targets use the accession bundle URL in `target_url` and require the observed sequence; S9 does not reopen the inventory snapshot.
 - `catalog_direct` targets fetch the direct URL emitted by the S6 catalog adapter. They do not create or require a synthetic inventory entry.
+
+The S6 `request_id` consumed below is derived by the planner from the profile's
+canonical `(role, type)` pair; profile authors do not maintain an ID mapping.
 
 Only `status="matched"` rows with `direct_url` or `bundle_sequence` are executable. Other target outcomes remain in the plan and are counted as skipped; `constructed_candidate` is not fetched unless a later S0 policy explicitly makes it executable. Target plans and inventory snapshots remain immutable.
 
@@ -58,7 +64,7 @@ class AcquisitionExecution:
     selected_body: StagedBodyRef | None
 ```
 
-`not_filed` is a source response or complete bundle that does not contain the target; transport, size, and parse failures are `failed`. Duplicate sequence matches are `ambiguous`. A fixture replay that succeeds has status `acquired` and source `fixture_replay`—replay provenance is not an outcome status. `selected_body` is present only for `acquired` results and is the S10 input; it is a managed transient path, not a payload value in the case row.
+An HTTP 404, including a direct-target 404, is a transport failure with `error_code="http_not_found"` and acquisition status `failed`; it is never `not_filed`. `not_filed` means a complete bundle was fetched and parsed successfully but contained no document at the requested sequence. Duplicate sequence matches are `ambiguous`; malformed bundles and parse failures are `failed`. A fixture replay that succeeds has status `acquired` and source `fixture_replay`—replay provenance is not an outcome status. `selected_body` is present only for `acquired` results and is the S10 input; it is a managed transient path, not a payload value in the case row.
 
 ## Subplan decomposition
 
@@ -86,6 +92,7 @@ Implement the interfaces in order: target adapter, transport and extraction, the
 - Non-executable target statuses cause no HTTP request.
 - Large responses stream to disk within a configured byte budget; no whole-body broker buffer or payload IPC is required in normal mode.
 - Bundle extraction returns the exact requested sequence or a typed failure; it never falls back to sequence one.
+- Direct-target and bundle HTTP 404 responses are `failed` with `http_not_found`; only a successfully parsed full bundle without the requested sequence is `not_filed`.
 - Fixture replay verifies content digest and performs zero HTTP requests.
 - No S9 module imports `pipelines.document_storage`; the pipeline's removal is a separate post-S12 milestone after S11 payload-store implementation, parity, and consumer/artifact migration.
 

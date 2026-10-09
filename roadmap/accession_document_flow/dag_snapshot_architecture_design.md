@@ -79,11 +79,28 @@ Every manifest is strictly content-addressed and pinned by cryptographic hashes:
 > [!IMPORTANT]
 > Parent digests help detect tampering but do not replace cycle checks. Current-lineage resolution checks repeated node IDs while walking the selected path. A DAG Manager health check can audit other branches and bridge redirects separately.
 
-### 2.3 Current Path and Plan Commit Order
+### 2.3 Branches, CAS Commit, and Plan Order
 
-`current/pointer.json` selects one tip. Resolution follows only that tip's parent path to its checkpoint; sibling branches are not implicitly unioned. A branch is active only when `current` selects one of its tips.
+Every durable publication targets a named DAG branch (default `main`); `current/pointer.json`
+selects the tip of the active branch, and readers follow only that tip's parent path to its
+checkpoint. Sibling branches are not implicitly unioned; a branch is active only when a
+pointer or reader selects one of its tips. Publishing to `main` cannot silently rewind or
+fork it: a historical base requires a branch created at that tip first (`inventory dag
+branch`), and the pointer only advances when the branch's current tip matches the `expected
+branch tip` pinned at commit time.
 
-Plans may be created independently from the same base. Plan creation does not reserve work or guarantee execution; overlapping plans may fetch the same accession more than once. At commit, the DAG Manager rechecks `current` and rebases the plan's immutable delta onto the then-current tip. It reuses the delta parts and writes a new node manifest with the actual parent digest and lineage depth. Plan creation time does not determine precedence; the resulting current-path order does. Identical facts deduplicate. If two successful revisions collide after rebase, the latest commit on the selected path wins; conflicting metadata is refused.
+The expected branch tip is distinct from the node's manifest `parents`: `parents` are the
+content-addressed lineage chain validated by `walk_lineage`; the branch tip is the pointer
+state guarded by the shared CAS lock. A checkpoint may have no lineage parent while still
+requiring a branch-tip CAS.
+
+Plans may be created independently from the same base. Plan creation does not reserve work
+or guarantee execution; overlapping plans may fetch the same accession more than once. At
+commit, `expected_parent_id` pins the branch tip observed before execution; if the branch
+moved during staging, `publish_node` leaves the pointer unchanged and refuses the commit.
+Plan creation time does not determine precedence; the resulting current-path order does.
+Identical facts deduplicate. If two successful revisions collide after rebase, the latest
+commit on the selected path wins; conflicting metadata is refused.
 
 ---
 
@@ -106,8 +123,8 @@ To support differing schemas across pipelines (`document_inventory`, `metadata_s
 In `document_inventory`, a refresh replaces all entries of an accession because the directory index page is fetched as a unit. 
 
 In `document_acquisition`, targets are **selective across separate plans**:
-* **Plan A** targets **primary documents** (`request_id="primary"`).
-* **Plan B** targets **exhibits** (`request_id="subsidiaries"` / EX-21).
+* **Plan A** targets **primary documents** (`request_id="primary:primary"`).
+* **Plan B** targets **exhibits** (`request_id="exhibit:EX-21"`).
 
 If masking were naively scoped to `accession`, Plan B committing exhibits would mask out Plan A's primary document.
 
@@ -251,14 +268,20 @@ def publish_node(
     snapshots_root: Path,
     manifest: DAGNodeManifest,
     staged_dir: Path,
-    expected_parent_id: str | None,
-) -> None:
-    """Install snapshot directory and atomically advance current/pointer.json.
-    
-    Raises:
-        StaleParentError: If current pointer changed during staging.
+    expected_parent_id: str | None = None,
+    *,
+    branch_name: str = "main",
+    blocking_lock: bool = True,
+) -> Path:
+    """Install the staged directory and advance the branch pointer under a CAS guard.
+
+    The branch tip compare and the node record + pointer update run inside one exclusive
+    publication lock. ``expected_parent_id`` pins the branch tip expected at commit; a
+    concurrent move leaves the pointer unchanged and raises ``StaleParentError``. If
+    omitted, any tip may publish. ``expected_parent_id`` is the branch-pointer guard,
+    distinct from the node's manifest ``parents``, which ``walk_lineage`` validates
+    separately.
     """
-    ...
 ```
 
 ---

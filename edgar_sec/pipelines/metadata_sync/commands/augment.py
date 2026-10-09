@@ -31,6 +31,8 @@ def cmd_augment(
     new_snapshot_id: str = "",
     workers: int | None = None,
     client: SubmissionsClient | None = None,
+    branch_name: str = "main",
+    expected_branch_tip: str | None = None,
 ) -> int:
     """Add only newly requested CIKs to a published snapshot."""
     metadata = resolve_metadata_paths(options.artifacts_root)
@@ -78,6 +80,8 @@ def cmd_augment(
                 progress=progress,
                 input_name=cohort.input_name,
                 input_fingerprint=cohort.input_fingerprint,
+                branch_name=branch_name,
+                expected_branch_tip=expected_branch_tip,
             )
     finally:
         progress.close()

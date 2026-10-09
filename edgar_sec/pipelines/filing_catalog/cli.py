@@ -56,6 +56,11 @@ def build_parser() -> argparse.ArgumentParser:
     materialize_parser.add_argument(
         "--artifacts", default="", help="artifacts root override"
     )
+    materialize_parser.add_argument(
+        "--branch",
+        default="main",
+        help="DAG branch to advance on durable publication (default: main)",
+    )
     materialize_parser.set_defaults(func=cmd_materialize)
 
     plan_parser = subparsers.add_parser(

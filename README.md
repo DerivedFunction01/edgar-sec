@@ -103,12 +103,22 @@ python run.py metadata status --cohort uploaded
 # Execute outstanding chunks (resumable; completed chunks are never refetched):
 python run.py metadata run --cohort uploaded
 
-# Validate every chunk and publish a snapshot:
+# Validate every chunk and publish a snapshot (to `main` by default):
 python run.py metadata merge --cohort uploaded
+
+# Publish to a named branch instead of `main`:
+python run.py metadata merge --cohort uploaded --branch feature-123
 
 # Add newly requested CIKs to an existing snapshot without refetching the base:
 python run.py metadata augment --cohort uploaded \
     --base-snapshot-id <id> --new-snapshot-id <id>
+
+# Augment over a historical base on a branch created at that base first, and pin the
+# branch pointer expected at commit:
+python run.py metadata dag branch inv_old --base inv_base
+python run.py metadata augment --cohort uploaded \
+    --base-snapshot-id inv_old --branch inv_old \
+    --expected-branch-tip <id>
 ```
 
 Run one cohort across several machines by copying the plan bundle out. The
@@ -146,9 +156,19 @@ It never performs network I/O, and `tests/test_network_isolation.py` proves
 that by walking the import graph rather than by grep.
 
 ```bash
-# Materialize a catalog snapshot from a Phase 1 snapshot:
+# Materialize a catalog snapshot from a Phase 1 snapshot (to `main` by default):
 python run.py filing-catalog materialize \
     --source-manifest <phase1>/metadata/snapshots/<id>/metadata.manifest.json
+
+# Publish to a named branch; CAS-guard the branch pointer expected at commit:
+python run.py filing-catalog materialize --source-manifest <phase1>/metadata/snapshots/<id>/metadata.manifest.json \
+    --branch feature-456 --expected-branch-tip <id>
+
+# Scratch materialization: an explicit `--artifacts` root writes the snapshot
+# atomically without advancing any published pointer.
+python run.py filing-catalog materialize --source-manifest <phase1>/metadata/snapshots/<id>/metadata.manifest.json \
+    --artifacts /tmp/filing-catalog-scratch
+
 
 # Deterministic plan, filtered by form and report date:
 # Forms are exact: an amendment variant such as 10-K/A must be named explicitly.
@@ -251,7 +271,68 @@ lifecycle: fill, replay, listing, review artifacts, and review comparison. It
 operates on the current plan and fixture formats; it does not migrate or read
 unrelated processing tables.
 
-### Live Smoke Test (Credential-Gated, Outside the Gate)
+### Document Inventory (S4/S5)
+
+`inventory build` projects filing-catalog observations into an accession-level index-page
+work order, resumption-capable S4 fetch/parse, and durable S5 snapshot publication. It is
+a downstream consumer of published `filing_catalog` plans and never fetches a cohort
+itself.
+
+```bash
+# Build a snapshot on the default main branch: anti-join against the current tip, then
+# fetch only newly observed accessions and merge new source-CIK edges without refetch.
+python run.py inventory build --catalog-plan corpus
+
+# Pin a historical base on a branch created there first; the branch pointer is pinned at
+# commit so a concurrent move refuses publication without rewriting main.
+python run.py inventory dag branch inv_old
+python run.py inventory build --catalog-plan corpus \
+    --base-snapshot-id inv_old --branch inv_old
+
+# Pin the branch pointer expected at commit; a stale branch fails the publish and leaves
+# the pointer unchanged for a retry.
+python run.py inventory build --catalog-plan corpus \
+    --expected-branch-tip <id>
+```
+
+Querying reads published snapshots or the active branch; pinning a snapshot ID is
+supported:
+
+```bash
+python run.py inventory query --snapshot current --accession 0000000001-25-000001
+```
+
+`--artifacts` selects the artifacts root for all commands; the full command surface is in
+the [document_inventory package README](edgar_sec/pipelines/document_inventory/README.md).
+
+### DAG Catalog: Durable Publication Contract
+
+All three writing pipelines share one durable publication mechanism: thin snapshots and
+plan bundles are staged, validated, and then advance a named branch's pointer atomically
+under a single exclusive lock. The common contract:
+
+- **Branch default.** Durable publication targets `main` unless `--branch <name>` selects
+  another branch.
+- **CAS guard.** `--expected-branch-tip <id>` pins the branch pointer expected at commit;
+  if the branch moved during staging, publication is refused and the pointer is left
+  unchanged.
+- **Historical base.** Publishing to an older snapshot requires a branch created at that
+  tip first (`inventory dag branch` for inventory; `metadata dag branch` and `filing-catalog
+  dag branch` for the other pipelines); `main` is never rewritten or forked silently.
+- **Lineage vs. pointer.** A node's manifest `parents` are the content-addressed lineage
+  chain (`walk_lineage` validates reachability); the branch-tip guard is a separate CAS
+  check on the pointer, so checkpoints with no parent can still publish under a branch-tip
+  CAS.
+
+```bash
+# Branches and their tips are managed with the shared DAG console:
+python run.py inventory dag branch
+python run.py inventory dag branch create inv_old --base inv_base
+python run.py metadata dag branch
+python run.py filing-catalog dag branch
+```
+
+### Live Smoke Test (Credential-Gated, Outside the gate)
 ```bash
 # Bounded live SEC check. Never publishes a snapshot; requires a preview root.
 python -m edgar_sec.pipelines.metadata_sync.smoke_test \

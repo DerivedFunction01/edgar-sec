@@ -62,11 +62,14 @@ artifacts. Do not build the interactive wizard here.
 - **S7c — target-plan review**: Compares two plan runs (or profile changes) across
   identical pinned source artifacts. Diffing is keyed by
   `(accession, request_id, source_origin, inventory_entry_id)`; catalog-direct rows
-  have null `inventory_entry_id` and remain distinct by `source_origin`.
-  It reports outcome status transitions (`not_filed` $\leftrightarrow$ `matched`,
-  `unresolved` $\leftrightarrow$ `ambiguous`) separately from profile selector edits
-  and source-origin/source-artifact changes. `status_reason` changes remain visible
-  even when the status itself is unchanged.
+  have null `inventory_entry_id` and remain distinct by `source_origin`. It reports
+  status transitions only for rows whose identity is unchanged; `status_reason` changes
+  remain visible even when status is unchanged. Profile role/type edits are a separate
+  profile-rule diff keyed by `(normalized_form_selector, role, type, optional)`. Because
+  `request_id` is derived from role/type, changing either yields a removed declaration/
+  row plus an added declaration/row, not a paired outcome transition. If source
+  kind/ID/digest changes, report provenance changes separately and do not claim
+  row-level outcome transitions across different input artifacts.
 - **S7c — snapshot inspect**: Reads a pinned published snapshot only, reporting its annual
   partition layout, part manifest, and counts grouped by form and filing year.
 
@@ -91,7 +94,7 @@ verified as implemented. Parser iteration remains owned by S3.
 {artifacts_root}/document_planning/review-runs/{review_id}/
   manifest.jsonl
   target-plan-diff.json
-{artifacts_root}/document_processing/review-runs/{review_id}/
+{artifacts_root}/document_acquisition/review-runs/{review_id}/
   manifest.jsonl
   cases/{target_id}/source.inert.html
   cases/{target_id}/normalized.txt
@@ -101,6 +104,10 @@ verified as implemented. Parser iteration remains owned by S3.
 Each `manifest.jsonl` row pins fixture ID, source URL/digest, accession or target ID,
 source snapshot/catalog/plan IDs when applicable, parser/processor fingerprint, result
 status, and digests for generated review files.
+
+S10 processing-review artifacts will be owned and rooted by
+`document_acquisition.paths` when that package is implemented; `document_processing` is
+not a package or dataset name.
 
 ## Command contracts
 
@@ -141,9 +148,13 @@ inspection remain blocked on those artifacts.
 - Network instrumentation confirms exactly zero HTTP requests during all review runs.
 - If implemented, parser diffs detect row additions, deletions, field modifications,
   and diagnostic shifts across parser versions for the same fixture response.
-- Target-plan diffs: keyed by `(accession, request_id, source_origin, entry_id)`;
-  catalog-direct and inventory-index rows remain separate, and outcome transitions
-  are isolated from profile/source changes.
+- Target-plan row diffs are keyed by
+  `(accession, request_id, source_origin, inventory_entry_id)`. Status transitions are
+  compared only when this identity is unchanged. Because `request_id` is derived from
+  canonical role/type, changing role or type creates a removal plus an addition; S7 does
+  not pair those as an outcome transition. The profile-rule diff separately reports
+  `(normalized_form_selector, role, type, optional)` additions/removals. Catalog-direct
+  and inventory-index rows remain distinct by `source_origin`.
 - Empty selection refusal: empty case selection returns a typed error.
 - One-case failure behavior: a single failed case does not erase successful sibling cases.
 - Non-empty output refusal: pre-existing destination directories are rejected.

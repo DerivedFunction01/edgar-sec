@@ -22,6 +22,7 @@ def cmd_materialize(args: argparse.Namespace) -> int:
             resolve_artifacts(args.artifacts),
             source_manifest=args.source_manifest or None,
             progress=emit_progress,
+            branch_name=args.branch or "main",
         )
     except CatalogError as error:
         print(f"error: {error}", file=sys.stderr)

@@ -170,6 +170,8 @@ class RunOptions:
     chunk_ids: tuple[int, ...] = ()
     workers: int | None = None
     snapshot_id: str = ""
+    branch_name: str = "main"
+    expected_branch_tip: str | None = None
 
     def run_paths(self) -> Any:
         """Plan-scoped paths; with ``bundle_root`` they point at a copied bundle."""
@@ -223,6 +225,8 @@ def run_options(
     chunk_ids: list[int] | tuple[int, ...] | str = (),
     workers: int | None = None,
     snapshot_id: str = "",
+    branch_name: str = "main",
+    expected_branch_tip: str | None = None,
 ) -> RunOptions:
     """A plan reference arrives directly, from the cohort, or from a bundle
     naming itself.
@@ -252,6 +256,8 @@ def run_options(
         chunk_ids=tuple(int(chunk_id) for chunk_id in chunk_ids),
         workers=workers,
         snapshot_id=snapshot_id,
+        branch_name=branch_name,
+        expected_branch_tip=expected_branch_tip,
     )
 
 

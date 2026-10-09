@@ -48,6 +48,11 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
 - Augmentation computes `requested - base` with shared cohort operations and writes
   its verified delta under metadata transient storage. The plan bundle contains the
   roster it needs; no metadata-local cohort store is created.
+- Merge and augment publish durable snapshots to the selected DAG branch (default
+  `main`) under a shared CAS guard. `--branch` selects the branch; `--expected-branch-tip`
+  pins the branch pointer expected at commit and refuses the publish (without moving the
+  pointer) if the branch moved. `--base-snapshot-id` selects the delta parent for
+  augmentation; it is not the target branch and never rewinds `main`.
 - Plan identity, chunk coverage, checkpoint validation, merge publication, worker
   distribution, and snapshot verification remain owned by their existing modules.
 
@@ -67,12 +72,13 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
 metadata plan     --cohort <id-or-name>
 metadata status   <plan reference>
 metadata run      <plan reference> [--chunks 0-3,7] [--chunk N]
-metadata merge    <plan reference>
+metadata merge    <plan reference> [--branch <name>]
+                  [--expected-branch-tip <snapshot-id>]
 metadata worker   <plan reference> [--worker <id>]
 metadata export   <plan reference> --worker-count N --destination <dir>
 metadata import   <plan reference> --source <dir>
-metadata augment  --cohort <id-or-name>
-                  --base-snapshot-id <id> [--new-snapshot-id <id>]
+metadata augment  --cohort <id-or-name> --base-snapshot-id <id>
+                  [--branch <name>] [--new-snapshot-id <id>]
 ```
 
 Plan references for status, run, merge, worker, export, and import accept a plan id,

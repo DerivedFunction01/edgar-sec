@@ -24,6 +24,7 @@ from edgar_sec.infra.storage.dag.manifest import (
     ParentRef,
     PartDescriptor,
 )
+from edgar_sec.infra.storage.dag.publication import publish_node
 from edgar_sec.infra.storage.duckdb import (
     connect,
     find_duplicate_keys,
@@ -413,11 +414,15 @@ def merge_chunks(
 
 
 def publish_snapshot(
-    report: MergeReport, metadata_paths: MetadataPaths
+    report: MergeReport,
+    metadata_paths: MetadataPaths,
+    *,
+    branch_name: str = "main",
+    expected_branch_tip: str | None = None,
 ) -> dict[str, Any]:
-    """Write the snapshot manifest and advance the current pointer atomically.
-    Manifest first, pointer last: a crash between leaves an unpublished but complete
-    directory, never a pointer to an unfinished dataset.
+    """Write the snapshot manifest and advance the branch pointer atomically.
+    The pointer update is guarded by a shared publication lock; the branch tip
+    guard ``expected_branch_tip`` is distinct from the lineage parent.
     """
     manifest = report.to_dict()
     atomic_write_json(
@@ -459,12 +464,26 @@ def publish_snapshot(
         relations={"submissions": part_descriptors},
         logical_fingerprint=report.parts_digest or "",
     )
-    catalog.publish_node(dag_manifest)
+    if expected_branch_tip is None:
+        current = catalog.read_pointer(branch_name)
+        expected_branch_tip = str(current["snapshot_id"]) if current else None
+    publish_node(
+        metadata_paths.snapshots_root,
+        dag_manifest,
+        expected_parent_id=expected_branch_tip,
+        branch_name=branch_name,
+    )
     return manifest
 
 
-def publish_current_snapshot(metadata_paths: MetadataPaths, snapshot_id: str) -> Path:
-    """Point ``current`` at an already-published snapshot.
+def publish_current_snapshot(
+    metadata_paths: MetadataPaths,
+    snapshot_id: str,
+    *,
+    branch_name: str = "main",
+) -> Path:
+    """Point a branch at an already-published snapshot.
+
     A pointer move and nothing else, validated first: a pointer to a nonexistent
     dataset is worse than a stale one.
     """
@@ -472,7 +491,7 @@ def publish_current_snapshot(metadata_paths: MetadataPaths, snapshot_id: str) ->
     catalog = DAGCatalog(metadata_paths.snapshots_root)
     if not catalog.has_snapshot(snapshot_id) and not manifest_path.is_file():
         raise MergeError(
-            f"cannot point current at {snapshot_id!r}: snapshot is missing"
+            f"cannot point {branch_name!r} at {snapshot_id!r}: snapshot is missing"
         )
-    catalog.write_pointer("main", snapshot_id)
+    catalog.write_pointer(branch_name, snapshot_id)
     return catalog.catalog_file

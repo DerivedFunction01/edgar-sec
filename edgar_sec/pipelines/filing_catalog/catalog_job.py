@@ -45,6 +45,7 @@ from edgar_sec.infra.storage.dag.manifest import (
     ParentRef,
     PartDescriptor,
 )
+from edgar_sec.infra.storage.dag.publication import publish_node
 from edgar_sec.pipelines.filing_catalog.materialization import (
     build_delta_profile_query,
     build_delta_unnest_query,
@@ -241,10 +242,11 @@ def materialize(
     source_manifest: str | os.PathLike[str] | None = None,
     progress: ProgressCallback = None,
     row_group_size: int | None = None,
+    branch_name: str = "main",
+    expected_branch_tip: str | None = None,
 ) -> dict[str, Any]:
-    """Materialize one immutable filing-catalog snapshot.
-    An explicit ``output_root`` publishes in place and never touches the pointer.
-    Resource limits are not parameters: ``connect()`` derives them.
+    """Materialize one immutable filing-catalog snapshot via a CAS pointer update.
+    Durable writes advance branch_name under the shared publication lock.
     """
     settings = resolve_settings()
     groups = int(
@@ -475,7 +477,15 @@ def materialize(
     final_dir.parent.mkdir(parents=True, exist_ok=True)
     os.replace(staging_dir, final_dir)
     if durable:
-        dag_catalog.publish_node(dag_manifest, branch_name="main")
+        if expected_branch_tip is None:
+            current = dag_catalog.read_pointer(branch_name)
+            expected_branch_tip = str(current["snapshot_id"]) if current else None
+        publish_node(
+            paths.snapshots_root,
+            dag_manifest,
+            expected_parent_id=expected_branch_tip,
+            branch_name=branch_name,
+        )
     else:
         dag_catalog.record_node(dag_manifest)
 

@@ -1,8 +1,8 @@
 # Accession Document Flow — Implementation Roadmap
 
 Status: **the S1–S5 inventory build path and S7a/S7b fixture-review foundations are
-implemented; S0 historical acceptance, S5 supersession identity, and S8 operational
-retention remain open.** S6 target planning is the next offline handoff. See the
+implemented; S0 historical acceptance and S8 operational retention remain open.** S6
+target planning is the next offline handoff. See the
 [inventory exit and acquisition gate](./inventory_exit_and_acquisition_gate.md) for
 current readiness; stage subplans own detailed contracts.
 
@@ -235,17 +235,18 @@ anti-join, pointer semantics, and vacuum contract are specified in
   of accession facts.
 - **Zero-copy manifest inheritance**: Unchanged annual partitions are referenced
   directly from parent snapshots; deltas write parts only for affected filing years.
-- **Page supersession**: Refreshed pages supersede prior active entries in the new
-  snapshot via manifest mapping and delta tombstones; older snapshots preserve prior
-  observations intact.
+- **Page supersession**: Refreshed pages use the entries relation's accession-scoped
+  `scoped_mask` in the new snapshot; old named snapshots preserve prior observations.
+  No separate prior-entry-ID map is part of the v1 contract.
 - Accession, filing-form, and CIK queries read the snapshot locally and never fetch SEC
   pages. The snapshot contains no target roles or fetched-payload references.
 
 ### 4.2 Target profiles
 
-Profiles live as versioned, tracked JSON artifacts under
-`policies/document_targets/`, separate from inventory data and pipeline
-settings. The profile grammar is a list of form selectors and target requests:
+Profiles live as versioned, tracked JSON under the repository-root
+`policies/document_targets/` directory, separate from generated inventory/plan artifacts
+and pipeline settings. The package paths module resolves the repository root. The
+profile grammar is a list of form selectors and role/type target requests:
 
 ```json
 {
@@ -256,15 +257,15 @@ settings. The profile grammar is a list of form selectors and target requests:
     {
       "form_selector": "10-K, 20-F",
       "targets": [
-        {"request_id": "primary", "role": "primary", "selector": {"kind": "primary"}, "optional": false},
-        {"request_id": "annual_report", "role": "exhibit", "selector": {"document_type": "EX-13"}, "optional": true},
-        {"request_id": "subsidiaries", "role": "exhibit", "selector": {"document_type": "EX-21"}, "optional": true}
+        {"role": "primary", "type": "primary", "optional": false},
+        {"role": "exhibit", "type": "EX-13", "optional": true},
+        {"role": "exhibit", "type": "EX-21", "optional": true}
       ]
     },
     {
       "form_selector": "*",
       "targets": [
-        {"request_id": "primary", "role": "primary", "selector": {"kind": "primary"}, "optional": false}
+        {"role": "primary", "type": "primary", "optional": false}
       ]
     }
   ]
@@ -273,19 +274,25 @@ settings. The profile grammar is a list of form selectors and target requests:
 
 Rules are resolved as follows:
 
-- Every target has a stable semantic `request_id`. It may be explicit or derived from
-  a unique primary, document-type, or package-type selector; positional defaults and
-  collisions are rejected.
+- Each target declares `role`, `type`, and `optional`; profile authors do not provide an
+  ID mapping. The planner derives the downstream stable `request_id` from canonical
+  role/type. Duplicate or overlapping role/type targets in one effective rule are
+  rejected; array position never contributes to identity.
 - Comma-separated form selectors are split into individual form tokens, and
   `resolve_alias(form)` is called on **each individual form**; the alias owner does
   not accept un-split comma-delimited strings.
-- Semantic canonicalization: form tokens are stripped of whitespace and alias-resolved.
-  Selectors are not case-folded indiscriminately.
+- Semantic canonicalization: form tokens are stripped and alias-resolved; duplicate
+  tokens/rules are rejected. Type whitespace is trimmed while type case is preserved.
+  The profile digest sorts normalized rules and role/type targets, so JSON array order is
+  not identity. It includes profile ID and versions.
 - The most-specific matching rule wins (`*` is a fallback, not merged with others).
   Overlapping rules at the same specificity are rejected.
 - Primary selection matches the filing form (and its declared canonical aliases)
   against observed `document_type`; it never assumes sequence 1.
-- Package requests such as `xbrl_zip` have an explicit selector kind and produce a
+- V1 role/type pairs are `primary`/`primary`, `exhibit`/exact or `EX-*` type,
+  `data_file`/exact or `EX-101.*` type or `extracted_xbrl_instance`, `graphic`/`GRAPHIC`,
+  and `package`/`xbrl_zip`. Unsupported pairs fail profile validation.
+- Package requests such as `xbrl_zip` have an explicit `type` and produce a
   `constructed_candidate` without inventing an inventory entry.
 - Filename/description fuzzy matching and arbitrary selector expressions are out of
   scope.
@@ -295,12 +302,12 @@ Rules are resolved as follows:
 Target intent and match outcomes belong in a separate plan bundle:
 
 ```text
-{artifacts_root}/document_planning/plans/{plan_id}/manifest.json
-{artifacts_root}/document_planning/plans/{plan_id}/targets.parquet
+{artifacts_root}/document_planning/plans/{plan_id}/plan.json
+{artifacts_root}/document_planning/plans/{plan_id}/targets/part-00000.parquet
 ```
 
 The manifest pins `plan_id`, exactly one source kind/ID/digest, the canonical
-profile/request digest, target-plan schema version, target-matching implementation
+profile digest, target-plan schema version, target-matching implementation
 version, and counts by outcome. Its v1 table emits one row per candidate entry; an
 unmatched request emits one row with a null `inventory_entry_id`, while an ambiguous
 request emits one row per conflicting candidate. Its fields are:
@@ -308,10 +315,10 @@ request emits one row per conflicting candidate. Its fields are:
 | Field | Arrow type | Contract |
 |---|---|---|
 | `target_id` | `string` | SHA-256 of canonical `[plan_id, accession, request_id, inventory_entry_id, status]`; status is the outcome component. |
-| `accession` | `string` | Accession requested by the cohort. |
-| `request_id` | `string` | Stable selector/rule identity from the profile. |
-| `target_role` | `string` | Intent: `primary`, `exhibit`, `data_file`, or `package`. |
-| `selector` | `string` | Requested form/type/name selector. |
+| `accession` | `string` | Accession in the selected source that matches the resolved form rule. |
+| `request_id` | `string` | Planner-derived `"{role}:{canonical_type}"` identity; not user-authored. |
+| `target_role` | `string` | Intent: `primary`, `exhibit`, `data_file`, `graphic`, or `package`. |
+| `target_type` | `string` | Canonical profile type, such as `primary`, `EX-21`, `GRAPHIC`, or `xbrl_zip`. |
 | `optional` | `bool` | Whether no match is a valid outcome. |
 | `inventory_entry_id` | `string`, nullable | Observed source row; null for constructed URL candidates or no match. |
 | `status` | `string` | Outcome status: `matched`, `not_filed`, `required_missing`, `ambiguous`, `unresolved`, or `constructed_candidate`. |
@@ -319,7 +326,7 @@ request emits one row per conflicting candidate. Its fields are:
 | `source_origin` | `string` | Provenance: `inventory_index` (default) or `catalog_direct`. |
 | `retrieval_mode` | `string` | `direct_url`, `bundle_sequence`, `constructed_package`, or `none`. |
 | `target_url` | `string`, nullable | Exact retrieval locator: observed child href for `direct_url`, advertised accession bundle URL for `bundle_sequence`, or constructed candidate URL. |
-| `sequence` | `int32`, nullable | Required for bundle extraction; never guessed. |
+| `sequence` | `int32`, nullable | Observed sequence for `bundle_sequence`; null otherwise. Never guessed. |
 | `byte_size` | `int64`, nullable | Source-observed size; unknown for constructed candidates. |
 | `availability_evidence` | `string` | `index_html`, `catalog_metadata`, `constructed`, or `none`; does not imply a payload was fetched. |
 
@@ -560,8 +567,8 @@ without importing those pipeline modules.
   filename, href, size, bundle metadata, and diagnostics. The raw page remains the
   evidence; rendering does not load active remote links.
 - **Target-plan review** compares outcome status transitions (`not_filed`, `matched`,
-  `ambiguous`, `unresolved`, `constructed_candidate`) separately from profile selector
-  edits.
+  `ambiguous`, `unresolved`, `constructed_candidate`) separately from profile role/type
+  edits. `request_id` is derived from the canonical role/type pair.
 - **Document processing review** later replays captured acquisition fixtures,
   records source and output digests, processor fingerprint and stage diagnostics,
   and compares outputs across processor versions. It runs no network requests and
@@ -578,7 +585,7 @@ Review output shapes are fixed independently of the eventual payload store:
 {artifacts_root}/document_planning/review-runs/{review_id}/
   manifest.jsonl
   target-plan-diff.json
-{artifacts_root}/document_processing/review-runs/{review_id}/
+{artifacts_root}/document_acquisition/review-runs/{review_id}/
   manifest.jsonl
   cases/{target_id}/source.inert.html
   cases/{target_id}/normalized.txt
@@ -587,13 +594,16 @@ Review output shapes are fixed independently of the eventual payload store:
 
 For non-HTML or non-text results, the corresponding preview or normalized-text
 file is absent; `processing.json` always records the route and result status.
+The processing review root will be owned by `document_acquisition.paths` when that
+package is implemented; no `document_processing` package or artifact dataset is
+introduced.
 
 Each `manifest.jsonl` row pins fixture ID, source URL/digest, accession or
 target ID, snapshot/plan ID when applicable, parser/processor fingerprint,
 result status, and digests for generated review files. Raw source bytes stay in
 the fixture DB; HTML previews render source links as inert text and do not load
-remote resources. Target-plan review differences are keyed by request/accession
-and inventory-entry identity, not by profile role alone.
+remote resources. Target-plan row diffs use the stable derived `request_id`; changing
+profile role/type yields a removal/addition rather than a paired status transition.
 
 All review outputs refuse a non-empty destination. One bad case is reported and
 does not erase successful case outputs; the command returns nonzero when any
@@ -648,7 +658,7 @@ The cumulative queryable snapshot: append-only delta and checkpoint DAG publicat
 
 **Details:** [subplan](subplans/S6_target_plans.md)
 
-Versioned JSON profiles in `policies/document_targets/` with semantic `request_id` values (explicit or canonically derived), per-token form alias resolution, and canonical digests; target plans as separate immutable bundles pinned to exactly one source artifact (inventory snapshot or catalog plan); clean separation of outcome `status` from provenance (`source_origin: "inventory_index" | "catalog_direct"`); and primary-only catalog-direct targets without synthetic inventory rows. Hybrid source precedence is deferred. The grammar, v1 target-plan schema, matching rules, and acceptance tests are in the subplan.
+Versioned JSON profiles in `policies/document_targets/` with role/type targets and planner-derived `request_id` values, per-token form alias resolution, and canonical digests; target plans as separate immutable bundles pinned to exactly one source artifact (inventory snapshot or catalog plan); clean separation of outcome `status` from provenance (`source_origin: "inventory_index" | "catalog_direct"`); and primary-only catalog-direct targets without synthetic inventory rows. Hybrid source precedence is deferred. The grammar, v1 target-plan schema, matching rules, and acceptance tests are in the subplan.
 
 ### S7 — Index and target-plan review surfaces
 
@@ -729,7 +739,7 @@ The initial operator surface is explicit-artifact oriented and small:
 | Parser review (S7b) | `inventory review-artifacts --fixture <id> --output <dir>` | Pinned raw pages → inert source preview, parser status/diagnostics, and entries when available. |
 | Compare parser runs (optional S7b) | `inventory review --base <dir> --new <dir>` | Two fixture-pinned parser runs → structured differences. |
 | Build inventory | `inventory build --catalog-plan <id> [--chunk-size <n>] [--retry-failures]` or `inventory build --fixture <id> [--chunk-size <n>]` | Cohort → anti-join current, resume identity-matched transient Parquet chunks, fetch only missing accessions, publish cumulative snapshot. |
-| Target planning | `documents plan --inventory <snapshot_id|current> --profile <path>` or `--catalog-plan <id> --profile <path>` | Explicit source → immutable target plan with pinned source provenance. One source per v1 plan. |
+| Target planning | `documents plan --inventory <snapshot_id|current> --profile-id <id>` or `--catalog-plan <id> --profile-id <id>` | Explicit source → immutable target plan with pinned source provenance. One source per v1 plan. |
 | Accession query | `inventory query --snapshot current --accession <accession>` | Filing facts, all observed child/data-file rows, and source-CIK relations; no network. |
 | Form/CIK query | `inventory query --snapshot current --form <form> [--filing-cik <cik>] [--source-cik <cik>]`, `--filing-cik <cik>`, or `--source-cik <cik>` | Matching accessions/entries from annual parts and distinct filing/source-CIK postings; no network. |
 | Vacuum | `inventory vacuum --snapshot <snapshot-id|current> --retention <policy-id>` | Compact DAG delta lineages into checkpoint nodes and prune unreachable parts; parity-gated, atomically publish `current`. |

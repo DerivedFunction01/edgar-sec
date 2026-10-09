@@ -278,42 +278,52 @@ def _resolve_snapshot_part(
 
 def base_snapshot_parts(
     paths: InventoryPaths,
+    snapshot_id: str | None = None,
+    branch_name: str = "main",
 ) -> tuple[str | None, list[tuple[Path, int, str]], str | None]:
     catalog = DAGCatalog(paths.snapshots_root)
     if not catalog.catalog_file.is_file():
         return None, [], None
-    pointer = catalog.read_pointer()
-    if not pointer:
-        return None, [], None
-    snapshot_id = pointer.get("snapshot_id")
-    if (
-        not isinstance(snapshot_id, str)
-        or not snapshot_id
-        or snapshot_id in {".", ".."}
-    ):
-        raise BaseSnapshotError("current snapshot pointer has no valid snapshot_id")
-    try:
-        paths.snapshot_root(snapshot_id)
-    except ValueError as exc:
-        raise BaseSnapshotError(
-            "current snapshot pointer has an unsafe snapshot_id"
-        ) from exc
-    manifest = catalog.get_manifest(snapshot_id)
-    if manifest is None:
-        raise BaseSnapshotError(f"base snapshot manifest missing: {snapshot_id}")
-    if manifest.snapshot_id != snapshot_id:
-        raise BaseSnapshotError("base snapshot manifest identity mismatch")
-    schema_ver = manifest.schema_versions.get("accessions") or manifest.metadata.get(
-        "schema_version"
-    )
-    if schema_ver != SNAPSHOT_RELATION_VERSION:
-        raise BaseSnapshotError("base snapshot relation schema is unsupported")
-    actual_manifest_sha = catalog.get_manifest_sha256(snapshot_id)
-    pinned_manifest_sha = pointer.get("manifest_sha256")
-    if pinned_manifest_sha is not None and actual_manifest_sha != pinned_manifest_sha:
-        raise BaseSnapshotError(
-            "base snapshot manifest digest does not match current pointer"
-        )
+    if snapshot_id is not None:
+        manifest = catalog.get_manifest(snapshot_id)
+        if manifest is None:
+            raise BaseSnapshotError(f"base snapshot manifest missing: {snapshot_id}")
+        if manifest.snapshot_id != snapshot_id:
+            raise BaseSnapshotError("base snapshot manifest identity mismatch")
+        actual_manifest_sha = catalog.get_manifest_sha256(snapshot_id) or ""
+    else:
+        pointer = catalog.read_pointer(branch_name)
+        if not pointer:
+            return None, [], None
+        snapshot_id = pointer.get("snapshot_id")
+        if (
+            not isinstance(snapshot_id, str)
+            or not snapshot_id
+            or snapshot_id in {".", ".."}
+        ):
+            raise BaseSnapshotError(
+                f"{branch_name!r} branch pointer has no valid snapshot_id"
+            )
+        try:
+            paths.snapshot_root(snapshot_id)
+        except ValueError as exc:
+            raise BaseSnapshotError(
+                f"{branch_name!r} branch pointer names an unsafe snapshot_id"
+            ) from exc
+        manifest = catalog.get_manifest(snapshot_id)
+        if manifest is None:
+            raise BaseSnapshotError(f"{branch_name!r} base snapshot manifest missing")
+        if manifest.snapshot_id != snapshot_id:
+            raise BaseSnapshotError("base snapshot manifest identity mismatch")
+        actual_manifest_sha = catalog.get_manifest_sha256(snapshot_id)
+        pinned_manifest_sha = pointer.get("manifest_sha256")
+        if (
+            pinned_manifest_sha is not None
+            and actual_manifest_sha != pinned_manifest_sha
+        ):
+            raise BaseSnapshotError(
+                f"{branch_name!r} base snapshot manifest digest does not match branch tip"
+            )
     records = manifest.relations.get("accessions")
     if records is None:
         raise BaseSnapshotError("base snapshot accession parts are missing")

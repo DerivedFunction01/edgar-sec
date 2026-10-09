@@ -1,5 +1,6 @@
 """Tests for snapshot publication locking and CAS pointer updates."""
 
+import sqlite3
 from pathlib import Path
 
 import pytest
@@ -85,7 +86,9 @@ def test_publish_node_and_stale_parent(tmp_path: Path) -> None:
 
 
 def test_publish_delta_mismatched_parent_raises(tmp_path: Path) -> None:
-    """Delta node whose manifest parents don't include expected_parent_id is rejected."""
+    """CAS validates the branch tip; lineage-parent existence is checked by the
+    DAG lineage walk, not at the publish gate.
+    """
     c0_staged = tmp_path / "stage_c0"
     c0_staged.mkdir(parents=True)
     c0_manifest = DAGNodeManifest(
@@ -100,7 +103,9 @@ def test_publish_delta_mismatched_parent_raises(tmp_path: Path) -> None:
     )
     publish_node(tmp_path, c0_manifest, c0_staged, expected_parent_id=None)
 
-    # d1 claims a different parent than the current pointer
+    # d1 lists a lineage parent that does not exist in this catalog. The CAS
+    # check still passes (tip == "c0") and the node is recorded; traversal of
+    # this node later surfaces the broken lineage.
     d1_staged = tmp_path / "stage_d1"
     d1_staged.mkdir(parents=True)
     d1_manifest = DAGNodeManifest(
@@ -114,8 +119,17 @@ def test_publish_delta_mismatched_parent_raises(tmp_path: Path) -> None:
         logical_fingerprint="fp1",
     )
 
-    with pytest.raises(ValueError, match="not among manifest parents"):
-        publish_node(tmp_path, d1_manifest, d1_staged, expected_parent_id="c0")
+    from edgar_sec.infra.storage.dag.traversal import (
+        BrokenLineageError,
+        walk_lineage,
+    )
+
+    publish_node(tmp_path, d1_manifest, d1_staged, expected_parent_id="c0")
+    assert read_pointer(tmp_path)["snapshot_id"] == "d1"
+    with pytest.raises(
+        BrokenLineageError, match="parent manifest missing for wrong_parent"
+    ):
+        walk_lineage(tmp_path, "d1")
 
 
 def test_branch_management(tmp_path: Path) -> None:

@@ -181,18 +181,22 @@ manifest must preserve the same selected-file contract for a later remote backen
 
 ## 5. Cross-Plan Accession Anti-Join
 
-Every inventory build uses the current cumulative snapshot as its base:
+Every inventory build uses the selected branch's tip as its base by default
+(the branch resolved via `--branch`, default `main`); a historical base requires a
+branch created at that tip first via `inventory dag branch`:
 
 1. Validate the catalog plan and aggregate its rows by accession. Validate
    consistent form/filing/report dates; sort and deduplicate source CIKs.
-2. Read `current/pointer.json` and the accession lookup. Anti-join candidates by
-   **accession only**, not by `(source_cik, accession)`, locator, or plan ID.
+2. Resolve the branch pointer (default `main`) and the accession lookup. Anti-join
+    candidates by **accession only**, not by `(source_cik, accession)`, locator, or plan
+    ID.
 3. For an accession already indexed, compare filing metadata, append any
    previously unseen `(accession, source_cik)` relationships, and reuse its
    index page/entries without HTTP.
-4. Fetch and parse only accessions absent from the current snapshot. Publish the
-   new accession rows, entries, source relationships, and lookup deltas as one
-   immutable child snapshot; write `current` last.
+4. Fetch and parse only accessions absent from the selected branch's tip. Publish the
+    new accession rows, entries, source relationships, and lookup deltas as one
+    immutable child snapshot under a CAS lock on the selected branch; the pointer moves
+    last.
 
 This is the critical case where one physical accession appears in plans for
 different source-CIK contexts. The first plan fetches its `-index.html`
@@ -218,47 +222,44 @@ S5 reads these checkpoints into separate publication staging and never treats th
 snapshot parts. See the [S4 worker contract](subplans/S4_broker_worker.md).
 
 Snapshot updates are serialized per inventory root. Readers remain lock-free
-against immutable snapshots. A writer whose expected parent no longer matches
-`current` refuses before pointer publication; retry re-anti-joins against the
-new parent and reuses cached/captured pages. An explicit page refresh is separate
+against immutable snapshots. A writer whose expected parent no longer matches the
+selected branch's tip refuses before pointer publication; retry re-anti-joins against
+the new parent and reuses cached/captured pages. An explicit page refresh is separate
 from a source-CIK addition and creates a new page observation only when its digest
 changes.
 
 ## 6. Query API and Planning Handoff
 
-The inventory query API is a pure snapshot reader:
+The implemented reader is a pure snapshot reader with named-snapshot pinning:
 
 ```text
-get_accession(snapshot_id, accession)
-query_filings(snapshot_id, filing_form?, filing_date_range?, report_date_range?, filing_cik?, source_cik?)
-query_entries(snapshot_id, accession?, filing_form?, document_type?, table_kind?)
+get_active_accession(..., snapshot_id=None)
+get_active_entries(..., snapshot_id=None)
+get_accessions_by_cik(..., snapshot_id=None)
+get_accessions_by_source_cik(..., snapshot_id=None)
+query_accessions(..., snapshot_id=None)
+get_accession_bundle(..., snapshot_id=None)
 ```
 
-`get_accession` returns the accession facts, including `filing_cik`, all observed
-child/data-file rows, and source-CIK associations. `query_filings(form=...)` enumerates
-matching accessions from the annual partitions, then streams their inventory rows.
-`query_entries`
-supports accession and child `document_type` predicates. None of these readers
-has a broker or fetcher dependency. An inventory-backed target planner consumes
-these iterators, then writes its separate target-plan artifact; catalog-direct
-planning is a separate S6 source adapter.
+Each function accepts a pinned snapshot ID or resolves the active branch when the ID is
+omitted. The point/lookups return a record or materialized list; the API does not expose
+a bounded iterator. None of these readers has a broker or fetcher dependency. S6 cannot
+import this sibling-pipeline reader under the layer contract and needs bounded source
+scans, so its inventory adapter streams through lower-layer DAG APIs using the S5 schema
+contract. It writes a separate target-plan artifact; catalog-direct planning is a
+separate S6 source adapter.
 
-In v1, `query_entries` requires an accession or filing-form predicate;
-`document_type` and `table_kind` refine that bounded result. A global
-document-type-only query is rejected until it has a dedicated type lookup rather
-than silently scanning every filing-form partition. `query_filings` likewise
-requires a filing form, filing CIK, source CIK, or bounded date range; an accidental
-unfiltered inventory scan is not a lookup operation.
+The S6 adapter resolves the selected branch's tip once before scanning and never
+re-reads a moving pointer between batches. It streams the source accessions and applies
+profile form rules using S5 Parquet range metadata; it does not add a separate
+CIK/cohort filter in v1. A full inventory scan is explicit S6 planning work, not an
+accidental query default.
 
-For combined form/CIK filters, the query planner intersects annual form row groups
-with the selected filing-CIK and/or source-CIK postings, then resolves matching
-entries via the accession seek index. It must not scan all accessions and then
-apply a CIK filter as a post-read predicate.
-
-CLI query shapes are:
+CLI query shapes target the active branch (`current`) or a named snapshot/branch:
 
 ```text
 inventory query --snapshot current --accession <accession>
+inventory query --snapshot <branch> --accession <accession>
 inventory query --snapshot current --form <filing-form> [--filing-cik <cik>] [--source-cik <cik>]
 inventory query --snapshot current --filing-cik <cik>
 inventory query --snapshot current --source-cik <cik>

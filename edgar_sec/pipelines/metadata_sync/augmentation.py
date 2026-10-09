@@ -13,6 +13,7 @@ from typing import Any
 
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from edgar_sec.foundation.hashing import sha256_text
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import (
     connect,
     copy_query_to_parquet,
@@ -295,6 +296,8 @@ def augment(
     progress: Callable[[dict[str, Any]], None] | None = None,
     input_name: str = "",
     input_fingerprint: str = "",
+    branch_name: str = "main",
+    expected_branch_tip: str | None = None,
 ) -> AugmentResult:
     """Augment a published snapshot with any newly requested CIKs.
     The base is carried forward and never refetched; its rows keep their original
@@ -326,6 +329,11 @@ def augment(
             requested_cik_count=check.requested_count,
             already_present_count=check.already_present_count,
         )
+
+    catalog = DAGCatalog(metadata_paths.snapshots_root)
+    if expected_branch_tip is None:
+        current = catalog.read_pointer(branch_name)
+        expected_branch_tip = str(current["snapshot_id"]) if current else None
 
     plan = derive_delta_plan(
         requested,
@@ -425,7 +433,12 @@ def augment(
 
     publish_cik_index(report, metadata_paths, merged)
     report.merged_at = utc_now_iso()
-    publish_snapshot(report, metadata_paths)
+    publish_snapshot(
+        report,
+        metadata_paths,
+        branch_name=branch_name,
+        expected_branch_tip=expected_branch_tip,
+    )
     emit({"type": "readback_done", "rows": row_count})
 
     return AugmentResult(

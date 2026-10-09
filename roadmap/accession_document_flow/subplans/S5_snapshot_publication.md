@@ -8,10 +8,9 @@
 - Status: production build flow (`build_inventory`), streamed pre-fetch projection and
   work-order generation, S4 execution, validated-attempt merge, snapshot validation,
   serialized installation, stale-parent refusal, pointer-last publication, and reader/
-  query commands are implemented. Entry supersession uses DAG `scoped_mask` through
-  `INVENTORY_ENTRIES_SPEC`, but the planned explicit prior-entry-ID mapping is not
-  persisted. Offline test coverage exists; historical parser acceptance and live
-  operational rollout remain gated by S0.
+  query commands are implemented. Entry supersession uses accession-scoped DAG masks;
+  no prior-entry-ID map is part of the v1 contract. Offline test coverage exists;
+  historical parser acceptance and live operational rollout remain gated by S0.
 - Depends for operational publication on: S1 cohort contract, S3 parser body, and S4
   integrated broker+worker. S2 remains research/replay input, not a production writer.
 - Non-blocking: S6 target planning and S9–S10 acquisition/processing (read-only
@@ -27,7 +26,29 @@ enters the snapshot.
 
 ## Contract
 
-`build_inventory(catalog_plan_id, base_snapshot=None, explicit_refresh=False, chunk_size=None, retry_failures=False) -> SnapshotPublication`
+The current Python callable is:
+
+```python
+build_inventory(
+    catalog_plan_id: str,
+    *,
+    base_snapshot_id: str | None = None,
+    explicit_refresh: bool = False,
+    chunk_size: int | None = None,
+    retry_failures: bool = False,
+    http_client: Any | None = None,
+    profile: RuntimeResourceProfile | None = None,
+    artifacts_root: Path | str | None = None,
+    workers: int | None = None,
+) -> SnapshotPublication
+```
+
+`base_snapshot_id` pins the delta's lineage base and the S5/S4 run identity; the
+projection resolves the default from the selected branch (default `main`), and an
+explicit base must match that branch's tip. A historical base therefore requires a
+branch created at that tip first; publishing to `main` cannot silently rewind or fork
+it. The `--expected-branch-tip` option pins the branch pointer expected at commit; a
+concurrent move refuses publication and leaves `current` unchanged.
 
 The build consumes S4's validated transient Parquet chunk references. S4 owns only its
 identity-bound worker checkpoints; S5 reads them in bounded batches into separate
@@ -49,7 +70,9 @@ referenced by the run manifest, not by the published snapshot.
 - `catalog_plan_id`: a discovered published catalog-plan ID whose manifest and declared
   parts validate and whose observations project to a consistent accession relation;
   callers do not provide arbitrary plan paths.
-- `base_snapshot`: the current snapshot to anti-join against; `None` for the base run.
+- Effective base: the delta's lineage base is the selected branch's tip by default
+  (`main`); `--base-snapshot-id` pins a historical base only on a branch explicitly
+  created at that tip, and `--expected-branch-tip` pins the pointer expected at commit.
 - `explicit_refresh`: force re-read of all cohort index pages.
 
 Returns one of: `published(snapshot)`, `no_op(parent_snapshot)`, or `failed(reason)`.
@@ -137,14 +160,25 @@ All published and transient path construction is owned by
 - The S0 SEC-page audit still gates final historical parser acceptance and any claim of
   historical/live source coverage. It does not block the implemented offline
   plan-to-snapshot build path.
-- Refresh publication masks parent entries for a changed accession from active queries
-  and preserves the parent snapshot, but does not persist the explicit prior-entry-ID
-  supersession mapping required by the contract below. Current reader tests establish
-  active-query behavior only. Decide whether that mapping is required; if retained,
-  implement a bounded persisted representation and test its lineage behavior.
 - The reader resolves a branch/current tip by default and accepts an immutable
   `snapshot_id` pin for downstream planning; a pinned ID that is absent from the
   catalog fails the lineage walk rather than silently falling back to the pointer.
+- Published accession facts come only from recognized `parsed` or `parsed_empty`
+  outcomes. A pinned S5 `accessions` row therefore establishes that an empty entry set
+  is a valid observed absence, not a failed/unrecognized page.
+- S6 still needs a bounded inventory source adapter. The reader's public query functions
+  return point results or materialized lists, and pipeline boundaries prohibit S6 from
+  importing `snapshot.reader`. Before S6 starts, move the canonical relation schemas and
+  `RelationSpec` declarations from `snapshot/schema.py` and `snapshot/specs.py` to the
+  pipeline-level `edgar_sec.pipelines.document_inventory.schemas` owner. Update S5
+  callers to import that owner directly, with mirrored tests and the package README;
+  do not leave forwarding modules. S6 can then compile bounded lower-layer DAG reads
+  without copying S5 schemas or importing a sibling implementation module.
+- Branch targeting is implemented: `--base-snapshot-id` pins the lineage base and
+  `--expected-branch-tip` pins the branch pointer expected at commit; a stale tip
+  refuses publication without moving the pointer. `inventory build --base-snapshot`
+  has been renamed to `--base-snapshot-id` to reflect that the override is now
+  enforced rather than ignored.
 
 ## Acceptance evidence and next step
 
@@ -159,12 +193,11 @@ All published and transient path construction is owned by
   supersession, and publication locking; `test_reader.py` covers active queries,
   scoped-mask supersession, and pinned named-snapshot reads.
 - The inventory CLI/operator routes build and query operations through the production
-  builder/reader. These offline cases do not establish live SEC behavior or S0 historical
-  parser coverage.
+  builder/reader. The stage-specific run lifecycle is a separate follow-up; these offline
+  cases do not establish live SEC behavior or S0 historical parser coverage.
 - No plan-projection, S4 integration, active-query, or pointer-last publisher wiring
-  task remains outstanding in this subplan. Next: resolve the explicit
-  supersession-map contract and implement/test it if retained, then complete
-  S0's authorized source audit.
+  task remains outstanding. Next: move the relation schema contract to the permitted
+  `schemas.py` owner for S6, then complete S0's authorized source audit.
 
 ## Physical layout: dense annual partitions
 
@@ -195,11 +228,11 @@ explosion while providing backend-neutral query selection:
    the parent snapshot. The new `manifest.json` references unchanged part paths and
    digests; physical Parquet files are written only for affected filing years.
 2. **Page Supersession & Tombstones**: When an explicit refresh yields a changed page
-   digest for an accession, the new snapshot's delta marks the accession's prior
-   entries as superseded. Older snapshots retain the previous observation intact,
-   while queries against the new snapshot see only the active superseded entries.
-   Accession-keyed append-only rows alone are insufficient without this active
-   manifest mapping.
+   digest for an accession, the new snapshot records an accession-scoped `scoped_mask`
+   for the entries relation. Queries through that tip hide the parent's entries for
+   that accession; the old immutable tip continues to expose its original entries.
+   This mask is the v1 tombstone contract; no separate prior-entry-ID mapping is
+   required.
 
 ## Fetch and publish policy
 
