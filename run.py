@@ -19,34 +19,35 @@ class LauncherEntry:
 
 ENTRIES: tuple[LauncherEntry, ...] = (
     LauncherEntry(
-        id="metadata",
-        label="Metadata Sync (Phase 01)",
-        description="SEC submissions metadata extraction and partition sync",
-        module="edgar_sec.pipelines.metadata_sync.operator",
-    ),
-    LauncherEntry(
         id="cohort",
-        label="Cohort Management (Phase 0)",
+        label="Cohort Management",
         description="Manage, import, query, and combine registrant cohorts",
         module="edgar_sec.pipelines.cohort.cli",
     ),
     LauncherEntry(
+        id="metadata",
+        label="Metadata Sync",
+        description="SEC submissions metadata extraction and partition sync",
+        module="edgar_sec.pipelines.metadata_sync.operator",
+    ),
+  
+    LauncherEntry(
         id="filing-catalog",
-        label="Filing Catalog (Phase 02)",
+        label="Filing Catalog",
         description="Offline DuckDB catalog materialization and target planning",
         module="edgar_sec.pipelines.filing_catalog.operator",
-    ),
-    LauncherEntry(
-        id="documents",
-        label="Document Storage (Phase 2.5)",
-        description="Document acquisition, normalization, snapshots, and review",
-        module="edgar_sec.pipelines.document_storage.cli",
     ),
     LauncherEntry(
         id="inventory",
         label="Document Inventory",
         description="Discover fixtures and review SEC index pages",
         module="edgar_sec.pipelines.document_inventory.operator",
+    ),
+    LauncherEntry(
+        id="documents",
+        label="Document Storage",
+        description="Document acquisition, normalization, snapshots, and review (removed soon)",
+        module="edgar_sec.pipelines.document_storage.cli",
     ),
     LauncherEntry(
         id="viewer",
