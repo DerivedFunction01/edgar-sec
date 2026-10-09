@@ -43,6 +43,7 @@ __all__ = [
     "NEW_ACCESSIONS_FILE",
     "KNOWN_ACCESSIONS_FILE",
     "CANDIDATE_ENTRIES_FILE",
+    "CANCELLED_FILE",
     "CATALOG_SNAPSHOT_MANIFEST_NAME",
     "FilingCatalogPaths",
     "PLAN_TARGETS_DIR_NAME",
@@ -73,6 +74,7 @@ MANIFEST_FILE_NAME = "manifest.json"
 #: Files at the run root.
 RUN_MANIFEST_FILE = "run_manifest.json"
 LOCK_FILE = "run.lock"
+CANCELLED_FILE = "cancelled.json"
 
 #: Pointer naming the current committed attempt for a chunk.
 POINTER_FILE = "current.json"
@@ -202,6 +204,10 @@ class InventoryPaths:
     def runtime_root(self) -> Path:
         return foundation_paths.runtime_root(self.artifacts_root)
 
+    @property
+    def transient_root(self) -> Path:
+        return self.artifacts_root / foundation_paths.TRANSIENT_DIR / DATASET
+
     def broker_socket_path(self, socket_id: str) -> Path:
         return self.runtime_root / f"{_validate_id(socket_id, 'socket_id')}.sock"
 
@@ -234,6 +240,9 @@ class InventoryRunPaths:
 
     def lock_path(self) -> Path:
         return self.run_root / LOCK_FILE
+
+    def cancelled_path(self) -> Path:
+        return self.run_root / CANCELLED_FILE
 
     def publication_dir(self) -> Path:
         """S5-owned staging directory inside this run."""

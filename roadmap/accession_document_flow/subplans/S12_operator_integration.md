@@ -3,15 +3,15 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S12**.
-- Status: integrated CLI and vertical verification remain design-only; existing
-  inventory and catalog commands are separate partial foundations.
+- Status: inventory's split lifecycle CLI/operator is implemented; the cross-stage
+  vertical verification gate remains design-only.
 - Depends on: S1–S11 public contracts, including S9a–S9d.
 - Non-blocking: the integrated cross-stage operator and `document_storage`
   decommissioning. Stage-owned S6 CLI/operator work belongs to S6.
 
 ## Current tracked-code audit (2026-10-09)
 
-- **Status: inventory CLI foundations exist; the S12 command surface and offline vertical gate are not implemented.** Inventory build/query/review commands are tracked, and filing-catalog planning is a separate CLI; there is no integrated `documents plan` command or fixture-driven plan-to-acquisition-to-processing-to-vacuum-to-review run matching this contract.
+- **Status: inventory lifecycle commands exist; the S12 cross-stage surface and offline vertical gate are not implemented.** Inventory project/run/status/publish/query/review commands are tracked, and filing-catalog planning is a separate CLI; there is no integrated `documents plan` command or fixture-driven plan-to-acquisition-to-processing-to-vacuum-to-review run matching this contract.
 - **Evidence:** [`document_inventory/cli.py`](../../../edgar_sec/edgar_sec/pipelines/document_inventory/cli.py) registers inventory commands and review/DAG/distribution subcommands. Mirrored inventory and catalog tests cover those owners, while `document_storage` retains a separate legacy CLI and tests.
 - **Next step:** defer the vertical integration test until S6, S9, and S10 replacement APIs are implemented; then wire explicit artifact IDs and add the zero-network, no-payload-write end-to-end fixture gate before any legacy decommissioning.
 
@@ -35,8 +35,11 @@ inventory vacuum --snapshot <snapshot-id|current> --retention <policy-id>
 documents plan --inventory <snapshot-id|current> --profile-id <id>
 documents plan --catalog-plan <plan-id> --profile-id <id>
 
-inventory fill --catalog-plan <plan-id> --fixture <fixture-id>
-inventory build --fixture <fixture-id>
+inventory fixture fill --catalog-plan <plan-id> --fixture <fixture-id>
+inventory project --catalog-plan <plan-id>
+inventory run --run-id <run-id>
+inventory status [--run-id <run-id>]
+inventory publish --run-id <run-id>
 inventory review-artifacts --fixture <fixture-id> --output <dir>
 inventory review --base <dir> --new <dir>
 inventory inspect --snapshot <id|current> [--accession <accession>]

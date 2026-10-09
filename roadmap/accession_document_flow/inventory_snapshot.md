@@ -181,9 +181,10 @@ manifest must preserve the same selected-file contract for a later remote backen
 
 ## 5. Cross-Plan Accession Anti-Join
 
-Every inventory build uses the selected branch's tip as its base by default
-(the branch resolved via `--branch`, default `main`); a historical base requires a
-branch created at that tip first via `inventory dag branch`:
+Every inventory project pins the selected branch's tip as its base by default
+(`--branch`, default `main`). An explicit base must equal that branch's tip at
+projection time. Publish selects the target branch and refuses unless its current
+tip still equals the run's pinned base:
 
 1. Validate the catalog plan and aggregate its rows by accession. Validate
    consistent form/filing/report dates; sort and deduplicate source CIKs.
@@ -193,10 +194,9 @@ branch created at that tip first via `inventory dag branch`:
 3. For an accession already indexed, compare filing metadata, append any
    previously unseen `(accession, source_cik)` relationships, and reuse its
    index page/entries without HTTP.
-4. Fetch and parse only accessions absent from the selected branch's tip. Publish the
-    new accession rows, entries, source relationships, and lookup deltas as one
-    immutable child snapshot under a CAS lock on the selected branch; the pointer moves
-    last.
+4. `inventory run` fetches and parses only accessions absent from the pinned base.
+   `inventory publish` publishes validated work as one immutable child snapshot under
+   a CAS lock on the selected branch; the pointer moves last.
 
 This is the critical case where one physical accession appears in plans for
 different source-CIK contexts. The first plan fetches its `-index.html`
@@ -267,7 +267,8 @@ inventory query --snapshot current --accession <accession> --document-type <type
 ```
 
 An accession absent from the selected snapshot is reported as not indexed. Only
-`inventory build --catalog-plan ...` discovers/fetches missing index pages.
+`inventory run --run-id ...` fetches missing index pages; `inventory project`,
+`inventory status`, and `inventory publish` perform no network work.
 
 `filing_cik` and `source_cik` are separate query predicates: the former is the CIK
 encoded in the accession and the latter records catalog/cohort provenance. Both may
@@ -276,8 +277,8 @@ must satisfy their intersection.
 
 ## 7. Vacuum and Snapshot Lifecycle
 
-The first build publishes a complete base snapshot and `current` pointer. Every
-later build publishes an immutable delta snapshot over that base; readers resolve
+The first publication installs a complete base snapshot and branch pointer. Every
+later project/run/publish cycle publishes an immutable delta snapshot over that base; readers resolve
 the manifest's parent/part references. `vacuum` is a metadata-only compaction:
 
 - Merge accession, entry, and source-CIK deltas; enforce unique accession and

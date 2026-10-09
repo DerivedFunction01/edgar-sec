@@ -4,12 +4,16 @@ from argparse import Namespace
 from pathlib import Path
 
 import edgar_sec.pipelines.document_inventory.operator as operator
+from edgar_sec.pipelines.document_inventory.run_state import InventoryRunStatus
 
 
 def test_menu_exposes_operations() -> None:
     actions = operator.build_operator_menu()
     labels = {action.key: action.label for action in actions}
     assert "1" in labels and "query" in labels["1"].lower()
+    assert "2" in labels and "project" in labels["2"].lower()
+    assert "3" in labels and "status" in labels["3"].lower()
+    assert "4" in labels and "run" in labels["4"].lower()
     assert "d" in labels and "distribution" in labels["d"].lower()
     assert "p" in labels and "dag" in labels["p"].lower()
     assert "f" in labels and "review" in labels["f"].lower()
@@ -72,13 +76,8 @@ def test_operator_dispatches_cli_arguments(monkeypatch) -> None:
     assert cli_main is operator.cli_main
 
 
-def test_action_build_uses_paginated_choice(monkeypatch, tmp_path: Path) -> None:
-    built: list[str] = []
-
-    class DummyPub:
-        was_published = True
-        snapshot = type("Snap", (), {"snapshot_id": "snap-xyz"})()
-
+def test_action_project_uses_paginated_choice(monkeypatch, tmp_path: Path) -> None:
+    calls: list[list[str]] = []
     monkeypatch.setattr(
         operator,
         "discover_plans",
@@ -86,10 +85,143 @@ def test_action_build_uses_paginated_choice(monkeypatch, tmp_path: Path) -> None
             {"plan_id": "p-1", "catalog_id": "c-1", "scope": "deterministic"}
         ],
     )
-    monkeypatch.setattr("builtins.input", lambda _: "")
+    monkeypatch.setattr(operator, "_root", lambda: str(tmp_path))
     monkeypatch.setattr(
-        "edgar_sec.pipelines.document_inventory.snapshot.builder.build_inventory",
-        lambda pid, artifacts_root: built.append(pid) or DummyPub(),
+        operator, "prompt_paginated_choice", lambda *args, **kwargs: args[0][0]
     )
-    operator._action_build()
-    assert built == ["p-1"]
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "main")
+    monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
+    operator._action_project()
+    assert calls == [
+        [
+            "project",
+            "--catalog-plan",
+            "p-1",
+            "--branch",
+            "main",
+            "--artifacts",
+            str(tmp_path),
+        ]
+    ]
+
+
+def test_interactive_run_requires_default_no_consent(
+    monkeypatch, tmp_path: Path
+) -> None:
+    status = InventoryRunStatus(
+        run_id="run-1",
+        state="projected",
+        valid=True,
+        error=None,
+        catalog_plan_id="plan-1",
+        base_snapshot_id=None,
+        work_order_rows=4,
+        expected_chunks=2,
+        committed_chunks=0,
+        outstanding_chunks=2,
+        pending_accessions=4,
+        invalid_chunks=0,
+        retryable_failures=0,
+        refused_outcomes=0,
+        locked=False,
+        lock_metadata=None,
+        published_snapshot_id=None,
+    )
+    calls = []
+    monkeypatch.setattr(operator, "_root", lambda: str(tmp_path))
+    monkeypatch.setattr(operator, "discover_run_statuses", lambda _root: (status,))
+    monkeypatch.setattr(
+        operator, "prompt_paginated_choice", lambda items, **_kwargs: items[0]
+    )
+    prompts = []
+    monkeypatch.setattr(
+        operator,
+        "prompt_text",
+        lambda label, default="": prompts.append((label, default)) or default,
+    )
+    monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
+
+    operator._action_run()
+
+    assert calls == []
+    assert prompts == [("Start network execution? (yes/no)", "no")]
+
+
+def test_interactive_run_dispatches_after_consent(monkeypatch, tmp_path: Path) -> None:
+    status = InventoryRunStatus(
+        run_id="run-2",
+        state="projected",
+        valid=True,
+        error=None,
+        catalog_plan_id="plan-2",
+        base_snapshot_id=None,
+        work_order_rows=2,
+        expected_chunks=1,
+        committed_chunks=0,
+        outstanding_chunks=1,
+        pending_accessions=2,
+        invalid_chunks=0,
+        retryable_failures=0,
+        refused_outcomes=0,
+        locked=False,
+        lock_metadata=None,
+        published_snapshot_id=None,
+    )
+    calls = []
+    monkeypatch.setattr(operator, "_root", lambda: str(tmp_path))
+    monkeypatch.setattr(operator, "discover_run_statuses", lambda _root: (status,))
+    monkeypatch.setattr(
+        operator, "prompt_paginated_choice", lambda items, **_kwargs: items[0]
+    )
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "yes")
+    monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
+
+    operator._action_run()
+
+    assert calls == [["run", "--run-id", "run-2", "--artifacts", str(tmp_path)]]
+
+
+def test_dag_publish_selects_existing_run_without_run_action(
+    monkeypatch, tmp_path: Path
+):
+    status = InventoryRunStatus(
+        run_id="run-ready",
+        state="ready",
+        valid=True,
+        error=None,
+        catalog_plan_id="plan-ready",
+        base_snapshot_id="snapshot-base",
+        work_order_rows=1,
+        expected_chunks=1,
+        committed_chunks=1,
+        outstanding_chunks=0,
+        pending_accessions=0,
+        invalid_chunks=0,
+        retryable_failures=0,
+        refused_outcomes=0,
+        locked=False,
+        lock_metadata=None,
+        published_snapshot_id=None,
+    )
+    calls = []
+    monkeypatch.setattr(operator, "_root", lambda: str(tmp_path))
+    monkeypatch.setattr(operator, "discover_run_statuses", lambda _root: (status,))
+    monkeypatch.setattr(
+        operator, "prompt_paginated_choice", lambda items, **_kwargs: items[0]
+    )
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "feature")
+    monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
+
+    operator._action_publish_existing()
+
+    assert calls == [
+        [
+            "publish",
+            "--run-id",
+            "run-ready",
+            "--branch",
+            "feature",
+            "--artifacts",
+            str(tmp_path),
+        ]
+    ]

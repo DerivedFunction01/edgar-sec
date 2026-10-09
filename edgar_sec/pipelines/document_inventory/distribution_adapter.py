@@ -22,7 +22,6 @@ from edgar_sec.pipelines.document_inventory.checkpoint import (
 )
 from edgar_sec.pipelines.document_inventory.coordinator import (
     _cooperative_stop,
-    _manifest_kwargs,
     _run_pending,
 )
 from edgar_sec.pipelines.document_inventory.paths import (
@@ -35,11 +34,6 @@ from edgar_sec.pipelines.document_inventory.run_manifest import (
     InventoryRunManifest,
     iter_work_order_chunks,
     read_run_manifest,
-    write_run_manifest,
-)
-from edgar_sec.pipelines.document_inventory.snapshot.builder import (
-    _effective_chunk_size,
-    _run_identity,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.projection import (
     project_catalog_plan,
@@ -66,24 +60,16 @@ class InventoryDistributionAdapter:
                 return manifest, existing_paths
 
         resources = derive_resources()
-        chunk_size = _effective_chunk_size(None)
         projection = project_catalog_plan(
             plan_id,
             artifacts_root=root,
             profile=resources,
-            chunk_size=chunk_size,
         )
         run_paths = inventory_run_paths(root, projection.run_id)
         existing = read_run_manifest(run_paths)
-        if existing is not None:
-            return existing, run_paths
-        identity = _run_identity(projection, chunk_size)
-        manifest = write_run_manifest(
-            run_paths,
-            work_order_path=projection.paths.work_order_path(),
-            **_manifest_kwargs(identity),
-        )
-        return manifest, run_paths
+        if existing is None:
+            raise ValueError(f"projected run manifest is missing: {projection.run_id}")
+        return existing, run_paths
 
     def get_chunk_count(
         self, plan: tuple[InventoryRunManifest, InventoryRunPaths]

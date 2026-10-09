@@ -17,6 +17,7 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 | `snapshot/` | Snapshot schemas, streamed catalog-plan projection, bounded DuckDB anti-join, and publication primitives; see its [package contract](snapshot/README.md). |
 | `paths.py` | Inventory-specific artifact, runtime, and transient paths; binds index fixtures to the shared foundation resolver. |
 | `run_manifest.py` | Path-backed work-order identity and chunk manifest validation. |
+| `run_state.py` | Read-only projection validation, run discovery, and persisted execution status. |
 | `checkpoint.py` | Transient outcome/entry schemas, attempt commit markers, and resume validation. |
 | `progress.py` | Per-accession DuckDB transactions and resumable chunk progress. |
 | `run_lock.py` | Exclusive run ownership and explicit stale-lock recovery. |
@@ -26,7 +27,7 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 | `distribution_adapter.py` | Adapts document inventory to the generic Layer 2 distribution engine. |
 | `review_adapter.py` | Adapts document inventory to the generic Layer 2 review/fixture harness. |
 | `cli.py` | Command dispatch, argument parsing, and subparser definitions. |
-| [commands/](commands/README.md) | Subcommand implementations using component terminal renderer. |
+| [commands/](commands/README.md) | Project, run, status, publish, query, fixture, and review commands. |
 | `operator.py` | Discovery-driven interactive operations. |
 | `run.py` (repository root) | Dispatches the inventory entry to its operator. |
 
@@ -44,13 +45,28 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 - Snapshot candidate staging writes outcomes, entries, and source-CIK edges incrementally. The anti-join runs in resource-configured DuckDB and emits Parquet relations without collecting full accession keys in Python.
 - The S5 projection validates a published catalog plan, writes normalized cohort relations, and pins a sorted pre-fetch work order before any SEC request.
 - Durable publication pins the branch tip. `base_snapshot_id` selects the delta's lineage base and the S5/S4 identity; when omitted, the tip of the selected branch (default `main`) is used. An explicit base must match the branch tip, so historical bases require a branch created at that tip. `--expected-branch-tip` pins the branch pointer expected at commit; a concurrent move refuses publication without moving the pointer, and a retry re-anti-joins against the new parent.
+- Persisted Run cancellation is recorded before the command returns; incomplete chunks,
+  retryable outcomes, parser refusals, and cancellation block independent publication.
 
 ## Command surface
 
+The approved lifecycle commands are `inventory project`, `inventory run`,
+`inventory status`, and `inventory publish`. Project pins the selected branch tip
+as the run base; Run performs SEC requests; Status is read-only; Publish makes no
+network requests and refuses unless the selected branch still points at the run's
+pinned base. Direct CLI Run is explicit network intent; the interactive Run action
+requires default-no confirmation. The Snapshot DAG Publish action selects and
+publishes an existing run.
+
 ```text
-python run.py inventory build --catalog-plan PLAN
+python run.py inventory project --catalog-plan PLAN
                     [--base-snapshot-id ID] [--branch <name>]
-                    [--expected-branch-tip ID] [--explicit-refresh]
+                    [--chunk-size N] [--explicit-refresh]
+python run.py inventory run --run-id ID [--workers N] [--retry-failures]
+                    [--confirm-stale-lock]
+python run.py inventory status [--run-id ID] [--json]
+python run.py inventory publish --run-id ID [--branch <name>]
+                    [--expected-branch-tip ID]
 python run.py inventory query [--accession ACC] [--form FORM] [--filing-cik CIK] [--source-cik CIK]
 python run.py inventory fixture create --fixture ID --catalog-plan PLAN [--limit N]
 python run.py inventory fixture fill --fixture ID --catalog-plan PLAN [--limit N]
@@ -62,9 +78,14 @@ python run.py inventory distrib worker --bundle DIR
 python run.py inventory distrib import --bundle DIR
 ```
 
-Commands accept `--artifacts` and `--json`; capture also accepts `--limit`, and review
+Project reports accession and work-order counts and its configured chunk size. Status
+reports pending accessions and chunks, committed chunks, retryable/refused outcomes,
+and lock owner metadata; it does not repair partial runs. Commands accept `--artifacts`
+and `--json`; capture also accepts `--limit`, and review
 accepts `--workers`, `--limit`, and repeatable `--accession`. Running `python run.py
-inventory` opens the discovery-driven operator menu.
+inventory` opens the discovery-driven operator menu. Its approved root actions preserve
+`1` Query, `d` Distribution, `p` Snapshot DAG, `f` Fixtures/review, and `0` Exit, and
+add `2` Project, `3` Status, and `4` Run.
 
 ## Mirrored tests
 

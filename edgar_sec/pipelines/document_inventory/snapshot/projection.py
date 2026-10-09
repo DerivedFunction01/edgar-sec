@@ -359,6 +359,7 @@ def project_catalog_plan(
     snapshot_id, base_parts, base_manifest_sha = base_snapshot_parts(
         base_paths, snapshot_id=base_snapshot_id, branch_name=branch_name
     )
+    pinned_base_snapshot_id = snapshot_id
     source_id = f"plan:{catalog_plan_id}"
 
     staging_parent = base_paths.projection_staging_root
@@ -635,9 +636,9 @@ def project_catalog_plan(
             or any(file_sha256(path) != digest for _form, path, _count, digest in parts)
             or any(file_sha256(path) != digest for path, _count, digest in base_parts)
             or (
-                base_snapshot_id is not None
+                pinned_base_snapshot_id is not None
                 and DAGCatalog(base_paths.snapshots_root).get_manifest_sha256(
-                    base_snapshot_id
+                    pinned_base_snapshot_id
                 )
                 != base_manifest_sha
             )
@@ -650,7 +651,7 @@ def project_catalog_plan(
         run_id = _intent_id(
             catalog_id=str(plan["catalog_id"]),
             catalog_plan_id=catalog_plan_id,
-            base_snapshot_id=base_snapshot_id,
+            base_snapshot_id=pinned_base_snapshot_id,
             base_manifest_sha256=base_manifest_sha,
             cohort_fingerprint=cohort_fingerprint,
             chunk_size=effective_chunk_size,
@@ -675,7 +676,7 @@ def project_catalog_plan(
             "plan_sha256": plan_file_sha,
             "locator_groups_sha256": locator_file_sha,
             "target_parts": input_parts,
-            "base_snapshot_id": base_snapshot_id,
+            "base_snapshot_id": pinned_base_snapshot_id,
             "base_manifest_sha256": base_manifest_sha,
             "base_accession_parts": [
                 {
@@ -729,7 +730,7 @@ def project_catalog_plan(
                 run_paths,
                 projection_manifest,
                 plan_id=catalog_plan_id,
-                base_snapshot_id=base_snapshot_id,
+                base_snapshot_id=pinned_base_snapshot_id,
                 chunk_size=effective_chunk_size,
                 explicit_refresh=explicit_refresh,
             )
@@ -738,7 +739,7 @@ def project_catalog_plan(
         os.replace(staging_root, run_paths.run_root)
         _run_manifest(
             run_paths,
-            base_snapshot_id=base_snapshot_id,
+            base_snapshot_id=pinned_base_snapshot_id,
             plan_id=catalog_plan_id,
             cohort_fingerprint=cohort_fingerprint,
             chunk_size=effective_chunk_size,
@@ -748,7 +749,7 @@ def project_catalog_plan(
         return PrefetchProjection(
             run_id,
             catalog_plan_id,
-            base_snapshot_id,
+            pinned_base_snapshot_id,
             cohort_fingerprint,
             work_identity.digest,
             work_identity.row_count,

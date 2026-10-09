@@ -39,6 +39,7 @@ and provides two-tier retention analysis.
 - **Cycle immunity via content addressing:** Every parent link cryptographically pins `manifest_sha256`.
 - **Topological linearization:** Multi-parent diamond merges are deduplicated; checkpoints are loaded once.
 - **CAS publication:** the target branch tip is compare-and-swapped under one exclusive lock; a stale tip leaves the active pointer unchanged.
+- **Read-only inspection:** `DAGCatalog(..., read_only=True)` requires an existing catalog and never initializes its schema; metadata lookup does not create a catalog.
 - **Fail-closed missing parents:** Any broken parent link immediately halts resolution with `BrokenLineageError`.
 - **Branch targeting:** durable publishers resolve a named branch (default `main`); explicit non-main branches must exist and be tip-matched before publishing.
 - **Lineage vs. CAS:** a node's manifest `parents` are distinct from the branch-tip guard; `publish_node` validates the pointer, `walk_lineage` validates parent reachability.
@@ -46,7 +47,7 @@ and provides two-tier retention analysis.
 
 ## Public surface
 
-- `DAGCatalog` in [`catalog.py`](catalog.py).
+- `DAGCatalog` in [`catalog.py`](catalog.py), including read-only opens and metadata lookup.
 - `DAGPaths` in [`paths.py`](paths.py).
 - `RelationSpec`, `MergeStrategy` in [`spec.py`](spec.py).
 - `DAGNodeManifest`, `ParentRef`, `PartDescriptor` in [`manifest.py`](manifest.py).

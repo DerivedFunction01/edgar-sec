@@ -1,7 +1,8 @@
 # Accession Document Flow — Implementation Roadmap
 
-Status: **the S1–S5 inventory build path and S7a/S7b fixture-review foundations are
-implemented; S0 historical acceptance and S8 operational retention remain open.** S6
+Status: **the S1–S5 inventory publication path, the split Project/Run/Status/Publish
+lifecycle, and S7a/S7b fixture-review foundations are implemented; S0 historical
+acceptance and S8 operational retention remain open.** S6
 target planning is the next offline handoff. See the
 [inventory exit and acquisition gate](./inventory_exit_and_acquisition_gate.md) for
 current readiness; stage subplans own detailed contracts.
@@ -738,17 +739,22 @@ The initial operator surface is explicit-artifact oriented and small:
 | List fixtures (S7a) | `inventory fixture list` | Local fixture manifests/counts; does not require source plans to exist. |
 | Parser review (S7b) | `inventory review-artifacts --fixture <id> --output <dir>` | Pinned raw pages → inert source preview, parser status/diagnostics, and entries when available. |
 | Compare parser runs (optional S7b) | `inventory review --base <dir> --new <dir>` | Two fixture-pinned parser runs → structured differences. |
-| Build inventory | `inventory build --catalog-plan <id> [--chunk-size <n>] [--retry-failures]` or `inventory build --fixture <id> [--chunk-size <n>]` | Cohort → anti-join current, resume identity-matched transient Parquet chunks, fetch only missing accessions, publish cumulative snapshot. |
+| Project inventory run | `inventory project --catalog-plan <id> [--base-snapshot-id <id>] [--branch <name>] [--chunk-size <n>]` | Published catalog plan → offline projection, work order, and run pinned to the selected branch tip. |
+| Run inventory work | `inventory run --run-id <id> [--retry-failures]` | Resumable index-page fetch/parse of pending work; direct CLI invocation is explicit network intent and does not prompt. |
+| Inspect inventory run | `inventory status [--run-id <id>] [--json]` | Read-only run state from persisted manifests and attempt pointers. |
+| Publish inventory run | `inventory publish --run-id <id> [--branch <name>] [--expected-branch-tip <id>]` | Offline publication of validated committed work; refuses unless the selected branch still points at the run's pinned base. |
 | Target planning | `documents plan --inventory <snapshot_id|current> --profile-id <id>` or `--catalog-plan <id> --profile-id <id>` | Explicit source → immutable target plan with pinned source provenance. One source per v1 plan. |
 | Accession query | `inventory query --snapshot current --accession <accession>` | Filing facts, all observed child/data-file rows, and source-CIK relations; no network. |
 | Form/CIK query | `inventory query --snapshot current --form <form> [--filing-cik <cik>] [--source-cik <cik>]`, `--filing-cik <cik>`, or `--source-cik <cik>` | Matching accessions/entries from annual parts and distinct filing/source-CIK postings; no network. |
 | Vacuum | `inventory vacuum --snapshot <snapshot-id|current> --retention <policy-id>` | Compact DAG delta lineages into checkpoint nodes and prune unreachable parts; parity-gated, atomically publish `current`. |
 | Inspect (later S7c) | `inventory inspect --snapshot <id|current> [--accession <accession>]` | Reads a pinned snapshot manifest/partition or one accession; no network. |
 
-`index.json` parsing, a broader `status` command, interactive wizard, and
-acquisition/processing CLI commands are added only in their owning subplans. No
-query command fetches index pages or filing bodies; only `inventory build`
-fetches index pages for accessions missing from the selected base snapshot.
+`index.json` parsing, interactive wizard, and acquisition/processing CLI commands are
+added only in their owning subplans. No query, projection, status, or publication
+command fetches index pages or filing bodies; only `inventory run` fetches index pages
+for accessions missing from its pinned base. In the approved Inventory operator,
+Project, Status, and Run are top-level actions alongside the existing root shortcuts;
+the Snapshot DAG Publish action selects and publishes an existing run.
 
 ## 9. Frozen Pipeline Module Disposition
 

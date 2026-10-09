@@ -2,23 +2,15 @@
 
 ## Scope and current state
 
-This plan adds explicit projection, execution, publication, and status operations around
+This implemented lifecycle separates projection, execution, publication, and status around
 the existing S4/S5 contracts. It changes no parser, worker, snapshot, retention, or
-`document_storage` contract.
+`document_storage` contract. Metadata Sync augmentation remains unchanged, Filing Catalog
+remains offline, and Inventory gains no augmentation route.
 
-The current [builder](../../../../edgar_sec/pipelines/document_inventory/snapshot/builder.py)
-already performs the complete project → run → publish path. The `inventory build` CLI
-and the Snapshot DAG Console's action labeled Publish use that synchronous path; the root
-inventory menu does not currently expose a build action. The underlying projection,
-coordinator, and writer are separately callable, but there are no lifecycle CLI commands
-or a status command yet.
-
-Two current interface mismatches are now resolved: the DAG Console's Publish
-action remains the sole surface for SEC requests and still requires a default-no
-consent prompt, and the previously ignored `base_snapshot_id` / `--base-snapshot`
-override is now enforced. `snapshot.projection.project_catalog_plan()` resolves the
-requested base from the selected branch and rejects an explicit base that does not
-match the branch tip.
+The CLI exposes Project, Run, Status, and Publish; the former combined builder has been
+removed without a compatibility shim. Status validates persisted projection outputs and
+committed attempts without repairing them. The Snapshot DAG Console selects an existing
+completed run and invokes the offline Publish command.
 
 ### Analysis: Base Snapshot Override (Now Functional)
 - **The override was once a silent mismatch:** `--base-snapshot` / `base_snapshot_id` was
@@ -34,10 +26,10 @@ match the branch tip.
   materializes to a selected branch under the same CAS guard. `document_inventory` now
   resolves the base from the selected branch and enforces it, unifying the three pipelines'
   branch/CAS contract.
-- **Resolution in the Decoupled Runner:** `inventory project` selects the base from the
-  requested branch (default `main`'s tip) and honors `--base-snapshot-id` for a historical
-  base pinned to an explicit branch; `inventory publish` refuses a stale expected tip and
-  leaves the pointer unchanged. This matches the shared DAG publication contract.
+- **Approved lifecycle:** `inventory project` pins the selected branch tip (default
+  `main`); an explicit base is accepted only when it is that branch's current tip.
+  `inventory publish` selects the target branch and refuses unless its current tip still
+  equals the run's pinned base. Alternate-branch runs use that branch for both operations.
 
 ## Existing lifecycle evidence
 
@@ -47,26 +39,27 @@ match the branch tip.
 | Run/resume | [`coordinator.py`](../../../../edgar_sec/pipelines/document_inventory/coordinator.py), [`run_lock.py`](../../../../edgar_sec/pipelines/document_inventory/run_lock.py) | Acquires one run lock, validates the run/work-order identity, resumes committed chunks, and optionally retries retryable failures. Chunk attempts and progress journals remain under the transient run directory. |
 | Publish | [`snapshot/writer.py`](../../../../edgar_sec/pipelines/document_inventory/snapshot/writer.py) | Validates committed attempts, stages publication, and refuses a stale parent before moving the DAG pointer. |
 | Paths | [`paths.py`](../../../../edgar_sec/pipelines/document_inventory/paths.py) | `InventoryRunPaths` resolves runs under the configured transient root; snapshot artifacts are separate. Use these resolvers rather than constructing artifact paths in commands. |
-| All-in-one | [`snapshot/builder.py`](../../../../edgar_sec/pipelines/document_inventory/snapshot/builder.py) | Retain `build_inventory()` and `inventory build` for scripted end-to-end use. |
+| Discovery/status | [`run_state.py`](../../../../edgar_sec/pipelines/document_inventory/run_state.py) | Validates persisted projection/run identity and outputs, committed attempts, failure/refusal outcomes, cancellation, lock ownership, and matching published snapshots without modifying run state. |
+| Command services | [`commands/`](../../../../edgar_sec/pipelines/document_inventory/commands/README.md) | Separates the offline Project, explicit network Run, read-only Status, and offline Publish commands. |
 
 The projection manifest identifies the input plan, pinned base, and work order. S4
-manifests and committed-attempt pointers are authoritative for run validation; there is
-no independent mutable run-status field. Progress databases are per chunk/attempt, not
-one `progress.duckdb` at the run root. S4's `stale_lock_confirmed` flag is an operator
+manifests and committed-attempt pointers are authoritative for run validation; status is
+derived from those artifacts. A small cancellation marker preserves the S4 cancellation
+barrier across process exit. Progress databases are per chunk/attempt, not one
+`progress.duckdb` at the run root. S4's `stale_lock_confirmed` flag is an operator
 attestation to replace an existing lock; the code does not prove the prior owner is stale.
 
 ## Command contracts
 
-Add these explicit CLI operations while retaining `inventory build`:
+The approved public lifecycle commands are:
 
 ```text
 inventory project --catalog-plan <plan-id> [--base-snapshot-id <id>]
                   [--branch <name>] [--chunk-size <n>]
                   [--explicit-refresh]
 inventory run --run-id <run-id> [--workers <n>] [--retry-failures] [--confirm-stale-lock]
-inventory publish --run-id <run-id>
+inventory publish --run-id <run-id> [--branch <name>]
 inventory status [--run-id <run-id>] [--json]
-inventory build --catalog-plan <plan-id> [...]
 ```
 
 - **Project** is offline. It resolves the base from the requested branch (default `main`),
@@ -83,11 +76,12 @@ inventory build --catalog-plan <plan-id> [...]
   retryable outcomes only. Replacing an existing lock separately requires
   `--confirm-stale-lock` and an operator attestation.
 - **Publish** validates the run through S5 and reports the published snapshot ID. It
-  performs no network work. The run's target branch is advanced under a shared CAS lock;
-  a stale `--expected-branch-tip` is refused and the pointer left unchanged, so a stale
-  run retried or a new run projected from the new current snapshot.
+  performs no network work. The selected target branch (default `main`) must still point
+  at the run's pinned base; otherwise publication is refused and the pointer left
+  unchanged. An alternate branch is selected at both Project and Publish, not persisted
+  as part of run identity.
 - **Status** is read-only. It reports the validated projection/run IDs, pinned base,
-  work-order size, committed and outstanding chunks, retryable/refusal counts, and lock
+  work-order size, pending accessions, committed and outstanding chunks, retryable/refusal counts, and lock
   owner metadata. Report an existing lock as present; never label it stale based on age,
   delete it directly, or make status clear it. Replacing a lock requires
   `--confirm-stale-lock`; the menu displays owner metadata and asks default-no, while
@@ -95,7 +89,7 @@ inventory build --catalog-plan <plan-id> [...]
   stopped. This is not an automated stale-lock detector. If ownership cannot be
   verified, cancel.
 - A zero-work-order run is not automatically an up-to-date no-op: the projection may
-  still contain new accession/source relations. Preserve the builder's no-op and
+  still contain new accession/source relations. Preserve the writer's no-op and
   publication decisions rather than inferring them from the missing-accession count.
 - Report `published_snapshot_id` only when an inventory snapshot manifest's
   `run_intent_id` matches the run ID. Do not infer `published` from missing transient
@@ -110,41 +104,18 @@ selection/cancellation and command behavior in the same style as the
 [filing-catalog operator](../../../../edgar_sec/pipelines/filing_catalog/operator.py)
 and [metadata-sync operator](../../../../edgar_sec/pipelines/metadata_sync/operator.py).
 
-Preserve the current root inventory keys: `1` Query, `d` Distribution, `p` Snapshot DAG,
-`f` Fixtures/review, `0` Exit. Add `2` Run lifecycle console rather than replacing Query
-or moving existing shortcuts. Its submenu uses `1` Project, `2` Run/resume, `3` Status,
-`0` Return. Each action returns to that submenu; it never chains into a network request
-or publication automatically. Keep publication in the Snapshot DAG
-Console, whose existing publish callback will select a completed run and call the same
-`publish` command. `inventory build` remains the explicit all-in-one CLI/script path,
-not an additional interactive path that bypasses network consent.
+Preserve root keys `1` Query, `d` Distribution, `p` Snapshot DAG,
+`f` Fixtures/review, and `0` Exit. Add top-level `2` Project, `3` Status, and `4` Run;
+do not add a lifecycle submenu or change Metadata Sync or Filing Catalog operators.
+The Snapshot DAG Publish action selects an existing run and invokes Publish; it never
+calls the S4 coordinator. Before interactive network work, display pending accession
+and chunk counts and require default-no confirmation. Direct `inventory run` CLI use
+does not prompt. Lock replacement remains a separate explicit attestation.
 
-The lifecycle console keeps only session conveniences—selected run ID and selected
-catalog plan ID—in memory, displays them in its menu header, and rediscovers artifacts
-from their manifests on every selection. A selection from a paginated list can be
-cancelled without side effects. After project/run, print the next available action as
-guidance; require the operator to select it. Before network work, display the exact
-outstanding accession and chunk counts and ask a default-no question. The shared run
-command/service takes no consent prompt; consent belongs only to the menu adapter. If a run lock
-exists, display its owner metadata and require a default-no attestation that its previous
-owner is stopped before using the lock-replacement flag; do not offer a separate
-lock-delete action or infer staleness from age/PID data.
+## Implementation and acceptance
 
-## Implementation order and acceptance
-
-1. Add command wrappers that reuse projection, coordinator, and writer APIs; keep
-   summaries derived from validated manifests and committed attempts.
-2. Add read-only status/discovery using `InventoryRunPaths` and DAG manifests. Validate
-   malformed and partial runs by reporting/refusing them, never repairing them in status.
-3. Wire the subcommands in `document_inventory/cli.py`; retain the current `build` path.
-4. Add the lifecycle console and revise the DAG publish callback to select and publish an
-   existing completed run. Preserve root menu keys and use the same command functions
-   from the CLI and operator.
-5. Add mirrored command/operator tests for cancellation, default-no menu consent, direct
-   CLI invocation without an input prompt, resume/retry, stale-lock confirmation,
-   incomplete/stale publication refusal, status read-only behavior, and root menu keys.
-
-The work is complete when the targeted mirrored tests, `check.py`, and `check.py --fast`
-pass. This lifecycle refactor preserves S5's accession-scoped `scoped_mask` contract and
-does not change S0 survey requirements, S8 retention safeguards, or the later S12
-vertical integration gate.
+The lifecycle split is implemented. Mirrored tests cover command routing, default-no
+interactive consent, persisted cancellation, resume/retry through the S4 tests, stale-lock
+confirmation, partial/failed/stale publication refusal, run discovery, and read-only status.
+S5's accession-scoped `scoped_mask` contract is unchanged; S0 survey requirements, S8
+retention safeguards, and the later S12 vertical integration gate remain separate.

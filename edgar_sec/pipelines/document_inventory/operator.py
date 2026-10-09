@@ -19,6 +19,7 @@ from edgar_sec.foundation.runtime.paths import resolve_paths
 from edgar_sec.pipelines.document_inventory.cli import main as cli_main
 from edgar_sec.pipelines.document_inventory.commands.query import cmd_query
 from edgar_sec.pipelines.document_inventory.discovery import discover_plans
+from edgar_sec.pipelines.document_inventory.run_state import discover_run_statuses
 
 MENU_TITLE = "Document Inventory"
 
@@ -66,11 +67,11 @@ def _action_query() -> None:
     )
 
 
-def _action_build() -> None:
+def _action_project() -> None:
     plans = discover_plans(_root())
     if not plans:
         print(
-            "No published catalog plans were discovered; publish a plan before building an inventory snapshot."
+            "No published catalog plans were discovered; publish a plan before projection."
         )
         return
     items = [
@@ -93,15 +94,129 @@ def _action_build() -> None:
         print("Plan selection cancelled.")
         return
     plan_id = str(chosen.value["plan_id"])
-    from edgar_sec.pipelines.document_inventory.snapshot.builder import build_inventory
+    branch = prompt_text("Base DAG branch", "main").strip() or "main"
+    cli_main(
+        [
+            "project",
+            "--catalog-plan",
+            plan_id,
+            "--branch",
+            branch,
+            "--artifacts",
+            _root(),
+        ]
+    )
 
-    pub = build_inventory(plan_id, artifacts_root=Path(_root()))
-    if pub.was_published and pub.snapshot:
-        print(f"Snapshot published successfully: {pub.snapshot.snapshot_id}")
-    elif pub.was_no_op:
-        print("Snapshot is already up to date (no-op).")
+
+def _select_run(statuses, *, prompt_label: str):
+    items = [
+        PickItem(
+            key=item.run_id,
+            label=(
+                f"{item.run_id}  {item.state}  "
+                f"chunks {item.committed_chunks}/{item.expected_chunks}  "
+                f"pending {item.pending_accessions} accessions/"
+                f"{item.outstanding_chunks} chunks  "
+                f"base {item.base_snapshot_id or '(empty)'}"
+            ),
+            value=item,
+        )
+        for item in statuses
+    ]
+    if not items:
+        print("No eligible inventory runs were discovered.")
+        return None
+    return prompt_paginated_choice(items, prompt_label=prompt_label, default=items[0])
+
+
+def _action_status() -> None:
+    cli_main(["status", "--artifacts", _root()])
+
+
+def _action_run() -> None:
+    statuses = tuple(
+        item
+        for item in discover_run_statuses(_root())
+        if item.valid
+        and item.state != "published"
+        and (item.pending_accessions or item.locked or item.state == "cancelled")
+    )
+    chosen = _select_run(statuses, prompt_label="Select projected run to execute")
+    if chosen is None:
+        return
+    status = chosen.value
+    if status.locked:
+        owner = status.lock_metadata or {}
+        print(
+            "A run lock exists for "
+            f"pid={owner.get('pid', '?')} host={owner.get('host', '?')}"
+        )
+        if prompt_text(
+            "Confirm the prior owner has stopped? (yes/no)", "no"
+        ).strip().lower() not in {
+            "yes",
+            "y",
+        }:
+            print("Run cancelled; stale-lock recovery was not confirmed.")
+            return
+        stale_lock_args = ["--confirm-stale-lock"]
     else:
-        print(f"Snapshot build failed: {pub.reason}")
+        stale_lock_args = []
+    if status.pending_accessions:
+        prompt = "Start network execution? (yes/no)"
+        print(
+            f"Run {status.run_id} may contact the SEC for "
+            f"{status.pending_accessions} pending accessions in "
+            f"{status.outstanding_chunks} chunks."
+        )
+    else:
+        prompt = "Continue Run without pending network requests? (yes/no)"
+        print(f"Run {status.run_id} has no pending accessions.")
+    if prompt_text(prompt, "no").strip().lower() not in {
+        "yes",
+        "y",
+    }:
+        print("Run cancelled; no network requests were made.")
+        return
+    retry_args = []
+    if status.retryable_failures and prompt_text(
+        "Retry previously failed fetches? (yes/no)", "no"
+    ).strip().lower() in {"yes", "y"}:
+        retry_args.append("--retry-failures")
+    cli_main(
+        [
+            "run",
+            "--run-id",
+            status.run_id,
+            "--artifacts",
+            _root(),
+            *stale_lock_args,
+            *retry_args,
+        ]
+    )
+
+
+def _action_publish_existing() -> None:
+    statuses = tuple(
+        item
+        for item in discover_run_statuses(_root())
+        if item.can_publish and item.state != "published"
+    )
+    chosen = _select_run(statuses, prompt_label="Select completed run to publish")
+    if chosen is None:
+        return
+    branch = prompt_text("Destination DAG branch", "main").strip() or "main"
+    cli_main(
+        [
+            "publish",
+            "--run-id",
+            chosen.value.run_id,
+            "--branch",
+            branch,
+            "--artifacts",
+            _root(),
+        ]
+    )
 
 
 def _action_dag() -> None:
@@ -115,8 +230,8 @@ def _action_dag() -> None:
         snapshots_root=lambda: InventoryPaths(Path(_root())).snapshots_root,
         title="Document Inventory Snapshot DAG Console",
         specs=INVENTORY_RELATIONS,
-        publish_action=_action_build,
-        publish_label="Build inventory snapshot from published plan",
+        publish_action=_action_publish_existing,
+        publish_label="Publish an existing completed inventory run",
     )
     run_dag_menu(config)
 
@@ -158,13 +273,16 @@ def _action_review() -> None:
 def build_operator_menu() -> tuple[MenuAction, ...]:
     return build_menu(
         menu_action("Query document inventory", _action_query),
+        menu_action("Project a published plan into an inventory run", _action_project),
+        menu_action("Show inventory run status", _action_status),
+        menu_action("Run pending inventory work", _action_run),
         menu_action(
             "Worker distribution console (export, worker, import, commands)",
             _action_distrib,
             key="d",
         ),
         menu_action(
-            "Snapshot DAG console (build/publish, switch current, inspect, branches, tags)",
+            "Snapshot DAG console (publish, switch current, inspect, branches, tags)",
             _action_dag,
             key="p",
         ),

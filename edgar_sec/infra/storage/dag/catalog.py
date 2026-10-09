@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import sqlite3
 from collections.abc import Mapping
+from contextlib import closing
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -92,17 +93,45 @@ CREATE TABLE IF NOT EXISTS catalog_meta (
 class DAGCatalog:
     """Embedded SQLite catalog managing DAG snapshot metadata."""
 
-    def __init__(self, snapshots_root: Path | str) -> None:
+    def __init__(self, snapshots_root: Path | str, *, read_only: bool = False) -> None:
         self.snapshots_root = Path(snapshots_root)
-        self.snapshots_root.mkdir(parents=True, exist_ok=True)
         self.catalog_file = self.snapshots_root / CATALOG_DB_NAME
-        self._ensure_schema()
+        self.read_only = read_only
+        if read_only:
+            if not self.catalog_file.is_file():
+                raise FileNotFoundError(self.catalog_file)
+        else:
+            self.snapshots_root.mkdir(parents=True, exist_ok=True)
+            self._ensure_schema()
+
+    @classmethod
+    def find_snapshot_ids_by_metadata(
+        cls, snapshots_root: Path | str, key: str, value: str
+    ) -> tuple[str, ...]:
+        catalog_file = Path(snapshots_root) / CATALOG_DB_NAME
+        if not catalog_file.is_file():
+            return ()
+        uri = f"{catalog_file.resolve().as_uri()}?mode=ro"
+        with closing(sqlite3.connect(uri, uri=True)) as con:
+            rows = con.execute(
+                "SELECT snapshot_id, metadata_json FROM nodes ORDER BY snapshot_id"
+            )
+            matches = []
+            for snapshot_id, metadata_json in rows:
+                metadata = json.loads(metadata_json or "{}")
+                if isinstance(metadata, dict) and metadata.get(key) == value:
+                    matches.append(str(snapshot_id))
+        return tuple(matches)
 
     def _connect(self) -> sqlite3.Connection:
-        con = sqlite3.connect(str(self.catalog_file), timeout=30.0)
-        con.execute("PRAGMA journal_mode = WAL;")
-        con.execute("PRAGMA synchronous = NORMAL;")
-        con.execute("PRAGMA foreign_keys = ON;")
+        if self.read_only:
+            uri = f"{self.catalog_file.resolve().as_uri()}?mode=ro"
+            con = sqlite3.connect(uri, uri=True, timeout=30.0)
+        else:
+            con = sqlite3.connect(str(self.catalog_file), timeout=30.0)
+            con.execute("PRAGMA journal_mode = WAL;")
+            con.execute("PRAGMA synchronous = NORMAL;")
+            con.execute("PRAGMA foreign_keys = ON;")
         con.row_factory = sqlite3.Row
         return con
 

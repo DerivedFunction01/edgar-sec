@@ -9,7 +9,6 @@ Own inventory snapshot relations, pre-fetch plan projection, and bounded merge p
 | Module | Responsibility |
 |---|---|
 | `anti_join.py` | Stage candidate relations incrementally and classify them in DuckDB. |
-| `builder.py` | Connect catalog-plan projection, S4 coordinator, and S5 publication. |
 | `errors.py` | Snapshot validation and stale-parent failures. |
 | `models.py` | Snapshot metadata, lookup descriptors, and publication results. |
 | `projection.py` | Validate the published cohort projection, produce normalized relations, and write the pre-fetch work order. |
@@ -35,15 +34,21 @@ Own inventory snapshot relations, pre-fetch plan projection, and bounded merge p
 
 ## Public surface
 
-Call [`build_inventory`](builder.py) for the automated projection-to-S4-to-S5 pipeline.
-Call [`project_catalog_plan`](projection.py) for standalone pre-fetch projection and
-[`publish_committed_chunks`](writer.py) for the S4-attempt-to-snapshot boundary.
+Call [`project_catalog_plan`](projection.py) to create a run pinned to the selected
+branch tip, then run its pending work and call
+[`publish_committed_chunks`](writer.py) to publish validated committed attempts.
 [`validate_snapshot`](validation.py) checks a published or staged snapshot.
 [`get_active_accession`](reader.py), [`get_active_entries`](reader.py),
 [`get_accessions_by_cik`](reader.py), [`get_accessions_by_source_cik`](reader.py),
 [`query_accessions`](reader.py), and [`get_accession_bundle`](reader.py) query active snapshot state.
 Each accepts `snapshot_id` to pin an immutable snapshot tip; without it, the
 active branch pointer is resolved once per call.
+
+The approved command lifecycle exposes `inventory project`, `inventory run`,
+`inventory status`, and `inventory publish`. Project and Publish are offline;
+Status is read-only; Run is the only lifecycle operation that requests SEC pages.
+Publish requires the selected branch's current tip to equal the run's pinned base.
+Publication consumes validated persisted runs and never invokes projection or S4.
 
 ## Command surface
 

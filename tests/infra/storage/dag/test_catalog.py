@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
 from pathlib import Path
 
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
@@ -145,3 +146,22 @@ def test_audit_graph(tmp_path: Path) -> None:
     assert audit["part_count"] == 2
     assert audit["orphan_nodes"] == []
     assert audit["cycles"] == []
+
+
+def test_find_snapshot_ids_by_metadata_is_read_only(tmp_path: Path) -> None:
+    root = tmp_path / "snapshots"
+    assert (
+        DAGCatalog.find_snapshot_ids_by_metadata(root, "run_intent_id", "run-1") == ()
+    )
+    assert not root.exists()
+
+    catalog = DAGCatalog(root)
+    manifest = _make_manifest("snap-1")
+    manifest = replace(manifest, metadata={"run_intent_id": "run-1"})
+    catalog.record_node(manifest)
+    before = {path.name for path in root.iterdir()}
+
+    assert DAGCatalog.find_snapshot_ids_by_metadata(root, "run_intent_id", "run-1") == (
+        "snap-1",
+    )
+    assert {path.name for path in root.iterdir()} == before

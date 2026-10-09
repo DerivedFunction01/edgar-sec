@@ -16,7 +16,6 @@ from edgar_sec.pipelines.document_inventory.snapshot.specs import (
     INVENTORY_RELATIONS,
 )
 
-from .commands.build import cmd_build
 from .commands.common import (
     resolve_artifacts_root as _artifacts_root,
 )
@@ -26,7 +25,11 @@ from .commands.fixture import (
     cmd_fixture_list,
 )
 from .commands.query import cmd_query
+from .commands.project import cmd_project
+from .commands.publish import cmd_publish
 from .commands.review import cmd_review_artifacts
+from .commands.run import cmd_run
+from .commands.status import cmd_status
 
 __all__ = [
     "build_parser",
@@ -52,36 +55,64 @@ def build_parser() -> argparse.ArgumentParser:
     )
     commands = parser.add_subparsers(dest="command", required=True)
 
-    build_cmd = commands.add_parser(
-        "build", help="build and publish an immutable inventory snapshot"
+    project_cmd = commands.add_parser(
+        "project", help="project a published catalog plan into a resumable run"
     )
-    build_cmd.add_argument("--catalog-plan", required=True, help="published plan id")
-    build_cmd.add_argument(
+    project_cmd.add_argument("--catalog-plan", required=True, help="published plan id")
+    project_cmd.add_argument(
         "--base-snapshot-id", default=None, help="base snapshot id override"
     )
-    build_cmd.add_argument(
+    project_cmd.add_argument(
         "--branch",
         default="main",
-        help="DAG branch to advance on publication (default: main)",
+        help="DAG branch whose current tip is pinned as the base (default: main)",
     )
-    build_cmd.add_argument(
+    project_cmd.add_argument(
         "--explicit-refresh",
         action="store_true",
         help="force re-fetch of index pages",
     )
-    build_cmd.add_argument(
+    project_cmd.add_argument(
         "--chunk-size", type=positive_int_type, help="accessions per S4 chunk"
     )
-    build_cmd.add_argument(
+    _add_output_options(project_cmd)
+    project_cmd.set_defaults(func=cmd_project)
+
+    run_cmd = commands.add_parser("run", help="fetch and parse pending index pages")
+    run_cmd.add_argument("--run-id", required=True, help="projected run identifier")
+    run_cmd.add_argument(
         "--retry-failures",
         action="store_true",
         help="retry failed chunk attempts",
     )
-    build_cmd.add_argument(
+    run_cmd.add_argument(
         "--workers", type=positive_int_type, help="worker process count"
     )
-    _add_output_options(build_cmd)
-    build_cmd.set_defaults(func=cmd_build)
+    run_cmd.add_argument(
+        "--confirm-stale-lock",
+        action="store_true",
+        help="attest the previous lock owner has stopped",
+    )
+    _add_output_options(run_cmd)
+    run_cmd.set_defaults(func=cmd_run)
+
+    status_cmd = commands.add_parser("status", help="inspect projected inventory runs")
+    status_cmd.add_argument("--run-id", help="run identifier (default: list runs)")
+    _add_output_options(status_cmd)
+    status_cmd.set_defaults(func=cmd_status)
+
+    publish_cmd = commands.add_parser(
+        "publish", help="publish a completed inventory run to a DAG branch"
+    )
+    publish_cmd.add_argument("--run-id", required=True, help="completed run identifier")
+    publish_cmd.add_argument(
+        "--branch", default="main", help="DAG branch to publish (default: main)"
+    )
+    publish_cmd.add_argument(
+        "--expected-branch-tip", default=None, help="expected branch tip at commit"
+    )
+    _add_output_options(publish_cmd)
+    publish_cmd.set_defaults(func=cmd_publish)
 
     query_cmd = commands.add_parser(
         "query", help="query active document inventory snapshots"

@@ -273,27 +273,31 @@ unrelated processing tables.
 
 ### Document Inventory (S4/S5)
 
-`inventory build` projects filing-catalog observations into an accession-level index-page
-work order, resumption-capable S4 fetch/parse, and durable S5 snapshot publication. It is
-a downstream consumer of published `filing_catalog` plans and never fetches a cohort
-itself.
+The approved Inventory lifecycle separates projection, SEC index-page execution,
+read-only status, and snapshot publication. It consumes published `filing_catalog`
+plans and never fetches a cohort itself. The CLI currently registers the approved
+commands. Project, Status, and Publish are offline; Run is the only lifecycle command
+that requests SEC index pages.
 
 ```bash
-# Build a snapshot on the default main branch: anti-join against the current tip, then
-# fetch only newly observed accessions and merge new source-CIK edges without refetch.
-python run.py inventory build --catalog-plan corpus
+# Project pins the selected branch tip (default main) as the run base.
+python run.py inventory project --catalog-plan corpus [--branch main]
 
-# Pin a historical base on a branch created there first; the branch pointer is pinned at
-# commit so a concurrent move refuses publication without rewriting main.
-python run.py inventory dag branch inv_old
-python run.py inventory build --catalog-plan corpus \
-    --base-snapshot-id inv_old --branch inv_old
+# Direct CLI invocation is explicit network intent; pending work resumes by run ID.
+python run.py inventory run --run-id <run-id>
 
-# Pin the branch pointer expected at commit; a stale branch fails the publish and leaves
-# the pointer unchanged for a retry.
-python run.py inventory build --catalog-plan corpus \
-    --expected-branch-tip <id>
+# Inspect a run without changing its artifacts or lock state.
+python run.py inventory status [--run-id <run-id>]
+
+# Publish existing committed work without network requests. The branch must still
+# point at the run's pinned base; --branch defaults to main.
+python run.py inventory publish --run-id <run-id> [--branch main]
 ```
+
+The interactive operator requires default-no consent before Run. Its root keys remain
+`1` Query, `d` Distribution, `p` Snapshot DAG, `f` Fixtures/review, and `0` Exit, with
+`2` Project, `3` Status, and `4` Run added as top-level actions. Snapshot DAG Publish
+selects and publishes an existing run; it does not run network work.
 
 Querying reads published snapshots or the active branch; pinning a snapshot ID is
 supported:

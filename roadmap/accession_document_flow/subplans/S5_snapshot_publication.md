@@ -5,10 +5,10 @@
 - Owning stage in [implementation.md](../implementation.md): **S5**; the detailed
   contract for S5 is also in
   [inventory_snapshot.md](../inventory_snapshot.md).
-- Status: production build flow (`build_inventory`), streamed pre-fetch projection and
-  work-order generation, S4 execution, validated-attempt merge, snapshot validation,
-  serialized installation, stale-parent refusal, pointer-last publication, and reader/
-  query commands are implemented. Entry supersession uses accession-scoped DAG masks;
+- Status: separate streamed pre-fetch projection, S4 execution, validated-attempt merge,
+  snapshot validation, serialized installation, stale-parent refusal, pointer-last
+  publication, and reader/query commands are implemented. Entry supersession uses
+  accession-scoped DAG masks;
   no prior-entry-ID map is part of the v1 contract. Offline test coverage exists;
   historical parser acceptance and live operational rollout remain gated by S0.
 - Depends for operational publication on: S1 cohort contract, S3 parser body, and S4
@@ -26,22 +26,18 @@ enters the snapshot.
 
 ## Contract
 
-The current Python callable is:
+The phase-owned Python operations are:
 
 ```python
-build_inventory(
-    catalog_plan_id: str,
-    *,
-    base_snapshot_id: str | None = None,
-    explicit_refresh: bool = False,
-    chunk_size: int | None = None,
-    retry_failures: bool = False,
-    http_client: Any | None = None,
-    profile: RuntimeResourceProfile | None = None,
-    artifacts_root: Path | str | None = None,
-    workers: int | None = None,
-) -> SnapshotPublication
+project_catalog_plan(catalog_plan_id, *, base_snapshot_id=None, branch_name="main")
+run_missing_accessions(work_order_path, run_identity, run_paths, *, retry_failures=False)
+publish_committed_chunks(run_paths, run_manifest, *, expected_parent_snapshot_id, branch_name="main")
 ```
+
+The CLI provides `inventory project`, `inventory run`, `inventory status`, and
+`inventory publish`; there is no combined build command or compatibility wrapper.
+Status validates persisted inputs and attempts without repair. Publication selects an
+existing run and performs no SEC requests.
 
 `base_snapshot_id` pins the delta's lineage base and the S5/S4 run identity; the
 projection resolves the default from the selected branch (default `main`), and an
@@ -75,7 +71,7 @@ referenced by the run manifest, not by the published snapshot.
   created at that tip, and `--expected-branch-tip` pins the pointer expected at commit.
 - `explicit_refresh`: force re-read of all cohort index pages.
 
-Returns one of: `published(snapshot)`, `no_op(parent_snapshot)`, or `failed(reason)`.
+Publish returns `published(snapshot)`, `no_op(parent_snapshot)`, or `failed(reason)`.
 
 ## Run intent and immutable identity
 
@@ -174,27 +170,23 @@ All published and transient path construction is owned by
   callers to import that owner directly, with mirrored tests and the package README;
   do not leave forwarding modules. S6 can then compile bounded lower-layer DAG reads
   without copying S5 schemas or importing a sibling implementation module.
-- Branch targeting is implemented: `--base-snapshot-id` pins the lineage base and
-  `--expected-branch-tip` pins the branch pointer expected at commit; a stale tip
-  refuses publication without moving the pointer. `inventory build --base-snapshot`
-  has been renamed to `--base-snapshot-id` to reflect that the override is now
-  enforced rather than ignored.
+- Branch targeting is implemented: Project pins the selected branch's current tip and
+  Publish refuses unless the destination branch still equals that base.
 
 ## Acceptance evidence and next step
 
-- `edgar_sec/pipelines/document_inventory/snapshot/builder.py` connects validated plan
-  projection, S4 coordination, and snapshot publication; `snapshot/reader.py` exposes
+- `snapshot/projection.py`, `coordinator.py`, and `snapshot/writer.py` own separate
+  Project, Run, and Publish phases; `snapshot/reader.py` exposes
   active accession, entry, filing-CIK, and source-CIK queries, each pinnable to
   one immutable snapshot ID.
 - `tests/pipelines/document_inventory/snapshot/test_projection.py` covers bounded
-  projection and a 236k-row projection case; `test_builder.py` covers offline build,
-  no-op, source-edge addition without refetch, and failed-build refusal;
+  projection and a 236k-row projection case; `test_lifecycle.py` covers Project/Run/Publish
+  separation, no-op, source-edge addition without refetch, and failed/stale-branch refusal;
   `test_writer.py` covers delta publication, validation, stale parents, refresh
   supersession, and publication locking; `test_reader.py` covers active queries,
   scoped-mask supersession, and pinned named-snapshot reads.
-- The inventory CLI/operator routes build and query operations through the production
-  builder/reader. The stage-specific run lifecycle is a separate follow-up; these offline
-  cases do not establish live SEC behavior or S0 historical parser coverage.
+- The inventory CLI/operator exposes Project, Run, Status, and Publish actions; these
+  offline cases do not establish live SEC behavior or S0 historical parser coverage.
 - No plan-projection, S4 integration, active-query, or pointer-last publisher wiring
   task remains outstanding. Next: move the relation schema contract to the permitted
   `schemas.py` owner for S6, then complete S0's authorized source audit.

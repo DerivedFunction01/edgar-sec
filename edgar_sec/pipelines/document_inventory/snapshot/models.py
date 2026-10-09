@@ -169,7 +169,7 @@ class SourceEdgeRow:
 
 @dataclass(frozen=True, slots=True)
 class SnapshotPublication:
-    """Result of one ``build_inventory`` run.
+    """Result of one committed-chunk publication.
 
     Exactly one of ``published``/``no_op``/``failed`` is populated; callers
     inspect ``status`` first.
