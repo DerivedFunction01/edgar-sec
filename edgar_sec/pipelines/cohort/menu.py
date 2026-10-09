@@ -25,32 +25,36 @@ def _run_cli(*arguments: str) -> None:
     main(list(arguments))
 
 
-def _cohort_label(record: object) -> str:
-    tags = ", ".join(record.tags) or "none"
-    name = f"{record.name} ({record.cohort_id})" if record.name else record.cohort_id
-    return (
-        f"{name}  {record.distinct_cik_count:,} CIKs | "
-        f"tags: {tags} | origin: {record.origin_kind}"
+def _cohort_badge(record: object) -> str:
+    origin_map = {
+        "official_source": "official",
+        "file_import": "import",
+        "set_operation": "derived",
+    }
+    origin = origin_map.get(
+        getattr(record, "origin_kind", ""), getattr(record, "origin_kind", "")
     )
+    parts = [origin] if origin else []
+    if getattr(record, "pinned", False):
+        parts.append("pinned")
+    return f"[{' '.join(parts)}]" if parts else ""
+
+
+def _cohort_label(record: object) -> str:
+    badge = _cohort_badge(record)
+    count = f"{getattr(record, 'distinct_cik_count', 0):,} CIKs"
+    name = getattr(record, "name", None)
+    cohort_id = getattr(record, "cohort_id", "")
+    id_display = f"{name} ({cohort_id})" if name else cohort_id
+    parts = [id_display, count]
+    if badge:
+        parts.append(badge)
+    return "  ".join(parts)
 
 
 def pick_cohort(catalog: object) -> str | None:
-    cohort_items: list[PickItem] = []
-    offset = 0
-    while True:
-        records = catalog.list_cohorts(limit=500, offset=offset)
-        cohort_items.extend(
-            PickItem(
-                key=record.cohort_id,
-                label=_cohort_label(record),
-                value=record.cohort_id,
-            )
-            for record in records
-        )
-        if len(records) < 500:
-            break
-        offset += len(records)
     alias_items: list[PickItem] = []
+    active_ids: set[str] = set()
     for source_name, alias, title in (
         ("cik_lookup", "universe", "Active SEC Universe"),
         ("company_tickers", "tickers", "Active Operating Filers"),
@@ -58,13 +62,33 @@ def pick_cohort(catalog: object) -> str | None:
         cohort_id = catalog.get_active_source_pointer(source_name)
         record = catalog.get_cohort(cohort_id) if cohort_id else None
         if record is not None:
+            active_ids.add(record.cohort_id)
+            badge = _cohort_badge(record)
+            count = f"{record.distinct_cik_count:,} CIKs"
             alias_items.append(
                 PickItem(
                     key=alias,
-                    label=f"{alias}  {title} | {_cohort_label(record)}",
+                    label=f"{alias} ({record.cohort_id})  {count}  {title}  {badge}".strip(),
                     value=alias,
                 ),
             )
+    cohort_items: list[PickItem] = []
+    offset = 0
+    while True:
+        records = catalog.list_cohorts(limit=500, offset=offset)
+        for record in records:
+            if record.cohort_id in active_ids:
+                continue
+            cohort_items.append(
+                PickItem(
+                    key=record.cohort_id,
+                    label=_cohort_label(record),
+                    value=record.cohort_id,
+                )
+            )
+        if len(records) < 500:
+            break
+        offset += len(records)
     items = alias_items + cohort_items
     chosen = prompt_paginated_choice(items, prompt_label="Select cohort")
     return chosen.value if chosen is not None else None

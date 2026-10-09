@@ -118,16 +118,14 @@ def test_pick_cohort_includes_catalog_details_and_active_aliases(monkeypatch) ->
     assert [item.key for item in captured["items"]] == [
         "universe",
         "tickers",
-        "c-universe",
         "c-curated",
     ]
     assert "987,654 CIKs" in captured["items"][0].label
     assert "official" in captured["items"][0].label
-    assert "official_source" in captured["items"][0].label
     assert "10,000 CIKs" in captured["items"][1].label
-    assert "tags: official, tickers" in captured["items"][1].label
-    assert "12 CIKs" in captured["items"][3].label
-    assert "tags: none" in captured["items"][3].label
+    assert "[official]" in captured["items"][1].label
+    assert "12 CIKs" in captured["items"][2].label
+    assert "[import]" in captured["items"][2].label
 
 
 def test_workspace_pickers_return_selected_variable_and_session(monkeypatch) -> None:
