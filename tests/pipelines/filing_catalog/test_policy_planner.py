@@ -25,11 +25,11 @@ from edgar_sec.pipelines.cohort.ingestion import ingest_file_to_cohort
 from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 from edgar_sec.pipelines.filing_catalog.catalog_job import materialize
 from edgar_sec.pipelines.filing_catalog.paths import (
-    LOCATOR_GROUPS_NAME,
+    LOCATOR_GROUPS_FILE,
     REQUIRED_PLAN_FILES,
-    RESERVE_TARGETS_NAME,
-    SEED_FILERS_NAME,
-    SELECTION_REPORT_NAME,
+    RESERVE_TARGETS_FILE,
+    SEED_FILERS_FILE,
+    SELECTION_REPORT_FILE,
     resolve_filing_catalog_paths,
 )
 from edgar_sec.pipelines.filing_catalog.planner import (
@@ -93,7 +93,7 @@ def test_policy_plan_locator_groups_are_the_eighteen_column_schema(
     meta = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
 
-    schema = pq.read_schema(plan_dir / LOCATOR_GROUPS_NAME)
+    schema = pq.read_schema(plan_dir / LOCATOR_GROUPS_FILE)
     assert list(schema.names) == list(LOCATOR_POLICY_COLUMNS)
     assert len(schema.names) == 18
     assert set(LOCATOR_BASE_COLUMNS) <= set(schema.names)
@@ -108,7 +108,7 @@ def test_stage_a_locator_schema_stays_narrow(
     artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan(str(manifest["catalog_id"]), artifacts_root, forms=("10-K",))
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
-    schema = pq.read_schema(plan_dir / LOCATOR_GROUPS_NAME)
+    schema = pq.read_schema(plan_dir / LOCATOR_GROUPS_FILE)
     assert list(schema.names) == list(LOCATOR_BASE_COLUMNS)
     assert len(schema.names) == 8
 
@@ -160,7 +160,7 @@ def test_policy_plan_writes_a_reserve_pool(
     meta = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
 
-    reserve = plan_dir / RESERVE_TARGETS_NAME
+    reserve = plan_dir / RESERVE_TARGETS_FILE
     assert reserve.is_file()
     assert pq.read_metadata(reserve).num_rows == meta["reserve_count"]
 
@@ -175,12 +175,12 @@ def test_reserve_is_disjoint_from_the_active_locators(
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
 
     active = set(
-        pq.read_table(plan_dir / LOCATOR_GROUPS_NAME)[
+        pq.read_table(plan_dir / LOCATOR_GROUPS_FILE)[
             "document_locator_key"
         ].to_pylist()
     )
     reserve = set(
-        pq.read_table(plan_dir / RESERVE_TARGETS_NAME)[
+        pq.read_table(plan_dir / RESERVE_TARGETS_FILE)[
             "document_locator_key"
         ].to_pylist()
     )
@@ -197,7 +197,7 @@ def test_a_zero_reserve_writes_no_reserve_file(
         str(manifest["catalog_id"]), _policy(reserve_size=0), artifacts_root
     )
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
-    assert not (plan_dir / RESERVE_TARGETS_NAME).exists()
+    assert not (plan_dir / RESERVE_TARGETS_FILE).exists()
     assert meta["reserve_count"] == 0
 
 
@@ -252,7 +252,7 @@ def test_an_incomplete_bundle_is_a_conflict_not_an_overwrite(
     policy = _policy()
     meta = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
-    (plan_dir / LOCATOR_GROUPS_NAME).unlink()
+    (plan_dir / LOCATOR_GROUPS_FILE).unlink()
 
     with pytest.raises(PlanConflictError, match="incomplete plan bundle"):
         plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
@@ -375,7 +375,7 @@ def test_seed_cohort_replaces_configured_seed_csv_and_is_fingerprinted(
     plan_dir = resolve_filing_catalog_paths(catalog_artifacts_root).plan_dir(
         meta["plan_id"]
     )
-    seeds = read_seed_filers_csv(plan_dir / SEED_FILERS_NAME)
+    seeds = read_seed_filers_csv(plan_dir / SEED_FILERS_FILE)
 
     assert set(seeds) == {"0000320193"}
     seed = seeds["0000320193"]
@@ -418,7 +418,7 @@ def test_a_policy_plan_publishes_its_normalized_seed_set(
     meta = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
 
-    sidecar = plan_dir / SEED_FILERS_NAME
+    sidecar = plan_dir / SEED_FILERS_FILE
     assert sidecar.is_file()
     published = read_seed_filers_csv(sidecar)
     assert set(published) == {"0000000001"}
@@ -496,7 +496,7 @@ def test_a_plan_with_no_seed_file_publishes_an_empty_seed_set(
     artifacts_root = _artifacts_root(catalog_artifacts_root)
     meta = plan_policy(str(manifest["catalog_id"]), _policy(), artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
-    assert read_seed_filers_csv(plan_dir / SEED_FILERS_NAME) == {}
+    assert read_seed_filers_csv(plan_dir / SEED_FILERS_FILE) == {}
     assert meta["seed_filer_count"] == 0
 
 
@@ -644,7 +644,7 @@ def _selection_report(
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(
         str(meta["plan_id"])
     )
-    return json.loads((plan_dir / SELECTION_REPORT_NAME).read_text("utf-8"))
+    return json.loads((plan_dir / SELECTION_REPORT_FILE).read_text("utf-8"))
 
 
 def _derived_bands_policy(**overrides: object) -> SelectionPolicy:

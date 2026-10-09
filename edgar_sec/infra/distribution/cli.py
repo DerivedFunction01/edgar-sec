@@ -23,7 +23,7 @@ from .guards import (
 from .partition import build_assignment, divide_chunks
 from .protocol import DistributionAdapter
 from .receipt import (
-    RECEIPT_FILE_NAME,
+    RECEIPT_FILE,
     read_receipt,
     verify_receipt_digests,
     write_receipt,
@@ -100,7 +100,7 @@ def cmd_worker(
 
     effective_worker = worker_id or str(manifest.get("worker_id", "worker"))
     receipt = adapter.execute_worker(bundle_path, effective_worker, workers=workers)
-    write_receipt(receipt, bundle_path / RECEIPT_FILE_NAME)
+    write_receipt(receipt, bundle_path / RECEIPT_FILE)
 
     render_output(
         [
@@ -127,7 +127,7 @@ def cmd_import(
     manifest = read_bundle_manifest(bundle_path)
     assert_pipeline_affinity(manifest, adapter.pipeline_name)
 
-    receipt = read_receipt(bundle_path / RECEIPT_FILE_NAME)
+    receipt = read_receipt(bundle_path / RECEIPT_FILE)
     valid, err = verify_receipt_digests(receipt, bundle_path)
     if not valid:
         raise ValueError(f"receipt digest verification failed: {err}")

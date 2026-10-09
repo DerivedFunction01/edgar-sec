@@ -54,8 +54,8 @@ from edgar_sec.pipelines.filing_catalog.materialization import (
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
     PIPELINE_DIR,
-    SNAPSHOT_FILE_NAME,
-    TARGETS_DIR_NAME,
+    SNAPSHOT_FILE,
+    TARGETS_DIR,
     resolve_filing_catalog_paths,
     resolve_metadata_paths,
     target_part_name,
@@ -322,7 +322,7 @@ def materialize(
             profile_query = build_delta_profile_query("source", str(base_profiles_file))
         else:
             profile_query = build_profile_query("source")
-        profiles_path = staging_dir / SNAPSHOT_FILE_NAME
+        profiles_path = staging_dir / SNAPSHOT_FILE
         profile_count = copy_query_to_parquet(con, profile_query, profiles_path, groups)
         emit_progress(
             progress,
@@ -335,7 +335,7 @@ def materialize(
 
     reclaim()
 
-    targets_dir = staging_dir / TARGETS_DIR_NAME
+    targets_dir = staging_dir / TARGETS_DIR
     if targets_dir.exists():
         shutil.rmtree(targets_dir)
     targets_dir.mkdir(parents=True, exist_ok=True)
@@ -355,7 +355,7 @@ def materialize(
             total_target_rows += rows
             part_metadata.append(
                 {
-                    "path": f"{TARGETS_DIR_NAME}/{shard_name}",
+                    "path": f"{TARGETS_DIR}/{shard_name}",
                     "part_index": index,
                     "source_part": str(source_path),
                     "row_count": rows,
@@ -403,7 +403,7 @@ def materialize(
     }
     target_descriptors = [
         PartDescriptor(
-            path=f"{catalog_id}/{TARGETS_DIR_NAME}/{target_part_name(i)}",
+            path=f"{catalog_id}/{TARGETS_DIR}/{target_part_name(i)}",
             sha256=p["artifact_sha256"],
             row_count=p["row_count"],
             byte_size=Path(targets_dir / target_part_name(i)).stat().st_size,
@@ -412,7 +412,7 @@ def materialize(
     ]
     profile_descriptors = [
         PartDescriptor(
-            path=f"{catalog_id}/{SNAPSHOT_FILE_NAME}",
+            path=f"{catalog_id}/{SNAPSHOT_FILE}",
             sha256=file_sha256(profiles_path),
             row_count=profile_count,
             byte_size=profiles_path.stat().st_size,

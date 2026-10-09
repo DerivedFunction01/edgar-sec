@@ -12,4 +12,7 @@ def test_inventory_paths_resolve_snapshot_layout(tmp_path: Path) -> None:
     expected_root = tmp_path / "document_inventory" / foundation_paths.SNAPSHOTS_DIR
     assert paths.snapshots_root == expected_root
     assert paths.catalog_file.parent == expected_root
-    assert paths.publication_lock_path == expected_root / "publication.lock"
+    assert (
+        paths.publication_lock_path
+        == expected_root / foundation_paths.PUBLICATION_LOCK_FILE
+    )

@@ -30,7 +30,7 @@ from edgar_sec.infra.storage.duckdb import (
 )
 from edgar_sec.infra.storage.parquet import count_parquet_rows, read_parquet_schema
 
-from .paths import PARTS_DIR_NAME, MetadataPaths, RunPaths
+from .paths import PARTS_DIR, MetadataPaths, RunPaths
 from .planner import Plan, utc_now_iso
 from .roster import read_cik_index, write_cik_index
 from .validation import find_duplicate_accessions
@@ -298,7 +298,7 @@ def publish_parts(
             )
         report.parts.append(
             {
-                "path": f"{PARTS_DIR_NAME}/{name}",
+                "path": f"{PARTS_DIR}/{name}",
                 "part_index": index,
                 "source": label,
                 "row_count": count_parquet_rows(destination),

@@ -11,7 +11,7 @@ from edgar_sec.infra.storage.atomic import atomic_write_json
 
 from .protocol import WorkerReceipt
 
-RECEIPT_FILE_NAME = "receipt.json"
+RECEIPT_FILE = "receipt.json"
 
 
 def build_worker_receipt(

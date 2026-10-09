@@ -11,10 +11,10 @@ from edgar_sec.foundation.runtime.paths import (
 )
 from edgar_sec.pipelines.metadata_sync.options import BundleRunPaths
 from edgar_sec.pipelines.metadata_sync.paths import (
-    ASSIGNMENTS_DIR_NAME,
+    ASSIGNMENTS_DIR,
     METADATA_DIR,
-    RECEIPT_FILE_NAME,
-    ROSTER_DIR_NAME,
+    RECEIPT_FILE,
+    ROSTER_DIR,
     SNAPSHOT_CIK_INDEX_NAME,
     MetadataPaths,
     resolve_metadata_paths,
@@ -63,13 +63,10 @@ def test_a_plan_is_a_directory_of_artifacts_not_one_file(tmp_path: Path) -> None
     bundle = tmp_path / "metadata" / "plans" / "plan42"
     assert run_paths.plan_bundle == bundle
     assert run_paths.plan_file == bundle / PLAN_FILE_NAME
-    assert run_paths.roster_file == bundle / ROSTER_DIR_NAME / "ciks.parquet"
+    assert run_paths.roster_file == bundle / ROSTER_DIR / "ciks.parquet"
     assert run_paths.input_manifest_file == bundle / "input" / "input_manifest.json"
-    assert run_paths.assignments_dir == bundle / ASSIGNMENTS_DIR_NAME
-    assert (
-        run_paths.assignment_file("abc")
-        == bundle / ASSIGNMENTS_DIR_NAME / "abc.parquet"
-    )
+    assert run_paths.assignments_dir == bundle / ASSIGNMENTS_DIR
+    assert run_paths.assignment_file("abc") == bundle / ASSIGNMENTS_DIR / "abc.parquet"
 
 
 def test_a_copied_bundle_resolves_the_same_shape(tmp_path: Path) -> None:
@@ -86,7 +83,7 @@ def test_a_copied_bundle_resolves_the_same_shape(tmp_path: Path) -> None:
         bundle.chunk_file(3)
         == tmp_path / "out" / "worker-00" / "chunks" / "chunk_0003.parquet"
     )
-    assert bundle.receipt_file == tmp_path / "out" / "worker-00" / RECEIPT_FILE_NAME
+    assert bundle.receipt_file == tmp_path / "out" / "worker-00" / RECEIPT_FILE
     assert "transient" not in bundle.chunk_file(0).parts
 
 

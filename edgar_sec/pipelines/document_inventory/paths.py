@@ -11,9 +11,10 @@ import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.infra.storage.dag.paths import DAGPaths
 from edgar_sec.pipelines.filing_catalog.paths import (
     FilingCatalogPaths,
-    PLAN_TARGETS_DIR_NAME,
+    LOCATOR_GROUPS_FILE,
+    PLAN_TARGETS_DIR,
     REQUIRED_PLAN_FILES,
-    SEED_FILERS_NAME,
+    SEED_FILERS_FILE,
     form_partition_name,
     resolve_filing_catalog_paths,
 )
@@ -29,7 +30,7 @@ __all__ = [
     "InventoryPaths",
     "InventoryRunPaths",
     "LOCK_FILE",
-    "MANIFEST_FILE_NAME",
+    "MANIFEST_FILE",
     "OUTCOMES_FILE",
     "POINTER_FILE",
     "PROJECTION_MANIFEST_FILE",
@@ -43,9 +44,10 @@ __all__ = [
     "CANDIDATE_ENTRIES_FILE",
     "CANCELLED_FILE",
     "FilingCatalogPaths",
-    "PLAN_TARGETS_DIR_NAME",
+    "LOCATOR_GROUPS_FILE",
+    "PLAN_TARGETS_DIR",
     "REQUIRED_PLAN_FILES",
-    "SEED_FILERS_NAME",
+    "SEED_FILERS_FILE",
     "PUBLICATION_LOCK_FILE",
     "NEW_SOURCES_FILE",
     "RUN_MANIFEST_FILE",
@@ -68,14 +70,14 @@ DATASET = "document_inventory"
 #: Files inside one attempt directory.
 OUTCOMES_FILE = "outcomes.parquet"
 ENTRIES_FILE = "entries.parquet"
-MANIFEST_FILE_NAME = "manifest.json"
+MANIFEST_FILE = "manifest.json"
 SNAPSHOT_PART_PREFIX = "part-"
 
 #: Files at the run root.
 RUN_MANIFEST_FILE = "run_manifest.json"
 LOCK_FILE = "run.lock"
 CANCELLED_FILE = "cancelled.json"
-PUBLICATION_LOCK_FILE = "publication.lock"
+PUBLICATION_LOCK_FILE = foundation_paths.PUBLICATION_LOCK_FILE
 
 #: Pointer naming the current committed attempt for a chunk.
 POINTER_FILE = "current.json"
@@ -83,7 +85,7 @@ PROGRESS_DIR = "progress"
 PROGRESS_POINTER_FILE = "current.json"
 
 #: Directory names under a chunk.
-CHUNKS_DIR = "chunks"
+CHUNKS_DIR = foundation_paths.CHUNKS_DIR
 
 #: Prefix for one immutable attempt directory inside a chunk.
 ATTEMPT_PREFIX = "attempt-"
@@ -100,8 +102,8 @@ NEW_SOURCES_FILE = "new_sources.parquet"
 
 #: Published snapshot root, owned by S5, separate from transient state.
 FIXTURE_DATABASE_FILE = "index_fixtures.sqlite"
-REVIEW_RUNS_DIR = "review-runs"
-REVIEW_CASES_DIR = "cases"
+REVIEW_RUNS_DIR = foundation_paths.REVIEW_RUNS_DIR
+REVIEW_CASES_DIR = foundation_paths.CASES_DIR
 REVIEW_MANIFEST_FILE = "manifest.jsonl"
 WORK_ORDER_FILE = "work_order.parquet"
 COHORT_ACCESSIONS_FILE = "cohort_accessions.parquet"
@@ -271,7 +273,7 @@ class InventoryRunPaths:
         return self.attempt_dir(chunk_id, attempt_id) / ENTRIES_FILE
 
     def attempt_manifest_path(self, chunk_id: str, attempt_id: str) -> Path:
-        return self.attempt_dir(chunk_id, attempt_id) / MANIFEST_FILE_NAME
+        return self.attempt_dir(chunk_id, attempt_id) / MANIFEST_FILE
 
 
 def inventory_run_paths(artifacts_root: Path | str, run_id: str) -> InventoryRunPaths:

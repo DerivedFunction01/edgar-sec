@@ -17,7 +17,7 @@ from edgar_sec.foundation.hashing import sha256_text
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_text
 from edgar_sec.pipelines.document_storage.paths import (
-    MANIFEST_FILE_NAME,
+    MANIFEST_FILE,
     current_pointer_path,
 )
 
@@ -122,10 +122,10 @@ def write_manifest(
     if not snapshot_id:
         raise ManifestError("manifest requires a snapshot_id")
     target = snapshot_dir(snapshots_root, snapshot_id)
-    if (target / MANIFEST_FILE_NAME).is_file():
+    if (target / MANIFEST_FILE).is_file():
         raise ManifestError(f"snapshot {snapshot_id} already published at {target}")
 
-    atomic_write_text(target / MANIFEST_FILE_NAME, canonical_json(manifest))
+    atomic_write_text(target / MANIFEST_FILE, canonical_json(manifest))
     if set_current:
         publish_pointer(
             snapshots_root,
@@ -134,19 +134,19 @@ def write_manifest(
             dataset=dataset,
             phase=phase,
         )
-    return target / MANIFEST_FILE_NAME
+    return target / MANIFEST_FILE
 
 
 def read_manifest(snapshots_root: Path, snapshot_id: str) -> dict[str, Any]:
     """Read one snapshot's manifest."""
-    path = snapshot_dir(snapshots_root, snapshot_id) / MANIFEST_FILE_NAME
+    path = snapshot_dir(snapshots_root, snapshot_id) / MANIFEST_FILE
     if not path.is_file():
         raise ManifestError(f"snapshot manifest not found: {path}")
     return json.loads(path.read_text(encoding="utf-8"))
 
 
 def list_snapshots(
-    snapshots_root: Path, manifest_name: str = MANIFEST_FILE_NAME
+    snapshots_root: Path, manifest_name: str = MANIFEST_FILE
 ) -> list[dict[str, Any]]:
     """List every readable snapshot manifest, sorted by id.
 

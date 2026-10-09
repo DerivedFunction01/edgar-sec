@@ -14,22 +14,22 @@ from edgar_sec.foundation.runtime.paths import (
     PLAN_FILE_NAME,
     ProjectPaths,
     resolve_paths,
+    RUN_LOCK_FILE,
     transient_dir,
 )
 
 from .roster import ROSTER_FILE_NAME, SNAPSHOT_CIK_INDEX_NAME
 
 METADATA_DIR = "metadata"
-PARTS_DIR_NAME = "parts"
-ROSTER_DIR_NAME = "roster"
-INPUT_DIR_NAME = "input"
-INPUT_MANIFEST_NAME = "input_manifest.json"
-ASSIGNMENTS_DIR_NAME = "assignments"
-RECEIPT_FILE_NAME = "receipt.json"
-RUN_LOCK_FILE = "run.lock"
+PARTS_DIR = "parts"
+ROSTER_DIR = "roster"
+INPUT_DIR = "input"
+INPUT_MANIFEST_FILE = "input_manifest.json"
+ASSIGNMENTS_DIR = "assignments"
+RECEIPT_FILE = "receipt.json"
 
-PLANS_DIR_NAME = "plans"
-CHUNKS_DIR_NAME = "chunks"
+PLANS_DIR = foundation_paths.PLANS_DIR
+CHUNKS_DIR = foundation_paths.CHUNKS_DIR
 
 
 @dataclass(frozen=True, slots=True)
@@ -51,7 +51,7 @@ class MetadataPaths:
     @property
     def plans_root(self) -> Path:
         """Root of published metadata plan bundles."""
-        return self.metadata_root / PLANS_DIR_NAME
+        return self.metadata_root / PLANS_DIR
 
     def plan_dir(self, plan_id: str) -> Path:
         """Directory holding one immutable plan."""
@@ -67,7 +67,7 @@ class MetadataPaths:
 
     def snapshot_parts_dir(self, snapshot_id: str) -> Path:
         """Directory holding the Parquet parts of a multipart snapshot."""
-        return self.snapshot_dir(snapshot_id) / PARTS_DIR_NAME
+        return self.snapshot_dir(snapshot_id) / PARTS_DIR
 
     def snapshot_part(self, snapshot_id: str, part_name: str) -> Path:
         """Path of one metadata part within a multipart snapshot."""
@@ -102,17 +102,17 @@ class RunPaths:
     @property
     def roster_file(self) -> Path:
         """The CIK cohort, stored once for the whole plan."""
-        return self.plan_bundle / ROSTER_DIR_NAME / ROSTER_FILE_NAME
+        return self.plan_bundle / ROSTER_DIR / ROSTER_FILE_NAME
 
     @property
     def input_manifest_file(self) -> Path:
         """Diagnostics about where the selected cohort came from."""
-        return self.plan_bundle / INPUT_DIR_NAME / INPUT_MANIFEST_NAME
+        return self.plan_bundle / INPUT_DIR / INPUT_MANIFEST_FILE
 
     @property
     def assignments_dir(self) -> Path:
         """Directory holding one chunk-to-worker mapping per distribution."""
-        return self.plan_bundle / ASSIGNMENTS_DIR_NAME
+        return self.plan_bundle / ASSIGNMENTS_DIR
 
     def assignment_file(self, assignment_id: str) -> Path:
         """Path of one worker assignment dataset."""
@@ -157,15 +157,15 @@ def resolve_run_paths(
 
 
 __all__ = [
-    "ASSIGNMENTS_DIR_NAME",
-    "CHUNKS_DIR_NAME",
-    "INPUT_DIR_NAME",
-    "INPUT_MANIFEST_NAME",
+    "ASSIGNMENTS_DIR",
+    "CHUNKS_DIR",
+    "INPUT_DIR",
+    "INPUT_MANIFEST_FILE",
     "METADATA_DIR",
-    "PARTS_DIR_NAME",
-    "PLANS_DIR_NAME",
-    "RECEIPT_FILE_NAME",
-    "ROSTER_DIR_NAME",
+    "PARTS_DIR",
+    "PLANS_DIR",
+    "RECEIPT_FILE",
+    "ROSTER_DIR",
     "RUN_LOCK_FILE",
     "MetadataPaths",
     "RunPaths",

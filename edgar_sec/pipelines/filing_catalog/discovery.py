@@ -32,7 +32,7 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     CURRENT_ALIAS,
     FilingCatalogPaths,
     resolve_filing_catalog_paths,
-    safe_identifier,
+    validate_safe_id,
 )
 from edgar_sec.pipelines.filing_catalog.publication import PlanConflictError
 
@@ -65,7 +65,7 @@ def resolve_catalog_reference(paths: FilingCatalogPaths, catalog: str) -> str:
                 "no catalog is published as current; pass an explicit catalog id"
             )
         return resolved
-    return safe_identifier(catalog)
+    return validate_safe_id(catalog)
 
 
 def discover_catalogs(

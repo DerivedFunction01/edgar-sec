@@ -26,9 +26,9 @@ from edgar_sec.pipelines.filing_catalog.expansion import (
     validate_target,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
-    EXPANSION_METADATA_NAME,
-    LOCATOR_GROUPS_NAME,
-    SEED_FILERS_NAME,
+    EXPANSION_METADATA_FILE,
+    LOCATOR_GROUPS_FILE,
+    SEED_FILERS_FILE,
     resolve_filing_catalog_paths,
 )
 from edgar_sec.pipelines.filing_catalog.planner import plan_policy
@@ -126,7 +126,7 @@ def test_a_root_plan_has_no_lineage_record(
         catalog_snapshot, catalog_artifacts_root, base_content_units=2
     )
     assert read_expansion_metadata(parent_dir) == {}
-    assert not (parent_dir / EXPANSION_METADATA_NAME).exists()
+    assert not (parent_dir / EXPANSION_METADATA_FILE).exists()
 
 
 # --------------------------------------------------------- parent compatibility
@@ -186,7 +186,7 @@ def test_a_downgraded_parent_reports_the_schema_mismatch_not_a_missing_file(
         parent_dir,
         lambda document: document.__setitem__("plan_schema_version", "1.0"),
     )
-    (parent_dir / SEED_FILERS_NAME).unlink()
+    (parent_dir / SEED_FILERS_FILE).unlink()
 
     with pytest.raises(ParentPlanError) as failure:
         expand(parent_dir, 4, artifacts_root=artifacts_root)
@@ -266,7 +266,7 @@ def test_a_parent_with_a_missing_sidecar_is_a_parent_plan_error(
     parent_dir, _ = _publish_parent(
         catalog_snapshot, catalog_artifacts_root, base_content_units=2
     )
-    (parent_dir / SEED_FILERS_NAME).unlink()
+    (parent_dir / SEED_FILERS_FILE).unlink()
 
     with pytest.raises(ParentPlanError) as failure:
         expand(parent_dir, 4, artifacts_root=artifacts_root)
@@ -282,7 +282,7 @@ def test_a_malformed_parent_sidecar_is_a_parent_plan_error(
     parent_dir, _ = _publish_parent(
         catalog_snapshot, catalog_artifacts_root, base_content_units=2
     )
-    (parent_dir / SEED_FILERS_NAME).write_text("cik\n0000320193\n", encoding="utf-8")
+    (parent_dir / SEED_FILERS_FILE).write_text("cik\n0000320193\n", encoding="utf-8")
 
     with pytest.raises(ParentPlanError, match="seed sidecar is unusable"):
         expand(parent_dir, 4, artifacts_root=artifacts_root)
@@ -514,7 +514,7 @@ def test_expanded_child_keeps_the_18_column_locator_schema(
     )
     child = expand(parent_dir, 4, artifacts_root=artifacts_root)
     child_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(child["plan_id"])
-    schema = pq.read_schema(child_dir / LOCATOR_GROUPS_NAME)
+    schema = pq.read_schema(child_dir / LOCATOR_GROUPS_FILE)
     assert list(schema.names) == list(LOCATOR_POLICY_COLUMNS)
 
 
@@ -576,7 +576,7 @@ def test_a_seeded_parent_expands_from_its_own_published_seed_set(
     child = expand(parent_dir, 4, artifacts_root=artifacts_root)
     child_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(child["plan_id"])
     assert child["seed_fingerprint"] == parent["seed_fingerprint"]
-    assert read_seed_filers_csv(child_dir / SEED_FILERS_NAME) == {
+    assert read_seed_filers_csv(child_dir / SEED_FILERS_FILE) == {
         "0000320193": SeedFiler(cik="0000320193")
     }
     assert set(plan_locator_keys(parent_dir)) <= set(plan_locator_keys(child_dir))

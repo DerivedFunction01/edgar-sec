@@ -68,10 +68,10 @@ from edgar_sec.pipelines.filing_catalog.family_index import (
     resolve_active_family_index,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
-    LOCATOR_GROUPS_NAME,
-    PLAN_TARGETS_DIR_NAME,
-    RESERVE_TARGETS_NAME,
-    SEED_FILERS_NAME,
+    LOCATOR_GROUPS_FILE,
+    PLAN_TARGETS_DIR,
+    RESERVE_TARGETS_FILE,
+    SEED_FILERS_FILE,
     FilingCatalogPaths,
     form_partition_name,
     resolve_metadata_paths,
@@ -347,7 +347,7 @@ def plan(
         counts: dict[str, int] = {}
         total_rows = 0
         with staged_plan_bundle(final_dir, plan_id) as staging:
-            targets_root = staging / PLAN_TARGETS_DIR_NAME
+            targets_root = staging / PLAN_TARGETS_DIR
             # Created even when no form matches, so a zero-row plan is still
             # a structurally complete, reusable bundle.
             targets_root.mkdir(parents=True, exist_ok=True)
@@ -387,7 +387,7 @@ def plan(
             locator_count = copy_query_to_parquet(
                 con,
                 _locator_groups_query(locator_source),
-                staging / LOCATOR_GROUPS_NAME,
+                staging / LOCATOR_GROUPS_FILE,
                 row_group_size,
             )
 
@@ -635,8 +635,8 @@ def plan_policy(
     counts: dict[str, int] = {}
     total_rows = 0
     with staged_plan_bundle(final_dir, plan_id) as staging:
-        write_seed_filers_csv(staging / SEED_FILERS_NAME, pinned_seed)
-        targets_root = staging / PLAN_TARGETS_DIR_NAME
+        write_seed_filers_csv(staging / SEED_FILERS_FILE, pinned_seed)
+        targets_root = staging / PLAN_TARGETS_DIR
         targets_root.mkdir(parents=True, exist_ok=True)
         with connect() as con:
             _register_selected_keys(con, selection.active_locators)
@@ -689,7 +689,7 @@ def plan_policy(
             locator_count = copy_query_to_parquet(
                 con,
                 _policy_locator_groups_query(locator_source),
-                staging / LOCATOR_GROUPS_NAME,
+                staging / LOCATOR_GROUPS_FILE,
                 row_group_size,
             )
 
@@ -702,7 +702,7 @@ def plan_policy(
                     "JOIN reserve_locator_keys r "
                     "ON l.document_locator_key = r.document_locator_key "
                     "ORDER BY l.document_locator_key",
-                    staging / RESERVE_TARGETS_NAME,
+                    staging / RESERVE_TARGETS_FILE,
                     row_group_size,
                 )
 

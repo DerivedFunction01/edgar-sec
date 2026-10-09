@@ -43,13 +43,13 @@ from edgar_sec.pipelines.document_inventory.paths import (
     COHORT_SOURCES_FILE,
     FilingCatalogPaths,
     InventoryRunPaths,
+    LOCATOR_GROUPS_FILE,
     PROJECTION_MANIFEST_FILE,
     WORK_ORDER_FILE,
     inventory_paths,
     inventory_run_paths,
     resolve_filing_catalog_paths,
 )
-from edgar_sec.pipelines.filing_catalog import paths as filing_catalog_paths
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.document_inventory.run_manifest import (
     InventoryRunManifest,
@@ -342,7 +342,7 @@ def project_catalog_plan(
     plan_root, plan, parts, plan_file_sha, locator_file_sha = catalog_plan_parts(
         catalog_plan_id, resolved_catalog_paths
     )
-    locator_path = plan_root / filing_catalog_paths.LOCATOR_GROUPS_NAME
+    locator_path = plan_root / LOCATOR_GROUPS_FILE
     base_paths = inventory_paths(artifacts_root)
 
     if base_snapshot_id is not None:

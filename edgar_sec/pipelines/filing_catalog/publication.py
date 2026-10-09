@@ -26,11 +26,11 @@ from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 from edgar_sec.pipelines.filing_catalog.paths import (
-    LOCATOR_GROUPS_NAME,
-    PLAN_TARGETS_DIR_NAME,
+    LOCATOR_GROUPS_FILE,
+    PLAN_TARGETS_DIR,
     REQUIRED_PLAN_FILES,
-    SEED_FILERS_NAME,
-    SELECTION_REPORT_NAME,
+    SEED_FILERS_FILE,
+    SELECTION_REPORT_FILE,
     form_partition_name,
 )
 
@@ -54,7 +54,7 @@ def plan_locator_keys(plan_dir: str | Path) -> list[str]:
     leaves no stray state in an immutable bundle.
     """
     root = Path(plan_dir).resolve()
-    locator_path = root / LOCATOR_GROUPS_NAME
+    locator_path = root / LOCATOR_GROUPS_FILE
     if not locator_path.is_file():
         raise FileNotFoundError(f"plan locator groups not found: {locator_path}")
     with connect() as con:
@@ -110,7 +110,7 @@ def plan_fingerprint_from_sorted_keys(
 
 def plan_fingerprint_from_plan(plan_dir: str | Path, plan_meta: dict[str, Any]) -> str:
     """Verify selection identity without materializing all locator keys."""
-    locator_path = Path(plan_dir).resolve() / LOCATOR_GROUPS_NAME
+    locator_path = Path(plan_dir).resolve() / LOCATOR_GROUPS_FILE
     if not locator_path.is_file():
         raise FileNotFoundError(f"plan locator groups not found: {locator_path}")
     with connect() as con:
@@ -132,9 +132,9 @@ def plan_bundle_complete(plan_dir: Path, scope: str = "") -> bool:
     """
     if not all((plan_dir / name).is_file() for name in REQUIRED_PLAN_FILES):
         return False
-    if scope == SCOPE_POLICY and not (plan_dir / SEED_FILERS_NAME).is_file():
+    if scope == SCOPE_POLICY and not (plan_dir / SEED_FILERS_FILE).is_file():
         return False
-    targets_dir = plan_dir / PLAN_TARGETS_DIR_NAME
+    targets_dir = plan_dir / PLAN_TARGETS_DIR
     if not targets_dir.is_dir():
         return False
     published = _load_plan_json(plan_dir)
@@ -325,7 +325,7 @@ def write_plan_documents(
         stamped, plan_locator_keys(staging_dir)
     )
     atomic_write_json(staging_dir / PLAN_FILE_NAME, stamped, indent=2)
-    atomic_write_json(staging_dir / SELECTION_REPORT_NAME, selection_report, indent=2)
+    atomic_write_json(staging_dir / SELECTION_REPORT_FILE, selection_report, indent=2)
     return stamped
 
 
@@ -347,7 +347,7 @@ def _describe_target_parts(staging_dir: Path, counts: Any) -> list[dict[str, Any
         if partition in partitions:
             raise PlanConflictError("plan forms collide in target partition names")
         partitions.add(partition)
-        relative = f"{PLAN_TARGETS_DIR_NAME}/form={partition}/{DATA_FILE_NAME}"
+        relative = f"{PLAN_TARGETS_DIR}/form={partition}/{DATA_FILE_NAME}"
         path = staging_dir / relative
         if not path.is_file():
             raise PlanConflictError(

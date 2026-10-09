@@ -11,18 +11,18 @@ from edgar_sec.foundation.runtime.paths import (
     PLAN_FILE_NAME,
     ProjectPaths,
     resolve_paths,
+    validate_safe_id,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
     form_partition_name,
     resolve_filing_catalog_paths,
-    safe_identifier,
 )
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
 
 PIPELINE_DIR = "document_planning"
-PLANS_DIR_NAME = "plans"
-POLICY_DIR_NAME = "policies"
-PROFILES_DIR_NAME = "profiles"
+PLANS_DIR = "plans"
+POLICY_DIR = "policies"
+PROFILES_DIR = "profiles"
 _PROFILE_ID_RE = re.compile(r"[A-Za-z0-9_.-]+\Z", re.ASCII)
 
 
@@ -44,7 +44,7 @@ def catalog_form_partition_name(form: str) -> str:
 
 
 def validate_catalog_plan_id(plan_id: str) -> str:
-    return safe_identifier(plan_id)
+    return validate_safe_id(plan_id)
 
 
 def resolve_inventory_paths(
@@ -85,11 +85,11 @@ class DocumentPlanningPaths:
 
     @property
     def profiles_root(self) -> Path:
-        return self.artifacts_root / PIPELINE_DIR / PROFILES_DIR_NAME
+        return self.artifacts_root / PIPELINE_DIR / PROFILES_DIR
 
     @property
     def plans_root(self) -> Path:
-        return self.artifacts_root / PIPELINE_DIR / PLANS_DIR_NAME
+        return self.artifacts_root / PIPELINE_DIR / PLANS_DIR
 
     def profile_path(self, profile_id: str) -> Path:
         return self.profiles_root / f"{validate_profile_id(profile_id)}.json"
@@ -128,12 +128,12 @@ def resolve_document_planning_paths(
 
 
 __all__ = [
-    "PROFILES_DIR_NAME",
+    "PROFILES_DIR",
     "CatalogPaths",
     "DocumentPlanningPaths",
     "PIPELINE_DIR",
-    "PLANS_DIR_NAME",
-    "POLICY_DIR_NAME",
+    "PLANS_DIR",
+    "POLICY_DIR",
     "resolve_document_planning_paths",
     "resolve_inventory_paths",
     "resolve_catalog_paths",

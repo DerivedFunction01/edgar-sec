@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.infra.distribution.receipt import (
-    RECEIPT_FILE_NAME,
+    RECEIPT_FILE,
     build_worker_receipt,
     read_receipt,
     verify_receipt_digests,
@@ -21,7 +21,7 @@ def test_receipt_build_write_read(tmp_path: Path) -> None:
     chunk.write_bytes(b"mock-chunk-content")
 
     receipt = build_worker_receipt("meta", "p1", "w1", (0,), 100, [chunk], tmp_path)
-    dest = tmp_path / RECEIPT_FILE_NAME
+    dest = tmp_path / RECEIPT_FILE
     write_receipt(receipt, dest)
 
     loaded = read_receipt(dest)

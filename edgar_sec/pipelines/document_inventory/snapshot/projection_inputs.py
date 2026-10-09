@@ -19,9 +19,9 @@ from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.document_inventory.cohort import CohortInputError
 from edgar_sec.pipelines.document_inventory.paths import (
     FilingCatalogPaths,
-    PLAN_TARGETS_DIR_NAME,
+    PLAN_TARGETS_DIR,
     REQUIRED_PLAN_FILES,
-    SEED_FILERS_NAME,
+    SEED_FILERS_FILE,
     InventoryPaths,
     form_partition_name,
     resolve_filing_catalog_paths,
@@ -90,7 +90,7 @@ def catalog_plan_parts(
     if document.get("scope") not in {"deterministic", "policy"}:
         raise CohortInputError("invalid_bundle", detail="unsupported plan scope")
     if document["scope"] == "policy":
-        seed_path = root / SEED_FILERS_NAME
+        seed_path = root / SEED_FILERS_FILE
         if not seed_path.is_file():
             raise CohortInputError(
                 "invalid_bundle", detail="policy plan seed filers are missing"
@@ -194,7 +194,7 @@ def catalog_plan_parts(
             raise CohortInputError(
                 "invalid_bundle", detail=f"invalid row count for {form!r}"
             )
-        path = root / PLAN_TARGETS_DIR_NAME / f"form={partition}" / DATA_FILE_NAME
+        path = root / PLAN_TARGETS_DIR / f"form={partition}" / DATA_FILE_NAME
         if not path.is_file():
             raise CohortInputError(
                 "invalid_bundle", detail=f"target part missing: {path.name}"
@@ -229,7 +229,7 @@ def catalog_plan_parts(
         expected_parts.add(resolved)
     observed_parts = {
         path.resolve()
-        for path in (root / PLAN_TARGETS_DIR_NAME).glob("form=*/*.parquet")
+        for path in (root / PLAN_TARGETS_DIR).glob("form=*/*.parquet")
         if path.is_file()
     }
     if observed_parts != expected_parts:

@@ -35,7 +35,7 @@ from edgar_sec.pipelines.filing_catalog.discovery import (
 from edgar_sec.pipelines.filing_catalog.paths import (
     FilingCatalogPaths,
     resolve_filing_catalog_paths,
-    safe_identifier,
+    validate_safe_id,
 )
 
 from .commands.expand import cmd_expand
@@ -207,12 +207,12 @@ def _action_plan() -> None:
 
 def _draft_path(paths: FilingCatalogPaths, name: str) -> Path:
     """Return the path of a named policy draft, or why the name is unusable.
-    The name becomes a filename, reduced through ``safe_identifier``; two names reducing
+    The name becomes a filename, reduced through ``validate_safe_id``; two names reducing
     alike are refused rather than overwriting each other.
     """
     candidate = f"{name.strip().lower().replace(' ', '-')}.json"
     try:
-        return paths.policies_root / safe_identifier(candidate)
+        return paths.policies_root / validate_safe_id(candidate)
     except ValueError:
         raise ValueError(
             f"draft name {name!r} must reduce to letters, digits, dashes, or "

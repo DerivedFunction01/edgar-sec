@@ -15,9 +15,9 @@ from edgar_sec.pipelines.cohort.ingestion import ingest_file_to_cohort
 from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 from edgar_sec.pipelines.filing_catalog.catalog_job import materialize
 from edgar_sec.pipelines.filing_catalog.paths import (
-    LOCATOR_GROUPS_NAME,
-    PLAN_TARGETS_DIR_NAME,
-    SELECTION_REPORT_NAME,
+    LOCATOR_GROUPS_FILE,
+    PLAN_TARGETS_DIR,
+    SELECTION_REPORT_FILE,
     form_partition_name,
     resolve_filing_catalog_paths,
 )
@@ -261,7 +261,7 @@ def test_the_normalized_selection_is_recorded_in_the_plan(
     ]
     assert meta["date_selection_text"] == "2024-01-01..2024-12-31,@Q1[2011..2015]"
 
-    report_path = _plan_dir(artifacts_root, meta) / SELECTION_REPORT_NAME
+    report_path = _plan_dir(artifacts_root, meta) / SELECTION_REPORT_FILE
     report = json.loads(report_path.read_text(encoding="utf-8"))
     assert report["date_selection"] == meta["date_selection"]
     assert report["date_selection_text"] == meta["date_selection_text"]
@@ -416,7 +416,7 @@ def test_identical_rerun_reuses_the_bundle(
     plan_dir = _plan_dir(artifacts_root, first)
     shard = (
         plan_dir
-        / PLAN_TARGETS_DIR_NAME
+        / PLAN_TARGETS_DIR
         / f"form={form_partition_name('10-K')}"
         / "data.parquet"
     )
@@ -436,7 +436,7 @@ def test_bundle_contains_every_required_file(
     meta = plan(catalog_id, artifacts_root)
     plan_dir = _plan_dir(artifacts_root, meta)
     assert plan_bundle_complete(plan_dir)
-    for name in (PLAN_FILE_NAME, SELECTION_REPORT_NAME, LOCATOR_GROUPS_NAME):
+    for name in (PLAN_FILE_NAME, SELECTION_REPORT_FILE, LOCATOR_GROUPS_FILE):
         assert (plan_dir / name).is_file()
 
 
@@ -446,7 +446,7 @@ def test_amendment_forms_escape_the_partition_separator(
     meta = plan(catalog_id, artifacts_root, forms=("8-K/A", "10-K/A"))
     targets_dir = (
         resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
-        / PLAN_TARGETS_DIR_NAME
+        / PLAN_TARGETS_DIR
     )
     partitions = sorted(p.name for p in targets_dir.glob("form=*"))
     assert partitions == ["form=10-K_A", "form=8-K_A"]
@@ -466,7 +466,7 @@ def test_target_partitions_are_deterministically_ordered(
     plan_dir = _plan_dir(artifacts_root, meta)
     shard = pq.read_table(
         plan_dir
-        / PLAN_TARGETS_DIR_NAME
+        / PLAN_TARGETS_DIR
         / f"form={form_partition_name('10-K')}"
         / "data.parquet"
     )
@@ -482,8 +482,8 @@ def test_zero_row_plan_is_still_a_complete_bundle(
     assert meta["selected_rows"] == 0
     plan_dir = _plan_dir(artifacts_root, meta)
     assert plan_bundle_complete(plan_dir)
-    assert (plan_dir / LOCATOR_GROUPS_NAME).is_file()
-    assert pq.read_table(plan_dir / LOCATOR_GROUPS_NAME).num_rows == 0
+    assert (plan_dir / LOCATOR_GROUPS_FILE).is_file()
+    assert pq.read_table(plan_dir / LOCATOR_GROUPS_FILE).num_rows == 0
     assert (
         plan(catalog_id, artifacts_root, forms=("NO-SUCH-FORM",))["plan_id"]
         == meta["plan_id"]
@@ -495,7 +495,7 @@ def test_incomplete_bundle_is_a_conflict_not_a_silent_rewrite(
 ) -> None:
     meta = plan(catalog_id, artifacts_root, forms=("10-K",))
     plan_dir = _plan_dir(artifacts_root, meta)
-    (plan_dir / SELECTION_REPORT_NAME).unlink()
+    (plan_dir / SELECTION_REPORT_FILE).unlink()
     with pytest.raises(PlanConflictError, match="incomplete plan bundle"):
         plan(catalog_id, artifacts_root, forms=("10-K",))
 
@@ -509,7 +509,7 @@ def test_locator_groups_hold_one_row_per_locator(
     """13 occurrences across 12 locators: the shared bundle collapses to one."""
     meta = plan(catalog_id, artifacts_root)
     plan_dir = _plan_dir(artifacts_root, meta)
-    locators = pq.read_table(plan_dir / LOCATOR_GROUPS_NAME)
+    locators = pq.read_table(plan_dir / LOCATOR_GROUPS_FILE)
     assert locators.num_rows == 12
     assert meta["unique_locators_count"] == 12
     keys = locators.column("document_locator_key").to_pylist()
@@ -522,7 +522,7 @@ def test_locator_projection_is_the_narrow_stage_a_shape(
 ) -> None:
     meta = plan(catalog_id, artifacts_root)
     plan_dir = _plan_dir(artifacts_root, meta)
-    names = pq.read_table(plan_dir / LOCATOR_GROUPS_NAME).schema.names
+    names = pq.read_table(plan_dir / LOCATOR_GROUPS_FILE).schema.names
     assert names == [
         "document_locator_key",
         "form",
@@ -541,13 +541,13 @@ def test_locator_representatives_are_deterministic(
     """A re-plan from an independent catalog copy picks the same representative."""
     first = plan(catalog_id, artifacts_root, document_suffixes=(".txt",))
     rows_first = pq.read_table(
-        _plan_dir(artifacts_root, first) / LOCATOR_GROUPS_NAME
+        _plan_dir(artifacts_root, first) / LOCATOR_GROUPS_FILE
     ).to_pylist()
 
     other_root = artifacts_root.parent / "art2"
     materialize(sample_source, other_root)
     second = plan(catalog_id, other_root, document_suffixes=(".txt",))
     rows_second = pq.read_table(
-        _plan_dir(other_root, second) / LOCATOR_GROUPS_NAME
+        _plan_dir(other_root, second) / LOCATOR_GROUPS_FILE
     ).to_pylist()
     assert rows_first == rows_second

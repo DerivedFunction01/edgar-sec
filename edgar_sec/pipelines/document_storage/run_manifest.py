@@ -15,7 +15,7 @@ from edgar_sec.pipelines.document_storage.catalog_plan import (
     CatalogPlan,
 )
 from edgar_sec.pipelines.document_storage.checkpoint import DOCUMENT_SNAPSHOT_SCHEMA
-from edgar_sec.pipelines.document_storage.paths import MANIFEST_FILE_NAME
+from edgar_sec.pipelines.document_storage.paths import MANIFEST_FILE
 from edgar_sec.pipelines.document_storage.processor import DocumentProcessor
 from edgar_sec.pipelines.document_storage.execution import WORKER_SCHEMA_VERSION
 
@@ -83,7 +83,7 @@ def create_or_validate_manifest(
     run_dir: Path, run_id: str, identity: CatalogRunIdentity
 ) -> str:
     """Atomically create a new run manifest or validate an existing one."""
-    manifest_path = run_dir / MANIFEST_FILE_NAME
+    manifest_path = run_dir / MANIFEST_FILE
     manifest = {
         "manifest_version": RUN_MANIFEST_VERSION,
         "run_id": run_id,

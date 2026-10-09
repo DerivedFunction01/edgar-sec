@@ -26,8 +26,8 @@ from edgar_sec.infra.storage.dag.manifest import (
     PartDescriptor,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
-    SNAPSHOT_FILE_NAME,
-    TARGETS_DIR_NAME,
+    SNAPSHOT_FILE,
+    TARGETS_DIR,
     FilingCatalogPaths,
 )
 from edgar_sec.pipelines.metadata_sync.paths import (
@@ -144,7 +144,7 @@ def build_catalog_snapshot(root: Path, catalog_id: str = "cat-1") -> Path:
     paths = FilingCatalogPaths(artifacts_root=root)
     snapshot_dir = paths.snapshot_dir(catalog_id)
     _write(
-        snapshot_dir / SNAPSHOT_FILE_NAME,
+        snapshot_dir / SNAPSHOT_FILE,
         pa.table(
             {
                 "cik": pa.array([1000, 2000], pa.int64()),
@@ -153,7 +153,7 @@ def build_catalog_snapshot(root: Path, catalog_id: str = "cat-1") -> Path:
             schema=_PROFILE_SCHEMA,
         ),
     )
-    targets_dir = snapshot_dir / TARGETS_DIR_NAME
+    targets_dir = snapshot_dir / TARGETS_DIR
     target_descriptors = []
     for index in range(2):
         part_path = targets_dir / f"part-{index:05d}.parquet"
@@ -175,7 +175,7 @@ def build_catalog_snapshot(root: Path, catalog_id: str = "cat-1") -> Path:
                 byte_size=part_path.stat().st_size,
             )
         )
-    profile_path = snapshot_dir / SNAPSHOT_FILE_NAME
+    profile_path = snapshot_dir / SNAPSHOT_FILE
     catalog = DAGCatalog(paths.snapshots_root)
     catalog.record_node(
         DAGNodeManifest(

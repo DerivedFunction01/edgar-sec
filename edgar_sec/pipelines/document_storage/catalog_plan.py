@@ -33,8 +33,8 @@ from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.infra.storage.duckdb import connect, sql_literal, sql_path_list
 from edgar_sec.infra.storage.parquet import count_parquet_rows, read_parquet_schema
 from edgar_sec.pipelines.document_storage.paths import (
-    LOCATOR_GROUPS_NAME,
-    PLAN_TARGETS_DIR_NAME,
+    LOCATOR_GROUPS_FILE,
+    PLAN_TARGETS_DIR,
     form_partition_name,
 )
 from edgar_sec.pipelines.filing_catalog.publication import (
@@ -93,7 +93,7 @@ class CatalogPlan:
         self._published = _read_plan_json(self._plan_dir)
         self._counts = _read_plan_counts(self._plan_dir)
         self._meta = _read_plan_metadata(self._plan_dir, self._counts)
-        self._locator_path = self._plan_dir / LOCATOR_GROUPS_NAME
+        self._locator_path = self._plan_dir / LOCATOR_GROUPS_FILE
         self._target_paths = _target_partitions(self._plan_dir, self._counts)
         locator_count = _validate_bundle(
             self._plan_dir,
@@ -273,7 +273,7 @@ def _target_partitions(plan_dir: Path, counts: dict[str, int]) -> tuple[Path, ..
     for form in sorted(counts):
         data = (
             plan_dir
-            / PLAN_TARGETS_DIR_NAME
+            / PLAN_TARGETS_DIR
             / f"form={form_partition_name(form)}"
             / DATA_FILE_NAME
         )

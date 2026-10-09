@@ -13,24 +13,24 @@ import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
 import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.foundation.runtime.paths import ProjectPaths
 from edgar_sec.pipelines.filing_catalog.paths import (
-    LOCATOR_GROUPS_NAME,
-    PLAN_TARGETS_DIR_NAME,
+    LOCATOR_GROUPS_FILE,
+    PLAN_TARGETS_DIR,
     form_partition_name,
 )
 
 DOCUMENTS_DATASET = "document_storage"
-RUNS_DIR = "runs"
+RUNS_DIR = foundation_paths.RUNS_DIR
 CHECKPOINTS_DIR = "checkpoints"
-REVIEW_RUNS_DIR = "review-runs"
+REVIEW_RUNS_DIR = foundation_paths.REVIEW_RUNS_DIR
 PAYLOAD_DB_NAME = "fixture.sqlite"
 
 SNAPSHOT_ARTIFACT_NAME = "documents.parquet"
-MANIFEST_FILE_NAME = "manifest.json"
-CASES_DIR = "cases"
+MANIFEST_FILE = "manifest.json"
+CASES_DIR = foundation_paths.CASES_DIR
 REVIEW_MANIFEST_NAME = "review_manifest.jsonl"
 EXHIBITS_DATASET = "document_exhibits"
 EXHIBIT_SNAPSHOT_NAME = "exhibits.parquet"
-CHUNKS_DIR_NAME = "chunks"
+CHUNKS_DIR = "chunks"
 CHUNK_DELEGATED_FILE = "chunk-delegated.parquet"
 CHUNK_DELEGATED_STATE_FILE = "chunk-delegated.state.json"
 
@@ -40,8 +40,8 @@ DOCUMENTS_PHASE = "025_webpage_storage"
 
 #: The pointer file naming the currently published snapshot. Owned here because
 #: which dataset a pointer belongs to is a fact about the pipeline.
-POINTER_FILE_NAME = "pointer.json"
-CURRENT_DIR = "current"
+POINTER_FILE = "pointer.json"
+CURRENT_DIR = foundation_paths.CURRENT_DIR
 
 
 def current_pointer_path(snapshots_root: Path | str) -> Path:
@@ -50,7 +50,7 @@ def current_pointer_path(snapshots_root: Path | str) -> Path:
     Owned here because the pointer is a document-storage artifact, not a shared
     foundation primitive: which dataset a pointer belongs to is a pipeline fact.
     """
-    return Path(snapshots_root) / CURRENT_DIR / POINTER_FILE_NAME
+    return Path(snapshots_root) / CURRENT_DIR / POINTER_FILE
 
 
 def chunk_checkpoint_path(chunks_dir: Path | str, chunk_id: str) -> Path:
@@ -104,7 +104,7 @@ class DocumentStoragePaths:
         return self.snapshot_dir(snapshot_id) / SNAPSHOT_ARTIFACT_NAME
 
     def current_pointer_path(self) -> Path:
-        return self.snapshots_root / CURRENT_DIR / POINTER_FILE_NAME
+        return self.snapshots_root / CURRENT_DIR / POINTER_FILE
 
     def run_dir(self, run_id: str) -> Path:
         return self.document_transient_root / RUNS_DIR / run_id
@@ -113,7 +113,7 @@ class DocumentStoragePaths:
         return self.run_dir(run_id) / CHECKPOINTS_DIR
 
     def run_chunks_dir(self, run_id: str) -> Path:
-        return self.run_dir(run_id) / CHUNKS_DIR_NAME
+        return self.run_dir(run_id) / CHUNKS_DIR
 
     def chunk_checkpoint(self, run_id: str, chunk_id: str) -> Path:
         return chunk_checkpoint_path(self.run_chunks_dir(run_id), chunk_id)
@@ -139,21 +139,21 @@ class DocumentStoragePaths:
 __all__ = [
     "CASES_DIR",
     "CHECKPOINTS_DIR",
-    "CHUNKS_DIR_NAME",
+    "CHUNKS_DIR",
     "CHUNK_DELEGATED_FILE",
     "CHUNK_DELEGATED_STATE_FILE",
     "CURRENT_DIR",
-    "LOCATOR_GROUPS_NAME",
+    "LOCATOR_GROUPS_FILE",
     "DOCUMENTS_PHASE",
     "DOCUMENTS_DATASET",
     "EXHIBITS_DATASET",
     "EXHIBIT_SNAPSHOT_NAME",
     "PAYLOAD_DB_NAME",
-    "POINTER_FILE_NAME",
+    "POINTER_FILE",
     "REVIEW_RUNS_DIR",
     "REVIEW_MANIFEST_NAME",
-    "MANIFEST_FILE_NAME",
-    "PLAN_TARGETS_DIR_NAME",
+    "MANIFEST_FILE",
+    "PLAN_TARGETS_DIR",
     "RUNS_DIR",
     "SNAPSHOT_ARTIFACT_NAME",
     "DocumentStoragePaths",

@@ -14,7 +14,7 @@ from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 
 from .paths import (
-    PLANS_DIR_NAME,
+    PLANS_DIR,
     MetadataPaths,
     resolve_run_paths,
 )
@@ -89,7 +89,7 @@ def list_plans(metadata: MetadataPaths) -> list[PlanSummary]:
     ``created_at`` is second-resolution and ties; directory mtime does not, and
     ``plan_id`` breaks what remains.
     """
-    root = metadata.metadata_root / PLANS_DIR_NAME
+    root = metadata.metadata_root / PLANS_DIR
     if not root.is_dir():
         return []
     found = [

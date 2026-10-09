@@ -17,9 +17,9 @@ from edgar_sec.engine.selection.features import FeatureSnapshotBuilder
 from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.pipelines.filing_catalog.paths import (
-    LOCATOR_GROUPS_NAME,
+    LOCATOR_GROUPS_FILE,
     REQUIRED_PLAN_FILES,
-    RESERVE_TARGETS_NAME,
+    RESERVE_TARGETS_FILE,
     form_partition_name,
     resolve_filing_catalog_paths,
 )
@@ -113,7 +113,7 @@ def test_every_locator_row_is_fetchable(
 ) -> None:
     """The columns an acquirer needs, present, non-null, and HTTPS."""
     plan_dir, _ = _plan_dir(scope, catalog_snapshot, catalog_artifacts_root)
-    table = pq.read_table(plan_dir / LOCATOR_GROUPS_NAME)
+    table = pq.read_table(plan_dir / LOCATOR_GROUPS_FILE)
     for column in FETCH_REQUIRED:
         assert column in table.schema.names, f"Phase 2.5 needs {column}"
         assert table.column(column).null_count == 0, (
@@ -133,7 +133,7 @@ def test_occurrences_collapse_to_one_locator_per_document(
 ) -> None:
     """The key is sha256(accession || ':' || document_path), so co-filers share it."""
     plan_dir, _ = _plan_dir(scope, catalog_snapshot, catalog_artifacts_root)
-    rows = pq.read_table(plan_dir / LOCATOR_GROUPS_NAME).to_pylist()
+    rows = pq.read_table(plan_dir / LOCATOR_GROUPS_FILE).to_pylist()
     keys = [row["document_locator_key"] for row in rows]
 
     assert keys, "an empty plan gives Phase 2.5 nothing to fetch"
@@ -163,7 +163,7 @@ def test_occurrences_are_the_registrants_claim_not_the_document(
     assert partitions, "Phase 2.5 has no per-form targets"
 
     locators = set(
-        pq.read_table(plan_dir / LOCATOR_GROUPS_NAME)[
+        pq.read_table(plan_dir / LOCATOR_GROUPS_FILE)[
             "document_locator_key"
         ].to_pylist()
     )
@@ -247,11 +247,11 @@ def test_reserve_is_disjoint_from_the_work_order(
 ) -> None:
     """An acquirer that ignores the reserve must never double-fetch."""
     plan_dir, meta = _plan_dir("policy", catalog_snapshot, catalog_artifacts_root)
-    reserve = plan_dir / RESERVE_TARGETS_NAME
+    reserve = plan_dir / RESERVE_TARGETS_FILE
     assert reserve.is_file()
 
     active = set(
-        pq.read_table(plan_dir / LOCATOR_GROUPS_NAME)[
+        pq.read_table(plan_dir / LOCATOR_GROUPS_FILE)[
             "document_locator_key"
         ].to_pylist()
     )
@@ -295,6 +295,6 @@ def test_both_scopes_publish_the_same_work_order_contract(
     surfaces = set()
     for scope in BUNDLES:
         plan_dir, _ = _plan_dir(scope, catalog_snapshot, catalog_artifacts_root)
-        table = pq.read_table(plan_dir / LOCATOR_GROUPS_NAME)
+        table = pq.read_table(plan_dir / LOCATOR_GROUPS_FILE)
         surfaces.add(set(FETCH_REQUIRED) <= set(table.schema.names))
     assert surfaces == {True}

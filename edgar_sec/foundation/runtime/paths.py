@@ -18,6 +18,29 @@ RUNTIME_DIR = "runtime"
 DATA_FILE_NAME = "data.parquet"
 PARQUET_PART_GLOB = "part-*.parquet"
 
+# Universal pipeline constants used across layers.
+PLANS_DIR = "plans"
+CHUNKS_DIR = "chunks"
+RUNS_DIR = "runs"
+CASES_DIR = "cases"
+REVIEW_RUNS_DIR = "review-runs"
+RUN_LOCK_FILE = "run.lock"
+RUN_MANIFEST_FILE = "run_manifest.json"
+PUBLICATION_LOCK_FILE = ".publication.lock"
+
+
+def validate_safe_id(value: str, label: str = "identifier") -> str:
+    """Return ``value`` if it is a single safe path component, else raise.
+
+    Safe identifiers contain only ``[A-Za-z0-9_.-]`` and are not ``.`` or ``..``.
+    """
+    if not value or value in (".", ".."):
+        raise ValueError(f"invalid {label}: {value!r}")
+    for char in value:
+        if not (char.isalnum() or char in "_.-"):
+            raise ValueError(f"invalid {label}: {value!r}")
+    return value
+
 
 def transient_dir(artifacts_root: Path, dataset: str, run_id: str) -> Path:
     """Return the staging directory for one resumable run of a dataset."""
@@ -120,10 +143,20 @@ def resolve_paths(repo_root: Path | str | None = None) -> ProjectPaths:
 
 
 __all__ = [
+    "CASES_DIR",
+    "CHUNKS_DIR",
     "CURRENT_DIR",
+    "DATA_FILE_NAME",
     "PACKAGE_ROOT",
     "PLAN_FILE_NAME",
+    "PLANS_DIR",
+    "PUBLICATION_LOCK_FILE",
+    "PARQUET_PART_GLOB",
+    "RUN_LOCK_FILE",
+    "RUN_MANIFEST_FILE",
+    "RUNS_DIR",
     "RUNTIME_DIR",
+    "REVIEW_RUNS_DIR",
     "SNAPSHOTS_DIR",
     "TRANSIENT_DIR",
     "ProjectPaths",
@@ -132,4 +165,5 @@ __all__ = [
     "resolve_paths",
     "runtime_root",
     "transient_dir",
+    "validate_safe_id",
 ]

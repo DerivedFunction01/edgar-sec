@@ -73,8 +73,8 @@ python run.py inventory query --accession 0000320193-23-000004 --limit 10
 │   │       └── manifest.jsonl
 │   └── snapshots/  # Published snapshot root, owned by S5.
 │       ├── {snapshot_id}/
-│       ├── catalog.sqlite  # SQLite DAG catalog database for published inventory snapshots.
-│       └── publication.lock
+│       ├── .publication.lock
+│       └── catalog.sqlite  # SQLite DAG catalog database for published inventory snapshots.
 ├── runtime/
 │   └── {socket_id}.sock
 └── transient/

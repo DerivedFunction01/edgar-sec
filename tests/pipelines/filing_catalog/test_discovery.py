@@ -17,7 +17,7 @@ from edgar_sec.pipelines.filing_catalog.discovery import (
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
     resolve_filing_catalog_paths,
-    safe_identifier,
+    validate_safe_id,
 )
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.filing_catalog.planner import plan
@@ -98,10 +98,10 @@ def test_resolve_reference_rejects_an_unsafe_identifier(tmp_path: Path) -> None:
 
 
 def test_safe_identifier_allows_expected_shapes() -> None:
-    assert safe_identifier("a3614dc68ad7603adbc95720") == "a3614dc68ad7603adbc95720"
+    assert validate_safe_id("a3614dc68ad7603adbc95720") == "a3614dc68ad7603adbc95720"
     for bad in ("", "../x", "a/b", "a b", "a;b"):
         with pytest.raises(ValueError, match="unsafe identifier"):
-            safe_identifier(bad)
+            validate_safe_id(bad)
 
 
 # --- plans ----------------------------------------------------------------

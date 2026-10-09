@@ -12,15 +12,15 @@ import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.pipelines.filing_catalog.paths import (
     CURRENT_ALIAS,
-    EXPANSION_METADATA_NAME,
+    EXPANSION_METADATA_FILE,
     PIPELINE_DIR,
-    PLAN_TARGETS_DIR_NAME,
-    PLANS_DIR_NAME,
+    PLAN_TARGETS_DIR,
+    PLANS_DIR,
     REQUIRED_PLAN_FILES,
-    SEED_FILERS_NAME,
+    SEED_FILERS_FILE,
     form_partition_name,
     resolve_filing_catalog_paths,
-    safe_identifier,
+    validate_safe_id,
     target_part_name,
 )
 
@@ -40,7 +40,7 @@ def test_catalog_root_is_under_the_pipeline_directory(paths) -> None:
 def test_snapshots_and_plans_are_sibling_directories(paths) -> None:
     """One published root per kind, both directly under the pipeline directory."""
     assert paths.snapshots_root == paths.catalog_root / foundation_paths.SNAPSHOTS_DIR
-    assert paths.plans_root == paths.catalog_root / PLANS_DIR_NAME
+    assert paths.plans_root == paths.catalog_root / PLANS_DIR
     assert paths.snapshot_dir("cat-1").parent == paths.snapshots_root
     assert paths.plan_dir("plan-1").parent == paths.plans_root
 
@@ -63,7 +63,7 @@ def test_safe_identifier_rejects_a_path_traversal(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="unsafe identifier"):
         paths.plan_dir("../../etc")
     with pytest.raises(ValueError, match="unsafe identifier"):
-        safe_identifier("a/b")
+        validate_safe_id("a/b")
 
 
 def test_an_unsafe_identifier_never_becomes_a_directory(paths) -> None:
@@ -79,11 +79,9 @@ def test_form_partition_name_escapes_a_slash() -> None:
 
 def test_form_partition_path_escapes_the_form() -> None:
     partition = (
-        Path("/plans/p1")
-        / PLAN_TARGETS_DIR_NAME
-        / f"form={form_partition_name('8-K/A')}"
+        Path("/plans/p1") / PLAN_TARGETS_DIR / f"form={form_partition_name('8-K/A')}"
     )
-    assert partition == Path("/plans/p1") / PLAN_TARGETS_DIR_NAME / "form=8-K_A"
+    assert partition == Path("/plans/p1") / PLAN_TARGETS_DIR / "form=8-K_A"
     assert "/" not in partition.name
 
 
@@ -97,19 +95,17 @@ def test_target_parts_are_numbered_not_named_after_the_source() -> None:
 
 def test_plan_targets_dir_is_inside_the_plan(paths) -> None:
     plan_dir = paths.plan_dir("p1")
-    assert plan_dir / PLAN_TARGETS_DIR_NAME == (
-        paths.plans_root / "p1" / PLAN_TARGETS_DIR_NAME
-    )
+    assert plan_dir / PLAN_TARGETS_DIR == (paths.plans_root / "p1" / PLAN_TARGETS_DIR)
 
 
 def test_plan_seed_sidecar_is_inside_the_plan(paths) -> None:
     assert paths.plan_seed_filers("p1").parent == paths.plan_dir("p1")
-    assert paths.plan_seed_filers("p1").name == SEED_FILERS_NAME
+    assert paths.plan_seed_filers("p1").name == SEED_FILERS_FILE
 
 
 def test_expansion_metadata_is_inside_the_plan(paths) -> None:
-    assert paths.plan_dir("p1") / EXPANSION_METADATA_NAME == (
-        paths.plans_root / "p1" / EXPANSION_METADATA_NAME
+    assert paths.plan_dir("p1") / EXPANSION_METADATA_FILE == (
+        paths.plans_root / "p1" / EXPANSION_METADATA_FILE
     )
 
 

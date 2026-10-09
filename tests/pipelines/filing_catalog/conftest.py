@@ -10,8 +10,8 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.pipelines.filing_catalog.paths import (
-    SNAPSHOT_FILE_NAME,
-    TARGETS_DIR_NAME,
+    SNAPSHOT_FILE,
+    TARGETS_DIR,
     FilingCatalogPaths,
     resolve_filing_catalog_paths,
 )
@@ -63,7 +63,7 @@ def catalog_snapshot(
 def published_target_files(catalog_snapshot: tuple[dict[str, Any], Path]) -> list[Path]:
     """One shard per source part; reading only the first would cover a fraction."""
     _, snapshot_dir = catalog_snapshot
-    files = sorted((snapshot_dir / TARGETS_DIR_NAME).glob("part-*.parquet"))
+    files = sorted((snapshot_dir / TARGETS_DIR).glob("part-*.parquet"))
     assert files, "catalog published no target shards"
     return files
 
@@ -83,4 +83,4 @@ def published_targets(
 def published_profiles(catalog_snapshot: tuple[dict[str, Any], Path]) -> pa.Table:
     """The published company-profile dataset."""
     _, snapshot_dir = catalog_snapshot
-    return pq.read_table(snapshot_dir / SNAPSHOT_FILE_NAME)
+    return pq.read_table(snapshot_dir / SNAPSHOT_FILE)

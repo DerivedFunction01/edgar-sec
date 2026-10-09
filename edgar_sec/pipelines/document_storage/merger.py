@@ -37,7 +37,7 @@ from edgar_sec.pipelines.document_storage.manifests import (
 from edgar_sec.pipelines.document_storage.paths import (
     DOCUMENTS_DATASET,
     DOCUMENTS_PHASE,
-    MANIFEST_FILE_NAME,
+    MANIFEST_FILE,
     SNAPSHOT_ARTIFACT_NAME,
     current_pointer_path,
 )
@@ -294,7 +294,7 @@ def _write_manifest(
         "source_snapshot_ids": [run_id],
         "logical_fingerprint": logical_fingerprint,
     }
-    path = snapshot_dir / MANIFEST_FILE_NAME
+    path = snapshot_dir / MANIFEST_FILE
     _atomic_write(path, canonical_json(manifest))
     return path
 
@@ -436,7 +436,7 @@ def _reuse_existing_snapshot(
         PAYLOAD_COLUMNS,
     )
 
-    manifest_path = snapshot_dir / MANIFEST_FILE_NAME
+    manifest_path = snapshot_dir / MANIFEST_FILE
     try:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         if not isinstance(manifest, dict):

@@ -19,10 +19,10 @@ from edgar_sec.pipelines.cohort.operations import sample_cohort
 from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 
 from .paths import (
-    ASSIGNMENTS_DIR_NAME,
-    CHUNKS_DIR_NAME,
-    RECEIPT_FILE_NAME,
-    ROSTER_DIR_NAME,
+    ASSIGNMENTS_DIR,
+    CHUNKS_DIR,
+    RECEIPT_FILE,
+    ROSTER_DIR,
     MetadataPaths,
     resolve_metadata_paths,
     resolve_run_paths,
@@ -63,12 +63,12 @@ class BundleRunPaths:
     @property
     def roster_file(self) -> Path:
         """The CIK cohort inside the copied bundle."""
-        return self.bundle_root / ROSTER_DIR_NAME / ROSTER_FILE_NAME
+        return self.bundle_root / ROSTER_DIR / ROSTER_FILE_NAME
 
     @property
     def assignments_dir(self) -> Path:
         """Assignment directory inside the copied bundle."""
-        return self.bundle_root / ASSIGNMENTS_DIR_NAME
+        return self.bundle_root / ASSIGNMENTS_DIR
 
     def assignment_file(self, assignment_id: str) -> Path:
         """Path of one assignment inside the copied bundle."""
@@ -77,7 +77,7 @@ class BundleRunPaths:
     @property
     def chunk_dir(self) -> Path:
         """Local checkpoint directory for this worker's chunk files."""
-        return self.bundle_root / CHUNKS_DIR_NAME
+        return self.bundle_root / CHUNKS_DIR
 
     def chunk_file(self, chunk_id: int) -> Path:
         """Checkpoint path for one chunk inside the copied bundle."""
@@ -86,7 +86,7 @@ class BundleRunPaths:
     @property
     def receipt_file(self) -> Path:
         """At the bundle root, so the returned directory reads as one thing."""
-        return self.bundle_root / RECEIPT_FILE_NAME
+        return self.bundle_root / RECEIPT_FILE
 
 
 def resolve_chunk_size(value: int | None) -> int:

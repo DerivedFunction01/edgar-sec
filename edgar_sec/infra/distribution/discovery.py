@@ -8,7 +8,7 @@ from pathlib import Path
 
 from .guards import BUNDLE_MANIFEST_NAME, read_bundle_manifest
 from .protocol import WorkerReceipt
-from .receipt import RECEIPT_FILE_NAME, read_receipt, verify_receipt_digests
+from .receipt import RECEIPT_FILE, read_receipt, verify_receipt_digests
 
 
 @dataclass(frozen=True, slots=True)
@@ -55,7 +55,7 @@ def discover_bundles(
         chunk_ids = tuple(manifest.get("chunk_ids", ()))
         chunk_count = int(manifest.get("chunk_count", len(chunk_ids)))
 
-        receipt_file = bundle_dir / RECEIPT_FILE_NAME
+        receipt_file = bundle_dir / RECEIPT_FILE
         receipt: WorkerReceipt | None = None
         state = "pending"
         detail = ""

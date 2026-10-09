@@ -20,7 +20,7 @@ from edgar_sec.engine.selection.policy import (
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.pipelines.filing_catalog.paths import (
-    EXPANSION_METADATA_NAME,
+    EXPANSION_METADATA_FILE,
     FilingCatalogPaths,
     resolve_filing_catalog_paths,
 )
@@ -278,7 +278,7 @@ def validate_target(
 
 def read_expansion_metadata(plan_dir: str | Path) -> dict[str, Any]:
     """Return a plan's lineage record, or an empty mapping for a root plan."""
-    path = Path(plan_dir).resolve() / EXPANSION_METADATA_NAME
+    path = Path(plan_dir).resolve() / EXPANSION_METADATA_FILE
     if not path.is_file():
         return {}
     return json.loads(path.read_text(encoding="utf-8"))
@@ -373,7 +373,7 @@ def _write_lineage(
     record["child_plan_id"] = child_meta["plan_id"]
     record["catalog_id"] = child_meta["catalog_id"]
     atomic_write_json(
-        plan_dir / EXPANSION_METADATA_NAME, record, canonical=False, indent=2
+        plan_dir / EXPANSION_METADATA_FILE, record, canonical=False, indent=2
     )
 
 

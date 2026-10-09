@@ -14,7 +14,7 @@ from edgar_sec.pipelines.document_storage.catalog_plan import (
 )
 from edgar_sec.pipelines.document_storage.paths import (
     DocumentStoragePaths,
-    MANIFEST_FILE_NAME,
+    MANIFEST_FILE,
 )
 from edgar_sec.pipelines.document_storage.run_manifest import (
     RUN_MANIFEST_VERSION,
@@ -106,9 +106,9 @@ def test_a_run_manifest_is_created_atomically(
     identity = _make_identity(catalog_plan, paths, "fixture", ("fix-a",))
     mode = create_or_validate_manifest(paths.run_dir("run-new"), "run-new", identity)
     assert mode == "fresh"
-    assert (paths.run_dir("run-new") / MANIFEST_FILE_NAME).is_file()
+    assert (paths.run_dir("run-new") / MANIFEST_FILE).is_file()
     manifest = json.loads(
-        (paths.run_dir("run-new") / MANIFEST_FILE_NAME).read_text(encoding="utf-8")
+        (paths.run_dir("run-new") / MANIFEST_FILE).read_text(encoding="utf-8")
     )
     assert manifest["manifest_version"] == RUN_MANIFEST_VERSION
     assert manifest["run_id"] == "run-new"
@@ -152,7 +152,7 @@ def test_a_missing_manifest_is_refused(
     create_or_validate_manifest(
         paths.run_dir("run-missing-manifest"), "run-missing-manifest", identity
     )
-    manifest_path = paths.run_dir("run-missing-manifest") / MANIFEST_FILE_NAME
+    manifest_path = paths.run_dir("run-missing-manifest") / MANIFEST_FILE
     manifest_path.unlink()
     with pytest.raises(RunManifestError, match="has no valid manifest"):
         create_or_validate_manifest(
@@ -168,7 +168,7 @@ def test_a_corrupt_manifest_is_refused(
         "run-corrupt",
         _make_identity(catalog_plan, paths, "fixture", ("fix-a",)),
     )
-    manifest_path = paths.run_dir("run-corrupt") / MANIFEST_FILE_NAME
+    manifest_path = paths.run_dir("run-corrupt") / MANIFEST_FILE
     manifest_path.write_bytes(b"not-json")
     with pytest.raises(RunManifestError, match="has no valid manifest"):
         create_or_validate_manifest(
@@ -185,7 +185,7 @@ def test_a_deleted_manifest_in_a_pre_existing_run_is_refused(
     create_or_validate_manifest(
         paths.run_dir("run-delete-manifest"), "run-delete-manifest", identity
     )
-    manifest = paths.run_dir("run-delete-manifest") / MANIFEST_FILE_NAME
+    manifest = paths.run_dir("run-delete-manifest") / MANIFEST_FILE
     manifest.unlink()
     with pytest.raises(RunManifestError, match="has no valid manifest"):
         create_or_validate_manifest(

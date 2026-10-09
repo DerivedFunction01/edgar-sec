@@ -10,9 +10,11 @@ from pathlib import Path
 
 import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.foundation.runtime.paths import (
+    PLAN_FILE_NAME,
     ProjectPaths,
     resolve_paths,
     transient_dir,
+    validate_safe_id,
 )
 from edgar_sec.infra.storage.dag.paths import DAGPaths
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
@@ -20,32 +22,32 @@ from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 PIPELINE_DIR = "filing_catalog"
 
 # Published subdirectories.
-PLANS_DIR_NAME = "plans"
+PLANS_DIR = foundation_paths.PLANS_DIR
 
 # Reference that resolves to whichever catalog the pointer names.
 CURRENT_ALIAS = "current"
 
 # Artifact names, named through constants because a literal repeated in two
 # modules is how a rename desynchronizes a writer from its reader.
-SNAPSHOT_FILE_NAME = "company_profiles.parquet"
-TARGETS_DIR_NAME = "filing_targets"
-PLAN_TARGETS_DIR_NAME = "targets"
-SELECTION_REPORT_NAME = "selection_report.json"
-LOCATOR_GROUPS_NAME = "locator_groups.parquet"
-EXPANSION_METADATA_NAME = "expansion_metadata.json"
+SNAPSHOT_FILE = "company_profiles.parquet"
+TARGETS_DIR = "filing_targets"
+PLAN_TARGETS_DIR = "targets"
+SELECTION_REPORT_FILE = "selection_report.json"
+LOCATOR_GROUPS_FILE = "locator_groups.parquet"
+EXPANSION_METADATA_FILE = "expansion_metadata.json"
 # Reserve candidates: locator rows held back from the active set, so a
 # downstream acquirer has replacements without a second selection run.
-RESERVE_TARGETS_NAME = "reserve_targets.parquet"
+RESERVE_TARGETS_FILE = "reserve_targets.parquet"
 # Published with the plan so an expansion reproduces the parent's selection
 # without re-reading a mutable external CSV.
-SEED_FILERS_NAME = "seed_filers.csv"
+SEED_FILERS_FILE = "seed_filers.csv"
 # Selection policies live beside the plans they produce.
-POLICIES_DIR_NAME = "policies"
+POLICIES_DIR = "policies"
 
 REQUIRED_PLAN_FILES = (
-    foundation_paths.PLAN_FILE_NAME,
-    SELECTION_REPORT_NAME,
-    LOCATOR_GROUPS_NAME,
+    PLAN_FILE_NAME,
+    SELECTION_REPORT_FILE,
+    LOCATOR_GROUPS_FILE,
 )
 
 # Identifiers are interpolated into published directory names, so they are
@@ -55,7 +57,7 @@ _SAFE_ID_CHARS = set(
 )
 
 
-def safe_identifier(value: str) -> str:
+def validate_safe_id(value: str) -> str:
     """Return ``value`` if it is safe to embed in a published path."""
     if not value or any(char not in _SAFE_ID_CHARS for char in value):
         raise ValueError(f"unsafe identifier: {value!r}")
@@ -97,24 +99,24 @@ class FilingCatalogPaths:
     @property
     def plans_root(self) -> Path:
         """Root of published target-plan bundles."""
-        return self.catalog_root / PLANS_DIR_NAME
+        return self.catalog_root / PLANS_DIR
 
     @property
     def policies_root(self) -> Path:
         """Root of published selection policies."""
-        return self.catalog_root / POLICIES_DIR_NAME
+        return self.catalog_root / POLICIES_DIR
 
     def snapshot_dir(self, catalog_id: str) -> Path:
         """Directory holding one immutable catalog snapshot."""
-        return self.snapshots_root / safe_identifier(catalog_id)
+        return self.snapshots_root / validate_safe_id(catalog_id)
 
     def snapshot_profiles_file(self, catalog_id: str) -> Path:
         """Deduplicated registrant profile dataset for one snapshot."""
-        return self.snapshot_dir(catalog_id) / SNAPSHOT_FILE_NAME
+        return self.snapshot_dir(catalog_id) / SNAPSHOT_FILE
 
     def snapshot_targets_dir(self, catalog_id: str) -> Path:
         """Directory holding the sharded filing-target dataset."""
-        return self.snapshot_dir(catalog_id) / TARGETS_DIR_NAME
+        return self.snapshot_dir(catalog_id) / TARGETS_DIR
 
     @property
     def catalog_file(self) -> Path:
@@ -123,16 +125,16 @@ class FilingCatalogPaths:
 
     def plan_dir(self, plan_id: str) -> Path:
         """Directory holding one immutable target-plan bundle."""
-        return self.plans_root / safe_identifier(plan_id)
+        return self.plans_root / validate_safe_id(plan_id)
 
     def plan_seed_filers(self, plan_id: str) -> Path:
         """The plan's normalized seed sidecar, published with a policy plan."""
-        return self.plan_dir(plan_id) / SEED_FILERS_NAME
+        return self.plan_dir(plan_id) / SEED_FILERS_FILE
 
     def transient_catalog_dir(self, catalog_id: str) -> Path:
         """Staging directory for one catalog, never published."""
         return transient_dir(
-            self.artifacts_root, PIPELINE_DIR, safe_identifier(catalog_id)
+            self.artifacts_root, PIPELINE_DIR, validate_safe_id(catalog_id)
         )
 
 
@@ -150,22 +152,21 @@ def resolve_filing_catalog_paths(
 
 __all__ = [
     "CURRENT_ALIAS",
-    "EXPANSION_METADATA_NAME",
-    "LOCATOR_GROUPS_NAME",
+    "EXPANSION_METADATA_FILE",
+    "LOCATOR_GROUPS_FILE",
     "PIPELINE_DIR",
-    "PLANS_DIR_NAME",
-    "PLAN_TARGETS_DIR_NAME",
-    "POLICIES_DIR_NAME",
+    "PLANS_DIR",
+    "PLAN_TARGETS_DIR",
+    "POLICIES_DIR",
     "REQUIRED_PLAN_FILES",
-    "RESERVE_TARGETS_NAME",
-    "SEED_FILERS_NAME",
-    "SELECTION_REPORT_NAME",
-    "SNAPSHOT_FILE_NAME",
-    "TARGETS_DIR_NAME",
+    "RESERVE_TARGETS_FILE",
+    "SEED_FILERS_FILE",
+    "SELECTION_REPORT_FILE",
+    "SNAPSHOT_FILE",
+    "TARGETS_DIR",
     "FilingCatalogPaths",
     "form_partition_name",
     "resolve_filing_catalog_paths",
-    "resolve_metadata_paths",
-    "safe_identifier",
+    "validate_safe_id",
     "target_part_name",
 ]
