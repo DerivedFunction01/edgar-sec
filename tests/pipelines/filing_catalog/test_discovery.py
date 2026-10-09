@@ -1,4 +1,4 @@
-"""Unit tests for manifest-only discovery."""
+"""Unit tests for DAG-catalog-backed discovery."""
 
 from __future__ import annotations
 
@@ -16,7 +16,6 @@ from edgar_sec.pipelines.filing_catalog.discovery import (
     status,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
-    CATALOG_SNAPSHOT_MANIFEST_NAME,
     resolve_filing_catalog_paths,
     safe_identifier,
 )
@@ -73,13 +72,12 @@ def test_discovery_ignores_the_current_pointer_directory(
     assert len(discover_catalogs(_paths(root))) == 1
 
 
-def test_a_damaged_manifest_is_skipped_not_fatal(published: tuple[Path, str]) -> None:
+def test_an_unregistered_snapshot_directory_is_ignored(
+    published: tuple[Path, str],
+) -> None:
     root, catalog_id = published
     broken = _paths(root).snapshots_root / "aaaaaaaaaaaa"
     broken.mkdir()
-    (broken / CATALOG_SNAPSHOT_MANIFEST_NAME).write_text(
-        "{ truncated", encoding="utf-8"
-    )
     found = discover_catalogs(_paths(root))
     assert [c["catalog_id"] for c in found] == [catalog_id]
 

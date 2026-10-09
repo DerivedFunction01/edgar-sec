@@ -19,7 +19,7 @@ from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 from edgar_sec.pipelines.metadata_sync.progress import AugmentProgress
 from edgar_sec.pipelines.metadata_sync.run_lock import RunLock
 from edgar_sec.pipelines.metadata_sync.sec_client import SubmissionsClient
-from edgar_sec.pipelines.metadata_sync.snapshot import read_snapshot_parts
+from edgar_sec.pipelines.metadata_sync.snapshot import resolve_snapshot_parts
 
 from .client import build_client
 
@@ -104,8 +104,5 @@ def cmd_augment(
 
 
 def _snapshot_row_count(metadata, snapshot_id: str) -> int:
-    """Count rows in a published snapshot through its manifest."""
-    parts = read_snapshot_parts(metadata.snapshot_manifest(snapshot_id))
-    if parts.layout.multipart:
-        return sum(int(part["row_count"]) for part in parts.layout.manifest["parts"])
-    return parts.row_count
+    """Count rows in a published snapshot through its DAG relation."""
+    return resolve_snapshot_parts(metadata, snapshot_id).row_count

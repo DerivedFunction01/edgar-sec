@@ -28,25 +28,13 @@ renamed, and manifest rows are committed in deterministic selection order.
 ## Artifact layout
 
 <!-- AUTOGEN:PATHS:START -->
-| Logical Artifact | Resolution Seam |
-| :--- | :--- |
-| `broker_socket_path(...)` | Method |
-| `catalog_file` | Property |
-| `fixture_database_path(...)` | Method |
-| `fixture_manifest_path(...)` | Method |
-| `fixture_root(...)` | Method |
-| `fixtures_root` | Property |
-| `index_fixture_paths(...)` | Method |
-| `projection_staging_root` | Property |
-| `publication_lock_path` | Property |
-| `review_manifest_path(...)` | Method |
-| `review_run_root(...)` | Method |
-| `review_runs_root` | Property |
-| `runtime_root` | Property |
-| `snapshot_part_path(...)` | Method |
-| `snapshot_root(...)` | Method |
-| `snapshots_root` | Property |
-| `transient_root` | Property |
+```text
+{root}/
+├── .staging/
+├── cases/
+│   └── {accession}--{key_digest}/
+└── manifest.jsonl
+```
 <!-- AUTOGEN:PATHS:END -->
 
 ## Deliberate gaps

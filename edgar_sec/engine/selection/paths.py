@@ -1,4 +1,7 @@
-"""Filename constants for the engine/selection pipeline."""
+"""Filename constants for the engine/selection pipeline.
+
+:no-path-tree:
+"""
 
 from __future__ import annotations
 

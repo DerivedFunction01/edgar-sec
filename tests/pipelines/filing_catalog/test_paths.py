@@ -12,12 +12,12 @@ import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.pipelines.filing_catalog.paths import (
     CURRENT_ALIAS,
+    EXPANSION_METADATA_NAME,
     PIPELINE_DIR,
     PLAN_TARGETS_DIR_NAME,
     PLANS_DIR_NAME,
     REQUIRED_PLAN_FILES,
     SEED_FILERS_NAME,
-    form_partition_dir,
     form_partition_name,
     resolve_filing_catalog_paths,
     safe_identifier,
@@ -77,8 +77,12 @@ def test_form_partition_name_escapes_a_slash() -> None:
     assert form_partition_name("10-K") == "10-K"
 
 
-def test_form_partition_dir_escapes_the_form() -> None:
-    partition = form_partition_dir(Path("/plans/p1"), "8-K/A")
+def test_form_partition_path_escapes_the_form() -> None:
+    partition = (
+        Path("/plans/p1")
+        / PLAN_TARGETS_DIR_NAME
+        / f"form={form_partition_name('8-K/A')}"
+    )
     assert partition == Path("/plans/p1") / PLAN_TARGETS_DIR_NAME / "form=8-K_A"
     assert "/" not in partition.name
 
@@ -93,7 +97,9 @@ def test_target_parts_are_numbered_not_named_after_the_source() -> None:
 
 def test_plan_targets_dir_is_inside_the_plan(paths) -> None:
     plan_dir = paths.plan_dir("p1")
-    assert paths.plan_targets_dir("p1") == plan_dir / PLAN_TARGETS_DIR_NAME
+    assert plan_dir / PLAN_TARGETS_DIR_NAME == (
+        paths.plans_root / "p1" / PLAN_TARGETS_DIR_NAME
+    )
 
 
 def test_plan_seed_sidecar_is_inside_the_plan(paths) -> None:
@@ -102,7 +108,9 @@ def test_plan_seed_sidecar_is_inside_the_plan(paths) -> None:
 
 
 def test_expansion_metadata_is_inside_the_plan(paths) -> None:
-    assert paths.expansion_metadata("p1").parent == paths.plan_dir("p1")
+    assert paths.plan_dir("p1") / EXPANSION_METADATA_NAME == (
+        paths.plans_root / "p1" / EXPANSION_METADATA_NAME
+    )
 
 
 def test_transient_staging_is_outside_the_published_root(paths) -> None:

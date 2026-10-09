@@ -15,7 +15,6 @@ from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 
 from .paths import (
     PLANS_DIR_NAME,
-    SNAPSHOT_MANIFEST_NAME,
     MetadataPaths,
     resolve_run_paths,
 )
@@ -65,6 +64,12 @@ def plan_summary(metadata: MetadataPaths, plan_id: str) -> PlanSummary:
             # An unreadable, stale, or version-incompatible plan still lists. Its
             # progress is reported as unknown rather than guessed at.
             completed = -1
+    try:
+        catalog = DAGCatalog(metadata.snapshots_root, read_only=True)
+    except FileNotFoundError:
+        published = False
+    else:
+        published = catalog.has_snapshot(plan_id)
     return PlanSummary(
         plan_id=plan_id,
         row_count=int(manifest.get("row_count", 0)),
@@ -74,7 +79,7 @@ def plan_summary(metadata: MetadataPaths, plan_id: str) -> PlanSummary:
         created_at=str(manifest.get("created_at", "")),
         kind=str(manifest.get("kind", "")),
         parent_snapshot_id=str(manifest.get("parent_snapshot_id", "")),
-        published=metadata.snapshot_manifest(plan_id).is_file(),
+        published=published,
         readable=bool(manifest),
     )
 
@@ -101,16 +106,45 @@ def list_plans(metadata: MetadataPaths) -> list[PlanSummary]:
 
 
 def list_snapshots(metadata: MetadataPaths) -> list[dict[str, Any]]:
-    """Every published metadata snapshot manifest."""
-    catalog = DAGCatalog(metadata.snapshots_root)
-    if not catalog.catalog_file.is_file():
+    """Every published metadata snapshot recorded in the DAG catalog."""
+    try:
+        catalog = DAGCatalog(metadata.snapshots_root, read_only=True)
+    except FileNotFoundError:
         return []
-    return catalog.list_snapshots()
+    found: list[dict[str, Any]] = []
+    for entry in catalog.list_snapshots():
+        snapshot = catalog.get_manifest(str(entry["snapshot_id"]))
+        if snapshot is None:
+            continue
+        metadata_values = snapshot.metadata
+        parts = snapshot.relations.get("submissions", ())
+        found.append(
+            {
+                "snapshot_id": snapshot.snapshot_id,
+                "row_count": int(
+                    metadata_values.get(
+                        "row_count", sum(part.row_count for part in parts)
+                    )
+                ),
+                "parts": [part.to_dict() for part in parts],
+                "kind": metadata_values.get(
+                    "kind", "delta" if snapshot.parents else "full"
+                ),
+                "parent_snapshot_id": snapshot.parent_snapshot_id,
+                "plan_id": metadata_values.get("plan_id", ""),
+                "created_at": snapshot.created_at,
+                "schema_version": snapshot.schema_versions.get("submissions", ""),
+            }
+        )
+    return found
 
 
 def current_snapshot_id(metadata: MetadataPaths) -> str:
     """Snapshot id named by the catalog pointer, or empty when unset."""
-    catalog = DAGCatalog(metadata.snapshots_root)
+    try:
+        catalog = DAGCatalog(metadata.snapshots_root, read_only=True)
+    except FileNotFoundError:
+        return ""
     ptr = catalog.read_pointer()
     return str(ptr["snapshot_id"]) if ptr else ""
 

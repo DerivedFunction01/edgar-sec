@@ -16,8 +16,8 @@ from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 from edgar_sec.pipelines.filing_catalog.catalog_job import materialize
 from edgar_sec.pipelines.filing_catalog.paths import (
     LOCATOR_GROUPS_NAME,
+    PLAN_TARGETS_DIR_NAME,
     SELECTION_REPORT_NAME,
-    form_partition_dir,
     form_partition_name,
     resolve_filing_catalog_paths,
 )
@@ -414,7 +414,12 @@ def test_identical_rerun_reuses_the_bundle(
 ) -> None:
     first = plan(catalog_id, artifacts_root, forms=("10-K",))
     plan_dir = _plan_dir(artifacts_root, first)
-    shard = form_partition_dir(plan_dir, "10-K") / "data.parquet"
+    shard = (
+        plan_dir
+        / PLAN_TARGETS_DIR_NAME
+        / f"form={form_partition_name('10-K')}"
+        / "data.parquet"
+    )
     stamp = shard.stat().st_mtime_ns
     second = plan(catalog_id, artifacts_root, forms=("10-K",))
     assert second["plan_id"] == first["plan_id"]
@@ -439,8 +444,9 @@ def test_amendment_forms_escape_the_partition_separator(
     catalog_id: str, artifacts_root: Path
 ) -> None:
     meta = plan(catalog_id, artifacts_root, forms=("8-K/A", "10-K/A"))
-    targets_dir = resolve_filing_catalog_paths(artifacts_root).plan_targets_dir(
-        meta["plan_id"]
+    targets_dir = (
+        resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
+        / PLAN_TARGETS_DIR_NAME
     )
     partitions = sorted(p.name for p in targets_dir.glob("form=*"))
     assert partitions == ["form=10-K_A", "form=8-K_A"]
@@ -458,7 +464,12 @@ def test_target_partitions_are_deterministically_ordered(
 ) -> None:
     meta = plan(catalog_id, artifacts_root)
     plan_dir = _plan_dir(artifacts_root, meta)
-    shard = pq.read_table(form_partition_dir(plan_dir, "10-K") / "data.parquet")
+    shard = pq.read_table(
+        plan_dir
+        / PLAN_TARGETS_DIR_NAME
+        / f"form={form_partition_name('10-K')}"
+        / "data.parquet"
+    )
     keys = [(r["document_locator_key"], r["occurrence_id"]) for r in shard.to_pylist()]
     assert keys == sorted(keys)
 

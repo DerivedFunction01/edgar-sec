@@ -23,8 +23,8 @@ from edgar_sec.pipelines.document_inventory.commands.review import (
 )
 from edgar_sec.pipelines.document_inventory.discovery import discover_fixtures
 from edgar_sec.pipelines.document_inventory.review_artifacts.paths import (
-    ENTRIES_FILE,
     OBSERVATIONS_FILE,
+    REVIEW_ENTRIES_FILE,
 )
 
 
@@ -119,8 +119,8 @@ class InventoryReviewAdapter(ReviewAdapter):
         if new_case_dir is None:
             return CaseDiff(case_id, "removed", details="case removed in new run")
 
-        base_entries = base_case_dir / ENTRIES_FILE
-        new_entries = new_case_dir / ENTRIES_FILE
+        base_entries = base_case_dir / REVIEW_ENTRIES_FILE
+        new_entries = new_case_dir / REVIEW_ENTRIES_FILE
         entries_add, entries_rem, entries_patch = diff_dataset(
             base_entries, new_entries
         )
@@ -142,7 +142,9 @@ class InventoryReviewAdapter(ReviewAdapter):
 
         detail_parts = []
         if entries_add or entries_rem:
-            detail_parts.append(f"{ENTRIES_FILE} (+{entries_add}/-{entries_rem})")
+            detail_parts.append(
+                f"{REVIEW_ENTRIES_FILE} (+{entries_add}/-{entries_rem})"
+            )
         if obs_add or obs_rem:
             detail_parts.append(f"{OBSERVATIONS_FILE} (+{obs_add}/-{obs_rem})")
 

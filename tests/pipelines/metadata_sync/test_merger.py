@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
 import pyarrow as pa
@@ -15,6 +14,7 @@ from edgar_sec.domain.submissions.schemas import (
 )
 from edgar_sec.engine.submissions.builder import build_submission_table
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.parquet import count_parquet_rows
 from edgar_sec.pipelines.metadata_sync.augmentation import derive_delta_plan
 from edgar_sec.pipelines.metadata_sync.merger import (
@@ -29,8 +29,7 @@ from edgar_sec.pipelines.metadata_sync.paths import (
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
 from edgar_sec.pipelines.metadata_sync.roster import read_cik_index
 from edgar_sec.pipelines.metadata_sync.snapshot import (
-    SNAPSHOT_MANIFEST_VERSION,
-    read_snapshot_parts,
+    resolve_snapshot_parts,
 )
 from tests.support import fixture_cohort, roster_of
 
@@ -123,7 +122,7 @@ def _publish_base(tmp_path: Path, ciks, base_id: str = "base-snap"):
 
 
 def test_merge_publishes_a_multipart_snapshot(tmp_path: Path) -> None:
-    """Chunk order, not a global CIK sort, so the manifest must say which."""
+    """Chunk order, not a global CIK sort, so the catalog records its relation."""
     plan, run_paths = _plan(tmp_path)
     _complete(plan, run_paths)
 
@@ -134,7 +133,7 @@ def test_merge_publishes_a_multipart_snapshot(tmp_path: Path) -> None:
     assert report.filing_record_count == 0
 
     publish_snapshot(report, run_paths.metadata)
-    parts = read_snapshot_parts(run_paths.metadata.snapshot_manifest("snap1"))
+    parts = resolve_snapshot_parts(run_paths.metadata, "snap1")
     assert parts.part_count == 2
     assert [part["part_index"] for part in report.parts] == [0, 1]
     assert [part["source"] for part in report.parts] == [
@@ -167,22 +166,26 @@ def test_published_parts_are_byte_copies_of_the_validated_chunks(
         assert part["byte_count"] == source.stat().st_size
 
 
-def test_multipart_manifest_names_no_single_payload(tmp_path: Path) -> None:
-    """A singular-shape reader must fail loudly, not ingest only part zero."""
+def test_multipart_snapshot_is_recorded_without_a_sidecar(tmp_path: Path) -> None:
     plan, run_paths = _plan(tmp_path)
     _complete(plan, run_paths)
-    manifest = publish_snapshot(
+    report_data = publish_snapshot(
         merge_chunks(plan, run_paths, "snap1"), run_paths.metadata
     )
 
-    assert manifest["output_path"] == ""
-    assert manifest["artifact_sha256"] == ""
-    assert manifest["part_count"] == 2
-    assert manifest["manifest_version"] == SNAPSHOT_MANIFEST_VERSION
-    assert [part["path"] for part in manifest["parts"]] == [
+    assert report_data["output_path"] == ""
+    assert report_data["artifact_sha256"] == ""
+    assert report_data["part_count"] == 2
+    assert [part["path"] for part in report_data["parts"]] == [
         "parts/part-00000.parquet",
         "parts/part-00001.parquet",
     ]
+    node = DAGCatalog(run_paths.metadata.snapshots_root, read_only=True).get_manifest(
+        "snap1"
+    )
+    assert node is not None
+    assert len(node.relations["submissions"]) == 2
+    assert not list(run_paths.metadata.snapshot_dir("snap1").glob("*.json"))
 
 
 # ------------------------------------------------------------------- progress
@@ -216,7 +219,7 @@ def test_published_cik_index_matches_the_payload(tmp_path: Path) -> None:
     publish_snapshot(report, run_paths.metadata)
 
     index = read_cik_index(run_paths.metadata.snapshot_cik_index("snap1"))
-    parts = read_snapshot_parts(run_paths.metadata.snapshot_manifest("snap1"))
+    parts = resolve_snapshot_parts(run_paths.metadata, "snap1")
     published: list[str] = []
     for path in parts.paths:
         published.extend(pq.read_table(path, columns=["cik"]).column("cik").to_pylist())
@@ -226,27 +229,27 @@ def test_published_cik_index_matches_the_payload(tmp_path: Path) -> None:
     assert report.cik_index_path.endswith("ciks.parquet")
 
 
-def test_snapshot_manifest_records_lineage_beside_the_parts(
+def test_snapshot_record_contains_lineage_and_cik_index(
     tmp_path: Path,
 ) -> None:
     """Lineage and the CIK index travel with the part list."""
     plan, run_paths = _plan(tmp_path)
     _complete(plan, run_paths)
-    manifest = publish_snapshot(
+    report_data = publish_snapshot(
         merge_chunks(plan, run_paths, "snap1"), run_paths.metadata
     )
 
-    assert manifest["cik_index_sha256"]
-    assert manifest["cik_count"] == 4
-    assert manifest["roster_id"] == plan.roster.roster_id
-    assert manifest["kind"] == "full"
-    assert manifest["parent_snapshot_id"] == ""
-
-    on_disk = json.loads(
-        run_paths.metadata.snapshot_manifest("snap1").read_text(encoding="utf-8")
+    node = DAGCatalog(run_paths.metadata.snapshots_root, read_only=True).get_manifest(
+        "snap1"
     )
-    assert on_disk["parts_digest"] == manifest["parts_digest"]
-    assert len(on_disk["parts"]) == 2
+    assert node is not None
+    assert node.metadata["roster_id"] == plan.roster.roster_id
+    assert node.metadata["kind"] == "full"
+    assert not node.parent_snapshot_id
+    assert len(node.relations["submissions"]) == 2
+    assert node.relations["cik_index"][0].sha256 == report_data["cik_index_sha256"]
+    assert node.logical_fingerprint == report_data["parts_digest"]
+    assert not list(run_paths.metadata.snapshot_dir("snap1").glob("*.json"))
 
 
 def test_a_failing_progress_callback_does_not_fail_the_merge(tmp_path: Path) -> None:
@@ -277,7 +280,7 @@ def test_merge_records_the_plan_id_as_snapshot_identity(tmp_path: Path) -> None:
     publish_snapshot(report, run_paths.metadata)
 
     assert report.snapshot_id == report.plan_id == plan.plan_id
-    parts = read_snapshot_parts(run_paths.metadata.snapshot_manifest(plan.plan_id))
+    parts = resolve_snapshot_parts(run_paths.metadata, plan.plan_id)
     stamped: set[str] = set()
     for path in parts.paths:
         table = pq.read_table(path, columns=["snapshot_id"])

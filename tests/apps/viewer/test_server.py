@@ -229,27 +229,9 @@ def test_sql_endpoint_requires_a_query(client: TestClient) -> None:
     assert client.post(f"/api/datasets/{dataset}/sql", json={}).status_code == 400
 
 
-def test_documents_endpoint_returns_content(client: TestClient) -> None:
-    documents = client.get("/api/documents").json()
-    assert documents
-    body = client.get(f"/api/documents/{documents[0]['id']}")
-    assert body.status_code == 200
-    payload = body.json()
-    assert payload["content"]["snapshot_id"] == "snap-meta"
-    assert payload["summary"]["id"] == documents[0]["id"]
-
-
-def test_documents_and_datasets_are_separate_listings(client: TestClient) -> None:
-    """A manifest is not a table and must not appear as browsable rows."""
-    dataset_ids = {item["id"] for item in client.get("/api/datasets").json()}
-    document_ids = {item["id"] for item in client.get("/api/documents").json()}
-    assert dataset_ids.isdisjoint(document_ids)
-
-
 def test_an_empty_root_lists_nothing(tmp_path: Path) -> None:
     client = TestClient(create_app(tmp_path / "empty"))
     assert client.get("/api/datasets").json() == []
-    assert client.get("/api/documents").json() == []
 
 
 def test_a_damaged_snapshot_does_not_break_the_listing(tmp_path: Path) -> None:

@@ -19,7 +19,7 @@ Three subpackages, each a complete vertical over one external system:
   [`broker/README.md`](broker/README.md).
 - `storage/` — atomic filesystem publication, the Parquet format vocabulary, the
   DuckDB connection factory and its SQL dialect primitives, and the immutable
-  snapshot manifest/pointer machinery. See [`storage/README.md`](storage/README.md).
+  snapshot-record/pointer machinery. See [`storage/README.md`](storage/README.md).
 - `distribution/` — multi-machine bundle export, signed cryptographic receipts,
   pipeline-affinity guards, chunk adoption, discovery, and interactive console. See
   [`distribution/README.md`](distribution/README.md).

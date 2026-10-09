@@ -10,7 +10,14 @@ from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from typing import Any, Literal
 
+from edgar_sec.foundation.hashing import sha256_text
+from edgar_sec.foundation.serialization import canonical_json
+
 NodeKind = Literal["checkpoint", "delta"]
+
+
+def ordered_parts_fingerprint(part_sha256s: tuple[str, ...] | list[str]) -> str:
+    return sha256_text(canonical_json(list(part_sha256s)))
 
 
 @dataclass(frozen=True, slots=True)
@@ -148,4 +155,5 @@ __all__ = [
     "NodeKind",
     "ParentRef",
     "PartDescriptor",
+    "ordered_parts_fingerprint",
 ]

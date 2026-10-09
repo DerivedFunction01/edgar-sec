@@ -74,7 +74,8 @@ def _namespace(
         dates=dates,
         limit=None,
         source="",
-        source_manifest="",
+        source_snapshot="",
+        source_artifacts="",
         artifacts="",
         parent_plan=parent_plan,
         target_units=target_units,
@@ -164,7 +165,6 @@ def _ask_parent_plan() -> tuple[str, int] | None:
 
 
 def _action_materialize() -> None:
-    from edgar_sec.infra.storage.dag.catalog import DAGCatalog
     from edgar_sec.infra.storage.dag.menu import prompt_dag_target
     from .paths import resolve_metadata_paths
 
@@ -176,15 +176,7 @@ def _action_materialize() -> None:
     if chosen_id is None:
         return
     args = _namespace("materialize")
-    meta_catalog = DAGCatalog(meta_paths.snapshots_root)
-    ptr = meta_catalog.read_pointer()
-    current_id = str(ptr["snapshot_id"]) if ptr else None
-    if chosen_id != current_id:
-        manifest_path = meta_paths.snapshot_manifest(chosen_id)
-        if manifest_path.is_file():
-            args.source_manifest = str(manifest_path)
-        else:
-            args.source = str(meta_paths.snapshot_file(chosen_id))
+    args.source_snapshot = chosen_id
     cmd_materialize(args)
 
 

@@ -16,7 +16,7 @@ from edgar_sec.pipelines.document_inventory.fixture_store.models import IndexRes
 
 SOURCE_PREVIEW_FILE = "source.inert.html"
 OBSERVATIONS_FILE = "observations.json"
-ENTRIES_FILE = "entries.csv"
+REVIEW_ENTRIES_FILE = "entries.csv"
 
 
 @dataclass(frozen=True, slots=True)
@@ -50,8 +50,8 @@ class ReviewArtifactPaths:
 
 
 __all__ = [
-    "ENTRIES_FILE",
     "OBSERVATIONS_FILE",
+    "REVIEW_ENTRIES_FILE",
     "ReviewArtifactPaths",
     "SOURCE_PREVIEW_FILE",
 ]

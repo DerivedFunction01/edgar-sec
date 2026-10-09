@@ -20,8 +20,6 @@ from edgar_sec.foundation.runtime.paths import (
 from .roster import ROSTER_FILE_NAME, SNAPSHOT_CIK_INDEX_NAME
 
 METADATA_DIR = "metadata"
-SNAPSHOT_FILE_NAME = "metadata.parquet"
-SNAPSHOT_MANIFEST_NAME = "metadata.manifest.json"
 PARTS_DIR_NAME = "parts"
 ROSTER_DIR_NAME = "roster"
 INPUT_DIR_NAME = "input"
@@ -67,12 +65,6 @@ class MetadataPaths:
         """Directory holding one published snapshot."""
         return self.snapshots_root / snapshot_id
 
-    def snapshot_file(self, snapshot_id: str) -> Path:
-        """Sorted Parquet dataset for one single-part snapshot.
-        A multipart snapshot publishes ``parts/``; use ``read_snapshot_parts``.
-        """
-        return self.snapshot_dir(snapshot_id) / SNAPSHOT_FILE_NAME
-
     def snapshot_parts_dir(self, snapshot_id: str) -> Path:
         """Directory holding the Parquet parts of a multipart snapshot."""
         return self.snapshot_dir(snapshot_id) / PARTS_DIR_NAME
@@ -80,10 +72,6 @@ class MetadataPaths:
     def snapshot_part(self, snapshot_id: str, part_name: str) -> Path:
         """Path of one metadata part within a multipart snapshot."""
         return self.snapshot_parts_dir(snapshot_id) / part_name
-
-    def snapshot_manifest(self, snapshot_id: str) -> Path:
-        """Merge manifest for one snapshot."""
-        return self.snapshot_dir(snapshot_id) / SNAPSHOT_MANIFEST_NAME
 
     def snapshot_cik_index(self, snapshot_id: str) -> Path:
         """Sorted distinct CIK index published beside one snapshot payload."""
@@ -177,14 +165,8 @@ __all__ = [
     "PARTS_DIR_NAME",
     "PLANS_DIR_NAME",
     "RECEIPT_FILE_NAME",
-    "REGISTRIES_DIR_NAME",
-    "REGISTRY_EFFECTIVE_CIK_DATASET",
-    "REGISTRY_EFFECTIVE_CIK_INPUT_NAME",
-    "EFFECTIVE_CIK_INPUT_MANIFEST_NAME",
     "ROSTER_DIR_NAME",
     "RUN_LOCK_FILE",
-    "SNAPSHOT_FILE_NAME",
-    "SNAPSHOT_MANIFEST_NAME",
     "MetadataPaths",
     "RunPaths",
     "resolve_metadata_paths",

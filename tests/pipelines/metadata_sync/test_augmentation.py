@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
 import pyarrow as pa
@@ -11,6 +10,7 @@ import pytest
 
 from edgar_sec.domain.sec_urls import submissions_url
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.metadata_sync.augmentation import (
     augment,
     base_cik_sources,
@@ -31,7 +31,10 @@ from edgar_sec.pipelines.metadata_sync.paths import (
 )
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
 from edgar_sec.pipelines.metadata_sync.roster import read_cik_index
-from edgar_sec.pipelines.metadata_sync.snapshot import read_snapshot_parts
+from edgar_sec.pipelines.metadata_sync.snapshot import (
+    SnapshotCatalogError,
+    resolve_snapshot_parts,
+)
 from edgar_sec.pipelines.metadata_sync.worker import run_chunk
 from tests.pipelines.metadata_sync.cohort_support import publish_test_cohort
 from tests.support import (
@@ -65,8 +68,8 @@ def _seed(session: FakeSession, extra: bool = False) -> None:
 
 
 def _snapshot_rows(metadata, snapshot_id: str) -> list[dict]:
-    """Read a snapshot the way a consumer does: every part its manifest declares."""
-    parts = read_snapshot_parts(metadata.snapshot_manifest(snapshot_id))
+    """Read a snapshot through its catalogued relation."""
+    parts = resolve_snapshot_parts(metadata, snapshot_id)
     rows: list[dict] = []
     for path in parts.paths:
         rows.extend(pq.read_table(path).to_pylist())
@@ -88,7 +91,7 @@ def _publish_baseline(client, session: FakeSession, tmp_path: Path):
     for chunk_id in plan.chunk_ids():
         run_chunk(client, plan, run_paths, chunk_id, snapshot_id="base", workers=2)
     report = merge_chunks(plan, run_paths, "base")
-    # A merge is not a publication; the manifest is the commit record.
+    # A merge is not a publication; the catalog record is the commit record.
     publish_snapshot(report, metadata)
     return metadata, cohort, plan, report
 
@@ -254,7 +257,7 @@ def test_base_membership_falls_back_to_the_payload(
 
 def test_a_missing_base_is_never_read_as_empty(tmp_path: Path) -> None:
     metadata = resolve_metadata_paths(tmp_path)
-    with pytest.raises(FileNotFoundError):
+    with pytest.raises(SnapshotCatalogError):
         base_cik_sources(metadata, "absent")
 
 
@@ -304,15 +307,13 @@ def test_augment_merges_base_and_delta_without_refetching_base(
         [*cohort.roster.range_ciks(0, cohort.row_count), EXTRA]
     )
     # Part order (base parts, then delta chunks), not global CIK sort.
-    parts = read_snapshot_parts(metadata.snapshot_manifest("next"))
-    assert [
-        part["source"].split(":")[0] for part in parts.layout.manifest["parts"]
-    ] == [
-        "base",
-        "base",
-        "chunk",
+    parts = resolve_snapshot_parts(metadata, "next")
+    assert [part.path for part in parts.descriptors] == [
+        "../base/parts/part-00000.parquet",
+        "../base/parts/part-00001.parquet",
+        "parts/part-00000.parquet",
     ]
-    assert parts.layout.manifest["sort_order"] == "chunk_order"
+    assert parts.snapshot.metadata["sort_order"] == "chunk_order"
 
     assert current_snapshot_id(metadata) == "next"
 
@@ -446,11 +447,12 @@ def test_an_omitted_snapshot_id_publishes_under_the_delta_plan_id(
     assert result.new_snapshot_id == result.report.plan_id
     assert result.new_snapshot_id
     # The derived id is what actually got written, not just what was reported.
-    manifest = json.loads(
-        metadata.snapshot_manifest(result.new_snapshot_id).read_text()
+    node = DAGCatalog(metadata.snapshots_root, read_only=True).get_manifest(
+        result.new_snapshot_id
     )
-    assert manifest["snapshot_id"] == result.report.plan_id
-    assert manifest["parent_snapshot_id"] == "base"
+    assert node is not None
+    assert node.snapshot_id == result.report.plan_id
+    assert node.parent_snapshot_id == "base"
     assert current_snapshot_id(metadata) == result.new_snapshot_id
 
 
@@ -553,7 +555,7 @@ def test_augmented_index_is_the_union_of_base_and_delta(
     assert result.report.cik_index_sha256
 
 
-def test_augmented_manifest_records_its_lineage(
+def test_augmented_catalog_record_contains_lineage(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
     metadata, _, _, _ = _publish_baseline(client, session, tmp_path)
@@ -570,13 +572,12 @@ def test_augmented_manifest_records_its_lineage(
         chunk_size=2,
         workers=2,
     )
-    manifest = json.loads(
-        metadata.snapshot_manifest("next").read_text(encoding="utf-8")
-    )
-    assert manifest["kind"] == "delta"
-    assert manifest["parent_snapshot_id"] == "base"
-    assert manifest["delta_roster_id"] == result.report.roster_id
-    assert manifest["plan_id"] == result.report.plan_id
+    node = DAGCatalog(metadata.snapshots_root, read_only=True).get_manifest("next")
+    assert node is not None
+    assert node.metadata["kind"] == "delta"
+    assert node.parent_snapshot_id == "base"
+    assert node.metadata["delta_roster_id"] == result.report.roster_id
+    assert node.metadata["plan_id"] == result.report.plan_id
 
 
 def test_augment_preserves_base_row_provenance(
@@ -636,7 +637,8 @@ def test_augment_is_a_no_op_when_the_base_already_covers_the_request(
     )
     assert result.total_row_count == result.base_row_count
     assert session.calls == sessions_before
-    assert metadata.snapshot_manifest("next").exists() is False
+    catalog = DAGCatalog(metadata.snapshots_root, read_only=True)
+    assert catalog.get_manifest("next") is None
     assert current_snapshot_id(metadata) == pointer_before
 
 
@@ -684,7 +686,7 @@ def test_augment_requires_an_existing_base(
 ) -> None:
     metadata = resolve_metadata_paths(tmp_path)
     cohort = fixture_cohort("cik_sec_mini.csv")
-    with pytest.raises(FileNotFoundError):
+    with pytest.raises(SnapshotCatalogError):
         augment(
             client,
             cohort.roster,
@@ -698,7 +700,7 @@ def test_augment_requires_an_existing_base(
 def test_base_checkpoints_are_still_discoverable(
     client, session: FakeSession, tmp_path: Path
 ) -> None:
-    metadata, _manifest, plan, _ = _publish_baseline(client, session, tmp_path)
+    metadata, _report, plan, _ = _publish_baseline(client, session, tmp_path)
     completed = discover_completed_chunks(
         plan, resolve_run_paths(plan.plan_id, metadata.artifacts_root)
     )

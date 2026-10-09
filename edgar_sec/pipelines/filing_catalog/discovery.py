@@ -1,12 +1,10 @@
 """Discovery of published catalogs, target plans, and selection policies.
-Reads manifests and directory listings only, so ``status`` stays cheap. The
-year-bound helpers are the exception: the report-year range is recorded nowhere
-a manifest could answer it.
+Catalog state comes from the DAG database; plan bundles remain file artifacts.
+Year bounds are computed from the published target relation when requested.
 """
 
 from __future__ import annotations
 
-import json
 from collections.abc import Sequence
 from pathlib import Path
 from typing import Any
@@ -31,7 +29,6 @@ from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 from edgar_sec.pipelines.filing_catalog.envelope import CatalogPlanEnvelope
 from edgar_sec.pipelines.filing_catalog.paths import (
-    CATALOG_SNAPSHOT_MANIFEST_NAME,
     CURRENT_ALIAS,
     FilingCatalogPaths,
     resolve_filing_catalog_paths,
@@ -43,31 +40,17 @@ from edgar_sec.pipelines.filing_catalog.publication import PlanConflictError
 _MIN_PLAUSIBLE_YEAR = 1990
 
 
-def _read_json(path: Path) -> dict[str, Any] | None:
-    """Return parsed JSON, or None when absent or unreadable.
-    A truncated manifest counts as absent, so one damaged directory cannot fail
-    discovery for every other entry.
-    """
-    if not path.is_file():
-        return None
-    try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError):
-        return None
-    return payload if isinstance(payload, dict) else None
-
-
 def current_catalog_id(paths: FilingCatalogPaths) -> str | None:
     """Return the catalog id named by the current pointer, if any.
 
     The DAG catalog is the single authority for the published tip.
     """
-    catalog = DAGCatalog(paths.snapshots_root)
-    if catalog.catalog_file.is_file():
-        ptr = catalog.read_pointer()
-        if ptr:
-            return str(ptr["snapshot_id"])
-    return None
+    try:
+        catalog = DAGCatalog(paths.snapshots_root, read_only=True)
+    except FileNotFoundError:
+        return None
+    ptr = catalog.read_pointer()
+    return str(ptr["snapshot_id"]) if ptr else None
 
 
 def resolve_catalog_reference(paths: FilingCatalogPaths, catalog: str) -> str:
@@ -90,52 +73,28 @@ def discover_catalogs(
 ) -> list[dict[str, Any]]:
     """List every published catalog snapshot, newest id last."""
     resolved = paths or resolve_filing_catalog_paths()
-    catalog = DAGCatalog(resolved.snapshots_root)
-    if catalog.catalog_file.is_file():
-        nodes = catalog.list_snapshots()
-        found: list[dict[str, Any]] = []
-        for node_info in nodes:
-            cid = node_info["snapshot_id"]
-            manifest = catalog.get_manifest(cid)
-            if manifest is None:
-                continue
-            meta = manifest.metadata or {}
-            parts = manifest.relations.get("filing_targets", ())
-            target_rows = sum(p.row_count for p in parts)
-            profiles = manifest.relations.get("company_profiles", ())
-            profile_rows = sum(p.row_count for p in profiles)
-            found.append(
-                {
-                    "catalog_id": cid,
-                    "profile_row_count": profile_rows,
-                    "target_row_count": target_rows,
-                    "schema_version": manifest.schema_versions.get("filing_targets"),
-                    "part_count": len(parts),
-                    "form_counts": meta.get("form_counts") or {},
-                    "source_artifact": meta.get("source_artifact"),
-                }
-            )
-        return found
-    found = []
-    if not resolved.snapshots_root.is_dir():
-        return found
-    for entry in sorted(resolved.snapshots_root.iterdir()):
-        # ``current`` is the pointer and a policy feature snapshot is also a directory
-        # here; only one carrying snapshot.manifest.json is a catalog snapshot.
-        if not entry.is_dir() or entry.name == CURRENT_ALIAS:
+    try:
+        catalog = DAGCatalog(resolved.snapshots_root, read_only=True)
+    except FileNotFoundError:
+        return []
+    found: list[dict[str, Any]] = []
+    for node_info in catalog.list_snapshots():
+        catalog_id = str(node_info["snapshot_id"])
+        node = catalog.get_manifest(catalog_id)
+        if node is None:
             continue
-        manifest = _read_json(entry / CATALOG_SNAPSHOT_MANIFEST_NAME)
-        if manifest is None:
-            continue
+        metadata = node.metadata
+        target_parts = node.relations.get("filing_targets", ())
+        profile_parts = node.relations.get("company_profiles", ())
         found.append(
             {
-                "catalog_id": entry.name,
-                "profile_row_count": manifest.get("profile_row_count"),
-                "target_row_count": manifest.get("target_row_count"),
-                "schema_version": manifest.get("schema_version"),
-                "part_count": len(manifest.get("parts") or []),
-                "form_counts": manifest.get("form_counts") or {},
-                "source_artifact": manifest.get("source_artifact"),
+                "catalog_id": catalog_id,
+                "profile_row_count": sum(part.row_count for part in profile_parts),
+                "target_row_count": sum(part.row_count for part in target_parts),
+                "schema_version": node.schema_versions.get("filing_targets"),
+                "part_count": len(target_parts),
+                "form_counts": metadata.get("form_counts") or {},
+                "source_artifact": metadata.get("source_artifact"),
             }
         )
     return found
@@ -268,7 +227,7 @@ def eligible_year_bounds(
 
 
 def status(paths: FilingCatalogPaths | None = None) -> dict[str, Any]:
-    """Summarize published state from manifests alone."""
+    """Summarize published state from the DAG catalog and plan bundles."""
     resolved = paths or resolve_filing_catalog_paths()
     catalogs = discover_catalogs(resolved)
     plans = discover_plans(resolved)

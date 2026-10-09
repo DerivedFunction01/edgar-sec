@@ -22,7 +22,7 @@ from edgar_sec.apps.viewer.datasets import (
     dataset_rows,
     dataset_schema,
 )
-from edgar_sec.apps.viewer.loaders import iter_documents, run_all
+from edgar_sec.apps.viewer.loaders import run_all
 from edgar_sec.apps.viewer.model import (
     ArtifactSummary,
     artifact_id,
@@ -64,13 +64,6 @@ def _ref(summary: ArtifactSummary, root: Path) -> DatasetRef:
         fmt=summary.format,
         table=summary.table or artifact_table(summary.id),
     )
-
-
-def _find(summaries: list[ArtifactSummary], dataset_id: str) -> ArtifactSummary:
-    for summary in summaries:
-        if summary.id == dataset_id:
-            return summary
-    raise HTTPException(status_code=404, detail="dataset not found")
 
 
 def _find_dataset(dataset_id: str, root: Path) -> ArtifactSummary:
@@ -147,10 +140,6 @@ def create_app(artifacts_root: Path | None = None) -> FastAPI:
     @app.get("/api/datasets")
     def list_datasets() -> list[dict]:
         return [summary_to_dict(item) for item in run_all(root, include_sqlite=False)]
-
-    @app.get("/api/documents")
-    def list_documents() -> list[dict]:
-        return [summary_to_dict(item) for item in iter_documents(root)]
 
     @app.get("/api/tree")
     def get_tree(parent_id: str | None = None) -> list[dict]:
@@ -248,15 +237,6 @@ def create_app(artifacts_root: Path | None = None) -> FastAPI:
             return JSONResponse(content=run_dataset_sql(_ref(summary, root), query))
         except DatasetError as exc:
             return JSONResponse(status_code=400, content={"detail": str(exc)})
-
-    @app.get("/api/documents/{dataset_id}")
-    def get_document(dataset_id: str) -> dict:
-        summary = _find(iter_documents(root), dataset_id)
-        try:
-            content = json.loads(artifact_path(summary.id, root).read_text("utf-8"))
-        except (OSError, json.JSONDecodeError, DatasetError) as exc:
-            raise HTTPException(status_code=400, detail=str(exc)) from exc
-        return {"summary": summary_to_dict(summary), "content": content}
 
     if UI_DIST.is_dir():
         from fastapi.staticfiles import StaticFiles

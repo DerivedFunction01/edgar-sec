@@ -107,7 +107,7 @@ def test_namespace_carries_every_field_the_commands_read() -> None:
     assert namespace.forms == ["10-K", "8-K"]
     for field in ("scope", "suffixes", "limit", "artifacts"):
         assert hasattr(namespace, field), f"cmd_plan reads {field}"
-    for field in ("source", "source_manifest"):
+    for field in ("source", "source_snapshot", "source_artifacts"):
         assert hasattr(namespace, field), f"cmd_materialize reads {field}"
     for field in ("parent_plan", "target_units"):
         assert hasattr(namespace, field), f"cmd_expand reads {field}"

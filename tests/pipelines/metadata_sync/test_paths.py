@@ -16,8 +16,6 @@ from edgar_sec.pipelines.metadata_sync.paths import (
     RECEIPT_FILE_NAME,
     ROSTER_DIR_NAME,
     SNAPSHOT_CIK_INDEX_NAME,
-    SNAPSHOT_FILE_NAME,
-    SNAPSHOT_MANIFEST_NAME,
     MetadataPaths,
     resolve_metadata_paths,
     resolve_run_paths,
@@ -27,10 +25,10 @@ from edgar_sec.pipelines.metadata_sync import paths as metadata_paths_module
 
 def test_published_and_transient_state_live_in_separate_trees(tmp_path: Path) -> None:
     metadata = MetadataPaths(artifacts_root=tmp_path)
-    snapshot = metadata.snapshot_file("snap")
+    snapshot = metadata.snapshot_dir("snap")
     chunk = resolve_run_paths("plan", tmp_path).chunk_file(0)
 
-    assert metadata_root_of(snapshot) == tmp_path / "metadata"
+    assert snapshot == tmp_path / "metadata" / "snapshots" / "snap"
     assert str(chunk).startswith(str(tmp_path / "transient" / METADATA_DIR))
     assert "transient" not in snapshot.parts
     assert "transient" not in metadata.plan_dir("plan").parts
@@ -45,18 +43,9 @@ def test_cohort_storage_is_owned_by_the_shared_paths(tmp_path: Path) -> None:
     assert not hasattr(metadata_paths_module, "COMPILED_ROSTER_MANIFEST_KIND")
 
 
-def metadata_root_of(path: Path) -> Path:
-    return path.parent.parent.parent
-
-
 def test_snapshot_paths_are_scoped_by_snapshot_id(tmp_path: Path) -> None:
     metadata = MetadataPaths(artifacts_root=tmp_path)
-    assert metadata.snapshot_file("abc") == (
-        tmp_path / "metadata" / "snapshots" / "abc" / SNAPSHOT_FILE_NAME
-    )
-    assert metadata.snapshot_manifest("abc") == (
-        tmp_path / "metadata" / "snapshots" / "abc" / SNAPSHOT_MANIFEST_NAME
-    )
+    assert metadata.snapshot_dir("abc") == (tmp_path / "metadata" / "snapshots" / "abc")
 
 
 def test_plan_paths_are_scoped_by_plan_id(tmp_path: Path) -> None:
@@ -106,9 +95,7 @@ def test_the_published_cik_index_sits_beside_the_payload(tmp_path: Path) -> None
     assert metadata.snapshot_cik_index("snap1") == (
         tmp_path / "metadata" / "snapshots" / "snap1" / SNAPSHOT_CIK_INDEX_NAME
     )
-    assert metadata.snapshot_cik_index("snap1").parent == (
-        metadata.snapshot_file("snap1").parent
-    )
+    assert metadata.snapshot_cik_index("snap1").parent == metadata.snapshot_dir("snap1")
 
 
 def _project_paths(artifacts_root: Path) -> ProjectPaths:

@@ -127,7 +127,7 @@ bun test
 ## Artifact layout
 
 <!-- AUTOGEN:PATHS:START -->
-No paths dataclass found.
+No published artifact paths.
 <!-- AUTOGEN:PATHS:END -->
 
 ## Deliberate gaps

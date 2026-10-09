@@ -17,10 +17,11 @@ from .common import emit_progress, resolve_artifacts
 def cmd_materialize(args: argparse.Namespace) -> int:
     """Build a catalog snapshot from a metadata snapshot."""
     try:
-        manifest = materialize(
+        result = materialize(
             args.source or None,
             resolve_artifacts(args.artifacts),
-            source_manifest=args.source_manifest or None,
+            source_snapshot_id=args.source_snapshot or None,
+            source_artifacts_root=args.source_artifacts or None,
             progress=emit_progress,
             branch_name=args.branch or "main",
         )
@@ -29,12 +30,12 @@ def cmd_materialize(args: argparse.Namespace) -> int:
         return 1
     render_output(
         [
-            KeyValueRow("catalog_id", manifest.get("catalog_id", "")),
-            KeyValueRow("source_snapshot_id", manifest.get("source_snapshot_id", "")),
-            KeyValueRow("target_row_count", str(manifest.get("target_row_count", 0))),
-            KeyValueRow("form_count", str(manifest.get("form_count", 0))),
-            KeyValueRow("partition_count", str(manifest.get("partition_count", 0))),
+            KeyValueRow("catalog_id", result.get("catalog_id", "")),
+            KeyValueRow("source_snapshot_id", result.get("source_snapshot_id", "")),
+            KeyValueRow("target_row_count", str(result.get("target_row_count", 0))),
+            KeyValueRow("form_count", str(result.get("form_count", 0))),
+            KeyValueRow("partition_count", str(result.get("partition_count", 0))),
         ],
-        title=f"Catalog Materialized ({manifest.get('catalog_id', '')[:8]})",
+        title=f"Catalog Materialized ({result.get('catalog_id', '')[:8]})",
     )
     return 0

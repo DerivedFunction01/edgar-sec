@@ -44,7 +44,7 @@ Layer 0  foundation/   runtime, memory, hashing, compression, settings, scanners
 | 2 | [`infra/`](infra/README.md) | layer root; I/O adapters |
 | 2 | [`infra/sec_http/`](infra/sec_http/README.md) | the shared SEC client: pacing, retries, cache, metrics, failure ledger |
 | 2 | [`infra/broker/`](infra/broker/README.md) | Unix-socket broker so an arbitrary worker pool shares one rate limit |
-| 2 | [`infra/storage/`](infra/storage/README.md) | atomic IO, DuckDB engine, Parquet, snapshot manifests, document parts, and shared cohort/object storage |
+| 2 | [`infra/storage/`](infra/storage/README.md) | atomic IO, DuckDB engine, Parquet, DAG snapshot records, document parts, and shared cohort/object storage |
 | 2 | [`infra/storage/object_store/`](infra/storage/object_store/README.md) | global immutable expression nodes and session-scoped aliases |
 | 2 | [`infra/storage/cohort/`](infra/storage/cohort/README.md) | cohort paths, SQLite catalog, active pointers, and immutable datasets |
 | 3 | [`engine/`](engine/README.md) | layer root; filing transformations and selection feature construction |

@@ -5,7 +5,6 @@ from pathlib import Path
 
 from edgar_sec.apps.viewer.loaders import (
     LOADERS,
-    iter_documents,
     load_document_storage,
     load_filing_catalog,
     load_metadata,
@@ -69,8 +68,9 @@ def test_a_tampered_part_removes_the_snapshot_rather_than_lying(
 
 
 def test_an_unpublished_metadata_run_is_invisible(metadata_tree: Path) -> None:
-    """A snapshot directory without a manifest is not a snapshot."""
-    (MetadataPaths(artifacts_root=metadata_tree).snapshots_root / "in-progress").mkdir()
+    """A snapshot directory without a DAG catalog record is ignored."""
+    orphan = MetadataPaths(artifacts_root=metadata_tree).snapshot_dir("in-progress")
+    orphan.mkdir()
     assert all(
         "in-progress" not in item.relative_path for item in load_metadata(metadata_tree)
     )
@@ -98,7 +98,7 @@ def test_document_snapshot_splits_index_from_payload(document_tree: Path) -> Non
 
 
 def test_profiles_and_targets_share_one_revision(catalog_tree: Path) -> None:
-    """Both tables of a catalog come from the same manifest, so same token."""
+    """Both tables of a catalog come from the same DAG record."""
     found = load_filing_catalog(catalog_tree)
     assert len({item.revision for item in found}) == 1
 
@@ -142,26 +142,16 @@ def test_run_all_combines_every_loader_without_duplicates(
     assert len(found) >= 7
 
 
-def test_run_all_survives_an_unreadable_manifest(artifacts_root: Path) -> None:
-    """One damaged snapshot must not hide the healthy ones."""
+def test_run_all_ignores_an_unregistered_snapshot_directory(
+    artifacts_root: Path,
+) -> None:
+    """An unregistered snapshot directory cannot hide or fabricate a snapshot."""
     build_metadata_snapshot(artifacts_root)
     broken = MetadataPaths(artifacts_root=artifacts_root).snapshot_dir("broken")
     broken.mkdir(parents=True)
-    (broken / "metadata.manifest.json").write_text("{not json", encoding="utf-8")
     found = run_all(artifacts_root)
     assert any(item.kind == "metadata_snapshot" for item in found)
 
 
-def test_documents_list_manifests_separately_from_datasets(
-    metadata_tree: Path,
-) -> None:
-    documents = iter_documents(metadata_tree)
-    assert [item.format for item in documents] == ["json"]
-    assert all(
-        item.relative_path.endswith("metadata.manifest.json") for item in documents
-    )
-
-
 def test_an_empty_root_yields_nothing(artifacts_root: Path) -> None:
     assert run_all(artifacts_root) == []
-    assert iter_documents(artifacts_root) == []

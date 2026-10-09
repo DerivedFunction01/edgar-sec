@@ -18,9 +18,7 @@ from edgar_sec.pipelines.document_inventory.discovery import discover_plans
 from edgar_sec.pipelines.document_inventory.fixture_store.models import (
     FixtureContribution,
 )
-from edgar_sec.pipelines.document_inventory.paths import (
-    resolve_filing_catalog_paths,
-)
+from edgar_sec.pipelines.document_inventory.paths import resolve_filing_catalog_paths
 
 ARCHIVE_BASE_URL = "https://www.sec.gov/Archives/edgar/data"
 

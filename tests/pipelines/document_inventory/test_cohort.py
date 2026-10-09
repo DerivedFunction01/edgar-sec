@@ -16,9 +16,15 @@ import pytest
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from edgar_sec.domain.filing_catalog.schemas import TARGET_COLUMNS
+from edgar_sec.domain.filing_catalog.schemas import (
+    TARGET_COLUMNS,
+    TARGET_SCHEMA_VERSION,
+)
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.domain.document_inventory.models import CohortObservation
+from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest, PartDescriptor
 from edgar_sec.pipelines.document_inventory.cohort import (
     CohortInputError,
     index_url_for,
@@ -34,17 +40,6 @@ PLAN_FIXTURE_SHA = json.loads(
 )
 
 
-def _manifest_snapshot(row_count: int, parts: list[dict]) -> str:
-    return json.dumps(
-        {
-            "catalog_id": "f259fde5d9c69335",
-            "schema_version": "1.1.0",
-            "target_row_count": row_count,
-            "parts": parts,
-        },
-    )
-
-
 def _plan_manifest(forms: list[str], counts: dict[str, int]) -> str:
     return json.dumps(
         {
@@ -57,23 +52,52 @@ def _plan_manifest(forms: list[str], counts: dict[str, int]) -> str:
     )
 
 
-def _build_snapshot(tmp_path: Path, part_path: Path, row_count: int) -> Path:
-    """Write a minimal snapshot dir pointing at ``part_path``."""
-    root = tmp_path / "cat" / "obs-1"
-    (root / "filing_targets").mkdir(parents=True)
-    dest = root / "filing_targets" / "part-00000.parquet"
-    dest.write_bytes(part_path.read_bytes())
-    (root / "snapshot.manifest.json").write_text(
-        _manifest_snapshot(
-            row_count,
-            [
-                {
-                    "part_index": 0,
-                    "path": "filing_targets/part-00000.parquet",
-                    "row_count": row_count,
-                }
-            ],
+def _record_catalog_snapshot(
+    root: Path,
+    parts: list[tuple[Path, int]],
+    schema_version: str = TARGET_SCHEMA_VERSION,
+) -> None:
+    descriptors = tuple(
+        PartDescriptor(
+            path=path.relative_to(root.parent).as_posix(),
+            sha256=file_sha256(path) if path.is_file() else "",
+            row_count=row_count,
+            byte_size=path.stat().st_size if path.is_file() else 0,
         )
+        for path, row_count in parts
+    )
+    DAGCatalog(root.parent).record_node(
+        DAGNodeManifest(
+            snapshot_id=root.name,
+            kind="checkpoint",
+            parents=(),
+            checkpoint_anchor_id=root.name,
+            lineage_depth=0,
+            created_at="2026-10-09T00:00:00Z",
+            relations={"filing_targets": descriptors},
+            logical_fingerprint=f"fp-{root.name}",
+            schema_versions={"filing_targets": schema_version},
+        )
+    )
+
+
+def _build_snapshot(
+    tmp_path: Path,
+    part_path: Path,
+    row_count: int,
+    *,
+    schema_version: str = TARGET_SCHEMA_VERSION,
+    descriptor_row_count: int | None = None,
+) -> Path:
+    """Write a minimal snapshot directory and its DAG record."""
+    root = tmp_path / "cat" / "obs-1"
+    dest = root / "filing_targets" / "part-00000.parquet"
+    dest.parent.mkdir(parents=True)
+    shutil.copyfile(part_path, dest)
+    _record_catalog_snapshot(
+        root,
+        [(dest, row_count if descriptor_row_count is None else descriptor_row_count)],
+        schema_version,
     )
     return root
 
@@ -121,7 +145,7 @@ def test_plan_fixture_parts_match_committed_sha256() -> None:
 # --- snapshot reader -----------------------------------------------------------
 
 
-def test_read_catalog_observations_reads_manifest_and_parts(tmp_path: Path) -> None:
+def test_read_catalog_observations_reads_sqlite_relations(tmp_path: Path) -> None:
     source_dir = _build_snapshot(tmp_path, FIXTURES / "cohort_observations.parquet", 17)
     obs = list(read_catalog_observations(source_dir, "plan-alpha", "catalog_snapshot"))
     assert len(obs) == 17
@@ -129,50 +153,31 @@ def test_read_catalog_observations_reads_manifest_and_parts(tmp_path: Path) -> N
     assert obs[6].report_date is None
 
 
-def test_read_catalog_observations_missing_manifest(tmp_path: Path) -> None:
+def test_read_catalog_observations_requires_a_catalog_record(tmp_path: Path) -> None:
     root = tmp_path / "cat" / "obs-1"
     (root / "filing_targets").mkdir(parents=True)
-    with pytest.raises(CohortInputError, match="manifest missing") as ctx:
+    with pytest.raises(CohortInputError, match="DAG catalog is missing") as ctx:
         list(read_catalog_observations(root, "plan-alpha", "catalog_snapshot"))
     assert ctx.value.code == "invalid_bundle"
 
 
 def test_read_catalog_observations_wrong_schema_version(tmp_path: Path) -> None:
-    root = _build_snapshot(tmp_path, FIXTURES / "cohort_observations.parquet", 17)
-    (root / "snapshot.manifest.json").write_text(
-        json.dumps(
-            {
-                "catalog_id": "x",
-                "schema_version": "0.9.0",
-                "target_row_count": 17,
-                "parts": [],
-            }
-        )
+    root = _build_snapshot(
+        tmp_path,
+        FIXTURES / "cohort_observations.parquet",
+        17,
+        schema_version="0.9.0",
     )
-    with pytest.raises(CohortInputError, match="schema_version") as ctx:
+    with pytest.raises(CohortInputError, match="schema version") as ctx:
         list(read_catalog_observations(root, "plan-alpha", "catalog_snapshot"))
     assert ctx.value.code == "invalid_bundle"
 
 
 def test_read_catalog_observations_missing_part(tmp_path: Path) -> None:
-    root = _build_snapshot(tmp_path, FIXTURES / "cohort_observations.parquet", 17)
-    (root / "snapshot.manifest.json").write_text(
-        json.dumps(
-            {
-                "catalog_id": "x",
-                "schema_version": "1.1.0",
-                "target_row_count": 17,
-                "parts": [
-                    {
-                        "part_index": 0,
-                        "path": "filing_targets/part-99999.parquet",
-                        "row_count": 17,
-                    }
-                ],
-            }
-        )
-    )
-    with pytest.raises(CohortInputError, match="declared part missing") as ctx:
+    root = tmp_path / "cat" / "obs-1"
+    missing = root / "filing_targets" / "part-99999.parquet"
+    _record_catalog_snapshot(root, [(missing, 17)])
+    with pytest.raises(CohortInputError, match="DAG part is missing") as ctx:
         list(read_catalog_observations(root, "plan-alpha", "catalog_snapshot"))
     assert ctx.value.code == "invalid_bundle"
 
@@ -188,22 +193,11 @@ def test_read_catalog_observations_schema_mismatch(tmp_path: Path) -> None:
 
 
 def test_read_catalog_observations_row_count_mismatch(tmp_path: Path) -> None:
-    root = _build_snapshot(tmp_path, FIXTURES / "cohort_observations.parquet", 17)
-    (root / "snapshot.manifest.json").write_text(
-        json.dumps(
-            {
-                "catalog_id": "x",
-                "schema_version": "1.1.0",
-                "target_row_count": 99,
-                "parts": [
-                    {
-                        "part_index": 0,
-                        "path": "filing_targets/part-00000.parquet",
-                        "row_count": 99,
-                    }
-                ],
-            }
-        )
+    root = _build_snapshot(
+        tmp_path,
+        FIXTURES / "cohort_observations.parquet",
+        17,
+        descriptor_row_count=99,
     )
     with pytest.raises(CohortInputError, match="declares 99 rows but has 17") as ctx:
         list(read_catalog_observations(root, "plan-alpha", "catalog_snapshot"))
@@ -424,29 +418,11 @@ def test_project_cohort_cik_union_across_shards(tmp_path: Path) -> None:
     part_b = table.slice(mid, table.num_rows - mid)
     root = tmp_path / "cat" / "obs-1"
     (root / "filing_targets").mkdir(parents=True)
-    pq.write_table(part_a, root / "filing_targets" / "part-00000.parquet")
-    pq.write_table(part_b, root / "filing_targets" / "part-00001.parquet")
-    (root / "snapshot.manifest.json").write_text(
-        json.dumps(
-            {
-                "catalog_id": "x",
-                "schema_version": "1.1.0",
-                "target_row_count": 17,
-                "parts": [
-                    {
-                        "part_index": 0,
-                        "path": "filing_targets/part-00000.parquet",
-                        "row_count": mid,
-                    },
-                    {
-                        "part_index": 1,
-                        "path": "filing_targets/part-00001.parquet",
-                        "row_count": 17 - mid,
-                    },
-                ],
-            }
-        )
-    )
+    first = root / "filing_targets" / "part-00000.parquet"
+    second = root / "filing_targets" / "part-00001.parquet"
+    pq.write_table(part_a, first)
+    pq.write_table(part_b, second)
+    _record_catalog_snapshot(root, [(first, mid), (second, 17 - mid)])
     obs = list(read_catalog_observations(root, "plan-alpha", "catalog_snapshot"))
     cohort = project_cohort(
         obs, archive_base_url="https://www.sec.gov/Archives/edgar/data"

@@ -67,11 +67,30 @@ artifact root. Source and family-index management remain outside metadata_sync.
 ## Artifact layout
 
 <!-- AUTOGEN:PATHS:START -->
-| Logical Artifact | Resolution Seam |
-| :--- | :--- |
-| `distribution_root` | Property |
-| `ensure_directories(...)` | Method |
-| `runtime_root` | Property |
+```text
+{artifacts_root}/
+├── metadata/  # Root of the published metadata dataset.
+│   ├── plans/  # Root of published metadata plan bundles.
+│   │   └── {plan_id}/  # Directory holding one immutable plan.
+│   │       ├── assignments/  # Directory holding one chunk-to-worker mapping per distribution.
+│   │       │   └── {assignment_id}.parquet  # Path of one worker assignment dataset.
+│   │       ├── input/
+│   │       │   └── input_manifest.json  # Diagnostics about where the selected cohort came from.
+│   │       ├── roster/
+│   │       │   └── ciks.parquet  # The CIK cohort, stored once for the whole plan.
+│   │       ├── plan.json  # Small execution manifest for this plan.
+│   │       └── run.lock  # Exclusive run lock for this plan.
+│   └── snapshots/  # Root of published snapshot directories.
+│       └── {snapshot_id}/  # Directory holding one published snapshot.
+│           ├── parts/  # Directory holding the Parquet parts of a multipart snapshot.
+│           │   └── {part_name}  # Path of one metadata part within a multipart snapshot.
+│           ├── ciks.parquet  # Sorted distinct CIK index published beside one snapshot payload.
+│           └── run.lock  # Exclusive run lock for a published snapshot (used by augment).
+└── transient/
+    └── metadata/
+        └── {plan_id}/  # Directory holding one plan's transient chunk checkpoints.
+            └── chunk_{chunk_id}.parquet  # Checkpoint path for one chunk.
+```
 <!-- AUTOGEN:PATHS:END -->
 
 ## Deliberate Gaps

@@ -328,11 +328,30 @@ processing tables in an existing database are left untouched and never read.
 ## Artifact layout
 
 <!-- AUTOGEN:PATHS:START -->
-| Logical Artifact | Resolution Seam |
-| :--- | :--- |
-| `distribution_root` | Property |
-| `ensure_directories(...)` | Method |
-| `runtime_root` | Property |
+```text
+{artifacts_root}/
+├── document_exhibits/
+│   └── snapshots/
+├── document_storage/
+│   ├── fixtures/
+│   │   └── {fixture_id}/
+│   │       ├── fixture.sqlite
+│   │       └── manifest.json
+│   ├── review-runs/
+│   │   └── {run_id}/
+│   └── snapshots/  # Alias for documents_root.
+│       ├── current/
+│       │   └── pointer.json
+│       └── {snapshot_id}/
+│           └── documents.parquet
+└── transient/
+    └── document_storage/
+        └── runs/
+            └── {run_id}/
+                ├── checkpoints/
+                └── chunks/
+                    └── chunk-{chunk_id}.parquet
+```
 <!-- AUTOGEN:PATHS:END -->
 
 ## Deliberate gaps

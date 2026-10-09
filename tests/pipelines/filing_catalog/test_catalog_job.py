@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import csv
-import json
+import shutil
 from pathlib import Path
 from typing import Any
 
@@ -23,6 +23,11 @@ from edgar_sec.domain.submissions.schemas import (
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.manifest import (
+    DAGNodeManifest,
+    PartDescriptor,
+    ordered_parts_fingerprint,
+)
 from edgar_sec.pipelines.filing_catalog.catalog_job import (
     CatalogError,
     materialize,
@@ -31,6 +36,7 @@ from edgar_sec.pipelines.filing_catalog.catalog_job import (
 from edgar_sec.pipelines.filing_catalog.paths import (
     resolve_filing_catalog_paths,
 )
+from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 from tests.support import catalog_fixture_path
 
 _BOOL_COLUMNS = {"is_xbrl", "is_inline_xbrl", "is_xbrl_numeric"}
@@ -102,44 +108,65 @@ def test_guard_refuses_to_overwrite_a_published_snapshot(
     assert (snapshot / "company_profiles.parquet").is_file()
 
 
-# --- explicit source manifests ---------------------------------------------
+# --- explicit source snapshots ---------------------------------------------
 
 
-def _phase1_manifest(sample_source: Path, root: Path) -> Path:
-    """Write the manifest published beside a snapshot payload."""
-    from edgar_sec.foundation.hashing import file_sha256
-
-    payload = root / "snapshots" / "snap-1"
-    payload.mkdir(parents=True)
-    target = payload / "metadata.parquet"
-    target.write_bytes(sample_source.read_bytes())
-
-    manifest = payload / "metadata.manifest.json"
-    manifest.write_text(
-        json.dumps(
-            {
-                "snapshot_id": "snap-1",
-                "parts": [
-                    {
-                        "path": str(target),
-                        "sha256": file_sha256(target),
-                        "row_count": pq.read_table(target).num_rows,
-                    }
-                ],
-            }
-        ),
-        encoding="utf-8",
+def _record_phase1_snapshot(
+    root: Path,
+    snapshot_id: str,
+    part_paths: list[Path],
+    parent_snapshot_id: str = "",
+) -> str:
+    metadata = resolve_metadata_paths(root)
+    snapshot_dir = metadata.snapshot_dir(snapshot_id)
+    descriptors = tuple(
+        PartDescriptor(
+            path=path.relative_to(snapshot_dir).as_posix(),
+            sha256=file_sha256(path),
+            row_count=pq.read_table(path, columns=["cik"]).num_rows,
+            byte_size=path.stat().st_size,
+        )
+        for path in part_paths
     )
-    return manifest
+    record = DAGNodeManifest(
+        snapshot_id=snapshot_id,
+        kind="checkpoint",
+        parents=(),
+        checkpoint_anchor_id=snapshot_id,
+        lineage_depth=0,
+        created_at="2026-10-09T00:00:00Z",
+        relations={"submissions": descriptors},
+        logical_fingerprint=ordered_parts_fingerprint(
+            [part.sha256 for part in descriptors]
+        ),
+        schema_versions={"submissions": SOURCE_SCHEMA_VERSION},
+        metadata={
+            "kind": "delta" if parent_snapshot_id else "full",
+            "plan_id": snapshot_id,
+            "row_count": sum(part.row_count for part in descriptors),
+            "parent_snapshot_id": parent_snapshot_id,
+        },
+    )
+    DAGCatalog(metadata.snapshots_root).record_node(record)
+    return snapshot_id
 
 
-def test_source_manifest_resolves_the_parquet_payload(
+def _phase1_snapshot(sample_source: Path, root: Path) -> str:
+    metadata = resolve_metadata_paths(root)
+    snapshot_dir = metadata.snapshot_dir("snap-1")
+    target = snapshot_dir / "parts" / "part-00000.parquet"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(sample_source, target)
+    return _record_phase1_snapshot(root, "snap-1", [target])
+
+
+def test_source_snapshot_resolves_catalogued_parts(
     tmp_path: Path, sample_source: Path
 ) -> None:
-    """A manifest is metadata; the Parquet it names is the data."""
-    manifest = _phase1_manifest(sample_source, tmp_path / "art")
+    """The DAG record resolves parts; no sidecar path is needed."""
+    snapshot_id = _phase1_snapshot(sample_source, tmp_path / "art")
 
-    dataset = resolve_source(None, manifest)
+    dataset = resolve_source(None, snapshot_id, source_artifacts_root=tmp_path / "art")
 
     assert dataset.part_count == 1
     source = dataset.first
@@ -148,11 +175,10 @@ def test_source_manifest_resolves_the_parquet_payload(
     assert pq.read_schema(source).names == SUBMISSION_METADATA_SCHEMA.names
 
 
-def _multipart_manifest(sample_source: Path, root: Path, parts: int = 2) -> Path:
-    """A row-count split would let the re-fetched registrant straddle two parts."""
-    from edgar_sec.foundation.hashing import file_sha256
-
-    payload = root / "snapshots" / "snap-multi"
+def _multipart_snapshot(sample_source: Path, root: Path, parts: int = 2) -> str:
+    """Split only on CIK boundaries and record the relation in SQLite."""
+    metadata = resolve_metadata_paths(root)
+    payload = metadata.snapshot_dir("snap-multi")
     parts_dir = payload / "parts"
     parts_dir.mkdir(parents=True)
     table = pq.read_table(sample_source)
@@ -164,7 +190,7 @@ def _multipart_manifest(sample_source: Path, root: Path, parts: int = 2) -> Path
     ordered = [sorted(groups[cik]) for cik in sorted(groups)]
     per_part = max(1, -(-len(ordered) // parts))
 
-    entries = []
+    part_paths = []
     index = 0
     for start in range(0, len(ordered), per_part):
         offsets = [
@@ -173,49 +199,32 @@ def _multipart_manifest(sample_source: Path, root: Path, parts: int = 2) -> Path
         chunk = table.take(pa.array(offsets, type=pa.int64()))
         path = parts_dir / f"part-{index:05d}.parquet"
         pq.write_table(chunk, path)
-        entries.append(
-            {
-                "path": f"parts/{path.name}",
-                "part_index": index,
-                "source": f"chunk:{index}",
-                "row_count": chunk.num_rows,
-                "byte_count": path.stat().st_size,
-                "sha256": file_sha256(path),
-                "schema_version": SOURCE_SCHEMA_VERSION,
-            }
-        )
+        part_paths.append(path)
         index += 1
-
-    manifest = payload / "metadata.manifest.json"
-    manifest.write_text(
-        json.dumps(
-            {
-                "manifest_version": "2.0.0",
-                "snapshot_id": "snap-multi",
-                "output_path": "",
-                "artifact_sha256": "",
-                "row_count": table.num_rows,
-                "part_count": index,
-                "parts": entries,
-                "schema_version": SOURCE_SCHEMA_VERSION,
-            }
-        ),
-        encoding="utf-8",
-    )
-    return manifest
+    return _record_phase1_snapshot(root, "snap-multi", part_paths)
 
 
 def test_a_multipart_source_materializes_the_same_catalog(
     tmp_path: Path, sample_source: Path
 ) -> None:
     """Several parts and one file are the same dataset, so the catalog must match."""
-    single_part = _phase1_manifest(sample_source, tmp_path / "single-art")
-    multipart = _multipart_manifest(sample_source, tmp_path / "multi-art")
+    single_root = tmp_path / "single-art"
+    multi_root = tmp_path / "multi-art"
+    single_part = _phase1_snapshot(sample_source, single_root)
+    multipart = _multipart_snapshot(sample_source, multi_root)
 
     from_single = materialize(
-        None, tmp_path / "out-single", source_manifest=single_part
+        None,
+        tmp_path / "out-single",
+        source_snapshot_id=single_part,
+        source_artifacts_root=single_root,
     )
-    from_parts = materialize(None, tmp_path / "out-multi", source_manifest=multipart)
+    from_parts = materialize(
+        None,
+        tmp_path / "out-multi",
+        source_snapshot_id=multipart,
+        source_artifacts_root=multi_root,
+    )
 
     assert from_parts["source_part_count"] > 1
     assert from_single["profile_row_count"] == from_parts["profile_row_count"]
@@ -238,12 +247,17 @@ def test_a_multipart_source_materializes_the_same_catalog(
 def test_a_multipart_source_with_a_tampered_part_is_refused(
     tmp_path: Path, sample_source: Path
 ) -> None:
-    manifest = _multipart_manifest(sample_source, tmp_path / "art")
-    victim = next((manifest.parent / "parts").glob("part-0000*.parquet"))
+    root = tmp_path / "art"
+    snapshot_id = _multipart_snapshot(sample_source, root)
+    victim = next(
+        (resolve_metadata_paths(root).snapshot_dir(snapshot_id) / "parts").glob(
+            "part-0000*.parquet"
+        )
+    )
     victim.write_bytes(b"truncated")
 
     with pytest.raises(CatalogError, match="digest mismatch"):
-        resolve_source(None, manifest)
+        resolve_source(None, snapshot_id, source_artifacts_root=root)
 
 
 def test_a_part_with_a_foreign_schema_is_refused(
@@ -252,72 +266,58 @@ def test_a_part_with_a_foreign_schema_is_refused(
     """A part without the source schema fails before any query."""
     from edgar_sec.infra.storage.parquet import write_parquet_table
 
-    manifest = _multipart_manifest(sample_source, tmp_path / "art")
-    victim = next((manifest.parent / "parts").glob("part-0000*.parquet"))
+    root = tmp_path / "art"
+    metadata = resolve_metadata_paths(root)
+    snapshot_id = "foreign-schema"
+    victim = metadata.snapshot_dir(snapshot_id) / "parts" / "part-00000.parquet"
+    victim.parent.mkdir(parents=True)
     write_parquet_table(pa.table({"cik": ["0000000001"]}), victim)
-
-    with pytest.raises(CatalogError, match="digest mismatch"):
-        resolve_source(None, manifest)
-
-    # Re-point the manifest at the tampered part, and the schema guard catches it.
-    document = json.loads(manifest.read_text(encoding="utf-8"))
-    name = victim.name
-    for part in document["parts"]:
-        if part["path"].endswith(name):
-            part["sha256"] = file_sha256(victim)
-    manifest.write_text(json.dumps(document), encoding="utf-8")
+    _record_phase1_snapshot(root, snapshot_id, [victim])
 
     with pytest.raises(CatalogError, match="columns do not match"):
-        materialize(None, tmp_path / "out", source_manifest=manifest)
+        materialize(
+            None,
+            tmp_path / "out",
+            source_snapshot_id=snapshot_id,
+            source_artifacts_root=root,
+        )
 
 
-def test_materialize_accepts_an_explicit_manifest(
+def test_materialize_accepts_an_explicit_snapshot(
     tmp_path: Path, sample_source: Path
 ) -> None:
-    manifest = _phase1_manifest(sample_source, tmp_path / "art")
-    result = materialize(None, tmp_path / "out", source_manifest=manifest)
+    root = tmp_path / "art"
+    snapshot_id = _phase1_snapshot(sample_source, root)
+    result = materialize(
+        None,
+        tmp_path / "out",
+        source_snapshot_id=snapshot_id,
+        source_artifacts_root=root,
+    )
     assert result["profile_row_count"] > 0
 
 
-def test_source_manifest_rejects_a_tampered_payload(
+def test_source_snapshot_rejects_a_tampered_payload(
     tmp_path: Path, sample_source: Path
 ) -> None:
-    manifest = _phase1_manifest(sample_source, tmp_path / "art")
-    payload = Path(json.loads(manifest.read_text(encoding="utf-8"))["parts"][0]["path"])
+    root = tmp_path / "art"
+    snapshot_id = _phase1_snapshot(sample_source, root)
+    payload = (
+        resolve_metadata_paths(root).snapshot_dir(snapshot_id)
+        / "parts"
+        / "part-00000.parquet"
+    )
     table = pq.read_table(payload).drop_columns(["listings"])
     pq.write_table(table, payload)
 
     with pytest.raises(CatalogError, match="digest mismatch"):
-        resolve_source(None, manifest)
+        resolve_source(None, snapshot_id, source_artifacts_root=root)
 
 
-def test_source_manifest_without_a_digest_is_refused(
-    tmp_path: Path, sample_source: Path
-) -> None:
-    manifest = _phase1_manifest(sample_source, tmp_path / "art")
-    document = json.loads(manifest.read_text(encoding="utf-8"))
-    document["parts"][0].pop("sha256")
-    manifest.write_text(json.dumps(document), encoding="utf-8")
-
-    with pytest.raises(CatalogError, match="has no digest"):
-        resolve_source(None, manifest)
-
-
-def test_source_manifest_without_an_output_path_is_refused(
-    tmp_path: Path, sample_source: Path
-) -> None:
-    manifest = _phase1_manifest(sample_source, tmp_path / "art")
-    document = json.loads(manifest.read_text(encoding="utf-8"))
-    document.pop("parts")
-    manifest.write_text(json.dumps(document), encoding="utf-8")
-
-    with pytest.raises(CatalogError, match="names no payload"):
-        resolve_source(None, manifest)
-
-
-def test_missing_source_manifest_is_refused(tmp_path: Path) -> None:
-    with pytest.raises(CatalogError, match="manifest does not exist"):
-        resolve_source(None, tmp_path / "absent.manifest.json")
+def test_missing_source_snapshot_is_refused(tmp_path: Path) -> None:
+    DAGCatalog(resolve_metadata_paths(tmp_path / "art").snapshots_root)
+    with pytest.raises(CatalogError, match="snapshot is not catalogued"):
+        resolve_source(None, "absent-snapshot", source_artifacts_root=tmp_path / "art")
 
 
 def test_explicit_output_root_never_advances_a_pointer(
@@ -353,15 +353,22 @@ def test_snapshot_layout_matches_the_documented_contract(
     _, snapshot_dir = catalog_snapshot
     assert (snapshot_dir / "company_profiles.parquet").is_file()
     assert (snapshot_dir / "filing_targets" / "part-00000.parquet").is_file()
-    assert (snapshot_dir / "snapshot.manifest.json").is_file()
+    assert not list(snapshot_dir.glob("*.json"))
+    assert resolve_filing_catalog_paths(snapshot_dir.parents[2]).catalog_file.is_file()
 
 
 def test_one_target_shard_is_written_per_source_part(
     tmp_path: Path, sample_source: Path
 ) -> None:
     """Sharding bounds memory: one source part is unnested per query."""
-    manifest_path = _multipart_manifest(sample_source, tmp_path / "art", parts=3)
-    manifest = materialize(None, tmp_path / "out", source_manifest=manifest_path)
+    source_root = tmp_path / "art"
+    snapshot_id = _multipart_snapshot(sample_source, source_root, parts=3)
+    manifest = materialize(
+        None,
+        tmp_path / "out",
+        source_snapshot_id=snapshot_id,
+        source_artifacts_root=source_root,
+    )
 
     assert manifest["source_part_count"] == 3
     assert manifest["target_part_count"] == 3
@@ -378,8 +385,14 @@ def test_one_target_shard_is_written_per_source_part(
 
 def test_form_counts_sum_across_shards(tmp_path: Path, sample_source: Path) -> None:
     """Per-shard tallies must accumulate, or the last shard silently wins."""
-    manifest_path = _multipart_manifest(sample_source, tmp_path / "art", parts=3)
-    manifest = materialize(None, tmp_path / "out", source_manifest=manifest_path)
+    source_root = tmp_path / "art"
+    snapshot_id = _multipart_snapshot(sample_source, source_root, parts=3)
+    manifest = materialize(
+        None,
+        tmp_path / "out",
+        source_snapshot_id=snapshot_id,
+        source_artifacts_root=source_root,
+    )
 
     expected: dict[str, int] = {}
     catalog_paths = resolve_filing_catalog_paths(tmp_path / "out")
@@ -427,43 +440,24 @@ def test_a_cik_split_across_source_parts_is_refused(
     rest = [i for i, row in enumerate(rows) if row["cik"] != repeated]
     assert len(keep) == 2, "fixture no longer carries a re-fetched registrant"
 
-    payload = tmp_path / "art" / "snapshots" / "snap-split"
+    source_root = tmp_path / "art"
+    payload = resolve_metadata_paths(source_root).snapshot_dir("snap-split")
     parts_dir = payload / "parts"
     parts_dir.mkdir(parents=True)
-    entries = []
+    part_paths = []
     for index, offsets in enumerate([rest + keep[:1], keep[1:]]):
         path = parts_dir / f"part-{index:05d}.parquet"
         pq.write_table(table.take(pa.array(offsets, type=pa.int64())), path)
-        entries.append(
-            {
-                "path": f"parts/{path.name}",
-                "part_index": index,
-                "source": f"chunk:{index}",
-                "row_count": len(offsets),
-                "byte_count": path.stat().st_size,
-                "sha256": file_sha256(path),
-                "schema_version": SOURCE_SCHEMA_VERSION,
-            }
-        )
-    manifest_path = payload / "metadata.manifest.json"
-    manifest_path.write_text(
-        json.dumps(
-            {
-                "manifest_version": "2.0.0",
-                "snapshot_id": "snap-split",
-                "output_path": "",
-                "artifact_sha256": "",
-                "row_count": table.num_rows,
-                "part_count": len(entries),
-                "parts": entries,
-                "schema_version": SOURCE_SCHEMA_VERSION,
-            }
-        ),
-        encoding="utf-8",
-    )
+        part_paths.append(path)
+    _record_phase1_snapshot(source_root, "snap-split", part_paths)
 
     with pytest.raises(CatalogError, match="share CIKs"):
-        materialize(None, tmp_path / "out", source_manifest=manifest_path)
+        materialize(
+            None,
+            tmp_path / "out",
+            source_snapshot_id="snap-split",
+            source_artifacts_root=source_root,
+        )
 
 
 def test_published_targets_match_the_declared_schema(
@@ -504,13 +498,13 @@ def test_upstream_status_is_inherited_not_reinvented(
 def test_manifest_records_counts_and_lineage(
     catalog_snapshot: tuple[dict[str, Any], Path],
 ) -> None:
-    manifest, _ = catalog_snapshot
-    assert manifest["manifest_kind"] == "filing_catalog_snapshot"
-    assert manifest["target_row_count"] == 13
-    assert manifest["profile_row_count"] == 6
-    assert manifest["target_columns"] == list(TARGET_COLUMNS)
-    assert sum(manifest["form_counts"].values()) == manifest["target_row_count"]
-    assert manifest["parts"][0]["row_count"] == manifest["target_row_count"]
+    summary, _ = catalog_snapshot
+    assert summary["snapshot_kind"] == "filing_catalog"
+    assert summary["target_row_count"] == 13
+    assert summary["profile_row_count"] == 6
+    assert summary["target_columns"] == list(TARGET_COLUMNS)
+    assert sum(summary["form_counts"].values()) == summary["target_row_count"]
+    assert summary["parts"][0]["row_count"] == summary["target_row_count"]
 
 
 # --- domain invariants ----------------------------------------------------
@@ -655,28 +649,19 @@ def test_delta_materialize_anti_joins_existing_and_emits_new_filings(
     delta_table = pa.Table.from_pylist(
         [refreshed_cik, brand_new], schema=full_table.schema
     )
-    delta_part = tmp_path / "delta.parquet"
-    pq.write_table(delta_table, delta_part)
-
-    delta_manifest = tmp_path / "delta.manifest.json"
-    delta_manifest.write_text(
-        json.dumps(
-            {
-                "snapshot_id": "snap-delta",
-                "parent_snapshot_id": base_id,
-                "parts": [
-                    {
-                        "path": str(delta_part),
-                        "sha256": file_sha256(delta_part),
-                        "row_count": 2,
-                    }
-                ],
-            }
-        ),
-        encoding="utf-8",
+    metadata_paths = resolve_metadata_paths(art_root)
+    delta_part = (
+        metadata_paths.snapshot_dir("snap-delta") / "parts" / "part-00000.parquet"
     )
-
-    materialize(None, art_root, source_manifest=delta_manifest)
+    delta_part.parent.mkdir(parents=True, exist_ok=True)
+    pq.write_table(delta_table, delta_part)
+    _record_phase1_snapshot(art_root, "snap-delta", [delta_part], base_id)
+    materialize(
+        None,
+        art_root,
+        source_snapshot_id="snap-delta",
+        source_artifacts_root=art_root,
+    )
     catalog = DAGCatalog(resolve_filing_catalog_paths(art_root).snapshots_root)
     assert catalog.has_snapshot("snap-delta")
     node = catalog.get_manifest("snap-delta")

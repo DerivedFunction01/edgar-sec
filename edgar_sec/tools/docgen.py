@@ -12,6 +12,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.tools.path_tree import render_paths_tree
+
 COMMANDS_START = "<!-- AUTOGEN:COMMANDS:START -->"
 COMMANDS_END = "<!-- AUTOGEN:COMMANDS:END -->"
 PATHS_START = "<!-- AUTOGEN:PATHS:START -->"
@@ -78,40 +80,6 @@ def render_command_table(cli_module_dotted: str) -> str:
     return "\n".join(rows)
 
 
-def render_paths_table(paths_module_dotted: str) -> str:
-    """Import paths module and render relative artifact path table."""
-    try:
-        mod = importlib.import_module(paths_module_dotted)
-    except Exception as exc:
-        return f"<!-- Error loading {paths_module_dotted}: {exc} -->"
-
-    path_classes = [
-        obj
-        for name, obj in vars(mod).items()
-        if isinstance(obj, type) and name.endswith("Paths")
-    ]
-    if not path_classes:
-        return "No paths dataclass found."
-
-    cls = path_classes[0]
-    doc = cls.__doc__ or "Paths layout."
-    rows = [
-        "| Logical Artifact | Resolution Seam |",
-        "| :--- | :--- |",
-    ]
-    for attr_name in sorted(dir(cls)):
-        if attr_name.startswith("_") or attr_name == "project":
-            continue
-        attr = getattr(cls, attr_name)
-        if isinstance(attr, property):
-            rows.append(f"| `{attr_name}` | Property |")
-        elif callable(attr):
-            rows.append(f"| `{attr_name}(...)` | Method |")
-    if len(rows) <= 2:
-        return f"`{cls.__name__}` — {doc.strip().splitlines()[0]}"
-    return "\n".join(rows)
-
-
 def sync_readme(readme_path: Path, apply: bool = False) -> tuple[bool, str]:
     """Sync sentinels in one README file; return (in_sync, updated_text)."""
     text = readme_path.read_text(encoding="utf-8")
@@ -130,8 +98,8 @@ def sync_readme(readme_path: Path, apply: bool = False) -> tuple[bool, str]:
         text = _COMMANDS_RE.sub(f"\\1\n{table}\n\\2", text)
 
     if mod_prefix and _PATHS_RE.search(text) and (pkg_dir / "paths.py").exists():
-        table = render_paths_table(f"{mod_prefix}.paths")
-        text = _PATHS_RE.sub(f"\\1\n{table}\n\\2", text)
+        tree = render_paths_tree(pkg_dir / "paths.py")
+        text = _PATHS_RE.sub(f"\\1\n{tree}\n\\2", text)
 
     in_sync = text == original
     if not in_sync and apply:

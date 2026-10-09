@@ -1,7 +1,6 @@
 """Directory layout for the filing-catalog pipeline.
-The ``current`` pointer lives *inside* ``snapshots/``, whose siblings are exactly
-the snapshot directories it can name. That directory also holds policy-scope
-feature snapshots, told apart by manifest. Staging stays transient, never published.
+The ``current`` pointer lives inside ``snapshots/``; the DAG catalog identifies
+published catalog snapshots separately from policy feature snapshots.
 """
 
 from __future__ import annotations
@@ -29,7 +28,6 @@ CURRENT_ALIAS = "current"
 # Artifact names, named through constants because a literal repeated in two
 # modules is how a rename desynchronizes a writer from its reader.
 SNAPSHOT_FILE_NAME = "company_profiles.parquet"
-CATALOG_SNAPSHOT_MANIFEST_NAME = "snapshot.manifest.json"
 TARGETS_DIR_NAME = "filing_targets"
 PLAN_TARGETS_DIR_NAME = "targets"
 SELECTION_REPORT_NAME = "selection_report.json"
@@ -80,11 +78,6 @@ def target_part_name(index: int) -> str:
     return f"part-{index:05d}.parquet"
 
 
-def form_partition_dir(plan_dir: Path, form: str) -> Path:
-    """Return the partition directory holding one form's rows in a plan."""
-    return plan_dir / PLAN_TARGETS_DIR_NAME / f"form={form_partition_name(form)}"
-
-
 @dataclass(frozen=True, slots=True)
 class FilingCatalogPaths:
     """Root-scoped catalog layout, independent of any single run."""
@@ -123,10 +116,6 @@ class FilingCatalogPaths:
         """Directory holding the sharded filing-target dataset."""
         return self.snapshot_dir(catalog_id) / TARGETS_DIR_NAME
 
-    def snapshot_manifest(self, catalog_id: str) -> Path:
-        """Materialization manifest for one snapshot."""
-        return self.snapshot_dir(catalog_id) / CATALOG_SNAPSHOT_MANIFEST_NAME
-
     @property
     def catalog_file(self) -> Path:
         """SQLite DAG catalog database for published catalog snapshots."""
@@ -135,14 +124,6 @@ class FilingCatalogPaths:
     def plan_dir(self, plan_id: str) -> Path:
         """Directory holding one immutable target-plan bundle."""
         return self.plans_root / safe_identifier(plan_id)
-
-    def plan_targets_dir(self, plan_id: str) -> Path:
-        """Directory holding the plan's per-form target partitions."""
-        return self.plan_dir(plan_id) / PLAN_TARGETS_DIR_NAME
-
-    def expansion_metadata(self, plan_id: str) -> Path:
-        """Parent/child lineage record written by policy-scope expansion."""
-        return self.plan_dir(plan_id) / EXPANSION_METADATA_NAME
 
     def plan_seed_filers(self, plan_id: str) -> Path:
         """The plan's normalized seed sidecar, published with a policy plan."""
@@ -169,7 +150,6 @@ def resolve_filing_catalog_paths(
 
 __all__ = [
     "CURRENT_ALIAS",
-    "CATALOG_SNAPSHOT_MANIFEST_NAME",
     "EXPANSION_METADATA_NAME",
     "LOCATOR_GROUPS_NAME",
     "PIPELINE_DIR",
@@ -183,7 +163,6 @@ __all__ = [
     "SNAPSHOT_FILE_NAME",
     "TARGETS_DIR_NAME",
     "FilingCatalogPaths",
-    "form_partition_dir",
     "form_partition_name",
     "resolve_filing_catalog_paths",
     "resolve_metadata_paths",

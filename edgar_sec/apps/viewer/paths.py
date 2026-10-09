@@ -1,4 +1,7 @@
-"""Filename and suffix constants for the apps/viewer pipeline."""
+"""Filename and suffix constants for the apps/viewer pipeline.
+
+:no-path-tree:
+"""
 
 from __future__ import annotations
 

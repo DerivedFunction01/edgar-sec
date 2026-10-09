@@ -15,7 +15,7 @@ from edgar_sec.pipelines.metadata_sync.discovery import current_snapshot_id
 from edgar_sec.pipelines.metadata_sync.merger import merge_chunks, publish_snapshot
 from edgar_sec.pipelines.metadata_sync.paths import resolve_run_paths
 from edgar_sec.pipelines.metadata_sync.planner import build_plan, write_plan
-from edgar_sec.pipelines.metadata_sync.snapshot import read_snapshot_parts
+from edgar_sec.pipelines.metadata_sync.snapshot import resolve_snapshot_parts
 from edgar_sec.pipelines.metadata_sync.worker import run_chunk, run_chunk_ids
 from tests.support import FakeSession, fixture_cohort, load_fixture
 
@@ -57,8 +57,8 @@ def _seed_session(session: FakeSession) -> None:
 
 
 def _published_rows(metadata, snapshot_id: str) -> list[dict]:
-    """Every row of a published snapshot, read through its declared part list."""
-    parts = read_snapshot_parts(metadata.snapshot_manifest(snapshot_id))
+    """Every row of a published snapshot, read through its DAG relation."""
+    parts = resolve_snapshot_parts(metadata, snapshot_id)
     rows: list[dict] = []
     for path in parts.paths:
         rows.extend(pq.read_table(path).to_pylist())

@@ -20,6 +20,7 @@ from edgar_sec.infra.storage.duckdb import (
     find_duplicate_keys,
     find_null_keys,
 )
+from edgar_sec.infra.storage.dag.manifest import ordered_parts_fingerprint
 from edgar_sec.pipelines.cohort.operations import execute_delta_roster
 
 from .merger import (
@@ -28,7 +29,6 @@ from .merger import (
     _filing_record_count,
     _published_ciks,
     _safe_progress,
-    parts_digest,
     publish_cik_index,
     publish_parts,
     publish_snapshot,
@@ -37,7 +37,7 @@ from .paths import MetadataPaths, resolve_run_paths
 from .planner import Plan, build_plan, utc_now_iso, write_plan
 from .roster import Roster, RosterError, read_roster
 from .sec_client import SubmissionsClient
-from .snapshot import read_snapshot_parts
+from .snapshot import SnapshotCatalogError, resolve_snapshot_parts
 from .validation import find_duplicate_accessions
 from .worker import run_chunk_ids
 
@@ -102,13 +102,22 @@ class AugmentResult:
 def base_cik_sources(
     metadata_paths: MetadataPaths, snapshot_id: str
 ) -> tuple[list[str], bool]:
-    """The published artifacts that hold a snapshot's CIK set.
-    An unreadable base is an error, never mistaken for an empty one.
-    """
-    index_path = metadata_paths.snapshot_cik_index(snapshot_id)
-    if index_path.is_file():
-        return [str(index_path)], False
-    parts = read_snapshot_parts(metadata_paths.snapshot_manifest(snapshot_id))
+    """Use the indexed CIK relation or verified submission parts, never an empty base."""
+    try:
+        catalog = DAGCatalog(metadata_paths.snapshots_root, read_only=True)
+    except FileNotFoundError as exc:
+        raise SnapshotCatalogError("snapshot catalog is missing") from exc
+    node = catalog.get_manifest(snapshot_id)
+    if node is None:
+        raise SnapshotCatalogError(f"snapshot is not catalogued: {snapshot_id}")
+    if node.relations.get("cik_index"):
+        try:
+            index = resolve_snapshot_parts(metadata_paths, snapshot_id, "cik_index")
+        except SnapshotCatalogError:
+            pass
+        else:
+            return [str(path) for path in index.paths], False
+    parts = resolve_snapshot_parts(metadata_paths, snapshot_id)
     return [str(path) for path in parts.paths], True
 
 
@@ -309,12 +318,8 @@ def augment(
         metadata_paths,
         base_snapshot_id=base_snapshot_id,
     )
-    base_parts = read_snapshot_parts(metadata_paths.snapshot_manifest(base_snapshot_id))
-    base_rows = (
-        sum(int(part["row_count"]) for part in base_parts.layout.manifest["parts"])
-        if base_parts.layout.multipart
-        else base_parts.row_count
-    )
+    base_parts = resolve_snapshot_parts(metadata_paths, base_snapshot_id)
+    base_rows = base_parts.row_count
     if check.is_empty:
         # Nothing to fetch is a result, not a failure: no client call, no delta
         # plan, no snapshot or pointer published.
@@ -419,7 +424,9 @@ def augment(
         )
 
     report.row_count = row_count
-    report.parts_digest = parts_digest(report.parts)
+    report.parts_digest = ordered_parts_fingerprint(
+        [str(part["sha256"]) for part in report.parts]
+    )
     report.filing_record_count = _filing_record_count([str(p) for p in part_paths])
     stray = _ciks_outside_expected(
         metadata_paths, base_snapshot_id, plan.roster, [str(p) for p in part_paths]

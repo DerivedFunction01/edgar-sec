@@ -8,7 +8,10 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest
+from edgar_sec.infra.storage.dag.manifest import (
+    DAGNodeManifest,
+    PartDescriptor,
+)
 from edgar_sec.pipelines.metadata_sync.discovery import (
     current_snapshot_id,
     list_plans,
@@ -107,9 +110,20 @@ def test_a_version_incompatible_plan_is_reported_not_hidden(tmp_path: Path) -> N
 def test_published_plan_is_flagged(tmp_path: Path) -> None:
     metadata = resolve_metadata_paths(tmp_path)
     plan_id = _write_plan(metadata, chunk_size=2)
-    manifest_path = metadata.snapshot_manifest(plan_id)
-    manifest_path.parent.mkdir(parents=True, exist_ok=True)
-    manifest_path.write_text(json.dumps({"snapshot_id": plan_id}), encoding="utf-8")
+    DAGCatalog(metadata.snapshots_root).record_node(
+        DAGNodeManifest(
+            snapshot_id=plan_id,
+            kind="checkpoint",
+            parents=(),
+            checkpoint_anchor_id=plan_id,
+            lineage_depth=0,
+            created_at="2026-10-07T00:00:00Z",
+            relations={
+                "submissions": (PartDescriptor("parts/data.parquet", "sha", 1, 1),)
+            },
+            logical_fingerprint="fp-plan",
+        )
+    )
 
     assert plan_summary(metadata, plan_id)["published"] is True
 
@@ -137,7 +151,9 @@ def test_list_snapshots_from_catalog(tmp_path: Path) -> None:
         checkpoint_anchor_id="good",
         lineage_depth=0,
         created_at="2026-10-07T00:00:00Z",
-        relations={},
+        relations={
+            "submissions": (PartDescriptor("good/parts/data.parquet", "sha", 10, 12),)
+        },
         logical_fingerprint="fp-good",
     )
     catalog.record_node(manifest)

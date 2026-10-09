@@ -27,7 +27,6 @@ from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
 from edgar_sec.foundation.runtime.settings import resolve_settings
-from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import (
     connect,
     copy_query_to_parquet,
@@ -44,6 +43,7 @@ from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
     PartDescriptor,
+    ordered_parts_fingerprint,
 )
 from edgar_sec.infra.storage.dag.publication import publish_node
 from edgar_sec.pipelines.filing_catalog.materialization import (
@@ -53,18 +53,12 @@ from edgar_sec.pipelines.filing_catalog.materialization import (
     build_profile_query,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
-    CATALOG_SNAPSHOT_MANIFEST_NAME,
     PIPELINE_DIR,
     SNAPSHOT_FILE_NAME,
     TARGETS_DIR_NAME,
     resolve_filing_catalog_paths,
     resolve_metadata_paths,
     target_part_name,
-)
-from edgar_sec.pipelines.metadata_sync.merger import parts_digest
-from edgar_sec.pipelines.metadata_sync.snapshot import (
-    SnapshotLayoutError,
-    read_snapshot_parts,
 )
 
 FALLBACK_POLICY_VERSION = "1.1.0"
@@ -86,21 +80,6 @@ def _catalog_id(source_hash: str) -> str:
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:24]
 
 
-def _verify_source_digest(candidate: Path, expected: str, origin: Path) -> None:
-    """Refuse a source whose bytes do not match the digest the manifest published.
-
-    A mismatch means the file was replaced or truncated after publication.
-    """
-    if not expected:
-        raise CatalogError(f"Phase 1 manifest records no artifact digest: {origin}")
-    actual = file_sha256(candidate)
-    if actual != expected:
-        raise CatalogError(
-            f"source artifact digest mismatch for {candidate}: "
-            f"manifest {expected}, file {actual}"
-        )
-
-
 class SourceDataset(NamedTuple):
     """A resolved Phase 1 source: the parts to read and their handoff metadata."""
 
@@ -119,40 +98,64 @@ class SourceDataset(NamedTuple):
 
 def resolve_source(
     source_artifact: str | os.PathLike[str] | None,
-    source_manifest: str | os.PathLike[str] | None = None,
+    source_snapshot_id: str | None = None,
+    *,
+    source_artifacts_root: str | os.PathLike[str] | None = None,
 ) -> SourceDataset:
-    """Resolve the source dataset this catalog consumes.
-    Three entries converge on an ordered part list: a manifest, whose parts are
-    digest-verified; a Parquet path; or the current pointer.
-    """
-    if source_manifest is not None:
-        return _source_from_manifest(Path(source_manifest))
+    """Resolve an explicit Parquet source, catalogued snapshot, or current pointer."""
+    if source_artifact is not None and source_snapshot_id:
+        raise CatalogError(
+            "source_artifact and source_snapshot_id are mutually exclusive"
+        )
+    if source_snapshot_id:
+        return _source_from_snapshot(source_snapshot_id, source_artifacts_root)
     if source_artifact is not None:
         candidate = Path(source_artifact).resolve()
         if not candidate.is_file():
             raise CatalogError(f"source artifact does not exist: {candidate}")
         return SourceDataset(paths=(candidate,), handoff=None)
-    return _source_from_pointer()
+    return _source_from_pointer(source_artifacts_root)
 
 
-def _source_from_manifest(manifest_path: Path) -> SourceDataset:
-    if not manifest_path.is_file():
-        raise CatalogError(f"source manifest does not exist: {manifest_path}")
+def _source_from_snapshot(
+    snapshot_id: str,
+    source_artifacts_root: str | os.PathLike[str] | None = None,
+) -> SourceDataset:
+    metadata_paths = resolve_metadata_paths(source_artifacts_root)
     try:
-        parts = read_snapshot_parts(manifest_path)
-    except SnapshotLayoutError as exc:
+        catalog = DAGCatalog(metadata_paths.snapshots_root, read_only=True)
+        node = catalog.get_manifest(snapshot_id)
+        if node is None:
+            raise ValueError(f"snapshot is not catalogued: {snapshot_id}")
+        paths = catalog.resolve_relation(
+            snapshot_id,
+            "submissions",
+            relative_to=metadata_paths.snapshot_dir(snapshot_id),
+        )
+    except (FileNotFoundError, ValueError) as exc:
         raise CatalogError(str(exc)) from exc
-    return SourceDataset(paths=parts.paths, handoff=parts.layout.manifest)
+    handoff = {
+        **node.metadata,
+        "snapshot_id": node.snapshot_id,
+        "parts_digest": node.logical_fingerprint,
+        "parent_snapshot_id": node.parent_snapshot_id
+        or str(node.metadata.get("parent_snapshot_id") or ""),
+        "parents": [parent.to_dict() for parent in node.parents],
+    }
+    return SourceDataset(paths=paths, handoff=handoff)
 
 
-def _source_from_pointer() -> SourceDataset:
-    metadata_paths = resolve_metadata_paths()
-    meta_catalog = DAGCatalog(metadata_paths.snapshots_root)
-    if not meta_catalog.catalog_file.is_file():
+def _source_from_pointer(
+    source_artifacts_root: str | os.PathLike[str] | None = None,
+) -> SourceDataset:
+    metadata_paths = resolve_metadata_paths(source_artifacts_root)
+    try:
+        meta_catalog = DAGCatalog(metadata_paths.snapshots_root, read_only=True)
+    except FileNotFoundError as exc:
         raise CatalogError(
             "no Phase 1 snapshot is published; run 'metadata merge' first or "
             "pass source_artifact explicitly"
-        )
+        ) from exc
     ptr = meta_catalog.read_pointer()
     if not ptr or not ptr.get("snapshot_id"):
         raise CatalogError(
@@ -160,28 +163,7 @@ def _source_from_pointer() -> SourceDataset:
             "pass source_artifact explicitly"
         )
     snapshot_id = str(ptr["snapshot_id"])
-    node = meta_catalog.get_manifest(snapshot_id)
-    if node is None or "submissions" not in node.relations:
-        raise CatalogError(
-            f"Phase 1 pointer names a snapshot with no submissions: {snapshot_id}"
-        )
-    paths = tuple(
-        metadata_paths.snapshots_root / snapshot_id / p.path
-        if not Path(p.path).is_absolute()
-        else Path(p.path)
-        for p in node.relations["submissions"]
-    )
-    handoff = node.to_dict()
-    if metadata_paths.snapshot_manifest(snapshot_id).is_file():
-        try:
-            handoff = json.loads(
-                metadata_paths.snapshot_manifest(snapshot_id).read_text(
-                    encoding="utf-8"
-                )
-            )
-        except Exception:
-            pass
-    return SourceDataset(paths=paths, handoff=handoff)
+    return _source_from_snapshot(snapshot_id, source_artifacts_root)
 
 
 def _guard_not_transient(source: SourceDataset) -> None:
@@ -239,7 +221,8 @@ def materialize(
     source_artifact: str | os.PathLike[str] | None = None,
     output_root: str | os.PathLike[str] | None = None,
     *,
-    source_manifest: str | os.PathLike[str] | None = None,
+    source_snapshot_id: str | None = None,
+    source_artifacts_root: str | os.PathLike[str] | None = None,
     progress: ProgressCallback = None,
     row_group_size: int | None = None,
     branch_name: str = "main",
@@ -255,7 +238,11 @@ def materialize(
         else settings.get("catalog.row_group_size", DEFAULT_ROW_GROUP_SIZE)
     )
 
-    source = resolve_source(source_artifact, source_manifest)
+    source = resolve_source(
+        source_artifact,
+        source_snapshot_id,
+        source_artifacts_root=source_artifacts_root,
+    )
     _guard_not_transient(source)
     _guard_schema_matches(source)
     _guard_ciks_are_disjoint(source)
@@ -272,9 +259,9 @@ def materialize(
     # A catalog id must identify the dataset, not one file of it: an
     # upstream id wins, else the ordered part digests do, so two layouts holding
     # the same rows resolve to the same catalog.
-    source_hash = str((source.handoff or {}).get("parts_digest") or "") or parts_digest(
-        [{"sha256": file_sha256(path)} for path in source.paths]
-    )
+    source_hash = str(
+        (source.handoff or {}).get("parts_digest") or ""
+    ) or ordered_parts_fingerprint([file_sha256(path) for path in source.paths])
     snapshot_id = str(
         (source.handoff or {}).get("snapshot_id") or _catalog_id(source_hash)
     )
@@ -394,8 +381,8 @@ def materialize(
 
     reclaim()
 
-    manifest = {
-        "manifest_kind": "filing_catalog_snapshot",
+    snapshot_metadata = {
+        "snapshot_kind": "filing_catalog",
         "catalog_id": catalog_id,
         "snapshot_id": snapshot_id,
         "source_artifact": str(source.first),
@@ -414,8 +401,6 @@ def materialize(
         "sort_order": TARGET_SORT_ORDER,
         "pipeline": PIPELINE_DIR,
     }
-    atomic_write_json(staging_dir / CATALOG_SNAPSHOT_MANIFEST_NAME, manifest, indent=2)
-
     target_descriptors = [
         PartDescriptor(
             path=f"{catalog_id}/{TARGETS_DIR_NAME}/{target_part_name(i)}",
@@ -457,7 +442,9 @@ def materialize(
             "company_profiles": tuple(profile_descriptors),
         },
         logical_fingerprint=(
-            parts_digest([{"sha256": p["artifact_sha256"]} for p in part_metadata])
+            ordered_parts_fingerprint(
+                [str(part["artifact_sha256"]) for part in part_metadata]
+            )
             if part_metadata
             else source_hash
         ),
@@ -467,10 +454,10 @@ def materialize(
         },
         metadata={
             "source_artifact": str(source.first),
+            "source_parts": [str(path) for path in source.paths],
             "form_counts": form_counts,
             "source_sha256": source_hash,
-            "profile_row_count": profile_count,
-            "target_row_count": total_target_rows,
+            "catalog_schema_version": SCHEMA_VERSION,
         },
     )
 
@@ -498,7 +485,7 @@ def materialize(
             "rows": total_target_rows,
         },
     )
-    return manifest
+    return snapshot_metadata
 
 
 __all__ = [

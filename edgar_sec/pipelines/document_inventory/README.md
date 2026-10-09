@@ -81,21 +81,45 @@ add `2` Project, `3` Status, and `4` Run.
 ## Artifact layout
 
 <!-- AUTOGEN:PATHS:START -->
-| Logical Artifact | Resolution Seam |
-| :--- | :--- |
-| `branch_dir(...)` | Method |
-| `branches_root` | Property |
-| `catalog_file` | Property |
-| `is_staging_name(...)` | Method |
-| `list_staging_dirs(...)` | Method |
-| `part_file(...)` | Method |
-| `parts_root` | Property |
-| `publication_lock_path` | Property |
-| `relation_dir(...)` | Method |
-| `root` | Property |
-| `snapshot_dir(...)` | Method |
-| `staging_dir(...)` | Method |
-| `tags_root` | Property |
+```text
+{artifacts_root}/
+├── document_inventory/
+│   ├── fixtures/
+│   │   └── {fixture_id}/
+│   │       ├── index_fixtures.sqlite
+│   │       └── manifest.json
+│   ├── review-runs/
+│   │   └── {review_id}/
+│   │       └── manifest.jsonl
+│   └── snapshots/  # Published snapshot root, owned by S5.
+│       ├── {snapshot_id}/
+│       ├── catalog.sqlite  # SQLite DAG catalog database for published inventory snapshots.
+│       └── publication.lock
+├── runtime/
+│   └── {socket_id}.sock
+└── transient/
+    └── document_inventory/
+        ├── projection-staging/
+        └── {run_id}/
+            ├── chunks/
+            │   └── {chunk_id}/
+            │       ├── attempt-{attempt_id}/
+            │       │   ├── entries.parquet
+            │       │   ├── manifest.json
+            │       │   └── outcomes.parquet
+            │       ├── progress/
+            │       │   ├── current.json
+            │       │   └── progress-{attempt_id}.duckdb
+            │       └── current.json
+            ├── publication/  # S5-owned staging directory inside this run.
+            ├── cancelled.json
+            ├── cohort_accessions.parquet
+            ├── cohort_sources.parquet
+            ├── projection_manifest.json
+            ├── run.lock
+            ├── run_manifest.json
+            └── work_order.parquet
+```
 <!-- AUTOGEN:PATHS:END -->
 
 ## Deliberate gaps

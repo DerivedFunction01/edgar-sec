@@ -27,8 +27,7 @@ export type ArtifactKind =
   | "filing_catalog_run_union"
   | "document_storage_chunk"
   | "document_storage_run_union"
-  | "sqlite_table"
-  | "manifest";
+  | "sqlite_table";
 
 export interface DatasetSummary {
   id: string;
@@ -101,11 +100,6 @@ export interface ColumnFilter {
   column: string;
   op: FilterOp;
   value?: string;
-}
-
-export interface DocumentContent {
-  summary: DatasetSummary;
-  content: unknown;
 }
 
 export interface SqlResult {
@@ -196,11 +190,6 @@ export async function fetchDatasets(): Promise<DatasetSummary[]> {
   return recordRevisions(list);
 }
 
-export async function fetchDocuments(): Promise<DatasetSummary[]> {
-  const list = await getJson<DatasetSummary[]>("/api/documents");
-  return recordRevisions(list);
-}
-
 export async function fetchTreeChildren(parentId?: string): Promise<TreeEntry[]> {
   const query = parentId ? `?parent_id=${encodeURIComponent(parentId)}` : "";
   const list = await getJson<TreeEntry[]>(`/api/tree${query}`);
@@ -266,12 +255,6 @@ export function fetchSchema(id: string): Promise<ColumnSchema[]> {
 export function fetchStats(id: string): Promise<ColumnSchema[]> {
   return gatedMeta(id, "stats", () =>
     getJson<ColumnSchema[]>(`/api/datasets/${encodeURIComponent(id)}/stats`),
-  );
-}
-
-export function fetchDocument(id: string): Promise<DocumentContent> {
-  return gatedMeta(id, "document", () =>
-    getJson<DocumentContent>(`/api/documents/${encodeURIComponent(id)}`),
   );
 }
 

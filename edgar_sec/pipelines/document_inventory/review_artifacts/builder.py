@@ -38,8 +38,8 @@ from edgar_sec.foundation.runtime.fixtures import FixturePaths
 
 from .models import ReviewRunResult, ReviewSummary
 from .paths import (
-    ENTRIES_FILE,
     OBSERVATIONS_FILE,
+    REVIEW_ENTRIES_FILE,
     SOURCE_PREVIEW_FILE,
     ReviewArtifactPaths,
 )
@@ -128,9 +128,11 @@ def _process_case(
         files = [SOURCE_PREVIEW_FILE]
         if isinstance(outcome, ParsedIndexPage):
             entry_count = len(outcome.entries)
-            _write_entries(staging_root / ENTRIES_FILE, outcome.entries)
-            output_digests[ENTRIES_FILE] = file_sha256(staging_root / ENTRIES_FILE)
-            files.append(ENTRIES_FILE)
+            _write_entries(staging_root / REVIEW_ENTRIES_FILE, outcome.entries)
+            output_digests[REVIEW_ENTRIES_FILE] = file_sha256(
+                staging_root / REVIEW_ENTRIES_FILE
+            )
+            files.append(REVIEW_ENTRIES_FILE)
             status = "parsed"
             bundle_url = outcome.bundle_url
             bundle_size = outcome.bundle_size

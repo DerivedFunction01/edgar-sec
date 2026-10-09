@@ -4,12 +4,12 @@ drifts from the command surface fails only in an interactive session.
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
 import pytest
 
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest, PartDescriptor
 from edgar_sec.pipelines.metadata_sync import augment_flow
 from edgar_sec.pipelines.metadata_sync import operator as operator_module
 from edgar_sec.pipelines.metadata_sync.cli import (
@@ -439,17 +439,33 @@ def test_cancelled_answers_short_circuit_every_action(
 # ----------------------------------------------------------------- the pointer
 
 
+def _record_snapshot(metadata, snapshot_id: str, row_count: int = 1) -> None:
+    DAGCatalog(metadata.snapshots_root).record_node(
+        DAGNodeManifest(
+            snapshot_id=snapshot_id,
+            kind="checkpoint",
+            parents=(),
+            checkpoint_anchor_id=snapshot_id,
+            lineage_depth=0,
+            created_at="2026-10-09T00:00:00Z",
+            relations={
+                "submissions": (
+                    PartDescriptor("parts/data.parquet", "sha", row_count, 1),
+                )
+            },
+            logical_fingerprint=f"fp-{snapshot_id}",
+            metadata={"kind": "full", "row_count": row_count},
+        )
+    )
+
+
 def test_selecting_a_snapshot_moves_the_current_pointer(
     state: WizardState, monkeypatch: pytest.MonkeyPatch, capsys
 ) -> None:
     """A merge can only advance the pointer; this is what moves it back."""
     metadata = state.metadata()
     for snapshot_id in ("newer", "older"):
-        manifest = metadata.snapshot_manifest(snapshot_id)
-        manifest.parent.mkdir(parents=True, exist_ok=True)
-        manifest.write_text(
-            json.dumps({"snapshot_id": snapshot_id, "row_count": 7}), encoding="utf-8"
-        )
+        _record_snapshot(metadata, snapshot_id, 7)
     publish_current_snapshot(metadata, "newer")
 
     monkeypatch.setattr(
@@ -472,9 +488,7 @@ def test_keeping_the_current_pointer_is_not_a_switch(
 ) -> None:
     """Blank keeps it, because moving the pointer back is a deliberate act."""
     metadata = state.metadata()
-    manifest = metadata.snapshot_manifest("only")
-    manifest.parent.mkdir(parents=True, exist_ok=True)
-    manifest.write_text('{"snapshot_id": "only"}', encoding="utf-8")
+    _record_snapshot(metadata, "only")
     publish_current_snapshot(metadata, "only")
 
     monkeypatch.setattr(
@@ -490,11 +504,9 @@ def test_keeping_the_current_pointer_is_not_a_switch(
 def test_selecting_an_unpublished_snapshot_leaves_the_pointer_alone(
     state: WizardState, monkeypatch: pytest.MonkeyPatch, capsys
 ) -> None:
-    """Pointing at a snapshot with no manifest is worse than a stale pointer."""
+    """Pointing at a snapshot absent from the DAG catalog is refused."""
     metadata = state.metadata()
-    known = metadata.snapshot_manifest("known")
-    known.parent.mkdir(parents=True, exist_ok=True)
-    known.write_text('{"snapshot_id": "known"}', encoding="utf-8")
+    _record_snapshot(metadata, "known")
     publish_current_snapshot(metadata, "known")
 
     monkeypatch.setattr(

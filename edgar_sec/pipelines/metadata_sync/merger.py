@@ -6,7 +6,6 @@ publishes only once every chunk has validated.
 
 from __future__ import annotations
 
-import json
 import os
 import shutil
 from collections.abc import Callable, Sequence
@@ -15,14 +14,13 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.submissions.schemas import SCHEMA_VERSION
-from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
-from edgar_sec.foundation.serialization import canonical_json
-from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     ParentRef,
     PartDescriptor,
+    ordered_parts_fingerprint,
 )
 from edgar_sec.infra.storage.dag.publication import publish_node
 from edgar_sec.infra.storage.duckdb import (
@@ -35,14 +33,12 @@ from edgar_sec.infra.storage.parquet import count_parquet_rows, read_parquet_sch
 from .paths import PARTS_DIR_NAME, MetadataPaths, RunPaths
 from .planner import Plan, utc_now_iso
 from .roster import read_cik_index, write_cik_index
-from .snapshot import SNAPSHOT_MANIFEST_VERSION
 from .validation import find_duplicate_accessions
 
 __all__ = [
     "MergeError",
     "MergeReport",
     "merge_chunks",
-    "parts_digest",
     "publish_current_snapshot",
     "publish_parts",
     "publish_snapshot",
@@ -73,7 +69,6 @@ class MergeReport:
     roster_id: str = ""
     delta_roster_id: str = ""
     schema_version: str = SCHEMA_VERSION
-    manifest_version: str = SNAPSHOT_MANIFEST_VERSION
     sort_order: str = "chunk_order"
     parts: list[dict[str, Any]] = field(default_factory=list)
     parts_digest: str = ""
@@ -87,11 +82,10 @@ class MergeReport:
         return len(self.parts) or 1
 
     def to_dict(self) -> dict[str, Any]:
-        """Serializable report for the snapshot manifest.
-        ``output_path``/``artifact_sha256`` stay empty for a multipart snapshot on purpose,
-        so a single-file reader fails loudly instead of ingesting a fraction.
+        """Return snapshot summary values for command output.
+        Single-file fields stay empty when the DAG relation contains parts.
         """
-        manifest = {
+        report = {
             "snapshot_id": self.snapshot_id,
             "output_path": self.output_path,
             "cik_index_path": self.cik_index_path,
@@ -113,12 +107,11 @@ class MergeReport:
             "warnings": self.warnings,
         }
         if self.parts:
-            manifest["manifest_version"] = self.manifest_version
-            manifest["part_count"] = len(self.parts)
-            manifest["parts_digest"] = self.parts_digest
-            manifest["sort_order"] = self.sort_order
-            manifest["parts"] = self.parts
-        return manifest
+            report["part_count"] = len(self.parts)
+            report["parts_digest"] = self.parts_digest
+            report["sort_order"] = self.sort_order
+            report["parts"] = self.parts
+        return report
 
 
 def _published_ciks(part_paths: tuple[Path, ...]) -> list[str]:
@@ -132,14 +125,6 @@ def _published_ciks(part_paths: tuple[Path, ...]) -> list[str]:
         table = pq.read_table(path, columns=["cik"])
         ciks.extend(str(value) for value in table.column("cik").to_pylist())
     return ciks
-
-
-def parts_digest(parts: list[dict[str, Any]]) -> str:
-    """One digest over the ordered part digests.
-    Binds a pointer to the exact dataset without rehashing every part.
-    """
-    material = canonical_json([str(part["sha256"]) for part in parts]).encode("utf-8")
-    return sha256_bytes(material)
 
 
 def _safe_progress(
@@ -403,7 +388,9 @@ def merge_chunks(
         )
 
     report.row_count = row_count
-    report.parts_digest = parts_digest(report.parts)
+    report.parts_digest = ordered_parts_fingerprint(
+        [str(part["sha256"]) for part in report.parts]
+    )
     report.filing_record_count = _filing_record_count(
         [str(path) for path in part_paths]
     )
@@ -420,17 +407,11 @@ def publish_snapshot(
     branch_name: str = "main",
     expected_branch_tip: str | None = None,
 ) -> dict[str, Any]:
-    """Write the snapshot manifest and advance the branch pointer atomically.
+    """Record the snapshot in SQLite and advance the branch pointer atomically.
     The pointer update is guarded by a shared publication lock; the branch tip
     guard ``expected_branch_tip`` is distinct from the lineage parent.
     """
-    manifest = report.to_dict()
-    atomic_write_json(
-        metadata_paths.snapshot_manifest(report.snapshot_id),
-        manifest,
-        canonical=False,
-        indent=2,
-    )
+    report_data = report.to_dict()
     parent_refs: list[ParentRef] = []
     catalog = DAGCatalog(metadata_paths.snapshots_root)
     if report.parent_snapshot_id:
@@ -441,6 +422,7 @@ def publish_snapshot(
                 manifest_sha256=parent_sha,
             )
         )
+    snapshot_dir = metadata_paths.snapshot_dir(report.snapshot_id)
     part_descriptors = tuple(
         PartDescriptor(
             path=str(p["path"]),
@@ -450,6 +432,30 @@ def publish_snapshot(
         )
         for p in report.parts
     )
+    cik_index = Path(report.cik_index_path)
+    try:
+        cik_index_path = cik_index.relative_to(snapshot_dir).as_posix()
+    except ValueError as exc:
+        raise MergeError("CIK index must be inside its snapshot directory") from exc
+    cik_index_descriptor = PartDescriptor(
+        path=cik_index_path,
+        sha256=report.cik_index_sha256,
+        row_count=report.cik_count,
+        byte_size=cik_index.stat().st_size,
+    )
+    metadata = {
+        "kind": report.kind,
+        "plan_id": report.plan_id,
+        "input_fingerprint": report.input_fingerprint,
+        "chunk_count": report.chunk_count,
+        "filing_record_count": report.filing_record_count,
+        "roster_id": report.roster_id,
+        "delta_roster_id": report.delta_roster_id,
+        "merged_at": report.merged_at,
+        "duplicate_accessions": report.duplicate_accessions,
+        "warnings": report.warnings,
+        "sort_order": report.sort_order,
+    }
     dag_manifest = DAGNodeManifest(
         snapshot_id=report.snapshot_id,
         kind="delta" if report.parent_snapshot_id else "checkpoint",
@@ -461,8 +467,13 @@ def publish_snapshot(
         ),
         lineage_depth=1 if report.parent_snapshot_id else 0,
         created_at=report.merged_at or utc_now_iso(),
-        relations={"submissions": part_descriptors},
+        relations={
+            "submissions": part_descriptors,
+            "cik_index": (cik_index_descriptor,),
+        },
         logical_fingerprint=report.parts_digest or "",
+        schema_versions={"submissions": report.schema_version},
+        metadata=metadata,
     )
     if expected_branch_tip is None:
         current = catalog.read_pointer(branch_name)
@@ -473,7 +484,7 @@ def publish_snapshot(
         expected_parent_id=expected_branch_tip,
         branch_name=branch_name,
     )
-    return manifest
+    return report_data
 
 
 def publish_current_snapshot(
@@ -487,9 +498,8 @@ def publish_current_snapshot(
     A pointer move and nothing else, validated first: a pointer to a nonexistent
     dataset is worse than a stale one.
     """
-    manifest_path = metadata_paths.snapshot_manifest(snapshot_id)
     catalog = DAGCatalog(metadata_paths.snapshots_root)
-    if not catalog.has_snapshot(snapshot_id) and not manifest_path.is_file():
+    if not catalog.has_snapshot(snapshot_id):
         raise MergeError(
             f"cannot point {branch_name!r} at {snapshot_id!r}: snapshot is missing"
         )

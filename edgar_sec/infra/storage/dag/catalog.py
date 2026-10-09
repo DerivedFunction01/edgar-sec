@@ -13,7 +13,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.foundation.hashing import sha256_text
+from edgar_sec.foundation.hashing import file_sha256, sha256_text
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.dag.paths import CATALOG_DB_NAME
 from edgar_sec.infra.storage.dag.manifest import (
@@ -499,6 +499,40 @@ class DAGCatalog:
                 )
                 for row in cur.fetchall()
             ]
+
+    def resolve_relation(
+        self,
+        snapshot_id: str,
+        relation: str,
+        *,
+        relative_to: Path | None = None,
+        verify_digests: bool = True,
+    ) -> tuple[Path, ...]:
+        """Resolve a node relation and verify each file against its descriptor."""
+        node = self.get_manifest(snapshot_id)
+        if node is None:
+            raise ValueError(f"snapshot is not in the DAG catalog: {snapshot_id}")
+        descriptors = node.relations.get(relation, ())
+        if not descriptors:
+            raise ValueError(f"snapshot {snapshot_id!r} has no {relation!r} relation")
+        root = self.catalog_file.parent.resolve()
+        base = Path(relative_to).resolve() if relative_to is not None else root
+        if base != root and root not in base.parents:
+            raise ValueError("DAG relation base escapes the catalog root")
+        paths: list[Path] = []
+        for part in descriptors:
+            candidate = Path(part.path)
+            path = (
+                candidate if candidate.is_absolute() else base / candidate
+            ).resolve()
+            if path != root and root not in path.parents:
+                raise ValueError(f"DAG part escapes the catalog root: {part.path}")
+            if not path.is_file():
+                raise ValueError(f"DAG part is missing: {part.path}")
+            if verify_digests and (not part.sha256 or file_sha256(path) != part.sha256):
+                raise ValueError(f"DAG part digest mismatch: {part.path}")
+            paths.append(path)
+        return tuple(paths)
 
     def prune_parts_for_range(
         self, tip_id: str, relation_name: str, min_key: str, max_key: str

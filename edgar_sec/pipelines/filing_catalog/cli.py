@@ -51,7 +51,14 @@ def build_parser() -> argparse.ArgumentParser:
         "--source", default="", help="Phase 1 metadata.parquet path"
     )
     materialize_parser.add_argument(
-        "--source-manifest", default="", help="Phase 1 snapshot manifest path"
+        "--source-snapshot",
+        default="",
+        help="Phase 1 snapshot id recorded in its DAG catalog",
+    )
+    materialize_parser.add_argument(
+        "--source-artifacts",
+        default="",
+        help="Artifact root containing the Phase 1 snapshot DAG catalog",
     )
     materialize_parser.add_argument(
         "--artifacts", default="", help="artifacts root override"
@@ -141,7 +148,7 @@ def build_parser() -> argparse.ArgumentParser:
     expand_parser.set_defaults(func=cmd_expand)
 
     status_parser = subparsers.add_parser(
-        "status", help="report published catalogs and plans from manifests"
+        "status", help="report published catalogs and plans from the DAG catalog"
     )
     status_parser.add_argument(
         "--artifacts", default="", help="artifacts root override"

@@ -2,6 +2,8 @@
 
 Logical paths are chosen so the derived environment names read conventionally:
 ``artifacts.root`` -> ``ARTIFACTS_ROOT``, ``cache.root`` -> ``CACHE_ROOT``.
+
+:no-path-tree:
 """
 
 from __future__ import annotations

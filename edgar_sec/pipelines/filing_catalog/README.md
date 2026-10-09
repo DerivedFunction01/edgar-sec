@@ -100,7 +100,7 @@ ways a network dependency creeps in.
   in the exclusion set before any candidate pool is drawn; a mismatched scope,
   catalog, corpus, form set, seed set, schema version, or selection fingerprint fails
   before selection rather than after an expensive feature build.
-- **`status` reads manifests only.** It never opens a Parquet payload, never
+- **`status` reads the DAG database only.** It never opens a Parquet payload, never
   materializes a catalog, and never contacts the network, so it stays cheap enough
   for a menu loop. The one Parquet reader is `auto_policy`, a separate command-time
   derivation.
@@ -149,9 +149,9 @@ ways a network dependency creeps in.
 | :--- | :--- | :--- |
 | `dag` | Snapshot DAG operations | `[--root]`, `[--json]` |
 | `expand` | scale a policy plan while retaining every parent locator | `--parent-plan`, `--target-units`, `[--artifacts]` |
-| `materialize` | build a catalog snapshot from a Phase 1 snapshot | `[--source]`, `[--source-manifest]`, `[--artifacts]`, `[--branch]` |
+| `materialize` | build a catalog snapshot from a Phase 1 snapshot | `[--source]`, `[--source-snapshot]`, `[--source-artifacts]`, `[--artifacts]`, `[--branch]` |
 | `plan` | publish a deterministic or policy-driven target plan | `--catalog`, `[--scope]`, `[--policy]`, `[--auto-policy]`, `[--cohort]`, `[--seed-cohort]`, `[--artifacts]`, `[--forms]`, `[--suffixes]`, `[--dates]`, `[--limit]` |
-| `status` | report published catalogs and plans from manifests | `[--artifacts]` |
+| `status` | report published catalogs and plans from the DAG catalog | `[--artifacts]` |
 <!-- AUTOGEN:COMMANDS:END -->
 
 ### Usage examples
@@ -162,15 +162,16 @@ are in the [root README](../../../README.md#filing-catalog-pipeline-zero-network
 
 | Subcommand | Flags | Returns |
 | :--- | :--- | :--- |
-| `materialize` | `--source` (one Parquet part, treated as a one-part dataset), `--source-manifest` (Phase 1 snapshot manifest; its declared parts are resolved and verified), `--artifacts`, `--branch` (default `main`; advances that branch's tip under a shared CAS lock), `--expected-branch-tip` | 0 with the manifest JSON on stdout, or 1 on `CatalogError` with `error: <msg>` on stderr. |
+| `materialize` | `--source` (one Parquet part, treated as a one-part dataset), `--source-snapshot` (Phase 1 snapshot id from its DAG catalog), `[--source-artifacts]`, `--artifacts`, `--branch` (default `main`; advances that branch's tip under a shared CAS lock), `--expected-branch-tip` | 0 with the snapshot summary on stdout, or 1 on `CatalogError` with `error: <msg>` on stderr. |
 | `plan` | `--catalog` (**required**), `--scope` (`deterministic` default; choices `deterministic`, `policy`), `--policy`, `--auto-policy`, `--cohort` (deterministic CIK filter), `--seed-cohort` (policy seeds, replacing configured CSV seeds), `--artifacts`, `--forms` (nargs `*`), `--suffixes` (nargs `*`), `--dates` (one comma-separated union; blank selects every date), `--limit` | 0 with the plan document on stdout, or 1 on planning/input errors. |
 | `expand` | `--parent-plan` (**required**, a published policy plan directory), `--target-units` (**required**, int), `--artifacts` | 0 with the child plan document, or 1 on `PlanConflictError`, `ParentPlanError`, `ValueError`, or `OSError`. |
 | `status` | `--artifacts` | 0, with the published-state JSON on stdout. |
 | `dag` | `log`, `branch`, `tag`, `checkout`, `compact`, `diff`, `rebase`, `views`, `--artifacts` | 0 on success, or 1 on DAG operation error. |
 
-`--artifacts` is a root override on every subcommand; empty means
-`resolve_paths().artifacts_root`. There is deliberately **no `run` subcommand**
-and no `--output-root` flag.
+`--artifacts` is the output-root override on every subcommand; empty means
+`resolve_paths().artifacts_root`. `--source-artifacts` selects a different Phase 1
+root for `materialize`; otherwise source snapshots use the configured artifact root.
+There is deliberately **no `run` subcommand** and no `--output-root` flag.
 
 Errors are reported per command: each command catches its own failures, writes
 `error: <msg>` to stderr, and returns 1, so a bad flag is the only exit-2 case.
@@ -194,9 +195,9 @@ facts are specific to this package:
   `filing_catalog/snapshots/<catalog_id>/`, `filing_catalog/snapshots/catalog.sqlite`,
   and `filing_catalog/plans/<plan_id>/`, so a reader can tell a snapshot from a plan by
   name.
-- **The feature snapshot shares `snapshots/` with catalog snapshots and is told
-  apart by manifest, not by name.** See the corresponding entry under "Deliberate
-  gaps".
+- **Feature snapshots share the `snapshots/` filesystem root but are not catalog
+  nodes.** Catalog discovery returns only records in `catalog.sqlite`; feature-cache
+  reuse remains owned by the selection engine.
 - **Bundle contents are scope-specific.** `targets/form=<FORM>/data.parquet` is the
   *occurrence* surface: a deterministic plan writes the raw catalog target rows,
   exactly `TARGET_COLUMNS`; a policy plan writes the feature-enriched occurrence
@@ -206,18 +207,17 @@ facts are specific to this package:
 ### `materialize`
 
 `resolve_source` picks the Phase 1 dataset by an explicit Parquet path, an explicit
-snapshot manifest, or the `current` pointer. A manifest is metadata rather than data:
-the ordered part list is read from it rather than by globbing, and every part is
-verified against its recorded digest before any Parquet is read.
+snapshot id, or the `current` pointer. Snapshot ids resolve only through the Phase 1
+DAG catalog; relation order and digests come from its SQLite records, not folder scans.
 
 `catalog_id` is the Phase 1 `snapshot_id` when the handoff supplies one, otherwise a
 digest over the source dataset's identity and this package's schema versions.
 
 The catalog is built one source part at a time, and each part's occurrences are
-written to its own `filing_targets/part-NNNNN.parquet`. The manifest records the source
-part list and digests, schema versions, row counts, `form_counts`, per-shard metadata,
-and `sort_order`. The manifest is written into staging, `os.replace` publishes, and
-only then — and only for the durable tree — is the DAG catalog updated.
+written to its own `filing_targets/part-NNNNN.parquet`. The DAG node records output
+relations, schema versions, form counts, and source provenance in SQLite. Staging is
+published before the durable DAG record is advanced; no JSON snapshot sidecar is
+written or used to classify snapshot folders.
 
 Sharding bounds peak memory to the densest single part instead of the whole cohort,
 and it adds one precondition: because occurrence dedup is per shard, source parts
@@ -316,11 +316,22 @@ with it.
 ## Artifact layout
 
 <!-- AUTOGEN:PATHS:START -->
-| Logical Artifact | Resolution Seam |
-| :--- | :--- |
-| `distribution_root` | Property |
-| `ensure_directories(...)` | Method |
-| `runtime_root` | Property |
+```text
+{artifacts_root}/
+├── filing_catalog/  # Root of the published catalog dataset.
+│   ├── plans/  # Root of published target-plan bundles.
+│   │   └── {plan_id}/  # Directory holding one immutable target-plan bundle.
+│   │       └── seed_filers.csv  # The plan's normalized seed sidecar, published with a policy plan.
+│   ├── policies/  # Root of published selection policies.
+│   └── snapshots/  # Root of published catalog snapshot directories, and of the pointer.
+│       ├── {catalog_id}/  # Directory holding one immutable catalog snapshot.
+│       │   ├── filing_targets/  # Directory holding the sharded filing-target dataset.
+│       │   └── company_profiles.parquet  # Deduplicated registrant profile dataset for one snapshot.
+│       └── catalog.sqlite  # SQLite DAG catalog database for published catalog snapshots.
+└── transient/
+    └── filing_catalog/
+        └── {catalog_id}/  # Staging directory for one catalog, never published.
+```
 <!-- AUTOGEN:PATHS:END -->
 
 ## Deliberate gaps
@@ -334,9 +345,9 @@ with it.
   but not its output, and needs equality tests against the current query first. Until
   then, a large deterministic plan must be narrowed with `--forms`, `--dates`, or
   `--limit`.
-- **`snapshots/` holds two kinds of snapshot, told apart by manifest.** Catalog
-  snapshots carry `snapshot.manifest.json`; the feature snapshot carries
-  `feature_snapshot.json`. The two id spaces are disjoint by length.
+- **Selection feature snapshots are not catalogued.** Their content-addressed cache
+  records remain separate from the catalog DAG and are not discovered as filing
+  catalogs.
 - **Target shards are not globally sorted, and no consumer can make them so
   without a full re-sort.** Restoring a dataset total order would mean one sort
   over the whole occurrence set, which is the memory ceiling this layout exists to

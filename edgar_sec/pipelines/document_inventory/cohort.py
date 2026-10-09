@@ -23,14 +23,13 @@ from edgar_sec.domain.document_inventory.models import (
 )
 from edgar_sec.domain.filing_catalog.schemas import (
     TARGET_COLUMNS,
+    TARGET_SCHEMA_VERSION,
 )
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.foundation.serialization import canonical_json
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.parquet import count_parquet_rows
-from edgar_sec.pipelines.document_inventory.paths import (
-    CATALOG_SNAPSHOT_MANIFEST_NAME,
-)
 
 __all__ = [
     "CohortInputError",
@@ -164,11 +163,11 @@ def read_catalog_observations(
     """Stream validated cohort observations from a filing_catalog snapshot or plan.
 
     ``source_kind`` is ``catalog_snapshot`` or ``catalog_plan``; the source-specific
-    manifest and declared parts are validated before the first row is yielded.
+    SQLite record or plan bundle is validated before the first row is yielded.
     """
     source_dir = Path(source_dir)
     if source_kind == "catalog_snapshot":
-        parts, declared_count = _read_snapshot_manifest(source_dir)
+        parts, declared_count = _read_catalog_snapshot(source_dir)
     elif source_kind == "catalog_plan":
         parts, declared_count = _read_plan_manifest(source_dir)
     else:
@@ -188,63 +187,50 @@ def read_catalog_observations(
         )
 
 
-def _read_snapshot_manifest(source_dir: Path) -> tuple[list[Path], int | None]:
-    manifest_path = source_dir / CATALOG_SNAPSHOT_MANIFEST_NAME
-    if not manifest_path.is_file():
+def _read_catalog_snapshot(source_dir: Path) -> tuple[list[Path], int]:
+    try:
+        catalog = DAGCatalog(source_dir.parent, read_only=True)
+    except FileNotFoundError as exc:
         raise CohortInputError(
-            "invalid_bundle", None, detail=f"manifest missing: {manifest_path}"
-        )
-    payload = _read_json(manifest_path)
-    if not isinstance(payload, dict):
+            "invalid_bundle", None, detail="snapshot DAG catalog is missing"
+        ) from exc
+    node = catalog.get_manifest(source_dir.name)
+    if node is None:
         raise CohortInputError(
-            "invalid_bundle", None, detail="manifest is not an object"
+            "invalid_bundle", None, detail="snapshot is not present in the DAG catalog"
         )
-    catalog_id = payload.get("catalog_id")
-    schema_version = payload.get("schema_version")
-    target_row_count = payload.get("target_row_count")
-    parts = payload.get("parts")
-    if not isinstance(catalog_id, str):
-        raise CohortInputError(
-            "invalid_bundle", None, detail="manifest catalog_id is invalid"
-        )
-    if schema_version != "1.1.0":
+    schema_version = node.schema_versions.get("filing_targets")
+    if schema_version != TARGET_SCHEMA_VERSION:
         raise CohortInputError(
             "invalid_bundle",
             None,
-            detail=f"schema_version {schema_version!r} != 1.1.0",
+            detail=(
+                f"filing_targets schema version {schema_version!r} "
+                f"!= {TARGET_SCHEMA_VERSION!r}"
+            ),
         )
-    if not isinstance(target_row_count, int) or target_row_count < 0:
+    descriptors = node.relations.get("filing_targets", ())
+    if not descriptors:
         raise CohortInputError(
-            "invalid_bundle", None, detail="target_row_count is invalid"
+            "invalid_bundle", None, detail="catalog has no target parts"
         )
-    if not isinstance(parts, list) or not parts:
-        raise CohortInputError("invalid_bundle", None, detail="manifest parts is empty")
-    declared_count = target_row_count
-    part_paths: list[Path] = []
-    for part in parts:
-        if not isinstance(part, dict):
-            raise CohortInputError(
-                "invalid_bundle", None, detail=f"part entry invalid: {part!r}"
-            )
-        path = part.get("path")
-        row_count = part.get("row_count")
-        if not isinstance(path, str) or not isinstance(row_count, int) or row_count < 0:
-            raise CohortInputError(
-                "invalid_bundle", None, detail=f"part entry invalid: {part!r}"
-            )
-        resolved = source_dir / path
-        if not resolved.is_file():
-            raise CohortInputError(
-                "invalid_bundle", None, detail=f"declared part missing: {path}"
-            )
-        if count_parquet_rows(resolved) != row_count:
+    declared_count = sum(part.row_count for part in descriptors)
+    try:
+        part_paths = catalog.resolve_relation(source_dir.name, "filing_targets")
+    except ValueError as exc:
+        raise CohortInputError("invalid_bundle", None, detail=str(exc)) from exc
+    for part, resolved in zip(descriptors, part_paths, strict=True):
+        actual_rows = count_parquet_rows(resolved)
+        if actual_rows != part.row_count:
             raise CohortInputError(
                 "invalid_bundle",
                 None,
-                detail=f"part {path} declares {row_count} rows but has {count_parquet_rows(resolved)}",
+                detail=(
+                    f"part {part.path} declares {part.row_count} rows but has "
+                    f"{actual_rows}"
+                ),
             )
-        part_paths.append(resolved)
-    return part_paths, declared_count
+    return list(part_paths), declared_count
 
 
 def _read_plan_manifest(source_dir: Path) -> tuple[list[Path], int | None]:

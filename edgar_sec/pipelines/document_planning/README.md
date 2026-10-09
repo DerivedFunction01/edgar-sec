@@ -46,11 +46,18 @@ under form partitions. There is no mutable `current` pointer for plans.
 ## Artifact layout
 
 <!-- AUTOGEN:PATHS:START -->
-| Logical Artifact | Resolution Seam |
-| :--- | :--- |
-| `distribution_root` | Property |
-| `ensure_directories(...)` | Method |
-| `runtime_root` | Property |
+```text
+{artifacts_root}/
+└── document_planning/
+    └── plans/
+        └── {plan_id}/
+            └── plan.json
+
+{repo_root}/
+└── policies/
+    └── document_targets/
+        └── {profile_id}.json
+```
 <!-- AUTOGEN:PATHS:END -->
 
 ## Deliberate gaps

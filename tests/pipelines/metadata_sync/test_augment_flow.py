@@ -37,14 +37,8 @@ def state(tmp_path: Path) -> WizardState:
 
 
 def _publish_snapshot_stub(state: WizardState, snapshot_id: str) -> None:
-    """Enough for base selection, which reads manifests only."""
+    """Enough for base selection, which reads the DAG catalog."""
     metadata = state.metadata()
-    path = metadata.snapshot_manifest(snapshot_id)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
-        json.dumps({"snapshot_id": snapshot_id, "row_count": 3, "parts": []}),
-        encoding="utf-8",
-    )
     catalog = DAGCatalog(metadata.snapshots_root)
     node = DAGNodeManifest(
         snapshot_id=snapshot_id,
@@ -486,7 +480,8 @@ def test_merge_refuses_a_delta_plan_and_leaves_the_snapshot_intact(
     """The generic merge path must not be able to publish a delta alone."""
     metadata = resolve_metadata_paths(tmp_path)
     base = _publish_base_via_cli(session, tmp_path, capsys, monkeypatch)
-    manifest_before = metadata.snapshot_manifest(base).read_bytes()
+    catalog = DAGCatalog(metadata.snapshots_root, read_only=True)
+    node_before = catalog.get_manifest(base)
 
     # An augment the base does not fully cover writes a delta plan.
     session.register(submissions_url("0000005555"), cik_payload("0000005555", "NEWCO"))
@@ -514,8 +509,9 @@ def test_merge_refuses_a_delta_plan_and_leaves_the_snapshot_intact(
     assert "delta plan" in capsys.readouterr().err
     # The correctly augmented snapshot and the pointer are both untouched.
     assert current_snapshot_id(metadata) == "aug"
-    assert metadata.snapshot_manifest(base).read_bytes() == manifest_before
-    assert metadata.snapshot_manifest("aug").is_file()
+    catalog = DAGCatalog(metadata.snapshots_root, read_only=True)
+    assert catalog.get_manifest(base) == node_before
+    assert catalog.has_snapshot("aug")
 
 
 def test_the_picker_pages_through_catalog_cohorts(

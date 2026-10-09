@@ -38,7 +38,7 @@ from edgar_sec.pipelines.metadata_sync.planner import (
 )
 from edgar_sec.pipelines.metadata_sync.roster import read_cik_index
 from edgar_sec.pipelines.metadata_sync.sec_client import SubmissionsClient
-from edgar_sec.pipelines.metadata_sync.snapshot import read_snapshot_parts
+from edgar_sec.pipelines.metadata_sync.snapshot import resolve_snapshot_parts
 from edgar_sec.pipelines.metadata_sync.worker import run_chunk_ids
 from tests.pipelines.metadata_sync.cohort_support import publish_test_cohort
 from tests.support import (
@@ -89,8 +89,8 @@ def _prepare(tmp_path: Path, chunk_size: int = 1):
 
 
 def _snapshot_rows(metadata, snapshot_id: str) -> list[dict]:
-    """Every row of a published snapshot, read through its declared part list."""
-    parts = read_snapshot_parts(metadata.snapshot_manifest(snapshot_id))
+    """Every row of a published snapshot, read through its DAG relation."""
+    parts = resolve_snapshot_parts(metadata, snapshot_id)
     rows: list[dict] = []
     for path in parts.paths:
         rows.extend(pq.read_table(path).to_pylist())
@@ -285,7 +285,7 @@ def test_a_worker_running_a_copied_bundle_cannot_widen_its_scope(
 def test_a_published_snapshot_is_verifiable_from_its_own_directory(
     tmp_path: Path,
 ) -> None:
-    """Payload, index, and manifest must agree without consulting the plan."""
+    """Payload and index descriptors must agree with the DAG record."""
     plan, run_paths = _prepare(tmp_path, chunk_size=2)
     client = _client(_session())
     run_chunk_ids(
@@ -304,15 +304,12 @@ def test_a_published_snapshot_is_verifiable_from_its_own_directory(
     rows = _snapshot_rows(metadata, plan.plan_id)
     index = read_cik_index(metadata.snapshot_cik_index(plan.plan_id))
     assert list(index) == sorted({row["cik"] for row in rows})
-    parts = read_snapshot_parts(metadata.snapshot_manifest(plan.plan_id))
-    assert all(part["sha256"] for part in parts.layout.manifest["parts"])
-
-    on_disk = json.loads(
-        metadata.snapshot_manifest(plan.plan_id).read_text(encoding="utf-8")
-    )
-    assert on_disk["row_count"] == len(rows)
-    assert on_disk["cik_count"] == len(index)
-    assert current_snapshot_id(metadata) == on_disk["snapshot_id"] == plan.plan_id
+    parts = resolve_snapshot_parts(metadata, plan.plan_id)
+    assert all(part.sha256 for part in parts.descriptors)
+    assert parts.row_count == len(rows)
+    assert parts.snapshot.relations["cik_index"][0].row_count == len(index)
+    assert current_snapshot_id(metadata) == parts.snapshot.snapshot_id == plan.plan_id
+    assert not list(metadata.snapshot_dir(plan.plan_id).glob("*.json"))
     assert manifest["row_count"] == len(rows)
 
 
@@ -334,7 +331,7 @@ def test_phase_two_reads_exactly_the_declared_parts(tmp_path: Path) -> None:
     index = metadata.snapshot_cik_index(plan.plan_id)
     assert index.is_file()
     assert pq.read_schema(index).names == ["cik"]
-    parts = read_snapshot_parts(metadata.snapshot_manifest(plan.plan_id))
+    parts = resolve_snapshot_parts(metadata, plan.plan_id)
     assert parts.part_count >= 1
     for path in parts.paths:
         assert pq.read_schema(path).names == SUBMISSION_METADATA_SCHEMA.names

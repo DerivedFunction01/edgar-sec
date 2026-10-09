@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import replace
 from pathlib import Path
 
+from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
@@ -75,6 +76,32 @@ def test_publish_and_get_manifest(tmp_path: Path) -> None:
     assert "submissions" in loaded.relations
     assert len(loaded.relations["submissions"]) == 1
     assert loaded.relations["submissions"][0].row_count == 100
+
+
+def test_resolve_relation_uses_catalog_root_and_checks_integrity(
+    tmp_path: Path,
+) -> None:
+    path = tmp_path / "snap_01" / "parts" / "part.parquet"
+    path.parent.mkdir(parents=True)
+    path.write_bytes(b"published")
+    descriptor = PartDescriptor(
+        path="snap_01/parts/part.parquet",
+        sha256=file_sha256(path),
+        row_count=1,
+        byte_size=path.stat().st_size,
+    )
+    node = replace(_make_manifest("snap_01"), relations={"submissions": (descriptor,)})
+    catalog = DAGCatalog(tmp_path)
+    catalog.record_node(node)
+
+    assert catalog.resolve_relation("snap_01", "submissions") == (path.resolve(),)
+    path.write_bytes(b"changed")
+    try:
+        catalog.resolve_relation("snap_01", "submissions")
+    except ValueError as exc:
+        assert "digest mismatch" in str(exc)
+    else:
+        raise AssertionError("modified DAG part was accepted")
 
 
 def test_lineage_and_active_parts(tmp_path: Path) -> None:

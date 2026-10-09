@@ -29,6 +29,8 @@ from edgar_sec.apps.viewer.paths import (
     DATA_SUFFIXES,
     DATABASE_SUFFIXES,
 )
+from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.document_storage.manifests import (
     PART_KIND_INDEX,
     PART_KIND_PAYLOAD,
@@ -36,21 +38,15 @@ from edgar_sec.pipelines.document_storage.manifests import (
     resolved_parts,
 )
 from edgar_sec.foundation.runtime.paths import SNAPSHOTS_DIR, TRANSIENT_DIR
-from edgar_sec.pipelines.filing_catalog.paths import (
-    CATALOG_SNAPSHOT_MANIFEST_NAME,
-    SNAPSHOT_FILE_NAME,
-    TARGETS_DIR_NAME,
-    FilingCatalogPaths,
-)
+from edgar_sec.pipelines.filing_catalog.paths import FilingCatalogPaths
 from edgar_sec.pipelines.document_storage.paths import DOCUMENTS_DATASET
 from edgar_sec.pipelines.metadata_sync.paths import (
     METADATA_DIR,
     MetadataPaths,
-    SNAPSHOT_MANIFEST_NAME,
 )
 from edgar_sec.pipelines.metadata_sync.snapshot import (
-    SnapshotLayoutError,
-    read_snapshot_parts,
+    SnapshotCatalogError,
+    resolve_snapshot_parts,
 )
 
 log = logging.getLogger("apps.viewer.loaders")
@@ -58,7 +54,6 @@ log = logging.getLogger("apps.viewer.loaders")
 __all__ = [
     "LOADERS",
     "DatasetLoader",
-    "iter_documents",
     "load_document_storage",
     "load_filing_catalog",
     "load_metadata",
@@ -152,60 +147,52 @@ def _summary(
 def load_metadata(root: Path) -> list[ArtifactSummary]:
     """Metadata submissions snapshots, plus each snapshot's CIK index.
 
-    Both resolve through readers that verify every declared digest, so a tampered part
-    is left out rather than shown with contents that do not match what was published.
+    Parts and their digests come from the DAG catalog, so a tampered part is left out
+    rather than shown with contents that do not match what was published.
     """
     paths = MetadataPaths(artifacts_root=Path(root))
-    snapshots_root = paths.snapshots_root
-    if not snapshots_root.is_dir():
+    try:
+        catalog = DAGCatalog(paths.snapshots_root, read_only=True)
+    except FileNotFoundError:
         return []
     found: list[ArtifactSummary] = []
-    for entry in sorted(snapshots_root.iterdir()):
-        manifest_path = entry / SNAPSHOT_MANIFEST_NAME
-        if not manifest_path.is_file():
+    for row in catalog.list_snapshots():
+        snapshot_id = str(row["snapshot_id"])
+        snapshot = catalog.get_manifest(snapshot_id)
+        if snapshot is None or "submissions" not in snapshot.relations:
             continue
-        snapshot_id = entry.name
         try:
-            revision = manifest_revision(manifest_path)
-            plan_id = str(_read_manifest(manifest_path).get("plan_id") or "") or None
-        except (OSError, ValueError) as exc:
-            # An unreadable manifest means the snapshot is not browsable at all.
-            log.warning("skipping metadata snapshot %s: %s", snapshot_id, exc)
-            continue
-
-        # Verified independently: a corrupted payload must not hide the index, which is
-        # still a truthful account of what the snapshot claims to cover.
-        try:
-            parts = read_snapshot_parts(manifest_path)
+            parts = resolve_snapshot_parts(paths, snapshot_id)
             found.append(
                 _summary(
                     root,
-                    # A synthetic name: the manifest is also listed as a browsable
-                    # document, so reusing its path would alias the two listings.
-                    path=entry / _ALL_PARTS_NAME,
+                    path=paths.snapshot_dir(snapshot_id) / _ALL_PARTS_NAME,
                     kind="metadata_snapshot",
                     phase=METADATA_DIR,
-                    run_id=plan_id,
-                    revision=revision,
+                    run_id=str(snapshot.metadata.get("plan_id") or "") or None,
+                    revision=snapshot.manifest_sha256,
                     source_paths=parts.paths,
                 )
             )
-        except (SnapshotLayoutError, DatasetError, OSError, ValueError) as exc:
+        except (SnapshotCatalogError, DatasetError, OSError, ValueError) as exc:
             log.warning("skipping metadata payload %s: %s", snapshot_id, exc)
 
-        index_path = paths.snapshot_cik_index(snapshot_id)
-        if index_path.is_file():
+        try:
+            index = resolve_snapshot_parts(paths, snapshot_id, "cik_index")
+            index_path = index.paths[0]
             found.append(
                 _summary(
                     root,
                     path=index_path,
                     kind="metadata_cik_index",
                     phase=METADATA_DIR,
-                    run_id=plan_id,
-                    revision=revision,
+                    run_id=str(snapshot.metadata.get("plan_id") or "") or None,
+                    revision=snapshot.manifest_sha256,
                     source_paths=(index_path,),
                 )
             )
+        except (SnapshotCatalogError, DatasetError, OSError, ValueError) as exc:
+            log.warning("skipping metadata CIK index %s: %s", snapshot_id, exc)
     return found
 
 
@@ -216,45 +203,54 @@ def load_filing_catalog(root: Path) -> list[ArtifactSummary]:
     a part list rather than a row per shard.
     """
     paths = FilingCatalogPaths(artifacts_root=Path(root))
-    catalog_root = paths.snapshots_root
-    if not catalog_root.is_dir():
+    try:
+        catalog = DAGCatalog(paths.snapshots_root, read_only=True)
+    except FileNotFoundError:
         return []
     found: list[ArtifactSummary] = []
-    for entry in sorted(catalog_root.iterdir()):
-        manifest_path = entry / CATALOG_SNAPSHOT_MANIFEST_NAME
-        if not manifest_path.is_file():
+    for row in catalog.list_snapshots():
+        snapshot = catalog.get_manifest(str(row["snapshot_id"]))
+        if snapshot is None:
             continue
-        try:
-            revision = manifest_revision(manifest_path)
-        except OSError as exc:
-            log.warning("skipping catalog %s: %s", entry.name, exc)
-            continue
-        profiles = entry / SNAPSHOT_FILE_NAME
-        if profiles.is_file():
+        catalog_id = snapshot.snapshot_id
+        if snapshot.relations.get("company_profiles"):
+            try:
+                profile_paths = catalog.resolve_relation(catalog_id, "company_profiles")
+            except ValueError as exc:
+                log.warning("skipping catalog profiles %s: %s", catalog_id, exc)
+                profile_paths = ()
+        else:
+            profile_paths = ()
+        if profile_paths:
             found.append(
                 _summary(
                     root,
-                    path=profiles,
+                    path=profile_paths[0],
                     kind="catalog_profiles",
                     phase="filing_catalog",
-                    revision=revision,
-                    source_paths=(profiles,),
+                    revision=snapshot.manifest_sha256,
+                    source_paths=profile_paths,
                 )
             )
-        targets_dir = entry / TARGETS_DIR_NAME
-        if targets_dir.is_dir():
-            target_parts = tuple(sorted(targets_dir.rglob("*.parquet")))
-            if target_parts:
-                found.append(
-                    _summary(
-                        root,
-                        path=targets_dir / _ALL_PARTS_NAME,
-                        kind="catalog_targets",
-                        phase="filing_catalog",
-                        revision=revision,
-                        source_paths=target_parts,
-                    )
+        if snapshot.relations.get("filing_targets"):
+            try:
+                target_paths = catalog.resolve_relation(catalog_id, "filing_targets")
+            except ValueError as exc:
+                log.warning("skipping catalog targets %s: %s", catalog_id, exc)
+                target_paths = ()
+        else:
+            target_paths = ()
+        if target_paths:
+            found.append(
+                _summary(
+                    root,
+                    path=paths.snapshot_dir(catalog_id) / _ALL_PARTS_NAME,
+                    kind="catalog_targets",
+                    phase="filing_catalog",
+                    revision=snapshot.manifest_sha256,
+                    source_paths=target_paths,
                 )
+            )
     return found
 
 
@@ -453,33 +449,3 @@ def run_all(root: Path, *, include_sqlite: bool = True) -> list[ArtifactSummary]
         )
     )
     return combined
-
-
-def iter_documents(root: Path) -> list[ArtifactSummary]:
-    """List published JSON manifests, browsable as raw text."""
-    found: list[ArtifactSummary] = []
-    seen: set[Path] = set()
-    metadata_paths = MetadataPaths(artifacts_root=Path(root))
-    candidates: list[Path] = sorted(
-        metadata_paths.snapshots_root.glob(f"*/{SNAPSHOT_MANIFEST_NAME}")
-    )
-    catalog_paths = FilingCatalogPaths(artifacts_root=Path(root))
-    candidates.extend(
-        sorted(catalog_paths.snapshots_root.glob(f"*/{CATALOG_SNAPSHOT_MANIFEST_NAME}"))
-    )
-    for path in candidates:
-        if path in seen or not path.is_file():
-            continue
-        seen.add(path)
-        found.append(
-            _summary(
-                root,
-                path=path,
-                kind="manifest",
-                phase=METADATA_DIR,
-                fmt="json",
-                source_paths=(path,),
-            )
-        )
-    found.sort(key=lambda item: item.relative_path)
-    return found

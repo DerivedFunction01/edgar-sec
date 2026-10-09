@@ -14,7 +14,7 @@ from .common import resolve_artifacts
 
 
 def cmd_status(args: argparse.Namespace) -> int:
-    """Report published catalogs and plans from manifests."""
+    """Report published catalogs and plans from their authoritative stores."""
     paths = resolve_filing_catalog_paths(resolve_artifacts(args.artifacts))
     status_data = build_status(paths)
     render_output(

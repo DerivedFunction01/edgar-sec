@@ -10,7 +10,6 @@ import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
 import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.infra.storage.dag.paths import DAGPaths
 from edgar_sec.pipelines.filing_catalog.paths import (
-    CATALOG_SNAPSHOT_MANIFEST_NAME,
     FilingCatalogPaths,
     PLAN_TARGETS_DIR_NAME,
     REQUIRED_PLAN_FILES,
@@ -35,7 +34,6 @@ __all__ = [
     "POINTER_FILE",
     "PROJECTION_MANIFEST_FILE",
     "PROJECTION_STAGING_DIR",
-    "PUBLICATION_LOCK_FILE",
     "PUBLICATION_DIR",
     "PUBLICATION_OUTCOMES_FILE",
     "PUBLICATION_ENTRIES_FILE",
@@ -44,16 +42,17 @@ __all__ = [
     "KNOWN_ACCESSIONS_FILE",
     "CANDIDATE_ENTRIES_FILE",
     "CANCELLED_FILE",
-    "CATALOG_SNAPSHOT_MANIFEST_NAME",
     "FilingCatalogPaths",
     "PLAN_TARGETS_DIR_NAME",
     "REQUIRED_PLAN_FILES",
     "SEED_FILERS_NAME",
+    "PUBLICATION_LOCK_FILE",
     "NEW_SOURCES_FILE",
     "RUN_MANIFEST_FILE",
     "REVIEW_CASES_DIR",
     "REVIEW_MANIFEST_FILE",
     "REVIEW_RUNS_DIR",
+    "SNAPSHOT_PART_PREFIX",
     "WORK_ORDER_FILE",
     "inventory_run_paths",
     "inventory_paths",
@@ -70,11 +69,13 @@ DATASET = "document_inventory"
 OUTCOMES_FILE = "outcomes.parquet"
 ENTRIES_FILE = "entries.parquet"
 MANIFEST_FILE_NAME = "manifest.json"
+SNAPSHOT_PART_PREFIX = "part-"
 
 #: Files at the run root.
 RUN_MANIFEST_FILE = "run_manifest.json"
 LOCK_FILE = "run.lock"
 CANCELLED_FILE = "cancelled.json"
+PUBLICATION_LOCK_FILE = "publication.lock"
 
 #: Pointer naming the current committed attempt for a chunk.
 POINTER_FILE = "current.json"
@@ -107,9 +108,6 @@ COHORT_ACCESSIONS_FILE = "cohort_accessions.parquet"
 COHORT_SOURCES_FILE = "cohort_sources.parquet"
 PROJECTION_MANIFEST_FILE = "projection_manifest.json"
 PROJECTION_STAGING_DIR = "projection-staging"
-PUBLICATION_LOCK_FILE = "publication.lock"
-SNAPSHOT_PART_PREFIX = "part-"
-SNAPSHOT_YEAR_PARTITION_NAME = "year"
 
 _ID_RE = re.compile(r"^[A-Za-z0-9_.-]+$")
 
@@ -156,26 +154,6 @@ class InventoryPaths:
     def snapshot_root(self, snapshot_id: str) -> Path:
         return self.snapshots_root / _validate_id(snapshot_id, "snapshot_id")
 
-    def snapshot_part_path(
-        self, snapshot_id: str, relation: str, year: str, part_index: int = 0
-    ) -> Path:
-        if relation not in {"accessions", "entries", "accession_sources"}:
-            raise ValueError(f"invalid snapshot relation: {relation!r}")
-        if not re.fullmatch(r"\d{4}", year):
-            raise ValueError(f"invalid snapshot year: {year!r}")
-        if part_index < 0:
-            raise ValueError("part_index must be non-negative")
-        return (
-            self.snapshot_root(snapshot_id)
-            / relation
-            / f"{SNAPSHOT_YEAR_PARTITION_NAME}={year}"
-            / f"{SNAPSHOT_PART_PREFIX}{part_index:05d}.parquet"
-        )
-
-    @property
-    def publication_lock_path(self) -> Path:
-        return self.snapshots_root / PUBLICATION_LOCK_FILE
-
     @property
     def review_runs_root(self) -> Path:
         return self.artifacts_root / DATASET / REVIEW_RUNS_DIR
@@ -190,6 +168,10 @@ class InventoryPaths:
     def catalog_file(self) -> Path:
         """SQLite DAG catalog database for published inventory snapshots."""
         return DAGPaths(self.snapshots_root).catalog_file
+
+    @property
+    def publication_lock_path(self) -> Path:
+        return self.snapshots_root / PUBLICATION_LOCK_FILE
 
     @property
     def projection_staging_root(self) -> Path:

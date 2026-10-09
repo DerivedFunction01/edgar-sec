@@ -16,8 +16,16 @@ from edgar_sec.pipelines.document_storage.manifests import (
     PART_KIND_INDEX,
     PART_KIND_PAYLOAD,
 )
+from edgar_sec.domain.filing_catalog.schemas import (
+    PROFILE_SCHEMA_VERSION,
+    TARGET_SCHEMA_VERSION,
+)
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.manifest import (
+    DAGNodeManifest,
+    PartDescriptor,
+)
 from edgar_sec.pipelines.filing_catalog.paths import (
-    CATALOG_SNAPSHOT_MANIFEST_NAME,
     SNAPSHOT_FILE_NAME,
     TARGETS_DIR_NAME,
     FilingCatalogPaths,
@@ -69,10 +77,10 @@ def _sha256(path: Path) -> str:
 def build_metadata_snapshot(
     root: Path, snapshot_id: str = "snap-meta", part_count: int = 2
 ) -> Path:
-    """Publish a multipart submissions snapshot with a CIK index."""
+    """Record a multipart submissions snapshot and CIK index in SQLite."""
     paths = MetadataPaths(artifacts_root=root)
     snapshot_dir = paths.snapshot_dir(snapshot_id)
-    parts: list[dict[str, object]] = []
+    parts: list[PartDescriptor] = []
     for index in range(part_count):
         part_path = paths.snapshot_part(snapshot_id, f"part-{index:05d}.parquet")
         _write(
@@ -88,42 +96,51 @@ def build_metadata_snapshot(
             ),
         )
         parts.append(
-            {
-                "path": str(part_path.relative_to(snapshot_dir)),
-                "sha256": _sha256(part_path),
-                "row_count": 2,
-                "source": f"chunk-{index:05d}",
-            }
+            PartDescriptor(
+                path=part_path.relative_to(snapshot_dir).as_posix(),
+                sha256=_sha256(part_path),
+                row_count=2,
+                byte_size=part_path.stat().st_size,
+            )
         )
     index_path = paths.snapshot_cik_index(snapshot_id)
     _write(
         index_path,
         pa.table({"cik": pa.array([1000, 2000], pa.int64())}, schema=_CIK_SCHEMA),
     )
-    manifest = {
-        "snapshot_id": snapshot_id,
-        "manifest_version": "2.0.0",
-        "sort_order": "chunk_order",
-        "output_path": "",
-        "artifact_sha256": "",
-        "cik_index_path": str(index_path.relative_to(snapshot_dir)),
-        "cik_index_sha256": _sha256(index_path),
-        "cik_count": 2,
-        "row_count": 2 * part_count,
-        "chunk_count": part_count,
-        "part_count": part_count,
-        "plan_id": "plan-meta",
-        "schema_version": "1",
-        "parts": parts,
-    }
-    manifest_path = paths.snapshot_manifest(snapshot_id)
-    manifest_path.parent.mkdir(parents=True, exist_ok=True)
-    manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    return manifest_path
+    cik_descriptor = PartDescriptor(
+        path=index_path.relative_to(snapshot_dir).as_posix(),
+        sha256=_sha256(index_path),
+        row_count=2,
+        byte_size=index_path.stat().st_size,
+    )
+    DAGCatalog(paths.snapshots_root).record_node(
+        DAGNodeManifest(
+            snapshot_id=snapshot_id,
+            kind="checkpoint",
+            parents=(),
+            checkpoint_anchor_id=snapshot_id,
+            lineage_depth=0,
+            created_at="2026-01-01T00:00:00+00:00",
+            relations={
+                "submissions": tuple(parts),
+                "cik_index": (cik_descriptor,),
+            },
+            logical_fingerprint=f"fingerprint-{snapshot_id}",
+            schema_versions={"submissions": "1"},
+            metadata={
+                "kind": "full",
+                "plan_id": "plan-meta",
+                "row_count": 2 * part_count,
+                "chunk_count": part_count,
+            },
+        )
+    )
+    return DAGCatalog(paths.snapshots_root).catalog_file
 
 
 def build_catalog_snapshot(root: Path, catalog_id: str = "cat-1") -> Path:
-    """Publish a filing catalog with profiles and two target shards."""
+    """Record a filing catalog with profiles and two target shards in SQLite."""
     paths = FilingCatalogPaths(artifacts_root=root)
     snapshot_dir = paths.snapshot_dir(catalog_id)
     _write(
@@ -137,9 +154,11 @@ def build_catalog_snapshot(root: Path, catalog_id: str = "cat-1") -> Path:
         ),
     )
     targets_dir = snapshot_dir / TARGETS_DIR_NAME
+    target_descriptors = []
     for index in range(2):
+        part_path = targets_dir / f"part-{index:05d}.parquet"
         _write(
-            targets_dir / f"part-{index:05d}.parquet",
+            part_path,
             pa.table(
                 {
                     "accession_number": pa.array([f"0000-0{index}-1"], pa.string()),
@@ -148,18 +167,44 @@ def build_catalog_snapshot(root: Path, catalog_id: str = "cat-1") -> Path:
                 schema=_TARGET_SCHEMA,
             ),
         )
-    manifest = {
-        "manifest_kind": "filing_catalog_snapshot",
-        "catalog_id": catalog_id,
-        "snapshot_id": f"catalog-{catalog_id}",
-        "profile_row_count": 2,
-        "target_row_count": 2,
-        "schema_version": "1",
-        "source_part_count": 1,
-    }
-    manifest_path = snapshot_dir / CATALOG_SNAPSHOT_MANIFEST_NAME
-    manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    return manifest_path
+        target_descriptors.append(
+            PartDescriptor(
+                path=part_path.relative_to(paths.snapshots_root).as_posix(),
+                sha256=_sha256(part_path),
+                row_count=1,
+                byte_size=part_path.stat().st_size,
+            )
+        )
+    profile_path = snapshot_dir / SNAPSHOT_FILE_NAME
+    catalog = DAGCatalog(paths.snapshots_root)
+    catalog.record_node(
+        DAGNodeManifest(
+            snapshot_id=catalog_id,
+            kind="checkpoint",
+            parents=(),
+            checkpoint_anchor_id=catalog_id,
+            lineage_depth=0,
+            created_at="2026-01-01T00:00:00+00:00",
+            relations={
+                "filing_targets": tuple(target_descriptors),
+                "company_profiles": (
+                    PartDescriptor(
+                        path=profile_path.relative_to(paths.snapshots_root).as_posix(),
+                        sha256=_sha256(profile_path),
+                        row_count=2,
+                        byte_size=profile_path.stat().st_size,
+                    ),
+                ),
+            },
+            logical_fingerprint=f"fingerprint-{catalog_id}",
+            schema_versions={
+                "filing_targets": TARGET_SCHEMA_VERSION,
+                "company_profiles": PROFILE_SCHEMA_VERSION,
+            },
+            metadata={"form_counts": {"10-K": 2}},
+        )
+    )
+    return catalog.catalog_file
 
 
 def build_document_snapshot(root: Path, snapshot_id: str = "doc-1") -> Path:
