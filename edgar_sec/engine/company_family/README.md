@@ -25,10 +25,8 @@ by construction rather than by coincidence of spelling.
   input ordering or process state. The cache id covers both.
 - **Nothing is fetched.** The roster is the only input; the engine has no source to reach.
 
-## Command surface
 
-<!-- AUTOGEN:COMMANDS:START -->
-<!-- AUTOGEN:COMMANDS:END -->
+
 
 ## Deliberate gaps
 

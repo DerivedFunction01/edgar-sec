@@ -7,25 +7,13 @@ without losing a table byte or inventing a page boundary that was not there.
 
 ## Contracts
 
-- **Table bytes survive every pass.** Tables are masked before unescaping entities,
-  so a table containing `&amp;` is returned unchanged.
-- **Cleaning preserves what downstream stages key on.** Symbolic fonts
-  (`Wingdings`/`Webdings`/`Symbol`), `colspan`/`rowspan`, borders,
-  `align`/`text-align`/`width`, `display:none`, and page-break declarations are
-  never stripped.
-- **Cleaner pass order is important**: inline XBRL first (its tags carry their
-  own style attributes, so glyph normalization must see them after the wrapper is
-  gone), Unicode whitespace sanitization last.
-- **Glyph expansion is scoped to symbolic-font text nodes.** Tags, attributes,
-  comments, scripts, and styles are untouched, and a nested font declaration
-  replaces the inherited one.
-- **Break markup inside a table is never converted.** A decorative `<hr>` row rule
-  would become a sentinel the ASCII table renderer then wraps as cell text.
-- **`<br><br>` inside a `<p>` collapses to a space**; between block tags it
-  survives as a paragraph break. A repeated marker is preserved rather than
-  merged — two breaks in a row are evidence of a blank page.
-- **No barrel re-exports.** `__init__.py` is a docstring; consumers import leaf
-  modules.
+- **Table bytes survive every pass**: Masked before unescaping entities.
+- **Cleaning preserves downstream-signaling content**: Symbolic fonts, colspan/rowspan, borders, align/text-align/width, display:none, and page-break declarations are never stripped.
+- **Cleaner pass order is fixed**: inline XBRL first (wrapper removed before glyph normalization), Unicode whitespace sanitization last.
+- **Glyph expansion is scoped to symbolic-font text nodes**: Tags, attributes, comments, scripts, and styles are untouched; nested font declaration replaces inherited.
+- **Break markup inside a table is never converted**: Decorative `<hr>` row rules would become ASCII table renderer sentinels.
+- **`<br><br>` behavior is context-aware**: Inside `<p>` it collapses to space; between block tags it survives as paragraph break.
+- **No barrel re-exports**: `__init__.py` is a docstring.
 
 ## Command surface
 

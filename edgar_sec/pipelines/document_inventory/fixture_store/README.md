@@ -13,21 +13,15 @@ is mutable local evidence, not a published inventory snapshot.
 
 ## Contracts
 
-Captured response bytes are compressed only at rest and verified after replay. Fills
-reuse successful accession pages while recording each new cohort membership. Failed
-pages remain retryable; interrupted and partial fixtures remain discoverable. The
-manifest records source-plan provenance but does not hash the mutable database.
-Fixtures live at `{artifacts_root}/document_inventory/fixtures/<fixture_id>/`.
-Their `manifest.json` uses the shared foundation envelope for identity, version,
-storage path, and timestamps; store version, capture state, counts, and source-plan
-contributions live under `details`.
+- **Compressed-at-rest, verified-on-replay**: Captured response bytes are compressed only at rest and verified after replay.
+- **Page fill reuse**: Fills reuse successful accession pages while recording each new cohort membership.
+- **Retryable failures**: Failed pages remain retryable.
+- **Discoverable partial fixtures**: Interrupted and partial fixtures remain discoverable.
+- **Manifest stores provenance only**: The manifest records source-plan provenance but does not hash the mutable database.
+- **Fixtures stored at `{artifacts_root}/document_inventory/fixtures/<fixture_id>/`**: `manifest.json` uses the shared foundation envelope for identity, version, storage path, and timestamps.
+- **Details sub-object**: store version, capture state, counts, and source-plan contributions.
 
-## Command surface
-
-<!-- AUTOGEN:COMMANDS:START -->
-<!-- AUTOGEN:COMMANDS:END -->
-
-### Usage examples
+## Usage examples
 
 The inventory operator owns fixture create, fill, and list commands.
 

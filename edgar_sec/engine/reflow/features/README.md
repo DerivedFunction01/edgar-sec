@@ -7,10 +7,10 @@ resolution.
 
 ## Contracts
 
-- Leading indentation is not treated as internal column spacing.
-- Shared-column measurements reflect repeated alignment across rows.
-- Form-specific checkbox and financial-bridge signals are supplied through the policy.
-- Checkmark evidence cannot be removed by a caller-supplied predicate.
+- **Leading indentation is not treated as internal column spacing**: Only inter-column spacing is measured.
+- **Shared-column measurements reflect repeated alignment**: Based on row-to-row consistency.
+- **Form signals are supplied through the policy**: Checkbox and financial-bridge predicates injected by caller.
+- **Checkmark evidence cannot be removed by caller predicates**: Policy predicates cannot erase checkmark signals.
 
 ## Command surface
 

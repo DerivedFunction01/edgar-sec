@@ -19,35 +19,14 @@ Three questions, in order:
 
 ## Contracts
 
-- **A label is removed only when corroborated.** A *firm* marker — a shape that
-  stands alone on its line and cannot mean anything else — is removed on its own.
-  Every other label is a *candidate* and is removed only once it joins a validated
-  run: same shape, same namespace, consistent distance and alignment,
-  monotonically increasing.
-- **Tables and sentences are not page sequences.** A line with a financial shape
-  is refused before any pattern is tried; a long line carrying function words is
-  prose; a cluster spaced as a dense burst is tabular. A line inside a rendered
-  table is refused unless the caller has said table furniture is admissible
-  (`context["allow_table_furniture"]`), and that is true only for the HTML entry
-  point.
-- **A table of contents is the one place page labels are content.** Its lines are
-  excluded, and the exclusion is a parameter: `candidates.toc_lines` takes the
-  resolver, `analyze_page_markers` reads `context["toc_lines"]`. This package
-  does not import the cover TOC finder; the dependency runs one way.
-- **A generated token is never a source marker.** A rendered token carries an id
-  and nothing else; page number, namespace, coordinates, and removability live in
-  the sidecar. Removal is decided on the source span before rendering.
-- **Inferred boundaries are metadata only.** A page number inferred across a
-  numeric gap is recorded with the reason that authorized it, emitted under
-  `annotate` only, and is never removable.
-- **Coordinate-safe removal.** A whole-line removal takes its trailing newline; a
-  removal overlapping a compact rendered `<TABLE>` widens to the whole table; a
-  removal landing mid-sentence between a non-terminal word and a lowercase
-  continuation is joined with a space rather than concatenated.
-- **Mask/restore preserves the line count and the bytes.** `signatures` masks one
-  token per line with that line's newline intact.
-- **An analysis whose `source_text` is not the document is discarded and
-  recomputed** — its offsets would refer to a different frame.
+- **A label is removed only when corroborated**: Firm markers (shape alone on line) are removed on their own; candidates require validated runs.
+- **Tables and sentences are not page sequences**: Financial shapes refused before patterns; function-word lines treated as prose.
+- **A table of contents is the one place page labels are content**: Exclusion is parameterized via `context["toc_lines"]`.
+- **A generated token is never a source marker**: Rendered tokens carry only id; page number, namespace, coordinates, removability in sidecar.
+- **Inferred boundaries are metadata only**: Not removable; emitted under `annotate` only.
+- **Coordinate-safe removal**: Whole-line takes trailing newline; table overlaps widen; mid-sentence joins with space.
+- **Mask/restore preserves line count and bytes**: One token per line masked with newline intact.
+- **An analysis with wrong `source_text` is discarded and recomputed**: Offsets would refer to wrong frame.
 
 ## Command surface
 

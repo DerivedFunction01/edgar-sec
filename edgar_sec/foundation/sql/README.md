@@ -11,26 +11,18 @@ literals, and the `sql-interpolation` scanner holds query modules to that path, 
 it needs no guard. What needs one is a **console** — a query string of unknown
 intent run against real files. That is the only case this package serves.
 
-## Contract
+## Contracts
 
-| Symbol | Guarantee |
-| :--- | :--- |
-| `validate_read_only(query)` | Returns the normalized query, or raises `SqlGuardError`. Never returns a partially-validated string. |
-| `SqlGuardError` | Subclasses `ValueError`, so a caller can catch either. |
-| `ALLOWED_LEADING_KEYWORDS` | The allowlist, exported so the error message and the rule cannot drift apart. |
+- **Read-only enforcement**: `validate_read_only(query)` returns the normalized query, or raises `SqlGuardError`. Never returns a partially-validated string.
+- **Exception hierarchy**: `SqlGuardError` subclasses `ValueError`, so a caller can catch either.
+- **Public allowlist**: `ALLOWED_LEADING_KEYWORDS` is exported so the error message and the rule cannot drift apart.
 
 A statement is accepted only if:
-
 1. It is non-empty after trailing semicolons are stripped.
-2. It contains no `;` outside a string literal or comment. The scan tracks quote
-   state and treats `''` / `""` as an escaped quote rather than a terminator.
-3. Its first meaningful token — after **every** leading line and block comment,
-   stripped repeatedly — is one of `SELECT`, `WITH`, `DESCRIBE`, `EXPLAIN`,
-   `SHOW`, or `PRAGMA table_info`.
+2. It contains no `;` outside a string literal or comment. The scan tracks quote state and treats `''` / `""` as an escaped quote rather than a terminator.
+3. Its first meaningful token — after **every** leading line and block comment, stripped repeatedly — is one of `SELECT`, `WITH`, `DESCRIBE`, `EXPLAIN`, `SHOW`, or `PRAGMA table_info`.
 
-The separator check runs before the verb check, so `DROP TABLE a; SELECT 1` is
-reported as a multiple-statement problem rather than a verb problem.
-`PRAGMA` is on the list **only** in the `table_info` form: bare `PRAGMA` writes.
+The separator check runs before the verb check, so `DROP TABLE a; SELECT 1` is reported as a multiple-statement problem rather than a verb problem. `PRAGMA` is on the list **only** in the `table_info` form: bare `PRAGMA` writes.
 
 ## Command surface
 
@@ -48,16 +40,7 @@ one dataset cannot reach another file on disk.
 
 ## Deliberate gaps
 
-- **No AST parse.** A real parser would classify far more precisely. The keyword
-  approach is a smaller surface to get wrong; a half-implemented SQL grammar
-  would be neither.
-- **Malformed input is deferred, not diagnosed.** An unterminated string or
-  comment runs to end-of-string and the statement is passed on; DuckDB names the
-  real syntax problem better than this could. What matters is that the scanner
-  terminates.
-- **No allowlist of tables or columns.** The caller scopes the query by what it
-  binds as the only visible relation.
-- **Not the repository's SQL boundary.** `guard.py` validates one operator-supplied
-  query string; it is not a policy scanner. The repository's own SQL is held by
-  `sql-interpolation`, which checks that a value reaching a query sink was
-  escaped; see [`../scanners/sql_interpolation.py`](../scanners/sql_interpolation.py).
+- **No AST parse**: A real parser would classify far more precisely. The keyword approach is a smaller surface to get wrong; a half-implemented SQL grammar would be neither.
+- **Malformed input is deferred, not diagnosed**: An unterminated string or comment runs to end-of-string and the statement is passed on; DuckDB names the real syntax problem better than this could. What matters is that the scanner terminates.
+- **No allowlist of tables or columns**: The caller scopes the query by what it binds as the only visible relation.
+- **Not the repository's SQL boundary**: `guard.py` validates one operator-supplied query string; it is not a policy scanner. The repository's own SQL is held by `sql-interpolation`, which checks that a value reaching a query sink was escaped; see [`../scanners/sql_interpolation.py`](../scanners/sql_interpolation.py).

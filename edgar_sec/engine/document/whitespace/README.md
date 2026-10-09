@@ -28,9 +28,5 @@ blank runs accumulated by block-tag substitution.
 
 ## Deliberate gaps
 
-- **Representation-neutral by construction, not by assumption.** The pass keys on
-  ASCII bullet markers and tagged-table sentinels, so a glyph-only non-ASCII
-  bullet is never read as a list boundary.
-- **No signature-region awareness.** This pass runs before the reflow stage that
-  masks signature regions, so a signature block is still split on punctuation
-  here.
+- **Representation-neutral by construction, not by assumption**: Pass keys on ASCII bullet markers and tagged-table sentinels.
+- **No signature-region awareness**: Runs before reflow stage that masks signature regions.

@@ -7,12 +7,10 @@ HTML, plain ASCII, or ASCII wrapped in `<PRE>`.
 
 ## Contracts
 
-- Target resolution is deterministic and falls back to a usable text or HTML
-  document when metadata is incomplete.
-- Decoding and representation classification return a usable value for empty or
-  malformed input rather than raising.
-- A `<PRE>` wrapper alone is not enough to classify content as plain ASCII.
-- HTML entities are preserved on the HTML path.
+- **Target resolution is deterministic and falls back**: Uses usable text/HTML when metadata is incomplete.
+- **Decoding and representation classification do not raise**: Return usable value for empty/malformed input.
+- **A `<PRE>` wrapper alone does not classify plain ASCII**: Requires additional content evidence.
+- **HTML entities are preserved on the HTML path**: Not escaped during projection.
 
 ## Command surface
 
@@ -21,6 +19,5 @@ HTML, plain ASCII, or ASCII wrapped in `<PRE>`.
 
 ## Deliberate gaps
 
-- **No acquisition, caching, or rate limiting.** Those belong to the HTTP and
-  pipeline layers.
-- **No exhibit-delegation triage.** Exhibit selection belongs to the pipeline.
+- **No acquisition, caching, or rate limiting**: Belong to HTTP and pipeline layers.
+- **No exhibit-delegation triage**: Exhibit selection belongs to pipeline.

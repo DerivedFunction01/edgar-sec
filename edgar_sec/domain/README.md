@@ -16,40 +16,12 @@ counter belongs above this layer.
 
 ## Contracts
 
-**Guarantees this layer makes.**
-
-- A value is defined once. Identity primitives, the form-family alias table, the
-  Arrow column lists, and the filter vocabularies each have a single owning
-  module; consumers read them rather than restating them.
-- Vocabulary tables are immutable, so a caller can share one across threads and
-  processes without copying, and a result never depends on call order.
-- Document locator and occurrence keys have one canonical derivation, reducing the
-  accession to its unhyphenated form first so the hyphenated and unhyphenated
-  spellings are one filing. The Python and catalog-SQL spellings are pinned
-  against each other by a cross-layer contract test.
-- Compiled alternations are built by `foundation.regex.builder`, which orders
-  branches longest-first, so a caller adding a term cannot introduce a shorter
-  branch that shadows a longer one.
-- Domain modules define values and schemas without performing filesystem,
-  network, or database I/O.
-
-**Obligations callers place on this layer.**
-
-- Import downward only. The scanner rejects any import whose callee layer ranks
-  above the caller's.
-- Keep behavior that fetches, persists, parses, or schedules work in the owning
-  upper layer rather than in domain records.
-- Bump a schema's version constant rather than editing a column list. Each
-  schema here carries its own version identifier, and the values are persisted
-  into plans, checkpoints, and published artifacts.
+- **Immutability**: Values are defined once with single owning modules; consumers read them rather than restating them.
+- **Zero I/O**: Vocabulary tables are immutable; domain modules perform no filesystem, network, or database I/O.
+- **Deterministic keys**: Document locator and occurrence keys have one canonical derivation; spellings are pinned by cross-layer tests.
+- **Schema stability**: Compiled alternations use `foundation.regex.builder` (longest-first ordering); schema version constants are bumped when columns change.
 
 ## Deliberate gaps
 
-- **Endpoint coverage stops at submissions and the archive.** `sec_urls.py` builds
-  the submissions document, historical submissions, and archive document URLs. The
-  XBRL `companyconcept`/`companyfacts` APIs are not here at all, and the
-  `company_tickers.json` endpoint is a pipeline-local constant, so a caller
-  needing one of those assembles the URL itself.
-- **The `layer-boundary` scanner does not check for cycles.** It flags upward
-  layer-rank dependencies only, so a same-layer import cycle passes the gate and
-  remains a review responsibility.
+- **Endpoint coverage stops at submissions and the archive**: `sec_urls.py` builds submissions, historical submissions, and archive document URLs; XBRL APIs and `company_tickers.json` are not included; callers assemble those URLs themselves.
+- **The `layer-boundary` scanner does not check for cycles**: It flags only upward layer-rank dependencies; same-layer import cycles remain a review responsibility.

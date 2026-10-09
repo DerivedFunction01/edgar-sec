@@ -15,21 +15,19 @@ This layer does not fetch anything (that is `edgar_sec/infra/sec_http`), does no
 artifact layout (that is `edgar_sec/infra/storage` and `edgar_sec/pipelines`), and does not
 own the domain vocabulary or schemas it consumes (that is `edgar_sec/domain`).
 
-## Layer map
+## Packages
 
-| Sub-package | Responsibility |
-| :--- | :--- |
-| `selection/` | Quota-driven candidate selection for the filing-catalog pipeline. |
-| `submissions/` | SEC submissions JSON to canonical row dicts. |
-| `index_pages/` | SEC filing index-page HTML to typed inventory outcomes. See `index_pages/README.md`. |
-| `company_family/` | Deterministic company-family name normalization and clustering. |
-| `document/` | Input preparation, SGML unpacking, HTML cleaning/projection, page markers, signatures, whitespace. See `document/README.md`. |
-| `tables/` | Table masking, HTML→ASCII rendering and geometry, false-table rejection, boundary resolution, financial-cell vocabulary. See `tables/README.md`. |
-| `reflow/` | Conservative ASCII reflow, untagged-table tagging, line-coordinate mapping. See `reflow/README.md`. |
-| `forms/` | Document normalization and its result record. See `forms/README.md`. |
-| `forms/plugins/` | The `FormPlugin` SPI, the family registry, and the per-family evaluators. |
+- **document/**: input preparation, SGML unpacking, HTML cleaning/projection, page markers, signatures, whitespace
+- **tables/**: table masking, HTML→ASCII rendering with geometry, false-table rejection
+- **reflow/**: conservative ASCII reflow, untagged-table tagging, line-coordinate mapping
+- **forms/**: stage order, result record, cover decision chain, family SPI and evaluators
+- **forms/plugins/**: the `FormPlugin` SPI and registry
+- **selection/**: Phase 2 target-plan selection: features, policy, selector, source
+- **company_family/**: name normalization and universe-scale family assignment
+- **submissions/**: submission unrolling, profiling, building
+- **index_pages/**: pure SEC filing index-page HTML parser
 
-Each package's README carries its module→responsibility layout and its own deliberate gaps.
+Each package's README carries its deliberate gaps.
 
 ## Contracts
 

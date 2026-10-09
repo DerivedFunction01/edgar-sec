@@ -134,15 +134,7 @@ with no arguments shows the menu; `--list` prints the ids; `-h`/`--help` prints 
 docstring and the list; an unrecognized id prints an `Unknown pipeline` line naming
 the id and returns 1.
 
-| Entry id | Entrypoint module | Package |
-| :--- | :--- | :--- |
-| `metadata` | `metadata_sync/operator.py` | [Phase 1](metadata_sync/README.md#command-surface) |
-| `filing-catalog` | `filing_catalog/operator.py` | [Phase 2](filing_catalog/README.md#command-surface) |
-| `documents` | `document_storage/cli.py` | [Phase 2.5](document_storage/README.md#command-surface) |
-| `viewer` | `apps/viewer/cli.py` | Layer 5, read-only |
-
-Each linked command surface is the authoritative subcommand, flag, and exit-status
-table for its package.
+Commands: `metadata`, `filing-catalog`, `documents`, `viewer`. Each entry points to its pipeline's operator module. Linked command surfaces in package READMEs are authoritative for subcommands, flags, and exit codes.
 
 Each pipeline's `operator.py` carries an
 `if __name__ == "__main__": sys.exit(main())` guard, as do `metadata_sync/cli.py`

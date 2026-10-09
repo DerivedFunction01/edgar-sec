@@ -12,21 +12,11 @@ anything outside the cover.
 
 ## Contracts
 
-- Only tables whose start tag occurs before `boundary.end_line` are evaluated.
-  Exhibit indices and financial statements are never inspected.
-- Classification is always performed against the raw `<TABLE>` block text, never
-  against geometry rows from a prior render pass. Geometry left behind by an
-  upstream unwrapping step may belong to a completely different table, and
-  classifying against it misclassifies the address table that follows.
-- **Geometry is paired by the stable `TableGeometry.table_index` attribute, not
-  by position in the tuple.** Positional pairing is unreliable once an upstream
-  pass has evicted unwrapped tables; surviving geometries keep their original
-  IDs. Unwrapping uses the geometry only as a rendering hint.
-- With `enabled_cleaners=()`, with `boundary.end_line is None`, or when the text
-  contains no `<TABLE>`, the call is an exact no-op: the same string object and
-  the same geometries tuple come back.
-- A boundary whose `end_line` exceeds the line count is treated as covering the
-  whole document rather than raising.
+- **Only tables whose start tag occurs before `boundary.end_line` are evaluated**: Exhibit indices and financial statements are never inspected.
+- **Classification is always performed against the raw `<TABLE>` block text**: never against geometry rows from a prior render pass. Geometry left behind by an upstream unwrapping step may belong to a completely different table, and classifying against it misclassifies the address table that follows.
+- **Geometry is paired by the stable `TableGeometry.table_index` attribute, not by position in the tuple**: Positional pairing is unreliable once an upstream pass has evicted unwrapped tables; surviving geometries keep their original IDs. Unwrapping uses the geometry only as a rendering hint.
+- **With `enabled_cleaners=()`, `boundary.end_line is None`, or when the text contains no `<TABLE>`, the call is an exact no-op**: the same string object and the same geometries tuple come back.
+- **A boundary whose `end_line` exceeds the line count is treated as covering the whole document rather than raising**.
 
 ## Command surface
 

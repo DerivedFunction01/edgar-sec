@@ -17,7 +17,8 @@ Presentation and execution layer for the filing catalog CLI subcommands.
 - Every command returns an integer exit code (0 on success, 1 on error).
 - Presentation output is formatted with `render_output` components (`KeyValueRow`).
 - Catchable pipeline exceptions print clean error lines to `sys.stderr` and return 1.
+- Commands are dispatch handlers only; they receive pre-parsed `argparse.Namespace` objects and do not configure their own argument parsers.
 
 ## Deliberate Gaps
 
-- Commands accept an `argparse.Namespace` and do not configure CLI argument parsers directly; parsers are defined in [../cli.py](../cli.py).
+- CLI entry points, argument parsing, and top-level help are owned by [../cli.py](../cli.py).

@@ -8,16 +8,9 @@ Bind CLI arguments to the document-planning pipeline and render concise results.
 
 Commands are offline and do not project inventory or start document acquisition.
 Interactive confirmation belongs to the operator; direct CLI planning is explicit.
-
-## Command surface
-
-<!-- AUTOGEN:COMMANDS:START -->
-<!-- AUTOGEN:COMMANDS:END -->
-
-### Usage examples
-
-See the parent [`document_planning`](../README.md) package.
+Commands are dispatch handlers only; they receive pre-parsed `argparse.Namespace` objects and do not configure their own argument parsers.
 
 ## Deliberate gaps
 
-No acquisition, inventory projection, or source refresh command is provided.
+- CLI entry points, argument parsing, and top-level help are owned by [../cli.py](../cli.py).
+- No acquisition, inventory projection, or source refresh command is provided.

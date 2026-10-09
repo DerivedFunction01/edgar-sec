@@ -47,22 +47,22 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
 
 ### Usage examples
 
-```text
-metadata plan     --cohort <id-or-name>
-metadata status   <plan reference>
-metadata run      <plan reference> [--chunks 0-3,7] [--chunk N]
-metadata merge    <plan reference> [--branch <name>]
-                  [--expected-branch-tip <snapshot-id>]
-metadata worker   <plan reference> [--worker <id>]
-metadata export   <plan reference> --worker-count N --destination <dir>
-metadata import   <plan reference> --source <dir>
-metadata augment  --cohort <id-or-name> --base-snapshot-id <id>
-                  [--branch <name>] [--new-snapshot-id <id>]
-```
+```bash
+# Generate a plan for a cohort
+python run.py metadata-sync plan --cohort my-cohort --chunk-size 50 --workers 4
 
-Plan references for status, run, merge, worker, export, and import accept a plan id,
-a plan bundle, or `--cohort <id-or-name>`. `--artifacts` selects a non-default
-artifact root. Source and family-index management remain outside metadata_sync.
+# Check plan status
+python run.py metadata-sync status --plan-id 2024-01-15T120000Z
+
+# Run the plan with parallel workers
+python run.py metadata-sync run --plan-id 2024-01-15T120000Z --chunks 0-9
+
+# Merge results into a snapshot
+python run.py metadata-sync merge --plan-id 2024-01-15T120000Z --branch main
+
+# Augment existing snapshot with new CIKs
+python run.py metadata-sync augment --cohort new-cohort --base-snapshot-id 2024-01-15T120000Z
+```
 
 ## Artifact layout
 

@@ -11,15 +11,10 @@ Provides a shared SQLite store for immutable expression nodes and session-scoped
 - Session cleanup removes aliases and session pointers but preserves global objects.
 - Call `initialize_schema()` before using a new database; cohort schema remains owned by the cohort package.
 
-## Command Surface
-
-<!-- AUTOGEN:COMMANDS:START -->
-<!-- AUTOGEN:COMMANDS:END -->
-
-### Usage examples
+## Usage examples
 
 This library package has no command surface.
 
-## Deliberate Gaps
+## Deliberate gaps
 
 - Object garbage collection is not automatic; immutable objects remain until a future explicit cleanup operation.

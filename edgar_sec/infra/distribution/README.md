@@ -15,5 +15,5 @@ and an interactive console.
 
 ## Deliberate Gaps
 
-- **No transport mechanism:** Distribution writes file bundles to disk; network copying (rsync, scp, NFS) is operator-owned.
-- **No cluster scheduler:** Workers execute locally against their bundle; multi-node scheduling is operator-driven.
+- **No transport mechanism**: Distribution writes file bundles to disk; network copying (rsync, scp, NFS) is operator-owned.
+- **No cluster scheduler**: Workers execute locally against their bundle; multi-node scheduling is operator-driven.

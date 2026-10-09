@@ -13,15 +13,16 @@ and provides two-tier retention analysis.
 
 ## Contracts
 
-- **Append-only ingestion:** Deltas record only new or modified Parquet files ($O(\Delta)$).
-- **Cycle immunity via content addressing:** Every parent link cryptographically pins `manifest_sha256`.
-- **Topological linearization:** Multi-parent diamond merges are deduplicated; checkpoints are loaded once.
-- **CAS publication:** the target branch tip is compare-and-swapped under one exclusive lock; a stale tip leaves the active pointer unchanged.
-- **Read-only inspection:** `DAGCatalog(..., read_only=True)` requires an existing catalog and never initializes its schema; metadata lookup does not create a catalog.
-- **Fail-closed missing parents:** Any broken parent link immediately halts resolution with `BrokenLineageError`.
-- **Branch targeting:** durable publishers resolve a named branch (default `main`); explicit non-main branches must exist and be tip-matched before publishing.
-- **Lineage vs. CAS:** a node's manifest `parents` are distinct from the branch-tip guard; `publish_node` validates the pointer, `walk_lineage` validates parent reachability.
-- **Part range pruning & lineage caching:** Queries filter candidate Parquet parts by range bounds; lineage resolution is cached in-memory.
+- **Append-only ingestion**: Deltas record only new or modified Parquet files.
+- **Cycle immunity via content addressing**: Every parent link cryptographically pins `manifest_sha256`.
+- **Topological linearization**: Multi-parent diamond merges are deduplicated; checkpoints are loaded once.
+- **Streaming I/O**: Deltas are applied incrementally without rewriting whole partitions.
+- **CAS publication**: The target branch tip is compare-and-swapped under one exclusive lock; a stale tip leaves the active pointer unchanged.
+- **Read-only inspection**: `DAGCatalog(..., read_only=True)` requires an existing catalog and never initializes its schema.
+- **Fail-closed missing parents**: Any broken parent link immediately halts resolution with `BrokenLineageError`.
+- **Branch targeting**: Durable publishers resolve a named branch (default `main`); explicit non-main branches must exist and be tip-matched before publishing.
+- **Lineage vs. CAS**: A node's manifest `parents` are distinct from the branch-tip guard.
+- **Part range pruning & lineage caching**: Queries filter candidate Parquet parts by range bounds; lineage resolution is cached in-memory.
 
 ## Command surface
 
@@ -47,5 +48,4 @@ and provides two-tier retention analysis.
 
 ## Deliberate gaps
 
-- **Secondary inverted index management:** Generating multi-shard seek indexes (such as 48-shard lookups)
-  is deferred to domain adapters and Checkpoint compaction.
+- **Secondary inverted index management**: Generating multi-shard seek indexes is deferred to domain adapters and Checkpoint compaction.

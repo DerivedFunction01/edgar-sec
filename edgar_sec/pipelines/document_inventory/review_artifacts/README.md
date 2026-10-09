@@ -16,26 +16,16 @@ are rebuilt without source attributes or active/resource subtrees. Failed pages 
 status and diagnostics and never receive an `entries.csv`. Case output is atomically
 renamed, and manifest rows are committed in deterministic selection order.
 
-## Command surface
-
-<!-- AUTOGEN:COMMANDS:START -->
-<!-- AUTOGEN:COMMANDS:END -->
-
-### Usage examples
+## Usage examples
 
 `inventory review-artifacts` is wired by the document-inventory operator.
 
-## Artifact layout
 
-<!-- AUTOGEN:PATHS:START -->
-```text
-{root}/
-├── .staging/
-├── cases/
-│   └── {accession}--{key_digest}/
-└── manifest.jsonl
-```
-<!-- AUTOGEN:PATHS:END -->
+ Artifact layout
+
+- `{root}/.staging/` - staging directory
+- `{root}/cases/{accession}--{key_digest}/` - case output directories
+- `{root}/manifest.jsonl` - manifest file
 
 ## Deliberate gaps
 

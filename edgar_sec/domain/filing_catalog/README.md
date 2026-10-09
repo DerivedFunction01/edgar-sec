@@ -10,27 +10,13 @@ planning implementations belong to the infrastructure and pipeline layers.
 
 ## Contracts
 
-- `PROFILE_SCHEMA` borrows shared field definitions from
-  `SUBMISSION_METADATA_SCHEMA` and adds catalog-specific fields. A submission
-  schema change is therefore reflected when the profile schema is constructed.
-- The target shape and column order are declared together. A form is selected by naming it exactly; an
-  amendment variant such as `10-K/A` is a distinct form value, not a derived
-  flag.
-- Locator columns and selection features are declared once so writers and
-  consumers share the same ordering. `LOCATOR_POLICY_COLUMNS` is derived from its two
-  parts rather than restated, and `LOCATOR_FEATURE_COLUMNS` /
-  `OCCURRENCE_FEATURE_COLUMNS` are what the selection engine projects from.
-- Schema and profile versions are tracked independently, so a profile change does
-  not force a target-schema bump: `SCHEMA_VERSION`, `TARGET_SCHEMA_VERSION`,
-  `PROFILE_SCHEMA_VERSION`.
-- Target plan version 1.3 declares target-part row counts, sizes, and SHA-256
-  digests for consumers that require payload integrity pins.
-- Path provenance is a closed vocabulary: `PATH_SOURCE_PRIMARY` and
-  `PATH_SOURCE_BUNDLE`.
-- Suffix inputs are normalized and validated by `normalize_suffixes()`; invalid
-  values are rejected rather than interpolated into a query.
-- `normalize_suffixes()` preserves order and is stable under repetition because
-  suffix ordering participates in plan identity.
+- **Arrow schema stability**: `PROFILE_SCHEMA` borrows shared fields from `SUBMISSION_METADATA_SCHEMA` and adds catalog-specific fields.
+- **Target shape declaration**: Column order is declared together; amendments like `10-K/A` are distinct form values.
+- **Deterministic keys**: Locator columns and selection features are declared once; `LOCATOR_POLICY_COLUMNS` is derived rather than restated.
+- **Schema versioning**: Schema and profile versions are tracked independently (`SCHEMA_VERSION`, `TARGET_SCHEMA_VERSION`, `PROFILE_SCHEMA_VERSION`).
+- **Payload integrity**: Target plan version 1.3 declares target-part row counts, sizes, and SHA-256 digests.
+- **Path provenance**: Path provenance is a closed vocabulary (`PATH_SOURCE_PRIMARY`, `PATH_SOURCE_BUNDLE`).
+- **Suffix validation**: Suffix inputs are normalized and validated by `normalize_suffixes()`; invalid values are rejected.
 
 **Obligations on callers.**
 
@@ -43,8 +29,4 @@ planning implementations belong to the infrastructure and pipeline layers.
 
 ## Deliberate gaps
 
-- SQL construction and execution live with whoever owns the statement: the
-  catalog materialization queries in `pipelines/filing_catalog`, the date and
-  suffix predicate compilers in `engine/selection`, and the DuckDB dialect
-  primitives in `infra/storage`. This package intentionally provides their
-  shared schema and filter vocabulary only.
+- **No SQL construction or execution**: SQL queries belong to catalog materialization, selection, and storage layers.

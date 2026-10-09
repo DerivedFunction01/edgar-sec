@@ -34,14 +34,16 @@ into an immutable accession-document target plan for later acquisition.
 
 ### Usage examples
 
-Run `python run.py planning status`, `python run.py planning plan`, or
-`python run.py planning inspect`. The direct CLI is offline; the interactive
-operator asks for evidence mode and requires default-no consent before publication.
-See [`commands/README.md`](commands/README.md) for the handler boundary.
+```bash
+# List profiles and published plans
+python run.py planning status
 
-Published plans live at
-`{artifacts_root}/document_planning/plans/<plan_id>/plan.json`, with target parts
-under form partitions. There is no mutable `current` pointer for plans.
+# Publish a deterministic plan
+python run.py planning plan --catalog-plan plan-2024-01-15 --profile-id primary-docs --inventory
+
+# Inspect a published plan
+python run.py planning inspect --plan-id plan-2024-01-15
+```
 
 ## Artifact layout
 

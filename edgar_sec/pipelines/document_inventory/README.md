@@ -41,42 +41,22 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 
 ### Usage examples
 
-The approved lifecycle commands are `inventory project`, `inventory run`,
-`inventory status`, and `inventory publish`. Project pins the selected branch tip
-as the run base; Run performs SEC requests; Status is read-only; Publish makes no
-network requests and refuses unless the selected branch still points at the run's
-pinned base. Direct CLI Run is explicit network intent; the interactive Run action
-requires default-no confirmation. The Snapshot DAG Publish action selects and
-publishes an existing run.
+```bash
+# Project a catalog plan into a resumable run
+python run.py inventory project --catalog-plan plan-2024-01-15 --chunk-size 100
 
-```text
-python run.py inventory project --catalog-plan PLAN
-                    [--base-snapshot-id ID] [--branch <name>]
-                    [--chunk-size N] [--explicit-refresh]
-python run.py inventory run --run-id ID [--workers N] [--retry-failures]
-                    [--confirm-stale-lock]
-python run.py inventory status [--run-id ID] [--json]
-python run.py inventory publish --run-id ID [--branch <name>]
-                    [--expected-branch-tip ID]
-python run.py inventory query [--accession ACC] [--form FORM] [--filing-cik CIK] [--source-cik CIK]
-python run.py inventory fixture create --fixture ID --catalog-plan PLAN [--limit N]
-python run.py inventory fixture fill --fixture ID --catalog-plan PLAN [--limit N]
-python run.py inventory fixture list
-python run.py inventory review generate --fixture ID [--output DIR] [--accession ACCESSION]
-python run.py inventory review compare --base DIR --new DIR [--output DIR]
-python run.py inventory distrib export --plan-id PLAN --workers N [--destination DIR]
-python run.py inventory distrib worker --bundle DIR
-python run.py inventory distrib import --bundle DIR
+# Check run status
+python run.py inventory status --run-id 2024-01-15T120000Z
+
+# Run fetch and parse with multiple workers
+python run.py inventory run --run-id 2024-01-15T120000Z --workers 8
+
+# Publish completed run to snapshot
+python run.py inventory publish --run-id 2024-01-15T120000Z --branch main
+
+# Query inventory snapshots
+python run.py inventory query --accession 0000320193-23-000004 --limit 10
 ```
-
-Project reports accession and work-order counts and its configured chunk size. Status
-reports pending accessions and chunks, committed chunks, retryable/refused outcomes,
-and lock owner metadata; it does not repair partial runs. Commands accept `--artifacts`
-and `--json`; capture also accepts `--limit`, and review
-accepts `--workers`, `--limit`, and repeatable `--accession`. Running `python run.py
-inventory` opens the discovery-driven operator menu. Its approved root actions preserve
-`1` Query, `d` Distribution, `p` Snapshot DAG, `f` Fixtures/review, and `0` Exit, and
-add `2` Project, `3` Status, and `4` Run.
 
 ## Artifact layout
 

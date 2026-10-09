@@ -48,9 +48,23 @@ Provides Phase 0 command-line and interactive orchestration for the shared cohor
 
 ### Usage examples
 
-`import`, `list`, `info`, `rename`, `tag`, `untag`, `delete`, `query`, `find`,
-`sample`, `sources refresh`, `diff`, `family-index`, `doctor`, `maintain`,
-`workspace`, `merge`, `repl`, and `console`.
+```bash
+# List cohorts and inspect a specific one
+python run.py cohort list --tag public
+python run.py cohort info --cik 0000320193
+
+# Import a new cohort from CSV
+python run.py cohort import --input companies.csv --name my-cohort --tags curated
+
+# Find companies by CIK across all cohorts
+python run.py cohort find --cik 0000320193 --limit 10
+
+# Create a sample cohort from an existing one
+python run.py cohort sample --source my-cohort --method random --rate 0.1 --seed 42
+
+# Refresh official SEC source cohorts
+python run.py cohort sources refresh
+```
 
 ## Deliberate Gaps
 

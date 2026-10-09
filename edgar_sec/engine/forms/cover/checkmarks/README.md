@@ -14,27 +14,13 @@ full hypothesis table rather than resolved arbitrarily.
 
 ## Contracts
 
-- Every reported decision carries the `source_region` and `mark_span` it came
-  from, in the **original** (unmasked) frame. A caller may slice the source text
-  with them directly.
-- A span is rewritten at most once, however many semantic labels point at it. On
-  real 10-K covers a single Wingdings `x` is associated with every filer-status
-  label; re-applying one span would slice the expanded token into `[X]X]X]...`.
-- A span whose text no longer matches the extracted `source_token` is dropped,
-  not applied. A stale or foreign-frame span would otherwise corrupt unrelated
-  text, including structural table tags.
-- Two candidates that resolve the same physical span to different states mark it
-  conflicted, and no decision is applied to it.
-- A tie between hypotheses is reported, not broken. A `direct_state` violation
-  (an observed mark contradicting the constraint solution) also reports
-  `UNRESOLVED` rather than overwriting the observed state.
-- `apply_cover_checkmark_decisions` returns the set of geometry table indices it
-  physically unwrapped. The caller must evict exactly those from its
-  `table_geometries` before any positional-pairing pass, or the first surviving
-  `<TABLE>` block will be paired with the wrong geometry.
-- Candidates carry offsets in the original frame even though extraction runs over
-  a masked frame; `frames.py` translates every offset back before a candidate is
-  emitted.
+- **Every reported decision carries `source_region` and `mark_span`**: in the original (unmasked) frame. A caller may slice the source text with them directly.
+- **A span is rewritten at most once**: however many semantic labels point at it. On real 10-K covers a single Wingdings `x` is associated with every filer-status label; re-applying one span would slice the expanded token into `[X]X]X]...`.
+- **A span whose text no longer matches the extracted `source_token` is dropped**: not applied. A stale or foreign-frame span would otherwise corrupt unrelated text, including structural table tags.
+- **Two candidates that resolve the same physical span to different states mark it conflicted**: and no decision is applied to it.
+- **A tie between hypotheses is reported, not broken**: A `direct_state` violation (an observed mark contradicting the constraint solution) also reports `UNRESOLVED` rather than overwriting the observed state.
+- **`apply_cover_checkmark_decisions` returns geometry table indices physically unwrapped**: The caller must evict exactly those from its `table_geometries` before any positional-pairing pass, or the first surviving `<TABLE>` block will be paired with the wrong geometry.
+- **Candidates carry offsets in the original frame**: even though extraction runs over a masked frame; `frames.py` translates every offset back before a candidate is emitted.
 
 ## Command surface
 

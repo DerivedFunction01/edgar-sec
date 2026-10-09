@@ -9,15 +9,10 @@ is data; none of it reads or fetches documents.
 
 ## Contracts
 
-- **Declarative only.** The checkmark solver, the cover boundary detector, and
-  evaluator execution are `engine/forms/`'s; this subtree owns the data they read.
-- **Layer-1 purity:** zero internal dependencies on `infra`, `engine`, `pipelines`, or
-  `apps`, and no third-party imports beyond `edgar_sec.foundation`.
+- **Declarative only**: The checkmark solver, cover boundary detector, and evaluator execution belong to `engine/forms/`; this subtree owns the data they read.
+- **Zero I/O**: All content is data; nothing reads or fetches documents.
+- **Layer-1 purity**: Zero internal dependencies on `infra`, `engine`, `pipelines`, or `apps`; only `edgar_sec.foundation` imports.
 
 ## Deliberate gaps
 
-- **The checkbox schemas are declared twice.** `ANNUAL_CHECKBOX_SCHEMA` and
-  `QUARTERLY_CHECKBOX_SCHEMA` are each built independently in `common/schemas.py` and
-  in `families/{annual,quarterly}/checkmarks.py`. The two copies compare equal today,
-  nothing pins them to each other, and the copies `engine/forms/cover/` imports are
-  the family ones — so import the family module and keep the `common/` copies in step.
+- **Checkbox schemas are declared twice**: `ANNUAL_CHECKBOX_SCHEMA` and `QUARTERLY_CHECKBOX_SCHEMA` are built independently in `common/schemas.py` and `families/`; import the family module and keep common copies in step.

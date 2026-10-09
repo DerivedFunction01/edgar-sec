@@ -13,20 +13,10 @@ both ignore their `text` argument outright.
 
 ## Contracts
 
-- **Every evaluator returns a complete `EvaluatorDecision`**, carrying the action,
-  the category, a human-readable reason, and a confidence. Category and reason
-  are part of the contract, not decoration: several paths return the same action
-  and differ only in what they say, so a consumer reading only `action` cannot
-  tell them apart.
-- **`evaluate_annual` is the only evaluator that reads `text`.** It returns
-  `REFETCH_SUB_DOC` when an Exhibit 13 mention falls inside a delegation-verb
-  window — the financials live in an exhibit and this document should be
-  refetched, not published whole. Its reason embeds a quoted snippet.
-- **`evaluate_quarterly` and `evaluate_current` never read `text`.** Both
-  bind it to `_` and decide on metadata alone, so both return `PROCEED` /
-  `standard_full` when no metadata is supplied.
-- **An unknown family is never an error.** It routes to `evaluate_generic` via
-  the registry, not by any check inside these modules.
+- **Every evaluator returns a complete `EvaluatorDecision`**: carrying the action, the category, a human-readable reason, and a confidence. Category and reason are part of the contract, not decoration: several paths return the same action and differ only in what they say, so a consumer reading only `action` cannot tell them apart.
+- **`evaluate_annual` is the only evaluator that reads `text`**: It returns `REFETCH_SUB_DOC` when an Exhibit 13 mention falls inside a delegation-verb window — the financials live in an exhibit and this document should be refetched, not published whole. Its reason embeds a quoted snippet.
+- **`evaluate_quarterly` and `evaluate_current` never read `text`**: Both bind it to `_` and decide on metadata alone, so both return `PROCEED` / `standard_full` when no metadata is supplied.
+- **An unknown family is never an error**: It routes to `evaluate_generic` via the registry, not by any check inside these modules.
 
 ## Command surface
 

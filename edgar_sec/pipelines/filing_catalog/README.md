@@ -156,34 +156,22 @@ ways a network dependency creeps in.
 
 ### Usage examples
 
-Entry point: `python run.py filing-catalog <command>`. With no argument the
-operator wizard opens; with an argument `cli.main` dispatches. Worked transcripts
-are in the [root README](../../../README.md#filing-catalog-pipeline-zero-network).
+```bash
+# Materialize a catalog from a Phase 1 snapshot
+python run.py filing-catalog materialize --source-snapshot 2024-01-15T120000Z
 
-| Subcommand | Flags | Returns |
-| :--- | :--- | :--- |
-| `materialize` | `--source` (one Parquet part, treated as a one-part dataset), `--source-snapshot` (Phase 1 snapshot id from its DAG catalog), `[--source-artifacts]`, `--artifacts`, `--branch` (default `main`; advances that branch's tip under a shared CAS lock), `--expected-branch-tip` | 0 with the snapshot summary on stdout, or 1 on `CatalogError` with `error: <msg>` on stderr. |
-| `plan` | `--catalog` (**required**), `--scope` (`deterministic` default; choices `deterministic`, `policy`), `--policy`, `--auto-policy`, `--cohort` (deterministic CIK filter), `--seed-cohort` (policy seeds, replacing configured CSV seeds), `--artifacts`, `--forms` (nargs `*`), `--suffixes` (nargs `*`), `--dates` (one comma-separated union; blank selects every date), `--limit` | 0 with the plan document on stdout, or 1 on planning/input errors. |
-| `expand` | `--parent-plan` (**required**, a published policy plan directory), `--target-units` (**required**, int), `--artifacts` | 0 with the child plan document, or 1 on `PlanConflictError`, `ParentPlanError`, `ValueError`, or `OSError`. |
-| `status` | `--artifacts` | 0, with the published-state JSON on stdout. |
-| `dag` | `log`, `branch`, `tag`, `checkout`, `compact`, `diff`, `rebase`, `views`, `--artifacts` | 0 on success, or 1 on DAG operation error. |
+# Plan a deterministic target list
+python run.py filing-catalog plan --catalog --scope deterministic --forms 10-K --dates 2023-01-01..2023-12-31 --limit 100
 
-`--artifacts` is the output-root override on every subcommand; empty means
-`resolve_paths().artifacts_root`. `--source-artifacts` selects a different Phase 1
-root for `materialize`; otherwise source snapshots use the configured artifact root.
-There is deliberately **no `run` subcommand** and no `--output-root` flag.
+# Plan a policy-driven target list
+python run.py filing-catalog plan --catalog --scope policy --auto-policy --cohort curated
 
-Errors are reported per command: each command catches its own failures, writes
-`error: <msg>` to stderr, and returns 1, so a bad flag is the only exit-2 case.
+# Expand a policy plan to meet target units
+python run.py filing-catalog expand --parent-plan plan-2024-01-15 --target-units 500
 
-The wizard's actions cover `status`, `materialize`, `dag` console, deterministic `plan`,
-`plan --scope policy`, and `expand`. The catalog for a plan and the parent plan for
-an expansion are chosen by number from what is published, with the pointer-resolved
-catalog offered as the default. **The policy action creates or runs a draft; it never
-invents one.** It lists valid policy documents under `policies/` with their forms,
-unit count, and date selection. A blank answer writes a catalog-derived all-forms
-draft, prints its path, and returns without planning, so creating a draft and running
-one remain separate decisions.
+# View current catalog state
+python run.py filing-catalog status
+```
 
 ### Artifact layout
 

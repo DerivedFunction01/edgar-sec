@@ -6,10 +6,10 @@ Own the immutable records shared by document-inventory stages and the durable ch
 
 ## Contracts
 
-- Records are immutable values with no filesystem, network, parser, or stage orchestration behavior.
-- `ENTRY_SCHEMA` field order and types are persisted contract; change them only with a schema-version bump.
-- Domain imports are restricted to `foundation`.
+- **Immutability**: Records are immutable values with no filesystem, network, parser, or stage orchestration behavior.
+- **Arrow schema stability**: `ENTRY_SCHEMA` field order and types are persisted contract; change them only with a schema-version bump.
+- **Zero I/O**: Domain imports are restricted to `foundation`.
 
 ## Deliberate gaps
 
-- This package does not validate catalog inputs, parse index-page bytes, or manage run/checkpoint artifacts; those operations belong to the pipeline and engine layers.
+- **No catalog validation or parsing**: Catalog input validation, index-page parsing, and artifact management belong to pipeline and engine layers.

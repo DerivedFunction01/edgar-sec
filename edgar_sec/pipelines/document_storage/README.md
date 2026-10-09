@@ -229,49 +229,22 @@ None. Library package.
 
 ### Usage examples
 
-Entry point: `python run.py documents <command>`, dispatched straight to
-`cli.py`. Invoking it with no subcommand opens the phase-local menu. `--help` on
-the entry point is the authoritative flag list; `USAGE_EPILOG` in `cli.py`
-carries worked examples.
+```bash
+# Run from a catalog plan bundle (fixture mode)
+python run.py documents run --catalog-plan plan-2024-01-15 --fixture my-fixture
 
-| Subcommand | Flags | Exit status |
-| :--- | :--- | :--- |
-| `run` | `--plan` (**required**), `--fixture` (**required**, repeatable — repeat to set lookup precedence), `--run-id`, `--workers`, `--limit`, `--json` | 0 when `report.ok`, else 1. Prints `plan contains no chunks` on stderr and returns 1 when the plan yields no chunks. |
-| `status` | `--json` | 0 when a snapshot is published, else 1. |
-| `fill` | `--plan` (**required**), `--fixture` (**required**), `--workers`, `--limit`, `--json` | 0 when no fetch failed, else 1. |
-| `fixtures` | `--json` | Always 0. |
-| `review-artifacts` | `--fixture` (**required**), `--limit`, `--id` (repeatable), `--ids-file`, `--extension`/`--ext` (repeatable), `--run-id`, `--output`, `--workers`, `--json` | 0 when every selected document rendered, else 1. Non-positive `--limit`/`--workers` returns 2. Refuses a non-empty `--output`. |
-| `review` | `--base` (**required**), `--new` (**required**), `--output`, `--json` | 0 when nothing changed, 1 when differences exist (a result, not a failure) or the runs could not be compared. Refuses a non-empty `--output`. |
+# Check snapshot status
+python run.py documents status
 
-`main` resolves paths once through `resolve_paths()`, dispatches through
-`_COMMANDS`, and catches `FileNotFoundError`, `ValueError`, and `RuntimeError`,
-printing `error: <msg>` to stderr and returning 1. This is the only pipeline whose
-CLI exposes no `--artifacts` flag; it is bound to the configured project root in
-a way the other two are not.
+# Fill fixtures with raw responses
+python run.py documents fill --catalog-plan plan-2024-01-15 --fixture my-fixture --workers 4
 
-**Details worth knowing before running**
+# Build review artifacts from a fixture
+python run.py documents review-artifacts --fixture my-fixture --output ./review
 
-- `--plan` is a path, not a discovery surface: it names a Phase 2 plan bundle
-  directly. The fixture side of the same handoff *is* discovered — the menu lists
-  fixture stores with payload counts — because fixtures are this package's own
-  artifact.
-- `--limit` on `run` truncates the in-memory chunk list, not the plan file. On
-  `fill` it caps unique target locators after deduplication.
-- `fill` shares one settings-backed SEC HTTP client across fetch threads and one
-  coordinator-owned writer. A locator already in the store is skipped; a locator
-  whose fetch failed has no payload row and is eligible for a later fill. The full
-  SGML source bundle is stored when present, so replay can repeat sub-document
-  extraction offline.
-- `--run-id` defaults to a generated stamp, so omitting it is safe. `--workers`
-  reaches `resolved_worker_count`, where a non-positive value falls through to
-  cgroup-aware derivation.
-- `--json` switches from the human summary to a JSON object on every subcommand.
-- When a snapshot is published, `status` reports `shape` as `"run"` if an
-  assembled `documents.parquet` exists and `"consolidated"` otherwise, because
-  `current` can name either.
-- The menu is intentionally narrow: fill, replay, list fixtures, build review
-  artifacts, compare review runs. Preview, production-mode run, partition merge,
-  and vacuum are not reachable from it.
+# Compare two review runs
+python run.py documents review --base ./review-base --new ./review-new
+```
 
 ## Artifacts
 

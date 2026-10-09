@@ -18,7 +18,8 @@ Presentation and execution layer for the metadata sync CLI subcommands.
 - Every command returns an integer exit code (0 on success).
 - Presentation output is emitted via `render_output` rather than direct JSON prints.
 - Unhandled domain exceptions bubble up to `cli.py:main` for uniform exit handling.
+- Commands are dispatch handlers only; they receive pre-parsed `argparse.Namespace` objects and do not configure their own argument parsers.
 
 ## Deliberate Gaps
 
-- Commands do not parse command-line flags or configure argument parsers; argument parsing is owned by [../cli.py](../cli.py).
+- CLI entry points, argument parsing, and top-level help are owned by [../cli.py](../cli.py).

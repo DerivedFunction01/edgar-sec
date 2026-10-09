@@ -14,16 +14,10 @@ collapse. So this package is a text boundary, not a DOM pass.
 
 ## Contracts
 
-- **A `<pre>` payload survives byte for byte.** `normalize_hybrid_pre_text` replaces each payload with
-  a private token, the caller runs ordinary HTML table normalization over the result, and
-  `restore_hybrid_pre_text` puts the payload back unchanged.
-- **Restoration is verified, not assumed.** A token that cannot be found raises `ValueError` rather
-  than returning a document with a whole financial table silently missing.
-- **A real HTML table inside `<pre>` is rendered.** The one payload shape a DOM *can* represent is
-  converted to canonical ASCII before masking, so the caller's ordinary table pass does not have to
-  reach inside a `<pre>`.
-- **Classification never parses the payload as HTML.** A `<pre>` body containing SGML tags must not
-  be interpreted; the shape is decided from the raw source text.
+- **A `<pre>` payload survives byte for byte**: `normalize_hybrid_pre_text` replaces each payload with a private token, the caller runs ordinary HTML table normalization over the result, and `restore_hybrid_pre_text` puts the payload back unchanged.
+- **Restoration is verified, not assumed**: A token that cannot be found raises `ValueError` rather than returning a document with a whole financial table silently missing.
+- **A real HTML table inside `<pre>` is rendered**: The one payload shape a DOM *can* represent is converted to canonical ASCII before masking, so the caller's ordinary table pass does not have to reach inside a `<pre>`.
+- **Classification never parses the payload as HTML**: A `<pre>` body containing SGML tags must not be interpreted; the shape is decided from the raw source text.
 
 ## Command surface
 

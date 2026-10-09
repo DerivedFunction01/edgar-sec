@@ -25,49 +25,16 @@ Layer 0  foundation/   runtime, memory, hashing, compression, settings, scanners
                          zero internal dependencies on upper layers
 ```
 
-| Layer | Package | Owns |
-| :--- | :--- | :--- |
-| 0 | [`foundation/`](foundation/README.md) | cgroup-aware resources, memory reclamation, hashing, canonical JSON, the zstd frame codec, shared fixture/path primitives, the settings registry, the policy scanners |
-| 0 | [`foundation/runtime/`](foundation/runtime/README.md) | project roots, shared fixture layout/envelope validation, env resolution, progress, partitions, interactive prompts, memory |
-| 0 | [`foundation/runtime/settings/`](foundation/runtime/settings/README.md) | the single typed settings registry; env names derive from logical dotted paths |
-| 0 | [`foundation/scanners/`](foundation/scanners/README.md) | policy scanners and `ALL_SCANNERS` |
-| 0 | [`foundation/text/`](foundation/text/README.md) | shared pattern vocabulary: dates, tokens, grammar, unicode, compounds, the Aho-Corasick automaton |
-| 0 | [`foundation/regex/`](foundation/regex/README.md) | the regex builder DSL that guarantees longest-first alternation ordering |
-| 1 | [`domain/`](domain/README.md) | layer root; contracts only |
-| 1 | [`domain/identity.py`](domain/README.md) | `Cik`, `AccessionNumber` |
-| 1 | [`domain/document/`](domain/document/README.md) | document and occurrence record contracts, acquisition results |
-| 1 | [`domain/document_inventory/`](domain/document_inventory/README.md) | shared inventory records and durable entry schema |
-| 1 | [`domain/forms/`](domain/forms/README.md) | cover/form vocabulary: checkmarks, family aliases, field schemas, body evidence |
-| 1 | [`domain/taxonomy/`](domain/taxonomy/README.md) | jurisdictions, legal forms, family vocabulary |
-| 1 | [`domain/submissions/`](domain/submissions/README.md) | submission schemas |
-| 1 | [`domain/filing_catalog/`](domain/filing_catalog/README.md) | catalog schemas and filters |
-| 2 | [`infra/`](infra/README.md) | layer root; I/O adapters |
-| 2 | [`infra/sec_http/`](infra/sec_http/README.md) | the shared SEC client: pacing, retries, cache, metrics, failure ledger |
-| 2 | [`infra/broker/`](infra/broker/README.md) | Unix-socket broker so an arbitrary worker pool shares one rate limit |
-| 2 | [`infra/storage/`](infra/storage/README.md) | atomic IO, DuckDB engine, Parquet, DAG snapshot records, document parts, and shared cohort/object storage |
-| 2 | [`infra/storage/object_store/`](infra/storage/object_store/README.md) | global immutable expression nodes and session-scoped aliases |
-| 2 | [`infra/storage/cohort/`](infra/storage/cohort/README.md) | cohort paths, SQLite catalog, active pointers, and immutable datasets |
-| 3 | [`engine/`](engine/README.md) | layer root; filing transformations and selection feature construction |
-| 3 | [`engine/document/`](engine/document/README.md) | input preparation, SGML unpacking, HTML cleaning/projection, page markers, signatures, whitespace |
-| 3 | [`engine/tables/`](engine/tables/README.md) | table masking, HTML→ASCII rendering with geometry, false-table rejection |
-| 3 | [`engine/forms/`](engine/forms/README.md) | stage order, result record, cover decision chain, family SPI and evaluators |
-| 3 | [`engine/reflow/`](engine/reflow/README.md) | conservative ASCII reflow: features, calibrated thresholds, rule cascades |
-| 3 | [`engine/forms/plugins/`](engine/forms/plugins/README.md) | the `FormPlugin` SPI and registry |
-| 3 | [`engine/selection/`](engine/selection/README.md) | Phase 2 target-plan selection: features, policy, selector, source |
-| 3 | [`engine/company_family/`](engine/company_family/README.md) | name normalization and universe-scale family assignment |
-| 3 | [`engine/submissions/`](engine/submissions/README.md) | submission unrolling, profiling, building |
-| 3 | [`engine/index_pages/`](engine/index_pages/README.md) | pure SEC filing index-page HTML parser |
-| 5 | [`apps/`](apps/README.md) | layer root; read-only operator-facing consumers of published artifacts |
-| 5 | [`apps/viewer/`](apps/viewer/README.md) | the dataset viewer: a lazy filesystem explorer, manifest-driven virtual datasets, paged DuckDB reads, a guarded read-only SQL console |
-| 4 | [`pipelines/`](pipelines/README.md) | layer root; orchestration |
-| 4 | [`pipelines/document_inventory/`](pipelines/document_inventory/README.md) | fixture/review workflows, path-backed worker coordination, bounded snapshot anti-join |
-| 4 | [`pipelines/document_inventory/snapshot/`](pipelines/document_inventory/snapshot/README.md) | snapshot relation schemas and DuckDB-backed staging/anti-join primitives |
-| 4 | [`pipelines/document_planning/`](pipelines/document_planning/README.md) | offline catalog/inventory evidence matching and immutable target-plan publication |
-| 4 | [`pipelines/document_planning/commands/`](pipelines/document_planning/commands/README.md) | offline plan, inspect, and status command handlers |
-| 4 | [`pipelines/metadata_sync/`](pipelines/metadata_sync/README.md) | Submissions metadata ingest, chunked and resumable |
-| 4 | [`pipelines/filing_catalog/`](pipelines/filing_catalog/README.md) | Zero-network catalog materialization and target planning |
-| 4 | [`pipelines/cohort/`](pipelines/cohort/README.md) | Phase 0 source refresh, diff, family-index publication, set operations, sampling, and workspace console |
-| 4 | [`pipelines/document_storage/`](pipelines/document_storage/README.md) | Fetch, normalize, delegate, checkpoint, merge, consolidate |
+### Layer roots
+
+Each layer owns one or more packages. Read the layer root README for contracts; read the package READMEs for details.
+
+- **foundation/** (Layer 0): runtime, memory, hashing, compression, settings, scanners
+- **domain/** (Layer 1): data contracts and vocabularies. No IO.
+- **infra/** (Layer 2): I/O adapters: SEC HTTP, broker, DuckDB, Parquet, CAS
+- **engine/** (Layer 3): filing transformations and feature construction
+- **pipelines/** (Layer 4): orchestration: CLI, operator, planner, worker, merger
+- **apps/** (Layer 5): read-only, operator-facing consumers of published artifacts |
 
 ## Shared engineering contract
 

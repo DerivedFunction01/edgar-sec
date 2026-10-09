@@ -84,22 +84,19 @@ and `App.tsx` renders a disabled panel instead. The tables still browse.
 
 ### Usage examples
 
-| Command | Effect |
-| :--- | :--- |
-| `python -m edgar_sec.apps.viewer.cli` | Serves on `127.0.0.1:8500`. |
-| `python run.py viewer` | The same, via the root launcher. |
-| `python -m edgar_sec.apps.viewer.cli --api-only` | No static mount. |
-| `python -m edgar_sec.apps.viewer.cli --artifacts DIR` | Browse another root. |
-| `python -m edgar_sec.apps.viewer.cli --port N` | Non-default port. |
-| `python -m edgar_sec.apps.viewer.cli --host 0.0.0.0` | Binds non-loopback and prints a warning. |
+```bash
+# Start viewer on default port
+python run.py viewer
 
-The entry module is named `cli` to match the other three launch targets, so the root
-launcher's `module` field means the same thing for every entry. There is no
-`__main__.py`: `python -m edgar_sec.apps.viewer` does not work, and the `.cli`
-suffix is required.
+# Browse a custom artifacts root
+python -m edgar_sec.apps.viewer.cli --artifacts /path/to/artifacts
 
-The default bind is loopback and a non-loopback `--host` prints a warning naming
-what it exposes. There is no authentication; this is a local operator tool.
+# Bind to a different port
+python -m edgar_sec.apps.viewer.cli --port 8080
+
+# API-only mode (no static UI mount)
+python -m edgar_sec.apps.viewer.cli --api-only
+```
 
 ### Endpoints
 
@@ -123,12 +120,6 @@ bun test
 ```
 
 `dist/` is not tracked.
-
-## Artifact layout
-
-<!-- AUTOGEN:PATHS:START -->
-No published artifact paths.
-<!-- AUTOGEN:PATHS:END -->
 
 ## Deliberate gaps
 

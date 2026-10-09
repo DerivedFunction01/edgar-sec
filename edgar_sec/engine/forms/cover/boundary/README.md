@@ -11,20 +11,12 @@ a rewrite touch filing prose.
 
 ## Contracts
 
-- `find_cover_boundary(input, None)` returns `BoundaryMethod.DISABLED`. Absence of
-  a policy is an explicit opt-out.
-- Every signal in the ladder is corroborated: a phrase match alone is not enough.
-  This is the rule that keeps an 8-K from acquiring a cover boundary.
-- Backward confirmation accepts only corroborated body-root evidence; ambiguous
-  evidence cannot move the boundary.
-- The backward search never starts before `cover_start.start_line`, so a
-  cover-shaped block cannot become its own body anchor.
-- A heading followed by another heading of the same role, by continuation prose,
-  or by a proxy reference disclosure is a child, not a root. Only the first
-  proven root ends the cover.
-- `find_cover_boundary_for_profile` reads `profile.boundary`,
-  `profile.cover_evidence`, and `profile.body_evidence`. A profile without a
-  `boundary` attribute yields `DISABLED`.
+- **`find_cover_boundary(input, None)`**: returns `BoundaryMethod.DISABLED`. Absence of a policy is an explicit opt-out.
+- **Every signal in the ladder is corroborated**: a phrase match alone is not enough. This is the rule that keeps an 8-K from acquiring a cover boundary.
+- **Backward confirmation accepts only corroborated body-root evidence**: ambiguous evidence cannot move the boundary.
+- **The backward search never starts before `cover_start.start_line`**: a cover-shaped block cannot become its own body anchor.
+- **A heading followed by another heading of the same role, continuation prose, or proxy reference disclosure is a child, not a root**: Only the first proven root ends the cover.
+- **`find_cover_boundary_for_profile` reads `profile.boundary`, `profile.cover_evidence`, and `profile.body_evidence`**: A profile without a `boundary` attribute yields `DISABLED`.
 
 ## Command surface
 

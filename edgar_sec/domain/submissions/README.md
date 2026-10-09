@@ -13,21 +13,12 @@ that fetches and merges them (`pipelines/metadata_sync/`).
 
 ## Contracts
 
-- The dataset is versioned as a whole. `DATASET_NAME` and `SCHEMA_VERSION` are
-  persisted: the version is written into every plan, checkpoint, and published
-  artifact, and the pipeline reads it back to decide whether a stored plan is
-  still loadable.
-- Column order is part of the contract, not an accident: operational metadata, then
-  profile columns grouped into named semantic structs, then the repeated-value columns,
-  then acquisition-provenance columns from the input manifest.
-- Grouping is semantic, so a field's meaning travels with it.
-- Both accession forms are carried side by side in the filing struct, so a consumer
-  never has to guess which spelling it was handed.
-- Terminality is a closed set. `TERMINAL_STATUSES` is what the pipeline checks to
-  decide a chunk checkpoint is final; a non-terminal status is not an error, it means
-  the chunk is not done yet.
-- The DTOs are frozen and slotted, mirror their struct field-for-field, and type the
-  registrant CIK as `Cik` from `edgar_sec.domain.identity`.
+- **Arrow schema stability**: Dataset is versioned as a whole; `DATASET_NAME` and `SCHEMA_VERSION` are persisted into plans, checkpoints, and artifacts.
+- **Column order is contract**: Operational metadata, then profile columns in semantic structs, then repeated-value columns, then acquisition-provenance columns.
+- **Semantic grouping**: Field meaning travels with its semantic struct grouping.
+- **Accessor forms carried**: Both accession forms are carried side-by-side in the filing struct.
+- **Terminality is a closed set**: `TERMINAL_STATUSES` is what the pipeline checks; non-terminal status means chunk is not done yet.
+- **Frozen DTOs**: DTOs are frozen and slotted, mirror their struct field-for-field, and type registrant CIK as `Cik`.
 
 **Obligations on callers.**
 
@@ -40,9 +31,4 @@ that fetches and merges them (`pipelines/metadata_sync/`).
 
 ## Deliberate gaps
 
-- **Nothing here validates a row.** There is no check that a fetched payload's keys
-  match the struct fields, no migration path for an older `SCHEMA_VERSION`, and no
-  identity check: a filing's accession columns are plain strings, because Arrow cannot
-  hold a dataclass, so `AccessionNumber` validation happens where the value is built and
-  not on read. An unrecognized key lands in `extra_fields` by convention rather than by
-  an enforced rule.
+- **No row validation**: No check that fetched payload keys match struct fields, no migration path for older `SCHEMA_VERSION`, and no identity check on read.

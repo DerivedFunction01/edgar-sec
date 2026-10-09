@@ -3,7 +3,7 @@
 ## Purpose
 Reusable harness for parser review runs, multi-format objective diffing, and fixture command delegation across dataset pipelines.
 
-## Guarantees & Contracts
+## Contracts
 - **Objective Diffing**: Reports strictly what was modified, added, removed, or left unchanged without heuristic assumptions of improvement versus regression.
 - **Format-Agnostic Comparison**: Tabular datasets (`.csv`, `.parquet`) are compared via DuckDB SQL set queries; structured JSON is diffed via recursive path flattening; text is diffed line-by-line.
 - **Bounded Output**: Console summaries cap displayed case lists with overflow pointers to full persisted JSON manifests.
@@ -21,5 +21,5 @@ It accepts a [`ReviewMenuConfig`](operator.py) and supports:
   the previous baseline and latest run are the defaults for the base and new
   run prompts.
 
-## Deliberate Gaps
+## Deliberate gaps
 - Pipeline-specific document parsing, SQLite schema definitions, and table extraction logic are owned by the consuming pipeline adapters, not this package.

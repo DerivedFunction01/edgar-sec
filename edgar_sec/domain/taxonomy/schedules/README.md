@@ -10,22 +10,10 @@ terms, its exclusions, and its 2D shape; the family specs are assembled into
 
 ## Contracts
 
-- **Deterministic patterns:** every alternation is compiled by
-  `foundation.regex.builder`, so branches stay longest-first and a caller adding a
-  term cannot introduce a shorter branch that shadows a longer one.
-- **The compensation terms have one owner.** `compensation/stock_comp.py` holds the
-  ASC 718 term tuples and the closing-total pattern, and `stock_comp.py` builds
-  `STOCK_COMP_ROLLFORWARD_SPEC` on those same terms, so the table family and the
-  statement tail predicate cannot drift apart.
-- **Exclusions are advisory, not a partition.** Whether a given area's veto terms
-  reach its evidence pack is a per-module question, so read the pack rather than
-  assuming two areas are mutually exclusive — see
-  [the tables README](../tables/README.md).
+- **Deterministic patterns**: Every alternation is compiled by `foundation.regex.builder` (longest-first ordering).
+- **Compensation terms have one owner**: `compensation/stock_comp.py` holds ASC 718 term tuples; `stock_comp.py` builds specs from those same terms.
+- **Exclusions are advisory**: Whether veto terms reach evidence packs is a per-module question; orthogonality is best-effort.
 
 ## Deliberate gaps
 
-- **Legal proceedings and exhibit indexes are vocabularies without a family.**
-  `legal.py` and `statutory/exhibits.py` publish terms, phrases, and headers but no
-  `TableFamilySpec`, so `FAMILY_SPECS` has no entry for either: a caller classifying
-  a legal-proceedings table or an Item 601 exhibit index gets no family from this
-  registry and must match on the terms directly.
+- **Legal proceedings and exhibit indexes are vocabularies without a family**: `legal.py` and `statutory/exhibits.py` publish terms but no `TableFamilySpec`.
