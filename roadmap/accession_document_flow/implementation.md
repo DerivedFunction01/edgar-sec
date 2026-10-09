@@ -38,8 +38,8 @@ jointly replace `document_storage` through explicit artifact handoffs:
 
 - `edgar_sec.pipelines.document_inventory` (S0–S5): cohort selection, index-page
   fetching and parsing, and publication of the cumulative queryable snapshot.
-- `edgar_sec.pipelines.document_planning` (S6): offline target-plan publication from
-  exactly one immutable inventory snapshot or filing-catalog plan.
+- `edgar_sec.pipelines.document_planning` (S6): offline target-plan publication from a
+  required filing-catalog scope and optional immutable inventory evidence.
 - `edgar_sec.pipelines.document_acquisition` (S9–S10): acquisition of selected
   payloads and deterministic processing of them.
 
@@ -166,8 +166,7 @@ rate-limited research step; normal tests remain offline and deterministic.
     PARSE["Bounded process-pool workers<br/>fetch through broker, then parse"]
     EDGE["Add unseen CIK edges<br/>reuse indexed page"]
     INV[("Cumulative queryable snapshot<br/>accession/form/filing-CIK/source-CIK indexes")]
-    PLAN["Inventory target planning<br/>profile + inventory snapshot"]
-    DIRECT["Catalog-direct planning<br/>primary-only, no inventory rows"]
+    PLAN["S6 target planning<br/>catalog scope + optional inventory evidence"]
     TARGET[("Independent target-plan artifact")]
     ACQ["Later: acquire selected payloads<br/>direct URL or bundle sequence"]
     PROC["Later: transform/process<br/>deterministic processor"]
@@ -178,26 +177,29 @@ rate-limited research step; normal tests remain offline and deterministic.
     ANTI -->|missing accession| FETCH --> PARSE --> INV
     ANTI -->|known accession, new CIK| EDGE --> INV
     ANTI -->|no new facts| INV
-    INV --> PLAN --> TARGET
-    CAT --> DIRECT --> TARGET
+    CAT --> PLAN
+    INV --> PLAN
+    PLAN --> TARGET
     TARGET --> ACQ --> PROC --> REVIEW
     PROC -. "schema decision after evidence" .-> STORE
 ```
 
 - **Cohort selection** chooses accessions. The adapter may project unique
   accessions, form/date fields, and source CIKs from a `filing_catalog` plan or a
-  dedicated inventory fixture. Catalog `document_path` is not inventory
-  identity and is not copied into observed rows. S6 may use a catalog path only
-  through its explicit catalog-direct target source; that remains distinct from
-  observed index rows. Construct index-page URLs from accession identity, never a
-  planned child-document path.
+  dedicated inventory fixture. Catalog `document_path` is not inventory identity
+  and is not copied into observed rows. S6 always takes the catalog plan as scope;
+  it may use catalog primary paths only when no snapshot is supplied, otherwise the
+  inventory index is the sole locator source. Construct index-page URLs from
+  accession identity, never a planned child-document path.
 - **Inventory** fetches and parses each accession's lightweight
   `<accession>-index.html`, recording every observed document/data-file row once.
   It does not apply target profiles or fetch document bodies.
-- **Target planning** reads exactly one named immutable inventory snapshot or
-  catalog plan, applies a versioned request/profile, and publishes a separate
-  source-pinned target plan. Both modes make no HTTP request and never write intent
-  back into the inventory.
+- **Target planning** reads a named filing-catalog plan as scope, optionally reads a
+  named immutable inventory snapshot as document evidence, applies a versioned
+  request/profile, and publishes a plan pinned to both inputs. Without a snapshot,
+  only primary catalog-direct planning is allowed. With a snapshot, it alone supplies
+  locators; missing accessions do not fall back to catalog paths. Planning makes no
+  HTTP request and never writes intent back into the inventory.
 - **Acquisition and processing** are planned as later stages with explicit
   in-memory contracts and fixture/review tools. They do not imply a published
   payload schema.
@@ -304,12 +306,13 @@ Target intent and match outcomes belong in a separate plan bundle:
 
 ```text
 {artifacts_root}/document_planning/plans/{plan_id}/plan.json
-{artifacts_root}/document_planning/plans/{plan_id}/targets/part-00000.parquet
+{artifacts_root}/document_planning/plans/{plan_id}/targets/form=<escaped-form>/part-00000.parquet
 ```
 
-The manifest pins `plan_id`, exactly one source kind/ID/digest, the canonical
-profile digest, target-plan schema version, target-matching implementation
-version, and counts by outcome. Its v1 table emits one row per candidate entry; an
+The manifest pins `plan_id`, required catalog plan ID/digest, nullable inventory
+snapshot ID/digest, canonical profile digest, target-plan schema version,
+target-matching implementation version, coverage, and counts by outcome. Its v1
+table carries catalog `form` and `filing_date`, emits one row per candidate entry; an
 unmatched request emits one row with a null `inventory_entry_id`, while an ambiguous
 request emits one row per conflicting candidate. Its fields are:
 
@@ -317,6 +320,8 @@ request emits one row per conflicting candidate. Its fields are:
 |---|---|---|
 | `target_id` | `string` | SHA-256 of canonical `[plan_id, accession, request_id, inventory_entry_id, status]`; status is the outcome component. |
 | `accession` | `string` | Accession in the selected source that matches the resolved form rule. |
+| `form` | `string` | Catalog plan form; selects profile rules and target partition. |
+| `filing_date` | `string` | Catalog filing date retained for downstream filtering and audit. |
 | `request_id` | `string` | Planner-derived `"{role}:{canonical_type}"` identity; not user-authored. |
 | `target_role` | `string` | Intent: `primary`, `exhibit`, `data_file`, `graphic`, or `package`. |
 | `target_type` | `string` | Canonical profile type, such as `primary`, `EX-21`, `GRAPHIC`, or `xbrl_zip`. |
@@ -339,6 +344,10 @@ Matching and outcome rules:
   unrecognized pages, so an inventory-backed plan cannot emit `unresolved` for such a
   page from a successfully published snapshot. Per-accession parse-failure outcomes
   require a persisted S5 page-status relation.
+- A catalog-scope accession missing from a selected inventory snapshot is
+  `unresolved` / `accession_not_indexed`, independent of optionality. A present
+  snapshot row whose recognized page lacks a matching entry may instead yield
+  `not_filed` or `required_missing`. There is no catalog fallback in hybrid plans.
 - **Candidate packages**: A constructed XBRL ZIP path derived from accession rules
   remains a `constructed_candidate` unless S0 establishes empirical proof of
   per-accession availability.
@@ -659,7 +668,7 @@ The cumulative queryable snapshot: append-only delta and checkpoint DAG publicat
 
 **Details:** [subplan](subplans/S6_target_plans.md)
 
-Versioned JSON profiles in `policies/document_targets/` with role/type targets and planner-derived `request_id` values, per-token form alias resolution, and canonical digests; target plans as separate immutable bundles pinned to exactly one source artifact (inventory snapshot or catalog plan); clean separation of outcome `status` from provenance (`source_origin: "inventory_index" | "catalog_direct"`); and primary-only catalog-direct targets without synthetic inventory rows. Hybrid source precedence is deferred. The grammar, v1 target-plan schema, matching rules, and acceptance tests are in the subplan.
+Versioned JSON profiles in `policies/document_targets/` with role/type targets and planner-derived `request_id` values, per-token form alias resolution, and canonical digests; target plans as separate immutable bundles pinned to a required catalog plan and optional inventory snapshot; clean separation of outcome `status` from provenance (`source_origin: "inventory_index" | "catalog_direct"`); primary-only catalog-direct targets without synthetic inventory rows; and index-only locator resolution when a snapshot is supplied. The grammar, target-plan schema, matching rules, stage-owned operator UX, and acceptance tests are in the [S6 subplan](subplans/S6_target_plans.md) and [detailed planning specification](subplans/document_planning/specs.md); implementation dependencies and parallel tracks are in [the plan](subplans/document_planning/plan.md).
 
 ### S7 — Index and target-plan review surfaces
 
@@ -722,8 +731,9 @@ gathering and S7a fixture-CLI construction proceed independently. The initial S3
 parser uses a standard-layout fixture; S7b follows S7a and enables review of parser
 iterations, while S3 incorporates S0 evidence as it arrives. S4 worker code and S5 schema/query
 work can develop against the S3 contract; real snapshot publication waits for the
-implemented parser and integrated workers. S6 catalog-direct planning remains an
-independent branch while its inventory-source/XBRL pieces wait for S5/S0. Later S7c
+implemented parser and integrated workers. S6 catalog-only planning remains an
+independent branch while optional inventory evidence waits for S5 and XBRL claims wait
+for S0. Later S7c
 review/inspect, S8 vacuum, and S9d replay wait for their named source artifacts. S10
 filing-body HTML processing is deferred until S9 fixtures exist. S11 is intentionally
 a design decision after S9/S10 evidence, not a missing subplan.
@@ -743,7 +753,7 @@ The initial operator surface is explicit-artifact oriented and small:
 | Run inventory work | `inventory run --run-id <id> [--retry-failures]` | Resumable index-page fetch/parse of pending work; direct CLI invocation is explicit network intent and does not prompt. |
 | Inspect inventory run | `inventory status [--run-id <id>] [--json]` | Read-only run state from persisted manifests and attempt pointers. |
 | Publish inventory run | `inventory publish --run-id <id> [--branch <name>] [--expected-branch-tip <id>]` | Offline publication of validated committed work; refuses unless the selected branch still points at the run's pinned base. |
-| Target planning | `documents plan --inventory <snapshot_id|current> --profile-id <id>` or `--catalog-plan <id> --profile-id <id>` | Explicit source → immutable target plan with pinned source provenance. One source per v1 plan. |
+| Target planning | `documents plan --catalog-plan <id> [--inventory <snapshot_id|current>] --profile-id <id>` | Catalog-selected accession scope plus optional pinned inventory evidence → immutable target plan with both input pins. No row-level locator fallback. |
 | Accession query | `inventory query --snapshot current --accession <accession>` | Filing facts, all observed child/data-file rows, and source-CIK relations; no network. |
 | Form/CIK query | `inventory query --snapshot current --form <form> [--filing-cik <cik>] [--source-cik <cik>]`, `--filing-cik <cik>`, or `--source-cik <cik>` | Matching accessions/entries from annual parts and distinct filing/source-CIK postings; no network. |
 | Vacuum | `inventory vacuum --snapshot <snapshot-id|current> --retention <policy-id>` | Compact DAG delta lineages into checkpoint nodes and prune unreachable parts; parity-gated, atomically publish `current`. |

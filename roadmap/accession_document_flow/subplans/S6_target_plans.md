@@ -5,8 +5,9 @@
 - Owning stage in [implementation.md](../implementation.md): **S6**.
 - Status: profile-based target plans remain design-only; existing filing-catalog
   locator plans are a partial foundation, not this contract's implementation.
-- Depends on S1 cohort contracts and S5 inventory relation schemas for inventory-backed
-  planning. S0's XBRL decision gates any claim that a constructed package candidate is
+- Depends on S1 cohort contracts and S5 inventory relation schemas for optional
+  inventory evidence. A filing-catalog plan is the required accession scope. S0's XBRL
+  decision gates any claim that a constructed package candidate is
   available or executable; the rest of the profile/plan contract can be implemented
   while XBRL outcomes remain `constructed_candidate`.
 - The stage-owned `planning` CLI and interactive operator are part of S6. S12's
@@ -15,18 +16,21 @@
 
 ## Current tracked-code audit (2026-10-09)
 
-- **Status: partially implemented foundation; this subplan is not complete.** `filing_catalog` publishes deterministic and policy locator plans, but those plans do not implement profile rules, target request IDs, per-target outcomes, or the inventory/catalog source union defined here.
+- **Status: partially implemented foundation; this subplan is not complete.** `filing_catalog` publishes deterministic and policy locator plans, but those plans do not implement profile rules, target request IDs, per-target outcomes, or catalog-scope plus optional inventory-evidence planning.
 - **Evidence:** [`filing_catalog/planner.py`](../../../edgar_sec/edgar_sec/pipelines/filing_catalog/planner.py), [`filing_catalog/publication.py`](../../../edgar_sec/edgar_sec/pipelines/filing_catalog/publication.py), and their mirrored planner/publication tests cover the existing locator-plan contract. [`domain/filing_catalog/schemas.py`](../../../edgar_sec/edgar_sec/domain/filing_catalog/schemas.py) defines its distinct schema.
 - **Next step:** move the S5 relation contract to its permitted pipeline `schemas.py`,
-  then implement the role/type profile loader, bounded inventory/catalog adapters, and
-  source-pinned bundle publication with mirrored tests.
+  then implement the role/type profile loader, bounded catalog-scope and inventory-
+  evidence adapters, and source-pinned bundle publication with mirrored tests. See
+  the [dependency-aware implementation plan](document_planning/plan.md).
 
 ## Objective
 
-Publish versioned profile artifacts and deterministic target plans from one explicit
-local source: an immutable inventory snapshot or a filing-catalog plan. Target intent
-never enters the inventory and planning never triggers network work. The catalog-direct
-mode is a primary-document hint source, not an index observation.
+Publish versioned profile artifacts and deterministic target plans from a required
+filing-catalog scope, optionally resolved against a named inventory snapshot. The
+catalog plan selects accessions and carries its filters; S6 adds no cohort or form/date
+filtering. Target intent never enters the inventory and planning never triggers network
+work. Without a snapshot, catalog paths support primary-only plans. With a snapshot,
+the index is the sole document locator source and there is no per-accession fallback.
 
 ## Profile grammar
 
@@ -93,33 +97,35 @@ Profile normalization produces a canonical digest used to pin planning runs.
 
 ## Target-plan artifact
 
-Target intent and match outcomes belong in a separate immutable bundle pinned to one
-resolved source:
+Target intent and match outcomes belong in a separate immutable bundle pinned to the
+catalog plan and, when selected, the inventory snapshot:
 
 ```text
 {artifacts_root}/document_planning/plans/{plan_id}/plan.json
-{artifacts_root}/document_planning/plans/{plan_id}/targets/part-00000.parquet
+{artifacts_root}/document_planning/plans/{plan_id}/targets/form=<escaped-form>/part-00000.parquet
 ```
 
-The manifest pins `plan_id`, exactly one source kind/ID/digest, canonical profile digest,
-target schema version, matcher version, target-row counts, and ordered part records with
-digests. Derive `plan_id` from the canonical profile digest, source kind and immutable
-source identity/digest, schema version, and matcher version; reject divergent reuse of
-the resulting bundle ID. The source digest covers the validated source manifest and
-part digests needed to establish the selected query scope, and the bytes of every part
-read by the planner. Stream output in bounded batches; additional parts use consecutive
-`part-NNNNN.parquet` names. Use `plan.json` for compatibility with generic
-`PlanEnvelope` discovery. The target table emits one row per candidate entry; an
-unmatched request emits one row with null `inventory_entry_id`, and an ambiguous request
-emits one row per conflicting candidate. Sort rows by
-`(accession, request_id, inventory_entry_id, status)` and emit one
-128,000-row zstd row group per part (only the final part may be smaller) so part
-boundaries are deterministic and writes remain bounded. Its v1 fields:
+The manifest pins `plan_id`, required catalog plan ID/digest, nullable inventory
+snapshot ID/digest, canonical profile digest, target schema version, matcher version,
+coverage and target-row counts, and ordered part records with digests. Derive `plan_id`
+from the profile digest, both explicit source pins (including nulls), schema version,
+and matcher version; reject divergent reuse. Each source digest covers its validated
+manifest and the declared parts read by the planner. Stream output in bounded batches;
+part numbering restarts within each form partition. Use `plan.json` for compatibility
+with generic `PlanEnvelope` discovery. The target table emits one row per candidate
+entry; an unmatched request emits one row with null `inventory_entry_id`, and an
+ambiguous request emits one row per conflicting candidate. Rows carry `form` and
+`filing_date`, and are sorted within each form by
+`(accession, request_id, inventory_entry_id, status)`. Emit one 128,000-row zstd
+row group per part (only the final part in a form may be smaller), so boundaries are
+deterministic and writes remain bounded. Its v1 fields:
 
 | Field | Arrow type | Contract |
 |---|---|---|
 | `target_id` | `string` | SHA-256 of canonical JSON `[plan_id, accession, request_id, inventory_entry_id, status]`; preserve null as JSON null. |
 | `accession` | `string` | Accession in the selected source that matches the resolved form rule. |
+| `form` | `string` | Form in the catalog plan; selects profile rules and the output partition. |
+| `filing_date` | `string` | Catalog filing date retained for audit and downstream filtering. |
 | `request_id` | `string` | Planner-derived identity `"{role}:{canonical_type}"`; never user-authored. |
 | `target_role` | `string` | Intent: `primary`, `exhibit`, `data_file`, `graphic`, or `package`. |
 | `target_type` | `string` | Canonical profile type, such as `primary`, `EX-21`, `GRAPHIC`, or `xbrl_zip`. |
@@ -147,6 +153,13 @@ Matching and outcome rules:
   S5 refuses publication of failed/unrecognized pages, so an inventory-backed plan
   cannot emit outcomes for those pages. Adding per-accession parse-failure outcomes
   requires a persisted S5 page-status relation.
+- If a catalog-scope accession is missing from the selected inventory snapshot, emit
+  `unresolved` / `accession_not_indexed` for each profile request, independent of
+  optionality. This is unknown coverage, not evidence that the document was not filed.
+  The operator shows indexed/unindexed accession counts and directs the user to S5
+  projection; S6 does not fetch or project the missing accession.
+- Select form rules from the catalog plan. Conflicting catalog form/filing-date facts,
+  or disagreement with the matching inventory accession row, refuse the entire plan.
 - S5 publishes accession facts only from recognized `parsed` or `parsed_empty` outcomes;
   presence in the pinned `accessions` relation establishes the page result needed to
   distinguish `not_filed`/`required_missing` from unknown failure.
@@ -163,61 +176,52 @@ Matching and outcome rules:
 
 ```python
 @dataclass(frozen=True, slots=True)
-class InventoryPlanSource:
-    snapshot_id: str
-
-@dataclass(frozen=True, slots=True)
-class CatalogPlanSource:
+class TargetPlanInput:
     catalog_plan_id: str
-
-TargetPlanSource = InventoryPlanSource | CatalogPlanSource
+    inventory_snapshot_id: str | None = None
 
 def plan_targets(
-    source: TargetPlanSource,
+    source: TargetPlanInput,
     profile_id: str,
     *,
     paths: DocumentPlanningPaths | None = None,
 ) -> PlanBundle: ...
 ```
 
-The selected source artifact is pinned by ID and digest in the plan manifest. The
-inventory adapter resolves and validates one immutable snapshot tip before reading; it
-must not re-read a moving `current` pointer between batches. S6 cannot import the
+The catalog plan is always pinned by ID and digest; an optional inventory snapshot is
+pinned likewise. The inventory adapter resolves and validates one immutable snapshot
+tip before reading; it must not re-read a moving `current` pointer between batches. S6 cannot import the
 inventory reader directly under the pipeline boundary, and its point/list query API is
 not the bounded source stream required here. Use lower-layer DAG query APIs with the
 inventory relation schema contract exposed through
 `edgar_sec.pipelines.document_inventory.schemas`; do not copy the relation definitions
-from S5. The catalog adapter reads one published catalog
-plan and emits only validated primary direct URLs. Both produce the exact same target
-schema. `catalog_direct` rows have null `inventory_entry_id`, set
-`availability_evidence="catalog_metadata"`, and pin the catalog plan; they do not add
-synthetic entries or mutate an inventory snapshot. A catalog row is executable only
-when its primary path resolves under the same accession's SEC archive directory and
-is not a submission-envelope or paper stub. A missing/stub primary is `unresolved`
-with `status_reason="no_usable_primary_path"`; an unsafe or cross-accession URL
-refuses the plan before output. The catalog adapter rejects a profile containing
-non-primary role/type targets before writing a plan.
-Duplicate catalog occurrences for one accession must be aggregated deterministically;
-conflicting primary paths refuse the plan rather than selecting an arbitrary row.
-
-V1 plans take exactly one source. Hybrid source precedence/deduplication is deferred;
-combining inventory and catalog inputs without an explicit per-target policy could emit
-duplicate or contradictory primary targets. Inventory-backed plans remain fully offline
-and immutable, and catalog-backed plans likewise make zero HTTP requests.
+from S5. The catalog adapter validates the selected published plan, aggregates by
+accession, and supplies the scope form/date. Catalog paths are used only when no
+inventory snapshot is selected. In that mode, only primary requests are allowed;
+catalog-direct rows have null `inventory_entry_id`, set
+`availability_evidence="catalog_metadata"`, and do not add synthetic entries or mutate
+an inventory snapshot. A primary path must resolve under the same accession's SEC
+archive directory and not be an envelope or paper stub. Missing/stub primaries are
+`unresolved` / `no_usable_primary_path`; unsafe or cross-accession URLs refuse the plan.
+With a snapshot, every target resolves against that snapshot and catalog paths are
+ignored as locators. `source_origin` is `inventory_index` for all rows in this mode,
+including `accession_not_indexed`. Both modes produce the same target schema and remain
+offline, immutable, and network-free.
 
 ## Tests
 
-- Each inventory-source request matches only inventory rows; catalog-source requests
-  use catalog rows only for primary-direct targets.
-- Catalog-direct plans accept only the `primary`/`primary` role/type pair and validated
+- Catalog-only requests accept only the `primary`/`primary` role/type pair and validated
   direct archive paths; they never synthesize inventory rows.
+- Hybrid requests use catalog accessions as scope and inventory rows as the only
+  locator evidence; no catalog fallback occurs for unindexed accessions.
 - Direct, bundle, constructed, and catalog locators share the HTTPS `www.sec.gov`
   accession-path validation contract; unsafe components, queries, and foreign paths
   refuse plan publication.
 - The planner derives `request_id` from canonical role/type; duplicate or overlapping
   types in one effective form rule are rejected.
 - Comma-separated form selectors are split and resolved per-token via `resolve_alias`.
-- One snapshot serves several plan IDs without HTTP.
+- One catalog plan with and without an inventory snapshot produces the same scope;
+  catalog-only is primary-only, while hybrid plans can resolve the full profile.
 - Primary resolution refuses sequence-only guesses.
 - Multiple type matches emit one explicit `ambiguous` row per candidate, even when one
   candidate has no locator; no candidate is selected implicitly.
@@ -246,12 +250,13 @@ and immutable, and catalog-backed plans likewise make zero HTTP requests.
 
 Profiles are versioned JSON in the repository's `policies/document_targets/` directory
 with canonical role/type targets, per-form alias resolution, and canonical digests;
-targeting is deterministic from exactly one pinned inventory snapshot or catalog plan;
-plan bundles are
+targeting is deterministic from a required catalog plan and optional pinned inventory
+snapshot; plan bundles are
 immutable and source-pinned. Outcomes cleanly separate match status from source
 provenance. Catalog-direct targets do not create fake inventory rows.
 
 The stage-owned CLI and operator are included in S6: `python run.py planning` offers
-profile/source discovery, plan inspection, and plan listing using the shared interactive
-helpers. The later S12 `documents plan` command and integrated pipeline wizard remain
-separate. See [the detailed target and operator specification](document_planning/specs.md).
+catalog-scope and optional evidence discovery, plan inspection, and plan listing using
+the shared interactive helpers. The later S12 `documents plan` command and integrated
+pipeline wizard remain separate. See the [detailed target/operator specification](document_planning/specs.md)
+and [dependency-aware implementation plan](document_planning/plan.md).

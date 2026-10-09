@@ -245,15 +245,18 @@ Each function accepts a pinned snapshot ID or resolves the active branch when th
 omitted. The point/lookups return a record or materialized list; the API does not expose
 a bounded iterator. None of these readers has a broker or fetcher dependency. S6 cannot
 import this sibling-pipeline reader under the layer contract and needs bounded source
-scans, so its inventory adapter streams through lower-layer DAG APIs using the S5 schema
-contract. It writes a separate target-plan artifact; catalog-direct planning is a
-separate S6 source adapter.
+scans, so S6's optional inventory-evidence adapter streams through lower-layer DAG APIs
+using the S5 schema contract. S6 always takes a filing-catalog plan as accession scope;
+the inventory snapshot supplies locators only when explicitly selected. Without a
+snapshot, S6 can create a primary-only catalog-direct plan.
 
-The S6 adapter resolves the selected branch's tip once before scanning and never
-re-reads a moving pointer between batches. It streams the source accessions and applies
-profile form rules using S5 Parquet range metadata; it does not add a separate
-CIK/cohort filter in v1. A full inventory scan is explicit S6 planning work, not an
-accidental query default.
+When inventory evidence is selected, the S6 adapter resolves the branch tip once before
+scanning and never re-reads a moving pointer between batches. It semi-joins only
+catalog-plan accessions against the snapshot, applies profile form rules using the
+catalog form, and checks the snapshot form/date for disagreement. An accession absent
+from the snapshot is `unresolved` / `accession_not_indexed`; it does not fall back to a
+catalog path. There is no separate S6 CIK/cohort filter. A full inventory scan is not
+an accidental query default.
 
 CLI query shapes target the active branch (`current`) or a named snapshot/branch:
 

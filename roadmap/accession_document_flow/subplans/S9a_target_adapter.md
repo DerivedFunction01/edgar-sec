@@ -80,9 +80,24 @@ load_acquisition_work_order(
 ) -> AcquisitionWorkOrder
 ```
 
-The loader verifies the target-plan manifest, target-part digests, pinned source identity/digest fields, and schema versions. It does not open or revalidate the original inventory snapshot or catalog plan. It selects only `status="matched"` rows with `direct_url` or `bundle_sequence`; other outcomes are retained in `skipped` and cause no HTTP request. A constructed package candidate is not executable in S9 without explicit S0 authorization.
+The loader verifies the target-plan manifest, target-part digests, required
+`catalog_plan_id`/digest, nullable `inventory_snapshot_id`/digest, profile and
+schema versions. It does not open or revalidate the original catalog plan or
+inventory snapshot: the S6 bundle is self-contained. A null inventory pin is valid
+only for catalog-only primary plans. It selects only `status="matched"` rows with
+`direct_url` or `bundle_sequence`; other outcomes, including
+`accession_not_indexed`, are retained in `skipped` and cause no HTTP request. A
+constructed package candidate is not executable in S9 without explicit S0
+authorization.
 
-For an inventory-index direct target, `fetch_url` is the observed URL in `target_url`. For a catalog-direct target, it is the catalog-derived URL already pinned in the plan. For a bundle target, `target_url` contains the accession's advertised bundle URL and the target row supplies an exact sequence. The plan is self-contained for acquisition; S9 does not reopen its source snapshot. Catalog-direct bundle extraction is not part of v1.
+For an `inventory_index` direct target, `fetch_url` is the observed URL in
+`target_url`. For a `catalog_direct` target, it is the catalog-derived URL
+already pinned in the plan. For a bundle target, `target_url` contains the
+accession's advertised bundle URL and the target row supplies an exact sequence.
+S6 sets `source_origin="inventory_index"` for every row whenever an inventory
+snapshot is selected; there is no catalog-path fallback for a missing indexed
+accession. The plan is self-contained for acquisition. Catalog-direct bundle
+extraction is not part of v1.
 
 `document_path` is the URL path relative to the accession's archive directory, not the full URL path. This preserves the route distinction in `domain.document.route`: an XSL rendering path contains a subdirectory, while a root file is flat. Bundle extraction uses the selected `<FILENAME>` with `content_route()` instead.
 
@@ -102,7 +117,12 @@ authoritative.
 
 ## Tests
 
+- Plans with both source pins and plans with a null inventory pin validate without
+  reopening either upstream source; a null snapshot pin is limited to catalog-only
+  primary plans.
 - Inventory-index and catalog-direct rows with `direct_url` produce the same work shape and retain distinct `source_origin` values.
+- `accession_not_indexed` is not a matched acquisition target and is skipped without
+  broker calls.
 - Bundle work uses the target row's pinned `target_url` and requires a positive sequence.
 - Missing target-plan parts, digest failures, unsafe URLs, and invalid source provenance are refused before network work.
 - Non-matched and unauthorized candidate rows are skipped without broker calls.

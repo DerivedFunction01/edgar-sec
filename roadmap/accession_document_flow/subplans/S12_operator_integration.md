@@ -32,8 +32,7 @@ inventory query --snapshot <id|current> --source-cik <cik>
 inventory query --snapshot <id|current> --form <form> [--filing-cik <cik>] [--source-cik <cik>]
 inventory vacuum --snapshot <snapshot-id|current> --retention <policy-id>
 
-documents plan --inventory <snapshot-id|current> --profile-id <id>
-documents plan --catalog-plan <plan-id> --profile-id <id>
+documents plan --catalog-plan <plan-id> [--inventory <snapshot-id|current>] --profile-id <id>
 
 inventory fixture fill --catalog-plan <plan-id> --fixture <fixture-id>
 inventory project --catalog-plan <plan-id>
@@ -45,7 +44,7 @@ inventory review --base <dir> --new <dir>
 inventory inspect --snapshot <id|current> [--accession <accession>]
 ```
 
-`documents plan` requires exactly one source in the initial CLI: `--inventory` or `--catalog-plan`. Both produce the S6 target-plan row shape and pin their input artifact. Hybrid source precedence/deduplication is deliberately not inferred; a combined plan mode requires an explicit S6 policy before it is exposed. `catalog_direct` is a provenance value, not a status or a synthetic inventory row.
+`documents plan` requires a catalog plan for scope and accepts an optional inventory snapshot for document evidence. The catalog plan determines selected accessions; the optional snapshot is the sole locator source when present. Missing snapshot accessions are `unresolved` / `accession_not_indexed`, never catalog-path fallback. Without a snapshot, S6 accepts only primary-only profiles and emits `catalog_direct` provenance. Both modes produce the same target-plan schema and pin the catalog plan plus the optional snapshot. `catalog_direct` is a provenance value, not a status or a synthetic inventory row.
 
 `inventory query --filing-cik` uses the CIK encoded in the accession prefix;
 `--source-cik` uses the separate S5 catalog/cohort relationship index. These are
@@ -78,7 +77,7 @@ The quality-gate integration fixture performs these stages in a temporary artifa
 2. **Replay index pages (S2):** select committed `-index.html` fixture responses. No live capture or SEC call is allowed in this run.
 3. **Parse and publish (S4/S5):** run the bounded worker path using the fixture transport, publish an annual-partition snapshot, and verify manifest inheritance, accession-scoped `scoped_mask` metadata, and atomic `current` update. A refresh test must show the new tip hides prior entries while the old named tip still returns them; no direct prior-entry-ID map is required.
 4. **Query (S5):** compare accession, form/date, filing-CIK, and source-CIK results with expected rows; instrument the reader to prove DuckDB query execution prunes non-matching Parquet parts using `(key_min, key_max)` manifest metadata and row-group footer statistics, and keeps the CIK meanings distinct.
-5. **Plan (S6):** create an inventory-backed target plan and a separate catalog-direct plan from local fixtures. Assert identical target schema, distinct `source_origin`, zero HTTP, and no inventory mutation. The two source plans remain separate; this test does not imply hybrid precedence.
+5. **Plan (S6):** create catalog-only and catalog-plus-inventory plans from local fixtures. Assert identical target schema and catalog accession scope, primary-only refusal without a snapshot, index-only locator use with a snapshot, `accession_not_indexed` independent of optionality, distinct `source_origin`, zero HTTP, and no inventory mutation.
 6. **Acquire (S9):** replay direct-URL and bundle-sequence acquisition cases from S9d. Verify body/source/selected digests, exact sequence, and zero HTTP.
 7. **Process (S10):** process fixture HTML/iXBRL, standalone XML, binary/PDF, legacy `<PRE>`, and malformed-input cases. Verify route-specific outcomes, processor fingerprint, and that normalized data remains transient except for explicitly selected review output.
 8. **Vacuum (S8):** compact the published snapshot under a test retention policy, compare the full logical fingerprint and canonical query results, and prove an explicitly tagged old snapshot remains readable. A target-plan source reference alone is not a DAG retention root. A stale/concurrent pointer cannot be overwritten.

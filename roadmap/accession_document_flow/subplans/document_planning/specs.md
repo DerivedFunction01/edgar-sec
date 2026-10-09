@@ -1,9 +1,14 @@
 # Document Planning (S6): Target and Operator Specification
 
 This specification refines [S6](../S6_target_plans.md) for implementation. S6 owns
-offline, deterministic target planning from exactly one pinned source. S0 gates claims
-that constructed XBRL package candidates are available; S12 owns the later cross-stage
-CLI and vertical test. This work does not integrate or replace `document_storage`.
+offline, deterministic target planning from one required catalog scope and optional
+inventory evidence. S0 gates claims that constructed XBRL package candidates are
+available; S12 owns the later cross-stage CLI and vertical test. This work does not
+integrate or replace `document_storage`.
+
+The dependency-aware implementation sequence and module ownership are in
+[plan.md](plan.md). This file owns the normative profile, matching, artifact, and
+stage-local operator contract.
 
 ## 1. Inputs and package boundary
 
@@ -65,17 +70,28 @@ version, and human-facing profile version in that digest. Preserve case-sensitiv
 values. Fuzzy description/filename matching, arbitrary expressions, and
 sequence-position guessing are not part of v1.
 
-V1 accepts exactly one source per plan:
+Every plan requires a published catalog plan as its accession scope. A named
+inventory snapshot is optional evidence for resolving documents:
 
-| Source kind | Immutable identity | Target scope |
+| Inputs | Target scope | Locator/evidence behavior |
 |---|---|---|
-| `inventory_snapshot` | Named S5 snapshot ID | Observed primary, exhibit, data-file, and graphic entries; constructed package candidates. |
-| `catalog_plan` | Published filing-catalog plan ID | Primary direct targets only. |
+| Catalog plan only | Unique accessions selected by the published plan. | Primary-only profile; validated catalog primary paths produce `catalog_direct` / `catalog_metadata`. |
+| Catalog plan + inventory snapshot | The same catalog-selected accession set. | All requests resolve against the pinned inventory only; rows use `inventory_index`. |
 
-There is no cohort filter or cohort seeding in S6 v1. Inventory snapshots already
-represent the source cohort; catalog-direct planning uses its selected catalog plan.
-Hybrid inputs and separate cohort filtering require a later explicit source contract.
-`source_origin` is row provenance (`inventory_index` or `catalog_direct`), not a status.
+The catalog plan owns forms, dates, cohort/seed selection, limits, and selected
+rows. S6 adds no filters or source rows. Catalog occurrences are aggregated by
+canonical accession before profile matching. Conflicting catalog `form` or
+`filing_date` facts refuse the plan; if a snapshot is selected, its accession
+form and filing date must agree as well. A missing catalog accession in the
+snapshot is `unresolved` / `accession_not_indexed` for every requested target,
+regardless of optionality. There is no per-row catalog fallback. The operator
+reports the unindexed count and directs the user to `inventory project`.
+
+Without a snapshot, the complete normalized profile must be primary-only. This
+is a separate catalog-direct mode, not an implicit fallback for hybrid plans.
+`source_origin` records the locator resolver (`inventory_index` whenever a
+snapshot was selected, otherwise `catalog_direct`), not the scope source or a
+status.
 
 S6 is a Layer 4 pipeline. It may use `foundation`, `domain`, `infra`, and the source
 pipeline's `paths.py`/`schemas.py` contracts only. The existing inventory reader is a
@@ -101,14 +117,20 @@ planning. Both adapters are read-only and perform zero network requests.
 | `exhibit` | Exact `EX-13`, `EX-99`, or explicit prefix `EX-*` / `EX-10.*`; `Document Format Files` | Match the requested type only. A usable observed `archive_url`/`href` yields `direct_url`; an unlinked row yields `bundle_sequence` only when both the advertised bundle URL and observed sequence exist. |
 | `data_file` | Exact data-file type, `EX-101.*`, or `extracted_xbrl_instance`; `Data Files` | The instance type matches normalized exact description `EXTRACTED XBRL INSTANCE DOCUMENT` and type `XML`; filename suffix is not a fallback. Data-file retrieval requires a usable direct URL. |
 | `graphic` | `GRAPHIC`; `Document Format Files` | Match the type only. Filename extensions do not infer graphic rows. Retrieval requires a usable direct URL. |
-| `package` | `xbrl_zip`; inventory source only | With a validated accession bundle URL, derive the candidate by replacing `.txt` with `-xbrl.zip`; emit `constructed_candidate`, `constructed_package`, and `availability_evidence="constructed"`, with null `inventory_entry_id`, `sequence`, and `byte_size`. If no bundle URL exists, emit `unresolved`/`no_usable_bundle_url`; an unsafe URL refuses the plan. The candidate does not prove that the ZIP exists or is executable. |
+| `package` | `xbrl_zip`; requires inventory evidence | With a validated accession bundle URL, derive the candidate by replacing `.txt` with `-xbrl.zip`; emit `constructed_candidate`, `constructed_package`, and `availability_evidence="constructed"`, with null `inventory_entry_id`, `sequence`, and `byte_size`. If no bundle URL exists, emit `unresolved`/`no_usable_bundle_url`; an unsafe URL refuses the plan. The candidate does not prove that the ZIP exists or is executable. |
 
-`catalog_plan` accepts only `role="primary", type="primary"` requests. Any other role/type
-is rejected before output. Duplicate catalog occurrences for an accession are
-aggregated deterministically. Conflicting primary paths, unsafe URLs, or URLs outside
-the same accession directory refuse the entire plan; never select an arbitrary path.
-A catalog accession with no usable primary produces one `unresolved` row with
-`status_reason="no_usable_primary_path"` and `availability_evidence="catalog_metadata"`.
+Catalog-only planning accepts only `role="primary", type="primary"` requests;
+any other profile is rejected before output. Duplicate occurrences for one
+accession are aggregated. Conflicting catalog primary paths, unsafe URLs, or
+URLs outside the same accession directory refuse catalog-only planning. A
+catalog accession with no usable primary produces one `unresolved` row with
+`status_reason="no_usable_primary_path"` and
+`availability_evidence="catalog_metadata"`.
+
+When an inventory snapshot is selected, catalog path fields do not provide
+locators or fallback evidence. The profile rule is selected using the catalog
+form; a form or filing-date disagreement with the indexed accession refuses
+the whole plan before publication.
 
 All plan locators use the same archive acceptance contract as S9a and the shared
 `domain.sec_urls.SEC_ARCHIVE_BASE`/`parse_archive_url` contract:
@@ -144,10 +166,11 @@ Outcome rules:
   `parsed`/`parsed_empty` page outcomes. Set evidence to `index_html`.
 - `required_missing`: a required inventory request has no candidate on such a page.
 - `unresolved`: one type-matching inventory candidate has no usable retrieval locator,
-  an XBRL package request has no bundle URL, or a catalog primary has no usable path.
-  Use `no_usable_retrieval_locator`, `no_usable_bundle_url`, or
-  `no_usable_primary_path` respectively. S5 refuses failed/unrecognized pages, so do
-  not infer this status for those pages.
+  an XBRL package request has no bundle URL, a catalog-only primary has no usable path,
+  or a catalog-scope accession is absent from the selected snapshot. Use
+  `no_usable_retrieval_locator`, `no_usable_bundle_url`, `no_usable_primary_path`, or
+  `accession_not_indexed` respectively. S5 refuses failed/unrecognized pages, so do not
+  infer this status for those pages.
 - `constructed_candidate`: the requested XBRL ZIP locator was constructed without
   availability evidence. It is never an executable `matched` row in v1.
 
@@ -156,7 +179,7 @@ primary metadata it is `catalog_metadata`; for an XBRL ZIP candidate it is
 `constructed`. Use `none` only when no source evidence supports a locator. `status_reason`
 is null for ordinary matches; absence/refusal reasons are stable machine-readable codes,
 including `no_matching_entry`, `no_usable_retrieval_locator`, `no_usable_bundle_url`,
-`no_usable_primary_path`, and `constructed_not_verified`.
+`no_usable_primary_path`, `accession_not_indexed`, and `constructed_not_verified`.
 
 The constructed XBRL URL is the accession's SEC archive URL with `.txt` replaced by
 `-xbrl.zip`. S0 remains the authority for any later availability policy. The inventory
@@ -170,14 +193,18 @@ can read the bundle:
 ```text
 {artifacts_root}/document_planning/plans/{plan_id}/
 ├── plan.json
-└── targets/part-00000.parquet
+└── targets/form=<escaped-form>/part-00000.parquet
 ```
 
-Additional `part-NNNNN.parquet` files are allowed; paths are relative, sorted, unique,
-and listed in `plan.json`. A zero-row plan has an empty parts list. Sort rows by
-`(accession, request_id, inventory_entry_id, status)` and write one 128,000-row group per
-part (only the final part may be smaller), using zstd. This fixes part boundaries while
-bounding memory; do not materialize the source universe or all target rows in Python.
+Parts are relative, sorted, unique, and listed in `plan.json`; numbering starts at
+`part-00000.parquet` within each form partition. A zero-row plan has an empty parts
+list. Reuse `filing_catalog.paths.form_partition_name` for Hive directory names and
+reject collisions among selected form values. Sort within each partition by
+`(accession, request_id, inventory_entry_id, status)` and write one 128,000-row
+group per part (only the final part in a partition may be smaller), using zstd.
+This fixes part boundaries while bounding memory; do not materialize the source
+universe or all target rows in Python. This is S6's own part layout; filing-catalog
+plans currently store `targets/form=<escaped-form>/data.parquet`.
 
 The normalized profile digest includes profile ID/version/schema version and canonical
 rules.
@@ -193,29 +220,32 @@ schema version for a serialized schema change and bump one of these versions for
 output-affecting write-format change.
 
 Derive `plan_id` as `dplan_` plus the first 32 lowercase hex characters of SHA-256 over
-canonical JSON containing exactly:
+canonical JSON containing exactly these fields:
 
 ```json
 {
   "target_schema_version": 1,
   "matcher_version": "target-matcher-v1",
   "profile_digest": "...",
-  "source_kind": "inventory_snapshot",
-  "source_id": "...",
-  "source_digest": "..."
+  "catalog_plan_id": "...",
+  "catalog_plan_digest": "...",
+  "inventory_snapshot_id": "... or null",
+  "inventory_snapshot_digest": "... or null"
 }
 ```
 
-No current-pointer text, cohort ID, wall-clock time, output count, or row order outside
-the canonical sort contributes to identity. Reusing the same ID is allowed only when
-the validated input identity, manifest payload, and every output part digest agree;
-otherwise refuse without replacing the published bundle.
+No current-pointer text, wall-clock time, output count, or row
+order outside the canonical sort contributes to identity. When `current` is
+selected, resolve it once and record its immutable snapshot ID/digest. Reusing the
+same ID is allowed only when both input pins, manifest payload, and every output
+part digest agree; otherwise refuse without replacing the published bundle.
 
 `plan.json` contains `plan_id`, `target_schema_version`, `matcher_version`, profile ID
-and version/digest, `source_kind`, `source_id`, `source_digest`, target-row count,
-counts for every status, and the ordered part records (`path`, `rows`, `sha256`).
-Counts are target rows, not accessions or requests, and their sum equals the total row
-count. `plan_digest` is SHA-256 of canonical manifest content with the `plan_digest`
+and version/digest, both explicit source pins, target-row count, counts by status,
+origin, and stable reason, distinct accession coverage counts, and ordered part
+records (`path`, `form`, `rows`, `sha256`). Counts are target rows unless named
+as accession coverage; status counts sum to the total target-row count.
+`plan_digest` is SHA-256 of canonical manifest content with the `plan_digest`
 field omitted. Do not include a volatile creation timestamp in this digest.
 
 Publish into a sibling staging directory. Validate schema, counts, ordering, hashes, and
@@ -233,6 +263,8 @@ Each row has these fields, with nullability as shown:
 |---|---|---|
 | `target_id` | string | SHA-256 of canonical JSON array `[plan_id, accession, request_id, inventory_entry_id, status]`; preserve JSON null, never substitute an empty string. |
 | `accession` | string | Requested accession. |
+| `form` | string | Canonical filing form from the catalog plan; it selects profile rules and the output partition. |
+| `filing_date` | string | Catalog filing date retained for downstream filtering and audit. |
 | `request_id` | string | Planner-derived identity `"{role}:{canonical_type}"`; not authored in the profile. |
 | `target_role` | string | `primary`, `exhibit`, `data_file`, `graphic`, or `package`. |
 | `target_type` | string | Canonical profile type, such as `primary`, `EX-21`, `GRAPHIC`, or `xbrl_zip`. |
@@ -250,18 +282,25 @@ Each row has these fields, with nullability as shown:
 For every `matched` row, `retrieval_mode` and `target_url` identify a usable retrieval
 path. An `ambiguous` row keeps the locator and source entry for that candidate. A
 `constructed_candidate` is explicitly non-executable until a future policy says
-otherwise. These rows are self-contained for S9; acquisition does not reopen the source
+otherwise. An accession missing from the selected snapshot has one unresolved row
+per profile request, reason `accession_not_indexed`, `source_origin="inventory_index"`,
+and `availability_evidence="none"`; optionality does not alter this epistemic
+unknown. These rows are self-contained for S9; acquisition does not reopen the source
 snapshot or catalog plan.
 
 ## 5. Streaming, path, and import rules
 
-The inventory adapter resolves `current` once at the command boundary, displays and
-stores that immutable snapshot ID, validates its catalog/lineage, and compiles the S5
-relations using infra DAG APIs. It streams ordered accessions and entries in bounded
-cursor batches, left-joining entries. S5 publishes `accessions` rows only from recognized
-`parsed`/`parsed_empty` outcomes, so an accession with no entries is a valid absence
-case. The adapter applies the selected profile rule per accession and writes target rows
-incrementally. It never mutates inventory data.
+The catalog adapter validates the published plan, streams its selected target
+parts, aggregates rows by canonical accession, and checks consistent form and
+filing date. With inventory evidence, the inventory adapter resolves `current`
+once at the command boundary, displays and stores that immutable snapshot ID,
+validates its catalog/lineage, and compiles S5 relations using infra DAG APIs.
+It semi-joins only catalog-scope accessions against the snapshot, streams in
+bounded cursor batches, and left-joins observed entries. S5 publishes
+`accessions` rows only from recognized `parsed`/`parsed_empty` outcomes, so an
+accession present there with no entries is a valid absence case. An accession
+not present in the relation is not evidence of absence and is
+`accession_not_indexed`. The adapter never mutates inventory data.
 
 Import only lower-layer DAG/storage APIs plus the source pipeline's permitted
 `paths.py`/`schemas.py` contracts. Do not import a sibling `reader.py`, `snapshot.specs`,
@@ -275,17 +314,19 @@ under the `planning` entry. S12 may later expose the same planner as `documents 
 but that integrated alias and vertical gate do not block the stage-owned S6 CLI/operator.
 
 ```text
-python run.py planning plan --inventory <snapshot-id|current> --profile-id <id>
-python run.py planning plan --catalog-plan <plan-id> --profile-id <id>
+python run.py planning plan --catalog-plan <plan-id> [--inventory <snapshot-id|current>] --profile-id <id>
 python run.py planning inspect --plan-id <plan-id>
 python run.py planning status
 ```
 
-`plan` requires exactly one source argument and a profile ID discovered under the
-configured policy root; arbitrary profile paths are not accepted. `current` is accepted
-only as an input selection; resolve it once before scanning and persist the resolved ID.
-CLI calls are offline and need no network-consent prompt. Invalid source IDs, malformed profiles,
-source digest mismatches, unsafe locators, and divergent bundle reuse fail explicitly.
+`plan` requires `--catalog-plan`; `--inventory` is optional and a profile ID must
+be discovered under the configured policy root. Arbitrary profile paths are not
+accepted. Without `--inventory`, reject profiles containing any non-primary
+target. `current` is accepted only as an input selection; resolve it once before
+scanning and persist the resolved ID. CLI calls are offline and need no
+network-consent prompt. Invalid IDs, malformed profiles, source digest
+mismatches, metadata disagreements, unsafe locators, and divergent bundle reuse
+fail explicitly.
 
 The interactive operator uses `build_menu`, `prompt_paginated_choice`, `prompt_text`,
 and `operator_entrypoint` from
@@ -296,23 +337,35 @@ and the state/header and cancellation patterns of the
 [metadata-sync operator](../../../../edgar_sec/pipelines/metadata_sync/operator.py).
 The `run.py` `planning` entry exposes these numeric actions:
 
-1. **Plan targets** — choose a profile, choose one source kind, then select a published
-   catalog plan or a named inventory snapshot. The picker is paginated/filterable and
-   shows IDs and known row counts; selecting `current` resolves it once and displays the
-   resulting snapshot ID before execution. There is no cohort picker.
+1. **Plan targets** — choose the catalog plan that defines accession scope; choose
+   either “catalog metadata only” or “use inventory evidence”; when evidence is
+   selected, choose a named snapshot or `current`; then choose a compatible profile.
+   Each picker is paginated/filterable. Catalog choices distinguish distinct
+   accession counts from catalog locator-row counts; snapshot choices show the
+   immutable snapshot ID and its known accession count.
+   Display the resolved snapshot ID and a read-only coverage preflight (scoped,
+   indexed, and unindexed accessions) before plan publication. The preflight
+   points users to `inventory project` when accessions are unindexed. It does not
+   fetch, project, or mutate either source. The operator asks before publishing
+   the immutable target plan, with a default-no response; the explicit CLI command
+   does not prompt.
 2. **Inspect a plan** — choose a discovered target plan and report validated source
-   pins, row/status counts, and part digests; malformed bundles are reported, not
-   repaired.
+   pins, coverage, row/status/origin/reason counts, and part digests; malformed
+   bundles are reported, not repaired.
 3. **List plans and profiles** — show discovered IDs, profile versions, and published
    target plans without scanning source rows.
 0 returns to the launcher's exit action.
 
-The operator remembers only the last profile, source, and plan as session defaults and
-shows them in the menu header. Blank menu input re-renders; picker cancellation returns
-without work; invalid profile/source selections are re-prompted or cancelled through
-the shared helpers. Planning is offline, so there is no network confirmation. After a
-plan is published, report its exact plan ID and status counts; do not automatically
-enter acquisition or another pipeline.
+The operator remembers the last profile, catalog plan, evidence mode, resolved
+snapshot, and output plan as session defaults and shows those pins in the menu
+header. Blank menu input re-renders; picker cancellation returns without work;
+invalid profile/source selections are reported and can be changed without
+silently switching evidence mode. Catalog-only mode offers only primary-only
+profiles. Planning is offline, so there is no network
+confirmation. After a plan is published, report its exact plan ID, input pins,
+coverage, and status counts; do not automatically project inventory, enter
+acquisition, or start another pipeline. Keep this operator under its own
+`planning` launcher entry; do not replace or renumber Inventory menu actions.
 
 ## 7. Mirrored tests and acceptance
 
@@ -321,21 +374,27 @@ Offline tests must cover:
 
 - profile schema, derived `request_id`, form aliases, wildcard precedence,
   equal-specificity overlap, exact role/type grammar, and overlapping-target refusal;
-- pinned inventory source reading across batches with pointer movement during a run,
-  source digest verification, no snapshot mutation, and no network calls;
-- catalog primary validation, duplicate aggregation, same-accession path checks, and
-  refusal of non-primary requests; rejection of non-HTTPS URLs, alternate hosts,
+- catalog scope streaming, duplicate accession aggregation, form/date conflict refusal,
+  stable catalog pins, and zero source mutation/network;
+- pinned inventory evidence reading across batches with pointer movement during a run,
+  source digest verification, form/date disagreement refusal, missing-accession
+  classification, no snapshot mutation, and no network calls;
+- catalog-only primary validation, same-accession path checks, and refusal of
+  non-primary profiles; rejection of non-HTTPS URLs, alternate hosts,
   queries/fragments, unsafe path components, and archive paths for another accession;
-- each status/evidence combination, ambiguous-per-candidate rows, missing locators,
+- each status/evidence combination, `accession_not_indexed` independent of optionality,
+  ambiguous-per-candidate rows, missing locators,
   optional/required absence, constructed-only XBRL candidates, and no sequence guessing;
 - stable plan/target IDs, target-row count reconciliation, digest verification,
   atomic publication, identical reuse, divergent/corrupt reuse refusal, and bounded
   output batches;
-- CLI validation and operator discovery, paging/filtering, cancel/no-op behavior,
-  command delegation, and invalid-input recovery.
+- CLI validation and operator discovery, paging/filtering, explicit evidence-mode selection,
+  coverage preflight, cancel/no-op behavior, no implicit pipeline chaining, command
+  delegation, and invalid-input recovery.
 
-Acceptance requires two-source parity of Arrow schema, distinct `source_origin`, pinned
-input IDs/digests, deterministic immutable bundles, zero network, and zero mutation of
-source artifacts. XBRL candidates remain non-executable pending S0 evidence. S7 review,
-S9/S10 implementation, S12 integrated UX, and `document_storage` decommissioning are
-not S6 acceptance conditions.
+Acceptance requires catalog-only and catalog-plus-inventory parity of Arrow schema,
+the catalog-selected accession scope in both modes, correct `source_origin`, explicit
+catalog and optional snapshot pins/digests, deterministic immutable bundles, zero
+network, and zero source mutation. XBRL candidates remain non-executable pending S0
+evidence. S7 review, S9/S10 implementation, S12 integrated UX, and
+`document_storage` decommissioning are not S6 acceptance conditions.

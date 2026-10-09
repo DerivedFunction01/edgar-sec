@@ -21,9 +21,11 @@ Acquire only executable targets from immutable target plans, retain source prove
 
 ## Target and result boundary
 
-S9 validates the target-plan bundle and reads its target rows. Pinned source IDs/digests
-remain provenance fields; acquisition never opens the upstream inventory snapshot or
-catalog plan. `source_origin` selects a resolver, not a separate downstream data shape:
+S9 validates the target-plan bundle and reads its target rows. Each plan requires a
+catalog plan ID/digest and may carry an inventory snapshot ID/digest; a null snapshot
+pin is valid only for catalog-only primary plans. Pinned source IDs/digests remain
+provenance fields; acquisition never opens the upstream inventory snapshot or catalog
+plan. `source_origin` selects a resolver, not a separate downstream data shape:
 
 - `inventory_index` direct targets fetch their observed URL.
 - `inventory_index` bundle targets use the accession bundle URL in `target_url` and require the observed sequence; S9 does not reopen the inventory snapshot.

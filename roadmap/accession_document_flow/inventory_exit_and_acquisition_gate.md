@@ -71,8 +71,9 @@ separate, unfinished operation.
 The flow is three stage-owned pipeline packages connected by immutable artifacts:
 
 1. `document_inventory` (S0–S5) publishes observed accession/index facts.
-2. `document_planning` (S6) reads exactly one immutable inventory snapshot or catalog
-   plan and publishes target intent without network access or source mutation.
+2. `document_planning` (S6) reads a required filing-catalog plan for accession scope and
+   an optional immutable inventory snapshot for document evidence, then publishes target
+   intent without network access or source mutation.
 3. `document_acquisition` (S9–S10) consumes the target bundle to fetch and process
    selected bodies. S10 belongs to this package; no separate `document_processing`
    package is introduced.
@@ -86,23 +87,30 @@ The supplied S6 design is aligned with the detailed subplan as follows:
 - Profile targets declare `role`, `type`, and `optional`; the planner derives the stable
   downstream `request_id` from canonical role/type. No user-maintained ID mapping or
   positional identity; reject duplicate/overlapping role/type targets in one rule.
-- A plan consumes one source kind. Hybrid source precedence and fallback are not
-  inferred. Catalog-direct plans are primary-only and never synthesize inventory rows.
+- Every plan pins a catalog scope; an optional inventory snapshot is its sole locator
+  source when selected. Missing snapshot accessions are unresolved, never resolved from
+  catalog paths. Without a snapshot, profiles are primary-only and catalog-direct rows
+  never synthesize inventory entries.
 - The source digest must cover the validated manifest and every source part used by the
   planner. The existing catalog-plan fingerprint alone does not prove those bytes.
   Although S5 now accepts a named `snapshot_id`, S6 must not import the sibling reader:
   it returns materialized lists and violates the pipeline import boundary. S5 must
   move canonical relation schemas/specifications to its permitted `schemas.py` contract;
   S6 streams the pinned lineage using lower-layer DAG APIs.
-- `plan_id` must be deterministic from profile digest, source kind/identity/digest,
-  schema version, and matcher version. Divergent reuse of the same plan ID is refused.
+- `plan_id` must be deterministic from profile digest, required catalog plan ID/digest,
+  nullable inventory snapshot ID/digest, schema version, and matcher version. Divergent
+  reuse of the same plan ID is refused.
 - The plan's `unresolved` status cannot represent a failed/unrecognized inventory page
   today: S5 refuses to publish those pages. `not_filed` is valid only for an accession
   represented by a successfully published, recognized page with no matching optional
   row. Per-accession parse-failure outcomes require a new S5 page-status relation.
+- A catalog-scope accession absent from the selected snapshot is `unresolved` /
+  `accession_not_indexed`, even for an optional target; missing index evidence is not a
+  recognized page with no matching row.
 - Multiple candidate entries for one request are emitted as separate `ambiguous` rows;
-  catalog duplicate occurrences are aggregated deterministically, and conflicting
-  primary paths refuse publication.
+  catalog duplicate occurrences are aggregated deterministically. Conflicting catalog
+  primary paths refuse catalog-only publication; with inventory evidence, catalog
+  paths are not locator inputs.
 - Keep XBRL as `constructed_candidate` with constructed-only evidence until S0
   establishes per-accession availability. S0 gates that claim, not basic S6 work.
 
@@ -113,14 +121,16 @@ ownership and derived role/type identity as the S6 subplan.
 
 ### Begin S6 planning implementation
 
-- Keep v1 planning offline and single-source; do not add hybrid fallback.
+- Keep planning offline. Use the selected catalog plan as the complete accession scope;
+  do not add S6 filters. An optional snapshot supplies all locator evidence, with no
+  catalog fallback for unindexed accessions.
 - The named-snapshot reader path exists; add source-part digest validation and
-  deterministic plan identity before publishing inventory-backed plans. First move S5
-  relation schemas into its pipeline `schemas.py`; S6 then uses bounded lower-layer DAG
-  reads rather than importing the reader.
-- Publish `plan.json` and ordered `targets/part-*.parquet` files as one atomic immutable
-  bundle with schema, count, and digest validation. Reusing a plan ID with different
-  inputs fails.
+  deterministic two-pin plan identity before publishing. First move S5 relation schemas
+  into its pipeline `schemas.py`; S6 then uses bounded lower-layer DAG reads rather than
+  importing the reader.
+- Publish `plan.json` and ordered form-partitioned target parts as one atomic immutable
+  bundle with schema, coverage/count, and digest validation. Reusing a plan ID with
+  different inputs fails.
 - Test primary/exhibit/data-file matching, no sequence guessing, `not_filed` versus
   required_missing, graphic and extracted-instance selectors, per-candidate `ambiguous`,
   catalog-direct refusal, and constructed-only XBRL outcomes offline.
@@ -152,9 +162,11 @@ ownership and derived role/type identity as the S6 subplan.
 
 ## Remaining work, ordered by dependency
 
-1. Move S5 relation contracts into the allowed schema module, then implement S6 source
-   validation, bounded pinned reads, immutable target-plan publication, and the
-   stage-owned menu operator. Catalog-direct planning can proceed independently of S0.
+1. Move S5 relation contracts into the allowed schema module, then freeze the S6
+   catalog-scope/optional-evidence contracts and implement source validation, bounded
+   pinned reads, immutable target-plan publication, and the stage-owned menu operator.
+   Catalog-only primary planning can proceed independently of S0; inventory-evidence
+   planning waits on S5. See the [S6 parallel implementation plan](subplans/document_planning/plan.md).
 2. Run the authorized S0 survey and publish durable audit evidence; use it to finalize
    S3 coverage and XBRL availability policy.
 3. Add canonical inventory query parity and verify node-local part ownership for S8;

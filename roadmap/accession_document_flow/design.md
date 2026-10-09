@@ -142,12 +142,13 @@ models no succession or merger graph (see that package's deliberate gaps).
    belongs in `pipelines/`. Pure targeting rules (era windows, the statutory
    exhibit grammar, resolution-state decisions) belong in `engine/` or
    `domain/`. The six-layer graph is enforced by the `layer-boundary` scanner.
-3. **Catalog hints do not become inventory facts.** The cohort adapter ignores
-   `primary_document`, `document_path`, and `document_path_source`. An explicit S6
-   catalog-direct source may use a validated primary path for a primary-only target
-   plan, with `catalog_direct` provenance; it never synthesizes an observed entry,
-   changes inventory, or covers exhibits. Narrowing `filing_catalog` is independent
-   and waits for a separate compatibility plan.
+ 3. **Catalog hints do not become inventory facts.** The inventory projection ignores
+   `primary_document`, `document_path`, and `document_path_source`. Every S6 plan uses
+   a filing-catalog plan as accession scope. Without an inventory snapshot, a validated
+   catalog primary path supports a primary-only plan with `catalog_direct` provenance;
+   with a snapshot, the index is the only locator source. Neither mode synthesizes an
+   observed entry or changes inventory. Narrowing `filing_catalog` is independent and
+   waits for a separate compatibility plan.
 4. **Only fetched-payload storage is designed last.** Inventory and target-plan
    schemas, index fixtures, and review artifacts can be planned before document
    processing. The durable payload schema waits for reviewed acquisition and
@@ -163,8 +164,9 @@ models no succession or merger graph (see that package's deliberate gaps).
 - The cumulative snapshot schema, accession/form/filing-CIK/source-CIK queries, cross-plan
   anti-join, range-read contract, and vacuum plan are specified in
   [inventory_snapshot.md](./inventory_snapshot.md).
-- The inventory cohort adapter projects accessions and filing metadata from the
-  existing catalog plan but ignores document paths. The catalog-direct planner is a
-  separate, explicit primary-only source with its own pinned provenance.
+- S6 uses the catalog plan as accession scope and optionally joins its accessions to a
+  pinned inventory snapshot for document evidence. The catalog primary path is used
+  only in catalog-only primary planning; there is no per-row fallback. See the
+  [S6 target/operator specification](subplans/document_planning/specs.md).
 - Process-pool parsing uses a shared `SecBroker`; the implementation roadmap
   defines worker and persistence ownership.
