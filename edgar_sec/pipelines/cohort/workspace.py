@@ -166,6 +166,16 @@ class CohortWorkspace:
         roster_id = roster.hexdigest()
         cohort_id = f"c-{roster_id[:16]}"
         existing = self.catalog.get_cohort(cohort_id)
+        if existing is not None:
+            existing_dataset = self.paths.resolve_relative_path(existing.dataset_path)
+            if (
+                not existing_dataset.is_file()
+                or file_sha256(existing_dataset) != existing.dataset_sha256
+            ):
+                raise ValueError(f"existing cohort {cohort_id!r} is corrupt")
+            if output_name is not None and existing.name != output_name:
+                raise ValueError(f"cohort {cohort_id!r} is immutable")
+            return existing
 
         staging_dir = self.paths.create_staging_dir(cohort_id)
         staged_dataset = staging_dir / "ciks.parquet"
@@ -181,21 +191,6 @@ class CohortWorkspace:
             dataset_path = self.paths.relative_path(
                 self.paths.cohort_dataset_file(cohort_id)
             )
-            if existing is not None:
-                existing_dataset = self.paths.resolve_relative_path(
-                    existing.dataset_path
-                )
-                if (
-                    not existing_dataset.is_file()
-                    or file_sha256(existing_dataset) != existing.dataset_sha256
-                ):
-                    raise ValueError(f"existing cohort {cohort_id!r} is corrupt")
-                if (
-                    existing.dataset_sha256 != dataset_sha256
-                    or existing.dataset_path != dataset_path
-                ):
-                    raise ValueError(f"cohort {cohort_id!r} is immutable")
-                return existing
             with self.paths.publication_lock():
                 self.paths.publish_staging_dir(cohort_id, staging_dir)
                 return self.catalog.register_cohort(

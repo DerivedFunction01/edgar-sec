@@ -517,7 +517,7 @@ def _cmd_merge(args: Any, context: _Context) -> int:
         result = workspace.save(variable, args.name, tags=args.tags)
     finally:
         workspace.drop_var(variable)
-    print(result.cohort.cohort_id)
+    print(result.cohort_id)
     return 0
 
 
