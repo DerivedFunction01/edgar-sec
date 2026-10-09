@@ -142,28 +142,28 @@ All published and transient path construction is owned by
   supersession mapping required by the contract below. Current reader tests establish
   active-query behavior only. Decide whether that mapping is required; if retained,
   implement a bounded persisted representation and test its lineage behavior.
-- The reader resolves a branch/current tip for queries but does not expose an immutable
-  named-snapshot read boundary for downstream planning. Add a reader path that resolves
-  one snapshot ID and validates its manifest/parts before S6 streams batches; never let a
-  target plan re-read a moving branch pointer.
+- The reader resolves a branch/current tip by default and accepts an immutable
+  `snapshot_id` pin for downstream planning; a pinned ID that is absent from the
+  catalog fails the lineage walk rather than silently falling back to the pointer.
 
 ## Acceptance evidence and next step
 
 - `edgar_sec/pipelines/document_inventory/snapshot/builder.py` connects validated plan
   projection, S4 coordination, and snapshot publication; `snapshot/reader.py` exposes
-  active accession, entry, filing-CIK, and source-CIK queries.
+  active accession, entry, filing-CIK, and source-CIK queries, each pinnable to
+  one immutable snapshot ID.
 - `tests/pipelines/document_inventory/snapshot/test_projection.py` covers bounded
   projection and a 236k-row projection case; `test_builder.py` covers offline build,
   no-op, source-edge addition without refetch, and failed-build refusal;
   `test_writer.py` covers delta publication, validation, stale parents, refresh
-  supersession, and publication locking; `test_reader.py` covers active queries and
-  scoped-mask supersession.
+  supersession, and publication locking; `test_reader.py` covers active queries,
+  scoped-mask supersession, and pinned named-snapshot reads.
 - The inventory CLI/operator routes build and query operations through the production
   builder/reader. These offline cases do not establish live SEC behavior or S0 historical
   parser coverage.
 - No plan-projection, S4 integration, active-query, or pointer-last publisher wiring
-  task remains outstanding in this subplan. Next: add named-snapshot reads for S6, resolve
-  the explicit supersession-map contract and implement/test it if retained, then complete
+  task remains outstanding in this subplan. Next: resolve the explicit
+  supersession-map contract and implement/test it if retained, then complete
   S0's authorized source audit.
 
 ## Physical layout: dense annual partitions

@@ -14,8 +14,10 @@ from edgar_sec.infra.storage.dag.manifest import (
 )
 from edgar_sec.pipelines.document_inventory.snapshot.reader import (
     get_accessions_by_cik,
+    get_accession_bundle,
     get_active_accession,
     get_active_entries,
+    query_accessions,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.schema import (
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
@@ -216,3 +218,39 @@ def test_reader_lookups_and_scoped_mask_supersession(tmp_path: Path) -> None:
     ciks = get_accessions_by_cik(tmp_path, "0000320193")
     assert len(ciks) == 1
     assert ciks[0]["accession"] == "0000320193-24-000001"
+
+
+def test_reader_pinned_snapshot_id_bypasses_pointer(tmp_path: Path) -> None:
+    """Verify named reads resolve the pinned snapshot, not the branch tip."""
+    _setup_inventory_dag(tmp_path)
+
+    acc = get_active_accession(tmp_path, "0000320193-24-000001", snapshot_id="c0")
+    assert acc is not None
+    assert acc["bundle_size"] == 100
+
+    entries = get_active_entries(tmp_path, "0000320193-24-000001", snapshot_id="c0")
+    assert [e["entry_id"] for e in entries] == ["e-old-1"]
+
+    bundle = get_accession_bundle(tmp_path, "0000320193-24-000001", snapshot_id="c0")
+    assert bundle is not None
+    assert bundle["accession"]["bundle_size"] == 100
+    assert [e["entry_id"] for e in bundle["entries"]] == ["e-old-1"]
+
+    rows = query_accessions(tmp_path, form="10-K", snapshot_id="c0")
+    assert [r["accession"] for r in rows] == ["0000320193-24-000001"]
+
+    ciks = get_accessions_by_cik(tmp_path, "0000320193", snapshot_id="c0")
+    assert ciks[0]["bundle_size"] == 100
+
+
+def test_reader_pinned_snapshot_id_missing(tmp_path: Path) -> None:
+    """Verify a pinned snapshot absent from the catalog raises."""
+    from edgar_sec.infra.storage.dag.traversal import BrokenLineageError
+
+    _setup_inventory_dag(tmp_path)
+    try:
+        get_active_accession(tmp_path, "0000320193-24-000001", snapshot_id="absent")
+    except BrokenLineageError:
+        pass
+    else:
+        raise AssertionError("expected BrokenLineageError for missing snapshot")

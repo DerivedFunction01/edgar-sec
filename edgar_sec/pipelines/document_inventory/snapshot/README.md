@@ -14,7 +14,7 @@ Own inventory snapshot relations, pre-fetch plan projection, and bounded merge p
 | `models.py` | Snapshot metadata, lookup descriptors, and publication results. |
 | `projection.py` | Validate the published cohort projection, produce normalized relations, and write the pre-fetch work order. |
 | `projection_inputs.py` | Validate catalog-plan bundles and resolve pinned base-snapshot accession parts. |
-| `reader.py` | Range-pruned point queries for active accessions, entries, and source CIKs. |
+| `reader.py` | Range-pruned point queries for active accessions, entries, and source CIKs; every query accepts an immutable `snapshot_id` pin or falls back to the active branch tip. |
 | `schema.py` | Versioned Arrow schemas for persisted snapshot relations. |
 | `specs.py` | Declarative `RelationSpec` contracts (`accessions`, `entries`, `accession_sources`). |
 | `validation.py` | Check all declared Parquet files, digests, relations, and lookup parity. |
@@ -42,6 +42,8 @@ Call [`project_catalog_plan`](projection.py) for standalone pre-fetch projection
 [`get_active_accession`](reader.py), [`get_active_entries`](reader.py),
 [`get_accessions_by_cik`](reader.py), [`get_accessions_by_source_cik`](reader.py),
 [`query_accessions`](reader.py), and [`get_accession_bundle`](reader.py) query active snapshot state.
+Each accepts `snapshot_id` to pin an immutable snapshot tip; without it, the
+active branch pointer is resolved once per call.
 
 ## Command surface
 

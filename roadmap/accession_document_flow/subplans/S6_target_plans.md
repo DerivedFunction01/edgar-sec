@@ -159,9 +159,9 @@ def plan_targets(
 
 The selected source artifact is pinned by ID and digest in the plan manifest. The
 inventory adapter resolves and validates one immutable snapshot tip before reading; it
-must not re-read a moving `current` pointer between batches. The existing inventory
-reader resolves the current branch, so a named-snapshot read API is required before this
-adapter can be implemented safely. The catalog adapter reads one published catalog
+must not re-read a moving `current` pointer between batches. The inventory reader
+supports named-snapshot reads via its `snapshot_id` parameter, so the adapter can pin
+one tip for the whole plan run. The catalog adapter reads one published catalog
 plan and emits only validated primary direct URLs. Both produce the exact same
 target schema. `catalog_direct` rows have null `inventory_entry_id`, set
 `availability_evidence="catalog_metadata"`, and pin the catalog plan; they do not add

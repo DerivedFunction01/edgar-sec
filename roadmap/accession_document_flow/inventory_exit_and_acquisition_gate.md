@@ -28,7 +28,7 @@ gated by S0.
 | [S2](subplans/S2_index_fixture_store.md) | Raw-page capture/replay and successful-case reuse are implemented. | Use it for S0 evidence; it does not replace the live survey. |
 | [S3](subplans/S3_index_parser.md) | Typed parser, standard-layout fixture, and synthetic edge tests exist. | S0-era/table evidence and historical acceptance. S5 refuses failed or unrecognized page outcomes rather than publishing them. |
 | [S4](subplans/S4_broker_worker.md) | Bounded, resumable worker execution is integrated into the S5 build. An offline scale simulation was reported as passed in prior work; its run report is not tracked. | Preserve a reproducible resource-validation report before operational rollout; no live SEC workload is established here. |
-| [S5](subplans/S5_snapshot_publication.md) | Production build, snapshot publication, active reader/query paths, and pointer-last update are implemented. | Decide whether direct prior-entry-ID supersession mapping remains a required contract; scoped masking currently supplies active-query semantics only. S6 also needs a reader pinned to a named immutable snapshot tip. |
+| [S5](subplans/S5_snapshot_publication.md) | Production build, snapshot publication, active reader/query paths, and pointer-last update are implemented. The reader accepts an immutable `snapshot_id` pin for named reads. | Decide whether direct prior-entry-ID supersession mapping remains a required contract; scoped masking currently supplies active-query semantics only. |
 | [S6](subplans/S6_target_plans.md) | Detailed design exists; no `document_planning` implementation is present. | Implement source validation/pinning, profiles, matching, immutable bundle publication, and offline tests. The inventory adapter must not repeatedly resolve a moving `current` pointer. |
 | [S7a/S7b](subplans/S7a_inventory_cli.md) · [S7b](subplans/S7b_parser_review_bootstrap.md) | Fixture lifecycle and parser-review artifact generation exist. | Keyed field-level parser comparison and S7c/S7d review surfaces remain incomplete; these are not prerequisites to start S6. |
 | [S8](subplans/S8_vacuum.md) | Generic and inventory-relation compaction tests pass; details below. | Public-query parity, part-ownership validation, and safe transient staging cleanup remain open. Durable campaign retention uses explicit DAG tags, not automatic plan-directory discovery. |
@@ -89,8 +89,8 @@ The supplied S6 design is aligned with the detailed subplan as follows:
   inferred. Catalog-direct plans are primary-only and never synthesize inventory rows.
 - The source digest must cover the validated manifest and every source part used by the
   planner. The existing catalog-plan fingerprint alone does not prove those bytes.
-  Resolve one immutable inventory snapshot tip before reading; the current reader's
-  branch-oriented API needs a named-snapshot entry point for reproducible planning.
+  The inventory reader pins one immutable snapshot ID per call, so the S6 adapter
+  can resolve a single tip for the whole plan run.
 - `plan_id` must be deterministic from profile digest, source kind/identity/digest,
   schema version, and matcher version. Divergent reuse of the same plan ID is refused.
 - The plan's `unresolved` status cannot represent a failed/unrecognized inventory page
@@ -111,8 +111,8 @@ ownership and semantic `request_id` rule as the S6 subplan.
 ### Begin S6 planning implementation
 
 - Keep v1 planning offline and single-source; do not add hybrid fallback.
-- Add the immutable named-snapshot reader path, full source-part digest validation, and
-  deterministic plan identity before publishing inventory-backed plans.
+- The named-snapshot reader path exists; add full source-part digest validation
+  and deterministic plan identity before publishing inventory-backed plans.
 - Publish `manifest.json` and `targets.parquet` as an atomic immutable bundle with
   schema, count, and digest validation. Reusing a plan ID with different inputs fails.
 - Test primary/exhibit/data-file matching, no sequence guessing, `not_filed` versus
@@ -147,8 +147,8 @@ ownership and semantic `request_id` rule as the S6 subplan.
 ## Remaining work, ordered by dependency
 
 1. Implement S6 source validation and target-plan publication; its catalog-direct branch
-   can proceed independently of S0, while inventory-backed planning needs the named
-   snapshot reader.
+   can proceed independently of S0, and the inventory-backed branch can use the
+   reader's named-snapshot pin.
 2. Run the authorized S0 survey and publish durable audit evidence; use it to finalize
    S3 coverage and XBRL availability policy.
 3. Decide and either implement or explicitly remove the S5 direct supersession-ID

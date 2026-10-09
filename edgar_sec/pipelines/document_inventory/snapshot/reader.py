@@ -1,6 +1,7 @@
 """High-level query adapter for document inventory snapshots.
 
-Executes range-pruned point lookups against active virtual views.
+Executes range-pruned point lookups against active virtual views. Callers
+may pin an immutable snapshot ID; otherwise the active branch tip is read.
 """
 
 from __future__ import annotations
@@ -38,19 +39,34 @@ def _resolve_snapshots_root(root: Path | str) -> Path:
     return p
 
 
+def _resolve_tip(
+    snapshots_root: Path,
+    branch_name: str | None,
+    snapshot_id: str | None,
+) -> str | None:
+    """Return a pinned snapshot ID, the active branch tip, or None."""
+    if snapshot_id is not None:
+        return snapshot_id
+    ptr = read_pointer(snapshots_root, branch_name=branch_name)
+    if ptr is None:
+        return None
+    return str(ptr["snapshot_id"])
+
+
 def get_active_accession(
     snapshots_root: Path | str,
     accession: str,
     *,
     branch_name: str | None = None,
+    snapshot_id: str | None = None,
     profile: RuntimeResourceProfile | None = None,
 ) -> dict[str, Any] | None:
     """Return active accession record or None if absent."""
     root = _resolve_snapshots_root(snapshots_root)
-    ptr = read_pointer(root, branch_name=branch_name)
-    if ptr is None:
+    tip = _resolve_tip(root, branch_name, snapshot_id)
+    if tip is None:
         return None
-    lineage = walk_lineage(root, str(ptr["snapshot_id"]))
+    lineage = walk_lineage(root, tip)
     con = connect(profile)
     try:
         rows = query_point(
@@ -72,14 +88,15 @@ def get_active_entries(
     accession: str,
     *,
     branch_name: str | None = None,
+    snapshot_id: str | None = None,
     profile: RuntimeResourceProfile | None = None,
 ) -> list[dict[str, Any]]:
     """Return active entry records for an accession, masking superseded ones."""
     root = _resolve_snapshots_root(snapshots_root)
-    ptr = read_pointer(root, branch_name=branch_name)
-    if ptr is None:
+    tip = _resolve_tip(root, branch_name, snapshot_id)
+    if tip is None:
         return []
-    lineage = walk_lineage(root, str(ptr["snapshot_id"]))
+    lineage = walk_lineage(root, tip)
     con = connect(profile)
     try:
         return query_point(
@@ -100,14 +117,15 @@ def get_accessions_by_cik(
     cik: str,
     *,
     branch_name: str | None = None,
+    snapshot_id: str | None = None,
     profile: RuntimeResourceProfile | None = None,
 ) -> list[dict[str, Any]]:
     """Return active accession records for a filing CIK."""
     root = _resolve_snapshots_root(snapshots_root)
-    ptr = read_pointer(root, branch_name=branch_name)
-    if ptr is None:
+    tip = _resolve_tip(root, branch_name, snapshot_id)
+    if tip is None:
         return []
-    lineage = walk_lineage(root, str(ptr["snapshot_id"]))
+    lineage = walk_lineage(root, tip)
     con = connect(profile)
     try:
         return query_point(
@@ -128,14 +146,15 @@ def get_accessions_by_source_cik(
     source_cik: str,
     *,
     branch_name: str | None = None,
+    snapshot_id: str | None = None,
     profile: RuntimeResourceProfile | None = None,
 ) -> list[dict[str, Any]]:
     """Return active accession records associated with a catalog source CIK."""
     root = _resolve_snapshots_root(snapshots_root)
-    ptr = read_pointer(root, branch_name=branch_name)
-    if ptr is None:
+    tip = _resolve_tip(root, branch_name, snapshot_id)
+    if tip is None:
         return []
-    lineage = walk_lineage(root, str(ptr["snapshot_id"]))
+    lineage = walk_lineage(root, tip)
     con = connect(profile)
     try:
         compile_pruned_views(
@@ -167,14 +186,15 @@ def query_accessions(
     source_cik: str | None = None,
     limit: int | None = None,
     branch_name: str | None = None,
+    snapshot_id: str | None = None,
     profile: RuntimeResourceProfile | None = None,
 ) -> list[dict[str, Any]]:
     """Query active accessions by form, date range, filing CIK, and/or source CIK."""
     root = _resolve_snapshots_root(snapshots_root)
-    ptr = read_pointer(root, branch_name=branch_name)
-    if ptr is None:
+    tip = _resolve_tip(root, branch_name, snapshot_id)
+    if tip is None:
         return []
-    lineage = walk_lineage(root, str(ptr["snapshot_id"]))
+    lineage = walk_lineage(root, tip)
     con = connect(profile)
     try:
         ranges: dict[str, tuple[str | None, str | None]] = {}
@@ -211,7 +231,8 @@ def query_accessions(
             params.append(filing_cik)
 
         if where:
-            query += " AND " + " AND ".join(where)
+            prefix = " AND " if source_cik is not None else " WHERE "
+            query += prefix + " AND ".join(where)
         query += " ORDER BY a.form, a.filing_date, a.accession"
         if limit is not None:
             query += " LIMIT ?"
@@ -229,14 +250,15 @@ def get_accession_bundle(
     accession: str,
     *,
     branch_name: str | None = None,
+    snapshot_id: str | None = None,
     profile: RuntimeResourceProfile | None = None,
 ) -> dict[str, Any] | None:
     """Resolve accession metadata, active child entries, and source CIKs."""
     root = _resolve_snapshots_root(snapshots_root)
-    ptr = read_pointer(root, branch_name=branch_name)
-    if ptr is None:
+    tip = _resolve_tip(root, branch_name, snapshot_id)
+    if tip is None:
         return None
-    lineage = walk_lineage(root, str(ptr["snapshot_id"]))
+    lineage = walk_lineage(root, tip)
     con = connect(profile)
     try:
         compile_pruned_views(con, INVENTORY_RELATIONS, lineage, root)

@@ -141,7 +141,9 @@ class InventoryDistributionAdapter:
         ]
 
         profile = derive_resources()
-        effective_workers = workers if workers is not None and workers > 0 else 1
+        effective_workers = (
+            workers if workers is not None and workers > 0 else profile.workers
+        )
         with _cooperative_stop() as stop_requested:
             _run_pending(
                 assigned_chunks,
