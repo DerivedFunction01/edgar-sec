@@ -14,7 +14,7 @@ import pyarrow as pa
 from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.sec_http.client import SecHttpClient
-from edgar_sec.infra.storage.duckdb import connect
+from edgar_sec.infra.storage.duckdb import connect, sql_literal
 
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.pipelines.cohort.ingestion import _canonical_query, _publish_query
@@ -75,7 +75,8 @@ def _insert_ticker_rows(
     for i in range(0, len(rows), batch_size):
         batch = rows[i : i + batch_size]
         values = ", ".join(
-            f"({n!r},{cik_str!r},{title!r})" for n, (cik_str, title) in enumerate(batch)
+            f"({n},{sql_literal(cik_str)},{sql_literal(title)})"
+            for n, (cik_str, title) in enumerate(batch)
         )
         connection.execute(f"INSERT INTO ticker_rows VALUES {values}")
 

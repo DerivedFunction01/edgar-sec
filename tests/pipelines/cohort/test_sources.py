@@ -255,3 +255,23 @@ def test_ticker_publisher_refuses_bad_rows(tmp_path: Path) -> None:
 
     with pytest.raises(ValueError, match="invalid CIK"):
         publish_tickers_source(raw, paths=paths, catalog=catalog)
+
+
+def test_ticker_publisher_handles_single_quote_in_name(tmp_path: Path) -> None:
+    paths = CohortPaths(tmp_path)
+    catalog = CohortCatalog(paths)
+    raw = tmp_path / "tickers.json"
+    raw.write_text(
+        json.dumps(
+            {
+                "0": {"cik_str": 16732, "ticker": "CPB", "title": "CAMPBELL'S Co"},
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    record = publish_tickers_source(raw, paths=paths, catalog=catalog)
+    assert record.row_count == 1
+    table = pq.read_table(paths.resolve_relative_path(record.dataset_path))
+    rows = table.to_pylist()
+    assert rows[0]["name"] == "CAMPBELL'S Co"
