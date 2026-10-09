@@ -59,32 +59,6 @@ Each package's README carries its module→responsibility layout and its own del
   single functional entry point is `normalize_document` in `edgar_sec/engine/forms/normalize.py`,
   called by the document-storage pipeline.
 
-## Public surface
-
-Each sub-package README lists its own public surface. At the layer level:
-
-- `normalize_document`, `NormalizationResult` — `forms/normalize.py`. The composition
-  entry point and its result record.
-- Cover and form records — `forms/cover/`: boundary, closing, TOC, and profile types.
-- `FormPlugin` resolution — `forms/plugins/registry.py`.
-- Reflow trace vocabulary — `reflow/types.py`.
-- SGML unpacking — `document/unpacking/unpacker.py`.
-- HTML tree access — `document/html/tree.py`.
-- Page-marker analysis and application — `document/page_markers/`.
-- Table protection, rendering, rejection, and boundary resolution — `tables/`.
-- Quota selection and company-family clustering — `selection/`, `company_family/`.
-- Submission metadata rows — `submissions/`.
-- `parse_html_index` and its parser fingerprint — `index_pages/parser.py`.
-
-There is no barrel re-export anywhere in this layer. `edgar_sec/engine/__init__.py` is a
-docstring only, and so is every sub-package `__init__.py`, per `AGENTS.md` §1.2. Consumers
-import from the leaf module.
-
-## Tests
-
-The test tree mirrors the source tree, package for package (`AGENTS.md` §6). Each package
-README links its mirrored test location.
-
 ## Deliberate gaps
 
 - **No hierarchical document tree.** This layer works on flat line-offset text frames;

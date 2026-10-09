@@ -13,16 +13,6 @@ occasionally incorporates Exhibit 13 by reference; a 10-Q has no incorporated
 reference block; an 8-K is an event report with neither. This package holds that
 variance as data, so the normalization chain stays one chain.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `base.py` | `FormPlugin` — the SPI record: canonical `family`, the `enable_toc` / `enable_body_start` gates, and the `evaluator` hook. Also `GENERIC_FAMILY` and `evaluate_generic`. |
-| `registry.py` | The seeded family table, its module-level generic fallback, `get_plugin`, `register_plugin`, `registered_families`. |
-| `evaluators/annual.py` | `evaluate_annual` — Exhibit 13 incorporation-by-reference detection. |
-| `evaluators/quarterly.py` | `evaluate_quarterly` — XBRL-year and size-ceiling shortcuts. |
-| `evaluators/current.py` | `evaluate_current` — unconditional proceed. |
-
 ## Contracts
 
 - **Routing goes through `resolve_alias` and nothing else.** No substring test
@@ -49,15 +39,10 @@ variance as data, so the normalization chain stays one chain.
 - **`enable_toc` / `enable_body_start` gate real stages.** A plugin whose flags are
   wrong silently returns text with a TOC still in it.
 
-## Public surface
-
-`FormPlugin`, `GENERIC_FAMILY`, `evaluate_generic` (`base.py`);
-`get_plugin`, `register_plugin`, `registered_families` (`registry.py`); the
-three `evaluate_*` entry points (`evaluators/`).
-
 ## Command surface
 
-None. Library package, no CLI.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Production consumers
 
@@ -65,10 +50,6 @@ None. Library package, no CLI.
   `plugin.evaluator(result.text)`. The resulting decision adds `is_stub`,
   `category`, `decision_action`, `decision_reason`, and `target_exhibit` to the
   stored metadata and populates `ProcessedDocument.decision`.
-
-## Mirrored tests
-
-`tests/engine/forms/plugins/`.
 
 ## Deliberate gaps
 

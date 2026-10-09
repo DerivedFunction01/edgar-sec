@@ -6,17 +6,6 @@ it fails to compile in Python's `re` engine. This package produces pattern
 strings and compiled patterns; it never matches text and knows nothing about SEC
 filings.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| [`builder.py`](builder.py) | Alternation, compound, lookaround, and compiled-pattern construction. |
-| [`trie.py`](trie.py) | Character prefix trie and its factored regex emission. |
-| `__init__.py` | One-line docstring. No re-exports, per AGENTS.md §1.2. |
-
-`builder.py` imports `compact_alternation` from `trie.py`. The dependency does
-not run the other way.
-
 ## Contracts
 
 - `build_alternation()` dedupes first (preserving first-seen order), then sorts
@@ -45,26 +34,10 @@ not run the other way.
   or set; a string base is used verbatim. It does not validate that the base is
   anchored or non-empty.
 
-## Public surface
-
-Import from the leaf module; there is no barrel re-export.
-
-- [`builder.py`](builder.py): `build_alternation`, `to_build_alternation`,
-  `add_restrictions`, `build_compound`, `build_regex`, `to_list`, `plural`.
-- [`trie.py`](trie.py): `TrieNode`, `build_prefix_trie`, `trie_to_regex`,
-  `compact_alternation`.
-
 ## Command surface
 
-None. No `__main__.py`, no entry point.
-
-## Tests
-
-- [`tests/foundation/regex/test_builder.py`](../../../tests/foundation/regex/test_builder.py)
-- [`tests/foundation/regex/test_trie.py`](../../../tests/foundation/regex/test_trie.py)
-
-The `regex-alternations` scanner's own verdict is pinned at
-[`tests/foundation/scanners/test_regex_alternations.py`](../../../tests/foundation/scanners/test_regex_alternations.py).
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

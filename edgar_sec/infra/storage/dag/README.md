@@ -11,28 +11,6 @@ deltas. Upper layers configure declarative `RelationSpec` contracts; this layer 
 the relational resolution views in DuckDB, enforces cycle immunity and parent digest chains,
 and provides two-tier retention analysis.
 
-## Module map
-
-| Module | Responsibility |
-| :--- | :--- |
-| `paths.py` | `DAGPaths` typed wrapper and constants for snapshot DAG filesystem layout and path resolution. |
-| `spec.py` | Declarative `RelationSpec` contracts and `MergeStrategy` options (`upsert`, `append`, `scoped_mask`). |
-| `manifest.py` | `DAGNodeManifest`, `ParentRef`, `PartDescriptor`, and canonical JSON IO. |
-| `traversal.py` | Anchor-to-tip topological DFS traversal, cycle verification, and digest checking. |
-| `resolution.py` | Dynamic DuckDB view compiler (`active_{name}`) and streamed logical fingerprinting. |
-| `anti_join.py` | Pre-publish candidate filtering and no-op delta detection. |
-| `publication.py` | Atomic pointer updates, POSIX file locking (`PublicationLock`), and branch support. |
-| `compaction.py` | Lineage compaction into standalone Checkpoints with the Logical Parity Gate. |
-| `retention.py` | Multi-root reachability tracing and physical part reference counting. |
-| `doctor.py` | Graph health audits: detects cycles, missing manifests, unreadable parts, and stale stages. |
-| `query.py` | Point-lookup and range-pruned DuckDB view compiler using part min/max bounds. |
-| `tags.py` | Immutable snapshot tagging, metadata persistence, and lifecycle. |
-| `renderer.py` | Cycle-tolerant ASCII swimlane and DAG graph visualizer with bridge link annotations. |
-| `menu.py` | Pluggable interactive console, paginated pick-lists, and dashboard. |
-| `operator.py` | Standalone workspace-autodiscovering DAG console operator. |
-| `cli.py` | Standard maintenance CLI entrypoint dispatching commands (`status`, `log`, `checkout`, `publish`, `branch`, `tag`, `doctor`, `compact`, `gc`). |
-| `__init__.py` | Package docstring only. No re-exports. |
-
 ## Contracts
 
 - **Append-only ingestion:** Deltas record only new or modified Parquet files ($O(\Delta)$).
@@ -45,35 +23,27 @@ and provides two-tier retention analysis.
 - **Lineage vs. CAS:** a node's manifest `parents` are distinct from the branch-tip guard; `publish_node` validates the pointer, `walk_lineage` validates parent reachability.
 - **Part range pruning & lineage caching:** Queries filter candidate Parquet parts by range bounds; lineage resolution is cached in-memory.
 
-## Public surface
-
-- `DAGCatalog` in [`catalog.py`](catalog.py), including read-only opens and metadata lookup.
-- `DAGPaths` in [`paths.py`](paths.py).
-- `RelationSpec`, `MergeStrategy` in [`spec.py`](spec.py).
-- `DAGNodeManifest`, `ParentRef`, `PartDescriptor` in [`manifest.py`](manifest.py).
-- `walk_lineage`, `resolve_lineage`, `clear_lineage_cache`, `LineageChain` in [`traversal.py`](traversal.py).
-- `compile_virtual_views`, `compute_logical_fingerprint` in [`resolution.py`](resolution.py).
-- `compile_pruned_views`, `derive_accession_range`, `prune_parts_for_range`, `query_point` in [`query.py`](query.py).
-- `filter_candidate_delta`, `FilteredDelta` in [`anti_join.py`](anti_join.py).
-- `publish_node`, `PublicationLock`, `list_branches`, `create_branch`, `delete_branch` in [`publication.py`](publication.py).
-- `create_tag`, `read_tag`, `list_tags`, `delete_tag` in [`tags.py`](tags.py).
-- `DAGSwimlaneRenderer`, `GraphNode` in [`renderer.py`](renderer.py).
-- `DAGMenuConfig`, `run_dag_menu`, `create_dag_menu` in [`menu.py`](menu.py).
-- `compact_lineage` in [`compaction.py`](compaction.py).
-- `analyze_retention`, `purge_unreferenced` in [`retention.py`](retention.py).
-- `audit_graph` in [`doctor.py`](doctor.py).
-- `attach_dag_subparser`, `dispatch_dag_subcommand`, `main` in [`cli.py`](cli.py).
-- `main` in [`operator.py`](operator.py).
-
 ## Command surface
+
+<!-- AUTOGEN:COMMANDS:START -->
+| Subcommand | Description | Arguments |
+| :--- | :--- | :--- |
+| `branch` | List, create, or delete branches | `[--from]` |
+| `checkout` | Switch current or branch pointer | `[--branch]`, `[--force]` |
+| `compact` | Consolidate lineage into a checkpoint | `[--branch]`, `[--specs]`, `[--new-id]`, `[--no-publish]` |
+| `doctor` | Run integrity checks | `[--skip-digests]` |
+| `gc` | Collect unreferenced snapshots and parts | `[--dry-run]` |
+| `log` | Display lineage history | `[-n]`, `[--branch]`, `[--graph]`, `[--all]` |
+| `publish` | Publish a staged snapshot node | `[--expected-parent]`, `[--allow-null]`, `[--branch]` |
+| `status` | Show current snapshot status | `[--branch]` |
+| `tag` | List, create, or delete tags | `[-m]` |
+<!-- AUTOGEN:COMMANDS:END -->
+
+### Usage examples
 
 ```bash
 .venv/bin/python -m edgar_sec.infra.storage.dag.cli --help
 ```
-
-## Mirrored tests
-
-- Direct unit and integration tests live under [`tests/infra/storage/dag/`](../../../../tests/infra/storage/dag/).
 
 ## Deliberate gaps
 

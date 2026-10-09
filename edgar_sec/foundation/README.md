@@ -24,27 +24,6 @@ work. Its only side effects are directory creation in `runtime/paths.py` and
 `runtime/resources.py`, and the transient dependency-graph cache written by
 `checks/lineage.py`.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `hashing.py` | Streaming SHA-256 digests of files, bytes, and text. |
-| `serialization.py` | `canonical_json` / `canonical_hash` for identity-stable payloads; `json_safe` / `safe_dumps` for representability. |
-| `compression.py` | The repository's only zstd frame codec. |
-| `regex/` | The regex builder DSL and prefix-tree factorisation. See [`regex/README.md`](regex/README.md). |
-| `runtime/` | Environment, project and fixture paths, resources, memory, progress, partitions, interactive dispatch. See [`runtime/README.md`](runtime/README.md). |
-| `runtime/settings/` | The single typed settings registry. See [`runtime/settings/README.md`](runtime/settings/README.md). |
-| `scanners/` | The registered policy scanners. See [`scanners/README.md`](scanners/README.md). |
-| `checks/` | The gate: runs the scanners, reads git status, resolves AST test lineage. See [`checks/README.md`](checks/README.md). |
-| `sql/` | Read-only validation for operator-supplied queries. See [`sql/README.md`](sql/README.md). |
-| `text/` | Shared pattern vocabulary: dates, tokens, grammar, compounds, normalisation, the Aho-Corasick automaton. See [`text/README.md`](text/README.md). |
-
-Consumers import from the leaf module, e.g.
-`from edgar_sec.foundation.hashing import file_sha256`. Per `AGENTS.md` §1.2 no
-`__init__.py` here re-exports a child module's symbols; the two deliberate
-registries that clause permits are `scanners.ALL_SCANNERS` and the settings API
-in `runtime/settings/__init__.py`.
-
 ## Contracts
 
 **Boundaries this layer draws**
@@ -103,6 +82,11 @@ in `runtime/settings/__init__.py`.
 
 ## Command surface
 
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
+
+### Usage examples
+
 Layer 0 has no command of its own. `check.py` at the repository root imports
 `edgar_sec.foundation.checks.runner.run_all` and exits on its return code, so the
 gate must be run from the repository root — file discovery is `Path.cwd()`-anchored.
@@ -115,37 +99,6 @@ gate must be run from the repository root — file discovery is `Path.cwd()`-anc
 
 Exit status is `0` when every scanner is clean and `1` when any scanner reported a
 finding. See [`checks/README.md`](checks/README.md).
-
-## Public surface
-
-Grouped by owner; the owning module or subpackage README carries the signatures
-and the per-symbol detail.
-
-- Identity and encoding: `file_sha256`, `sha256_bytes`, `sha256_text`
-  (`hashing.py`); `canonical_json`, `canonical_hash`, `json_safe`, `safe_dumps`
-  (`serialization.py`); `compress_payload`, `decompress_payload`
-  (`compression.py`).
-- [`regex/`](regex/README.md): the builder DSL and prefix-tree factorisation.
-- [`runtime/`](runtime/README.md): environment access, `ProjectPaths`, generic
-  fixture location and manifest-envelope validation, the
-  derived resource profile and its memory arithmetic, `reclaim`, progress,
-  partitions, interactive dispatch. [`runtime/settings/`](runtime/settings/README.md):
-  `SettingSpec` and the resolve, flatten, and render API.
-- [`scanners/`](scanners/README.md): `ALL_SCANNERS`, `Scanner`, `ScannerFinding`.
-- [`checks/`](checks/README.md): `registered()`, `run_all()`.
-- [`sql/`](sql/README.md): `validate_read_only` and its verb allowlist.
-- [`text/`](text/README.md): the date, token, grammar, compound, and
-  normalization vocabulary, plus the multi-pattern automaton.
-
-## Mirrored tests
-
-`tests/foundation/` mirrors this package directory for directory, with one test
-module per source module and `conftest.py` at the narrowest directory that needs
-shared setup. Fixture paths come from `tests.support` (`load_fixture`,
-`fixture_path`) rather than `parents[N]` depth arithmetic, and offline network
-doubles are injected at the transport seam. Scanner tests build a synthetic
-repository tree under `tmp_path` and `monkeypatch.chdir` into it, because
-discovery is cwd-anchored.
 
 ## Deliberate gaps
 

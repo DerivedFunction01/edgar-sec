@@ -31,29 +31,6 @@ of this package and asserts none reaches `edgar_sec.infra.sec_http`. A grep woul
 miss a re-export, an alias import, and a function-local import; all three are real
 ways a network dependency creeps in.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `__init__.py` | Docstring only. No re-exports, per AGENTS.md §1.2. |
-| `cli.py` | Command dispatch, argument parsing, and subparser definitions. |
-| [commands/](commands/README.md) | Subcommand implementations using component terminal renderer. |
-| `operator.py` | Interactive wizard over `cmd_materialize` / `cmd_plan` / `cmd_expand` / `cmd_status`, with discovery-driven catalog and parent-plan selection. |
-| `catalog_job.py` | `materialize()`: one Phase 1 snapshot in, one immutable catalog out, refusing rather than repairing. |
-| `materialization.py` | The catalog SQL: Phase 1 part unnesting into filing occurrences and registrant profile projection. |
-| `planner.py` | `plan()` for deterministic filtering and `plan_policy()` for quota selection, resolved era bands, and form-by-era allocation. |
-| `expansion.py` | Parent validation, child derivation, and the retention invariant. |
-| `publication.py` | Content-addressed plan ids, staged bundles, the selection fingerprint, and the reuse-or-conflict policy. |
-| `discovery.py` | Manifest-only catalog/plan/policy enumeration and `current` resolution. |
-| `specs.py` | Declarative `RelationSpec` contracts (`filing_targets`, `company_profiles`). |
-| `paths.py` | `FilingCatalogPaths` and the artifact-name constants. |
-
-The selection engine this package drives — candidate pools, deficit selection,
-the seeded and composite phases, and the report projection — lives one layer
-down in `engine/selection/`, and is documented there. What belongs in this README
-is the publication contract: what may be published, under what identity, and
-what a consumer can rely on.
-
 ## Contracts
 
 **Guarantees to callers**
@@ -165,38 +142,19 @@ what a consumer can rely on.
   `underfilled_floors`. Only an *expansion* is refused for failing to reach
   `target_units`.
 
-## Public surface
-
-The supported entry points, each with its owning module:
-
-| Entry point | Owning module |
-| :--- | :--- |
-| `materialize()` | `catalog_job.py` |
-| `plan()`, `plan_policy()` | `planner.py` |
-| `expand()` | `expansion.py` |
-| `status()` | `discovery.py` |
-
-`paths.py` owns path resolution, the artifact names, and identifier validation;
-`publication.py` owns plan identity, the reuse-or-conflict policy, and bundle
-completeness. `cli.py` exposes the same entry points as subcommands — see the
-command table — and `operator.py` drives them from the wizard.
-
-Three notes a caller needs:
-
-- **Plan schema versions are refused, not adapted.** Expansion takes an explicit
-  directory, so unlike an ordinary plan lookup it gets no protection from plan
-  identity. `validate_parent_schema` therefore requires an exact
-  `TARGET_PLAN_SCHEMA_VERSION` match plus every field the current planner writes
-  unconditionally, and tells the operator to republish. There is no compatibility
-  path.
-- `plan_fingerprint` binds a plan's identity to its *selection* — the ordered
-  locator keys — so two runs that requested the same thing but selected
-  differently do not share a fingerprint. It deliberately does not cover the bytes
-  of every Parquet in the bundle.
-- Artifact names are declared once in `paths.py`. The downstream document-storage
-  pipeline binds to this layout, so these names are a cross-package contract.
-
 ## Command surface
+
+<!-- AUTOGEN:COMMANDS:START -->
+| Subcommand | Description | Arguments |
+| :--- | :--- | :--- |
+| `dag` | Snapshot DAG operations | `[--root]`, `[--json]` |
+| `expand` | scale a policy plan while retaining every parent locator | `--parent-plan`, `--target-units`, `[--artifacts]` |
+| `materialize` | build a catalog snapshot from a Phase 1 snapshot | `[--source]`, `[--source-manifest]`, `[--artifacts]`, `[--branch]` |
+| `plan` | publish a deterministic or policy-driven target plan | `--catalog`, `[--scope]`, `[--policy]`, `[--auto-policy]`, `[--cohort]`, `[--seed-cohort]`, `[--artifacts]`, `[--forms]`, `[--suffixes]`, `[--dates]`, `[--limit]` |
+| `status` | report published catalogs and plans from manifests | `[--artifacts]` |
+<!-- AUTOGEN:COMMANDS:END -->
+
+### Usage examples
 
 Entry point: `python run.py filing-catalog <command>`. With no argument the
 operator wizard opens; with an argument `cli.main` dispatches. Worked transcripts
@@ -355,15 +313,15 @@ because lineage is a function of the selection the plan just recorded. That rewr
 is atomic and only ever gains keys, and it carries the stamped `plan_fingerprint`
 with it.
 
-## Mirrored tests
+## Artifact layout
 
-Mirrored coverage lives under `tests/pipelines/filing_catalog/`. Shared fixtures live
-under `tests/fixtures/catalog/` and are accessed through `tests.support` rather than
-`parents[N]` arithmetic.
-
-`tests/test_network_isolation.py` at the test-tree root proves the zero-network
-property by AST walk over this package. It is not mirrored here because the
-invariant spans several packages.
+<!-- AUTOGEN:PATHS:START -->
+| Logical Artifact | Resolution Seam |
+| :--- | :--- |
+| `distribution_root` | Property |
+| `ensure_directories(...)` | Method |
+| `runtime_root` | Property |
+<!-- AUTOGEN:PATHS:END -->
 
 ## Deliberate gaps
 

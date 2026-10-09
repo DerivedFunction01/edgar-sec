@@ -12,15 +12,6 @@ strong: **one requested CIK in, one row out, always conforming to `SUBMISSION_ME
 with every deviation surfaced in the row's `anomalies` list rather than in an exception. It is
 pure computation: no disk I/O, no network, no ambient state.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `builder.py` | The assembly. `normalize_submissions` builds one canonical row; `validate_row_shapes` fail-fasts on any value that will not fit the declared Arrow field type; `build_submission_table` assembles rows into a `pa.Table`; `_failed_row` emits a terminal row carrying every schema field. |
-| `filings.py` | The columnar unroller: one `filings.recent`-shaped section into one record dict per index, first-occurrence-wins dedupe on the normalized accession, and normalization of the historical file descriptors. |
-| `profile.py` | Entity identity: the recognised payload keys, the address fields and their SEC-spelling mapping, listing zip, address normalization, and former names. |
-| `helpers.py` | The coercion primitives every other module shares, plus the accession pattern. |
-
 ## Contracts
 
 - **One row per requested CIK, including failures.** `_failed_row` carries every field of the
@@ -67,27 +58,8 @@ pure computation: no disk I/O, no network, no ambient state.
 
 ## Command surface
 
-None. There is no CLI here; the `run.py` launcher's `metadata` entry drives this
-package from Layer 4.
-
-## Public surface
-
-- `builder.py` — `normalize_submissions` (build one canonical `submission_metadata`
-  row); `build_submission_table` (assemble rows into a schema-conforming `pa.Table`);
-  `validate_row_shapes` (fail fast on any value that will not fit the Arrow schema).
-- `filings.py` — `zip_filing_arrays`; `dedupe_filings`; `normalize_submission_files`.
-- `profile.py` — `address_field`; `zip_listings`; `normalize_address`;
-  `normalize_former_names`.
-- `helpers.py` — `add_anomaly`; `resolve_alias`; `accession_normalized`;
-  `build_archive_url`; `normalize_items`; `to_bool`; `to_int`.
-
-## Mirrored tests
-
-`tests/engine/submissions/` — one test module per source module, except that
-`test_normalizer.py` covers `builder`, `filings`, and `profile` together
-(`AGENTS.md` §6.2). Its expectations are golden values captured from a prior run
-over the same committed fixtures, so a deviation is a parity regression rather
-than a preference change.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

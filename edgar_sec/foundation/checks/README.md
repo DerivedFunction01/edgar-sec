@@ -5,17 +5,6 @@ test execution.
 
 ---
 
-## Module Layout & Responsibilities
-
-| Module | Responsibility |
-| :--- | :--- |
-| [`runner.py`](runner.py) | Scanner gate runner: runs every registered scanner, prints findings, returns `0` or `1`. |
-| [`git_diff.py`](git_diff.py) | Working-tree change detection via `git status --porcelain=v1`, categorised into sources, tests, conftests, root configs, and docs/assets. |
-| [`prose.py`](prose.py) | Comment/docstring-only detection: compares a changed file to its `HEAD` baseline through docstring-stripped AST dumps. |
-| [`lineage.py`](lineage.py) | Static AST import analysis with `mtime_ns` caching, relative-import canonicalisation, reverse-BFS transitive closure, and conftest invalidation scoping. |
-
----
-
 ## Guaranteed Contracts
 
 1. **Deterministic & dependency-free**: standard library only (`ast`, `pathlib`,
@@ -46,41 +35,10 @@ test execution.
 
 ---
 
-## Public Surface
-
-```python
-from edgar_sec.foundation.checks.runner import registered, run_all
-from edgar_sec.foundation.checks.git_diff import (
-    GitStatusSnapshot,
-    get_git_status,
-    parse_porcelain_output,
-)
-from edgar_sec.foundation.checks.lineage import (
-    LineageGraph,
-    TestSelectionResult,
-    find_mirror_test,
-    path_to_module,
-    resolve_relative_import,
-)
-```
-
----
-
 ## Command Surface
 
-None. `check.py` at the repository root imports
-`edgar_sec.foundation.checks.runner.run_all` and exits on its return code.
-
----
-
-## Mirrored Tests
-
-- [`tests/foundation/checks/test_runner.py`](../../../tests/foundation/checks/test_runner.py)
-- [`tests/foundation/checks/test_git_diff.py`](../../../tests/foundation/checks/test_git_diff.py)
-- [`tests/foundation/checks/test_prose.py`](../../../tests/foundation/checks/test_prose.py)
-- [`tests/foundation/checks/test_lineage.py`](../../../tests/foundation/checks/test_lineage.py)
-
----
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate Gaps
 

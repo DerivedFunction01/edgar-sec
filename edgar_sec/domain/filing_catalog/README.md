@@ -8,13 +8,6 @@ Declares the published catalog schemas, schema-version identifiers, locator-colu
 vocabulary, and document-suffix filters shared by planning and selection. SQL and
 planning implementations belong to the infrastructure and pipeline layers.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `schemas.py` | Catalog/profile schemas, version identifiers, locator-column vocabulary, planning scopes |
-| `filters.py` | `DEFAULT_DOCUMENT_SUFFIXES`, `normalize_suffixes()` |
-
 ## Contracts
 
 - `PROFILE_SCHEMA` borrows shared field definitions from
@@ -47,25 +40,6 @@ planning implementations belong to the infrastructure and pipeline layers.
   type in place.
 - Name a plan scope (`SCOPE_DETERMINISTIC`, `SCOPE_POLICY`) when reading a bundle; the two
   scopes publish deliberately different occurrence schemas.
-
-## Public surface
-
-| Symbol | Module |
-| :--- | :--- |
-| `DATASET_NAME` (`"filing_catalog"`), `SCHEMA_VERSION`, `TARGET_SCHEMA_VERSION`, `PROFILE_SCHEMA_VERSION`, `TARGET_PLAN_SCHEMA_VERSION`, `READABLE_TARGET_PLAN_SCHEMA_VERSIONS` | `schemas.py` |
-| `PATH_SOURCE_PRIMARY`, `PATH_SOURCE_BUNDLE` | `schemas.py` |
-| `PROFILE_COLUMNS`, `PROFILE_SCHEMA`, `TARGET_COLUMNS`, `TARGET_SCHEMA` | `schemas.py` |
-| `LOCATOR_BASE_COLUMNS`, `LOCATOR_POLICY_FEATURES`, `LOCATOR_POLICY_COLUMNS` | `schemas.py` |
-| `LOCATOR_FEATURE_COLUMNS`, `OCCURRENCE_FEATURE_COLUMNS` | `schemas.py` |
-| `SCOPE_DETERMINISTIC`, `SCOPE_POLICY` | `schemas.py` |
-| `SUBMISSION_METADATA_SCHEMA` (re-export of the Phase 1 schema, borrowed by `PROFILE_SCHEMA`) | `schemas.py` |
-| `DEFAULT_DOCUMENT_SUFFIXES`, `normalize_suffixes(values)` | `filters.py` |
-
-No command surface.
-
-## Tests
-
-Mirrored coverage lives under `tests/domain/filing_catalog/`.
 
 ## Deliberate gaps
 

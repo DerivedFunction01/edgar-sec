@@ -13,38 +13,11 @@ Presentation and execution layer for the metadata sync CLI subcommands.
 | Cohort augmentation | [augment.py](augment.py) |
 | Submissions HTTP client factory | [client.py](client.py) |
 
-
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| [client.py](client.py) | Submissions HTTP client factory from runtime settings. |
-| [sources.py](sources.py) | `cmd_refresh`, `cmd_family_index`, `cmd_compare`. |
-| [plan.py](plan.py) | `cmd_plan`, `cmd_status`. |
-| [run.py](run.py) | `cmd_run`. |
-| [merge.py](merge.py) | `cmd_merge`. |
-| [augment.py](augment.py) | `cmd_augment`. |
-| `__init__.py` | Package docstring only; no re-exports. |
-
 ## Contracts
 
 - Every command returns an integer exit code (0 on success).
 - Presentation output is emitted via `render_output` rather than direct JSON prints.
 - Unhandled domain exceptions bubble up to `cli.py:main` for uniform exit handling.
-
-## Public Surface
-
-- [sources.py](sources.py): `cmd_refresh`, `cmd_family_index`, `cmd_compare`
-- [plan.py](plan.py): `cmd_plan`, `cmd_status`
-- [run.py](run.py): `cmd_run`
-- [merge.py](merge.py): `cmd_merge`
-- [augment.py](augment.py): `cmd_augment`
-- [client.py](client.py): `build_client`
-
-
-## Mirrored Tests
-
-Mirrored tests live under `tests/pipelines/metadata_sync/commands/`.
 
 ## Deliberate Gaps
 

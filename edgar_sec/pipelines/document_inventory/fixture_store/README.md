@@ -22,20 +22,14 @@ Their `manifest.json` uses the shared foundation envelope for identity, version,
 storage path, and timestamps; store version, capture state, counts, and source-plan
 contributions live under `details`.
 
-## Public surface
-
-Import leaf APIs from `capture`, `reader`, `discovery`, or `models`; package imports
-do not re-export child symbols. Inventory-specific artifact paths are owned by
-[`document_inventory.paths`](../paths.py); fixture location and envelope validation
-come from [`foundation.runtime.fixtures`](../../../foundation/runtime/fixtures.py).
-
 ## Command surface
 
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
+
+### Usage examples
+
 The inventory operator owns fixture create, fill, and list commands.
-
-## Mirrored tests
-
-`tests/pipelines/document_inventory/fixture_store/`
 
 ## Deliberate gaps
 

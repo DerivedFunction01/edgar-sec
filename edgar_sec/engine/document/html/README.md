@@ -5,16 +5,6 @@
 Reduce filing markup to text that later stages can reason about line by line,
 without losing a table byte or inventing a page boundary that was not there.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `tags.py` | Tag classification: `PARAGRAPH_TAGS`, `CONTAINER_BLOCK_TAGS`, `TABLE_AND_PRE_TAGS`, `INLINE_TAGS`, `BLOCK_TAGS`. |
-| `tree.py` | `parse_html`, `FastHtmlNode`, `FastHtmlTree` over `selectolax`/lexbor. |
-| `cleaner.py` | The ordered Stage-1 cleaning passes plus `strip_non_displaying_blocks`. |
-| `breaks.py` | Break-markup sentinel injection outside `<TABLE>` spans; sentinel→marker conversion; marker-run collapsing; the composed `render_html_to_break_text`. |
-| `normalizer.py` | `normalize_html_document` and `decompose_html_structures` — the HTML-to-text projection. |
-
 ## Contracts
 
 - **Table bytes survive every pass.** Tables are masked before unescaping entities,
@@ -37,24 +27,10 @@ without losing a table byte or inventing a page boundary that was not there.
 - **No barrel re-exports.** `__init__.py` is a docstring; consumers import leaf
   modules.
 
-## Public surface
-
-- `PARAGRAPH_TAGS`, `CONTAINER_BLOCK_TAGS`, `TABLE_AND_PRE_TAGS`, `INLINE_TAGS`,
-  `BLOCK_TAGS` — `tags.py`.
-- `parse_html`, `FastHtmlNode`, `FastHtmlTree` — `tree.py`.
-- `clean_html_for_parsing`, `strip_ixbrl_inline_tags`,
-  `normalize_font_qualified_glyphs`, `strip_benign_font_styles`,
-  `strip_font_tag_and_noise_attributes`, `strip_office_metadata_attributes`,
-  `strip_toc_navigation_links`, `strip_non_displaying_blocks` — `cleaner.py`.
-- `PAGE_SPLIT_SENTINEL`, `PAGE_MARKER_LINE`, `PAGE_BREAK_HINT_TOKENS`,
-  `insert_page_sentinels`, `collapse_marker_runs`, `render_html_to_break_text` —
-  `breaks.py`.
-- `normalize_html_document`, `decompose_html_structures`, `NormalizedHtmlText` —
-  `normalizer.py`.
-
 ## Command surface
 
-None. Library package, no CLI.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Production consumers
 
@@ -68,11 +44,6 @@ None. Library package, no CLI.
 
 `decompose_html_structures` and `insert_page_sentinels` are called only from
 inside this package; their composed entry point is `render_html_to_break_text`.
-
-## Mirrored tests
-
-`tests/engine/document/html/` — `test_tags.py`, `test_tree.py`, `test_cleaner.py`,
-`test_breaks.py`, `test_normalizer.py`. One per module; all five exist.
 
 ## Deliberate gaps
 

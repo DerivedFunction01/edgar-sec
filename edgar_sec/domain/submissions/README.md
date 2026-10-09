@@ -11,13 +11,6 @@ the matching dataclasses for a registrant's profile, filings, and the aggregate 
 Not the parser or the Arrow-array builder (`engine/submissions/`), and not the pipeline
 that fetches and merges them (`pipelines/metadata_sync/`).
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `schemas.py` | The dataset schema and the struct types it composes, plus the dataset name, schema version, and terminal-status set |
-| `models.py` | `EntityProfile`, `SubmissionsAggregate`, `FilingRecord`, `Address`, `FormerName`, `Listing` |
-
 ## Contracts
 
 - The dataset is versioned as a whole. `DATASET_NAME` and `SCHEMA_VERSION` are
@@ -44,19 +37,6 @@ that fetches and merges them (`pipelines/metadata_sync/`).
   `status="partial"` is a legitimate published result.
 - Use `models.py` only for in-memory work. It is not a serialization format; the Arrow
   schema is the wire contract and is what the pipeline reads and writes.
-
-## Public surface
-
-- `SUBMISSION_METADATA_SCHEMA`, `DATASET_NAME`, `SCHEMA_VERSION`, `TERMINAL_STATUSES`,
-  and the struct types the schema composes — `schemas.py`.
-- `EntityProfile`, `SubmissionsAggregate`, `FilingRecord`, `Address`, `FormerName`,
-  `Listing` — `models.py`.
-
-No command surface.
-
-## Tests
-
-Tests mirror this package under `tests/domain/submissions/`.
 
 ## Deliberate gaps
 

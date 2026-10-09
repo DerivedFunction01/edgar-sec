@@ -15,30 +15,6 @@ Not a form classifier, taxonomy engine, or normalizer. Vocabulary arrives as
 typed evidence packs from `edgar_sec.domain.forms`; this package compiles and
 applies it but never owns it.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `models.py` | Immutable boundary, TOC, and body-anchor models plus their capability enums. |
-| `profiles.py` | `CoverProfile`, the `build_*_profile` functions, `COVER_PROFILES`, `get_profile`, and the per-profile label and phrase-rule vocabularies. |
-| `rules.py` | Compiles evidence packs into cover regexes and a lexical body pack, cached by evidence identity. |
-| `structure.py` | Generic PART/ITEM heading mechanics shared by the boundary, TOC, and body stages. |
-| `reflow.py` | The cover's two policies handed to the generic ASCII reflow engine. |
-| `closing.py` | Signature-block and exhibit-index detection. |
-| `body_context.py` | Logical-unit context and lexical pack glue for body-start detection. |
-| `body_start.py` | Forward body-start detection after the cover/TOC boundaries. |
-| `__init__.py` | Docstring only. No re-exports, per AGENTS.md §1.2. |
-
-Subpackages, each with its own README:
-
-| Package | Responsibility |
-| :--- | :--- |
-| `boundary/` | The evidence ladder that produces a `CoverBoundary`. See `boundary/README.md`. |
-| `toc/` | Table-of-contents span detection. See `toc/README.md`. |
-| `tables/` | Form-governed cover pseudo-table unwrapping. See `tables/README.md`. |
-| `checkmarks/` | Cover checkbox candidate extraction, constraint solving, and rewrite. See `checkmarks/README.md`. |
-| `healing/` | Bounded cover text healing and binary-block merging. See `healing/README.md`. |
-
 ## Contracts
 
 **Guarantees to callers**
@@ -73,37 +49,10 @@ Subpackages, each with its own README:
   computed; `find_cover_boundary` accepts a `BoundaryInput` carrying a cached
   `PageMarkerAnalysis` and does not recompute it when one is supplied.
 
-## Public surface
-
-- `find_cover_boundary`, `find_cover_boundary_for_profile` — `boundary/detector.py`.
-- `find_cover_start`, `confirm_backward_body`, `is_toc_like_line`,
-  `is_proxy_reference_disclosure`, `line_offset`, `line_at_offset`,
-  `next_nonblank_line`, `prev_nonblank_line`, `enabled` — `boundary/corridor.py`.
-- `compile_cover_rules`, `CompiledCoverRules` — `rules.py`.
-- `parse_section_heading`, `match_structural_line`, `is_exact_heading`,
-  `is_continuation_prose`, `is_preceding_continuation`, `SectionKind`,
-  `ParsedSection`, `StructuralRole`, `StructuralMatch`, `RE_PART`, `RE_ITEM_EXACT`
-  — `structure.py`.
-- `CoverProfile`, `COVER_PROFILES`, `get_profile`, `build_annual_profile`,
-  `build_quarterly_profile`, `build_current_profile`,
-  `build_generic_cover_profile`, `build_no_cover_profile` — `profiles.py`.
-- `find_body_start` — `body_start.py`.
-- `find_closing_span`, `ClosingSpan` — `closing.py`.
-- `is_checkbox_answer_line`, `is_cover_layout_line` — `reflow.py`.
-- `BoundarySignal`, `BoundaryMethod`, `BodyAnchorType`, `CoverBoundaryPolicy`,
-  `BoundaryEvidence`, `CoverBoundary`, `BoundaryInput`, `CoverStart`, `BodyRoot`,
-  `BodyStartEvidence`, `BodyStart`, `DocumentTopology` — `models.py`.
-
-The `toc/`, `tables/`, `checkmarks/`, and `healing/` surfaces are listed in those
-packages' READMEs.
-
 ## Command surface
 
-None. Library package, no CLI.
-
-## Tests
-
-Mirrored coverage lives under `tests/engine/forms/cover/`.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

@@ -14,18 +14,6 @@ already failed across *separate* runs.
 This is a transport-and-policy package. It knows nothing about filings or archive
 files — a caller supplies a URL and chooses the accessor.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `client.py` | `SecHttpClient` and `default_headers`; the one place a request is sent. |
-| `rate_limit.py` | `RateLimiter`: slot reservation, throttle escalation, quiet-period recovery. |
-| `retry.py` | `RetryPolicy`: status classification and jittered exponential backoff. |
-| `cache.py` | `SqlCache`: compressed response cache and failure ledger in one SQLite file. |
-| `metrics.py` | `HttpMetrics`: lock-guarded counters and `snapshot()`. |
-| `errors.py` | The transport error taxonomy. |
-| `__init__.py` | Docstring only. No re-exports. |
-
 ## Contracts
 
 **Guarantees to callers**
@@ -83,28 +71,6 @@ files — a caller supplies a URL and chooses the accessor.
 - Read `metrics.snapshot()` rather than individual counters if a consistent view
   matters, and note that `responses_2xx` increments for every recorded status —
   `status_counts` is the field to trust.
-
-## Public surface
-
-Entry points by owning module; each module's docstring is authoritative for its
-members.
-
-- `client.py` — `SecHttpClient`, its `from_settings` constructor, the accessors
-  `get_bytes`, `get_text`, `get_json`, `get_json_ex`, `peek_cache`,
-  `load_failure_entry`, and `default_headers`.
-- `rate_limit.py` — `RateLimiter`.
-- `retry.py` — `RetryPolicy`.
-- `cache.py` — `SqlCache` and `make_cache_store`.
-- `metrics.py` — `HttpMetrics`.
-- `errors.py` — the error hierarchy, which `client.py` re-exports.
-
-**Command surface:** none.
-
-## Mirrored tests
-
-`tests/infra/sec_http/`, one file per source module, with network fakes injected
-through `session_factory`. Modules without a mirrored file are named in
-[`../README.md`](../README.md).
 
 ## Deliberate gaps
 

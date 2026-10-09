@@ -15,26 +15,6 @@ ambiguous block therefore resolves to preserve, and a block that still does not 
 grid after the boundary resolver has absorbed everything it may absorb is downgraded
 rather than tagged.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `types.py` | `ReflowPolicy`, `SpanDecision`, `ReflowResult`, and the `ACTION_*` constants. |
-| `features/geometry.py` | `_compute_features` — the single-pass compact feature record the resolver's discipline gate and the rule engine read. |
-| `features/context.py` | `BlockContext` — the memoized scalar set every calibrated threshold is defined against. |
-| `rules/thresholds.py` | The calibrated feature registry. |
-| `rules/cascades.py` | The threshold, quota, and synergy rules, and `decide_block` — measurements to one action. |
-| `engine/rewrapper.py` | `reflow_ascii` plus segmentation, classification, generic table row-run discovery, boundary resolution, and rendering. |
-| `engine/mapper.py` | `build_line_mapper` — pre-reflow line number to post-reflow line number. |
-
-`features/`, `rules/`, and `engine/` carry their own `README.md`. `__init__.py` is a
-docstring per `AGENTS.md` §1.2, so consumers import the leaf:
-
-```python
-from edgar_sec.engine.reflow.engine.rewrapper import reflow_ascii
-from edgar_sec.engine.reflow.types import ReflowPolicy
-```
-
 ## Contracts
 
 - **The output is a pure function of the stage's inputs.** `reflow_ascii` takes text, a body
@@ -104,18 +84,10 @@ ReflowPolicy(
 also what the boundary resolver passes to `is_structural_table_bridge`. A caller that
 supplies a different bridge predicate changes both, consistently.
 
-## Public surface
-
-- `reflow_ascii(text, *, body_start_line, page_analysis=None, policy=None) -> ReflowResult`
-  — the whole stage (`engine/rewrapper.py`).
-- `build_line_mapper(decisions) -> Callable[[int], int]` (`engine/mapper.py`).
-- `ReflowPolicy`, `ReflowResult`, `SpanDecision`, the `ACTION_*` constants
-  (`types.py`); `BlockContext` (`features/context.py`); `decide_block` and the
-  feature registry (`rules/`).
-
 ## Command surface
 
-None. Library only.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Production consumers
 
@@ -126,11 +98,6 @@ None. Library only.
   slice with the same policy minus the bridge and tail callbacks.
 - `edgar_sec/engine/tables/resolver.py` — reads `ReflowPolicy` and the computed features to
   grow each confirmed table outward and hold it to the tag discipline gate.
-
-## Mirrored tests
-
-`tests/engine/reflow/` — one test module per source module, including the
-`features/`, `rules/`, and `engine/` sub-trees.
 
 ## Deliberate gaps
 

@@ -21,19 +21,6 @@ from a default.
 It is not a processing database and not an ORM. There is no schema migration
 system and no table registry.
 
-## Module map
-
-| Module | Responsibility |
-| :--- | :--- |
-| `atomic.py` | The three atomic writers and the shared parent-directory fsync — the tmp-then-rename discipline the rest of the layer copies. |
-| `parquet.py` | The Parquet format constants, the PyArrow read/write wrappers, and `StagedParquetWriter` for incremental chunk staging and resumption. |
-| `duckdb.py` | `connect()`, the only `duckdb.connect()` call site in `edgar_sec`; the SQL dialect primitives (`sql_literal`, `sql_identifier`, `sql_path_list`); the atomic out-of-core COPY; and the generic duplicate/null-key checks. |
-| `dag/` | Unified append-only snapshot DAG engine, lineage traversal, compaction, publication locks, and CLI runner. |
-| `review/` | Generalized review run artifacts, multi-format diff engine, comparison reporting, and operator/CLI harness. |
-| `object_store/` | Shared SQLite persistence for immutable expression nodes and session aliases. |
-| `cohort/` | Shared cohort paths, SQLite catalog, and immutable cohort datasets. |
-| `__init__.py` | Docstring only. No re-exports. |
-
 ## Contracts
 
 **Guarantees this package makes to its callers**
@@ -133,35 +120,6 @@ system and no table registry.
   staging, so the caller does not have to — but the caller chooses where.
 - Close what you open: the DuckDB connection, and any `SqlCache`. Nothing here
   registers an `atexit` hook.
-
-## Public surface
-
-Entry points by owning module; each module's docstring is authoritative for its
-members.
-
-- `atomic.py` — the three atomic writers, each returning the bytes written, plus
-  the shared parent-directory fsync.
-- `parquet.py` — the two format constants, the PyArrow read/write wrappers, and
-  `StagedParquetWriter` for incremental chunk staging and resumption.
-- `duckdb.py` — `connect()`, the SQL dialect primitives (`sql_literal`,
-  `sql_identifier`, `sql_path_list`), `copy_query_to_parquet`, and the generic
-  duplicate/null-key checks.
-- `manifests.py` — snapshot identity and publication, the pointer, part
-  resolution, and the dependency closure. The publishing dataset and phase are
-  supplied by the caller, because several phases publish through this one
-  function and a constant here would mislabel all but one of them.
-- `object_store/store.py` — `ObjectStore` session, immutable-object, and alias
-  operations; record types are owned by `object_store/models.py`.
-- `cohort/` — the `CohortPaths` and `CohortCatalog` APIs; see its README for the
-  supported storage boundary.
-
-**Command surface:** none. The consumer commands (`documents fill`, `documents
-run`, `documents review-artifacts`, …) live in
-`pipelines/document_storage/cli.py`, in Layer 4, not here.
-
-## Mirrored tests
-
-`tests/infra/storage/`, one file per source module.
 
 ## Deliberate gaps
 

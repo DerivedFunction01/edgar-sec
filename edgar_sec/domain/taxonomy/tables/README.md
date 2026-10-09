@@ -9,14 +9,6 @@ Declares what each table family *looks like* — its vocabulary evidence, its ge
 bounds, its repair policy, and its scope — and nothing about how a candidate table is
 scored against those declarations. That scoring is `engine/tables/taxonomy/classifier.py`.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `shapes.py` | `ShapeConstraint` — min/max rows and columns, numeric-density bounds, average cell width |
-| `specs.py` | The spec, match, classification, and evidence types, the scope and repair-policy enums, and the n-gram tier builder |
-| `families.py` | `FAMILY_SPECS` — the master registry, assembled from the statement specs, the schedule specs, and the cover component specs |
-
 ## Contracts
 
 - **Immutability:** the spec, match, classification, and evidence types are frozen
@@ -28,19 +20,6 @@ scored against those declarations. That scoring is `engine/tables/taxonomy/class
 - **One ordering source.** A family becomes real when it is listed in
   `FAMILY_SPECS`; the classifier and its mirrored test iterate the registry rather
   than a second list, so a spec absent from the registry is invisible to both.
-
-## Public surface
-
-- `FAMILY_SPECS`, the registry every family is reached through — `families.py`.
-- `TableFamilySpec`, `VocabularyEvidence`, `FamilyMatch`, `FamilyClassification`,
-  `TableScope`, `RepairPolicy`, and the n-gram tier builder — `specs.py`.
-- `ShapeConstraint` — `shapes.py`.
-
-No command surface.
-
-## Tests
-
-Tests mirror this package under `tests/domain/taxonomy/tables/`.
 
 ## Deliberate gaps
 

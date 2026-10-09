@@ -11,20 +11,6 @@ why the SQL console exists — a schema and a sample row rarely settle "did the 
 index agree with the payload", and reading a hundred-thousand-row Parquet file by
 other means is not a workflow.
 
-## Module layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `model.py` | `ArtifactSummary` and the opaque id/path/revision vocabulary. Owns the wire field names. |
-| `loaders.py` | One loader per published dataset type; runs them all; lists browsable documents. |
-| `tree.py` | The lazy filesystem explorer: directory children, reader classification, database table children, bounded text reads. |
-| `session.py` | The single connection seam and the interrupt-based statement timeout. |
-| `datasets.py` | `DatasetRef`, schema, paged rows, column stats, BLOB fetch. |
-| `console.py` | The guarded read-only SQL console. |
-| `server.py` | The read-only HTTP endpoints and the optional static UI mount. |
-| `cli.py` | `python -m edgar_sec.apps.viewer.cli`; argument parsing and the loopback default. |
-| `ui/` | The React client. See "The browser bundle". |
-
 ## Discovery
 
 The explorer is a **lazy filesystem tree**, not a flat listing: one request returns
@@ -90,22 +76,13 @@ One of them has a caller-visible consequence: a native DuckDB source has to be
 file addressable by name, so `run_dataset_sql` refuses a `duckdb` source outright
 and `App.tsx` renders a disabled panel instead. The tables still browse.
 
-## Public surface
-
-| Symbol | Module |
-| :--- | :--- |
-| `create_app`, `UI_DIST` | `server` |
-| `DatasetRef`, `dataset_schema`, `dataset_rows`, `dataset_column_stats`, `dataset_blob`, `DatasetError`, `MAX_LIMIT`, `MAX_PAGE_BYTES` | `datasets` |
-| `run_dataset_sql`, `MAX_SQL_ROWS`, `MAX_PAYLOAD_BYTES` | `console` |
-| `ArtifactSummary`, `TreeEntry` | `model`, `tree` |
-| `artifact_id`, `artifact_path`, `artifact_table`, `manifest_revision`, `compute_union_revision` | `model` |
-| `LOADERS`, `DatasetLoader`, `run_all`, `iter_documents` | `loaders` |
-| `tree_children`, `read_text_file`, `MAX_TEXT_BYTES`, `ROOT_NODE_ID` | `tree` |
-
-`viewer/__init__.py` is a docstring and re-exports nothing, per `AGENTS.md` §1.2.
-Consumers import from the leaf module.
-
 ## Command surface
+
+<!-- AUTOGEN:COMMANDS:START -->
+`python -m edgar_sec.apps.viewer.cli` — Serve the read-only dataset viewer (API + built UI).
+<!-- AUTOGEN:COMMANDS:END -->
+
+### Usage examples
 
 | Command | Effect |
 | :--- | :--- |
@@ -147,11 +124,11 @@ bun test
 
 `dist/` is not tracked.
 
-## Mirrored tests
+## Artifact layout
 
-[`tests/apps/viewer/`](../../../tests/apps/viewer/).
-`tests/test_network_isolation.py` additionally pins that the viewer cannot reach
-`infra.sec_http`.
+<!-- AUTOGEN:PATHS:START -->
+No paths dataclass found.
+<!-- AUTOGEN:PATHS:END -->
 
 ## Deliberate gaps
 

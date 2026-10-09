@@ -5,13 +5,6 @@
 Computes text-layout and geometry measurements for ASCII blocks consumed by reflow and table
 resolution.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `context.py` | Block-level text measurements and derived properties. |
-| `geometry.py` | Compact layout and numeric-cell measurements. |
-
 ## Contracts
 
 - Leading indentation is not treated as internal column spacing.
@@ -19,18 +12,10 @@ resolution.
 - Form-specific checkbox and financial-bridge signals are supplied through the policy.
 - Checkmark evidence cannot be removed by a caller-supplied predicate.
 
-## Public surface
-
-- `BlockContext` — public block-level measurement interface (`context.py`).
-- Geometry helpers and the compact feature record (`geometry.py`).
-
 ## Command surface
 
-None. This is a library package with no CLI.
-
-## Tests
-
-Mirrored coverage lives under `tests/engine/reflow/features/`.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

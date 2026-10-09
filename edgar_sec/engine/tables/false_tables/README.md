@@ -4,13 +4,6 @@
 
 Rejects layout tables and unwraps their content as readable prose or list text.
 
-## Module → responsibility
-
-| Module | Responsibility |
-|---|---|
-| `detector.py` | False-table classification for grids and rendered blocks. |
-| `unwrapper.py` | Rebuild text from rejected grids and preserve surviving geometry. |
-
 ## Contracts
 
 - **A retained table is never rewritten.** The rewrite only removes blocks the detector rejected;
@@ -26,26 +19,10 @@ Rejects layout tables and unwraps their content as readable prose or list text.
   value, when its first column is an `ITEM`/`PART` reference or a TOC row, or when the rendered text
   is a bare numeric separator.
 
-## Public surface
-
-```python
-from edgar_sec.engine.tables.false_tables.detector import (
-    is_false_grid,
-    is_false_table,
-)
-from edgar_sec.engine.tables.false_tables.unwrapper import (
-    cleanup_false_tables_with_metadata,
-    unwrap_grid,
-)
-```
-
 ## Command surface
 
-None. Library package, no CLI.
-
-## Mirrored tests
-
-Mirrored coverage lives under `tests/engine/tables/false_tables/`.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

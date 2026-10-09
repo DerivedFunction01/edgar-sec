@@ -5,19 +5,6 @@ Every configurable value in the repository is declared once here, as a
 resolver; it is not a config file reader, a `.env` writer, or a place for
 phase-specific parameters.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `__init__.py` | The spec model, name derivation, collection, resolution, and dotenv rendering. |
-| `runtime.py` | Concurrency, memory, and chunk specs. |
-| `sec.py` | SEC identity, rate limit, timeout, retry, and failure-history specs; `SecSettings`. |
-| `paths.py` | Artifacts, cache root, and cache TTL specs. |
-| `catalog.py` | Filing-catalog and document-storage batch and row-group specs. |
-| `dag.py` | Snapshot DAG swimlane-viewer graph-limit spec. |
-| `interactive.py` | Interactive pick-list page-size spec. |
-| `validators.py` | The shared numeric bounds checks. |
-
 ## The registry
 
 Every setting under a dotted path, with its derived `env` name and per-spec source
@@ -84,22 +71,6 @@ mirrored test instead.
 - Treat a change to the `validate_fraction` bound as settings-breaking: `1.0` is
   currently accepted, and narrowing the range would reject a value that resolves
   today.
-
-## Public surface
-
-- `SettingSpec`, `MISSING`, `environment_name`, `collect_specs`,
-  `resolve_settings`, `resolve_runtime_settings`, `flatten_settings`,
-  `render_dotenv`, `RuntimeSettings`. `__init__.py`.
-- `SecSettings`. `sec.py`.
-- The `get_*_specs()` provider and `DEFAULT_*` value constants that each concern
-  module exports. `validators.py` owns the shared bounds checks.
-
-## Mirrored tests
-
-[`tests/foundation/runtime/`](../../../../tests/foundation/runtime/). The catalog
-and document defaults are additionally pinned against their owning layers in
-`tests/infra/storage/test_parquet.py` and
-`tests/pipelines/document_storage/test_settings_contract.py`.
 
 ## Deliberate gaps
 

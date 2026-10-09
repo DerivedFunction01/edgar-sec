@@ -4,25 +4,11 @@
 
 Transform an SEC filing index-page response into typed inventory outcomes without fetching or persisting data.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `parser.py` | Structural HTML parsing, entry URL validation, and parser fingerprint. |
-
 ## Contracts
 
 - Parsing consumes explicit bytes and domain records, uses the shared HTML-tree engine, and performs no network or artifact access.
 - Unknown or malformed structure yields typed refusal/failure outcomes, never a fabricated empty success.
 - Engine imports are restricted to `infra`, `domain`, and `foundation`; this package imports no pipeline or frozen `document_storage` modules.
-
-## Public surface
-
-`parse_html_index` and `PARSER_FINGERPRINT` — [`parser.py`](parser.py). There is no command surface.
-
-## Tests
-
-Mirrored tests: `tests/engine/index_pages/`.
 
 ## Deliberate gaps
 

@@ -19,26 +19,6 @@ lifecycle.
 Not a pipeline runner: this package does not run a pipeline, create workers, or
 know what a CIK or an accession number is.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `env.py` | `.env` parsing and typed environment reads; the sole `os.environ` owner. |
-| `fixtures.py` | Dataset-scoped fixture locations and pure common-manifest-envelope validation. |
-| `interactive.py` | Terminal prompts, choice menus, and the operator entrypoint policy. |
-| `memory.py` | glibc heap reclamation. |
-| `partitions.py` | Partition-spec parsing and balanced work distribution. |
-| `paths.py` | Project roots, runtime root, and transient layout primitives. |
-| `progress.py` | tqdm adapters and the optional-callback contract. |
-| `render.py` | Component-based terminal renderer for aligned rows and tabular grids. |
-| `resources.py` | cgroup-aware resource derivation and `RuntimeResourceProfile`. |
-| `settings/` | The typed settings registry. See [settings/README.md](settings/README.md). |
-| `__init__.py` | One-line docstring only. No re-exports, per AGENTS.md §1.2. |
-
-`env.py` is imported by `paths.py` and by `settings/__init__.py`.
-`resources.py` and `settings/` import each other through function-local imports,
-so the cycle is closed only at call time.
-
 ## Contracts
 
 **Guarantees this package makes to its callers**
@@ -127,36 +107,6 @@ follows: with no arguments it shows the interactive menu and returns `0` when th
 user exits; with arguments it calls `cli_main(args)`. `run.py` at the repository
 root is the separate launcher over a static `ENTRIES` tuple, and `check.py` is
 the separate verification gate. Neither is in this package.
-
-## Public surface
-
-- `get_env` / `get_env_int` / `get_env_float` / `get_env_bool` / `load_dotenv` / `DEFAULT_DOTENV_PATH` — environment resolution. `env.py`.
-- `derive_resources`, `RuntimeResourceProfile`, `available_memory_bytes` / `read_cgroup_v2_available_bytes` / `read_cgroup_v1_available_bytes` / `read_proc_mem_available_bytes`, `auto_worker_count` / `usable_memory_bytes` / `default_cpu_cores` / `default_threads` / `default_memory_limit`, and `DEFAULT_MEMORY_FRACTION` (0.6), `MIN_MEMORY_MIB` (256), `DEFAULT_WORKER_MEMORY_MIB` (512), `DEFAULT_WORKER_MEMORY_SAFETY` (0.9). `resources.py`.
-- `resolve_paths` / `ProjectPaths` / `ProjectRootError` / `PACKAGE_ROOT`. `paths.py`.
-- `runtime_root` / `transient_dir` and the shared layout constants `TRANSIENT_DIR`, `CURRENT_DIR`, `PLAN_FILE_NAME`, `SNAPSHOTS_DIR`, `RUNTIME_DIR`. `paths.py`.
-- `FixturePaths` / `fixture_paths` / `fixtures_root` / `validate_fixture_component` / `FixtureManifestEnvelope` / `FixtureManifestError`, plus fixture layout constants. `fixtures.py`.
-- `reclaim` — `gc.collect()` plus a best-effort `malloc_trim(0)`. `memory.py`.
-- `parse_id_selection` — `'1-3,5'` to `(1, 2, 3, 5)`; raises `ValueError` for a descending range. `partitions.py`.
-- `divide_ids_among_workers` — balanced round-robin buckets. `partitions.py`.
-- `ProgressCallback` / `emit_progress` / `make_tqdm_callback` / `make_merge_progress_callback` — progress wiring; `ProgressCallback` is `Callable[[dict[str, Any]], None] | None`. `progress.py`.
-- `MenuAction` / `menu_action` / `assign_menu_keys` / `build_menu` / `prompt_text` / `prompt_choice` / `PickItem` / `prompt_paginated_choice` / `run_interactive_menu` / `operator_entrypoint` — terminal presentation. `interactive.py`; the pick-list page default comes from the `interactive.page_size` setting in `settings/interactive.py`.
-
-## Tests
-
-- `tests/foundation/runtime/test_env.py`
-- `tests/foundation/runtime/test_interactive.py`
-- `tests/foundation/runtime/test_interactive_settings.py` (mirrored test for `settings/interactive.py`)
-- `tests/foundation/runtime/test_memory.py`
-- `tests/foundation/runtime/test_partitions.py`
-- `tests/foundation/runtime/test_paths.py`
-- `tests/foundation/runtime/test_fixtures.py`
-- `tests/foundation/runtime/test_resources.py`
-- `tests/foundation/runtime/test_settings.py` (shared with the `settings/` subpackage)
-- `tests/foundation/runtime/test_runtime_settings.py` (mirrored test for `settings/runtime.py`)
-
-`progress.py` has no mirrored test module. The `settings/` specs backing this
-package's resources are exercised through `test_settings.py` and
-`test_runtime_settings.py`.
 
 ## Deliberate gaps
 

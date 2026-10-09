@@ -11,21 +11,6 @@ never reported as the weaker density or aligned-row forms, because a caller
 reading `method` can trust that `heading_rows` means a heading *and* rows were
 both found.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `finder.py` | The method ladder, table-boundary claiming, and end refinement. |
-| `analysis.py` | Row gathering, block density, and the late-item anachronism test. |
-| `residue.py` | Consumes trailing TOC residue until substantive prose begins. |
-| `patterns.py` | TOC-block-specific regex vocabulary. |
-| `models.py` | `TocSpan` and `TocEvidence`. |
-| `__init__.py` | One-line docstring only. No re-exports, per AGENTS.md §1.2. |
-
-`finder.py` depends on `analysis.py`, `residue.py`, `patterns.py`, and
-`models.py`; `residue.py` depends on `analysis.py` and `patterns.py`. Nothing in
-this package imports `finder.py`.
-
 ## Contracts
 
 - Methods, strongest first: `heading_rows`, `weak_heading_rows`,
@@ -46,26 +31,10 @@ this package imports `finder.py`.
 - `start_offset` and `end_offset` are character offsets into the same string
   `start_line` and `end_line` index into.
 
-## Public surface
-
-- `find_toc_span(text, *, start_line=0, max_lines=None, minimum_rows=2, derived_taxonomy=None, page_analysis=None) -> TocSpan | None` — `finder.py`.
-- `consume_toc_residue(lines, start_index, limit, derived_taxonomy=None, page_marker_lines=None) -> int` — `residue.py`.
-- `normalize_for_matching`, `is_anachronistic_late_item`, `score_block_toc_density` — `analysis.py`.
-- `is_toc_row`, `looks_like_toc_row`, `looks_like_toc_tabular` — re-exported from `analysis.py`; declared in `edgar_sec.engine.tables.toc.patterns`.
-- `TocSpan`, `TocEvidence` — `models.py`.
-- `RE_TOC_HEADING`, `RE_TOC_ITEM`, `RE_TOC_PART_ROW`, `RE_TOC_PART_TEXT`, `RE_TOC_NUMERIC_LABEL`, `WEAK_TOC_HEADINGS` — `patterns.py`.
-
 ## Command surface
 
-None. Library package, no CLI.
-
-## Tests
-
-- `tests/engine/forms/cover/toc/test_models.py`
-- `tests/engine/forms/cover/toc/test_patterns.py`
-- `tests/engine/forms/cover/toc/test_analysis.py`
-- `tests/engine/forms/cover/toc/test_residue.py`
-- `tests/engine/forms/cover/toc/test_finder.py`
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

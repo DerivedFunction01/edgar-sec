@@ -8,17 +8,6 @@ statement, cash flows, stockholders' equity, and section bridges), so a downstre
 or table processor can detect statement transitions and closing totals without hardcoding
 regexes in parser logic.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `balance.py` | Balance sheet term sets, closing-total terms and pattern, exclusions, and the family spec |
-| `income.py` | Income statement term sets, closing-total terms and pattern, exclusions, and the family spec |
-| `cash_flow.py` | Operating/investing/financing term sets, closing-total terms and pattern, exclusions, and the family spec |
-| `equity.py` | Equity term sets, closing-total terms and pattern, exclusions, and the family spec |
-| `bridge.py` | Section-bridge labels and the pattern that matches them |
-| `predicates.py` | The supported entry point for testing whether a line is a bridge label or a closing total |
-
 ## Contracts
 
 - **Deterministic patterns:** every alternation is compiled by
@@ -28,20 +17,6 @@ regexes in parser logic.
   The tail predicate unions every statement's closing-total pattern with the ASC 718
   compensation rollforward's, so a stock-compensation closing balance counts as a
   financial table tail.
-
-## Public surface
-
-- `is_financial_table_bridge_line(line)` and `is_financial_table_tail_line(line)` —
-  the entry point for line tests — `predicates.py`.
-- One `<STATEMENT>_SPEC` per statement, with its term sets, closing-total pattern, and
-  exclusions — the corresponding statement module.
-- Section-bridge labels and their pattern — `bridge.py`.
-
-No command surface.
-
-## Tests
-
-Tests mirror this package under `tests/domain/taxonomy/statements/`.
 
 ## Deliberate gaps
 

@@ -6,20 +6,6 @@ The last mile. `rewrapper.py` is the whole stage: mask, project the body boundar
 decide, resolve table boundaries, merge, render, restore. `mapper.py` translates a decision
 trace recorded against the source into the coordinate frame of the output.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `rewrapper.py` | `reflow_ascii` plus `_render_block`, `_segment`, `_is_bullet_prose_block`, `_merge_adjacent_prose_decisions`, `_classify_block`, `_masked_body_start`. |
-| `mapper.py` | `build_line_mapper` — pre-reflow line number to post-reflow line number. |
-
-`__init__.py` is a docstring per `AGENTS.md` §1.2. Consumers import the leaf:
-
-```python
-from edgar_sec.engine.reflow.engine.mapper import build_line_mapper
-from edgar_sec.engine.reflow.engine.rewrapper import reflow_ascii
-```
-
 ## Contracts
 
 - **Output is a pure function of the stage's inputs.** `text`, `body_start_line`,
@@ -61,24 +47,16 @@ every decision boundary is either the first line of an unwrap block, which the o
 at that index, or at or after a prior `end_line`. Interior lines of a collapsed block have no
 distinct output line to name.
 
-## Public surface
-
-- `reflow_ascii(text, *, body_start_line, page_analysis=None, policy=None) -> ReflowResult`.
-- `build_line_mapper(decisions) -> Callable[[int], int]`.
-
 ## Command surface
 
-None. This is a library package with no CLI.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Production consumers
 
 - `edgar_sec/engine/forms/normalize.py` — `normalize_document`, on the ASCII branch
   (representation is not HTML, and `body_start_line > 0`).
 - `edgar_sec/engine/forms/cover/healing/text.py` — `heal_cover_text`, on the cover slice.
-
-## Tests
-
-Mirrored coverage lives under `tests/engine/reflow/engine/`.
 
 ## Deliberate gaps
 

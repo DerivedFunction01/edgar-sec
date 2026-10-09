@@ -11,12 +11,6 @@ Answer two questions for the rest of the engine: *which byte ranges are a table*
 me those bytes back unchanged*. Nothing here decides where a table begins semantically, converts
 HTML to a grid, or unwraps a layout table — those are the sibling modules in `engine/tables/`.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `tags.py` | The whole protocol: span location, masking, restoration, wrapper-tag stripping, boundary placement, and the sentinel and tag-regex vocabulary every masking consumer shares. |
-
 ## Contracts
 
 - **Restoration is byte-for-byte and verified.** `restore_tagged_tables` reinstates the exact span
@@ -31,15 +25,10 @@ HTML to a grid, or unwraps a layout table — those are the sibling modules in `
   masked positions; slicing masked text with `span.start` is wrong.
 - **Standard library only.** Enforced by the `layer-boundary` scanner. No I/O, no settings reads.
 
-## Public surface
-
-`find_table_spans`, `mask_tagged_tables`, `restore_tagged_tables`,
-`strip_table_wrapper_tags`, and `ensure_table_tag_boundaries`, with `TableSpan`,
-`ProtectedText`, and the sentinel and tag-regex constants, all in `tags.py`.
-
 ## Command surface
 
-None. Library package, no CLI.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Production consumers
 
@@ -52,10 +41,6 @@ None. Library package, no CLI.
 - `engine/reflow/types.py`, `engine/reflow/features/context.py`, `engine/reflow/engine/rewrapper.py` —
   `TableSpan`, the tag patterns, and mask/restore plus `ensure_table_tag_boundaries`.
 - `engine/tables/policy/intro.py` — the sentinel prefix, to refuse to reunite prose across a table.
-
-## Mirrored tests
-
-`tests/engine/tables/protection/`.
 
 ## Deliberate gaps
 

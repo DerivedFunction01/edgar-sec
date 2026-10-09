@@ -7,15 +7,6 @@ Nothing here reads, writes, or requests anything. Fetching is
 `pipelines/document_storage/fetching.py`, payload storage is
 `pipelines/document_storage/checkpoint.py`, normalization is `engine/`.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `models.py` | `DocumentLocator`, `FilingOccurrence`, `RawDocumentBlob`, `NormalizedDocument`, `NormalizationFailure`, `DocumentKind`, and the key-derivation functions |
-| `acquisition.py` | `FetchResult`, `AcquiredSubmission`, `SubmissionDocument`, `SubmissionFormat`, `AcquisitionSource`, `AcquisitionFailure`, `FetchStatus`, `direct_acquisition()`, `describe_submission_document()`, `is_stub_document_path()` |
-| `blocks.py` | `BlockKind`, `DocumentBlock`, `BlockStream` — the flat 1D typed block stream |
-| `route.py` | `DocumentRoute`, `document_route()`, `content_route()`, `is_markup_document_path()`, `mime_type_for_suffix()`, `archive_root_candidate()`, and the representation names — the acquisition and normalization routes one document path selects |
-
 ## Contracts
 
 - `DocumentLocator.document_locator_key` is derived, never supplied: `from_parts()`
@@ -85,27 +76,6 @@ Nothing here reads, writes, or requests anything. Fetching is
 - Pass an SGML `<FILENAME>` to `content_route()`, never to `document_route()`.
 - Keep `FetchResult.source_payload` as transport data. It is the only place a complete
   envelope is held, and it exists for fixture seeding and delegated exhibits.
-
-## Public surface
-
-- `DocumentLocator` and its `from_parts()` constructor, plus the blob, occurrence,
-  normalization, and failure records — `models.py`.
-- `canonical_accession_part()`, `derive_document_locator_key()`,
-  `derive_occurrence_id()`, and `DocumentKind` — `models.py`.
-- `FetchResult`, `AcquiredSubmission`, `SubmissionDocument`, `SubmissionFormat`,
-  `AcquisitionSource`, `AcquisitionSourceKind`, `AcquisitionFailure`, `FetchStatus`,
-  `direct_acquisition()`, `describe_submission_document()`, and
-  `is_stub_document_path()` — `acquisition.py`.
-- `BlockKind`, `DocumentBlock`, `BlockStream` — `blocks.py`.
-- `DocumentRoute`, `document_route()`, `content_route()`, `is_rendered_document_path()`,
-  `is_markup_document_path()`, `archive_root_candidate()`, `mime_type_for_suffix()`,
-  and the `REPRESENTATION_*` names — `route.py`.
-
-No command surface.
-
-## Tests
-
-Tests mirror this package under `tests/domain/document/`.
 
 ## Deliberate gaps
 

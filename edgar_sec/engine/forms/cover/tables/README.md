@@ -10,13 +10,6 @@ only unwrappable because the filing's own form says so — chiefly the annual /
 quarterly / transition report-period checkbox block — and it refuses to touch
 anything outside the cover.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `cleaner.py` | `clean_cover_tables` and its raw-text classifier. |
-| `__init__.py` | One-line docstring only. No re-exports, per AGENTS.md §1.2. |
-
 ## Contracts
 
 - Only tables whose start tag occurs before `boundary.end_line` are evaluated.
@@ -35,17 +28,10 @@ anything outside the cover.
 - A boundary whose `end_line` exceeds the line count is treated as covering the
   whole document rather than raising.
 
-## Public surface
-
-- `clean_cover_tables(text, boundary, table_geometries=(), *, enabled_cleaners=("report_period",)) -> tuple[str, tuple[TableGeometry, ...]]` — `cleaner.py`.
-
 ## Command surface
 
-None. Library package, no CLI.
-
-## Tests
-
-- `tests/engine/forms/cover/tables/test_cleaner.py`
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

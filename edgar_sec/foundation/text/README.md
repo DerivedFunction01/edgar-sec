@@ -6,24 +6,6 @@ lists, Unicode whitespace normalisation, Cartesian phrase generation, soft-wrap
 line healing, and token-level matching. It does not parse documents and knows
 nothing about filings.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| [`automaton.py`](automaton.py) | Token-level Aho-Corasick automaton, lexical matcher, evidence-family compilation, classification. |
-| [`dates.py`](dates.py) | Month tables, ordered SEC date formats, year expansion and extraction. |
-| [`evidence.py`](evidence.py) | Token-boundary lexical evidence packs and the tier scorer. |
-| [`compounds.py`](compounds.py) | Cartesian compound phrases, plural and US/UK variants, term normalisation. |
-| [`grammar.py`](grammar.py) | English closed-class words and prose grammar patterns. |
-| [`healing.py`](healing.py) | Soft-wrap line joining: phrase-sequence rules and boundary guards. |
-| [`normalize.py`](normalize.py) | Unicode whitespace sanitisation and blank-line compaction. |
-| [`patterns.py`](patterns.py) | Domain-neutral line-shape regexes: leaders, column gaps, separators. |
-| [`tokens.py`](tokens.py) | Bullet and ordered markers, footnote marks, Roman numeral conversion. |
-
-`text/` and [`foundation/regex/`](../regex/README.md) are the only path prefixes the
-`regex-alternations` scanner exempts: multi-branch alternation vocabulary
-legitimately lives here, so build it with the regex DSL rather than by hand.
-
 ## Contracts
 
 **Guarantees to callers**
@@ -54,43 +36,10 @@ legitimately lives here, so build it with the regex DSL rather than by hand.
   **unescaped** when they contain `|` or start with `\d`. A literal containing
   regex metacharacters is a footgun.
 
-## Public surface
-
-Import from the leaf module.
-
-- [`dates.py`](dates.py): `parse_date`, `expand_2digit_year`, `extract_years`,
-  `SEC_DATE_FORMATS` with its `DateFormat` / `DateComponents` / `ParsedDate`
-  records, the `MONTH_*` vocabulary, and the year-range constants.
-- [`automaton.py`](automaton.py): `tokenize`, `Token`,
-  `MultiPatternAutomaton`, `LexicalMatcher`, `compile_lexical_matcher`,
-  `compile_family_automaton`, `MatchPayload`, `ClassificationMatch`,
-  `tier_confidence`, `CaseMode`.
-- [`evidence.py`](evidence.py): `LexicalEvidencePack`, `EvidenceTier`,
-  `EvidenceContext`, `compile_evidence_pack`, `tier_confidence`.
-- [`compounds.py`](compounds.py): `expand_alternations`, `expand_variants`,
-  `expand_compounds`.
-- [`grammar.py`](grammar.py): the closed-class word lists and the prose patterns
-  compiled from them.
-- [`healing.py`](healing.py): `heal_split_lines`, `should_join_two_lines`,
-  `PhraseSequenceRule`.
-- [`normalize.py`](normalize.py): `sanitize_unicode_whitespace`,
-  `collapse_whitespace`, `collapse_excessive_blank_lines`, `NORMALIZE_TO_SPACE`,
-  `STRIP_ZERO_WIDTH`.
-- [`tokens.py`](tokens.py): the marker and footnote vocabularies with their
-  compiled patterns, `is_list_or_bullet_marker`, `is_bullet_line`,
-  `is_ordered_marker_prefix`, `roman_to_int`.
-- [`patterns.py`](patterns.py): the domain-neutral line-shape patterns.
-
 ## Command surface
 
-None. There is no `__main__.py` and no entry point; every symbol is imported by a
-higher layer.
-
-## Mirrored tests
-
-[`tests/foundation/text/`](../../../tests/foundation/text/). The scanners that keep
-this package authoritative are tested in
-[`tests/foundation/scanners/`](../../../tests/foundation/scanners/).
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

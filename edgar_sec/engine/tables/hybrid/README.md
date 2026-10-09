@@ -12,12 +12,6 @@ A DOM cannot represent the first two faithfully: literal SGML tags are either pa
 escaped on serialization, and a monospace block's column alignment depends on whitespace a DOM will
 collapse. So this package is a text boundary, not a DOM pass.
 
-## Layout
-
-| Module | Responsibility |
-|---|---|
-| `masker.py` | `PreBlockKind` (the payload shapes), `HybridPreText` (masked text plus the payload map), `normalize_hybrid_pre_text`, `restore_hybrid_pre_text`. |
-
 ## Contracts
 
 - **A `<pre>` payload survives byte for byte.** `normalize_hybrid_pre_text` replaces each payload with
@@ -31,24 +25,10 @@ collapse. So this package is a text boundary, not a DOM pass.
 - **Classification never parses the payload as HTML.** A `<pre>` body containing SGML tags must not
   be interpreted; the shape is decided from the raw source text.
 
-## Public surface
-
-```python
-from edgar_sec.engine.tables.hybrid.masker import (
-    HybridPreText,
-    PreBlockKind,
-    normalize_hybrid_pre_text,
-    restore_hybrid_pre_text,
-)
-```
-
 ## Command surface
 
-None. Library package, no CLI.
-
-## Mirrored tests
-
-`tests/engine/tables/hybrid/`.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

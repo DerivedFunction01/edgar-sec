@@ -28,19 +28,6 @@ The unifying rule is that a resource budget, a serialization format, or a
 protocol detail is decided **once, here**, from a machine probe or a settings
 lookup, and every layer above consumes the decision rather than re-making it.
 
-## Module map
-
-| Subpackage | Owns |
-| :--- | :--- |
-| `sec_http/` | The request seam, pacing, retry classification, the compressed response cache and failure ledger, metrics, and the transport error taxonomy. |
-| `broker/` | The socket protocol and its lifecycle helper, wrapping one client for the whole host. |
-| `storage/` | Atomic publication, the Parquet format vocabulary, the DuckDB connection factory and SQL dialect primitives, and immutable snapshot manifests and pointers. |
-| `distribution/` | Bundle packaging, pipeline-affinity guards, cryptographic receipts, discovery, CLI subparser, and interactive console. |
-
-
-Each subpackage README carries its own module→responsibility table. The layer
-exports no symbols of its own, so there is nothing here to re-document.
-
 ## Contracts
 
 **Boundaries**
@@ -98,26 +85,10 @@ exports no symbols of its own, so there is nothing here to re-document.
 - Close what you open. Nothing in this layer registers an `atexit` hook: the
   DuckDB connection, `SqlCache`, and `FixtureStore` are the caller's to close.
 
-## Public surface
-
-The surface is the union of the three subpackages and is documented where it is
-owned: `sec_http/README.md` (client, limiter, retry policy, cache, metrics,
-transport errors), `broker/README.md` (`SecBroker`, `SecBrokerClient`,
-`managed_broker`), and `storage/README.md` (the atomic writers, the Parquet and
-DuckDB vocabularies, the snapshot and fixture surface).
-
 ## Command surface
 
-None. The layer is library-only: no `__main__`, no CLI, no packaging entry
-point.
-
-## Mirrored tests
-
-`tests/infra/` mirrors this package one directory per subpackage, with one test
-file per source module (AGENTS.md §6). Three modules have no mirrored test file
-and are covered only through their callers: `sec_http/metrics.py`,
-`sec_http/errors.py`, and `broker/daemon.py`. The storage subpackage names its
-one uncovered module in its own README.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

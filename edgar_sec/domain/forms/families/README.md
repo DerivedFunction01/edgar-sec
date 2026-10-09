@@ -7,19 +7,6 @@ families: `annual/` for Form 10-K and 20-F, `quarterly/` for Form 10-Q, and `cur
 for Form 8-K. Each subpackage supplies body-start evidence, Part/Item structural
 taxonomies, and — for annual and quarterly — its checkbox schema.
 
-## Layout
-
-| Subpackage / Module | Responsibility |
-| :--- | :--- |
-| `annual/evidence.py` | Body-phrase, strong, header, general, weak, forward, and verb term sets, share-count and public-float phrases, cover exclusions, the body-lexical pack, and the evidence record |
-| `annual/taxonomy.py` | Parts, items, their derived lookups, and the taxonomy-derivation builder |
-| `annual/checkmarks.py` | The annual checkbox schema |
-| `quarterly/evidence.py` | The quarterly term sets, body-lexical pack, and evidence record |
-| `quarterly/taxonomy.py` | Parts, items, and their derived lookups |
-| `quarterly/checkmarks.py` | The quarterly checkbox schema |
-| `current/evidence.py` | The current-report term sets, body-lexical pack, and evidence record |
-| `current/taxonomy.py` | Items and their derived lookups; no Part structure |
-
 ## Contracts
 
 - **Per-family data is isolated; the derivation builder is not.**
@@ -41,24 +28,6 @@ taxonomies, and — for annual and quarterly — its checkbox schema.
   a body root. The tier table itself lives in `annual/evidence.py`.
 - **Tier overlap is preserved, not tidied.** Some annual terms are claimed by more than
   one tier, so a single occurrence can satisfy two tiers and inflate a score.
-
-## Public surface
-
-- `AnnualReportEvidence`, `QuarterlyReportEvidence`, `CurrentReportEvidence` — the
-  per-family evidence records, each exposing its body-lexical pack.
-- `FORM_10K_ITEMS`, `FORM_20F_ITEMS`, `FORM_10Q_ITEMS`, `FORM_8K_ITEMS` and the
-  matching derived lookup dicts.
-- `ANNUAL_BODY_LEXICAL_PACK`, `QUARTERLY_BODY_LEXICAL_PACK`,
-  `CURRENT_BODY_LEXICAL_PACK`.
-- `ANNUAL_CHECKBOX_SCHEMA`, `QUARTERLY_CHECKBOX_SCHEMA` — see
-  [the parent README](../README.md) for the duplication caveat.
-- `build_taxonomy_derived(items, parts)` — `annual/taxonomy.py` only.
-
-No command surface.
-
-## Tests
-
-Tests mirror this package under `tests/domain/forms/families/`.
 
 ## Deliberate gaps
 

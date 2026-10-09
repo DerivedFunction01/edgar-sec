@@ -17,20 +17,6 @@ Three questions, in order:
 3. **What happens to the validated spans, and what is recorded about them?**
    (`policy`, `artifacts`)
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `models.py` | The label patterns, the `PageMarkerKind` shapes, the policy and terminal-state vocabulary, and the immutable analysis/marker/decision/artifact records. |
-| `candidates.py` | The contextual candidate scan, the geometry and prose guards that keep a table from reading as a page sequence, and the caller's contents-span exclusion. |
-| `detector.py` | `analyze_page_markers` — the ordered scan composing the modules below. |
-| `sequence.py` | Run validation and conservative healing. |
-| `units.py` | `LogicalUnit` / `classify_units` — blank-line block classification. |
-| `templates.py` | `analyze_repeating_headers` and its window, clustering, and merge mechanics. |
-| `artifacts.py` | The `[[SEC:KIND id=N]]` token, template normalization and ids, the deterministic sidecar. |
-| `policy.py` | `apply_page_markers` and its text-frame / projected-HTML entry points. |
-| `signatures.py` | Signature-region location, line-count-preserving mask/restore, letter-spaced name healing. |
-
 ## Contracts
 
 - **A label is removed only when corroborated.** A *firm* marker — a shape that
@@ -63,30 +49,10 @@ Three questions, in order:
 - **An analysis whose `source_text` is not the document is discarded and
   recomputed** — its offsets would refer to a different frame.
 
-## Public surface
-
-Entry points, by owning module:
-
-- `analyze_page_markers`, `find_page_markers`, `is_page_marker_line` — `detector.py`.
-- `apply_page_markers`, `apply_text_policy`, `apply_html_policy`,
-  `apply_fast_html_page_policy` — `policy.py`.
-- `render_page_artifact`, `build_page_artifact_metadata` — `artifacts.py`.
-- `analyze_repeating_headers` — `templates.py`.
-- `find_signature_regions`, `mask_signature_regions`, `restore_signature_regions`,
-  `heal_mangled_signature_text` — `signatures.py`.
-
-The candidate scan (`candidates.py`), run validation (`sequence.py`), unit
-classification (`units.py`), and the shape vocabulary (`models.py`) are reached
-through those entry points; each module's own docstring lists its exports.
-
 ## Command surface
 
-None. Called from the normalization pipeline.
-
-## Mirrored tests
-
-`tests/engine/document/page_markers/` — one test module per source module, all
-collected by the committed suite.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

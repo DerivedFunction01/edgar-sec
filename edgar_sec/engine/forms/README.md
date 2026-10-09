@@ -7,15 +7,6 @@ Composes filing document parsing and normalization and returns the result record
 Normalization combines document preparation, page policy, cover analysis, table
 handling, and representation-specific reflow.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `normalize.py` | `normalize_document`, `NormalizationResult`, and stage orchestration. |
-| `cover/` | The cover decision chain — boundary, TOC, cover tables, healing, checkmarks, closing, profiles. See `cover/README.md`. |
-| `plugins/` | The `FormPlugin` SPI, the family registry, and the per-family evaluators. See `plugins/README.md`. |
-| `__init__.py` | Docstring only. No re-exports, per AGENTS.md §1.2. |
-
 ## Contracts
 
 - **Stage order is owned by `normalize.py`.** See its docstring for the current
@@ -42,19 +33,10 @@ handling, and representation-specific reflow.
 - **Layer discipline.** This package imports `domain`, `engine.*`, and
   `foundation`. Enforced by the `layer-boundary` scanner.
 
-## Public surface
-
-- `normalize_document`, `NormalizationResult` — `normalize.py`.
-- `StageRecord` — `edgar_sec/domain/forms/common/models.py`.
-- The cover and plugin surfaces — see each package's README.
-
 ## Command surface
 
-None. Library package, no CLI.
-
-## Tests
-
-Mirrored coverage lives under `tests/engine/forms/`.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

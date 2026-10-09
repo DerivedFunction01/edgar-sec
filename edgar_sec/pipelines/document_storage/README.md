@@ -46,39 +46,6 @@ What it is not:
 
 Real-filing parity is unverified — see "Deliberate gaps".
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `__init__.py` | Package docstring. No re-exports, per AGENTS.md §1.2. |
-| `cli.py` | Subcommand parsing, plan-file ingestion, and the phase-local menu. |
-| `operator.py` | `run_document_storage()`: process chunks, resolve delegations, publish. |
-| `fixture_operator.py` | Fixture discovery, live raw fill, append/resume, manifest publication. |
-| `paths.py` | `DocumentStoragePaths`, document-storage artifact names, and binding to the shared fixture resolver. |
-| `candidates.py` | The pre-2005 exhibit-candidate gate: filing-date agreement, statutory filename grammar, dynamic form-token rejection. |
-| `candidate_recovery.py` | Bundle-first recovery: acquire the submission bundle, resolve the requested document against it, and process each selected body, emitting `CandidateOutcome` rows. |
-| `resolution.py` | Pure filing-resolution contract: map a catalog-requested document to an optional form-matched primary. |
-| `catalog_plan.py` | Reader for a published `filing_catalog` plan bundle: validation, then replayable streaming chunks. |
-| `run_manifest.py` | Transient catalog-run identity and atomic manifest validation (`runs/<run_id>/manifest.json`). |
-| `catalog_execution.py` | Chunk-replay streaming, manifest-gated resume, and chunk status tracking for catalog plans. |
-| `work_order.py` | `ChunkInput` and the `WorkOrder` seam between an input plan and chunk execution. |
-| `fetching.py` | `ArchiveFetcher` protocol and the fixture / broker / live backends. |
-| `processor.py` | `FilingProcessor`, `PassThroughProcessor`, the processor fingerprint. |
-| `processing.py` | Row assembly and ordinary fetch/process/delegate execution for one locator. |
-| `delegation.py` | The exhibit second pass for stub primaries. |
-| `merger.py` | Per-run snapshot publication: assemble, split into parts, write manifest, move pointer. |
-| `vacuum.py` | `vacuum_snapshots()`: cross-run consolidation. **Unwired** — no CLI route, no production caller. |
-| `queries.py` | The assembly and consolidation SQL. |
-| `checkpoint.py` | Chunk-checkpoint schema and IO, fingerprint-based reuse validation, and delegation sidecars. |
-| `execution.py` | The chunk execution unit: `process_chunk`, `process_chunks`, `process_chunk_stream`, pool sizing and child recycling. |
-| `summary.py` | Plan-derived candidate counts for a chunk, independent of any fetch. |
-| `occurrences.py` | Locator↔occurrence key mapping, expansion, and synthetic provenance rows. |
-| `parts.py` | Byte-budgeted part planning, the index/payload column contracts, and the part-path boundary checks. |
-| `fixture_store.py` | The append-only raw-payload SQLite store behind fixture fill and offline replay. |
-| `fixture_lineage.py` | Pure comparison of a fixture manifest against a plan. |
-| `review.py` | `compare_review_runs()`: base-vs-new review-run comparison. |
-| `review_artifacts.py` | Fixture-backed review artifact generation: selection, per-case files, manifest. |
-
 ## Contracts
 
 **Guarantees to callers**
@@ -254,50 +221,13 @@ Real-filing parity is unverified — see "Deliberate gaps".
 - Run from the repository root; `resolve_paths()` treats the working directory as
   the project root and derives a parallel artifacts tree anywhere else.
 
-## Public surface
-
-There are no re-exports and no shims; import from the leaf module. The entry
-points a caller is expected to use are:
-
-- `run_document_storage` — the one-call publish path from a chunk list plus
-  fetcher. `operator.py`.
-- `publish_snapshot`, `validate_chunks`, `content_fingerprint`,
-  `current_snapshot_dir`, `current_snapshot_artifact` — publication, validation,
-  identity, and pointer reads. `merger.py`.
-- `vacuum_snapshots` — cross-run consolidation. `vacuum.py`.
-- `process_chunk`, `process_chunks`, `process_chunk_stream`, `resolved_worker_count` — chunk execution, pool sizing and child recycling, and the resume-skip rule. `execution.py`.
-- `is_chunk_complete`, `chunk_fingerprint`, `read_catalog_delegations`, `_stamp_fingerprint` — checkpoint reuse (fingerprint match) and delegation sidecars. `checkpoint.py`.
-- `candidate_summary` — plan-derived candidate counts, independent of any fetch, so a resumed chunk matches a fresh one. `summary.py`.
-- `document_key_of`, `key_of`, `_expand_occurrences`, `_synthetic_occurrence`, `_filing_work` — locator↔occurrence keying and expansion. `occurrences.py`.
-- `candidate_for`, `occurrence_filing_date`, `primary_form_token_pattern` — the
-  pre-2005 exhibit-candidate gate and its two inputs. `candidates.py`.
-- `CatalogPlan` — validate a published catalog bundle and read it as replayable
-  chunks. `catalog_plan.py`.
-- `create_or_validate_manifest`, `CatalogRunIdentity` — transient execution identity and atomic manifest validation. `run_manifest.py`.
-- `process_catalog_chunks` — replayable catalog chunk execution with manifest-gated resume. `catalog_execution.py`.
-- `fill_fixture` — fill a fixture from either a locator sequence or a streamed
-  locator source; `verify_fixture_lineage` — check a fixture against a
-  selection. `fixture_operator.py`.
-- `FilingWork` — one requested locator's pass from catalog row to normalized result.
-  `work_order.py`.
-- `ArchiveFetcher`, `make_archive_fetcher`, `EnvelopeExtraction`,
-  `extract_from_sgml_envelope` — the acquisition seam, its fixture / broker / live
-  backends, and the envelope scan. `fetching.py`.
-- `DocumentProcessor`, `FilingProcessor`, `PassThroughProcessor` — the
-  normalization seam over an `AcquiredSubmission`, and the two implementations.
-  `processor.py`.
-- `resolve_delegated_exhibit`, `exhibits_for` — the exhibit second pass.
-  `delegation.py`.
-- `fill_fixture`, `list_fixtures` — fixture creation, extension, and discovery.
-  `fixture_operator.py`.
-- `compare_review_runs`, `write_review_artifacts`, `render_review_run` — the
-  review path. `review.py`, `review_artifacts.py`.
-- `DocumentStoragePaths` — artifact locations. `paths.py`.
-
-Per-module exports beyond these, including the error classes and the artifact and
-schema-version constants, are the owning module's own docstring.
-
 ## Command surface
+
+<!-- AUTOGEN:COMMANDS:START -->
+None. Library package.
+<!-- AUTOGEN:COMMANDS:END -->
+
+### Usage examples
 
 Entry point: `python run.py documents <command>`, dispatched straight to
 `cli.py`. Invoking it with no subcommand opens the phase-local menu. `--help` on
@@ -395,24 +325,15 @@ A writable store creates `fixture_payloads(doc_id, raw_payload)`
 for payloads plus `document_blobs` and `fixture_document_forms`; superseded
 processing tables in an existing database are left untouched and never read.
 
-## Mirrored tests
+## Artifact layout
 
-Mirrored tests live under `tests/pipelines/document_storage/`, one per source
-module per AGENTS.md §6. All offline and deterministic; CLI tests inject a fetcher
-at the transport seam through `tests.support` rather than reaching into module
-internals (AGENTS.md §6.5).
-
-Committed goldens live at `tests/fixtures/document_storage/`:
-`annual_10k_html.json` (which exercises the `<TABLE>` byte-preservation
-invariant) and `annual_10k_normalization.json`. Both are **synthetic** — see
-"Deliberate gaps".
-
-The catalog-bundle tests build a real plan in a temporary artifacts root through
-the catalog planner, from `tests.support.era_submission_metadata()`. That fixture
-copies the committed catalog parquet and appends pre-2005 filings, because the
-committed catalog fixture holds only 1999 and 2023-2026 dates and a plan built from
-it alone yields no in-window locator — the candidate gate would be untestable
-against a credible zero.
+<!-- AUTOGEN:PATHS:START -->
+| Logical Artifact | Resolution Seam |
+| :--- | :--- |
+| `distribution_root` | Property |
+| `ensure_directories(...)` | Method |
+| `runtime_root` | Property |
+<!-- AUTOGEN:PATHS:END -->
 
 ## Deliberate gaps
 

@@ -12,23 +12,6 @@ constraints, scores each with soft penalties, and reports a decision only when
 exactly one assignment is cheapest. A tie is reported as `UNRESOLVED` with the
 full hypothesis table rather than resolved arbitrarily.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `models.py` | Immutable candidate, violation, hypothesis, and result models plus penalty weights. |
-| `yes_no_pairs.py` | Authoritative normalization for complete inline Yes/No pairs. |
-| `frames.py` | Masked-frame to original-frame offset translation. |
-| `candidates.py` | Geometry and text candidate extraction. |
-| `solver.py` | Constraint enumeration, penalty scoring, and the public solver entry points. |
-| `rewrite.py` | Applies resolved decisions to text and table metadata. |
-| `__init__.py` | One-line docstring only. No re-exports, per AGENTS.md §1.2. |
-
-`solver.py` imports `candidates.py`; `rewrite.py` imports `yes_no_pairs.py` and
-`models.py`. `candidates.py` imports `frames.py`. The only consumer of `rewrite.py`
-outside this package is `edgar_sec/engine/forms/normalize.py`, which drives the
-rewrite stage.
-
 ## Contracts
 
 - Every reported decision carries the `source_region` and `mark_span` it came
@@ -53,31 +36,10 @@ rewrite stage.
   a masked frame; `frames.py` translates every offset back before a candidate is
   emitted.
 
-## Public surface
-
-- `extract_cover_candidates(text, boundary, *, family, table_geometries=()) -> tuple[CheckboxCandidate, ...]` — `candidates.py`.
-- `extract_table_candidates(geometry, *, table_index) -> tuple[CheckboxCandidate, ...]` — `candidates.py`.
-- `infer_cover_checkmarks(text, boundary, *, family, table_geometries=(), schema=None) -> CoverCheckmarkResult` — `solver.py`.
-- `solve_filer_constraints`, `solve_statutory_constraints`, `solve_report_period`, `solve_cover_constraints`, `canonical_semantic_key` — `solver.py`.
-- `apply_cover_checkmark_decisions(text, result) -> tuple[str, bool, frozenset[int]]` — `rewrite.py`.
-- `update_table_geometries(table_geometries, result, unwrapped_table_indices=frozenset()) -> tuple[object, ...]` — `rewrite.py`.
-- `has_labeled_checkmark_candidates`, `has_resolvable_line_yes_no_candidates` — `rewrite.py`.
-- `normalize_yes_no_pair_line`, `normalize_yes_no_pairs`, `YES_NO_WORD_RE`, `YES_NO_LINE_RE` — `yes_no_pairs.py`.
-- `build_masked_offset_translator(masked, spans) -> Callable[[int], int]` — `frames.py`.
-- `InferenceStatus`, `CheckboxCandidate`, `ConstraintViolation`, `HypothesisScore`, `CoverCheckmarkResult`, `PenaltyScorer`, `DEFAULT_PENALTY_SCORER` — `models.py`.
-
 ## Command surface
 
-None. Library package, no CLI.
-
-## Tests
-
-- `tests/engine/forms/cover/checkmarks/test_models.py`
-- `tests/engine/forms/cover/checkmarks/test_yes_no_pairs.py`
-- `tests/engine/forms/cover/checkmarks/test_frames.py`
-- `tests/engine/forms/cover/checkmarks/test_candidates.py`
-- `tests/engine/forms/cover/checkmarks/test_solver.py`
-- `tests/engine/forms/cover/checkmarks/test_rewrite.py`
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

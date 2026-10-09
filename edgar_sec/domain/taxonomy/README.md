@@ -8,18 +8,6 @@ taxonomy data.
 Provides the shared vocabulary consumed by domain and engine normalization. Financial
 statement and table taxonomies are documented in their subpackage READMEs.
 
-## Layout
-
-| Subpackage / Module | Responsibility |
-| :--- | :--- |
-| `jurisdictions.py` | Jurisdiction vocabulary and suffix normalization |
-| `legal_forms.py` | Legal-form vocabulary and name tokenization |
-| `family_vocab.py` | Company-name abbreviation, plural, and structural vocabulary, plus the family-resolution seed and tuning constants |
-| `components/cover.py` | Cover-page table specifications and terms |
-| `statements/` | Financial statement vocabulary; see its README |
-| `schedules/` | Footnote and statutory schedule vocabulary; see its README |
-| `tables/` | Financial table specifications; see its README |
-
 ## Contracts
 
 - Vocabulary tables are immutable shared inputs, so one caller cannot change what
@@ -35,23 +23,6 @@ statement and table taxonomies are documented in their subpackage READMEs.
 - Family resolution is deterministic: a fixed seed breaks ties when choosing a
   family representative, so the same registrants resolve to the same naming across
   runs and machines. Changing the seed changes which representative wins.
-
-## Public surface
-
-- `strip_jurisdiction()`, `clean_entity_name()`, the state code and name
-  vocabulary, and the compiled jurisdiction pattern — `jurisdictions.py`.
-- Legal-form vocabulary and `entity_name_tokens()` — `legal_forms.py`.
-- Abbreviation, plural, and structural vocabulary, the family-resolution seed, and
-  the resolution tuning constants — `family_vocab.py`.
-- Cover-page table specifications and terms — `components/cover.py`.
-- Statement, schedule, and table-family vocabulary — [statements](statements/README.md),
-  [schedules](schedules/README.md), [tables](tables/README.md).
-
-No command surface.
-
-## Tests
-
-Tests mirror this package under `tests/domain/taxonomy/`.
 
 ## Deliberate gaps
 

@@ -11,15 +11,6 @@ statements are missing, with nothing in the output to say so. `evaluate_annual`
 detects that condition. The other two evaluators hold only metadata shortcuts;
 both ignore their `text` argument outright.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `annual.py` | `evaluate_annual` — Exhibit 13 incorporation-by-reference detection. |
-| `quarterly.py` | `evaluate_quarterly` — the XBRL-year and HTML/ASCII size-ceiling shortcuts. |
-| `current.py` | `evaluate_current` — unconditional proceed. |
-| `__init__.py` | One-line docstring only. No re-exports, per AGENTS.md §1.2. |
-
 ## Contracts
 
 - **Every evaluator returns a complete `EvaluatorDecision`**, carrying the action,
@@ -37,27 +28,15 @@ both ignore their `text` argument outright.
 - **An unknown family is never an error.** It routes to `evaluate_generic` via
   the registry, not by any check inside these modules.
 
-## Public surface
-
-- `evaluate_annual` — `annual.py`.
-- `evaluate_quarterly`, `HTML_SIZE_CEILING`, `ASCII_SIZE_CEILING` —
-  `quarterly.py`.
-- `evaluate_current` — `current.py`.
-
 ## Command surface
 
-None. Library package, no CLI.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Production consumers
 
 `edgar_sec/pipelines/document_storage/processor.py`, via
 `plugin.evaluator(result.text)`.
-
-## Tests
-
-- `tests/engine/forms/plugins/evaluators/test_annual.py`
-- `tests/engine/forms/plugins/evaluators/test_quarterly.py`
-- `tests/engine/forms/plugins/evaluators/test_current.py`
 
 ## Deliberate gaps
 

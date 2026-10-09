@@ -6,32 +6,6 @@ Project filing-cohort observations into accession-level index-page work, capture
 and replay `-index.html` responses, and build offline parser-review artifacts.
 Layer 4 consumes published `filing_catalog` plans and imports downward only.
 
-## Module layout
-
-| Module | Responsibility |
-|---|---|
-| `cohort.py` | Validate catalog observations and project selected cohorts into accession work. |
-| `discovery.py` | Manifest-only discovery and selection of published plans and fixtures. |
-| `fixture_store/` | Mutable local response capture, provenance, discovery, and exact-byte replay; see its [package contract](fixture_store/README.md). |
-| `review_artifacts/` | Offline parser review output with inert HTML and deterministic manifests; see its [package contract](review_artifacts/README.md). |
-| `snapshot/` | Snapshot schemas, streamed catalog-plan projection, bounded DuckDB anti-join, and publication primitives; see its [package contract](snapshot/README.md). |
-| `schemas.py` | Public access to the snapshot-owned relation schemas and merge specifications. |
-| `paths.py` | Inventory-specific artifact, runtime, and transient paths; binds index fixtures to the shared foundation resolver. |
-| `run_manifest.py` | Path-backed work-order identity and chunk manifest validation. |
-| `run_state.py` | Read-only projection validation, run discovery, and persisted execution status. |
-| `checkpoint.py` | Transient outcome/entry schemas, attempt commit markers, and resume validation. |
-| `progress.py` | Per-accession DuckDB transactions and resumable chunk progress. |
-| `run_lock.py` | Exclusive run ownership and explicit stale-lock recovery. |
-| `broker.py` | Picklable client for the shared SEC broker and typed fetch results. |
-| `worker.py` | Per-accession worker task and typed failures. |
-| `coordinator.py` | Resource-capped scheduling, cancellation, chunk commit, resume, and retry. |
-| `distribution_adapter.py` | Adapts document inventory to the generic Layer 2 distribution engine. |
-| `review_adapter.py` | Adapts document inventory to the generic Layer 2 review/fixture harness. |
-| `cli.py` | Command dispatch, argument parsing, and subparser definitions. |
-| [commands/](commands/README.md) | Project, run, status, publish, query, fixture, and review commands. |
-| `operator.py` | Discovery-driven interactive operations. |
-| `run.py` (repository root) | Dispatches the inventory entry to its operator. |
-
 ## Contracts
 
 - Fixture capture reuses successful pages and records additional source membership; failed pages remain retryable. Replay validates the response digest and returns exact decompressed bytes. Inventory fixtures live at `{artifacts_root}/document_inventory/fixtures/<fixture_id>/`; their `manifest.json` uses the shared `foundation.runtime.fixtures` envelope, while `details` and the SQLite schema remain inventory-owned.
@@ -49,12 +23,23 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 - Persisted Run cancellation is recorded before the command returns; incomplete chunks,
   retryable outcomes, parser refusals, and cancellation block independent publication.
 
-## Public surface
-
-`schemas.py` is the permitted cross-pipeline contract for canonical inventory relation
-schemas and DAG specifications; their definitions remain owned by `snapshot/`.
-
 ## Command surface
+
+<!-- AUTOGEN:COMMANDS:START -->
+| Subcommand | Description | Arguments |
+| :--- | :--- | :--- |
+| `dag` | Snapshot DAG operations | `[--root]`, `[--json]` |
+| `distrib` | Distributed worker bundle lifecycle | `[--artifacts]` |
+| `fixture` | create, fill, and list dataset fixtures | — |
+| `project` | project a published catalog plan into a resumable run | `--catalog-plan`, `[--base-snapshot-id]`, `[--branch]`, `[--explicit-refresh]`, `[--chunk-size]`, `[--artifacts]`, `[--json]` |
+| `publish` | publish a completed inventory run to a DAG branch | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--artifacts]`, `[--json]` |
+| `query` | query active document inventory snapshots | `[--accession]`, `[--form]`, `[--filing-cik]`, `[--source-cik]`, `[--limit]`, `[--artifacts]`, `[--json]` |
+| `review` | generate review artifacts and compare review runs | — |
+| `run` | fetch and parse pending index pages | `--run-id`, `[--retry-failures]`, `[--workers]`, `[--confirm-stale-lock]`, `[--artifacts]`, `[--json]` |
+| `status` | inspect projected inventory runs | `[--run-id]`, `[--artifacts]`, `[--json]` |
+<!-- AUTOGEN:COMMANDS:END -->
+
+### Usage examples
 
 The approved lifecycle commands are `inventory project`, `inventory run`,
 `inventory status`, and `inventory publish`. Project pins the selected branch tip
@@ -93,11 +78,25 @@ inventory` opens the discovery-driven operator menu. Its approved root actions p
 `1` Query, `d` Distribution, `p` Snapshot DAG, `f` Fixtures/review, and `0` Exit, and
 add `2` Project, `3` Status, and `4` Run.
 
-## Mirrored tests
+## Artifact layout
 
-`tests/pipelines/document_inventory/`: cohort, fixture store, review artifacts, snapshot,
-broker, worker, coordinator, run lock, progress journal, paths, run-manifest, checkpoint, discovery, operator, and CLI tests. Parser tests live in
-`tests/engine/index_pages/`; shared contract tests live in `tests/domain/document_inventory/`.
+<!-- AUTOGEN:PATHS:START -->
+| Logical Artifact | Resolution Seam |
+| :--- | :--- |
+| `branch_dir(...)` | Method |
+| `branches_root` | Property |
+| `catalog_file` | Property |
+| `is_staging_name(...)` | Method |
+| `list_staging_dirs(...)` | Method |
+| `part_file(...)` | Method |
+| `parts_root` | Property |
+| `publication_lock_path` | Property |
+| `relation_dir(...)` | Method |
+| `root` | Property |
+| `snapshot_dir(...)` | Method |
+| `staging_dir(...)` | Method |
+| `tags_root` | Property |
+<!-- AUTOGEN:PATHS:END -->
 
 ## Deliberate gaps
 

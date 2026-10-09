@@ -30,13 +30,6 @@ does in fact read pipeline internals — read-only, through the public leaf
 modules. That is exactly the dependency direction the clause above permits, and
 a layer placed below `pipelines/` could not have it.
 
-## Module layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `__init__.py` | Docstring only. No re-exports, per AGENTS.md §1.2. |
-| `viewer/` | The dataset viewer: a lazy filesystem explorer, manifest-driven virtual datasets, paged DuckDB reads, a guarded read-only SQL console. Its own contracts are in [`viewer/README.md`](viewer/README.md). |
-
 ## Contracts this package guarantees
 
 - **Read-only, structurally.** Every DuckDB connection is in-memory. Artifacts
@@ -51,22 +44,16 @@ a layer placed below `pipelines/` could not have it.
 That is the layer's whole share of the contract; the mechanisms behind each
 clause belong to the app that implements them.
 
-## Public surface
-
-None. `apps/__init__.py` is a docstring and the package re-exports nothing, per
-AGENTS.md §1.2.
-
 ## Command surface
+
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
+
+### Usage examples
 
 None at the layer root. Each app owns its own entry point
 (`python -m edgar_sec.apps.viewer.cli`) and is registered in the root `run.py`
 launcher.
-
-## Mirrored tests
-
-`tests/apps/` mirrors this package. The layer root has no logic of its own: its
-contract is enforced by the `layer-boundary` scanner and
-`tests/test_network_isolation.py`, and the viewer's by `tests/apps/viewer/`.
 
 ## Deliberate gaps
 

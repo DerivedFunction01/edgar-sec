@@ -10,13 +10,6 @@ Produce one deterministic `company_family` key per CIK. The key is namespaced so
 sponsor's securitised vehicles and the sponsor's own operating entity are separate families
 by construction rather than by coincidence of spelling.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `tokens.py` | Name normalization, identity stems, SPV marking, umbrella-phrase parsing. |
-| `assignment.py` | Universe-scale assignment as relations; the published column set. |
-
 ## Contracts
 
 - **Every registrant gets exactly one family key.** A name yielding no identity is keyed
@@ -34,21 +27,8 @@ by construction rather than by coincidence of spelling.
 
 ## Command surface
 
-None. Library package, no CLI.
-
-## Public surface
-
-- `build_assignment(con, roster_source)` returning `FamilyAssignmentStats`, and
-  `assignment_relation_sql(path)` for a downstream join — `assignment.py`.
-- Normalization helpers: `identity_tokens`, `normalized_key`, `has_spv_marker`,
-  `sponsor_candidate`, `umbrella_parent`, `apply_aliases` — `tokens.py`.
-
-The cohort pipeline publishes reusable assignments through `cohort family-index`;
-the shared catalog records the immutable artifact and its universe identity.
-
-## Mirrored tests
-
-Mirrored coverage lives under `tests/engine/company_family/`.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

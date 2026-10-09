@@ -14,27 +14,6 @@ downward. What this layer is not: it does not fetch, persist, parse, classify, o
 schedule. A rule that needs a request, a file handle, a thread, or a stage
 counter belongs above this layer.
 
-## Layout
-
-Layer 1 may import from `foundation` only; the `layer-boundary` scanner enforces
-the downward-only rule. Domain schemas declare PyArrow types without depending on
-the storage layer.
-
-| Module / package | Responsibility |
-| :--- | :--- |
-| `identity.py` | CIK and accession identity primitives |
-| `sec_urls.py` | EDGAR URL construction and archive URL parsing |
-| `document/` | Document locator, occurrence, and acquisition records, flat block stream, acquisition route |
-| `document_inventory/` | Shared inventory records and durable entry schema |
-| `filing_catalog/` | Catalog schemas, version identifiers, planning filter vocabulary |
-| `forms/` | Form/cover vocabulary, schemas, family aliases, body evidence, evaluator decisions |
-| `plan/` | Universal plan envelope and manifest discovery |
-| `submissions/` | Submission dataset schema and record models |
-| `taxonomy/` | Jurisdiction, legal-form, and company-name vocabulary; statement, schedule, and table specifications |
-
-Consumers import public symbols from their leaf modules; package `__init__.py`
-files do not re-export child symbols.
-
 ## Contracts
 
 **Guarantees this layer makes.**
@@ -63,22 +42,6 @@ files do not re-export child symbols.
 - Bump a schema's version constant rather than editing a column list. Each
   schema here carries its own version identifier, and the values are persisted
   into plans, checkpoints, and published artifacts.
-
-## Public surface
-
-- `Cik`, `AccessionNumber` — `edgar_sec/domain/identity.py`.
-- EDGAR URL constants, builders, and the archive-URL parser —
-  `edgar_sec/domain/sec_urls.py`.
-- The per-package surfaces are documented in each subpackage README:
-  [document](document/README.md),
-  [document_inventory](document_inventory/README.md),
-  [filing_catalog](filing_catalog/README.md),
-  [forms](forms/README.md), [submissions](submissions/README.md),
-  [taxonomy](taxonomy/README.md).
-
-## Tests
-
-Tests mirror `edgar_sec/domain/` under `tests/domain/`.
 
 ## Deliberate gaps
 

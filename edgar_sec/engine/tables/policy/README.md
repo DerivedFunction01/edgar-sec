@@ -10,20 +10,6 @@ Both judgements are conservative in the same direction. An unrecognised intro cu
 narrative inside the table, which a reader recovers. A false cue strips a financial line out of its
 table, which nobody recovers.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `intro.py` | `split_structural_table_intro`, `is_tableish_block`, `unify_table_prose`. |
-| `continuation.py` | `is_table_row_continuation`. |
-
-`__init__.py` is a docstring per `AGENTS.md` §1. Consumers import the leaf:
-
-```python
-from edgar_sec.engine.tables.policy.continuation import is_table_row_continuation
-from edgar_sec.engine.tables.policy.intro import split_structural_table_intro
-```
-
 ## Contracts
 
 - **An intro split needs a cue *and* geometry.** `split_structural_table_intro` looks only at the
@@ -48,27 +34,16 @@ from edgar_sec.engine.tables.policy.intro import split_structural_table_intro
   `a`. Neither neighbour may be a tagged table, and neither side may contain a protected-table
   sentinel.
 
-## Public surface
-
-- `split_structural_table_intro(lines) -> (narrative, table_lines)`.
-- `is_tableish_block(features) -> bool`.
-- `unify_table_prose(decisions, blocks, decision_index, skip_decision_indices, group) -> tuple[str, ...] | None`.
-- `is_table_row_continuation(previous, continuation, policy=None) -> bool`.
-
 ## Command surface
 
-None. Library package, no CLI.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Production consumers
 
 - `edgar_sec/engine/reflow/engine/rewrapper.py` — `split_structural_table_intro` and
   `unify_table_prose` in the render loop, `is_tableish_block` in `_classify_block`.
 - `edgar_sec/engine/tables/resolver.py` — `is_table_row_continuation` in the forward sweep.
-
-## Tests
-
-- `tests/engine/tables/policy/test_intro.py`
-- `tests/engine/tables/policy/test_continuation.py`
 
 ## Deliberate gaps
 

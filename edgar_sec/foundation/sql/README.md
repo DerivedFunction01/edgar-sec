@@ -3,13 +3,6 @@
 Layer 0. One module, one job: decide whether a SQL string a human typed is a
 read.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| [`guard.py`](guard.py) | Verb allowlist, statement-separator scan, leading-comment stripping, `validate_read_only`. |
-| `__init__.py` | One-line docstring. No re-exports, per AGENTS.md §1.2. |
-
 ## Why this exists
 
 The repository's own SQL is not untrusted. The dialect primitives in
@@ -39,15 +32,10 @@ The separator check runs before the verb check, so `DROP TABLE a; SELECT 1` is
 reported as a multiple-statement problem rather than a verb problem.
 `PRAGMA` is on the list **only** in the `table_info` form: bare `PRAGMA` writes.
 
-## Public surface
-
-`from edgar_sec.foundation.sql.guard import ALLOWED_LEADING_KEYWORDS,
-SqlGuardError, validate_read_only`
-
 ## Command surface
 
-None. No `__main__.py`, no entry point. The only caller is
-`edgar_sec.apps.viewer.console.run_dataset_sql`.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## A guard is a filter, not a sandbox
 
@@ -57,13 +45,6 @@ all four: a read-only in-memory connection scoped to a private `dataset` view, a
 row cap and a payload cap, a timeout, and a refusal of table functions
 (`read_parquet`, `read_json`, `read_csv`, `sqlite_scan`) so a console scoped to
 one dataset cannot reach another file on disk.
-
-## Mirrored tests
-
-[`tests/foundation/sql/test_guard.py`](../../../tests/foundation/sql/test_guard.py)
-— accepted reads, rejected writes and stacked statements, the
-`PRAGMA table_info` restriction, separator scanning through quotes and comments,
-repeated leading comments, and the defer-malformed-input contract.
 
 ## Deliberate gaps
 

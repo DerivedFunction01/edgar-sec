@@ -4,17 +4,6 @@
 
 Provides Phase 0 command-line and interactive orchestration for the shared cohort catalog before metadata collection.
 
-## Module Map
-
-| Module | Responsibility |
-| :--- | :--- |
-| `options.py` | CLI grammar and argument validation. |
-| `menu.py` | Grouped interactive console and prompt flows. |
-| `cli.py` | Cohort catalog, doctor/maintenance, source refresh, diff, sampling, family-index, and workspace dispatch. |
-| `repl.py` | Line-oriented workspace commands and set-expression assignments. |
-| `family_index.py` | Content-addressed publication of the active universe family index. |
-| `__init__.py` | Package docstring only; no re-exports. |
-
 ## Contracts
 
 - Cohort references are resolved by `CohortCatalog.resolve_cohort_identifier()`;
@@ -31,21 +20,37 @@ Provides Phase 0 command-line and interactive orchestration for the shared cohor
 - Official SEC source refresh is owned here; `diff` accepts cohort IDs/names and
   the active `universe`/`tickers` aliases, with optional canonical delta publication.
 
-## Public Surface
-
-- `main()` in [`cli.py`](cli.py) is the launcher entry point.
-- `build_parser()` in [`options.py`](options.py) exposes the documented command grammar.
-- `run_repl()` in [`repl.py`](repl.py) runs the opt-in interactive workspace.
-
 ## Command Surface
+
+<!-- AUTOGEN:COMMANDS:START -->
+| Subcommand | Description | Arguments |
+| :--- | :--- | :--- |
+| `console` | open the interactive cohort console | — |
+| `delete` | delete a cohort | `[--keep-dataset]` |
+| `diff` | compare cohort membership | `[--save-left-delta]`, `[--save-right-delta]` |
+| `doctor` | audit catalog and cohort artifacts read-only | — |
+| `family-index` | publish the active universe family index | — |
+| `find` | search members across cohorts | `[--cik]`, `[--name]`, `[--limit]`, `[--page]` |
+| `import` | import a delimited, text, or Parquet file | `--input`, `[--name]`, `[--tags]`, `[--delimiter]`, `[--limit]` |
+| `info` | show cohort metadata and sample members | — |
+| `list` | list catalog cohorts | `[--tag]`, `[--pinned-only]`, `[--search]`, `[--limit]`, `[--offset]` |
+| `maintain` | explicitly clean cohort artifacts | `[--clean-stale-staging]`, `[--clean-orphans]`, `[--clean-missing]`, `[--clean-detached]`, `[--clean-raw-snapshots]`, `[--all]`, `[--force]` |
+| `merge` | evaluate a cohort set expression | `--expr`, `[--name]`, `[--tags]`, `[--serialize]` |
+| `query` | query members of one cohort | `[--cik]`, `[--name]`, `[--limit]`, `[--offset]` |
+| `rename` | rename a cohort | `--name` |
+| `repl` | open an interactive cohort workspace | — |
+| `sample` | create a deterministic cohort sample | `--source`, `[--method]`, `[--rate]`, `[--limit]`, `[--seed]`, `[--group-family]`, `[--family-index]`, `[--exclude-spv]`, `[--name]` |
+| `sources` | manage official SEC source cohorts | — |
+| `tag` | add or remove cohort tags | `[--add]`, `[--remove]` |
+| `untag` | remove cohort tags | `--tags` |
+| `workspace` | manage workspace sessions and variables | — |
+<!-- AUTOGEN:COMMANDS:END -->
+
+### Usage examples
 
 `import`, `list`, `info`, `rename`, `tag`, `untag`, `delete`, `query`, `find`,
 `sample`, `sources refresh`, `diff`, `family-index`, `doctor`, `maintain`,
 `workspace`, `merge`, `repl`, and `console`.
-
-## Mirrored Tests
-
-`tests/pipelines/cohort/`.
 
 ## Deliberate Gaps
 

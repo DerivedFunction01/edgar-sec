@@ -11,20 +11,6 @@ carries its own exemptions inline, so the rule a scanner enforces and the files 
 cannot apply to stay one edit in one place. There is no configuration file here: a
 line that trips a scanner can only be silenced by changing the scanner.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `base.py` | `Scanner` and `ScannerFinding`. |
-| `files.py` | `discover_python_files()`. |
-| `lines.py` | The shared line-oriented rule driver and its helpers. |
-| `__init__.py` | Binds `ALL_SCANNERS`. |
-| `environment.py`, `artifact_paths.py`, `secrets.py`, `clean_exit.py`, `length.py`, `layers.py`, `resources.py`, `whole_file_read.py`, `regex_alternations.py`, `legacy_shims.py`, `json_io.py`, `date_patterns.py` | One scanner per module. |
-
-`ALL_SCANNERS` is a true dynamic registry, which `AGENTS.md` §1.2 permits where a
-barrel re-export is banned. Its order is the order
-`edgar_sec.foundation.checks.runner.run_all()` executes the scanners in.
-
 ## Contracts
 
 **Guarantees this package makes to its callers**
@@ -64,6 +50,11 @@ shim is usually announced in prose rather than in code.
 
 ## Command surface
 
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
+
+### Usage examples
+
 This package has no command of its own. The scanner step runs from the repository
 root, where `check.py` imports `run_all`, prints each scanner's name, description,
 and findings, and exits non-zero when any scanner reported:
@@ -75,19 +66,6 @@ and findings, and exits non-zero when any scanner reported:
 ```
 
 `check.py --fix` does not run the scanners at all.
-
-## Public surface
-
-- `ALL_SCANNERS` — the registry tuple, in gate order. `__init__.py`.
-- `Scanner`, `ScannerFinding`. `base.py`.
-- `discover_python_files`. `files.py`.
-- `scan_text_rule` and its helpers. `lines.py`.
-- `registered()`, `run_all()`. `edgar_sec/foundation/checks/runner.py`.
-
-## Mirrored tests
-
-[`tests/foundation/scanners/`](../../../tests/foundation/scanners/), plus
-`tests/foundation/checks/test_runner.py` for the runner's return contract.
 
 ## Deliberate gaps
 

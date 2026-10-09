@@ -9,14 +9,6 @@ package is deliberately conservative. It would rather report no boundary than a
 wrong one: a missed boundary leaves body text alone, while a wrong boundary lets
 a rewrite touch filing prose.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `detector.py` | Public cover-boundary discovery APIs. |
-| `corridor.py` | The forward cover-start scan, the backward body confirmation, the body-prose scan, and the finalizer. |
-| `transition.py` | The proven-root transition out of an incorporated-reference block. |
-
 ## Contracts
 
 - `find_cover_boundary(input, None)` returns `BoundaryMethod.DISABLED`. Absence of
@@ -34,19 +26,10 @@ a rewrite touch filing prose.
   `profile.cover_evidence`, and `profile.body_evidence`. A profile without a
   `boundary` attribute yields `DISABLED`.
 
-## Public surface
-
-- `find_cover_boundary`, `find_cover_boundary_for_profile` — `detector.py`.
-- `find_cover_start`, `confirm_backward_body`, and line/body-evidence helpers —
-  `corridor.py`.
-
 ## Command surface
 
-None. Library package, no CLI.
-
-## Mirrored tests
-
-`tests/engine/forms/cover/boundary/`.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

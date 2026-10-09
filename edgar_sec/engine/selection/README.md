@@ -11,17 +11,6 @@ respects them where possible. `features.py` builds the input snapshot; `selector
 selection and coverage report. The family signature vocabulary is `CLASSIFICATION_DIMENSIONS`,
 and `max_per_company_classification` controls its cap.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `policy.py` | Quota policy, seed vocabulary, construction, and validation. |
-| `features.py` | Feature snapshot construction and filing-form/date dimensions. |
-| `source.py` | Candidate reads from published snapshots. |
-| `selector.py` | Quota selection and coverage report. |
-| `inventory.py` | Advisory quota-feasibility statistics. |
-| `predicates.py` | The shared suffix and date predicate compilers, consumed by this package and by deterministic-scope planning. |
-
 ## Contracts
 
 - **Selection is network-free and deterministic.** The same snapshot, policy, and seed
@@ -42,19 +31,8 @@ and `max_per_company_classification` controls its cap.
 
 ## Command surface
 
-None. Library package, no CLI.
-
-## Public surface
-
-- `SelectionPolicy`, `EraBand`, and seed/policy helpers — `policy.py`.
-- `FeatureSnapshotBuilder`, `SnapshotPaths`, and dimension helpers — `features.py`.
-- `CandidateSource`, `CandidateFilters` — `source.py`.
-- `DeficitSelector`, `SelectionResult` — `selector.py`.
-- `InventoryStatistics` — `inventory.py`.
-
-## Mirrored tests
-
-Mirrored coverage lives under `tests/engine/selection/`.
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
 
 ## Deliberate gaps
 

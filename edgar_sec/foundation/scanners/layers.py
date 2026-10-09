@@ -18,6 +18,7 @@ _LAYER_RANK = {
     "engine": 3,
     "pipelines": 4,
     "apps": 5,
+    "tools": 6,
 }
 
 

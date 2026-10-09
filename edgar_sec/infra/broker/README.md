@@ -12,14 +12,6 @@ Make the aggregate pace a property of the host rather than of the pool. The
 server owns the client; `SecBrokerClient` on the worker side never constructs
 its own. See *Deliberate gaps* for what this package is not.
 
-## Layout
-
-| Module | Responsibility |
-| :--- | :--- |
-| `sec_broker.py` | `SecBroker` (server), `SecBrokerClient` (worker side), the frame codec, and the healthcheck sentinel. |
-| `daemon.py` | `managed_broker()`: host a broker on a background thread for the duration of a `with` block. |
-| `__init__.py` | Docstring only. No re-exports. |
-
 ## Contracts
 
 **Guarantees**
@@ -70,32 +62,6 @@ its own. See *Deliberate gaps* for what this package is not.
   anything else is answered with a `failed` status rather than raising.
 - Frame sizes are trusted. `_recv_frame` rejects a negative length but sets no
   upper bound, and the per-socket read timeout is `_READ_TIMEOUT_S = 30.0`.
-
-## Public surface
-
-- `SecBroker` — the socket server; owns the client and serves fetch RPCs. Also
-  exposes `stop()`, `metrics`, and `snapshot()`.
-- `SecBrokerClient` — picklable, thread-local socket, two socket-level attempts.
-- `BrokerError` — transport and framing failure.
-- `BrokerRequestError` — declared but never raised; see *Deliberate gaps*.
-- `PROTOCOL_VERSION` — the wire-protocol integer, `1`. Never read by either
-  endpoint: the frame is a bare `!I` length header plus JSON, so there is no
-  version negotiation on the wire.
-- `HEALTHCHECK_URL` — the sentinel `"healthcheck://broker"`, answered locally
-  without touching the client, and used by `managed_broker` as its readiness
-  probe.
-- `managed_broker` — context manager hosting a live broker for a block.
-  `daemon.py`.
-
-**Command surface:** none. `broker/` has no `__main__.py`, no argparse entry
-point, and no console script.
-
-## Tests
-
-- `tests/infra/broker/test_broker.py` — broker lifecycle and fetch, including a
-  warm-cache hit that must not reach `get_bytes` and a 404 returned as data;
-  ten concurrent threads against one broker at `max_connections=8`; pickle
-  round-trip of `SecBrokerClient`.
 
 ## Deliberate gaps
 
