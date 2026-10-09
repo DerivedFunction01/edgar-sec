@@ -19,7 +19,7 @@ from edgar_sec.infra.storage.duckdb import (
     find_duplicate_keys,
     find_null_keys,
 )
-from edgar_sec.infra.storage.cohort.operations import execute_delta_roster
+from edgar_sec.pipelines.cohort.operations import execute_delta_roster
 
 from .merger import (
     MergeError,

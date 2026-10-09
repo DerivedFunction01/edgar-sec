@@ -46,10 +46,11 @@ _SQL_COMPILER_PATHS = frozenset(
         "edgar_sec/pipelines/document_storage/fixture_store.py",
         # Source paths bind at read_csv sinks; selected identifiers and delimiters
         # pass through sql_identifier/sql_literal before query composition.
-        "edgar_sec/infra/storage/cohort/ingestion.py",
+        "edgar_sec/pipelines/cohort/ingestion.py",
         # Expression SQL is compiled from validated AST nodes and catalog paths;
         # row values and limits remain bound parameters.
-        "edgar_sec/infra/storage/cohort/workspace.py",
+        "edgar_sec/pipelines/cohort/workspace.py",
+        "edgar_sec/pipelines/cohort/sources.py",
     }
 )
 

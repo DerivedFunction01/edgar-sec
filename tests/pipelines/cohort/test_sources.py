@@ -5,10 +5,10 @@ import pytest
 import pyarrow.parquet as pq
 
 from edgar_sec.foundation.hashing import file_sha256
-from edgar_sec.infra.storage.cohort import sources
+from edgar_sec.pipelines.cohort import sources
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
-from edgar_sec.infra.storage.cohort.sources import (
+from edgar_sec.pipelines.cohort.sources import (
     SOURCE_URLS,
     publish_tickers_source,
     publish_universe_source,
@@ -80,7 +80,7 @@ def test_ticker_snapshots_with_changed_names_keep_separate_records(
     def no_reparse(*_args, **_kwargs):
         raise AssertionError("intact source snapshot should be reused without parsing")
 
-    monkeypatch.setattr(sources, "_ticker_csv", no_reparse)
+    monkeypatch.setattr(sources, "connect", no_reparse)
     repeated = publish_tickers_source(first_source, paths=paths, catalog=catalog)
 
     first_details = json.loads(first.origin_json)
@@ -174,7 +174,7 @@ def test_refresh_reuses_intact_payload_before_parsing_and_reactivates_it(
     def no_reparse(*_args, **_kwargs):
         raise AssertionError("intact source payload should bypass parsing")
 
-    monkeypatch.setattr(sources, "_ticker_csv", no_reparse)
+    monkeypatch.setattr(sources, "connect", no_reparse)
     repeated = refresh_official_source(
         "company_tickers", client=client, paths=paths, catalog=catalog
     )

@@ -11,7 +11,7 @@ from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
-from edgar_sec.infra.storage.cohort.sources import resolve_active_source
+from edgar_sec.pipelines.cohort.sources import resolve_active_source
 from edgar_sec.pipelines.cohort.family_index import (
     _family_index_id,
     publish_family_index,

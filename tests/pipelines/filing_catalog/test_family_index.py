@@ -15,7 +15,7 @@ from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.models import FamilyIndexRecord
-from edgar_sec.infra.storage.cohort.operations import FamilyIndexNotFoundError
+from edgar_sec.pipelines.cohort.operations import FamilyIndexNotFoundError
 from edgar_sec.infra.storage.cohort.paths import CohortPaths, resolve_cohort_paths
 from edgar_sec.pipelines.filing_catalog.planner import plan_policy
 

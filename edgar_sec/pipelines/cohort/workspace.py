@@ -15,8 +15,10 @@ from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet
 from edgar_sec.infra.storage.object_store.store import ObjectStore
 
-from .catalog import CohortCatalog, CohortNotFoundError
-from .operations import (
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog, CohortNotFoundError
+from edgar_sec.infra.storage.cohort.models import CohortRecord
+from edgar_sec.infra.storage.cohort.paths import CohortPaths
+from edgar_sec.pipelines.cohort.operations import (
     BinaryOp,
     CohortRef,
     ExprNode,
@@ -24,9 +26,7 @@ from .operations import (
     compile_ast_to_sql,
     parse_expression,
 )
-from .models import CohortRecord
-from .paths import CohortPaths
-from .query import CohortMember
+from edgar_sec.pipelines.cohort.query import CohortMember
 
 _EXPRESSION_SCHEMA = "cohort_expr_ast"
 _VARIABLE_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")

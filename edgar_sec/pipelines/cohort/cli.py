@@ -49,7 +49,7 @@ def _resolve(context: _Context, identifier: str) -> CohortRecord:
 
 
 def _cmd_import(args: Any, context: _Context) -> int:
-    from edgar_sec.infra.storage.cohort.ingestion import ingest_file_to_cohort
+    from edgar_sec.pipelines.cohort.ingestion import ingest_file_to_cohort
 
     result = ingest_file_to_cohort(
         args.input,
@@ -97,7 +97,7 @@ def _cmd_list(args: Any, context: _Context) -> int:
 
 
 def _cmd_info(args: Any, context: _Context) -> int:
-    from edgar_sec.infra.storage.cohort.query import query_cohort_members
+    from edgar_sec.pipelines.cohort.query import query_cohort_members
 
     record = _resolve(context, args.cohort)
     print(f"id: {record.cohort_id}")
@@ -157,7 +157,7 @@ def _cmd_delete(args: Any, context: _Context) -> int:
 
 
 def _cmd_query(args: Any, context: _Context) -> int:
-    from edgar_sec.infra.storage.cohort.query import query_cohort_members
+    from edgar_sec.pipelines.cohort.query import query_cohort_members
 
     record = _resolve(context, args.cohort)
     count, members = query_cohort_members(
@@ -181,7 +181,7 @@ def _cmd_query(args: Any, context: _Context) -> int:
 
 
 def _cmd_find(args: Any, context: _Context) -> int:
-    from edgar_sec.infra.storage.cohort.query import find_across_cohorts
+    from edgar_sec.pipelines.cohort.query import find_across_cohorts
 
     if args.cik is None and args.name is None:
         raise ValueError("find requires --cik or --name")
@@ -219,11 +219,11 @@ def _source_record(context: _Context, source: str) -> CohortRecord:
 
 
 def _cmd_sample(args: Any, context: _Context) -> int:
-    from edgar_sec.infra.storage.cohort.operations import (
+    from edgar_sec.pipelines.cohort.operations import (
         FamilyIndexNotFoundError,
         sample_cohort,
     )
-    from edgar_sec.infra.storage.cohort.ingestion import publish_derived_cohort
+    from edgar_sec.pipelines.cohort.ingestion import publish_derived_cohort
 
     if args.rate is None and args.limit is None:
         raise ValueError("sample requires --rate or --limit")
@@ -290,7 +290,7 @@ def _cmd_family_index(_args: Any, context: _Context) -> int:
 
 
 def _cmd_sources_refresh(args: Any, context: _Context, client: Any = None) -> int:
-    from edgar_sec.infra.storage.cohort.sources import refresh_official_source
+    from edgar_sec.pipelines.cohort.sources import refresh_official_source
 
     if client is None:
         from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
@@ -311,8 +311,8 @@ def _cmd_sources_refresh(args: Any, context: _Context, client: Any = None) -> in
 
 
 def _cmd_diff(args: Any, context: _Context) -> int:
-    from edgar_sec.infra.storage.cohort.ingestion import publish_derived_cohort
-    from edgar_sec.infra.storage.cohort.operations import (
+    from edgar_sec.pipelines.cohort.ingestion import publish_derived_cohort
+    from edgar_sec.pipelines.cohort.operations import (
         diff_cohorts,
         execute_set_operation,
     )
@@ -449,7 +449,7 @@ def _cmd_workspace(args: Any, context: _Context) -> int:
         print(f"removed_sessions={removed}")
         return 0
 
-    from edgar_sec.infra.storage.cohort.workspace import CohortWorkspace
+    from edgar_sec.pipelines.cohort.workspace import CohortWorkspace
 
     session_id = args.session or context.store.get_active_session()
     workspace = CohortWorkspace(
@@ -492,7 +492,7 @@ def _cmd_workspace(args: Any, context: _Context) -> int:
 
 def _cmd_merge(args: Any, context: _Context) -> int:
     from edgar_sec.foundation.serialization import canonical_json
-    from edgar_sec.infra.storage.cohort.operations import (
+    from edgar_sec.pipelines.cohort.operations import (
         parse_expression,
         serialize_expression,
     )
@@ -504,7 +504,7 @@ def _cmd_merge(args: Any, context: _Context) -> int:
         print(canonical_json(serialize_expression(node)))
         return 0
 
-    from edgar_sec.infra.storage.cohort.workspace import CohortWorkspace
+    from edgar_sec.pipelines.cohort.workspace import CohortWorkspace
 
     workspace = CohortWorkspace(
         context.paths,

@@ -18,9 +18,9 @@ import pyarrow as pa
 from edgar_sec.domain.sec_urls import historical_submissions_url, submissions_url
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
-from edgar_sec.infra.storage.cohort.ingestion import ingest_file_to_cohort
+from edgar_sec.pipelines.cohort.ingestion import ingest_file_to_cohort
 from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
-from edgar_sec.infra.storage.cohort.sources import SOURCE_URLS, refresh_official_source
+from edgar_sec.pipelines.cohort.sources import SOURCE_URLS, refresh_official_source
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.rate_limit import RateLimiter
 from edgar_sec.infra.sec_http.retry import RetryPolicy

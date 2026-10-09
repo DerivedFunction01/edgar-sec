@@ -150,7 +150,7 @@ def _workspace_context() -> tuple[object, object]:
 def _workspace(catalog: object, store: object) -> object:
     from edgar_sec.foundation.runtime.paths import resolve_paths
     from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
-    from edgar_sec.infra.storage.cohort.workspace import CohortWorkspace
+    from edgar_sec.pipelines.cohort.workspace import CohortWorkspace
 
     paths = resolve_cohort_paths(project_paths=resolve_paths())
     return CohortWorkspace(paths, catalog=catalog, store=store)
@@ -166,7 +166,7 @@ def _refresh_source() -> None:
     from edgar_sec.infra.sec_http.client import SecHttpClient
     from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
     from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
-    from edgar_sec.infra.storage.cohort.sources import refresh_official_source
+    from edgar_sec.pipelines.cohort.sources import refresh_official_source
 
     settings = resolve_runtime_settings()
     paths = resolve_cohort_paths()

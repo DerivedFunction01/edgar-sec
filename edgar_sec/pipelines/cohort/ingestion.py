@@ -20,9 +20,9 @@ from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier, sql_literal
 from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
 
-from .catalog import CohortCatalog
-from .models import CohortRecord
-from .paths import DATASET_FILE_NAME, CohortPaths
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.models import CohortRecord
+from edgar_sec.infra.storage.cohort.paths import DATASET_FILE_NAME, CohortPaths
 
 _DELIMITERS = {",", "\t", "|"}
 _CIK_COLUMNS = {"cik", "cik_padded", "central_index_key"}

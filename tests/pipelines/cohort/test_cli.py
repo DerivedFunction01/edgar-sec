@@ -10,9 +10,9 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
-import edgar_sec.infra.storage.cohort.ingestion as cohort_ingestion
-import edgar_sec.infra.storage.cohort.operations as cohort_operations
-from edgar_sec.infra.storage.cohort.operations import execute_set_operation
+import edgar_sec.pipelines.cohort.ingestion as cohort_ingestion
+import edgar_sec.pipelines.cohort.operations as cohort_operations
+from edgar_sec.pipelines.cohort.operations import execute_set_operation
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
 from edgar_sec.infra.storage.object_store.store import ObjectStore
 from edgar_sec.pipelines.cohort import cli
@@ -234,7 +234,7 @@ def test_query_renders_members_and_preserves_count_offset(
         cli, "_dataset", lambda _context, _record: Path("members.parquet")
     )
     monkeypatch.setattr(
-        "edgar_sec.infra.storage.cohort.query.query_cohort_members",
+        "edgar_sec.pipelines.cohort.query.query_cohort_members",
         lambda *_args, **_kwargs: (8, members),
     )
 
@@ -279,9 +279,7 @@ def test_find_renders_matches_and_preserves_count_page(
         captured.update(kwargs)
         return 7, matches
 
-    monkeypatch.setattr(
-        "edgar_sec.infra.storage.cohort.query.find_across_cohorts", find
-    )
+    monkeypatch.setattr("edgar_sec.pipelines.cohort.query.find_across_cohorts", find)
 
     assert (
         cli._cmd_find(
@@ -472,7 +470,7 @@ def test_union_name_selection_is_left_first_with_blank_fallback(
 def test_official_refresh_injects_client_without_network(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
-    from edgar_sec.infra.storage.cohort import sources
+    from edgar_sec.pipelines.cohort import sources
 
     paths = CohortPaths(tmp_path)
     context = cli._Context(paths, CohortCatalog(paths), ObjectStore(paths.catalog_file))
@@ -507,8 +505,8 @@ def test_diff_aliases_saves_both_named_membership_deltas(
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    from edgar_sec.infra.storage.cohort.query import query_cohort_members
-    from edgar_sec.infra.storage.cohort.sources import refresh_official_source
+    from edgar_sec.pipelines.cohort.query import query_cohort_members
+    from edgar_sec.pipelines.cohort.sources import refresh_official_source
 
     paths = CohortPaths(tmp_path / "artifacts")
     catalog = CohortCatalog(paths)

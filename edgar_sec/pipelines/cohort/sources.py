@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import csv
 import json
 import os
 import tempfile
@@ -10,15 +9,17 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+import pyarrow as pa
+
 from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.storage.duckdb import connect
 
-from .catalog import CohortCatalog
-from .ingestion import _ingest_file, _publish_query
-from .models import CohortRecord
-from .paths import CohortPaths
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.pipelines.cohort.ingestion import _canonical_query, _publish_query
+from edgar_sec.infra.storage.cohort.models import CohortRecord
+from edgar_sec.infra.storage.cohort.paths import CohortPaths
 
 SOURCE_URLS = {
     "cik_lookup": "https://www.sec.gov/Archives/edgar/cik-lookup-data.txt",
@@ -65,54 +66,40 @@ def _matching_source_record(
     return record
 
 
-def _ticker_csv(raw_path: Path, paths: CohortPaths) -> tuple[Path, dict[str, int]]:
-    try:
-        with raw_path.open("r", encoding="utf-8") as stream:
-            payload = json.load(stream)
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
-        raise ValueError(
-            f"company_tickers source is not valid UTF-8 JSON: {exc}"
-        ) from exc
-    if not isinstance(payload, dict) or not payload:
-        raise ValueError("company_tickers source must be a non-empty JSON object")
-
-    paths.cohorts_root.mkdir(parents=True, exist_ok=True)
-    descriptor, csv_name = tempfile.mkstemp(
-        prefix=".ticker-rows-", suffix=".csv", dir=paths.cohorts_root
+def _insert_ticker_rows(
+    connection: Any, rows: list[tuple[str, str]], batch_size: int = 1000
+) -> None:
+    connection.execute(
+        "CREATE TEMP TABLE ticker_rows (entry_key VARCHAR, cik_str VARCHAR, title VARCHAR)"
     )
-    os.close(descriptor)
-    csv_path = Path(csv_name)
-    count = 0
-    try:
-        with csv_path.open("w", encoding="utf-8", newline="") as stream:
-            writer = csv.writer(stream, lineterminator="\n")
-            writer.writerow(("cik", "name"))
-            for key in sorted(payload, key=str):
-                row = payload[key]
-                if not isinstance(row, dict):
-                    raise ValueError(f"company_tickers entry {key!r} must be an object")
-                raw_cik = row.get("cik_str")
-                if isinstance(raw_cik, bool) or raw_cik is None:
-                    raise ValueError(f"company_tickers entry {key!r} has no CIK")
-                cik_text = str(raw_cik).strip()
-                if (
-                    not cik_text.isascii()
-                    or not cik_text.isdigit()
-                    or not 1 <= int(cik_text) <= 9_999_999_999
-                ):
-                    raise ValueError(f"company_tickers entry {key!r} has invalid CIK")
-                ticker = row.get("ticker", "")
-                title = row.get("title", "")
-                if not isinstance(ticker, str) or not isinstance(title, str):
-                    raise ValueError(
-                        f"company_tickers entry {key!r} has invalid listing fields"
-                    )
-                writer.writerow((cik_text, title.strip()))
-                count += 1
-        return csv_path, {"listing_row_count": count}
-    except BaseException:
-        csv_path.unlink(missing_ok=True)
-        raise
+    for i in range(0, len(rows), batch_size):
+        batch = rows[i : i + batch_size]
+        values = ", ".join(
+            f"({n!r},{cik_str!r},{title!r})" for n, (cik_str, title) in enumerate(batch)
+        )
+        connection.execute(f"INSERT INTO ticker_rows VALUES {values}")
+
+
+def _ticker_rows_canonical_query() -> str:
+    source_cte = """
+        WITH source AS (
+            SELECT
+                row_number() OVER () AS source_order,
+                entry_key,
+                cik_str AS raw_cik,
+                title AS raw_name
+            FROM ticker_rows
+        ),
+        typed AS (
+            SELECT
+                source_order,
+                try_cast(raw_cik AS BIGINT) AS cik_value,
+                raw_name,
+                TRUE AS valid_cik
+            FROM source
+        )
+    """
+    return _canonical_query(source_cte)
 
 
 def _origin_details(
@@ -145,13 +132,50 @@ def publish_tickers_source(
     existing = _matching_source_record(source, raw_sha256, paths=paths, catalog=catalog)
     if existing is not None:
         return existing
-    generated, metrics = _ticker_csv(raw, paths)
     try:
+        with raw.open("r", encoding="utf-8") as stream:
+            payload = json.load(stream)
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValueError(
+            f"company_tickers source is not valid UTF-8 JSON: {exc}"
+        ) from exc
+    if not isinstance(payload, dict) or not payload:
+        raise ValueError("company_tickers source must be a non-empty JSON object")
+    rows: list[tuple[str, str]] = []
+    for key in sorted(payload, key=str):
+        row = payload[key]
+        if not isinstance(row, dict):
+            raise ValueError(f"company_tickers entry {key!r} must be an object")
+        raw_cik = row.get("cik_str")
+        if isinstance(raw_cik, bool) or raw_cik is None:
+            raise ValueError(f"company_tickers entry {key!r} has no CIK")
+        cik_text = str(raw_cik).strip()
+        if (
+            not cik_text.isascii()
+            or not cik_text.isdigit()
+            or not 1 <= int(cik_text) <= 9_999_999_999
+        ):
+            raise ValueError(f"company_tickers entry {key!r} has invalid CIK")
+        ticker = row.get("ticker", "")
+        title = row.get("title", "")
+        if not isinstance(ticker, str) or not isinstance(title, str):
+            raise ValueError(
+                f"company_tickers entry {key!r} has invalid listing fields"
+            )
+        rows.append((cik_text, title.strip()))
+    if not rows:
+        raise ValueError("company_tickers source has no usable entries")
+    connection = connect()
+    try:
+        _insert_ticker_rows(connection, rows)
         snapshot_id = _snapshot_id(source, raw_sha256)
-        return _ingest_file(
-            generated,
-            catalog=catalog,
+        return _publish_query(
+            connection,
+            _ticker_rows_canonical_query(),
+            [],
             paths=paths,
+            catalog=catalog,
+            name=None,
             description="Official SEC company ticker listings",
             tags=("system", "official-source", f"source:{source}"),
             origin_kind="official_source",
@@ -160,12 +184,12 @@ def publish_tickers_source(
                 raw_sha256=raw_sha256,
                 snapshot_id=snapshot_id,
                 observed_at=datetime.now(UTC).isoformat(),
-                source_metrics=metrics,
+                source_metrics={"listing_row_count": len(rows)},
             ),
             pinned=True,
-        ).cohort
+        )
     finally:
-        generated.unlink(missing_ok=True)
+        connection.close()
 
 
 _UNIVERSE_CTE = """

@@ -9,7 +9,7 @@ import pytest
 
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
-from edgar_sec.infra.storage.cohort.ingestion import (
+from edgar_sec.pipelines.cohort.ingestion import (
     ingest_file_to_cohort,
     publish_derived_cohort,
 )

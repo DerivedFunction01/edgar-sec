@@ -16,7 +16,7 @@ from edgar_sec.infra.storage.duckdb import (
     sql_literal,
 )
 
-from .catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 
 SetOpKind = Literal["union", "intersect", "difference"]
 

@@ -6,9 +6,9 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
-from edgar_sec.infra.storage.cohort.ingestion import ingest_file_to_cohort
+from edgar_sec.pipelines.cohort.ingestion import ingest_file_to_cohort
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
-from edgar_sec.infra.storage.cohort.workspace import CohortWorkspace
+from edgar_sec.pipelines.cohort.workspace import CohortWorkspace
 from edgar_sec.infra.storage.object_store.store import ObjectStore
 from edgar_sec.pipelines.cohort.repl import run_repl
 

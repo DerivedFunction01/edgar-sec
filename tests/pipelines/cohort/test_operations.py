@@ -7,7 +7,7 @@ import pytest
 
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
-from edgar_sec.infra.storage.cohort.operations import (
+from edgar_sec.pipelines.cohort.operations import (
     BinaryOp,
     CohortRef,
     compile_ast_to_sql,

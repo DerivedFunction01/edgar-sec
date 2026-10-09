@@ -19,7 +19,7 @@ from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.models import FamilyIndexRecord
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
-from edgar_sec.infra.storage.cohort.sources import resolve_active_source
+from edgar_sec.pipelines.cohort.sources import resolve_active_source
 from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet, sql_literal
 
 _INDEX_KIND = "company_family_index"

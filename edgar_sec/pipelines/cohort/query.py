@@ -7,8 +7,8 @@ from pathlib import Path
 
 from edgar_sec.infra.storage.duckdb import connect
 
-from .catalog import CohortCatalog
-from .models import CohortRecord
+from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.cohort.models import CohortRecord
 
 
 @dataclass(frozen=True, slots=True)

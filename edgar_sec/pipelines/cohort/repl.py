@@ -10,7 +10,7 @@ from uuid import uuid4
 from edgar_sec.foundation.runtime.render import Grid, render_output
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
-from edgar_sec.infra.storage.cohort.workspace import CohortWorkspace
+from edgar_sec.pipelines.cohort.workspace import CohortWorkspace
 from edgar_sec.infra.storage.object_store.store import ObjectStore
 
 _ASSIGNMENT = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*)\s*=(.*)$")

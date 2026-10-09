@@ -10,7 +10,7 @@ from typing import Any
 import pytest
 
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
-from edgar_sec.infra.storage.cohort.ingestion import ingest_file_to_cohort
+from edgar_sec.pipelines.cohort.ingestion import ingest_file_to_cohort
 from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 from edgar_sec.pipelines.filing_catalog.cli import (
     build_parser,

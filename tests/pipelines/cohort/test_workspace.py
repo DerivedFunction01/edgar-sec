@@ -6,12 +6,12 @@ from pathlib import Path
 
 import pytest
 
-import edgar_sec.infra.storage.cohort.workspace as workspace_module
+import edgar_sec.pipelines.cohort.workspace as workspace_module
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog, CohortNotFoundError
 from edgar_sec.infra.storage.cohort.maintenance import maintain_cohort_store
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
-from edgar_sec.infra.storage.cohort.workspace import CohortWorkspace
+from edgar_sec.pipelines.cohort.workspace import CohortWorkspace
 from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet
 from edgar_sec.infra.storage.object_store.store import ObjectStore
 

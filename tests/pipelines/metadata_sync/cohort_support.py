@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
-from edgar_sec.infra.storage.cohort.ingestion import ingest_file_to_cohort
+from edgar_sec.pipelines.cohort.ingestion import ingest_file_to_cohort
 from edgar_sec.infra.storage.cohort.paths import CohortPaths, resolve_cohort_paths
 from edgar_sec.infra.storage.cohort.models import CohortRecord
 from edgar_sec.pipelines.metadata_sync.roster import Roster, cohort_record_to_roster

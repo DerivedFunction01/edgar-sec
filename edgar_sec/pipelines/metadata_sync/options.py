@@ -15,7 +15,7 @@ from edgar_sec.foundation.runtime.partitions import parse_id_selection
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
-from edgar_sec.infra.storage.cohort.operations import sample_cohort
+from edgar_sec.pipelines.cohort.operations import sample_cohort
 from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 
 from .paths import (
