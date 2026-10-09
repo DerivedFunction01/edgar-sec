@@ -137,18 +137,10 @@ SEED_FILER_COLUMNS = ("cik", "seed_group", "coverage_tags", "notes")
 
 
 def load_seed_cik_csv(path: str | Path) -> dict[str, SeedFiler]:
-    """Parse and validate a seed CIK CSV, normalizing every CIK to ten digits; a
-    missing ``seed-cik.csv`` falls back to a sibling ``cik-sec.csv``.
-    """
+    """Parse and validate a seed CIK CSV, normalizing every CIK to ten digits."""
     source_path = Path(path).resolve()
     if not source_path.is_file():
-        if (
-            source_path.name == "seed-cik.csv"
-            and (source_path.parent / "cik-sec.csv").is_file()
-        ):
-            source_path = source_path.parent / "cik-sec.csv"
-        else:
-            raise FileNotFoundError(f"seed CIK file not found: {source_path}")
+        raise FileNotFoundError(f"seed CIK file not found: {source_path}")
 
     seed_map: dict[str, SeedFiler] = {}
     with source_path.open("r", encoding="utf-8-sig", newline="") as handle:

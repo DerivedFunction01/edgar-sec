@@ -14,6 +14,7 @@ from typing import Any
 
 from edgar_sec.foundation.hashing import sha256_text
 from edgar_sec.foundation.serialization import canonical_json
+from edgar_sec.infra.storage.dag.paths import CATALOG_DB_NAME
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
     NodeKind,
@@ -21,7 +22,6 @@ from edgar_sec.infra.storage.dag.manifest import (
     PartDescriptor,
 )
 
-CATALOG_DB_NAME = "catalog.sqlite"
 
 _INIT_SCHEMA_SQL = """
 PRAGMA journal_mode = WAL;
@@ -576,4 +576,4 @@ class DAGCatalog:
             }
 
 
-__all__ = ["CATALOG_DB_NAME", "DAGCatalog"]
+__all__ = ["DAGCatalog"]

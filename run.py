@@ -30,7 +30,6 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         description="SEC submissions metadata extraction and partition sync",
         module="edgar_sec.pipelines.metadata_sync.operator",
     ),
-  
     LauncherEntry(
         id="filing-catalog",
         label="Filing Catalog",

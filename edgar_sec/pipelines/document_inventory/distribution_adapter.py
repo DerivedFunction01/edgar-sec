@@ -27,6 +27,8 @@ from edgar_sec.pipelines.document_inventory.coordinator import (
 )
 from edgar_sec.pipelines.document_inventory.paths import (
     InventoryRunPaths,
+    RUN_MANIFEST_FILE,
+    WORK_ORDER_FILE,
     inventory_run_paths,
 )
 from edgar_sec.pipelines.document_inventory.run_manifest import (
@@ -105,8 +107,8 @@ class InventoryDistributionAdapter:
         """Copy run manifest and work order Parquet file into worker bundle."""
         manifest, run_paths = plan
         bundle_dir.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(run_paths.run_manifest_path(), bundle_dir / "run_manifest.json")
-        shutil.copy2(run_paths.work_order_path(), bundle_dir / "work_order.parquet")
+        shutil.copy2(run_paths.run_manifest_path(), bundle_dir / RUN_MANIFEST_FILE)
+        shutil.copy2(run_paths.work_order_path(), bundle_dir / WORK_ORDER_FILE)
 
     def execute_worker(
         self,
@@ -121,13 +123,13 @@ class InventoryDistributionAdapter:
         chunk_ids = [int(cid) for cid in manifest_data["chunk_ids"]]
         effective_worker = worker_id or str(manifest_data.get("worker_id", "worker"))
 
-        manifest_file = bundle_dir / "run_manifest.json"
+        manifest_file = bundle_dir / RUN_MANIFEST_FILE
         raw_manifest = json.loads(manifest_file.read_text(encoding="utf-8"))
         run_manifest = InventoryRunManifest.from_dict(raw_manifest)
         bundle_paths = InventoryRunPaths(
             artifacts_root=bundle_dir, run_id=run_manifest.run_id
         )
-        work_order_path = bundle_dir / "work_order.parquet"
+        work_order_path = bundle_dir / WORK_ORDER_FILE
 
         assigned_set = set(chunk_ids)
         assigned_chunks = [

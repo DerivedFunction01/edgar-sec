@@ -17,7 +17,7 @@ from edgar_sec.infra.storage.object_store.store import ObjectStore
 
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog, CohortNotFoundError
 from edgar_sec.infra.storage.cohort.models import CohortRecord
-from edgar_sec.infra.storage.cohort.paths import CohortPaths
+from edgar_sec.infra.storage.cohort.paths import CohortPaths, DATASET_FILE_NAME
 from edgar_sec.pipelines.cohort.operations import (
     BinaryOp,
     CohortRef,
@@ -178,7 +178,7 @@ class CohortWorkspace:
             return existing
 
         staging_dir = self.paths.create_staging_dir(cohort_id)
-        staged_dataset = staging_dir / "ciks.parquet"
+        staged_dataset = staging_dir / DATASET_FILE_NAME
         try:
             with self.paths.active_staging_lease(staging_dir):
                 with connect() as connection:
