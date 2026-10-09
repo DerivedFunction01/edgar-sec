@@ -10,6 +10,7 @@ from typing import Protocol
 from edgar_sec.foundation.runtime.paths import (
     PLAN_FILE_NAME,
     ProjectPaths,
+    PLANS_DIR,
     resolve_paths,
     validate_safe_id,
 )
@@ -20,8 +21,6 @@ from edgar_sec.pipelines.filing_catalog.paths import (
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
 
 PIPELINE_DIR = "document_planning"
-PLANS_DIR = "plans"
-POLICY_DIR = "policies"
 PROFILES_DIR = "profiles"
 _PROFILE_ID_RE = re.compile(r"[A-Za-z0-9_.-]+\Z", re.ASCII)
 
