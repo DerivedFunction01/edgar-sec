@@ -36,16 +36,15 @@ from .patterns import (
 )
 from .residue import consume_toc_residue
 
-_RE_TAGGED_TABLE = TAGGED_TABLE_OPEN_RE
-_RE_TAGGED_TABLE_END = TAGGED_TABLE_CLOSE_RE
-
 # A heading whose rows begin beyond this window is mid-document navigation
 # text, not a TOC start.
 _MAX_HEADING_ROW_GAP = 10
 
 
 def _table_delta(line: str) -> int:
-    return len(_RE_TAGGED_TABLE.findall(line)) - len(_RE_TAGGED_TABLE_END.findall(line))
+    return len(TAGGED_TABLE_OPEN_RE.findall(line)) - len(
+        TAGGED_TABLE_CLOSE_RE.findall(line)
+    )
 
 
 def _build_table_depths(lines: list[str]) -> list[int]:
@@ -91,12 +90,12 @@ def _merge_continuation_tables(
         if not gap_line or scan in page_marker_lines or is_page_marker_line(gap_line):
             scan += 1
             continue
-        if _RE_TAGGED_TABLE.search(gap_line):
+        if TAGGED_TABLE_OPEN_RE.search(gap_line):
             cont_end = next(
                 (
                     candidate
                     for candidate in range(scan + 1, limit)
-                    if _RE_TAGGED_TABLE_END.search(lines[candidate])
+                    if TAGGED_TABLE_CLOSE_RE.search(lines[candidate])
                 ),
                 None,
             )
@@ -299,13 +298,13 @@ def find_toc_span(
         )
 
     for index in range(start_line, limit):
-        if not _RE_TAGGED_TABLE.search(lines[index]):
+        if not TAGGED_TABLE_OPEN_RE.search(lines[index]):
             continue
         end = next(
             (
                 candidate
                 for candidate in range(index + 1, limit)
-                if _RE_TAGGED_TABLE_END.search(lines[candidate])
+                if TAGGED_TABLE_CLOSE_RE.search(lines[candidate])
             ),
             None,
         )

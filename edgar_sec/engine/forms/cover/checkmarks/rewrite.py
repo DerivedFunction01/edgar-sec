@@ -34,7 +34,6 @@ from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.patterns import RE_SEPARATOR_LINE
 
 _RE_DIVIDER_LINE = re.compile(r"\s*[+|:\-=_]+\s*\n?")
-_RE_DASH_DECORATION = RE_SEPARATOR_LINE
 _RE_FILER_CHECKED = re.compile(r"_{1,8}\s*[Xx]\s*_{1,8}")
 _RE_FILER_BLANK = re.compile(r"_{2,}")
 _RE_FILER_LABEL = re.compile(
@@ -200,7 +199,7 @@ def _strip_yes_no_dash_decoration(text: str) -> str:
             index + 1 < len(lines)
             and YES_NO_LINE_RE.search(line)
             and CHECKMARK_MARK_RE.search(line)
-            and _RE_DASH_DECORATION.fullmatch(lines[index + 1].rstrip("\r\n"))
+            and RE_SEPARATOR_LINE.fullmatch(lines[index + 1].rstrip("\r\n"))
         ):
             kept.append(line)
             index += 2

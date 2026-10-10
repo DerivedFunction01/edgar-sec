@@ -16,7 +16,7 @@ from edgar_sec.foundation.text.tokens import (
     is_wrapped_marker_prefix,
 )
 
-from .patterns import COLUMN_DASH_RULE_RE, TABLE_INTRO_CUE_RE, UNITS_LABEL_RE
+from .patterns import COLUMN_DASH_RULE_RE, UNITS_LABEL_RE, _RE_TABLE_INTRO_CUE
 from .tokens import numeric_cell_starts as _numeric_cell_starts
 
 _RE_WIDE_COLUMN_GAP = re.compile(r"\s{3,}")
@@ -88,7 +88,7 @@ def is_header_prefix(lines: tuple[str, ...]) -> bool:
     joined = " ".join(line.strip() for line in lines if line.strip())
     if not joined:
         return False
-    if TABLE_INTRO_CUE_RE.search(joined):
+    if _RE_TABLE_INTRO_CUE.search(joined):
         return False
     if joined.casefold().startswith("see item"):
         return False
@@ -181,7 +181,7 @@ def is_structural_table_bridge(
             return False
         if stripped.startswith(_TAG_OR_SECTION_PREFIXES):
             return False
-        if TABLE_INTRO_CUE_RE.search(stripped):
+        if _RE_TABLE_INTRO_CUE.search(stripped):
             return False
         if len(_numeric_cell_starts(stripped)) >= 2:
             return False

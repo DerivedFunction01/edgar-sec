@@ -8,10 +8,10 @@ import re
 from collections.abc import Callable
 from dataclasses import dataclass
 
-_SENTINEL_PREFIX = "__SEC_TBL_"
-_SENTINEL_SUFFIX = "__"
+from .constants import SENTINEL_PREFIX, SENTINEL_SUFFIX
+
 _RE_RESTORE_SENTINEL = re.compile(
-    rf"{re.escape(_SENTINEL_PREFIX)}(\d+){re.escape(_SENTINEL_SUFFIX)}"
+    rf"{re.escape(SENTINEL_PREFIX)}(\d+){re.escape(SENTINEL_SUFFIX)}"
 )
 TAGGED_TABLE_OPEN_RE = re.compile(r"<TABLE\b", re.IGNORECASE)
 TAGGED_TABLE_CLOSE_RE = re.compile(r"</TABLE\s*>", re.IGNORECASE)
@@ -19,11 +19,6 @@ _RE_TABLE_OPEN_WITH_SPACE = re.compile(r"[ \t]*<TABLE\b", re.IGNORECASE)
 _RE_TABLE_CLOSE_WITH_SPACE = re.compile(r"</TABLE\s*>[ \t]*", re.IGNORECASE)
 _RE_TABLE_OPEN_TAG = re.compile(r"<TABLE\b[^>]*>", re.IGNORECASE)
 _RE_TABLE_CLOSE_TAG = re.compile(r"</TABLE\s*>", re.IGNORECASE)
-
-# Whitespace normalization passes must treat whitespace adjacent to these tokens as a line
-# separator, never as a space.
-SENTINEL_PREFIX = _SENTINEL_PREFIX
-SENTINEL_SUFFIX = _SENTINEL_SUFFIX
 
 
 @dataclass(frozen=True, slots=True)
@@ -51,7 +46,7 @@ class TableSpan:
 
 def _sentinel_token(position: int) -> str:
     """Return the mask token for table span ``position``."""
-    return f"{_SENTINEL_PREFIX}{position}{_SENTINEL_SUFFIX}"
+    return f"{SENTINEL_PREFIX}{position}{SENTINEL_SUFFIX}"
 
 
 def _masked_sentinel_starts(spans: tuple[TableSpan, ...]) -> tuple[int, ...]:
@@ -151,7 +146,7 @@ def find_table_spans(text: str) -> tuple[TableSpan, ...]:
     """Find every complete or unterminated tagged table span, in source order.
     Also returns ``()`` when the text already carries the sentinel prefix: re-masking would nest sentinels and corrupt it.
     """
-    if not text or _SENTINEL_PREFIX in text or "<table" not in text.lower():
+    if not text or SENTINEL_PREFIX in text or "<table" not in text.lower():
         return ()
 
     spans: list[TableSpan] = []
@@ -194,7 +189,7 @@ def mask_tagged_tables(text: str) -> tuple[str, tuple[TableSpan, ...]]:
     cursor = 0
     for position, span in enumerate(spans):
         pieces.append(text[cursor : span.start])
-        pieces.append(f"{_SENTINEL_PREFIX}{position}{_SENTINEL_SUFFIX}")
+        pieces.append(f"{SENTINEL_PREFIX}{position}{SENTINEL_SUFFIX}")
         cursor = span.end
 
     pieces.append(text[cursor:])
@@ -251,8 +246,6 @@ def ensure_table_tag_boundaries(text: str) -> str:
 
 
 __all__ = [
-    "SENTINEL_PREFIX",
-    "SENTINEL_SUFFIX",
     "TAGGED_TABLE_CLOSE_RE",
     "TAGGED_TABLE_OPEN_RE",
     "ProtectedText",

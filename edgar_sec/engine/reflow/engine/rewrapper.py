@@ -15,8 +15,8 @@ from edgar_sec.engine.tables.policy.intro import (
     split_structural_table_intro,
     unify_table_prose,
 )
+from edgar_sec.engine.tables.protection.constants import SENTINEL_PREFIX
 from edgar_sec.engine.tables.protection.tags import (
-    SENTINEL_PREFIX,
     TableSpan,
     ensure_table_tag_boundaries,
     mask_tagged_tables,

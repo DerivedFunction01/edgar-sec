@@ -343,6 +343,56 @@ each outcome safely, and support restart after interruption.
   for S11 payload-Parquet adoption or an explicit discard; tests use a fake consumer
   until S10/S11 are implemented.
 
+#### Historical form-mismatch fixtures
+
+Keep these identity edge cases in pre-2011 fixtures. Distinguish an outer submission
+form versus SGML `<TYPE>` disagreement from text that contradicts otherwise matching
+submission and document metadata. Once the local screen is implemented, its cover
+result is suspicion evidence, never a replacement for the pinned S6 form or an exact
+index `document_type`.
+
+- Cover an old catalog-direct 8-K whose outer submission declares 8-K but whose
+  sequence-1 primary in the SGML `.txt` envelope declares `<TYPE>10-K`, with a unique
+  exact 8-K index row at another direct or bundle slot. Screening triggers one lookup
+  and selects only that indexed 8-K row.
+- Cover a text-only inversion where submission metadata, `<TYPE>`, and the index identify
+  an 8-K but the HTML or flat `.txt` cover says 10-K. Screening triggers lookup; the
+  index may assign only its exact 8-K row. Do not relabel the body as a 10-K or claim
+  that index selection reconciled the visible-text discrepancy.
+- Cover an entirely misfiled annual report: the pinned form and index identify an 8-K,
+  no 10-K index row exists, but the body contains annual-report wording or annual-family
+  checkmarks. A future family-aware screen should recognize the likely content mismatch
+  using existing annual evidence; generic cover-boundary detection is not form evidence.
+  S9 must not invent a 10-K slot: retain the index-evidenced missing outcome for the
+  pinned target until an explicitly approved identity-evaluator follow-up defines more.
+- Do not add post-2011 metadata-mismatch checks as a required S9 path: modern EDGAR
+  submission validation is expected to reject the outer-form/primary-`<TYPE>` mismatch.
+  The historical fixtures exercise compatibility with accepted old filings, not a
+  second form taxonomy or a new cover vocabulary.
+
+#### Deferred identity-evaluator follow-up
+
+The current family taxonomies and evidence may distinguish an annual report from an
+8-K shell even when index metadata has no 10-K row. A future evaluator must reuse that
+existing evidence and vocabularies rather than add parallel phrase/checkmark lists. It
+must remain a diagnostic unless a separately approved resolution contract explains
+how an absent exact-form index row may be handled; cover-boundary location alone cannot
+establish statutory form or choose a replacement slot.
+
+Until that evaluator exists, S9 trusts the pinned S6 form for the request and observed
+index `document_type` for slot selection. If S6 asks for an 8-K and the index has an
+8-K row, the annual-report body can still be acquired as that row; S9 does not infer a
+10-K from its text. If S6 asks for a required 10-K and no exact 10-K index row exists,
+the result remains `required_missing` rather than selecting an 8-K row by content.
+
+The approval-gated S11 snapshot should retain a sparse, versioned content-identity
+finding separately from `slot_types`: bind the S6 expected form and selected physical
+slot to the body digest, suspected content family/form, evidence references, and
+evaluator fingerprint. This records a diagnostic, not a statutory-type assertion, and
+must not overwrite catalog or index metadata. A later plan for the same accession will
+repeat the current metadata-based selection unless a future explicit planning/review
+contract surfaces the prior finding; the finding alone must not silently rewrite S6.
+
 ### M4: Fixture capture, replay, and local CLI/operator
 
 **Dependencies:** M2C, M2D, and M3; fixture replay also requires M2B for bundle cases.

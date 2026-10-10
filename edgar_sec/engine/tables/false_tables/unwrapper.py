@@ -17,8 +17,6 @@ from .detector import _marker_candidates, _visible_text, is_false_table
 if TYPE_CHECKING:
     from ..ascii_html.model import TableGeometry
 
-_RE_TABLE_BLOCK = RE_TABLE_BLOCK
-
 
 def _is_list_item(text: str) -> bool:
     stripped = text.strip()
@@ -81,7 +79,7 @@ def cleanup_false_tables_with_metadata(
     if "<TABLE>" not in text:
         return text, tuple(geometries or ())
 
-    matches = list(_RE_TABLE_BLOCK.finditer(text))
+    matches = list(RE_TABLE_BLOCK.finditer(text))
     if not matches:
         return text, tuple(geometries or ())
 

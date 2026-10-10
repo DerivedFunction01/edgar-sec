@@ -4,16 +4,153 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import sqlite3
 import sys
+import tempfile
+from collections.abc import Callable
+from contextlib import AbstractContextManager
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import cast
 
+from edgar_sec.foundation.hashing import is_sha256_hex_digest
+from edgar_sec.domain.sec_urls import parse_archive_url
+from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.foundation.runtime.settings.validators import positive_int_type
+from edgar_sec.infra.broker.daemon import managed_broker
+from edgar_sec.infra.broker.sec_broker import SecBrokerClient
+from edgar_sec.infra.sec_http.client import SecHttpClient
+from edgar_sec.infra.sec_http.streaming import (
+    StreamFailure,
+    StreamFailureCode,
+    StreamResult,
+    StreamedResponse,
+)
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
+from edgar_sec.pipelines.document_acquisition.models import AcquisitionPolicy
 from edgar_sec.pipelines.document_acquisition.project import (
     AcquisitionProjectError,
     project_acquisition_run,
 )
+from edgar_sec.pipelines.document_acquisition.runner import execute_acquisition_run
 
 __all__ = ["build_parser", "main", "report_not_implemented"]
+
+
+class _LazySecTransport:
+    def __init__(
+        self,
+        factory: Callable[[], SecHttpClient],
+    ) -> None:
+        self._factory = factory
+        self._http_client: SecHttpClient | None = None
+        self._socket_directory: tempfile.TemporaryDirectory[str] | None = None
+        self._broker_context: AbstractContextManager[SecBrokerClient] | None = None
+        self._broker: SecBrokerClient | None = None
+
+    def _start_broker(self) -> SecBrokerClient:
+        if self._broker is not None:
+            return self._broker
+        self._http_client = self._factory()
+        try:
+            self._socket_directory = tempfile.TemporaryDirectory(
+                prefix="edgar-sec-broker-"
+            )
+            socket_path = Path(self._socket_directory.name) / "broker.sock"
+            context = managed_broker(socket_path, http_client=self._http_client)
+            broker = context.__enter__()
+        except Exception:
+            try:
+                self._http_client.close()
+            finally:
+                self._http_client = None
+                if self._socket_directory is not None:
+                    self._socket_directory.cleanup()
+                    self._socket_directory = None
+            raise
+        self._broker_context = context
+        self._broker = broker
+        return broker
+
+    def stream_to_file(
+        self,
+        url: str,
+        destination: str | Path,
+        *,
+        max_response_bytes: int,
+        validate_redirect: Callable[[str], None],
+    ) -> StreamResult:
+        archive = parse_archive_url(url)
+        if archive is None:
+            return StreamFailure("unsafe_redirect", False, None, "invalid archive URL")
+        try:
+            result = self._start_broker().stream_to_file(
+                url,
+                max_response_bytes=max_response_bytes,
+                accession_cik=archive.archive_cik,
+                accession_number=archive.accession,
+                staging_root=Path(destination).parent,
+            )
+        except (OSError, RuntimeError) as error:
+            return StreamFailure("transport_error", True, None, str(error))
+        if result.status != "ok":
+            code = cast(StreamFailureCode, result.error_code or "transport_error")
+            return StreamFailure(
+                code,
+                bool(result.retryable),
+                result.status_code,
+                result.error_code or "SEC broker stream failed",
+            )
+        source = result.path
+        if (
+            source is None
+            or result.sha256 is None
+            or result.final_url is None
+            or result.status_code is None
+            or result.requested_url != url
+            or result.size < 1
+            or result.size > max_response_bytes
+            or not is_sha256_hex_digest(result.sha256)
+            or source.is_symlink()
+            or not source.is_file()
+            or source.stat().st_size != result.size
+            or not source.resolve().is_relative_to(Path(destination).parent.resolve())
+        ):
+            return StreamFailure(
+                "transport_error",
+                False,
+                result.status_code,
+                "invalid broker stream result",
+            )
+        validate_redirect(result.final_url)
+        os.replace(source, destination)
+        return StreamedResponse(
+            status_code=result.status_code,
+            requested_url=result.requested_url,
+            final_url=result.final_url,
+            sha256=result.sha256,
+            byte_size=result.size,
+            content_type=result.content_type,
+            content_encoding=result.content_encoding,
+            path=Path(destination),
+        )
+
+    def close(self) -> None:
+        try:
+            if self._broker is not None:
+                self._broker.close()
+        finally:
+            try:
+                if self._broker_context is not None:
+                    self._broker_context.__exit__(None, None, None)
+            finally:
+                try:
+                    if self._http_client is not None:
+                        self._http_client.close()
+                finally:
+                    if self._socket_directory is not None:
+                        self._socket_directory.cleanup()
 
 
 _TRACKS = {
@@ -105,6 +242,57 @@ def cmd_project(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_run(args: argparse.Namespace) -> int:
+    paths = resolve_acquisition_paths(artifacts_root=args.artifacts)
+
+    def transport_factory() -> SecHttpClient:
+        settings = resolve_runtime_settings()
+        return SecHttpClient.from_settings(
+            settings.sec,
+            cache_dir=settings.cache_root,
+            ttl_s=settings.ttl_s,
+        )
+
+    report = execute_acquisition_run(
+        args.run_id,
+        retry_failures=args.retry_failures,
+        paths=paths,
+        policy=AcquisitionPolicy(
+            max_response_bytes=args.max_response_bytes,
+            requested_workers=args.workers,
+        ),
+        transport=_LazySecTransport(transport_factory),
+        clock=lambda: datetime.now(UTC),
+        confirm_stale_lock=args.confirm_stale_lock,
+    )
+    payload = {
+        "attempted_count": report.attempted_count,
+        "cancelled": report.cancelled,
+        "command": "run",
+        "non_retryable_failure_count": report.non_retryable_failure_count,
+        "retryable_failure_count": report.retryable_failure_count,
+        "run_id": report.run_id,
+        "state": report.state,
+        "target_counts": dict(report.target_counts),
+        "status": "cancelled" if report.cancelled else "complete",
+    }
+    if args.json:
+        print(json.dumps(payload, sort_keys=True))
+    else:
+        print(
+            f"run {report.run_id}: state={report.state}, "
+            f"attempted={report.attempted_count}, "
+            f"pending={report.target_counts.get('pending', 0)}, "
+            f"retryable_failures={report.retryable_failure_count}, "
+            f"terminal_failures={report.non_retryable_failure_count}"
+        )
+    if report.cancelled:
+        return 130
+    return (
+        1 if report.state in {"needs_retry", "complete_with_errors", "invalid"} else 0
+    )
+
+
 def cmd_review_build(args: argparse.Namespace) -> int:
     return report_not_implemented("review build", json_output=args.json)
 
@@ -165,10 +353,20 @@ def build_parser() -> argparse.ArgumentParser:
     run = commands.add_parser("run", help="acquire pending S9 target bodies")
     run.add_argument("--run-id", required=True, help="projected acquisition run id")
     run.add_argument("--retry-failures", action="store_true")
-    run.add_argument("--workers", type=positive_int_type)
+    run.add_argument(
+        "--workers",
+        type=positive_int_type,
+        help="upper bound clamped to resource capacity; acquisition runs serially",
+    )
+    run.add_argument(
+        "--max-response-bytes",
+        type=positive_int_type,
+        required=True,
+        help="finite decoded-response byte ceiling for each SEC request",
+    )
     run.add_argument("--confirm-stale-lock", action="store_true")
     _add_output_options(run)
-    _set_todo(run, "run")
+    run.set_defaults(func=cmd_run)
 
     process = commands.add_parser("process", help="process acquired target bodies")
     process.add_argument("--run-id", required=True, help="acquisition run id")
@@ -239,7 +437,7 @@ def main(argv: list[str] | None = None) -> int:
         return int(args.func(args))
     except KeyboardInterrupt:
         return 130
-    except (OSError, ValueError, RuntimeError) as exc:
+    except (OSError, sqlite3.Error, ValueError, RuntimeError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
 

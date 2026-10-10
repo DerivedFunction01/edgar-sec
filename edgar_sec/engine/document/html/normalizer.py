@@ -27,9 +27,12 @@ from edgar_sec.engine.tables.hybrid.masker import (
     normalize_hybrid_pre_text,
     restore_hybrid_pre_text,
 )
-from edgar_sec.engine.tables.protection.tags import (
+from edgar_sec.engine.tables.protection.constants import (
     SENTINEL_PREFIX,
     SENTINEL_SUFFIX,
+)
+from edgar_sec.engine.tables.protection.tags import (
+    find_table_spans,
     mask_tagged_tables,
     restore_tagged_tables,
 )

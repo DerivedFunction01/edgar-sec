@@ -23,8 +23,6 @@ __all__ = ["ClosingSpan", "find_closing_span"]
 # Exact standalone closing headings. ``SIGNATURES`` commonly appears bare or
 # followed on the same line by "Pursuant to the requirements of ...".
 _RE_SIGNATURE_HEADING = re.compile(r"^SIGNATURES?\b[ \t]*.{0,120}$")
-# Conformed ``/s/`` signature lines share the canonical text-level shape.
-_RE_SLASH_S = RE_CONFORMED_SIGNATURE
 # Exhibit index headings; must be standalone or a short label line.
 _RE_EXHIBIT_HEADING = re.compile(r"^EXHIBITS?\b(?:\s+INDEX)?[.:]?\s*$")
 
@@ -84,7 +82,7 @@ def find_closing_span(
                     _heading_evidence("signatures_heading", index, stripped[:120]),
                 ),
             )
-        if _RE_SLASH_S.match(line):
+        if RE_CONFORMED_SIGNATURE.match(line):
             return ClosingSpan(
                 start_line=index,
                 kind="signatures",

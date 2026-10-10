@@ -535,6 +535,9 @@ class SecBrokerClient:
             except OSError:
                 pass
 
+    def close(self) -> None:
+        self._reset_socket()
+
     def _exchange(self, request: bytes) -> tuple[dict[str, Any], bytes]:
         sock = self._get_socket()
         sock.sendall(_HEADER_STRUCT.pack(len(request)) + request)

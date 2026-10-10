@@ -17,6 +17,7 @@ from edgar_sec.pipelines.document_acquisition.run_state.store import (
     RunStateError,
     append_attempt_and_update_target,
     append_target_slot_resolution,
+    commit_attempts_and_update_target,
     get_target_state,
     inspect_run_state,
     initialize_run_state,
@@ -396,6 +397,153 @@ def test_resolution_history_is_fk_checked_and_append_only(tmp_path) -> None:
         assert row == ('["entry-1","entry-2"]', 2)
         with pytest.raises(sqlite3.IntegrityError, match="append-only"):
             connection.execute("UPDATE target_slot_resolutions SET result = 'failed'")
+
+
+def test_lazy_resolution_commits_all_attempts_and_projection_atomically(
+    tmp_path,
+) -> None:
+    database = tmp_path / "state.sqlite"
+    initialize_run_state(
+        database,
+        [{"target_id": "target", "executable": True, "skip_reason": None}],
+    )
+    initial = _attempt("target", "initial", 1, "acquired")
+    index = replace(
+        _attempt("target", "index", 2, "acquired"),
+        attempt_kind="lazy_index",
+        requested_url="https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/0000320193-20-000096-index.html",
+        source_sha256=None,
+        source_byte_size=None,
+        source_body_relative_path=None,
+        selected_sha256=None,
+        selected_byte_size=None,
+        selected_body_relative_path=None,
+    )
+    selected = replace(
+        _attempt("target", "selected", 3, "acquired"),
+        requested_url="https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/report.htm",
+    )
+    resolution = TargetSlotResolution(
+        resolution_schema_version="1",
+        resolution_id="lazy-resolution",
+        run_id="run-1",
+        target_id="target",
+        target_role="primary",
+        target_type="primary",
+        selector="exact_form_with_lazy_index",
+        expected_statutory_type="10-K",
+        initial_sequence=1,
+        index_document_type="10-K",
+        index_primary_designation=None,
+        initial_observed_body_type=None,
+        screen_kind="html_cover",
+        screen_result="unverifiable",
+        evaluator_version=None,
+        initial_body_sha256="c" * 64,
+        index_attempt_id="index",
+        index_response_sha256="d" * 64,
+        index_parser_version="index-page-v1",
+        matching_entry_ids=("entry-1",),
+        selected_sequence=2,
+        selected_retrieval_mode="direct_url",
+        selected_url=selected.requested_url,
+        result="recovered",
+    )
+    outcome = replace(
+        _outcome(selected),
+        attempt_count=3,
+        last_attempt_id="selected",
+    )
+
+    commit_attempts_and_update_target(
+        database,
+        (initial, index, selected),
+        outcome,
+        resolution=resolution,
+        recorded_at_utc="2025-01-01T00:00:02Z",
+    )
+
+    with sqlite3.connect(database) as connection:
+        assert connection.execute(
+            "SELECT attempt_number, attempt_kind FROM attempts ORDER BY attempt_number"
+        ).fetchall() == [
+            (1, "document_body"),
+            (2, "lazy_index"),
+            (3, "document_body"),
+        ]
+        assert connection.execute(
+            "SELECT index_attempt_id, result FROM target_slot_resolutions"
+        ).fetchone() == ("index", "recovered")
+        assert connection.execute(
+            "SELECT outcome, attempt_count, last_attempt_id FROM target_state"
+        ).fetchone() == ("acquired", 3, "selected")
+
+
+def test_lazy_resolution_transaction_rolls_back_attempts_on_bad_index_reference(
+    tmp_path,
+) -> None:
+    database = tmp_path / "state.sqlite"
+    initialize_run_state(
+        database,
+        [{"target_id": "target", "executable": True, "skip_reason": None}],
+    )
+    initial = _attempt("target", "initial", 1, "acquired")
+    index = replace(
+        _attempt("target", "index", 2, "acquired"),
+        attempt_kind="lazy_index",
+    )
+    resolution = TargetSlotResolution(
+        resolution_schema_version="1",
+        resolution_id="invalid-resolution",
+        run_id="run-1",
+        target_id="target",
+        target_role="primary",
+        target_type="primary",
+        selector="exact_form_with_lazy_index",
+        expected_statutory_type="10-K",
+        initial_sequence=1,
+        index_document_type=None,
+        index_primary_designation=None,
+        initial_observed_body_type=None,
+        screen_kind="html_cover",
+        screen_result="unverifiable",
+        evaluator_version=None,
+        initial_body_sha256="c" * 64,
+        index_attempt_id="initial",
+        index_response_sha256="d" * 64,
+        index_parser_version="index-page-v1",
+        matching_entry_ids=(),
+        selected_sequence=None,
+        selected_retrieval_mode=None,
+        selected_url=None,
+        result="not_filed",
+    )
+    outcome = replace(
+        _outcome(index),
+        status="not_filed",
+        attempt_count=2,
+        last_attempt_id="index",
+        source_sha256="c" * 64,
+        source_byte_size=5,
+    )
+
+    with pytest.raises(ValueError, match="index attempt is missing or mismatched"):
+        commit_attempts_and_update_target(
+            database,
+            (initial, index),
+            outcome,
+            resolution=resolution,
+            recorded_at_utc="2025-01-01T00:00:02Z",
+        )
+
+    with sqlite3.connect(database) as connection:
+        assert connection.execute("SELECT COUNT(*) FROM attempts").fetchone() == (0,)
+        assert connection.execute(
+            "SELECT COUNT(*) FROM target_slot_resolutions"
+        ).fetchone() == (0,)
+        assert connection.execute(
+            "SELECT outcome, attempt_count FROM target_state"
+        ).fetchone() == ("pending", 0)
 
 
 @pytest.mark.parametrize(

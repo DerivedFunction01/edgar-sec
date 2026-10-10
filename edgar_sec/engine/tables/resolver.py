@@ -18,7 +18,7 @@ from edgar_sec.engine.reflow.types import (
 from edgar_sec.foundation.text.patterns import RE_SEPARATOR_LINE
 
 from .policy.continuation import is_table_row_continuation
-from .protection.tags import SENTINEL_PREFIX
+from .protection.constants import SENTINEL_PREFIX
 from .row_runs import is_data_row_candidate
 from .structural import (
     is_header_prefix,

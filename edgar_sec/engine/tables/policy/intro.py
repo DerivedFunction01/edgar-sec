@@ -9,8 +9,8 @@ from edgar_sec.foundation.text.healing import NEGATIVE_BOUNDARY_RE
 from edgar_sec.foundation.text.patterns import RE_SENTENCE_TERMINAL
 
 from ...reflow.types import ACTION_TAG_AND_PRESERVE, SpanDecision
-from ..patterns import TABLE_INTRO_CUE_RE as _RE_TABLE_INTRO_CUE
-from ..protection.tags import _SENTINEL_PREFIX
+from ..patterns import _RE_TABLE_INTRO_CUE
+from ..protection.constants import SENTINEL_PREFIX
 from ..structural import _RE_WIDE_COLUMN_GAP
 from ..tokens import numeric_cell_starts as _numeric_cell_starts
 
@@ -119,7 +119,7 @@ def unify_table_prose(
 ) -> tuple[str, ...] | None:
     """Join a table block to adjacent prose only at a safe sentence boundary."""
     is_table = decisions[decision_index].action == ACTION_TAG_AND_PRESERVE or any(
-        _SENTINEL_PREFIX in line for _, _, b_lines in group for line in b_lines
+        SENTINEL_PREFIX in line for _, _, b_lines in group for line in b_lines
     )
     if not (
         is_table
@@ -143,7 +143,7 @@ def unify_table_prose(
         if following.start_line <= start and end <= following.end_line
         for line in block
     ]
-    if any(_SENTINEL_PREFIX in line for line in previous_lines + following_lines):
+    if any(SENTINEL_PREFIX in line for line in previous_lines + following_lines):
         return None
     previous_nonblank = [line for line in previous_lines if line.strip()]
     following_nonblank = [line for line in following_lines if line.strip()]

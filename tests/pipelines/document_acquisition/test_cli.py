@@ -1,7 +1,10 @@
 from __future__ import annotations
 
 import json
+from contextlib import contextmanager
+from hashlib import sha256
 from types import SimpleNamespace
+from pathlib import Path
 
 import pytest
 
@@ -14,7 +17,7 @@ def test_parser_registers_independent_acquisition_tracks() -> None:
     for args in (
         ["project", "--plan-id", "plan-1"],
         ["status"],
-        ["run", "--run-id", "run-1"],
+        ["run", "--run-id", "run-1", "--max-response-bytes", "1000"],
         ["process", "--run-id", "run-1"],
         ["publish", "--run-id", "run-1"],
         ["fixture", "capture", "--fixture-id", "f-1", "--run-id", "run-1"],
@@ -24,20 +27,135 @@ def test_parser_registers_independent_acquisition_tracks() -> None:
         assert parser.parse_args(args)
 
 
-def test_todo_command_returns_stable_json_without_work(
-    capsys: pytest.CaptureFixture[str],
-) -> None:
-    result = cli.main(["run", "--run-id", "run-1", "--json"])
+def test_run_requires_a_finite_response_ceiling() -> None:
+    with pytest.raises(SystemExit):
+        cli.build_parser().parse_args(["run", "--run-id", "run-1"])
 
-    assert result == 2
-    payload = json.loads(capsys.readouterr().out)
-    assert payload == {
-        "command": "run",
-        "implemented": False,
-        "message": "This command track is not implemented; no work was performed.",
-        "status": "not_implemented",
-        "track": "S9 network acquisition",
-    }
+    with pytest.raises(SystemExit):
+        cli.build_parser().parse_args(
+            ["run", "--run-id", "run-1", "--max-response-bytes", "0"]
+        )
+
+
+def test_run_command_delegates_policy_and_keeps_transport_lazy(
+    capsys: pytest.CaptureFixture[str], tmp_path, monkeypatch
+) -> None:
+    calls = []
+
+    def fake_run(run_id, **kwargs):
+        calls.append((run_id, kwargs))
+        return SimpleNamespace(
+            run_id=run_id,
+            state="complete",
+            target_counts={"acquired": 2, "pending": 0},
+            attempted_count=2,
+            retryable_failure_count=0,
+            non_retryable_failure_count=0,
+            cancelled=False,
+        )
+
+    monkeypatch.setattr(cli, "execute_acquisition_run", fake_run)
+    result = cli.main(
+        [
+            "run",
+            "--run-id",
+            "run-1",
+            "--max-response-bytes",
+            "2048",
+            "--workers",
+            "4",
+            "--artifacts",
+            str(tmp_path),
+            "--json",
+        ]
+    )
+
+    assert result == 0
+    run_id, arguments = calls[0]
+    assert run_id == "run-1"
+    assert arguments["policy"].max_response_bytes == 2048
+    assert arguments["policy"].requested_workers == 4
+    assert arguments["transport"]._http_client is None
+    assert arguments["transport"]._broker is None
+    assert json.loads(capsys.readouterr().out)["state"] == "complete"
+
+
+def test_lazy_cli_transport_streams_through_shared_broker(
+    tmp_path, monkeypatch
+) -> None:
+    from edgar_sec.infra.broker.sec_broker import StreamedFileResult
+
+    class FakeHttpClient:
+        closed = False
+
+        def close(self):
+            self.closed = True
+
+    class FakeBrokerClient:
+        closed = False
+        request = None
+
+        def stream_to_file(
+            self,
+            url,
+            *,
+            max_response_bytes,
+            accession_cik,
+            accession_number,
+            staging_root,
+        ):
+            self.request = (url, max_response_bytes, accession_cik, accession_number)
+            body = b"broker-streamed"
+            path = Path(staging_root) / "sec-stream-test.part"
+            path.write_bytes(body)
+            return StreamedFileResult(
+                "ok",
+                path,
+                sha256(body).hexdigest(),
+                len(body),
+                url,
+                url,
+                200,
+                "text/html",
+                None,
+                None,
+                None,
+            )
+
+        def close(self):
+            self.closed = True
+
+    fake_http = FakeHttpClient()
+    fake_broker = FakeBrokerClient()
+    exited = []
+
+    @contextmanager
+    def fake_managed_broker(socket_path, *, http_client):
+        assert http_client is fake_http
+        yield fake_broker
+        exited.append(socket_path)
+
+    monkeypatch.setattr(cli, "managed_broker", fake_managed_broker)
+    staging = tmp_path / "staging"
+    staging.mkdir(parents=True)
+    destination = staging / "response-generated.bin"
+    url = "https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/report.htm"
+    validated = []
+    transport = cli._LazySecTransport(lambda: fake_http)
+
+    response = transport.stream_to_file(
+        url,
+        destination,
+        max_response_bytes=256,
+        validate_redirect=validated.append,
+    )
+    transport.close()
+
+    assert response.path == destination
+    assert destination.read_bytes() == b"broker-streamed"
+    assert fake_broker.request == (url, 256, "320193", "000032019320000096")
+    assert validated == [url]
+    assert fake_broker.closed and fake_http.closed and exited
 
 
 def test_project_command_delegates_to_offline_service(

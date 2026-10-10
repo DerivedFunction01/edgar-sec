@@ -23,10 +23,6 @@ from edgar_sec.engine.forms.cover.structure import (
     match_structural_line,
 )
 from edgar_sec.engine.forms.cover.toc.patterns import RE_TOC_NUMERIC_LABEL
-from edgar_sec.engine.tables.protection.tags import (
-    TAGGED_TABLE_CLOSE_RE,
-    TAGGED_TABLE_OPEN_RE,
-)
 from edgar_sec.engine.tables.toc.patterns import (
     looks_like_toc_row,
     looks_like_toc_tabular,
@@ -38,9 +34,6 @@ from edgar_sec.foundation.text.evidence import (
     score_tokens,
     tokenize,
 )
-
-_RE_TAGGED_TABLE_OPEN = TAGGED_TABLE_OPEN_RE
-_RE_TAGGED_TABLE_CLOSE = TAGGED_TABLE_CLOSE_RE
 
 _BACKWARD_SEARCH_LIMIT = 150
 _BACKWARD_CONFIRM_WINDOW = 8

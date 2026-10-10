@@ -123,6 +123,11 @@ class SecHttpClient:
             max_failure_attempts=settings.max_failure_attempts,
         )
 
+    def close(self) -> None:
+        closer = getattr(self._session, "close", None)
+        if callable(closer):
+            closer()
+
     # ------------------------------------------------------------------ Cache Probes
 
     def _cache_get(self, url: str) -> bytes | None:

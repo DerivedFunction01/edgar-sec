@@ -18,6 +18,27 @@ def test_default_headers_carry_user_agent() -> None:
     assert headers["Accept-Encoding"] == "gzip, deflate"
 
 
+def test_close_releases_the_shared_session() -> None:
+    class CloseableSession:
+        closed = False
+
+        def mount(self, *_args: object) -> None:
+            pass
+
+        def close(self) -> None:
+            self.closed = True
+
+    session = CloseableSession()
+    client = SecHttpClient(
+        user_agent="Sample Company test@sample.com",
+        session_factory=lambda: session,
+    )
+
+    client.close()
+
+    assert session.closed
+
+
 def test_submissions_url_pads_short_ciks() -> None:
     """Padding must not decide which URL the same CIK gets."""
     assert submissions_url("320193") == (

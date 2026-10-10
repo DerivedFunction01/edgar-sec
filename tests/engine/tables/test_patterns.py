@@ -10,7 +10,7 @@ from edgar_sec.engine.tables.patterns import (
     FOOTNOTE_RE,
     HIDDEN_ELEMENT_STYLE_RE,
     RE_TABLE_BLOCK,
-    TABLE_INTRO_CUE_RE,
+    _RE_TABLE_INTRO_CUE,
     UNITS_LABEL_RE,
 )
 
@@ -78,12 +78,12 @@ def test_table_intro_cue_recognises_the_documented_cue_families() -> None:
         "Presented below are the amounts",
         "consists of the following amounts",
     ):
-        assert TABLE_INTRO_CUE_RE.search(cue) is not None, cue
+        assert _RE_TABLE_INTRO_CUE.search(cue) is not None, cue
 
 
 def test_table_intro_cue_rejects_filing_specific_prose() -> None:
     assert (
-        TABLE_INTRO_CUE_RE.search("The fair value was estimated using assumptions")
+        _RE_TABLE_INTRO_CUE.search("The fair value was estimated using assumptions")
         is None
     )
-    assert TABLE_INTRO_CUE_RE.search("We are an enterprise software company") is None
+    assert _RE_TABLE_INTRO_CUE.search("We are an enterprise software company") is None

@@ -36,6 +36,20 @@ class AcquisitionPolicy:
     max_response_bytes: int
     requested_workers: int | None = None
 
+    def __post_init__(self) -> None:
+        if (
+            isinstance(self.max_response_bytes, bool)
+            or not isinstance(self.max_response_bytes, int)
+            or self.max_response_bytes < 1
+        ):
+            raise ValueError("max_response_bytes must be a positive finite integer")
+        if self.requested_workers is not None and (
+            isinstance(self.requested_workers, bool)
+            or not isinstance(self.requested_workers, int)
+            or self.requested_workers < 1
+        ):
+            raise ValueError("requested_workers must be a positive integer")
+
 
 @dataclass(frozen=True, slots=True)
 class AcquisitionAttempt:

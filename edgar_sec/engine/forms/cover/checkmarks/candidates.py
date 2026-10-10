@@ -43,8 +43,6 @@ from edgar_sec.engine.tables.protection.tags import mask_tagged_tables
 from edgar_sec.foundation.text.dates import parse_date
 from edgar_sec.foundation.text.patterns import RE_SEPARATOR_LINE
 
-_RE_DASH_ONLY_LINE = RE_SEPARATOR_LINE
-
 _LABELS: tuple[tuple[str, tuple[str, ...], str], ...] = (
     (
         REPORT_ANNUAL,
@@ -214,7 +212,7 @@ def _line_signals(text: str) -> CoverLineSignals:
         marks=marks,
         answers=answers,
         date_present=_date_present(text),
-        dash_only=bool(_RE_DASH_ONLY_LINE.fullmatch(text)),
+        dash_only=bool(RE_SEPARATOR_LINE.fullmatch(text)),
     )
 
 

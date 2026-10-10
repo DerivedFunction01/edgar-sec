@@ -177,6 +177,7 @@ The v1 logical relations are:
 |---|---|---|
 | `target_results` | `(run_id, target_id)` | Append-only S6 target provenance plus S9 outcome and optional `processing_id`; includes skipped and terminal missing/error outcomes so partial coverage is explicit. |
 | `processing_results` | `(run_id, target_id, processor_fingerprint)` | S10 status, route, representation, diagnostics, input/output payload digests and sizes. A processor change appends a new result rather than overwriting history. |
+| `content_identity_findings` | `(run_id, target_id, finding_id)` | Sparse, append-only content-versus-metadata diagnostics: pinned expected form, suspected content family/form, selected slot and body digest, evidence references, and evaluator fingerprint. This is not SEC slot-type evidence. |
 | `acquisition_slots` | `(accession, sequence, observation_id)` | Physical sequence and the source evidence that supplied its locator. `observation_id` distinguishes refreshed index/bundle evidence; sequence 1 is not statutory type proof. Append evidence; never silently replace an observation. |
 | `slot_payloads` | `acquisition_id` | Successful link from a physical slot observation to its acquired-body `payload_sha256`, byte size, route, and acquisition attempt. No row represents failed transport. Identical bytes share one payload row while each slot link remains. |
 | `slot_types` | `type_evidence_id` | Sparse observed type evidence with source, source digest/reference, parser version, and observation time. No row is created from a local target screen or heuristic cover result. Conflicts remain distinct evidence. |
@@ -215,6 +216,12 @@ screen results remain on `target_slot_selections`. S5 reconciliation may add
 index-observed locator/type evidence from a pinned inventory snapshot without fetching
 document bodies or invoking S10. Reconciliation writes acquisition-owned relations;
 it never mutates the S5 snapshot.
+
+Family-aware content findings are separate from `slot_types` and cannot rewrite the S6
+target form or an accession's filing metadata. Reprocessing appends a finding tied to
+the body and evaluator version. Planning may later surface prior findings as review
+context, but using one to change a target requires a separately versioned planning or
+operator decision; S6 does not silently consume S11 diagnostic rows.
 
 ## Snapshot publication and recovery
 

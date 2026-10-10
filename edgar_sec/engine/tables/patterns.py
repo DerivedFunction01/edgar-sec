@@ -79,7 +79,7 @@ _TABLE_INTRO_PATTERNS = (
     rf"(?:{_TABLE_INTRO_DISPLAY_VERBS})\s+(?:{_TABLE_INTRO_FOLLOWING})",
     rf"(?:{_TABLE_INTRO_COLLECTION_VERBS})\s+of\s+the\s+following",
 )
-TABLE_INTRO_CUE_RE = re.compile(
+_RE_TABLE_INTRO_CUE = re.compile(
     rf"\b(?:{build_alternation(_TABLE_INTRO_PATTERNS, auto_escape=False, compact=False)})\b",
     re.IGNORECASE,
 )
@@ -89,6 +89,6 @@ __all__ = [
     "FOOTNOTE_RE",
     "HIDDEN_ELEMENT_STYLE_RE",
     "RE_TABLE_BLOCK",
-    "TABLE_INTRO_CUE_RE",
+    "_RE_TABLE_INTRO_CUE",
     "UNITS_LABEL_RE",
 ]

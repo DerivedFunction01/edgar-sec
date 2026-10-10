@@ -361,6 +361,135 @@ def append_attempt_and_update_target(
         connection.close()
 
 
+def commit_attempts_and_update_target(
+    database_path: Path,
+    attempts: Iterable[AcquisitionAttempt],
+    outcome: AcquisitionOutcome,
+    *,
+    resolution: TargetSlotResolution | None = None,
+    recorded_at_utc: str | None = None,
+) -> None:
+    attempts = tuple(attempts)
+    if not attempts:
+        raise ValueError("at least one acquisition attempt is required")
+    if any(attempt.target_id != outcome.target_id for attempt in attempts):
+        raise ValueError("attempts and outcome target IDs differ")
+    values = tuple(_attempt_values(attempt) for attempt in attempts)
+    if resolution is not None:
+        if resolution.target_id != outcome.target_id:
+            raise ValueError("resolution and outcome target IDs differ")
+        if resolution.index_attempt_id is None:
+            raise ValueError("resolution must reference its lazy-index attempt")
+        if not recorded_at_utc:
+            raise ValueError("recorded_at_utc is required with a resolution")
+        expected_status = {
+            "accepted_sequence_1": "acquired",
+            "recovered": "acquired",
+            "not_filed": "not_filed",
+            "required_missing": "required_missing",
+            "ambiguous": "ambiguous",
+            "failed": "failed",
+        }[resolution.result]
+        if outcome.status != expected_status:
+            raise ValueError("resolution result and target outcome differ")
+
+    connection = _connect(Path(database_path))
+    try:
+        _require_schema(connection)
+        connection.execute("BEGIN IMMEDIATE")
+        current = connection.execute(
+            "SELECT executable, attempt_count, outcome, retryable FROM target_state "
+            "WHERE target_id = ?",
+            (outcome.target_id,),
+        ).fetchone()
+        if current is None or current[0] != 1:
+            raise RunStateError("attempt target is missing or not executable")
+        if current[2] != "pending" and not (current[2] == "failed" and current[3] == 1):
+            raise RunStateError("target outcome is not eligible for an attempt")
+        first_number = current[1] + 1
+        if tuple(attempt.attempt_number for attempt in attempts) != tuple(
+            range(first_number, first_number + len(attempts))
+        ):
+            raise RunStateError("attempt numbers are not contiguous for the target")
+        final_attempt = attempts[-1]
+        if (
+            outcome.attempt_count != final_attempt.attempt_number
+            or outcome.last_attempt_id != final_attempt.attempt_id
+        ):
+            raise ValueError("outcome attempt projection is inconsistent")
+        if outcome.source != final_attempt.source or (
+            outcome.retryable != final_attempt.retryable
+        ):
+            raise ValueError("outcome source/retry state differs from final attempt")
+        for attempt_values in values:
+            connection.execute(_INSERT_ATTEMPT, attempt_values)
+        if resolution is not None and resolution.index_attempt_id is not None:
+            index_attempt = connection.execute(
+                "SELECT target_id, attempt_kind FROM attempts WHERE attempt_id = ?",
+                (resolution.index_attempt_id,),
+            ).fetchone()
+            if index_attempt != (outcome.target_id, "lazy_index"):
+                raise ValueError("resolution index attempt is missing or mismatched")
+            selected_url = _url_value(
+                resolution.selected_url, "selected_url", required=False
+            )
+            connection.execute(
+                _INSERT_RESOLUTION,
+                (
+                    resolution.resolution_id,
+                    resolution.resolution_schema_version,
+                    resolution.target_id,
+                    resolution.selector,
+                    resolution.expected_statutory_type,
+                    resolution.initial_sequence,
+                    resolution.screen_kind,
+                    resolution.screen_result,
+                    resolution.evaluator_version,
+                    resolution.initial_body_sha256,
+                    resolution.index_attempt_id,
+                    resolution.index_response_sha256,
+                    resolution.index_parser_version,
+                    json.dumps(
+                        list(resolution.matching_entry_ids),
+                        ensure_ascii=False,
+                        separators=(",", ":"),
+                    ),
+                    resolution.selected_sequence,
+                    resolution.selected_retrieval_mode,
+                    selected_url,
+                    resolution.result,
+                    recorded_at_utc,
+                ),
+            )
+        cursor = connection.execute(
+            _UPDATE_TARGET,
+            (
+                outcome.status,
+                outcome.source,
+                int(outcome.retryable),
+                outcome.attempt_count,
+                outcome.last_attempt_id,
+                outcome.error_code,
+                outcome.source_sha256,
+                outcome.source_byte_size,
+                outcome.source_body_relative_path,
+                outcome.selected_sha256,
+                outcome.selected_byte_size,
+                outcome.selected_body_relative_path,
+                outcome.target_id,
+            ),
+        )
+        if cursor.rowcount != 1:
+            raise RunStateError("target projection update did not match one target")
+        connection.execute("COMMIT")
+    except Exception:
+        if connection.in_transaction:
+            connection.execute("ROLLBACK")
+        raise
+    finally:
+        connection.close()
+
+
 def append_target_slot_resolution(
     database_path: Path,
     resolution: TargetSlotResolution,
@@ -451,6 +580,25 @@ def get_target_state(database_path: Path, target_id: str) -> TargetState | None:
         _require_schema(connection)
         row = connection.execute(_GET_TARGET, (target_id,)).fetchone()
         return None if row is None else _target_state(row)
+    finally:
+        connection.close()
+
+
+def get_target_states(
+    database_path: Path, target_ids: Iterable[str]
+) -> dict[str, TargetState]:
+    target_ids = tuple(target_ids)
+    if not target_ids:
+        return {}
+    connection = _connect(Path(database_path), readonly=True)
+    try:
+        _require_schema(connection)
+        result = {}
+        for target_id in target_ids:
+            row = connection.execute(_GET_TARGET, (target_id,)).fetchone()
+            if row is not None:
+                result[target_id] = _target_state(row)
+        return result
     finally:
         connection.close()
 
@@ -549,7 +697,9 @@ __all__ = [
     "RunStateError",
     "append_attempt_and_update_target",
     "append_target_slot_resolution",
+    "commit_attempts_and_update_target",
     "get_target_state",
+    "get_target_states",
     "inspect_run_state",
     "initialize_run_state",
     "iter_selected_target_states",

@@ -143,6 +143,23 @@ def test_broker_client_pickle(tmp_path: Path) -> None:
     assert restored._local is not None
 
 
+def test_broker_client_close_resets_its_thread_socket() -> None:
+    class Socket:
+        closed = False
+
+        def close(self) -> None:
+            self.closed = True
+
+    client = SecBrokerClient("unused.sock")
+    connection = Socket()
+    client._local.sock = connection
+
+    client.close()
+
+    assert connection.closed
+    assert client._local.sock is None
+
+
 def test_streamed_broker_writes_file_and_sends_metadata_only(
     tmp_path: Path,
 ) -> None:

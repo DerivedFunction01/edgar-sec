@@ -15,11 +15,13 @@ from edgar_sec.engine.tables.toc.patterns import (
     looks_like_toc_row,
     looks_like_toc_tabular,
 )
+from edgar_sec.engine.tables.protection.tags import (
+    TAGGED_TABLE_CLOSE_RE,
+    TAGGED_TABLE_OPEN_RE,
+)
 
 from ..toc.patterns import RE_TOC_HEADING, RE_TOC_NUMERIC_LABEL
 from .corridor import (
-    _RE_TAGGED_TABLE_CLOSE,
-    _RE_TAGGED_TABLE_OPEN,
     is_proxy_reference_disclosure,
     next_nonblank_line,
     prev_nonblank_line,
@@ -115,10 +117,10 @@ def _first_body_semantic_line(
     in_table = False
     for index in range(max(0, start_line), min(end_line, len(lines))):
         stripped = lines[index].strip()
-        if _RE_TAGGED_TABLE_OPEN.search(stripped):
+        if TAGGED_TABLE_OPEN_RE.search(stripped):
             in_table = True
             continue
-        if _RE_TAGGED_TABLE_CLOSE.search(stripped):
+        if TAGGED_TABLE_CLOSE_RE.search(stripped):
             in_table = False
             continue
         if in_table or not stripped:

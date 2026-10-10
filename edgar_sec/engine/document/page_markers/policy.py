@@ -25,8 +25,6 @@ from .models import (
     PageMarkerKind,
 )
 
-#: Punctuation proving the text before a removal already ended a sentence; no joining space owed.
-_TERMINAL_PUNCT = RE_TERMINAL_BOUNDARY
 _TAGGED_TABLE = re.compile(r"<TABLE\b.*?</TABLE\s*>", re.IGNORECASE | re.DOTALL)
 
 #: Widening onto a data table would delete document content; repeating furniture is a few lines tall.
@@ -117,7 +115,7 @@ def _needs_join(preceding: str, following: str) -> bool:
     return bool(
         preceding
         and following
-        and not _TERMINAL_PUNCT.search(preceding)
+        and not RE_TERMINAL_BOUNDARY.search(preceding)
         and following[:1].islower()
         and not NEGATIVE_BOUNDARY_RE.search(following)
     )

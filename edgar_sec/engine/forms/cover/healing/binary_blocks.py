@@ -20,7 +20,6 @@ from edgar_sec.domain.forms.common.checkmarks import (
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.patterns import RE_SEPARATOR_LINE
 
-_RE_DASH_ONLY_LINE = RE_SEPARATOR_LINE
 _RE_BRACKET_CHECKED = re.compile(r"(\[[Xx]\])(?=[A-Za-z0-9])")
 _RE_BRACKET_CHECKED_AFTER = re.compile(r"([A-Za-z0-9])(\[[Xx]\])")
 _RE_BRACKET_UNCHECKED = re.compile(r"(\[ \])(?=[A-Za-z0-9])")
@@ -206,7 +205,7 @@ def _render_binary_block(
         stripped = line.strip()
         if not stripped or stripped == ".":
             continue
-        if _RE_DASH_ONLY_LINE.fullmatch(stripped):
+        if RE_SEPARATOR_LINE.fullmatch(stripped):
             continue
         if (
             len(stripped) == 1

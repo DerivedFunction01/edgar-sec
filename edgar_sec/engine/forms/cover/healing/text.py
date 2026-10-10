@@ -17,9 +17,12 @@ from edgar_sec.engine.forms.cover.reflow import (
 )
 from edgar_sec.engine.reflow.engine.rewrapper import reflow_ascii
 from edgar_sec.engine.reflow.types import ReflowPolicy
-from edgar_sec.engine.tables.protection.tags import (
+from edgar_sec.engine.tables.protection.constants import (
     SENTINEL_PREFIX,
     SENTINEL_SUFFIX,
+)
+from edgar_sec.engine.tables.protection.tags import (
+    find_table_spans,
     mask_tagged_tables,
     restore_tagged_tables,
 )

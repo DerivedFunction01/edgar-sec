@@ -7,8 +7,8 @@ from __future__ import annotations
 
 import re
 
+from edgar_sec.engine.tables.protection.constants import SENTINEL_PREFIX
 from edgar_sec.engine.tables.protection.tags import (
-    SENTINEL_PREFIX,
     mask_tagged_tables,
     restore_tagged_tables,
 )
