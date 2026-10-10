@@ -22,6 +22,11 @@ from edgar_sec.pipelines.document_planning.paths import (
 from edgar_sec.pipelines.document_planning.schemas import PROFILE_SCHEMA_VERSION
 
 _ROLES = {"primary", "exhibit", "data_file", "graphic", "package"}
+_CATALOG_DIRECT_SELECTIONS = (
+    "submitted_primary",
+    "exact_form",
+    "exact_form_with_lazy_index",
+)
 _CODE_TYPE_RE = re.compile(r"EX-[A-Z0-9]+(?:\.[A-Z0-9]+)*\Z", re.ASCII)
 _EXHIBIT_PREFIX_RE = re.compile(r"EX-(?:\*|10\.\*)\Z", re.ASCII)
 _TARGET_KEYS = {"role", "type", "optional"}
@@ -35,6 +40,7 @@ class ProfileTarget:
     type: str
     optional: bool
     request_id: str
+    catalog_direct_selection: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -122,8 +128,12 @@ def _target_overlap(left: str, right: str) -> bool:
 
 
 def _parse_target(raw: Any) -> ProfileTarget:
-    if not isinstance(raw, dict) or set(raw) != _TARGET_KEYS:
-        raise ValueError("each target must contain exactly role, type, and optional")
+    if not isinstance(raw, dict) or not set(raw).issubset(
+        {"role", "type", "optional", "catalog_direct_selection"}
+    ):
+        raise ValueError(
+            "each target must contain exactly role, type, and optional, with optional catalog_direct_selection"
+        )
     role, raw_type, optional = raw["role"], raw["type"], raw["optional"]
     if not isinstance(role, str) or role not in _ROLES:
         raise ValueError(f"invalid target role: {role!r}")
@@ -133,7 +143,25 @@ def _parse_target(raw: Any) -> ProfileTarget:
     if type(optional) is not bool:
         raise ValueError("target optional must be a boolean")
     _validate_target_type(role, target_type)
-    return ProfileTarget(role, target_type, optional, f"{role}:{target_type}")
+    if role == "primary":
+        raw_sel = raw.get("catalog_direct_selection")
+        if raw_sel is not None:
+            if (
+                not isinstance(raw_sel, str)
+                or raw_sel not in _CATALOG_DIRECT_SELECTIONS
+            ):
+                raise ValueError(
+                    f"invalid catalog_direct_selection {raw_sel!r}; "
+                    f"must be one of {_CATALOG_DIRECT_SELECTIONS}"
+                )
+        sel = raw_sel if isinstance(raw_sel, str) else None
+    else:
+        if "catalog_direct_selection" in raw:
+            raise ValueError(
+                f"catalog_direct_selection is only allowed on primary targets, got {role!r}"
+            )
+        sel = None
+    return ProfileTarget(role, target_type, optional, f"{role}:{target_type}", sel)
 
 
 def _parse_rule(raw: Any) -> tuple[ProfileRule, tuple[str, ...]]:
@@ -214,6 +242,7 @@ def _profile_from_data(data: Any, expected_id: str) -> ResolvedProfile:
                         "role": target.role,
                         "type": target.type,
                         "optional": target.optional,
+                        "catalog_direct_selection": target.catalog_direct_selection,
                     }
                     for target in sorted(
                         rule.targets,
@@ -290,7 +319,11 @@ def _make_baseline_profile() -> ResolvedProfile:
     rules: tuple[ProfileRule, ...] = (
         ProfileRule(
             "*",
-            (ProfileTarget("primary", "primary", False, "primary:primary"),),
+            (
+                ProfileTarget(
+                    "primary", "primary", False, "primary:primary", "exact_form"
+                ),
+            ),
         ),
     )
     digest = hashlib.sha256(
@@ -303,7 +336,12 @@ def _make_baseline_profile() -> ResolvedProfile:
                     {
                         "form_selector": "*",
                         "targets": [
-                            {"role": "primary", "type": "primary", "optional": False}
+                            {
+                                "role": "primary",
+                                "type": "primary",
+                                "optional": False,
+                                "catalog_direct_selection": "exact_form",
+                            }
                         ],
                     }
                 ],
@@ -360,12 +398,32 @@ def get_or_create_baseline_profile(
     import tempfile
     import stat
 
+    # Build canonical JSON dict for baseline (not the ResolvedProfile object)
+    baseline_dict = {
+        "profile_id": _BASELINE_PROFILE_ID,
+        "schema_version": PROFILE_SCHEMA_VERSION,
+        "version": _BASELINE_VERSION,
+        "rules": [
+            {
+                "form_selector": "*",
+                "targets": [
+                    {
+                        "role": "primary",
+                        "type": "primary",
+                        "optional": False,
+                        "catalog_direct_selection": "exact_form",
+                    }
+                ],
+            }
+        ],
+    }
+
     temp_fd, temp_path = tempfile.mkstemp(
         suffix=".json", prefix=f"{safe_id}.", dir=root
     )
     try:
         with os.fdopen(temp_fd, "w", encoding="utf-8") as f:
-            f.write(json.dumps(baseline, indent=2, ensure_ascii=False) + "\n")
+            f.write(json.dumps(baseline_dict, indent=2, ensure_ascii=False) + "\n")
         os.chmod(temp_path, stat.S_IRUSR | stat.S_IWUSR)
         os.replace(temp_path, path)
     except Exception:
@@ -378,9 +436,11 @@ def get_or_create_baseline_profile(
 
 
 def compatible_with_catalog_only(profile: ResolvedProfile) -> bool:
-    """Whether every request in the normalized profile is primary-only."""
+    """Whether every request in the normalized profile is primary-only with a selector."""
     return all(
-        target.role == "primary" and target.type == "primary"
+        target.role == "primary"
+        and target.type == "primary"
+        and target.catalog_direct_selection is not None
         for rule in profile.rules
         for target in rule.targets
     )

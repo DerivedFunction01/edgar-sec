@@ -29,6 +29,7 @@ TARGET_COLUMNS = (
     "sequence",
     "byte_size",
     "availability_evidence",
+    "catalog_direct_selection",
 )
 
 TARGET_SCHEMA = pa.schema(
@@ -50,6 +51,7 @@ TARGET_SCHEMA = pa.schema(
         pa.field("sequence", pa.int32(), nullable=True),
         pa.field("byte_size", pa.int64(), nullable=True),
         pa.field("availability_evidence", pa.string(), nullable=False),
+        pa.field("catalog_direct_selection", pa.string(), nullable=True),
     ]
 )
 

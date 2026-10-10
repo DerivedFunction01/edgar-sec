@@ -102,15 +102,26 @@ def _publish_catalog(paths, rows: list[dict[str, Any]] | None = None) -> None:
     (root / "plan.json").write_text(json.dumps(manifest), encoding="utf-8")
 
 
-def _target(role: str, target_type: str, *, optional: bool = False):
-    return {"role": role, "type": target_type, "optional": optional}
+def _target(
+    role: str,
+    target_type: str,
+    *,
+    optional: bool = False,
+    catalog_direct_selection: str | None = None,
+):
+    result: dict[str, Any] = {"role": role, "type": target_type, "optional": optional}
+    if role == "primary" and catalog_direct_selection is not None:
+        result["catalog_direct_selection"] = catalog_direct_selection
+    return result
 
 
 def test_catalog_only_plan_is_pinned_sorted_and_identically_reused(
     tmp_path: Path,
 ) -> None:
     paths = _paths(tmp_path)
-    _write_profile(paths, [_target("primary", "primary")])
+    _write_profile(
+        paths, [_target("primary", "primary", catalog_direct_selection="exact_form")]
+    )
     _publish_catalog(paths)
 
     first = create_document_plan("catalog-plan", "test-profile", paths=paths)
@@ -137,7 +148,9 @@ def test_form_parts_have_deterministic_row_boundaries(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     paths = _paths(tmp_path)
-    _write_profile(paths, [_target("primary", "primary")])
+    _write_profile(
+        paths, [_target("primary", "primary", catalog_direct_selection="exact_form")]
+    )
     accessions = [f"00000000012400000{number}" for number in (1, 2, 3)]
     rows = [
         _catalog_row(
@@ -237,7 +250,7 @@ def test_inventory_plan_uses_pinned_index_and_distinguishes_package_candidate(
     _write_profile(
         paths,
         [
-            _target("primary", "primary"),
+            _target("primary", "primary", catalog_direct_selection="exact_form"),
             _target("exhibit", "EX-21"),
             _target("data_file", "extracted_xbrl_instance"),
             _target("package", "xbrl_zip", optional=True),
@@ -274,7 +287,10 @@ def test_unindexed_is_unresolved_and_catalog_mismatch_refuses(
     mismatch: bool,
 ) -> None:
     paths = _paths(tmp_path)
-    _write_profile(paths, [_target("primary", "primary", optional=True)])
+    _write_profile(
+        paths,
+        [_target("primary", "primary", optional=True, catalog_direct_selection=None)],
+    )
     _publish_catalog(paths)
     monkeypatch.setattr(
         "edgar_sec.pipelines.document_planning.planner._open_inventory",

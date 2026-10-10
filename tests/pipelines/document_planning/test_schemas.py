@@ -29,6 +29,7 @@ def test_target_schema_matches_order_types_and_nullability() -> None:
         pa.int32(),
         pa.int64(),
         pa.string(),
+        pa.string(),
     ]
     assert {field.name for field in TARGET_SCHEMA if field.nullable} == {
         "inventory_entry_id",
@@ -36,6 +37,7 @@ def test_target_schema_matches_order_types_and_nullability() -> None:
         "target_url",
         "sequence",
         "byte_size",
+        "catalog_direct_selection",
     }
 
 

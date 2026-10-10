@@ -406,6 +406,7 @@ def _target_row(
         "sequence": candidate.sequence,
         "byte_size": candidate.byte_size,
         "availability_evidence": availability,
+        "catalog_direct_selection": target.catalog_direct_selection,
     }
 
 

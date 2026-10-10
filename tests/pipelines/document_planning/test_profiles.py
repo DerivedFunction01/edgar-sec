@@ -31,8 +31,15 @@ def _rule(selector: str, *targets: dict) -> dict:
     return {"form_selector": selector, "targets": list(targets)}
 
 
-def _primary(optional: bool = False) -> dict:
-    return {"role": "primary", "type": "primary", "optional": optional}
+def _primary(
+    optional: bool = False, catalog_direct_selection: str | None = "exact_form"
+) -> dict:
+    return {
+        "role": "primary",
+        "type": "primary",
+        "optional": optional,
+        "catalog_direct_selection": catalog_direct_selection,
+    }
 
 
 def test_selector_aliases_specificity_and_catalog_compatibility(tmp_path: Path) -> None:
@@ -134,8 +141,61 @@ def test_catalog_only_profile_is_accepted_and_schema_version_is_checked(
     _write_profile(root, "primary", [_rule("*", _primary())])
     assert compatible_with_catalog_only(load_profile("primary", root))
 
+    # schema_version mismatch
     data = json.loads((root / "primary.json").read_text(encoding="utf-8"))
     data["schema_version"] = "2"
     (root / "primary.json").write_text(json.dumps(data), encoding="utf-8")
     with pytest.raises(ValueError, match="schema_version"):
         load_profile("primary", root)
+
+    # catalog_direct_selection required for catalog-only planning
+    _write_profile(
+        root, "no_sel", [_rule("*", _primary(catalog_direct_selection=None))]
+    )
+    assert not compatible_with_catalog_only(load_profile("no_sel", root))
+
+    # catalog_direct_selection must be one of the valid values
+    data_bad_sel = {
+        "profile_id": "bad_sel",
+        "schema_version": "1",
+        "version": "1.0.0",
+        "rules": [
+            {
+                "form_selector": "*",
+                "targets": [
+                    {
+                        "role": "primary",
+                        "type": "primary",
+                        "optional": False,
+                        "catalog_direct_selection": "invalid_selector",
+                    }
+                ],
+            }
+        ],
+    }
+    (root / "bad_sel.json").write_text(json.dumps(data_bad_sel), encoding="utf-8")
+    with pytest.raises(ValueError, match="invalid catalog_direct_selection"):
+        load_profile("bad_sel", root)
+
+    # catalog_direct_selection only allowed on primary targets
+    data_ex_sel = {
+        "profile_id": "test",
+        "schema_version": "1",
+        "version": "1.0.0",
+        "rules": [
+            {
+                "form_selector": "*",
+                "targets": [
+                    {
+                        "role": "exhibit",
+                        "type": "EX-21",
+                        "optional": True,
+                        "catalog_direct_selection": "exact_form",
+                    }
+                ],
+            }
+        ],
+    }
+    (root / "test.json").write_text(json.dumps(data_ex_sel), encoding="utf-8")
+    with pytest.raises(ValueError, match="only allowed on primary targets"):
+        load_profile("test", root)
