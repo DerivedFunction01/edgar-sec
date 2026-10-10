@@ -124,7 +124,7 @@ def test_validate_missing_manifest_refuses(tmp_path: Path) -> None:
         {"parser_version": "parser-2"},
         {"parent_snapshot_id": "snap-2"},
         {"fetch_mode": "force_refresh"},
-        {"work_order_version": "3"},
+        {"work_order_version": "2"},
     ],
 )
 def test_validate_mismatched_identity_refuses(
