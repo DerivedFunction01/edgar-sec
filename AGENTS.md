@@ -91,14 +91,14 @@ To prevent OOM kills, glibc fragmentation, and thread thrashing in containerized
      whole string's bytes. `tests/foundation/test_hashing.py` pins the equality.
      Prefer this over `read_bytes()` into a digest anywhere; the `whole-file-read`
      scanner enforces that for the obvious cases.
-   - Parquet files use `row_group_size = 128_000` and `compression = "zstd"`.
+   - Parquet writers use the shared `parquet.row_group_size` setting and the storage layer's `DEFAULT_COMPRESSION`; Parquet readers use `parquet.read_batch_size`, and SQL readers use `runtime.read_batch_size`. Do not define pipeline-local copies of these defaults.
 
 ---
 
 ## Settings & Configuration Management
 
 1. **Modular Settings Registry**:
-   - Settings are defined in `edgar_sec/foundation/runtime/settings/` (`sec.py`, `paths.py`, `runtime.py`).
+   - Settings are defined in modular providers under `edgar_sec/foundation/runtime/settings/`, including `sec.py`, `paths.py`, `runtime.py`, `parquet.py`, and `sql.py`.
    - Do NOT create monolithic configuration classes that accumulate parameters across phases.
    - New phases register their own domain/phase spec dictionaries.
 2. **Deterministic Environment Resolution**:
@@ -143,6 +143,7 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 - `file-length`: **Fails the gate** on files exceeding the line limit (800) to prevent monolithic growth. Any finding from any scanner returns a nonzero exit code, so "advisory" is not how it behaves.
 - `layer-boundary`: Enforces strict downward-only import hierarchy.
 - `resource-allocation`: Bans hardcoded thread counts or memory limits in pipeline/engine code.
+- `batch-defaults`: Enforces ownership of shared chunk, read, SQL-insert, Parquet, and document payload defaults; it flags duplicate symbol definitions and known literals while allowing equal numbers used for distinct policies.
 - `whole-file-read`: Bans `read_bytes()` consumed by a digest constructor. Hashing a whole
   artifact to prove it intact materializes the file; use `file_sha256`. Narrow on purpose —
   a `read_bytes()` feeding `json.loads` on a small payload is a different trade and is not flagged.

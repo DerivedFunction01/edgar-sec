@@ -18,6 +18,10 @@ from edgar_sec.domain.document_inventory.schemas import ENTRY_SCHEMA_VERSION
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.foundation.runtime.settings import resolve_settings
 from edgar_sec.foundation.serialization import canonical_json
+from edgar_sec.foundation.runtime.settings.parquet import (
+    resolve_parquet_read_batch_size,
+)
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.parquet import StagedParquetWriter
 from edgar_sec.pipelines.document_inventory.paths import InventoryRunPaths
@@ -31,7 +35,6 @@ WORK_ORDER_SCHEMA = pa.schema(
         pa.field("index_url", pa.string(), nullable=False),
     ]
 )
-_WORK_ORDER_WRITE_BATCH_ROWS = 4096
 _REFRESH_MODES = frozenset({"normal", "force"})
 _FETCH_MODES = frozenset({"live", "force_refresh"})
 
@@ -188,9 +191,10 @@ def _row_digest_update(hasher, accession: str, index_url: str) -> None:
 
 
 def validate_work_order(
-    path: Path | str, *, batch_rows: int = _WORK_ORDER_WRITE_BATCH_ROWS
+    path: Path | str, *, batch_rows: int | None = None
 ) -> WorkOrderIdentity:
     work_order = Path(path)
+    batch_rows = resolve_parquet_read_batch_size(batch_rows)
     if batch_rows < 1:
         raise ValueError("batch_rows must be positive")
     try:
@@ -239,8 +243,9 @@ def write_work_order(
     path: Path | str,
     work_items: Iterable[IndexWorkItem],
     *,
-    batch_rows: int = _WORK_ORDER_WRITE_BATCH_ROWS,
+    batch_rows: int | None = None,
 ) -> WorkOrderIdentity:
+    batch_rows = resolve_read_batch_size(batch_rows)
     if batch_rows < 1:
         raise ValueError("batch_rows must be positive")
     writer = StagedParquetWriter(path, WORK_ORDER_SCHEMA)

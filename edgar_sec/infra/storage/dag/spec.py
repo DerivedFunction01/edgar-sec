@@ -10,7 +10,7 @@ from typing import Literal
 
 import pyarrow as pa
 
-from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
+from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 
 MergeStrategy = Literal["upsert", "append", "scoped_mask"]
 

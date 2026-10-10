@@ -2,6 +2,8 @@
 
 from pathlib import Path
 
+import pytest
+
 from edgar_sec.infra.storage.review.paths import (
     ReviewPaths,
     is_diff_run_dir,
@@ -14,7 +16,19 @@ from edgar_sec.infra.storage.review.paths import (
 
 def test_review_runs_root_joins_dataset_and_review_dir(tmp_path: Path) -> None:
     root = review_runs_root(tmp_path, "inventory")
-    assert root == tmp_path / "inventory" / "review"
+    assert root == tmp_path / "inventory" / "review-runs"
+
+    with pytest.raises(ValueError):
+        review_runs_root(tmp_path, "../outside")
+
+
+def test_review_paths_reject_escaping_case_ids(tmp_path: Path) -> None:
+    paths = ReviewPaths(tmp_path / "run-1")
+
+    with pytest.raises(ValueError):
+        paths.case_dir("../outside")
+    with pytest.raises(ValueError):
+        paths.patch_file("../outside")
 
 
 def test_review_paths_resolves_standard_subpaths(tmp_path: Path) -> None:
@@ -23,6 +37,7 @@ def test_review_paths_resolves_standard_subpaths(tmp_path: Path) -> None:
     assert paths.case_dir("case-a") == tmp_path / "run-1" / "cases" / "case-a"
     assert paths.summary_file.name == "summary.txt"
     assert paths.diff_manifest_file.name == "diff_manifest.json"
+    assert paths.patches_dir == tmp_path / "run-1" / "patches"
     assert paths.patch_file("case-a").name == "case-a.patch"
 
 

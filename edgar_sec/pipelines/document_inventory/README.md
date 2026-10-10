@@ -73,11 +73,9 @@ python run.py inventory query --accession 0000320193-23-000004 --limit 10
 ├── document_inventory/
 │   ├── fixtures/
 │   │   └── {fixture_id}/
-│   │       ├── index_fixtures.sqlite
+│   │       ├── fixture.sqlite
 │   │       └── manifest.json
 │   ├── review-runs/
-│   │   └── {review_id}/
-│   │       └── manifest.jsonl
 │   └── snapshots/  # Published snapshot root, owned by S5.
 │       ├── {snapshot_id}/
 │       ├── .publication.lock

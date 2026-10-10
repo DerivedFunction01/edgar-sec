@@ -17,10 +17,16 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.runtime.settings.parquet import (
+    resolve_parquet_read_batch_size,
+)
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.cohort.models import CohortRecord
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
-from edgar_sec.infra.storage.parquet import read_parquet_schema, write_parquet_table
+from edgar_sec.infra.storage.parquet import (
+    read_parquet_schema,
+    write_parquet_table,
+)
 
 ROSTER_SCHEMA_VERSION = "1.0.0"
 ROSTER_FILE_NAME = "ciks.parquet"
@@ -28,10 +34,6 @@ SNAPSHOT_CIK_INDEX_NAME = "ciks.parquet"
 ROSTER_MANIFEST_KIND = "cik_roster"
 
 _ID_PREFIX = "cik-roster-v1"
-
-#: Rows pulled from the dataset per read. Bounds the transient list built while
-#: streaming the identity hash or a CSV export, so neither grows with the cohort.
-STREAM_BATCH = 65_536
 
 __all__ = [
     "ROSTER_FILE_NAME",
@@ -146,7 +148,9 @@ class Roster:
             return
         handle = pq.ParquetFile(self.dataset)
         columns = ["cik_padded", "name"]
-        for batch in handle.iter_batches(batch_size=STREAM_BATCH, columns=columns):
+        for batch in handle.iter_batches(
+            batch_size=resolve_parquet_read_batch_size(), columns=columns
+        ):
             for cik, name in zip(
                 batch.column("cik_padded").to_pylist(),
                 batch.column("name").to_pylist(),
@@ -189,7 +193,9 @@ def derive_roster_id(dataset: str | os.PathLike[str]) -> str:
         ).encode("utf-8")
     )
     columns = ["ordinal", "cik_padded", "name"]
-    for batch in handle.iter_batches(batch_size=STREAM_BATCH, columns=columns):
+    for batch in handle.iter_batches(
+        batch_size=resolve_parquet_read_batch_size(), columns=columns
+    ):
         for ordinal, cik, name in zip(
             batch.column("ordinal").to_pylist(),
             batch.column("cik_padded").to_pylist(),

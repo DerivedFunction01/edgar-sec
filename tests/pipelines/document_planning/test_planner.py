@@ -12,7 +12,8 @@ from edgar_sec.domain.filing_catalog.schemas import (
     TARGET_PLAN_SCHEMA_VERSION,
     TARGET_SCHEMA,
 )
-from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.hashing import file_sha256, sha256_text
+from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.pipelines.document_planning.discovery import read_published_plan
 from edgar_sec.pipelines.document_planning.inventory_evidence import (
     CatalogAccessionScopeRow,
@@ -27,7 +28,10 @@ from edgar_sec.pipelines.document_planning.planner import (
     DocumentPlanningError,
     create_document_plan,
 )
-from edgar_sec.pipelines.document_planning.schemas import TARGET_SCHEMA as PLAN_SCHEMA
+from edgar_sec.pipelines.document_planning.schemas import (
+    PLAN_BUNDLE_SCHEMA_VERSION,
+    TARGET_SCHEMA as PLAN_SCHEMA,
+)
 
 _ACCESSION = "0000000001-24-000001"
 _ARCHIVE_ACCESSION = "000000000124000001"
@@ -135,12 +139,22 @@ def test_catalog_only_plan_is_pinned_sorted_and_identically_reused(
     assert not first.reused
     assert second.reused
     assert first.manifest == second.manifest
+    identity = first.manifest["plan_identity"]
+    assert identity["bundle_schema_version"] == PLAN_BUNDLE_SCHEMA_VERSION
+    assert identity["row_group_size"] == first.manifest["row_group_size"]
+    assert first.manifest["bundle_schema_version"] == PLAN_BUNDLE_SCHEMA_VERSION
+    assert first.plan_id == f"dplan_{sha256_text(canonical_json(identity))[:32]}"
+    prior_identity = dict(identity)
+    prior_identity.pop("bundle_schema_version")
+    assert first.plan_id != f"dplan_{sha256_text(canonical_json(prior_identity))[:32]}"
+    assert first.manifest["parts"][0]["byte_size"] == target_path.stat().st_size
     assert target["accession"] == _ACCESSION
     assert target["status"] == "matched"
     assert target["source_origin"] == "catalog_direct"
     assert target["availability_evidence"] == "catalog_metadata"
     assert target["target_url"].endswith("/primary.htm")
     assert target["inventory_entry_id"] is None
+    assert target["catalog_direct_selection"] == "submitted_primary"
     assert first.manifest["inventory_snapshot_id"] is None
     assert first.manifest["inventory_snapshot_digest"] is None
 
@@ -164,12 +178,14 @@ def test_form_parts_have_deterministic_row_boundaries(
         for index, accession in enumerate(accessions)
     ]
     _publish_catalog(paths, rows)
-    monkeypatch.setattr("edgar_sec.pipelines.document_planning.planner._PART_ROWS", 2)
-    monkeypatch.setattr("edgar_sec.pipelines.document_planning.discovery._PART_ROWS", 2)
+    monkeypatch.setenv("PARQUET_ROW_GROUP_SIZE", "2")
 
     result = create_document_plan("catalog-plan", "test-profile", paths=paths)
+    monkeypatch.setenv("PARQUET_ROW_GROUP_SIZE", "3")
+    validated = read_published_plan(result.plan_id, paths)
 
     assert [part["rows"] for part in result.manifest["parts"]] == [2, 1]
+    assert validated.manifest["row_group_size"] == 2
     assert [part["path"].rsplit("/", 1)[-1] for part in result.manifest["parts"]] == [
         "part-00000.parquet",
         "part-00001.parquet",
@@ -273,6 +289,7 @@ def test_inventory_plan_uses_pinned_index_and_distinguishes_package_candidate(
 
     assert by_role["primary"]["source_origin"] == "inventory_index"
     assert by_role["primary"]["status"] == "matched"
+    assert by_role["primary"]["catalog_direct_selection"] is None
     assert by_role["exhibit"]["retrieval_mode"] == "bundle_sequence"
     assert by_role["exhibit"]["sequence"] == 2
     assert by_role["data_file"]["status"] == "matched"
@@ -280,6 +297,26 @@ def test_inventory_plan_uses_pinned_index_and_distinguishes_package_candidate(
     assert by_role["package"]["target_url"].endswith("-xbrl.zip")
     assert by_role["package"]["availability_evidence"] == "constructed"
     assert result.manifest["distinct_accession_coverage"]["inventory_indexed"] == 1
+
+
+def test_corrupt_target_part_size_is_rejected(tmp_path: Path) -> None:
+    paths = _paths(tmp_path)
+    _write_profile(
+        paths,
+        [_target("primary", "primary", catalog_direct_selection="submitted_primary")],
+    )
+    _publish_catalog(paths)
+    result = create_document_plan("catalog-plan", "test-profile", paths=paths)
+    manifest_path = paths.plan_manifest_path(result.plan_id)
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["parts"][0]["byte_size"] += 1
+    manifest["plan_digest"] = canonical_hash(
+        {key: value for key, value in manifest.items() if key != "plan_digest"}
+    )
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    with pytest.raises(ValueError, match="byte size mismatch"):
+        read_published_plan(result.plan_id, paths)
 
 
 @pytest.mark.parametrize("mismatch", [False, True])

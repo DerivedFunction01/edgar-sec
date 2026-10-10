@@ -58,7 +58,8 @@ from edgar_sec.infra.storage.duckdb import (
     copy_query_to_parquet,
     sql_literal,
 )
-from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
+from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
+from edgar_sec.foundation.runtime.settings.sql import resolve_sql_insert_batch_size
 from edgar_sec.pipelines.filing_catalog.discovery import (
     catalog_year_bounds,
     eligible_year_bounds,
@@ -88,7 +89,6 @@ from edgar_sec.pipelines.filing_catalog.publication import (
 
 # Characters permitted in a form filter. '/' is allowed because amendment forms
 # are written that way ("8-K/A") and are escaped at partition time.
-_KEY_INSERT_BATCH = 5_000
 _ID_SAFE = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.")
 _FORM_SEPARATOR = "/"
 
@@ -221,12 +221,13 @@ def plan(
     limit: int | None = None,
     cohort: str | None = None,
     progress: ProgressCallback = None,
-    row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
+    row_group_size: int | None = None,
 ) -> dict[str, Any]:
     """Publish one immutable deterministic target-plan bundle.
     Normalized date clauses, not the caller's spelling, enter the request, so two
     spellings of one selection resolve to the same plan.
     """
+    row_group_size = resolve_row_group_size(row_group_size)
     if not catalog:
         raise ValueError("catalog is required")
     if limit is not None and limit < 0:
@@ -251,6 +252,7 @@ def plan(
 
     request = {
         "catalog_id": catalog,
+        "row_group_size": row_group_size,
         "scope": SCOPE_DETERMINISTIC,
         "forms": list(requested_forms),
         "document_suffixes": list(suffixes),
@@ -484,22 +486,24 @@ def _register_selected_keys(con: object, keys: list[str]) -> None:
     A temp table, not an interpolated list: a plan carries thousands of keys and a list
     that long is re-parsed per query.
     """
+    insert_batch_size = resolve_sql_insert_batch_size()
     con.execute(
         "CREATE OR REPLACE TEMP TABLE selected_locator_keys "
         "(document_locator_key VARCHAR)"
     )
-    for start in range(0, len(keys), _KEY_INSERT_BATCH):
-        chunk = [[key] for key in keys[start : start + _KEY_INSERT_BATCH]]
+    for start in range(0, len(keys), insert_batch_size):
+        chunk = [[key] for key in keys[start : start + insert_batch_size]]
         con.executemany("INSERT INTO selected_locator_keys VALUES (?)", chunk)
 
 
 def _register_reserve_keys(con: object, keys: list[str]) -> None:
+    insert_batch_size = resolve_sql_insert_batch_size()
     con.execute(
         "CREATE OR REPLACE TEMP TABLE reserve_locator_keys "
         "(document_locator_key VARCHAR)"
     )
-    for start in range(0, len(keys), _KEY_INSERT_BATCH):
-        chunk = [[key] for key in keys[start : start + _KEY_INSERT_BATCH]]
+    for start in range(0, len(keys), insert_batch_size):
+        chunk = [[key] for key in keys[start : start + insert_batch_size]]
         con.executemany("INSERT INTO reserve_locator_keys VALUES (?)", chunk)
 
 
@@ -529,12 +533,13 @@ def plan_policy(
     seed_cohort: str | None = None,
     parent_active_keys: list[str] | None = None,
     progress: ProgressCallback = None,
-    row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
+    row_group_size: int | None = None,
 ) -> dict[str, Any]:
     """Publish one immutable policy-driven target-plan bundle.
     Written from SQL against the feature snapshot, so publishing does not scale with
     plan size in the Python heap.
     """
+    row_group_size = resolve_row_group_size(row_group_size)
     if not policy.forms:
         raise ValueError("policy must configure at least one form")
 
@@ -571,6 +576,7 @@ def plan_policy(
     # covers both, and restating them gave the identity two encodings of one fact.
     request = {
         "catalog_id": catalog,
+        "row_group_size": row_group_size,
         "scope": SCOPE_POLICY,
         "policy_fingerprint": policy.policy_fingerprint,
         "seed_fingerprint": seed_fingerprint,

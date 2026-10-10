@@ -18,7 +18,9 @@ from .catalog import get_catalog_specs
 from .dag import get_dag_specs
 from .interactive import get_interactive_specs
 from .paths import DEFAULT_DISTRIBUTION_ROOT, get_paths_specs
+from .parquet import get_parquet_specs
 from .runtime import get_runtime_specs
+from .sql import get_sql_specs
 from .sec import SecSettings, get_sec_specs
 
 MISSING = object()
@@ -77,6 +79,8 @@ def collect_specs() -> dict[str, SettingSpec]:
         get_paths_specs,
         get_sec_specs,
         get_catalog_specs,
+        get_parquet_specs,
+        get_sql_specs,
         get_dag_specs,
         get_interactive_specs,
     ):
@@ -216,6 +220,7 @@ class RuntimeSettings:
     worker_memory_safety: float
     memory_fraction: float
     default_chunk_size: int
+    read_batch_size: int
     artifacts_root: Path
     cache_root: Path
     ttl_s: int
@@ -253,6 +258,7 @@ def resolve_runtime_settings(
         worker_memory_safety=float(raw["runtime.worker_memory_safety"]),
         memory_fraction=float(raw["runtime.memory_fraction"]),
         default_chunk_size=int(raw["runtime.chunk_size"]),
+        read_batch_size=int(raw["runtime.read_batch_size"]),
         artifacts_root=Path(str(raw["artifacts.root"])),
         cache_root=Path(str(raw["cache.root"])),
         ttl_s=int(raw["cache.ttl_s"]),

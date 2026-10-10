@@ -93,14 +93,14 @@ def test_resolve_current_requires_a_pointer(tmp_path: Path) -> None:
 
 
 def test_resolve_reference_rejects_an_unsafe_identifier(tmp_path: Path) -> None:
-    with pytest.raises(ValueError, match="unsafe identifier"):
+    with pytest.raises(ValueError, match="invalid identifier"):
         resolve_catalog_reference(_paths(tmp_path), "../../etc")
 
 
 def test_safe_identifier_allows_expected_shapes() -> None:
     assert validate_safe_id("a3614dc68ad7603adbc95720") == "a3614dc68ad7603adbc95720"
     for bad in ("", "../x", "a/b", "a b", "a;b"):
-        with pytest.raises(ValueError, match="unsafe identifier"):
+        with pytest.raises(ValueError, match="invalid identifier"):
             validate_safe_id(bad)
 
 

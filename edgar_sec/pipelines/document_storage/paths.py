@@ -11,7 +11,16 @@ from pathlib import Path
 
 import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
 import edgar_sec.foundation.runtime.paths as foundation_paths
-from edgar_sec.foundation.runtime.paths import ProjectPaths
+from edgar_sec.foundation.runtime.paths import (
+    ProjectPaths,
+    snapshots_root,
+    transient_dataset_root,
+)
+from edgar_sec.infra.storage.review.paths import (
+    CASES_DIR,
+    REVIEW_RUNS_DIR,
+    review_runs_root,
+)
 from edgar_sec.pipelines.filing_catalog.paths import (
     LOCATOR_GROUPS_FILE,
     PLAN_TARGETS_DIR,
@@ -21,12 +30,8 @@ from edgar_sec.pipelines.filing_catalog.paths import (
 DOCUMENTS_DATASET = "document_storage"
 RUNS_DIR = foundation_paths.RUNS_DIR
 CHECKPOINTS_DIR = "checkpoints"
-REVIEW_RUNS_DIR = foundation_paths.REVIEW_RUNS_DIR
-PAYLOAD_DB_NAME = "fixture.sqlite"
-
 SNAPSHOT_ARTIFACT_NAME = "documents.parquet"
 MANIFEST_FILE = "manifest.json"
-CASES_DIR = foundation_paths.CASES_DIR
 REVIEW_MANIFEST_NAME = "review_manifest.jsonl"
 EXHIBITS_DATASET = "document_exhibits"
 EXHIBIT_SNAPSHOT_NAME = "exhibits.parquet"
@@ -74,7 +79,7 @@ class DocumentStoragePaths:
 
     @property
     def documents_root(self) -> Path:
-        return self.artifacts_root / DOCUMENTS_DATASET / foundation_paths.SNAPSHOTS_DIR
+        return snapshots_root(self.artifacts_root, DOCUMENTS_DATASET)
 
     @property
     def snapshots_root(self) -> Path:
@@ -83,7 +88,7 @@ class DocumentStoragePaths:
 
     @property
     def document_transient_root(self) -> Path:
-        return self.artifacts_root / foundation_paths.TRANSIENT_DIR / DOCUMENTS_DATASET
+        return transient_dataset_root(self.artifacts_root, DOCUMENTS_DATASET)
 
     @property
     def fixtures_root(self) -> Path:
@@ -91,11 +96,11 @@ class DocumentStoragePaths:
 
     @property
     def review_runs_root(self) -> Path:
-        return self.artifacts_root / DOCUMENTS_DATASET / REVIEW_RUNS_DIR
+        return review_runs_root(self.artifacts_root, DOCUMENTS_DATASET)
 
     @property
     def exhibits_root(self) -> Path:
-        return self.artifacts_root / EXHIBITS_DATASET / foundation_paths.SNAPSHOTS_DIR
+        return snapshots_root(self.artifacts_root, EXHIBITS_DATASET)
 
     def snapshot_dir(self, snapshot_id: str) -> Path:
         return self.snapshots_root / snapshot_id
@@ -123,7 +128,7 @@ class DocumentStoragePaths:
 
     def fixture_paths(self, fixture_id: str) -> foundation_fixtures.FixturePaths:
         return foundation_fixtures.fixture_paths(
-            self.artifacts_root, DOCUMENTS_DATASET, fixture_id, PAYLOAD_DB_NAME
+            self.artifacts_root, DOCUMENTS_DATASET, fixture_id
         )
 
     def fixture_db_path(self, fixture_id: str) -> Path:
@@ -148,7 +153,6 @@ __all__ = [
     "DOCUMENTS_DATASET",
     "EXHIBITS_DATASET",
     "EXHIBIT_SNAPSHOT_NAME",
-    "PAYLOAD_DB_NAME",
     "POINTER_FILE",
     "REVIEW_RUNS_DIR",
     "REVIEW_MANIFEST_NAME",

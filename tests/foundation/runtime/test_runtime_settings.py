@@ -16,7 +16,9 @@ from edgar_sec.foundation.runtime.settings import (
 from edgar_sec.foundation.runtime.settings import runtime as runtime_specs
 from edgar_sec.foundation.runtime.settings.runtime import (
     DEFAULT_CHUNK_SIZE,
+    DEFAULT_READ_BATCH_SIZE,
     get_runtime_specs,
+    resolve_read_batch_size,
 )
 from edgar_sec.foundation.runtime.settings.validators import (
     validate_fraction,
@@ -38,7 +40,9 @@ def _specs() -> dict:
 def test_the_module_constants_are_the_spec_defaults() -> None:
     specs = _specs()
     assert specs["chunk_size"].default == DEFAULT_CHUNK_SIZE
+    assert specs["read_batch_size"].default == DEFAULT_READ_BATCH_SIZE
     assert DEFAULT_CHUNK_SIZE == 1000
+    assert DEFAULT_READ_BATCH_SIZE == 4096
 
 
 def test_plan_defining_specs_are_env_and_cli_addressable() -> None:
@@ -68,11 +72,20 @@ def test_plan_defining_specs_reject_non_positive_values() -> None:
 def test_runtime_settings_surface_the_resolved_chunking() -> None:
     settings: RuntimeSettings = resolve_runtime_settings()
     assert settings.default_chunk_size == DEFAULT_CHUNK_SIZE
+    assert settings.read_batch_size == DEFAULT_READ_BATCH_SIZE
 
 
 def test_runtime_settings_accept_cli_overrides() -> None:
     settings = resolve_runtime_settings(cli_overrides={"runtime.chunk_size": 3})
     assert settings.default_chunk_size == 3
+
+
+def test_read_batch_size_honors_environment_and_explicit_values(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("RUNTIME_READ_BATCH_SIZE", "23")
+    assert resolve_read_batch_size() == 23
+    assert resolve_read_batch_size(7) == 7
 
 
 def test_resolution_rejects_an_invalid_override() -> None:
@@ -99,6 +112,7 @@ def test_machine_derived_specs_are_marked_local() -> None:
         assert specs[name].machine_local is True, name
     for name in ("chunk_size",):
         assert specs[name].machine_local is False, name
+    assert specs["read_batch_size"].machine_local is True
 
 
 def test_validators_enforce_their_documented_bounds() -> None:

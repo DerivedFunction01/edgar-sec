@@ -2,13 +2,14 @@
 
 ## Purpose and status
 
-This document fixes the cross-command boundaries before the command contracts are
-expanded. It is design-only; there is no replacement acquisition package in tracked
-code. The integrated run, worker, processing, and publication sequence is specified
-in [the lifecycle plan](lifecycle.md); command-level signatures and UX flows belong
-to the linked command documents. The pipeline-neutral distribution infrastructure is
-implemented for metadata sync and inventory; S9's adapter and worker integration are
-not implemented.
+This document fixes the cross-command boundaries for the partial S9 implementation.
+The code now includes the S6 v2 target-plan producer, bounded S9 work-order projection,
+offline run projection/state, compressed SQLite fixture storage, file-backed HTTP and
+broker streaming, and bounded exact-sequence extraction. The S9 runner/lazy-index
+integration, S10 processing, and S11 publication remain separate and are not yet
+implemented. The integrated sequence is specified in
+[the lifecycle plan](lifecycle.md); command-level UX flows belong to the linked
+command documents.
 
 ## Ownership and layer boundaries
 
@@ -44,9 +45,9 @@ not implemented.
   not import the sibling `document_inventory` pipeline or its S3 services. If the
   current parser is pipeline-owned, extract the parsing contract to an allowed lower
   layer before enabling this path.
-- The current `SecHttpClient.get_bytes()` materializes the response, so a bounded
-  file-streaming client/broker operation is a prerequisite; S9 must not wrap the
-  byte-returning method and call it streaming. The existing bytes-based
+- The existing `SecHttpClient.get_bytes()` materializes the response. The additive
+  `stream_to_file()` client and broker paths provide bounded transfer; S9 must not wrap
+  the byte-returning method and call it streaming. The existing bytes-based
   `unpack_sgml_submission()` remains a small-fixture parity oracle, not the large
   envelope implementation.
 - The existing SEC response cache is byte-returning. Until a file-backed cache path
@@ -65,17 +66,17 @@ The package should remain split by contract rather than by command spelling alon
 |---|---|
 | `paths.py` | Resolve run, staging, distribution, fixture, and snapshot roots; validate IDs and containment. |
 | `schemas.py` | Lightweight versioned JSON/handoff contracts shared with S10 and snapshot publication. |
-| `arrow_schemas.py` | Versioned Parquet schemas; imports the S6 target schema directly and owns acquisition snapshot relation contracts. |
+| `arrow_schemas.py` | Versioned Parquet work-order schema; snapshot relation schemas remain gated and absent. |
 | `models.py` | Immutable in-memory target, outcome, attempt, and staged-body records. |
-| `work_order.py` | Validate the S6 bundle and write/read the immutable S9 work order. |
-| `run_state.py` | Create and validate per-run state, append attempts, apply outcomes, and summarize status. |
-| `projector.py` | Derive a run/work order from the pinned S6 plan without network access. |
+| `target_plan.py` | Validate the S6 v2 bundle and stream the immutable S9 work order without reopening upstream inputs. |
+| `run_state/` | Create and validate per-run SQLite state, append attempts, apply outcomes, and summarize status. |
+| `project.py` | Derive a deterministic transient run from the pinned S6 plan without network access. |
 | `runner.py` | Lock a run, schedule bounded target work, and preserve completed results. |
 | `distribution_adapter.py` | Adapt acquisition work and outputs to shared distribution infrastructure. |
-| `snapshot/` | Acquisition-owned binary/text Parquet relations, publication, query, and reconciliation over the shared DAG kernel. |
-| `fixtures/` | Capture immutable response evidence, index cases, and replay offline. |
+| `snapshot/` | **Gated** acquisition-owned binary/text Parquet relations and publication over the shared DAG kernel; no S11 adapter exists yet. |
+| `fixture_store/` | Store uniformly Zstandard-compressed response evidence in SQLite and replay incrementally; capture orchestration remains TODO. |
 | `processing.py` | S10 per-target processing and versioned result publication to transient staging. |
-| `commands/` and `operator.py` | CLI dispatch and interactive project/status/run/process/publish consoles; [operator UX](operator.md) owns flow. |
+| `cli.py` and `operator.py` | Registered project/status/run/process/publish/fixture/review/snapshot command tracks; project is wired, pending tracks fail closed. |
 
 No `__init__.py` barrel exports. Module names are a design proposal; implementation
 may consolidate small command adapters, but it must retain these ownership boundaries

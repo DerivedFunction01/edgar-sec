@@ -11,6 +11,11 @@ def test_document_planning_launcher_routes_through_operator() -> None:
     assert entry.module == "edgar_sec.pipelines.document_planning.operator"
 
 
+def test_document_acquisition_launcher_routes_through_operator() -> None:
+    entry = next(item for item in ENTRIES if item.id == "acquisition")
+    assert entry.module == "edgar_sec.pipelines.document_acquisition.operator"
+
+
 def test_dag_launcher_routes_through_dag_operator() -> None:
     entry = next(item for item in ENTRIES if item.id == "dag")
     assert entry.module == "edgar_sec.infra.storage.dag.operator"

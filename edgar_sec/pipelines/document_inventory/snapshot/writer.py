@@ -21,6 +21,9 @@ from edgar_sec.domain.document_inventory.schemas import (
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
+from edgar_sec.foundation.runtime.settings.parquet import (
+    resolve_parquet_read_batch_size,
+)
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.atomic import _fsync_dir
 from edgar_sec.infra.storage.duckdb import (
@@ -89,7 +92,6 @@ from edgar_sec.pipelines.document_inventory.snapshot.validation import validate_
 
 __all__ = ["publish_committed_chunks"]
 
-_BATCH_ROWS = 4096
 _COHORT_ACCESSIONS_SCHEMA = pa.schema(
     [
         ("accession", pa.string()),
@@ -163,7 +165,9 @@ def _copy_committed_attempts(
                 (attempt_dir / ENTRIES_FILE, entry_writer),
             ):
                 parquet = pq.ParquetFile(source)
-                for batch in parquet.iter_batches(batch_size=_BATCH_ROWS):
+                for batch in parquet.iter_batches(
+                    batch_size=resolve_parquet_read_batch_size()
+                ):
                     writer.write_batch(batch)
             outcome_count += checked.manifest.outcomes_rows
             entry_count += checked.manifest.entries_rows

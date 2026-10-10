@@ -22,7 +22,7 @@ from edgar_sec.pipelines.document_inventory.commands.review import (
     cmd_review_artifacts,
 )
 from edgar_sec.pipelines.document_inventory.discovery import discover_fixtures
-from edgar_sec.pipelines.document_inventory.review_artifacts.paths import (
+from edgar_sec.pipelines.document_inventory.review_artifacts.builder import (
     OBSERVATIONS_FILE,
     REVIEW_ENTRIES_FILE,
 )

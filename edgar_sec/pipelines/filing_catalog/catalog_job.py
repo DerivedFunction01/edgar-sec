@@ -26,17 +26,14 @@ from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
-from edgar_sec.foundation.runtime.settings import resolve_settings
+from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
 from edgar_sec.infra.storage.duckdb import (
     connect,
     copy_query_to_parquet,
     sql_literal,
     sql_path_list,
 )
-from edgar_sec.infra.storage.parquet import (
-    DEFAULT_ROW_GROUP_SIZE,
-    read_parquet_schema,
-)
+from edgar_sec.infra.storage.parquet import read_parquet_schema
 from datetime import UTC, datetime
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import (
@@ -231,12 +228,7 @@ def materialize(
     """Materialize one immutable filing-catalog snapshot via a CAS pointer update.
     Durable writes advance branch_name under the shared publication lock.
     """
-    settings = resolve_settings()
-    groups = int(
-        row_group_size
-        if row_group_size is not None
-        else settings.get("catalog.row_group_size", DEFAULT_ROW_GROUP_SIZE)
-    )
+    groups = resolve_row_group_size(row_group_size)
 
     source = resolve_source(
         source_artifact,

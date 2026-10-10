@@ -49,6 +49,12 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         module="edgar_sec.pipelines.document_planning.operator",
     ),
     LauncherEntry(
+        id="acquisition",
+        label="Document Acquisition",
+        description="Project, acquire, and process selected document targets",
+        module="edgar_sec.pipelines.document_acquisition.operator",
+    ),
+    LauncherEntry(
         id="documents",
         label="Document Storage",
         description="Document acquisition, normalization, snapshots, and review (removed soon)",

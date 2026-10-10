@@ -4,14 +4,15 @@
 
 This is the sole path-layout contract for acquisition runs, fixtures, S10 review
 outputs, and S11 snapshots. It follows the inventory split between retained
-artifacts, transient resumable runs, and shared runtime/distribution roots. It is
-design-only; code will resolve paths through `document_acquisition.paths` and
-foundation helpers.
+artifacts, transient resumable runs, and shared runtime/distribution roots. The path
+owner implements project/run, fixture, and review roots; chunk attempts, body receipts,
+distribution bundles, and S11 snapshot paths remain future execution contracts.
 
 ## Resolved path API
 
 ```python
 from edgar_sec.foundation.runtime.fixtures import FixturePaths
+from edgar_sec.infra.storage.review.paths import ReviewPaths
 
 @dataclass(frozen=True, slots=True)
 class AcquisitionPaths:
@@ -27,8 +28,14 @@ class AcquisitionPaths:
     def runs_root(self) -> Path: ...
     @property
     def fixtures_root(self) -> Path: ...
+    def target_plan_dir(self, plan_id: str) -> Path: ...
+    def fixture_paths(self, fixture_id: str) -> FixturePaths: ...
+    def fixture_root(self, fixture_id: str) -> Path: ...
+    def fixture_manifest_path(self, fixture_id: str) -> Path: ...
+    def fixture_database_path(self, fixture_id: str) -> Path: ...
     @property
     def review_runs_root(self) -> Path: ...
+    def review_paths(self, review_id: str) -> ReviewPaths: ...
     @property
     def snapshots_root(self) -> Path: ...
     def run_dir(self, run_id: str) -> Path: ...
@@ -38,14 +45,6 @@ class AcquisitionPaths:
     def run_lock_path(self, run_id: str) -> Path: ...
     def run_cancelled_path(self, run_id: str) -> Path: ...
     def run_staging_root(self, run_id: str) -> Path: ...
-    def chunk_attempt_dir(self, run_id: str, chunk_id: str, attempt_id: str) -> Path: ...
-    def body_consumption_receipt_path(
-        self, run_id: str, target_id: str, selected_sha256: str
-    ) -> Path: ...
-    def fixture_store_paths(self, fixture_id: str) -> FixturePaths: ...
-    def review_run_dir(self, review_id: str) -> Path: ...
-    def review_manifest_path(self, review_id: str) -> Path: ...
-    def review_case_dir(self, review_id: str, target_id: str) -> Path: ...
 
 def resolve_acquisition_paths(
     repo_root: str | Path | None = None,
@@ -58,9 +57,12 @@ def resolve_acquisition_paths(
 `transient_dir(artifacts_root, "document_acquisition", run_id)`. `runtime_root` and
 `distribution_root` use their shared foundation resolvers, with the distribution root
 remaining a separate `ProjectPaths` root. Distribution adapter methods own bundle
-destinations rather than acquisition-specific path helpers. `fixture_store_paths()`
-delegates to the shared fixture resolver with dataset `document_acquisition` and
-storage filename `index.sqlite`.
+destinations rather than acquisition-specific path helpers. `fixture_paths()`
+delegates to `foundation.runtime.fixtures.FixturePaths` with dataset
+`document_acquisition` and the shared SQLite filename `fixture.sqlite`.
+`review_paths()` delegates run/manifest/case layout to
+`infra.storage.review.paths.ReviewPaths`; the pipeline path owner selects only the
+dataset root.
 
 ## Logical layout (not exhaustive, should be consistent with other pipelines rather than reinventing a new name, update as needed.)
 
@@ -70,7 +72,7 @@ storage filename `index.sqlite`.
 │   ├── fixtures/
 │   │   └── {fixture_id}/
 │   │       ├── manifest.json
-│   │       └── index.sqlite
+│   │       └── fixture.sqlite
 │   ├── review-runs/
 │       └── {review_id}/
 │           ├── manifest.jsonl
@@ -95,7 +97,7 @@ storage filename `index.sqlite`.
 │           ├── cancelled.json
 │           ├── run.lock
 │           ├── run_manifest.json
-│           └── state.sqlite3
+│           └── state.sqlite
 ├── runtime/
 │   └── {broker_id}.sock
 └── ... other pipeline roots
@@ -108,12 +110,15 @@ This follows the existing distribution adapters' default
 `distribution_root / pipeline_name / plan_id[:8]`; S9 uses `acquisition` as the
 pipeline name and the run ID as its distribution plan ID.
 
+The layout tree is the target S9/S10/S11 contract, not evidence that every path has a
+writer. Current path resolution creates no directories or files.
+
 Fixture, review, and snapshot artifacts are retained under the pipeline root.
 Run manifests, work orders, mutable state, attempt chunks, and staged
 source/selected/processed bodies are resumable transient state under the common
 transient root; they are not published payloads and do not auto-expire. The
 selected-body receipt is a versioned JSON sidecar under the handoff directory.
-`index.sqlite` contains S9 fixture metadata and Zstandard-compressed exact
+`fixture.sqlite` contains S9 fixture metadata and Zstandard-compressed exact
 source-response BLOBs. Snapshot relation files, including separate binary and text
 payload Parquet relations, use the shared DAG layout under `snapshots_root`; payload
 bytes are not stored in a separate directory. DAG reachability governs retention of
@@ -152,8 +157,10 @@ duplicate payload rows.
 - Run paths resolve beneath the transient acquisition root, fixture paths beneath the
   retained fixture root, and review paths beneath `review-runs`; containment is checked
   against each owning root. Symlink/path traversal is refused.
-- Fixture IDs resolve through shared `foundation.runtime.fixtures.FixturePaths` to
-  immutable `manifest.json` and SQLite `index.sqlite`; no per-body path is generated.
+- Fixture IDs resolve through `foundation.runtime.fixtures.FixturePaths` to immutable
+  `manifest.json` and SQLite `fixture.sqlite`; no per-body path is generated.
+- Review run, manifest, cases, and staging paths are owned by
+  `infra.storage.review.paths.ReviewPaths`; pipeline owners select the dataset root.
 - Staging filenames are generated by the staging owner, not by target IDs or SEC
   paths. An attempt writes to a temporary file and atomically adopts a completed
   body reference only after byte count and digest verification.
@@ -179,9 +186,9 @@ def resolve_acquisition_paths(...) -> AcquisitionPaths: ...
 ```
 
 Invalid IDs, roots outside their configured owner, symlink escapes, malformed
-digests, and existing path components with the wrong file/directory kind raise a
-typed `AcquisitionPathError`. Path resolution itself creates no run, fixture, review,
-or staging files.
+digests, and existing path components with the wrong file/directory kind are refused
+with `ValueError`. Path resolution itself creates no run, fixture, review, or staging
+files.
 
 ## Acceptance
 

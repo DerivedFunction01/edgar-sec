@@ -22,6 +22,9 @@ import pyarrow.parquet as pq
 
 from edgar_sec.domain.document_inventory.models import IndexWorkItem
 from edgar_sec.foundation.runtime.memory import reclaim
+from edgar_sec.foundation.runtime.settings.parquet import (
+    resolve_parquet_read_batch_size,
+)
 from edgar_sec.foundation.runtime.resources import (
     RuntimeResourceProfile,
     derive_resources,
@@ -358,7 +361,7 @@ def _decide_chunk(
     parquet = pq.ParquetFile(
         paths.attempt_outcomes_path(chunk_id, validation.attempt_id)
     )
-    for batch in parquet.iter_batches(batch_size=256):
+    for batch in parquet.iter_batches(batch_size=resolve_parquet_read_batch_size()):
         for index in range(batch.num_rows):
             status = batch.column("status")[index].as_py()
             retry_count += int(status in RETRYABLE_STATUSES)

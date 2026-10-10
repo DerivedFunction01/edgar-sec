@@ -16,26 +16,33 @@ from edgar_sec.pipelines.document_planning.discovery import (
 from edgar_sec.pipelines.document_planning.paths import resolve_document_planning_paths
 from edgar_sec.pipelines.document_planning.schemas import (
     MATCHER_VERSION,
+    PLAN_BUNDLE_SCHEMA_VERSION,
     TARGET_SCHEMA_VERSION,
 )
+from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 
 
 def _publish_empty_manifest(tmp_path: Path):
     paths = resolve_document_planning_paths(tmp_path, tmp_path / "artifacts")
     identity = {
         "target_schema_version": TARGET_SCHEMA_VERSION,
+        "bundle_schema_version": PLAN_BUNDLE_SCHEMA_VERSION,
         "matcher_version": MATCHER_VERSION,
+        "row_group_size": DEFAULT_ROW_GROUP_SIZE,
         "profile_digest": "a" * 64,
         "catalog_plan_id": "catalog-plan",
         "catalog_plan_digest": "b" * 64,
         "inventory_snapshot_id": None,
         "inventory_snapshot_digest": None,
     }
+    matcher_version = identity["matcher_version"]
     plan_id = f"dplan_{sha256_text(canonical_json(identity))[:32]}"
     manifest = {
         "plan_id": plan_id,
         "target_schema_version": TARGET_SCHEMA_VERSION,
-        "matcher_version": MATCHER_VERSION,
+        "bundle_schema_version": PLAN_BUNDLE_SCHEMA_VERSION,
+        "matcher_version": matcher_version,
+        "row_group_size": identity["row_group_size"],
         "profile_id": "primary",
         "profile_schema_version": "1",
         "profile_version": "1",
@@ -87,4 +94,21 @@ def test_plan_manifest_tampering_fails_integrity_check(tmp_path: Path) -> None:
     path.write_text(json.dumps(document), encoding="utf-8")
 
     with pytest.raises(DocumentPlanError, match="digest mismatch"):
+        read_published_plan(plan_id, paths)
+
+
+@pytest.mark.parametrize("field", ["bundle_schema_version", "matcher_version"])
+def test_plan_discovery_requires_declared_versioned_contract(
+    tmp_path: Path, field: str
+) -> None:
+    paths, plan_id = _publish_empty_manifest(tmp_path)
+    path = paths.plan_manifest_path(plan_id)
+    document = json.loads(path.read_text(encoding="utf-8"))
+    document.pop(field)
+    document["plan_digest"] = canonical_hash(
+        {key: value for key, value in document.items() if key != "plan_digest"}
+    )
+    path.write_text(json.dumps(document), encoding="utf-8")
+
+    with pytest.raises(DocumentPlanError, match="unsupported plan bundle or matcher"):
         read_published_plan(plan_id, paths)

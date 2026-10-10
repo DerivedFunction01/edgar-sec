@@ -10,6 +10,11 @@ from pathlib import Path
 import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
 import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.infra.storage.dag.paths import DAGPaths
+from edgar_sec.infra.storage.review.paths import (
+    ReviewPaths,
+    review_run_paths,
+    review_runs_root,
+)
 from edgar_sec.pipelines.filing_catalog.paths import (
     FilingCatalogPaths,
     LOCATOR_GROUPS_FILE,
@@ -27,7 +32,6 @@ __all__ = [
     "COHORT_SOURCES_FILE",
     "DATASET",
     "ENTRIES_FILE",
-    "FIXTURE_DATABASE_FILE",
     "InventoryPaths",
     "InventoryRunPaths",
     "LOCK_FILE",
@@ -52,9 +56,6 @@ __all__ = [
     "PUBLICATION_LOCK_FILE",
     "NEW_SOURCES_FILE",
     "RUN_MANIFEST_FILE",
-    "REVIEW_CASES_DIR",
-    "REVIEW_MANIFEST_FILE",
-    "REVIEW_RUNS_DIR",
     "SNAPSHOT_PART_PREFIX",
     "WORK_ORDER_FILE",
     "inventory_run_paths",
@@ -102,10 +103,6 @@ CANDIDATE_ENTRIES_FILE = "candidate_entries.parquet"
 NEW_SOURCES_FILE = "new_sources.parquet"
 
 #: Published snapshot root, owned by S5, separate from transient state.
-FIXTURE_DATABASE_FILE = "index_fixtures.sqlite"
-REVIEW_RUNS_DIR = foundation_paths.REVIEW_RUNS_DIR
-REVIEW_CASES_DIR = foundation_paths.CASES_DIR
-REVIEW_MANIFEST_FILE = "manifest.jsonl"
 WORK_ORDER_FILE = "work_order.parquet"
 COHORT_ACCESSIONS_FILE = "cohort_accessions.parquet"
 COHORT_SOURCES_FILE = "cohort_sources.parquet"
@@ -127,7 +124,7 @@ class InventoryPaths:
 
     @property
     def snapshots_root(self) -> Path:
-        return self.artifacts_root / DATASET / foundation_paths.SNAPSHOTS_DIR
+        return foundation_paths.snapshots_root(self.artifacts_root, DATASET)
 
     @property
     def fixtures_root(self) -> Path:
@@ -138,7 +135,7 @@ class InventoryPaths:
 
     def index_fixture_paths(self, fixture_id: str) -> foundation_fixtures.FixturePaths:
         return foundation_fixtures.fixture_paths(
-            self.artifacts_root, DATASET, fixture_id, FIXTURE_DATABASE_FILE
+            self.artifacts_root, DATASET, fixture_id
         )
 
     def fixture_manifest_path(self, fixture_id: str) -> Path:
@@ -152,13 +149,10 @@ class InventoryPaths:
 
     @property
     def review_runs_root(self) -> Path:
-        return self.artifacts_root / DATASET / REVIEW_RUNS_DIR
+        return review_runs_root(self.artifacts_root, DATASET)
 
-    def review_run_root(self, review_id: str) -> Path:
-        return self.review_runs_root / _validate_id(review_id, "review_id")
-
-    def review_manifest_path(self, review_id: str) -> Path:
-        return self.review_run_root(review_id) / REVIEW_MANIFEST_FILE
+    def review_paths(self, review_id: str) -> ReviewPaths:
+        return review_run_paths(self.artifacts_root, DATASET, review_id)
 
     @property
     def catalog_file(self) -> Path:
@@ -172,15 +166,13 @@ class InventoryPaths:
     @property
     def projection_staging_root(self) -> Path:
         return (
-            self.artifacts_root
-            / foundation_paths.TRANSIENT_DIR
-            / DATASET
+            foundation_paths.transient_dataset_root(self.artifacts_root, DATASET)
             / PROJECTION_STAGING_DIR
         )
 
     @property
     def transient_root(self) -> Path:
-        return self.artifacts_root / foundation_paths.TRANSIENT_DIR / DATASET
+        return foundation_paths.transient_dataset_root(self.artifacts_root, DATASET)
 
     def broker_socket_path(self, socket_id: str) -> Path:
         """Out-of-tree runtime socket; intentionally omitted. :no-docgen:"""
@@ -216,7 +208,7 @@ class InventoryRunPaths:
     @property
     def snapshots_root(self) -> Path:
         """Published snapshot root, owned by S5."""
-        return InventoryPaths(self.artifacts_root).snapshots_root
+        return foundation_paths.snapshots_root(self.artifacts_root, DATASET)
 
     def run_manifest_path(self) -> Path:
         return self.run_root / RUN_MANIFEST_FILE

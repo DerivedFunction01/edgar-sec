@@ -2,6 +2,7 @@ import pyarrow as pa
 
 from edgar_sec.pipelines.document_planning.schemas import (
     MATCHER_VERSION,
+    PLAN_BUNDLE_SCHEMA_VERSION,
     PROFILE_SCHEMA_VERSION,
     TARGET_COLUMNS,
     TARGET_SCHEMA,
@@ -43,5 +44,6 @@ def test_target_schema_matches_order_types_and_nullability() -> None:
 
 def test_planning_versions_are_stable_contract_values() -> None:
     assert TARGET_SCHEMA_VERSION == 1
+    assert PLAN_BUNDLE_SCHEMA_VERSION == 3
     assert PROFILE_SCHEMA_VERSION == "1"
-    assert MATCHER_VERSION == "target-matcher-v1"
+    assert MATCHER_VERSION == "target-matcher-v2"

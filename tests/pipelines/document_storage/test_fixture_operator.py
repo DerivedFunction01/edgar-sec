@@ -8,8 +8,7 @@ from pathlib import Path
 
 from edgar_sec.domain.document.models import DocumentLocator
 from edgar_sec.foundation.hashing import sha256_bytes
-from edgar_sec.foundation.runtime.fixtures import validate_fixture_component
-from edgar_sec.foundation.runtime.paths import ProjectPaths
+from edgar_sec.foundation.runtime.paths import ProjectPaths, validate_path_component
 from edgar_sec.pipelines.document_storage.fetching import FixtureArchiveFetcher
 from edgar_sec.pipelines.document_storage.fixture_operator import (
     FixtureOperatorError,
@@ -219,7 +218,7 @@ def test_fixture_discovery_reports_manifest_and_payload_count(tmp_path: Path) ->
 def test_fixture_ids_cannot_escape_fixture_root() -> None:
     for fixture_id in ("../outside", ".", "", "/tmp/outside"):
         try:
-            validate_fixture_component(fixture_id, "fixture_id")
+            validate_path_component(fixture_id, "fixture_id")
         except ValueError:
             continue
         raise AssertionError(f"accepted unsafe fixture id {fixture_id!r}")

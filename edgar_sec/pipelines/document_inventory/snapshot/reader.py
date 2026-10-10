@@ -9,7 +9,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.foundation.runtime.paths import SNAPSHOTS_DIR
+from edgar_sec.foundation.runtime.paths import snapshots_root
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.infra.storage.dag.paths import DAGPaths
 from edgar_sec.infra.storage.dag.publication import read_pointer
@@ -33,7 +33,7 @@ def _resolve_snapshots_root(root: Path | str) -> Path:
     p = Path(root)
     if DAGPaths(p).catalog_file.is_file():
         return p
-    sub = p / DATASET / SNAPSHOTS_DIR
+    sub = snapshots_root(p, DATASET)
     if DAGPaths(sub).catalog_file.is_file() or sub.is_dir():
         return sub
     return p

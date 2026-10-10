@@ -19,9 +19,9 @@ if TYPE_CHECKING:
 from .atomic import _fsync_dir
 from .parquet import (
     DEFAULT_COMPRESSION,
-    DEFAULT_ROW_GROUP_SIZE,
     count_parquet_rows,
 )
+from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
 
 _IDENTIFIER_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
 
@@ -101,7 +101,7 @@ def copy_query_to_parquet(
     con: object,
     query: str,
     destination: os.PathLike[str] | str,
-    row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
+    row_group_size: int | None = None,
     *,
     compression: str = DEFAULT_COMPRESSION,
     params: Sequence[str] | None = None,
@@ -111,6 +111,7 @@ def copy_query_to_parquet(
     Staged beside the destination and renamed, so a failed write leaves no half-written
     shard. ``params`` binds source paths, keeping the caller's ``query`` a constant.
     """
+    effective_row_group_size = resolve_row_group_size(row_group_size)
     path = Path(destination)
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_name(f".{path.name}.tmp.{os.getpid()}")
@@ -118,7 +119,7 @@ def copy_query_to_parquet(
         con.execute(
             f"COPY ({query}) TO {sql_literal(str(tmp))} "
             f"(FORMAT PARQUET, COMPRESSION {compression}, "
-            f"ROW_GROUP_SIZE {int(row_group_size)})",
+            f"ROW_GROUP_SIZE {effective_row_group_size})",
             list(params) if params is not None else None,
         )
         os.replace(tmp, path)

@@ -6,11 +6,13 @@ import pytest
 
 from edgar_sec.foundation.hashing import sha256_text
 from edgar_sec.foundation.serialization import canonical_json
+from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 from edgar_sec.pipelines.document_planning.discovery import DocumentPlanError
 from edgar_sec.pipelines.document_planning.paths import resolve_document_planning_paths
 from edgar_sec.pipelines.document_planning.publication import publish_plan_bundle
 from edgar_sec.pipelines.document_planning.schemas import (
     MATCHER_VERSION,
+    PLAN_BUNDLE_SCHEMA_VERSION,
     TARGET_SCHEMA_VERSION,
 )
 
@@ -18,8 +20,10 @@ from edgar_sec.pipelines.document_planning.schemas import (
 def _manifest(identity: dict[str, object], plan_id: str) -> dict[str, object]:
     return {
         "plan_id": plan_id,
+        "bundle_schema_version": PLAN_BUNDLE_SCHEMA_VERSION,
         "target_schema_version": TARGET_SCHEMA_VERSION,
         "matcher_version": MATCHER_VERSION,
+        "row_group_size": identity["row_group_size"],
         "profile_id": "primary",
         "profile_schema_version": "1",
         "profile_version": "1",
@@ -46,8 +50,10 @@ def _manifest(identity: dict[str, object], plan_id: str) -> dict[str, object]:
 def test_publication_atomically_reuses_only_identical_manifest(tmp_path: Path) -> None:
     paths = resolve_document_planning_paths(tmp_path, tmp_path / "artifacts")
     identity = {
+        "bundle_schema_version": PLAN_BUNDLE_SCHEMA_VERSION,
         "target_schema_version": TARGET_SCHEMA_VERSION,
         "matcher_version": MATCHER_VERSION,
+        "row_group_size": DEFAULT_ROW_GROUP_SIZE,
         "profile_digest": "a" * 64,
         "catalog_plan_id": "catalog-1",
         "catalog_plan_digest": "b" * 64,
@@ -75,8 +81,10 @@ def test_publication_atomically_reuses_only_identical_manifest(tmp_path: Path) -
 def test_publication_refuses_a_divergent_rerun(tmp_path: Path) -> None:
     paths = resolve_document_planning_paths(tmp_path, tmp_path / "artifacts")
     identity = {
+        "bundle_schema_version": PLAN_BUNDLE_SCHEMA_VERSION,
         "target_schema_version": TARGET_SCHEMA_VERSION,
         "matcher_version": MATCHER_VERSION,
+        "row_group_size": DEFAULT_ROW_GROUP_SIZE,
         "profile_digest": "a" * 64,
         "catalog_plan_id": "catalog-1",
         "catalog_plan_digest": "b" * 64,

@@ -1,4 +1,4 @@
-"""Shared runtime resource, concurrency, and chunk defaults expressed as settings specs."""
+"""Shared runtime resource, work-unit, and read-batch settings."""
 
 from __future__ import annotations
 
@@ -6,15 +6,18 @@ import tempfile
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from ..resources import (
+    DEFAULT_MEMORY_FRACTION,
+    DEFAULT_WORKER_MEMORY_MIB,
+    DEFAULT_WORKER_MEMORY_SAFETY,
+)
 from .validators import validate_fraction, validate_positive_int
 
 if TYPE_CHECKING:
     from . import SettingSpec
 
 DEFAULT_CHUNK_SIZE = 1000
-DEFAULT_WORKER_MEMORY_MIB = 512
-DEFAULT_WORKER_MEMORY_SAFETY = 0.9
-DEFAULT_MEMORY_FRACTION = 0.6
+DEFAULT_READ_BATCH_SIZE = 4096
 
 
 def _default_threads() -> int:
@@ -48,6 +51,18 @@ def _default_memory_limit(resolved: dict) -> str:
 
 def _default_temp_directory() -> str:
     return str(Path(tempfile.gettempdir()) / "edgar-sec-spill")
+
+
+def resolve_read_batch_size(value: int | None = None) -> int:
+    if value is not None:
+        try:
+            validate_positive_int(value)
+        except ValueError as exc:
+            raise ValueError("batch_size must be positive") from exc
+        return value
+    from . import resolve_settings
+
+    return int(resolve_settings(include=("runtime",))["runtime.read_batch_size"])
 
 
 def get_runtime_specs() -> dict[str, dict[str, SettingSpec]]:
@@ -88,6 +103,14 @@ def get_runtime_specs() -> dict[str, dict[str, SettingSpec]]:
                 validate=validate_positive_int,
                 description="source rows per resumable work unit (chunk)",
             ),
+            "read_batch_size": SettingSpec(
+                value_type=int,
+                default=DEFAULT_READ_BATCH_SIZE,
+                env=True,
+                machine_local=True,
+                validate=validate_positive_int,
+                description="rows read per batch when callers do not specify a size",
+            ),
             "threads": SettingSpec(
                 value_type=int,
                 default=_default_threads,
@@ -126,8 +149,7 @@ def get_runtime_specs() -> dict[str, dict[str, SettingSpec]]:
 
 __all__ = [
     "DEFAULT_CHUNK_SIZE",
-    "DEFAULT_MEMORY_FRACTION",
-    "DEFAULT_WORKER_MEMORY_MIB",
-    "DEFAULT_WORKER_MEMORY_SAFETY",
+    "DEFAULT_READ_BATCH_SIZE",
     "get_runtime_specs",
+    "resolve_read_batch_size",
 ]

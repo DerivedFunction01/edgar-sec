@@ -30,6 +30,9 @@ from edgar_sec.domain.document_inventory.schemas import (
     ENTRY_SCHEMA_VERSION,
 )
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.runtime.settings.parquet import (
+    resolve_parquet_read_batch_size,
+)
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import connect, sql_path_list
@@ -584,7 +587,7 @@ def iter_outcome_rows(
     paths: InventoryRunPaths, chunk_id: str, attempt_id: str
 ) -> Iterator[dict[str, Any]]:
     parquet = pq.ParquetFile(paths.attempt_outcomes_path(chunk_id, attempt_id))
-    for batch in parquet.iter_batches(batch_size=256):
+    for batch in parquet.iter_batches(batch_size=resolve_parquet_read_batch_size()):
         for index in range(batch.num_rows):
             yield {
                 name: batch.column(column)[index].as_py()

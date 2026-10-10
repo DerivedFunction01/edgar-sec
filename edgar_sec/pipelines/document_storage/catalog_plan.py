@@ -30,6 +30,9 @@ from edgar_sec.domain.filing_catalog.schemas import (
 )
 from edgar_sec.foundation.hashing import sha256_text
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
+from edgar_sec.foundation.runtime.settings.parquet import (
+    resolve_parquet_read_batch_size,
+)
 from edgar_sec.infra.storage.duckdb import connect, sql_literal, sql_path_list
 from edgar_sec.infra.storage.parquet import count_parquet_rows, read_parquet_schema
 from edgar_sec.pipelines.document_storage.paths import (
@@ -51,8 +54,6 @@ _SCOPE_LOCATOR_COLUMNS = {
     SCOPE_DETERMINISTIC: LOCATOR_BASE_COLUMNS,
     SCOPE_POLICY: LOCATOR_POLICY_COLUMNS,
 }
-
-_STREAM_BATCH_ROWS = 2048
 
 
 class CatalogPlanError(RuntimeError):
@@ -83,13 +84,13 @@ class CatalogPlan:
         plan_dir: str | Path,
         *,
         chunk_size: int,
-        batch_rows: int = _STREAM_BATCH_ROWS,
+        batch_rows: int | None = None,
     ) -> None:
         if chunk_size < 1:
             raise CatalogPlanError(f"chunk_size must be positive: {chunk_size}")
         self._plan_dir = Path(plan_dir).resolve()
         self._chunk_size = chunk_size
-        self._batch_rows = batch_rows
+        self._batch_rows = resolve_parquet_read_batch_size(batch_rows)
         self._published = _read_plan_json(self._plan_dir)
         self._counts = _read_plan_counts(self._plan_dir)
         self._meta = _read_plan_metadata(self._plan_dir, self._counts)

@@ -34,7 +34,8 @@ from .run_manifest import iter_work_order_chunks, write_run_manifest, write_work
 
 DEFAULT_ROWS = 236_000
 MAX_ROWS = 236_000
-MAX_CHUNK_SIZE = 10_000
+_MAX_CHUNK_SIZE = 10_000
+
 MAX_ENTRIES_PER_ACCESSION = 10
 DEFAULT_OUTPUT_MIB = 8_192
 _ESTIMATED_BYTES_PER_ACCESSION = 32 * 1024
@@ -91,8 +92,8 @@ def _validate_arguments(args: argparse.Namespace) -> tuple[Path, int, int]:
     chunk_size = (
         settings.default_chunk_size if args.chunk_size is None else args.chunk_size
     )
-    if chunk_size < 1 or chunk_size > MAX_CHUNK_SIZE:
-        raise ValueError(f"--chunk-size must be between 1 and {MAX_CHUNK_SIZE}")
+    if chunk_size < 1 or chunk_size > _MAX_CHUNK_SIZE:
+        raise ValueError(f"--chunk-size must be between 1 and {_MAX_CHUNK_SIZE}")
     if not 1 <= args.entries_per_accession <= MAX_ENTRIES_PER_ACCESSION:
         raise ValueError(
             f"--entries-per-accession must be between 1 and {MAX_ENTRIES_PER_ACCESSION}"

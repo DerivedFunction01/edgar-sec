@@ -20,6 +20,7 @@ from edgar_sec.engine.selection.policy import (
     compute_seed_fingerprint,
     read_seed_filers_csv,
 )
+from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.pipelines.cohort.ingestion import ingest_file_to_cohort
 from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
@@ -325,7 +326,7 @@ def test_plan_rejects_an_unsafe_catalog_reference(
     catalog_artifacts_root: Path,
 ) -> None:
     artifacts_root = _artifacts_root(catalog_artifacts_root)
-    with pytest.raises(ValueError, match="unsafe identifier"):
+    with pytest.raises(ValueError, match="invalid identifier"):
         plan_policy("../../etc", _policy(), artifacts_root)
 
 
@@ -387,6 +388,7 @@ def test_seed_cohort_replaces_configured_seed_csv_and_is_fingerprinted(
     assert meta["seed_fingerprint"] == compute_seed_fingerprint(seeds)
     request = {
         "catalog_id": str(manifest["catalog_id"]),
+        "row_group_size": DEFAULT_ROW_GROUP_SIZE,
         "scope": SCOPE_POLICY,
         "policy_fingerprint": policy.policy_fingerprint,
         "seed_fingerprint": meta["seed_fingerprint"],

@@ -24,8 +24,8 @@ from edgar_sec.pipelines.document_storage.manifests import (
 )
 from edgar_sec.infra.storage.parquet import (
     DEFAULT_COMPRESSION,
-    DEFAULT_ROW_GROUP_SIZE,
 )
+from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
 
 #: Part columns. The index and payload kinds are projections of one logical
 #: record, split so a consumer can read metadata without the text.
@@ -151,7 +151,7 @@ def _write_part(root: Path, part: PlannedPart, table: pa.Table) -> SnapshotPart:
             table,
             tmp,
             compression=DEFAULT_COMPRESSION,
-            row_group_size=DEFAULT_ROW_GROUP_SIZE,
+            row_group_size=resolve_row_group_size(),
         )
         os.replace(tmp, dest)
         _fsync_dir(str(dest.parent))

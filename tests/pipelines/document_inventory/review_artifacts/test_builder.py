@@ -1,21 +1,23 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import sqlite3
 from pathlib import Path
 
 import pytest
 
 from edgar_sec.domain.identity import AccessionNumber
+from edgar_sec.infra.storage.review.paths import (
+    PIPELINE_REVIEW_MANIFEST_FILE,
+    ReviewPaths,
+)
 from edgar_sec.pipelines.document_inventory.fixture_store.models import IndexResponseKey
 from edgar_sec.pipelines.document_inventory.fixture_store.reader import (
     open_index_fixture,
 )
 from edgar_sec.pipelines.document_inventory.review_artifacts.builder import (
     build_review_artifacts,
-)
-from edgar_sec.pipelines.document_inventory.review_artifacts.paths import (
-    ReviewArtifactPaths,
 )
 
 
@@ -29,7 +31,7 @@ def test_builder_writes_preview_observation_entries_and_manifest(
 
     assert result.exit_code == 0
     assert result.summary.total == result.summary.parsed == 1
-    paths = ReviewArtifactPaths(output)
+    paths = ReviewPaths(output, PIPELINE_REVIEW_MANIFEST_FILE)
     row = json.loads(paths.manifest_path.read_text(encoding="utf-8"))
     assert row["accession"] == str(accession)
     assert row["status"] == "parsed"
@@ -86,11 +88,13 @@ def test_selected_page_digest_is_pinned_and_case_path_is_stable(
     fixture, accession, _body = captured_fixture
     with open_index_fixture(fixture) as reader:
         case = reader.list_cases(accession)[0]
-    paths = ReviewArtifactPaths(tmp_path / "review")
-    first = paths.case_root(case.accession, case.key)
-    second = paths.case_root(
-        case.accession, IndexResponseKey(case.key.request_url, case.key.response_sha256)
-    )
+    paths = ReviewPaths(tmp_path / "review", PIPELINE_REVIEW_MANIFEST_FILE)
+    key_digest = hashlib.sha256(
+        f"{case.key.request_url}\n{case.key.response_sha256}".encode("utf-8")
+    ).hexdigest()[:16]
+    case_id = f"{case.accession}--{key_digest}"
+    first = paths.case_dir(case_id)
+    second = paths.case_dir(case_id)
     assert first == second
     assert first.name.startswith(str(accession))
 
@@ -105,10 +109,13 @@ def test_parallel_workers_keep_manifest_order_and_case_isolation(
     assert [record["accession"] for record in records] == list(map(str, accessions))
     assert [record["status"] for record in records] == ["parsed", "unrecognized"]
     assert result.summary.parsed == result.summary.unrecognized == 1
-    second_dir = ReviewArtifactPaths(tmp_path / "review-parallel").case_root(
-        accessions[1],
-        IndexResponseKey(records[1]["request_url"], records[1]["response_sha256"]),
-    )
+    key_digest = hashlib.sha256(
+        f"{records[1]['request_url']}\n{records[1]['response_sha256']}".encode("utf-8")
+    ).hexdigest()[:16]
+    second_id = f"{accessions[1]}--{key_digest}"
+    second_dir = ReviewPaths(
+        tmp_path / "review-parallel", PIPELINE_REVIEW_MANIFEST_FILE
+    ).case_dir(second_id)
     assert (second_dir / "source.inert.html").is_file()
     assert (second_dir / "observations.json").is_file()
     assert not (second_dir / "entries.csv").exists()

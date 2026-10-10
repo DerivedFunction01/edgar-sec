@@ -13,7 +13,7 @@ from pathlib import Path
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
+from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 
 FIXTURES = Path(__file__).resolve().parent
 

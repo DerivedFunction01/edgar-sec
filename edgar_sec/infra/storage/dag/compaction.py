@@ -19,7 +19,6 @@ from edgar_sec.infra.storage.duckdb import (
 )
 from edgar_sec.infra.storage.parquet import (
     DEFAULT_COMPRESSION,
-    DEFAULT_ROW_GROUP_SIZE,
     read_parquet_key_bounds,
     read_parquet_table,
 )
@@ -91,7 +90,6 @@ def _compact_relation(
             con,
             query,
             part_path,
-            row_group_size=DEFAULT_ROW_GROUP_SIZE,
             compression=DEFAULT_COMPRESSION,
             params=params,
         )

@@ -34,7 +34,7 @@ from edgar_sec.infra.storage.duckdb import (
     copy_query_to_parquet,
     sql_literal,
 )
-from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
+from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
 
 FEATURE_SCHEMA_VERSION = "1.0"
 
@@ -173,7 +173,7 @@ class FeatureSnapshotBuilder:
         *,
         family_index_path: str | Path | None = None,
         family_index_id: str = "",
-        row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
+        row_group_size: int | None = None,
         gap_years: int = DEFAULT_GAP_YEARS,
         cessation_grace_years: int = DEFAULT_CESSATION_GRACE_YEARS,
         stub_size_threshold: int = DEFAULT_STUB_SIZE_THRESHOLD,
@@ -193,10 +193,11 @@ class FeatureSnapshotBuilder:
             Path(family_index_path).resolve() if family_index_path else None
         )
         self.family_index_id = family_index_id
-        self.row_group_size = row_group_size
+        self.row_group_size = resolve_row_group_size(row_group_size)
         self.options = _build_options(
             gap_years, cessation_grace_years, stub_size_threshold
         )
+        self.options["row_group_size"] = self.row_group_size
 
     def _family_relation_sql(self) -> str:
         """A relation over the published assignment, or an empty one when absent.

@@ -54,16 +54,16 @@ from edgar_sec.pipelines.document_planning.profiles import (
     targets_for_form,
 )
 from edgar_sec.pipelines.document_planning.publication import publish_plan_bundle
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
+from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
+from edgar_sec.infra.storage.parquet import DEFAULT_COMPRESSION
 from edgar_sec.pipelines.document_planning.schemas import (
     INVENTORY_RELATIONS,
     MATCHER_VERSION,
+    PLAN_BUNDLE_SCHEMA_VERSION,
     TARGET_SCHEMA,
     TARGET_SCHEMA_VERSION,
 )
-
-_STAGING_BATCH_ROWS = 2048
-_QUERY_BATCH_ROWS = 4096
-_PART_ROWS = 128_000
 
 
 class DocumentPlanningError(RuntimeError):
@@ -167,6 +167,7 @@ def create_document_plan(
     inventory_snapshot: str | None = None,
     paths: DocumentPlanningPaths | None = None,
 ) -> PlanResult:
+    row_group_size = resolve_row_group_size()
     locations = paths or resolve_document_planning_paths()
     profile = load_profile(profile_id, locations.profiles_root)
     selected_snapshot = resolve_inventory_snapshot_id(inventory_snapshot, locations)
@@ -183,8 +184,10 @@ def create_document_plan(
         else None
     )
     identity = {
+        "bundle_schema_version": PLAN_BUNDLE_SCHEMA_VERSION,
         "target_schema_version": TARGET_SCHEMA_VERSION,
         "matcher_version": MATCHER_VERSION,
+        "row_group_size": row_group_size,
         "profile_digest": profile_digest(profile),
         "catalog_plan_id": catalog_scope.pin.catalog_plan_id,
         "catalog_plan_digest": catalog_scope.pin.digest,
@@ -205,12 +208,14 @@ def create_document_plan(
         rows = _iter_target_rows(
             plan_id, catalog_scope, inventory_source, profile, stats
         )
-        parts = _write_target_parts(stage, rows)
+        parts = _write_target_parts(stage, rows, row_group_size)
         target_row_count = sum(stats.statuses.values())
         manifest: dict[str, Any] = {
             "plan_id": plan_id,
+            "bundle_schema_version": PLAN_BUNDLE_SCHEMA_VERSION,
             "target_schema_version": TARGET_SCHEMA_VERSION,
             "matcher_version": MATCHER_VERSION,
+            "row_group_size": row_group_size,
             "profile_id": profile.profile_id,
             "profile_schema_version": profile.schema_version,
             "profile_version": profile.version,
@@ -331,27 +336,30 @@ def _account_rows(
 
 
 def _write_target_parts(
-    staging_root: Path, rows: Iterable[dict[str, Any]]
+    staging_root: Path, rows: Iterable[dict[str, Any]], row_group_size: int
 ) -> list[dict[str, Any]]:
+    read_batch_size = resolve_read_batch_size()
     spool_root = Path(tempfile.mkdtemp(prefix=".rows-", dir=staging_root))
     spool_path = spool_root / "rows.parquet"
-    writer = pq.ParquetWriter(spool_path, TARGET_SCHEMA, compression="zstd")
+    writer = pq.ParquetWriter(
+        spool_path, TARGET_SCHEMA, compression=DEFAULT_COMPRESSION
+    )
     batch: list[dict[str, Any]] = []
     row_count = 0
     try:
         for row in rows:
             batch.append(row)
             row_count += 1
-            if len(batch) == _STAGING_BATCH_ROWS:
+            if len(batch) == read_batch_size:
                 writer.write_table(
                     pa.Table.from_pylist(batch, schema=TARGET_SCHEMA),
-                    row_group_size=_PART_ROWS,
+                    row_group_size=row_group_size,
                 )
                 batch.clear()
         if batch:
             writer.write_table(
                 pa.Table.from_pylist(batch, schema=TARGET_SCHEMA),
-                row_group_size=_PART_ROWS,
+                row_group_size=row_group_size,
             )
     finally:
         writer.close()
@@ -359,13 +367,16 @@ def _write_target_parts(
         shutil.rmtree(spool_root)
         return []
     try:
-        parts = _sort_and_write_parts(spool_path, staging_root)
+        parts = _sort_and_write_parts(spool_path, staging_root, row_group_size)
     finally:
         shutil.rmtree(spool_root, ignore_errors=True)
     return parts
 
 
-def _sort_and_write_parts(spool_path: Path, staging_root: Path) -> list[dict[str, Any]]:
+def _sort_and_write_parts(
+    spool_path: Path, staging_root: Path, row_group_size: int
+) -> list[dict[str, Any]]:
+    read_batch_size = resolve_read_batch_size()
     parts: list[dict[str, Any]] = []
     current_form: str | None = None
     buffered: list[pa.Table] = []
@@ -387,14 +398,15 @@ def _sort_and_write_parts(spool_path: Path, staging_root: Path) -> list[dict[str
         pq.write_table(
             table,
             path,
-            compression="zstd",
-            row_group_size=_PART_ROWS,
+            compression=DEFAULT_COMPRESSION,
+            row_group_size=row_group_size,
         )
         parts.append(
             {
                 "path": relative,
                 "form": current_form,
                 "rows": table.num_rows,
+                "byte_size": path.stat().st_size,
                 "sha256": file_sha256(path),
             }
         )
@@ -407,7 +419,7 @@ def _sort_and_write_parts(spool_path: Path, staging_root: Path) -> list[dict[str
             "SELECT * FROM read_parquet(?) "
             "ORDER BY form, accession, request_id, inventory_entry_id NULLS FIRST, status",
             [str(spool_path)],
-        ).to_arrow_reader(_QUERY_BATCH_ROWS)
+        ).to_arrow_reader(read_batch_size)
         for batch in reader:
             forms = batch.column(batch.schema.get_field_index("form")).to_pylist()
             offset = 0
@@ -421,11 +433,11 @@ def _sort_and_write_parts(spool_path: Path, staging_root: Path) -> list[dict[str
                     flush()
                     current_form = form
                 while cursor < end:
-                    take = min(_PART_ROWS - buffered_rows, end - cursor)
+                    take = min(row_group_size - buffered_rows, end - cursor)
                     buffered.append(pa.Table.from_batches([batch.slice(cursor, take)]))
                     buffered_rows += take
                     cursor += take
-                    if buffered_rows == _PART_ROWS:
+                    if buffered_rows == row_group_size:
                         flush()
                 offset = end
     flush()

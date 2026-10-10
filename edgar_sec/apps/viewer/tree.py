@@ -28,6 +28,7 @@ __all__ = [
 
 ROOT_NODE_ID = "root"
 MAX_TEXT_BYTES = 64 * 1024
+
 _FORMAT_BY_SUFFIX = {
     ".csv": "csv",
     ".tsv": "csv",

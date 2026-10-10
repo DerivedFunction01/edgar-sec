@@ -9,19 +9,28 @@ from typing import Any
 
 import pyarrow.parquet as pq
 
-from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
+from edgar_sec.foundation.hashing import (
+    file_sha256,
+    is_sha256_hex_digest,
+    sha256_text,
+)
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.foundation.serialization import canonical_hash, canonical_json
-from edgar_sec.foundation.hashing import sha256_text
+from edgar_sec.foundation.runtime.settings.parquet import (
+    resolve_parquet_read_batch_size,
+)
 from .paths import (
     DocumentPlanningPaths,
     catalog_form_partition_name,
     resolve_document_planning_paths,
     validate_profile_id,
 )
-from .schemas import MATCHER_VERSION, TARGET_SCHEMA, TARGET_SCHEMA_VERSION
-
-_PART_ROWS = 128_000
+from .schemas import (
+    MATCHER_VERSION,
+    PLAN_BUNDLE_SCHEMA_VERSION,
+    TARGET_SCHEMA,
+    TARGET_SCHEMA_VERSION,
+)
 
 
 class DocumentPlanError(ValueError):
@@ -109,13 +118,27 @@ def _validate_plan_root(
     identity = manifest.get("plan_identity")
     if not isinstance(identity, dict):
         raise DocumentPlanError("plan identity is missing")
+    if (
+        not isinstance(manifest.get("bundle_schema_version"), int)
+        or isinstance(manifest.get("bundle_schema_version"), bool)
+        or manifest.get("bundle_schema_version") != PLAN_BUNDLE_SCHEMA_VERSION
+        or not isinstance(identity.get("bundle_schema_version"), int)
+        or isinstance(identity.get("bundle_schema_version"), bool)
+        or identity.get("bundle_schema_version") != PLAN_BUNDLE_SCHEMA_VERSION
+        or identity.get("matcher_version") != MATCHER_VERSION
+        or manifest.get("matcher_version") != MATCHER_VERSION
+    ):
+        raise DocumentPlanError("unsupported plan bundle or matcher version")
     expected_id = f"dplan_{sha256_text(canonical_json(identity))[:32]}"
     if expected_id != plan_id:
         raise DocumentPlanError("plan ID does not match its canonical identity")
+    row_group_size = manifest.get("row_group_size")
     if (
         identity.get("target_schema_version") != TARGET_SCHEMA_VERSION
-        or identity.get("matcher_version") != MATCHER_VERSION
-        or manifest.get("matcher_version") != MATCHER_VERSION
+        or not isinstance(row_group_size, int)
+        or isinstance(row_group_size, bool)
+        or row_group_size < 1
+        or identity.get("row_group_size") != row_group_size
         or manifest.get("profile_digest") != identity.get("profile_digest")
         or manifest.get("catalog_plan_id") != identity.get("catalog_plan_id")
         or manifest.get("catalog_plan_digest") != identity.get("catalog_plan_digest")
@@ -146,6 +169,7 @@ def _validate_plan_root(
 
 
 def _validate_parts(root: Path, manifest: dict[str, Any]) -> None:
+    row_group_size = manifest["row_group_size"]
     parts = manifest.get("parts")
     if not isinstance(parts, list):
         raise DocumentPlanError("plan parts must be an array")
@@ -169,10 +193,17 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> None:
             not isinstance(rows, int)
             or isinstance(rows, bool)
             or rows < 1
-            or rows > _PART_ROWS
+            or rows > row_group_size
         ):
             raise DocumentPlanError("plan part descriptor is invalid")
         if not isinstance(digest, str) or not is_sha256_hex_digest(digest):
+            raise DocumentPlanError("plan part descriptor is invalid")
+        byte_size = part.get("byte_size")
+        if (
+            not isinstance(byte_size, int)
+            or isinstance(byte_size, bool)
+            or byte_size < 0
+        ):
             raise DocumentPlanError("plan part descriptor is invalid")
         path = PurePosixPath(relative)
         if path.is_absolute() or ".." in path.parts or "\\" in relative:
@@ -198,6 +229,8 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> None:
             raise DocumentPlanError(
                 f"plan part is missing or escapes its bundle: {relative}"
             )
+        if absolute.stat().st_size != byte_size:
+            raise DocumentPlanError(f"plan part byte size mismatch: {relative}")
         if file_sha256(absolute) != digest:
             raise DocumentPlanError(f"plan part digest mismatch: {relative}")
         try:
@@ -218,8 +251,10 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> None:
         declared_files.add(absolute)
     for form in indices:
         form_parts = [part for part in parts if part["form"] == form]
-        if any(part["rows"] != _PART_ROWS for part in form_parts[:-1]):
-            raise DocumentPlanError("non-final plan parts must contain 128000 rows")
+        if any(part["rows"] != row_group_size for part in form_parts[:-1]):
+            raise DocumentPlanError(
+                "non-final plan parts must match parquet row_group_size"
+            )
     if sum(observed.values()) != manifest.get("target_row_count"):
         raise DocumentPlanError("plan part rows do not match target row count")
     actual_files = {path.resolve() for path in (root / "targets").rglob("*.parquet")}
@@ -231,7 +266,7 @@ def _validate_target_rows(path: Path, form: str, plan_id: str) -> None:
     previous: tuple[str, str, str, str] | None = None
     try:
         for batch in pq.ParquetFile(path).iter_batches(
-            batch_size=4096,
+            batch_size=resolve_parquet_read_batch_size(),
             columns=[
                 "target_id",
                 "accession",

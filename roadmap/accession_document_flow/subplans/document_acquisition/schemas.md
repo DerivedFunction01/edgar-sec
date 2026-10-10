@@ -2,15 +2,17 @@
 
 ## Purpose and status
 
-This is the shared S9 schema owner. It is design-only; lightweight JSON and
-cross-stage contracts belong in `edgar_sec/pipelines/document_acquisition/schemas.py`;
-the Parquet target/work-order fields belong in `arrow_schemas.py`. Both owners must
-exist before command implementations begin. Command-specific state transitions are in
-[run persistence](run/state.md) and [fixture persistence](fixtures/storage.md).
+This is the shared S9 schema contract. Lightweight JSON and cross-stage contracts
+belong in `edgar_sec/pipelines/document_acquisition/schemas.py`; Parquet target and
+work-order fields belong in `arrow_schemas.py`. Those owners and the S9 project/state
+substrate are implemented. Acquisition snapshot relation schemas remain gated by
+S11 evidence and approval.
 
 ## Input contract
 
-The S6 bundle pins target-plan schema `1.3` and target relation schema version `1`.
+The S6 bundle uses `bundle_schema_version=2`, `matcher_version="target-matcher-v2"`,
+and target relation schema version `1`. Catalog input schema `1.3` is source
+provenance only; S9 does not reopen that catalog plan.
 The persisted row fields are the S6 `document_planning.schemas.TARGET_SCHEMA` contract:
 
 | Column | Physical type | Required | Use in S9 |
@@ -84,8 +86,9 @@ class AcquisitionRunManifest(TypedDict):
     acquisition_contract_version: str
     target_plan_id: str
     target_plan_digest: str
-    target_plan_schema_version: str
+    bundle_schema_version: int
     target_schema_version: int
+    matcher_version: str
     catalog_plan_id: str
     catalog_plan_digest: str
     inventory_snapshot_id: str | None
@@ -95,6 +98,7 @@ class AcquisitionRunManifest(TypedDict):
     target_row_count: int
     executable_count: int
     skipped_count: int
+    run_state_schema_version: int
     run_digest: str
 ```
 

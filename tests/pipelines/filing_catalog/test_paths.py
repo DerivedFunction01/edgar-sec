@@ -60,9 +60,9 @@ def test_catalog_file_lives_inside_the_snapshots_root(paths) -> None:
 
 def test_safe_identifier_rejects_a_path_traversal(tmp_path: Path) -> None:
     paths = resolve_filing_catalog_paths(tmp_path)
-    with pytest.raises(ValueError, match="unsafe identifier"):
+    with pytest.raises(ValueError, match="invalid identifier"):
         paths.plan_dir("../../etc")
-    with pytest.raises(ValueError, match="unsafe identifier"):
+    with pytest.raises(ValueError, match="invalid identifier"):
         validate_safe_id("a/b")
 
 

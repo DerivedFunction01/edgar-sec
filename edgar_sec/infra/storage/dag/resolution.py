@@ -12,6 +12,7 @@ from pathlib import Path
 import duckdb
 
 from edgar_sec.foundation.serialization import canonical_json
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.storage.duckdb import sql_identifier, sql_path_list
 
 from .spec import RelationSpec
@@ -163,8 +164,9 @@ def compute_logical_fingerprint(
         order_cols = ", ".join(sql_identifier(k) for k in spec.primary_key)
         select_stmt = f"SELECT * FROM {view} ORDER BY {order_cols}"
         result = con.execute(select_stmt)
+        batch_size = resolve_read_batch_size()
         while True:
-            batch = result.fetchmany(4096)
+            batch = result.fetchmany(batch_size)
             if not batch:
                 break
             for row in batch:

@@ -3,15 +3,15 @@
 ## Owner and status
 
 - Owning stage in [S9](S9_acquisition.md): exact selection from submission envelopes.
-- Status: streaming extractor design only; the existing lower-layer helper is
-  bytes-based and not suitable for the required large-bundle path.
+- Status: bounded exact-sequence extraction is implemented in the engine; the S9
+  runner that composes it with transport and target outcomes is not.
 - Depends on: [S9a work orders](S9a_target_adapter.md), [S9b staged bodies](S9b_stream_transport.md).
 
-## Current tracked-code audit (2026-10-08)
+## Current tracked-code audit (2026-10-10)
 
-- **Status: bytes-based extraction exists as a parity foundation; the required streaming extractor is not implemented.** The existing helper scans complete byte strings, selects according to legacy type/filename rules, and may fall back to sequence one; it does not write one requested sequence to a staged child file.
-- **Evidence:** [`engine/document/unpacking/unpacker.py`](../../../edgar_sec/edgar_sec/engine/document/unpacking/unpacker.py) exposes bytes-based `extract_target_sub_document_selection`; [`test_unpacker.py`](../../../tests/engine/document/unpacking/test_unpacker.py) verifies that legacy selection and parity behavior.
-- **Next step:** add the separate bounded extractor under `engine/document/unpacking`, taking an S9 staged source and exact sequence, with typed structural failures and mirrored chunk-boundary, length, ambiguity, and byte-digest tests.
+- **Status: bounded sequence selection is implemented separately from the bytes-based legacy helper.** The engine reads a source path in bounded chunks, writes only one unique positive sequence's exact `<TEXT>` bytes, and returns typed structure/source failures. The bytes-based helper remains the small-fixture parity oracle.
+- **Evidence:** [`engine/document/unpacking/streaming.py`](../../../edgar_sec/engine/document/unpacking/streaming.py) and [`test_streaming.py`](../../../tests/engine/document/unpacking/test_streaming.py) cover chunk boundaries, malformed/duplicate/missing sequences, length checks, exact digest, cleanup, and bounded reads.
+- **Next step:** compose the engine API with file-backed broker transport in the S9 runner and map its typed failures to target outcomes without fallback.
 
 ## Objective
 
@@ -29,7 +29,7 @@ class BundleSelector:
 @dataclass(frozen=True, slots=True)
 class BundleDocumentHeader:
     ordinal: int
-    sequence: int | None
+    sequence: int
     filename: str | None
     document_type: str | None
     description: str | None
@@ -37,10 +37,13 @@ class BundleDocumentHeader:
 
 @dataclass(frozen=True, slots=True)
 class BundleExtraction:
-    selected_body: StagedBodyRef
+    destination: Path
     selected: BundleDocumentHeader
     document_count: int
+    source_size: int
     source_sha256: str
+    body_size: int
+    body_sha256: str
 
 @dataclass(frozen=True, slots=True)
 class BundleExtractionFailure:
@@ -48,7 +51,7 @@ class BundleExtractionFailure:
         "not_sgml", "malformed_delimiters", "missing_sequence",
         "invalid_sequence", "sequence_not_found", "duplicate_sequence",
         "invalid_length", "length_mismatch", "length_out_of_bounds",
-        "missing_text", "source_mismatch",
+        "missing_text", "source_mismatch", "io_error",
     ]
     matching_sequences: int
     source_sha256: str
@@ -58,10 +61,13 @@ class BundleExtractionFailure:
 
 ```python
 extract_bundle_sequence(
-    source: StagedBodyRef,
-    selector: BundleSelector,
+    source: Path,
+    sequence: int,
+    destination: Path,
     *,
-    staging: ManagedStaging,
+    expected_filename: str | None = None,
+    expected_document_type: str | None = None,
+    expected_source_sha256: str | None = None,
 ) -> BundleExtraction | BundleExtractionFailure
 ```
 

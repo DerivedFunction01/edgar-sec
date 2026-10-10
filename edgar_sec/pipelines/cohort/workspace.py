@@ -12,6 +12,7 @@ from typing import Any, Literal
 
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_hash, canonical_json
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet
 from edgar_sec.infra.storage.object_store.store import ObjectStore
 
@@ -157,7 +158,8 @@ class CohortWorkspace:
         row_count = 0
         with connect() as connection:
             cursor = connection.execute(query)
-            while batch := cursor.fetchmany(4096):
+            batch_size = resolve_read_batch_size()
+            while batch := cursor.fetchmany(batch_size):
                 for _, cik, _ in batch:
                     if row_count:
                         roster.update(b"\n")

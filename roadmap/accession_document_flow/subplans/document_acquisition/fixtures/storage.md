@@ -11,14 +11,14 @@ small manifest is a descriptor, not a parallel body store.
 ```text
 <artifacts_root>/document_acquisition/fixtures/<fixture_id>/
   manifest.json
-  index.sqlite
+  fixture.sqlite
 ```
 
 `manifest.json` uses the shared fixture-manifest envelope (`fixture_kind` is
 `document_acquisition.source_responses`, storage format `sqlite`, storage path
-`index.sqlite`, envelope version 1). Its details pin S9 store-schema version 2. The
+`fixture.sqlite`, envelope version 1). Its details pin S9 store-schema version 2. The
 manifest is an immutable descriptor with no case list or body digest inventory;
-`index.sqlite` owns append-only cases and run/target provenance and independently pins
+`fixture.sqlite` owns append-only cases and run/target provenance and independently pins
 schema version 2 through `PRAGMA user_version`. The manifest is not a response store.
 Its `created_at` and `updated_at` are equal at creation and remain unchanged as case
 rows are appended; the SQLite case timestamps are authoritative for captures.
@@ -150,7 +150,7 @@ selected child digest/size for replay verification.
   source body. `byte_size` and `response_sha256` identify the uncompressed source;
   `stored_byte_size` and `stored_sha256` verify the stored compressed stream. Replay
   decompresses incrementally, then verifies the uncompressed identity.
-- **Single body store**: `index.sqlite` is the sole store for cases and compressed
+- **Single body store**: `fixture.sqlite` is the sole store for cases and compressed
   response bytes.
   `manifest.json` is an immutable descriptor only. SQLite may use native transaction
   files, but no application-managed body files or external payload directory exists.

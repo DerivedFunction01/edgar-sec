@@ -9,11 +9,14 @@ from pathlib import Path
 import pytest
 
 import edgar_sec.foundation.runtime.paths as foundation_paths
-from edgar_sec.foundation.runtime.fixtures import FIXTURE_MANIFEST_NAME
+from edgar_sec.foundation.runtime.fixtures import (
+    FIXTURE_DATABASE_NAME,
+    FIXTURE_MANIFEST_NAME,
+)
+from edgar_sec.infra.storage.review.paths import REVIEW_RUNS_DIR
 from edgar_sec.pipelines.document_inventory.paths import (
     CHUNKS_DIR,
     DATASET,
-    FIXTURE_DATABASE_FILE,
     LOCK_FILE,
     OUTCOMES_FILE,
     PUBLICATION_DIR,
@@ -32,6 +35,10 @@ def test_run_root_lies_under_transient_dataset(tmp_path: Path) -> None:
 def test_snapshots_root_stays_out_of_transient(tmp_path: Path) -> None:
     paths = inventory_run_paths(tmp_path, "run-1")
     assert paths.snapshots_root == tmp_path / DATASET / foundation_paths.SNAPSHOTS_DIR
+    assert InventoryPaths(tmp_path).review_runs_root == (
+        tmp_path / DATASET / REVIEW_RUNS_DIR
+    )
+    assert InventoryPaths(tmp_path).transient_root == tmp_path / "transient" / DATASET
     assert "transient" not in paths.snapshots_root.parts
     assert paths.run_root != paths.snapshots_root
 
@@ -91,8 +98,16 @@ def test_fixture_paths_share_the_inventory_layout(tmp_path: Path) -> None:
     assert fixture.root == tmp_path / DATASET / "fixtures" / "review-one"
     assert fixture.manifest_path == paths.fixture_manifest_path("review-one")
     assert fixture.storage_path == paths.fixture_database_path("review-one")
-    assert fixture.storage_path.name == FIXTURE_DATABASE_FILE
+    assert fixture.storage_path.name == FIXTURE_DATABASE_NAME
     assert fixture.manifest_path.name == FIXTURE_MANIFEST_NAME
+
+
+def test_review_paths_delegate_manifest_and_case_layout(tmp_path: Path) -> None:
+    review = inventory_paths(tmp_path).review_paths("review-1")
+
+    assert review.root == tmp_path / DATASET / REVIEW_RUNS_DIR / "review-1"
+    assert review.manifest_path == review.root / "manifest.jsonl"
+    assert review.case_dir("case-1") == review.root / "cases" / "case-1"
 
 
 def test_runtime_socket_path_is_centralized(tmp_path: Path) -> None:

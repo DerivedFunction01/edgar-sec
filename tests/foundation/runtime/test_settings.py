@@ -21,6 +21,7 @@ def test_resolve_settings_returns_typed_values() -> None:
     settings = resolve_settings()
     assert float(settings["sec.rate_limit_rps"]) > 0
     assert int(settings["runtime.chunk_size"]) > 0
+    assert int(settings["runtime.read_batch_size"]) > 0
 
 
 def test_resolve_runtime_settings_groups_registries() -> None:

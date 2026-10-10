@@ -19,6 +19,9 @@ into an immutable accession-document target plan for later acquisition.
   `unresolved / accession_not_indexed`.
 - Published manifests pin both sources, profile and matcher versions, coverage,
   status totals, and every output part. Reuse requires byte-identical plan content.
+- New bundle version 2 identities include the bundle schema and matcher versions,
+  and each target part declares and verifies its byte size. Discovery accepts only
+  bundle version 2 with matcher v2.
 - Bundle-sequence and constructed-package rows are candidates, not proof that the
   requested document exists. Planning never starts acquisition.
 

@@ -21,7 +21,7 @@ from edgar_sec.domain.document_inventory.models import (
 )
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.index_pages.parser import PARSER_FINGERPRINT, parse_html_index
-from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
+from edgar_sec.foundation.hashing import file_sha256, sha256_bytes, sha256_text
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.foundation.serialization import canonical_json
@@ -35,16 +35,17 @@ from edgar_sec.pipelines.document_inventory.fixture_store.reader import (
     open_index_fixture,
 )
 from edgar_sec.foundation.runtime.fixtures import FixturePaths
+from edgar_sec.infra.storage.review.paths import (
+    PIPELINE_REVIEW_MANIFEST_FILE,
+    ReviewPaths,
+)
 
 from .models import ReviewRunResult, ReviewSummary
-from .paths import (
-    OBSERVATIONS_FILE,
-    REVIEW_ENTRIES_FILE,
-    SOURCE_PREVIEW_FILE,
-    ReviewArtifactPaths,
-)
 from .sanitizer import render_inert
 
+SOURCE_PREVIEW_FILE = "source.inert.html"
+OBSERVATIONS_FILE = "observations.json"
+REVIEW_ENTRIES_FILE = "entries.csv"
 _ENTRY_FIELDS = tuple(field.name for field in fields(InventoryEntry))
 _RECLAIM_INTERVAL = 32
 
@@ -101,11 +102,16 @@ def _write_entries(path: Path, entries: tuple[InventoryEntry, ...]) -> None:
             writer.writerow({name: getattr(entry, name) for name in _ENTRY_FIELDS})
 
 
+def _case_dir_id(accession: AccessionNumber, key: IndexResponseKey) -> str:
+    key_digest = sha256_text(f"{key.request_url}\n{key.response_sha256}")[:16]
+    return f"{accession}--{key_digest}"
+
+
 def _process_case(
     case: CapturedIndexCase,
     body: bytes,
     fixture_id: str,
-    paths: ReviewArtifactPaths,
+    paths: ReviewPaths,
 ) -> _CaseRecord:
     accession = str(case.accession)
     digest = case.key.response_sha256
@@ -115,7 +121,7 @@ def _process_case(
         IndexPageInput(case.accession, case.key.request_url, body)
     )
     inert_html = render_inert(body)
-    case_root = paths.case_root(case.accession, case.key)
+    case_root = paths.case_dir(_case_dir_id(case.accession, case.key))
     paths.cases_root.mkdir(parents=True, exist_ok=True)
     staging_root = Path(tempfile.mkdtemp(prefix="case-", dir=paths.case_staging_root()))
     try:
@@ -205,9 +211,7 @@ def _failure_record(
     )
 
 
-def _manifest_record(
-    record: _CaseRecord, review_id: str, paths: ReviewArtifactPaths
-) -> dict:
+def _manifest_record(record: _CaseRecord, review_id: str, paths: ReviewPaths) -> dict:
     return {
         "review_id": review_id,
         "fixture_id": record.fixture_id,
@@ -221,9 +225,13 @@ def _manifest_record(
         "outputs": {
             name: {
                 "path": str(
-                    paths.case_root(
-                        AccessionNumber(record.accession),
-                        IndexResponseKey(record.request_url, record.response_sha256),
+                    paths.case_dir(
+                        _case_dir_id(
+                            AccessionNumber(record.accession),
+                            IndexResponseKey(
+                                record.request_url, record.response_sha256
+                            ),
+                        )
                     ).relative_to(paths.root)
                     / name
                 ),
@@ -303,7 +311,7 @@ def build_review_artifacts(
     if worker_count < 1:
         raise ValueError("no review workers are available in the resource budget")
     output_root = Path(output).expanduser().resolve()
-    paths = ReviewArtifactPaths(output_root)
+    paths = ReviewPaths(output_root, PIPELINE_REVIEW_MANIFEST_FILE)
     created = not output_root.exists()
     if output_root.exists() and (
         not output_root.is_dir() or any(output_root.iterdir())

@@ -19,6 +19,8 @@ from typing import Any
 from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
+from edgar_sec.foundation.runtime.settings import resolve_settings
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.document_storage.manifests import (
@@ -58,11 +60,6 @@ from edgar_sec.pipelines.document_storage.queries import (
 )
 
 log = logging.getLogger("document_storage.vacuum")
-
-#: Default part budget. A part should sit comfortably above DuckDB's row-group
-#: size and low enough that many parts can be open during a read.
-DEFAULT_TARGET_BYTES = 96 * 1024 * 1024
-#: Env-overridable as ``documents.payload_target_bytes``.
 
 
 class VacuumError(RuntimeError):
@@ -137,7 +134,7 @@ def effective_relations(
 
 
 def validate_payload_conflicts(
-    connection: Any, raw_payload_relation: str, *, batch_size: int = 100
+    connection: Any, raw_payload_relation: str, *, batch_size: int | None = None
 ) -> None:
     """Raise when two sources disagree about a document's normalized text."""
     conflicts = [
@@ -156,7 +153,7 @@ def validate_payload_conflicts(
 
 
 def quarter_keys(
-    connection: Any, effective_index: str, *, batch_size: int = 256
+    connection: Any, effective_index: str, *, batch_size: int | None = None
 ) -> list[tuple[int, str]]:
     """Return every fiscal quarter present in the effective index."""
     return [
@@ -357,14 +354,21 @@ def vacuum_snapshots(
     snapshot_ids: Sequence[str] | None = None,
     include_all: bool = False,
     workers: int | None = None,
-    target_bytes: int = DEFAULT_TARGET_BYTES,
+    target_bytes: int | None = None,
     purge_sources: bool = False,
     purge_dependency_closure: bool = False,
-    batch_size: int = 4096,
+    batch_size: int | None = None,
     profile: RuntimeResourceProfile | None = None,
     progress: Callable[[dict[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
     """Consolidate snapshots into one canonical snapshot."""
+    settings = resolve_settings(include=("documents",))
+    target_bytes = int(
+        target_bytes
+        if target_bytes is not None
+        else settings["documents.payload_target_bytes"]
+    )
+    batch_size = resolve_read_batch_size(batch_size)
     root = Path(snapshots_root)
     manifests = _source_manifests(root, snapshot_ids, include_all)
     selected = {str(manifest["snapshot_id"]) for manifest in manifests}
@@ -510,7 +514,6 @@ def vacuum_snapshots(
 
 
 __all__ = [
-    "DEFAULT_TARGET_BYTES",
     "QuarterResult",
     "VacuumError",
     "effective_relations",

@@ -2,32 +2,25 @@
 
 ## Purpose and status
 
-This is the interactive flow shared by the S9 command group. It is design-only and
-modeled on the run-oriented `document_inventory` and `metadata_sync` operators. The
-operator delegates to the same command services used by `acquisition` CLI calls.
+This is the interactive flow shared by the S9 command group. A run-oriented menu
+skeleton is registered. The CLI's offline project service is implemented, but plan
+listing/selection and the interactive project action remain TODO; other menu actions
+are placeholders or fail closed on the S11 gate.
 
 ## Entry and signatures
 
 ```python
-import argparse
-from collections.abc import Callable, Sequence
+from edgar_sec.foundation.runtime.interactive import MenuAction
 
-def build_parser() -> argparse.ArgumentParser: ...
+def build_operator_menu() -> tuple[MenuAction, ...]: ...
 
-def run_acquisition_operator(
-    *,
-    paths: AcquisitionPaths,
-    read_line: Callable[[str], str],
-    write_line: Callable[[str], None],
-) -> int: ...
-
-def main(argv: Sequence[str] | None = None) -> int: ...
+def main(argv: list[str] | None = None) -> int: ...
 ```
 
 `main()` dispatches explicit CLI subcommands; with no command it enters the menu.
 The root launcher exposes one `Document Acquisition` entry and does not route through
-the legacy `documents`/`document_storage` operator. The operator does not have its
-own plan, status, run, distribution, or fixture implementation.
+the legacy `documents`/`document_storage` operator. The menu does not have its own
+plan listing, status, run, distribution, or fixture implementation.
 
 ## Main menu
 
@@ -38,19 +31,18 @@ Document Acquisition
   3. Run pending acquisition work
   4. Process acquired targets
   5. Publish a completed run snapshot
-  f. Acquisition fixture console
-  p. Acquisition snapshot console
+  f. Acquisition fixtures console (capture, list, replay TODOs)
+  r. Review artifact console (build, compare TODOs)
+  p. Snapshot status/evidence audit (S11 gate)
   0. Exit
 ```
 
-Project, Status, Run, Process, and Publish delegate to their command services. Publish
-is separate from Run completion and previews target/error counts, the parent branch
-tip, and payload bytes to adopt. The `p` console delegates read-only snapshot queries
-and shared DAG branch/tag operations; it does not mutate snapshot contents. The
-operator retains selected run/snapshot IDs when entering a sub-console. Live
-distributed work is not exposed in the first implementation.
+The CLI `project` command is implemented, but the menu's Project action remains a TODO
+until validated-plan listing/selection is available. Status, Run, Process, fixtures,
+review, and snapshot audit also remain TODO. Publish returns a gate-blocked result and
+does not create parts, manifests, or pointers. No menu action makes network requests.
 
-## User flows
+## Intended user flows (not implemented)
 
 ### Project
 

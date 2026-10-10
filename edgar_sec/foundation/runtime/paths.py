@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -22,11 +23,16 @@ PARQUET_PART_GLOB = "part-*.parquet"
 PLANS_DIR = "plans"
 CHUNKS_DIR = "chunks"
 RUNS_DIR = "runs"
-CASES_DIR = "cases"
-REVIEW_RUNS_DIR = "review-runs"
 RUN_LOCK_FILE = "run.lock"
 RUN_MANIFEST_FILE = "run_manifest.json"
 PUBLICATION_LOCK_FILE = ".publication.lock"
+_PATH_COMPONENT_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\Z")
+
+
+def validate_path_component(value: str, label: str) -> str:
+    if not isinstance(value, str) or not _PATH_COMPONENT_RE.fullmatch(value):
+        raise ValueError(f"invalid {label}: {value!r}")
+    return value
 
 
 def validate_safe_id(
@@ -50,7 +56,26 @@ def validate_safe_id(
 
 def transient_dir(artifacts_root: Path, dataset: str, run_id: str) -> Path:
     """Return the staging directory for one resumable run of a dataset."""
-    return artifacts_root / TRANSIENT_DIR / dataset / run_id
+    return transient_dataset_root(artifacts_root, dataset) / run_id
+
+
+def dataset_root(artifacts_root: Path | str, dataset: str) -> Path:
+    """Return the validated root for one artifacts dataset."""
+    return Path(artifacts_root) / validate_path_component(dataset, "dataset")
+
+
+def transient_dataset_root(artifacts_root: Path | str, dataset: str) -> Path:
+    """Return the transient root for one artifacts dataset."""
+    return (
+        Path(artifacts_root)
+        / TRANSIENT_DIR
+        / validate_path_component(dataset, "dataset")
+    )
+
+
+def snapshots_root(artifacts_root: Path | str, dataset: str) -> Path:
+    """Return the published snapshots root for one artifacts dataset."""
+    return dataset_root(artifacts_root, dataset) / SNAPSHOTS_DIR
 
 
 def runtime_root(artifacts_root: Path | str) -> Path:
@@ -108,7 +133,7 @@ def _reject_package_working_directory(root: Path) -> None:
     if resolved == PACKAGE_ROOT or PACKAGE_ROOT in resolved.parents:
         raise ProjectRootError(
             f"the working directory is inside the edgar_sec package ({resolved}). "
-            "Run from the project root, so .artifacts/, uploads/, and cache/ "
+            f"Run from the project root, so files and directories "
             "resolve beside the package rather than inside it."
         )
 
@@ -162,14 +187,17 @@ __all__ = [
     "RUN_MANIFEST_FILE",
     "RUNS_DIR",
     "RUNTIME_DIR",
-    "REVIEW_RUNS_DIR",
     "SNAPSHOTS_DIR",
     "TRANSIENT_DIR",
     "ProjectPaths",
     "ProjectRootError",
+    "dataset_root",
     "distribution_root",
     "resolve_paths",
     "runtime_root",
+    "snapshots_root",
+    "transient_dataset_root",
     "transient_dir",
+    "validate_path_component",
     "validate_safe_id",
 ]

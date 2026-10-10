@@ -11,7 +11,10 @@ from edgar_sec.foundation.runtime.paths import (
     PACKAGE_ROOT,
     ProjectPaths,
     ProjectRootError,
+    dataset_root,
     resolve_paths,
+    snapshots_root,
+    transient_dataset_root,
 )
 
 
@@ -20,6 +23,26 @@ def test_resolve_paths_derives_artifacts_root(tmp_path: Path) -> None:
     assert paths.repo_root == tmp_path
     assert paths.artifacts_root == tmp_path / ".artifacts"
     assert paths.runtime_root == tmp_path / ".artifacts" / "runtime"
+
+
+def test_dataset_roots_share_validated_layout(tmp_path: Path) -> None:
+    artifacts_root = tmp_path / "artifacts"
+
+    assert dataset_root(artifacts_root, "document_inventory") == (
+        artifacts_root / "document_inventory"
+    )
+    assert transient_dataset_root(artifacts_root, "document_inventory") == (
+        artifacts_root / "transient" / "document_inventory"
+    )
+    assert snapshots_root(artifacts_root, "document_inventory") == (
+        artifacts_root / "document_inventory" / "snapshots"
+    )
+
+
+@pytest.mark.parametrize("dataset", ["", "..", "../outside", "a/b"])
+def test_dataset_root_rejects_unsafe_components(tmp_path: Path, dataset: str) -> None:
+    with pytest.raises(ValueError):
+        dataset_root(tmp_path, dataset)
 
 
 def test_explicit_artifacts_root_overrides_repo_root(

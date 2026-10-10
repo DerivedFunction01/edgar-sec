@@ -17,7 +17,7 @@ from typing import Any
 
 from edgar_sec.domain.document.models import DocumentLocator, FilingOccurrence
 from edgar_sec.foundation.hashing import file_sha256, sha256_text
-from edgar_sec.foundation.runtime.fixtures import validate_fixture_component
+from edgar_sec.foundation.runtime.paths import validate_path_component
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
@@ -203,7 +203,7 @@ def make_fetcher(
         db_paths = []
         for raw_id in fixture_ids:
             try:
-                safe_id = validate_fixture_component(raw_id, "fixture_id")
+                safe_id = validate_path_component(raw_id, "fixture_id")
             except ValueError as exc:
                 raise OperatorError(str(exc)) from exc
             db_path = paths.fixture_db_path(safe_id)

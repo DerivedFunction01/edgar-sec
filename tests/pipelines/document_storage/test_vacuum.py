@@ -651,6 +651,18 @@ def test_batch_reading_is_bounded() -> None:
         connection.close()
 
 
+def test_shared_read_batch_size_is_overrideable(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("RUNTIME_READ_BATCH_SIZE", "2")
+    connection = _connect()
+    try:
+        batches = list(query_sql_batches(connection, "SELECT * FROM range(5)"))
+        assert [len(batch) for batch in batches] == [2, 2, 1]
+    finally:
+        connection.close()
+
+
 def test_a_non_positive_batch_size_is_rejected() -> None:
     connection = _connect()
     try:

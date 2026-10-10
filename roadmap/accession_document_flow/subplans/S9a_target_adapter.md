@@ -3,16 +3,16 @@
 ## Owner and status
 
 - Owning stage in [S9](S9_acquisition.md): acquisition work-order boundary.
-- Status: S6 target-plan production is implemented; the S9a acquisition adapter
-  remains design-only.
+- Status: S6 target-plan production and the S9a bounded Parquet adapter are
+  implemented; run projection and network acquisition remain separate.
 - Depends on: S6 target-plan schema and S4 broker lifecycle; the target bundle is
   self-contained for acquisition.
 
-## Current tracked-code audit (2026-10-09)
+## Current tracked-code audit (2026-10-10)
 
-- **Status: S6 producer exists; S9a is not implemented.** `document_storage.catalog_plan.CatalogPlan` still validates filing-catalog locator plans and streams locator chunks; it does not validate S6 target rows or resolve `DirectUrlWork` / `BundleSequenceWork` records.
-- **Evidence:** [`document_planning`](../../../edgar_sec/pipelines/document_planning/README.md) publishes self-contained target bundles with both source pins. [`document_storage/catalog_plan.py`](../../../edgar_sec/pipelines/document_storage/catalog_plan.py), [`document_storage/work_order.py`](../../../edgar_sec/pipelines/document_storage/work_order.py), and [`test_catalog_plan.py`](../../../tests/pipelines/document_storage/test_catalog_plan.py) remain the separate plan/chunk boundary.
-- **Next step:** implement the target-row validator and work-order mapper against the S6 bundle; validate its manifest and target-part digests, preserve both source pins, and do not reopen upstream artifacts.
+- **Status: S9a projection is implemented; the S9 runner is not.** The S6 producer emits bundle schema v2 with declared target-part byte sizes. `document_acquisition.target_plan` validates that pinned bundle and streams every target into the Parquet work-order schema; it does not fetch or process bodies.
+- **Evidence:** [`target_plan.py`](../../../edgar_sec/pipelines/document_acquisition/target_plan.py), [`arrow_schemas.py`](../../../edgar_sec/pipelines/document_acquisition/arrow_schemas.py), and their mirrored tests validate v2 pins, bounded projection, and locator semantics. The separate [`document_storage/catalog_plan.py`](../../../edgar_sec/pipelines/document_storage/catalog_plan.py) remains legacy.
+- **Next step:** bind the validated projection into an immutable S9 run manifest and state database; the HTTP runner and S10 processor remain separate stages.
 
 ## Objective
 
@@ -78,8 +78,13 @@ class AcquisitionWorkOrder:
 ```python
 load_acquisition_work_order(
     plan_dir: Path,
-) -> AcquisitionWorkOrder
+    parquet_path: Path,
+) -> WorkOrderProjection
 ```
+
+The implementation returns plan pins, schema versions, row/executable/skipped counts,
+and the projected Parquet path. Rows are validated and written in bounded batches;
+they are not returned as an in-memory target list.
 
 The loader verifies the target-plan manifest, target-part digests, required
 `catalog_plan_id`/digest, nullable `inventory_snapshot_id`/digest, profile and

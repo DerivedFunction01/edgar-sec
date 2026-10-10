@@ -12,19 +12,23 @@ Shared package boundaries and cross-command prerequisites are in
 and settings owners rather than duplicate them. The staged implementation sequence
 and safe parallel workstreams are in the [S9 implementation plan](plan.md).
 
-S9 acquisition is design-only. The current `documents` launcher still invokes the
-legacy `document_storage` fixture operator; it is marked for removal and is not the
-replacement S9 CLI.
+The dedicated `acquisition` launcher and command/operator are registered. The offline
+`project` command is implemented; status/run/process/fixture/review/snapshot tracks
+return explicit TODO results, and publish returns a gate-blocked result. No command
+fetches, processes, or publishes data. The `documents` launcher still invokes the
+legacy `document_storage` CLI and remains separate.
 
 ## Tracked CLI patterns
 
 ### Root launcher
 
-[`run.py`](../../../../run.py) currently has eight entries. The relevant entry is
+[`run.py`](../../../../run.py) has separate entries for acquisition and legacy
+document storage. The legacy entry is
 `Document Storage — Document acquisition, normalization, snapshots, and review
-(removed soon)`, routed to `document_storage.cli`. The future entry should be named
-**Document Acquisition** and expose separate project, acquire, process, and publish
-operations. S9, S10, and S11 remain distinct owners under the shared command group.
+(removed soon)`, routed to `document_storage.cli`. The dedicated **Document
+Acquisition** entry exposes separate project, acquire, process, publish, fixture,
+review, and snapshot tracks. S9, S10, and S11 remain distinct owners under the shared
+command group.
 
 ### Document Inventory
 
@@ -82,17 +86,18 @@ and compare review runs. Its `documents` command group is not a model for S9's
 target-plan run lifecycle: S9 is designed to consume S6 plans and explicitly keeps
 fixture bodies as replay evidence rather than publishing a durable payload store.
 
-## Proposed S9 launcher and operator shape
+## Registered S9 launcher and operator shape
 
-Replace the legacy root entry with a separate entry for target-plan acquisition,
-processing, and publication:
+Keep a separate root entry for target-plan acquisition, processing, and publication;
+the `acquisition` entry is registered, while legacy `documents` remains isolated:
 
 ```text
   Document Acquisition - Acquire eligible targets from S6 plans and inspect resumable runs
 ```
 
-The dedicated operator should be small and run-oriented, modeled on inventory's
-project/status/run choices:
+The registered operator menu is run-oriented, modeled on inventory's
+project/status/run choices. Its actions are placeholders; unlike the CLI, project is
+not yet wired into the interactive selection flow:
 
 ```text
 Document Acquisition
@@ -101,8 +106,9 @@ Document Acquisition
   3. Run pending acquisition work
   4. Process acquired targets
   5. Publish a completed run snapshot
-  f. Acquisition fixtures console (capture, list, replay)
-  p. Acquisition snapshot console (query, branches, tags, inspect)
+  f. Acquisition fixtures console (capture, list, replay TODOs)
+  r. Review artifacts console (build/compare TODOs)
+  p. Snapshot status/evidence audit (S11 gate)
   0. Exit
 ```
 
@@ -114,12 +120,13 @@ does not project a catalog plan; projection is an explicit inventory operation.
 Snapshot publication is separate from acquisition run completion and requires S10
 results plus the publisher's integrity checks.
 
-The local command-line counterpart supports project, status, run, process, publish,
-snapshot query/management, and acquisition-specific fixture commands with stable
-run/plan/snapshot IDs. Network execution is an explicit CLI action; the interactive
-operator must separately confirm it, defaulting to no, and expose retry selection
-rather than silently retrying failed requests. Publishing is a separate local action
-that previews completeness and payload adoption; it makes no SEC requests.
+The local command-line counterpart defines project, status, run, process, publish,
+snapshot status/audit, and acquisition-specific fixture/review command shapes with
+stable run/plan/snapshot IDs. `project` creates or reuses an offline transient run;
+status/run/process/fixture/review/snapshot remain fail-closed TODO tracks, and
+publication reports its evidence-and-approval gate. Future network execution is an
+explicit CLI action; the interactive operator must separately confirm it, defaulting
+to no, and expose retry selection rather than silently retrying failed requests.
 `acquisition distrib` remains planned and unimplemented. The common CLI uses
 `--work-id`, and its interactive console retains selected work for the session. SEC
 rate limiting uses each host's configured settings/environment; cross-host
@@ -154,6 +161,6 @@ behavior:
   worker bundles, S11 binary/text Parquet relations, cleanup rules, and legacy differences.
 
 The existing [S9 design](../S9_acquisition.md) and S9a–S9d documents are earlier
-design material, not proof of implementation. These command contracts supersede
-their decomposition as they are reviewed; do not infer that the proposed menu is
-implemented.
+design material, not proof of runtime implementation. The registered menu is a
+placeholder only; do not infer that any acquisition, processing, fixture, or
+publication service is implemented from its command shape.

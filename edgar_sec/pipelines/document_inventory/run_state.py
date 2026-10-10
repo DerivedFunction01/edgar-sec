@@ -12,6 +12,9 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.foundation.hashing import file_sha256, sha256_text
+from edgar_sec.foundation.runtime.settings.parquet import (
+    resolve_parquet_read_batch_size,
+)
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.pipelines.document_inventory.checkpoint import (
@@ -352,7 +355,9 @@ def load_run_status(
                 chunk.chunk_id, checked.attempt_id
             )
             parquet = pq.ParquetFile(outcome_path)
-            for batch in parquet.iter_batches(batch_size=512, columns=["status"]):
+            for batch in parquet.iter_batches(
+                batch_size=resolve_parquet_read_batch_size(), columns=["status"]
+            ):
                 statuses = batch.column("status").to_pylist()
                 retryable_count = sum(
                     status in RETRYABLE_STATUSES for status in statuses

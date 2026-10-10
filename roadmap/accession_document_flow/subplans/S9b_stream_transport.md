@@ -3,14 +3,15 @@
 ## Owner and status
 
 - Owning stage in [S9](S9_acquisition.md): bounded HTTP body transfer.
-- Status: streaming/staging design only; current broker transport returns body bytes.
+- Status: file-backed HTTP streaming and body-free broker RPC are implemented; the S9
+  runner that binds them to acquisition attempts is not.
 - Depends on: [S9a work orders](S9a_target_adapter.md), S4 broker lifecycle.
 
-## Current tracked-code audit (2026-10-08)
+## Current tracked-code audit (2026-10-10)
 
-- **Status: not implemented.** The current HTTP client and broker still materialize complete bodies as bytes; there is no staged-body handle or stream-to-managed-file API in the tracked transport.
-- **Evidence:** [`infra/sec_http/client.py`](../../../edgar_sec/infra/sec_http/client.py) consumes `response.content`, and [`infra/broker/sec_broker.py`](../../../edgar_sec/infra/broker/sec_broker.py) sends and receives the complete payload in its framed response. [`document_storage_disposition.md`](../document_storage_disposition.md) states that this broker needs a streaming-to-stage extension.
-- **Next step:** extend the broker/HTTP seam to stream bounded chunks into owner-generated staging paths and return metadata/digests only; add offline tests for size abort, redirects, cleanup, and body-free IPC.
+- **Status: lower-layer streaming is implemented, S9 composition is not.** The additive `SecHttpClient.stream_to_file()` writes bounded decoded chunks atomically and leaves `get_bytes()` unchanged. `SecBroker.stream_to_file()` sends only metadata and a managed path over IPC.
+- **Evidence:** [`infra/sec_http/streaming.py`](../../../edgar_sec/infra/sec_http/streaming.py), [`infra/broker/sec_broker.py`](../../../edgar_sec/infra/broker/sec_broker.py), and their mirrored tests cover redirects, byte limits, cleanup, typed 404, and body-free IPC.
+- **Next step:** compose the broker result with the S9 selected-body lifecycle and bounded engine extractor; the runner must not route large responses through `get_bytes()`.
 
 ## Objective
 
@@ -48,15 +49,28 @@ StreamResult = StagedBodyRef | StreamFailure
 ## Interface and flow
 
 ```python
-stream_to_stage(
-    work: AcquisitionWork,
+SecHttpClient.stream_to_file(
+    url: str,
+    destination: Path,
     *,
-    staging: ManagedStaging,
-    max_body_bytes: int,
+    max_response_bytes: int,
+    validate_redirect: Callable[[str], None],
 ) -> StreamResult
+
+SecBroker.stream_to_file(
+    url: str,
+    *,
+    max_response_bytes: int,
+    accession_cik: str | int,
+    accession_number: str,
+    staging_root: Path | None = None,
+) -> StreamedFileResult
 ```
 
-The SEC broker owns the HTTP session, retry policy, rate limiter, and failure ledger. It reads response chunks and writes them to a generated file under the configured transient directory while incrementally computing SHA-256 and decoded body size. `Content-Length` is an early rejection hint; the streamed byte count is the enforcement check. Apply the byte budget after HTTP content decoding so compressed responses cannot expand past the memory/disk budget.
+The broker owns the HTTP session, retry policy, rate limiter, and failure ledger. The
+HTTP client writes decoded chunks to a sibling temporary file, hashes and counts those
+bytes, and atomically adopts only a complete non-empty response. `Content-Length` is
+an early rejection hint; the streamed byte count is the enforcement check.
 
 On a limit breach, stop reading, close the response, delete the partial file, and return `response_too_large`; never return a truncated body. Redirect URLs must satisfy the S9a archive-locator contract for the work target's accession directory before bytes are accepted. The final URL and content headers are recorded for provenance.
 

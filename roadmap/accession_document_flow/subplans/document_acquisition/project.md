@@ -3,8 +3,13 @@
 ## Purpose and status
 
 Project a published S6 target-plan bundle into an immutable, resumable S9
-acquisition run. This command is design-only; the replacement S9 command does not
-exist in tracked code.
+acquisition run. The offline project service and CLI command are implemented; network
+acquisition, processing, status inspection, and publication remain separate tracks.
+
+The service validates an S6 bundle-v2 target plan, streams its rows into a Parquet
+work order, seeds the run-scoped SQLite state from bounded batches, and atomically
+publishes the complete transient run directory. It does not list plans interactively,
+make SEC requests, process bodies, or publish an acquisition snapshot.
 
 ## CLI shape
 
@@ -17,7 +22,7 @@ python run.py acquisition project --plan-id <target-plan-id> --artifacts <path>
 `--plan-id` selects one validated published target plan. `--artifacts` overrides the
 resolved artifact root, and `--json` selects stable machine-readable output.
 
-## UX flow
+## Intended interactive UX (not implemented)
 
 1. The operator lists published S6 target plans and shows each plan's ID, digest,
    catalog/inventory pins, target counts, and schema versions.
@@ -54,9 +59,10 @@ same service and never duplicate projection logic.
 - Validate the S6 manifest, target schema, declared target-part sizes and digests,
   and required source pins before creating a run. A null inventory pin is accepted
   only for the catalog-only primary plan contract.
-- Accept target-plan schema `1.3` and target schema version `1` only. Verify declared
-  part paths, row counts, byte sizes, SHA-256 values, Arrow schemas, and manifest
-  digest. Reject missing, extra, symlinked, or escaping target parts.
+- Accept bundle schema version `2`, matcher `target-matcher-v2`, and target relation
+  schema version `1` only. Verify declared part paths, row counts, byte sizes,
+  SHA-256 values, Arrow schemas, and manifest digest. Reject missing, extra,
+  symlinked, or escaping target parts.
 - Treat the S6 target bundle as self-contained. Do not reopen the filing-catalog
   plan or inventory snapshot and do not re-evaluate profile matching.
 - Make only matched targets with supported `direct_url` or `bundle_sequence`

@@ -3,7 +3,9 @@
 ## Purpose and status
 
 Explicitly retain selected acquisition evidence and replay it without network access.
-This is design-only. The replacement fixture store is not implemented; the legacy
+The SQLite store, uniform Zstandard response storage, append-only capture records, and
+incremental digest-verified replay are implemented. The `fixture` CLI/capture service
+remains a TODO until the S9 runner produces acquisition attempts; the legacy
 `document_storage` fixture contract is not reusable as S9 state.
 
 ## CLI and operator shape

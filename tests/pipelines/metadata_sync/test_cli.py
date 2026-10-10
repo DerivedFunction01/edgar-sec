@@ -371,7 +371,7 @@ def test_a_copied_bundle_names_its_own_plan(tmp_path: Path, capsys) -> None:
         [
             "distrib",
             "export",
-            "--plan-id",
+            "--work-id",
             plan_id,
             "--artifacts",
             str(tmp_path),

@@ -29,9 +29,9 @@ __all__ = [
     "run_dataset_sql",
 ]
 
+_FETCH_BATCH = 500
 MAX_SQL_ROWS = 10_000
 MAX_PAYLOAD_BYTES = 8 * 1024 * 1024
-_FETCH_BATCH = 500
 
 # The single relation a console query may name. Matching on the lowercase
 # substring catches every spelling of the call.

@@ -19,12 +19,12 @@ def to_list(items: Any) -> list[str]:
         return [items]
     if isinstance(items, Enum):
         return [str(items.value)]
-    if not isinstance(items, (list, tuple, set)):
+    if not isinstance(items, (list, tuple, set, frozenset)):
         return [str(items)]
 
     out: list[str] = []
     for item in items:
-        if isinstance(item, (list, tuple, set)):
+        if isinstance(item, (list, tuple, set, frozenset)):
             out.extend(to_list(item))
         elif isinstance(item, Enum):
             out.append(str(item.value))

@@ -22,6 +22,10 @@ from edgar_sec.engine.index_pages.parser import PARSER_FINGERPRINT
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.foundation.runtime.memory import reclaim
+from edgar_sec.foundation.runtime.settings.parquet import (
+    resolve_parquet_read_batch_size,
+)
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.foundation.runtime.resources import (
     RuntimeResourceProfile,
     derive_resources,
@@ -91,7 +95,6 @@ _COHORT_SOURCES_SCHEMA = pa.schema(
         ("first_seen_by", pa.string()),
     ]
 )
-_COHORT_BATCH_ROWS = 4096
 
 
 @dataclass(frozen=True, slots=True)
@@ -139,7 +142,10 @@ def _hash_relations(accessions_path: Path, sources_path: Path) -> str:
     for label, path in (("accessions", accessions_path), ("sources", sources_path)):
         digest.update(label.encode("ascii") + b"\0")
         for batch_index, batch in enumerate(
-            pq.ParquetFile(path).iter_batches(batch_size=_COHORT_BATCH_ROWS), start=1
+            pq.ParquetFile(path).iter_batches(
+                batch_size=resolve_parquet_read_batch_size()
+            ),
+            start=1,
         ):
             rows = batch.to_pylist()
             for row in rows:
@@ -164,7 +170,7 @@ def _validate_output_schema(path: Path, schema: pa.Schema) -> None:
 def _work_items(connection: Any):
     reader = connection.execute(
         "SELECT accession, index_url FROM work_candidates ORDER BY accession"
-    ).to_arrow_reader(batch_size=_COHORT_BATCH_ROWS)
+    ).to_arrow_reader(batch_size=resolve_read_batch_size())
     for batch_index, batch in enumerate(reader, start=1):
         rows = batch.to_pylist()
         for row in rows:

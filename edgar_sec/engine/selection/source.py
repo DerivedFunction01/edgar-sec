@@ -28,6 +28,7 @@ from edgar_sec.engine.selection.predicates import (
     parsed_date_relation,
     suffix_sql,
 )
+from edgar_sec.foundation.runtime.settings.sql import resolve_sql_insert_batch_size
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 
 # A tuple, not a comma-joined string, so the SELECT list and the row-to-dict zip
@@ -98,8 +99,6 @@ _POOL_SELECT = ", ".join(POOL_COLUMNS)
 _OCCURRENCE_SELECT = ", ".join(OCCURRENCE_COLUMNS)
 _QUALIFIED_POOL_SELECT = ", ".join(f"l.{c}" for c in POOL_COLUMNS)
 _QUALIFIED_OCCURRENCE_SELECT = ", ".join(f"o.{c}" for c in OCCURRENCE_COLUMNS)
-_INSERT_BATCH = 5_000
-
 _ORDER_EXPR = "sha256(CAST(? AS VARCHAR) || l.document_locator_key)"
 _RANKED_ORDER_EXPR = "sha256(CAST(? AS VARCHAR) || ranked.document_locator_key)"
 
@@ -196,9 +195,10 @@ class CandidateSource:
 
     def _fill(self, table: str, values: Sequence[str]) -> None:
         con = self._require()
+        insert_batch_size = resolve_sql_insert_batch_size()
         con.execute(f"DELETE FROM {table}")
-        for start in range(0, len(values), _INSERT_BATCH):
-            chunk = [[value] for value in values[start : start + _INSERT_BATCH]]
+        for start in range(0, len(values), insert_batch_size):
+            chunk = [[value] for value in values[start : start + insert_batch_size]]
             con.executemany(f"INSERT INTO {table} VALUES (?)", chunk)
 
     def _exclusion_predicate(self) -> str:

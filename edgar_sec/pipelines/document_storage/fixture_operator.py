@@ -14,10 +14,8 @@ from typing import Any
 from edgar_sec.domain.document.models import DocumentLocator, RawDocumentBlob
 from edgar_sec.domain.document.route import mime_type_for_suffix
 from edgar_sec.foundation.hashing import sha256_bytes, sha256_text
-from edgar_sec.foundation.runtime.fixtures import (
-    FixtureManifestEnvelope,
-    validate_fixture_component,
-)
+from edgar_sec.foundation.runtime.fixtures import FixtureManifestEnvelope
+from edgar_sec.foundation.runtime.paths import validate_path_component
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
@@ -194,7 +192,7 @@ def fill_fixture(
     caller holding the selection's identity passes ``target_fingerprint``.
     """
     try:
-        fixture_id = validate_fixture_component(fixture_id, "fixture_id")
+        fixture_id = validate_path_component(fixture_id, "fixture_id")
     except ValueError as exc:
         raise FixtureOperatorError(str(exc)) from exc
     source: Iterable[DocumentLocator] = (
@@ -382,7 +380,7 @@ def verify_fixture_lineage(
     selection changes belongs to a manifest-model change.
     """
     try:
-        fixture_id = validate_fixture_component(fixture_id, "fixture_id")
+        fixture_id = validate_path_component(fixture_id, "fixture_id")
     except ValueError as exc:
         raise FixtureOperatorError(str(exc)) from exc
     manifest_path = paths.fixture_manifest_path(fixture_id)

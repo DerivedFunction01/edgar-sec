@@ -11,7 +11,7 @@ from edgar_sec.domain.document_inventory.models import ParsedIndexPage
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import connect, sql_path_list
-from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 
 from .checkpoint import OUTCOME_SCHEMA, RETRYABLE_STATUSES, outcome_row
 from .paths import InventoryRunPaths
@@ -134,7 +134,7 @@ class ProgressStore:
         reader = self._con.execute(
             "SELECT accession FROM expected ANTI JOIN completed USING(accession) "
             "ORDER BY accession"
-        ).to_arrow_reader(batch_size=1024)
+        ).to_arrow_reader(batch_size=resolve_read_batch_size())
         missing: list[str] = []
         for batch in reader:
             missing.extend(
@@ -200,7 +200,7 @@ class ProgressStore:
             ),
         ):
             reader = self._con.execute(query).to_arrow_reader(
-                batch_size=DEFAULT_ROW_GROUP_SIZE
+                batch_size=resolve_read_batch_size()
             )
             for batch in reader:
                 writer(batch)
@@ -210,10 +210,11 @@ class ProgressStore:
         entry_source = connect(profile=profile)
         outcome_files = sql_path_list([str(outcomes_path)])
         entry_files = sql_path_list([str(entries_path)])
+        batch_size = resolve_read_batch_size()
         try:
             reader = source.execute(
                 f"SELECT * FROM read_parquet({outcome_files}) ORDER BY accession"
-            ).to_arrow_reader(batch_size=256)
+            ).to_arrow_reader(batch_size=batch_size)
             for batch in reader:
                 for index in range(batch.num_rows):
                     outcome = {
@@ -229,7 +230,7 @@ class ProgressStore:
                         f"SELECT * FROM read_parquet({entry_files}) "
                         "WHERE accession = ? ORDER BY entry_id",
                         [accession],
-                    ).to_arrow_reader(batch_size=256)
+                    ).to_arrow_reader(batch_size=batch_size)
 
                     def values():
                         for entry_batch in entries:

@@ -8,7 +8,8 @@ from edgar_sec.domain.filing_catalog.schemas import TARGET_PLAN_SCHEMA_VERSION
 from edgar_sec.pipelines.document_inventory.schemas import INVENTORY_RELATIONS
 
 TARGET_SCHEMA_VERSION = 1
-MATCHER_VERSION = "target-matcher-v1"
+PLAN_BUNDLE_SCHEMA_VERSION = 3
+MATCHER_VERSION = "target-matcher-v2"
 PROFILE_SCHEMA_VERSION = "1"
 
 TARGET_COLUMNS = (
@@ -58,6 +59,7 @@ TARGET_SCHEMA = pa.schema(
 __all__ = [
     "MATCHER_VERSION",
     "INVENTORY_RELATIONS",
+    "PLAN_BUNDLE_SCHEMA_VERSION",
     "PROFILE_SCHEMA_VERSION",
     "TARGET_COLUMNS",
     "TARGET_SCHEMA",

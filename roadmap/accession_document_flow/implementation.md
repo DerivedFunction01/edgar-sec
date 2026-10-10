@@ -386,7 +386,7 @@ Use two purpose-specific append-only SQLite fixture stores, not
    are run results, not successful response payload rows.
 2. **Acquisition fixture** is added only in the acquisition subplan under
    `{artifacts_root}/document_acquisition/fixtures/{fixture_id}/`. Its immutable
-   `manifest.json` describes the fixture; `index.sqlite` stores exact source-response
+   `manifest.json` describes the fixture; `fixture.sqlite` stores exact source-response
    bytes as BLOBs and acquisition facts keyed by capture/target/attempt identity, so
    review can replay the exact response. It does not define the final published
    document store.
@@ -708,7 +708,7 @@ Metadata-only offline DAG lineage compaction into consolidated checkpoint nodes 
 
 **Details:** [subplan](subplans/S9_acquisition.md)
 
-S9 is specified around its user-facing commands: [project](subplans/document_acquisition/project.md), [status](subplans/document_acquisition/status.md), [run](subplans/document_acquisition/run/index.md), [distribution](subplans/document_acquisition/distribution/index.md), and [fixture capture/replay](subplans/document_acquisition/fixtures/index.md). The command contracts cover pinned S6 inputs, bounded transfer, exact bundle-sequence selection, resumable outcomes, verified worker adoption, and offline fixture replay. No replacement S9 command or acquisition distribution adapter exists in tracked code. The pipeline-neutral distribution layer is implemented for metadata sync and inventory; SEC limits remain host-local, with cross-host coordination/checks out of scope. No `document_storage` imports are introduced.
+S9 is specified around its user-facing commands: [project](subplans/document_acquisition/project.md), [status](subplans/document_acquisition/status.md), [run](subplans/document_acquisition/run/index.md), [distribution](subplans/document_acquisition/distribution/index.md), and [fixture capture/replay](subplans/document_acquisition/fixtures/index.md). The dedicated acquisition launcher and CLI/operator are registered, and offline project plus plan projection, run-state, fixture storage, file-backed transport, and exact-sequence extraction foundations are implemented. Status/run orchestration, fixture command wiring, lazy-index recovery, and the distribution adapter remain TODO; S10 processing remains a separate unimplemented stage. The pipeline-neutral distribution layer is implemented for metadata sync and inventory; SEC limits remain host-local, with cross-host coordination/checks out of scope. No `document_storage` imports are introduced.
 
 ### S10 — Processing contract, processor versions, and document review
 

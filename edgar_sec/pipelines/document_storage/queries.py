@@ -9,12 +9,9 @@ from __future__ import annotations
 from collections.abc import Iterable, Iterator, Sequence
 from typing import Any
 
-from edgar_sec.infra.storage.duckdb import sql_path_list
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 
-#: Rows per fetched batch. Bounded so a consolidation never materializes a whole
-#: quarter's text in memory at once.
-DEFAULT_BATCH_SIZE = 4096
-#: Env-overridable as ``documents.read_batch_size``.
+from edgar_sec.infra.storage.duckdb import sql_path_list
 
 
 def query_sql_batches(
@@ -22,9 +19,10 @@ def query_sql_batches(
     query: str,
     parameters: Sequence[Any] = (),
     *,
-    batch_size: int = DEFAULT_BATCH_SIZE,
+    batch_size: int | None = None,
 ) -> Iterator[list[dict[str, Any]]]:
     """Run a query and yield its rows in bounded batches, never materializing all."""
+    batch_size = resolve_read_batch_size(batch_size)
     if batch_size <= 0:
         raise ValueError("batch_size must be positive")
     # ``connection.execute`` returns the *connection* in DuckDB, so closing what it
@@ -127,7 +125,7 @@ def relation_payload_conflicts(
     connection: Any,
     relation: str,
     *,
-    batch_size: int = 100,
+    batch_size: int | None = None,
 ) -> Iterator[list[dict[str, Any]]]:
     """Yield doc_ids whose normalized text differs across sources.
 
@@ -147,7 +145,7 @@ def relation_group_keys(
     relation: str,
     *,
     columns: Sequence[str],
-    batch_size: int = 256,
+    batch_size: int | None = None,
 ) -> Iterator[list[dict[str, Any]]]:
     """Yield the distinct key combinations present in a relation."""
     selected = ", ".join(columns)
@@ -227,7 +225,6 @@ def chunk_assembly_query(chunk_paths: Sequence[str]) -> str:
 
 
 __all__ = [
-    "DEFAULT_BATCH_SIZE",
     "chunk_assembly_query",
     "effective_quarter_batches",
     "effective_quarter_index_rows",

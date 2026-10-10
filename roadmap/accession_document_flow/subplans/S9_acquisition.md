@@ -3,8 +3,10 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S9**.
-- Status: replacement acquisition remains design-only. The command-oriented
-  replacement contracts are indexed in
+- Status: S9 has an implemented S6 v2 projection/project service, run-state and
+  fixture stores, file-backed HTTP/broker transport, and exact-sequence engine
+  extractor. The acquisition runner and lazy-index/cover-screen integration remain
+  unimplemented. Command contracts are indexed in
   [document_acquisition](document_acquisition/cli_inventory.md); the older S9a–S9d
   decomposition is retained as background design, not the active command index.
 - Depends on: validated S6 target-plan bundles and S4 broker lifecycle. The ordinary
@@ -13,11 +15,11 @@
   recovery policy.
 - Non-blocking: S10 processing uses the staged selected-body reference and fixture replay API.
 
-## Current tracked-code audit (2026-10-08)
+## Current tracked-code audit (2026-10-10)
 
-- **Status: replacement acquisition is not implemented.** Existing SEC HTTP and `document_storage` paths fetch and pass full response bytes; the old acquisition, fixture, and processing models do not satisfy the staged S9 contracts.
-- **Evidence:** [`infra/sec_http/client.py`](../../../edgar_sec/infra/sec_http/client.py) reads `response.content`; [`infra/broker/sec_broker.py`](../../../edgar_sec/infra/broker/sec_broker.py) returns payload bytes through its broker protocol. [`document_storage_disposition.md`](../document_storage_disposition.md) explicitly marks the old fetcher, fixture store, and work order as inspiration or non-reusable legacy contracts.
-- **Next step:** review the command contracts, then implement the project/run lifecycle and its acquisition execution boundary against the S6 target plan.
+- **Status: foundation is implemented; end-to-end acquisition is not.** S6 emits v2 bundles, S9 projects validated plans into transient runs, and lower layers provide file-backed HTTP/broker transfer and exact-sequence extraction. No S9 runner yet composes acquisition attempts, type screens, lazy-index recovery, fixture replay, and target-slot resolution.
+- **Evidence:** [`document_acquisition/project.py`](../../../edgar_sec/pipelines/document_acquisition/project.py), [`target_plan.py`](../../../edgar_sec/pipelines/document_acquisition/target_plan.py), [`infra/sec_http/streaming.py`](../../../edgar_sec/infra/sec_http/streaming.py), [`infra/broker/sec_broker.py`](../../../edgar_sec/infra/broker/sec_broker.py), and [`engine/document/unpacking/streaming.py`](../../../edgar_sec/engine/document/unpacking/streaming.py) own tested foundations. No `runner.py` or `S10` processor exists.
+- **Next step:** implement the S9 runner and index/cover evidence branch against these lower-layer contracts; do not fall back to buffered transport or legacy `document_storage` selection.
 
 ## Objective
 

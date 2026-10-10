@@ -74,7 +74,7 @@ All run paths are under `transient/document_acquisition/{run_id}/` and are resol
 [`paths.py`](paths.md). The immutable `run_manifest.json` pins the S6 source bundle,
 work-order digest, S9/S10/run-state schema versions, and selected processing policy.
 The Parquet work order has one row for every S6 target and is never edited after
-projection. The SQLite `state.sqlite3` is the sole mutable target ledger; it uses
+projection. The SQLite `state.sqlite` is the sole mutable target ledger; it uses
 foreign keys, bound SQL parameters, transactions, and the versioned schema in
 [`run/persistence.md`](run/persistence.md).
 

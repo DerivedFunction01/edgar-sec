@@ -13,6 +13,7 @@ import pyarrow as pa
 
 from edgar_sec.foundation.hashing import file_sha256, sha256_bytes
 from edgar_sec.foundation.serialization import canonical_json
+from edgar_sec.foundation.runtime.settings.sql import resolve_sql_insert_batch_size
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 
@@ -67,8 +68,11 @@ def _matching_source_record(
 
 
 def _insert_ticker_rows(
-    connection: Any, rows: list[tuple[str, str]], batch_size: int = 1000
+    connection: Any,
+    rows: list[tuple[str, str]],
+    batch_size: int | None = None,
 ) -> None:
+    batch_size = resolve_sql_insert_batch_size(batch_size)
     connection.execute(
         "CREATE TEMP TABLE ticker_rows (entry_key VARCHAR, cik_str VARCHAR, title VARCHAR)"
     )

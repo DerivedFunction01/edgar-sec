@@ -17,8 +17,13 @@ import pyarrow.parquet as pq
 
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_json
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
+from edgar_sec.foundation.runtime.settings.parquet import (
+    resolve_parquet_read_batch_size,
+    resolve_row_group_size,
+)
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier, sql_literal
-from edgar_sec.infra.storage.parquet import DEFAULT_ROW_GROUP_SIZE
+from edgar_sec.infra.storage.parquet import DEFAULT_COMPRESSION
 
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.models import CohortRecord
@@ -205,18 +210,20 @@ def _write_canonical_parquet(
 ) -> int:
     destination.parent.mkdir(parents=True, exist_ok=True)
     row_count = 0
+    row_group_size = resolve_row_group_size()
+    read_batch_size = resolve_read_batch_size()
     with pq.ParquetWriter(
         destination,
         _CANONICAL_SCHEMA,
-        compression="zstd",
+        compression=DEFAULT_COMPRESSION,
         compression_level=3,
         use_dictionary=False,
     ) as writer:
         reader = connection.execute(query, list(params)).to_arrow_reader(
-            batch_size=DEFAULT_ROW_GROUP_SIZE
+            batch_size=read_batch_size
         )
         for batch in reader:
-            writer.write_batch(batch, row_group_size=DEFAULT_ROW_GROUP_SIZE)
+            writer.write_batch(batch, row_group_size=row_group_size)
             row_count += batch.num_rows
     return row_count
 
@@ -227,7 +234,7 @@ def _roster_identity(dataset: Path) -> tuple[str, int]:
     digest = hashlib.sha256()
     count = 0
     for batch in pq.ParquetFile(dataset).iter_batches(
-        batch_size=DEFAULT_ROW_GROUP_SIZE, columns=["cik_padded"]
+        batch_size=resolve_parquet_read_batch_size(), columns=["cik_padded"]
     ):
         for cik in batch.column(0).to_pylist():
             if count:

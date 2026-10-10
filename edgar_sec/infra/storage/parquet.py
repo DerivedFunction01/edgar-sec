@@ -10,9 +10,12 @@ from typing import Any, Self
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from edgar_sec.foundation.runtime.settings.parquet import (
+    resolve_row_group_size,
+)
+
 from .atomic import _fsync_dir
 
-DEFAULT_ROW_GROUP_SIZE = 128_000
 DEFAULT_COMPRESSION = "zstd"
 
 
@@ -21,8 +24,9 @@ def write_parquet_table(
     path: str | os.PathLike[str],
     *,
     compression: str = DEFAULT_COMPRESSION,
-    row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
+    row_group_size: int | None = None,
 ) -> int:
+    effective_row_group_size = resolve_row_group_size(row_group_size)
     path_str = os.fspath(path)
     directory = os.path.dirname(os.path.abspath(path_str))
     os.makedirs(directory, exist_ok=True)
@@ -32,7 +36,7 @@ def write_parquet_table(
             table,
             tmp_path,
             compression=compression,
-            row_group_size=row_group_size,
+            row_group_size=effective_row_group_size,
         )
         os.replace(tmp_path, path_str)
         _fsync_dir(directory)
@@ -112,7 +116,7 @@ class StagedParquetWriter:
         schema: pa.Schema,
         *,
         compression: str = DEFAULT_COMPRESSION,
-        row_group_size: int = DEFAULT_ROW_GROUP_SIZE,
+        row_group_size: int | None = None,
         id_column: str | None = None,
         preserve_on_error: bool = False,
     ) -> None:
@@ -120,7 +124,7 @@ class StagedParquetWriter:
         self.tmp_path = self.final_path.with_name(f"{self.final_path.name}.tmp")
         self.schema = schema
         self.compression = compression
-        self.row_group_size = row_group_size
+        self.row_group_size = resolve_row_group_size(row_group_size)
         self.id_column = id_column
         self.preserve_on_error = preserve_on_error
         self._writer: pq.ParquetWriter | None = None
@@ -275,7 +279,6 @@ class StagedParquetWriter:
 
 __all__ = [
     "DEFAULT_COMPRESSION",
-    "DEFAULT_ROW_GROUP_SIZE",
     "StagedParquetWriter",
     "count_parquet_rows",
     "read_parquet_key_bounds",

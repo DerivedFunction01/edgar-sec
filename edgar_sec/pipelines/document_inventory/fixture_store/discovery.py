@@ -6,10 +6,10 @@ import json
 from pathlib import Path
 
 from edgar_sec.foundation.runtime.fixtures import (
+    FIXTURE_DATABASE_NAME,
     FIXTURE_MANIFEST_NAME,
     FixtureManifestEnvelope,
 )
-from edgar_sec.pipelines.document_inventory.paths import FIXTURE_DATABASE_FILE
 
 
 def discover_index_fixtures(root: Path | str) -> list[dict]:
@@ -31,7 +31,7 @@ def discover_index_fixtures(root: Path | str) -> list[dict]:
             manifest.fixture_kind != "document_inventory.index_pages"
             or manifest.fixture_id != directory.name
             or manifest.storage_format != "sqlite"
-            or manifest.storage_path != FIXTURE_DATABASE_FILE
+            or manifest.storage_path != FIXTURE_DATABASE_NAME
         ):
             continue
         details = manifest.details

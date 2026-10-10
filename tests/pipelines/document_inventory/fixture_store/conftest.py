@@ -54,9 +54,7 @@ def broker_for() -> Callable[[dict[str, bytes]], BrokerHarness]:
 
 @pytest.fixture
 def fixture_paths() -> Callable[[Path], FixturePaths]:
-    return lambda root: resolve_fixture_paths(
-        root, "document_inventory", "f", "index_fixtures.sqlite"
-    )
+    return lambda root: resolve_fixture_paths(root, "document_inventory", "f")
 
 
 def observation(accession: str, source_cik: str, source_id: str) -> CohortObservation:

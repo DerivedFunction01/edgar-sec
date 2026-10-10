@@ -3,10 +3,11 @@ from __future__ import annotations
 from pathlib import Path
 
 import pyarrow as pa
+import pyarrow.parquet as pq
 import pytest
 
+from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 from edgar_sec.infra.storage.parquet import (
-    DEFAULT_ROW_GROUP_SIZE,
     StagedParquetWriter,
     count_parquet_rows,
     read_parquet_key_bounds,
@@ -42,23 +43,31 @@ def test_read_parquet_table_column_projection(tmp_path: Path) -> None:
     assert table.column("cik").to_pylist() == ["a"]
 
 
-def test_row_group_default_matches_the_catalog_setting() -> None:
-    """Two constants the layer graph forbids importing together; this is the check."""
-    from edgar_sec.foundation.runtime.settings.catalog import (
-        DEFAULT_ROW_GROUP_SIZE as SETTING_ROW_GROUP_SIZE,
+def test_row_group_default_is_the_parquet_setting_default() -> None:
+    from edgar_sec.foundation.runtime.settings.parquet import (
+        DEFAULT_ROW_GROUP_SIZE as SETTING,
     )
 
-    assert SETTING_ROW_GROUP_SIZE == DEFAULT_ROW_GROUP_SIZE
+    assert SETTING == DEFAULT_ROW_GROUP_SIZE
 
 
-def test_duckdb_copy_helper_inherits_the_same_row_group_default() -> None:
-    """The SQL COPY path must use the same row group size as the Arrow writer."""
+def test_duckdb_copy_helper_resolves_the_parquet_setting() -> None:
     import inspect
 
     from edgar_sec.infra.storage.duckdb import copy_query_to_parquet
 
     default = inspect.signature(copy_query_to_parquet).parameters["row_group_size"]
-    assert default.default == DEFAULT_ROW_GROUP_SIZE
+    assert default.default is None
+
+
+def test_writer_honors_row_group_environment_override(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    path = tmp_path / "small-groups.parquet"
+    monkeypatch.setenv("PARQUET_ROW_GROUP_SIZE", "1")
+    write_parquet_table(_table(["a", "b"], [1, 2]), path)
+
+    assert pq.ParquetFile(path).metadata.num_row_groups == 2
 
 
 # A checkpoint that looked complete would let a truncated fetch merge as finished.

@@ -11,6 +11,7 @@ import pyarrow as pa
 
 from edgar_sec.domain.document_inventory.schemas import ENTRY_SCHEMA
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.storage.duckdb import (
     connect,
     copy_query_to_parquet,
@@ -38,7 +39,6 @@ from edgar_sec.pipelines.document_inventory.snapshot.schema import (
 
 __all__ = [
     "ANTI_JOIN_VERSION",
-    "ANTI_JOIN_BATCH_ROWS",
     "AntiJoinResult",
     "StagingRelations",
     "anti_join",
@@ -46,7 +46,6 @@ __all__ = [
 ]
 
 ANTI_JOIN_VERSION = "2"
-ANTI_JOIN_BATCH_ROWS = 4096
 
 
 @dataclass(frozen=True, slots=True)
@@ -96,9 +95,10 @@ def build_staging(
     outcome_rows: Iterable[dict],
     entry_rows: Iterable[dict],
     source_rows: Iterable[dict],
-    batch_rows: int = ANTI_JOIN_BATCH_ROWS,
+    batch_rows: int | None = None,
 ) -> StagingRelations:
     """Write worker and cohort rows incrementally to temporary Parquet files."""
+    batch_rows = resolve_read_batch_size(batch_rows)
     if batch_rows < 1:
         raise ValueError("batch_rows must be positive")
     root = Path(staging_dir)

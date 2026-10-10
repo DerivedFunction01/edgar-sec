@@ -4,8 +4,9 @@
 
 Inspect discovered S9 runs and validate their resumable state without contacting
 SEC. Run manifests and state live in the shared transient acquisition root and do not
-auto-expire. This command is design-only; no replacement S9 run-state reader exists
-in tracked code.
+auto-expire. SQLite state, target selection, and lock inspection primitives are
+implemented; the complete status service remains a TODO because manifest/work-order
+validation and run discovery are not wired.
 
 ## CLI shape
 
@@ -19,7 +20,7 @@ Without a run ID, show a bounded summary of discovered runs; with one, show its
 detailed status and provenance. `--artifacts` overrides the resolved artifact root;
 `--json` selects stable machine-readable output.
 
-## UX flow and signatures
+## Intended UX and unimplemented service signatures
 
 The interactive status action lists run ID, target-plan ID, derived run state, and
 progress counts, then lets the operator inspect one run. Detailed status shows S6
