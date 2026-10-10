@@ -79,7 +79,7 @@ An HTTP 404, including a direct-target 404, is a transport failure with `error_c
 | [`acquisition project`](document_acquisition/project.md) | Validate a self-contained S6 target plan and persist executable work without network access. |
 | [`acquisition status`](document_acquisition/status.md) | Inspect and validate resumable work state without mutation. |
 | [`acquisition run`](document_acquisition/run/index.md) | Execute bounded acquisition, exact bundle selection, cancellation, and explicit retry. |
-| [`acquisition distrib`](document_acquisition/distribution/index.md) | Future remote-work design; live SEC execution is gated on cross-host rate coordination and is not in the first implementation. |
+| [`acquisition distrib`](document_acquisition/distribution/index.md) | Planned S9 adapter over the implemented pipeline-neutral distribution layer; the acquisition adapter remains unimplemented. SEC rate limits are host-local; cross-host coordination and checks are out of scope. |
 | [`acquisition fixture`](document_acquisition/fixtures/index.md) | Explicitly capture and verify append-only evidence for zero-network replay. |
 
 The former S9a–S9d documents remain available as earlier technical notes while this

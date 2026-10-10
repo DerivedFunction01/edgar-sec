@@ -124,12 +124,20 @@ digest. Import verifies the complete receipt and all files before adopting any r
 replay of a valid import is idempotent and cannot overwrite an already committed
 coordinator outcome.
 
-The acquisition worker does not run S10 and does not publish a snapshot. Returned
-successful slot bodies are adopted into coordinator-managed transient staging; S10 then runs
-against the coordinator's validated S9 work order. A later processing-distribution
-extension would need its own assignment and receipt contract. Remote live SEC execution
-remains disabled until the shared cross-host rate limit or enforced per-host budget is
-implemented; local execution and offline bundle verification do not wait on that gate.
+The planned acquisition worker does not run S10 or publish a snapshot. Returned
+successful slot bodies are adopted into coordinator-managed transient staging; S10 then
+runs against the coordinator's validated S9 work order. A later processing-distribution
+extension would need its own assignment and receipt contract. S9 distribution is not
+implemented. It will use the common schema-v2 assignment and receipt contracts: work
+and assignment identity are bound, and receipts list output paths, sizes, and SHA-256
+hashes. Common import verifies receipt affinity and file integrity before the
+acquisition adapter validates pipeline-specific outputs for adoption. Older bundle
+formats are unsupported and require re-export.
+
+SEC request pacing is host-local under each machine's configured settings/environment.
+Cross-host rate coordination and checks are explicitly out of scope; no cluster-wide
+rate limit is implied. This scope statement does not add a coordination prerequisite to
+the planned acquisition integration.
 
 ## S10 processing result contract
 
@@ -256,7 +264,7 @@ acquisition process --run-id <id>
 acquisition publish --run-id <id> [--branch <name>] [--allow-errors]
 acquisition query --snapshot <id|current> [target/slot filters]
 acquisition fixture capture|list|replay ...
-acquisition distrib export|worker|import ...   # gated for live remote SEC work
+acquisition distrib export|worker|import ...   # planned; common CLI uses --work-id
 ```
 
 The interactive operator shows Project, Status, Run, Process, and Publish as distinct
@@ -313,7 +321,8 @@ focused mirrored tests and the configured quality gate remain mandatory.
   implementation gates for a full inventory-backed vertical run; the acquisition
   pipeline still consumes a conforming immutable S6 bundle without reopening them.
 - S0 historical parser acceptance and live SEC rollout remain unchanged.
-- Remote live-worker execution remains gated on cross-host SEC rate coordination.
+- Acquisition distribution remains unimplemented; cross-host SEC rate coordination
+  and checks are out of scope.
 - PDF extraction, XBRL package execution, taxonomy activation, old artifact migration,
   viewer cutover, and `document_storage` deletion are outside the snapshot publication
   implementation itself and require their stated independent evidence/retirement gates.

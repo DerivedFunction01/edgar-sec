@@ -2,35 +2,56 @@
 
 ## Purpose and status
 
-Export S9 work for remote execution and verify returned results on the coordinator.
-This is design-only. The shared distribution CLI and protocol exist, but there is no
-document-acquisition adapter or S9 worker contract in tracked code.
+The pipeline-neutral distribution layer is implemented and used by metadata sync and
+document inventory. It delegates work discovery, resolution, and pipeline-specific
+bundle/output handling to adapters; each adapter exposes its pipeline-owned work as an
+opaque `work_id`. The document-acquisition adapter and S9 worker contract remain
+unimplemented and in planning.
 
-Live remote SEC work is not part of the first S9 implementation: each host would own
-an independent broker and the current SEC rate setting is machine-local. Do not
-enable remote live workers until the cross-host limit is shared or a per-host budget
-is enforced. The paths below specify only where the shared adapter would place bundles.
+SEC request pacing is host-local and follows each machine's configured settings and
+environment. There is no cross-host rate coordination or cross-host rate check, and
+neither is part of this distribution contract. This does not change the separate S9
+implementation status: acquisition distribution remains unimplemented.
+
+The shared CLI uses `--work-id` for `export`, `import`, and `commands`; `worker`
+receives its bundle path. The interactive console lets the adapter discover and
+describe available work, prompts for a selection when needed, and retains the selected
+work for that console session.
+
+Assignment bundle manifests and worker receipts use schema version 2 only. The
+assignment binds pipeline, work ID and digest, worker, chunk IDs, and assignment ID.
+The receipt binds the same work and assignment identity and records each output path,
+size, and SHA-256 digest. Older bundle formats are not import-compatible; export them
+again using the current protocol.
+
+Metadata sync and inventory have offline export/worker/import lifecycle coverage in
+[`test_distribution_adapter.py`](../../../../../tests/pipelines/metadata_sync/test_distribution_adapter.py)
+and [`test_distribution_adapter.py`](../../../../../tests/pipelines/document_inventory/test_distribution_adapter.py).
+Inventory discovery offers only valid, unlocked, existing unpublished runs;
+resolving a distribution work ID validates that run and never projects a catalog
+plan. A catalog plan must first be explicitly projected into an inventory run.
 
 ## CLI and operator shape
 
 ```text
 acquisition distrib list
-acquisition distrib export --run-id <run-id> --workers <count>
+acquisition distrib export --work-id <work-id> --workers <count>
 acquisition distrib worker --bundle <directory>
-acquisition distrib import --run-id <run-id> --source <directory>
-acquisition distrib commands --run-id <run-id> --workers <count>
+acquisition distrib import --work-id <work-id> --source <directory>
+acquisition distrib commands --work-id <work-id> --workers <count>
 ```
 
-These spellings illustrate the shared `export`, `worker`, `import`, `list`, and
-`commands` lifecycle; exact flags remain provisional because live remote work is
-deferred. The initial operator does not expose a `d` console.
+These spellings illustrate the planned acquisition adapter over the shared
+`export`, `worker`, `import`, `list`, and `commands` lifecycle. Acquisition command
+integration remains unimplemented; the common CLI uses `--work-id` rather than
+pipeline-specific `--run-id` flags.
 
 ## Shared contract
 
-- Follow the `infra.distribution` adapter protocol for pipeline affinity, bundle
-  manifests, chunk assignments, receipt digests, and import validation. Keep
-  acquisition-specific bundle contents and run validation in the acquisition
-  adapter, not in generic distribution code.
+- Follow the pipeline-neutral `infra.distribution` adapter protocol. Common code
+  validates schema-v2 assignment/receipt identity, work affinity, and receipt-bound
+  output paths, sizes, and hashes. Keep acquisition work discovery, bundle contents,
+  and output validation in the acquisition adapter.
 - Export only validated pending work-order chunks and metadata needed to resolve the
   pinned run. Do not export SEC credentials, mutable upstream plans, or unrelated
   local artifacts.

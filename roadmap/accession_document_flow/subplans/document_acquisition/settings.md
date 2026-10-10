@@ -45,8 +45,9 @@ class.
   lesser of the request and derived ceiling. With no request, use the derived count.
 - Each worker owns at most one in-flight body. The submitted queue is bounded by the
   same resource plan. Call `reclaim()` at bounded completed-batch intervals.
-- SEC pacing is shared through the broker; worker count does not scale the configured
-  request rate.
+- SEC pacing is shared through the broker on one host; worker count does not scale
+  that host's configured request rate. Each host resolves its own SEC settings and
+  environment.
 
 ## Invocation overrides and provenance
 
@@ -61,6 +62,7 @@ manifests, receipts, fixture rows, or logs.
 
 Settings resolve through the shared registry with CLI overrides above environment
 and stored config. Invalid response bounds fail before opening the HTTP client, and
-the SEC rate limit is not multiplied by local worker concurrency. Live distributed
-workers remain deferred until cross-host rate coordination is specified; the local
-broker limit is not represented as a cluster-wide guarantee.
+the SEC rate limit is not multiplied by local worker concurrency. SEC pacing is
+host-local; cross-host rate coordination and checks are explicitly out of scope, and
+the local broker limit is not a cluster-wide guarantee. Acquisition distribution
+remains unimplemented and in planning.

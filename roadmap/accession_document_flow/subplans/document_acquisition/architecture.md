@@ -6,7 +6,9 @@ This document fixes the cross-command boundaries before the command contracts ar
 expanded. It is design-only; there is no replacement acquisition package in tracked
 code. The integrated run, worker, processing, and publication sequence is specified
 in [the lifecycle plan](lifecycle.md); command-level signatures and UX flows belong
-to the linked command documents.
+to the linked command documents. The pipeline-neutral distribution infrastructure is
+implemented for metadata sync and inventory; S9's adapter and worker integration are
+not implemented.
 
 ## Ownership and layer boundaries
 
@@ -126,15 +128,13 @@ contracts must consume the shared types above rather than redeclare their own ve
   rejection hint. Oversize and partial responses never become acquired outcomes.
 - Derive worker and memory budgets from `derive_resources()` and
   `auto_worker_count()`; keep both submitted work and in-flight bodies bounded.
-- The shared broker owns pacing and failure accounting. Distributed mode must not
-  silently multiply the effective SEC request rate across worker hosts; see the
-  distribution contract's broker-coordination requirement.
+- Each host's shared broker owns local pacing and failure accounting under that
+  machine's configured SEC settings/environment. This is not a cross-host aggregate
+  rate limit.
 
-## Required decision before distributed implementation
+## Rate-limit scope
 
-The local run path shares one SEC broker and its configured rate limiter across
-workers. Separate worker hosts each own an independent broker; the SEC setting is
-machine-local, so those hosts cannot claim one aggregate limit. The first S9
-implementation is local only. Live distributed execution remains deferred until
-either a shared cross-host lease/service or an enforced per-host rate allocation is
-selected; distribution design documents are not authorization to bypass this gate.
+Workers on one host share that host's configured SEC rate limit. Separate hosts use
+their own settings/environment and independent limiters. Cross-host rate coordination
+and cross-host rate checks are explicitly out of scope; no cluster-wide rate guarantee
+is implied. Acquisition distribution itself remains unimplemented and in planning.

@@ -37,7 +37,7 @@ Document Inventory
   2. Project a published plan into an inventory run
   3. Show inventory run status
   4. Run pending inventory work
-  d. Worker distribution console (design only; live remote SEC work deferred)
+  d. Worker distribution console (shared distribution; host-local SEC settings)
   p. Snapshot DAG console (publish, switch current, inspect, branches, tags)
   f. Fixtures and review console (create, fill, list, generate, compare)
   0. Exit
@@ -106,10 +106,13 @@ Document Acquisition
   0. Exit
 ```
 
-The initial local implementation does not register the distribution console. Its
-design remains available below, but live remote SEC work is gated on cross-host rate
-coordination. Snapshot publication is separate from acquisition run completion and
-requires S10 results plus the publisher's integrity checks.
+The acquisition operator does not register a distribution console because its
+pipeline-specific adapter is not implemented. The shared, pipeline-neutral
+distribution infrastructure is already used by metadata sync and inventory. Inventory
+work selection includes only valid existing runs, and resolving a distribution work ID
+does not project a catalog plan; projection is an explicit inventory operation.
+Snapshot publication is separate from acquisition run completion and requires S10
+results plus the publisher's integrity checks.
 
 The local command-line counterpart supports project, status, run, process, publish,
 snapshot query/management, and acquisition-specific fixture commands with stable
@@ -117,9 +120,10 @@ run/plan/snapshot IDs. Network execution is an explicit CLI action; the interact
 operator must separately confirm it, defaulting to no, and expose retry selection
 rather than silently retrying failed requests. Publishing is a separate local action
 that previews completeness and payload adoption; it makes no SEC requests.
-`acquisition distrib` remains design-only for live SEC work until a cross-host rate
-policy is selected and enforced; the local broker's rate setting is not a cluster-wide
-limit.
+`acquisition distrib` remains planned and unimplemented. The common CLI uses
+`--work-id`, and its interactive console retains selected work for the session. SEC
+rate limiting uses each host's configured settings/environment; cross-host
+coordination and checks are out of scope, so no cluster-wide limit is implied.
 
 ## Follow-up documents
 

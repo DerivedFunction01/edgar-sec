@@ -85,9 +85,11 @@ publication leaves the run resumable and the active snapshot pointer unchanged.
 
 ### Deferred distribution console
 
-The shared distribution lifecycle remains design-only for live SEC work until
-cross-host rate coordination is implemented. It is not registered in the initial
-operator menu or CLI.
+The common distribution CLI and console are implemented for metadata sync and
+inventory. S9's adapter and distribution console are not implemented and are not
+registered in the acquisition menu or CLI. SEC rate limits remain host-local under
+each machine's configured settings/environment; cross-host coordination and checks
+are out of scope and no aggregate limit is implied.
 
 ### Fixture console
 

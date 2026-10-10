@@ -4,8 +4,8 @@ This plan sequences the command-oriented contracts in this directory into a loca
 single-host implementation. The S9 package, S10 processing service, and S11 durable
 snapshot publisher are design-only today. It covers plan projection, resumable local
 SEC acquisition, acquisition worker bundles, fixture replay, separate S10 processing,
-and binary/text Parquet snapshot publication. Remote live workers and legacy package removal remain
-separate gated work.
+and binary/text Parquet snapshot publication. Acquisition distribution integration
+and legacy package removal remain separate work.
 
 ## 1. Readiness and parallelization
 
@@ -27,10 +27,11 @@ Readiness is scoped, not an assertion that every acquisition mode is unblocked:
 - Catalog-direct `exact_form_with_lazy_index` additionally requires a shared, bounded
   index-page parser available below the pipeline layer. It is a policy-gated recovery
   path, not an import of S5/S3 pipeline services.
-- The first S9 implementation is local. Remote live work remains deferred until an
-  aggregate cross-host SEC rate policy is enforced. S0's historical parser acceptance
-  and live operational rollout gates also remain in force; they do not prevent the
-  offline implementation or fixture-driven verification from starting.
+- The first S9 implementation is local. SEC request limits are configured per host;
+  cross-host rate coordination and checks are out of scope, and no cluster-wide limit
+  is implied. Acquisition distribution remains unimplemented and in planning. S0's
+  historical parser acceptance and live operational rollout gates also remain in
+  force; they do not prevent offline implementation or fixture-driven verification.
 - S9 can validate and consume a conforming published S6 bundle independently of S5/S6
   internals. The current S6 tracked-code audit is still partial, and S5's canonical
   relation-schema ownership cleanup is required before S6's inventory-backed source
@@ -530,9 +531,10 @@ same command behavior.
 
 ## 4. Explicitly deferred work
 
-- **Remote live distribution:** wait for a shared cross-host lease/service or an
-  enforced per-host SEC rate budget. The existing distribution protocol is not
-  authorization to multiply the local request limit.
+- **Acquisition distribution:** the S9 adapter and worker integration remain
+  unimplemented. SEC request pacing follows each host's configured settings and
+  environment; cross-host coordination and checks are out of scope, so no aggregate
+  cross-host rate guarantee is made.
 - **PDF text extraction and constructed XBRL execution:** outside S9; availability is
   governed by S0/S11 decisions.
 - **Historical parser acceptance and production rollout:** retain S0's evidence and

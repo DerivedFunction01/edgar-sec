@@ -2,21 +2,25 @@
 
 ## Purpose and status
 
-Discover worker bundles and render copyable distributed-execution commands. These
-commands are design-only for S9; the shared infrastructure supports analogous
-pipeline operations.
+The common distribution CLI and console are implemented for metadata sync and
+inventory. Their adapters discover pipeline-owned work and expose opaque work IDs;
+the acquisition adapter and its `list`/`commands` integration remain in planning.
 
 ## `list` contract
 
-- Scan only the acquisition distribution root or an explicit root override.
-- Report validated bundle identity, worker, run, assignment size, and state; malformed
+- Scan only the acquisition distribution root or an explicit root override. The
+  common console's work picker is adapter-owned; inventory offers only valid existing
+  runs and does not project catalog plans while resolving a work ID.
+- Report validated bundle identity, worker, work ID, assignment size, and state; malformed
   bundles are visible as invalid and are never offered for execution or import.
 - Listing performs no network requests and changes no run or bundle state.
 
 ## `commands` contract
 
-- Resolve a validated run, partition its pending work using the shared distribution
-  contract, and render export, worker, and import commands for the resulting bundles.
+- The common command accepts an opaque `--work-id`; adapters resolve that ID to
+  pipeline-owned work and determine its chunks. Acquisition will resolve a validated
+  S9 run and render export, worker, and import commands after its adapter is
+  implemented.
 - Shell-quote every ID/path value and show coordinator and worker steps in execution
   order. Rendering commands performs no export, SEC request, or import.
 - Make the selected run explicit in the rendered commands. Never choose an
@@ -24,5 +28,7 @@ pipeline operations.
 
 ## Acceptance
 
-Listing is read-only. Rendered commands are safe to copy as shell arguments and refer
-only to the selected run and generated bundle destinations.
+Listing is read-only. The console retains its selected work ID for the session;
+rendered commands use the common `--work-id` option and refer only to that selected
+work and generated bundle destinations. No cross-host SEC rate coordination or check
+is provided by the common distribution layer.
