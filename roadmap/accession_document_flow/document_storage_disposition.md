@@ -97,7 +97,7 @@ listed owner APIs; the new pipeline does not import `pipelines.document_storage`
 | [`foundation/runtime/settings/__init__.py`](../../edgar_sec/foundation/runtime/settings/__init__.py) | Reuse the modular settings registry for new byte/resource budgets; do not retain old `documents.*` tuning as a shared phase configuration. |
 | [`infra/broker/sec_broker.py`](../../edgar_sec/infra/broker/sec_broker.py), [`infra/sec_http/client.py`](../../edgar_sec/infra/sec_http/client.py) | Reuse the shared broker, SEC session, pacing/cache/retry/failure ledger. S9's run command needs a streaming-to-stage extension; current byte-returning `fetch()` alone is insufficient. |
 | [`infra/storage/atomic.py`](../../edgar_sec/infra/storage/atomic.py), [`infra/storage/duckdb.py`](../../edgar_sec/infra/storage/duckdb.py), [`infra/storage/parquet.py`](../../edgar_sec/infra/storage/parquet.py) | Reuse atomic writes, resource-bounded DuckDB connections/safe SQL, and repository Parquet contracts. Do not reuse payload-part schemas. |
-| [`infra/storage/manifests.py`](../../edgar_sec/infra/storage/manifests.py) | Conditional reuse only for generic atomic manifest/pointer helpers if they can represent annual partitions, part digests, inherited refs, lookup ranges, and active-plan retention. Do not carry its payload `doc_ids` model. |
+| [`infra/storage/atomic.py`](../../edgar_sec/infra/storage/atomic.py) | Reuse generic atomic JSON/pointer primitives only if they can express the owning pipeline's manifest contract; do not carry a payload `doc_ids` model. |
 
 The old pipeline’s `domain/document/acquisition.py`, `domain/document/models.py`,
 `engine/document/html/tree.py`, form decision/page-marker/plugin evaluators, and
@@ -115,7 +115,12 @@ new target rows. Annual EX-13 phrase/window research may be retained as fixture 
 test evidence or, after separate review, as a versioned advisory diagnostic. It is
 not a substitute for an EX-13 target declaration and cannot change acquisition or
 storage identity. Preserve useful linguistic examples without carrying over the
-legacy evaluator API or assuming its symbols are the new contract.
+legacy evaluator API or assuming its symbols are the new contract. The provisional
+post-selection primary-versus-exhibit assessment is specified in
+[S10_exhibit_assessment.md](subplans/S10_exhibit_assessment.md); its evidence gate
+does not pass on the upload sketch alone. The full legacy call path and verified
+failure modes are recorded in
+[S10_legacy_processing_trace.md](subplans/S10_legacy_processing_trace.md).
 
 ## Existing consumers to migrate
 

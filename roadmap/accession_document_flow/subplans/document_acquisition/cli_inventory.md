@@ -9,7 +9,8 @@ the later durable payload store.
 
 Shared package boundaries and cross-command prerequisites are in
 [the S9 architecture](architecture.md); command contracts must use its schema, path,
-and settings owners rather than duplicate them.
+and settings owners rather than duplicate them. The staged implementation sequence
+and safe parallel workstreams are in the [S9 implementation plan](plan.md).
 
 S9 acquisition is design-only. The current `documents` launcher still invokes the
 legacy `document_storage` fixture operator; it is marked for removal and is not the
@@ -141,6 +142,8 @@ behavior:
   records, managed artifact paths, and finite resource/network settings.
 - [Architecture](architecture.md): set the package/layer boundary and order the
   shared contracts before command implementation.
+- [Implementation plan](plan.md): assess readiness, assign independent lower-layer
+  and pipeline workstreams, and gate runner integration on their contracts.
 
 The existing [S9 design](../S9_acquisition.md) and S9a–S9d documents are earlier
 design material, not proof of implementation. These command contracts supersede

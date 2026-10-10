@@ -4,15 +4,18 @@
 
 - Owning stage in [implementation.md](../implementation.md): **S10**.
 - Status: S10 transient result/review contract is design-only; legacy route-aware
-  processing is available but persists a different result shape.
+  processing is available but persists a different result shape. This contract now
+  specifies the S10 worker sequence; exhibit-role assessment remains provisional.
 - Depends on: S9 staged selected-body and fixture replay contracts; S7 review artifacts.
 - Non-blocking: S11 payload-store decision.
+- Exhibit assessment proposal: [S10 taxonomy and evidence-pack design](S10_exhibit_assessment.md).
+- Legacy behavior audit: [document_storage processing trace](S10_legacy_processing_trace.md).
 
 ## Current tracked-code audit (2026-10-08)
 
 - **Status: processing foundations exist in the legacy pipeline; the S10 transient processing contract is not implemented.** `FilingProcessor` normalizes acquired bytes and exposes a fingerprint, but its result carries payload bytes for legacy persistence. The engine normalizer has no no-stage-trace switch, and no `process_target` result/review-staging API is present.
-- **Evidence:** [`document_storage/processor.py`](../../../edgar_sec/edgar_sec/pipelines/document_storage/processor.py) returns `ProcessedDocument.payload`; [`engine/forms/normalize.py`](../../../edgar_sec/edgar_sec/engine/forms/normalize.py) always appends stage records; [`test_processor.py`](../../../tests/pipelines/document_storage/test_processor.py) covers legacy routes and fingerprint behavior.
-- **Next step:** implement the S9 staged-body input and typed metadata-only result boundary, add the no-trace normalizer mode, then test route outcomes, XML refusal/validation, stable fingerprints, and review-output staging without durable payload writes.
+- **Evidence:** [`document_storage/processor.py`](../../../edgar_sec/pipelines/document_storage/processor.py) returns `ProcessedDocument.payload`; [`engine/forms/normalize.py`](../../../edgar_sec/engine/forms/normalize.py) always appends stage records; [`test_processor.py`](../../../tests/pipelines/document_storage/test_processor.py) covers legacy routes and fingerprint behavior.
+- **Next step:** implement the S9 staged-body input and typed metadata-only result boundary, add the no-trace normalizer mode, then test route outcomes, XML refusal/validation, stable fingerprints, and review-output staging without durable payload writes. Empirical memory admission and exhibit-rule activation require their own evidence gates.
 
 ## Objective
 
@@ -68,6 +71,7 @@ class ProcessingResult:
     output_size: int | None
     diagnostics: tuple[ProcessingDiagnostic, ...]
     review_output: ReviewOutputRef | None
+    exhibit_assessment: DocumentRoleAssessment | None
 
 process_target(
     request: ProcessingRequest,
@@ -111,6 +115,70 @@ path, filing form, target role, and fingerprint must yield identical status,
 representation, output digest, and diagnostics. `target_type` is retained as request
 provenance, not treated as the selected SGML header's type.
 
+## `process_target` execution sequence
+
+The S10 coordinator reads only the validated S9 run/work-order state. It submits one
+request for each `acquired` target; `failed`, `not_filed`, `ambiguous`, and `skipped`
+targets have no S10 request. It never opens an S5/S6 source artifact or makes an HTTP
+request.
+
+1. Validate the `ProcessingRequest` against the S9 work-order row by `target_id`.
+   Form, role, type, accession, path and source origin must match that immutable row.
+2. Open the staged selected body as a regular file beneath the run's owned staging
+   root, refusing symlinks and path escapes. Enforce the S9 recorded size and finite
+   response bound. Verify the selected-body digest over the same bytes that will be
+   processed; do not hash one pathname and later process a second open of it.
+3. Resolve the effective route. A direct target uses its validated accession-relative
+   path. A bundle child uses its selected SGML filename with `content_route()`; its
+   containing `.txt` envelope does not decide the child route. S9's envelope digest
+   remains provenance, not S10 input identity.
+4. Select the processing profile from planned role. A primary uses its filing-form
+   profile; a standalone exhibit uses the generic no-cover profile. Data files,
+   graphics and packages use route-specific handling and never inherit the filing
+   form's prose profile by default.
+5. Dispatch by route without fallback: preserve ASCII `.txt` byte-identically; pass
+   eligible HTML/non-ASCII text through `normalize_document(...,
+   capture_stage_trace=False)`; validate flat XML with DTD/external entities disabled;
+   retain binary bytes as metadata-only; record paper stubs without following their
+   off-archive reference; and return unknown routes as `unrecognized`.
+6. If enabled for an eligible text/HTML representation, run the exhibit-role
+   assessment on a bounded opening view of the already-produced text. It appends an
+   S10 diagnostic only; it cannot alter route, profile, selected body, status or S9
+   state.
+7. Compute output digest/size, construct the metadata-only `ProcessingResult`, and
+   write text only to managed review staging when `capture_review=True`. Review
+   promotion remains S7-owned and does not publish payloads.
+8. Atomically write the matching S9 `BodyConsumptionReceipt` after the body has been
+   fully read and integrity-checked, even when later normalization is unrecognized or
+   fails. A pre-read admission refusal or digest/size mismatch has no receipt; retain
+   the acquired body so it can be reviewed or reprocessed. Only after a matching
+   receipt is durable may S9 cleanup remove the selected body and source envelope.
+
+Processing failures are isolated by target; one bad body does not discard successful
+sibling results. The processing fingerprint pins route policy, form-profile version,
+normalizer and engine versions, output schema, and (when enabled) exhibit evaluator,
+evidence-pack, and taxonomy versions. Exact same inputs and versions produce the same
+result metadata.
+
+### Working-set admission
+
+The acquisition byte ceiling bounds a response, not the S10 working set. The current
+form normalizer accepts a whole `bytes` body, decodes it, and builds whole-text/HTML
+structures; disabling stage traces removes repeated text records but does not make
+that path streaming. Until route-specific expansion has representative measurements,
+the implementation must not claim safe parallel processing for every response under
+the acquisition ceiling.
+
+Before dispatch, S10 derives available memory using the repository resource helper and
+admits the body only when a versioned route policy can reserve its measured working
+set. Worker count and in-flight bodies are resource-derived. Use streaming processing
+for routes that support it; run one admitted whole-body normalization per worker.
+Do not invent a universal expansion factor or hardcode worker/memory limits. A body
+without a proven admission estimate returns a typed `processing_budget_exceeded`
+failure before reading it, keeps its S9 acquisition outcome as `acquired`, and remains
+staged without a consumption receipt. Establish route envelopes from measured fixture
+cases before enabling large-body parallel work.
+
 The reused form-aware engine entry point is extended with an explicit trace switch:
 
 ```python
@@ -129,7 +197,8 @@ Existing callers retain the current default; S10 passes `capture_stage_trace=Fal
 For a primary, S10 passes the catalog filing form to this normalizer. For a
 standalone exhibit, it passes no form so the generic no-cover profile is selected;
 the filing form remains request provenance. This profile choice is deterministic from
-the planned role and does not inspect or reinterpret the body.
+the planned role and does not inspect or reinterpret the body. Other non-primary roles
+do not inherit the filing-form profile.
 
 ## Route contract
 
@@ -171,6 +240,10 @@ The existing `engine.document.html.normalizer.normalize_html_document()` remains
   reinterpret the target, use a date/filename heuristic, or call an inventory helper
   to recover it. A no-cover or incorporation-by-reference finding never emits a
   `REFETCH_SUB_DOC` action or schedules S9 work.
+- The provisional [exhibit assessment](S10_exhibit_assessment.md) may report that a
+  catalog-direct primary looks exhibit-like. This is an explicitly uncertain
+  diagnostic, not proof of a bad catalog locator and not permission to fetch a
+  replacement.
 - Multi-target profiles plan companions such as EX-13 up front. Each matched target
   has its own S9 acquisition and S10 result; an absent optional target remains the
   S6 `not_filed` outcome and has no S10 processing request. If retained, delegation
@@ -192,7 +265,7 @@ Intermediate DOM/AST structures exist only inside the processing worker and are 
 
 ## Review behavior
 
-Review replays only acquisition fixtures. `processing.json` always records target ID, source digest, route, processor fingerprint, status, representation, output digest/size, and diagnostics. `representation.txt` is written only when selected text output is explicitly captured; for `text_verbatim` it is a review copy of the source, not a distinct payload. XML aliases the source bytes and does not get a duplicate payload file. PDF/binary inputs have no derived output. Source HTML previews use S7's sanitized inert renderer and never replace the exact source evidence. One document failure does not erase successful sibling cases.
+Review replays only acquisition fixtures. `processing.json` always records target ID, source digest, route, processor fingerprint, status, representation, output digest/size, and diagnostics; when enabled it also records the versioned exhibit assessment and matched signal IDs. `representation.txt` is written only when selected text output is explicitly captured; for `text_verbatim` it is a review copy of the source, not a distinct payload. XML aliases the source bytes and does not get a duplicate payload file. PDF/binary inputs have no derived output. Source HTML previews use S7's sanitized inert renderer and never replace the exact source evidence. One document failure does not erase successful sibling cases.
 
 ## Tests
 
@@ -210,6 +283,9 @@ Review replays only acquisition fixtures. `processing.json` always records targe
 - iXBRL hidden/inline tags follow existing visible-text behavior; no fact table is emitted.
 - ASCII `.txt` bytes, including literal markup text, remain byte-identical; malformed/unclosed HTML fixtures produce best-effort text without false successful-empty results.
 - XML with malformed structure or prohibited DTD/entity declarations fails with a typed diagnostic.
+- Body and request identity mismatches refuse processing; a typed working-set admission refusal preserves the acquired body without a consumption receipt.
+- A completed read followed by a normalization failure still writes a matching consumption receipt before cleanup; unreadable or digest-mismatched input does not.
+- Exhibit assessment is absent for unsupported representations/forms; when enabled it can only append a diagnostic and cannot change the target, profile, or acquisition state.
 - PDF/image routes are `binary` with no derived text; unknown routes are explicit `unrecognized`.
 - Review writes a text representation only for selected fixtures; ordinary results leave no durable text/AST files.
 - AST policy tests confirm no import from `pipelines.document_storage` and no payload writes to S5/S6 schemas.
@@ -219,4 +295,6 @@ Review replays only acquisition fixtures. `processing.json` always records targe
 HTML and non-ASCII text processing reuse the existing engine contract; ASCII text
 passthrough, standalone XML, binary, and unknown routes remain explicit. Outputs are
 deterministic and transient except for selected review evidence. The future payload
-store remains a separate S11 approval gate.
+store remains a separate S11 approval gate. Large-body parallel processing remains
+gated on measured route working-set envelopes; exhibit assessment remains gated on
+reviewed, holdout-tested evidence packs.
