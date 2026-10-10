@@ -49,19 +49,25 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
 
 ```bash
 # Generate a plan for a cohort
-python run.py metadata-sync plan --cohort my-cohort --chunk-size 50 --workers 4
+python run.py metadata plan --cohort my-cohort --chunk-size 50 --workers 4
 
 # Check plan status
-python run.py metadata-sync status --plan-id 2024-01-15T120000Z
+python run.py metadata status --plan-id 2024-01-15T120000Z
 
 # Run the plan with parallel workers
-python run.py metadata-sync run --plan-id 2024-01-15T120000Z --chunks 0-9
+python run.py metadata run --plan-id 2024-01-15T120000Z --chunks 0-9
+
+# Export plan work, execute bundles on separate machines, then import them
+python run.py metadata distrib commands --work-id 2024-01-15T120000Z --workers 2
+python run.py metadata distrib export --work-id 2024-01-15T120000Z --workers 2
+python run.py metadata distrib worker --bundle /path/to/worker-00 --threads 4
+python run.py metadata distrib import --work-id 2024-01-15T120000Z --source /path/to/worker-00
 
 # Merge results into a snapshot
-python run.py metadata-sync merge --plan-id 2024-01-15T120000Z --branch main
+python run.py metadata merge --plan-id 2024-01-15T120000Z --branch main
 
 # Augment existing snapshot with new CIKs
-python run.py metadata-sync augment --cohort new-cohort --base-snapshot-id 2024-01-15T120000Z
+python run.py metadata augment --cohort new-cohort --base-snapshot-id 2024-01-15T120000Z
 ```
 
 ## Artifact layout

@@ -354,13 +354,13 @@ def open_metadata_distrib_console(state: WizardState) -> None:
     session = DistribSession(state.plan_id)
     config = DistribMenuConfig(
         adapter=adapter,
-        plan_id=state.plan_id,
-        plans_root=state.metadata().plans_root,
+        work_id=state.plan_id,
+        artifacts_root=state.metadata().artifacts_root,
         title="Metadata Sync Worker Distribution",
     )
     run_distrib_menu(config, session=session)
-    if session.plan_id and session.plan_id != state.plan_id:
-        state.plan_id = session.plan_id
+    if session.work_id and session.work_id != state.plan_id:
+        state.plan_id = session.work_id
         state.bundle_root = ""
 
 

@@ -9,7 +9,7 @@ from typing import Any
 
 import pyarrow.parquet as pq
 
-from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.foundation.hashing import sha256_text
@@ -163,18 +163,16 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> None:
             part.get("rows"),
             part.get("sha256"),
         )
+        if not isinstance(relative, str) or not isinstance(form, str) or not form:
+            raise DocumentPlanError("plan part descriptor is invalid")
         if (
-            not isinstance(relative, str)
-            or not isinstance(form, str)
-            or not form
-            or not isinstance(rows, int)
+            not isinstance(rows, int)
             or isinstance(rows, bool)
             or rows < 1
             or rows > _PART_ROWS
-            or not isinstance(digest, str)
-            or len(digest) != 64
-            or any(char not in "0123456789abcdef" for char in digest)
         ):
+            raise DocumentPlanError("plan part descriptor is invalid")
+        if not isinstance(digest, str) or not is_sha256_hex_digest(digest):
             raise DocumentPlanError("plan part descriptor is invalid")
         path = PurePosixPath(relative)
         if path.is_absolute() or ".." in path.parts or "\\" in relative:

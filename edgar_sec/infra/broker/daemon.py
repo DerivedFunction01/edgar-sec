@@ -25,6 +25,7 @@ def managed_broker(
 ) -> Iterator[SecBrokerClient]:
     """Context manager hosting a live SecBroker server for the duration of a block."""
     path = Path(socket_path)
+    path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
     server = SecBroker(
         socket_path=path,
         http_client=http_client,

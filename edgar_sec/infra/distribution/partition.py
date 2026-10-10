@@ -5,23 +5,30 @@ from __future__ import annotations
 from collections.abc import Sequence
 from typing import Any
 
-from edgar_sec.foundation.hashing import sha256_bytes
+from edgar_sec.foundation.hashing import is_sha256_hex_digest, sha256_bytes
 
 from .protocol import WorkerAssignment
 
 
 def derive_assignment_id(
-    pipeline: str, plan_id: str, worker_id: str, chunk_ids: Sequence[int]
+    pipeline: str,
+    work_id: str,
+    work_digest: str,
+    worker_id: str,
+    chunk_ids: Sequence[int],
 ) -> str:
     """Content-derived identity for a worker chunk assignment."""
+    if not is_sha256_hex_digest(work_digest):
+        raise ValueError("work_digest must be a SHA-256 hex digest")
     ordered = sorted(set(chunk_ids))
     if not ordered:
         raise ValueError(f"assignment for worker {worker_id!r} covers no chunks")
     material = ":".join(
         (
-            "assignment-v1",
+            "assignment-v2",
             pipeline,
-            plan_id,
+            work_id,
+            work_digest,
             worker_id,
             ",".join(str(cid) for cid in ordered),
         )
@@ -49,7 +56,8 @@ def divide_chunks(chunk_count: int, worker_count: int) -> dict[str, tuple[int, .
 
 def build_assignment(
     pipeline: str,
-    plan_id: str,
+    work_id: str,
+    work_digest: str,
     worker_id: str,
     chunk_ids: Sequence[int],
     metadata: dict[str, Any] | None = None,
@@ -57,11 +65,15 @@ def build_assignment(
     """Construct a validated immutable WorkerAssignment."""
     ordered = tuple(sorted(set(chunk_ids)))
     meta = dict(metadata or {})
-    meta["assignment_id"] = derive_assignment_id(pipeline, plan_id, worker_id, ordered)
+    assignment_id = derive_assignment_id(
+        pipeline, work_id, work_digest, worker_id, ordered
+    )
     return WorkerAssignment(
         pipeline=pipeline,
-        plan_id=plan_id,
+        work_id=work_id,
+        work_digest=work_digest,
         worker_id=worker_id,
         chunk_ids=ordered,
+        assignment_id=assignment_id,
         metadata=meta,
     )

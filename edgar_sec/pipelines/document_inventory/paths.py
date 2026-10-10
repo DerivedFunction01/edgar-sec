@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import re
 import hashlib
+import os
+import tempfile
 from pathlib import Path
 
 import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
@@ -193,7 +195,15 @@ class InventoryPaths:
         return self.artifacts_root / foundation_paths.TRANSIENT_DIR / DATASET
 
     def broker_socket_path(self, socket_id: str) -> Path:
-        return self.runtime_root / f"{_validate_id(socket_id, 'socket_id')}.sock"
+        safe_id = _validate_id(socket_id, "socket_id")
+        identity = hashlib.sha256(
+            f"{self.artifacts_root}:{safe_id}".encode("utf-8")
+        ).hexdigest()[:24]
+        return (
+            Path(tempfile.gettempdir())
+            / f"edgar-sec-{os.getuid()}"
+            / f"{identity}.sock"
+        )
 
 
 class InventoryRunPaths:

@@ -10,6 +10,7 @@ import pytest
 from edgar_sec.foundation.hashing import (
     _TEXT_CHUNK_CHARS,
     file_sha256,
+    is_sha256_hex_digest,
     sha256_bytes,
     sha256_text,
 )
@@ -33,6 +34,14 @@ def test_file_sha256_matches_known_digest(tmp_path: Path) -> None:
     path = tmp_path / "hello.txt"
     path.write_text("hello world", encoding="utf-8")
     assert file_sha256(path) == HELLO_SHA256
+
+
+@pytest.mark.parametrize(
+    ("value", "expected"),
+    [("a" * 64, True), ("A" * 64, False), ("a" * 63, False), (None, False)],
+)
+def test_is_sha256_hex_digest(value: object, expected: bool) -> None:
+    assert is_sha256_hex_digest(value) is expected
 
 
 def test_sha256_bytes_agrees_with_file_sha256(tmp_path: Path) -> None:

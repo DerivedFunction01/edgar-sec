@@ -311,8 +311,10 @@ def test_run_commits_every_chunk_with_one_broker(tmp_path: Path, monkeypatch) ->
         )
         assert validation.valid
     assert not list(paths.run_root.rglob("*.tmp"))
-    runtime_dir = InventoryPaths(paths.artifacts_root).runtime_root
-    assert not list(runtime_dir.glob("*.sock"))
+    broker_socket = InventoryPaths(paths.artifacts_root).broker_socket_path(
+        f"{coordinator_module.SOCKET_PREFIX}{paths.run_id[-12:]}"
+    )
+    assert not broker_socket.exists()
 
 
 def test_resume_skips_valid_chunks_without_network(tmp_path: Path) -> None:

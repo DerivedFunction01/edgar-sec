@@ -20,7 +20,7 @@ from edgar_sec.domain.filing_catalog.schemas import (
     READABLE_TARGET_PLAN_SCHEMA_VERSIONS,
     TARGET_PLAN_SCHEMA_VERSION,
 )
-from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.infra.storage.atomic import atomic_write_json
@@ -179,14 +179,17 @@ def _target_parts_complete(
             part.get("sha256"),
         )
         key = (form, relative)
+        if not isinstance(form, str) or not isinstance(relative, str):
+            return False
         if (
             key not in expected
             or key in observed
+            or not isinstance(rows, int)
+            or isinstance(rows, bool)
             or rows != expected[key]
-            or not isinstance(digest, str)
-            or len(digest) != 64
-            or any(character not in "0123456789abcdef" for character in digest)
         ):
+            return False
+        if not isinstance(digest, str) or not is_sha256_hex_digest(digest):
             return False
         path = plan_dir / relative
         if not path.is_file():

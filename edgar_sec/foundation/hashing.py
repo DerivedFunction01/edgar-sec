@@ -39,4 +39,12 @@ def sha256_text(text: str) -> str:
     return digest.hexdigest()
 
 
-__all__ = ["file_sha256", "sha256_bytes", "sha256_text"]
+def is_sha256_hex_digest(value: object) -> bool:
+    return (
+        isinstance(value, str)
+        and len(value) == 64
+        and all(character in "0123456789abcdef" for character in value)
+    )
+
+
+__all__ = ["file_sha256", "is_sha256_hex_digest", "sha256_bytes", "sha256_text"]

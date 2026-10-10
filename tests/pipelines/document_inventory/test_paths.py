@@ -97,6 +97,7 @@ def test_fixture_paths_share_the_inventory_layout(tmp_path: Path) -> None:
 
 def test_runtime_socket_path_is_centralized(tmp_path: Path) -> None:
     paths = InventoryPaths(tmp_path)
-    assert paths.broker_socket_path("fixture-run") == (
-        foundation_paths.runtime_root(tmp_path) / "fixture-run.sock"
-    )
+    socket_path = paths.broker_socket_path("fixture-run")
+    assert socket_path.name.endswith(".sock")
+    assert socket_path.parent.name.startswith("edgar-sec-")
+    assert len(str(socket_path)) < 100

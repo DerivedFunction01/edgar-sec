@@ -24,16 +24,13 @@ from .protocol import DistributionAdapter
 
 @dataclass(frozen=True, slots=True)
 class DistribMenuConfig:
-    """Configuration for an interactive distribution console."""
-
     adapter: DistributionAdapter
-    plan_id: str | None = None
-    plans_root: Path | str | None = None
+    work_id: str | None = None
+    artifacts_root: Path | None = None
     distribution_root: Path | Callable[[], Path] | None = None
     title: str = "Worker Distribution Console"
 
     def resolve_root(self) -> Path:
-        """Resolve base filesystem directory for worker bundles."""
         if callable(self.distribution_root):
             return self.distribution_root().resolve()
         if self.distribution_root is not None:
@@ -42,101 +39,108 @@ class DistribMenuConfig:
 
 
 class DistribSession:
-    """State for an active distribution menu session."""
+    def __init__(self, work_id: str | None = None) -> None:
+        self.work_id = work_id
 
-    def __init__(self, plan_id: str | None = None) -> None:
-        self.plan_id = plan_id
-
-    def get_or_prompt_plan(self, config: DistribMenuConfig) -> str | None:
-        if self.plan_id:
-            return self.plan_id
-        if config.plans_root:
-            from edgar_sec.domain.plan.discovery import discover_plans
-
-            plans = discover_plans(config.plans_root)
-            if not plans:
-                print("No published plans discovered.")
-                return None
-            items = [
-                PickItem(key=p.plan_id, label=p.describe(), value=p) for p in plans
-            ]
-            chosen = prompt_paginated_choice(
-                items, prompt_label="Select plan", default=items[0]
+    def get_or_prompt_work(self, config: DistribMenuConfig) -> str | None:
+        if self.work_id:
+            return self.work_id
+        work_items = config.adapter.list_work_items(config.artifacts_root)
+        if not work_items:
+            print("No distributable work items discovered.")
+            return None
+        items = [
+            PickItem(
+                key=item.work_id,
+                label=(
+                    f"{item.label}  {item.chunk_count} chunks  {item.work_digest[:12]}"
+                ),
+                value=item,
             )
-            if chosen is not None:
-                self.plan_id = chosen.value.plan_id
-                return self.plan_id
-        return None
+            for item in work_items
+        ]
+        chosen = prompt_paginated_choice(
+            items, prompt_label="Select work item", default=items[0]
+        )
+        if chosen is None:
+            return None
+        self.work_id = chosen.value.work_id
+        return self.work_id
 
 
 def render_distrib_dashboard(
-    config: DistribMenuConfig, active_plan_id: str | None = None
+    config: DistribMenuConfig, active_work_id: str | None = None
 ) -> str:
-    """Render bounded header summary of discovered bundles and active plan."""
     root = config.resolve_root()
-    plan_id = active_plan_id or config.plan_id
-    p_name = config.adapter.pipeline_name
-
+    work_id = active_work_id or config.work_id
+    pipeline = config.adapter.pipeline_name
     lines = [
         "=" * 72,
-        f"   {config.title} ({p_name})",
+        f"   {config.title} ({pipeline})",
         f"   Distribution Root: {root}",
     ]
-
-    if plan_id:
+    if work_id:
         try:
-            plan = config.adapter.resolve_plan(plan_id, None)
-            total_chunks = config.adapter.get_chunk_count(plan)
-            lines.append(f"   Active Plan: {plan_id} ({total_chunks} chunks)")
-        except Exception:  # noqa: BLE001
-            lines.append(f"   Active Plan: {plan_id} (unreadable)")
+            work = config.adapter.resolve_work(work_id, config.artifacts_root)
+            summary = config.adapter.describe_work(work_id, work)
+            lines.append(
+                f"   Active Work: {summary.label} [{work_id}] "
+                f"({summary.chunk_count} chunks)"
+            )
+        except (OSError, ValueError, KeyError):
+            lines.append(f"   Active Work: {work_id} (unreadable)")
     else:
-        lines.append("   Active Plan: None selected")
+        lines.append("   Active Work: None selected")
 
-    bundles = discover_bundles(root, pipeline=p_name, plan_id=plan_id)
-    completed = sum(1 for b in bundles if b.state == "completed")
-    pending = sum(1 for b in bundles if b.state == "pending")
+    bundles = discover_bundles(root, pipeline=pipeline, work_id=work_id)
+    completed = sum(bundle.state == "completed" for bundle in bundles)
+    pending = sum(bundle.state == "pending" for bundle in bundles)
+    corrupt = sum(bundle.state == "corrupt" for bundle in bundles)
     lines.append(
-        f"   Discovered Bundles: {len(bundles)} ({completed} completed, {pending} pending)"
+        f"   Discovered Bundles: {len(bundles)} "
+        f"({completed} completed, {pending} pending, {corrupt} corrupt)"
     )
     lines.append("=" * 72)
     return "\n".join(lines)
 
 
 def _action_export(config: DistribMenuConfig, session: DistribSession) -> None:
-    plan_id = session.get_or_prompt_plan(config)
-    if not plan_id:
-        print("No active plan selected. Select or publish a plan first.")
+    work_id = session.get_or_prompt_work(config)
+    if not work_id:
         return
-
-    workers_str = prompt_text("Number of worker bundles", "2").strip()
+    worker_text = prompt_text("Number of worker bundles", "2").strip()
     try:
-        workers = max(1, int(workers_str))
+        workers = max(1, int(worker_text))
     except ValueError:
         print("Invalid worker count.")
         return
-
-    default_dest = config.adapter.default_destination(plan_id)
-    dest_str = prompt_text("Destination directory", str(default_dest)).strip()
-    dest = Path(dest_str) if dest_str else default_dest
-
-    cmd_export(config.adapter, plan_id, worker_count=workers, destination=dest)
+    default_destination = config.adapter.default_destination(work_id)
+    destination_text = prompt_text(
+        "Destination directory", str(default_destination)
+    ).strip()
+    destination = Path(destination_text) if destination_text else default_destination
+    cmd_export(
+        config.adapter,
+        work_id,
+        worker_count=workers,
+        destination=destination,
+        artifacts_root=config.artifacts_root,
+    )
 
 
 def _action_run_worker(config: DistribMenuConfig, session: DistribSession) -> None:
     root = config.resolve_root()
-    plan_id = session.get_or_prompt_plan(config)
+    work_id = session.get_or_prompt_work(config)
     bundles = [
-        b
-        for b in discover_bundles(
-            root, pipeline=config.adapter.pipeline_name, plan_id=plan_id
+        bundle
+        for bundle in discover_bundles(
+            root, pipeline=config.adapter.pipeline_name, work_id=work_id
         )
-        if b.state == "pending"
+        if bundle.state == "pending"
     ]
     if not bundles:
         print("No pending worker bundles discovered.")
         return
-
     chosen = resolve_bundle_choice(
         bundles,
         lambda lines: prompt_text("\n".join(lines) + "\nSelect worker bundle", "1"),
@@ -144,28 +148,24 @@ def _action_run_worker(config: DistribMenuConfig, session: DistribSession) -> No
     if chosen is None:
         print("Worker selection cancelled.")
         return
-
     cmd_worker(config.adapter, chosen.bundle_dir, worker_id=chosen.worker_id)
 
 
 def _action_import(config: DistribMenuConfig, session: DistribSession) -> None:
     root = config.resolve_root()
-    plan_id = session.get_or_prompt_plan(config)
-    if not plan_id:
-        print("No active plan selected.")
+    work_id = session.get_or_prompt_work(config)
+    if not work_id:
         return
-
     bundles = [
-        b
-        for b in discover_bundles(
-            root, pipeline=config.adapter.pipeline_name, plan_id=plan_id
+        bundle
+        for bundle in discover_bundles(
+            root, pipeline=config.adapter.pipeline_name, work_id=work_id
         )
-        if b.state == "completed"
+        if bundle.state == "completed"
     ]
     if not bundles:
         print("No completed worker bundles with valid receipts discovered.")
         return
-
     chosen = resolve_bundle_choice(
         bundles,
         lambda lines: prompt_text("\n".join(lines) + "\nSelect bundle to import", "1"),
@@ -173,63 +173,70 @@ def _action_import(config: DistribMenuConfig, session: DistribSession) -> None:
     if chosen is None:
         print("Import selection cancelled.")
         return
-
-    cmd_import(config.adapter, plan_id, chosen.bundle_dir)
+    cmd_import(
+        config.adapter,
+        work_id,
+        chosen.bundle_dir,
+        artifacts_root=config.artifacts_root,
+    )
 
 
 def _action_commands(config: DistribMenuConfig, session: DistribSession) -> None:
-    plan_id = session.get_or_prompt_plan(config)
-    if not plan_id:
-        print("No active plan selected.")
+    work_id = session.get_or_prompt_work(config)
+    if not work_id:
         return
-
-    workers_str = prompt_text("Number of workers", "2").strip()
+    worker_text = prompt_text("Number of workers", "2").strip()
     try:
-        workers = max(1, int(workers_str))
+        workers = max(1, int(worker_text))
     except ValueError:
         workers = 2
+    default_destination = config.adapter.default_destination(work_id)
+    destination_text = prompt_text(
+        "Destination directory", str(default_destination)
+    ).strip()
+    destination = Path(destination_text) if destination_text else default_destination
+    cmd_commands(
+        config.adapter,
+        work_id,
+        worker_count=workers,
+        destination=destination,
+        artifacts_root=config.artifacts_root,
+    )
 
-    default_dest = config.adapter.default_destination(plan_id)
-    dest_str = prompt_text("Destination directory", str(default_dest)).strip()
-    dest = Path(dest_str) if dest_str else default_dest
 
-    cmd_commands(config.adapter, plan_id, worker_count=workers, destination=dest)
-
-
-def _action_switch_plan(config: DistribMenuConfig, session: DistribSession) -> None:
-    if not config.plans_root:
-        print("No plans directory configured for this console.")
+def _action_switch_work(config: DistribMenuConfig, session: DistribSession) -> None:
+    work_items = config.adapter.list_work_items(config.artifacts_root)
+    if not work_items:
+        print("No distributable work items discovered.")
         return
-    from edgar_sec.domain.plan.discovery import discover_plans
-
-    plans = discover_plans(config.plans_root)
-    if not plans:
-        print("No published plans discovered.")
-        return
-    items = [PickItem(key=p.plan_id, label=p.describe(), value=p) for p in plans]
+    items = [
+        PickItem(
+            key=item.work_id,
+            label=f"{item.label}  {item.chunk_count} chunks  {item.work_digest[:12]}",
+            value=item,
+        )
+        for item in work_items
+    ]
     chosen = prompt_paginated_choice(
-        items,
-        prompt_label="Select active plan",
-        default=items[0],
+        items, prompt_label="Select active work item", default=items[0]
     )
     if chosen is not None:
-        session.plan_id = chosen.value.plan_id
-        print(f"Active plan switched to {session.plan_id}")
+        session.work_id = chosen.value.work_id
+        print(f"Active work switched to {session.work_id}")
 
 
 def create_distrib_menu(
     config: DistribMenuConfig, session: DistribSession | None = None
 ) -> tuple[MenuAction, ...]:
-    """Construct interactive MenuAction items for distribution console."""
     root = config.resolve_root()
-    active_session = session or DistribSession(config.plan_id)
+    active_session = session or DistribSession(config.work_id)
     actions = [
         menu_action(
             "List discovered worker bundles",
             lambda: cmd_list(config.adapter, destination=root),
         ),
         menu_action(
-            "Export worker bundles for active plan",
+            "Export worker bundles for active work",
             lambda: _action_export(config, active_session),
         ),
         menu_action(
@@ -241,18 +248,15 @@ def create_distrib_menu(
             lambda: _action_import(config, active_session),
         ),
         menu_action(
-            "Render copy-pasteable execution commands",
+            "Render distributed execution commands",
             lambda: _action_commands(config, active_session),
         ),
+        menu_action(
+            "Switch active work item",
+            lambda: _action_switch_work(config, active_session),
+            key="s",
+        ),
     ]
-    if config.plans_root:
-        actions.append(
-            menu_action(
-                "Switch active plan",
-                lambda: _action_switch_plan(config, active_session),
-                key="s",
-            )
-        )
     return build_menu(*actions)
 
 
@@ -261,12 +265,11 @@ def run_distrib_menu(
     argv: list[str] | None = None,
     session: DistribSession | None = None,
 ) -> int:
-    """Launch interactive distribution console."""
-    active_session = session or DistribSession(config.plan_id)
+    active_session = session or DistribSession(config.work_id)
     return operator_entrypoint(
         config.title,
         create_distrib_menu(config, active_session),
         lambda _argv: 0,
         argv,
-        before_menu=lambda: render_distrib_dashboard(config, active_session.plan_id),
+        before_menu=lambda: render_distrib_dashboard(config, active_session.work_id),
     )

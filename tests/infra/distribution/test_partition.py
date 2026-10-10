@@ -43,7 +43,9 @@ def test_divide_chunks_validates_counts() -> None:
 
 def test_build_assignment_content_identity() -> None:
     """Verifies assignment content identity is deterministic."""
-    asgn1 = build_assignment("meta", "p1", "w1", [0, 1, 2])
-    asgn2 = build_assignment("meta", "p1", "w1", [2, 1, 0])
-    assert asgn1.metadata["assignment_id"] == asgn2.metadata["assignment_id"]
+    asgn1 = build_assignment("meta", "work-1", "1" * 64, "w1", [0, 1, 2])
+    asgn2 = build_assignment("meta", "work-1", "1" * 64, "w1", [2, 1, 0])
+    assert asgn1.assignment_id == asgn2.assignment_id
     assert asgn1.chunk_ids == (0, 1, 2)
+    changed = build_assignment("meta", "work-1", "2" * 64, "w1", [0, 1, 2])
+    assert changed.assignment_id != asgn1.assignment_id

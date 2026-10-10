@@ -239,13 +239,12 @@ def _action_dag() -> None:
 def _action_distrib() -> None:
     from edgar_sec.infra.distribution.menu import DistribMenuConfig, run_distrib_menu
     from .distribution_adapter import InventoryDistributionAdapter
-    from .paths import resolve_filing_catalog_paths
 
-    plans_root = resolve_filing_catalog_paths(_root()).plans_root
-    adapter = InventoryDistributionAdapter(artifacts_root=Path(_root()))
+    artifacts_root = Path(_root())
+    adapter = InventoryDistributionAdapter(artifacts_root=artifacts_root)
     config = DistribMenuConfig(
         adapter=adapter,
-        plans_root=plans_root,
+        artifacts_root=artifacts_root,
         title="Document Inventory Worker Distribution",
     )
     run_distrib_menu(config)

@@ -19,6 +19,7 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 - `run_missing_accessions` returns aggregate run counters and a bounded prefix of per-chunk details, rather than retaining one result object per work-order chunk.
 - Snapshot candidate staging writes outcomes, entries, and source-CIK edges incrementally. The anti-join runs in resource-configured DuckDB and emits Parquet relations without collecting full accession keys in Python.
 - The S5 projection validates a published catalog plan, writes normalized cohort relations, and pins a sorted pre-fetch work order before any SEC request.
+- Worker distribution selects only validated, projected inventory runs. The shared work picker never projects catalog plans; receipts bind the run's work order and imported committed attempts are revalidated.
 - Durable publication pins the branch tip. `base_snapshot_id` selects the delta's lineage base and the S5/S4 identity; when omitted, the tip of the selected branch (default `main`) is used. An explicit base must match the branch tip, so historical bases require a branch created at that tip. `--expected-branch-tip` pins the branch pointer expected at commit; a concurrent move refuses publication without moving the pointer, and a retry re-anti-joins against the new parent.
 - Persisted Run cancellation is recorded before the command returns; incomplete chunks,
   retryable outcomes, parser refusals, and cancellation block independent publication.
@@ -51,6 +52,12 @@ python run.py inventory status --run-id 2024-01-15T120000Z
 # Run fetch and parse with multiple workers
 python run.py inventory run --run-id 2024-01-15T120000Z --workers 8
 
+# Export a projected run, execute the assigned bundle on another machine, then import it
+python run.py inventory distrib commands --work-id run-2024-01-15
+python run.py inventory distrib export --work-id run-2024-01-15 --workers 2
+python run.py inventory distrib worker --bundle /path/to/worker-00 --threads 4
+python run.py inventory distrib import --work-id run-2024-01-15 --source /path/to/worker-00
+
 # Publish completed run to snapshot
 python run.py inventory publish --run-id 2024-01-15T120000Z --branch main
 
@@ -75,8 +82,6 @@ python run.py inventory query --accession 0000320193-23-000004 --limit 10
 │       ├── {snapshot_id}/
 │       ├── .publication.lock
 │       └── catalog.sqlite  # SQLite DAG catalog database for published inventory snapshots.
-├── runtime/
-│   └── {socket_id}.sock
 └── transient/
     └── document_inventory/
         ├── projection-staging/
@@ -101,6 +106,9 @@ python run.py inventory query --accession 0000320193-23-000004 --limit 10
             └── work_order.parquet
 ```
 <!-- AUTOGEN:PATHS:END -->
+
+The same-host broker socket uses a short, user-scoped temporary path so worker bundle
+depth does not exceed the Unix-domain socket path limit.
 
 ## Deliberate gaps
 

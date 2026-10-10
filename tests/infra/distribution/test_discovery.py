@@ -8,7 +8,10 @@ from edgar_sec.infra.distribution.discovery import (
     discover_bundles,
     resolve_bundle_choice,
 )
-from edgar_sec.infra.distribution.guards import write_bundle_manifest
+from edgar_sec.infra.distribution.guards import (
+    read_bundle_manifest,
+    write_bundle_manifest,
+)
 from edgar_sec.infra.distribution.partition import build_assignment
 from edgar_sec.infra.distribution.receipt import (
     RECEIPT_FILE,
@@ -26,14 +29,25 @@ def test_discover_bundles_states_and_filtering(tmp_path: Path) -> None:
     """Verifies discovered bundles classify pending and completed states."""
     b1 = tmp_path / "metadata" / "p1" / "worker_1"
     b2 = tmp_path / "metadata" / "p1" / "worker_2"
-    asgn1 = build_assignment("metadata", "p1", "worker_1", (0,))
-    asgn2 = build_assignment("metadata", "p1", "worker_2", (1,))
+    asgn1 = build_assignment("metadata", "p1", "1" * 64, "worker_1", (0,))
+    asgn2 = build_assignment("metadata", "p1", "1" * 64, "worker_2", (1,))
     write_bundle_manifest(b1, asgn1)
     write_bundle_manifest(b2, asgn2)
 
     chunk = b1 / "data.bin"
     chunk.write_bytes(b"chunk1")
-    receipt = build_worker_receipt("metadata", "p1", "worker_1", (0,), 10, [chunk], b1)
+    manifest = read_bundle_manifest(b1)
+    receipt = build_worker_receipt(
+        "metadata",
+        "p1",
+        "1" * 64,
+        manifest["assignment_id"],
+        "worker_1",
+        (0,),
+        [chunk],
+        b1,
+        {"row_count": 10},
+    )
     write_receipt(receipt, b1 / RECEIPT_FILE)
 
     discovered = discover_bundles(tmp_path, pipeline="metadata")
