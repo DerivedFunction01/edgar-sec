@@ -30,7 +30,7 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 | Subcommand | Description | Arguments |
 | :--- | :--- | :--- |
 | `dag` | Snapshot DAG operations | `[--root]`, `[--json]` |
-| `distrib` | Distributed worker bundle lifecycle | `[--artifacts]` |
+| `distrib` | Distributed worker bundle lifecycle | — |
 | `fixture` | create, fill, and list dataset fixtures | — |
 | `project` | project a published catalog plan into a resumable run | `--catalog-plan`, `[--base-snapshot-id]`, `[--branch]`, `[--explicit-refresh]`, `[--chunk-size]`, `[--artifacts]`, `[--json]` |
 | `publish` | publish a completed inventory run to a DAG branch | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--artifacts]`, `[--json]` |

@@ -29,13 +29,19 @@ RUN_MANIFEST_FILE = "run_manifest.json"
 PUBLICATION_LOCK_FILE = ".publication.lock"
 
 
-def validate_safe_id(value: str, label: str = "identifier") -> str:
-    """Return ``value`` if it is a single safe path component, else raise.
-
-    Safe identifiers contain only ``[A-Za-z0-9_.-]`` and are not ``.`` or ``..``.
-    """
+def validate_safe_id(
+    value: str,
+    label: str = "identifier",
+    min_len: int = 1,
+    max_len: int | None = None,
+) -> str:
+    """Validate a path identifier against its configured length bounds."""
     if not value or value in (".", ".."):
         raise ValueError(f"invalid {label}: {value!r}")
+    if len(value) < min_len:
+        raise ValueError(f"{label} too short: {value!r}")
+    if max_len is not None and len(value) > max_len:
+        raise ValueError(f"{label} too long: {value!r}")
     for char in value:
         if not (char.isalnum() or char in "_.-"):
             raise ValueError(f"invalid {label}: {value!r}")

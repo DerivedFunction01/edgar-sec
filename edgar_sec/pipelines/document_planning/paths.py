@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Protocol
@@ -22,7 +21,6 @@ from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
 
 PIPELINE_DIR = "document_planning"
 PROFILES_DIR = "profiles"
-_PROFILE_ID_RE = re.compile(r"[A-Za-z0-9_.-]+\Z", re.ASCII)
 
 
 class CatalogPaths(Protocol):
@@ -58,14 +56,7 @@ def resolve_inventory_paths(
 
 
 def validate_profile_id(profile_id: str) -> str:
-    """Return a safe profile filename stem or raise ``ValueError``."""
-    if (
-        not isinstance(profile_id, str)
-        or profile_id in {".", ".."}
-        or not _PROFILE_ID_RE.fullmatch(profile_id)
-    ):
-        raise ValueError(f"invalid profile_id: {profile_id!r}")
-    return profile_id
+    return validate_safe_id(profile_id, "profile_id")
 
 
 @dataclass(frozen=True, slots=True)
@@ -101,13 +92,7 @@ class DocumentPlanningPaths:
 
 
 def _validate_plan_id(plan_id: str) -> str:
-    if (
-        not isinstance(plan_id, str)
-        or plan_id in {".", ".."}
-        or not _PROFILE_ID_RE.fullmatch(plan_id)
-    ):
-        raise ValueError(f"invalid plan_id: {plan_id!r}")
-    return plan_id
+    return validate_safe_id(plan_id, "plan_id")
 
 
 def resolve_document_planning_paths(

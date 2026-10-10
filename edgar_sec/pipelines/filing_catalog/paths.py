@@ -50,19 +50,6 @@ REQUIRED_PLAN_FILES = (
     LOCATOR_GROUPS_FILE,
 )
 
-# Identifiers are interpolated into published directory names, so they are
-# restricted to characters that need no escaping.
-_SAFE_ID_CHARS = set(
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.-"
-)
-
-
-def validate_safe_id(value: str) -> str:
-    """Return ``value`` if it is safe to embed in a published path."""
-    if not value or any(char not in _SAFE_ID_CHARS for char in value):
-        raise ValueError(f"unsafe identifier: {value!r}")
-    return value
-
 
 def form_partition_name(form: str) -> str:
     """Escape a form name for a Hive-style partition directory name.

@@ -38,7 +38,7 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
 | :--- | :--- | :--- |
 | `augment` | add new CIKs to a published snapshot | `--cohort`, `--base-snapshot-id`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--new-snapshot-id]` |
 | `dag` | Snapshot DAG operations | `[--root]`, `[--json]` |
-| `distrib` | Distributed worker bundle lifecycle | `[--artifacts]` |
+| `distrib` | Distributed worker bundle lifecycle | — |
 | `merge` | publish a snapshot | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]` |
 | `plan` | generate a deterministic plan | `--cohort`, `[--limit]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]` |
 | `run` | execute resumable chunks | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--chunks]`, `[--chunk]` |

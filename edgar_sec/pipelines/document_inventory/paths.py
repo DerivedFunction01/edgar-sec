@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import re
 import hashlib
 import os
 import tempfile
@@ -113,16 +112,9 @@ COHORT_SOURCES_FILE = "cohort_sources.parquet"
 PROJECTION_MANIFEST_FILE = "projection_manifest.json"
 PROJECTION_STAGING_DIR = "projection-staging"
 
-_ID_RE = re.compile(r"^[A-Za-z0-9_.-]+$")
-
 
 def _validate_id(value: str, label: str) -> str:
-    """Return ``value`` if it is a single safe path component, else raise."""
-    if not isinstance(value, str) or not value or not _ID_RE.match(value):
-        raise ValueError(f"invalid {label}: {value!r}")
-    if value in (".", ".."):
-        raise ValueError(f"invalid {label}: {value!r}")
-    return value
+    return foundation_paths.validate_safe_id(value, label)
 
 
 class InventoryPaths:
@@ -187,14 +179,11 @@ class InventoryPaths:
         )
 
     @property
-    def runtime_root(self) -> Path:
-        return foundation_paths.runtime_root(self.artifacts_root)
-
-    @property
     def transient_root(self) -> Path:
         return self.artifacts_root / foundation_paths.TRANSIENT_DIR / DATASET
 
     def broker_socket_path(self, socket_id: str) -> Path:
+        """Out-of-tree runtime socket; intentionally omitted. :no-docgen:"""
         safe_id = _validate_id(socket_id, "socket_id")
         identity = hashlib.sha256(
             f"{self.artifacts_root}:{safe_id}".encode("utf-8")
