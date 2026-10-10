@@ -438,7 +438,12 @@ class EvaluatorDecision:
 Evaluator = Callable[[str], EvaluatorDecision]
 ```
 
-#### Pluggable Form Evaluators & Delegation
+#### Legacy `document_storage` Evaluators & Delegation (Superseded)
+
+> This SPI documents the frozen single-locator pipeline only. The replacement flow
+> declares companion targets in S6 and does not use text evaluation to schedule
+> acquisition; see [the accession-flow contract](./accession_document_flow/implementation.md).
+
 Because documents in `edgar_sec` are content-addressed by `document_locator_key = sha256(accession + ":" + document_path)`, storing additional exhibits, recovering inverted primaries, or delegating stubs requires zero storage schema changes:
 
 ```python
@@ -459,7 +464,13 @@ def custom_exhibit_evaluator(text: str) -> EvaluatorDecision:
 
 ---
 
-### Blueprint C: Sequence 1 Exhibit Inversion Recovery & Dual-Write
+### Legacy Blueprint C: Sequence 1 Exhibit Inversion Recovery & Dual-Write (Superseded)
+
+> This is historical `document_storage` recovery behavior, not the replacement
+> contract. Index-backed S6 plans select by observed document type; catalog-direct
+> plans make no type-verification claim. No sequence-1 recovery or dual-write occurs
+> in S9/S10.
+
 When filers uploaded exhibit attachments before the primary form in pre-2005 EDGAR submissions (2000–2004), the SEC automated submission feed recorded Sequence 1 (`ex21.txt`, `exhibit16.txt`) as `primaryDocument`.
 
 #### 1. Precision Exhibit vs. Ticker Discrimination (Built via `build_alternation`)

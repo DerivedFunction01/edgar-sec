@@ -33,6 +33,7 @@ skipped. Profile contents are parsed and digested once at plan start.
       "form_selector": "10-K, 20-F",
       "targets": [
         {"role": "primary", "type": "primary", "optional": false},
+        {"role": "exhibit", "type": "EX-13", "optional": true},
         {"role": "exhibit", "type": "EX-21", "optional": true}
       ]
     },
@@ -80,7 +81,7 @@ Schema 1.2 plans lack these payload pins and are refused as S6 scope.
 
 | Inputs | Target scope | Locator/evidence behavior |
 |---|---|---|
-| Catalog plan only | Unique accessions selected by the published plan. | Primary-only profile; validated catalog primary paths produce `catalog_direct` / `catalog_metadata`. |
+| Catalog plan only | Unique accessions selected by the published plan. | Primary-only profile; a validated catalog path produces `catalog_direct` / `catalog_metadata`, without index-verified document type. |
 | Catalog plan + inventory snapshot | The same catalog-selected accession set. | All requests resolve against the pinned inventory only; rows use `inventory_index`. |
 
 The catalog plan owns forms, dates, cohort/seed selection, limits, and selected
@@ -97,6 +98,16 @@ is a separate catalog-direct mode, not an implicit fallback for hybrid plans.
 `source_origin` records the locator resolver (`inventory_index` whenever a
 snapshot was selected, otherwise `catalog_direct`), not the scope source or a
 status.
+
+Catalog-direct is an index-free locator mode, not a weaker way to perform the full
+inventory match. A `matched` catalog-direct primary records that S6 accepted the
+catalog's path; it does not prove that the body is the filing's statutory primary.
+S6 does not fetch an index, inspect filing bytes, infer type from a filename, or
+substitute another document. A suspicious or misidentified path stays the planned
+catalog target; cover detection during S10 cannot repair its identity. If a caller
+needs document-type selection or companion exhibits, it must publish inventory
+evidence and create a new index-backed plan. Calendar-era expectations are not a
+substitute for that evidence.
 
 S6 is a Layer 4 pipeline. It may use `foundation`, `domain`, `infra`, and the source
 pipeline's `paths.py`/`schemas.py` contracts only. The existing inventory reader is a
@@ -132,12 +143,22 @@ catalog accession with no usable primary produces one `unresolved` row with
 `status_reason="no_usable_primary_path"` and
 `availability_evidence="catalog_metadata"`.
 
+The selector named `primary` is request intent. In inventory-backed plans, S6
+compares the filing form with the S5 index row's observed `document_type`; the
+selected sequence is only its retrieval locator. Do not conflate the profile's
+`target_type`, the index row's type, and the SGML child's `<TYPE>`. S9 records the
+selected SGML header as acquisition provenance; it does not reopen S5 or cross-check
+the header against the index row. The plan therefore selects from an observed index
+declaration but does not independently verify the selected body's type. Such a
+cross-check requires carrying the observed type in a versioned target-plan contract.
+
 When an inventory snapshot is selected, catalog path fields do not provide
 locators or fallback evidence. The profile rule is selected using the catalog
 form; a form or filing-date disagreement with the indexed accession refuses
 the whole plan before publication.
 
-All plan locators use the same archive acceptance contract as S9a and the shared
+All plan locators use the archive acceptance contract consumed by S9's acquisition
+commands and the shared
 `domain.sec_urls.SEC_ARCHIVE_BASE`/`parse_archive_url` contract:
 
 - Require HTTPS and exact host `www.sec.gov`; reject user information, explicit ports,
@@ -331,7 +352,8 @@ target. `current` is accepted only as an input selection; resolve it once before
 scanning and persist the resolved ID. CLI calls are offline and need no
 network-consent prompt. Invalid IDs, malformed profiles, source digest
 mismatches, metadata disagreements, unsafe locators, and divergent bundle reuse
-fail explicitly.
+fail explicitly. Without `--inventory`, the plan report states that catalog
+primary locators are not index-verified and companion targets are unavailable.
 
 The interactive operator uses `build_menu`, `prompt_paginated_choice`, `prompt_text`,
 and `operator_entrypoint` from
@@ -348,12 +370,14 @@ The `run.py` `planning` entry exposes these numeric actions:
    Each picker is paginated/filterable. Catalog choices distinguish distinct
    accession counts from catalog locator-row counts; snapshot choices show the
    immutable snapshot ID and its known accession count.
-   Display the resolved snapshot ID and a read-only coverage preflight (scoped,
-   indexed, and unindexed accessions) before plan publication. The preflight
-   points users to `inventory project` when accessions are unindexed. It does not
-   fetch, project, or mutate either source. The operator asks before publishing
-   the immutable target plan, with a default-no response; the explicit CLI command
-   does not prompt.
+    Display the resolved snapshot ID and a read-only coverage preflight (scoped,
+    indexed, and unindexed accessions) before plan publication. The preflight
+    points users to `inventory project` when accessions are unindexed. It does not
+    fetch, project, or mutate either source. The operator asks before publishing
+    the immutable target plan, with a default-no response; the explicit CLI command
+    does not prompt. In catalog-metadata-only mode, state that only the catalog path
+    is validated: document type is not index-verified, companions are not planned,
+    and S10 cover processing cannot recover a misidentified link.
 2. **Inspect a plan** — choose a discovered target plan and report validated source
    pins, coverage, row/status/origin/reason counts, and part digests; malformed
    bundles are reported, not repaired.
@@ -366,10 +390,10 @@ snapshot, and output plan as session defaults and shows those pins in the menu
 header. Blank menu input re-renders; picker cancellation returns without work;
 invalid profile/source selections are reported and can be changed without
 silently switching evidence mode. Catalog-only mode offers only primary-only
-profiles. Planning is offline, so there is no network
-confirmation. After a plan is published, report its exact plan ID, input pins,
-coverage, and status counts; do not automatically project inventory, enter
-acquisition, or start another pipeline. Keep this operator under its own
+profiles and preserves the same evidence-limit warning on confirmation. Planning is
+offline, so there is no network confirmation. After a plan is published, report its
+exact plan ID, input pins, coverage, and status counts; do not automatically project
+inventory, enter acquisition, or start another pipeline. Keep this operator under its own
 `planning` launcher entry; do not replace or renumber Inventory menu actions.
 
 ## 7. Mirrored tests and acceptance
@@ -387,6 +411,8 @@ Offline tests must cover:
 - catalog-only primary validation, same-accession path checks, and refusal of
   non-primary profiles; rejection of non-HTTPS URLs, alternate hosts,
   queries/fragments, unsafe path components, and archive paths for another accession;
+- no index fetch, body inspection, filename/type inference, or target substitution in
+  catalog-only mode, including when the catalog path resembles an exhibit;
 - each status/evidence combination, `accession_not_indexed` independent of optionality,
   ambiguous-per-candidate rows, missing locators,
   optional/required absence, constructed-only XBRL candidates, and no sequence guessing;

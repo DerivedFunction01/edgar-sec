@@ -83,8 +83,10 @@ Rules are resolved as follows:
   schema version, and profile version. Trim type whitespace and preserve case.
 - The most-specific matching rule wins; `*` is a fallback, not merged with others.
 - Overlapping rules at the same specificity are rejected.
-- Primary selection matches the filing form (and its declared canonical aliases)
-  against observed `document_type`; it never assumes sequence 1.
+- With inventory evidence, primary selection matches the filing form (and its declared
+  canonical aliases) against the observed index-row `document_type`; it never assumes
+  sequence 1. An optional exhibit such as EX-13 is a separate request planned before
+  acquisition, not a consequence of inspecting primary text.
 - V1 role/type pairs are `primary`/`primary`, `exhibit`/exact or supported `EX-*` type,
   `data_file`/exact or `EX-101.*` type or `extracted_xbrl_instance`, `graphic`/`GRAPHIC`,
   and `package`/`xbrl_zip`. Unsupported role/type pairs fail profile validation.
@@ -143,7 +145,17 @@ deterministic and writes remain bounded. Its v1 fields:
 Matching and outcome rules:
 
 - **Status vs. Provenance**: `catalog_direct` belongs in `source_origin`, not in `status`.
-- **Catalog-direct scope**: this source supports primary-only profiles and direct archive URLs. An envelope/stub path, missing primary, or non-primary selector is refused/unresolved; it is never passed off as an index match.
+- **Catalog-direct/index-free scope**: this source supports primary-only profiles and
+  direct archive URLs. A `matched` row means the catalog supplied a safe primary
+  locator; `catalog_metadata` does not verify that the linked body has the filing's
+  statutory document type. An envelope/stub path, missing primary, or non-primary
+  selector is refused/unresolved; it is never passed off as an index match.
+- Catalog-direct planning does not fetch or parse `-index.html`, inspect document
+  bodies, infer type from filenames, or recover a target through a bundle/sequence
+  heuristic. If a catalog primary path actually names an exhibit, this mode cannot
+  identify or replace it. Use a published inventory snapshot and re-plan when
+  statutory type selection or companion targets are required; a date-era rule does
+  not upgrade catalog metadata into index evidence.
 - **Absence vs. unresolved**: Use `not_filed` or `required_missing` only when a
   recognized page has no type-matching row for the optional or required target. One
   matching inventory row without a usable locator is `unresolved` with

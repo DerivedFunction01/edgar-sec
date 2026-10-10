@@ -12,7 +12,9 @@ Each stage S0–S12 has a detailed subplan under
 review loop. Stage headers link to their subplan; further
 refinement of any subplan is independent, and the summaries here will be
 compressed to reference them once all subplans are stable. S9 is decomposed into
-S9a–S9d contracts for target adaptation, streaming, extraction, and fixture replay.
+command-oriented contracts under
+[document_acquisition](subplans/document_acquisition/cli_inventory.md); the earlier
+S9a–S9d decomposition is being superseded and is not the command index.
 Stages are owned by three pipeline packages joined by immutable artifacts:
 `document_inventory` (S0–S5), `document_planning` (S6), and
 `document_acquisition` (S9–S10). S7, S8, and S12 are cross-cutting; S11 is a payload-store
@@ -54,6 +56,9 @@ target plans. Target intent no longer changes the inventory artifact. The invent
 path requires one index-page request per previously unseen accession; an explicit
 catalog-direct target plan can skip index discovery for primary-only work but does
 not register an observed index page or make the inventory complete for those rows.
+Its `matched` status validates a catalog-supplied locator, not the body's statutory
+document type. It cannot correct an inverted exhibit link or plan companions; cover
+processing in S10 is not a substitute for inventory evidence.
 Later plans and source-CIK associations anti-join against the cumulative snapshot;
 accession/form queries use its seek indexes and make no SEC request.
 
@@ -197,9 +202,10 @@ rate-limited research step; normal tests remain offline and deterministic.
 - **Target planning** reads a named filing-catalog plan as scope, optionally reads a
   named immutable inventory snapshot as document evidence, applies a versioned
   request/profile, and publishes a plan pinned to both inputs. Without a snapshot,
-  only primary catalog-direct planning is allowed. With a snapshot, it alone supplies
-  locators; missing accessions do not fall back to catalog paths. Planning makes no
-  HTTP request and never writes intent back into the inventory.
+  only primary catalog-direct planning is allowed, with no claim that its path's
+  document type was verified. With a snapshot, it alone supplies locators; missing
+  accessions do not fall back to catalog paths. Planning makes no HTTP request and
+  never writes intent back into the inventory.
 - **Acquisition and processing** are planned as later stages with explicit
   in-memory contracts and fixture/review tools. They do not imply a published
   payload schema.
@@ -212,9 +218,12 @@ rate-limited research step; normal tests remain offline and deterministic.
 serialization, and atomic-storage APIs may be used when their existing contract
 fits. The module disposition map records direct reuse, inspiration-only contracts,
 and retirement candidates. The package is removed only after the post-S12
-decommission gate passes. The old candidate-recovery logic is not ported: where the index page
-reliably publishes document types, planning uses those observations rather than
+decommission gate passes. The old candidate-recovery logic is not ported: where the
+index page publishes document types, planning matches those observations rather than
 inferring a primary from sequence order or fetching an SGML bundle to discover it.
+S9 selects the planned locator/sequence and S10 processes that selected body; neither
+stage fetches an index page or discovers a replacement. If the caller needs that
+evidence, it must complete S5 and publish a new S6 plan first.
 
 ## 4. Durable Shapes Before Payload Storage
 
@@ -373,15 +382,18 @@ Use two purpose-specific append-only SQLite fixture stores, not
    changed response appends evidence instead of replacing it. Transport failures
    are run results, not successful response payload rows.
 2. **Acquisition fixture** is added only in the acquisition subplan under
-   `{artifacts_root}/document_acquisition/fixtures/{fixture_id}/`. It stores
-   source URL/body bytes and acquisition facts keyed by URL plus body digest, so
+   `{artifacts_root}/document_acquisition/fixtures/{fixture_id}/`. Its immutable
+   `manifest.json` describes the fixture; `index.sqlite` stores exact source-response
+   bytes as BLOBs and acquisition facts keyed by capture/target/attempt identity, so
    review can replay the exact response. It does not define the final published
    document store.
 
-Both stores pin schema version in an atomic fixture manifest, enable SQLite
-foreign-key checks, refuse unrelated or malformed databases, support read-only
-replay, and never overwrite source evidence. Tests seed through `tmp_path`;
-committed inputs are minimal sanitized fixtures loaded through `tests.support`.
+Both fixture stores use the shared manifest envelope and independently pin their
+SQLite schema in `user_version`; the S9 manifest is an immutable descriptor, not a
+response-body index. Both enable SQLite foreign-key checks, refuse unrelated or
+malformed databases, support read-only replay, and never overwrite source evidence.
+Tests seed through `tmp_path`; committed inputs are minimal sanitized fixtures loaded
+through `tests.support`.
 
 The index fixture's tables are:
 
@@ -603,12 +615,14 @@ Review output shapes are fixed independently of the eventual payload store:
 {artifacts_root}/document_acquisition/review-runs/{review_id}/
   manifest.jsonl
   cases/{target_id}/source.inert.html
-  cases/{target_id}/normalized.txt
+  cases/{target_id}/representation.txt
   cases/{target_id}/processing.json
 ```
 
-For non-HTML or non-text results, the corresponding preview or normalized-text
-file is absent; `processing.json` always records the route and result status.
+For non-HTML or non-text results, the corresponding preview or representation file
+is absent; `processing.json` always records the route, status, source digest, and
+representation identity. Byte-identical text/XML representations alias the source
+digest rather than implying a normalization copy.
 The processing review root will be owned by `document_acquisition.paths` when that
 package is implemented; no `document_processing` package or artifact dataset is
 introduced.
@@ -691,7 +705,7 @@ Metadata-only offline DAG lineage compaction into consolidated checkpoint nodes 
 
 **Details:** [subplan](subplans/S9_acquisition.md)
 
-Acquisition is split into S9a–S9d: target-plan work-order adaptation; brokered streaming into managed staging; bounded exact-sequence SGML extraction; and append-only SQLite case metadata with content-addressed fixture bodies. Both target source origins use the same typed work/result contract. Raw body bytes never cross process IPC; fixture capture streams from managed staging. No `document_storage` imports are introduced. Full schemas, errors, and acceptance tests are in the linked subplans.
+S9 is specified around its user-facing commands: [project](subplans/document_acquisition/project.md), [status](subplans/document_acquisition/status.md), [run](subplans/document_acquisition/run/index.md), [distribution](subplans/document_acquisition/distribution/index.md), and [fixture capture/replay](subplans/document_acquisition/fixtures/index.md). The command contracts cover pinned S6 inputs, bounded transfer, exact bundle-sequence selection, resumable outcomes, verified worker adoption, and offline fixture replay. These are design-only; no replacement S9 command exists in tracked code. No `document_storage` imports are introduced.
 
 ### S10 — Processing contract, processor versions, and document review
 
@@ -723,9 +737,9 @@ S3 parser work ─────────────────────�
 S1 ─> S6 catalog-direct contract/implementation (independent branch)
 S3 contract ─> S5 schema/query/writer development (synthetic outcomes) ──────────────┴─> S5 publication
 S5 + S6 ─> S7c snapshot/plan review ─────────────────────────────────────────────┐
-S6 ─> S9a work order ─> S9b streaming ─┬─> S10 direct processing ────────────────┤
-                                        ├─> S9c SGML extraction ─────────────────┤
-                                        └─> S9d fixture replay ───────────────────┤
+S6 ─> acquisition project ─> status/run ─┬─> S10 selected-body processing ────────┤
+                                         ├─> distrib export/worker/import ────────┤
+                                         └─> fixture capture/replay ─────────────┤
 S9/S10 ─> S7d acquisition/processing review ─────────────────────────────────────┤
 S9/S10 evidence ─> S11 payload-store decision ───────────────────────────────────┤
 S1–S11 ─────────────────────────────────────────────────────────────────────────> S12
@@ -739,7 +753,7 @@ work can develop against the S3 contract; real snapshot publication waits for th
 implemented parser and integrated workers. S6 catalog-only planning remains an
 independent branch while optional inventory evidence waits for S5 and XBRL claims wait
 for S0. Later S7c
-review/inspect, S8 vacuum, and S9d replay wait for their named source artifacts. S10
+review/inspect, S8 vacuum, and acquisition fixture replay wait for their named source artifacts. S10
 filing-body HTML processing is deferred until S9 fixtures exist. S11 is intentionally
 a design decision after S9/S10 evidence, not a missing subplan.
 
@@ -759,13 +773,18 @@ The initial operator surface is explicit-artifact oriented and small:
 | Inspect inventory run | `inventory status [--run-id <id>] [--json]` | Read-only run state from persisted manifests and attempt pointers. |
 | Publish inventory run | `inventory publish --run-id <id> [--branch <name>] [--expected-branch-tip <id>]` | Offline publication of validated committed work; refuses unless the selected branch still points at the run's pinned base. |
 | Target planning | `documents plan --catalog-plan <id> [--inventory <snapshot_id|current>] --profile-id <id>` | Catalog-selected accession scope plus optional pinned inventory evidence → immutable target plan with both input pins. No row-level locator fallback. |
+| Project acquisition run (S9) | `acquisition project --plan-id <id>` | Validated S6 target plan → immutable resumable work order; no network. |
+| Inspect acquisition run (S9) | `acquisition status [--run-id <id>]` | Read-only validation and outcome summary; no network. |
+| Run acquisition work (S9) | `acquisition run --run-id <id> [--retry-failures]` | Explicit network execution of pending or explicitly selected retryable targets. |
+| Distribute acquisition (S9) | `acquisition distrib {export,worker,import,list,commands}` | Future shared-distribution adapter; live remote SEC work is gated on cross-host rate coordination and excluded from the initial local implementation. See the [command-group design](subplans/document_acquisition/distribution/index.md). |
+| Capture/replay acquisition fixture (S9) | `acquisition fixture {capture,list,replay}` | Explicit exact-byte response BLOB capture in a fixture SQLite database and zero-network replay; no durable payload publication. |
 | Accession query | `inventory query --snapshot current --accession <accession>` | Filing facts, all observed child/data-file rows, and source-CIK relations; no network. |
 | Form/CIK query | `inventory query --snapshot current --form <form> [--filing-cik <cik>] [--source-cik <cik>]`, `--filing-cik <cik>`, or `--source-cik <cik>` | Matching accessions/entries from annual parts and distinct filing/source-CIK postings; no network. |
 | Vacuum | `inventory vacuum --snapshot <snapshot-id|current> --retention <policy-id>` | Compact DAG delta lineages into checkpoint nodes and prune unreachable parts; parity-gated, atomically publish `current`. |
 | Inspect (later S7c) | `inventory inspect --snapshot <id|current> [--accession <accession>]` | Reads a pinned snapshot manifest/partition or one accession; no network. |
 
-`index.json` parsing, interactive wizard, and acquisition/processing CLI commands are
-added only in their owning subplans. No query, projection, status, or publication
+`index.json` parsing, interactive wizard, and production acquisition/processing CLI
+commands are added only in their owning subplans. No query, projection, status, or publication
 command fetches index pages or filing bodies; only `inventory run` fetches index pages
 for accessions missing from its pinned base. In the approved Inventory operator,
 Project, Status, and Run are top-level actions alongside the existing root shortcuts;

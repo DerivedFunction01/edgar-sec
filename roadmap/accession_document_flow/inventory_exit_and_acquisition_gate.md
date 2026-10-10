@@ -90,7 +90,9 @@ The supplied S6 design is aligned with the detailed subplan as follows:
 - Every plan pins a catalog scope; an optional inventory snapshot is its sole locator
   source when selected. Missing snapshot accessions are unresolved, never resolved from
   catalog paths. Without a snapshot, profiles are primary-only and catalog-direct rows
-  never synthesize inventory entries.
+  never synthesize inventory entries. A catalog-direct match validates the supplied
+  path, not its index-declared document type; S9/S10 do not fetch an index page to
+  repair it.
 - The source digest must cover the validated manifest and every source part used by the
   planner. The existing catalog-plan fingerprint alone does not prove those bytes.
   Although S5 now accepts a named `snapshot_id`, S6 must not import the sibling reader:

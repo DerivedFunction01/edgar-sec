@@ -1,5 +1,15 @@
 # Implementation Plan: Phase 2.5 Normalization Reflow, Structural Metadata & Inversion Recovery
 
+> **Historical implementation record.** The milestones and recovery design below
+> describe the frozen `document_storage` path, not the replacement acquisition
+> contract. The current flow is owned by
+> [accession document flow](./accession_document_flow/implementation.md): S5 publishes
+> observed index facts, S6 plans explicit targets, S9 acquires those targets, and S10
+> processes each selected body. Do not port the legacy candidate regex, era gate,
+> evaluator-triggered refetch, sequence fallback, or dual-write into that flow. If
+> index evidence is needed, publish it through S5 before planning; S9/S10 do not fetch
+> an index page to recover a target.
+
 ## Reference
 This implementation plan operationalizes the architectural contracts and Lakehouse storage design defined in:
 **[Architecture & Product Roadmap (v2)](./design.md)**

@@ -5,7 +5,8 @@
 - Owning stage in [implementation.md](../implementation.md): **S12**.
 - Status: inventory's split lifecycle CLI/operator is implemented; the cross-stage
   vertical verification gate remains design-only.
-- Depends on: S1–S11 public contracts, including S9a–S9d.
+- Depends on: S1–S11 public contracts, including the command-oriented S9 contracts
+  under [document_acquisition](document_acquisition/cli_inventory.md).
 - Non-blocking: the integrated cross-stage operator and `document_storage`
   decommissioning. Stage-owned S6 CLI/operator work belongs to S6.
 
@@ -57,10 +58,11 @@ not interchangeable, and the latter is not a verified legal co-filer list.
 `current`; a stale snapshot ID refuses without moving the pointer. Vacuum/purge
 never triggers network work.
 
-Acquisition and processing do not gain production SEC-fetch CLI commands in this stage.
-They run from the S9 work order and S9d fixture replay contracts. The S6 package-local
-operator is implemented by the S6 pipeline; an integrated operator that moves among
-inventory, planning, acquisition, processing, and review remains a later S12 decision.
+S12 does not define the stage-owned production acquisition CLI; that belongs to S9's
+command contracts. Acquisition and processing run from explicit S9 work orders and
+fixture replay. The S6 package-local operator is implemented by the S6 pipeline; an
+integrated operator that moves among inventory, planning, acquisition, processing,
+and review remains a later S12 decision.
 
 ## Summary schemas
 
@@ -69,7 +71,9 @@ Every command emits a versioned summary with `command`, `schema_version`, `input
 - Inventory: candidate accessions, known/new accessions, pages fetched/reused, source-CIK edges added, entries published, `fresh`/`reused` snapshot status.
 - Target planning: rows by S6 `status` and `source_origin`, plus plan and pinned source IDs.
 - Acquisition: executable/skipped targets and `acquired`, `not_filed`, `ambiguous`, `failed` counts, separated by live SEC vs fixture replay.
-- Processing: normalized text, validated XML, binary, unrecognized, and failed counts.
+- Processing: verbatim-text passthrough, normalized text, validated XML, binary,
+  unrecognized, and failed counts. Raw HTML remains source evidence; XML aliases its
+  source digest, and PDF has no derived representation.
 - Vacuum: source/compacted snapshot IDs, counts and logical fingerprints before/after, parity status, retained/pruned part counts.
 - Review: selected, succeeded, failed cases and output manifest path.
 
@@ -82,8 +86,8 @@ The quality-gate integration fixture performs these stages in a temporary artifa
 3. **Parse and publish (S4/S5):** run the bounded worker path using the fixture transport, publish an annual-partition snapshot, and verify manifest inheritance, accession-scoped `scoped_mask` metadata, and atomic `current` update. A refresh test must show the new tip hides prior entries while the old named tip still returns them; no direct prior-entry-ID map is required.
 4. **Query (S5):** compare accession, form/date, filing-CIK, and source-CIK results with expected rows; instrument the reader to prove DuckDB query execution prunes non-matching Parquet parts using `(key_min, key_max)` manifest metadata and row-group footer statistics, and keeps the CIK meanings distinct.
 5. **Plan (S6):** create catalog-only and catalog-plus-inventory plans from local fixtures. Assert identical target schema and catalog accession scope, primary-only refusal without a snapshot, index-only locator use with a snapshot, `accession_not_indexed` independent of optionality, distinct `source_origin`, zero HTTP, and no inventory mutation.
-6. **Acquire (S9):** replay direct-URL and bundle-sequence acquisition cases from S9d. Verify body/source/selected digests, exact sequence, and zero HTTP.
-7. **Process (S10):** process fixture HTML/iXBRL, standalone XML, binary/PDF, legacy `<PRE>`, and malformed-input cases. Verify route-specific outcomes, processor fingerprint, and that normalized data remains transient except for explicitly selected review output.
+6. **Acquire (S9):** replay direct-URL and bundle-sequence acquisition cases from an [acquisition fixture](document_acquisition/fixtures/index.md). Verify body/source/selected digests, exact sequence, and zero HTTP.
+7. **Process (S10):** process fixture ASCII `.txt`, HTML/iXBRL, standalone XML, and binary/PDF cases. Verify text passthrough digest identity, raw-source versus normalized-HTML identities, XML source/representation aliasing, deferred PDF extraction, processor fingerprint, and that derived data remains transient except for explicitly selected review output.
 8. **Vacuum (S8):** compact the published snapshot under a test retention policy, compare the full logical fingerprint and canonical query results, and prove an explicitly tagged old snapshot remains readable. A target-plan source reference alone is not a DAG retention root. A stale/concurrent pointer cannot be overwritten.
 9. **Review (S7):** compare two parser runs over the same fixture and two target plans over pinned inputs; verify identity-keyed diffs, inert HTML, and empty-destination refusal.
 

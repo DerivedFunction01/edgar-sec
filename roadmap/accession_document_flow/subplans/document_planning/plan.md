@@ -20,7 +20,9 @@ Before parallel implementation, agree on these interfaces and invariants:
   `unresolved` with `accession_not_indexed`, regardless of `optional`; there is
   no row-level fallback to the catalog path.
 - Without a snapshot, only a primary-only profile is valid. Those rows use
-  `catalog_direct` and `catalog_metadata` evidence.
+  `catalog_direct` and `catalog_metadata` evidence. A match validates the catalog
+  locator but does not verify the body's index-declared document type; there is no
+  index fetch, filename inference, or S9/S10 recovery path.
 - Catalog occurrences are aggregated by canonical accession before profile
   matching. Conflicting form or filing-date facts refuse the plan. If a snapshot
   is supplied, a conflict with its accession form or filing date also refuses.
@@ -94,7 +96,7 @@ in parallel:
 Contract freeze ─────────┼─ Inventory evidence adapter ─┼─ Planner/publication integration
                          ├─ Profile loader ─────────┘             │
                          ├─ CLI/operator shell ────────────────────┤
-                         └─ S9a consumer-contract update ─────────┘
+                         └─ S9 target-plan consumer-contract update ─────────┘
 ```
 
 | Track | Owns | Depends on | Join condition |
@@ -104,7 +106,7 @@ Contract freeze ─────────┼─ Inventory evidence adapter ─
 | C. Inventory evidence | `inventory_evidence.py` and mirrored tests. | A's source pin and B's accession stream contract; S5 schema exposure. | Reads one named snapshot only, validates form/date consistency, and yields indexed or unindexed evidence without mutating S5. |
 | D. Planning and publication | `planner.py`, `publication.py`, their tests, and final plan-bundle integration tests. | A, B, and C interfaces. | Stable plan identity, bounded target output, per-status/origin/coverage reconciliation, and atomic reuse/refusal behavior. |
 | E. CLI/operator | `commands/`, `cli.py`, `operator.py`, launcher registration, CLI/operator tests. | A's public planner API and summary schema; can build menu and picker tests against fakes before D lands. | One-action-per-menu-return, safe cancellation, explicit source choices, clear coverage display, no auto-run/auto-publish. |
-| F. Consumer/document integration | S9a source-pin checks, S12 command synopsis, implementation/design/exit-gate references. | A's manifest and row schema. | S9 opens plan Y only; no downstream code or prose relies on the legacy single-source manifest. |
+| F. Consumer/document integration | S9 project-command source-pin checks, S12 command synopsis, implementation/design/exit-gate references. | A's manifest and row schema. | S9 opens plan Y only; no downstream code or prose relies on the legacy single-source manifest. |
 
 Do not assign multiple tracks ownership of `specs.md`, `schemas.py`, `plan.json`,
 or target status semantics at the same time. Track A lands those contracts first;
@@ -113,25 +115,26 @@ after each track's mirrored tests pass.
 
 ## 4. Milestones and verification
 
-1. **Contract freeze:** reconcile S6, detailed specs, S9a, S12, and the root
+1. **Contract freeze:** reconcile S6, detailed specs, S9 project, S12, and the root
    roadmap. Verify the old single-source and hybrid-fallback wording is removed.
 2. **Source adapters:** test catalog duplicate aggregation and conflict refusal;
    test snapshot pinning, pointer movement immunity, missing-accession handling,
    form/date disagreement refusal, and zero source mutation/network.
 3. **Planner/publication:** test catalog-only primary restriction, hybrid
-   index-only resolution, stable identity, deterministic form partitions,
+   index-only resolution, no catalog-direct type inference/recovery, stable identity,
+   deterministic form partitions,
    row/status/coverage counts, missing and corrupt source behavior, atomic
    publication, identical reuse, and divergent reuse refusal.
 4. **Operator/CLI:** test paginated catalog/profile/snapshot discovery, explicit
    “no inventory evidence” choice, `current` resolution displayed and pinned
    once, unindexed coverage summary, cancellation/no-op, invalid bundle
    reporting, and no automatic transition to inventory execution or S9.
-5. **Consumer acceptance:** test S9a against a plan manifest with both source
+5. **Consumer acceptance:** test the S9 project consumer against a plan manifest with both source
    pins and confirm it never opens the source plan or snapshot. Verify
    `inventory_index` and `catalog_direct` preserve identical acquisition work
    shapes where both are matched.
 
-Run the targeted mirrored S6 and S9a tests first, then `.venv/bin/python check.py`
+Run the targeted mirrored S6 and S9 project-consumer tests first, then `.venv/bin/python check.py`
 for the repository's changed-file gate. Do not use `check.py --all`
 unless explicitly requested. Documentation-only changes use `check.py --fast`
 and `git diff --check`.

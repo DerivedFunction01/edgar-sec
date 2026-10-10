@@ -1,0 +1,183 @@
+# S9 acquisition paths
+
+## Purpose and status
+
+This is the sole path-layout contract for S9 runs, staging, fixtures, and S10 review
+outputs. It follows the inventory split between retained artifact roots, transient
+resumable runs, and shared runtime/distribution roots. It is design-only; code will
+resolve paths through `document_acquisition.paths` and foundation helpers.
+
+## Resolved path API
+
+```python
+from edgar_sec.foundation.runtime.fixtures import FixturePaths
+
+@dataclass(frozen=True, slots=True)
+class AcquisitionPaths:
+    project: ProjectPaths
+
+    @property
+    def artifacts_root(self) -> Path: ...
+    @property
+    def transient_root(self) -> Path: ...
+    @property
+    def runtime_root(self) -> Path: ...
+    @property
+    def runs_root(self) -> Path: ...
+    @property
+    def fixtures_root(self) -> Path: ...
+    @property
+    def review_runs_root(self) -> Path: ...
+    def run_dir(self, run_id: str) -> Path: ...
+    def run_manifest_path(self, run_id: str) -> Path: ...
+    def work_order_root(self, run_id: str) -> Path: ...
+    def run_state_path(self, run_id: str) -> Path: ...
+    def run_lock_path(self, run_id: str) -> Path: ...
+    def run_cancelled_path(self, run_id: str) -> Path: ...
+    def run_staging_root(self, run_id: str) -> Path: ...
+    def chunk_attempt_dir(self, run_id: str, chunk_id: str, attempt_id: str) -> Path: ...
+    def body_consumption_receipt_path(
+        self, run_id: str, target_id: str, selected_sha256: str
+    ) -> Path: ...
+    def fixture_store_paths(self, fixture_id: str) -> FixturePaths: ...
+    def review_run_dir(self, review_id: str) -> Path: ...
+    def review_manifest_path(self, review_id: str) -> Path: ...
+    def review_case_dir(self, review_id: str, target_id: str) -> Path: ...
+
+def resolve_acquisition_paths(
+    repo_root: str | Path | None = None,
+    artifacts_root: str | Path | None = None,
+) -> AcquisitionPaths: ...
+```
+
+`artifacts_root` comes from `foundation.runtime.paths.resolve_paths()`;
+`transient_root` is its shared `transient/` child and run directories use
+`transient_dir(artifacts_root, "document_acquisition", run_id)`. `runtime_root` and
+`distribution_root` use their shared foundation resolvers, with the distribution root
+remaining a separate `ProjectPaths` root. Distribution adapter methods own bundle
+destinations rather than acquisition-specific path helpers. `fixture_store_paths()`
+delegates to the shared fixture resolver with dataset `document_acquisition` and
+storage filename `index.sqlite`.
+
+## Logical layout
+
+```text
+{artifacts_root}/
+├── document_acquisition/
+│   ├── fixtures/
+│   │   └── {fixture_id}/
+│   │       ├── manifest.json
+│   │       └── index.sqlite
+│   └── review-runs/
+│       └── {review_id}/
+│           ├── manifest.jsonl
+│           └── cases/{target_id}/
+│               ├── source.inert.html       # optional sanitized HTML preview
+│               ├── representation.txt     # optional selected text review output
+│               └── processing.json
+├── transient/
+│   └── document_acquisition/
+│       └── {run_id}/
+│           ├── chunks/
+│           │   └── {chunk_id}/attempt-{attempt_id}/
+│           │       ├── outcomes.parquet
+│           │       └── manifest.json
+│           ├── handoff/receipts/{target_id}/{selected_sha256}.json
+│           ├── staging/
+│           │   ├── incoming/{attempt_id}
+│           │   └── selected/{attempt_id}
+│           ├── work_order/
+│           │   └── part-*.parquet
+│           ├── cancelled.json
+│           ├── run.lock
+│           ├── run_manifest.json
+│           └── state.sqlite3
+├── runtime/
+│   └── {broker_id}.sock
+└── ... other pipeline roots
+
+{distribution_root}/acquisition/{run_id[:8]}/
+└── ... bundles owned by shared distribution infrastructure
+```
+
+This follows the existing distribution adapters' default
+`distribution_root / pipeline_name / plan_id[:8]`; S9 uses `acquisition` as the
+pipeline name and the run ID as its distribution plan ID.
+
+Fixture and review artifacts are retained under the pipeline root. Run manifests,
+work orders, mutable state, attempt chunks, and staged source/selected bodies are
+resumable transient state under the common transient root; they do not auto-expire and
+are not published payloads. S9 exposes no purge command; project maintenance may
+remove only terminal, unlocked run directories. The selected-body receipt is a
+versioned JSON sidecar under the handoff directory. `index.sqlite` contains S9 fixture
+metadata and exact source-response BLOBs. Raw and derived payload bytes are not
+published under this tree; S10 keeps derived representations transient except for
+selected review outputs, and S11 owns any future durable payload layout.
+
+There is no retained `document_acquisition/runs/` tree: S9 runs are operational
+executions over an already-retained S6 plan, not published snapshots. This mirrors
+`document_inventory`'s transient run ownership while retaining S9 fixtures and S10
+reviews under the pipeline artifact root.
+
+## Raw and processed representations
+
+`StagedBodyRef.sha256` identifies the exact selected source bytes. For direct HTML,
+those are the raw HTML bytes; for a bundle target they are the selected child bytes,
+while the full bundle response remains separately identified. Fixture capture stores
+the full source response in SQLite and replay re-derives a bundle child.
+`source.inert.html` is only a sanitized review view and is never treated as raw HTML
+evidence.
+
+S10 result metadata keeps source and output digests separate. Plain ASCII `.txt` is a
+`text_verbatim` identity result with equal digests and no normalization call. HTML
+normalization produces a distinct text digest while its exact source remains
+available through replay when the source fixture was captured. Validated standalone
+XML is `xml_verbatim` and aliases the source digest rather than writing a duplicate
+representation. PDF retains raw source only;
+extraction is deferred. S10 outputs are transient unless explicitly promoted into a
+review run. No raw/normalized durable payload directory is invented here; S11 owns
+that later choice.
+
+## Identity and containment
+
+- Run, fixture, review, target, chunk, and attempt IDs pass the shared safe-ID
+  validator before joining paths. IDs are never copied from URLs, accessions,
+  filenames, or arbitrary command input.
+- Run paths resolve beneath the transient acquisition root, fixture paths beneath the
+  retained fixture root, and review paths beneath `review-runs`; containment is checked
+  against each owning root. Symlink/path traversal is refused.
+- Fixture IDs resolve through shared `foundation.runtime.fixtures.FixturePaths` to
+  immutable `manifest.json` and SQLite `index.sqlite`; no per-body path is generated.
+- Staging filenames are generated by the staging owner, not by target IDs or SEC
+  paths. An attempt writes to a temporary file and atomically adopts a completed
+  body reference only after byte count and digest verification.
+- A body-consumption receipt path is deterministically derived from the validated
+  run/target IDs and selected-body digest. S10 writes the versioned receipt through
+  the S9 path contract before deleting the consumed staged file.
+- Distribution bundle paths are generated by the shared distribution owner and
+  validated again on import; a worker-provided relative path cannot escape its
+  configured distribution root or overwrite another run.
+
+## API refusal behavior
+
+```python
+def validate_run_id(run_id: str) -> str: ...
+def validate_fixture_id(fixture_id: str) -> str: ...
+def validate_review_id(review_id: str) -> str: ...
+def validate_target_id(target_id: str) -> str: ...
+def validate_attempt_id(attempt_id: str) -> str: ...
+def validate_chunk_id(chunk_id: str) -> str: ...
+def validate_response_digest(sha256: str) -> str: ...
+def resolve_acquisition_paths(...) -> AcquisitionPaths: ...
+```
+
+Invalid IDs, roots outside their configured owner, symlink escapes, malformed
+digests, and existing path components with the wrong file/directory kind raise a
+typed `AcquisitionPathError`. Path resolution itself creates no run, fixture, review,
+or staging files.
+
+## Acceptance
+
+Every command, worker, fixture API, and processing-review adapter obtains paths
+through this owner. Tests use `tmp_path`; no generated fixture, review, or run output
+is written into the repository tree.

@@ -97,7 +97,7 @@ verified as implemented. Parser iteration remains owned by S3.
 {artifacts_root}/document_acquisition/review-runs/{review_id}/
   manifest.jsonl
   cases/{target_id}/source.inert.html
-  cases/{target_id}/normalized.txt
+  cases/{target_id}/representation.txt
   cases/{target_id}/processing.json
 ```
 

@@ -3,8 +3,10 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S9**.
-- Status: replacement acquisition remains design-only; legacy byte-oriented
-  acquisition components do not satisfy the staged S9 contracts.
+- Status: replacement acquisition remains design-only. The command-oriented
+  replacement contracts are indexed in
+  [document_acquisition](document_acquisition/cli_inventory.md); the older S9a–S9d
+  decomposition is retained as background design, not the active command index.
 - Depends on: validated S6 target-plan bundles and S4 broker lifecycle. S9 does not read
   S5 or catalog source artifacts.
 - Non-blocking: S10 processing uses the staged selected-body reference and fixture replay API.
@@ -13,7 +15,7 @@
 
 - **Status: replacement acquisition is not implemented.** Existing SEC HTTP and `document_storage` paths fetch and pass full response bytes; the old acquisition, fixture, and processing models do not satisfy the staged S9 contracts.
 - **Evidence:** [`infra/sec_http/client.py`](../../../edgar_sec/infra/sec_http/client.py) reads `response.content`; [`infra/broker/sec_broker.py`](../../../edgar_sec/infra/broker/sec_broker.py) returns payload bytes through its broker protocol. [`document_storage_disposition.md`](../document_storage_disposition.md) explicitly marks the old fetcher, fixture store, and work order as inspiration or non-reusable legacy contracts.
-- **Next step:** start with S9a after the S6 profile target-plan contract exists; then implement staged streaming, exact-sequence extraction, and the separate S9d fixture store in dependency order.
+- **Next step:** review the command contracts, then implement the project/run lifecycle and its acquisition execution boundary against the S6 target plan.
 
 ## Objective
 
@@ -68,16 +70,20 @@ class AcquisitionExecution:
 
 An HTTP 404, including a direct-target 404, is a transport failure with `error_code="http_not_found"` and acquisition status `failed`; it is never `not_filed`. `not_filed` means a complete bundle was fetched and parsed successfully but contained no document at the requested sequence. Duplicate sequence matches are `ambiguous`; malformed bundles and parse failures are `failed`. A fixture replay that succeeds has status `acquired` and source `fixture_replay`—replay provenance is not an outcome status. `selected_body` is present only for `acquired` results and is the S10 input; it is a managed transient path, not a payload value in the case row.
 
-## Subplan decomposition
+## Command contract index
 
-| Subplan | Contract |
+| Command | Contract |
 |---|---|
-| [S9a — Target adapter](S9a_target_adapter.md) | Validate S6 target plans and resolve eligible rows to acquisition work orders. |
-| [S9b — Streaming transport](S9b_stream_transport.md) | Stream broker responses to bounded transient files; return metadata handles, not payload bytes over IPC. |
-| [S9c — SGML bundle extraction](S9c_sgml_extraction.md) | Extract exactly one bundle sequence to a staged file with bounded memory and typed structural failures. |
-| [S9d — Acquisition fixtures](S9d_acquisition_fixtures.md) | Append-only SQLite case index plus content-addressed fixture bodies and verified offline replay. |
+| [`acquisition project`](document_acquisition/project.md) | Validate a self-contained S6 target plan and persist executable work without network access. |
+| [`acquisition status`](document_acquisition/status.md) | Inspect and validate resumable work state without mutation. |
+| [`acquisition run`](document_acquisition/run/index.md) | Execute bounded acquisition, exact bundle selection, cancellation, and explicit retry. |
+| [`acquisition distrib`](document_acquisition/distribution/index.md) | Future remote-work design; live SEC execution is gated on cross-host rate coordination and is not in the first implementation. |
+| [`acquisition fixture`](document_acquisition/fixtures/index.md) | Explicitly capture and verify append-only evidence for zero-network replay. |
 
-Implement the interfaces in order: target adapter, transport and extraction, then fixture capture/replay. S10 consumes S9's staged selected-body and fixture replay contracts; it does not reach into S9 storage internals.
+The former S9a–S9d documents remain available as earlier technical notes while this
+command design is reviewed. S10 consumes S9's selected-body and fixture replay
+contracts; it does not reach into S9 storage internals. S9 does not normalize bodies
+or publish a durable payload snapshot.
 
 ## Shared invariants
 

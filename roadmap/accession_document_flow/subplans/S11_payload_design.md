@@ -10,7 +10,7 @@
 ## Current tracked-code audit (2026-10-08)
 
 - **Status: design gate remains open; no approval or decision record is evidenced.** The representative S9 acquisition cases and S10 processing-review cases required as decision inputs are not implemented, so the candidate comparison and evidence-based approval checklist cannot yet be completed.
-- **Evidence:** the S9a–S9d and S10 audits in their subplans record the missing prerequisite artifacts. The existing [`document_storage` processor](../../../edgar_sec/pipelines/document_storage/processor.py) and persisted snapshot path are legacy behavior, not an S11 decision or replacement-store implementation; [`document_storage_disposition.md`](../document_storage_disposition.md) keeps that package frozen pending the retirement gate.
+- **Evidence:** the command-oriented [S9 acquisition contracts](document_acquisition/cli_inventory.md) and [S10 audit](S10_processing.md) record the missing prerequisite artifacts. The existing [`document_storage` processor](../../../edgar_sec/pipelines/document_storage/processor.py) and persisted snapshot path are legacy behavior, not an S11 decision or replacement-store implementation; [`document_storage_disposition.md`](../document_storage_disposition.md) keeps that package frozen pending the retirement gate.
 - **Next step:** complete and review S9/S10 representative fixture cases first; then write the required decision record with evidence, rejected alternatives, migration implications, and explicit approval identity/date. Do not implement or cut over a durable replacement before approval.
 
 ## Objective
@@ -23,12 +23,19 @@ Representative captured cases cover:
 
 - Inventory-index direct URLs and legacy bundle-sequence targets.
 - Catalog-direct targets, with their separate `source_origin` and plan provenance.
-- HTML, iXBRL visible-text, standalone XML, data files, and binary/PDF routes.
+- ASCII `.txt` passthrough, HTML/iXBRL visible-text, standalone XML, data files, and
+  binary/PDF routes.
 - Missing targets, oversized responses, malformed bundles, extraction ambiguity, and processing failures.
 - Repeated identical source bytes across accessions, target plans, and CIK source relationships.
 - Reprocessing the same source bytes under a changed processor fingerprint.
 
-Each case pins the S6 target plan and source artifact, S9 response/selected-body digests, and S10 processor fingerprint/output digest. Fixture CAS bodies in S9d are evidence only, not a presumption about the durable-store design.
+Each case pins the S6 target plan and source artifact, S9 response/selected-body digests, and S10 processor fingerprint/output digest. SQLite-BLOB fixture bodies from [S9 fixture capture/replay](document_acquisition/fixtures/index.md) are evidence only, not a presumption about the durable-store design.
+
+The representation corpus distinguishes HTML's raw source from its derived text;
+ASCII `.txt` passthrough and validated XML may alias their source bytes; PDF remains
+raw-only until an extractor is approved. Identity-equal representations must not be
+counted as independently transformed payloads merely because they have different
+roles in the schema.
 
 ## Design questions
 
@@ -57,8 +64,14 @@ Score each candidate against replay fidelity, storage/read amplification, duplic
 
 - The S5 snapshot remains annual, immutable, and queryable; no payload part/hash/offset field is introduced there.
 - `source_origin="inventory_index" | "catalog_direct"` and the input plan/snapshot references are occurrence provenance, not payload identity.
+- A `catalog_direct` occurrence records a catalog-supplied locator, not an index-verified
+  statutory type. Cover-boundary or delegation diagnostics do not promote it to an
+  inventory fact or authorize a replacement target.
 - A target-plan row is intent. It does not become a payload occurrence until acquisition succeeds and the selected bytes have a verified digest.
-- S9 fixture body files remain bounded review evidence. Their directory layout, compression, and cleanup rules do not silently become the production payload store.
+- A target discovered ad hoc by S9/S10 has no pinned `target_id` and cannot become a
+  payload occurrence; publish inventory evidence and a new S6 plan first.
+- S9 fixture source bodies are raw SQLite BLOBs retained as bounded review evidence.
+  Their schema and cleanup rules do not silently become the production payload store.
 
 ## Replacement and migration boundary
 
@@ -82,7 +95,7 @@ Until the design is explicitly approved:
 
 - No durable production payload Parquet, CAS, DuckDB BLOB, or payload linkage is emitted by any stage.
 - S5's annual inventory schema and S6 target plans remain metadata/intent only.
-- Normalized outputs exist only in bounded worker memory or selected S7 review artifacts; raw bodies remain transient or in S9d's acquisition fixture store.
+- Normalized outputs exist only in bounded worker memory or selected S7 review artifacts; raw bodies remain transient or in the S9 acquisition fixture store.
 - No `document_storage` code or artifact is migrated, rewritten, or deleted.
 
 ## Deliverable and acceptance

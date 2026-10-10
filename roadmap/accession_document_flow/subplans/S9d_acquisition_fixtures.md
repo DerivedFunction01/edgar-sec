@@ -1,17 +1,26 @@
-# S9d — Acquisition Fixture Store and Replay
+# Earlier S9d fixture proposal (superseded)
+
+> The file-backed body-store design below is historical and must not be implemented.
+> The active contract stores exact source-response bytes as SQLite BLOBs in one
+> `index.sqlite`, with no external body files. See the current
+> [fixture storage contract](document_acquisition/fixtures/storage.md) and
+> [fixture command index](document_acquisition/fixtures/index.md).
+>
+> All remaining sections on this page preserve the earlier proposal for historical
+> context; they are not current S9 requirements.
 
 ## Owner and status
 
 - Owning stage in [S9](S9_acquisition.md): append-only review evidence.
-- Status: SQLite case-index and file-backed-body design only; the current legacy
-  fixture store uses SQLite BLOBs and a different identity/schema.
+- Status: superseded file-backed-body proposal; the current legacy fixture store uses
+  SQLite BLOBs and a different identity/schema.
 - Depends on: [S9a target rows](S9a_target_adapter.md), [S9b staged response bodies](S9b_stream_transport.md), [S9c extraction](S9c_sgml_extraction.md).
 
 ## Current tracked-code audit (2026-10-08)
 
 - **Status: legacy fixture storage exists; the S9d case/replay contract is not implemented.** The current append-only SQLite store keeps compressed payloads as database BLOBs keyed by legacy document locator, not response bodies as external content-addressed files with acquisition-case lineage.
 - **Evidence:** [`document_storage/fixture_store.py`](../../../edgar_sec/edgar_sec/pipelines/document_storage/fixture_store.py) defines `fixture_payloads(doc_id, raw_payload)` and `put_many`; [`test_fixture_store.py`](../../../tests/pipelines/document_storage/test_fixture_store.py) verifies insert-ignore behavior and byte round-trips. The disposition document explicitly distinguishes this from S9d.
-- **Next step:** after S9a–S9c expose staged bodies and typed results, implement the append-only `(capture_id, target_id)` case index, external digest-verified body files, and offline replay tests.
+- **Historical next step:** the original proposal called for an external digest-verified body store. That design is superseded by the current SQLite-BLOB contract linked above.
 
 ## Objective
 
