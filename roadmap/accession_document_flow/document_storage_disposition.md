@@ -37,6 +37,83 @@ acquisition shape, implicit date/name recovery, checkpoint schema, and payload p
 are not carried forward. Catalog-direct `exact_form_with_lazy_index` is a new,
 explicitly profile-authorized S9 policy, not reuse of the legacy candidate finder.
 
+The historical rationale was sparse acquisition, not indiscriminate bundle storage:
+ordinary work fetched one primary; only a date- and statutory-name-gated apparent
+pre-2005 sequence inversion paid for a full bundle, to recover the form-typed primary
+and preserve its misplaced exhibit. The aggregate sketch kept attachments lazy and
+the raw bundle absent by default; the execution record also required releasing the
+bundle before body processing. A separate 10-K evaluator addressed abbreviated
+reports that delegate content to EX-13. Those choices reduced redundant transfer and
+live bytes within the locator/aggregate model. S6 now makes demand explicit, while
+S9 must retain the bounded-transfer, streamed-body, and exact-selected-body resource
+properties without inheriting its heuristics. Historical rationale is in
+[`old/design.md`](../old/design.md) and
+[`old/execution_1.md`](../old/execution_1.md); their empirical claims are historical
+evidence, not new selection rules.
+
+## Lifecycle-to-legacy crosswalk
+
+S6 is implemented in `document_planning`; replacement S9/S10 execution and S11
+payload publication remain design-only. S6's default generated profile is
+primary-only. Companion acquisition occurs only when a selected profile declares
+those targets; the annual/EX-13 sample in the [planning specification](subplans/document_planning/specs.md)
+is an example, not the default runtime profile.
+
+| Legacy lifecycle | Replacement owner and necessary responsibility | Retire or replace |
+|---|---|---|
+| Filing-catalog locator plan and candidate gate | S6 consumes the catalog plan for accession scope and emits one row per declared role/type request, resolved against pinned S5 rows or the allowed catalog-direct primary mode. | Remove date-window, filename-token, and candidate-count routing. S6 observed type/sequence/link evidence, not inferred filename intent, determines targets and retrieval mode. |
+| `ArchiveFetcher.fetch()` / `fetch_bundle()` and fixture/live URL fallback | S9 validates pinned target locators, performs bounded direct or exact-sequence acquisition, and records source/selected digests and typed outcomes. S9 fixtures provide explicit zero-network replay. | Replace byte-returning pipeline fetch methods and fixture lookup conventions; no archive-root/rendered fallback or implicit full-submission fallback. |
+| Single-body SGML selection, candidate recovery, and sequence-1 primary inference | S6 supplies target intent and, for `bundle_sequence`, the exact observed sequence. S9 extracts that sequence; only the separately authorized catalog-direct lazy-index selector can resolve a replacement slot from fresh observed index rows. | Retire selected-index heuristics, lowest-sequence primary inference, and dual-write. Do not interpret target role/type as proof of the SGML child's type. |
+| `FilingProcessor.process(AcquiredSubmission)` and evaluator dispatch | S10 accepts the S9 staged body assigned to the immutable target, applies route/form normalization, and returns a versioned metadata-only result plus a consumption receipt. | Replace the bytes-bearing processor/result and remove text-triggered acquisition. Preserve engine normalization, route semantics, deterministic fingerprints, and explicit binary/paper/XML handling. |
+| Locator chunks, sidecars, and `DOCUMENT_SNAPSHOT_SCHEMA` | S9 owns an immutable target work order plus resumable per-run target/attempt/resolution state; S10 results are independently recoverable. | Retire locator/occurrence checkpoint identities, delegation sidecars, and the combined raw/normalized row. |
+| `merger.publish_snapshot()` and old quarter-bucketed parts | S11 publishes target/slot/result evidence and separate digest-keyed binary/text payload relations through the acquisition DAG; S8 owns inventory maintenance. | Retire the old merger, row/part schemas, old query layout, and legacy vacuum. Pointer-last publication, integrity validation, retention, and compaction remain necessary under their new owners. |
+| Legacy fixtures, review artifacts, viewer, and `documents` command | S7/S9 own their distinct review/fixture contracts; S12 owns the integrated surface; the viewer must read the chosen replacement artifacts or lose the old document API. | Migrate or explicitly retire consumers and persisted trees; legacy compatibility is not implied by new payload publication. |
+
+### One historical accession path
+
+`tests/fixtures/document_storage/exhibit_primary.sgm` is a synthetic envelope for
+accession `0000320193-02-000123`: its EX-21 is sequence 1 and the 10-K is sequence
+3. Given a catalog EX-21 locator and an actual occurrence `filing_date` in the old
+window, the frozen `candidate_for()` accepts its statutory filename; the accession
+year alone cannot satisfy that gate. `process_chunk()` diverts it to
+`run_candidate_recovery()`, which calls `fetch_bundle()`. The archive backend builds
+the full-submission `.txt` URL from the locator accession and archive CIK (or replays
+the configured fixture); the ordinary direct-fetch URL/rendered fallback is bypassed
+on this candidate path. The resolver checks the requested basename and accepted
+10-K type, then selects the lowest-sequence form-matching child, not sequence 1. It
+processes both the requested EX-21 and
+recovered `a10k.htm` primary, projecting rows for occurrences. Both acquired views
+retain the catalog filing form `10-K`, so `FilingProcessor` routes each through the
+annual evaluator based on form, not the selected SGML child's `<TYPE>`; either can
+therefore produce a legacy EX-13 delegation. The worker writes checkpoint rows, the
+operator may run the separate delegation fetch/processing pass, and the merger
+publishes old index/payload parts before advancing its pointer. This is a stitched
+trace of independently tested current functions, not an end-to-end accession test.
+On the ordinary locator path, `processing._process_locator()` optionally sends the
+selected source bytes to the fixture `payload_sink`, then stores
+`ProcessedDocument.payload` in the snapshot's `raw_payload` column with
+`ProcessedDocument.text` as `normalized_text`; for text, that payload is normalized
+UTF-8, while binary/pass-through routes preserve their source bytes. Candidate
+recovery similarly puts the processor output, not the original bundle, in each
+`CandidateOutcome.raw_payload`.
+The resolver contract is pinned by
+[`test_primary_recovered_from_exhibit_position_one`](../../tests/pipelines/document_storage/test_resolution.py)
+while candidate date/name contracts are pinned by
+[`test_the_accession_year_is_never_a_substitute`](../../tests/pipelines/document_storage/test_candidates.py)
+and [`test_the_verified_inversion_sample_is_a_candidate`](../../tests/pipelines/document_storage/test_candidates.py).
+These are separate fixture behaviors, not an integrated test or evidence about that
+accession's live SEC filing.
+
+For the replacement, given equivalent S5 observations, S6 would independently
+plan the primary from `document_type=10-K` and an optional EX-21 from its observed
+type/sequence. An unlinked EX-21 can become a `bundle_sequence` target; S9 selects
+sequence 1 for that target and sequence 3 for the primary target, each by its own
+target identity. If the chosen profile also declares EX-13, it is a third planned
+target; if it does not, S10 cannot create one. S10 processes only acquired target
+bodies, returns per-target results, and S11 publishes payload/result/slot links by
+digest. The legacy resolver test is not a test of the full replacement path; S9/S10
+and the S11 publisher still require their planned fixture-to-publication gate.
+
 ## Package-module dispositions
 
 Every linked module below is a retirement candidate (**D**). Replacement ownership
@@ -109,21 +186,74 @@ fixture contract. Keep only independently owned lower-layer behavior named above
 
 ## Evaluator and delegation disposition
 
-The legacy evaluator SPI, including `REFETCH_SUB_DOC`, does not cross into S6, S9,
-or S10. S6 profiles declare primary and companion targets before acquisition. A new
-versioned local primary identity screen may authorize one S9 index lookup only when
-the S6 catalog-direct selector explicitly enables it; that path selects an existing
-indexed physical slot and never delegates to an evaluator callback. S10 never turns
-text findings into fetches or new target rows. Annual EX-13 phrase/window research may be retained as fixture and
-test evidence or, after separate review, as a versioned advisory diagnostic. It is
-not a substitute for an EX-13 target declaration and cannot change acquisition or
-storage identity. Preserve useful linguistic examples without carrying over the
-legacy evaluator API or assuming its symbols are the new contract. The provisional
-post-selection primary-versus-exhibit assessment is specified in
+[`FilingProcessor.process()`](../../edgar_sec/pipelines/document_storage/processor.py)
+normalizes one selected body, then invokes `get_plugin(locator.form).evaluator(result.text)`
+for non-paper, non-binary bodies. For a 10-K,
+[`evaluate_annual()`](../../edgar_sec/engine/forms/plugins/evaluators/annual.py)
+searches for an EX-13 anchor and nearby delegation verbs; the first qualifying match
+returns `REFETCH_SUB_DOC`, `target_exhibit="EX-13"`, and span/line diagnostics.
+[`processing._process_locator()`](../../edgar_sec/pipelines/document_storage/processing.py)
+persists that request in a delegation sidecar, and
+[`operator._publish_delegations()`](../../edgar_sec/pipelines/document_storage/operator.py)
+later fetches/resolves/processes the exhibit through
+[`delegation.resolve_delegated_exhibit()`](../../edgar_sec/pipelines/document_storage/delegation.py).
+This is real legacy
+second-pass acquisition, not merely a report annotation. Although
+`evaluate_annual()` has a post-2011 shortcut, the only production caller passes no
+`filing_year`, so the shortcut cannot fire on this path. The 20-F plugin uses the
+generic evaluator; it does not run this EX-13 detector.
+
+S6 makes evaluator-driven scheduling obsolete when a profile declares the
+companion: the target exists before acquisition and has independent required or
+optional status. It does not make the linguistic signal inherently useless. Retain
+the phrases as historical fixture evidence; any future S10 finding is diagnostic
+only, cannot repair the plan, and requires the separate evidence/review gate in
+`S10_exhibit_assessment.md`. The catalog-direct `exact_form_with_lazy_index` screen
+is a distinct S9 policy: only that pinned selector can trigger a bounded index
+lookup, and only observed index type evidence can select another physical slot.
+
+The same fate applies to the other evaluator routing surface, but not to form
+normalization: `engine/forms/plugins/evaluators/current.py` and
+`quarterly.py` always return `PROCEED`; quarterly metadata shortcuts are likewise
+unreachable because the caller supplies only text. `evaluate_generic()` in
+`engine/forms/plugins/base.py` also only proceeds. Production evaluator/registry use
+is confined to the legacy `FilingProcessor`; mirrored tests under
+`tests/engine/forms/plugins/` including
+[`test_annual.py`](../../tests/engine/forms/plugins/evaluators/test_annual.py) pin
+these standalone contracts. After the processor caller migrates, remove the evaluator-only SPI,
+`DecisionAction.REFETCH_SUB_DOC`, and plugin registry/evaluator modules only if a
+repository-wide caller check confirms no remaining consumer. Keep
+`engine/forms/cover/profiles.py`, `engine/forms/normalize.py`, and their form
+evidence: they perform current normalization and are not the evaluator router.
+Also update the now-stale production-consumer and deliberate-gap prose in
+`edgar_sec/engine/forms/plugins/README.md` when that migration happens.
+
+The provisional post-selection primary-versus-exhibit assessment is specified in
 [S10_exhibit_assessment.md](subplans/S10_exhibit_assessment.md); its evidence gate
 does not pass on the upload sketch alone. The full legacy call path and verified
 failure modes are recorded in
 [S10_legacy_processing_trace.md](subplans/S10_legacy_processing_trace.md).
+
+## Shared interfaces and conditional retirements
+
+These are migration boundaries, not permission to remove engine/domain APIs when
+the old package is deleted:
+
+| Current interface or symbol | Required replacement / retained behavior | Removal precondition |
+|---|---|---|
+| [`SecHttpClient.get_bytes()`](../../edgar_sec/infra/sec_http/client.py) and [`SecBrokerClient.fetch()`](../../edgar_sec/infra/broker/sec_broker.py) return the complete response body in memory; `ArchiveFetcher.fetch(DocumentLocator)` / `fetch_bundle()` build `FetchResult` / `BundleFetchResult` with payload bytes. | Add the S9 streaming-to-managed-stage transport and body-free broker/process handoff. Retain shared SEC pacing, retries, cache policy where compatible, and failure ledger. | Remove the legacy fetch protocols/backends only after S9 direct/bundle acquisition, failure outcomes, fixture replay, and consumers pass without byte-returning legacy APIs. |
+| `extract_target_sub_document_selection(raw_bytes, ...)` and `scan_filing_bundle(...)` in [`engine/document/unpacking/unpacker.py`](../../edgar_sec/engine/document/unpacking/unpacker.py). | S9 needs the planned bounded [`extract_bundle_sequence(source: StagedBodyRef, selector: BundleSelector, ...)`](subplans/S9c_sgml_extraction.md#interface) interface, returning selected-body metadata/digests and a staged child body. The existing bytes-based API remains useful to `representation.py`, small-fixture parity tests, and normalizer envelope defense-in-depth. | Do not remove general unpack/representation helpers merely because the old fetcher goes away. Replace only legacy fallback/resolution helpers after all engine and test callers move to the bounded API. |
+| `FilingProcessor.process(AcquiredSubmission) -> ProcessedDocument`; `ProcessedDocument.payload` and `DocumentProcessor` couple transformation to legacy payload persistence. `processing._process_locator()` and `review_artifacts` call the current normalizer on bytes. | Implement the planned S10 `process_target(request: ProcessingRequest, ...) -> ProcessingResult` over a verified `StagedBodyRef`; return metadata/digests/status rather than payload bytes and write the S9 `BodyConsumptionReceipt` only after body consumption. Add `capture_stage_trace=False` to `normalize_document(raw_bytes, ...)` while preserving current default behavior and golden output; retain existing callers' default and mirrored coverage in [`test_normalize.py`](../../tests/engine/forms/test_normalize.py). | Retire the processor/result/protocol only after S10 route/fingerprint/failure tests and S9 receipt integration pass, all callers including review migrate, and no legacy payload writer consumes the result. The normalizer itself remains engine functionality. |
+| `domain.document.acquisition`: legacy `AcquiredSubmission`, `FetchResult`, `BundleFetchResult`, `DocumentReference`, resolution outcomes, and `SubmissionDocument`. | Most records describe the old pipeline, but `engine/document/unpacking/unpacker.py` still imports `SubmissionDocument` and `describe_submission_document` to report observed SGML headers. Move/replace that descriptor contract before removing the module; keep S9 acquisition models under its pipeline owner. | Split the active header descriptor from old byte-bearing acquisition/resolution types, then verify `unpacker.py` and all mirrored tests no longer import the retired module. |
+| `domain.document.models.DocumentLocator`, `FilingOccurrence`, `RawDocumentBlob`, `NormalizedDocument`, and `NormalizationFailure`; legacy candidate/resolution helpers in `document_storage.candidates`, `resolution`, `occurrences`, and `candidate_recovery`. | Accession identity and S5 source-CIK relations remain. S6 target rows and S9 physical slots replace locator/occurrence identity for acquisition; do not synthesize co-filer occurrences. | Audit each model/helper's external importers and tests before removal. Remove candidate-date/name routing only after S6 plans own target selection and no legacy execution/review path calls `candidate_for()` or `resolve_candidate_filing()`. |
+| `FilingProcessor` calls `get_plugin()`; plugin evaluator modules and `DecisionAction` / `EvaluatorDecision` represent triage and re-fetch. | No evaluator schedules acquisition in S6/S9/S10. Preserve cover profiles/normalization; retain EX-13 language only as evidence or reviewed advisory output. | Remove after all processor, CLI, review, domain-model, and tests migrate; confirm plugin stage flags/evaluator symbols have no other production users. |
+
+The SGML selection helpers are not interchangeable: legacy
+`extract_from_sgml_envelope()` derives accepted types from the requested form and
+allows filename/sequence-1/first-plausible fallback, while the legacy inversion
+resolver uses strict requested-basename and accepted-type checks plus lowest
+accepted sequence. Replacement S9 must use the pinned sequence and report absent,
+duplicate, malformed, or oversize cases distinctly; it must not port either policy.
 
 ## Existing consumers to migrate
 
@@ -156,25 +286,33 @@ or change it to an explicit invalid-schema fixture when the old shape is removed
 ## Decommission gate and map maintenance
 
 Removal is not authorized by freezing the package or by S12’s offline test alone.
-After S11 payload storage is implemented, the separate retirement change must:
+The ordered retirement work starts only after these replacement gates pass:
 
-1. Verify each old behavior is either covered by S0–S12/S11 replacement tests or
-   explicitly accepted as an omitted capability; in particular assess candidate
-   recovery, stub delegation, binary retention, and old snapshot compatibility.
-2. Migrate or retire `run.py`’s public command, viewer loaders/API, path/settings
-   consumers, scanner exceptions, and old artifact readers.
-3. Migrate, archive, or explicitly expire existing snapshots, fixtures, and review
-   runs; validate rollback and retention before deleting data or code.
-4. Remove the package, its mirrored tests, CLI registration, and obsolete package
-   settings/paths only after repository-wide import, artifact, and command checks
-   show no remaining consumer.
-5. Update the [root README](../../README.md),
+1. Implement bounded S9 transport and exact-sequence extraction, S10's staged-body
+   processing/result/receipt contract, and S11's approved durable publisher. Pass the
+   fixture-driven S9-to-S10 gate and read-back/publication integrity checks; a test
+   that stops at a selected body is not end-to-end parity.
+2. Exercise a representative pinned catalog/S5-to-S6-to-S9-to-S10-to-S11 path,
+   including direct and bundle targets, optional missing targets, inversion fixture,
+   EX-13 declared and undeclared cases, binary retention, retry/resume, and processing
+   failures. Record accepted omissions (including evaluator diagnostics) explicitly.
+3. Migrate or retire `run.py`'s public command, viewer loaders/API, old artifact
+   readers, foundation settings consumers, and scanner exceptions. Prove new query
+   consumers can read the published replacement artifacts.
+4. Decide old snapshot, fixture, review-run, and viewer-data retention/migration;
+   verify backup/rollback and expiration behavior before deleting persisted data.
+5. Remove `document_storage` and its mirrored tests only after repository-wide import,
+   artifact-path, fixture-helper, command, and test checks show no remaining consumer.
+   Then remove conditional domain/plugin symbols and stale settings only after their
+   individual caller preconditions in the cross-layer table pass.
+6. Update the [root README](../../README.md),
    [`edgar_sec/README.md`](../../edgar_sec/README.md),
    [`pipelines/README.md`](../../edgar_sec/pipelines/README.md), package README
    layouts, [`inventory_snapshot.md`](inventory_snapshot.md),
-   [`roadmap/execution_1.md`](../execution_1.md), shared-owner READMEs listed above,
-   and this map so no tracked document points at a deleted source module or artifact
-   path.
+   [`roadmap/old/execution_1.md`](../old/execution_1.md),
+   [`engine/forms/plugins/README.md`](../../edgar_sec/engine/forms/plugins/README.md),
+   shared-owner READMEs, and this map so no tracked document points at a deleted
+   source module or artifact path.
 
 Until that gate is approved and complete, old files are frozen in the tree and the
 module links above remain live evidence. No module or artifact is deleted by S9–S12.
