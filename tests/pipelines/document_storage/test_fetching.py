@@ -28,6 +28,7 @@ from edgar_sec.pipelines.document_storage.fetching import (
     build_broker_fetcher,
     extract_from_sgml_envelope,
     make_archive_fetcher,
+    _submission_targets,
 )
 from edgar_sec.pipelines.document_storage.fixture_store import FixtureStore
 from edgar_sec.pipelines.document_storage.processor import PassThroughProcessor
@@ -695,6 +696,50 @@ def test_archive_root_url_derives_the_original() -> None:
 
 def test_archive_root_url_is_none_for_a_flat_path() -> None:
     assert archive_root_url(_locator()) is None
+
+
+@pytest.mark.parametrize(
+    "url",
+    [
+        RENDERED_URL.replace("000123456711000001", "000123456711000002"),
+    ],
+)
+def test_archive_candidates_require_locator_accession_scope(url: str) -> None:
+    locator = DocumentLocator.from_parts(
+        ACCESSION,
+        "xslF345X02/edgar.xml",
+        archive_url=url,
+        form="4",
+    )
+
+    assert _submission_targets(locator) == (None, None)
+    assert archive_root_url(locator) is None
+
+    client = FakeHttpClient({})
+    fetcher = LiveArchiveFetcher(client)
+    fetcher.fetch(locator)
+    assert fetcher.fetch_bundle(locator).status == "missing"
+    assert client.calls == []
+
+
+def test_archive_candidate_keeps_archive_cik_distinct_from_source_cik() -> None:
+    accession = "0000950134-01-500666"
+    url = "https://www.sec.gov/Archives/edgar/data/4515/000095013401500666/primary.htm"
+    locator = DocumentLocator.from_parts(
+        accession,
+        "primary.htm",
+        archive_url=url,
+        source_cik="950134",
+        form="10-Q",
+    )
+
+    direct_url, bundle_url = _submission_targets(locator)
+
+    assert direct_url == url
+    assert bundle_url == (
+        "https://www.sec.gov/Archives/edgar/data/4515/"
+        "000095013401500666/0000950134-01-500666.txt"
+    )
 
 
 def test_resolution_does_not_alter_locator_identity() -> None:

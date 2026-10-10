@@ -22,12 +22,12 @@ from edgar_sec.domain.filing_catalog.schemas import (
 )
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.domain.document_inventory.models import CohortObservation
+from edgar_sec.domain.sec_urls import index_url_for
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest, PartDescriptor
 from edgar_sec.pipelines.document_inventory.cohort import (
     CohortInputError,
-    index_url_for,
     project_cohort,
     read_catalog_observations,
 )
@@ -639,6 +639,7 @@ def test_project_cohort_multi_source_first_seen_by(tmp_path: Path) -> None:
 def test_index_url_for_canonical_shape() -> None:
     url = index_url_for(
         AccessionNumber("0000320193-23-000106"),
+        Cik(320193),
         archive_base_url="https://www.sec.gov/Archives/edgar/data",
     )
     assert (
@@ -647,18 +648,19 @@ def test_index_url_for_canonical_shape() -> None:
     )
 
 
-def test_index_url_for_archive_cik_unpadded() -> None:
-    """The archive CIK is the integer prefix: 0000950123 -> 950123."""
+def test_index_url_for_unpads_the_explicit_archive_cik() -> None:
     url = index_url_for(
         AccessionNumber("0000950123-94-000687"),
+        Cik(4515),
         archive_base_url="https://www.sec.gov/Archives/edgar/data",
     )
     assert (
         url
-        == "https://www.sec.gov/Archives/edgar/data/950123/000095012394000687/0000950123-94-000687-index.html"
+        == "https://www.sec.gov/Archives/edgar/data/4515/000095012394000687/0000950123-94-000687-index.html"
     )
     url = index_url_for(
         AccessionNumber("0000009015-00-000054"),
+        Cik(9015),
         archive_base_url="https://www.sec.gov/Archives/edgar/data",
     )
     assert (
@@ -670,11 +672,35 @@ def test_index_url_for_archive_cik_unpadded() -> None:
 def test_index_url_for_base_url_handling() -> None:
     url = index_url_for(
         AccessionNumber("0000320193-23-000106"),
+        Cik(320193),
         archive_base_url="https://www.sec.gov/Archives/edgar/data/",
     )
     assert (
         url
         == "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/0000320193-23-000106-index.html"
+    )
+
+
+def test_project_cohort_keeps_accession_filer_and_archive_ciks_distinct() -> None:
+    accession = AccessionNumber("0000950134-01-500666")
+    observed = [
+        CohortObservation(
+            "plan", accession, Cik(4515), "10-Q", date(2001, 4, 24), None
+        ),
+        CohortObservation(
+            "plan", accession, Cik(950134), "10-Q", date(2001, 4, 24), None
+        ),
+    ]
+
+    cohort = project_cohort(
+        observed, archive_base_url="https://www.sec.gov/Archives/edgar/data"
+    )
+
+    assert cohort.accessions[0].filing_cik == Cik(950134)
+    assert cohort.accessions[0].source_ciks == (Cik(4515), Cik(950134))
+    assert cohort.work_items[0].index_url == (
+        "https://www.sec.gov/Archives/edgar/data/4515/"
+        "000095013401500666/0000950134-01-500666-index.html"
     )
 
 

@@ -26,14 +26,18 @@ from edgar_sec.domain.filing_catalog.schemas import (
     TARGET_SCHEMA_VERSION,
 )
 from edgar_sec.domain.identity import AccessionNumber, Cik
+from edgar_sec.domain.sec_urls import index_url_for
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.parquet import count_parquet_rows
+from edgar_sec.pipelines.document_inventory.paths import (
+    PLAN_TARGETS_DIR,
+    form_partition_directory,
+)
 
 __all__ = [
     "CohortInputError",
-    "index_url_for",
     "project_cohort",
     "read_catalog_observations",
 ]
@@ -259,13 +263,13 @@ def _read_plan_manifest(source_dir: Path) -> tuple[list[Path], int | None]:
         raise CohortInputError("invalid_bundle", None, detail="plan forms is empty")
     declared_count = 0
     part_paths: list[Path] = []
-    targets = source_dir / "targets"
+    targets = source_dir / PLAN_TARGETS_DIR
     if not targets.is_dir():
         raise CohortInputError(
             "invalid_bundle", None, detail="plan targets dir missing"
         )
     for form in sorted(forms):
-        partition = "form=" + form.replace("/", "_")
+        partition = form_partition_directory(form)
         part_path = targets / partition / DATA_FILE_NAME
         if not part_path.is_file():
             raise CohortInputError(
@@ -346,7 +350,12 @@ def project_cohort(
         )
         work_items.append(
             IndexWorkItem(
-                accession, index_url_for(accession, archive_base_url=archive_base_url)
+                accession,
+                index_url_for(
+                    accession,
+                    source_ciks[0],
+                    archive_base_url=archive_base_url,
+                ),
             )
         )
 
@@ -401,16 +410,3 @@ def _raise_duplicate_conflict(
             detail=f"{existing.report_date} vs {obs.report_date}",
         )
     # Identical duplicate: collapse, no new source row.
-
-
-def index_url_for(accession: AccessionNumber, *, archive_base_url: str) -> str:
-    """Build the canonical index-page URL from the accession's identity.
-
-    The archive CIK is the integer prefix, so a leading-zero prefix is
-    emitted unpadded; the directory is compact and filename is hyphenated.
-    """
-    archive_cik = int(accession.normalized[:10])
-    return (
-        f"{archive_base_url.rstrip('/')}/{archive_cik}/{accession.normalized}/"
-        f"{accession}-index.html"
-    )

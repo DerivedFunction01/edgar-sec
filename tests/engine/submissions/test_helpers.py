@@ -8,7 +8,6 @@ from __future__ import annotations
 from edgar_sec.domain.identity import Cik
 from edgar_sec.engine.submissions import helpers
 from edgar_sec.engine.submissions.helpers import (
-    ACCESSION_RE,
     accession_normalized,
     add_anomaly,
     build_archive_url,
@@ -21,7 +20,6 @@ from edgar_sec.engine.submissions.helpers import (
 
 def test_the_public_surface_is_explicit() -> None:
     assert set(helpers.__all__) == {
-        "ACCESSION_RE",
         "accession_normalized",
         "add_anomaly",
         "build_archive_url",
@@ -101,12 +99,6 @@ def test_accession_normalized_is_lenient_but_bounded() -> None:
     assert accession_normalized("000003799626000039") == "000003799626000039"
     for bad in (None, "", "not-an-accession", "0000037996-26-00003", "0" * 19):
         assert accession_normalized(bad) is None, bad
-
-
-def test_accession_pattern_is_anchored() -> None:
-    assert ACCESSION_RE.match("0000037996-26-000039")
-    assert not ACCESSION_RE.match("x0000037996-26-000039")
-    assert not ACCESSION_RE.match("0000037996-26-000039-extra")
 
 
 def test_build_archive_url_requires_a_usable_accession() -> None:

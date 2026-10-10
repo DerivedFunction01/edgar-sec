@@ -33,7 +33,7 @@ from edgar_sec.domain.sec_urls import (
     SEC_ARCHIVE_BASE,
     full_submission_url_for,
     normalize_accession,
-    parse_archive_url,
+    validate_archive_url,
 )
 from edgar_sec.engine.document.unpacking.unpacker import (
     extract_target_sub_document_selection,
@@ -145,11 +145,11 @@ def _fixture_source(key: str) -> AcquisitionSource:
 
 def _submission_targets(locator: DocumentLocator) -> tuple[str | None, str | None]:
     """Return ``(direct_url, full_submission_url)`` for a locator."""
-    parts = parse_archive_url(locator.archive_url)
-    full_sub_url = (
-        full_submission_url_for(parts.archive_cik, locator.accession) if parts else None
-    )
-    return locator.archive_url, full_sub_url
+    try:
+        parts = validate_archive_url(locator.archive_url, locator.accession)
+    except ValueError:
+        return None, None
+    return parts.url, full_submission_url_for(parts.archive_cik, locator.accession)
 
 
 def archive_root_url(locator: DocumentLocator) -> str | None:
@@ -160,8 +160,9 @@ def archive_root_url(locator: DocumentLocator) -> str | None:
     basename = archive_root_candidate(locator.document_path)
     if basename is None or not locator.archive_url:
         return None
-    parts = parse_archive_url(locator.archive_url)
-    if parts is None:
+    try:
+        parts = validate_archive_url(locator.archive_url, locator.accession)
+    except ValueError:
         return None
     return f"{SEC_ARCHIVE_BASE}/{parts.archive_cik}/{parts.accession}/{basename}"
 
@@ -397,10 +398,9 @@ class BrokerArchiveFetcher:
 
     def fetch_bundle(self, locator: DocumentLocator) -> BundleFetchResult:
         """Acquire the complete submission bundle for a candidate locator."""
-        from edgar_sec.domain.sec_urls import parse_archive_url
-
-        parts = parse_archive_url(locator.archive_url)
-        if parts is None:
+        try:
+            parts = validate_archive_url(locator.archive_url, locator.accession)
+        except ValueError:
             return BundleFetchResult(
                 status="missing", error="locator has no archive URL"
             )
@@ -492,10 +492,9 @@ class LiveArchiveFetcher:
 
     def fetch_bundle(self, locator: DocumentLocator) -> BundleFetchResult:
         """Acquire the complete submission bundle for a candidate locator."""
-        from edgar_sec.domain.sec_urls import parse_archive_url
-
-        parts = parse_archive_url(locator.archive_url)
-        if parts is None:
+        try:
+            parts = validate_archive_url(locator.archive_url, locator.accession)
+        except ValueError:
             return BundleFetchResult(
                 status="missing", error="locator has no archive URL"
             )

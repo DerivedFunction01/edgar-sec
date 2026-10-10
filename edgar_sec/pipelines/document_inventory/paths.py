@@ -16,12 +16,16 @@ from edgar_sec.infra.storage.review.paths import (
     review_runs_root,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
+    FORM_PARTITION_GLOB,
     FilingCatalogPaths,
     LOCATOR_GROUPS_FILE,
     PLAN_TARGETS_DIR,
     REQUIRED_PLAN_FILES,
     SEED_FILERS_FILE,
+    form_partition_directory,
     form_partition_name,
+    plan_target_file_path,
+    plan_target_part_path,
     resolve_filing_catalog_paths,
 )
 
@@ -49,6 +53,7 @@ __all__ = [
     "CANDIDATE_ENTRIES_FILE",
     "CANCELLED_FILE",
     "FilingCatalogPaths",
+    "FORM_PARTITION_GLOB",
     "LOCATOR_GROUPS_FILE",
     "PLAN_TARGETS_DIR",
     "REQUIRED_PLAN_FILES",
@@ -62,6 +67,9 @@ __all__ = [
     "inventory_paths",
     "snapshot_id_for",
     "form_partition_name",
+    "form_partition_directory",
+    "plan_target_file_path",
+    "plan_target_part_path",
     "resolve_filing_catalog_paths",
     "resolve_index_fixture_paths",
 ]

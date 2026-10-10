@@ -11,6 +11,7 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.domain.identity import AccessionNumber
+from edgar_sec.domain.sec_urls import index_url_for
 from edgar_sec.domain.filing_catalog.schemas import TARGET_SCHEMA
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.resources import derive_resources
@@ -259,6 +260,17 @@ def test_projection_writes_cohort_and_sorted_prefetch_order(
     source_rows = pq.read_table(projection.paths.cohort_sources_path()).to_pylist()
     source_keys = {(row["accession"], row["source_cik"]) for row in source_rows}
     assert len(source_keys) == len(source_rows)
+    assert work.column("index_url").to_pylist() == [
+        index_url_for(
+            accession,
+            min(
+                row["source_cik"]
+                for row in source_rows
+                if row["accession"] == accession
+            ),
+        )
+        for accession in work.column("accession").to_pylist()
+    ]
 
 
 def test_policy_plan_uses_the_same_bounded_projection(

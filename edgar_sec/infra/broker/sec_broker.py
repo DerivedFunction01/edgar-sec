@@ -19,6 +19,7 @@ from typing import Any, Literal
 from urllib.parse import unquote, urlsplit
 
 from edgar_sec.domain.identity import AccessionNumber, Cik
+from edgar_sec.domain.sec_urls import validate_archive_url
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.errors import (
@@ -220,14 +221,11 @@ class SecBroker:
         directory = f"/Archives/edgar/data/{int(cik)}/{accession.normalized}/"
 
         def validate(url: str) -> None:
+            validate_archive_url(url, accession, expected_archive_cik=cik)
             parsed = urlsplit(url)
             path = unquote(parsed.path)
             if (
-                parsed.scheme != "https"
-                or parsed.netloc != "www.sec.gov"
-                or parsed.query
-                or parsed.fragment
-                or not path.startswith(directory)
+                not path.startswith(directory)
                 or not path[len(directory) :]
                 or any(part in {".", ".."} for part in path.split("/"))
             ):

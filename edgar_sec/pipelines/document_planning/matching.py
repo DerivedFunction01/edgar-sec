@@ -5,11 +5,15 @@ from __future__ import annotations
 from collections.abc import Mapping
 from dataclasses import dataclass
 from typing import Any
-from urllib.parse import unquote, urljoin, urlsplit, urlunsplit
+from urllib.parse import urljoin, urlsplit, urlunsplit
 
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.identity import AccessionNumber
-from edgar_sec.domain.sec_urls import archives_url, parse_archive_url
+from edgar_sec.domain.sec_urls import (
+    archives_url,
+    parse_archive_url,
+    validate_archive_url,
+)
 from edgar_sec.foundation.serialization import canonical_hash
 from .catalog_scope import CatalogScopeAccession
 from .inventory_evidence import InventoryEvidenceRow
@@ -79,9 +83,7 @@ def _catalog_primary_urls(
         path = document or primary
         url = occurrence.archive_url
         if url:
-            safe = _validated_archive_url(
-                url, canonical_accession, occurrence.source_cik
-            )
+            safe = _validated_archive_url(url, canonical_accession)
             parsed = parse_archive_url(safe)
             if parsed is None or parsed.document_path.casefold() != path.casefold():
                 raise TargetMatchingError(
@@ -231,7 +233,7 @@ def _entry_candidate(
     entry_id = str(entry.get("entry_id") or "")
     if not entry_id:
         raise TargetMatchingError(f"inventory entry lacks identity for {accession}")
-    filing_cik = accession_row.get("filing_cik")
+    expected_archive_cik = _expected_archive_cik(accession_row, accession)
     archive_url = str(entry.get("archive_url") or "").strip()
     href = str(entry.get("href") or "").strip()
     bundle_url = str(accession_row.get("bundle_url") or "").strip()
@@ -245,9 +247,11 @@ def _entry_candidate(
                 raise TargetMatchingError(
                     f"relative inventory locator has no bundle URL for {accession}"
                 )
-            safe_bundle = _validated_bundle_url(bundle_url, accession, filing_cik)
+            safe_bundle = _validated_bundle_url(
+                bundle_url, accession, expected_archive_cik
+            )
             resolved = urljoin(safe_bundle, observed)
-        urls.append(_validated_archive_url(resolved, accession, filing_cik))
+        urls.append(_validated_archive_url(resolved, accession, expected_archive_cik))
     if urls:
         distinct = set(urls)
         if len(distinct) != 1:
@@ -266,7 +270,9 @@ def _entry_candidate(
         raise TargetMatchingError(f"unsafe inventory locator for {entry_id}")
     sequence = entry.get("sequence")
     if target.role == "exhibit" and sequence is not None and bundle_url:
-        safe_bundle = _validated_bundle_url(bundle_url, accession, filing_cik)
+        safe_bundle = _validated_bundle_url(
+            bundle_url, accession, accession_row.get("filing_cik")
+        )
         if not isinstance(sequence, int) or isinstance(sequence, bool) or sequence < 1:
             raise TargetMatchingError(f"invalid bundle sequence for {entry_id}")
         size = entry.get("byte_size")
@@ -288,15 +294,14 @@ def _package_row(
 ) -> dict[str, Any]:
     accession = evidence.accession
     bundle_url = str(accession_row.get("bundle_url") or "").strip()
+    expected_archive_cik = _expected_archive_cik(accession_row, accession)
     if not bundle_url:
         candidate = _Candidate(None, None, "none", None, None)
         status = "unresolved"
         reason = "no_usable_bundle_url"
         availability = "none"
     else:
-        safe_bundle = _validated_bundle_url(
-            bundle_url, accession, accession_row.get("filing_cik")
-        )
+        safe_bundle = _validated_bundle_url(bundle_url, accession, expected_archive_cik)
         parsed = urlsplit(safe_bundle)
         if not parsed.path.endswith(".txt"):
             raise TargetMatchingError(
@@ -328,48 +333,47 @@ def _package_row(
     )
 
 
-def _validated_bundle_url(url: str, accession: str, filing_cik: Any) -> str:
-    validated = _validated_archive_url(url, accession, filing_cik)
+def _validated_bundle_url(
+    url: str, accession: str, expected_archive_cik: object | None = None
+) -> str:
+    validated = _validated_archive_url(url, accession, expected_archive_cik)
     parsed = parse_archive_url(validated)
     if parsed is None or not parsed.document_path.endswith(".txt"):
         raise TargetMatchingError(f"unsafe accession bundle URL for {accession}")
     return validated
 
 
-def _validated_archive_url(url: str, accession: str, filing_cik: Any) -> str:
-    value = url.strip()
-    split = urlsplit(value)
-    if (
-        split.scheme != "https"
-        or split.netloc.casefold() != "www.sec.gov"
-        or split.username is not None
-        or split.password is not None
-        or split.query
-        or split.fragment
-        or "\\" in split.path
-        or "%" in split.path
-        or any(part in {".", ".."} for part in unquote(split.path).split("/"))
-    ):
-        raise TargetMatchingError(f"unsafe SEC archive URL: {url!r}")
-    parts = parse_archive_url(value)
-    if (
-        parts is None
-        or parts.accession != AccessionNumber.from_any(accession).normalized
-    ):
-        raise TargetMatchingError(f"SEC archive URL is outside accession {accession}")
-    if filing_cik is not None:
-        try:
-            expected_cik = int(str(filing_cik))
-            actual_cik = int(parts.archive_cik)
-        except (TypeError, ValueError) as error:
+def _expected_archive_cik(
+    accession_row: Mapping[str, Any], accession: str
+) -> str | None:
+    index_url = accession_row.get("index_url")
+    if not index_url:
+        return None
+    try:
+        return validate_archive_url(str(index_url), accession).archive_cik
+    except ValueError as error:
+        raise TargetMatchingError(
+            f"unsafe SEC index URL for accession {accession}"
+        ) from error
+
+
+def _validated_archive_url(
+    url: str, accession: str, expected_archive_cik: object | None = None
+) -> str:
+    try:
+        return validate_archive_url(
+            url, accession, expected_archive_cik=expected_archive_cik
+        ).url
+    except ValueError as error:
+        if "outside the expected accession" in str(error):
             raise TargetMatchingError(
-                "invalid filing CIK in pinned evidence"
+                f"SEC archive URL is outside accession {accession}"
             ) from error
-        if actual_cik != expected_cik:
+        if "wrong archive CIK" in str(error):
             raise TargetMatchingError(
                 f"SEC archive URL has the wrong CIK for {accession}"
-            )
-    return value
+            ) from error
+        raise TargetMatchingError(f"unsafe SEC archive URL: {url!r}") from error
 
 
 def _target_row(

@@ -13,12 +13,17 @@ from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.pipelines.filing_catalog.paths import (
     CURRENT_ALIAS,
     EXPANSION_METADATA_FILE,
+    FORM_PARTITION_GLOB,
+    FORM_PARTITION_KEY,
     PIPELINE_DIR,
     PLAN_TARGETS_DIR,
     PLANS_DIR,
     REQUIRED_PLAN_FILES,
     SEED_FILERS_FILE,
+    form_partition_directory,
     form_partition_name,
+    plan_target_file_path,
+    plan_target_part_path,
     resolve_filing_catalog_paths,
     validate_safe_id,
     target_part_name,
@@ -75,6 +80,18 @@ def test_an_unsafe_identifier_never_becomes_a_directory(paths) -> None:
 def test_form_partition_name_escapes_a_slash() -> None:
     assert form_partition_name("10-K/A") == "10-K_A"
     assert form_partition_name("10-K") == "10-K"
+
+
+def test_plan_target_paths_share_the_catalog_layout_contract() -> None:
+    assert FORM_PARTITION_KEY == "form"
+    assert FORM_PARTITION_GLOB == "form=*"
+    assert form_partition_directory("10-K/A") == "form=10-K_A"
+    assert plan_target_file_path("10-K/A", "data.parquet") == (
+        "targets/form=10-K_A/data.parquet"
+    )
+    assert plan_target_part_path("10-K/A", 2) == (
+        "targets/form=10-K_A/part-00002.parquet"
+    )
 
 
 def test_form_partition_path_escapes_the_form() -> None:

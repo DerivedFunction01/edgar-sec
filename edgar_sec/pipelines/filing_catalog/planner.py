@@ -74,7 +74,7 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     RESERVE_TARGETS_FILE,
     SEED_FILERS_FILE,
     FilingCatalogPaths,
-    form_partition_name,
+    form_partition_directory,
     resolve_metadata_paths,
     resolve_filing_catalog_paths,
 )
@@ -355,8 +355,9 @@ def plan(
             targets_root.mkdir(parents=True, exist_ok=True)
             written: list[Path] = []
             for form_name in available:
-                partition = form_partition_name(form_name)
-                destination = targets_root / f"form={partition}" / DATA_FILE_NAME
+                destination = (
+                    targets_root / form_partition_directory(form_name) / DATA_FILE_NAME
+                )
                 where = [*shared_where, f"form = {sql_literal(form_name)}"]
                 query = (
                     f"SELECT {target_columns} FROM {source} "
@@ -667,9 +668,7 @@ def plan_policy(
             ]
             for form_name in selected_forms:
                 destination = (
-                    targets_root
-                    / f"form={form_partition_name(form_name)}"
-                    / DATA_FILE_NAME
+                    targets_root / form_partition_directory(form_name) / DATA_FILE_NAME
                 )
                 # `o.*`, not `*`: the relation is a join whose second input only
                 # filters rows, so `SELECT *` would publish a

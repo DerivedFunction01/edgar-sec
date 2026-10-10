@@ -19,7 +19,11 @@ from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.infra.storage.parquet import count_parquet_rows, read_parquet_schema
 from .paths import (
     CatalogPaths,
+    FORM_PARTITION_GLOB,
+    PLAN_TARGETS_DIR,
     catalog_form_partition_name,
+    form_partition_directory,
+    plan_target_file_path,
     resolve_catalog_paths,
     validate_catalog_plan_id,
 )
@@ -130,15 +134,15 @@ def _manifest_parts(root: Path, manifest: dict[str, object]) -> tuple[CatalogPar
     partition_names = [catalog_form_partition_name(form) for form in output_forms]
     if len(partition_names) != len(set(partition_names)):
         raise CatalogScopeError("catalog plan forms collide in partition names")
-    targets_root = root / "targets"
+    targets_root = root / PLAN_TARGETS_DIR
     if not targets_root.resolve().is_relative_to(root.resolve()):
         raise CatalogScopeError("catalog target parts escape the plan bundle")
     actual_partitions = {
         entry.name
-        for entry in targets_root.glob("form=*")
+        for entry in targets_root.glob(FORM_PARTITION_GLOB)
         if entry.is_dir() and (entry / DATA_FILE_NAME).is_file()
     }
-    expected_partitions = {f"form={name}" for name in partition_names}
+    expected_partitions = {form_partition_directory(form) for form in output_forms}
     if expected_partitions - actual_partitions:
         raise CatalogScopeError("catalog target partition is missing")
     if actual_partitions - expected_partitions:
@@ -190,11 +194,11 @@ def _manifest_parts(root: Path, manifest: dict[str, object]) -> tuple[CatalogPar
             part_path.is_absolute()
             or ".." in part_path.parts
             or "\\" in relative
-            or not relative.startswith("targets/")
+            or not relative.startswith(f"{PLAN_TARGETS_DIR}/")
         ):
             raise CatalogScopeError(f"unsafe catalog target part path: {relative!r}")
-        expected_path = f"form={catalog_form_partition_name(form)}/data.parquet"
-        if form not in counts or relative != f"targets/{expected_path}":
+        expected_path = plan_target_file_path(form, DATA_FILE_NAME)
+        if form not in counts or relative != expected_path:
             raise CatalogScopeError(
                 f"catalog part does not match declared form: {relative!r}"
             )

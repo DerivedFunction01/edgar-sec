@@ -14,7 +14,12 @@ from edgar_sec.foundation.runtime.paths import (
     validate_safe_id,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
+    FORM_PARTITION_GLOB,
+    PLAN_TARGETS_DIR,
+    form_partition_directory,
     form_partition_name,
+    plan_target_file_path,
+    plan_target_part_path,
     resolve_filing_catalog_paths,
 )
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
@@ -115,13 +120,18 @@ __all__ = [
     "PROFILES_DIR",
     "CatalogPaths",
     "DocumentPlanningPaths",
+    "FORM_PARTITION_GLOB",
     "PIPELINE_DIR",
+    "PLAN_TARGETS_DIR",
     "PLANS_DIR",
     "POLICY_DIR",
     "resolve_document_planning_paths",
     "resolve_inventory_paths",
     "resolve_catalog_paths",
     "catalog_form_partition_name",
+    "form_partition_directory",
+    "plan_target_file_path",
+    "plan_target_part_path",
     "validate_catalog_plan_id",
     "validate_profile_id",
 ]

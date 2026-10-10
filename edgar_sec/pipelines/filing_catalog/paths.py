@@ -32,6 +32,8 @@ CURRENT_ALIAS = "current"
 SNAPSHOT_FILE = "company_profiles.parquet"
 TARGETS_DIR = "filing_targets"
 PLAN_TARGETS_DIR = "targets"
+FORM_PARTITION_KEY = "form"
+FORM_PARTITION_GLOB = f"{FORM_PARTITION_KEY}=*"
 SELECTION_REPORT_FILE = "selection_report.json"
 LOCATOR_GROUPS_FILE = "locator_groups.parquet"
 EXPANSION_METADATA_FILE = "expansion_metadata.json"
@@ -59,12 +61,24 @@ def form_partition_name(form: str) -> str:
     return form.replace("/", "_")
 
 
+def form_partition_directory(form: str) -> str:
+    return f"{FORM_PARTITION_KEY}={form_partition_name(form)}"
+
+
 def target_part_name(index: int) -> str:
     """Return the shard file name for one filing-targets part.
 
     Numbered by resolved order, not by reusing a source basename shards may share.
     """
     return f"part-{index:05d}.parquet"
+
+
+def plan_target_file_path(form: str, file_name: str) -> str:
+    return f"{PLAN_TARGETS_DIR}/{form_partition_directory(form)}/{file_name}"
+
+
+def plan_target_part_path(form: str, index: int) -> str:
+    return plan_target_file_path(form, target_part_name(index))
 
 
 @dataclass(frozen=True, slots=True)
@@ -140,6 +154,8 @@ def resolve_filing_catalog_paths(
 __all__ = [
     "CURRENT_ALIAS",
     "EXPANSION_METADATA_FILE",
+    "FORM_PARTITION_GLOB",
+    "FORM_PARTITION_KEY",
     "LOCATOR_GROUPS_FILE",
     "PIPELINE_DIR",
     "PLANS_DIR",
@@ -153,6 +169,9 @@ __all__ = [
     "TARGETS_DIR",
     "FilingCatalogPaths",
     "form_partition_name",
+    "form_partition_directory",
+    "plan_target_file_path",
+    "plan_target_part_path",
     "resolve_filing_catalog_paths",
     "validate_safe_id",
     "target_part_name",

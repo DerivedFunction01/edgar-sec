@@ -40,7 +40,7 @@ from edgar_sec.pipelines.document_planning.matching import (
 )
 from edgar_sec.pipelines.document_planning.paths import (
     DocumentPlanningPaths,
-    catalog_form_partition_name,
+    plan_target_part_path,
     resolve_catalog_paths,
     resolve_document_planning_paths,
     resolve_inventory_paths,
@@ -389,10 +389,7 @@ def _sort_and_write_parts(
             return
         table = pa.concat_tables(buffered).cast(TARGET_SCHEMA)
         part_index = next_part.get(current_form, 0)
-        relative = (
-            f"targets/form={catalog_form_partition_name(current_form)}"
-            f"/part-{part_index:05d}.parquet"
-        )
+        relative = plan_target_part_path(current_form, part_index)
         path = staging_root / relative
         path.parent.mkdir(parents=True, exist_ok=True)
         pq.write_table(

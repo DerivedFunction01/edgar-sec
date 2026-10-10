@@ -2,7 +2,11 @@ from __future__ import annotations
 
 import pytest
 
-from edgar_sec.domain.identity import AccessionNumber, Cik
+from edgar_sec.domain.identity import (
+    AccessionNumber,
+    Cik,
+    is_hyphenated_accession,
+)
 
 
 def test_cik_creation_and_formatting() -> None:
@@ -36,3 +40,10 @@ def test_accession_number_validation() -> None:
 
     with pytest.raises(ValueError, match="invalid SEC accession number format"):
         AccessionNumber("000032019323000106")
+
+
+def test_hyphenated_accession_predicate_is_exact() -> None:
+    assert is_hyphenated_accession("0000320193-23-000106")
+    assert not is_hyphenated_accession("x0000320193-23-000106")
+    assert not is_hyphenated_accession("0000320193-23-000106-extra")
+    assert not is_hyphenated_accession("0000320193-23-000106\n")

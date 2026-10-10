@@ -14,6 +14,7 @@ from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 from edgar_sec.pipelines.document_acquisition.arrow_schemas import WORK_ORDER_SCHEMA
 from edgar_sec.pipelines.document_acquisition.target_plan import (
     TargetPlanError,
+    _validate_url,
     _validate_row,
     load_acquisition_work_order,
 )
@@ -349,6 +350,12 @@ def test_cross_accession_url_fails_before_output(target_plan_factory, tmp_path):
         load_acquisition_work_order(plan_root, output)
 
     assert not output.exists()
+
+
+def test_target_url_does_not_infer_archive_cik_from_accession_prefix() -> None:
+    url = "https://www.sec.gov/Archives/edgar/data/2/000000000124000001/report.htm"
+
+    assert _validate_url(url, "0000000001-24-000001", bundle=False) == url
 
 
 @pytest.mark.parametrize("sequence", [True, 0, -1])

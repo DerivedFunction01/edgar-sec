@@ -26,12 +26,15 @@ from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 from edgar_sec.pipelines.filing_catalog.paths import (
+    FORM_PARTITION_GLOB,
     LOCATOR_GROUPS_FILE,
     PLAN_TARGETS_DIR,
     REQUIRED_PLAN_FILES,
     SEED_FILERS_FILE,
     SELECTION_REPORT_FILE,
+    form_partition_directory,
     form_partition_name,
+    plan_target_file_path,
 )
 
 
@@ -143,10 +146,10 @@ def plan_bundle_complete(plan_dir: Path, scope: str = "") -> bool:
     counts = published.get("counts")
     if not isinstance(counts, dict):
         return False
-    expected = {f"form={form_partition_name(form)}" for form in counts}
+    expected = {form_partition_directory(form) for form in counts}
     present = {
         entry.name
-        for entry in targets_dir.glob("form=*")
+        for entry in targets_dir.glob(FORM_PARTITION_GLOB)
         if entry.is_dir() and (entry / DATA_FILE_NAME).is_file()
     }
     if present != expected:
@@ -163,7 +166,7 @@ def _target_parts_complete(
     if not isinstance(parts, list):
         return False
     expected = {
-        (form, f"targets/form={form_partition_name(form)}/{DATA_FILE_NAME}"): row_count
+        (form, plan_target_file_path(form, DATA_FILE_NAME)): row_count
         for form, row_count in counts.items()
     }
     if len(parts) != len(expected):
@@ -350,7 +353,7 @@ def _describe_target_parts(staging_dir: Path, counts: Any) -> list[dict[str, Any
         if partition in partitions:
             raise PlanConflictError("plan forms collide in target partition names")
         partitions.add(partition)
-        relative = f"{PLAN_TARGETS_DIR}/form={partition}/{DATA_FILE_NAME}"
+        relative = plan_target_file_path(form, DATA_FILE_NAME)
         path = staging_dir / relative
         if not path.is_file():
             raise PlanConflictError(

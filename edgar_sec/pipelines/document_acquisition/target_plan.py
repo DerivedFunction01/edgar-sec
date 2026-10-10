@@ -8,13 +8,11 @@ from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 from typing import Any
-from urllib.parse import unquote, urlsplit
-
 import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.domain.identity import AccessionNumber
-from edgar_sec.domain.sec_urls import accession_hyphenated, parse_archive_url
+from edgar_sec.domain.sec_urls import accession_hyphenated, validate_archive_url
 from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.foundation.runtime.settings.parquet import (
@@ -23,6 +21,11 @@ from edgar_sec.foundation.runtime.settings.parquet import (
 from edgar_sec.infra.storage.duckdb import connect, sql_path_list
 from edgar_sec.infra.storage.parquet import StagedParquetWriter
 from edgar_sec.pipelines.document_acquisition.arrow_schemas import WORK_ORDER_SCHEMA
+from edgar_sec.pipelines.document_acquisition.paths import (
+    PLAN_TARGETS_DIR,
+    form_partition_name,
+    plan_target_part_path,
+)
 from edgar_sec.pipelines.document_acquisition.schemas import (
     target_relation_schema,
     target_relation_schema_version,
@@ -85,10 +88,6 @@ def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
             raise TargetPlanError(f"duplicate manifest field: {key}")
         result[key] = value
     return result
-
-
-def _form_partition(form: str) -> str:
-    return form.replace("/", "_")
 
 
 def _read_manifest(root: Path) -> dict[str, Any]:
@@ -204,39 +203,17 @@ def _validate_url(url: object, accession: str, *, bundle: bool) -> str:
     if not isinstance(url, str) or not url or url != url.strip():
         raise TargetPlanError("matched target is missing a valid SEC URL")
     try:
-        parts = urlsplit(url)
-        port = parts.port
+        accession_number = AccessionNumber(accession)
+        archive = validate_archive_url(url, accession_number)
     except ValueError as error:
-        raise TargetPlanError("target URL is malformed") from error
+        raise TargetPlanError(
+            "target URL is outside the accession's SEC archive"
+        ) from error
     if (
-        parts.scheme != "https"
-        or parts.netloc != "www.sec.gov"
-        or parts.hostname != "www.sec.gov"
-        or parts.username is not None
-        or parts.password is not None
-        or port is not None
-        or "?" in url
-        or "#" in url
+        bundle
+        and archive.document_path
+        != f"{accession_hyphenated(str(accession_number))}.txt"
     ):
-        raise TargetPlanError("target URL must use the canonical SEC HTTPS host")
-    decoded = unquote(parts.path)
-    if (
-        "%" in parts.path
-        or "\\" in decoded
-        or "//" in decoded
-        or any(segment in {".", ".."} for segment in decoded.split("/"))
-    ):
-        raise TargetPlanError("target URL path contains an unsafe segment")
-    archive = parse_archive_url(url)
-    accession_number = AccessionNumber(accession)
-    expected_cik = str(int(accession[:10]))
-    if (
-        archive is None
-        or archive.archive_cik != expected_cik
-        or archive.accession != accession_number.normalized
-    ):
-        raise TargetPlanError("target URL is outside the accession's SEC archive")
-    if bundle and archive.document_path != f"{accession_hyphenated(accession)}.txt":
         raise TargetPlanError(
             "bundle URL is not the accession's canonical submission file"
         )
@@ -377,13 +354,12 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> tuple[Path, ...]:
         path = PurePosixPath(relative)
         if path.is_absolute() or ".." in path.parts or "\\" in relative:
             raise TargetPlanError("target part path is unsafe")
-        partition = _form_partition(form)
+        partition = form_partition_name(form)
         if partition in forms and forms[partition] != form:
             raise TargetPlanError("target forms collide in partition names")
         forms[partition] = form
-        form_dir = f"targets/form={partition}"
         index = indices.get(form, 0)
-        expected = f"{form_dir}/part-{index:05d}.parquet"
+        expected = plan_target_part_path(form, index)
         if relative != expected:
             raise TargetPlanError("target part paths are not numbered and sorted")
         order = (form, relative)
@@ -444,7 +420,7 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> tuple[Path, ...]:
             raise TargetPlanError(
                 "non-final target parts must match parquet row_group_size"
             )
-    target_root = root / "targets"
+    target_root = root / PLAN_TARGETS_DIR
     if target_root.is_symlink():
         raise TargetPlanError("target parts directory is unsafe")
     actual: set[Path] = set()

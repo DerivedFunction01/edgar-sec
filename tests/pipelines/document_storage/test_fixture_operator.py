@@ -23,7 +23,9 @@ def _locator(name: str) -> DocumentLocator:
     return DocumentLocator.from_parts(
         "0001234567-11-000001",
         name,
-        archive_url=f"https://www.sec.gov/Archives/{name}",
+        archive_url=(
+            f"https://www.sec.gov/Archives/edgar/data/1234567/000123456711000001/{name}"
+        ),
         form="10-K",
     )
 
@@ -73,7 +75,7 @@ def test_fill_skips_existing_rows_and_retries_failures(tmp_path: Path) -> None:
     assert first.already_present == 1
     assert first.newly_written == 1
     assert first.failed == 1
-    assert len(client.calls) == 2
+    assert len(client.calls) == 3
 
     retry_client = FakeClient({"missing.htm": b"recovered"})
     second = fill_fixture(
@@ -140,7 +142,10 @@ def test_fill_records_document_metadata_for_every_locator(tmp_path: Path) -> Non
     text = DocumentLocator.from_parts(
         "0001234567-11-000002",
         "notes.txt",
-        archive_url="https://www.sec.gov/Archives/notes.txt",
+        archive_url=(
+            "https://www.sec.gov/Archives/edgar/data/1234567/"
+            "000123456711000002/notes.txt"
+        ),
         form="10-Q",
     )
     fill_fixture(

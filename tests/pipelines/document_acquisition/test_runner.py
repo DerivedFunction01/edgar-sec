@@ -8,7 +8,9 @@ from types import SimpleNamespace
 
 import pyarrow as pa
 import pyarrow.parquet as pq
+import pytest
 
+from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.sec_http.streaming import StreamFailure, StreamedResponse
@@ -24,6 +26,7 @@ from edgar_sec.pipelines.document_acquisition.run_state.store import (
     initialize_run_state,
 )
 from edgar_sec.pipelines.document_acquisition.runner import execute_acquisition_run
+from edgar_sec.pipelines.document_acquisition.target_runner import _validate_redirect
 from edgar_sec.pipelines.document_acquisition.schemas import (
     ACQUISITION_CONTRACT_VERSION,
     RUN_SCHEMA_VERSION,
@@ -55,6 +58,14 @@ _UNLINKED_INDEX = (
     + _BUNDLE_URL.encode()
     + b"'>bundle</a></td><td></td><td>100</td></tr></table>"
 )
+
+
+def test_redirect_validator_binds_to_requested_archive_cik() -> None:
+    url = _BUNDLE_URL.replace("/320193/", "/320194/")
+
+    _validate_redirect(url, AccessionNumber(_ACCESSION), "320194")
+    with pytest.raises(ValueError):
+        _validate_redirect(url, AccessionNumber(_ACCESSION), "320193")
 
 
 def _make_run(

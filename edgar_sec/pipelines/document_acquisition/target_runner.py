@@ -7,11 +7,10 @@ from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Protocol
-from urllib.parse import urlsplit
 
 from edgar_sec.domain.document_inventory.models import IndexPageInput
 from edgar_sec.domain.identity import AccessionNumber
-from edgar_sec.domain.sec_urls import full_submission_url_for, parse_archive_url
+from edgar_sec.domain.sec_urls import full_submission_url_for, validate_archive_url
 from edgar_sec.engine.document.unpacking.streaming import (
     BundleExtraction,
     extract_bundle_sequence,
@@ -66,26 +65,15 @@ def _new_path(staging_root: Path, prefix: str) -> Path:
     return staging_root / f"{prefix}-{uuid.uuid4().hex}.bin"
 
 
-def _validate_redirect(url: str, accession: AccessionNumber) -> None:
+def _validate_redirect(
+    url: str,
+    accession: AccessionNumber,
+    expected_archive_cik: str | int | None = None,
+) -> None:
     try:
-        parts = urlsplit(url)
+        validate_archive_url(url, accession, expected_archive_cik=expected_archive_cik)
     except ValueError as error:
         raise ValueError("redirect URL is malformed") from error
-    if (
-        parts.scheme != "https"
-        or parts.netloc != "www.sec.gov"
-        or parts.query
-        or parts.fragment
-    ):
-        raise ValueError("redirect is outside the canonical SEC archive")
-    parsed = parse_archive_url(url)
-    expected_cik = str(int(str(accession)[:10]))
-    if (
-        parsed is None
-        or parsed.archive_cik != expected_cik
-        or parsed.accession != accession.normalized
-    ):
-        raise ValueError("redirect is outside the requested accession")
 
 
 def _stream(
@@ -95,16 +83,22 @@ def _stream(
     accession: AccessionNumber,
     policy: AcquisitionPolicy,
 ) -> StreamResult:
-    _validate_redirect(url, accession)
+    try:
+        archive = validate_archive_url(url, accession)
+    except ValueError as error:
+        raise ValueError("redirect URL is malformed") from error
+    expected_archive_cik = archive.archive_cik
     result = transport.stream_to_file(
         url,
         destination,
         max_response_bytes=policy.max_response_bytes,
-        validate_redirect=lambda redirect: _validate_redirect(redirect, accession),
+        validate_redirect=lambda redirect: _validate_redirect(
+            redirect, accession, expected_archive_cik
+        ),
     )
     if isinstance(result, StreamedResponse):
         try:
-            _validate_redirect(result.final_url, accession)
+            _validate_redirect(result.final_url, accession, expected_archive_cik)
         except ValueError:
             result.path.unlink(missing_ok=True)
             return StreamFailure(
@@ -431,7 +425,8 @@ def acquire_target(
         run_root=run_root,
     )
     source_path.unlink(missing_ok=True)
-    index_url = full_submission_url_for(str(int(str(accession)[:10])), str(accession))
+    archive_cik = validate_archive_url(requested_url, accession).archive_cik
+    index_url = full_submission_url_for(archive_cik, str(accession))
     index_url = index_url.removesuffix(".txt") + "-index.html"
     index_path = _new_path(staging_root, "index")
     index_started = _utc(clock)

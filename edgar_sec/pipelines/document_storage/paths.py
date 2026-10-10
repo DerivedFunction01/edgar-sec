@@ -22,9 +22,12 @@ from edgar_sec.infra.storage.review.paths import (
     review_runs_root,
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
+    FORM_PARTITION_GLOB,
     LOCATOR_GROUPS_FILE,
     PLAN_TARGETS_DIR,
+    form_partition_directory,
     form_partition_name,
+    plan_target_file_path,
 )
 
 DOCUMENTS_DATASET = "document_storage"
@@ -153,6 +156,7 @@ __all__ = [
     "DOCUMENTS_DATASET",
     "EXHIBITS_DATASET",
     "EXHIBIT_SNAPSHOT_NAME",
+    "FORM_PARTITION_GLOB",
     "POINTER_FILE",
     "REVIEW_RUNS_DIR",
     "REVIEW_MANIFEST_NAME",
@@ -164,4 +168,6 @@ __all__ = [
     "catalog_delegation_path",
     "chunk_checkpoint_path",
     "form_partition_name",
+    "form_partition_directory",
+    "plan_target_file_path",
 ]

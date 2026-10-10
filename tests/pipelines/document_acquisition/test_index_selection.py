@@ -142,6 +142,26 @@ def test_refuses_unrecognized_index_and_wrong_source_scope() -> None:
     )
 
 
+def test_index_selection_binds_entries_to_source_archive_cik() -> None:
+    source_url = INDEX_URL.replace("/data/1/", "/data/2/")
+    document_url = DOCUMENT_URL.replace("/data/1/", "/data/2/")
+    page = _page(
+        _entry("same-cik", "10-K", archive_url=document_url), source_url=source_url
+    )
+    wrong_cik_page = _page(_entry("other-cik", "10-K"), source_url=source_url)
+
+    selected = select_index_entry(
+        page, accession=ACCESSION, expected_form="10-K", optional=False
+    )
+    rejected = select_index_entry(
+        wrong_cik_page, accession=ACCESSION, expected_form="10-K", optional=False
+    )
+
+    assert selected.result == "selected"
+    assert rejected.result == "failed"
+    assert rejected.error_code == "index_entry_unaddressable"
+
+
 def test_refuses_matching_row_without_safe_retrieval_locator() -> None:
     page = _page(_entry("unaddressable", "10-K", sequence=None, archive_url=None))
 

@@ -72,7 +72,10 @@ def _locator(
     return DocumentLocator.from_parts(
         ACCESSION,
         document_path,
-        archive_url=f"https://www.sec.gov/x/{document_path}",
+        archive_url=(
+            "https://www.sec.gov/Archives/edgar/data/1234567/"
+            "000123456711000001/" + document_path
+        ),
         form=form,
         source_cik="1234567",
     )
@@ -569,7 +572,10 @@ def _era_locator(document_path: str, form: str = "10-K") -> DocumentLocator:
     return DocumentLocator.from_parts(
         _ERA_ACCESSION,
         document_path,
-        archive_url=f"https://www.sec.gov/x/{document_path}",
+        archive_url=(
+            "https://www.sec.gov/Archives/edgar/data/890923/"
+            "000089092301000002/" + document_path
+        ),
         form=form,
         source_cik="890923",
     )

@@ -8,6 +8,8 @@ from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
 
+import pytest
+
 from edgar_sec.infra.broker.daemon import managed_broker
 from edgar_sec.infra.broker.sec_broker import SecBrokerClient
 from edgar_sec.infra.sec_http.metrics import HttpMetrics
@@ -165,7 +167,7 @@ def test_streamed_broker_writes_file_and_sends_metadata_only(
 ) -> None:
     socket_path = tmp_path / "stream.sock"
     staging_root = tmp_path / "owner-stage"
-    url = "https://www.sec.gov/Archives/edgar/data/1/000000000123000001/doc.htm"
+    url = "https://www.sec.gov/Archives/edgar/data/2/000000000123000001/doc.htm"
     body = b"large body must remain on disk"
     fake_http = _FakeStreamHttpClient(body)
 
@@ -182,7 +184,7 @@ def test_streamed_broker_writes_file_and_sends_metadata_only(
         result = client.stream_to_file(
             url,
             max_response_bytes=1024,
-            accession_cik=1,
+            accession_cik=2,
             accession_number="0000000001-23-000001",
             staging_root=staging_root,
         )
@@ -249,6 +251,9 @@ def test_streamed_broker_rejects_invalid_scope_and_relative_staging_root(
     socket_path = tmp_path / "stream-invalid.sock"
     fake_http = _FakeStreamHttpClient(b"unused")
     url = "https://www.sec.gov/Archives/edgar/data/1/000000000123000002/doc.htm"
+    wrong_cik_url = (
+        "https://www.sec.gov/Archives/edgar/data/1/000000000123000001/doc.htm"
+    )
 
     with managed_broker(socket_path, http_client=fake_http) as client:
         bad_scope = client.stream_to_file(
@@ -257,8 +262,14 @@ def test_streamed_broker_rejects_invalid_scope_and_relative_staging_root(
             accession_cik=1,
             accession_number="0000000001-23-000001",
         )
+        bad_cik = client.stream_to_file(
+            wrong_cik_url,
+            max_response_bytes=1024,
+            accession_cik=2,
+            accession_number="0000000001-23-000001",
+        )
         bad_root = client.stream_to_file(
-            "https://www.sec.gov/Archives/edgar/data/1/000000000123000001/doc.htm",
+            wrong_cik_url,
             max_response_bytes=1024,
             accession_cik=1,
             accession_number="0000000001-23-000001",
@@ -267,6 +278,8 @@ def test_streamed_broker_rejects_invalid_scope_and_relative_staging_root(
 
     assert bad_scope.status == "failed"
     assert bad_scope.error_code == "invalid_scope"
+    assert bad_cik.status == "failed"
+    assert bad_cik.error_code == "invalid_scope"
     assert bad_root.status == "failed"
     assert bad_root.error_code == "invalid_path"
     assert fake_http.stream_calls == []
@@ -279,7 +292,7 @@ def test_streamed_broker_rejects_final_url_outside_accession_scope(
     url = "https://www.sec.gov/Archives/edgar/data/1/000000000123000001/doc.htm"
     fake_http = _FakeStreamHttpClient(
         b"must be removed",
-        final_url="https://www.sec.gov/Archives/edgar/data/1/000000000123000002/doc.htm",
+        final_url="https://www.sec.gov/Archives/edgar/data/1/000000000123000001/../doc.htm",
     )
 
     with managed_broker(socket_path, http_client=fake_http) as client:

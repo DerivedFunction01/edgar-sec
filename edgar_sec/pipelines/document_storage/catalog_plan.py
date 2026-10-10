@@ -37,8 +37,8 @@ from edgar_sec.infra.storage.duckdb import connect, sql_literal, sql_path_list
 from edgar_sec.infra.storage.parquet import count_parquet_rows, read_parquet_schema
 from edgar_sec.pipelines.document_storage.paths import (
     LOCATOR_GROUPS_FILE,
-    PLAN_TARGETS_DIR,
-    form_partition_name,
+    form_partition_directory,
+    plan_target_file_path,
 )
 from edgar_sec.pipelines.filing_catalog.publication import (
     plan_bundle_complete,
@@ -272,12 +272,7 @@ def _target_partitions(plan_dir: Path, counts: dict[str, int]) -> tuple[Path, ..
     """
     paths: list[Path] = []
     for form in sorted(counts):
-        data = (
-            plan_dir
-            / PLAN_TARGETS_DIR
-            / f"form={form_partition_name(form)}"
-            / DATA_FILE_NAME
-        )
+        data = plan_dir / plan_target_file_path(form, DATA_FILE_NAME)
         if not data.is_file():
             raise CatalogPlanError(f"declared target partition is missing: {data}")
         paths.append(data)
@@ -327,7 +322,7 @@ def _validate_bundle(
 def _validate_counts(target_paths: tuple[Path, ...], counts: dict[str, int]) -> None:
     """Check each partition's rows against the count ``plan.json`` published for it."""
     by_partition = {
-        f"form={form_partition_name(form)}": (form, declared)
+        form_partition_directory(form): (form, declared)
         for form, declared in counts.items()
     }
     for path in target_paths:

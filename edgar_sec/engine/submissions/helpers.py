@@ -5,18 +5,15 @@ as an anomaly, so one malformed field cannot discard a valid filing.
 
 from __future__ import annotations
 
-import re
 from typing import Any
 
+from edgar_sec.domain.identity import is_hyphenated_accession
 from edgar_sec.domain.sec_urls import (
     archives_url,
 )
 from edgar_sec.foundation.serialization import canonical_json
 
-ACCESSION_RE = re.compile(r"^\d{10}-\d{2}-\d{6}$")
-
 __all__ = [
-    "ACCESSION_RE",
     "accession_normalized",
     "add_anomaly",
     "build_archive_url",
@@ -67,7 +64,10 @@ def accession_normalized(raw: str | None) -> str | None:
     """
     if raw is None:
         return None
-    text = str(raw).strip().replace("-", "")
+    text = str(raw).strip()
+    if is_hyphenated_accession(text):
+        return text.replace("-", "")
+    text = text.replace("-", "")
     if not text.isdigit() or len(text) != 18:
         return None
     return text

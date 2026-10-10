@@ -528,6 +528,14 @@ def project_catalog_plan(
             FROM normalized_observations
             """
         )
+        connection.execute(
+            """
+            CREATE TEMP TABLE cohort_archive_ciks AS
+            SELECT accession, min(source_cik) AS archive_cik
+            FROM cohort_sources
+            GROUP BY accession
+            """
+        )
         base_files = [str(path) for path, _count, _digest in base_parts]
         if base_files:
             connection.execute(
@@ -600,11 +608,13 @@ def project_catalog_plan(
         connection.execute(
             f"""
             CREATE TEMP TABLE cohort_accessions_with_url AS
-            SELECT accession, filing_cik, form, filing_date, report_date,
+            SELECT facts.accession, facts.filing_cik, facts.form,
+                   facts.filing_date, facts.report_date,
                    {sql_literal(base_url)} || '/' ||
-                   cast(try_cast(filing_cik AS BIGINT) AS VARCHAR) || '/' ||
-                   replace(accession, '-', '') || '/' || accession || '-index.html' AS index_url
-            FROM cohort_accessions
+                   cast(try_cast(route.archive_cik AS BIGINT) AS VARCHAR) || '/' ||
+                   replace(facts.accession, '-', '') || '/' || facts.accession || '-index.html' AS index_url
+            FROM cohort_accessions facts
+            JOIN cohort_archive_ciks route USING (accession)
             """
         )
         connection.execute(

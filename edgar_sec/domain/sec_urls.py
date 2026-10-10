@@ -9,6 +9,9 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from urllib.parse import urlsplit
+
+from edgar_sec.domain.identity import AccessionNumber, Cik
 
 SEC_SUBMISSIONS_BASE = "https://data.sec.gov/submissions"
 SEC_ARCHIVE_BASE = "https://www.sec.gov/Archives/edgar/data"
@@ -34,20 +37,42 @@ def historical_submissions_url(source_file: str) -> str:
     return f"{SEC_SUBMISSIONS_BASE}/{source_file}"
 
 
-def archives_url(cik: str | int, accession_number: str, document_name: str) -> str:
+def archives_url(
+    cik: str | int,
+    accession_number: str,
+    document_name: str,
+    *,
+    archive_base_url: str = SEC_ARCHIVE_BASE,
+) -> str:
     """Return the canonical EDGAR archive document URL.
 
     Inputs are assumed usable and a nonsense URL is built rather than refused;
     tolerating a missing or malformed document belongs in the engine.
     """
     accession_clean = str(accession_number).replace("-", "")
-    return f"{SEC_ARCHIVE_BASE}/{int(cik)}/{accession_clean}/{document_name}"
+    return (
+        f"{archive_base_url.rstrip('/')}/{int(cik)}/{accession_clean}/{document_name}"
+    )
 
 
-#: The document path keeps embedded slashes and case, so no percent-decoding is
-#: applied and the value stays byte-faithful to the observed URL.
-_ARCHIVE_URL_RE = re.compile(
-    rf"^{re.escape(SEC_ARCHIVE_BASE)}/(?P<archive_cik>\d+)/"
+def index_url_for(
+    accession: AccessionNumber | str,
+    archive_cik: Cik | str | int,
+    *,
+    archive_base_url: str = SEC_ARCHIVE_BASE,
+) -> str:
+    """Build an index URL using the caller's archive-directory CIK."""
+    identity = AccessionNumber.from_any(accession)
+    return archives_url(
+        archive_cik,
+        identity.normalized,
+        f"{identity}-index.html",
+        archive_base_url=archive_base_url,
+    )
+
+
+_ARCHIVE_PATH_RE = re.compile(
+    r"^/Archives/edgar/data/(?P<archive_cik>\d+)/"
     r"(?P<accession>\d{10,18}?)/(?P<document_path>.+)$"
 )
 
@@ -86,6 +111,43 @@ class ArchiveUrlParts:
     document_path: str
 
 
+@dataclass(frozen=True, slots=True)
+class ArchiveUrlPolicy:
+    allowed_schemes: frozenset[str] = frozenset({"https"})
+    allowed_hosts: frozenset[str] = frozenset({"www.sec.gov"})
+
+    def __post_init__(self) -> None:
+        schemes = frozenset(item.casefold() for item in self.allowed_schemes)
+        hosts = frozenset(item.casefold() for item in self.allowed_hosts)
+        if not schemes or not hosts or any(not item for item in (*schemes, *hosts)):
+            raise ValueError("archive URL policy needs schemes and hosts")
+        if any(not re.fullmatch(r"[a-z][a-z0-9+.-]*", item) for item in schemes):
+            raise ValueError("archive URL policy contains an invalid scheme")
+        if any("/" in item or ":" in item or "@" in item for item in hosts):
+            raise ValueError("archive URL policy contains an invalid host")
+        object.__setattr__(self, "allowed_schemes", schemes)
+        object.__setattr__(self, "allowed_hosts", hosts)
+
+
+DEFAULT_ARCHIVE_URL_POLICY = ArchiveUrlPolicy()
+
+
+def _archive_parts(path: str, url: str) -> ArchiveUrlParts | None:
+    match = _ARCHIVE_PATH_RE.fullmatch(path)
+    if match is None:
+        return None
+    accession = normalize_accession(match.group("accession"))
+    document_path = match.group("document_path")
+    if accession is None or not document_path.strip("/"):
+        return None
+    return ArchiveUrlParts(
+        url=url,
+        archive_cik=match.group("archive_cik"),
+        accession=accession,
+        document_path=document_path,
+    )
+
+
 def parse_archive_url(url: str | None) -> ArchiveUrlParts | None:
     """Parse an archive document URL, or return None when it is not one.
 
@@ -93,21 +155,71 @@ def parse_archive_url(url: str | None) -> ArchiveUrlParts | None:
     """
     if not url:
         return None
-    match = _ARCHIVE_URL_RE.match(str(url).strip())
-    if match is None:
+    value = str(url).strip()
+    prefix = f"{SEC_ARCHIVE_BASE}/"
+    if not value.startswith(prefix):
         return None
-    accession = normalize_accession(match.group("accession"))
-    if accession is None:
+    parts = _archive_parts(value[len("https://www.sec.gov") :], value)
+    if parts is None:
         return None
-    document_path = match.group("document_path")
-    if not document_path.strip("/"):
-        return None
-    return ArchiveUrlParts(
-        url=str(url).strip(),
-        archive_cik=match.group("archive_cik"),
-        accession=accession,
-        document_path=document_path,
-    )
+    return parts
+
+
+def validate_archive_url(
+    url: str,
+    accession: AccessionNumber | str,
+    *,
+    expected_archive_cik: Cik | str | int | None = None,
+    policy: ArchiveUrlPolicy = DEFAULT_ARCHIVE_URL_POLICY,
+) -> ArchiveUrlParts:
+    """Validate archive path safety and accession identity, with optional CIK scope."""
+    if not isinstance(url, str) or not url or url != url.strip():
+        raise ValueError("archive URL must be a trimmed non-empty string")
+    if (
+        "?" in url
+        or "#" in url
+        or any(ord(char) <= 32 or ord(char) == 127 for char in url)
+    ):
+        raise ValueError("archive URL contains a query, fragment, or control character")
+    try:
+        parts = urlsplit(url)
+        port = parts.port
+    except ValueError as error:
+        raise ValueError("archive URL is malformed") from error
+    host = parts.hostname
+    if (
+        parts.scheme.casefold() not in policy.allowed_schemes
+        or host is None
+        or host.casefold() not in policy.allowed_hosts
+        or parts.username is not None
+        or parts.password is not None
+        or port is not None
+    ):
+        raise ValueError("archive URL host or scheme is not allowed")
+    path = parts.path
+    segments = path.split("/")
+    if (
+        "%" in path
+        or "\\" in path
+        or "//" in path
+        or any(segment in {".", ".."} for segment in segments)
+    ):
+        raise ValueError("archive URL path contains an unsafe segment")
+    archive = _archive_parts(path, url)
+    try:
+        expected = AccessionNumber.from_any(accession).normalized
+    except (TypeError, ValueError) as error:
+        raise ValueError("expected accession is invalid") from error
+    if archive is None or archive.accession != expected:
+        raise ValueError("archive URL is outside the expected accession")
+    if expected_archive_cik is not None:
+        try:
+            expected_cik = int(Cik.from_raw(expected_archive_cik))
+        except (TypeError, ValueError) as error:
+            raise ValueError("expected archive CIK is invalid") from error
+        if int(archive.archive_cik) != expected_cik:
+            raise ValueError("archive URL has the wrong archive CIK")
+    return archive
 
 
 def full_submission_url_for(archive_cik: str, accession: str) -> str:
@@ -126,13 +238,17 @@ __all__ = [
     "CIK_PADDED_WIDTH",
     "SEC_ARCHIVE_BASE",
     "SEC_SUBMISSIONS_BASE",
+    "DEFAULT_ARCHIVE_URL_POLICY",
+    "ArchiveUrlPolicy",
     "ArchiveUrlParts",
     "accession_hyphenated",
     "archives_url",
     "full_submission_url_for",
     "historical_submissions_url",
+    "index_url_for",
     "normalize_accession",
     "normalize_cik",
     "parse_archive_url",
     "submissions_url",
+    "validate_archive_url",
 ]

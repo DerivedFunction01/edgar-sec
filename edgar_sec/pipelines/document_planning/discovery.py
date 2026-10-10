@@ -21,7 +21,9 @@ from edgar_sec.foundation.runtime.settings.parquet import (
 )
 from .paths import (
     DocumentPlanningPaths,
+    PLAN_TARGETS_DIR,
     catalog_form_partition_name,
+    plan_target_part_path,
     resolve_document_planning_paths,
     validate_profile_id,
 )
@@ -212,12 +214,8 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> None:
         if partition in partitions and partitions[partition] != form:
             raise DocumentPlanError("plan forms collide in partition names")
         partitions[partition] = form
-        form_dir = f"targets/form={partition}"
-        prefix = f"{form_dir}/part-"
-        if not relative.startswith(prefix) or not relative.endswith(".parquet"):
-            raise DocumentPlanError("plan part path does not match its form")
         expected_index = indices.get(form, 0)
-        expected_name = f"{form_dir}/part-{expected_index:05d}.parquet"
+        expected_name = plan_target_part_path(form, expected_index)
         if relative != expected_name:
             raise DocumentPlanError("plan parts are not numbered consecutively")
         order = (form, relative)
@@ -257,7 +255,9 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> None:
             )
     if sum(observed.values()) != manifest.get("target_row_count"):
         raise DocumentPlanError("plan part rows do not match target row count")
-    actual_files = {path.resolve() for path in (root / "targets").rglob("*.parquet")}
+    actual_files = {
+        path.resolve() for path in (root / PLAN_TARGETS_DIR).rglob("*.parquet")
+    }
     if actual_files != declared_files:
         raise DocumentPlanError("plan bundle has undeclared or missing target parts")
 

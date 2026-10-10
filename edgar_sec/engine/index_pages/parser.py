@@ -7,8 +7,8 @@ transformation and its parser-implementation fingerprint.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from urllib.parse import parse_qs, urljoin, urlsplit
 from typing import Literal
+from urllib.parse import SplitResult, parse_qs, urlsplit
 
 from edgar_sec.domain.document_inventory.models import (
     IndexPageInput,
@@ -22,7 +22,7 @@ from edgar_sec.domain.document_inventory.models import (
     inventory_entry_id,
 )
 from edgar_sec.domain.identity import AccessionNumber
-from edgar_sec.domain.sec_urls import parse_archive_url
+from edgar_sec.domain.sec_urls import validate_archive_url
 from edgar_sec.engine.document.html.tree import FastHtmlNode, parse_html
 from edgar_sec.foundation.hashing import sha256_bytes
 
@@ -340,27 +340,62 @@ def _same_accession_archive_url(
 ) -> str | None:
     if not href.strip():
         return None
-    source = urlsplit(source_url)
-    resolved = urljoin(source_url, href.strip())
-    target = urlsplit(resolved)
-    if (
-        target.scheme != source.scheme
-        or target.netloc.casefold() != source.netloc.casefold()
-    ):
+    try:
+        resolved = _resolve_href_without_normalizing(source_url, href.strip())
+        target = urlsplit(resolved)
+        source = urlsplit(source_url)
+        source_archive = validate_archive_url(source_url, accession)
+    except ValueError:
+        return None
+    if not _same_origin(source, target):
         return None
     if target.path == "/ix":
         document_paths = parse_qs(target.query, keep_blank_values=True).get("doc", [])
         if len(document_paths) != 1:
             return None
-        resolved = urljoin(f"{source.scheme}://{source.netloc}/", document_paths[0])
-    resolved_parts = urlsplit(resolved)
-    if resolved_parts.query or resolved_parts.fragment:
+        try:
+            resolved = _resolve_href_without_normalizing(
+                f"{source.scheme}://{source.netloc}/", document_paths[0]
+            )
+            target = urlsplit(resolved)
+        except ValueError:
+            return None
+    if not _same_origin(source, target):
         return None
-    parts = parse_archive_url(resolved)
-    if (
-        parts is None
-        or parts.accession != accession.normalized
-        or int(parts.archive_cik) != int(accession.normalized[:10])
-    ):
+    try:
+        validate_archive_url(
+            resolved,
+            accession,
+            expected_archive_cik=source_archive.archive_cik,
+        )
+    except ValueError:
         return None
+    return resolved
+
+
+def _same_origin(source: SplitResult, target: SplitResult) -> bool:
+    return (
+        target.scheme.casefold() == source.scheme.casefold()
+        and target.netloc.casefold() == source.netloc.casefold()
+    )
+
+
+def _resolve_href_without_normalizing(source_url: str, href: str) -> str:
+    source = urlsplit(source_url)
+    reference = urlsplit(href)
+    if reference.scheme:
+        return href
+    if reference.netloc:
+        return f"{source.scheme}:{href}"
+    origin = f"{source.scheme}://{source.netloc}"
+    if reference.path.startswith("/"):
+        path = reference.path
+    else:
+        directory = source.path.rsplit("/", 1)[0]
+        path = f"{directory}/{reference.path}"
+    resolved = origin + path
+    if "?" in href:
+        resolved += f"?{reference.query}"
+    if "#" in href:
+        resolved += f"#{reference.fragment}"
     return resolved

@@ -105,6 +105,34 @@ def test_empty_and_other_accession_hrefs_are_not_promoted() -> None:
     ]
 
 
+def test_archive_href_policy_rejects_traversal_and_empty_delimiters() -> None:
+    hrefs = [
+        "/Archives/edgar/data/123456/000012345626000016/../report.htm",
+        "/ix?doc=/Archives/edgar/data/123456/000012345626000016/../report.htm",
+        "https://attacker.example/ix?doc=/Archives/edgar/data/123456/"
+        "000012345626000016/report.htm",
+    ]
+    source = (
+        """<table summary='Data Files'>
+    <tr><th>Seq</th><th>Description</th><th>Document</th><th>Type</th><th>Size</th></tr>
+    """
+        + "".join(
+            f"<tr><td>{index}</td><td>File</td><td><a href='{href}'>report.htm</a></td>"
+            "<td>XML</td><td>10</td></tr>"
+            for index, href in enumerate(hrefs, start=1)
+        )
+        + "</table>"
+    )
+
+    page = _parse(source.encode())
+
+    assert isinstance(page, ParsedIndexPage)
+    assert [entry.archive_url for entry in page.entries] == [None] * len(hrefs)
+    assert sum(item.code == "unsafe_href" for item in page.diagnostics.items) == len(
+        hrefs
+    )
+
+
 def test_bundle_row_is_not_a_child_entry_and_needs_no_sequence() -> None:
     source = b"""<table summary='Document Format Files'>
     <tr><th>Seq</th><th>Description</th><th>Document</th><th>Type</th><th>Size</th></tr>

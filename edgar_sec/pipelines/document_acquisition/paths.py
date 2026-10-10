@@ -22,7 +22,12 @@ from edgar_sec.infra.storage.review.paths import (
     review_run_paths,
     review_runs_root,
 )
-from edgar_sec.pipelines.document_planning.paths import resolve_document_planning_paths
+from edgar_sec.pipelines.document_planning.paths import (
+    PLAN_TARGETS_DIR,
+    form_partition_name,
+    plan_target_part_path,
+    resolve_document_planning_paths,
+)
 
 DATASET = "document_acquisition"
 RUN_STATE_FILE = "state.sqlite"
@@ -128,10 +133,13 @@ def resolve_acquisition_paths(
 
 __all__ = [
     "DATASET",
+    "PLAN_TARGETS_DIR",
     "RUN_CANCELLED_FILE",
     "RUN_STAGING_DIR",
     "RUN_STATE_FILE",
     "WORK_ORDER_DIR",
     "AcquisitionPaths",
+    "form_partition_name",
+    "plan_target_part_path",
     "resolve_acquisition_paths",
 ]
