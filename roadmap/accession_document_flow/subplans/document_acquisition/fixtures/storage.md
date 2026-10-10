@@ -22,9 +22,10 @@ manifest is an immutable descriptor with no case list or body digest inventory;
 schema version 2 through `PRAGMA user_version`. The manifest is not a response store.
 Its `created_at` and `updated_at` are equal at creation and remain unchanged as case
 rows are appended; the SQLite case timestamps are authoritative for captures.
-There is no response directory, sidecar body file, compression layer, or body
-filename/extension. SQLite's native transaction journal/WAL files, if used, are
-database runtime state and never an alternate body store.
+There is no response directory, sidecar body file, or body filename/extension. Every
+captured response is Zstandard-compressed before insertion; the same policy applies to
+HTML/text, XML, PDF, images, and other media. SQLite's native transaction journal/WAL
+files, if used, are database runtime state and never an alternate body store.
 
 ## Schema
 
@@ -43,9 +44,13 @@ CREATE TABLE response_bodies (
     body_id INTEGER PRIMARY KEY,
     response_sha256 TEXT NOT NULL UNIQUE,
     byte_size INTEGER NOT NULL CHECK (byte_size >= 0),
-    raw_body BLOB NOT NULL,
+    storage_codec TEXT NOT NULL CHECK (storage_codec = 'zstd'),
+    stored_sha256 TEXT NOT NULL,
+    stored_byte_size INTEGER NOT NULL CHECK (stored_byte_size >= 0),
+    compressed_body BLOB NOT NULL,
     CHECK (length(response_sha256) = 64 AND response_sha256 NOT GLOB '*[^0-9a-f]*'),
-    CHECK (length(raw_body) = byte_size),
+    CHECK (length(stored_sha256) = 64 AND stored_sha256 NOT GLOB '*[^0-9a-f]*'),
+    CHECK (length(compressed_body) = stored_byte_size),
     UNIQUE (response_sha256, byte_size)
 );
 
@@ -127,29 +132,43 @@ CREATE TABLE cases (
 );
 ```
 
+`cases.response_sha256` and `cases.source_byte_size` reference the
+uncompressed response identity. The case schema does not use the compressed-storage
+digest as the selected document identity.
+
 The case schema also retains the S6 target identity/provenance needed by review; the
 capture pins the target-plan and optional inventory inputs once per captured run.
-Failed attempts may have no response row. Direct-target selected and source digests
-and sizes agree. A bundle case stores the full response once and records the selected
-child digest/size for replay verification.
+Failed attempts may have no response row. `response_sha256` and `byte_size` identify
+the uncompressed exact response. `stored_sha256` and `stored_byte_size` verify the
+compressed BLOB before decompression. Direct-target selected and source digests and
+sizes agree. A bundle case stores the compressed full response once and records the
+selected child digest/size for replay verification.
 
 ## Contracts
 
-- **Exact bytes**: `raw_body` contains the exact bytes from the S9 staged source body,
-  without additional compression, transformation, newline conversion, or wrapper
-  format. `byte_size` and SHA-256 are computed over those same bytes.
-- **Single body store**: `index.sqlite` is the sole store for cases and response bytes.
+- **Exact bytes**: `compressed_body` is the Zstandard encoding of the exact S9 staged
+  source body. `byte_size` and `response_sha256` identify the uncompressed source;
+  `stored_byte_size` and `stored_sha256` verify the stored compressed stream. Replay
+  decompresses incrementally, then verifies the uncompressed identity.
+- **Single body store**: `index.sqlite` is the sole store for cases and compressed
+  response bytes.
   `manifest.json` is an immutable descriptor only. SQLite may use native transaction
-  files, but no application-managed body files or content-addressed directory exists.
-- **Bounded capture/replay**: reserve the known BLOB length with `zeroblob`, then use
-  incremental SQLite BLOB I/O or an equivalent bounded chunk API to copy between the
-  already-staged source and the BLOB. Never materialize a complete response in Python
-  memory. Enforce the finite acquisition response bound and SQLite's configured BLOB
-  limit before insertion.
-- **Atomic append**: insert a new deduplicated response BLOB and its attempt/capture
-  rows in one SQLite transaction. Verify size and digest before commit; rollback leaves
-  no partial body or visible case. Verify an existing digest's BLOB before deduplicated
-  reuse. Existing case keys and bytes are never overwritten.
+  files, but no application-managed body files or external payload directory exists.
+- **Uniform compression**: compress every response with Zstandard before insertion;
+  do not branch on MIME type or assume already-compressed media makes compression
+  optional.
+- **Bounded capture/replay**: stream the source through a Zstandard encoder into a
+  transient compressed staging file to determine stored size/digest, reserve that BLOB
+  length with `zeroblob`, then use incremental SQLite BLOB I/O or an equivalent
+  bounded chunk API to copy compressed bytes. Remove the staging file after commit.
+  Decompress incrementally on replay. Never materialize a complete compressed or
+  uncompressed response in Python memory. Enforce the acquisition limit on
+  uncompressed bytes and SQLite's configured BLOB limit on stored bytes.
+- **Atomic append**: insert a new deduplicated compressed response BLOB and its
+  attempt/capture rows in one SQLite transaction. Verify stored and uncompressed sizes
+  and digests before commit; rollback leaves no partial body or visible case. Decode
+  and verify an existing digest's compressed BLOB before deduplicated reuse. Existing
+  case keys and bytes are never overwritten.
 - **Fixture creation marker**: initialize the SQLite schema and `user_version` before
   atomically writing `manifest.json`. A missing/invalid manifest or database is an
   incomplete fixture and is refused, not auto-repaired.
@@ -169,11 +188,13 @@ child digest/size for replay verification.
 - **Fixture export/import**: no standalone fixture archive format is defined; copy or
   move the closed SQLite database as one unit until an explicit interchange contract
   is designed.
-- **Production payload storage**: fixture BLOB choices are review/replay-specific and
-  do not select S11's durable document-payload architecture.
+- **Production payload relation**: fixture SQLite is the replay-only compressed BLOB
+  store; production snapshot payloads use separate binary/text Parquet relations as
+  specified by [the acquisition lifecycle](../lifecycle.md).
 
 ## Acceptance
 
 Capture and replay preserve byte-identical source responses using bounded memory;
 database rollback cannot expose partial evidence; duplicate response digests do not
-duplicate stored BLOBs; and the fixture directory contains no external body files.
+duplicate stored BLOBs; Zstandard integrity and uncompressed digest checks pass for
+text and binary media; and the fixture directory contains no external body files.

@@ -7,7 +7,8 @@
   processing is available but persists a different result shape. This contract now
   specifies the S10 worker sequence; exhibit-role assessment remains provisional.
 - Depends on: S9 staged selected-body and fixture replay contracts; S7 review artifacts.
-- Non-blocking: S11 payload-store decision.
+- S11 publication consumes S10 outputs after the fixture-driven S9/S10 gate; see the
+  [acquisition lifecycle plan](document_acquisition/lifecycle.md).
 - Exhibit assessment proposal: [S10 taxonomy and evidence-pack design](S10_exhibit_assessment.md).
 - Legacy behavior audit: [document_storage processing trace](S10_legacy_processing_trace.md).
 
@@ -104,10 +105,12 @@ review file.
 
 After S10 has consumed an acquired body, its coordinator writes the versioned
 [`BodyConsumptionReceipt`](document_acquisition/schemas.md) through the S9 path
-contract before removing the staged selected body and any remaining bundle envelope.
-This receipt is independent of processing success: an unrecognized or failed
-normalization may still have fully consumed the input bytes. S10 imports only the S9
-path/schema contracts, not acquisition services.
+contract. This receipt proves consumption, not permission to delete bytes required by
+S11 publication. S9 retains the selected body until Parquet publication or explicit run
+discard; a bundle envelope may be removed after extraction unless fixture capture
+retained it. The receipt is independent of processing success: an unrecognized or
+failed normalization may still have fully consumed the input bytes. S10 imports only
+the S9 path/schema contracts, not acquisition services.
 
 `ProcessingResult.source_sha256` is the selected-body digest in `StagedBodyRef.sha256`.
 The full response-envelope digest remains S9 provenance in
@@ -159,8 +162,8 @@ request.
 8. Atomically write the matching S9 `BodyConsumptionReceipt` after the body has been
    fully read and integrity-checked, even when later normalization is unrecognized or
    fails. A pre-read admission refusal or digest/size mismatch has no receipt; retain
-   the acquired body so it can be reviewed or reprocessed. Only after a matching
-   receipt is durable may S9 cleanup remove the selected body and source envelope.
+   the acquired body so it can be reviewed or reprocessed. S9 cleanup additionally
+   requires snapshot publisher adoption or explicit run discard.
 
 Processing failures are isolated by target; one bad body does not discard successful
 sibling results. The processing fingerprint pins route policy, form-profile version,
@@ -293,7 +296,7 @@ Review replays only acquisition fixtures. `processing.json` always records targe
 - ASCII `.txt` bytes, including literal markup text, remain byte-identical; malformed/unclosed HTML fixtures produce best-effort text without false successful-empty results.
 - XML with malformed structure or prohibited DTD/entity declarations fails with a typed diagnostic.
 - Body and request identity mismatches refuse processing; a typed working-set admission refusal preserves the acquired body without a consumption receipt.
-- A completed read followed by a normalization failure still writes a matching consumption receipt before cleanup; unreadable or digest-mismatched input does not.
+- A completed read followed by a normalization failure still writes a matching consumption receipt; unreadable or digest-mismatched input does not. The receipt alone never permits cleanup before publication adoption or explicit discard.
 - Exhibit assessment is absent for unsupported representations/forms; when enabled it can only append a diagnostic and cannot change the target, profile, or acquisition state.
 - PDF/image routes are `binary` with no derived text; unknown routes are explicit `unrecognized`.
 - Review writes a text representation only for selected fixtures; ordinary results leave no durable text/AST files.
@@ -302,8 +305,10 @@ Review replays only acquisition fixtures. `processing.json` always records targe
 ## Acceptance criteria
 
 HTML and non-ASCII text processing reuse the existing engine contract; ASCII text
-passthrough, standalone XML, binary, and unknown routes remain explicit. Outputs are
-deterministic and transient except for selected review evidence. The future payload
-store remains a separate S11 approval gate. Large-body parallel processing remains
-gated on measured route working-set envelopes; exhibit assessment remains gated on
-reviewed, holdout-tested evidence packs.
+passthrough, standalone XML, binary, and unknown routes remain explicit. Processing
+outputs are deterministic and transient until S11 publication adopts selected
+representations into Parquet payload relations, except for separately selected review evidence. The
+publication contract is specified in the acquisition lifecycle plan and remains
+behind S11 approval. Large-body parallel processing remains gated on measured route
+working-set envelopes; exhibit assessment remains gated on reviewed, holdout-tested
+evidence packs.

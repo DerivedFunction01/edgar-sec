@@ -99,10 +99,11 @@ flowchart TD
 
     FINALBODY --> S10["Proposed S10 validates assigned staged bytes<br/>routes selected child and applies role profile"]
     S10 --> RESULT["ProcessingResult<br/>metadata, digests, fingerprint, diagnostics"]
-    S10 --> RECEIPT["Write S9 BodyConsumptionReceipt<br/>then permit staged-body cleanup"]
+    S10 --> RECEIPT["Write S9 BodyConsumptionReceipt<br/>proves consumption; does not clean body"]
     S10 -. "optional capture_review" .-> REVIEW["S7 promotes staged review output<br/>not a payload store"]
-    RESULT -. "after representative S9/S10 evidence<br/>and explicit design approval" .-> S11["S11 payload-store decision<br/>slot metadata, CAS links, sparse type evidence"]
-    S5 -. "future pinned snapshot reconciliation<br/>metadata only; no document-body fetch" .-> S11
+    RESULT --> PUBLISH["S11 publishes immutable acquisition snapshot<br/>binary and text payload Parquet relations"]
+    PUBLISH --> CLEAN["Publication receipt permits transient cleanup"]
+    S5 -. "pinned metadata-only reconciliation<br/>no document-body fetch" .-> S11["S11 Parquet/DAG snapshot relations<br/>slots, payloads, sparse types, target selections"]
 
     FIXTURE["Optional S9 fixture capture/replay<br/>exact response bytes for offline evidence"] -. "replay source; not production storage" .-> BODY
 ```
@@ -118,10 +119,11 @@ flowchart TD
 | S6 target planning (implemented) | Required pinned catalog plan; optional pinned S5 snapshot; versioned profile. | Immutable target-plan bundle with one target row per request/candidate and explicit status/provenance/retrieval locator. | Without a snapshot only primary catalog-direct planning is valid. With a snapshot it is the sole locator evidence; never fall back to catalog paths. Current code allows bundle-sequence locators for unlinked exhibits only. |
 | S9 acquisition (proposed) | Validated S6 plan bundle, pinned source provenance, supported matched locators. | Append-only attempts/outcomes, exact source and selected-body digests, transient staged body reference, and for lazy recovery a target-to-physical-slot resolution record. | Default path executes exact planned locator. Only catalog-direct `exact_form_with_lazy_index` may fetch/parse `-index.html`, after the defined local identity suspicion. It records the new evidence without changing S5/S6. |
 | S10 processing (proposed) | Acquired S9 body assigned to the immutable S6 target. | Per-target `ProcessingResult`; optional S7 review reference; S9 consumption receipt after verified read. | Processes only the resolved body. It does not discover targets; a processing/cover diagnostic cannot revise S6 intent or cause S9 work. |
-| S11 payload design (gated) | Reviewed representative S9 acquisition and S10 processing evidence. | A reviewed storage decision record; candidate relations separate physical slots, CAS links, sparse type evidence, and target-slot assignments. | No durable payload store is authorized before approval. Metadata-only reconciliation consumes pinned S5 facts downstream and does not alter S5/S6 schemas. |
+| S11 snapshot publication (planned; approval-gated) | Validated S9/S10 run, imported worker receipts, expected DAG parent. | Immutable acquisition Parquet snapshot with separate binary-route and text-route payload relations joined to target/slot evidence by digest. | Design and schema live in [the lifecycle plan](lifecycle.md); durable publication waits for representative S9/S10 evidence and S11 approval. Reconciliation consumes pinned S5 facts and does not alter S5/S6 schemas. |
 
 The full inventory path is catalog materialization → catalog plan → S5 inventory
-publication → S6 plan → S9 acquisition → S10 processing. The catalog-direct route
+publication → S6 plan → S9 acquisition → S10 processing → S11 acquisition snapshot
+publication. The catalog-direct route
 skips S5 only for a primary-only profile and intentionally has weaker evidence. Its
 lazy-index path is an explicit selector-authorized exception, not a fallback for an
 accession missing from a selected inventory snapshot.
@@ -329,8 +331,9 @@ For an inventory-backed bundle target, the observed S6 sequence remains authorit
 S9 does not use a selected header mismatch to find a replacement. The explicit
 catalog-direct lazy policy is different: it may fetch the index after the sequence-1
 body screen suspects mismatch and then selects by the index's observed `document_type`.
-S9 fixture capture stores exact response bytes in its evidence store; it is not the
-future durable payload store. See [S9 acquisition](../S9_acquisition.md),
+S9 fixture capture stores Zstandard-compressed exact response bodies in its SQLite
+replay store; S11 publishes successful slot bodies and processed representations in
+Parquet. See the [acquisition lifecycle](lifecycle.md), [S9 acquisition](../S9_acquisition.md),
 [bounded extraction](run/extraction.md), and
 [fixture storage](fixtures/storage.md).
 

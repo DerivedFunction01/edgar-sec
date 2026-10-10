@@ -714,13 +714,13 @@ S9 is specified around its user-facing commands: [project](subplans/document_acq
 
 **Details:** [subplan](subplans/S10_processing.md)
 
-A staged-body-to-representation interface with deterministic fingerprint and route dispatch for HTML/iXBRL, text, standalone XML, binary/PDF, paper, and unknown paths. It reuses the existing form-aware engine normalizer without materializing stage traces; normalized content remains transient except selected S7 review outputs. PDF text extraction and XML fact extraction are explicit gaps; no `document_storage` imports.
+A staged-body-to-representation interface with deterministic fingerprint and route dispatch for HTML/iXBRL, text, standalone XML, binary/PDF, paper, and unknown paths. It reuses the existing form-aware engine normalizer without materializing stage traces; normalized content remains transient through S10, then S11 publishes selected source/derived payloads into Parquet relations. PDF text extraction and XML fact extraction are explicit gaps; no `document_storage` imports.
 
-### S11 — Durable payload-store decision (design gate, not implementation)
+### S11 — Durable acquisition snapshot publication (design approval gate)
 
 **Details:** [subplan](subplans/S11_payload_design.md)
 
-Design gate only, not implementation. Representative S9/S10 cases feed a reviewed design comparing CAS, annual Parquet, and DuckDB storage for raw/selected/normalized identities, target/source provenance, occurrence relationships, replay, idempotence, retention, and inventory linkage. It preserves S5 annual metadata parts and S6 source-pinned plans; explicit approval is required before payload code, and no payload fields enter inventory.
+The complete proposed design now lives in the [document-acquisition lifecycle plan](subplans/document_acquisition/lifecycle.md): published snapshot storage is Parquet-only, with separate joinable binary-route and text-route payload relations inside the immutable DAG. HTML remains text/markup, not binary media. Payload rows preserve exact selected bytes and derived text with digests; no external CAS directory is part of the design. Acquisition fixtures are the explicit SQLite exception and store Zstandard-compressed response BLOBs. Representative S9/S10 evidence and explicit approval remain prerequisites to implementation; S5 annual metadata and S6 source-pinned plans remain separate and unchanged.
 
 ### S12 — Operator integration and end-to-end quality gate
 
@@ -744,7 +744,7 @@ S6 ─> acquisition project ─> status/run ─┬─> S10 selected-body process
                                          ├─> distrib export/worker/import ────────┤
                                          └─> fixture capture/replay ─────────────┤
 S9/S10 ─> S7d acquisition/processing review ─────────────────────────────────────┤
-S9/S10 evidence ─> S11 payload-store decision ───────────────────────────────────┤
+S9/S10 evidence ─> S11 Parquet snapshot publication ──────────────────────────────┤
 S1–S11 ─────────────────────────────────────────────────────────────────────────> S12
 ```
 
@@ -757,8 +757,9 @@ implemented parser and integrated workers. S6 catalog-only planning remains an
 independent branch while optional inventory evidence waits for S5 and XBRL claims wait
 for S0. Later S7c
 review/inspect, S8 vacuum, and acquisition fixture replay wait for their named source artifacts. S10
-filing-body HTML processing is deferred until S9 fixtures exist. S11 is intentionally
-a design decision after S9/S10 evidence, not a missing subplan.
+filing-body HTML processing is deferred until S9 fixtures exist. The S11 design is now
+specified in the acquisition subplan; representative S9/S10 evidence and design
+approval gate its implementation.
 
 ## 8. CLI Surface by Stage
 
@@ -779,19 +780,24 @@ The initial operator surface is explicit-artifact oriented and small:
 | Project acquisition run (S9) | `acquisition project --plan-id <id>` | Validated S6 target plan → immutable resumable work order; no network. |
 | Inspect acquisition run (S9) | `acquisition status [--run-id <id>]` | Read-only validation and outcome summary; no network. |
 | Run acquisition work (S9) | `acquisition run --run-id <id> [--retry-failures]` | Explicit network execution of pending or explicitly selected retryable targets. |
+| Process acquired targets (S10) | `acquisition process --run-id <id>` | Offline per-target processing; consumes verified acquired bodies without additional requests. |
+| Publish acquisition snapshot (S11) | `acquisition publish --run-id <id> [--branch <name>] [--allow-errors]` | Publish validated target/slot evidence and separate binary/text payload Parquet relations through the shared DAG. |
+| Query acquisition snapshot (S11) | `acquisition query --snapshot <id|current> [target/slot filters]` | Read-only metadata and selected payload access; verifies logical-byte digest. |
 | Distribute acquisition (S9) | `acquisition distrib {export,worker,import,list,commands}` | Future shared-distribution adapter; live remote SEC work is gated on cross-host rate coordination and excluded from the initial local implementation. See the [command-group design](subplans/document_acquisition/distribution/index.md). |
-| Capture/replay acquisition fixture (S9) | `acquisition fixture {capture,list,replay}` | Explicit exact-byte response BLOB capture in a fixture SQLite database and zero-network replay; no durable payload publication. |
+| Capture/replay acquisition fixture (S9) | `acquisition fixture {capture,list,replay}` | Explicit Zstandard-compressed exact-response BLOB capture in a fixture SQLite database and zero-network replay; no durable snapshot publication. |
 | Accession query | `inventory query --snapshot current --accession <accession>` | Filing facts, all observed child/data-file rows, and source-CIK relations; no network. |
 | Form/CIK query | `inventory query --snapshot current --form <form> [--filing-cik <cik>] [--source-cik <cik>]`, `--filing-cik <cik>`, or `--source-cik <cik>` | Matching accessions/entries from annual parts and distinct filing/source-CIK postings; no network. |
 | Vacuum | `inventory vacuum --snapshot <snapshot-id|current> --retention <policy-id>` | Compact DAG delta lineages into checkpoint nodes and prune unreachable parts; parity-gated, atomically publish `current`. |
 | Inspect (later S7c) | `inventory inspect --snapshot <id|current> [--accession <accession>]` | Reads a pinned snapshot manifest/partition or one accession; no network. |
 
-`index.json` parsing, interactive wizard, and production acquisition/processing CLI
-commands are added only in their owning subplans. No query, projection, status, or publication
+`index.json` parsing and the umbrella interactive wizard are added only in their owning
+subplans. No query, projection, status, or publication
 command fetches index pages or filing bodies; only `inventory run` fetches index pages
 for accessions missing from its pinned base. In the approved Inventory operator,
-Project, Status, and Run are top-level actions alongside the existing root shortcuts;
-the Snapshot DAG Publish action selects and publishes an existing run.
+Project, Status, and Run are top-level Inventory actions alongside the existing root
+shortcuts. Acquisition has its own Process/Publish actions: `acquisition publish`
+publishes a validated S9/S10 run, while the Inventory snapshot-publish action remains
+owned by S5.
 
 ## 9. Frozen Pipeline Module Disposition
 
@@ -807,8 +813,8 @@ module under `pipelines.document_storage` is a dependency of the new pipeline.
 - No runtime `index.json` unless S0 proves an HTML/URL-construction gap.
 - No SGML download or bundle extraction in inventory or target planning.
 - No document-body normalization during inventory or target planning.
-- No production raw/normalized payload Parquet, blob CAS, or payload linkage
-  until S11 is reviewed and approved.
+- No production binary/text payload Parquet or payload linkage until the documented S11
+  design is reviewed and approved.
 - The planned `document_storage` removal is a separate post-S12 gate: the approved
   S11 payload design must be implemented, consumers and old artifacts migrated or
   retired, parity/rollback checks passed, and module-map links cleaned before deletion.

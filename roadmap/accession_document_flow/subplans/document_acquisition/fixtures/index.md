@@ -61,15 +61,19 @@ The detailed schemas and edge cases are separated by mutation boundary below.
 
 ## Contract
 
-- Capture is explicit. Ordinary acquisition retains only transient source and
-  selected-body files needed by S10, then removes them. Fixture capture is the
-  exception that retains source-response bytes as review evidence in SQLite.
-- Store exact, uncompressed response bytes in SQLite BLOBs. There is no parallel body
-  file store; response digest/size, URL metadata, selected digest, target-plan
+- Capture is explicit. Ordinary acquisition retains source/selected-body staging
+  through S10 and S11 publication; it removes the files only after payload Parquet
+  adoption or explicit run discard. Fixture capture separately retains the compressed
+  source response as replay evidence in SQLite.
+- Store Zstandard-compressed response bytes in SQLite BLOBs. The response digest/size
+  identify the exact uncompressed bytes; stored digest/size verify the compressed BLOB.
+  There is no parallel body file store; URL metadata, selected digest, target-plan
   provenance, and capture identity are indexed in the same database.
 - For bundle targets, retain the source response and replay exact-sequence extraction;
   the selected child can be re-derived and checked against its recorded digest. Do
   not store duplicate body copies merely to replay a selected child.
+- Apply Zstandard before SQLite insertion for every route/media type; decompression is
+  incremental and verifies the exact uncompressed response digest during replay.
 - Same target captured later appends a new capture case; it never overwrites prior
   evidence. Fixture and case IDs resolve only within their fixture root.
 - Replay verifies the common manifest envelope, matching manifest/SQLite schema

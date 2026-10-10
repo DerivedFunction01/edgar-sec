@@ -37,16 +37,18 @@ fixture schema conflict.
 - Copy exact response bytes into a SQLite BLOB using bounded incremental I/O. Do not
   compress, transform, or create an external body file. Do not store a bundle's
   selected child as a second BLOB; replay re-extracts it and checks its digest.
-- Insert/deduplicate the source BLOB and append capture/case metadata in one SQLite
-  transaction. Verify the body size/digest before commit; rollback leaves neither a
-  partial BLOB nor a visible case row.
+- Stream the source response through Zstandard before inserting/deduplicating the
+  compressed BLOB and capture/case metadata in one SQLite transaction. Verify the
+  uncompressed and stored sizes/digests before commit; rollback leaves neither a
+  partial BLOB nor a visible case row. Apply the same codec to every media type.
 - A repeated capture of the same fixture/run/target/attempt with identical metadata
   is idempotent. If the attempt or bytes differ, refuse rather than replace evidence.
   A later acquisition attempt has a distinct attempt ID and appends a new case.
 - Failure attempts without a response body may be captured as metadata-only cases.
   They replay the typed failure without HTTP; they cannot produce a body handle.
 - Capture does not change the S9 attempt/outcome and does not remove run staging.
-  S10's matching body-consumption receipt is the later cleanup boundary.
+  Snapshot publication or explicit run discard is the later cleanup boundary; S10's
+  matching receipt proves consumption only.
 
 ## Tests
 

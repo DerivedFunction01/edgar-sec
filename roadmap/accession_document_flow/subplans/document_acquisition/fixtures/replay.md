@@ -59,5 +59,6 @@ and a `StagedBodyRef` only when the selected body was reproduced successfully.
 Tests assert byte-identical direct replay, exact bundle-child replay and digest,
 zero HTTP calls, typed replay of absent/required-missing/ambiguous/malformed outcomes,
 lazy-index resolution and replacement-body replay, refusal on a
-changed BLOB/schema/provenance, and cleanup of generated staging after S10
-acknowledgement. Repeated replay leaves fixture metadata unchanged.
+  changed BLOB/schema/provenance, and refusal to clean generated staging before
+  snapshot publication or explicit discard. Repeated replay leaves fixture metadata
+  unchanged.

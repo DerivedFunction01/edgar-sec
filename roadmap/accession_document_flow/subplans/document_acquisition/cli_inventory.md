@@ -2,10 +2,10 @@
 
 ## Purpose and status
 
-This is the index for replacing the S9 acquisition subplans with command-oriented
-contracts. It records tracked CLI patterns and the proposed operator surface; linked
-documents specify each command's behavior. It does not specify S10 normalization or
-the later durable payload store.
+This is the index for replacing the legacy document-storage surface with command-
+oriented acquisition, processing, and publication contracts. It records tracked CLI
+patterns and the proposed operator surface; linked documents specify each command's
+behavior and the integrated [lifecycle plan](lifecycle.md).
 
 Shared package boundaries and cross-command prerequisites are in
 [the S9 architecture](architecture.md); command contracts must use its schema, path,
@@ -22,9 +22,9 @@ replacement S9 CLI.
 
 [`run.py`](../../../../run.py) currently has eight entries. The relevant entry is
 `Document Storage — Document acquisition, normalization, snapshots, and review
-(removed soon)`, routed to `document_storage.cli`. The future S9 entry should be
-named **Document Acquisition** and describe only the acquisition work it owns; S10
-processing and later durable storage/publication are separate stages.
+(removed soon)`, routed to `document_storage.cli`. The future entry should be named
+**Document Acquisition** and expose separate project, acquire, process, and publish
+operations. S9, S10, and S11 remain distinct owners under the shared command group.
 
 ### Document Inventory
 
@@ -84,7 +84,8 @@ fixture bodies as replay evidence rather than publishing a durable payload store
 
 ## Proposed S9 launcher and operator shape
 
-Replace the legacy root entry with a separate entry for target-plan acquisition:
+Replace the legacy root entry with a separate entry for target-plan acquisition,
+processing, and publication:
 
 ```text
   Document Acquisition - Acquire eligible targets from S6 plans and inspect resumable runs
@@ -98,26 +99,27 @@ Document Acquisition
   1. Project a target plan into an acquisition run
   2. Show acquisition run status
   3. Run pending acquisition work
+  4. Process acquired targets
+  5. Publish a completed run snapshot
   f. Acquisition fixtures console (capture, list, replay)
+  p. Acquisition snapshot console (query, branches, tags, inspect)
   0. Exit
 ```
 
 The initial local implementation does not register the distribution console. Its
 design remains available below, but live remote SEC work is gated on cross-host rate
-coordination.
+coordination. Snapshot publication is separate from acquisition run completion and
+requires S10 results plus the publisher's integrity checks.
 
-The local command-line counterpart should support project, status, run, and
-acquisition-specific fixture commands with stable run/plan IDs. Network execution is
-an explicit CLI action; the interactive operator must separately confirm it,
-defaulting to no, and expose retry selection rather than silently retrying failed
-requests. `acquisition distrib` remains design-only for live SEC work until a
-cross-host rate policy is selected and enforced; the local broker's rate setting is
-not a cluster-wide limit.
-
-This shape deliberately omits `query`, `publish`/`merge`, and a snapshot DAG console:
-S9 consumes an immutable S6 target plan, records resumable run results and fixture
-evidence, and does not own a durable document snapshot. Add a published-artifact or
-query surface only when a later stage owns that artifact.
+The local command-line counterpart supports project, status, run, process, publish,
+snapshot query/management, and acquisition-specific fixture commands with stable
+run/plan/snapshot IDs. Network execution is an explicit CLI action; the interactive
+operator must separately confirm it, defaulting to no, and expose retry selection
+rather than silently retrying failed requests. Publishing is a separate local action
+that previews completeness and payload adoption; it makes no SEC requests.
+`acquisition distrib` remains design-only for live SEC work until a cross-host rate
+policy is selected and enforced; the local broker's rate setting is not a cluster-wide
+limit.
 
 ## Follow-up documents
 
@@ -144,6 +146,8 @@ behavior:
   shared contracts before command implementation.
 - [Implementation plan](plan.md): assess readiness, assign independent lower-layer
   and pipeline workstreams, and gate runner integration on their contracts.
+- [End-to-end lifecycle and publication](lifecycle.md): define S9/S10 transient state,
+  worker bundles, S11 binary/text Parquet relations, cleanup rules, and legacy differences.
 
 The existing [S9 design](../S9_acquisition.md) and S9a–S9d documents are earlier
 design material, not proof of implementation. These command contracts supersede

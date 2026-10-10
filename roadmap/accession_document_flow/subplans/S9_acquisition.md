@@ -100,7 +100,7 @@ or publish a durable payload snapshot.
   is the selected slot only.
 - When the durable relations are approved, index discovery may enrich physical slot/type metadata without re-fetching or reprocessing already acquired payloads. S5 remains an immutable metadata snapshot owner; its facts are consumed by a downstream reconciliation, not written into S5 by S9.
 - Transient source and selected-body files are removed after downstream processing unless the capture policy commits the source response to the fixture store.
-- Fixture bodies are test/review evidence, not the future durable payload store. S11 owns that design gate.
+- Fixture bodies are compressed replay evidence, not published document payloads. S11's Parquet snapshot contract owns durable payload publication.
 
 ## Acceptance criteria
 

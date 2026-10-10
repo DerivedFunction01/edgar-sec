@@ -155,7 +155,7 @@ WHERE outcome = ? AND retryable = ?;
 ```
 
 The second query binds `failed` and `1`. Per-target detail is filtered by bound
-`target_id`; status does not emit document bytes or scan the body CAS. A required
+`target_id`; status does not emit document bytes or scan published payload columns. A required
 target resolved absent by a recognized lazy index is terminal `required_missing` and
 contributes to `complete_with_errors`; optional `not_filed` remains a valid terminal
 outcome.

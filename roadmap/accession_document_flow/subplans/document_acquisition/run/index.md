@@ -87,8 +87,9 @@ selects stable machine-readable output.
   does not normalize it or define durable payload storage.
 - Commit completed target outcomes as work finishes. Cancellation stops new work,
   cleans partial files, preserves committed results, and leaves unfinished work
-  resumable. Remove transient source/selected files after S10 consumes them unless
-  explicit fixture capture has retained the source response.
+  resumable. Retain source/selected files after S10 consumes them until snapshot
+  publication adopts payload rows or the run is explicitly discarded. Fixture capture
+  independently retains compressed source-response evidence.
 - `--retry-failures` retries only outcomes classified retryable by the transport
   contract. It does not repeat acquired, `not_filed`, `required_missing`, ambiguous,
   or terminally refused work. A later retry does not erase earlier attempt provenance.
@@ -117,7 +118,7 @@ Offline tests cover no-work runs, one direct target, bundle target, optional
 `not_filed`, required `required_missing`, lazy-index resolution, 404, retryable and
 terminal failures, timeout, response-size breach, active/stale locks,
 interruption during transfer and after outcome commit, duplicate target assignment,
-and cleanup after S10 consumption. Tests inject a fake stream transport at the
+and refusal of cleanup before publication or explicit discard. Tests inject a fake stream transport at the
 `SecHttpClient`/broker seam and assert no network calls for ineligible targets.
 
 ## Detailed contracts

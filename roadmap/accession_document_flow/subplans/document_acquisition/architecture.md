@@ -4,7 +4,9 @@
 
 This document fixes the cross-command boundaries before the command contracts are
 expanded. It is design-only; there is no replacement acquisition package in tracked
-code. Command-level signatures and UX flows belong to the linked command documents.
+code. The integrated run, worker, processing, and publication sequence is specified
+in [the lifecycle plan](lifecycle.md); command-level signatures and UX flows belong
+to the linked command documents.
 
 ## Ownership and layer boundaries
 
@@ -59,17 +61,19 @@ The package should remain split by contract rather than by command spelling alon
 
 | Module | Owner contract |
 |---|---|
-| `paths.py` | Resolve run, staging, distribution, and fixture roots; validate IDs and containment. |
-| `schemas.py` | Lightweight versioned JSON/handoff contracts shared with S10. |
-| `arrow_schemas.py` | Versioned Parquet schemas; imports the S6 target schema directly. |
+| `paths.py` | Resolve run, staging, distribution, fixture, and snapshot roots; validate IDs and containment. |
+| `schemas.py` | Lightweight versioned JSON/handoff contracts shared with S10 and snapshot publication. |
+| `arrow_schemas.py` | Versioned Parquet schemas; imports the S6 target schema directly and owns acquisition snapshot relation contracts. |
 | `models.py` | Immutable in-memory target, outcome, attempt, and staged-body records. |
 | `work_order.py` | Validate the S6 bundle and write/read the immutable S9 work order. |
 | `run_state.py` | Create and validate per-run state, append attempts, apply outcomes, and summarize status. |
 | `projector.py` | Derive a run/work order from the pinned S6 plan without network access. |
 | `runner.py` | Lock a run, schedule bounded target work, and preserve completed results. |
 | `distribution_adapter.py` | Adapt acquisition work and outputs to shared distribution infrastructure. |
+| `snapshot/` | Acquisition-owned binary/text Parquet relations, publication, query, and reconciliation over the shared DAG kernel. |
 | `fixtures/` | Capture immutable response evidence, index cases, and replay offline. |
-| `commands/` and `operator.py` | CLI dispatch and the interactive project/status/run consoles; [operator UX](operator.md) owns flow. |
+| `processing.py` | S10 per-target processing and versioned result publication to transient staging. |
+| `commands/` and `operator.py` | CLI dispatch and interactive project/status/run/process/publish consoles; [operator UX](operator.md) owns flow. |
 
 No `__init__.py` barrel exports. Module names are a design proposal; implementation
 may consolidate small command adapters, but it must retain these ownership boundaries
@@ -85,9 +89,9 @@ The shared schema, paths, and settings proposals are specified in:
 - [Run-state persistence](run/state.md)
 - [Fixture persistence](fixtures/storage.md)
 
-Project, status, run, distribution, fixtures, and operator behavior are specified in
-their command documents. These contracts must consume the shared types above rather
-than redeclare their own versions.
+Project, status, run, distribution, fixtures, publication, and operator behavior are
+specified in their command documents and the [lifecycle plan](lifecycle.md). These
+contracts must consume the shared types above rather than redeclare their own versions.
 
 ## Cross-command identity and state
 
@@ -108,10 +112,9 @@ than redeclare their own versions.
   outcomes. Run cancellation/interruption and active locks are run-level state, not
   target outcomes. Retryability comes from typed error classification, not a CLI label.
 - A selected body is a managed file reference carrying its digest and byte size,
-  never payload bytes in JSON, SQL rows, Parquet metadata, or process IPC. The body
-  and any separately staged bundle envelope remain available for the S10 handoff or
-  explicit fixture capture. A matching S10 receipt permits cleanup without
-  invalidating completed acquisition evidence.
+  never payload bytes in JSON, SQL rows, Parquet metadata, or process IPC. A matching
+  S10 receipt proves consumption but does not authorize cleanup before snapshot
+  publication adopts the payload or the run is explicitly discarded.
 
 ## Resource and network policy
 

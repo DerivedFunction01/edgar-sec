@@ -99,19 +99,19 @@ uncommitted partial as a success.
 ## S10 selected-body handoff
 
 The selected file remains staged after S9 acquisition. S10 reads and verifies it,
-atomically writes the S9 `BodyConsumptionReceipt` under the path in
-[`paths.md`](../paths.md), then removes the selected file. The receipt binds run ID,
-target ID, source-response SHA-256, and selected-body SHA-256. S10 also removes a
-staged source envelope when one exists; if fixture capture committed it earlier,
-the immutable fixture copy remains. S9 status regards absent staged files as
-consumed only when a matching receipt exists; a missing staged body without a valid
-receipt is corruption. A
-processing failure after full input consumption still releases the body but remains
-an S10 processing failure, not an S9 acquisition failure.
+then atomically writes the S9 `BodyConsumptionReceipt` under the path in
+[`paths.md`](../paths.md). The receipt binds run ID, target ID, source-response
+SHA-256, and selected-body SHA-256. It proves consumption but does not authorize
+deletion: retain the selected file until snapshot publication adopts its Parquet
+payload row or the operator explicitly discards the un-published run. S9 status
+regards absent staged files as consumed only when a matching receipt exists; a missing
+staged body without a valid receipt is corruption. A processing failure after full
+input consumption remains an S10 processing failure, not an S9 acquisition failure.
 
-The full source envelope for a bundle is retained only if a fixture capture commits
-it before S10 consumes the selected child. Fixture BLOB retention is recorded in the
-fixture index, not by changing the S9 acquisition outcome.
+The full source envelope for a bundle is retained only until extraction and any
+explicit fixture capture. Fixture BLOB retention is recorded in the fixture index,
+not by changing the S9 acquisition outcome. The durable snapshot retains the selected
+target body by default, not the redundant full envelope.
 
 ## Tests
 

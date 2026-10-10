@@ -2,10 +2,11 @@
 
 ## Purpose and status
 
-This is the sole path-layout contract for S9 runs, staging, fixtures, and S10 review
-outputs. It follows the inventory split between retained artifact roots, transient
-resumable runs, and shared runtime/distribution roots. It is design-only; code will
-resolve paths through `document_acquisition.paths` and foundation helpers.
+This is the sole path-layout contract for acquisition runs, fixtures, S10 review
+outputs, and S11 snapshots. It follows the inventory split between retained
+artifacts, transient resumable runs, and shared runtime/distribution roots. It is
+design-only; code will resolve paths through `document_acquisition.paths` and
+foundation helpers.
 
 ## Resolved path API
 
@@ -28,6 +29,8 @@ class AcquisitionPaths:
     def fixtures_root(self) -> Path: ...
     @property
     def review_runs_root(self) -> Path: ...
+    @property
+    def snapshots_root(self) -> Path: ...
     def run_dir(self, run_id: str) -> Path: ...
     def run_manifest_path(self, run_id: str) -> Path: ...
     def work_order_root(self, run_id: str) -> Path: ...
@@ -68,13 +71,14 @@ storage filename `index.sqlite`.
 │   │   └── {fixture_id}/
 │   │       ├── manifest.json
 │   │       └── index.sqlite
-│   └── review-runs/
+│   ├── review-runs/
 │       └── {review_id}/
 │           ├── manifest.jsonl
 │           └── cases/{target_id}/
 │               ├── source.inert.html       # optional sanitized HTML preview
 │               ├── representation.txt     # optional selected text review output
 │               └── processing.json
+│   └── snapshots/                           # DAG metadata and binary/text payload Parquet
 ├── transient/
 │   └── document_acquisition/
 │       └── {run_id}/
@@ -104,20 +108,21 @@ This follows the existing distribution adapters' default
 `distribution_root / pipeline_name / plan_id[:8]`; S9 uses `acquisition` as the
 pipeline name and the run ID as its distribution plan ID.
 
-Fixture and review artifacts are retained under the pipeline root. Run manifests,
-work orders, mutable state, attempt chunks, and staged source/selected bodies are
-resumable transient state under the common transient root; they do not auto-expire and
-are not published payloads. S9 exposes no purge command; project maintenance may
-remove only terminal, unlocked run directories. The selected-body receipt is a
-versioned JSON sidecar under the handoff directory. `index.sqlite` contains S9 fixture
-metadata and exact source-response BLOBs. Raw and derived payload bytes are not
-published under this tree; S10 keeps derived representations transient except for
-selected review outputs, and S11 owns any future durable payload layout.
+Fixture, review, and snapshot artifacts are retained under the pipeline root.
+Run manifests, work orders, mutable state, attempt chunks, and staged
+source/selected/processed bodies are resumable transient state under the common
+transient root; they are not published payloads and do not auto-expire. The
+selected-body receipt is a versioned JSON sidecar under the handoff directory.
+`index.sqlite` contains S9 fixture metadata and Zstandard-compressed exact
+source-response BLOBs. Snapshot relation files, including separate binary and text
+payload Parquet relations, use the shared DAG layout under `snapshots_root`; payload
+bytes are not stored in a separate directory. DAG reachability governs retention of
+snapshot parts.
 
 There is no retained `document_acquisition/runs/` tree: S9 runs are operational
-executions over an already-retained S6 plan, not published snapshots. This mirrors
-`document_inventory`'s transient run ownership while retaining S9 fixtures and S10
-reviews under the pipeline artifact root.
+executions over an already-retained S6 plan and live under the shared transient root.
+Published target results and payload references live in immutable DAG snapshots, not
+copied run directories.
 
 ## Raw and processed representations
 
@@ -133,10 +138,11 @@ S10 result metadata keeps source and output digests separate. Plain ASCII `.txt`
 normalization produces a distinct text digest while its exact source remains
 available through replay when the source fixture was captured. Validated standalone
 XML is `xml_verbatim` and aliases the source digest rather than writing a duplicate
-representation. PDF retains raw source only;
-extraction is deferred. S10 outputs are transient unless explicitly promoted into a
-review run. No raw/normalized durable payload directory is invented here; S11 owns
-that later choice.
+representation. PDF retains raw source only; extraction is deferred. S10 outputs are
+transient until the acquisition snapshot publisher adopts a distinct derived
+representation into the text Parquet relation or S7 explicitly retains a review
+output. Identity representations alias their source digest and do not create
+duplicate payload rows.
 
 ## Identity and containment
 
@@ -153,7 +159,8 @@ that later choice.
   body reference only after byte count and digest verification.
 - A body-consumption receipt path is deterministically derived from the validated
   run/target IDs and selected-body digest. S10 writes the versioned receipt through
-  the S9 path contract before deleting the consumed staged file.
+  the S9 path contract; snapshot Parquet publication or explicit discard separately
+  authorizes staged-file cleanup.
 - Distribution bundle paths are generated by the shared distribution owner and
   validated again on import; a worker-provided relative path cannot escape its
   configured distribution root or overwrite another run.

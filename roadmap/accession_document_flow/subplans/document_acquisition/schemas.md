@@ -264,20 +264,20 @@ In-memory `StagedBodyRef` paths are owned transient paths and are never serializ
 absolute paths or transferred through IPC. Persist only run-relative paths. For a
 direct URL, source and selected digests/paths are equal and refer to one staged file.
 For a bundle, source and selected digests/paths differ; the source envelope remains
-staged until S10 consumes the selected body or an explicit fixture capture retains
-the envelope. An S10 acknowledgement changes the body lifecycle to `consumed` and
-permits cleanup without erasing the acquired outcome. `body_lifecycle` describes
-only the selected body; fixture retention of a source envelope is tracked by the
-fixture capture record.
+staged until extraction and any explicit fixture capture. The selected body remains
+staged until snapshot publication writes its Parquet payload row or the run is explicitly
+discarded. `body_lifecycle` describes only S10 consumption; fixture retention of a
+source envelope is tracked by the fixture capture record.
 
-S10 acknowledges consumption with a small S9-owned receipt. S10 imports only the S9
-`paths.py` and `schemas.py` contracts (not S9 services), writes it atomically, then
-removes the staged selected body and source envelope.
+S10 acknowledges verified consumption with a small S9-owned receipt. S10 imports only
+the S9 `paths.py` and `schemas.py` contracts (not S9 services) and writes the receipt
+atomically. A receipt is not permission to remove bytes needed by the publisher.
 
 S9 derives `body_lifecycle="consumed"` only when that receipt matches the run,
 target, source-response and selected digests, and supported schema. A missing file
 without a valid receipt is corrupt state; an acquired result remains valid after a
-matching receipt.
+matching receipt. Parquet payload publication is recorded separately by the snapshot publication
+receipt.
 
 `not_filed` is valid only after a complete bundle was parsed and the pinned sequence
 was absent. HTTP 404, a malformed bundle, or an incomplete response is not
@@ -299,23 +299,23 @@ The selected sequence/locator is populated only for a unique selected slot. Fail
 lookup, recognized absence, ambiguity, and successful resolution therefore remain
 distinguishable without overloading a body digest or rewriting the work order.
 
-## Physical-slot and type-evidence model (S11 candidate)
+## Physical-slot and type-evidence model
 
-S9's per-run staging and attempt ledger remain distinct from the future durable
-relational store. The candidate identity model is specified in
-[`S11_payload_design.md`](../S11_payload_design.md): `acquisition_slots` is keyed by
-`(accession, sequence)`, `slot_payloads` links successful slot acquisitions to CAS
-bytes, and sparse `slot_types` records only observed index/SGML type evidence. An
-index-only reconciliation can add or update slot metadata without fetching document
-bodies or invoking S10. This model is a design candidate, not a current S9 runtime
-schema or authorization to persist payloads before S11 approval.
+S9's per-run staging and attempt ledger remain distinct from the durable relational
+store. The S11 relation grains, Parquet model, publication protocol, and reconciliation
+boundary are specified in the [acquisition lifecycle plan](lifecycle.md). The durable
+physical-slot key remains `(accession, sequence)`; versioned evidence identifies which
+observation supplied that slot's metadata. Sparse `slot_types` contains only observed
+index/SGML type evidence. Index-only reconciliation can add acquisition-owned slot
+metadata without fetching document bodies or invoking S10.
 
 ## Explicit non-fields
 
 - No profile-level `raw` boolean or normalization mode. S9 always acquires source
   bytes; S10 independently chooses text, XML-verbatim, binary, or other processing.
-- No payload bytes, normalized text, SQL text, absolute local path, SEC credential,
-  or whole HTTP header map in Parquet/JSON/SQLite records.
+- No payload bytes or normalized text in transient run-state Parquet, JSON, or SQLite;
+  durable payload columns are owned only by the S11 snapshot relations. Never persist
+  SQL text, absolute local paths, SEC credentials, or whole HTTP header maps.
 - No inferred filename, sequence, role, or route. A direct filename comes from its
   validated archive path; a bundle filename comes from the selected SGML header.
 

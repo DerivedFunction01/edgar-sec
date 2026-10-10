@@ -1,11 +1,11 @@
 # S9 Document Acquisition: Implementation Plan
 
 This plan sequences the command-oriented contracts in this directory into a local,
-single-host implementation. The S9 package and S10 processing service are design-only
-today. The first pass includes plan projection, run/status, local SEC acquisition,
-fixture replay, and a separate S10 per-target processing service with fixture-driven
-verification. It does not include remote live workers, durable payload publication,
-or legacy package removal.
+single-host implementation. The S9 package, S10 processing service, and S11 durable
+snapshot publisher are design-only today. It covers plan projection, resumable local
+SEC acquisition, acquisition worker bundles, fixture replay, separate S10 processing,
+and binary/text Parquet snapshot publication. Remote live workers and legacy package removal remain
+separate gated work.
 
 ## 1. Readiness and parallelization
 
@@ -39,8 +39,10 @@ Readiness is scoped, not an assertion that every acquisition mode is unblocked:
 - S10 is also design-only. The current normalizer always retains stage-trace copies;
   its opt-out mode is a separate engine/S10 task required before large-body S10
   processing and a future S9-to-S10 processing integration gate.
-- S11's durable raw/derived payload store, PDF extraction, S12's vertical integration,
-  and `document_storage` decommissioning are outside this implementation plan.
+- Durable payload publication is now planned in
+  [the acquisition lifecycle](lifecycle.md); its implementation follows the S9/S10
+  evidence gate below. PDF extraction, S12's broader vertical integration, and
+  `document_storage` decommissioning remain outside this implementation plan.
 
 ### Dependency graph
 
@@ -61,6 +63,7 @@ flowchart TD
     S9GATE["M5: Offline S9 lifecycle verification"]
     GATE["M7: Offline S9-to-S10 fixture integration"]
     TAXON["M8: Evidence corpus and diagnostic exhibit assessment"]
+    PUB["M9: Acquisition Parquet snapshot publication"]
     UPSTREAM["S5/S6 contracts implemented for inventory-backed vertical run"]
 
     M0 --> M1
@@ -89,6 +92,8 @@ flowchart TD
     FIX --> GATE
     FIX --> TAXON
     PROCESS --> TAXON
+    GATE --> PUB
+    TAXON -. "processing versions pinned; diagnostics remain non-authoritative" .-> PUB
     UPSTREAM -. "needed for full inventory-backed vertical run" .-> GATE
 ```
 
@@ -333,8 +338,9 @@ each outcome safely, and support restart after interruption.
 - Completed target commits survive interruption; partial files are cleaned; resume
   validates prior state and never repeats an acquired target.
 - A verified selected-body path/digest/size is exposed through `StagedBodyRef`.
-  Cleanup refuses until the matching `BodyConsumptionReceipt` is durably recorded;
-  tests use a fake consumer until S10 is implemented.
+  S10's matching `BodyConsumptionReceipt` proves consumption but cleanup also waits
+  for S11 payload-Parquet adoption or an explicit discard; tests use a fake consumer
+  until S10/S11 are implemented.
 
 ### M4: Fixture capture, replay, and local CLI/operator
 
@@ -374,7 +380,8 @@ boundary until `process_target` is implemented.
 
 - An offline fixture path exercises plan projection, fixture replay, run-state commit,
   status inspection, and the staged-body handoff without an HTTP request. A test
-  consumer validates S9 receipt and cleanup behavior without claiming S10 processing.
+  consumer validates S9 receipt and cleanup refusal before publication/discard without
+  claiming S10 processing.
 - Keep the S9-consumer test against a pinned S6 contract fixture separate from the
   S5/S6 integration case. Do not describe a fixture-only run as end-to-end inventory
   planning until the upstream S5/S6 gates above pass.
@@ -456,6 +463,47 @@ diagnostic pack only after corpus and holdout evidence exist.
   processing status, or acquisition. Enabling any families requires a recorded
   acceptance decision; upload examples alone do not pass this gate.
 
+### M9: Durable acquisition snapshot publication
+
+**Dependencies:** M7's fixture-driven S9-to-S10 gate, the shared DAG kernel, and S11
+review of the [lifecycle publication contract](lifecycle.md). This work is now planned;
+the prior deferral of the durable-store design is replaced by the specific Parquet/DAG
+proposal in that contract. Durable writes remain disabled until the representative
+S9/S10 cases pass the S11 approval checklist.
+
+**Goal:** Publish completed S9/S10 run evidence and selected payloads as immutable,
+queryable acquisition snapshots without changing S5 or S6.
+
+#### Target modules
+
+- Acquisition-owned DAG `RelationSpec`s, deterministic relation writer/query adapter,
+  and S5 metadata-only reconciliation adapter.
+- Separate binary-route and text-route Parquet payload relations, joined to target and
+  slot evidence by digest; retain only reachable DAG parts.
+- `acquisition publish` and read-only snapshot query/management command/operator
+  actions, plus publication receipts and run cleanup.
+- Mirrored tests for relation identity, payload-part adoption, publication atomicity, recovery,
+  queries, and cleanup.
+
+#### Verification criteria
+
+- A fully validated run produces deterministic append-only evidence rows; re-publishing
+  the same run is idempotent, while changed run/schema identity creates a distinct node.
+- Every successfully acquired physical-slot body and distinct derived representation
+  is a digest-verified row in
+  separate binary/text Parquet relations; identical bytes deduplicate without
+  collapsing physical-slot, target, or run links.
+- Index-only S5 reconciliation adds acquisition-owned evidence without document fetch,
+  S10 processing, or S5 mutation.
+- A stale parent, corrupt part, missing payload row, changed digest, or interrupted
+  install never advances the branch pointer. Retry publishes from run artifacts without
+  repeating network requests.
+- Incomplete/error publication requires explicit consent and is marked
+  `complete_with_errors`; no pending target is represented as success.
+- Transient cleanup refuses until the publication receipt proves payload-part adoption
+  or an explicit discard operation is recorded. DAG retention respects snapshot,
+  fixture, and review reachability.
+
 ## 3. Execution order and delegation
 
 | Order | Workstream | Dependencies | Primary deliverables |
@@ -473,6 +521,7 @@ diagnostic pack only after corpus and holdout evidence exist.
 | 6 | M6 S10 processing | M1, M2E | Typed per-target processing and S9 receipt integration |
 | 7 | M7 offline vertical gate | M3, M4, M6 | Fixture-driven S9-to-S10 lifecycle verification |
 | 8 | M8 exhibit assessment | M4, M6 | Holdout-evaluated, diagnostic-only taxonomy rules |
+| 9 | M9 durable snapshot publication | M7, DAG kernel, S11 review | Binary/text Parquet payload relations in immutable acquisition DAG snapshots |
 
 Parallel assignments should keep the shared S9 schema/path owner separate from
 service implementers, and assign each lower-layer track to one owner per package. The
@@ -484,8 +533,6 @@ same command behavior.
 - **Remote live distribution:** wait for a shared cross-host lease/service or an
   enforced per-host SEC rate budget. The existing distribution protocol is not
   authorization to multiply the local request limit.
-- **Durable payload storage/publication:** wait for S11 and representative S9/S10
-  evidence. Fixture SQLite BLOBs are replay evidence only.
 - **PDF text extraction and constructed XBRL execution:** outside S9; availability is
   governed by S0/S11 decisions.
 - **Historical parser acceptance and production rollout:** retain S0's evidence and

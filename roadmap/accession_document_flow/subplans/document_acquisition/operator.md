@@ -36,14 +36,19 @@ Document Acquisition
   1. Project a target plan into an acquisition run
   2. Show acquisition run status
   3. Run pending acquisition work
+  4. Process acquired targets
+  5. Publish a completed run snapshot
   f. Acquisition fixture console
+  p. Acquisition snapshot console
   0. Exit
 ```
 
-There is no `p` action: S9 has no durable snapshot DAG to publish or query. The
-operator retains the selected run ID when entering the fixture console and returns
-to the main menu after each completed action. Live distributed work is not exposed in
-the first implementation.
+Project, Status, Run, Process, and Publish delegate to their command services. Publish
+is separate from Run completion and previews target/error counts, the parent branch
+tip, and payload bytes to adopt. The `p` console delegates read-only snapshot queries
+and shared DAG branch/tag operations; it does not mutate snapshot contents. The
+operator retains selected run/snapshot IDs when entering a sub-console. Live
+distributed work is not exposed in the first implementation.
 
 ## User flows
 
@@ -70,6 +75,14 @@ them without retry. `Ctrl-C` stops scheduling, commits already completed outcome
 and leaves remaining work resumable. A noninteractive CLI run is an explicit network
 action; no confirmation flag is required.
 
+### Process and publish
+
+Process selects acquired targets only and is offline; it does not request another
+document. Publish is disabled until every work-order row has a terminal disposition
+and every acquired target has a processing result. It previews incomplete/error states
+and requires explicit `--allow-errors` consent before publishing such a run. A failed
+publication leaves the run resumable and the active snapshot pointer unchanged.
+
 ### Deferred distribution console
 
 The shared distribution lifecycle remains design-only for live SEC work until
@@ -82,6 +95,12 @@ Offer `capture`, `list`, and `replay`. Capture previews the exact run/attempt ta
 and local disk writes, then requires an explicit affirmative confirmation. Listing is
 read-only. Replay names the selected fixture/capture/target, makes no HTTP request,
 and returns a staged body handle without printing document bytes.
+
+### Snapshot console
+
+List branches/tags and query a named immutable snapshot without network access. Payload
+reads verify the uncompressed-byte digest and size after Parquet decoding; metadata
+queries do not materialize payload columns.
 
 ### Exit, EOF, and cancellation
 

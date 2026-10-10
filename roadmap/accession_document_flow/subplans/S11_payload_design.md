@@ -1,21 +1,39 @@
-# S11 — Durable Payload-Store Decision (Design Gate)
+# S11 — Durable Payload Snapshot Publication
 
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S11**.
-- Status: **design gate, not implementation.** No storage code is delivered; a reviewed decision record is the output.
+- Status: **design documented; implementation gate remains open.** The acquisition
+  lifecycle plan now fixes the proposed Parquet/DAG model, relations, worker/processing
+  boundaries, transient lifetime, and publication protocol. No storage code is
+  delivered until representative S9/S10 evidence is reviewed and this design is
+  approved.
 - Depends on: S9 acquisition/fixture cases and S10 processor review cases.
 - Precedes: any durable payload-store implementation or `document_storage` cutover.
 
 ## Current tracked-code audit (2026-10-08)
 
-- **Status: design gate remains open; no approval or decision record is evidenced.** The representative S9 acquisition cases and S10 processing-review cases required as decision inputs are not implemented, so the candidate comparison and evidence-based approval checklist cannot yet be completed.
-- **Evidence:** the command-oriented [S9 acquisition contracts](document_acquisition/cli_inventory.md) and [S10 audit](S10_processing.md) record the missing prerequisite artifacts. The existing [`document_storage` processor](../../../edgar_sec/pipelines/document_storage/processor.py) and persisted snapshot path are legacy behavior, not an S11 decision or replacement-store implementation; [`document_storage_disposition.md`](../document_storage_disposition.md) keeps that package frozen pending the retirement gate.
-- **Next step:** complete and review S9/S10 representative fixture cases first; then write the required decision record with evidence, rejected alternatives, migration implications, and explicit approval identity/date. Do not implement or cut over a durable replacement before approval.
+- **Status:** a concrete Parquet/DAG replacement design is now documented in
+  [the acquisition lifecycle plan](document_acquisition/lifecycle.md). It supersedes
+  the former open-ended storage alternatives; representative acquisition/processing
+  cases and explicit approval are still outstanding.
+- **Evidence:** the command-oriented [S9 acquisition contracts](document_acquisition/cli_inventory.md),
+  [S10 audit](S10_processing.md), and the existing
+  [`document_storage` processor](../../../edgar_sec/pipelines/document_storage/processor.py)
+  show which behaviors are separated or replaced. Legacy artifacts remain frozen
+  pending the independent retirement gate in
+  [`document_storage_disposition.md`](../document_storage_disposition.md).
+- **Next step:** implement the M7 fixture-driven S9/S10 gate, review its representative
+  cases against the lifecycle plan's schemas and failure/retention contracts, then
+  record approval before enabling durable publication.
 
 ## Objective
 
-Choose durable raw-payload and normalized-representation storage only after representative target sources, acquisition routes, and processing outputs have been reviewed. The decision must remain separate from S5's annual metadata snapshot and S6's immutable target plans.
+Publish raw selected bodies and derived processing representations through the
+acquisition-owned immutable Parquet/DAG design in
+[the lifecycle plan](document_acquisition/lifecycle.md), after its representative
+source and processing cases pass review. The acquisition snapshot remains separate
+from S5's annual metadata snapshot and S6's immutable target plans.
 
 ## Inputs
 
@@ -37,50 +55,53 @@ raw-only until an extractor is approved. Identity-equal representations must not
 counted as independently transformed payloads merely because they have different
 roles in the schema.
 
-## Design questions
+## Design contract to validate
 
-The design record must answer all questions with a proposal, evidence, and rejection rationale for credible alternatives:
+The lifecycle plan resolves these questions as follows; S11 review validates the
+proposal against captured evidence and records residual risk rather than reopening
+unbounded design alternatives:
 
-1. **Raw-payload identity.** Is a fetched envelope keyed by content digest, request URL plus digest, or acquisition event? Distinguish full submission bundles from selected child-document bytes; identical bytes should be deduplicable without losing their target occurrences.
-2. **Normalized representation identity.** Which representation and schema versions combine with source digest and processor fingerprint? State whether processor changes create a new immutable representation or replace a prior one.
-3. **Occurrence relationships.** How do many target IDs, accessions, `source_origin` values, and CIK source relationships point to one byte-identical payload? Do not reinterpret S5's `source_cik` relation as a verified legal co-filer list.
-4. **Source provenance and replay.** Which target-plan manifest, URL, response digest, extraction selector/sequence, selected-body digest, route, and processor identity are required for byte-for-byte replay?
-5. **Idempotence and reprocessing.** How are repeated fetches, duplicate content, changed extraction rules, and changed processor fingerprints distinguished and safely retried?
-6. **Physical layout.** Compare payload layout independently from S5 annual metadata parts. Address large/binary bodies, normalized text/XML, small-file counts, random reads, and streaming writes.
-7. **Retention and deletion.** Define source, selected-body, and normalized-output retention separately. Preserve data referenced by active target plans or published representations; specify safe unreferenced-blob collection.
-8. **Inventory/plan linkage.** Keep S5 inventory facts and S6 plans immutable. If a payload occurrence links to an inventory row, record that linkage in the payload/occurrence layer; never add payload locator or digest columns to S5.
+1. **Raw-payload identity.** Payload rows are keyed by exact uncompressed byte SHA-256; slot/target/run relations preserve independent physical and request occurrences. Durable default is the selected child, not the redundant full submission envelope.
+2. **Derived identity.** A derived payload row is keyed by the exact output digest; its `processing_results` row records source digest, representation, processor fingerprint, output schema, and size. Processor changes create new immutable evidence and never overwrite prior output.
+3. **Relationships.** `target_results`, `acquisition_slots`, `slot_payloads`, `slot_types`, `target_slot_selections`, and `acquisition_attempts` preserve target intent, physical slot, byte identity, and source provenance independently. S5 `source_cik` remains outside the acquisition target relation.
+4. **Provenance and replay.** Published run rows pin the S6 plan identity and preserve exact source/selected digests, retrieval/extraction evidence, slot selection, route, and S10 fingerprint. Explicit S9 fixtures retain complete source responses when exact envelope replay is required.
+5. **Idempotence.** One run/schema/parent identity publishes at most once; digest-keyed payload rows deduplicate identical bytes. Changed extraction or processor versions produce distinct result evidence and do not rewrite prior snapshots.
+6. **Layout.** Metadata, exact selected source bytes, and derived content are stored in DAG Parquet parts. `DocumentRoute.BINARY` rows are separate from text-route rows; HTML is text/markup, not binary media. S5 annual inventory parts do not store body payloads.
+7. **Retention.** Selected raw bodies and distinct derived representations are retained while reachable from published snapshots. Transient source/selected/processed files are retained until Parquet publication or explicit discard. DAG compaction traces branch/tag/pin reachability.
+8. **Inventory/plan linkage.** Snapshot rows pin S5/S6 source IDs and digests and copy only required target provenance. S5/S6 schemas remain immutable; index-only reconciliation writes acquisition-owned metadata without acquiring bodies or processing them.
 
-## Storage candidates to evaluate
+## Storage choice and rejected alternatives
 
-| Candidate | Strengths to measure | Risks to measure |
+| Candidate | Decision |
 |---|---|---|
-| Content-addressed blob store (CAS) with metadata/occurrence tables | Streams large and binary bodies, deduplicates identical bytes across targets, direct digest lookup, natural immutable body objects. | Requires reference accounting and garbage collection, plus a separate query/index layer; file-count and object-store consistency costs. |
-| Annual Parquet with binary payload columns | Columnar metadata scans and alignment with annual query partitions. | Large variable-size blobs amplify rewrites, complicate bounded streaming and point retrieval, and mix analytical rows with opaque binary payloads. S5's annual layout is not sufficient evidence to choose this for bodies. |
-| DuckDB columnar storage | Local analytical joins and compact metadata indexing in one engine. | Must prove suitability for large BLOB serving, concurrent readers/writers, atomic updates, remote reads, and blob-level retention before treating it as the canonical payload store. |
+| Typed binary/text Parquet payload relations in the acquisition DAG | **Selected proposal.** Binary-media payloads and non-binary text/markup/XML payloads use separate Parquet relations joined to slot/target metadata by digest. DAG publication is pointer-last and retention follows reachable parts. |
+| External CAS files plus Parquet metadata | Rejected: introduces a second durable storage format and requires independent compression, atomicity, and garbage-collection semantics. |
+| DuckDB BLOB payload tables | Rejected as canonical payload format: durable bodies must remain Parquet; DuckDB may serve bounded metadata queries, not replace Parquet payload parts. |
 
-Score each candidate against replay fidelity, storage/read amplification, duplicate rate, atomicity, bounded memory, concurrency, query patterns, retention, operations, and migration effort. CAS is a candidate to investigate, not a pre-approved decision; DuckDB may remain a metadata/query engine even if body bytes live elsewhere.
+Validate this choice against replay fidelity, Parquet write/read amplification,
+duplicate bytes, atomicity, bounded memory, concurrency, query patterns, retention,
+operations, and migration effort. An evidence failure reopens the choice with a
+recorded amendment; the implementation default is no longer unspecified.
 
 ## Candidate relational identity model
 
-The current preferred relational sketch separates physical slot metadata, acquired
-bytes, observed type evidence, and target assignment. It is a candidate for the S11
-decision record, not an approved durable schema:
+The lifecycle plan defines this durable relation model, separating physical slot
+metadata, acquired bytes, observed type evidence, and target assignment:
 
 | Relation | Candidate key and grain | Candidate contract |
 |---|---|---|
-| `acquisition_slots` | `(accession, sequence)`; stable `accession_seq_hash` may be its surrogate key. One row per observed physical position. | Store observed document path, source URL, and retrieval mode. Sequence 1 is the physical anchor for the catalog `primaryDocument` link, not a statutory-primary assertion. Index rows or bundle extraction may add other sequence slots. |
-| `slot_payloads` | Link from a physical slot to content-addressed bytes. | Store the CAS digest, route, and decoded byte size only for a successfully acquired payload. Transport/extraction failures belong to the append-only attempt ledger, not a payload-link row with `status=failed`. Repeated content may share one CAS object; retain each slot link. Preserve prior payload observations if the same slot later yields changed bytes rather than silently overwriting history. |
+| `acquisition_slots` | `(accession, sequence, observation_id)`; the physical identity remains `(accession, sequence)`. | Store the observed document path, source URL, retrieval mode, and evidence identity. Multiple observations for a physical slot are preserved. Sequence 1 is the physical anchor for the catalog `primaryDocument` link, not a statutory-primary assertion. |
+| `slot_payloads` | Link from a physical slot to a Parquet payload row. | Store the payload digest, route, and uncompressed byte size only for a successfully acquired payload. Transport/extraction failures belong to the append-only attempt ledger, not a payload-link row with `status=failed`. Repeated content shares a digest-keyed row; retain each slot link. Preserve prior payload observations if the same slot later yields changed bytes rather than silently overwriting history. |
 | `slot_types` | Sparse source-metadata observations for one slot. | Write no row until index or bundle metadata supplies a type. Keep evidence source/reference (index snapshot/row or SGML bundle child), observed type, and publication/observation time. A local screen result belongs to the target resolution record, not this relation. Multiple metadata sources may disagree; retain provenance and derive the current view deterministically rather than erasing evidence. |
 | `target_slot_selections` | Target ID plus resolution/attempt identity. | Link S6 target intent to the physical slot whose body S10 consumed. Preserve the original sequence-1 attempt, any index lookup, and the chosen replacement sequence. This is required because one target may resolve away from its catalog-anchored slot and multiple targets may reuse one slot. |
 
-The simplified sketch's single-row `slot_types` key `(slot, evidence_kind)` is
-insufficient for an append-only evidence history across refreshed snapshots or
-conflicting observations. The production key must include an evidence identity (for
-example snapshot ID/digest plus entry ID, or source-body digest plus document ordinal)
-and a deterministic current-evidence rule. Likewise, `slot_payloads` should not encode
-failed fetches; the S9 attempt ledger already owns failure outcomes. Exact constraints,
-hash serialization, indexes, transaction boundaries, and retention remain open for the
-approved S11 design.
+The `slot_types` key includes an evidence identity (for example snapshot ID/digest
+plus entry ID, or source-body digest plus document ordinal) so refreshed or conflicting
+observations are not overwritten. Current views resolve only from retained evidence
+under an explicit deterministic rule; raw evidence remains available for audit.
+`slot_payloads` never encodes failed fetches; the S9 attempt ledger owns failure
+outcomes. Exact Arrow/SQL constraints are owned by the lifecycle plan's relation
+schemas and are versioned before implementation.
 
 ### Selector and enrichment behavior
 
@@ -105,10 +126,11 @@ approved S11 design.
   An index fetch is still a network request, but this mode performs no document-payload
   fetch or S10 work. S9/S5 must not write one another's owned artifacts.
 
-These relational tables are separate from the current S9 transient run/fixture
-contracts and from S5's `accessions`, `entries`, and `accession_sources` relations.
-S11 approval is required before durable payload links, CAS bytes, or reconciliation
-outputs are published.
+These durable relations are separate from the S9 transient run/fixture contracts and
+from S5's `accessions`, `entries`, and `accession_sources` relations. S11 approval is
+required before durable payload links, Parquet body columns, or reconciliation
+outputs are published; their proposed schema and publication behavior are specified,
+not deferred.
 
 ## Annual inventory and target-plan invariants
 
@@ -120,8 +142,8 @@ outputs are published.
 - A target-plan row is intent. It does not become a payload occurrence until acquisition succeeds and the selected bytes have a verified digest.
 - A target discovered ad hoc by S9/S10 has no pinned `target_id` and cannot become a
   payload occurrence; publish inventory evidence and a new S6 plan first.
-- S9 fixture source bodies are raw SQLite BLOBs retained as bounded review evidence.
-  Their schema and cleanup rules do not silently become the production payload store.
+- S9 fixtures retain Zstandard-compressed exact-response SQLite BLOBs as bounded replay
+  evidence. Their schema and cleanup rules do not become the production Parquet store.
 
 ## Replacement and migration boundary
 
@@ -131,7 +153,8 @@ The `document_storage` implementation remains frozen during S9–S12 and is sche
 
 The design is ready for approval only when it:
 
-- Answers all eight questions and compares the three storage candidates using the representative S9/S10 corpus.
+- Validates all eight decisions against representative S9/S10 cases and records any
+  evidence-driven amendment to the Parquet/DAG proposal.
 - Defines identities for raw response, selected child, normalized representation, target occurrence, and provenance without conflating them.
 - Specifies append/update/idempotence, byte verification, streaming bounds, atomic publication, and recovery after interruption.
 - Defines retention/reference tracking and safe deletion for raw, selected, normalized, and review-only bodies.
@@ -141,13 +164,17 @@ The design is ready for approval only when it:
 
 ## Gate criteria
 
-Until the design is explicitly approved:
+Until the documented design is explicitly approved:
 
-- No durable production payload Parquet, CAS, DuckDB BLOB, or payload linkage is emitted by any stage.
+- No durable production payload Parquet part or payload linkage is emitted by any stage.
 - S5's annual inventory schema and S6 target plans remain metadata/intent only.
 - Normalized outputs exist only in bounded worker memory or selected S7 review artifacts; raw bodies remain transient or in the S9 acquisition fixture store.
 - No `document_storage` code or artifact is migrated, rewritten, or deleted.
 
 ## Deliverable and acceptance
 
-A reviewed design record under `roadmap/accession_document_flow/` containing the proposals, alternatives, evidence matrix, schema/identity choices, retention and migration gates, and explicit approval. The stage completes only after approval and before any durable payload-store implementation begins.
+A review record under `roadmap/accession_document_flow/` containing the lifecycle-plan
+version, representative evidence matrix, any schema/identity amendments, residual
+risks, retention and migration gates, and explicit approval. The design is now present
+in `document_acquisition/lifecycle.md`; S11 completes only after review approval and
+before any durable payload-store implementation begins.
