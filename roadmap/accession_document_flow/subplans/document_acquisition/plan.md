@@ -1,49 +1,58 @@
 # S9 Document Acquisition: Implementation Plan
 
-This plan sequences the command-oriented contracts in this directory into a local,
-single-host implementation. The S9 package, S10 processing service, and S11 durable
-snapshot publisher are design-only today. It covers plan projection, resumable local
-SEC acquisition, acquisition worker bundles, fixture replay, separate S10 processing,
-and binary/text Parquet snapshot publication. Acquisition distribution integration
-and legacy package removal remain separate work.
+This plan tracks the local S9 acquisition implementation and its remaining lifecycle
+gates. S9 projection, bounded transport, exact bundle extraction, run state, and the
+live acquisition runner now exist; S10 processing and S11 durable publication remain
+unimplemented. Acquisition distribution and legacy package removal remain separate.
 
-## 1. Readiness and parallelization
+## 1. Implementation checklist
 
-**Ready to begin implementation in bounded tracks.** The S6 input bundle, S9 run and
-handoff schemas, path ownership, state transitions, local transport limits, exact
-bundle selection, fixture evidence, and command behavior are specified in the linked
-contracts. The tracked-code audit confirms there is no replacement S9 package yet.
-Implementation should begin with a short interface-freeze task, then establish the
-shared S9 types/paths before command services are split among implementers.
+Status markers are maintained against tracked code and focused offline tests:
+`[x]` complete, `[~]` partially complete, `[ ]` not complete or gated.
 
-Readiness is scoped, not an assertion that every acquisition mode is unblocked:
+- [x] **M0 — API seams:** shared transport, parser, and pipeline ownership contracts
+  are established.
+- [~] **M1 — S9 contracts/configuration:** paths, schemas, models, and work-order
+  contracts exist; the byte ceiling is supplied to the run CLI rather than registered
+  as an S9 settings provider.
+- [x] **M2A — SEC streaming:** file-backed HTTP and body-free broker streaming are
+  implemented and tested.
+- [x] **M2B — SGML extraction:** bounded exact-sequence extraction is implemented and
+  tested.
+- [x] **M2C — Projection/run state:** validated work-order projection, append-only
+  attempts, target state, and locking are implemented.
+- [~] **M2D — Fixture substrate:** compressed storage and verified replay primitives
+  exist; run capture/replay orchestration and fixture CLI tracks remain.
+- [ ] **M2E — Trace opt-out:** S10's `capture_stage_trace=False` normalizer option is
+  not implemented.
+- [~] **M3 — Acquisition runner:** direct and bundle acquisition, exact-form lazy-index
+  selection, multi-request provenance, and the CLI `run` path are implemented. The
+  family-aware HTML/SGML identity screen is deferred; catalog-direct screens remain
+  unverifiable and take the index fallback.
+- [~] **M4 — Fixture/interactive surfaces:** CLI `project`, `status`, and `run` are
+  wired; the operator delegates projection/status and confirms live acquisition.
+  Fixture capture/list/replay command flows remain incomplete.
+- [ ] **M5 — Offline S9 acceptance:** the complete projection-to-fixture/body-handoff
+  lifecycle gate has not been completed.
+- [ ] **M6 — S10 processing:** per-target normalization, processing results, and
+  body-consumption receipts are not implemented.
+- [ ] **M7 — S9/S10 fixture integration:** end-to-end fixture-driven processing is not
+  implemented.
+- [ ] **M8 — Evidence/identity follow-up:** the historical mismatch fixtures are
+  planned, but family-aware identity diagnostics are deferred and must reuse existing
+  family evidence rather than add duplicate vocabularies.
+- [ ] **M9 — S11 publication:** durable snapshot publication remains gated on
+  representative S9/S10 evidence and explicit approval.
 
-- File-backed SEC streaming is a required Layer 2 prerequisite. `SecHttpClient` and
-  `SecBroker` currently return buffered response bytes; S9 must not call
-  `get_bytes()` and describe that path as streaming.
-- Exact sequence selection for legacy bundles requires a bounded Layer 3 parser. The
-  bytes-based `unpack_sgml_submission()` remains a parity oracle, not the production
-  large-envelope path.
-- Catalog-direct `exact_form_with_lazy_index` additionally requires a shared, bounded
-  index-page parser available below the pipeline layer. It is a policy-gated recovery
-  path, not an import of S5/S3 pipeline services.
-- The first S9 implementation is local. SEC request limits are configured per host;
-  cross-host rate coordination and checks are out of scope, and no cluster-wide limit
-  is implied. Acquisition distribution remains unimplemented and in planning. S0's
-  historical parser acceptance and live operational rollout gates also remain in
-  force; they do not prevent offline implementation or fixture-driven verification.
-- S9 can validate and consume a conforming published S6 bundle independently of S5/S6
-  internals. The current S6 tracked-code audit is still partial, and S5's canonical
-  relation-schema ownership cleanup is required before S6's inventory-backed source
-  adapter can be treated as complete. Until those upstream contracts are implemented,
-  S9 tests use pinned target-plan fixtures; a full S5-to-S6-to-S9 vertical claim waits.
-- S10 is also design-only. The current normalizer always retains stage-trace copies;
-  its opt-out mode is a separate engine/S10 task required before large-body S10
-  processing and a future S9-to-S10 processing integration gate.
-- Durable payload publication is now planned in
-  [the acquisition lifecycle](lifecycle.md); its implementation follows the S9/S10
-  evidence gate below. PDF extraction, S12's broader vertical integration, and
-  `document_storage` decommissioning remain outside this implementation plan.
+## 2. Readiness and parallelization
+
+The current S9 runner is local and serial; SEC rate limits remain host-local, and
+cross-host coordination is out of scope. S9 accepts a validated S6 bundle, but a full
+S5-to-S6-to-S9 vertical claim remains separate from the pinned-plan tests. S10's trace
+opt-out and processing service are prerequisites for the planned S9-to-S10 integration.
+The approval-gated Parquet/DAG publication contract is specified in
+[the acquisition lifecycle](lifecycle.md), but no S11 publisher exists. S0 historical
+parser acceptance and live operational rollout gates remain in force.
 
 ### Dependency graph
 
@@ -126,7 +135,7 @@ flowchart TD
    end-to-end fixture gate waits for both services; taxonomy rules wait for a labeled
    corpus.
 
-## 2. Milestone breakdown
+## 3. Milestone breakdown
 
 ### M0: Freeze transport and parser seams
 
@@ -555,7 +564,7 @@ queryable acquisition snapshots without changing S5 or S6.
   or an explicit discard operation is recorded. DAG retention respects snapshot,
   fixture, and review reachability.
 
-## 3. Execution order and delegation
+## 4. Execution order and delegation
 
 | Order | Workstream | Dependencies | Primary deliverables |
 |---:|---|---|---|
@@ -579,7 +588,7 @@ service implementers, and assign each lower-layer track to one owner per package
 runner and CLI are integration assignments, not independent implementations of the
 same command behavior.
 
-## 4. Explicitly deferred work
+## 5. Explicitly deferred work
 
 - **Acquisition distribution:** the S9 adapter and worker integration remain
   unimplemented. SEC request pacing follows each host's configured settings and

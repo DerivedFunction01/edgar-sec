@@ -6,7 +6,7 @@ Layer 4 pipeline contract foundation for S9 accession-document acquisition.
 
 This package projects versioned S6 target plans into bounded S9 work orders and owns the run-state and fixture-store foundations. Transport, body selection, processing, review artifacts, and snapshot publication remain separate stages.
 
-The launcher, CLI, and operator surfaces are registered. The offline `project` track is implemented; acquisition, processing, fixture orchestration, review, and snapshot tracks return explicit not-implemented or gate-blocked results.
+The `project`, read-only `status`, and live `run` CLI tracks are implemented. The interactive operator delegates projection/status and requires explicit confirmation before live SEC access. Fixture orchestration, processing, review, and snapshot tracks remain placeholders or gated.
 
 ## Contracts
 
@@ -17,7 +17,8 @@ The launcher, CLI, and operator surfaces are registered. The offline `project` t
 
 ## Deliberate gaps
 
-- **No network runner**: Bounded HTTP streaming, exact-sequence extraction, acquisition attempts, fixture orchestration, and workers remain unimplemented.
+- **No family-aware identity screen**: Catalog-direct cover results remain unverifiable and use lazy-index lookup; text evidence cannot override the pinned target form or exact index `document_type`.
+- **No fixture orchestration**: Compressed storage and verified replay primitives exist, but capture/list/replay command flows are not wired.
 - **No processing or publication**: S10 processing and S11 Parquet/DAG publication remain absent; S11 requires representative S9/S10 evidence and explicit approval.
 - **No S7d review builder**: Selected S9 bodies and S10 processor outputs/fingerprints do not exist yet, so review build/compare remain placeholders rather than fabricated reports.
 - **No snapshot reader**: Acquisition snapshot relations and a published acquisition DAG do not exist; status/audit are gate-aware placeholders, not queries against S5/S6 or legacy storage.
@@ -32,7 +33,7 @@ The launcher, CLI, and operator surfaces are registered. The offline `project` t
 | `project` | project a published S6 target plan | `--plan-id`, `[--artifacts]`, `[--json]` |
 | `publish` | publish an approved S11 snapshot | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--artifacts]`, `[--json]` |
 | `review` | build and compare review artifacts | — |
-| `run` | acquire pending S9 target bodies | `--run-id`, `[--retry-failures]`, `[--workers]`, `[--confirm-stale-lock]`, `[--artifacts]`, `[--json]` |
+| `run` | acquire pending S9 target bodies | `--run-id`, `--max-response-bytes`, `[--retry-failures]`, `[--workers]`, `[--confirm-stale-lock]`, `[--artifacts]`, `[--json]` |
 | `snapshot` | inspect S11 status and evidence | — |
 | `status` | inspect resumable acquisition runs | `[--run-id]`, `[--artifacts]`, `[--json]` |
 <!-- AUTOGEN:COMMANDS:END -->
@@ -41,9 +42,8 @@ The launcher, CLI, and operator surfaces are registered. The offline `project` t
 
 ```bash
 python run.py acquisition --help
-
-# Placeholder tracks return stable machine-readable not-implemented status.
-python run.py acquisition project --plan-id dplan-example --json
+python run.py acquisition project --help
+python run.py acquisition run --help
 ```
 
 ## Artifact layout
@@ -75,4 +75,4 @@ python run.py acquisition project --plan-id dplan-example --json
 ```
 <!-- AUTOGEN:PATHS:END -->
 
-The registered TODO commands create no run, fixture, review, or snapshot artifacts.
+Unimplemented command tracks fail closed and create no fixture, review, or snapshot artifacts.

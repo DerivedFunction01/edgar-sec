@@ -9,6 +9,11 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.pipelines.document_acquisition import cli, operator
+from edgar_sec.pipelines.document_acquisition.models import (
+    AcquisitionStatusReport,
+    RunLockInfo,
+)
+from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 
 
 def test_parser_registers_independent_acquisition_tracks() -> None:
@@ -197,6 +202,103 @@ def test_project_command_delegates_to_offline_service(
         "target_plan_id": "dplan-1",
         "work_order_sha256": "b" * 64,
     }
+
+
+def test_status_lists_validated_runs_in_sorted_order(
+    capsys: pytest.CaptureFixture[str], tmp_path, monkeypatch
+) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    paths.run_dir("run-b").mkdir(parents=True)
+    paths.run_dir("run-a").mkdir(parents=True)
+    validated = []
+
+    def fake_load(_paths, run_id):
+        validated.append(run_id)
+        return ()
+
+    def fake_inspect(run_id, *, database_path, lock_path):
+        return AcquisitionStatusReport(
+            run_id=run_id,
+            state="ready",
+            target_counts={"pending": 1, "acquired": 0},
+            retryable_failure_count=0,
+            non_retryable_failure_count=0,
+            active_lock=None,
+            invalid_reason=None,
+        )
+
+    monkeypatch.setattr(cli, "load_validated_work_order", fake_load)
+    monkeypatch.setattr(cli, "inspect_run_state", fake_inspect)
+
+    result = cli.main(["status", "--artifacts", str(tmp_path), "--json"])
+
+    assert result == 0
+    assert validated == ["run-a", "run-b"]
+    assert [run["run_id"] for run in json.loads(capsys.readouterr().out)["runs"]] == [
+        "run-a",
+        "run-b",
+    ]
+
+
+def test_status_marks_invalid_work_orders(capsys, tmp_path, monkeypatch) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    paths.run_dir("run-1").mkdir(parents=True)
+    monkeypatch.setattr(
+        cli,
+        "load_validated_work_order",
+        lambda _paths, _run_id: (_ for _ in ()).throw(ValueError("bad manifest")),
+    )
+    monkeypatch.setattr(
+        cli,
+        "inspect_run_state",
+        lambda run_id, **kwargs: AcquisitionStatusReport(
+            run_id=run_id,
+            state="ready",
+            target_counts={"pending": 1},
+            retryable_failure_count=0,
+            non_retryable_failure_count=0,
+            active_lock=None,
+            invalid_reason=None,
+        ),
+    )
+
+    result = cli.main(
+        ["status", "--run-id", "run-1", "--artifacts", str(tmp_path), "--json"]
+    )
+
+    assert result == 1
+    report = json.loads(capsys.readouterr().out)["runs"][0]
+    assert report["state"] == "invalid"
+    assert report["invalid_reason"] == "bad manifest"
+
+
+def test_status_does_not_expose_run_lock_owner_token(
+    capsys: pytest.CaptureFixture[str], tmp_path, monkeypatch
+) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    paths.run_dir("run-1").mkdir(parents=True)
+    monkeypatch.setattr(cli, "load_validated_work_order", lambda _paths, _run_id: ())
+    monkeypatch.setattr(
+        cli,
+        "inspect_run_state",
+        lambda run_id, **kwargs: AcquisitionStatusReport(
+            run_id=run_id,
+            state="running",
+            target_counts={"pending": 1},
+            retryable_failure_count=0,
+            non_retryable_failure_count=0,
+            active_lock=RunLockInfo(
+                "host", 100, "2025-01-01T00:00:00Z", "private-token"
+            ),
+            invalid_reason=None,
+        ),
+    )
+
+    cli.main(["status", "--run-id", "run-1", "--artifacts", str(tmp_path), "--json"])
+
+    output = capsys.readouterr().out
+    assert "private-token" not in output
+    assert '"pid": 100' in output
 
 
 def test_publish_todo_reports_gate_and_does_not_claim_publication(
