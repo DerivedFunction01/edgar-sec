@@ -59,7 +59,7 @@ destinations rather than acquisition-specific path helpers. `fixture_store_paths
 delegates to the shared fixture resolver with dataset `document_acquisition` and
 storage filename `index.sqlite`.
 
-## Logical layout
+## Logical layout (not exhaustive, should be consistent with other pipelines rather than reinventing a new name, update as needed.)
 
 ```text
 {artifacts_root}/
