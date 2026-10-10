@@ -1,11 +1,12 @@
 # `edgar_sec/foundation` — Layer 0: primitives with zero SEC domain knowledge
 
 Layer 0 is the bottom of the acyclic layer graph: hashing, canonical
-serialization, zstd frame compression, the policy-scanner registry and the gate
-that runs it, the runtime environment, path layout, resource budgeting, and the
-shared text and regex vocabulary every upper layer builds on. It is not the
-place for SEC domain logic — a CIK, an accession number, or a filing-specific
-vocabulary belongs in `domain/`, not here.
+serialization, zstd frame compression, the shared byte-buffer size for streaming
+I/O, the policy-scanner registry and the gate that runs it, the runtime
+environment, path layout, resource budgeting, and the shared text and regex
+vocabulary every upper layer builds on. It is not the place for SEC domain
+logic — a CIK, an accession number, or a filing-specific vocabulary belongs in
+`domain/`, not here.
 
 ## Purpose
 
@@ -15,6 +16,7 @@ Two responsibilities, and nothing else:
    compression, Unicode and text normalization, regex assembly, and resource
    derivation. Every function here is callable in isolation, with no repository
    state and no network.
+
 2. **The enforcement mechanism.** The scanners in `scanners/` are what turn the
    rules in `AGENTS.md` into a failing build rather than a paragraph nobody
    reads.
@@ -49,7 +51,11 @@ work. Its only side effects are directory creation in `runtime/paths.py` and
   carry no determinism guarantee.
 - Hashing streams rather than materialising: `file_sha256` and `sha256_text` are
   digest-equivalent to their whole-input forms without a second full-size bytes
-  copy. The block and slice sizes are module constants in `hashing.py`.
+  copy. `sha256_text` slices by a module constant in `hashing.py`; the byte block
+  both it and the rest of the tree read from disk is `io.DEFAULT_IO_CHUNK_SIZE`.
+- `io.py` owns the single byte-buffer size every layer streams with. It is a
+  transfer frame, not a semantic limit and not a row batch, so equal-valued caps
+  elsewhere — a viewer text limit, an SGML header bound — stay local policies.
 - `compression.py` is the only entry point to the `zstandard` library, so a frame
   written by one layer is read by another without either owning the parameters.
   A codec object carries window and history state, so each thread gets its own. A

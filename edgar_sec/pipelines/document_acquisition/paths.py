@@ -17,6 +17,7 @@ from edgar_sec.foundation.runtime.paths import (
     transient_dir,
     validate_safe_id,
 )
+from edgar_sec.foundation.hashing import is_sha256_hex_digest
 from edgar_sec.infra.storage.review.paths import (
     ReviewPaths,
     review_run_paths,
@@ -114,6 +115,20 @@ class AcquisitionPaths:
 
     def run_staging_root(self, run_id: str) -> Path:
         return self.run_dir(run_id) / RUN_STAGING_DIR
+
+    def body_consumption_receipt_path(
+        self, run_id: str, target_id: str, selected_sha256: str
+    ) -> Path:
+        validate_safe_id(target_id, "target_id")
+        if not is_sha256_hex_digest(selected_sha256):
+            raise ValueError("invalid selected-body digest")
+        return (
+            self.run_dir(run_id)
+            / "handoff"
+            / "receipts"
+            / target_id
+            / f"{selected_sha256}.json"
+        )
 
 
 def resolve_acquisition_paths(

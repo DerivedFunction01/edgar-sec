@@ -116,6 +116,8 @@ def write_manifest(paths: FixturePaths, manifest: IndexFixtureManifest) -> None:
 def validate_database(
     connection: sqlite3.Connection, database_path: Path, schema_version: int
 ) -> None:
+    if type(schema_version) is not int:
+        raise IndexFixtureError("fixture schema_version must be an integer")
     if schema_version != SCHEMA_VERSION:
         raise IndexFixtureError(
             f"fixture schema_version {schema_version} != {SCHEMA_VERSION}"

@@ -246,6 +246,9 @@ def test_runner_uses_exact_lazy_index_and_atomically_records_all_attempts(
         attempts = connection.execute(
             "SELECT attempt_id, attempt_kind, outcome FROM attempts ORDER BY attempt_number"
         ).fetchall()
+        evidence_paths = connection.execute(
+            "SELECT source_body_relative_path FROM attempts ORDER BY attempt_number"
+        ).fetchall()
         resolution = connection.execute(
             "SELECT screen_result, result, index_attempt_id "
             "FROM target_slot_resolutions"
@@ -255,6 +258,7 @@ def test_runner_uses_exact_lazy_index_and_atomically_records_all_attempts(
         ("lazy_index", "acquired"),
         ("document_body", "acquired"),
     ]
+    assert evidence_paths == [(None,), (None,), (None,)]
     assert resolution == ("unverifiable", "recovered", attempts[1][0])
 
 
@@ -400,6 +404,218 @@ def test_runner_extracts_only_the_planned_bundle_sequence(
     assert state.selected_sha256 == hashlib.sha256(body).hexdigest()
     assert state.source_body_relative_path is None
     assert not list(paths.run_staging_root(run_id).glob("response-*.bin"))
+
+
+def test_runner_retains_primary_bundle_response_evidence_when_enabled(
+    tmp_path, monkeypatch
+) -> None:
+    paths, run_id, row = _make_run(tmp_path, lazy=False, bundle=True)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
+        lambda: SimpleNamespace(workers=1, worker_ceiling=1),
+    )
+    bundle_url = row["target_url"]
+    body = b"selected exact bytes\r\n"
+    envelope = (
+        b"<DOCUMENT><SEQUENCE>1<TEXT>ignored body</TEXT></DOCUMENT>"
+        b"<DOCUMENT><SEQUENCE>2<TYPE>10-K<TEXT>" + body + b"</TEXT></DOCUMENT>"
+    )
+    transport = _MemoryTransport({bundle_url: envelope})
+
+    report = execute_acquisition_run(
+        run_id,
+        retry_failures=False,
+        paths=paths,
+        policy=AcquisitionPolicy(
+            max_response_bytes=4096, retain_response_evidence=True
+        ),
+        transport=transport,
+        clock=lambda: datetime(2025, 1, 1, tzinfo=UTC),
+    )
+
+    assert report.target_counts["acquired"] == 1
+    with sqlite3.connect(paths.run_state_path(run_id)) as connection:
+        attempt = connection.execute(
+            "SELECT source_sha256, source_byte_size, source_body_relative_path, "
+            "selected_body_relative_path FROM attempts"
+        ).fetchone()
+    assert attempt is not None
+    source_path = paths.run_dir(run_id) / attempt[2]
+    selected_path = paths.run_dir(run_id) / attempt[3]
+    assert source_path.read_bytes() == envelope
+    assert file_sha256(source_path) == attempt[0]
+    assert source_path.stat().st_size == attempt[1]
+    assert selected_path.read_bytes() == body
+    assert source_path != selected_path
+
+
+def test_runner_retains_each_lazy_response_as_attempt_evidence_when_enabled(
+    tmp_path, monkeypatch
+) -> None:
+    paths, run_id, row = _make_run(tmp_path)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
+        lambda: SimpleNamespace(workers=1, worker_ceiling=1),
+    )
+    selected_url = _INDEX_URL.rsplit("/", 1)[0] + "/report.htm"
+    responses = {
+        row["target_url"]: b"<html>unverifiable cover</html>",
+        _INDEX_URL: _INDEX,
+        selected_url: b"<html>selected filing</html>",
+    }
+    transport = _MemoryTransport(responses)
+
+    report = execute_acquisition_run(
+        run_id,
+        retry_failures=False,
+        paths=paths,
+        policy=AcquisitionPolicy(
+            max_response_bytes=4096, retain_response_evidence=True
+        ),
+        transport=transport,
+        clock=lambda: datetime(2025, 1, 1, tzinfo=UTC),
+    )
+
+    assert report.target_counts["acquired"] == 1
+    with sqlite3.connect(paths.run_state_path(run_id)) as connection:
+        attempts = connection.execute(
+            "SELECT requested_url, source_sha256, source_byte_size, "
+            "source_body_relative_path, selected_body_relative_path "
+            "FROM attempts ORDER BY attempt_number"
+        ).fetchall()
+    assert [attempt[0] for attempt in attempts] == [
+        row["target_url"],
+        _INDEX_URL,
+        selected_url,
+    ]
+    for attempt in attempts:
+        source_path = paths.run_dir(run_id) / attempt[3]
+        assert source_path.is_file()
+        assert file_sha256(source_path) == attempt[1]
+        assert source_path.stat().st_size == attempt[2]
+    selected_path = paths.run_dir(run_id) / attempts[-1][4]
+    assert selected_path.is_file()
+    assert selected_path.read_bytes() == responses[selected_url]
+    assert selected_path != paths.run_dir(run_id) / attempts[-1][3]
+
+
+def test_runner_retains_lazy_response_evidence_after_index_parse_failure(
+    tmp_path, monkeypatch
+) -> None:
+    paths, run_id, row = _make_run(tmp_path)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
+        lambda: SimpleNamespace(workers=1, worker_ceiling=1),
+    )
+    responses = {
+        row["target_url"]: b"<html>unverifiable cover</html>",
+        _INDEX_URL: b"<html>unrecognized index</html>",
+    }
+    transport = _MemoryTransport(responses)
+
+    report = execute_acquisition_run(
+        run_id,
+        retry_failures=False,
+        paths=paths,
+        policy=AcquisitionPolicy(
+            max_response_bytes=4096, retain_response_evidence=True
+        ),
+        transport=transport,
+        clock=lambda: datetime(2025, 1, 1, tzinfo=UTC),
+    )
+
+    assert report.target_counts["failed"] == 1
+    with sqlite3.connect(paths.run_state_path(run_id)) as connection:
+        attempts = connection.execute(
+            "SELECT requested_url, source_sha256, source_byte_size, "
+            "source_body_relative_path FROM attempts ORDER BY attempt_number"
+        ).fetchall()
+    assert [attempt[0] for attempt in attempts] == [row["target_url"], _INDEX_URL]
+    for attempt in attempts:
+        source_path = paths.run_dir(run_id) / attempt[3]
+        assert source_path.read_bytes() == responses[attempt[0]]
+        assert file_sha256(source_path) == attempt[1]
+        assert source_path.stat().st_size == attempt[2]
+
+
+@pytest.mark.parametrize(
+    ("document_type", "expected_screen"),
+    [(b"<TYPE>8-K", "type_mismatch"), (b"", "unverifiable")],
+)
+def test_runner_uses_lazy_index_when_bundle_type_mismatches_or_is_missing(
+    tmp_path, monkeypatch, document_type: bytes, expected_screen: str
+) -> None:
+    paths, run_id, row = _make_run(tmp_path, lazy=True, bundle=True)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
+        lambda: SimpleNamespace(workers=1, worker_ceiling=1),
+    )
+    bundle = (
+        b"<DOCUMENT><SEQUENCE>2"
+        + document_type
+        + b"<TEXT>wrong initial form</TEXT></DOCUMENT>"
+    )
+    selected_url = _INDEX_URL.rsplit("/", 1)[0] + "/report.htm"
+    transport = _MemoryTransport(
+        {
+            row["target_url"]: bundle,
+            _INDEX_URL: _INDEX,
+            selected_url: b"<html>index-identified form</html>",
+        }
+    )
+
+    report = execute_acquisition_run(
+        run_id,
+        retry_failures=False,
+        paths=paths,
+        policy=AcquisitionPolicy(max_response_bytes=4096),
+        transport=transport,
+        clock=lambda: datetime(2025, 1, 1, tzinfo=UTC),
+    )
+
+    assert report.target_counts["acquired"] == 1
+    assert [url for url, _ in transport.calls] == [
+        row["target_url"],
+        _INDEX_URL,
+        selected_url,
+    ]
+    with sqlite3.connect(paths.run_state_path(run_id)) as connection:
+        resolution = connection.execute(
+            "SELECT screen_kind, screen_result, result FROM target_slot_resolutions"
+        ).fetchone()
+    assert resolution == (
+        "sgml_type",
+        expected_screen,
+        "recovered",
+    )
+
+
+def test_runner_does_not_screen_bundle_type_without_lazy_selector(
+    tmp_path, monkeypatch
+) -> None:
+    paths, run_id, row = _make_run(tmp_path, lazy=False, bundle=True)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
+        lambda: SimpleNamespace(workers=1, worker_ceiling=1),
+    )
+    bundle = b"<DOCUMENT><SEQUENCE>2<TYPE>8-K<TEXT>wrong</TEXT></DOCUMENT>"
+    transport = _MemoryTransport({row["target_url"]: bundle})
+
+    report = execute_acquisition_run(
+        run_id,
+        retry_failures=False,
+        paths=paths,
+        policy=AcquisitionPolicy(max_response_bytes=4096),
+        transport=transport,
+        clock=lambda: datetime(2025, 1, 1, tzinfo=UTC),
+    )
+
+    assert report.target_counts["acquired"] == 1
+    assert [url for url, _ in transport.calls] == [row["target_url"]]
+    state = get_target_state(paths.run_state_path(run_id), "target-1")
+    assert state is not None and state.outcome == "acquired"
+    selected_path = paths.run_dir(run_id) / state.selected_body_relative_path
+    assert selected_path.read_bytes() == b"wrong"
 
 
 def test_direct_404_is_failed_without_lazy_index_recovery(

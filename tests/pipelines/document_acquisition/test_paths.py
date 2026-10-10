@@ -50,6 +50,11 @@ def test_roots_and_run_paths_resolve_from_project_roots(tmp_path: Path) -> None:
     assert paths.run_lock_path(run_id) == run_root / RUN_LOCK_FILE
     assert paths.run_cancelled_path(run_id) == run_root / RUN_CANCELLED_FILE
     assert paths.run_staging_root(run_id) == run_root / RUN_STAGING_DIR
+    selected_sha256 = "a" * 64
+    assert (
+        paths.body_consumption_receipt_path(run_id, "target-1", selected_sha256)
+        == run_root / "handoff" / "receipts" / "target-1" / f"{selected_sha256}.json"
+    )
 
 
 @pytest.mark.parametrize(
@@ -78,6 +83,15 @@ def test_review_target_ids_must_be_safe_path_components(tmp_path: Path) -> None:
 
     with pytest.raises(ValueError):
         paths.review_paths("review-1").case_dir("../escape")
+
+
+def test_receipt_path_rejects_unsafe_target_and_digest(tmp_path: Path) -> None:
+    paths = resolve_acquisition_paths(tmp_path, tmp_path / "artifacts")
+
+    with pytest.raises(ValueError):
+        paths.body_consumption_receipt_path("run-1", "../escape", "a" * 64)
+    with pytest.raises(ValueError):
+        paths.body_consumption_receipt_path("run-1", "target-1", "A" * 64)
 
 
 def test_path_resolution_creates_nothing(tmp_path: Path) -> None:

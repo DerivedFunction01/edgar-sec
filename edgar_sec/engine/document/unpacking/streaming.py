@@ -9,7 +9,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
 
-_CHUNK_SIZE = 64 * 1024
+from edgar_sec.foundation.io import DEFAULT_IO_CHUNK_SIZE
+
+# A document header is metadata, so it is bounded independently of the read buffer.
 _MAX_HEADER_SIZE = 64 * 1024
 _TOKENS = (b"<DOCUMENT>", b"</DOCUMENT>", b"<TEXT>", b"</TEXT>")
 _MAX_TOKEN_SIZE = max(map(len, _TOKENS))
@@ -224,7 +226,7 @@ def extract_bundle_sequence(
 
     try:
         with source.open("rb") as input_stream:
-            while chunk := input_stream.read(_CHUNK_SIZE):
+            while chunk := input_stream.read(DEFAULT_IO_CHUNK_SIZE):
                 source_hash.update(chunk)
                 source_size += len(chunk)
                 pending.extend(chunk)

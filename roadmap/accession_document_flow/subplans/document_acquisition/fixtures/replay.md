@@ -2,63 +2,57 @@
 
 ## Purpose and status
 
-Reproduce one captured acquisition attempt from local evidence and return its typed
-outcome with no network access. This is design-only; no S9 replay adapter exists in
-tracked code.
+Replay one exact captured case from local evidence without network access. The case
+lookup, CLI adapter, and operator action are implemented. The lower-level
+`replay_fixture_response()` primitive incrementally decompresses a response BLOB into a
+binary destination and verifies stored and uncompressed sizes and SHA-256 digests.
 
-## UX and signature
+## CLI and operator
 
-The operator selects exact fixture, capture, and target IDs; it displays the recorded
-retrieval mode/outcome and confirms that replay is offline. The CLI requires the same
-IDs. Successful replay returns a staged-body handle to a caller and prints metadata,
-never body bytes.
+```text
+acquisition fixture replay --fixture-id <id> --capture-id <id> --target-id <id> --output <new-path>
+```
+
+Replay requires exact fixture/capture/target IDs and an explicit output path. The
+operator requires an affirmative, default-no confirmation before writing. The path
+must not already exist; replay never overwrites it. Output is not printed as document
+bytes.
 
 ```python
 def replay_fixture_case(
     fixture_id: str,
     capture_id: str,
     target_id: str,
+    output_path: Path,
     *,
     paths: AcquisitionPaths,
-    staging: ManagedStaging,
 ) -> FixtureReplayResult: ...
-
-def cmd_fixture_replay(args: argparse.Namespace) -> int: ...
 ```
-
-`FixtureReplayResult` carries `source="fixture_replay"`, the recorded S9 outcome,
-and a `StagedBodyRef` only when the selected body was reproduced successfully.
 
 ## Verification and route behavior
 
-- Resolve the exact row from the fixture index using bound IDs. Verify fixture/run
-  provenance, supported schema, source/selected digests and byte sizes, and BLOB
-  presence before returning a staged-body handle.
-- Direct targets use the captured response as the selected body; source and selected
-  digests must agree unless a catalog-direct lazy resolution selected a different
-  physical slot.
-- Catalog-direct `exact_form_with_lazy_index` replay validates the captured sequence-1
-  body, reruns the version-pinned local screen and lazy index parser, verifies the
-  matching entry set and resolution outcome, then returns the captured replacement
-  body's bytes when one was acquired. It makes no index request. `submitted_primary`
-  replays sequence 1 without a type screen.
-- Bundle targets rerun the same streaming sequence extractor over the captured full
-  response. Verify the recorded sequence, source digest, selected digest, and selected
-  byte count. No filename/role guess or sequence fallback is permitted.
-- Captured `not_filed`, `required_missing`, ambiguous, and failure cases reproduce their typed S9
-  outcome. Cases with no response body replay the recorded failure metadata only.
-- Any corrupt or mismatched evidence fails before returning a body. Replay never
-  edits the fixture database, resets an acquisition run, or constructs
-  `SecHttpClient`.
-- Both direct and bundle-selected bytes are written to a generated staging path from
-  the read-only BLOB stream and cleaned after their S10 consumption receipt. The
-  fixture database remains unchanged.
+- Resolve the exact case from the named fixture and capture/target IDs. Open the fixture
+  read-only, then stream the response through the existing integrity verifier, checking
+  compressed and uncompressed byte sizes and SHA-256 digests.
+- Ordinary direct cases require the verified source response identity to equal the
+  recorded selected-body identity. Lazy-resolution cases verify the retained source,
+  index, and selected responses independently; a selected bundle response is locally
+  extracted at its recorded sequence and checked against selected digest and size. A
+  bundle-sequence case is likewise locally extracted and verified. Replay performs no
+  HTTP request or index lookup.
+- A bodyless failed case returns its recorded attempt/outcome metadata only and creates
+  no output file. A case with inconsistent body metadata or corrupt/mismatched response
+  evidence fails rather than returning selected bytes.
+- For acquired cases, write to a temporary file in the caller-selected output
+  directory, then publish to the explicit path only if it remains new. Existing files
+  and symlinks are refused. The fixture database is not modified.
+- The output is a caller-owned file. There is no managed durable staging API,
+  `StagedBodyRef` handoff, S10 consumption receipt, or cleanup protocol. Replay does not
+  claim S10 integration and does not bypass the representative-evidence and approval
+  gate for S11 publication.
 
 ## Tests
 
-Tests assert byte-identical direct replay, exact bundle-child replay and digest,
-zero HTTP calls, typed replay of absent/required-missing/ambiguous/malformed outcomes,
-lazy-index resolution and replacement-body replay, refusal on a
-  changed BLOB/schema/provenance, and refusal to clean generated staging before
-  snapshot publication or explicit discard. Repeated replay leaves fixture metadata
-  unchanged.
+Offline tests cover exact case resolution, byte-identical direct replay, bundle
+extraction and selected-body identity where such a case exists, metadata-only failure
+without output, output no-overwrite behavior, and refusal on corrupt evidence.

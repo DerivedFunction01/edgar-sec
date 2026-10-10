@@ -17,11 +17,14 @@ from edgar_sec.pipelines.document_acquisition.models import (
 from edgar_sec.pipelines.document_acquisition.run_state.models import (
     TargetState,
     WorkOrderTargetSeed,
+    _acquisition_attempt_from_row,
+    _target_state_from_row,
 )
 from edgar_sec.pipelines.document_acquisition.run_state.locks import (
     RunLockError,
     inspect_run_lock,
 )
+from edgar_sec.infra.storage.duckdb import sql_literal
 
 SCHEMA_VERSION = 2
 _OUTCOMES = (
@@ -157,6 +160,12 @@ _GET_TARGET = """SELECT target_id, executable, skip_reason, outcome, source, ret
     source_body_relative_path, selected_sha256, selected_byte_size,
     selected_body_relative_path
 FROM target_state WHERE target_id = ?"""
+_GET_ATTEMPT = """SELECT attempt_id, target_id, attempt_number, attempt_kind, source,
+    requested_url, outcome, retryable, error_code, http_status, final_url,
+    started_at_utc, finished_at_utc, source_sha256, source_byte_size,
+    source_body_relative_path, selected_sha256, selected_byte_size,
+    selected_body_relative_path
+FROM attempts WHERE target_id = ? AND attempt_id = ?"""
 _COUNT_ATTEMPTED = "SELECT COUNT(*) FROM target_state WHERE attempt_count > 0"
 
 
@@ -224,7 +233,9 @@ def initialize_run_state(
         if version == 0 and tables == 0:
             for statement in _SCHEMA:
                 connection.execute(statement)
-            connection.execute("PRAGMA user_version = 2")
+            connection.execute(
+                f"PRAGMA user_version = {sql_literal(str(SCHEMA_VERSION))}"
+            )
         elif version != SCHEMA_VERSION:
             raise RunStateError("unsupported run-state schema version")
         for target in targets:
@@ -537,26 +548,6 @@ def append_target_slot_resolution(
         connection.close()
 
 
-def _target_state(row: tuple[object, ...]) -> TargetState:
-    return TargetState(
-        target_id=row[0],
-        executable=bool(row[1]),
-        skip_reason=row[2],
-        outcome=row[3],
-        source=row[4],
-        retryable=bool(row[5]),
-        attempt_count=row[6],
-        last_attempt_id=row[7],
-        error_code=row[8],
-        source_sha256=row[9],
-        source_byte_size=row[10],
-        source_body_relative_path=row[11],
-        selected_sha256=row[12],
-        selected_byte_size=row[13],
-        selected_body_relative_path=row[14],
-    )
-
-
 def iter_selected_target_states(
     database_path: Path, *, retry_failures: bool = False
 ) -> Iterator[TargetState]:
@@ -567,9 +558,26 @@ def iter_selected_target_states(
         cursor = connection.execute(statement)
         try:
             for row in cursor:
-                yield _target_state(row)
+                yield _target_state_from_row(row)
         finally:
             cursor.close()
+    finally:
+        connection.close()
+
+
+def get_attempt(
+    database_path: Path, target_id: str, attempt_id: str
+) -> AcquisitionAttempt | None:
+    connection = _connect(Path(database_path), readonly=True)
+    try:
+        _require_schema(connection)
+        row = connection.execute(_GET_ATTEMPT, (target_id, attempt_id)).fetchone()
+        if row is None:
+            return None
+        attempt = _acquisition_attempt_from_row(row)
+        if attempt.target_id != target_id or attempt.attempt_id != attempt_id:
+            return None
+        return attempt
     finally:
         connection.close()
 
@@ -579,7 +587,7 @@ def get_target_state(database_path: Path, target_id: str) -> TargetState | None:
     try:
         _require_schema(connection)
         row = connection.execute(_GET_TARGET, (target_id,)).fetchone()
-        return None if row is None else _target_state(row)
+        return None if row is None else _target_state_from_row(row)
     finally:
         connection.close()
 
@@ -597,7 +605,7 @@ def get_target_states(
         for target_id in target_ids:
             row = connection.execute(_GET_TARGET, (target_id,)).fetchone()
             if row is not None:
-                result[target_id] = _target_state(row)
+                result[target_id] = _target_state_from_row(row)
         return result
     finally:
         connection.close()
@@ -698,6 +706,7 @@ __all__ = [
     "append_attempt_and_update_target",
     "append_target_slot_resolution",
     "commit_attempts_and_update_target",
+    "get_attempt",
     "get_target_state",
     "get_target_states",
     "inspect_run_state",

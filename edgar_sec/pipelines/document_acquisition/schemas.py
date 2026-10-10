@@ -49,7 +49,7 @@ class StagedBodyRef:
     sha256: str
     byte_size: int
     selected_filename: str | None
-    source_response_path: Path
+    source_response_path: Path | None
     source_response_sha256: str
     source_response_byte_size: int
 

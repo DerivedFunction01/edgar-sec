@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import sqlite3
 import tempfile
 from collections.abc import Mapping
@@ -12,6 +13,7 @@ from typing import BinaryIO
 import zstandard
 
 import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
+from edgar_sec.foundation.io import DEFAULT_IO_CHUNK_SIZE
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
@@ -22,7 +24,6 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.replay import (
     verify_response_row,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
-    CHUNK_SIZE,
     FIXTURE_KIND,
     SCHEMA_VERSION,
     _CASE_COLUMNS,
@@ -106,9 +107,9 @@ def _stage_response(
     compressor = zstandard.ZstdCompressor()
     try:
         with compressor.stream_writer(
-            staged, closefd=False, write_size=CHUNK_SIZE
+            staged, closefd=False, write_size=DEFAULT_IO_CHUNK_SIZE
         ) as writer:
-            while chunk := source.read(CHUNK_SIZE):
+            while chunk := source.read(DEFAULT_IO_CHUNK_SIZE):
                 if not isinstance(chunk, bytes):
                     raise TypeError("response source must yield bytes")
                 response_size += len(chunk)
@@ -120,7 +121,7 @@ def _stage_response(
         stored_size = staged.tell()
         staged.seek(0)
         stored_digest = hashlib.sha256()
-        while chunk := staged.read(CHUNK_SIZE):
+        while chunk := staged.read(DEFAULT_IO_CHUNK_SIZE):
             stored_digest.update(chunk)
         staged.seek(0)
         return (
@@ -167,7 +168,7 @@ def _add_body(
         "response_bodies", "compressed_body", cursor.lastrowid, readonly=False
     )
     try:
-        while chunk := staged.read(CHUNK_SIZE):
+        while chunk := staged.read(DEFAULT_IO_CHUNK_SIZE):
             blob.write(chunk)
         if blob.tell() != stored_byte_size:
             raise FixtureStoreError("compressed staging size changed during insertion")
@@ -257,6 +258,65 @@ def append_fixture_case(
             )
             if staged_responses[field][1] != expected_digest:
                 raise FixtureStoreError(f"{field} does not match its response stream")
+        if (
+            case_values.get("acquisition_status") == "acquired"
+            and case_values.get("source_origin") == "catalog_direct"
+            and case_values.get("catalog_direct_selection")
+            == "exact_form_with_lazy_index"
+            and case_values.get("resolution_schema_version") is not None
+        ):
+            required_text = (
+                "resolution_schema_version",
+                "screen_kind",
+                "screen_result",
+                "index_parser_version",
+                "selected_url",
+            )
+            if any(
+                not isinstance(case_values.get(field), str)
+                or not case_values[field].strip()
+                for field in required_text
+            ):
+                raise FixtureStoreError("resolved response metadata is incomplete")
+            try:
+                matching_entry_ids = json.loads(case_values["matching_entry_ids_json"])
+            except (KeyError, TypeError, json.JSONDecodeError) as exc:
+                raise FixtureStoreError(
+                    "resolved matching-entry evidence is invalid"
+                ) from exc
+            if (
+                not isinstance(matching_entry_ids, list)
+                or len(matching_entry_ids) != 1
+                or not isinstance(matching_entry_ids[0], str)
+                or not matching_entry_ids[0]
+            ):
+                raise FixtureStoreError("resolved matching-entry evidence is invalid")
+            if not {
+                "index_response_sha256",
+                "selected_response_sha256",
+            }.issubset(staged_responses):
+                raise FixtureStoreError("resolved response evidence is incomplete")
+            selected_response = staged_responses["selected_response_sha256"]
+            selected_mode = case_values.get("selected_retrieval_mode")
+            if selected_mode == "direct_url":
+                if (
+                    selected_response[1] != case_values.get("selected_sha256")
+                    or type(case_values.get("selected_byte_size")) is not int
+                    or selected_response[2] != case_values["selected_byte_size"]
+                ):
+                    raise FixtureStoreError(
+                        "selected response does not match selected body identity"
+                    )
+            elif selected_mode == "bundle_sequence":
+                if (
+                    type(case_values.get("selected_sequence")) is not int
+                    or case_values["selected_sequence"] <= 0
+                ):
+                    raise FixtureStoreError(
+                        "resolved bundle selection has invalid sequence"
+                    )
+            else:
+                raise FixtureStoreError("resolved response has invalid selected mode")
         _, connection = open_fixture(paths, fixture_id, readonly=False)
         try:
             with connection:

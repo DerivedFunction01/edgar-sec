@@ -2,49 +2,48 @@
 
 ## Purpose and status
 
-List fixture IDs, captures, and per-target evidence metadata without loading document
-bodies. This is design-only; the S9 fixture index is not implemented.
+List validated fixture IDs and per-target evidence metadata without loading document
+bodies. Fixture discovery and case iteration are implemented in the store discovery
+API and wired through the CLI and operator.
 
-## UX and signature
+## CLI and operator
 
-The operator lists fixture IDs and case counts, then may inspect one fixture's
-captures. The CLI supports all fixtures or an explicit ID and emits the same summary
-as sorted JSON when requested.
+```text
+acquisition fixture list [--fixture-id <id>] [--capture-id <id>] [--target-id <id>] [--json]
+```
+
+Each filter is optional. The operator presents the same optional fixture, capture, and
+target filters. Listing is read-only and requires no confirmation.
 
 ```python
-def list_fixtures(
-    fixture_id: str | None,
-    *,
-    paths: AcquisitionPaths,
-) -> tuple[FixtureSummary, ...]: ...
+def list_fixtures(paths: AcquisitionPaths) -> Iterator[str]: ...
 
 def list_fixture_cases(
-    fixture_id: str,
+    paths: AcquisitionPaths,
     *,
+    fixture_id: str | None = None,
     capture_id: str | None = None,
     target_id: str | None = None,
-    paths: AcquisitionPaths,
-) -> tuple[FixtureCaseSummary, ...]: ...
-
-def cmd_fixture_list(args: argparse.Namespace) -> int: ...
+) -> Iterator[FixtureCaseMetadata]: ...
 ```
 
 ## Read-only contract
 
-- Validate fixture IDs, database `user_version`, schema, and metadata path containment.
-  An invalid fixture is reported with an error code and is not silently skipped.
-- Show capture ID, run/plan identity, target/attempt identity, source origin,
-  retrieval mode, outcome, error code, source/selected digests and byte sizes, and
-  whether the source BLOB is present in the index.
-- Do not read or hash every body during listing. Replay performs full streaming
-  verification against the recorded digest and size.
-- Use `LEFT JOIN`/bound filters so metadata-only failures remain visible. A missing
-  BLOB is presented as corrupt/missing evidence, not as an empty document.
-- Listing creates no fixture directory, migrates no schema, changes no database, and
-  makes zero HTTP requests.
+- Validate fixture IDs, manifest envelope, schema version/layout, SQLite integrity,
+  foreign keys, and immutability triggers. Invalid fixtures are reported rather than
+  silently skipped.
+- Stream fixture IDs and matching case metadata in deterministic order. Case metadata
+  includes capture/run/plan and target/attempt identity, outcome, error, retrieval
+  details, and recorded source/selected digests and sizes.
+- Open each fixture database read-only. Listing does not select, decompress, or hash
+  response BLOBs; SQLite integrity and foreign-key checks still run when a store opens.
+  Full response-body verification belongs to replay.
+- Fixture, capture, and target filters are bound exact-value filters. Metadata-only
+  failures remain visible with absent body digest/size fields rather than appearing as
+  empty response bodies.
+- Listing creates no fixture, changes no database, and makes zero HTTP requests.
 
 ## Tests
 
-Tests cover empty and populated fixtures, filters, metadata-only cases, missing BLOB
-reporting, corrupt indexes, unknown schema versions, path escapes, and read-only
-database behavior. Listing does not read large BLOB values.
+Offline tests cover discovery order, filters, metadata-only cases, schema validation,
+and read-only access. BLOB bodies are not materialized by listing.

@@ -12,10 +12,10 @@ from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixtureStoreError,
 )
+from edgar_sec.infra.storage.duckdb import sql_literal
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 FIXTURE_KIND = "document_acquisition.source_responses"
-CHUNK_SIZE = 64 * 1024
 
 _TABLES = frozenset({"fixture_meta", "response_bodies", "captures", "cases"})
 _CAPTURE_COLUMNS = (
@@ -182,7 +182,20 @@ _SCHEMA = (
              selected_sha256 IS NOT NULL AND selected_byte_size IS NOT NULL AND
              selected_filename IS NOT NULL)),
         CHECK (acquisition_status != 'acquired' OR retrieval_mode != 'direct_url' OR
-            (response_sha256 = selected_sha256 AND source_byte_size = selected_byte_size))
+            (response_sha256 = selected_sha256 AND source_byte_size = selected_byte_size) OR
+            (source_origin = 'catalog_direct' AND
+             catalog_direct_selection = 'exact_form_with_lazy_index' AND
+             resolution_schema_version IS NOT NULL AND
+             screen_kind IS NOT NULL AND screen_result IS NOT NULL AND
+             index_response_sha256 IS NOT NULL AND index_parser_version IS NOT NULL AND
+             matching_entry_ids_json IS NOT NULL AND
+             selected_response_sha256 IS NOT NULL AND
+             selected_retrieval_mode IN ('direct_url', 'bundle_sequence') AND
+             selected_url IS NOT NULL AND
+             ((selected_retrieval_mode = 'direct_url' AND
+               selected_response_sha256 = selected_sha256) OR
+              (selected_retrieval_mode = 'bundle_sequence' AND
+               selected_sequence IS NOT NULL AND selected_sequence > 0))))
     )""",
     """CREATE TRIGGER immutable_response_update BEFORE UPDATE ON response_bodies
         BEGIN SELECT RAISE(ABORT, 'fixture response bodies are immutable'); END""",
@@ -221,31 +234,42 @@ def connect(database: Path, *, readonly: bool = False) -> sqlite3.Connection:
 def create_schema(connection: sqlite3.Connection) -> None:
     for statement in _SCHEMA:
         connection.execute(statement)
-    connection.execute("PRAGMA user_version = 2")
+    connection.execute(f"PRAGMA user_version = {sql_literal(str(SCHEMA_VERSION))}")
 
 
-def _validate_manifest(fixture: foundation_fixtures.FixturePaths) -> None:
+def _validate_manifest(fixture: foundation_fixtures.FixturePaths) -> int:
     try:
         raw = json.loads(fixture.manifest_path.read_text(encoding="utf-8"))
         envelope = foundation_fixtures.FixtureManifestEnvelope.from_mapping(raw)
+        schema_version = envelope.details.get("store_schema_version")
         if (
             envelope.fixture_kind != FIXTURE_KIND
             or envelope.fixture_id != fixture.fixture_id
             or envelope.storage_format != "sqlite"
             or envelope.storage_path != fixture.storage_filename
             or envelope.created_at != envelope.updated_at
-            or envelope.details != {"store_schema_version": SCHEMA_VERSION}
+            or set(envelope.details) != {"store_schema_version"}
+            or type(schema_version) is not int
+            or schema_version != SCHEMA_VERSION
         ):
             raise ValueError("fixture descriptor does not match the S9 store")
     except (OSError, json.JSONDecodeError, TypeError, ValueError) as exc:
         raise FixtureStoreError(
             f"invalid fixture manifest: {fixture.manifest_path}"
         ) from exc
+    return schema_version
 
 
-def validate_database(connection: sqlite3.Connection, database: Path) -> None:
-    if connection.execute("PRAGMA user_version").fetchone()[0] != SCHEMA_VERSION:
+def validate_database(
+    connection: sqlite3.Connection, database: Path, manifest_version: int
+) -> None:
+    database_version = connection.execute("PRAGMA user_version").fetchone()[0]
+    if database_version != SCHEMA_VERSION:
         raise FixtureStoreError("unsupported acquisition fixture schema version")
+    if database_version != manifest_version:
+        raise FixtureStoreError(
+            "fixture manifest and SQLite schema versions do not match"
+        )
     tables = frozenset(
         row[0]
         for row in connection.execute(
@@ -283,10 +307,10 @@ def open_fixture(
     fixture = fixture_paths(paths, fixture_id)
     if not fixture.manifest_path.is_file() or not fixture.storage_path.is_file():
         raise FixtureStoreError(f"fixture is missing or incomplete: {fixture.root}")
-    _validate_manifest(fixture)
+    manifest_version = _validate_manifest(fixture)
     connection = connect(fixture.storage_path, readonly=readonly)
     try:
-        validate_database(connection, fixture.storage_path)
+        validate_database(connection, fixture.storage_path, manifest_version)
     except Exception:
         connection.close()
         raise

@@ -81,6 +81,8 @@ class FixtureManifestEnvelope:
             raise FixtureManifestError("fixture timestamps are required")
         if not isinstance(self.updated_at, str) or not self.updated_at:
             raise FixtureManifestError("fixture timestamps are required")
+        if type(self.manifest_version) is not int:
+            raise FixtureManifestError("fixture manifest version must be an integer")
         if self.manifest_version != FIXTURE_MANIFEST_VERSION:
             raise FixtureManifestError(
                 f"unsupported fixture manifest version: {self.manifest_version}"

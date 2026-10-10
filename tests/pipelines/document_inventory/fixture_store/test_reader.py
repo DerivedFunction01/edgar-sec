@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sqlite3
 from pathlib import Path
 
@@ -76,6 +77,20 @@ def test_missing_manifest_refuses_replay(tmp_path: Path, broker_for) -> None:
     paths.manifest_path.unlink()
     with pytest.raises(IndexFixtureError, match="manifest missing"):
         replay_index_page(paths, accession, key)
+
+
+@pytest.mark.parametrize("schema_version", [True, 2.0])
+def test_non_integer_schema_version_refuses_before_database_validation(
+    tmp_path: Path, broker_for, schema_version: bool | float
+) -> None:
+    paths, _, _ = _captured(tmp_path, broker_for)
+    manifest = json.loads(paths.manifest_path.read_text(encoding="utf-8"))
+    manifest["details"]["store_schema_version"] = schema_version
+    paths.manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    with pytest.raises(IndexFixtureError, match="schema_version must be an integer"):
+        with open_index_fixture(paths):
+            pass
 
 
 def test_tampered_selected_body_fails_digest_check(tmp_path: Path, broker_for) -> None:

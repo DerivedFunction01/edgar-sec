@@ -18,6 +18,16 @@ def _scan(
     return scan_batch_defaults()
 
 
+def _scan_owner(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, source: str
+) -> list[ScannerFinding]:
+    owner = tmp_path / "edgar_sec" / "foundation"
+    owner.mkdir(parents=True)
+    (owner / "io.py").write_text(source, encoding="utf-8")
+    monkeypatch.chdir(tmp_path)
+    return scan_batch_defaults()
+
+
 def test_flags_shared_symbols_defined_outside_their_owner(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -83,3 +93,61 @@ def test_flags_duplicate_document_payload_target_expressions(
 
     assert len(findings) == 1
     assert "duplicates the document payload target" in findings[0].message
+
+
+def test_flags_the_io_chunk_symbol_defined_outside_its_owner(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    findings = _scan(tmp_path, monkeypatch, "DEFAULT_IO_CHUNK_SIZE = 64 * 1024\n")
+
+    assert len(findings) == 1
+    assert findings[0].message.startswith("DEFAULT_IO_CHUNK_SIZE is owned by")
+
+
+def test_the_io_chunk_owner_may_define_its_own_literal(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    findings = _scan_owner(tmp_path, monkeypatch, "DEFAULT_IO_CHUNK_SIZE = 64 * 1024\n")
+
+    assert findings == []
+
+
+def test_flags_io_chunk_literals_at_streaming_buffer_sites(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    findings = _scan(
+        tmp_path,
+        monkeypatch,
+        """def stream(source, response):
+    return source.read(65536), response.iter_content(chunk_size=64 * 1024)
+
+def compress(staged):
+    return staged.read(read_size=65536), staged.write(write_size=65536)
+""",
+    )
+
+    assert [(finding.line, finding.message) for finding in findings] == [
+        (2, "literal 65536 duplicates the shared I/O chunk buffer default"),
+        (2, "literal 65536 duplicates the shared I/O chunk buffer default"),
+        (5, "literal 65536 duplicates the shared I/O chunk buffer default"),
+        (5, "literal 65536 duplicates the shared I/O chunk buffer default"),
+    ]
+
+
+def test_equal_valued_limits_are_not_io_chunk_buffers(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    findings = _scan(
+        tmp_path,
+        monkeypatch,
+        """MAX_TEXT_BYTES = 64 * 1024
+MAX_HEADER_SIZE = 64 * 1024
+
+def read(parquet):
+    return parquet.iter_batches(batch_size=65_536)
+""",
+    )
+
+    assert [(finding.line, finding.message) for finding in findings] == [
+        (5, "literal 65536 duplicates the shared Parquet read batch default"),
+    ]

@@ -2,10 +2,9 @@
 
 ## Purpose and status
 
-This is the interactive flow shared by the S9 command group. A run-oriented menu
-skeleton is registered. The CLI's offline project service is implemented, but plan
-listing/selection and the interactive project action remain TODO; other menu actions
-are placeholders or fail closed on the S11 gate.
+This is the interactive flow shared by the S9 command group. The operator dispatches
+project, run, and fixture create/capture/list/replay actions to CLI services. Status,
+process, review, and snapshot audit remain TODO; publish fails closed on the S11 gate.
 
 ## Entry and signatures
 
@@ -19,8 +18,9 @@ def main(argv: list[str] | None = None) -> int: ...
 
 `main()` dispatches explicit CLI subcommands; with no command it enters the menu.
 The root launcher exposes one `Document Acquisition` entry and does not route through
-the legacy `documents`/`document_storage` operator. The menu does not have its own
-plan listing, status, run, distribution, or fixture implementation.
+the legacy `documents`/`document_storage` operator. Project/status/run and fixture menu
+actions collect inputs and delegate to the same CLI services; there is no distribution
+console.
 
 ## Main menu
 
@@ -31,34 +31,39 @@ Document Acquisition
   3. Run pending acquisition work
   4. Process acquired targets
   5. Publish a completed run snapshot
-  f. Acquisition fixtures console (capture, list, replay TODOs)
-  r. Review artifact console (build, compare TODOs)
-  p. Snapshot status/evidence audit (S11 gate)
+  6. Create local fixture
+  7. Capture local fixture evidence (confirmation required)
+  8. List local fixtures
+  9. Replay local fixture (confirmation required)
+  10. Review artifact console (build, compare TODOs)
+  11. Snapshot status/evidence audit (S11 gate)
   0. Exit
 ```
 
-The CLI `project` command is implemented, but the menu's Project action remains a TODO
-until validated-plan listing/selection is available. Status, Run, Process, fixtures,
-review, and snapshot audit also remain TODO. Publish returns a gate-blocked result and
-does not create parts, manifests, or pointers. No menu action makes network requests.
+Project prompts for a published plan ID and delegates to the offline project service.
+Status delegates read-only run inspection. Run is wired to acquisition and separately
+confirms live SEC access, defaulting to no; retry selection is a distinct prompt.
+Fixture create, capture, list, and replay are wired. Process, review, and snapshot audit
+still return TODO results. Publish returns a gate-blocked result and does not create
+parts, manifests, or pointers.
 
-## Intended user flows (not implemented)
+## Deferred UX extensions
 
-### Project
+### Plan selection
 
 List validated plans by ID and summary; after selection, show input digest, catalog
 and optional inventory pins, S6 schema versions, and executable/skipped counts.
 Projection is offline, so no SEC prompt appears. A reused run is identified as such;
 invalid plans return to the menu with no run created.
 
-### Status
+### Status detail
 
 List valid and invalid runs with their plan IDs, derived state, and aggregate counts.
 Selecting a valid run shows attempts and target outcomes; invalid runs show the error
 code without a repair action. Inspect never mutates a checkpoint or releases staged
 bodies.
 
-### Run
+### Run preview
 
 Show the chosen run's pending count, retryable failures, and assigned/in-flight work
 before starting. Ask a distinct live-network confirmation, defaulting to no. If
@@ -83,12 +88,22 @@ registered in the acquisition menu or CLI. SEC rate limits remain host-local und
 each machine's configured settings/environment; cross-host coordination and checks
 are out of scope and no aggregate limit is implied.
 
-### Fixture console
+### Fixture actions
 
-Offer `capture`, `list`, and `replay`. Capture previews the exact run/attempt targets
-and local disk writes, then requires an explicit affirmative confirmation. Listing is
-read-only. Replay names the selected fixture/capture/target, makes no HTTP request,
-and returns a staged body handle without printing document bytes.
+Create requires a new fixture ID and refuses an existing ID. Capture requires fixture,
+run, target, exact attempt, and a positive byte cap; after collecting them, the operator
+requires default-no confirmation before retaining local evidence. Listing is read-only
+with optional fixture/capture/target filters and does not select, decompress, or hash
+response BLOBs; opening a fixture still validates SQLite integrity. Replay
+requires exact fixture/capture/target IDs and a caller-selected output path, then asks a
+default-no confirmation before writing. It makes no HTTP request and does not print
+document bytes. A metadata-only failure creates no output file.
+
+Replay output is a caller-owned file, not managed S10 staging. There is no durable
+replay staging, consumption receipt, or S10 handoff API. Capture refuses exact-form
+lazy-index attempts and acquired bundle attempts because complete source/index response
+evidence is not retained after a run; supported captures are successful direct bodies
+and bodyless failed attempts.
 
 ### Snapshot console
 
@@ -104,10 +119,11 @@ current action; they do not discard a previously selected run context.
 
 ## Output and tests
 
-Menu summaries and CLI text use the same report models. `--json` prints stable,
-sorted JSON without paths outside the resolved project root or secret settings.
-Command errors use the same typed errors and exit-code mapping in both entry modes.
+Fixture CLI `--json` output is stable and sorted. Command errors use the CLI's typed
+error formatting and exit-code mapping in both entry modes. The legacy
+`document_storage` pipeline remains a separate command surface. Fixture evidence does
+not satisfy the representative S9/S10 evidence and approval required to enable S11
+publication.
 
-Tests cover each menu transition, retained run context, default-no confirmation,
-retry confirmation separation, EOF/Ctrl-C behavior, command delegation, and proof
-that cancelled actions make zero SEC requests.
+Tests cover menu transitions, default-no live-network/capture/replay confirmations,
+retry confirmation separation, EOF/Ctrl-C behavior, and command delegation.

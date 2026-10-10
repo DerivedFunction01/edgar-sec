@@ -117,15 +117,24 @@ def _validate_manifest(plan_dir: Path) -> tuple[Path, dict[str, Any]]:
     plan_id = manifest.get("plan_id")
     if not isinstance(plan_id, str) or not plan_id or root.name != plan_id:
         raise TargetPlanError("plan ID does not match its bundle directory")
-    if manifest.get("bundle_schema_version") != _PLAN_BUNDLE_SCHEMA_VERSION:
+    bundle_schema_version = manifest.get("bundle_schema_version")
+    if (
+        type(bundle_schema_version) is not int
+        or bundle_schema_version != _PLAN_BUNDLE_SCHEMA_VERSION
+    ):
         raise TargetPlanError(
-            "missing or unsupported target-plan bundle schema version; S9 requires version 2"
+            "missing or unsupported target-plan bundle schema version; "
+            f"S9 requires bundle version {_PLAN_BUNDLE_SCHEMA_VERSION}"
         )
     if manifest.get("matcher_version") != _TARGET_MATCHER_VERSION:
         raise TargetPlanError(
             "unsupported target matcher version; S9 requires target-matcher-v2"
         )
-    if manifest.get("target_schema_version") != _TARGET_SCHEMA_VERSION:
+    target_schema_version = manifest.get("target_schema_version")
+    if (
+        type(target_schema_version) is not int
+        or target_schema_version != _TARGET_SCHEMA_VERSION
+    ):
         raise TargetPlanError("unsupported target schema version")
     plan_digest = manifest.get("plan_digest")
     unsigned = dict(manifest)
@@ -135,7 +144,11 @@ def _validate_manifest(plan_dir: Path) -> tuple[Path, dict[str, Any]]:
     identity = manifest.get("plan_identity")
     if not isinstance(identity, dict):
         raise TargetPlanError("target-plan identity is missing")
-    if identity.get("bundle_schema_version") != _PLAN_BUNDLE_SCHEMA_VERSION:
+    identity_bundle_schema_version = identity.get("bundle_schema_version")
+    if (
+        type(identity_bundle_schema_version) is not int
+        or identity_bundle_schema_version != _PLAN_BUNDLE_SCHEMA_VERSION
+    ):
         raise TargetPlanError(
             "missing or unsupported bundle schema version in target-plan identity"
         )
@@ -143,8 +156,10 @@ def _validate_manifest(plan_dir: Path) -> tuple[Path, dict[str, Any]]:
         raise TargetPlanError(
             "unsupported target matcher version in target-plan identity"
         )
+    identity_target_schema_version = identity.get("target_schema_version")
     if (
-        identity.get("target_schema_version") != _TARGET_SCHEMA_VERSION
+        type(identity_target_schema_version) is not int
+        or identity_target_schema_version != _TARGET_SCHEMA_VERSION
         or manifest.get("matcher_version") != identity.get("matcher_version")
         or manifest.get("profile_digest") != identity.get("profile_digest")
         or manifest.get("catalog_plan_id") != identity.get("catalog_plan_id")

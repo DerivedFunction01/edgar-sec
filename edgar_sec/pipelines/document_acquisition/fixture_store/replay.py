@@ -8,14 +8,13 @@ from typing import BinaryIO
 
 import zstandard
 
+from edgar_sec.foundation.io import DEFAULT_IO_CHUNK_SIZE
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixtureStoreError,
     ResponseBodyRef,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.schema import open_fixture
-
-from .schema import CHUNK_SIZE
 
 
 class _NullWriter:
@@ -59,10 +58,10 @@ def _stream_body(
     response_count = 0
     hashing_reader = _HashingReader(blob, stored_hash)
     reader = zstandard.ZstdDecompressor().stream_reader(
-        hashing_reader, read_size=CHUNK_SIZE, closefd=False
+        hashing_reader, read_size=DEFAULT_IO_CHUNK_SIZE, closefd=False
     )
     try:
-        while chunk := reader.read(CHUNK_SIZE):
+        while chunk := reader.read(DEFAULT_IO_CHUNK_SIZE):
             response_count += len(chunk)
             if response_count > byte_size:
                 raise FixtureStoreError(

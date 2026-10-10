@@ -4,10 +4,10 @@ import sqlite3
 
 import pytest
 
+from edgar_sec.foundation.io import DEFAULT_IO_CHUNK_SIZE
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixtureStoreError,
 )
-from edgar_sec.pipelines.document_acquisition.fixture_store.schema import CHUNK_SIZE
 from edgar_sec.pipelines.document_acquisition.fixture_store.storage import (
     append_fixture_case,
     initialize_fixture,
@@ -154,16 +154,16 @@ def test_response_capture_reads_in_bounded_chunks(
             return super().read(size)
 
     initialize_fixture(acquisition_paths, "fixture_bounded")
-    source = BoundedSource(b"x" * (CHUNK_SIZE * 5 + 13))
+    source = BoundedSource(b"x" * (DEFAULT_IO_CHUNK_SIZE * 5 + 13))
     append_fixture_case(
         acquisition_paths,
         "fixture_bounded",
         capture_values,
         case_factory(),
         source,
-        max_response_bytes=CHUNK_SIZE * 6,
+        max_response_bytes=DEFAULT_IO_CHUNK_SIZE * 6,
     )
-    assert 0 < source.maximum_read <= CHUNK_SIZE
+    assert 0 < source.maximum_read <= DEFAULT_IO_CHUNK_SIZE
 
 
 def test_related_lazy_index_response_is_stored(
@@ -200,3 +200,213 @@ def test_related_lazy_index_response_is_stored(
             connection.execute("SELECT response_sha256 FROM cases").fetchone()[0]
             is None
         )
+
+
+def test_v3_lazy_direct_resolution_stores_distinct_evidence(
+    acquisition_paths, capture_values, case_factory
+) -> None:
+    fixture = initialize_fixture(acquisition_paths, "fixture_lazy_direct")
+    source = b"initial catalog response"
+    index = b"lazy filing index"
+    selected = b"selected filing response"
+    source_digest = hashlib.sha256(source).hexdigest()
+    index_digest = hashlib.sha256(index).hexdigest()
+    selected_digest = hashlib.sha256(selected).hexdigest()
+    case = case_factory()
+    case.update(
+        catalog_direct_selection="exact_form_with_lazy_index",
+        resolution_schema_version="1",
+        screen_kind="html_cover",
+        screen_result="unverifiable",
+        index_parser_version="index-parser-v1",
+        matching_entry_ids_json='["entry_1"]',
+        index_response_sha256=index_digest,
+        selected_response_sha256=selected_digest,
+        selected_retrieval_mode="direct_url",
+        selected_url="https://www.sec.gov/selected.htm",
+        selected_sha256=selected_digest,
+        selected_byte_size=len(selected),
+    )
+
+    append_fixture_case(
+        acquisition_paths,
+        "fixture_lazy_direct",
+        capture_values,
+        case,
+        io.BytesIO(source),
+        max_response_bytes=1024,
+        related_responses={
+            "index_response_sha256": io.BytesIO(index),
+            "selected_response_sha256": io.BytesIO(selected),
+        },
+    )
+
+    assert len({source_digest, index_digest, selected_digest}) == 3
+    with sqlite3.connect(fixture.storage_path) as connection:
+        assert set(
+            row[0]
+            for row in connection.execute("SELECT response_sha256 FROM response_bodies")
+        ) == {source_digest, index_digest, selected_digest}
+        row = connection.execute(
+            "SELECT response_sha256, index_response_sha256, "
+            "selected_response_sha256 FROM cases"
+        ).fetchone()
+        assert row == (source_digest, index_digest, selected_digest)
+
+
+def test_v3_lazy_bundle_resolution_preserves_target_retrieval_identity(
+    acquisition_paths, capture_values, case_factory
+) -> None:
+    fixture = initialize_fixture(acquisition_paths, "fixture_lazy_bundle")
+    source = b"initial catalog response"
+    index = b"lazy filing index"
+    selected_bundle = b"bundle response with extracted child"
+    selected_child = b"extracted selected filing"
+    source_digest = hashlib.sha256(source).hexdigest()
+    index_digest = hashlib.sha256(index).hexdigest()
+    bundle_digest = hashlib.sha256(selected_bundle).hexdigest()
+    child_digest = hashlib.sha256(selected_child).hexdigest()
+    case = case_factory()
+    case.update(
+        catalog_direct_selection="exact_form_with_lazy_index",
+        resolution_schema_version="1",
+        screen_kind="html_cover",
+        screen_result="unverifiable",
+        index_parser_version="index-parser-v1",
+        matching_entry_ids_json='["entry_1"]',
+        index_response_sha256=index_digest,
+        selected_response_sha256=bundle_digest,
+        selected_sequence=7,
+        selected_retrieval_mode="bundle_sequence",
+        selected_url="https://www.sec.gov/selected.zip",
+        selected_sha256=child_digest,
+        selected_byte_size=len(selected_child),
+    )
+
+    append_fixture_case(
+        acquisition_paths,
+        "fixture_lazy_bundle",
+        capture_values,
+        case,
+        io.BytesIO(source),
+        max_response_bytes=1024,
+        related_responses={
+            "index_response_sha256": io.BytesIO(index),
+            "selected_response_sha256": io.BytesIO(selected_bundle),
+        },
+    )
+
+    assert bundle_digest != child_digest
+    with sqlite3.connect(fixture.storage_path) as connection:
+        row = connection.execute(
+            "SELECT retrieval_mode, sequence, selected_response_sha256, "
+            "selected_sequence, selected_retrieval_mode, selected_sha256 "
+            "FROM cases"
+        ).fetchone()
+        assert row == (
+            "direct_url",
+            None,
+            bundle_digest,
+            7,
+            "bundle_sequence",
+            child_digest,
+        )
+        assert set(
+            row[0]
+            for row in connection.execute("SELECT response_sha256 FROM response_bodies")
+        ) == {source_digest, index_digest, bundle_digest}
+
+
+def test_ordinary_direct_response_identity_mismatch_is_rejected(
+    acquisition_paths, capture_values, case_factory
+) -> None:
+    fixture = initialize_fixture(acquisition_paths, "fixture_direct_mismatch")
+    case = case_factory()
+    case.update(selected_sha256="f" * 64, selected_byte_size=999)
+
+    with pytest.raises(FixtureStoreError, match="failed to append"):
+        append_fixture_case(
+            acquisition_paths,
+            "fixture_direct_mismatch",
+            capture_values,
+            case,
+            io.BytesIO(b"ordinary direct response"),
+            max_response_bytes=1024,
+        )
+
+    with sqlite3.connect(fixture.storage_path) as connection:
+        assert (
+            connection.execute("SELECT COUNT(*) FROM response_bodies").fetchone()[0]
+            == 0
+        )
+        assert connection.execute("SELECT COUNT(*) FROM captures").fetchone()[0] == 0
+        assert connection.execute("SELECT COUNT(*) FROM cases").fetchone()[0] == 0
+
+
+@pytest.mark.parametrize(
+    "fault",
+    (
+        "missing_index",
+        "missing_selected",
+        "malformed_index",
+        "missing_matching_metadata",
+        "selected_digest_mismatch",
+        "selected_size_mismatch",
+    ),
+)
+def test_lazy_direct_related_evidence_failures_are_atomic(
+    acquisition_paths, capture_values, case_factory, fault
+) -> None:
+    fixture = initialize_fixture(acquisition_paths, f"fixture_lazy_{fault}")
+    source = b"initial catalog response"
+    index = b"lazy filing index"
+    selected = b"selected filing response"
+    index_digest = hashlib.sha256(index).hexdigest()
+    selected_digest = hashlib.sha256(selected).hexdigest()
+    case = case_factory()
+    case.update(
+        catalog_direct_selection="exact_form_with_lazy_index",
+        resolution_schema_version="1",
+        screen_kind="html_cover",
+        screen_result="unverifiable",
+        index_parser_version="index-parser-v1",
+        matching_entry_ids_json='["entry_1"]',
+        index_response_sha256=index_digest,
+        selected_response_sha256=selected_digest,
+        selected_retrieval_mode="direct_url",
+        selected_url="https://www.sec.gov/selected.htm",
+        selected_sha256=(
+            "f" * 64 if fault == "selected_digest_mismatch" else selected_digest
+        ),
+        selected_byte_size=(
+            len(selected) + 1 if fault == "selected_size_mismatch" else len(selected)
+        ),
+    )
+    if fault == "missing_matching_metadata":
+        case["matching_entry_ids_json"] = None
+    related = {}
+    if fault != "missing_index":
+        related["index_response_sha256"] = io.BytesIO(
+            b"malformed index" if fault == "malformed_index" else index
+        )
+    if fault != "missing_selected":
+        related["selected_response_sha256"] = io.BytesIO(selected)
+
+    with pytest.raises(FixtureStoreError):
+        append_fixture_case(
+            acquisition_paths,
+            f"fixture_lazy_{fault}",
+            capture_values,
+            case,
+            io.BytesIO(source),
+            max_response_bytes=1024,
+            related_responses=related,
+        )
+
+    with sqlite3.connect(fixture.storage_path) as connection:
+        assert (
+            connection.execute("SELECT COUNT(*) FROM response_bodies").fetchone()[0]
+            == 0
+        )
+        assert connection.execute("SELECT COUNT(*) FROM captures").fetchone()[0] == 0
+        assert connection.execute("SELECT COUNT(*) FROM cases").fetchone()[0] == 0

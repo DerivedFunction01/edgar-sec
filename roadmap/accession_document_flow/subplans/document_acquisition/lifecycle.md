@@ -8,6 +8,11 @@ fills the former gap between resumable acquisition runs and the S11 payload-stor
 decision. It is a plan, not evidence that the replacement pipeline or publisher is
 implemented.
 
+The S9 selected-body reference and immutable consumption-receipt boundary is implemented
+and covered by an offline fake-consumer acceptance test. S10 processing, receipt-driven
+run-state projection, S11 adoption, publication, and cleanup authorization remain
+unimplemented.
+
 The plan uses Parquet for all published snapshot relations and payloads, with the
 shared `infra.storage.dag` engine publishing immutable parts and advancing the pointer
 last. Payloads are split between joinable binary-route and text-route Parquet
@@ -84,27 +89,28 @@ foreign keys, bound SQL parameters, transactions, and the versioned schema in
 | `attempts` | One network or fixture attempt | Attempt kind, source, typed outcome, retry classification, sanitized requested/final locator, timestamps, response/selected digest, size and path references | Full headers, credentials, body bytes |
 | `target_slot_resolutions` | One catalog-direct resolution | Selector, expected filing form, screen/evaluator evidence, index attempt/parser identity, matching rows, chosen physical slot, result | Inferred type evidence from a local screen; rewritten S6 row |
 | `processing result` | One acquired target | Versioned status, route, representation, processor fingerprint, diagnostics, input/output digest and size | Full normalized text in SQLite or Parquet metadata |
-| `handoff receipt` | One consumed target body | S9/S10 versions, run/target IDs, source and selected digests, consumed status | Permission by itself to delete bytes needed for snapshot publication |
+| `handoff receipt` | One consumed target body | Receipt schema version, run/target IDs, source and selected digests, processing run ID, UTC consumption time | Permission by itself to delete bytes needed for snapshot publication |
 
-The fetched response is written beneath `staging/incoming/`; a bundle-selected child
-is written separately beneath `staging/selected/`. S10's non-identity output, when
-needed for publication or S7 review, is a third owner-generated file under
-`staging/processed/`. Every path is run-relative in persistent records. Process and
-broker IPC carry paths, digests, sizes, and typed metadata, never payload bytes.
+The current runner writes opaque response, index, body-source, and selected files
+directly beneath `staging/`. S10's non-identity output, when needed for publication or
+S7 review, is a future owner-generated file. Every persisted path is run-relative.
+Process and broker IPC carry paths, digests, sizes, and typed metadata, never payload
+bytes.
 
 Attempt rows and target-slot resolutions are append-only; `target_state` is a current
 projection. Processing results are immutable per run/target and replaceable only by a
 new processing attempt with its own fingerprint. A matching `BodyConsumptionReceipt`
-proves S10 read and verified the body; it does not alone authorize deletion. S9 retains
+records a consumer assertion bound to committed S9 body identity; it does not
+independently prove consumption or authorize deletion. S9 retains
     each raw acquired slot body until the snapshot publisher confirms Parquet
     publication or the operator explicitly discards the un-published run. A full bundle
     response envelope can be removed after extraction unless explicit fixture capture
     committed it; extracted slot bodies remain until publication/discard.
 
-Partial network files never become target state. After a worker/runner crash, resume
-verifies the run manifest, state DB, attempt references, files, digests, receipts, and
-processing result references before reuse. Corrupt or unreferenced partial files are
-not successes; status is read-only, and cleanup is a separate locked operation.
+Partial network files never become target state. Run validation checks the manifest,
+work order, and state structure; the handoff service separately verifies staged bytes
+and receipt sidecars. Runner cleanup removes only unreferenced staging entries, not
+committed selected bodies. Status is read-only.
 
 ## Worker bundle contract
 

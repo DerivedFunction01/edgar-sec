@@ -5,6 +5,8 @@ from __future__ import annotations
 import hashlib
 import os
 
+from edgar_sec.foundation.io import DEFAULT_IO_CHUNK_SIZE
+
 #: Encoding-slice size for :func:`sha256_text`; about a megabyte of ASCII, so a whole
 #: filing is hashed without ever holding a second full-size bytes copy.
 _TEXT_CHUNK_CHARS = 1 << 20
@@ -14,7 +16,7 @@ def file_sha256(path: str | os.PathLike[str]) -> str:
     """Compute SHA-256 hex digest of a file in streaming 64KB blocks."""
     hasher = hashlib.sha256()
     with open(path, "rb") as f:
-        while chunk := f.read(65536):
+        while chunk := f.read(DEFAULT_IO_CHUNK_SIZE):
             hasher.update(chunk)
     return hasher.hexdigest()
 

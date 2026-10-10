@@ -125,7 +125,7 @@ class StagedBodyRef:
     sha256: str
     byte_size: int
     selected_filename: str | None
-    source_response_path: Path
+    source_response_path: Path | None
     source_response_sha256: str
     source_response_byte_size: int
 
@@ -264,24 +264,20 @@ class AcquisitionRunReport:
     cancelled: bool
 ```
 
-In-memory `StagedBodyRef` paths are owned transient paths and are never serialized as
-absolute paths or transferred through IPC. Persist only run-relative paths. For a
-direct URL, source and selected digests/paths are equal and refer to one staged file.
-For a bundle, source and selected digests/paths differ; the source envelope remains
-staged until extraction and any explicit fixture capture. The selected body remains
-staged until snapshot publication writes its Parquet payload row or the run is explicitly
-discarded. `body_lifecycle` describes only S10 consumption; fixture retention of a
-source envelope is tracked by the fixture capture record.
+The S9 handoff service returns a `StagedBodyRef` only for an acquired target whose
+selected file is contained in run staging and matches committed size and SHA-256. It
+also verifies retained source-response evidence. The source path may be `None` when
+the response envelope was intentionally removed; source digest and size remain pinned.
+`selected_filename` is `None` because run state does not commit that value. Body paths
+are transient references, not serialized receipt fields.
 
-S10 acknowledges verified consumption with a small S9-owned receipt. S10 imports only
-the S9 `paths.py` and `schemas.py` contracts (not S9 services) and writes the receipt
-atomically. A receipt is not permission to remove bytes needed by the publisher.
-
-S9 derives `body_lifecycle="consumed"` only when that receipt matches the run,
-target, source-response and selected digests, and supported schema. A missing file
-without a valid receipt is corrupt state; an acquired result remains valid after a
-matching receipt. Parquet payload publication is recorded separately by the snapshot publication
-receipt.
+The service validates and atomically creates an immutable receipt at the deterministic
+path in [`paths.md`](paths.md). Exact repeats are idempotent; conflicting content,
+unsupported schema, mismatched run/target/digests, or non-UTC timestamps are refused.
+This establishes the S9 receipt boundary only: a receipt does not authorize deletion,
+and no cleanup/adoption API is provided. The offline acceptance test uses a fake
+consumer and does not implement S10 processing or S11 publication. The reference API
+continues to reject missing or corrupt selected bytes even when a receipt exists.
 
 `not_filed` is valid only after a complete bundle was parsed and the pinned sequence
 was absent. HTTP 404, a malformed bundle, or an incomplete response is not

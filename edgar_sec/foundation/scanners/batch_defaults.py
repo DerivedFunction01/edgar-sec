@@ -1,4 +1,4 @@
-"""Flag duplicate shared batch defaults and literals at governed batch sites."""
+"""Flag duplicated shared defaults and governed literals at identified call sites."""
 
 from __future__ import annotations
 
@@ -15,12 +15,15 @@ _OWNERS = {
     "DEFAULT_ROW_GROUP_SIZE": "edgar_sec/foundation/runtime/settings/parquet.py",
     "DEFAULT_PARQUET_READ_BATCH_SIZE": "edgar_sec/foundation/runtime/settings/parquet.py",
     "DEFAULT_TARGET_BYTES": "edgar_sec/foundation/runtime/settings/catalog.py",
+    "DEFAULT_IO_CHUNK_SIZE": "edgar_sec/foundation/io.py",
     "DEFAULT_WORKER_MEMORY_MIB": "edgar_sec/foundation/runtime/resources.py",
     "DEFAULT_WORKER_MEMORY_SAFETY": "edgar_sec/foundation/runtime/resources.py",
     "DEFAULT_MEMORY_FRACTION": "edgar_sec/foundation/runtime/resources.py",
 }
 _READ_BATCH_ARGUMENTS = frozenset({"batch_size", "batch_rows", "read_batch_size"})
 _TARGET_BYTE_ARGUMENTS = frozenset({"target_bytes", "payload_target_bytes"})
+_IO_CHUNK_ARGUMENTS = frozenset({"chunk_size", "read_size", "write_size"})
+_IO_READ_ROLE = "io_read"
 _ITERATION_BATCH_CALLS = frozenset({"fetchmany", "iter_batches", "to_arrow_reader"})
 _BATCH_LITERAL_POLICIES = {
     "read batch": (4096, _READ_BATCH_ARGUMENTS),
@@ -35,7 +38,16 @@ _BATCH_LITERAL_POLICIES = {
         96 * 1024 * 1024,
         _TARGET_BYTE_ARGUMENTS,
     ),
+    "I/O chunk buffer": (65536, _IO_CHUNK_ARGUMENTS | {_IO_READ_ROLE}),
 }
+_LITERAL_EXEMPT_PATHS = frozenset(
+    {
+        "edgar_sec/foundation/runtime/settings/runtime.py",
+        "edgar_sec/foundation/runtime/settings/sql.py",
+        "edgar_sec/foundation/runtime/settings/parquet.py",
+        "edgar_sec/foundation/io.py",
+    }
+)
 
 
 def _integer(node: ast.AST) -> int | None:
@@ -71,14 +83,14 @@ def _literal_roles(node: ast.AST) -> tuple[tuple[str, int], ...]:
         )
         for argument, default in zip(positional, defaults, strict=True):
             if default is not None and argument.arg in (
-                _READ_BATCH_ARGUMENTS | _TARGET_BYTE_ARGUMENTS
+                _READ_BATCH_ARGUMENTS | _TARGET_BYTE_ARGUMENTS | _IO_CHUNK_ARGUMENTS
             ):
                 value = _integer(default)
                 if value is not None:
                     roles.append((argument.arg, value))
         for argument, default in zip(node.args.kwonlyargs, node.args.kw_defaults):
             if default is not None and argument.arg in (
-                _READ_BATCH_ARGUMENTS | _TARGET_BYTE_ARGUMENTS
+                _READ_BATCH_ARGUMENTS | _TARGET_BYTE_ARGUMENTS | _IO_CHUNK_ARGUMENTS
             ):
                 value = _integer(default)
                 if value is not None:
@@ -96,6 +108,10 @@ def _literal_roles(node: ast.AST) -> tuple[tuple[str, int], ...]:
                 value = _integer(keyword.value)
                 if value is not None:
                     roles.append((keyword.arg, value))
+        if function_name == "read" and node.args:
+            value = _integer(node.args[0])
+            if value is not None:
+                roles.append((_IO_READ_ROLE, value))
         if function_name in _ITERATION_BATCH_CALLS and node.args:
             value = _integer(node.args[0])
             if value is not None:
@@ -168,11 +184,7 @@ def scan_batch_defaults() -> list[ScannerFinding]:
                         role == "sql_insert_batch_size" and label == "SQL insert batch"
                     ):
                         continue
-                    if relative in {
-                        "edgar_sec/foundation/runtime/settings/runtime.py",
-                        "edgar_sec/foundation/runtime/settings/sql.py",
-                        "edgar_sec/foundation/runtime/settings/parquet.py",
-                    }:
+                    if relative in _LITERAL_EXEMPT_PATHS:
                         continue
                     findings.append(
                         ScannerFinding(
@@ -190,7 +202,7 @@ def scan_batch_defaults() -> list[ScannerFinding]:
 
 SCANNER = Scanner(
     name="batch-defaults",
-    description="flags duplicated shared batch defaults and governed literals",
+    description="flags duplicated shared defaults and governed literals at call sites",
     run=scan_batch_defaults,
 )
 

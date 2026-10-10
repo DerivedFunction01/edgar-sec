@@ -12,7 +12,7 @@ from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 from edgar_sec.pipelines.document_acquisition.arrow_schemas import WORK_ORDER_SCHEMA
-from edgar_sec.pipelines.document_acquisition.target_plan import (
+from edgar_sec.pipelines.document_acquisition.plan_projection.target_plan import (
     TargetPlanError,
     _validate_url,
     _validate_row,
@@ -299,6 +299,70 @@ def test_unsupported_bundle_schema_version_in_identity_is_rejected(
     with pytest.raises(
         TargetPlanError, match="bundle schema version in target-plan identity"
     ):
+        load_acquisition_work_order(plan_root, output)
+
+    assert not output.exists()
+
+
+@pytest.mark.parametrize(
+    ("location", "field", "version", "message"),
+    [
+        (
+            "manifest",
+            "bundle_schema_version",
+            True,
+            "target-plan bundle schema version",
+        ),
+        (
+            "manifest",
+            "bundle_schema_version",
+            float(target_plan_bundle_schema_version()),
+            "target-plan bundle schema version",
+        ),
+        ("manifest", "target_schema_version", True, "target schema version"),
+        (
+            "manifest",
+            "target_schema_version",
+            float(TARGET_SCHEMA_VERSION),
+            "target schema version",
+        ),
+        (
+            "plan_identity",
+            "bundle_schema_version",
+            True,
+            "bundle schema version in target-plan identity",
+        ),
+        (
+            "plan_identity",
+            "bundle_schema_version",
+            float(target_plan_bundle_schema_version()),
+            "bundle schema version in target-plan identity",
+        ),
+        (
+            "plan_identity",
+            "target_schema_version",
+            True,
+            "metadata does not match its identity",
+        ),
+        (
+            "plan_identity",
+            "target_schema_version",
+            float(TARGET_SCHEMA_VERSION),
+            "metadata does not match its identity",
+        ),
+    ],
+)
+def test_schema_versions_reject_boolean_and_float_types(
+    target_plan_factory, tmp_path, location, field, version, message
+):
+    plan_root, _rows_value = target_plan_factory()
+    manifest = _manifest(plan_root)
+    target = manifest if location == "manifest" else manifest["plan_identity"]
+    target[field] = version
+    _seal_manifest(manifest, plan_root)
+    output = tmp_path / "work-order.parquet"
+
+    with pytest.raises(TargetPlanError, match=message):
         load_acquisition_work_order(plan_root, output)
 
     assert not output.exists()

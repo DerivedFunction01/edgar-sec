@@ -35,6 +35,7 @@ BodyLifecycle = Literal["staged", "consumed"]
 class AcquisitionPolicy:
     max_response_bytes: int
     requested_workers: int | None = None
+    retain_response_evidence: bool = False
 
     def __post_init__(self) -> None:
         if (
@@ -49,6 +50,8 @@ class AcquisitionPolicy:
             or self.requested_workers < 1
         ):
             raise ValueError("requested_workers must be a positive integer")
+        if type(self.retain_response_evidence) is not bool:
+            raise ValueError("retain_response_evidence must be a boolean")
 
 
 @dataclass(frozen=True, slots=True)

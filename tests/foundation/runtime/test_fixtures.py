@@ -70,6 +70,24 @@ def test_fixture_manifest_rejects_unsupported_version() -> None:
         )
 
 
+@pytest.mark.parametrize("manifest_version", [True, 1.0])
+def test_fixture_manifest_rejects_non_integer_version(
+    manifest_version: bool | float,
+) -> None:
+    with pytest.raises(FixtureManifestError, match="must be an integer"):
+        FixtureManifestEnvelope.from_mapping(
+            {
+                "fixture_kind": "document_storage.raw_payload",
+                "manifest_version": manifest_version,
+                "fixture_id": "fixture-1",
+                "storage": {"format": "sqlite", "path": "fixture.sqlite"},
+                "created_at": "2024-01-01T00:00:00Z",
+                "updated_at": "2024-01-01T00:00:00Z",
+                "details": {},
+            }
+        )
+
+
 def test_fixture_manifest_rejects_unsafe_storage_path() -> None:
     with pytest.raises(FixtureManifestError):
         FixtureManifestEnvelope.from_mapping(

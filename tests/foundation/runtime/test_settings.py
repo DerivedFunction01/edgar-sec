@@ -36,6 +36,48 @@ def test_environment_override_wins_over_default() -> None:
     assert float(settings["sec.rate_limit_rps"]) == 7.0
 
 
+def test_acquisition_response_limit_defaults_to_256_mib() -> None:
+    settings = resolve_settings(include=["acquisition"])
+    assert settings["acquisition.max_response_bytes"] == 268435456
+
+
+def test_acquisition_response_limit_parses_environment() -> None:
+    settings = resolve_settings(env={"ACQUISITION_MAX_RESPONSE_BYTES": "4096"})
+    assert settings["acquisition.max_response_bytes"] == 4096
+
+
+def test_acquisition_response_limit_rejects_invalid_environment_values() -> None:
+    for value in ("not-an-int", "0", "-1"):
+        try:
+            resolve_settings(env={"ACQUISITION_MAX_RESPONSE_BYTES": value})
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"accepted invalid response limit {value!r}")
+
+
+def test_acquisition_response_limit_cli_override_wins() -> None:
+    settings = resolve_settings(
+        config={"acquisition.max_response_bytes": 2048},
+        env={"ACQUISITION_MAX_RESPONSE_BYTES": "4096"},
+        cli_overrides={"acquisition.max_response_bytes": 8192},
+    )
+    assert settings["acquisition.max_response_bytes"] == 8192
+
+
+def test_acquisition_response_limit_uses_config_fallback() -> None:
+    settings = resolve_settings(
+        config={"acquisition.max_response_bytes": 16384},
+        env={},
+    )
+    assert settings["acquisition.max_response_bytes"] == 16384
+
+
+def test_render_dotenv_includes_acquisition_response_limit() -> None:
+    rendered = render_dotenv()
+    assert "ACQUISITION_MAX_RESPONSE_BYTES=268435456" in rendered
+
+
 def test_cli_override_wins_over_environment() -> None:
     settings = resolve_settings(
         env={"SEC_RATE_LIMIT_RPS": "7"},

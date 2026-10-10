@@ -3,11 +3,17 @@
 ## Purpose and status
 
 This document fixes the cross-command boundaries for the partial S9 implementation.
-The code now includes the S6 v2 target-plan producer, bounded S9 work-order projection,
+The code includes the S6 v2 target-plan producer, bounded S9 work-order projection,
 offline run projection/state, compressed SQLite fixture storage, file-backed HTTP and
-broker streaming, and bounded exact-sequence extraction. The S9 runner/lazy-index
-integration, S10 processing, and S11 publication remain separate and are not yet
-implemented. The integrated sequence is specified in
+broker streaming, bounded exact-sequence extraction, and an integrated serial S9
+runner with catalog-direct lazy-index selection. The current catalog-direct screen is
+recorded as unverifiable on the direct-body path. The catalog-direct exact-form selector
+checks primary-bundle `<TYPE>` with strict ASCII equality; mismatch or unverifiable type
+enters lazy recovery, and recovered bundle candidates are checked again. Other selectors
+do not screen the submitted primary. HTML/cover screening is absent. Fixture
+capture/replay command flows
+are incomplete. S10
+processing and S11 publication remain gated. The integrated sequence is specified in
 [the lifecycle plan](lifecycle.md); command-level UX flows belong to the linked
 command documents.
 
@@ -17,15 +23,23 @@ command documents.
   and every declared target part, then reads only those local parts. It never opens
   the catalog plan or inventory snapshot again.
 - A `catalog_direct` target is a catalog-supplied sequence-1 locator, not
-  index-verified document-type evidence. S9 may fetch `-index.html` only when the
-  S6-pinned `exact_form_with_lazy_index` policy's body screen raises the specified
-  mismatch/unverifiable suspicion. That bounded exception does not read or mutate a
-  published S5 snapshot, and it does not rewrite the immutable S6 target plan. A
-  caller needing index evidence without catalog-direct recovery publishes it through
-  S5 and creates an index-backed S6 plan.
-- S9 acquires exact source bytes and, for a bundle target, selects the exact pinned
-  sequence. It does not normalize, infer a primary, or publish a durable payload
-  snapshot.
+  index-verified document-type evidence. The current runner fetches `-index.html`
+  after a successful sequence-1 response for the S6-pinned
+  `exact_form_with_lazy_index` selector; its recorded `html_cover` screen is
+  `unverifiable`, not an HTML identity test. With this selector, the runner compares
+  primary bundle `<TYPE>` with the pinned filing form using strict ASCII equality.
+  Mismatch or unverifiable type triggers lazy index lookup; selected bundle candidates
+  are checked against the same pinned form. It selects a unique index row by exact
+  `document_type`/filing-form equality. This path does not
+  read or mutate a published S5 snapshot or rewrite the
+  immutable S6 target plan. A caller needing index evidence without catalog-direct
+  recovery publishes it through S5 and creates an index-backed S6 plan.
+- S9 streams exact source bytes and, for a bundle target, selects the exact pinned
+  sequence to a staged file. The engine checks source integrity and bundle structure;
+  the catalog-direct exact-form selector checks primary `<TYPE>` against the pinned
+  form but does not infer identity from cover text. Other selectors do not screen the
+  submitted primary. S9 does not normalize, infer a primary, or publish a durable
+  payload snapshot.
 - S6 `target_role` and `target_type` remain request intent, not source assertions or
   archive routes. For a primary target the expected statutory type is the pinned
   filing form; the SEC index's primary designation, sequence, and observed body type
@@ -39,12 +53,11 @@ command documents.
   `document_planning.paths` and `document_planning.schemas`. S9 validates the pinned
   bundle itself; it does not import the S6 planner, discovery, or matching services.
 - Large-body streaming belongs in the shared SEC HTTP/broker path, and bounded SGML
-  parsing belongs in `engine.document.unpacking`. S9 validates targets, owns run
-  state, and composes those lower-layer APIs.
+  extraction belongs in `engine.document.unpacking`; both are integrated by the S9
+  runner. S9 validates targets, owns run state, and composes those lower-layer APIs.
 - The lazy index path uses the shared SEC broker and a lower-layer parser API; it must
-  not import the sibling `document_inventory` pipeline or its S3 services. If the
-  current parser is pipeline-owned, extract the parsing contract to an allowed lower
-  layer before enabling this path.
+  not import the sibling `document_inventory` pipeline or its S3 services. The current
+  runner uses the engine index-page parser and exact-form selector.
 - The existing `SecHttpClient.get_bytes()` materializes the response. The additive
   `stream_to_file()` client and broker paths provide bounded transfer; S9 must not wrap
   the byte-returning method and call it streaming. The existing bytes-based
@@ -68,15 +81,15 @@ The package should remain split by contract rather than by command spelling alon
 | `schemas.py` | Lightweight versioned JSON/handoff contracts shared with S10 and snapshot publication. |
 | `arrow_schemas.py` | Versioned Parquet work-order schema; snapshot relation schemas remain gated and absent. |
 | `models.py` | Immutable in-memory target, outcome, attempt, and staged-body records. |
-| `target_plan.py` | Validate the S6 v2 bundle and stream the immutable S9 work order without reopening upstream inputs. |
+| `plan_projection/` | Validate the S6 v2 bundle and project it into an immutable S9 work order without reopening upstream inputs. |
 | `run_state/` | Create and validate per-run SQLite state, append attempts, apply outcomes, and summarize status. |
-| `project.py` | Derive a deterministic transient run from the pinned S6 plan without network access. |
-| `runner.py` | Lock a run, schedule bounded target work, and preserve completed results. |
+| `plan_projection/project.py` | Derive a deterministic transient run from the pinned S6 plan without network access. |
+| `runner.py` | Implemented serial runner: lock a run, execute eligible targets, and preserve committed results. |
 | `distribution_adapter.py` | Adapt acquisition work and outputs to shared distribution infrastructure. |
 | `snapshot/` | **Gated** acquisition-owned binary/text Parquet relations and publication over the shared DAG kernel; no S11 adapter exists yet. |
-| `fixture_store/` | Store uniformly Zstandard-compressed response evidence in SQLite and replay incrementally; capture orchestration remains TODO. |
-| `processing.py` | S10 per-target processing and versioned result publication to transient staging. |
-| `cli.py` and `operator.py` | Registered project/status/run/process/publish/fixture/review/snapshot command tracks; project is wired, pending tracks fail closed. |
+| `fixture_store/` and `fixture_operator.py` | Store and discover Zstandard-compressed response evidence; wire exact-attempt capture, read-only listing, and local replay for retained direct bodies and bodyless failures. Bundle/lazy capture and managed S10 replay staging remain incomplete. |
+| `processing.py` | Gated S10 per-target processing and versioned result publication to transient staging; not implemented. |
+| `cli.py` and `operator.py` | Project, status, run, and fixture create/capture/list/replay are wired; process/review and S11 tracks remain fail-closed or gated. |
 
 No `__init__.py` barrel exports. Module names are a design proposal; implementation
 may consolidate small command adapters, but it must retain these ownership boundaries

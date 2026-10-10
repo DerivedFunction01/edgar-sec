@@ -14,6 +14,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from ..env import get_env
+from .acquisition import get_acquisition_specs
 from .catalog import get_catalog_specs
 from .dag import get_dag_specs
 from .interactive import get_interactive_specs
@@ -83,6 +84,7 @@ def collect_specs() -> dict[str, SettingSpec]:
         get_sql_specs,
         get_dag_specs,
         get_interactive_specs,
+        get_acquisition_specs,
     ):
         group = spec_provider()
         _flatten_group(group, "", specs)

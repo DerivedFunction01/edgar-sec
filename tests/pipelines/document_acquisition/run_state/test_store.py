@@ -15,9 +15,11 @@ from edgar_sec.pipelines.document_acquisition.run_state.models import (
 )
 from edgar_sec.pipelines.document_acquisition.run_state.store import (
     RunStateError,
+    SCHEMA_VERSION,
     append_attempt_and_update_target,
     append_target_slot_resolution,
     commit_attempts_and_update_target,
+    get_attempt,
     get_target_state,
     inspect_run_state,
     initialize_run_state,
@@ -103,7 +105,7 @@ def test_initialization_streams_one_transaction_and_duplicate_refuses(tmp_path) 
     )
 
     with sqlite3.connect(database) as connection:
-        assert connection.execute("PRAGMA user_version").fetchone()[0] == 2
+        assert connection.execute("PRAGMA user_version").fetchone()[0] == SCHEMA_VERSION
         assert connection.execute("PRAGMA foreign_keys").fetchone()[0] == 0
         assert connection.execute(
             "SELECT target_id, outcome FROM target_state ORDER BY target_id"
@@ -211,6 +213,59 @@ def test_retry_commit_is_atomic_and_attempt_history_is_append_only(tmp_path) -> 
                 "DELETE FROM attempts WHERE attempt_id = ?", ("attempt-1",)
             )
     validate_run_state(database)
+
+
+def test_get_attempt_returns_exact_typed_attempt(tmp_path) -> None:
+    database = tmp_path / "state.sqlite"
+    initialize_run_state(
+        database,
+        [{"target_id": "target", "executable": True, "skip_reason": None}],
+    )
+    expected = _attempt("target", "attempt-1", 1, "acquired")
+    _commit(database, expected)
+
+    actual = get_attempt(database, "target", "attempt-1")
+
+    assert isinstance(actual, AcquisitionAttempt)
+    assert actual == expected
+
+
+@pytest.mark.parametrize(
+    ("target_id", "attempt_id"),
+    [
+        ("missing-target", "attempt-1"),
+        ("target", "missing-attempt"),
+        ("other-target", "attempt-1"),
+    ],
+)
+def test_get_attempt_returns_none_for_unknown_or_mismatched_identity(
+    tmp_path, target_id, attempt_id
+) -> None:
+    database = tmp_path / "state.sqlite"
+    initialize_run_state(
+        database,
+        [
+            {"target_id": "target", "executable": True, "skip_reason": None},
+            {"target_id": "other-target", "executable": True, "skip_reason": None},
+        ],
+    )
+    _commit(database, _attempt("target", "attempt-1", 1, "acquired"))
+
+    assert get_attempt(database, target_id, attempt_id) is None
+
+
+def test_get_attempt_does_not_mutate_database(tmp_path) -> None:
+    database = tmp_path / "state.sqlite"
+    initialize_run_state(
+        database,
+        [{"target_id": "target", "executable": True, "skip_reason": None}],
+    )
+    expected = _attempt("target", "attempt-1", 1, "acquired")
+    _commit(database, expected)
+    before = database.read_bytes()
+
+    assert get_attempt(database, "target", "attempt-1") == expected
+    assert database.read_bytes() == before
 
 
 def test_attempt_failure_rolls_back_both_history_and_projection(tmp_path) -> None:

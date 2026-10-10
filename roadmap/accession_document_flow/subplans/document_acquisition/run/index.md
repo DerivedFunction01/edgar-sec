@@ -3,8 +3,14 @@
 ## Purpose and status
 
 Execute pending target work from a validated S9 run and resume it safely after
-interruption. This command is design-only; the replacement S9 acquisition runner is
-not implemented.
+interruption. The S9 runner, bounded response transfer, exact-sequence extraction,
+and run-state integration are implemented. Execution is serial; S10 processing and
+S11 publication remain gated. Catalog-direct direct-body screens remain unverifiable.
+The catalog-direct exact-form selector compares primary bundle `<TYPE>` with the pinned
+form using strict ASCII equality; mismatch or unverifiable type enters lazy index
+recovery. A recovered bundle candidate must pass the same check. Other selectors do not
+screen the submitted primary. Family-aware HTML/cover evaluation and fixture
+capture/replay command flows are incomplete.
 
 ## UX and service signature
 
@@ -33,34 +39,37 @@ def execute_acquisition_run(
 def cmd_run(args: argparse.Namespace) -> int: ...
 ```
 
-`execute_acquisition_run` validates run state, acquires the run lock, creates the
-shared SEC broker, derives bounded worker capacity, and commits each outcome before
-starting more work. Network and clock dependencies are injected at the transport/test
-seam; the CLI/operator call the same service.
+`execute_acquisition_run` validates the work order, derives resource capacity,
+acquires the run lock, and commits each target outcome before continuing. The current
+runner processes targets serially. The CLI transport lazily creates the shared SEC
+broker on the first request, so a run with no eligible work makes no network request.
+Network and clock dependencies are injected at the transport/test seam.
 
 ## CLI shape
 
 ```bash
 python run.py acquisition run --run-id <run-id>
-python run.py acquisition run --run-id <run-id> --retry-failures
-python run.py acquisition run --run-id <run-id> --workers <count> --artifacts <path>
-python run.py acquisition run --run-id <run-id> --json
+python run.py acquisition run --run-id <run-id> --max-response-bytes <bytes>
+python run.py acquisition run --run-id <run-id> --max-response-bytes <bytes> --retry-failures
+python run.py acquisition run --run-id <run-id> --max-response-bytes <bytes> --workers <count> --artifacts <path>
+python run.py acquisition run --run-id <run-id> --max-response-bytes <bytes> --json
 ```
 
 Invoking the CLI command explicitly starts live work; the interactive operator must
-separately confirm network execution, defaulting to no. `--workers` is an upper bound
-clamped to the resource-derived ceiling. `--retry-failures` explicitly opts into
-eligible retries; `--artifacts` overrides the resolved artifact root and `--json`
-selects stable machine-readable output.
+separately confirm network execution, defaulting to no. `--workers` is currently an
+upper-bound option only; the runner executes serially. `--retry-failures` explicitly
+opts into eligible retries; `--artifacts` overrides the resolved artifact root and
+`--json` selects stable machine-readable output. The finite response-byte ceiling
+defaults to the registered `acquisition.max_response_bytes` setting; an explicit
+`--max-response-bytes` value overrides it.
 
 ## Execution contract
 
 - Validate the run and acquire its run lock before opening the network client. A
   lock owned by a live process blocks a second runner. Stale-lock takeover requires
   explicit confirmation that the prior owner has stopped.
-- Use one SEC broker per run for request pacing, retries, and failure accounting.
-  Derive worker and memory budgets from the shared runtime resource APIs; keep the
-  submitted queue and in-flight bodies bounded.
+- Use one lazily-created SEC broker per run for request pacing, retries, and failure
+  accounting. The current runner processes one target at a time.
 - Stream responses to owner-generated transient paths while enforcing the configured
   byte budget on received content. Hash bytes incrementally. Do not return full
   bodies over process IPC; workers return staged-path references and typed metadata.
@@ -68,28 +77,33 @@ selects stable machine-readable output.
   direct-target HTTP 404 is a failed request (`http_not_found`), not proof that the
   filing did not contain a document; it does not initiate lazy index recovery.
 - For direct targets, the fetched document is the selected body. For legacy bundles,
-  parse the complete source and select only the exact observed sequence. A complete,
-  valid bundle with no matching sequence is `not_filed`; duplicate sequence matches,
-  malformed structure, or metadata disagreement are `ambiguous`/failed outcomes as
-  specified by typed errors. Never substitute sequence one or select by guesswork.
-- The only exception is a catalog-direct primary pinned with
-  `exact_form_with_lazy_index`: after the sequence-1 body is fetched, a bounded ASCII
-  `<TYPE>` mismatch or an HTML cover evaluator unable to verify the filing form may
-  trigger one index fetch. Select a replacement only from a unique recognized index
-  row whose `document_type` equals the filing form; record every observed slot/type
-  and the target-to-slot assignment. A recognized index with no matching row yields
-  index-evidenced `not_filed` for an optional target or `required_missing` for a
-  required target; duplicate rows are `ambiguous`; failed lookup/parsing is `failed`.
-  `submitted_primary` skips this branch. Positive HTML cover evidence is
-  heuristic and does not create a slot type assertion.
+  the engine scans the complete source in bounded chunks and writes only the exact
+  selected sequence to a staged file. It verifies source integrity and structural
+  constraints. When the catalog-direct exact-form selector is active, the runner
+  requires extracted primary `<TYPE>` to match the pinned form by strict ASCII equality.
+  A mismatch or unverifiable type uses lazy index recovery; the recovered bundle is
+  checked again, and a mismatch is terminal. Other selectors do not screen the
+  submitted primary.
+- For a catalog-direct primary pinned with `exact_form_with_lazy_index`, the current
+  direct-body path successfully fetches sequence one, records its `html_cover` screen
+  as `unverifiable`, then fetches the index without a preceding content screen. The
+  primary bundle `<TYPE>` mismatch/unverifiable cases use that authorized recovery
+  path. The index selector requires a unique recognized row whose `document_type`
+  exactly matches the filing form;
+  zero matches yield `not_filed` for optional targets or `required_missing` for
+  required targets, duplicate matches are `ambiguous`, and lookup/parsing failures
+  are `failed`. A selected bundle row is extracted by exact sequence and its `<TYPE>`
+  must also match the filing form; a mismatch fails rather than selecting another row.
+  `submitted_primary` does not authorize recovery. No HTML/cover evaluator exists.
 - Record response and selected-body digests/sizes separately when extraction creates
   a child body. Pass the selected body by managed transient reference to S10. S9
   does not normalize it or define durable payload storage.
 - Commit completed target outcomes as work finishes. Cancellation stops new work,
   cleans partial files, preserves committed results, and leaves unfinished work
-  resumable. Retain source/selected files after S10 consumes them until snapshot
-  publication adopts payload rows or the run is explicitly discarded. Fixture capture
-  independently retains compressed source-response evidence.
+  resumable. Acquired selected files remain staged for the gated S10 handoff; cleanup
+  after processing/publication is not yet implemented. The fixture store supports
+  compressed response persistence and streaming replay, but S9 fixture capture/replay
+  command flows and replay-backed runner execution are incomplete.
 - `--retry-failures` retries only outcomes classified retryable by the transport
   contract. It does not repeat acquired, `not_filed`, `required_missing`, ambiguous,
   or terminally refused work. A later retry does not erase earlier attempt provenance.
@@ -105,14 +119,16 @@ are not embedded in the result record.
 
 The detailed transport and extraction boundaries are separate lower-layer contracts;
 see [streaming](transport.md) and [exact sequence selection](extraction.md). Mutable
-state, run locking, retries, interruption, and S10 body-consumption receipts are in
-[run state](state.md).
+state, run locking, retries, and interruption are in [run state](state.md). S10
+body-consumption receipts remain gated with processing.
 
 ## Acceptance
 
-Non-executable targets produce no HTTP request; oversize bodies never become partial
-successes; interrupted runs preserve completed results; bundle selection is exact;
-and fixture replay can exercise the same selection path without HTTP.
+Implemented: non-executable targets produce no HTTP request; oversize bodies never
+become partial successes; interrupted runs preserve committed results; and bundle
+selection is exact. Remaining: verified HTML/SGML identity-screen behavior and a
+fixture-replay command path that exercises the acquisition selection flow without
+HTTP.
 
 Offline tests cover no-work runs, one direct target, bundle target, optional
 `not_filed`, required `required_missing`, lazy-index resolution, 404, retryable and

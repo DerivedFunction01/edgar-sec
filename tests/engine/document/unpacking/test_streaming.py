@@ -71,7 +71,9 @@ def test_extracts_exact_body_and_reports_both_digests(tmp_path: Path) -> None:
 def test_recognizes_all_control_tags_split_across_chunks(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    monkeypatch.setattr("edgar_sec.engine.document.unpacking.streaming._CHUNK_SIZE", 3)
+    monkeypatch.setattr(
+        "edgar_sec.engine.document.unpacking.streaming.DEFAULT_IO_CHUNK_SIZE", 3
+    )
     source_bytes = _document("1", b"first") + _document("2", b"exact")
     result, destination, _ = _extract(tmp_path, source_bytes)
 
@@ -195,7 +197,8 @@ def test_large_unselected_body_uses_bounded_source_reads(
 ) -> None:
     chunk_size = 4096
     monkeypatch.setattr(
-        "edgar_sec.engine.document.unpacking.streaming._CHUNK_SIZE", chunk_size
+        "edgar_sec.engine.document.unpacking.streaming.DEFAULT_IO_CHUNK_SIZE",
+        chunk_size,
     )
     source = tmp_path / "submission.txt"
     destination = tmp_path / "selected.bin"

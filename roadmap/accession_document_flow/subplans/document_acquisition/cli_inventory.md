@@ -12,11 +12,11 @@ Shared package boundaries and cross-command prerequisites are in
 and settings owners rather than duplicate them. The staged implementation sequence
 and safe parallel workstreams are in the [S9 implementation plan](plan.md).
 
-The dedicated `acquisition` launcher and command/operator are registered. The offline
-`project` command is implemented; status/run/process/fixture/review/snapshot tracks
-return explicit TODO results, and publish returns a gate-blocked result. No command
-fetches, processes, or publishes data. The `documents` launcher still invokes the
-legacy `document_storage` CLI and remains separate.
+The dedicated `acquisition` launcher and command/operator are registered. Offline
+`project` and the `fixture create`, `capture`, `list`, and `replay` commands are
+implemented. `run` performs acquisition; status, process, review, and snapshot tracks
+remain TODO, while publish returns the S11 evidence-and-approval gate. The `documents`
+launcher still invokes the legacy `document_storage` CLI and remains separate.
 
 ## Tracked CLI patterns
 
@@ -95,9 +95,10 @@ the `acquisition` entry is registered, while legacy `documents` remains isolated
   Document Acquisition - Acquire eligible targets from S6 plans and inspect resumable runs
 ```
 
-The registered operator menu is run-oriented, modeled on inventory's
-project/status/run choices. Its actions are placeholders; unlike the CLI, project is
-not yet wired into the interactive selection flow:
+The registered operator menu exposes project/status/run, process/publish, four fixture
+actions, review, and snapshot evidence audit. Project/status/run and fixture actions
+dispatch to their CLI services; process, review, and snapshot audit remain TODO, and
+publish fails closed at the S11 gate:
 
 ```text
 Document Acquisition
@@ -106,9 +107,12 @@ Document Acquisition
   3. Run pending acquisition work
   4. Process acquired targets
   5. Publish a completed run snapshot
-  f. Acquisition fixtures console (capture, list, replay TODOs)
-  r. Review artifacts console (build/compare TODOs)
-  p. Snapshot status/evidence audit (S11 gate)
+  6. Create local fixture
+  7. Capture local fixture evidence (confirmation required)
+  8. List local fixtures
+  9. Replay local fixture (confirmation required)
+  10. Review artifacts console (build/compare TODOs)
+  11. Snapshot status/evidence audit (S11 gate)
   0. Exit
 ```
 
@@ -117,16 +121,20 @@ pipeline-specific adapter is not implemented. The shared, pipeline-neutral
 distribution infrastructure is already used by metadata sync and inventory. Inventory
 work selection includes only valid existing runs, and resolving a distribution work ID
 does not project a catalog plan; projection is an explicit inventory operation.
-Snapshot publication is separate from acquisition run completion and requires S10
-results plus the publisher's integrity checks.
+Snapshot publication is separate from acquisition run completion and remains blocked
+pending representative S9/S10 evidence and explicit S11 approval.
 
 The local command-line counterpart defines project, status, run, process, publish,
-snapshot status/audit, and acquisition-specific fixture/review command shapes with
-stable run/plan/snapshot IDs. `project` creates or reuses an offline transient run;
-status/run/process/fixture/review/snapshot remain fail-closed TODO tracks, and
-publication reports its evidence-and-approval gate. Future network execution is an
-explicit CLI action; the interactive operator must separately confirm it, defaulting
-to no, and expose retry selection rather than silently retrying failed requests.
+snapshot status/audit, and acquisition-specific fixture/review commands with stable
+run/plan/snapshot IDs. `project` creates or reuses an offline transient run. Fixture
+creation refuses existing IDs; capture requires fixture/run/target/exact-attempt IDs
+and a positive response-byte cap; list accepts optional fixture/capture/target filters;
+replay requires exact fixture/capture/target IDs and a caller-selected output path.
+Process/review/snapshot remain fail-closed TODO tracks, and publication reports
+its evidence-and-approval gate. The interactive operator separately confirms live
+network work, fixture capture, and replay output, each defaulting to no. CLI network
+execution is explicit and exposes retry selection rather than silently retrying failed
+requests.
 `acquisition distrib` remains planned and unimplemented. The common CLI uses
 `--work-id`, and its interactive console retains selected work for the session. SEC
 rate limiting uses each host's configured settings/environment; cross-host
@@ -147,7 +155,7 @@ behavior:
 - [Distribute acquisition work](distribution/index.md): define export, remote
   execution, receipt verification, discovery, and coordinator adoption.
 - [Capture and replay fixtures](fixtures/index.md): define explicit capture, fixture
-  discovery, integrity checks, and zero-network replay.
+  discovery, integrity checks, retained-evidence limits, and zero-network replay.
 - [Operator UX](operator.md): define menu transitions, explicit network confirmation,
   context retention, cancellation, and common CLI/operator dispatch.
 - [Shared schemas](schemas.md), [paths](paths.md), and
@@ -161,6 +169,8 @@ behavior:
   worker bundles, S11 binary/text Parquet relations, cleanup rules, and legacy differences.
 
 The existing [S9 design](../S9_acquisition.md) and S9a–S9d documents are earlier
-design material, not proof of runtime implementation. The registered menu is a
-placeholder only; do not infer that any acquisition, processing, fixture, or
-publication service is implemented from its command shape.
+design material, not proof of runtime implementation. The legacy `documents` command
+continues to use `document_storage`; the acquisition fixture store and commands are a
+separate S9 surface and do not replace or migrate that pipeline. Fixture evidence is
+not an S11 payload store, and S11 publication still requires its evidence and approval
+gate.

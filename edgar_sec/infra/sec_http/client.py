@@ -18,6 +18,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 from edgar_sec.foundation.hashing import sha256_bytes
+from edgar_sec.foundation.io import DEFAULT_IO_CHUNK_SIZE
 from edgar_sec.foundation.runtime.settings.paths import DEFAULT_CACHE_TTL_S
 from edgar_sec.foundation.runtime.settings.sec import (
     DEFAULT_MAX_FAILURE_ATTEMPTS,
@@ -540,7 +541,7 @@ class SecHttpClient:
                 digest = hashlib.sha256()
                 byte_size = 0
                 too_large = False
-                for chunk in response.iter_content(chunk_size=64 * 1024):
+                for chunk in response.iter_content(chunk_size=DEFAULT_IO_CHUNK_SIZE):
                     if not chunk:
                         continue
                     byte_size += len(chunk)

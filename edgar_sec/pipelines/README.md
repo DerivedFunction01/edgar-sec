@@ -27,13 +27,13 @@ the details below are the layer-level contracts only.
 - [`document_planning/`](document_planning/README.md) — offline S6 target planning
   from a digest-pinned filing-catalog plan and an optional immutable inventory
   snapshot. It publishes no acquisition work.
-- [`document_acquisition/`](document_acquisition/README.md) — initial S9 path and
-  handoff-contract foundation with S6 bundle projection and a registered
-  CLI/operator. Network acquisition is not implemented; S10 and S11 remain gated.
-  Its [`fixture_store/`](document_acquisition/fixture_store/README.md) subpackage
-  owns compressed SQLite response evidence and incremental replay only.
-  Its [`run_state/`](document_acquisition/run_state/README.md) subpackage owns the
-  mutable per-run SQLite ledger and token-owned locks.
+- [`document_acquisition/`](document_acquisition/README.md) — S9 work-order projection,
+  bounded SEC acquisition, and run-state/fixture management. S10 processing and
+  S11 publication remain gated or deferred. Its [`commands/`](document_acquisition/commands/README.md)
+  package owns CLI handlers; [`plan_projection/`](document_acquisition/plan_projection/README.md)
+  validates S6 bundles and creates bounded work orders; [`fixture_store/`](document_acquisition/fixture_store/README.md)
+  owns compressed response evidence and replay; [`run_state/`](document_acquisition/run_state/README.md)
+  owns the per-run SQLite ledger and locks.
 - [`document_storage/`](document_storage/README.md) — Phase 2.5. Fetches primary
   filings, unrolls SGML, normalizes, resolves delegated exhibits, and
   consolidates per-run snapshots into one canonical snapshot across runs.

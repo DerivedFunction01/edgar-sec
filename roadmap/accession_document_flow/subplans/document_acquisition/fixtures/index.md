@@ -2,36 +2,41 @@
 
 ## Purpose and status
 
-Explicitly retain selected acquisition evidence and replay it without network access.
-The SQLite store, uniform Zstandard response storage, append-only capture records, and
-incremental digest-verified replay are implemented. The `fixture` CLI/capture service
-remains a TODO until the S9 runner produces acquisition attempts; the legacy
-`document_storage` fixture contract is not reusable as S9 state.
+Retain selected acquisition evidence and replay it without network access. The v3
+SQLite store, CLI commands, and operator actions for create/capture/list/replay are
+implemented. Capture supports direct responses, bundle responses, and complete
+lazy-index response groups when their evidence was retained during acquisition; a
+bodyless failed attempt can also be captured as metadata. Full response-evidence
+retention is opt-in and default-off: run acquisition with
+`--retain-response-evidence`. Without it, bundle/lazy response groups may be
+unavailable after the run. The legacy `document_storage` fixture contract remains
+separate and is not reusable as S9 state.
 
 ## CLI and operator shape
 
 ```text
-acquisition fixture capture --fixture-id <id> --run-id <run-id> --target-id <id> --attempt-id <id>
-acquisition fixture list
-acquisition fixture replay --fixture-id <id> --capture-id <id> --target-id <id>
-acquisition fixture list --fixture-id <id> --capture-id <id> --target-id <id> --json
+acquisition fixture create --fixture-id <id>
+acquisition fixture capture --fixture-id <id> --run-id <run-id> --target-id <id> --attempt-id <id> [--max-response-bytes <positive-int>]
+acquisition fixture list [--fixture-id <id>] [--capture-id <id>] [--target-id <id>]
+acquisition fixture replay --fixture-id <id> --capture-id <id> --target-id <id> --output <new-path>
 ```
 
-The interactive `f` console exposes capture, list, and replay. Capture records one
-already-completed target attempt at a time. `list` filters are optional; `--json`
-selects stable machine-readable output and `--artifacts` overrides the resolved
-artifact root.
+For bundle or lazy-index response groups, enable retention on the acquisition run with
+`acquisition run --run-id <run-id> --retain-response-evidence`. Capture requires the
+evidence to have been retained then; it does not fetch or reconstruct missing responses.
 
-## UX and service signatures
+`--json` selects stable machine-readable output and `--artifacts` overrides the
+resolved artifact root. The operator exposes the same four actions. Capture asks for a
+default-no evidence-retention confirmation; replay asks for a default-no confirmation
+before writing its selected output path. Listing is read-only. Create refuses an
+existing fixture ID. Capture uses the configured `acquisition.max_response_bytes`
+default unless an explicit positive override is supplied.
 
-Fixture capture previews run/target/attempt identity and the source/selected byte
-counts before the operator confirms local evidence retention. It never initiates a
-SEC request; it promotes an already staged successful source response. Fixture list
-is read-only and does not hash all large bodies. Replay takes an exact
-fixture/capture/target key and returns a verified staged-body handle; it never prints
-the document or creates an HTTP client.
+## Implemented APIs
 
 ```python
+def create_fixture(fixture_id: str, *, paths: AcquisitionPaths) -> Path: ...
+
 def capture_fixture_case(
     fixture_id: str,
     run_id: str,
@@ -39,70 +44,75 @@ def capture_fixture_case(
     attempt_id: str,
     *,
     paths: AcquisitionPaths,
+    max_response_bytes: int,
 ) -> FixtureCaptureResult: ...
 
+def list_fixtures(paths: AcquisitionPaths) -> Iterator[str]: ...
+
 def list_fixture_cases(
-    fixture_id: str | None,
-    *,
     paths: AcquisitionPaths,
-) -> tuple[FixtureCaseSummary, ...]: ...
+    *,
+    fixture_id: str | None = None,
+    capture_id: str | None = None,
+    target_id: str | None = None,
+) -> Iterator[FixtureCaseMetadata]: ...
 
 def replay_fixture_case(
     fixture_id: str,
     capture_id: str,
     target_id: str,
+    output_path: Path,
     *,
     paths: AcquisitionPaths,
-    staging: ManagedStaging,
 ) -> FixtureReplayResult: ...
-
-def cmd_fixture(args: argparse.Namespace) -> int: ...
 ```
 
-The detailed schemas and edge cases are separated by mutation boundary below.
+These are case-level services, not an S10 replay staging API. Replay writes acquired
+selected bytes to a new caller-chosen file and does not create a managed durable staging
+reference or consumption receipt.
 
-## Contract
+## Capture contract
 
-- Capture is explicit. Ordinary acquisition retains source/selected-body staging
-  through S10 and S11 publication; it removes the files only after payload Parquet
-  adoption or explicit run discard. Fixture capture separately retains the compressed
-  source response as replay evidence in SQLite.
-- Store Zstandard-compressed response bytes in SQLite BLOBs. The response digest/size
-  identify the exact uncompressed bytes; stored digest/size verify the compressed BLOB.
-  There is no parallel body file store; URL metadata, selected digest, target-plan
-  provenance, and capture identity are indexed in the same database.
-- For bundle targets, retain the source response and replay exact-sequence extraction;
-  the selected child can be re-derived and checked against its recorded digest. Do
-  not store duplicate body copies merely to replay a selected child.
-- Apply Zstandard before SQLite insertion for every route/media type; decompression is
-  incremental and verifies the exact uncompressed response digest during replay.
-- Same target captured later appends a new capture case; it never overwrites prior
-  evidence. Fixture and case IDs resolve only within their fixture root.
-- Replay verifies the common manifest envelope, matching manifest/SQLite schema
-  versions, provenance, BLOB size and digest, and the pinned extraction/selection
-  contract before returning a selected-body handle.
-  It performs zero SEC requests and does not mutate the fixture.
-- Captured response bodies are test/review evidence, not an S11 durable payload store
-  or a published document snapshot. Fixture commands do not expose snapshot-DAG
-  publication actions.
+- Capture requires a positive response-byte cap and validates the fixture, run
+  manifest/work order, target membership, exact recorded attempt, attempt kind/source,
+  and any attempt body path and recorded byte/digest evidence. It makes no SEC request.
+- A successful direct-body attempt is captured from its verified retained response.
+  A bodyless failed attempt is captured as metadata only. Bundle and
+  `exact_form_with_lazy_index` cases can include the complete response group only when
+  acquisition retained the required source, index, and selected responses; otherwise
+  capture refuses incomplete evidence.
+- The capture ID is deterministic from run, target, and attempt identity. Capture and
+  case records are immutable; conflicting evidence is refused rather than overwritten.
+- Response bodies are streamed into Zstandard-compressed SQLite BLOBs and verified
+  before the atomic append. The configured cap applies to uncompressed response bytes.
+- Capture accepts only the current unsuperseded attempt group. If a later target attempt
+  has superseded that group's terminal attempt, capture refuses it; this is not an
+  arbitrary historical-attempt capture API.
+- Captured bytes are fixture evidence only. Capture does not implement the separate M5
+  receipt/consumer handoff or S10/M7 work, nor does it publish S11/M9 payloads. Historical
+  corpus/family evaluation and acquisition distribution remain separate or gated work.
 
-## Refusal behavior
+## Listing and replay
 
-Refuse corrupt manifests/indexes, missing or changed content, path traversal,
-incompatible schema versions, and target/capture mismatches before returning a body.
-A failed acquisition may be recorded as a case without a response body, but replay
-cannot produce a selected body for it.
-
-## Acceptance
-
-Replay of an acquired case reproduces the selected bytes/digest with no HTTP client
-activity. Appends preserve all earlier fixture evidence, and large-body capture and
-replay remain bounded-memory operations.
+- Listing streams validated fixture IDs and case metadata in deterministic order. The
+  optional fixture/capture/target filters narrow results; listing opens stores
+  read-only and does not select, decompress, or hash response BLOBs. Opening a store
+  still performs SQLite integrity and foreign-key checks.
+- Replay resolves the exact fixture/capture/target case and verifies responses using the
+  incremental BLOB integrity primitive. Ordinary direct cases check that source and
+  selected identities agree; lazy-resolution cases verify the recorded source, index,
+  and selected responses separately. Bundle selections are extracted locally and
+  checked against selected digest and size.
+- Acquired replay writes only to a new explicit caller-selected path and refuses
+  existing files. A bodyless failed case returns recorded metadata and creates no
+  output file. Replay makes no HTTP request and does not mutate fixture data.
+- There is no managed durable replay staging API or S10 handoff. S11 publication
+  remains gated on representative S9/S10 evidence and explicit approval; fixture
+  BLOBs are not snapshot payloads.
 
 ## Detailed contracts
 
-The fixture command family is split because evidence capture, discovery, replay, and
-SQLite/blob lifecycle have distinct mutation and integrity contracts:
+The command family is split by mutation and integrity boundary:
 
 - [Capture cases](capture.md)
 - [List fixture evidence](list.md)

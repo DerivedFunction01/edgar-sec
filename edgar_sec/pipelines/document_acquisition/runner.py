@@ -61,15 +61,17 @@ def _cleanup_unreferenced_staging(paths: AcquisitionPaths, run_id: str) -> None:
     with sqlite3.connect(
         f"file:{paths.run_state_path(run_id).resolve()}?mode=ro", uri=True
     ) as connection:
-        for row in connection.execute(
+        for query in (
             "SELECT source_body_relative_path, selected_body_relative_path "
-            "FROM target_state WHERE outcome = 'acquired'"
+            "FROM target_state WHERE outcome = 'acquired'",
+            "SELECT source_body_relative_path, selected_body_relative_path FROM attempts",
         ):
-            for relative in row:
-                if relative is not None:
-                    candidate = (run_root / relative).resolve()
-                    if candidate.is_relative_to(staging_root.resolve()):
-                        keep.add(candidate)
+            for row in connection.execute(query):
+                for relative in row:
+                    if relative is not None:
+                        candidate = (run_root / relative).resolve()
+                        if candidate.is_relative_to(staging_root.resolve()):
+                            keep.add(candidate)
     for candidate in staging_root.iterdir():
         if candidate.is_dir() and not candidate.is_symlink():
             continue

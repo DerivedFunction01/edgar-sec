@@ -6,6 +6,7 @@ import uuid
 from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
+from shutil import copyfile
 from typing import Protocol
 
 from edgar_sec.domain.document_inventory.models import IndexPageInput
@@ -15,8 +16,7 @@ from edgar_sec.engine.document.unpacking.streaming import (
     BundleExtraction,
     extract_bundle_sequence,
 )
-from edgar_sec.engine.index_pages.parser import PARSER_FINGERPRINT, parse_html_index
-from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.engine.index_pages.parser import parse_html_index
 from edgar_sec.infra.sec_http.streaming import (
     StreamFailure,
     StreamResult,
@@ -26,17 +26,22 @@ from edgar_sec.pipelines.document_acquisition.index_selection import (
     IndexSelection,
     select_index_entry,
 )
+from edgar_sec.pipelines.document_acquisition.attempts import (
+    build_attempt as _attempt,
+    relative_path as _relative,
+)
+from edgar_sec.pipelines.document_acquisition.resolution import (
+    build_resolution as _resolution,
+    screen_sgml_type as _screen_sgml_type,
+)
 from edgar_sec.pipelines.document_acquisition.models import (
     AcquisitionAttempt,
     AcquisitionOutcome,
     AcquisitionPolicy,
     AcquisitionStatus,
-    TargetSlotResolution,
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.run_state.models import TargetState
-
-_RESOLUTION_SCHEMA_VERSION = "1"
 
 
 class AcquisitionTransport(Protocol):
@@ -55,10 +60,6 @@ def _utc(clock: Callable[[], datetime]) -> str:
     if value.tzinfo is None or value.utcoffset() is None:
         raise ValueError("acquisition clock must return timezone-aware datetimes")
     return value.astimezone(UTC).isoformat(timespec="seconds")
-
-
-def _relative(run_root: Path, path: Path | None) -> str | None:
-    return None if path is None else path.relative_to(run_root).as_posix()
 
 
 def _new_path(staging_root: Path, prefix: str) -> Path:
@@ -108,92 +109,6 @@ def _stream(
                 "response final URL is outside the requested accession",
             )
     return result
-
-
-def _attempt(
-    *,
-    target_id: str,
-    number: int,
-    kind: str,
-    requested_url: str,
-    result: StreamResult,
-    started_at_utc: str,
-    finished_at_utc: str,
-    source_path: Path | None,
-    selected_path: Path | None,
-    run_root: Path,
-    source: str = "live_sec",
-    outcome: str | None = None,
-    error_code: str | None = None,
-) -> AcquisitionAttempt:
-    response = result if isinstance(result, StreamedResponse) else None
-    status = outcome or ("acquired" if response is not None else "failed")
-    retryable = result.retryable if isinstance(result, StreamFailure) else False
-    selected_digest = (
-        file_sha256(selected_path) if selected_path and selected_path.exists() else None
-    )
-    selected_size = selected_path.stat().st_size if selected_digest else None
-    return AcquisitionAttempt(
-        attempt_id=uuid.uuid4().hex,
-        target_id=target_id,
-        attempt_number=number,
-        attempt_kind=kind,
-        source=source,
-        requested_url=requested_url,
-        outcome=status,
-        retryable=retryable if status == "failed" else False,
-        error_code=error_code
-        or (result.code if isinstance(result, StreamFailure) else None),
-        http_status=(response.status_code if response else result.http_status),
-        final_url=response.final_url if response else None,
-        started_at_utc=started_at_utc,
-        finished_at_utc=finished_at_utc,
-        source_sha256=response.sha256 if response else None,
-        source_byte_size=response.byte_size if response else None,
-        source_body_relative_path=_relative(run_root, source_path),
-        selected_sha256=selected_digest,
-        selected_byte_size=selected_size,
-        selected_body_relative_path=_relative(
-            run_root, selected_path if selected_digest else None
-        ),
-    )
-
-
-def _resolution(
-    row: dict[str, object],
-    initial: StreamedResponse,
-    index_attempt: AcquisitionAttempt,
-    index_response: StreamedResponse | None,
-    selection: IndexSelection | None,
-    result: str,
-) -> TargetSlotResolution:
-    entry = selection.entry if selection is not None else None
-    return TargetSlotResolution(
-        resolution_schema_version=_RESOLUTION_SCHEMA_VERSION,
-        resolution_id=uuid.uuid4().hex,
-        run_id=str(row["run_id"]),
-        target_id=str(row["target_id"]),
-        target_role=row["target_role"],
-        target_type=row["target_type"],
-        selector="exact_form_with_lazy_index",
-        expected_statutory_type=str(row["form"]),
-        initial_sequence=1,
-        index_document_type=entry.document_type if entry else None,
-        index_primary_designation=None,
-        initial_observed_body_type=None,
-        screen_kind="html_cover",
-        screen_result="unverifiable",
-        evaluator_version=None,
-        initial_body_sha256=initial.sha256,
-        index_attempt_id=index_attempt.attempt_id,
-        index_response_sha256=index_response.sha256 if index_response else None,
-        index_parser_version=PARSER_FINGERPRINT if selection is not None else None,
-        matching_entry_ids=selection.matching_entry_ids if selection else (),
-        selected_sequence=entry.sequence if entry else None,
-        selected_retrieval_mode=selection.retrieval_mode if selection else None,
-        selected_url=selection.selected_url if selection else None,
-        result=result,
-    )
 
 
 def _outcome(
@@ -254,6 +169,17 @@ def acquire_target(
     requested_url = row["target_url"]
     if not isinstance(requested_url, str):
         raise ValueError("executable work-order row has no target URL")
+    retain_evidence = (
+        policy.retain_response_evidence
+        and row["target_role"] == "primary"
+        and (
+            row["retrieval_mode"] == "bundle_sequence"
+            or (
+                row["source_origin"] == "catalog_direct"
+                and row["catalog_direct_selection"] == "exact_form_with_lazy_index"
+            )
+        )
+    )
     source_path = _new_path(staging_root, "response")
     selected_path: Path | None = None
     started = _utc(clock)
@@ -280,6 +206,12 @@ def acquire_target(
             None,
         )
 
+    sgml_recovery = False
+    screen_context: dict[str, str | None] = {
+        "screen_kind": "html_cover",
+        "screen_result": "unverifiable",
+        "observed_body_type": None,
+    }
     if row["retrieval_mode"] == "bundle_sequence":
         sequence = row["sequence"]
         selected_path = _new_path(staging_root, "selected")
@@ -290,6 +222,61 @@ def acquire_target(
             expected_source_sha256=response.sha256,
         )
         if isinstance(extracted, BundleExtraction):
+            should_screen_sgml = (
+                row["source_origin"] == "catalog_direct"
+                and row["target_role"] == "primary"
+                and row["catalog_direct_selection"] == "exact_form_with_lazy_index"
+            )
+            screen_result = (
+                _screen_sgml_type(extracted.selected.document_type, str(row["form"]))
+                if should_screen_sgml
+                else "form_match"
+            )
+            if screen_result != "form_match":
+                sgml_recovery = True
+                screen_context = {
+                    "screen_kind": "sgml_type",
+                    "screen_result": screen_result,
+                    "observed_body_type": extracted.selected.document_type,
+                }
+                selected_path.unlink(missing_ok=True)
+            else:
+                attempt = _attempt(
+                    target_id=state.target_id,
+                    number=number,
+                    kind="document_body",
+                    requested_url=requested_url,
+                    result=response,
+                    started_at_utc=started,
+                    finished_at_utc=finished,
+                    source_path=response.path if retain_evidence else None,
+                    selected_path=selected_path,
+                    run_root=run_root,
+                )
+                if not retain_evidence:
+                    response.path.unlink(missing_ok=True)
+                outcome = _outcome(
+                    state.target_id,
+                    (attempt,),
+                    "acquired",
+                    source_sha256=response.sha256,
+                    source_byte_size=response.byte_size,
+                    selected_sha256=extracted.body_sha256,
+                    selected_byte_size=extracted.body_size,
+                    selected_path=_relative(run_root, selected_path),
+                )
+                return (attempt,), outcome, None, None
+        else:
+            if not retain_evidence:
+                response.path.unlink(missing_ok=True)
+            selected_path.unlink(missing_ok=True)
+            status: AcquisitionStatus = (
+                "not_filed"
+                if extracted.code == "sequence_not_found"
+                else "ambiguous"
+                if extracted.code == "duplicate_sequence"
+                else "failed"
+            )
             attempt = _attempt(
                 target_id=state.target_id,
                 number=number,
@@ -298,58 +285,25 @@ def acquire_target(
                 result=response,
                 started_at_utc=started,
                 finished_at_utc=finished,
-                source_path=None,
-                selected_path=selected_path,
+                source_path=response.path if retain_evidence else None,
+                selected_path=None,
                 run_root=run_root,
-            )
-            response.path.unlink(missing_ok=True)
-            outcome = _outcome(
-                state.target_id,
-                (attempt,),
-                "acquired",
-                source_sha256=response.sha256,
-                source_byte_size=response.byte_size,
-                selected_sha256=extracted.body_sha256,
-                selected_byte_size=extracted.body_size,
-                selected_path=_relative(run_root, selected_path),
-            )
-            return (attempt,), outcome, None, None
-        response.path.unlink(missing_ok=True)
-        selected_path.unlink(missing_ok=True)
-        status: AcquisitionStatus = (
-            "not_filed"
-            if extracted.code == "sequence_not_found"
-            else "ambiguous"
-            if extracted.code == "duplicate_sequence"
-            else "failed"
-        )
-        attempt = _attempt(
-            target_id=state.target_id,
-            number=number,
-            kind="document_body",
-            requested_url=requested_url,
-            result=response,
-            started_at_utc=started,
-            finished_at_utc=finished,
-            source_path=None,
-            selected_path=None,
-            run_root=run_root,
-            outcome=status,
-            error_code=extracted.code if status == "failed" else None,
-        )
-        return (
-            (attempt,),
-            _outcome(
-                state.target_id,
-                (attempt,),
-                status,
+                outcome=status,
                 error_code=extracted.code if status == "failed" else None,
-            ),
-            None,
-            None,
-        )
+            )
+            return (
+                (attempt,),
+                _outcome(
+                    state.target_id,
+                    (attempt,),
+                    status,
+                    error_code=extracted.code if status == "failed" else None,
+                ),
+                None,
+                None,
+            )
 
-    lazy = (
+    lazy = sgml_recovery or (
         row["source_origin"] == "catalog_direct"
         and row["target_role"] == "primary"
         and row["catalog_direct_selection"] == "exact_form_with_lazy_index"
@@ -420,11 +374,12 @@ def acquire_target(
         result=response,
         started_at_utc=started,
         finished_at_utc=finished,
-        source_path=None,
+        source_path=response.path if retain_evidence else None,
         selected_path=None,
         run_root=run_root,
     )
-    source_path.unlink(missing_ok=True)
+    if not retain_evidence:
+        source_path.unlink(missing_ok=True)
     archive_cik = validate_archive_url(requested_url, accession).archive_cik
     index_url = full_submission_url_for(archive_cik, str(accession))
     index_url = index_url.removesuffix(".txt") + "-index.html"
@@ -446,7 +401,13 @@ def acquire_target(
             run_root=run_root,
         )
         resolution = _resolution(
-            row | {"run_id": run_id}, response, index_attempt, None, None, "failed"
+            row | {"run_id": run_id},
+            response,
+            index_attempt,
+            None,
+            None,
+            "failed",
+            **screen_context,
         )
         attempts = (first_attempt, index_attempt)
         return (
@@ -483,11 +444,12 @@ def acquire_target(
         result=index_result,
         started_at_utc=index_started,
         finished_at_utc=index_finished,
-        source_path=None,
+        source_path=index_result.path if retain_evidence else None,
         selected_path=None,
         run_root=run_root,
     )
-    index_result.path.unlink(missing_ok=True)
+    if not retain_evidence:
+        index_result.path.unlink(missing_ok=True)
     attempts = (first_attempt, index_attempt)
     if selection.result != "selected":
         status = selection.result
@@ -498,6 +460,7 @@ def acquire_target(
             index_result,
             selection,
             "not_filed" if status == "not_filed" else status,
+            **screen_context,
         )
         return (
             attempts,
@@ -543,6 +506,7 @@ def acquire_target(
             index_result,
             selection,
             "failed",
+            **screen_context,
         )
         return (
             attempts,
@@ -567,7 +531,8 @@ def acquire_target(
             selected_path,
             expected_source_sha256=body_result.sha256,
         )
-        body_result.path.unlink(missing_ok=True)
+        if not retain_evidence:
+            body_result.path.unlink(missing_ok=True)
         if not isinstance(extracted, BundleExtraction):
             selected_path.unlink(missing_ok=True)
             status: AcquisitionStatus = (
@@ -581,7 +546,7 @@ def acquire_target(
                 result=body_result,
                 started_at_utc=body_started,
                 finished_at_utc=body_finished,
-                source_path=None,
+                source_path=body_result.path if retain_evidence else None,
                 selected_path=None,
                 run_root=run_root,
                 outcome=status,
@@ -595,6 +560,7 @@ def acquire_target(
                 index_result,
                 selection,
                 "failed",
+                **screen_context,
             )
             return (
                 attempts,
@@ -607,6 +573,51 @@ def acquire_target(
                 resolution,
                 _utc(clock),
             )
+        if row["catalog_direct_selection"] == "exact_form_with_lazy_index":
+            screen_result = _screen_sgml_type(
+                extracted.selected.document_type, str(row["form"])
+            )
+            if screen_result != "form_match":
+                selected_path.unlink(missing_ok=True)
+                body_attempt = _attempt(
+                    target_id=state.target_id,
+                    number=number + 2,
+                    kind="document_body",
+                    requested_url=selection.selected_url,
+                    result=body_result,
+                    started_at_utc=body_started,
+                    finished_at_utc=body_finished,
+                    source_path=body_result.path if retain_evidence else None,
+                    selected_path=None,
+                    run_root=run_root,
+                    outcome="failed",
+                    error_code=(
+                        "document_type_mismatch"
+                        if screen_result == "type_mismatch"
+                        else "document_type_unverifiable"
+                    ),
+                )
+                attempts = (*attempts, body_attempt)
+                resolution = _resolution(
+                    row | {"run_id": run_id},
+                    response,
+                    index_attempt,
+                    index_result,
+                    selection,
+                    "failed",
+                    **screen_context,
+                )
+                return (
+                    attempts,
+                    _outcome(
+                        state.target_id,
+                        attempts,
+                        "failed",
+                        error_code=body_attempt.error_code,
+                    ),
+                    resolution,
+                    _utc(clock),
+                )
         body_attempt = _attempt(
             target_id=state.target_id,
             number=number + 2,
@@ -615,7 +626,7 @@ def acquire_target(
             result=body_result,
             started_at_utc=body_started,
             finished_at_utc=body_finished,
-            source_path=None,
+            source_path=body_result.path if retain_evidence else None,
             selected_path=selected_path,
             run_root=run_root,
         )
@@ -632,7 +643,7 @@ def acquire_target(
                 result=body_result,
                 started_at_utc=body_started,
                 finished_at_utc=body_finished,
-                source_path=None,
+                source_path=body_result.path if retain_evidence else None,
                 selected_path=None,
                 run_root=run_root,
                 outcome="failed",
@@ -646,6 +657,7 @@ def acquire_target(
                 index_result,
                 selection,
                 "failed",
+                **screen_context,
             )
             return (
                 attempts,
@@ -666,6 +678,7 @@ def acquire_target(
             index_result,
             selection,
             "recovered",
+            **screen_context,
         )
         return (
             attempts,
@@ -682,7 +695,11 @@ def acquire_target(
             resolution,
             _utc(clock),
         )
-    selected_path = body_result.path
+    if retain_evidence:
+        selected_path = _new_path(staging_root, "selected")
+        copyfile(body_result.path, selected_path)
+    else:
+        selected_path = body_result.path
     body_attempt = _attempt(
         target_id=state.target_id,
         number=number + 2,
@@ -691,7 +708,7 @@ def acquire_target(
         result=body_result,
         started_at_utc=body_started,
         finished_at_utc=body_finished,
-        source_path=None,
+        source_path=body_result.path if retain_evidence else None,
         selected_path=selected_path,
         run_root=run_root,
     )
@@ -709,7 +726,7 @@ def acquire_target(
             result=body_result,
             started_at_utc=body_started,
             finished_at_utc=body_finished,
-            source_path=None,
+            source_path=body_result.path if retain_evidence else None,
             selected_path=None,
             run_root=run_root,
             outcome="failed",
@@ -723,6 +740,7 @@ def acquire_target(
             index_result,
             selection,
             "failed",
+            **screen_context,
         )
         return (
             attempts,
@@ -742,6 +760,7 @@ def acquire_target(
         index_result,
         selection,
         "recovered",
+        **screen_context,
     )
     outcome = _outcome(
         state.target_id,

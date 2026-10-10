@@ -2,7 +2,23 @@ from dataclasses import FrozenInstanceError
 
 import pytest
 
-from edgar_sec.pipelines.document_acquisition.models import TargetSlotResolution
+from edgar_sec.pipelines.document_acquisition.models import (
+    AcquisitionPolicy,
+    TargetSlotResolution,
+)
+
+
+def test_acquisition_policy_response_evidence_defaults_off_and_requires_bool() -> None:
+    assert AcquisitionPolicy(max_response_bytes=1).retain_response_evidence is False
+    assert (
+        AcquisitionPolicy(
+            max_response_bytes=1, retain_response_evidence=True
+        ).retain_response_evidence
+        is True
+    )
+    for value in (0, 1, "true", None):
+        with pytest.raises(ValueError, match="retain_response_evidence"):
+            AcquisitionPolicy(max_response_bytes=1, retain_response_evidence=value)
 
 
 def test_target_resolution_distinguishes_intent_policy_and_physical_slots() -> None:

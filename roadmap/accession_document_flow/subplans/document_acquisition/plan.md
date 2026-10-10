@@ -12,35 +12,46 @@ Status markers are maintained against tracked code and focused offline tests:
 
 - [x] **M0 — API seams:** shared transport, parser, and pipeline ownership contracts
   are established.
-- [~] **M1 — S9 contracts/configuration:** paths, schemas, models, and work-order
-  contracts exist; the byte ceiling is supplied to the run CLI rather than registered
-  as an S9 settings provider.
+- [x] **M1 — S9 contracts/configuration:** paths, schemas, models, work-order
+  contracts, and the finite `acquisition.max_response_bytes` setting are registered;
+  run and fixture capture accept CLI overrides above environment/config/defaults.
 - [x] **M2A — SEC streaming:** file-backed HTTP and body-free broker streaming are
   implemented and tested.
 - [x] **M2B — SGML extraction:** bounded exact-sequence extraction is implemented and
   tested.
 - [x] **M2C — Projection/run state:** validated work-order projection, append-only
   attempts, target state, and locking are implemented.
-- [~] **M2D — Fixture substrate:** compressed storage and verified replay primitives
-  exist; run capture/replay orchestration and fixture CLI tracks remain.
+- [x] **M2D — Fixture substrate:** compressed append-only storage, validated read-only
+  discovery, direct/bodyless-failure capture, retained bundle/lazy-index response-group
+  capture, and verified local replay are implemented. Raw response evidence retention
+  is opt-in and defaults off; bundle/lazy-index capture requires it.
 - [ ] **M2E — Trace opt-out:** S10's `capture_stage_trace=False` normalizer option is
   not implemented.
 - [~] **M3 — Acquisition runner:** direct and bundle acquisition, exact-form lazy-index
   selection, multi-request provenance, and the CLI `run` path are implemented. The
-  family-aware HTML/SGML identity screen is deferred; catalog-direct screens remain
-  unverifiable and take the index fallback.
-- [~] **M4 — Fixture/interactive surfaces:** CLI `project`, `status`, and `run` are
-  wired; the operator delegates projection/status and confirms live acquisition.
-  Fixture capture/list/replay command flows remain incomplete.
-- [ ] **M5 — Offline S9 acceptance:** the complete projection-to-fixture/body-handoff
-  lifecycle gate has not been completed.
+  catalog-direct exact-form selector compares primary bundle `<TYPE>` to the pinned
+  form using strict ASCII equality; mismatch or unverifiable type enters lazy index
+  recovery. Other selectors do not screen the submitted primary. The direct catalog
+  screen remains unverifiable, and family-aware HTML evaluation is deferred.
+- [x] **M4 — Fixture/interactive surfaces:** CLI `project`, `status`, `run`, and
+  fixture `create`, `capture`, `list`, and `replay` are wired; the operator delegates
+  these actions and confirms live acquisition, evidence capture, and replay output.
+  An integrated lazy-index fixture round trip and exact-attempt retry refusal are
+  tested. Bundle and lazy-index groups require opt-in `--retain-response-evidence`.
+  Processing, review, and snapshot tracks remain gated or incomplete.
+- [x] **M5 — Offline S9 acceptance:** a pinned-plan fixture replay commits run state;
+  status inspects it, and a fake consumer verifies the selected-body reference and
+  immutable receipt. Runner cleanup retains the body; receipts do not authorize cleanup.
 - [ ] **M6 — S10 processing:** per-target normalization, processing results, and
   body-consumption receipts are not implemented.
 - [ ] **M7 — S9/S10 fixture integration:** end-to-end fixture-driven processing is not
   implemented.
 - [ ] **M8 — Evidence/identity follow-up:** the historical mismatch fixtures are
-  planned, but family-aware identity diagnostics are deferred and must reuse existing
-  family evidence rather than add duplicate vocabularies.
+  documented in [historical mismatch cases](historical_mismatch_cases.md), but fixture
+  execution and family-aware cover diagnostics remain deferred and must reuse existing
+  family evidence rather than add duplicate vocabularies. No tracked sanitized pre-2011
+  fixture joins submission metadata, envelope/index evidence, and cover text; do not
+  fabricate a corpus-backed claim from the partial existing fixtures.
 - [ ] **M9 — S11 publication:** durable snapshot publication remains gated on
   representative S9/S10 evidence and explicit approval.
 
@@ -354,20 +365,22 @@ each outcome safely, and support restart after interruption.
 
 #### Historical form-mismatch fixtures
 
-Keep these identity edge cases in pre-2011 fixtures. Distinguish an outer submission
-form versus SGML `<TYPE>` disagreement from text that contradicts otherwise matching
-submission and document metadata. Once the local screen is implemented, its cover
-result is suspicion evidence, never a replacement for the pinned S6 form or an exact
-index `document_type`.
+Keep these identity edge cases in pre-2011 fixtures. Distinguish outer submission and
+document metadata disagreements from cover text that contradicts otherwise matching
+metadata. The implemented SGML check compares extracted `<TYPE>` with the pinned form
+and allows lazy index recovery only for the exact-form catalog-direct selector. There
+is no family-aware HTML/cover evaluator; cover evidence must not replace the pinned S6
+form or exact index `document_type`. Detailed future cases are in
+[historical mismatch cases](historical_mismatch_cases.md).
 
 - Cover an old catalog-direct 8-K whose outer submission declares 8-K but whose
   sequence-1 primary in the SGML `.txt` envelope declares `<TYPE>10-K`, with a unique
   exact 8-K index row at another direct or bundle slot. Screening triggers one lookup
   and selects only that indexed 8-K row.
 - Cover a text-only inversion where submission metadata, `<TYPE>`, and the index identify
-  an 8-K but the HTML or flat `.txt` cover says 10-K. Screening triggers lookup; the
-  index may assign only its exact 8-K row. Do not relabel the body as a 10-K or claim
-  that index selection reconciled the visible-text discrepancy.
+  an 8-K but the HTML or flat `.txt` cover says 10-K. Keep this separate from SGML
+  metadata screening; a future cover diagnostic must not relabel the body or claim that
+  index selection reconciled the visible-text discrepancy.
 - Cover an entirely misfiled annual report: the pinned form and index identify an 8-K,
   no 10-K index row exists, but the body contains annual-report wording or annual-family
   checkmarks. A future family-aware screen should recognize the likely content mismatch

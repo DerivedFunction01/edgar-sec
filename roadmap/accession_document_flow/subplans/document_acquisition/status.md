@@ -4,91 +4,59 @@
 
 Inspect discovered S9 runs and validate their resumable state without contacting
 SEC. Run manifests and state live in the shared transient acquisition root and do not
-auto-expire. SQLite state, target selection, and lock inspection primitives are
-implemented; the complete status service remains a TODO because manifest/work-order
-validation and run discovery are not wired.
+auto-expire. Sorted run discovery, manifest/work-order validation, aggregate run-state
+inspection, and exact target-attempt inspection are implemented in human/JSON output.
 
 ## CLI shape
 
 ```bash
 python run.py acquisition status
 python run.py acquisition status --run-id <run-id> --json
+python run.py acquisition status --run-id <run-id> --target-id <target-id> --json
 python run.py acquisition status --artifacts <path>
 ```
 
-Without a run ID, show a bounded summary of discovered runs; with one, show its
-detailed status and provenance. `--artifacts` overrides the resolved artifact root;
-`--json` selects stable machine-readable output.
+Without a run ID, list discovered runs in sorted order; with one, inspect that run.
+Adding `--target-id` lists its chronological attempts so a fixture capture command can
+reference an exact attempt. Raw response retention is opt-in and defaults off; bundle
+and lazy-index response-group capture requires `--retain-response-evidence` on the run.
+Output includes run ID, derived state, aggregate target counts, retryable and terminal
+failure counts, and active-lock host/PID/time without the lock owner token. Invalid
+work-order or manifest state is reported and returns a nonzero result. `--artifacts`
+overrides the resolved artifact root; `--json` selects stable machine-readable output.
 
-## Intended UX and unimplemented service signatures
+## Deferred status detail
 
-The interactive status action lists run ID, target-plan ID, derived run state, and
-progress counts, then lets the operator inspect one run. Detailed status shows S6
-pins, schema versions, selected-body lifecycle, last attempt/error per requested
-target, and whether a retry is eligible. It never asks for SEC authorization. The
-CLI accepts an optional run ID; `--json` uses the same `AcquisitionStatusReport` as
-the operator.
+The operator prompts for a run ID or an empty value to list all runs; after a run ID,
+an optional target ID selects attempt history. Selected-body lifecycle and retry
+eligibility are deferred; status never repairs a run or starts acquisition. No mode
+asks for SEC authorization.
 
-```python
-def list_acquisition_runs(
-    *,
-    paths: AcquisitionPaths,
-) -> tuple[AcquisitionStatusReport, ...]: ...
+## Contracts
 
-def inspect_acquisition_status(
-    run_id: str,
-    *,
-    paths: AcquisitionPaths,
-) -> AcquisitionStatusReport: ...
-
-def cmd_status(args: argparse.Namespace) -> int: ...
-```
-
-The service raises `AcquisitionStatusError` for an explicitly requested corrupt run.
-A list operation may include an invalid summary with its path-safe run ID and error
-code, but cannot repair or hide it.
-
-## Contract
-
-- Validate the run manifest, target-plan identity, persisted work order, state
-  records, and committed result files before reporting a run as resumable.
-- Keep S6 target status separate from acquisition status. Report skipped targets
-  independently from executable targets.
-- Report progress by outcome: pending, acquired, `not_filed`, `required_missing`,
-  ambiguous, failed, and skipped. Show cancellation/interruption and active locks as
-  run-level state.
-  Distinguish retryable transport failures from terminal or non-retryable outcomes;
-  do not infer retryability from a display label.
-- Preserve successful target results across interruption. Status inspection never
-  mutates checkpoints, resets failures, or starts work.
-- Detect an active run lock and expose its owner metadata. Stale-lock recovery is a
-  `run` action requiring explicit confirmation, not a side effect of `status`.
-- Derive run state from the validated lock/checkpoint and target outcomes: ready,
-  running, interrupted, complete, `needs_retry`, or `complete_with_errors`. A run
-  with retryable failures is never silently reported as successful or ready for
-  downstream consumption.
-- Validate a staged selected-body file against recorded size/digest while its body
-  lifecycle is `staged`. A file already acknowledged as consumed by S10 may be absent
-  without invalidating its successful acquisition result.
-- Read status from a consistent read-only snapshot while a run is active. Do not
-  repair WAL/journal files, reclaim staging, or change retry counters during inspect.
+- **Validated summary**: Status validates the run manifest and work order before reading the SQLite state projection.
+- **Read-only inspection**: Status never repairs run artifacts, changes checkpoints, or starts acquisition.
+- **Aggregate outcomes**: Reports preserve distinct acquisition outcome counts and derived run states, including retryable and terminal failure counts.
+- **Lock secrecy**: Active lock output includes host, PID, and start time but omits its owner token; stale-lock recovery remains a separate confirmed run action.
+- **Stable discovery**: Unfiltered run discovery is sorted by safe run ID; an explicitly invalid run is reported with a nonzero result.
+- **Attempt privacy**: Target detail shows exact attempt IDs, outcomes, errors, timestamps, and digests without exposing body paths or contents.
 
 ## Refusal behavior
 
-Invalid run identity, missing or tampered work-order/result files, incompatible
-contract versions, and path escapes must be reported as invalid state rather than
-repaired during inspection. The status command returns a non-success result for an
-explicitly requested invalid run while still permitting a list view to show that
-run's invalid summary.
+Invalid run identity, missing or tampered manifests/work orders, incompatible state
+schemas, and unsafe run roots are reported as invalid state rather than repaired. A list
+view may include an invalid summary; explicitly requesting an invalid run returns a
+non-success result.
+
+## Deliberate gaps
+
+- Status does not verify each selected-body file against its recorded digest or size; that lifecycle check needs a separate S9/S10 handoff contract.
 
 ## Acceptance
 
 Two status reads over unchanged run files produce the same report. Inspection is
 offline and cannot alter run state.
 
-Offline tests cover an empty run, a run with only skipped targets, acquired targets
-with staged and consumed bodies, optional `not_filed`, required `required_missing`,
-retryable and terminal failures, a concurrent
-active lock, interrupted work, unsupported state schema, a corrupt manifest/part,
-and a missing or digest-mismatched staged body. A corrupt explicit run is surfaced
-without state repair.
+Offline CLI tests cover sorted valid-run discovery, target-specific attempt IDs, unknown
+target refusal, corrupt-work-order refusal, and omission of the active lock owner token.
+Run-state unit tests cover outcome and lock projection independently.

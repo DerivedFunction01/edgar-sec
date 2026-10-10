@@ -143,7 +143,7 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 - `file-length`: **Fails the gate** on files exceeding the line limit (800) to prevent monolithic growth. Any finding from any scanner returns a nonzero exit code, so "advisory" is not how it behaves.
 - `layer-boundary`: Enforces strict downward-only import hierarchy.
 - `resource-allocation`: Bans hardcoded thread counts or memory limits in pipeline/engine code.
-- `batch-defaults`: Enforces ownership of shared chunk, read, SQL-insert, Parquet, and document payload defaults; it flags duplicate symbol definitions and known literals while allowing equal numbers used for distinct policies.
+- `batch-defaults`: Enforces ownership of shared chunk, read, SQL-insert, Parquet, document payload, and I/O buffer defaults; it flags duplicate symbol definitions and governed literals at identified call sites while allowing equal numbers used for distinct policies.
 - `whole-file-read`: Bans `read_bytes()` consumed by a digest constructor. Hashing a whole
   artifact to prove it intact materializes the file; use `file_sha256`. Narrow on purpose —
   a `read_bytes()` feeding `json.loads` on a small payload is a different trade and is not flagged.

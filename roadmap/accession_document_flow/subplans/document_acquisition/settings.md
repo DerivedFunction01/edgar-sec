@@ -2,9 +2,9 @@
 
 ## Purpose and status
 
-This page owns S9's configuration boundary. It is design-only; new settings must be
-registered in `edgar_sec/foundation/runtime/settings/` before the acquisition
-pipeline is implemented. No direct `os.environ` or `os.getenv` access is permitted.
+This page owns S9's configuration boundary. The acquisition byte ceiling is registered
+in the shared modular settings provider. No direct `os.environ` or `os.getenv` access
+is permitted.
 
 ## Reused settings
 
@@ -13,27 +13,26 @@ retry policy, and failure-attempt budget. It uses runtime resource derivation fo
 worker count, memory limits, threads, and temporary directory. These values are not
 duplicated in an S9 monolithic config object.
 
-The response byte ceiling passed to `SecHttpClient` is currently an optional client
-argument, not a complete S9 settings contract. S9 requires a finite, configured
-maximum and enforces it against streamed decoded bytes. The default is 256 MiB: the
+The response byte ceiling passed to `SecHttpClient` is an optional client argument;
+the S9 runner resolves it from the acquisition setting and always supplies a finite
+maximum enforced against streamed decoded bytes. The default is 256 MiB: the
 initial bounded-response policy admits large filing bodies while still refusing
 unbounded transfers. It is an acquisition limit, not an S10 in-memory budget or a
 claim that every body below the cap fits every processor. Deployments may lower or
 raise it explicitly; `None`/unbounded is not valid.
 
-## Proposed setting registry
+## Registered setting
 
-Add a phase-owned settings module (proposed key prefix `acquisition`) with only the
-S9-specific policy that shared settings do not provide:
+The phase-owned setting lives in `edgar_sec/foundation/runtime/settings/acquisition.py`
+with only the S9-specific policy that shared settings do not provide:
 
 | Logical key | Environment name | Type | Validation | Consumer |
 |---|---|---|---|---|
-| `acquisition.max_response_bytes` | `ACQUISITION_MAX_RESPONSE_BYTES` | positive integer | Defaults to `268435456`; finite and greater than zero; no booleans or unbounded sentinel. | Streaming HTTP operation and preflight summary. |
+| `acquisition.max_response_bytes` | `ACQUISITION_MAX_RESPONSE_BYTES` | positive integer | Defaults to `268435456`; finite and greater than zero; no booleans or unbounded sentinel. | Run/capture CLI resolution and bounded acquisition/fixture streaming. |
 
-The settings spec provides this entry through the existing modular registry and
-`environment_name()` resolution. The concrete registry function/type should match
-the neighboring SEC/runtime settings modules, rather than introducing a new settings
-class.
+The registry derives the environment name through `environment_name()` and supports
+CLI override, environment/dotenv, stored config, and default precedence without adding
+a monolithic settings class.
 
 ## Runtime resource policy
 
@@ -61,7 +60,8 @@ manifests, receipts, fixture rows, or logs.
 ## Acceptance
 
 Settings resolve through the shared registry with CLI overrides above environment
-and stored config. Invalid response bounds fail before opening the HTTP client, and
+and stored config. Run and fixture-capture commands use the finite configured default
+when the command-line override is omitted. Invalid response bounds fail before opening the HTTP client, and
 the SEC rate limit is not multiplied by local worker concurrency. SEC pacing is
 host-local; cross-host rate coordination and checks are explicitly out of scope, and
 the local broker limit is not a cluster-wide guarantee. Acquisition distribution

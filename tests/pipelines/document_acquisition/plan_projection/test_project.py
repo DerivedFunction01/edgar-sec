@@ -13,7 +13,7 @@ from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
-from edgar_sec.pipelines.document_acquisition.project import (
+from edgar_sec.pipelines.document_acquisition.plan_projection.project import (
     AcquisitionProjectError,
     project_acquisition_run,
 )
@@ -155,7 +155,7 @@ def test_creates_pinned_run_and_canonical_manifest(project_fixture):
 
 
 def test_state_seed_is_a_bounded_batch_generator(project_fixture, monkeypatch):
-    import edgar_sec.pipelines.document_acquisition.project as project
+    import edgar_sec.pipelines.document_acquisition.plan_projection.project as project
 
     paths, plan_root, _rows = project_fixture
     monkeypatch.setenv("PARQUET_READ_BATCH_SIZE", "2")
