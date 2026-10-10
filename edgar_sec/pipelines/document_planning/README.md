@@ -61,6 +61,14 @@ python run.py planning inspect --plan-id plan-2024-01-15
 
 ## Deliberate gaps
 
+- `exact_form` is dropped as a catalog-direct policy. The policy axis collapsed to
+  two choices: `submitted_primary` (fast, zero extra requests) and
+  `exact_form_with_lazy_index` (verifies the fetched primary; on a confirmed type
+  mismatch, fetches `-index.html` only to recover the true form and never again for
+  transport failures or missing evidence). The failed-closed `exact_form` mode became
+  an awkward middle ground: non-report forms have no inversion risk, and for report
+  forms a failure that refuses the exhibit with the index still in reach produced
+  worse outcomes than either extreme.
 - The baseline profile is generated from the operator or CLI, not inferred from
   inventory observations; users may edit or create additional profiles.
 - No source refresh, inventory projection, or acquisition is performed. Operators

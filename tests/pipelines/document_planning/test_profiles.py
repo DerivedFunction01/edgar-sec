@@ -32,7 +32,7 @@ def _rule(selector: str, *targets: dict) -> dict:
 
 
 def _primary(
-    optional: bool = False, catalog_direct_selection: str | None = "exact_form"
+    optional: bool = False, catalog_direct_selection: str | None = "submitted_primary"
 ) -> dict:
     return {
         "role": "primary",
@@ -190,7 +190,7 @@ def test_catalog_only_profile_is_accepted_and_schema_version_is_checked(
                         "role": "exhibit",
                         "type": "EX-21",
                         "optional": True,
-                        "catalog_direct_selection": "exact_form",
+                        "catalog_direct_selection": "submitted_primary",
                     }
                 ],
             }

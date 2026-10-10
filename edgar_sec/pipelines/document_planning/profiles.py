@@ -22,11 +22,7 @@ from edgar_sec.pipelines.document_planning.paths import (
 from edgar_sec.pipelines.document_planning.schemas import PROFILE_SCHEMA_VERSION
 
 _ROLES = {"primary", "exhibit", "data_file", "graphic", "package"}
-_CATALOG_DIRECT_SELECTIONS = (
-    "submitted_primary",
-    "exact_form",
-    "exact_form_with_lazy_index",
-)
+_CATALOG_DIRECT_SELECTIONS = ("submitted_primary", "exact_form_with_lazy_index")
 _CODE_TYPE_RE = re.compile(r"EX-[A-Z0-9]+(?:\.[A-Z0-9]+)*\Z", re.ASCII)
 _EXHIBIT_PREFIX_RE = re.compile(r"EX-(?:\*|10\.\*)\Z", re.ASCII)
 _TARGET_KEYS = {"role", "type", "optional"}
@@ -321,7 +317,7 @@ def _make_baseline_profile() -> ResolvedProfile:
             "*",
             (
                 ProfileTarget(
-                    "primary", "primary", False, "primary:primary", "exact_form"
+                    "primary", "primary", False, "primary:primary", "submitted_primary"
                 ),
             ),
         ),
@@ -340,7 +336,7 @@ def _make_baseline_profile() -> ResolvedProfile:
                                 "role": "primary",
                                 "type": "primary",
                                 "optional": False,
-                                "catalog_direct_selection": "exact_form",
+                                "catalog_direct_selection": "submitted_primary",
                             }
                         ],
                     }
@@ -411,7 +407,7 @@ def get_or_create_baseline_profile(
                         "role": "primary",
                         "type": "primary",
                         "optional": False,
-                        "catalog_direct_selection": "exact_form",
+                        "catalog_direct_selection": "submitted_primary",
                     }
                 ],
             }

@@ -120,7 +120,8 @@ def test_catalog_only_plan_is_pinned_sorted_and_identically_reused(
 ) -> None:
     paths = _paths(tmp_path)
     _write_profile(
-        paths, [_target("primary", "primary", catalog_direct_selection="exact_form")]
+        paths,
+        [_target("primary", "primary", catalog_direct_selection="submitted_primary")],
     )
     _publish_catalog(paths)
 
@@ -149,7 +150,8 @@ def test_form_parts_have_deterministic_row_boundaries(
 ) -> None:
     paths = _paths(tmp_path)
     _write_profile(
-        paths, [_target("primary", "primary", catalog_direct_selection="exact_form")]
+        paths,
+        [_target("primary", "primary", catalog_direct_selection="submitted_primary")],
     )
     accessions = [f"00000000012400000{number}" for number in (1, 2, 3)]
     rows = [
@@ -250,7 +252,7 @@ def test_inventory_plan_uses_pinned_index_and_distinguishes_package_candidate(
     _write_profile(
         paths,
         [
-            _target("primary", "primary", catalog_direct_selection="exact_form"),
+            _target("primary", "primary", catalog_direct_selection="submitted_primary"),
             _target("exhibit", "EX-21"),
             _target("data_file", "extracted_xbrl_instance"),
             _target("package", "xbrl_zip", optional=True),
