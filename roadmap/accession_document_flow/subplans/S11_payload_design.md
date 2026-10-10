@@ -60,6 +60,56 @@ The design record must answer all questions with a proposal, evidence, and rejec
 
 Score each candidate against replay fidelity, storage/read amplification, duplicate rate, atomicity, bounded memory, concurrency, query patterns, retention, operations, and migration effort. CAS is a candidate to investigate, not a pre-approved decision; DuckDB may remain a metadata/query engine even if body bytes live elsewhere.
 
+## Candidate relational identity model
+
+The current preferred relational sketch separates physical slot metadata, acquired
+bytes, observed type evidence, and target assignment. It is a candidate for the S11
+decision record, not an approved durable schema:
+
+| Relation | Candidate key and grain | Candidate contract |
+|---|---|---|
+| `acquisition_slots` | `(accession, sequence)`; stable `accession_seq_hash` may be its surrogate key. One row per observed physical position. | Store observed document path, source URL, and retrieval mode. Sequence 1 is the physical anchor for the catalog `primaryDocument` link, not a statutory-primary assertion. Index rows or bundle extraction may add other sequence slots. |
+| `slot_payloads` | Link from a physical slot to content-addressed bytes. | Store the CAS digest, route, and decoded byte size only for a successfully acquired payload. Transport/extraction failures belong to the append-only attempt ledger, not a payload-link row with `status=failed`. Repeated content may share one CAS object; retain each slot link. Preserve prior payload observations if the same slot later yields changed bytes rather than silently overwriting history. |
+| `slot_types` | Sparse source-metadata observations for one slot. | Write no row until index or bundle metadata supplies a type. Keep evidence source/reference (index snapshot/row or SGML bundle child), observed type, and publication/observation time. A local screen result belongs to the target resolution record, not this relation. Multiple metadata sources may disagree; retain provenance and derive the current view deterministically rather than erasing evidence. |
+| `target_slot_selections` | Target ID plus resolution/attempt identity. | Link S6 target intent to the physical slot whose body S10 consumed. Preserve the original sequence-1 attempt, any index lookup, and the chosen replacement sequence. This is required because one target may resolve away from its catalog-anchored slot and multiple targets may reuse one slot. |
+
+The simplified sketch's single-row `slot_types` key `(slot, evidence_kind)` is
+insufficient for an append-only evidence history across refreshed snapshots or
+conflicting observations. The production key must include an evidence identity (for
+example snapshot ID/digest plus entry ID, or source-body digest plus document ordinal)
+and a deterministic current-evidence rule. Likewise, `slot_payloads` should not encode
+failed fetches; the S9 attempt ledger already owns failure outcomes. Exact constraints,
+hash serialization, indexes, transaction boundaries, and retention remain open for the
+approved S11 design.
+
+### Selector and enrichment behavior
+
+- `submitted_primary` fetches the catalog's sequence-1 link and performs no type
+  evaluation or lazy index request. Its bytes can enter the slot payload relation,
+  while `slot_types` remains empty unless independent index/SGML evidence is observed.
+- `exact_form_with_lazy_index` performs the local ASCII `<TYPE>` or HTML cover
+  suspicion screen after sequence 1 is acquired. An ASCII `<TYPE>` mismatch or
+  unverifiable/missing type, or a cover result that cannot verify the filing form,
+  triggers bounded index discovery. A positive HTML
+  cover result avoids the extra lookup but is not itself a type fact. A locally
+  accepted screen, including a matching SGML header, is recorded in the target
+  resolution and does not by itself create a `slot_types` row. The exact form is
+  selected only by an observed index row whose `document_type` matches the filing
+  form; no sequence/filename guess is permitted.
+- A lazy lookup may retain the sequence-1 payload and acquire a second slot for the
+  actual primary. Its target-slot assignment names only the selected body for S10.
+  An already-acquired slot payload can be reused with zero document-body requests.
+- A later S5 snapshot can enrich slot locator/type metadata without re-fetching or
+  re-processing payloads. S5 remains an immutable inventory snapshot; a downstream
+  reconciliation reads its pinned facts and adds/upserts acquisition-side metadata.
+  An index fetch is still a network request, but this mode performs no document-payload
+  fetch or S10 work. S9/S5 must not write one another's owned artifacts.
+
+These relational tables are separate from the current S9 transient run/fixture
+contracts and from S5's `accessions`, `entries`, and `accession_sources` relations.
+S11 approval is required before durable payload links, CAS bytes, or reconciliation
+outputs are published.
+
 ## Annual inventory and target-plan invariants
 
 - The S5 snapshot remains annual, immutable, and queryable; no payload part/hash/offset field is introduced there.

@@ -80,14 +80,29 @@ flowchart TD
     BUNDLE -->|complete valid bundle, sequence absent| NOTFILED["not_filed"]
     BUNDLE -->|duplicate sequence| AMBIG["ambiguous"]
     BUNDLE -->|malformed/truncated/oversize| ACQFAIL
-    DIRECT -->|verified bytes| BODY["acquired<br/>managed StagedBodyRef + source/selected provenance"]
+    DIRECT -->|verified bytes| BODY["acquired candidate body<br/>physical slot from locator"]
     BUNDLE -->|one exact child selected| BODY
 
-    BODY --> S10["Proposed S10 validates same staged bytes<br/>routes selected child and applies role profile"]
+    BODY --> POLICY{"Catalog-direct selector?"}
+    POLICY -->|inventory-backed / none| FINALBODY["Assign exact planned physical slot"]
+    POLICY -->|submitted_primary| SUBMITTED["Accept catalog sequence 1 as submitted<br/>no type evidence required"]
+    SUBMITTED --> FINALBODY
+    POLICY -->|exact_form_with_lazy_index| SCREEN["Local ASCII <TYPE> / HTML cover suspicion screen"]
+    SCREEN -->|no suspicion| FINALBODY
+    SCREEN -->|mismatch or unverifiable| LAZY["Fetch and parse -index.html<br/>record slot locators/types; match expected filing form"]
+    LAZY -->|one matching indexed slot| RECOVER["Select direct or exact bundle sequence<br/>retain sequence-1 attempt"]
+    LAZY -->|no type match| ABSENT{"Target optional?"}
+    ABSENT -->|yes| RECOVERYRESULT["not_filed<br/>with index evidence"]
+    ABSENT -->|no| REQUIREDMISSING["required_missing<br/>with index evidence"]
+    LAZY -->|duplicate / fetch or parse failure| RECOVERYRESULT2["ambiguous / failed<br/>with index evidence"]
+    RECOVER --> FINALBODY
+
+    FINALBODY --> S10["Proposed S10 validates assigned staged bytes<br/>routes selected child and applies role profile"]
     S10 --> RESULT["ProcessingResult<br/>metadata, digests, fingerprint, diagnostics"]
     S10 --> RECEIPT["Write S9 BodyConsumptionReceipt<br/>then permit staged-body cleanup"]
     S10 -. "optional capture_review" .-> REVIEW["S7 promotes staged review output<br/>not a payload store"]
-    RESULT -. "after representative S9/S10 evidence<br/>and explicit design approval" .-> S11["S11 durable raw/derived payload decision<br/>no store contract approved yet"]
+    RESULT -. "after representative S9/S10 evidence<br/>and explicit design approval" .-> S11["S11 payload-store decision<br/>slot metadata, CAS links, sparse type evidence"]
+    S5 -. "future pinned snapshot reconciliation<br/>metadata only; no document-body fetch" .-> S11
 
     FIXTURE["Optional S9 fixture capture/replay<br/>exact response bytes for offline evidence"] -. "replay source; not production storage" .-> BODY
 ```
@@ -101,14 +116,15 @@ flowchart TD
 | S2/S4/S3 inventory run | Missing/explicitly refreshed accession work items, shared broker or pinned fixture bytes. | Typed page outcomes/checkpoints plus observed document/data rows and separate bundle URL/size metadata. | Known accessions reuse snapshot facts; fetch/parse failure is never empty inventory. No child body is acquired here. S0 evidence gates final historical parser acceptance. |
 | Inventory publish / S5 | Validated cohort, committed S4 results, expected parent snapshot. | Cumulative immutable inventory snapshot and current pointer advanced only after complete validation. | Failed or unrecognized accessions prevent publication; inventory stores observed index facts, not targets or payloads. |
 | S6 target planning (implemented) | Required pinned catalog plan; optional pinned S5 snapshot; versioned profile. | Immutable target-plan bundle with one target row per request/candidate and explicit status/provenance/retrieval locator. | Without a snapshot only primary catalog-direct planning is valid. With a snapshot it is the sole locator evidence; never fall back to catalog paths. Current code allows bundle-sequence locators for unlinked exhibits only. |
-| S9 acquisition (proposed) | Validated S6 plan bundle, pinned source provenance, supported matched locators. | Append-only attempts/outcomes, exact source and selected-body digests, transient staged body reference for acquired targets. | No catalog/inventory reread, index fetch, target discovery, or replacement selection. Non-matched plan rows remain visible but issue no request. |
-| S10 processing (proposed) | Acquired S9 body and matching immutable work-order row. | Per-target `ProcessingResult`; optional S7 review reference; S9 consumption receipt after verified read. | Does not discover or fetch targets. A processing/cover diagnostic cannot revise S6 intent or cause S9 work. |
-| S11 payload design (gated) | Reviewed representative S9 acquisition and S10 processing evidence. | A reviewed storage decision record, then only later an approved durable-store implementation. | No production payload layout or S5/S6 schema change is authorized by this decision tree. |
+| S9 acquisition (proposed) | Validated S6 plan bundle, pinned source provenance, supported matched locators. | Append-only attempts/outcomes, exact source and selected-body digests, transient staged body reference, and for lazy recovery a target-to-physical-slot resolution record. | Default path executes exact planned locator. Only catalog-direct `exact_form_with_lazy_index` may fetch/parse `-index.html`, after the defined local identity suspicion. It records the new evidence without changing S5/S6. |
+| S10 processing (proposed) | Acquired S9 body assigned to the immutable S6 target. | Per-target `ProcessingResult`; optional S7 review reference; S9 consumption receipt after verified read. | Processes only the resolved body. It does not discover targets; a processing/cover diagnostic cannot revise S6 intent or cause S9 work. |
+| S11 payload design (gated) | Reviewed representative S9 acquisition and S10 processing evidence. | A reviewed storage decision record; candidate relations separate physical slots, CAS links, sparse type evidence, and target-slot assignments. | No durable payload store is authorized before approval. Metadata-only reconciliation consumes pinned S5 facts downstream and does not alter S5/S6 schemas. |
 
-The full inventory path is catalog materialization → catalog plan → S5 inventory publication → S6 plan → S9
-acquisition → S10 processing. The catalog-direct route skips S5 only for a primary-only
-profile and intentionally has weaker evidence. It is not an automatic recovery branch
-for an accession missing from a selected inventory snapshot.
+The full inventory path is catalog materialization → catalog plan → S5 inventory
+publication → S6 plan → S9 acquisition → S10 processing. The catalog-direct route
+skips S5 only for a primary-only profile and intentionally has weaker evidence. Its
+lazy-index path is an explicit selector-authorized exception, not a fallback for an
+accession missing from a selected inventory snapshot.
 
 ## S6 planning decisions
 
@@ -160,60 +176,44 @@ table:
 3. **Neither supported locator is usable:** emit `unresolved / no_usable_retrieval_locator`.
    Do not synthesize a bundle URL or treat a missing catalog primary as an envelope.
 
-These rules also apply to catalog-direct primaries: direct locator only, no bundle
-promotion. The plan records the target role/type as intent. In particular, S6 does not
-currently carry the observed inventory `document_type` as a promised SGML-header
-assertion. S9 records the selected child's actual `<TYPE>` as provenance; validating it
-against the inventory row would require a versioned plan contract that carries that
-type. See [S6 matching](../S6_target_plans.md) and
+For the initial catalog-direct fetch, the locator is direct-only; S6 does not promote
+an absent catalog link into an envelope guess. The profile selector may separately
+authorize post-fetch lazy index resolution as described below. The plan records target
+role and requested type as intent. Inventory-backed S6 does not currently carry its
+observed `document_type` as a promised SGML-header assertion. S9 records the selected
+child's actual `<TYPE>` as provenance; validating it against a pinned inventory row
+would require a versioned S6 plan field. See [S6 matching](../S6_target_plans.md) and
 [S9 extraction](run/extraction.md).
 
-## Catalog-direct (no index) inversion gate and evaluator
+## Catalog-direct primary selectors and lazy recovery
 
-When an accession has no inventory index (`has_index=False`) and relies on catalog-direct
-locators, exhibits are immediately refused. For primary requests on cover-bearing
-families (`10-K`, `20-F`, `8-K`, `10-Q`), the catalog path may point to an inverted
-exhibit rather than the statutory form.
+Catalog-only planning remains primary-only. The profile selector is binary:
 
-The evaluation process differs fundamentally between ASCII and HTML documents:
+| Selector | Initial slot behavior | Identity/recovery behavior |
+|---|---|---|
+| `submitted_primary` | Fetch the catalog primary link, anchored to physical sequence 1. | Accept as submitted; do not inspect type or fetch an index. `slot_types` stays empty unless evidence is observed independently. |
+| `exact_form_with_lazy_index` | Fetch the same sequence-1 candidate. The expected statutory type is the filing form, independent of `target_role=primary`, the index primary designation, or sequence number. | Run a bounded local screen. An ASCII SGML `<TYPE>` mismatch/missing/unverifiable type or an HTML cover evaluator that fails to verify the filing form is an inversion suspicion and triggers a single lazy index lookup. A unique index row with matching observed `document_type` chooses the actual physical slot; no sequence/name guess is allowed. |
 
-```mermaid
-flowchart TD
-    CAT["Catalog-direct primary URL fetched"] --> ROUTE{"Document format / route?"}
-    
-    ROUTE -- ASCII .txt --> ASC_HDR{"Inspect SGML/ASCII header<br/>Check <TYPE> and line 0-20"}
-    ASC_HDR -- "<TYPE> matches target form" --> ASC_OK["Valid primary: proceed to normalize"]
-    ASC_HDR -- "<TYPE>EX-... or exhibit marker" --> ASC_FAIL["Inversion detected:<br/>refuse pseudo-primary / flag error"]
-    
-    ROUTE -- HTML .htm/.html --> EVAL["Run Cover Page Evaluator<br/>on normalized text"]
-    EVAL --> COV_CHK{"Cover markers found?<br/>SEC header, Form title, IRS/CIK"}
-    COV_CHK -- Yes --> COV_OK["Valid primary: verified cover"]
-    COV_CHK -- Stub Detected --> COV_STUB["Flag incorporation stub<br/>(e.g., EX-13 incorporation)"]
-    COV_CHK -- No --> COV_FAIL["Inversion detected / missing cover:<br/>refuse pseudo-primary"]
-```
+`exact_form` is dropped. The lazy selector is conditional by design: a positive HTML
+cover result avoids the index request but is heuristic and does not prove exact type.
+HTML has no reliable SGML `<TYPE>` field. A 404 or other transport failure does not
+trigger recovery; normal S9 retry/failure rules apply. If the lazy lookup is recognized
+but has no filing-form row, report a typed absence with index evidence; duplicates are
+ambiguous, and failed/unrecognized index responses are failures, not absence.
 
-### 1. ASCII (`.txt`) documents
-- **Detection ease:** High. The SGML `<DOCUMENT>` header contains an explicit `<TYPE>`
-  token (e.g. `<TYPE>10-K` vs `<TYPE>EX-23.1`) within the first 1 KiB.
-- **Verification rule:** A simple regex against the initial header lines confirms whether
-  the document claims the form type before consuming full text. If the header declares an
-  exhibit type, the candidate is immediately rejected without deep reflow parsing.
+For catalog-direct selection, the initial payload remains associated with slot 1 even
+when it is an exhibit. Lazy lookup may enrich metadata for every observed sequence
+and acquire a separate matching slot. Keep the index rows/type observations, payload
+links, and target-to-selected-slot assignment separate. S10 receives only the final
+selected body. This selector-authorized S9 lookup does not publish or mutate an S5
+snapshot.
 
-### 2. HTML (`.htm` / `.html`) documents
-- **Detection ease:** Moderate to complex. HTML documents lack SGML `<TYPE>` header tags;
-  the filename itself (e.g. `d10k.htm`, `main.htm`, `ex23.htm`) cannot be trusted alone
-  due to filers using generic names.
-- **Verification rule:** Must run the **Cover Page Evaluator** over normalized text.
-  Cover-bearing forms require explicit statutory tokens:
-  - Header: *"UNITED STATES SECURITIES AND EXCHANGE COMMISSION"*
-  - Form indicator: *"FORM 10-K"*, *"FORM 20-F"*, or *"FORM 8-K"*
-  - Entity identifiers: Commission File Number, IRS Employer Identification Number.
-- **Outcomes:**
-  - **Cover verified:** The document is accepted as the true primary.
-  - **Cover missing:** Target is an inverted exhibit or misfiled attachment; emit
-    `cover_boundary_not_detected` and refuse the pseudo-primary.
-  - **Stub detected:** The document has a valid cover but body items declare
-    *"incorporated by reference to Exhibit 13"*; record diagnostic.
+The local screen and the index's `document_type` answer different questions. The
+screen decides whether to spend a request; only an index/bundle metadata row creates a
+`slot_types` fact. A positive local SGML/HTML screen is recorded in the target
+resolution and does not populate that relation. Preserve evaluator version/outcome
+and index-response/parser provenance with the resolution. Do not treat cover-boundary
+diagnostics in S10 as another recovery trigger.
 
 ---
 
@@ -252,7 +252,9 @@ different filing eras, document formats, and exhibit link states.
   - S9c extracts exact sequence 4 for Exhibit; computes `selected_sha256`.
   - Both targets succeed as `status = "acquired"` with zero regression or missing-link errors.
 - **Processing (S10):**
-  - Primary is route `TEXT`; verifies ASCII header `<TYPE>10-K` and normalizes with 10-K cover rules.
+  - S9 records the observed ASCII header `<TYPE>10-K` as provenance. S10 processes
+    the primary as route `TEXT` with 10-K cover rules; it does not use the header as a
+    target-identity assertion.
   - Exhibit is route `TEXT`; normalizes with generic no-cover profile.
 
 ### Example 2: 2000–2004 Form 10-K with Sequence 1 inversion (2002, Mixed links, HTML)
@@ -273,20 +275,17 @@ different filing eras, document formats, and exhibit link states.
 - **Outcome:** Sequence 1 inversion is completely bypassed at planning time with zero regex
   heuristics, while unlinked exhibit is retrieved safely via bundle sequence.
 
-### Example 3: 2001 Form 10-K without index (Catalog-Direct, Inversion Detection)
+### Example 3: 2001 Form 10-K without a pinned index (Catalog-Direct, Lazy Recovery)
 - **Filing:** Form `10-K`, Accession `0000888888-01-000456`.
-- **Index state:** `has_index = False` (Catalog-only run).
+- **Plan state:** no inventory snapshot is pinned (catalog-only run).
 - **Catalog metadata:** Catalog lists `primary_document = dex231.htm` (misindexed Seq 1 exhibit).
-- **Case 3A (ASCII `dex231.txt`):**
-  - S9 fetches direct URL.
-  - S10 reads initial 1 KiB: `<TYPE>EX-23.1`.
-  - Evaluator instantly flags exhibit header $\to$ rejects pseudo-primary.
-- **Case 3B (HTML `dex231.htm`):**
-  - S9 fetches direct URL.
-  - S10 runs Cover Page Evaluator on normalized HTML text.
-  - Evaluator searches for *"UNITED STATES SECURITIES AND EXCHANGE COMMISSION"* and Form title.
-  - Result: No cover page detected; content is an accountant's consent $\to$ rejects pseudo-primary
-    with `cover_boundary_not_detected`.
+- **Profile:** primary target with `catalog_direct_selection = exact_form_with_lazy_index`.
+- **Initial acquisition:** S9 fetches the catalog URL into physical slot 1. The expected type is `10-K`; the slot is not asserted to be primary by its sequence.
+- **ASCII case:** S9 reads the bounded SGML header, observes `<TYPE>EX-23.1`, and triggers lazy index lookup.
+- **HTML case:** S9 runs the versioned cover evaluator. No verified `10-K` cover is a suspicion trigger, not proof of exhibit identity, so it triggers the same lookup.
+- **Lazy lookup:** a recognized `-index.html` reports Seq 1 as `EX-23.1` and Seq 2 as `10-K`. S9 records both slot types, acquires Seq 2 from its exact direct or bundle locator, and assigns the target to slot 2. Seq 1 remains available as an acquired slot if durable storage has been approved.
+- **Processing:** S10 receives only the slot-2 body under the same S6 `target_id`; its own cover diagnostic cannot trigger further lookup.
+- With `submitted_primary`, the same catalog link would be accepted as submitted at slot 1, with no local screen or index request.
 
 ### Example 4: Post-2005 Form 20-F / 8-K (2018, Direct Links & iXBRL)
 - **Filing:** Form `20-F`, Accession `0001193125-18-000789`.
@@ -298,7 +297,8 @@ different filing eras, document formats, and exhibit link states.
   - Exhibit matches Seq 2 $\to$ `retrieval_mode = direct_url`.
 - **Acquisition & Processing (S9/S10):**
   - Both stream direct URLs.
-  - S10 unrolls inline-XBRL tags for Form 20-F visible text normalization; verifies 20-F cover.
+  - S10 unrolls inline-XBRL tags for Form 20-F visible text normalization and emits
+    its 20-F cover-boundary diagnostic.
 
 ---
 
@@ -319,13 +319,18 @@ provenance distinct. Redirects must remain inside the accession archive boundary
 | More than one child has the requested sequence | `ambiguous`. | No body is selected. |
 | Bundle fetch fails, is oversized/truncated, or is structurally invalid | `failed`. | No successful selected-body reference. |
 | S6 row was non-matched or unsupported | Proposed `skipped`, with its S6 status retained in the plan/work order. | No HTTP request; retry cannot make it executable. |
+| Catalog-direct `submitted_primary` body acquired | `acquired` at physical sequence 1; no type assertion. | Give the slot-1 body to S10; do not fetch an index. |
+| Catalog-direct `exact_form_with_lazy_index` body screen finds no suspicion | `acquired` at sequence 1; HTML cover success remains heuristic. | Give slot 1 to S10; no index request or type-evidence row is implied. |
+| Catalog-direct screen suspects inversion; recognized index has one row matching filing form | Acquire/lookup the observed direct or exact bundle slot and record the target-to-slot resolution; preserve slot-1 evidence. | Give only the selected slot to S10. Sparse type evidence records each observed index row. |
+| Lazy index is recognized but has no expected-form row | `not_filed` for optional, `required_missing` for required, with index provenance. | Never infer sequence or silently use another candidate. |
+| Lazy index has duplicate matches / fetch or parse fails | `ambiguous` / `failed`, respectively, with index provenance. | Never infer sequence or silently use another candidate. |
 
-For bundle selection the observed S6 sequence is authoritative, even if the selected
-header type/filename differs from expectations. Since the current S6 schema does not
-pin observed type as an assertion, S9 does not cross-check the header against the S5
-row and does not use header mismatch to find a replacement. S9 fixture capture stores
-exact response bytes in its evidence store; it is not the future durable payload
-store. See [S9 acquisition](../S9_acquisition.md),
+For an inventory-backed bundle target, the observed S6 sequence remains authoritative;
+S9 does not use a selected header mismatch to find a replacement. The explicit
+catalog-direct lazy policy is different: it may fetch the index after the sequence-1
+body screen suspects mismatch and then selects by the index's observed `document_type`.
+S9 fixture capture stores exact response bytes in its evidence store; it is not the
+future durable payload store. See [S9 acquisition](../S9_acquisition.md),
 [bounded extraction](run/extraction.md), and
 [fixture storage](fixtures/storage.md).
 
@@ -361,18 +366,24 @@ matching receipt is durable. See [S10 processing](../S10_processing.md).
 
 ## Explicitly excluded recovery branches
 
-- No S9/S10 request for `-index.html`, filename search, era-based reclassification,
-  primary inversion repair, or replacement target discovery.
+- No automatic S9/S10 index lookup, filename search, era-based reclassification, or
+  target replacement. The sole exception is catalog-direct
+  `exact_form_with_lazy_index`, which authorizes one bounded lookup only after its
+  defined body-screen suspicion.
 - No fallback from a missing inventory accession to its catalog primary link.
-- No fallback from a direct URL 404 to the bundle, another URL, or sequence 1.
-- No `<TYPE>` comparison against S5 inventory until a future versioned S6 contract
-  carries observed type.
+- No fallback from a direct URL 404 or transient failure to the bundle, another URL,
+  or sequence 1.
+- No comparison between a fetched bundle child's `<TYPE>` and a pinned S5 row in the
+  ordinary inventory-backed path until a future versioned S6 contract carries that
+  observed type. Catalog-direct lazy recovery instead selects by its freshly fetched
+  index rows under the explicit selector.
 - No S10 evaluator action that schedules an exhibit. Companion targets such as EX-13
   must be in the S6 profile/plan before acquisition begins.
 - No durable raw/normalized payload publication before S11 review and explicit
   approval.
 
-If correct document-type evidence or companions are required, publish the S5 inventory
-and generate a new S6 plan. The inventory snapshot, target plan, acquisition run, and
-processing result remain separate immutable or independently versioned artifacts.
-
+If correct document-type evidence is required without accepting the selector's
+conditional suspicion screen, or companion targets are required, publish the S5
+inventory and generate a new S6 plan. The inventory snapshot, target plan, acquisition
+run, slot resolution, and processing result remain separate immutable or independently
+versioned artifacts.

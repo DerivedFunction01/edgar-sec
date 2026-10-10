@@ -63,7 +63,9 @@ same service and never duplicate projection logic.
   retrieval executable. Preserve all other target outcomes as skipped work with a
   reason; they cause no SEC request.
 - Preserve the target's plan ID/digest, target ID, request identity, accession,
-  source origin, retrieval mode, and locator or sequence in the work order.
+  source origin, retrieval mode, locator or sequence, and pinned
+  `catalog_direct_selection` in the work order. S9 cannot choose or upgrade the
+  selector during projection.
 - Import only the S6 owner `paths.py` and `schemas.py` contracts. Derive direct
   document paths from the validated URL; do not reinterpret `target_type` or reopen
   `inventory_entry_id` to guess a filename.

@@ -218,12 +218,15 @@ rate-limited research step; normal tests remain offline and deterministic.
 serialization, and atomic-storage APIs may be used when their existing contract
 fits. The module disposition map records direct reuse, inspiration-only contracts,
 and retirement candidates. The package is removed only after the post-S12
-decommission gate passes. The old candidate-recovery logic is not ported: where the
-index page publishes document types, planning matches those observations rather than
-inferring a primary from sequence order or fetching an SGML bundle to discover it.
-S9 selects the planned locator/sequence and S10 processes that selected body; neither
-stage fetches an index page or discovers a replacement. If the caller needs that
-evidence, it must complete S5 and publish a new S6 plan first.
+decommission gate passes. The old implicit candidate-recovery logic is not ported:
+inventory planning matches observed index types rather than inferring a primary from
+sequence order or fetching a bundle to discover one. The catalog-direct
+`exact_form_with_lazy_index` policy is an explicit, bounded S9 exception authorized
+by the S6 profile, not a port of legacy date/name candidates or evaluator delegation.
+Ordinary S9 acquisition consumes the planned locator; only that selector may fetch an
+index after its specified body-screen suspicion. S10 never discovers or replaces a
+target. Callers needing published, reusable index evidence outside this exception
+complete S5 and publish an index-backed S6 plan first.
 
 ## 4. Durable Shapes Before Payload Storage
 

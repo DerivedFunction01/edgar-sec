@@ -27,6 +27,14 @@ document, or revise the target's identity. `source_origin="catalog_direct"` mean
 the catalog supplied the locator; processing does not upgrade it to an
 index-verified statutory document type.
 
+For catalog-direct primaries, S9's pinned `catalog_direct_selection` policy is
+resolved before S10 receives a body. `target_role=primary` is processing intent; the
+expected statutory type is the filing form, while sequence and any observed index/body
+type remain separate evidence. Under `exact_form_with_lazy_index`, S9 may assign the
+target to a different observed slot after its local suspicion screen and lazy index
+lookup. S10 processes only the final target-to-slot assignment and never runs that
+lookup itself. A successful HTML cover screen is not an exact-type assertion.
+
 ## Models and operation
 
 ```python
@@ -248,10 +256,11 @@ The existing `engine.document.html.normalizer.normalize_html_document()` remains
   has its own S9 acquisition and S10 result; an absent optional target remains the
   S6 `not_filed` outcome and has no S10 processing request. If retained, delegation
   phrase analysis is diagnostic evidence only and cannot create a target.
-- If correct statutory identity or a companion target is required, publish the S5
-  inventory snapshot and re-plan in S6 before acquisition. An index fetched during
-  S10 is out of contract: it cannot be attached to the immutable target plan or
-  written into S5/S6 by the processing owner.
+- If a caller requires published, reusable statutory identity evidence, or a companion
+  target, publish the S5 inventory snapshot and re-plan in S6 before acquisition.
+  Catalog-direct `exact_form_with_lazy_index` is the separately authorized S9-only
+  exception; an index fetched during S10 is out of contract and cannot be attached to
+  the immutable target plan or written into S5/S6 by the processing owner.
 - A valid catalog-direct target still receives an ordinary S10 result with its
   catalog provenance intact and may be considered by the future S11 store. The
   prohibition is on persisting an index-discovered replacement or companion that has

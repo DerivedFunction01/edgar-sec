@@ -7,8 +7,10 @@
   replacement contracts are indexed in
   [document_acquisition](document_acquisition/cli_inventory.md); the older S9a–S9d
   decomposition is retained as background design, not the active command index.
-- Depends on: validated S6 target-plan bundles and S4 broker lifecycle. S9 does not read
-  S5 or catalog source artifacts.
+- Depends on: validated S6 target-plan bundles and S4 broker lifecycle. The ordinary
+  inventory-backed path does not read S5 or catalog source artifacts; catalog-direct
+  `exact_form_with_lazy_index` may fetch and parse an index page under its explicit
+  recovery policy.
 - Non-blocking: S10 processing uses the staged selected-body reference and fixture replay API.
 
 ## Current tracked-code audit (2026-10-08)
@@ -19,7 +21,7 @@
 
 ## Objective
 
-Acquire only executable targets from immutable target plans, retain source provenance, select legacy bundle bodies by exact sequence, and make representative acquisition evidence replayable without network access. Acquisition does not publish a durable payload store and does not import `pipelines.document_storage`.
+Acquire only executable targets from immutable target plans, retain source provenance, select legacy bundle bodies by exact sequence, and make representative acquisition evidence replayable without network access. S9 may resolve a catalog-direct primary to a different physical slot only when the pinned selector explicitly authorizes lazy index recovery. Durable slot/payload/type relations remain gated by S11. S9 does not import `pipelines.document_storage`.
 
 ## Target and result boundary
 
@@ -31,12 +33,12 @@ plan. `source_origin` selects a resolver, not a separate downstream data shape:
 
 - `inventory_index` direct targets fetch their observed URL.
 - `inventory_index` bundle targets use the accession bundle URL in `target_url` and require the observed sequence; S9 does not reopen the inventory snapshot.
-- `catalog_direct` targets fetch the direct URL emitted by the S6 catalog adapter. They do not create or require a synthetic inventory entry.
+- `catalog_direct` targets fetch the direct URL emitted by the S6 catalog adapter. They do not create or require a synthetic S5 inventory entry. Their `catalog_direct_selection` is carried into the work order and controls only the post-fetch screen/recovery behavior.
 
 The S6 `request_id` consumed below is derived by the planner from the profile's
 canonical `(role, type)` pair; profile authors do not maintain an ID mapping.
 
-Only `status="matched"` rows with `direct_url` or `bundle_sequence` are executable. Other target outcomes remain in the plan and are counted as skipped; `constructed_candidate` is not fetched unless a later S0 policy explicitly makes it executable. Target plans and inventory snapshots remain immutable.
+Only `status="matched"` rows with `direct_url` or `bundle_sequence` are executable. Other target outcomes remain in the plan and are counted as skipped; `constructed_candidate` is not fetched unless a later S0 policy explicitly makes it executable. Target plans and inventory snapshots remain immutable. A catalog-direct primary is initially bound to physical sequence 1, the slot anchored by the catalog primary link; sequence 1 is not a type assertion.
 
 ```python
 AcquisitionStatus = Literal["acquired", "not_filed", "ambiguous", "failed"]
@@ -68,7 +70,7 @@ class AcquisitionExecution:
     selected_body: StagedBodyRef | None
 ```
 
-An HTTP 404, including a direct-target 404, is a transport failure with `error_code="http_not_found"` and acquisition status `failed`; it is never `not_filed`. `not_filed` means a complete bundle was fetched and parsed successfully but contained no document at the requested sequence. Duplicate sequence matches are `ambiguous`; malformed bundles and parse failures are `failed`. A fixture replay that succeeds has status `acquired` and source `fixture_replay`—replay provenance is not an outcome status. `selected_body` is present only for `acquired` results and is the S10 input; it is a managed transient path, not a payload value in the case row.
+An HTTP 404, including a direct-target 404, is a transport failure with `error_code="http_not_found"` and acquisition status `failed`; it does not itself trigger index lookup or fallback. In the catalog-direct `exact_form_with_lazy_index` mode, a successfully fetched sequence-1 body whose ASCII SGML `<TYPE>` mismatches or cannot verify the accession form, or whose HTML cover evaluation fails to verify that form, triggers one bounded index lookup. The recognized index's observed row type selects the physical slot; a unique match is acquired from its direct locator or exact bundle sequence, and all observed slot type rows are retained as metadata evidence. A complete recognized index with no form-matching row is `not_filed` for an optional target or `required_missing` for a required target; duplicate matches are `ambiguous`; failed lookup/parse remains `failed`. These outcomes are distinct from an absent child sequence in a fully parsed bundle. A successful local HTML cover evaluation avoids the lookup but remains heuristic, not an exact-type proof. `submitted_primary` skips this screen and lookup. A fixture replay that succeeds has source `fixture_replay`—replay provenance is not an outcome status. `selected_body` is present only for `acquired` results and is the S10 input; it is a managed transient path, not a payload value in the case row.
 
 ## Command contract index
 
@@ -91,6 +93,12 @@ or publish a durable payload snapshot.
 - Response byte limits are enforced while streaming; oversize bodies are aborted and never truncated into successful targets.
 - The broker streams to managed local staging. Process workers receive path handles and return typed metadata/digests; raw response bytes never cross process IPC. Explicit fixture capture streams from the staged path.
 - A selected bundle child is staged separately from its full source envelope. Both digests and sizes are recorded; the child is never selected by a guessed sequence.
+- Catalog-direct selection records the initial sequence-1 attempt even when a later
+  index row selects another slot. Persisting both slot payloads beyond S9/S10 is
+  conditional on S11 approval. The target-to-slot assignment and each physical slot's
+  payload identity are separate from the target request; a single target's S10 input
+  is the selected slot only.
+- When the durable relations are approved, index discovery may enrich physical slot/type metadata without re-fetching or reprocessing already acquired payloads. S5 remains an immutable metadata snapshot owner; its facts are consumed by a downstream reconciliation, not written into S5 by S9.
 - Transient source and selected-body files are removed after downstream processing unless the capture policy commits the source response to the fixture store.
 - Fixture bodies are test/review evidence, not the future durable payload store. S11 owns that design gate.
 
@@ -100,6 +108,8 @@ or publish a durable payload snapshot.
 - Non-executable target statuses cause no HTTP request.
 - Large responses stream to disk within a configured byte budget; no whole-body broker buffer or payload IPC is required in normal mode.
 - Bundle extraction returns the exact requested sequence or a typed failure; it never falls back to sequence one.
+- `submitted_primary` performs no local type evaluation or index request; `exact_form_with_lazy_index` invokes lookup only after the specified identity suspicion, and selects only from recognized index `document_type` rows.
+- Lazy-index lookup records the response/parser evidence and preserves both the catalog-anchored sequence-1 slot and any replacement slot. A 404 or transient failure alone never initiates recovery.
 - Direct-target and bundle HTTP 404 responses are `failed` with `http_not_found`; only a successfully parsed full bundle without the requested sequence is `not_filed`.
 - Fixture replay verifies content digest and performs zero HTTP requests.
 - No S9 module imports `pipelines.document_storage`; the pipeline's removal is a separate post-S12 milestone after S11 payload-store implementation, parity, and consumer/artifact migration.

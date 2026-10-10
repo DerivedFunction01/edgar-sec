@@ -24,6 +24,9 @@ Readiness is scoped, not an assertion that every acquisition mode is unblocked:
 - Exact sequence selection for legacy bundles requires a bounded Layer 3 parser. The
   bytes-based `unpack_sgml_submission()` remains a parity oracle, not the production
   large-envelope path.
+- Catalog-direct `exact_form_with_lazy_index` additionally requires a shared, bounded
+  index-page parser available below the pipeline layer. It is a policy-gated recovery
+  path, not an import of S5/S3 pipeline services.
 - The first S9 implementation is local. Remote live work remains deferred until an
   aggregate cross-host SEC rate policy is enforced. S0's historical parser acceptance
   and live operational rollout gates also remain in force; they do not prevent the
@@ -317,7 +320,14 @@ each outcome safely, and support restart after interruption.
 - No-work runs create no network client. Only pending targets and explicitly selected
   retryable failures are scheduled; skipped and terminal targets make no request.
 - Direct 404 is failed; `not_filed` is reserved for a complete valid bundle lacking
-  the exact requested sequence; duplicates are ambiguous.
+  the exact requested sequence or an optional target whose selector-authorized lazy
+  lookup finds no expected-form row. A required target in that latter case is
+  `required_missing`; duplicates are ambiguous.
+- `submitted_primary` performs no type screen/index request. Lazy recovery tests cover
+  ASCII `<TYPE>` mismatch, HTML cover-unverifiable trigger, positive-cover no-lookup,
+  unique/no/duplicate type rows, failed index fetch/parse, and exact direct/bundle
+  acquisition of the selected slot. Every recovery records the versioned resolution
+  and keeps the original sequence-1 attempt separate from the S10 body assignment.
 - Worker and in-flight body counts are resource-derived and bounded. Workers exchange
   paths and typed metadata, never full payload bytes.
 - Completed target commits survive interruption; partial files are cleaned; resume

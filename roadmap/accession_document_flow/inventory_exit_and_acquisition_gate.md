@@ -91,8 +91,12 @@ The supplied S6 design is aligned with the detailed subplan as follows:
   source when selected. Missing snapshot accessions are unresolved, never resolved from
   catalog paths. Without a snapshot, profiles are primary-only and catalog-direct rows
   never synthesize inventory entries. A catalog-direct match validates the supplied
-  path, not its index-declared document type; S9/S10 do not fetch an index page to
-  repair it.
+  path, not its index-declared document type. Each catalog-direct primary pins either
+  `submitted_primary` or `exact_form_with_lazy_index`: the former accepts the submitted
+  locator as-is; the latter authorizes S9 to fetch an index only after its bounded
+  post-fetch mismatch/unverifiable screen. S10 never fetches an index or repairs a
+  locator. Neither selector changes the immutable S6 plan or creates an S5 inventory
+  entry.
 - The source digest must cover the validated manifest and every source part used by the
   planner. The existing catalog-plan fingerprint alone does not prove those bytes.
   Although S5 now accepts a named `snapshot_id`, S6 must not import the sibling reader:

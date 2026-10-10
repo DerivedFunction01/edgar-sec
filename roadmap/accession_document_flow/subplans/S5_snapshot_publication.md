@@ -151,6 +151,17 @@ against the new parent and may reuse compatible SEC-cache or fixture-page respon
 All published and transient path construction is owned by
 `document_inventory.paths`; the snapshot package does not define a second layout.
 
+### Downstream metadata-only enrichment
+
+A later acquisition-store reconciliation may consume a newly published, pinned S5
+snapshot and add physical slot locators/type evidence for accessions whose payloads
+were previously acquired catalog-direct. This is downstream of S5: it neither mutates
+the immutable inventory snapshot nor fetches document bodies or invokes S10. A new
+`-index.html` observation still requires the ordinary S5 fetch/parse/publication path;
+the zero-payload-work guarantee applies only to document bodies. The reconciliation
+and durable slot relations are gated on S11 design approval and do not change the S5
+three-relation schema.
+
 ## Current implementation blockers
 
 - The S0 SEC-page audit still gates final historical parser acceptance and any claim of

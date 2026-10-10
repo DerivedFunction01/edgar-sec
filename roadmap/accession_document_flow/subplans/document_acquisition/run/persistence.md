@@ -9,7 +9,7 @@ remain Parquet. It does not use DuckDB for high-frequency state updates.
 ## Database schema
 
 Every writable connection enables `PRAGMA foreign_keys=ON`; database creation sets
-`PRAGMA user_version=1`. The manifest pins this run-state schema version. Use
+`PRAGMA user_version=2`. The manifest pins this run-state schema version. Use
 constant DDL and bound values:
 
 ```sql
@@ -18,7 +18,7 @@ CREATE TABLE target_state (
     executable INTEGER NOT NULL CHECK (executable IN (0, 1)),
     skip_reason TEXT,
     outcome TEXT NOT NULL CHECK (outcome IN
-        ('pending', 'skipped', 'acquired', 'not_filed', 'ambiguous', 'failed')),
+        ('pending', 'skipped', 'acquired', 'not_filed', 'required_missing', 'ambiguous', 'failed')),
     source TEXT CHECK (source IS NULL OR source IN ('live_sec', 'fixture_replay')),
     retryable INTEGER NOT NULL DEFAULT 0 CHECK (retryable IN (0, 1)),
     attempt_count INTEGER NOT NULL DEFAULT 0 CHECK (attempt_count >= 0),
@@ -42,7 +42,8 @@ CREATE TABLE attempts (
     target_id TEXT NOT NULL REFERENCES target_state(target_id),
     attempt_number INTEGER NOT NULL CHECK (attempt_number > 0),
     outcome TEXT NOT NULL CHECK (outcome IN
-        ('acquired', 'not_filed', 'ambiguous', 'failed')),
+        ('acquired', 'not_filed', 'required_missing', 'ambiguous', 'failed')),
+    attempt_kind TEXT NOT NULL CHECK (attempt_kind IN ('document_body', 'lazy_index')),
     source TEXT NOT NULL CHECK (source IN ('live_sec', 'fixture_replay')),
     retryable INTEGER NOT NULL CHECK (retryable IN (0, 1)),
     error_code TEXT,
@@ -61,11 +62,36 @@ CREATE TABLE attempts (
     CHECK (outcome = 'failed' OR retryable = 0)
 );
 
+CREATE TABLE target_slot_resolutions (
+    resolution_id TEXT PRIMARY KEY,
+    resolution_schema_version TEXT NOT NULL,
+    target_id TEXT NOT NULL REFERENCES target_state(target_id),
+    selector TEXT NOT NULL CHECK (selector IN ('submitted_primary', 'exact_form_with_lazy_index')),
+    expected_statutory_type TEXT NOT NULL,
+    initial_sequence INTEGER NOT NULL CHECK (initial_sequence = 1),
+    screen_kind TEXT NOT NULL CHECK (screen_kind IN ('none', 'sgml_type', 'html_cover')),
+    screen_result TEXT NOT NULL CHECK (screen_result IN ('not_run', 'form_match', 'type_mismatch', 'unverifiable')),
+    evaluator_version TEXT,
+    initial_body_sha256 TEXT NOT NULL,
+    index_attempt_id TEXT REFERENCES attempts(attempt_id),
+    index_response_sha256 TEXT,
+    index_parser_version TEXT,
+    matching_entry_ids_json TEXT NOT NULL,
+    selected_sequence INTEGER CHECK (selected_sequence IS NULL OR selected_sequence > 0),
+    selected_retrieval_mode TEXT CHECK (selected_retrieval_mode IS NULL OR selected_retrieval_mode IN ('direct_url', 'bundle_sequence')),
+    selected_url TEXT,
+    result TEXT NOT NULL CHECK (result IN ('accepted_sequence_1', 'recovered', 'not_filed', 'required_missing', 'ambiguous', 'failed')),
+    recorded_at_utc TEXT NOT NULL
+);
+
 CREATE INDEX attempts_target_number ON attempts(target_id, attempt_number);
 CREATE INDEX target_state_retry ON target_state(outcome, retryable, executable);
 ```
 
-The exact URL fields exclude credentials, query strings, and response headers. Attempt
+Adding `required_missing`, index lookup attempts, and target-slot resolutions is a
+run-state schema change; initialize the replacement contract at `PRAGMA user_version=2`
+and refuse v1 databases rather than guessing their interpretation. The exact URL
+fields exclude credentials, query strings, and response headers. Attempt and resolution
 rows are append-only; current status is an updateable projection in `target_state`.
 S10 body-consumption receipts remain separate versioned JSON sidecars so S10 can
 write them through the S9 path/schema contracts without importing the S9 state
@@ -129,7 +155,10 @@ WHERE outcome = ? AND retryable = ?;
 ```
 
 The second query binds `failed` and `1`. Per-target detail is filtered by bound
-`target_id`; status does not emit document bytes or scan the body CAS.
+`target_id`; status does not emit document bytes or scan the body CAS. A required
+target resolved absent by a recognized lazy index is terminal `required_missing` and
+contributes to `complete_with_errors`; optional `not_filed` remains a valid terminal
+outcome.
 
 ## Tests
 

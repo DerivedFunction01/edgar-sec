@@ -53,8 +53,9 @@ code, but cannot repair or hide it.
   records, and committed result files before reporting a run as resumable.
 - Keep S6 target status separate from acquisition status. Report skipped targets
   independently from executable targets.
-- Report progress by outcome: pending, acquired, `not_filed`, ambiguous, failed,
-  and skipped. Show cancellation/interruption and active locks as run-level state.
+- Report progress by outcome: pending, acquired, `not_filed`, `required_missing`,
+  ambiguous, failed, and skipped. Show cancellation/interruption and active locks as
+  run-level state.
   Distinguish retryable transport failures from terminal or non-retryable outcomes;
   do not infer retryability from a display label.
 - Preserve successful target results across interruption. Status inspection never
@@ -85,7 +86,8 @@ Two status reads over unchanged run files produce the same report. Inspection is
 offline and cannot alter run state.
 
 Offline tests cover an empty run, a run with only skipped targets, acquired targets
-with staged and consumed bodies, retryable and terminal failures, a concurrent
+with staged and consumed bodies, optional `not_filed`, required `required_missing`,
+retryable and terminal failures, a concurrent
 active lock, interrupted work, unsupported state schema, a corrupt manifest/part,
 and a missing or digest-mismatched staged body. A corrupt explicit run is surfaced
 without state repair.

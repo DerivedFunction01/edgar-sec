@@ -16,7 +16,8 @@ attempt records:
 | `pending` | Executable S6 target has not completed an attempt. | Scheduled by default. |
 | `skipped` | S6 target is unmatched or has unsupported retrieval mode. | Never scheduled. |
 | `acquired` | Direct body downloaded, or exact bundle child extracted and committed. | Never fetched again. |
-| `not_filed` | Complete valid bundle has no exact requested sequence. | Terminal; not retried. |
+| `not_filed` | Complete valid bundle has no exact requested sequence, or a recognized lazy index has no row matching an optional target's expected filing form. Record which evidence established absence. | Terminal; not retried. |
+| `required_missing` | A recognized lazy index has no row matching the expected filing form for a required target. | Terminal; not retried; run completes with required-target error. |
 | `ambiguous` | Duplicate requested sequences or typed source disagreement. | Terminal; not retried. |
 | `failed` | Transport, response, source, or extraction failure. | Only if the typed failure is retryable and the caller selects retry. |
 
@@ -32,9 +33,9 @@ Run state is derived, not independently edited:
 - `interrupted`: no active lock and pending targets remain after an attempted run.
 - `needs_retry`: no active lock and at least one retryable failure remains.
 - `complete_with_errors`: no pending or retryable work remains, but at least one
-  non-retryable failure remains.
-- `complete`: no pending or failed targets remain; `not_filed` and `skipped` are
-  terminal outcomes and do not make a run incomplete.
+  non-retryable failure or required-target `required_missing` remains.
+- `complete`: no pending, failed, or `required_missing` targets remain; optional
+  `not_filed` and `skipped` are terminal outcomes and do not make a run incomplete.
 
 When conditions overlap, derive state in this order: invalid, running, interrupted
 with pending targets after an attempted run, `needs_retry`, `complete_with_errors`,
@@ -114,7 +115,9 @@ fixture index, not by changing the S9 acquisition outcome.
 
 ## Tests
 
-Offline state tests cover every transition, append-only attempts, retryable versus
-terminal failures, repeated retry, DB rollback after a staged write, concurrent and
+Offline state tests cover every transition, index-evidenced optional `not_filed`,
+required-target `required_missing`, bundle-evidenced `not_filed`, append-only attempts,
+retryable versus terminal failures, repeated retry,
+DB rollback after a staged write, concurrent and
 stale locks, cancellation, hard-kill recovery, matching/mismatching S10 receipts,
 and interrupted target selection. No attempt can update another run's target ID.

@@ -14,6 +14,9 @@ command is design-only; no S9 import adapter exists in tracked code.
 - Validate imported target outcomes against the pinned work order. A receipt cannot
   convert a skipped target into executable work or turn a direct HTTP 404 into
   `not_filed`.
+- Preserve `required_missing` and any versioned lazy-index `TargetSlotResolution` as
+  terminal target evidence; never collapse it into `not_filed` or infer a slot from
+  worker file names.
 - Adopt selected-body files under coordinator-managed paths and retain their digest
   and size in result metadata for S10. Stage all validation before exposing adopted
   state; failed import must not leave a partially adopted chunk.

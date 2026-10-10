@@ -33,8 +33,9 @@ The replacement splits those concerns: S3 records every observed index row, S5
 stores annual accession/entry facts and source-CIK relations, S6 creates explicit
 target intent, S9 acquires an exact direct URL or sequence, and S10 processes the
 selected body. The old locator key, synthetic occurrence rows, selected-index
-acquisition shape, automatic primary recovery, checkpoint schema, and payload parts
-are not carried forward.
+acquisition shape, implicit date/name recovery, checkpoint schema, and payload parts
+are not carried forward. Catalog-direct `exact_form_with_lazy_index` is a new,
+explicitly profile-authorized S9 policy, not reuse of the legacy candidate finder.
 
 ## Package-module dispositions
 
@@ -109,9 +110,11 @@ fixture contract. Keep only independently owned lower-layer behavior named above
 ## Evaluator and delegation disposition
 
 The legacy evaluator SPI, including `REFETCH_SUB_DOC`, does not cross into S6, S9,
-or S10. S6 profiles declare primary and companion targets before acquisition; S9
-executes those targets independently. S10 never turns text findings into fetches or
-new target rows. Annual EX-13 phrase/window research may be retained as fixture and
+or S10. S6 profiles declare primary and companion targets before acquisition. A new
+versioned local primary identity screen may authorize one S9 index lookup only when
+the S6 catalog-direct selector explicitly enables it; that path selects an existing
+indexed physical slot and never delegates to an evaluator callback. S10 never turns
+text findings into fetches or new target rows. Annual EX-13 phrase/window research may be retained as fixture and
 test evidence or, after separate review, as a versioned advisory diagnostic. It is
 not a substitute for an EX-13 target declaration and cannot change acquisition or
 storage identity. Preserve useful linguistic examples without carrying over the

@@ -32,7 +32,8 @@ skipped. Profile contents are parsed and digested once at plan start.
     {
       "form_selector": "10-K, 20-F",
       "targets": [
-        {"role": "primary", "type": "primary", "optional": false},
+        {"role": "primary", "type": "primary", "optional": false,
+         "catalog_direct_selection": "submitted_primary"},
         {"role": "exhibit", "type": "EX-13", "optional": true},
         {"role": "exhibit", "type": "EX-21", "optional": true}
       ]
@@ -102,12 +103,23 @@ status.
 Catalog-direct is an index-free locator mode, not a weaker way to perform the full
 inventory match. A `matched` catalog-direct primary records that S6 accepted the
 catalog's path; it does not prove that the body is the filing's statutory primary.
-S6 does not fetch an index, inspect filing bytes, infer type from a filename, or
-substitute another document. A suspicious or misidentified path stays the planned
-catalog target; cover detection during S10 cannot repair its identity. If a caller
-needs document-type selection or companion exhibits, it must publish inventory
-evidence and create a new index-backed plan. Calendar-era expectations are not a
-substitute for that evidence.
+The primary target's `type` remains `primary` processing intent and its expected
+statutory type is the accession's filing form. These are distinct from the SEC index's
+primary designation/sequence and an observed body type. Catalog-only primary targets
+must declare one `catalog_direct_selection` policy:
+
+| Policy | S9 behavior after fetching the catalog primary link (physical sequence 1) |
+|---|---|
+| `submitted_primary` | Accept the submitted primary without a body-type screen or index lookup. No type evidence is written unless independently observed later. |
+| `exact_form_with_lazy_index` | Screen the fetched body locally. An ASCII SGML `<TYPE>` mismatch/missing/unverifiable type, or an HTML cover evaluator that does not verify the filing form, is a suspicion trigger for a lazy index lookup. The recognized index's observed `document_type`, not sequence order or filename, selects a replacement slot. A positive HTML cover result avoids the lookup but is not an exact statutory-type assertion. |
+
+The selector is part of the canonical profile digest and every target-plan row; it is
+null for inventory-backed targets and prohibited for non-primary roles. `exact_form`
+is not a supported selector. Catalog-direct planning itself remains offline and does
+not inspect bytes. A transport failure does not authorize a different URL or lazy
+index lookup. If a caller needs deterministic type selection without relying on the
+local suspicion screen, it must publish inventory evidence and create an index-backed
+plan. Calendar-era expectations are not a substitute for that evidence.
 
 S6 is a Layer 4 pipeline. It may use `foundation`, `domain`, `infra`, and the source
 pipeline's `paths.py`/`schemas.py` contracts only. The existing inventory reader is a
@@ -129,14 +141,15 @@ planning. Both adapters are read-only and perform zero network requests.
 
 | Role | V1 `type` values and source table | Match and retrieval contract |
 |---|---|---|
-| `primary` | `primary`; `Document Format Files` | Match `document_type` to the accession's filing form after declared form-alias resolution. Never assume sequence 1. A catalog primary must resolve to a safe same-accession archive path. |
+| `primary` | `primary`; `Document Format Files` | Match `document_type` to the accession's filing form after declared form-alias resolution. Never assume sequence 1. A matching row resolves by direct URL or, when unlinked, by exact observed bundle sequence if the bundle URL exists. Catalog-direct primaries still require a safe same-accession catalog path. Current code lacks unlinked-primary bundle parity. |
 | `exhibit` | Exact `EX-13`, `EX-99`, or explicit prefix `EX-*` / `EX-10.*`; `Document Format Files` | Match the requested type only. A usable observed `archive_url`/`href` yields `direct_url`; an unlinked row yields `bundle_sequence` only when both the advertised bundle URL and observed sequence exist. |
 | `data_file` | Exact data-file type, `EX-101.*`, or `extracted_xbrl_instance`; `Data Files` | The instance type matches normalized exact description `EXTRACTED XBRL INSTANCE DOCUMENT` and type `XML`; filename suffix is not a fallback. Data-file retrieval requires a usable direct URL. |
 | `graphic` | `GRAPHIC`; `Document Format Files` | Match the type only. Filename extensions do not infer graphic rows. Retrieval requires a usable direct URL. |
 | `package` | `xbrl_zip`; requires inventory evidence | With a validated accession bundle URL, derive the candidate by replacing `.txt` with `-xbrl.zip`; emit `constructed_candidate`, `constructed_package`, and `availability_evidence="constructed"`, with null `inventory_entry_id`, `sequence`, and `byte_size`. If no bundle URL exists, emit `unresolved`/`no_usable_bundle_url`; an unsafe URL refuses the plan. The candidate does not prove that the ZIP exists or is executable. |
 
 Catalog-only planning accepts only `role="primary", type="primary"` requests;
-any other profile is rejected before output. Duplicate occurrences for one
+each such target requires `catalog_direct_selection` with one of the two supported
+values. Any other profile is rejected before output. Duplicate occurrences for one
 accession are aggregated. Conflicting catalog primary paths, unsafe URLs, or
 URLs outside the same accession directory refuse catalog-only planning. A
 catalog accession with no usable primary produces one `unresolved` row with
@@ -304,6 +317,7 @@ Each row has these fields, with nullability as shown:
 | `sequence` | nullable int32 | Observed sequence required for bundle extraction; otherwise null. |
 | `byte_size` | nullable int64 | Source-observed size; null when unknown. |
 | `availability_evidence` | string | `index_html`, `catalog_metadata`, `constructed`, or `none`. |
+| `catalog_direct_selection` | nullable string | `submitted_primary` or `exact_form_with_lazy_index` on catalog-direct primary rows; null otherwise. |
 
 For every `matched` row, `retrieval_mode` and `target_url` identify a usable retrieval
 path. An `ambiguous` row keeps the locator and source entry for that candidate. A

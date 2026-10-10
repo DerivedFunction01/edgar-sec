@@ -48,7 +48,8 @@ identity. The v1 grammar:
     {
       "form_selector": "10-K, 20-F",
       "targets": [
-        {"role": "primary", "type": "primary", "optional": false},
+        {"role": "primary", "type": "primary", "optional": false,
+         "catalog_direct_selection": "submitted_primary"},
         {"role": "exhibit", "type": "EX-13", "optional": true},
         {"role": "exhibit", "type": "EX-21", "optional": true}
       ]
@@ -94,6 +95,25 @@ Rules are resolved as follows:
   `constructed_candidate` without inventing an inventory entry.
 - Filename/description fuzzy matching and arbitrary selector expressions are out of
   scope.
+- A primary target may declare `catalog_direct_selection` as `submitted_primary` or
+  `exact_form_with_lazy_index`. This policy is required for catalog-only planning and
+  prohibited on non-primary targets. It is included in profile canonicalization and
+  the target-plan row. The former `exact_form` selector is dropped; there is no third
+  selector.
+- `submitted_primary` accepts the catalog's primary link as the requested primary
+  without body-type evaluation. `exact_form_with_lazy_index` first fetches that same
+  sequence-1 candidate, then uses a bounded local identity screen: an ASCII SGML
+  `<TYPE>` mismatch or unverifiable/missing type, or an HTML cover evaluator that does
+  not verify the requested filing form, is a suspicion trigger for lazy index lookup.
+  A positive HTML cover result avoids that extra lookup but is not an exact
+  statutory-type assertion.
+  Only observed index-row `document_type` evidence selects a replacement sequence.
+  Transport failure alone does not trigger target discovery or bundle fallback.
+- The selector does not alter target role or expected type. `target_role=primary`
+  remains processing intent; the expected statutory type is the catalog filing form.
+  The SEC index's primary designation/sequence and selected-body type are separate
+  evidence. Sequence 1 is the physical slot anchored by the catalog primary link, not
+  proof that its body has the filing-form type.
 
 Profile normalization produces a canonical digest used to pin planning runs.
 
@@ -141,21 +161,22 @@ deterministic and writes remain bounded. Its v1 fields:
 | `sequence` | `int32`, nullable | Observed sequence for `bundle_sequence`; null otherwise. Never guessed. |
 | `byte_size` | `int64`, nullable | Source-observed size; unknown for constructed candidates. |
 | `availability_evidence` | `string` | `index_html`, `catalog_metadata`, `constructed`, or `none`. |
+| `catalog_direct_selection` | `string`, nullable | `submitted_primary` or `exact_form_with_lazy_index` for a catalog-direct primary; null for inventory-backed targets. |
 
 Matching and outcome rules:
 
 - **Status vs. Provenance**: `catalog_direct` belongs in `source_origin`, not in `status`.
 - **Catalog-direct/index-free scope**: this source supports primary-only profiles and
-  direct archive URLs. A `matched` row means the catalog supplied a safe primary
+  direct archive URLs. A `matched` row means the catalog supplied a safe sequence-1
   locator; `catalog_metadata` does not verify that the linked body has the filing's
-  statutory document type. An envelope/stub path, missing primary, or non-primary
-  selector is refused/unresolved; it is never passed off as an index match.
-- Catalog-direct planning does not fetch or parse `-index.html`, inspect document
-  bodies, infer type from filenames, or recover a target through a bundle/sequence
-  heuristic. If a catalog primary path actually names an exhibit, this mode cannot
-  identify or replace it. Use a published inventory snapshot and re-plan when
-  statutory type selection or companion targets are required; a date-era rule does
-  not upgrade catalog metadata into index evidence.
+  statutory document type. S9 interprets the recorded selector after acquisition. An
+  envelope/stub path, missing primary, or non-primary selector is refused/unresolved;
+  it is never passed off as an index match.
+- Catalog-direct planning itself does not fetch or parse `-index.html`, inspect
+  document bodies, infer type from filenames, or recover a target. An explicitly
+  selected `exact_form_with_lazy_index` policy authorizes only the bounded S9 recovery
+  path defined by the acquisition contract; it does not upgrade catalog metadata into
+  index evidence. A date-era rule never substitutes for observed index rows.
 - **Absence vs. unresolved**: Use `not_filed` or `required_missing` only when a
   recognized page has no type-matching row for the optional or required target. One
   matching inventory row without a usable locator is `unresolved` with
@@ -183,6 +204,12 @@ Matching and outcome rules:
   self-contained `bundle_sequence` target; store the bundle URL in `target_url` so S9
   does not need to reopen the inventory snapshot. A single row without any usable
   locator is unresolved, not absent.
+- This locator rule applies equally to primary rows whose observed `document_type`
+  matches the filing form and exhibit rows whose observed type matches the request;
+  observed sequence is exact selection metadata, never a way to infer target type or
+  role. Current tracked code only implements bundle-sequence matching for unlinked
+  exhibits; primary parity is a required implementation follow-up, not current
+  behavior.
 
 ## Planner interface and pluggable sources
 
@@ -234,7 +261,9 @@ offline, immutable, and network-free.
 - Comma-separated form selectors are split and resolved per-token via `resolve_alias`.
 - One catalog plan with and without an inventory snapshot produces the same scope;
   catalog-only is primary-only, while hybrid plans can resolve the full profile.
-- Primary resolution refuses sequence-only guesses.
+- Primary resolution refuses sequence-only guesses, while an observed form-matching
+  primary row with an advertised bundle and positive sequence resolves to that exact
+  bundle child. (Current tracked code still lacks this primary bundle parity.)
 - Multiple type matches emit one explicit `ambiguous` row per candidate, even when one
   candidate has no locator; no candidate is selected implicitly.
 - A single matching row without a usable locator is `unresolved`, not `not_filed`.

@@ -11,18 +11,23 @@ code. Command-level signatures and UX flows belong to the linked command documen
 - S9 consumes a published S6 target-plan bundle. It validates the pinned manifest
   and every declared target part, then reads only those local parts. It never opens
   the catalog plan or inventory snapshot again.
-- A `catalog_direct` target is a catalog-supplied locator, not index-verified
-  document-type evidence. S9/S10 do not fetch `-index.html` or invoke inventory
-  parsing as a recovery path. If index evidence is needed, publish it through S5 and
-  create a new S6 plan before projecting an S9 run.
+- A `catalog_direct` target is a catalog-supplied sequence-1 locator, not
+  index-verified document-type evidence. S9 may fetch `-index.html` only when the
+  S6-pinned `exact_form_with_lazy_index` policy's body screen raises the specified
+  mismatch/unverifiable suspicion. That bounded exception does not read or mutate a
+  published S5 snapshot, and it does not rewrite the immutable S6 target plan. A
+  caller needing index evidence without catalog-direct recovery publishes it through
+  S5 and creates an index-backed S6 plan.
 - S9 acquires exact source bytes and, for a bundle target, selects the exact pinned
   sequence. It does not normalize, infer a primary, or publish a durable payload
   snapshot.
 - S6 `target_role` and `target_type` remain request intent, not source assertions or
-  archive routes. The S9 work order preserves them; S10 copies them into its request
-  by `target_id` and uses the role to select primary-form versus standalone-exhibit
-  normalization context. The effective body path selects its byte route. The type is
-  provenance, not an expected SGML `<TYPE>`. Do not add `raw: bool`.
+  archive routes. For a primary target the expected statutory type is the pinned
+  filing form; the SEC index's primary designation, sequence, and observed body type
+  are separate evidence. S9 preserves the selector and target-to-physical-slot
+  resolution; S10 joins the acquired body by `target_id` and uses the role to select
+  normalization context. The effective body path selects its byte route. Do not add
+  `raw: bool`.
 - The pipeline may depend downward on `domain`, `engine`, `infra`, and `foundation`.
   It does not import `pipelines.document_storage` or make an upper layer own S9 state.
 - The only S6 contract imports are direct, unaliased imports from
@@ -31,6 +36,10 @@ code. Command-level signatures and UX flows belong to the linked command documen
 - Large-body streaming belongs in the shared SEC HTTP/broker path, and bounded SGML
   parsing belongs in `engine.document.unpacking`. S9 validates targets, owns run
   state, and composes those lower-layer APIs.
+- The lazy index path uses the shared SEC broker and a lower-layer parser API; it must
+  not import the sibling `document_inventory` pipeline or its S3 services. If the
+  current parser is pipeline-owned, extract the parsing contract to an allowed lower
+  layer before enabling this path.
 - The current `SecHttpClient.get_bytes()` materializes the response, so a bounded
   file-streaming client/broker operation is a prerequisite; S9 must not wrap the
   byte-returning method and call it streaming. The existing bytes-based
@@ -90,9 +99,14 @@ than redeclare their own versions.
   from status or be scheduled by a worker.
 - An acquisition attempt is append-only evidence. Current target outcome is a
   replaceable projection over attempts, not a rewrite of attempt history.
-- `acquired`, `not_filed`, `ambiguous`, and `failed` are target outcomes. Run
-  cancellation/interruption and active locks are run-level state, not target
-  outcomes. Retryability comes from typed error classification, not a CLI label.
+- Physical acquisition identity is `(accession, sequence)`, not target ID. The
+  catalog-direct primary link anchors sequence 1 even when that slot's observed type
+  is an exhibit. A target assignment links its request to the selected physical slot;
+  retaining sequence-1 bytes does not make them the S10 input when recovery selects a
+  different sequence.
+- `acquired`, `not_filed`, `required_missing`, `ambiguous`, and `failed` are target
+  outcomes. Run cancellation/interruption and active locks are run-level state, not
+  target outcomes. Retryability comes from typed error classification, not a CLI label.
 - A selected body is a managed file reference carrying its digest and byte size,
   never payload bytes in JSON, SQL rows, Parquet metadata, or process IPC. The body
   and any separately staged bundle envelope remain available for the S10 handoff or

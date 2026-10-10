@@ -16,10 +16,10 @@ small manifest is a descriptor, not a parallel body store.
 
 `manifest.json` uses the shared fixture-manifest envelope (`fixture_kind` is
 `document_acquisition.source_responses`, storage format `sqlite`, storage path
-`index.sqlite`, envelope version 1). Its details pin S9 store-schema version 1. The
+`index.sqlite`, envelope version 1). Its details pin S9 store-schema version 2. The
 manifest is an immutable descriptor with no case list or body digest inventory;
 `index.sqlite` owns append-only cases and run/target provenance and independently pins
-schema version 1 through `PRAGMA user_version`. The manifest is not a response store.
+schema version 2 through `PRAGMA user_version`. The manifest is not a response store.
 Its `created_at` and `updated_at` are equal at creation and remain unchanged as case
 rows are appended; the SQLite case timestamps are authoritative for captures.
 There is no response directory, sidecar body file, compression layer, or body
@@ -28,9 +28,10 @@ database runtime state and never an alternate body store.
 
 ## Schema
 
-The initial schema separates unique response bodies from append-only attempts. A body
-is identified by the SHA-256 of its exact response bytes; bundle-selected bytes are
-re-derived during replay and are not stored as a second copy.
+The schema separates unique response bodies from append-only cases. A body is
+identified by the SHA-256 of its exact response bytes. Bundle-selected children are
+re-derived during replay and are not stored as a second copy; direct sequence-2
+recovery bodies and lazy index responses are separately referenced response bodies.
 
 ```sql
 CREATE TABLE fixture_meta (
@@ -65,19 +66,32 @@ CREATE TABLE cases (
     target_id TEXT NOT NULL,
     attempt_id TEXT NOT NULL,
     accession TEXT NOT NULL,
+    form TEXT NOT NULL,
     request_id TEXT NOT NULL,
     target_role TEXT NOT NULL,
     target_type TEXT NOT NULL,
     optional INTEGER NOT NULL CHECK (optional IN (0, 1)),
+    catalog_direct_selection TEXT CHECK (catalog_direct_selection IS NULL OR catalog_direct_selection IN ('submitted_primary', 'exact_form_with_lazy_index')),
     source_origin TEXT NOT NULL CHECK (source_origin IN ('inventory_index', 'catalog_direct')),
     target_status TEXT NOT NULL CHECK (target_status = 'matched'),
     retrieval_mode TEXT NOT NULL CHECK (retrieval_mode IN ('direct_url', 'bundle_sequence')),
     target_url TEXT,
     final_url TEXT,
     sequence INTEGER,
-    acquisition_status TEXT NOT NULL CHECK (acquisition_status IN ('acquired', 'not_filed', 'ambiguous', 'failed')),
+    acquisition_status TEXT NOT NULL CHECK (acquisition_status IN ('acquired', 'not_filed', 'required_missing', 'ambiguous', 'failed')),
     error_code TEXT,
     response_sha256 TEXT,
+    index_response_sha256 TEXT,
+    selected_response_sha256 TEXT,
+    resolution_schema_version TEXT,
+    screen_kind TEXT,
+    screen_result TEXT,
+    evaluator_version TEXT,
+    index_parser_version TEXT,
+    matching_entry_ids_json TEXT,
+    selected_sequence INTEGER,
+    selected_retrieval_mode TEXT,
+    selected_url TEXT,
     source_byte_size INTEGER CHECK (source_byte_size IS NULL OR source_byte_size >= 0),
     selected_sha256 TEXT,
     selected_byte_size INTEGER CHECK (selected_byte_size IS NULL OR selected_byte_size >= 0),
@@ -88,6 +102,8 @@ CREATE TABLE cases (
     FOREIGN KEY (capture_id) REFERENCES captures(capture_id),
     FOREIGN KEY (response_sha256, source_byte_size)
         REFERENCES response_bodies(response_sha256, byte_size),
+    FOREIGN KEY (index_response_sha256) REFERENCES response_bodies(response_sha256),
+    FOREIGN KEY (selected_response_sha256) REFERENCES response_bodies(response_sha256),
     CHECK ((response_sha256 IS NULL) = (source_byte_size IS NULL)),
     CHECK ((selected_sha256 IS NULL) = (selected_byte_size IS NULL)),
     CHECK ((retrieval_mode = 'direct_url' AND sequence IS NULL) OR
@@ -96,7 +112,12 @@ CREATE TABLE cases (
         (length(response_sha256) = 64 AND response_sha256 NOT GLOB '*[^0-9a-f]*')),
     CHECK (selected_sha256 IS NULL OR
         (length(selected_sha256) = 64 AND selected_sha256 NOT GLOB '*[^0-9a-f]*')),
-    CHECK (acquisition_status != 'not_filed' OR retrieval_mode = 'bundle_sequence'),
+    CHECK (acquisition_status != 'not_filed' OR retrieval_mode = 'bundle_sequence' OR
+        (optional = 1 AND catalog_direct_selection = 'exact_form_with_lazy_index' AND
+         index_response_sha256 IS NOT NULL)),
+    CHECK (acquisition_status != 'required_missing' OR
+        (optional = 0 AND catalog_direct_selection = 'exact_form_with_lazy_index' AND
+         index_response_sha256 IS NOT NULL)),
     CHECK (acquisition_status != 'acquired' OR
         (response_sha256 IS NOT NULL AND source_byte_size IS NOT NULL AND
          selected_sha256 IS NOT NULL AND selected_byte_size IS NOT NULL AND
@@ -133,9 +154,11 @@ child digest/size for replay verification.
   atomically writing `manifest.json`. A missing/invalid manifest or database is an
   incomplete fixture and is refused, not auto-repaired.
 - **Replay verification**: open the fixture read-only, validate `user_version`, foreign
-  keys, IDs and provenance, then stream the selected BLOB while checking its size and
-  digest. Bundle replay re-runs the pinned sequence extractor and checks selected
-  digest/size; replay makes zero HTTP requests and changes no fixture state.
+  keys, IDs and provenance, then stream the captured initial body and any lazy index
+  response. Lazy recovery re-runs the pinned parser and selector, verifies the chosen
+  entry/sequence, and replays any separately fetched replacement body. Bundle replay
+  re-runs the pinned sequence extractor and checks selected digest/size; all replay
+  makes zero HTTP requests and changes no fixture state.
 - **Bound SQL inputs**: bind all values. Enable foreign keys on every connection and
   refuse unrelated databases or unsupported schema versions.
 - **Metadata-only failures**: a case without source bytes records its typed outcome
