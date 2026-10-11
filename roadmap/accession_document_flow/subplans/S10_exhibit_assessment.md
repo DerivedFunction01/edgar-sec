@@ -3,7 +3,7 @@
 ## Owner and status
 
 This is a provisional S10 diagnostic design, not an enabled classifier. It uses
-[`uploads/exhibits-classification.md`](../../../uploads/exhibits-classification.md) as
+[`uploads/research/exhibits-classification.md`](../../../uploads/research/exhibits-classification.md) as
 research input and the current form evidence-pack APIs as implementation precedent.
 The examples support a taxonomy and evaluator boundary; they do not establish
 precision, recall, or production-ready rules.
@@ -53,6 +53,10 @@ The evaluator is post-selection and read-only:
 - `source_origin="catalog_direct"` remains weaker provenance. A suspicious body can be
   reported, but the catalog locator is not replaced and it is not silently promoted to
   index-verified evidence.
+- The S9 suspicion threshold decides only whether to spend an index request and may be
+  lower than the evidence threshold for an S10 role diagnosis. Only a unique index row
+  matching the pinned filing form can change the selected slot. Neither screen nor
+  diagnosis asserts the other's result or triggers the other's behavior.
 - S10 does not compare the body’s SGML `<TYPE>` to an S5 row. The selected SGML type
   remains provenance under the S9 contract; a body-level equality guarantee would
   require a versioned S6 target-plan field.
@@ -63,30 +67,35 @@ the legacy `EvaluatorDecision` execution SPI: `REFETCH_SUB_DOC` and
 
 ## Proposed taxonomy
 
-Keep legal exhibit identity separate from broad content meaning and from the planned
-S6 role:
+Keep source-qualified legal identity separate from content meaning and the pinned S6
+role:
 
 ```text
-ExhibitTaxon
-  taxon_id                 stable internal ID, not a display label
-  authority                e.g. SEC Item 601, Regulation AB, form-specific
-  canonical_code           e.g. EX-10.1 or a normalized family code
-  parent_taxon_id          optional broader class
+ExhibitIdentity
+  authority_id             e.g. reg_s_k_item_601 or form_20f
+  code                     exact authority-local code, including subitems
+
+ExhibitCatalogEntry
+  identity                 (authority_id, code)
   content_family           contracts, governance, certification, press release, ABS data...
   title                    human-readable label
   legal_citations          versioned source citations
   effective_interval       optional start/end dates for legal/code changes
   aliases                  filing-type and caption variants
-  applicability            supported forms/contexts; descriptive, not an allowlist
-  evidence_pack_id         optional versioned detector pack
-  coverage_status          proposed, reviewed, or unsupported
+  applicability            source facts; runtime activation belongs to profiles.py
+  pack_id                  optional versioned detector pack
+  coverage_status          candidate, partial, unsupported, or reserved
 ```
 
+Pack `evaluator_quality` is a separate maturity field; coverage status does not claim
+that a rule has been implemented or validated.
+
 `EX-10.*`-style families can group multiple legal subitems; `EX-99.*` should retain
-numbered subtypes where evidence supports them rather than collapsing every item into
-one meaning. Non-Item-601 labels may use another authority namespace. Reserved,
-unknown, malformed, and not-yet-reviewed codes remain representable. Do not encode the
-sketch's unverified “tier” frequency claims as taxonomy fields.
+numbered subitems where evidence supports them rather than collapsing every item into
+one meaning. `pack_id` and `content_family` are not parts of `ExhibitIdentity`. Non-Item-601
+labels use another authority namespace. Reserved, unknown, malformed, and not-yet-reviewed
+codes remain representable. Do not encode the sketch's unverified “tier” frequency claims
+as taxonomy fields.
 
 An initial *candidate* top level could distinguish `periodic_primary` (10-K/10-Q),
 `current_report_primary` (8-K), `regulatory_exhibit`, `structured_data`, `paper_stub`,
@@ -107,11 +116,19 @@ DocumentRoleAssessment
   taxonomy_version
   expected_role            copied from the pinned target
   expected_type            copied from the pinned target; not body truth
+  filing_form              copied from the pinned S6 context
+  expected_identity        resolved primary form or (authority_id, code), when in scope
   observed_kind            primary_report, exhibit, structured_data, paper_stub, unknown
-  exhibit_taxon_id         nullable
+  observed_identity        primary form or (authority_id, code), when supported
   disposition              consistent, possible_role_mismatch, insufficient_evidence
-  supporting_signal_ids    stable rule IDs and bounded text positions
-  contradicting_signal_ids stable rule IDs and bounded text positions
+  diagnostic_code/detail   closed code plus concise explanation, nullable
+  supporting_evidence     stable signal IDs with bounded text positions
+  contradicting_evidence  stable signal IDs with bounded text positions
+  matched_evidence_tier   nullable
+  confidence_band         optional ordinal evidence label, not a probability
+  evaluator_quality       maturity copied from the selected profile/pack
+  profile_id/version      selected declarative primary or exhibit profile
+  pack_id/version         selected content pack; nullable
 ```
 
 Do not emit a floating-point confidence until a held-out corpus calibrates it. An
@@ -150,8 +167,8 @@ The assessment runs after route-specific text is available and before the transi
 `ProcessingResult` is finalized. HTML and normalized text use the same text produced by
 the role-selected normalizer; flat ASCII `.txt` may provide its unchanged ASCII view.
 Only an already-materialized bounded opening view is inspected. XML, binary, paper,
-unknown, and unsupported form families initially return no assessment, not a guessed
-class. The evaluator does not retain another full-text copy.
+unknown, and unsupported form/profile combinations initially return no assessment, not a
+guessed class. The evaluator does not retain another full-text copy.
 
 For a planned primary, compare primary-report signals with exhibit-family signals. For
 a planned exhibit, compare its declared target type with exhibit evidence. Absence of

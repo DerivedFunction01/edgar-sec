@@ -12,11 +12,11 @@
 - Exhibit assessment proposal: [S10 taxonomy and evidence-pack design](S10_exhibit_assessment.md).
 - Legacy behavior audit: [document_storage processing trace](S10_legacy_processing_trace.md).
 
-## Current tracked-code audit (2026-10-08)
+## Current tracked-code audit (2026-10-10)
 
-- **Status: processing foundations exist in the legacy pipeline; the S10 transient processing contract is not implemented.** `FilingProcessor` normalizes acquired bytes and exposes a fingerprint, but its result carries payload bytes for legacy persistence. The engine normalizer has no no-stage-trace switch, and no `process_target` result/review-staging API is present.
-- **Evidence:** [`document_storage/processor.py`](../../../edgar_sec/pipelines/document_storage/processor.py) returns `ProcessedDocument.payload`; [`engine/forms/normalize.py`](../../../edgar_sec/engine/forms/normalize.py) always appends stage records; [`test_processor.py`](../../../tests/pipelines/document_storage/test_processor.py) covers legacy routes and fingerprint behavior.
-- **Next step:** implement the S9 staged-body input and typed metadata-only result boundary, add the no-trace normalizer mode, then test route outcomes, XML refusal/validation, stable fingerprints, and review-output staging without durable payload writes. Empirical memory admission and exhibit-rule activation require their own evidence gates.
+- **Status: the M2E no-stage-trace normalizer option is implemented, but the S10 transient processing contract is not.** Legacy `FilingProcessor` normalizes acquired bytes and exposes a fingerprint, while its result still carries payload bytes for legacy persistence. No `process_target` result or managed review-staging API is present.
+- **Evidence:** [`document_storage/processor.py`](../../../edgar_sec/pipelines/document_storage/processor.py) returns `ProcessedDocument.payload`; [`engine/forms/normalize.py`](../../../edgar_sec/engine/forms/normalize.py) now supports `capture_stage_trace=False`; [`test_processor.py`](../../../tests/pipelines/document_storage/test_processor.py) covers legacy routes and fingerprint behavior.
+- **Next step:** implement M6 against S9 staged-body and receipt contracts, then test route outcomes, XML refusal/validation, stable fingerprints, and metadata-only results. Review staging, memory admission, and exhibit-rule activation must retain their separate ownership and evidence gates.
 
 ## Objective
 

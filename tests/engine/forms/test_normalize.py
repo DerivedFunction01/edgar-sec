@@ -220,3 +220,21 @@ def test_xhtml_path_is_markup_not_text() -> None:
     res = normalize_document(_HARD_WRAPPED, form="REGDEX", document_path="note.xhtml")
 
     assert res.reflow is None
+
+
+def test_normalize_with_capture_stage_trace_false() -> None:
+    """verify capture_stage_trace=False returns empty trace but identical output."""
+    data = load_fixture("document_storage/annual_10k_normalization.json")
+    raw_bytes = data["source_text"].encode("utf-8")
+    form = data.get("form", "10-K")
+    exp = data["expectations"]
+
+    res_full = normalize_document(raw_bytes, form=form)
+    res_no_trace = normalize_document(raw_bytes, form=form, capture_stage_trace=False)
+
+    assert res_no_trace.stage_trace == []
+    assert res_full.text == res_no_trace.text
+    assert res_full.representation == res_no_trace.representation
+    assert res_full.cover_boundary == res_no_trace.cover_boundary
+    assert res_full.body_start == res_no_trace.body_start
+    assert res_full.closing_span == res_no_trace.closing_span

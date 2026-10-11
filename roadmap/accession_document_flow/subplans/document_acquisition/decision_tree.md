@@ -11,8 +11,10 @@ calendar-era label is never a substitute for an observed locator or a pinned tar
   profile-based target planning; S2/S3/S4 fixture, parser, and worker foundations;
   S7 review foundations. `document_planning` is a separate pipeline from the older
   `filing_catalog` locator-plan contract.
-- **Proposed, not implemented:** S9 acquisition and S10 transient processing. There
-  is no `edgar_sec/pipelines/document_acquisition/` package in the current tree.
+- **Implementation exists; this tree remains a contract proposal:** an
+  `edgar_sec/pipelines/document_acquisition/` package is present. Do not treat every
+  selector path below as verified behavior without checking its implementation. S10
+  transient processing remains proposed.
 - **Documentation reconciliation:** `implementation.md` reports S1–S6 implemented
   and `document_planning` has profile, catalog-scope, inventory-evidence, matching,
   publication, operator, and CLI modules. The detailed
@@ -21,8 +23,10 @@ calendar-era label is never a substitute for an observed locator or a pinned tar
   matching permits bundle-sequence retrieval for unlinked exhibits only, not
   unlinked primaries as the broader design text proposes.
 - **Legacy-only:** `document_storage` still contains its old date/name candidate gate,
-  bundle-recovery behavior, and evaluator-driven delegation. It is frozen during the
-  replacement and is not an implementation source for S6/S9/S10.
+  bundle-recovery behavior, and evaluator-driven delegation. Do not import that pipeline
+  or reuse its selection behavior. The pure date/name predicate is under review as a
+  possible low-confidence S9 index-request signal only; it cannot classify or select a
+  document and is not enabled by this design note.
 - **Evidence gate:** S0's stratified historical page survey has not established broad
   era/parser coverage. Era layout descriptions below summarize observed examples and
   legacy behavior; they are not universal guarantees.
@@ -194,7 +198,7 @@ Catalog-only planning remains primary-only. The profile selector is binary:
 | Selector | Initial slot behavior | Identity/recovery behavior |
 |---|---|---|
 | `submitted_primary` | Fetch the catalog primary link, anchored to physical sequence 1. | Accept as submitted; do not inspect type or fetch an index. `slot_types` stays empty unless evidence is observed independently. |
-| `exact_form_with_lazy_index` | Fetch the same sequence-1 candidate. The expected statutory type is the filing form, independent of `target_role=primary`, the index primary designation, or sequence number. | Run a bounded local screen. An ASCII SGML `<TYPE>` mismatch/missing/unverifiable type or an HTML cover evaluator that fails to verify the filing form is an inversion suspicion and triggers a single lazy index lookup. A unique index row with matching observed `document_type` chooses the actual physical slot; no sequence/name guess is allowed. |
+| `exact_form_with_lazy_index` | Fetch the same sequence-1 candidate. The expected statutory type is the filing form, independent of `target_role=primary`, the index primary designation, or sequence number. | Run a bounded local screen. An ASCII SGML `<TYPE>` mismatch/missing/unverifiable type or a cover signal that fails to verify the filing form can trigger one lazy index lookup. A validated legacy date/filename clue may be evaluated as additional low-confidence suspicion for eligible catalog-direct locators, after offline precision/recall review. Only a unique index row with matching observed `document_type` chooses the actual physical slot; neither the screen nor a filename selects it. |
 
 `exact_form` is dropped. The lazy selector is conditional by design: a positive HTML
 cover result avoids the index request but is heuristic and does not prove exact type.
@@ -213,9 +217,10 @@ snapshot.
 The local screen and the index's `document_type` answer different questions. The
 screen decides whether to spend a request; only an index/bundle metadata row creates a
 `slot_types` fact. A positive local SGML/HTML screen is recorded in the target
-resolution and does not populate that relation. Preserve evaluator version/outcome
-and index-response/parser provenance with the resolution. Do not treat cover-boundary
-diagnostics in S10 as another recovery trigger.
+resolution and does not populate that relation; `form_match` means “do not fetch the
+index,” not “the body is proven to have the expected statutory type.” Preserve evaluator
+version/outcome and index-response/parser provenance with the resolution. Do not treat
+cover-boundary diagnostics in S10 as another recovery trigger.
 
 ---
 
@@ -223,12 +228,14 @@ diagnostics in S10 as another recovery trigger.
 
 The legacy-era columns describe tendencies and the behavior that exists in frozen
 `document_storage`; the **replacement rule** column is normative for the proposed
-pipeline. S6 and S9 do not branch on `filing_era`.
+pipeline. S6 never branches on `filing_era`. S9's normal locator/slot selection does not
+either; any approved legacy-derived era/name cue is limited to raising or declining one
+catalog-direct lazy-index request.
 
 | Filing era | Layout evidence / common case | Frozen `document_storage` behavior | Replacement acquisition rule |
 |---|---|---|---|
 | 1993–1999 | Child rows have no individual links; one concatenated SGML submission file. Child sequence/type metadata is on index; bytes are inside envelope. | `<accession>.txt` fallback used at every date when `primary_document` is absent. Full-submission fallback for ordinary requests; heuristic SGML selection by type, name, seq 1. | S6 selects observed index type. Both unlinked primary and unlinked exhibits with observed sequences use `bundle_sequence`. Proposed S9 streams the envelope and extracts exact planned sequence with no degradation. |
-| 2000–2004 | Transition era: primary often has a direct link; exhibits may be unlinked. High risk of Sequence 1 inversion (exhibits before primary). | `candidate_decision` date gate (2000–2004) with Item 601 filename regex. Bundles fetched to find lowest-sequence primary; dual-writes primary + exhibit. | No date/name gate. S6 matches observed type from S3 index, bypassing Sequence 1 inversion. Linked primaries use `direct_url`; unlinked exhibits use `bundle_sequence`. If no index, cover evaluator gates catalog primary. |
+| 2000–2004 | Transition era: primary often has a direct link; exhibits may be unlinked. Historical fixtures include Sequence 1 inversion. | `candidate_decision` combines validated filing date, Item 601-style basename, and form-token evidence; bundle recovery then scans SGML types/sequences. | S6 still matches observed index type without an era/name selector. Those legacy inputs are a candidate low-confidence S9 lazy-request signal only; if validated, they can request the index but cannot identify or select a slot. Linked primaries use `direct_url`; unlinked exhibits use `bundle_sequence`. |
 | 2005–present | Individual archive links for most documents; envelopes still present as backup. 2011+ adds iXBRL viewer links and Data Files table. | Old fetcher retains era-independent full-submission fallback; prefers archive-root basename over XSL rendering. | Use observed link/type evidence. Direct links use `direct_url`. Any remaining unlinked exhibits use `bundle_sequence`. S9 streams only validated target locators without heuristic fallback. |
 
 ---

@@ -37,28 +37,6 @@ Instructions to the Exhibit Table.
 
 3. The number used in the far left column of the table refers to the appropriate subsection in paragraph (b) where a description of the exhibit can be found. Whenever necessary, alphabetical or numerical subparts may be used.
 
-dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NARA&subagency=fedreg:1  Failed to load resource: net::ERR_BLOCKED_BY_CLIENT
-const container = document.querySelector('div#\\32 29\\.601');
-if (!container) {
-  data = { error: "Container not found" };
-} else {
-  const children = Array.from(container.children);
-  // Group children by tagName and className to understand the structure
-  const summary = children.reduce((acc, el) => {
-    const key = `${el.tagName}.${el.className.replace(/\s+/g, '.')}`;
-    if (!acc[key]) acc[key] = { count: 0, sampleIds: [], sampleText: [] };
-    acc[key].count++;
-    if (acc[key].sampleIds.length < 3) {
-      acc[key].sampleIds.push(el.id);
-      acc[key].sampleText.push(el.innerText.substring(0, 50));
-    }
-    return acc;
-  }, {});
-  data = summary;
-}
-{SPAN.content-tools-target: {…}, H4.: {…}, DIV.fr-cross-reference: {…}, P.indent-1: {…}, P.indent-2: {…}, …}DIV.editorial-note: {count: 1, sampleIds: Array(1), sampleText: Array(1)}DIV.extract: {count: 7, sampleIds: Array(3), sampleText: Array(3)}DIV.fr-cross-reference: {count: 2, sampleIds: Array(2), sampleText: Array(2)}DIV.note: {count: 1, sampleIds: Array(1), sampleText: Array(1)}DIV.table-wrapper: {count: 1, sampleIds: Array(1), sampleText: Array(1)}H4.: {count: 1, sampleIds: Array(1), sampleText: Array(1)}P.: {count: 22, sampleIds: Array(3), sampleText: Array(3)}P.citation: {count: 1, sampleIds: Array(1), sampleText: Array(1)}P.indent-1: {count: 2, sampleIds: Array(2), sampleText: Array(2)}P.indent-2: {count: 42, sampleIds: Array(3), sampleText: Array(3)}P.indent-3: {count: 34, sampleIds: Array(3), sampleText: Array(3)}P.indent-3.no-hierarchy: {count: 3, sampleIds: Array(3), sampleText: Array(3)}P.indent-4: {count: 24, sampleIds: Array(3), sampleText: Array(3)}P.indent-5: {count: 35, sampleIds: Array(3), sampleText: Array(3)}P.indent-6: {count: 84, sampleIds: Array(3), sampleText: Array(3)}P.indent-7: {count: 2, sampleIds: Array(2), sampleText: Array(2)}SPAN.content-tools-target: count: 1sampleIds: ['']sampleText: [''][[Prototype]]: Object[[Prototype]]: Object
-VM354:53 ## § 229.601 (Item 601) Exhibits.
-
 *Cross Reference: CROSS REFERENCE
 Link to an amendment published at 89 FR 21914, Mar. 28, 2024.*
 
@@ -96,12 +74,64 @@ Instructions to the Exhibit Table.
 
 3. The number used in the far left column of the table refers to the appropriate subsection in paragraph (b) where a description of the exhibit can be found. Whenever necessary, alphabetical or numerical subparts may be used.
 
-[Table: Expand Table 
-
-Exhibit Table
-
-	Securities act forms	Exchange act forms
-S-1	S-3	SF-1	SF-3	S-4 1	S-8	S...]
+|  | S-1 | S-3 | SF-1 | SF-3 | S-4 1 | S-8 | S-11 | F-1 | F-3 | F-4 1 | 10 | 8-K 2 | 10-D | 10-Q | 10-K | ABS-EE |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| (1) Underwriting agreement | X | X | X | X | X |  | X | X | X | X |  | X |  |  |  |  |
+| (2) Plan of acquisition, reorganization, arrangement, liquidation or succession | X | X | X | X | X |  | X | X | X | X | X | X |  | X | X |  |
+| (3) (i) Articles of incorporation | X |  | X | X | X |  | X | X |  | X | X | X | X | X | X |  |
+| (ii) Bylaws | X |  | X | X | X |  | X | X |  | X | X | X | X | X | X |  |
+| (4) Instruments defining the rights of securities holders, including indentures, (i) through (v) | X | X | X | X | X | X | X | X | X | X | X | X | X | X | X |  |
+| (vi) Description of registrant's securities |  |  |  |  |  |  |  |  |  |  |  |  |  |  | X |  |
+| (5) Opinion re legality | X | X | X | X | X | X | X | X | X | X |  |  |  |  |  |  |
+| (6) [Reserved] | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| (7) Correspondence from an independent accountant regarding non-reliance on a previously issued audit report or completed interim review |  |  |  |  |  |  |  |  |  |  |  | X |  |  |  |  |
+| (8) Opinion re tax matters | X | X | X | X | X |  | X | X | X | X |  |  |  |  |  |  |
+| (9) Voting trust agreement | X |  |  |  | X |  | X | X |  | X | X |  |  |  | X |  |
+| (10) Material contracts | X |  | X | X | X |  | X | X |  | X | X |  | X | X | X |  |
+| (11)-(12) [Reserved] |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| (13) Annual report to security holders, Form 10-Q or quarterly report to security holders 3 |  |  |  |  | X |  |  |  |  |  |  |  |  | X | X |  |
+| (14) Code of Ethics |  |  |  |  |  |  |  |  |  |  |  | X |  |  | X |  |
+| (15) Letter re unaudited interim financial information | X | X |  |  | X | X | X | X | X | X |  |  |  | X |  |  |
+| (16) Letter re change in certifying accountant 4 | X |  |  |  | X |  | X |  |  |  | X | X |  |  | X |  |
+| (17) Correspondence on departure of director |  |  |  |  |  |  |  |  |  |  |  | X |  |  |  |  |
+| (18) Letter re change in accounting principles |  |  |  |  |  |  |  |  |  |  |  |  |  | X | X |  |
+| (19) Insider trading policies and procedures |  |  |  |  |  |  |  |  |  |  |  |  |  |  | X |  |
+| (20) Other documents or statements to security holders |  |  |  |  |  |  |  |  |  |  |  | X |  |  |  |  |
+| (21) Subsidiaries of the registrant | X |  | X | X | X |  | X | X |  | X | X |  |  |  | X |  |
+| (22) Subsidiary guarantors and issuers of guaranteed securities and affiliates whose securities collateralize securities of the registrant | X | X | X | X | X |  | X | X | X | X | X |  |  | X | X |  |
+| (23) Consents of experts and counsel | X | X | X | X | X | X | X | X | X | X |  | 5 X | 5 X | 5 X | 5 X |  |
+| (24) Power of attorney | X | X | X | X | X | X | X | X | X | X | X | X |  | X | X |  |
+| (25) Statement of eligibility of trustee | X | X | X | X | X |  |  | X | X | X |  |  |  |  |  |  |
+| (26) through (30) [Reserved] |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| (31) (i) Rule 13a-14(a)/15d-14(a) Certifications |  |  |  |  |  |  |  |  |  |  |  |  |  | X | X |  |
+| (ii) Rule 13a-14/15d-14 Certifications |  |  |  |  |  |  |  |  |  |  |  |  |  |  | X |  |
+| (32) Section 1350 Certifications 6 |  |  |  |  |  |  |  |  |  |  |  |  |  | X | X |  |
+| (33) Report on assessment of compliance with servicing criteria for asset-backed issuers |  |  |  |  |  |  |  |  |  |  |  |  |  |  | X |  |
+| (34) Attestation report on assessment of compliance with servicing criteria for asset-backed securities |  |  |  |  |  |  |  |  |  |  |  |  |  |  | X |  |
+| (35) Servicer compliance statement |  |  |  |  |  |  |  |  |  |  |  |  |  |  | X |  |
+| (36) Depositor Certification for shelf offerings of asset-backed securities |  |  |  | X |  |  |  |  |  |  |  |  |  |  |  |  |
+| (37) through (94) [Reserved] | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| (95) Mine Safety Disclosure Exhibit |  |  |  |  |  |  |  |  |  |  |  |  |  | X | X |  |
+| (96) Technical report summary 7 | X | X |  |  | X |  |  | X | X | X | X |  |  |  | X |  |
+| (97) Policy Relating to Recovery of Erroneously Awarded Compensation |  |  |  |  |  |  |  |  |  |  |  |  |  |  | X |  |
+| (98) Reports, opinions, or appraisals in de-SPAC transactions 8 | X |  |  |  | X |  |  | X |  | X |  |  |  |  |  |  |
+| (99) Additional exhibits | X | X | X | X | X | X | X | X | X | X | X | X | X | X | X |  |
+| (100) [Reserved] |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| (101) Interactive Data File | X | X |  |  | X |  | X | X | X | X |  | X |  | X | X |  |
+| (102) Asset Data File |  |  | X | X |  |  |  |  |  |  |  |  | X |  |  | X |
+| (103) Asset Related Documents |  |  | X | X |  |  |  |  |  |  |  |  | X |  |  | X |
+| (104) Cover Page Interactive Data File |  |  |  |  |  |  |  |  |  |  |  | X |  | X | X |  |
+| (105) [Reserved] |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| (106) Static Pool PDF |  |  | X | X |  |  |  |  |  |  |  | X |  |  |  |  |
+| (107) Filing Fee Table | X | X | X | X | X | X | X | X | X | X |  |  |  |  |  |  |
+| 1 An exhibit need not be provided about a company if: (1) With respect to such company an election has been made under Form S-4 or F-4 to provide information about such company at a level prescribed by Form S-3 or F-3; and (2) the form, the level of which has been elected under Form S-4 or F-4, would not require such company to provide such exhibit if it were registering a primary offering. |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 2 A Form 8-K exhibit is required only if relevant to the subject matter reported on the Form 8-K report. For example, if the Form 8-K pertains to the departure of a director, only the exhibit described in paragraph (b)(17) of this section need be filed. A required exhibit may be incorporated by reference from a previous filing. |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 3 Where incorporated by reference into the text of the prospectus and delivered to security holders along with the prospectus as permitted by the registration statement; or, in the case of the Form 10-K, where the annual report to security holders is incorporated by reference into the text of the Form 10-K. |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 4 If required pursuant to Item 304 of Regulation S-K. |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 5 Where the opinion of the expert or counsel has been incorporated by reference into a previously filed Securities Act registration statement. |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 6 Pursuant to §§ 240.13a-13(b)(3) and 240.15d-13(b)(3) of this chapter, asset-backed issuers are not required to file reports on Form 10-Q. |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 7 If required pursuant to § 229.1302 (Item 1302 of Regulation S-K). |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| 8 If required pursuant to § 229.1607(c) (Item 1607(c) of Regulation S-K). |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 
 (b) Description of exhibits. Set forth below is a description of each document listed in the exhibit tables.
 

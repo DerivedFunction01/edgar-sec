@@ -74,18 +74,6 @@ def _add_output_options(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--json", action="store_true", help="emit JSON to stdout")
 
 
-def cmd_review_build(args: argparse.Namespace) -> int:
-    return report_not_implemented("review build", json_output=args.json)
-
-
-def cmd_review_compare(args: argparse.Namespace) -> int:
-    return report_not_implemented("review compare", json_output=args.json)
-
-
-def cmd_review_list(args: argparse.Namespace) -> int:
-    return report_not_implemented("review list", json_output=args.json)
-
-
 def cmd_snapshot_status(args: argparse.Namespace) -> int:
     return report_not_implemented("snapshot status", json_output=args.json)
 
@@ -95,9 +83,6 @@ def cmd_snapshot_audit(args: argparse.Namespace) -> int:
 
 
 _TODO_HANDLERS = {
-    "review build": cmd_review_build,
-    "review compare": cmd_review_compare,
-    "review list": cmd_review_list,
     "status": cmd_status,
     "snapshot status": cmd_snapshot_status,
     "snapshot audit": cmd_snapshot_audit,

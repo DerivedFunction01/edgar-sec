@@ -133,12 +133,9 @@ def normalize_document(
     form: str | None = None,
     document_path: str | None = None,
     content_route: DocumentRoute | None = None,
+    capture_stage_trace: bool = True,
 ) -> NormalizationResult:
-    """Normalize one raw filing payload; each stage records a `StageRecord` of its output.
-
-    ``content_route`` is the route of the acquired bytes and wins over the requested
-    ``document_path``. A binary route raises rather than inventing text.
-    """
+    """Normalize one raw filing payload."""
     route = (
         content_route if content_route is not None else document_route(document_path)
     )
@@ -152,7 +149,8 @@ def normalize_document(
     text, representation, _encoding = prepare_input_text(raw_bytes)
 
     stage_trace: list[StageRecord] = []
-    stage_trace.append(StageRecord.of("unpacked", text))
+    if capture_stage_trace:
+        stage_trace.append(StageRecord.of("unpacked", text))
 
     table_geometries: tuple[TableGeometry, ...] = ()
     analysis: PageMarkerAnalysis | None = None
@@ -166,11 +164,13 @@ def normalize_document(
             _next_id,
             table_geometries,
         ) = apply_fast_html_page_policy(text)
-        stage_trace.append(StageRecord.of("html_cleaned", text))
+        if capture_stage_trace:
+            stage_trace.append(StageRecord.of("html_cleaned", text))
     else:
         text, analysis, _artifacts, _templates, _next_id = apply_text_policy(text)
 
-    stage_trace.append(StageRecord.of("page_policy", text))
+    if capture_stage_trace:
+        stage_trace.append(StageRecord.of("page_policy", text))
 
     canonical_family = resolve_alias(form)
     family = canonical_family or (form.upper().strip() if form else "GENERIC")
@@ -188,7 +188,8 @@ def normalize_document(
     )
     detected_cover_end = boundary.end_line
     detected_cover_start = boundary.start_line
-    stage_trace.append(StageRecord.of("cover_boundary", text))
+    if capture_stage_trace:
+        stage_trace.append(StageRecord.of("cover_boundary", text))
 
     text, pair_changed = normalize_yes_no_pairs(
         text,
@@ -222,7 +223,8 @@ def normalize_document(
             )
         )
         if checkmark_changed:
-            stage_trace.append(StageRecord.of("after_checkmark_rewrite", text))
+            if capture_stage_trace:
+                stage_trace.append(StageRecord.of("after_checkmark_rewrite", text))
 
     if profile.cover_table_cleaners and boundary.end_line is not None:
         cleaned_cover_text, table_geometries = clean_cover_tables(
@@ -233,7 +235,8 @@ def normalize_document(
         )
         if cleaned_cover_text != text:
             text = cleaned_cover_text
-            stage_trace.append(StageRecord.of("after_cover_table_cleaning", text))
+            if capture_stage_trace:
+                stage_trace.append(StageRecord.of("after_cover_table_cleaning", text))
 
     healed_text, cover_changed = heal_cover_text(
         text,
@@ -244,10 +247,12 @@ def normalize_document(
     )
     if cover_changed:
         text = healed_text
-        stage_trace.append(StageRecord.of("after_cover_healing", text))
+        if capture_stage_trace:
+            stage_trace.append(StageRecord.of("after_cover_healing", text))
 
     text = normalize_final_text_whitespace(text)
-    stage_trace.append(StageRecord.of("after_final_whitespace", text))
+    if capture_stage_trace:
+        stage_trace.append(StageRecord.of("after_final_whitespace", text))
 
     toc_span: TocSpan | None = None
     body_start: BodyStart | None = None
@@ -287,7 +292,8 @@ def normalize_document(
         and representation is not Representation.HTML
         and (body_start_line > 0 or no_cover)
     ):
-        stage_trace.append(StageRecord.of("before_reflow", text))
+        if capture_stage_trace:
+            stage_trace.append(StageRecord.of("before_reflow", text))
         reflow_policy = ReflowPolicy(
             unwrap_pre_body_prose=True,
             relax_prose_layout_gaps=True,
@@ -327,7 +333,8 @@ def normalize_document(
                 if body_start.first_unit_line is not None
                 else None,
             )
-        stage_trace.append(StageRecord.of("after_reflow", text))
+        if capture_stage_trace:
+            stage_trace.append(StageRecord.of("after_reflow", text))
 
     closing_search_from = (
         (body_start.first_unit_line + 1)

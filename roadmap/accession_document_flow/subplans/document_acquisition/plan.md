@@ -25,8 +25,8 @@ Status markers are maintained against tracked code and focused offline tests:
   discovery, direct/bodyless-failure capture, retained bundle/lazy-index response-group
   capture, and verified local replay are implemented. Raw response evidence retention
   is opt-in and defaults off; bundle/lazy-index capture requires it.
-- [ ] **M2E — Trace opt-out:** S10's `capture_stage_trace=False` normalizer option is
-  not implemented.
+- [x] **M2E — Trace opt-out:** S10's `capture_stage_trace=False` normalizer option is
+   implemented.
 - [~] **M3 — Acquisition runner:** direct and bundle acquisition, exact-form lazy-index
   selection, multi-request provenance, and the CLI `run` path are implemented. The
   catalog-direct exact-form selector compares primary bundle `<TYPE>` to the pinned
