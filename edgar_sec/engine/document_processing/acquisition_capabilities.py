@@ -1,7 +1,7 @@
-"""S6 acquisition capability catalog.
+"""Engine acquisition capability resolution.
 
-Provides generic resolution of acquisition operations based on path facts
-and engine handler metadata. Family-specific allowed operations are declared in domain/forms/families/.
+Provides generic resolution of acquisition operations from path facts and handler metadata.
+Family policy remains owned by domain form-family profiles.
 """
 
 from __future__ import annotations
@@ -59,7 +59,6 @@ def get_capability(
     operation: str,
 ) -> CapabilityEntry:
     """Resolve capability for a given context using generic path-facts rules."""
-    # Path-facts rules that apply generically
     if operation == "raw":
         return CapabilityEntry(
             family=family,
@@ -71,7 +70,6 @@ def get_capability(
         )
 
     if operation == "render_to_txt":
-        # Nested .xml paths (XSL rendering) serve HTML
         if (suffix_class == "xml" and path_shape == "nested") or (
             suffix_class in ("markup", "text")
         ):

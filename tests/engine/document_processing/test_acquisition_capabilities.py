@@ -1,8 +1,8 @@
-"""Tests for S6 acquisition capability catalog."""
+"""Tests for engine acquisition capability resolution."""
 
 from __future__ import annotations
 
-from edgar_sec.pipelines.document_planning.acquisition_capabilities import (
+from edgar_sec.engine.document_processing.acquisition_capabilities import (
     CATALOG_VERSION,
     CapabilityStatus,
     OutputKind,
