@@ -1,81 +1,20 @@
-# Architecture & Implementation Plan: Prose-Driven Content Evaluation Decision Tree
+# Architecture & Implementation Plan: S10 Role-Assessment Contract
 
 ## Goal Description
 
-In EDGAR filings, HTML and flat text documents do not carry SGML `<TYPE>` tags inside
-the document body. Determining whether a document is a primary report (initially Forms
-10-K, 10-Q, and 8-K) or an exhibit (e.g. Item 601 EX-10 material contract, EX-21
-subsidiary list, EX-31 certification, EX-99 press release), or detecting misfiled
-documents, requires analyzing visible prose. Form 20-F remains a separate source
-authority in the coverage ledger but is disabled in the initial S10 scope.
+This D0 document records the separate S9 acquisition-suspicion and S10 role-assessment
+contracts. S9 (`exact_form_with_lazy_index`) decides whether to fetch `-index.html`; S10
+diagnoses the already-selected body against pinned S6 intent. The two contracts do not
+share scan results or dataclasses.
 
-Drawing architectural inspiration from:
-- [edgar_sec/domain/taxonomy/statements/cash_flow.py](../../../../edgar_sec/domain/taxonomy/statements/cash_flow.py) (lexical evidence pack compilation, tiered scoring, vetoes),
-- [uploads/exhibits.md](../../../../uploads/exhibits.md) (17 CFR § 229.601 official SEC rules; Item 601(a)(2) Exhibit Index placement before signatures),
-- [uploads/research/](../../../../uploads/research/) (a growing set of external research notes; currently includes `exhibits-classification.md` and `exhibits-followup.md`),
-- [uploads/10-k.md](../../../../uploads/10-k.md), [uploads/20-f.md](../../../../uploads/20-f.md), [uploads/10-q.md](../../../../uploads/10-q.md), [uploads/8-k.md](../../../../uploads/8-k.md), and [uploads/6-k.md](../../../../uploads/6-k.md) (official form structures and exhibit instructions),
-- [edgar_sec/domain/forms/families/annual/taxonomy.py](../../../../edgar_sec/domain/forms/families/annual/taxonomy.py) and [quarterly/taxonomy.py](../../../../edgar_sec/domain/forms/families/quarterly/taxonomy.py) (existing `FORM_10K_ITEMS`, `FORM_20F_ITEMS`, `FORM_10Q_ITEMS`),
-- [roadmap/accession_document_flow/subplans/document_acquisition/decision_tree.md](../../../../roadmap/accession_document_flow/subplans/document_acquisition/decision_tree.md) (end-to-end plan/acquisition/processing tree),
-- [roadmap/accession_document_flow/subplans/S10_exhibit_assessment.md](../../../../roadmap/accession_document_flow/subplans/S10_exhibit_assessment.md) (role assessment and diagnostic contract),
-- [edgar_sec/engine/forms/cover/toc/finder.py](../../../../edgar_sec/engine/forms/cover/toc/finder.py) and [TocSpan](../../../../edgar_sec/engine/forms/cover/toc/models.py) (structural Table of Contents detection),
-
-this plan specifies an **efficient, short-circuiting decision-tree evaluator** that integrates official SEC statutory structures, reuses existing form family item taxonomies, handles optional Table of Contents, and uses an **orthogonal, non-exploding diagnostic taxonomy**.
-
-Research Markdown is input for review, not a normative implementation specification.
-Its proposed code, regexes, module names, snippets, prevalence claims, and thresholds may
-not match this repository's APIs or `AGENTS.md` contracts. Treat them as hypotheses:
-verify the underlying legal claim, redesign the signal to fit repository conventions,
-and compile regexes through the repository's builder. Record every supporting source
-individually; additional notes may be added under `uploads/research/` without changing
-the evaluator contract.
+Initial form scope is 10-K, 10-Q, and 8-K under Item 601. Form 20-F remains a separate
+source authority but is disabled in the initial S10 scope.
 
 ---
 
-## 1. Insights from Official Uploads (`uploads/`)
+## S10 Assessment Contract (`edgar_sec/domain/forms/common/exhibits.py`)
 
-Inspection of the official CFR rules, form instructions, and classification guidelines establishes two foundational architectural invariants:
-
-### A. Source-specific Exhibit Index Placement
-Under **17 CFR § 229.601(a)(2)** (from [uploads/exhibits.md:L13](../../../../uploads/exhibits.md#L13)):
-> *"Each registration statement or report shall contain an exhibit index, which must appear before the required signatures in the registration statement or report."*
-
-The local Item 601 forms place exhibit material in designated sections:
-- **Form 10-K:** `Item 15. Exhibits and Financial Statement Schedules` (Part IV)
-- **Form 10-Q:** `Part II, Item 6. Exhibits`
-- **Form 8-K:** `Item 9.01 Financial Statements and Exhibits`
-
-Form 20-F has separate exhibit instructions: Item 19 lists exhibits, and its exhibit
-index immediately precedes the exhibits (`uploads/20-f.md:1935-1952`). Do not apply
-Item 601 numbering or placement rules to that authority.
-
-**Decision Tree Rule:**
-- Mentions of exhibits (e.g. `"Exhibit 10.1"`, `"Exhibit 21"`) in a profile-recognized **Exhibit Index** or TOC are structural evidence of the primary filing, not standalone exhibit headers. The profile owns span detection; do not assume one universal index position.
-- Conversely, a **standalone exhibit file** may place its exhibit designator and/or
-  discriminating legal title in an early standalone heading. The handbook's opening
-  1–25-line range is a hypothesis to validate separately for each title rule, not a
-  universal cutoff.
-
-### B. Candidate tag-free exhibit evidence (from local research notes)
-Research notes suggest that when a visible exhibit label is absent, a distinctive title or
-body signal may still occur early. These are candidates only: verify each against the
-official local source, inspect local fixtures, and apply repository conventions before
-designing a pack. The opening-line range is not normative.
-- **EX-3.1 (Articles/Charter):** `CERTIFICATE OF INCORPORATION`, `ARTICLES OF INCORPORATION`, `CHARTER` + `DELAWARE GENERAL CORPORATION LAW`, `SECRETARY OF STATE` (*negative lookahead: `BYLAWS`, `MERGER`*).
-- **EX-3.2 (Bylaws):** `BYLAWS`, `AMENDED AND RESTATED BYLAWS` + `ARTICLE I OFFICES`, `MEETINGS OF STOCKHOLDERS`.
-- **EX-4 (Securities):** `INDENTURE`, `DESCRIPTION OF THE REGISTRANT'S SECURITIES`, `DESCRIPTION OF CAPITAL STOCK`.
-- **EX-10 (Material Contracts):** `CREDIT AGREEMENT`, `LOAN AGREEMENT`, `EMPLOYMENT AGREEMENT`, `SEPARATION AGREEMENT`, `STOCK OPTION PLAN` + `ADMINISTRATIVE AGENT`, `LENDERS`, `BORROWER`, `BASE SALARY`.
-- **EX-21 (Subsidiaries):** `SUBSIDIARIES OF`, `SIGNIFICANT SUBSIDIARIES`, `LIST OF SUBSIDIARIES` + `JURISDICTION OF INCORPORATION`.
-- **EX-23 (Consents):** `CONSENT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM`, `WE CONSENT TO THE INCORPORATION BY REFERENCE`.
-- **EX-24 (Power of Attorney):** `POWER OF ATTORNEY` + `KNOW ALL BY THESE PRESENTS`, `ATTORNEY-IN-FACT`.
-- **EX-31.1 / 31.2 (SOX 302):** `CERTIFICATION OF CHIEF EXECUTIVE OFFICER`, `CERTIFICATION PURSUANT TO RULE 13A-14(A)` / `SECTION 302` + `I, [NAME], CERTIFY THAT:`.
-- **EX-32.1 (SOX 906):** `CERTIFICATION PURSUANT TO 18 U.S.C. SECTION 1350` / `SECTION 906 OF THE SARBANES-OXLEY ACT OF 2002`.
-- **EX-99 (Press Releases):** `PRESS RELEASE`, `FOR IMMEDIATE RELEASE`.
-
----
-
-## 2. Orthogonal Diagnostic Taxonomy (Preventing Code Explosion)
-
-To prevent a combinatorial explosion of form-specific diagnostic strings (e.g. avoiding `suspected_form_inversion_20f`, `suspected_form_inversion_10q`, etc.), the assessment model cleanly separates:
+To prevent a combinatorial explosion of form-specific diagnostic strings, the assessment model cleanly separates:
 1. **The Diagnostic Category (`diagnostic_code`):** A small, closed, stable enumeration.
 2. **The Specific Types (`expected_type`, `observed_type`):** Dynamic form/exhibit identifier strings.
 3. **The Human/Audit Details (`diagnostic_detail`):** A formatted explanation of the discrepancy.
@@ -85,7 +24,6 @@ To prevent a combinatorial explosion of form-specific diagnostic strings (e.g. a
 - `"form_mismatch"`: When another registered primary report is observed, but `observed_type != expected_type` (e.g. expected `10-K`, but observed `10-Q` or `8-K` in the initial profile set). Scales to additional profiles without adding new codes.
 - `"suspected_misfiled_exhibit"`: When `expected_role == "primary"`, but the body is an exhibit.
 - `"suspected_misfiled_primary"`: When `expected_role == "exhibit"`, but the body is a primary report.
-- `"suspected_misfiled_schedule"`: When a schedule (e.g. `14A`, `13D`) is observed where a primary/exhibit was expected.
 
 ```python
 # ExhibitIdentity = (authority_id, code)

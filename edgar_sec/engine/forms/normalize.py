@@ -37,6 +37,7 @@ from edgar_sec.engine.forms.cover.body_start import find_body_start
 from edgar_sec.engine.forms.cover.boundary.detector import (
     find_cover_boundary_for_profile,
 )
+from edgar_sec.engine.forms.cover.checkmarks.models import CoverCheckmarkResult
 from edgar_sec.engine.forms.cover.checkmarks.rewrite import (
     apply_cover_checkmark_decisions,
     has_labeled_checkmark_candidates,
@@ -125,6 +126,7 @@ class NormalizationResult:
     reflow: ReflowResult | None = None
     table_geometries: tuple[TableGeometry, ...] = ()
     stage_trace: list[StageRecord] = field(default_factory=list)
+    cover_checkmarks: CoverCheckmarkResult | None = None
 
 
 def normalize_document(
@@ -357,6 +359,7 @@ def normalize_document(
         reflow=reflow_result,
         table_geometries=table_geometries,
         stage_trace=stage_trace,
+        cover_checkmarks=checkmark_inference,
     )
 
 

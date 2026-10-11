@@ -14,7 +14,8 @@ calendar-era label is never a substitute for an observed locator or a pinned tar
 - **Implementation exists; this tree remains a contract proposal:** an
   `edgar_sec/pipelines/document_acquisition/` package is present. Do not treat every
   selector path below as verified behavior without checking its implementation. S10
-  transient processing remains proposed.
+  transient processing remains proposed. D0 records S9 and S10 as separate contracts that
+  do not share scan results or dataclasses.
 - **Documentation reconciliation:** `implementation.md` reports S1–S6 implemented
   and `document_planning` has profile, catalog-scope, inventory-evidence, matching,
   publication, operator, and CLI modules. The detailed
@@ -91,9 +92,9 @@ flowchart TD
     POLICY -->|inventory-backed / none| FINALBODY["Assign exact planned physical slot"]
     POLICY -->|submitted_primary| SUBMITTED["Accept catalog sequence 1 as submitted<br/>no type evidence required"]
     SUBMITTED --> FINALBODY
-    POLICY -->|exact_form_with_lazy_index| SCREEN["Local ASCII <TYPE> / HTML cover suspicion screen"]
-    SCREEN -->|no suspicion| FINALBODY
-    SCREEN -->|mismatch or unverifiable| LAZY["Fetch and parse -index.html<br/>record slot locators/types; match expected filing form"]
+    POLICY -->|exact_form_with_lazy_index| SCREEN["Local ASCII <TYPE> / HTML cover suspicion"]
+    SCREEN -->|form_match| FINALBODY
+    SCREEN -->|not_run / type_mismatch / unverifiable| LAZY["Fetch and parse -index.html<br/>S9 fails closed on not_run/unverifiable"]
     LAZY -->|one matching indexed slot| RECOVER["Select direct or exact bundle sequence<br/>retain sequence-1 attempt"]
     LAZY -->|no type match| ABSENT{"Target optional?"}
     ABSENT -->|yes| RECOVERYRESULT["not_filed<br/>with index evidence"]
@@ -101,8 +102,8 @@ flowchart TD
     LAZY -->|duplicate / fetch or parse failure| RECOVERYRESULT2["ambiguous / failed<br/>with index evidence"]
     RECOVER --> FINALBODY
 
-    FINALBODY --> S10["Proposed S10 validates assigned staged bytes<br/>routes selected child and applies role profile"]
-    S10 --> RESULT["ProcessingResult<br/>metadata, digests, fingerprint, diagnostics"]
+    FINALBODY --> S10["S10 role assessment<br/>diagnoses assigned body against S6 intent"]
+    S10 --> RESULT["DocumentRoleAssessment<br/>role diagnosis and diagnostics"]
     S10 --> RECEIPT["Write S9 BodyConsumptionReceipt<br/>proves consumption; does not clean body"]
     S10 -. "optional capture_review" .-> REVIEW["S7 promotes staged review output<br/>not a payload store"]
     RESULT --> PUBLISH["S11 publishes immutable acquisition snapshot<br/>binary and text payload Parquet relations"]
@@ -121,8 +122,8 @@ flowchart TD
 | S2/S4/S3 inventory run | Missing/explicitly refreshed accession work items, shared broker or pinned fixture bytes. | Typed page outcomes/checkpoints plus observed document/data rows and separate bundle URL/size metadata. | Known accessions reuse snapshot facts; fetch/parse failure is never empty inventory. No child body is acquired here. S0 evidence gates final historical parser acceptance. |
 | Inventory publish / S5 | Validated cohort, committed S4 results, expected parent snapshot. | Cumulative immutable inventory snapshot and current pointer advanced only after complete validation. | Failed or unrecognized accessions prevent publication; inventory stores observed index facts, not targets or payloads. |
 | S6 target planning (implemented) | Required pinned catalog plan; optional pinned S5 snapshot; versioned profile. | Immutable target-plan bundle with one target row per request/candidate and explicit status/provenance/retrieval locator. | Without a snapshot only primary catalog-direct planning is valid. With a snapshot it is the sole locator evidence; never fall back to catalog paths. Current code allows bundle-sequence locators for unlinked exhibits only. |
-| S9 acquisition (proposed) | Validated S6 plan bundle, pinned source provenance, supported matched locators. | Append-only attempts/outcomes, exact source and selected-body digests, transient staged body reference, and for lazy recovery a target-to-physical-slot resolution record. | Default path executes exact planned locator. Only catalog-direct `exact_form_with_lazy_index` may fetch/parse `-index.html`, after the defined local identity suspicion. It records the new evidence without changing S5/S6. |
-| S10 processing (proposed) | Acquired S9 body assigned to the immutable S6 target. | Per-target `ProcessingResult`; optional S7 review reference; S9 consumption receipt after verified read. | Processes only the resolved body. It does not discover targets; a processing/cover diagnostic cannot revise S6 intent or cause S9 work. |
+| S9 acquisition (proposed) | Validated S6 plan bundle, pinned source provenance, supported matched locators. | Append-only attempts/outcomes, exact source and selected-body digests, transient staged body reference, and for lazy recovery a target-to-physical-slot resolution record. | Default path executes exact planned locator. Only catalog-direct `exact_form_with_lazy_index` may fetch/parse `-index.html`, after the defined local identity suspicion. It records the new evidence without changing S5/S6. S9 and S10 do not share dataclasses or scan results. |
+| S10 role assessment (D0 contract) | Acquired S9 body assigned to the immutable S6 target; pinned S6 intent context. | `DocumentRoleAssessment` diagnostics only; optional S7 review reference; S9 consumption receipt after verified read. | Processes only the resolved body. It emits role diagnoses but never changes targets, types, slots, routes, or acquisition outcomes. It cannot fetch an index, create targets, or trigger retries. |
 | S11 snapshot publication (planned; approval-gated) | Validated S9/S10 run, imported worker receipts, expected DAG parent. | Immutable acquisition Parquet snapshot with separate binary-route and text-route payload relations joined to target/slot evidence by digest. | Design and schema live in [the lifecycle plan](lifecycle.md); durable publication waits for representative S9/S10 evidence and S11 approval. Reconciliation consumes pinned S5 facts and does not alter S5/S6 schemas. |
 
 The full inventory path is catalog materialization → catalog plan → S5 inventory

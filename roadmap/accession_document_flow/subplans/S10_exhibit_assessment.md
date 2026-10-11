@@ -37,6 +37,11 @@ or parsed at runtime.
 
 ## Question and boundary
 
+D0 contracts S9 suspicion and S10 assessment as separate, non-sharing interfaces.
+S9 (`exact_form_with_lazy_index`) decides whether to fetch `-index.html`. S10
+diagnoses the already-selected body against pinned S6 intent. The two contracts do not
+share scan results or dataclasses.
+
 Assess the body S9 already selected: does its visible content look consistent with the
 S6-planned role, or does it contain evidence that it may itself be an exhibit rather
 than the requested primary report? Initial form scope is 10-K, 10-Q, and 8-K. The
