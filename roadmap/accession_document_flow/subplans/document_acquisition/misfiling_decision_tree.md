@@ -231,13 +231,22 @@ cost by form and era before adopting it. Historical large-corpus claims are not
 established by the unit fixture. Do not import the legacy pipeline into S9/S10 or port its
 bundle-selection behavior.
 
-One-pass is a semantic contract, not just a wider return annotation: discover structural
+ One-pass is a semantic contract, not just a wider return annotation: discover structural
 and lexical candidates for a given text frame once, retain stable source spans, and score
 those candidates against multiple profiles without rescanning the full text. TOC,
 checkmark, and normalization passes have distinct scopes today, so D0 must choose the
 result owner and coordinate mapping before promising fewer scans. S9 consumes low-threshold
 suspicion facts only; S10 applies its independent diagnostic threshold to the selected
 body.
+
+### Coordinate Frame Contract (D0 frozen)
+- `EvidenceSpan(start_char, end_char)` is strictly indexed against the **final normalized
+  text frame** (`NormalizationResult.text`).
+- Cues resolved prior to destructive text rewrites (specifically, cover checkmarks) are
+  preserved as **semantic facts** on `NormalizationResult.cover_checkmarks` rather than
+  attempting backwards character offset mapping.
+- Multi-candidate TOC discovery is decoupled from profile-specific scoring; the normalizer
+  owns the cover boundary and TOC span while the evaluator may compare candidates in memory.
 
 ---
 
@@ -625,8 +634,8 @@ starting M9 publication.
 
 | Milestone | Deliverables / files | Depends on | Can run in parallel? | Exit condition | Status |
 |---|---|---|---|---|---|
-| **D0 — Reuse audit and contract freeze** | Map reusable TOC candidate/boundary, cover/checkmark, title-vocabulary, and legacy inversion APIs. Record which results/signatures must retain multiple spans, checked-choice evidence, and source offsets. Freeze a shared scan result consumed by separate S9 suspicion and S10 classification thresholds; then freeze request/result, pack/profile, coverage, and `source_refs` contracts. | User approval of this design. | No; this is the contract gate. | Exact reuse/extension decisions, text-coordinate frames, and one input/output shape are documented; S9 cannot assert type and S10 cannot trigger a request. | [ ] |
-| **D1 — Build domain scaffolding** | `domain/forms/exhibits/{coverage.py,registry.py,profiles.py}` and package READMEs. Add source rows, disabled candidate records, indexed lookup and profile schemas; no exhibit heuristics required. | D0. | Parallel with D2 and D3 after contract freeze. | Complete known-code ledger is representable; no inactive/unsupported row resolves to an active pack. | [ ] |
+| **D0 — Reuse audit and contract freeze** | Map reusable TOC candidate/boundary, cover/checkmark, title-vocabulary, and legacy inversion APIs. Record which results/signatures must retain multiple spans, checked-choice evidence, and source offsets. Freeze a shared scan result consumed by separate S9 suspicion and S10 classification thresholds; then freeze request/result, pack/profile, coverage, and `source_refs` contracts. Contracts reside in `edgar_sec/domain/forms/common/exhibits.py`. | User approval of this design. | No; this is the contract gate. | Exact reuse/extension decisions, text-coordinate frames, and one input/output shape are documented; S9 cannot assert type and S10 cannot trigger a request. | [x] |
+| **D1 — Build domain scaffolding** | `domain/forms/exhibits/{coverage.py,registry.py,profiles.py}` and package READMEs. Add source rows, disabled candidate records, indexed lookup and profile schemas; no exhibit heuristics required. | D0. | Parallel with D2 and D3 after contract freeze. | Complete known-code ledger is representable; no inactive/unsupported row resolves to an active pack. | [x] |
 | **D2 — Build generic evaluator shell** | `engine/forms/plugins/exhibit_selection.py`, `engine/forms/plugins/evaluators/content_role.py`, mirrored tests. Implement injected profile lookup, shared candidate extraction, indexed cover/title/TOC evidence, optional standalone-title rules, shields, thresholds, and abstention. Use synthetic packs where local rules are not yet researched. | D0; can use empty D1 registries while those are populated. | Parallel with D1 and source research D3. | No form-specific branch or per-profile whole-text rescan; alternate profiles reuse candidate spans; synthetic collision and tier tests pass. | [ ] |
 | **D3 — Review source evidence in bounded batches** | Execute batches A–J in the coverage section. Each reviewer returns only assigned codes, exact local citations, applicability, candidate signals/negatives, status, and possible duplicate owners. | D0's row schema. | Yes; A–J are independent. No one reviewer owns the entire exhibit inventory. | Each Item 601 / source-specific code has a disposition; broad or uncertain types remain explicit gaps. | [ ] |
 | **D4 — Add reviewed pack modules incrementally** | Add `domain/forms/exhibits/packs/<code-module>.py` plus mirrored tests for completed batches. Only store reviewed signals, optional title rules, tiers and citations; do not add an unreviewed code to the active registry. | D0 and the corresponding D3 batch result; D1 package scaffolding. | Yes across disjoint batches/modules after D0. | Each active pack has a unique `pack_id`, source-qualified mapping, tests, and `evaluator_quality` no higher than evidence supports. | [ ] |

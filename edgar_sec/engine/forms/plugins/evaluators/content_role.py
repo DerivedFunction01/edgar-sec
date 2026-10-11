@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from edgar_sec.domain.forms.common.exhibits import DocumentRoleAssessment
+from edgar_sec.engine.forms.normalize import NormalizationResult
 
 
 def evaluate_document_role(
