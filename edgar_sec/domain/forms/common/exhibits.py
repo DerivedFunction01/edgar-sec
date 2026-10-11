@@ -153,6 +153,34 @@ class ExhibitAuthorityProfile:
     veto_signals: tuple[str, ...] = ()
 
 
+@dataclass(frozen=True, slots=True)
+class ExhibitPack:
+    """Declarative evidence pack for an exhibit item or subtype."""
+
+    pack_id: str
+    version: str
+    authority_id: str
+    target_code: str
+    title: str
+    parent_code: str | None = None
+    tier: Literal["tier1", "tier2", "tier3"] = "tier1"
+    title_anchors: tuple[str, ...] = ()
+    title_window_lines: int = 10
+    primary_anchors: tuple[str, ...] = ()
+    secondary_tokens: tuple[str, ...] = ()
+    veto_signals: tuple[str, ...] = ()
+    matched_evidence_tier: str = "direct_designator"
+    min_confidence_band: Literal["insufficient", "low", "moderate", "high"] = "high"
+    evaluator_quality: Literal[
+        "proposed",
+        "source_supported",
+        "fixture_reviewed",
+        "shadow_reviewed",
+        "holdout_evaluated",
+    ] = "source_supported"
+    source_refs: tuple[SourceRef, ...] = ()
+
+
 __all__ = [
     "EVALUATOR_VERSION",
     "TAXONOMY_VERSION",
@@ -163,6 +191,7 @@ __all__ = [
     "SourceRef",
     "CoverageStatus",
     "CoverageEntry",
+    "ExhibitPack",
     "PrimaryReportProfile",
     "ExhibitAuthorityProfile",
 ]

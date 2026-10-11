@@ -4,9 +4,13 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 from edgar_sec.domain.forms.common.exhibits import EvidenceSpan, ExhibitIdentity
 from edgar_sec.engine.forms.cover.toc.models import TocSpan
+
+if TYPE_CHECKING:
+    from edgar_sec.domain.forms.common.exhibits import ExhibitPack
 
 
 # =============================================================================
@@ -34,6 +38,68 @@ class ExhibitProbeMatch:
     evidence_span: EvidenceSpan | None = None
     line_number: int | None = None
     raw_match: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class CompiledExhibitPack:
+    """Precompiled regex patterns for exhibit pack evaluation."""
+
+    pack_id: str
+    title_pattern: re.Pattern
+    primary_pattern: re.Pattern
+    secondary_pattern: re.Pattern
+    veto_pattern: re.Pattern
+    title_window_lines: int
+
+
+_PACK_COMPILE_CACHE: dict[str, CompiledExhibitPack] = {}
+"""Cache compiled packs by pack_id for reuse."""
+
+
+def _compile_pack(pack: ExhibitPack) -> CompiledExhibitPack:
+    """Compile a pack's string anchors/tokens into regex patterns."""
+    from edgar_sec.foundation.regex.builder import build_alternation
+
+    title_pattern = build_alternation(
+        pack.title_anchors,
+        auto_escape=True,
+        compact=True,
+        flexible_whitespace=True,
+    )
+    primary_pattern = build_alternation(
+        pack.primary_anchors,
+        auto_escape=True,
+        compact=True,
+        flexible_whitespace=True,
+    )
+    secondary_pattern = build_alternation(
+        pack.secondary_tokens,
+        auto_escape=True,
+        compact=True,
+        flexible_whitespace=True,
+    )
+    veto_pattern = build_alternation(
+        pack.veto_signals,
+        auto_escape=True,
+        compact=True,
+        flexible_whitespace=True,
+    )
+
+    return CompiledExhibitPack(
+        pack_id=pack.pack_id,
+        title_pattern=title_pattern,
+        primary_pattern=primary_pattern,
+        secondary_pattern=secondary_pattern,
+        veto_pattern=veto_pattern,
+        title_window_lines=pack.title_window_lines,
+    )
+
+
+def _get_compiled_pack(pack_id: str, pack: ExhibitPack) -> CompiledExhibitPack:
+    """Get cached compiled pack or compile on first access."""
+    if pack_id not in _PACK_COMPILE_CACHE:
+        _PACK_COMPILE_CACHE[pack_id] = _compile_pack(pack)
+    return _PACK_COMPILE_CACHE[pack_id]
 
 
 def _normalize_exhibit_code(raw: str | None) -> str:
@@ -115,7 +181,10 @@ def probe_exhibit_header(
 __all__ = [
     "PROBE_LINE_BOUND",
     "ExhibitProbeMatch",
+    "CompiledExhibitPack",
     "DESIGNATION_RE",
     "is_shielded_by_toc",
     "probe_exhibit_header",
+    "_compile_pack",
+    "_get_compiled_pack",
 ]

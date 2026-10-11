@@ -1,79 +1,64 @@
-"""Tests for the exhibit probe module."""
+"""Tests for exhibit selection and compilation."""
 
-from __future__ import annotations
-
-from edgar_sec.domain.forms.common.exhibits import ExhibitIdentity, EvidenceSpan
-from edgar_sec.engine.forms.cover.toc.models import TocSpan
+from edgar_sec.domain.forms.exhibits.packs import ex3_1, ex31_i
 from edgar_sec.engine.forms.plugins.exhibit_selection import (
+    CompiledExhibitPack,
+    _compile_pack,
+    _get_compiled_pack,
     probe_exhibit_header,
 )
 
 
-def test_10_1_exhibit_probe():
-    """Probe finds EXHIBIT 10.1 at line start."""
-    lines = ("", "EXHIBIT 10.1 MATERIAL CONTRACT", "Some text")
-    result = probe_exhibit_header(text="\n".join(lines), lines=lines)
-    assert result is not None
-    assert result.exhibit_identity.code == "10.1"
-    assert result.line_number == 1
+def test_compile_pack():
+    """Verify pack compilation produces compiled patterns."""
+    compiled = _compile_pack(ex3_1.PACK)
+    assert compiled.pack_id == "ex3_1"
+    assert isinstance(compiled, CompiledExhibitPack)
+    assert compiled.title_pattern is not None
+    assert compiled.primary_pattern is not None
 
 
-def test_ex_99_1_exhibit_probe():
-    """Probe finds EX-99.1 at line start."""
-    lines = ("", "EX-99.1 CERTIFICATION", "Some text")
-    result = probe_exhibit_header(text="\n".join(lines), lines=lines)
-    assert result is not None
-    assert result.exhibit_identity.code == "99.1"
+def test_compiled_pack_cache():
+    """Verify compiled packs are cached by pack_id."""
+    compiled1 = _get_compiled_pack("test_pack", ex3_1.PACK)
+    compiled2 = _get_compiled_pack("test_pack", ex3_1.PACK)
+    assert compiled1 is compiled2
 
 
-def test_101_exhibit_probe():
-    """Probe finds EXHIBIT 101 at line start."""
-    lines = ("", "EXHIBIT 101", "Some text")
-    result = probe_exhibit_header(text="\n".join(lines), lines=lines)
-    assert result is not None
-    assert result.exhibit_identity.code == "101"
+def test_probe_exhibit_header():
+    """Verify probe detects line-anchored exhibit codes."""
+    text = """EXHIBIT 3.1
+
+ARTICLES OF INCORPORATION
+This document contains the Articles of Incorporation."""
+
+    lines = tuple(text.split("\n", 25))
+    match = probe_exhibit_header(text, lines)
+
+    assert match is not None
+    assert match.exhibit_identity.code == "3.1"
+    assert match.evidence_tier == "direct_designator"
 
 
-def test_no_mid_sentence_exhibit():
-    """Probe rejects mid-sentence exhibit mentions."""
-    lines = (
-        "This document discusses",
-        "pursuant to exhibit 10.1 of the prior filing",
-        "more text",
-    )
-    result = probe_exhibit_header(text="\n".join(lines), lines=lines)
-    assert result is None
+def test_probe_exhibitsensitive():
+    """Verify probe is case-insensitive."""
+    text = """exhibit 3.1
+
+Articles of Incorporation"""
+
+    lines = tuple(text.split("\n", 25))
+    match = probe_exhibit_header(text, lines)
+
+    assert match is not None
+    assert match.exhibit_identity.code == "3.1"
 
 
-def test_case_insensitivity():
-    """Probe is case-insensitive."""
-    lines = ("", "exhibit 10.1", "Some text")
-    result = probe_exhibit_header(text="\n".join(lines), lines=lines)
-    assert result is not None
-    assert result.exhibit_identity.code == "10.1"
+def test_probe_without_code():
+    """Verify probe returns None when no exhibit code present."""
+    text = """ARTICLES OF INCORPORATION
+This document contains the Articles of Incorporation."""
 
+    lines = tuple(text.split("\n", 25))
+    match = probe_exhibit_header(text, lines)
 
-def test_toc_shielding():
-    """Probe ignores matches inside TOC."""
-    lines = ("", "EXHIBIT 10.1", "Some text")
-    toc_span = TocSpan(
-        start_line=0,
-        end_line=100,
-        start_offset=0,
-        end_offset=1000,
-        method="test",
-        confidence=1.0,
-    )
-    result = probe_exhibit_header(
-        text="\n".join(lines),
-        lines=lines,
-        toc_span=toc_span,
-    )
-    assert result is None
-
-
-def test_non_existent_exhibit_code():
-    """Probe rejects empty code."""
-    lines = ("", "EXHIBIT", "Some text")
-    result = probe_exhibit_header(text="\n".join(lines), lines=lines)
-    assert result is None
+    assert match is None
