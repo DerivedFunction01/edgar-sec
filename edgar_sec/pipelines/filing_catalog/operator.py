@@ -78,6 +78,8 @@ def _namespace(
         source_snapshot="",
         source_artifacts="",
         artifacts="",
+        cohort="",
+        seed_cohort="",
         parent_plan=parent_plan,
         target_units=target_units,
         branch=branch,
