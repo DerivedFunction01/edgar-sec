@@ -42,6 +42,9 @@ _SQL_COMPILER_PATHS = frozenset(
         "edgar_sec/infra/storage/duckdb.py",
         "edgar_sec/engine/selection/source.py",
         "edgar_sec/engine/selection/inventory.py",
+        # Feature SQL embeds only relations compiled from validated forms and paths.
+        "edgar_sec/engine/selection/features.py",
+        "edgar_sec/engine/selection/snapshot_build.py",
         "edgar_sec/pipelines/filing_catalog/planner.py",
         "edgar_sec/pipelines/document_storage/fixture_store.py",
         # Source paths bind at read_csv sinks; selected identifiers and delimiters

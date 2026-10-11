@@ -9,6 +9,11 @@ from pathlib import Path
 
 import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
 import edgar_sec.foundation.runtime.paths as foundation_paths
+from edgar_sec.foundation.runtime.paths import (
+    MANIFEST_FILE,
+    POINTER_FILE,
+    RUN_MANIFEST_FILE,
+)
 from edgar_sec.infra.storage.dag.paths import DAGPaths
 from edgar_sec.infra.storage.review.paths import (
     ReviewPaths,
@@ -80,17 +85,14 @@ DATASET = "document_inventory"
 #: Files inside one attempt directory.
 OUTCOMES_FILE = "outcomes.parquet"
 ENTRIES_FILE = "entries.parquet"
-MANIFEST_FILE = "manifest.json"
 SNAPSHOT_PART_PREFIX = "part-"
 
 #: Files at the run root.
-RUN_MANIFEST_FILE = "run_manifest.json"
 LOCK_FILE = "run.lock"
 CANCELLED_FILE = "cancelled.json"
 PUBLICATION_LOCK_FILE = foundation_paths.PUBLICATION_LOCK_FILE
 
 #: Pointer naming the current committed attempt for a chunk.
-POINTER_FILE = "current.json"
 PROGRESS_DIR = "progress"
 PROGRESS_POINTER_FILE = "current.json"
 

@@ -228,6 +228,13 @@ bundle response.
   store; production snapshot payloads use separate binary/text Parquet relations as
   specified by [the acquisition lifecycle](../lifecycle.md), subject to the unchanged
   S11 design approval gate.
+- **Cross-plan operation reuse**: fixtures remain exact response evidence keyed to their
+  capture/plan/target/attempt. The proposed snapshot's operation statuses and
+  representations do not belong in this SQLite schema. A cross-plan acceptance test can
+  use one fixture to seed a raw-only Parquet snapshot, then verify the next plan reuses
+  that snapshot's stable source payload; direct fixture lookup across changed target IDs
+  would require a separate fixture contract. See the
+  [representation materialization proposal](../representation_materialization_contract.md).
 
 ## Acceptance
 

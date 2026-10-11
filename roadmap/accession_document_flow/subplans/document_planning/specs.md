@@ -48,9 +48,11 @@ support status/reason, capability and optional handler versions, output kind, an
 request IDs. Each distinct body request has a deterministic `source_id`, `target_id`,
 validated locator, source strategy, and linked operation IDs. Every target retains one
 primary source request even when `raw` is not requested; operations sharing a body share a
-source request. A root-XML source request is separate from the rendered HTML source and
-must pass the ordinary same-accession locator checks. These relations do not create
-additional logical target rows.
+source request. Under the proposed materialization contract, `render_to_xml` is a
+family-specific transform of the primary `edgar.htm` input for registered forms; it does
+not create a request for an archive-root `.xml` sibling. These relations do not create
+additional logical target rows. See the
+[representation materialization contract](../document_acquisition/representation_materialization_contract.md).
 
 The profile digest includes whether policy was omitted or explicit; explicit operations are
 canonicalized as a sorted set. The plan manifest and identity pin the operation and source

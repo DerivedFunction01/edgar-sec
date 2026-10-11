@@ -15,11 +15,11 @@ from edgar_sec.pipelines.metadata_sync.paths import (
     METADATA_DIR,
     RECEIPT_FILE,
     ROSTER_DIR,
-    SNAPSHOT_CIK_INDEX_NAME,
     MetadataPaths,
     resolve_metadata_paths,
     resolve_run_paths,
 )
+from edgar_sec.pipelines.metadata_sync.roster import ROSTER_FILE_NAME
 from edgar_sec.pipelines.metadata_sync import paths as metadata_paths_module
 
 
@@ -90,7 +90,7 @@ def test_a_copied_bundle_resolves_the_same_shape(tmp_path: Path) -> None:
 def test_the_published_cik_index_sits_beside_the_payload(tmp_path: Path) -> None:
     metadata = MetadataPaths(artifacts_root=tmp_path)
     assert metadata.snapshot_cik_index("snap1") == (
-        tmp_path / "metadata" / "snapshots" / "snap1" / SNAPSHOT_CIK_INDEX_NAME
+        tmp_path / "metadata" / "snapshots" / "snap1" / ROSTER_FILE_NAME
     )
     assert metadata.snapshot_cik_index("snap1").parent == metadata.snapshot_dir("snap1")
 

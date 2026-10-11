@@ -29,8 +29,8 @@ PATH_SOURCE_BUNDLE = "submission_bundle"
 SCOPE_DETERMINISTIC = "deterministic"
 SCOPE_POLICY = "policy"
 
-# The registrant-level columns borrowed from the submissions schema, in
-# projection order, followed by the catalog-owned profile version column.
+# This ordered projection deliberately excludes filing-level source fields.
+_PROFILE_EXTENSION = "profile_schema_version"
 PROFILE_COLUMNS = (
     "cik",
     "identity",
@@ -54,144 +54,145 @@ PROFILE_COLUMNS = (
     "byte_count",
     "input_fingerprint",
     "schema_version",
-    "profile_schema_version",
-)
-
-TARGET_COLUMNS = (
-    "occurrence_id",
-    "document_locator_key",
-    "source_cik",
-    "accession",
-    "form",
-    "filing_date",
-    "report_date",
-    "primary_document",
-    "document_path",
-    "archive_url",
-    "document_path_source",
-    "reported_size",
-    "is_xbrl",
-    "is_inline_xbrl",
-    "is_xbrl_numeric",
+    _PROFILE_EXTENSION,
 )
 
 PROFILE_SCHEMA = pa.schema(
     [SUBMISSION_METADATA_SCHEMA.field(name) for name in PROFILE_COLUMNS[:-1]]
-    + [("profile_schema_version", pa.string())]
+    + [(PROFILE_COLUMNS[-1], pa.string())]
 )
 
-TARGET_SCHEMA = pa.schema(
-    [
-        ("occurrence_id", pa.string()),
-        ("document_locator_key", pa.string()),
-        ("source_cik", pa.string()),
-        ("accession", pa.string()),
-        ("form", pa.string()),
-        ("filing_date", pa.string()),
-        ("report_date", pa.string()),
-        ("primary_document", pa.string()),
-        ("document_path", pa.string()),
-        ("archive_url", pa.string()),
-        ("document_path_source", pa.string()),
-        ("reported_size", pa.int64()),
-        ("is_xbrl", pa.bool_()),
-        ("is_inline_xbrl", pa.bool_()),
-        ("is_xbrl_numeric", pa.bool_()),
-    ]
-)
-
-# Deterministic scope emits the narrow locator projection; policy scope widens it with
-# LOCATOR_POLICY_FEATURES.
-LOCATOR_BASE_COLUMNS = (
-    "document_locator_key",
-    "form",
-    "representative_cik",
-    "representative_accession",
+# Leaf groups own each feature column name. Public layouts below only compose groups.
+_OCCURRENCE_ID = ("occurrence_id",)
+_LOCATOR_ID = ("document_locator_key",)
+_REGISTRANT_ID = ("source_cik", "accession")
+_FORM = ("form",)
+_FORM_FAMILY = ("form_family",)
+_FILING_DATES = ("filing_date", "report_date")
+_ERA = ("era",)
+_SUFFIX = ("suffix",)
+_DOCUMENT_SOURCE = (
     "primary_document",
     "document_path",
     "archive_url",
     "document_path_source",
 )
+_REPORTED_SIZE = ("reported_size",)
+_SIZE_BAND = ("size_band",)
+_XBRL_FLAGS = ("is_xbrl", "is_inline_xbrl", "is_xbrl_numeric")
+_STUB_SUSPECT = ("stub_suspect",)
+_XBRL_STATE = ("xbrl_state",)
+_SIC = ("sic_code",)
+_OWNER_ORG = ("owner_org_presence",)
+_FOREIGN_STATUS = ("foreign_status",)
+_FOREIGN_COUNTRY = ("foreign_country_code",)
+_STATE_OF_INCORPORATION = ("state_of_incorporation",)
+_ENTITY_TYPE = ("entity_type",)
+_FILER_CATEGORY = ("filer_category_primary",)
+_COMPANY_FAMILY = ("company_family",)
+_HAS_REVIVAL_GAP = ("has_revival_gap",)
+_LIFECYCLE_CLASS = ("lifecycle_class",)
+_LOCATOR_CLASS = ("locator_class",)
+_REPRESENTATIVE_ID = ("representative_cik", "representative_accession")
 
-# The policy-scope widening: locator identity columns plus the stratification dimensions a
-# selection is audited against, in published order so writer and consumers share one list.
-LOCATOR_POLICY_FEATURES = (
-    "form_family",
-    "era",
-    "suffix",
-    "xbrl_state",
-    "size_band",
-    "owner_org_presence",
-    "foreign_status",
-    "lifecycle_class",
-    "stub_suspect",
-    "sic_code",
+TARGET_COLUMNS = (
+    *_OCCURRENCE_ID,
+    *_LOCATOR_ID,
+    *_REGISTRANT_ID,
+    *_FORM,
+    *_FILING_DATES,
+    *_DOCUMENT_SOURCE,
+    *_REPORTED_SIZE,
+    *_XBRL_FLAGS,
+)
+_TARGET_TYPES = (
+    *(pa.string() for _ in (*_OCCURRENCE_ID, *_LOCATOR_ID, *_REGISTRANT_ID, *_FORM)),
+    *(pa.string() for _ in _FILING_DATES),
+    *(pa.string() for _ in _DOCUMENT_SOURCE),
+    pa.int64(),
+    *(pa.bool_() for _ in _XBRL_FLAGS),
+)
+TARGET_SCHEMA = pa.schema(zip(TARGET_COLUMNS, _TARGET_TYPES, strict=True))
+
+LOCATOR_BASE_COLUMNS = (
+    *_LOCATOR_ID,
+    *_FORM,
+    *_REPRESENTATIVE_ID,
+    *_DOCUMENT_SOURCE,
 )
 
+LOCATOR_POLICY_FEATURES = (
+    *_FORM_FAMILY,
+    *_ERA,
+    *_SUFFIX,
+    *_XBRL_STATE,
+    *_SIZE_BAND,
+    *_OWNER_ORG,
+    *_FOREIGN_STATUS,
+    *_LIFECYCLE_CLASS,
+    *_STUB_SUSPECT,
+    *_SIC,
+)
 LOCATOR_POLICY_COLUMNS = LOCATOR_BASE_COLUMNS + LOCATOR_POLICY_FEATURES
 
-OCCURRENCE_FEATURE_COLUMNS = (
-    "occurrence_id",
-    "document_locator_key",
-    "source_cik",
-    "accession",
-    "form",
-    "form_family",
-    "filing_date",
-    "report_date",
-    "era",
-    "suffix",
-    "primary_document",
-    "document_path",
-    "archive_url",
-    "document_path_source",
-    "reported_size",
-    "size_band",
-    "is_xbrl",
-    "is_inline_xbrl",
-    "is_xbrl_numeric",
-    "stub_suspect",
-    "xbrl_state",
-    "sic_code",
-    "owner_org_presence",
-    "foreign_status",
-    "foreign_country_code",
-    "state_of_incorporation",
-    "entity_type",
-    "filer_category_primary",
-    "company_family",
-    "has_revival_gap",
-    "lifecycle_class",
+LOCATOR_FEATURE_COLUMNS = (
+    *_LOCATOR_ID,
+    *_FORM,
+    *_FORM_FAMILY,
+    *_ERA,
+    *_SUFFIX,
+    *_XBRL_STATE,
+    *_SIZE_BAND,
+    *_OWNER_ORG,
+    *_FOREIGN_STATUS,
+    *_FOREIGN_COUNTRY,
+    *_ENTITY_TYPE,
+    *_FILER_CATEGORY,
+    *_LIFECYCLE_CLASS,
+    *_HAS_REVIVAL_GAP,
+    *_LOCATOR_CLASS,
+    *_STUB_SUSPECT,
+    *_REPORTED_SIZE,
+    *_FILING_DATES,
+    *_DOCUMENT_SOURCE,
+    *_REPRESENTATIVE_ID,
+    *_SIC,
+    *_COMPANY_FAMILY,
 )
 
-LOCATOR_FEATURE_COLUMNS = (
-    "document_locator_key",
-    "form",
-    "form_family",
-    "era",
-    "suffix",
-    "xbrl_state",
-    "size_band",
-    "owner_org_presence",
-    "foreign_status",
-    "foreign_country_code",
-    "entity_type",
-    "filer_category_primary",
-    "lifecycle_class",
-    "has_revival_gap",
-    "locator_class",
-    "stub_suspect",
-    "reported_size",
-    "filing_date",
-    "report_date",
-    "primary_document",
-    "document_path",
-    "archive_url",
-    "document_path_source",
-    "representative_cik",
-    "representative_accession",
-    "sic_code",
-    "company_family",
+OCCURRENCE_FEATURE_COLUMNS = (
+    *_OCCURRENCE_ID,
+    *_LOCATOR_ID,
+    *_REGISTRANT_ID,
+    *_FORM,
+    *_FORM_FAMILY,
+    *_FILING_DATES,
+    *_ERA,
+    *_SUFFIX,
+    *_DOCUMENT_SOURCE,
+    *_REPORTED_SIZE,
+    *_SIZE_BAND,
+    *_XBRL_FLAGS,
+    *_STUB_SUSPECT,
+    *_XBRL_STATE,
+    *_SIC,
+    *_OWNER_ORG,
+    *_FOREIGN_STATUS,
+    *_FOREIGN_COUNTRY,
+    *_STATE_OF_INCORPORATION,
+    *_ENTITY_TYPE,
+    *_FILER_CATEGORY,
+    *_COMPANY_FAMILY,
+    *_HAS_REVIVAL_GAP,
+    *_LIFECYCLE_CLASS,
+)
+
+_OCCURRENCE_DYNAMIC = frozenset((*_SIZE_BAND, *_HAS_REVIVAL_GAP, *_LIFECYCLE_CLASS))
+OCCURRENCE_DYNAMIC_COLUMNS = tuple(
+    column for column in OCCURRENCE_FEATURE_COLUMNS if column in _OCCURRENCE_DYNAMIC
+)
+OCCURRENCE_INDEPENDENT_COLUMNS = tuple(
+    column for column in OCCURRENCE_FEATURE_COLUMNS if column not in _OCCURRENCE_DYNAMIC
 )
 
 __all__ = [
@@ -201,6 +202,8 @@ __all__ = [
     "LOCATOR_POLICY_COLUMNS",
     "LOCATOR_POLICY_FEATURES",
     "OCCURRENCE_FEATURE_COLUMNS",
+    "OCCURRENCE_INDEPENDENT_COLUMNS",
+    "OCCURRENCE_DYNAMIC_COLUMNS",
     "PATH_SOURCE_BUNDLE",
     "PATH_SOURCE_PRIMARY",
     "PROFILE_COLUMNS",

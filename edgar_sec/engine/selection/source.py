@@ -19,8 +19,7 @@ from edgar_sec.domain.filing_catalog.schemas import (
     OCCURRENCE_FEATURE_COLUMNS,
 )
 from edgar_sec.engine.selection.paths import (
-    LOCATOR_FEATURES_FILE,
-    OCCURRENCE_FEATURES_FILE,
+    FEATURE_MANIFEST_FILE,
 )
 from edgar_sec.engine.selection.policy import KNOWN_DIMENSIONS
 from edgar_sec.engine.selection.predicates import (
@@ -28,6 +27,7 @@ from edgar_sec.engine.selection.predicates import (
     parsed_date_relation,
     suffix_sql,
 )
+from edgar_sec.engine.selection.snapshot import load_snapshot_paths
 from edgar_sec.foundation.runtime.settings.sql import resolve_sql_insert_batch_size
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 
@@ -156,11 +156,21 @@ class CandidateSource:
         if page_size < 1:
             raise ValueError("page_size must be at least 1")
         self.snapshot_dir = Path(snapshot_dir).resolve()
-        self.locator = self.snapshot_dir / LOCATOR_FEATURES_FILE
-        self.occurrence = self.snapshot_dir / OCCURRENCE_FEATURES_FILE
-        for required in (self.locator, self.occurrence):
-            if not required.is_file():
-                raise FileNotFoundError(f"feature snapshot is missing {required}")
+        manifest = self.snapshot_dir / FEATURE_MANIFEST_FILE
+        if not manifest.is_file():
+            raise FileNotFoundError(f"feature snapshot is missing {manifest}")
+        snapshot = load_snapshot_paths(self.snapshot_dir)
+        self.occurrence_relation = snapshot.occurrence_relation
+        self.locator_relation = snapshot.locator_relation
+        required = (
+            *snapshot.occurrence_parts,
+            *snapshot.locator_band_parts,
+            *snapshot.lifecycle_parts,
+            *snapshot.locator_feature_parts,
+        )
+        for path in required:
+            if not path.is_file():
+                raise FileNotFoundError(f"feature snapshot is missing {path}")
         self.seed = seed
         self.page_size = page_size
         self.filters = filters or CandidateFilters()
@@ -208,7 +218,7 @@ class CandidateSource:
         """The locator relation, projected so a date predicate sees one column; wrapping
         here keeps the outer alias `l` for every qualified reference in this module.
         """
-        relation = f"read_parquet({sql_literal(str(self.locator))})"
+        relation = self.locator_relation
         if self.filters.filters_dates():
             return f"{parsed_date_relation(relation, 'report_date')} l"
         return f"{relation} l"
@@ -357,7 +367,7 @@ class CandidateSource:
         rows = self._rows(
             f"""
             SELECT {_QUALIFIED_POOL_SELECT}
-            FROM read_parquet({sql_literal(str(self.locator))}) l
+            FROM {self.locator_relation} l
             JOIN {_LOCATOR_KEYS_TABLE} r
               ON l.document_locator_key = r.document_locator_key
             """
@@ -384,7 +394,7 @@ class CandidateSource:
         rows = con.execute(
             f"""
             SELECT {_QUALIFIED_OCCURRENCE_SELECT}
-            FROM read_parquet({sql_literal(str(self.occurrence))}) o
+            FROM {self.occurrence_relation} o
             JOIN {_LOCATOR_KEYS_TABLE} r
               ON o.document_locator_key = r.document_locator_key
             ORDER BY o.document_locator_key, o.occurrence_id

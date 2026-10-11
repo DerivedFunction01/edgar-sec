@@ -5,6 +5,7 @@ on-disk shape `source` reads.
 
 from __future__ import annotations
 
+import json
 from collections.abc import Iterable, Sequence
 from pathlib import Path
 from typing import Any
@@ -13,6 +14,14 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 
+from edgar_sec.domain.filing_catalog.schemas import OCCURRENCE_INDEPENDENT_COLUMNS
+from edgar_sec.engine.selection.paths import (
+    FEATURE_MANIFEST_FILE,
+    LIFECYCLE_FILE,
+    LOCATOR_BANDS_FILE,
+    LOCATOR_FEATURES_FILE,
+    OCCURRENCE_INDEPENDENT_FILE,
+)
 from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
 from edgar_sec.engine.selection.source import OCCURRENCE_COLUMNS, POOL_COLUMNS
 
@@ -66,6 +75,9 @@ _OCCURRENCE_DEFAULTS: dict[str, Any] = {
     "source_cik": "0000000001",
     "accession": "0000000001-20-000001",
     "form": "10-K",
+    "form_family": "10-K",
+    "era": "modern",
+    "suffix": "htm",
     "filing_date": "2021-03-01",
     "report_date": "2020-12-31",
     "primary_document": "doc.htm",
@@ -76,6 +88,8 @@ _OCCURRENCE_DEFAULTS: dict[str, Any] = {
     "is_xbrl": True,
     "is_inline_xbrl": True,
     "is_xbrl_numeric": True,
+    "stub_suspect": "false",
+    "xbrl_state": "inline_xbrl",
     "sic_code": "3571",
     "owner_org_presence": "no_org",
     "foreign_status": "domestic",
@@ -83,6 +97,9 @@ _OCCURRENCE_DEFAULTS: dict[str, Any] = {
     "state_of_incorporation": "DE",
     "entity_type": "operating",
     "filer_category_primary": "Accelerated Filer",
+    "company_family": "example",
+    "has_revival_gap": False,
+    "lifecycle_class": "right_censored_active",
 }
 
 
@@ -137,19 +154,58 @@ def write_snapshot(
         ]
     locator_columns = (*POOL_COLUMNS, *_EXTRA_LOCATOR_COLUMNS)
     locator_defaults = {**_LOCATOR_DEFAULTS, **_EXTRA_LOCATOR_COLUMNS}
+    locator_path = snapshot_dir / LOCATOR_FEATURES_FILE
+    independent_path = snapshot_dir / OCCURRENCE_INDEPENDENT_FILE
+    bands_path = snapshot_dir / LOCATOR_BANDS_FILE
+    lifecycle_path = snapshot_dir / LIFECYCLE_FILE
     pq.write_table(
         _rows(locator_columns, locator_defaults, locators, _BOOL_COLUMNS, _INT_COLUMNS),
-        snapshot_dir / "locator_features.parquet",
+        locator_path,
     )
     pq.write_table(
         _rows(
-            OCCURRENCE_COLUMNS,
+            OCCURRENCE_INDEPENDENT_COLUMNS,
             _OCCURRENCE_DEFAULTS,
             occurrences,
             _OCCURRENCE_BOOL_COLUMNS,
             {"reported_size": pa.int64()},
         ),
-        snapshot_dir / "occurrence_features.parquet",
+        independent_path,
+    )
+    pq.write_table(
+        _rows(
+            ("document_locator_key", "size_band"),
+            locator_defaults,
+            locators,
+            frozenset(),
+            {},
+        ),
+        bands_path,
+    )
+    lifecycle_rows = {
+        str(row.get("source_cik", _OCCURRENCE_DEFAULTS["source_cik"])): row
+        for row in occurrences
+    }
+    pq.write_table(
+        _rows(
+            ("source_cik", "has_revival_gap", "lifecycle_class"),
+            _OCCURRENCE_DEFAULTS,
+            [{"source_cik": cik, **row} for cik, row in lifecycle_rows.items()],
+            frozenset({"has_revival_gap"}),
+            {},
+        ),
+        lifecycle_path,
+    )
+    (snapshot_dir / FEATURE_MANIFEST_FILE).write_text(
+        json.dumps(
+            {
+                "occurrence_parts": [str(independent_path)],
+                "locator_band_parts": [str(bands_path)],
+                "lifecycle_parts": [str(lifecycle_path)],
+                "locator_feature_parts": [str(locator_path)],
+            }
+        ),
+        encoding="utf-8",
     )
     return snapshot_dir
 

@@ -25,11 +25,11 @@ from edgar_sec.engine.selection.features import (
     UNKNOWN_FOREIGN_STATUS,
     UNKNOWN_SIZE_BAND,
     FeatureSnapshotBuilder,
-    SnapshotPaths,
     era_of,
     form_family,
     form_family_sql,
 )
+from edgar_sec.engine.selection.snapshot import SnapshotPaths
 from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
 from edgar_sec.infra.storage.atomic import atomic_write_text
 from edgar_sec.infra.storage.duckdb import connect
@@ -188,16 +188,18 @@ def test_builds_a_feature_snapshot_from_the_published_catalog(
 
     assert isinstance(snapshot, SnapshotPaths)
     assert snapshot.manifest.is_file()
-    assert snapshot.occurrence_features.is_file()
+    assert all(path.is_file() for path in snapshot.occurrence_parts)
+    assert snapshot.locator_bands.is_file()
+    assert snapshot.lifecycle.is_file()
     assert snapshot.locator_features.is_file()
 
     # Stage files are pure build scratch and must not survive.
-    for scratch in ("occurrence_base", "lifecycle"):
+    for scratch in ("occurrence_base",):
         assert not (snapshot.snapshot_dir / f"{scratch}.parquet").exists()
 
     with connect() as con:
         occurrences = con.execute(
-            f"SELECT COUNT(*) FROM read_parquet('{snapshot.occurrence_features}')"
+            f"SELECT COUNT(*) FROM {snapshot.occurrence_relation}"
         ).fetchone()[0]
         locators = con.execute(
             f"SELECT COUNT(*) FROM read_parquet('{snapshot.locator_features}')"
@@ -316,7 +318,10 @@ def _banded(tmp_path: Path, sizes_by_form: dict[str, list[int]]) -> list[dict]:
             "INSERT INTO targets VALUES (?, ?)",
             [[row["form"], row["reported_size"]] for row in rows],
         )
-        union = "SELECT form, reported_size FROM targets"
+        union = """SELECT form, reported_size,
+                          'key-' || row_number() OVER () AS document_locator_key,
+                          'occ-' || row_number() OVER () AS occurrence_id
+                   FROM targets"""
         anchor = builder._size_band_anchor_sql(union)
         band = builder._size_band_sql("t.reported_size", "a.median_size")
         return [
@@ -390,11 +395,49 @@ def test_the_size_anchor_is_one_row_per_family(tmp_path: Path) -> None:
         )
         anchor = con.execute(
             "SELECT * FROM ("
-            + builder._size_band_anchor_sql("SELECT form, reported_size FROM targets")
+            + builder._size_band_anchor_sql(
+                """SELECT form, reported_size,
+                          'key-' || row_number() OVER () AS document_locator_key,
+                          'occ-' || row_number() OVER () AS occurrence_id
+                   FROM targets"""
+            )
             + ") ORDER BY form_family"
         ).fetchall()
     # 10-K and 10-K/A collapse to one family; 4 is the other.
     assert [(row[0], row[1]) for row in anchor] == [("10-K", 1500.0), ("4", 3500.0)]
+
+
+def test_copied_accession_does_not_weight_the_size_anchor_twice(
+    tmp_path: Path,
+) -> None:
+    builder = _builder(tmp_path, tmp_path / "t", tmp_path / "p.parquet")
+    with connect() as con:
+        con.execute(
+            "CREATE TABLE targets (form VARCHAR, reported_size BIGINT, "
+            "document_locator_key VARCHAR, occurrence_id VARCHAR)"
+        )
+        con.executemany(
+            "INSERT INTO targets VALUES (?, ?, ?, ?)",
+            [
+                ["10-K", 100, "doc-a", "occ-1"],
+                ["10-K", 200, "doc-b", "occ-2"],
+            ],
+        )
+        baseline = con.execute(
+            "SELECT median_size FROM ("
+            + builder._size_band_anchor_sql("SELECT * FROM targets")
+            + ")"
+        ).fetchone()[0]
+        con.execute(
+            "INSERT INTO targets VALUES (?, ?, ?, ?)",
+            ["10-K", 100, "doc-a", "occ-3"],
+        )
+        with_cofiler = con.execute(
+            "SELECT median_size FROM ("
+            + builder._size_band_anchor_sql("SELECT * FROM targets")
+            + ")"
+        ).fetchone()[0]
+    assert baseline == with_cofiler == 150
 
 
 # The producer writes '' for an absent field; the committed fixture has none.
@@ -655,7 +698,7 @@ def test_absent_source_values_survive_into_the_built_snapshot(
             "SELECT source_cik, foreign_status, foreign_country_code, "
             "owner_org_presence, filer_category_primary, sic_code, "
             "state_of_incorporation, entity_type, company_family "
-            f"FROM read_parquet('{snapshot.occurrence_features}') ORDER BY source_cik"
+            f"FROM {snapshot.occurrence_relation} ORDER BY source_cik"
         ).fetchall()
 
     absent, foreign = rows
@@ -712,12 +755,329 @@ def test_each_snapshot_file_matches_its_declared_column_tuple(
     from them, a reader selects a column the file does not have.
     """
     snapshot = _snapshot(tmp_path, [{"source_cik": "0000000001"}])
-    assert pq.read_schema(snapshot.occurrence_features).names == list(
-        OCCURRENCE_FEATURE_COLUMNS
-    )
+    with connect() as con:
+        occurrence_names = [
+            description[0]
+            for description in con.execute(
+                f"SELECT * FROM {snapshot.occurrence_relation} LIMIT 0"
+            ).description
+        ]
+    assert occurrence_names == list(OCCURRENCE_FEATURE_COLUMNS)
     assert pq.read_schema(snapshot.locator_features).names == list(
         LOCATOR_FEATURE_COLUMNS
     )
+
+
+def test_delta_snapshot_reuses_independent_parent_parts(tmp_path: Path) -> None:
+    artifacts_root = tmp_path / "artifacts"
+    parent_root = _write_targets(
+        artifacts_root / "parent" / "filing_targets",
+        [{"source_cik": "0000000001", "document_locator_key": "shared"}],
+    )
+    child_root = _write_targets(
+        artifacts_root / "child" / "filing_targets",
+        [
+            {
+                "source_cik": "0000000002",
+                "occurrence_id": "occ-0000",
+                "document_locator_key": "shared",
+            }
+        ],
+    )
+    parent_part = parent_root / "part-00000.parquet"
+    delta_part = child_root / "part-00000.parquet"
+    parent_profiles = _write_profiles(
+        artifacts_root / "parent_profiles.parquet", [_PROFILE_ROW]
+    )
+    child_profiles = _write_profiles(
+        artifacts_root / "child_profiles.parquet",
+        [_PROFILE_ROW, _profile_row("0000000002")],
+    )
+    parent = FeatureSnapshotBuilder(
+        parent_root, parent_profiles, artifacts_root, _policy()
+    ).build()
+
+    child = FeatureSnapshotBuilder(
+        child_root,
+        child_profiles,
+        artifacts_root,
+        _policy(),
+        parent_feature_manifest=parent.manifest,
+        active_target_parts=[parent_part, delta_part],
+        delta_target_parts=[delta_part],
+    ).build()
+
+    manifest = json.loads(child.manifest.read_text(encoding="utf-8"))
+    assert manifest["incremental"] is True
+    assert manifest["counts"]["independent_occurrence_rows"] == 1
+    assert manifest["counts"]["locator_band_rows"] == 1
+    assert manifest["counts"]["lifecycle_rows"] == 1
+    assert manifest["counts"]["locator_features"] == 1
+    assert len(child.occurrence_parts) == 2
+    with connect() as con:
+        occurrences, locator_class = con.execute(
+            f"SELECT COUNT(*), MIN(locator_class) FROM {child.occurrence_relation} "
+            f"JOIN read_parquet('{child.locator_features}') USING "
+            "(document_locator_key)"
+        ).fetchone()
+    assert occurrences == 2
+    assert locator_class == "low_2_to_3"
+    with connect() as con:
+        representative = con.execute(
+            f"SELECT representative_cik FROM {child.locator_relation} "
+            "WHERE document_locator_key = 'shared'"
+        ).fetchone()[0]
+    assert representative == "0000000002"
+
+
+def test_profile_change_for_inherited_cik_forces_full_independent_rebuild(
+    tmp_path: Path,
+) -> None:
+    artifacts_root = tmp_path / "artifacts"
+    parent_root = _write_targets(artifacts_root / "parent", [{}])
+    child_root = _write_targets(
+        artifacts_root / "child",
+        [{"occurrence_id": "occ-child", "document_locator_key": "child"}],
+    )
+    parent_profile = _write_profiles(
+        artifacts_root / "parent_profiles.parquet", [_PROFILE_ROW]
+    )
+    changed = _profile_row(
+        _PROFILE_ROW["cik"], identity={"name": "Changed Co", "former_names": []}
+    )
+    child_profile = _write_profiles(
+        artifacts_root / "child_profiles.parquet", [changed]
+    )
+    parent_part = parent_root / "part-00000.parquet"
+    delta_part = child_root / "part-00000.parquet"
+    parent = FeatureSnapshotBuilder(
+        parent_root, parent_profile, artifacts_root, _policy()
+    ).build()
+
+    child = FeatureSnapshotBuilder(
+        child_root,
+        child_profile,
+        artifacts_root,
+        _policy(),
+        parent_feature_manifest=parent.manifest,
+        active_target_parts=[parent_part, delta_part],
+        delta_target_parts=[delta_part],
+    ).build()
+
+    manifest = json.loads(child.manifest.read_text(encoding="utf-8"))
+    assert manifest["incremental"] is False
+    assert len(child.occurrence_parts) == 1
+    assert manifest["counts"]["independent_occurrence_rows"] == 2
+
+
+def test_size_anchor_change_overrides_all_locator_bands_in_the_family(
+    tmp_path: Path,
+) -> None:
+    artifacts_root = tmp_path / "artifacts"
+    parent_root = _write_targets(
+        artifacts_root / "parent",
+        [
+            {
+                "occurrence_id": "occ-a",
+                "accession": "acc-a",
+                "source_cik": "0000000001",
+                "document_locator_key": "a",
+                "reported_size": 100,
+            },
+            {
+                "occurrence_id": "occ-b",
+                "accession": "acc-b",
+                "source_cik": "0000000002",
+                "document_locator_key": "b",
+                "reported_size": 1000,
+            },
+            {
+                "occurrence_id": "occ-c",
+                "accession": "acc-c",
+                "source_cik": "0000000003",
+                "document_locator_key": "c",
+                "reported_size": 2000,
+            },
+        ],
+    )
+    child_root = _write_targets(
+        artifacts_root / "child",
+        [
+            {
+                "occurrence_id": "occ-d",
+                "accession": "acc-d",
+                "source_cik": "0000000004",
+                "document_locator_key": "d",
+                "reported_size": 1,
+            },
+            {
+                "occurrence_id": "occ-e",
+                "accession": "acc-e",
+                "source_cik": "0000000005",
+                "document_locator_key": "e",
+                "reported_size": 2,
+            },
+        ],
+    )
+    profiles = _write_profiles(artifacts_root / "profiles.parquet", [_PROFILE_ROW])
+    parent_part = parent_root / "part-00000.parquet"
+    delta_part = child_root / "part-00000.parquet"
+    parent = FeatureSnapshotBuilder(
+        parent_root, profiles, artifacts_root, _policy()
+    ).build()
+    child = FeatureSnapshotBuilder(
+        child_root,
+        profiles,
+        artifacts_root,
+        _policy(),
+        parent_feature_manifest=parent.manifest,
+        active_target_parts=[parent_part, delta_part],
+        delta_target_parts=[delta_part],
+    ).build()
+
+    with connect() as con:
+        parent_band = con.execute(
+            "SELECT size_band FROM "
+            f"{parent.occurrence_relation} WHERE document_locator_key = 'b'"
+        ).fetchone()[0]
+        child_band = con.execute(
+            "SELECT size_band FROM "
+            f"{child.occurrence_relation} WHERE document_locator_key = 'b'"
+        ).fetchone()[0]
+    assert parent_band == "median"
+    assert child_band == "large"
+    assert len(child.locator_band_parts) == 2
+
+    cold = FeatureSnapshotBuilder(
+        child_root,
+        profiles,
+        tmp_path / "cold",
+        _policy(),
+        active_target_parts=[parent_part, delta_part],
+    ).build()
+    with connect() as con:
+        incremental_rows = con.execute(
+            f"SELECT * FROM {child.occurrence_relation} ORDER BY occurrence_id"
+        ).fetchall()
+        cold_rows = con.execute(
+            f"SELECT * FROM {cold.occurrence_relation} ORDER BY occurrence_id"
+        ).fetchall()
+        incremental_locators = con.execute(
+            f"SELECT * FROM {child.locator_relation} ORDER BY document_locator_key"
+        ).fetchall()
+        cold_locators = con.execute(
+            f"SELECT * FROM {cold.locator_relation} ORDER BY document_locator_key"
+        ).fetchall()
+    assert incremental_rows == cold_rows
+    assert incremental_locators == cold_locators
+
+
+def test_global_max_advance_rebuilds_all_lifecycle_and_locator_rows(
+    tmp_path: Path,
+) -> None:
+    artifacts_root = tmp_path / "artifacts"
+    parent_root = _write_targets(artifacts_root / "parent", [{}])
+    child_root = _write_targets(
+        artifacts_root / "child",
+        [
+            {
+                "source_cik": "0000000002",
+                "occurrence_id": "occ-new-year",
+                "document_locator_key": "new-year",
+                "report_date": "2026-12-31",
+            }
+        ],
+    )
+    profiles = _write_profiles(artifacts_root / "profiles.parquet", [_PROFILE_ROW])
+    parent_part = parent_root / "part-00000.parquet"
+    delta_part = child_root / "part-00000.parquet"
+    parent = FeatureSnapshotBuilder(
+        parent_root, profiles, artifacts_root, _policy()
+    ).build()
+    child = FeatureSnapshotBuilder(
+        child_root,
+        profiles,
+        artifacts_root,
+        _policy(),
+        parent_feature_manifest=parent.manifest,
+        active_target_parts=[parent_part, delta_part],
+        delta_target_parts=[delta_part],
+    ).build()
+
+    manifest = json.loads(child.manifest.read_text(encoding="utf-8"))
+    assert manifest["incremental"] is True
+    assert manifest["global_max_year"] == 2026
+    assert manifest["counts"]["lifecycle_rows"] == 2
+    assert manifest["counts"]["locator_features"] == 2
+
+
+def test_new_years_recompute_lifecycle_only_for_touched_cik(tmp_path: Path) -> None:
+    artifacts_root = tmp_path / "artifacts"
+    parent_root = _write_targets(
+        artifacts_root / "parent",
+        [
+            {
+                "occurrence_id": "occ-2010",
+                "accession": "acc-2010",
+                "source_cik": "0000000001",
+                "document_locator_key": "doc-2010",
+                "filing_date": "2011-03-01",
+                "report_date": "2010-12-31",
+            },
+            {
+                "occurrence_id": "occ-2014",
+                "accession": "acc-2014",
+                "source_cik": "0000000001",
+                "document_locator_key": "doc-2014",
+                "filing_date": "2015-03-01",
+                "report_date": "2014-12-31",
+            },
+        ],
+    )
+    child_root = _write_targets(
+        artifacts_root / "child",
+        [
+            {
+                "occurrence_id": f"occ-{year}",
+                "accession": f"acc-{year}",
+                "source_cik": "0000000001",
+                "document_locator_key": f"doc-{year}",
+                "filing_date": f"{year + 1}-03-01",
+                "report_date": f"{year}-12-31",
+            }
+            for year in (2011, 2012, 2013)
+        ],
+    )
+    profiles = _write_profiles(artifacts_root / "profiles.parquet", [_PROFILE_ROW])
+    parent_part = parent_root / "part-00000.parquet"
+    delta_part = child_root / "part-00000.parquet"
+    parent = FeatureSnapshotBuilder(
+        parent_root, profiles, artifacts_root, _policy()
+    ).build()
+    child = FeatureSnapshotBuilder(
+        child_root,
+        profiles,
+        artifacts_root,
+        _policy(),
+        parent_feature_manifest=parent.manifest,
+        active_target_parts=[parent_part, delta_part],
+        delta_target_parts=[delta_part],
+    ).build()
+
+    manifest = json.loads(child.manifest.read_text(encoding="utf-8"))
+    assert manifest["global_max_year"] == 2014
+    assert manifest["counts"]["lifecycle_rows"] == 1
+    with connect() as con:
+        parent_gap = con.execute(
+            "SELECT has_revival_gap FROM "
+            f"{parent.occurrence_relation} WHERE occurrence_id = 'occ-2010'"
+        ).fetchone()[0]
+        child_gap = con.execute(
+            "SELECT has_revival_gap FROM "
+            f"{child.occurrence_relation} WHERE occurrence_id = 'occ-2010'"
+        ).fetchone()[0]
+    assert parent_gap is True
+    assert child_gap is False
 
 
 def test_a_co_filed_document_is_classified_by_its_occurrence_count(

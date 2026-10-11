@@ -175,22 +175,24 @@ python run.py filing-catalog status
 
 ### Artifact layout
 
-The published layout is in the
-[root README](../../../README.md#filing-catalog-pipeline-zero-network); three
-facts are specific to this package:
-
-- **Catalog snapshots and plan bundles live in separated roots.**
-  `filing_catalog/snapshots/<catalog_id>/`, `filing_catalog/snapshots/catalog.sqlite`,
-  and `filing_catalog/plans/<plan_id>/`, so a reader can tell a snapshot from a plan by
-  name.
-- **Feature snapshots share the `snapshots/` filesystem root but are not catalog
-  nodes.** Catalog discovery returns only records in `catalog.sqlite`; feature-cache
-  reuse remains owned by the selection engine.
-- **Bundle contents are scope-specific.** `targets/form=<FORM>/data.parquet` is the
-  *occurrence* surface: a deterministic plan writes the raw catalog target rows,
-  exactly `TARGET_COLUMNS`; a policy plan writes the feature-enriched occurrence
-  rows it selected from. `locator_groups.parquet` is the scope-independent *work
-  order*. The occurrences are not interchangeable between scopes.
+<!-- AUTOGEN:PATHS:START -->
+```text
+{artifacts_root}/
+├── filing_catalog/  # Root of the published catalog dataset.
+│   ├── plans/  # Root of published target-plan bundles.
+│   │   └── {plan_id}/  # Directory holding one immutable target-plan bundle.
+│   │       └── seed_filers.csv  # The plan's normalized seed sidecar, published with a policy plan.
+│   ├── policies/  # Root of published selection policies.
+│   └── snapshots/  # Root of published catalog snapshot directories, and of the pointer.
+│       ├── {catalog_id}/  # Directory holding one immutable catalog snapshot.
+│       │   ├── filing_targets/  # Directory holding the sharded filing-target dataset.
+│       │   └── company_profiles.parquet  # Deduplicated registrant profile dataset for one snapshot.
+│       └── catalog.sqlite  # SQLite DAG catalog database for published catalog snapshots.
+└── transient/
+    └── filing_catalog/
+        └── {catalog_id}/  # Staging directory for one catalog, never published.
+```
+<!-- AUTOGEN:PATHS:END -->
 
 ### `materialize`
 

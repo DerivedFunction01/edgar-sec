@@ -18,7 +18,7 @@ from edgar_sec.foundation.runtime.paths import (
     transient_dir,
 )
 
-from .roster import ROSTER_FILE_NAME, SNAPSHOT_CIK_INDEX_NAME
+from .roster import ROSTER_FILE_NAME
 
 METADATA_DIR = "metadata"
 PARTS_DIR = "parts"
@@ -75,7 +75,7 @@ class MetadataPaths:
 
     def snapshot_cik_index(self, snapshot_id: str) -> Path:
         """Sorted distinct CIK index published beside one snapshot payload."""
-        return self.snapshot_dir(snapshot_id) / SNAPSHOT_CIK_INDEX_NAME
+        return self.snapshot_dir(snapshot_id) / ROSTER_FILE_NAME
 
     def snapshot_lock_path(self, snapshot_id: str) -> Path:
         """Exclusive run lock for a published snapshot (used by augment)."""

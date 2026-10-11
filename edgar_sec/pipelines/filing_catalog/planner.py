@@ -24,10 +24,9 @@ from edgar_sec.domain.filing_catalog.schemas import (
     SCOPE_POLICY,
     TARGET_COLUMNS,
 )
-from edgar_sec.engine.selection.features import (
-    FeatureSnapshotBuilder,
-    SnapshotPaths,
-)
+from edgar_sec.engine.selection.features import FeatureSnapshotBuilder
+from edgar_sec.engine.selection.paths import FEATURE_MANIFEST_FILE
+from edgar_sec.engine.selection.snapshot import SnapshotPaths
 from edgar_sec.engine.selection.inventory import (
     InventoryStatistics,
     UnknownDimensionError,
@@ -552,7 +551,7 @@ def plan_policy(
     catalog = resolve_catalog_reference(paths, catalog)
     # A guard, not an input: it reports "no published targets" rather than
     # letting the builder surface it as a missing-parts error.
-    _catalog_target_files(paths, catalog)
+    active_target_parts = _catalog_target_files(paths, catalog)
 
     # Resolved before the request is hashed, so the plan id names the bands its
     # locators will actually be chosen under.
@@ -617,6 +616,26 @@ def plan_policy(
             "family_index_id": family_index.family_index_id,
         },
     )
+    dag_catalog = DAGCatalog(paths.snapshots_root)
+    node = dag_catalog.get_manifest(catalog)
+    delta_target_parts: tuple[Path, ...] = ()
+    parent_feature_manifest: Path | None = None
+    if node is not None and node.kind == "delta" and node.parent_snapshot_id:
+        delta_target_parts = dag_catalog.resolve_relation(catalog, "filing_targets")
+        parent_builder = FeatureSnapshotBuilder(
+            target_root=paths.snapshot_targets_dir(node.parent_snapshot_id),
+            profile_path=paths.snapshot_profiles_file(node.parent_snapshot_id),
+            output_root=paths.catalog_root,
+            policy=policy,
+            family_index_path=family_index_path,
+            family_index_id=family_index.family_index_id,
+            row_group_size=row_group_size,
+        )
+        parent_feature_manifest = (
+            parent_builder.snapshot_dir(sorted(set(policy.forms)))
+            / FEATURE_MANIFEST_FILE
+        )
+
     builder = FeatureSnapshotBuilder(
         target_root=paths.snapshot_targets_dir(catalog),
         profile_path=paths.snapshot_profiles_file(catalog),
@@ -625,6 +644,9 @@ def plan_policy(
         family_index_path=family_index_path,
         family_index_id=family_index.family_index_id,
         row_group_size=row_group_size,
+        parent_feature_manifest=parent_feature_manifest,
+        active_target_parts=active_target_parts,
+        delta_target_parts=delta_target_parts,
     )
     snapshot = builder.build()
     emit_progress(
@@ -648,14 +670,12 @@ def plan_policy(
         with connect() as con:
             _register_selected_keys(con, selection.active_locators)
             locator_source = (
-                "read_parquet("
-                f"{sql_literal(str(snapshot.locator_features))}) l "
+                f"{snapshot.locator_relation} l "
                 "JOIN selected_locator_keys s "
                 "ON l.document_locator_key = s.document_locator_key"
             )
             occurrence_source = (
-                "read_parquet("
-                f"{sql_literal(str(snapshot.occurrence_features))}) o "
+                f"{snapshot.occurrence_relation} o "
                 "JOIN selected_locator_keys s "
                 "ON o.document_locator_key = s.document_locator_key"
             )
@@ -703,7 +723,7 @@ def plan_policy(
                 copy_query_to_parquet(
                     con,
                     "SELECT l.* FROM "
-                    f"read_parquet({sql_literal(str(snapshot.locator_features))}) l "
+                    f"{snapshot.locator_relation} l "
                     "JOIN reserve_locator_keys r "
                     "ON l.document_locator_key = r.document_locator_key "
                     "ORDER BY l.document_locator_key",

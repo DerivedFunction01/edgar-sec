@@ -16,6 +16,7 @@ from edgar_sec.domain.sec_urls import archives_url
 from edgar_sec.engine.selection.features import FeatureSnapshotBuilder
 from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
+from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.filing_catalog.paths import (
     LOCATOR_GROUPS_FILE,
     REQUIRED_PLAN_FILES,
@@ -81,7 +82,13 @@ def _feature_occurrence_columns(catalog_id: str, artifacts_root: Path) -> list[s
         policy=_contract_policy(),
     )
     snapshot = builder.build()
-    return pq.read_schema(snapshot.occurrence_features).names
+    with connect() as con:
+        return [
+            item[0]
+            for item in con.execute(
+                f"SELECT * FROM {snapshot.occurrence_relation} LIMIT 0"
+            ).description
+        ]
 
 
 def _plan_dir(

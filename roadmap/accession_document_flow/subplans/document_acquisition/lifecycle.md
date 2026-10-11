@@ -179,6 +179,14 @@ deduplicated within the relation parts without collapsing their occurrence links
 
 The v1 logical relations are:
 
+The additional operation/source identity contract needed for independent render
+materialization and cross-plan reuse is proposed separately in
+[`representation_materialization_contract.md`](representation_materialization_contract.md).
+Until that contract is agreed, this v1 table list does not provide cross-plan reuse
+identity: `target_id` and `acquisition_id` are plan/run scoped. The proposed extension
+adds stable source and logical-document identities plus operation/representation links;
+it does not replace the shared DAG or move payload bytes out of Parquet.
+
 | Relation | Grain and identity | Contents and update rule |
 |---|---|---|
 | `target_results` | `(run_id, target_id)` | Append-only S6 target provenance plus S9 outcome and optional `processing_id`; includes skipped and terminal missing/error outcomes so partial coverage is explicit. |

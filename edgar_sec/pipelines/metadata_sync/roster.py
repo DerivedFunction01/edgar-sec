@@ -30,7 +30,6 @@ from edgar_sec.infra.storage.parquet import (
 
 ROSTER_SCHEMA_VERSION = "1.0.0"
 ROSTER_FILE_NAME = "ciks.parquet"
-SNAPSHOT_CIK_INDEX_NAME = "ciks.parquet"
 ROSTER_MANIFEST_KIND = "cik_roster"
 
 _ID_PREFIX = "cik-roster-v1"
@@ -40,8 +39,6 @@ __all__ = [
     "ROSTER_MANIFEST_KIND",
     "ROSTER_SCHEMA",
     "ROSTER_SCHEMA_VERSION",
-    "SNAPSHOT_CIK_INDEX_NAME",
-    "SNAPSHOT_CIK_INDEX_SCHEMA",
     "Roster",
     "RosterError",
     "cohort_record_to_roster",

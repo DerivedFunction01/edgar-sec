@@ -9,8 +9,9 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.engine.selection.policy import KNOWN_DIMENSIONS
-from edgar_sec.engine.selection.paths import LOCATOR_FEATURES_FILE
-from edgar_sec.infra.storage.duckdb import connect, sql_literal
+from edgar_sec.engine.selection.paths import FEATURE_MANIFEST_FILE
+from edgar_sec.engine.selection.snapshot import load_snapshot_paths
+from edgar_sec.infra.storage.duckdb import connect
 
 
 class UnknownDimensionError(ValueError):
@@ -28,7 +29,15 @@ class InventoryStatistics:
         memory_limit: str | None = None,
     ) -> None:
         self.snapshot_dir = Path(snapshot_dir).resolve()
-        self.locator_path = self.snapshot_dir / LOCATOR_FEATURES_FILE
+        manifest = self.snapshot_dir / FEATURE_MANIFEST_FILE
+        if not manifest.is_file():
+            raise FileNotFoundError(f"feature snapshot is missing {manifest}")
+        snapshot = load_snapshot_paths(self.snapshot_dir)
+        self.locator_relation = snapshot.locator_relation
+        required = snapshot.locator_feature_parts
+        for path in required:
+            if not path.is_file():
+                raise FileNotFoundError(f"feature snapshot is missing {path}")
         self._threads = threads
         self._memory_limit = memory_limit
 
@@ -45,7 +54,7 @@ class InventoryStatistics:
             SELECT {dimension} AS value,
                    COUNT(DISTINCT document_locator_key) AS locator_count,
                    COUNT(DISTINCT representative_cik) AS cik_count
-            FROM read_parquet({sql_literal(str(self.locator_path))})
+            FROM {self.locator_relation}
             GROUP BY value
             ORDER BY locator_count DESC, value
         """
@@ -92,7 +101,6 @@ class InventoryStatistics:
         results: list[dict[str, Any]] = []
         if not composites:
             return results
-        relation = sql_literal(str(self.locator_path))
         with connect(threads=self._threads, memory_limit=self._memory_limit) as con:
             for composite in composites:
                 filters = composite.get("filters", {})
@@ -105,7 +113,7 @@ class InventoryStatistics:
                     params.append(str(value))
                 where = " AND ".join(clauses) if clauses else "TRUE"
                 count = con.execute(
-                    f"SELECT COUNT(*) FROM read_parquet({relation}) WHERE {where}",
+                    f"SELECT COUNT(*) FROM {self.locator_relation} WHERE {where}",
                     params,
                 ).fetchone()
                 supply = int(count[0]) if count else 0

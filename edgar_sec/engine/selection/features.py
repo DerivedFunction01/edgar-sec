@@ -8,9 +8,12 @@ from __future__ import annotations
 import json
 import re
 from collections.abc import Sequence
-from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
+from edgar_sec.domain.filing_catalog.schemas import (
+    OCCURRENCE_INDEPENDENT_COLUMNS,
+)
 from edgar_sec.domain.filing_catalog.schemas import (
     LOCATOR_FEATURE_COLUMNS,
     OCCURRENCE_FEATURE_COLUMNS,
@@ -19,16 +22,16 @@ from edgar_sec.domain.filing_catalog.schemas import (
 from edgar_sec.domain.forms.common.aliases import FORM_FAMILY_SUFFIXES
 from edgar_sec.domain.taxonomy.jurisdictions import STATE_POSTAL_CODES
 from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
+from edgar_sec.engine.selection.snapshot import SnapshotPaths, load_snapshot_paths
 from edgar_sec.foundation.runtime.paths import PARQUET_PART_GLOB, SNAPSHOTS_DIR
 from edgar_sec.engine.selection.paths import (
-    FEATURE_MANIFEST_FILE,
     LIFECYCLE_FILE,
+    LOCATOR_BANDS_FILE,
     LOCATOR_FEATURES_FILE,
-    OCCURRENCE_BASE_FILE,
-    OCCURRENCE_FEATURES_FILE,
+    OCCURRENCE_INDEPENDENT_FILE,
 )
+from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_hash
-from edgar_sec.infra.storage.atomic import atomic_write_text
 from edgar_sec.infra.storage.duckdb import (
     connect,
     copy_query_to_parquet,
@@ -36,7 +39,9 @@ from edgar_sec.infra.storage.duckdb import (
 )
 from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
 
-FEATURE_SCHEMA_VERSION = "1.0"
+# Bump when feature derivation changes in a way that requires rebuilding
+FEATURE_SCHEMA_VERSION = "2.0"
+DERIVATION_VERSION = "2.0"
 
 UNMATCHED_ERA = "unknown"
 
@@ -45,16 +50,6 @@ UNMATCHED_ERA = "unknown"
 # second list to update.
 IDENTITY_COLUMNS = ", ".join(
     column for column in TARGET_COLUMNS if column != "document_path_source"
-)
-
-# The occurrence columns `occurrence_base` settles on its own, cut from the published
-# tuple so the two cannot drift. Projecting a name list from it is what stops an
-# earlier stage's dropped column riding through on `o.*`.
-_OCCURRENCE_JOINED_COLUMNS = ("has_revival_gap", "lifecycle_class")
-OCCURRENCE_BASE_COLUMNS: tuple[str, ...] = tuple(
-    column
-    for column in OCCURRENCE_FEATURE_COLUMNS
-    if column not in _OCCURRENCE_JOINED_COLUMNS
 )
 
 # A co-filed document's representative registrant is named in the published locator
@@ -94,11 +89,6 @@ UNKNOWN_SIZE_BAND = "unknown"
 UNKNOWN_FOREIGN_STATUS = "unknown"
 
 _SQL_COLUMN_IDENTIFIER_RE = re.compile(r"[A-Za-z_][A-Za-z0-9_.]*")
-
-# Named rather than inlined so a published plan can name what it excluded.
-FEATURE_MANIFEST_FILE  # noqa: F401 — re-exported from paths for plan consumers
-OCCURRENCE_FEATURES_FILE  # noqa: F401 — re-exported from paths for plan consumers
-LOCATOR_FEATURES_FILE  # noqa: F401 — re-exported from paths for plan consumers
 
 
 def form_family(form: str) -> str:
@@ -143,14 +133,6 @@ def era_of(report_date: str | None, era_bands: Sequence[EraBand]) -> str:
     return UNMATCHED_ERA
 
 
-@dataclass(frozen=True, slots=True)
-class SnapshotPaths:
-    snapshot_dir: Path
-    manifest: Path
-    occurrence_features: Path
-    locator_features: Path
-
-
 def _build_options(
     gap_years: int, cessation_grace_years: int, stub_size_threshold: int
 ) -> dict[str, int]:
@@ -177,6 +159,9 @@ class FeatureSnapshotBuilder:
         gap_years: int = DEFAULT_GAP_YEARS,
         cessation_grace_years: int = DEFAULT_CESSATION_GRACE_YEARS,
         stub_size_threshold: int = DEFAULT_STUB_SIZE_THRESHOLD,
+        parent_feature_manifest: Path | None = None,
+        active_target_parts: Sequence[Path] | None = None,
+        delta_target_parts: Sequence[Path] | None = None,
     ) -> None:
         if gap_years < 2:
             raise ValueError("gap_years must be at least 2")
@@ -198,6 +183,13 @@ class FeatureSnapshotBuilder:
             gap_years, cessation_grace_years, stub_size_threshold
         )
         self.options["row_group_size"] = self.row_group_size
+        self.parent_feature_manifest = parent_feature_manifest
+        self.active_target_parts = tuple(
+            Path(path).resolve() for path in (active_target_parts or ())
+        )
+        self.delta_target_parts = tuple(
+            Path(path).resolve() for path in (delta_target_parts or ())
+        )
 
     def _family_relation_sql(self) -> str:
         """A relation over the published assignment, or an empty one when absent.
@@ -219,25 +211,129 @@ class FeatureSnapshotBuilder:
 
     def snapshot_dir(self, forms: Sequence[str]) -> Path:
         """Return the content-addressed directory for this exact input set."""
-        # No derivation-revision term: a change to how a column is derived needs
-        # the snapshot directory pruned, since identical inputs resolve here.
         payload = {
             "target_root": str(self.target_root),
             "profile_path": str(self.profile_path),
-            "forms": sorted(forms),
-            "options": self.options,
-            "policy_fingerprint": self.policy.policy_fingerprint,
-            "family_index_id": self.family_index_id,
+            "feature_signature": self.feature_signature(forms),
         }
         return self.output_root / SNAPSHOTS_DIR / canonical_hash(payload)[:32]
 
-    def paths_for(self, snapshot_dir: Path) -> SnapshotPaths:
-        return SnapshotPaths(
-            snapshot_dir=snapshot_dir,
-            manifest=snapshot_dir / FEATURE_MANIFEST_FILE,
-            occurrence_features=snapshot_dir / OCCURRENCE_FEATURES_FILE,
-            locator_features=snapshot_dir / LOCATOR_FEATURES_FILE,
+    def feature_signature(self, forms: Sequence[str] | None = None) -> dict[str, Any]:
+        """Return a signature capturing all inputs that affect feature derivation."""
+        return {
+            "forms": sorted(forms if forms is not None else self.policy.forms),
+            "era_bands": [band.to_dict() for band in self.policy.era_bands],
+            "family_index_id": self.family_index_id,
+            "options": {
+                key: value
+                for key, value in self.options.items()
+                if key != "row_group_size"
+            },
+            "derivation_version": DERIVATION_VERSION,
+        }
+
+    def _is_parent_compatible(self) -> bool:
+        """Whether prior independent rows can be inherited without stale enrichment."""
+        if self.parent_feature_manifest is None:
+            return False
+        if not self.parent_feature_manifest.is_file():
+            return False
+        try:
+            recorded = json.loads(
+                self.parent_feature_manifest.read_text(encoding="utf-8")
+            )
+        except (OSError, ValueError):
+            return False
+        if recorded.get("feature_schema_version") != FEATURE_SCHEMA_VERSION:
+            return False
+        if recorded.get("feature_signature") != self.feature_signature():
+            return False
+        artifact_parts = (
+            *recorded.get("occurrence_parts", []),
+            *recorded.get("locator_band_parts", []),
+            *recorded.get("lifecycle_parts", []),
+            *recorded.get("locator_feature_parts", []),
         )
+        if not recorded.get("occurrence_parts") or not all(
+            Path(path).is_file() for path in artifact_parts
+        ):
+            return False
+        return self._inherited_profiles_unchanged(recorded)
+
+    def _inherited_profiles_unchanged(self, parent: dict[str, Any]) -> bool:
+        old_profile = Path(str(parent.get("profile_path") or ""))
+        if not old_profile.is_file():
+            return False
+        inherited_parts = ", ".join(
+            sql_literal(str(path)) for path in parent["occurrence_parts"]
+        )
+        compared = (
+            "sic_code",
+            "owner_org_cik",
+            "entity_type",
+            "filer_category_primary",
+            "state_of_incorporation",
+            "foreign_status",
+            "foreign_country_code",
+            "owner_org_presence",
+            "company_name",
+        )
+        old_values = ", ".join(f"old.{column}" for column in compared)
+        new_values = ", ".join(f"new.{column}" for column in compared)
+        query = f"""
+            WITH inherited AS (
+                SELECT DISTINCT source_cik
+                FROM read_parquet([{inherited_parts}])
+            ),
+            old_profiles AS (
+                SELECT * FROM ({self._profiles_sql(old_profile)})
+            ),
+            new_profiles AS (
+                SELECT * FROM ({self._profiles_sql()})
+            ),
+            compared AS (
+                SELECT inherited.source_cik,
+                       ({old_values}) AS old_values,
+                       ({new_values}) AS new_values
+                FROM inherited
+                LEFT JOIN old_profiles old
+                       ON inherited.source_cik = old.profile_cik
+                LEFT JOIN new_profiles new
+                       ON inherited.source_cik = new.profile_cik
+            )
+            SELECT COUNT(*) FROM compared
+            WHERE old_values IS DISTINCT FROM new_values
+        """
+        with connect() as con:
+            row = con.execute(query).fetchone()
+        return bool(row and int(row[0]) == 0)
+
+    def _target_part_files(self) -> list[Path]:
+        if self.active_target_parts:
+            parts = list(self.active_target_parts)
+        else:
+            parts = sorted(self.target_root.glob(PARQUET_PART_GLOB))
+        if not parts:
+            raise FileNotFoundError(f"no target part files found in {self.target_root}")
+        return parts
+
+    def _new_target_part_files(self, incremental: bool) -> list[Path]:
+        if incremental:
+            parts = list(self.delta_target_parts)
+            if not parts:
+                raise FileNotFoundError("delta catalog has no new target part files")
+        else:
+            parts = self._target_part_files()
+        missing = [path for path in parts if not path.is_file()]
+        if missing:
+            raise FileNotFoundError(f"target part file is missing: {missing[0]}")
+        return parts
+
+    def _snapshot_paths(self, snapshot_dir: Path) -> SnapshotPaths:
+        return load_snapshot_paths(snapshot_dir)
+
+    def paths_for(self, snapshot_dir: Path) -> SnapshotPaths:
+        return self._snapshot_paths(snapshot_dir)
 
     def _is_reusable(self, manifest: Path) -> bool:
         """Whether a built snapshot's manifest describes files this build still stands behind.
@@ -251,15 +347,21 @@ class FeatureSnapshotBuilder:
             recorded = json.loads(manifest.read_text(encoding="utf-8"))
         except (OSError, ValueError):
             return False
-        return recorded.get("feature_schema_version") == FEATURE_SCHEMA_VERSION
+        if recorded.get("feature_schema_version") != FEATURE_SCHEMA_VERSION:
+            return False
+        if recorded.get("feature_signature") != self.feature_signature():
+            return False
+        if recorded.get("profile_sha256") != file_sha256(self.profile_path):
+            return False
+        artifacts = [
+            *recorded.get("occurrence_parts", []),
+            *recorded.get("locator_band_parts", []),
+            *recorded.get("lifecycle_parts", []),
+            *recorded.get("locator_feature_parts", []),
+        ]
+        return all(path and Path(path).is_file() for path in artifacts)
 
     # ----------------------------------------------------------------- SQL
-
-    def _target_part_files(self) -> list[Path]:
-        parts = sorted(self.target_root.glob(PARQUET_PART_GLOB))
-        if not parts:
-            raise FileNotFoundError(f"no target part files found in {self.target_root}")
-        return parts
 
     def _target_union(
         self, forms: Sequence[str], parts: Sequence[Path] | None = None
@@ -275,16 +377,42 @@ class FeatureSnapshotBuilder:
             f"WHERE form IN ({quoted_forms})"
         )
 
-    def _size_band_anchor_sql(self, union_sql: str) -> str:
-        """A relation of (form_family, median_size); keyed on family so amendment variants
-        pool, and deliberately without era, which is already a stratum.
-        """
+    def _form_family_sql(self, column: str) -> str:
+        return form_family_sql(column)
+
+    def _size_band_anchor_sql(
+        self, union_sql: str, families: Sequence[str] | None = None
+    ) -> str:
+        """Use one canonical size observation per document in each form family."""
         family_expr = form_family_sql("form")
+        filter_families = (
+            ""
+            if families is None
+            else (
+                "AND "
+                + (
+                    f"{family_expr} IN ("
+                    + ", ".join(sql_literal(value) for value in sorted(set(families)))
+                    + ")"
+                    if families
+                    else "FALSE"
+                )
+            )
+        )
         return f"""
-            SELECT {family_expr} AS form_family,
-                   median(reported_size) AS median_size
-            FROM ({union_sql})
-            WHERE reported_size IS NOT NULL
+            WITH locator_sizes AS (
+                SELECT {family_expr} AS form_family,
+                       reported_size,
+                       ROW_NUMBER() OVER (
+                           PARTITION BY document_locator_key ORDER BY occurrence_id
+                       ) AS representative_rank
+                FROM ({union_sql})
+                WHERE reported_size IS NOT NULL
+                {filter_families}
+            )
+            SELECT form_family, median(reported_size) AS median_size
+            FROM locator_sizes
+            WHERE representative_rank = 1
             GROUP BY form_family
         """
 
@@ -333,7 +461,7 @@ class FeatureSnapshotBuilder:
             f"ELSE {sql_literal(UNMATCHED_ERA)} END"
         )
 
-    def _profiles_sql(self) -> str:
+    def _profiles_sql(self, profile_path: Path | None = None) -> str:
         """Project the nested profile schema onto the flat feature shape; blanks normalize
         to NULL in `raw`, and a missing state is `unknown`, never `domestic`.
         """
@@ -349,7 +477,7 @@ class FeatureSnapshotBuilder:
                         AS filer_category,
                     NULLIF(trim(classification.owner_org), '') AS owner_org_cik,
                     NULLIF(trim(identity.name), '') AS name
-                FROM read_parquet({sql_literal(str(self.profile_path))})
+                FROM read_parquet({sql_literal(str(profile_path or self.profile_path))})
             )
             SELECT
                 cik AS profile_cik,
@@ -384,22 +512,18 @@ class FeatureSnapshotBuilder:
 
     # -------------------------------------------------------------- stages
 
-    def _write_occurrence_base(
+    def _write_occurrence_independent(
         self,
         con: object,
         union_sql: str,
         staging_dir: Path,
     ) -> int:
-        """Write the wide per-occurrence feature table; the only stage touching
-        occurrence rows, and every later stage joins it.
-        """
+        """Write row-local occurrence features without population-dependent columns."""
         era_expr = self._era_sql("f.report_date")
         family_expr = form_family_sql("f.form")
-        size_band_expr = self._size_band_sql("f.reported_size", "a.median_size")
         query = f"""
             WITH source_filings AS ({union_sql}),
-            profiles AS ({self._profiles_sql()}),
-            size_anchor AS ({self._size_band_anchor_sql(union_sql)})
+            profiles AS ({self._profiles_sql()})
             SELECT
                 f.occurrence_id, f.document_locator_key, f.source_cik, f.accession,
                 f.form, {family_expr} AS form_family,
@@ -413,7 +537,6 @@ class FeatureSnapshotBuilder:
                 END AS suffix,
                 f.primary_document, f.document_path, f.archive_url,
                 f.document_path_source, f.reported_size,
-                {size_band_expr} AS size_band,
                 f.is_xbrl, f.is_inline_xbrl, f.is_xbrl_numeric,
                 CASE WHEN f.reported_size IS NOT NULL
                       AND f.reported_size < {int(self.options["stub_size_threshold"])}
@@ -429,24 +552,105 @@ class FeatureSnapshotBuilder:
             LEFT JOIN profiles p ON f.source_cik = p.profile_cik
             LEFT JOIN {self._family_relation_sql()} cf
                    ON f.source_cik = cf.cik
-            LEFT JOIN size_anchor a ON a.form_family = {family_expr}
         """
         return copy_query_to_parquet(
-            con, query, staging_dir / "occurrence_base.parquet", self.row_group_size
+            con,
+            query,
+            staging_dir / OCCURRENCE_INDEPENDENT_FILE,
+            self.row_group_size,
         )
 
-    def _write_lifecycle(self, con: object, union_sql: str, staging_dir: Path) -> int:
-        gap_years = int(self.options["gap_years"])
-        grace_years = int(self.options["cessation_grace_years"])
+    def _write_locator_bands(
+        self,
+        con: object,
+        union_sql: str,
+        staging_dir: Path,
+        *,
+        families: Sequence[str] | None = None,
+        locator_keys: Sequence[str] | None = None,
+        anchor_families: Sequence[str] | None = None,
+        full: bool = True,
+    ) -> int:
+        family_expr = form_family_sql("form")
+        size_band_expr = self._size_band_sql("r.reported_size", "a.median_size")
+        filters: list[str] = []
+        if families:
+            values = ", ".join(sql_literal(value) for value in sorted(set(families)))
+            filters.append(f"r.form_family IN ({values})")
+        if locator_keys:
+            values = ", ".join(
+                sql_literal(value) for value in sorted(set(locator_keys))
+            )
+            filters.append(f"r.document_locator_key IN ({values})")
+        where = " OR ".join(filters) if filters else ("TRUE" if full else "FALSE")
+        source_filters: list[str] = []
+        if families:
+            family_values = ", ".join(
+                sql_literal(value) for value in sorted(set(families))
+            )
+            source_filters.append(f"{family_expr} IN ({family_values})")
+        if locator_keys:
+            key_values = ", ".join(
+                sql_literal(value) for value in sorted(set(locator_keys))
+            )
+            source_filters.append(f"document_locator_key IN ({key_values})")
+        source_filter = (
+            " OR ".join(source_filters)
+            if source_filters
+            else ("TRUE" if full else "FALSE")
+        )
         query = f"""
             WITH source_filings AS ({union_sql}),
+            size_anchor AS (
+                {self._size_band_anchor_sql(union_sql, anchor_families)}
+            ),
+            locator_rows AS (
+                SELECT document_locator_key,
+                       {family_expr} AS form_family,
+                       reported_size,
+                       ROW_NUMBER() OVER (
+                           PARTITION BY document_locator_key ORDER BY occurrence_id
+                       ) AS representative_rank
+                FROM source_filings
+                WHERE {source_filter}
+            )
+            SELECT r.document_locator_key,
+                   {size_band_expr} AS size_band
+            FROM locator_rows r
+            LEFT JOIN size_anchor a ON a.form_family = r.form_family
+            WHERE r.representative_rank = 1 AND ({where})
+        """
+        return copy_query_to_parquet(
+            con,
+            query,
+            staging_dir / LOCATOR_BANDS_FILE,
+            self.row_group_size,
+        )
+
+    def _write_lifecycle(
+        self,
+        con: object,
+        union_sql: str,
+        staging_dir: Path,
+        global_max_year: int | None,
+        changed_ciks_sql: str | None = None,
+    ) -> int:
+        gap_years = int(self.options["gap_years"])
+        grace_years = int(self.options["cessation_grace_years"])
+        changed = f"AND source_cik IN ({changed_ciks_sql})" if changed_ciks_sql else ""
+        global_max = (
+            "CAST(NULL AS INTEGER)" if global_max_year is None else str(global_max_year)
+        )
+        query = f"""
+            WITH source_filings AS ({union_sql}),
+            max_year_overall AS (SELECT {global_max} AS global_max),
             dated AS (
                 SELECT source_cik,
                        CAST(substring(report_date, 1, 4) AS INTEGER) AS year
                 FROM source_filings
                 WHERE report_date IS NOT NULL AND length(report_date) >= 4
+                {changed}
             ),
-            max_year_overall AS (SELECT MAX(year) AS global_max FROM dated),
             distinct_years AS (SELECT DISTINCT source_cik, year FROM dated),
             year_pairs AS (
                 SELECT source_cik, year,
@@ -478,30 +682,23 @@ class FeatureSnapshotBuilder:
             FROM cik_metrics m CROSS JOIN max_year_overall g
         """
         return copy_query_to_parquet(
-            con, query, staging_dir / "lifecycle.parquet", self.row_group_size
+            con, query, staging_dir / LIFECYCLE_FILE, self.row_group_size
         )
 
-    def _write_occurrence_features(self, con: object, staging_dir: Path) -> int:
-        base = sql_literal(str(staging_dir / "occurrence_base.parquet"))
-        lifecycle = sql_literal(str(staging_dir / "lifecycle.parquet"))
-        base_projection = ", ".join(f"o.{column}" for column in OCCURRENCE_BASE_COLUMNS)
-        query = f"""
-            WITH occurrences AS (SELECT * FROM read_parquet({base}))
-            SELECT
-                {base_projection},
-                COALESCE(l.has_revival_gap, false) AS has_revival_gap,
-                COALESCE(l.lifecycle_class, 'unknown') AS lifecycle_class
-            FROM occurrences o
-            LEFT JOIN read_parquet({lifecycle}) l ON o.source_cik = l.source_cik
-        """
-        return copy_query_to_parquet(
-            con,
-            query,
-            staging_dir / OCCURRENCE_FEATURES_FILE,
-            self.row_group_size,
-        )
+    def _global_max_year(self, con: object, union_sql: str) -> int | None:
+        row = con.execute(
+            "SELECT MAX(try_cast(substring(report_date, 1, 4) AS INTEGER)) "
+            f"FROM ({union_sql}) WHERE report_date IS NOT NULL AND length(report_date) >= 4"
+        ).fetchone()
+        return int(row[0]) if row and row[0] is not None else None
 
-    def _write_locator_features(self, con: object, staging_dir: Path) -> int:
+    def _write_locator_features(
+        self,
+        con: object,
+        staging_dir: Path,
+        occurrence_relation: str,
+        affected_keys_sql: str | None = None,
+    ) -> int:
         """Collapse occurrences to one row per locator; selection counts documents, so
         co-filed occurrences pick a representative by lowest `occurrence_id`.
 
@@ -510,21 +707,31 @@ class FeatureSnapshotBuilder:
         # The frame is stated because a window carrying an ORDER BY defaults to a
         # running RANGE: unframed, the count reads 1 on the first row of every
         # partition, which is the only row `rn = 1` keeps.
-        occurrences = sql_literal(str(staging_dir / OCCURRENCE_FEATURES_FILE))
         occurrence_projection = ", ".join(
             f"o.{column}" for column in OCCURRENCE_FEATURE_COLUMNS
         )
         locator_projection = ", ".join(
             _locator_column_expression(column) for column in LOCATOR_FEATURE_COLUMNS
         )
+        filter = (
+            "JOIN affected_keys a USING (document_locator_key)"
+            if affected_keys_sql is not None
+            else ""
+        )
+        affected = (
+            f"affected_keys AS ({affected_keys_sql}),"
+            if affected_keys_sql is not None
+            else ""
+        )
         query = f"""
-            WITH ranked AS (
+            WITH {affected}
+            ranked AS (
                 SELECT {occurrence_projection},
                        ROW_NUMBER() OVER w AS rn,
                        COUNT(*) OVER (
                            w ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
                        ) AS loc_occ_count
-                FROM read_parquet({occurrences}) o
+                FROM {occurrence_relation} o {filter}
                 WINDOW w AS (
                     PARTITION BY o.document_locator_key ORDER BY o.occurrence_id
                 )
@@ -539,56 +746,9 @@ class FeatureSnapshotBuilder:
     # ---------------------------------------------------------------- build
 
     def build(self) -> SnapshotPaths:
-        """Build the snapshot, or return the existing one for these inputs."""
-        forms = sorted(set(self.policy.forms))
-        if not forms:
-            raise ValueError("no forms configured in policy")
+        from edgar_sec.engine.selection.snapshot_build import build_snapshot
 
-        snapshot_dir = self.snapshot_dir(forms)
-        paths = self.paths_for(snapshot_dir)
-        if self._is_reusable(paths.manifest):
-            return paths
-        # Drop a stale manifest before rebuilding, so an interrupted rebuild cannot
-        # leave one describing files it did not write.
-        paths.manifest.unlink(missing_ok=True)
-
-        # Validate the cheap input before opening a connection, so a missing
-        # target directory is reported as itself, not as a downstream IO error.
-        target_parts = self._target_part_files()
-        snapshot_dir.mkdir(parents=True, exist_ok=True)
-        counts: dict[str, int] = {}
-        with connect() as con:
-            union = self._target_union(forms, target_parts)
-            counts["occurrence_rows"] = self._write_occurrence_base(
-                con, union, snapshot_dir
-            )
-            counts["lifecycle_rows"] = self._write_lifecycle(con, union, snapshot_dir)
-            counts["occurrence_features"] = self._write_occurrence_features(
-                con, snapshot_dir
-            )
-            counts["locator_features"] = self._write_locator_features(con, snapshot_dir)
-
-        for intermediate in (
-            OCCURRENCE_BASE_FILE,
-            LIFECYCLE_FILE,
-        ):
-            (snapshot_dir / intermediate).unlink(missing_ok=True)
-
-        manifest = {
-            "snapshot_id": snapshot_dir.name,
-            "feature_schema_version": FEATURE_SCHEMA_VERSION,
-            "policy_fingerprint": self.policy.policy_fingerprint,
-            "family_index_id": self.family_index_id,
-            "corpus_id": self.policy.corpus_id,
-            "forms": forms,
-            "options": self.options,
-            "counts": counts,
-        }
-        atomic_write_text(
-            paths.manifest,
-            json.dumps(manifest, indent=2, sort_keys=True) + "\n",
-        )
-        return paths
+        return build_snapshot(self, FEATURE_SCHEMA_VERSION)
 
 
 __all__ = [
@@ -596,6 +756,7 @@ __all__ = [
     "DEFAULT_GAP_YEARS",
     "DEFAULT_STUB_SIZE_THRESHOLD",
     "FEATURE_SCHEMA_VERSION",
+    "DERIVATION_VERSION",
     "FORM_FAMILY_SUFFIXES",
     "IDENTITY_COLUMNS",
     "SIZE_BAND_MULTIPLIERS",
@@ -603,7 +764,6 @@ __all__ = [
     "UNKNOWN_FOREIGN_STATUS",
     "UNKNOWN_SIZE_BAND",
     "FeatureSnapshotBuilder",
-    "SnapshotPaths",
     "era_of",
     "form_family",
     "form_family_sql",

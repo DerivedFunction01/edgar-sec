@@ -25,6 +25,10 @@ and `max_per_company_classification` controls its cap.
   unknown dimensions and retired fields, and result mapping raises on schema drift rather
   than truncating rows.
 - **Feature snapshots are content-addressed and reused** when their inputs match.
+- **Append deltas reuse inherited occurrence-independent parts.** Size bands, lifecycle
+  rows, and locator rows are overlaid by document or registrant key.
+- **Inherited profile features require equal normalized profile values.** A changed value
+  for an inherited CIK forces a full feature rebuild.
 - **Selection is bounded and scoped.** Candidate access takes explicit limits and uses a
   scoped in-memory session.
 - **Layer discipline** follows `AGENTS.md`; this package does not import pipelines.
@@ -36,12 +40,8 @@ and `max_per_company_classification` controls its cap.
 
 ## Deliberate gaps
 
-- **Snapshot identity does not cover the derivation algorithm.** A change to how a
-  column is derived needs the snapshot directory pruned, since identical inputs resolve
-  here. The manifest's `feature_schema_version` is checked on reuse and catches a
-  column change only when the constant is bumped alongside it, so a column change that
-  leaves the version alone reuses the older schema.
-- **Size banding is anchored to `form_family` alone,** not to form family within an era.
+- **Size banding is anchored by unique document locator within `form_family`,** not by
+  occurrence or era. A new unique document can change every locator band in its family.
 - **`foreign_status` is a domestic/foreign classification,** not a country-grade value.
 - **`state_of_incorporation` cannot be stratified on.** It is carried by the snapshot as
   the input to both foreign classifications, but is not a selectable dimension.

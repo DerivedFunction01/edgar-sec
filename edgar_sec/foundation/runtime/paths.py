@@ -25,6 +25,8 @@ CHUNKS_DIR = "chunks"
 RUNS_DIR = "runs"
 RUN_LOCK_FILE = "run.lock"
 RUN_MANIFEST_FILE = "run_manifest.json"
+MANIFEST_FILE = "manifest.json"
+POINTER_FILE = "current.json"
 PUBLICATION_LOCK_FILE = ".publication.lock"
 _PATH_COMPONENT_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\Z")
 
@@ -178,9 +180,11 @@ __all__ = [
     "CHUNKS_DIR",
     "CURRENT_DIR",
     "DATA_FILE_NAME",
+    "MANIFEST_FILE",
     "PACKAGE_ROOT",
     "PLAN_FILE_NAME",
     "PLANS_DIR",
+    "POINTER_FILE",
     "PUBLICATION_LOCK_FILE",
     "PARQUET_PART_GLOB",
     "RUN_LOCK_FILE",
