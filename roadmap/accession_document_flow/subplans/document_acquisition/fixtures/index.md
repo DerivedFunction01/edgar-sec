@@ -9,8 +9,9 @@ lazy-index response groups when their evidence was retained during acquisition; 
 bodyless failed attempt can also be captured as metadata. Full response-evidence
 retention is opt-in and default-off: run acquisition with
 `--retain-response-evidence`. Without it, bundle/lazy response groups may be
-unavailable after the run. The legacy `document_storage` fixture contract remains
-separate and is not reusable as S9 state.
+unavailable after the run. Historical fixture files under
+`tests/fixtures/document_storage/` do not form S9 fixture records and cannot be replayed
+through the current store.
 
 ## CLI and operator shape
 

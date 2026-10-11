@@ -66,9 +66,10 @@ The evaluator is post-selection and read-only:
   remains provenance under the S9 contract; a body-level equality guarantee would
   require a versioned S6 target-plan field.
 
-This can replace the legacy evaluator's *diagnostic role* in S10. It must not reuse
-the legacy `EvaluatorDecision` execution SPI: `REFETCH_SUB_DOC` and
-`SKIP_HARD_STUB` encode pipeline actions, not document evidence.
+This remains a candidate diagnostic design; no legacy evaluator runtime is its owner.
+The old `EvaluatorDecision` action SPI, `REFETCH_SUB_DOC`, and `SKIP_HARD_STUB` runtime
+support are removed. External EX-13 research evidence may remain as provenance, but it
+does not authorize acquisition or target disposition.
 
 ## Proposed taxonomy
 

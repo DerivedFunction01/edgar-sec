@@ -6,6 +6,7 @@ from edgar_sec.domain.document.path_facts import (
     DocumentPathFacts,
     DocumentPathShape,
     DocumentSuffixClass,
+    PLACEHOLDER_PRIMARY_FILENAMES,
     archive_root_candidate,
 )
 
@@ -72,3 +73,12 @@ class TestArchiveRootCandidate:
     def test_none_path_returns_none(self) -> None:
         """Test that None returns None."""
         assert archive_root_candidate(None) is None
+
+
+def test_placeholder_primary_filename_vocabulary_is_exact() -> None:
+    assert PLACEHOLDER_PRIMARY_FILENAMES == {
+        "0001.htm",
+        "0001.txt",
+        "0000.htm",
+        "0000.txt",
+    }

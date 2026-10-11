@@ -105,9 +105,6 @@ its own. See *Deliberate gaps* for what this package is not.
   consulted, so a broker whose `SecHttpClient` is broken still passes
   `managed_broker`'s readiness check. It proves the accept loop is running, not
   that SEC is reachable.
-- **`managed_broker` has no consumer outside the tests.** It is the only
-  lifecycle helper, and nothing outside `daemon.py` constructs a `SecBroker`;
-  `pipelines/document_storage/fetching.py` builds `SecBrokerClient` directly.
-  `daemon.py` also has no mirrored test module of its own — `managed_broker` is
-  only the harness inside `test_broker.py`, and its readiness-timeout
-  `RuntimeError` branch is untested.
+- **`managed_broker` serves inventory and acquisition commands.** Inventory's
+  coordinator and fixture commands use it, as does the acquisition command
+  surface; broker clients also remain part of inventory worker transport.

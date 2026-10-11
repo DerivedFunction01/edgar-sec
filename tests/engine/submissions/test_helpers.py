@@ -113,10 +113,24 @@ def test_build_archive_url_explains_a_missing_primary_document() -> None:
     assert reason == "primary_document_missing"
 
 
-def test_build_archive_url_flags_stub_documents() -> None:
-    url, reason = build_archive_url("0000037996", "0000037996-26-000039", "0001.htm")
-    assert url is not None and url.endswith("0001.htm")
-    assert reason == "primary_document_stub:0001.htm"
+def test_build_archive_url_constructs_index_link_for_stub_primaries() -> None:
+    accession = "0000899681-00-000405"
+    root = "https://www.sec.gov/Archives/edgar/data/898015/000089968100000405"
+    for filename in ("0001.txt", "0001.htm", "0000.txt", "0000.htm"):
+        url, reason = build_archive_url("0000898015", accession, filename)
+        assert url == f"{root}/{accession}-{filename}"
+        assert reason == f"primary_document_stub:{filename}"
+
+
+def test_build_archive_url_does_not_classify_complete_submission_as_stub() -> None:
+    accession = "0000899681-00-000405"
+    url, reason = build_archive_url("0000898015", accession, f"{accession}.txt")
+
+    assert url == (
+        "https://www.sec.gov/Archives/edgar/data/898015/000089968100000405/"
+        "0000899681-00-000405.txt"
+    )
+    assert reason is None
 
 
 def test_normalize_items_handles_both_eras() -> None:

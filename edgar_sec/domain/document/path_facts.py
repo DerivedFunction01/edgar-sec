@@ -25,6 +25,10 @@ BINARY_SUFFIXES = frozenset({".pdf", ".gif", ".jpg"})
 #: Flat suffixes that are opaque (raw-only) for acquisition.
 OPAQUE_SUFFIXES = frozenset({".fil", ".zip", ".eis"})
 
+PLACEHOLDER_PRIMARY_FILENAMES = frozenset(
+    {"0001.txt", "0001.htm", "0000.txt", "0000.htm"}
+)
+
 #: Extension to MIME, kept stable so a document described by this pipeline and one
 #: described earlier name the same type for the same path.
 MIME_BY_SUFFIX = {

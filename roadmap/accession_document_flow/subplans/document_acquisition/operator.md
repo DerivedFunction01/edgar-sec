@@ -121,9 +121,8 @@ current action; they do not discard a previously selected run context.
 
 Fixture CLI `--json` output is stable and sorted. Command errors use the CLI's typed
 error formatting and exit-code mapping in both entry modes. The legacy
-`document_storage` pipeline remains a separate command surface. Fixture evidence does
-not satisfy the representative S9/S10 evidence and approval required to enable S11
-publication.
+`document_storage` command surface is retired. Fixture evidence does not satisfy the
+representative S9/S10 evidence and approval required to enable S11 publication.
 
 Tests cover menu transitions, default-no live-network/capture/replay confirmations,
 retry confirmation separation, EOF/Ctrl-C behavior, and command delegation.

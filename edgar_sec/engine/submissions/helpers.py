@@ -7,8 +7,10 @@ from __future__ import annotations
 
 from typing import Any
 
+from edgar_sec.domain.document.path_facts import PLACEHOLDER_PRIMARY_FILENAMES
 from edgar_sec.domain.identity import is_hyphenated_accession
 from edgar_sec.domain.sec_urls import (
+    accession_hyphenated,
     archives_url,
 )
 from edgar_sec.foundation.serialization import canonical_json
@@ -85,10 +87,12 @@ def build_archive_url(
     if not primary_document or not str(primary_document).strip():
         return None, "primary_document_missing"
     doc = str(primary_document).strip()
-    url = archives_url(cik_padded, accession_norm, doc)
-    if doc.endswith((".txt", "0001.htm")):
+    stub_name = doc[1:] if doc.startswith("/") else doc
+    if stub_name in PLACEHOLDER_PRIMARY_FILENAMES:
+        qualified_name = f"{accession_hyphenated(accession_norm)}-{stub_name}"
+        url = archives_url(cik_padded, accession_norm, qualified_name)
         return url, f"primary_document_stub:{doc}"
-    return url, None
+    return archives_url(cik_padded, accession_norm, doc), None
 
 
 def normalize_items(value: Any) -> list[str]:

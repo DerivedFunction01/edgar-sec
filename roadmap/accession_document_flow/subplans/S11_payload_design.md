@@ -9,7 +9,7 @@
   delivered until representative S9/S10 evidence is reviewed and this design is
   approved.
 - Depends on: S9 acquisition/fixture cases and S10 processor review cases.
-- Precedes: any durable payload-store implementation or `document_storage` cutover.
+- Precedes: any durable payload-store implementation.
 
 ## Current tracked-code audit (2026-10-08)
 
@@ -19,11 +19,9 @@
   They supersede the earlier candidate table below; representative cases and explicit
   approval are still outstanding.
 - **Evidence:** the command-oriented [S9 acquisition contracts](document_acquisition/cli_inventory.md),
-  [S10 audit](S10_processing.md), and the existing
-  [`document_storage` processor](../../../edgar_sec/pipelines/document_storage/processor.py)
-  show which behaviors are separated or replaced. Legacy artifacts remain frozen
-  pending the independent retirement gate in
-  [`document_storage_disposition.md`](../document_storage_disposition.md).
+  [S10 audit](S10_processing.md), [historical processing trace](S10_legacy_processing_trace.md),
+  and [retirement record](../document_storage_disposition.md) show which behaviors were
+  separated or retired. Existing external artifacts are not migrated by this design.
 - **Next step:** implement the M7 fixture-driven S9/S10 gate, review its representative
   cases against the lifecycle plan's schemas and failure/retention contracts, then
   record approval before enabling durable publication.
@@ -135,7 +133,7 @@ not deferred.
 
 ## Replacement and migration boundary
 
-The `document_storage` implementation remains frozen during S9–S12 and is scheduled for removal when the replacement is complete. The design must state a cutover plan: behavior parity gates, old-artifact read compatibility or migration, consumer transition, rollback window, and explicit deletion approval. S11 approval alone permits a payload-store implementation; it does not authorize deleting `document_storage` or its artifacts. Decommissioning is a separate post-S12 milestone after the approved payload store is implemented, replacement parity is demonstrated, and consumers/artifacts are migrated.
+The `document_storage` runtime package is retired. S11 designs only future durable payload publication; its approval does not restore the old processor or decide migration of any externally retained artifacts. Any artifact-consumer migration is a separate compatibility decision.
 
 ## Approval checklist
 
@@ -147,7 +145,7 @@ The design is ready for approval only when it:
 - Specifies append/update/idempotence, byte verification, streaming bounds, atomic publication, and recovery after interruption.
 - Defines retention/reference tracking and safe deletion for raw, selected, exported, and review-only bodies.
 - Leaves S5 schemas and the S6 target-row schema unchanged; operation-aware inputs use a versioned S6 bundle relation extension and keep catalog-direct provenance distinct.
-- Includes migration/cutover implications for `document_storage` without mixing its removal into S9–S12.
+- Records the already-retired runtime boundary and separates any external artifact migration from the new payload-store design.
 - Records design version, unresolved risks, rejection rationale, and explicit approval identity/date.
 
 ## Gate criteria
@@ -157,7 +155,7 @@ Until the documented design is explicitly approved:
 - No durable production payload Parquet part or payload linkage is emitted by any stage.
 - S5's annual inventory schema and S6 target plans remain metadata/intent only.
 - Export outputs exist only in bounded processing staging or selected S7 review artifacts; raw bodies remain transient or in the S9 acquisition fixture store.
-- No `document_storage` code or artifact is migrated, rewritten, or deleted.
+- The retired runtime is not restored; any remaining external legacy artifacts are not rewritten or migrated by this design gate.
 
 ## Deliverable and acceptance
 

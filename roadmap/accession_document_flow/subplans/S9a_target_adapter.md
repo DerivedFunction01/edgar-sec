@@ -11,7 +11,7 @@
 ## Current tracked-code audit (2026-10-10)
 
 - **Status: S9a projection and S9 acquisition are integrated.** The S6 producer emits bundle schema v2 with declared target-part byte sizes. `plan_projection.target_plan` validates that pinned bundle and streams every target into the Parquet work-order schema; `plan_projection.project` binds it to the immutable run manifest and state database. S9 performs bounded HTTP acquisition and exact bundle-sequence extraction; processing remains the separate S10 stage.
-- **Evidence:** [`plan_projection/target_plan.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/target_plan.py), [`plan_projection/project.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/project.py), [`arrow_schemas.py`](../../../edgar_sec/pipelines/document_acquisition/arrow_schemas.py), and their mirrored tests validate pins, bounded projection, and locator semantics. [`target_runner.py`](../../../edgar_sec/pipelines/document_acquisition/target_runner.py) owns S9 slot acquisition; fixture capture/replay support remains limited to retained direct responses and bodyless failures. The separate [`document_storage/catalog_plan.py`](../../../edgar_sec/pipelines/document_storage/catalog_plan.py) remains legacy.
+- **Evidence:** [`plan_projection/target_plan.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/target_plan.py), [`plan_projection/project.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/project.py), [`arrow_schemas.py`](../../../edgar_sec/pipelines/document_acquisition/arrow_schemas.py), and their mirrored tests validate pins, bounded projection, and locator semantics. [`target_runner.py`](../../../edgar_sec/pipelines/document_acquisition/target_runner.py) owns S9 slot acquisition; fixture capture/replay support remains limited to retained direct responses and bodyless failures. The former catalog-plan adapter is retired with `document_storage`.
 - **Next step:** complete remaining ungated fixture and historical mismatch coverage. Family-aware HTML evaluation, S10 processing, and S11 publication remain deferred or gated.
 
 ## Objective
@@ -105,6 +105,14 @@ snapshot is selected; there is no catalog-path fallback for a missing indexed
 accession. The plan is self-contained for acquisition. Catalog-direct bundle
 extraction is not part of v1.
 
+The adapter projects the retrieval mode S6 pinned; it does not cost-select between
+direct and bundle retrieval, group targets into one bundle transfer, or change an
+ordinary failed direct request into a bundle request. S6 pins bundle mode only for
+primary paths exactly `/0000.txt`, `/0000.htm`, `/0001.txt`, or `/0001.htm` at the
+accession root, with an advertised bundle URL and observed positive sequence. No
+form/date condition applies; nested paths do not match. Catalog-only targets without
+sequence evidence remain unresolved.
+
 `document_path` is the URL path relative to the accession's archive directory, not the full URL path. This preserves the route distinction in `domain.document.route`: an XSL rendering path contains a subdirectory, while a root file is flat. Bundle extraction uses the selected `<FILENAME>` with `content_route()` instead.
 
 For a successful direct fetch, S9 sets `selected_filename` from the validated document-path basename. For a bundle target, it uses the actual selected SGML header filename; the expected inventory filename is only a consistency check.
@@ -118,8 +126,9 @@ direct documents may be nested beneath it. Reject dot segments, encoded separato
 backslashes, and paths outside the accession directory. Use parsed URL components and
 the shared SEC archive URL parser; never use raw prefix checks or target text as a
 filesystem path. Redirects must remain on `www.sec.gov` and inside the same accession
-directory. Direct-target size is advisory; the observed response size remains
-authoritative.
+directory. Direct-target child size is advisory; the observed response size remains
+authoritative. The indexed child size, full-submission bundle size, and S1-reported
+catalog size describe different objects and are not compared for retrieval selection.
 
 ## Tests
 

@@ -72,9 +72,7 @@ def test_build_archive_url_uses_unpadded_cik_and_reasons() -> None:
         "primary_document_missing"
     )
     assert build_archive_url("0000037996", None, "f.htm")[0] is None
-    assert build_archive_url("0000037996", "0000037996-26-000039", "x.txt")[1] == (
-        "primary_document_stub:x.txt"
-    )
+    assert build_archive_url("0000037996", "0000037996-26-000039", "x.txt")[1] is None
 
 
 def test_resolve_alias_matches_case_insensitively() -> None:

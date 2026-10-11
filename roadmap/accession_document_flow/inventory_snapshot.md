@@ -7,16 +7,10 @@ snapshot is designed now and is queryable from the first published version.
 
 ## 1. Difference from the Existing Snapshot
 
-The frozen `document_storage` snapshot is downstream of acquisition and
-normalization. It indexes occurrences keyed by `occurrence_id` (source CIK,
-accession, and document path), splits that index from normalized-text payload
-parts, and consolidates run snapshots by document ID and filing quarter. Its
-index rows can be searched with local DuckDB, but the physical parts are not
-seek indexes for accession/form queries; the payload model is intentionally
-part of that snapshot. The owned implementation is in
-[`merger.py`](../../edgar_sec/pipelines/document_storage/merger.py),
-[`parts.py`](../../edgar_sec/pipelines/document_storage/parts.py), and
-[`vacuum.py`](../../edgar_sec/pipelines/document_storage/vacuum.py).
+The former `document_storage` snapshot coupled acquisition/normalization rows to
+payload parts and consolidated run snapshots by document ID and filing quarter.
+Its runtime package is retired; the
+[retirement record](document_storage_disposition.md) summarizes the old boundary.
 
 The first accession-inventory draft also had a base metadata snapshot, but
 applied the targeting profile during inventory and let cohort-shaped runs drive

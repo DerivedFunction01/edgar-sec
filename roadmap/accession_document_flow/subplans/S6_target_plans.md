@@ -3,8 +3,21 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S6**.
-- Status: profile-based target plans remain design-only; existing filing-catalog
-  locator plans are a partial foundation, not this contract's implementation.
+- Status: versioned profile target planning is implemented in `pipelines/document_planning`.
+  This subplan includes extended design details beyond the current target schema; use
+  the current implementation and the retrieval-scope reconciliation below for behavior.
+- **Retrieval-scope reconciliation:** the user-supplied placeholder policy matches only
+  an exact observed primary filename of `0000.txt`, `0000.htm`, `0001.txt`, or
+  `0001.htm`, independent of form and date. It is based on prior experience; no
+  form/date condition is asserted. A single SEC observation corroborates `0001.htm`
+  on one Form 10-Q; it does not establish a form/date range. See the [observed SEC
+  case](document_acquisition/decision_tree.md#observed-sec-case-exact-path-primary).
+  Nested paths and arbitrary suffix matches are excluded. S6 uses an exact inventory
+  filename only to select `bundle_sequence` when the pinned accession bundle URL and
+  observed positive sequence are available. Without either, including catalog-only
+  planning, the target remains unresolved. Catalog URL qualification of these names
+  retains stub provenance but is not retrieval authorization.
+  Complete-submission accession `.txt` names are exempt.
 - Depends on S1 cohort contracts and S5 inventory relation schemas for optional
   inventory evidence. A filing-catalog plan is the required accession scope. S0's XBRL
   decision gates any claim that a constructed package candidate is
@@ -14,14 +27,13 @@
   integrated `documents plan` alias and cross-stage operator are non-blocking.
 - Non-blocking: S7 review and S9–S10 acquisition/processing.
 
-## Current tracked-code audit (2026-10-09)
+## Tracked-code status
 
-- **Status: partially implemented foundation; this subplan is not complete.** `filing_catalog` publishes deterministic and policy locator plans, but those plans do not implement profile rules, target request IDs, per-target outcomes, or catalog-scope plus optional inventory-evidence planning.
-- **Evidence:** [`filing_catalog/planner.py`](../../../edgar_sec/edgar_sec/pipelines/filing_catalog/planner.py), [`filing_catalog/publication.py`](../../../edgar_sec/edgar_sec/pipelines/filing_catalog/publication.py), and their mirrored planner/publication tests cover the existing locator-plan contract. [`domain/filing_catalog/schemas.py`](../../../edgar_sec/edgar_sec/domain/filing_catalog/schemas.py) defines its distinct schema.
-- **Next step:** move the S5 relation contract to its permitted pipeline `schemas.py`,
-  then implement the role/type profile loader, bounded catalog-scope and inventory-
-  evidence adapters, and source-pinned bundle publication with mirrored tests. See
-  the [dependency-aware implementation plan](document_planning/plan.md).
+Profile-based S6 planning is implemented in `pipelines/document_planning`. Its current
+matching contract includes exact-filename primary placeholders and the bundle/sequence gate above;
+[`test_matching.py`](../../../tests/pipelines/document_planning/test_matching.py) covers
+the four exact filenames, nested-path exclusion, and unresolved catalog-only behavior. The
+2026-10-09 partial-foundation audit predates this implementation and is no longer current.
 
 ## Objective
 
@@ -92,7 +104,8 @@ Rules are resolved as follows:
   `data_file`/exact or `EX-101.*` type or `extracted_xbrl_instance`, `graphic`/`GRAPHIC`,
   and `package`/`xbrl_zip`. Unsupported role/type pairs fail profile validation.
 - Package requests such as `xbrl_zip` have an explicit `type` and produce a
-  `constructed_candidate` without inventing an inventory entry.
+  `constructed_candidate` without inventing an inventory entry. That candidate is
+  metadata only; it does not authorize acquisition, unzipping, or asset selection.
 - Filename/description fuzzy matching and arbitrary selector expressions are out of
   scope.
 - A primary target may declare `catalog_direct_selection` as `submitted_primary` or
@@ -101,12 +114,11 @@ Rules are resolved as follows:
   the target-plan row. The former `exact_form` selector is dropped; there is no third
   selector.
 - `submitted_primary` accepts the catalog's primary link as the requested primary
-  without body-type evaluation. `exact_form_with_lazy_index` first fetches that same
-  sequence-1 candidate, then uses a bounded local identity screen: an ASCII SGML
-  `<TYPE>` mismatch or unverifiable/missing type, or an HTML cover evaluator that does
-  not verify the requested filing form, is a suspicion trigger for lazy index lookup.
-  A positive HTML cover result avoids that extra lookup but is not an exact
-  statutory-type assertion.
+  without body-type evaluation. Under `exact_form_with_lazy_index`, a successful
+  direct-body sequence-1 response is followed by one bounded index lookup; its HTML
+  screen is `unverifiable` because no HTML cover evaluator is enabled. For a primary
+  bundle body, a strict ASCII SGML `<TYPE>` mismatch or unverifiable type triggers the
+  lookup.
   Only observed index-row `document_type` evidence selects a replacement sequence.
   Transport failure alone does not trigger target discovery or bundle fallback.
 - The selector does not alter target role or expected type. `target_role=primary`
@@ -170,8 +182,9 @@ Matching and outcome rules:
   direct archive URLs. A `matched` row means the catalog supplied a safe sequence-1
   locator; `catalog_metadata` does not verify that the linked body has the filing's
   statutory document type. S9 interprets the recorded selector after acquisition. An
-  envelope/stub path, missing primary, or non-primary selector is refused/unresolved;
-  it is never passed off as an index match.
+  envelope or missing primary is unresolved without inventory evidence. Exact placeholder
+  paths also remain unresolved in catalog-only planning because no sequence is
+  observed. A non-primary selector is refused; none is passed off as an index match.
 - Catalog-direct planning itself does not fetch or parse `-index.html`, inspect
   document bodies, infer type from filenames, or recover a target. An explicitly
   selected `exact_form_with_lazy_index` policy authorizes only the bounded S9 recovery
@@ -204,12 +217,11 @@ Matching and outcome rules:
   self-contained `bundle_sequence` target; store the bundle URL in `target_url` so S9
   does not need to reopen the inventory snapshot. A single row without any usable
   locator is unresolved, not absent.
-- This locator rule applies equally to primary rows whose observed `document_type`
-  matches the filing form and exhibit rows whose observed type matches the request;
-  observed sequence is exact selection metadata, never a way to infer target type or
-  role. Current tracked code only implements bundle-sequence matching for unlinked
-  exhibits; primary parity is a required implementation follow-up, not current
-  behavior.
+- For ordinary rows, current bundle-sequence matching is limited to eligible
+  unlinked exhibits. An unlinked primary uses bundle mode only when its observed primary
+  filename exactly matches one of the four user-supplied placeholder names and both the bundle URL
+  and observed positive sequence are available. No form/date condition applies;
+  observed sequence is locator metadata, never evidence for target type or role.
 
 ## Planner interface and pluggable sources
 
@@ -261,9 +273,10 @@ offline, immutable, and network-free.
 - Comma-separated form selectors are split and resolved per-token via `resolve_alias`.
 - One catalog plan with and without an inventory snapshot produces the same scope;
   catalog-only is primary-only, while hybrid plans can resolve the full profile.
-- Primary resolution refuses sequence-only guesses, while an observed form-matching
-  primary row with an advertised bundle and positive sequence resolves to that exact
-  bundle child. (Current tracked code still lacks this primary bundle parity.)
+- Primary resolution refuses sequence-only guesses. Exact placeholder filenames use the pinned
+  bundle URL and observed positive sequence; without that evidence, including for
+  catalog-only planning, the primary remains unresolved. Other unlinked primaries are
+  unresolved.
 - Multiple type matches emit one explicit `ambiguous` row per candidate, even when one
   candidate has no locator; no candidate is selected implicitly.
 - A single matching row without a usable locator is `unresolved`, not `not_filed`.

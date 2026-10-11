@@ -2,10 +2,9 @@
 
 ## Purpose and status
 
-This is the index for replacing the legacy document-storage surface with command-
-oriented acquisition, processing, and publication contracts. It records tracked CLI
-patterns and the proposed operator surface; linked documents specify each command's
-behavior and the integrated [lifecycle plan](lifecycle.md).
+This is the index for the current command-oriented acquisition, processing, and publication contracts.
+It records tracked CLI patterns and the operator surface; linked documents specify
+each command's behavior and the integrated [lifecycle plan](lifecycle.md).
 
 Shared package boundaries and cross-command prerequisites are in
 [the S9 architecture](architecture.md); command contracts must use its schema, path,
@@ -15,20 +14,17 @@ and safe parallel workstreams are in the [S9 implementation plan](plan.md).
 The dedicated `acquisition` launcher and command/operator are registered. Offline
 `project` and the `fixture create`, `capture`, `list`, and `replay` commands are
 implemented. `run` performs acquisition; status, process, review, and snapshot tracks
-remain TODO, while publish returns the S11 evidence-and-approval gate. The `documents`
-launcher still invokes the legacy `document_storage` CLI and remains separate.
+remain TODO, while publish returns the S11 evidence-and-approval gate. The former
+`documents` launcher and `document_storage` runtime package are retired.
 
 ## Tracked CLI patterns
 
 ### Root launcher
 
-[`run.py`](../../../../run.py) has separate entries for acquisition and legacy
-document storage. The legacy entry is
-`Document Storage — Document acquisition, normalization, snapshots, and review
-(removed soon)`, routed to `document_storage.cli`. The dedicated **Document
-Acquisition** entry exposes separate project, acquire, process, publish, fixture,
-review, and snapshot tracks. S9, S10, and S11 remain distinct owners under the shared
-command group.
+[`run.py`](../../../../run.py) registers the **Document Acquisition** entry with
+separate project, acquire, process, publish, fixture, review, and snapshot tracks.
+S9, S10, and S11 remain distinct owners under the shared command group. The former
+`Document Storage` entry was removed with its runtime package.
 
 ### Document Inventory
 
@@ -77,19 +73,18 @@ operator delegates to the same command functions, retains selected run context, 
 prompts before SEC network work. `merge` publishes snapshots, so that action is
 specific to a pipeline with a published durable output.
 
-### Legacy Document Storage
+### Historical Document Storage Surface
 
-[`document_storage/cli.py`](../../../../edgar_sec/pipelines/document_storage/cli.py)
-currently presents a five-choice fixture lifecycle when launched without arguments:
-fill/extend a fixture, run from a fixture, list fixtures, build review artifacts,
-and compare review runs. Its `documents` command group is not a model for S9's
-target-plan run lifecycle: S9 is designed to consume S6 plans and explicitly keeps
-fixture bodies as replay evidence rather than publishing a durable payload store.
+The former `documents` command exposed a fixture lifecycle for the retired
+`document_storage` pipeline. Its behavior is retained as historical evidence in the
+[legacy processing trace](../S10_legacy_processing_trace.md), not as a live command or
+runtime dependency. S9 consumes S6 plans and keeps fixture bodies as replay evidence
+rather than publishing a durable payload store.
 
 ## Registered S9 launcher and operator shape
 
-Keep a separate root entry for target-plan acquisition, processing, and publication;
-the `acquisition` entry is registered, while legacy `documents` remains isolated:
+Keep the root entry for target-plan acquisition, processing, and publication; the
+legacy `documents` entry is retired:
 
 ```text
   Document Acquisition - Acquire eligible targets from S6 plans and inspect resumable runs
@@ -168,9 +163,8 @@ behavior:
 - [End-to-end lifecycle and publication](lifecycle.md): define S9/S10 transient state,
   worker bundles, S11 binary/text Parquet relations, cleanup rules, and legacy differences.
 
-The existing [S9 design](../S9_acquisition.md) and S9a–S9d documents are earlier
-design material, not proof of runtime implementation. The legacy `documents` command
-continues to use `document_storage`; the acquisition fixture store and commands are a
-separate S9 surface and do not replace or migrate that pipeline. Fixture evidence is
-not an S11 payload store, and S11 publication still requires its evidence and approval
-gate.
+The existing [S9 design](../S9_acquisition.md) and S9a–S9d documents include earlier
+design material; consult the status records at their tops for current implementation
+state. The legacy `documents` command and `document_storage` runtime are retired.
+Fixture evidence is not an S11 payload store, and S11 publication still requires its
+evidence and approval gate.

@@ -3,19 +3,19 @@
 ## Owner and status
 
 - Owning stage in [S9](S9_acquisition.md): exact selection from submission envelopes.
-- Status: bounded exact-sequence extraction is implemented in the engine; the S9
-  runner that composes it with transport and target outcomes is not.
+- Status: bounded exact-sequence extraction is implemented in the engine and composed
+  by the S9 runner with transport and target outcomes.
 - Depends on: [S9a work orders](S9a_target_adapter.md), [S9b staged bodies](S9b_stream_transport.md).
 
 ## Current tracked-code audit (2026-10-10)
 
-- **Status: bounded sequence selection is implemented separately from the bytes-based legacy helper.** The engine reads a source path in bounded chunks, writes only one unique positive sequence's exact `<TEXT>` bytes, and returns typed structure/source failures. The bytes-based helper remains the small-fixture parity oracle.
+- **Status: bounded sequence selection is implemented and used by S9.** The engine reads a source path in bounded chunks, writes only one unique positive sequence's exact `<TEXT>` bytes, and returns typed structure/source failures. `scan_filing_bundle()` remains a non-S9 reference/parity oracle, not a S9 selector or fallback.
 - **Evidence:** [`engine/document/unpacking/streaming.py`](../../../edgar_sec/engine/document/unpacking/streaming.py) and [`test_streaming.py`](../../../tests/engine/document/unpacking/test_streaming.py) cover chunk boundaries, malformed/duplicate/missing sequences, length checks, exact digest, cleanup, and bounded reads.
-- **Next step:** compose the engine API with file-backed broker transport in the S9 runner and map its typed failures to target outcomes without fallback.
+- **Next step:** retain coverage for exact positive observed sequence selection and typed failures; do not add sequence inference or ordinary direct-to-bundle fallback.
 
 ## Objective
 
-Extract only the selected body from a legacy SEC SGML submission envelope using the sequence observed in the inventory. Never infer a primary or substitute sequence one.
+Extract only the selected body from a legacy SEC SGML submission envelope using the exact positive sequence pinned by S6. Never infer a primary or substitute sequence one. S6 may pin this route for an exact accession-root primary stub path only when the bundle URL and observed positive sequence are present; S9c consumes the sequence without classifying the path.
 
 ## Models
 
@@ -77,7 +77,7 @@ The sequence is authoritative. Zero matches yields `sequence_not_found`; more th
 
 If `<LENGTH>` is present, parse it as a non-negative decimal and validate it against the child boundary and extracted byte count. It is never used alone to seek outside the enclosing `<DOCUMENT>` span. Invalid, inconsistent, or out-of-bounds length metadata is typed failure, not a truncated extraction. Preserve the exact bytes inside `<TEXT>`; do not trim or decode them before hashing.
 
-The streaming primitive belongs in `edgar_sec.engine.document.unpacking` (for example, a dedicated `streaming.py` module), with a mirrored engine test module. The current bytes-based helper is useful as a small-fixture parity oracle but is not the production large-bundle transport. No new S9c or streaming-engine module imports `pipelines.document_storage`; the existing legacy package and its mirrored tests remain until the decommission gate.
+The streaming primitive is implemented in `edgar_sec.engine.document.unpacking.streaming`, with a mirrored engine test module. The bytes-based payload extractor remains a small-fixture oracle for normalization; it is not the production large-bundle transport. The legacy `document_storage` package and its mirrored runtime tests have been retired.
 
 ## Tests
 

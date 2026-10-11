@@ -180,9 +180,9 @@ ownership and derived role/type identity as the S6 subplan.
    S3 coverage and XBRL availability policy.
 3. Add canonical inventory query parity and verify node-local part ownership for S8;
    add transient staging lease/TTL cleanup as a distinct maintenance operation.
-4. Implement S9 against immutable S6 bundles, then gather representative acquisition
-   and S10 processing evidence before the S11 payload-store decision.
+ 4. Complete S9 acceptance against immutable S6 bundles, then gather representative
+    acquisition and S10 processing evidence before the S11 payload-store decision.
 
 S7c/S7d review and S12 end-to-end operator integration follow their source artifacts;
-they improve auditability but do not block offline S6 development. `document_storage`
-remains frozen until the separate S11 replacement and retirement gates pass.
+they improve auditability but do not block offline S6 development. The legacy
+`document_storage` runtime is retired; S11 payload storage remains separately gated.

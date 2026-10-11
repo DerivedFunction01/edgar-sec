@@ -48,6 +48,16 @@ Before parallel implementation, agree on these interfaces and invariants:
 - S9 reads only the resulting plan. Content-addressed response storage is not
   a promise that S9 can skip a fetch for a new target: response hashes are not
   known until bytes have been acquired.
+- S6 treats only exact observed primary filenames `0000.txt`, `0000.htm`, `0001.txt`,
+  and `0001.htm` as placeholders, independent of form/date; nested paths and arbitrary
+  suffix matches are excluded. It selects `bundle_sequence` only with the pinned bundle
+  URL and observed positive sequence. Catalog-only targets without those facts remain
+  unresolved. Catalog URL qualification preserves stub provenance but is not retrieval
+  authorization; secondary index hrefs are not rewritten.
+- Child/index size, full-submission bundle size, and S1-reported catalog size are
+  different observations. They do not currently select retrieval mode; size-aware
+  direct-versus-bundle selection is deferred and distinct from the exact-filename placeholder
+  policy.
 
 ## 2. Intended package and artifact paths
 

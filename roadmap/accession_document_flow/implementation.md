@@ -1,9 +1,10 @@
 # Accession Document Flow — Implementation Roadmap
 
 Status: **the S1–S6 inventory/target-planning path, the split Project/Run/Status/Publish
-lifecycle, and S7a/S7b fixture-review foundations are implemented; S0 historical
-acceptance and S8 operational retention remain open.** S9 acquisition is the next
-offline handoff. See the
+lifecycle, S7a/S7b fixture-review foundations, and S9 acquisition are implemented;
+S0 historical acceptance and S8 operational retention remain open.** S10 processing
+and S11 durable payload publication remain gated. The former `document_storage`
+runtime package is retired. See the
 [inventory exit and acquisition gate](./inventory_exit_and_acquisition_gate.md) for
 current readiness; stage subplans own detailed contracts.
 
@@ -26,17 +27,14 @@ detailed in [inventory_snapshot.md](./inventory_snapshot.md).
 
 ## 1. Decision and Scope
 
-Build a new accession-centric flow alongside the frozen `document_storage`
-pipeline. Do not port to, alter its implementation, or import that pipeline during
-S0–S12. Reuse
-independently owned lower-layer APIs where their contracts fit and take only
-documented design inspiration from old pipeline modules. The intended end state is
-to remove `document_storage` after the approved S11 payload store is implemented,
-replacement parity and consumer/artifact migration are verified, and a separately
-gated decommission milestone passes.
+The accession-centric flow is implemented as separate inventory, planning, and
+acquisition stages. The former `document_storage` runtime package is retired; do not
+restore it or its imports. Reuse independently owned lower-layer APIs where their
+contracts fit and treat legacy behavior as historical evidence only. Durable payload
+publication remains a separate S11 design and implementation gate.
 
-The replacement is not a single pipeline. Three stage-owned pipeline packages
-jointly replace `document_storage` through explicit artifact handoffs:
+The flow is not a single pipeline. Three stage-owned pipeline packages own its
+current explicit artifact handoffs:
 
 - `edgar_sec.pipelines.document_inventory` (S0–S5): cohort selection, index-page
   fetching and parsing, and publication of the cumulative queryable snapshot.
@@ -577,11 +575,9 @@ content in inventory or target-plan artifacts.
 ### 5.3 Review tools
 
 Build review surfaces as explicit consumers of fixture evidence, following the
-source-first pattern in
-[`document_storage/review_artifacts.py`](../../edgar_sec/pipelines/document_storage/review_artifacts.py)
-and comparison boundary in
-[`document_storage/review.py`](../../edgar_sec/pipelines/document_storage/review.py),
-without importing those pipeline modules.
+source-first pattern summarized in the
+[historical processing trace](subplans/S10_legacy_processing_trace.md) and its
+comparison boundary, without restoring the retired pipeline.
 
 - **Index review artifacts** replay an index-page fixture through a chosen parser
   version. Each case presents source URL/digest, a safe inert view of the source
@@ -726,7 +722,7 @@ The complete proposed design now lives in the [document-acquisition lifecycle pl
 
 **Details:** [subplan](subplans/S12_operator_integration.md)
 
-A small artifact-oriented CLI surface for snapshot/CIK queries, explicit-retention vacuum, inventory- or catalog-direct target planning, fixture replay/review, and inspection. Machine-readable summaries retain stage-specific outcomes. The offline vertical run covers cohort fixtures through query, both plan-source modes, acquisition/processing replay, vacuum parity, and parser/plan review. Interactive UX, production acquisition/processing commands, and `document_storage` removal remain deferred.
+A small artifact-oriented CLI surface for snapshot/CIK queries, explicit-retention vacuum, inventory- or catalog-direct target planning, fixture replay/review, and inspection. Machine-readable summaries retain stage-specific outcomes. The offline vertical run covers cohort fixtures through query, both plan-source modes, acquisition/processing replay, vacuum parity, and parser/plan review. The S12 vertical run and S10 processing remain deferred; S9 commands are registered, and the former `document_storage` runtime is retired.
 
 ## 7. Dependency Graph and Parallel Planning
 
@@ -799,13 +795,12 @@ shortcuts. Acquisition has its own Process/Publish actions: `acquisition publish
 publishes a validated S9/S10 run, while the Inventory snapshot-publish action remains
 owned by S5.
 
-## 9. Frozen Pipeline Module Disposition
+## 9. Retired Pipeline Module Disposition
 
-The [module-by-module replacement map](document_storage_disposition.md) records
-what the current `document_storage` pipeline owns, which lower-layer APIs remain
-reused, which old behaviors are inspiration-only or deliberately omitted, and
-which package modules/tests are scheduled for deletion at the post-S12 gate. No
-module under `pipelines.document_storage` is a dependency of the new pipeline.
+The [retirement record](document_storage_disposition.md) records what the former
+`document_storage` pipeline owned, which lower-layer APIs remain reused, and which
+behaviors were retained, deferred, or removed. No module under
+`pipelines.document_storage` remains or is a dependency of the current flow.
 
 ## 10. Exclusions and Decision Gates
 
@@ -815,9 +810,9 @@ module under `pipelines.document_storage` is a dependency of the new pipeline.
 - No document-body normalization during inventory or target planning.
 - No production binary/text payload Parquet or payload linkage until the documented S11
   design is reviewed and approved.
-- The planned `document_storage` removal is a separate post-S12 gate: the approved
-  S11 payload design must be implemented, consumers and old artifacts migrated or
-  retired, parity/rollback checks passed, and module-map links cleaned before deletion.
+- Legacy artifact migration is not part of S11 approval. Any externally retained
+  artifacts require a separate compatibility decision; the retired runtime is not
+  restored while durable payload storage remains gated.
 - No claim that index page formats, constructed ZIP presence, or actual document
   normalization have universal parity until backed by the audit and fixture
   review artifacts.

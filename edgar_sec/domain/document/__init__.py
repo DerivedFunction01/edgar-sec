@@ -1,1 +1,1 @@
-"""Domain document models, locators, and block streams."""
+"""Document paths, routes, and normalized block records."""

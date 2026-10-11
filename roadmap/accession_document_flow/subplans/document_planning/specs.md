@@ -10,6 +10,16 @@ The dependency-aware implementation sequence and module ownership are in
 [plan.md](plan.md). This file owns the normative profile, matching, artifact, and
 stage-local operator contract.
 
+> **Retrieval-scope status:** The user-supplied placeholder policy matches only the
+> exact observed primary filenames `0000.txt`, `0000.htm`, `0001.txt`, and `0001.htm`.
+> It is independent of form/date and based on prior experience. One SEC observation
+> corroborates `0001.htm` on a single Form 10-Q, but
+> does not establish a form/date range; see the [observed case](../document_acquisition/decision_tree.md#observed-sec-case-exact-path-primary).
+> Nested paths and arbitrary suffix matches are excluded. S6 uses an exact inventory
+> filename only with a pinned accession bundle URL and observed positive sequence;
+> catalog-only targets without those facts remain unresolved. A complete-submission
+> accession `.txt` name is not a placeholder.
+
 ## 1. Inputs and package boundary
 
 Profiles are versioned, tracked JSON under the repository's `policies/document_targets/`
@@ -188,7 +198,7 @@ must declare one `catalog_direct_selection` policy:
 | Policy | S9 behavior after fetching the catalog primary link (physical sequence 1) |
 |---|---|
 | `submitted_primary` | Accept the submitted primary without a body-type screen or index lookup. No type evidence is written unless independently observed later. |
-| `exact_form_with_lazy_index` | Screen the fetched body locally. An ASCII SGML `<TYPE>` mismatch/missing/unverifiable type, or an HTML cover evaluator that does not verify the filing form, is a suspicion trigger for a lazy index lookup. The recognized index's observed `document_type`, not sequence order or filename, selects a replacement slot. A positive HTML cover result avoids the lookup but is not an exact statutory-type assertion. |
+| `exact_form_with_lazy_index` | A successful direct-body sequence-1 response is followed by one bounded index lookup; the HTML screen is `unverifiable` because no cover evaluator is enabled. For a primary bundle body, a strict ASCII SGML `<TYPE>` mismatch or unverifiable type triggers the lookup. The recognized index's observed `document_type`, not sequence order or filename, selects a replacement slot. |
 
 The selector is part of the canonical profile digest and every target-plan row; it is
 null for inventory-backed targets and prohibited for non-primary roles. `exact_form`
@@ -218,11 +228,11 @@ planning. Both adapters are read-only and perform zero network requests.
 
 | Role | V1 `type` values and source table | Match and retrieval contract |
 |---|---|---|
-| `primary` | `primary`; `Document Format Files` | Match `document_type` to the accession's filing form after declared form-alias resolution. Never assume sequence 1. A matching row resolves by direct URL or, when unlinked, by exact observed bundle sequence if the bundle URL exists. Catalog-direct primaries still require a safe same-accession catalog path. Current code lacks unlinked-primary bundle parity. |
+| `primary` | `primary`; `Document Format Files` | Match `document_type` to the accession's filing form after declared form-alias resolution. Never assume sequence 1. A usable ordinary child link selects `direct_url`. Only the four exact observed primary filenames are placeholder signals: they ignore direct retrieval and select `bundle_sequence` only with the advertised bundle URL and observed positive sequence; otherwise they are unresolved. Catalog-only placeholder targets remain unresolved. Other unlinked primaries remain unresolved. |
 | `exhibit` | Exact `EX-13`, `EX-99`, or explicit prefix `EX-*` / `EX-10.*`; `Document Format Files` | Match the requested type only. A usable observed `archive_url`/`href` yields `direct_url`; an unlinked row yields `bundle_sequence` only when both the advertised bundle URL and observed sequence exist. |
 | `data_file` | Exact data-file type, `EX-101.*`, or `extracted_xbrl_instance`; `Data Files` | The instance type matches normalized exact description `EXTRACTED XBRL INSTANCE DOCUMENT` and type `XML`; filename suffix is not a fallback. Data-file retrieval requires a usable direct URL. |
 | `graphic` | `GRAPHIC`; `Document Format Files` | Match the type only. Filename extensions do not infer graphic rows. Retrieval requires a usable direct URL. |
-| `package` | `xbrl_zip`; requires inventory evidence | With a validated accession bundle URL, derive the candidate by replacing `.txt` with `-xbrl.zip`; emit `constructed_candidate`, `constructed_package`, and `availability_evidence="constructed"`, with null `inventory_entry_id`, `sequence`, and `byte_size`. If no bundle URL exists, emit `unresolved`/`no_usable_bundle_url`; an unsafe URL refuses the plan. The candidate does not prove that the ZIP exists or is executable. |
+| `package` | `xbrl_zip`; requires inventory evidence | A constructed ZIP candidate is non-executable metadata, not authorization to acquire, unzip, or select assets. Availability evidence and a separately approved policy are required before those actions. |
 
 Catalog-only planning accepts only `role="primary", type="primary"` requests;
 each such target requires `catalog_direct_selection` with one of the two supported
@@ -266,10 +276,23 @@ For inventory entries, use the source-derived `archive_url` where present; other
 resolve the observed `href` against the filing's archive directory. Validate each
 candidate locator selected by the profile before publication; unrelated unselected rows
 do not supply target locators. Any malformed, unsafe, or cross-accession candidate
-refuses the entire plan rather than silently falling back. Use
-`bundle_sequence` only for an unlinked eligible entry with a real sequence and validated
-bundle URL; never infer sequence from row order. A single matching row with neither
-usable direct nor bundle retrieval is `unresolved`, not matched or absent.
+refuses the entire plan rather than silently falling back. Use `bundle_sequence` for an
+eligible unlinked exhibit only when it has a real observed sequence and validated bundle
+URL; never infer sequence from row order. The four exact observed primary filenames use
+that mode under the same URL/sequence requirements, regardless of whether a direct
+locator is present. Catalog-only placeholder targets remain unresolved. A single
+matching row with neither usable direct nor currently supported bundle retrieval is
+`unresolved`, not matched or absent.
+
+Filing-catalog construction separately accession-qualifies an exact placeholder
+`primaryDocument` as `<hyphenated-accession>-<primaryDocument>` and retains the stub
+reason. This derived child URL is locator provenance, not S6 retrieval authorization:
+catalog-only placeholder targets remain unresolved. Inventory secondary-document
+links continue to use their observed index hrefs without rewriting.
+
+The index's child size, its full-submission bundle size, and S1's reported catalog size
+are separate observations with different subjects. They are retained as provenance and
+are not compared to choose direct versus bundle retrieval; that optimizer is deferred.
 
 Outcome rules:
 
@@ -532,5 +555,6 @@ Acceptance requires catalog-only and catalog-plus-inventory parity of Arrow sche
 the catalog-selected accession scope in both modes, correct `source_origin`, explicit
 catalog and optional snapshot pins/digests, deterministic immutable bundles, zero
 network, and zero source mutation. XBRL candidates remain non-executable pending S0
-evidence. S7 review, S9/S10 implementation, S12 integrated UX, and
-`document_storage` decommissioning are not S6 acceptance conditions.
+evidence. S7 review, S9/S10 implementation, S12 integrated UX, and migration of any
+external legacy artifacts are not S6 acceptance conditions; the runtime package is
+already retired.

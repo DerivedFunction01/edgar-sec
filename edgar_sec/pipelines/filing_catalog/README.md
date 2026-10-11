@@ -173,27 +173,6 @@ python run.py filing-catalog expand --parent-plan plan-2024-01-15 --target-units
 python run.py filing-catalog status
 ```
 
-### Artifact layout
-
-<!-- AUTOGEN:PATHS:START -->
-```text
-{artifacts_root}/
-├── filing_catalog/  # Root of the published catalog dataset.
-│   ├── plans/  # Root of published target-plan bundles.
-│   │   └── {plan_id}/  # Directory holding one immutable target-plan bundle.
-│   │       └── seed_filers.csv  # The plan's normalized seed sidecar, published with a policy plan.
-│   ├── policies/  # Root of published selection policies.
-│   └── snapshots/  # Root of published catalog snapshot directories, and of the pointer.
-│       ├── {catalog_id}/  # Directory holding one immutable catalog snapshot.
-│       │   ├── filing_targets/  # Directory holding the sharded filing-target dataset.
-│       │   └── company_profiles.parquet  # Deduplicated registrant profile dataset for one snapshot.
-│       └── catalog.sqlite  # SQLite DAG catalog database for published catalog snapshots.
-└── transient/
-    └── filing_catalog/
-        └── {catalog_id}/  # Staging directory for one catalog, never published.
-```
-<!-- AUTOGEN:PATHS:END -->
-
 ### `materialize`
 
 `resolve_source` picks the Phase 1 dataset by an explicit Parquet path, an explicit
@@ -202,6 +181,17 @@ DAG catalog; relation order and digests come from its SQLite records, not folder
 
 `catalog_id` is the Phase 1 `snapshot_id` when the handoff supplies one, otherwise a
 digest over the source dataset's identity and this package's schema versions.
+
+For the exact `primaryDocument` names `0000.txt`, `0000.htm`, `0001.txt`, and
+`0001.htm`, `build_archive_url()` qualifies the submissions child as
+`<hyphenated-accession>-<primaryDocument>`; for example, `0001.htm` becomes
+`0000899681-00-000405-0001.htm`. The submissions builder retains the
+`primary_document_stub:<name>` fallback reason, while the SQL fallback applies the
+same exact-name qualification and retains the primary-document stub classification
+rather than treating the name as a missing-primary bundle path. This is locator
+construction, not evidence authorizing S6 retrieval; S6 leaves catalog-only
+placeholder targets unresolved without inventory sequence and bundle evidence. It
+does not rewrite secondary-document hrefs from an index.
 
 The catalog is built one source part at a time, and each part's occurrences are
 written to its own `filing_targets/part-NNNNN.parquet`. The DAG node records output

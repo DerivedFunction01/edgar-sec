@@ -1,4 +1,4 @@
-"""Bounded exhibit header probe for D2 evaluator shell."""
+"""Bounded probe for exhibit designations near a document's opening."""
 
 from __future__ import annotations
 

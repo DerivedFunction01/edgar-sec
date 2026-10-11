@@ -5,6 +5,16 @@ gates. S9 projection, bounded transport, exact bundle extraction, run state, and
 live acquisition runner now exist; S10 processing and S11 durable publication remain
 unimplemented. Acquisition distribution and legacy package removal remain separate.
 
+**Retrieval boundary:** S9 executes each target's pinned S6 mode and observed positive
+sequence. It does not compare child/index size, full-submission bundle size, or S1-reported
+catalog size; group targets into one bundle transfer; or use bundle retrieval after an
+ordinary direct failure. The user-supplied exact-path stub policy applies only to
+accession-root primary paths `/0000.txt`, `/0000.htm`, `/0001.txt`, and `/0001.htm`,
+independent of form/date. S6 pins bundle mode only with an advertised bundle URL and
+observed positive sequence; catalog-only targets without sequence remain unresolved.
+Nested paths and arbitrary suffix matches are excluded, as is the complete-submission
+accession `.txt` filename. S9 follows the pinned S6 mode and does not classify the path.
+
 ## 1. Implementation checklist
 
 Status markers are maintained against tracked code and focused offline tests:
@@ -620,5 +630,5 @@ same command behavior.
   upstream APIs.
 - **Enabled exhibit evaluator:** M8 is research and diagnostic shadow work; no rules
   are active until exact fixture evidence and a recorded acceptance decision exist.
-- **Legacy `document_storage` deletion and full S12 vertical integration:** require
-  separate acceptance after replacement APIs and artifact migration are proven.
+- **External legacy artifact migration and full S12 vertical integration:** require
+  separate acceptance. The `document_storage` runtime package is already retired.

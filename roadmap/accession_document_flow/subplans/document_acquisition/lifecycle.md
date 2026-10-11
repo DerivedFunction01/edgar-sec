@@ -35,7 +35,18 @@ does not reopen the catalog plan, inventory snapshot, or profile, and does not r
 matching or discover companion targets. A missing or unresolved S6 target is retained
 as a skipped work-order row, not repaired by S9.
 
-S9 resolves or reuses the declared source and selected-body bytes. S10 consumes only
+For each target, S9 follows the retrieval mode and observed sequence pinned by S6. It
+does not compare child/index size, full-submission bundle size, or S1-reported size;
+group target requests into one bundle download; or switch an ordinary direct failure to
+the bundle. S6's user-supplied stub policy applies only to exact accession-root primary
+paths `/0000.txt`, `/0000.htm`, `/0001.txt`, and `/0001.htm`, independent of form/date;
+it requires a pinned bundle URL and observed positive sequence. Nested paths do not
+match, and catalog-only stub targets without sequence remain unresolved. The separately
+pinned catalog-direct lazy-index contract is not an ordinary direct-failure fallback.
+
+S9 resolves the declared source and selected-body bytes. Any future reuse is restricted
+to the same logical target and source; it cannot share a bundle response across targets.
+S10 consumes only
 the body assigned by S9 and independently materializes each requested supported
 operation. S11 publishes target outcomes, operation outcomes, slot evidence, stable
 source references, representations, and payloads in an immutable acquisition snapshot.
@@ -48,13 +59,14 @@ S5 or S6 schemas.
    the exact base snapshot (or null), response-byte ceiling, chunking settings, and
    relation schemas in one run manifest. Write immutable Parquet relations for all
    targets, operations, source requests, operation inputs, and chunks.
-2. **Acquire.** Schedule executable target work units. Resolve each source from a
-   verified `work_reuse_candidates` payload only after the current S6/S9 selection
-   resolves to that same stable source asset; otherwise follow the unchanged S6 source
-   request. A candidate never selects a target or slot. Append attempts and lazy-index evidence.
+2. **Acquire.** Schedule each executable target independently and follow its pinned
+   S6 source request. Do not compare target sizes, coalesce multiple bundle targets,
+   or reuse one bundle response across targets. Append attempts and any explicitly
+   authorized catalog-direct lazy-index evidence.
    Atomically adopt direct or selected bytes only after byte-limit, digest, size,
    redirect, and extraction checks. A worker chunk contains all relations for its
-   assigned targets and any verified reused-source payloads.
+   assigned targets and per-target source payloads. A bundle response is never
+   shared across targets.
 3. **Process.** Submit each acquired target and its S6 operation set to S10. S10 emits
    one terminal result per operation and an append-only attempt for each execution.
    Raw is an identity representation; renders are separate outputs. Processing failure
@@ -298,12 +310,13 @@ run results; it never implicitly processes, publishes, or captures fixtures.
 | `raw_payload` can mean normalized UTF-8 text, original bytes, or pass-through data; raw and normalized content share a row shape. | Source response, selected raw body, and derived representation have distinct digests, roles, and lifetimes. Typed Parquet relations store payload bytes and metadata with stable join keys. |
 | Locator-chunk sidecars and a combined checkpoint schema are used for resume. | Immutable S6 work-order Parquet plus a versioned per-run SQLite target/attempt/resolution/processing ledger. Completed target evidence is independently reusable after restart. |
 | Snapshot rows are keyed by occurrence/document identity and use quarter-bucketed index/payload parts. | Acquisition snapshot rows are run/target and accession/physical-slot evidence, published as DAG Parquet deltas; separate binary and text payload relations join by digest. |
-| Legacy fixtures and old snapshot payload layout drive replay and viewer discovery. | S9 fixture SQLite retains explicit source responses for offline evidence; acquisition snapshots publish only planned selected bodies and distinct S10 representations. Viewer and old artifact migration remain explicit retirement work. |
+| Legacy fixtures and old snapshot payload layout drove replay and viewer discovery. | S9 fixture SQLite retains explicit source responses for offline evidence; acquisition snapshots publish only planned selected bodies and distinct S10 representations. The viewer does not register the retired dataset; migration of any externally retained artifact is separate. |
 
 Retain bounded worker execution, integrity checks, explicit fixture replay, immutable
 publication, and pointer-last safety as general invariants. Do not port legacy
-candidate gates, occurrence expansion, selected-index schemas, implicit delegation,
-raw/normalized payload ambiguity, or old artifact layouts.
+date/name candidate gates, occurrence expansion, selected-index schemas, implicit
+delegation, raw/normalized payload ambiguity, or old artifact layouts. The exact
+user-confirmed placeholder paths are specified separately in S6.
 
 ## Implementation sequence and acceptance
 
@@ -317,8 +330,7 @@ raw/normalized payload ambiguity, or old artifact layouts.
    reconciliation adapter, snapshot writer/query surfaces, and run publication
    receipt/cleanup protocol.
 5. Validate with the representative fixture corpus; then authorize the durable
-   publisher and verify legacy consumer/artifact migration separately before retiring
-   `document_storage`.
+   publisher. Decide migration of any externally retained legacy artifact separately.
 
 Acceptance covers deterministic identical-run publication; duplicate payload rows shared
 by digest with distinct slot/target references; bundle envelope versus selected-child
@@ -338,6 +350,7 @@ focused mirrored tests and the configured quality gate remain mandatory.
 - S0 historical parser acceptance and live SEC rollout remain unchanged.
 - Acquisition distribution remains unimplemented; cross-host SEC rate coordination
   and checks are out of scope.
-- PDF extraction, XBRL package execution, taxonomy activation, old artifact migration,
-  viewer cutover, and `document_storage` deletion are outside the snapshot publication
-  implementation itself and require their stated independent evidence/retirement gates.
+- PDF extraction, XBRL package execution, taxonomy activation, and old artifact
+  migration are outside the snapshot publication implementation and require their
+  stated independent evidence/compatibility decisions. The `document_storage` runtime
+  is retired; S11 does not restore it.

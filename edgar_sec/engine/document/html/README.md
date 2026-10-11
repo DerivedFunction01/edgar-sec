@@ -28,7 +28,7 @@ without losing a table byte or inventing a page boundary that was not there.
 - `edgar_sec/engine/document/page_markers/policy.py` — `render_html_to_break_text`,
   reached from `engine/forms/normalize.py` on the HTML branch.
 - `edgar_sec/engine/tables/ascii_html/` — `parse_html` / `FastHtmlNode`.
-- `edgar_sec/pipelines/document_storage/review_artifacts.py` — `parse_html`.
+- `edgar_sec/engine/index_pages/parser.py` — `parse_html`.
 
 `decompose_html_structures` and `insert_page_sentinels` are called only from
 inside this package; their composed entry point is `render_html_to_break_text`.

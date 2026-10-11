@@ -7,14 +7,14 @@
   vertical verification gate remains design-only.
 - Depends on: S1–S11 public contracts, including the command-oriented S9 contracts
   under [document_acquisition](document_acquisition/cli_inventory.md).
-- Non-blocking: the integrated cross-stage operator and `document_storage`
-  decommissioning. Stage-owned S6 CLI/operator work belongs to S6.
+- Non-blocking: the integrated cross-stage operator; the legacy `document_storage`
+  package is already retired. Stage-owned S6 CLI/operator work belongs to S6.
 
 ## Current tracked-code audit (2026-10-09)
 
-- **Status: inventory lifecycle and stage-local planning commands exist; the S12 cross-stage surface and offline vertical gate are not implemented.** Inventory project/run/status/publish/query/review and S6 plan/inspect/status commands are tracked; there is no integrated `documents plan` command or fixture-driven plan-to-acquisition-to-processing-to-vacuum-to-review run matching this contract.
-- **Evidence:** [`document_inventory/cli.py`](../../../edgar_sec/pipelines/document_inventory/cli.py) registers inventory commands. [`document_planning/cli.py`](../../../edgar_sec/pipelines/document_planning/cli.py) owns stage-local S6 commands, while `document_storage` retains a separate CLI and tests.
-- **Next step:** defer the vertical integration test until S9 and S10 replacement APIs are implemented; then wire explicit artifact IDs and add the zero-network, no-payload-write end-to-end fixture gate before any legacy decommissioning.
+- **Status: inventory lifecycle and stage-local planning/acquisition commands exist; the S12 cross-stage surface and offline vertical gate are not implemented.** There is no integrated `documents plan` command or fixture-driven plan-to-acquisition-to-processing-to-vacuum-to-review run matching this contract.
+- **Evidence:** [`document_inventory/cli.py`](../../../edgar_sec/pipelines/document_inventory/cli.py), [`document_planning/cli.py`](../../../edgar_sec/pipelines/document_planning/cli.py), and [`document_acquisition/cli.py`](../../../edgar_sec/pipelines/document_acquisition/cli.py) own the current stage-local command surfaces. The former `document_storage` command and runtime package are retired.
+- **Next step:** defer the vertical integration test until S10 processing and its fixtures are implemented; then wire explicit artifact IDs and add the zero-network, no-payload-write end-to-end fixture gate. Durable payload storage remains a separate S11 gate.
 
 ## Objective
 
@@ -97,15 +97,15 @@ The run asserts zero network calls, zero `document_storage` imports in new S9/S1
 ## Quality gate
 
 - Mirrored offline tests cover each new module and package boundary.
-- `check.py` smart mode and `check.py --fast` pass; policy scanners confirm layer boundaries, resource-derived concurrency, and no `document_storage` imports from replacement modules. Existing legacy package/tests remain until the separate deletion gate.
+- `check.py` smart mode and `check.py --fast` pass; policy scanners confirm layer boundaries, resource-derived concurrency, and no imports of the retired `document_storage` runtime. Its mirrored runtime tests have been removed.
 - CLI invalid IDs, malformed manifests, conflicting/stale snapshots, unsupported target statuses, and non-empty review destinations fail explicitly.
 - The default task does not run `check.py --all`; use the full unconditional suite only when explicitly requested.
 - Package/layer/root README layout tables are updated when new production packages or commands are implemented. Adding the streaming SGML engine module also updates its package README and mirrored tests.
 
 ## Replacement boundary
 
-S12 demonstrates replacement behavior but does not cut over or delete `document_storage`. Removal is the intended end state and has a separate post-S12 approval gate after the S11 payload store is implemented, S9/S10 parity is established, every legacy behavior is replaced or explicitly accepted as omitted, consumers are migrated, and rollback/artifact-retention plans are verified. The decommission change removes old CLI registration and updates root/layer/package README layouts and storage-path documentation; it also removes or rewrites tracked links to retired modules and deletes obsolete package docs/tests only after no consumers or fixtures depend on them.
+The `document_storage` runtime and CLI are already retired. S12 demonstrates cross-stage behavior without restoring them; any migration of externally retained legacy artifacts is a separate compatibility decision. S11 durability and its payload-publication evidence gate remain independent.
 
 ## Acceptance criteria
 
-The CLI surface matches S5/S6/S8, the offline vertical run exercises fixture-to-query-to-plan-to-acquisition-to-processing-to-vacuum-to-review, all source boundaries remain explicit, and no durable payload schema or legacy decommissioning is smuggled into the integration milestone.
+The CLI surface matches S5/S6/S8, the offline vertical run exercises fixture-to-query-to-plan-to-acquisition-to-processing-to-vacuum-to-review, all source boundaries remain explicit, and no durable payload schema or retired runtime behavior is restored by the integration milestone.

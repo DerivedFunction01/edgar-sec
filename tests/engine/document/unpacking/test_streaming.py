@@ -12,9 +12,7 @@ from edgar_sec.engine.document.unpacking.streaming import (
     BundleExtractionFailure,
     extract_bundle_sequence,
 )
-from edgar_sec.engine.document.unpacking.unpacker import (
-    extract_target_sub_document_selection,
-)
+from edgar_sec.engine.document.unpacking.unpacker import extract_target_sub_document
 
 
 def _document(
@@ -97,12 +95,12 @@ def test_compares_optional_header_metadata_and_source_digest(tmp_path: Path) -> 
 
 def test_matches_small_fixture_byte_parser_oracle(tmp_path: Path) -> None:
     source_bytes = _document("2", b"oracle body")
-    oracle = extract_target_sub_document_selection(source_bytes, target_types=["10-K"])
+    oracle = extract_target_sub_document(source_bytes, target_types=["10-K"])
     assert oracle is not None
     result, destination, _ = _extract(tmp_path, source_bytes)
 
     assert isinstance(result, BundleExtraction)
-    assert destination.read_bytes() == oracle.payload
+    assert destination.read_bytes() == oracle
 
 
 @pytest.mark.parametrize(

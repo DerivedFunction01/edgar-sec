@@ -14,8 +14,13 @@ from edgar_sec.domain.filing_catalog.schemas import (
     PROFILE_COLUMNS,
     PROFILE_SCHEMA_VERSION,
 )
+from edgar_sec.domain.document.path_facts import PLACEHOLDER_PRIMARY_FILENAMES
 from edgar_sec.domain.sec_urls import SEC_ARCHIVE_BASE
 from edgar_sec.infra.storage.duckdb import sql_identifier, sql_literal, sql_path_list
+
+_PLACEHOLDER_PRIMARY_NAMES_SQL = ", ".join(
+    sql_literal(name) for name in sorted(PLACEHOLDER_PRIMARY_FILENAMES)
+)
 
 
 def build_part_unnest_query(part_path: str) -> str:
@@ -82,6 +87,10 @@ def build_part_unnest_query(part_path: str) -> str:
                 ELSE {sql_literal(PATH_SOURCE_BUNDLE)}
             END AS document_path_source,
             CASE
+                WHEN primary_document IN ({_PLACEHOLDER_PRIMARY_NAMES_SQL})
+                    THEN {sql_literal(SEC_ARCHIVE_BASE)} || '/' ||
+                         ltrim(source_cik, '0') || '/' || accession || '/' ||
+                         accession_number || '-' || primary_document
                 WHEN archive_url != ''
                     THEN archive_url
                 ELSE {sql_literal(SEC_ARCHIVE_BASE)} || '/' ||
@@ -222,6 +231,10 @@ def build_delta_unnest_query(part_path: str, base_target_paths: Sequence[str]) -
                 ELSE {sql_literal(PATH_SOURCE_BUNDLE)}
             END AS document_path_source,
             CASE
+                WHEN primary_document IN ({_PLACEHOLDER_PRIMARY_NAMES_SQL})
+                    THEN {sql_literal(SEC_ARCHIVE_BASE)} || '/' ||
+                         ltrim(source_cik, '0') || '/' || accession || '/' ||
+                         accession_number || '-' || primary_document
                 WHEN archive_url != ''
                     THEN archive_url
                 ELSE {sql_literal(SEC_ARCHIVE_BASE)} || '/' ||

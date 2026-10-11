@@ -6,10 +6,6 @@ import re
 from collections.abc import Collection, Sequence
 from dataclasses import dataclass
 
-from edgar_sec.domain.document.acquisition import (
-    SubmissionDocument,
-    describe_submission_document,
-)
 from edgar_sec.domain.document.route import (
     DocumentRoute,
     content_route,
@@ -61,6 +57,15 @@ class SgmlSubDocument:
     description: str | None
     raw_payload: bytes
     is_html: bool
+
+
+@dataclass(frozen=True, slots=True)
+class SgmlDocumentHeader:
+    document_path: str | None
+    content_route: DocumentRoute
+    sequence: int | None
+    doc_type: str | None
+    description: str | None
 
 
 def _clean_field(match: re.Match[str] | None) -> str | None:
@@ -242,36 +247,18 @@ def resolve_target_sub_document(
     return None
 
 
-@dataclass(frozen=True, slots=True)
-class SgmlSubDocumentSelection:
-    """A chosen sub-document's payload, with every sub-document's headers.
-
-    ``selected_index`` locates the body: a filename or sequence number may be absent or
-    duplicated, so neither can identify it.
-    """
-
-    payload: bytes
-    documents: tuple[SubmissionDocument, ...]
-    selected_index: int
-
-
-def extract_target_sub_document_selection(
+def extract_target_sub_document(
     raw_bytes: bytes,
     *,
     target_types: Sequence[str] | None = None,
     primary_filename: str | None = None,
     fallback_to_sequence_one: bool = True,
-) -> SgmlSubDocumentSelection | None:
-    """Select one sub-document's payload and describe every sub-document in order.
-
-    Resolution is ``resolve_target_sub_document``'s, unchanged; this adds the ordered
-    header record and reports which position the payload came from.
-    """
+) -> bytes | None:
+    """Selectively extract the resolved target sub-document payload."""
     if not raw_bytes:
         return None
 
     refs: list[tuple[SgmlSubDocument, int, int]] = []
-    headers: list[SubmissionDocument] = []
     for match in _RE_DOCUMENT_B.finditer(raw_bytes):
         block = raw_bytes[match.start(1) : match.end(1)]
         doc_type_raw = _clean_b_field(_RE_TAG_TYPE_B.search(block)) or ""
@@ -292,17 +279,6 @@ def extract_target_sub_document_selection(
             is_html=False,
         )
         refs.append((light, match.start(1), match.end(1)))
-        headers.append(
-            describe_submission_document(
-                document_path=filename,
-                # A slash in a sub-document's own filename never names an XSL
-                # rendering directory, so the route ignores directories here.
-                content_route=content_route(filename),
-                sequence=sequence,
-                doc_type=doc_type_raw.upper() or None,
-                description=_clean_b_field(_RE_TAG_DESCRIPTION_B.search(block)),
-            )
-        )
 
     if not refs:
         return None
@@ -315,38 +291,15 @@ def extract_target_sub_document_selection(
     )
     if winner is None:
         return None
-    for index, (doc, start, end) in enumerate(refs):
+    for doc, start, end in refs:
         if doc is not winner:
             continue
         block = raw_bytes[start:end]
         text_match = _RE_TAG_TEXT_B.search(block)
         if text_match is not None:
-            payload = text_match.group(1).strip(b"\r\n")
-        else:
-            payload = block.decode("latin-1").strip().encode("latin-1")
-        return SgmlSubDocumentSelection(
-            payload=payload,
-            documents=tuple(headers),
-            selected_index=index,
-        )
+            return text_match.group(1).strip(b"\r\n")
+        return block.decode("latin-1").strip().encode("latin-1")
     return None
-
-
-def extract_target_sub_document(
-    raw_bytes: bytes,
-    *,
-    target_types: Sequence[str] | None = None,
-    primary_filename: str | None = None,
-    fallback_to_sequence_one: bool = True,
-) -> bytes | None:
-    """Selectively extract the resolved target sub-document payload."""
-    selection = extract_target_sub_document_selection(
-        raw_bytes,
-        target_types=target_types,
-        primary_filename=primary_filename,
-        fallback_to_sequence_one=fallback_to_sequence_one,
-    )
-    return None if selection is None else selection.payload
 
 
 @dataclass(frozen=True, slots=True)
@@ -369,7 +322,7 @@ class FilingResolutionScan:
     carry the two bodies the resolver keeps. ``scan_error`` records delimiter problems.
     """
 
-    documents: tuple[SubmissionDocument, ...]
+    documents: tuple[SgmlDocumentHeader, ...]
     requested: _ResolvedDocument | None
     primary: _ResolvedDocument | None
     requested_match_count: int
@@ -402,9 +355,9 @@ def _check_document_delimiters(raw_bytes: bytes) -> str | None:
 
 def _parse_document_headers(
     raw_bytes: bytes,
-) -> list[tuple[int, int, SubmissionDocument]]:
+) -> list[tuple[int, int, SgmlDocumentHeader]]:
     """Return (start, end, descriptor) for every document block in envelope order."""
-    entries: list[tuple[int, int, SubmissionDocument]] = []
+    entries: list[tuple[int, int, SgmlDocumentHeader]] = []
     for m in _RE_DOCUMENT_B.finditer(raw_bytes):
         block = raw_bytes[m.start(1) : m.end(1)]
         doc_type_raw = _clean_b_field(_RE_TAG_TYPE_B.search(block)) or ""
@@ -422,8 +375,8 @@ def _parse_document_headers(
             (
                 m.start(1),
                 m.end(1),
-                describe_submission_document(
-                    document_path=filename,
+                SgmlDocumentHeader(
+                    document_path=filename or None,
                     content_route=content_route(filename),
                     sequence=sequence,
                     doc_type=doc_type or None,
@@ -548,10 +501,9 @@ def scan_filing_bundle(
 
 __all__ = [
     "FilingResolutionScan",
+    "SgmlDocumentHeader",
     "SgmlSubDocument",
-    "SgmlSubDocumentSelection",
     "extract_target_sub_document",
-    "extract_target_sub_document_selection",
     "find_sub_document",
     "has_sgml_documents",
     "resolve_target_sub_document",

@@ -20,6 +20,17 @@ logical document. A handler needing another source or multiple inputs is unsuppo
 until a versioned S6/S9 source-input extension. XML parsing remains in a separate
 form-specific pipeline.
 
+Operation policy controls processing outputs, not retrieval cost or transport mode.
+It does not compare child/index, complete-submission, or S1-reported sizes, and it
+does not authorize grouping targets into one bundle request. S6 treats only exact
+observed primary filenames (`0000.txt`, `0000.htm`, `0001.txt`, `0001.htm`) as
+placeholders, independent of form/date; nested paths and arbitrary suffixes are
+excluded. It selects `bundle_sequence` only with a pinned bundle URL and observed
+positive sequence, so catalog-only targets without those facts remain unresolved.
+Filing-catalog accession qualification of a placeholder child URL retains its stub
+provenance but does not authorize retrieval. Other S6 locator selection remains governed by
+[`S6_target_plans.md`](../S6_target_plans.md).
+
 ## Operation contract
 
 Treat operation names as a closed, versioned vocabulary:
@@ -116,18 +127,19 @@ facts such as `.zip` or `.fil` must not silently change document-storage behavio
 Do not make `DocumentStorageRoute` and `DocumentAcquisitionRoute` subclasses of one
 populated enum. Python enums cannot be extended that way, and one classification may
 produce several operation results. Use shared path facts and separate policy mappings:
-document storage maps facts to its existing normalize/store decisions; acquisition maps
-facts plus family and target intent to supported operations and source requests. This
-keeps the acquisition matrix independent without duplicating file suffix parsing.
+the historical document-storage pipeline mapped facts to normalize/store decisions;
+that pipeline is retired. Acquisition maps facts plus family and target intent to
+supported operations and source requests. This keeps the acquisition matrix independent
+without duplicating file suffix parsing.
 
 | Consumer | Current route dependency | Phase-1 migration surface |
 |---|---|---|
-| [`domain/document/acquisition.py`](../../../../edgar_sec/domain/document/acquisition.py) | Direct locators use `document_route`; `SubmissionDocument.content_route` stores an explicit SGML-child classification. | Change the descriptor annotation and direct-locator construction to shared path facts. Keep archive-path and SGML-filename classification distinct. |
-| [`pipelines/document_storage/fetching.py`](../../../../edgar_sec/pipelines/document_storage/fetching.py) | `archive_root_candidate` drives URL/fixture lookup preference and requested-path fallback. | Consume path shape/candidate facts; preserve fetch ordering and fallback. URL validation remains in this pipeline. |
-| [`pipelines/document_storage/review_artifacts.py`](../../../../edgar_sec/pipelines/document_storage/review_artifacts.py) | Binary/markup route decisions control normalization and review artifact selection. | Add a document-storage policy mapping facts to the same decisions; preserve reviewer/worker parity. |
-| [`pipelines/document_storage/processor.py`](../../../../edgar_sec/pipelines/document_storage/processor.py) | Selected child route controls binary/paper handling; suffix MIME labels raw storage. | Map facts to existing normalize/store behavior. Move suffix-MIME policy into document storage; never treat it as observed response type. |
-| [`pipelines/document_storage/delegation.py`](../../../../edgar_sec/pipelines/document_storage/delegation.py) and [`candidate_recovery.py`](../../../../edgar_sec/pipelines/document_storage/candidate_recovery.py) | `content_route` classifies SGML filenames and recovered descriptors. | Use the SGML-filename facts path, which ignores archive-directory semantics. |
-| [`pipelines/document_storage/fixture_operator.py`](../../../../edgar_sec/pipelines/document_storage/fixture_operator.py) | Suffix MIME labels fixture metadata. | Keep suffix-derived MIME distinct from body classification. |
+| Former `domain/document/acquisition.py` | Direct locators used `document_route`; `SubmissionDocument.content_route` stored an explicit SGML-child classification. | Retired records are not an S9 compatibility surface. Keep archive-path and SGML-filename classification distinct in retained unpacking behavior. |
+| Former `document_storage/fetching.py` | Historical `archive_root_candidate` URL/fixture preference and requested-path fallback. | Retired; do not restore ordinary direct-failure bundle fallback. URL validation remains in current owners. |
+| Former `document_storage/review_artifacts.py` | Historical binary/markup routing and review selection. | Retired with its pipeline; normalization ownership remains in the engine. |
+| Former `document_storage/processor.py` | Historical child routing and suffix-MIME persistence. | Retired; shared path/body facts remain distinct and are not a replacement storage pipeline. |
+| Former `document_storage/delegation.py` and `candidate_recovery.py` | Historical SGML filename classification and stub-primary recovery. | Retired; external EX-13 evidence may remain, but no runtime action or inferred primary is authorized. |
+| Former `document_storage/fixture_operator.py` | Historical suffix MIME fixture metadata. | Retired; suffix-derived MIME remains distinct from body classification. |
 | [`engine/document/unpacking/unpacker.py`](../../../../edgar_sec/engine/document/unpacking/unpacker.py) | Markup path predicate contributes to `is_html`; `content_route` populates SGML descriptors. | Preserve the separate path-facts and SGML-filename-facts calls; `is_html` also uses body heuristics. |
 | [`engine/forms/normalize.py`](../../../../edgar_sec/engine/forms/normalize.py) | Route values control paper/binary/XML paths; `REPRESENTATION_*` names normalized output. | Map generic facts into the existing engine normalization decisions; do not reuse representation labels as acquisition operations. |
 
@@ -136,9 +148,9 @@ suffix; it does not validate an `xsl*` prefix. `content_route` ignores directori
 classifies SGML filenames by suffix. `mime_type_for_suffix` is also suffix-only: a nested
 `.xml` path returns `text/xml` although the SEC rendered response is HTML. These current
 semantics are pinned by [`tests/domain/document/test_route.py`](../../../../tests/domain/document/test_route.py).
-The path-facts replacement must retain these distinctions and preserve all existing
-document-storage/engine outcomes during Phase 1. Fetching's root basename is only a
-candidate; S6 must apply its own allowed-path rule, same-accession URL validation, and
+The path-facts contract retains these distinctions. The retired pipeline's storage and
+fetch outcomes are not preserved as runtime behavior. Fetching's root basename is only a
+candidate; S6 applies its own allowed-path rule, same-accession URL validation, and
 availability/evidence rules.
 
 Suffix MIME is not response MIME or body evidence. The generic classifier likewise does
@@ -286,8 +298,8 @@ source bodies. It does not perform HTTP, resolve SEC URLs, select filing targets
 pipeline artifacts, or import pipeline work-order/body-reference types. S9/S10 pipeline
 coordination owns those responsibilities and calls the engine; this follows the
 pure-input/output boundary of `engine/index_pages/parser.py`. The legacy
-`document_storage.FilingProcessor` remains frozen; reuse its lessons, not its selection or
-persistence behavior.
+`document_storage.FilingProcessor` is retired; its selection and persistence behavior are
+not reused.
 
 The request must distinguish requested locator, effective selected path/filename, and
 verified body identity. It carries target/profile identity, family/role/type,
@@ -437,27 +449,20 @@ initial feature phase; subsequent phases have separate layer owners and acceptan
 
 | Phase | Owner | Scope and exit contract | Status |
 |---|---|---|---|
-| 0. Shared path facts | `domain/document` and all current consumers | Replace `DocumentRoute` with `DocumentPathFacts`; preserve existing storage/engine behavior and split storage-only MIME policy into `document_storage`. No acquisition operations are implemented here. | ✅ Implemented |
+| 0. Shared path facts | `domain/document` and retained engine consumers | Shared path facts are implemented. The former storage pipeline was retired rather than extended; no storage-only policy or fallback is moved into it. No acquisition operations are implemented here. | ✅ Implemented |
 | 1. S6 planning (initial) | `pipelines/document_planning`, domain family profiles, and engine capability metadata | Add family capability IDs, target operation requests, and a lightweight versioned metadata catalog; publish deterministic operation/source-request rows. Planning stays offline/body-blind and imports no handler callables. | ✅ Implemented |
 | 2. Engine processor | `engine/document_processing` | Add `AcquisitionProcessor` and its explicit handler registry against the Phase-1 metadata; test dispatch, raw/source pass-through, and registered transforms. It consumes verified byte inputs, not URLs or pipeline orchestration. | ✅ Implemented |
-| 3. S9 source acquisition | `pipelines/document_acquisition` | Fetch or reuse each eligible planned source input; own retries, response evidence, staging, and acquisition receipts. Do not invoke the engine from S9. | ⏳ Pending |
+| 3. S9 source acquisition | `pipelines/document_acquisition` | Execute each pinned S6 source independently; no size-based mode selection, cross-target bundle grouping, or ordinary direct-failure bundle fallback. Own retries, response evidence, staging, and acquisition receipts. Do not invoke the processing engine from S9. | ⏳ Pending |
 | 4. S10 processing orchestration (M6) | `pipelines/document_acquisition` | Validate S9 work-order/body identity, perform route-specific aggregate memory admission before reading, verify and process the same bytes, invoke the engine, produce metadata-only results, and write the S9 consumption receipt. | ⏳ Pending |
 | 5. Offline integration (M7) | `pipelines/document_acquisition` plus fixtures | Exercise S6 plan → S9 fixture acquisition → M6 engine processing → receipt/cleanup without HTTP. Review output is S7-owned; no durable representation payload is written. | ⏳ Pending |
 | 6. Diagnostic evidence (M8) | S10 exhibit-assessment owner | Validate taxonomy on reviewed corpus/holdout data in shadow mode; do not change target selection or acquisition. | ⏳ Pending |
 | 7. Durable acquisition snapshot (M9) | acquisition publication owner | Publish versioned S5/S6/S9/S10 evidence only after its independent acceptance gate. S11 content publication remains separately gated. | ⏳ Pending |
 
-Phase 0 refactors `edgar_sec/domain/document/route.py` and its callers:
-`domain/document/acquisition.py`; `document_storage/fetching.py`, `review_artifacts.py`,
-`processor.py`, `delegation.py`, `fixture_operator.py`, and `candidate_recovery.py`; and
-`engine/document/unpacking/unpacker.py` and `engine/forms/normalize.py`.
-`document_storage/resolution.py` carries route values indirectly and must preserve them.
-Keep `archive_root_candidate`'s fetch preference semantics and move suffix-MIME persistence
-policy into `document_storage`. Reconcile the route references in `S10_processing.md` and
-`document_acquisition/processing_decision_tree.md` with the neutral path-facts contract.
-Preserve behavior in `tests/domain/document/test_route.py`
-and `tests/domain/document/test_acquisition.py`; the mirrored fetching, review-artifact,
-processor, delegation, fixture-operator, resolution, unpacker, and normalizer tests; add
-candidate-recovery coverage. Do not ship a forwarding compatibility shim.
+Phase 0 shared path facts are implemented in the retained domain/engine owners. The
+former `domain/document/acquisition.py` records and `document_storage` consumers named in
+the historical migration audit have been removed with the pipeline. Do not restore their
+fetch preference, fallback, or persistence behavior. Retained unpacking and normalization
+contracts keep their own mirrored tests; no compatibility shim is required.
 
 Phase 1 adds a separate `DocumentProcessingProfile` data contract and family catalog,
 declared in the annual, quarterly, and current `profiles.py` modules. It also adds the S6

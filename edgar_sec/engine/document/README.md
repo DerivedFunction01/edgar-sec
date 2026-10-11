@@ -44,9 +44,8 @@ cleaned, projected, and had its page furniture resolved.
   start, and closing, all over `page_markers/`.
 - `edgar_sec/engine/reflow/` and `edgar_sec/engine/tables/ascii_html/` —
   signature masking and the `html.tree` wrappers respectively.
-- `edgar_sec/pipelines/document_storage/` — envelope unpacking and delegation
-  (`fetching`, `delegation`), `parse_html` for review artifacts, and
-  `PageMarkerAction` for the processor.
+- `edgar_sec/engine/document/unpacking/streaming.py` — S9's pinned-bundle,
+  exact-sequence extraction; `scan_filing_bundle()` remains a non-S9 oracle.
 
 ## Deliberate gaps
 

@@ -11,16 +11,12 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any
 
-from edgar_sec.domain.forms.common.decisions import EvaluatorDecision
 from edgar_sec.foundation.hashing import sha256_text
 from edgar_sec.foundation.text.evidence import EvidenceTier, LexicalEvidencePack
 from edgar_sec.foundation.text.healing import PhraseSequenceRule
 
 #: Content transformation hook for post-normalization rewrites.
 ContentTransform = Callable[[str], str]
-
-#: Form-level evaluator hook that triages normalized text.
-Evaluator = Callable[[str], EvaluatorDecision]
 
 
 @dataclass(frozen=True, slots=True)
@@ -164,7 +160,6 @@ __all__ = [
     "BodyEvidencePack",
     "ContentTransform",
     "CoverEvidencePack",
-    "Evaluator",
     "ItemDefinition",
     "StageRecord",
     "derive_lexical_pack",

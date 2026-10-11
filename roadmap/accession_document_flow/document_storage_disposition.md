@@ -29,22 +29,32 @@ The following gaps are accepted as part of the retirement:
 - S9 acquisition remains usable, but its `process`, `publish`, and review commands
   are not replacement processing surfaces. There is no end-to-end normalize/publish
   path until S10/S11 work is implemented.
-- `apps.viewer.loaders` currently imports `document_storage` manifest/path modules
-  and its document-storage dataset will fail. The discovery mechanism is removed.
+- The current viewer loader does not register the retired document-storage dataset.
+  Existing legacy snapshots remain user data but are not exposed through a migrated
+  viewer reader.
+- S6 treats only exact observed primary filenames `0000.txt`, `0000.htm`, `0001.txt`,
+  and `0001.htm` as placeholder signals under the user-supplied policy; no form/date
+  gate applies. With inventory evidence, S6 requires the pinned bundle URL and observed
+  positive sequence. Catalog-only targets without those facts remain unresolved.
+  Nested paths and arbitrary suffix matches are excluded. Catalog URL qualification
+  preserves stub provenance but is not retrieval authorization.
+  Child/index size, full-submission bundle size, and S1-reported catalog size remain
+  distinct and do not select retrieval mode. S9 follows pinned S6 mode without
+  cross-target bundle grouping or ordinary direct-failure fallback.
 - Existing files under artifact roots are user data. Snapshots, fixtures, and review
   runs are not deleted as part of source retirement.
 
 ## Module dispositions
 
-Each module listed below was retired (**D**). Replacement ownership is stated in the
-section above; the historical source file was removed when the decommission gate
-passed.
+Each module listed below was retired (**D**) by this implementation. Replacement
+ownership is stated in the section above; the historical source files are no longer
+present in the repository.
 
 | Legacy module | Historical role | Replacement disposition |
 |---|---|---|
 | `__init__.py` | Package docstring; no exports. | **N** No replacement API. |
 | `paths.py` | Document-storage snapshot, fixture, review, and chunk paths. | **N** New inventory/acquisition path wrappers use shared project roots. |
-| `candidates.py` | Pre-2005 statutory-exhibit candidate gate. | **I·N** Preserve edge cases as tests only. |
+| `candidates.py` | Historical date/name candidate gate. | **I·N** Retired; do not use as the exact-path primary stub policy. |
 | `candidate_recovery.py` | Bundle-first exhibit acquisition with recovered primary. | **I·N** S6/S9 select explicit targets; no inferred primary. |
 | `resolution.py` | Resolve locator to unique basename/form match. | **I·N** Ambiguity cases useful; no primary inference reuse. |
 | `catalog_plan.py` | Validate and stream chunked filing_catalog locator plans. | **R·N** Reimplement pre-fetch validation in S1/S6; no locator/chunk schema. |
@@ -52,8 +62,8 @@ passed.
 | `catalog_execution.py` | Replay chunk checkpoints and delegation sidecars. | **I·N** Bounded replay is a pattern; old semantics not S9 protocol. |
 | `work_order.py` | Locator chunks and per-locator filing work. | **I·N** Rebuild from S6 targets; no locator/chunk identity. |
 | `summary.py` | Plan-derived candidate counts keyed by locator. | **N** S12 defines stage-specific counts. |
-| `fetching.py` | Direct and bundle fetchers with SGML descriptors. | **R·I·N** Keep request/source/selected-body distinctions. |
-| `processor.py` | Form/route processing with binary pass-through. | **R·N** Reuse route and deterministic-fingerprint constraints. |
+| `fetching.py` | Direct and bundle fetchers with SGML descriptors. | **R·I·N** Keep request/source/selected-body distinctions; ordinary direct-failure bundle fallback is not retained. |
+| `processor.py` | Form/route processing with binary pass-through. | **R·N** Retired; retain only separately owned normalization and routing contracts. |
 | `processing.py` | One-locator fetch/process/row assembly. | **I·N** S9/S10 split acquisition and processing. |
 | `delegation.py` | Second-pass exhibit fetch for stub-primary. | **I·N** Keep representative stub inputs for review. |
 | `checkpoint.py` | Chunk reuse sidecars and combined snapshot schema. | **N** S2/S9 fixtures and S5 snapshots have distinct schemas. |
@@ -76,8 +86,9 @@ passed.
 These modules are **not** part of the retirement set and remain available:
 
 - `engine/forms/normalize.py` — normalization owner; its behavior and golden tests unchanged.
-- `domain/document/route.py`, `domain/document/acquisition.py` — retained while engine unpacking imports them.
-- Decision-tree/evaluator implementations and their engine/domain tests — S10 wiring will compose them.
+- `domain/document/route.py` and the narrow unpacker payload-extraction behavior — retained for current engine callers. The obsolete acquisition/model records have been removed; they are not S9 APIs.
+- `engine/document/unpacking/scan_filing_bundle()` — retained as a non-S9 reference/oracle, not a production selector or S9 fallback.
+- The exhibit-header probe and external EX-13 evidence may remain independently; the old evaluator package and execution SPI are retired, not S10 runtime owners.
 - Fixture data used by those tests and the future review CLI.
 
 ## Legacy interfaces
@@ -85,15 +96,16 @@ These modules are **not** part of the retirement set and remain available:
 The following legacy interfaces are retired or require migration:
 
 - `SecHttpClient.get_bytes()` and `SecBrokerClient.fetch()` return complete response body in memory.
-- `extract_target_sub_document_selection()` and `scan_filing_bundle()` in `engine/document/unpacking/unpacker.py`.
-- `FilingProcessor.process()` — legacy processor/result coupling to payload persistence.
+- `extract_target_sub_document_selection()` was removed after its internal caller and parity tests moved to the payload-only extractor. Preserve whole-SGML normalization behavior. `scan_filing_bundle()` remains a non-S9 reference.
+- `FilingProcessor.process()` — retired processor/result coupling to payload persistence.
 - `domain.document.acquisition` records: `AcquiredSubmission`, `FetchResult`, `BundleFetchResult`, `DocumentReference`.
 - `domain.document.models` records: `DocumentLocator`, `FilingOccurrence`, `RawDocumentBlob`, `NormalizedDocument`, `NormalizationFailure`.
-- Plugin evaluator modules and `DecisionAction.REFETCH_SUB_DOC` — no evaluator schedules acquisition in S6/S9/S10.
+- Plugin evaluator modules, their legacy decision records, and `REFETCH_SUB_DOC` runtime support are removed. S10 findings remain diagnostic and cannot schedule S9 work.
 
 ## Historical evidence
 
 The retirement record links to historical artifacts:
 
 - `tests/fixtures/document_storage/exhibit_primary.sgm` — synthetic envelope for legacy tests.
-- Legacy decision-tree and evaluator code retained in `engine/forms/plugins/`.
+- External EX-13 research evidence and any independently retained bounded header probe;
+  the old evaluator package and action SPI are removed.

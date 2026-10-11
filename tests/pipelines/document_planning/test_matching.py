@@ -6,21 +6,59 @@ from edgar_sec.pipelines.document_planning.catalog_scope import (
     CatalogOccurrence,
     CatalogScopeAccession,
 )
+from edgar_sec.pipelines.document_planning.inventory_evidence import (
+    InventoryEvidenceRow,
+)
 from edgar_sec.pipelines.document_planning.matching import (
     TargetMatchingError,
     _entry_candidate,
+    _is_placeholder_primary_path,
     catalog_only_rows,
+    inventory_rows,
 )
 from edgar_sec.pipelines.document_planning.profiles import ProfileTarget
 
+# Source example: https://www.sec.gov/Archives/edgar/data/898015/000089968100000405/0000899681-00-000405-index.html
+_ACCESSION = "0000899681-00-000405"
+_ARCHIVE_ROOT = "https://www.sec.gov/Archives/edgar/data/898015/000089968100000405"
+_INDEX_URL = f"{_ARCHIVE_ROOT}/{_ACCESSION}-index.html"
+_BUNDLE_URL = f"{_ARCHIVE_ROOT}/{_ACCESSION}.txt"
 
-def _occurrence(url: str | None, *, source_cik: str = "1") -> CatalogOccurrence:
+
+@pytest.mark.parametrize(
+    "path", ["0001.txt", "0001.htm", "0000.txt", "0000.htm", "/0001.htm"]
+)
+def test_placeholder_primary_path_signals(path: str) -> None:
+    assert _is_placeholder_primary_path(path)
+
+
+@pytest.mark.parametrize(
+    "path",
+    [
+        "0000320193-20-000001.txt",
+        "documents/0000320193-20-000001.txt",
+        "nested/0001.htm",
+        "0001.HTM",
+        "a10-k.htm",
+        None,
+    ],
+)
+def test_non_placeholder_paths_do_not_signal(path: str | None) -> None:
+    assert not _is_placeholder_primary_path(path)
+
+
+def _occurrence(
+    url: str | None,
+    *,
+    source_cik: str = "1",
+    primary_document: str = "primary.htm",
+) -> CatalogOccurrence:
     return CatalogOccurrence(
         occurrence_id="occ-1",
         document_locator_key="locator-1",
         source_cik=source_cik,
-        primary_document="primary.htm",
-        document_path="primary.htm",
+        primary_document=primary_document,
+        document_path=primary_document,
         archive_url=url,
         document_path_source="primary_document",
         reported_size=10,
@@ -30,12 +68,24 @@ def _occurrence(url: str | None, *, source_cik: str = "1") -> CatalogOccurrence:
     )
 
 
-def _scope(url: str | None, *, source_cik: str = "1") -> CatalogScopeAccession:
+def _scope(
+    url: str | None,
+    *,
+    source_cik: str = "1",
+    primary_document: str = "primary.htm",
+    accession: str = "000000000124000001",
+) -> CatalogScopeAccession:
     return CatalogScopeAccession(
-        "000000000124000001",
+        accession,
         "10-K",
         "2024-01-02",
-        (_occurrence(url, source_cik=source_cik),),
+        (
+            _occurrence(
+                url,
+                source_cik=source_cik,
+                primary_document=primary_document,
+            ),
+        ),
     )
 
 
@@ -83,6 +133,177 @@ def test_catalog_primary_fallback_uses_source_cik() -> None:
     assert rows[0]["target_url"] == (
         "https://www.sec.gov/Archives/edgar/data/2/000000000124000001/primary.htm"
     )
+
+
+def test_catalog_stub_primary_is_unresolved_without_sequence_evidence() -> None:
+    target = ProfileTarget("primary", "primary", False, "primary:primary")
+    rows = catalog_only_rows(
+        "plan-1",
+        _scope(None, primary_document="0001.htm"),
+        (target,),
+    )
+
+    assert rows[0]["status"] == "unresolved"
+    assert rows[0]["target_url"] is None
+    assert rows[0]["status_reason"] == "placeholder_primary_requires_bundle_sequence"
+
+
+def test_catalog_stub_link_is_not_selected_without_sequence_evidence() -> None:
+    target = ProfileTarget("primary", "primary", False, "primary:primary")
+    placeholder_url = f"{_ARCHIVE_ROOT}/{_ACCESSION}-0001.htm"
+    rows = catalog_only_rows(
+        "plan-1",
+        _scope(
+            placeholder_url,
+            source_cik="898015",
+            primary_document="0001.htm",
+            accession=_ACCESSION,
+        ),
+        (target,),
+    )
+
+    assert rows[0]["status"] == "unresolved"
+    assert rows[0]["target_url"] is None
+
+
+def _inventory_row(
+    entry: dict[str, object], *, bundle_url: str | None = None
+) -> InventoryEvidenceRow:
+    return InventoryEvidenceRow(
+        accession=_ACCESSION,
+        catalog_form="10-Q",
+        catalog_filing_date="2000-11-14",
+        indexed=True,
+        accession_row={
+            "bundle_url": bundle_url,
+            "bundle_size": 67488,
+            "index_url": _INDEX_URL,
+        },
+        entry_row=entry,
+    )
+
+
+def _placeholder_entry(
+    *, sequence: object = 1, filename: str = "0001.htm", entry_id: str = "entry-1"
+) -> dict[str, object]:
+    archive_filename = (
+        f"{_ACCESSION}-{filename}"
+        if filename in {"0001.txt", "0001.htm", "0000.txt", "0000.htm"}
+        else filename
+    )
+    return {
+        "entry_id": entry_id,
+        "table_kind": "document_format",
+        "document_type": "10-Q",
+        "filename": filename,
+        "archive_url": f"{_ARCHIVE_ROOT}/{archive_filename}",
+        "sequence": sequence,
+        "byte_size": 63833,
+    }
+
+
+@pytest.mark.parametrize("filename", ["0001.txt", "0001.htm", "0000.txt", "0000.htm"])
+def test_stub_primary_uses_exact_observed_sequence_and_pinned_bundle(
+    filename: str,
+) -> None:
+    bundle_url = _BUNDLE_URL
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(_placeholder_entry(filename=filename), bundle_url=bundle_url)],
+        (ProfileTarget("primary", "primary", False, "primary:primary"),),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["retrieval_mode"] == "bundle_sequence"
+    assert rows[0]["target_url"] == bundle_url
+    assert rows[0]["sequence"] == 1
+    assert rows[0]["byte_size"] == 63833
+
+
+@pytest.mark.parametrize(
+    ("sequence", "bundle_url", "reason"),
+    [
+        (
+            None,
+            _BUNDLE_URL,
+            "placeholder_primary_missing_positive_sequence",
+        ),
+        (1, None, "placeholder_primary_missing_bundle_url"),
+        (
+            0,
+            _BUNDLE_URL,
+            "placeholder_primary_missing_positive_sequence",
+        ),
+    ],
+)
+def test_stub_primary_without_bundle_evidence_stays_unresolved(
+    sequence: object, bundle_url: str | None, reason: str
+) -> None:
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(_placeholder_entry(sequence=sequence), bundle_url=bundle_url)],
+        (ProfileTarget("primary", "primary", False, "primary:primary"),),
+    )
+
+    assert rows[0]["status"] == "unresolved"
+    assert rows[0]["target_url"] is None
+    assert rows[0]["status_reason"] == reason
+
+
+@pytest.mark.parametrize(
+    "filename",
+    ["nested/0001.htm", f"{_ACCESSION}.txt", "a10-k.htm"],
+)
+def test_non_exact_primary_name_retains_direct_link_behavior(filename: str) -> None:
+    entry = _placeholder_entry(filename=filename)
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(entry)],
+        (ProfileTarget("primary", "primary", False, "primary:primary"),),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["retrieval_mode"] == "direct_url"
+
+
+def test_duplicate_stub_primary_evidence_is_ambiguous() -> None:
+    bundle_url = _BUNDLE_URL
+    rows = inventory_rows(
+        "plan-1",
+        [
+            _inventory_row(_placeholder_entry(), bundle_url=bundle_url),
+            _inventory_row(
+                _placeholder_entry(entry_id="entry-2", sequence=2),
+                bundle_url=bundle_url,
+            ),
+        ],
+        (ProfileTarget("primary", "primary", False, "primary:primary"),),
+    )
+
+    assert [row["status"] for row in rows] == ["ambiguous", "ambiguous"]
+
+
+def test_exhibit_keeps_the_index_href_when_primary_name_is_a_stub() -> None:
+    exhibit_url = f"{_ARCHIVE_ROOT}/{_ACCESSION}-0002.txt"
+    exhibit = {
+        "entry_id": "exhibit-27",
+        "table_kind": "document_format",
+        "document_type": "EX-27",
+        "filename": "0002.txt",
+        "archive_url": exhibit_url,
+        "sequence": 2,
+        "byte_size": 2077,
+    }
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(exhibit, bundle_url=_BUNDLE_URL)],
+        (ProfileTarget("exhibit", "EX-27", True, "exhibit:EX-27"),),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["retrieval_mode"] == "direct_url"
+    assert rows[0]["target_url"] == exhibit_url
+    assert rows[0]["sequence"] is None
 
 
 def test_inventory_locator_uses_index_archive_cik_not_filing_cik() -> None:

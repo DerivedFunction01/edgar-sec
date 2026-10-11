@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Shared domain contracts used across SEC form normalization and evaluation: the canonical
-form-family alias mapping, checkmark token specifications, evaluator decision models, base
-data models, cover phrase rules, declarative checkbox schemas, and cover label vocabularies.
+Shared domain contracts for form aliases, checkmark tokens, cover phrase rules,
+declarative checkbox schemas, and cover-label vocabularies. These leaf contracts
+support normalization without owning runtime evaluator dispatch.
 
 ## Contracts
 

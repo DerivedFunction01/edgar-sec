@@ -11,19 +11,20 @@ reference for domain models, the layer graph, and downstream analytics.
 
 ## 1. Problem: one schema carries four concerns
 
-Today a single document identity runs from planning to storage:
+The former document-storage design coupled selection, acquisition, and
+normalization in one pipeline:
 
 | Concern | Where it lives today | Coupling |
 | :--- | :--- | :--- |
-| Selection | `filing_catalog` plan rows keyed by `document_locator_key` = accession + `document_path` | The catalog chooses a filing *and* one document in it. With no `primary_document`, `document_path` falls back to `<accession>.txt` (`document_path_source = submission_bundle`). |
-| Document choice | The same `document_path`, plus the pre-2005 candidate gate and bundle-first recovery in `document_storage` | Which document is wanted gets decided only *while* fetching. |
-| Acquisition | `document_storage` fetchers (fixture / broker / live) | Raw bytes are fetched and processed in the same worker step. |
-| Storage | `DOCUMENT_SNAPSHOT_SCHEMA` (`document_storage/checkpoint.py`) | `raw_payload`, `normalized_text`, and resolution `metadata` share one row. |
+| Selection | Former `filing_catalog` plan rows keyed by `document_locator_key` = accession + `document_path` | The catalog chose a filing and one document; a missing `primary_document` fell back to `<accession>.txt`. |
+| Document choice | Former `document_storage` pre-2005 candidate gate and bundle-first recovery | Which document was wanted was decided only while fetching. |
+| Acquisition | Retired `document_storage` fixture / broker / live fetchers | Raw bytes were fetched and processed in the same worker step. |
+| Storage | Retired `DOCUMENT_SNAPSHOT_SCHEMA` in `document_storage/checkpoint.py` | `raw_payload`, `normalized_text`, and resolution metadata shared one row. |
 
-Result: a change to which documents are wanted, how they are fetched, or how
-they are normalized changes the same artifact. A separate observed inventory
-and target plan remove that coupling now; durable fetched-payload storage remains
-a distinct, evidence-gated design.
+That coupling is retired. `document_inventory` records observed index facts,
+`document_planning` selects targets, and `document_acquisition` executes pinned
+S9 retrieval. Durable fetched-payload storage remains a distinct, evidence-gated
+design.
 
 ## 2. EDGAR facts the model must respect
 
@@ -131,13 +132,10 @@ models no succession or merger graph (see that package's deliberate gaps).
 
 ## 5. Decisions
 
-1. **Freeze the `document_storage` implementation during replacement.** S0–S12
-   do not change its code or import the old pipeline; its module-by-module
-   dispositions are tracked in the
-   [replacement map](document_storage_disposition.md) linked from implementation §9.
-   The intended end state is removal after the full approved
-   replacement (including S11 payload storage), consumer/artifact migration, and a
-   separate decommission gate.
+1. **`document_storage` is retired.** Its module dispositions and retained,
+   deferred, or removed surfaces are tracked in the
+   [replacement map](document_storage_disposition.md). Durable payload storage
+   remains a separate design gate.
 2. **No new layer.** Orchestration (reading a plan, chunking, publishing)
    belongs in `pipelines/`. Pure targeting rules (era windows, the statutory
    exhibit grammar, resolution-state decisions) belong in `engine/` or
@@ -165,8 +163,10 @@ models no succession or merger graph (see that package's deliberate gaps).
   anti-join, range-read contract, and vacuum plan are specified in
   [inventory_snapshot.md](./inventory_snapshot.md).
 - S6 uses the catalog plan as accession scope and optionally joins its accessions to a
-  pinned inventory snapshot for document evidence. The catalog primary path is used
-  only in catalog-only primary planning; there is no per-row fallback. See the
+  pinned inventory snapshot for document evidence. Catalog-only plans use direct
+  primary paths except the exact placeholder names, which remain unresolved without
+  bundle and sequence evidence. With a snapshot, observed index rows supply those
+  facts. See the
   [S6 target/operator specification](subplans/document_planning/specs.md).
 - Process-pool parsing uses a shared `SecBroker`; the implementation roadmap
   defines worker and persistence ownership.

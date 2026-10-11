@@ -24,6 +24,16 @@ into an immutable accession-document target plan for later acquisition.
   bundle version 2 with matcher v2.
 - Bundle-sequence and constructed-package rows are candidates, not proof that the
   requested document exists. Planning never starts acquisition.
+- **Current locator selection**: A usable matched child link selects `direct_url`
+  for ordinary paths; exact placeholder-primary filenames override direct retrieval.
+  The exact names are `0000.txt`, `0000.htm`, `0001.txt`, and `0001.htm`, independent
+  of form/date; nested paths and arbitrary suffix matches are excluded. S6 selects
+  `bundle_sequence` only when inventory supplies the exact observed primary filename,
+  a positive sequence, and the pinned accession bundle URL. Catalog-only placeholder
+  targets remain unresolved without that sequence evidence. Filing-catalog URL
+  construction may accession-qualify a placeholder child href while retaining its
+  stub reason; this locator construction does not authorize retrieval. Secondary
+  links continue to use their observed index hrefs without rewriting.
 
 ## Command surface
 
@@ -79,3 +89,11 @@ python run.py planning inspect --plan-id plan-2024-01-15
   published snapshot.
 - Constructed XBRL package URLs are unverified candidates; availability is not
   probed during offline planning.
+- Advertised child size, full-submission bundle size, and S1-reported catalog size
+  are distinct observations. They are not compared to select direct versus bundle
+  retrieval; a size-aware optimizer is deferred. The exact-filename placeholder rule is separate
+  and requires an advertised bundle URL plus exact observed positive sequence; it does
+  not apply to the complete-submission accession `.txt` filename.
+- Constructing an XBRL ZIP candidate does not authorize fetching or unzipping it.
+  S0 availability evidence and a separate policy are required before execution or
+  asset selection.

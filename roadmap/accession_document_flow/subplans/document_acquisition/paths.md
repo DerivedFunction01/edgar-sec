@@ -10,6 +10,19 @@ operation-aware work-order v2 adds relation parts, source-reuse inputs, operatio
 staging, and process receipts; distribution bundles and S11 snapshot paths remain
 future execution contracts.
 
+Any source-reuse candidate is scoped to the same logical target and source; it cannot
+share or group a complete-submission bundle response across targets.
+
+S6 uses the bundle-envelope path for an exact accession-root stub primary only when
+the pinned target includes an advertised bundle URL and observed positive sequence;
+catalog-only stub targets without sequence evidence remain unresolved. Path layout does
+not extend that policy to nested filenames.
+
+The layout distinguishes a downloaded full-submission envelope from its selected child;
+paths do not imply target grouping or authorize a bundle request for a failed direct
+target. S9 follows the pinned S6 mode. Advertised child, full-submission, and S1-reported
+sizes remain separate metadata, not path-selection inputs.
+
 ## Resolved path API
 
 ```python

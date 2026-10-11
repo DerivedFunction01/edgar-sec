@@ -3,11 +3,15 @@
 from __future__ import annotations
 
 import duckdb
+import pyarrow as pa
+import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.domain.filing_catalog.schemas import TARGET_COLUMNS
+from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.infra.storage.duckdb import copy_query_to_parquet
 from edgar_sec.pipelines.filing_catalog.materialization import (
+    build_delta_unnest_query,
     build_part_unnest_query,
     build_profile_query,
 )
@@ -62,11 +66,63 @@ def test_unnest_query_applies_the_documented_derivation_rules() -> None:
     query = build_part_unnest_query("p.parquet")
     assert "replace(accession_number, '-', '')" in query
     assert "accession_number || '.txt'" in query
+    assert "accession_number || '-' || primary_document" in query
+    assert "primary_document IN (" in query
+    assert "'0000.htm', '0000.txt', '0001.htm', '0001.txt')" in query
+    delta = build_delta_unnest_query("p.parquet", ["base.parquet"])
+    assert "accession_number || '-' || primary_document" in delta
     assert "ltrim(source_cik, '0')" in query
     assert query.count("sha256(") >= 3
     # occurrences are unique even when a registrant is re-fetched
     assert "occurrence_rank" in query
     assert "ORDER BY source_cik, accession, document_path" in query
+
+
+def test_materialization_constructs_qualified_placeholder_links(tmp_path) -> None:
+    filings = [
+        {
+            "accession_number": "0000899681-00-000405",
+            "filing_date": "2000-11-14",
+            "form": "10-Q",
+            "primary_document": "0001.htm",
+            "archive_url": "https://www.sec.gov/Archives/edgar/data/898015/"
+            "000089968100000405/0001.htm",
+            "size": 67488,
+        },
+        {
+            "accession_number": "0000899681-00-000406",
+            "filing_date": "2000-11-14",
+            "form": "10-Q",
+            "primary_document": "0000899681-00-000406.txt",
+            "archive_url": "",
+            "size": 67488,
+        },
+    ]
+    source_path = tmp_path / "source.parquet"
+    pq.write_table(
+        pa.Table.from_pylist(
+            [{"cik": "898015", "filings": filings}],
+            schema=SUBMISSION_METADATA_SCHEMA,
+        ),
+        source_path,
+    )
+
+    con = duckdb.connect()
+    try:
+        rows = con.execute(build_part_unnest_query(str(source_path))).to_arrow_table()
+    finally:
+        con.close()
+
+    observed = {row["accession"]: row for row in rows.to_pylist()}
+    assert observed["000089968100000405"]["archive_url"] == (
+        "https://www.sec.gov/Archives/edgar/data/898015/000089968100000405/"
+        "0000899681-00-000405-0001.htm"
+    )
+    assert observed["000089968100000405"]["reported_size"] == 67488
+    assert observed["000089968100000406"]["archive_url"] == (
+        "https://www.sec.gov/Archives/edgar/data/898015/000089968100000406/"
+        "0000899681-00-000406.txt"
+    )
 
 
 def test_unnest_query_normalizes_whitespace_primary_documents() -> None:

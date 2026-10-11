@@ -11,6 +11,15 @@ The CLI implements project, status, run, and fixture tracks. Capture and replay 
 ## Contracts
 
 - **Pinned selection policy**: Catalog-direct selection is exactly `submitted_primary` or `exact_form_with_lazy_index`; S9 cannot replace or upgrade it.
+- **Pinned retrieval mode**: S9 executes the source and sequence selected by S6.
+  It does not compare advertised sizes, group targets into a shared bundle fetch,
+  or fall back from an ordinary failed direct request to the accession bundle.
+  S6 treats only the exact observed primary filenames `0000.txt`, `0000.htm`,
+  `0001.txt`, and `0001.htm` as placeholder signals, independent of form/date;
+  nested paths and arbitrary suffix matches are excluded. It selects the bundle route
+  only with an observed positive sequence and pinned bundle URL. Catalog-only targets
+  without those facts remain unresolved. Accession-qualifying a catalog child URL is
+  not retrieval authorization; S9 executes only the mode pinned by S6.
 - **Distinct evidence**: Processing role, requested type, expected statutory type, index designation, physical sequence, and observed body type remain separate facts.
 - **Finite response limit**: Run and fixture capture resolve `acquisition.max_response_bytes` through the shared settings registry; an explicit command-line value overrides configuration, and no unbounded sentinel is accepted.
 - **Catalog-direct bundle identity**: With the exact-form selector, extracted primary SGML `<TYPE>` is compared to the pinned form as ASCII; mismatch or unverifiable type enters lazy-index recovery. Other selectors do not screen the submitted primary.
@@ -24,6 +33,13 @@ The CLI implements project, status, run, and fixture tracks. Capture and replay 
 - **No processing or publication**: S10 processing and S11 Parquet/DAG publication remain absent; S11 requires representative S9/S10 evidence and explicit approval.
 - **No S7d review builder**: S10 processor outputs/fingerprints and cross-run content review contracts are not implemented, so review build/compare remain placeholders rather than fabricated reports.
 - **No snapshot reader**: Acquisition snapshot relations and a published acquisition DAG do not exist; snapshot status/audit are gate-aware placeholders, not queries against S5/S6 or legacy storage.
+- **No cost-based selection or bundle grouping**: Child, complete-submission, and
+  S1-reported sizes remain distinct evidence and do not select transport. A
+  size-aware direct-versus-bundle optimizer and multi-target bundle reuse are
+  deferred.
+- **No authorized XBRL ZIP execution or asset filtering**: A constructed ZIP
+  candidate is not authorization to fetch/unzip it. Availability and selection of
+  assets inside a complete-submission text file also lack a policy.
 
 ## Command surface
 

@@ -140,9 +140,8 @@ system and no table registry.
   under a different one, and a reader must treat a mismatch as its own problem.
 - **No deletion or vacuum of Parquet parts here, and the purge guard is
   advisory.** The dependency analysis computes what is safe to remove, but
-  nothing in this package deletes anything and nothing enforces the closure. The
-  removal itself lives in
-  [`../../pipelines/document_storage/README.md`](../../pipelines/document_storage/README.md).
+  nothing in this package deletes anything or enforces the closure. Artifact-owning
+  pipelines must coordinate part removal explicitly.
 - **A damaged snapshot is skipped, not fatal.** `list_snapshots` logs a warning
   and omits a manifest it cannot read or parse, so consolidation proceeds on a
   partial view rather than letting one bad directory stop everything.

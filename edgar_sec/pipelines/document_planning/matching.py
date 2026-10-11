@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
+import re
 from collections.abc import Mapping
 from dataclasses import dataclass
 from typing import Any
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
+from edgar_sec.domain.document.path_facts import PLACEHOLDER_PRIMARY_FILENAMES
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import (
@@ -27,6 +29,19 @@ _TARGET_STATUSES = {
     "unresolved",
     "constructed_candidate",
 }
+_COMPLETE_SUBMISSION_NAME = re.compile(r"\d{10}-\d{2}-\d{6}\.txt$")
+
+
+def _is_placeholder_primary_path(document_path: str | None) -> bool:
+    """Match exact placeholder names without deciding retrieval eligibility."""
+    if not document_path:
+        return False
+    path = urlsplit(document_path.strip()).path
+    if _COMPLETE_SUBMISSION_NAME.fullmatch(path.lstrip("/")):
+        return False
+    return path in PLACEHOLDER_PRIMARY_FILENAMES or (
+        path.startswith("/") and path[1:] in PLACEHOLDER_PRIMARY_FILENAMES
+    )
 
 
 class TargetMatchingError(ValueError):
@@ -49,11 +64,30 @@ def catalog_only_rows(
     targets: tuple[ProfileTarget, ...],
 ) -> list[dict[str, Any]]:
     identity = str(AccessionNumber.from_any(accession.accession))
-    urls = _catalog_primary_urls(accession, identity)
-    url = next(iter(urls)) if urls else None
+    catalog_urls: tuple[str, ...] = ()
+    catalog_urls_loaded = False
     rows = []
     for target in targets:
-        candidate = _Candidate(None, url, "direct_url" if url else "none", None, None)
+        placeholder_primary = (
+            target.role == "primary" and _catalog_has_placeholder_primary(accession)
+        )
+        if placeholder_primary:
+            candidate = _Candidate(
+                None,
+                None,
+                "none",
+                None,
+                None,
+                "placeholder_primary_requires_bundle_sequence",
+            )
+        else:
+            if not catalog_urls_loaded:
+                catalog_urls = _catalog_primary_urls(accession, identity)
+                catalog_urls_loaded = True
+            url = next(iter(catalog_urls)) if catalog_urls else None
+            candidate = _Candidate(
+                None, url, "direct_url" if url else "none", None, None
+            )
         rows.append(
             _target_row(
                 plan_id,
@@ -62,13 +96,29 @@ def catalog_only_rows(
                 accession.filing_date or "",
                 target,
                 candidate,
-                status="matched" if url else "unresolved",
-                status_reason=None if url else "no_usable_primary_path",
+                status="matched" if candidate.target_url else "unresolved",
+                status_reason=(
+                    candidate.status_reason
+                    or (None if candidate.target_url else "no_usable_primary_path")
+                ),
                 source_origin="catalog_direct",
                 availability="catalog_metadata",
             )
         )
     return rows
+
+
+def _catalog_has_placeholder_primary(accession: CatalogScopeAccession) -> bool:
+    for occurrence in accession.occurrences:
+        primary = (occurrence.primary_document or "").strip()
+        path = (occurrence.document_path or "").strip()
+        if (
+            primary
+            and (not path or path == primary)
+            and _is_placeholder_primary_path(path or primary)
+        ):
+            return True
+    return False
 
 
 def _catalog_primary_urls(
@@ -164,7 +214,7 @@ def inventory_rows(
                 reason = candidate.status_reason
             elif candidate.target_url is None:
                 status = "unresolved"
-                reason = "no_usable_retrieval_locator"
+                reason = candidate.status_reason or "no_usable_retrieval_locator"
             else:
                 status = "matched"
                 reason = None
@@ -237,6 +287,37 @@ def _entry_candidate(
     archive_url = str(entry.get("archive_url") or "").strip()
     href = str(entry.get("href") or "").strip()
     bundle_url = str(accession_row.get("bundle_url") or "").strip()
+    if target.role == "primary" and _is_placeholder_primary_path(
+        str(entry.get("filename") or "")
+    ):
+        sequence = entry.get("sequence")
+        if not isinstance(sequence, int) or isinstance(sequence, bool) or sequence < 1:
+            return _Candidate(
+                entry_id,
+                None,
+                "none",
+                None,
+                None,
+                "placeholder_primary_missing_positive_sequence",
+            )
+        if not bundle_url:
+            return _Candidate(
+                entry_id,
+                None,
+                "none",
+                None,
+                None,
+                "placeholder_primary_missing_bundle_url",
+            )
+        safe_bundle = _validated_bundle_url(bundle_url, accession, expected_archive_cik)
+        size = entry.get("byte_size")
+        return _Candidate(
+            entry_id,
+            safe_bundle,
+            "bundle_sequence",
+            sequence,
+            size if isinstance(size, int) and not isinstance(size, bool) else None,
+        )
     urls: list[str] = []
     for observed in (archive_url, href):
         if not observed:

@@ -7,12 +7,18 @@ contracts. S9 (`exact_form_with_lazy_index`) decides whether to fetch `-index.ht
 diagnoses the already-selected body against pinned S6 intent. The two contracts do not
 share scan results or dataclasses.
 
+**Runtime status:** This is a research/design record, not evidence that an S10 evaluator
+is enabled. The former engine evaluator package and `EvaluatorDecision` action SPI were
+removed; `REFETCH_SUB_DOC` and `SKIP_HARD_STUB` are not runtime actions. External EX-13
+research evidence may remain as provenance, but it does not authorize a refetch or
+classify a target at runtime.
+
 Initial form scope is 10-K, 10-Q, and 8-K under Item 601. Form 20-F remains a separate
 source authority but is disabled in the initial S10 scope.
 
 ---
 
-## S10 Assessment Contract (`edgar_sec/domain/forms/common/exhibits.py`)
+## Proposed S10 Assessment Contract
 
 To prevent a combinatorial explosion of form-specific diagnostic strings, the assessment model cleanly separates:
 1. **The Diagnostic Category (`diagnostic_code`):** A small, closed, stable enumeration.
@@ -69,10 +75,9 @@ diagnostic code.
 The repository already owns form taxonomies in
 [`edgar_sec/domain/forms/families/`](../../../../edgar_sec/domain/forms/families/README.md).
 Reuse those definitions as profile data instead of duplicating their item vocabulary.
-Primary-profile selection may reuse the existing
-[`FormPlugin` registry](../../../../edgar_sec/engine/forms/plugins/registry.py) and
-family taxonomy contracts, but activation requires an explicit assessment profile.
-Do not infer exhibit or primary-assessment activation from plugin-family membership.
+Primary-profile selection may use retained form-family taxonomy data, but no active
+evaluator registry exists. Assessment would require an explicit separately implemented
+profile; do not infer activation from plugin-family membership.
 
 - The annual taxonomy provides 10-K and 20-F item sets. Form 10-K is in the initial
   primary scope; Form 20-F is a separate exhibit-code authority until primary assessment
@@ -198,7 +203,7 @@ Audit these owners before adding new form-title or structural regexes:
 | Normalizer TOC scans | [`normalize.py`](../../../../edgar_sec/engine/forms/normalize.py) detects a TOC for cover boundary, then scans again after text normalization with derived taxonomy. The text frames and inputs differ. | Do not delete either scan by changing only the signature. D0 must map source/normalized coordinates and identify which final spans `NormalizationResult` can safely retain for S10. |
 | Cover checkmarks | `extract_cover_candidates(text, boundary, *, family, table_geometries=())` emits labeled `CheckboxCandidate`s, mark states, and character spans; `infer_cover_checkmarks(...)` resolves them. Normalization uses the result for rewriting, then drops it; rewrites/reflow can move offsets. | Reuse resolved checked-state evidence and source spans if preserved by the owner result. If multiple candidate cover schemas are needed, expand extraction to scan once and resolve the candidates in memory. A phrase without a reliably selected mark is only weak suspicion; do not rescan rewritten text. |
 | Form-title data | Annual, quarterly, and current title tuples exist in `domain/forms/families/*/evidence.py`, but production code does not consume them. `domain/forms/common/vocabulary.py` recognizes broad `FORM`/`SCHEDULE` tokens, not a canonical mismatch. | Reuse reviewed vocabulary as data, not as an existing classifier. `foundation/text/automaton.py` and `foundation/text/evidence.py` can share lexical scans; their positions are token-based and need explicit mapping to source spans. |
-| Existing evaluators | The annual evaluator checks EX-13 delegation/stub cues; quarterly and current evaluators currently proceed. `body_start.find_body_start` returns structural/semantic candidates, not canonical form identity. | Do not route primary-form classification through these evaluators. Reuse only narrow evidence/model components whose semantics match. |
+| Historical evaluator notes | External EX-13 delegation/stub evidence and `body_start.find_body_start` candidate behavior are research context, not an active evaluator SPI. | Keep any EX-13 source material as external evidence only; do not reintroduce evaluator-driven actions or claim runtime classification. |
 
 Cheap competing-form cues can precede TOC/profile scoring. Local templates expose an
 annual-versus-transition choice on Form 10-K (`uploads/10-k.md:152-162`), a quarterly
@@ -217,19 +222,13 @@ needed for suspicion, then return mark state and source span once. Keep the norm
 pre-rewrite and post-rewrite scans distinct until equivalence across their text frames is
 proven; source offsets may require a rewrite map before S10 can reuse them.
 
-The legacy inversion predicate is narrower than “link analysis.”
-[`document_storage/candidates.py`](../../../../edgar_sec/pipelines/document_storage/candidates.py)
-uses a validated filing date in `[2000-01-01, 2005-01-01)`, an Item 601-style filename
-grammar, and a form-token pattern to nominate bundle inspection; missing or conflicting
-dates fail closed rather than using the accession year. The legacy resolver then scans
-SGML `<TYPE>` headers and sequence numbers; it does not classify prose or analyze a
-hyperlink graph. The pure date/name predicate may be evaluated as a low-confidence S9
-lazy-index suspicion signal for eligible catalog-direct locators, never as a form identity
-or slot selector. Its bounds and fail-closed behavior have mirrored tests in
-`tests/pipelines/document_storage/test_candidates.py`; measure its false-positive/request
-cost by form and era before adopting it. Historical large-corpus claims are not
-established by the unit fixture. Do not import the legacy pipeline into S9/S10 or port its
-bundle-selection behavior.
+The legacy date/name inversion predicate and resolver are retired with
+`document_storage`; they are not current S9 rules. Do not use them as a lazy-index signal
+or alter the user-supplied exact-path primary stub policy: only `/0000.txt`, `/0000.htm`,
+`/0001.txt`, and `/0001.htm` at the accession root qualify, independent of form/date.
+S9's catalog-direct lazy-index behavior follows only the explicitly pinned selector
+contract and its response-screen evidence. Historical fixtures do not broaden the
+exact-path rule.
 
  One-pass is a semantic contract, not just a wider return annotation: discover structural
 and lexical candidates for a given text frame once, retain stable source spans, and score
@@ -301,6 +300,7 @@ gated separately.
 Keep filing-form assessment separate from exhibit identity and from evidence text:
 
 ```text
+# Historical proposed domain contract; not current runtime.
 edgar_sec/domain/forms/
   common/exhibits.py                  shared immutable assessment/pack contracts
   exhibits/
@@ -314,8 +314,8 @@ edgar_sec/domain/forms/
       ex1_item601.py                   collision-qualified pack when meanings diverge
       ex1_form20f.py                   distinct pack only when the clash needs one
 edgar_sec/engine/forms/plugins/
-  exhibit_selection.py               bounded probe, context routing, selected-pack scoring
-  evaluators/content_role.py          overall primary/form/exhibit/schedule decision tree
+  exhibit_selection.py               retained bounded header probe only
+  # The former evaluators/ package and role-decision modules are retired.
 ```
 
 Keep the engine and pack contract form-agnostic. `ExhibitIdentity` is exactly the
@@ -558,13 +558,10 @@ entire primary body for exhibit references.
 
 ### Engine and S10 seams
 
-- `engine/forms/plugins/exhibit_selection.py` performs bounded header probing, code
-  resolution, profile routing, candidate selection, signal collection, vetoes, and
-   the `matched_evidence_tier` and `confidence_band` explanation. It does not fetch a
-   selected subdocument.
-- `engine/forms/plugins/evaluators/content_role.py` keeps the overall primary-form,
-  alternate-form, exhibit, and schedule decision tree. It consumes existing form item
-  taxonomies and `TocSpan`; the exhibit matcher remains separately testable.
+- The surviving `engine/forms/plugins/exhibit_selection.py` is a bounded header probe,
+  not a role classifier, selected-pack evaluator, or acquisition action owner.
+- The former `engine/forms/plugins/evaluators/content_role.py` and evaluator package
+  are retired. This plan does not define current runtime behavior.
 - `pipelines/document_acquisition/processing.py` may attach the immutable assessment to
   `ProcessingResult` for eligible text/HTML only. It does not change target identity,
   route, profile, acquisition, retry, or normalization behavior. The fingerprint pins
@@ -634,9 +631,9 @@ starting M9 publication.
 
 | Milestone | Deliverables / files | Depends on | Can run in parallel? | Exit condition | Status |
 |---|---|---|---|---|---|
-| **D0 — Reuse audit and contract freeze** | Map reusable TOC candidate/boundary, cover/checkmark, title-vocabulary, and legacy inversion APIs. Record which results/signatures must retain multiple spans, checked-choice evidence, and source offsets. Freeze a shared scan result consumed by separate S9 suspicion and S10 classification thresholds; then freeze request/result, pack/profile, coverage, and `source_refs` contracts. Contracts reside in `edgar_sec/domain/forms/common/exhibits.py`. | User approval of this design. | No; this is the contract gate. | Exact reuse/extension decisions, text-coordinate frames, and one input/output shape are documented; S9 cannot assert type and S10 cannot trigger a request. | [x] |
+| **D0 — Reuse audit and contract freeze** | Map reusable TOC candidate/boundary, cover/checkmark, title-vocabulary, and legacy inversion APIs. Record which results/signatures must retain multiple spans, checked-choice evidence, and source offsets. Freeze a shared scan result consumed by separate S9 suspicion and S10 classification thresholds; then freeze request/result, pack/profile, coverage, and `source_refs` contracts in this design record. No active domain assessment contract is implemented. | Historical design milestone. | No; this is the contract gate. | Exact reuse/extension decisions, text-coordinate frames, and one input/output shape are documented; S9 cannot assert type and S10 cannot trigger a request. | Historical `[x]` |
 | **D1 — Build domain scaffolding** | `domain/forms/exhibits/{coverage.py,registry.py,profiles.py}` and package READMEs. Add source rows, disabled candidate records, indexed lookup and profile schemas; no exhibit heuristics required. | D0. | Parallel with D2 and D3 after contract freeze. | Complete known-code ledger is representable; no inactive/unsupported row resolves to an active pack. | [x] |
-| **D2 — Build generic evaluator shell** | `engine/forms/plugins/exhibit_selection.py`, `engine/forms/plugins/evaluators/content_role.py`, mirrored tests. Implement injected profile lookup, shared candidate extraction, indexed cover/title/TOC evidence, optional standalone-title rules, shields, thresholds, and abstention. Use synthetic packs where local rules are not yet researched. | D0; can use empty D1 registries while those are populated. | Parallel with D1 and source research D3. | No form-specific branch or per-profile whole-text rescan; alternate profiles reuse candidate spans; synthetic collision and tier tests pass. | [x] |
+| **D2 — Generic evaluator shell (retired)** | The former engine evaluator package and its action SPI are removed. The previous `engine/forms/plugins/evaluators/content_role.py` proposal and mirrored tests are not current paths; do not restore them. | Historical D0. | Retired. | No current S10 role evaluator is implied by this design record. | Retired (historical `[x]`) |
 | **D3 — Review source evidence in bounded batches** | Analyzed `uploads/research/exhibits-classification.md`, `exhibits-followup.md`, `exhibit-collision.md` for Tier 1-3 anchors, tokens, veto signals, and form-generic constraints. | D0's row schema. | Yes; A–J are independent. No one reviewer owns the entire exhibit inventory. | Each Item 601 / source-specific code has a disposition; broad or uncertain types remain explicit gaps. | [x] |
 | **D4 — Add reviewed pack modules incrementally** | Implemented 36 pack modules under `domain/forms/exhibits/packs/` (9 Tier 1, 15 Tier 2, 12 Tier 3) with `ExhibitPack` contracts, `mirror tests (`test_tier1_packs.py`, `test_tier2_packs.py`, `test_tier3_packs.py`), and registry wiring in `domain/forms/exhibits/registry.py`. Only store reviewed signals, tiers, and citations; do not add an unreviewed code to the active registry. | D0 and the corresponding D3 batch result; D1 package scaffolding. | Yes across disjoint batches/modules after D0. | Each active pack has a unique `pack_id`, source-qualified mapping, tests, and `evaluator_quality` no higher than evidence supports. | [x] |
 | **D5 — Reconcile ownership and registry** | Registry wired with authority-qualified lookup: `_PACK_BY_CODE` uses `(authority_id, code)` tuples. 47 active packs: 35 Item 601 + 12 Form 20-F mappings. Full duplicate/owner audit against existing vocabulary modules pending. | D3 findings and D4 candidate modules. | No; reconciliation is a serial integration gate after parallel returns. | No unresolved duplicate signal has two owners; same-number/different-meaning identities remain distinct. | [x] |
@@ -665,9 +662,8 @@ research because their contracts do not encode exhibit-specific conclusions:
 - `exhibits/registry.py` and `profiles.py`: generic source-qualified lookup and empty or
   disabled profiles. Adding an entry does not activate it until its `CoverageStatus` and
   evidence gate permit it.
-- `engine/forms/plugins/exhibit_selection.py`: bounded parsing/routing against injected
-  profiles and packs. With no applicable profile, return no assessment; with a profile
-  but no supported evidence, return `insufficient_evidence`.
+- The surviving exhibit-selection module remains a bounded probe only; implementing
+  profile routing or an assessment requires a new approved design and runtime contract.
 - Synthetic contract/routing tests. Later pack tests add real local fixtures without
   changing the public result shape.
 
@@ -706,8 +702,8 @@ also does not block the initial profile set.
    per-form/per-code false-positive and false-negative counts before even shadow review.
 6. **S10 integration:** verify assessment metadata is diagnostic-only and fingerprinted;
    verify normalization, S6 targets, and S9 work state are unchanged.
-7. **Focused quality gate after approval:**
-   `.venv/bin/python check.py tests/domain/forms tests/engine/forms/plugins/evaluators tests/pipelines/document_acquisition`
+7. The former evaluator-test path has been removed. This historical gate is not runnable
+   as written; any future approved runtime design must define its own mirrored tests.
 
 Do not implement these tests or code until the user approves this design. Do not run
 `check.py` for this planning-only change.

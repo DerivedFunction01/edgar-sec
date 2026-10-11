@@ -94,15 +94,7 @@ def test_sha256_text_is_the_only_public_definition() -> None:
     assert not hasattr(memory, "sha256_text")
 
 
-def test_occurrence_id_matches_materialization_sql() -> None:
-    """Both spellings must produce the same digest, or a locator-to-occurrence join
-    between the catalog and a snapshot matches nothing and fails silently.
-    """
-    from edgar_sec.domain.document.models import (
-        derive_document_locator_key,
-        derive_occurrence_id,
-    )
-
+def test_catalog_identity_hashes_match_materialization_sql() -> None:
     documents = [
         ("0000320193", "0000320193-23-000106", "aapl-20230930.htm"),
         ("0000320193", "000032019323000106", "aapl-20230930.htm"),
@@ -125,50 +117,25 @@ def test_occurrence_id_matches_materialization_sql() -> None:
             ).fetchone()
             occurrence_sql, locator_sql = row
 
-            assert derive_occurrence_id(cik, accession, path) == occurrence_sql, (
-                f"occurrence_id diverged from SQL for {cik}:{accession}:{path}"
-            )
-            assert derive_document_locator_key(accession, path) == locator_sql, (
-                f"locator key diverged from SQL for {accession}:{path}"
-            )
+            normalized_accession = accession.replace("-", "")
+            assert sha256_text(f"{cik}:{normalized_accession}:{path}") == occurrence_sql
+            assert sha256_text(f"{normalized_accession}:{path}") == locator_sql
 
 
 def test_both_accession_spellings_hash_to_one_identity() -> None:
-    """Deriving both spellings separately hid this: the cross-boundary test feeds
-    one string to both languages and never exercised the runtime pairing.
-    """
-    from edgar_sec.domain.document.models import (
-        DocumentLocator,
-        derive_document_locator_key,
-        derive_occurrence_id,
-    )
-
     path = "aapl-20230930.htm"
     hyphenated, unhyphenated = "0000320193-23-000106", "000032019323000106"
+    normalized = hyphenated.replace("-", "")
 
-    assert derive_document_locator_key(hyphenated, path) == (
-        derive_document_locator_key(unhyphenated, path)
-    )
-    assert derive_occurrence_id("320193", hyphenated, path) == (
-        derive_occurrence_id("320193", unhyphenated, path)
-    )
-    assert (
-        DocumentLocator.from_parts(hyphenated, path).document_locator_key
-        == DocumentLocator.from_parts(unhyphenated, path).document_locator_key
+    assert sha256_text(f"{normalized}:{path}") == sha256_text(f"{unhyphenated}:{path}")
+    assert sha256_text(f"320193:{normalized}:{path}") == sha256_text(
+        f"320193:{unhyphenated}:{path}"
     )
 
 
 def test_occurrence_id_is_hash_of_parts_not_of_locator_key() -> None:
-    """Reintroducing the hash-of-hash form fails this even when the SQL column is
-    absent from the fixture.
-    """
-    from edgar_sec.domain.document.models import (
-        derive_document_locator_key,
-        derive_occurrence_id,
-    )
-
     cik, accession, path = "0000320193", "0000320193-23-000106", "aapl.htm"
-    locator_key = derive_document_locator_key(accession, path)
-    assert derive_occurrence_id(cik, accession, path) != sha256_text(
-        f"{cik}:{locator_key}"
-    )
+    normalized = accession.replace("-", "")
+    occurrence_id = sha256_text(f"{cik}:{normalized}:{path}")
+    locator_key = sha256_text(f"{normalized}:{path}")
+    assert occurrence_id != sha256_text(f"{cik}:{locator_key}")

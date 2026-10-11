@@ -5,12 +5,9 @@ Covers the extraction and malformed-input paths the pipeline reaches.
 
 from __future__ import annotations
 
-from edgar_sec.domain.document.route import DocumentRoute
-
 from edgar_sec.engine.document.unpacking.unpacker import (
     SgmlSubDocument,
     extract_target_sub_document,
-    extract_target_sub_document_selection,
     find_sub_document,
     has_sgml_documents,
     resolve_target_sub_document,
@@ -175,96 +172,6 @@ def test_extract_target_sub_document_skips_binary_first_document() -> None:
     )
     payload = extract_target_sub_document(raw, target_types=("10-K",))
     assert payload == b"real"
-
-
-# --- header-only selection -------------------------------------------------
-
-
-def test_selection_reports_the_selected_payload() -> None:
-    selection = extract_target_sub_document_selection(
-        SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
-    )
-    assert selection is not None
-    assert b"Annual Report" in selection.payload
-    assert b"Subsidiary list." not in selection.payload
-
-
-def test_selection_reports_every_header_in_envelope_order() -> None:
-    selection = extract_target_sub_document_selection(
-        SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
-    )
-    assert selection is not None
-    assert [doc.document_path for doc in selection.documents] == [
-        "form10k.htm",
-        "ex21.txt",
-        "image.jpg",
-    ]
-    assert selection.selected_index == 0
-
-
-def test_selection_records_the_selected_header() -> None:
-    selection = extract_target_sub_document_selection(
-        SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
-    )
-    assert selection is not None
-    selected = selection.documents[selection.selected_index]
-    assert selected.doc_type == "10-K"
-    assert selected.document_path == "form10k.htm"
-    assert selected.sequence == 1
-    assert selected.description == "ANNUAL REPORT"
-
-
-def test_selection_records_sibling_descriptions() -> None:
-    selection = extract_target_sub_document_selection(
-        SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
-    )
-    assert selection is not None
-    assert selection.documents[1].description == "SUBSIDIARIES"
-
-
-def test_selection_routes_each_header_from_its_own_filename() -> None:
-    selection = extract_target_sub_document_selection(
-        SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
-    )
-    assert selection is not None
-    assert [doc.content_route for doc in selection.documents] == [
-        DocumentRoute.MARKUP,
-        DocumentRoute.TEXT,
-        DocumentRoute.BINARY,
-    ]
-
-
-def test_selection_does_not_materialize_sibling_bodies() -> None:
-    """Sibling headers carry no bytes, so one document never loads a whole submission."""
-    selection = extract_target_sub_document_selection(
-        SAMPLE_SGML.encode("utf-8"), target_types=["10-K"]
-    )
-    assert selection is not None
-    assert not hasattr(selection.documents[1], "payload")
-    assert b"Subsidiary list." not in selection.payload
-    assert b"binarygarbage" not in selection.payload
-
-
-def test_selection_agrees_with_payload_only_extraction() -> None:
-    raw = SAMPLE_SGML.encode("utf-8")
-    selection = extract_target_sub_document_selection(raw, target_types=["10-K"])
-    assert selection is not None
-    assert selection.payload == extract_target_sub_document(raw, target_types=["10-K"])
-
-
-def test_selection_returns_none_without_a_document() -> None:
-    assert extract_target_sub_document_selection(b"") is None
-    assert extract_target_sub_document_selection(b"no envelope") is None
-
-
-def test_selection_records_missing_headers_as_absent() -> None:
-    bare = b"<DOCUMENT><TYPE>10-K<FILENAME>a.htm<TEXT>body</TEXT></DOCUMENT>"
-    selection = extract_target_sub_document_selection(bare)
-    assert selection is not None
-    assert selection.selected_index == 0
-    assert selection.documents[0].sequence is None
-    assert selection.documents[0].description is None
-    assert len(selection.documents) == 1
 
 
 def test_sgml_sub_document_is_frozen() -> None:

@@ -46,15 +46,17 @@ pure computation: no disk I/O, no network, no ambient state.
   unrecognised entry shapes and flags them rather than dropping them.
 - **List-length mismatches never truncate.** `zip_listings` keeps the longer side and nulls the
   missing entries, recording `listings_length_mismatch`.
-- **Archive URLs carry their own fallback reason.** `build_archive_url` returns
-  `(url, fallback_reason)`; a null document produces `("primary_document_missing")` rather than a
-  fabricated path, and a `.txt` or `0001.htm` primary document yields a reason prefixed
-  `primary_document_stub:`.
+- **Placeholder primary URLs match the index href.** `build_archive_url` recognizes only the exact
+  four placeholder names, accession-qualifies their URL filename, and records a
+  `primary_document_stub:` reason. Other `.txt` names, including complete-submission filenames,
+  are not classified as placeholders.
+- **Secondary links are index evidence.** This package derives only the primary URL from submission
+  metadata; exhibit and other child links come from the index page.
 - **Historical file records carry a derived `url` that is not a schema field.**
   `normalize_submission_files` returns it; `normalize_submissions` projects only the four
   schema-declared file fields when building the row.
-- **Layer discipline.** Imports are `domain.sec_urls`, `domain.submissions.schemas` and
-  `foundation.serialization`, plus sibling relative imports. No `pipelines`, no `infra`.
+- **Layer discipline.** Imports are from `domain` and `foundation`, plus sibling relative imports.
+  No `pipelines`, no `infra`.
 
 ## Command surface
 

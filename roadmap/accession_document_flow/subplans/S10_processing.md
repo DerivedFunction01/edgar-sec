@@ -3,9 +3,10 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S10**.
-- Status: the operation-aware S10 result contract is design-only. The legacy
-  `normalize_document` path remains available for diagnostics/review, but it is not a
-  `render_to_txt` or `render_to_xml` handler. Exhibit-role assessment remains provisional.
+- Status: the operation-aware S10 result contract is design-only. The retired
+  `document_storage.FilingProcessor` is not a current runtime owner. The surviving
+  normalizer is not a `render_to_txt` or `render_to_xml` handler. Exhibit-role
+  assessment remains provisional.
 - Depends on: S9 staged selected-body and fixture replay contracts; S7 review artifacts.
 - S11 publication consumes S10 outputs after the fixture-driven S9/S10 gate; see the
   [acquisition lifecycle plan](document_acquisition/lifecycle.md).
@@ -16,8 +17,8 @@
 
 ## Current tracked-code audit (2026-10-10)
 
-- **Status: the M2E no-stage-trace normalizer option is implemented, but the S10 transient processing contract is not.** Legacy `FilingProcessor` normalizes acquired bytes and exposes a fingerprint, while its result still carries payload bytes for legacy persistence. No `process_target` result or managed review-staging API is present.
-- **Evidence:** [`document_storage/processor.py`](../../../edgar_sec/pipelines/document_storage/processor.py) returns `ProcessedDocument.payload`; [`engine/forms/normalize.py`](../../../edgar_sec/engine/forms/normalize.py) now supports `capture_stage_trace=False`; [`test_processor.py`](../../../tests/pipelines/document_storage/test_processor.py) covers legacy routes and fingerprint behavior.
+- **Status: the no-stage-trace normalizer option is implemented, but the S10 transient processing contract is not.** The former `FilingProcessor` runtime and evaluator execution SPI are retired; no `process_target` result or managed review-staging API is present. `REFETCH_SUB_DOC` is not a supported runtime action.
+- **Evidence:** [`engine/forms/normalize.py`](../../../edgar_sec/engine/forms/normalize.py) supports `capture_stage_trace=False`; its mirrored engine tests cover the surviving normalization contract.
 - **Next step:** implement M6 against S9 staged-body and receipt contracts, then test route outcomes, XML refusal/validation, stable fingerprints, and metadata-only results. Review staging, memory admission, and exhibit-rule activation must retain their separate ownership and evidence gates.
 
 ## Objective
@@ -292,9 +293,9 @@ extractor rather than a whole-envelope normalizer.
 
 ## Layer and migration boundary
 
-S10 may depend on `domain.document.route`, the registered export handlers, optional
-`pipelines.document_storage`. `engine.submissions` maps submissions JSON to metadata and
-is not reused for body rendering.
+S10 may depend on `domain.document.route` and the registered export handlers. The
+`document_storage` runtime is retired. `engine.submissions` maps submissions JSON to
+metadata and is not reused for body rendering.
 
 Intermediate DOM/AST/text structures used by renderers or diagnostics stay inside the
 processing worker. Diagnostic `NormalizationResult.stage_trace` is never materialized.

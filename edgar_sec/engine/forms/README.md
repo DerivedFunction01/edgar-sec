@@ -41,9 +41,9 @@ handling, and representation-specific reflow.
 ## Deliberate gaps
 
 - **No page-artifact metadata is included in `NormalizationResult`.**
-- **Evaluators receive text only.** The optional evaluator context is not supplied;
-  see `plugins/README.md`.
+- **No runtime evaluator dispatch.** Normalization composes cover profiles and
+  returns representation results; exhibit-header probing is a separate helper.
 - **HTML payloads do not use ASCII reflow.**
 - **Most form families are unmodelled.** Cover profiles exist for six families; every
-  other form resolves to `GENERIC` with the generic plugin, so a family with real
-  cover structure gets no cover-aware handling until it is modelled.
+  other form resolves to `GENERIC`, so a family with real cover structure gets no
+  cover-aware handling until it is modelled.

@@ -31,7 +31,14 @@
 
 ## Objective
 
-Acquire only executable targets from immutable target plans, retain source provenance, select legacy bundle bodies by exact sequence, and make representative acquisition evidence replayable without network access. The intended contract allows a catalog-direct primary to resolve to a different physical slot only when the pinned selector explicitly authorizes lazy index recovery. Under that selector, a primary bundle's extracted SGML `<TYPE>` must match the pinned form; mismatch/unverifiable type triggers recovery. Other selectors do not screen the submitted primary. Durable slot/payload/type relations remain gated by S11. S9 does not import `pipelines.document_storage`.
+Acquire only executable targets from immutable target plans and retain source provenance. S9 executes the S6-selected source and exact observed sequence; it does not compare advertised sizes, group target requests into one bundle fetch, or switch an ordinary failed direct request to the bundle. The catalog-direct lazy-index behavior remains a distinct, explicitly pinned selector contract, not ordinary direct-failure fallback. Durable slot/payload/type relations remain gated by S11. S9 does not import `pipelines.document_storage`.
+
+The user-supplied stub policy is limited to exact accession-root primary paths
+`/0000.txt`, `/0000.htm`, `/0001.txt`, and `/0001.htm`, independent of form/date. S6
+routes those targets only when it pins the accession bundle URL and observed positive
+sequence; catalog-only targets without sequence evidence remain unresolved. Nested
+paths and arbitrary suffix matches are excluded, as are complete-submission accession
+`.txt` filenames. S9 follows the pinned S6 target and does not classify paths itself.
 
 ## Target and result boundary
 
@@ -44,6 +51,11 @@ plan. `source_origin` selects a resolver, not a separate downstream data shape:
 - `inventory_index` direct targets fetch their observed URL.
 - `inventory_index` bundle targets use the accession bundle URL in `target_url` and require the observed sequence; S9 does not reopen the inventory snapshot.
 - `catalog_direct` targets fetch the direct URL emitted by the S6 catalog adapter. They do not create or require a synthetic S5 inventory entry. Their `catalog_direct_selection` is carried into the work order and controls only the post-fetch screen/recovery behavior.
+
+Each target is acquired independently. `byte_size` for an indexed child describes that
+child; the advertised size of the full-submission bundle and S1's reported catalog size
+are separate observations. None is a selector or a basis for changing the pinned S6
+retrieval mode.
 
 The S6 `request_id` consumed below is derived by the planner from the profile's
 canonical `(role, type)` pair; profile authors do not maintain an ID mapping.
@@ -123,7 +135,7 @@ storage internals. S9 does not normalize bodies or publish a durable payload sna
 - Primary bundle `<TYPE>` mismatch/unverifiable paths recover only under the exact-form catalog-direct selector; the recovered bundle must pass the strict ASCII comparison, while other selectors leave the submitted primary unchanged without mismatch-triggered index traffic.
 - Direct-target and bundle HTTP 404 responses are `failed` with `http_not_found`; only a successfully parsed full bundle without the requested sequence is `not_filed`.
 - Fixture create/capture/list/replay CLI and operator actions are wired. Capture is supported for acquired direct responses and bodyless failures; listing streams metadata without reading body BLOBs; replay verifies response bytes and writes only to a new explicit output path without HTTP. Bundle/lazy capture remains explicitly refused until source-response retention is implemented.
-- No S9 module imports `pipelines.document_storage`; the pipeline's removal is a separate post-S12 milestone after S11 payload-store implementation, parity, and consumer/artifact migration.
+- No S9 module imports `pipelines.document_storage`; the legacy runtime package and tests are retired. Durable payload storage remains a separate S11 design and implementation gate.
 
 ## Verification
 

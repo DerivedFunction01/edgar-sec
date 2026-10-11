@@ -20,8 +20,8 @@ own the domain vocabulary or schemas it consumes (that is `edgar_sec/domain`).
 - **document/**: input preparation, SGML unpacking, HTML cleaning/projection, page markers, signatures, whitespace
 - **tables/**: table masking, HTML→ASCII rendering with geometry, false-table rejection
 - **reflow/**: conservative ASCII reflow, untagged-table tagging, line-coordinate mapping
-- **forms/**: stage order, result record, cover decision chain, family SPI and evaluators
-- **forms/plugins/**: the `FormPlugin` SPI and registry
+- **forms/**: stage order, result record, cover decision chain, family profiles
+- **forms/plugins/**: bounded exhibit-header probe
 - **selection/**: Phase 2 target-plan selection: features, policy, selector, source
 - **company_family/**: name normalization and universe-scale family assignment
 - **submissions/**: submission unrolling, profiling, building
@@ -54,8 +54,7 @@ Each package's README carries its deliberate gaps.
   forwarding functions. Every relocation in this layer updated its call sites in the same
   change.
 - **The layer root is not the entry point.** There is no `normalize_document` here; the
-  single functional entry point is `normalize_document` in `edgar_sec/engine/forms/normalize.py`,
-  called by the document-storage pipeline.
+  transformation entry point is in `edgar_sec/engine/forms/normalize.py`.
 
 ## Deliberate gaps
 

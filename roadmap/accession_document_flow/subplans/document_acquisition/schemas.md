@@ -39,6 +39,21 @@ are not accepted as integer sequences or sizes. An executable bundle sequence mu
 be positive. The observed response/selected-body size is authoritative over S6's
 advisory `byte_size`.
 
+Size columns retain their source and grain: an index entry's child `byte_size` is not
+the full-submission `bundle_size`, and neither is interchangeable with S1's reported
+catalog size. S9 does not compare them to select a transport mode. The S6-selected
+direct or bundle mode remains pinned; size-aware selection is deferred.
+
+## Retrieval boundary
+
+An executable work target is acquired according to its pinned S6 mode and positive
+observed sequence, when applicable. S9 does not combine targets into a shared bundle
+request or switch an ordinary failed direct request to bundle retrieval. S6's
+user-supplied stub policy applies only to exact accession-root primary paths
+`/0000.txt`, `/0000.htm`, `/0001.txt`, and `/0001.htm`, independent of form/date; it
+requires the pinned bundle URL and positive observed sequence. Nested paths do not
+match, and catalog-only stub targets without sequence evidence remain unresolved.
+
 The run manifest's source-pin relationship must agree with every row: a null
 inventory snapshot pin is valid only when all rows are `catalog_direct` primary
 targets; a non-null inventory pin requires `source_origin="inventory_index"` for all
@@ -65,10 +80,15 @@ The v2 relation set is `work_targets`, `work_operations`, `work_source_requests`
 `work_order/{relation}/part-*.parquet`; the manifest pins every relation schema and
 each part's relative path, row count, byte size, and SHA-256. `work_chunks` pins target
 count and chunk digest; chunk ID is also carried by each executable target. Chunk
-membership is formed from sorted target IDs using the pinned `runtime.chunk_size`. A
-target and all its operation/source rows form one indivisible work unit. Parts use
+membership is formed from sorted target IDs using the pinned `runtime.chunk_size`. Each
+target and its operation/source rows form one work unit; this does not group bundle
+downloads across targets. Parts use
 bounded shared Parquet row groups. S9 copies and validates S6 source requests against
 the target's `target_url` and `retrieval_mode`.
+
+The v2 reuse-candidate relation is not a cross-target transport optimizer. Any reuse is
+scoped to the same logical target and pinned source; it cannot combine targets or share
+a complete-submission bundle response between them.
 
 Each assigned chunk returns v1 Parquet result relations `target_outcomes`,
 `acquisition_attempts`, and `target_slot_resolutions`, plus receipt-listed body files.

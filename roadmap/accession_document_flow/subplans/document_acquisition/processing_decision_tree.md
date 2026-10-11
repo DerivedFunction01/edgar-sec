@@ -16,7 +16,11 @@ logical document; they are not duplicate document targets.
 - **Document planning** pins an explicit operation set or requests the default operation
   priority. It does not read document bodies or make network requests.
 - **S9 acquisition** fetches each distinct source input required by the planned
-  operations. Multiple operations that consume the same source bytes share one fetch.
+  operations. Multiple operations on one target that consume the same source bytes share
+  one fetch.
+  This proposal does not select direct versus bundle retrieval by size, group targets
+  into a bundle request, or add ordinary direct-failure fallback; transport follows the
+  pinned S6 target mode.
 - **S10 processing** produces the requested supported output representations and records
   each operation outcome. It cannot fetch an unplanned URL or change the selected S6
   target.
@@ -24,8 +28,8 @@ logical document; they are not duplicate document targets.
   primary `edgar.htm` input and produces XML; it does not fetch a `.xml` sibling or perform
   semantic XML/XBRL parsing. Flat XML remains raw input for a separate form-specific
   pipeline.
-- **The old `document_storage.FilingProcessor` is frozen legacy.** Reuse its lessons, not
-  its selection behavior or module.
+- **The old `document_storage.FilingProcessor` is retired.** Historical lessons do not
+  make it a current runtime owner or authorize restoring its selection behavior.
 
 The profile operation policy and the family/file-route capability registry are distinct.
 The policy says what outputs are wanted; the registry says which operation implementation

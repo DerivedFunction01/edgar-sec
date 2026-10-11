@@ -2,10 +2,9 @@
 
 ## Status and purpose
 
-This is a source/test audit of the old behavior, not a porting specification. S10's
-replacement is specified in [S10 processing](S10_processing.md). The legacy package
-remains available until migration acceptance; this trace records what its normal path
-actually did and what it failed to preserve.
+This is a historical source/test audit, not a porting specification. The legacy
+runtime package and mirrored tests have been removed; this trace preserves the audited
+behavior separately from current S10 contracts in [S10 processing](S10_processing.md).
 
 ## Execution paths
 
@@ -29,40 +28,38 @@ flowchart TD
     SECOND --> MERGE
 ```
 
-1. [`run.py`](../../../run.py) dispatches `documents` to
-   [`document_storage.cli`](../../../edgar_sec/pipelines/document_storage/cli.py).
+1. The former `run.py` `documents` command dispatched to `document_storage.cli`.
    `_cmd_run` accepts `--catalog-plan` or a hand-authored JSON `chunks` plan. Both
    call `operator.run_document_storage` with `mode="fixture"`; the catalog plan is
    passed as both the work order and catalog plan. `_cmd_fill` is a separate operation
    that calls `fixture_operator.fill_fixture` and uses live fetching to populate a
    fixture.
-2. [`operator.run_document_storage`](../../../edgar_sec/pipelines/document_storage/operator.py)
+2. `operator.run_document_storage`
    validates the run/catalog-fixture lineage, creates a fetcher and transient chunks
    directory, and calls `execution.process_catalog_chunks`, `process_chunk_stream`, or
    `process_chunks` according to its input.
-3. [`execution.process_chunk`](../../../edgar_sec/pipelines/document_storage/execution.py)
-   deduplicates document locators, expands catalog occurrences through
-   [`occurrences._expand_occurrences`](../../../edgar_sec/pipelines/document_storage/occurrences.py),
+3. `execution.process_chunk`
+    deduplicates document locators, expands catalog occurrences through
+    `occurrences._expand_occurrences`,
    and processes the resulting work items. A locator without a catalog occurrence gets
    a synthetic occurrence row.
-4. Ordinary work enters
-   [`processing._process_locator`](../../../edgar_sec/pipelines/document_storage/processing.py):
+4. Ordinary work enters `processing._process_locator`:
    `fetcher.fetch(locator)` → `FilingProcessor.process(...)` → a checkpoint batch.
    Bundle candidates instead enter
-   [`candidate_recovery.run_candidate_recovery`](../../../edgar_sec/pipelines/document_storage/candidate_recovery.py),
+   `candidate_recovery.run_candidate_recovery`,
    which fetches the accession bundle, resolves descriptors in
-   [`resolution.py`](../../../edgar_sec/pipelines/document_storage/resolution.py),
+   `resolution.py`,
    processes requested/recovered bodies or falls back to ordinary fetch, then emits
    outcome rows.
 5. The processor may add a delegated exhibit to a sidecar. After workers complete,
    `operator._publish_delegations` runs a second resolution/acquisition pass through
-   [`delegation.resolve_delegated_exhibit`](../../../edgar_sec/pipelines/document_storage/delegation.py).
-   [`merger.publish_snapshot`](../../../edgar_sec/pipelines/document_storage/merger.py)
+    `delegation.resolve_delegated_exhibit`.
+    `merger.publish_snapshot`
    writes the snapshot artifacts and then updates the publication pointer.
 
 ### Fetch and processing behavior
 
-- [`FixtureArchiveFetcher.fetch`](../../../edgar_sec/pipelines/document_storage/fetching.py)
+- `FixtureArchiveFetcher.fetch`
   searches locator-derived keys across fixtures and can fall back to the accession
   `<accession>.txt` submission bundle. The live fetcher has archive URL resolution and
   fallback behavior; acquisition records the requested locator separately from the
@@ -77,7 +74,7 @@ flowchart TD
   the descriptors do not hold every sibling payload. The fetcher tests pin this
   property with `test_envelope_records_every_header_in_envelope_order` and
   `test_envelope_records_carry_no_payload`.
-- [`FilingProcessor.process`](../../../edgar_sec/pipelines/document_storage/processor.py)
+- `FilingProcessor.process`
   routes from the effective selected body's `content_route`, not just the requested
   locator suffix. Binary bodies bypass text normalization. Other routes call
   `engine.forms.normalize.normalize_document(selected_payload, form=locator.form, ...)`.
@@ -106,17 +103,11 @@ flowchart TD
 
 ## Test evidence and confidence boundary
 
-The mirrored suite covers CLI/operator dispatch, fetch outcomes, route selection,
-fixture fill, candidate recovery, delegation, checkpoints, run fingerprints, and review
-artifacts. Relevant modules include:
-
-- [`test_operator_and_cli.py`](../../../tests/pipelines/document_storage/test_operator_and_cli.py)
-- [`test_worker.py`](../../../tests/pipelines/document_storage/test_worker.py)
-- [`test_fetching.py`](../../../tests/pipelines/document_storage/test_fetching.py)
-- [`test_processor.py`](../../../tests/pipelines/document_storage/test_processor.py)
-- [`test_delegation.py`](../../../tests/pipelines/document_storage/test_delegation.py)
-- [`test_catalog_run.py`](../../../tests/pipelines/document_storage/test_catalog_run.py)
-- [`test_fixture_operator.py`](../../../tests/pipelines/document_storage/test_fixture_operator.py)
+The removed mirrored suite covered CLI/operator dispatch, fetch outcomes, route
+selection, fixture fill, candidate recovery, delegation, checkpoints, run fingerprints,
+and review artifacts. Historical test names included `test_operator_and_cli.py`,
+`test_worker.py`, `test_fetching.py`, `test_processor.py`, `test_delegation.py`,
+`test_catalog_run.py`, and `test_fixture_operator.py`.
 
 Fixtures under `tests/fixtures/document_storage/` include synthetic normalization and
 SGML cases such as `html_bundle.sgm`, `missing_requested.sgm`,
