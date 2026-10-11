@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Mapping
 
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.pipelines.document_planning.discovery import (
@@ -59,7 +60,7 @@ def publish_plan_bundle(
     paths.plans_root.mkdir(parents=True, exist_ok=True)
     payload = dict(manifest)
     payload["plan_digest"] = canonical_hash(payload)
-    atomic_write_json(staging_root / "plan.json", payload)
+    atomic_write_json(staging_root / PLAN_FILE_NAME, payload)
     validate_staged_plan(plan_id, staging_root)
     existing = reuse_plan_if_identical(plan_id, identity, payload, paths)
     if existing is not None:

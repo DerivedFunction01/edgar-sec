@@ -15,6 +15,7 @@ from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import accession_hyphenated, validate_archive_url
 from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.serialization import canonical_hash
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
 )
@@ -91,7 +92,7 @@ def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 
 
 def _read_manifest(root: Path) -> dict[str, Any]:
-    path = root / "plan.json"
+    path = root / PLAN_FILE_NAME
     if (
         path.is_symlink()
         or not path.is_file()

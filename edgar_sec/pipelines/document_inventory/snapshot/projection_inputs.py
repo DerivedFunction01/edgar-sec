@@ -20,6 +20,7 @@ from edgar_sec.pipelines.document_inventory.cohort import CohortInputError
 from edgar_sec.pipelines.document_inventory.paths import (
     FORM_PARTITION_GLOB,
     FilingCatalogPaths,
+    LOCATOR_GROUPS_FILE,
     PLAN_TARGETS_DIR,
     REQUIRED_PLAN_FILES,
     SEED_FILERS_FILE,
@@ -134,7 +135,7 @@ def catalog_plan_parts(
             raise CohortInputError(
                 "invalid_bundle", detail=f"plan file escapes plan storage: {relative}"
             ) from exc
-    locator_path = root / "locator_groups.parquet"
+    locator_path = root / LOCATOR_GROUPS_FILE
     locator_sha256 = file_sha256(locator_path)
     try:
         locator_parquet = pq.ParquetFile(locator_path)
