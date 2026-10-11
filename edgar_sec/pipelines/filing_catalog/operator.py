@@ -58,6 +58,7 @@ def _namespace(
     scope: str = SCOPE_DETERMINISTIC,
     parent_plan: str = "",
     target_units: int = 0,
+    branch: str = "main",
 ) -> argparse.Namespace:
     """Build a namespace with every field the dispatched command reads.
     Every ``cmd_*`` dereferences each field; omitting one raises inside the wizard.
@@ -79,6 +80,7 @@ def _namespace(
         artifacts="",
         parent_plan=parent_plan,
         target_units=target_units,
+        branch=branch,
     )
 
 
