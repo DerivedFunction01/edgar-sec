@@ -71,7 +71,7 @@ by the respective pipeline package documentation:
 | **Filing Catalog** | Zero-network DuckDB filing catalog and target planning | [`pipelines/filing_catalog`](edgar_sec/pipelines/filing_catalog/README.md) |
 | **Document Inventory** | SEC index page review, projection, and catalog anti-join | [`pipelines/document_inventory`](edgar_sec/pipelines/document_inventory/README.md) |
 | **Document Planning** | Offline target-plan generation matching catalog and inventory evidence | [`pipelines/document_planning`](edgar_sec/pipelines/document_planning/README.md) |
-| **Document Storage** | Raw document acquisition, normalization, and fixture storage | [`pipelines/document_storage`](edgar_sec/pipelines/document_storage/README.md) |
+| **Document Acquisition** | Target projection, bounded SEC acquisition, and run-state management | [`pipelines/document_acquisition`](edgar_sec/pipelines/document_acquisition/README.md) |
 | **Dataset Viewer** | Operator browser and read-only DuckDB SQL console (Layer 5) | [`apps/viewer`](edgar_sec/apps/viewer/README.md) |
 
 ---
@@ -94,7 +94,7 @@ edgar_sec/               # each package has its own README.md (linked above)
 │                       #   document_inventory (streamed plan-to-work-order
 │                       #   projection, resumable S4, DAG-backed S5 publication/query),
 │                       #   document_planning (offline S6 target plans),
-│                       #   document_storage (Phase 2.5)
+│                       #   document_acquisition (S9 work-order projection and bounded acquisition)
 └── apps/               # Layer 5: the dataset viewer (read-only, no publishing)
 
 tests/                      # mirrors the edgar_sec/ package tree

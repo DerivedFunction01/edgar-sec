@@ -31,15 +31,8 @@ from edgar_sec.apps.viewer.paths import (
 )
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.pipelines.document_storage.manifests import (
-    PART_KIND_INDEX,
-    PART_KIND_PAYLOAD,
-    SnapshotReader,
-    resolved_parts,
-)
 from edgar_sec.foundation.runtime.paths import SNAPSHOTS_DIR, TRANSIENT_DIR
 from edgar_sec.pipelines.filing_catalog.paths import FilingCatalogPaths
-from edgar_sec.pipelines.document_storage.paths import DOCUMENTS_DATASET
 from edgar_sec.pipelines.metadata_sync.paths import (
     METADATA_DIR,
     MetadataPaths,
@@ -54,7 +47,6 @@ log = logging.getLogger("apps.viewer.loaders")
 __all__ = [
     "LOADERS",
     "DatasetLoader",
-    "load_document_storage",
     "load_filing_catalog",
     "load_metadata",
     "load_sqlite_databases",
@@ -62,7 +54,7 @@ __all__ = [
     "run_all",
 ]
 
-_TRANSIENT_DATASETS = (METADATA_DIR, "filing_catalog", "document_storage")
+_TRANSIENT_DATASETS = (METADATA_DIR, "filing_catalog")
 
 # Synthetic logical name for a multipart dataset spanning a directory; no such
 # file exists. The id names the dataset and ``source_paths`` carries the real parts.
@@ -254,51 +246,6 @@ def load_filing_catalog(root: Path) -> list[ArtifactSummary]:
     return found
 
 
-def load_document_storage(root: Path) -> list[ArtifactSummary]:
-    """Document snapshots, split by the kind of part they hold.
-
-    Index and payload are separate records; parts resolve through ``SnapshotReader``,
-    never by globbing, so an unfinished publication is reported, not partially shown.
-    """
-    snapshots_root = Path(root) / DOCUMENTS_DATASET / SNAPSHOTS_DIR
-    if not snapshots_root.is_dir():
-        return []
-    found: list[ArtifactSummary] = []
-    for entry in sorted(snapshots_root.iterdir()):
-        manifest_path = entry / "manifest.json"
-        if not manifest_path.is_file():
-            continue
-        snapshot_id = entry.name
-        try:
-            reader = SnapshotReader(
-                snapshots_root=snapshots_root, snapshot_id=snapshot_id
-            )
-            revision = manifest_revision(manifest_path)
-            run_id = str(reader.manifest.get("run_id") or "") or None
-            for kind, label in (
-                (PART_KIND_INDEX, "document_index"),
-                (PART_KIND_PAYLOAD, "document_payload"),
-            ):
-                parts = resolved_parts(reader.manifest, kind)
-                if not parts:
-                    continue
-                found.append(
-                    _summary(
-                        root,
-                        path=entry / kind,
-                        kind=label,
-                        phase="document_storage",
-                        run_id=run_id,
-                        revision=revision,
-                        source_paths=tuple(reader.part_path(part) for part in parts),
-                    )
-                )
-        except (DatasetError, ValueError, OSError) as exc:
-            log.warning("skipping document snapshot %s: %s", snapshot_id, exc)
-            continue
-    return found
-
-
 def load_transient_runs(root: Path) -> list[ArtifactSummary]:
     """Group unpublished chunk files into one browsable record per run.
 
@@ -417,7 +364,6 @@ def load_sqlite_databases(root: Path) -> list[ArtifactSummary]:
 LOADERS: tuple[DatasetLoader, ...] = (
     DatasetLoader("metadata", load_metadata),
     DatasetLoader("filing_catalog", load_filing_catalog),
-    DatasetLoader("document_storage", load_document_storage),
     DatasetLoader("sqlite", load_sqlite_databases),
     DatasetLoader("transient", load_transient_runs),
 )

@@ -34,9 +34,6 @@ the details below are the layer-level contracts only.
   validates S6 bundles and creates bounded work orders; [`fixture_store/`](document_acquisition/fixture_store/README.md)
   owns compressed response evidence and replay; [`run_state/`](document_acquisition/run_state/README.md)
   owns the per-run SQLite ledger and locks.
-- [`document_storage/`](document_storage/README.md) — Phase 2.5. Fetches primary
-  filings, unrolls SGML, normalizes, resolves delegated exhibits, and
-  consolidates per-run snapshots into one canonical snapshot across runs.
 - [`cohort/`](cohort/README.md) — Phase 0 cohort registry; manages shared cohort
   records and workspace expressions before metadata collection begins.
 
@@ -141,11 +138,11 @@ with no arguments shows the menu; `--list` prints the ids; `-h`/`--help` prints 
 docstring and the list; an unrecognized id prints an `Unknown pipeline` line naming
 the id and returns 1.
 
-Commands: `metadata`, `filing-catalog`, `documents`, `viewer`. Each entry points to its pipeline's operator module. Linked command surfaces in package READMEs are authoritative for subcommands, flags, and exit codes.
+    Commands: `metadata`, `filing-catalog`, `inventory`, `planning`, `acquisition`, `viewer`. Each entry points to its pipeline's operator module. Linked command surfaces in package READMEs are authoritative for subcommands, flags, and exit codes.
 
 Each pipeline's `operator.py` carries an
 `if __name__ == "__main__": sys.exit(main())` guard, as do `metadata_sync/cli.py`
-and `document_storage/cli.py`, which the `clean-exit` scanner permits for CLI
+and `document_inventory/cli.py`, which the `clean-exit` scanner permits for CLI
 entrypoints.
 
 Two obligations hold across the layer:
@@ -161,17 +158,14 @@ mechanics — chunk layout, checkpoint predicates, merge validation, staging and
 publication, plan-bundle completeness, and consolidation — are documented in the
 package READMEs. What belongs at the layer:
 
-- **Chunk workers exist only in `metadata_sync` and `document_storage`,** and the
+- **Chunk workers exist only in `metadata_sync`** and the
   two use different pool types for a stated reason: Phase 1's work is
   network-bound, so it runs on a thread pool with DuckDB confined to the
   coordinator, while Phase 2.5 normalizes a full filing document in memory, so it
   runs on a process pool.
 - **Completion is recorded in the data, not in a side ledger.**
   `metadata_sync` guarantees one row per requested CIK, including failures, so
-  completion is determinable from the published rows. `document_storage` publishes
-  per-run snapshots and then consolidates, deriving snapshot identity from the
-  chunks' own digests rather than from the merged Parquet file, which is not
-  byte-stable across writes.
+  completion is determinable from the published rows.
 
 ## Deliberate gaps
 
@@ -186,10 +180,7 @@ package READMEs. What belongs at the layer:
 - **No pipeline's menu asks for an artifacts root.** Launcher entries resolve the
   configured project root, and a non-default root is a per-command `--artifacts`
   flag. Only `filing_catalog` and `metadata_sync` expose that flag;
-  `document_storage` has none and is bound to the configured root. `viewer` is the
-  same at the CLI (`--artifacts`, optional) and is not interactive at all.
-- **Real-filing parity is unverified for Phase 2.5** — its committed goldens are
-  synthetic. See [`document_storage/README.md`](document_storage/README.md#deliberate-gaps).
+  `viewer` is the same at the CLI (`--artifacts`, optional) and is not interactive at all.
 - **No scheduling, no cross-pipeline coordination, and no provenance graph.**
   Each pipeline consumes the previous one's published artifact and nothing more.
   The lineage that exists is local: `parent_plan_id` in a child `plan.json`,

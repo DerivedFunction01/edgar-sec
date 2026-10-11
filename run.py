@@ -55,12 +55,6 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         module="edgar_sec.pipelines.document_acquisition.operator",
     ),
     LauncherEntry(
-        id="documents",
-        label="Document Storage",
-        description="Document acquisition, normalization, snapshots, and review (removed soon)",
-        module="edgar_sec.pipelines.document_storage.cli",
-    ),
-    LauncherEntry(
         id="viewer",
         label="Dataset Viewer",
         description="Read-only browser and SQL console over published artifacts",

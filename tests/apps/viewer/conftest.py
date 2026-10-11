@@ -12,10 +12,6 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 
-from edgar_sec.pipelines.document_storage.manifests import (
-    PART_KIND_INDEX,
-    PART_KIND_PAYLOAD,
-)
 from edgar_sec.domain.filing_catalog.schemas import (
     PROFILE_SCHEMA_VERSION,
     TARGET_SCHEMA_VERSION,
@@ -243,14 +239,14 @@ def build_document_snapshot(root: Path, snapshot_id: str = "doc-1") -> Path:
         "resolved_parts": [
             {
                 "path": str(index_path.relative_to(snapshot_dir)),
-                "kind": PART_KIND_INDEX,
+                "kind": "index",
                 "doc_ids": ["d1", "d2"],
                 "row_count": 2,
                 "byte_size": index_path.stat().st_size,
             },
             {
                 "path": str(payload_path.relative_to(snapshot_dir)),
-                "kind": PART_KIND_PAYLOAD,
+                "kind": "payload",
                 "doc_ids": ["d1", "d2"],
                 "row_count": 2,
                 "byte_size": payload_path.stat().st_size,

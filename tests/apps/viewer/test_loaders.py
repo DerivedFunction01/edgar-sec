@@ -5,7 +5,6 @@ from pathlib import Path
 
 from edgar_sec.apps.viewer.loaders import (
     LOADERS,
-    load_document_storage,
     load_filing_catalog,
     load_metadata,
     load_sqlite_databases,
@@ -27,7 +26,6 @@ def test_loader_registry_covers_every_published_dataset() -> None:
     assert {loader.name for loader in LOADERS} == {
         "metadata",
         "filing_catalog",
-        "document_storage",
         "sqlite",
         "transient",
     }
@@ -89,12 +87,6 @@ def test_catalog_snapshot_yields_profiles_and_one_targets_record(
     assert _kinds(found) == {"catalog_profiles", "catalog_targets"}
     targets = next(item for item in found if item.kind == "catalog_targets")
     assert len(targets.source_paths) == 2
-
-
-def test_document_snapshot_splits_index_from_payload(document_tree: Path) -> None:
-    found = load_document_storage(document_tree)
-    assert _kinds(found) == {"document_index", "document_payload"}
-    assert all(item.run_id == "run-doc" for item in found)
 
 
 def test_profiles_and_targets_share_one_revision(catalog_tree: Path) -> None:

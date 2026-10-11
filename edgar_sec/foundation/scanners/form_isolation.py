@@ -33,7 +33,6 @@ _ALLOWED_PATHS = (
     "edgar_sec/domain/forms/common/aliases.py",
     "edgar_sec/engine/forms/plugins/registry.py",
     "edgar_sec/engine/forms/cover/profiles.py",
-    "edgar_sec/pipelines/document_storage/candidates.py",
     "edgar_sec/foundation/scanners/form_isolation.py",
     "edgar_sec/domain/forms/exhibits/profiles.py",
     "edgar_sec/domain/forms/families/processing_profiles.py",
