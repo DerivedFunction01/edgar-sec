@@ -94,7 +94,9 @@ class SourceRef:
     note: str = ""
 
 
-CoverageStatus = Literal["candidate", "partial", "unsupported", "reserved", "disabled"]
+CoverageStatus = Literal[
+    "candidate", "partial", "unsupported", "reserved", "disabled", "historical"
+]
 
 
 @dataclass(frozen=True, slots=True)
