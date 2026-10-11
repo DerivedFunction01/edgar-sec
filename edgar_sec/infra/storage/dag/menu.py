@@ -368,12 +368,13 @@ def create_dag_menu(config: DAGMenuConfig) -> tuple[MenuAction, ...]:
             lambda: _action_tag(config),
         )
     )
-    actions.append(
-        menu_action(
-            "Compact lineage (S8 Checkpoint parity merge)",
-            lambda: cmd_compact(root, specs_target=None),
+    if config.specs is not None:
+        actions.append(
+            menu_action(
+                "Compact lineage (S8 Checkpoint parity merge)",
+                lambda: cmd_compact(root, specs=config.resolve_specs()),
+            )
         )
-    )
     actions.append(
         menu_action(
             "Run integrity doctor (verify digests, cycles, parts)",

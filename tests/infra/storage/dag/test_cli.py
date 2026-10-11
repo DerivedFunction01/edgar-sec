@@ -178,3 +178,11 @@ def test_cli_log_graph(tmp_path: Path, capsys) -> None:
     out = capsys.readouterr().out
     assert "d1" in out
     assert "c0" in out
+
+
+def test_cli_compact_requires_specs(tmp_path: Path) -> None:
+    """cmd_compact must fail without relation specs."""
+    _setup_dag(tmp_path)
+    specs = ()
+    # Empty specs should fail
+    assert cmd_compact(tmp_path, specs=specs) == 1

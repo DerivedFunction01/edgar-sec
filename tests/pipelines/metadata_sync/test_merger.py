@@ -42,7 +42,7 @@ def _row(
     fingerprint: str,
     *,
     accession: str | None = None,
-    status: str = "ok",
+    status: str | None = "ok",
 ) -> dict:
     filings = (
         [
@@ -130,9 +130,10 @@ def test_merge_publishes_a_multipart_snapshot(tmp_path: Path) -> None:
     assert report.row_count == 4
     assert report.chunk_count == 2
     assert report.part_count == 2
-    assert report.filing_record_count == 0
+    assert "filing_record_count" not in report.to_dict()
 
-    publish_snapshot(report, run_paths.metadata)
+    manifest = publish_snapshot(report, run_paths.metadata)
+    assert "filing_record_count" not in manifest
     parts = resolve_snapshot_parts(run_paths.metadata, "snap1")
     assert parts.part_count == 2
     assert [part["part_index"] for part in report.parts] == [0, 1]
@@ -243,6 +244,7 @@ def test_snapshot_record_contains_lineage_and_cik_index(
         "snap1"
     )
     assert node is not None
+    assert "filing_record_count" not in node.metadata
     assert node.metadata["roster_id"] == plan.roster.roster_id
     assert node.metadata["kind"] == "full"
     assert not node.parent_snapshot_id
@@ -463,14 +465,15 @@ def test_schema_drift_rejected(tmp_path: Path) -> None:
         raise AssertionError("expected MergeError")
 
 
-def test_non_terminal_status_rejected(tmp_path: Path) -> None:
+@pytest.mark.parametrize("status", [None, "pending"])
+def test_non_terminal_status_rejected(tmp_path: Path, status: str | None) -> None:
     plan, run_paths = _plan(tmp_path)
     _complete(plan, run_paths)
     _write_chunk(
         run_paths,
         0,
         [
-            _row(cik, plan.input_fingerprint, status="pending")
+            _row(cik, plan.input_fingerprint, status=status)
             for cik in plan.chunk_ciks(0)
         ],
     )
@@ -499,7 +502,7 @@ def test_duplicate_accessions_warn_but_do_not_fail(tmp_path: Path) -> None:
     assert report.row_count == 4
     assert ACCESSION in report.duplicate_accessions
     assert any("not globally unique" in w for w in report.warnings)
-    assert report.filing_record_count == 4
+    assert "filing_record_count" not in report.to_dict()
 
 
 def test_no_duplicate_warning_on_clean_merge(tmp_path: Path) -> None:

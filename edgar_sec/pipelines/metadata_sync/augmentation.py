@@ -26,8 +26,6 @@ from edgar_sec.pipelines.cohort.operations import execute_delta_roster
 from .merger import (
     MergeError,
     MergeReport,
-    _filing_record_count,
-    _published_ciks,
     _safe_progress,
     publish_cik_index,
     publish_parts,
@@ -427,7 +425,6 @@ def augment(
     report.parts_digest = ordered_parts_fingerprint(
         [str(part["sha256"]) for part in report.parts]
     )
-    report.filing_record_count = _filing_record_count([str(p) for p in part_paths])
     stray = _ciks_outside_expected(
         metadata_paths, base_snapshot_id, plan.roster, [str(p) for p in part_paths]
     )
@@ -436,9 +433,7 @@ def augment(
             "augmentation rejected: merged CIK set differs from base plus delta "
             f"by {stray} CIKs"
         )
-    merged = _published_ciks(part_paths)
-
-    publish_cik_index(report, metadata_paths, merged)
+    publish_cik_index(report, metadata_paths, part_paths)
     report.merged_at = utc_now_iso()
     publish_snapshot(
         report,

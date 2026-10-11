@@ -31,7 +31,6 @@ and provides two-tier retention analysis.
 | :--- | :--- | :--- |
 | `branch` | List, create, or delete branches | `[--from]` |
 | `checkout` | Switch current or branch pointer | `[--branch]`, `[--force]` |
-| `compact` | Consolidate lineage into a checkpoint | `[--branch]`, `[--specs]`, `[--new-id]`, `[--no-publish]` |
 | `doctor` | Run integrity checks | `[--skip-digests]` |
 | `gc` | Collect unreferenced snapshots and parts | `[--dry-run]` |
 | `log` | Display lineage history | `[-n]`, `[--branch]`, `[--graph]`, `[--all]` |

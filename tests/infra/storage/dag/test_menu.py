@@ -47,6 +47,7 @@ def test_create_dag_menu_keys_are_contiguous_when_publish_is_none(
 ) -> None:
     config = DAGMenuConfig(snapshots_root=tmp_path, publish_action=None)
     menu = create_dag_menu(config)
+    # Without specs, compact action is not included
     assert [action.key for action in menu] == [
         "1",
         "2",
@@ -56,7 +57,6 @@ def test_create_dag_menu_keys_are_contiguous_when_publish_is_none(
         "6",
         "7",
         "8",
-        "9",
     ]
 
 
@@ -69,6 +69,7 @@ def test_create_dag_menu_keys_are_contiguous_when_publish_is_present(
         publish_label="Custom Publish",
     )
     menu = create_dag_menu(config)
+    # Without specs, compact action is not included
     assert [action.key for action in menu] == [
         "1",
         "2",
@@ -79,7 +80,6 @@ def test_create_dag_menu_keys_are_contiguous_when_publish_is_present(
         "7",
         "8",
         "9",
-        "10",
     ]
 
 
@@ -164,3 +164,35 @@ def test_action_tag_create(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> N
 
     tags = catalog.list_tags()
     assert any(t["name"] == "v2.0" for t in tags)
+
+
+import pyarrow as pa
+from edgar_sec.infra.storage.dag.spec import RelationSpec
+
+SCHEMA = pa.schema([("id", pa.string()), ("val", pa.int64())])
+
+
+def test_create_dag_menu_includes_compact_when_specs_present(
+    tmp_path: Path,
+) -> None:
+    """Compact action appears when relation specs are configured."""
+    specs = (
+        RelationSpec(
+            name="records",
+            schema=SCHEMA,
+            primary_key=("id",),
+            merge_strategy="upsert",
+            sort_order=("id",),
+        ),
+    )
+    config = DAGMenuConfig(
+        snapshots_root=tmp_path,
+        publish_action=MagicMock(),
+        publish_label="Custom Publish",
+        specs=specs,
+    )
+    menu = create_dag_menu(config)
+    labels = [action.label for action in menu]
+    assert any("Compact" in label for label in labels)
+    # Should be 10 items: publish + 8 base + compact
+    assert len(menu) == 10

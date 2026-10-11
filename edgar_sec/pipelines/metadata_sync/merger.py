@@ -25,6 +25,7 @@ from edgar_sec.infra.storage.dag.manifest import (
 from edgar_sec.infra.storage.dag.publication import publish_node
 from edgar_sec.infra.storage.duckdb import (
     connect,
+    copy_query_to_parquet,
     find_duplicate_keys,
     find_null_keys,
 )
@@ -32,7 +33,7 @@ from edgar_sec.infra.storage.parquet import count_parquet_rows, read_parquet_sch
 
 from .paths import PARTS_DIR, MetadataPaths, RunPaths
 from .planner import Plan, utc_now_iso
-from .roster import read_cik_index, write_cik_index
+from .roster import SNAPSHOT_CIK_INDEX_SCHEMA
 from .validation import find_duplicate_accessions
 
 __all__ = [
@@ -58,7 +59,6 @@ class MergeReport:
     cik_index_path: str = ""
     row_count: int = 0
     chunk_count: int = 0
-    filing_record_count: int = 0
     artifact_sha256: str = ""
     cik_index_sha256: str = ""
     cik_count: int = 0
@@ -93,7 +93,6 @@ class MergeReport:
             "cik_count": self.cik_count,
             "row_count": self.row_count,
             "chunk_count": self.chunk_count,
-            "filing_record_count": self.filing_record_count,
             "artifact_sha256": self.artifact_sha256,
             "plan_id": self.plan_id,
             "input_fingerprint": self.input_fingerprint,
@@ -114,19 +113,6 @@ class MergeReport:
         return report
 
 
-def _published_ciks(part_paths: tuple[Path, ...]) -> list[str]:
-    """Read the CIK column of the published parts.
-    Built from disk rather than the roster, so a short snapshot is visible here.
-    """
-    import pyarrow.parquet as pq
-
-    ciks: list[str] = []
-    for path in part_paths:
-        table = pq.read_table(path, columns=["cik"])
-        ciks.extend(str(value) for value in table.column("cik").to_pylist())
-    return ciks
-
-
 def _safe_progress(
     progress: Callable[[dict[str, Any]], None] | None,
 ) -> Callable[[dict[str, Any]], None]:
@@ -141,18 +127,6 @@ def _safe_progress(
             pass
 
     return emit
-
-
-def _filing_record_count(paths: list[str]) -> int:
-    import pyarrow.parquet as pq
-
-    total = 0
-    for path in paths:
-        table = pq.read_table(path, columns=["filings"])
-        total += sum(
-            len(value) for value in table.column("filings").to_pylist() if value
-        )
-    return total
 
 
 def validate_chunks(plan: Plan, run_paths: RunPaths) -> list[Path]:
@@ -194,40 +168,65 @@ def validate_chunks(plan: Plan, run_paths: RunPaths) -> list[Path]:
                 f"!= planned {plan.chunk_length(chunk_id)}"
             )
 
-    import pyarrow.parquet as pq
+    roster_path = plan.roster.dataset
+    if roster_path is None:
+        raise MergeError("merge rejected: planned roster dataset is missing")
 
-    for chunk_id in sorted(chunk_ids):
-        table = pq.read_table(
-            found[chunk_id], columns=["cik", "input_fingerprint", "status"]
-        )
-        ciks = tuple(str(v) for v in table.column("cik").to_pylist())
-        # One chunk's CIKs are read from the roster at a time; materializing
-        # every chunk up front would hold the whole cohort for a coverage check.
-        planned_ciks = plan.chunk_ciks(chunk_id)
-        if set(ciks) != set(planned_ciks) or len(ciks) != len(planned_ciks):
-            raise MergeError(
-                f"merge rejected: chunk {chunk_id} CIK coverage differs from the plan"
-            )
-        if fingerprint:
-            foreign_fingerprints = {
-                value
-                for value in table.column("input_fingerprint").to_pylist()
-                if value and value != fingerprint
-            }
-            if foreign_fingerprints:
+    con = connect()
+    try:
+        for chunk_id in sorted(chunk_ids):
+            start = plan.chunk_start(chunk_id)
+            stop = start + plan.chunk_length(chunk_id)
+            coverage_errors, foreign_fingerprints, bad_statuses = con.execute(
+                """
+                WITH expected AS (
+                    SELECT cik_padded AS cik
+                    FROM read_parquet(?)
+                    WHERE ordinal >= ? AND ordinal < ?
+                ), actual AS (
+                    SELECT cik, input_fingerprint, status
+                    FROM read_parquet(?)
+                )
+                SELECT
+                    (SELECT count(*) FROM (
+                        SELECT cik FROM expected EXCEPT SELECT cik FROM actual
+                    )) +
+                    (SELECT count(*) FROM (
+                        SELECT cik FROM actual EXCEPT SELECT cik FROM expected
+                    )),
+                    count(*) FILTER (
+                        WHERE input_fingerprint IS NOT NULL
+                          AND input_fingerprint <> ''
+                          AND input_fingerprint <> ?
+                    ),
+                    count(*) FILTER (
+                        WHERE status IS NULL
+                           OR status NOT IN ('ok', 'partial', 'failed')
+                    )
+                FROM actual
+                """,
+                [
+                    str(roster_path),
+                    start,
+                    stop,
+                    str(found[chunk_id]),
+                    fingerprint,
+                ],
+            ).fetchone()
+            if coverage_errors:
+                raise MergeError(
+                    f"merge rejected: chunk {chunk_id} CIK coverage differs from the plan"
+                )
+            if fingerprint and foreign_fingerprints:
                 raise MergeError(
                     f"merge rejected: chunk {chunk_id} carries a foreign input fingerprint"
                 )
-        bad_status = [
-            value
-            for value in table.column("status").to_pylist()
-            if value not in ("ok", "partial", "failed")
-        ]
-        if bad_status:
-            raise MergeError(
-                f"merge rejected: chunk {chunk_id} contains non-terminal statuses: "
-                f"{sorted(set(bad_status))}"
-            )
+            if bad_statuses:
+                raise MergeError(
+                    f"merge rejected: chunk {chunk_id} contains non-terminal statuses"
+                )
+    finally:
+        con.close()
 
     return [found[chunk_id] for chunk_id in sorted(found)]
 
@@ -242,15 +241,33 @@ def plan_schema():
 def publish_cik_index(
     report: MergeReport,
     metadata_paths: MetadataPaths,
-    ciks: list[str],
+    part_paths: Sequence[Path],
 ) -> MergeReport:
-    """Write the sorted distinct CIK index beside a published payload.
-    Derived from the published rows, not from what was requested.
-    """
+    """Write a sorted distinct CIK index from published parts out of core."""
+    if not part_paths:
+        raise MergeError("published snapshot has no submissions parts")
     path = metadata_paths.snapshot_cik_index(report.snapshot_id)
+    con = connect()
+    try:
+        row_count = copy_query_to_parquet(
+            con,
+            "SELECT DISTINCT cik FROM read_parquet(?) ORDER BY cik",
+            path,
+            params=[[str(part) for part in part_paths]],
+        )
+    finally:
+        con.close()
+    if row_count == 0:
+        path.unlink(missing_ok=True)
+        raise MergeError("a published CIK index must not be empty")
+    if not read_parquet_schema(path).equals(
+        SNAPSHOT_CIK_INDEX_SCHEMA, check_metadata=False
+    ):
+        path.unlink(missing_ok=True)
+        raise MergeError(f"CIK index schema drifted: {path}")
     report.cik_index_path = str(path)
-    report.cik_index_sha256 = write_cik_index(ciks, path)
-    report.cik_count = len(read_cik_index(path))
+    report.cik_index_sha256 = file_sha256(path)
+    report.cik_count = row_count
     return report
 
 
@@ -391,11 +408,8 @@ def merge_chunks(
     report.parts_digest = ordered_parts_fingerprint(
         [str(part["sha256"]) for part in report.parts]
     )
-    report.filing_record_count = _filing_record_count(
-        [str(path) for path in part_paths]
-    )
     emit({"type": "cik_index", "stage": "publishing"})
-    publish_cik_index(report, run_paths.metadata, _published_ciks(part_paths))
+    publish_cik_index(report, run_paths.metadata, part_paths)
     emit({"type": "readback_done", "rows": row_count})
     return report
 
@@ -448,7 +462,6 @@ def publish_snapshot(
         "plan_id": report.plan_id,
         "input_fingerprint": report.input_fingerprint,
         "chunk_count": report.chunk_count,
-        "filing_record_count": report.filing_record_count,
         "roster_id": report.roster_id,
         "delta_roster_id": report.delta_roster_id,
         "merged_at": report.merged_at,

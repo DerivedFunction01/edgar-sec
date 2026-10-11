@@ -421,52 +421,22 @@ def cmd_doctor(
     return 0 if audit.is_healthy else 1
 
 
-def _resolve_specs(
-    target: str | None,
-    tip_manifest: DAGNodeManifest | None = None,
-) -> Sequence[RelationSpec]:
-    """Dynamically resolve relation specs for compaction."""
-    import importlib
-
-    if target:
-        if target in ("inventory", "document_inventory"):
-            mod = importlib.import_module(
-                "edgar_sec.pipelines.document_inventory.snapshot.specs"
-            )
-            return getattr(mod, "INVENTORY_RELATIONS")
-        if target in ("metadata", "metadata_sync"):
-            mod = importlib.import_module("edgar_sec.pipelines.metadata_sync.specs")
-            return getattr(mod, "METADATA_RELATIONS")
-        if ":" in target:
-            mod_name, attr_name = target.split(":", 1)
-            mod = importlib.import_module(mod_name)
-            return getattr(mod, attr_name)
-        raise ValueError(f"unknown relation specs target: {target}")
-
-    if tip_manifest is not None:
-        rel_names = set(tip_manifest.relations.keys())
-        if "accessions" in rel_names or "entries" in rel_names:
-            mod = importlib.import_module(
-                "edgar_sec.pipelines.document_inventory.snapshot.specs"
-            )
-            return getattr(mod, "INVENTORY_RELATIONS")
-        if "submissions" in rel_names:
-            mod = importlib.import_module("edgar_sec.pipelines.metadata_sync.specs")
-            return getattr(mod, "METADATA_RELATIONS")
-
-    raise ValueError("cannot resolve relation specs; specify --specs")
-
-
 def cmd_compact(
     snapshots_root: Path,
     *,
     branch_name: str | None = None,
-    specs_target: str | None = None,
+    specs: Sequence[RelationSpec],
     new_snapshot_id: str | None = None,
     publish: bool = True,
     as_json: bool = False,
 ) -> int:
     """Compact active lineage into a standalone Checkpoint snapshot."""
+    if not specs:
+        if as_json:
+            _emit({"error": "compaction requires relation specs"})
+        else:
+            print("Compaction requires relation specs")
+        return 1
     ptr = read_pointer(snapshots_root, branch_name=branch_name)
     if ptr is None:
         if as_json:
@@ -477,15 +447,6 @@ def cmd_compact(
     tip_id = str(ptr["snapshot_id"])
     lineage = walk_lineage(snapshots_root, tip_id)
     tip = lineage.nodes[-1]
-
-    try:
-        specs = _resolve_specs(specs_target, tip)
-    except Exception as exc:
-        if as_json:
-            _emit({"error": str(exc)})
-        else:
-            print(f"Failed to resolve relation specs: {exc}")
-        return 1
 
     target_id = new_snapshot_id or f"{tip_id}_compacted"
     staged = DAGPaths(snapshots_root).staging_dir(target_id)
@@ -609,13 +570,13 @@ def configure_dag_subcommands(
         "--skip-digests", action="store_true", help="Skip SHA-256 digest checks"
     )
 
-    cmp_p = sub.add_parser("compact", help="Consolidate lineage into a checkpoint")
-    cmp_p.add_argument("--branch", default=None, help="Branch to compact")
-    cmp_p.add_argument("--specs", default=None, help="Relation specs specifier")
-    cmp_p.add_argument("--new-id", default=None, help="New checkpoint snapshot ID")
-    cmp_p.add_argument(
-        "--no-publish", action="store_true", help="Do not advance current pointer"
-    )
+    if default_specs is not None:
+        cmp_p = sub.add_parser("compact", help="Consolidate lineage into a checkpoint")
+        cmp_p.add_argument("--branch", default=None, help="Branch to compact")
+        cmp_p.add_argument("--new-id", default=None, help="New checkpoint snapshot ID")
+        cmp_p.add_argument(
+            "--no-publish", action="store_true", help="Do not advance current pointer"
+        )
 
     gc_p = sub.add_parser("gc", help="Collect unreferenced snapshots and parts")
     gc_p.add_argument("--dry-run", action="store_true", help="Preview deletions")
@@ -709,14 +670,11 @@ def dispatch_dag_subcommand(
     if sub == "doctor":
         return cmd_doctor(root, verify_digests=not args.skip_digests, as_json=as_json)
     if sub == "compact":
-        specs_target = args.specs
-        if specs_target is None and default_specs is not None:
-            specs = default_specs() if callable(default_specs) else default_specs
-            specs_target = None
+        specs = default_specs() if callable(default_specs) else default_specs
         return cmd_compact(
             root,
             branch_name=args.branch,
-            specs_target=specs_target,
+            specs=specs,
             new_snapshot_id=args.new_id,
             publish=not args.no_publish,
             as_json=as_json,
