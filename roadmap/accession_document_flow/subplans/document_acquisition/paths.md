@@ -106,9 +106,12 @@ dataset root.
 │           │   ├── work_operations/part-*.parquet
 │           │   ├── work_source_requests/part-*.parquet
 │           │   ├── work_operation_inputs/part-*.parquet
+│           │   ├── work_reuse_candidates/part-*.parquet
 │           │   └── work_chunks/part-*.parquet
 │           ├── chunks/{chunk_id}/attempt-{attempt_id}/
-│           │   ├── outcomes.parquet
+│           │   ├── target_outcomes.parquet
+│           │   ├── acquisition_attempts.parquet
+│           │   ├── target_slot_resolutions.parquet
 │           │   └── manifest.json
 │           ├── cancelled.json
 │           ├── run.lock

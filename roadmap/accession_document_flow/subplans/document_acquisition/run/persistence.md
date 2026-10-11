@@ -101,8 +101,8 @@ and add/extend these fields and relations:
   `reused_snapshot_id` is non-null only when the current outcome came from reuse.
 - `attempts.attempt_kind` accepts `document_body`, `lazy_index`, or `source_reuse`; its
   `source` uses the same three acquisition origins. Add nullable
-  `source_request_id`, `source_asset_id`, `reused_snapshot_id`, `assignment_id`, and
-  `worker_id`. Reuse attempts have no HTTP status, response digest, or response path;
+  `source_request_id`, `source_asset_id`, `reused_snapshot_id`, `assignment_id`,
+  `worker_id`, and `worker_attempt_number`. Reuse attempts have no HTTP status, response digest, or response path;
   they retain the selected digest/size/path and pinned snapshot ID.
 - Existing target attempt number, target outcome, and transaction semantics remain
   unchanged. The added columns let the attempt record locate its S6 input, physical
@@ -136,7 +136,9 @@ CREATE TABLE operation_state (
     CHECK ((outcome = 'available' AND representation_id IS NOT NULL
             AND output_sha256 IS NOT NULL AND output_byte_size IS NOT NULL) OR
            (outcome <> 'available' AND representation_id IS NULL
-            AND output_sha256 IS NULL)),
+            AND output_sha256 IS NULL AND output_byte_size IS NULL
+            AND output_relative_path IS NULL)),
+    CHECK (outcome <> 'blocked' OR reason_code IS NOT NULL),
     CHECK (outcome = 'failed' OR retryable = 0),
     UNIQUE (target_id, operation)
 );
@@ -152,8 +154,8 @@ CREATE TABLE operation_attempts (
     reason_code TEXT,
     input_fingerprint_sha256 TEXT NOT NULL,
     representation_id TEXT,
-    handler_id TEXT,
-    handler_version TEXT,
+    handler_id TEXT NOT NULL,
+    handler_version TEXT NOT NULL,
     capability_id TEXT NOT NULL,
     capability_version TEXT NOT NULL,
     options_sha256 TEXT NOT NULL,
@@ -168,7 +170,8 @@ CREATE TABLE operation_attempts (
     CHECK ((outcome = 'available' AND output_sha256 IS NOT NULL
             AND output_byte_size IS NOT NULL AND representation_id IS NOT NULL) OR
            (outcome = 'failed' AND output_sha256 IS NULL
-            AND output_byte_size IS NULL AND representation_id IS NULL))
+            AND output_byte_size IS NULL AND representation_id IS NULL
+            AND output_relative_path IS NULL))
 );
 
 CREATE INDEX operation_state_schedule ON operation_state(outcome, retryable);
@@ -220,7 +223,7 @@ and resolution rows are append-only; current status is an updateable projection 
 so S10 can write them through the S9 path/schema contracts without importing the S9
 state service.
 
-## Transaction API
+## Current v2 transaction API
 
 ```python
 def initialize_run_state(
@@ -283,6 +286,45 @@ target resolved absent by a recognized lazy index is terminal `required_missing`
 contributes to `complete_with_errors`; optional `not_filed` remains a valid terminal
 outcome.
 
+Schema v3 adds an operation summary without changing acquisition target counts:
+
+```sql
+SELECT outcome, COUNT(*) AS operation_count
+FROM operation_state
+GROUP BY outcome
+ORDER BY outcome;
+
+SELECT COUNT(*) AS retryable_operation_failures
+FROM operation_state
+WHERE outcome = ? AND retryable = ?;
+```
+
+The second query binds `failed` and `1`. A supported requested operation can be
+`blocked` by a terminal target source outcome; the target report retains that root
+failure and the operation report retains the affected operation count.
+
+The v3 transaction API changes initialization to consume the complete relation set and
+adds a separate operation commit:
+
+```python
+def initialize_run_state(
+    database_path: Path,
+    work_order: WorkOrderRelationSet,
+) -> None: ...
+
+def commit_operation_attempt(
+    database_path: Path,
+    attempt: OperationAttempt,
+    outcome: OperationOutcome,
+) -> None: ...
+
+def summarize_run_state(database_path: Path) -> AcquisitionAndOperationCounts: ...
+```
+
+The v2 API above remains historical/current-code documentation; schema v3 is the
+required owner for the operation-aware work order and must initialize both ledgers
+atomically.
+
 ## Tests
 
 Temporary-database tests cover schema version refusal, foreign keys, duplicate target
@@ -290,3 +332,10 @@ IDs, transaction rollback, append-only attempt history, failed-then-acquired ret
 body-file/DB commit ordering, read-only status during a writer transaction, DB
 corruption, lock ownership, stale-lock refusal, and parameter-bound IDs containing
 SQL metacharacters. No test uses the repository artifact tree.
+
+Schema v3 adds tests for operation rows seeded from all work operations, status
+constraints (`not_requested`/`unsupported`/`blocked`/`pending`/`available`/`failed`),
+identity and representation-reuse attempts, handler-version fingerprints,
+failed-operation retry without reacquisition, worker-local ordinal rebasing, stale
+assignment refusal, and transactionally atomic whole-chunk import. The source-reuse
+attempt must preserve a null response envelope and verified selected-body digest.

@@ -1,7 +1,7 @@
 # S6 Acquisition-Policy Extension Plan
 
-**Status: operation/source schema v1 designed; serialization, work/run, and lifecycle
-implementation pending.** The profile request and plan-relation contract is specified in
+**Status: S6 relation schemas v1 and S9 work/run schemas v2/v3 designed; serialization,
+tests, and implementation pending.** The profile request and plan-relation contract is specified in
 [S6 `specs.md`](specs.md). The current target-plan bundle does not yet serialize the
 operation/source relations described there.
 
@@ -11,12 +11,14 @@ For each logical target, let the profile request one or more supported operation
 acquired file: preserve it raw, render it to text, or produce an XML representation where
 that operation is supported. Shared path facts and filing-family capability decide
 which operations exist. Explicitly requesting multiple operations means producing each
-supported result; operations may share source bytes or require distinct source fetches.
+supported result. S6/S9 v1 binds all supported operations to one target body request.
 
-Document planning remains offline and body-blind. It pins the requested operations and
-materializes any source locators those operations require. S9 acquires those inputs. A
-separate processing/engine owner executes supported renderers and stores each result under
-the logical document. XML parsing remains in a separate form-specific pipeline.
+Document planning remains offline and body-blind. It pins operations, the one primary
+body source request, and the operation-to-source link. S9 acquires that input. A separate
+processing/engine owner executes supported renderers and stores each result under the
+logical document. A handler needing another source or multiple inputs is unsupported
+until a versioned S6/S9 source-input extension. XML parsing remains in a separate
+form-specific pipeline.
 
 ## Operation contract
 
@@ -34,7 +36,9 @@ does not select a statutory family or guarantee that an operation is accurate.
 
 ### Explicit operations and default priority
 
-An explicit profile policy is a multi-select set. For example:
+An explicit profile policy is a non-empty multi-select set with unique operation names.
+Unknown or duplicate names and an empty explicit list are profile validation errors. For
+example:
 
 ```json
 {
@@ -189,7 +193,8 @@ The S6 acquisition catalog declares, per family/role/path-facts/operation:
 - support status and a source-input strategy. Bundle schema v4 supports only the
   target's validated primary source request; a capability requiring another locator is
   not executable until a later, versioned source-input contract exists;
-- the optional engine handler identity/version (source pass-through needs no transform);
+- the handler identity/version (raw uses the built-in identity handler; transformed
+  operations use an engine handler);
 - which output representation it produces.
 
 An operation counts as implemented only when its source strategy is registered and, when
@@ -231,9 +236,9 @@ Keep the request, family allowance, path strategy, and implementation declaratio
    implementation exists.
 3. **S6 acquisition capability catalog**, proposed in
    `pipelines/document_planning/acquisition_capabilities.py`, resolves family/role/type/path
-   facts and requested operation into support status, source-locator strategy, output kind,
-   and optional engine handler ID/version. A registered `render_to_xml` transform declares
-    the primary `edgar.htm` input; the catalog never performs a fetch.
+    facts and requested operation into support status, primary source request, output
+    kind, and handler ID/version. A registered `render_to_xml` transform declares the
+    primary `edgar.htm` input; the catalog never performs a fetch.
 4. **Engine handler metadata/registry** in `engine/document_processing/capabilities.py`
    and `registry.py` declares handler IDs, accepted generic input facts, output kind, and
    implementation version, then binds IDs to code at runtime. Metadata has no handler
@@ -286,15 +291,14 @@ persistence behavior.
 
 The request must distinguish requested locator, effective selected path/filename, and
 verified body identity. It carries target/profile identity, family/role/type,
-`DocumentPathFacts`, operation records (capability/version, output kind, source IDs), and
-one or more input records (`source_id`, locator provenance, selected path, path facts,
-SHA-256, byte size, and immutable `raw_bytes`). S10 admits each route's working set from
-the resource-derived budget before reading and verifies the digest/size of the exact bytes
-passed to the processor; the acquisition byte ceiling alone is not a memory guarantee. The
-admission must reserve the aggregate working set for every body and operation in a
-multi-source request, or process inputs in separately admitted calls. An XML-export
-request identifies the primary `edgar.htm` source through its capability; the engine
-never fetches a sibling `.xml` source itself.
+`DocumentPathFacts`, operation records (request/support state, capability/handler
+versions, output kind), and exactly one input per supported requested operation. Every
+v1 input links to the target's one shared source request and carries source-asset ID,
+locator provenance, selected path, path facts, digest, and size. S10 verifies the
+selected file before admitting the shared body to the engine call; raw bytes exist only
+in-process and never in work/JSON/worker receipts. An XML-export request identifies the
+primary `edgar.htm` source through its capability; the engine never fetches a sibling
+`.xml` source itself.
 
 ```python
 class AcquisitionProcessor:
@@ -306,12 +310,13 @@ class AcquisitionProcessor:
     ) -> AcquisitionProcessResult: ...
 ```
 
-`AcquisitionProcessResult` is a transient in-memory result with one operation outcome per
-resolved request. Raw and unchanged XML outcomes reference their source input and preserve
-its digest/size; transformed outcomes carry output digest/size and may expose normalized
-text to the caller while the S10 coordinator performs enabled diagnostics or review. The
-engine processor does not classify exhibit roles, mutate targets, or issue acquisition
-actions. The S10 coordinator serializes only the metadata-only `ProcessingResult`; it does not persist durable
+`AcquisitionProcessResult` is a transient result with one operation outcome per
+resolved operation. Raw identity results reference their source input and preserve its
+digest/size; export handlers return output digest/size and a staged-output reference,
+never a whole output body.
+The S10 coordinator performs enabled diagnostics/review separately. The engine processor
+does not classify exhibit roles, mutate targets, or issue acquisition actions. The S10
+coordinator serializes only metadata results; it does not persist durable
 representation payloads. A durable `render_to_txt` handler must not call
 `normalize_document`; existing S10 diagnostic normalization remains separate from the
 export representation. Capability handlers are injected through the validated registry,
@@ -322,13 +327,15 @@ The API's input type is owned by the engine or a domain contract module, never b
 `AcquisitionProcessRequest` carries verified source bytes only after the pipeline has
 admitted the staged file against its configured maximum and verified the digest/size of
 the same bytes passed to the processor. It keeps requested locator provenance distinct
-from the effective selected filename/path used for route facts. `normalize_document` still
-accepts `bytes`; a future streaming signature is a separate engine change, not an implicit
-requirement of this processor API.
+from the effective selected filename/path used for route facts. The diagnostic
+`normalize_document` helper still accepts `bytes`; export handlers follow their declared
+bounded input API, never the filing normalizer by implication.
 
-This concrete signature permits isolated tests for dispatch, raw pass-through, HTML-to-text,
-multiple inputs, unsupported operations, missing required XML input, and independent
-operation failures. S9 integration tests separately prove that staged bytes were admitted
+This concrete signature permits isolated tests for dispatch, raw pass-through,
+HTML-to-text, unsupported operations, missing primary `edgar.htm`, and independent
+operation failures. Version 1 has one selected-source input per operation, shared by a
+target's handlers; a multi-input handler requires an explicit schema extension. S9
+integration tests separately prove that staged bytes were admitted
 and that the exact verified bytes passed to this request match the recorded source identity.
 
 The outer S10 API remains pipeline-owned and follows the

@@ -27,6 +27,9 @@ the S9 import adapter remains unimplemented and in planning.
 - Adopt selected-body files under coordinator-managed paths and retain source-asset,
   digest, and size metadata for S10. Validate a whole chunk before exposing state and
   commit it in one run-state transaction; failed import must not partially adopt it.
+- Reassign worker-local attempt ordinals to the coordinator's next per-target attempt
+  numbers while preserving each worker attempt ID, worker-local ordinal, assignment ID,
+  and worker ID. A stale or superseded assignment receipt cannot update target state.
 - If the coordinator already has a valid committed chunk, report it as ignored or
   already committed; never overwrite it with a worker copy.
 - Import does not publish a snapshot or capture a fixture. Fixture capture remains

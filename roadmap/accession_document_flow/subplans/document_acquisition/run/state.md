@@ -15,7 +15,7 @@ attempt records:
 |---|---|---|
 | `pending` | Executable S6 target has not completed an attempt. | Scheduled by default. |
 | `skipped` | S6 target is unmatched or has unsupported retrieval mode. | Never scheduled. |
-| `acquired` | Direct body downloaded, or exact bundle child extracted and committed. | Never fetched again. |
+| `acquired` | Direct body downloaded, exact bundle child extracted, or one verified source payload reused from the pinned base snapshot. | Never fetched again. |
 | `not_filed` | Complete valid bundle has no exact requested sequence, or a recognized lazy index has no row matching an optional target's expected filing form. Record which evidence established absence. | Terminal; not retried. |
 | `required_missing` | A recognized lazy index has no row matching the expected filing form for a required target. | Terminal; not retried; run completes with required-target error. |
 | `ambiguous` | Duplicate requested sequences or typed source disagreement. | Terminal; not retried. |

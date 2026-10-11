@@ -56,11 +56,12 @@ operation/source relations:
 |---|---|---:|---|
 | `executable` | bool | yes | True only for `status="matched"` and a validated `direct_url` or `bundle_sequence`. |
 | `skip_reason` | string | no | Stable code for non-matched or unsupported targets; null iff executable. |
+| `logical_document_id` | string | nullable | Stable S9 identity derived from accession, request ID, and planned source key; null when no source key resolves. |
 | `chunk_id` | int32 | nullable | Deterministic zero-based membership for executable targets; null for skipped targets. |
 | `catalog_direct_selection` | string | nullable | Preserve the S6 selector; it cannot be supplied or changed by the S9 caller. |
 
 The v2 relation set is `work_targets`, `work_operations`, `work_source_requests`,
-`work_operation_inputs`, and `work_chunks`. Each relation is Parquet under
+`work_operation_inputs`, `work_reuse_candidates`, and `work_chunks`. Each relation is Parquet under
 `work_order/{relation}/part-*.parquet`; the manifest pins every relation schema and
 each part's relative path, row count, byte size, and SHA-256. `work_chunks` pins target
 count and chunk digest; chunk ID is also carried by each executable target. Chunk
@@ -68,6 +69,11 @@ membership is formed from sorted target IDs using the pinned `runtime.chunk_size
 target and all its operation/source rows form one indivisible work unit. Parts use
 bounded shared Parquet row groups. S9 copies and validates S6 source requests against
 the target's `target_url` and `retrieval_mode`.
+
+Each assigned chunk returns v1 Parquet result relations `target_outcomes`,
+`acquisition_attempts`, and `target_slot_resolutions`, plus receipt-listed body files.
+The common assignment/receipt protocol is schema v2. S9 workers acquire source inputs
+only; S10 operation results are produced by the coordinator after import.
 
 - `direct_url` means `target_url` is the selected document locator; derive its
   `document_path` from the validated archive path, not from `target_type`.
@@ -124,6 +130,8 @@ class AcquisitionRunManifest(TypedDict):
     fixture_id: str | None
     max_response_bytes: int
     work_order_schema_version: str
+    chunk_result_schema_version: str
+    distribution_schema_version: int
     work_order_relations: list[RelationDescriptor]
     work_order_digest: str
     chunking_algorithm: str
@@ -141,10 +149,17 @@ consecutive part numbering, and containment beneath the run root; undeclared Par
 files are refused. The run digest is the canonical hash of the manifest without
 `run_digest`. `work_order_digest` is the canonical hash of the work-order schema,
 relation descriptors/part digests, chunking settings, and row counts; it is the common
-distribution `work_digest`. `run_id` is derived from the plan digest, contract/schema
-versions, branch/base snapshot, chunking algorithm/size, source mode/fixture ID, and
+distribution `work_digest`. `run_id` is derived from the plan digest, contract, work,
+chunk-result, distribution, and run-state schema versions; branch/base snapshot;
+chunking algorithm/size; source mode/fixture ID; and
 response-byte ceiling. Worker count, request pacing, completion order, and retries
 remain attempt provenance and do not rewrite the run.
+
+Projection options require `chunk_size > 0` and `max_response_bytes > 0`. The default
+chunk size comes from `RuntimeSettings.default_chunk_size`; a project override is
+recorded in the immutable manifest. `fixture_id` is non-null only for
+`source_mode="fixture_replay"`. Project resolves the selected branch tip once and pins
+its ID/digest as `base_snapshot_id`/`base_snapshot_digest`.
 
 ## Runtime outcomes and body handoff
 
@@ -175,11 +190,14 @@ class BodyConsumptionReceipt(TypedDict):
     receipt_schema_version: str
     run_id: str
     target_id: str
+    source_request_id: str
     source_asset_id: str
     selected_sha256: str
+    selected_byte_size: int
     processing_run_id: str
     consumed_at_utc: str
     source_response_sha256: str | None
+    source_response_byte_size: int | None
 ```
 
 The v2 body reference identifies the reusable source asset. A snapshot-reuse input has
@@ -216,6 +234,14 @@ class AcquisitionPolicy:
     requested_workers: int | None = None
 
 @dataclass(frozen=True, slots=True)
+class AcquisitionProjectionPolicy:
+    snapshot_branch: str
+    chunk_size: int
+    max_response_bytes: int
+    source_mode: Literal["live_sec", "fixture_replay"]
+    fixture_id: str | None
+
+@dataclass(frozen=True, slots=True)
 class AcquisitionAttempt:
     attempt_id: str
     target_id: str
@@ -227,6 +253,7 @@ class AcquisitionAttempt:
     reused_snapshot_id: str | None
     assignment_id: str | None
     worker_id: str | None
+    worker_attempt_number: int | None
     outcome: Literal["acquired", "not_filed", "required_missing", "ambiguous", "failed"]
     retryable: bool
     error_code: str | None
@@ -266,6 +293,11 @@ class OperationAttempt:
     input_fingerprint_sha256: str
     input_sha256: str
     representation_id: str | None
+    capability_id: str
+    capability_version: str
+    handler_id: str
+    handler_version: str
+    options_sha256: str
     output_sha256: str | None
     output_byte_size: int | None
     output_relative_path: str | None
@@ -299,6 +331,9 @@ class TargetSlotResolution:
 class AcquisitionOutcome:
     target_id: str
     source: AcquisitionSource | None
+    source_request_id: str | None
+    source_asset_id: str | None
+    reused_snapshot_id: str | None
     status: AcquisitionStatus
     attempt_count: int
     last_attempt_id: str | None

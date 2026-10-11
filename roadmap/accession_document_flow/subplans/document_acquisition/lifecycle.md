@@ -48,9 +48,10 @@ S5 or S6 schemas.
    the exact base snapshot (or null), response-byte ceiling, chunking settings, and
    relation schemas in one run manifest. Write immutable Parquet relations for all
    targets, operations, source requests, operation inputs, and chunks.
-2. **Acquire.** Schedule executable target work units. Resolve each source from the
-   pinned base snapshot when its stable source identity has a verified retained payload;
-   otherwise follow the S6 source request. Append attempts and lazy-index evidence.
+2. **Acquire.** Schedule executable target work units. Resolve each source from a
+   verified `work_reuse_candidates` payload only after the current S6/S9 selection
+   resolves to that same stable source asset; otherwise follow the unchanged S6 source
+   request. A candidate never selects a target or slot. Append attempts and lazy-index evidence.
    Atomically adopt direct or selected bytes only after byte-limit, digest, size,
    redirect, and extraction checks. A worker chunk contains all relations for its
    assigned targets and any verified reused-source payloads.
@@ -232,15 +233,15 @@ receipts already imported. Before creating a DAG node it:
 1. Confirms the run/plan/schema identity, validates all declared files and result rows,
    and rejects duplicate target/run identities or paths outside owner roots.
 2. Requires every work-order target and every operation result to have a terminal
-    disposition. If a target is `failed`, `ambiguous`, or `required_missing`, or an
-    operation is `failed`, publication requires explicit `--allow-errors`; the
-    manifest records target and operation counts and `complete_with_errors`. Optional
-    `not_filed`, skipped targets, and unsupported/unrequested operations are explicit
-    terminal outcomes, not processing failures.
+   disposition. If a target is `failed`, `ambiguous`, or `required_missing`, or an
+   operation is `failed`, publication requires explicit `--allow-errors`; the
+   manifest records target and operation counts and `complete_with_errors`. Optional
+   `not_filed`, skipped targets, and unsupported/unrequested operations are explicit
+   terminal outcomes, not processing failures.
 3. Streams metadata rows and selected source/derived payloads into bounded staging
-   Parquet writers. Verify exact uncompressed digest/size before accepting each row;
-   binary-media and text-route rows go to separate relation parts. Payload-row identity
-   deduplicates identical content without dropping slot/target joins.
+   Parquet writers. Verify exact uncompressed digest/size before accepting each row.
+   `payload_index` assigns each digest to one binary/text relation, deduplicating bytes
+   without dropping slot, target, operation, or representation joins.
 4. Writes deterministic DAG relation parts and a manifest pinning the parent snapshot,
    run ID/digest, S6 target-plan ID/digest, relation schema versions, counts, part
    digests, and referenced payload digests. The snapshot identity is derived from

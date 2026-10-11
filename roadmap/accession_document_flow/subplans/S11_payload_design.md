@@ -46,7 +46,7 @@ Representative captured cases cover:
   binary/PDF routes.
 - Missing targets, oversized responses, malformed bundles, extraction ambiguity, and processing failures.
 - Repeated identical source bytes across accessions, target plans, and CIK source relationships.
-- Reprocessing the same source bytes under a changed processor fingerprint.
+- Reprocessing the same source bytes under a changed operation handler/options fingerprint.
 
 Each case pins the S6 plan/relation parts, S9 response/selected-body digests, and per-operation capability/handler/input/output fingerprints. SQLite-BLOB fixture bodies from [S9 fixture capture/replay](document_acquisition/fixtures/index.md) are evidence only, not a presumption about the durable-store design.
 
@@ -145,7 +145,7 @@ The design is ready for approval only when it:
   evidence-driven amendment to the Parquet/DAG proposal.
 - Defines identities for raw response, selected child, export representation, target request, and provenance without conflating them.
 - Specifies append/update/idempotence, byte verification, streaming bounds, atomic publication, and recovery after interruption.
-- Defines retention/reference tracking and safe deletion for raw, selected, normalized, and review-only bodies.
+- Defines retention/reference tracking and safe deletion for raw, selected, exported, and review-only bodies.
 - Leaves S5 schemas and the S6 target-row schema unchanged; operation-aware inputs use a versioned S6 bundle relation extension and keep catalog-direct provenance distinct.
 - Includes migration/cutover implications for `document_storage` without mixing its removal into S9–S12.
 - Records design version, unresolved risks, rejection rationale, and explicit approval identity/date.

@@ -48,21 +48,24 @@ separate from the logical target relation:
 | Relation | Key / grain | Version 1 fields |
 |---|---|---|
 | `targets` | `target_id` | Existing target relation and locator contract; unchanged in schema v1. |
-| `target_operations` | `(target_id, operation)` | `operation_id:string`, `requested:bool`, `support_status:string`, `support_reason:string?`, `capability_id:string?`, `capability_version:string?`, `handler_id:string?`, `handler_version:string?`, `output_kind:string?`. Exactly one row per target and operation (`raw`, `render_to_txt`, `render_to_xml`). Support is `supported`, `unsupported`, or `not_evaluated`. |
+| `target_operations` | `(target_id, operation)` | `operation_id:string`, `requested:bool`, `support_status:string`, `support_reason:string?`, `capability_id:string?`, `capability_version:string?`, `handler_id:string?`, `handler_version:string?`, `output_kind:string?`. Exactly one row per target and operation (`raw`, `render_to_txt`, `render_to_xml`). Support is `supported`, `unsupported`, or `not_evaluated`. Supported rows pin handler metadata; `raw` uses the built-in versioned identity handler. |
 | `source_requests` | `source_request_id` | `target_id:string`, `source_role:string`, `source_origin:string`, `retrieval_mode:string`, `request_url:string?`, `sequence:int32?`, `canonical_path:string?`. One primary body request for every matched target; locator fields must agree with the `targets` row. S6 IDs are plan-scoped, not reuse keys. |
-| `operation_inputs` | `(operation_id, input_ordinal)` | `source_request_id:string`, `input_role:string`. Links each requested/supported operation to its source request. Version 1 requires exactly one source request per operation, shared by operations over the same body. |
+| `operation_inputs` | `(operation_id, input_ordinal)` | `source_request_id:string`, `input_role:string`. Links each requested/supported operation to its source request. `input_role` is `selected_target_body` or `primary_edgar_htm`. Version 1 requires exactly one source request per operation, shared by operations over the same body. |
 
 The deterministic `operation_id` is derived from `[target_id, operation]`; the
-`source_request_id` is derived from `[target_id, source_role, canonical_locator]`.
+`source_request_id` is derived from `[target_id, source_role, canonical_locator]`, where
+the canonical locator includes retrieval mode, archive path, and sequence when present.
 Because `target_id` contains `plan_id`, neither ID identifies a source across plans.
 Rows for unmatched/unresolved targets still preserve requested operations with
 `support_status=not_evaluated`; they have no source request or operation-input row.
 For matched targets the primary source request exists even when `raw` is not requested,
-because S9 must acquire the bytes needed by other operations.
+because S9 must acquire the bytes needed by other operations. `render_to_xml` is
+supported only when the target itself resolves to primary `edgar.htm`; its input role is
+`primary_edgar_htm`, not an XML sibling.
 
 An unsupported row requires a stable `support_reason`; supported rows require capability
-ID/version and output kind. Handler ID/version are required only when that capability
-uses an engine handler. `operation_inputs` is populated only for requested supported
+ID/version, handler ID/version, and output kind. The built-in raw identity handler is
+versioned like an engine handler. `operation_inputs` is populated only for requested supported
 operations and its single source must belong to the same target. An unresolved target
 may preserve explicit request intent with `not_evaluated`, but cannot invent a source
 request. The default-priority policy marks exactly the first supported operation as
@@ -300,27 +303,25 @@ never inserts a synthetic row into its published relations.
 
 ## 3. Plan bundle and deterministic identity
 
-Use the configured artifact root and the shared plan filename so generic plan discovery
-can read the bundle. The operation-policy extension adds separately described
-`operations/` and `source_requests/` parts; target parts remain the logical target relation:
+Use the configured artifact root and shared plan filename so generic discovery can read
+the bundle. Bundle schema v4 describes four independent relation sets:
 
 ```text
 {artifacts_root}/document_planning/plans/{plan_id}/
 ├── plan.json
 ├── targets/form=<escaped-form>/part-00000.parquet
-├── operations/form=<escaped-form>/part-00000.parquet
-└── source_requests/form=<escaped-form>/part-00000.parquet
+├── target_operations/form=<escaped-form>/part-00000.parquet
+├── source_requests/form=<escaped-form>/part-00000.parquet
+└── operation_inputs/form=<escaped-form>/part-00000.parquet
 ```
 
 Parts are relative, sorted, unique, and listed in `plan.json`; numbering starts at
-`part-00000.parquet` within each form partition. A zero-row plan has an empty parts
-list. Reuse `filing_catalog.paths.form_partition_name` for Hive directory names and
-reject collisions among selected form values. Sort within each partition by
-`(accession, request_id, inventory_entry_id, status)` and write one 128,000-row
-group per part (only the final part in a partition may be smaller), using zstd.
-This fixes part boundaries while bounding memory; do not materialize the source
-universe or all target rows in Python. This is S6's own part layout; filing-catalog
-plans currently store `targets/form=<escaped-form>/data.parquet`.
+`part-00000.parquet` within each relation/form partition. An empty relation has an empty
+parts list. Reuse `filing_catalog.paths.form_partition_name` for Hive directory names
+and reject collisions among selected forms. Sort target parts by target key; sort the
+remaining relations by their primary keys. Use bounded shared Parquet row groups and
+zstd. The writer may join target keys to assign related rows to form partitions but
+must not flatten them into targets. Filing-catalog plans have their separate layout.
 
 The normalized profile digest includes profile ID/version/schema version and canonical
 rules.
@@ -340,10 +341,12 @@ canonical JSON containing exactly these fields:
 
 ```json
 {
+  "bundle_schema_version": 4,
   "target_schema_version": 1,
-  "operation_schema_version": 1,
-  "source_request_schema_version": 1,
-  "matcher_version": "target-matcher-v1",
+  "target_operations_schema_version": 1,
+  "source_requests_schema_version": 1,
+  "operation_inputs_schema_version": 1,
+  "matcher_version": "target-matcher-v2",
   "profile_digest": "...",
   "capability_catalog_version": "...",
   "engine_capability_metadata_version": "...",
@@ -361,13 +364,13 @@ selected, resolve it once and record its immutable snapshot ID/digest. Reusing t
 same ID is allowed only when both input pins, manifest payload, and every output
 part digest agree; otherwise refuse without replacing the published bundle.
 
-`plan.json` contains `plan_id`, relation schema versions, matcher and resolver versions,
-capability catalog and engine metadata versions, profile ID and version/digest, both
-explicit source pins, target/operation/source-request counts, target counts by status,
-operation counts by status, distinct accession coverage counts, and ordered part records
-for each relation (`path`, `form`, `rows`, `sha256`). Operation records pin selected
-capability/handler IDs and versions. Counts reconcile each relation independently;
-target status counts sum to the target-row count.
+`plan.json` contains `plan_id`, bundle/relation schema versions, matcher and resolver
+versions, capability catalog and engine metadata versions, profile ID/version/digest,
+catalog/inventory source pins, target/operation/source-request/input counts, target
+counts by status, requested/support counts by operation, and ordered part records for
+each relation (`path`, `form`, `rows`, `sha256`). Operation rows pin capability/handler
+IDs and versions. Counts reconcile independently; target status counts sum to the
+target-row count and each target has exactly one row per closed-vocabulary operation.
 `plan_digest` is SHA-256 of canonical manifest content with the `plan_digest`
 field omitted. Do not include a volatile creation timestamp in this digest.
 
