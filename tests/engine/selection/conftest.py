@@ -307,7 +307,6 @@ def selection_policy() -> SelectionPolicy:
         ],
         base_content_units=6,
         reserve_size=2,
-        seed_cik_path="__absent__",
     )
 
 

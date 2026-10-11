@@ -356,7 +356,7 @@ def _write_plan_fixture(
         "unique_locators_count": len(good),
         "selected_rows": len(good),
         "reserve_count": 0,
-        "selection_policy": {"seed": "fixture-s1", "seed_cik_path": "test.csv"},
+        "selection_policy": {"seed": "fixture-s1"},
     }
     (plan_dir / "plan.json").write_text(json.dumps(plan_json, indent=2))
     (fixtures / "cohort_observations_plan_fixture.sha256").write_text(

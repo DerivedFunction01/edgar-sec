@@ -170,20 +170,6 @@ def load_seed_cik_csv(path: str | Path) -> dict[str, SeedFiler]:
     return seed_map
 
 
-def resolve_seed_filers(policy: SelectionPolicy) -> dict[str, SeedFiler]:
-    """The seed set a policy configures, or empty when it configures none. An absent
-    optional manifest is a normal state; a malformed one still raises.
-    """
-    path = Path(policy.seed_cik_path)
-    if not path.is_absolute() and not path.is_file():
-        candidate = Path.cwd() / path
-        if candidate.is_file():
-            path = candidate
-    if not path.is_file():
-        return {}
-    return load_seed_cik_csv(path)
-
-
 def write_seed_filers_csv(path: str | Path, seed_map: dict[str, SeedFiler]) -> None:
     """Write the seed set as the plan's immutable seed sidecar, sorted by CIK so the
     file is byte-stable and a published plan is reproducible from its own bundle.
@@ -260,7 +246,6 @@ class SelectionPolicy:
     document_suffixes: list[str] = field(default_factory=list)
     date_selection: list[dict[str, Any]] = field(default_factory=list)
     era_bands: list[EraBand] = field(default_factory=list)
-    seed_cik_path: str = "uploads/cik-sec.csv"
     base_content_units: int = 500
     level: int = 1
     parent_plan_id: str | None = None
@@ -481,7 +466,6 @@ def discover_policies(search_dirs: Sequence[str | Path]) -> list[dict[str, Any]]
                     "level": policy.level,
                     "base_content_units": policy.base_content_units,
                     "policy_fingerprint": policy.policy_fingerprint,
-                    "seed_cik_path": policy.seed_cik_path,
                     # Fields that change what a plan selects: enough to
                     # tell two drafts apart in a menu.
                     "date_selection_text": policy.date_selection_text,
@@ -518,6 +502,5 @@ __all__ = [
     "normalize_suffixes",
     "normalize_value",
     "read_seed_filers_csv",
-    "resolve_seed_filers",
     "write_seed_filers_csv",
 ]

@@ -274,7 +274,6 @@ def _policy() -> SelectionPolicy:
         forms=["10-K"],
         era_bands=[EraBand(name="modern", start_year=2010)],
         base_content_units=2,
-        seed_cik_path="__absent__",
     )
 
 
@@ -284,45 +283,6 @@ def _families_by_cik(locators: Path) -> dict[str, str]:
             f"SELECT representative_cik, company_family FROM read_parquet('{locators}')"
         ).fetchall()
     return {cik: family for cik, family in rows}
-
-
-def test_the_seed_set_does_not_influence_company_family(
-    tmp_path: Path, sample_source: Path
-) -> None:
-    """A seed set is a mandatory-filer list, never a family boundary: an operator
-    manifest must not be able to redefine corporate identity for a published plan.
-    """
-    artifacts_root = tmp_path / "artifacts"
-    manifest = materialize(sample_source, artifacts_root)
-    catalog_id = str(manifest["catalog_id"])
-    paths = resolve_filing_catalog_paths(artifacts_root)
-
-    seed_csv = tmp_path / "seed-cik.csv"
-    seed_csv.write_text(
-        "cik,seed_group,coverage_tags,notes\n0000320193,anchor,,\n", encoding="utf-8"
-    )
-    seeded = SelectionPolicy(
-        corpus_id="test_corpus",
-        forms=["10-K"],
-        era_bands=[EraBand(name="modern", start_year=2010)],
-        base_content_units=2,
-        seed_cik_path=str(seed_csv),
-    )
-
-    def families_under(policy: SelectionPolicy) -> dict[str, str]:
-        builder = FeatureSnapshotBuilder(
-            target_root=paths.snapshot_targets_dir(catalog_id),
-            profile_path=paths.snapshot_profiles_file(catalog_id),
-            output_root=artifacts_root,
-            policy=policy,
-        )
-        return _families_by_cik(builder.build().locator_features)
-
-    # Same profiles, two different seed manifests: identical families.
-    assert families_under(seeded) == families_under(_policy())
-    # A seeded registrant's family comes from the stored name, not seed membership.
-    # Without a family index the column is the name itself, unnormalized.
-    assert families_under(seeded)["0000320193"] == "APPLE FIXTURE INC"
 
 
 _SIZE_SAMPLES = (400, 2_000, 8_000, 32_000, 128_000)

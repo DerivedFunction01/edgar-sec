@@ -30,7 +30,6 @@ _DRAFT: dict[str, Any] = {
     "level": 1,
     "base_content_units": 400,
     "policy_fingerprint": "0" * 32,
-    "seed_cik_path": "__absent__",
     "date_selection_text": "@Q1",
     "derives_era_bands": True,
     "era_band_count": 0,
@@ -43,7 +42,6 @@ def _stub_auto_policy(catalog: str, paths: Any = None) -> SelectionPolicy:
         corpus_id=f"corpus_{catalog}",
         forms=["10-K"],
         base_content_units=100,
-        seed_cik_path="__absent__",
     )
 
 

@@ -55,7 +55,6 @@ def test_a_different_seed_selects_differently(
         forms=selection_policy.forms,
         base_content_units=selection_policy.requested_units(),
         reserve_size=selection_policy.reserve_size,
-        seed_cik_path="__absent__",
         seed="a-completely-different-seed",
     )
     baseline = DeficitSelector(snapshot_dir, selection_policy).select()
@@ -74,7 +73,6 @@ def test_a_dominant_family_cannot_fill_the_selection(
         forms=["10-K"],
         base_content_units=8,
         reserve_size=0,
-        seed_cik_path="__absent__",
     )
     result = DeficitSelector(dominant_family_snapshot, policy).select()
 
@@ -98,7 +96,6 @@ def test_the_cap_is_what_bounds_dominance(tmp_path: Path) -> None:
             forms=["10-K"],
             base_content_units=10,
             reserve_size=0,
-            seed_cik_path="__absent__",
             max_per_company_classification=cap,
         )
         result = DeficitSelector(snapshot, policy).select()
@@ -127,7 +124,6 @@ def test_an_unreachable_target_is_reported_as_a_shortfall(
         forms=["10-K"],
         base_content_units=10,
         reserve_size=0,
-        seed_cik_path="__absent__",
     )
     result = DeficitSelector(snapshot, policy).select()
     assert result.report["target_units"] == 10
@@ -143,7 +139,6 @@ def test_capped_candidates_are_counted_in_the_report(
         forms=["10-K"],
         base_content_units=8,
         reserve_size=0,
-        seed_cik_path="__absent__",
     )
     result = DeficitSelector(dominant_family_snapshot, policy).select()
     assert result.report["deduplicated_company_classifications"] > 0
@@ -197,7 +192,6 @@ def test_floors_are_satisfied_before_the_weighted_fill(
         ],
         base_content_units=8,
         reserve_size=0,
-        seed_cik_path="__absent__",
         floors={"era": {"historical": 4}},
     )
     result = DeficitSelector(snapshot_dir, policy).select()
@@ -216,7 +210,6 @@ def test_an_impossible_floor_is_reported_not_silently_ignored(
         era_bands=[EraBand(name="modern", start_year=2010)],
         base_content_units=4,
         reserve_size=0,
-        seed_cik_path="__absent__",
         floors={"era": {"ancient": 3}},
     )
     result = DeficitSelector(snapshot_dir, policy).select()
@@ -240,7 +233,6 @@ def test_composites_are_satisfied_before_single_dimension_floors(
         forms=["10-K", "20-F"],
         base_content_units=4,
         reserve_size=0,
-        seed_cik_path="__absent__",
         floors={"era": {"common": 2}},
         composites=[{"filters": {"form": "20-F", "era": "rare"}, "min": 2}],
     )
@@ -263,7 +255,6 @@ def test_caps_bound_a_dimensions_share_of_the_target(tmp_path: Path) -> None:
         forms=["10-K"],
         base_content_units=10,
         reserve_size=0,
-        seed_cik_path="__absent__",
         caps={"era": 0.5},
     )
     result = DeficitSelector(snapshot, policy).select()
@@ -285,7 +276,6 @@ def test_seed_filers_are_selected_regardless_of_quota(tmp_path: Path) -> None:
         forms=["10-K"],
         base_content_units=3,
         reserve_size=0,
-        seed_cik_path="__absent__",
     )
     seed_cik = locators[7]["representative_cik"]
     selector = DeficitSelector(
@@ -316,7 +306,6 @@ def test_a_zero_reserve_selects_none(tmp_path: Path) -> None:
         forms=["10-K"],
         base_content_units=3,
         reserve_size=0,
-        seed_cik_path="__absent__",
     )
     result = DeficitSelector(snapshot, policy).select()
     assert result.reserve_locators == []
@@ -330,7 +319,6 @@ def test_selection_stops_at_the_target_even_when_the_pool_is_larger(
         forms=["10-K"],
         base_content_units=5,
         reserve_size=0,
-        seed_cik_path="__absent__",
     )
     result = DeficitSelector(snapshot_dir, policy).select()
     assert len(result.active_locators) == 5
@@ -419,7 +407,6 @@ def test_allocation_spreads_a_budget_across_cells(tmp_path: Path) -> None:
         ],
         base_content_units=6,
         reserve_size=0,
-        seed_cik_path="__absent__",
     )
     result = DeficitSelector(snapshot, policy).select()
     cells = _allocation_cells(result.report)
@@ -445,7 +432,6 @@ def test_allocation_redistributes_from_an_exhausted_cell(tmp_path: Path) -> None
         ],
         base_content_units=6,
         reserve_size=0,
-        seed_cik_path="__absent__",
     )
     result = DeficitSelector(snapshot, policy).select()
     cells = _allocation_cells(result.report)
@@ -479,7 +465,6 @@ def test_a_cap_smaller_than_the_cell_count_prioritizes_era_coverage(
         ],
         base_content_units=3,
         reserve_size=0,
-        seed_cik_path="__absent__",
     )
     result = DeficitSelector(snapshot, policy).select()
     selected_eras = {candidate["era"] for candidate in result.active_candidates}
@@ -500,7 +485,6 @@ def test_allocation_never_exceeds_the_global_cap(tmp_path: Path) -> None:
         ],
         base_content_units=5,
         reserve_size=0,
-        seed_cik_path="__absent__",
         floors={"era": {"historical": 4}},
     )
     result = DeficitSelector(snapshot, policy).select()
@@ -520,7 +504,6 @@ def test_allocation_reports_an_empty_corpus_rather_than_claiming_balance(
         era_bands=[EraBand(name="modern", start_year=2010)],
         base_content_units=10,
         reserve_size=0,
-        seed_cik_path="__absent__",
     )
     result = DeficitSelector(snapshot, policy).select()
     allocation = result.report["form_era_allocation"]
@@ -542,7 +525,6 @@ def test_the_report_names_the_selection_the_run_used(
                 era_bands=[EraBand(name="modern", start_year=2010)],
                 base_content_units=4,
                 reserve_size=0,
-                seed_cik_path="__absent__",
             ).to_dict(),
             "date_selection": [
                 {

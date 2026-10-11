@@ -35,7 +35,6 @@ from edgar_sec.engine.selection.policy import (
     SelectionPolicy,
     compute_seed_fingerprint,
     era_bands_for_range,
-    resolve_seed_filers,
     write_seed_filers_csv,
 )
 from edgar_sec.engine.selection.predicates import (
@@ -565,11 +564,7 @@ def plan_policy(
         seed_cohort_record, seed_cohort_dataset = seed_cohort_input
         pinned_seed = _cohort_seed_filers(seed_cohort_record, seed_cohort_dataset)
     else:
-        pinned_seed = (
-            dict(seed_filers)
-            if seed_filers is not None
-            else resolve_seed_filers(policy)
-        )
+        pinned_seed = dict(seed_filers) if seed_filers is not None else {}
     seed_fingerprint = compute_seed_fingerprint(pinned_seed)
     # ``target_units`` and ``level`` stay out: ``policy_fingerprint`` already
     # covers both, and restating them gave the identity two encodings of one fact.

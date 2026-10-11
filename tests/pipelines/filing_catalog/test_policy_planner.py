@@ -73,7 +73,6 @@ def _policy(**overrides: object) -> SelectionPolicy:
         "era_bands": [EraBand(name="modern", start_year=2010)],
         "base_content_units": 3,
         "reserve_size": 1,
-        "seed_cik_path": "__absent__",
     }
     base.update(overrides)
     return SelectionPolicy(**base)  # type: ignore[arg-type]
@@ -509,7 +508,6 @@ def test_seed_cohort_replaces_configured_seed_csv_and_is_fingerprinted(
 ) -> None:
     manifest, _ = catalog_snapshot
     configured_csv = _seed_csv(tmp_path / "configured.csv", "configured")
-    policy = _policy(seed_cik_path=str(configured_csv))
     cohort = _seed_cohort(
         catalog_artifacts_root, tmp_path, name="cohort-seeds", cik="320193"
     )
@@ -562,7 +560,6 @@ def test_a_policy_plan_publishes_its_normalized_seed_set(
     manifest, _ = catalog_snapshot
     artifacts_root = _artifacts_root(catalog_artifacts_root)
     seed_path = _seed_csv(tmp_path / "seed-cik.csv", "default")
-    policy = _policy(seed_cik_path=str(seed_path))
 
     meta = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
@@ -602,13 +599,11 @@ def test_editing_the_seed_csv_changes_the_plan_identity(
 
     first = plan_policy(
         str(manifest["catalog_id"]),
-        _policy(seed_cik_path=str(seed_path)),
         artifacts_root,
     )
     _seed_csv(seed_path, "renamed")
     second = plan_policy(
         str(manifest["catalog_id"]),
-        _policy(seed_cik_path=str(seed_path)),
         artifacts_root,
     )
     assert first["seed_fingerprint"] != second["seed_fingerprint"]
@@ -624,7 +619,6 @@ def test_a_seed_plan_reused_after_the_csv_changes_is_refused(
     manifest, _ = catalog_snapshot
     artifacts_root = _artifacts_root(catalog_artifacts_root)
     seed_path = _seed_csv(tmp_path / "seed-cik.csv", "default")
-    policy = _policy(seed_cik_path=str(seed_path))
 
     first = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(first["plan_id"])

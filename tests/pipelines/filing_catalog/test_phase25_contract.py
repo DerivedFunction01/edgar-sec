@@ -57,7 +57,6 @@ def _contract_policy() -> SelectionPolicy:
         era_bands=[EraBand(name="modern", start_year=2010)],
         base_content_units=3,
         reserve_size=1,
-        seed_cik_path="__absent__",
     )
 
 
