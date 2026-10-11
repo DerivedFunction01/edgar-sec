@@ -42,17 +42,46 @@ versioned family/path capability catalog and matching engine metadata; unsupport
 operations are retained as ignored and do not invalidate the target or its other
 operations. Fetch or processing failures do not trigger another operation or locator.
 
-Keep operation and source-request relations separate from the logical target relation.
-Each resolved target operation has a deterministic `operation_id`, `target_id`, operation,
-support status/reason, capability and optional handler versions, output kind, and its source
-request IDs. Each distinct body request has a deterministic `source_id`, `target_id`,
-validated locator, source strategy, and linked operation IDs. Every target retains one
-primary source request even when `raw` is not requested; operations sharing a body share a
-source request. Under the proposed materialization contract, `render_to_xml` is a
-family-specific transform of the primary `edgar.htm` input for registered forms; it does
-not create a request for an archive-root `.xml` sibling. These relations do not create
-additional logical target rows. See the
-[representation materialization contract](../document_acquisition/representation_materialization_contract.md).
+The target plan is a normalized relation set; keep operation and source-request rows
+separate from the logical target relation:
+
+| Relation | Key / grain | Version 1 fields |
+|---|---|---|
+| `targets` | `target_id` | Existing target relation and locator contract; unchanged in schema v1. |
+| `target_operations` | `(target_id, operation)` | `operation_id:string`, `requested:bool`, `support_status:string`, `support_reason:string?`, `capability_id:string?`, `capability_version:string?`, `handler_id:string?`, `handler_version:string?`, `output_kind:string?`. Exactly one row per target and operation (`raw`, `render_to_txt`, `render_to_xml`). Support is `supported`, `unsupported`, or `not_evaluated`. |
+| `source_requests` | `source_request_id` | `target_id:string`, `source_role:string`, `source_origin:string`, `retrieval_mode:string`, `request_url:string?`, `sequence:int32?`, `canonical_path:string?`. One primary body request for every matched target; locator fields must agree with the `targets` row. S6 IDs are plan-scoped, not reuse keys. |
+| `operation_inputs` | `(operation_id, input_ordinal)` | `source_request_id:string`, `input_role:string`. Links each requested/supported operation to its source request. Version 1 requires exactly one source request per operation, shared by operations over the same body. |
+
+The deterministic `operation_id` is derived from `[target_id, operation]`; the
+`source_request_id` is derived from `[target_id, source_role, canonical_locator]`.
+Because `target_id` contains `plan_id`, neither ID identifies a source across plans.
+Rows for unmatched/unresolved targets still preserve requested operations with
+`support_status=not_evaluated`; they have no source request or operation-input row.
+For matched targets the primary source request exists even when `raw` is not requested,
+because S9 must acquire the bytes needed by other operations.
+
+An unsupported row requires a stable `support_reason`; supported rows require capability
+ID/version and output kind. Handler ID/version are required only when that capability
+uses an engine handler. `operation_inputs` is populated only for requested supported
+operations and its single source must belong to the same target. An unresolved target
+may preserve explicit request intent with `not_evaluated`, but cannot invent a source
+request. The default-priority policy marks exactly the first supported operation as
+requested; unselected operations remain present with `requested=false`.
+
+Explicitly requested but unsupported operations remain in `target_operations` with
+`requested=true` and `support_status=unsupported`; they have no `operation_inputs` row.
+For default priority, exactly the first supported operation is requested. In v1 every
+supported operation consumes the target's primary source request. `render_to_xml` is
+registered only when the target's primary source is `edgar.htm`; it does not create a
+request for an archive-root `.xml` sibling. Adding a capability with a distinct or
+multiple input source requires a new source/input schema and S9 work/run contract, not
+an unversioned relation-row change.
+
+The bundle manifest pins schemas and Parquet parts for all four relations. Adding these
+operation/source relations is target-plan bundle schema v4; target relation schema v1
+and existing `target_id` identity remain unchanged. S9 rejects earlier bundles for
+operation-aware execution rather than inferring operations from a profile or reopening
+S6. See the [representation materialization contract](../document_acquisition/representation_materialization_contract.md).
 
 The profile digest includes whether policy was omitted or explicit; explicit operations are
 canonicalized as a sorted set. The plan manifest and identity pin the operation and source

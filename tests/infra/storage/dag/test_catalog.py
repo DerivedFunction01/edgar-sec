@@ -95,6 +95,9 @@ def test_resolve_relation_uses_catalog_root_and_checks_integrity(
     catalog.record_node(node)
 
     assert catalog.resolve_relation("snap_01", "submissions") == (path.resolve(),)
+    assert catalog.resolve_active_relation("snap_01", "submissions") == (
+        path.resolve(),
+    )
     path.write_bytes(b"changed")
     try:
         catalog.resolve_relation("snap_01", "submissions")
@@ -133,6 +136,44 @@ def test_lineage_and_active_parts(tmp_path: Path) -> None:
         "snap_02", "submissions", "0000000200", "0000000300"
     )
     assert len(none_pruned) == 0
+
+
+def test_resolve_active_relation_returns_verified_parts_in_lineage_order(
+    tmp_path: Path,
+) -> None:
+    catalog = DAGCatalog(tmp_path)
+    paths = [
+        tmp_path / snapshot_id / "part.parquet"
+        for snapshot_id in ("snap_00", "snap_01")
+    ]
+    descriptors = []
+    for path in paths:
+        path.parent.mkdir(parents=True)
+        path.write_bytes(path.parent.name.encode())
+        descriptors.append(
+            PartDescriptor(
+                path=f"{path.parent.name}/{path.name}",
+                sha256=file_sha256(path),
+                row_count=1,
+                byte_size=path.stat().st_size,
+            )
+        )
+    checkpoint = replace(
+        _make_manifest("snap_00", kind="checkpoint", anchor_id="snap_00", depth=0),
+        relations={"features": (descriptors[0],)},
+    )
+    delta = replace(
+        _make_manifest(
+            "snap_01", kind="delta", parent_id="snap_00", anchor_id="snap_00", depth=1
+        ),
+        relations={"features": (descriptors[1],)},
+    )
+    catalog.publish_node(checkpoint)
+    catalog.publish_node(delta)
+
+    assert catalog.resolve_active_relation("snap_01", "features") == tuple(
+        path.resolve() for path in paths
+    )
 
 
 def test_branches_and_tags(tmp_path: Path) -> None:

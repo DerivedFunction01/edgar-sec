@@ -63,6 +63,10 @@ opts into eligible retries; `--artifacts` overrides the resolved artifact root a
 defaults to the registered `acquisition.max_response_bytes` setting; an explicit
 `--max-response-bytes` value overrides it.
 
+Those flags describe the implemented v1 runner. Operation-aware run schema v2 pins the
+response-byte ceiling and fixture/live mode at project time; `run` cannot change them.
+A different ceiling or source mode requires a new projected run ID.
+
 ## Execution contract
 
 - Validate the run and acquire its run lock before opening the network client. A

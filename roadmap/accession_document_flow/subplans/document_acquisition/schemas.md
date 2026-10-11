@@ -2,18 +2,27 @@
 
 ## Purpose and status
 
-This is the shared S9 schema contract. Lightweight JSON and cross-stage contracts
-belong in `edgar_sec/pipelines/document_acquisition/schemas.py`; Parquet target and
-work-order fields belong in `arrow_schemas.py`. Those owners and the S9 project/state
-substrate are implemented. Acquisition snapshot relation schemas remain gated by
-S11 evidence and approval.
+This page separates the currently implemented S9 v1 substrate from the operation-aware
+schema v2 design. Lightweight JSON and cross-stage contracts belong in
+`edgar_sec/pipelines/document_acquisition/schemas.py`; Parquet relations belong in
+`arrow_schemas.py`. Do not silently read a v1 run or S6 target-only bundle as the new
+operation-aware contract.
 
 ## Input contract
 
-The S6 bundle uses `bundle_schema_version=2`, `matcher_version="target-matcher-v2"`,
-and target relation schema version `1`. Catalog input schema `1.3` is source
-provenance only; S9 does not reopen that catalog plan.
-The persisted row fields are the S6 `document_planning.schemas.TARGET_SCHEMA` contract:
+The implemented S6 bundle uses `bundle_schema_version=3`,
+`matcher_version="target-matcher-v2"`, and target relation schema version `1`. It
+contains only the target relation; the profile's acquisition policy is not serialized
+as S9-readable operation rows. Catalog input schema `1.3` is source provenance only;
+S9 does not reopen that catalog plan.
+
+Operation-aware S9 requires S6 bundle schema v4 with the `target_operations`,
+`source_requests`, and `operation_inputs` relations defined in
+[S6 specs](../document_planning/specs.md). Their relation schemas are v1. S9 refuses
+bundle v3 for operation-aware projection; it does not infer operation requests from a
+profile or rerun S6 capability resolution. The target relation schema remains v1.
+The persisted target fields are the S6 `document_planning.schemas.TARGET_SCHEMA`
+contract:
 
 | Column | Physical type | Required | Use in S9 |
 |---|---|---:|---|
@@ -38,20 +47,27 @@ declared contract; they do not reopen source artifacts.
 
 ## Work-order schema
 
-`WORK_ORDER_SCHEMA_VERSION = "1"` is the proposed first S9 work-order format. Persist
-one row for every S6 target, including targets that S9 will skip. Preserve the S6
-columns above and append:
+`WORK_ORDER_SCHEMA_VERSION = "1"` is the implemented flattened target-only format.
+The operation-aware work-order schema v2 is a normalized relation set. It persists one
+`work_targets` row for every S6 target, including skipped targets, and separate
+operation/source relations:
 
 | Column | Physical type | Required | Meaning |
 |---|---|---:|---|
 | `executable` | bool | yes | True only for `status="matched"` and a validated `direct_url` or `bundle_sequence`. |
 | `skip_reason` | string | no | Stable code for non-matched or unsupported targets; null iff executable. |
+| `chunk_id` | int32 | nullable | Deterministic zero-based membership for executable targets; null for skipped targets. |
 | `catalog_direct_selection` | string | nullable | Preserve the S6 selector; it cannot be supplied or changed by the S9 caller. |
 
-The work-order part is Parquet with the S6 field nullability unchanged. The manifest
-lists each part's relative path, row count, byte size, and SHA-256. Parts are read and
-written in bounded row groups. `fetch_url` is not a second locator column: S9 stores
-the validated S6 `target_url` and interprets it according to `retrieval_mode`.
+The v2 relation set is `work_targets`, `work_operations`, `work_source_requests`,
+`work_operation_inputs`, and `work_chunks`. Each relation is Parquet under
+`work_order/{relation}/part-*.parquet`; the manifest pins every relation schema and
+each part's relative path, row count, byte size, and SHA-256. `work_chunks` pins target
+count and chunk digest; chunk ID is also carried by each executable target. Chunk
+membership is formed from sorted target IDs using the pinned `runtime.chunk_size`. A
+target and all its operation/source rows form one indivisible work unit. Parts use
+bounded shared Parquet row groups. S9 copies and validates S6 source requests against
+the target's `target_url` and `retrieval_mode`.
 
 - `direct_url` means `target_url` is the selected document locator; derive its
   `document_path` from the validated archive path, not from `target_type`.
@@ -69,7 +85,7 @@ the validated S6 `target_url` and interprets it according to `retrieval_mode`.
 
 ## Run manifest
 
-The immutable `run.json` contains:
+The immutable `run_manifest.json` contains:
 
 ```python
 from typing import TypedDict
@@ -80,6 +96,11 @@ class PartDescriptor(TypedDict):
     byte_size: int
     sha256: str
 
+class RelationDescriptor(TypedDict):
+    relation: str
+    schema_version: str
+    parts: list[PartDescriptor]
+
 class AcquisitionRunManifest(TypedDict):
     run_id: str
     run_schema_version: str
@@ -88,13 +109,26 @@ class AcquisitionRunManifest(TypedDict):
     target_plan_digest: str
     bundle_schema_version: int
     target_schema_version: int
+    target_operations_schema_version: str
+    source_requests_schema_version: str
+    operation_inputs_schema_version: str
     matcher_version: str
     catalog_plan_id: str
     catalog_plan_digest: str
     inventory_snapshot_id: str | None
     inventory_snapshot_digest: str | None
+    snapshot_branch: str
+    base_snapshot_id: str | None
+    base_snapshot_digest: str | None
+    acquisition_source_mode: str
+    fixture_id: str | None
+    max_response_bytes: int
     work_order_schema_version: str
-    work_order_parts: list[PartDescriptor]
+    work_order_relations: list[RelationDescriptor]
+    work_order_digest: str
+    chunking_algorithm: str
+    chunk_size: int
+    chunk_count: int
     target_row_count: int
     executable_count: int
     skipped_count: int
@@ -102,10 +136,15 @@ class AcquisitionRunManifest(TypedDict):
     run_digest: str
 ```
 
-Relative paths must remain inside the run directory. The run digest is
-the canonical hash of the manifest without `run_digest`. A run ID is derived from
-the target-plan ID/digest and S9 contract version; transport retries and worker
-settings are attempt provenance and do not rewrite the manifest.
+Every listed relation part is validated by exact schema, row count, byte size, digest,
+consecutive part numbering, and containment beneath the run root; undeclared Parquet
+files are refused. The run digest is the canonical hash of the manifest without
+`run_digest`. `work_order_digest` is the canonical hash of the work-order schema,
+relation descriptors/part digests, chunking settings, and row counts; it is the common
+distribution `work_digest`. `run_id` is derived from the plan digest, contract/schema
+versions, branch/base snapshot, chunking algorithm/size, source mode/fixture ID, and
+response-byte ceiling. Worker count, request pacing, completion order, and retries
+remain attempt provenance and do not rewrite the run.
 
 ## Runtime outcomes and body handoff
 
@@ -121,23 +160,33 @@ from typing import TypedDict
 class StagedBodyRef:
     run_id: str
     target_id: str
+    source_request_id: str
+    source_asset_id: str
+    source_origin: str
     path: Path
     sha256: str
     byte_size: int
     selected_filename: str | None
     source_response_path: Path | None
-    source_response_sha256: str
-    source_response_byte_size: int
+    source_response_sha256: str | None
+    source_response_byte_size: int | None
 
 class BodyConsumptionReceipt(TypedDict):
     receipt_schema_version: str
     run_id: str
     target_id: str
-    source_response_sha256: str
+    source_asset_id: str
     selected_sha256: str
     processing_run_id: str
     consumed_at_utc: str
+    source_response_sha256: str | None
 ```
+
+The v2 body reference identifies the reusable source asset. A snapshot-reuse input has
+no new HTTP response envelope, so response path/digest/size are nullable; the selected
+body digest/size remain mandatory. One process call consumes the requested operations
+for one target, so the receipt remains target-scoped. It is evidence only and never
+authorizes cleanup.
 
 `models.py` owns mutable-run value records:
 
@@ -147,10 +196,15 @@ from typing import Literal
 
 SourceOrigin = Literal["inventory_index", "catalog_direct"]
 RetrievalMode = Literal["direct_url", "bundle_sequence"]
-AcquisitionSource = Literal["live_sec", "fixture_replay"]
-AttemptKind = Literal["document_body", "lazy_index"]
+AcquisitionSource = Literal["live_sec", "fixture_replay", "snapshot_reuse"]
+AttemptKind = Literal["document_body", "lazy_index", "source_reuse"]
 AcquisitionStatus = Literal["pending", "acquired", "not_filed", "required_missing", "ambiguous", "failed", "skipped"]
+OperationStatus = Literal["not_requested", "unsupported", "pending", "blocked", "available", "failed"]
 RunStatus = Literal[
+    "ready", "running", "interrupted", "complete", "needs_retry",
+    "complete_with_errors", "invalid",
+]
+ProcessingRunStatus = Literal[
     "ready", "running", "interrupted", "complete", "needs_retry",
     "complete_with_errors", "invalid",
 ]
@@ -165,9 +219,14 @@ class AcquisitionPolicy:
 class AcquisitionAttempt:
     attempt_id: str
     target_id: str
+    source_request_id: str | None
+    source_asset_id: str | None
     attempt_number: int
     attempt_kind: AttemptKind
     source: AcquisitionSource
+    reused_snapshot_id: str | None
+    assignment_id: str | None
+    worker_id: str | None
     outcome: Literal["acquired", "not_filed", "required_missing", "ambiguous", "failed"]
     retryable: bool
     error_code: str | None
@@ -181,6 +240,38 @@ class AcquisitionAttempt:
     selected_sha256: str | None
     selected_byte_size: int | None
     selected_body_relative_path: str | None
+
+@dataclass(frozen=True, slots=True)
+class OperationState:
+    operation_id: str
+    target_id: str
+    operation: Literal["raw", "render_to_txt", "render_to_xml"]
+    requested: bool
+    support_status: Literal["supported", "unsupported", "not_evaluated"]
+    status: OperationStatus
+    latest_attempt_id: str | None
+    representation_id: str | None
+    output_sha256: str | None
+    output_byte_size: int | None
+    output_relative_path: str | None
+    reason_code: str | None
+    retryable: bool
+
+@dataclass(frozen=True, slots=True)
+class OperationAttempt:
+    operation_attempt_id: str
+    operation_id: str
+    attempt_number: int
+    attempt_kind: Literal["identity", "transform", "representation_reuse"]
+    input_fingerprint_sha256: str
+    input_sha256: str
+    representation_id: str | None
+    output_sha256: str | None
+    output_byte_size: int | None
+    output_relative_path: str | None
+    status: Literal["available", "failed"]
+    retryable: bool
+    error_code: str | None
 
 @dataclass(frozen=True, slots=True)
 class TargetSlotResolution:
@@ -240,7 +331,7 @@ class ProjectedAcquisitionRun:
     manifest: AcquisitionRunManifest
     executable_count: int
     skipped_count: int
-    work_order_sha256: str
+    work_order_digest: str
     reused: bool
 
 @dataclass(frozen=True, slots=True)
@@ -248,6 +339,8 @@ class AcquisitionStatusReport:
     run_id: str
     state: RunStatus
     target_counts: Mapping[AcquisitionStatus, int]
+    operation_state: ProcessingRunStatus
+    operation_counts: Mapping[OperationStatus, int]
     retryable_failure_count: int
     non_retryable_failure_count: int
     active_lock: RunLockInfo | None

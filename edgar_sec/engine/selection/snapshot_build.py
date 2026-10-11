@@ -2,21 +2,51 @@
 
 from __future__ import annotations
 
-import json
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 from edgar_sec.engine.selection.paths import (
-    FEATURE_MANIFEST_FILE,
     LIFECYCLE_FILE,
     LOCATOR_BANDS_FILE,
     LOCATOR_FEATURES_FILE,
     OCCURRENCE_INDEPENDENT_FILE,
 )
-from edgar_sec.engine.selection.snapshot import SnapshotPaths
-from edgar_sec.foundation.hashing import file_sha256
-from edgar_sec.infra.storage.atomic import atomic_write_text
+from edgar_sec.engine.selection.snapshot import (
+    LIFECYCLE_RELATION,
+    LOCATOR_BANDS_RELATION,
+    LOCATOR_FEATURES_RELATION,
+    OCCURRENCE_RELATION,
+    SnapshotPaths,
+    feature_branch_name,
+)
+from edgar_sec.foundation.hashing import file_sha256, sha256_text
+from edgar_sec.foundation.serialization import canonical_json
+from edgar_sec.foundation.runtime.paths import SNAPSHOTS_DIR
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
+from edgar_sec.infra.storage.dag.manifest import (
+    DAGNodeManifest,
+    ParentRef,
+    PartDescriptor,
+)
+from edgar_sec.infra.storage.parquet import count_parquet_rows, read_parquet_key_bounds
+
+
+def _part_descriptor(
+    path: Path, snapshots_root: Path, key_column: str
+) -> PartDescriptor:
+    path = path.resolve()
+    relative = path.relative_to(snapshots_root.resolve()).as_posix()
+    key_min, key_max = read_parquet_key_bounds(path, key_column)
+    return PartDescriptor(
+        path=relative,
+        sha256=file_sha256(path),
+        row_count=count_parquet_rows(path),
+        byte_size=path.stat().st_size,
+        key_min=key_min,
+        key_max=key_max,
+    )
 
 
 def build_snapshot(builder: Any, feature_schema_version: str) -> SnapshotPaths:
@@ -24,13 +54,13 @@ def build_snapshot(builder: Any, feature_schema_version: str) -> SnapshotPaths:
     if not forms:
         raise ValueError("no forms configured in policy")
 
-    snapshot_dir = builder.snapshot_dir(forms)
-    manifest_path = snapshot_dir / FEATURE_MANIFEST_FILE
-    if builder._is_reusable(manifest_path):
-        return builder.paths_for(snapshot_dir)
-    manifest_path.unlink(missing_ok=True)
-
     active_parts = builder._target_part_files()
+    snapshot_dir = builder.snapshot_dir(forms)
+    snapshot_id = snapshot_dir.name
+
+    if builder._is_reusable(snapshot_id):
+        return builder.paths_for(snapshot_dir)
+
     incremental = builder._is_parent_compatible() and bool(builder.delta_target_parts)
     new_parts = builder._new_target_part_files(incremental)
     snapshot_dir.mkdir(parents=True, exist_ok=True)
@@ -39,23 +69,23 @@ def build_snapshot(builder: Any, feature_schema_version: str) -> SnapshotPaths:
     lifecycle_path = snapshot_dir / LIFECYCLE_FILE
     locator_features_path = snapshot_dir / LOCATOR_FEATURES_FILE
 
+    parent_snapshot: SnapshotPaths | None = None
     parent_manifest: dict[str, Any] = {}
-    if incremental and builder.parent_feature_manifest is not None:
-        parent_manifest = json.loads(
-            builder.parent_feature_manifest.read_text(encoding="utf-8")
-        )
+    if incremental:
+        parent_snapshot = builder._load_parent_snapshot()
+        parent_manifest = parent_snapshot.manifest
     occurrence_parts = [
-        *(Path(path) for path in parent_manifest.get("occurrence_parts", [])),
+        *(parent_snapshot.occurrence_parts if parent_snapshot is not None else ()),
         independent_path,
     ]
     locator_band_parts = [
-        *(Path(path) for path in parent_manifest.get("locator_band_parts", []))
+        *(parent_snapshot.locator_band_parts if parent_snapshot is not None else ())
     ]
     lifecycle_parts = [
-        *(Path(path) for path in parent_manifest.get("lifecycle_parts", []))
+        *(parent_snapshot.lifecycle_parts if parent_snapshot is not None else ())
     ]
     locator_feature_parts = [
-        *(Path(path) for path in parent_manifest.get("locator_feature_parts", []))
+        *(parent_snapshot.locator_feature_parts if parent_snapshot is not None else ())
     ]
 
     counts: dict[str, int] = {}
@@ -132,7 +162,7 @@ def build_snapshot(builder: Any, feature_schema_version: str) -> SnapshotPaths:
 
         occurrence_relation = SnapshotPaths(
             snapshot_dir=snapshot_dir,
-            manifest=manifest_path,
+            manifest={},
             occurrence_parts=tuple(occurrence_parts),
             locator_band_parts=tuple(locator_band_parts),
             lifecycle_parts=tuple(lifecycle_parts),
@@ -155,30 +185,82 @@ def build_snapshot(builder: Any, feature_schema_version: str) -> SnapshotPaths:
         )
         locator_feature_parts.append(locator_features_path)
 
+    feature_signature = builder.feature_signature(forms)
     manifest = {
-        "snapshot_id": snapshot_dir.name,
-        "feature_schema_version": feature_schema_version,
-        "feature_signature": builder.feature_signature(forms),
+        "artifact_kind": "selection_features",
+        "feature_signature": feature_signature,
         "profile_path": str(builder.profile_path),
         "profile_sha256": file_sha256(builder.profile_path),
         "family_index_id": builder.family_index_id,
         "corpus_id": builder.policy.corpus_id,
-        "occurrence_parts": [str(path) for path in occurrence_parts],
-        "locator_band_parts": [str(path) for path in locator_band_parts],
-        "lifecycle_parts": [str(path) for path in lifecycle_parts],
-        "locator_feature_parts": [str(path) for path in locator_feature_parts],
         "size_anchors": current_anchors,
         "global_max_year": global_max_year,
-        "parent_snapshot": (
-            str(builder.parent_feature_manifest)
-            if incremental and builder.parent_feature_manifest is not None
-            else ""
-        ),
         "incremental": incremental,
         "counts": counts,
     }
-    atomic_write_text(
-        manifest_path,
-        json.dumps(manifest, indent=2, sort_keys=True) + "\n",
+
+    snapshots_root = builder.output_root / SNAPSHOTS_DIR
+    relations = {
+        OCCURRENCE_RELATION: (
+            _part_descriptor(independent_path, snapshots_root, "occurrence_id"),
+        ),
+        LOCATOR_BANDS_RELATION: (
+            _part_descriptor(
+                locator_bands_path, snapshots_root, "document_locator_key"
+            ),
+        ),
+        LIFECYCLE_RELATION: (
+            _part_descriptor(lifecycle_path, snapshots_root, "source_cik"),
+        ),
+        LOCATOR_FEATURES_RELATION: (
+            _part_descriptor(
+                locator_features_path, snapshots_root, "document_locator_key"
+            ),
+        ),
+    }
+    catalog = DAGCatalog(snapshots_root)
+    parents: tuple[ParentRef, ...] = ()
+    checkpoint_anchor_id = snapshot_id
+    lineage_depth = 0
+    kind = "checkpoint"
+    if incremental and builder.parent_feature_snapshot_id is not None:
+        parent_id = builder.parent_feature_snapshot_id
+        parent = catalog.get_manifest(parent_id)
+        parent_sha256 = catalog.get_manifest_sha256(parent_id)
+        if parent is None or parent_sha256 is None:
+            raise ValueError(
+                f"parent feature node disappeared during build: {parent_id}"
+            )
+        parents = (ParentRef(parent_id, parent_sha256),)
+        checkpoint_anchor_id = parent.checkpoint_anchor_id
+        lineage_depth = parent.lineage_depth + 1
+        kind = "delta"
+
+    logical_fingerprint = sha256_text(
+        canonical_json(
+            {
+                "metadata": manifest,
+                "relations": {
+                    name: [part.to_dict() for part in parts]
+                    for name, parts in relations.items()
+                },
+                "parents": [parent.to_dict() for parent in parents],
+            }
+        )
     )
+    node = DAGNodeManifest(
+        snapshot_id=snapshot_id,
+        kind=kind,
+        parents=parents,
+        checkpoint_anchor_id=checkpoint_anchor_id,
+        lineage_depth=lineage_depth,
+        created_at=datetime.now(UTC).isoformat(),
+        relations=relations,
+        logical_fingerprint=logical_fingerprint,
+        schema_versions={"selection_features": feature_schema_version},
+        metadata=manifest,
+    )
+    branch_name = feature_branch_name(feature_signature)
+    catalog.publish_node(node, branch_name=branch_name)
+
     return builder.paths_for(snapshot_dir)

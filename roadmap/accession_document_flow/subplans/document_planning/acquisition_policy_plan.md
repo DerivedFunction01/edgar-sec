@@ -1,7 +1,9 @@
 # S6 Acquisition-Policy Extension Plan
 
-**Status: Phase 0-2 implemented, Phase 3-7 pending.** The profile request and plan-relation contract
-is specified in [S6 `specs.md`](specs.md); Phase 0-2 components are implemented and tested.
+**Status: operation/source schema v1 designed; serialization, work/run, and lifecycle
+implementation pending.** The profile request and plan-relation contract is specified in
+[S6 `specs.md`](specs.md). The current target-plan bundle does not yet serialize the
+operation/source relations described there.
 
 ## Goal
 
@@ -184,8 +186,9 @@ the profile loader, planner, S9, and processing stage.
 
 The S6 acquisition catalog declares, per family/role/path-facts/operation:
 
-- the supported status and whether execution needs the primary body or an additional
-  source-locator strategy;
+- support status and a source-input strategy. Bundle schema v4 supports only the
+  target's validated primary source request; a capability requiring another locator is
+  not executable until a later, versioned source-input contract exists;
 - the optional engine handler identity/version (source pass-through needs no transform);
 - which output representation it produces.
 
@@ -194,10 +197,13 @@ required, its handler ID/version has a matching engine metadata descriptor. Engi
 enforce descriptor/runtime-registry parity; S6 reads descriptors, not handler callables.
 
 When default priority is used, the planner resolves it against this catalog and pins the
-chosen operation and S6 catalog version. For an explicit set, it pins all
-requested operations and records unsupported operations as ignored. A change to profile
-operations, capability resolution, source-path rules, or operation status changes plan or
-processing identity.
+chosen operation and S6 catalog version. For an explicit set, it pins all requested
+operations and records unsupported operations as unsupported, not as successful output.
+The bundle's `target_operations` relation has one row per target and closed-vocabulary
+operation; `source_requests` identifies the target body's input and `operation_inputs`
+links supported requested operations to it. They remain separate Parquet relations, not
+columns or rows duplicated onto the target relation. A change to profile operations,
+capability resolution, source-path rules, or operation status changes plan identity.
 
 The profile digest includes the canonical operation set (canonical order, since explicit
 list order is not preference). The plan identity/manifest pins profile digest, S6 catalog

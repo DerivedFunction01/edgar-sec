@@ -10,11 +10,13 @@ adapter remains unimplemented and in planning.
 
 - The common CLI receives the opaque work identity as `--work-id`; the acquisition
   adapter will resolve and validate the S9 run and its S6 plan pins before export.
-- Partition only pending eligible work; do not assign acquired, terminal, skipped,
-  or non-retryable failed targets. Explicitly requested retry work follows the
+- Partition only pending eligible target chunks; do not assign acquired, terminal,
+  skipped, or non-retryable failed targets. A chunk carries each target's complete
+  operation/source/input relations. Explicitly requested retry work follows the
   acquisition run contract.
-- Each bundle includes the run/work-order manifest and assigned target descriptors,
-  but not upstream catalog/inventory sources or SEC credentials.
+- Each bundle includes the run/work-order manifest, assigned relation rows, and
+  verified source payloads needed for base-snapshot reuse, but not upstream
+  catalog/inventory sources or SEC credentials.
 - Schema-v2 bundle assignment identity binds pipeline, work ID and digest, worker ID,
   assigned chunk IDs, and assignment ID. The common protocol does not read or project
   upstream pipeline plans. A conflicting or partial export must not appear as a valid

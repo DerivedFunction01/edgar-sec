@@ -5,7 +5,6 @@ reused only while its input fingerprint matches.
 
 from __future__ import annotations
 
-import json
 import re
 from collections.abc import Sequence
 from pathlib import Path
@@ -22,7 +21,11 @@ from edgar_sec.domain.filing_catalog.schemas import (
 from edgar_sec.domain.forms.common.aliases import FORM_FAMILY_SUFFIXES
 from edgar_sec.domain.taxonomy.jurisdictions import STATE_POSTAL_CODES
 from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
-from edgar_sec.engine.selection.snapshot import SnapshotPaths, load_snapshot_paths
+from edgar_sec.engine.selection.snapshot import (
+    SnapshotPaths,
+    feature_branch_name,
+    load_snapshot_paths,
+)
 from edgar_sec.foundation.runtime.paths import PARQUET_PART_GLOB, SNAPSHOTS_DIR
 from edgar_sec.engine.selection.paths import (
     LIFECYCLE_FILE,
@@ -159,7 +162,7 @@ class FeatureSnapshotBuilder:
         gap_years: int = DEFAULT_GAP_YEARS,
         cessation_grace_years: int = DEFAULT_CESSATION_GRACE_YEARS,
         stub_size_threshold: int = DEFAULT_STUB_SIZE_THRESHOLD,
-        parent_feature_manifest: Path | None = None,
+        parent_feature_snapshot_id: str | None = None,
         active_target_parts: Sequence[Path] | None = None,
         delta_target_parts: Sequence[Path] | None = None,
     ) -> None:
@@ -183,7 +186,7 @@ class FeatureSnapshotBuilder:
             gap_years, cessation_grace_years, stub_size_threshold
         )
         self.options["row_group_size"] = self.row_group_size
-        self.parent_feature_manifest = parent_feature_manifest
+        self.parent_feature_snapshot_id = parent_feature_snapshot_id
         self.active_target_parts = tuple(
             Path(path).resolve() for path in (active_target_parts or ())
         )
@@ -214,9 +217,14 @@ class FeatureSnapshotBuilder:
         payload = {
             "target_root": str(self.target_root),
             "profile_path": str(self.profile_path),
+            "profile_sha256": file_sha256(self.profile_path),
+            "row_group_size": self.row_group_size,
             "feature_signature": self.feature_signature(forms),
+            "feature_schema_version": FEATURE_SCHEMA_VERSION,
         }
-        return self.output_root / SNAPSHOTS_DIR / canonical_hash(payload)[:32]
+        return (
+            self.output_root / SNAPSHOTS_DIR / f"feature-{canonical_hash(payload)[:32]}"
+        )
 
     def feature_signature(self, forms: Sequence[str] | None = None) -> dict[str, Any]:
         """Return a signature capturing all inputs that affect feature derivation."""
@@ -234,39 +242,43 @@ class FeatureSnapshotBuilder:
 
     def _is_parent_compatible(self) -> bool:
         """Whether prior independent rows can be inherited without stale enrichment."""
-        if self.parent_feature_manifest is None:
-            return False
-        if not self.parent_feature_manifest.is_file():
+        if self.parent_feature_snapshot_id is None:
             return False
         try:
-            recorded = json.loads(
-                self.parent_feature_manifest.read_text(encoding="utf-8")
-            )
-        except (OSError, ValueError):
+            parent = self._load_parent_snapshot()
+        except (OSError, ValueError, RuntimeError):
             return False
+        recorded = parent.manifest
         if recorded.get("feature_schema_version") != FEATURE_SCHEMA_VERSION:
             return False
         if recorded.get("feature_signature") != self.feature_signature():
             return False
         artifact_parts = (
-            *recorded.get("occurrence_parts", []),
-            *recorded.get("locator_band_parts", []),
-            *recorded.get("lifecycle_parts", []),
-            *recorded.get("locator_feature_parts", []),
+            *parent.occurrence_parts,
+            *parent.locator_band_parts,
+            *parent.lifecycle_parts,
+            *parent.locator_feature_parts,
         )
-        if not recorded.get("occurrence_parts") or not all(
-            Path(path).is_file() for path in artifact_parts
+        if not parent.occurrence_parts or not all(
+            path.is_file() for path in artifact_parts
         ):
             return False
-        return self._inherited_profiles_unchanged(recorded)
+        return self._inherited_profiles_unchanged(recorded, parent.occurrence_parts)
 
-    def _inherited_profiles_unchanged(self, parent: dict[str, Any]) -> bool:
+    def _load_parent_snapshot(self) -> SnapshotPaths:
+        """Load parent feature metadata and inherited relation parts."""
+        if self.parent_feature_snapshot_id is None:
+            raise RuntimeError("no parent feature snapshot registered")
+        parent_dir = self.output_root / SNAPSHOTS_DIR / self.parent_feature_snapshot_id
+        return self._snapshot_paths(parent_dir)
+
+    def _inherited_profiles_unchanged(
+        self, parent: dict[str, Any], occurrence_parts: Sequence[Path]
+    ) -> bool:
         old_profile = Path(str(parent.get("profile_path") or ""))
         if not old_profile.is_file():
             return False
-        inherited_parts = ", ".join(
-            sql_literal(str(path)) for path in parent["occurrence_parts"]
-        )
+        inherited_parts = ", ".join(sql_literal(str(path)) for path in occurrence_parts)
         compared = (
             "sic_code",
             "owner_org_cik",
@@ -335,16 +347,13 @@ class FeatureSnapshotBuilder:
     def paths_for(self, snapshot_dir: Path) -> SnapshotPaths:
         return self._snapshot_paths(snapshot_dir)
 
-    def _is_reusable(self, manifest: Path) -> bool:
-        """Whether a built snapshot's manifest describes files this build still stands behind.
-
-        The directory name already covers every hashed input, so the only way a manifest
-        can disagree with the code is a feature schema that moved without a version bump.
-        """
-        if not manifest.is_file():
-            return False
+    def _is_reusable(self, snapshot_id: str) -> bool:
+        """Whether a registered feature node still matches current inputs."""
         try:
-            recorded = json.loads(manifest.read_text(encoding="utf-8"))
+            snapshot = self._snapshot_paths(
+                self.output_root / SNAPSHOTS_DIR / snapshot_id
+            )
+            recorded = snapshot.manifest
         except (OSError, ValueError):
             return False
         if recorded.get("feature_schema_version") != FEATURE_SCHEMA_VERSION:
@@ -353,13 +362,21 @@ class FeatureSnapshotBuilder:
             return False
         if recorded.get("profile_sha256") != file_sha256(self.profile_path):
             return False
-        artifacts = [
-            *recorded.get("occurrence_parts", []),
-            *recorded.get("locator_band_parts", []),
-            *recorded.get("lifecycle_parts", []),
-            *recorded.get("locator_feature_parts", []),
-        ]
-        return all(path and Path(path).is_file() for path in artifacts)
+        artifacts = (
+            *snapshot.occurrence_parts,
+            *snapshot.locator_band_parts,
+            *snapshot.lifecycle_parts,
+            *snapshot.locator_feature_parts,
+        )
+        if not all(path.is_file() for path in artifacts):
+            return False
+        from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+
+        catalog = DAGCatalog(self.output_root / SNAPSHOTS_DIR)
+        catalog.write_pointer(
+            feature_branch_name(self.feature_signature()), snapshot_id
+        )
+        return True
 
     # ----------------------------------------------------------------- SQL
 

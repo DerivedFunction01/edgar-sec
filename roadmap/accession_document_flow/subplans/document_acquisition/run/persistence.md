@@ -2,9 +2,11 @@
 
 ## Purpose and status
 
-This page defines the proposed per-run mutable ledger. It is design-only and uses
-SQLite for target state and append-only attempts, while immutable work-order rows
-remain Parquet. It does not use DuckDB for high-frequency state updates.
+The implemented run-state ledger is SQLite schema v2. The operation-aware design below
+defines replacement schema v3: target acquisition stays transactional, operation
+materialization gets an independent current-state row and append-only attempts, and the
+immutable work relation set remains Parquet. This does not use DuckDB for high-frequency
+state updates.
 
 ## Database schema
 
@@ -88,14 +90,135 @@ CREATE INDEX attempts_target_number ON attempts(target_id, attempt_number);
 CREATE INDEX target_state_retry ON target_state(outcome, retryable, executable);
 ```
 
-Adding `required_missing`, index lookup attempts, and target-slot resolutions is a
-run-state schema change; initialize the replacement contract at `PRAGMA user_version=2`
-and refuse v1 databases rather than guessing their interpretation. The exact URL
-fields exclude credentials, query strings, and response headers. Attempt and resolution
-rows are append-only; current status is an updateable projection in `target_state`.
-S10 body-consumption receipts remain separate versioned JSON sidecars so S10 can
-write them through the S9 path/schema contracts without importing the S9 state
-service.
+## Operation-aware schema v3
+
+Schema v3 is a fresh run-state format; it refuses v2 rather than migrating partially
+completed work. The immutable run manifest pins `user_version=3`. Retain the v2 tables
+and add/extend these fields and relations:
+
+- `target_state.source` accepts `live_sec`, `fixture_replay`, or `snapshot_reuse`.
+- `target_state` adds the committed `source_asset_id` and latest `source_request_id`;
+  `reused_snapshot_id` is non-null only when the current outcome came from reuse.
+- `attempts.attempt_kind` accepts `document_body`, `lazy_index`, or `source_reuse`; its
+  `source` uses the same three acquisition origins. Add nullable
+  `source_request_id`, `source_asset_id`, `reused_snapshot_id`, `assignment_id`, and
+  `worker_id`. Reuse attempts have no HTTP status, response digest, or response path;
+  they retain the selected digest/size/path and pinned snapshot ID.
+- Existing target attempt number, target outcome, and transaction semantics remain
+  unchanged. The added columns let the attempt record locate its S6 input, physical
+  bytes, base snapshot, and optional worker provenance without storing body bytes.
+
+```sql
+-- The v3 target_state and attempts DDL applies the extensions described above.
+
+CREATE TABLE operation_state (
+    operation_id TEXT PRIMARY KEY,
+    target_id TEXT NOT NULL REFERENCES target_state(target_id),
+    operation TEXT NOT NULL CHECK (operation IN
+        ('raw', 'render_to_txt', 'render_to_xml')),
+    requested INTEGER NOT NULL CHECK (requested IN (0, 1)),
+    support_status TEXT NOT NULL CHECK (support_status IN
+        ('supported', 'unsupported', 'not_evaluated')),
+    outcome TEXT NOT NULL CHECK (outcome IN
+        ('not_requested', 'unsupported', 'pending', 'blocked', 'available', 'failed')),
+    reason_code TEXT,
+    retryable INTEGER NOT NULL DEFAULT 0 CHECK (retryable IN (0, 1)),
+    attempt_count INTEGER NOT NULL DEFAULT 0 CHECK (attempt_count >= 0),
+    last_attempt_id TEXT,
+    representation_id TEXT,
+    output_sha256 TEXT,
+    output_byte_size INTEGER CHECK (output_byte_size IS NULL OR output_byte_size >= 0),
+    output_relative_path TEXT,
+    CHECK ((requested = 0 AND outcome = 'not_requested') OR requested = 1),
+    CHECK (outcome <> 'unsupported' OR support_status = 'unsupported'),
+    CHECK (outcome NOT IN ('pending', 'available', 'failed') OR
+           (requested = 1 AND support_status = 'supported')),
+    CHECK ((outcome = 'available' AND representation_id IS NOT NULL
+            AND output_sha256 IS NOT NULL AND output_byte_size IS NOT NULL) OR
+           (outcome <> 'available' AND representation_id IS NULL
+            AND output_sha256 IS NULL)),
+    CHECK (outcome = 'failed' OR retryable = 0),
+    UNIQUE (target_id, operation)
+);
+
+CREATE TABLE operation_attempts (
+    operation_attempt_id TEXT PRIMARY KEY,
+    operation_id TEXT NOT NULL REFERENCES operation_state(operation_id),
+    attempt_number INTEGER NOT NULL CHECK (attempt_number > 0),
+    attempt_kind TEXT NOT NULL CHECK (attempt_kind IN
+        ('identity', 'transform', 'representation_reuse')),
+    outcome TEXT NOT NULL CHECK (outcome IN ('available', 'failed')),
+    retryable INTEGER NOT NULL CHECK (retryable IN (0, 1)),
+    reason_code TEXT,
+    input_fingerprint_sha256 TEXT NOT NULL,
+    representation_id TEXT,
+    handler_id TEXT,
+    handler_version TEXT,
+    capability_id TEXT NOT NULL,
+    capability_version TEXT NOT NULL,
+    options_sha256 TEXT NOT NULL,
+    input_sha256 TEXT NOT NULL,
+    output_sha256 TEXT,
+    output_byte_size INTEGER CHECK (output_byte_size IS NULL OR output_byte_size >= 0),
+    output_relative_path TEXT,
+    started_at_utc TEXT NOT NULL,
+    finished_at_utc TEXT NOT NULL,
+    UNIQUE (operation_id, attempt_number),
+    CHECK (outcome = 'failed' OR retryable = 0),
+    CHECK ((outcome = 'available' AND output_sha256 IS NOT NULL
+            AND output_byte_size IS NOT NULL AND representation_id IS NOT NULL) OR
+           (outcome = 'failed' AND output_sha256 IS NULL
+            AND output_byte_size IS NULL AND representation_id IS NULL))
+);
+
+CREATE INDEX operation_state_schedule ON operation_state(outcome, retryable);
+CREATE INDEX operation_attempts_number
+    ON operation_attempts(operation_id, attempt_number);
+CREATE TRIGGER operation_attempts_no_update BEFORE UPDATE ON operation_attempts
+    BEGIN SELECT RAISE(ABORT, 'operation attempt records are append-only'); END;
+CREATE TRIGGER operation_attempts_no_delete BEFORE DELETE ON operation_attempts
+    BEGIN SELECT RAISE(ABORT, 'operation attempt records are append-only'); END;
+```
+
+`operation_state` is seeded from every `work_operations` row. `not_requested` and
+`unsupported` have no execution attempt. `pending` is schedulable only when the target
+body is acquired; a terminal target failure sets the operation to `blocked` with the
+target outcome as `reason_code`. `available` always references a validated output
+digest; `failed` carries retryability and an error code. For `raw`, the identity attempt
+uses the selected source digest for both input and output and does not make a second
+payload file. Render attempts require a distinct output digest when bytes differ.
+
+Each attempt insertion and `operation_state` update commit in one `BEGIN IMMEDIATE`
+transaction after the output file has been flushed, hashed, size checked, and atomically
+adopted. Operation attempts have append-only update/delete triggers. A render retry
+does not reacquire a body; an acquisition retry does not rerun a renderer. `run status`
+reports acquisition and processing summaries separately. Publication refuses any
+`pending` operation, while `not_requested`, `unsupported`, and `blocked` remain explicit
+terminal dispositions.
+
+Snapshot reuse is an acquisition origin, not an HTTP response. Its attempt uses
+`attempt_kind='source_reuse'`, `source='snapshot_reuse'`, the pinned base snapshot ID,
+and the verified source/payload digest. The response-envelope digest/path are null; the
+selected-body digest, size, and staged path are required. A rejected reuse candidate can
+be recorded as a failed attempt before a normal source request succeeds; target state
+reflects the final successful attempt while both attempts remain in history.
+
+`initialize_run_state` in v3 consumes all work relations and seeds target and operation
+state in one transaction. Target and operation completion use separate commit methods;
+each appends its attempt and updates only the matching current-state projection after
+the output file is adopted. There is no mutable `chunk_state`: chunk completion is
+derived from immutable `work_chunks` membership and member target states. Worker import
+validates a complete chunk first and commits it in one transaction; assignment and
+receipt affinity remain in common distribution metadata.
+
+The current v2 schema added `required_missing`, index lookup attempts, and
+target-slot resolutions, initializes at `PRAGMA user_version=2`, and refuses v1
+databases. Schema v3 then refuses v2 rather than guessing how to extend an active run.
+The exact URL fields exclude credentials, query strings, and response headers. Attempt
+and resolution rows are append-only; current status is an updateable projection in
+`target_state`. S10 body-consumption receipts remain separate versioned JSON sidecars
+so S10 can write them through the S9 path/schema contracts without importing the S9
+state service.
 
 ## Transaction API
 

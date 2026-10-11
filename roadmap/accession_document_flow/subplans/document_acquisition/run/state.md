@@ -2,9 +2,9 @@
 
 ## Purpose and status
 
-This page owns target outcomes, retry, interruption, assignment, and S10 body handoff.
-It is design-only. The mutable store and SQL statements are specified in
-[run persistence](persistence.md).
+This page owns target/operation outcomes, retry, interruption, and S10 body handoff.
+The acquisition state machine is implemented at SQLite v2; operation-state schema v3
+is specified in [run persistence](persistence.md).
 
 ## State model
 
@@ -46,12 +46,43 @@ An explicit retry considers only `failed AND retryable` targets. It cannot clear
 rewrite, or bypass the shared SEC failure ledger. A retry blocked by that ledger is
 reported as a failure and retains its attempt evidence.
 
+## Operation state
+
+Schema v3 adds one current `operation_state` row for each S6 operation ID and
+append-only `operation_attempts`. An operation outcome is `not_requested`,
+`unsupported`, `pending`, `blocked`, `available`, or `failed`:
+
+- `not_requested` and `unsupported` are copied from S6 intent/capability decisions and
+  have no processor attempt.
+- `pending` is requested and supported but not terminal. It is schedulable only after
+  its target source is acquired or reused.
+- `blocked` means the operation could not run because a required target source ended
+  in a terminal non-acquired outcome; its reason identifies that outcome.
+- `available` requires a verified representation ID, output digest, and size.
+  `failed` carries independent error classification and retryability.
+
+Acquisition `target_state` and processing `operation_state` are separate state
+machines. `run --retry-failures` selects failed retryable acquisition targets;
+`process --retry-failures` selects failed retryable operations and does not make HTTP
+requests. A run can be acquisition-complete while processing is pending. Snapshot
+publication requires every operation result to be terminal.
+
+Source reuse is an acquisition outcome with origin `snapshot_reuse`; its attempt pins
+the base snapshot, source asset, and verified payload digest. It skips HTTP but commits
+an acquired target. Reuse requires exactly one distinct retained digest for the exact
+source asset in the pinned base lineage. Multiple versions or integrity failure make
+reuse ineligible; the runner records any integrity failure and follows the unchanged
+S6 source request. It never substitutes another target or locator. A compatible prior
+rendered representation can be adopted by digest without rerunning its handler, but
+only when operation, exact inputs, capability/handler/options versions, and output kind
+match.
+
 ## Persistence API
 
 ```python
 def initialize_run_state(
     run_dir: Path,
-    work_order: Iterable[WorkOrderTarget],
+    work_order: WorkOrderRelationSet,
 ) -> None: ...
 
 def select_run_targets(
@@ -69,6 +100,14 @@ def commit_target_attempt(
     paths: AcquisitionPaths,
 ) -> None: ...
 
+def commit_operation_attempt(
+    run_id: str,
+    attempt: OperationAttempt,
+    outcome: OperationOutcome,
+    *,
+    paths: AcquisitionPaths,
+) -> None: ...
+
 def inspect_run_state(
     run_id: str,
     *,
@@ -76,11 +115,14 @@ def inspect_run_state(
 ) -> AcquisitionStatusReport: ...
 ```
 
-`initialize_run_state` detects duplicate target IDs while streaming the work order.
+`initialize_run_state` detects duplicate target and operation IDs while streaming the
+work-order relations. It seeds acquisition and operation state atomically.
 `commit_target_attempt` atomically appends the attempt and updates the current target
 projection. An acquired result is committed only after its body has a verified
 digest, size, and owner-generated run-relative path. A failed DB transaction cannot
 leave a partial body reported as acquired.
+`commit_operation_attempt` applies the same file-before-state rule to each non-identity
+output; identity raw results reference the selected-body digest without copying bytes.
 
 ## Locks and interruption
 

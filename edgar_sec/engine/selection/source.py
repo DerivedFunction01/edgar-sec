@@ -18,9 +18,6 @@ from edgar_sec.domain.filing_catalog.schemas import (
     LOCATOR_FEATURE_COLUMNS,
     OCCURRENCE_FEATURE_COLUMNS,
 )
-from edgar_sec.engine.selection.paths import (
-    FEATURE_MANIFEST_FILE,
-)
 from edgar_sec.engine.selection.policy import KNOWN_DIMENSIONS
 from edgar_sec.engine.selection.predicates import (
     date_selection_sql,
@@ -156,9 +153,6 @@ class CandidateSource:
         if page_size < 1:
             raise ValueError("page_size must be at least 1")
         self.snapshot_dir = Path(snapshot_dir).resolve()
-        manifest = self.snapshot_dir / FEATURE_MANIFEST_FILE
-        if not manifest.is_file():
-            raise FileNotFoundError(f"feature snapshot is missing {manifest}")
         snapshot = load_snapshot_paths(self.snapshot_dir)
         self.occurrence_relation = snapshot.occurrence_relation
         self.locator_relation = snapshot.locator_relation

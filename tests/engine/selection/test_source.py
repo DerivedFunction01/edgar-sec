@@ -40,7 +40,7 @@ def test_queries_outside_a_session_are_refused(snapshot_dir: Path) -> None:
 
 
 def test_a_missing_snapshot_is_reported_up_front(tmp_path: Path) -> None:
-    with pytest.raises(FileNotFoundError, match="feature snapshot is missing"):
+    with pytest.raises(ValueError, match="feature snapshot is not registered"):
         CandidateSource(tmp_path / "absent", "seed")
 
 

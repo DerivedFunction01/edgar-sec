@@ -1,9 +1,8 @@
 # Representation materialization and reuse contract
 
-**Status: proposal for agreement; not implementation authorization.** This contract
-defines the missing identity and relation layer between S6 operation requests, S9
-source acquisition/reuse, and a future acquisition snapshot. It does not enable S10
-processing, M7, M9, or S11 publication.
+**Status: design v1 for iteration; implementation remains gated.** This contract defines
+the S6 operation inputs, S9 work/run records, source reuse, and Parquet snapshot
+relations as one versioned chain. It does not enable M7, M9, or S11 publication.
 
 ## Decision
 
@@ -11,8 +10,7 @@ Add an acquisition-owned representation relation that maps a logical output to a
 content-addressed payload. Do not put accession or sequence on the payload row and do
 not use the S6 `target_id` as the cross-plan key. Keep accession/sequence-to-source
 mapping, source-to-payload mapping, and operation-to-representation mapping separate.
-The existing accession/CIK relation remains the filing identity owner; observed
-statutory type remains separate evidence about an accession/sequence slot.
+Accession-to-CIK facts and observed statutory type remain independent relations.
 
 The resulting join is:
 
@@ -27,18 +25,116 @@ plan target -> stable logical_document_id -> operation result
 Digest deduplication applies only to payload bytes. It must not collapse source,
 operation, representation, or accession/sequence provenance rows.
 
+## Version cut
+
+This design generation pins S6 bundle v4 (target relation v1 plus three operation
+relations v1), S9 acquisition contract v2, run manifest v2, work-order relation set v2,
+SQLite run state v3, handoff/receipt schema v2, and acquisition snapshot relation set
+v1. Readers refuse older schemas for this operation-aware path; code changes and tests
+are a later implementation step.
+
+## Versioned inputs, work, and run
+
+### S6 bundle input
+
+The input is a normalized four-relation bundle. `targets` keeps schema v1. The new
+`target_operations`, `source_requests`, and `operation_inputs` relations are schema v1
+under S6 bundle schema v4. Their exact grains and request semantics are specified in
+[S6 specs](../document_planning/specs.md).
+
+Each target has one `target_operations` row for each operation in the closed vocabulary.
+The row separates `requested` from `support_status`; it pins capability, handler and
+output metadata. `operation_inputs` links each requested/supported operation to its
+source request. Version 1 restricts each operation to the target's single primary source
+request. A capability requiring another locator or multiple input bodies is unsupported
+until a versioned S6/S9 input and source-state extension exists.
+
+### S9 immutable work bundle
+
+The work order is also a relation set, not a flattened target-operation Cartesian
+product. Work-order schema v2 contains:
+
+| Relation | Key | Added or copied columns |
+|---|---|---|
+| `work_targets` | `target_id` | All S6 target columns; `executable`, `skip_reason`, and nullable `chunk_id`. One row per S6 target, including skipped targets. |
+| `work_operations` | `(target_id, operation)` | Exact S6 request/support rows and their `operation_id` values. |
+| `work_source_requests` | `source_request_id` | Exact validated S6 source request rows. |
+| `work_operation_inputs` | `(operation_id, input_ordinal)` | Exact S6 operation-to-source links. |
+| `work_chunks` | `chunk_id` | Zero-based chunk ordinal, target count, and digest over ordered member target rows and their operation/source/input rows. |
+
+All relations are Parquet parts under `work_order/{relation}/part-*.parquet`. The run
+manifest pins each relation schema version and each part's relative path, row count,
+byte size, and digest. `chunk_id` is stored on executable `work_targets`; skipped rows
+have no chunk. Chunk boundaries are created by sorting executable target IDs and
+grouping by the pinned `runtime.chunk_size`. A target and all its operation/source rows
+are one indivisible work unit. Chunk status is derived from target state; SQLite does
+not duplicate immutable chunk membership.
+
+The chunk digest covers the exact work for those targets, not execution order. Worker
+assignments bind `run_id`, work digest, assignment ID, and chunk IDs through the common
+distribution protocol. A worker bundle includes only assigned relation rows and any
+verified source payloads reused from the pinned base snapshot. S9 workers acquire inputs
+only; S10 operations execute as a separate processing action.
+
+### Run identity and mutable ledger
+
+The immutable run manifest schema v2 pins the S6 bundle/digest and all relation schema
+versions; work-order schema v2 and part descriptors; chunking algorithm/version and
+size; acquisition contract and response-byte ceiling; source mode and fixture identity
+when replaying; run-state schema v3; and publication branch/base snapshot ID/digest.
+The pinned base is both the publisher's expected parent and the only source-reuse
+lineage searched. A null base is valid only for an empty branch. Project resolves/pins
+the branch tip once; workers, `run`, and `process` never follow a moving branch pointer.
+
+`run_id` derives from the S6 plan digest, acquisition/work/run-state schema versions,
+branch/base snapshot, chunking settings, source mode/fixture ID, and acquisition
+response ceiling. The manifest digest additionally covers all work relation parts and
+counts. Worker count, request pacing, completion order, and retry attempt numbers are
+not run identity. Re-projecting identical pins is idempotent; changing any work-affecting
+input creates a new run ID. Publishing compares the branch tip with the pinned base;
+a stale base requires a new projected run.
+
+The mutable SQLite state schema v3 retains the existing acquisition tables and adds:
+
+| Table | Key / grain | Current projection or history |
+|---|---|---|
+| `operation_state` | `operation_id` | S6 requested/support status plus `not_requested`, `unsupported`, `pending`, `blocked`, `available`, or `failed`; latest attempt and representation IDs; retryability and stable reason code. |
+| `operation_attempts` | `operation_attempt_id` | Append-only target/operation attempt, input fingerprint, handler/capability/options versions, outcome, reason code, output digest/size and optional run-relative staged path. `representation_reuse` attempts point to a verified parent representation and have no output path. |
+
+`target_state` remains the current acquisition outcome per target; `attempts` and
+`target_slot_resolutions` remain append-only. Snapshot source reuse adds an acquisition
+attempt with origin `snapshot_reuse`, the reused snapshot ID, stable source asset ID, and
+verified payload digest; it makes no HTTP request and does not rewrite S6 selection.
+`operation_state` is separate from `target_state`: a target can be acquired while one
+render fails, and a failed acquisition can block requested render operations without
+rewriting their S6 intent. `run --retry-failures` retries acquisition only;
+`process --retry-failures` retries operation failures only. Before invoking a handler,
+process may reuse a parent representation only if logical document, operation, exact
+input source/digest, capability/handler/options versions, and output kind all match.
+That produces an available `representation_reuse` attempt without rendering.
+Worker/chunk assignment and receipt metadata stay in common distribution bundles;
+imported body outcomes enter ordinary acquisition attempts in a transaction per
+validated chunk.
+
+Snapshot publication refuses pending operation rows. `not_requested`, `unsupported`,
+`blocked`, `failed`, and `available` remain distinguishable; a `failed` attempt does not
+erase an older successful representation.
+
 ## Stable identities
 
 - `source_asset_id` identifies one logical source locator independently of plan and content:
   SHA-256 of canonical JSON `[accession, source_key]`. `source_key` is the validated
-  canonical SEC archive-relative path, or a typed exact-sequence key for a bundle child.
-  A source digest is deliberately not part of this identity so a
-  changed body is recorded as a new payload observation for the same source.
+  `direct:<canonical archive path>` key or a typed
+  `bundle:<canonical archive path>#seq=<sequence>` key. Path case is preserved and
+  query/fragment/userinfo are excluded by locator validation. A source digest is
+  deliberately not part of identity so changed bytes remain a new observation for
+  the same physical source.
 - `logical_document_id` identifies the requested document independently of its plan:
-  SHA-256 of canonical JSON `[accession, request_id, source_asset_id]`. Ambiguous candidate
-  sources therefore remain distinct. A target in a later plan joins to the same
-  logical document only when accession, derived role/type request, and resolved source
-  identity all match.
+  SHA-256 of canonical JSON `[accession, request_id, planned_source_key]`, using the
+  same typed source-key format as `source_asset_id`. Distinct S6
+  candidates remain distinct. A later plan joins to the same logical document only when
+  accession, role/type request, and planned source key match. A later lazy-index
+  replacement changes the actual source asset, not the target's planned identity.
 - `representation_id` identifies a successful operation output, not its bytes:
   canonical identity includes `logical_document_id`, operation, ordered input-source
   identities and payload digests, output kind, capability/handler IDs and versions,
@@ -62,32 +158,65 @@ file per table per snapshot. Each DAG node writes only changed relation parts; t
 manifest records part digests, sizes, counts, and key bounds. `RelationSpec` resolves
 the ancestor deltas by declared key/merge policy, and queries join the resolved
 relations as needed. A prejoined projection is optional and rebuildable, never the
-source of truth.
+source of truth. This is relation-set schema v1; snapshot manifests pin that version.
+The listed key fields are non-null unless a field is explicitly marked optional below.
+IDs/digests are strings, flags are booleans, counts/sizes/sequences use `int32` or
+`int64`, and event times are UTC timestamps.
 
-| Relation | Grain / key | Sketch of columns and role |
-|---|---|---|
-| `accession_ciks` | `(inventory_snapshot_id, accession)` | `cik`; minimal filing-identity evidence reconciled from the pinned S5 snapshot. Kept separate from document/slot payloads. |
-| `source_assets` | `source_asset_id` | Canonical source key and effective path/locator facts. Stable across plans; no response bytes, sequence, or operation status. |
-| `acquisition_slots` | `(accession, sequence, observation_id)` | Existing physical-slot observation plus `source_asset_id`; maps observed sequence/accession to the stable source. No statutory type inference. |
-| `slot_types` | `type_evidence_id` | Existing sourced type evidence keyed to accession/sequence observation, with evidence/parser identity. Never copied onto the payload row. |
-| `logical_documents` | `logical_document_id` | Stable `(accession, request_id, source_asset_id)` identity plus target role/type provenance. Different candidate source assets remain distinct. |
-| `target_results` | `(run_id, target_id)` | Existing plan/run outcome plus `logical_document_id`; preserves the plan-specific target binding without using it for reuse. |
-| `target_slot_selections` | `(run_id, target_id, resolution_id)` | Existing target-to-slot selection and evidence links. Joins through `acquisition_slots`; it does not overwrite a source identity. |
-| `acquisition_attempts` | `(run_id, attempt_id)` | Existing append-only request/attempt outcomes, including source asset and successful selected payload digest where applicable. Failures remain here, not in payload relations. |
-| `source_payloads` | `(source_asset_id, payload_sha256)` | Successful retained raw source bytes, route and uncompressed size; index for cross-plan source reuse. This replaces the run-scoped-only reuse role of `slot_payloads`; slot views join through `source_asset_id`. |
-| `operation_requests` | `(run_id, target_id, operation)` | One final disposition for each operation in the closed vocabulary, including unrequested ones: `not_requested`, `unsupported`, `available`, or `failed`. Requested rows carry the S6 `operation_id`, capability/handler versions, latest attempt ID, and successful `representation_id` when available. `pending` is transient run state and is not publishable. |
-| `operation_attempts` | `(run_id, operation_attempt_id)` | Append-only operation tries: `target_id`, operation, attempt ordinal, ordered input fingerprint, handler/capability/options versions, `available`/`failed`, error code, and optional representation link. |
-| `representations` | `representation_id` | Successful output identity: logical document, operation, output kind, capability/handler/options versions, output payload digest and size. No bytes or accession/sequence copy. `raw` is an identity representation pointing at the source payload digest. |
-| `representation_inputs` | `(representation_id, input_ordinal)` | Input source asset and exact input payload digest, plus semantic input role. Keeps the bytes used by a transform reproducible and auditable. |
-| `binary_payloads` | `payload_sha256` | Existing Parquet byte relation for binary-route payloads. |
-| `text_payloads` | `payload_sha256` | Existing Parquet byte relation for non-binary payloads, including raw markup, text, and XML. |
+| Relation | Grain / key | Merge | v1 fields and role |
+|---|---|---|---|
+| `accession_ciks` | `accession` | Upsert; conflicting CIK refused | `cik:string`; filing identity stays separate from targets and payloads. |
+| `source_assets` | `source_asset_id` | Upsert; identity fields immutable | `accession:string`, `source_key:string`, `source_kind:string`, `retrieval_mode:string`, `canonical_path:string?`. Stable across plans; no payload bytes or physical sequence column. |
+| `acquisition_slots` | `(accession, sequence, observation_id)` | Append | `sequence:int32`, `observation_id:string`, `source_asset_id:string`, `locator:string`, `retrieval_mode:string`, `observed_at_utc:timestamp`. Maps a physical sequence observation to a stable source; no type inference. |
+| `slot_types` | `type_evidence_id` | Append | `accession:string`, `sequence:int32`, `observation_id:string?`, `statutory_type:string`, `evidence_source:string`, `evidence_ref:string`, `source_digest:string?`, `parser_version:string`, `observed_at_utc:timestamp`. |
+| `logical_documents` | `logical_document_id` | Upsert; identity fields immutable | `accession:string`, `request_id:string`, `planned_source_key:string`, `target_role:string`, `target_type:string`. Distinct planned candidates remain distinct. |
+| `target_results` | `(run_id, target_id)` | Append | Full S6 target provenance, `logical_document_id:string?`, S9 `outcome:string`, `status_reason:string?`, selected source asset/digest/size when acquired. |
+| `target_slot_selections` | `(run_id, target_id, resolution_id)` | Append | `accession:string`, `sequence:int32`, `observation_id:string?`, `source_asset_id:string?`, selector/result and evidence refs. |
+| `acquisition_attempts` | `(run_id, attempt_id)` | Append | Target/source-request/source-asset IDs, attempt kind/origin, typed outcome/retryability, sanitized locator, timestamps, HTTP evidence, source/selected digests and sizes, worker assignment ID. No payload bytes. |
+| `source_payloads` | `(source_asset_id, payload_sha256)` | Upsert by exact content identity | Link from a stable source to a successfully retained raw payload. Route, size, and attempt provenance stay in `acquisition_attempts`/`payload_index`. If one source asset has more than one distinct digest in the pinned base lineage, S9 treats reuse as ambiguous and follows the new S6 request. |
+| `operation_results` | `(run_id, operation_id)` | Append | `target_id`, `logical_document_id`, operation/request/support state, terminal materialization status, planned `source_request_id?`, capability/handler versions, latest attempt, reason/retryability, representation ID. `pending` is transient and not publishable. |
+| `operation_attempts` | `(run_id, operation_attempt_id)` | Append | `operation_id`, ordinal, attempt kind (`identity`, `transform`, `representation_reuse`), input fingerprint, handler/capability/options versions, `available`/`failed`, error code, input/output digests and sizes, optional staged path. |
+| `representations` | `representation_id` | Upsert by exact identity | `logical_document_id`, operation, output kind, capability/handler/options versions, input fingerprint, output payload digest/size and route. No bytes or accession/sequence copy. `raw` aliases the source payload digest. |
+| `representation_inputs` | `(representation_id, input_ordinal)` | Upsert; conflicting row refused | `source_asset_id:string`, exact input `payload_sha256:string`, semantic input role. |
+| `payload_index` | `payload_sha256` | Upsert; class/size immutable | `storage_class:string` (`binary` or `text`), `byte_size:int64`. Enforces one physical storage row for a digest across typed payload relations. |
+| `binary_payloads` | `payload_sha256` | Upsert; bytes must match digest | `byte_size:int64`, `payload_bytes:large_binary`; contains a row only when `payload_index.storage_class=binary`. |
+| `text_payloads` | `payload_sha256` | Upsert; bytes must match digest | `byte_size:int64`, `payload_bytes:large_binary`, `text_value:string?` when valid UTF-8; contains a row only when `payload_index.storage_class=text`. |
 
-`slot_payloads` can be projected by joining `acquisition_slots` to `source_payloads`;
-it need not duplicate the same accession/sequence/payload mapping in another base
+Within each node, every primary key is unique before its relation parts are written.
+The publisher validates these cross-relation references over the resolved parent plus
+node:
+
+- `acquisition_slots.source_asset_id` and `source_payloads.source_asset_id` resolve to
+  `source_assets.source_asset_id`.
+- `target_results.logical_document_id` resolves to `logical_documents` when non-null;
+  `target_slot_selections` resolves to its target and observed slot evidence.
+- `source_payloads.payload_sha256`, operation outputs, and representation inputs
+  resolve through `payload_index` to exactly one matching typed payload row.
+- `operation_results` retains the S6 operation ID and resolves to its target result;
+  `available` requires a representation. Each representation resolves to one logical
+  document and output payload; each input resolves to one source asset and exact input
+  payload.
+
+An upsert key may repeat in a descendant only when the row satisfies the relation's
+identity validator. An accession cannot change CIK, a source/logical-document ID cannot
+change locator identity, a digest cannot change storage class or bytes, and a
+representation ID cannot change output or input provenance. Append relations reject
+duplicate keys within one node and preserve distinct evidence across nodes.
+
+`payload_index` chooses exactly one typed payload relation per digest. For a new digest,
+the class is `binary` if any source use is `DocumentRoute.BINARY`; otherwise it is
+`text`. Once present in the base lineage, the class cannot change. Publication verifies
+one and only one matching typed row, byte size, and uncompressed SHA-256. Thus identical
+bytes referenced from binary and text operations still occupy one physical payload row.
+This storage class is not the source route; each source and representation retains its
+own route metadata.
+
+The old run-scoped `slot_payloads` view is projected by joining
+`acquisition_slots.source_asset_id` to `source_payloads`; it is not a second base
 relation. `accession_ciks` and `slot_types` remain independent joins. The payload
 relations contain only digest-keyed bytes and byte metadata.
 
-`operation_requests` is run-scoped because “not requested” describes one plan/run, not
+`operation_results` is run-scoped because “not requested” describes one plan/run, not
 the lifetime of a logical document. A later plan that omits `render_to_txt` must not
 hide or delete an earlier text representation. Published rows have terminal status;
 attempt history is append-only. A representation is available only when its output
@@ -103,7 +232,7 @@ Typical projections are assembled from these relations rather than stored repeat
 - Available source body: `acquisition_slots` or `logical_documents` joined to
   `source_payloads`, then to the correct typed payload relation by digest.
 - Requested outputs: `target_results` joined to `logical_documents`,
-  `operation_requests`, `representations`, and `representation_inputs`; payload reads
+  `operation_results`, `representations`, and `representation_inputs`; payload reads
   join by digest only when requested.
 
 This resolves the raw-then-render case without a special combined table: Plan A adds a
@@ -111,10 +240,9 @@ raw representation and `render_to_txt=not_requested`; Plan B adds a new run's re
 reuses the parent-lineage `source_payloads` row, and adds a distinct render
 representation. Both representations remain reachable in the projected snapshot.
 
-The exact Arrow schemas, `RelationSpec` merge strategies, and compatibility version
-are to be frozen with S6/S11 owners before implementation. The DAG engine already
-supports immutable parts and relational resolution; this proposal adds domain schemas,
-not a new snapshot mechanism.
+The v1 relation set and merge strategies above are the input to mirrored Arrow schema
+and `RelationSpec` definitions. The DAG engine already supports immutable parts and
+relational resolution; this design adds domain schemas, not a new snapshot mechanism.
 
 ## Fixture boundary
 
@@ -142,13 +270,14 @@ operation statuses into fixture SQLite.
   operation attempt yet.
 - `failed` is an append-only attempt result. It does not imply unsupported and does
   not prevent a later explicit retry.
-- `available` requires a verified representation row and payload whose digest and
-  size match the produced bytes. It records the operation and handler version even
-  when its digest aliases another payload.
+- `available` requires a verified representation row and payload-index row whose
+  digest and size match exactly one typed payload row. It records the operation and
+  handler version even when its digest aliases another representation.
 - An existing raw payload is reusable only when the new plan resolves to the same
-  stable `source_asset_id`, the prior successful body is retained and readable in the
-  selected DAG lineage, and its payload digest/size verify. Reuse does not reselect a
-  target or promote diagnostic evidence into a locator.
+  stable `source_asset_id`, exactly one distinct payload digest is available for it in
+  the pinned base lineage, and the retained bytes verify. Multiple digests are an
+  ambiguous source version, so S9 follows the new S6 request rather than choosing one.
+  Reuse does not reselect a target or promote diagnostic evidence into a locator.
 - An available rendered representation is reusable only when logical document,
   operation, input-source identities/digests, output kind, capability version, handler
   version, and relevant options match. A changed handler or input requires a new

@@ -5,8 +5,8 @@ on-disk shape `source` reads.
 
 from __future__ import annotations
 
-import json
 from collections.abc import Iterable, Sequence
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -16,14 +16,23 @@ import pytest
 
 from edgar_sec.domain.filing_catalog.schemas import OCCURRENCE_INDEPENDENT_COLUMNS
 from edgar_sec.engine.selection.paths import (
-    FEATURE_MANIFEST_FILE,
     LIFECYCLE_FILE,
     LOCATOR_BANDS_FILE,
     LOCATOR_FEATURES_FILE,
     OCCURRENCE_INDEPENDENT_FILE,
 )
 from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
+from edgar_sec.engine.selection.snapshot import (
+    LIFECYCLE_RELATION,
+    LOCATOR_BANDS_RELATION,
+    LOCATOR_FEATURES_RELATION,
+    OCCURRENCE_RELATION,
+)
 from edgar_sec.engine.selection.source import OCCURRENCE_COLUMNS, POOL_COLUMNS
+from edgar_sec.foundation.hashing import file_sha256, sha256_text
+from edgar_sec.foundation.serialization import canonical_json
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest, PartDescriptor
 
 # Type-faithful to what the builder writes, so a synthetic snapshot cannot hide a bug.
 _BOOL_COLUMNS = frozenset({"has_revival_gap"})
@@ -196,16 +205,60 @@ def write_snapshot(
         ),
         lifecycle_path,
     )
-    (snapshot_dir / FEATURE_MANIFEST_FILE).write_text(
-        json.dumps(
+    snapshots_root = snapshot_dir.parent.resolve()
+    relations = {
+        OCCURRENCE_RELATION: independent_path,
+        LOCATOR_BANDS_RELATION: bands_path,
+        LIFECYCLE_RELATION: lifecycle_path,
+        LOCATOR_FEATURES_RELATION: locator_path,
+    }
+    descriptors = {
+        relation: (
+            PartDescriptor(
+                path=part_path.resolve().relative_to(snapshots_root).as_posix(),
+                sha256=file_sha256(part_path),
+                row_count=pq.read_metadata(part_path).num_rows,
+                byte_size=part_path.stat().st_size,
+            ),
+        )
+        for relation, part_path in relations.items()
+    }
+    metadata = {
+        "artifact_kind": "selection_features",
+        "feature_signature": {},
+        "profile_path": "",
+        "profile_sha256": "",
+        "family_index_id": "",
+        "corpus_id": "test",
+        "size_anchors": {},
+        "global_max_year": None,
+        "counts": {},
+        "incremental": False,
+    }
+    fingerprint = sha256_text(
+        canonical_json(
             {
-                "occurrence_parts": [str(independent_path)],
-                "locator_band_parts": [str(bands_path)],
-                "lifecycle_parts": [str(lifecycle_path)],
-                "locator_feature_parts": [str(locator_path)],
+                "metadata": metadata,
+                "relations": {
+                    relation: [part.to_dict() for part in parts]
+                    for relation, parts in descriptors.items()
+                },
             }
-        ),
-        encoding="utf-8",
+        )
+    )
+    DAGCatalog(snapshots_root).record_node(
+        DAGNodeManifest(
+            snapshot_id=snapshot_dir.name,
+            kind="checkpoint",
+            parents=(),
+            checkpoint_anchor_id=snapshot_dir.name,
+            lineage_depth=0,
+            created_at=datetime.now(UTC).isoformat(),
+            relations=descriptors,
+            logical_fingerprint=fingerprint,
+            schema_versions={"selection_features": "test"},
+            metadata=metadata,
+        )
     )
     return snapshot_dir
 

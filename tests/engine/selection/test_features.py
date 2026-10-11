@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Any
 
@@ -29,9 +28,10 @@ from edgar_sec.engine.selection.features import (
     form_family,
     form_family_sql,
 )
-from edgar_sec.engine.selection.snapshot import SnapshotPaths
+from edgar_sec.engine.selection.snapshot import SnapshotPaths, feature_branch_name
 from edgar_sec.engine.selection.policy import EraBand, SelectionPolicy
-from edgar_sec.infra.storage.atomic import atomic_write_text
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.retention import analyze_retention
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.filing_catalog.catalog_job import materialize
 from edgar_sec.pipelines.filing_catalog.paths import resolve_filing_catalog_paths
@@ -153,7 +153,8 @@ def test_builder_rejects_impossible_options() -> None:
 
 
 def test_snapshot_dir_is_content_addressed(tmp_path: Path) -> None:
-    builder = _builder(tmp_path, tmp_path / "t", tmp_path / "p.parquet")
+    profile_path = _write_profiles(tmp_path / "p.parquet", [_PROFILE_ROW])
+    builder = _builder(tmp_path, tmp_path / "t", profile_path)
     first = builder.snapshot_dir(["10-K"])
     assert first == builder.snapshot_dir(["10-K"])
     assert first != builder.snapshot_dir(["10-Q"])
@@ -165,6 +166,19 @@ def test_snapshot_dir_is_content_addressed(tmp_path: Path) -> None:
         builder.target_root, builder.profile_path, builder.output_root, other_policy
     )
     assert other.snapshot_dir(["10-K"]) != first
+
+
+def test_snapshot_identity_changes_when_profile_content_changes(tmp_path: Path) -> None:
+    target_root = _write_targets(tmp_path / "targets", [{}])
+    profile_path = _write_profiles(tmp_path / "profiles.parquet", [_PROFILE_ROW])
+    builder = _builder(tmp_path, target_root, profile_path)
+    original = builder.snapshot_dir(["10-K"])
+    changed = _profile_row(
+        _PROFILE_ROW["cik"], identity={"name": "Changed Co", "former_names": []}
+    )
+    _write_profiles(profile_path, [changed])
+
+    assert builder.snapshot_dir(["10-K"]) != original
 
 
 def test_builds_a_feature_snapshot_from_the_published_catalog(
@@ -187,7 +201,16 @@ def test_builds_a_feature_snapshot_from_the_published_catalog(
     snapshot = builder.build()
 
     assert isinstance(snapshot, SnapshotPaths)
-    assert snapshot.manifest.is_file()
+    assert snapshot.manifest["artifact_kind"] == "selection_features"
+    assert not (snapshot.snapshot_dir / "feature_snapshot.json").exists()
+    dag = DAGCatalog(snapshot.snapshot_dir.parent)
+    assert dag.has_snapshot(snapshot.snapshot_dir.name)
+    branch_name = feature_branch_name(snapshot.manifest["feature_signature"])
+    assert dag.read_pointer(branch_name)["snapshot_id"] == snapshot.snapshot_dir.name
+    assert (
+        snapshot.snapshot_dir.name
+        in analyze_retention(snapshot.snapshot_dir.parent).retained_snapshots
+    )
     assert all(path.is_file() for path in snapshot.occurrence_parts)
     assert snapshot.locator_bands.is_file()
     assert snapshot.lifecycle.is_file()
@@ -230,11 +253,11 @@ def test_rebuilding_the_same_snapshot_reuses_the_published_one(
         paths.snapshot_profiles_file(catalog_id),
     )
     first = builder.build()
-    stamp = first.manifest.stat().st_mtime_ns
+    stamp = first.locator_features.stat().st_mtime_ns
     second = builder.build()
 
     assert second == first
-    assert second.manifest.stat().st_mtime_ns == stamp
+    assert second.locator_features.stat().st_mtime_ns == stamp
 
 
 def test_builder_reports_a_catalog_with_no_targets(tmp_path: Path) -> None:
@@ -802,12 +825,12 @@ def test_delta_snapshot_reuses_independent_parent_parts(tmp_path: Path) -> None:
         child_profiles,
         artifacts_root,
         _policy(),
-        parent_feature_manifest=parent.manifest,
+        parent_feature_snapshot_id=parent.snapshot_dir.name,
         active_target_parts=[parent_part, delta_part],
         delta_target_parts=[delta_part],
     ).build()
 
-    manifest = json.loads(child.manifest.read_text(encoding="utf-8"))
+    manifest = child.manifest
     assert manifest["incremental"] is True
     assert manifest["counts"]["independent_occurrence_rows"] == 1
     assert manifest["counts"]["locator_band_rows"] == 1
@@ -859,12 +882,12 @@ def test_profile_change_for_inherited_cik_forces_full_independent_rebuild(
         child_profile,
         artifacts_root,
         _policy(),
-        parent_feature_manifest=parent.manifest,
+        parent_feature_snapshot_id=parent.snapshot_dir.name,
         active_target_parts=[parent_part, delta_part],
         delta_target_parts=[delta_part],
     ).build()
 
-    manifest = json.loads(child.manifest.read_text(encoding="utf-8"))
+    manifest = child.manifest
     assert manifest["incremental"] is False
     assert len(child.occurrence_parts) == 1
     assert manifest["counts"]["independent_occurrence_rows"] == 2
@@ -930,7 +953,7 @@ def test_size_anchor_change_overrides_all_locator_bands_in_the_family(
         profiles,
         artifacts_root,
         _policy(),
-        parent_feature_manifest=parent.manifest,
+        parent_feature_snapshot_id=parent.snapshot_dir.name,
         active_target_parts=[parent_part, delta_part],
         delta_target_parts=[delta_part],
     ).build()
@@ -999,12 +1022,12 @@ def test_global_max_advance_rebuilds_all_lifecycle_and_locator_rows(
         profiles,
         artifacts_root,
         _policy(),
-        parent_feature_manifest=parent.manifest,
+        parent_feature_snapshot_id=parent.snapshot_dir.name,
         active_target_parts=[parent_part, delta_part],
         delta_target_parts=[delta_part],
     ).build()
 
-    manifest = json.loads(child.manifest.read_text(encoding="utf-8"))
+    manifest = child.manifest
     assert manifest["incremental"] is True
     assert manifest["global_max_year"] == 2026
     assert manifest["counts"]["lifecycle_rows"] == 2
@@ -1059,12 +1082,12 @@ def test_new_years_recompute_lifecycle_only_for_touched_cik(tmp_path: Path) -> N
         profiles,
         artifacts_root,
         _policy(),
-        parent_feature_manifest=parent.manifest,
+        parent_feature_snapshot_id=parent.snapshot_dir.name,
         active_target_parts=[parent_part, delta_part],
         delta_target_parts=[delta_part],
     ).build()
 
-    manifest = json.loads(child.manifest.read_text(encoding="utf-8"))
+    manifest = child.manifest
     assert manifest["global_max_year"] == 2014
     assert manifest["counts"]["lifecycle_rows"] == 1
     with connect() as con:
@@ -1106,28 +1129,18 @@ def test_a_co_filed_document_is_classified_by_its_occurrence_count(
     }
 
 
-def test_a_reused_snapshot_is_rebuilt_when_its_manifest_version_differs(
-    tmp_path: Path,
+def test_feature_schema_version_is_part_of_snapshot_identity(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """The directory name covers every hashed input, so the manifest version is the
-    only thing that can disagree with the code.
-    """
-    snapshot = _snapshot(tmp_path, [{"source_cik": "0000000001"}])
-    recorded = json.loads(snapshot.manifest.read_text(encoding="utf-8"))
-    assert recorded["feature_schema_version"] == FEATURE_SCHEMA_VERSION
+    first = _snapshot(tmp_path, [{"source_cik": "0000000001"}])
+    monkeypatch.setattr(
+        "edgar_sec.engine.selection.features.FEATURE_SCHEMA_VERSION", "test-version"
+    )
+    second = _snapshot(tmp_path, [{"source_cik": "0000000001"}])
 
-    recorded["feature_schema_version"] = "0.0-from-the-future"
-    atomic_write_text(
-        snapshot.manifest, json.dumps(recorded, indent=2, sort_keys=True) + "\n"
-    )
-    assert (
-        _snapshot(tmp_path, [{"source_cik": "0000000001"}]).manifest.read_text(
-            encoding="utf-8"
-        )
-        == json.dumps(
-            {**recorded, "feature_schema_version": FEATURE_SCHEMA_VERSION},
-            indent=2,
-            sort_keys=True,
-        )
-        + "\n"
-    )
+    assert first.snapshot_dir != second.snapshot_dir
+    assert first.manifest["feature_schema_version"] == FEATURE_SCHEMA_VERSION
+    assert second.manifest["feature_schema_version"] == "test-version"
+    catalog = DAGCatalog(second.snapshot_dir.parent)
+    branch = feature_branch_name(second.manifest["feature_signature"])
+    assert catalog.read_pointer(branch)["snapshot_id"] == second.snapshot_dir.name

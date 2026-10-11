@@ -9,7 +9,6 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.engine.selection.policy import KNOWN_DIMENSIONS
-from edgar_sec.engine.selection.paths import FEATURE_MANIFEST_FILE
 from edgar_sec.engine.selection.snapshot import load_snapshot_paths
 from edgar_sec.infra.storage.duckdb import connect
 
@@ -29,9 +28,6 @@ class InventoryStatistics:
         memory_limit: str | None = None,
     ) -> None:
         self.snapshot_dir = Path(snapshot_dir).resolve()
-        manifest = self.snapshot_dir / FEATURE_MANIFEST_FILE
-        if not manifest.is_file():
-            raise FileNotFoundError(f"feature snapshot is missing {manifest}")
         snapshot = load_snapshot_paths(self.snapshot_dir)
         self.locator_relation = snapshot.locator_relation
         required = snapshot.locator_feature_parts

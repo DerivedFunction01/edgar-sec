@@ -13,9 +13,10 @@ the S9 import adapter remains unimplemented and in planning.
   work digest, and every receipt-bound output path, size, and SHA-256 digest before
   calling the adapter.
 - After common receipt-affinity and file-integrity checks, the adapter validates
-  pipeline-specific output schemas, chunk membership, and state-transition rules
-  before adoption. Acquisition must validate its target outcomes and staged document
-  bodies in its own adapter.
+  pipeline-specific output relations, chunk membership, and state-transition rules
+  before adoption. Acquisition validates target outcomes, acquisition attempts,
+  slot resolutions, and staged source bodies in its adapter; workers do not return S10
+  operation results.
   Reject missing, extra-unassigned, path-escaping, altered, or unknown-chunk files.
 - Validate imported target outcomes against the pinned work order. A receipt cannot
   convert a skipped target into executable work or turn a direct HTTP 404 into
@@ -23,9 +24,9 @@ the S9 import adapter remains unimplemented and in planning.
 - Preserve `required_missing` and any versioned lazy-index `TargetSlotResolution` as
   terminal target evidence; never collapse it into `not_filed` or infer a slot from
   worker file names.
-- Adopt selected-body files under coordinator-managed paths and retain their digest
-  and size in result metadata for S10. Stage all validation before exposing adopted
-  state; failed import must not leave a partially adopted chunk.
+- Adopt selected-body files under coordinator-managed paths and retain source-asset,
+  digest, and size metadata for S10. Validate a whole chunk before exposing state and
+  commit it in one run-state transaction; failed import must not partially adopt it.
 - If the coordinator already has a valid committed chunk, report it as ignored or
   already committed; never overwrite it with a worker copy.
 - Import does not publish a snapshot or capture a fixture. Fixture capture remains

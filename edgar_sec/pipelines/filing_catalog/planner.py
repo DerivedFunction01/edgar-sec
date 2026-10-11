@@ -25,7 +25,6 @@ from edgar_sec.domain.filing_catalog.schemas import (
     TARGET_COLUMNS,
 )
 from edgar_sec.engine.selection.features import FeatureSnapshotBuilder
-from edgar_sec.engine.selection.paths import FEATURE_MANIFEST_FILE
 from edgar_sec.engine.selection.snapshot import SnapshotPaths
 from edgar_sec.engine.selection.inventory import (
     InventoryStatistics,
@@ -619,7 +618,7 @@ def plan_policy(
     dag_catalog = DAGCatalog(paths.snapshots_root)
     node = dag_catalog.get_manifest(catalog)
     delta_target_parts: tuple[Path, ...] = ()
-    parent_feature_manifest: Path | None = None
+    parent_feature_snapshot_id: str | None = None
     if node is not None and node.kind == "delta" and node.parent_snapshot_id:
         delta_target_parts = dag_catalog.resolve_relation(catalog, "filing_targets")
         parent_builder = FeatureSnapshotBuilder(
@@ -631,10 +630,9 @@ def plan_policy(
             family_index_id=family_index.family_index_id,
             row_group_size=row_group_size,
         )
-        parent_feature_manifest = (
-            parent_builder.snapshot_dir(sorted(set(policy.forms)))
-            / FEATURE_MANIFEST_FILE
-        )
+        parent_feature_snapshot_id = parent_builder.snapshot_dir(
+            sorted(set(policy.forms))
+        ).name
 
     builder = FeatureSnapshotBuilder(
         target_root=paths.snapshot_targets_dir(catalog),
@@ -644,7 +642,7 @@ def plan_policy(
         family_index_path=family_index_path,
         family_index_id=family_index.family_index_id,
         row_group_size=row_group_size,
-        parent_feature_manifest=parent_feature_manifest,
+        parent_feature_snapshot_id=parent_feature_snapshot_id,
         active_target_parts=active_target_parts,
         delta_target_parts=delta_target_parts,
     )

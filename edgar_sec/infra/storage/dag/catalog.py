@@ -87,6 +87,7 @@ CREATE TABLE IF NOT EXISTS catalog_meta (
     key                  TEXT PRIMARY KEY,
     value                TEXT NOT NULL
 );
+
 """
 
 
@@ -515,6 +516,33 @@ class DAGCatalog:
         descriptors = node.relations.get(relation, ())
         if not descriptors:
             raise ValueError(f"snapshot {snapshot_id!r} has no {relation!r} relation")
+        return self._resolve_part_descriptors(
+            descriptors, relative_to=relative_to, verify_digests=verify_digests
+        )
+
+    def resolve_active_relation(
+        self,
+        tip_id: str,
+        relation: str,
+        *,
+        relative_to: Path | None = None,
+        verify_digests: bool = True,
+    ) -> tuple[Path, ...]:
+        """Resolve active relation parts in ancestor-to-tip order."""
+        descriptors = self.get_active_parts(tip_id, {relation})
+        if not descriptors:
+            raise ValueError(f"snapshot {tip_id!r} has no active {relation!r} relation")
+        return self._resolve_part_descriptors(
+            descriptors, relative_to=relative_to, verify_digests=verify_digests
+        )
+
+    def _resolve_part_descriptors(
+        self,
+        descriptors: tuple[PartDescriptor, ...] | list[PartDescriptor],
+        *,
+        relative_to: Path | None,
+        verify_digests: bool,
+    ) -> tuple[Path, ...]:
         root = self.catalog_file.parent.resolve()
         base = Path(relative_to).resolve() if relative_to is not None else root
         if base != root and root not in base.parents:

@@ -25,6 +25,11 @@ and `max_per_company_classification` controls its cap.
   unknown dimensions and retired fields, and result mapping raises on schema drift rather
   than truncating rows.
 - **Feature snapshots are content-addressed and reused** when their inputs match.
+- **Feature snapshot metadata is stored as a DAG node in the shared SQLite catalog.**
+  Its Parquet relations and parent lineage use the DAG catalog contract; no feature
+  manifest JSON file is published.
+- **Feature snapshot branches are policy-scoped.** DAG retention keeps the active feature
+  node and its ancestors without special handling for selection artifacts.
 - **Append deltas reuse inherited occurrence-independent parts.** Size bands, lifecycle
   rows, and locator rows are overlaid by document or registrant key.
 - **Inherited profile features require equal normalized profile values.** A changed value

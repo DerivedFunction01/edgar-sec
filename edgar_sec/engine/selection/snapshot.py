@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-import json
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 from edgar_sec.domain.filing_catalog.schemas import (
     LOCATOR_FEATURE_COLUMNS,
@@ -12,8 +12,24 @@ from edgar_sec.domain.filing_catalog.schemas import (
     OCCURRENCE_FEATURE_COLUMNS,
     OCCURRENCE_INDEPENDENT_COLUMNS,
 )
-from edgar_sec.engine.selection.paths import FEATURE_MANIFEST_FILE
+from edgar_sec.foundation.serialization import canonical_hash
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import sql_literal
+
+OCCURRENCE_RELATION = "selection_occurrence_independent"
+LOCATOR_BANDS_RELATION = "selection_locator_bands"
+LIFECYCLE_RELATION = "selection_lifecycle"
+LOCATOR_FEATURES_RELATION = "selection_locator_features"
+
+
+def feature_branch_name(feature_signature: dict[str, Any]) -> str:
+    """Keep one DAG branch per policy, across source catalog updates."""
+    branch_basis = {
+        key: value
+        for key, value in feature_signature.items()
+        if key != "family_index_id"
+    }
+    return f"features/{canonical_hash(branch_basis)[:32]}"
 
 
 def _overlay_relation(
@@ -37,7 +53,7 @@ def _overlay_relation(
 @dataclass(frozen=True, slots=True)
 class SnapshotPaths:
     snapshot_dir: Path
-    manifest: Path
+    manifest: dict[str, Any]
     occurrence_parts: tuple[Path, ...]
     locator_band_parts: tuple[Path, ...]
     lifecycle_parts: tuple[Path, ...]
@@ -102,27 +118,54 @@ class SnapshotPaths:
 
 
 def load_snapshot_paths(snapshot_dir: str | Path) -> SnapshotPaths:
+    """Resolve feature relations from the snapshot's DAG node and ancestors."""
     root = Path(snapshot_dir).resolve()
-    manifest_path = root / FEATURE_MANIFEST_FILE
-    recorded = json.loads(manifest_path.read_text(encoding="utf-8"))
-    artifact_keys = (
-        "occurrence_parts",
-        "locator_band_parts",
-        "lifecycle_parts",
-        "locator_feature_parts",
+    snapshot_id = root.name
+
+    try:
+        catalog = DAGCatalog(root.parent, read_only=True)
+    except FileNotFoundError as exc:
+        raise ValueError(f"feature snapshot is not registered: {snapshot_id}") from exc
+    node = catalog.get_manifest(snapshot_id)
+    if node is None or node.metadata.get("artifact_kind") != "selection_features":
+        raise ValueError(f"feature snapshot is not registered: {snapshot_id}")
+
+    feature_metadata = dict(node.metadata)
+    feature_schema_version = node.schema_versions.get("selection_features", "")
+    feature_kind = node.kind
+    parent_id = node.parent_snapshot_id
+    occurrence_parts = catalog.resolve_active_relation(
+        snapshot_id, OCCURRENCE_RELATION, verify_digests=False
     )
-    if any(not recorded.get(key) for key in artifact_keys):
-        raise ValueError(f"feature snapshot manifest is incomplete: {manifest_path}")
+    locator_band_parts = catalog.resolve_active_relation(
+        snapshot_id, LOCATOR_BANDS_RELATION, verify_digests=False
+    )
+    lifecycle_parts = catalog.resolve_active_relation(
+        snapshot_id, LIFECYCLE_RELATION, verify_digests=False
+    )
+    locator_feature_parts = catalog.resolve_active_relation(
+        snapshot_id, LOCATOR_FEATURES_RELATION, verify_digests=False
+    )
+    if not all(
+        (occurrence_parts, locator_band_parts, lifecycle_parts, locator_feature_parts)
+    ):
+        raise ValueError(f"feature snapshot manifest is incomplete: {snapshot_id}")
+
+    manifest = {
+        **feature_metadata,
+        "snapshot_id": node.snapshot_id,
+        "feature_schema_version": feature_schema_version,
+        "parent_snapshot": parent_id,
+        "incremental": feature_kind == "delta",
+    }
     return SnapshotPaths(
         snapshot_dir=root,
-        manifest=manifest_path,
-        occurrence_parts=tuple(Path(path) for path in recorded["occurrence_parts"]),
-        locator_band_parts=tuple(Path(path) for path in recorded["locator_band_parts"]),
-        lifecycle_parts=tuple(Path(path) for path in recorded["lifecycle_parts"]),
-        locator_feature_parts=tuple(
-            Path(path) for path in recorded["locator_feature_parts"]
-        ),
+        manifest=manifest,
+        occurrence_parts=occurrence_parts,
+        locator_band_parts=locator_band_parts,
+        lifecycle_parts=lifecycle_parts,
+        locator_feature_parts=locator_feature_parts,
     )
 
 
-__all__ = ["SnapshotPaths", "load_snapshot_paths"]
+__all__ = ["SnapshotPaths", "feature_branch_name", "load_snapshot_paths"]

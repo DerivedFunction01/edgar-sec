@@ -184,10 +184,18 @@ def test_policy_plan_reuses_parent_features_for_a_catalog_delta(
 
     plan_policy(child_id, policy, catalog_artifacts_root)
 
-    feature_manifests = [
-        json.loads(path.read_text(encoding="utf-8"))
-        for path in paths.snapshots_root.glob("*/feature_snapshot.json")
-    ]
+    feature_manifests = []
+    for row in dag.list_snapshots():
+        feature_node = dag.get_manifest(row["snapshot_id"])
+        if (
+            feature_node is not None
+            and feature_node.metadata.get("artifact_kind") == "selection_features"
+        ):
+            feature_manifests.append(
+                load_snapshot_paths(
+                    paths.snapshots_root / feature_node.snapshot_id
+                ).manifest
+            )
     child_features = [
         value
         for value in feature_manifests
