@@ -4,8 +4,17 @@ from __future__ import annotations
 
 import re
 
-from edgar_sec.domain.taxonomy.jurisdictions import STATE_NAMES, STATE_POSTAL_CODES
 from edgar_sec.foundation.regex.builder import build_alternation
+
+_SECURITIES_REGISTRATION_TERMS = (
+    "securities registered pursuant to section 12(b)",
+    "securities registered pursuant to section 12(g)",
+    "securities registered under section 12",
+)
+_REGISTRANT_CHARTER_TERM = "exact name of registrant"
+_SMALL_BUSINESS_ISSUER_TERM = "name of small business issuer"
+_PRINCIPAL_OFFICE_ADDRESS_TERM = "address of principal executive offices"
+_EMPLOYER_ID_TERM = "employer identification no."
 
 COVER_LABELS: dict[str, tuple[str, ...]] = {
     "state_of_incorporation": (
@@ -19,13 +28,14 @@ COVER_LABELS: dict[str, tuple[str, ...]] = {
         "i.r.s. employer identification no.",
         "irs employer identification no.",
         "employer identification number",
-        "employer identification no.",
+        _EMPLOYER_ID_TERM,
         "taxpayer identification number",
         "i.r.s. no.",
         "irs no.",
     ),
     "principal_address": (
-        "address of principal executive offices",
+        _PRINCIPAL_OFFICE_ADDRESS_TERM,
+        "address of principal executive office",
         "principal executive offices",
     ),
     "zip_code": (
@@ -47,10 +57,11 @@ COVER_LABELS: dict[str, tuple[str, ...]] = {
     "registrant_name": (
         "exact name of registrant as specified in its charter",
         "name of registrant as specified in its charter",
-        "exact name of registrant",
+        _REGISTRANT_CHARTER_TERM,
         "name of registrant",
+        "translation of registrant's name into english",
         "name of small business issuer as specified in its charter",
-        "name of small business issuer",
+        _SMALL_BUSINESS_ISSUER_TERM,
     ),
     "commission_file_number": (
         "commission file number",
@@ -59,9 +70,7 @@ COVER_LABELS: dict[str, tuple[str, ...]] = {
     ),
     "securities_12b": (
         "securities registered pursuant to section 12(b) of the act",
-        "securities registered pursuant to section 12(b)",
-        "securities registered pursuant to section 12(g)",
-        "securities registered under section 12",
+        *_SECURITIES_REGISTRATION_TERMS,
         "title of each class",
         "title of class",
         "trading symbol(s)",
@@ -72,23 +81,6 @@ COVER_LABELS: dict[str, tuple[str, ...]] = {
 
 COVER_LABELS_FLAT: tuple[str, ...] = tuple(
     phrase for phrases in COVER_LABELS.values() for phrase in phrases
-)
-
-SECURITIES_12B_ANCHOR_TERMS: tuple[str, ...] = (
-    "securities registered pursuant to section 12(b) of the act",
-    "securities registered pursuant to section 12(b)",
-    "securities registered pursuant to section 12(g)",
-    "securities registered under section 12",
-    "trading symbol(s)",
-    "trading symbol",
-    "title of each class",
-    "name of each exchange on which registered",
-)
-
-SECURITIES_12B_SUPPORT_TERMS: tuple[str, ...] = (
-    "title of class",
-    "trading symbols",
-    "par value",
 )
 
 COMMON_SHARES_PHRASES: tuple[str, ...] = (
@@ -108,12 +100,6 @@ COMMON_SHARES_PHRASES: tuple[str, ...] = (
 )
 
 
-SEC_HEADER_TERMS: tuple[str, ...] = (
-    "securities and exchange commission",
-    "washington, d.c.",
-    "washington d.c.",
-    "united states",
-)
 _FORM_PATTERN = re.compile(
     r"\b(?:FORM|SCHEDULE)\s+([A-Z0-9]+(?:[-/][A-Z0-9]+)*)\b", re.IGNORECASE
 )
@@ -133,35 +119,23 @@ WELL_KNOWN_SEASONED_ISSUER: str = "well-known seasoned issuer"
 VOLUNTARY_FILER: str = "voluntary filer"
 
 
-def _phrase_pattern(term: str) -> str:
-    return build_alternation([term], auto_escape=True, flexible_whitespace=True)
-
-
-FILER_CATEGORY_PATTERNS: tuple[tuple[str, str], ...] = (
-    (LARGE_ACCELERATED_FILER.capitalize(), _phrase_pattern(LARGE_ACCELERATED_FILER)),
-    (NON_ACCELERATED_FILER.capitalize(), _phrase_pattern(NON_ACCELERATED_FILER)),
-    ("Accelerated filer", r"(?<!large\s)" + _phrase_pattern(ACCELERATED_FILER)),
-    (
-        SMALLER_REPORTING_COMPANY.capitalize(),
-        _phrase_pattern(SMALLER_REPORTING_COMPANY),
-    ),
-    (EMERGING_GROWTH_COMPANY.capitalize(), _phrase_pattern(EMERGING_GROWTH_COMPANY)),
-)
-
-
 REPORT_PERIOD_GROUP = "report_period"
 FILER_STATUS_GROUP = "filer_status"
 STATUTORY_BINARY_GROUP = "statutory_binary"
-
-REPORT_ANNUAL = "annual"
-REPORT_QUARTERLY = "quarterly"
-REPORT_TRANSITION = "transition"
 
 FILER_LARGE_ACCELERATED = "large_accelerated_filer"
 FILER_ACCELERATED = "accelerated_filer"
 FILER_NON_ACCELERATED = "non_accelerated_filer"
 FILER_SMALLER_REPORTING = "smaller_reporting_company"
 FILER_EMERGING_GROWTH = "emerging_growth_company"
+
+FILER_TYPE_LABELS: dict[str, tuple[str, ...]] = {
+    FILER_LARGE_ACCELERATED: (LARGE_ACCELERATED_FILER,),
+    FILER_ACCELERATED: (ACCELERATED_FILER,),
+    FILER_NON_ACCELERATED: (NON_ACCELERATED_FILER, "non accelerated filer"),
+    FILER_SMALLER_REPORTING: (SMALLER_REPORTING_COMPANY,),
+    FILER_EMERGING_GROWTH: (EMERGING_GROWTH_COMPANY,),
+}
 
 STAT_WKSI = "well_known_seasoned_issuer"
 STAT_SHELL = "shell_company"
@@ -172,117 +146,55 @@ STAT_EGC_TRANSITION_OPTOUT = "egc_transition_optout"
 STAT_ERROR_CORRECTION = "error_correction"
 STAT_RECOVERY_ANALYSIS = "recovery_analysis"
 
+_FILER_LABEL_TERMS = (
+    *(labels[0] for labels in FILER_TYPE_LABELS.values()),
+    SHELL_COMPANY,
+    WELL_KNOWN_SEASONED_ISSUER,
+    VOLUNTARY_FILER,
+)
+AUDITOR_ATTESTATION_TERM = "auditor attestation"
+PRECEDING_12_MONTHS_TERM = "preceding 12 months"
+REQUIRED_REPORTS_TERM = "has filed all reports required"
+NOT_REQUIRED_TO_FILE_TERM = "not required to file reports"
+ERROR_CORRECTION_TERM = "error correction"
+RECOVERY_ANALYSIS_TERM = "recovery analysis"
+
 FILER_STATUS_TERMS: tuple[str, ...] = (
-    LARGE_ACCELERATED_FILER,
-    ACCELERATED_FILER,
-    NON_ACCELERATED_FILER,
-    SMALLER_REPORTING_COMPANY,
-    EMERGING_GROWTH_COMPANY,
-    SHELL_COMPANY,
-    WELL_KNOWN_SEASONED_ISSUER,
-    VOLUNTARY_FILER,
+    *_FILER_LABEL_TERMS,
     "indicate by check mark",
-    "auditor attestation",
-)
-
-
-CHECKBOX_KEYWORDS: tuple[str, ...] = (
-    LARGE_ACCELERATED_FILER,
-    ACCELERATED_FILER,
-    NON_ACCELERATED_FILER,
-    SMALLER_REPORTING_COMPANY,
-    EMERGING_GROWTH_COMPANY,
-    SHELL_COMPANY,
-    WELL_KNOWN_SEASONED_ISSUER,
-    VOLUNTARY_FILER,
-    "yes",
-    "no",
-    "yes no",
-    "indicate by check mark",
-    "check one",
-    "check mark",
-    "check marks",
-    "checkbox",
-    "check box",
-    "as defined in rule 12b-2",
-    "as defined in rule",
-    "rule 405",
-)
-
-_KW_ALT = build_alternation(
-    CHECKBOX_KEYWORDS, auto_escape=True, flexible_whitespace=True
-)
-_BOX = r"(?:\[[ xX\u2611\u2612\u2610]?\]|[\u2611\u2612\u2610\u25a0\u25a1\u25aa\u25ab\u2713\u2714\u2717\u2718\u00fe\u00fd]|&#9744;|&#9746;|&#9745;|&#9633;|&#9632;|\(?[xX]\)?)"
-CHECKBOX_GRID_RE = re.compile(
-    rf"(?:{_BOX}\s*{_KW_ALT}|{_KW_ALT}\s*{_BOX})", re.IGNORECASE
+    AUDITOR_ATTESTATION_TERM,
 )
 
 
 COVER_EVIDENCE_TERMS: tuple[str, ...] = (
-    LARGE_ACCELERATED_FILER,
-    ACCELERATED_FILER,
-    NON_ACCELERATED_FILER,
-    SMALLER_REPORTING_COMPANY,
-    EMERGING_GROWTH_COMPANY,
-    SHELL_COMPANY,
-    WELL_KNOWN_SEASONED_ISSUER,
-    VOLUNTARY_FILER,
-    "securities registered pursuant to section 12(b)",
-    "securities registered pursuant to section 12(g)",
-    "securities registered under section 12",
+    *_FILER_LABEL_TERMS,
+    *_SECURITIES_REGISTRATION_TERMS,
     "for the fiscal year ended",
     "for the quarterly period ended",
     "for the transition period",
-    "exact name of registrant",
-    "name of small business issuer",
+    _REGISTRANT_CHARTER_TERM,
+    _SMALL_BUSINESS_ISSUER_TERM,
     "state or other jurisdiction",
-    "employer identification no.",
-    "address of principal executive offices",
+    _EMPLOYER_ID_TERM,
+    _PRINCIPAL_OFFICE_ADDRESS_TERM,
     "trading symbol",
     "securities exchange act of 1934",
     "exchange act of 1934",
     "securities act of 1933",
-    "has filed all reports required",
-    "preceding 12 months",
+    REQUIRED_REPORTS_TERM,
+    PRECEDING_12_MONTHS_TERM,
     "past 90 days",
     "subject to such filing requirements",
-    "not required to file reports",
+    NOT_REQUIRED_TO_FILE_TERM,
     "interactive data file",
 )
-
-COVER_START_SHAPE_TERMS: tuple[str, ...] = (
-    *COVER_EVIDENCE_TERMS,
-    "indicate by check mark",
-)
-
-CURRENCY_SPACING_RE = re.compile(r"\$\s+(\d)")
-PUNCT_SPACING_RE = re.compile(r"\s+([,.;:!?)])")
-IXBRL_FACT_RE = re.compile(r"ix:nonFraction", re.IGNORECASE)
-
-
-ZIP_VALUE_RE = re.compile(r"(?<![\d\-])\d{5}(?:-\d{4})?(?!\d)")
-EIN_VALUE_RE = re.compile(r"\b\d{2}[\-\s]?\d{7}\b")
-COMMISSION_FILE_VALUE_RE = re.compile(r"\b\d{1,3}[\-\s]\d{3,8}(?:[\-\s]\d{2,4})?\b")
-
 
 STATE_INCORPORATION_RE = re.compile(
     rf"\(?\s*{build_alternation(COVER_LABELS['state_of_incorporation'], auto_escape=True, compact=False, flexible_whitespace=True)}\s*\)?",
     re.IGNORECASE,
 )
-IRS_EIN_RE = re.compile(
-    rf"\(?\s*{build_alternation(COVER_LABELS['irs_ein'], auto_escape=True, compact=False, flexible_whitespace=True)}\s*\)?",
-    re.IGNORECASE,
-)
 ADDRESS_RE = re.compile(
     rf"\(?\s*{build_alternation(COVER_LABELS['principal_address'], auto_escape=True, compact=False, flexible_whitespace=True)}\s*\)?",
-    re.IGNORECASE,
-)
-ZIP_RE = re.compile(
-    rf"\(?\s*{build_alternation(COVER_LABELS['zip_code'], auto_escape=True, compact=False, flexible_whitespace=True)}\s*\)?",
-    re.IGNORECASE,
-)
-TELEPHONE_RE = re.compile(
-    rf"\(?\s*{build_alternation(COVER_LABELS['telephone'], auto_escape=True, compact=False, flexible_whitespace=True)}\s*\)?",
     re.IGNORECASE,
 )
 REGISTRANT_NAME_RE = re.compile(
@@ -297,55 +209,34 @@ SECURITIES_12B_RE = re.compile(
     rf"\(?\s*{build_alternation(COVER_LABELS['securities_12b'], auto_escape=True, compact=False, flexible_whitespace=True)}\s*\)?",
     re.IGNORECASE,
 )
-# Derived from domain.taxonomy.jurisdictions; restating the list would drift again and
-# silently drop the territories.
-_US_STATES: frozenset[str] = frozenset(
-    [*STATE_POSTAL_CODES, *(name.upper() for name in STATE_NAMES)]
-)
-
-
-def is_state_value(value: str) -> bool:
-    """Return whether value matches a recognized US state name or postal code."""
-    return value.strip().upper() in _US_STATES
-
-
 __all__ = [
     "ACCELERATED_FILER",
     "ADDRESS_RE",
-    "CHECKBOX_GRID_RE",
-    "CHECKBOX_KEYWORDS",
+    "AUDITOR_ATTESTATION_TERM",
     "COMMISSION_FILE_RE",
-    "COMMISSION_FILE_VALUE_RE",
     "COVER_EVIDENCE_TERMS",
     "COVER_LABELS",
     "COVER_LABELS_FLAT",
     "COVER_START_IDENTITY_TERMS",
-    "COVER_START_SHAPE_TERMS",
-    "CURRENCY_SPACING_RE",
-    "EIN_VALUE_RE",
     "EMERGING_GROWTH_COMPANY",
+    "ERROR_CORRECTION_TERM",
     "FILER_ACCELERATED",
-    "FILER_CATEGORY_PATTERNS",
     "FILER_EMERGING_GROWTH",
     "FILER_LARGE_ACCELERATED",
     "FILER_NON_ACCELERATED",
     "FILER_SMALLER_REPORTING",
     "FILER_STATUS_GROUP",
     "FILER_STATUS_TERMS",
-    "IRS_EIN_RE",
-    "IXBRL_FACT_RE",
+    "FILER_TYPE_LABELS",
     "LARGE_ACCELERATED_FILER",
     "NON_ACCELERATED_FILER",
-    "PUNCT_SPACING_RE",
+    "NOT_REQUIRED_TO_FILE_TERM",
+    "PRECEDING_12_MONTHS_TERM",
+    "RECOVERY_ANALYSIS_TERM",
     "REGISTRANT_NAME_RE",
-    "REPORT_ANNUAL",
+    "REQUIRED_REPORTS_TERM",
     "REPORT_PERIOD_GROUP",
-    "REPORT_QUARTERLY",
-    "REPORT_TRANSITION",
-    "SECURITIES_12B_ANCHOR_TERMS",
     "SECURITIES_12B_RE",
-    "SECURITIES_12B_SUPPORT_TERMS",
-    "SEC_HEADER_TERMS",
     "SHELL_COMPANY",
     "SMALLER_REPORTING_COMPANY",
     "STATE_INCORPORATION_RE",
@@ -358,10 +249,6 @@ __all__ = [
     "STAT_SOX_404B",
     "STAT_VOLUNTARY",
     "STAT_WKSI",
-    "TELEPHONE_RE",
     "VOLUNTARY_FILER",
     "WELL_KNOWN_SEASONED_ISSUER",
-    "ZIP_RE",
-    "ZIP_VALUE_RE",
-    "is_state_value",
 ]

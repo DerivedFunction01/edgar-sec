@@ -15,6 +15,17 @@ CURRENT_TITLES: tuple[str, ...] = (
     "date of earliest event reported",
 )
 
+CURRENT_COVER_TERMS: tuple[str, ...] = (
+    "report of foreign private issuer pursuant to rule 13a-16 or 15d-16",
+    "date of report",
+    "date of earliest event reported",
+    "annual reports under cover of form 20-f or form 40-f",
+    "filing is intended to simultaneously satisfy the filing obligation",
+    "under any of the following provisions",
+    "former name or former address, if changed since last report",
+    "for the month of",
+)
+
 CURRENT_BODY_PHRASES: tuple[str, ...] = (
     "material definitive agreement",
     "credit agreement",
@@ -145,6 +156,7 @@ __all__ = [
     "CURRENT_BODY_PHRASES",
     "CURRENT_BODY_STRONG_TERMS",
     "CURRENT_BODY_WEAK_TERMS",
+    "CURRENT_COVER_TERMS",
     "CURRENT_COVER_EXCLUSION_TERMS",
     "CURRENT_TITLES",
     "CurrentReportEvidence",

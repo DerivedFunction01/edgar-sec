@@ -15,6 +15,11 @@ from edgar_sec.domain.forms.common.vocabulary import (
     COVER_START_IDENTITY_TERMS,
 )
 from edgar_sec.domain.forms.families.annual.checkmarks import ANNUAL_CHECKBOX_SCHEMA
+from edgar_sec.domain.forms.families.current.checkmarks import (
+    EIGHT_K_CHECKBOX_SCHEMA,
+    SIX_K_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.current.evidence import CURRENT_COVER_TERMS
 from edgar_sec.domain.forms.families.annual.evidence import (
     ANNUAL_ADDITIONAL_PHRASE_RULES,
     AnnualReportEvidence,
@@ -88,7 +93,12 @@ def test_generic_cover_profiles_have_common_rules_and_labels() -> None:
         assert profile.healing_rules == tuple(COMMON_PHRASE_RULES)
         assert profile.labels == COMMON_COVER_LABELS
         assert profile.boundary is not None
-        assert profile.evidence_terms == COMMON_COVER_LABELS
+        expected = (
+            (*COMMON_COVER_LABELS, *CURRENT_COVER_TERMS)
+            if family in {"8-K", "6-K"}
+            else COMMON_COVER_LABELS
+        )
+        assert profile.evidence_terms == expected
 
 
 def test_annual_boundary_enables_incorporated_reference() -> None:
@@ -195,6 +205,21 @@ def test_quarterly_cover_evidence_has_no_incorporated_reference_end() -> None:
     assert cover.healing_rules == ()
 
 
+def test_current_cover_evidence_includes_form_specific_captions() -> None:
+    cover = get_profile("8-K").cover_evidence
+    assert cover is not None
+    assert cover.shape_terms[-8:] == (
+        "report of foreign private issuer pursuant to rule 13a-16 or 15d-16",
+        "date of report",
+        "date of earliest event reported",
+        "annual reports under cover of form 20-f or form 40-f",
+        "filing is intended to simultaneously satisfy the filing obligation",
+        "under any of the following provisions",
+        "former name or former address, if changed since last report",
+        "for the month of",
+    )
+
+
 def test_annual_body_anchors_start_earlier_than_quarterly() -> None:
     annual = get_profile("10-K").body_evidence
     quarterly = get_profile("10-Q").body_evidence
@@ -286,12 +311,13 @@ def test_derived_taxonomy_is_attached_per_family(family: str, expected: object) 
     assert get_profile(family).derived_taxonomy is expected
 
 
-def test_checkbox_schema_is_attached_only_to_cover_bearing_families() -> None:
+def test_checkbox_schemas_come_from_the_family_catalog() -> None:
     assert get_profile("10-K").checkbox_schema is ANNUAL_CHECKBOX_SCHEMA
     assert get_profile("20-F").checkbox_schema is ANNUAL_CHECKBOX_SCHEMA
     assert get_profile("10-Q").checkbox_schema is QUARTERLY_CHECKBOX_SCHEMA
-    for family in NO_COVER_FAMILIES:
-        assert get_profile(family).checkbox_schema is None
+    assert get_profile("8-K").checkbox_schema is EIGHT_K_CHECKBOX_SCHEMA
+    assert get_profile("6-K").checkbox_schema is SIX_K_CHECKBOX_SCHEMA
+    assert get_profile("GENERIC").checkbox_schema is None
 
 
 def test_builders_compose_the_registry_entries() -> None:

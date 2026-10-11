@@ -140,8 +140,6 @@ class PrimaryReportProfile:
     statutory_titles: tuple[str, ...] = ()
     designator_tokens: tuple[str, ...] = ()
     commission_header_required: bool = True
-    derived_taxonomy_family: str | None = None
-    checkbox_schema_family: str | None = None
 
 
 @dataclass(frozen=True, slots=True)

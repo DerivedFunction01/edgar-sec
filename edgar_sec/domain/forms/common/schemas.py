@@ -3,29 +3,31 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Literal
 
-REPORT_PERIOD_GROUP = "report_period"
-FILER_STATUS_GROUP = "filer_status"
-STATUTORY_BINARY_GROUP = "statutory_binary"
-
-REPORT_ANNUAL = "annual"
-REPORT_QUARTERLY = "quarterly"
-REPORT_TRANSITION = "transition"
-
-FILER_LARGE_ACCELERATED = "large_accelerated_filer"
-FILER_ACCELERATED = "accelerated_filer"
-FILER_NON_ACCELERATED = "non_accelerated_filer"
-FILER_SMALLER_REPORTING = "smaller_reporting_company"
-FILER_EMERGING_GROWTH = "emerging_growth_company"
-
-STAT_WKSI = "well_known_seasoned_issuer"
-STAT_SHELL = "shell_company"
-STAT_VOLUNTARY = "voluntary_filer"
-STAT_COMPLIANT_12_MONTHS = "compliant_12_months"
-STAT_SOX_404B = "sox_404b"
-STAT_EGC_TRANSITION_OPTOUT = "egc_transition_optout"
-STAT_ERROR_CORRECTION = "error_correction"
-STAT_RECOVERY_ANALYSIS = "recovery_analysis"
+from edgar_sec.domain.forms.common.vocabulary import (
+    AUDITOR_ATTESTATION_TERM,
+    ERROR_CORRECTION_TERM,
+    FILER_STATUS_GROUP,
+    FILER_TYPE_LABELS,
+    NOT_REQUIRED_TO_FILE_TERM,
+    PRECEDING_12_MONTHS_TERM,
+    RECOVERY_ANALYSIS_TERM,
+    REPORT_PERIOD_GROUP,
+    REQUIRED_REPORTS_TERM,
+    SHELL_COMPANY,
+    STAT_COMPLIANT_12_MONTHS,
+    STAT_EGC_TRANSITION_OPTOUT,
+    STAT_ERROR_CORRECTION,
+    STAT_RECOVERY_ANALYSIS,
+    STAT_SHELL,
+    STAT_SOX_404B,
+    STAT_VOLUNTARY,
+    STAT_WKSI,
+    STATUTORY_BINARY_GROUP,
+    VOLUNTARY_FILER,
+    WELL_KNOWN_SEASONED_ISSUER,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -43,12 +45,91 @@ class CheckboxConstraint:
 
 
 @dataclass(frozen=True, slots=True)
+class CheckboxLabelSpec:
+    key: str
+    phrases: tuple[str, ...]
+    group: str
+    period_role: Literal["companion", "transition"] | None = None
+
+
+@dataclass(frozen=True, slots=True)
 class CoverCheckboxSchema:
     """Form-scoped checkbox groups and constraints."""
 
     family: str
     groups: tuple[str, ...]
     constraints: tuple[CheckboxConstraint, ...] = ()
+    labels: tuple[CheckboxLabelSpec, ...] = ()
+
+    @property
+    def report_period_companion(self) -> str | None:
+        return self._period_key("companion")
+
+    @property
+    def report_period_transition(self) -> str | None:
+        return self._period_key("transition")
+
+    def _period_key(self, role: Literal["companion", "transition"]) -> str | None:
+        return next(
+            (label.key for label in self.labels if label.period_role == role),
+            None,
+        )
+
+
+COMMON_CHECKBOX_LABELS: tuple[CheckboxLabelSpec, ...] = (
+    *(
+        CheckboxLabelSpec(key, phrases, FILER_STATUS_GROUP)
+        for key, phrases in FILER_TYPE_LABELS.items()
+    ),
+    CheckboxLabelSpec(
+        STAT_WKSI,
+        (WELL_KNOWN_SEASONED_ISSUER, "well known seasoned issuer"),
+        STATUTORY_BINARY_GROUP,
+    ),
+    CheckboxLabelSpec(STAT_SHELL, (SHELL_COMPANY,), STATUTORY_BINARY_GROUP),
+    CheckboxLabelSpec(
+        STAT_VOLUNTARY,
+        (VOLUNTARY_FILER, NOT_REQUIRED_TO_FILE_TERM),
+        STATUTORY_BINARY_GROUP,
+    ),
+    CheckboxLabelSpec(
+        STAT_COMPLIANT_12_MONTHS,
+        (PRECEDING_12_MONTHS_TERM, "preceding twelve months", REQUIRED_REPORTS_TERM),
+        STATUTORY_BINARY_GROUP,
+    ),
+    CheckboxLabelSpec(
+        STAT_SOX_404B,
+        ("404(b)", AUDITOR_ATTESTATION_TERM, "independent auditor"),
+        STATUTORY_BINARY_GROUP,
+    ),
+    CheckboxLabelSpec(
+        STAT_EGC_TRANSITION_OPTOUT,
+        ("extended transition", "transition period for complying"),
+        STATUTORY_BINARY_GROUP,
+    ),
+    CheckboxLabelSpec(
+        STAT_ERROR_CORRECTION,
+        (ERROR_CORRECTION_TERM, "error corrections"),
+        STATUTORY_BINARY_GROUP,
+    ),
+    CheckboxLabelSpec(
+        STAT_RECOVERY_ANALYSIS,
+        (RECOVERY_ANALYSIS_TERM,),
+        STATUTORY_BINARY_GROUP,
+    ),
+)
+
+TRANSITION_REPORT_LABEL = CheckboxLabelSpec(
+    "transition",
+    (
+        "transition report",
+        "transition reports",
+        "transition report pursuant",
+        "transition reports pursuant",
+    ),
+    REPORT_PERIOD_GROUP,
+    "transition",
+)
 
 
 STATUTORY_CHECKBOX_CONSTRAINTS: tuple[CheckboxConstraint, ...] = (
@@ -104,57 +185,11 @@ STATUTORY_CHECKBOX_CONSTRAINTS: tuple[CheckboxConstraint, ...] = (
     ),
 )
 
-ANNUAL_CHECKBOX_SCHEMA = CoverCheckboxSchema(
-    family="annual",
-    groups=(REPORT_PERIOD_GROUP, FILER_STATUS_GROUP, STATUTORY_BINARY_GROUP),
-    constraints=STATUTORY_CHECKBOX_CONSTRAINTS,
-)
-
-QUARTERLY_CHECKBOX_SCHEMA = CoverCheckboxSchema(
-    family="quarterly",
-    groups=(REPORT_PERIOD_GROUP, FILER_STATUS_GROUP, STATUTORY_BINARY_GROUP),
-    constraints=STATUTORY_CHECKBOX_CONSTRAINTS,
-)
-
-# Canonical display phrases that appear on cover pages near filer checkboxes.
-# Used by the cover rewrite engine to scope mark normalization.
-FILER_STATUS_TERMS: tuple[str, ...] = (
-    "large accelerated filer",
-    "accelerated filer",
-    "non-accelerated filer",
-    "smaller reporting company",
-    "emerging growth company",
-    "shell company",
-    "well-known seasoned issuer",
-    "voluntary filer",
-    "indicate by check mark",
-    "auditor attestation",
-)
-
 __all__ = [
-    "ANNUAL_CHECKBOX_SCHEMA",
-    "FILER_ACCELERATED",
-    "FILER_EMERGING_GROWTH",
-    "FILER_LARGE_ACCELERATED",
-    "FILER_NON_ACCELERATED",
-    "FILER_SMALLER_REPORTING",
-    "FILER_STATUS_GROUP",
-    "FILER_STATUS_TERMS",
-    "QUARTERLY_CHECKBOX_SCHEMA",
-    "REPORT_ANNUAL",
-    "REPORT_PERIOD_GROUP",
-    "REPORT_QUARTERLY",
-    "REPORT_TRANSITION",
-    "STATUTORY_BINARY_GROUP",
+    "COMMON_CHECKBOX_LABELS",
     "STATUTORY_CHECKBOX_CONSTRAINTS",
-    "STAT_COMPLIANT_12_MONTHS",
-    "STAT_EGC_TRANSITION_OPTOUT",
-    "STAT_ERROR_CORRECTION",
-    "STAT_RECOVERY_ANALYSIS",
-    "STAT_SHELL",
-    "STAT_SOX_404B",
-    "STAT_VOLUNTARY",
-    "STAT_WKSI",
     "CheckboxConstraint",
+    "CheckboxLabelSpec",
     "CoverCheckboxSchema",
+    "TRANSITION_REPORT_LABEL",
 ]

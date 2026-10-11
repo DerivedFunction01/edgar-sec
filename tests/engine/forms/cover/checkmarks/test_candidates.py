@@ -4,6 +4,10 @@ from __future__ import annotations
 
 from types import SimpleNamespace
 
+from edgar_sec.domain.forms.families.annual.checkmarks import ANNUAL_CHECKBOX_SCHEMA
+from edgar_sec.domain.forms.families.quarterly.checkmarks import (
+    QUARTERLY_CHECKBOX_SCHEMA,
+)
 from edgar_sec.engine.forms.cover.checkmarks.candidates import (
     extract_cover_candidates,
     extract_table_candidates,
@@ -30,6 +34,61 @@ def test_a_variable_width_ascii_pair_yields_both_known_states() -> None:
         "checked",
         "unchecked",
     }
+
+
+def test_report_period_labels_are_selected_by_family_schema() -> None:
+    quarterly = "FORM 10-Q\nQUARTERLY REPORT [X]\nTRANSITION REPORT [ ]\n"
+    annual_text = "FORM 10-K\nQUARTERLY REPORT [X]\n"
+    current = "FORM 8-K\nANNUAL REPORT [X]\nTRANSITION REPORT [ ]\n"
+
+    quarterly_candidates = extract_cover_candidates(
+        quarterly, _boundary(quarterly), family="10-Q"
+    )
+    annual_candidates = extract_cover_candidates(
+        annual_text, _boundary(annual_text), family="10-K"
+    )
+    current_candidates = extract_cover_candidates(
+        current, _boundary(current), family="8-K"
+    )
+
+    assert {candidate.semantic_key for candidate in quarterly_candidates} == {
+        "quarterly",
+        "transition",
+    }
+    assert annual_candidates == ()
+    assert current_candidates == ()
+
+
+def test_form_6k_annual_report_options_use_the_6k_schema() -> None:
+    text = "FORM 6-K\nForm 20-F [X]\nForm 40-F [ ]\n"
+    candidates = extract_cover_candidates(text, _boundary(text), family="6-K")
+    wrong_family = extract_cover_candidates(text, _boundary(text), family="8-K")
+
+    assert [candidate.semantic_key for candidate in candidates] == [
+        "annual_report_form_20f",
+        "annual_report_form_40f",
+    ]
+    assert wrong_family == ()
+
+
+def test_form_8k_simultaneous_filing_options_use_the_8k_schema() -> None:
+    text = (
+        "FORM 8-K\n"
+        "Written communications pursuant to Rule 425 [X]\n"
+        "Soliciting material pursuant to Rule 14a-12 [ ]\n"
+        "Pre-commencement communications pursuant to Rule 14d-2(b) [ ]\n"
+        "Pre-commencement communications pursuant to Rule 13e-4(c) [ ]\n"
+    )
+    candidates = extract_cover_candidates(text, _boundary(text), family="8-K")
+    wrong_family = extract_cover_candidates(text, _boundary(text), family="6-K")
+
+    assert [candidate.semantic_key for candidate in candidates] == [
+        "written_communications_rule_425",
+        "soliciting_material_rule_14a12",
+        "precommencement_communications_rule_14d2b",
+        "precommencement_communications_rule_13e4c",
+    ]
+    assert wrong_family == ()
 
 
 def test_a_parenthesized_checked_mark_is_canonicalized() -> None:
@@ -103,6 +162,35 @@ def test_table_candidates_pair_each_filer_mark_with_its_nearest_label() -> None:
         ("non_accelerated_filer", 1),
         ("smaller_reporting_company", 4),
     ]
+
+
+def test_table_report_period_labels_come_from_selected_schema() -> None:
+    annual_geometry = SimpleNamespace(
+        rows=(("Annual report", "o"), ("Transition report", "o"))
+    )
+    quarterly_geometry = SimpleNamespace(
+        rows=(("Quarterly report", "o"), ("Transition report", "o"))
+    )
+
+    annual = extract_table_candidates(
+        annual_geometry, table_index=0, schema=ANNUAL_CHECKBOX_SCHEMA
+    )
+    quarterly = extract_table_candidates(
+        quarterly_geometry, table_index=0, schema=QUARTERLY_CHECKBOX_SCHEMA
+    )
+    wrong_family = extract_table_candidates(
+        quarterly_geometry, table_index=0, schema=ANNUAL_CHECKBOX_SCHEMA
+    )
+
+    assert [candidate.semantic_key for candidate in annual] == [
+        "annual",
+        "transition",
+    ]
+    assert [candidate.semantic_key for candidate in quarterly] == [
+        "quarterly",
+        "transition",
+    ]
+    assert {candidate.semantic_key for candidate in wrong_family} == {"transition"}
 
 
 def test_table_candidates_support_above_label_orientation() -> None:

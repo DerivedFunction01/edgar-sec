@@ -25,3 +25,6 @@ class Scanner:
     name: str
     description: str
     run: Callable[[], list[ScannerFinding]]
+
+
+__all__ = ["ScannerFinding", "Scanner"]

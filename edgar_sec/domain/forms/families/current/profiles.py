@@ -12,8 +12,6 @@ PRIMARY_PROFILE_8K = PrimaryReportProfile(
     statutory_titles=CURRENT_TITLES,
     designator_tokens=aliases_for_family("8-K"),
     commission_header_required=True,
-    derived_taxonomy_family="current",
-    checkbox_schema_family="current",
 )
 
 __all__ = [

@@ -12,8 +12,6 @@ PRIMARY_PROFILE_10Q = PrimaryReportProfile(
     statutory_titles=QUARTERLY_REPORT_TITLES,
     designator_tokens=aliases_for_family("10-Q"),
     commission_header_required=True,
-    derived_taxonomy_family="quarterly",
-    checkbox_schema_family="10-Q",
 )
 
 __all__ = [

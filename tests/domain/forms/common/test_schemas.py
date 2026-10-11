@@ -3,12 +3,13 @@
 from __future__ import annotations
 
 from edgar_sec.domain.forms.common.schemas import (
-    ANNUAL_CHECKBOX_SCHEMA,
-    FILER_STATUS_GROUP,
-    REPORT_PERIOD_GROUP,
-    STATUTORY_BINARY_GROUP,
+    COMMON_CHECKBOX_LABELS,
     STATUTORY_CHECKBOX_CONSTRAINTS,
     CheckboxConstraint,
+)
+from edgar_sec.domain.forms.common.vocabulary import (
+    FILER_STATUS_GROUP,
+    FILER_TYPE_LABELS,
 )
 
 
@@ -22,14 +23,6 @@ def test_statutory_constraints_defined() -> None:
     assert "recovery_requires_error_correction" in names
 
 
-def test_annual_checkbox_schema() -> None:
-    assert ANNUAL_CHECKBOX_SCHEMA.family == "annual"
-    assert REPORT_PERIOD_GROUP in ANNUAL_CHECKBOX_SCHEMA.groups
-    assert FILER_STATUS_GROUP in ANNUAL_CHECKBOX_SCHEMA.groups
-    assert STATUTORY_BINARY_GROUP in ANNUAL_CHECKBOX_SCHEMA.groups
-    assert ANNUAL_CHECKBOX_SCHEMA.constraints == STATUTORY_CHECKBOX_CONSTRAINTS
-
-
 def test_checkbox_constraint_immutability() -> None:
     c = CheckboxConstraint(
         name="test_constraint",
@@ -40,3 +33,13 @@ def test_checkbox_constraint_immutability() -> None:
     )
     assert c.penalty == 250
     assert c.relation == "not_both"
+
+
+def test_filer_checkbox_schema_uses_the_canonical_label_mapping() -> None:
+    labels = tuple(
+        (label.key, label.phrases)
+        for label in COMMON_CHECKBOX_LABELS
+        if label.group == FILER_STATUS_GROUP
+    )
+
+    assert labels == tuple(FILER_TYPE_LABELS.items())

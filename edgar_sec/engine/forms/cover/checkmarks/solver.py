@@ -15,16 +15,26 @@ from edgar_sec.domain.forms.common.checkmarks import (
     CheckmarkScope,
 )
 from edgar_sec.domain.forms.common.schemas import (
+    CheckboxConstraint,
+    CoverCheckboxSchema,
+)
+from edgar_sec.domain.forms.common.vocabulary import (
+    ACCELERATED_FILER,
     FILER_ACCELERATED,
     FILER_EMERGING_GROWTH,
     FILER_LARGE_ACCELERATED,
     FILER_NON_ACCELERATED,
     FILER_SMALLER_REPORTING,
     FILER_STATUS_GROUP,
-    REPORT_ANNUAL,
+    EMERGING_GROWTH_COMPANY,
+    ERROR_CORRECTION_TERM,
+    LARGE_ACCELERATED_FILER,
+    NON_ACCELERATED_FILER,
+    PRECEDING_12_MONTHS_TERM,
+    RECOVERY_ANALYSIS_TERM,
     REPORT_PERIOD_GROUP,
-    REPORT_QUARTERLY,
-    REPORT_TRANSITION,
+    SHELL_COMPANY,
+    SMALLER_REPORTING_COMPANY,
     STAT_COMPLIANT_12_MONTHS,
     STAT_EGC_TRANSITION_OPTOUT,
     STAT_ERROR_CORRECTION,
@@ -34,13 +44,10 @@ from edgar_sec.domain.forms.common.schemas import (
     STAT_VOLUNTARY,
     STAT_WKSI,
     STATUTORY_BINARY_GROUP,
-    CheckboxConstraint,
-    CoverCheckboxSchema,
+    VOLUNTARY_FILER,
+    WELL_KNOWN_SEASONED_ISSUER,
 )
-from edgar_sec.domain.forms.families.annual.checkmarks import ANNUAL_CHECKBOX_SCHEMA
-from edgar_sec.domain.forms.families.quarterly.checkmarks import (
-    QUARTERLY_CHECKBOX_SCHEMA,
-)
+from edgar_sec.domain.forms.families.processing_profiles import get_family_entry
 from edgar_sec.engine.forms.cover.checkmarks.candidates import (
     extract_cover_candidates,
 )
@@ -65,26 +72,26 @@ _FILER_KEYS = (
 _PRIMARY_KEYS = _FILER_KEYS[:3]
 _OVERLAY_KEYS = _FILER_KEYS[3:]
 _FILER_ALIASES = {
-    "large accelerated filer": FILER_LARGE_ACCELERATED,
-    "accelerated filer": FILER_ACCELERATED,
-    "non-accelerated filer": FILER_NON_ACCELERATED,
-    "smaller reporting company": FILER_SMALLER_REPORTING,
-    "emerging growth company": FILER_EMERGING_GROWTH,
+    LARGE_ACCELERATED_FILER: FILER_LARGE_ACCELERATED,
+    ACCELERATED_FILER: FILER_ACCELERATED,
+    NON_ACCELERATED_FILER: FILER_NON_ACCELERATED,
+    SMALLER_REPORTING_COMPANY: FILER_SMALLER_REPORTING,
+    EMERGING_GROWTH_COMPANY: FILER_EMERGING_GROWTH,
 }
 _STATUTORY_ALIASES = {
     "wksi": STAT_WKSI,
-    "well-known seasoned issuer": STAT_WKSI,
+    WELL_KNOWN_SEASONED_ISSUER: STAT_WKSI,
     "shell": STAT_SHELL,
-    "shell company": STAT_SHELL,
+    SHELL_COMPANY: STAT_SHELL,
     "voluntary": STAT_VOLUNTARY,
-    "voluntary filer": STAT_VOLUNTARY,
+    VOLUNTARY_FILER: STAT_VOLUNTARY,
     "12-month compliance": STAT_COMPLIANT_12_MONTHS,
-    "preceding 12 months": STAT_COMPLIANT_12_MONTHS,
+    PRECEDING_12_MONTHS_TERM: STAT_COMPLIANT_12_MONTHS,
     "404(b)": STAT_SOX_404B,
     "sox 404(b)": STAT_SOX_404B,
     "egc transition opt-out": STAT_EGC_TRANSITION_OPTOUT,
-    "error correction": STAT_ERROR_CORRECTION,
-    "recovery analysis": STAT_RECOVERY_ANALYSIS,
+    ERROR_CORRECTION_TERM: STAT_ERROR_CORRECTION,
+    RECOVERY_ANALYSIS_TERM: STAT_RECOVERY_ANALYSIS,
 }
 
 
@@ -93,17 +100,6 @@ def canonical_semantic_key(value: str) -> str:
     key = " ".join(value.lower().replace("_", " ").replace("-", " ").split())
     key = key.replace("non accelerated filer", "non-accelerated filer")
     return _FILER_ALIASES.get(key, _STATUTORY_ALIASES.get(key, key))
-
-
-def _schema_for_family(family: str | None) -> CoverCheckboxSchema | None:
-    if family is None:
-        return None
-    family = family.upper()
-    if family in {"10-K", "20-F"}:
-        return ANNUAL_CHECKBOX_SCHEMA
-    if family == "10-Q":
-        return QUARTERLY_CHECKBOX_SCHEMA
-    return None
 
 
 def _candidate_map(
@@ -252,20 +248,20 @@ def _evaluate_filer(
 def _evaluate_report_period(
     candidates: Mapping[str, CheckboxCandidate],
     values: Mapping[str, str],
-    family: str,
+    companion: str | None,
+    transition_key: str | None,
     scorer: PenaltyScorer,
 ) -> tuple[list[ConstraintViolation], list[str], dict[str, str]]:
-    companion = (
-        REPORT_ANNUAL if family.upper() in {"10-K", "20-F"} else REPORT_QUARTERLY
-    )
-    transition = candidates.get(REPORT_TRANSITION)
+    if companion is None or transition_key is None:
+        return [], [], {}
+    transition = candidates.get(transition_key)
     companion_candidate = candidates.get(companion)
     if transition is None or companion_candidate is None:
         return [], [], {}
-    target = REPORT_TRANSITION if transition.date_valid else companion
+    target = transition_key if transition.date_valid else companion
     violations: list[ConstraintViolation] = []
     satisfied: list[str] = []
-    for key, expected in ((REPORT_TRANSITION, target), (companion, target)):
+    for key, expected in ((transition_key, target), (companion, target)):
         state = values.get(key)
         if state is None:
             continue
@@ -301,7 +297,8 @@ def _score_candidates(
     candidates: Sequence[CheckboxCandidate],
     *,
     schema: CoverCheckboxSchema | None = None,
-    family: str | None = None,
+    report_period_companion: str | None = None,
+    report_period_transition: str | None = None,
     include_filer: bool = True,
     include_report_period: bool = True,
     scorer: PenaltyScorer = DEFAULT_PENALTY_SCORER,
@@ -322,9 +319,13 @@ def _score_candidates(
                 violations.append(violation)
             elif pass_name is not None:
                 satisfied.append(pass_name)
-        if include_report_period and family is not None:
+        if include_report_period and report_period_companion is not None:
             report_violations, report_satisfied, _ = _evaluate_report_period(
-                candidate_map, values, family, scorer
+                candidate_map,
+                values,
+                report_period_companion,
+                report_period_transition,
+                scorer,
             )
             violations.extend(report_violations)
             satisfied.extend(report_satisfied)
@@ -464,24 +465,26 @@ def solve_report_period(
     family: str,
     scorer: PenaltyScorer = DEFAULT_PENALTY_SCORER,
 ) -> CoverCheckmarkResult:
-    """Resolve annual/quarterly versus transition source marks."""
+    """Resolve report-period marks against the form family companion."""
     family = family.upper()
-    if family not in {"10-K", "20-F", "10-Q"}:
+    entry = get_family_entry(family)
+    schema = entry.cover_checkbox_schema if entry is not None else None
+    companion = schema.report_period_companion if schema is not None else None
+    transition_key = schema.report_period_transition if schema is not None else None
+    if companion is None or transition_key is None:
         return CoverCheckmarkResult(status=InferenceStatus.NOT_APPLICABLE)
-    companion = REPORT_ANNUAL if family in {"10-K", "20-F"} else REPORT_QUARTERLY
     candidate_map, duplicates = _candidate_map(candidates)
     if (
         duplicates
-        or REPORT_TRANSITION not in candidate_map
+        or transition_key not in candidate_map
         or companion not in candidate_map
     ):
         return CoverCheckmarkResult(status=InferenceStatus.ABSENT)
-    target = (
-        REPORT_TRANSITION if candidate_map[REPORT_TRANSITION].date_valid else companion
-    )
+    target = transition_key if candidate_map[transition_key].date_valid else companion
     scores = _score_candidates(
         candidates,
-        family=family,
+        report_period_companion=companion,
+        report_period_transition=transition_key,
         include_filer=False,
         include_report_period=True,
         scorer=scorer,
@@ -498,7 +501,8 @@ def solve_cover_constraints(
     scorer: PenaltyScorer = DEFAULT_PENALTY_SCORER,
 ) -> CoverCheckmarkResult:
     """Run all applicable cover constraint groups with soft penalties."""
-    schema = schema or _schema_for_family(family)
+    entry = get_family_entry(family)
+    schema = schema or (entry.cover_checkbox_schema if entry is not None else None)
     if schema is None or boundary is not None and boundary.end_line is None:
         return CoverCheckmarkResult(status=InferenceStatus.NOT_APPLICABLE)
     if not candidates:
@@ -506,20 +510,25 @@ def solve_cover_constraints(
     scores = _score_candidates(
         candidates,
         schema=schema,
-        family=family,
+        report_period_companion=(schema.report_period_companion),
+        report_period_transition=schema.report_period_transition,
         include_filer=FILER_STATUS_GROUP in schema.groups,
         include_report_period=REPORT_PERIOD_GROUP in schema.groups,
         scorer=scorer,
     )
     candidate_map, _ = _candidate_map(candidates)
-    companion = (
-        REPORT_ANNUAL if family.upper() in {"10-K", "20-F"} else REPORT_QUARTERLY
-    )
-    transition = candidate_map.get(REPORT_TRANSITION)
+    companion = schema.report_period_companion
+    transition_key = schema.report_period_transition
+    transition = candidate_map.get(transition_key) if transition_key else None
     facts = {}
-    if transition is not None and companion in candidate_map:
+    if (
+        transition is not None
+        and transition_key is not None
+        and companion is not None
+        and companion in candidate_map
+    ):
         facts["selected_period"] = (
-            REPORT_TRANSITION if transition.date_valid else companion
+            transition_key if transition.date_valid else companion
         )
     return _result_for_scores(candidates, scores, facts=facts)
 
@@ -533,13 +542,15 @@ def infer_cover_checkmarks(
     schema: CoverCheckboxSchema | None = None,
 ) -> CoverCheckmarkResult:
     """Extract and solve all active cover checkbox groups."""
-    schema = schema or _schema_for_family(family)
+    entry = get_family_entry(family)
+    schema = schema or (entry.cover_checkbox_schema if entry is not None else None)
     if schema is None or boundary.end_line is None:
         return CoverCheckmarkResult(status=InferenceStatus.NOT_APPLICABLE)
     candidates = extract_cover_candidates(
         text,
         boundary,
         family=family,
+        schema=schema,
         table_geometries=table_geometries,
     )
     if not candidates:

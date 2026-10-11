@@ -1,4 +1,4 @@
-"""How one document path is stored and normalized, decided before any bytes are read.
+"""Document path classification for storage and normalization decisions.
 
 A slash outranks the suffix: EDGAR publishes an XSL rendering under ``xsl<Form>X01/``
 named ``.xml`` while serving HTML, so every slash path in the corpus is a rendering

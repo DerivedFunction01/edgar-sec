@@ -8,11 +8,12 @@ import os
 import re
 import tempfile
 import stat
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
 from edgar_sec.domain.forms.common.aliases import resolve_alias
+from edgar_sec.domain.forms.common.processing import AcquisitionOperation
 from edgar_sec.foundation.runtime.paths import resolve_paths
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.pipelines.document_planning.paths import (
@@ -25,9 +26,37 @@ _ROLES = {"primary", "exhibit", "data_file", "graphic", "package"}
 _CATALOG_DIRECT_SELECTIONS = ("submitted_primary", "exact_form_with_lazy_index")
 _CODE_TYPE_RE = re.compile(r"EX-[A-Z0-9]+(?:\.[A-Z0-9]+)*\Z", re.ASCII)
 _EXHIBIT_PREFIX_RE = re.compile(r"EX-(?:\*|10\.\*)\Z", re.ASCII)
-_TARGET_KEYS = {"role", "type", "optional"}
+_TARGET_KEYS = {"role", "type", "optional", "acquisition_policy"}
 _RULE_KEYS = {"form_selector", "targets"}
 _PROFILE_KEYS = {"profile_id", "schema_version", "version", "rules"}
+
+
+@dataclass(frozen=True, slots=True)
+class AcquisitionPolicy:
+    """Acquisition policy for a profile target.
+
+    operations: list of acquisition operations requested (raw, render_to_txt, render_to_xml)
+    """
+
+    operations: tuple[AcquisitionOperation, ...]
+
+    @classmethod
+    def from_data(cls, data: Any) -> AcquisitionPolicy:
+        """Parse acquisition policy from JSON data."""
+        if not isinstance(data, dict):
+            raise ValueError("acquisition_policy must be a dictionary")
+        ops_data = data.get("operations", [])
+        if not isinstance(ops_data, list):
+            raise ValueError("acquisition_policy.operations must be an array")
+        operations: list[AcquisitionOperation] = []
+        for op in ops_data:
+            if not isinstance(op, str):
+                raise ValueError("operation names must be strings")
+            try:
+                operations.append(AcquisitionOperation(op))
+            except ValueError:
+                raise ValueError(f"invalid operation: {op!r}")
+        return cls(operations=tuple(operations))
 
 
 @dataclass(frozen=True, slots=True)
@@ -37,6 +66,7 @@ class ProfileTarget:
     optional: bool
     request_id: str
     catalog_direct_selection: str | None = None
+    acquisition_policy: AcquisitionPolicy | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -125,10 +155,10 @@ def _target_overlap(left: str, right: str) -> bool:
 
 def _parse_target(raw: Any) -> ProfileTarget:
     if not isinstance(raw, dict) or not set(raw).issubset(
-        {"role", "type", "optional", "catalog_direct_selection"}
+        {"role", "type", "optional", "catalog_direct_selection", "acquisition_policy"}
     ):
         raise ValueError(
-            "each target must contain exactly role, type, and optional, with optional catalog_direct_selection"
+            "each target must contain exactly role, type, and optional, with optional catalog_direct_selection and acquisition_policy"
         )
     role, raw_type, optional = raw["role"], raw["type"], raw["optional"]
     if not isinstance(role, str) or role not in _ROLES:
@@ -157,7 +187,13 @@ def _parse_target(raw: Any) -> ProfileTarget:
                 f"catalog_direct_selection is only allowed on primary targets, got {role!r}"
             )
         sel = None
-    return ProfileTarget(role, target_type, optional, f"{role}:{target_type}", sel)
+    # Parse acquisition_policy if present
+    acquisition_policy: AcquisitionPolicy | None = None
+    if "acquisition_policy" in raw:
+        acquisition_policy = AcquisitionPolicy.from_data(raw["acquisition_policy"])
+    return ProfileTarget(
+        role, target_type, optional, f"{role}:{target_type}", sel, acquisition_policy
+    )
 
 
 def _parse_rule(raw: Any) -> tuple[ProfileRule, tuple[str, ...]]:
@@ -239,6 +275,13 @@ def _profile_from_data(data: Any, expected_id: str) -> ResolvedProfile:
                         "type": target.type,
                         "optional": target.optional,
                         "catalog_direct_selection": target.catalog_direct_selection,
+                        "acquisition_policy": {
+                            "operations": [
+                                op.value for op in target.acquisition_policy.operations
+                            ]
+                        }
+                        if target.acquisition_policy
+                        else None,
                     }
                     for target in sorted(
                         rule.targets,

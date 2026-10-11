@@ -1,0 +1,546 @@
+# S6 Acquisition-Policy Extension Plan
+
+**Status: Phase 0-2 implemented, Phase 3-7 pending.** The profile request and plan-relation contract
+is specified in [S6 `specs.md`](specs.md); Phase 0-2 components are implemented and tested.
+
+## Goal
+
+For each logical target, let the profile request one or more supported operations over the
+acquired file: preserve it raw, render it to text, or produce an XML representation where
+that operation is supported. Shared path facts and filing-family capability decide
+which operations exist. Explicitly requesting multiple operations means producing each
+supported result; operations may share source bytes or require distinct source fetches.
+
+Document planning remains offline and body-blind. It pins the requested operations and
+materializes any source locators those operations require. S9 acquires those inputs. A
+separate processing/engine owner executes supported renderers and stores each result under
+the logical document. XML parsing remains in a separate form-specific pipeline.
+
+## Operation contract
+
+Treat operation names as a closed, versioned vocabulary:
+
+| Operation | Meaning |
+|---|---|
+| `raw` | Preserve the selected source bytes as a stored representation. The acquisition body remains available for integrity/replay even when this output operation is not selected. |
+| `render_to_txt` | Produce a visible-text representation using the file-route renderer, such as HTML cleanup/table projection or PDF text extraction when implemented. |
+| `render_to_xml` | Produce an XML representation only where a family/path-facts capability supports it. On a validated XSL-rendered `.xml` path, the handler resolves and fetches the archive-root XML source unchanged; on HTML-only paths it would require a form-specific translator. The operation name does not mean the archive-root source was rendered or that acquisition parses XML. |
+
+The operation capability is resolved for `(filing family, target role/type, path facts)`.
+A form family may implement different operations for the same suffix; an extension alone
+does not select a statutory family or guarantee that an operation is accurate.
+
+### Explicit operations and default priority
+
+An explicit profile policy is a multi-select set. For example:
+
+```json
+{
+  "role": "primary",
+  "type": "primary",
+  "optional": false,
+  "acquisition_policy": {
+    "operations": ["raw", "render_to_txt", "render_to_xml"]
+  }
+}
+```
+
+The order in the list is not preference order. Execute every listed operation that is
+implemented for the selected family and path facts. If an operation is not implemented,
+ignore it for execution and record it as unsupported/not applicable; that does not
+invalidate the logical target or the other requested operations.
+
+When a target omits `acquisition_policy`, choose the first implemented operation in this
+default priority:
+
+```text
+render_to_xml > render_to_txt > raw
+```
+
+"Implemented" means registered for the resolved family, target role, and path-facts
+combination. It does not mean the operation is guaranteed to succeed on a particular body.
+At execution time, a fetch or transform failure is recorded against that operation; it does
+not silently fall through to a different URL or operation. A profile can explicitly
+request multiple operations when it wants raw and rendered representations together.
+
+Keep target `optional` separate from operation support and outcome. It answers whether the
+logical document may be absent; it does not mean an unsupported render operation is a
+missing document. If all explicitly requested operations are unsupported, S6 records that
+status without invalidating the logical target; acquisition and output retention happen in
+their owning stages.
+
+## Route-model reuse and ownership
+
+`edgar_sec.domain.document.route` is shared today, but `DocumentRoute` mixes path shape
+(`RENDERED`), suffix-derived file classes (`XML`, `BINARY`), and special input cases
+(`PAPER`). That is too coarse for acquisition: one nested `.xml` locator can yield three
+valid outputs, while flat `.xml` and `.xsd` stay raw-only. Replace the enum as the shared
+contract with generic **path facts**, then let each pipeline interpret those facts through
+its own policy. The shared classifier must describe the locator, not choose processing.
+
+Proposed `DocumentPathFacts` records independent facts rather than one route enum:
+
+- `path_context`: archive URL path or SGML filename; SGML filenames never acquire URL
+  directory semantics.
+- `path_shape`: flat or nested locator; nested does not prove an allowed XSL source path
+  or claim the body was inspected.
+- `suffix` and `suffix_class`: normalized suffix plus markup, text, XML/XSD, PDF, image,
+  paper, opaque (`.fil`, `.zip`, `.eis`), or unknown classification.
+
+Use distinct constructors such as `archive_path_facts(path)` and
+`sgml_filename_facts(filename)` so callers state which path contract they have. Keep
+`archive_root_candidate(path)` as a separate pure basename helper; it does not prove the
+candidate exists. URL construction and validation remain outside the domain classifier.
+
+`DocumentPathShape` and `DocumentSuffixClass` are shared classification enums inside that
+value object, not parent enums for pipeline-specific enums. `document_storage` maps them to
+its existing local disposition (normalize, preserve, or defer); document acquisition maps
+them to operations and source strategies. Acquisition can classify `.fil`, `.zip`, `.eis`,
+and image suffixes as opaque/raw-only without forcing the current document-storage
+processor to change how it treats an unknown suffix.
+
+For an XSL-style `.../*.xml` path, the facts are `archive path + nested + .xml`. The
+document-storage policy may continue treating that nested path as rendered markup; the
+acquisition capability catalog may expose raw HTML, generic HTML-to-text, and a separate
+archive-root XML source. For flat `.xml`/`.xsd`, the same policy catalog exposes only raw.
+No classifier value should encode the set of operations that a form supports. New suffix
+facts such as `.zip` or `.fil` must not silently change document-storage behavior.
+
+Do not make `DocumentStorageRoute` and `DocumentAcquisitionRoute` subclasses of one
+populated enum. Python enums cannot be extended that way, and one classification may
+produce several operation results. Use shared path facts and separate policy mappings:
+document storage maps facts to its existing normalize/store decisions; acquisition maps
+facts plus family and target intent to supported operations and source requests. This
+keeps the acquisition matrix independent without duplicating file suffix parsing.
+
+| Consumer | Current route dependency | Phase-1 migration surface |
+|---|---|---|
+| [`domain/document/acquisition.py`](../../../../edgar_sec/domain/document/acquisition.py) | Direct locators use `document_route`; `SubmissionDocument.content_route` stores an explicit SGML-child classification. | Change the descriptor annotation and direct-locator construction to shared path facts. Keep archive-path and SGML-filename classification distinct. |
+| [`pipelines/document_storage/fetching.py`](../../../../edgar_sec/pipelines/document_storage/fetching.py) | `archive_root_candidate` drives URL/fixture lookup preference and requested-path fallback. | Consume path shape/candidate facts; preserve fetch ordering and fallback. URL validation remains in this pipeline. |
+| [`pipelines/document_storage/review_artifacts.py`](../../../../edgar_sec/pipelines/document_storage/review_artifacts.py) | Binary/markup route decisions control normalization and review artifact selection. | Add a document-storage policy mapping facts to the same decisions; preserve reviewer/worker parity. |
+| [`pipelines/document_storage/processor.py`](../../../../edgar_sec/pipelines/document_storage/processor.py) | Selected child route controls binary/paper handling; suffix MIME labels raw storage. | Map facts to existing normalize/store behavior. Move suffix-MIME policy into document storage; never treat it as observed response type. |
+| [`pipelines/document_storage/delegation.py`](../../../../edgar_sec/pipelines/document_storage/delegation.py) and [`candidate_recovery.py`](../../../../edgar_sec/pipelines/document_storage/candidate_recovery.py) | `content_route` classifies SGML filenames and recovered descriptors. | Use the SGML-filename facts path, which ignores archive-directory semantics. |
+| [`pipelines/document_storage/fixture_operator.py`](../../../../edgar_sec/pipelines/document_storage/fixture_operator.py) | Suffix MIME labels fixture metadata. | Keep suffix-derived MIME distinct from body classification. |
+| [`engine/document/unpacking/unpacker.py`](../../../../edgar_sec/engine/document/unpacking/unpacker.py) | Markup path predicate contributes to `is_html`; `content_route` populates SGML descriptors. | Preserve the separate path-facts and SGML-filename-facts calls; `is_html` also uses body heuristics. |
+| [`engine/forms/normalize.py`](../../../../edgar_sec/engine/forms/normalize.py) | Route values control paper/binary/XML paths; `REPRESENTATION_*` names normalized output. | Map generic facts into the existing engine normalization decisions; do not reuse representation labels as acquisition operations. |
+
+Today, `document_route` classifies every slash-containing path as `RENDERED`, before its
+suffix; it does not validate an `xsl*` prefix. `content_route` ignores directories and
+classifies SGML filenames by suffix. `mime_type_for_suffix` is also suffix-only: a nested
+`.xml` path returns `text/xml` although the SEC rendered response is HTML. These current
+semantics are pinned by [`tests/domain/document/test_route.py`](../../../../tests/domain/document/test_route.py).
+The path-facts replacement must retain these distinctions and preserve all existing
+document-storage/engine outcomes during Phase 1. Fetching's root basename is only a
+candidate; S6 must apply its own allowed-path rule, same-accession URL validation, and
+availability/evidence rules.
+
+Suffix MIME is not response MIME or body evidence. The generic classifier likewise does
+not choose operation support. Resolve capabilities from `(family, target role/type,
+path_shape, suffix_class, operation)`; each capability declares its source-input strategy,
+handler/version, and output kind. Keep `REPRESENTATION_*` as existing engine/storage output
+labels, distinct from acquisition operation names.
+
+## Path-facts operation matrix
+
+Capability resolution consumes the shared path facts, not a copy of the suffix table. The
+combination `nested + .xml` is distinct from `flat + .xml`; neither the generic facts nor
+the policy may infer that every nested path is a valid XSL source without checking the
+S6 locator rule.
+
+| Path facts / policy case | Outputs and operations |
+|---|---|
+| Image, `.fil`, `.zip`, `.eis`, `.paper` | `raw` only; ignore rendered operations. A paper stub remains raw source, not a text-rendering request. |
+| PDF | `raw`, or `render_to_txt` when a PDF text extractor is registered for the family/role. Both results may be requested together. |
+| Flat `.xml` or `.xsd` | Acquisition preserves bytes as `raw` only and ignores rendered operations. S10 retains its standalone XML well-formedness and DTD/external-entity checks before returning byte-identical `xml_verbatim`; semantic XML/XBRL parsing remains form-pipeline work. |
+| Validated XSL-style nested `.xml` | `raw` stores the returned HTML; `render_to_txt` generically converts that HTML; `render_to_xml` resolves the archive-root XML path and stores its bytes unchanged. One logical target can have all three outputs. |
+| Other `.htm`, `.html`, `.xhtml` | `raw` and generic `render_to_txt`; a form-specific `render_to_xml` translator is available only when implemented and registered. |
+| `.txt` | `raw` and `render_to_txt` when the text renderer is registered. |
+| Other/unknown suffix | `raw` only unless an explicit family/role/path capability is registered. Unknown means unclassified, not a renderer category. |
+
+`render_to_xml` on the validated XSL case is a source-path operation, not XML parsing or
+HTML-to-XML translation: it strips the rendering path to request a distinct archive-root
+source and stores that XML as-is. The derived locator is validated and recorded as a
+separate input request. Flat XML/XSD remain raw-only. Unsupported operations are ignored
+without changing the raw source outcome.
+
+### Form 4 cases
+
+- If the index path is `xsl*/.../*.xml`, the response is HTML. `raw` can store that HTML;
+  `render_to_txt` can produce the generic rendered-text view; `render_to_xml` can request
+  the corresponding archive-root XML path and pass its bytes through unchanged.
+- Some Form 4 filings have only an HTML path such as an accession-level `edgar.htm` and
+  no source XML. HTML is still a valid acquired source. Its absence of XML is not a
+  document failure unless a profile explicitly requires an XML representation.
+- A Form 4 HTML-to-XML translator is a possible future `render_to_xml` implementation for
+  those HTML-only forms. It is deferred, not implemented, and not validated for accuracy.
+  Until registered and tested, that operation is ignored and the default priority falls
+  through to supported `render_to_txt` or `raw`.
+- XML/XSD bytes are not parsed by acquisition. Any Form 4 semantic parsing is owned by
+  the separate Form 4 pipeline.
+
+## Profile, capability, and plan identity
+
+Add an optional `acquisition_policy.operations` field to each profile target. Absence
+means default-priority resolution; an explicit list means multi-select. Validate only the
+closed operation vocabulary at profile load, then resolve support from the versioned S6
+acquisition capability catalog and the engine's handler metadata. Do not duplicate
+file-route/family support tables across
+the profile loader, planner, S9, and processing stage.
+
+The S6 acquisition catalog declares, per family/role/path-facts/operation:
+
+- the supported status and whether execution needs the primary body or an additional
+  source-locator strategy;
+- the optional engine handler identity/version (source pass-through needs no transform);
+- which output representation it produces.
+
+An operation counts as implemented only when its source strategy is registered and, when
+required, its handler ID/version has a matching engine metadata descriptor. Engine tests
+enforce descriptor/runtime-registry parity; S6 reads descriptors, not handler callables.
+
+When default priority is used, the planner resolves it against this catalog and pins the
+chosen operation and S6 catalog version. For an explicit set, it pins all
+requested operations and records unsupported operations as ignored. A change to profile
+operations, capability resolution, source-path rules, or operation status changes plan or
+processing identity.
+
+The profile digest includes the canonical operation set (canonical order, since explicit
+list order is not preference). The plan identity/manifest pins profile digest, S6 catalog
+version, engine capability metadata version, target/operation schema versions, selected
+handler/version IDs, and any locator-resolver version.
+Version the profile schema and plan bundle when these serialized contracts change; migrate
+profiles/plans explicitly rather than silently interpreting an old profile under new
+operation defaults.
+
+## Family profiles and processing capabilities
+
+Keep the request, family allowance, path strategy, and implementation declarations distinct:
+
+1. **Family profile data** in `domain/forms/families/*/profiles.py` declares capability
+   IDs allowed for that form family. Add a separate frozen, data-only
+   `DocumentProcessingProfile` in a domain common module such as
+   `domain/forms/common/processing.py`; do not overload `PrimaryReportProfile`, whose
+   current contract is statutory-filing recognition. The common module owns the closed
+   `AcquisitionOperation` vocabulary and typed capability IDs. Annual, quarterly, and
+   current declarations live in their family `profiles.py` modules. Profiles name IDs and
+   versions, never Python handler callables. Its minimum fields are family, profile
+   version, and allowed capability IDs.
+2. **S6 target policy** in `pipelines/document_planning/profiles.py` requests operations
+   such as `raw`, `render_to_txt`, or `render_to_xml`. It does not declare that a processor
+   implementation exists.
+3. **S6 acquisition capability catalog**, proposed in
+   `pipelines/document_planning/acquisition_capabilities.py`, resolves family/role/type/path
+   facts and requested operation into support status, source-locator strategy, output kind,
+   and optional engine handler ID/version. This is where the archive-root XML operation is
+   described; it never performs the fetch.
+4. **Engine handler metadata/registry** in `engine/document_processing/capabilities.py`
+   and `registry.py` declares handler IDs, accepted generic input facts, output kind, and
+   implementation version, then binds IDs to code at runtime. Metadata has no handler
+   callables or heavy renderer imports, so S6 can resolve it without loading processing
+   code. Build and validate the runtime registry explicitly; do not reuse the mutable
+   process-global `engine/forms/plugins/registry.py` pattern or separate cover registry.
+
+There is no current family-processing profile aggregator. Add an explicit, immutable
+catalog such as `domain/forms/families/processing_profiles.py` to register the annual,
+quarterly, and current data declarations. Keep implementation registration separate in
+`engine/document_processing/registry.py`.
+
+The planner resolves the S6 catalog entry against the family's allowed capability IDs and
+the engine's handler metadata, then pins both catalog and handler versions. The S6 entry
+owns family/role/path availability and source selection; the engine descriptor owns only
+the transform's accepted input and implementation. Contract tests verify every referenced
+handler ID has metadata and a runtime registry entry.
+
+The planner resolves target requests against family-declared IDs, path/source strategies,
+and lightweight engine capability descriptors, then pins the result without importing
+handler callables. An archive-root XML source strategy is a planning/acquisition
+capability, not an engine renderer; an HTML-to-XML translator is an engine handler and
+remains unimplemented until separately registered. This avoids duplicating support
+matrices and keeps domain profiles independent of engine imports.
+
+Add `tests/domain/forms/common/test_processing.py` and
+`tests/domain/forms/families/test_processing_profiles.py` for the domain processing-profile
+model and family catalog; extend
+`tests/domain/forms/families/test_profiles.py` to pin family declarations; extend
+`tests/pipelines/document_planning/test_profiles.py` to pin requested-operation validation
+and add mirrored capability-resolution tests for the S6 acquisition catalog.
+The family modules are `domain/forms/families/annual/profiles.py`,
+`quarterly/profiles.py`, and `current/profiles.py`. The proposed [S10 processing decision
+tree](../document_acquisition/processing_decision_tree.md) lists 10-K, 10-Q, 8-K, and
+20-F as eligible primary forms; 6-K requires an explicitly registered profile. Reconcile
+this set with the S10 normative contract before activation. Engine registration alone does
+not enable assessment for 40-F, Form 4, or unregistered forms, nor does it authorize S10
+assessment or S11 publication.
+
+## Engine processor ownership and API
+
+Put the operation executor in the new package `edgar_sec/engine/document_processing/` as
+`AcquisitionProcessor`, separate from the S9 pipeline and the existing
+`engine/forms/normalize.py` function. The engine consumes already admitted and verified
+source bodies. It does not perform HTTP, resolve SEC URLs, select filing targets, write
+pipeline artifacts, or import pipeline work-order/body-reference types. S9/S10 pipeline
+coordination owns those responsibilities and calls the engine; this follows the
+pure-input/output boundary of `engine/index_pages/parser.py`. The legacy
+`document_storage.FilingProcessor` remains frozen; reuse its lessons, not its selection or
+persistence behavior.
+
+The request must distinguish requested locator, effective selected path/filename, and
+verified body identity. It carries target/profile identity, family/role/type,
+`DocumentPathFacts`, operation records (capability/version, output kind, source IDs), and
+one or more input records (`source_id`, locator provenance, selected path, path facts,
+SHA-256, byte size, and immutable `raw_bytes`). S10 admits each route's working set from
+the resource-derived budget before reading and verifies the digest/size of the exact bytes
+passed to the processor; the acquisition byte ceiling alone is not a memory guarantee. The
+admission must reserve the aggregate working set for every body and operation in a
+multi-source request, or process inputs in separately admitted calls. An XSL `.xml` request
+therefore identifies the separately acquired archive-root XML body as a second input. The
+engine never fetches that source itself.
+
+```python
+class AcquisitionProcessor:
+    def __init__(self, capabilities: ProcessingCapabilityRegistry) -> None: ...
+
+    def process(
+        self,
+        request: AcquisitionProcessRequest,
+    ) -> AcquisitionProcessResult: ...
+```
+
+`AcquisitionProcessResult` is a transient in-memory result with one operation outcome per
+resolved request. Raw and unchanged XML outcomes reference their source input and preserve
+its digest/size; transformed outcomes carry output digest/size and may expose normalized
+text to the caller while the S10 coordinator performs enabled diagnostics or review. The
+engine processor does not classify exhibit roles, mutate targets, or issue acquisition
+actions. The S10 coordinator serializes only the metadata-only `ProcessingResult`; it does not persist durable
+representation payloads. The processor may call
+`normalize_document(..., capture_stage_trace=False)` for the canonical text handler, but it
+does not replace or change the existing normalization API. Capability handlers are
+injected through the validated registry, so tests can use small byte inputs and fake
+handlers without HTTP, database writes, disk staging, or global mutable registrations.
+
+The API's input type is owned by the engine or a domain contract module, never by S9.
+`AcquisitionProcessRequest` carries verified source bytes only after the pipeline has
+admitted the staged file against its configured maximum and verified the digest/size of
+the same bytes passed to the processor. It keeps requested locator provenance distinct
+from the effective selected filename/path used for route facts. `normalize_document` still
+accepts `bytes`; a future streaming signature is a separate engine change, not an implicit
+requirement of this processor API.
+
+This concrete signature permits isolated tests for dispatch, raw pass-through, HTML-to-text,
+multiple inputs, unsupported operations, missing required XML input, and independent
+operation failures. S9 integration tests separately prove that staged bytes were admitted
+and that the exact verified bytes passed to this request match the recorded source identity.
+
+The outer S10 API remains pipeline-owned and follows the
+[`process_target`](../S10_processing.md) contract:
+
+```python
+process_target(
+    request: ProcessingRequest,
+    *,
+    capture_review: bool = False,
+    review_staging: ManagedReviewStaging | None = None,
+) -> ProcessingResult
+```
+
+It validates the request against S9 state, admits/verifies the staged body, builds the
+engine request, converts the transient engine result into metadata-only `ProcessingResult`,
+and writes the S9 consumption receipt. The current S10 `ProcessingRequest` contains one
+`StagedBodyRef`; the multi-source operation model requires an explicit versioned extension.
+Do not pass that pipeline-specific ref type into the engine class.
+
+## Logical targets and downstream representations
+
+One S6 target remains one logical document match. Do not create duplicate logical targets
+to represent raw, text, and XML variants. S6 plans operations and source requests; it does
+not fetch bodies, run transformations, or persist their outputs. The following are proposed
+downstream records for the owning acquisition/processing plans, not S6 schemas. M6/M7's
+current S10 contract remains metadata-only: normalized text is transient for diagnostics or
+explicitly selected review capture, not a durable output payload. Any durable
+`StoredRepresentation` contract belongs to a later snapshot/publication phase:
+
+Every valid target retains its primary source request independently of the `raw` output
+operation. `raw` chooses whether the source is also a stored representation; it does not
+decide whether the target body is acquired. If requested operations are all unsupported,
+S6 still plans the primary source, while recording that no requested output is supported.
+S10's XML safety validation is a downstream check, not an acquisition operation or XML
+semantic parse.
+
+| Stored concept | Proposed contents |
+|---|---|
+| `StoredDocument` | Logical accession/index target, form/role/type, pinned policy identity, requested operations, operation outcomes, and aggregate completeness. |
+| `AcquiredSource` | One distinct HTTP/bundle source body, with selected locator/path facts, attempts, response/selected digests and sizes, and staged/raw body reference. Multiple operations on the same bytes share this source record. |
+| `StoredRepresentation` | A possible later durable model for one operation result: operation ID, output kind, status, source reference(s), output digest/size, handler/version, and stored artifact reference. It is not an M6/M7 S10 artifact contract. |
+
+If `raw` and `render_to_txt` consume the same HTML response, S6 emits one shared source
+request dependency. S9 owns fetching that body and making it available to the processing
+layer. If `render_to_xml` on an XSL path needs the archive-root XML, S6 emits a second,
+validated source request; S9 owns its fetch. Any output-byte deduplication and operation
+provenance belong to the future processing/storage contract.
+
+The S6 plan should retain one logical target relation and add a deterministic operation
+relation (or equivalent child manifest parts). Operations that need distinct source bodies
+produce source-request dependencies linked to their operation IDs; the target's primary
+source request is always present. Plan counts and manifests reconcile logical targets,
+requested operations, ignored operations, and unique source requests separately. This is
+planning evidence only; it is not a work-order body receipt or a claim that a source was
+fetched.
+
+The current S6 plan and S9 work order store one target with one selected body; current
+`StagedBodyRef` and `BodyConsumptionReceipt` are also single-body shaped. S6 versions only
+its profile/operation/source-request plan contract. Any later expansion of acquisition
+state, handoff receipts, or processing output records belongs to those owning plans. The
+acquisition snapshot is distinct from the S5 inventory snapshot and does not authorize S11
+publication.
+
+## Phased ownership and rollout
+
+Phase 0 is a compatibility prerequisite, not a feature phase. Phase 1 planning is the
+initial feature phase; subsequent phases have separate layer owners and acceptance gates.
+
+### Implementation summary
+
+**Phase 0-2 (Completed):**
+
+- `edgar_sec/domain/document/path_facts.py` - DocumentPathFacts, DocumentPathShape, DocumentSuffixClass
+- `edgar_sec/domain/document/route.py` - Updated with backward compatibility
+- `edgar_sec/domain/forms/common/processing.py` - AcquisitionOperation enum, DocumentProcessingProfile
+- `edgar_sec/domain/forms/families/annual/processing.py` - Annual family profile
+- `edgar_sec/domain/forms/families/quarterly/processing.py` - Quarterly family profile
+- `edgar_sec/domain/forms/families/current/processing.py` - Current family profile
+- `edgar_sec/domain/forms/families/processing_profiles.py` - Family catalog
+- `edgar_sec/pipelines/document_planning/acquisition_capabilities.py` - S6 catalog
+- `edgar_sec/pipelines/document_planning/profiles.py` - Updated with acquisition_policy field
+- `edgar_sec/engine/document_processing/` - AcquisitionProcessor, registry, capabilities
+- Test files under `tests/domain/document/`, `tests/domain/forms/`, `tests/pipelines/document_planning/`
+
+**Phase 3-7 (Pending):**
+
+- S9 source acquisition pipeline updates
+- S10 processing orchestration integration
+- Offline integration tests with fixtures
+- Engine handler bindings (registry implementations)
+- All DocumentRoute consumers migrated to DocumentPathFacts
+
+| Phase | Owner | Scope and exit contract | Status |
+|---|---|---|---|
+| 0. Shared path facts | `domain/document` and all current consumers | Replace `DocumentRoute` with `DocumentPathFacts`; preserve existing storage/engine behavior and split storage-only MIME policy into `document_storage`. No acquisition operations are implemented here. | ✅ Implemented |
+| 1. S6 planning (initial) | `pipelines/document_planning`, domain family profiles, and engine capability metadata | Add family capability IDs, target operation requests, and a lightweight versioned metadata catalog; publish deterministic operation/source-request rows. Planning stays offline/body-blind and imports no handler callables. | ✅ Implemented |
+| 2. Engine processor | `engine/document_processing` | Add `AcquisitionProcessor` and its explicit handler registry against the Phase-1 metadata; test dispatch, raw/source pass-through, and registered transforms. It consumes verified byte inputs, not URLs or pipeline orchestration. | ✅ Implemented |
+| 3. S9 source acquisition | `pipelines/document_acquisition` | Fetch each unique planned source request, including validated archive-root XML inputs; own retries, response evidence, staging, and acquisition receipts. Do not invoke the engine from S9. | ⏳ Pending |
+| 4. S10 processing orchestration (M6) | `pipelines/document_acquisition` | Validate S9 work-order/body identity, perform route-specific aggregate memory admission before reading, verify and process the same bytes, invoke the engine, produce metadata-only results, and write the S9 consumption receipt. | ⏳ Pending |
+| 5. Offline integration (M7) | `pipelines/document_acquisition` plus fixtures | Exercise S6 plan → S9 fixture acquisition → M6 engine processing → receipt/cleanup without HTTP. Review output is S7-owned; no durable representation payload is written. | ⏳ Pending |
+| 6. Diagnostic evidence (M8) | S10 exhibit-assessment owner | Validate taxonomy on reviewed corpus/holdout data in shadow mode; do not change target selection or acquisition. | ⏳ Pending |
+| 7. Durable acquisition snapshot (M9) | acquisition publication owner | Publish versioned S5/S6/S9/S10 evidence only after its independent acceptance gate. S11 content publication remains separately gated. | ⏳ Pending |
+
+Phase 0 refactors `edgar_sec/domain/document/route.py` and its callers:
+`domain/document/acquisition.py`; `document_storage/fetching.py`, `review_artifacts.py`,
+`processor.py`, `delegation.py`, `fixture_operator.py`, and `candidate_recovery.py`; and
+`engine/document/unpacking/unpacker.py` and `engine/forms/normalize.py`.
+`document_storage/resolution.py` carries route values indirectly and must preserve them.
+Keep `archive_root_candidate`'s fetch preference semantics and move suffix-MIME persistence
+policy into `document_storage`. Reconcile the route references in `S10_processing.md` and
+`document_acquisition/processing_decision_tree.md` with the neutral path-facts contract.
+Preserve behavior in `tests/domain/document/test_route.py`
+and `tests/domain/document/test_acquisition.py`; the mirrored fetching, review-artifact,
+processor, delegation, fixture-operator, resolution, unpacker, and normalizer tests; add
+candidate-recovery coverage. Do not ship a forwarding compatibility shim.
+
+Phase 1 adds a separate `DocumentProcessingProfile` data contract and family catalog,
+declared in the annual, quarterly, and current `profiles.py` modules. It also adds the S6
+catalog in `edgar_sec/pipelines/document_planning/acquisition_capabilities.py` and the
+lightweight engine metadata/package in `edgar_sec/engine/document_processing/capabilities.py`.
+The proposed [S10 processing
+decision tree](../document_acquisition/processing_decision_tree.md) lists 10-K, 10-Q, 8-K,
+and 20-F as eligible primary forms; 6-K requires an explicitly registered profile. Reconcile
+this set with the S10 normative contract before activation. Engine registration alone does
+not activate 40-F, Form 4, or unregistered forms for S10 assessment. The JSON profile loader
+in `pipelines/document_planning/profiles.py` validates target operation requests; it is not
+the engine capability registry.
+
+Phase 1 adds the lightweight capability metadata and pins its catalog version in S6.
+Phase 1 adds the `engine/document_processing` package README and engine layout entry with
+its metadata module. Phase 2 adds `models.py`, `registry.py`, and `processor.py`, plus
+mirrored `test_models.py`, `test_registry.py`, and `test_processor.py` under
+`tests/engine/document_processing/` (with package `__init__.py`); Phase 1 owns the mirrored
+`test_capabilities.py` catalog contract test.
+`normalize_document` remains the existing form-normalization API; a registered text handler
+may call it with `capture_stage_trace=False`. Phase 3 fetches and verifies source bodies.
+Phase 4 follows the proposed [S10 processing decision tree](../document_acquisition/processing_decision_tree.md)
+and active [S9/S10 plan](../document_acquisition/plan.md): M6's `processing_models.py`,
+`processing.py`, and per-run coordinator are pipeline adapters that validate S9 state,
+admit/verify bodies, construct `AcquisitionProcessRequest`, invoke the engine class, and
+own metadata results and receipts. They do not reimplement renderers. A primary uses its
+filing-form normalization profile; a standalone exhibit uses the generic no-cover profile;
+data, graphics, and packages stay on route-specific handling. `target_type` is provenance,
+not a content-route override. The S10 coordinator may run enabled exhibit-role diagnostics
+on the transient text result, but cannot change the S6 target or S9 state. M6/M7 remain
+subject to their existing approval gates.
+
+Before implementation, reconcile the proposed multi-operation/source-request model with
+the normative [S10 processing contract](../S10_processing.md), which currently describes
+single-body processing and flat-XML validation. Preserve route-specific memory admission,
+same-bytes digest verification, metadata-only results, receipt timing, and S7 review
+ownership unless their owner versions a change. The proposed processing decision tree's
+opaque XML pass-through and the normative flat-XML validation step must be resolved rather
+than silently mixed.
+
+## S6 planning acceptance tests
+
+- Explicit `operations=[raw, render_to_txt, render_to_xml]` plans every supported
+  operation for the selected form/role/path-facts combination and records unsupported ones
+  as ignored without invalidating other operations or the target.
+- An omitted operation policy selects the highest-priority implemented operation in the
+  order `render_to_xml`, `render_to_txt`, `raw`; the selected capability version is pinned.
+- The matrix distinguishes flat `.xml`/`.xsd` raw-only from a validated nested XSL `.xml`:
+  the latter plans `raw`, `render_to_txt`, and `render_to_xml` under one logical target,
+  with the latter linked to a separate archive-root XML source request. No body is fetched
+  and no output is produced by S6.
+- For HTML-only Form 4 targets, the plan does not fabricate an XML source. It records XML
+  translation as unsupported until a form-specific capability is registered; it does not
+  execute or validate a translator.
+- If every requested operation is unsupported, the logical target and its primary source
+  request remain planned while the unsupported operation statuses are retained.
+- Raw and text operations over the same locator share one planned source request; a
+  validated root-XML locator is a separate planned request. S6 validates locators but does
+  not fetch them.
+- `.fil`, `.zip`, `.eis`, images, and `.paper` are raw-only; flat `.xml`/`.xsd` are raw-only;
+  PDF may additionally produce extracted text. Unsupported renders do not suppress raw.
+- Phase 0 path facts preserve domain, engine, and document-storage outcomes. Phase 1
+  capability resolution can plan multiple outputs for one source class without overloading
+  the shared classifier with operation support.
+- Operation rows do not add logical targets. Existing `target_id` derivation includes
+  `plan_id`, so a profile/policy change creates a new plan and corresponding target IDs;
+  operation/source-request IDs are deterministic and separately counted within each plan.
+  Optionality describes document absence only; S6 does not record runtime operation
+  failures.
+- S6 planning is offline and deterministic, validates same-accession locators, and never
+  probes whether a constructed alternate URL exists.
+
+## Deferred acquisition and processing acceptance
+
+These checks belong to S9 acquisition and the engine/processing owner, not S6 planning:
+
+- S9 fetches one body per unique source request, verifies response/selected hashes and
+  sizes, replays the recorded body, and records per-source outcomes. The root-XML request
+  must use the validated same-accession locator; acquisition failure does not trigger an
+  unplanned URL/operation fallback.
+- The engine processor tests generic HTML-to-text and PDF extraction on admitted byte
+  inputs, including output digest/size, handler-version fingerprints, and independent
+  per-operation failures. Output-fidelity corpus tests belong to the engine/renderer gate.
+- A Form 4 HTML-to-XML translator requires separate implementation and validation. XML/XSD
+  parsing and semantic extraction remain form-pipeline behavior, not acquisition behavior.
+- M6/M7 verify metadata-only results and optional S7 review capture; they do not persist
+  derived payloads. Only a separately approved M9 schema may add durable
+  `StoredRepresentation` byte-alias/deduplication/provenance tests.
+
+## Non-goals
+
+- XML/XSD parsing or ownership fact extraction in acquisition.
+- Implementing or validating a Form 4 HTML-to-XML translator.
+- Treating raw, text, and XML operation outputs as duplicate logical SEC documents.
+- Arbitrary URL templates, filename guessing, body inspection during S6, or implicit
+  network-dependent fallback.
+- Fetching acquisition sources or executing renderers/translators from the S6 planner.
+- Replacing S5 inventory evidence, enabling S10 content assessment, publishing S11
+  artifacts, or reviving `document_storage`.

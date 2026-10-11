@@ -12,8 +12,6 @@ PRIMARY_PROFILE_10K = PrimaryReportProfile(
     statutory_titles=ANNUAL_REPORT_TITLES,
     designator_tokens=aliases_for_family("10-K"),
     commission_header_required=True,
-    derived_taxonomy_family="annual",
-    checkbox_schema_family="10-K",
 )
 
 PRIMARY_PROFILE_20F = PrimaryReportProfile(
@@ -22,8 +20,6 @@ PRIMARY_PROFILE_20F = PrimaryReportProfile(
     statutory_titles=ANNUAL_REPORT_TITLES,
     designator_tokens=aliases_for_family("20-F"),
     commission_header_required=True,
-    derived_taxonomy_family="annual",
-    checkbox_schema_family=None,
 )
 
 __all__ = [

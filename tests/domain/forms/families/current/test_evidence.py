@@ -6,6 +6,7 @@ from edgar_sec.domain.forms.families.current.evidence import (
     CURRENT_BODY_PHRASES,
     CURRENT_BODY_STRONG_TERMS,
     CURRENT_BODY_WEAK_TERMS,
+    CURRENT_COVER_TERMS,
     CURRENT_COVER_EXCLUSION_TERMS,
     CURRENT_TITLES,
     CurrentReportEvidence,
@@ -22,6 +23,11 @@ def test_current_evidence_terms() -> None:
     assert "press release dated" in CURRENT_BODY_PHRASES
     assert "agreement" in CURRENT_BODY_STRONG_TERMS
     assert "current" in CURRENT_COVER_EXCLUSION_TERMS
+    assert (
+        "report of foreign private issuer pursuant to rule 13a-16 or 15d-16"
+        in CURRENT_COVER_TERMS
+    )
+    assert "annual reports under cover of form 20-f or form 40-f" in CURRENT_COVER_TERMS
 
 
 def test_current_evidence_model() -> None:

@@ -192,16 +192,24 @@ FORM_20F_DESCRIPTIONS: dict[str, tuple[str, CoverageStatus]] = {
     "104": ("Cover Page Interactive Data File", "disabled"),
 }
 
+ECFR_17_229_601: SourceRef = SourceRef(
+    source_path="https://www.ecfr.gov/current/title-17/chapter-II/part-229/subpart-229.600/section-229.601",
+    section_or_lines="17 CFR § 229.601(b)",
+    note="eCFR Item 601 authoritative source",
+)
+
+FORM_20F_ITEM_19: SourceRef = SourceRef(
+    source_path="https://www.sec.gov/files/form20-f.pdf",
+    section_or_lines="Item 19",
+    note="SEC Form 20-F Instructions as to Exhibits",
+)
+
 
 # Build lookup tables
 def _build_601_ledger() -> dict[tuple[str, str], CoverageEntry]:
     """Build Item 601 coverage ledger from authoritative descriptions."""
     rows: list[CoverageEntry] = []
-    source_refs = SourceRef(
-        source_path="https://www.ecfr.gov/current/title-17/chapter-II/part-229/subpart-229.600/section-229.601",
-        section_or_lines="17 CFR § 229.601(b)",
-        note="eCFR Item 601 authoritative source",
-    )
+    source_refs = ECFR_17_229_601
     for code, (title, status) in ITEM_601_DESCRIPTIONS.items():
         rows.append(
             CoverageEntry(
@@ -218,11 +226,7 @@ def _build_601_ledger() -> dict[tuple[str, str], CoverageEntry]:
 def _build_20f_ledger() -> dict[tuple[str, str], CoverageEntry]:
     """Build Form 20-F coverage ledger from authoritative descriptions."""
     rows: list[CoverageEntry] = []
-    source_refs = SourceRef(
-        source_path="https://www.sec.gov/files/form20-f.pdf",
-        section_or_lines="Item 19",
-        note="SEC Form 20-F Instructions as to Exhibits",
-    )
+    source_refs = FORM_20F_ITEM_19
     for code, (title, status) in FORM_20F_DESCRIPTIONS.items():
         rows.append(
             CoverageEntry(

@@ -6,6 +6,11 @@ profile, matching, artifact, and operator contract is in [specs.md](specs.md).
 This is the main S6 implementation plan, not a follow-up correction; accepted
 behavior belongs in the main S6 specification before implementation begins.
 
+The acquisition-policy extension is sequenced separately in
+[acquisition_policy_plan.md](acquisition_policy_plan.md). Its profile request and plan
+relation contract is recorded in `specs.md`; rollout remains gated by that plan's
+compatibility prerequisite and phase acceptance criteria.
+
 ## 1. Shared decisions to freeze first
 
 Before parallel implementation, agree on these interfaces and invariants:

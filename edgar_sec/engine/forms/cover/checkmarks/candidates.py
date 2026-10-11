@@ -6,6 +6,7 @@ import re
 from bisect import bisect_right
 from collections.abc import Sequence
 from dataclasses import dataclass, replace
+from functools import cache
 
 from edgar_sec.domain.forms.common.checkmarks import (
     CHECKMARK_MARK_RE,
@@ -13,26 +14,15 @@ from edgar_sec.domain.forms.common.checkmarks import (
     is_unchecked_mark_token,
 )
 from edgar_sec.domain.forms.common.schemas import (
-    FILER_ACCELERATED,
-    FILER_EMERGING_GROWTH,
-    FILER_LARGE_ACCELERATED,
-    FILER_NON_ACCELERATED,
-    FILER_SMALLER_REPORTING,
-    FILER_STATUS_GROUP,
-    REPORT_ANNUAL,
+    COMMON_CHECKBOX_LABELS,
+    CheckboxLabelSpec,
+    CoverCheckboxSchema,
+)
+from edgar_sec.domain.forms.common.vocabulary import (
     REPORT_PERIOD_GROUP,
-    REPORT_QUARTERLY,
-    REPORT_TRANSITION,
-    STAT_COMPLIANT_12_MONTHS,
-    STAT_EGC_TRANSITION_OPTOUT,
-    STAT_ERROR_CORRECTION,
-    STAT_RECOVERY_ANALYSIS,
-    STAT_SHELL,
-    STAT_SOX_404B,
-    STAT_VOLUNTARY,
-    STAT_WKSI,
     STATUTORY_BINARY_GROUP,
 )
+from edgar_sec.domain.forms.families.processing_profiles import get_family_entry
 from edgar_sec.engine.forms.cover.checkmarks.frames import (
     build_masked_offset_translator,
 )
@@ -42,92 +32,6 @@ from edgar_sec.engine.forms.cover.models import CoverBoundary
 from edgar_sec.engine.tables.protection.tags import mask_tagged_tables
 from edgar_sec.foundation.text.dates import parse_date
 from edgar_sec.foundation.text.patterns import RE_SEPARATOR_LINE
-
-_LABELS: tuple[tuple[str, tuple[str, ...], str], ...] = (
-    (
-        REPORT_ANNUAL,
-        (
-            "annual report",
-            "annual reports",
-            "annual report pursuant",
-            "annual reports pursuant",
-        ),
-        REPORT_PERIOD_GROUP,
-    ),
-    (
-        REPORT_QUARTERLY,
-        (
-            "quarterly report",
-            "quarterly reports",
-            "quarterly report pursuant",
-            "quarterly reports pursuant",
-        ),
-        REPORT_PERIOD_GROUP,
-    ),
-    (
-        REPORT_TRANSITION,
-        (
-            "transition report",
-            "transition reports",
-            "transition report pursuant",
-            "transition reports pursuant",
-        ),
-        REPORT_PERIOD_GROUP,
-    ),
-    (
-        FILER_LARGE_ACCELERATED,
-        ("large accelerated filer",),
-        FILER_STATUS_GROUP,
-    ),
-    (FILER_ACCELERATED, ("accelerated filer",), FILER_STATUS_GROUP),
-    (
-        FILER_NON_ACCELERATED,
-        ("non-accelerated filer", "non accelerated filer"),
-        FILER_STATUS_GROUP,
-    ),
-    (
-        FILER_SMALLER_REPORTING,
-        ("smaller reporting company",),
-        FILER_STATUS_GROUP,
-    ),
-    (FILER_EMERGING_GROWTH, ("emerging growth company",), FILER_STATUS_GROUP),
-    (
-        STAT_WKSI,
-        ("well-known seasoned issuer", "well known seasoned issuer"),
-        STATUTORY_BINARY_GROUP,
-    ),
-    (STAT_SHELL, ("shell company",), STATUTORY_BINARY_GROUP),
-    (
-        STAT_VOLUNTARY,
-        ("voluntary filer", "not required to file reports"),
-        STATUTORY_BINARY_GROUP,
-    ),
-    (
-        STAT_COMPLIANT_12_MONTHS,
-        (
-            "preceding 12 months",
-            "preceding twelve months",
-            "has filed all reports required",
-        ),
-        STATUTORY_BINARY_GROUP,
-    ),
-    (
-        STAT_SOX_404B,
-        ("404(b)", "auditor attestation", "independent auditor"),
-        STATUTORY_BINARY_GROUP,
-    ),
-    (
-        STAT_EGC_TRANSITION_OPTOUT,
-        ("extended transition", "transition period for complying"),
-        STATUTORY_BINARY_GROUP,
-    ),
-    (
-        STAT_ERROR_CORRECTION,
-        ("error correction", "error corrections"),
-        STATUTORY_BINARY_GROUP,
-    ),
-    (STAT_RECOVERY_ANALYSIS, ("recovery analysis",), STATUTORY_BINARY_GROUP),
-)
 
 
 def _compile_label_pattern(phrase: str) -> re.Pattern[str]:
@@ -141,12 +45,26 @@ def _compile_label_pattern(phrase: str) -> re.Pattern[str]:
     return re.compile(rf"{left_b}{pattern}{right_b}", re.IGNORECASE)
 
 
-_LABEL_RE_PATTERNS: list[tuple[str, str, int, int, str, re.Pattern[str]]] = []
-for _key, _phrases, _group in _LABELS:
-    for _phrase in _phrases:
-        _LABEL_RE_PATTERNS.append(
-            (_key, _phrase, 0, 0, _group, _compile_label_pattern(_phrase))
-        )
+@cache
+def _label_patterns(
+    labels: tuple[CheckboxLabelSpec, ...],
+) -> tuple[tuple[str, str, str, re.Pattern[str]], ...]:
+    return tuple(
+        (label.key, phrase, label.group, _compile_label_pattern(phrase))
+        for label in labels
+        for phrase in label.phrases
+    )
+
+
+def _labels_for_schema(
+    schema: CoverCheckboxSchema | None,
+) -> tuple[CheckboxLabelSpec, ...]:
+    return (
+        schema.labels
+        if schema is not None and schema.labels
+        else COMMON_CHECKBOX_LABELS
+    )
+
 
 _NEWLINE_RE = re.compile(r"\n")
 
@@ -162,11 +80,14 @@ class CoverLineSignals:
     dash_only: bool
 
 
-def _label_matches(text: str) -> list[tuple[str, str, int, int, str]]:
+def _label_matches(
+    text: str,
+    patterns: tuple[tuple[str, str, str, re.Pattern[str]], ...],
+) -> list[tuple[str, str, int, int, str]]:
     matches: list[tuple[str, str, int, int, str]] = []
-    for _key, _phrase, _a, _b, _group, _re in _LABEL_RE_PATTERNS:
-        for match in _re.finditer(text):
-            matches.append((_key, _phrase, match.start(), match.end(), _group))
+    for key, phrase, group, pattern in patterns:
+        for match in pattern.finditer(text):
+            matches.append((key, phrase, match.start(), match.end(), group))
     matches.sort(key=lambda item: (item[2], -(item[3] - item[2])))
     accepted: list[tuple[str, str, int, int, str]] = []
     occupied: list[tuple[int, int]] = []
@@ -204,11 +125,14 @@ def _date_present(text: str) -> bool:
     return parse_date(text) is not None
 
 
-def _line_signals(text: str) -> CoverLineSignals:
+def _line_signals(
+    text: str,
+    label_patterns: tuple[tuple[str, str, str, re.Pattern[str]], ...],
+) -> CoverLineSignals:
     answers = tuple(YES_NO_WORD_RE.finditer(text))
     marks = tuple(_mark_matches(text, answers=answers))
     return CoverLineSignals(
-        labels=tuple(_label_matches(text)),
+        labels=tuple(_label_matches(text, label_patterns)),
         marks=marks,
         answers=answers,
         date_present=_date_present(text),
@@ -367,8 +291,10 @@ def extract_table_candidates(
     geometry: object,
     *,
     table_index: int,
+    schema: CoverCheckboxSchema | None = None,
 ) -> tuple[CheckboxCandidate, ...]:
     """Extract semantic candidates from logical table rows and cell geometry."""
+    label_patterns = _label_patterns(_labels_for_schema(schema))
     rows = tuple(getattr(geometry, "rows", ()))
     candidates: list[CheckboxCandidate] = []
     row_cells: list[
@@ -379,7 +305,11 @@ def extract_table_candidates(
         row_data = []
         for column, cell in enumerate(cells):
             text = str(cell)
-            labels = () if text.lstrip().startswith("(") else _label_matches(text)
+            labels = (
+                ()
+                if text.lstrip().startswith("(")
+                else _label_matches(text, label_patterns)
+            )
             row_data.append((column, text, list(labels), _mark_matches(text)))
         row_cells.append(row_data)
 
@@ -494,10 +424,13 @@ def extract_cover_candidates(
     boundary: CoverBoundary,
     *,
     family: str,
+    schema: CoverCheckboxSchema | None = None,
     table_geometries: Sequence[object] = (),
 ) -> tuple[CheckboxCandidate, ...]:
     """Extract candidates from the bounded cover and retained table grids."""
-    del family
+    entry = get_family_entry(family)
+    schema = schema or (entry.cover_checkbox_schema if entry is not None else None)
+    label_patterns = _label_patterns(_labels_for_schema(schema))
     if boundary.end_line is None:
         return ()
     candidates: list[CheckboxCandidate] = []
@@ -520,7 +453,13 @@ def extract_cover_candidates(
             break
         if table_line < start_line:
             continue
-        candidates.extend(extract_table_candidates(geometry, table_index=table_index))
+        candidates.extend(
+            extract_table_candidates(
+                geometry,
+                table_index=table_index,
+                schema=schema,
+            )
+        )
 
     # Spans are reported in the unmasked frame, because the rewrite slices the
     # original text with them; masked sentinels would shift every offset after a
@@ -546,7 +485,7 @@ def extract_cover_candidates(
     def _signals_for(index: int) -> CoverLineSignals:
         signals = line_signals.get(index)
         if signals is None:
-            signals = _line_signals(lines[index].rstrip("\r\n"))
+            signals = _line_signals(lines[index].rstrip("\r\n"), label_patterns)
             line_signals[index] = signals
         return signals
 
@@ -584,7 +523,7 @@ def extract_cover_candidates(
         all_line_marks = signals.marks
         for label_index, (key, phrase, start, end, group) in enumerate(labels):
             line_marks = all_line_marks
-            if key in {REPORT_TRANSITION, REPORT_ANNUAL, REPORT_QUARTERLY}:
+            if group == REPORT_PERIOD_GROUP:
                 line_marks = [
                     mark
                     for mark in all_line_marks
@@ -604,7 +543,7 @@ def extract_cover_candidates(
             else:
                 mark_refs = []
             if not mark_refs:
-                if key in {REPORT_TRANSITION, REPORT_ANNUAL, REPORT_QUARTERLY}:
+                if group == REPORT_PERIOD_GROUP:
                     continue
                 for nearby_index in range(
                     max(0, line_index - 2),

@@ -124,12 +124,29 @@ def test_report_period_without_transition_date_selects_annual() -> None:
     ]
 
 
-def test_report_period_for_a_family_without_a_schema_is_not_applicable() -> None:
+def test_report_period_for_current_family_is_not_applicable() -> None:
     result = solve_report_period(
-        (CheckboxCandidate("annual", "G0", "report_period"),), family="8-K"
+        (
+            CheckboxCandidate("annual", "G0", "report_period", date_valid=True),
+            CheckboxCandidate("transition", "G1", "report_period", date_valid=False),
+        ),
+        family="8-K",
     )
 
     assert result.status is InferenceStatus.NOT_APPLICABLE
+
+
+def test_report_period_uses_canonical_form_alias() -> None:
+    result = solve_report_period(
+        (
+            CheckboxCandidate("annual", "G0", "report_period", date_valid=True),
+            CheckboxCandidate("transition", "G1", "report_period", date_valid=False),
+        ),
+        family="10-K/A",
+    )
+
+    assert result.status is InferenceStatus.RESOLVED
+    assert result.facts == (("selected_period", "annual"),)
 
 
 def test_statutory_constraints_reject_wksi_shell_hypothesis() -> None:
@@ -225,10 +242,10 @@ def test_a_filing_with_no_candidates_is_absent() -> None:
 
 
 def test_a_family_without_a_schema_is_not_applicable() -> None:
-    text = "FORM 8-K\nItem 7.01 Regulation FD Disclosure\n"
+    text = "FORM ABC\nItem 12345 Something\n"
 
     assert (
-        infer_cover_checkmarks(text, _boundary(text), family="8-K").status
+        infer_cover_checkmarks(text, _boundary(text), family="ABC").status
         is InferenceStatus.NOT_APPLICABLE
     )
 

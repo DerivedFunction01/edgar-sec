@@ -8,6 +8,7 @@ from .batch_defaults import SCANNER as BATCH_DEFAULTS_SCANNER
 from .clean_exit import SCANNER as CLEAN_EXIT_SCANNER
 from .date_patterns import SCANNER as DATE_PATTERNS_SCANNER
 from .environment import SCANNER as ENV_SCANNER
+from .form_isolation import SCANNER as FORM_ISOLATION_SCANNER
 from .json_io import SCANNER as JSON_IO_SCANNER
 from .layers import SCANNER as LAYERS_SCANNER
 from .legacy_shims import SCANNER as LEGACY_SHIMS_SCANNER
@@ -35,6 +36,7 @@ ALL_SCANNERS: tuple[Scanner, ...] = (
     DATE_PATTERNS_SCANNER,
     SQL_INTERPOLATION_SCANNER,
     PROSE_LENGTH_SCANNER,
+    FORM_ISOLATION_SCANNER,
 )
 
 __all__ = [
@@ -43,6 +45,7 @@ __all__ = [
     "CLEAN_EXIT_SCANNER",
     "DATE_PATTERNS_SCANNER",
     "ENV_SCANNER",
+    "FORM_ISOLATION_SCANNER",
     "JSON_IO_SCANNER",
     "LAYERS_SCANNER",
     "LEGACY_SHIMS_SCANNER",

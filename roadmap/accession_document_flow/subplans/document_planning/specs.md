@@ -23,6 +23,49 @@ is limited to direct `*.json` children of that directory. An empty directory is 
 as “no profiles configured”; malformed profile files are shown as invalid, not silently
 skipped. Profile contents are parsed and digested once at plan start.
 
+### Acquisition-policy extension
+
+The acquisition-policy extension is defined in the separate
+[rollout plan](acquisition_policy_plan.md). When implemented, profiles use schema version
+`2`; a version-`1` profile must be explicitly migrated and is never interpreted with the
+new defaults. Each target may add:
+
+```json
+"acquisition_policy": {"operations": ["raw", "render_to_txt"]}
+```
+
+`operations` is a non-empty, duplicate-free array from the closed vocabulary `raw`,
+`render_to_txt`, and `render_to_xml`. Its order is not priority. When the policy is absent,
+S6 selects the first supported operation in `render_to_xml`, `render_to_txt`, `raw` order.
+The policy is a request, not proof that an operation exists. S6 resolves support from the
+versioned family/path capability catalog and matching engine metadata; unsupported
+operations are retained as ignored and do not invalidate the target or its other
+operations. Fetch or processing failures do not trigger another operation or locator.
+
+Keep operation and source-request relations separate from the logical target relation.
+Each resolved target operation has a deterministic `operation_id`, `target_id`, operation,
+support status/reason, capability and optional handler versions, output kind, and its source
+request IDs. Each distinct body request has a deterministic `source_id`, `target_id`,
+validated locator, source strategy, and linked operation IDs. Every target retains one
+primary source request even when `raw` is not requested; operations sharing a body share a
+source request. A root-XML source request is separate from the rendered HTML source and
+must pass the ordinary same-accession locator checks. These relations do not create
+additional logical target rows.
+
+The profile digest includes whether policy was omitted or explicit; explicit operations are
+canonicalized as a sorted set. The plan manifest and identity pin the operation and source
+request schema versions, S6 capability-catalog version, engine metadata version, locator
+resolver version, and selected capability/handler versions. A profile migration or any
+change to operation resolution therefore creates a distinct immutable plan. Existing
+`target_id` derivation remains unchanged and includes `plan_id`; operation rows never
+change target identity within one plan.
+
+Acquisition `raw` means preserve the selected source bytes without an acquisition transform.
+For flat XML/XSD this remains the only acquisition operation. S10's existing standalone XML
+well-formedness and DTD/external-entity checks remain in force before it returns an
+`xml_verbatim` result; those checks do not perform semantic XML/XBRL parsing or alter the
+source bytes. XML semantics remain owned by a form-specific pipeline.
+
 ```json
 {
   "profile_id": "corporate_financials",
@@ -227,12 +270,15 @@ never inserts a synthetic row into its published relations.
 ## 3. Plan bundle and deterministic identity
 
 Use the configured artifact root and the shared plan filename so generic plan discovery
-can read the bundle:
+can read the bundle. The operation-policy extension adds separately described
+`operations/` and `source_requests/` parts; target parts remain the logical target relation:
 
 ```text
 {artifacts_root}/document_planning/plans/{plan_id}/
 ├── plan.json
-└── targets/form=<escaped-form>/part-00000.parquet
+├── targets/form=<escaped-form>/part-00000.parquet
+├── operations/form=<escaped-form>/part-00000.parquet
+└── source_requests/form=<escaped-form>/part-00000.parquet
 ```
 
 Parts are relative, sorted, unique, and listed in `plan.json`; numbering starts at
@@ -264,8 +310,13 @@ canonical JSON containing exactly these fields:
 ```json
 {
   "target_schema_version": 1,
+  "operation_schema_version": 1,
+  "source_request_schema_version": 1,
   "matcher_version": "target-matcher-v1",
   "profile_digest": "...",
+  "capability_catalog_version": "...",
+  "engine_capability_metadata_version": "...",
+  "locator_resolver_version": "...",
   "catalog_plan_id": "...",
   "catalog_plan_digest": "...",
   "inventory_snapshot_id": "... or null",
@@ -279,11 +330,13 @@ selected, resolve it once and record its immutable snapshot ID/digest. Reusing t
 same ID is allowed only when both input pins, manifest payload, and every output
 part digest agree; otherwise refuse without replacing the published bundle.
 
-`plan.json` contains `plan_id`, `target_schema_version`, `matcher_version`, profile ID
-and version/digest, both explicit source pins, target-row count, counts by status,
-origin, and stable reason, distinct accession coverage counts, and ordered part
-records (`path`, `form`, `rows`, `sha256`). Counts are target rows unless named
-as accession coverage; status counts sum to the total target-row count.
+`plan.json` contains `plan_id`, relation schema versions, matcher and resolver versions,
+capability catalog and engine metadata versions, profile ID and version/digest, both
+explicit source pins, target/operation/source-request counts, target counts by status,
+operation counts by status, distinct accession coverage counts, and ordered part records
+for each relation (`path`, `form`, `rows`, `sha256`). Operation records pin selected
+capability/handler IDs and versions. Counts reconcile each relation independently;
+target status counts sum to the target-row count.
 `plan_digest` is SHA-256 of canonical manifest content with the `plan_digest`
 field omitted. Do not include a volatile creation timestamp in this digest.
 
@@ -425,6 +478,10 @@ Offline tests must cover:
 - catalog-only primary validation, same-accession path checks, and refusal of
   non-primary profiles; rejection of non-HTTPS URLs, alternate hosts,
   queries/fragments, unsafe path components, and archive paths for another accession;
+- schema-versioned operation requests, explicit-set canonicalization, default-priority
+  resolution, unsupported-operation retention, one primary source request per target,
+  shared source requests, separately validated alternate locators, and deterministic
+  operation/source-request identities;
 - no index fetch, body inspection, filename/type inference, or target substitution in
   catalog-only mode, including when the catalog path resembles an exhibit;
 - each status/evidence combination, `accession_not_indexed` independent of optionality,

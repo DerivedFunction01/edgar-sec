@@ -16,12 +16,12 @@ from edgar_sec.domain.forms.common.models import (
     CoverEvidencePack,
 )
 from edgar_sec.domain.forms.common.rules import COMMON_PHRASE_RULES
+from edgar_sec.domain.forms.families.processing_profiles import get_family_entry
 from edgar_sec.domain.forms.common.vocabulary import (
     COVER_EVIDENCE_TERMS,
     COVER_LABELS_FLAT,
     COVER_START_IDENTITY_TERMS,
 )
-from edgar_sec.domain.forms.families.annual.checkmarks import ANNUAL_CHECKBOX_SCHEMA
 from edgar_sec.domain.forms.families.annual.evidence import (
     ANNUAL_ADDITIONAL_PHRASE_RULES,
     AnnualReportEvidence,
@@ -31,12 +31,10 @@ from edgar_sec.domain.forms.families.annual.taxonomy import (
     FORM_20F_DERIVED,
 )
 from edgar_sec.domain.forms.families.current.evidence import (
+    CURRENT_COVER_TERMS,
     CurrentReportEvidence,
 )
 from edgar_sec.domain.forms.families.current.taxonomy import FORM_8K_ITEMS
-from edgar_sec.domain.forms.families.quarterly.checkmarks import (
-    QUARTERLY_CHECKBOX_SCHEMA,
-)
 from edgar_sec.domain.forms.families.quarterly.evidence import (
     QuarterlyReportEvidence,
 )
@@ -89,9 +87,9 @@ def _make_profile(
     cover_evidence: CoverEvidencePack | None = None,
     body_evidence: BodyEvidencePack | None = None,
     derived_taxonomy: dict | None = None,
-    checkbox_schema: CoverCheckboxSchema | None = None,
     cover_table_cleaners: tuple[str, ...] = (),
 ) -> CoverProfile:
+    family_entry = get_family_entry(family)
     return CoverProfile(
         family=family,
         boundary=boundary,
@@ -103,7 +101,9 @@ def _make_profile(
         cover_evidence=cover_evidence,
         body_evidence=body_evidence,
         derived_taxonomy=derived_taxonomy,
-        checkbox_schema=checkbox_schema,
+        checkbox_schema=(
+            family_entry.cover_checkbox_schema if family_entry is not None else None
+        ),
         cover_table_cleaners=cover_table_cleaners,
     )
 
@@ -188,7 +188,6 @@ def build_annual_profile(family: str) -> CoverProfile:
             cover_terms=annual.cover_terms,
             lexical=annual.body_lexical,
         ),
-        checkbox_schema=ANNUAL_CHECKBOX_SCHEMA,
         cover_table_cleaners=("report_period",),
     )
 
@@ -232,7 +231,6 @@ def build_quarterly_profile(family: str) -> CoverProfile:
             cover_terms=quarterly.cover_terms,
             lexical=quarterly.body_lexical,
         ),
-        checkbox_schema=QUARTERLY_CHECKBOX_SCHEMA,
         cover_table_cleaners=("report_period",),
     )
 
@@ -257,7 +255,7 @@ def build_current_profile(family: str) -> CoverProfile:
         healing_rules=GENERIC_PHRASE_RULES,
         cover_evidence=CoverEvidencePack(
             identity_terms=COVER_START_IDENTITY_TERMS,
-            shape_terms=COMMON_COVER_LABELS,
+            shape_terms=(*COMMON_COVER_LABELS, *CURRENT_COVER_TERMS),
             labels=COMMON_COVER_LABELS,
         ),
         body_evidence=BodyEvidencePack(
@@ -320,8 +318,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
     generic_8k = build_current_profile("8-K")
     current = CurrentReportEvidence()
     generic_6k = _dataclass_replace(
-        generic_8k,
-        family="6-K",
+        build_current_profile("6-K"),
         body_evidence=BodyEvidencePack(
             structural_headings=(),
             semantic_headings=(

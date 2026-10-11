@@ -1,0 +1,23 @@
+"""Current report family processing profile.
+
+Defines the DocumentProcessingProfile for Form 8-K current reports.
+"""
+
+from edgar_sec.domain.forms.common.processing import (
+    AcquisitionOperation,
+    DocumentProcessingProfile,
+)
+
+# Processing profile for current family (8-K)
+PROFILE = DocumentProcessingProfile(
+    family="8-K",
+    version="v1",
+    allowed_operations=frozenset(
+        {
+            AcquisitionOperation.RAW,
+            AcquisitionOperation.RENDER_TO_TXT,
+        }
+    ),
+)
+
+__all__ = ["PROFILE"]
