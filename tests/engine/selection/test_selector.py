@@ -9,6 +9,7 @@ import pytest
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from edgar_sec.engine.selection.cell_allocation import equalized_cell_targets
 from edgar_sec.engine.selection.policy import (
     EraBand,
     SeedFiler,
@@ -19,6 +20,7 @@ from edgar_sec.engine.selection.selector import (
     DeficitSelector,
     classification_signature,
 )
+from edgar_sec.engine.selection.source import CandidateSource
 from tests.engine.selection.conftest import (
     make_dominant_snapshot,
     make_locator,
@@ -35,14 +37,21 @@ def test_selection_fills_the_target_and_reports_itself(
     )
 
     assert result.active_count == selection_policy.requested_units()
-    assert [event["stage"] for event in events] == [
-        "selection_seeds",
-        "selection_composites",
-        "selection_floors",
-        "selection_form_era",
-        "selection_weighted",
-        "selection_reserve",
-    ]
+    stages = [event["stage"] for event in events]
+    assert stages.index("selection_seeds") < stages.index("selection_form_era")
+    assert "selection_form_era_staging_started" in stages
+    staging = next(
+        event
+        for event in events
+        if event["stage"] == "selection_form_era_availability_complete"
+    )
+    assert staging["rows"] > 0
+    assert "selection_form_era_staging_complete" in stages
+    assert not any(stage.startswith("selection_form_era_round_") for stage in stages)
+    assert "selection_form_era_complete" in stages
+    assert stages.index("selection_form_era_complete") < stages.index(
+        "selection_weighted"
+    )
     assert sum(1 for _ in result.active_candidates) == result.active_count
     assert result.report["active_occurrences_count"] >= result.active_count
     assert result.report["active_locators_count"] == result.active_count
@@ -57,6 +66,29 @@ def test_selection_is_deterministic_for_one_seed(
     second = DeficitSelector(snapshot_dir, selection_policy).select()
     assert list(first.active_locators) == list(second.active_locators)
     assert first.report == second.report
+
+
+def test_form_era_selection_does_not_issue_a_pool_query_per_cell(
+    snapshot_dir: Path,
+    selection_policy: SelectionPolicy,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def reject_cell_query(*args: Any, **kwargs: Any) -> Any:
+        pytest.fail("form/era allocation must consume the staged candidate relation")
+
+    monkeypatch.setattr(CandidateSource, "pool_for_cell", reject_cell_query)
+    result = DeficitSelector(snapshot_dir, selection_policy).select()
+    assert result.active_count == selection_policy.requested_units()
+
+
+def test_selection_scratch_database_is_removed_with_result(
+    snapshot_dir: Path, selection_policy: SelectionPolicy
+) -> None:
+    result = DeficitSelector(snapshot_dir, selection_policy).select()
+    state_dir = result.active_keys_path.parent
+    assert (state_dir / "selection.duckdb").is_file()
+    result.close()
+    assert not state_dir.exists()
 
 
 def test_a_different_seed_selects_differently(
@@ -154,7 +186,7 @@ def test_capped_candidates_are_counted_in_the_report(
         reserve_size=0,
     )
     result = DeficitSelector(dominant_family_snapshot, policy).select()
-    assert result.report["deduplicated_company_classifications"] > 0
+    assert result.report["form_era_allocation"]["cap_rejected_candidates"] > 0
     assert result.report["unique_company_families"] == 8
 
 
@@ -494,6 +526,38 @@ def _allocation_cells(report: dict[str, Any]) -> dict[tuple[str, str], dict[str,
     }
 
 
+def test_equalized_targets_account_for_prefilled_cells() -> None:
+    targets = equalized_cell_targets(
+        [
+            ("10-K", "modern", 4, 12),
+            ("8-K", "historical", 0, 20),
+            ("S-1", "modern", 2, 0),
+        ],
+        4,
+    )
+    assert targets == {
+        ("10-K", "modern"): 4,
+        ("8-K", "historical"): 4,
+        ("S-1", "modern"): 2,
+    }
+
+
+def test_equalized_targets_saturate_capacity_and_break_ties_in_order() -> None:
+    targets = equalized_cell_targets(
+        [
+            ("10-K", "early", 0, 1),
+            ("10-K", "late", 0, 10),
+            ("8-K", "late", 0, 10),
+        ],
+        5,
+    )
+    assert targets == {
+        ("10-K", "early"): 1,
+        ("10-K", "late"): 2,
+        ("8-K", "late"): 2,
+    }
+
+
 def _write_parent_keys(path: Path, keys: list[str]) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     pq.write_table(pa.table({"document_locator_key": keys}), path)
@@ -599,6 +663,9 @@ def test_allocation_never_exceeds_the_global_cap(tmp_path: Path) -> None:
     allocation = result.report["form_era_allocation"]
     assert sum(cell["selected"] for cell in allocation["cells"]) == 5
     assert allocation["budget"] + 4 == 5
+    cells = _allocation_cells(result.report)
+    assert cells[("8-K", "historical")]["starting_selected"] == 4
+    assert cells[("10-K", "modern")]["target"] == 1
 
 
 def test_allocation_reports_an_empty_corpus_rather_than_claiming_balance(

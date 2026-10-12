@@ -289,9 +289,10 @@ the era-band, seed-manifest, and determinism contracts it owns are in
   Because the published plan embeds its *resolved* policy, expansion compares a
   derived-band draft against those bands leniently, so editing strata produces a new
   root plan rather than an expansion.
-- **`form_era_allocation`** records per-cell `available`/`selected`/`shortfall` plus
-  the `equal_quota` and `unallocated` totals, so a plan never claims a target it
-  could not meet.
+- **`form_era_allocation`** records each cell's starting count, cap-eligible capacity,
+  equalized final target, selected count, and shortfall, plus the unallocated global
+  budget and candidates excluded by the classification cap. Earlier policy selections
+  are retained when calculating the cell targets.
 - **`inventory_feasibility`** reports, per declared floor and composite, how many
   locators the corpus held against how many the policy asked for. It is advisory and
   cannot fail a fresh plan: a shortfall is still reported in `underfilled_floors` and

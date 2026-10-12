@@ -6,13 +6,20 @@ from collections.abc import Iterator
 from dataclasses import dataclass, field
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from time import monotonic
 from typing import Any
+
+from tqdm import tqdm
 
 from edgar_sec.engine.selection.policy import (
     KNOWN_DIMENSIONS,
     SeedFiler,
     SelectionPolicy,
     normalize_value,
+)
+from edgar_sec.engine.selection.cell_allocation import (
+    account_staged_candidates,
+    equalized_cell_targets,
 )
 from edgar_sec.engine.selection.source import (
     POOL_COLUMNS,
@@ -41,7 +48,6 @@ _COVERAGE_TABLE = "selection_coverage"
 _EXHIBIT_ACCESSIONS_TABLE = "selection_exhibit_accessions"
 _SIGNATURE_TABLE = "selection_signatures"
 _CELL_TABLE = "selection_cells"
-_OPEN_CELL_TABLE = "selection_open_cells"
 
 
 @dataclass(frozen=True, slots=True)
@@ -164,7 +170,10 @@ class DeficitSelector:
         deduplicated_signatures = 0
         allocation: dict[str, Any] = {}
 
-        with source.session():
+        with source.session(
+            database=state_dir / "selection.duckdb",
+            temp_directory=state_dir / "duckdb-temp",
+        ):
             con = source._require()
             self._create_state(con)
             if parent_locator_path is not None:
@@ -225,7 +234,9 @@ class DeficitSelector:
                 progress, {"type": "merge_stage", "stage": "selection_form_era"}
             )
             allocation, active_count, allocation_deduplicated = (
-                self._allocate_form_era_cells(source, con, active_count, target_units)
+                self._allocate_form_era_cells(
+                    source, con, active_count, target_units, progress
+                )
             )
             deduplicated_signatures += allocation_deduplicated
             emit_progress(
@@ -495,91 +506,157 @@ class DeficitSelector:
         return active_count, deduplicated
 
     def _allocate_form_era_cells(
-        self, source: CandidateSource, con: Any, active_count: int, target_units: int
+        self,
+        source: CandidateSource,
+        con: Any,
+        active_count: int,
+        target_units: int,
+        progress: ProgressCallback,
     ) -> tuple[dict[str, Any], int, int]:
-        source.populate_cell_availability(_CELL_TABLE)
-        cell_count = int(
-            con.execute(
-                f"SELECT COUNT(*) FROM {_CELL_TABLE} WHERE available > 0"
-            ).fetchone()[0]
+        emit_progress(
+            progress,
+            {
+                "type": "merge_stage",
+                "stage": "selection_form_era_staging_started",
+            },
+        )
+        staging_started = monotonic()
+        with tqdm(
+            desc="staging form/era candidates",
+            unit="candidate",
+            disable=progress is None,
+        ) as availability_bar:
+            availability_bar.set_postfix_str("filtering and ranking candidates")
+            availability_bar.refresh()
+            raw_candidate_count, candidate_count, staged_cell_count, cap_rejected = (
+                source.stage_form_era_candidates(
+                    CLASSIFICATION_DIMENSIONS,
+                    self.policy.max_per_company_classification,
+                )
+            )
+            source.populate_staged_cell_availability(_CELL_TABLE)
+            availability_bar.total = candidate_count
+            availability_bar.update(candidate_count)
+            availability_bar.set_postfix_str(
+                f"{candidate_count:,}/{raw_candidate_count:,} cap-eligible; "
+                f"{monotonic() - staging_started:.1f}s"
+            )
+        cell_rows = []
+        cursor = con.execute(
+            f"SELECT form, era, selected, available FROM {_CELL_TABLE} "
+            "WHERE selected > 0 OR available > 0 "
+            f"ORDER BY {self._era_order_sql()}, form, era"
+        )
+        while row := cursor.fetchone():
+            cell_rows.append((str(row[0]), str(row[1]), int(row[2]), int(row[3])))
+        cell_count = len(cell_rows)
+        available_rows = sum(cell[3] for cell in cell_rows)
+        emit_progress(
+            progress,
+            {
+                "type": "merge_stage",
+                "stage": "selection_form_era_staging_complete",
+                "rows": candidate_count,
+                "cap_rejected": cap_rejected,
+                "cells": cell_count,
+                "elapsed_seconds": round(monotonic() - staging_started, 2),
+            },
+        )
+        emit_progress(
+            progress,
+            {
+                "type": "merge_stage",
+                "stage": "selection_form_era_availability_complete",
+                "rows": available_rows,
+                "cells": staged_cell_count,
+            },
         )
         budget = max(0, target_units - active_count)
         if not cell_count:
+            emit_progress(
+                progress,
+                {
+                    "type": "merge_stage",
+                    "stage": "selection_form_era_complete",
+                    "rows": active_count,
+                    "remaining": budget,
+                },
+            )
             return (
-                {"budget": budget, "unallocated": budget, "rounds": 0, "cells": []},
+                {
+                    "budget": budget,
+                    "unallocated": budget,
+                    "cap_rejected_candidates": cap_rejected,
+                    "final_target_min": 0,
+                    "final_target_max": 0,
+                    "cells": [],
+                },
                 active_count,
                 0,
             )
-        remaining = budget
-        rounds = 0
+        targets = equalized_cell_targets(cell_rows, budget)
+        target_rows = [
+            (form, era, target - selected, order)
+            for order, (form, era, selected, _) in enumerate(cell_rows)
+            if (target := targets[(form, era)]) > selected
+        ]
+        started = monotonic()
         deduplicated = 0
-        while remaining > 0:
-            open_count = int(
-                con.execute(
-                    f"SELECT COUNT(*) FROM {_CELL_TABLE} WHERE taken < available"
-                ).fetchone()[0]
-            )
-            if not open_count:
-                break
-            rounds += 1
-            added_this_round = 0
-            share = max(1, remaining // open_count)
-            con.execute(
-                f"CREATE OR REPLACE TEMP TABLE {_OPEN_CELL_TABLE} AS "
-                f"SELECT ROW_NUMBER() OVER (ORDER BY {self._era_order_sql()}, form, era) "
-                "AS cell_number, form, era, available, selected, taken "
-                f"FROM {_CELL_TABLE} WHERE taken < available"
-            )
-            for cell_number in range(1, open_count + 1):
-                if remaining <= 0:
-                    break
-                row = con.execute(
-                    f"SELECT form, era, available, selected, taken "
-                    f"FROM {_OPEN_CELL_TABLE} WHERE cell_number = ?",
-                    [cell_number],
-                ).fetchone()
-                if row is None:
-                    continue
-                form, era, available, selected, taken = row
-                room = min(available - taken, remaining, share)
-                if room <= 0:
-                    continue
-                added, refused = self._fill_cell(source, con, str(form), str(era), room)
-                con.execute(
-                    f"UPDATE {_CELL_TABLE} SET taken = taken + ? "
-                    "WHERE form = ? AND era = ?",
-                    [added, form, era],
-                )
-                active_count += added
-                remaining -= added
-                added_this_round += added
-                deduplicated += refused
-            if added_this_round == 0:
-                break
-        quota = max(1, budget // cell_count)
-        cell_rows = []
-        cursor = con.execute(
-            f"SELECT form, era, available, selected FROM {_CELL_TABLE} "
-            f"WHERE available > 0 ORDER BY {self._era_order_sql()}, form, era"
+        staged_count = source.stage_form_era_additions(target_rows)
+        source.register_selected_relation(
+            "SELECT document_locator_key FROM selection_cell_additions"
         )
-        while row := cursor.fetchone():
-            form, era, available, selected = row
-            cell_rows.append(
+        added = account_staged_candidates(
+            con, CLASSIFICATION_DIMENSIONS, KNOWN_DIMENSIONS
+        )
+        if added != staged_count:
+            raise RuntimeError(
+                "staged form/era candidate count changed during accounting"
+            )
+        active_count += added
+        remaining = max(0, target_units - active_count)
+        selected_by_cell = {
+            (str(form), str(era)): int(selected)
+            for form, era, selected in con.execute(
+                f"SELECT form, era, selected FROM {_CELL_TABLE}"
+            ).fetchall()
+        }
+        report_cells = []
+        for form, era, starting, available in cell_rows:
+            target = targets[(form, era)]
+            selected = selected_by_cell[(form, era)]
+            report_cells.append(
                 {
                     "form": form,
                     "era": era,
                     "available": available,
+                    "eligible_capacity": available,
+                    "starting_selected": starting,
+                    "target": target,
+                    "additional_target": target - starting,
                     "selected": selected,
-                    "shortfall": max(0, quota - selected),
+                    "shortfall": max(0, target - selected),
                 }
             )
+        target_values = list(targets.values())
         report = {
             "budget": budget,
             "unallocated": remaining,
-            "rounds": rounds,
-            "equal_quota": quota,
-            "cells": cell_rows,
+            "cap_rejected_candidates": cap_rejected,
+            "final_target_min": min(target_values, default=0),
+            "final_target_max": max(target_values, default=0),
+            "cells": report_cells,
         }
+        emit_progress(
+            progress,
+            {
+                "type": "merge_stage",
+                "stage": "selection_form_era_complete",
+                "rows": active_count,
+                "remaining": remaining,
+                "elapsed_seconds": round(monotonic() - started, 2),
+            },
+        )
         return report, active_count, deduplicated
 
     def _era_order_sql(self) -> str:
@@ -590,19 +667,6 @@ class DeficitSelector:
             for rank, band in enumerate(self.policy.era_bands)
         )
         return f"CASE era {branches} ELSE {len(self.policy.era_bands)} END"
-
-    def _fill_cell(
-        self, source: CandidateSource, con: Any, form: str, era: str, room: int
-    ) -> tuple[int, int]:
-        added = 0
-        deduplicated = 0
-        for candidate in source.pool_for_cell(form, era, limit=room):
-            if added >= room:
-                break
-            recorded, capped = self._record(source, con, candidate)
-            added += int(recorded)
-            deduplicated += int(capped)
-        return added, deduplicated
 
     def _fill_weighted(
         self, source: CandidateSource, con: Any, active_count: int, target_units: int
@@ -710,8 +774,8 @@ class DeficitSelector:
             "date_selection_text": self.policy.date_selection_text,
             "form_era_allocation": {
                 "budget": allocation.get("budget", 0),
-                "equal_quota": allocation.get("equal_quota", 0),
-                "rounds": allocation.get("rounds", 0),
+                "final_target_min": allocation.get("final_target_min", 0),
+                "final_target_max": allocation.get("final_target_max", 0),
                 "unallocated": allocation.get("unallocated", 0),
                 "cell_count": len(allocation_cells),
                 "underfilled_cells": sum(

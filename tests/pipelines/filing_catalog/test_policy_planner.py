@@ -912,7 +912,13 @@ def test_the_report_states_the_selection_and_the_allocation(
     assert report["era_band_count"] == len(meta["selection_policy"]["era_bands"])
     assert report["derives_era_bands"] is False
     allocation = report["form_era_allocation"]
-    assert {"cells", "cell_count", "equal_quota", "unallocated"} <= set(allocation)
+    assert {
+        "cells",
+        "cell_count",
+        "final_target_min",
+        "final_target_max",
+        "unallocated",
+    } <= set(allocation)
 
 
 def test_a_policy_document_without_the_new_field_is_still_readable(

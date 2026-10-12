@@ -62,6 +62,14 @@ _POOL_SELECTED = frozenset(
 POOL_COLUMNS: tuple[str, ...] = tuple(
     column for column in LOCATOR_FEATURE_COLUMNS if column in _POOL_SELECTED
 )
+_CELL_SELECTION_COLUMNS = tuple(
+    column
+    for column in POOL_COLUMNS
+    if column in KNOWN_DIMENSIONS
+    or column in {"document_locator_key", "representative_accession"}
+)
+_CELL_SELECTION_SELECT = ", ".join(_CELL_SELECTION_COLUMNS)
+_QUALIFIED_CELL_SELECT = ", ".join(f"l.{column}" for column in _CELL_SELECTION_COLUMNS)
 
 # Returned for the active selection, so a consumer need not re-read the snapshot.
 _OCCURRENCE_SELECTED = frozenset(
@@ -107,6 +115,8 @@ _SELECTED_TABLE = "selected_keys"
 _LOCATOR_KEYS_TABLE = "requested_locator_keys"
 _CIK_TABLE = "requested_ciks"
 _ACCESSION_TABLE = "excluded_accessions"
+_CELL_CANDIDATES_TABLE = "selection_cell_candidates"
+_CELL_TARGETS_TABLE = "selection_cell_targets"
 
 
 class SelectionSessionError(RuntimeError):
@@ -180,11 +190,19 @@ class CandidateSource:
     # -------------------------------------------------------------- session
 
     @contextmanager
-    def session(self) -> Iterator[CandidateSource]:
-        """Open the candidate session and its working tables. The connection is in-memory,
-        so a session leaves no mutable state in the snapshot directory.
-        """
-        con = connect(threads=self._threads, memory_limit=self._memory_limit)
+    def session(
+        self,
+        *,
+        database: str | Path = ":memory:",
+        temp_directory: str | Path | None = None,
+    ) -> Iterator[CandidateSource]:
+        """Open candidate state outside the immutable feature snapshot."""
+        con = connect(
+            database=database,
+            threads=self._threads,
+            memory_limit=self._memory_limit,
+            temp_directory=temp_directory,
+        )
         try:
             for table in (_SELECTED_TABLE, _LOCATOR_KEYS_TABLE, _CIK_TABLE):
                 if table == _LOCATOR_KEYS_TABLE:
@@ -411,6 +429,119 @@ class CandidateSource:
             GROUP BY l.form, l.era, s.selected
             ON CONFLICT (form, era) DO UPDATE SET available = excluded.available
             """
+        )
+
+    @staticmethod
+    def _normalized_dimension_sql(column: str) -> str:
+        return (
+            f"CASE WHEN l.{column} IS NULL THEN 'none' "
+            f"ELSE LOWER(TRIM(CAST(l.{column} AS VARCHAR))) END"
+        )
+
+    def stage_form_era_candidates(
+        self, signature_dimensions: Sequence[str], signature_limit: int
+    ) -> tuple[int, int, int, int]:
+        con = self._require()
+        dimensions = tuple(self._dimension(name) for name in signature_dimensions)
+        normalized = [
+            (name, self._normalized_dimension_sql(name)) for name in dimensions
+        ]
+        signature_select = ", ".join(
+            f"{expression} AS signature_{name}" for name, expression in normalized
+        )
+        signature_join = " AND ".join(
+            f"s.{name} = n.signature_{name}" for name in dimensions
+        )
+        signature_partition = ", ".join(f"signature_{name}" for name in dimensions)
+        con.execute(
+            f"""
+            CREATE OR REPLACE TABLE {_CELL_CANDIDATES_TABLE} AS
+            WITH normalized_candidates AS (
+                SELECT {_QUALIFIED_CELL_SELECT},
+                       sha256(CAST(? AS VARCHAR) || l.document_locator_key) AS draw_order,
+                       {signature_select}
+                FROM {self._locator_source()}
+                WHERE {self._exclusion_predicate()}
+                  AND {self.filters.predicate()}
+            ), candidates AS (
+                SELECT n.*, COALESCE(s.signature_count, 0) AS previous_signature_count
+                FROM normalized_candidates n
+                LEFT JOIN selection_signatures s ON {signature_join}
+            ), signature_ranked AS (
+                SELECT *, ROW_NUMBER() OVER (
+                    PARTITION BY {signature_partition} ORDER BY draw_order
+                ) AS signature_rank
+                FROM candidates
+            )
+            SELECT {_CELL_SELECTION_SELECT}, draw_order, signature_rank,
+                   GREATEST(? - previous_signature_count, 0) AS signature_capacity
+            FROM signature_ranked
+            """,
+            [self.seed, int(signature_limit)],
+        )
+        candidate_count, eligible_count, cell_count = con.execute(
+            f"SELECT COUNT(*), "
+            "COUNT(*) FILTER (WHERE signature_rank <= signature_capacity), "
+            "COUNT(DISTINCT (form, era)) FILTER "
+            "(WHERE signature_rank <= signature_capacity) "
+            f"FROM {_CELL_CANDIDATES_TABLE}"
+        ).fetchone()
+        return (
+            int(candidate_count),
+            int(eligible_count),
+            int(cell_count),
+            int(candidate_count) - int(eligible_count),
+        )
+
+    def populate_staged_cell_availability(self, table: str) -> None:
+        self._require().execute(
+            f"""
+            INSERT INTO {table} (form, era, available, selected, taken)
+            SELECT form, era, COUNT(*), 0, 0
+            FROM {_CELL_CANDIDATES_TABLE}
+            WHERE signature_rank <= signature_capacity
+            GROUP BY form, era
+            ON CONFLICT (form, era) DO UPDATE SET available = excluded.available
+            """
+        )
+
+    def stage_form_era_additions(
+        self, targets: Sequence[tuple[str, str, int, int]]
+    ) -> int:
+        con = self._require()
+        con.execute(
+            f"CREATE OR REPLACE TEMP TABLE {_CELL_TARGETS_TABLE} "
+            "(form VARCHAR, era VARCHAR, additional BIGINT, cell_order BIGINT)"
+        )
+        if not targets:
+            con.execute(
+                "CREATE OR REPLACE TEMP TABLE selection_cell_additions AS "
+                f"SELECT {_CELL_SELECTION_SELECT} "
+                f"FROM {_CELL_CANDIDATES_TABLE} WHERE FALSE"
+            )
+            return 0
+        con.executemany(
+            f"INSERT INTO {_CELL_TARGETS_TABLE} VALUES (?, ?, ?, ?)", targets
+        )
+        con.execute(f"""
+            CREATE OR REPLACE TEMP TABLE selection_cell_additions AS
+            WITH eligible AS (
+                SELECT * FROM {_CELL_CANDIDATES_TABLE}
+                WHERE signature_rank <= signature_capacity
+            ), ranked AS (
+                SELECT *, ROW_NUMBER() OVER (
+                    PARTITION BY form, era ORDER BY draw_order
+                ) AS cell_rank
+                FROM eligible
+            )
+            SELECT {", ".join(f"c.{column}" for column in _CELL_SELECTION_COLUMNS)}
+            FROM ranked c
+            JOIN {_CELL_TARGETS_TABLE} t
+              ON c.form = t.form AND c.era = t.era
+            WHERE c.cell_rank <= t.additional
+        """)
+        return int(
+            con.execute("SELECT COUNT(*) FROM selection_cell_additions").fetchone()[0]
         )
 
     def pool_for_composite(

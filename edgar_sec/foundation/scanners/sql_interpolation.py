@@ -45,6 +45,8 @@ _SQL_COMPILER_PATHS = frozenset(
         # Selection SQL embeds only validated dimensions, snapshot relations, and
         # escaped temporary paths; candidate values are bound parameters.
         "edgar_sec/engine/selection/selector.py",
+        # Batch allocation SQL composes columns only from validated selection dimensions.
+        "edgar_sec/engine/selection/cell_allocation.py",
         # Feature SQL embeds only relations compiled from validated forms and paths.
         "edgar_sec/engine/selection/features.py",
         "edgar_sec/engine/selection/snapshot_build.py",
