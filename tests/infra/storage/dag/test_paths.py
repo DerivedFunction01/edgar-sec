@@ -17,6 +17,11 @@ def test_catalog_file_resolves_to_sqlite(tmp_path: Path) -> None:
     assert paths.catalog_file == expected
 
 
+def test_saved_queries_live_beside_snapshot_repository(tmp_path: Path) -> None:
+    paths = DAGPaths(tmp_path / "snapshots")
+    assert paths.saved_queries_root == tmp_path / "console" / "queries"
+
+
 def test_branches_root(tmp_path: Path) -> None:
     paths = DAGPaths(tmp_path)
     assert paths.branches_root == tmp_path / "branches"

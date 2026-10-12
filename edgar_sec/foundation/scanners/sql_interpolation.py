@@ -40,6 +40,8 @@ _NEUTRAL_CALLS = frozenset({"join", "int", "float", "bool", "len", "str", "sorte
 _SQL_COMPILER_PATHS = frozenset(
     {
         "edgar_sec/infra/storage/duckdb.py",
+        # Operator SQL is guarded as read-only and restricted to snapshot/session sources.
+        "edgar_sec/infra/storage/dag/console.py",
         "edgar_sec/engine/selection/source.py",
         "edgar_sec/engine/selection/inventory.py",
         # Selection SQL embeds only validated dimensions, snapshot relations, and

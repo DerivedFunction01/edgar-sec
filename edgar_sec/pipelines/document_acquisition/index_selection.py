@@ -8,6 +8,7 @@ from edgar_sec.domain.document_inventory.models import (
     InventoryEntry,
     ParsedIndexPage,
 )
+from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import validate_archive_url
 
@@ -46,7 +47,7 @@ def select_index_entry(
         if entry.accession == accession
         and entry.table_kind == "document_format"
         and entry.document_type is not None
-        and entry.document_type.strip().casefold() == expected_form.strip().casefold()
+        and _normalize_form(entry.document_type) == _normalize_form(expected_form)
     )
     entry_ids = tuple(entry.entry_id for entry in matching)
     if not matching:
@@ -86,6 +87,11 @@ def select_index_entry(
     return IndexSelection(
         "selected", entry_ids, selected, None, "bundle_sequence", outcome.bundle_url
     )
+
+
+def _normalize_form(value: str) -> str:
+    normalized = " ".join(value.split()).upper()
+    return resolve_alias(normalized) or normalized
 
 
 __all__ = ["IndexSelection", "select_index_entry"]

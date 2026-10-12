@@ -218,7 +218,9 @@ Matching and outcome rules:
   does not need to reopen the inventory snapshot. A single row without any usable
   locator is unresolved, not absent.
 - For ordinary rows, current bundle-sequence matching is limited to eligible
-  unlinked exhibits. An unlinked primary uses bundle mode only when its observed primary
+  unlinked exhibits. A recognized SEC CIK/accession-directory `href` is not a document
+  link; it can use bundle mode only with an observed positive sequence and advertised
+  bundle URL. An unlinked primary uses bundle mode only when its observed primary
   filename exactly matches one of the four user-supplied placeholder names and both the bundle URL
   and observed positive sequence are available. No form/date condition applies;
   observed sequence is locator metadata, never evidence for target type or role.

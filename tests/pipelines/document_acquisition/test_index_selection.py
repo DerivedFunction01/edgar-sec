@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from edgar_sec.domain.document_inventory.models import (
     IndexParseFailure,
     InventoryEntry,
@@ -63,10 +65,10 @@ def _page(
     )
 
 
-def test_selects_only_exact_document_format_type() -> None:
+def test_selects_only_expected_form_family_from_document_format_table() -> None:
     selected = _entry("exact", " 10-k ")
     page = _page(
-        _entry("amendment", "10-K/A"),
+        _entry("other-form", "10-Q"),
         _entry("data-file", "10-K", table_kind="data_file"),
         selected,
     )
@@ -108,8 +110,20 @@ def test_duplicate_exact_types_are_ambiguous_independent_of_sequence() -> None:
     assert result.entry is None
 
 
-def test_no_exact_type_maps_to_optional_or_required_absence() -> None:
-    page = _page(_entry("amendment", "10-K/A"))
+@pytest.mark.parametrize("observed_form", ["10-K405", "10-K/A"])
+def test_selects_document_type_from_expected_form_family(observed_form: str) -> None:
+    page = _page(_entry("matching-form", observed_form))
+
+    result = select_index_entry(
+        page, accession=ACCESSION, expected_form="10-K", optional=False
+    )
+
+    assert result.result == "selected"
+    assert result.matching_entry_ids == ("matching-form",)
+
+
+def test_no_matching_form_family_maps_to_optional_or_required_absence() -> None:
+    page = _page(_entry("other-form", "10-Q"))
 
     optional = select_index_entry(
         page, accession=ACCESSION, expected_form="10-K", optional=True

@@ -196,12 +196,20 @@ table:
    nested paths and arbitrary suffix matches do not qualify.
 2. **Usable ordinary child link:** validate the same-accession archive URL and emit
    `retrieval_mode=direct_url`, with that child URL as `target_url`.
-3. **No usable child link:** for an eligible exhibit, if the index advertises a safe
-   accession `.txt` bundle and the row has an observed positive sequence, emit
-   `bundle_sequence` with that URL and exact sequence. Never infer sequence from row
-   order, filename, or type.
+3. **No usable child link:** an exact SEC CIK/accession-directory `href` is not a
+   document URL. For an eligible exhibit, if the index advertises a safe accession
+   `.txt` bundle and the row has an observed positive sequence, emit `bundle_sequence`
+   with that URL and exact sequence. Never infer sequence from row order, filename, or
+   type.
 4. **Neither supported locator is usable:** emit `unresolved / no_usable_retrieval_locator`.
    Do not synthesize a bundle URL or treat a missing catalog primary as an envelope.
+
+For inventory-backed targets, a numbered display filename never constructs a child URL:
+direct retrieval requires the observed, validated child locator, and bundle retrieval
+requires the advertised bundle URL plus that row's observed sequence. A direct 404 is a
+recorded failure, not permission to guess a sibling URL or change retrieval modes.
+Catalog-only retrieval uses the exact SEC `primaryDocument` value, not a generated
+`000N` path; without index evidence, a 404 stays failed and does not imply a bundle slot.
 
 For the initial catalog-direct fetch, the locator is direct-only; S6 does not promote
 an absent catalog link into an envelope guess. The profile selector may separately
@@ -219,7 +227,7 @@ Catalog-only planning remains primary-only. The profile selector is binary:
 | Selector | Initial slot behavior | Identity/recovery behavior |
 |---|---|---|
 | `submitted_primary` | Fetch the catalog primary link, anchored to physical sequence 1. | Accept as submitted; do not inspect type or fetch an index. `slot_types` stays empty unless evidence is observed independently. |
-| `exact_form_with_lazy_index` | Fetch the same sequence-1 candidate. The expected statutory type is the filing form, independent of `target_role=primary`, the index primary designation, or sequence number. | For a successful direct-body response, the current `html_cover` screen is `unverifiable` and the pinned selector may fetch one index. For a primary bundle body, compare the extracted SGML `<TYPE>` with strict ASCII equality; mismatch/unverifiable type triggers that lookup. Only a unique index row with matching observed `document_type` chooses the actual physical slot. No date/name heuristic or S10 assessment selects it. |
+| `exact_form_with_lazy_index` | Fetch the same sequence-1 candidate. The expected statutory type is the filing form, independent of `target_role=primary`, the index primary designation, or sequence number. | For a successful direct-body response, the current `html_cover` screen is `unverifiable` and the pinned selector may fetch one index. For a primary bundle body, compare the extracted SGML `<TYPE>` with strict ASCII equality; mismatch/unverifiable type triggers that lookup. Only a unique index row whose observed `document_type` matches the expected form family through the shared alias registry chooses the actual physical slot. No date/name heuristic or S10 assessment selects it. |
 
 `exact_form` is dropped. The lazy selector remains an explicit S6-pinned behavior.
 HTML has no reliable SGML `<TYPE>` field, so the direct-body screen is unverifiable;

@@ -411,24 +411,25 @@ committed.
   match, and continue rejecting unsafe paths. Do not synthesize a different-CIK child
   or bundle URL merely from the accession. Record live status/redirect evidence for
   representative cases before changing the archive-CIK policy.
-- **A present `href` may not address a document.** Legacy rows can carry an accession
-  CIK-directory href with no filename or child URL while a complete-submission bundle
-  and positive sequence are available. `document_planning.matching._entry_candidate`
-  currently attempts to validate any non-empty `href` and raises before its unlinked
-  exhibit `bundle_sequence` fallback. Distinguish document URLs from directory-only or
-  otherwise unaddressable hrefs; for a profile-matched exhibit, retain the observed
-  sequence and use only the observed bundle URL as fallback. Missing bundle/sequence
-  evidence remains unresolved, not a guessed URL. Test the legacy EX-10 sequence-2/3
-  case and a same-accession alternate-CIK href.
-- **Sequence names are not target roles.** The sample contains 3,072 `EX-*`, `GRAPHIC`,
-  or `ZIP` `Document Format` rows at sequences 2 or 3. In one 8-K, `0001.txt` is the
+- **A present `href` may not address a document.** Legacy rows can carry an archive CIK
+  directory href with no filename or child URL while a complete-submission bundle and
+  positive sequence are available. S6 now recognizes only exact SEC CIK/accession
+  directory paths as non-document locators. For a profile-matched exhibit it retains
+  the observed sequence and uses the observed bundle URL, validated against the pinned
+  index URL's archive CIK; without bundle/sequence evidence it remains unresolved. Tests
+  cover numbered children `0002.txt`–`0007.txt`, directory-only fallback, absent bundle,
+  and refusal of an external directory URL. The parser's `unsafe_href` diagnostic and
+  cross-CIK live reachability still require raw-page audit evidence.
+- **Sequence names are not target roles.** In the 2,000-case review run, the analyzer
+  reports 3,105 `EX-*`, `GRAPHIC`, or `ZIP` `Document Format` rows at sequences 2 or 3;
+  overlapping run totals are not unique coverage. In one 8-K, `0001.txt` is the
   form row and `0002.txt`/`0003.txt` are EX-2.1/EX-2.2 with direct links; an inversion
   case has exhibit sequence 1 and the form row at sequence 12. Planning must match
   `document_type` to the declared target type, preserve the observed sequence, and use
   the observed direct URL or bundle sequence. Do not broaden the primary-placeholder
   allowlist (`0000.*`/`0001.*`) to treat `0002.*`/`0003.*` as primary; profile-declared
-  exhibits are separate acquisition targets. The exploratory sample found 9 sequence-1
-  exhibit/later-form cases, all from 2000–2004; it does not establish a modern-era rate.
+  exhibits are separate acquisition targets. The 2,000-case run reports 43 candidate
+  sequence-1 exhibit/later-form cases; this does not establish an era-stratified rate.
 - **Form 4 index rows expose two sequence-1 sources.** In the latest 1,000-page review
   run, 363 cases are Form 4. In 283, two `Document Format` rows both have sequence 1
   and type `4`: a display name ending in `.html` links to `xslF345X01`–`xslF345X06`/
@@ -449,11 +450,11 @@ committed.
   sequence are observed. Keep missing/unsafe locator outcomes unresolved; any 404
   recovery policy must be explicit and preserve the failed attempt rather than hiding
   bad input.
-- **Alias matching must be consistent at recovery.** S0 step 4 compares form families,
-  and S6 planning uses form aliases, but `document_acquisition.index_selection` currently
-  compares the index `document_type` to `expected_form` by exact string. Add real alias
-  rows to the audit and test the lazy selector against the same canonical form-family
-  contract before calling an alias-only row absent.
+- **Alias matching is consistent at recovery.** S6 and catalog-direct lazy index
+  selection now normalize both the expected form and observed `document_type` through
+  the shared form-family alias registry. The lazy-selector test covers the historical
+  `10-K405` alias for `10-K`; an unrelated form remains `not_filed` or
+  `required_missing` by request optionality.
 - **Separate locator shape from reachability.** Display filenames can differ from the
   href basename for rendered XML/HTML pairs. Do not use basename equality alone as a
   404 or bad-link verdict. For selected suspicious rows, compare the raw captured href,

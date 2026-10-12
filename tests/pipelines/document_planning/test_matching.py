@@ -177,6 +177,7 @@ def _inventory_row(
         accession_row={
             "bundle_url": bundle_url,
             "bundle_size": 67488,
+            "filing_cik": "1",
             "index_url": _INDEX_URL,
         },
         entry_row=entry,
@@ -304,6 +305,119 @@ def test_exhibit_keeps_the_index_href_when_primary_name_is_a_stub() -> None:
     assert rows[0]["retrieval_mode"] == "direct_url"
     assert rows[0]["target_url"] == exhibit_url
     assert rows[0]["sequence"] is None
+
+
+@pytest.mark.parametrize("sequence", range(2, 8))
+def test_numbered_exhibits_keep_the_observed_child_link(sequence: int) -> None:
+    filename = f"{sequence:04d}.txt"
+    observed_url = f"{_ARCHIVE_ROOT}/{filename}"
+    entry = {
+        "entry_id": f"entry-{sequence}",
+        "table_kind": "document_format",
+        "document_type": "EX-10",
+        "filename": filename,
+        "href": f"/Archives/edgar/data/898015/000089968100000405/{filename}",
+        "archive_url": observed_url,
+        "sequence": sequence,
+        "byte_size": 2000,
+    }
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(entry, bundle_url=_BUNDLE_URL)],
+        (ProfileTarget("exhibit", "EX-10", True, f"exhibit:{sequence}"),),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["retrieval_mode"] == "direct_url"
+    assert rows[0]["target_url"] == observed_url
+    assert rows[0]["sequence"] is None
+
+
+def test_directory_only_href_uses_advertised_bundle_and_observed_sequence() -> None:
+    entry = {
+        "entry_id": "entry-directory",
+        "table_kind": "document_format",
+        "document_type": "EX-10",
+        "filename": None,
+        "href": "/Archives/edgar/data/898015/",
+        "archive_url": None,
+        "sequence": 2,
+        "byte_size": 2000,
+    }
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(entry, bundle_url=_BUNDLE_URL)],
+        (ProfileTarget("exhibit", "EX-10", True, "exhibit:EX-10"),),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["retrieval_mode"] == "bundle_sequence"
+    assert rows[0]["target_url"] == _BUNDLE_URL
+    assert rows[0]["sequence"] == 2
+
+
+def test_directory_only_href_without_bundle_stays_unresolved() -> None:
+    entry = {
+        "entry_id": "entry-directory",
+        "table_kind": "document_format",
+        "document_type": "EX-10",
+        "filename": None,
+        "href": "/Archives/edgar/data/898015/",
+        "archive_url": None,
+        "sequence": 2,
+        "byte_size": 2000,
+    }
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(entry)],
+        (ProfileTarget("exhibit", "EX-10", True, "exhibit:EX-10"),),
+    )
+
+    assert rows[0]["status"] == "unresolved"
+    assert rows[0]["status_reason"] == "no_usable_retrieval_locator"
+    assert rows[0]["target_url"] is None
+
+
+def test_directory_only_primary_does_not_widen_placeholder_policy() -> None:
+    entry = {
+        "entry_id": "entry-primary-directory",
+        "table_kind": "document_format",
+        "document_type": "10-Q",
+        "filename": None,
+        "href": "/Archives/edgar/data/898015/",
+        "archive_url": None,
+        "sequence": 1,
+        "byte_size": 2000,
+    }
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(entry, bundle_url=_BUNDLE_URL)],
+        (ProfileTarget("primary", "10-Q", True, "primary"),),
+    )
+
+    assert rows[0]["status"] == "unresolved"
+    assert rows[0]["status_reason"] == "no_usable_retrieval_locator"
+    assert rows[0]["target_url"] is None
+
+
+def test_directory_only_href_does_not_enable_external_href_fallback() -> None:
+    entry = {
+        "entry_id": "entry-external",
+        "table_kind": "document_format",
+        "document_type": "EX-10",
+        "filename": None,
+        "href": "https://example.com/Archives/edgar/data/898015/",
+        "archive_url": None,
+        "sequence": 2,
+        "byte_size": 2000,
+    }
+
+    with pytest.raises(TargetMatchingError, match="unsafe SEC archive URL"):
+        inventory_rows(
+            "plan-1",
+            [_inventory_row(entry, bundle_url=_BUNDLE_URL)],
+            (ProfileTarget("exhibit", "EX-10", True, "exhibit:EX-10"),),
+        )
 
 
 def test_inventory_locator_uses_index_archive_cik_not_filing_cik() -> None:

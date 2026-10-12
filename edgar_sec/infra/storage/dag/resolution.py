@@ -45,10 +45,10 @@ def compile_virtual_views(
     root = Path(snapshots_root)
     view_names: dict[str, str] = {}
 
-    for rank, node in enumerate(lineage.nodes):
-        pass  # rank is node index in topological order
-
-    for spec in specs:
+    ordered_specs = sorted(
+        specs, key=lambda spec: 1 if spec.merge_strategy == "scoped_mask" else 0
+    )
+    for spec in ordered_specs:
         table_name = sql_identifier(spec.name)
         raw_name = sql_identifier(f"_raw_{spec.name}")
         active_name = sql_identifier(f"active_{spec.name}")

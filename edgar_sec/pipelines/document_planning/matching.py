@@ -12,6 +12,7 @@ from edgar_sec.domain.document.path_facts import PLACEHOLDER_PRIMARY_FILENAMES
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import (
+    SEC_ARCHIVE_BASE,
     archives_url,
     parse_archive_url,
     validate_archive_url,
@@ -287,6 +288,7 @@ def _entry_candidate(
     archive_url = str(entry.get("archive_url") or "").strip()
     href = str(entry.get("href") or "").strip()
     bundle_url = str(accession_row.get("bundle_url") or "").strip()
+    directory_href = False
     if target.role == "primary" and _is_placeholder_primary_path(
         str(entry.get("filename") or "")
     ):
@@ -322,6 +324,13 @@ def _entry_candidate(
     for observed in (archive_url, href):
         if not observed:
             continue
+        if observed == href and _is_directory_only_archive_locator(observed, accession):
+            if archive_url:
+                raise TargetMatchingError(
+                    f"inventory archive_url and href disagree for {entry_id}"
+                )
+            directory_href = True
+            continue
         resolved = observed
         if not urlsplit(observed).scheme:
             if not bundle_url:
@@ -347,13 +356,11 @@ def _entry_candidate(
             None,
             size if isinstance(size, int) and not isinstance(size, bool) else None,
         )
-    if archive_url or href:
+    if archive_url or (href and not directory_href):
         raise TargetMatchingError(f"unsafe inventory locator for {entry_id}")
     sequence = entry.get("sequence")
     if target.role == "exhibit" and sequence is not None and bundle_url:
-        safe_bundle = _validated_bundle_url(
-            bundle_url, accession, accession_row.get("filing_cik")
-        )
+        safe_bundle = _validated_bundle_url(bundle_url, accession, expected_archive_cik)
         if not isinstance(sequence, int) or isinstance(sequence, bool) or sequence < 1:
             raise TargetMatchingError(f"invalid bundle sequence for {entry_id}")
         size = entry.get("byte_size")
@@ -365,6 +372,39 @@ def _entry_candidate(
             size if isinstance(size, int) and not isinstance(size, bool) else None,
         )
     return _Candidate(entry_id, None, "none", None, None, "no_usable_retrieval_locator")
+
+
+def _is_directory_only_archive_locator(locator: str, accession: str) -> bool:
+    try:
+        parts = urlsplit(locator)
+        port = parts.port
+    except ValueError:
+        return False
+    if (
+        parts.query
+        or parts.fragment
+        or parts.username is not None
+        or parts.password is not None
+        or port is not None
+        or (parts.scheme and parts.scheme.casefold() != "https")
+        or (parts.netloc and parts.hostname != urlsplit(SEC_ARCHIVE_BASE).hostname)
+        or (not parts.scheme and parts.netloc)
+    ):
+        return False
+    path = parts.path
+    if not path.startswith("/") or any(char in path for char in ("%", "\\")):
+        return False
+    if "//" in path or any(segment in {".", ".."} for segment in path.split("/")):
+        return False
+    segments = [segment for segment in path.split("/") if segment]
+    if len(segments) == 4:
+        return segments[:3] == ["Archives", "edgar", "data"] and segments[3].isdigit()
+    if len(segments) != 5 or segments[:3] != ["Archives", "edgar", "data"]:
+        return False
+    return (
+        segments[3].isdigit()
+        and segments[4] == AccessionNumber.from_any(accession).normalized
+    )
 
 
 def _package_row(

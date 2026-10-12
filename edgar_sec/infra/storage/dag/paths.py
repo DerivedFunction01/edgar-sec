@@ -33,6 +33,10 @@ class DAGPaths:
         return self.root / CATALOG_DB_NAME
 
     @property
+    def saved_queries_root(self) -> Path:
+        return self.root.parent / "console" / "queries"
+
+    @property
     def parts_root(self) -> Path:
         return self.root / "parts"
 

@@ -48,10 +48,12 @@ class LineageChain:
         return None
 
 
-def walk_lineage(snapshots_root: Path | str, tip_id: str) -> LineageChain:
+def walk_lineage(
+    snapshots_root: Path | str, tip_id: str, *, read_only: bool = False
+) -> LineageChain:
     """Traverse DAG from tip backward, returning topological linear order."""
     root = Path(snapshots_root)
-    catalog = DAGCatalog(root)
+    catalog = DAGCatalog(root, read_only=read_only)
 
     audit = catalog.audit_graph()
     if audit.get("cycles"):

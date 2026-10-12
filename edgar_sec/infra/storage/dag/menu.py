@@ -327,6 +327,23 @@ def _action_publish_staged(config: DAGMenuConfig) -> None:
         cmd_publish(root, chosen.value)
 
 
+def _action_query_snapshot(config: DAGMenuConfig) -> None:
+    from .console import SnapshotQueryError, run_snapshot_console
+
+    specs = config.resolve_specs()
+    if not specs:
+        print("Snapshot querying requires relation specs.")
+        return
+    try:
+        run_snapshot_console(
+            config.resolve_root(),
+            specs,
+            page_size=config.default_page_size or DEFAULT_PAGE_SIZE,
+        )
+    except (FileNotFoundError, SnapshotQueryError) as exc:
+        print(f"Cannot open current snapshot: {exc}")
+
+
 def create_dag_menu(config: DAGMenuConfig) -> tuple[MenuAction, ...]:
     """Construct MenuAction tuple for interactive DAG management."""
     root = config.resolve_root()
@@ -350,6 +367,13 @@ def create_dag_menu(config: DAGMenuConfig) -> tuple[MenuAction, ...]:
         )
     )
     actions.append(menu_action("Quick status & metrics", lambda: cmd_status(root)))
+    if config.specs is not None:
+        actions.append(
+            menu_action(
+                "Read-only SQL console for current snapshot",
+                lambda: _action_query_snapshot(config),
+            )
+        )
     actions.append(
         menu_action(
             "Checkout / switch tip (pick-list: branches, tags, snapshots)",

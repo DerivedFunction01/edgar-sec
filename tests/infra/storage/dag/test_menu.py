@@ -194,5 +194,5 @@ def test_create_dag_menu_includes_compact_when_specs_present(
     menu = create_dag_menu(config)
     labels = [action.label for action in menu]
     assert any("Compact" in label for label in labels)
-    # Should be 10 items: publish + 8 base + compact
-    assert len(menu) == 10
+    assert any("SQL console" in label for label in labels)
+    assert len(menu) == 11
