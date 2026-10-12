@@ -4,8 +4,9 @@
 
 - Cross-cutting S7 slice after the CLI/fixture lifecycle in
   [S7a](S7a_inventory_cli.md).
-- Status: review-artifact generation and structural inert previews are implemented;
-  semantic keyed parser-run comparison remains incomplete.
+- Status: review-artifact generation, structural inert previews, and inventory-specific
+  analysis of existing parsed runs are implemented; general semantic keyed parser-run
+  comparison remains incomplete.
 - Depends on S7a, S2's fixture reader, and S3's typed parser contract.
 - Enables iterative S3 parser review; S0 evidence and S0-selected real fixtures arrive
   in parallel and are required for final parser acceptance.
@@ -30,6 +31,9 @@ inventory review generate --fixture <id> --output <new-directory>
     [--accession <accession> ...] [--limit <n>] [--workers <n>] [--json]
 
 inventory review compare --base <review-run> --new <review-run> [--output <new-directory>]
+
+inventory review analyze --run-id <review-run> [--run-id <review-run> ...]
+    [--accession <accession> ...] [--output <new-directory>] [--json]
 ```
 
 `review generate` selects captured accession/key pairs in deterministic accession
@@ -86,13 +90,20 @@ the local fixture store and make zero HTTP requests.
 
 ## Comparison status
 
-The available shared `review compare` command compares generated review directories.
-Its inventory adapter uses set-based CSV row comparison and JSON observation diffs. It
-does not enforce identical fixture/page inputs or report parser-entry changes keyed by
-`(accession, table_kind, row_ordinal)`. Bundle metadata, status, diagnostic, and
-field-level changes are not yet presented as the semantic diff described by the target
-contract below. Parser fingerprints identify implementation semantics; S3 owns and
-increments `PARSER_FINGERPRINT` when they change.
+The shared `review compare` command remains a pairwise generated-directory diff. The
+inventory-specific `review analyze` command consumes existing run manifests,
+`entries.csv`, and `observations.json`. It uses the fixture manifest and contributing
+catalog-plan target rows only to recover each filing's form; it does not open fixture
+response bodies, replay fixtures, reparse HTML, or make network requests. It reports
+index link shapes, sequence/exhibit candidates, alternative Form 4 primary paths, and
+parsed-row changes keyed by input identity and `(table_kind, row_ordinal)`. The first
+listed run is the comparison baseline. Runs with different request URLs or response
+digests are reported as different inputs, not parser-row changes. It does not establish
+whether a child URL is live or which alternate primary representation policy should
+choose.
+
+Parser fingerprints identify implementation semantics; S3 owns and increments
+`PARSER_FINGERPRINT` when they change.
 
 ## Tests
 

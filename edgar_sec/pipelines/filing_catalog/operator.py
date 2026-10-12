@@ -230,12 +230,7 @@ def _draft_path(paths: FilingCatalogPaths, name: str) -> Path:
 
 
 def _write_policy_draft(paths: FilingCatalogPaths, catalog: str) -> Path:
-    """Write an all-forms draft for ``catalog`` and return its path.
-
-    Derived from the catalog's own forms so an operator edits rather than authors.
-    Dates and era bands stay unset: both resolve at plan time. The destination is
-    append-only (see ``resolve_draft_path``), so a repeat never overwrites the first.
-    """
+    """Write an all-forms draft for ``catalog`` and return its path."""
     policy = auto_policy(catalog, paths)
     stem = _draft_path(paths, policy.corpus_id).stem
     destination = resolve_draft_path(paths.policies_root, stem)

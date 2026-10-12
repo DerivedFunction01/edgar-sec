@@ -1,5 +1,4 @@
-"""Directory layout for the filing-catalog pipeline.
-"""
+"""Directory layout for the filing-catalog pipeline."""
 
 from __future__ import annotations
 

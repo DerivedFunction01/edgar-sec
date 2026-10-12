@@ -255,6 +255,31 @@ Policy authors opt into exhibit-like coverage with a floor on
 overall `base_content_units` budget continues to count unique locators; any floor
 shortfall remains visible in `underfilled_floors`.
 
+**Composites with primary_exhibit_like:** A policy can declare composite strata that
+require a minimum number of locators satisfying specific filter combinations. The
+`primary_exhibit_like` dimension is supported in composite filters, enabling
+requirements like "at least 20 amendment filings with exhibit-like primary documents."
+To add composites to a policy corpus:
+
+```json
+{
+  "composites": [
+    {
+      "filters": {
+        "form": "10-K/A",
+        "primary_exhibit_like": true
+      },
+      "min": 20
+    }
+  ]
+}
+```
+
+The feasibility checker counts locators (not accessions) in the composite stratum;
+if the count falls short of `min`, the feasibility report marks it infeasible.
+Composites are processed after floors in selection, drawing from locators not yet
+assigned.
+
 The deterministic scope's date selection is a *date selection* over `report_date`:
 `--dates` takes one comma-separated union of absolute intervals and recurring
 calendar periods. The grammar, its canonical form, and its persisted

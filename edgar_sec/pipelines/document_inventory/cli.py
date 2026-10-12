@@ -30,6 +30,7 @@ from .commands.publish import cmd_publish
 from .commands.review import cmd_review_artifacts
 from .commands.run import cmd_run
 from .commands.status import cmd_status
+from .commands.analyze import cmd_review_analyze
 
 __all__ = [
     "build_parser",
@@ -133,7 +134,32 @@ def build_parser() -> argparse.ArgumentParser:
     from edgar_sec.infra.storage.review.cli import attach_review_subparsers
     from .review_adapter import InventoryReviewAdapter
 
-    attach_review_subparsers(commands, InventoryReviewAdapter())
+    review_commands = attach_review_subparsers(commands, InventoryReviewAdapter())
+    analyze_cmd = review_commands.add_parser(
+        "analyze", help="analyze existing review runs without network access"
+    )
+    analyze_cmd.add_argument(
+        "--run-id",
+        action="append",
+        dest="run_ids",
+        required=True,
+        help="existing review run identifier (repeatable)",
+    )
+    analyze_cmd.add_argument(
+        "--accession",
+        action="append",
+        dest="accessions",
+        help="restrict analysis to accession (repeatable)",
+    )
+    analyze_cmd.add_argument("--output", help="new or empty analysis directory")
+    analyze_cmd.add_argument(
+        "--artifacts",
+        dest="artifacts_root",
+        default="",
+        help="artifacts root override",
+    )
+    analyze_cmd.add_argument("--json", action="store_true", help="emit JSON output")
+    analyze_cmd.set_defaults(func=cmd_review_analyze)
 
     dag_parser = attach_dag_subparser(
         commands,

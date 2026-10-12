@@ -1,32 +1,23 @@
-# Parser review artifacts
+# review_artifacts
 
-Builds offline, parser-fingerprinted evidence from captured index-page fixtures.
+## Purpose
 
-| Module | Responsibility |
-|---|---|
-| `builder.py` | Bounded case selection, parsing, output, and manifest commit |
-| `sanitizer.py` | Structural inert HTML reconstruction |
-| `paths.py` | Review-run and response-case output layout |
-| `models.py` | Review run summary records |
+This package owns the persisted review-run output produced from captured index pages
+and the offline analysis of those outputs. It keeps run-level integrity and table
+findings close to the manifest, entry rows, and observation records they consume.
 
 ## Contracts
 
-Each captured response is digest-checked and processed independently. Source previews
-are rebuilt without source attributes or active/resource subtrees. Failed pages retain
-status and diagnostics and never receive an `entries.csv`. Case output is atomically
-renamed, and manifest rows are committed in deterministic selection order.
-
-## Usage examples
-
-`inventory review-artifacts` is wired by the document-inventory operator.
-
-
- Artifact layout
-
-- `{root}/.staging/` - staging directory
-- `{root}/cases/{accession}--{key_digest}/` - case output directories
-- `{root}/manifest.jsonl` - manifest file
+- **Output integrity**: Analysis verifies digests for each parsed output file it reads.
+- **No replay or network**: Analysis consumes stored manifests, CSV rows, observations,
+  and local form provenance; it never reparses source HTML or fetches a document URL.
+- **Acquisition evidence**: URL findings describe observed path shapes and routes, not
+  HTTP reachability or authorization to acquire every exhibit.
+- **Determinism**: Findings and comparisons use stable run, input, table, and row keys.
 
 ## Deliberate gaps
 
-Parser-run diffing and review of snapshot/acquisition outputs remain downstream work.
+- **Child reachability**: The analyzer does not issue HTTP requests, so it cannot prove
+  that a document or bundle URL is live or would return a non-404 response.
+- **Source-table verification**: It compares persisted parsed tables across runs; it
+  does not reconstruct rows from raw or inert HTML.

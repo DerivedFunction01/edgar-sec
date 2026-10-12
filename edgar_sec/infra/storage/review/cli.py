@@ -21,10 +21,11 @@ from .paths import (
 def attach_review_subparsers(
     subparsers: argparse._SubParsersAction,
     adapter: ReviewAdapter,
-) -> None:
+) -> argparse._SubParsersAction:
     """Attach 'review' and 'fixture' subparsers to the parent command parser."""
-    attach_review_artifact_subparsers(subparsers, adapter)
+    review_commands = attach_review_artifact_subparsers(subparsers, adapter)
     _attach_fixture_commands(subparsers, adapter)
+    return review_commands
 
 
 def attach_review_artifact_subparsers(
@@ -32,9 +33,9 @@ def attach_review_artifact_subparsers(
     adapter: ReviewArtifactAdapter,
     *,
     case_filters: bool = False,
-) -> None:
+) -> argparse._SubParsersAction:
     """Attach only shared review generation and comparison commands."""
-    _attach_review_commands(subparsers, adapter, case_filters=case_filters)
+    return _attach_review_commands(subparsers, adapter, case_filters=case_filters)
 
 
 def _attach_review_commands(
@@ -42,10 +43,10 @@ def _attach_review_commands(
     adapter: ReviewArtifactAdapter,
     *,
     case_filters: bool,
-) -> None:
+) -> argparse._SubParsersAction:
     review_parser = subparsers.add_parser(
         "review",
-        help="generate review artifacts and compare review runs",
+        help="generate and compare review runs with pipeline-specific commands",
     )
     commands = review_parser.add_subparsers(dest="review_command", required=True)
 
@@ -101,6 +102,7 @@ def _attach_review_commands(
     )
     cmp_cmd.add_argument("--json", action="store_true", help="emit JSON output")
     cmp_cmd.set_defaults(func=lambda args: _cmd_compare(args, adapter))
+    return commands
 
 
 def _attach_fixture_commands(

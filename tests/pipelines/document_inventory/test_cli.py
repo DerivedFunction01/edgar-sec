@@ -96,6 +96,20 @@ def test_parser_exposes_fixture_and_review_commands() -> None:
         ).command
         == "review"
     )
+    analyze = parser.parse_args(
+        [
+            "review",
+            "analyze",
+            "--run-id",
+            "run-a",
+            "--run-id",
+            "run-b",
+            "--accession",
+            "0000123456-12-000001",
+        ]
+    )
+    assert analyze.run_ids == ["run-a", "run-b"]
+    assert analyze.accessions == ["0000123456-12-000001"]
 
 
 def test_fixture_commands_require_ids() -> None:

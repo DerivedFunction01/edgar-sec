@@ -36,7 +36,7 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 | `project` | project a published catalog plan into a resumable run | `--catalog-plan`, `[--base-snapshot-id]`, `[--branch]`, `[--explicit-refresh]`, `[--chunk-size]`, `[--artifacts]`, `[--json]` |
 | `publish` | publish a completed inventory run to a DAG branch | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--artifacts]`, `[--json]` |
 | `query` | query active document inventory snapshots | `[--accession]`, `[--form]`, `[--filing-cik]`, `[--source-cik]`, `[--limit]`, `[--artifacts]`, `[--json]` |
-| `review` | generate review artifacts and compare review runs | — |
+| `review` | generate and compare review runs with pipeline-specific commands | — |
 | `run` | fetch and parse pending index pages | `--run-id`, `[--retry-failures]`, `[--workers]`, `[--confirm-stale-lock]`, `[--no-progress]`, `[--artifacts]`, `[--json]` |
 | `status` | inspect projected inventory runs | `[--run-id]`, `[--artifacts]`, `[--json]` |
 <!-- AUTOGEN:COMMANDS:END -->
@@ -58,6 +58,9 @@ python run.py inventory fixture create --fixture my-fixture --catalog-plan publi
 
 # Generate parser review artifacts without the interactive progress bar
 python run.py inventory review generate --fixture my-fixture --output ./review-run --no-progress
+
+# Analyze existing parsed review runs without replaying or fetching pages
+python run.py inventory review analyze --run-id run-before --run-id run-after --json
 
 # Export a projected run, execute the assigned bundle on another machine, then import it
 python run.py inventory distrib commands --work-id run-2024-01-15

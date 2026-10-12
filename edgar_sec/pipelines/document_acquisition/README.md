@@ -49,11 +49,11 @@ The CLI implements project, status, run, and fixture tracks. Capture and replay 
 <!-- AUTOGEN:COMMANDS:START -->
 | Subcommand | Description | Arguments |
 | :--- | :--- | :--- |
-| `fixture` | manage S9 response fixtures (`create`, `fill`, `list`, `replay`) | — |
+| `fixture` | manage S9 response fixtures | — |
 | `process` | process acquired target bodies | `--run-id`, `[--workers]`, `[--artifacts]`, `[--json]` |
 | `project` | project a published S6 target plan | `--plan-id`, `[--artifacts]`, `[--json]` |
 | `publish` | publish an approved S11 snapshot | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--artifacts]`, `[--json]` |
-| `review` | generate and compare fixture-backed review artifacts (`generate`, `compare`) | — |
+| `review` | generate and compare review runs with pipeline-specific commands | — |
 | `run` | acquire pending S9 target bodies | `--run-id`, `[--retry-failures]`, `[--retain-response-evidence]`, `[--workers]`, `[--max-response-bytes]`, `[--confirm-stale-lock]`, `[--artifacts]`, `[--json]` |
 | `snapshot` | inspect S11 status and evidence | — |
 | `status` | inspect resumable acquisition runs | `[--run-id]`, `[--target-id]`, `[--artifacts]`, `[--json]` |
@@ -84,11 +84,6 @@ python run.py acquisition review compare --base ./review-runs/run-BASE --new ./r
 │   │       ├── fixture.sqlite
 │   │       └── manifest.json
 │   ├── review-runs/
-│   │   └── {review_id}/
-│   │       ├── cases/
-│   │       │   └── {accession}--{case_digest}/
-│   │       │       └── processing-review.json
-│   │       └── manifest.jsonl
 │   └── snapshots/
 │       └── {snapshot_id}/
 ├── document_planning/

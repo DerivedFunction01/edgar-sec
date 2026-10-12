@@ -92,7 +92,8 @@ def test_cli_dispatches_generate_and_fixture_commands(tmp_path: Path) -> None:
     parser = argparse.ArgumentParser()
     subs = parser.add_subparsers(dest="command", required=True)
     adapter = RecordingAdapter()
-    attach_review_subparsers(subs, adapter)
+    review_commands = attach_review_subparsers(subs, adapter)
+    assert {"generate", "compare"} == set(review_commands.choices)
 
     args = parser.parse_args(
         [

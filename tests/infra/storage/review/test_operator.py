@@ -10,6 +10,7 @@ from edgar_sec.infra.storage.review.operator import (
     ReviewMenuConfig,
     run_review_menu,
 )
+from edgar_sec.infra.storage.review.paths import review_runs_root
 
 
 class RecordingAdapter:
@@ -169,6 +170,25 @@ def test_compare_selects_runs_with_smart_defaults_and_renders_summary(
     config = ReviewMenuConfig(adapter=adapter, artifacts_root=tmp_path)
     assert run_review_menu(config) == 0
     assert adapter.calls == []
+
+
+def test_analyze_selects_a_review_run_and_calls_wrapper(
+    tmp_path: Path, monkeypatch
+) -> None:
+    adapter = RecordingAdapter()
+    runs_root = review_runs_root(tmp_path, adapter.dataset_name)
+    (runs_root / "run-20260101_000000").mkdir(parents=True)
+    analyzed: list[str] = []
+    answers = iter(["6", "1", "0"])
+    monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
+
+    config = ReviewMenuConfig(
+        adapter=adapter,
+        artifacts_root=tmp_path,
+        analyze_action=analyzed.append,
+    )
+    assert run_review_menu(config) == 0
+    assert analyzed == ["run-20260101_000000"]
 
 
 def test_review_menu_switch_plan(

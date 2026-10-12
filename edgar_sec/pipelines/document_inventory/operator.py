@@ -250,6 +250,19 @@ def _action_distrib() -> None:
     run_distrib_menu(config)
 
 
+def _action_analyze_review_run(run_id: str) -> None:
+    cli_main(
+        [
+            "review",
+            "analyze",
+            "--run-id",
+            run_id,
+            "--artifacts",
+            _root(),
+        ]
+    )
+
+
 def _action_review() -> None:
     from edgar_sec.infra.storage.review.operator import (
         ReviewMenuConfig,
@@ -264,6 +277,7 @@ def _action_review() -> None:
             adapter=InventoryReviewAdapter(),
             plans_root=plans_root,
             artifacts_root=Path(_root()),
+            analyze_action=_action_analyze_review_run,
             title="Document Inventory Fixtures & Review Console",
         )
     )
@@ -286,7 +300,7 @@ def build_operator_menu() -> tuple[MenuAction, ...]:
             key="p",
         ),
         menu_action(
-            "Fixtures and review console (create, fill, list, generate, compare)",
+            "Fixtures and review console (create, fill, list, generate, compare, analyze)",
             _action_review,
             key="f",
         ),

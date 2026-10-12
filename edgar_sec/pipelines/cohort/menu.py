@@ -94,6 +94,43 @@ def pick_cohort(catalog: object) -> str | None:
     return chosen.value if chosen is not None else None
 
 
+def pick_family_index(
+    catalog: object, universe_cohort_id: str | None = None
+) -> str | None:
+    """Select a family index path from registered entries."""
+    from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+
+    items: list[PickItem] = []
+    offset = 0
+    while True:
+        records = catalog.list_family_indices(
+            universe_cohort_id=universe_cohort_id, limit=500, offset=offset
+        )
+        for record in records:
+            label = (
+                f"{record.family_index_id[:16]}  "
+                f"{record.universe_cohort_id}  "
+                f"{record.dataset_path}"
+            )
+            items.append(
+                PickItem(
+                    key=record.family_index_id,
+                    label=label,
+                    value=record.dataset_path,
+                )
+            )
+        if len(records) < 500:
+            break
+        offset += len(records)
+    if not items:
+        return None
+    chosen = prompt_paginated_choice(items, prompt_label="Select family index")
+    if chosen is None:
+        return None
+    paths = resolve_cohort_paths()
+    return str(paths.resolve_relative_path(chosen.value))
+
+
 def pick_workspace_variable(workspace: object) -> str | None:
     items = [
         PickItem(
@@ -369,7 +406,15 @@ def _sample() -> None:
         == "2"
     ):
         arguments.append("--group-family")
-        arguments.extend(("--family-index", prompt_text("Family-index Parquet path")))
+        catalog = CohortCatalog(resolve_cohort_paths())
+        universe_id = catalog.get_active_source_pointer("cik_lookup")
+        family_index_path = pick_family_index(catalog, universe_id)
+        if family_index_path is None:
+            print(
+                "No family index found. Use 'Assign company families' to publish one."
+            )
+            return
+        arguments.extend(("--family-index", family_index_path))
     _run_cli(*arguments)
 
 

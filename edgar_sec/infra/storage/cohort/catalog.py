@@ -739,6 +739,41 @@ class CohortCatalog:
             ).fetchone()
             return str(row["active_snapshot_id"]) if row is not None else None
 
+    def list_family_indices(
+        self,
+        *,
+        universe_cohort_id: str | None = None,
+        limit: int = 100,
+        offset: int = 0,
+    ) -> list[FamilyIndexRecord]:
+        """List family index records, optionally filtered by universe cohort."""
+        if limit < 0 or offset < 0:
+            raise ValueError("limit and offset must be non-negative")
+        with self._connection() as connection:
+            if universe_cohort_id is not None:
+                rows = connection.execute(
+                    "SELECT * FROM active_family_indices WHERE universe_cohort_id = ? "
+                    "ORDER BY pinned_at DESC LIMIT ? OFFSET ?",
+                    (universe_cohort_id, limit, offset),
+                ).fetchall()
+            else:
+                rows = connection.execute(
+                    "SELECT * FROM active_family_indices ORDER BY pinned_at DESC "
+                    "LIMIT ? OFFSET ?",
+                    (limit, offset),
+                ).fetchall()
+            return [
+                FamilyIndexRecord(
+                    universe_cohort_id=row["universe_cohort_id"],
+                    family_index_id=row["family_index_id"],
+                    rules_fingerprint=row["rules_fingerprint"],
+                    dataset_path=row["dataset_path"],
+                    dataset_sha256=row["dataset_sha256"],
+                    pinned_at=row["pinned_at"],
+                )
+                for row in rows
+            ]
+
 
 __all__ = [
     "CohortActiveSourceError",

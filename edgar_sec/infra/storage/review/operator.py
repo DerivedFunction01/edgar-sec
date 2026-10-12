@@ -35,6 +35,7 @@ class ReviewMenuConfig:
     plan_id: str | None = None
     plans_root: Path | str | None = None
     artifacts_root: Path | str | Callable[[], Path] | None = None
+    analyze_action: Callable[[str], None] | None = None
     title: str = "Review Artifacts & Fixtures Console"
 
     def resolve_root(self) -> Path:
@@ -248,6 +249,32 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         )
         print(ReviewPaths(diff_dir).summary_file.read_text(encoding="utf-8"))
 
+    def _action_analyze() -> None:
+        if config.analyze_action is None:
+            return
+        runs = []
+        if review_root.is_dir():
+            runs = sorted(
+                [
+                    p
+                    for p in review_root.iterdir()
+                    if p.is_dir() and not is_diff_run_dir(p)
+                ],
+                key=lambda p: p.stat().st_mtime,
+                reverse=True,
+            )
+        if not runs:
+            print(f"No review runs found under {review_root}.")
+            return
+        items = [PickItem(key=run.name, label=run.name, value=run) for run in runs]
+        chosen = prompt_paginated_choice(
+            items,
+            default=items[0],
+            prompt_label="Select review run to analyze",
+        )
+        if chosen is not None:
+            config.analyze_action(chosen.key)
+
     def _action_switch_plan() -> None:
         nonlocal session_plan
         if not config.plans_root:
@@ -276,6 +303,10 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         menu_action("Generate parser review artifacts from fixture", _action_generate),
         menu_action("Compare two review runs (diff & summary)", _action_compare),
     ]
+    if config.analyze_action is not None:
+        actions.append(
+            menu_action("Analyze an existing review run (offline)", _action_analyze)
+        )
     if config.plans_root:
         actions.append(menu_action("Switch active plan", _action_switch_plan, key="s"))
 
