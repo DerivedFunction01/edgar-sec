@@ -13,7 +13,7 @@ from urllib.parse import quote
 
 import pyarrow as pa
 
-from edgar_sec.domain.document.route import DocumentRoute
+from edgar_sec.domain.document.route import DocumentRoute, document_route
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import validate_archive_url
 from edgar_sec.foundation.hashing import is_sha256_hex_digest
@@ -30,6 +30,9 @@ from edgar_sec.pipelines.document_acquisition.processing_models import (
     OperationRequest,
     ProcessingRequest,
     ProcessingResult,
+)
+from edgar_sec.pipelines.document_acquisition.schemas import (
+    validate_selected_filename,
 )
 from edgar_sec.pipelines.document_acquisition.projection_models import (
     ProcessingResultProjection,
@@ -146,10 +149,15 @@ def _validate_work_target(request: ProcessingRequest, row: dict[str, object]) ->
         raise ResultProjectionError("processing request differs from work order")
     if row["retrieval_mode"] not in {"direct_url", "bundle_sequence"}:
         raise ResultProjectionError("work-order target is not processable")
-    if row["retrieval_mode"] == "bundle_sequence":
-        raise ResultProjectionError(
-            "bundle result projection requires committed selected-filename evidence"
-        )
+    try:
+        selected_filename = validate_selected_filename(request.selected_filename)
+        body_filename = validate_selected_filename(request.body.selected_filename)
+    except ValueError as error:
+        raise ResultProjectionError("selected filename evidence is invalid") from error
+    if selected_filename != body_filename:
+        raise ResultProjectionError("selected filename differs from S9 handoff")
+    if row["retrieval_mode"] == "bundle_sequence" and selected_filename is None:
+        raise ResultProjectionError("bundle target has no selected-filename evidence")
     try:
         target = validate_archive_url(str(row["target_url"]), accession)
     except ValueError as error:
@@ -381,6 +389,11 @@ def _project_target(
         raise ResultProjectionError("processing request body differs from S9 handoff")
     if request.selected_filename != verified.selected_filename:
         raise ResultProjectionError("selected filename differs from S9 handoff")
+    if request.selected_filename is not None and (
+        result.route != document_route(request.selected_filename)
+        or effective_path != request.selected_filename
+    ):
+        raise ResultProjectionError("processing route differs from selected document")
     source_path = _relative_staging_path(verified.path, paths, run_id)
     return ProjectedTarget(
         target_id=request.target_id,

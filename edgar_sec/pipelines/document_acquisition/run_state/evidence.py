@@ -22,7 +22,7 @@ _ATTEMPT_COLUMNS = """attempt_id, target_id, attempt_number, attempt_kind, sourc
     requested_url, outcome, retryable, error_code, http_status, final_url,
     started_at_utc, finished_at_utc, source_sha256, source_byte_size,
     source_body_relative_path, selected_sha256, selected_byte_size,
-    selected_body_relative_path"""
+    selected_body_relative_path, selected_filename"""
 _GET_ATTEMPT = (
     f"SELECT {_ATTEMPT_COLUMNS} FROM attempts WHERE target_id = ? AND attempt_id = ?"
 )

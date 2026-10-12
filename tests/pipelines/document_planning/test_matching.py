@@ -147,7 +147,9 @@ def test_catalog_numbered_primary_constructs_accession_prefixed_child(
     target = ProfileTarget("primary", "primary", False, "primary:primary")
     rows = catalog_only_rows(
         "plan-1",
-        _scope(None, source_cik="898015", primary_document=filename, accession=_ACCESSION),
+        _scope(
+            None, source_cik="898015", primary_document=filename, accession=_ACCESSION
+        ),
         (target,),
     )
 
@@ -155,7 +157,9 @@ def test_catalog_numbered_primary_constructs_accession_prefixed_child(
     assert rows[0]["target_url"] == f"{_ARCHIVE_ROOT}/{_ACCESSION}-{filename}"
 
 
-def test_catalog_numbered_primary_accepts_observed_accession_prefixed_archive_url() -> None:
+def test_catalog_numbered_primary_accepts_observed_accession_prefixed_archive_url() -> (
+    None
+):
     target = ProfileTarget("primary", "primary", False, "primary:primary")
     url = f"{_ARCHIVE_ROOT}/{_ACCESSION}-0001.txt"
     rows = catalog_only_rows(
@@ -413,13 +417,14 @@ def test_numbered_exhibits_keep_the_observed_child_link(
     sequence: int, extension: str
 ) -> None:
     filename = f"{sequence:04d}.{extension}"
-    observed_url = f"{_ARCHIVE_ROOT}/{filename}"
+    accession_filename = f"{_ACCESSION}-{filename}"
+    observed_url = f"{_ARCHIVE_ROOT}/{accession_filename}"
     entry = {
         "entry_id": f"entry-{sequence}",
         "table_kind": "document_format",
         "document_type": "EX-10",
         "filename": filename,
-        "href": f"/Archives/edgar/data/898015/000089968100000405/{filename}",
+        "href": f"/Archives/edgar/data/898015/000089968100000405/{accession_filename}",
         "archive_url": observed_url,
         "sequence": sequence,
         "byte_size": 2000,

@@ -74,6 +74,7 @@ def _make_run(
     lazy: bool = True,
     bundle: bool = False,
     executable: bool = True,
+    sibling_failure: bool = False,
 ):
     paths = resolve_acquisition_paths(artifacts_root=tmp_path)
     run_id = "acq_test-run"
@@ -116,13 +117,27 @@ def _make_run(
         ],
         metadata=TARGET_SCHEMA.metadata,
     )
+    rows = [row]
+    if sibling_failure:
+        sibling = dict(row)
+        sibling.update(
+            target_id="target-2",
+            request_id="request-2",
+            target_url=target_url.rsplit("/", 1)[0] + "/sibling.htm",
+            catalog_direct_selection=None,
+        )
+        row["catalog_direct_selection"] = None
+        rows.append(sibling)
     work_order_path = work_order_root / "part-00000.parquet"
     pq.write_table(
-        pa.Table.from_pylist([row], schema=work_order_schema), work_order_path
+        pa.Table.from_pylist(rows, schema=work_order_schema), work_order_path
     )
     initialize_run_state(
         paths.run_state_path(run_id),
-        [WorkOrderTargetSeed("target-1", executable, row["skip_reason"])],
+        [
+            WorkOrderTargetSeed(target["target_id"], executable, target["skip_reason"])
+            for target in rows
+        ],
     )
     manifest = {
         "run_id": run_id,
@@ -141,14 +156,14 @@ def _make_run(
         "work_order_parts": [
             {
                 "path": "work_order/part-00000.parquet",
-                "row_count": 1,
+                "row_count": len(rows),
                 "byte_size": work_order_path.stat().st_size,
                 "sha256": file_sha256(work_order_path),
             }
         ],
-        "target_row_count": 1,
-        "executable_count": int(executable),
-        "skipped_count": int(not executable),
+        "target_row_count": len(rows),
+        "executable_count": len(rows) * int(executable),
+        "skipped_count": len(rows) * int(not executable),
         "run_state_schema_version": RUN_STATE_SCHEMA_VERSION,
     }
     manifest["run_digest"] = canonical_hash(manifest)
@@ -651,6 +666,37 @@ def test_direct_404_is_failed_without_lazy_index_recovery(
         assert connection.execute(
             "SELECT COUNT(*) FROM target_slot_resolutions"
         ).fetchone() == (0,)
+
+
+def test_failed_sibling_does_not_remove_acquired_body(tmp_path, monkeypatch) -> None:
+    paths, run_id, row = _make_run(tmp_path, sibling_failure=True)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
+        lambda: SimpleNamespace(workers=1, worker_ceiling=1),
+    )
+    sibling_url = row["target_url"].rsplit("/", 1)[0] + "/sibling.htm"
+    transport = _MemoryTransport(
+        {row["target_url"]: b"selected primary body"},
+        failures={sibling_url: StreamFailure("http_not_found", False, 404, "missing")},
+    )
+
+    report = execute_acquisition_run(
+        run_id,
+        retry_failures=False,
+        paths=paths,
+        policy=AcquisitionPolicy(max_response_bytes=4096),
+        transport=transport,
+        clock=lambda: datetime(2025, 1, 1, tzinfo=UTC),
+    )
+
+    assert report.target_counts["acquired"] == 1
+    assert report.target_counts["failed"] == 1
+    acquired = get_target_state(paths.run_state_path(run_id), "target-1")
+    failed = get_target_state(paths.run_state_path(run_id), "target-2")
+    assert acquired is not None and acquired.outcome == "acquired"
+    assert failed is not None and failed.outcome == "failed"
+    body_path = paths.run_dir(run_id) / acquired.selected_body_relative_path
+    assert body_path.read_bytes() == b"selected primary body"
 
 
 def test_interrupt_during_transfer_leaves_target_pending_and_cleans_partial(

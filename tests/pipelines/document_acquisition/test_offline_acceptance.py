@@ -75,7 +75,15 @@ def _write_pinned_plan(
     artifacts_root: Path,
     *,
     catalog_direct_selection: str = "exact_form_with_lazy_index",
+    target_url: str = _TARGET_URL,
+    bundle_child: bool = False,
 ) -> tuple[str, dict[str, Any]]:
+    inventory_snapshot_id = "snapshot-m7b" if bundle_child else None
+    inventory_snapshot_digest = "b" * 64 if bundle_child else None
+    request_id = "primary:primary"
+    target_role = "primary"
+    target_type = target_role
+    inventory_entry_id = "entry-sequence-2" if bundle_child else None
     identity = {
         "bundle_schema_version": target_plan_bundle_schema_version(),
         "target_schema_version": TARGET_SCHEMA_VERSION,
@@ -84,8 +92,8 @@ def _write_pinned_plan(
         "profile_digest": "c" * 64,
         "catalog_plan_id": "catalog-offline-acceptance",
         "catalog_plan_digest": "a" * 64,
-        "inventory_snapshot_id": None,
-        "inventory_snapshot_digest": None,
+        "inventory_snapshot_id": inventory_snapshot_id,
+        "inventory_snapshot_digest": inventory_snapshot_digest,
     }
     plan_id = f"dplan_{canonical_hash(identity)[:32]}"
     plan_root = artifacts_root / "document_planning" / "plans" / plan_id
@@ -96,23 +104,23 @@ def _write_pinned_plan(
         "accession": _ACCESSION,
         "form": "10-K",
         "filing_date": "2020-01-30",
-        "request_id": "primary:primary",
-        "target_role": "primary",
-        "target_type": "primary",
+        "request_id": request_id,
+        "target_role": target_role,
+        "target_type": target_type,
         "optional": False,
-        "inventory_entry_id": None,
+        "inventory_entry_id": inventory_entry_id,
         "status": "matched",
         "status_reason": None,
-        "source_origin": "catalog_direct",
-        "retrieval_mode": "direct_url",
-        "target_url": _TARGET_URL,
-        "sequence": 1,
+        "source_origin": "inventory_index" if bundle_child else "catalog_direct",
+        "retrieval_mode": "bundle_sequence" if bundle_child else "direct_url",
+        "target_url": target_url,
+        "sequence": 2 if bundle_child else 1,
         "byte_size": None,
-        "availability_evidence": "catalog_direct",
-        "catalog_direct_selection": catalog_direct_selection,
+        "availability_evidence": "index_html" if bundle_child else "catalog_direct",
+        "catalog_direct_selection": None if bundle_child else catalog_direct_selection,
     }
     row["target_id"] = canonical_hash(
-        [plan_id, _ACCESSION, row["request_id"], None, "matched"]
+        [plan_id, _ACCESSION, row["request_id"], inventory_entry_id, "matched"]
     )
     pq.write_table(
         pa.Table.from_pylist([row], schema=TARGET_SCHEMA),
@@ -131,12 +139,12 @@ def _write_pinned_plan(
         "profile_digest": identity["profile_digest"],
         "catalog_plan_id": identity["catalog_plan_id"],
         "catalog_plan_digest": identity["catalog_plan_digest"],
-        "inventory_snapshot_id": None,
-        "inventory_snapshot_digest": None,
+        "inventory_snapshot_id": inventory_snapshot_id,
+        "inventory_snapshot_digest": inventory_snapshot_digest,
         "plan_identity": identity,
         "target_row_count": 1,
         "status_counts": {"matched": 1},
-        "origin_counts": {"catalog_direct": 1},
+        "origin_counts": {row["source_origin"]: 1},
         "reason_counts": {},
         "parts": [
             {
@@ -193,11 +201,13 @@ class _SyntheticTransport:
 
 
 class _FixtureReplayTransport:
-    def __init__(self, paths, fixture_id: str, case) -> None:
+    def __init__(
+        self, paths, fixture_id: str, case, *, initial_url=_TARGET_URL
+    ) -> None:
         self.paths = paths
         self.fixture_id = fixture_id
         self.responses = {
-            _TARGET_URL: case.response_sha256,
+            initial_url: case.response_sha256,
             _INDEX_URL: case.index_response_sha256,
             _SELECTED_URL: case.selected_response_sha256,
         }

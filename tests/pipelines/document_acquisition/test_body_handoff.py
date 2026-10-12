@@ -61,6 +61,36 @@ def _make_run(tmp_path: Path, *, bundle: bool = False):
                 target_id,
             ),
         )
+        connection.execute(
+            "INSERT INTO attempts (attempt_id, target_id, attempt_number, outcome, "
+            "attempt_kind, source, retryable, error_code, http_status, requested_url, "
+            "final_url, started_at_utc, finished_at_utc, source_sha256, "
+            "source_byte_size, source_body_relative_path, selected_sha256, "
+            "selected_byte_size, selected_body_relative_path, selected_filename) "
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            (
+                "attempt-1",
+                target_id,
+                1,
+                "acquired",
+                "document_body",
+                "live_sec",
+                0,
+                None,
+                200,
+                "https://www.sec.gov/Archives/edgar/data/1/1/primary.txt",
+                "https://www.sec.gov/Archives/edgar/data/1/1/primary.txt",
+                "2026-10-10T00:00:00+00:00",
+                "2026-10-10T00:00:01+00:00",
+                hashlib.sha256(source_body).hexdigest(),
+                len(source_body),
+                source_path.relative_to(paths.run_dir(run_id)).as_posix(),
+                hashlib.sha256(_SELECTED).hexdigest(),
+                len(_SELECTED),
+                selected_path.relative_to(paths.run_dir(run_id)).as_posix(),
+                "report.htm" if bundle else None,
+            ),
+        )
     return paths, run_id, selected_path, source_path
 
 
@@ -92,7 +122,7 @@ def test_staged_body_ref_verifies_direct_and_bundle_files(tmp_path, bundle) -> N
         == hashlib.sha256(_SOURCE if bundle else _SELECTED).hexdigest()
     )
     assert ref.source_response_byte_size == len(_SOURCE if bundle else _SELECTED)
-    assert ref.selected_filename is None
+    assert ref.selected_filename == ("report.htm" if bundle else None)
 
 
 def test_staged_body_ref_allows_deleted_source_envelope(tmp_path) -> None:

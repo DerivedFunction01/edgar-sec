@@ -21,12 +21,14 @@ from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.run_state.models import TargetState
 from edgar_sec.pipelines.document_acquisition.run_state.store import (
     RunStateError,
+    get_attempt,
     get_target_state,
 )
 from edgar_sec.pipelines.document_acquisition.schemas import (
     BodyConsumptionReceipt,
     RECEIPT_SCHEMA_VERSION,
     StagedBodyRef,
+    validate_selected_filename,
 )
 
 _RECEIPT_FIELDS = frozenset(
@@ -125,6 +127,26 @@ def get_staged_body_ref(
     paths: AcquisitionPaths, run_id: str, target_id: str
 ) -> StagedBodyRef:
     state = _state(paths, run_id, target_id)
+    if state.last_attempt_id is None:
+        raise BodyHandoffError("acquired target has no selected-body attempt")
+    try:
+        attempt = get_attempt(
+            paths.run_state_path(run_id), target_id, state.last_attempt_id
+        )
+    except (OSError, ValueError, sqlite3.Error, RunStateError) as error:
+        raise BodyHandoffError(
+            "selected-body attempt evidence is unavailable"
+        ) from error
+    if (
+        attempt is None
+        or attempt.outcome != "acquired"
+        or attempt.attempt_kind != "document_body"
+    ):
+        raise BodyHandoffError("selected-body attempt identity is inconsistent")
+    try:
+        selected_filename = validate_selected_filename(attempt.selected_filename)
+    except ValueError as error:
+        raise BodyHandoffError("selected filename evidence is invalid") from error
     if state.selected_body_relative_path is None:
         raise BodyHandoffError("acquired target has no selected-body path")
     selected_path = _verified_relative_path(
@@ -136,6 +158,16 @@ def get_staged_body_ref(
         state.selected_byte_size,
     ):
         raise BodyHandoffError("selected body does not match committed identity")
+    if (
+        attempt.selected_sha256,
+        attempt.selected_byte_size,
+        attempt.selected_body_relative_path,
+    ) != (
+        state.selected_sha256,
+        state.selected_byte_size,
+        state.selected_body_relative_path,
+    ):
+        raise BodyHandoffError("selected body attempt identity is inconsistent")
 
     source_path = None
     if state.source_body_relative_path is not None:
@@ -155,7 +187,7 @@ def get_staged_body_ref(
         path=selected_path,
         sha256=state.selected_sha256,
         byte_size=state.selected_byte_size,
-        selected_filename=None,
+        selected_filename=selected_filename,
         source_response_path=source_path,
         source_response_sha256=state.source_sha256,
         source_response_byte_size=state.source_byte_size,

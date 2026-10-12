@@ -50,6 +50,7 @@ from edgar_sec.pipelines.document_acquisition.run_validation import (
 from edgar_sec.pipelines.document_acquisition.schemas import (
     RECEIPT_SCHEMA_VERSION,
     StagedBodyRef,
+    validate_selected_filename,
 )
 
 
@@ -105,20 +106,20 @@ def _effective_route(
     paths: AcquisitionPaths,
     request: ProcessingRequest,
     row: dict[str, object],
+    verified_body: StagedBodyRef,
 ) -> tuple[DocumentRoute, str]:
-    if row["retrieval_mode"] == "bundle_sequence":
-        raise ProcessingError(
-            "bundle child filename is absent from the committed S9 handoff"
-        )
-    if request.selected_filename is not None:
-        raise ProcessingError("direct targets cannot supply a bundle filename")
-
+    if row["retrieval_mode"] == "bundle_sequence" and request.selected_filename is None:
+        raise ProcessingError("bundle child filename is absent from S9 handoff")
     try:
+        requested_filename = validate_selected_filename(request.selected_filename)
+        committed_filename = validate_selected_filename(verified_body.selected_filename)
         database_path = paths.run_state_path(request.body.run_id)
         state = get_target_state(database_path, request.target_id)
         attempts = list_target_attempts(database_path, request.target_id)
     except (OSError, ValueError, sqlite3.Error) as error:
         raise ProcessingError("selected target evidence is invalid") from error
+    if requested_filename != committed_filename:
+        raise ProcessingError("selected filename differs from committed S9 handoff")
     if state is None or state.outcome != "acquired" or state.last_attempt_id is None:
         raise ProcessingError("acquired target has no selected attempt")
     selected_attempt = get_attempt(
@@ -160,18 +161,16 @@ def _effective_route(
             resolution = evidence.resolution
             break
 
+    retrieval_mode = str(row["retrieval_mode"])
     if resolution is not None and resolution.selected_url is not None:
         if resolution.result not in {"accepted_sequence_1", "recovered"}:
             raise ProcessingError("selected target resolution is not successful")
-        if resolution.selected_retrieval_mode == "bundle_sequence":
-            raise ProcessingError(
-                "bundle child filename is absent from the committed S9 handoff"
-            )
         if (
-            resolution.selected_retrieval_mode != "direct_url"
+            resolution.selected_retrieval_mode not in {"direct_url", "bundle_sequence"}
             or selected_attempt.requested_url != resolution.selected_url
         ):
             raise ProcessingError("selected target route is unresolved")
+        retrieval_mode = resolution.selected_retrieval_mode
         route_url = resolution.selected_url
     else:
         if selected_attempt.requested_url != row["target_url"]:
@@ -183,6 +182,12 @@ def _effective_route(
             validate_archive_url(selected_attempt.final_url, request.accession)
     except ValueError as error:
         raise ProcessingError("selected route URL is invalid") from error
+    if retrieval_mode == "bundle_sequence" or committed_filename is not None:
+        if committed_filename is None:
+            raise ProcessingError("bundle child filename is absent from S9 handoff")
+        return document_route(committed_filename), committed_filename
+    if retrieval_mode != "direct_url":
+        raise ProcessingError("selected target retrieval mode is unresolved")
     return document_route(selected.document_path), selected.document_path
 
 
@@ -442,7 +447,6 @@ def process_target(
         _validate_operations(request.operations)
         _validate_family_operations(request)
         row = _target_row(paths, request)
-        route, effective_path = _effective_route(paths, request, row)
         verified_body = get_staged_body_ref(
             paths, request.body.run_id, request.target_id
         )
@@ -450,6 +454,7 @@ def process_target(
             raise ProcessingError(
                 "staged body reference differs from committed identity"
             )
+        route, effective_path = _effective_route(paths, request, row, verified_body)
         source_sha256, source_size = _verify_body(verified_body)
         if source_size != verified_body.byte_size or not is_sha256_hex_digest(
             source_sha256

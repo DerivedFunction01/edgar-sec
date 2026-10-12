@@ -31,6 +31,7 @@ def build_attempt(
     source: str = "live_sec",
     outcome: str | None = None,
     error_code: str | None = None,
+    selected_filename: str | None = None,
 ) -> AcquisitionAttempt:
     response = result if isinstance(result, StreamedResponse) else None
     status = outcome or ("acquired" if response is not None else "failed")
@@ -62,4 +63,5 @@ def build_attempt(
         selected_body_relative_path=relative_path(
             run_root, selected_path if selected_digest else None
         ),
+        selected_filename=selected_filename,
     )

@@ -86,4 +86,5 @@ def _acquisition_attempt_from_row(row: tuple[object, ...]) -> AcquisitionAttempt
         selected_sha256=row[16],
         selected_byte_size=row[17],
         selected_body_relative_path=row[18],
+        selected_filename=row[19],
     )

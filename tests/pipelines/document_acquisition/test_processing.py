@@ -354,6 +354,7 @@ def test_process_target_refuses_bundle_without_committed_child_filename(
             paths,
             request,
             {"retrieval_mode": "bundle_sequence", "_document_path": "filing.txt"},
+            request.body,
         )
 
     assert (

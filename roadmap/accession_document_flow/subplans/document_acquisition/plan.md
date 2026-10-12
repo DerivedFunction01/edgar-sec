@@ -62,21 +62,24 @@ Status markers are maintained against tracked code and focused offline tests:
   on the `TEXT` route), enforces form-family operation permissions, and records the S9
   receipt. Offline fixture tests cover the worker. A schema-neutral in-memory result
   preflight consumes explicit terminal request/result pairs without processor-liveness
-  checks. Operation-intent persistence, export renderers, bundle-child route identity,
-  full-run projection, and S11 remain unavailable.
+  checks. M7b now carries the bundle-selected filename through the S9 attempt record and
+  S10 handoff. Operation-intent persistence, export renderers, full-run projection, and
+  S11 remain unavailable.
 - [x] **M7a — Offline S9/S10 composition:** captured direct-TEXT fixture replay,
   `process_target`, actual request/result projection, receipt verification, stable
   fingerprint, staged-output integrity, and unavailable-operation placeholders are
   covered in an offline integration test. It does not require the M3 live runner or M4
   operator. Runner/retry lifecycle integration remains a separate M7b gate.
-- [ ] **M7b — Runner lifecycle integration:** runner/retry/cleanup verification over
-  fixture-backed processing remains incomplete. This is the next acquisition goal.
-  Cover an accession-prefixed numbered direct child (`<accession>-<num>.<ext>`) and an
-  exact bundle-selected child. Persist and verify the bundle child's actual selected
-  filename across S9 handoff, S10 processing, and result projection; the bundle URL's
-  `.txt` basename is not the selected-child identity. Exercise retry without reacquiring
-  a retained body, direct-404 failure without retrieval-mode switching, sibling failure
-  isolation, and cleanup only after explicit discard or publication adoption.
+- [x] **M7b — Runner lifecycle integration:** offline fixture replay now exercises an
+  accession-prefixed numbered direct child and a bundle-selected child through S9, S10,
+  and terminal projection. The actual bundle filename is persisted on its acquisition
+  attempt and validated at handoff; the bundle URL's `.txt` basename is not used as the
+  child identity. Tests cover text, binary, and unknown filename routes, a processing
+  failure, rerun without reacquiring or removing a retained body, ordinary direct-404
+  refusal without mode switching, and acquired-body retention when a sibling target
+  fails. A receipt or rerun does not authorize cleanup; future removal still requires a
+  separate explicit discard or publication-adoption action. No S5/S6 schema or durable
+  payload output is written.
 - [~] **M8 — Exhibit/identity development:** source-backed profiles and declarative packs
   exist in `domain/forms/exhibits/`; the offline S9/S10 composition now emits a
   deterministic processing review artifact through the shared `review generate` and
@@ -589,8 +592,9 @@ prerequisite for offline S9/S10 composition or private result-projection develop
 
 - Exercise an accession-prefixed numbered direct child (`<accession>-<num>.<ext>`),
   exact bundle-selected child routes, binary/unrecognized outcomes, processing failure,
-  retry without reacquiring a retained body, and cleanup only after explicit discard or
-  publication adoption.
+  and retry without reacquiring a retained body. Verify a rerun or receipt alone does
+  not remove the selected body; future cleanup requires a separate explicit discard or
+  publication-adoption action.
 - Carry the bundle extraction's actual selected filename as verified evidence through
   the staged-body handoff, S10 request/result, and terminal projection. Do not substitute
   the bundle URL basename or infer the filename from the sequence.

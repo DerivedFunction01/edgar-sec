@@ -52,6 +52,8 @@ from edgar_sec.pipelines.document_acquisition.review_artifacts.result_projection
 from edgar_sec.pipelines.document_acquisition.runner import execute_acquisition_run
 from edgar_sec.pipelines.document_acquisition.run_state.store import get_target_state
 from tests.pipelines.document_acquisition.test_offline_acceptance import (
+    _ACCESSION,
+    _ARCHIVE_ROOT,
     _FIXTURE_ID,
     _FixtureReplayTransport,
     _SyntheticTransport,
@@ -63,18 +65,36 @@ _BODY = b"Captured direct text body\n"
 _CLOCK = lambda: datetime(2026, 10, 11, tzinfo=UTC)
 
 
-def _captured_text_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
+def _captured_text_fixture(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    *,
+    target_url: str = _TARGET_URL,
+    bundle_child: bool = False,
+    bundle_filename: str = "primary-filing.txt",
+    bundle_body: bytes = _BODY,
+):
     source_root = tmp_path / "source-artifacts"
     source_paths = resolve_acquisition_paths(artifacts_root=source_root)
     plan_id, target = _write_pinned_plan(
-        source_root, catalog_direct_selection="submitted_primary"
+        source_root,
+        catalog_direct_selection="submitted_primary",
+        target_url=target_url,
+        bundle_child=bundle_child,
     )
     source_projection = project_acquisition_run(plan_id, paths=source_paths)
     monkeypatch.setattr(
         "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
         lambda: type("Resources", (), {"workers": 1, "worker_ceiling": 1})(),
     )
-    source_transport = _SyntheticTransport({_TARGET_URL: _BODY})
+    source_body = (
+        f"<DOCUMENT><SEQUENCE>2<FILENAME>{bundle_filename}<TYPE>10-K<TEXT>".encode()
+        + bundle_body
+        + b"</TEXT></DOCUMENT>"
+        if bundle_child
+        else _BODY
+    )
+    source_transport = _SyntheticTransport({target_url: source_body})
     source_report = execute_acquisition_run(
         source_projection.run_id,
         retry_failures=False,
@@ -86,7 +106,7 @@ def _captured_text_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
         clock=_CLOCK,
     )
     assert source_report.state == "complete"
-    assert source_transport.calls == [_TARGET_URL]
+    assert source_transport.calls == [target_url]
 
     source_state = get_target_state(
         source_paths.run_state_path(source_projection.run_id), target["target_id"]
@@ -118,7 +138,9 @@ def _captured_text_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
     replay_case = get_fixture_case(
         replay_paths, _FIXTURE_ID, captured.capture_id, target["target_id"]
     )
-    replay_transport = _FixtureReplayTransport(replay_paths, _FIXTURE_ID, replay_case)
+    replay_transport = _FixtureReplayTransport(
+        replay_paths, _FIXTURE_ID, replay_case, initial_url=target_url
+    )
     replay_report = execute_acquisition_run(
         replay_projection.run_id,
         retry_failures=False,
@@ -128,7 +150,7 @@ def _captured_text_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
         clock=_CLOCK,
     )
     assert replay_report.state == "complete"
-    assert replay_transport.calls == [_TARGET_URL]
+    assert replay_transport.calls == [target_url]
     return (
         source_paths,
         replay_paths,
@@ -147,13 +169,13 @@ def _processing_request(paths, run_id, fixture_case, target):
         target_id=fixture_case.target_id,
         accession=AccessionNumber.from_any(fixture_case.accession),
         form=fixture_case.form,
-        target_role="primary",
-        target_type="primary",
+        target_role=target["target_role"],
+        target_type=target["target_type"],
         document_path=validate_archive_url(
             str(target["target_url"]), fixture_case.accession
         ).document_path,
-        selected_filename=None,
-        source_origin="catalog_direct",
+        selected_filename=body.selected_filename,
+        source_origin=target["source_origin"],
         body=body,
         operations=(
             OperationRequest(
@@ -284,6 +306,101 @@ def test_captured_text_fixture_processes_and_builds_reproducible_review(
         )
         assert repeated == artifact
         assert repeated.path.read_bytes() == before
+
+
+def test_numbered_direct_child_fixture_replays_through_processing(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    target_url = f"{_ARCHIVE_ROOT}{_ACCESSION}-0001.txt"
+    _, paths, run_id, fixture_case, target = _captured_text_fixture(
+        tmp_path, monkeypatch, target_url=target_url
+    )
+    request = _processing_request(paths, run_id, fixture_case, target)
+
+    result = process_target(request, paths=paths)
+    with project_terminal_results(
+        (request,), (result,), paths=paths, run_id=run_id
+    ) as projection:
+        projected = next(projection.iter_targets())
+        assert result.route.value == "text"
+        assert request.document_path == f"{_ACCESSION}-0001.txt"
+        assert projected.selected_filename is None
+        assert projected.source_sha256 == fixture_case.selected_sha256
+
+
+def test_bundle_selected_filename_crosses_processing_and_projection(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _, paths, run_id, fixture_case, target = _captured_text_fixture(
+        tmp_path, monkeypatch, bundle_child=True
+    )
+    request = _processing_request(paths, run_id, fixture_case, target)
+
+    assert fixture_case.selected_filename == "primary-filing.txt"
+    assert request.body.selected_filename == fixture_case.selected_filename
+    assert request.selected_filename == fixture_case.selected_filename
+    result = process_target(request, paths=paths)
+    assert result.route.value == "text"
+    assert result.effective_path == fixture_case.selected_filename
+    assert read_body_consumption_receipt(paths, run_id, request.target_id) is not None
+
+    with project_terminal_results(
+        (request,), (result,), paths=paths, run_id=run_id
+    ) as projection:
+        projected = next(projection.iter_targets())
+        assert projection.fingerprint
+        assert projected.selected_filename == "primary-filing.txt"
+        assert projected.source_sha256 == fixture_case.selected_sha256
+
+    retained_body = request.body.path.read_bytes()
+    resume_transport = _SyntheticTransport({})
+    resume_report = execute_acquisition_run(
+        run_id,
+        retry_failures=True,
+        paths=paths,
+        policy=AcquisitionPolicy(max_response_bytes=4096),
+        transport=resume_transport,
+        clock=_CLOCK,
+    )
+    assert resume_report.state == "complete"
+    assert resume_report.attempted_count == 0
+    assert resume_transport.calls == []
+    assert request.body.path.read_bytes() == retained_body
+
+
+@pytest.mark.parametrize(
+    ("filename", "route"),
+    [("primary.pdf", "binary"), ("primary.data", "unknown")],
+)
+def test_bundle_filename_routes_binary_and_unrecognized_bodies(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    filename: str,
+    route: str,
+) -> None:
+    _, paths, run_id, fixture_case, target = _captured_text_fixture(
+        tmp_path,
+        monkeypatch,
+        bundle_child=True,
+        bundle_filename=filename,
+        bundle_body=b"%PDF-1.7\nsynthetic binary body"
+        if filename.endswith(".pdf")
+        else _BODY,
+    )
+    request = _processing_request(paths, run_id, fixture_case, target)
+    result = process_target(request, paths=paths)
+
+    assert request.selected_filename == filename
+    assert result.route.value == route
+    assert result.operation_results[0].status == "available"
+    assert result.operation_results[1].status == "unsupported"
+
+    with project_terminal_results(
+        (request,), (result,), paths=paths, run_id=run_id
+    ) as projection:
+        projected = next(projection.iter_targets())
+        assert projected.selected_filename == filename
+        assert projected.route.value == route
 
 
 def test_review_builder_uses_shared_manifest_and_case_layout(

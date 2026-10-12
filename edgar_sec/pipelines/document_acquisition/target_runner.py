@@ -252,6 +252,7 @@ def acquire_target(
                     source_path=response.path if retain_evidence else None,
                     selected_path=selected_path,
                     run_root=run_root,
+                    selected_filename=extracted.selected.filename,
                 )
                 if not retain_evidence:
                     response.path.unlink(missing_ok=True)
@@ -629,6 +630,7 @@ def acquire_target(
             source_path=body_result.path if retain_evidence else None,
             selected_path=selected_path,
             run_root=run_root,
+            selected_filename=extracted.selected.filename,
         )
         if (
             body_attempt.selected_sha256 != extracted.body_sha256

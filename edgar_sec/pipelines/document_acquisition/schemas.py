@@ -54,6 +54,21 @@ class StagedBodyRef:
     source_response_byte_size: int
 
 
+def validate_selected_filename(value: object) -> str | None:
+    if value is None:
+        return None
+    if (
+        not isinstance(value, str)
+        or not value.strip()
+        or value in {".", ".."}
+        or "/" in value
+        or "\\" in value
+        or any(ord(character) < 32 or ord(character) == 127 for character in value)
+    ):
+        raise ValueError("selected filename must be a safe leaf name")
+    return value
+
+
 class BodyConsumptionReceipt(TypedDict):
     receipt_schema_version: str
     run_id: str
@@ -101,4 +116,5 @@ __all__ = [
     "target_relation_schema_version",
     "target_plan_bundle_schema_version",
     "target_plan_matcher_version",
+    "validate_selected_filename",
 ]

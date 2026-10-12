@@ -75,6 +75,7 @@ class AcquisitionAttempt:
     selected_sha256: str | None
     selected_byte_size: int | None
     selected_body_relative_path: str | None
+    selected_filename: str | None = None
 
 
 @dataclass(frozen=True, slots=True)

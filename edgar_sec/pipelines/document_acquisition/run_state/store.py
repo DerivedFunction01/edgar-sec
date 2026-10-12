@@ -26,7 +26,7 @@ from edgar_sec.pipelines.document_acquisition.run_state.locks import (
 )
 from edgar_sec.infra.storage.duckdb import sql_literal
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 _OUTCOMES = (
     "pending",
     "skipped",
@@ -81,6 +81,7 @@ _SCHEMA = (
         selected_sha256 TEXT,
         selected_byte_size INTEGER CHECK (selected_byte_size IS NULL OR selected_byte_size >= 0),
         selected_body_relative_path TEXT,
+        selected_filename TEXT,
         UNIQUE (target_id, attempt_number),
         CHECK (outcome = 'failed' OR retryable = 0)
     )""",
@@ -123,8 +124,8 @@ _INSERT_ATTEMPT = """INSERT INTO attempts (
     attempt_id, target_id, attempt_number, outcome, attempt_kind, source, retryable,
     error_code, http_status, requested_url, final_url, started_at_utc,
     finished_at_utc, source_sha256, source_byte_size, source_body_relative_path,
-    selected_sha256, selected_byte_size, selected_body_relative_path
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+    selected_sha256, selected_byte_size, selected_body_relative_path, selected_filename
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
 _UPDATE_TARGET = """UPDATE target_state SET
     outcome = ?, source = ?, retryable = ?, attempt_count = ?, last_attempt_id = ?,
     error_code = ?, source_sha256 = ?, source_byte_size = ?,
@@ -164,7 +165,7 @@ _GET_ATTEMPT = """SELECT attempt_id, target_id, attempt_number, attempt_kind, so
     requested_url, outcome, retryable, error_code, http_status, final_url,
     started_at_utc, finished_at_utc, source_sha256, source_byte_size,
     source_body_relative_path, selected_sha256, selected_byte_size,
-    selected_body_relative_path
+    selected_body_relative_path, selected_filename
 FROM attempts WHERE target_id = ? AND attempt_id = ?"""
 _COUNT_ATTEMPTED = "SELECT COUNT(*) FROM target_state WHERE attempt_count > 0"
 
@@ -297,6 +298,7 @@ def _attempt_values(attempt: AcquisitionAttempt) -> tuple[object, ...]:
         attempt.selected_sha256,
         attempt.selected_byte_size,
         attempt.selected_body_relative_path,
+        attempt.selected_filename,
     )
 
 
