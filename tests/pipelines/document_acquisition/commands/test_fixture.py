@@ -4,8 +4,10 @@ import json
 
 from edgar_sec.pipelines.document_acquisition import cli
 from edgar_sec.pipelines.document_acquisition.commands import common, fixture
-from edgar_sec.pipelines.document_acquisition.fixture_operator import (
+from edgar_sec.pipelines.document_acquisition.fixture_store.capture import (
     FixtureCaptureResult,
+)
+from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
     FixtureReplayResult,
 )
 from edgar_sec.pipelines.document_acquisition.commands import run

@@ -16,9 +16,11 @@ from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.sec_http.streaming import StreamedResponse
 from edgar_sec.pipelines.document_acquisition import cli as acquisition_cli
-from edgar_sec.pipelines.document_acquisition.fixture_operator import (
+from edgar_sec.pipelines.document_acquisition.fixture_store.capture import (
     capture_fixture_case,
     create_fixture,
+)
+from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
     replay_fixture_case,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (

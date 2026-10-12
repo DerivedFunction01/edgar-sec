@@ -9,6 +9,10 @@ class FixtureStoreError(RuntimeError):
     """A fixture is missing, corrupt, incompatible, or conflicts with immutable evidence."""
 
 
+class FixtureOperationError(ValueError):
+    pass
+
+
 @dataclass(frozen=True, slots=True)
 class ResponseBodyRef:
     response_sha256: str

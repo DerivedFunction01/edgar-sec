@@ -30,7 +30,7 @@ from edgar_sec.pipelines.document_acquisition.body_handoff import (
     get_staged_body_ref,
     read_body_consumption_receipt,
 )
-from edgar_sec.pipelines.document_acquisition.fixture_operator import (
+from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
     list_fixture_cases,
     replay_fixture_case,
 )
