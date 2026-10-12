@@ -375,3 +375,77 @@ includes:
 ZIP-path conclusions distinguish URL construction from per-accession availability. If
 the audit disproves HTML sufficiency for a required target, the inventory source
 contract is amended before the parser is implemented.
+
+## Acquisition-handoff findings to validate
+
+Exploratory review runs found these acquisition-sensitive cases. They are not yet a
+portable stratified S0 result, and no child URL was live-probed; treat the counts and
+URL availability as provisional until the audit fixtures and status evidence are
+committed.
+
+- **Archive CIK is not a reliable derivation from the source CIK or accession prefix.**
+  Captured rows include same-accession paths whose archive CIK differs from the index
+  URL's CIK; one legacy complete-submission link also used a third CIK. The index parser
+  currently requires `archive_cik == source_archive.archive_cik` in
+  `edgar_sec/engine/index_pages/parser.py`, while planning and lazy index selection
+  repeat that scope check. Acquisition URL validation must be reconciled with these
+  observed SEC links: preserve a validated observed URL when its origin and accession
+  match, and continue rejecting unsafe paths. Do not synthesize a different-CIK child
+  or bundle URL merely from the accession. Record live status/redirect evidence for
+  representative cases before changing the archive-CIK policy.
+- **A present `href` may not address a document.** Legacy rows can carry an accession
+  CIK-directory href with no filename or child URL while a complete-submission bundle
+  and positive sequence are available. `document_planning.matching._entry_candidate`
+  currently attempts to validate any non-empty `href` and raises before its unlinked
+  exhibit `bundle_sequence` fallback. Distinguish document URLs from directory-only or
+  otherwise unaddressable hrefs; for a profile-matched exhibit, retain the observed
+  sequence and use only the observed bundle URL as fallback. Missing bundle/sequence
+  evidence remains unresolved, not a guessed URL. Test the legacy EX-10 sequence-2/3
+  case and a same-accession alternate-CIK href.
+- **Sequence names are not target roles.** The sample contains 3,072 `EX-*`, `GRAPHIC`,
+  or `ZIP` `Document Format` rows at sequences 2 or 3. In one 8-K, `0001.txt` is the
+  form row and `0002.txt`/`0003.txt` are EX-2.1/EX-2.2 with direct links; an inversion
+  case has exhibit sequence 1 and the form row at sequence 12. Planning must match
+  `document_type` to the declared target type, preserve the observed sequence, and use
+  the observed direct URL or bundle sequence. Do not broaden the primary-placeholder
+  allowlist (`0000.*`/`0001.*`) to treat `0002.*`/`0003.*` as primary; profile-declared
+  exhibits are separate acquisition targets. The exploratory sample found 9 sequence-1
+  exhibit/later-form cases, all from 2000–2004; it does not establish a modern-era rate.
+- **Form 4 index rows expose two sequence-1 sources.** In the latest 1,000-page review
+  run, 363 cases are Form 4. In 283, two `Document Format` rows both have sequence 1
+  and type `4`: a display name ending in `.html` links to `xslF345X01`–`xslF345X06`/
+  `*.xml`, while a display name ending in `.xml` links to the accession-root `*.xml`.
+  Both match S6's current primary-by-form predicate, so the plan sees two candidates
+  and reports ambiguity. The XSL `.xml` path is the rendered HTML route described in
+  the acquisition-policy plan; the flat sibling is a separate XML source. The run also
+  has 21 `.htm`/`.html` href rows: 11 sequence-1 Form 4 rows and 10 other rows. Audit
+  which source the filing intends to acquire; do not infer response type from suffix,
+  equate the sibling XML with an XSL render, or construct one locator from the other.
+  Form 4 XML translation remains unsupported until a family transform is registered.
+- **A direct 404 is not currently recoverable by generic fallback.** S9 records a
+  direct-target 404 as `http_not_found`; the lazy-index path is bounded to its declared
+  catalog-direct primary policy and does not start on transport failure. Therefore
+  inventory-to-acquisition planning must not turn an unvalidated filename or source CIK
+  into a fetch URL. Before marking a target executable, verify that its direct URL is an
+  observed, accession-scoped document URL, or that both its bundle URL and positive
+  sequence are observed. Keep missing/unsafe locator outcomes unresolved; any 404
+  recovery policy must be explicit and preserve the failed attempt rather than hiding
+  bad input.
+- **Alias matching must be consistent at recovery.** S0 step 4 compares form families,
+  and S6 planning uses form aliases, but `document_acquisition.index_selection` currently
+  compares the index `document_type` to `expected_form` by exact string. Add real alias
+  rows to the audit and test the lazy selector against the same canonical form-family
+  contract before calling an alias-only row absent.
+- **Separate locator shape from reachability.** Display filenames can differ from the
+  href basename for rendered XML/HTML pairs. Do not use basename equality alone as a
+  404 or bad-link verdict. For selected suspicious rows, compare the raw captured href,
+  resolved archive path, accession, and a bounded response/status result. Inert-preview
+  href preservation is run-version-dependent: earlier previews omitted anchors, while
+  the latest 1,000-page run preserves them. Compare preview hrefs with raw-page hrefs
+  rather than assuming previews from different runs are equivalent.
+
+Before S0 acceptance, reconcile the inventory/output-path figures above with the current
+review evidence, commit the portable row-level audit, and exercise the cases above
+through parser → S5 inventory → S6 target plan → S9 work order. Include direct, bundle
+sequence, directory-only href, alternate archive CIK, duplicate sequence, and failed
+direct-fetch cases; assert that no stage invents a child path from `0001`/`0002` labels.

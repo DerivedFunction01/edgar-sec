@@ -96,7 +96,7 @@ def cmd_augment(
             KeyValueRow("total_row_count", str(result.total_row_count)),
             KeyValueRow("requested_cik_count", str(result.requested_cik_count)),
             KeyValueRow("already_present_count", str(result.already_present_count)),
-            KeyValueRow("refetched_ciks", ",".join(result.refetched_ciks)),
+            KeyValueRow("refetched_cik_count", str(len(result.refetched_ciks))),
         ],
         title="Augment Completed",
     )
