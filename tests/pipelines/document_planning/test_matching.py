@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import re
+
 import pytest
 
 from edgar_sec.pipelines.document_planning.catalog_scope import (
@@ -135,11 +137,65 @@ def test_catalog_primary_fallback_uses_source_cik() -> None:
     )
 
 
+@pytest.mark.parametrize(
+    "filename",
+    ["0001.txt", "0002.txt", "0004.pdf", "0007.htm", "0026.htm"],
+)
+def test_catalog_numbered_primary_constructs_accession_prefixed_child(
+    filename: str,
+) -> None:
+    target = ProfileTarget("primary", "primary", False, "primary:primary")
+    rows = catalog_only_rows(
+        "plan-1",
+        _scope(None, source_cik="898015", primary_document=filename, accession=_ACCESSION),
+        (target,),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["target_url"] == f"{_ARCHIVE_ROOT}/{_ACCESSION}-{filename}"
+
+
+def test_catalog_numbered_primary_accepts_observed_accession_prefixed_archive_url() -> None:
+    target = ProfileTarget("primary", "primary", False, "primary:primary")
+    url = f"{_ARCHIVE_ROOT}/{_ACCESSION}-0001.txt"
+    rows = catalog_only_rows(
+        "plan-1",
+        _scope(
+            url,
+            source_cik="898015",
+            primary_document="0001.txt",
+            accession=_ACCESSION,
+        ),
+        (target,),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["target_url"] == url
+
+
+def test_non_sequence_numeric_primary_keeps_its_observed_path() -> None:
+    target = ProfileTarget("primary", "primary", False, "primary:primary")
+    url = f"{_ARCHIVE_ROOT}/00049371.TXT"
+    rows = catalog_only_rows(
+        "plan-1",
+        _scope(
+            url,
+            source_cik="898015",
+            primary_document="00049371.TXT",
+            accession=_ACCESSION,
+        ),
+        (target,),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["target_url"] == url
+
+
 def test_catalog_stub_primary_is_unresolved_without_sequence_evidence() -> None:
     target = ProfileTarget("primary", "primary", False, "primary:primary")
     rows = catalog_only_rows(
         "plan-1",
-        _scope(None, primary_document="0001.htm"),
+        _scope(None, primary_document="0000.htm"),
         (target,),
     )
 
@@ -150,13 +206,13 @@ def test_catalog_stub_primary_is_unresolved_without_sequence_evidence() -> None:
 
 def test_catalog_stub_link_is_not_selected_without_sequence_evidence() -> None:
     target = ProfileTarget("primary", "primary", False, "primary:primary")
-    placeholder_url = f"{_ARCHIVE_ROOT}/{_ACCESSION}-0001.htm"
+    placeholder_url = f"{_ARCHIVE_ROOT}/{_ACCESSION}-0000.htm"
     rows = catalog_only_rows(
         "plan-1",
         _scope(
             placeholder_url,
             source_cik="898015",
-            primary_document="0001.htm",
+            primary_document="0000.htm",
             accession=_ACCESSION,
         ),
         (target,),
@@ -189,7 +245,7 @@ def _placeholder_entry(
 ) -> dict[str, object]:
     archive_filename = (
         f"{_ACCESSION}-{filename}"
-        if filename in {"0001.txt", "0001.htm", "0000.txt", "0000.htm"}
+        if re.fullmatch(r"\d{4}\.[A-Za-z0-9]+", filename, re.ASCII)
         else filename
     )
     return {
@@ -203,8 +259,22 @@ def _placeholder_entry(
     }
 
 
-@pytest.mark.parametrize("filename", ["0001.txt", "0001.htm", "0000.txt", "0000.htm"])
-def test_stub_primary_uses_exact_observed_sequence_and_pinned_bundle(
+@pytest.mark.parametrize("filename", ["0001.txt", "0001.htm"])
+def test_numbered_primary_uses_accession_prefixed_observed_child(filename: str) -> None:
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(_placeholder_entry(filename=filename), bundle_url=_BUNDLE_URL)],
+        (ProfileTarget("primary", "primary", False, "primary:primary"),),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["retrieval_mode"] == "direct_url"
+    assert rows[0]["target_url"] == f"{_ARCHIVE_ROOT}/{_ACCESSION}-{filename}"
+    assert rows[0]["sequence"] is None
+
+
+@pytest.mark.parametrize("filename", ["0000.txt", "0000.htm"])
+def test_zero_primary_stub_uses_observed_sequence_and_pinned_bundle(
     filename: str,
 ) -> None:
     bundle_url = _BUNDLE_URL
@@ -242,7 +312,12 @@ def test_stub_primary_without_bundle_evidence_stays_unresolved(
 ) -> None:
     rows = inventory_rows(
         "plan-1",
-        [_inventory_row(_placeholder_entry(sequence=sequence), bundle_url=bundle_url)],
+        [
+            _inventory_row(
+                _placeholder_entry(sequence=sequence, filename="0000.htm"),
+                bundle_url=bundle_url,
+            )
+        ],
         (ProfileTarget("primary", "primary", False, "primary:primary"),),
     )
 
@@ -307,9 +382,37 @@ def test_exhibit_keeps_the_index_href_when_primary_name_is_a_stub() -> None:
     assert rows[0]["sequence"] is None
 
 
-@pytest.mark.parametrize("sequence", range(2, 8))
-def test_numbered_exhibits_keep_the_observed_child_link(sequence: int) -> None:
-    filename = f"{sequence:04d}.txt"
+def test_numbered_exhibit_without_accession_prefix_uses_bundle_sequence() -> None:
+    entry = {
+        "entry_id": "entry-2",
+        "table_kind": "document_format",
+        "document_type": "EX-10",
+        "filename": "0002.txt",
+        "href": "0002.txt",
+        "archive_url": f"{_ARCHIVE_ROOT}/0002.txt",
+        "sequence": 2,
+        "byte_size": 2000,
+    }
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(entry, bundle_url=_BUNDLE_URL)],
+        (ProfileTarget("exhibit", "EX-10", True, "exhibit:EX-10"),),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["retrieval_mode"] == "bundle_sequence"
+    assert rows[0]["target_url"] == _BUNDLE_URL
+    assert rows[0]["sequence"] == 2
+
+
+@pytest.mark.parametrize(
+    ("sequence", "extension"),
+    [(number, "txt") for number in range(2, 27)] + [(4, "pdf")],
+)
+def test_numbered_exhibits_keep_the_observed_child_link(
+    sequence: int, extension: str
+) -> None:
+    filename = f"{sequence:04d}.{extension}"
     observed_url = f"{_ARCHIVE_ROOT}/{filename}"
     entry = {
         "entry_id": f"entry-{sequence}",

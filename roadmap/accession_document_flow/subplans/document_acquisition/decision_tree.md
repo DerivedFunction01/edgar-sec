@@ -5,27 +5,23 @@ inventory, target planning, and the proposed acquisition/processing handoffs. It
 separates implemented behavior, proposed behavior, and frozen legacy behavior; a
 calendar-era label is never a substitute for an observed locator or a pinned target.
 
-**Retrieval correction:** The user-supplied stub policy applies only when the primary
-path is exactly `/0000.txt`, `/0000.htm`, `/0001.txt`, or `/0001.htm` at the accession
-root. It is independent of form/date and based on prior experience. The SEC case below
-corroborates one `/0001.htm` filing only; it does not define the four-path scope or a
-form/date range. Nested paths and arbitrary suffix matches are excluded. S6 pins bundle
-mode for these targets only with an advertised bundle URL and observed positive sequence;
-catalog-only targets without sequence evidence remain unresolved. Other unlinked
-primaries remain unresolved; eligible unlinked exhibits retain their observed-sequence
-bundle behavior.
+**Retrieval correction:** A four-digit filename such as `0001.txt` is not itself a URL.
+For numbered child files, direct retrieval requires a validated archive URL whose final
+path component is `<accession>-<filename>`; a bare `<accession>/<filename>` path is not
+accepted. This applies beyond sequence 7. A catalog primary can use this same prefixed
+path from its validated archive URL or exact `primaryDocument` metadata. If that direct
+path is unavailable, only an eligible inventory target with an advertised bundle and an
+observed positive sequence can use `bundle_sequence`; otherwise it remains unresolved.
 
-The four root-level basenames are placeholder signals, not a form/date cohort. Catalog
-URL construction may qualify an exact SEC submissions `primaryDocument` as an
-accession-prefixed child href while preserving stub provenance; that URL is not S6/S9
-retrieval authorization. Secondary-document hrefs continue to come from the index and
-are not rewritten.
+`0000.txt` and `0000.htm` remain placeholder signals, not a form/date cohort. Catalog
+URL construction qualifies an exact numbered SEC submissions `primaryDocument` as an
+accession-prefixed child path; inventory links must match that same path convention.
+Secondary-document hrefs continue to come from the index and are not rewritten.
 
-**Sequence-name distinction:** Review analysis also observes `0001.txt` as a sequence-1
-primary and `0002.txt` through `0007.txt` as sequence-matched exhibit rows. These
-secondary names are ordinary indexed documents, not extensions of the primary-stub
-allowlist. Profile role and observed type/sequence/link determine the target; a numbered
-filename alone does not.
+**Sequence-name distinction:** Review analysis observes numbered child links whose leaf
+names run from `0001` through values beyond `0007`; the larger value is not an upper
+bound. Profile role, observed type/sequence, and the accession-prefixed link determine
+the target. Never derive a child URL from the display filename alone.
 
 ## Status and entry point
 
@@ -40,8 +36,9 @@ filename alone does not.
 - **Documentation reconciliation:** `implementation.md` reports S1–S6 implemented
   and `document_planning` has profile, catalog-scope, inventory-evidence, matching,
   publication, operator, and CLI modules. Current matching permits bundle-sequence
-  retrieval for eligible unlinked exhibits and exact-filename placeholder primaries only when
-  the required bundle URL and positive sequence are observed.
+  retrieval for eligible unlinked exhibits and exact-filename placeholder primaries only
+  when the required bundle URL and positive sequence are observed; numbered direct URLs
+  must use the accession-prefixed leaf form.
 - **Retired:** `document_storage`, its date/name candidate gate, full-submission fallback,
   and evaluator-driven delegation are not replacement behavior. Do not restore them or
   broaden S6's exact-filename placeholder policy with date/name heuristics.

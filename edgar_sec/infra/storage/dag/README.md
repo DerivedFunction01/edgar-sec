@@ -23,8 +23,9 @@ and provides two-tier retention analysis.
 - **Branch targeting**: Durable publishers resolve a named branch (default `main`); explicit non-main branches must exist and be tip-matched before publishing.
 - **Lineage vs. CAS**: A node's manifest `parents` are distinct from the branch-tip guard.
 - **Part range pruning & lineage caching**: Queries filter candidate Parquet parts by range bounds; lineage resolution is cached in-memory.
-- **Snapshot SQL console**: Opens the current `main` tip read-only and pins its lineage for the session; saved SQL is revalidated on every execution, and temporary result tables vanish at session close.
-- **Console exports**: Parquet exports are written outside the snapshot repository; SQL cannot name external file readers.
+- **Snapshot SQL console**: Limits the initial result page, pins the current `main` lineage for the session, and materializes a session-only paging table only when more rows are requested; saved SQL is revalidated on every execution.
+- **Saved queries**: SQL files live in the sibling `console/queries` directory outside the snapshot repository.
+- **Console exports**: Parquet exports are written outside the snapshot repository; SQL rejects external file readers and literal file sources.
 
 ## Command surface
 

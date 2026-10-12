@@ -161,7 +161,7 @@ def test_upsert_and_composite_scoped_mask(tmp_path: Path) -> None:
     lineage = walk_lineage(tmp_path, "d1")
     con = connect()
     try:
-        compile_virtual_views(con, specs, lineage, tmp_path)
+        compile_virtual_views(con, tuple(reversed(specs)), lineage, tmp_path)
         active_tgt = con.execute(
             "SELECT doc_path FROM active_targets WHERE accession = 'acc-1' AND request_id = 'primary'"
         ).fetchall()

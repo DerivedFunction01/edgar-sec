@@ -329,6 +329,7 @@ def _action_publish_staged(config: DAGMenuConfig) -> None:
 
 def _action_query_snapshot(config: DAGMenuConfig) -> None:
     from .console import SnapshotQueryError, run_snapshot_console
+    from .traversal import LineageError
 
     specs = config.resolve_specs()
     if not specs:
@@ -340,7 +341,7 @@ def _action_query_snapshot(config: DAGMenuConfig) -> None:
             specs,
             page_size=config.default_page_size or DEFAULT_PAGE_SIZE,
         )
-    except (FileNotFoundError, SnapshotQueryError) as exc:
+    except (FileNotFoundError, LineageError, SnapshotQueryError) as exc:
         print(f"Cannot open current snapshot: {exc}")
 
 

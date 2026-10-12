@@ -13,6 +13,7 @@ from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.console import (
     SnapshotQueryError,
     SnapshotQuerySession,
+    run_snapshot_console,
     validate_snapshot_query,
 )
 from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest, PartDescriptor
@@ -90,6 +91,17 @@ def test_query_results_page_and_materialize_for_session(tmp_path: Path) -> None:
             (10,),
             (20,),
         )
+        assert session.drop_temporary_table("picked")
+        assert not session.drop_temporary_table("picked")
+
+
+def test_large_query_preview_is_limited_until_more_is_requested(tmp_path: Path) -> None:
+    _publish(tmp_path, "first", [1])
+    with _session(tmp_path, page_size=2) as session:
+        first = session.execute("SELECT range AS i FROM range(1000000000)")
+        assert first.rows == ((0,), (1,))
+        assert first.has_more
+        assert session._spool_table is None
 
 
 def test_saved_sql_is_reloaded_and_validated_on_execution(tmp_path: Path) -> None:
@@ -153,3 +165,28 @@ def test_session_requires_current_pointer(tmp_path: Path) -> None:
     DAGCatalog(tmp_path)
     with pytest.raises(SnapshotQueryError, match="no current snapshot"):
         _session(tmp_path)
+
+
+def test_interactive_console_saves_preflights_and_runs_query(tmp_path: Path) -> None:
+    _publish(tmp_path, "first", [7])
+    answers = iter(
+        [
+            ":save sample",
+            "SELECT value FROM active_records",
+            "",
+            ":preflight sample",
+            ":run sample",
+            ":quit",
+        ]
+    )
+    output: list[str] = []
+    run_snapshot_console(
+        tmp_path,
+        (SPEC,),
+        page_size=2,
+        input_fn=lambda _prompt: next(answers),
+        output_fn=output.append,
+    )
+    assert any("Saved sample.sql" in line for line in output)
+    assert any("physical_plan" in line for line in output)
+    assert any("7" in line for line in output)

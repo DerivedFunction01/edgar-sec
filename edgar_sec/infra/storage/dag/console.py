@@ -186,26 +186,52 @@ class SnapshotQuerySession:
         self._pending_row: tuple[Any, ...] | None = None
         self._columns: tuple[str, ...] = ()
         self._last_select: str | None = None
+        self._select_has_more = False
+        self._select_offset = 0
+        self._spool_table: str | None = None
+        self._spool_sequence: str | None = None
         self._temporary_tables: set[str] = set()
 
     @property
     def saved_queries_root(self) -> Path:
         return self.paths.saved_queries_root
 
+    @property
+    def will_spool_more(self) -> bool:
+        return self._select_has_more and self._spool_table is None
+
     def execute(self, query: str) -> QueryPage:
-        self._last_select = None
-        self._cursor = None
-        self._pending_row = None
         normalized = validate_snapshot_query(query)
+        self._clear_page_state()
+        self._last_select = None
+        if _SELECT_START_RE.match(normalized):
+            self._last_select = normalized
+            self._cursor = self.connection.execute(
+                f"SELECT * FROM ({normalized}\n) AS _console_preview "
+                f"LIMIT {self.page_size + 1}"
+            )
+            self._columns = tuple(
+                str(item[0]) for item in self._cursor.description or ()
+            )
+            preview = self._cursor.fetchmany(self.page_size + 1)
+            self._select_has_more = len(preview) > self.page_size
+            self._select_offset = self.page_size
+            self._cursor = None
+            return QueryPage(
+                self._columns,
+                tuple(tuple(row) for row in preview[: self.page_size]),
+                self._select_has_more,
+            )
         cursor = self.connection.execute(normalized)
         description = cursor.description or ()
         self._cursor = cursor
         self._columns = tuple(str(item[0]) for item in description)
         self._pending_row = None
-        self._last_select = normalized if _SELECT_START_RE.match(normalized) else None
         return self._fetch_page()
 
     def next_page(self) -> QueryPage:
+        if self._select_has_more and self._last_select is not None:
+            return self._next_select_page()
         if self._cursor is None:
             return QueryPage((), (), False)
         return self._fetch_page()
@@ -214,12 +240,57 @@ class SnapshotQuerySession:
         normalized = validate_snapshot_query(query)
         if not _SELECT_START_RE.match(normalized):
             raise ValueError("preflight accepts SELECT or WITH queries only")
+        self._clear_page_state()
         cursor = self.connection.execute(f"EXPLAIN {normalized}")
         description = cursor.description or ()
         self._cursor = cursor
         self._columns = tuple(str(item[0]) for item in description)
         self._pending_row = None
         return self._fetch_page()
+
+    def _next_select_page(self) -> QueryPage:
+        if self._spool_table is None:
+            sequence = "_console_page_sequence"
+            column_names = {name.casefold() for name in self._columns}
+            while sequence.casefold() in column_names:
+                sequence += "_"
+            self._spool_table = "_console_page_spool"
+            self._spool_sequence = sequence
+            self.connection.execute(
+                f"CREATE OR REPLACE TEMP TABLE {sql_identifier(self._spool_table)} AS "
+                f"SELECT ROW_NUMBER() OVER () AS {sql_identifier(sequence)}, "
+                f"_console_source.* FROM ({self._last_select}\n) AS _console_source"
+            )
+        sequence_name = sql_identifier(self._spool_sequence or "")
+        cursor = self.connection.execute(
+            f"SELECT * EXCLUDE ({sequence_name}) "
+            f"FROM {sql_identifier(self._spool_table)} "
+            f"ORDER BY {sequence_name} LIMIT {self.page_size + 1} OFFSET ?",
+            [self._select_offset],
+        )
+        preview = cursor.fetchmany(self.page_size + 1)
+        has_more = len(preview) > self.page_size
+        rows = tuple(tuple(row) for row in preview[: self.page_size])
+        self._select_has_more = has_more
+        self._select_offset += len(rows)
+        if not has_more:
+            self._drop_page_spool()
+        return QueryPage(self._columns, rows, has_more)
+
+    def _clear_page_state(self) -> None:
+        self._drop_page_spool()
+        self._cursor = None
+        self._pending_row = None
+        self._select_has_more = False
+        self._select_offset = 0
+
+    def _drop_page_spool(self) -> None:
+        if self._spool_table is not None:
+            self.connection.execute(
+                f"DROP TABLE IF EXISTS {sql_identifier(self._spool_table)}"
+            )
+        self._spool_table = None
+        self._spool_sequence = None
 
     def save_query(self, name: str, query: str) -> Path:
         safe_name = validate_path_component(name, "saved query name")
@@ -267,6 +338,15 @@ class SnapshotQuerySession:
         self._temporary_tables.add(table)
         return table
 
+    def drop_temporary_table(self, name: str) -> bool:
+        safe_name = validate_path_component(name, "temporary table name")
+        table = f"console_{safe_name}"
+        if table not in self._temporary_tables:
+            return False
+        self.connection.execute(f"DROP TABLE {sql_identifier(table)}")
+        self._temporary_tables.remove(table)
+        return True
+
     def export_parquet(self, destination: Path | str) -> int:
         if self._last_select is None:
             raise ValueError("run a SELECT or WITH query before exporting")
@@ -279,7 +359,7 @@ class SnapshotQuerySession:
             pass
         else:
             raise ValueError("exports cannot be written inside the snapshot repository")
-        return copy_query_to_parquet(self.connection, self._last_select, path)
+        return copy_query_to_parquet(self.connection, self._last_select + "\n", path)
 
     def close(self) -> None:
         self.connection.close()
@@ -337,7 +417,7 @@ def _show_page(page: QueryPage, output_fn: Callable[[str], Any]) -> None:
 def _show_help(output_fn: Callable[[str], Any]) -> None:
     output_fn("SQL: enter one SELECT/WITH/DESCRIBE/SHOW/EXPLAIN query per line")
     output_fn(":tables | :schema NAME | :save NAME | :run NAME | :preflight NAME")
-    output_fn(":queries | :delete NAME | :more | :materialize NAME")
+    output_fn(":queries | :delete NAME | :more | :materialize NAME | :drop-table NAME")
     output_fn(":export FILE.parquet | :quit")
 
 
@@ -392,9 +472,19 @@ def _run_command(
                 "Deleted" if session.delete_query(args[0]) else "Saved query not found"
             )
         elif action == "more" and not args:
+            if session.will_spool_more:
+                output_fn(
+                    "Materializing query into a session temporary table for paging"
+                )
             _show_page(session.next_page(), output_fn)
         elif action == "materialize" and len(args) == 1:
             output_fn(f"Created temporary table {session.materialize(args[0])}")
+        elif action == "drop-table" and len(args) == 1:
+            output_fn(
+                "Dropped temporary table"
+                if session.drop_temporary_table(args[0])
+                else "Temporary table not found"
+            )
         elif action == "export" and len(args) == 1:
             count = session.export_parquet(args[0])
             output_fn(f"Exported {count} row(s) to {Path(args[0]).expanduser()}")

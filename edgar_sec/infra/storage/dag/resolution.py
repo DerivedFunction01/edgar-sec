@@ -35,6 +35,25 @@ def _empty_table_sql(spec: RelationSpec) -> str:
     return f"SELECT {', '.join(cols)} WHERE false"
 
 
+def _ordered_specs(specs: Sequence[RelationSpec]) -> tuple[RelationSpec, ...]:
+    ordered: list[RelationSpec] = []
+    remaining = list(specs)
+    names: set[str] = set()
+    while remaining:
+        ready = [
+            spec
+            for spec in remaining
+            if spec.merge_strategy != "scoped_mask" or spec.parent_relation in names
+        ]
+        if not ready:
+            raise ValueError("scoped-mask relations require an ordered parent spec")
+        for spec in ready:
+            ordered.append(spec)
+            names.add(spec.name)
+            remaining.remove(spec)
+    return tuple(ordered)
+
+
 def compile_virtual_views(
     con: duckdb.DuckDBPyConnection,
     specs: Sequence[RelationSpec],
@@ -45,10 +64,7 @@ def compile_virtual_views(
     root = Path(snapshots_root)
     view_names: dict[str, str] = {}
 
-    ordered_specs = sorted(
-        specs, key=lambda spec: 1 if spec.merge_strategy == "scoped_mask" else 0
-    )
-    for spec in ordered_specs:
+    for spec in _ordered_specs(specs):
         table_name = sql_identifier(spec.name)
         raw_name = sql_identifier(f"_raw_{spec.name}")
         active_name = sql_identifier(f"active_{spec.name}")

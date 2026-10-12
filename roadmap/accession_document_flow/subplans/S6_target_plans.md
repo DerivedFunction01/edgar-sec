@@ -182,9 +182,11 @@ Matching and outcome rules:
   direct archive URLs. A `matched` row means the catalog supplied a safe sequence-1
   locator; `catalog_metadata` does not verify that the linked body has the filing's
   statutory document type. S9 interprets the recorded selector after acquisition. An
-  envelope or missing primary is unresolved without inventory evidence. Exact placeholder
-  paths also remain unresolved in catalog-only planning because no sequence is
-  observed. A non-primary selector is refused; none is passed off as an index match.
+  envelope or missing primary is unresolved without inventory evidence. `0000.*`
+  placeholder paths remain unresolved in catalog-only planning because no sequence is
+  observed. Numbered direct primary paths use the accession-prefixed archive filename;
+  a bare numeric filename is not a locator. A non-primary selector is refused; none is
+  passed off as an index match.
 - Catalog-direct planning itself does not fetch or parse `-index.html`, inspect
   document bodies, infer type from filenames, or recover a target. An explicitly
   selected `exact_form_with_lazy_index` policy authorizes only the bounded S9 recovery
@@ -220,10 +222,11 @@ Matching and outcome rules:
 - For ordinary rows, current bundle-sequence matching is limited to eligible
   unlinked exhibits. A recognized SEC CIK/accession-directory `href` is not a document
   link; it can use bundle mode only with an observed positive sequence and advertised
-  bundle URL. An unlinked primary uses bundle mode only when its observed primary
-  filename exactly matches one of the four user-supplied placeholder names and both the bundle URL
-  and observed positive sequence are available. No form/date condition applies;
-  observed sequence is locator metadata, never evidence for target type or role.
+  bundle URL. Numbered direct files require an accession-prefixed archive leaf matching
+  the observed filename. An unlinked primary uses bundle mode only when its observed
+  primary filename exactly matches a placeholder name and both the bundle URL and
+  observed positive sequence are available. No form/date condition applies; observed
+  sequence is locator metadata, never evidence for target type or role.
 
 ## Planner interface and pluggable sources
 

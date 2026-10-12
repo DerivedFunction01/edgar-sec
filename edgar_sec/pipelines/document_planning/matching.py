@@ -31,6 +31,7 @@ _TARGET_STATUSES = {
     "constructed_candidate",
 }
 _COMPLETE_SUBMISSION_NAME = re.compile(r"\d{10}-\d{2}-\d{6}\.txt$")
+_NUMBERED_DOCUMENT_NAME = re.compile(r"\d{4}\.[A-Za-z0-9]+\Z", re.ASCII)
 
 
 def _is_placeholder_primary_path(document_path: str | None) -> bool:
@@ -69,9 +70,11 @@ def catalog_only_rows(
     catalog_urls_loaded = False
     rows = []
     for target in targets:
-        placeholder_primary = (
-            target.role == "primary" and _catalog_has_placeholder_primary(accession)
-        )
+        if not catalog_urls_loaded:
+            catalog_urls = _catalog_primary_urls(accession, identity)
+            catalog_urls_loaded = True
+        url = next(iter(catalog_urls)) if catalog_urls else None
+        placeholder_primary = target.role == "primary" and not url and _catalog_has_placeholder_primary(accession)
         if placeholder_primary:
             candidate = _Candidate(
                 None,
@@ -82,10 +85,6 @@ def catalog_only_rows(
                 "placeholder_primary_requires_bundle_sequence",
             )
         else:
-            if not catalog_urls_loaded:
-                catalog_urls = _catalog_primary_urls(accession, identity)
-                catalog_urls_loaded = True
-            url = next(iter(catalog_urls)) if catalog_urls else None
             candidate = _Candidate(
                 None, url, "direct_url" if url else "none", None, None
             )
@@ -132,18 +131,29 @@ def _catalog_primary_urls(
         if not primary or (document and document.casefold() != primary.casefold()):
             continue
         path = document or primary
+        numbered_path = _numbered_document_path(path)
+        if _is_placeholder_primary_path(path) and numbered_path is None:
+            continue
+        expected_path = (
+            _accession_numbered_document_path(canonical_accession, numbered_path)
+            if numbered_path
+            else path
+        )
         url = occurrence.archive_url
         if url:
             safe = _validated_archive_url(url, canonical_accession)
             parsed = parse_archive_url(safe)
-            if parsed is None or parsed.document_path.casefold() != path.casefold():
+            if (
+                parsed is None
+                or parsed.document_path.casefold() != expected_path.casefold()
+            ):
                 raise TargetMatchingError(
                     f"catalog primary URL disagrees with its path for {canonical_accession}"
                 )
         else:
             if not path or ".." in path.split("/") or "\\" in path:
                 continue
-            url = archives_url(occurrence.source_cik, canonical_accession, path)
+            url = archives_url(occurrence.source_cik, canonical_accession, expected_path)
             safe = _validated_archive_url(
                 url, canonical_accession, occurrence.source_cik
             )
@@ -289,9 +299,22 @@ def _entry_candidate(
     href = str(entry.get("href") or "").strip()
     bundle_url = str(accession_row.get("bundle_url") or "").strip()
     directory_href = False
-    if target.role == "primary" and _is_placeholder_primary_path(
-        str(entry.get("filename") or "")
-    ):
+    filename = str(entry.get("filename") or "").strip()
+    numbered_filename = _numbered_document_path(filename)
+    numbered_locator_mismatch = False
+    if target.role == "primary" and _is_placeholder_primary_path(filename):
+        numbered_url = _numbered_accession_url(
+            archive_url, filename, accession, expected_archive_cik
+        )
+        if numbered_url:
+            size = entry.get("byte_size")
+            return _Candidate(
+                entry_id,
+                numbered_url,
+                "direct_url",
+                None,
+                size if isinstance(size, int) and not isinstance(size, bool) else None,
+            )
         sequence = entry.get("sequence")
         if not isinstance(sequence, int) or isinstance(sequence, bool) or sequence < 1:
             return _Candidate(
@@ -341,10 +364,16 @@ def _entry_candidate(
                 bundle_url, accession, expected_archive_cik
             )
             resolved = urljoin(safe_bundle, observed)
-        urls.append(_validated_archive_url(resolved, accession, expected_archive_cik))
+        safe_url = _validated_archive_url(resolved, accession, expected_archive_cik)
+        if numbered_filename and not _has_accession_numbered_leaf(
+            safe_url, accession, numbered_filename
+        ):
+            numbered_locator_mismatch = True
+            continue
+        urls.append(safe_url)
     if urls:
         distinct = set(urls)
-        if len(distinct) != 1:
+        if len(distinct) != 1 or numbered_locator_mismatch:
             raise TargetMatchingError(
                 f"inventory archive_url and href disagree for {entry_id}"
             )
@@ -356,7 +385,7 @@ def _entry_candidate(
             None,
             size if isinstance(size, int) and not isinstance(size, bool) else None,
         )
-    if archive_url or (href and not directory_href):
+    if (archive_url or (href and not directory_href)) and not numbered_locator_mismatch:
         raise TargetMatchingError(f"unsafe inventory locator for {entry_id}")
     sequence = entry.get("sequence")
     if target.role == "exhibit" and sequence is not None and bundle_url:
@@ -372,6 +401,39 @@ def _entry_candidate(
             size if isinstance(size, int) and not isinstance(size, bool) else None,
         )
     return _Candidate(entry_id, None, "none", None, None, "no_usable_retrieval_locator")
+
+
+def _numbered_document_path(path: str | None) -> str | None:
+    if not path or not _NUMBERED_DOCUMENT_NAME.fullmatch(path):
+        return None
+    return path if int(path[:4]) > 0 else None
+
+
+def _accession_numbered_document_path(accession: str, filename: str) -> str:
+    return f"{AccessionNumber.from_any(accession)}-{filename}"
+
+
+def _has_accession_numbered_leaf(url: str, accession: str, filename: str) -> bool:
+    parsed = parse_archive_url(url)
+    expected = _accession_numbered_document_path(accession, filename)
+    return parsed is not None and parsed.document_path.casefold() == expected.casefold()
+
+
+def _numbered_accession_url(
+    url: str,
+    filename: str,
+    accession: str,
+    expected_archive_cik: str | None,
+) -> str | None:
+    numbered_filename = _numbered_document_path(filename)
+    if not url or not numbered_filename:
+        return None
+    safe = _validated_archive_url(url, accession, expected_archive_cik)
+    return (
+        safe
+        if _has_accession_numbered_leaf(safe, accession, numbered_filename)
+        else None
+    )
 
 
 def _is_directory_only_archive_locator(locator: str, accession: str) -> bool:
