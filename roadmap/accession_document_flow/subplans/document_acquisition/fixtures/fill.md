@@ -1,4 +1,4 @@
-# `acquisition fixture capture`
+# `acquisition fixture fill`
 
 ## Purpose and status
 
@@ -10,7 +10,7 @@ SQLite fixture.
 ## CLI and operator
 
 ```text
-acquisition fixture capture --fixture-id <id> --run-id <run-id> --target-id <id> --attempt-id <id> [--max-response-bytes <positive-int>]
+acquisition fixture fill --fixture <id> --run-id <run-id> --target-id <id> --attempt-id <id> [--max-response-bytes <positive-int>]
 ```
 
 All four IDs identify the fixture and exact attempt; capture does not silently choose
@@ -60,10 +60,10 @@ def capture_fixture_case(
 
 ## Deliberate gaps
 
-- **S10 handoff and publication**: fixture capture does not provide the separate M5
-  receipt/consumer handoff or S10/M7 processing integration, and it does not publish
-  S11/M9 payloads. Historical corpus/family evaluation and distribution remain separate
-  or gated work.
+- **Processing remains separate**: fixture fill does not itself run S10 or create a
+  consumption receipt. The offline M7a review path composes processing separately; it
+  does not publish S11/M9 payloads. Historical corpus/family evaluation and distribution
+  remain separate or gated work.
 
 ## Tests
 

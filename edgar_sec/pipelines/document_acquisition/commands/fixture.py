@@ -40,28 +40,28 @@ def _fixture_error(command: str, args: argparse.Namespace, error: Exception) -> 
 def cmd_fixture_create(args: argparse.Namespace) -> int:
     try:
         paths = resolve_acquisition_paths(artifacts_root=args.artifacts)
-        root = create_fixture(args.fixture_id, paths=paths)
+        root = create_fixture(args.fixture, paths=paths)
     except (OSError, RuntimeError, sqlite3.Error, ValueError) as error:
         return _fixture_error("create", args, error)
     payload = {
         "command": "fixture create",
-        "fixture_id": args.fixture_id,
+        "fixture_id": args.fixture,
         "path": str(root),
         "status": "created",
     }
     if args.json:
         print(json.dumps(payload, sort_keys=True))
     else:
-        print(f"created fixture {args.fixture_id}: {root}")
+        print(f"created fixture {args.fixture}: {root}")
     return 0
 
 
-def cmd_fixture_capture(args: argparse.Namespace) -> int:
+def cmd_fixture_fill(args: argparse.Namespace) -> int:
     try:
         max_response_bytes = response_byte_limit(args.max_response_bytes)
         paths = resolve_acquisition_paths(artifacts_root=args.artifacts)
         result = capture_fixture_case(
-            args.fixture_id,
+            args.fixture,
             args.run_id,
             args.target_id,
             args.attempt_id,
@@ -76,8 +76,8 @@ def cmd_fixture_capture(args: argparse.Namespace) -> int:
         TypeError,
         ValueError,
     ) as error:
-        return _fixture_error("capture", args, error)
-    payload = {"command": "fixture capture", **asdict(result), "status": "captured"}
+        return _fixture_error("fill", args, error)
+    payload = {"command": "fixture fill", **asdict(result), "status": "filled"}
     if args.json:
         print(json.dumps(payload, sort_keys=True))
     else:
@@ -88,7 +88,7 @@ def cmd_fixture_capture(args: argparse.Namespace) -> int:
         )
         reused = ", reused response" if result.reused_response else ""
         print(
-            f"captured {result.fixture_id}/{result.capture_id}/{result.target_id}: "
+            f"filled {result.fixture_id}/{result.capture_id}/{result.target_id}: "
             f"{result.acquisition_status}{body}{reused}"
         )
     return 0
@@ -111,13 +111,13 @@ def cmd_fixture_list(args: argparse.Namespace) -> int:
     try:
         paths = resolve_acquisition_paths(artifacts_root=args.artifacts)
         fixtures = list_fixtures(paths)
-        if args.fixture_id is not None:
+        if args.fixture is not None:
             fixtures = (
-                fixture_id for fixture_id in fixtures if fixture_id == args.fixture_id
+                fixture_id for fixture_id in fixtures if fixture_id == args.fixture
             )
         cases = list_fixture_cases(
             paths,
-            fixture_id=args.fixture_id,
+            fixture_id=args.fixture,
             capture_id=args.capture_id,
             target_id=args.target_id,
         )
@@ -156,7 +156,7 @@ def cmd_fixture_replay(args: argparse.Namespace) -> int:
     try:
         paths = resolve_acquisition_paths(artifacts_root=args.artifacts)
         result = replay_fixture_case(
-            args.fixture_id,
+            args.fixture,
             args.capture_id,
             args.target_id,
             Path(args.output),

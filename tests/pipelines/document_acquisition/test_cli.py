@@ -19,8 +19,8 @@ def test_parser_registers_independent_acquisition_tracks() -> None:
         ["publish", "--run-id", "run-1"],
         [
             "fixture",
-            "capture",
-            "--fixture-id",
+            "fill",
+            "--fixture",
             "f-1",
             "--run-id",
             "run-1",
@@ -31,11 +31,11 @@ def test_parser_registers_independent_acquisition_tracks() -> None:
             "--max-response-bytes",
             "1024",
         ],
-        ["fixture", "create", "--fixture-id", "f-1"],
+        ["fixture", "create", "--fixture", "f-1"],
         [
             "fixture",
             "list",
-            "--fixture-id",
+            "--fixture",
             "f-1",
             "--capture-id",
             "cap-1",
@@ -45,7 +45,7 @@ def test_parser_registers_independent_acquisition_tracks() -> None:
         [
             "fixture",
             "replay",
-            "--fixture-id",
+            "--fixture",
             "f-1",
             "--capture-id",
             "cap-1",
@@ -54,7 +54,8 @@ def test_parser_registers_independent_acquisition_tracks() -> None:
             "--output",
             "response.bin",
         ],
-        ["review", "build", "--run-id", "run-1"],
+        ["review", "generate", "--fixture", "f-1"],
+        ["review", "compare", "--base", "left", "--new", "right"],
         ["snapshot", "audit"],
     ):
         assert parser.parse_args(args)
@@ -67,8 +68,8 @@ def test_response_ceiling_options_are_optional_but_positive_when_supplied() -> N
     parsed_capture = cli.build_parser().parse_args(
         [
             "fixture",
-            "capture",
-            "--fixture-id",
+            "fill",
+            "--fixture",
             "f-1",
             "--run-id",
             "run-1",
@@ -83,8 +84,8 @@ def test_response_ceiling_options_are_optional_but_positive_when_supplied() -> N
         ["run", "--run-id", "run-1", "--max-response-bytes", "0"],
         [
             "fixture",
-            "capture",
-            "--fixture-id",
+            "fill",
+            "--fixture",
             "f-1",
             "--run-id",
             "run-1",
@@ -111,16 +112,41 @@ def test_publish_todo_reports_gate_and_does_not_claim_publication(
     assert "representative S9/S10 evidence and explicit approval" in payload["message"]
 
 
-def test_review_and_snapshot_commands_keep_separate_placeholder_handlers(
-    capsys: pytest.CaptureFixture[str],
+def test_review_generate_and_snapshot_have_separate_handlers(
+    tmp_path, monkeypatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
-    review_result = cli.main(["review", "build", "--run-id", "run-1", "--json"])
-    review = json.loads(capsys.readouterr().out)
+    calls = []
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_acquisition.review_adapter.cmd_review_artifacts",
+        lambda args: calls.append(args) or 0,
+    )
+    review_result = cli.main(
+        [
+            "review",
+            "generate",
+            "--fixture",
+            "fixture-1",
+            "--capture-id",
+            "capture-1",
+            "--target-id",
+            "target-1",
+            "--output",
+            str(tmp_path / "review"),
+            "--artifacts",
+            str(tmp_path),
+            "--json",
+        ]
+    )
     snapshot_result = cli.main(["snapshot", "status", "--json"])
     snapshot = json.loads(capsys.readouterr().out)
 
-    assert review_result == snapshot_result == 2
-    assert review["command"] == "review build"
+    assert review_result == 0
+    assert calls[0].fixture == "fixture-1"
+    assert calls[0].capture_id == "capture-1"
+    assert calls[0].target_id == "target-1"
+    assert calls[0].output == str(tmp_path / "review")
+    assert calls[0].json
+    assert snapshot_result == 2
     assert snapshot["command"] == "snapshot status"
     assert snapshot["status"] == "not_implemented"
     assert "No acquisition snapshot is published" in snapshot["message"]

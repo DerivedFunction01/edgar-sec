@@ -88,8 +88,9 @@ The package should remain split by contract rather than by command spelling alon
 | `distribution_adapter.py` | Adapt acquisition work and outputs to shared distribution infrastructure. |
 | `snapshot/` | **Gated** acquisition-owned binary/text Parquet relations and publication over the shared DAG kernel; no S11 adapter exists yet. |
 | `fixture_store/` and `fixture_operator.py` | Store and discover Zstandard-compressed response evidence; wire exact-attempt capture, read-only listing, and local replay for retained direct bodies and bodyless failures. Bundle/lazy capture and managed S10 replay staging remain incomplete. |
-| `processing.py` | Gated S10 per-target processing and versioned result publication to transient staging; not implemented. |
-| `cli.py` and `operator.py` | Project, status, run, and fixture create/capture/list/replay are wired; process/review and S11 tracks remain fail-closed or gated. |
+| `processing.py` | Partial S10 per-target processing with family-operation validation, raw/TEXT passthrough, and receipt recording. |
+| `review_artifacts/` | Fixture-backed processing review generation in the shared review-run manifest/case layout. |
+| `cli.py` and `operator.py` | Project/run, fixture create/fill/list/replay, review generate/compare, and S11-gated publish surfaces. Run-level processing and publication remain incomplete. |
 
 No `__init__.py` barrel exports. Module names are a design proposal; implementation
 may consolidate small command adapters, but it must retain these ownership boundaries

@@ -108,23 +108,23 @@ def _action_fixture_create() -> None:
     if not fixture_id:
         print("Fixture creation cancelled.")
         return
-    cli_main(["fixture", "create", "--fixture-id", fixture_id])
+    cli_main(["fixture", "create", "--fixture", fixture_id])
 
 
-def _action_fixture_capture() -> None:
+def _action_fixture_fill() -> None:
     fixture_id = prompt_text("Fixture ID").strip()
     run_id = prompt_text("Run ID").strip()
     target_id = prompt_text("Target ID").strip()
     attempt_id = prompt_text("Attempt ID").strip()
     if not all((fixture_id, run_id, target_id, attempt_id)):
-        print("Fixture capture cancelled: all IDs are required.")
+        print("Fixture fill cancelled: all IDs are required.")
         return
 
     try:
         default_limit = _configured_response_byte_limit()
     except (KeyError, TypeError, ValueError) as error:
         print(
-            f"Fixture capture cancelled: invalid configured response-byte limit ({error})."
+            f"Fixture fill cancelled: invalid configured response-byte limit ({error})."
         )
         return
     response_limit = prompt_text(
@@ -133,7 +133,7 @@ def _action_fixture_capture() -> None:
     try:
         response_limit_bytes = positive_int_type(response_limit or str(default_limit))
     except ValueError:
-        print("Fixture capture cancelled: enter a positive response-byte limit.")
+        print("Fixture fill cancelled: enter a positive response-byte limit.")
         return
 
     confirm = (
@@ -142,14 +142,14 @@ def _action_fixture_capture() -> None:
         .lower()
     )
     if confirm != "yes":
-        print("Fixture capture cancelled; no evidence was retained.")
+        print("Fixture fill cancelled; no evidence was retained.")
         return
 
     cli_main(
         [
             "fixture",
-            "capture",
-            "--fixture-id",
+            "fill",
+            "--fixture",
             fixture_id,
             "--run-id",
             run_id,
@@ -169,7 +169,7 @@ def _action_fixture_list() -> None:
     target_id = prompt_text("Target ID filter (optional)").strip()
     args = ["fixture", "list"]
     for option, value in (
-        ("--fixture-id", fixture_id),
+        ("--fixture", fixture_id),
         ("--capture-id", capture_id),
         ("--target-id", target_id),
     ):
@@ -196,7 +196,7 @@ def _action_fixture_replay() -> None:
         [
             "fixture",
             "replay",
-            "--fixture-id",
+            "--fixture",
             fixture_id,
             "--capture-id",
             capture_id,
@@ -208,6 +208,33 @@ def _action_fixture_replay() -> None:
     )
 
 
+def _action_review_generate() -> None:
+    fixture_id = prompt_text("Fixture ID").strip()
+    if not fixture_id:
+        print("Review generation cancelled: fixture ID is required.")
+        return
+    args = ["review", "generate", "--fixture", fixture_id]
+    capture_id = prompt_text("Capture ID filter (optional)").strip()
+    target_id = prompt_text("Target ID filter (optional)").strip()
+    output = prompt_text("Review output directory (optional)").strip()
+    if capture_id:
+        args.extend(("--capture-id", capture_id))
+    if target_id:
+        args.extend(("--target-id", target_id))
+    if output:
+        args.extend(("--output", output))
+    cli_main(args)
+
+
+def _action_review_compare() -> None:
+    base = prompt_text("Base review run directory").strip()
+    new = prompt_text("New review run directory").strip()
+    if not all((base, new)):
+        print("Review comparison cancelled: both run directories are required.")
+        return
+    cli_main(["review", "compare", "--base", base, "--new", new])
+
+
 def build_operator_menu() -> tuple[MenuAction, ...]:
     return build_menu(
         menu_action("Project a target plan", _action_project),
@@ -217,14 +244,15 @@ def build_operator_menu() -> tuple[MenuAction, ...]:
         _action("publish", "Publish snapshot (S11 gate)"),
         menu_action("Create local fixture", _action_fixture_create),
         menu_action(
-            "Capture local fixture evidence (confirmation required)",
-            _action_fixture_capture,
+            "Fill local fixture evidence (confirmation required)",
+            _action_fixture_fill,
         ),
         menu_action("List local fixtures", _action_fixture_list),
         menu_action(
             "Replay local fixture (confirmation required)", _action_fixture_replay
         ),
-        _action("review build", "Review artifact console (build, compare)"),
+        menu_action("Generate review artifacts", _action_review_generate),
+        menu_action("Compare review runs", _action_review_compare),
         _action("snapshot status", "Snapshot status/evidence audit (S11 gate)"),
     )
 

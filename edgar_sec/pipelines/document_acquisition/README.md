@@ -30,10 +30,11 @@ The CLI implements project, status, run, and fixture tracks. Capture and replay 
 
 - **No family-aware identity screen**: The catalog-direct exact-form selector records direct-body evidence as unverifiable and uses lazy-index lookup; text evidence cannot override the pinned target form or exact index `document_type`.
 - **Bounded fixture evidence**: Direct successful bodies and bodyless failures can be captured without response retention. Bundle-source and lazy-index capture requires opt-in run-level response retention and is refused when complete evidence is unavailable; replay writes verified selected bytes only to a new caller-selected path.
-- **Partial S10 worker**: `process_target` currently validates one explicit request, supports raw identity and text-route byte identity, and records the S9 receipt. Real export handlers, bundle-child route identity, a coordinator, and review integration remain unavailable; unsupported handlers are not simulated.
+- **Partial S10 worker**: `process_target` validates one explicit request, enforces form-family operation permissions, supports raw identity and pinned text-route byte identity, and records the S9 receipt. Other transforms remain explicit unsupported outcomes; bundle-child route identity and a run coordinator remain unavailable.
 - **Result preflight only**: `result_projection.project_terminal_results` validates explicit request/result pairs and staged references in memory, independent of processor activity. The v1 run contract persists no operation intent/results, so this is not full-run projection or a snapshot writer.
+- **Fixture review boundary**: `review generate` replays captured evidence and writes shared-layout processing review records for retained S9 runs. Cases requiring an unavailable transform or missing retained run body are recorded as failures; review records are not persisted S9/S11 results.
 - **No publication**: S11 Parquet/DAG publication remains absent and requires representative S9/S10 evidence and explicit approval.
-- **No S7d review builder**: S10 result metadata exists, but cross-run content review contracts are not implemented, so review build/compare remain placeholders rather than fabricated reports.
+- **No full transform review**: Review generation currently exercises raw identity and pinned TEXT passthrough; reviewer labels, non-identity renderers, and exhibit assessment remain future work.
 - **No snapshot reader**: Acquisition snapshot relations and a published acquisition DAG do not exist; snapshot status/audit are gate-aware placeholders, not queries against S5/S6 or legacy storage.
 - **No cost-based selection or bundle grouping**: Child, complete-submission, and
   S1-reported sizes remain distinct evidence and do not select transport. A
@@ -48,11 +49,11 @@ The CLI implements project, status, run, and fixture tracks. Capture and replay 
 <!-- AUTOGEN:COMMANDS:START -->
 | Subcommand | Description | Arguments |
 | :--- | :--- | :--- |
-| `fixture` | manage S9 response fixtures | — |
+| `fixture` | manage S9 response fixtures (`create`, `fill`, `list`, `replay`) | — |
 | `process` | process acquired target bodies | `--run-id`, `[--workers]`, `[--artifacts]`, `[--json]` |
 | `project` | project a published S6 target plan | `--plan-id`, `[--artifacts]`, `[--json]` |
 | `publish` | publish an approved S11 snapshot | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--artifacts]`, `[--json]` |
-| `review` | build and compare review artifacts | — |
+| `review` | generate and compare fixture-backed review artifacts (`generate`, `compare`) | — |
 | `run` | acquire pending S9 target bodies | `--run-id`, `[--retry-failures]`, `[--retain-response-evidence]`, `[--workers]`, `[--max-response-bytes]`, `[--confirm-stale-lock]`, `[--artifacts]`, `[--json]` |
 | `snapshot` | inspect S11 status and evidence | — |
 | `status` | inspect resumable acquisition runs | `[--run-id]`, `[--target-id]`, `[--artifacts]`, `[--json]` |
@@ -64,10 +65,12 @@ The CLI implements project, status, run, and fixture tracks. Capture and replay 
 python run.py acquisition --help
 python run.py acquisition project --help
 python run.py acquisition run --help
-python run.py acquisition fixture create --fixture-id local-review
-python run.py acquisition fixture capture --help
-python run.py acquisition fixture list --fixture-id local-review
-python run.py acquisition fixture replay --fixture-id local-review --capture-id CAPTURE --target-id TARGET --output ./replayed-body.bin
+python run.py acquisition fixture create --fixture local-review
+python run.py acquisition fixture fill --fixture local-review --run-id RUN --target-id TARGET --attempt-id ATTEMPT
+python run.py acquisition fixture list --fixture local-review
+python run.py acquisition fixture replay --fixture local-review --capture-id CAPTURE --target-id TARGET --output ./replayed-body.bin
+python run.py acquisition review generate --fixture local-review --capture-id CAPTURE --target-id TARGET
+python run.py acquisition review compare --base ./review-runs/run-BASE --new ./review-runs/run-NEW
 ```
 
 ## Artifact layout
@@ -81,6 +84,11 @@ python run.py acquisition fixture replay --fixture-id local-review --capture-id 
 │   │       ├── fixture.sqlite
 │   │       └── manifest.json
 │   ├── review-runs/
+│   │   └── {review_id}/
+│   │       ├── cases/
+│   │       │   └── {accession}--{case_digest}/
+│   │       │       └── processing-review.json
+│   │       └── manifest.jsonl
 │   └── snapshots/
 │       └── {snapshot_id}/
 ├── document_planning/
@@ -103,4 +111,4 @@ python run.py acquisition fixture replay --fixture-id local-review --capture-id 
 ```
 <!-- AUTOGEN:PATHS:END -->
 
-Processing CLI orchestration, review, and snapshot command tracks remain unimplemented or gated. The per-target worker itself performs no HTTP requests. Fixture capture and replay do not initiate SEC requests or publish S11 artifacts.
+Run-level processing orchestration and snapshot publication remain unimplemented or gated. Review generation uses retained S9 run artifacts and fixture evidence; per-target processing, fixture replay, review generation, and review comparison perform no HTTP requests or publish S11 artifacts.

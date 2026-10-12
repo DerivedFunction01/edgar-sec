@@ -9,6 +9,11 @@ from datetime import UTC, datetime
 import pyarrow as pa
 
 from edgar_sec.domain.document.route import DocumentRoute, document_route
+from edgar_sec.domain.forms.common.processing import (
+    AcquisitionOperation,
+    DEFAULT_OPERATIONS,
+)
+from edgar_sec.domain.forms.families.processing_profiles import get_family_profile
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import validate_archive_url
 from edgar_sec.foundation.hashing import is_sha256_hex_digest
@@ -349,6 +354,20 @@ def _validate_operations(operations: tuple[OperationRequest, ...]) -> None:
         seen.add(operation.operation_id)
 
 
+def _validate_family_operations(request: ProcessingRequest) -> None:
+    profile = get_family_profile(request.form)
+    allowed = profile.allowed_operations if profile is not None else DEFAULT_OPERATIONS
+    for operation in request.operations:
+        if (
+            operation.requested
+            and operation.support_status == "supported"
+            and AcquisitionOperation(operation.operation) not in allowed
+        ):
+            raise ProcessingError(
+                "requested operation is not allowed by the form-family profile"
+            )
+
+
 def _processing_id(
     request: ProcessingRequest, route: DocumentRoute, effective_path: str
 ) -> str:
@@ -422,6 +441,7 @@ def process_target(
     try:
         validate_safe_id(request.target_id, "target_id")
         _validate_operations(request.operations)
+        _validate_family_operations(request)
         row = _target_row(paths, request)
         route, effective_path = _effective_route(paths, request, row)
         verified_body = get_staged_body_ref(

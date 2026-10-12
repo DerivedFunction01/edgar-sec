@@ -28,12 +28,13 @@ the details below are the layer-level contracts only.
   from a digest-pinned filing-catalog plan and an optional immutable inventory
   snapshot. It publishes no acquisition work.
 - [`document_acquisition/`](document_acquisition/README.md) — S9 work-order projection,
-  bounded SEC acquisition, and run-state/fixture management. S10 processing and
-  S11 publication remain gated or deferred. Its [`commands/`](document_acquisition/commands/README.md)
+  bounded SEC acquisition, fixture management, partial offline S10 processing, and
+  shared fixture-backed review. S11 publication remains gated. Its [`commands/`](document_acquisition/commands/README.md)
   package owns CLI handlers; [`plan_projection/`](document_acquisition/plan_projection/README.md)
   validates S6 bundles and creates bounded work orders; [`fixture_store/`](document_acquisition/fixture_store/README.md)
   owns compressed response evidence and replay; [`run_state/`](document_acquisition/run_state/README.md)
-  owns the per-run SQLite ledger and locks.
+  owns the per-run SQLite ledger and locks; [`review_artifacts/`](document_acquisition/review_artifacts/README.md)
+  writes shared-layout processing review evidence.
 - [`cohort/`](cohort/README.md) — Phase 0 cohort registry; manages shared cohort
   records and workspace expressions before metadata collection begins.
 

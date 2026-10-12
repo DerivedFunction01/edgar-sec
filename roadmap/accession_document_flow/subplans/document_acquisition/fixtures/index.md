@@ -3,7 +3,7 @@
 ## Purpose and status
 
 Retain selected acquisition evidence and replay it without network access. The v3
-SQLite store, CLI commands, and operator actions for create/capture/list/replay are
+SQLite store, CLI commands, and operator actions for create/fill/list/replay are
 implemented. Capture supports direct responses, bundle responses, and complete
 lazy-index response groups when their evidence was retained during acquisition; a
 bodyless failed attempt can also be captured as metadata. Full response-evidence
@@ -16,21 +16,21 @@ through the current store.
 ## CLI and operator shape
 
 ```text
-acquisition fixture create --fixture-id <id>
-acquisition fixture capture --fixture-id <id> --run-id <run-id> --target-id <id> --attempt-id <id> [--max-response-bytes <positive-int>]
-acquisition fixture list [--fixture-id <id>] [--capture-id <id>] [--target-id <id>]
-acquisition fixture replay --fixture-id <id> --capture-id <id> --target-id <id> --output <new-path>
+acquisition fixture create --fixture <id>
+acquisition fixture fill --fixture <id> --run-id <run-id> --target-id <id> --attempt-id <id> [--max-response-bytes <positive-int>]
+acquisition fixture list [--fixture <id>] [--capture-id <id>] [--target-id <id>]
+acquisition fixture replay --fixture <id> --capture-id <id> --target-id <id> --output <new-path>
 ```
 
 For bundle or lazy-index response groups, enable retention on the acquisition run with
-`acquisition run --run-id <run-id> --retain-response-evidence`. Capture requires the
+`acquisition run --run-id <run-id> --retain-response-evidence`. Fill requires the
 evidence to have been retained then; it does not fetch or reconstruct missing responses.
 
 `--json` selects stable machine-readable output and `--artifacts` overrides the
-resolved artifact root. The operator exposes the same four actions. Capture asks for a
+resolved artifact root. The operator exposes the same four actions. Fill asks for a
 default-no evidence-retention confirmation; replay asks for a default-no confirmation
 before writing its selected output path. Listing is read-only. Create refuses an
-existing fixture ID. Capture uses the configured `acquisition.max_response_bytes`
+existing fixture ID. Fill uses the configured `acquisition.max_response_bytes`
 default unless an explicit positive override is supplied.
 
 ## Implemented APIs
@@ -89,9 +89,10 @@ reference or consumption receipt.
 - Capture accepts only the current unsuperseded attempt group. If a later target attempt
   has superseded that group's terminal attempt, capture refuses it; this is not an
   arbitrary historical-attempt capture API.
-- Captured bytes are fixture evidence only. Capture does not implement the separate M5
-  receipt/consumer handoff or S10/M7 work, nor does it publish S11/M9 payloads. Historical
-  corpus/family evaluation and acquisition distribution remain separate or gated work.
+- Captured bytes are fixture evidence only. Fill itself does not process bodies or create
+  receipts; M7a separately composes fixture replay, S10 processing, and result projection.
+  Neither path publishes S11/M9 payloads. Historical corpus/family evaluation and
+  acquisition distribution remain separate or gated work.
 
 ## Listing and replay
 
@@ -107,17 +108,35 @@ reference or consumption receipt.
 - Acquired replay writes only to a new explicit caller-selected path and refuses
   existing files. A bodyless failed case returns recorded metadata and creates no
   output file. Replay makes no HTTP request and does not mutate fixture data.
-- There is no managed durable replay staging API or S10 handoff. S11 publication
-  remains gated on representative S9/S10 evidence and explicit approval; fixture
-  BLOBs are not snapshot payloads.
+- There is no managed fixture-replay-to-S10 staging API. S11 publication remains gated on
+  representative S9/S10 evidence and explicit approval; fixture BLOBs are not snapshot
+  payloads.
 
 ## Detailed contracts
 
 The command family is split by mutation and integrity boundary:
 
-- [Capture cases](capture.md)
+- [Fill fixture cases](fill.md)
 - [List fixture evidence](list.md)
 - [Replay a captured case](replay.md)
+
+## Review console
+
+Review artifacts are generated and compared with the shared review console:
+
+```text
+acquisition review generate --fixture <id> [--capture-id <id>] [--target-id <id>]
+acquisition review compare --base <review-dir> --new <review-dir>
+```
+
+The shared run layout contains `manifest.jsonl` and one `processing-review.json` per
+case. Review generation is offline and currently requires the captured S9 run body to
+remain available; compare uses the same case-level review diff mechanism as inventory.
+
+## Detailed contracts
+
+The command family is split by mutation and integrity boundary:
+
 - [SQLite schema and BLOB lifecycle](storage.md)
 
 Only [fixture storage](storage.md) owns SQL, schema migration, and body persistence;

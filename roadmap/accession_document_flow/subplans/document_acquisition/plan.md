@@ -55,18 +55,24 @@ Status markers are maintained against tracked code and focused offline tests:
   immutable receipt. Runner cleanup retains the body; receipts do not authorize cleanup.
 - [~] **M6 — S10 processing:** `process_target` validates an explicit v1 work-order
   target and staged body, returns deterministic raw identity results (plus text identity
-  on the `TEXT` route), and records the S9 receipt. Offline fixture tests cover the
-  worker. A schema-neutral in-memory result preflight consumes explicit terminal request/
-  result pairs without processor-liveness checks. Operation-intent persistence, export
-  renderers, bundle-child route identity, full-run projection, and S11 remain unavailable.
-- [ ] **M7 — Offline S9/S10 composition:** the test that composes fixture replay,
-  `process_target`, actual request/result projection, and receipt verification
-  is not implemented. It consumes a captured local fixture and does not require the M3
-  live runner or M4 operator. Runner/retry lifecycle integration is a separate M7b gate.
+  on the `TEXT` route), enforces form-family operation permissions, and records the S9
+  receipt. Offline fixture tests cover the worker. A schema-neutral in-memory result
+  preflight consumes explicit terminal request/result pairs without processor-liveness
+  checks. Operation-intent persistence, export renderers, bundle-child route identity,
+  full-run projection, and S11 remain unavailable.
+- [x] **M7a — Offline S9/S10 composition:** captured direct-TEXT fixture replay,
+  `process_target`, actual request/result projection, receipt verification, stable
+  fingerprint, staged-output integrity, and unavailable-operation placeholders are
+  covered in an offline integration test. It does not require the M3 live runner or M4
+  operator. Runner/retry lifecycle integration remains a separate M7b gate.
+- [ ] **M7b — Runner lifecycle integration:** runner/retry/cleanup verification over
+  fixture-backed processing remains incomplete.
 - [~] **M8 — Exhibit/identity development:** source-backed profiles and declarative packs
-  exist in `domain/forms/exhibits/`; no S10 body evaluator, acquisition review-artifact
-  CLI, or fixture-label workflow is wired. Offline evaluator/review development is not
-  blocked on a holdout. Holdout metrics and activation remain separate acceptance gates.
+  exist in `domain/forms/exhibits/`; the offline S9/S10 composition now emits a
+  deterministic processing review artifact through the shared `review generate` and
+  `review compare` console. No S10 body evaluator or fixture-label workflow is wired.
+  Offline evaluator/review development is not blocked on a holdout. Holdout metrics and
+  activation remain separate acceptance gates.
   Full duplicate/owner reconciliation of candidate signals also remains open and is
   required before activating a family, not before building review tooling or evaluating
   an unambiguous candidate.
@@ -715,8 +721,8 @@ same command behavior.
 - **Pack ownership reconciliation:** the full D5 duplicate/owner audit remains open.
   It blocks activation of unresolved pack identities, not development or holdout
   measurement for an unambiguous candidate.
-- **Acquisition review CLI:** S7d is not implemented. It is an explicit M8a deliverable;
-  the inventory parser-review CLI does not review acquisition/processing results.
+- **Exhibit label workflow:** S7d now generates and compares processing review artifacts,
+  but no human annotation/label workflow or exhibit evaluator is wired.
 - **Artificial sequencing removed:** fixture-only M7a and M8a work does not wait for a
   live M3 run or full M4 operator path. Those remain separate integration milestones.
 - **External legacy artifact migration and full S12 vertical integration:** require

@@ -9,8 +9,8 @@ import sys
 
 from edgar_sec.foundation.runtime.settings.validators import positive_int_type
 from edgar_sec.pipelines.document_acquisition.commands.fixture import (
-    cmd_fixture_capture,
     cmd_fixture_create,
+    cmd_fixture_fill,
     cmd_fixture_list,
     cmd_fixture_replay,
 )
@@ -28,12 +28,11 @@ _TRACKS = {
     "process": "S10 body processing",
     "publish": "S11 Parquet/DAG publication",
     "fixture create": "S9 fixture initialization",
-    "fixture capture": "S9 fixture capture",
+    "fixture fill": "S9 fixture capture",
     "fixture list": "S9 fixture discovery",
     "fixture replay": "S9 fixture replay",
-    "review build": "S7 review artifact generation",
+    "review generate": "S7 review artifact generation",
     "review compare": "S7 review comparison",
-    "review list": "S7 review discovery",
     "snapshot status": "S11 snapshot availability",
     "snapshot audit": "S9/S10 evidence audit",
 }
@@ -155,25 +154,25 @@ def build_parser() -> argparse.ArgumentParser:
     fixture = commands.add_parser("fixture", help="manage S9 response fixtures")
     fixture_commands = fixture.add_subparsers(dest="fixture_command", required=True)
     fixture_create = fixture_commands.add_parser("create", help="initialize a fixture")
-    fixture_create.add_argument("--fixture-id", required=True)
+    fixture_create.add_argument("--fixture", required=True)
     _add_output_options(fixture_create)
     fixture_create.set_defaults(func=cmd_fixture_create)
-    fixture_capture = fixture_commands.add_parser(
-        "capture", help="capture run responses"
+    fixture_fill = fixture_commands.add_parser(
+        "fill", help="capture run responses into a fixture"
     )
-    fixture_capture.add_argument("--fixture-id", required=True)
-    fixture_capture.add_argument("--run-id", required=True)
-    fixture_capture.add_argument("--target-id", required=True)
-    fixture_capture.add_argument("--attempt-id", required=True)
-    fixture_capture.add_argument(
+    fixture_fill.add_argument("--fixture", required=True)
+    fixture_fill.add_argument("--run-id", required=True)
+    fixture_fill.add_argument("--target-id", required=True)
+    fixture_fill.add_argument("--attempt-id", required=True)
+    fixture_fill.add_argument(
         "--max-response-bytes",
         type=positive_int_type,
         help="response byte ceiling (default: configured acquisition.max_response_bytes)",
     )
-    _add_output_options(fixture_capture)
-    fixture_capture.set_defaults(func=cmd_fixture_capture)
+    _add_output_options(fixture_fill)
+    fixture_fill.set_defaults(func=cmd_fixture_fill)
     fixture_list = fixture_commands.add_parser("list", help="list validated fixtures")
-    fixture_list.add_argument("--fixture-id")
+    fixture_list.add_argument("--fixture")
     fixture_list.add_argument("--capture-id")
     fixture_list.add_argument("--target-id")
     _add_output_options(fixture_list)
@@ -181,27 +180,20 @@ def build_parser() -> argparse.ArgumentParser:
     fixture_replay = fixture_commands.add_parser(
         "replay", help="replay captured responses"
     )
-    fixture_replay.add_argument("--fixture-id", required=True)
+    fixture_replay.add_argument("--fixture", required=True)
     fixture_replay.add_argument("--capture-id", required=True)
     fixture_replay.add_argument("--target-id", required=True)
     fixture_replay.add_argument("--output", required=True)
     _add_output_options(fixture_replay)
     fixture_replay.set_defaults(func=cmd_fixture_replay)
 
-    review = commands.add_parser("review", help="build and compare review artifacts")
-    review_commands = review.add_subparsers(dest="review_command", required=True)
-    review_build = review_commands.add_parser("build", help="build review artifacts")
-    review_build.add_argument("--run-id", required=True)
-    _add_output_options(review_build)
-    _set_todo(review_build, "review build")
-    review_compare = review_commands.add_parser("compare", help="compare review runs")
-    review_compare.add_argument("--left", required=True)
-    review_compare.add_argument("--right", required=True)
-    _add_output_options(review_compare)
-    _set_todo(review_compare, "review compare")
-    review_list = review_commands.add_parser("list", help="list review runs")
-    _add_output_options(review_list)
-    _set_todo(review_list, "review list")
+    from edgar_sec.infra.storage.review.cli import attach_review_artifact_subparsers
+
+    from .review_adapter import AcquisitionReviewAdapter
+
+    attach_review_artifact_subparsers(
+        commands, AcquisitionReviewAdapter(), case_filters=True
+    )
 
     snapshot = commands.add_parser("snapshot", help="inspect S11 status and evidence")
     snapshot_commands = snapshot.add_subparsers(dest="snapshot_command", required=True)

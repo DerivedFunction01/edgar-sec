@@ -96,7 +96,14 @@ class InventoryReviewAdapter(ReviewAdapter):
         workers: int | None = None,
         accessions: Sequence[str] | None = None,
         artifacts_root: Path | str = "",
+        capture_id: str | None = None,
+        target_id: str | None = None,
+        json_output: bool = False,
     ) -> int:
+        if capture_id is not None or target_id is not None:
+            raise ValueError(
+                "inventory review does not support capture or target filters"
+            )
         args = argparse.Namespace(
             fixture=fixture_id,
             output=str(output_dir),
@@ -104,7 +111,7 @@ class InventoryReviewAdapter(ReviewAdapter):
             workers=workers,
             accession=list(accessions) if accessions else None,
             artifacts_root=str(artifacts_root),
-            json=False,
+            json=json_output,
         )
         return cmd_review_artifacts(args)
 

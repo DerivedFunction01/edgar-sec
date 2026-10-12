@@ -654,7 +654,7 @@ def test_fixture_cli_completes_offline_retained_lazy_evidence_flow(
             [
                 "fixture",
                 "create",
-                "--fixture-id",
+                "--fixture",
                 "fixture-cli",
                 "--artifacts",
                 artifacts,
@@ -668,8 +668,8 @@ def test_fixture_cli_completes_offline_retained_lazy_evidence_flow(
         cli.main(
             [
                 "fixture",
-                "capture",
-                "--fixture-id",
+                "fill",
+                "--fixture",
                 "fixture-cli",
                 "--run-id",
                 run_id,
@@ -695,7 +695,7 @@ def test_fixture_cli_completes_offline_retained_lazy_evidence_flow(
             [
                 "fixture",
                 "list",
-                "--fixture-id",
+                "--fixture",
                 "fixture-cli",
                 "--artifacts",
                 artifacts,
@@ -722,7 +722,7 @@ def test_fixture_cli_completes_offline_retained_lazy_evidence_flow(
             [
                 "fixture",
                 "replay",
-                "--fixture-id",
+                "--fixture",
                 "fixture-cli",
                 "--capture-id",
                 capture_id,

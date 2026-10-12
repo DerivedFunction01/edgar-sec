@@ -3,8 +3,9 @@
 ## Purpose and status
 
 This is the interactive flow shared by the S9 command group. The operator dispatches
-project, run, and fixture create/capture/list/replay actions to CLI services. Status,
-process, review, and snapshot audit remain TODO; publish fails closed on the S11 gate.
+project, run, fixture create/fill/list/replay, and shared review generate/compare actions
+to CLI services. Status and run-level process orchestration remain incomplete; publish
+fails closed on the S11 gate.
 
 ## Entry and signatures
 

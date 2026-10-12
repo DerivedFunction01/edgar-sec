@@ -207,7 +207,7 @@ def test_fixture_create_requires_id_and_delegates_to_cli(monkeypatch) -> None:
     _menu_action("Create local fixture").callback()
     _menu_action("Create local fixture").callback()
 
-    assert calls == [["fixture", "create", "--fixture-id", "fixture-1"]]
+    assert calls == [["fixture", "create", "--fixture", "fixture-1"]]
 
 
 def test_fixture_capture_requires_ids_limit_and_confirmation(monkeypatch) -> None:
@@ -227,13 +227,13 @@ def test_fixture_capture_requires_ids_limit_and_confirmation(monkeypatch) -> Non
     monkeypatch.setattr(operator, "prompt_text", prompt)
     monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
 
-    _menu_action("Capture local fixture").callback()
+    _menu_action("Fill local fixture evidence (confirmation required)").callback()
 
     assert calls == [
         [
             "fixture",
-            "capture",
-            "--fixture-id",
+            "fill",
+            "--fixture",
             "fixture-1",
             "--run-id",
             "run-1",
@@ -274,7 +274,7 @@ def test_fixture_capture_empty_id_invalid_limit_or_no_confirmation_does_no_work(
             "prompt_text",
             lambda prompt, default="": next(answers),
         )
-        _menu_action("Capture local fixture").callback()
+        _menu_action("Fill local fixture evidence (confirmation required)").callback()
 
     assert calls == []
 
@@ -299,7 +299,7 @@ def test_fixture_list_passes_selected_optional_filters_without_confirmation(
         [
             "fixture",
             "list",
-            "--fixture-id",
+            "--fixture",
             "fixture-1",
             "--target-id",
             "target-1",
@@ -341,7 +341,7 @@ def test_fixture_replay_requires_ids_path_and_write_confirmation(monkeypatch) ->
         [
             "fixture",
             "replay",
-            "--fixture-id",
+            "--fixture",
             "fixture-1",
             "--capture-id",
             "capture-1",
@@ -373,3 +373,46 @@ def test_fixture_replay_empty_or_invalid_response_does_no_work(monkeypatch) -> N
         _menu_action("Replay local fixture").callback()
 
     assert calls == []
+
+
+def test_review_generate_passes_shared_console_filters(monkeypatch) -> None:
+    answers = iter(("fixture-1", "capture-1", "target-1", "review-output"))
+    calls: list[list[str]] = []
+    monkeypatch.setattr(
+        operator,
+        "prompt_text",
+        lambda prompt, default="": next(answers),
+    )
+    monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
+
+    _menu_action("Generate review artifacts").callback()
+
+    assert calls == [
+        [
+            "review",
+            "generate",
+            "--fixture",
+            "fixture-1",
+            "--capture-id",
+            "capture-1",
+            "--target-id",
+            "target-1",
+            "--output",
+            "review-output",
+        ]
+    ]
+
+
+def test_review_compare_passes_shared_console_run_paths(monkeypatch) -> None:
+    answers = iter(("base-run", "new-run"))
+    calls: list[list[str]] = []
+    monkeypatch.setattr(
+        operator,
+        "prompt_text",
+        lambda prompt, default="": next(answers),
+    )
+    monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
+
+    _menu_action("Compare review runs").callback()
+
+    assert calls == [["review", "compare", "--base", "base-run", "--new", "new-run"]]

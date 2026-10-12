@@ -10,7 +10,7 @@ binary destination and verifies stored and uncompressed sizes and SHA-256 digest
 ## CLI and operator
 
 ```text
-acquisition fixture replay --fixture-id <id> --capture-id <id> --target-id <id> --output <new-path>
+acquisition fixture replay --fixture <id> --capture-id <id> --target-id <id> --output <new-path>
 ```
 
 Replay requires exact fixture/capture/target IDs and an explicit output path. The

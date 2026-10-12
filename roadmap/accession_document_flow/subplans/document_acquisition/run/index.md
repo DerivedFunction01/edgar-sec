@@ -106,8 +106,8 @@ A different ceiling or source mode requires a new projected run ID.
   cleans partial files, preserves committed results, and leaves unfinished work
   resumable. Acquired selected files remain staged for the gated S10 handoff; cleanup
   after processing/publication is not yet implemented. The fixture store supports
-  compressed response persistence and streaming replay, but S9 fixture capture/replay
-  command flows and replay-backed runner execution are incomplete.
+  compressed response persistence and streaming replay; fixture create/fill/list/replay
+  commands are wired. Managed replay-backed run execution and cleanup remain incomplete.
 - `--retry-failures` retries only outcomes classified retryable by the transport
   contract. It does not repeat acquired, `not_filed`, `required_missing`, ambiguous,
   or terminally refused work. A later retry does not erase earlier attempt provenance.

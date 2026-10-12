@@ -9,7 +9,7 @@ API and wired through the CLI and operator.
 ## CLI and operator
 
 ```text
-acquisition fixture list [--fixture-id <id>] [--capture-id <id>] [--target-id <id>] [--json]
+acquisition fixture list [--fixture <id>] [--capture-id <id>] [--target-id <id>] [--json]
 ```
 
 Each filter is optional. The operator presents the same optional fixture, capture, and

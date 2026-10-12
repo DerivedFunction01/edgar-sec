@@ -3,14 +3,17 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S10**.
-- Status: the operation-aware S10 result contract is design-only. The retired
-  `document_storage.FilingProcessor` is not a current runtime owner. The surviving
-  normalizer is not a `render_to_txt` or `render_to_xml` handler. Exhibit-role
-  assessment remains provisional; existing profiles and packs do not constitute an
+- Status: transient processing request/result models, offline `process_target`, and
+  in-memory terminal-result projection are implemented. The worker supports raw identity
+  and explicitly pinned direct-TEXT passthrough, validates form-family operation
+  permissions, and preserves unsupported placeholders. Durable operation-result and
+  payload schemas, general export handlers, and coordinator wiring remain incomplete.
+  The retired `document_storage.FilingProcessor` is not a current runtime owner; the
+  surviving normalizer is not a text/XML export handler. Exhibit packs are not an active
   evaluator or holdout evidence.
-- Runtime processing depends on S9 staged selected-body contracts, not the S7 review
-  CLI. Reproducible exhibit holdout review does require the unfinished S7d
-  acquisition/processing artifact route.
+- A processing-review artifact writer is exercised by captured S9 direct-TEXT fixture
+  replay and is wired to the shared review console. Reviewer labels, exhibit assessment,
+  and full transform coverage remain incomplete; S10 runtime does not depend on review.
 - S11 publication consumes S10 outputs after the fixture-driven S9/S10 gate; see the
   [acquisition lifecycle plan](document_acquisition/lifecycle.md).
 - Per-operation IDs, results, attempts, and payload relations are defined in the

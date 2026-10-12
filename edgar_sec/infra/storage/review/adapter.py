@@ -10,13 +10,42 @@ from .models import CaseDiff
 
 
 @runtime_checkable
-class ReviewAdapter(Protocol):
-    """Pipeline bridge for fixture lifecycle and case comparison."""
+class ReviewArtifactAdapter(Protocol):
+    """Pipeline bridge for review generation and case comparison."""
 
     @property
     def dataset_name(self) -> str:
         """Name of the dataset this adapter manages."""
         ...
+
+    def build_review_artifacts(
+        self,
+        fixture_id: str,
+        output_dir: Path,
+        limit: int | None = None,
+        workers: int | None = None,
+        accessions: Sequence[str] | None = None,
+        artifacts_root: Path | str = "",
+        capture_id: str | None = None,
+        target_id: str | None = None,
+        json_output: bool = False,
+    ) -> int:
+        """Render structured review artifacts for selected fixture cases."""
+        ...
+
+    def compare_case(
+        self,
+        case_id: str,
+        base_case_dir: Path | None,
+        new_case_dir: Path | None,
+    ) -> CaseDiff:
+        """Compute an objective comparison verdict for one case."""
+        ...
+
+
+@runtime_checkable
+class ReviewAdapter(ReviewArtifactAdapter, Protocol):
+    """Pipeline bridge for fixture lifecycle and review artifacts."""
 
     def list_fixtures(self, artifacts_root: Path | str) -> list[dict[str, Any]]:
         """Discover and return available fixtures for this dataset."""
@@ -42,25 +71,4 @@ class ReviewAdapter(Protocol):
         json: bool = False,
     ) -> int:
         """Extend an existing fixture with additional targets."""
-        ...
-
-    def build_review_artifacts(
-        self,
-        fixture_id: str,
-        output_dir: Path,
-        limit: int | None = None,
-        workers: int | None = None,
-        accessions: Sequence[str] | None = None,
-        artifacts_root: Path | str = "",
-    ) -> int:
-        """Render raw previews and structured review artifacts."""
-        ...
-
-    def compare_case(
-        self,
-        case_id: str,
-        base_case_dir: Path | None,
-        new_case_dir: Path | None,
-    ) -> CaseDiff:
-        """Compute an objective comparison verdict for one case."""
         ...

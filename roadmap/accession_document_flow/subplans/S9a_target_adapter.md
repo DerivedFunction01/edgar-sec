@@ -12,7 +12,7 @@
 
 - **Status: S9a projection and S9 acquisition are integrated.** The S6 producer emits bundle schema v2 with declared target-part byte sizes. `plan_projection.target_plan` validates that pinned bundle and streams every target into the Parquet work-order schema; `plan_projection.project` binds it to the immutable run manifest and state database. S9 performs bounded HTTP acquisition and exact bundle-sequence extraction; processing remains the separate S10 stage.
 - **Evidence:** [`plan_projection/target_plan.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/target_plan.py), [`plan_projection/project.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/project.py), [`arrow_schemas.py`](../../../edgar_sec/pipelines/document_acquisition/arrow_schemas.py), and their mirrored tests validate pins, bounded projection, and locator semantics. [`target_runner.py`](../../../edgar_sec/pipelines/document_acquisition/target_runner.py) owns S9 slot acquisition; fixture capture/replay support remains limited to retained direct responses and bodyless failures. The former catalog-plan adapter is retired with `document_storage`.
-- **Next step:** complete remaining ungated fixture and historical mismatch coverage. Family-aware HTML evaluation, S10 processing, and S11 publication remain deferred or gated.
+- **Next step:** complete remaining fixture and historical mismatch coverage. Family-aware HTML evaluation and broader S10 operation handling remain deferred; the offline raw/TEXT processing and review slice is implemented. S11 publication remains gated.
 
 ## Objective
 

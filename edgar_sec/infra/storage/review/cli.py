@@ -8,7 +8,7 @@ from pathlib import Path
 
 from edgar_sec.foundation.runtime.settings.validators import positive_int_type
 
-from .adapter import ReviewAdapter
+from .adapter import ReviewAdapter, ReviewArtifactAdapter
 from .diff import compare_review_runs
 from .paths import (
     ReviewPaths,
@@ -23,13 +23,25 @@ def attach_review_subparsers(
     adapter: ReviewAdapter,
 ) -> None:
     """Attach 'review' and 'fixture' subparsers to the parent command parser."""
-    _attach_review_commands(subparsers, adapter)
+    attach_review_artifact_subparsers(subparsers, adapter)
     _attach_fixture_commands(subparsers, adapter)
+
+
+def attach_review_artifact_subparsers(
+    subparsers: argparse._SubParsersAction,
+    adapter: ReviewArtifactAdapter,
+    *,
+    case_filters: bool = False,
+) -> None:
+    """Attach only shared review generation and comparison commands."""
+    _attach_review_commands(subparsers, adapter, case_filters=case_filters)
 
 
 def _attach_review_commands(
     subparsers: argparse._SubParsersAction,
-    adapter: ReviewAdapter,
+    adapter: ReviewArtifactAdapter,
+    *,
+    case_filters: bool,
 ) -> None:
     review_parser = subparsers.add_parser(
         "review",
@@ -40,7 +52,11 @@ def _attach_review_commands(
     gen = commands.add_parser("generate", help="render review artifacts from a fixture")
     gen.add_argument("--fixture", required=True, help="fixture id to review")
     gen.add_argument("--output", help="output directory (auto-derived if omitted)")
-    gen.add_argument("--limit", type=positive_int_type, help="limit review cases")
+    gen.add_argument(
+        "--limit",
+        type=positive_int_type,
+        help="limit distinct accession groups after filters",
+    )
     gen.add_argument("--workers", type=positive_int_type, help="worker process count")
     gen.add_argument(
         "--accession",
@@ -48,6 +64,9 @@ def _attach_review_commands(
         dest="accessions",
         help="restrict to accession (repeatable)",
     )
+    if case_filters:
+        gen.add_argument("--capture-id", help="restrict to one fixture capture")
+        gen.add_argument("--target-id", help="restrict to one fixture target")
     gen.add_argument(
         "--artifacts",
         dest="artifacts_root",
@@ -134,7 +153,7 @@ def _attach_fixture_commands(
     list_cmd.set_defaults(func=lambda args: _cmd_list_fixtures(args, adapter))
 
 
-def _cmd_generate(args: argparse.Namespace, adapter: ReviewAdapter) -> int:
+def _cmd_generate(args: argparse.Namespace, adapter: ReviewArtifactAdapter) -> int:
     output_dir = (
         Path(args.output)
         if args.output
@@ -147,13 +166,16 @@ def _cmd_generate(args: argparse.Namespace, adapter: ReviewAdapter) -> int:
         workers=args.workers,
         accessions=args.accessions,
         artifacts_root=args.artifacts_root,
+        capture_id=getattr(args, "capture_id", None),
+        target_id=getattr(args, "target_id", None),
+        json_output=args.json,
     )
     if not args.json:
         print(f"Review artifacts written to: {output_dir}")
     return exit_code
 
 
-def _cmd_compare(args: argparse.Namespace, adapter: ReviewAdapter) -> int:
+def _cmd_compare(args: argparse.Namespace, adapter: ReviewArtifactAdapter) -> int:
     base_dir = Path(args.base)
     new_dir = Path(args.new)
     output_dir = (

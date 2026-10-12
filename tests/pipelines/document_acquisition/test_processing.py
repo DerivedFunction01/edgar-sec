@@ -287,8 +287,7 @@ def test_process_target_records_receipt_when_export_handler_is_missing(
     paths, request = _acquired_request(tmp_path)
     operation = replace(
         request.operations[1],
-        operation="render_to_xml",
-        handler_id="family-xml",
+        handler_id="missing-text-handler",
         handler_version="1",
     )
     request = replace(request, operations=(operation,))

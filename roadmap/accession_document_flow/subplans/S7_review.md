@@ -6,9 +6,10 @@
 - Frontloaded fixture CLI: [S7a](S7a_inventory_cli.md). Parser review loop:
   [S7b](S7b_parser_review_bootstrap.md).
 - Status: S7a fixture create/fill/list and S7b parser review artifact generation are
-  implemented. S7c target-plan/snapshot review and S7d acquisition/processing review
-  remain downstream work. The existing `inventory review` CLI does not consume S9
-  acquisition fixtures or S10 processing results.
+  implemented. S7c target-plan/snapshot review remains downstream work. S7d now uses the
+  shared `review generate`/`review compare` console and manifest/case layout for captured
+  S9 cases and transient S10 results. Acquisition review generation is limited to
+  retained-run cases and the current raw/TEXT processing boundary.
 - S7a depends on S1/S2 and `filing_catalog` plan loading. S7b depends on S7a, S2, and
   the S3 type contract. Later S7 surfaces depend on S5/S6 and (for processing review)
   S9/S10.

@@ -287,7 +287,7 @@ acquisition run --run-id <id> [--retry-failures]
 acquisition process --run-id <id> [--retry-failures]
 acquisition publish --run-id <id> [--branch <name>] [--allow-errors]
 acquisition query --snapshot <id|current> [target/slot filters]
-acquisition fixture capture|list|replay ...
+acquisition fixture create|fill|list|replay ...
 acquisition distrib export|worker|import ...   # planned; common CLI uses --work-id
 ```
 

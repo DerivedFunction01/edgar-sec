@@ -69,7 +69,11 @@ _SELECTED_BODY = b"<html>selected filing body</html>"
 _FIXTURE_ID = "offline-acceptance-v3"
 
 
-def _write_pinned_plan(artifacts_root: Path) -> tuple[str, dict[str, Any]]:
+def _write_pinned_plan(
+    artifacts_root: Path,
+    *,
+    catalog_direct_selection: str = "exact_form_with_lazy_index",
+) -> tuple[str, dict[str, Any]]:
     identity = {
         "bundle_schema_version": target_plan_bundle_schema_version(),
         "target_schema_version": TARGET_SCHEMA_VERSION,
@@ -103,7 +107,7 @@ def _write_pinned_plan(artifacts_root: Path) -> tuple[str, dict[str, Any]]:
         "sequence": 1,
         "byte_size": None,
         "availability_evidence": "catalog_direct",
-        "catalog_direct_selection": "exact_form_with_lazy_index",
+        "catalog_direct_selection": catalog_direct_selection,
     }
     row["target_id"] = canonical_hash(
         [plan_id, _ACCESSION, row["request_id"], None, "matched"]

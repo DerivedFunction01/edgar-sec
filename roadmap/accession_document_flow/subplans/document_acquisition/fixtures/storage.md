@@ -17,7 +17,7 @@ and complete lazy-index response groups when the required evidence was retained 
 acquisition. Full response-evidence retention is opt-in and default-off via
 `--retain-response-evidence`; without it, bundle/lazy groups may be unavailable to
 post-run capture. Replay remains offline and can verify and extract bundle cases, but
-does not provide the separate S10 handoff; see [capture](capture.md) and [replay](replay.md).
+does not provide the separate S10 handoff; see [fill](fill.md) and [replay](replay.md).
 
 ## Layout
 

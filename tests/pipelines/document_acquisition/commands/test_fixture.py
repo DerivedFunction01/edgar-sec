@@ -26,7 +26,7 @@ def test_fixture_create_delegates_and_emits_stable_json(capsys, tmp_path, monkey
         [
             "fixture",
             "create",
-            "--fixture-id",
+            "--fixture",
             "fixture-1",
             "--artifacts",
             str(tmp_path),
@@ -44,7 +44,7 @@ def test_fixture_create_delegates_and_emits_stable_json(capsys, tmp_path, monkey
     }
 
 
-def test_fixture_capture_delegates_all_identifiers_and_policy(
+def test_fixture_fill_delegates_all_identifiers_and_policy(
     capsys, tmp_path, monkeypatch
 ) -> None:
     calls = []
@@ -78,8 +78,8 @@ def test_fixture_capture_delegates_all_identifiers_and_policy(
     result = cli.main(
         [
             "fixture",
-            "capture",
-            "--fixture-id",
+            "fill",
+            "--fixture",
             "fixture-1",
             "--run-id",
             "run-1",
@@ -103,13 +103,13 @@ def test_fixture_capture_delegates_all_identifiers_and_policy(
         "attempt_id": "attempt-1",
         "acquisition_status": "failed",
         "capture_id": "cap-1",
-        "command": "fixture capture",
+        "command": "fixture fill",
         "fixture_id": "fixture-1",
         "response_sha256": None,
         "reused_response": False,
         "run_id": "run-1",
         "source_byte_size": None,
-        "status": "captured",
+        "status": "filled",
         "target_id": "target-1",
     }
 
@@ -137,8 +137,8 @@ def test_fixture_capture_uses_configured_response_limit_when_omitted(
     result = cli.main(
         [
             "fixture",
-            "capture",
-            "--fixture-id",
+            "fill",
+            "--fixture",
             "fixture-1",
             "--run-id",
             "run-1",
@@ -175,7 +175,7 @@ def test_fixture_list_uses_streaming_discovery_and_filters(
         [
             "fixture",
             "list",
-            "--fixture-id",
+            "--fixture",
             "fixture-2",
             "--capture-id",
             "cap-1",
@@ -230,7 +230,7 @@ def test_fixture_replay_is_local_and_returns_metadata_only_case(
         [
             "fixture",
             "replay",
-            "--fixture-id",
+            "--fixture",
             "fixture-1",
             "--capture-id",
             "cap-1",
@@ -269,7 +269,7 @@ def test_fixture_errors_are_stable_and_json_list_is_atomic(
         "create_fixture",
         lambda *_args, **_kwargs: (_ for _ in ()).throw(ValueError("invalid path")),
     )
-    assert cli.main(["fixture", "create", "--fixture-id", "bad", "--json"]) == 1
+    assert cli.main(["fixture", "create", "--fixture", "bad", "--json"]) == 1
     assert json.loads(capsys.readouterr().out) == {
         "command": "fixture create",
         "error": "invalid path",
