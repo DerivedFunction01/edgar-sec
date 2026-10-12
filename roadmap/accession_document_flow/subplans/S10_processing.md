@@ -6,8 +6,11 @@
 - Status: the operation-aware S10 result contract is design-only. The retired
   `document_storage.FilingProcessor` is not a current runtime owner. The surviving
   normalizer is not a `render_to_txt` or `render_to_xml` handler. Exhibit-role
-  assessment remains provisional.
-- Depends on: S9 staged selected-body and fixture replay contracts; S7 review artifacts.
+  assessment remains provisional; existing profiles and packs do not constitute an
+  evaluator or holdout evidence.
+- Runtime processing depends on S9 staged selected-body contracts, not the S7 review
+  CLI. Reproducible exhibit holdout review does require the unfinished S7d
+  acquisition/processing artifact route.
 - S11 publication consumes S10 outputs after the fixture-driven S9/S10 gate; see the
   [acquisition lifecycle plan](document_acquisition/lifecycle.md).
 - Per-operation IDs, results, attempts, and payload relations are defined in the
@@ -15,11 +18,12 @@
 - Exhibit assessment proposal: [S10 taxonomy and evidence-pack design](S10_exhibit_assessment.md).
 - Legacy behavior audit: [document_storage processing trace](S10_legacy_processing_trace.md).
 
-## Current tracked-code audit (2026-10-10)
+## Current tracked-code audit (2026-10-12)
 
-- **Status: the no-stage-trace normalizer option is implemented, but the S10 transient processing contract is not.** The former `FilingProcessor` runtime and evaluator execution SPI are retired; no `process_target` result or managed review-staging API is present. `REFETCH_SUB_DOC` is not a supported runtime action.
-- **Evidence:** [`engine/forms/normalize.py`](../../../edgar_sec/engine/forms/normalize.py) supports `capture_stage_trace=False`; its mirrored engine tests cover the surviving normalization contract.
-- **Next step:** implement M6 against S9 staged-body and receipt contracts, then test route outcomes, XML refusal/validation, stable fingerprints, and metadata-only results. Review staging, memory admission, and exhibit-rule activation must retain their separate ownership and evidence gates.
+- **Status: M6 has an initial offline `process_target` worker.** It validates the v1 work-order identity, selected body, and S9 attempt evidence; returns deterministic raw identity results and text identity on the `TEXT` route; and records the existing receipt. Real renderers, bundle-child filename evidence, review staging, and the coordinator remain unavailable. The operation-aware persisted relations remain design-only.
+- **Result projection:** `result_projection.project_terminal_results` validates explicit request/result batches, terminal operation coverage, and staged-output references into a deterministic in-memory view. It does not query processor liveness or persist S11 relations. Completeness is relative to supplied requests because the current v1 work order has no operation-intent relation.
+- **Evidence:** [`processing.py`](../../../edgar_sec/pipelines/document_acquisition/processing.py), [`result_projection.py`](../../../edgar_sec/pipelines/document_acquisition/result_projection.py), their mirrored tests, and [`engine/forms/normalize.py`](../../../edgar_sec/engine/forms/normalize.py); the normalizer supports `capture_stage_trace=False` but is not an export handler.
+- **Next step:** approve and persist operation intent/results and selected-child filename evidence before broadening operation coverage. Do not use diagnostic normalizers, infer bundle selection, or publish durable output from this preflight.
 
 ## Objective
 
@@ -344,5 +348,6 @@ exports retain separate identities. Processing outputs are transient until S11
 publication adopts selected representations into Parquet payload relations, except for
 separately selected review evidence. The publication contract is specified in the
 acquisition lifecycle plan and remains behind S11 approval. Large-body parallel processing remains gated on measured route
-working-set envelopes; exhibit assessment remains gated on reviewed, holdout-tested
-evidence packs.
+working-set envelopes. Private diagnostic development is not gated on a holdout;
+authoritative exhibit-family activation is gated on reviewed, holdout-tested evidence
+packs and an explicit acceptance decision.

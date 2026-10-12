@@ -30,8 +30,10 @@ The CLI implements project, status, run, and fixture tracks. Capture and replay 
 
 - **No family-aware identity screen**: The catalog-direct exact-form selector records direct-body evidence as unverifiable and uses lazy-index lookup; text evidence cannot override the pinned target form or exact index `document_type`.
 - **Bounded fixture evidence**: Direct successful bodies and bodyless failures can be captured without response retention. Bundle-source and lazy-index capture requires opt-in run-level response retention and is refused when complete evidence is unavailable; replay writes verified selected bytes only to a new caller-selected path.
-- **No processing or publication**: S10 processing and S11 Parquet/DAG publication remain absent; S11 requires representative S9/S10 evidence and explicit approval.
-- **No S7d review builder**: S10 processor outputs/fingerprints and cross-run content review contracts are not implemented, so review build/compare remain placeholders rather than fabricated reports.
+- **Partial S10 worker**: `process_target` currently validates one explicit request, supports raw identity and text-route byte identity, and records the S9 receipt. Real export handlers, bundle-child route identity, a coordinator, and review integration remain unavailable; unsupported handlers are not simulated.
+- **Result preflight only**: `result_projection.project_terminal_results` validates explicit request/result pairs and staged references in memory, independent of processor activity. The v1 run contract persists no operation intent/results, so this is not full-run projection or a snapshot writer.
+- **No publication**: S11 Parquet/DAG publication remains absent and requires representative S9/S10 evidence and explicit approval.
+- **No S7d review builder**: S10 result metadata exists, but cross-run content review contracts are not implemented, so review build/compare remain placeholders rather than fabricated reports.
 - **No snapshot reader**: Acquisition snapshot relations and a published acquisition DAG do not exist; snapshot status/audit are gate-aware placeholders, not queries against S5/S6 or legacy storage.
 - **No cost-based selection or bundle grouping**: Child, complete-submission, and
   S1-reported sizes remain distinct evidence and do not select transport. A
@@ -101,4 +103,4 @@ python run.py acquisition fixture replay --fixture-id local-review --capture-id 
 ```
 <!-- AUTOGEN:PATHS:END -->
 
-Review, processing, and snapshot command tracks remain unimplemented or gated. Fixture capture and replay do not initiate SEC requests or publish S11 artifacts.
+Processing CLI orchestration, review, and snapshot command tracks remain unimplemented or gated. The per-target worker itself performs no HTTP requests. Fixture capture and replay do not initiate SEC requests or publish S11 artifacts.

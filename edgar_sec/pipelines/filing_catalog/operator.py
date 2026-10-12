@@ -89,7 +89,8 @@ def _namespace(
 def _ask_catalog() -> str:
     """Pick the catalog to plan from, preferring the published pointer."""
     paths = resolve_filing_catalog_paths()
-    catalogs = discover_catalogs(paths)
+    # Filter out empty catalogs in-memory before pagination
+    catalogs = [c for c in discover_catalogs(paths) if c.get('form_counts')]
     if not catalogs:
         return prompt_text("Catalog id or 'current'", "current")
     current = _current_catalog_index(catalogs, paths)

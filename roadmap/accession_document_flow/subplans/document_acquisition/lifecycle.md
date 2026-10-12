@@ -9,9 +9,10 @@ store. It is a plan, not evidence that the versioned replacement pipeline or pub
 is implemented.
 
 The S9 selected-body reference and immutable consumption-receipt boundary is implemented
-and covered by an offline fake-consumer acceptance test. S10 processing, receipt-driven
-run-state projection, S11 adoption, publication, and cleanup authorization remain
-unimplemented.
+and covered by an offline fake-consumer acceptance test. An initial offline S10 worker
+and schema-neutral in-memory terminal-result preflight also exist. Operation-result
+persistence, receipt-driven run-state projection, S11 adoption, publication, and cleanup
+authorization remain unimplemented.
 
 The plan uses Parquet for all published snapshot relations and payloads, with the
 shared `infra.storage.dag` engine publishing immutable parts and advancing the pointer

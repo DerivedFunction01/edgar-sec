@@ -2,11 +2,14 @@
 
 ## Owner and status
 
-This is a provisional S10 diagnostic design, not an enabled classifier. It uses
+This is a provisional S10 diagnostic design, not an enabled classifier. Declarative
+authority profiles and exhibit packs now exist under
+[`edgar_sec/domain/forms/exhibits/`](../../../edgar_sec/domain/forms/exhibits/); they are
+source-backed candidate data, not an evaluator or measured classifier. This design uses
 [`uploads/research/exhibits-classification.md`](../../../uploads/research/exhibits-classification.md) as
 research input and the current form evidence-pack APIs as implementation precedent.
-The examples support a taxonomy and evaluator boundary; they do not establish
-precision, recall, or production-ready rules.
+Neither the declarations nor the examples establish precision, recall, or production
+readiness.
 
 ## Evidence and limits
 
@@ -21,7 +24,9 @@ questions. It is not yet a labeled corpus:
   example, the EX-106 examples at the sketch's lines 1452–1455 link to `-index.htm`.
 - No independent human labels, negative set, issuer/time-separated holdout, or
   measured false-positive/false-negative rates are present. The sketch's coverage and
-  frequency descriptions are not calibrated prevalence estimates.
+  frequency descriptions are not calibrated prevalence estimates. A holdout cannot be
+  reviewed reproducibly until acquisition fixtures are wired to S10 and the S7d
+  acquisition/processing review-artifact CLI exists.
 - Suggested regex snippets are hypotheses, not executable rules. At least one sample
   needs syntax validation before it can be treated as code. Rules must use the
   repository regex builder where applicable and be tested against positive and
@@ -66,7 +71,10 @@ The evaluator is post-selection and read-only:
   remains provenance under the S9 contract; a body-level equality guarantee would
   require a versioned S6 target-plan field.
 
-This remains a candidate diagnostic design; no legacy evaluator runtime is its owner.
+The private development target is a fixture-backed, offline, diagnostic-only evaluator
+and review loop. It may be built and tested before a representative holdout exists. Such
+work does not make the evaluator publicly production-ready or authorize family
+activation. No legacy evaluator runtime is its owner.
 The old `EvaluatorDecision` action SPI, `REFETCH_SUB_DOC`, and `SKIP_HARD_STUB` runtime
 support are removed. External EX-13 research evidence may remain as provenance, but it
 does not authorize acquisition or target disposition.
@@ -188,23 +196,30 @@ scoring plus a small domain-owned taxonomy contract only after stable IDs and al
 are confirmed. The engine evaluator accepts primitive context/text values and imports
 no S9 pipeline models.
 
-## Evidence gate before enabling rules
+## Development sequence and activation gate
 
-1. Verify the supported exhibit-code list and legal citations against dated SEC/CFR
-   sources; record code aliases and changes rather than inferring them from filenames.
-2. Capture exact selected source bytes into the S9 fixture format. Label target role,
+1. Wire local S9 fixture reads to the S10 result boundary and S7d acquisition/processing
+   review artifacts. Pin exact response bytes and generated outputs by digest. This is
+   offline development work and does not wait for the M3 live runner or M4 operator.
+2. Verify supported exhibit-code lists and legal citations against dated SEC/CFR sources;
+   record aliases and changes rather than inferring them from filenames.
+3. Capture exact selected source bytes into the S9 fixture format. Label target role,
    form, accession, selected document, observed index `document_type` when available,
-   and reviewed visible-content class. Distinguish index pages from child documents.
-3. Include difficult negatives: primary 10-K/10-Q/8-K text that mentions exhibits,
+   visible-content class, and annotator provenance. Distinguish index pages from child
+   documents. If a representative case requires new SEC retrieval, acquire it only as a
+   separately authorized research action; live retrieval is not a prerequisite for wiring.
+4. Include difficult negatives: primary 10-K/10-Q/8-K text that mentions exhibits,
    exhibits with generic titles, XSL renderings, XHTML/XML, image/PDF attachments,
-   paper stubs, and filings with unusual or missing captions.
-4. Partition evaluation by issuer and accession/time so near-duplicate documents do not
-   leak across tuning and holdout sets. Report per-form and per-family confusion counts,
-   especially false exhibit calls on primary reports; do not report a pooled score
-   alone.
-5. Review rule hits and misses before enabling any pack. Begin in diagnostic-only
-   shadow mode. Activation thresholds and supported families require a recorded
-   acceptance decision after the evidence review.
+   paper stubs, and filings with unusual or missing captions. Synthetic fixtures test
+   plumbing but are not corpus evidence.
+5. After the fixture and review loop works, partition labeled evaluation by issuer and
+   accession/time so near-duplicate documents do not leak across tuning and holdout
+   sets. Report per-form and per-family confusion counts, especially false exhibit calls
+   on primary reports; do not report a pooled score alone.
+6. Review rule hits and misses before enabling any family. Holdout evidence and a
+   recorded acceptance decision gate activation and production-readiness claims, not
+   private diagnostic development. Shadow output never mutates S6 targets, processing
+   status, S9 acquisition, or retry state.
 
 ## Non-goals
 

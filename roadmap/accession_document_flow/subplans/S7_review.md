@@ -7,7 +7,8 @@
   [S7b](S7b_parser_review_bootstrap.md).
 - Status: S7a fixture create/fill/list and S7b parser review artifact generation are
   implemented. S7c target-plan/snapshot review and S7d acquisition/processing review
-  remain downstream work.
+  remain downstream work. The existing `inventory review` CLI does not consume S9
+  acquisition fixtures or S10 processing results.
 - S7a depends on S1/S2 and `filing_catalog` plan loading. S7b depends on S7a, S2, and
   the S3 type contract. Later S7 surfaces depend on S5/S6 and (for processing review)
   S9/S10.
@@ -75,7 +76,9 @@ artifacts. Do not build the interactive wizard here.
 
 - **S7d — acquisition/processing review**: Renders selected S9/S10 cases and compares
   processing outcomes against pinned fixture and processor fingerprints. It does not
-  affect S7b's parser-development dependency.
+  affect S7b's parser-development dependency. This review route is not implemented and
+  is required to make S10 exhibit holdout review reproducible; its development can use
+  local fixtures without waiting for the live S9 runner.
 
 S7b reviews the implemented `engine.index_pages.parser.parse_html_index` against pinned
 fixture bytes: it emits the inert source preview and records typed parser outcomes
@@ -120,8 +123,9 @@ not a package or dataset name.
 ## CLI routes
 
 Implemented fixture and parser review routes use the shared inventory CLI. The current
-command shape is `inventory fixture ...` and `inventory review generate|compare`; later
-S7 routes remain dependent on their source artifacts:
+command shape is `inventory fixture ...` and `inventory review generate|compare`; these
+routes do not provide acquisition/processing review. Later S7 routes remain dependent on
+their source artifacts:
 
 ```text
 inventory fixture create --fixture <id> --catalog-plan <id>

@@ -2,8 +2,9 @@
 
 This plan tracks the local S9 acquisition implementation and its remaining lifecycle
 gates. S9 projection, bounded transport, exact bundle extraction, run state, and the
-live acquisition runner now exist; S10 processing and S11 durable publication remain
-unimplemented. Acquisition distribution and legacy package removal remain separate.
+live acquisition runner now exist. The initial offline S10 worker is partial; S11 durable
+publication remains unimplemented. Acquisition distribution and legacy package removal
+remain separate.
 
 **Retrieval boundary:** S9 executes each target's pinned S6 mode and observed positive
 sequence. It does not compare child/index size, full-submission bundle size, or S1-reported
@@ -52,18 +53,31 @@ Status markers are maintained against tracked code and focused offline tests:
 - [x] **M5 — Offline S9 acceptance:** a pinned-plan fixture replay commits run state;
   status inspects it, and a fake consumer verifies the selected-body reference and
   immutable receipt. Runner cleanup retains the body; receipts do not authorize cleanup.
-- [ ] **M6 — S10 processing:** per-target normalization, processing results, and
-  body-consumption receipts are not implemented.
-- [ ] **M7 — S9/S10 fixture integration:** end-to-end fixture-driven processing is not
-  implemented.
-- [ ] **M8 — Evidence/identity follow-up:** the historical mismatch fixtures are
-  documented in [historical mismatch cases](historical_mismatch_cases.md), but fixture
-  execution and family-aware cover diagnostics remain deferred and must reuse existing
-  family evidence rather than add duplicate vocabularies. No tracked sanitized pre-2011
-  fixture joins submission metadata, envelope/index evidence, and cover text; do not
-  fabricate a corpus-backed claim from the partial existing fixtures.
+- [~] **M6 — S10 processing:** `process_target` validates an explicit v1 work-order
+  target and staged body, returns deterministic raw identity results (plus text identity
+  on the `TEXT` route), and records the S9 receipt. Offline fixture tests cover the
+  worker. A schema-neutral in-memory result preflight consumes explicit terminal request/
+  result pairs without processor-liveness checks. Operation-intent persistence, export
+  renderers, bundle-child route identity, full-run projection, and S11 remain unavailable.
+- [ ] **M7 — Offline S9/S10 composition:** the test that composes fixture replay,
+  `process_target`, actual request/result projection, and receipt verification
+  is not implemented. It consumes a captured local fixture and does not require the M3
+  live runner or M4 operator. Runner/retry lifecycle integration is a separate M7b gate.
+- [~] **M8 — Exhibit/identity development:** source-backed profiles and declarative packs
+  exist in `domain/forms/exhibits/`; no S10 body evaluator, acquisition review-artifact
+  CLI, or fixture-label workflow is wired. Offline evaluator/review development is not
+  blocked on a holdout. Holdout metrics and activation remain separate acceptance gates.
+  Full duplicate/owner reconciliation of candidate signals also remains open and is
+  required before activating a family, not before building review tooling or evaluating
+  an unambiguous candidate.
+  Historical mismatch fixtures remain documented in
+  [historical mismatch cases](historical_mismatch_cases.md). No tracked sanitized
+  pre-2011 fixture joins submission metadata, envelope/index evidence, and cover text;
+  do not claim historical validation from partial fixtures.
 - [ ] **M9 — S11 publication:** durable snapshot publication remains gated on
-  representative S9/S10 evidence and explicit approval.
+  the approved result schema, representative S9/S10 evidence, and explicit approval.
+  Those gates control durable publication, not offline result projection or private
+  development against disposable fixtures.
 
 ## 2. Readiness and parallelization
 
@@ -92,8 +106,12 @@ flowchart TD
     NTRACE["Track E: S10 no-stage-trace normalizer option"]
     PROCESS["M6: S10 process_target and receipt-gated output"]
     S9GATE["M5: Offline S9 lifecycle verification"]
-    GATE["M7: Offline S9-to-S10 fixture integration"]
-    TAXON["M8: Evidence corpus and diagnostic exhibit assessment"]
+    GATE["M7a: Offline S9-to-S10 fixture composition"]
+    RUN_GATE["M7b: Runner/retry lifecycle integration"]
+    S7D["S7d: Acquisition/processing review CLI"]
+    EVAL["M8a: Private S10 diagnostic shadow"]
+    REVIEW["M8a: Fixture and label wiring"]
+    TAXON["M8b: Holdout evaluation and activation review"]
     PUB["M9: Acquisition Parquet snapshot publication"]
     UPSTREAM["S5/S6 contracts implemented for inventory-backed vertical run"]
 
@@ -112,21 +130,35 @@ flowchart TD
     FIXSTORE --> FIX
     RUN --> FIX
     PROCESS --> GATE
+    FIXSTORE --> GATE
+    GATE --> RUN_GATE
+    RUN --> RUN_GATE
+    CLI --> RUN_GATE
+    FIX --> RUN_GATE
     RUN --> S9GATE
     FIX --> S9GATE
     PROJECT --> CLI
     STATE --> CLI
     RUN --> CLI
     FIX --> CLI
-    CLI --> GATE
-    RUN --> GATE
-    FIX --> GATE
-    FIX --> TAXON
-    PROCESS --> TAXON
+    PROCESS --> S7D
+    FIXSTORE --> S7D
+    PROCESS --> EVAL
+    FIXSTORE --> EVAL
+    S7D --> REVIEW
+    EVAL --> REVIEW
+    REVIEW --> TAXON
     GATE --> PUB
-    TAXON -. "processing versions pinned; diagnostics remain non-authoritative" .-> PUB
+    TAXON -. "optional diagnostic data; never authoritative" .-> PUB
     UPSTREAM -. "needed for full inventory-backed vertical run" .-> GATE
 ```
+
+The former M7/M8 ordering conflated fixture composition with the live acquisition path:
+M4's response-capture command consumes an M3 acquisition, while fixture-only integration
+and holdout review were also described as waiting on M3/M4. That is an artificial
+dependency cycle for offline development. M7a and M8a instead consume local fixture-store
+records; new evidence capture remains a separate operation and does not gate wiring or
+synthetic/offline tests.
 
 ### Delegation boundaries
 
@@ -152,9 +184,10 @@ flowchart TD
    status, run, and fixture services; it does not duplicate planning, retry, or fixture
    behavior.
 7. **The S10 body-processing service can start after M1 and M2E.** It processes
-   fixture-backed `StagedBodyRef` values without waiting for the live S9 runner. The
-   end-to-end fixture gate waits for both services; taxonomy rules wait for a labeled
-   corpus.
+   fixture-backed `StagedBodyRef` values without waiting for the live S9 runner. M7a
+   composes local fixture replay with the service; M7b separately exercises runner
+   lifecycle behavior. M8a wires local fixture/result review before M8b evaluates a
+   labeled holdout. Neither development slice requires live SEC access.
 
 ## 3. Milestone breakdown
 
@@ -506,50 +539,96 @@ receipt contract. Design details are in [S10 processing](../S10_processing.md).
 - Route-specific working-set envelopes are measured before a route is enabled for
   parallel large-body processing. Until then, unsupported input is refused with a
   typed budget diagnostic rather than admitted on an unmeasured guess.
-- Exhibit assessment remains disabled or `insufficient_evidence` until M8 passes its
-  independent review gate; no `REFETCH_SUB_DOC` action is carried forward.
+- Exhibit assessment may be developed and run in diagnostic-only shadow mode before
+  holdout evaluation. It remains non-authoritative and cannot alter planned targets,
+  processing status, or acquisition. Enabling a family requires M8b's reviewed holdout
+  evidence and recorded acceptance; no `REFETCH_SUB_DOC` action is carried forward.
 
-### M7: Offline S9-to-S10 fixture integration
+### M7a: Offline S9-to-S10 fixture composition
 
-**Dependencies:** M3, M4, and M6. S5/S6 inventory-backed planning is not required for
-this fixture-only test, but its completion is required before claiming a full live
-inventory-to-processing vertical path.
+**Dependencies:** M2D's local fixture reader and M6's processing/result contracts. M3
+and M4 are not dependencies: this composes already captured fixture evidence and makes
+no HTTP request. S5/S6 inventory-backed planning is not required; a pinned S6 contract
+fixture is sufficient.
 
 #### Verification criteria
 
-- A pinned S6 plan fixture is projected, fixture-replayed, acquired into staging,
-  processed by S10, acknowledged with the matching receipt, and cleaned up with no HTTP.
-- Verify direct ASCII, direct HTML, a bundle-selected child with an effective route
-  different from the envelope, binary, unrecognized, processing failure, and retry
-  without reacquiring the body.
+- A captured direct-`TEXT` S9 fixture is replayed locally; `process_target` receives its
+  staged-body reference and returns the receipt-bearing `ProcessingResult`. The test
+  passes that actual request/result pair to `project_terminal_results` and checks
+  terminal-operation coverage, staged-output digest/path integrity, and a stable
+  projection fingerprint. Placeholder outcomes for unavailable transforms prove that
+  projection does not inspect processor liveness.
+- No HTTP, lazy-index lookup, engine/normalizer call, persisted-schema change, or durable
+  payload write or staged-body cleanup occurs. The projector remains independent of the
+  processing stage; the test composes them. A receipt alone does not authorize cleanup.
+
+### M7b: Runner and retry lifecycle integration
+
+**Dependencies:** M3, M4, and M7a. This is the separate integration gate for runner
+orchestration, retry, sibling failure isolation, and cleanup behavior. It is not a
+prerequisite for offline S9/S10 composition or private result-projection development.
+
+#### Verification criteria
+
+- Exercise direct ASCII/HTML, bundle-selected child routes, binary/unrecognized outcomes,
+  processing failure, retry without reacquiring a retained body, and cleanup only after
+  explicit discard or publication adoption.
 - Processing review contains metadata and only selected derived text; no S5/S6 schema
   or durable payload output is written.
 - A valid selected body is not lost when an unrelated fixture sibling fails.
 
-### M8: Exhibit taxonomy evidence and diagnostic shadow pass
+### M8a: Fixture-to-review development wiring
 
-**Dependencies:** M4 fixture capture and M6's stable result boundary. M8 can proceed
-independently of M7's vertical integration.
+**Dependencies:** M2D's local fixture substrate and M6's stable result boundary. S7d
+acquisition/processing review is an M8a deliverable, not a prerequisite. Does not depend
+on M3, M4's live capture path, M7b, a live SEC fetch, or historical parser acceptance.
+When no captured fixture exists
+for a case, fixture acquisition is a separately authorized evidence-gathering task, not
+a requirement to implement or test the wiring.
 
-**Goal:** Turn the proposed concepts in
-[S10 exhibit assessment](../S10_exhibit_assessment.md) into a reviewed, versioned
-diagnostic pack only after corpus and holdout evidence exist.
+**Goal:** Make a private, offline development loop for fixture-backed diagnostic
+assessment by wiring candidate packs into a non-authoritative S10 evaluator and S7d
+review artifacts. The evaluator and review CLI can be developed in parallel and joined
+at this milestone. Existing profile/pack declarations are candidate data, not evidence
+of measured accuracy.
 
 #### Verification criteria
 
-- Curate exact response fixtures and labels across supported forms, issuers, document
-  routes, positive exhibit bodies, real primary reports, ambiguous cases, and negatives.
-- Verify legal codes and effective dates; split by issuer/accession to avoid near-copy
-  leakage; report per-family and per-form false-positive/negative counts.
+- S9 fixture records and labels can be selected offline; the acquisition/processing
+  review-artifact CLI replays cases and pins source, evaluator, taxonomy, and pack
+  fingerprints plus generated-file digests.
+- A developer can inspect positive, negative, and ambiguous examples with explicit
+  label provenance. Synthetic tests can establish wiring before a representative corpus
+  exists; they cannot establish accuracy or promote pack maturity to holdout-evaluated.
+- Diagnostic results never alter target plans, processing status, acquisition, or retry.
+
+### M8b: Labeled holdout evidence and family activation
+
+**Dependencies:** M8a's fixture and review workflow, M6's diagnostic result boundary, and
+reviewed labels. This is a data-acceptance gate, not a prerequisite for M8a development.
+
+#### Verification criteria
+
+- Curate exact selected-body fixtures and independent labels across supported forms,
+  issuers, routes, positive exhibit bodies, real primary reports, ambiguous cases, and
+  negatives.
+- Verify legal codes and effective dates; partition by issuer/accession/time to prevent
+  near-copy leakage and report per-family/per-form false-positive and false-negative
+  counts. Do not infer corpus evidence from upload examples or synthetic fixtures.
+- Review rule hits and misses and record acceptance per enabled family. Until then,
+  results remain private diagnostic shadow output and no family is enabled for
+  authoritative use. The D5 duplicate/owner audit must also be resolved for that family;
+  it is not a prerequisite for fixture wiring or reporting holdout counts.
 - Include evaluator/taxonomy/pack versions in fingerprints and review artifacts.
-- Begin in diagnostic shadow mode. Do not allow findings to alter planned targets,
-  processing status, or acquisition. Enabling any families requires a recorded
-  acceptance decision; upload examples alone do not pass this gate.
 
 ### M9: Durable acquisition snapshot publication
 
-**Dependencies:** M7's fixture-driven S9-to-S10 gate, the shared DAG kernel, and S11
-review of the [lifecycle publication contract](lifecycle.md). This work is now planned;
+**Dependencies:** M7a's fixture-driven S9-to-S10 gate, the shared DAG kernel, an approved
+result schema, and S11 review of the [lifecycle publication contract](lifecycle.md).
+M7b runner behavior and M8b exhibit holdout are not prerequisites for publishing the
+base S9/S10 result relations; any included diagnostic fields remain version-pinned and
+non-authoritative. This work is now planned;
 the prior deferral of the durable-store design is replaced by the specific Parquet/DAG
 proposal in that contract. Durable writes remain disabled until the representative
 S9/S10 cases pass the S11 approval checklist.
@@ -602,9 +681,11 @@ queryable acquisition snapshots without changing S5 or S6.
 | 4 | M4 fixtures/CLI/operator | M2B, M2C, M2D, M3 | Local user surface and replay |
 | 5 | M5 offline S9 gate | M3, M4 | Fixture-driven acquisition lifecycle verification |
 | 6 | M6 S10 processing | M1, M2E | Typed per-target processing and S9 receipt integration |
-| 7 | M7 offline vertical gate | M3, M4, M6 | Fixture-driven S9-to-S10 lifecycle verification |
-| 8 | M8 exhibit assessment | M4, M6 | Holdout-evaluated, diagnostic-only taxonomy rules |
-| 9 | M9 durable snapshot publication | M7, DAG kernel, S11 review | Binary/text Parquet payload relations in immutable acquisition DAG snapshots |
+| 7a | M7a offline composition | M2D, M6 | Fixture-driven processing, receipt, and terminal-result projection |
+| 7b | M7b runner lifecycle | M3, M4, M7a | Runner/retry/cleanup integration verification |
+| 8a | M8a review wiring | M2D, M6 | Private S10 shadow evaluator, S7d acquisition/processing CLI, and offline fixture/label workflow |
+| 8b | M8b evidence acceptance | M8a, reviewed labeled corpus | Holdout evaluation and per-family activation decisions |
+| 9 | M9 durable snapshot publication | M7a, DAG kernel, approved result schema, S11 review | Binary/text Parquet payload relations in immutable acquisition DAG snapshots |
 
 Parallel assignments should keep the shared S9 schema/path owner separate from
 service implementers, and assign each lower-layer track to one owner per package. The
@@ -624,11 +705,19 @@ same command behavior.
 - **General large-body processing:** M6 must establish route-specific working-set
   evidence before enabling parallel processing above measured route envelopes. A
   finite acquisition limit alone is not a processing-memory guarantee.
-- **S9-to-S10 inventory-backed vertical:** M7's fixture gate is separate from
+- **S9-to-S10 inventory-backed vertical:** M7a's fixture gate is separate from
   completing S5 relation-schema ownership and S6 profile/target-plan source adapters.
   The M6 S10 service consumes the pinned S6 artifact and does not implement those
   upstream APIs.
-- **Enabled exhibit evaluator:** M8 is research and diagnostic shadow work; no rules
-  are active until exact fixture evidence and a recorded acceptance decision exist.
+- **Exhibit holdout/activation:** exact labeled fixture corpus and issuer/accession/time
+  holdout are absent. This deliberately blocks accuracy claims and family activation,
+  not fixture/review CLI development or private shadow-mode iteration.
+- **Pack ownership reconciliation:** the full D5 duplicate/owner audit remains open.
+  It blocks activation of unresolved pack identities, not development or holdout
+  measurement for an unambiguous candidate.
+- **Acquisition review CLI:** S7d is not implemented. It is an explicit M8a deliverable;
+  the inventory parser-review CLI does not review acquisition/processing results.
+- **Artificial sequencing removed:** fixture-only M7a and M8a work does not wait for a
+  live M3 run or full M4 operator path. Those remain separate integration milestones.
 - **External legacy artifact migration and full S12 vertical integration:** require
   separate acceptance. The `document_storage` runtime package is already retired.

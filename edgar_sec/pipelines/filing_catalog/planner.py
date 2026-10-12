@@ -679,15 +679,16 @@ def plan_policy(
                     f"SELECT DISTINCT form FROM ({occurrence_source}) ORDER BY form"
                 ).fetchall()
             ]
+            # A part is schema-checked against TARGET_SCHEMA, so project the
+            # published columns by name: the occurrence relation is a join, so
+            # `SELECT *` would publish a `document_locator_key_1` column.
+            target_columns = ", ".join(f"o.{name}" for name in TARGET_COLUMNS)
             for form_name in selected_forms:
                 destination = (
                     targets_root / form_partition_directory(form_name) / DATA_FILE_NAME
                 )
-                # `o.*`, not `*`: the relation is a join whose second input only
-                # filters rows, so `SELECT *` would publish a
-                # `document_locator_key_1` column beside the real one.
                 query = (
-                    f"SELECT o.* FROM ({occurrence_source}) "
+                    f"SELECT {target_columns} FROM ({occurrence_source}) "
                     f"WHERE form = {sql_literal(form_name)} "
                     "ORDER BY o.document_locator_key, o.occurrence_id"
                 )

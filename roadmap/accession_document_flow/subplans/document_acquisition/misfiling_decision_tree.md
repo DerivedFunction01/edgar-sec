@@ -291,9 +291,12 @@ body.
 
 ## 7. Proposed Changes
 
-The following is a design proposal only. It is not authorization to implement M8 or
-enable exhibit diagnostics. S10 integration remains read-only and shadow-only; M9 remains
-gated separately.
+This document is a design record, not evidence that an evaluator is active. Source-backed
+profile and pack declarations now exist in `domain/forms/exhibits/`, but no body evaluator
+or fixture-to-review path is wired. Offline evaluator, fixture, and review tooling may be
+developed in diagnostic-only mode before corpus completion. Holdout evidence and recorded
+acceptance gate family activation; S10 findings remain read-only and cannot change S6 or
+S9 behavior. M9 publication remains separately gated.
 
 ### Domain contracts and visible coverage
 
@@ -624,10 +627,10 @@ edit or an excuse to broaden the candidate set.
 
 ### Contract-first implementation task list
 
-These are post-approval implementation milestones. They separate stable interfaces from
-evidence-dependent rules so incomplete research does not block useful scaffolding. No
-milestone authorizes mutating S6 targets, enabling authoritative classification, or
-starting M9 publication.
+These milestones separate offline development from evidence-dependent activation. Missing
+corpus evidence does not block fixture/review wiring or private shadow-mode iteration. No
+milestone authorizes mutating S6 targets or S9 behavior; family activation and M9
+publication retain their independent acceptance gates.
 
 | Milestone | Deliverables / files | Depends on | Can run in parallel? | Exit condition | Status |
 |---|---|---|---|---|---|
@@ -636,23 +639,24 @@ starting M9 publication.
 | **D2 — Generic evaluator shell (retired)** | The former engine evaluator package and its action SPI are removed. The previous `engine/forms/plugins/evaluators/content_role.py` proposal and mirrored tests are not current paths; do not restore them. | Historical D0. | Retired. | No current S10 role evaluator is implied by this design record. | Retired (historical `[x]`) |
 | **D3 — Review source evidence in bounded batches** | Analyzed `uploads/research/exhibits-classification.md`, `exhibits-followup.md`, `exhibit-collision.md` for Tier 1-3 anchors, tokens, veto signals, and form-generic constraints. | D0's row schema. | Yes; A–J are independent. No one reviewer owns the entire exhibit inventory. | Each Item 601 / source-specific code has a disposition; broad or uncertain types remain explicit gaps. | [x] |
 | **D4 — Add reviewed pack modules incrementally** | Implemented 36 pack modules under `domain/forms/exhibits/packs/` (9 Tier 1, 15 Tier 2, 12 Tier 3) with `ExhibitPack` contracts, `mirror tests (`test_tier1_packs.py`, `test_tier2_packs.py`, `test_tier3_packs.py`), and registry wiring in `domain/forms/exhibits/registry.py`. Only store reviewed signals, tiers, and citations; do not add an unreviewed code to the active registry. | D0 and the corresponding D3 batch result; D1 package scaffolding. | Yes across disjoint batches/modules after D0. | Each active pack has a unique `pack_id`, source-qualified mapping, tests, and `evaluator_quality` no higher than evidence supports. | [x] |
-| **D5 — Reconcile ownership and registry** | Registry wired with authority-qualified lookup: `_PACK_BY_CODE` uses `(authority_id, code)` tuples. 47 active packs: 35 Item 601 + 12 Form 20-F mappings. Full duplicate/owner audit against existing vocabulary modules pending. | D3 findings and D4 candidate modules. | No; reconciliation is a serial integration gate after parallel returns. | No unresolved duplicate signal has two owners; same-number/different-meaning identities remain distinct. | [x] |
-| **D6 — Validate thresholds and request economics** | Build offline positive/negative/ambiguous fixtures per enabled pack; select title windows, evidence tiers, and minimum `confidence_band`; report per-profile/per-pack errors. Separately measure S9 suspicion requests, false-positive requests, and recovery yield by era/form. Keep holdout issuers/accessions separate. | Candidate packs from D4/D5; S9 suspicion fixtures for the separate request metric. | Fixture preparation can run in parallel by batch; threshold decisions and holdout report are integrated centrally. | No numeric confidence claim; unvalidated packs remain proposed; S9 request behavior is not inferred from S10 classifier accuracy. | [ ] |
-| **D7 — Integrate S10 diagnostic shadow** | Attach assessment to `ProcessingResult` for eligible routes and pin evaluator/profile/pack versions. Preserve `capture_stage_trace=False`; do not mutate targets, routes, profiles, retry state, or normalizer behavior. | D0–D2 and at least one D5/D6-reviewed representative pack/profile. | Integration itself is serial; remaining D3/D4 pack work may continue in parallel but stays disabled. | Representative S9/S10 fixtures produce diagnostic-only output and demonstrate no upstream mutation. | [ ] |
+| **D5 — Reconcile ownership and registry** | Registry wired with authority-qualified lookup: `_PACK_BY_CODE` uses `(authority_id, code)` tuples. It has 47 source-qualified mappings (35 Item 601 and 12 Form 20-F) to declarative packs; this is not evaluator activation. Full duplicate/owner audit against existing vocabulary modules remains pending. | D3 findings and D4 candidate modules. | No; reconciliation is a serial integration gate after parallel returns. | No unresolved duplicate signal has two owners; same-number/different-meaning identities remain distinct. | [~] |
+| **D6a — Wire fixtures and review artifacts** | Connect local S9 fixture selection/replay to the S10 result boundary and S7d acquisition/processing review CLI. Pin source, labels, evaluator identity, and generated artifact digests. Synthetic cases may test plumbing; they are not corpus evidence. | D1, M6 result boundary, and S9 local fixture reader. No M3 live runner, M4 operator, D5 ownership audit, or holdout required. | Yes; CLI/service implementation and synthetic wiring tests can proceed in parallel. | Offline fixture cases produce reproducible review artifacts; no HTTP or upstream mutation occurs. | [ ] |
+| **D6b — Evaluate labeled holdout** | Build exact selected-body positive/negative/ambiguous fixture sets; select title windows/evidence tiers; partition by issuer/accession/time and report per-profile/per-pack errors. Separately measure S9 suspicion requests, false-positive requests, and recovery yield by era/form when that question is in scope. | D6a, D7, reviewed labels, and sufficient representative cases. | Fixture curation can proceed by batch; threshold and holdout results are integrated centrally. | No numeric confidence claim; report counts and limitations. A family cannot be activated until its holdout is accepted and D5's duplicate/owner audit resolves its mapping. | [ ] |
+| **D7 — Integrate private S10 diagnostic shadow** | Implement the evaluator and attach assessment to `ProcessingResult` for eligible routes, pinning evaluator/profile/pack versions. Preserve `capture_stage_trace=False`; do not mutate targets, routes, profiles, retry state, or normalizer behavior. | D0, M6 result boundary, and at least one source-cited D4 candidate pack/profile with an unambiguous identity. D6b is not required to wire non-authoritative shadow output. | Integration is serial; D6a/D6b and remaining pack review can proceed independently. | Local fixture-backed assessments are deterministic and prove no upstream mutation. Family activation still requires D6b and recorded acceptance. | [ ] |
 
 Dependency sketch:
 
 ```text
 D0 contract freeze
- ├── D1 domain scaffolding ───────────┐
- ├── D2 generic evaluator + tests ────┼── D5 dedup/registry integration ── D6 validation ── D7 S10 shadow
- └── D3 bounded source batches ─ D4 reviewed packs ─┘
+ ├── D1 domain scaffolding ───────────────┐
+ ├── D2 generic evaluator + tests ─────────┼── D5 registry integration ──┬── D6a fixture/review wiring ─┬── D6b holdout/acceptance
+ └── D3 bounded source batches ─ D4 packs ─┘                              └── D7 private S10 shadow ───┘
 ```
 
 #### Safe work before complete evidence research
 
-Once D0 is approved, the following files can be created without waiting for all pack
-research because their contracts do not encode exhibit-specific conclusions:
+The following work can proceed without waiting for a complete labeled corpus because its
+contracts do not encode corpus-accuracy conclusions:
 
 - `common/exhibits.py`: immutable request/result, identity, evidence-tier,
   confidence-band, evaluator-quality, profile, and assessment contracts. Research batches
@@ -662,8 +666,9 @@ research because their contracts do not encode exhibit-specific conclusions:
 - `exhibits/registry.py` and `profiles.py`: generic source-qualified lookup and empty or
   disabled profiles. Adding an entry does not activate it until its `CoverageStatus` and
   evidence gate permit it.
-- The surviving exhibit-selection module remains a bounded probe only; implementing
-  profile routing or an assessment requires a new approved design and runtime contract.
+- The surviving exhibit-selection module remains a bounded probe only. A separate
+  fixture-backed evaluator can be developed in diagnostic-only mode under the M8a/D6a
+  boundary without granting authoritative behavior.
 - Synthetic contract/routing tests. Later pack tests add real local fixtures without
   changing the public result shape.
 
@@ -697,13 +702,19 @@ also does not block the initial profile set.
    test no-TOC primary reports, test standalone exhibits with and without captions, and
    verify uncertain cases abstain. Keep diagnostic codes closed and parameterize code
    and detail.
-5. **Corpus gate:** capture exact selected bodies as local offline fixtures; distinguish
-   selected child documents from index pages; partition by issuer/accession/time; report
-   per-form/per-code false-positive and false-negative counts before even shadow review.
-6. **S10 integration:** verify assessment metadata is diagnostic-only and fingerprinted;
+5. **Fixture/review wiring:** replay exact selected bodies from local S9 fixtures and
+   distinguish selected child documents from index pages. The S7d acquisition/processing
+   review CLI is required for reproducible corpus review, not for M6 processing or
+   development of the offline evaluator.
+6. **Holdout gate:** partition reviewed labels by issuer/accession/time and report
+   per-form/per-code false-positive and false-negative counts before claiming holdout
+   evaluation or enabling a family. Synthetic cases and upload examples do not satisfy
+   this gate.
+7. **S10 integration:** verify assessment metadata is diagnostic-only and fingerprinted;
    verify normalization, S6 targets, and S9 work state are unchanged.
-7. The former evaluator-test path has been removed. This historical gate is not runnable
+8. The former evaluator-test path has been removed. This historical gate is not runnable
    as written; any future approved runtime design must define its own mirrored tests.
 
-Do not implement these tests or code until the user approves this design. Do not run
-`check.py` for this planning-only change.
+The holdout gate does not block private offline wiring or diagnostic shadow tests. It
+blocks only accuracy claims and family activation. Do not run `check.py` for this
+planning-only change.
