@@ -31,7 +31,10 @@ This design generation pins S6 bundle v4 (target relation v1 plus three operatio
 relations v1), S9 acquisition contract v2, run manifest v2, work-order relation set v2,
 worker chunk-result relations v1, SQLite run state v3, handoff/receipt schema v2, and
 acquisition snapshot relation set v1. Readers refuse older schemas for this
-operation-aware path; code changes and tests are a later implementation step.
+operation-aware path; code changes and tests are a later implementation step. The
+requested mandatory-raw, family-trigger, and selective-supersession policy requires a
+new S6 bundle version; its version number is not assigned yet. No compatibility shim is
+planned.
 
 ## Versioned inputs, work, and run
 
@@ -339,26 +342,43 @@ operation statuses into fixture SQLite.
   retried only by its explicit retry policy; unsupported and not-requested are never
   interpreted as successful output.
 
+## Explicit processor supersession
+
+A processor-version change does not invalidate every prior result that used the old
+version. The S6 plan may carry an explicit, versioned supersession selector scoped by
+form/family, operation, prior processor ID/version, and the logical documents selected by
+that plan. For example, a 10-K `render_to_txt` plan may retire only its v1 representations
+while preserving 8-K v1 results that share the same implementation version.
+
+Supersession creates a new immutable snapshot view that omits only the selected old
+representations; prior snapshots remain readable. DAG retention may later remove whole
+unreachable snapshots. The current S8 vacuum does not selectively prune representation
+versions, and a version bump alone must not trigger it. The selector and pruning path are
+not implemented.
+
 ## Renderer boundary and family capabilities
 
-`render_to_txt` and `render_to_xml` are representation/export operations. They must
-not call `normalize_document` or inherit its cover detection, checkmark removal,
-reflow, or table-repair behavior. Raw bytes remain a separately addressable
-representation even when an export is lossy.
+`render_to_txt` and `render_to_xml` are representation/export operations. `render_to_txt`
+selects a form-family/route-specific renderer first; absent an override, the generic
+`engine.forms.normalize.normalize_document` path handles text and HTML/rendered-markup
+sources with the appropriate cover-aware primary or no-cover exhibit profile. It is not
+available for binary, paper, PDF, flat XML/XSD, ZIP, or unknown routes. Raw bytes remain
+a separately addressable representation even when an export is lossy.
 
-`render_to_xml` is a family-specific transform with a declared input path and output
-representation. For a family that registers the capability, the input is the primary
-`edgar.htm` source and the output is XML. It does not probe for or fetch a `.xml` bundle
-sibling, copy an archive-root XML file as if that were rendering, or perform semantic
-XML/XBRL parsing. Unregistered family/path combinations are recorded `unsupported`.
-The versioned capability entry pins family, role/type, path facts, source strategy,
-handler ID/version, output kind, and fidelity contract. Only explicitly registered
-families/forms can request an available render.
+`render_to_xml` is a registered transform with a declared HTML input path and XML output.
+A family-specific handler wins over an evidence-backed generic handler. It does not probe
+for or fetch a `.xml` bundle sibling, copy an archive-root XML file as if that were
+rendering, or perform semantic XML/XBRL parsing. Standalone XML/XSD remains raw.
+Unregistered family/path combinations are recorded `unsupported`. The versioned
+capability entry pins family, role/type, path facts, source strategy, handler ID/version,
+output kind, and fidelity contract.
 
-`render_to_txt` likewise uses its registered representation handler over the planned
-input bytes, not the filing normalizer. Operation failure is independent: a failed
-render leaves raw available and does not trigger another locator or mutate S6 target
-selection.
+`render_to_txt` and `render_to_xml` may be overridden for a specific family and route;
+the override wins over a generic handler. Form 4's proposed XML transform consumes only
+its declared `.htm` source and does not make other forms XML-capable; any generic XML
+transform requires separate evidence and registration. Operation failure is independent:
+a failed render leaves raw available and does not trigger another locator or mutate S6
+target selection.
 
 ## Defining lifecycle case
 
@@ -381,6 +401,8 @@ The schema acceptance suite must also prove that: S6 v3 and S9 work-order v1 are
 rejected by the operation-aware path; every target's operation rows and inputs remain
 inside one deterministic chunk; imports reject partial chunks; a stale base branch is
 refused; unsupported and failed operations never mask raw/source availability; handler
-version changes create new representation identities; a digest occurs in exactly one
-typed payload table; and no render handler calls `normalize_document` or requests an
-`.xml` sibling.
+version changes create new representation identities without globally retiring prior
+outputs; plan-scoped supersession selects only the requested form/family and operation;
+a digest occurs in exactly one typed payload table; `render_to_txt` uses a family/route
+override before generic normalization; generic XML transforms require evidence-backed
+registration; and no renderer requests an `.xml` sibling or rewrites a flat XML source.

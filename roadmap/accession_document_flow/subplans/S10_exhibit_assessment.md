@@ -43,9 +43,11 @@ or parsed at runtime.
 ## Question and boundary
 
 D0 contracts S9 suspicion and S10 assessment as separate, non-sharing interfaces.
-S9 (`exact_form_with_lazy_index`) decides whether to fetch `-index.html`. S10
-diagnoses the already-selected body against pinned S6 intent. The two contracts do not
-share scan results or dataclasses.
+The current S9 (`exact_form_with_lazy_index`) selector decides whether to fetch
+`-index.html`. The requested next S9 policy uses per-family rendered-text triggers for
+families with reviewed trigger evidence; Form 4 has no trigger. S10 diagnoses the already-
+selected body against pinned S6 intent. S10 output and diagnostic findings do not feed
+back into S9 selection, and the contracts do not share scan results or dataclasses.
 
 Assess the body S9 already selected: does its visible content look consistent with the
 S6-planned role, or does it contain evidence that it may itself be an exhibit rather

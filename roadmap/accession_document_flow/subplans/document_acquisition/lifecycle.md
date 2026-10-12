@@ -171,9 +171,16 @@ back into S9.
 Each operation result pins `run_id`, `operation_id`, stable logical-document identity,
 status, capability/handler/options versions, input fingerprint, representation ID, and
 error reason. Each attempt adds an ordinal and exact input/output digests, sizes, and
-run-relative staged path. Raw is an identity representation; each render is a separate
-output and does not call `normalize_document`. PDF extraction remains outside this v1
-contract. Review artifacts remain explicit S7/S10 outputs, not snapshot source tables.
+run-relative staged path. Raw is an identity representation. `render_to_txt` chooses a
+family/route-specific renderer before the generic normalizer fallback for eligible
+text/HTML sources; `render_to_xml` chooses a family-specific transform before an
+evidence-backed generic transform. PDF extraction remains unavailable. Review artifacts
+remain explicit S7/S10 outputs, not snapshot source tables.
+
+A processor-version change does not retire all outputs using the old version. A plan may
+explicitly supersede only selected forms/families, operations, and prior processor
+versions in a new immutable snapshot. The selective supersession plan option and pruning
+behavior are not implemented.
 
 The S10 processor verifies the same opened source for all operations assigned to its
 target request. It writes one derived file per successful non-identity operation to

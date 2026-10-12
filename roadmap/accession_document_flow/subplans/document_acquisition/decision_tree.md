@@ -34,7 +34,9 @@ the target. Never derive a child URL from the display filename alone.
 - **Implemented:** the S9 acquisition package validates pinned S6 modes and performs
   bounded direct acquisition or exact-sequence extraction. It does not compare sizes,
   group targets into one bundle request, or switch an ordinary failed direct request to
-  bundle mode. S10 transient processing remains proposed.
+  bundle mode. S10 has an initial offline target worker and result projection; the
+  operation-aware coordinator and requested family/route renderer policy remain
+  unimplemented.
 - **Documentation reconciliation:** `implementation.md` reports S1–S6 implemented
   and `document_planning` has profile, catalog-scope, inventory-evidence, matching,
   publication, operator, and CLI modules. Current matching permits accession-prefixed
@@ -119,9 +121,9 @@ flowchart TD
     LAZY -->|duplicate / fetch or parse failure| RECOVERYRESULT2["ambiguous / failed<br/>with index evidence"]
     RECOVER --> FINALBODY
 
-    FINALBODY --> S10["S10 role assessment<br/>diagnoses assigned body against S6 intent"]
-    S10 --> RESULT["DocumentRoleAssessment<br/>role diagnosis and diagnostics"]
-    S10 --> RECEIPT["Write S9 BodyConsumptionReceipt<br/>proves consumption; does not clean body"]
+    FINALBODY --> S10["S10 M6 partial<br/>requested: raw + family-specific handler<br/>or generic text normalizer fallback"]
+    S10 --> RESULT["Per-operation results<br/>raw plus requested supported outputs"]
+    S10 --> RECEIPT["Write S9 BodyConsumptionReceipt<br/>after verified read; does not clean body"]
     S10 -. "optional capture_review" .-> REVIEW["S7 promotes staged review output<br/>not a payload store"]
     RESULT --> PUBLISH["S11 publishes immutable acquisition snapshot<br/>binary and text payload Parquet relations"]
     PUBLISH --> CLEAN["Publication receipt permits transient cleanup"]
@@ -140,7 +142,7 @@ flowchart TD
 | Inventory publish / S5 | Validated cohort, committed S4 results, expected parent snapshot. | Cumulative immutable inventory snapshot and current pointer advanced only after complete validation. | Failed or unrecognized accessions prevent publication; inventory stores observed index facts, not targets or payloads. |
 | S6 target planning (implemented) | Required pinned catalog plan; optional pinned S5 snapshot; versioned profile. | Immutable target-plan bundle with one target row per request/candidate and explicit status/provenance/retrieval locator. | Without a snapshot only primary catalog-direct planning is valid. With a snapshot it is the sole locator evidence; never fall back to catalog paths. Accession-prefixed numbered child URLs may be direct locators. Role-eligible bundle-sequence locators require an advertised bundle and observed positive sequence; exact `0000` primary names require that bundle route. |
 | S9 acquisition (implemented) | Validated S6 plan bundle, pinned source provenance, supported matched locators. | Append-only attempts/outcomes, exact source and selected-body digests, transient staged body reference, and for lazy recovery a target-to-physical-slot resolution record. | Executes the pinned target mode; no size comparison, cross-target bundle grouping, or ordinary direct-failure fallback. The separate catalog-direct `exact_form_with_lazy_index` selector can request its bounded index recovery. |
-| S10 role assessment (D0 contract) | Acquired S9 body assigned to the immutable S6 target; pinned S6 intent context. | `DocumentRoleAssessment` diagnostics only; optional S7 review reference; S9 consumption receipt after verified read. | Processes only the resolved body. It emits role diagnoses but never changes targets, types, slots, routes, or acquisition outcomes. It cannot fetch an index, create targets, or trigger retries. |
+| S10 processing (M6 partial; requested policy not implemented) | Acquired S9 body assigned to the immutable S6 target; pinned S6 operation intent. | Current code returns raw/TEXT identity results and an S9 consumption receipt. The requested path returns raw plus family-specific operations or generic text-normalizer fallback. | Processes only the resolved body. It never changes targets, types, slots, routes, or acquisition outcomes and cannot fetch an index, create targets, or trigger retries. |
 | S11 snapshot publication (planned; approval-gated) | Validated S9/S10 run, imported worker receipts, expected DAG parent. | Immutable acquisition Parquet snapshot with separate binary-route and text-route payload relations joined to target/slot evidence by digest. | Design and schema live in [the lifecycle plan](lifecycle.md); durable publication waits for representative S9/S10 evidence and S11 approval. Reconciliation consumes pinned S5 facts and does not alter S5/S6 schemas. |
 
 The full inventory path is catalog materialization → catalog plan → S5 inventory
@@ -221,7 +223,10 @@ child's actual `<TYPE>` as provenance; validating it against a pinned inventory 
 would require a versioned S6 plan field. See [S6 matching](../S6_target_plans.md) and
 [S9 extraction](run/extraction.md).
 
-## Catalog-direct primary selectors and lazy recovery
+## Current catalog-direct selector and lazy recovery
+
+The selector matrix below describes the implemented uniform policy. It is the replacement
+target for the requested family-specific policy documented after it.
 
 Catalog-only planning remains primary-only. The profile selector is binary:
 
@@ -251,6 +256,15 @@ resolution and does not populate that relation; `form_match` means “do not fet
 index,” not “the body is proven to have the expected statutory type.” Preserve evaluator
 version/outcome and index-response/parser provenance with the resolution. Do not treat
 cover-boundary diagnostics in S10 as another recovery trigger.
+
+### Requested family-specific lazy-index policy (not implemented)
+
+Replace the uniform `exact_form_with_lazy_index` selector with versioned per-family
+triggers. A trigger may scan rendered text only for a family whose trigger evidence has
+been designed and reviewed; `raw` alone is not a trigger. Form 4 has no designed trigger
+and must not perform lazy-index lookup. Its raw selection remains tied to the pinned URL
+and observed exhibit-like links available for that filing era. The replacement is a new
+S6 policy version, not a backward-compatibility alias for the uniform selector.
 
 ---
 
@@ -385,24 +399,27 @@ Parquet. See the [acquisition lifecycle](lifecycle.md), [S9 acquisition](../S9_a
 ## S10 processing and representation decisions
 
 S10 joins each acquired body to its S9 work-order row by `target_id`, verifies and
-processes that same staged file, then emits one metadata-only result per target. The
-effective selected document path chooses the byte route; the planned role chooses the
-normalization context. The filing form is not a route and `target_type` is not an
-assertion about the selected SGML header.
+processes that same staged file, then emits one result per operation. Raw is always
+preserved; render operations add derived representations. The effective selected document
+path chooses the byte route; the planned role chooses the generic normalization context.
+The filing form is not a route and `target_type` is not an assertion about the selected
+SGML header.
 
 | Input role / effective route | Processing contract | Representation/result boundary |
 |---|---|---|
-| Primary + `MARKUP`/`RENDERED` | Form-aware normalizer, without retaining stage-trace copies. | Keep raw source identity separate from normalized text; no XBRL fact extraction. |
-| Primary + `TEXT` | ASCII flat `.txt` is byte-identical pass-through; other text uses the form profile. | `text_verbatim` for ASCII identity; otherwise normalized text. |
-| Standalone exhibit + text/markup | Generic no-cover profile; do not apply the filing form's cover rules. | Exhibit remains its own planned target and result. |
-| `XML` | Validate one XML document with DTD/external entities disabled. | `xml_verbatim` aliases the source bytes; no semantic extraction or rewriting. |
-| `BINARY` | No text normalization. | Metadata-only binary result; PDF extraction is deferred. |
-| `PAPER` | Record the fixed paper stub. | Never follow the off-archive document-control reference. |
-| `UNKNOWN` | Do not guess a conversion. | `unrecognized` with route diagnostic. |
+| Primary + `MARKUP`/`RENDERED` | Use a family/route-specific text renderer first, otherwise the generic normalizer with the filing-form profile. | Keep raw separate from normalized text; no XBRL fact extraction. |
+| Primary + `TEXT` | Use a family-specific text renderer first, otherwise generic normalizer with the filing-form profile. | Keep raw separate even when normalized text has the same digest. |
+| Standalone exhibit + text/markup | Use a family-specific override or the generic no-cover normalizer; do not apply primary cover rules. | Exhibit remains its own planned target and result. |
+| Flat `XML`, `XSD` | Preserve selected bytes unchanged as raw. | No validation, rewriting, or semantic extraction. |
+| `BINARY`, PDF, ZIP | Preserve selected bytes unchanged as raw; no text extraction is available. | No derived text result. |
+| `PAPER` | Preserve the paper/no-content raw state. | Never follow the off-archive document-control reference. |
+| `UNKNOWN` | Preserve raw; do not guess a conversion. | `unrecognized` with route diagnostic. |
 
 Path routing is independent of era and form. A rendered XSL path (including a nested
-`.xml` filename) follows the rendered/HTML route; a flat `.xml` follows XML validation.
-Route handling does not fetch an alternate archive-root candidate in S10.
+`.xml` filename) follows the rendered/HTML route; a flat `.xml` remains raw. A
+`render_to_xml` transform consumes only its declared HTML input. Family-specific handlers
+override generic renderers; generic XML transforms require reviewed evidence. Route
+handling does not fetch an alternate archive-root candidate in S10.
 
 If a primary's cover-required profile finds no cover boundary, S10 emits
 `cover_boundary_not_detected`; it does not reclassify the primary, refetch a bundle,

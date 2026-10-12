@@ -37,9 +37,9 @@ Treat operation names as a closed, versioned vocabulary:
 
 | Operation | Meaning |
 |---|---|
-| `raw` | Preserve the selected source bytes as a stored representation. The acquisition body remains available for integrity/replay even when this output operation is not selected. |
-| `render_to_txt` | Produce a visible-text representation using the file-route renderer, such as HTML cleanup/table projection or PDF text extraction when implemented. |
-| `render_to_xml` | Produce an XML representation from the primary `edgar.htm` input only where a family/path-facts capability registers a transform. It does not fetch or pass through an archive-root `.xml` sibling, and it does not perform semantic XML/XBRL parsing. |
+| `raw` | Mandatory baseline representation preserving the selected source bytes for every matched target and route. |
+| `render_to_txt` | Produce a text representation using a family/route renderer first, then the generic engine normalizer for eligible text/HTML sources. PDF extraction is unavailable. |
+| `render_to_xml` | Produce XML from a declared HTML input using a family-specific transform first, then an evidence-backed generic transform. It does not fetch an XML sibling or perform semantic XML/XBRL parsing. |
 
 The operation capability is resolved for `(filing family, target role/type, path facts)`.
 A form family may implement different operations for the same suffix; an extension alone
@@ -62,23 +62,23 @@ example:
 }
 ```
 
-The order in the list is not preference order. Execute every listed operation that is
-implemented for the selected family and path facts. If an operation is not implemented,
-ignore it for execution and record it as unsupported/not applicable; that does not
-invalidate the logical target or the other requested operations.
+The order in the list is not preference order. Raw is requested for every matched target
+whether or not it appears in the list. Execute every listed derived operation implemented
+for the selected family and path facts. If a derived operation is not implemented, record
+it as unsupported; that does not invalidate the logical target, raw, or other outputs.
 
-When a target omits `acquisition_policy`, choose the first implemented operation in this
-default priority:
+When a target omits `acquisition_policy`, choose the first implemented derived renderer
+in this default priority; raw remains the baseline:
 
 ```text
-render_to_xml > render_to_txt > raw
+render_to_xml > render_to_txt
 ```
 
 "Implemented" means registered for the resolved family, target role, and path-facts
 combination. It does not mean the operation is guaranteed to succeed on a particular body.
 At execution time, a fetch or transform failure is recorded against that operation; it does
 not silently fall through to a different URL or operation. A profile can explicitly
-request multiple operations when it wants raw and rendered representations together.
+request multiple derived operations when it wants more than the default rendered view.
 
 Keep target `optional` separate from operation support and outcome. It answers whether the
 logical document may be absent; it does not mean an unsupported render operation is a
@@ -117,10 +117,10 @@ and image suffixes as opaque/raw-only without forcing the current document-stora
 processor to change how it treats an unknown suffix.
 
 For an XSL-style `.../*.xml` path, the facts are `archive path + nested + .xml`. The
-document-storage policy may continue treating that nested path as rendered markup; the
-acquisition capability catalog may expose raw HTML and generic HTML-to-text. A
-family-specific XML transform uses the primary `edgar.htm` input when registered; it does
-not use a separate archive-root XML source. For flat `.xml`/`.xsd`, the same policy catalog exposes only raw.
+selected response remains raw; if its content route is rendered markup,
+`render_to_txt` uses a family-specific handler before the generic normalizer. A
+family-specific or evidence-backed generic XML transform consumes a declared HTML input;
+it does not use a separate archive-root XML source. Flat `.xml`/`.xsd` remains raw-only.
 No classifier value should encode the set of operations that a form supports. New suffix
 facts such as `.zip` or `.fil` must not silently change document-storage behavior.
 
@@ -168,26 +168,27 @@ S6 locator rule.
 
 | Path facts / policy case | Outputs and operations |
 |---|---|
-| Image, `.fil`, `.zip`, `.eis`, `.paper` | `raw` only; ignore rendered operations. A paper stub remains raw source, not a text-rendering request. |
-| PDF | `raw`, or `render_to_txt` when a PDF text extractor is registered for the family/role. Both results may be requested together. |
-| Flat `.xml` or `.xsd` | Acquisition preserves bytes as `raw` only and ignores rendered operations. S10 retains its standalone XML well-formedness and DTD/external-entity checks before returning byte-identical `xml_verbatim`; semantic XML/XBRL parsing remains form-pipeline work. |
-| Validated XSL-style nested `.xml` | `raw` stores the returned HTML and `render_to_txt` can render it. `render_to_xml` is available only for a registered family transform over the primary `edgar.htm`; it does not fetch a sibling `.xml` source. |
-| Other `.htm`, `.html`, `.xhtml` | `raw` and generic `render_to_txt`; a form-specific `render_to_xml` translator is available only when implemented and registered. |
-| `.txt` | `raw` and `render_to_txt` when the text renderer is registered. |
-| Other/unknown suffix | `raw` only unless an explicit family/role/path capability is registered. Unknown means unclassified, not a renderer category. |
+| Image, `.fil`, `.zip`, `.eis`, `.paper`, and other binary routes | `raw` only; ignore rendered operations. A paper stub remains raw source, not a text-rendering request. |
+| PDF | `raw` only. No PDF text extractor is currently available. |
+| Flat `.xml` or `.xsd` | Preserve bytes as `raw` only, without parsing or a render operation. Semantic XML/XBRL parsing remains form-pipeline work. |
+| Validated XSL-style nested `.xml` | `raw` preserves the exact selected response. For a rendered-markup route, `render_to_txt` uses a family-specific handler then the generic normalizer. `render_to_xml` requires a registered family-specific or evidence-backed generic transform over a declared HTML input; it never fetches a sibling `.xml` source. |
+| Other `.htm`, `.html`, `.xhtml` | `raw` plus `render_to_txt` using a family-specific handler before the generic normalizer. A family-specific `render_to_xml` may override a reviewed generic transform. |
+| `.txt` | `raw` plus `render_to_txt` using a family-specific handler before the generic normalizer. |
+| Other/unknown suffix | `raw` only. Unknown means unclassified, not a renderer category. |
 
-`render_to_xml` is an explicit family-specific transform over the primary `edgar.htm`,
-not a source-path shortcut or semantic XML parser. Its handler and output kind are pinned
-by the capability catalog. Flat XML/XSD remain raw-only. Unsupported operations are
-ignored without changing the raw source outcome.
+`render_to_xml` uses an explicit family-specific transform before an evidence-backed
+generic transform over a declared HTML source; it is not a source-path shortcut or
+semantic XML parser. Its handler and output kind are pinned by the capability catalog.
+Flat XML/XSD remain raw-only. Unsupported operations do not change the raw source outcome.
 
 ### Form 4 cases
 
-- If the index path is `xsl*/.../*.xml`, the response is HTML. `raw` can store that HTML
-  and `render_to_txt` can produce the generic rendered-text view. `render_to_xml` is
-  supported only by an explicitly registered family transform over primary `edgar.htm`.
-- Form 4 remains unsupported unless its family registers and validates a `render_to_xml`
-  transform. The presence or absence of an XML bundle sibling does not decide support.
+- Form 4 has observed `.xml`, XSL-nested `.xml`, and `.htm` paths; each selected source
+  remains available raw. Its proposed `render_to_xml` handler applies only to the declared
+  HTML input path and overrides any later generic XML transform.
+- Other forms remain raw for XML/XSD sources unless a separate capability is registered.
+  A reviewed generic transform may cover eligible HTML inputs; it never makes flat XML a
+  rendered output or fetches a bundle sibling.
 - XML/XSD bytes are not parsed by acquisition. Any Form 4 semantic parsing is owned by
   the separate Form 4 pipeline.
 
@@ -248,9 +249,9 @@ Keep the request, family allowance, path strategy, and implementation declaratio
    implementation exists.
 3. **S6 acquisition capability catalog**, proposed in
    `pipelines/document_planning/acquisition_capabilities.py`, resolves family/role/type/path
-    facts and requested operation into support status, primary source request, output
-    kind, and handler ID/version. A registered `render_to_xml` transform declares the
-    primary `edgar.htm` input; the catalog never performs a fetch.
+     facts and requested operation into support status, source request, output kind, and
+     handler ID/version. A `render_to_xml` transform declares its selected HTML input
+     path; the catalog never performs a fetch.
 4. **Engine handler metadata/registry** in `engine/document_processing/capabilities.py`
    and `registry.py` declares handler IDs, accepted generic input facts, output kind, and
    implementation version, then binds IDs to code at runtime. Metadata has no handler
@@ -263,6 +264,27 @@ catalog such as `domain/forms/families/processing_profiles.py` to register the a
 quarterly, and current data declarations. Keep implementation registration separate in
 `engine/document_processing/registry.py`.
 
+### Requested policy updates (not implemented)
+
+- `raw` is mandatory for every matched target; requested operations add derived
+  representations without replacing or suppressing the acquired source.
+- `render_to_txt` selects a family/route-specific renderer before the generic
+  `engine.forms.normalize.normalize_document` fallback for text and HTML/rendered-markup
+  sources. Raw is always preserved. Paper, binary, PDF, flat XML/XSD, ZIP, and unknown
+  routes remain raw-only; PDF has no text extractor. Form 4's proposed `render_to_xml`
+  handler is specific to its declared HTML path and does not enable other forms. Generic
+  XML rendering requires separate evidence and registration; a family handler takes
+  precedence.
+- Lazy-index permission is a versioned, form-family-specific trigger over rendered text.
+  Raw alone is not a trigger. Form 4 has no designed trigger; it relies on its pinned URL
+  and observed era-specific exhibit-like links. Replace the current uniform selector in a
+  new S6 schema version, without a compatibility alias.
+- A processor-version bump preserves old results unless the plan explicitly requests
+  supersession for selected forms/families, operation, and prior processor/version. The
+  new immutable result view retires only matching documents; unrelated forms may retain
+  representations produced by the same old version. This selector and selective pruning
+  are not implemented.
+
 The planner resolves the S6 catalog entry against the family's allowed capability IDs and
 the engine's handler metadata, then pins both catalog and handler versions. The S6 entry
 owns family/role/path availability and source selection; the engine descriptor owns only
@@ -271,9 +293,9 @@ handler ID has metadata and a runtime registry entry.
 
 The planner resolves target requests against family-declared IDs, path/source strategies,
 and lightweight engine capability descriptors, then pins the result without importing
-handler callables. XML export is a registered engine transform over the planned primary
-`edgar.htm` source, not an archive-root XML acquisition strategy. This avoids duplicating
-support matrices and keeps domain profiles independent of engine imports.
+handler callables. XML export is a registered transform over a declared selected HTML
+input, not an archive-root XML acquisition strategy. This avoids duplicating support
+matrices and keeps domain profiles independent of engine imports.
 
 Add `tests/domain/forms/common/test_processing.py` and
 `tests/domain/forms/families/test_processing_profiles.py` for the domain processing-profile
@@ -308,9 +330,9 @@ versions, output kind), and exactly one input per supported requested operation.
 v1 input links to the target's one shared source request and carries source-asset ID,
 locator provenance, selected path, path facts, digest, and size. S10 verifies the
 selected file before admitting the shared body to the engine call; raw bytes exist only
-in-process and never in work/JSON/worker receipts. An XML-export request identifies the
-primary `edgar.htm` source through its capability; the engine never fetches a sibling
-`.xml` source itself.
+in-process and never in work/JSON/worker receipts. An XML-export request identifies its
+declared HTML source through its capability; the engine never fetches a sibling `.xml`
+source itself.
 
 ```python
 class AcquisitionProcessor:
@@ -329,9 +351,9 @@ never a whole output body.
 The S10 coordinator performs enabled diagnostics/review separately. The engine processor
 does not classify exhibit roles, mutate targets, or issue acquisition actions. The S10
 coordinator serializes only metadata results; it does not persist durable
-representation payloads. A durable `render_to_txt` handler must not call
-`normalize_document`; existing S10 diagnostic normalization remains separate from the
-export representation. Capability handlers are injected through the validated registry,
+representation payloads. The generic `render_to_txt` path uses
+`normalize_document` on eligible text/HTML input, while family-specific handlers override
+it. Capability handlers are injected through the validated registry,
 so tests can use small byte inputs and fake handlers without HTTP, database writes, disk
 staging, or global mutable registrations.
 
@@ -339,12 +361,12 @@ The API's input type is owned by the engine or a domain contract module, never b
 `AcquisitionProcessRequest` carries verified source bytes only after the pipeline has
 admitted the staged file against its configured maximum and verified the digest/size of
 the same bytes passed to the processor. It keeps requested locator provenance distinct
-from the effective selected filename/path used for route facts. The diagnostic
-`normalize_document` helper still accepts `bytes`; export handlers follow their declared
-bounded input API, never the filing normalizer by implication.
+from the effective selected filename/path used for route facts. The generic text-render
+path calls `normalize_document` with its bounded input; other handlers follow their
+declared input APIs and are never selected by implication.
 
 This concrete signature permits isolated tests for dispatch, raw pass-through,
-HTML-to-text, unsupported operations, missing primary `edgar.htm`, and independent
+HTML-to-text, unsupported operations, missing declared HTML inputs, and independent
 operation failures. Version 1 has one selected-source input per operation, shared by a
 target's handlers; a multi-input handler requires an explicit schema extension. S9
 integration tests separately prove that staged bytes were admitted
@@ -372,24 +394,23 @@ Do not pass that pipeline-specific ref type into the engine class.
 
 One S6 target remains one logical document match. Do not create duplicate logical targets
 to represent raw, text, and XML variants. S6 plans operations and source requests; it does
-not fetch bodies, run transformations, or persist their outputs. The following are proposed
-downstream records for the owning acquisition/processing plans, not S6 schemas. M6/M7's
-current S10 contract remains metadata-only: normalized text is transient for diagnostics or
-explicitly selected review capture, not a durable output payload. Any durable
-`StoredRepresentation` contract belongs to a later snapshot/publication phase:
+not fetch bodies, run transformations, or persist their outputs. The following are
+proposed downstream records for the owning acquisition/processing plans, not S6 schemas.
+M6/M7 S10 results remain metadata-only; rendered files are transient staged outputs until
+a later snapshot/publication phase adopts them. Any durable `StoredRepresentation`
+contract belongs to that later phase:
 
 The proposed stable identity, operation-status, source-reuse, representation-to-payload,
-and raw-then-render snapshot contract is in
+and raw-plus-render snapshot contract is in
 [`representation_materialization_contract.md`](../document_acquisition/representation_materialization_contract.md).
 It is separate from this S6 planning schema and requires agreement before lifecycle
 implementation.
 
-Every valid target retains its primary source request independently of the `raw` output
-operation. `raw` chooses whether the source is also a stored representation; it does not
-decide whether the target body is acquired. If requested operations are all unsupported,
-S6 still plans the primary source, while recording that no requested output is supported.
-S10's XML safety validation is a downstream check, not an acquisition operation or XML
-semantic parse.
+Every valid target retains its primary source request, and `raw` is its mandatory baseline
+representation. Requested derived operations add outputs but never suppress raw. If
+requested renders are unsupported, S6 still plans the source and records that no derived
+output is supported. Flat XML/XSD remains unchanged raw data; any later semantic XML work
+belongs to a separate form pipeline.
 
 | Stored concept | Proposed contents |
 |---|---|
@@ -398,8 +419,8 @@ semantic parse.
 | `StoredRepresentation` | A possible later durable model for one operation result: operation ID, output kind, status, source reference(s), output digest/size, handler/version, and stored artifact reference. It is not an M6/M7 S10 artifact contract. |
 
 If `raw` and `render_to_txt` consume the same HTML response, S6 emits one shared source
-request dependency. A registered `render_to_xml` handler consumes the planned primary
-`edgar.htm` input; it does not imply a second source request. S9 owns source availability.
+request dependency. A registered `render_to_xml` handler consumes its declared selected
+HTML input; it does not imply a second source request. S9 owns source availability.
 Any output-byte deduplication and operation provenance belong to the future
 processing/storage contract.
 
@@ -455,7 +476,7 @@ initial feature phase; subsequent phases have separate layer owners and acceptan
 | 3. S9 source acquisition | `pipelines/document_acquisition` | Direct/bundle acquisition, exact-form lazy-index selection, work-order state, retry, staging, and run CLI are implemented. Family-aware HTML evaluation is deferred; bundle/lazy-index response-group fixture retention is opt-in. | ◐ Partial |
 | 4. S10 processing orchestration (M6) | `pipelines/document_acquisition` | An initial offline `process_target` validates work-order/body identity, verifies staged bytes, records an S9 consumption receipt, and returns transient identity results. Engine renderers, full operation-intent execution, review staging, and coordinator remain incomplete. | ◐ Partial |
 | 5a. Offline fixture composition (M7a) | `pipelines/document_acquisition` plus local fixtures | Replay a captured direct-TEXT S9 fixture, pass the actual request/result to terminal projection, and verify receipt, coverage, fingerprint, and staged-output integrity without HTTP. Emit a content-addressed processing-review artifact. Do not clean staged bodies based on the receipt alone; no durable representation payload is written. M3/M4 runner integration is not required. | ✅ Implemented |
-| 5b. Runner lifecycle integration (M7b) | `pipelines/document_acquisition` | Verify runner orchestration, retry, sibling failure isolation, and cleanup after explicit discard or publication adoption over fixture-backed processing. Review output remains S7-owned. | ⏳ Pending |
+| 5b. Runner lifecycle integration (M7b) | `pipelines/document_acquisition` | Verify runner orchestration, retry, sibling failure isolation, and cleanup after explicit discard or publication adoption over fixture-backed processing. Review output remains S7-owned. | ✅ Runner/retry/isolation complete; cleanup remains gated |
 | 6a. Fixture/review wiring (M8a) | S10 exhibit-assessment and S7d owners | The shared review console, pipeline artifact writer, and offline fixture handoff are wired; fixture-label workflow and exhibit evaluator remain incomplete. This development work does not require holdout evidence or live SEC access. | ◐ Partial |
 | 6b. Holdout acceptance (M8b) | S10 exhibit-assessment owner | Evaluate reviewed, issuer/accession/time-separated fixture labels in diagnostic shadow mode; report per-family errors. This gates accuracy claims; activation additionally requires resolved pack ownership and recorded family acceptance. Neither gates M8a development. | ⏳ Pending |
 | 7. Durable acquisition snapshot (M9) | acquisition publication owner | Publish versioned S5/S6/S9/S10 evidence only after its independent acceptance gate. S11 content publication remains separately gated. | ⏳ Pending |
@@ -484,48 +505,50 @@ its metadata module. Phase 2 adds `models.py`, `registry.py`, and `processor.py`
 mirrored `test_models.py`, `test_registry.py`, and `test_processor.py` under
 `tests/engine/document_processing/` (with package `__init__.py`); Phase 1 owns the mirrored
 `test_capabilities.py` catalog contract test.
-`normalize_document` remains the existing form-normalization API for S10 diagnostics; a
-durable `render_to_txt` handler is a separate export implementation and must not call it.
+`normalize_document` is the intended generic `render_to_txt` fallback for text and
+HTML/rendered-markup sources, with family-specific renderers taking precedence. It is not
+an XML, binary, paper, ZIP, or PDF renderer. This export path is not yet wired into S10.
 Phase 3 fetches and verifies source bodies.
 Phase 4 follows the proposed [S10 processing decision tree](../document_acquisition/processing_decision_tree.md)
 and active [S9/S10 plan](../document_acquisition/plan.md): M6's `processing_models.py`,
 `processing.py`, and per-run coordinator are pipeline adapters that validate S9 state,
 admit/verify bodies, construct `AcquisitionProcessRequest`, invoke the engine class, and
-own metadata results and receipts. They do not reimplement renderers. A primary uses its
-filing-form normalization profile; a standalone exhibit uses the generic no-cover profile;
-data, graphics, and packages stay on route-specific handling. `target_type` is provenance,
+  own metadata results and receipts. They do not reimplement renderers. A primary uses a
+  family/route-specific renderer when registered, otherwise the filing-form normalizer
+  profile; a standalone exhibit uses the generic no-cover profile. Data, graphics, and
+  packages stay on route-specific handling. `target_type` is provenance,
 not a content-route override. The S10 coordinator may run enabled exhibit-role diagnostics
 on the transient text result, but cannot change the S6 target or S9 state. M6/M7 remain
 subject to their existing approval gates.
 
 Before implementation, reconcile the proposed multi-operation/source-request model with
-the normative [S10 processing contract](../S10_processing.md), which currently describes
-single-body processing and flat-XML validation. Preserve route-specific memory admission,
-same-bytes digest verification, metadata-only results, receipt timing, and S7 review
-ownership unless their owner versions a change. The proposed processing decision tree's
-opaque XML pass-through and the normative flat-XML validation step must be resolved rather
-than silently mixed.
+the normative [S10 processing contract](../S10_processing.md). The requested policy keeps
+flat XML/XSD raw-only without validation, uses the engine normalizer as the generic text
+renderer, and applies family-specific handlers before eligible generic ones. Preserve
+route-specific memory admission, same-bytes digest verification, metadata-only results,
+receipt timing, and S7 review ownership unless their owner versions a change.
 
 ## S6 planning acceptance tests
 
-- Explicit `operations=[raw, render_to_txt, render_to_xml]` plans every supported
-  operation for the selected form/role/path-facts combination and records unsupported ones
-  as ignored without invalidating other operations or the target.
-- An omitted operation policy selects the highest-priority implemented operation in the
-  order `render_to_xml`, `render_to_txt`, `raw`; the selected capability version is pinned.
-- The matrix distinguishes flat `.xml`/`.xsd` raw-only from a validated nested XSL `.xml`.
-  `render_to_xml` is planned only for a registered family transform over the primary
-  `edgar.htm`, never by constructing an archive-root XML sibling request. No body is
-  fetched and no output is produced by S6.
-- For HTML-only Form 4 targets, the plan does not fabricate an XML source. It records XML
-  translation as unsupported until a form-specific capability is registered; it does not
-  execute or validate a translator.
+- Raw is mandatory for every matched target. Explicit operations request additional
+  renders; unsupported renders are recorded without invalidating raw or the target.
+- An omitted derived-operation policy selects `render_to_xml` before `render_to_txt`; the
+  selected capability version is pinned. Raw remains the baseline representation.
+- The matrix distinguishes flat `.xml`/`.xsd` raw bytes from nested XSL `.xml` rendered
+  markup. No XML source is validated or rewritten by S10. Render operations consume only
+  a declared HTML input and never construct an archive-root sibling request.
+- Form 4's proposed XML transform is family-specific to its declared HTML path. Other
+  forms remain unsupported for XML rendering unless they register their own handler or
+  an evidence-backed generic handler is approved; the Form 4 handler overrides generic.
 - If every requested operation is unsupported, the logical target and its primary source
   request remain planned while the unsupported operation statuses are retained.
 - Raw, text, and XML-export operations share the primary source request when the family
   capability identifies that source. S6 validates locators but does not fetch them.
-- `.fil`, `.zip`, `.eis`, images, and `.paper` are raw-only; flat `.xml`/`.xsd` are raw-only;
-  PDF may additionally produce extracted text. Unsupported renders do not suppress raw.
+- `.fil`, `.zip`, `.eis`, images, `.paper`, PDF, flat `.xml`, and `.xsd` are raw-only.
+  Unsupported renders do not suppress raw.
+- Lazy-index triggers are family-specific and require a reviewed text trigger. Form 4 has
+  none; raw selection is based on its pinned URL and observed era-specific exhibit-like
+  link evidence.
 - Phase 0 path facts preserve domain, engine, and document-storage outcomes. Phase 1
   capability resolution can plan multiple outputs for one source class without overloading
   the shared classifier with operation support.
@@ -544,11 +567,15 @@ These checks belong to S9 acquisition and the engine/processing owner, not S6 pl
 - S9 fetches or reuses each eligible source request, verifies response/selected hashes
   and sizes, replays the recorded body, and records per-source outcomes. Acquisition
   failure does not trigger an unplanned URL/operation fallback.
-- The engine processor tests generic HTML-to-text and PDF extraction on admitted byte
-  inputs, including output digest/size, handler-version fingerprints, and independent
-  per-operation failures. Output-fidelity corpus tests belong to the engine/renderer gate.
-- A Form 4 HTML-to-XML translator requires separate implementation and validation. XML/XSD
-  parsing and semantic extraction remain form-pipeline behavior, not acquisition behavior.
+- S10 tests the generic normalizer text path and family-specific overrides on admitted
+  bytes, including output digest/size, handler-version fingerprints, and independent
+  per-operation failures. PDF extraction remains unavailable; output-fidelity corpus
+  tests belong to the renderer gate.
+- A Form 4 HTML-to-XML transform requires separate implementation and validation. Flat
+  XML/XSD remains unchanged raw input; semantic extraction belongs to a form pipeline.
+- Supersession tests prove a plan can retire one form's prior processor version without
+  removing another form's result that used the same version. The plan selector and
+  selective pruning are not implemented.
 - M6/M7 verify metadata-only results and optional S7 review capture; they do not persist
   derived payloads. Only a separately approved M9 schema may add durable
   `StoredRepresentation` byte-alias/deduplication/provenance tests.

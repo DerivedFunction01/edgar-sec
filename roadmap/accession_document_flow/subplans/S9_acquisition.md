@@ -11,15 +11,20 @@
   strict ASCII equality; mismatch or unverifiable type triggers lazy recovery. Other
   selectors do not screen the submitted primary. HTML/cover screening is absent. The
   fixture CLI/operator now support create, capture, list, and replay, with capture
-  limited to available direct response bodies and bodyless failures. S10 and S11 remain
-  gated. Command contracts are indexed in
+  limited to available direct response bodies and bodyless failures. S10 has an initial
+  offline target worker; its operation-aware coordinator and renderers remain incomplete.
+  S11 remains gated. Command contracts are indexed in
   [document_acquisition](document_acquisition/cli_inventory.md); the older S9a–S9d
   decomposition is retained as background design, not the active command index.
 - Depends on: validated S6 target-plan bundles and S4 broker lifecycle. The ordinary
   inventory-backed path does not read S5 or catalog source artifacts; catalog-direct
   `exact_form_with_lazy_index` may fetch and parse an index page under its explicit
   recovery policy.
-- Gated: S10 processing/consumption and S11 publication are not implemented. Fixture
+- Requested next policy (not implemented): replace the uniform catalog-direct selector
+  with S6-pinned family-specific text triggers. S9 owns any bounded trigger scan and
+  index request; S10 outputs/diagnostics do not feed back into acquisition. Form 4 has no
+  designed lazy-index trigger.
+- Gated: complete S10 operation processing/consumption and S11 publication. Fixture
   replay writes to a caller-selected local output path but does not create a managed
   S10 staging reference or consumption receipt.
 
@@ -27,7 +32,7 @@
 
 - **Status: S9 acquisition and the supported fixture CLI family are integrated; cover evidence and later stages remain incomplete.** The serial runner composes bounded transfer, exact-sequence extraction, target outcomes, run-state commits, and catalog-direct lazy-index selection. On the catalog-direct direct-body path, it records the initial screen as `html_cover`/`unverifiable` and fetches the index after a successful sequence-1 response. It selects a unique row by exact `document_type`/filing-form equality. Under the exact-form selector, primary bundle bodies are compared with the pinned form using strict ASCII equality; mismatch/unverifiable type triggers lazy recovery and a selected bundle candidate is checked again. Other selectors do not screen the submitted primary. There is no HTML/cover evaluator. Fixture create/fill/list/replay are wired for retained direct response bodies and bodyless failures; bundle/lazy capture remains limited by response retention. Offline S10 processing review is a separate partial slice; S11 remains gated.
 - **Evidence:** [`document_acquisition/runner.py`](../../../edgar_sec/pipelines/document_acquisition/runner.py), [`target_runner.py`](../../../edgar_sec/pipelines/document_acquisition/target_runner.py), [`index_selection.py`](../../../edgar_sec/pipelines/document_acquisition/index_selection.py), [`fixture_operator.py`](../../../edgar_sec/pipelines/document_acquisition/fixture_operator.py), [`infra/sec_http/streaming.py`](../../../edgar_sec/infra/sec_http/streaming.py), [`infra/broker/sec_broker.py`](../../../edgar_sec/infra/broker/sec_broker.py), and [`engine/document/unpacking/streaming.py`](../../../edgar_sec/engine/document/unpacking/streaming.py) own the implemented execution path.
-- **Next step:** complete historical mismatch fixture coverage and any remaining ungated S9 acceptance work, then gather representative S9/S10 evidence before proposing S10/S11 gates for approval. Do not fall back to buffered transport or legacy `document_storage` selection.
+- **Next step:** replace the uniform lazy-index selector with the versioned family-specific trigger policy in the S6/S9 decision trees. Trigger scans are limited to families with reviewed rendered-text evidence; Form 4 has none and relies on pinned raw URL/exhibit-link evidence. Keep historical mismatch fixture coverage as a separate S9 acceptance task. Do not fall back to buffered transport or legacy `document_storage` selection.
 
 ## Objective
 

@@ -37,9 +37,10 @@ skipped. Profile contents are parsed and digested once at plan start.
 ### Acquisition-policy extension
 
 The acquisition-policy extension is defined in the separate
-[rollout plan](acquisition_policy_plan.md). When implemented, profiles use schema version
-`2`; a version-`1` profile must be explicitly migrated and is never interpreted with the
-new defaults. Each target may add:
+[rollout plan](acquisition_policy_plan.md). The current profile contract uses schema
+version `2`; a version-`1` profile is explicitly migrated and is never interpreted with
+the current defaults. The requested next policy below requires a new schema version and
+supersedes the current defaults without a compatibility alias. Each target may add:
 
 ```json
 "acquisition_policy": {"operations": ["raw", "render_to_txt"]}
@@ -105,11 +106,36 @@ change to operation resolution therefore creates a distinct immutable plan. Exis
 `target_id` derivation remains unchanged and includes `plan_id`; operation rows never
 change target identity within one plan.
 
-Acquisition `raw` means preserve the selected source bytes without an acquisition transform.
-For flat XML/XSD this remains the only acquisition operation. S10's existing standalone XML
-well-formedness and DTD/external-entity checks remain in force before it returns an
-`xml_verbatim` result; those checks do not perform semantic XML/XBRL parsing or alter the
-source bytes. XML semantics remain owned by a form-specific pipeline.
+Acquisition `raw` preserves the selected source bytes without a transform. Flat XML/XSD
+remains raw-only; S10 does not validate, rewrite, or parse those bytes. XML semantics
+remain owned by a separate form-specific pipeline.
+
+## Requested next policy (not implemented)
+
+The current schema-v2 profile rules, uniform lazy-index selector, and S6 bundle-v4
+relation set above describe existing behavior/design. The next processing policy replaces
+their operation and selector semantics in a new, versioned contract. Its version numbers
+are not assigned; old profiles/bundles are refused by the new path rather than migrated
+through a compatibility shim.
+
+- Every matched target has a mandatory raw representation. Explicit/default operation
+  selection controls only derived outputs; the default derived priority is
+  `render_to_xml > render_to_txt`.
+- For `render_to_txt`, a family/route-specific renderer wins. Otherwise the generic
+  `engine.forms.normalize.normalize_document` fallback handles text and HTML/rendered
+  markup with the primary cover-aware or exhibit no-cover profile. It is not a binary,
+  paper, PDF, flat XML/XSD, ZIP, or unknown-route renderer.
+- For `render_to_xml`, a family-specific transform wins over a generic transform. A
+  generic transform requires evidence-backed registration. Form 4's proposed transform
+  is limited to its declared HTML path; it does not generalize to other forms. Flat XML,
+  XSD, ZIP, and other structured sources remain unchanged raw bytes.
+- Lazy-index triggers are declared per form family and may scan rendered text only where
+  a reviewed trigger exists. Raw alone is not a trigger. Form 4 has no designed trigger;
+  its raw selection uses its pinned URL and observed era-specific exhibit-like links.
+- A processor-version change does not invalidate old results globally. A plan may
+  explicitly supersede selected forms/families, operations, and prior processor/version
+  in a new immutable snapshot; unrelated family representations using the same old
+  version remain. The selective supersession option and pruning path are not implemented.
 
 ```json
 {

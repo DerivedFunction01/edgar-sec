@@ -112,8 +112,8 @@ Rules are resolved as follows:
 - A primary target may declare `catalog_direct_selection` as `submitted_primary` or
   `exact_form_with_lazy_index`. This policy is required for catalog-only planning and
   prohibited on non-primary targets. It is included in profile canonicalization and
-  the target-plan row. The former `exact_form` selector is dropped; there is no third
-  selector.
+  the target-plan row. The former `exact_form` selector is dropped; the current schema
+  has no third selector. The requested replacement policy is recorded below.
 - `submitted_primary` accepts the catalog's primary link as the requested primary
   without body-type evaluation. Under `exact_form_with_lazy_index`, a successful
   direct-body sequence-1 response is followed by one bounded index lookup; its HTML
@@ -127,6 +127,15 @@ Rules are resolved as follows:
   The SEC index's primary designation/sequence and selected-body type are separate
   evidence. Sequence 1 is the physical slot anchored by the catalog primary link, not
   proof that its body has the filing-form type.
+
+### Requested next policy (not implemented)
+
+Replace the uniform catalog-direct selector with a versioned per-family lazy-index trigger
+declared by S6. Only families with a reviewed rendered-text trigger may authorize the
+follow-up index request; a raw representation alone is not a trigger. Form 4 has no
+designed trigger. For such families, raw selection relies on the pinned URL and observed
+era-specific exhibit-like links. The new schema replaces the old selector without a
+compatibility alias.
 
 Profile normalization produces a canonical digest used to pin planning runs.
 

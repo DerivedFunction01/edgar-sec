@@ -711,7 +711,7 @@ S9 is specified around its user-facing commands: [project](subplans/document_acq
 
 **Details:** [subplan](subplans/S10_processing.md)
 
-A staged-body-to-representation interface with deterministic fingerprint and route dispatch for HTML/iXBRL, text, standalone XML, binary/PDF, paper, and unknown paths. It reuses the existing form-aware engine normalizer without materializing stage traces; normalized content remains transient through S10, then S11 publishes selected source/derived payloads into Parquet relations. PDF text extraction and XML fact extraction are explicit gaps; no `document_storage` imports.
+M6 currently has an offline target worker for raw and direct-TEXT identity results. The requested policy preserves raw for every route, chooses form-family/route renderers before the generic engine normalizer for text/HTML, and prefers specific XML transforms over an evidence-backed generic transform (including the proposed Form 4 HTML-to-XML handler). PDF text extraction is unavailable; flat XML/XSD, ZIP, paper, and binary remain raw-only. Family-specific lazy-index triggers and plan-scoped processor-version supersession are new, unimplemented S6/S9 policy. S10 operation coordination and general rendering remain incomplete; S11 publication is separately gated.
 
 ### S11 — Durable acquisition snapshot publication (design approval gate)
 

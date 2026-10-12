@@ -49,7 +49,10 @@ _TIMESTAMP = datetime(2026, 10, 11, tzinfo=UTC).isoformat()
 
 
 def _acquired_request(
-    tmp_path: Path, *, lazy_selected: bool = False
+    tmp_path: Path,
+    *,
+    lazy_selected: bool = False,
+    selected_filename: str | None = None,
 ) -> tuple[AcquisitionPaths, ProcessingRequest]:
     paths = resolve_acquisition_paths(artifacts_root=tmp_path / "artifacts")
     plan_id, target = _write_pinned_plan(paths.artifacts_root)
@@ -89,6 +92,7 @@ def _acquired_request(
             selected_body_relative_path=(
                 initial_relative if lazy_selected else relative_path
             ),
+            selected_filename=selected_filename,
         )
     ]
     resolution = None
@@ -208,7 +212,7 @@ def _acquired_request(
         document_path=validate_archive_url(
             target["target_url"], target["accession"]
         ).document_path,
-        selected_filename=None,
+        selected_filename=body.selected_filename,
         source_origin=target["source_origin"],
         body=body,
         operations=(
@@ -312,6 +316,23 @@ def test_process_target_uses_lazy_direct_selection_evidence_for_route(
     assert result.operation_results[0].status == "available"
     assert result.operation_results[1].status == "failed"
     assert result.operation_results[1].diagnostics[0].code == "handler_unavailable"
+
+
+def test_process_target_rejects_selected_filename_for_direct_target(
+    tmp_path: Path,
+) -> None:
+    paths, request = _acquired_request(tmp_path, selected_filename="report.html")
+
+    with pytest.raises(
+        ProcessingError,
+        match="direct target has an unexpected selected filename",
+    ):
+        process_target(request, paths=paths)
+
+    assert (
+        read_body_consumption_receipt(paths, request.body.run_id, request.target_id)
+        is None
+    )
 
 
 def test_process_target_refuses_mismatched_work_order_identity_without_receipt(

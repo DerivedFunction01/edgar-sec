@@ -64,7 +64,11 @@ Status markers are maintained against tracked code and focused offline tests:
   preflight consumes explicit terminal request/result pairs without processor-liveness
   checks. M7b now carries the bundle-selected filename through the S9 attempt record and
   S10 handoff. Operation-intent persistence, export renderers, full-run projection, and
-  S11 remain unavailable.
+  S11 remain unavailable. The requested next policy requires a new S6/S9 contract before
+  the coordinator: mandatory raw; family/route-specific renderers before generic handlers;
+  `normalize_document` as the generic `render_to_txt` fallback; evidence-backed generic
+  XML only after specific handlers; family-specific lazy-index triggers; and explicit
+  plan-scoped processor-version supersession. These policies are not implemented.
 - [x] **M7a — Offline S9/S10 composition:** captured direct-TEXT fixture replay,
   `process_target`, actual request/result projection, receipt verification, stable
   fingerprint, staged-output integrity, and unavailable-operation placeholders are

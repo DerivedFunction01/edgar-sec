@@ -8,8 +8,8 @@
   and explicitly pinned direct-TEXT passthrough, validates form-family operation
   permissions, and preserves unsupported placeholders. Durable operation-result and
   payload schemas, general export handlers, and coordinator wiring remain incomplete.
-  The retired `document_storage.FilingProcessor` is not a current runtime owner; the
-  surviving normalizer is not a text/XML export handler. Exhibit packs are not an active
+  The retired `document_storage.FilingProcessor` is not a current runtime owner. The
+  engine normalizer is not yet wired as an export handler. Exhibit packs are not an active
   evaluator or holdout evidence.
 - A processing-review artifact writer is exercised by captured S9 direct-TEXT fixture
   replay and is wired to the shared review console. Reviewer labels, exhibit assessment,
@@ -23,17 +23,20 @@
 
 ## Current tracked-code audit (2026-10-12)
 
-- **Status: M6 has an initial offline `process_target` worker.** It validates the v1 work-order identity, selected body, and S9 attempt evidence; returns deterministic raw identity results and text identity on the `TEXT` route; and records the existing receipt. Real renderers, bundle-child filename evidence, review staging, and the coordinator remain unavailable. The operation-aware persisted relations remain design-only.
+- **Status: M6 has an initial offline `process_target` worker.** It validates the v1 work-order identity, selected body, and S9 attempt evidence; returns deterministic raw identity results and text identity on the `TEXT` route; and records the existing receipt. M7b now persists and verifies bundle-child filename evidence. Real renderers, review staging, and the coordinator remain unavailable. The operation-aware persisted relations remain design-only.
 - **Result projection:** `result_projection.project_terminal_results` validates explicit request/result batches, terminal operation coverage, and staged-output references into a deterministic in-memory view. It does not query processor liveness or persist S11 relations. Completeness is relative to supplied requests because the current v1 work order has no operation-intent relation.
 - **Evidence:** [`processing.py`](../../../edgar_sec/pipelines/document_acquisition/processing.py), [`result_projection.py`](../../../edgar_sec/pipelines/document_acquisition/review_artifacts/result_projection.py), their mirrored tests, and [`engine/forms/normalize.py`](../../../edgar_sec/engine/forms/normalize.py); the normalizer supports `capture_stage_trace=False` but is not an export handler.
-- **Next step:** approve and persist operation intent/results and selected-child filename evidence before broadening operation coverage. Do not use diagnostic normalizers, infer bundle selection, or publish durable output from this preflight.
+- **Next step:** version the family/route handler precedence, family-specific lazy-index
+  triggers, operation intent, and explicit processor-supersession selectors; then wire a
+  coordinator to execute the pinned operations. Do not infer bundle selection or publish
+  durable output from this preflight.
 
 ## Objective
 
-Materialize each requested supported S6 operation as its own deterministic result.
-`render_to_txt` and `render_to_xml` are export handlers and never call the filing
-normalizer. Diagnostic normalization and exhibit assessment remain separate
-transient analyses and cannot supply or alter a stored operation representation.
+Materialize each requested supported S6 operation as its own deterministic result. For
+`render_to_txt` and `render_to_xml`, choose a family/route-specific handler before any
+evidence-backed generic handler. The engine normalizer is the generic `render_to_txt`
+fallback. Raw source bytes are always preserved independently of rendered output.
 
 S10 processes the source selected by one S6 target and S9 acquisition result. It does
 not query the filing catalog or inventory, fetch an index page, discover another
@@ -41,13 +44,35 @@ document, or revise the target's identity. `source_origin="catalog_direct"` mean
 catalog supplied the locator; processing does not upgrade it to an index-verified
 statutory document type.
 
-For catalog-direct primaries, S9's pinned `catalog_direct_selection` policy is
-resolved before S10 receives a body. `target_role=primary` is processing intent; the
-expected statutory type is the filing form, while sequence and any observed index/body
-type remain separate evidence. Under `exact_form_with_lazy_index`, S9 may assign the
-target to a different observed slot after its local suspicion screen and lazy index
-lookup. S10 processes only the final target-to-slot assignment and never runs that
+For catalog-direct primaries, S9's pinned selector is resolved before S10 receives a
+body. The current implementation exposes a uniform `exact_form_with_lazy_index` selector;
+the requested future policy replaces it with form-family-specific text triggers. A family
+without a designed trigger, initially including Form 4, must not perform lazy index
+selection. S10 processes only the final target-to-slot assignment and never runs that
 lookup itself. A successful HTML cover screen is not an exact-type assertion.
+
+## Requested policy delta (not yet implemented)
+
+- Every acquired source remains an exact `raw` representation, regardless of form or
+  route. Paper, binary, PDF, XML, XSD, ZIP, and other non-text inputs have no text export;
+  PDF extraction is not available.
+- S6 marks `raw` as the mandatory baseline for every matched target. Explicit operation
+  policy controls only additional derived representations; a renderer failure never
+  removes raw.
+- `render_to_txt` resolves a form-family/route-specific renderer first. If none is
+  registered, the engine `normalize_document` path is the generic fallback for text and
+  HTML/rendered-markup sources, with primary cover-aware and exhibit no-cover contexts.
+- A Form 4-specific `render_to_xml` transform may consume its declared `.htm` input. It
+  does not generalize to other forms or turn selected XML/XSD/ZIP sources into rendered
+  output. Other forms need their own evidence-backed capability or a reviewed generic
+  transform; the Form 4 handler continues to override a generic handler.
+- Raw-only families cannot use text scanning as a lazy-index trigger. Each family must
+  pin its own trigger; Form 4 has none designed. Its raw target must use the pinned URL
+  and observed exhibit-like link evidence for its era.
+- Processor version changes do not automatically invalidate older results. A plan-scoped
+  supersession selector must identify form/family, operation, and prior processor/version;
+  it may retire only matching representations in the new snapshot. Existing snapshots
+  remain immutable, and unrelated families sharing a renderer version remain retained.
 
 ## Models and operation
 
@@ -180,9 +205,10 @@ S5/S6 source artifact or makes an HTTP request.
    `unsupported`, or `blocked` without invoking a handler; execute each requested,
    supported operation independently.
 5. `raw` creates an identity representation over the selected source digest.
-   `render_to_txt` invokes its route renderer without `normalize_document`.
-   `render_to_xml` invokes a registered family transform over primary `edgar.htm`; no
-   `.xml` sibling is opened or fetched. There is no operation fallback.
+   `render_to_txt` chooses a family/route handler before the generic normalizer fallback
+   for eligible text/HTML input. `render_to_xml` chooses a family-specific transform
+   before an evidence-backed generic transform over a declared HTML input; no `.xml`
+   sibling is opened or fetched. There is no operation fallback.
 6. Optionally run the separate diagnostic normalizer/evaluator on a bounded view. Its
    text and findings do not become a render output and cannot alter operation status,
    route, selected body, or S9 state.
@@ -230,44 +256,45 @@ normalize_document(
 ) -> NormalizationResult
 ```
 
-Existing callers retain the current default. Only the separate diagnostic/review path
-may call this normalizer; render handlers must not call it. When diagnostics need it,
-S10 passes `capture_stage_trace=False` to avoid repeated full-text copies.
+Existing callers retain the current default. The requested generic `render_to_txt`
+fallback uses this normalizer on eligible text/HTML sources. Diagnostic/review callers
+may also use it; S10 passes `capture_stage_trace=False` to avoid repeated full-text
+copies.
 
-For diagnostic normalization, a primary uses its filing-form profile and a standalone
-exhibit uses the generic no-cover profile. This analysis profile does not select or
-implement `render_to_txt`; export capability and handler dispatch remain independent.
+For generic normalization, a primary uses its filing-form profile and a standalone
+exhibit uses the generic no-cover profile. A registered family/route renderer takes
+precedence over this fallback.
 
 ## Route contract
 
 Route export handlers from the effective source path, not claimed MIME type alone. A
 direct target uses its validated accession-relative path; a bundle child uses its
-selected `<FILENAME>` and `content_route()`, not the bundle envelope path. Normalization
-profiles apply only to optional diagnostics, never to stored exports. `target_type`
-does not override the content route or assert the SGML header value.
+selected `<FILENAME>` and `content_route()`, not the bundle envelope path. A family/route
+specific text renderer overrides the generic normalizer fallback. `target_type` does not
+override the content route or assert the SGML header value.
 
 | Route | Operation behavior | Deliberate boundary |
 |---|---|---|
-| `MARKUP`, `RENDERED` | `raw` keeps exact selected HTML. A registered `render_to_txt` handler emits visible text; it must not call `normalize_document`. | HTML/iXBRL output is an export view; no XBRL facts are extracted. |
-| `TEXT` | `raw` preserves source bytes. `render_to_txt` uses the versioned text identity/export handler; byte-identical output shares the payload digest but has its own representation row. | No filing-cover, checkmark, reflow, or table-repair normalization. |
-| `XML` | `raw` preserves standalone XML. `render_to_xml` is supported only when a family handler transforms primary `edgar.htm`; flat XML does not become its own render output. | No archive-root sibling fetch, passthrough masquerading as rendering, or semantic XBRL extraction. |
-| `BINARY` | `raw` preserves exact bytes. `render_to_txt` is unsupported until a PDF/image text handler is registered. | Binary source bytes remain independently available. |
-| `PAPER`, `UNKNOWN` | `raw` may remain available; other operations require explicit registered support. | No off-archive reference following or guessed MIME conversion. |
+| `MARKUP`, `RENDERED` | `raw` keeps exact selected bytes. `render_to_txt` uses a family-specific handler first, then generic `normalize_document`; `render_to_xml` uses a family-specific handler or an evidence-backed generic transform. Form 4's handler is specific to its declared HTML path. | HTML/iXBRL output is an export view; no XBRL facts are extracted. |
+| `TEXT` | `raw` preserves source bytes. `render_to_txt` uses a form-specific handler or generic normalizer fallback; byte-identical output may share the payload digest but has its own representation row. | The normalizer is an export path, not an implicit request to emit diagnostic stage traces. |
+| `XML` | `raw` preserves standalone XML. `render_to_xml` is supported only for a registered form-specific or evidence-backed generic transform over a declared HTML input; flat XML does not become its own render output. | No archive-root sibling fetch or semantic XBRL extraction. |
+| `BINARY` | `raw` preserves exact bytes. No text handler is currently supported; PDF extraction remains unavailable. | Binary source bytes remain independently available. |
+| `PAPER`, `UNKNOWN` | `raw` preserves the available selected source/state; no derived renderer is enabled for these routes. | No off-archive reference following or guessed MIME conversion. |
 
-The existing `engine.document.html.normalizer.normalize_html_document()` and
-`engine.forms.normalize.normalize_document()` remain diagnostic/review helpers only.
-The export registry owns the `render_to_txt` and `render_to_xml` handlers and pins each
-implementation version. S9's large-bundle path continues to use its bounded streaming
-extractor rather than a whole-envelope normalizer.
+The generic `render_to_txt` fallback is `engine.forms.normalize.normalize_document()`
+over eligible text/HTML inputs with the pinned primary or no-cover profile. A registered
+family-specific handler takes precedence. The export registry pins the selected handler
+and processor version. An XML transform follows the same specific-over-generic rule only
+when generic capability has reviewed evidence. S9's large-bundle path continues to use
+its bounded streaming extractor rather than a whole-envelope normalizer.
 
 ## Target identity and cover handling
 
 - `target_role`, `target_type`, and filing form are copied from the S6 target row.
-  For optional diagnostics, the role selects normalization context: `primary` uses the
-  filing-form profile and `exhibit` uses the generic no-cover profile. This cannot
-  select an export handler or change its output. The effective selected-body route/path
-  still selects operation capability. These values do not re-resolve the target or
-  verify a selected SGML `<TYPE>`.
+  For generic text rendering and optional diagnostics, the role selects normalization
+  context: `primary` uses the filing-form profile and `exhibit` uses the generic no-cover
+  profile. A registered family/route renderer overrides that fallback. These values do
+  not re-resolve the target or verify a selected SGML `<TYPE>`.
 - A catalog-direct plan is primary-only, so S10 uses the filing-form profile for its
   catalog-supplied body. If that profile requires a cover boundary and reports none,
   emit the non-fatal `cover_boundary_not_detected` diagnostic; do not fall back to the
@@ -332,11 +359,11 @@ operation failure does not erase successful sibling results.
   `cover_boundary_not_detected` but does not change role/profile, fetch an index, or
   schedule replacement acquisition; generic-profile exhibits do not get that warning.
 - Fingerprint changes prevent false base/new equality.
-- Flat ASCII `.txt` `render_to_txt` uses the versioned identity handler and aliases the source digest while retaining a distinct representation row.
-- HTML export retains separate raw and text representations; `render_to_xml` transforms primary `edgar.htm` only for a registered form and never probes for an XML sibling.
-- Flat XML remains raw-only unless separately registered. PDFs have no `render_to_txt` handler until one is approved.
+- `.txt` `render_to_txt` uses a family-specific handler or the generic normalizer fallback; preserve a distinct representation row even when output digest aliases raw.
+- HTML export retains raw and text representations; specific handlers override generic fallbacks. Form-specific or evidence-backed generic `render_to_xml` consumes declared HTML input and never probes for an XML sibling.
+- Flat XML/XSD, ZIP, paper, binary, and PDF remain raw-only. PDF has no text handler.
 - iXBRL hidden/inline tags follow existing visible-text behavior; no fact table is emitted.
-- `render_to_txt` does not call `normalize_document`, remove cover/checkmark content, reflow, or repair tables. HTML export fixtures have explicit visible-text/table output expectations.
+- Family-specific `render_to_txt` overrides the generic `normalize_document` fallback; both produce deterministic versioned outputs. Raw source bytes remain unchanged.
 - Body and request identity mismatches refuse processing; a typed working-set admission refusal preserves the acquired body without a consumption receipt.
 - A completed read followed by an export failure still writes a matching consumption receipt; unreadable or digest-mismatched input does not. The receipt alone never permits cleanup before publication adoption or explicit discard.
 - Exhibit assessment is absent for unsupported representations/forms; when enabled it can only append a diagnostic and cannot change the target, profile, or acquisition state.
@@ -346,8 +373,9 @@ operation failure does not erase successful sibling results.
 
 ## Acceptance criteria
 
-Every requested supported operation has an independent deterministic outcome; raw and
-exports retain separate identities. Processing outputs are transient until S11
+Raw is mandatory and every additional supported operation has an independent deterministic
+outcome; raw and exports retain separate identities. A processor version change does not retire other
+families' representations without an explicit plan-scoped supersession selector. Processing outputs are transient until S11
 publication adopts selected representations into Parquet payload relations, except for
 separately selected review evidence. The publication contract is specified in the
 acquisition lifecycle plan and remains behind S11 approval. Large-body parallel processing remains gated on measured route

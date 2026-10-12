@@ -3,9 +3,11 @@
 ## Goal Description
 
 This D0 document records the separate S9 acquisition-suspicion and S10 role-assessment
-contracts. S9 (`exact_form_with_lazy_index`) decides whether to fetch `-index.html`; S10
-diagnoses the already-selected body against pinned S6 intent. The two contracts do not
-share scan results or dataclasses.
+contracts. The current S9 (`exact_form_with_lazy_index`) selector decides whether to
+fetch `-index.html`; S10 diagnoses the already-selected body against pinned S6 intent.
+The requested next S9 policy uses family-specific rendered-text triggers, but S10
+diagnostics and operation outputs remain separate and never feed back into acquisition.
+The contracts do not share scan results or dataclasses.
 
 **Runtime status:** This is a research/design record, not evidence that an S10 evaluator
 is enabled. The former engine evaluator package and `EvaluatorDecision` action SPI were

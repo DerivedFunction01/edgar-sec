@@ -175,13 +175,15 @@ capture stores the full source response in SQLite and replay re-derives a bundle
 evidence.
 
 Each requested operation gets its own result and output digest. `raw` is an identity
-representation over the selected source digest. `render_to_txt` and `render_to_xml`
-use registered export handlers and do not call `normalize_document`; a successful
-export gets its own representation even when its digest aliases another payload. PDF
-extraction remains unsupported until a handler is registered. S10 output files are
-transient until the snapshot publisher adopts their representations into typed Parquet
-payload relations or S7 explicitly retains a review output. Payload bytes deduplicate
-by digest; operation/provenance rows do not.
+representation over the selected source digest and remains available for every acquired
+route. `render_to_txt` uses a family/route-specific handler first, then the generic engine
+normalizer for eligible text/HTML sources. `render_to_xml` uses a family-specific transform
+before an evidence-backed generic transform. Form 4's proposed handler applies only to its declared HTML path. Flat XML/XSD, ZIP, paper,
+binary, PDF, and unknown routes remain raw-only; PDF extraction is unavailable. S10
+outputs are transient until the snapshot publisher adopts their representations into
+typed Parquet payload relations or S7 explicitly retains a review output. Payload bytes
+deduplicate by digest; operation/provenance rows do not. Processor versions are not
+invalidated globally without an explicit plan-scoped supersession selector.
 
 ## Identity and containment
 
