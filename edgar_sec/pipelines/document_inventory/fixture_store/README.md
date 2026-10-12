@@ -14,7 +14,7 @@ is mutable local evidence, not a published inventory snapshot.
 ## Contracts
 
 - **Compressed-at-rest, verified-on-replay**: Captured response bytes are compressed only at rest and verified after replay.
-- **Page fill reuse**: Fills reuse successful accession pages while recording each new cohort membership.
+- **Resume reuse**: Create and fill reuse successful accession pages while recording new cohort membership.
 - **Retryable failures**: Failed pages remain retryable.
 - **Discoverable partial fixtures**: Interrupted and partial fixtures remain discoverable.
 - **Manifest stores provenance only**: The manifest records source-plan provenance but does not hash the mutable database.

@@ -3,10 +3,16 @@
 from __future__ import annotations
 
 import sqlite3
+from collections.abc import Iterator
+from concurrent.futures import FIRST_COMPLETED, Future, ThreadPoolExecutor, wait
 from dataclasses import replace
 from itertools import groupby
 
-from edgar_sec.domain.document_inventory.models import InventoryCohort
+from edgar_sec.domain.document_inventory.models import (
+    CohortObservation,
+    IndexWorkItem,
+    InventoryCohort,
+)
 from edgar_sec.foundation.compression import compress_payload
 from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
@@ -208,6 +214,16 @@ def _failure_code(error: str | None) -> str:
     return "broker_error"
 
 
+def _fetch_response(broker: SecBroker, request_url: str) -> dict[str, object]:
+    try:
+        response = broker.fetch(request_url)
+    except Exception as exc:
+        return {"status": "error", "error": str(exc)}
+    if not isinstance(response, dict):
+        return {"status": "error", "error": "broker returned an invalid response"}
+    return response
+
+
 def _finish_contribution(
     contributions: tuple[FixtureManifestContribution, ...],
     contribution: FixtureContribution,
@@ -242,8 +258,11 @@ def capture_index_pages(
     paths: FixturePaths,
     broker: SecBroker,
     contribution: FixtureContribution,
+    workers: int = 1,
     progress_callback: ProgressCallback = None,
 ) -> IndexCaptureResult:
+    if isinstance(workers, bool) or not isinstance(workers, int) or workers < 1:
+        raise ValueError("workers must be a positive integer")
     if not paths.manifest_path.is_file() or not paths.storage_path.is_file():
         raise IndexFixtureError(f"fixture does not exist: {paths.root}")
     if len(cohort.work_items) != contribution.accession_count:
@@ -259,11 +278,112 @@ def capture_index_pages(
     contribution_state = _start_contribution(paths, connection, contribution)
 
     added = reused = cases_created = members_created = captured = 0
+    fixture_cache_hits = http_cache_hits = network_fetches = 0
     failures: list[IndexCaptureFailure] = []
     observations = iter(
         groupby(cohort.observations, key=lambda observation: str(observation.accession))
     )
-    try:
+
+    def _record_outcome(
+        work_item: IndexWorkItem,
+        members: tuple[CohortObservation, ...],
+        timestamp: str,
+        *,
+        response: dict[str, object] | None = None,
+        cached: tuple[str, str] | None = None,
+    ) -> None:
+        nonlocal added, reused, cases_created, members_created, captured
+        nonlocal fixture_cache_hits, http_cache_hits, network_fetches
+        accession = str(work_item.accession)
+        failure_code = None
+        raw_error = None
+        digest: str | None = None
+        cache_source = "fixture_cache" if cached is not None else None
+        if cached is not None:
+            digest = cached[0]
+            reused += 1
+            fixture_cache_hits += 1
+        elif response is None or response.get("status") != "ok":
+            error = response.get("error") if response is not None else None
+            raw_error = str(error or "")[:2000] or None
+            failure_code = _failure_code(raw_error)
+        else:
+            source = response.get("cache_source")
+            cache_source = source if source in ("http_cache", "network") else "network"
+            body = response.get("payload") or b""
+            if not isinstance(body, bytes):
+                raw_error = "broker returned a non-byte payload"
+                failure_code = "broker_error"
+            else:
+                http_cache_hits += int(cache_source == "http_cache")
+                network_fetches += int(cache_source == "network")
+                digest = sha256_bytes(body)
+                cursor = connection.execute(
+                    """
+                    INSERT OR IGNORE INTO index_responses
+                    (request_url, response_sha256, byte_size, compressed_body, captured_at)
+                    VALUES (?, ?, ?, ?, ?)
+                    """,
+                    (
+                        work_item.index_url,
+                        digest,
+                        len(body),
+                        compress_payload(body),
+                        timestamp,
+                    ),
+                )
+                if cursor.rowcount:
+                    added += 1
+                else:
+                    reused += 1
+
+        if failure_code is not None:
+            failures.append(
+                IndexCaptureFailure(work_item.accession, failure_code, raw_error)
+            )
+            for member in members:
+                members_created += _record_member(
+                    connection,
+                    case_id=None,
+                    accession=accession,
+                    source_cik=str(member.source_cik),
+                    cohort_source_id=member.cohort_source_id,
+                    failure_code=failure_code,
+                    raw_error=raw_error,
+                    captured_at=timestamp,
+                )
+        else:
+            assert digest is not None
+            for member in members:
+                case_id, created = _case_id(
+                    connection,
+                    request_url=work_item.index_url,
+                    digest=digest,
+                    accession=accession,
+                    cohort_source_id=member.cohort_source_id,
+                )
+                cases_created += int(created)
+                members_created += _record_member(
+                    connection,
+                    case_id=case_id,
+                    accession=accession,
+                    source_cik=str(member.source_cik),
+                    cohort_source_id=member.cohort_source_id,
+                    failure_code=None,
+                    raw_error=None,
+                    captured_at=timestamp,
+                )
+            captured += 1
+        connection.commit()
+        event = {
+            "type": "outcome",
+            "status": "failed" if failure_code is not None else "ok",
+        }
+        if failure_code is None and cache_source is not None:
+            event["source"] = cache_source
+        emit_progress(progress_callback, event)
+
+    def _records() -> Iterator[tuple[IndexWorkItem, tuple[CohortObservation, ...]]]:
         for work_item in sorted(
             cohort.work_items, key=lambda item: str(item.accession)
         ):
@@ -274,100 +394,62 @@ def capture_index_pages(
                 raise IndexFixtureError("cohort work item has no observation") from exc
             if observation_accession != accession:
                 raise IndexFixtureError("cohort observations and work items disagree")
-            members = tuple(grouped)
-            timestamp = now_iso()
-            cached = _cached_digest(connection, accession, work_item.index_url)
-            failure_code = None
-            raw_error = None
-            if cached is None:
-                try:
-                    response = broker.fetch(work_item.index_url)
-                except Exception as exc:
-                    response = {"status": "error", "error": str(exc)}
-                if response.get("status") != "ok":
-                    raw_error = str(response.get("error") or "")[:2000] or None
-                    failure_code = _failure_code(raw_error)
-                else:
-                    body = response.get("payload") or b""
-                    digest = sha256_bytes(body)
-                    cursor = connection.execute(
-                        """
-                        INSERT OR IGNORE INTO index_responses
-                        (request_url, response_sha256, byte_size, compressed_body, captured_at)
-                        VALUES (?, ?, ?, ?, ?)
-                        """,
-                        (
-                            work_item.index_url,
-                            digest,
-                            len(body),
-                            compress_payload(body),
-                            timestamp,
-                        ),
-                    )
-                    if cursor.rowcount:
-                        added += 1
-                    else:
-                        reused += 1
-                    cached = (digest, timestamp)
-            else:
-                reused += 1
-
-            if failure_code is not None:
-                failures.append(
-                    IndexCaptureFailure(work_item.accession, failure_code, raw_error)
-                )
-                for member in members:
-                    members_created += _record_member(
-                        connection,
-                        case_id=None,
-                        accession=accession,
-                        source_cik=str(member.source_cik),
-                        cohort_source_id=member.cohort_source_id,
-                        failure_code=failure_code,
-                        raw_error=raw_error,
-                        captured_at=timestamp,
-                    )
-            else:
-                assert cached is not None
-                digest = cached[0]
-                for member in members:
-                    case_id, created = _case_id(
-                        connection,
-                        request_url=work_item.index_url,
-                        digest=digest,
-                        accession=accession,
-                        cohort_source_id=member.cohort_source_id,
-                    )
-                    cases_created += int(created)
-                    members_created += _record_member(
-                        connection,
-                        case_id=case_id,
-                        accession=accession,
-                        source_cik=str(member.source_cik),
-                        cohort_source_id=member.cohort_source_id,
-                        failure_code=None,
-                        raw_error=None,
-                        captured_at=timestamp,
-                    )
-                captured += 1
-            connection.commit()
-            emit_progress(
-                progress_callback,
-                {
-                    "type": "outcome",
-                    "status": "failed" if failure_code is not None else "ok",
-                },
-            )
+            yield work_item, tuple(grouped)
 
         try:
             next(observations)
         except StopIteration:
-            pass
-        else:
-            raise IndexFixtureError("cohort has observations without work items")
+            return
+        raise IndexFixtureError("cohort has observations without work items")
+
+    executor = ThreadPoolExecutor(
+        max_workers=workers, thread_name_prefix="fixture-fetch"
+    )
+    pending: dict[
+        Future[dict[str, object]],
+        tuple[IndexWorkItem, tuple[CohortObservation, ...], str],
+    ] = {}
+    try:
+        for work_item, members in _records():
+            timestamp = now_iso()
+            cached = _cached_digest(
+                connection, str(work_item.accession), work_item.index_url
+            )
+            if cached is not None:
+                _record_outcome(work_item, members, timestamp, cached=cached)
+                continue
+            pending[executor.submit(_fetch_response, broker, work_item.index_url)] = (
+                work_item,
+                members,
+                timestamp,
+            )
+            if len(pending) >= workers:
+                done, _ = wait(pending, return_when=FIRST_COMPLETED)
+                for future in done:
+                    context = pending.pop(future)
+                    try:
+                        response = future.result()
+                    except Exception as exc:
+                        response = {"status": "error", "error": str(exc)}
+                    _record_outcome(
+                        context[0], context[1], context[2], response=response
+                    )
+
+        while pending:
+            done, _ = wait(pending, return_when=FIRST_COMPLETED)
+            for future in done:
+                context = pending.pop(future)
+                try:
+                    response = future.result()
+                except Exception as exc:
+                    response = {"status": "error", "error": str(exc)}
+                _record_outcome(context[0], context[1], context[2], response=response)
 
         finished = _finish_contribution(
-            contribution_state, contribution, captured, tuple(failures)
+            contribution_state,
+            contribution,
+            captured,
+            tuple(sorted(failures, key=lambda failure: str(failure.accession))),
         )
         validate_database(connection, paths.storage_path, SCHEMA_VERSION)
         refresh_manifest(paths, connection, finished)
@@ -375,6 +457,7 @@ def capture_index_pages(
         connection.rollback()
         raise
     finally:
+        executor.shutdown(wait=True, cancel_futures=True)
         connection.close()
 
     return IndexCaptureResult(
@@ -383,5 +466,8 @@ def capture_index_pages(
         responses_processed=len(cohort.work_items),
         cases_created=cases_created,
         members_created=members_created,
-        failures=tuple(failures),
+        failures=tuple(sorted(failures, key=lambda failure: str(failure.accession))),
+        fixture_cache_hits=fixture_cache_hits,
+        http_cache_hits=http_cache_hits,
+        network_fetches=network_fetches,
     )

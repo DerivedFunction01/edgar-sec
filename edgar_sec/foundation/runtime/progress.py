@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import time
+from collections import Counter
 from collections.abc import Callable
 from typing import Any
 
@@ -32,6 +33,7 @@ def make_tqdm_callback(
     """Adapt generic pipeline execution events to a tqdm progress bar with throughput stats."""
     start_time = time.monotonic() if started is None else started
     state = {"ok": 0, "fail": 0, "hist": 0}
+    cache_sources: Counter[str] = Counter()
 
     def callback(event: dict[str, Any]) -> None:
         metrics = event.get("metrics") or {}
@@ -57,6 +59,9 @@ def make_tqdm_callback(
             else:
                 state["fail"] += count
             state["hist"] += int(event.get("historical_files", 0) or 0)
+            source = event.get("source")
+            if source in ("fixture_cache", "http_cache", "network"):
+                cache_sources[str(source)] += count
             pbar.update(count)
 
         postfix = {
@@ -77,6 +82,14 @@ def make_tqdm_callback(
             )
             if metrics.get("cache_hits"):
                 postfix["cache"] = metrics["cache_hits"]
+        if cache_sources:
+            postfix.update(
+                {
+                    "local": cache_sources["fixture_cache"],
+                    "http": cache_sources["http_cache"],
+                    "net": cache_sources["network"],
+                }
+            )
         pbar.set_postfix(postfix)
 
     return callback

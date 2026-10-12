@@ -147,6 +147,7 @@ class SecBroker:
                 "error": None,
                 "payload_length": 0,
                 "payload": b"",
+                "cache_source": None,
             }
         peek = getattr(self._client, "peek_cache", None)
         if peek is not None and not force_refresh:
@@ -159,6 +160,7 @@ class SecBroker:
                     "error": None,
                     "payload_length": len(peeked),
                     "payload": peeked,
+                    "cache_source": "http_cache",
                 }
         with self._semaphore:
             with self._lock:
@@ -192,6 +194,7 @@ class SecBroker:
             "error": None,
             "payload_length": len(payload) if payload else 0,
             "payload": payload,
+            "cache_source": "network",
         }
 
     def _note_bytes(self, count: int) -> bool:
@@ -429,6 +432,7 @@ class SecBroker:
                         "status": result["status"],
                         "error": result.get("error"),
                         "payload_length": result["payload_length"],
+                        "cache_source": result.get("cache_source"),
                     }
                     payload = result.get("payload") or b""
                 header = _json_dumps(response)
@@ -581,7 +585,12 @@ class SecBrokerClient:
                 "error": header.get("error") or "broker reported failure",
                 "payload": None,
             }
-        return {"status": "ok", "error": None, "payload": payload}
+        return {
+            "status": "ok",
+            "error": None,
+            "payload": payload,
+            "cache_source": header.get("cache_source") or "network",
+        }
 
     def stream_to_file(
         self,

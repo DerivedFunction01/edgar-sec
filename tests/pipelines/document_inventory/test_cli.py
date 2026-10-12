@@ -2,15 +2,22 @@ from __future__ import annotations
 
 import json
 from contextlib import contextmanager
+from datetime import date
 from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
 
-from edgar_sec.domain.identity import AccessionNumber
+from edgar_sec.domain.document_inventory.models import (
+    CohortObservation,
+    IndexWorkItem,
+    InventoryCohort,
+)
+from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.pipelines.document_inventory import cli
 from edgar_sec.pipelines.document_inventory.commands import fixture as fixture_command
 from edgar_sec.pipelines.document_inventory.fixture_store.capture import (
+    capture_index_pages,
     create_index_fixture,
 )
 from edgar_sec.pipelines.document_inventory.fixture_store.models import (
@@ -31,6 +38,36 @@ def _cohort() -> SimpleNamespace:
 
 def _contribution() -> FixtureContribution:
     return FixtureContribution("p", "c", "10-K", "1", "f" * 64, 1)
+
+
+def _patch_fixture_runtime(monkeypatch: pytest.MonkeyPatch, workers: int = 2):
+    client = SimpleNamespace(close=lambda: None)
+    resources = SimpleNamespace(workers=workers, worker_ceiling=workers)
+    monkeypatch.setattr(fixture_command, "derive_resources", lambda: resources)
+    monkeypatch.setattr(fixture_command, "_configured_http_client", lambda: client)
+    return client
+
+
+def test_configured_http_client_uses_shared_cache_settings(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    settings = SimpleNamespace(
+        sec=object(), cache_root=tmp_path / "http-cache", ttl_s=456
+    )
+    client = object()
+    calls = []
+
+    class ClientFactory:
+        @staticmethod
+        def from_settings(sec, *, cache_dir, ttl_s):
+            calls.append((sec, cache_dir, ttl_s))
+            return client
+
+    monkeypatch.setattr(fixture_command, "resolve_runtime_settings", lambda: settings)
+    monkeypatch.setattr(fixture_command, "SecHttpClient", ClientFactory)
+
+    assert fixture_command._configured_http_client() is client
+    assert calls == [(settings.sec, settings.cache_root, settings.ttl_s)]
 
 
 def test_parser_exposes_fixture_and_review_commands() -> None:
@@ -170,11 +207,14 @@ def test_create_uses_shared_capture_command_and_json(
     plan = {"plan_id": "p", "catalog_id": "c", "scope": "10-K"}
     contribution_record = _contribution()
     broker = object()
+    http_client = _patch_fixture_runtime(monkeypatch, workers=3)
     created: list[tuple[object, str]] = []
     captured: list[object] = []
 
     @contextmanager
-    def managed(_socket: Path):
+    def managed(_socket: Path, *, http_client, max_connections):
+        assert http_client is not None
+        assert max_connections == 3
         yield broker
 
     monkeypatch.setattr(
@@ -191,9 +231,18 @@ def test_create_uses_shared_capture_command_and_json(
     )
 
     def capture(
-        _cohort, *, fixture_id, paths, broker, contribution, progress_callback=None
+        _cohort,
+        *,
+        fixture_id,
+        paths,
+        broker,
+        contribution,
+        workers,
+        progress_callback=None,
     ):
-        captured.append((fixture_id, paths, broker, contribution, progress_callback))
+        captured.append(
+            (fixture_id, paths, broker, contribution, workers, progress_callback)
+        )
         return IndexCaptureResult(1, 0, 1, 1, 1, ())
 
     monkeypatch.setattr(
@@ -216,10 +265,102 @@ def test_create_uses_shared_capture_command_and_json(
     assert code == 0
     assert created == [(resolve_index_fixture_paths(tmp_path, "f"), "f")]
     assert captured[0][2] is broker
-    assert captured[0][4] is None
+    assert captured[0][4] == 3
+    assert captured[0][5] is None
+    assert http_client is not None
     payload = json.loads(capsys.readouterr().out)
+    assert payload["workers"] == 3
     assert payload["requested_accessions"] == 1
     assert payload["responses_added"] == 1
+
+
+def test_create_resumes_existing_fixture_without_refetching(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    fixture_id = "f"
+    accession = "0000123456-12-000001"
+    url = "https://www.sec.gov/Archives/edgar/data/123456/index.html"
+    work = InventoryCohort(
+        observations=(
+            CohortObservation(
+                cohort_source_id="source",
+                accession=AccessionNumber(accession),
+                source_cik=Cik.from_raw("123456789"),
+                form="10-K",
+                filing_date=date(2023, 1, 1),
+                report_date=None,
+            ),
+        ),
+        accessions=(),
+        sources=(),
+        work_items=(IndexWorkItem(AccessionNumber(accession), url),),
+    )
+    contribution = _contribution()
+    paths = resolve_index_fixture_paths(tmp_path, fixture_id)
+    create_index_fixture(paths, fixture_id=fixture_id)
+
+    class InitialBroker:
+        def fetch(self, _url: str) -> dict[str, object]:
+            return {"status": "ok", "payload": b"page", "cache_source": "network"}
+
+    capture_index_pages(
+        work,
+        fixture_id=fixture_id,
+        paths=paths,
+        broker=InitialBroker(),
+        contribution=contribution,
+    )
+    client = _patch_fixture_runtime(monkeypatch, workers=2)
+    monkeypatch.setattr(
+        fixture_command,
+        "cohort_for_plan",
+        lambda *_args: (
+            {"plan_id": "p", "catalog_id": "c", "scope": "10-K"},
+            work,
+            contribution,
+        ),
+    )
+    monkeypatch.setattr(
+        fixture_command,
+        "create_index_fixture",
+        lambda *_args, **_kwargs: pytest.fail("existing fixture must not be reset"),
+    )
+
+    class NoFetchBroker:
+        def fetch(self, _url: str) -> dict[str, object]:
+            pytest.fail("cached fixture response must not be refetched")
+
+    @contextmanager
+    def managed(_socket: Path, *, http_client, max_connections):
+        assert http_client is client
+        assert max_connections == 2
+        yield NoFetchBroker()
+
+    monkeypatch.setattr(fixture_command, "managed_broker", managed)
+
+    assert (
+        cli.main(
+            [
+                "fixture",
+                "create",
+                "--fixture",
+                fixture_id,
+                "--catalog-plan",
+                "p",
+                "--artifacts",
+                str(tmp_path),
+                "--json",
+            ]
+        )
+        == 0
+    )
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["fixture_cache_hits"] == 1
+    assert payload["responses_reused"] == 1
+    assert payload["network_fetches"] == 0
+    assert payload["cases_created"] == payload["members_created"] == 0
 
 
 @pytest.mark.parametrize(
@@ -241,6 +382,7 @@ def test_fixture_progress_is_tty_only_and_suppression_is_honored(
     expected: bool,
 ) -> None:
     bars = []
+    _patch_fixture_runtime(monkeypatch)
 
     class Bar:
         def __init__(self, **kwargs) -> None:
@@ -278,7 +420,9 @@ def test_fixture_progress_is_tty_only_and_suppression_is_honored(
     )
 
     @contextmanager
-    def managed(_socket: Path):
+    def managed(_socket: Path, *, http_client, max_connections):
+        assert http_client is not None
+        assert max_connections == 2
         yield object()
 
     monkeypatch.setattr(
@@ -322,13 +466,16 @@ def test_fixture_progress_is_tty_only_and_suppression_is_honored(
 def test_capture_failure_returns_nonzero(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
+    _patch_fixture_runtime(monkeypatch)
     work = _cohort()
     failure = IndexCaptureFailure(
         AccessionNumber("0000123456-12-000001"), "http_error", "not found"
     )
 
     @contextmanager
-    def managed(_socket: Path):
+    def managed(_socket: Path, *, http_client, max_connections):
+        assert http_client is not None
+        assert max_connections == 2
         yield object()
 
     monkeypatch.setattr(

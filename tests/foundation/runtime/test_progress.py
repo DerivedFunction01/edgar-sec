@@ -26,6 +26,24 @@ def test_tqdm_callback_accepts_aggregated_outcome_counts() -> None:
     assert bar.postfix == {"ok": 3, "fail": 2, "hist": 0}
 
 
+def test_tqdm_callback_displays_fixture_cache_sources() -> None:
+    bar = _ProgressBar()
+    callback = make_tqdm_callback(bar)
+
+    callback({"status": "ok", "source": "fixture_cache"})
+    callback({"status": "ok", "source": "http_cache"})
+    callback({"status": "ok", "source": "network"})
+
+    assert bar.postfix == {
+        "ok": 3,
+        "fail": 0,
+        "hist": 0,
+        "local": 1,
+        "http": 1,
+        "net": 1,
+    }
+
+
 def test_tqdm_callback_accepts_a_total_start_event() -> None:
     class _Bar(_ProgressBar):
         total = None

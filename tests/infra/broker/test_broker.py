@@ -93,11 +93,13 @@ def test_managed_broker_lifecycle_and_fetch(tmp_path: Path) -> None:
         res1 = client.fetch("https://www.sec.gov/Archives/x/doc1.htm")
         assert res1["status"] == "ok"
         assert res1["payload"] == b"<html>doc1</html>"
+        assert res1["cache_source"] == "network"
         assert fake_http.calls == ["https://www.sec.gov/Archives/x/doc1.htm"]
 
         res2 = client.fetch("https://www.sec.gov/Archives/x/doc2.cached")
         assert res2["status"] == "ok"
         assert res2["payload"] == b"<html>doc2 cached</html>"
+        assert res2["cache_source"] == "http_cache"
         assert len(fake_http.calls) == 1
 
         res3 = client.fetch("https://www.sec.gov/Archives/missing.htm")

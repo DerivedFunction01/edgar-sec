@@ -158,6 +158,9 @@ class IndexCaptureResult:
     cases_created: int
     members_created: int
     failures: tuple[IndexCaptureFailure, ...]
+    fixture_cache_hits: int = 0
+    http_cache_hits: int = 0
+    network_fetches: int = 0
 
 
 @dataclass(frozen=True, slots=True)

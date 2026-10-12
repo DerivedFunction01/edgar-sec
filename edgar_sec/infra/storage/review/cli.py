@@ -113,7 +113,9 @@ def _attach_fixture_commands(
     )
     commands = fixture_parser.add_subparsers(dest="fixture_command", required=True)
 
-    create_cmd = commands.add_parser("create", help="create and capture a new fixture")
+    create_cmd = commands.add_parser(
+        "create", help="create or resume a fixture from a catalog plan"
+    )
     create_cmd.add_argument("--fixture", required=True, help="fixture id")
     create_cmd.add_argument(
         "--catalog-plan", required=True, help="published catalog plan id"

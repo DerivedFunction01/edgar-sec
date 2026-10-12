@@ -10,7 +10,9 @@ from uuid import uuid4
 
 from tqdm import tqdm
 
+from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.foundation.runtime.progress import make_tqdm_callback
+from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.foundation.runtime.render import (
     Grid,
     KeyValueRow,
@@ -18,6 +20,7 @@ from edgar_sec.foundation.runtime.render import (
     render_output,
 )
 from edgar_sec.infra.broker.daemon import managed_broker
+from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.pipelines.document_inventory.discovery import discover_fixtures
 from edgar_sec.pipelines.document_inventory.fixture_store.capture import (
     capture_index_pages,
@@ -31,28 +34,59 @@ from edgar_sec.pipelines.document_inventory.paths import (
 from .common import cohort_for_plan, resolve_artifacts_root
 
 
+def _configured_http_client() -> SecHttpClient:
+    settings = resolve_runtime_settings()
+    return SecHttpClient.from_settings(
+        settings.sec,
+        cache_dir=settings.cache_root,
+        ttl_s=settings.ttl_s,
+    )
+
+
 def _capture(args: argparse.Namespace, *, create: bool) -> int:
     """Capture index pages into a new or existing fixture."""
     root = resolve_artifacts_root(
         getattr(args, "artifacts_root", None) or getattr(args, "artifacts", None)
     )
     fixture_paths = resolve_index_fixture_paths(root, args.fixture)
-    if create and (
-        fixture_paths.manifest_path.exists() or fixture_paths.storage_path.exists()
-    ):
-        raise ValueError(f"fixture already exists: {args.fixture}")
-    if not create and not (
+    manifest_exists = fixture_paths.manifest_path.exists()
+    storage_exists = fixture_paths.storage_path.exists()
+    resumed_existing = create and manifest_exists and storage_exists
+    if create and (manifest_exists or storage_exists):
+        if not (
+            fixture_paths.manifest_path.is_file()
+            and fixture_paths.storage_path.is_file()
+        ):
+            raise ValueError(f"fixture is incomplete: {args.fixture}")
+    elif not create and not (
         fixture_paths.manifest_path.is_file() and fixture_paths.storage_path.is_file()
     ):
         raise ValueError(f"fixture does not exist: {args.fixture}")
 
     plan, cohort, contribution = cohort_for_plan(root, args.catalog_plan, args.limit)
 
-    if create:
-        create_index_fixture(fixture_paths, fixture_id=args.fixture)
-
     socket_id = f"fixture-{uuid4().hex}"
     broker_path = InventoryPaths(root).broker_socket_path(socket_id)
+    resources = derive_resources()
+    workers = min(resources.workers, resources.worker_ceiling)
+    requested_workers = getattr(args, "workers", None)
+    if requested_workers is not None:
+        if (
+            isinstance(requested_workers, bool)
+            or not isinstance(requested_workers, int)
+            or requested_workers < 1
+        ):
+            raise ValueError("workers must be a positive integer")
+        if requested_workers > resources.worker_ceiling:
+            raise ValueError(
+                f"workers ({requested_workers}) exceeds the resource limit "
+                f"({resources.worker_ceiling})"
+            )
+        workers = requested_workers
+
+    if create and not resumed_existing:
+        create_index_fixture(fixture_paths, fixture_id=args.fixture)
+
     show_progress = (
         not getattr(args, "json", False)
         and not getattr(args, "no_progress", False)
@@ -62,7 +96,7 @@ def _capture(args: argparse.Namespace, *, create: bool) -> int:
     progress_bar = (
         tqdm(
             total=len(cohort.work_items),
-            desc="Fixture",
+            desc=f"Fixture ({workers} workers)",
             unit="accession",
             dynamic_ncols=True,
         )
@@ -70,17 +104,28 @@ def _capture(args: argparse.Namespace, *, create: bool) -> int:
         else None
     )
     try:
-        with managed_broker(broker_path) as broker:
-            capture = capture_index_pages(
-                cohort,
-                fixture_id=args.fixture,
-                paths=fixture_paths,
-                broker=broker,
-                contribution=contribution,
-                progress_callback=(
-                    make_tqdm_callback(progress_bar) if progress_bar else None
-                ),
-            )
+        http_client = _configured_http_client()
+        try:
+            with managed_broker(
+                broker_path,
+                http_client=http_client,
+                max_connections=workers,
+            ) as broker:
+                capture = capture_index_pages(
+                    cohort,
+                    fixture_id=args.fixture,
+                    paths=fixture_paths,
+                    broker=broker,
+                    contribution=contribution,
+                    workers=workers,
+                    progress_callback=(
+                        make_tqdm_callback(progress_bar)
+                        if progress_bar is not None
+                        else None
+                    ),
+                )
+        finally:
+            http_client.close()
     finally:
         if progress_bar is not None:
             progress_bar.close()
@@ -90,9 +135,13 @@ def _capture(args: argparse.Namespace, *, create: bool) -> int:
         "plan_id": args.catalog_plan,
         "catalog_id": plan.get("catalog_id"),
         "scope": plan.get("scope"),
+        "workers": workers,
         "requested_accessions": len(cohort.work_items),
         "responses_added": capture.responses_added,
         "responses_reused": capture.responses_reused,
+        "fixture_cache_hits": capture.fixture_cache_hits,
+        "http_cache_hits": capture.http_cache_hits,
+        "network_fetches": capture.network_fetches,
         "cases_created": capture.cases_created,
         "members_created": capture.members_created,
         "failures": [
@@ -124,13 +173,21 @@ def _capture(args: argparse.Namespace, *, create: bool) -> int:
                 KeyValueRow("plan_id", str(args.catalog_plan)),
                 KeyValueRow("catalog_id", str(plan.get("catalog_id") or "")),
                 KeyValueRow("scope", str(plan.get("scope") or "")),
+                KeyValueRow("workers", str(workers)),
                 KeyValueRow("requested_accessions", str(len(cohort.work_items))),
                 KeyValueRow("responses_added", str(capture.responses_added)),
                 KeyValueRow("responses_reused", str(capture.responses_reused)),
+                KeyValueRow("fixture_cache_hits", str(capture.fixture_cache_hits)),
+                KeyValueRow("http_cache_hits", str(capture.http_cache_hits)),
+                KeyValueRow("network_fetches", str(capture.network_fetches)),
                 KeyValueRow("cases_created", str(capture.cases_created)),
                 KeyValueRow("members_created", str(capture.members_created)),
             ],
-            title=f"Fixture {'Created' if create else 'Filled'} ({args.fixture})",
+            title=(
+                f"Fixture {'Resumed' if resumed_existing else 'Created'} ({args.fixture})"
+                if create
+                else f"Fixture Filled ({args.fixture})"
+            ),
         )
 
     for failure in result.get("failures", []):
@@ -144,7 +201,7 @@ def _capture(args: argparse.Namespace, *, create: bool) -> int:
 
 
 def cmd_fixture_create(args: argparse.Namespace) -> int:
-    """Create a new index fixture from a catalog plan."""
+    """Create or resume an index fixture from a catalog plan."""
     return _capture(args, create=True)
 
 
