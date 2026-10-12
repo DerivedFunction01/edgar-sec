@@ -193,7 +193,7 @@ def test_state_seed_is_a_bounded_batch_generator(project_fixture, monkeypatch):
     assert len(seen) == 1
     assert iter(seen[0]) is seen[0]
     assert not isinstance(seen[0], (list, tuple))
-    assert work_order_batch_sizes == [2, 1, 2, 1]
+    assert work_order_batch_sizes == [2, 1]
 
 
 def test_identical_projection_reuses_valid_run(project_fixture):

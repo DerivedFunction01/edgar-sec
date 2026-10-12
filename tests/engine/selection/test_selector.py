@@ -6,6 +6,8 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+import pyarrow as pa
+import pyarrow.parquet as pq
 
 from edgar_sec.engine.selection.policy import (
     EraBand,
@@ -27,13 +29,24 @@ from tests.engine.selection.conftest import (
 def test_selection_fills_the_target_and_reports_itself(
     snapshot_dir: Path, selection_policy: SelectionPolicy
 ) -> None:
-    result = DeficitSelector(snapshot_dir, selection_policy).select()
+    events: list[dict[str, Any]] = []
+    result = DeficitSelector(snapshot_dir, selection_policy).select(
+        progress=events.append
+    )
 
-    assert len(result.active_locators) == selection_policy.requested_units()
-    assert len(result.active_candidates) == len(result.active_locators)
-    assert len(result.active_occurrences) == len(result.active_locators)
-    assert result.report["active_locators_count"] == len(result.active_locators)
-    assert "coverage_distributions" in result.report
+    assert result.active_count == selection_policy.requested_units()
+    assert [event["stage"] for event in events] == [
+        "selection_seeds",
+        "selection_composites",
+        "selection_floors",
+        "selection_form_era",
+        "selection_weighted",
+        "selection_reserve",
+    ]
+    assert sum(1 for _ in result.active_candidates) == result.active_count
+    assert result.report["active_occurrences_count"] >= result.active_count
+    assert result.report["active_locators_count"] == result.active_count
+    assert "coverage_distributions" not in result.report
 
 
 def test_selection_is_deterministic_for_one_seed(
@@ -42,7 +55,7 @@ def test_selection_is_deterministic_for_one_seed(
     """A rerun picking different documents would make the plan a claim, not a record."""
     first = DeficitSelector(snapshot_dir, selection_policy).select()
     second = DeficitSelector(snapshot_dir, selection_policy).select()
-    assert first.active_locators == second.active_locators
+    assert list(first.active_locators) == list(second.active_locators)
     assert first.report == second.report
 
 
@@ -59,7 +72,7 @@ def test_a_different_seed_selects_differently(
     )
     baseline = DeficitSelector(snapshot_dir, selection_policy).select()
     seeded = DeficitSelector(snapshot_dir, other).select()
-    assert baseline.active_locators != seeded.active_locators
+    assert list(baseline.active_locators) != list(seeded.active_locators)
 
 
 def test_a_dominant_family_cannot_fill_the_selection(
@@ -77,7 +90,7 @@ def test_a_dominant_family_cannot_fill_the_selection(
     result = DeficitSelector(dominant_family_snapshot, policy).select()
 
     families = [candidate["company_family"] for candidate in result.active_candidates]
-    assert len(result.active_locators) == 8
+    assert result.active_count == 8
     assert families.count("megacorp") == 1, "family cap did not hold"
     assert len(set(families)) == 8, (
         "selection collapsed onto fewer entities than available"
@@ -195,8 +208,10 @@ def test_floors_are_satisfied_before_the_weighted_fill(
         floors={"era": {"historical": 4}},
     )
     result = DeficitSelector(snapshot_dir, policy).select()
-    coverage = result.report["coverage_distributions"]["era"]
-    assert coverage.get("historical", 0) >= 4
+    assert (
+        sum(candidate["era"] == "historical" for candidate in result.active_candidates)
+        >= 4
+    )
     assert result.report["underfilled_floors"] == {}
 
 
@@ -233,8 +248,14 @@ def test_exhibit_like_floor_counts_unique_accessions(tmp_path: Path) -> None:
 
     result = DeficitSelector(snapshot, policy).select()
 
-    assert len(result.active_locators) == 2
-    assert result.report["coverage_distributions"]["primary_exhibit_like"]["true"] == 2
+    assert result.active_count == 2
+    assert (
+        sum(
+            candidate["primary_exhibit_like"] is True
+            for candidate in result.active_candidates
+        )
+        == 2
+    )
     assert result.report["underfilled_floors"] == {}
 
 
@@ -266,7 +287,6 @@ def test_exhibit_like_floor_reports_distinct_accession_shortfall(
 
     result = DeficitSelector(snapshot, policy).select()
 
-    assert result.report["coverage_distributions"]["primary_exhibit_like"]["true"] == 1
     assert result.report["underfilled_floors"]["primary_exhibit_like"]["true"] == {
         "required": 2,
         "selected": 1,
@@ -289,7 +309,7 @@ def test_an_impossible_floor_is_reported_not_silently_ignored(
     result = DeficitSelector(snapshot_dir, policy).select()
     underfilled = result.report["underfilled_floors"]["era"]["ancient"]
     assert underfilled == {"required": 3, "selected": 0, "deficit": 3}
-    assert len(result.active_locators) == 4
+    assert result.active_count == 4
 
 
 def test_composites_are_satisfied_before_single_dimension_floors(
@@ -337,7 +357,7 @@ def test_caps_bound_a_dimensions_share_of_the_target(tmp_path: Path) -> None:
         for candidate in result.active_candidates
         if candidate["era"] == "dominant_era"
     )
-    assert len(result.active_locators) == 10
+    assert result.active_count == 10
     assert dominant <= 5, f"era cap breached: {dominant} of 10"
 
 
@@ -368,7 +388,7 @@ def test_reserve_is_disjoint_from_the_active_set(
     snapshot_dir: Path, selection_policy: SelectionPolicy
 ) -> None:
     result = DeficitSelector(snapshot_dir, selection_policy).select()
-    assert len(result.reserve_locators) == selection_policy.reserve_size
+    assert result.reserve_count == selection_policy.reserve_size
     assert set(result.active_locators).isdisjoint(result.reserve_locators)
 
 
@@ -382,7 +402,7 @@ def test_a_zero_reserve_selects_none(tmp_path: Path) -> None:
         reserve_size=0,
     )
     result = DeficitSelector(snapshot, policy).select()
-    assert result.reserve_locators == []
+    assert list(result.reserve_locators) == []
 
 
 def test_selection_stops_at_the_target_even_when_the_pool_is_larger(
@@ -395,40 +415,47 @@ def test_selection_stops_at_the_target_even_when_the_pool_is_larger(
         reserve_size=0,
     )
     result = DeficitSelector(snapshot_dir, policy).select()
-    assert len(result.active_locators) == 5
+    assert result.active_count == 5
 
 
 def test_parent_keys_are_retained_and_accounted_for(
-    snapshot_dir: Path, selection_policy: SelectionPolicy
+    snapshot_dir: Path, selection_policy: SelectionPolicy, tmp_path: Path
 ) -> None:
     """The parent's rows also load into coverage, so the report accounts for the
     combined set rather than only what the child added.
     """
     baseline = DeficitSelector(snapshot_dir, selection_policy).select()
-    parent = baseline.active_locators[:3]
+    parent = list(baseline.active_locators)[:3]
+    parent_path = _write_parent_keys(tmp_path / "parent.parquet", parent)
     result = DeficitSelector(snapshot_dir, selection_policy).select(
-        parent_active_keys=parent
+        parent_locator_path=parent_path
     )
-    assert result.active_locators[: len(parent)] == parent
-    assert len(result.active_locators) == selection_policy.requested_units()
-    assert len(result.active_candidates) == len(result.active_locators)
+    assert set(parent) <= set(result.active_locators)
+    assert result.active_count == selection_policy.requested_units()
+    assert sum(1 for _ in result.active_candidates) == result.active_count
 
 
 def test_duplicate_parent_keys_are_rejected(
-    snapshot_dir: Path, selection_policy: SelectionPolicy
+    snapshot_dir: Path, selection_policy: SelectionPolicy, tmp_path: Path
 ) -> None:
+    parent_path = _write_parent_keys(
+        tmp_path / "duplicate-parent.parquet", ["loc-0000", "loc-0000"]
+    )
     with pytest.raises(ValueError, match="duplicate locator keys"):
         DeficitSelector(snapshot_dir, selection_policy).select(
-            parent_active_keys=["loc-0000", "loc-0000"]
+            parent_locator_path=parent_path
         )
 
 
 def test_parent_keys_absent_from_the_snapshot_are_rejected(
-    snapshot_dir: Path, selection_policy: SelectionPolicy
+    snapshot_dir: Path, selection_policy: SelectionPolicy, tmp_path: Path
 ) -> None:
+    parent_path = _write_parent_keys(
+        tmp_path / "missing-parent.parquet", ["loc-does-not-exist"]
+    )
     with pytest.raises(ValueError, match="absent from the selection snapshot"):
         DeficitSelector(snapshot_dir, selection_policy).select(
-            parent_active_keys=["loc-does-not-exist"]
+            parent_locator_path=parent_path
         )
 
 
@@ -465,6 +492,12 @@ def _allocation_cells(report: dict[str, Any]) -> dict[tuple[str, str], dict[str,
         (cell["form"], cell["era"]): cell
         for cell in report["form_era_allocation"]["cells"]
     }
+
+
+def _write_parent_keys(path: Path, keys: list[str]) -> Path:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    pq.write_table(pa.table({"document_locator_key": keys}), path)
+    return path
 
 
 def test_allocation_spreads_a_budget_across_cells(tmp_path: Path) -> None:
@@ -512,7 +545,7 @@ def test_allocation_redistributes_from_an_exhausted_cell(tmp_path: Path) -> None
     assert cells[("8-K", "historical")]["selected"] == 1
     assert cells[("10-K", "modern")]["selected"] == 5
     assert cells[("8-K", "historical")]["shortfall"] > 0
-    assert len(result.active_locators) == 6
+    assert result.active_count == 6
 
 
 def test_a_cap_smaller_than_the_cell_count_prioritizes_era_coverage(
@@ -562,7 +595,7 @@ def test_allocation_never_exceeds_the_global_cap(tmp_path: Path) -> None:
         floors={"era": {"historical": 4}},
     )
     result = DeficitSelector(snapshot, policy).select()
-    assert len(result.active_locators) == 5
+    assert result.active_count == 5
     allocation = result.report["form_era_allocation"]
     assert sum(cell["selected"] for cell in allocation["cells"]) == 5
     assert allocation["budget"] + 4 == 5
@@ -584,7 +617,7 @@ def test_allocation_reports_an_empty_corpus_rather_than_claiming_balance(
     assert allocation["cells"] == []
     assert allocation["cell_count"] == 0
     assert allocation["unallocated"] == 10
-    assert result.active_locators == []
+    assert list(result.active_locators) == []
 
 
 def test_the_report_names_the_selection_the_run_used(

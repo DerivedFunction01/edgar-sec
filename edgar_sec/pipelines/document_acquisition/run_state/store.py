@@ -592,21 +592,17 @@ def get_target_state(database_path: Path, target_id: str) -> TargetState | None:
         connection.close()
 
 
-def get_target_states(
-    database_path: Path, target_ids: Iterable[str]
-) -> dict[str, TargetState]:
-    target_ids = tuple(target_ids)
-    if not target_ids:
-        return {}
+def iter_target_state_pairs(
+    database_path: Path, targets: Iterable[Mapping[str, object]]
+) -> Iterator[tuple[Mapping[str, object], TargetState | None]]:
     connection = _connect(Path(database_path), readonly=True)
     try:
         _require_schema(connection)
-        result = {}
-        for target_id in target_ids:
+        for target in targets:
+            target_id = str(target["target_id"])
             row = connection.execute(_GET_TARGET, (target_id,)).fetchone()
-            if row is not None:
-                result[target_id] = _target_state_from_row(row)
-        return result
+            state = None if row is None else _target_state_from_row(row)
+            yield target, state
     finally:
         connection.close()
 
@@ -708,10 +704,10 @@ __all__ = [
     "commit_attempts_and_update_target",
     "get_attempt",
     "get_target_state",
-    "get_target_states",
     "inspect_run_state",
     "initialize_run_state",
     "iter_selected_target_states",
+    "iter_target_state_pairs",
     "summarize_target_state",
     "validate_run_state",
 ]

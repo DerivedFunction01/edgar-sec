@@ -1,12 +1,15 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import os
 import sqlite3
 import stat
-from dataclasses import dataclass
+import tempfile
+from collections.abc import Iterable, Iterator
 from pathlib import Path
 from pathlib import PurePosixPath
+from urllib.parse import quote
 
 import pyarrow as pa
 
@@ -16,7 +19,8 @@ from edgar_sec.domain.sec_urls import validate_archive_url
 from edgar_sec.foundation.hashing import is_sha256_hex_digest
 from edgar_sec.foundation.io import DEFAULT_IO_CHUNK_SIZE
 from edgar_sec.foundation.runtime.paths import validate_safe_id
-from edgar_sec.foundation.serialization import canonical_hash
+from edgar_sec.foundation.runtime.settings.sql import resolve_sql_insert_batch_size
+from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.pipelines.document_acquisition.body_handoff import (
     BodyHandoffError,
     get_staged_body_ref,
@@ -24,121 +28,70 @@ from edgar_sec.pipelines.document_acquisition.body_handoff import (
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.processing_models import (
     OperationRequest,
-    OperationResult,
-    ProcessingDiagnostic,
     ProcessingRequest,
     ProcessingResult,
-    StagedOutputRef,
+)
+from edgar_sec.pipelines.document_acquisition.projection_models import (
+    ProcessingResultProjection,
+    ProjectedOperation,
+    ProjectedTarget,
+    ResultProjectionError,
+    fingerprint_targets,
+    projected_target_record,
+    request_from_record,
+    request_record,
+    result_from_record,
+    result_record,
 )
 from edgar_sec.pipelines.document_acquisition.run_validation import (
-    iter_work_order_batches,
+    iter_work_order_rows,
     load_validated_work_order,
 )
-from edgar_sec.pipelines.document_acquisition.schemas import StagedBodyRef
-
-
-class ResultProjectionError(ValueError):
-    pass
-
-
-@dataclass(frozen=True, slots=True)
-class ProjectedOperation:
-    operation_id: str
-    status: str
-    operation_fingerprint: str
-    representation_id: str | None
-    output_sha256: str | None
-    output_size: int | None
-    handler_id: str | None
-    handler_version: str | None
-    diagnostics: tuple[ProcessingDiagnostic, ...]
-    staged_output_representation: str | None
-    staged_output_path: str | None
-
-
-@dataclass(frozen=True, slots=True)
-class ProjectedTarget:
-    target_id: str
-    accession: str
-    form: str
-    target_role: str
-    target_type: str
-    source_origin: str
-    document_path: str | None
-    selected_filename: str | None
-    source_sha256: str
-    source_response_sha256: str
-    source_size: int
-    source_asset_id: str
-    source_staged_path: str
-    route: DocumentRoute
-    effective_path: str
-    processing_id: str
-    operations: tuple[ProjectedOperation, ...]
-
-
-@dataclass(frozen=True, slots=True)
-class ProcessingResultProjection:
-    run_id: str
-    fingerprint: str
-    targets: tuple[ProjectedTarget, ...]
 
 
 _TERMINAL_STATUSES = frozenset(
     {"not_requested", "unsupported", "blocked", "available", "failed"}
 )
 _EXECUTION_STATUSES = frozenset({"available", "failed", "blocked", "unsupported"})
+_WORK_TARGET_COLUMNS = (
+    "target_id",
+    "accession",
+    "form",
+    "target_role",
+    "target_type",
+    "source_origin",
+    "executable",
+    "status",
+    "retrieval_mode",
+    "target_url",
+)
 
 
-def _request_index(
-    requests: tuple[ProcessingRequest, ...], run_id: str
-) -> dict[str, ProcessingRequest]:
-    indexed: dict[str, ProcessingRequest] = {}
-    for request in requests:
-        try:
-            validate_safe_id(request.target_id, "target_id")
-        except ValueError as error:
-            raise ResultProjectionError("processing target ID is invalid") from error
-        if request.target_id in indexed:
-            raise ResultProjectionError("processing request target is duplicated")
-        if request.body.run_id != run_id or request.body.target_id != request.target_id:
-            raise ResultProjectionError(
-                "processing request body identity is inconsistent"
-            )
-        if not request.operations:
-            raise ResultProjectionError("processing request has no explicit operations")
-        operation_ids = set()
-        for operation in request.operations:
-            _validate_operation_request(operation)
-            if operation.operation_id in operation_ids:
-                raise ResultProjectionError(
-                    "processing request operation is duplicated"
-                )
-            operation_ids.add(operation.operation_id)
-        indexed[request.target_id] = request
-    return indexed
+def _validate_request(request: ProcessingRequest, run_id: str) -> None:
+    try:
+        validate_safe_id(request.target_id, "target_id")
+    except ValueError as error:
+        raise ResultProjectionError("processing target ID is invalid") from error
+    if request.body.run_id != run_id or request.body.target_id != request.target_id:
+        raise ResultProjectionError("processing request body identity is inconsistent")
+    if not request.operations:
+        raise ResultProjectionError("processing request has no explicit operations")
+    operation_ids = set()
+    for operation in request.operations:
+        _validate_operation_request(operation)
+        if operation.operation_id in operation_ids:
+            raise ResultProjectionError("processing request operation is duplicated")
+        operation_ids.add(operation.operation_id)
 
 
-def _result_index(
-    results: tuple[ProcessingResult, ...],
-) -> dict[str, ProcessingResult]:
-    indexed: dict[str, ProcessingResult] = {}
-    processing_ids: set[str] = set()
-    for result in results:
-        try:
-            validate_safe_id(result.target_id, "target_id")
-            validate_safe_id(result.processing_id, "processing_id")
-        except ValueError as error:
-            raise ResultProjectionError(
-                "processing result identity is invalid"
-            ) from error
-        if result.target_id in indexed:
-            raise ResultProjectionError("processing result target is duplicated")
-        if result.processing_id in processing_ids:
-            raise ResultProjectionError("processing ID is duplicated")
-        processing_ids.add(result.processing_id)
-        indexed[result.target_id] = result
-    return indexed
+def _validate_result(result: ProcessingResult) -> None:
+    try:
+        validate_safe_id(result.target_id, "target_id")
+        validate_safe_id(result.processing_id, "processing_id")
+    except ValueError as error:
+        raise ResultProjectionError("processing result identity is invalid") from error
+    if not isinstance(result.route, DocumentRoute):
+        raise ResultProjectionError("processing route is invalid")
 
 
 def _validate_operation_request(operation: OperationRequest) -> None:
@@ -154,38 +107,35 @@ def _validate_operation_request(operation: OperationRequest) -> None:
         raise ResultProjectionError("operation support status is invalid")
 
 
-def _work_targets(
-    paths: AcquisitionPaths,
-    run_id: str,
-    requests: dict[str, ProcessingRequest],
-) -> dict[str, dict[str, object]]:
+def _stage_work_order(
+    connection: sqlite3.Connection, paths: AcquisitionPaths, run_id: str
+) -> None:
     try:
         parts = load_validated_work_order(paths, run_id)
-        rows: dict[str, dict[str, object]] = {}
-        for batch in iter_work_order_batches(parts):
-            for row in batch:
-                target_id = row.get("target_id")
-                if target_id not in requests:
-                    continue
-                if target_id in rows:
-                    raise ResultProjectionError("target is duplicated in work order")
-                rows[target_id] = row
+        insert_batch_size = resolve_sql_insert_batch_size()
+        for row_number, row in enumerate(iter_work_order_rows(parts), start=1):
+            connection.execute(
+                "INSERT INTO work_targets VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                tuple(row[column] for column in _WORK_TARGET_COLUMNS),
+            )
+            if row_number % insert_batch_size == 0:
+                connection.commit()
+        connection.commit()
     except ResultProjectionError:
         raise
+    except sqlite3.IntegrityError as error:
+        if "work_targets.target_id" in str(error):
+            raise ResultProjectionError("target is duplicated in work order") from error
+        raise ResultProjectionError("validated work order is unavailable") from error
     except (OSError, ValueError, TypeError, sqlite3.Error, pa.ArrowException) as error:
         raise ResultProjectionError("validated work order is unavailable") from error
-    missing = requests.keys() - rows.keys()
-    if missing:
-        raise ResultProjectionError(
-            "processing request target is absent from work order"
-        )
-    return rows
 
 
 def _validate_work_target(request: ProcessingRequest, row: dict[str, object]) -> None:
     accession = AccessionNumber.from_any(request.accession)
     if (
-        AccessionNumber.from_any(str(row["accession"])) != accession
+        row["target_id"] != request.target_id
+        or AccessionNumber.from_any(str(row["accession"])) != accession
         or row["form"] != request.form
         or row["target_role"] != request.target_role
         or row["target_type"] != request.target_type
@@ -453,84 +403,175 @@ def _project_target(
     )
 
 
-def _fingerprint_targets(run_id: str, targets: tuple[ProjectedTarget, ...]) -> str:
-    return canonical_hash(
-        {
-            "run_id": run_id,
-            "targets": [
-                {
-                    "target_id": target.target_id,
-                    "accession": target.accession,
-                    "form": target.form,
-                    "target_role": target.target_role,
-                    "target_type": target.target_type,
-                    "source_origin": target.source_origin,
-                    "document_path": target.document_path,
-                    "selected_filename": target.selected_filename,
-                    "source_sha256": target.source_sha256,
-                    "source_response_sha256": target.source_response_sha256,
-                    "source_size": target.source_size,
-                    "source_asset_id": target.source_asset_id,
-                    "source_staged_path": target.source_staged_path,
-                    "route": target.route.value,
-                    "effective_path": target.effective_path,
-                    "processing_id": target.processing_id,
-                    "operations": [
-                        {
-                            "operation_id": operation.operation_id,
-                            "status": operation.status,
-                            "operation_fingerprint": operation.operation_fingerprint,
-                            "representation_id": operation.representation_id,
-                            "output_sha256": operation.output_sha256,
-                            "output_size": operation.output_size,
-                            "handler_id": operation.handler_id,
-                            "handler_version": operation.handler_version,
-                            "staged_output_representation": operation.staged_output_representation,
-                            "diagnostics": [
-                                {"code": item.code, "detail": item.detail}
-                                for item in operation.diagnostics
-                            ],
-                            "staged_output_path": operation.staged_output_path,
-                        }
-                        for operation in target.operations
-                    ],
-                }
-                for target in targets
-            ],
-        }
-    )
-
-
 def project_terminal_results(
-    requests: tuple[ProcessingRequest, ...],
-    results: tuple[ProcessingResult, ...],
+    requests: Iterable[ProcessingRequest],
+    results: Iterable[ProcessingResult],
     *,
     paths: AcquisitionPaths,
     run_id: str,
 ) -> ProcessingResultProjection:
     """Project an explicit acquired-target request/result set without worker checks."""
+    temporary_directory = tempfile.TemporaryDirectory(
+        prefix="document-acquisition-projection-"
+    )
+    input_database_path = Path(temporary_directory.name) / "input.sqlite"
+    database_path = Path(temporary_directory.name) / "projection.sqlite"
+    connection = None
+    output_connection = None
+    preserve_temporary_directory = False
     try:
         validate_safe_id(run_id, "run_id")
-        requested = _request_index(requests, run_id)
-        produced = _result_index(results)
-        if requested.keys() != produced.keys():
+        connection = sqlite3.connect(input_database_path)
+        connection.execute("PRAGMA temp_store=FILE")
+        connection.execute(
+            "CREATE TABLE requests (target_id TEXT PRIMARY KEY, record_json TEXT NOT NULL)"
+        )
+        connection.execute(
+            "CREATE TABLE results (target_id TEXT PRIMARY KEY, processing_id TEXT UNIQUE NOT NULL, record_json TEXT NOT NULL)"
+        )
+        connection.execute(
+            "CREATE TABLE work_targets ("
+            "target_id TEXT PRIMARY KEY, accession TEXT NOT NULL, form TEXT NOT NULL, "
+            "target_role TEXT NOT NULL, target_type TEXT NOT NULL, "
+            "source_origin TEXT NOT NULL, executable INTEGER NOT NULL, "
+            "status TEXT NOT NULL, retrieval_mode TEXT, target_url TEXT)"
+        )
+        output_connection = sqlite3.connect(database_path)
+        output_connection.execute("PRAGMA temp_store=FILE")
+        output_connection.execute(
+            "CREATE TABLE projected_targets (target_id TEXT PRIMARY KEY, record_json TEXT NOT NULL)"
+        )
+        insert_batch_size = resolve_sql_insert_batch_size()
+        for request_number, request in enumerate(requests, start=1):
+            _validate_request(request, run_id)
+            try:
+                connection.execute(
+                    "INSERT INTO requests VALUES (?, ?)",
+                    (request.target_id, canonical_json(request_record(request))),
+                )
+            except sqlite3.IntegrityError as error:
+                raise ResultProjectionError(
+                    "processing request target is duplicated"
+                ) from error
+            if request_number % insert_batch_size == 0:
+                connection.commit()
+        connection.commit()
+        for result_number, result in enumerate(results, start=1):
+            _validate_result(result)
+            try:
+                connection.execute(
+                    "INSERT INTO results VALUES (?, ?, ?)",
+                    (
+                        result.target_id,
+                        result.processing_id,
+                        canonical_json(result_record(result)),
+                    ),
+                )
+            except sqlite3.IntegrityError as error:
+                duplicated_target = connection.execute(
+                    "SELECT 1 FROM results WHERE target_id = ?", (result.target_id,)
+                ).fetchone()
+                if duplicated_target is not None:
+                    raise ResultProjectionError(
+                        "processing result target is duplicated"
+                    ) from error
+                if "processing_id" in str(error):
+                    raise ResultProjectionError(
+                        "processing ID is duplicated"
+                    ) from error
+                raise ResultProjectionError(
+                    "processing result target is duplicated"
+                ) from error
+            if result_number % insert_batch_size == 0:
+                connection.commit()
+        connection.commit()
+        request_count = int(
+            connection.execute("SELECT COUNT(*) FROM requests").fetchone()[0]
+        )
+        result_count = int(
+            connection.execute("SELECT COUNT(*) FROM results").fetchone()[0]
+        )
+        missing_results, unexpected_results = connection.execute(
+            "SELECT "
+            "(SELECT COUNT(*) FROM requests AS request "
+            "LEFT JOIN results AS result USING (target_id) "
+            "WHERE result.target_id IS NULL), "
+            "(SELECT COUNT(*) FROM results AS result "
+            "LEFT JOIN requests AS request USING (target_id) "
+            "WHERE request.target_id IS NULL)"
+        ).fetchone()
+        if request_count != result_count or missing_results or unexpected_results:
             raise ResultProjectionError(
                 "terminal processing result coverage is incomplete"
             )
-        work_targets = _work_targets(paths, run_id, requested)
-        projected = []
-        for target_id in sorted(requested):
-            request = requested[target_id]
-            result = produced[target_id]
-            _validate_work_target(request, work_targets[target_id])
-            projected.append(
-                _project_target(request, result, paths=paths, run_id=run_id)
+        _stage_work_order(connection, paths, run_id)
+        missing_work_targets = int(
+            connection.execute(
+                "SELECT COUNT(*) FROM requests AS request "
+                "LEFT JOIN work_targets AS work USING (target_id) "
+                "WHERE work.target_id IS NULL"
+            ).fetchone()[0]
+        )
+        if missing_work_targets:
+            raise ResultProjectionError(
+                "processing request target is absent from work order"
             )
-        targets = tuple(projected)
+        connection.commit()
+
+        def projected_targets() -> Iterator[ProjectedTarget]:
+            read_connection = sqlite3.connect(
+                f"file:{quote(str(input_database_path.resolve()))}?mode=ro", uri=True
+            )
+            try:
+                read_connection.execute("PRAGMA temp_store=FILE")
+                cursor = read_connection.execute(
+                    "SELECT request.record_json, result.record_json, "
+                    "work.target_id, work.accession, work.form, work.target_role, "
+                    "work.target_type, work.source_origin, work.executable, "
+                    "work.status, work.retrieval_mode, work.target_url "
+                    "FROM requests AS request "
+                    "JOIN results AS result USING (target_id) "
+                    "JOIN work_targets AS work USING (target_id) "
+                    "ORDER BY request.target_id"
+                )
+                for row_number, row in enumerate(cursor, start=1):
+                    request_json, result_json = row[0], row[1]
+                    request = request_from_record(json.loads(request_json))
+                    result = result_from_record(json.loads(result_json))
+                    work_target = {
+                        name: bool(row[index]) if name == "executable" else row[index]
+                        for index, name in enumerate(_WORK_TARGET_COLUMNS, start=2)
+                    }
+                    _validate_work_target(request, work_target)
+                    target = _project_target(
+                        request, result, paths=paths, run_id=run_id
+                    )
+                    output_connection.execute(
+                        "INSERT INTO projected_targets VALUES (?, ?)",
+                        (
+                            target.target_id,
+                            canonical_json(projected_target_record(target)),
+                        ),
+                    )
+                    if row_number % insert_batch_size == 0:
+                        output_connection.commit()
+                    yield target
+            finally:
+                read_connection.close()
+
+        fingerprint = fingerprint_targets(run_id, projected_targets())
+        output_connection.commit()
+        connection.close()
+        connection = None
+        output_connection.close()
+        output_connection = None
+        input_database_path.unlink(missing_ok=True)
+        preserve_temporary_directory = True
         return ProcessingResultProjection(
             run_id=run_id,
-            fingerprint=_fingerprint_targets(run_id, targets),
-            targets=targets,
+            fingerprint=fingerprint,
+            _database_path=database_path,
+            _temporary_directory=temporary_directory,
         )
     except ResultProjectionError:
         raise
@@ -545,12 +586,15 @@ def project_terminal_results(
         raise ResultProjectionError(
             "terminal processing results failed validation"
         ) from error
+    finally:
+        if connection is not None:
+            connection.close()
+        if output_connection is not None:
+            output_connection.close()
+        if not preserve_temporary_directory:
+            temporary_directory.cleanup()
 
 
 __all__ = [
-    "ProcessingResultProjection",
-    "ProjectedOperation",
-    "ProjectedTarget",
-    "ResultProjectionError",
     "project_terminal_results",
 ]

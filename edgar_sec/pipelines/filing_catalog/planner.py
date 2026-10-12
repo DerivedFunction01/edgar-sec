@@ -47,6 +47,7 @@ from edgar_sec.engine.selection.selector import DeficitSelector
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PARQUET_PART_GLOB
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.models import CohortRecord
 from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
@@ -57,7 +58,6 @@ from edgar_sec.infra.storage.duckdb import (
     sql_literal,
 )
 from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
-from edgar_sec.foundation.runtime.settings.sql import resolve_sql_insert_batch_size
 from edgar_sec.pipelines.filing_catalog.discovery import (
     catalog_year_bounds,
     eligible_year_bounds,
@@ -68,7 +68,10 @@ from edgar_sec.pipelines.filing_catalog.accessions import (
     selected_accession_counts,
     validate_limit_options,
 )
-from edgar_sec.pipelines.filing_catalog.cohort_seed import cohort_seed_filers
+from edgar_sec.pipelines.filing_catalog.cohort_seed import (
+    SeedFilerSource,
+    cohort_seed_filers,
+)
 from edgar_sec.pipelines.filing_catalog.family_index import (
     resolve_active_family_index,
 )
@@ -321,12 +324,9 @@ def plan(
             )
             discovery = " AND ".join(shared_where) if shared_where else "TRUE"
 
-        available = [
-            str(row[0])
-            for row in con.execute(
-                f"SELECT DISTINCT form FROM {source} WHERE {discovery} ORDER BY form"
-            ).fetchall()
-        ]
+        available = con.execute(
+            f"SELECT DISTINCT form FROM {source} WHERE {discovery} ORDER BY form"
+        ).to_arrow_reader(batch_size=resolve_read_batch_size())
 
         # A shard is schema-checked against TARGET_COLUMNS, so partitions project the
         # published columns by name rather than the dated view's shape.
@@ -340,31 +340,38 @@ def plan(
             # a structurally complete, reusable bundle.
             targets_root.mkdir(parents=True, exist_ok=True)
             written: list[Path] = []
-            for form_name in available:
-                destination = (
-                    targets_root / form_partition_directory(form_name) / DATA_FILE_NAME
-                )
-                where = [*shared_where, f"form = {sql_literal(form_name)}"]
-                query = (
-                    f"SELECT {target_columns} FROM {source} "
-                    f"WHERE {' AND '.join(where)} "
-                    f"ORDER BY document_locator_key, occurrence_id"
-                )
-                if limit is not None:
-                    query = f"SELECT {target_columns} FROM ({query}) LIMIT {int(limit)}"
-                written.append(destination)
-                counts[form_name] = copy_query_to_parquet(
-                    con, query, destination, row_group_size
-                )
-                total_rows += counts[form_name]
-                emit_progress(
-                    progress,
-                    {
-                        "type": "merge_stage",
-                        "stage": f"targets:{form_name}",
-                        "rows": counts[form_name],
-                    },
-                )
+            for form_batch in available:
+                form_values = form_batch.column(0)
+                for row_index in range(form_batch.num_rows):
+                    form_name = str(form_values[row_index].as_py())
+                    destination = (
+                        targets_root
+                        / form_partition_directory(form_name)
+                        / DATA_FILE_NAME
+                    )
+                    where = [*shared_where, f"form = {sql_literal(form_name)}"]
+                    query = (
+                        f"SELECT {target_columns} FROM {source} "
+                        f"WHERE {' AND '.join(where)} "
+                        f"ORDER BY document_locator_key, occurrence_id"
+                    )
+                    if limit is not None:
+                        query = (
+                            f"SELECT {target_columns} FROM ({query}) LIMIT {int(limit)}"
+                        )
+                    written.append(destination)
+                    counts[form_name] = copy_query_to_parquet(
+                        con, query, destination, row_group_size
+                    )
+                    total_rows += counts[form_name]
+                    emit_progress(
+                        progress,
+                        {
+                            "type": "merge_stage",
+                            "stage": f"targets:{form_name}",
+                            "rows": counts[form_name],
+                        },
+                    )
 
             # Written even at zero rows, so every published bundle holds the full
             # REQUIRED_PLAN_FILES set and stays reusable.
@@ -478,32 +485,6 @@ def _inventory_feasibility(
     }
 
 
-def _register_selected_keys(con: object, keys: list[str]) -> None:
-    """Load the selected locator keys into a temp table.
-    A temp table, not an interpolated list: a plan carries thousands of keys and a list
-    that long is re-parsed per query.
-    """
-    insert_batch_size = resolve_sql_insert_batch_size()
-    con.execute(
-        "CREATE OR REPLACE TEMP TABLE selected_locator_keys "
-        "(document_locator_key VARCHAR)"
-    )
-    for start in range(0, len(keys), insert_batch_size):
-        chunk = [[key] for key in keys[start : start + insert_batch_size]]
-        con.executemany("INSERT INTO selected_locator_keys VALUES (?)", chunk)
-
-
-def _register_reserve_keys(con: object, keys: list[str]) -> None:
-    insert_batch_size = resolve_sql_insert_batch_size()
-    con.execute(
-        "CREATE OR REPLACE TEMP TABLE reserve_locator_keys "
-        "(document_locator_key VARCHAR)"
-    )
-    for start in range(0, len(keys), insert_batch_size):
-        chunk = [[key] for key in keys[start : start + insert_batch_size]]
-        con.executemany("INSERT INTO reserve_locator_keys VALUES (?)", chunk)
-
-
 def _resolve_era_bands(
     paths: FilingCatalogPaths, catalog: str, policy: SelectionPolicy
 ) -> SelectionPolicy:
@@ -527,8 +508,9 @@ def plan_policy(
     output_root: str | Path | None = None,
     *,
     seed_filers: dict[str, SeedFiler] | None = None,
+    seed_filer_source: SeedFilerSource | None = None,
     seed_cohort: str | None = None,
-    parent_active_keys: list[str] | None = None,
+    parent_locator_path: str | Path | None = None,
     progress: ProgressCallback = None,
     row_group_size: int | None = None,
 ) -> dict[str, Any]:
@@ -546,12 +528,8 @@ def plan_policy(
         else resolve_filing_catalog_paths()
     )
     catalog = resolve_catalog_reference(paths, catalog)
-    # A guard, not an input: it reports "no published targets" rather than
-    # letting the builder surface it as a missing-parts error.
     active_target_parts = _catalog_target_files(paths, catalog)
 
-    # Resolved before the request is hashed, so the plan id names the bands its
-    # locators will actually be chosen under.
     policy = _resolve_era_bands(paths, catalog, policy)
     family_index, family_index_path = resolve_active_family_index(paths.artifacts_root)
 
@@ -559,14 +537,28 @@ def plan_policy(
     # consumer is what let a plan and its features disagree about which
     # registrants were mandatory.
     seed_cohort_input = _resolve_cohort(paths.artifacts_root, seed_cohort)
-    if seed_cohort_input is not None:
+    if seed_filer_source is not None:
+        pinned_seed = {}
+        resolved_seed_source = seed_filer_source
+    elif seed_cohort_input is not None:
         seed_cohort_record, seed_cohort_dataset = seed_cohort_input
-        pinned_seed = cohort_seed_filers(seed_cohort_record, seed_cohort_dataset)
+        pinned_seed = {}
+        resolved_seed_source = cohort_seed_filers(
+            seed_cohort_record, seed_cohort_dataset
+        )
     else:
-        pinned_seed = dict(seed_filers) if seed_filers is not None else {}
-    seed_fingerprint = compute_seed_fingerprint(pinned_seed)
-    # ``target_units`` and ``level`` stay out: ``policy_fingerprint`` already
-    # covers both, and restating them gave the identity two encodings of one fact.
+        pinned_seed = seed_filers or {}
+        resolved_seed_source = None
+    seed_fingerprint = (
+        resolved_seed_source.fingerprint
+        if resolved_seed_source is not None
+        else compute_seed_fingerprint(pinned_seed)
+    )
+    seed_filer_count = (
+        resolved_seed_source.count
+        if resolved_seed_source is not None
+        else len(pinned_seed)
+    )
     request = {
         "catalog_id": catalog,
         "row_group_size": row_group_size,
@@ -640,71 +632,93 @@ def plan_policy(
         active_target_parts=active_target_parts,
         delta_target_parts=delta_target_parts,
     )
-    snapshot = builder.build()
+    emit_progress(
+        progress,
+        {"type": "merge_stage", "stage": "features_started", "catalog": catalog},
+    )
+    snapshot = builder.build(progress=progress)
     emit_progress(
         progress,
         {
             "type": "merge_stage",
-            "stage": "features",
+            "stage": "features_complete",
             "snapshot": snapshot.snapshot_dir.name,
         },
     )
 
-    selector = DeficitSelector(snapshot.snapshot_dir, policy, seed_filers=pinned_seed)
-    selection = selector.select(parent_active_keys=parent_active_keys)
+    selector = DeficitSelector(
+        snapshot.snapshot_dir,
+        policy,
+        seed_filers=pinned_seed,
+        seed_cik_relation=(
+            resolved_seed_source.cik_relation_sql
+            if resolved_seed_source is not None
+            else None
+        ),
+    )
+    emit_progress(
+        progress,
+        {"type": "merge_stage", "stage": "selection_started", "catalog": catalog},
+    )
+    selection = selector.select(
+        parent_locator_path=parent_locator_path, progress=progress
+    )
 
     counts: dict[str, int] = {}
     total_rows = 0
     with staged_plan_bundle(final_dir, plan_id) as staging:
-        write_seed_filers_csv(staging / SEED_FILERS_FILE, pinned_seed)
+        if resolved_seed_source is not None:
+            resolved_seed_source.write_csv(staging / SEED_FILERS_FILE)
+        else:
+            write_seed_filers_csv(staging / SEED_FILERS_FILE, pinned_seed)
         targets_root = staging / PLAN_TARGETS_DIR
         targets_root.mkdir(parents=True, exist_ok=True)
         with connect() as con:
-            _register_selected_keys(con, selection.active_locators)
             locator_source = (
                 f"{snapshot.locator_relation} l "
-                "JOIN selected_locator_keys s "
+                "JOIN read_parquet("
+                f"{sql_literal(str(selection.active_keys_path))}) s "
                 "ON l.document_locator_key = s.document_locator_key"
             )
             occurrence_source = (
                 f"{snapshot.occurrence_relation} o "
-                "JOIN selected_locator_keys s "
+                "JOIN read_parquet("
+                f"{sql_literal(str(selection.active_keys_path))}) s "
                 "ON o.document_locator_key = s.document_locator_key"
             )
 
-            selected_forms = [
-                str(row[0])
-                for row in con.execute(
-                    f"SELECT DISTINCT form FROM ({occurrence_source}) ORDER BY form"
-                ).fetchall()
-            ]
-            # A part is schema-checked against TARGET_SCHEMA, so project the
-            # published columns by name: the occurrence relation is a join, so
-            # `SELECT *` would publish a `document_locator_key_1` column.
+            selected_forms = con.execute(
+                f"SELECT DISTINCT form FROM ({occurrence_source}) ORDER BY form"
+            ).to_arrow_reader(batch_size=resolve_read_batch_size())
             target_columns = ", ".join(
                 f"o.{name}" for name in OCCURRENCE_FEATURE_COLUMNS
             )
-            for form_name in selected_forms:
-                destination = (
-                    targets_root / form_partition_directory(form_name) / DATA_FILE_NAME
-                )
-                query = (
-                    f"SELECT {target_columns} FROM ({occurrence_source}) "
-                    f"WHERE form = {sql_literal(form_name)} "
-                    "ORDER BY o.document_locator_key, o.occurrence_id"
-                )
-                counts[form_name] = copy_query_to_parquet(
-                    con, query, destination, row_group_size
-                )
-                total_rows += counts[form_name]
-                emit_progress(
-                    progress,
-                    {
-                        "type": "merge_stage",
-                        "stage": f"targets:{form_name}",
-                        "rows": counts[form_name],
-                    },
-                )
+            for form_batch in selected_forms:
+                form_values = form_batch.column(0)
+                for row_index in range(form_batch.num_rows):
+                    form_name = str(form_values[row_index].as_py())
+                    destination = (
+                        targets_root
+                        / form_partition_directory(form_name)
+                        / DATA_FILE_NAME
+                    )
+                    query = (
+                        f"SELECT {target_columns} FROM ({occurrence_source}) "
+                        f"WHERE form = {sql_literal(form_name)} "
+                        "ORDER BY o.document_locator_key, o.occurrence_id"
+                    )
+                    counts[form_name] = copy_query_to_parquet(
+                        con, query, destination, row_group_size
+                    )
+                    total_rows += counts[form_name]
+                    emit_progress(
+                        progress,
+                        {
+                            "type": "merge_stage",
+                            "stage": f"targets:{form_name}",
+                            "rows": counts[form_name],
+                        },
+                    )
 
             locator_count = copy_query_to_parquet(
                 con,
@@ -713,13 +727,13 @@ def plan_policy(
                 row_group_size,
             )
 
-            if selection.reserve_locators:
-                _register_reserve_keys(con, selection.reserve_locators)
+            if selection.reserve_count:
                 copy_query_to_parquet(
                     con,
                     "SELECT l.* FROM "
                     f"{snapshot.locator_relation} l "
-                    "JOIN reserve_locator_keys r "
+                    "JOIN read_parquet("
+                    f"{sql_literal(str(selection.reserve_keys_path))}) r "
                     "ON l.document_locator_key = r.document_locator_key "
                     "ORDER BY l.document_locator_key",
                     staging / RESERVE_TARGETS_FILE,
@@ -733,7 +747,7 @@ def plan_policy(
             "family_index_id": family_index.family_index_id,
             "active_targets_count": total_rows,
             "unique_locators_count": locator_count,
-            "reserve_count": len(selection.reserve_locators),
+            "reserve_count": selection.reserve_count,
             "counts": counts,
             "inventory_feasibility": _inventory_feasibility(snapshot, policy),
             **{
@@ -751,7 +765,7 @@ def plan_policy(
             "policy_corpus": policy.corpus_id,
             "policy_fingerprint": policy.policy_fingerprint,
             "seed_fingerprint": seed_fingerprint,
-            "seed_filer_count": len(pinned_seed),
+            "seed_filer_count": seed_filer_count,
             "level": policy.level,
             "target_units": policy.requested_units(),
             "parent_plan_id": policy.parent_plan_id,
@@ -761,7 +775,7 @@ def plan_policy(
             "selected_rows": total_rows,
             "active_targets_count": total_rows,
             "unique_locators_count": locator_count,
-            "reserve_count": len(selection.reserve_locators),
+            "reserve_count": selection.reserve_count,
             "underfilled_floors": selection.report["underfilled_floors"],
             "selection_policy": policy.to_dict(),
             "request_fingerprint": hashlib.sha256(

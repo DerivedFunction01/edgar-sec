@@ -21,8 +21,8 @@ from edgar_sec.domain.filing_catalog.schemas import (
     TARGET_PLAN_SCHEMA_VERSION,
 )
 from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
-from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 from edgar_sec.pipelines.filing_catalog.paths import (
@@ -51,8 +51,8 @@ def plan_identity(payload: dict[str, Any]) -> str:
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:24]
 
 
-def plan_locator_keys(plan_dir: str | Path) -> list[str]:
-    """Read a published plan's selected locator keys, in file order.
+def plan_locator_keys(plan_dir: str | Path) -> Iterator[str]:
+    """Stream a published plan's selected locator keys, in file order.
     An in-memory connection writing nothing beside the plan, so an interrupted read
     leaves no stray state in an immutable bundle.
     """
@@ -60,33 +60,60 @@ def plan_locator_keys(plan_dir: str | Path) -> list[str]:
     locator_path = root / LOCATOR_GROUPS_FILE
     if not locator_path.is_file():
         raise FileNotFoundError(f"plan locator groups not found: {locator_path}")
+
+    def stream() -> Iterator[str]:
+        with connect() as con:
+            cursor = con.execute(
+                f"SELECT document_locator_key FROM read_parquet("
+                f"{sql_literal(str(locator_path))}) ORDER BY document_locator_key"
+            )
+            while row := cursor.fetchone():
+                yield str(row[0])
+
+    return stream()
+
+
+def plan_locator_count(plan_dir: str | Path) -> int:
+    locator_path = Path(plan_dir).resolve() / LOCATOR_GROUPS_FILE
+    if not locator_path.is_file():
+        raise FileNotFoundError(f"plan locator groups not found: {locator_path}")
     with connect() as con:
-        rows = con.execute(
-            f"SELECT document_locator_key FROM read_parquet("
-            f"{sql_literal(str(locator_path))}) ORDER BY document_locator_key"
-        ).fetchall()
-    return [str(row[0]) for row in rows]
+        return int(
+            con.execute(
+                "SELECT COUNT(*) FROM read_parquet(?)", [str(locator_path)]
+            ).fetchone()[0]
+        )
 
 
-def plan_fingerprint(plan_meta: dict[str, Any], locator_keys: list[str]) -> str:
-    """Content digest of a plan's identity and its selected locators.
+def plan_fingerprint(plan_meta: dict[str, Any], locator_keys: Iterable[str]) -> str:
+    with connect() as con:
+        con.execute("CREATE TEMP TABLE fingerprint_keys (document_locator_key VARCHAR)")
+        iterator = iter(locator_keys)
+        first = next(iterator, None)
+        if first is not None:
 
-    Narrow on purpose: the work order, not every Parquet in the bundle.
-    """
-    return canonical_hash(
-        {
-            "plan_id": plan_meta.get("plan_id"),
-            "catalog_id": plan_meta.get("catalog_id"),
-            "scope": plan_meta.get("scope"),
-            "locator_keys": sorted(locator_keys),
-        }
-    )[:32]
+            def values() -> Iterator[tuple[str]]:
+                yield (str(first),)
+                for key in iterator:
+                    yield (str(key),)
+
+            con.executemany("INSERT INTO fingerprint_keys VALUES (?)", values())
+        cursor = con.execute(
+            "SELECT document_locator_key FROM fingerprint_keys "
+            "ORDER BY document_locator_key"
+        )
+
+        def sorted_keys() -> Iterator[str]:
+            while row := cursor.fetchone():
+                yield str(row[0])
+
+        return plan_fingerprint_from_sorted_keys(plan_meta, sorted_keys())
 
 
 def plan_fingerprint_from_sorted_keys(
     plan_meta: dict[str, Any], locator_keys: Iterable[str]
 ) -> str:
-    """Hash an ordered locator stream with the same contract as plan_fingerprint."""
+    """Hash identity and an already sorted locator-key stream."""
     digest = hashlib.sha256()
     digest.update(
         (
@@ -121,11 +148,15 @@ def plan_fingerprint_from_plan(plan_dir: str | Path, plan_meta: dict[str, Any]) 
             "SELECT document_locator_key FROM read_parquet("
             + sql_literal(str(locator_path))
             + ") ORDER BY document_locator_key"
-        ).to_arrow_reader(2048)
-        return plan_fingerprint_from_sorted_keys(
-            plan_meta,
-            (str(key) for batch in reader for key in batch.column(0).to_pylist()),
-        )
+        ).to_arrow_reader(batch_size=resolve_read_batch_size())
+
+        def sorted_keys() -> Iterator[str]:
+            for batch in reader:
+                column = batch.column(0)
+                for row_index in range(batch.num_rows):
+                    yield str(column[row_index].as_py())
+
+        return plan_fingerprint_from_sorted_keys(plan_meta, sorted_keys())
 
 
 def plan_bundle_complete(plan_dir: Path, scope: str = "") -> bool:
@@ -226,7 +257,7 @@ def _verify_selection_fingerprint(plan_dir: Path, published: dict[str, Any]) -> 
             f"plan bundle at {plan_dir} records no selection fingerprint; "
             "remove it and rerun to republish under the current plan contract"
         )
-    actual = plan_fingerprint(published, plan_locator_keys(plan_dir))
+    actual = plan_fingerprint_from_plan(plan_dir, published)
     if actual != recorded:
         raise PlanConflictError(
             f"plan bundle at {plan_dir} no longer matches its selection fingerprint "
@@ -327,9 +358,7 @@ def write_plan_documents(
     """
     stamped = dict(plan_meta)
     stamped["target_parts"] = _describe_target_parts(staging_dir, stamped.get("counts"))
-    stamped["plan_fingerprint"] = plan_fingerprint(
-        stamped, plan_locator_keys(staging_dir)
-    )
+    stamped["plan_fingerprint"] = plan_fingerprint_from_plan(staging_dir, stamped)
     atomic_write_json(staging_dir / PLAN_FILE_NAME, stamped, indent=2)
     atomic_write_json(staging_dir / SELECTION_REPORT_FILE, selection_report, indent=2)
     return stamped

@@ -42,10 +42,15 @@ _SQL_COMPILER_PATHS = frozenset(
         "edgar_sec/infra/storage/duckdb.py",
         "edgar_sec/engine/selection/source.py",
         "edgar_sec/engine/selection/inventory.py",
+        # Selection SQL embeds only validated dimensions, snapshot relations, and
+        # escaped temporary paths; candidate values are bound parameters.
+        "edgar_sec/engine/selection/selector.py",
         # Feature SQL embeds only relations compiled from validated forms and paths.
         "edgar_sec/engine/selection/features.py",
         "edgar_sec/engine/selection/snapshot_build.py",
         "edgar_sec/pipelines/filing_catalog/planner.py",
+        # Seed relations and cohort/sidecar paths are SQL-literal escaped before use.
+        "edgar_sec/pipelines/filing_catalog/cohort_seed.py",
         # The source relation and predicate are compiled by the catalog planner;
         # accession limits are validated integers and never user-built SQL.
         "edgar_sec/pipelines/filing_catalog/accessions.py",

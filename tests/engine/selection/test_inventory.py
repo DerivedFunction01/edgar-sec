@@ -41,10 +41,17 @@ def test_value_counts_resolve_every_dimension_at_locator_grain(
 
 
 def test_value_counts_are_ordered_by_supply(inventory: InventoryStatistics) -> None:
-    rows = inventory.value_counts("sic_code")
+    rows = list(inventory.value_counts("sic_code"))
     assert [row["locator_count"] for row in rows] == sorted(
         (row["locator_count"] for row in rows), reverse=True
     )
+
+
+def test_value_counts_returns_a_streaming_iterator(
+    inventory: InventoryStatistics,
+) -> None:
+    rows = inventory.value_counts("form")
+    assert iter(rows) is rows
 
 
 def test_value_counts_report_distinct_ciks(inventory: InventoryStatistics) -> None:

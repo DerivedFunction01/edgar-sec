@@ -13,6 +13,10 @@ from edgar_sec.pipelines.document_acquisition.paths import (
     AcquisitionPaths,
     resolve_acquisition_paths,
 )
+from edgar_sec.pipelines.document_acquisition.projection_models import (
+    ResultProjectionError,
+    projected_target_record,
+)
 from edgar_sec.pipelines.document_acquisition.processing_models import (
     OperationRequest,
     OperationResult,
@@ -21,8 +25,8 @@ from edgar_sec.pipelines.document_acquisition.processing_models import (
     ProcessingResult,
     StagedOutputRef,
 )
+from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.pipelines.document_acquisition.result_projection import (
-    ResultProjectionError,
     project_terminal_results,
 )
 from edgar_sec.pipelines.document_acquisition.schemas import StagedBodyRef
@@ -213,8 +217,8 @@ def _projection_inputs(
     monkeypatch.setattr(result_projection, "load_validated_work_order", lambda *_: ())
     monkeypatch.setattr(
         result_projection,
-        "iter_work_order_batches",
-        lambda _parts: iter(((row,),)),
+        "iter_work_order_rows",
+        lambda _parts: iter((row,)),
     )
     monkeypatch.setattr(
         result_projection,
@@ -229,25 +233,118 @@ def test_project_terminal_results_preserves_statuses_and_is_deterministic(
 ) -> None:
     paths, request, result = _projection_inputs(tmp_path, monkeypatch)
 
-    first = project_terminal_results((request,), (result,), paths=paths, run_id=_RUN_ID)
-    second = project_terminal_results(
-        (request,),
-        (replace(result, operation_results=tuple(reversed(result.operation_results))),),
+    with project_terminal_results(
+        (item for item in (request,)),
+        (item for item in (result,)),
         paths=paths,
         run_id=_RUN_ID,
+    ) as first:
+        with project_terminal_results(
+            (request,),
+            (
+                replace(
+                    result, operation_results=tuple(reversed(result.operation_results))
+                ),
+            ),
+            paths=paths,
+            run_id=_RUN_ID,
+        ) as second:
+            assert first == second
+            projected = next(first.iter_targets())
+            assert [item.status for item in projected.operations] == [
+                "blocked",
+                "failed",
+                "available",
+                "available",
+                "not_requested",
+                "unsupported",
+            ]
+            assert projected.source_staged_path == "staging/source.txt"
+            assert projected.operations[2].staged_output_path == "staging/source.txt"
+            assert first.fingerprint == canonical_hash(
+                {
+                    "run_id": _RUN_ID,
+                    "targets": [projected_target_record(projected)],
+                }
+            )
+
+
+def test_projection_spool_is_removed_when_closed(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths, request, result = _projection_inputs(tmp_path, monkeypatch)
+    projection = project_terminal_results(
+        (request,), (result,), paths=paths, run_id=_RUN_ID
+    )
+    scratch = projection._database_path.parent
+
+    assert scratch.is_dir()
+    assert len(tuple(projection.iter_targets())) == 1
+    projection.close()
+
+    assert not scratch.exists()
+    with pytest.raises(ResultProjectionError, match="spool is closed"):
+        next(projection.iter_targets())
+
+
+def test_project_terminal_results_joins_unordered_streams_and_sorts_targets(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths, request, result = _projection_inputs(tmp_path, monkeypatch)
+    second_target_id = "target_projection_2"
+    second_body = replace(request.body, target_id=second_target_id)
+    second_request = replace(request, target_id=second_target_id, body=second_body)
+    second_result = replace(
+        result,
+        target_id=second_target_id,
+        processing_id="proc_fixture_2",
+        operation_results=tuple(
+            replace(
+                operation,
+                staged_output=(
+                    replace(operation.staged_output, staging_id="proc_fixture_2")
+                    if operation.staged_output is not None
+                    else None
+                ),
+            )
+            for operation in result.operation_results
+        ),
+    )
+    row = {
+        "target_id": _TARGET_ID,
+        "accession": str(_ACCESSION),
+        "form": "10-K",
+        "target_role": "primary",
+        "target_type": "primary",
+        "source_origin": "inventory_index",
+        "executable": True,
+        "status": "matched",
+        "retrieval_mode": "direct_url",
+        "target_url": _TARGET_URL,
+    }
+    monkeypatch.setattr(
+        result_projection,
+        "iter_work_order_rows",
+        lambda _parts: iter((row, {**row, "target_id": second_target_id})),
+    )
+    monkeypatch.setattr(
+        result_projection,
+        "get_staged_body_ref",
+        lambda _paths, _run_id, target_id: (
+            request.body if target_id == _TARGET_ID else second_body
+        ),
     )
 
-    assert first == second
-    assert [item.status for item in first.targets[0].operations] == [
-        "blocked",
-        "failed",
-        "available",
-        "available",
-        "not_requested",
-        "unsupported",
-    ]
-    assert first.targets[0].source_staged_path == "staging/source.txt"
-    assert first.targets[0].operations[2].staged_output_path == "staging/source.txt"
+    with project_terminal_results(
+        (second_request, request),
+        (result, second_result),
+        paths=paths,
+        run_id=_RUN_ID,
+    ) as projection:
+        assert [target.target_id for target in projection.iter_targets()] == [
+            _TARGET_ID,
+            second_target_id,
+        ]
 
 
 def test_project_terminal_results_rejects_missing_target_result(
@@ -344,20 +441,25 @@ def test_project_terminal_results_refuses_bundle_without_s9_filename_evidence(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     paths, request, result = _projection_inputs(tmp_path, monkeypatch)
-    original_batches = result_projection.iter_work_order_batches
 
-    def bundle_target(parts: tuple[Path, ...]):
-        return iter(
-            (
-                tuple(
-                    {**row, "retrieval_mode": "bundle_sequence"}
-                    for batch in original_batches(parts)
-                    for row in batch
-                ),
-            )
-        )
+    def bundle_target(_parts: tuple[Path, ...]):
+        yield {**_work_order_row(), "retrieval_mode": "bundle_sequence"}
 
-    monkeypatch.setattr(result_projection, "iter_work_order_batches", bundle_target)
+    def _work_order_row():
+        return {
+            "target_id": _TARGET_ID,
+            "accession": str(_ACCESSION),
+            "form": "10-K",
+            "target_role": "primary",
+            "target_type": "primary",
+            "source_origin": "inventory_index",
+            "executable": True,
+            "status": "matched",
+            "retrieval_mode": "direct_url",
+            "target_url": _TARGET_URL,
+        }
+
+    monkeypatch.setattr(result_projection, "iter_work_order_rows", bundle_target)
 
     with pytest.raises(ResultProjectionError, match="selected-filename evidence"):
         project_terminal_results((request,), (result,), paths=paths, run_id=_RUN_ID)

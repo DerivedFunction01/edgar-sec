@@ -23,6 +23,7 @@ from edgar_sec.engine.selection.snapshot import (
 from edgar_sec.foundation.hashing import file_sha256, sha256_text
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.foundation.runtime.paths import SNAPSHOTS_DIR
+from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import connect, sql_literal
 from edgar_sec.infra.storage.dag.manifest import (
@@ -49,7 +50,11 @@ def _part_descriptor(
     )
 
 
-def build_snapshot(builder: Any, feature_schema_version: str) -> SnapshotPaths:
+def build_snapshot(
+    builder: Any,
+    feature_schema_version: str,
+    progress: ProgressCallback = None,
+) -> SnapshotPaths:
     forms = sorted(set(builder.policy.forms))
     if not forms:
         raise ValueError("no forms configured in policy")
@@ -92,61 +97,131 @@ def build_snapshot(builder: Any, feature_schema_version: str) -> SnapshotPaths:
     with connect() as con:
         active_union = builder._target_union(forms, active_parts)
         new_union = builder._target_union(forms, new_parts)
+        emit_progress(
+            progress,
+            {"type": "merge_stage", "stage": "feature_occurrences_started"},
+        )
         counts["independent_occurrence_rows"] = builder._write_occurrence_independent(
             con, new_union, snapshot_dir
         )
-        prior_anchors = parent_manifest.get("size_anchors", {})
-        delta_form_families = [
-            str(row[0])
-            for row in con.execute(
-                "SELECT DISTINCT "
-                f"{builder._form_family_sql('form')} "
-                f"FROM ({new_union}) ORDER BY 1"
-            ).fetchall()
-        ]
-        current_anchors = dict(prior_anchors) if incremental else {}
-        anchor_rows = con.execute(
-            builder._size_band_anchor_sql(
-                active_union, delta_form_families if incremental else None
-            )
-        ).fetchall()
-        if incremental:
-            for family in delta_form_families:
-                current_anchors.pop(family, None)
-        current_anchors.update({str(row[0]): float(row[1]) for row in anchor_rows})
-        changed_families = sorted(
-            family
-            for family in (delta_form_families if incremental else current_anchors)
-            if current_anchors.get(family) != prior_anchors.get(family)
+        emit_progress(
+            progress,
+            {
+                "type": "merge_stage",
+                "stage": "feature_occurrences_complete",
+                "rows": counts["independent_occurrence_rows"],
+            },
         )
-        delta_locator_keys = [
-            str(row[0])
-            for row in con.execute(
-                f"SELECT DISTINCT document_locator_key FROM ({new_union}) "
-                "WHERE document_locator_key IS NOT NULL ORDER BY 1"
-            ).fetchall()
-        ]
+        prior_anchors = parent_manifest.get("size_anchors", {})
+        emit_progress(
+            progress,
+            {"type": "merge_stage", "stage": "feature_anchors_started"},
+        )
+        delta_form_families_sql = (
+            "SELECT DISTINCT "
+            f"{builder._form_family_sql('form')} AS form_family "
+            f"FROM ({new_union})"
+        )
+        current_anchors = dict(prior_anchors) if incremental else {}
+        if incremental:
+            con.execute(
+                "CREATE TEMP TABLE prior_size_anchors "
+                "(form_family VARCHAR PRIMARY KEY, median_size DOUBLE)"
+            )
+            if prior_anchors:
+                con.executemany(
+                    "INSERT INTO prior_size_anchors VALUES (?, ?)",
+                    (
+                        (str(family), float(anchor))
+                        for family, anchor in prior_anchors.items()
+                    ),
+                )
+            con.execute(
+                "CREATE TEMP TABLE delta_size_anchors AS "
+                + builder._size_band_anchor_sql(active_union, delta_form_families_sql)
+            )
+            family_cursor = con.execute(
+                f"SELECT form_family FROM ({delta_form_families_sql}) "
+                "ORDER BY form_family"
+            )
+            while family_row := family_cursor.fetchone():
+                family = str(family_row[0])
+                current_anchors.pop(family, None)
+            anchor_cursor = con.execute(
+                "SELECT form_family, median_size FROM delta_size_anchors "
+                "ORDER BY form_family"
+            )
+            while anchor_row := anchor_cursor.fetchone():
+                current_anchors[str(anchor_row[0])] = float(anchor_row[1])
+            con.execute(
+                "CREATE TEMP TABLE changed_size_families AS "
+                f"SELECT d.form_family FROM ({delta_form_families_sql}) d "
+                "LEFT JOIN delta_size_anchors a USING (form_family) "
+                "LEFT JOIN prior_size_anchors p USING (form_family) "
+                "WHERE p.form_family IS NULL OR a.form_family IS NULL "
+                "OR a.median_size IS DISTINCT FROM p.median_size"
+            )
+            changed_families_sql = "SELECT form_family FROM changed_size_families"
+            anchor_families_sql = delta_form_families_sql
+        else:
+            anchor_cursor = con.execute(builder._size_band_anchor_sql(active_union))
+            while anchor_row := anchor_cursor.fetchone():
+                current_anchors[str(anchor_row[0])] = float(anchor_row[1])
+            changed_families_sql = None
+            anchor_families_sql = None
+        emit_progress(
+            progress,
+            {
+                "type": "merge_stage",
+                "stage": "feature_anchors_complete",
+                "anchor_count": len(current_anchors),
+            },
+        )
+        delta_locator_keys_sql = (
+            f"SELECT DISTINCT document_locator_key FROM ({new_union}) "
+            "WHERE document_locator_key IS NOT NULL"
+        )
+        emit_progress(
+            progress,
+            {"type": "merge_stage", "stage": "feature_locator_bands_started"},
+        )
         counts["locator_band_rows"] = builder._write_locator_bands(
             con,
             active_union,
             snapshot_dir,
-            families=changed_families if incremental else None,
-            locator_keys=delta_locator_keys if incremental else None,
-            anchor_families=delta_form_families if incremental else None,
+            family_relation_sql=changed_families_sql,
+            locator_keys_sql=delta_locator_keys_sql if incremental else None,
+            anchor_family_relation_sql=anchor_families_sql,
             full=not incremental,
+        )
+        emit_progress(
+            progress,
+            {
+                "type": "merge_stage",
+                "stage": "feature_locator_bands_complete",
+                "rows": counts["locator_band_rows"],
+            },
         )
         locator_band_parts.append(locator_bands_path)
 
+        emit_progress(
+            progress,
+            {"type": "merge_stage", "stage": "feature_max_year_started"},
+        )
         delta_max_year = builder._global_max_year(con, new_union)
-        year_candidates = [
-            value
-            for value in (
-                parent_manifest.get("global_max_year") if incremental else None,
-                delta_max_year,
-            )
-            if value is not None
-        ]
-        global_max_year = max(year_candidates) if year_candidates else None
+        prior_max_year = parent_manifest.get("global_max_year") if incremental else None
+        global_max_year = max(
+            (year for year in (prior_max_year, delta_max_year) if year is not None),
+            default=None,
+        )
+        emit_progress(
+            progress,
+            {
+                "type": "merge_stage",
+                "stage": "feature_max_year_complete",
+                "year": global_max_year,
+            },
+        )
         lifecycle_is_global = (
             not incremental or parent_manifest.get("global_max_year") != global_max_year
         )
@@ -155,8 +230,20 @@ def build_snapshot(builder: Any, feature_schema_version: str) -> SnapshotPaths:
             if lifecycle_is_global
             else f"SELECT DISTINCT source_cik FROM ({new_union})"
         )
+        emit_progress(
+            progress,
+            {"type": "merge_stage", "stage": "feature_lifecycle_started"},
+        )
         counts["lifecycle_rows"] = builder._write_lifecycle(
             con, active_union, snapshot_dir, global_max_year, changed_ciks_sql
+        )
+        emit_progress(
+            progress,
+            {
+                "type": "merge_stage",
+                "stage": "feature_lifecycle_complete",
+                "rows": counts["lifecycle_rows"],
+            },
         )
         lifecycle_parts.append(lifecycle_path)
 
@@ -180,8 +267,20 @@ def build_snapshot(builder: Any, feature_schema_version: str) -> SnapshotPaths:
                 f"read_parquet({sql_literal(str(lifecycle_path))}) c "
                 "USING (source_cik)"
             )
+        emit_progress(
+            progress,
+            {"type": "merge_stage", "stage": "feature_locator_features_started"},
+        )
         counts["locator_features"] = builder._write_locator_features(
             con, snapshot_dir, occurrence_relation, affected_keys_sql
+        )
+        emit_progress(
+            progress,
+            {
+                "type": "merge_stage",
+                "stage": "feature_locator_features_complete",
+                "rows": counts["locator_features"],
+            },
         )
         locator_feature_parts.append(locator_features_path)
 

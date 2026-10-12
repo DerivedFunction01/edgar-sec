@@ -193,24 +193,29 @@ def _guard_ciks_are_disjoint(source: SourceDataset) -> None:
     """
     if source.part_count < 2:
         return
-    listed = sql_path_list([str(path) for path in source.paths])
+    listed = sql_path_list(source.paths)
     with connect() as con:
-        conflicts = con.execute(
+        conflict_detail = con.execute(
             f"""
-            SELECT cik, count(DISTINCT filename) AS parts
-            FROM read_parquet({listed}, filename = true)
-            WHERE cik IS NOT NULL
-            GROUP BY cik
-            HAVING count(DISTINCT filename) > 1
-            ORDER BY cik
-            LIMIT 5
+            SELECT string_agg(
+                cik || ' in ' || CAST(parts AS VARCHAR) || ' parts',
+                ', ' ORDER BY cik
+            )
+            FROM (
+                SELECT cik, count(DISTINCT filename) AS parts
+                FROM read_parquet({listed}, filename = true)
+                WHERE cik IS NOT NULL
+                GROUP BY cik
+                HAVING count(DISTINCT filename) > 1
+                ORDER BY cik
+                LIMIT 5
+            ) conflicts
             """
-        ).fetchall()
-    if conflicts:
-        detail = ", ".join(f"{cik} in {parts} parts" for cik, parts in conflicts)
+        ).fetchone()[0]
+    if conflict_detail:
         raise CatalogError(
             "source parts share CIKs; a sharded catalog would publish duplicate "
-            f"occurrence ids across shards ({detail})"
+            f"occurrence ids across shards ({conflict_detail})"
         )
 
 
@@ -354,10 +359,12 @@ def materialize(
                     "artifact_sha256": file_sha256(shard_path),
                 }
             )
-            for form_name, count in con.execute(
+            form_cursor = con.execute(
                 f"SELECT form, COUNT(*) FROM read_parquet({sql_literal(str(shard_path))}) "
                 f"WHERE form IS NOT NULL GROUP BY form ORDER BY form"
-            ).fetchall():
+            )
+            while form_row := form_cursor.fetchone():
+                form_name, count = form_row
                 form_counts[str(form_name)] = form_counts.get(str(form_name), 0) + int(
                     count
                 )

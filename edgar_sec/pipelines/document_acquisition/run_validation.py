@@ -15,6 +15,7 @@ from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
 )
 from edgar_sec.foundation.serialization import canonical_hash, canonical_json
+from edgar_sec.infra.storage.duckdb import connect, sql_literal, sql_path_list
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.run_state.store import (
     SCHEMA_VERSION as RUN_STATE_SCHEMA_VERSION,
@@ -107,8 +108,9 @@ def load_validated_work_order(paths: AcquisitionPaths, run_id: str) -> tuple[Pat
     if row_count != manifest.get("target_row_count"):
         raise ValueError("work-order row count differs from the run manifest")
     validate_run_state(paths.run_state_path(run_id))
+    state_database = paths.run_state_path(run_id)
     with sqlite3.connect(
-        f"file:{paths.run_state_path(run_id).resolve()}?mode=ro", uri=True
+        f"file:{state_database.resolve()}?mode=ro", uri=True
     ) as connection:
         actual = connection.execute(
             "SELECT COUNT(*), COALESCE(SUM(executable), 0), "
@@ -121,6 +123,53 @@ def load_validated_work_order(paths: AcquisitionPaths, run_id: str) -> tuple[Pat
         )
         if actual != expected_counts:
             raise ValueError("run-state counts disagree with the run manifest")
+    expected_count, state_count, mismatch = compare_work_order_seeds(
+        state_database, tuple(parts)
+    )
+    if mismatch or expected_count != state_count or expected_count != actual[0]:
+        raise ValueError("run-state seeds disagree with the work order")
+    return tuple(parts)
+
+
+def compare_work_order_seeds(
+    database_path: Path, parts: tuple[Path, ...]
+) -> tuple[int, int, int]:
+    with connect() as con:
+        if _sqlite_scanner_installed(con):
+            con.execute("LOAD sqlite_scanner")
+            con.execute(
+                f"ATTACH {sql_literal(str(database_path.resolve()))} "
+                "AS run_state (TYPE SQLITE, READ_ONLY)"
+            )
+            if parts:
+                work_order = (
+                    f"read_parquet({sql_path_list([str(path) for path in parts])})"
+                )
+                result = con.execute(
+                    "SELECT COUNT(expected.target_id), "
+                    "COUNT(DISTINCT actual.target_id), "
+                    "COUNT(*) FILTER (WHERE expected.target_id IS NULL "
+                    "OR actual.target_id IS NULL "
+                    "OR expected.executable IS DISTINCT FROM actual.executable "
+                    "OR expected.skip_reason IS DISTINCT FROM actual.skip_reason) "
+                    "+ CASE WHEN COUNT(expected.target_id) "
+                    "<> COUNT(DISTINCT expected.target_id) THEN 1 ELSE 0 END "
+                    f"FROM {work_order} AS expected "
+                    "FULL OUTER JOIN run_state.main.target_state AS actual "
+                    "USING (target_id)"
+                ).fetchone()
+                return tuple(int(value) for value in result)
+            state_count = int(
+                con.execute(
+                    "SELECT COUNT(*) FROM run_state.main.target_state"
+                ).fetchone()[0]
+            )
+            return 0, state_count, state_count
+
+    with sqlite3.connect(
+        f"file:{database_path.resolve()}?mode=ro", uri=True
+    ) as connection:
+        connection.execute("PRAGMA temp_store=FILE")
         connection.execute(
             "CREATE TEMP TABLE expected_targets ("
             "target_id TEXT PRIMARY KEY, executable INTEGER NOT NULL, "
@@ -132,38 +181,62 @@ def load_validated_work_order(paths: AcquisitionPaths, run_id: str) -> tuple[Pat
                 batch_size=resolve_parquet_read_batch_size(),
                 columns=["target_id", "executable", "skip_reason"],
             ):
+                target_ids, executable, skip_reason = batch.columns
                 cursor.executemany(
                     "INSERT INTO expected_targets VALUES (?, ?, ?)",
-                    zip(
-                        batch.column(0).to_pylist(),
-                        (int(value) for value in batch.column(1).to_pylist()),
-                        batch.column(2).to_pylist(),
-                        strict=True,
+                    (
+                        (
+                            target_ids[row_index].as_py(),
+                            int(executable[row_index].as_py()),
+                            skip_reason[row_index].as_py(),
+                        )
+                        for row_index in range(batch.num_rows)
                     ),
                 )
-        mismatch = connection.execute(
-            "SELECT COUNT(*) FROM expected_targets AS expected "
-            "LEFT JOIN target_state AS actual USING (target_id) "
-            "WHERE actual.target_id IS NULL "
-            "OR actual.executable != expected.executable "
-            "OR actual.skip_reason IS NOT expected.skip_reason"
-        ).fetchone()[0]
-        expected_count = connection.execute(
-            "SELECT COUNT(*) FROM expected_targets"
-        ).fetchone()[0]
-        if mismatch or expected_count != actual[0]:
-            raise ValueError("run-state seeds disagree with the work order")
-    return tuple(parts)
+        mismatch = int(
+            connection.execute(
+                "SELECT COUNT(*) FROM expected_targets AS expected "
+                "LEFT JOIN target_state AS actual USING (target_id) "
+                "WHERE actual.target_id IS NULL "
+                "OR actual.executable != expected.executable "
+                "OR actual.skip_reason IS NOT expected.skip_reason"
+            ).fetchone()[0]
+        )
+        expected_count = int(
+            connection.execute("SELECT COUNT(*) FROM expected_targets").fetchone()[0]
+        )
+        state_count = int(
+            connection.execute("SELECT COUNT(*) FROM target_state").fetchone()[0]
+        )
+        return expected_count, state_count, mismatch
 
 
-def iter_work_order_batches(
+def _sqlite_scanner_installed(con) -> bool:
+    row = con.execute(
+        "SELECT installed FROM duckdb_extensions() "
+        "WHERE extension_name = 'sqlite_scanner'"
+    ).fetchone()
+    return row is not None and bool(row[0])
+
+
+def iter_work_order_rows(
     parts: tuple[Path, ...],
-) -> Iterator[list[dict[str, object]]]:
+) -> Iterator[dict[str, object]]:
     for part in parts:
         for batch in pq.ParquetFile(part).iter_batches(
             batch_size=resolve_parquet_read_batch_size()
         ):
-            yield batch.to_pylist()
+            columns = tuple(batch.columns)
+            names = batch.schema.names
+            for row_index in range(batch.num_rows):
+                yield {
+                    name: column[row_index].as_py()
+                    for name, column in zip(names, columns, strict=True)
+                }
 
 
-__all__ = ["iter_work_order_batches", "load_validated_work_order"]
+__all__ = [
+    "compare_work_order_seeds",
+    "iter_work_order_rows",
+    "load_validated_work_order",
+]

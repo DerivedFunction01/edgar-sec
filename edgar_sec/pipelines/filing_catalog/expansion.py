@@ -15,20 +15,24 @@ from edgar_sec.domain.filing_catalog.filters import normalize_suffixes
 from edgar_sec.engine.selection.policy import (
     SelectionPolicy,
     compute_seed_fingerprint,
-    read_seed_filers_csv,
 )
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
 from edgar_sec.pipelines.filing_catalog.paths import (
     EXPANSION_METADATA_FILE,
     FilingCatalogPaths,
+    LOCATOR_GROUPS_FILE,
     resolve_filing_catalog_paths,
+)
+from edgar_sec.pipelines.filing_catalog.cohort_seed import (
+    SeedFilerSource,
+    seed_filer_csv_source,
 )
 from edgar_sec.pipelines.filing_catalog.planner import SCOPE_POLICY, plan_policy
 from edgar_sec.pipelines.filing_catalog.publication import (
     TARGET_PLAN_SCHEMA_VERSION,
-    plan_fingerprint,
-    plan_locator_keys,
+    plan_fingerprint_from_plan,
+    plan_locator_count,
 )
 
 # Fields that legitimately differ between a parent and its child.
@@ -99,14 +103,14 @@ def _read_plan_json(plan_dir: Path) -> dict[str, Any]:
 
 def _read_parent_seed_filers(
     paths: FilingCatalogPaths, plan_id: str, parent_root: Path
-) -> dict[str, Any]:
+) -> SeedFilerSource:
     """Load a parent plan's published seed sidecar, or why it cannot be.
 
     A bare ``FileNotFoundError`` misleads: the operator did not mis-type a path.
     """
     sidecar = paths.plan_seed_filers(plan_id)
     try:
-        return read_seed_filers_csv(sidecar)
+        return seed_filer_csv_source(sidecar)
     except (FileNotFoundError, ValueError) as error:
         raise ParentPlanError(
             f"parent plan seed sidecar is unusable ({error}); the bundle at "
@@ -218,17 +222,18 @@ def prepare_parent(
     target_units: int,
     catalog_id: str,
     seed_fingerprint: str,
-) -> tuple[dict[str, Any], list[str], SelectionPolicy]:
+) -> tuple[dict[str, Any], Path, SelectionPolicy]:
     """Validate a parent and derive the child policy that extends it."""
     parent_root = Path(parent_plan_dir).resolve()
     parent_meta = _read_plan_json(parent_root)
-    parent_keys = plan_locator_keys(parent_root)
+    parent_keys_path = parent_root / LOCATOR_GROUPS_FILE
+    parent_count = plan_locator_count(parent_root)
 
     # Re-run for direct callers: ``expand`` gates before reading the sidecar,
     # and this is a public entry point of its own.
     validate_parent_schema(parent_meta)
 
-    if target_units < len(parent_keys):
+    if target_units < parent_count:
         raise ParentPlanError(
             "expanded target_units cannot be smaller than the parent selection"
         )
@@ -237,7 +242,7 @@ def prepare_parent(
     # read: a parent whose fingerprint disagrees with its own locators is not the
     # plan it claims to be.
     recorded_fingerprint = str(parent_meta["plan_fingerprint"])
-    if plan_fingerprint(parent_meta, parent_keys) != recorded_fingerprint:
+    if plan_fingerprint_from_plan(parent_root, parent_meta) != recorded_fingerprint:
         raise ParentPlanError(
             "parent plan fingerprint does not match its published selection; "
             "the bundle was modified after publication"
@@ -259,7 +264,7 @@ def prepare_parent(
         validate_parent(
             parent_meta, parent_policy, child_policy, catalog_id, seed_fingerprint
         )
-    return parent_meta, parent_keys, child_policy
+    return parent_meta, parent_keys_path, child_policy
 
 
 def validate_target(
@@ -323,15 +328,18 @@ def expand(
         )
     parent_policy = SelectionPolicy.from_dict(embedded)
 
+    seed_source = None
     if seed_filers is None:
         # An expansion must reproduce its parent's selection, so the seed set comes
         # from the parent's sidecar: re-reading the configured CSV would let a
         # moved or edited file change a child whose parent is not reproducible.
-        seed_filers = _read_parent_seed_filers(
+        seed_source = _read_parent_seed_filers(
             paths, str(parent_meta["plan_id"]), parent_root
         )
-    seed_fingerprint = compute_seed_fingerprint(seed_filers)
-    _parent_meta, parent_keys, child_policy = prepare_parent(
+        seed_fingerprint = seed_source.fingerprint
+    else:
+        seed_fingerprint = compute_seed_fingerprint(seed_filers)
+    _parent_meta, parent_keys_path, child_policy = prepare_parent(
         parent_root, parent_policy, target_units, catalog_id, seed_fingerprint
     )
 
@@ -346,7 +354,8 @@ def expand(
         child_policy,
         artifacts_root,
         seed_filers=seed_filers,
-        parent_active_keys=parent_keys,
+        seed_filer_source=seed_source,
+        parent_locator_path=parent_keys_path,
         progress=progress,
     )
     validate_target(parent_root, int(child_meta["unique_locators_count"]), target_units)
@@ -355,7 +364,7 @@ def expand(
         parent_plan_id=child_policy.parent_plan_id or "",
         parent_plan_fingerprint=child_policy.parent_plan_fingerprint or "",
         target_units=target_units,
-        parent_locator_count=len(parent_keys),
+        parent_locator_count=plan_locator_count(parent_root),
         child_locator_count=int(child_meta["unique_locators_count"]),
     )
     child_dir = paths.plan_dir(str(child_meta["plan_id"]))

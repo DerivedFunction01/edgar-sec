@@ -795,7 +795,7 @@ def test_a_policy_rebuild_into_an_independent_root_is_identical(
 
     first_dir = resolve_filing_catalog_paths(first_root).plan_dir(first["plan_id"])
     second_dir = resolve_filing_catalog_paths(second_root).plan_dir(second["plan_id"])
-    assert plan_locator_keys(first_dir) == plan_locator_keys(second_dir)
+    assert list(plan_locator_keys(first_dir)) == list(plan_locator_keys(second_dir))
     for partition in sorted(first_dir.glob("targets/form=*/data.parquet")):
         mirror = second_dir / partition.relative_to(first_dir)
         assert pq.read_table(partition).to_pylist() == pq.read_table(mirror).to_pylist()

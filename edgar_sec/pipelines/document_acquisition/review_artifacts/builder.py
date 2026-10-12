@@ -48,9 +48,11 @@ from edgar_sec.pipelines.document_acquisition.processing_models import (
     ProcessingRequest,
     ProcessingResult,
 )
-from edgar_sec.pipelines.document_acquisition.result_projection import (
+from edgar_sec.pipelines.document_acquisition.projection_models import (
     ProcessingResultProjection,
     ProjectedTarget,
+)
+from edgar_sec.pipelines.document_acquisition.result_projection import (
     project_terminal_results,
 )
 
@@ -88,12 +90,16 @@ def _projected_target(
 ) -> ProjectedTarget:
     if not is_sha256_hex_digest(projection.fingerprint):
         raise ProcessingReviewError("projection fingerprint is invalid")
-    matches = [
-        item for item in projection.targets if item.target_id == result.target_id
-    ]
-    if len(matches) != 1 or matches[0].processing_id != result.processing_id:
+    matches = (
+        item for item in projection.iter_targets() if item.target_id == result.target_id
+    )
+    target = next(matches, None)
+    if (
+        target is None
+        or target.processing_id != result.processing_id
+        or next(matches, None) is not None
+    ):
         raise ProcessingReviewError("projection does not contain the processing result")
-    target = matches[0]
     if (
         target.source_sha256 != result.source_sha256
         or target.route is not result.route
@@ -203,13 +209,13 @@ def _review_payload(
     ):
         raise ProcessingReviewError("processing result run identity is inconsistent")
 
-    verified_projection = project_terminal_results(
+    with project_terminal_results(
         (request,), (result,), paths=paths, run_id=request.body.run_id
-    )
-    if verified_projection != projection:
-        raise ProcessingReviewError(
-            "projection changed before review artifact creation"
-        )
+    ) as verified_projection:
+        if verified_projection != projection:
+            raise ProcessingReviewError(
+                "projection changed before review artifact creation"
+            )
 
     target = _projected_target(projection, result)
     family = _family_record(request)
@@ -521,17 +527,17 @@ def build_review_artifacts(
             try:
                 request = _request_for_case(case, paths=paths)
                 result = process_target(request, paths=paths)
-                projection = project_terminal_results(
+                with project_terminal_results(
                     (request,), (result,), paths=paths, run_id=case.run_id
-                )
-                artifact = build_processing_review_artifact(
-                    case,
-                    request,
-                    result,
-                    projection,
-                    paths=paths,
-                    output_path=staging_root / OBSERVATIONS_FILE,
-                )
+                ) as projection:
+                    artifact = build_processing_review_artifact(
+                        case,
+                        request,
+                        result,
+                        projection,
+                        paths=paths,
+                        output_path=staging_root / OBSERVATIONS_FILE,
+                    )
                 case_root.parent.mkdir(parents=True, exist_ok=True)
                 os.replace(staging_root, case_root)
                 artifact = ProcessingReviewArtifact(

@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 from typing import Any
 import pyarrow as pa
+import pyarrow.compute as pc
 import pyarrow.parquet as pq
 
 from edgar_sec.domain.identity import AccessionNumber
@@ -236,19 +237,6 @@ def _validate_url(url: object, accession: str, *, bundle: bool) -> str:
     return url
 
 
-def _skip_reason(row: dict[str, Any]) -> str | None:
-    if (
-        row["status"] == "constructed_candidate"
-        or row["retrieval_mode"] == "constructed_package"
-    ):
-        return "candidate_not_authorized"
-    if row["status"] != "matched":
-        return "target_not_matched"
-    if row["retrieval_mode"] not in {"direct_url", "bundle_sequence"}:
-        return "unsupported_retrieval_mode"
-    return None
-
-
 def _validate_row(
     row: dict[str, Any],
     plan_id: str,
@@ -405,7 +393,14 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> tuple[Path, ...]:
                 )
             previous_row: tuple[str, str, str, str] | None = None
             for batch in parquet.iter_batches(batch_size=read_batch_size):
-                for row in batch.to_pylist():
+                columns = tuple(batch.columns)
+                for row_index in range(batch.num_rows):
+                    row = {
+                        name: column[row_index].as_py()
+                        for name, column in zip(
+                            _TARGET_SCHEMA.names, columns, strict=True
+                        )
+                    }
                     _validate_row(
                         row,
                         str(manifest["plan_id"]),
@@ -487,21 +482,29 @@ def _validate_target_plan(plan_dir: Path) -> _ValidatedPlan:
 
 
 def _iter_projected_batches(parts: tuple[Path, ...]):
+    if not parts:
+        return
     batch_size = resolve_parquet_read_batch_size()
-    for path in parts:
-        for batch in pq.ParquetFile(path).iter_batches(batch_size=batch_size):
-            rows = batch.to_pylist()
-            reasons = [_skip_reason(row) for row in rows]
-            arrays = [*batch.columns]
-            arrays.extend(
-                [
-                    pa.array([reason is None for reason in reasons], type=pa.bool_()),
-                    pa.array(reasons, type=pa.string()),
-                ]
-            )
-            yield pa.RecordBatch.from_arrays(
-                arrays, names=WORK_ORDER_SCHEMA.names
-            ).cast(WORK_ORDER_SCHEMA)
+    reason = (
+        "CASE "
+        "WHEN status = 'constructed_candidate' "
+        "OR retrieval_mode = 'constructed_package' "
+        "THEN 'candidate_not_authorized' "
+        "WHEN status <> 'matched' THEN 'target_not_matched' "
+        "WHEN retrieval_mode NOT IN ('direct_url', 'bundle_sequence') "
+        "THEN 'unsupported_retrieval_mode' ELSE NULL END"
+    )
+    query = (
+        "SELECT target.*, ("
+        f"{reason} IS NULL) AS executable, {reason} AS skip_reason "
+        f"FROM read_parquet({sql_path_list([str(path) for path in parts])}) AS target "
+        "ORDER BY form, accession, request_id, "
+        "COALESCE(inventory_entry_id, ''), status"
+    )
+    with connect() as con:
+        reader = con.execute(query).to_arrow_reader(batch_size)
+        for batch in reader:
+            yield batch.cast(WORK_ORDER_SCHEMA)
 
 
 def load_acquisition_work_order(
@@ -520,12 +523,16 @@ def load_acquisition_work_order(
     writer = StagedParquetWriter(destination, WORK_ORDER_SCHEMA)
     try:
         for batch in _iter_projected_batches(validated.parts):
-            executable_count += sum(
-                batch.column(batch.schema.get_field_index("executable")).to_pylist()
+            batch_executable_count = int(
+                pc.sum(
+                    pc.cast(
+                        batch.column(batch.schema.get_field_index("executable")),
+                        pa.int64(),
+                    )
+                ).as_py()
             )
-            skipped_count += batch.num_rows - sum(
-                batch.column(batch.schema.get_field_index("executable")).to_pylist()
-            )
+            executable_count += batch_executable_count
+            skipped_count += batch.num_rows - batch_executable_count
             writer.write_batch(batch)
         writer.commit(expected_count=manifest["target_row_count"])
     except Exception:

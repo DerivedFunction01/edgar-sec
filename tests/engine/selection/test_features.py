@@ -199,9 +199,15 @@ def test_builds_a_feature_snapshot_from_the_published_catalog(
         output_root=artifacts_root,
         policy=_policy(),
     )
-    snapshot = builder.build()
+    events: list[dict[str, Any]] = []
+    snapshot = builder.build(progress=events.append)
 
     assert isinstance(snapshot, SnapshotPaths)
+    stages = [event["stage"] for event in events]
+    assert "feature_occurrences_started" in stages
+    assert "feature_anchors_complete" in stages
+    assert "feature_locator_bands_complete" in stages
+    assert "feature_locator_features_complete" in stages
     assert snapshot.manifest["artifact_kind"] == "selection_features"
     assert not (snapshot.snapshot_dir / "feature_snapshot.json").exists()
     dag = DAGCatalog(snapshot.snapshot_dir.parent)
@@ -837,6 +843,58 @@ def test_delta_snapshot_reuses_independent_parent_parts(tmp_path: Path) -> None:
             "WHERE document_locator_key = 'shared'"
         ).fetchone()[0]
     assert representative == "0000000002"
+
+
+@pytest.mark.parametrize(("parent_size", "delta_size"), [(100, 5000), (5000, 100)])
+def test_incremental_locator_filter_handles_delta_sizes_in_either_batch_order(
+    tmp_path: Path, parent_size: int, delta_size: int
+) -> None:
+    artifacts_root = tmp_path / "artifacts"
+
+    def rows(start: int, count: int) -> list[dict[str, Any]]:
+        return [
+            {
+                "occurrence_id": f"occ-{index:05d}",
+                "document_locator_key": f"0000000001/2021/doc-{index:05d}.htm",
+                "accession": f"0000000001-21-{index:06d}",
+            }
+            for index in range(start, start + count)
+        ]
+
+    parent_root = _write_targets(
+        artifacts_root / "parent" / "filing_targets", rows(0, parent_size)
+    )
+    delta_root = _write_targets(
+        artifacts_root / "delta" / "filing_targets",
+        rows(parent_size, delta_size),
+    )
+    parent_part = parent_root / "part-00000.parquet"
+    delta_part = delta_root / "part-00000.parquet"
+    profiles = _write_profiles(artifacts_root / "profiles.parquet", [_PROFILE_ROW])
+    parent = FeatureSnapshotBuilder(
+        parent_root, profiles, artifacts_root, _policy()
+    ).build()
+    child = FeatureSnapshotBuilder(
+        delta_root,
+        profiles,
+        artifacts_root,
+        _policy(),
+        parent_feature_snapshot_id=parent.snapshot_dir.name,
+        active_target_parts=[parent_part, delta_part],
+        delta_target_parts=[delta_part],
+    ).build()
+
+    assert child.manifest["incremental"] is True
+    assert child.manifest["counts"]["independent_occurrence_rows"] == delta_size
+    with connect() as con:
+        total_occurrences = con.execute(
+            f"SELECT COUNT(*) FROM {child.occurrence_relation}"
+        ).fetchone()[0]
+        total_locators = con.execute(
+            f"SELECT COUNT(*) FROM {child.locator_relation}"
+        ).fetchone()[0]
+    assert total_occurrences == parent_size + delta_size
+    assert total_locators == parent_size + delta_size
 
 
 def test_profile_change_for_inherited_cik_forces_full_independent_rebuild(

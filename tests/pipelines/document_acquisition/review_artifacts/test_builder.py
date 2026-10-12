@@ -206,84 +206,84 @@ def test_captured_text_fixture_processes_and_builds_reproducible_review(
     request = _processing_request(paths, run_id, fixture_case, target)
 
     result = process_target(request, paths=paths)
-    projection = project_terminal_results(
-        (request,), (result,), paths=paths, run_id=run_id
-    )
-    repeated_projection = project_terminal_results(
-        (request,), (result,), paths=paths, run_id=run_id
-    )
     receipt = read_body_consumption_receipt(paths, run_id, request.target_id)
     assert result.route.value == "text"
-    assert projection.fingerprint == repeated_projection.fingerprint
     assert receipt is not None
     assert receipt["processing_run_id"] == result.processing_id
-    assert {item.operation_id for item in projection.targets[0].operations} == {
-        "raw",
-        "text",
-        "xml",
-    }
-    assert {item.status for item in projection.targets[0].operations} == {
-        "available",
-        "unsupported",
-    }
-    assert projection.targets[0].operations[0].staged_output_path
-    assert (
-        projection.targets[0].operations[0].output_sha256
-        == hashlib.sha256(_BODY).hexdigest()
-    )
-    for operation in projection.targets[0].operations:
-        if operation.staged_output_path is not None:
-            staged_path = paths.run_dir(run_id) / operation.staged_output_path
-            assert staged_path.is_relative_to(paths.run_staging_root(run_id))
-            assert file_sha256(staged_path) == operation.output_sha256
-
     artifact_path = tmp_path / "case-artifacts" / "processing-review.json"
-    artifact = build_processing_review_artifact(
-        fixture_case,
-        request,
-        result,
-        projection,
-        paths=paths,
-        output_path=artifact_path,
-    )
-    saved = json.loads(artifact.path.read_text(encoding="utf-8"))
-    assert saved["artifact_sha256"] == canonical_hash(
-        {key: value for key, value in saved.items() if key != "artifact_sha256"}
-    )
-    assert saved["fixture"]["fixture_id"] == _FIXTURE_ID
-    assert saved["fixture"]["selected_sha256"] == fixture_case.selected_sha256
-    assert saved["family_profile"] == {
-        "family": "10-K",
-        "version": "v1",
-        "allowed_operations": ["raw", "render_to_txt"],
-    }
-    assert saved["projection"]["fingerprint"] == projection.fingerprint
-    assert saved["receipt"]["selected_sha256"] == request.body.sha256
-    receipt_path = paths.body_consumption_receipt_path(
-        run_id, request.target_id, request.body.sha256
-    )
-    assert saved["receipt"]["sha256"] == file_sha256(receipt_path)
-    assert [item["status"] for item in saved["processing"]["operations"]] == [
-        "available",
-        "available",
-        "unsupported",
-    ]
-    text_operation = saved["processing"]["operations"][1]
-    assert text_operation["handler_id"] == "text_passthrough"
-    assert text_operation["handler_version"] == "1"
-    assert text_operation["output_sha256"] == request.body.sha256
+    with project_terminal_results(
+        (request,), (result,), paths=paths, run_id=run_id
+    ) as projection:
+        with project_terminal_results(
+            (request,), (result,), paths=paths, run_id=run_id
+        ) as repeated_projection:
+            assert projection.fingerprint == repeated_projection.fingerprint
+        projected = next(projection.iter_targets())
+        assert {item.operation_id for item in projected.operations} == {
+            "raw",
+            "text",
+            "xml",
+        }
+        assert {item.status for item in projected.operations} == {
+            "available",
+            "unsupported",
+        }
+        assert projected.operations[0].staged_output_path
+        assert (
+            projected.operations[0].output_sha256 == hashlib.sha256(_BODY).hexdigest()
+        )
+        for operation in projected.operations:
+            if operation.staged_output_path is not None:
+                staged_path = paths.run_dir(run_id) / operation.staged_output_path
+                assert staged_path.is_relative_to(paths.run_staging_root(run_id))
+                assert file_sha256(staged_path) == operation.output_sha256
 
-    before = artifact.path.read_bytes()
-    repeated = build_processing_review_artifact(
-        fixture_case,
-        request,
-        result,
-        projection,
-        paths=paths,
-        output_path=artifact_path,
-    )
-    assert repeated == artifact
-    assert repeated.path.read_bytes() == before
+        artifact = build_processing_review_artifact(
+            fixture_case,
+            request,
+            result,
+            projection,
+            paths=paths,
+            output_path=artifact_path,
+        )
+        saved = json.loads(artifact.path.read_text(encoding="utf-8"))
+        assert saved["artifact_sha256"] == canonical_hash(
+            {key: value for key, value in saved.items() if key != "artifact_sha256"}
+        )
+        assert saved["fixture"]["fixture_id"] == _FIXTURE_ID
+        assert saved["fixture"]["selected_sha256"] == fixture_case.selected_sha256
+        assert saved["family_profile"] == {
+            "family": "10-K",
+            "version": "v1",
+            "allowed_operations": ["raw", "render_to_txt"],
+        }
+        assert saved["projection"]["fingerprint"] == projection.fingerprint
+        assert saved["receipt"]["selected_sha256"] == request.body.sha256
+        receipt_path = paths.body_consumption_receipt_path(
+            run_id, request.target_id, request.body.sha256
+        )
+        assert saved["receipt"]["sha256"] == file_sha256(receipt_path)
+        assert [item["status"] for item in saved["processing"]["operations"]] == [
+            "available",
+            "available",
+            "unsupported",
+        ]
+        text_operation = saved["processing"]["operations"][1]
+        assert text_operation["handler_id"] == "text_passthrough"
+        assert text_operation["handler_version"] == "1"
+        assert text_operation["output_sha256"] == request.body.sha256
+
+        before = artifact.path.read_bytes()
+        repeated = build_processing_review_artifact(
+            fixture_case,
+            request,
+            result,
+            projection,
+            paths=paths,
+            output_path=artifact_path,
+        )
+        assert repeated == artifact
+        assert repeated.path.read_bytes() == before
 
 
 def test_review_builder_uses_shared_manifest_and_case_layout(

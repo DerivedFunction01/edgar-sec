@@ -40,6 +40,9 @@ from edgar_sec.pipelines.document_acquisition.plan_projection.target_plan import
     TargetPlanError,
     load_acquisition_work_order,
 )
+from edgar_sec.pipelines.document_acquisition.run_validation import (
+    compare_work_order_seeds,
+)
 
 _WORK_ORDER_PART = "part-00000.parquet"
 
@@ -79,13 +82,13 @@ def _work_order_seeds(path: Path) -> Iterator[WorkOrderTargetSeed]:
         batch_size=resolve_parquet_read_batch_size(),
         columns=["target_id", "executable", "skip_reason"],
     ):
-        target_ids = batch.column(0).to_pylist()
-        executable_values = batch.column(1).to_pylist()
-        skip_reasons = batch.column(2).to_pylist()
-        for target_id, executable, skip_reason in zip(
-            target_ids, executable_values, skip_reasons, strict=True
-        ):
-            yield WorkOrderTargetSeed(target_id, executable, skip_reason)
+        target_ids, executable, skip_reason = batch.columns
+        for row_index in range(batch.num_rows):
+            yield WorkOrderTargetSeed(
+                target_ids[row_index].as_py(),
+                executable[row_index].as_py(),
+                skip_reason[row_index].as_py(),
+            )
 
 
 def _manifest_for(projection: Any, work_order: Path) -> dict[str, Any]:
@@ -165,48 +168,15 @@ def _validate_database(
             ).fetchone()
             if counts != (target_count, executable_count, skipped_count):
                 raise AcquisitionProjectError("run-state target counts disagree")
-            connection.execute(
-                "CREATE TEMP TABLE expected_targets ("
-                "target_id TEXT PRIMARY KEY, executable INTEGER NOT NULL, "
-                "skip_reason TEXT)"
-            )
-            cursor = connection.cursor()
-            for batch in pq.ParquetFile(work_order).iter_batches(
-                batch_size=resolve_parquet_read_batch_size(),
-                columns=["target_id", "executable", "skip_reason"],
-            ):
-                cursor.executemany(
-                    "INSERT INTO expected_targets VALUES (?, ?, ?)",
-                    zip(
-                        batch.column(0).to_pylist(),
-                        (int(value) for value in batch.column(1).to_pylist()),
-                        batch.column(2).to_pylist(),
-                        strict=True,
-                    ),
-                )
-            mismatch = connection.execute(
-                "SELECT COUNT(*) FROM expected_targets AS expected "
-                "LEFT JOIN target_state AS actual USING (target_id) "
-                "WHERE actual.target_id IS NULL "
-                "OR actual.executable != expected.executable "
-                "OR actual.skip_reason IS NOT expected.skip_reason"
-            ).fetchone()[0]
-            if mismatch:
-                raise AcquisitionProjectError(
-                    "run-state seeds disagree with the work order"
-                )
-            actual_count = connection.execute(
-                "SELECT COUNT(*) FROM target_state"
-            ).fetchone()[0]
-            expected_count = connection.execute(
-                "SELECT COUNT(*) FROM expected_targets"
-            ).fetchone()[0]
-            if actual_count != expected_count:
-                raise AcquisitionProjectError(
-                    "run-state contains targets outside the work order"
-                )
         finally:
             connection.close()
+        expected_count, actual_count, mismatch = compare_work_order_seeds(
+            database, (work_order,)
+        )
+        if mismatch or actual_count != expected_count or actual_count != target_count:
+            raise AcquisitionProjectError(
+                "run-state seeds disagree with the work order"
+            )
     except AcquisitionProjectError:
         raise
     except (OSError, sqlite3.Error, ValueError, pa.ArrowException) as error:

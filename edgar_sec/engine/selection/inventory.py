@@ -1,10 +1,11 @@
 """Per-dimension availability statistics for a feature snapshot: counts run in
-DuckDB, so a floor's satisfiability is known before selection runs and no
-dimension value is ever materialized in the Python heap.
+DuckDB, and value distributions stream one row at a time rather than being retained
+as a Python collection.
 """
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from pathlib import Path
 from typing import Any
 
@@ -41,8 +42,8 @@ class InventoryStatistics:
         if dimension not in KNOWN_DIMENSIONS:
             raise UnknownDimensionError(f"unknown selection dimension: {dimension!r}")
 
-    def value_counts(self, dimension: str) -> list[dict[str, Any]]:
-        """Count policy supply by value, using accessions for exhibit-like names."""
+    def value_counts(self, dimension: str) -> Iterator[dict[str, Any]]:
+        """Stream supply counts by value, using accessions for exhibit-like names."""
         self._require_dimension(dimension)
         accession_count = (
             ", COUNT(DISTINCT representative_accession) AS accession_count"
@@ -58,24 +59,26 @@ class InventoryStatistics:
             GROUP BY value
             ORDER BY locator_count DESC, value
         """
-        with connect(threads=self._threads, memory_limit=self._memory_limit) as con:
-            rows = con.execute(query).fetchall()
-        result = []
-        for row in rows:
-            value = row[0]
-            if isinstance(value, bool):
-                value = str(value).lower()
-            item = {
-                "value": "none" if value is None else str(value),
-                "locator_count": int(row[1]),
-            }
-            if dimension == "primary_exhibit_like":
-                item["accession_count"] = int(row[2])
-                item["cik_count"] = int(row[3])
-            else:
-                item["cik_count"] = int(row[2])
-            result.append(item)
-        return result
+
+        def rows() -> Iterator[dict[str, Any]]:
+            with connect(threads=self._threads, memory_limit=self._memory_limit) as con:
+                cursor = con.execute(query)
+                while row := cursor.fetchone():
+                    value = row[0]
+                    if isinstance(value, bool):
+                        value = str(value).lower()
+                    item = {
+                        "value": "none" if value is None else str(value),
+                        "locator_count": int(row[1]),
+                    }
+                    if dimension == "primary_exhibit_like":
+                        item["accession_count"] = int(row[2])
+                        item["cik_count"] = int(row[3])
+                    else:
+                        item["cik_count"] = int(row[2])
+                    yield item
+
+        return rows()
 
     def check_floor_feasibility(
         self, floors: dict[str, dict[str, int]]
@@ -85,10 +88,40 @@ class InventoryStatistics:
         """
         report: dict[str, dict[str, dict[str, Any]]] = {}
         for dimension, requirements in floors.items():
-            available = {
-                row["value"]: row.get("accession_count", row["locator_count"])
-                for row in self.value_counts(dimension)
-            }
+            self._require_dimension(dimension)
+            conditions: list[str] = []
+            params: list[str] = []
+            for value in requirements:
+                normalized = str(value).strip().lower()
+                if normalized == "none":
+                    conditions.append(
+                        f"{dimension} IS NULL OR lower(trim(CAST({dimension} AS VARCHAR))) = ?"
+                    )
+                    params.append(normalized)
+                else:
+                    conditions.append(f"lower(trim(CAST({dimension} AS VARCHAR))) = ?")
+                    params.append(normalized)
+            accession_count = (
+                "COUNT(DISTINCT representative_accession)"
+                if dimension == "primary_exhibit_like"
+                else "COUNT(DISTINCT document_locator_key)"
+            )
+            available: dict[str, int] = {}
+            if conditions:
+                query = f"""
+                    SELECT lower(COALESCE(trim(CAST({dimension} AS VARCHAR)), 'none')) AS value,
+                           {accession_count} AS available
+                    FROM {self.locator_relation}
+                    WHERE {" OR ".join(f"({condition})" for condition in conditions)}
+                    GROUP BY value
+                """
+                with connect(
+                    threads=self._threads, memory_limit=self._memory_limit
+                ) as con:
+                    cursor = con.execute(query, params)
+                    while row := cursor.fetchone():
+                        value = str(row[0]).lower()
+                        available[value] = int(row[1])
             report[dimension] = {}
             for value, required in requirements.items():
                 supply = available.get(str(value).lower(), 0)

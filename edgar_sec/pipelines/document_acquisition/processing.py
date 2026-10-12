@@ -44,7 +44,7 @@ from edgar_sec.pipelines.document_acquisition.run_state.store import (
     get_target_state,
 )
 from edgar_sec.pipelines.document_acquisition.run_validation import (
-    iter_work_order_batches,
+    iter_work_order_rows,
     load_validated_work_order,
 )
 from edgar_sec.pipelines.document_acquisition.schemas import (
@@ -64,8 +64,7 @@ def _target_row(
         parts = load_validated_work_order(paths, request.body.run_id)
         rows = (
             row
-            for batch in iter_work_order_batches(parts)
-            for row in batch
+            for row in iter_work_order_rows(parts)
             if row.get("target_id") == request.target_id
         )
         row = next(rows)

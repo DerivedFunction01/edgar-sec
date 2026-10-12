@@ -5,9 +5,10 @@ filter values are bound parameters and dimension names are validated.
 
 from __future__ import annotations
 
-from collections.abc import Iterator, Sequence
+from collections.abc import Iterable, Iterator, Sequence
 from contextlib import contextmanager
 from dataclasses import dataclass
+from itertools import chain
 from pathlib import Path
 from typing import Any
 
@@ -25,8 +26,8 @@ from edgar_sec.engine.selection.predicates import (
     suffix_sql,
 )
 from edgar_sec.engine.selection.snapshot import load_snapshot_paths
-from edgar_sec.foundation.runtime.settings.sql import resolve_sql_insert_batch_size
-from edgar_sec.infra.storage.duckdb import connect, sql_literal
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
+from edgar_sec.infra.storage.duckdb import connect
 
 # A tuple, not a comma-joined string, so the SELECT list and the row-to-dict zip
 # are generated from one source. Which names each grain selects is curated; their
@@ -186,10 +187,16 @@ class CandidateSource:
         con = connect(threads=self._threads, memory_limit=self._memory_limit)
         try:
             for table in (_SELECTED_TABLE, _LOCATOR_KEYS_TABLE, _CIK_TABLE):
-                con.execute(
-                    f"CREATE OR REPLACE TEMP TABLE {table} "
-                    "(document_locator_key VARCHAR)"
-                )
+                if table == _LOCATOR_KEYS_TABLE:
+                    con.execute(
+                        f"CREATE OR REPLACE TEMP TABLE {table} "
+                        "(document_locator_key VARCHAR, request_ordinal BIGINT)"
+                    )
+                else:
+                    con.execute(
+                        f"CREATE OR REPLACE TEMP TABLE {table} "
+                        "(document_locator_key VARCHAR)"
+                    )
             con.execute(
                 f"CREATE OR REPLACE TEMP TABLE {_ACCESSION_TABLE} (accession VARCHAR)"
             )
@@ -206,11 +213,21 @@ class CandidateSource:
 
     def _fill(self, table: str, values: Sequence[str]) -> None:
         con = self._require()
-        insert_batch_size = resolve_sql_insert_batch_size()
         con.execute(f"DELETE FROM {table}")
-        for start in range(0, len(values), insert_batch_size):
-            chunk = [[value] for value in values[start : start + insert_batch_size]]
-            con.executemany(f"INSERT INTO {table} VALUES (?)", chunk)
+        if values:
+            con.execute(f"INSERT INTO {table} SELECT unnest(?)", [values])
+
+    def _fill_locator_keys(self, values: Sequence[str]) -> None:
+        con = self._require()
+        con.execute(f"DELETE FROM {_LOCATOR_KEYS_TABLE}")
+        if values:
+            con.execute(
+                f"""INSERT INTO {_LOCATOR_KEYS_TABLE}
+                SELECT document_locator_key, request_ordinal
+                FROM unnest(?) WITH ORDINALITY
+                     AS requested(document_locator_key, request_ordinal)""",
+                [values],
+            )
 
     def _exclusion_predicate(self) -> str:
         return f"l.document_locator_key NOT IN (SELECT document_locator_key FROM {_SELECTED_TABLE})"
@@ -224,9 +241,24 @@ class CandidateSource:
             return f"{parsed_date_relation(relation, 'report_date')} l"
         return f"{relation} l"
 
-    def _rows(self, query: str, params: Sequence[Any] = ()) -> list[dict[str, Any]]:
-        rows = self._require().execute(query, list(params)).fetchall()
-        return [dict(zip(POOL_COLUMNS, row, strict=True)) for row in rows]
+    def _rows(
+        self,
+        query: str,
+        params: Sequence[Any] = (),
+        columns: Sequence[str] = POOL_COLUMNS,
+    ) -> Iterator[dict[str, Any]]:
+        result = self._require().execute(query, list(params))
+        reader = result.to_arrow_reader(batch_size=resolve_read_batch_size())
+
+        def iterate() -> Iterator[dict[str, Any]]:
+            for batch in reader:
+                for row_index in range(batch.num_rows):
+                    yield {
+                        name: batch.column(column_index)[row_index].as_py()
+                        for column_index, name in enumerate(columns)
+                    }
+
+        return iterate()
 
     @staticmethod
     def _dimension(dimension: str) -> str:
@@ -238,6 +270,33 @@ class CandidateSource:
 
     def register_selected(self, keys: Sequence[str]) -> None:
         self._fill(_SELECTED_TABLE, keys)
+
+    def register_selected_relation(self, relation_sql: str) -> None:
+        self._require().execute(
+            f"INSERT INTO {_SELECTED_TABLE} "
+            f"SELECT document_locator_key FROM ({relation_sql})"
+        )
+
+    def register_cik_iterable(self, ciks: Iterable[str]) -> None:
+        con = self._require()
+        con.execute(f"DELETE FROM {_CIK_TABLE}")
+        values = iter(ciks)
+        first = next(values, None)
+        if first is None:
+            return
+        con.executemany(
+            f"INSERT INTO {_CIK_TABLE} VALUES (?)",
+            ((str(cik),) for cik in chain((first,), values)),
+        )
+
+    def register_cik_relation(self, relation_sql: str) -> None:
+        con = self._require()
+        con.execute(f"DELETE FROM {_CIK_TABLE}")
+        con.execute(
+            f"INSERT INTO {_CIK_TABLE} "
+            f"SELECT DISTINCT CAST(cik AS VARCHAR) FROM ({relation_sql}) "
+            "WHERE cik IS NOT NULL"
+        )
 
     def add_selected(self, key: str) -> None:
         """Record one newly selected locator in the exclusion set."""
@@ -252,10 +311,23 @@ class CandidateSource:
         limit: int = 60,
         *,
         exclude_accessions: Sequence[str] = (),
-    ) -> list[dict[str, Any]]:
+        exclude_selected_accessions: bool = False,
+    ) -> Iterator[dict[str, Any]]:
         column = self._dimension(dimension)
         if dimension == "primary_exhibit_like":
-            self._fill(_ACCESSION_TABLE, exclude_accessions)
+            if exclude_selected_accessions:
+                self._require().execute(f"DELETE FROM {_ACCESSION_TABLE}")
+                accession_filter = (
+                    f"l.representative_accession NOT IN ("
+                    f"SELECT l2.representative_accession FROM {self.locator_relation} l2 "
+                    f"JOIN {_SELECTED_TABLE} s USING (document_locator_key))"
+                )
+            else:
+                self._fill(_ACCESSION_TABLE, exclude_accessions)
+                accession_filter = (
+                    "l.representative_accession NOT IN ("
+                    f"SELECT accession FROM {_ACCESSION_TABLE})"
+                )
             query = f"""
                 WITH ranked AS (
                     SELECT {_POOL_SELECT},
@@ -267,9 +339,7 @@ class CandidateSource:
                     WHERE {self._exclusion_predicate()}
                       AND {self.filters.predicate()}
                       AND l.{column} = ?
-                      AND l.representative_accession NOT IN (
-                          SELECT accession FROM {_ACCESSION_TABLE}
-                      )
+                      AND {accession_filter}
                 )
                 SELECT {_POOL_SELECT}
                 FROM ranked
@@ -290,7 +360,7 @@ class CandidateSource:
 
     def pool_for_cell(
         self, form: str, era: str, limit: int = 60
-    ) -> list[dict[str, Any]]:
+    ) -> Iterator[dict[str, Any]]:
         """Candidates in one form-by-era cell, in the shared tie-break order. Two columns
         of one row are one stratum, which a floor on `form` alone cannot express.
         """
@@ -304,28 +374,48 @@ class CandidateSource:
         """
         return self._rows(query, [form, era, self.seed])
 
-    def cell_availability(self) -> list[tuple[str, str, int]]:
+    def cell_availability(self) -> Iterator[tuple[str, str, int]]:
         """Every nonempty `(form, era)` cell with its eligible count, excluding the selected
         set: a cell with nothing left is not capacity.
         """
-        rows = (
-            self._require()
-            .execute(
-                f"""
+        result = self._require().execute(
+            f"""
             SELECT l.form, l.era, COUNT(*) AS available
             FROM {self._locator_source()}
             WHERE {self._exclusion_predicate()} AND {self.filters.predicate()}
             GROUP BY l.form, l.era
             ORDER BY l.form, l.era
             """
-            )
-            .fetchall()
         )
-        return [(str(form), str(era), int(count)) for form, era, count in rows]
+        reader = result.to_arrow_reader(batch_size=resolve_read_batch_size())
+
+        def iterate() -> Iterator[tuple[str, str, int]]:
+            for batch in reader:
+                for row_index in range(batch.num_rows):
+                    yield (
+                        str(batch.column(0)[row_index].as_py()),
+                        str(batch.column(1)[row_index].as_py()),
+                        int(batch.column(2)[row_index].as_py()),
+                    )
+
+        return iterate()
+
+    def populate_cell_availability(self, table: str) -> None:
+        self._require().execute(
+            f"""
+            INSERT INTO {table} (form, era, available, selected, taken)
+            SELECT l.form, l.era, COUNT(*), COALESCE(s.selected, 0), 0
+            FROM {self._locator_source()}
+            LEFT JOIN {table} s USING (form, era)
+            WHERE {self._exclusion_predicate()} AND {self.filters.predicate()}
+            GROUP BY l.form, l.era, s.selected
+            ON CONFLICT (form, era) DO UPDATE SET available = excluded.available
+            """
+        )
 
     def pool_for_composite(
         self, filters: dict[str, Any], limit: int = 60
-    ) -> list[dict[str, Any]]:
+    ) -> Iterator[dict[str, Any]]:
         """Return candidates satisfying every filter of one composite stratum."""
         clauses = [self._exclusion_predicate(), self.filters.predicate()]
         clauses.extend(f"l.{self._dimension(dimension)} = ?" for dimension in filters)
@@ -362,13 +452,23 @@ class CandidateSource:
 
     def pool_for_ciks(
         self, ciks: Sequence[str], limit_per_cik: int = 5
-    ) -> list[dict[str, Any]]:
+    ) -> Iterator[dict[str, Any]]:
         """Up to `limit_per_cik` candidates per supplied CIK. The cap is per CIK, not
         global, or one mandatory seed registrant could consume the whole budget.
         """
-        if not ciks:
-            return []
-        self._fill(_CIK_TABLE, ciks)
+        self.register_cik_iterable(ciks)
+        return self.pool_for_registered_ciks(limit_per_cik=limit_per_cik)
+
+    def pool_for_registered_ciks(
+        self, limit_per_cik: int = 5, limit: int | None = None
+    ) -> Iterator[dict[str, Any]]:
+        if (
+            not self._require()
+            .execute(f"SELECT 1 FROM {_CIK_TABLE} LIMIT 1")
+            .fetchone()
+        ):
+            return iter(())
+        limit_clause = f"LIMIT {int(limit)}" if limit is not None else ""
         # The inner rank is per CIK; the outer order is the same global
         # tie-break, so the page a CIK pool draws from is seed-deterministic.
         query = f"""
@@ -388,10 +488,11 @@ class CandidateSource:
             FROM ranked
             WHERE cik_rank <= {int(limit_per_cik)}
             ORDER BY {_RANKED_ORDER_EXPR}
+            {limit_clause}
         """
         return self._rows(query, [self.seed, self.seed])
 
-    def candidate_page(self, page_index: int) -> list[dict[str, Any]]:
+    def candidate_page(self, page_index: int) -> Iterator[dict[str, Any]]:
         """One deterministic page of unselected candidates: `OFFSET` over a seed-derived
         total order, so a page index yields the same rows for the same snapshot.
         """
@@ -408,41 +509,71 @@ class CandidateSource:
 
     def load_candidates_for_locators(
         self, locator_keys: Sequence[str]
-    ) -> list[dict[str, Any]]:
+    ) -> Iterator[dict[str, Any]]:
         """Feature rows of an existing selection, in the caller's order, so a parent
         selection's coverage accounting lines up with its keys.
         """
         if not locator_keys:
-            return []
-        self._fill(_LOCATOR_KEYS_TABLE, locator_keys)
-        rows = self._rows(
+            return iter(())
+        con = self._require()
+        self._fill_locator_keys(locator_keys)
+        missing_count, missing_keys = con.execute(
+            f"""
+            SELECT COUNT(*),
+                   string_agg(document_locator_key, ', ' ORDER BY request_ordinal)
+            FROM (
+                SELECT r.document_locator_key, r.request_ordinal
+                FROM {_LOCATOR_KEYS_TABLE} r
+                WHERE NOT EXISTS (
+                    SELECT 1 FROM {self.locator_relation} l
+                    WHERE l.document_locator_key = r.document_locator_key
+                )
+                ORDER BY r.request_ordinal
+                LIMIT 5
+            )
+            """
+        ).fetchone()
+        if missing_count:
+            raise ValueError(
+                "parent plan references locator keys absent from the selection "
+                "snapshot: " + missing_keys
+            )
+        return self._rows(
             f"""
             SELECT {_QUALIFIED_POOL_SELECT}
             FROM {self.locator_relation} l
             JOIN {_LOCATOR_KEYS_TABLE} r
               ON l.document_locator_key = r.document_locator_key
-            """
+            ORDER BY r.request_ordinal
+            """,
+            columns=POOL_COLUMNS,
         )
-        by_key = {str(row["document_locator_key"]): row for row in rows}
-        missing = [key for key in locator_keys if key not in by_key]
-        if missing:
-            raise ValueError(
-                "parent plan references locator keys absent from the selection "
-                "snapshot: " + ", ".join(missing[:5])
-            )
-        return [by_key[key] for key in locator_keys]
+
+    def load_candidates_for_locator_relation(
+        self, relation_sql: str
+    ) -> Iterator[dict[str, Any]]:
+        return self._rows(
+            f"""
+            SELECT {_QUALIFIED_POOL_SELECT}
+            FROM {self.locator_relation} l
+            JOIN ({relation_sql}) r
+              ON l.document_locator_key = r.document_locator_key
+            ORDER BY l.document_locator_key
+            """,
+            columns=POOL_COLUMNS,
+        )
 
     def load_occurrences_for_locators(
         self, locator_keys: Sequence[str]
-    ) -> list[dict[str, Any]]:
+    ) -> Iterator[dict[str, Any]]:
         """Every occurrence belonging to the selected locators; a locator with two
         co-filers yields two rows, one per registrant's claim on one document.
         """
         if not locator_keys:
-            return []
+            return iter(())
         con = self._require()
-        self._fill(_LOCATOR_KEYS_TABLE, locator_keys)
-        rows = con.execute(
+        self._fill_locator_keys(locator_keys)
+        result = con.execute(
             f"""
             SELECT {_QUALIFIED_OCCURRENCE_SELECT}
             FROM {self.occurrence_relation} o
@@ -451,8 +582,18 @@ class CandidateSource:
             ORDER BY o.document_locator_key, o.occurrence_id
             """,
             [],
-        ).fetchall()
-        return [dict(zip(OCCURRENCE_COLUMNS, row, strict=True)) for row in rows]
+        )
+        reader = result.to_arrow_reader(batch_size=resolve_read_batch_size())
+
+        def iterate() -> Iterator[dict[str, Any]]:
+            for batch in reader:
+                for row_index in range(batch.num_rows):
+                    yield {
+                        name: batch.column(column_index)[row_index].as_py()
+                        for column_index, name in enumerate(OCCURRENCE_COLUMNS)
+                    }
+
+        return iterate()
 
 
 __all__ = [

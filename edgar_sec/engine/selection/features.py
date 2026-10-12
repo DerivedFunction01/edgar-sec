@@ -398,23 +398,14 @@ class FeatureSnapshotBuilder:
         return form_family_sql(column)
 
     def _size_band_anchor_sql(
-        self, union_sql: str, families: Sequence[str] | None = None
+        self, union_sql: str, family_relation_sql: str | None = None
     ) -> str:
         """Use one canonical size observation per document in each form family."""
         family_expr = form_family_sql("form")
         filter_families = (
             ""
-            if families is None
-            else (
-                "AND "
-                + (
-                    f"{family_expr} IN ("
-                    + ", ".join(sql_literal(value) for value in sorted(set(families)))
-                    + ")"
-                    if families
-                    else "FALSE"
-                )
-            )
+            if family_relation_sql is None
+            else f"AND {family_expr} IN ({family_relation_sql})"
         )
         return f"""
             WITH locator_sizes AS (
@@ -583,34 +574,24 @@ class FeatureSnapshotBuilder:
         union_sql: str,
         staging_dir: Path,
         *,
-        families: Sequence[str] | None = None,
-        locator_keys: Sequence[str] | None = None,
-        anchor_families: Sequence[str] | None = None,
+        family_relation_sql: str | None = None,
+        locator_keys_sql: str | None = None,
+        anchor_family_relation_sql: str | None = None,
         full: bool = True,
     ) -> int:
         family_expr = form_family_sql("form")
         size_band_expr = self._size_band_sql("r.reported_size", "a.median_size")
         filters: list[str] = []
-        if families:
-            values = ", ".join(sql_literal(value) for value in sorted(set(families)))
-            filters.append(f"r.form_family IN ({values})")
-        if locator_keys:
-            values = ", ".join(
-                sql_literal(value) for value in sorted(set(locator_keys))
-            )
-            filters.append(f"r.document_locator_key IN ({values})")
+        if family_relation_sql is not None:
+            filters.append(f"r.form_family IN ({family_relation_sql})")
+        if locator_keys_sql is not None:
+            filters.append(f"r.document_locator_key IN ({locator_keys_sql})")
         where = " OR ".join(filters) if filters else ("TRUE" if full else "FALSE")
         source_filters: list[str] = []
-        if families:
-            family_values = ", ".join(
-                sql_literal(value) for value in sorted(set(families))
-            )
-            source_filters.append(f"{family_expr} IN ({family_values})")
-        if locator_keys:
-            key_values = ", ".join(
-                sql_literal(value) for value in sorted(set(locator_keys))
-            )
-            source_filters.append(f"document_locator_key IN ({key_values})")
+        if family_relation_sql is not None:
+            source_filters.append(f"{family_expr} IN ({family_relation_sql})")
+        if locator_keys_sql is not None:
+            source_filters.append(f"document_locator_key IN ({locator_keys_sql})")
         source_filter = (
             " OR ".join(source_filters)
             if source_filters
@@ -619,7 +600,7 @@ class FeatureSnapshotBuilder:
         query = f"""
             WITH source_filings AS ({union_sql}),
             size_anchor AS (
-                {self._size_band_anchor_sql(union_sql, anchor_families)}
+                {self._size_band_anchor_sql(union_sql, anchor_family_relation_sql)}
             ),
             locator_rows AS (
                 SELECT document_locator_key,
@@ -762,10 +743,10 @@ class FeatureSnapshotBuilder:
 
     # ---------------------------------------------------------------- build
 
-    def build(self) -> SnapshotPaths:
+    def build(self, progress: Any = None) -> SnapshotPaths:
         from edgar_sec.engine.selection.snapshot_build import build_snapshot
 
-        return build_snapshot(self, FEATURE_SCHEMA_VERSION)
+        return build_snapshot(self, FEATURE_SCHEMA_VERSION, progress)
 
 
 __all__ = [

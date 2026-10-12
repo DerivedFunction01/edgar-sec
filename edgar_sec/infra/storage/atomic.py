@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+from collections.abc import Iterable
 from typing import Any
 
 from edgar_sec.foundation.serialization import canonical_json
@@ -51,6 +52,32 @@ def atomic_write_text(path: str | os.PathLike[str], text: str) -> int:
     return len(encoded)
 
 
+def atomic_write_text_stream(
+    path: str | os.PathLike[str], chunks: Iterable[str]
+) -> int:
+    path_str = os.fspath(path)
+    directory = os.path.dirname(os.path.abspath(path_str))
+    os.makedirs(directory, exist_ok=True)
+    tmp_path = f"{path_str}.tmp.{os.getpid()}"
+    byte_count = 0
+    try:
+        with open(tmp_path, "w", encoding="utf-8", newline="") as handle:
+            for chunk in chunks:
+                handle.write(chunk)
+                byte_count += len(chunk.encode("utf-8"))
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(tmp_path, path_str)
+        _fsync_dir(directory)
+        return byte_count
+    finally:
+        if os.path.exists(tmp_path):
+            try:
+                os.remove(tmp_path)
+            except OSError:
+                pass
+
+
 def atomic_write_json(
     path: str | os.PathLike[str],
     obj: Any,
@@ -65,4 +92,9 @@ def atomic_write_json(
     return atomic_write_text(path, text)
 
 
-__all__ = ["atomic_write_bytes", "atomic_write_json", "atomic_write_text"]
+__all__ = [
+    "atomic_write_bytes",
+    "atomic_write_json",
+    "atomic_write_text",
+    "atomic_write_text_stream",
+]

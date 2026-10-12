@@ -19,12 +19,12 @@ from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.run_state.locks import RunLock
 from edgar_sec.pipelines.document_acquisition.run_state.store import (
     commit_attempts_and_update_target,
-    get_target_states,
     inspect_run_state,
+    iter_target_state_pairs,
     summarize_target_state,
 )
 from edgar_sec.pipelines.document_acquisition.run_validation import (
-    iter_work_order_batches,
+    iter_work_order_rows,
     load_validated_work_order,
 )
 from edgar_sec.pipelines.document_acquisition.target_runner import (
@@ -113,43 +113,40 @@ def execute_acquisition_run(
                 or not staging_root.resolve().is_relative_to(run_root)
             ):
                 raise ValueError("run staging directory is unsafe")
-            for rows in iter_work_order_batches(parts):
-                states = get_target_states(
-                    paths.run_state_path(run_id),
-                    (str(row["target_id"]) for row in rows),
-                )
-                if len(states) != len(rows):
+            for row, state in iter_target_state_pairs(
+                paths.run_state_path(run_id),
+                iter_work_order_rows(parts),
+            ):
+                if state is None or state.target_id != row["target_id"]:
                     raise ValueError("work-order targets are missing or duplicated")
-                for row in rows:
-                    state = states[str(row["target_id"])]
-                    if (
-                        bool(row["executable"]) != state.executable
-                        or row["skip_reason"] != state.skip_reason
-                    ):
-                        raise ValueError("work-order target disagrees with run state")
-                    eligible = state.outcome == "pending" or (
-                        retry_failures and state.outcome == "failed" and state.retryable
-                    )
-                    if not eligible:
-                        continue
-                    attempts, outcome, resolution, recorded_at = acquire_target(
-                        row,
-                        state,
-                        run_id=run_id,
-                        paths=paths,
-                        policy=policy,
-                        transport=transport,
-                        clock=clock,
-                    )
-                    _commit(
-                        paths,
-                        row | {"run_id": run_id},
-                        attempts,
-                        outcome,
-                        resolution,
-                        recorded_at,
-                    )
-                    attempted += 1
+                if (
+                    bool(row["executable"]) != state.executable
+                    or row["skip_reason"] != state.skip_reason
+                ):
+                    raise ValueError("work-order target disagrees with run state")
+                eligible = state.outcome == "pending" or (
+                    retry_failures and state.outcome == "failed" and state.retryable
+                )
+                if not eligible:
+                    continue
+                attempts, outcome, resolution, recorded_at = acquire_target(
+                    row,
+                    state,
+                    run_id=run_id,
+                    paths=paths,
+                    policy=policy,
+                    transport=transport,
+                    clock=clock,
+                )
+                _commit(
+                    paths,
+                    row | {"run_id": run_id},
+                    attempts,
+                    outcome,
+                    resolution,
+                    recorded_at,
+                )
+                attempted += 1
     except KeyboardInterrupt:
         cancelled = True
     finally:

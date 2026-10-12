@@ -6,8 +6,9 @@ features maps dates onto era bands and selector consumes the result.
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
-from collections.abc import Sequence
+from collections.abc import Iterable, Iterator, Sequence
 from dataclasses import asdict, dataclass, field, replace
 from pathlib import Path
 from typing import Any
@@ -21,8 +22,12 @@ from edgar_sec.domain.filing_catalog.filters import (
     normalize_suffixes,
 )
 from edgar_sec.engine.selection.paths import POLICY_JSON_GLOB
-from edgar_sec.foundation.serialization import canonical_hash
-from edgar_sec.infra.storage.atomic import atomic_write_json, atomic_write_text
+from edgar_sec.foundation.serialization import canonical_hash, canonical_json
+from edgar_sec.infra.storage.atomic import (
+    atomic_write_json,
+    atomic_write_text_stream,
+)
+from edgar_sec.infra.storage.duckdb import connect
 
 # Every dimension the selector may stratify on; anything else is rejected at
 # construction rather than silently ignored.
@@ -176,21 +181,19 @@ def write_seed_filers_csv(path: str | Path, seed_map: dict[str, SeedFiler]) -> N
     file is byte-stable and a published plan is reproducible from its own bundle.
     """
     destination = Path(path)
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    lines = [",".join(SEED_FILER_COLUMNS)]
-    for entry in sorted(seed_map.values(), key=lambda item: item.cik):
-        lines.append(
-            ",".join(
-                _csv_field(value)
-                for value in (
-                    entry.cik,
-                    entry.seed_group,
-                    entry.coverage_tags,
-                    entry.notes,
-                )
+
+    def contents() -> Iterator[str]:
+        with connect() as con:
+            _register_seed_map(con, seed_map)
+            cursor = con.execute(
+                "SELECT cik, seed_group, coverage_tags, notes "
+                "FROM selection_seed_filers ORDER BY cik"
             )
-        )
-    atomic_write_text(destination, "\n".join(lines) + "\n")
+            yield ",".join(SEED_FILER_COLUMNS) + "\n"
+            while row := cursor.fetchone():
+                yield ",".join(_csv_field(str(value)) for value in row) + "\n"
+
+    atomic_write_text_stream(destination, contents())
 
 
 def read_seed_filers_csv(path: str | Path) -> dict[str, SeedFiler]:
@@ -225,15 +228,57 @@ def _csv_field(value: str) -> str:
     return value
 
 
+def _register_seed_map(con: Any, seed_map: dict[str, SeedFiler]) -> None:
+    con.execute(
+        "CREATE TEMP TABLE selection_seed_filers "
+        "(cik VARCHAR PRIMARY KEY, seed_group VARCHAR, "
+        "coverage_tags VARCHAR, notes VARCHAR)"
+    )
+    if seed_map:
+        con.executemany(
+            "INSERT INTO selection_seed_filers VALUES (?, ?, ?, ?)",
+            (
+                (
+                    entry.cik,
+                    entry.seed_group,
+                    entry.coverage_tags,
+                    entry.notes,
+                )
+                for entry in seed_map.values()
+            ),
+        )
+
+
 def compute_seed_fingerprint(seed_map: dict[str, SeedFiler]) -> str:
     """Hash the seed set by value, not by file order: re-sorting the manifest must not
     invalidate every plan built from it, while editing a seed's group or notes must.
     """
-    rows = [
-        [entry.cik, entry.seed_group, entry.coverage_tags, entry.notes]
-        for entry in sorted(seed_map.values(), key=lambda item: item.cik)
-    ]
-    return _fingerprint(rows)
+    with connect() as con:
+        _register_seed_map(con, seed_map)
+        cursor = con.execute(
+            "SELECT cik, seed_group, coverage_tags, notes "
+            "FROM selection_seed_filers ORDER BY cik"
+        )
+
+        def rows() -> Iterator[tuple[str, ...]]:
+            while row := cursor.fetchone():
+                yield tuple(str(value) for value in row)
+
+        return compute_seed_fingerprint_rows(rows())
+
+
+def compute_seed_fingerprint_rows(rows: Iterable[Sequence[str]]) -> str:
+    """Hash already CIK-sorted seed rows without retaining the full row array."""
+    digest = hashlib.sha256()
+    digest.update(b"[")
+    first = True
+    for row in rows:
+        if not first:
+            digest.update(b",")
+        digest.update(canonical_json(row).encode("utf-8"))
+        first = False
+    digest.update(b"]")
+    return digest.hexdigest()[:_DIGEST_LENGTH]
 
 
 @dataclass
@@ -497,6 +542,7 @@ __all__ = [
     "SelectionPolicy",
     "auto_generate_policy",
     "compute_seed_fingerprint",
+    "compute_seed_fingerprint_rows",
     "discover_policies",
     "era_bands_for_range",
     "load_seed_cik_csv",

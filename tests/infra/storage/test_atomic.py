@@ -6,6 +6,7 @@ from edgar_sec.infra.storage.atomic import (
     atomic_write_bytes,
     atomic_write_json,
     atomic_write_text,
+    atomic_write_text_stream,
 )
 
 
@@ -18,6 +19,13 @@ def test_atomic_text_and_bytes_writes(tmp_path: Path) -> None:
     bin_file = tmp_path / "sample.bin"
     atomic_write_bytes(bin_file, b"\x00\x01\x02\x03")
     assert bin_file.read_bytes() == b"\x00\x01\x02\x03"
+
+
+def test_atomic_text_stream_does_not_require_joining_chunks(tmp_path: Path) -> None:
+    destination = tmp_path / "stream.txt"
+    chunks = (part for part in ("first", "-", "last"))
+    assert atomic_write_text_stream(destination, chunks) == len("first-last")
+    assert destination.read_text(encoding="utf-8") == "first-last"
 
 
 def test_atomic_json_write_is_canonical(tmp_path: Path) -> None:

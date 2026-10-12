@@ -18,6 +18,7 @@ from edgar_sec.engine.selection.policy import (
     SelectionPolicy,
     auto_generate_policy,
     compute_seed_fingerprint,
+    compute_seed_fingerprint_rows,
     discover_policies,
     era_bands_for_range,
     load_seed_cik_csv,
@@ -201,6 +202,13 @@ def test_seed_fingerprint_is_stable_across_row_order() -> None:
     }
     reversed_order = dict(reversed(list(forward.items())))
     assert compute_seed_fingerprint(forward) == compute_seed_fingerprint(reversed_order)
+    ordered_rows = (
+        (entry.cik, entry.seed_group, entry.coverage_tags, entry.notes)
+        for entry in sorted(forward.values(), key=lambda item: item.cik)
+    )
+    assert compute_seed_fingerprint_rows(ordered_rows) == compute_seed_fingerprint(
+        forward
+    )
     assert len(compute_seed_fingerprint(forward)) == 32
 
 

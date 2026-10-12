@@ -43,7 +43,7 @@ from edgar_sec.pipelines.document_acquisition.run_state.store import (
     get_target_state,
 )
 from edgar_sec.pipelines.document_acquisition.run_validation import (
-    iter_work_order_batches,
+    iter_work_order_rows,
     load_validated_work_order,
 )
 
@@ -106,12 +106,11 @@ def create_fixture(fixture_id: str, *, paths: AcquisitionPaths) -> Path:
 
 def _find_target(parts: tuple[Path, ...], target_id: str) -> dict[str, object]:
     found = None
-    for batch in iter_work_order_batches(parts):
-        for row in batch:
-            if row["target_id"] == target_id:
-                if found is not None:
-                    raise FixtureOperationError("target ID is duplicated in work order")
-                found = row
+    for row in iter_work_order_rows(parts):
+        if row["target_id"] == target_id:
+            if found is not None:
+                raise FixtureOperationError("target ID is duplicated in work order")
+            found = row
     if found is None:
         raise FixtureOperationError("target ID is not in the run work order")
     return found
