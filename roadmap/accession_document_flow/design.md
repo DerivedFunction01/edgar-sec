@@ -163,10 +163,10 @@ models no succession or merger graph (see that package's deliberate gaps).
   anti-join, range-read contract, and vacuum plan are specified in
   [inventory_snapshot.md](./inventory_snapshot.md).
 - S6 uses the catalog plan as accession scope and optionally joins its accessions to a
-  pinned inventory snapshot for document evidence. Catalog-only plans use direct
-  primary paths except the exact placeholder names, which remain unresolved without
-  bundle and sequence evidence. With a snapshot, observed index rows supply those
-  facts. See the
+  pinned inventory snapshot for document evidence. Positive numbered primary metadata
+  can supply an accession-prefixed direct child path; exact `0000.txt`/`.htm` placeholders
+  remain unresolved in catalog-only plans without bundle and sequence evidence. With a
+  snapshot, observed index rows supply locators. See the
   [S6 target/operator specification](subplans/document_planning/specs.md).
 - Process-pool parsing uses a shared `SecBroker`; the implementation roadmap
   defines worker and persistence ownership.

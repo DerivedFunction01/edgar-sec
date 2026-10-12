@@ -32,12 +32,14 @@ The following gaps are accepted as part of the retirement:
 - The current viewer loader does not register the retired document-storage dataset.
   Existing legacy snapshots remain user data but are not exposed through a migrated
   viewer reader.
-- S6 treats only exact observed primary filenames `0000.txt`, `0000.htm`, `0001.txt`,
-  and `0001.htm` as placeholder signals under the user-supplied policy; no form/date
-  gate applies. With inventory evidence, S6 requires the pinned bundle URL and observed
-  positive sequence. Catalog-only targets without those facts remain unresolved.
-  Nested paths and arbitrary suffix matches are excluded. Catalog URL qualification
-  preserves stub provenance but is not retrieval authorization.
+- Review-run and fixture evidence establishes that positive numbered SEC child names
+  map to accession-prefixed archive leaves. A valid observed prefixed child link, or an
+  exact positive numbered catalog `primaryDocument`, can be pinned for direct retrieval;
+  `0001` is not inherently a placeholder. Exact primary `0000.txt`/`.htm` names remain
+  placeholders: inventory planning requires an advertised bundle URL and observed
+  positive sequence, while catalog-only targets remain unresolved. An indexed
+  `0001.txt`/`.htm` primary without a usable prefixed child link may use its observed
+  sequence and bundle URL.
   Child/index size, full-submission bundle size, and S1-reported catalog size remain
   distinct and do not select retrieval mode. S9 follows pinned S6 mode without
   cross-target bundle grouping or ordinary direct-failure fallback.
@@ -54,7 +56,7 @@ present in the repository.
 |---|---|---|
 | `__init__.py` | Package docstring; no exports. | **N** No replacement API. |
 | `paths.py` | Document-storage snapshot, fixture, review, and chunk paths. | **N** New inventory/acquisition path wrappers use shared project roots. |
-| `candidates.py` | Historical date/name candidate gate. | **I·N** Retired; do not use as the exact-path primary stub policy. |
+| `candidates.py` | Historical date/name candidate gate. | **I·N** Retired; do not use to replace observed accession-prefixed locators. |
 | `candidate_recovery.py` | Bundle-first exhibit acquisition with recovered primary. | **I·N** S6/S9 select explicit targets; no inferred primary. |
 | `resolution.py` | Resolve locator to unique basename/form match. | **I·N** Ambiguity cases useful; no primary inference reuse. |
 | `catalog_plan.py` | Validate and stream chunked filing_catalog locator plans. | **R·N** Reimplement pre-fetch validation in S1/S6; no locator/chunk schema. |

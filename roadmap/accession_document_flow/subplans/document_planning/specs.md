@@ -10,15 +10,16 @@ The dependency-aware implementation sequence and module ownership are in
 [plan.md](plan.md). This file owns the normative profile, matching, artifact, and
 stage-local operator contract.
 
-> **Retrieval-scope status:** The user-supplied placeholder policy matches only the
-> exact observed primary filenames `0000.txt`, `0000.htm`, `0001.txt`, and `0001.htm`.
-> It is independent of form/date and based on prior experience. One SEC observation
-> corroborates `0001.htm` on a single Form 10-Q, but
-> does not establish a form/date range; see the [observed case](../document_acquisition/decision_tree.md#observed-sec-case-exact-path-primary).
-> Nested paths and arbitrary suffix matches are excluded. S6 uses an exact inventory
-> filename only with a pinned accession bundle URL and observed positive sequence;
-> catalog-only targets without those facts remain unresolved. A complete-submission
-> accession `.txt` name is not a placeholder.
+> **Retrieval-scope status:** Review-run and fixture evidence establishes the mapping
+> from positive numbered SEC child names to accession-prefixed archive leaves. A valid
+> observed accession-prefixed child link, or an exact catalog `primaryDocument` from
+> which that leaf is constructed, can be pinned as `direct_url`; a bare display filename
+> is not itself an inventory locator. Positive names including `0001` are not inherently
+> placeholders. Exact primary `0000.txt`/`.htm` names remain placeholders and require an
+> observed bundle URL and positive sequence; catalog-only cases remain unresolved. An
+> indexed `0001.txt`/`.htm` primary lacking a usable prefixed link may use observed bundle
+> sequence evidence. See the [observed case](../document_acquisition/decision_tree.md#observed-sec-case-accession-prefixed-numbered-primary).
+> A complete-submission accession `.txt` name is not a numbered child.
 
 ## 1. Inputs and package boundary
 
@@ -228,7 +229,7 @@ planning. Both adapters are read-only and perform zero network requests.
 
 | Role | V1 `type` values and source table | Match and retrieval contract |
 |---|---|---|
-| `primary` | `primary`; `Document Format Files` | Match `document_type` to the accession's filing form after declared form-alias resolution. Never assume sequence 1. A usable ordinary child link selects `direct_url`. Only the four exact observed primary filenames are placeholder signals: they ignore direct retrieval and select `bundle_sequence` only with the advertised bundle URL and observed positive sequence; otherwise they are unresolved. Catalog-only placeholder targets remain unresolved. Other unlinked primaries remain unresolved. |
+| `primary` | `primary`; `Document Format Files` | Match `document_type` to the accession's filing form after declared form-alias resolution. Never assume sequence 1. A usable observed accession-prefixed numbered child link selects `direct_url`; positive sequence names, including `0001`, are not inherently placeholders. Exact primary `0000.txt`/`.htm` names require `bundle_sequence` with advertised bundle URL and observed positive sequence; otherwise they are unresolved. An indexed `0001.txt`/`.htm` primary without a usable prefixed URL may use its observed sequence/bundle. Catalog-only exact `0000` targets remain unresolved; other unlinked primaries remain unresolved. |
 | `exhibit` | Exact `EX-13`, `EX-99`, or explicit prefix `EX-*` / `EX-10.*`; `Document Format Files` | Match the requested type only. A usable observed `archive_url`/`href` yields `direct_url`; an unlinked row yields `bundle_sequence` only when both the advertised bundle URL and observed sequence exist. |
 | `data_file` | Exact data-file type, `EX-101.*`, or `extracted_xbrl_instance`; `Data Files` | The instance type matches normalized exact description `EXTRACTED XBRL INSTANCE DOCUMENT` and type `XML`; filename suffix is not a fallback. Data-file retrieval requires a usable direct URL. |
 | `graphic` | `GRAPHIC`; `Document Format Files` | Match the type only. Filename extensions do not infer graphic rows. Retrieval requires a usable direct URL. |
@@ -278,17 +279,20 @@ candidate locator selected by the profile before publication; unrelated unselect
 do not supply target locators. Any malformed, unsafe, or cross-accession candidate
 refuses the entire plan rather than silently falling back. Use `bundle_sequence` for an
 eligible unlinked exhibit only when it has a real observed sequence and validated bundle
-URL; never infer sequence from row order. The four exact observed primary filenames use
-that mode under the same URL/sequence requirements, regardless of whether a direct
-locator is present. Catalog-only placeholder targets remain unresolved. A single
-matching row with neither usable direct nor currently supported bundle retrieval is
-`unresolved`, not matched or absent.
+URL; never infer sequence from row order. Positive numbered direct links require an
+accession-prefixed archive leaf matching the observed filename. Exact `0000.txt`/`.htm`
+primary placeholders use bundle mode under the same URL/sequence requirements. An indexed
+`0001.txt`/`.htm` primary uses a valid prefixed direct link, or may use its observed bundle
+sequence when that link is unavailable. Catalog-only `0000` targets remain unresolved.
+A single matching row with neither usable direct nor currently supported bundle retrieval
+is `unresolved`, not matched or absent.
 
-Filing-catalog construction separately accession-qualifies an exact placeholder
-`primaryDocument` as `<hyphenated-accession>-<primaryDocument>` and retains the stub
-reason. This derived child URL is locator provenance, not S6 retrieval authorization:
-catalog-only placeholder targets remain unresolved. Inventory secondary-document
-links continue to use their observed index hrefs without rewriting.
+Filing-catalog construction accession-qualifies a positive numbered `primaryDocument`
+as `<hyphenated-accession>-<primaryDocument>`. Review-run and fixture evidence supports
+that mapping as the direct locator convention; S6 still validates the complete URL and
+catalog identity before pinning it. Exact `0000` placeholder metadata remains unresolved
+without inventory sequence evidence. Inventory secondary-document links continue to use
+their observed index hrefs without rewriting.
 
 The index's child size, its full-submission bundle size, and S1's reported catalog size
 are separate observations with different subjects. They are retained as provenance and

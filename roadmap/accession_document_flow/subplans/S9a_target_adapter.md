@@ -107,11 +107,12 @@ extraction is not part of v1.
 
 The adapter projects the retrieval mode S6 pinned; it does not cost-select between
 direct and bundle retrieval, group targets into one bundle transfer, or change an
-ordinary failed direct request into a bundle request. S6 pins bundle mode only for
-primary paths exactly `/0000.txt`, `/0000.htm`, `/0001.txt`, or `/0001.htm` at the
-accession root, with an advertised bundle URL and observed positive sequence. No
-form/date condition applies; nested paths do not match. Catalog-only targets without
-sequence evidence remain unresolved.
+ordinary failed direct request into a bundle request. Positive numbered filenames map
+to accession-prefixed child URLs when supported by observed inventory links or exact
+catalog `primaryDocument` metadata. Exact primary `0000.txt`/`.htm` placeholders require
+an advertised bundle URL and observed positive sequence; catalog-only cases remain
+unresolved. An indexed `0001.txt`/`.htm` primary without a usable prefixed direct URL may
+use its observed sequence and bundle URL.
 
 `document_path` is the URL path relative to the accession's archive directory, not the full URL path. This preserves the route distinction in `domain.document.route`: an XSL rendering path contains a subdirectory, while a root file is flat. Bundle extraction uses the selected `<FILENAME>` with `content_route()` instead.
 

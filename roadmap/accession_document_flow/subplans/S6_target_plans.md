@@ -6,18 +6,17 @@
 - Status: versioned profile target planning is implemented in `pipelines/document_planning`.
   This subplan includes extended design details beyond the current target schema; use
   the current implementation and the retrieval-scope reconciliation below for behavior.
-- **Retrieval-scope reconciliation:** the user-supplied placeholder policy matches only
-  an exact observed primary filename of `0000.txt`, `0000.htm`, `0001.txt`, or
-  `0001.htm`, independent of form and date. It is based on prior experience; no
-  form/date condition is asserted. A single SEC observation corroborates `0001.htm`
-  on one Form 10-Q; it does not establish a form/date range. See the [observed SEC
-  case](document_acquisition/decision_tree.md#observed-sec-case-exact-path-primary).
-  Nested paths and arbitrary suffix matches are excluded. S6 uses an exact inventory
-  filename only to select `bundle_sequence` when the pinned accession bundle URL and
-  observed positive sequence are available. Without either, including catalog-only
-  planning, the target remains unresolved. Catalog URL qualification of these names
-  retains stub provenance but is not retrieval authorization.
-  Complete-submission accession `.txt` names are exempt.
+- **Retrieval-scope reconciliation:** review-run and fixture evidence establishes that
+  positive numbered SEC child names map to accession-prefixed archive leaves. Numbered
+  names such as `0001.htm` are not inherently placeholders: an observed prefixed index
+  link, or catalog `primaryDocument` metadata from which that exact leaf is constructed,
+  can authorize `direct_url`. Direct links require the accession-qualified leaf; a
+  display filename alone never supplies an inventory URL. Exact primary `0000.txt` and
+  `0000.htm` remain placeholder signals and require an advertised bundle URL plus
+  observed positive sequence; catalog-only cases remain unresolved. An inventory-backed
+  `0001.txt`/`.htm` primary without a usable prefixed link may use that same observed
+  sequence/bundle evidence. Nested paths, arbitrary suffixes, and the complete-submission
+  accession `.txt` do not qualify as numbered child leaves.
 - Depends on S1 cohort contracts and S5 inventory relation schemas for optional
   inventory evidence. A filing-catalog plan is the required accession scope. S0's XBRL
   decision gates any claim that a constructed package candidate is
@@ -30,10 +29,12 @@
 ## Tracked-code status
 
 Profile-based S6 planning is implemented in `pipelines/document_planning`. Its current
-matching contract includes exact-filename primary placeholders and the bundle/sequence gate above;
-[`test_matching.py`](../../../tests/pipelines/document_planning/test_matching.py) covers
-the four exact filenames, nested-path exclusion, and unresolved catalog-only behavior. The
-2026-10-09 partial-foundation audit predates this implementation and is no longer current.
+matching contract recognizes accession-prefixed numbered child URLs, catalog primary
+construction from exact `primaryDocument` metadata, exact `0000` placeholder handling,
+and observed bundle-sequence fallbacks. [`test_matching.py`](../../../tests/pipelines/document_planning/test_matching.py)
+covers numbered extensions/sequences, prefixed links, placeholder behavior, and locator
+refusals. The 2026-10-09 partial-foundation audit predates this implementation and is no
+longer current.
 
 ## Objective
 
@@ -182,11 +183,11 @@ Matching and outcome rules:
   direct archive URLs. A `matched` row means the catalog supplied a safe sequence-1
   locator; `catalog_metadata` does not verify that the linked body has the filing's
   statutory document type. S9 interprets the recorded selector after acquisition. An
-  envelope or missing primary is unresolved without inventory evidence. `0000.*`
+  envelope or missing primary is unresolved without inventory evidence. Exact `0000.*`
   placeholder paths remain unresolved in catalog-only planning because no sequence is
-  observed. Numbered direct primary paths use the accession-prefixed archive filename;
-  a bare numeric filename is not a locator. A non-primary selector is refused; none is
-  passed off as an index match.
+  observed. Positive numbered primary metadata constructs the accession-prefixed child
+  path; a bare numeric filename is not itself a locator. A non-primary selector is
+  refused; none is passed off as an index match.
 - Catalog-direct planning itself does not fetch or parse `-index.html`, inspect
   document bodies, infer type from filenames, or recover a target. An explicitly
   selected `exact_form_with_lazy_index` policy authorizes only the bounded S9 recovery
@@ -219,14 +220,14 @@ Matching and outcome rules:
   self-contained `bundle_sequence` target; store the bundle URL in `target_url` so S9
   does not need to reopen the inventory snapshot. A single row without any usable
   locator is unresolved, not absent.
-- For ordinary rows, current bundle-sequence matching is limited to eligible
-  unlinked exhibits. A recognized SEC CIK/accession-directory `href` is not a document
-  link; it can use bundle mode only with an observed positive sequence and advertised
-  bundle URL. Numbered direct files require an accession-prefixed archive leaf matching
-  the observed filename. An unlinked primary uses bundle mode only when its observed
-  primary filename exactly matches a placeholder name and both the bundle URL and
-  observed positive sequence are available. No form/date condition applies; observed
-  sequence is locator metadata, never evidence for target type or role.
+- For ordinary rows, a recognized SEC CIK/accession-directory `href` is not a document
+  link; an eligible role can use bundle mode only with an observed positive sequence and
+  advertised bundle URL. Numbered direct files require an accession-prefixed archive
+  leaf matching the observed filename. Exact `0000` primary placeholders use bundle mode
+  with those same evidence requirements. An indexed `0001.txt`/`.htm` primary uses a
+  valid prefixed child URL directly or may use its observed bundle sequence if that URL
+  is unavailable. Observed sequence is locator metadata, never evidence for target type
+  or role.
 
 ## Planner interface and pluggable sources
 

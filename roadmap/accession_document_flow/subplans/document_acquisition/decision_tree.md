@@ -5,18 +5,20 @@ inventory, target planning, and the proposed acquisition/processing handoffs. It
 separates implemented behavior, proposed behavior, and frozen legacy behavior; a
 calendar-era label is never a substitute for an observed locator or a pinned target.
 
-**Retrieval correction:** A four-digit filename such as `0001.txt` is not itself a URL.
-For numbered child files, direct retrieval requires a validated archive URL whose final
-path component is `<accession>-<filename>`; a bare `<accession>/<filename>` path is not
-accepted. This applies beyond sequence 7. A catalog primary can use this same prefixed
-path from its validated archive URL or exact `primaryDocument` metadata. If that direct
-path is unavailable, only an eligible inventory target with an advertised bundle and an
-observed positive sequence can use `bundle_sequence`; otherwise it remains unresolved.
+**Retrieval correction:** Review-run and fixture evidence establishes the SEC mapping
+from positive numbered child names to accession-prefixed archive leaves, for example
+`0001.txt` to `<accession>-0001.txt`. A display filename alone is not a URL: inventory
+direct retrieval requires an observed, validated accession-prefixed link. Catalog primary
+metadata can construct that same leaf from the exact `primaryDocument` value. Positive
+numbered filenames, including `0001`, are not inherently placeholders. If an eligible
+indexed target lacks a usable prefixed child link, S6 may pin the advertised bundle and
+its observed positive sequence under the role-specific rules below. A direct 404 remains
+a failure; it does not trigger bundle fallback.
 
-`0000.txt` and `0000.htm` remain placeholder signals, not a form/date cohort. Catalog
-URL construction qualifies an exact numbered SEC submissions `primaryDocument` as an
-accession-prefixed child path; inventory links must match that same path convention.
-Secondary-document hrefs continue to come from the index and are not rewritten.
+Exact primary `0000.txt` and `0000.htm` names remain placeholder signals. Inventory-backed
+cases require the advertised bundle and observed positive sequence; catalog-only cases
+remain unresolved. Secondary-document hrefs continue to come from the index and are not
+rewritten.
 
 **Sequence-name distinction:** Review analysis observes numbered child links whose leaf
 names run from `0001` through values beyond `0007`; the larger value is not an upper
@@ -35,13 +37,14 @@ the target. Never derive a child URL from the display filename alone.
   bundle mode. S10 transient processing remains proposed.
 - **Documentation reconciliation:** `implementation.md` reports S1–S6 implemented
   and `document_planning` has profile, catalog-scope, inventory-evidence, matching,
-  publication, operator, and CLI modules. Current matching permits bundle-sequence
-  retrieval for eligible unlinked exhibits and exact-filename placeholder primaries only
-  when the required bundle URL and positive sequence are observed; numbered direct URLs
-  must use the accession-prefixed leaf form.
+  publication, operator, and CLI modules. Current matching permits accession-prefixed
+  numbered direct links, catalog construction of positive numbered primary leaves, and
+  role-eligible bundle-sequence retrieval when an advertised bundle and observed positive
+  sequence are pinned. Exact `0000` primary names remain placeholders; `0001` is not a
+  placeholder when accession-prefixed child evidence supports direct retrieval.
 - **Retired:** `document_storage`, its date/name candidate gate, full-submission fallback,
   and evaluator-driven delegation are not replacement behavior. Do not restore them or
-  broaden S6's exact-filename placeholder policy with date/name heuristics.
+  replace observed accession-prefixed links with date/name heuristics.
 - **Evidence gate:** S0's stratified historical page survey has not established broad
   era/parser coverage. Era layout descriptions below summarize observed examples and
   legacy behavior; they are not universal guarantees.
@@ -135,7 +138,7 @@ flowchart TD
 | Inventory project | Validated filing-catalog plan, optional base snapshot, refresh/branch policy. | Accession facts, source-CIK edges, and an index-page work order/manifest. | Projects catalog plan locators away: `primary_document`, `document_path`, and `archive_url` do not enter the index work order. It constructs `-index.html` from accession identity; accession is the fetch/dedup grain. |
 | S2/S4/S3 inventory run | Missing/explicitly refreshed accession work items, shared broker or pinned fixture bytes. | Typed page outcomes/checkpoints plus observed document/data rows and separate bundle URL/size metadata. | Known accessions reuse snapshot facts; fetch/parse failure is never empty inventory. No child body is acquired here. S0 evidence gates final historical parser acceptance. |
 | Inventory publish / S5 | Validated cohort, committed S4 results, expected parent snapshot. | Cumulative immutable inventory snapshot and current pointer advanced only after complete validation. | Failed or unrecognized accessions prevent publication; inventory stores observed index facts, not targets or payloads. |
-| S6 target planning (implemented) | Required pinned catalog plan; optional pinned S5 snapshot; versioned profile. | Immutable target-plan bundle with one target row per request/candidate and explicit status/provenance/retrieval locator. | Without a snapshot only primary catalog-direct planning is valid. With a snapshot it is the sole locator evidence; never fall back to catalog paths. Bundle-sequence locators are allowed for eligible unlinked exhibits and exact-filename placeholder primaries with a positive observed sequence and bundle URL. |
+| S6 target planning (implemented) | Required pinned catalog plan; optional pinned S5 snapshot; versioned profile. | Immutable target-plan bundle with one target row per request/candidate and explicit status/provenance/retrieval locator. | Without a snapshot only primary catalog-direct planning is valid. With a snapshot it is the sole locator evidence; never fall back to catalog paths. Accession-prefixed numbered child URLs may be direct locators. Role-eligible bundle-sequence locators require an advertised bundle and observed positive sequence; exact `0000` primary names require that bundle route. |
 | S9 acquisition (implemented) | Validated S6 plan bundle, pinned source provenance, supported matched locators. | Append-only attempts/outcomes, exact source and selected-body digests, transient staged body reference, and for lazy recovery a target-to-physical-slot resolution record. | Executes the pinned target mode; no size comparison, cross-target bundle grouping, or ordinary direct-failure fallback. The separate catalog-direct `exact_form_with_lazy_index` selector can request its bounded index recovery. |
 | S10 role assessment (D0 contract) | Acquired S9 body assigned to the immutable S6 target; pinned S6 intent context. | `DocumentRoleAssessment` diagnostics only; optional S7 review reference; S9 consumption receipt after verified read. | Processes only the resolved body. It emits role diagnoses but never changes targets, types, slots, routes, or acquisition outcomes. It cannot fetch an index, create targets, or trigger retries. |
 | S11 snapshot publication (planned; approval-gated) | Validated S9/S10 run, imported worker receipts, expected DAG parent. | Immutable acquisition Parquet snapshot with separate binary-route and text-route payload relations joined to target/slot evidence by digest. | Design and schema live in [the lifecycle plan](lifecycle.md); durable publication waits for representative S9/S10 evidence and S11 approval. Reconciliation consumes pinned S5 facts and does not alter S5/S6 schemas. |
@@ -155,7 +158,7 @@ rule. The optional snapshot changes only the locator evidence source.
 | Planning input/evidence | Primary request | Companion/exhibit request | Resulting provenance |
 |---|---|---|---|
 | Catalog plan only | Accept a safe same-accession direct path only when the catalog occurrence has a non-empty `primary_document` that agrees with `document_path`. An exact placeholder filename is unresolved because catalog-only planning has no observed sequence. If materialization supplied `<accession>.txt` because `primary_document` was absent, planning also returns `unresolved / no_usable_primary_path`. | Reject a non-primary profile before planning. | `source_origin=catalog_direct`, `availability_evidence=catalog_metadata`; no inventory entry ID. |
-| Catalog plan + pinned snapshot, accession present | Match observed `document_type` to filing form and declared aliases. Never pick sequence 1 by position. An exact placeholder filename uses `bundle_sequence` only with the advertised bundle URL and observed positive sequence; otherwise it is unresolved. Other unlinked primaries remain unresolved. | Match only the profile's declared exhibit/data-file type against observed table rows. An eligible unlinked exhibit with positive observed sequence and advertised bundle URL uses `bundle_sequence`; unlinked data-file/graphic rows remain unresolved. | `source_origin=inventory_index`, `availability_evidence=index_html`; catalog document path is ignored as a locator. |
+| Catalog plan + pinned snapshot, accession present | Match observed `document_type` to filing form and declared aliases. Never pick sequence 1 by position. Use an observed accession-prefixed numbered child URL directly; an exact `0000` primary uses bundle mode only with advertised bundle URL and observed positive sequence. A primary `0001.txt`/`.htm` row without a usable prefixed URL may use its observed sequence and bundle URL; other unlinked primaries remain unresolved. | Match only the profile's declared exhibit/data-file type against observed table rows. An eligible unlinked exhibit with positive observed sequence and advertised bundle URL uses `bundle_sequence`; unlinked data-file/graphic rows remain unresolved. | `source_origin=inventory_index`, `availability_evidence=index_html`; catalog document path is ignored as a locator. |
 | Catalog plan + pinned snapshot, accession absent | `unresolved / accession_not_indexed`. | Same, regardless of optionality. | `inventory_index`; no catalog fallback. Publish S5 evidence and make a new S6 plan to resolve. |
 
 For a recognized indexed page, one usable type match becomes `matched`; multiple
@@ -168,11 +171,12 @@ catalog size are distinct measurements. S6/S9 do not compare these values to cho
 retrieval mode; size-aware direct-versus-bundle selection is deferred.
 
 Current S6 permits exact `bundle_sequence` selection for an eligible unlinked exhibit
-with an observed positive sequence and advertised bundle URL. For primary targets, the
-user-supplied policy classifies only the four exact accession-root paths listed above;
-there is no form/date gate. S6 requires the bundle URL and observed positive sequence,
-and catalog-only stub targets remain unresolved. Nested paths, arbitrary suffixes, and
-the complete-submission accession `.txt` are not stubs. A failed/unrecognized page
+with an observed positive sequence and advertised bundle URL. Positive numbered child
+filenames are not placeholder signals: an observed accession-prefixed link is a direct
+locator, including sequence 1. Exact primary `0000.txt` and `0000.htm` names remain
+placeholder signals and require an advertised bundle URL plus observed positive sequence;
+catalog-only cases remain unresolved. Other unlinked primaries remain unresolved. Nested
+paths and the complete-submission accession `.txt` are not placeholders. A failed/unrecognized page
 cannot be treated as `not_filed`; S5 does not publish such a page as an observed empty
 result. Catalog-only planning rejects a non-primary profile before emitting a plan.
 
@@ -186,13 +190,12 @@ separately approved policy. S9 executes only matched direct/bundle locators.
 S6 derives the retrieval mode from the selected row's evidence, not from a date-era
 table:
 
-1. **Exact-filename primary placeholder:** if the observed primary filename is exactly
-   `0000.txt`, `0000.htm`, `0001.txt`, or `0001.htm`, ignore direct retrieval and emit
-   `bundle_sequence` only when the accession bundle URL and observed positive sequence
-   are present. Otherwise emit `unresolved`. This policy has no form/date condition;
-   nested paths and arbitrary suffix matches do not qualify.
-2. **Usable ordinary child link:** validate the same-accession archive URL and emit
-   `retrieval_mode=direct_url`, with that child URL as `target_url`.
+1. **Observed accession-prefixed child link:** validate the same-accession archive URL
+   and emit `retrieval_mode=direct_url`, with that exact child URL as `target_url`. This
+   includes positive numbered leaves such as `<accession>-0001.htm`; the numeric leaf
+   alone does not imply bundle retrieval.
+2. **Exact `0000` primary placeholder:** emit `bundle_sequence` only when the accession
+   bundle URL and observed positive sequence are present. Otherwise emit `unresolved`.
 3. **No usable child link:** an exact SEC CIK/accession-directory `href` is not a
    document URL. For an eligible exhibit, if the index advertises a safe accession
    `.txt` bundle and the row has an observed positive sequence, emit `bundle_sequence`
@@ -201,12 +204,13 @@ table:
 4. **Neither supported locator is usable:** emit `unresolved / no_usable_retrieval_locator`.
    Do not synthesize a bundle URL or treat a missing catalog primary as an envelope.
 
-For inventory-backed targets, a numbered display filename never constructs a child URL:
-direct retrieval requires the observed, validated child locator, and bundle retrieval
-requires the advertised bundle URL plus that row's observed sequence. A direct 404 is a
-recorded failure, not permission to guess a sibling URL or change retrieval modes.
-Catalog-only retrieval uses the exact SEC `primaryDocument` value, not a generated
-`000N` path; without index evidence, a 404 stays failed and does not imply a bundle slot.
+For inventory-backed targets, a numbered display filename never constructs a child URL;
+direct retrieval requires the observed, validated accession-prefixed child locator.
+Eligible bundle retrieval requires the advertised bundle URL plus that row's observed
+sequence. A direct 404 is a recorded failure, not permission to guess a sibling URL or
+change retrieval modes. Catalog-only primary planning may construct the accession-prefixed
+numbered child path from exact SEC `primaryDocument` metadata; without index evidence, a
+404 stays failed and does not imply a bundle slot.
 
 For the initial catalog-direct fetch, the locator is direct-only; S6 does not promote
 an absent catalog link into an envelope guess. The profile selector may separately
@@ -259,8 +263,8 @@ selector remains as documented above.
 
 | Filing era | Layout evidence / common case | Frozen `document_storage` behavior | Replacement acquisition rule |
 |---|---|---|---|
-| 1993–1999 | Child rows may be unlinked while SGML content is in the complete-submission file. | Historical fallback and heuristic SGML selection are retired. | No primary bundle inference by era. The exact-filename placeholder policy applies without a date gate; eligible unlinked exhibits may use their observed sequence. |
-| 2000–2004 | Transition-era examples include direct links, unlinked exhibits, and Sequence 1 inversion. | Date/name candidate gate and bundle recovery are retired. | Use observed S6 locators and the exact-filename placeholder rule only; do not apply an era/name selector. Other unlinked primaries remain unresolved. |
+| 1993–1999 | Child rows may be unlinked while SGML content is in the complete-submission file. | Historical fallback and heuristic SGML selection are retired. | No primary bundle inference by era. Exact `0000` primary placeholders require observed bundle evidence; eligible unlinked exhibits may use their observed sequence. |
+| 2000–2004 | Transition-era examples include direct links, unlinked exhibits, and Sequence 1 inversion. | Date/name candidate gate and bundle recovery are retired. | Use observed S6 locators; positive numbered accession-prefixed children are direct links. Other unlinked primaries remain unresolved except an explicitly eligible placeholder/bundle case. |
 | 2005–present | Individual archive links are common; envelopes and iXBRL/Data Files links may also be present. | Ordinary full-submission fallback is retired. | Direct links use `direct_url`; eligible unlinked exhibits use their observed bundle sequence. S9 does not fall back after an ordinary direct failure. |
 
 ---
@@ -270,14 +274,14 @@ selector remains as documented above.
 The following concrete scenarios illustrate how the decision tree operates across
 different filing eras, document formats, and exhibit link states.
 
-### Observed SEC case: exact-path primary
+### Observed SEC case: accession-prefixed numbered primary
 
 - **Filing:** Form `10-Q`, filed 2000-11-14, accession `0000899681-00-000405`.
 - **Source:** SEC [`-index.html`](https://www.sec.gov/Archives/edgar/data/898015/000089968100000405/0000899681-00-000405-index.html) and [complete-submission text](https://www.sec.gov/Archives/edgar/data/898015/000089968100000405/0000899681-00-000405.txt).
 - **Observed rows:** Seq 1 is `0001.htm`, Type `10-Q`, child size 63,833 bytes, with an href of `0000899681-00-000405-0001.htm`. Seq 2 is `0002.txt`, Type `EX-27`, size 2,077 bytes. The complete-submission text is 67,488 bytes.
-- **Catalog URL construction:** The exact SEC submissions `primaryDocument` value `0001.htm` yields the accession-qualified child URL `0000899681-00-000405-0001.htm`, retaining the stub reason. This is URL construction/provenance only; it does not authorize S6 or S9 to request that child as the filing body. Seq 2's secondary link remains the observed index href and is not rewritten.
-- **S6 result:** The observed primary filename matches the user-supplied placeholder rule. With this index sequence and the advertised bundle URL, S6 pins `bundle_sequence` at Seq 1 rather than the individual child href. A catalog-only plan lacking the sequence remains unresolved.
-- **Scope:** This is one observed 10-Q case, not evidence of a form/date eligibility range. The rule remains the exact four primary filenames listed above; nested paths do not match.
+- **Catalog URL construction:** The exact SEC submissions `primaryDocument` value `0001.htm` maps to the accession-prefixed child URL `0000899681-00-000405-0001.htm`. The observed index href has the same leaf. Review-run and fixture evidence now corroborates this accession-number mapping for positive numbered children beyond this example, including later sequences and non-`.txt` extensions.
+- **S6 result:** The observed accession-prefixed primary link is pinned as `direct_url`; catalog-only planning constructs that same candidate URL from `primaryDocument`. A direct failure does not switch to the submission bundle. The filename `0001.htm` alone does not imply placeholder behavior.
+- **Scope:** The example and review runs establish locator mapping in the reviewed evidence, not a universal claim about every accession. Exact `0000.txt`/`.htm` remain separate placeholder names; nested and unobserved paths are not synthesized.
 
 ### Example 1: Pre-2000 Form 10-K with exhibits (1994, Pure SGML, ASCII)
 - **Filing:** Form `10-K`, Accession `0000950123-94-000687` (Johnson & Johnson).

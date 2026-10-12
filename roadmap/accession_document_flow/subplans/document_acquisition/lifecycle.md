@@ -39,11 +39,13 @@ as a skipped work-order row, not repaired by S9.
 For each target, S9 follows the retrieval mode and observed sequence pinned by S6. It
 does not compare child/index size, full-submission bundle size, or S1-reported size;
 group target requests into one bundle download; or switch an ordinary direct failure to
-the bundle. S6's user-supplied stub policy applies only to exact accession-root primary
-paths `/0000.txt`, `/0000.htm`, `/0001.txt`, and `/0001.htm`, independent of form/date;
-it requires a pinned bundle URL and observed positive sequence. Nested paths do not
-match, and catalog-only stub targets without sequence remain unresolved. The separately
-pinned catalog-direct lazy-index contract is not an ordinary direct-failure fallback.
+the bundle. Review-run and fixture evidence establishes that positive numbered child names
+map to accession-prefixed archive leaves; a valid pinned leaf is a direct locator, and
+`0001` is not inherently a placeholder. Exact primary `0000.txt`/`.htm` names remain
+placeholder signals and require an observed bundle URL and positive sequence. An indexed
+`0001.txt`/`.htm` primary without a usable prefixed link may use its observed sequence and
+bundle URL; catalog-only `0000` targets remain unresolved. The separately pinned
+catalog-direct lazy-index contract is not an ordinary direct-failure fallback.
 
 S9 resolves the declared source and selected-body bytes. Any future reuse is restricted
 to the same logical target and source; it cannot share a bundle response across targets.

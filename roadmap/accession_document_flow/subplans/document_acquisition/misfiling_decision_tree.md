@@ -223,12 +223,13 @@ pre-rewrite and post-rewrite scans distinct until equivalence across their text 
 proven; source offsets may require a rewrite map before S10 can reuse them.
 
 The legacy date/name inversion predicate and resolver are retired with
-`document_storage`; they are not current S9 rules. Do not use them as a lazy-index signal
-or alter the user-supplied exact-path primary stub policy: only `/0000.txt`, `/0000.htm`,
-`/0001.txt`, and `/0001.htm` at the accession root qualify, independent of form/date.
-S9's catalog-direct lazy-index behavior follows only the explicitly pinned selector
-contract and its response-screen evidence. Historical fixtures do not broaden the
-exact-path rule.
+`document_storage`; they are not current S9 rules. Do not use them as a lazy-index signal.
+Review-run and fixture evidence establishes accession-prefixed direct paths for positive
+numbered children, including `0001`; that filename alone is not a placeholder signal.
+Exact primary `0000.txt`/`.htm` remain the placeholder cases and require pinned bundle
+and observed-sequence evidence. S9's catalog-direct lazy-index behavior follows only the
+explicitly pinned selector contract and its response-screen evidence. Historical layout
+heuristics do not replace observed locator evidence.
 
  One-pass is a semantic contract, not just a wider return annotation: discover structural
 and lexical candidates for a given text frame once, retain stable source spans, and score

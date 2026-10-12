@@ -33,12 +33,15 @@
 
 Acquire only executable targets from immutable target plans and retain source provenance. S9 executes the S6-selected source and exact observed sequence; it does not compare advertised sizes, group target requests into one bundle fetch, or switch an ordinary failed direct request to the bundle. The catalog-direct lazy-index behavior remains a distinct, explicitly pinned selector contract, not ordinary direct-failure fallback. Durable slot/payload/type relations remain gated by S11. S9 does not import `pipelines.document_storage`.
 
-The user-supplied stub policy is limited to exact accession-root primary paths
-`/0000.txt`, `/0000.htm`, `/0001.txt`, and `/0001.htm`, independent of form/date. S6
-routes those targets only when it pins the accession bundle URL and observed positive
-sequence; catalog-only targets without sequence evidence remain unresolved. Nested
-paths and arbitrary suffix matches are excluded, as are complete-submission accession
-`.txt` filenames. S9 follows the pinned S6 target and does not classify paths itself.
+Review-run and fixture evidence establishes the mapping from positive numbered child
+names to accession-prefixed SEC archive leaves. S6 may pin a validated observed
+`<accession>-<num>.<ext>` link, or construct a catalog primary child leaf from exact
+`primaryDocument` metadata, as `direct_url`; `0001` is not inherently a placeholder.
+Exact primary `0000.txt`/`.htm` names remain placeholders and require an advertised bundle
+URL plus observed positive sequence. An indexed `0001.txt`/`.htm` primary without a
+usable prefixed child link may use that observed bundle sequence. S9 follows the pinned
+S6 target and does not classify paths itself or switch retrieval modes after direct
+failure.
 
 ## Target and result boundary
 

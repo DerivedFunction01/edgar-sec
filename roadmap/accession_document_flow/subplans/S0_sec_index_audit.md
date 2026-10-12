@@ -51,12 +51,17 @@
 - Across the distinct input identities, observed `document_format` rows include
   `0001.txt` 34 times at sequence 1 and secondary `0002.txt` through `0007.txt` 19,
   11, 10, 7, 6, and 4 times respectively. The latter rows have exhibit types and
-  matching sequence numbers. A numeric filename alone is not a primary-placeholder
-  signal; S6's exact root-level primary policy remains limited to its four documented
-  names.
+  matching sequence numbers. Review-run URL checks and fixture coverage now confirm
+  accession-prefixed child leaves for positive numbered filenames beyond sequence 7,
+  including a `.pdf` child. This establishes the observed `<accession>-<num>.<ext>`
+  mapping for the reviewed cases; it does not make a display filename alone a locator.
+  Positive `0001` links are direct when the prefixed URL is observed or constructed from
+  exact catalog primary metadata. Exact primary `0000.txt`/`.htm` remain placeholder
+  cases requiring observed bundle sequence evidence.
 - These local outputs are parser-review evidence only. Their persisted digests do not
   establish that the stored source bytes match `response_sha256`, and no captured-page
-  reconstruction has been recorded. They cannot support an S0 acceptance claim yet.
+  reconstruction has been recorded. The link-mapping finding does not support a broad
+  S0 historical-parser acceptance claim.
 
 ### Hypotheses to test, not facts to assume
 

@@ -13,10 +13,12 @@ future execution contracts.
 Any source-reuse candidate is scoped to the same logical target and source; it cannot
 share or group a complete-submission bundle response across targets.
 
-S6 uses the bundle-envelope path for an exact accession-root stub primary only when
-the pinned target includes an advertised bundle URL and observed positive sequence;
-catalog-only stub targets without sequence evidence remain unresolved. Path layout does
-not extend that policy to nested filenames.
+S6 uses direct archive paths for observed accession-prefixed positive numbered child
+links; review-run and fixture evidence establishes the `<accession>-<num>.<ext>` mapping.
+Exact `0000.txt`/`.htm` primary placeholders use the bundle-envelope path only when the
+pinned target includes an advertised bundle URL and observed positive sequence;
+catalog-only cases remain unresolved. An indexed `0001.txt`/`.htm` primary without a
+usable prefixed child link may use its observed bundle sequence.
 
 The layout distinguishes a downloaded full-submission envelope from its selected child;
 paths do not imply target grouping or authorize a bundle request for a failed direct

@@ -48,11 +48,12 @@ direct or bundle mode remains pinned; size-aware selection is deferred.
 
 An executable work target is acquired according to its pinned S6 mode and positive
 observed sequence, when applicable. S9 does not combine targets into a shared bundle
-request or switch an ordinary failed direct request to bundle retrieval. S6's
-user-supplied stub policy applies only to exact accession-root primary paths
-`/0000.txt`, `/0000.htm`, `/0001.txt`, and `/0001.htm`, independent of form/date; it
-requires the pinned bundle URL and positive observed sequence. Nested paths do not
-match, and catalog-only stub targets without sequence evidence remain unresolved.
+request or switch an ordinary failed direct request to bundle retrieval. Review-run and
+fixture evidence establishes the accession-prefixed mapping for positive numbered child
+names; a valid pinned child URL is direct, and `0001` is not inherently a placeholder.
+Exact primary `0000.txt`/`.htm` names require the pinned bundle URL and positive observed
+sequence; catalog-only cases remain unresolved. An indexed `0001.txt`/`.htm` primary
+without a usable prefixed child URL may use the observed bundle sequence.
 
 The run manifest's source-pin relationship must agree with every row: a null
 inventory snapshot pin is valid only when all rows are `catalog_direct` primary

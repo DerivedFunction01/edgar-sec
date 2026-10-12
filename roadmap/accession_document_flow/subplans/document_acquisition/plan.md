@@ -9,12 +9,16 @@ remain separate.
 **Retrieval boundary:** S9 executes each target's pinned S6 mode and observed positive
 sequence. It does not compare child/index size, full-submission bundle size, or S1-reported
 catalog size; group targets into one bundle transfer; or use bundle retrieval after an
-ordinary direct failure. The user-supplied exact-path stub policy applies only to
-accession-root primary paths `/0000.txt`, `/0000.htm`, `/0001.txt`, and `/0001.htm`,
-independent of form/date. S6 pins bundle mode only with an advertised bundle URL and
-observed positive sequence; catalog-only targets without sequence remain unresolved.
-Nested paths and arbitrary suffix matches are excluded, as is the complete-submission
-accession `.txt` filename. S9 follows the pinned S6 mode and does not classify the path.
+ordinary direct failure. Review-run and fixture evidence now establishes the SEC mapping
+from a positive numbered child leaf such as `0001.htm` to the accession-prefixed archive
+leaf `<accession>-0001.htm`. A positive numbered filename is not by itself a placeholder:
+when catalog metadata or an observed inventory link supports the accession-prefixed
+child URL, S6 pins `direct_url`. Exact `0000.txt` and `0000.htm` primary names remain
+placeholder signals; indexed cases require an advertised bundle URL and observed positive
+sequence to pin `bundle_sequence`, while catalog-only cases remain unresolved. An eligible
+indexed `0001.txt`/`.htm` primary without a usable prefixed child URL may also use its
+observed sequence and advertised bundle. S9 follows the pinned S6 mode and does not
+classify the path or retry a failed direct URL through the bundle.
 
 ## 1. Implementation checklist
 
@@ -66,7 +70,13 @@ Status markers are maintained against tracked code and focused offline tests:
   covered in an offline integration test. It does not require the M3 live runner or M4
   operator. Runner/retry lifecycle integration remains a separate M7b gate.
 - [ ] **M7b — Runner lifecycle integration:** runner/retry/cleanup verification over
-  fixture-backed processing remains incomplete.
+  fixture-backed processing remains incomplete. This is the next acquisition goal.
+  Cover an accession-prefixed numbered direct child (`<accession>-<num>.<ext>`) and an
+  exact bundle-selected child. Persist and verify the bundle child's actual selected
+  filename across S9 handoff, S10 processing, and result projection; the bundle URL's
+  `.txt` basename is not the selected-child identity. Exercise retry without reacquiring
+  a retained body, direct-404 failure without retrieval-mode switching, sibling failure
+  isolation, and cleanup only after explicit discard or publication adoption.
 - [~] **M8 — Exhibit/identity development:** source-backed profiles and declarative packs
   exist in `domain/forms/exhibits/`; the offline S9/S10 composition now emits a
   deterministic processing review artifact through the shared `review generate` and
@@ -577,12 +587,18 @@ prerequisite for offline S9/S10 composition or private result-projection develop
 
 #### Verification criteria
 
-- Exercise direct ASCII/HTML, bundle-selected child routes, binary/unrecognized outcomes,
-  processing failure, retry without reacquiring a retained body, and cleanup only after
-  explicit discard or publication adoption.
+- Exercise an accession-prefixed numbered direct child (`<accession>-<num>.<ext>`),
+  exact bundle-selected child routes, binary/unrecognized outcomes, processing failure,
+  retry without reacquiring a retained body, and cleanup only after explicit discard or
+  publication adoption.
+- Carry the bundle extraction's actual selected filename as verified evidence through
+  the staged-body handoff, S10 request/result, and terminal projection. Do not substitute
+  the bundle URL basename or infer the filename from the sequence.
+- Confirm an ordinary direct 404 remains failed without bundle fallback (separate from
+  the explicitly pinned catalog lazy-index selector), and a selected body remains intact
+  when an unrelated fixture sibling fails.
 - Processing review contains metadata and only selected derived text; no S5/S6 schema
   or durable payload output is written.
-- A valid selected body is not lost when an unrelated fixture sibling fails.
 
 ### M8a: Fixture-to-review development wiring
 

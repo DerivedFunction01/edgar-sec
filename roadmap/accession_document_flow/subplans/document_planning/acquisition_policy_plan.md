@@ -22,13 +22,13 @@ form-specific pipeline.
 
 Operation policy controls processing outputs, not retrieval cost or transport mode.
 It does not compare child/index, complete-submission, or S1-reported sizes, and it
-does not authorize grouping targets into one bundle request. S6 treats only exact
-observed primary filenames (`0000.txt`, `0000.htm`, `0001.txt`, `0001.htm`) as
-placeholders, independent of form/date; nested paths and arbitrary suffixes are
-excluded. It selects `bundle_sequence` only with a pinned bundle URL and observed
-positive sequence, so catalog-only targets without those facts remain unresolved.
-Filing-catalog accession qualification of a placeholder child URL retains its stub
-provenance but does not authorize retrieval. Other S6 locator selection remains governed by
+does not authorize grouping targets into one bundle request. Review-run and fixture
+evidence establishes that positive numbered children map to accession-prefixed archive
+leaves; an observed inventory link or exact catalog `primaryDocument` can support direct
+retrieval. `0001` is not inherently a placeholder. Exact primary `0000.txt`/`.htm` names
+remain placeholders and require an observed positive sequence plus pinned bundle URL;
+catalog-only targets remain unresolved. An indexed `0001.txt`/`.htm` primary without a
+usable prefixed link may use its observed bundle sequence. Other S6 locator selection remains governed by
 [`S6_target_plans.md`](../S6_target_plans.md).
 
 ## Operation contract
