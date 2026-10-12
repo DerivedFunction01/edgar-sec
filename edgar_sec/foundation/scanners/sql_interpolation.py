@@ -61,6 +61,10 @@ _SQL_COMPILER_PATHS = frozenset(
         # Source paths bind at read_csv sinks; selected identifiers and delimiters
         # pass through sql_identifier/sql_literal before query composition.
         "edgar_sec/pipelines/cohort/ingestion.py",
+        # Relation names are keyed only by PLAN_RELATION_SCHEMAS/WORK_ORDER_RELATION_SCHEMAS;
+        # parquet paths are manifest-validated and passed through sql_path_list. No
+        # caller-provided SQL text is interpolated into these nested relation scans.
+        "edgar_sec/pipelines/document_acquisition/plan_projection/relation_validation.py",
         # Expression SQL is compiled from validated AST nodes and catalog paths;
         # row values and limits remain bound parameters.
         "edgar_sec/pipelines/cohort/workspace.py",

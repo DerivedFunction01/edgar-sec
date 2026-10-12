@@ -22,7 +22,6 @@ class SourceStrategy(StrEnum):
     """Strategy for obtaining source data."""
 
     PRIMARY_BODY = "primary_body"
-    ARCHIVE_ROOT_XML = "archive_root_xml"
     SEPARATE_FETCH = "separate_fetch"
 
 
@@ -48,7 +47,7 @@ class CapabilityEntry:
     handler_version: str | None = None
 
 
-CATALOG_VERSION = "v1"
+CATALOG_VERSION = "v2"
 
 
 def get_capability(
@@ -67,11 +66,13 @@ def get_capability(
             status=CapabilityStatus.SUPPORTED,
             source_strategy=SourceStrategy.PRIMARY_BODY,
             output_kind=OutputKind.RAW_BYTES,
+            handler_id="raw_identity",
+            handler_version="1",
         )
 
     if operation == "render_to_txt":
-        if (suffix_class == "xml" and path_shape == "nested") or (
-            suffix_class in ("markup", "text")
+        if suffix_class in ("markup", "text") or (
+            suffix_class == "xml" and path_shape == "nested"
         ):
             return CapabilityEntry(
                 family=family,
@@ -80,24 +81,8 @@ def get_capability(
                 status=CapabilityStatus.SUPPORTED,
                 source_strategy=SourceStrategy.PRIMARY_BODY,
                 output_kind=OutputKind.TEXT,
-                handler_id="html_to_text"
-                if suffix_class == "markup"
-                or (suffix_class == "xml" and path_shape == "nested")
-                else "text_passthrough",
-                handler_version="v1",
-            )
-
-    if operation == "render_to_xml":
-        if path_shape == "nested" and suffix_class == "xml":
-            return CapabilityEntry(
-                family=family,
-                role=role,
-                operation=operation,
-                status=CapabilityStatus.SUPPORTED,
-                source_strategy=SourceStrategy.ARCHIVE_ROOT_XML,
-                output_kind=OutputKind.XML,
-                handler_id="xml_passthrough",
-                handler_version="v1",
+                handler_id="normalize_document",
+                handler_version="1",
             )
 
     return CapabilityEntry(

@@ -9,6 +9,7 @@ import pytest
 from edgar_sec.pipelines.document_acquisition.body_handoff import (
     BodyHandoffError,
     get_staged_body_ref,
+    get_staged_body_metadata_ref,
     read_body_consumption_receipt,
     record_body_consumption_receipt,
 )
@@ -123,6 +124,67 @@ def test_staged_body_ref_verifies_direct_and_bundle_files(tmp_path, bundle) -> N
     )
     assert ref.source_response_byte_size == len(_SOURCE if bundle else _SELECTED)
     assert ref.selected_filename == ("report.htm" if bundle else None)
+
+
+def test_metadata_ref_validates_pins_without_opening_or_hashing_body(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import edgar_sec.pipelines.document_acquisition.body_handoff as body_handoff
+
+    paths, run_id, selected_path, source_path = _make_run(tmp_path, bundle=True)
+
+    def forbidden(*_args: object, **_kwargs: object) -> None:
+        raise AssertionError("metadata-only handoff must not open body bytes")
+
+    monkeypatch.setattr(body_handoff, "_hash_file", forbidden)
+    monkeypatch.setattr(body_handoff.os, "open", forbidden)
+    ref = get_staged_body_metadata_ref(paths, run_id, _TARGET_ID)
+
+    assert ref.path == selected_path
+    assert ref.byte_size == len(_SELECTED)
+    assert ref.sha256 == hashlib.sha256(_SELECTED).hexdigest()
+    assert ref.selected_filename == "report.htm"
+    assert ref.source_response_path == source_path
+    assert ref.source_response_byte_size == len(_SOURCE)
+
+
+def test_metadata_ref_refuses_selected_size_mismatch_without_hashing(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import edgar_sec.pipelines.document_acquisition.body_handoff as body_handoff
+
+    paths, run_id, _selected_path, _source_path = _make_run(tmp_path)
+    with sqlite3.connect(paths.run_state_path(run_id)) as connection:
+        connection.execute(
+            "UPDATE target_state SET selected_byte_size = selected_byte_size + 1 "
+            "WHERE target_id = ?",
+            (_TARGET_ID,),
+        )
+    monkeypatch.setattr(
+        body_handoff,
+        "_hash_file",
+        lambda *_args, **_kwargs: pytest.fail("metadata handoff hashed body bytes"),
+    )
+
+    with pytest.raises(BodyHandoffError, match="selected body size"):
+        get_staged_body_metadata_ref(paths, run_id, _TARGET_ID)
+
+
+def test_metadata_ref_refuses_source_size_mismatch_without_hashing(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import edgar_sec.pipelines.document_acquisition.body_handoff as body_handoff
+
+    paths, run_id, _selected_path, source_path = _make_run(tmp_path, bundle=True)
+    source_path.write_bytes(b"short")
+    monkeypatch.setattr(
+        body_handoff,
+        "_hash_file",
+        lambda *_args, **_kwargs: pytest.fail("metadata handoff hashed body bytes"),
+    )
+
+    with pytest.raises(BodyHandoffError, match="source response size"):
+        get_staged_body_metadata_ref(paths, run_id, _TARGET_ID)
 
 
 def test_staged_body_ref_allows_deleted_source_envelope(tmp_path) -> None:

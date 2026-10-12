@@ -13,6 +13,8 @@ def test_work_order_schema_is_ordered_extension_of_s6_target_schema() -> None:
             *target_schema,
             pa.field("executable", pa.bool_(), nullable=False),
             pa.field("skip_reason", pa.string(), nullable=True),
+            pa.field("lazy_index_trigger_id", pa.string(), nullable=True),
+            pa.field("lazy_index_trigger_version", pa.string(), nullable=True),
         ],
         metadata=target_schema.metadata,
     )
@@ -22,4 +24,6 @@ def test_work_order_schema_is_ordered_extension_of_s6_target_schema() -> None:
         *target_schema.names,
         "executable",
         "skip_reason",
+        "lazy_index_trigger_id",
+        "lazy_index_trigger_version",
     ]

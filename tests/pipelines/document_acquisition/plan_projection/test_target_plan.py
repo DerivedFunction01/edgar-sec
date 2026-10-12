@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -18,13 +17,23 @@ from edgar_sec.pipelines.document_acquisition.plan_projection.target_plan import
     _validate_row,
     load_acquisition_work_order,
 )
+from edgar_sec.pipelines.document_acquisition.arrow_schemas import (
+    RESOLVED_OPERATION_SCHEMA,
+)
 from edgar_sec.pipelines.document_acquisition.schemas import (
     target_plan_bundle_schema_version,
     target_plan_matcher_version,
 )
 from edgar_sec.pipelines.document_planning.schemas import (
+    OPERATION_INPUT_SCHEMA_VERSION,
+    PLAN_RELATION_SCHEMAS,
+    SOURCE_REQUEST_SCHEMA_VERSION,
     TARGET_SCHEMA,
     TARGET_SCHEMA_VERSION,
+    TARGET_OPERATION_SCHEMA_VERSION,
+)
+from tests.pipelines.document_acquisition.plan_projection.plan_fixture import (
+    write_plan_bundle,
 )
 
 
@@ -37,6 +46,9 @@ def target_plan_factory(tmp_path):
         identity = {
             "bundle_schema_version": target_plan_bundle_schema_version(),
             "target_schema_version": TARGET_SCHEMA_VERSION,
+            "target_operation_schema_version": TARGET_OPERATION_SCHEMA_VERSION,
+            "source_request_schema_version": SOURCE_REQUEST_SCHEMA_VERSION,
+            "operation_input_schema_version": OPERATION_INPUT_SCHEMA_VERSION,
             "matcher_version": target_plan_matcher_version(),
             "row_group_size": DEFAULT_ROW_GROUP_SIZE,
             "profile_digest": "c" * 64,
@@ -47,45 +59,9 @@ def target_plan_factory(tmp_path):
         }
         plan_id = f"dplan_{canonical_hash(identity)[:32]}"
         plan_root = tmp_path / plan_id
-        (plan_root / "targets" / "form=10-K").mkdir(parents=True)
+        plan_root.mkdir(parents=True)
         target_rows = rows or _rows(plan_id)
-        part_path = plan_root / "targets" / "form=10-K" / "part-00000.parquet"
-        pq.write_table(
-            pa.Table.from_pylist(target_rows, schema=TARGET_SCHEMA),
-            part_path,
-            row_group_size=DEFAULT_ROW_GROUP_SIZE,
-        )
-        statuses = Counter(row["status"] for row in target_rows)
-        manifest = {
-            "plan_id": plan_id,
-            "bundle_schema_version": target_plan_bundle_schema_version(),
-            "target_schema_version": TARGET_SCHEMA_VERSION,
-            "matcher_version": target_plan_matcher_version(),
-            "row_group_size": identity["row_group_size"],
-            "profile_id": "profile-fixture",
-            "profile_schema_version": "1",
-            "profile_version": "1",
-            "profile_digest": identity["profile_digest"],
-            "catalog_plan_id": identity["catalog_plan_id"],
-            "catalog_plan_digest": identity["catalog_plan_digest"],
-            "inventory_snapshot_id": identity["inventory_snapshot_id"],
-            "inventory_snapshot_digest": identity["inventory_snapshot_digest"],
-            "plan_identity": identity,
-            "target_row_count": len(target_rows),
-            "status_counts": dict(statuses),
-            "origin_counts": {"inventory_index": len(target_rows)},
-            "reason_counts": {},
-            "parts": [
-                {
-                    "path": "targets/form=10-K/part-00000.parquet",
-                    "form": "10-K",
-                    "rows": len(target_rows),
-                    "byte_size": part_path.stat().st_size,
-                    "sha256": file_sha256(part_path),
-                }
-            ],
-        }
-        _seal_manifest(manifest, plan_root)
+        write_plan_bundle(plan_root, plan_id, identity, target_rows)
         return plan_root, target_rows
 
     return build
@@ -117,7 +93,7 @@ def _rows(plan_id: str) -> list[dict[str, Any]]:
             "sequence": None,
             "byte_size": 250,
             "availability_evidence": "index_html",
-            "catalog_direct_selection": "submitted_primary",
+            "catalog_direct_selection": None,
         },
         {
             "target_id": "",
@@ -201,7 +177,7 @@ def _seal_manifest(manifest: dict[str, Any], root: Path) -> None:
     (root / "plan.json").write_text(json.dumps(manifest), encoding="utf-8")
 
 
-def test_projects_all_rows_and_preserves_selector_provenance(
+def test_projects_targets_and_preserves_v4_operation_relations(
     target_plan_factory, tmp_path
 ):
     plan_root, source_rows = target_plan_factory()
@@ -214,10 +190,6 @@ def test_projects_all_rows_and_preserves_selector_provenance(
     assert work_order.num_rows == len(source_rows)
     assert result.executable_count == 2
     assert result.skipped_count == 2
-    assert (
-        work_order.column("catalog_direct_selection").to_pylist()[0]
-        == "submitted_primary"
-    )
     assert work_order.column("executable").to_pylist() == [True, True, False, False]
     assert work_order.column("skip_reason").to_pylist() == [
         None,
@@ -225,20 +197,64 @@ def test_projects_all_rows_and_preserves_selector_provenance(
         "candidate_not_authorized",
         "target_not_matched",
     ]
-    assert target_plan_bundle_schema_version() == 3
+    assert target_plan_bundle_schema_version() == 4
     assert target_plan_matcher_version() == "target-matcher-v2"
-    assert result.bundle_schema_version == 3
+    assert result.bundle_schema_version == 4
     assert result.matcher_version == "target-matcher-v2"
-    assert result.target_schema_version == 1
+    assert result.target_schema_version == TARGET_SCHEMA_VERSION
+    assert sum(
+        part["row_count"] for part in result.relation_parts["target_operations"]
+    ) == 3 * len(source_rows)
+    for relation in (
+        "target_operations",
+        "source_requests",
+        "operation_inputs",
+    ):
+        descriptors = result.relation_parts[relation]
+        assert descriptors
+        table = pq.read_table(output.parent / descriptors[0]["path"])
+        assert table.schema.equals(
+            PLAN_RELATION_SCHEMAS[relation], check_metadata=False
+        )
+    operation_rows = pq.read_table(
+        output.parent / result.relation_parts["target_operations"][0]["path"]
+    ).to_pylist()
+    input_rows = pq.read_table(
+        output.parent / result.relation_parts["operation_inputs"][0]["path"]
+    ).to_pylist()
+    assert len(operation_rows) == 3 * len(source_rows)
+    assert {row["operation_id"] for row in input_rows} <= {
+        row["operation_id"] for row in operation_rows
+    }
+    assert result.relation_counts["source_requests"] == 2
+    resolved_descriptors = result.relation_parts["resolved_operations"]
+    resolved_table = pq.read_table(output.parent / resolved_descriptors[0]["path"])
+    assert resolved_table.schema.equals(RESOLVED_OPERATION_SCHEMA, check_metadata=False)
+    resolved_rows = resolved_table.to_pylist()
+    assert len(resolved_rows) == 3 * len(source_rows)
+    assert all(row["selected"] is (row["operation"] == "raw") for row in resolved_rows)
+    assert (
+        sum(
+            row["source_request_id"] is not None
+            for row in resolved_rows
+            if row["operation"] == "raw"
+        )
+        == 2
+    )
     assert file_sha256(plan_root / "targets/form=10-K/part-00000.parquet") == next(
-        part["sha256"] for part in _manifest(plan_root)["parts"]
+        part["sha256"]
+        for part in _manifest(plan_root)["parts"]
+        if part["relation"] == "targets"
     )
 
 
 def test_missing_declared_part_size_fails_before_output(target_plan_factory, tmp_path):
     plan_root, _rows_value = target_plan_factory()
     manifest = _manifest(plan_root)
-    del manifest["parts"][0]["byte_size"]
+    target_part = next(
+        part for part in manifest["parts"] if part["relation"] == "targets"
+    )
+    del target_part["byte_size"]
     _seal_manifest(manifest, plan_root)
     output = tmp_path / "not-created" / "work-order.parquet"
 
@@ -302,6 +318,67 @@ def test_unsupported_bundle_schema_version_in_identity_is_rejected(
         load_acquisition_work_order(plan_root, output)
 
     assert not output.exists()
+
+
+@pytest.mark.parametrize(
+    ("location", "field"),
+    [
+        ("manifest", "target_operation_schema_version"),
+        ("manifest", "source_request_schema_version"),
+        ("manifest", "operation_input_schema_version"),
+        ("plan_identity", "target_operation_schema_version"),
+        ("plan_identity", "source_request_schema_version"),
+        ("plan_identity", "operation_input_schema_version"),
+    ],
+)
+def test_relation_schema_version_mismatch_is_rejected(
+    target_plan_factory, tmp_path, location, field
+):
+    plan_root, _rows_value = target_plan_factory()
+    manifest = _manifest(plan_root)
+    target = manifest if location == "manifest" else manifest["plan_identity"]
+    target[field] += 1
+    _seal_manifest(manifest, plan_root)
+
+    message = field if location == "manifest" else "relation schema versions"
+    with pytest.raises(TargetPlanError, match=message):
+        load_acquisition_work_order(plan_root, tmp_path / "work-order.parquet")
+
+
+@pytest.mark.parametrize(
+    ("mutation", "message"),
+    [
+        ("dangling", "lack full matching coverage"),
+        ("duplicate", "not sorted and unique"),
+    ],
+)
+def test_operation_input_relations_fail_closed(
+    target_plan_factory, tmp_path, mutation, message
+):
+    plan_root, _rows_value = target_plan_factory()
+    manifest = _manifest(plan_root)
+    descriptor = next(
+        part for part in manifest["parts"] if part["relation"] == "operation_inputs"
+    )
+    path = plan_root / descriptor["path"]
+    rows = pq.read_table(path).to_pylist()
+    if mutation == "dangling":
+        rows[0]["source_request_id"] = "f" * 64
+    else:
+        rows.append(dict(rows[-1]))
+        descriptor["rows"] += 1
+        manifest["relation_row_counts"]["operation_inputs"] += 1
+    pq.write_table(
+        pa.Table.from_pylist(rows, schema=PLAN_RELATION_SCHEMAS["operation_inputs"]),
+        path,
+        row_group_size=DEFAULT_ROW_GROUP_SIZE,
+    )
+    descriptor["byte_size"] = path.stat().st_size
+    descriptor["sha256"] = file_sha256(path)
+    _seal_manifest(manifest, plan_root)
+
+    with pytest.raises(TargetPlanError, match=message):
+        load_acquisition_work_order(plan_root, tmp_path / "work-order.parquet")
 
 
 @pytest.mark.parametrize(
@@ -445,6 +522,11 @@ def _replace_part(root: Path, rows: list[dict[str, Any]]) -> None:
     part = root / "targets/form=10-K/part-00000.parquet"
     pq.write_table(pa.Table.from_pylist(rows, schema=TARGET_SCHEMA), part)
     manifest = _manifest(root)
-    manifest["parts"][0]["byte_size"] = part.stat().st_size
-    manifest["parts"][0]["sha256"] = file_sha256(part)
+    target_descriptor = next(
+        descriptor
+        for descriptor in manifest["parts"]
+        if descriptor["relation"] == "targets"
+    )
+    target_descriptor["byte_size"] = part.stat().st_size
+    target_descriptor["sha256"] = file_sha256(part)
     _seal_manifest(manifest, root)

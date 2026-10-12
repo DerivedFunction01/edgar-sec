@@ -4,15 +4,16 @@
 
 - Owning stage in [S9](S9_acquisition.md): acquisition work-order boundary.
 - Status: S6 target-plan production and the S9a bounded Parquet adapter are
-  implemented; run projection and network acquisition remain separate.
+  implemented. The S6 bundle is v3 and contains the target relation only; no new
+  operation-aware S6/S9 schema is implemented. Acquisition remains the separate S9 run.
 - Depends on: S6 target-plan schema and S4 broker lifecycle; the target bundle is
   self-contained for acquisition.
 
-## Current tracked-code audit (2026-10-10)
+## Current tracked-code audit (2026-10-12)
 
-- **Status: S9a projection and S9 acquisition are integrated.** The S6 producer emits bundle schema v2 with declared target-part byte sizes. `plan_projection.target_plan` validates that pinned bundle and streams every target into the Parquet work-order schema; `plan_projection.project` binds it to the immutable run manifest and state database. S9 performs bounded HTTP acquisition and exact bundle-sequence extraction; processing remains the separate S10 stage.
-- **Evidence:** [`plan_projection/target_plan.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/target_plan.py), [`plan_projection/project.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/project.py), [`arrow_schemas.py`](../../../edgar_sec/pipelines/document_acquisition/arrow_schemas.py), and their mirrored tests validate pins, bounded projection, and locator semantics. [`target_runner.py`](../../../edgar_sec/pipelines/document_acquisition/target_runner.py) owns S9 slot acquisition; fixture capture/replay support remains limited to retained direct responses and bodyless failures. The former catalog-plan adapter is retired with `document_storage`.
-- **Next step:** complete remaining fixture and historical mismatch coverage. Family-aware HTML evaluation and broader S10 operation handling remain deferred; the offline raw/TEXT processing and review slice is implemented. S11 publication remains gated.
+- **Status: S9a projection and S9 acquisition are integrated.** The current S6 producer emits target-only bundle schema v3 with declared target-part byte sizes. `plan_projection.target_plan` validates that pinned bundle and streams every target into the target-only Parquet work-order schema; `plan_projection.project` binds it to the immutable run manifest and state database. S9 performs bounded HTTP acquisition and exact bundle-sequence extraction. This does not implement operation-aware S6/S9 schemas, S10 coordination, or renderer handlers.
+- **Evidence:** [`plan_projection/target_plan.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/target_plan.py), [`plan_projection/project.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/project.py), [`schemas.py`](../../../edgar_sec/pipelines/document_acquisition/schemas.py), and [`arrow_schemas.py`](../../../edgar_sec/pipelines/document_acquisition/arrow_schemas.py) own the target-only contracts. [`test_offline_acceptance.py`](../../../tests/pipelines/document_acquisition/test_offline_acceptance.py) pins bundle schema v3; [`plan_projection/test_target_plan.py`](../../../tests/pipelines/document_acquisition/plan_projection/test_target_plan.py) covers validation/projection. The former catalog-plan adapter is retired with `document_storage`.
+- **Next step:** complete remaining historical mismatch coverage. Family-aware lazy-index triggers and the requested S10 processing policy remain unimplemented; `process --run-id`, an S10 coordinator, and renderer handlers do not exist. `process_target` is a per-target service. M7b runner/retry/isolation coverage is complete, but cleanup remains explicitly gated; S11 publication remains gated.
 
 ## Objective
 
@@ -102,8 +103,10 @@ already pinned in the plan. For a bundle target, `target_url` contains the
 accession's advertised bundle URL and the target row supplies an exact sequence.
 S6 sets `source_origin="inventory_index"` for every row whenever an inventory
 snapshot is selected; there is no catalog-path fallback for a missing indexed
-accession. The plan is self-contained for acquisition. Catalog-direct bundle
-extraction is not part of v1.
+accession. The plan is self-contained for acquisition. A catalog-direct plan begins
+with its pinned direct primary; its explicit lazy-index selector can resolve an
+observed direct or bundle-sequence candidate. Offline selection is covered by
+[`test_runner.py`](../../../tests/pipelines/document_acquisition/test_runner.py).
 
 The adapter projects the retrieval mode S6 pinned; it does not cost-select between
 direct and bundle retrieval, group targets into one bundle transfer, or change an

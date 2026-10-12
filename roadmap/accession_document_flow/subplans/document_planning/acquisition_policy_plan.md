@@ -1,23 +1,27 @@
-# S6 Acquisition-Policy Extension Plan
+# S6 Declarative Target Plans and S9/S10 Acquisition Policy
 
-**Status: S6 relation schemas v1 and S9 work/run schemas v2/v3 designed; serialization,
-tests, and implementation pending.** The profile request and plan-relation contract is specified in
-[S6 `specs.md`](specs.md). The current target-plan bundle does not yet serialize the
-operation/source relations described there.
+**Status:** `document_planning` generates target plans and carries declarative requested
+operations and source inputs. S6 bundle v4, target schema v1, and matcher v2 are implemented
+as declarative-only; the explicitly mirrored tests passed (106). `document_planning` does
+not resolve acquisition/processing support, handler IDs/versions, renderer availability, or
+lazy-index trigger policy. S9 resolver/work-order implementation remains in progress; those
+runtime resolutions belong to `document_acquisition`'s S9/S10 work-order policy.
 
 ## Goal
 
-For each logical target, let the profile request one or more supported operations over the
-acquired file: preserve it raw, render it to text, or produce an XML representation where
-that operation is supported. Shared path facts and filing-family capability decide
-which operations exist. Explicitly requesting multiple operations means producing each
-supported result. S6/S9 v1 binds all supported operations to one target body request.
+For each logical target, let declarative profile intent request one or more operations over
+the acquired file: preserve it raw, render it to text, or produce an XML representation.
+The request does not assert that an operation is supported. Explicitly requesting multiple
+operations asks the owning acquisition/processing policy to resolve each independently.
+S9/S10 work-order policy resolves source inputs, supported operations, and execution
+metadata; S6 does not resolve support or bind a handler.
 
-Document planning remains offline and body-blind. It pins operations, the one primary
-body source request, and the operation-to-source link. S9 acquires that input. A separate
-processing/engine owner executes supported renderers and stores each result under the
-logical document. A handler needing another source or multiple inputs is unsupported
-until a versioned S6/S9 source-input extension. XML parsing remains in a separate
+Document planning remains offline and body-blind. It may carry requested operations and
+declared source inputs, but does not resolve acquisition/processing support, handler IDs or
+versions, renderer availability, or lazy-index triggers. S9 resolves acquisition inputs
+and family-specific lazy-index policy in its work order; S10 resolves processing support
+and handler/renderer metadata there. A handler needing another source or multiple inputs
+requires an explicit versioned source-input contract. XML parsing remains in a separate
 form-specific pipeline.
 
 Operation policy controls processing outputs, not retrieval cost or transport mode.
@@ -28,10 +32,15 @@ leaves; an observed inventory link or exact catalog `primaryDocument` can suppor
 retrieval. `0001` is not inherently a placeholder. Exact primary `0000.txt`/`.htm` names
 remain placeholders and require an observed positive sequence plus pinned bundle URL;
 catalog-only targets remain unresolved. An indexed `0001.txt`/`.htm` primary without a
-usable prefixed link may use its observed bundle sequence. Other S6 locator selection remains governed by
-[`S6_target_plans.md`](../S6_target_plans.md).
+usable prefixed link may use its observed bundle sequence. Other S6 locator selection
+remains governed by [`S6_target_plans.md`](../S6_target_plans.md). These are declarative
+source inputs and target-match outcomes; they do not establish acquisition support,
+handlers, or lazy-index permission.
 
-## Operation contract
+## Work-order operation contract (proposed)
+
+The vocabulary may be carried declaratively by S6. The meanings below are proposed
+S9/S10 work-order semantics, not operation-support resolution performed during planning.
 
 Treat operation names as a closed, versioned vocabulary:
 
@@ -41,9 +50,10 @@ Treat operation names as a closed, versioned vocabulary:
 | `render_to_txt` | Produce a text representation using a family/route renderer first, then the generic engine normalizer for eligible text/HTML sources. PDF extraction is unavailable. |
 | `render_to_xml` | Produce XML from a declared HTML input using a family-specific transform first, then an evidence-backed generic transform. It does not fetch an XML sibling or perform semantic XML/XBRL parsing. |
 
-The operation capability is resolved for `(filing family, target role/type, path facts)`.
-A form family may implement different operations for the same suffix; an extension alone
-does not select a statutory family or guarantee that an operation is accurate.
+The S9/S10 work-order policy resolves operation support for `(filing family, target
+role/type, path facts)`. A form family may implement different operations for the same
+suffix; an extension alone does not select a statutory family or guarantee that an
+operation is accurate. S6 carries requested operations as intent only.
 
 ### Explicit operations and default priority
 
@@ -67,24 +77,25 @@ whether or not it appears in the list. Execute every listed derived operation im
 for the selected family and path facts. If a derived operation is not implemented, record
 it as unsupported; that does not invalidate the logical target, raw, or other outputs.
 
-When a target omits `acquisition_policy`, choose the first implemented derived renderer
-in this default priority; raw remains the baseline:
+When a target omits `acquisition_policy`, the S9/S10 work-order resolver chooses the first
+supported derived renderer in this default priority; raw remains the baseline:
 
 ```text
 render_to_xml > render_to_txt
 ```
 
-"Implemented" means registered for the resolved family, target role, and path-facts
-combination. It does not mean the operation is guaranteed to succeed on a particular body.
-At execution time, a fetch or transform failure is recorded against that operation; it does
-not silently fall through to a different URL or operation. A profile can explicitly
-request multiple derived operations when it wants more than the default rendered view.
+Support means registered for the resolved family, target role, and path-facts combination
+in the S9/S10 work-order policy. It does not mean the operation is guaranteed to succeed
+on a particular body. At execution time, a fetch or transform failure is recorded against
+that operation; it does not silently fall through to a different URL or operation. A
+profile can explicitly request multiple derived operations when it wants more than the
+default rendered view.
 
 Keep target `optional` separate from operation support and outcome. It answers whether the
 logical document may be absent; it does not mean an unsupported render operation is a
-missing document. If all explicitly requested operations are unsupported, S6 records that
-status without invalidating the logical target; acquisition and output retention happen in
-their owning stages.
+missing document. If all explicitly requested operations are unsupported, the S9/S10 work
+order records that status without invalidating the logical target; acquisition and output
+retention happen in their owning stages.
 
 ## Route-model reuse and ownership
 
@@ -111,16 +122,18 @@ candidate exists. URL construction and validation remain outside the domain clas
 
 `DocumentPathShape` and `DocumentSuffixClass` are shared classification enums inside that
 value object, not parent enums for pipeline-specific enums. `document_storage` maps them to
-its existing local disposition (normalize, preserve, or defer); document acquisition maps
-them to operations and source strategies. Acquisition can classify `.fil`, `.zip`, `.eis`,
-and image suffixes as opaque/raw-only without forcing the current document-storage
-processor to change how it treats an unknown suffix.
+its existing local disposition (normalize, preserve, or defer); S9/S10 work-order policy
+maps them to acquisition/processing decisions. `document_planning` carries declared
+operations and source inputs only; it does not resolve support. Acquisition can classify
+`.fil`, `.zip`, `.eis`, and image suffixes as opaque/raw-only without forcing the current
+document-storage processor to change how it treats an unknown suffix.
 
 For an XSL-style `.../*.xml` path, the facts are `archive path + nested + .xml`. The
 selected response remains raw; if its content route is rendered markup,
-`render_to_txt` uses a family-specific handler before the generic normalizer. A
-family-specific or evidence-backed generic XML transform consumes a declared HTML input;
-it does not use a separate archive-root XML source. Flat `.xml`/`.xsd` remains raw-only.
+  S9/S10 work-order policy may resolve `render_to_txt` with a family-specific handler
+  before the generic normalizer. A family-specific or evidence-backed generic XML
+  transform consumes a declared HTML input; it does not use a separate archive-root XML
+  source. Flat `.xml`/`.xsd` remains raw-only.
 No classifier value should encode the set of operations that a form supports. New suffix
 facts such as `.zip` or `.fil` must not silently change document-storage behavior.
 
@@ -128,9 +141,10 @@ Do not make `DocumentStorageRoute` and `DocumentAcquisitionRoute` subclasses of 
 populated enum. Python enums cannot be extended that way, and one classification may
 produce several operation results. Use shared path facts and separate policy mappings:
 the historical document-storage pipeline mapped facts to normalize/store decisions;
-that pipeline is retired. Acquisition maps facts plus family and target intent to
-supported operations and source requests. This keeps the acquisition matrix independent
-without duplicating file suffix parsing.
+  that pipeline is retired. S9/S10 work-order policy maps facts plus family and target
+  intent to source and processing decisions. `document_planning` carries declarative
+  requests without resolving them. This keeps the acquisition matrix independent without
+  duplicating file suffix parsing.
 
 | Consumer | Current route dependency | Phase-1 migration surface |
 |---|---|---|
@@ -154,9 +168,9 @@ candidate; S6 applies its own allowed-path rule, same-accession URL validation, 
 availability/evidence rules.
 
 Suffix MIME is not response MIME or body evidence. The generic classifier likewise does
-not choose operation support. Resolve capabilities from `(family, target role/type,
-path_shape, suffix_class, operation)`; each capability declares its source-input strategy,
-handler/version, and output kind. Keep `REPRESENTATION_*` as existing engine/storage output
+not choose operation support. S9/S10 work-order policy resolves capabilities from `(family,
+target role/type, path_shape, suffix_class, operation)`; each capability declares its
+source-input strategy, handler/version, and output kind. Keep `REPRESENTATION_*` as existing engine/storage output
 labels, distinct from acquisition operation names.
 
 ## Path-facts operation matrix
@@ -171,62 +185,70 @@ S6 locator rule.
 | Image, `.fil`, `.zip`, `.eis`, `.paper`, and other binary routes | `raw` only; ignore rendered operations. A paper stub remains raw source, not a text-rendering request. |
 | PDF | `raw` only. No PDF text extractor is currently available. |
 | Flat `.xml` or `.xsd` | Preserve bytes as `raw` only, without parsing or a render operation. Semantic XML/XBRL parsing remains form-pipeline work. |
-| Validated XSL-style nested `.xml` | `raw` preserves the exact selected response. For a rendered-markup route, `render_to_txt` uses a family-specific handler then the generic normalizer. `render_to_xml` requires a registered family-specific or evidence-backed generic transform over a declared HTML input; it never fetches a sibling `.xml` source. |
-| Other `.htm`, `.html`, `.xhtml` | `raw` plus `render_to_txt` using a family-specific handler before the generic normalizer. A family-specific `render_to_xml` may override a reviewed generic transform. |
-| `.txt` | `raw` plus `render_to_txt` using a family-specific handler before the generic normalizer. |
+| Validated XSL-style nested `.xml` | `raw` preserves the exact selected response. S9/S10 work-order policy may resolve `render_to_txt` for rendered markup. Any `render_to_xml` transform consumes a declared HTML input; it never fetches a sibling `.xml` source. |
+| Other `.htm`, `.html`, `.xhtml` | `raw` plus `render_to_txt` when supported by S9/S10 work-order resolution; family/route-specific handlers precede the generic normalizer. |
+| `.txt` | `raw` plus `render_to_txt` when supported by S9/S10 work-order resolution; family/route-specific handlers precede the generic normalizer. |
 | Other/unknown suffix | `raw` only. Unknown means unclassified, not a renderer category. |
 
-`render_to_xml` uses an explicit family-specific transform before an evidence-backed
-generic transform over a declared HTML source; it is not a source-path shortcut or
-semantic XML parser. Its handler and output kind are pinned by the capability catalog.
-Flat XML/XSD remain raw-only. Unsupported operations do not change the raw source outcome.
+Where approved, `render_to_xml` uses an explicit family-specific transform before an
+evidence-backed generic transform over a declared HTML source; it is not a source-path
+shortcut or semantic XML parser. S10 work-order resolution owns handler/version and output
+availability. Flat XML/XSD remain raw-only. Unsupported operations do not change the raw
+source outcome.
 
-### Form 4 cases
+### Form 4 boundary
 
-- Form 4 has observed `.xml`, XSL-nested `.xml`, and `.htm` paths; each selected source
-  remains available raw. Its proposed `render_to_xml` handler applies only to the declared
-  HTML input path and overrides any later generic XML transform.
-- Other forms remain raw for XML/XSD sources unless a separate capability is registered.
-  A reviewed generic transform may cover eligible HTML inputs; it never makes flat XML a
-  rendered output or fetches a bundle sibling.
-- XML/XSD bytes are not parsed by acquisition. Any Form 4 semantic parsing is owned by
-  the separate Form 4 pipeline.
+Form 4 has no lazy-index trigger. This plan defines no Form 4 XML output or handler
+contract. Any future transform requires a separately reviewed design and implementation;
+XML/XSD parsing remains outside acquisition.
 
-## Profile, capability, and plan identity
+## Declarative intent and S9/S10 work-order resolution
 
-Add an optional `acquisition_policy.operations` field to each profile target. Absence
-means default-priority resolution; an explicit list means multi-select. Validate only the
-closed operation vocabulary at profile load, then resolve support from the versioned S6
-acquisition capability catalog and the engine's handler metadata. Do not duplicate
-file-route/family support tables across
-the profile loader, planner, S9, and processing stage.
+Add an optional `acquisition_policy.operations` field to each profile target as declarative
+intent. Absence leaves derived-operation selection to the S9/S10 work-order policy; an
+explicit list requests those operations. `document_planning` may validate syntax and the
+closed operation vocabulary, but must not resolve support, source strategy, handler
+IDs/versions, renderer availability, or lazy-index triggers.
 
-The S6 acquisition catalog declares, per family/role/path-facts/operation:
+The `document_acquisition` work-order policy resolves, per family/role/path-facts/requested
+operation:
 
-- support status and a source-input strategy. Bundle schema v4 supports only the
-  target's validated primary source request; a capability requiring another locator is
-  not executable until a later, versioned source-input contract exists;
-- the handler identity/version (raw uses the built-in identity handler; transformed
-  operations use an engine handler);
-- which output representation it produces.
+- acquisition support, source-input strategy, and any family-specific lazy-index trigger
+  under S9;
+- processing support, renderer availability, handler identity/version, and output kind
+  under S10.
 
-An operation counts as implemented only when its source strategy is registered and, when
-required, its handler ID/version has a matching engine metadata descriptor. Engine tests
-enforce descriptor/runtime-registry parity; S6 reads descriptors, not handler callables.
+An operation counts as supported only after work-order resolution has validated its source
+strategy and, when required, its handler ID/version against engine metadata/runtime
+registration. S6 intent is not evidence of support or implementation.
 
-When default priority is used, the planner resolves it against this catalog and pins the
-chosen operation and S6 catalog version. For an explicit set, it pins all requested
-operations and records unsupported operations as unsupported, not as successful output.
-The bundle's `target_operations` relation has one row per target and closed-vocabulary
-operation; `source_requests` identifies the target body's input and `operation_inputs`
-links supported requested operations to it. They remain separate Parquet relations, not
-columns or rows duplicated onto the target relation. A change to profile operations,
-capability resolution, source-path rules, or operation status changes plan identity.
+The finalized S6 plan bundle is v4, with target relation schema v1 and matcher v2. Its
+declarative relations are separately versioned and ordered as follows:
 
-The profile digest includes the canonical operation set (canonical order, since explicit
-list order is not preference). The plan identity/manifest pins profile digest, S6 catalog
-version, engine capability metadata version, target/operation schema versions, selected
-handler/version IDs, and any locator-resolver version.
+- `target_operations` v1: `(operation_id, target_id, operation, requested, request_mode)`.
+  `request_mode` is one of `mandatory_raw`, `profile`, `not_requested`, or
+  `default_candidate`.
+- `source_requests` v1: `(source_request_id, target_id, source_role, source_origin,
+  retrieval_mode, request_url, sequence, canonical_path)`.
+- `operation_inputs` v1: `(operation_id, input_ordinal, source_request_id, input_role)`;
+  the generic `input_role` is `selected_target_body`.
+
+The manifest carries intent counts named `requested_operation_counts`,
+`default_candidate_operation_counts`, `unrequested_operation_counts`, and
+`unique_source_request_count`. These relations and counts carry only declarative operation
+intent and source-input declarations. They contain no acquisition/processing support,
+capability or handler versions, handler IDs, renderer availability, runtime resolutions,
+or lazy-trigger policy. S6 intent relations are implemented as declarative-only. S9
+work-order resolution owns runtime resolution and may define a distinct
+operation schema. A change to declared profile operations or source inputs changes S6 plan
+identity; resolution changes are owned and versioned by the S9/S10 work-order policy.
+
+The profile digest includes the canonical requested operation set (canonical order, since
+explicit list order is not preference). The S6 plan identity pins declared intent and
+source inputs. The S9/S10 work order separately pins locator/resolver policy, processing
+policy, and selected handler/version IDs after resolution. The pre-existing
+`catalog_direct_selection` plan field is not lazy-trigger authorization; S9 must not use it
+to revive `exact_form_with_lazy_index`.
 Version the profile schema and plan bundle when these serialized contracts change; migrate
 profiles/plans explicitly rather than silently interpreting an old profile under new
 operation defaults.
@@ -235,74 +257,64 @@ operation defaults.
 
 Keep the request, family allowance, path strategy, and implementation declarations distinct:
 
-1. **Family profile data** in `domain/forms/families/*/profiles.py` declares capability
-   IDs allowed for that form family. Add a separate frozen, data-only
-   `DocumentProcessingProfile` in a domain common module such as
-   `domain/forms/common/processing.py`; do not overload `PrimaryReportProfile`, whose
-   current contract is statutory-filing recognition. The common module owns the closed
-   `AcquisitionOperation` vocabulary and typed capability IDs. Annual, quarterly, and
-   current declarations live in their family `profiles.py` modules. Profiles name IDs and
-   versions, never Python handler callables. Its minimum fields are family, profile
-   version, and allowed capability IDs.
+1. **Family/profile intent data** identifies the filing family and declarative operation
+   requests. It does not resolve whether acquisition or processing supports a request.
+   Keep statutory-filing recognition separate from processing policy. The closed
+   `AcquisitionOperation` vocabulary may be shared, but family identity alone does not
+   imply renderer availability or a handler binding.
 2. **S6 target policy** in `pipelines/document_planning/profiles.py` requests operations
    such as `raw`, `render_to_txt`, or `render_to_xml`. It does not declare that a processor
    implementation exists.
-3. **S6 acquisition capability catalog**, proposed in
-   `pipelines/document_planning/acquisition_capabilities.py`, resolves family/role/type/path
-     facts and requested operation into support status, source request, output kind, and
-     handler ID/version. A `render_to_xml` transform declares its selected HTML input
-     path; the catalog never performs a fetch.
+3. **S9/S10 work-order policy** in `pipelines/document_acquisition` resolves requested
+   operations against family/role/path facts. S9 owns acquisition support, source inputs,
+   and reviewed lazy-index triggers. S10 owns processing support, renderer availability,
+   and handler ID/version selection. The S6 intent relations are implemented as
+   declarative-only; S9 resolver/work-order implementation remains in progress.
 4. **Engine handler metadata/registry** in `engine/document_processing/capabilities.py`
    and `registry.py` declares handler IDs, accepted generic input facts, output kind, and
-   implementation version, then binds IDs to code at runtime. Metadata has no handler
-   callables or heavy renderer imports, so S6 can resolve it without loading processing
-   code. Build and validate the runtime registry explicitly; do not reuse the mutable
+   implementation version, then binds IDs to code at runtime. S10 work-order resolution
+   validates handler metadata and registry parity. Build and validate the runtime registry
+   explicitly; do not reuse the mutable
    process-global `engine/forms/plugins/registry.py` pattern or separate cover registry.
 
-There is no current family-processing profile aggregator. Add an explicit, immutable
-catalog such as `domain/forms/families/processing_profiles.py` to register the annual,
-quarterly, and current data declarations. Keep implementation registration separate in
-`engine/document_processing/registry.py`.
+Keep any family identity/profile data separate from S9/S10's resolved work-order policy
+and from the engine's implementation registry. `document_planning` does not consume engine
+handler metadata to resolve support.
 
-### Requested policy updates (not implemented)
+### Requested S9/S10 work-order policy
 
 - `raw` is mandatory for every matched target; requested operations add derived
   representations without replacing or suppressing the acquired source.
 - `render_to_txt` selects a family/route-specific renderer before the generic
   `engine.forms.normalize.normalize_document` fallback for text and HTML/rendered-markup
   sources. Raw is always preserved. Paper, binary, PDF, flat XML/XSD, ZIP, and unknown
-  routes remain raw-only; PDF has no text extractor. Form 4's proposed `render_to_xml`
-  handler is specific to its declared HTML path and does not enable other forms. Generic
-  XML rendering requires separate evidence and registration; a family handler takes
-  precedence.
-- Lazy-index permission is a versioned, form-family-specific trigger over rendered text.
-  Raw alone is not a trigger. Form 4 has no designed trigger; it relies on its pinned URL
-  and observed era-specific exhibit-like links. Replace the current uniform selector in a
-  new S6 schema version, without a compatibility alias.
-- A processor-version bump preserves old results unless the plan explicitly requests
+  routes remain raw-only; PDF has no text extractor. Generic XML rendering requires
+  separate evidence and registration; a family handler takes precedence. This does not
+  specify a Form 4 XML handler or output contract.
+- Lazy-index permission is a versioned, form-family-specific trigger in the S9/S10
+  work-order policy, based on a reviewed rendered-text pattern. Fail closed when no
+  reviewed trigger exists; raw alone is not a trigger. Form 4 has no lazy trigger. This
+  policy is not resolved or serialized as support metadata by S6.
+- A processor-version bump preserves old results unless the S10 work order explicitly requests
   supersession for selected forms/families, operation, and prior processor/version. The
   new immutable result view retires only matching documents; unrelated forms may retain
   representations produced by the same old version. This selector and selective pruning
   are not implemented.
 
-The planner resolves the S6 catalog entry against the family's allowed capability IDs and
-the engine's handler metadata, then pins both catalog and handler versions. The S6 entry
-owns family/role/path availability and source selection; the engine descriptor owns only
-the transform's accepted input and implementation. Contract tests verify every referenced
-handler ID has metadata and a runtime registry entry.
-
-The planner resolves target requests against family-declared IDs, path/source strategies,
-and lightweight engine capability descriptors, then pins the result without importing
-handler callables. XML export is a registered transform over a declared selected HTML
-input, not an archive-root XML acquisition strategy. This avoids duplicating support
-matrices and keeps domain profiles independent of engine imports.
+The S9/S10 work-order policy resolves target requests against family and path facts,
+acquisition source strategies, reviewed trigger patterns, and engine handler metadata.
+It pins resolved policy/handler versions there, without importing handler callables into
+`document_planning`. XML export, if approved, consumes a declared selected HTML input, not
+an archive-root XML acquisition strategy. Contract tests verify referenced handler IDs
+against metadata and runtime registration at the owning S10 boundary.
 
 Add `tests/domain/forms/common/test_processing.py` and
 `tests/domain/forms/families/test_processing_profiles.py` for the domain processing-profile
 model and family catalog; extend
 `tests/domain/forms/families/test_profiles.py` to pin family declarations; extend
-`tests/pipelines/document_planning/test_profiles.py` to pin requested-operation validation
-and add mirrored capability-resolution tests for the S6 acquisition catalog.
+`tests/pipelines/document_planning/test_profiles.py` to pin declarative requested-operation
+validation. Add mirrored S9/S10 work-order tests for support, source-input, trigger, and
+handler resolution; do not add capability-resolution tests to `document_planning`.
 The family modules are `domain/forms/families/annual/profiles.py`,
 `quarterly/profiles.py`, and `current/profiles.py`. The proposed [S10 processing decision
 tree](../document_acquisition/processing_decision_tree.md) lists 10-K, 10-Q, 8-K, and
@@ -406,11 +418,12 @@ and raw-plus-render snapshot contract is in
 It is separate from this S6 planning schema and requires agreement before lifecycle
 implementation.
 
-Every valid target retains its primary source request, and `raw` is its mandatory baseline
-representation. Requested derived operations add outputs but never suppress raw. If
-requested renders are unsupported, S6 still plans the source and records that no derived
-output is supported. Flat XML/XSD remains unchanged raw data; any later semantic XML work
-belongs to a separate form pipeline.
+Every valid target retains its declared primary source input, and `raw` is the proposed
+mandatory baseline representation at the S9/S10 work-order boundary. Requested derived
+operations add outputs but never suppress raw. If requested renders are unsupported, S6
+still carries the request/source intent and S9/S10 records unsupported resolution. Flat
+XML/XSD remains unchanged raw data; any later semantic XML work belongs to a separate form
+pipeline.
 
 | Stored concept | Proposed contents |
 |---|---|
@@ -418,9 +431,10 @@ belongs to a separate form pipeline.
 | `AcquiredSource` | One distinct HTTP/bundle source body, with selected locator/path facts, attempts, response/selected digests and sizes, and staged/raw body reference. Multiple operations on the same bytes share this source record. |
 | `StoredRepresentation` | A possible later durable model for one operation result: operation ID, output kind, status, source reference(s), output digest/size, handler/version, and stored artifact reference. It is not an M6/M7 S10 artifact contract. |
 
-If `raw` and `render_to_txt` consume the same HTML response, S6 emits one shared source
-request dependency. A registered `render_to_xml` handler consumes its declared selected
-HTML input; it does not imply a second source request. S9 owns source availability.
+If `raw` and `render_to_txt` consume the same HTML response, S6 may declare one shared
+source-input dependency. S9 work-order resolution determines the actual acquisition
+source; S10 binds any approved transform to its declared HTML input. An XML operation does
+not imply a second source request.
 Any output-byte deduplication and operation provenance belong to the future
 processing/storage contract.
 
@@ -432,10 +446,11 @@ requested operations, ignored operations, and unique source requests separately.
 planning evidence only; it is not a work-order body receipt or a claim that a source was
 fetched.
 
-The current S6 plan and S9 work order store one target with one selected body; current
-`StagedBodyRef` and `BodyConsumptionReceipt` are also single-body shaped. S6 versions only
-its profile/operation/source-request plan contract. Any later expansion of acquisition
-state, handoff receipts, or processing output records belongs to those owning plans. The
+S6 intent relations are implemented as declarative-only; S9 resolver/work-order
+implementation remains in progress. The existing `StagedBodyRef` and
+`BodyConsumptionReceipt` are single-body shaped. S6 versions declared profile/operation/
+source-input intent only. S9/S10 own acquisition and processing resolution, handoff
+receipts, and output records. The
 acquisition snapshot is distinct from the S5 inventory snapshot and does not authorize S11
 publication.
 
@@ -446,19 +461,14 @@ initial feature phase; subsequent phases have separate layer owners and acceptan
 
 ### Implementation summary
 
-**Phase 0-2 (Completed):**
+**Current status:**
 
-- `edgar_sec/domain/document/path_facts.py` - DocumentPathFacts, DocumentPathShape, DocumentSuffixClass
-- `edgar_sec/domain/document/route.py` - Updated with backward compatibility
-- `edgar_sec/domain/forms/common/processing.py` - AcquisitionOperation enum, DocumentProcessingProfile
-- `edgar_sec/domain/forms/families/annual/processing.py` - Annual family profile
-- `edgar_sec/domain/forms/families/quarterly/processing.py` - Quarterly family profile
-- `edgar_sec/domain/forms/families/current/processing.py` - Current family profile
-- `edgar_sec/domain/forms/families/processing_profiles.py` - Family catalog
-- `edgar_sec/pipelines/document_planning/acquisition_capabilities.py` - S6 catalog
-- `edgar_sec/pipelines/document_planning/profiles.py` - Updated with acquisition_policy field
-- `edgar_sec/engine/document_processing/` - AcquisitionProcessor, registry, capabilities
-- Test files under `tests/domain/document/`, `tests/domain/forms/`, `tests/pipelines/document_planning/`
+- Shared path facts and target-plan generation exist.
+- S6 bundle v4, target schema v1, and matcher v2 are implemented as declarative-only;
+  106 explicitly mirrored tests passed.
+- S9 resolver/work-order implementation remains in progress. Support, handlers, renderer
+  availability, and lazy-index triggers are resolved by `document_acquisition` S9/S10,
+  not by `document_planning`.
 
 **Phase 3-7 (Pending):**
 
@@ -471,9 +481,9 @@ initial feature phase; subsequent phases have separate layer owners and acceptan
 | Phase | Owner | Scope and exit contract | Status |
 |---|---|---|---|
 | 0. Shared path facts | `domain/document` and retained engine consumers | Shared path facts are implemented. The former storage pipeline was retired rather than extended; no storage-only policy or fallback is moved into it. No acquisition operations are implemented here. | ✅ Implemented |
-| 1. S6 planning (initial) | `pipelines/document_planning`, domain family profiles, and engine capability metadata | Add family capability IDs, target operation requests, and a lightweight versioned metadata catalog; publish deterministic operation/source-request rows. Planning stays offline/body-blind and imports no handler callables. | ✅ Implemented |
-| 2. Engine processor proposal | Retired `engine/document_processing` proposal | The proposed `AcquisitionProcessor` is not a current runtime owner. S10 currently has an initial offline `process_target` in the acquisition pipeline; it does not invoke engine renderers. | Retired proposal |
-| 3. S9 source acquisition | `pipelines/document_acquisition` | Direct/bundle acquisition, exact-form lazy-index selection, work-order state, retry, staging, and run CLI are implemented. Family-aware HTML evaluation is deferred; bundle/lazy-index response-group fixture retention is opt-in. | ◐ Partial |
+| 1. S6 target planning | `pipelines/document_planning` | Generate deterministic target plans and carry declarative requested operations/source inputs. Do not resolve support, handler/version, renderer availability, or lazy-index triggers. Bundle v4, target schema v1, and matcher v2 are implemented as declarative-only; 106 explicitly mirrored tests passed. | ✅ Implemented |
+| 2. Engine processing | `engine/document_processing` | Execute only validated S10 work-order inputs. S9/S10 work-order policy resolves support and handler/version metadata before engine dispatch; runtime implementation status is tracked by the S10 plan. | Separate owner |
+| 3. S9 source acquisition | `pipelines/document_acquisition` | Existing acquisition baseline remains; resolver/work-order policy implementation is in progress. S9 owns source support and fail-closed family-specific lazy-index triggers, with Form 4 having no trigger. | ◐ In progress |
 | 4. S10 processing orchestration (M6) | `pipelines/document_acquisition` | An initial offline `process_target` validates work-order/body identity, verifies staged bytes, records an S9 consumption receipt, and returns transient identity results. Engine renderers, full operation-intent execution, review staging, and coordinator remain incomplete. | ◐ Partial |
 | 5a. Offline fixture composition (M7a) | `pipelines/document_acquisition` plus local fixtures | Replay a captured direct-TEXT S9 fixture, pass the actual request/result to terminal projection, and verify receipt, coverage, fingerprint, and staged-output integrity without HTTP. Emit a content-addressed processing-review artifact. Do not clean staged bodies based on the receipt alone; no durable representation payload is written. M3/M4 runner integration is not required. | ✅ Implemented |
 | 5b. Runner lifecycle integration (M7b) | `pipelines/document_acquisition` | Verify runner orchestration, retry, sibling failure isolation, and cleanup after explicit discard or publication adoption over fixture-backed processing. Review output remains S7-owned. | ✅ Runner/retry/isolation complete; cleanup remains gated |
@@ -487,39 +497,35 @@ the historical migration audit have been removed with the pipeline. Do not resto
 fetch preference, fallback, or persistence behavior. Retained unpacking and normalization
 contracts keep their own mirrored tests; no compatibility shim is required.
 
-Phase 1 adds a separate `DocumentProcessingProfile` data contract and family catalog,
-declared in the annual, quarterly, and current `profiles.py` modules. It also adds the S6
-catalog in `edgar_sec/pipelines/document_planning/acquisition_capabilities.py` and the
-lightweight engine metadata/package in `edgar_sec/engine/document_processing/capabilities.py`.
-The proposed [S10 processing
+S6 target planning generates target plans and carries declarative operation/source-input
+requests. It does not resolve family/path support, handler metadata, renderer availability,
+or lazy-index triggers; its v4/v1 intent relations are implemented without such resolution
+metadata. The S9/S10 work-order policy owns that resolution, and S9 resolver/work-order
+implementation remains in progress. Lightweight engine metadata, if used, is consumed by
+S10 work-order resolution, not S6. The proposed [S10 processing
 decision tree](../document_acquisition/processing_decision_tree.md) lists 10-K, 10-Q, 8-K,
 and 20-F as eligible primary forms; 6-K requires an explicitly registered profile. Reconcile
 this set with the S10 normative contract before activation. Engine registration alone does
 not activate 40-F, Form 4, or unregistered forms for S10 assessment. The JSON profile loader
-in `pipelines/document_planning/profiles.py` validates target operation requests; it is not
-the engine capability registry.
+in `pipelines/document_planning/profiles.py` validates declarative operation requests; it
+is not the engine capability registry or a support resolver.
 
-Phase 1 adds the lightweight capability metadata and pins its catalog version in S6.
-Phase 1 adds the `engine/document_processing` package README and engine layout entry with
-its metadata module. Phase 2 adds `models.py`, `registry.py`, and `processor.py`, plus
-mirrored `test_models.py`, `test_registry.py`, and `test_processor.py` under
-`tests/engine/document_processing/` (with package `__init__.py`); Phase 1 owns the mirrored
-`test_capabilities.py` catalog contract test.
+Any lightweight capability metadata is versioned and pinned by the S10 work order after
+resolution; do not pin a resolved catalog or selected handler/version in S6. Engine
+processing remains separately owned from target planning.
 `normalize_document` is the intended generic `render_to_txt` fallback for text and
 HTML/rendered-markup sources, with family-specific renderers taking precedence. It is not
 an XML, binary, paper, ZIP, or PDF renderer. This export path is not yet wired into S10.
 Phase 3 fetches and verifies source bodies.
-Phase 4 follows the proposed [S10 processing decision tree](../document_acquisition/processing_decision_tree.md)
-and active [S9/S10 plan](../document_acquisition/plan.md): M6's `processing_models.py`,
-`processing.py`, and per-run coordinator are pipeline adapters that validate S9 state,
+Phase 4's proposed [S10 processing decision tree](../document_acquisition/processing_decision_tree.md)
+and active [S9/S10 plan](../document_acquisition/plan.md) assign `processing_models.py`,
+`processing.py`, and eventual coordination to pipeline adapters that validate S9 state,
 admit/verify bodies, construct `AcquisitionProcessRequest`, invoke the engine class, and
-  own metadata results and receipts. They do not reimplement renderers. A primary uses a
-  family/route-specific renderer when registered, otherwise the filing-form normalizer
-  profile; a standalone exhibit uses the generic no-cover profile. Data, graphics, and
-  packages stay on route-specific handling. `target_type` is provenance,
-not a content-route override. The S10 coordinator may run enabled exhibit-role diagnostics
-on the transient text result, but cannot change the S6 target or S9 state. M6/M7 remain
-subject to their existing approval gates.
+own metadata results and receipts. They do not reimplement renderers. Proposed S10
+work-order resolution uses family/route-specific renderer precedence and the eligible
+normalizer fallback; data, graphics, and packages stay on route-specific handling.
+`target_type` is provenance, not a content-route override. S10 diagnostics cannot change
+the S6 target or S9 state. M6/M7 remain subject to their existing approval gates.
 
 Before implementation, reconcile the proposed multi-operation/source-request model with
 the normative [S10 processing contract](../S10_processing.md). The requested policy keeps
@@ -528,41 +534,23 @@ renderer, and applies family-specific handlers before eligible generic ones. Pre
 route-specific memory admission, same-bytes digest verification, metadata-only results,
 receipt timing, and S7 review ownership unless their owner versions a change.
 
-## S6 planning acceptance tests
+## S6 declarative-plan acceptance
 
-- Raw is mandatory for every matched target. Explicit operations request additional
-  renders; unsupported renders are recorded without invalidating raw or the target.
-- An omitted derived-operation policy selects `render_to_xml` before `render_to_txt`; the
-  selected capability version is pinned. Raw remains the baseline representation.
-- The matrix distinguishes flat `.xml`/`.xsd` raw bytes from nested XSL `.xml` rendered
-  markup. No XML source is validated or rewritten by S10. Render operations consume only
-  a declared HTML input and never construct an archive-root sibling request.
-- Form 4's proposed XML transform is family-specific to its declared HTML path. Other
-  forms remain unsupported for XML rendering unless they register their own handler or
-  an evidence-backed generic handler is approved; the Form 4 handler overrides generic.
-- If every requested operation is unsupported, the logical target and its primary source
-  request remain planned while the unsupported operation statuses are retained.
-- Raw, text, and XML-export operations share the primary source request when the family
-  capability identifies that source. S6 validates locators but does not fetch them.
-- `.fil`, `.zip`, `.eis`, images, `.paper`, PDF, flat `.xml`, and `.xsd` are raw-only.
-  Unsupported renders do not suppress raw.
-- Lazy-index triggers are family-specific and require a reviewed text trigger. Form 4 has
-  none; raw selection is based on its pinned URL and observed era-specific exhibit-like
-  link evidence.
-- Phase 0 path facts preserve domain, engine, and document-storage outcomes. Phase 1
-  capability resolution can plan multiple outputs for one source class without overloading
-  the shared classifier with operation support.
-- Operation rows do not add logical targets. Existing `target_id` derivation includes
-  `plan_id`, so a profile/policy change creates a new plan and corresponding target IDs;
-  operation/source-request IDs are deterministic and separately counted within each plan.
-  Optionality describes document absence only; S6 does not record runtime operation
-  failures.
-- S6 planning is offline and deterministic, validates same-accession locators, and never
-  probes whether a constructed alternate URL exists.
+- S6 may carry requested operations and declared source inputs; these are intent, not
+  resolved support, work orders, handler bindings, or execution outcomes.
+- Requested-operation vocabulary and source-input declarations are deterministic and
+  canonicalized in plan identity. Explicit list order is not preference.
+- Operation/source-input relations do not add logical targets. Existing `target_id`
+  derivation includes `plan_id`, so a profile change creates a new plan and corresponding
+  target IDs; operation/source-input IDs are deterministic and separately counted.
+- Optionality describes document absence only. S6 does not record acquisition or
+  processing support/failure, selected handlers, renderer availability, or lazy triggers.
+- S6 planning remains offline and deterministic, validates same-accession locators, and
+  never probes whether a constructed alternate URL exists.
 
 ## Deferred acquisition and processing acceptance
 
-These checks belong to S9 acquisition and the engine/processing owner, not S6 planning:
+These checks belong to S9/S10 work-order policy, not S6 planning:
 
 - S9 fetches or reuses each eligible source request, verifies response/selected hashes
   and sizes, replays the recorded body, and records per-source outcomes. Acquisition
@@ -571,8 +559,10 @@ These checks belong to S9 acquisition and the engine/processing owner, not S6 pl
   bytes, including output digest/size, handler-version fingerprints, and independent
   per-operation failures. PDF extraction remains unavailable; output-fidelity corpus
   tests belong to the renderer gate.
-- A Form 4 HTML-to-XML transform requires separate implementation and validation. Flat
-  XML/XSD remains unchanged raw input; semantic extraction belongs to a form pipeline.
+- Lazy-index triggers require a reviewed family-specific pattern and fail closed when no
+  pattern is available. Form 4 has no lazy trigger.
+- This plan defines no Form 4 XML output or handler contract. Flat XML/XSD remains raw
+  input; semantic extraction belongs to a form pipeline.
 - Supersession tests prove a plan can retire one form's prior processor version without
   removing another form's result that used the same version. The plan selector and
   selective pruning are not implemented.
@@ -583,7 +573,7 @@ These checks belong to S9 acquisition and the engine/processing owner, not S6 pl
 ## Non-goals
 
 - XML/XSD parsing or ownership fact extraction in acquisition.
-- Implementing or validating a Form 4 HTML-to-XML translator.
+- Specifying a Form 4 XML output/handler contract.
 - Treating raw, text, and XML operation outputs as duplicate logical SEC documents.
 - Arbitrary URL templates, filename guessing, body inspection during S6, or implicit
   network-dependent fallback.

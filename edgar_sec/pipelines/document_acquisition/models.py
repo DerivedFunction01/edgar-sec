@@ -157,6 +157,18 @@ class ProjectedAcquisitionRun:
 
 
 @dataclass(frozen=True, slots=True)
+class OperationAttempt:
+    attempt_id: str
+    operation_id: str
+    attempt_number: int
+    outcome: Literal["succeeded", "failed"]
+    retryable: bool
+    error_code: str | None
+    started_at_utc: str
+    finished_at_utc: str
+
+
+@dataclass(frozen=True, slots=True)
 class AcquisitionStatusReport:
     run_id: str
     state: RunStatus
@@ -187,6 +199,7 @@ __all__ = [
     "AcquisitionStatus",
     "AcquisitionStatusCounts",
     "AcquisitionStatusReport",
+    "OperationAttempt",
     "AttemptKind",
     "BodyLifecycle",
     "ProjectedAcquisitionRun",

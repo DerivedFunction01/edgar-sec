@@ -53,7 +53,7 @@ class ProcessingDiagnostic:
 class StagedOutputRef:
     staging_id: str
     path: Path
-    representation: Literal["raw", "text_verbatim"]
+    representation: Literal["raw", "text_normalized", "xml"]
     output_sha256: str
     output_size: int
 

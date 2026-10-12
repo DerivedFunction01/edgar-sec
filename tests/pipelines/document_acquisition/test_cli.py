@@ -16,6 +16,17 @@ def test_parser_registers_independent_acquisition_tracks() -> None:
         ["status", "--run-id", "run-1", "--target-id", "target-1"],
         ["run", "--run-id", "run-1", "--max-response-bytes", "1000"],
         ["process", "--run-id", "run-1"],
+        [
+            "process",
+            "--run-id",
+            "run-1",
+            "--retry-failures",
+            "--workers",
+            "2",
+            "--artifacts",
+            "artifacts",
+            "--json",
+        ],
         ["publish", "--run-id", "run-1"],
         [
             "fixture",
@@ -59,6 +70,19 @@ def test_parser_registers_independent_acquisition_tracks() -> None:
         ["snapshot", "audit"],
     ):
         assert parser.parse_args(args)
+
+
+def test_process_options_preserve_defaults_and_validate_workers() -> None:
+    parser = cli.build_parser()
+    parsed = parser.parse_args(["process", "--run-id", "run-1"])
+    assert parsed.run_id == "run-1"
+    assert parsed.workers is None
+    assert parsed.artifacts is None
+    assert parsed.json is False
+    assert parsed.retry_failures is False
+
+    with pytest.raises(SystemExit):
+        parser.parse_args(["process", "--run-id", "run-1", "--workers", "0"])
 
 
 def test_response_ceiling_options_are_optional_but_positive_when_supplied() -> None:

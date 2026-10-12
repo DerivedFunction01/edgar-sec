@@ -205,6 +205,33 @@ def test_every_declared_compiler_entry_names_a_real_module() -> None:
         assert (root / entry).is_file(), entry
 
 
+def test_s9_relation_compiler_exemption_is_narrow_and_documented() -> None:
+    from pathlib import Path
+
+    from edgar_sec.foundation.scanners.sql_interpolation import _SQL_COMPILER_PATHS
+
+    entry = (
+        "edgar_sec/pipelines/document_acquisition/plan_projection/"
+        "relation_validation.py"
+    )
+    pipeline_entries = {
+        path
+        for path in _SQL_COMPILER_PATHS
+        if path.startswith("edgar_sec/pipelines/document_acquisition/")
+    }
+    assert pipeline_entries == {entry}
+
+    root = Path(__file__).resolve().parents[3]
+    scanner_source = (
+        root / "edgar_sec/foundation/scanners/sql_interpolation.py"
+    ).read_text(encoding="utf-8")
+    assert "PLAN_RELATION_SCHEMAS/WORK_ORDER_RELATION_SCHEMAS" in scanner_source
+    assert (
+        "parquet paths are manifest-validated and passed through sql_path_list"
+        in scanner_source
+    )
+
+
 def test_a_value_routed_through_sql_literal_is_not_flagged(
     tmp_path, monkeypatch
 ) -> None:

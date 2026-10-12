@@ -8,9 +8,6 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-import pyarrow as pa
-import pyarrow.parquet as pq
-
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 from edgar_sec.foundation.serialization import canonical_hash
@@ -50,23 +47,19 @@ from edgar_sec.pipelines.document_acquisition.schemas import (
     target_plan_matcher_version,
 )
 from edgar_sec.pipelines.document_planning.schemas import (
-    TARGET_SCHEMA,
+    OPERATION_INPUT_SCHEMA_VERSION,
+    SOURCE_REQUEST_SCHEMA_VERSION,
+    TARGET_OPERATION_SCHEMA_VERSION,
     TARGET_SCHEMA_VERSION,
+)
+from tests.pipelines.document_acquisition.plan_projection.plan_fixture import (
+    write_plan_bundle,
 )
 
 _ACCESSION = "0000320193-20-000096"
 _ACCESSION_COMPACT = _ACCESSION.replace("-", "")
 _ARCHIVE_ROOT = f"https://www.sec.gov/Archives/edgar/data/320193/{_ACCESSION_COMPACT}/"
 _TARGET_URL = _ARCHIVE_ROOT + f"{_ACCESSION}.txt"
-_INDEX_URL = _ARCHIVE_ROOT + f"{_ACCESSION}-index.html"
-_SELECTED_URL = _ARCHIVE_ROOT + "report.htm"
-_INDEX = (
-    b"<table summary='Document Format Files'><tr><th>Seq</th><th>Description</th>"
-    b"<th>Document</th><th>Type</th><th>Size</th></tr>"
-    b"<tr><td>2</td><td>Annual report</td><td><a href='report.htm'>report.htm</a>"
-    b"</td><td>10-K</td><td>12</td></tr></table>"
-)
-_INITIAL_BODY = b"<html>catalog primary response</html>"
 _SELECTED_BODY = b"<html>selected filing body</html>"
 _FIXTURE_ID = "offline-acceptance-v3"
 
@@ -74,7 +67,7 @@ _FIXTURE_ID = "offline-acceptance-v3"
 def _write_pinned_plan(
     artifacts_root: Path,
     *,
-    catalog_direct_selection: str = "exact_form_with_lazy_index",
+    catalog_direct_selection: str | None = None,
     target_url: str = _TARGET_URL,
     bundle_child: bool = False,
 ) -> tuple[str, dict[str, Any]]:
@@ -87,6 +80,9 @@ def _write_pinned_plan(
     identity = {
         "bundle_schema_version": target_plan_bundle_schema_version(),
         "target_schema_version": TARGET_SCHEMA_VERSION,
+        "target_operation_schema_version": TARGET_OPERATION_SCHEMA_VERSION,
+        "source_request_schema_version": SOURCE_REQUEST_SCHEMA_VERSION,
+        "operation_input_schema_version": OPERATION_INPUT_SCHEMA_VERSION,
         "matcher_version": target_plan_matcher_version(),
         "row_group_size": DEFAULT_ROW_GROUP_SIZE,
         "profile_digest": "c" * 64,
@@ -97,8 +93,6 @@ def _write_pinned_plan(
     }
     plan_id = f"dplan_{canonical_hash(identity)[:32]}"
     plan_root = artifacts_root / "document_planning" / "plans" / plan_id
-    part = plan_root / "targets" / "form=10-K" / "part-00000.parquet"
-    part.parent.mkdir(parents=True)
     row = {
         "target_id": "",
         "accession": _ACCESSION,
@@ -117,50 +111,14 @@ def _write_pinned_plan(
         "sequence": 2 if bundle_child else 1,
         "byte_size": None,
         "availability_evidence": "index_html" if bundle_child else "catalog_direct",
-        "catalog_direct_selection": None if bundle_child else catalog_direct_selection,
+        "catalog_direct_selection": (
+            None if bundle_child else catalog_direct_selection
+        ),
     }
     row["target_id"] = canonical_hash(
         [plan_id, _ACCESSION, row["request_id"], inventory_entry_id, "matched"]
     )
-    pq.write_table(
-        pa.Table.from_pylist([row], schema=TARGET_SCHEMA),
-        part,
-        row_group_size=DEFAULT_ROW_GROUP_SIZE,
-    )
-    manifest: dict[str, Any] = {
-        "plan_id": plan_id,
-        "bundle_schema_version": target_plan_bundle_schema_version(),
-        "target_schema_version": TARGET_SCHEMA_VERSION,
-        "matcher_version": target_plan_matcher_version(),
-        "row_group_size": identity["row_group_size"],
-        "profile_id": "profile-offline-acceptance",
-        "profile_schema_version": "1",
-        "profile_version": "1",
-        "profile_digest": identity["profile_digest"],
-        "catalog_plan_id": identity["catalog_plan_id"],
-        "catalog_plan_digest": identity["catalog_plan_digest"],
-        "inventory_snapshot_id": inventory_snapshot_id,
-        "inventory_snapshot_digest": inventory_snapshot_digest,
-        "plan_identity": identity,
-        "target_row_count": 1,
-        "status_counts": {"matched": 1},
-        "origin_counts": {row["source_origin"]: 1},
-        "reason_counts": {},
-        "parts": [
-            {
-                "path": "targets/form=10-K/part-00000.parquet",
-                "form": "10-K",
-                "rows": 1,
-                "byte_size": part.stat().st_size,
-                "sha256": file_sha256(part),
-            }
-        ],
-    }
-    manifest["plan_digest"] = canonical_hash(manifest)
-    (plan_root / "plan.json").write_text(
-        json.dumps(manifest, sort_keys=True, separators=(",", ":")),
-        encoding="utf-8",
-    )
+    write_plan_bundle(plan_root, plan_id, identity, [row])
     return plan_id, row
 
 
@@ -206,11 +164,7 @@ class _FixtureReplayTransport:
     ) -> None:
         self.paths = paths
         self.fixture_id = fixture_id
-        self.responses = {
-            initial_url: case.response_sha256,
-            _INDEX_URL: case.index_response_sha256,
-            _SELECTED_URL: case.selected_response_sha256,
-        }
+        self.responses = {initial_url: case.response_sha256}
         self.calls: list[str] = []
         self.closed = False
 
@@ -247,14 +201,14 @@ class _FixtureReplayTransport:
         self.closed = True
 
 
-def test_offline_projection_fixture_replay_commits_and_preserves_staged_body(
+def test_offline_projection_fixture_replay_preserves_selected_body_handoff(
     tmp_path, monkeypatch, capsys
 ) -> None:
     source_root = tmp_path / "source-artifacts"
     source_paths = resolve_acquisition_paths(artifacts_root=source_root)
     plan_id, plan_row = _write_pinned_plan(source_root)
     source_projection = project_acquisition_run(plan_id, paths=source_paths)
-    assert source_projection.manifest["bundle_schema_version"] == 3
+    assert source_projection.manifest["bundle_schema_version"] == 4
     assert source_projection.manifest["inventory_snapshot_id"] is None
 
     monkeypatch.setattr(
@@ -264,9 +218,7 @@ def test_offline_projection_fixture_replay_commits_and_preserves_staged_body(
     clock = lambda: datetime(2026, 10, 10, tzinfo=UTC)
     source_transport = _SyntheticTransport(
         {
-            _TARGET_URL: _INITIAL_BODY,
-            _INDEX_URL: _INDEX,
-            _SELECTED_URL: _SELECTED_BODY,
+            _TARGET_URL: _SELECTED_BODY,
         }
     )
     source_report = execute_acquisition_run(
@@ -282,7 +234,7 @@ def test_offline_projection_fixture_replay_commits_and_preserves_staged_body(
     )
     assert source_report.state == "complete"
     assert source_report.target_counts["acquired"] == 1
-    assert source_transport.calls == [_TARGET_URL, _INDEX_URL, _SELECTED_URL]
+    assert source_transport.calls == [_TARGET_URL]
     assert source_transport.closed
 
     source_state = get_target_state(
@@ -316,10 +268,10 @@ def test_offline_projection_fixture_replay_commits_and_preserves_staged_body(
     assert FIXTURE_SCHEMA_VERSION == 3
     assert fixture_manifest["details"]["store_schema_version"] == 3
     assert fixture_db_version == 3
-    assert fixture_case.response_sha256 != fixture_case.selected_sha256
-    assert fixture_case.index_response_sha256 is not None
-    assert fixture_case.selected_response_sha256 is not None
-    assert fixture_case.selected_retrieval_mode == "direct_url"
+    assert fixture_case.response_sha256 == fixture_case.selected_sha256
+    assert fixture_case.index_response_sha256 is None
+    assert fixture_case.selected_response_sha256 is None
+    assert fixture_case.selected_retrieval_mode is None
 
     standalone_replay_root = tmp_path / "standalone-replay"
     standalone_replay_root.mkdir()
@@ -362,13 +314,13 @@ def test_offline_projection_fixture_replay_commits_and_preserves_staged_body(
 
     assert replay_report.state == "complete"
     assert replay_report.target_counts["acquired"] == 1
-    assert fixture_transport.calls == [_TARGET_URL, _INDEX_URL, _SELECTED_URL]
+    assert fixture_transport.calls == [_TARGET_URL]
     assert fixture_transport.closed
     replay_state = get_target_state(
         replay_paths.run_state_path(replay_projection.run_id), source_state.target_id
     )
     assert replay_state is not None
-    assert replay_state.attempt_count == 3
+    assert replay_state.attempt_count == 1
     assert replay_state.selected_sha256 == hashlib.sha256(_SELECTED_BODY).hexdigest()
     assert replay_state.selected_body_relative_path is not None
     staged_body = (

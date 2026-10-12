@@ -16,6 +16,7 @@ from edgar_sec.pipelines.document_acquisition.models import (
 )
 from edgar_sec.pipelines.document_acquisition.run_state.models import (
     TargetState,
+    WorkOrderOperationSeed,
     WorkOrderTargetSeed,
     _acquisition_attempt_from_row,
     _target_state_from_row,
@@ -25,8 +26,14 @@ from edgar_sec.pipelines.document_acquisition.run_state.locks import (
     inspect_run_lock,
 )
 from edgar_sec.infra.storage.duckdb import sql_literal
+from edgar_sec.pipelines.document_acquisition.run_state.operations import (
+    create_operation_schema,
+    refresh_operation_readiness,
+    seed_operation_state,
+    validate_operation_state,
+)
 
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 5
 _OUTCOMES = (
     "pending",
     "skipped",
@@ -221,6 +228,7 @@ def _target_seed(target: object) -> tuple[str, int, str | None, str]:
 def initialize_run_state(
     database_path: Path,
     targets: Iterable[WorkOrderTargetSeed | Mapping[str, object]],
+    operations: Iterable[WorkOrderOperationSeed | Mapping[str, object]] = (),
 ) -> None:
     database_path = Path(database_path)
     database_path.parent.mkdir(parents=True, exist_ok=True)
@@ -234,6 +242,7 @@ def initialize_run_state(
         if version == 0 and tables == 0:
             for statement in _SCHEMA:
                 connection.execute(statement)
+            create_operation_schema(connection)
             connection.execute(
                 f"PRAGMA user_version = {sql_literal(str(SCHEMA_VERSION))}"
             )
@@ -241,6 +250,7 @@ def initialize_run_state(
             raise RunStateError("unsupported run-state schema version")
         for target in targets:
             connection.execute(_INSERT_TARGET, _target_seed(target))
+        seed_operation_state(connection, operations)
         connection.execute("COMMIT")
     except Exception:
         if connection.in_transaction:
@@ -365,6 +375,7 @@ def append_attempt_and_update_target(
         )
         if cursor.rowcount != 1:
             raise RunStateError("target projection update did not match one target")
+        refresh_operation_readiness(connection, outcome.target_id)
         connection.execute("COMMIT")
     except Exception:
         if connection.in_transaction:
@@ -494,6 +505,7 @@ def commit_attempts_and_update_target(
         )
         if cursor.rowcount != 1:
             raise RunStateError("target projection update did not match one target")
+        refresh_operation_readiness(connection, outcome.target_id)
         connection.execute("COMMIT")
     except Exception:
         if connection.in_transaction:
@@ -616,6 +628,7 @@ def _validate_readonly(connection: sqlite3.Connection) -> None:
         raise RunStateError(
             f"integrity_check={integrity!r}; foreign_key_check={foreign_key_error!r}"
         )
+    validate_operation_state(connection)
 
 
 def summarize_target_state(database_path: Path) -> AcquisitionStatusCounts:

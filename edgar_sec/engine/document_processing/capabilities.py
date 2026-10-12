@@ -1,19 +1,20 @@
-"""Engine capability metadata and registry.
-
-This module declares handler IDs, accepted input facts, output kind, and implementation
-version. It is separate from the S6 acquisition catalog and binds IDs to code at runtime.
-"""
+"""Versioned metadata for document-processing handlers."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import StrEnum
-from typing import Callable, Any
+from typing import Iterable
+
+_OPERATIONS = frozenset({"raw", "render_to_txt", "render_to_xml"})
+_OUTPUT_BY_OPERATION = {
+    "raw": "raw_bytes",
+    "render_to_txt": "text",
+    "render_to_xml": "xml",
+}
 
 
 class HandlerOutputKind(StrEnum):
-    """Type of output produced by a handler."""
-
     RAW_BYTES = "raw_bytes"
     TEXT = "text"
     XML = "xml"
@@ -21,69 +22,95 @@ class HandlerOutputKind(StrEnum):
 
 @dataclass(frozen=True, slots=True)
 class ProcessingCapability:
-    """Metadata for a processing capability/handler.
-
-    handler_id, handler_version, input_facts, output_kind.
-    """
-
     handler_id: str
     handler_version: str
+    operation: str
     input_facts: str
     output_kind: HandlerOutputKind
 
 
-# Capability registry - maps handler_id to metadata
-# Handlers are bound at runtime in registry.py
-_CAPABILITIES: dict[str, ProcessingCapability] = {
-    "html_to_text": ProcessingCapability(
-        handler_id="html_to_text",
-        handler_version="v1",
-        input_facts="markup bytes (HTML/XML/XHTML)",
-        output_kind=HandlerOutputKind.TEXT,
-    ),
-    "text_passthrough": ProcessingCapability(
-        handler_id="text_passthrough",
-        handler_version="v1",
-        input_facts="text bytes",
-        output_kind=HandlerOutputKind.TEXT,
-    ),
-    "xml_passthrough": ProcessingCapability(
-        handler_id="xml_passthrough",
-        handler_version="v1",
-        input_facts="XML bytes",
-        output_kind=HandlerOutputKind.XML,
-    ),
-}
+class ProcessingCapabilityRegistry:
+    def __init__(self, capabilities: Iterable[ProcessingCapability] = ()) -> None:
+        self._capabilities: dict[str, ProcessingCapability] = {}
+        for capability in capabilities:
+            self.register(capability)
 
-# Capability catalog version for plan identity
-_CATALOG_VERSION = "v1"
+    def register(self, capability: ProcessingCapability) -> None:
+        if not isinstance(capability, ProcessingCapability):
+            raise TypeError("capability must be ProcessingCapability")
+        if not isinstance(capability.handler_id, str) or not isinstance(
+            capability.handler_version, str
+        ):
+            raise ValueError("handler identity and version must be strings")
+        if not capability.handler_id.strip() or not capability.handler_version.strip():
+            raise ValueError("handler identity and version must be non-empty")
+        if capability.operation not in _OPERATIONS:
+            raise ValueError("operation is outside the supported vocabulary")
+        if (
+            not isinstance(capability.input_facts, str)
+            or not capability.input_facts.strip()
+        ):
+            raise ValueError("operation and input facts must be non-empty")
+        if not isinstance(capability.output_kind, HandlerOutputKind):
+            raise ValueError("handler output kind is invalid")
+        if capability.output_kind.value != _OUTPUT_BY_OPERATION[capability.operation]:
+            raise ValueError("handler output kind does not match operation")
+        if capability.handler_id in self._capabilities:
+            raise ValueError(f"duplicate capability: {capability.handler_id}")
+        self._capabilities[capability.handler_id] = capability
+
+    def get(self, handler_id: str) -> ProcessingCapability | None:
+        return self._capabilities.get(handler_id)
+
+    def list(self) -> tuple[ProcessingCapability, ...]:
+        return tuple(self._capabilities.values())
+
+
+CATALOG_VERSION = "v2"
+DEFAULT_CAPABILITIES = ProcessingCapabilityRegistry(
+    (
+        ProcessingCapability(
+            handler_id="raw_identity",
+            handler_version="1",
+            operation="raw",
+            input_facts="selected source bytes",
+            output_kind=HandlerOutputKind.RAW_BYTES,
+        ),
+        ProcessingCapability(
+            handler_id="normalize_document",
+            handler_version="1",
+            operation="render_to_txt",
+            input_facts="text, markup, or rendered markup route",
+            output_kind=HandlerOutputKind.TEXT,
+        ),
+    )
+)
 
 
 def get_capability(handler_id: str) -> ProcessingCapability | None:
-    """Get capability metadata by handler ID."""
-    return _CAPABILITIES.get(handler_id)
+    return DEFAULT_CAPABILITIES.get(handler_id)
 
 
 def has_capability(handler_id: str) -> bool:
-    """Check if a capability is registered."""
-    return handler_id in _CAPABILITIES
+    return get_capability(handler_id) is not None
 
 
 def list_capabilities() -> list[ProcessingCapability]:
-    """List all registered capabilities."""
-    return list(_CAPABILITIES.values())
+    return list(DEFAULT_CAPABILITIES.list())
 
 
 def get_catalog_version() -> str:
-    """Get the current capability catalog version."""
-    return _CATALOG_VERSION
+    return CATALOG_VERSION
 
 
 __all__ = [
+    "CATALOG_VERSION",
+    "DEFAULT_CAPABILITIES",
+    "HandlerOutputKind",
+    "ProcessingCapability",
+    "ProcessingCapabilityRegistry",
     "get_capability",
     "get_catalog_version",
-    "HandlerOutputKind",
     "has_capability",
     "list_capabilities",
-    "ProcessingCapability",
 ]

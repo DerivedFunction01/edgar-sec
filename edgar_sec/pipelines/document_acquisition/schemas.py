@@ -6,9 +6,26 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import TypedDict
 
-RUN_SCHEMA_VERSION = "1"
-ACQUISITION_CONTRACT_VERSION = "1"
-WORK_ORDER_SCHEMA_VERSION = "1"
+from edgar_sec.pipelines.document_planning.schemas import (
+    MATCHER_VERSION,
+    OPERATION_INPUT_SCHEMA,
+    OPERATION_INPUT_SCHEMA_VERSION,
+    PLAN_BUNDLE_SCHEMA_VERSION,
+    PLAN_RELATION_SCHEMAS,
+    PROFILE_SCHEMA_VERSION,
+    SOURCE_REQUEST_SCHEMA,
+    SOURCE_REQUEST_SCHEMA_VERSION,
+    TARGET_COLUMNS,
+    TARGET_OPERATION_SCHEMA,
+    TARGET_OPERATION_SCHEMA_VERSION,
+    TARGET_SCHEMA,
+    TARGET_SCHEMA_VERSION,
+)
+
+RUN_SCHEMA_VERSION = "3"
+ACQUISITION_CONTRACT_VERSION = "3"
+WORK_ORDER_SCHEMA_VERSION = "3"
+RESOLVED_OPERATION_SCHEMA_VERSION = 1
 RECEIPT_SCHEMA_VERSION = "1"
 
 
@@ -27,6 +44,10 @@ class AcquisitionRunManifest(TypedDict):
     target_plan_digest: str
     bundle_schema_version: int
     target_schema_version: int
+    target_operation_schema_version: int
+    source_request_schema_version: int
+    operation_input_schema_version: int
+    resolved_operation_schema_version: int
     matcher_version: str
     catalog_plan_id: str
     catalog_plan_digest: str
@@ -34,6 +55,7 @@ class AcquisitionRunManifest(TypedDict):
     inventory_snapshot_digest: str | None
     work_order_schema_version: str
     work_order_parts: list[PartDescriptor]
+    work_order_relations: dict[str, dict[str, object]]
     target_row_count: int
     executable_count: int
     skipped_count: int
@@ -80,33 +102,39 @@ class BodyConsumptionReceipt(TypedDict):
 
 
 def target_relation_schema():
-    from edgar_sec.pipelines.document_planning.schemas import TARGET_SCHEMA
-
     return TARGET_SCHEMA
 
 
 def target_relation_schema_version() -> int:
-    from edgar_sec.pipelines.document_planning.schemas import TARGET_SCHEMA_VERSION
-
     return TARGET_SCHEMA_VERSION
 
 
 def target_plan_bundle_schema_version() -> int:
-    from edgar_sec.pipelines.document_planning.schemas import PLAN_BUNDLE_SCHEMA_VERSION
-
     return PLAN_BUNDLE_SCHEMA_VERSION
 
 
 def target_plan_matcher_version() -> str:
-    from edgar_sec.pipelines.document_planning.schemas import MATCHER_VERSION
-
     return MATCHER_VERSION
 
 
 __all__ = [
     "ACQUISITION_CONTRACT_VERSION",
+    "MATCHER_VERSION",
+    "OPERATION_INPUT_SCHEMA",
+    "OPERATION_INPUT_SCHEMA_VERSION",
+    "PLAN_BUNDLE_SCHEMA_VERSION",
+    "PLAN_RELATION_SCHEMAS",
+    "PROFILE_SCHEMA_VERSION",
     "RECEIPT_SCHEMA_VERSION",
+    "RESOLVED_OPERATION_SCHEMA_VERSION",
     "RUN_SCHEMA_VERSION",
+    "SOURCE_REQUEST_SCHEMA",
+    "SOURCE_REQUEST_SCHEMA_VERSION",
+    "TARGET_COLUMNS",
+    "TARGET_OPERATION_SCHEMA",
+    "TARGET_OPERATION_SCHEMA_VERSION",
+    "TARGET_SCHEMA",
+    "TARGET_SCHEMA_VERSION",
     "WORK_ORDER_SCHEMA_VERSION",
     "AcquisitionRunManifest",
     "BodyConsumptionReceipt",

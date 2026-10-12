@@ -3,19 +3,31 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S10**.
-- Status: transient processing request/result models, offline `process_target`, and
-  in-memory terminal-result projection are implemented. The worker supports raw identity
-  and explicitly pinned direct-TEXT passthrough, validates form-family operation
-  permissions, and preserves unsupported placeholders. Durable operation-result and
-  payload schemas, general export handlers, and coordinator wiring remain incomplete.
-  The retired `document_storage.FilingProcessor` is not a current runtime owner. The
-  engine normalizer is not yet wired as an export handler. Exhibit packs are not an active
-  evaluator or holdout evidence.
-- A processing-review artifact writer is exercised by captured S9 direct-TEXT fixture
-  replay and is wired to the shared review console. Reviewer labels, exhibit assessment,
-  and full transform coverage remain incomplete; S10 runtime does not depend on review.
-- S11 publication consumes S10 outputs after the fixture-driven S9/S10 gate; see the
-  [acquisition lifecycle plan](document_acquisition/lifecycle.md).
+- Status: S6 v4 declarative operation/source-input planning and S9's acquisition-owned
+  resolved work order v3/run state are implemented. The `process --run-id` parser, operator
+  action, run-level coordinator, per-target engine dispatch, operation-scoped retry, and
+  atomic run-relative result manifest are wired. Offline CLI integration covers raw-only
+  and test-budgeted TEXT processing; combined targeted package tests pass. Raw remains a staged-file
+  reference. Generic `normalize_document` execution requires a versioned route/handler
+  budget; the production budget registry is empty, so text normalization fails closed
+  before body read/hash and writes no receipt. No representative production input, output,
+  or working-set envelopes exist. Form 4 XML remains unsupported: its output contract and
+  handler are absent.
+  The retired `document_storage.FilingProcessor` is not a current runtime owner. Exhibit
+  packs are not an active evaluator or holdout evidence.
+- A processing-review artifact writer is exercised by captured S9 fixture replay and is
+  wired to shared review generate/compare for the limited S9/S10 fixture slice. Reviewer
+  labels, exhibit assessment, and full transform coverage remain incomplete; S10 runtime
+  does not depend on review. See [`review_artifacts/builder.py`](../../../edgar_sec/pipelines/document_acquisition/review_artifacts/builder.py),
+  [`commands/review.py`](../../../edgar_sec/pipelines/document_acquisition/commands/review.py),
+  and [`review_artifacts/test_builder.py`](../../../tests/pipelines/document_acquisition/review_artifacts/test_builder.py).
+- S11 publication consumes S10 outputs after its fixture-driven gate; see the
+  [acquisition lifecycle plan](document_acquisition/lifecycle.md). Publication and cleanup
+  remain approval-gated.
+- Production gates remain: measured route-budget evidence, a Form 4 XML output
+  contract/handler, reviewed family lazy-index triggers, serialization/effect of the
+  already-defined plan-scoped supersession selector in a new immutable snapshot, and S11
+  publication/cleanup approval. No supersession pruning occurs.
 - Per-operation IDs, results, attempts, and payload relations are defined in the
   [representation materialization contract](document_acquisition/representation_materialization_contract.md).
 - Exhibit assessment proposal: [S10 taxonomy and evidence-pack design](S10_exhibit_assessment.md).
@@ -23,20 +35,34 @@
 
 ## Current tracked-code audit (2026-10-12)
 
-- **Status: M6 has an initial offline `process_target` worker.** It validates the v1 work-order identity, selected body, and S9 attempt evidence; returns deterministic raw identity results and text identity on the `TEXT` route; and records the existing receipt. M7b now persists and verifies bundle-child filename evidence. Real renderers, review staging, and the coordinator remain unavailable. The operation-aware persisted relations remain design-only.
-- **Result projection:** `result_projection.project_terminal_results` validates explicit request/result batches, terminal operation coverage, and staged-output references into a deterministic in-memory view. It does not query processor liveness or persist S11 relations. Completeness is relative to supplied requests because the current v1 work order has no operation-intent relation.
-- **Evidence:** [`processing.py`](../../../edgar_sec/pipelines/document_acquisition/processing.py), [`result_projection.py`](../../../edgar_sec/pipelines/document_acquisition/review_artifacts/result_projection.py), their mirrored tests, and [`engine/forms/normalize.py`](../../../edgar_sec/engine/forms/normalize.py); the normalizer supports `capture_stage_trace=False` but is not an export handler.
-- **Next step:** version the family/route handler precedence, family-specific lazy-index
-  triggers, operation intent, and explicit processor-supersession selectors; then wire a
-  coordinator to execute the pinned operations. Do not infer bundle selection or publish
-  durable output from this preflight.
+- **Status:** S9 work-order v3 resolves operation support/handler pins and stores operation
+  state/attempts. Its nullable lazy-trigger ID/version fields are currently null because no
+  reviewed trigger patterns exist; no lazy-index request is authorized. The legacy S6
+  `catalog_direct_selection` field is not runtime trigger authority. The process CLI,
+  operator, coordinator, per-target engine dispatch, validated operation retry, and
+  per-target result manifest are implemented. The coordinator reads the validated work
+  order without reopening S6 or making HTTP requests.
+- **Processing boundary:** `process_target` dispatches to the engine under a versioned
+  route/handler budget. Raw is a file reference. The production route-budget registry is
+  empty, so generic normalization refuses before body read/hash and writes no receipt.
+  This is implemented fail-closed behavior, not enabled production text processing.
+- **Result artifact:** an atomic JSON manifest is written at
+  `staging/processing/<target_id>.json` relative to the run; operation attempts/state are
+  persisted separately in run state. Operation-scoped retry reuses only validated prior
+  results. S11 publication and cleanup approval remain gated.
+- **Evidence:** S9 projection/validation and operation resolution are in [`plan_projection/target_plan.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/target_plan.py), [`plan_projection/operation_resolution.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/operation_resolution.py), [`run_validation.py`](../../../edgar_sec/pipelines/document_acquisition/run_validation.py), and [`schemas.py`](../../../edgar_sec/pipelines/document_acquisition/schemas.py); [`test_project.py`](../../../tests/pipelines/document_acquisition/plan_projection/test_project.py) pins work-order v3 and [`test_schemas.py`](../../../tests/pipelines/document_acquisition/test_schemas.py) asserts schema version 3. [`target_plan.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/target_plan.py) emits null trigger ID/version pins, [`test_arrow_schemas.py`](../../../tests/pipelines/document_acquisition/test_arrow_schemas.py) covers their nullable schema, and [`test_runner.py`](../../../tests/pipelines/document_acquisition/test_runner.py) covers the no-trigger path. [`target_runner.py`](../../../edgar_sec/pipelines/document_acquisition/target_runner.py) authorizes lazy lookup only from a paired trigger ID/version.
+- **Evidence:** Run coordination, operation state/retry, CLI/operator routing, and atomic result manifests are in [`processing_run.py`](../../../edgar_sec/pipelines/document_acquisition/processing_run.py), [`run_state/operations.py`](../../../edgar_sec/pipelines/document_acquisition/run_state/operations.py), [`commands/process.py`](../../../edgar_sec/pipelines/document_acquisition/commands/process.py), [`cli.py`](../../../edgar_sec/pipelines/document_acquisition/cli.py), and [`operator.py`](../../../edgar_sec/pipelines/document_acquisition/operator.py). [`test_process_cli_integration.py`](../../../tests/pipelines/document_acquisition/test_process_cli_integration.py) covers offline raw-only and test-budgeted TEXT CLI paths; [`test_processing_run.py`](../../../tests/pipelines/document_acquisition/test_processing_run.py) covers coordinator/retry behavior.
+- **Evidence:** Engine dispatch and admission are in [`processing.py`](../../../edgar_sec/pipelines/document_acquisition/processing.py), [`processing_io.py`](../../../edgar_sec/pipelines/document_acquisition/processing_io.py), and [`engine/document_processing/processor.py`](../../../edgar_sec/engine/document_processing/processor.py). The empty production budget registry is asserted by [`test_processing_io.py`](../../../tests/pipelines/document_acquisition/test_processing_io.py); pre-body refusal/no-receipt behavior is covered by [`test_processing.py`](../../../tests/pipelines/document_acquisition/test_processing.py); engine handler behavior is covered by [`engine/document_processing/test_processor.py`](../../../tests/engine/document_processing/test_processor.py). The combined targeted S6/S9/S10 suite and policy scanners pass.
 
 ## Objective
 
 Materialize each requested supported S6 operation as its own deterministic result. For
 `render_to_txt` and `render_to_xml`, choose a family/route-specific handler before any
 evidence-backed generic handler. The engine normalizer is the generic `render_to_txt`
-fallback. Raw source bytes are always preserved independently of rendered output.
+fallback. Raw source bytes are always preserved independently of rendered output. This
+is the dispatch contract. The run-level coordinator and engine dispatch are implemented,
+but the empty production route-budget registry blocks text normalization before body
+access; no production text transform is enabled.
 
 S10 processes the source selected by one S6 target and S9 acquisition result. It does
 not query the filing catalog or inventory, fetch an index page, discover another
@@ -44,152 +70,77 @@ document, or revise the target's identity. `source_origin="catalog_direct"` mean
 catalog supplied the locator; processing does not upgrade it to an index-verified
 statutory document type.
 
-For catalog-direct primaries, S9's pinned selector is resolved before S10 receives a
-body. The current implementation exposes a uniform `exact_form_with_lazy_index` selector;
-the requested future policy replaces it with form-family-specific text triggers. A family
-without a designed trigger, initially including Form 4, must not perform lazy index
-selection. S10 processes only the final target-to-slot assignment and never runs that
-lookup itself. A successful HTML cover screen is not an exact-type assertion.
+S9 work-order v3 carries nullable lazy-trigger ID/version pins. They are currently null
+because no family has a reviewed trigger pattern, so no lazy-index request is authorized.
+The pre-existing S6 `catalog_direct_selection` field is not runtime trigger authority and
+must not revive `exact_form_with_lazy_index`. S10 consumes only the final work-order
+assignment and never performs index lookup. A successful HTML cover screen is not an
+exact-type assertion.
 
-## Requested policy delta (not yet implemented)
+## Implemented semantics and enablement gates
 
-- Every acquired source remains an exact `raw` representation, regardless of form or
-  route. Paper, binary, PDF, XML, XSD, ZIP, and other non-text inputs have no text export;
-  PDF extraction is not available.
+- Every acquired source has a mandatory exact `raw` identity, represented as a staged-file
+  reference. Unknown-route, paper, binary, PDF, XML, XSD, ZIP, and other non-text inputs
+  have no text export; PDF extraction is not available.
 - S6 marks `raw` as the mandatory baseline for every matched target. Explicit operation
   policy controls only additional derived representations; a renderer failure never
   removes raw.
-- `render_to_txt` resolves a form-family/route-specific renderer first. If none is
-  registered, the engine `normalize_document` path is the generic fallback for text and
-  HTML/rendered-markup sources, with primary cover-aware and exhibit no-cover contexts.
-- A Form 4-specific `render_to_xml` transform may consume its declared `.htm` input. It
-  does not generalize to other forms or turn selected XML/XSD/ZIP sources into rendered
-  output. Other forms need their own evidence-backed capability or a reviewed generic
-  transform; the Form 4 handler continues to override a generic handler.
-- Raw-only families cannot use text scanning as a lazy-index trigger. Each family must
-  pin its own trigger; Form 4 has none designed. Its raw target must use the pinned URL
-  and observed exhibit-like link evidence for its era.
-- Processor version changes do not automatically invalidate older results. A plan-scoped
-  supersession selector must identify form/family, operation, and prior processor/version;
-  it may retire only matching representations in the new snapshot. Existing snapshots
-  remain immutable, and unrelated families sharing a renderer version remain retained.
+- The engine dispatches family/route-specific handlers before generic fallbacks. For
+  eligible text/HTML, `normalize_document` is the generic text fallback in engine tests;
+  production execution remains disabled because no versioned route/handler budget is
+  registered. The refusal occurs before body read/hash and creates no receipt.
+- No Form 4 XML output contract or handler exists; Form 4 XML is unsupported. More
+  generally, a transform requires resolved support and an admitted route/handler budget.
+  Flat XML/XSD, ZIP, PDF, paper, binary, and unknown routes have no generic text render.
+- Lazy-index trigger IDs/versions remain nullable and all current S9 work orders leave
+  them null. No reviewed family trigger exists, so no lazy index request is authorized;
+  Form 4 has no trigger.
+- Processor version changes do not automatically invalidate older results. The
+  plan-scoped selector semantics are defined in the [representation materialization
+  contract](document_acquisition/representation_materialization_contract.md), scoped by
+  form/family, operation, prior processor ID/version, and the plan's selected logical
+  documents. Plan serialization and snapshot effect remain unimplemented; no pruning
+  occurs now. Existing snapshots remain immutable.
+- Production activation remains gated on reviewed route-budget evidence, a Form 4 XML
+  contract/handler, reviewed family trigger patterns, selector serialization/snapshot
+  effect, and S11 publication/cleanup approval. Combined targeted S6/S9/S10 tests and all
+  registered scanners pass. Offline CLI integration covers raw-only and test-budgeted TXT;
+  the production route-budget registry remains empty.
 
-## Models and operation
+## Current processing interface and persisted results
 
-```python
-from typing import Literal
+The run-level coordinator consumes the validated S9 work-order v3, including resolved
+operation support/handler pins, and the run-state operation relation. It does not reopen
+S6/S5 artifacts or perform acquisition. The `process --run-id` CLI and interactive
+operator use this coordinator. Operation-scoped retries validate prior result manifests
+before reusing terminal results; each attempt is recorded in run state.
 
-from edgar_sec.pipelines.document_acquisition.schemas import StagedBodyRef
+The per-target `ProcessingRequest`, operation/result models, and engine adapter are owned
+by [`processing_models.py`](../../../edgar_sec/pipelines/document_acquisition/processing_models.py),
+[`processing.py`](../../../edgar_sec/pipelines/document_acquisition/processing.py), and
+[`engine/document_processing/processor.py`](../../../edgar_sec/engine/document_processing/processor.py).
+S10 invokes the engine only after a versioned route/handler budget admits that operation.
+Raw is a staged-file reference, not an additional materialized copy. Derived outputs are
+written beneath run staging. The atomic result manifest is
+`staging/processing/<target_id>.json` relative to the run; it contains operation outcomes,
+digests, and safe relative staged-output references.
 
-@dataclass(frozen=True, slots=True)
-class OperationRequest:
-    operation_id: str
-    operation: Literal["raw", "render_to_txt", "render_to_xml"]
-    requested: bool
-    support_status: Literal["supported", "unsupported", "not_evaluated"]
-    source_request_id: str | None
-    capability_id: str | None
-    capability_version: str | None
-    handler_id: str | None
-    handler_version: str | None
-    output_kind: str | None
+`ProcessingResult.source_sha256` is the selected-body digest. The full response-envelope
+digest remains S9 provenance; S10 does not normalize or rewrite that envelope. Operation
+fingerprints include source identity, effective path, capability/handler/options versions,
+and output schema. `target_type` remains request provenance, not proof of selected SGML
+type.
 
-@dataclass(frozen=True, slots=True)
-class ProcessingRequest:
-    target_id: str
-    accession: AccessionNumber
-    form: str
-    target_role: Literal["primary", "exhibit", "data_file", "graphic", "package"]
-    target_type: str
-    document_path: str | None
-    selected_filename: str | None
-    source_origin: Literal["inventory_index", "catalog_direct"]
-    body: StagedBodyRef
-    operations: tuple[OperationRequest, ...]
+An admitted body read records the versioned `BodyConsumptionReceipt`, including when an
+export fails. Budget refusal before body access or input identity failure writes no receipt.
+The receipt proves consumption, not permission to delete a body required by S11. Cleanup
+still requires the separate S11/publication or explicit-discard approval gate.
 
-@dataclass(frozen=True, slots=True)
-class ProcessingDiagnostic:
-    code: str
-    detail: str
+## Current run-level processing flow
 
-@dataclass(frozen=True, slots=True)
-class ReviewOutputRef:
-    staging_id: str
-    path: Path
-    representation: Literal["text", "text_verbatim"]
-    output_sha256: str
-    output_size: int
-
-@dataclass(frozen=True, slots=True)
-class OperationResult:
-    operation_id: str
-    status: Literal["not_requested", "unsupported", "blocked", "available", "failed"]
-    representation_id: str | None
-    output_sha256: str | None
-    output_size: int | None
-    handler_id: str | None
-    handler_version: str | None
-    diagnostics: tuple[ProcessingDiagnostic, ...]
-    review_output: ReviewOutputRef | None
-
-@dataclass(frozen=True, slots=True)
-class ProcessingResult:
-    target_id: str
-    source_sha256: str
-    source_asset_id: str
-    route: DocumentRoute
-    operation_results: tuple[OperationResult, ...]
-    exhibit_assessment: DocumentRoleAssessment | None
-
-process_target(
-    request: ProcessingRequest,
-    *,
-    capture_review: bool = False,
-    review_staging: ManagedReviewStaging | None = None,
-) -> ProcessingResult
-```
-
-The S10 coordinator joins an acquired body to its validated `work_targets` row and
-the target's `work_operations` rows by `target_id`. It copies the pinned operation,
-capability, handler, source-input, form, role, and type fields into `ProcessingRequest`.
-It does not reopen the S6 plan or S5 snapshot; failed or skipped acquisitions produce
-blocked operation results without invoking a handler.
-
-Each successful non-identity operation writes its own output to managed transient
-staging even when review capture is disabled; S11 needs that file to adopt the output
-payload. The worker returns metadata and digest/path references, never the body bytes.
-Diagnostic normalized text remains transient in memory and is not a stored operation
-output. Optional `ReviewOutputRef` files are separate copies owned by S7 and cannot
-replace the operation output. Identity and representation-reuse results alias an
-existing digest and do not write duplicate payload files.
-
-After S10 has consumed the acquired body for the target's operation set, its coordinator writes the versioned
-[`BodyConsumptionReceipt`](document_acquisition/schemas.md) through the S9 path
-contract. This receipt proves consumption, not permission to delete bytes required by
-S11 publication. S9 retains the selected body until Parquet publication or explicit run
-discard; a bundle envelope may be removed after extraction unless fixture capture
-retained it. The receipt is independent of operation success: a failed export may still
-have fully consumed the input bytes. S10 imports only the S9 path/schema contracts, not
-acquisition services.
-
-`ProcessingResult.source_sha256` is the selected-body digest in `StagedBodyRef.sha256`.
-The full response-envelope digest remains S9 provenance in
-`StagedBodyRef.source_response_sha256` and the acquisition attempt; S10 does not
-normalize or rewrite that envelope.
-
-The worker verifies the staged body against its S9 size/digest before processing.
-Each operation fingerprint covers its exact source digest/asset, effective path,
-capability/handler/options versions, and output schema. Identical pinned inputs must
-yield the same result metadata and output digest. Diagnostic-normalizer and evaluator
-fingerprints are recorded separately from export handler versions. `target_type` is
-retained as request provenance, not treated as the selected SGML header's type.
-
-## `process_target` execution sequence
-
-The S10 coordinator reads only the validated S9 run/work relations. It submits one
-operation set per acquired target; terminal target failures block requested operations,
-while `not_requested` and `unsupported` rows need no handler call. It never opens an
-S5/S6 source artifact or makes an HTTP request.
+The implemented coordinator reads the validated S9 work-order v3 and run state. It submits
+the resolved operation set for acquired targets; terminal target failures block requested
+operations. It never opens a S5/S6 source artifact or makes an HTTP request.
 
 1. Validate the `ProcessingRequest` against the S9 work-order row by `target_id`.
    Form, role, type, accession, path and source origin must match that immutable row.
@@ -201,24 +152,20 @@ S5/S6 source artifact or makes an HTTP request.
    path. A bundle child uses its selected SGML filename with `content_route()`; its
    containing `.txt` envelope does not decide the child route. S9's envelope digest
    remains provenance, not S10 input identity.
-4. For each operation, apply its pinned S6 disposition. Return `not_requested`,
-   `unsupported`, or `blocked` without invoking a handler; execute each requested,
-   supported operation independently.
-5. `raw` creates an identity representation over the selected source digest.
-   `render_to_txt` chooses a family/route handler before the generic normalizer fallback
-   for eligible text/HTML input. `render_to_xml` chooses a family-specific transform
-   before an evidence-backed generic transform over a declared HTML input; no `.xml`
-   sibling is opened or fetched. There is no operation fallback.
-6. Optionally run the separate diagnostic normalizer/evaluator on a bounded view. Its
-   text and findings do not become a render output and cannot alter operation status,
-   route, selected body, or S9 state.
-7. Hash every export output, verify size, and write it to managed operation staging.
-   Record one result and append-only attempt per operation; optional review copies
-   remain S7-owned and do not publish payloads.
-8. After the target's requested operation set has consumed the verified body, write
-   one S9 `BodyConsumptionReceipt`, including when an export failed. Admission refusal
-   before reading or digest/size mismatch has no receipt; retain the source for retry.
-   S9 cleanup additionally requires publisher adoption or explicit run discard.
+4. Apply the S9 resolved-operation rows. Return `not_requested`, `unsupported`, or
+   `blocked` without invoking a handler; execute each selected, supported operation
+   independently.
+5. Keep `raw` as a reference to the acquired staged file. For derived operations, select
+   the versioned route/handler budget before body access. The production budget registry
+   is empty, so normalization fails closed before reading or hashing the body.
+6. Under an admitted budget, dispatch to the engine, verify output size/digest, and stage
+   derived output. Record each operation result and append-only attempt; failed operations
+   do not erase successful siblings.
+7. Atomically write `staging/processing/<target_id>.json` relative to the run. Store only
+   safe relative staged-output references, never absolute paths or body bytes.
+8. Record the S9 `BodyConsumptionReceipt` only after admitted body consumption, including
+   when an export failed. Budget refusal before body access has no receipt. S11 publication
+   and cleanup approval remain separate gates.
 
 Operation failures are isolated; a failed export does not discard the source or sibling
 results. Every operation fingerprint pins its handler/capability/options and output
@@ -227,66 +174,40 @@ evidence-pack, and taxonomy versions when those diagnostics are enabled.
 
 ### Working-set admission
 
-The acquisition byte ceiling bounds a response, not the S10 working set. Export
-handlers declare their own bounded route policy. The separate diagnostic normalizer
-accepts a whole `bytes` body, decodes it, and builds whole-text/HTML structures;
-disabling stage traces removes repeated text records but does not make diagnostics
-streaming. Until route-specific estimates are validated, the implementation must not
-claim safe parallel processing for every body under the acquisition ceiling.
+The acquisition byte ceiling bounds a response, not the S10 working set. Every derived
+handler requires a versioned route/handler budget covering input, output, and working set.
+The production registry is empty; no representative envelopes exist, so no derived route
+is production-enabled. The generic `normalize_document` path reads whole text/HTML input
+and is exercised only by engine tests under an injected budget. S10 checks admission
+before body read/hash; refusal preserves the raw file reference and writes no receipt.
+Do not infer safe parallelism from the acquisition ceiling or invent expansion factors.
 
-Before dispatch, S10 derives available memory using the repository resource helper and
-admits each handler only when its versioned route policy reserves the working set.
-Worker count and in-flight bodies are resource-derived. Use streaming handlers where
-available; diagnostics requiring whole-body normalization receive a separate budget
-admission. Do not invent a universal expansion factor or hardcode worker/memory limits.
-A refusal before reading returns `processing_budget_exceeded`, retains the S9 source,
-and writes no body-consumption receipt. Establish route envelopes from captured cases
-before enabling large-body parallel work.
+For engine tests, a primary uses its filing-form profile and a standalone exhibit uses
+the generic no-cover profile. A registered family/route renderer takes precedence over
+the generic normalizer fallback. This dispatch behavior does not enable production text
+processing without a route budget.
 
-The reused form-aware engine entry point is extended with an explicit trace switch:
+## Route dispatch and production enablement
 
-```python
-normalize_document(
-    raw_bytes: bytes,
-    *,
-    form: str | None = None,
-    document_path: str | None = None,
-    content_route: DocumentRoute | None = None,
-    capture_stage_trace: bool = True,
-) -> NormalizationResult
-```
+Resolve handlers from the effective source path and S9 capability pins, not claimed MIME
+type alone. A direct target uses its validated accession-relative path; a bundle child
+uses its selected `<FILENAME>` and `content_route()`, not the bundle envelope path.
+`target_type` does not override the content route or assert the SGML header value. These
+are engine dispatch semantics; production derived processing remains blocked by the empty
+route-budget registry.
 
-Existing callers retain the current default. The requested generic `render_to_txt`
-fallback uses this normalizer on eligible text/HTML sources. Diagnostic/review callers
-may also use it; S10 passes `capture_stage_trace=False` to avoid repeated full-text
-copies.
-
-For generic normalization, a primary uses its filing-form profile and a standalone
-exhibit uses the generic no-cover profile. A registered family/route renderer takes
-precedence over this fallback.
-
-## Route contract
-
-Route export handlers from the effective source path, not claimed MIME type alone. A
-direct target uses its validated accession-relative path; a bundle child uses its
-selected `<FILENAME>` and `content_route()`, not the bundle envelope path. A family/route
-specific text renderer overrides the generic normalizer fallback. `target_type` does not
-override the content route or assert the SGML header value.
-
-| Route | Operation behavior | Deliberate boundary |
+| Route | Engine/operation behavior | Production boundary |
 |---|---|---|
-| `MARKUP`, `RENDERED` | `raw` keeps exact selected bytes. `render_to_txt` uses a family-specific handler first, then generic `normalize_document`; `render_to_xml` uses a family-specific handler or an evidence-backed generic transform. Form 4's handler is specific to its declared HTML path. | HTML/iXBRL output is an export view; no XBRL facts are extracted. |
-| `TEXT` | `raw` preserves source bytes. `render_to_txt` uses a form-specific handler or generic normalizer fallback; byte-identical output may share the payload digest but has its own representation row. | The normalizer is an export path, not an implicit request to emit diagnostic stage traces. |
-| `XML` | `raw` preserves standalone XML. `render_to_xml` is supported only for a registered form-specific or evidence-backed generic transform over a declared HTML input; flat XML does not become its own render output. | No archive-root sibling fetch or semantic XBRL extraction. |
-| `BINARY` | `raw` preserves exact bytes. No text handler is currently supported; PDF extraction remains unavailable. | Binary source bytes remain independently available. |
-| `PAPER`, `UNKNOWN` | `raw` preserves the available selected source/state; no derived renderer is enabled for these routes. | No off-archive reference following or guessed MIME conversion. |
+| `MARKUP`, `RENDERED` | `raw` remains the source file reference. Engine dispatch prefers a registered family/route handler; `normalize_document` is the generic `render_to_txt` fallback for eligible text/HTML. | Engine behavior is unit-tested, but production rendering is blocked before body access until a budget is registered. No XBRL facts are extracted. |
+| `TEXT` | Raw source remains a file reference. Engine tests cover generic text normalization and family/route precedence. | No production text transform is enabled without a versioned route/handler budget. |
+| `XML` | Raw source is retained. No generic `render_to_xml` handler is registered; transforms require an explicit resolved handler over declared input. | Form 4 XML is unsupported because its output contract and handler are absent. Flat XML/XSD remain raw-only. |
+| `BINARY`, `PAPER`, `UNKNOWN` | Raw source/state only; no generic derived renderer. | No PDF extraction, off-archive reference following, or guessed MIME conversion. |
 
-The generic `render_to_txt` fallback is `engine.forms.normalize.normalize_document()`
-over eligible text/HTML inputs with the pinned primary or no-cover profile. A registered
-family-specific handler takes precedence. The export registry pins the selected handler
-and processor version. An XML transform follows the same specific-over-generic rule only
-when generic capability has reviewed evidence. S9's large-bundle path continues to use
-its bounded streaming extractor rather than a whole-envelope normalizer.
+`normalize_document` runs only when S9/S10 resolves the handler and a matching versioned
+budget admits it. Current tests exercise it with an injected budget; the production budget
+registry has no entries. Any future XML transform must consume a declared input and have
+an explicit handler/output contract. S9's large-bundle path continues to use its bounded
+streaming extractor rather than a whole-envelope normalizer.
 
 ## Target identity and cover handling
 
@@ -317,9 +238,10 @@ its bounded streaming extractor rather than a whole-envelope normalizer.
   phrase analysis is diagnostic evidence only and cannot create a target.
 - If a caller requires published, reusable statutory identity evidence, or a companion
   target, publish the S5 inventory snapshot and re-plan in S6 before acquisition.
-  Catalog-direct `exact_form_with_lazy_index` is the separately authorized S9-only
-  exception; an index fetched during S10 is out of contract and cannot be attached to
-  the immutable target plan or written into S5/S6 by the processing owner.
+  Lazy-index requests require an S9 work-order trigger ID/version from a reviewed family
+  pattern. Current pins are null, so no target is authorized for lazy lookup. The S6
+  `catalog_direct_selection` field does not grant this authority, and S10 never fetches an
+  index or attaches new evidence to immutable S5/S6 artifacts.
 - A valid catalog-direct target still receives an ordinary S10 result with its
   catalog provenance intact and may be considered by the future S11 store. The
   prohibition is on persisting an index-discovered replacement or companion that has
@@ -341,15 +263,20 @@ durable payload parts or links payload fields into S5/S6.
 
 ## Review behavior
 
-Review replays only acquisition fixtures. `processing.json` records target ID, operation
-results, source/input/output digests, handler fingerprints, and diagnostics; it may also
-record the versioned exhibit assessment. `representation.txt` is a separate review copy,
-not a durable output. An operation whose output digest aliases another payload writes no
-duplicate payload file. Unsupported PDF/binary handlers have no derived output. Source
-HTML previews use S7's sanitized inert renderer and never replace source evidence. One
-operation failure does not erase successful sibling results.
+Review replays only acquisition fixtures. The run-relative
+`staging/processing/<target_id>.json` manifest records target ID, operation results,
+source/input/output digests, handler fingerprints, and diagnostics; it is not an S11
+published relation. `representation.txt` is a separate review copy, not a durable output.
+An operation whose output digest aliases another payload writes no duplicate payload
+file. Unsupported PDF/binary handlers have no derived output. Source HTML previews use
+S7's sanitized inert renderer and never replace source evidence. One operation failure
+does not erase successful sibling results.
 
 ## Tests
+
+The focused contracts below do not imply that the combined package suite currently passes.
+One raw-only offline CLI integration test passes; combined package tests are being corrected
+and re-run. Production derived processing remains disabled until route budgets are approved.
 
 - Same fixture body, path, target role, operation, and handler/options fingerprint
   produce identical result metadata and output digest.
@@ -360,7 +287,7 @@ operation failure does not erase successful sibling results.
   schedule replacement acquisition; generic-profile exhibits do not get that warning.
 - Fingerprint changes prevent false base/new equality.
 - `.txt` `render_to_txt` uses a family-specific handler or the generic normalizer fallback; preserve a distinct representation row even when output digest aliases raw.
-- HTML export retains raw and text representations; specific handlers override generic fallbacks. Form-specific or evidence-backed generic `render_to_xml` consumes declared HTML input and never probes for an XML sibling.
+- HTML engine tests retain raw and text identities and cover specific-handler precedence. No `render_to_xml` handler is registered in the current default engine catalog; no XML sibling is probed or fetched.
 - Flat XML/XSD, ZIP, paper, binary, and PDF remain raw-only. PDF has no text handler.
 - iXBRL hidden/inline tags follow existing visible-text behavior; no fact table is emitted.
 - Family-specific `render_to_txt` overrides the generic `normalize_document` fallback; both produce deterministic versioned outputs. Raw source bytes remain unchanged.
@@ -373,12 +300,11 @@ operation failure does not erase successful sibling results.
 
 ## Acceptance criteria
 
-Raw is mandatory and every additional supported operation has an independent deterministic
-outcome; raw and exports retain separate identities. A processor version change does not retire other
-families' representations without an explicit plan-scoped supersession selector. Processing outputs are transient until S11
-publication adopts selected representations into Parquet payload relations, except for
-separately selected review evidence. The publication contract is specified in the
-acquisition lifecycle plan and remains behind S11 approval. Large-body parallel processing remains gated on measured route
-working-set envelopes. Private diagnostic development is not gated on a holdout;
-authoritative exhibit-family activation is gated on reviewed, holdout-tested evidence
-packs and an explicit acceptance decision.
+Raw is mandatory and remains a file reference; each enabled derived operation has an
+independent deterministic outcome. Processor-version changes do not prune prior results.
+The plan-scoped selector semantics are defined in the representation materialization
+contract; plan serialization and snapshot effect are not implemented. Processing outputs
+remain transient pending S11 publication approval. Cleanup also remains gated. Derived
+production routes and large-body parallel work require reviewed route-budget envelopes.
+Form 4 XML requires its own output contract and handler; lazy-index requests require
+reviewed family triggers, currently none. The combined targeted S6/S9/S10 suite passes.

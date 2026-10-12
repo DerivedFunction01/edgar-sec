@@ -14,6 +14,7 @@ from edgar_sec.pipelines.document_acquisition.commands.fixture import (
     cmd_fixture_list,
     cmd_fixture_replay,
 )
+from edgar_sec.pipelines.document_acquisition.commands.process import cmd_process
 from edgar_sec.pipelines.document_acquisition.commands.project import cmd_project
 from edgar_sec.pipelines.document_acquisition.commands.run import cmd_run
 from edgar_sec.pipelines.document_acquisition.commands.status import cmd_status
@@ -25,7 +26,6 @@ _TRACKS = {
     "project": "S9 target-plan projection",
     "status": "S9 run-state inspection",
     "run": "S9 network acquisition",
-    "process": "S10 body processing",
     "publish": "S11 Parquet/DAG publication",
     "fixture create": "S9 fixture initialization",
     "fixture fill": "S9 fixture capture",
@@ -140,9 +140,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     process = commands.add_parser("process", help="process acquired target bodies")
     process.add_argument("--run-id", required=True, help="acquisition run id")
+    process.add_argument("--retry-failures", action="store_true")
     process.add_argument("--workers", type=positive_int_type)
     _add_output_options(process)
-    _set_todo(process, "process")
+    process.set_defaults(func=cmd_process)
 
     publish = commands.add_parser("publish", help="publish an approved S11 snapshot")
     publish.add_argument("--run-id", required=True, help="completed acquisition run id")

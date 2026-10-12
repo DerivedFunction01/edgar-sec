@@ -10,8 +10,9 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.domain.identity import AccessionNumber
+from edgar_sec.domain.document.route import DocumentRoute
+from edgar_sec.domain.document.path_facts import DocumentPathFacts
 from edgar_sec.domain.sec_urls import validate_archive_url
-from edgar_sec.domain.forms.families.processing_profiles import get_family_profile
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.review.paths import (
@@ -37,6 +38,11 @@ from edgar_sec.pipelines.document_acquisition.plan_projection.project import (
 from edgar_sec.pipelines.document_acquisition.processing import (
     ProcessingError,
     process_target,
+)
+from edgar_sec.pipelines.document_acquisition.processing_io import (
+    ProcessingBudgetPolicy,
+    ProcessingBudgetRegistry,
+    expected_operation_pins,
 )
 from edgar_sec.pipelines.document_acquisition.processing_models import (
     OperationRequest,
@@ -162,18 +168,21 @@ def _captured_text_fixture(
 
 def _processing_request(paths, run_id, fixture_case, target):
     body = get_staged_body_ref(paths, run_id, fixture_case.target_id)
-    profile = get_family_profile(fixture_case.form)
-    assert profile is not None
-    profile_version = profile.version
+    document_path = validate_archive_url(
+        str(target["target_url"]), fixture_case.accession
+    ).document_path
+    path_facts = (
+        DocumentPathFacts.from_sgml_filename(body.selected_filename)
+        if body.selected_filename is not None
+        else DocumentPathFacts.from_archive_path(document_path)
+    )
     request = ProcessingRequest(
         target_id=fixture_case.target_id,
         accession=AccessionNumber.from_any(fixture_case.accession),
         form=fixture_case.form,
         target_role=target["target_role"],
         target_type=target["target_type"],
-        document_path=validate_archive_url(
-            str(target["target_url"]), fixture_case.accession
-        ).document_path,
+        document_path=document_path,
         selected_filename=body.selected_filename,
         source_origin=target["source_origin"],
         body=body,
@@ -184,11 +193,11 @@ def _processing_request(paths, run_id, fixture_case, target):
                 requested=True,
                 support_status="supported",
                 source_request_id=fixture_case.request_id,
-                capability_id="family-profile",
-                capability_version=profile_version,
-                handler_id=None,
-                handler_version=None,
-                output_kind="raw",
+                capability_id="raw.selected_source",
+                capability_version="v1",
+                handler_id="raw_identity",
+                handler_version="1",
+                output_kind="raw_bytes",
             ),
             OperationRequest(
                 operation_id="text",
@@ -196,11 +205,11 @@ def _processing_request(paths, run_id, fixture_case, target):
                 requested=True,
                 support_status="supported",
                 source_request_id=fixture_case.request_id,
-                capability_id="family-profile",
-                capability_version=profile_version,
-                handler_id="text_passthrough",
-                handler_version="1",
-                output_kind="text_verbatim",
+                capability_id=None,
+                capability_version=None,
+                handler_id=None,
+                handler_version=None,
+                output_kind=None,
             ),
             OperationRequest(
                 operation_id="xml",
@@ -208,15 +217,86 @@ def _processing_request(paths, run_id, fixture_case, target):
                 requested=True,
                 support_status="unsupported",
                 source_request_id=fixture_case.request_id,
-                capability_id="family-profile",
-                capability_version=profile_version,
+                capability_id=None,
+                capability_version=None,
                 handler_id=None,
                 handler_version=None,
                 output_kind="xml",
             ),
         ),
     )
-    return request
+    return _pin_request_operations(request, path_facts)
+
+
+def _pin_request_operations(request, path_facts):
+    raw, text, xml = request.operations
+    raw = replace(raw, capability_id="raw.selected_source")
+    raw_pins = expected_operation_pins(request, raw, path_facts)
+    assert raw_pins is not None
+    raw = replace(
+        raw,
+        capability_id=raw_pins[0],
+        capability_version=raw_pins[1],
+        handler_id=raw_pins[2],
+        handler_version=raw_pins[3],
+        output_kind=raw_pins[4],
+    )
+    text_pins = expected_operation_pins(request, text, path_facts)
+    if text_pins is None:
+        text = replace(
+            text,
+            requested=True,
+            support_status="unsupported",
+            capability_id=None,
+            capability_version=None,
+            handler_id=None,
+            handler_version=None,
+            output_kind=None,
+        )
+    else:
+        text = replace(
+            text,
+            capability_id=text_pins[0],
+            capability_version=text_pins[1],
+            handler_id=text_pins[2],
+            handler_version=text_pins[3],
+            output_kind=text_pins[4],
+        )
+    xml = replace(
+        xml,
+        requested=True,
+        support_status="unsupported",
+        capability_id=None,
+        capability_version=None,
+        handler_id=None,
+        handler_version=None,
+        output_kind=None,
+    )
+    return replace(request, operations=(raw, text, xml))
+
+
+def _test_budget_registry() -> ProcessingBudgetRegistry:
+    from edgar_sec.engine.document_processing.capabilities import get_capability
+
+    descriptor = get_capability("normalize_document")
+    assert descriptor is not None
+    return ProcessingBudgetRegistry(
+        (
+            ProcessingBudgetPolicy(
+                budget_version="review-test-v1",
+                route=DocumentRoute.TEXT,
+                handler_id="normalize_document",
+                handler_version=descriptor.handler_version,
+                max_input_bytes=256,
+                max_output_bytes=512,
+                working_set_reservation_bytes=512,
+            ),
+        )
+    )
+
+
+def _process_with_test_budget(request, **kwargs):
+    return process_target(request, budget_registry=_test_budget_registry(), **kwargs)
 
 
 def test_captured_text_fixture_processes_and_builds_reproducible_review(
@@ -227,7 +307,7 @@ def test_captured_text_fixture_processes_and_builds_reproducible_review(
     )
     request = _processing_request(paths, run_id, fixture_case, target)
 
-    result = process_target(request, paths=paths)
+    result = _process_with_test_budget(request, paths=paths)
     receipt = read_body_consumption_receipt(paths, run_id, request.target_id)
     assert result.route.value == "text"
     assert receipt is not None
@@ -291,9 +371,10 @@ def test_captured_text_fixture_processes_and_builds_reproducible_review(
             "unsupported",
         ]
         text_operation = saved["processing"]["operations"][1]
-        assert text_operation["handler_id"] == "text_passthrough"
+        assert text_operation["handler_id"] == "normalize_document"
         assert text_operation["handler_version"] == "1"
-        assert text_operation["output_sha256"] == request.body.sha256
+        text_path = paths.run_dir(run_id) / text_operation["staged_output_path"]
+        assert text_operation["output_sha256"] == file_sha256(text_path)
 
         before = artifact.path.read_bytes()
         repeated = build_processing_review_artifact(
@@ -317,7 +398,7 @@ def test_numbered_direct_child_fixture_replays_through_processing(
     )
     request = _processing_request(paths, run_id, fixture_case, target)
 
-    result = process_target(request, paths=paths)
+    result = _process_with_test_budget(request, paths=paths)
     with project_terminal_results(
         (request,), (result,), paths=paths, run_id=run_id
     ) as projection:
@@ -339,7 +420,7 @@ def test_bundle_selected_filename_crosses_processing_and_projection(
     assert fixture_case.selected_filename == "primary-filing.txt"
     assert request.body.selected_filename == fixture_case.selected_filename
     assert request.selected_filename == fixture_case.selected_filename
-    result = process_target(request, paths=paths)
+    result = _process_with_test_budget(request, paths=paths)
     assert result.route.value == "text"
     assert result.effective_path == fixture_case.selected_filename
     assert read_body_consumption_receipt(paths, run_id, request.target_id) is not None
@@ -388,7 +469,7 @@ def test_bundle_filename_routes_binary_and_unrecognized_bodies(
         else _BODY,
     )
     request = _processing_request(paths, run_id, fixture_case, target)
-    result = process_target(request, paths=paths)
+    result = _process_with_test_budget(request, paths=paths)
 
     assert request.selected_filename == filename
     assert result.route.value == route
@@ -408,6 +489,21 @@ def test_review_builder_uses_shared_manifest_and_case_layout(
 ) -> None:
     source_paths, _, _, fixture_case, _ = _captured_text_fixture(tmp_path, monkeypatch)
     output = tmp_path / "review-run"
+    import edgar_sec.pipelines.document_acquisition.review_artifacts.builder as builder
+
+    original_request_for_case = builder._request_for_case
+
+    def pinned_request_for_case(case, *, paths):
+        request = original_request_for_case(case, paths=paths)
+        facts = (
+            DocumentPathFacts.from_sgml_filename(request.selected_filename)
+            if request.selected_filename is not None
+            else DocumentPathFacts.from_archive_path(request.document_path)
+        )
+        return _pin_request_operations(request, facts)
+
+    monkeypatch.setattr(builder, "_request_for_case", pinned_request_for_case)
+    monkeypatch.setattr(builder, "process_target", _process_with_test_budget)
 
     result = build_review_artifacts(
         _FIXTURE_ID,

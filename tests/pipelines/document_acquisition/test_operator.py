@@ -194,6 +194,40 @@ def test_run_refuses_invalid_byte_limit_before_network_prompt(monkeypatch) -> No
     assert calls == []
 
 
+def test_process_defaults_retry_to_no_and_routes_through_cli(monkeypatch) -> None:
+    responses = iter((" run-1 ", ""))
+    prompts = []
+    calls: list[list[str]] = []
+
+    def prompt(message: str, default: str = "") -> str:
+        prompts.append((message, default))
+        return next(responses) or default
+
+    monkeypatch.setattr(operator, "prompt_text", prompt)
+    monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
+
+    _menu_action("Process acquired bodies").callback()
+
+    assert prompts == [
+        ("Acquisition run ID", ""),
+        ("Retry failed processing targets? (yes/no)", "no"),
+    ]
+    assert calls == [["process", "--run-id", "run-1"]]
+
+
+def test_process_retry_confirmation_routes_option_through_cli(monkeypatch) -> None:
+    responses = iter(("run-1", "yes"))
+    calls: list[list[str]] = []
+    monkeypatch.setattr(
+        operator, "prompt_text", lambda prompt, default="": next(responses)
+    )
+    monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
+
+    _menu_action("Process acquired bodies").callback()
+
+    assert calls == [["process", "--run-id", "run-1", "--retry-failures"]]
+
+
 def test_fixture_create_requires_id_and_delegates_to_cli(monkeypatch) -> None:
     responses = iter((" fixture-1 ", ""))
     calls: list[list[str]] = []

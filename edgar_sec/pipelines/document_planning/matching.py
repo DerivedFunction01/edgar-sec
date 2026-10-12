@@ -58,6 +58,7 @@ class _Candidate:
     sequence: int | None
     byte_size: int | None
     status_reason: str | None = None
+    canonical_path: str | None = None
 
 
 def catalog_only_rows(
@@ -74,7 +75,11 @@ def catalog_only_rows(
             catalog_urls = _catalog_primary_urls(accession, identity)
             catalog_urls_loaded = True
         url = next(iter(catalog_urls)) if catalog_urls else None
-        placeholder_primary = target.role == "primary" and not url and _catalog_has_placeholder_primary(accession)
+        placeholder_primary = (
+            target.role == "primary"
+            and not url
+            and _catalog_has_placeholder_primary(accession)
+        )
         if placeholder_primary:
             candidate = _Candidate(
                 None,
@@ -153,7 +158,9 @@ def _catalog_primary_urls(
         else:
             if not path or ".." in path.split("/") or "\\" in path:
                 continue
-            url = archives_url(occurrence.source_cik, canonical_accession, expected_path)
+            url = archives_url(
+                occurrence.source_cik, canonical_accession, expected_path
+            )
             safe = _validated_archive_url(
                 url, canonical_accession, occurrence.source_cik
             )
@@ -342,6 +349,7 @@ def _entry_candidate(
             "bundle_sequence",
             sequence,
             size if isinstance(size, int) and not isinstance(size, bool) else None,
+            canonical_path=filename or None,
         )
     urls: list[str] = []
     for observed in (archive_url, href):
@@ -399,6 +407,7 @@ def _entry_candidate(
             "bundle_sequence",
             sequence,
             size if isinstance(size, int) and not isinstance(size, bool) else None,
+            canonical_path=filename or None,
         )
     return _Candidate(entry_id, None, "none", None, None, "no_usable_retrieval_locator")
 
@@ -575,6 +584,10 @@ def _target_row(
     if status not in _TARGET_STATUSES:
         raise TargetMatchingError(f"invalid target status: {status!r}")
     identity = [plan_id, accession, target.request_id, candidate.entry_id, status]
+    canonical_path = candidate.canonical_path
+    if canonical_path is None and candidate.target_url:
+        parsed = parse_archive_url(candidate.target_url)
+        canonical_path = parsed.document_path if parsed is not None else None
     return {
         "target_id": canonical_hash(identity),
         "accession": accession,
@@ -596,6 +609,12 @@ def _target_row(
         "catalog_direct_selection": (
             target.catalog_direct_selection
             if source_origin == "catalog_direct"
+            else None
+        ),
+        "_canonical_path": canonical_path,
+        "_requested_operations": (
+            [operation.value for operation in target.acquisition_policy.operations]
+            if target.acquisition_policy is not None
             else None
         ),
     }

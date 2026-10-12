@@ -23,9 +23,27 @@ from edgar_sec.pipelines.document_acquisition.run_state.store import (
 )
 from edgar_sec.pipelines.document_acquisition.schemas import (
     ACQUISITION_CONTRACT_VERSION,
+    MATCHER_VERSION,
+    OPERATION_INPUT_SCHEMA_VERSION,
+    PLAN_BUNDLE_SCHEMA_VERSION,
     RUN_SCHEMA_VERSION,
+    SOURCE_REQUEST_SCHEMA_VERSION,
+    TARGET_OPERATION_SCHEMA_VERSION,
+    TARGET_SCHEMA_VERSION,
     WORK_ORDER_SCHEMA_VERSION,
-    target_relation_schema,
+    RESOLVED_OPERATION_SCHEMA_VERSION,
+)
+from edgar_sec.pipelines.document_acquisition.arrow_schemas import (
+    WORK_ORDER_RELATION_SCHEMAS,
+    WORK_ORDER_SCHEMA,
+)
+from edgar_sec.pipelines.document_acquisition.plan_projection.relation_validation import (
+    RelationValidationError,
+    validate_relation_coverage,
+    validate_resolved_operations,
+)
+from edgar_sec.pipelines.document_acquisition.plan_projection.operation_resolution import (
+    iter_resolved_operation_rows,
 )
 
 
@@ -53,20 +71,28 @@ def load_validated_work_order(paths: AcquisitionPaths, run_id: str) -> tuple[Pat
         or manifest.get("run_state_schema_version") != RUN_STATE_SCHEMA_VERSION
     ):
         raise ValueError("acquisition run manifest identity or version mismatch")
+    if (
+        type(manifest.get("bundle_schema_version")) is not int
+        or manifest["bundle_schema_version"] != PLAN_BUNDLE_SCHEMA_VERSION
+        or type(manifest.get("target_schema_version")) is not int
+        or manifest["target_schema_version"] != TARGET_SCHEMA_VERSION
+        or manifest.get("matcher_version") != MATCHER_VERSION
+    ):
+        raise ValueError("acquisition run target-plan schema version mismatch")
+    for name, expected in (
+        ("target_operation_schema_version", TARGET_OPERATION_SCHEMA_VERSION),
+        ("source_request_schema_version", SOURCE_REQUEST_SCHEMA_VERSION),
+        ("operation_input_schema_version", OPERATION_INPUT_SCHEMA_VERSION),
+        ("resolved_operation_schema_version", RESOLVED_OPERATION_SCHEMA_VERSION),
+    ):
+        if type(manifest.get(name)) is not int or manifest[name] != expected:
+            raise ValueError(f"acquisition run {name} mismatch")
     descriptors = manifest.get("work_order_parts")
     if not isinstance(descriptors, list) or not descriptors:
         raise ValueError("acquisition run manifest has no work-order parts")
+    relations = validate_work_order_relations(run_root, manifest)
     parts: list[Path] = []
     row_count = 0
-    target_schema = target_relation_schema()
-    expected_schema = pa.schema(
-        [
-            *target_schema,
-            pa.field("executable", pa.bool_(), nullable=False),
-            pa.field("skip_reason", pa.string(), nullable=True),
-        ],
-        metadata=target_schema.metadata,
-    )
     for descriptor in descriptors:
         if not isinstance(descriptor, dict):
             raise ValueError("work-order part descriptor is invalid")
@@ -97,7 +123,7 @@ def load_validated_work_order(paths: AcquisitionPaths, run_id: str) -> tuple[Pat
         try:
             parquet = pq.ParquetFile(resolved)
             if (
-                not parquet.schema_arrow.equals(expected_schema, check_metadata=False)
+                not parquet.schema_arrow.equals(WORK_ORDER_SCHEMA, check_metadata=False)
                 or parquet.metadata.num_rows != descriptor["row_count"]
             ):
                 raise ValueError("work-order part schema or row count differs")
@@ -128,7 +154,145 @@ def load_validated_work_order(paths: AcquisitionPaths, run_id: str) -> tuple[Pat
     )
     if mismatch or expected_count != state_count or expected_count != actual[0]:
         raise ValueError("run-state seeds disagree with the work order")
+    operation_parts = relations["resolved_operations"]
+    expected_operations, state_operations, operation_mismatch = compare_operation_seeds(
+        state_database, operation_parts
+    )
+    if (
+        operation_mismatch
+        or expected_operations != state_operations
+        or expected_operations
+        != sum(pq.ParquetFile(path).metadata.num_rows for path in operation_parts)
+    ):
+        raise ValueError("run-state operation seeds disagree with the work order")
     return tuple(parts)
+
+
+def validate_work_order_relations(
+    run_root: Path, manifest: dict[str, object]
+) -> dict[str, tuple[Path, ...]]:
+    descriptors = manifest.get("work_order_relations")
+    if not isinstance(descriptors, dict) or set(descriptors) != set(
+        WORK_ORDER_RELATION_SCHEMAS
+    ):
+        raise ValueError("run manifest work-order relations are invalid")
+    paths: dict[str, tuple[Path, ...]] = {}
+    declared: set[Path] = set()
+    for relation, schema in WORK_ORDER_RELATION_SCHEMAS.items():
+        record = descriptors[relation]
+        if not isinstance(record, dict) or set(record) != {
+            "parts",
+            "row_count",
+            "sha256",
+        }:
+            raise ValueError("work-order relation descriptor is invalid")
+        relation_parts = record.get("parts")
+        relation_count = record.get("row_count")
+        relation_digest = record.get("sha256")
+        if (
+            not isinstance(relation_parts, list)
+            or type(relation_count) is not int
+            or relation_count < 0
+            or not is_sha256_hex_digest(relation_digest)
+        ):
+            raise ValueError("work-order relation count or digest is invalid")
+        loaded: list[Path] = []
+        observed_count = 0
+        digest_rows = []
+        previous_path: str | None = None
+        for part in relation_parts:
+            if not isinstance(part, dict) or set(part) != {
+                "path",
+                "row_count",
+                "byte_size",
+                "sha256",
+            }:
+                raise ValueError("work-order relation part is invalid")
+            relative = part.get("path")
+            path = PurePosixPath(relative) if isinstance(relative, str) else None
+            row_count = part.get("row_count")
+            byte_size = part.get("byte_size")
+            digest = part.get("sha256")
+            if (
+                path is None
+                or path.is_absolute()
+                or ".." in path.parts
+                or "\\" in relative
+                or not path.parts
+                or path.parts[0] != "work_order"
+                or (
+                    relation != "targets"
+                    and (len(path.parts) < 3 or path.parts[1] != relation)
+                )
+                or (relation == "targets" and len(path.parts) != 2)
+                or (previous_path is not None and relative <= previous_path)
+                or type(row_count) is not int
+                or row_count < 0
+                or type(byte_size) is not int
+                or byte_size < 0
+                or not is_sha256_hex_digest(digest)
+            ):
+                raise ValueError("work-order relation part fields are invalid")
+            candidate = run_root.joinpath(*path.parts)
+            current = run_root
+            for piece in path.parts:
+                current = current / piece
+                if current.is_symlink():
+                    raise ValueError("work-order relation contains a symlink")
+            resolved = candidate.resolve()
+            if (
+                not resolved.is_relative_to(run_root.resolve())
+                or not resolved.is_file()
+                or resolved.stat().st_size != byte_size
+                or file_sha256(resolved) != digest
+            ):
+                raise ValueError("work-order relation part is missing or corrupt")
+            parquet = pq.ParquetFile(resolved)
+            if (
+                not parquet.schema_arrow.equals(schema, check_metadata=False)
+                or parquet.metadata.num_rows != row_count
+            ):
+                raise ValueError("work-order relation schema or rows differ")
+            if resolved in declared:
+                raise ValueError("work-order relation part is referenced twice")
+            declared.add(resolved)
+            loaded.append(resolved)
+            previous_path = relative
+            observed_count += row_count
+            digest_rows.append([relative, row_count, byte_size, digest])
+        if (
+            observed_count != relation_count
+            or canonical_hash(digest_rows) != relation_digest
+        ):
+            raise ValueError("work-order relation digest or row count differs")
+        paths[relation] = tuple(loaded)
+    target_part_paths = [part.get("path") for part in manifest["work_order_parts"]]
+    if target_part_paths != [
+        part.relative_to(run_root).as_posix() for part in paths["targets"]
+    ]:
+        raise ValueError("target work-order references disagree")
+    work_order_root = run_root / "work_order"
+    actual = {
+        item.resolve() for item in work_order_root.rglob("*.parquet") if item.is_file()
+    }
+    if any(item.is_symlink() for item in work_order_root.rglob("*.parquet")):
+        raise ValueError("work order contains an undeclared symlink")
+    if actual != declared:
+        raise ValueError("work order has undeclared or missing relation parts")
+    if descriptors["targets"]["row_count"] != manifest.get("target_row_count"):
+        raise ValueError("target relation count disagrees with run manifest")
+    try:
+        validate_relation_coverage(
+            paths["targets"],
+            {relation: paths[relation] for relation in paths if relation != "targets"},
+        )
+    except RelationValidationError as error:
+        raise ValueError(str(error)) from error
+    try:
+        validate_resolved_operations(paths)
+    except RelationValidationError as error:
+        raise ValueError(str(error)) from error
+    return paths
 
 
 def compare_work_order_seeds(
@@ -211,6 +375,93 @@ def compare_work_order_seeds(
         return expected_count, state_count, mismatch
 
 
+def compare_operation_seeds(
+    database_path: Path, parts: tuple[Path, ...]
+) -> tuple[int, int, int]:
+    columns = (
+        "operation_id",
+        "target_id",
+        "operation",
+        "requested",
+        "request_mode",
+        "selected",
+        "source_request_id",
+        "input_ordinal",
+        "input_role",
+        "support_status",
+        "support_reason",
+        "capability_id",
+        "capability_version",
+        "handler_id",
+        "handler_version",
+        "output_kind",
+    )
+    with sqlite3.connect(
+        f"file:{database_path.resolve()}?mode=ro", uri=True
+    ) as connection:
+        connection.execute("PRAGMA temp_store=FILE")
+        connection.execute(
+            "CREATE TEMP TABLE expected_operations ("
+            "operation_id TEXT PRIMARY KEY, target_id TEXT NOT NULL, "
+            "operation TEXT NOT NULL, requested INTEGER NOT NULL, "
+            "request_mode TEXT NOT NULL, selected INTEGER NOT NULL, "
+            "source_request_id TEXT, input_ordinal INTEGER, input_role TEXT, "
+            "support_status TEXT NOT NULL, support_reason TEXT, "
+            "capability_id TEXT, capability_version TEXT, handler_id TEXT, "
+            "handler_version TEXT, output_kind TEXT)"
+        )
+        cursor = connection.cursor()
+        insert = "INSERT INTO expected_operations VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        for part in parts:
+            for batch in pq.ParquetFile(part).iter_batches(
+                batch_size=resolve_parquet_read_batch_size(), columns=list(columns)
+            ):
+                values = []
+                arrays = batch.columns
+                for index in range(batch.num_rows):
+                    row = [column[index].as_py() for column in arrays]
+                    row[3] = int(row[3])
+                    row[5] = int(row[5])
+                    values.append(tuple(row))
+                cursor.executemany(insert, values)
+        mismatch = int(
+            connection.execute(
+                "SELECT COUNT(*) FROM expected_operations expected "
+                "LEFT JOIN operation_state actual USING (operation_id) "
+                "WHERE actual.operation_id IS NULL "
+                "OR expected.target_id IS NOT actual.target_id "
+                "OR expected.operation IS NOT actual.operation "
+                "OR expected.requested IS NOT actual.requested "
+                "OR expected.request_mode IS NOT actual.request_mode "
+                "OR expected.selected IS NOT actual.selected "
+                "OR expected.source_request_id IS NOT actual.source_request_id "
+                "OR expected.input_ordinal IS NOT actual.input_ordinal "
+                "OR expected.input_role IS NOT actual.input_role "
+                "OR expected.support_status IS NOT actual.support_status "
+                "OR expected.support_reason IS NOT actual.support_reason "
+                "OR expected.capability_id IS NOT actual.capability_id "
+                "OR expected.capability_version IS NOT actual.capability_version "
+                "OR expected.handler_id IS NOT actual.handler_id "
+                "OR expected.handler_version IS NOT actual.handler_version "
+                "OR expected.output_kind IS NOT actual.output_kind"
+            ).fetchone()[0]
+        )
+        mismatch += int(
+            connection.execute(
+                "SELECT COUNT(*) FROM operation_state actual "
+                "LEFT JOIN expected_operations expected USING (operation_id) "
+                "WHERE expected.operation_id IS NULL"
+            ).fetchone()[0]
+        )
+        expected_count = int(
+            connection.execute("SELECT COUNT(*) FROM expected_operations").fetchone()[0]
+        )
+        state_count = int(
+            connection.execute("SELECT COUNT(*) FROM operation_state").fetchone()[0]
+        )
+        return expected_count, state_count, mismatch
+
+
 def _sqlite_scanner_installed(con) -> bool:
     row = con.execute(
         "SELECT installed FROM duckdb_extensions() "
@@ -235,8 +486,20 @@ def iter_work_order_rows(
                 }
 
 
+def iter_resolved_work_order_operations(
+    paths: AcquisitionPaths, run_id: str
+) -> Iterator[dict[str, object]]:
+    load_validated_work_order(paths, run_id)
+    run_root = paths.run_dir(run_id)
+    manifest = json.loads(paths.run_manifest_path(run_id).read_text(encoding="utf-8"))
+    relations = validate_work_order_relations(run_root, manifest)
+    yield from iter_resolved_operation_rows(relations)
+
+
 __all__ = [
     "compare_work_order_seeds",
     "iter_work_order_rows",
     "load_validated_work_order",
+    "validate_work_order_relations",
+    "iter_resolved_work_order_operations",
 ]

@@ -18,10 +18,10 @@ from edgar_sec.pipelines.document_acquisition.schemas import (
 
 
 def test_shared_schema_contract_versions_are_explicit() -> None:
-    assert ACQUISITION_CONTRACT_VERSION == "1"
+    assert ACQUISITION_CONTRACT_VERSION == "3"
     assert RECEIPT_SCHEMA_VERSION == "1"
-    assert RUN_SCHEMA_VERSION == "1"
-    assert WORK_ORDER_SCHEMA_VERSION == "1"
+    assert RUN_SCHEMA_VERSION == "3"
+    assert WORK_ORDER_SCHEMA_VERSION == "3"
 
 
 def test_s6_relation_contract_load_is_deferred() -> None:

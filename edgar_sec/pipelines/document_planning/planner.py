@@ -14,8 +14,9 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.domain.identity import AccessionNumber
+from edgar_sec.domain.forms.common.processing import AcquisitionOperation
 from edgar_sec.foundation.hashing import file_sha256, sha256_text
-from edgar_sec.foundation.serialization import canonical_json
+from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.document_planning.catalog_scope import (
@@ -40,6 +41,8 @@ from edgar_sec.pipelines.document_planning.matching import (
 )
 from edgar_sec.pipelines.document_planning.paths import (
     DocumentPlanningPaths,
+    catalog_form_partition_name,
+    form_partition_directory,
     plan_target_part_path,
     resolve_catalog_paths,
     resolve_document_planning_paths,
@@ -60,9 +63,15 @@ from edgar_sec.infra.storage.parquet import DEFAULT_COMPRESSION
 from edgar_sec.pipelines.document_planning.schemas import (
     INVENTORY_RELATIONS,
     MATCHER_VERSION,
+    OPERATION_INPUT_SCHEMA,
+    OPERATION_INPUT_SCHEMA_VERSION,
     PLAN_BUNDLE_SCHEMA_VERSION,
+    SOURCE_REQUEST_SCHEMA,
+    SOURCE_REQUEST_SCHEMA_VERSION,
     TARGET_SCHEMA,
     TARGET_SCHEMA_VERSION,
+    TARGET_OPERATION_SCHEMA,
+    TARGET_OPERATION_SCHEMA_VERSION,
 )
 
 
@@ -98,6 +107,15 @@ class _Stats:
     indexed_accessions: int = 0
     unindexed_accessions: int = 0
     matched_accessions: int = 0
+    requested_operations: Counter[str] | None = None
+    default_candidate_operations: Counter[str] | None = None
+    unrequested_operations: Counter[str] | None = None
+    unique_source_requests: int = 0
+
+    def __post_init__(self) -> None:
+        self.requested_operations = Counter()
+        self.default_candidate_operations = Counter()
+        self.unrequested_operations = Counter()
 
 
 def resolve_inventory_snapshot_id(
@@ -186,8 +204,14 @@ def create_document_plan(
     identity = {
         "bundle_schema_version": PLAN_BUNDLE_SCHEMA_VERSION,
         "target_schema_version": TARGET_SCHEMA_VERSION,
+        "target_operation_schema_version": TARGET_OPERATION_SCHEMA_VERSION,
+        "source_request_schema_version": SOURCE_REQUEST_SCHEMA_VERSION,
+        "operation_input_schema_version": OPERATION_INPUT_SCHEMA_VERSION,
         "matcher_version": MATCHER_VERSION,
         "row_group_size": row_group_size,
+        "profile_id": profile.profile_id,
+        "profile_schema_version": profile.schema_version,
+        "profile_version": profile.version,
         "profile_digest": profile_digest(profile),
         "catalog_plan_id": catalog_scope.pin.catalog_plan_id,
         "catalog_plan_digest": catalog_scope.pin.digest,
@@ -208,12 +232,15 @@ def create_document_plan(
         rows = _iter_target_rows(
             plan_id, catalog_scope, inventory_source, profile, stats
         )
-        parts = _write_target_parts(stage, rows, row_group_size)
+        parts, relation_counts = _write_relations(stage, rows, row_group_size, stats)
         target_row_count = sum(stats.statuses.values())
         manifest: dict[str, Any] = {
             "plan_id": plan_id,
             "bundle_schema_version": PLAN_BUNDLE_SCHEMA_VERSION,
             "target_schema_version": TARGET_SCHEMA_VERSION,
+            "target_operation_schema_version": TARGET_OPERATION_SCHEMA_VERSION,
+            "source_request_schema_version": SOURCE_REQUEST_SCHEMA_VERSION,
+            "operation_input_schema_version": OPERATION_INPUT_SCHEMA_VERSION,
             "matcher_version": MATCHER_VERSION,
             "row_group_size": row_group_size,
             "profile_id": profile.profile_id,
@@ -226,6 +253,17 @@ def create_document_plan(
             "inventory_snapshot_digest": identity["inventory_snapshot_digest"],
             "plan_identity": identity,
             "target_row_count": target_row_count,
+            "relation_row_counts": relation_counts,
+            "requested_operation_counts": dict(
+                sorted(stats.requested_operations.items())
+            ),
+            "default_candidate_operation_counts": dict(
+                sorted(stats.default_candidate_operations.items())
+            ),
+            "unrequested_operation_counts": dict(
+                sorted(stats.unrequested_operations.items())
+            ),
+            "unique_source_request_count": stats.unique_source_requests,
             "status_counts": dict(sorted(stats.statuses.items())),
             "origin_counts": dict(sorted(stats.origins.items())),
             "reason_counts": dict(sorted(stats.reasons.items())),
@@ -335,46 +373,170 @@ def _account_rows(
         yield row
 
 
-def _write_target_parts(
-    staging_root: Path, rows: Iterable[dict[str, Any]], row_group_size: int
-) -> list[dict[str, Any]]:
+_RELATION_SCHEMAS = {
+    "targets": TARGET_SCHEMA,
+    "target_operations": TARGET_OPERATION_SCHEMA,
+    "source_requests": SOURCE_REQUEST_SCHEMA,
+    "operation_inputs": OPERATION_INPUT_SCHEMA,
+}
+_RELATION_QUERY = {
+    "targets": "SELECT * FROM read_parquet(?) ORDER BY partition_form, accession, request_id, inventory_entry_id NULLS FIRST, status",
+    "target_operations": "SELECT * FROM read_parquet(?) ORDER BY partition_form, target_id, operation",
+    "source_requests": "SELECT * FROM read_parquet(?) ORDER BY partition_form, source_request_id",
+    "operation_inputs": "SELECT * FROM read_parquet(?) ORDER BY partition_form, operation_id, input_ordinal",
+}
+
+
+def _write_relations(
+    staging_root: Path,
+    targets: Iterable[dict[str, Any]],
+    row_group_size: int,
+    stats: _Stats,
+) -> tuple[list[dict[str, Any]], dict[str, int]]:
     read_batch_size = resolve_read_batch_size()
-    spool_root = Path(tempfile.mkdtemp(prefix=".rows-", dir=staging_root))
-    spool_path = spool_root / "rows.parquet"
-    writer = pq.ParquetWriter(
-        spool_path, TARGET_SCHEMA, compression=DEFAULT_COMPRESSION
-    )
-    batch: list[dict[str, Any]] = []
-    row_count = 0
+    spool_root = Path(tempfile.mkdtemp(prefix=".relations-", dir=staging_root))
+    schemas = {
+        relation: pa.schema([pa.field("partition_form", pa.string())] + list(schema))
+        for relation, schema in _RELATION_SCHEMAS.items()
+    }
+    writers = {
+        relation: pq.ParquetWriter(
+            spool_root / f"{relation}.parquet",
+            schema,
+            compression=DEFAULT_COMPRESSION,
+        )
+        for relation, schema in schemas.items()
+    }
+    batches: dict[str, list[dict[str, Any]]] = {name: [] for name in writers}
+    counts = Counter()
+
+    def flush(relation: str) -> None:
+        rows = batches[relation]
+        if not rows:
+            return
+        writers[relation].write_table(
+            pa.Table.from_pylist(rows, schema=schemas[relation]),
+            row_group_size=row_group_size,
+        )
+        rows.clear()
+
     try:
-        for row in rows:
-            batch.append(row)
-            row_count += 1
-            if len(batch) == read_batch_size:
-                writer.write_table(
-                    pa.Table.from_pylist(batch, schema=TARGET_SCHEMA),
-                    row_group_size=row_group_size,
-                )
-                batch.clear()
-        if batch:
-            writer.write_table(
-                pa.Table.from_pylist(batch, schema=TARGET_SCHEMA),
-                row_group_size=row_group_size,
+        for relation_rows in _build_relations(targets, stats):
+            relation = relation_rows["_relation"]
+            schema = _RELATION_SCHEMAS[relation]
+            values = {field.name: relation_rows[field.name] for field in schema}
+            batches[relation].append(
+                {"partition_form": relation_rows["_form"], **values}
             )
+            counts[relation] += 1
+            if len(batches[relation]) >= read_batch_size:
+                flush(relation)
     finally:
-        writer.close()
-    if row_count == 0:
-        shutil.rmtree(spool_root)
-        return []
+        for relation in writers:
+            flush(relation)
+            writers[relation].close()
     try:
-        parts = _sort_and_write_parts(spool_path, staging_root, row_group_size)
+        parts = []
+        for relation, schema in _RELATION_SCHEMAS.items():
+            spool = spool_root / f"{relation}.parquet"
+            if counts[relation]:
+                parts.extend(
+                    _sort_and_write_relation_parts(
+                        relation, spool, staging_root, schema, row_group_size
+                    )
+                )
     finally:
         shutil.rmtree(spool_root, ignore_errors=True)
-    return parts
+    parts.sort(key=lambda item: (item["relation"], item["form"], item["path"]))
+    return parts, {name: counts[name] for name in _RELATION_SCHEMAS}
 
 
-def _sort_and_write_parts(
-    spool_path: Path, staging_root: Path, row_group_size: int
+def _build_relations(
+    targets: Iterable[dict[str, Any]], stats: _Stats
+) -> Iterator[dict[str, Any]]:
+    operations = tuple(AcquisitionOperation)
+    for target in targets:
+        form = target["form"]
+        canonical_path = target.pop("_canonical_path", None)
+        requested_explicitly = target.pop("_requested_operations", None)
+        yield {"_relation": "targets", "_form": form, **target}
+
+        matched = target["status"] == "matched" and bool(target["target_url"])
+        source_request_id = None
+        if matched:
+            source_request_id = canonical_hash(
+                [
+                    target["target_id"],
+                    "primary_body",
+                    target["source_origin"],
+                    target["retrieval_mode"],
+                    target["target_url"],
+                    target["sequence"],
+                    canonical_path,
+                ]
+            )
+            yield {
+                "_relation": "source_requests",
+                "_form": form,
+                "source_request_id": source_request_id,
+                "target_id": target["target_id"],
+                "source_role": "primary_body",
+                "source_origin": target["source_origin"],
+                "retrieval_mode": target["retrieval_mode"],
+                "request_url": target["target_url"],
+                "sequence": target["sequence"],
+                "canonical_path": canonical_path,
+            }
+            stats.unique_source_requests += 1
+
+        for operation in operations:
+            requested, request_mode = _operation_intent(operation, requested_explicitly)
+            if requested:
+                stats.requested_operations[operation.value] += 1
+            if request_mode == "default_candidate":
+                stats.default_candidate_operations[operation.value] += 1
+            if request_mode == "not_requested":
+                stats.unrequested_operations[operation.value] += 1
+            operation_id = canonical_hash([target["target_id"], operation.value])
+            yield {
+                "_relation": "target_operations",
+                "_form": form,
+                "operation_id": operation_id,
+                "target_id": target["target_id"],
+                "operation": operation.value,
+                "requested": requested,
+                "request_mode": request_mode,
+            }
+            if matched and requested:
+                yield {
+                    "_relation": "operation_inputs",
+                    "_form": form,
+                    "operation_id": operation_id,
+                    "input_ordinal": 0,
+                    "source_request_id": source_request_id,
+                    "input_role": "selected_target_body",
+                }
+
+
+def _operation_intent(
+    operation: AcquisitionOperation,
+    explicit: list[str] | None,
+) -> tuple[bool, str]:
+    if operation is AcquisitionOperation.RAW:
+        return True, "mandatory_raw"
+    if explicit is None:
+        return True, "default_candidate"
+    if operation.value in explicit:
+        return True, "profile"
+    return False, "not_requested"
+
+
+def _sort_and_write_relation_parts(
+    relation: str,
+    spool_path: Path,
+    staging_root: Path,
+    schema: pa.Schema,
+    row_group_size: int,
 ) -> list[dict[str, Any]]:
     read_batch_size = resolve_read_batch_size()
     parts: list[dict[str, Any]] = []
@@ -387,9 +549,16 @@ def _sort_and_write_parts(
         nonlocal buffered, buffered_rows
         if not buffered or current_form is None:
             return
-        table = pa.concat_tables(buffered).cast(TARGET_SCHEMA)
+        table = pa.concat_tables(buffered).select(schema.names).cast(schema)
         part_index = next_part.get(current_form, 0)
-        relative = plan_target_part_path(current_form, part_index)
+        relative = (
+            plan_target_part_path(current_form, part_index)
+            if relation == "targets"
+            else (
+                f"{relation}/{form_partition_directory(current_form)}/"
+                f"part-{part_index:05d}.parquet"
+            )
+        )
         path = staging_root / relative
         path.parent.mkdir(parents=True, exist_ok=True)
         pq.write_table(
@@ -400,6 +569,7 @@ def _sort_and_write_parts(
         )
         parts.append(
             {
+                "relation": relation,
                 "path": relative,
                 "form": current_form,
                 "rows": table.num_rows,
@@ -413,12 +583,13 @@ def _sort_and_write_parts(
 
     with connect() as con:
         reader = con.execute(
-            "SELECT * FROM read_parquet(?) "
-            "ORDER BY form, accession, request_id, inventory_entry_id NULLS FIRST, status",
+            _RELATION_QUERY[relation],
             [str(spool_path)],
         ).to_arrow_reader(read_batch_size)
         for batch in reader:
-            forms = batch.column(batch.schema.get_field_index("form")).to_pylist()
+            forms = batch.column(
+                batch.schema.get_field_index("partition_form")
+            ).to_pylist()
             offset = 0
             while offset < batch.num_rows:
                 form = forms[offset]

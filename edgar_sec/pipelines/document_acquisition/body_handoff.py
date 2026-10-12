@@ -126,6 +126,25 @@ def _state(paths: AcquisitionPaths, run_id: str, target_id: str) -> TargetState:
 def get_staged_body_ref(
     paths: AcquisitionPaths, run_id: str, target_id: str
 ) -> StagedBodyRef:
+    ref = get_staged_body_metadata_ref(paths, run_id, target_id)
+    selected_digest, selected_size = _hash_file(ref.path, "selected body")
+    if (selected_digest, selected_size) != (ref.sha256, ref.byte_size):
+        raise BodyHandoffError("selected body does not match committed identity")
+    if ref.source_response_path is not None:
+        source_digest, source_size = _hash_file(
+            ref.source_response_path, "source response"
+        )
+        if (source_digest, source_size) != (
+            ref.source_response_sha256,
+            ref.source_response_byte_size,
+        ):
+            raise BodyHandoffError("source response does not match committed identity")
+    return ref
+
+
+def get_staged_body_metadata_ref(
+    paths: AcquisitionPaths, run_id: str, target_id: str
+) -> StagedBodyRef:
     state = _state(paths, run_id, target_id)
     if state.last_attempt_id is None:
         raise BodyHandoffError("acquired target has no selected-body attempt")
@@ -152,12 +171,12 @@ def get_staged_body_ref(
     selected_path = _verified_relative_path(
         paths, run_id, state.selected_body_relative_path, "selected body"
     )
-    selected_digest, selected_size = _hash_file(selected_path, "selected body")
-    if (selected_digest, selected_size) != (
-        state.selected_sha256,
-        state.selected_byte_size,
-    ):
-        raise BodyHandoffError("selected body does not match committed identity")
+    try:
+        selected_stat = selected_path.lstat()
+    except OSError as error:
+        raise BodyHandoffError("selected body metadata is unavailable") from error
+    if selected_stat.st_size != state.selected_byte_size:
+        raise BodyHandoffError("selected body size does not match committed identity")
     if (
         attempt.selected_sha256,
         attempt.selected_byte_size,
@@ -174,12 +193,22 @@ def get_staged_body_ref(
         source_path = _verified_relative_path(
             paths, run_id, state.source_body_relative_path, "source response"
         )
-        source_digest, source_size = _hash_file(source_path, "source response")
-        if (source_digest, source_size) != (
-            state.source_sha256,
-            state.source_byte_size,
-        ):
-            raise BodyHandoffError("source response does not match committed identity")
+        try:
+            source_stat = source_path.lstat()
+        except OSError as error:
+            raise BodyHandoffError("source response metadata is unavailable") from error
+        if source_stat.st_size != state.source_byte_size:
+            raise BodyHandoffError(
+                "source response size does not match committed identity"
+            )
+    if (attempt.source_sha256, attempt.source_byte_size) != (
+        state.source_sha256,
+        state.source_byte_size,
+    ) or (
+        state.source_body_relative_path is not None
+        and attempt.source_body_relative_path != state.source_body_relative_path
+    ):
+        raise BodyHandoffError("source response attempt identity is inconsistent")
 
     return StagedBodyRef(
         run_id=run_id,
@@ -370,6 +399,7 @@ def record_body_consumption_receipt(
 __all__ = [
     "BodyHandoffError",
     "get_staged_body_ref",
+    "get_staged_body_metadata_ref",
     "read_body_consumption_receipt",
     "record_body_consumption_receipt",
 ]

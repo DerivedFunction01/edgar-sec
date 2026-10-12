@@ -19,7 +19,7 @@ class TestCapabilityCatalog:
 
     def test_catalog_version(self) -> None:
         """Test catalog version is defined."""
-        assert CATALOG_VERSION == "v1"
+        assert CATALOG_VERSION == "v2"
 
     def test_flat_xml_raw_supported(self) -> None:
         """Test flat XML raw operation is supported."""
@@ -47,9 +47,9 @@ class TestCapabilityCatalog:
             "10-K", "primary", "nested", "xml", "render_to_txt"
         )
 
-    def test_nested_xml_render_to_xml_supported(self) -> None:
-        """Test nested XML render_to_xml is supported."""
-        assert is_operation_supported(
+    def test_nested_xml_render_to_xml_unsupported(self) -> None:
+        """Test nested XML does not imply a sibling XML render."""
+        assert not is_operation_supported(
             "10-K", "primary", "nested", "xml", "render_to_xml"
         )
 
@@ -69,12 +69,12 @@ class TestCapabilityCatalog:
             "10-K", "primary", "flat", "markup", "render_to_xml"
         )
 
-    def test_get_source_strategy_nested_xml(self) -> None:
-        """Test source strategy for nested XML render_to_xml."""
+    def test_nested_render_to_txt_uses_selected_body(self) -> None:
+        """Test nested markup text rendering uses the selected body."""
         strategy = get_source_strategy(
-            "10-K", "primary", "nested", "xml", "render_to_xml"
+            "10-K", "primary", "nested", "xml", "render_to_txt"
         )
-        assert strategy == SourceStrategy.ARCHIVE_ROOT_XML
+        assert strategy == SourceStrategy.PRIMARY_BODY
 
     def test_get_output_kind_render_to_txt(self) -> None:
         """Test output kind for render_to_txt."""

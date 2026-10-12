@@ -1,10 +1,13 @@
 # Accession Document Flow — Implementation Roadmap
 
-Status: **the S1–S6 inventory/target-planning path, the split Project/Run/Status/Publish
-lifecycle, S7a/S7b fixture-review foundations, and S9 acquisition are implemented;
-S0 historical acceptance and S8 operational retention remain open.** S10 processing
-and S11 durable payload publication remain gated. The former `document_storage`
-runtime package is retired. See the
+Status: **the S1–S6 inventory/target-planning path, S7a/S7b fixture-review foundations,
+S9 project/status/run and fixture create/fill/list/replay, M7b runner/retry/isolation,
+and limited S9/S10 review generate/compare are implemented.** S10 has a per-target
+`process_target` slice, but `process --run-id`, the requested processing policy, and an
+S10 coordinator/renderers are not implemented. M7b cleanup remains explicitly gated;
+S11 publication is intentionally gated, and S12 is design-only. S0 historical acceptance
+and S8 operational retention remain open. The former `document_storage` runtime package
+is retired. See the
 [inventory exit and acquisition gate](./inventory_exit_and_acquisition_gate.md) for
 current readiness; stage subplans own detailed contracts.
 
@@ -18,8 +21,8 @@ command-oriented contracts under
 S9a–S9d decomposition is being superseded and is not the command index.
 Stages are owned by three pipeline packages joined by immutable artifacts:
 `document_inventory` (S0–S5), `document_planning` (S6), and
-`document_acquisition` (S9–S10). S7, S8, and S12 are cross-cutting; S11 is a payload-store
-design gate.
+`document_acquisition` (S9–S10). S7 and S8 are cross-cutting; S12 remains design-only.
+S11 is a payload-store design and approval gate.
 
 See [design.md](./design.md) for the stage boundaries and domain grain. The
 queryable snapshot, source-CIK anti-join, seek-index, and vacuum contract is
@@ -41,12 +44,14 @@ current explicit artifact handoffs:
 - `edgar_sec.pipelines.document_planning` (S6): offline target-plan publication from a
   required filing-catalog scope and optional immutable inventory evidence.
 - `edgar_sec.pipelines.document_acquisition` (S9–S10): acquisition of selected
-  payloads and deterministic processing of them.
+  payloads and the partial per-target processing service; run-level processing remains
+  unimplemented.
 
 S7 review (with S7a fixture lifecycle and S7b parser review frontloaded before parser
-implementation) and S12 operator integration are cross-cutting to the three packages;
-S8 is inventory maintenance, and S11 is a payload-store design gate rather than a
-pipeline. None of the replacement packages imports the frozen legacy package.
+implementation) is cross-cutting to the three packages. S12 operator integration is
+design-only; S8 is inventory maintenance, and S11 is a payload-store design and approval
+gate rather than a pipeline. None of the replacement packages imports the frozen legacy
+package.
 
 The tradeoff is stronger than extending the current path. A factual index of an
 accession's observed files can serve independent primary, exhibit, and XBRL
@@ -705,13 +710,13 @@ Metadata-only offline DAG lineage compaction into consolidated checkpoint nodes 
 
 **Details:** [subplan](subplans/S9_acquisition.md)
 
-S9 is specified around its user-facing commands: [project](subplans/document_acquisition/project.md), [status](subplans/document_acquisition/status.md), [run](subplans/document_acquisition/run/index.md), [distribution](subplans/document_acquisition/distribution/index.md), and [fixture replay](subplans/document_acquisition/fixtures/index.md). The dedicated acquisition launcher and CLI/operator are registered; project/status/run orchestration, bounded transfer, exact-sequence extraction, exact-form lazy-index selection, strict primary-bundle SGML `<TYPE>` checks, and fixture create/fill/list/replay are implemented. Fixture fill supports available direct response bodies and bodyless failures; bundle/lazy response retention and managed replay-to-run integration remain incomplete. Offline S10 result projection, processing-review artifact generation, and the shared review generate/compare console are implemented for the direct-TEXT fixture slice. Family-aware HTML/cover evaluation and broader S10 operation execution remain deferred. The pipeline-neutral distribution layer is implemented for metadata sync and inventory; SEC limits remain host-local, with cross-host coordination/checks out of scope. No `document_storage` imports are introduced.
+S9 is specified around its user-facing commands: [project](subplans/document_acquisition/project.md), [status](subplans/document_acquisition/status.md), [run](subplans/document_acquisition/run/index.md), [distribution](subplans/document_acquisition/distribution/index.md), and [fixture lifecycle](subplans/document_acquisition/fixtures/index.md). The dedicated acquisition launcher and CLI/operator are registered; project/status/run orchestration, bounded transfer, exact-sequence extraction, exact-form lazy-index selection, strict primary-bundle SGML `<TYPE>` checks, and fixture create/fill/list/replay are implemented. Bundle/lazy response-group retention and fixture replay are supported when run acquisition opts into `--retain-response-evidence`; fixture create/fill/list/replay do not provide managed S10 replay staging. M7b runner/retry/isolation coverage is complete, but selected-body cleanup remains explicitly gated. Review generate/compare are implemented only for the limited S9/S10 fixture slice. `process --run-id` remains unimplemented although the per-target `process_target` worker and in-memory result projection exist. The requested processing policy, an S10 coordinator, operation-aware S6/S9 schemas, and renderer handlers remain unimplemented. S11 publication remains gated. The pipeline-neutral distribution layer is implemented for metadata sync and inventory; SEC limits remain host-local, with cross-host coordination/checks out of scope. See [`cli.py`](../edgar_sec/pipelines/document_acquisition/cli.py), [`processing.py`](../edgar_sec/pipelines/document_acquisition/processing.py), [`test_offline_acceptance.py`](../tests/pipelines/document_acquisition/test_offline_acceptance.py), [`fixture_store/test_capture.py`](../tests/pipelines/document_acquisition/fixture_store/test_capture.py), [`commands/test_review.py`](../tests/pipelines/document_acquisition/commands/test_review.py), [`test_review_adapter.py`](../tests/pipelines/document_acquisition/test_review_adapter.py), and [`test_operator.py`](../tests/pipelines/document_acquisition/test_operator.py). No `document_storage` imports are introduced.
 
 ### S10 — Processing contract, processor versions, and document review
 
 **Details:** [subplan](subplans/S10_processing.md)
 
-M6 currently has an offline target worker for raw and direct-TEXT identity results. The requested policy preserves raw for every route, chooses form-family/route renderers before the generic engine normalizer for text/HTML, and prefers specific XML transforms over an evidence-backed generic transform (including the proposed Form 4 HTML-to-XML handler). PDF text extraction is unavailable; flat XML/XSD, ZIP, paper, and binary remain raw-only. Family-specific lazy-index triggers and plan-scoped processor-version supersession are new, unimplemented S6/S9 policy. S10 operation coordination and general rendering remain incomplete; S11 publication is separately gated.
+M6 currently has an offline per-target worker for raw identity and TEXT-route identity passthrough; the `process --run-id` command does not dispatch to it and remains not implemented. The requested, unimplemented policy requires raw as mandatory; family/route renderer precedence; `normalize_document` as the generic text fallback for eligible text/HTML; no PDF, flat-XML, XSD, ZIP, paper, binary, or unknown-route renders; family-specific lazy-index triggers with none for Form 4; XML transforms consuming declared HTML only; and scoped supersession. No operation-aware S6/S9 schema, S10 coordinator, or renderer handlers are implemented. Review generation/comparison covers only the limited S9/S10 fixture slice. Cleanup and S11 publication remain gated. Evidence: [`cli.py`](../edgar_sec/pipelines/document_acquisition/cli.py), [`processing.py`](../edgar_sec/pipelines/document_acquisition/processing.py), [`test_cli.py`](../tests/pipelines/document_acquisition/test_cli.py), and [`test_processing.py`](../tests/pipelines/document_acquisition/test_processing.py).
 
 ### S11 — Durable acquisition snapshot publication (design approval gate)
 
@@ -723,7 +728,7 @@ The complete proposed design now lives in the [document-acquisition lifecycle pl
 
 **Details:** [subplan](subplans/S12_operator_integration.md)
 
-A small artifact-oriented CLI surface for snapshot/CIK queries, explicit-retention vacuum, inventory- or catalog-direct target planning, fixture replay/review, and inspection. Machine-readable summaries retain stage-specific outcomes. The offline vertical run covers cohort fixtures through query, both plan-source modes, acquisition/processing replay, vacuum parity, and parser/plan review. The S12 vertical run and S10 processing remain deferred; S9 commands are registered, and the former `document_storage` runtime is retired.
+S12 remains design-only: the proposed artifact-oriented CLI, offline vertical run, and end-to-end quality gate are not implemented. S9 commands are registered, and the former `document_storage` runtime is retired.
 
 ## 7. Dependency Graph and Parallel Planning
 
@@ -777,11 +782,11 @@ The initial operator surface is explicit-artifact oriented and small:
 | Project acquisition run (S9) | `acquisition project --plan-id <id>` | Validated S6 target plan → immutable resumable work order; no network. |
 | Inspect acquisition run (S9) | `acquisition status [--run-id <id>]` | Read-only validation and outcome summary; no network. |
 | Run acquisition work (S9) | `acquisition run --run-id <id> [--retry-failures]` | Explicit network execution of pending or explicitly selected retryable targets. |
-| Process acquired targets (S10) | `acquisition process --run-id <id>` | Offline per-target processing; consumes verified acquired bodies without additional requests. |
-| Publish acquisition snapshot (S11) | `acquisition publish --run-id <id> [--branch <name>] [--allow-errors]` | Publish validated target/slot evidence and separate binary/text payload Parquet relations through the shared DAG. |
-| Query acquisition snapshot (S11) | `acquisition query --snapshot <id|current> [target/slot filters]` | Read-only metadata and selected payload access; verifies logical-byte digest. |
+| Process acquired targets (S10) | `acquisition process --run-id <id>` | Registered CLI shape, but currently returns not-implemented; `process_target` is a separate per-target service, not run orchestration. |
+| Publish acquisition snapshot (S11; gated) | Proposed `acquisition publish --run-id <id> [--branch <name>] [--allow-errors]` | Design only; publication is gated on representative S9/S10 evidence and explicit approval. |
+| Query acquisition snapshot (S11; gated) | Proposed `acquisition query --snapshot <id|current> [target/slot filters]` | Design only; no published acquisition snapshot or query command is available. |
 | Distribute acquisition (S9) | `acquisition distrib {export,worker,import,list,commands}` | Planned acquisition adapter over implemented pipeline-neutral distribution infrastructure; the acquisition integration remains unimplemented. SEC rate limits are host-local; cross-host coordination/checks are out of scope. See the [command-group design](subplans/document_acquisition/distribution/index.md). |
-| Capture/replay acquisition fixture (S9) | `acquisition fixture {capture,list,replay}` | Explicit Zstandard-compressed exact-response BLOB capture in a fixture SQLite database and zero-network replay; no durable snapshot publication. |
+| Acquisition fixture (S9) | `acquisition fixture {create,fill,list,replay}` | Explicit exact-response BLOB capture in a fixture SQLite database and zero-network replay; bundle/lazy response-group retention is opt-in via `--retain-response-evidence`; no durable snapshot publication. |
 | Accession query | `inventory query --snapshot current --accession <accession>` | Filing facts, all observed child/data-file rows, and source-CIK relations; no network. |
 | Form/CIK query | `inventory query --snapshot current --form <form> [--filing-cik <cik>] [--source-cik <cik>]`, `--filing-cik <cik>`, or `--source-cik <cik>` | Matching accessions/entries from annual parts and distinct filing/source-CIK postings; no network. |
 | Vacuum | `inventory vacuum --snapshot <snapshot-id|current> --retention <policy-id>` | Compact DAG delta lineages into checkpoint nodes and prune unreachable parts; parity-gated, atomically publish `current`. |

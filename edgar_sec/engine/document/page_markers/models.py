@@ -345,7 +345,7 @@ PROSE_GUARD_STOP_WORDS = frozenset(
         "will",
         "would",
         "see",
-        "power of attorney"
+        "power of attorney",
     ]
 )
 

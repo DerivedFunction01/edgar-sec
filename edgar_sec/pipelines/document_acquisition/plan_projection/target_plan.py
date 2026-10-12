@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
@@ -22,13 +23,30 @@ from edgar_sec.foundation.runtime.settings.parquet import (
 )
 from edgar_sec.infra.storage.duckdb import connect, sql_path_list
 from edgar_sec.infra.storage.parquet import StagedParquetWriter
-from edgar_sec.pipelines.document_acquisition.arrow_schemas import WORK_ORDER_SCHEMA
+from edgar_sec.pipelines.document_acquisition.arrow_schemas import (
+    RESOLVED_OPERATION_SCHEMA,
+    WORK_ORDER_SCHEMA,
+)
 from edgar_sec.pipelines.document_acquisition.paths import (
-    PLAN_TARGETS_DIR,
     form_partition_name,
     plan_target_part_path,
 )
 from edgar_sec.pipelines.document_acquisition.schemas import (
+    OPERATION_INPUT_SCHEMA_VERSION,
+    PLAN_RELATION_SCHEMAS,
+    SOURCE_REQUEST_SCHEMA_VERSION,
+    TARGET_OPERATION_SCHEMA_VERSION,
+)
+from edgar_sec.pipelines.document_acquisition.plan_projection.relation_validation import (
+    RelationValidationError,
+    validate_additional_relations,
+    validate_relation_coverage,
+)
+from edgar_sec.pipelines.document_acquisition.plan_projection.operation_resolution import (
+    iter_resolved_operation_batches,
+)
+from edgar_sec.pipelines.document_acquisition.schemas import (
+    RESOLVED_OPERATION_SCHEMA_VERSION,
     target_relation_schema,
     target_relation_schema_version,
     target_plan_bundle_schema_version,
@@ -66,6 +84,10 @@ class WorkOrderProjection:
     bundle_schema_version: int
     matcher_version: str
     target_schema_version: int
+    target_operation_schema_version: int
+    source_request_schema_version: int
+    operation_input_schema_version: int
+    resolved_operation_schema_version: int
     catalog_plan_id: str
     catalog_plan_digest: str
     inventory_snapshot_id: str | None
@@ -74,6 +96,9 @@ class WorkOrderProjection:
     executable_count: int
     skipped_count: int
     parquet_path: Path
+    relation_parts: dict[str, list[dict[str, Any]]]
+    relation_counts: dict[str, int]
+    relation_digests: dict[str, str]
 
 
 @dataclass(frozen=True, slots=True)
@@ -81,6 +106,7 @@ class _ValidatedPlan:
     root: Path
     manifest: dict[str, Any]
     parts: tuple[Path, ...]
+    relations: dict[str, tuple[Path, ...]]
 
 
 def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
@@ -130,7 +156,7 @@ def _validate_manifest(plan_dir: Path) -> tuple[Path, dict[str, Any]]:
         )
     if manifest.get("matcher_version") != _TARGET_MATCHER_VERSION:
         raise TargetPlanError(
-            "unsupported target matcher version; S9 requires target-matcher-v2"
+            f"unsupported target matcher version; S9 requires {_TARGET_MATCHER_VERSION}"
         )
     target_schema_version = manifest.get("target_schema_version")
     if (
@@ -138,6 +164,15 @@ def _validate_manifest(plan_dir: Path) -> tuple[Path, dict[str, Any]]:
         or target_schema_version != _TARGET_SCHEMA_VERSION
     ):
         raise TargetPlanError("unsupported target schema version")
+    schema_versions = {
+        "target_operation_schema_version": TARGET_OPERATION_SCHEMA_VERSION,
+        "source_request_schema_version": SOURCE_REQUEST_SCHEMA_VERSION,
+        "operation_input_schema_version": OPERATION_INPUT_SCHEMA_VERSION,
+    }
+    for name, expected in schema_versions.items():
+        value = manifest.get(name)
+        if type(value) is not int or value != expected:
+            raise TargetPlanError(f"unsupported or mismatched {name}")
     plan_digest = manifest.get("plan_digest")
     unsigned = dict(manifest)
     unsigned.pop("plan_digest", None)
@@ -146,6 +181,11 @@ def _validate_manifest(plan_dir: Path) -> tuple[Path, dict[str, Any]]:
     identity = manifest.get("plan_identity")
     if not isinstance(identity, dict):
         raise TargetPlanError("target-plan identity is missing")
+    if any(
+        type(identity.get(name)) is not int or identity.get(name) != expected
+        for name, expected in schema_versions.items()
+    ):
+        raise TargetPlanError("plan relation schema versions do not match identity")
     identity_bundle_schema_version = identity.get("bundle_schema_version")
     if (
         type(identity_bundle_schema_version) is not int
@@ -162,6 +202,7 @@ def _validate_manifest(plan_dir: Path) -> tuple[Path, dict[str, Any]]:
     if (
         type(identity_target_schema_version) is not int
         or identity_target_schema_version != _TARGET_SCHEMA_VERSION
+        or manifest.get("target_schema_version") != identity_target_schema_version
         or manifest.get("matcher_version") != identity.get("matcher_version")
         or manifest.get("profile_digest") != identity.get("profile_digest")
         or manifest.get("catalog_plan_id") != identity.get("catalog_plan_id")
@@ -309,7 +350,9 @@ def _validate_row(
             )
 
 
-def _validate_parts(root: Path, manifest: dict[str, Any]) -> tuple[Path, ...]:
+def _validate_parts(
+    root: Path, manifest: dict[str, Any]
+) -> tuple[tuple[Path, ...], dict[str, tuple[Path, ...]]]:
     row_group_size = manifest.get("row_group_size")
     if (
         not isinstance(row_group_size, int)
@@ -321,6 +364,13 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> tuple[Path, ...]:
     parts = manifest.get("parts")
     if not isinstance(parts, list):
         raise TargetPlanError("target-plan parts must be an array")
+    if any(
+        not isinstance(part, dict) or part.get("relation") not in PLAN_RELATION_SCHEMAS
+        for part in parts
+    ):
+        raise TargetPlanError("target-plan relation part descriptor is invalid")
+    all_parts = parts
+    parts = [part for part in all_parts if part["relation"] == "targets"]
     paths: list[Path] = []
     declared: set[Path] = set()
     indices: dict[str, int] = {}
@@ -329,8 +379,6 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> tuple[Path, ...]:
     observed_origins: Counter[str] = Counter()
     previous_order: tuple[str, str] | None = None
     for descriptor in parts:
-        if not isinstance(descriptor, dict):
-            raise TargetPlanError("target part descriptor must be an object")
         if "byte_size" not in descriptor:
             raise TargetPlanError(
                 "target part descriptor is missing declared byte_size; S6 manifest contract must be updated"
@@ -431,18 +479,16 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> tuple[Path, ...]:
             raise TargetPlanError(
                 "non-final target parts must match parquet row_group_size"
             )
-    target_root = root / PLAN_TARGETS_DIR
-    if target_root.is_symlink():
-        raise TargetPlanError("target parts directory is unsafe")
     actual: set[Path] = set()
-    if target_root.exists():
-        for item in target_root.rglob("*"):
+    if root.exists():
+        for item in root.rglob("*.parquet"):
             if item.is_symlink():
                 raise TargetPlanError("target bundle contains a symlink")
-            if item.is_file() and item.suffix == ".parquet":
+            if item.is_file():
                 actual.add(item.resolve())
-    if actual != declared:
-        raise TargetPlanError("target bundle has undeclared or missing Parquet parts")
+    target_declared = {path for path in declared}
+    if not target_declared.issubset(actual):
+        raise TargetPlanError("target bundle has missing target Parquet parts")
     target_count = manifest["target_row_count"]
     if sum(observed_statuses.values()) != target_count:
         raise TargetPlanError("target part rows do not match target_row_count")
@@ -467,18 +513,39 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> tuple[Path, ...]:
             ).fetchone()[0]
         if duplicate_count:
             raise TargetPlanError("target IDs are not unique")
-    return tuple(paths)
+    try:
+        additional, relation_counts = validate_additional_relations(
+            root, manifest, all_parts, row_group_size
+        )
+    except RelationValidationError as error:
+        raise TargetPlanError(str(error)) from error
+    all_declared = declared | {
+        path for relation_paths in additional.values() for path in relation_paths
+    }
+    if actual != all_declared:
+        raise TargetPlanError("target bundle has undeclared or missing relation parts")
+    expected_counts = {
+        relation: relation_counts.get(relation, 0) for relation in PLAN_RELATION_SCHEMAS
+    }
+    expected_counts["targets"] = target_count
+    if manifest.get("relation_row_counts") != expected_counts:
+        raise TargetPlanError("plan relation counts disagree with its part rows")
+    try:
+        validate_relation_coverage(tuple(paths), additional)
+    except RelationValidationError as error:
+        raise TargetPlanError(str(error)) from error
+    return tuple(paths), additional
 
 
 def _validate_target_plan(plan_dir: Path) -> _ValidatedPlan:
     try:
         root, manifest = _validate_manifest(plan_dir)
-        parts = _validate_parts(root, manifest)
+        parts, relations = _validate_parts(root, manifest)
     except TargetPlanError:
         raise
     except (OSError, TypeError, ValueError) as error:
         raise TargetPlanError(f"target bundle is invalid: {error}") from error
-    return _ValidatedPlan(root, manifest, parts)
+    return _ValidatedPlan(root, manifest, parts, relations)
 
 
 def _iter_projected_batches(parts: tuple[Path, ...]):
@@ -497,6 +564,8 @@ def _iter_projected_batches(parts: tuple[Path, ...]):
     query = (
         "SELECT target.*, ("
         f"{reason} IS NULL) AS executable, {reason} AS skip_reason "
+        ", NULL::VARCHAR AS lazy_index_trigger_id, "
+        "NULL::VARCHAR AS lazy_index_trigger_version "
         f"FROM read_parquet({sql_path_list([str(path) for path in parts])}) AS target "
         "ORDER BY form, accession, request_id, "
         "COALESCE(inventory_entry_id, ''), status"
@@ -518,9 +587,16 @@ def load_acquisition_work_order(
         raise TargetPlanError(
             "work-order output must not modify the immutable target bundle"
         )
+    if os.path.lexists(destination):
+        raise TargetPlanError("work-order output already exists")
     manifest = validated.manifest
     executable_count = skipped_count = 0
     writer = StagedParquetWriter(destination, WORK_ORDER_SCHEMA)
+    relation_parts: dict[str, list[dict[str, Any]]] = {
+        "targets": [],
+        **{name: [] for name in validated.relations},
+        "resolved_operations": [],
+    }
     try:
         for batch in _iter_projected_batches(validated.parts):
             batch_executable_count = int(
@@ -535,15 +611,94 @@ def load_acquisition_work_order(
             skipped_count += batch.num_rows - batch_executable_count
             writer.write_batch(batch)
         writer.commit(expected_count=manifest["target_row_count"])
+        relation_parts["targets"].append(
+            {
+                "path": destination.name,
+                "row_count": manifest["target_row_count"],
+                "byte_size": destination.stat().st_size,
+                "sha256": file_sha256(destination),
+            }
+        )
+        for relation, paths in validated.relations.items():
+            for source in paths:
+                original = source.relative_to(validated.root)
+                output = destination.parent / original
+                output.parent.mkdir(parents=True, exist_ok=True)
+                if output.exists() or output.is_symlink():
+                    raise TargetPlanError("work-order relation output already exists")
+                shutil.copyfile(source, output)
+                relation_parts[relation].append(
+                    {
+                        "path": original.as_posix(),
+                        "row_count": pq.ParquetFile(source).metadata.num_rows,
+                        "byte_size": output.stat().st_size,
+                        "sha256": file_sha256(output),
+                    }
+                )
+        resolved_path = (
+            destination.parent / "resolved_operations" / "part-00000.parquet"
+        )
+        resolved_writer = StagedParquetWriter(resolved_path, RESOLVED_OPERATION_SCHEMA)
+        try:
+            for batch in iter_resolved_operation_batches(
+                validated.parts,
+                validated.relations["target_operations"],
+                validated.relations["source_requests"],
+                validated.relations["operation_inputs"],
+            ):
+                resolved_writer.write_batch(batch)
+            resolved_writer.commit(
+                expected_count=manifest["relation_row_counts"]["target_operations"]
+            )
+        except Exception:
+            resolved_writer.reset()
+            resolved_path.unlink(missing_ok=True)
+            raise
+        relation_parts["resolved_operations"].append(
+            {
+                "path": "resolved_operations/part-00000.parquet",
+                "row_count": manifest["relation_row_counts"]["target_operations"],
+                "byte_size": resolved_path.stat().st_size,
+                "sha256": file_sha256(resolved_path),
+            }
+        )
     except Exception:
         writer.reset()
+        destination.unlink(missing_ok=True)
+        for relation, descriptors in relation_parts.items():
+            if relation == "targets":
+                continue
+            for descriptor in descriptors:
+                (destination.parent / descriptor["path"]).unlink(missing_ok=True)
         raise
+    relation_counts = {
+        relation: sum(part["row_count"] for part in descriptors)
+        for relation, descriptors in relation_parts.items()
+    }
+    relation_digests = {
+        relation: canonical_hash(
+            [
+                [
+                    f"work_order/{part['path']}",
+                    part["row_count"],
+                    part["byte_size"],
+                    part["sha256"],
+                ]
+                for part in descriptors
+            ]
+        )
+        for relation, descriptors in relation_parts.items()
+    }
     return WorkOrderProjection(
         plan_id=manifest["plan_id"],
         plan_digest=manifest["plan_digest"],
         bundle_schema_version=_PLAN_BUNDLE_SCHEMA_VERSION,
         matcher_version=_TARGET_MATCHER_VERSION,
         target_schema_version=_TARGET_SCHEMA_VERSION,
+        target_operation_schema_version=TARGET_OPERATION_SCHEMA_VERSION,
+        source_request_schema_version=SOURCE_REQUEST_SCHEMA_VERSION,
+        operation_input_schema_version=OPERATION_INPUT_SCHEMA_VERSION,
+        resolved_operation_schema_version=RESOLVED_OPERATION_SCHEMA_VERSION,
         catalog_plan_id=manifest["catalog_plan_id"],
         catalog_plan_digest=manifest["catalog_plan_digest"],
         inventory_snapshot_id=manifest["inventory_snapshot_id"],
@@ -552,6 +707,9 @@ def load_acquisition_work_order(
         executable_count=int(executable_count),
         skipped_count=int(skipped_count),
         parquet_path=destination,
+        relation_parts=relation_parts,
+        relation_counts=relation_counts,
+        relation_digests=relation_digests,
     )
 
 

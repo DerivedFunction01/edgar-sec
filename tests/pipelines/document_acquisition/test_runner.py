@@ -6,33 +6,22 @@ from datetime import UTC, datetime
 from pathlib import Path
 from types import SimpleNamespace
 
-import pyarrow as pa
-import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.sec_http.streaming import StreamFailure, StreamedResponse
-from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.pipelines.document_acquisition.models import AcquisitionPolicy
-from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
-from edgar_sec.pipelines.document_acquisition.run_state.models import (
-    WorkOrderTargetSeed,
+from edgar_sec.pipelines.document_acquisition.run_state.operations import (
+    get_operation_state,
 )
 from edgar_sec.pipelines.document_acquisition.run_state.store import (
-    SCHEMA_VERSION as RUN_STATE_SCHEMA_VERSION,
     get_target_state,
-    initialize_run_state,
 )
 from edgar_sec.pipelines.document_acquisition.runner import execute_acquisition_run
 from edgar_sec.pipelines.document_acquisition.target_runner import _validate_redirect
-from edgar_sec.pipelines.document_acquisition.schemas import (
-    ACQUISITION_CONTRACT_VERSION,
-    RUN_SCHEMA_VERSION,
-    WORK_ORDER_SCHEMA_VERSION,
-)
-from edgar_sec.pipelines.document_planning.schemas import TARGET_SCHEMA
+from tests.acquisition_run_fixture import make_acquisition_run as _make_run
 
 _ACCESSION = "0000320193-20-000096"
 _ACCESSION_COMPACT = _ACCESSION.replace("-", "")
@@ -66,109 +55,6 @@ def test_redirect_validator_binds_to_requested_archive_cik() -> None:
     _validate_redirect(url, AccessionNumber(_ACCESSION), "320194")
     with pytest.raises(ValueError):
         _validate_redirect(url, AccessionNumber(_ACCESSION), "320193")
-
-
-def _make_run(
-    tmp_path: Path,
-    *,
-    lazy: bool = True,
-    bundle: bool = False,
-    executable: bool = True,
-    sibling_failure: bool = False,
-):
-    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
-    run_id = "acq_test-run"
-    run_root = paths.run_dir(run_id)
-    work_order_root = paths.work_order_root(run_id)
-    work_order_root.mkdir(parents=True)
-    target_url = (
-        f"https://www.sec.gov/Archives/edgar/data/320193/{_ACCESSION_COMPACT}/"
-        f"{_ACCESSION}.txt"
-        if bundle
-        else f"https://www.sec.gov/Archives/edgar/data/320193/{_ACCESSION_COMPACT}/cover.htm"
-    )
-    row = {
-        "target_id": "target-1",
-        "accession": _ACCESSION,
-        "form": "10-K",
-        "filing_date": "2020-01-30",
-        "request_id": "request-1",
-        "target_role": "primary",
-        "target_type": "primary",
-        "optional": False,
-        "inventory_entry_id": None,
-        "status": "matched",
-        "status_reason": None,
-        "source_origin": "catalog_direct" if lazy else "inventory_index",
-        "retrieval_mode": "bundle_sequence" if bundle else "direct_url",
-        "target_url": target_url,
-        "sequence": 2 if bundle else 1,
-        "byte_size": None,
-        "availability_evidence": "catalog_direct" if lazy else "index_row",
-        "catalog_direct_selection": "exact_form_with_lazy_index" if lazy else None,
-        "executable": executable,
-        "skip_reason": None if executable else "target_not_matched",
-    }
-    work_order_schema = pa.schema(
-        [
-            *TARGET_SCHEMA,
-            pa.field("executable", pa.bool_(), nullable=False),
-            pa.field("skip_reason", pa.string(), nullable=True),
-        ],
-        metadata=TARGET_SCHEMA.metadata,
-    )
-    rows = [row]
-    if sibling_failure:
-        sibling = dict(row)
-        sibling.update(
-            target_id="target-2",
-            request_id="request-2",
-            target_url=target_url.rsplit("/", 1)[0] + "/sibling.htm",
-            catalog_direct_selection=None,
-        )
-        row["catalog_direct_selection"] = None
-        rows.append(sibling)
-    work_order_path = work_order_root / "part-00000.parquet"
-    pq.write_table(
-        pa.Table.from_pylist(rows, schema=work_order_schema), work_order_path
-    )
-    initialize_run_state(
-        paths.run_state_path(run_id),
-        [
-            WorkOrderTargetSeed(target["target_id"], executable, target["skip_reason"])
-            for target in rows
-        ],
-    )
-    manifest = {
-        "run_id": run_id,
-        "run_schema_version": RUN_SCHEMA_VERSION,
-        "acquisition_contract_version": ACQUISITION_CONTRACT_VERSION,
-        "target_plan_id": "plan-1",
-        "target_plan_digest": "a" * 64,
-        "bundle_schema_version": 3,
-        "target_schema_version": 1,
-        "matcher_version": "matcher-v1",
-        "catalog_plan_id": "catalog-1",
-        "catalog_plan_digest": "b" * 64,
-        "inventory_snapshot_id": None,
-        "inventory_snapshot_digest": None,
-        "work_order_schema_version": WORK_ORDER_SCHEMA_VERSION,
-        "work_order_parts": [
-            {
-                "path": "work_order/part-00000.parquet",
-                "row_count": len(rows),
-                "byte_size": work_order_path.stat().st_size,
-                "sha256": file_sha256(work_order_path),
-            }
-        ],
-        "target_row_count": len(rows),
-        "executable_count": len(rows) * int(executable),
-        "skipped_count": len(rows) * int(not executable),
-        "run_state_schema_version": RUN_STATE_SCHEMA_VERSION,
-    }
-    manifest["run_digest"] = canonical_hash(manifest)
-    atomic_write_json(paths.run_manifest_path(run_id), manifest)
-    return paths, run_id, row
 
 
 class _MemoryTransport:
@@ -254,12 +140,22 @@ def test_runner_uses_exact_lazy_index_and_atomically_records_all_attempts(
     assert state is not None
     assert state.attempt_count == 3
     assert state.selected_body_relative_path is not None
+    raw_operation_id = canonical_hash([state.target_id, "raw"])
+    operation_state = get_operation_state(
+        paths.run_state_path(run_id), raw_operation_id
+    )
+    assert operation_state is not None
+    assert operation_state.status == "pending"
+    assert operation_state.attempt_count == 0
     selected_body = paths.run_dir(run_id) / state.selected_body_relative_path
     assert selected_body.read_bytes() == b"<html>selected filing</html>"
     assert state.source_body_relative_path is None
     with sqlite3.connect(paths.run_state_path(run_id)) as connection:
         attempts = connection.execute(
             "SELECT attempt_id, attempt_kind, outcome FROM attempts ORDER BY attempt_number"
+        ).fetchall()
+        selected_filenames = connection.execute(
+            "SELECT selected_filename FROM attempts ORDER BY attempt_number"
         ).fetchall()
         evidence_paths = connection.execute(
             "SELECT source_body_relative_path FROM attempts ORDER BY attempt_number"
@@ -274,6 +170,7 @@ def test_runner_uses_exact_lazy_index_and_atomically_records_all_attempts(
         ("document_body", "acquired"),
     ]
     assert evidence_paths == [(None,), (None,), (None,)]
+    assert selected_filenames[-1] == ("report.htm",)
     assert resolution == ("unverifiable", "recovered", attempts[1][0])
 
 
@@ -669,7 +566,7 @@ def test_direct_404_is_failed_without_lazy_index_recovery(
 
 
 def test_failed_sibling_does_not_remove_acquired_body(tmp_path, monkeypatch) -> None:
-    paths, run_id, row = _make_run(tmp_path, sibling_failure=True)
+    paths, run_id, row = _make_run(tmp_path, lazy=False, sibling_failure=True)
     monkeypatch.setattr(
         "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
         lambda: SimpleNamespace(workers=1, worker_ceiling=1),

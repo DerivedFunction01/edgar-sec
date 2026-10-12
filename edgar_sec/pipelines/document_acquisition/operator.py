@@ -103,6 +103,22 @@ def _action_run() -> None:
     cli_main(args)
 
 
+def _action_process() -> None:
+    run_id = prompt_text("Acquisition run ID").strip()
+    if not run_id:
+        print("Processing cancelled: run ID is required.")
+        return
+    retry = prompt_text("Retry failed processing targets? (yes/no)", "no")
+    retry = retry.strip().lower()
+    if retry not in {"yes", "no"}:
+        print("Processing cancelled: answer yes or no for retry selection.")
+        return
+    args = ["process", "--run-id", run_id]
+    if retry == "yes":
+        args.append("--retry-failures")
+    cli_main(args)
+
+
 def _action_fixture_create() -> None:
     fixture_id = prompt_text("Fixture ID").strip()
     if not fixture_id:
@@ -240,7 +256,7 @@ def build_operator_menu() -> tuple[MenuAction, ...]:
         menu_action("Project a target plan", _action_project),
         menu_action("Inspect acquisition runs", _action_status),
         menu_action("Run acquisition (live SEC; confirmation required)", _action_run),
-        _action("process", "Process acquired bodies (not implemented)"),
+        menu_action("Process acquired bodies", _action_process),
         _action("publish", "Publish snapshot (S11 gate)"),
         menu_action("Create local fixture", _action_fixture_create),
         menu_action(

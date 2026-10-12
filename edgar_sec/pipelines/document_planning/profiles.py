@@ -26,7 +26,13 @@ _ROLES = {"primary", "exhibit", "data_file", "graphic", "package"}
 _CATALOG_DIRECT_SELECTIONS = ("submitted_primary", "exact_form_with_lazy_index")
 _CODE_TYPE_RE = re.compile(r"EX-[A-Z0-9]+(?:\.[A-Z0-9]+)*\Z", re.ASCII)
 _EXHIBIT_PREFIX_RE = re.compile(r"EX-(?:\*|10\.\*)\Z", re.ASCII)
-_TARGET_KEYS = {"role", "type", "optional", "acquisition_policy"}
+_TARGET_KEYS = {
+    "role",
+    "type",
+    "optional",
+    "catalog_direct_selection",
+    "acquisition_policy",
+}
 _RULE_KEYS = {"form_selector", "targets"}
 _PROFILE_KEYS = {"profile_id", "schema_version", "version", "rules"}
 
@@ -45,9 +51,13 @@ class AcquisitionPolicy:
         """Parse acquisition policy from JSON data."""
         if not isinstance(data, dict):
             raise ValueError("acquisition_policy must be a dictionary")
-        ops_data = data.get("operations", [])
+        if set(data) != {"operations"}:
+            raise ValueError("acquisition_policy must contain exactly operations")
+        ops_data = data["operations"]
         if not isinstance(ops_data, list):
             raise ValueError("acquisition_policy.operations must be an array")
+        if not ops_data:
+            raise ValueError("acquisition_policy.operations must be non-empty")
         operations: list[AcquisitionOperation] = []
         for op in ops_data:
             if not isinstance(op, str):
@@ -56,7 +66,9 @@ class AcquisitionPolicy:
                 operations.append(AcquisitionOperation(op))
             except ValueError:
                 raise ValueError(f"invalid operation: {op!r}")
-        return cls(operations=tuple(operations))
+        if len(operations) != len(set(operations)):
+            raise ValueError("acquisition_policy.operations must be unique")
+        return cls(operations=tuple(sorted(operations, key=lambda item: item.value)))
 
 
 @dataclass(frozen=True, slots=True)
@@ -154,11 +166,9 @@ def _target_overlap(left: str, right: str) -> bool:
 
 
 def _parse_target(raw: Any) -> ProfileTarget:
-    if not isinstance(raw, dict) or not set(raw).issubset(
-        {"role", "type", "optional", "catalog_direct_selection", "acquisition_policy"}
-    ):
+    if not isinstance(raw, dict) or not set(raw).issubset(_TARGET_KEYS):
         raise ValueError(
-            "each target must contain exactly role, type, and optional, with optional catalog_direct_selection and acquisition_policy"
+            "each target requires role, type, and optional; catalog_direct_selection and acquisition_policy are optional"
         )
     role, raw_type, optional = raw["role"], raw["type"], raw["optional"]
     if not isinstance(role, str) or role not in _ROLES:
@@ -170,29 +180,29 @@ def _parse_target(raw: Any) -> ProfileTarget:
         raise ValueError("target optional must be a boolean")
     _validate_target_type(role, target_type)
     if role == "primary":
-        raw_sel = raw.get("catalog_direct_selection")
-        if raw_sel is not None:
-            if (
-                not isinstance(raw_sel, str)
-                or raw_sel not in _CATALOG_DIRECT_SELECTIONS
-            ):
-                raise ValueError(
-                    f"invalid catalog_direct_selection {raw_sel!r}; "
-                    f"must be one of {_CATALOG_DIRECT_SELECTIONS}"
-                )
-        sel = raw_sel if isinstance(raw_sel, str) else None
+        raw_selection = raw.get("catalog_direct_selection")
+        if raw_selection is not None and (
+            not isinstance(raw_selection, str)
+            or raw_selection not in _CATALOG_DIRECT_SELECTIONS
+        ):
+            raise ValueError(f"invalid catalog_direct_selection {raw_selection!r}")
+        selection = raw_selection if isinstance(raw_selection, str) else None
     else:
         if "catalog_direct_selection" in raw:
             raise ValueError(
-                f"catalog_direct_selection is only allowed on primary targets, got {role!r}"
+                "catalog_direct_selection is only allowed on primary targets"
             )
-        sel = None
-    # Parse acquisition_policy if present
+        selection = None
     acquisition_policy: AcquisitionPolicy | None = None
     if "acquisition_policy" in raw:
         acquisition_policy = AcquisitionPolicy.from_data(raw["acquisition_policy"])
     return ProfileTarget(
-        role, target_type, optional, f"{role}:{target_type}", sel, acquisition_policy
+        role,
+        target_type,
+        optional,
+        f"{role}:{target_type}",
+        selection,
+        acquisition_policy,
     )
 
 
@@ -360,7 +370,11 @@ def _make_baseline_profile() -> ResolvedProfile:
             "*",
             (
                 ProfileTarget(
-                    "primary", "primary", False, "primary:primary", "submitted_primary"
+                    "primary",
+                    "primary",
+                    False,
+                    "primary:primary",
+                    "submitted_primary",
                 ),
             ),
         ),
@@ -380,6 +394,7 @@ def _make_baseline_profile() -> ResolvedProfile:
                                 "type": "primary",
                                 "optional": False,
                                 "catalog_direct_selection": "submitted_primary",
+                                "acquisition_policy": None,
                             }
                         ],
                     }
@@ -451,6 +466,7 @@ def get_or_create_baseline_profile(
                         "type": "primary",
                         "optional": False,
                         "catalog_direct_selection": "submitted_primary",
+                        "acquisition_policy": None,
                     }
                 ],
             }
@@ -475,11 +491,9 @@ def get_or_create_baseline_profile(
 
 
 def compatible_with_catalog_only(profile: ResolvedProfile) -> bool:
-    """Whether every request in the normalized profile is primary-only with a selector."""
+    """Whether every normalized request is primary-only."""
     return all(
-        target.role == "primary"
-        and target.type == "primary"
-        and target.catalog_direct_selection is not None
+        target.role == "primary" and target.type == "primary"
         for rule in profile.rules
         for target in rule.targets
     )

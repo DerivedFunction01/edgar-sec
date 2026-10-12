@@ -423,7 +423,7 @@ def test_augment_fetches_only_what_the_base_is_missing(
     assert result["no_op"] is False
     assert result["base_snapshot_id"] == base
     assert result["delta_row_count"] == 1
-    assert result["refetched_ciks"] == "0000005555"
+    assert result["refetched_cik_count"] == "1"
     assert result["total_row_count"] == result["base_row_count"] + 1
     assert result["already_present_count"] == 4
 

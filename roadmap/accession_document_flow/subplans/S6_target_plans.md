@@ -3,9 +3,16 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S6**.
-- Status: versioned profile target planning is implemented in `pipelines/document_planning`.
-  This subplan includes extended design details beyond the current target schema; use
-  the current implementation and the retrieval-scope reconciliation below for behavior.
+- Status: versioned target-plan generation is implemented in `pipelines/document_planning`.
+  S6 bundle v4, target schema v1, and matcher v2 implement declarative-only operation and
+  source-input relations; their explicitly mirrored tests passed (106). S6 may carry
+  requested operations and source inputs, but does not resolve acquisition/processing
+  support, handler IDs or versions, renderer availability, or lazy-index triggers.
+  Ordinary target-match outcomes and source-locator evidence remain S6 outputs. S9
+  resolver/work-order implementation remains in progress. Resolution belongs to the
+  `document_acquisition` S9/S10 work-order policy.
+  Use the current implementation
+  and the retrieval-scope reconciliation below for target-plan behavior.
 - **Retrieval-scope reconciliation:** review-run and fixture evidence establishes that
   positive numbered SEC child names map to accession-prefixed archive leaves. Numbered
   names such as `0001.htm` are not inherently placeholders: an observed prefixed index
@@ -28,13 +35,14 @@
 
 ## Tracked-code status
 
-Profile-based S6 planning is implemented in `pipelines/document_planning`. Its current
-matching contract recognizes accession-prefixed numbered child URLs, catalog primary
-construction from exact `primaryDocument` metadata, exact `0000` placeholder handling,
-and observed bundle-sequence fallbacks. [`test_matching.py`](../../../tests/pipelines/document_planning/test_matching.py)
+Target-plan generation is implemented in `pipelines/document_planning`. Its target
+matching recognizes accession-prefixed numbered child URLs, catalog primary construction
+from exact `primaryDocument` metadata, exact `0000` placeholder handling, and observed
+bundle-sequence source inputs. [`test_matching.py`](../../../tests/pipelines/document_planning/test_matching.py)
 covers numbered extensions/sequences, prefixed links, placeholder behavior, and locator
-refusals. The 2026-10-09 partial-foundation audit predates this implementation and is no
-longer current.
+  refusals. S6 intent relations carry declarations only, not acquisition/processing
+  resolution metadata. S9 resolver/work-order implementation remains in progress; these
+  matching tests do not establish resolved support or a lazy trigger policy.
 
 ## Objective
 
@@ -61,8 +69,7 @@ identity. The v1 grammar:
     {
       "form_selector": "10-K, 20-F",
       "targets": [
-        {"role": "primary", "type": "primary", "optional": false,
-         "catalog_direct_selection": "submitted_primary"},
+        {"role": "primary", "type": "primary", "optional": false},
         {"role": "exhibit", "type": "EX-13", "optional": true},
         {"role": "exhibit", "type": "EX-21", "optional": true}
       ]
@@ -109,33 +116,22 @@ Rules are resolved as follows:
   metadata only; it does not authorize acquisition, unzipping, or asset selection.
 - Filename/description fuzzy matching and arbitrary selector expressions are out of
   scope.
-- A primary target may declare `catalog_direct_selection` as `submitted_primary` or
-  `exact_form_with_lazy_index`. This policy is required for catalog-only planning and
-  prohibited on non-primary targets. It is included in profile canonicalization and
-  the target-plan row. The former `exact_form` selector is dropped; the current schema
-  has no third selector. The requested replacement policy is recorded below.
-- `submitted_primary` accepts the catalog's primary link as the requested primary
-  without body-type evaluation. Under `exact_form_with_lazy_index`, a successful
-  direct-body sequence-1 response is followed by one bounded index lookup; its HTML
-  screen is `unverifiable` because no HTML cover evaluator is enabled. For a primary
-  bundle body, a strict ASCII SGML `<TYPE>` mismatch or unverifiable type triggers the
-  lookup.
-  Only observed index-row `document_type` evidence selects a replacement sequence.
-  Transport failure alone does not trigger target discovery or bundle fallback.
-- The selector does not alter target role or expected type. `target_role=primary`
-  remains processing intent; the expected statutory type is the catalog filing form.
-  The SEC index's primary designation/sequence and selected-body type are separate
-  evidence. Sequence 1 is the physical slot anchored by the catalog primary link, not
-  proof that its body has the filing-form type.
+- The pre-existing S6 target-plan field `catalog_direct_selection` is not runtime
+  lazy-index authorization. Do not extend it or add a lazy-index trigger to S6; S9 must
+  not use it to revive `exact_form_with_lazy_index`. S9/S10 work-order policy owns
+  acquisition/processing resolution.
+- A target's declared role/type remains intent. The SEC index's primary designation,
+  sequence, and selected-body type are separate evidence; sequence 1 is the physical slot
+  anchored by the catalog primary input, not proof that its body has the filing-form type.
 
-### Requested next policy (not implemented)
+### Requested S9/S10 work-order policy
 
 Replace the uniform catalog-direct selector with a versioned per-family lazy-index trigger
-declared by S6. Only families with a reviewed rendered-text trigger may authorize the
-follow-up index request; a raw representation alone is not a trigger. Form 4 has no
-designed trigger. For such families, raw selection relies on the pinned URL and observed
-era-specific exhibit-like links. The new schema replaces the old selector without a
-compatibility alias.
+resolved by the `document_acquisition` S9/S10 work-order policy, not by S6. Fail closed:
+only a family with a reviewed trigger pattern may authorize the follow-up index request;
+raw evidence alone does not trigger lookup. Form 4 has no lazy trigger. S6 can carry the
+declared source input but does not select or authorize recovery. Revise the intent/work-order
+contracts explicitly rather than adding a compatibility alias for the legacy selector.
 
 Profile normalization produces a canonical digest used to pin planning runs.
 
@@ -149,9 +145,13 @@ catalog plan and, when selected, the inventory snapshot:
 {artifacts_root}/document_planning/plans/{plan_id}/targets/form=<escaped-form>/part-00000.parquet
 ```
 
+The S6 plan bundle is schema v4; its target relation is schema v1 and uses matcher v2.
 The manifest pins `plan_id`, required catalog plan ID/digest, nullable inventory
 snapshot ID/digest, canonical profile digest, target schema version, matcher version,
-coverage and target-row counts, and ordered part records with digests. Derive `plan_id`
+coverage and target-row counts, and ordered part records with digests. It also records the
+intent counts `requested_operation_counts`, `default_candidate_operation_counts`,
+`unrequested_operation_counts`, and `unique_source_request_count`; these are declarative
+intent counts, not support or execution outcomes. Derive `plan_id`
 from the profile digest, both explicit source pins (including nulls), schema version,
 and matcher version; reject divergent reuse. Each source digest covers its validated
 manifest and the declared parts read by the planner. Stream output in bounded batches;
@@ -162,7 +162,7 @@ ambiguous request emits one row per conflicting candidate. Rows carry `form` and
 `filing_date`, and are sorted within each form by
 `(accession, request_id, inventory_entry_id, status)`. Emit one 128,000-row zstd
 row group per part (only the final part in a form may be smaller), so boundaries are
-deterministic and writes remain bounded. Its v1 fields:
+deterministic and writes remain bounded. The target relation is schema v1 with fields:
 
 | Field | Arrow type | Contract |
 |---|---|---|
@@ -183,7 +183,22 @@ deterministic and writes remain bounded. Its v1 fields:
 | `sequence` | `int32`, nullable | Observed sequence for `bundle_sequence`; null otherwise. Never guessed. |
 | `byte_size` | `int64`, nullable | Source-observed size; unknown for constructed candidates. |
 | `availability_evidence` | `string` | `index_html`, `catalog_metadata`, `constructed`, or `none`. |
-| `catalog_direct_selection` | `string`, nullable | `submitted_primary` or `exact_form_with_lazy_index` for a catalog-direct primary; null for inventory-backed targets. |
+| `catalog_direct_selection` | `string`, nullable | Pre-existing plan field, not runtime lazy-index authorization. S9 must not use it to revive `exact_form_with_lazy_index`; runtime resolution belongs to the S9 work order. |
+
+### Declarative operation and source-input relations
+
+Bundle v4 may include these exact ordered schemas. Their rows carry only declarative
+operation intent and input declarations, never resolved support or execution metadata.
+
+| Relation | Version | Ordered columns | Contract |
+|---|---:|---|---|
+| `target_operations` | v1 | `(operation_id, target_id, operation, requested, request_mode)` | `request_mode` is one of `mandatory_raw`, `profile`, `not_requested`, or `default_candidate`. A default candidate is not a selected or supported operation. |
+| `source_requests` | v1 | `(source_request_id, target_id, source_role, source_origin, retrieval_mode, request_url, sequence, canonical_path)` | Declares source-input intent for the target; it does not assert acquisition support or a runtime resolution. |
+| `operation_inputs` | v1 | `(operation_id, input_ordinal, source_request_id, input_role)` | Links a requested operation to its declared input. The generic `input_role` is `selected_target_body`. |
+
+S6 relation rows contain no capability or handler versions, handler IDs, renderer
+availability, support outcomes, or lazy-trigger policy. S9 work-order resolution owns
+runtime acquisition/operation resolution and may define a separate operation schema.
 
 Matching and outcome rules:
 
@@ -191,17 +206,17 @@ Matching and outcome rules:
 - **Catalog-direct/index-free scope**: this source supports primary-only profiles and
   direct archive URLs. A `matched` row means the catalog supplied a safe sequence-1
   locator; `catalog_metadata` does not verify that the linked body has the filing's
-  statutory document type. S9 interprets the recorded selector after acquisition. An
+  statutory document type. S9/S10 work-order policy resolves acquisition behavior from
+  declared intent and source evidence. An
   envelope or missing primary is unresolved without inventory evidence. Exact `0000.*`
   placeholder paths remain unresolved in catalog-only planning because no sequence is
   observed. Positive numbered primary metadata constructs the accession-prefixed child
-  path; a bare numeric filename is not itself a locator. A non-primary selector is
-  refused; none is passed off as an index match.
+  path; a bare numeric filename is not itself a locator. Catalog-only planning remains
+  primary-only; lazy retrieval selection is not part of S6 target intent.
 - Catalog-direct planning itself does not fetch or parse `-index.html`, inspect
-  document bodies, infer type from filenames, or recover a target. An explicitly
-  selected `exact_form_with_lazy_index` policy authorizes only the bounded S9 recovery
-  path defined by the acquisition contract; it does not upgrade catalog metadata into
-  index evidence. A date-era rule never substitutes for observed index rows.
+  document bodies, infer type from filenames, or recover a target. S6 carries declared
+  source inputs; the S9/S10 work-order policy resolves whether a reviewed family trigger
+  permits bounded recovery. A date-era rule never substitutes for observed index rows.
 - **Absence vs. unresolved**: Use `not_filed` or `required_missing` only when a
   recognized page has no type-matching row for the optional or required target. One
   matching inventory row without a usable locator is `unresolved` with

@@ -111,12 +111,27 @@ def _target(
     target_type: str,
     *,
     optional: bool = False,
+    operations: list[str] | None = None,
     catalog_direct_selection: str | None = None,
 ):
     result: dict[str, Any] = {"role": role, "type": target_type, "optional": optional}
     if role == "primary" and catalog_direct_selection is not None:
         result["catalog_direct_selection"] = catalog_direct_selection
+    if operations is not None:
+        result["acquisition_policy"] = {"operations": operations}
     return result
+
+
+def _parts(manifest: dict[str, Any], relation: str) -> list[dict[str, Any]]:
+    return [part for part in manifest["parts"] if part["relation"] == relation]
+
+
+def _relation_rows(plan, relation: str) -> list[dict[str, Any]]:
+    return [
+        row
+        for part in _parts(plan.manifest, relation)
+        for row in pq.read_table(plan.root / part["path"]).to_pylist()
+    ]
 
 
 def test_catalog_only_plan_is_pinned_sorted_and_identically_reused(
@@ -125,14 +140,15 @@ def test_catalog_only_plan_is_pinned_sorted_and_identically_reused(
     paths = _paths(tmp_path)
     _write_profile(
         paths,
-        [_target("primary", "primary", catalog_direct_selection="submitted_primary")],
+        [_target("primary", "primary")],
     )
     _publish_catalog(paths)
 
     first = create_document_plan("catalog-plan", "test-profile", paths=paths)
     second = create_document_plan("catalog-plan", "test-profile", paths=paths)
     validated = read_published_plan(first.plan_id, paths)
-    target_path = validated.root / validated.manifest["parts"][0]["path"]
+    target_part = _parts(validated.manifest, "targets")[0]
+    target_path = validated.root / target_part["path"]
     target = pq.read_table(target_path, schema=PLAN_SCHEMA).to_pylist()[0]
 
     assert first.plan_id.startswith("dplan_")
@@ -147,14 +163,39 @@ def test_catalog_only_plan_is_pinned_sorted_and_identically_reused(
     prior_identity = dict(identity)
     prior_identity.pop("bundle_schema_version")
     assert first.plan_id != f"dplan_{sha256_text(canonical_json(prior_identity))[:32]}"
-    assert first.manifest["parts"][0]["byte_size"] == target_path.stat().st_size
+    assert target_part["byte_size"] == target_path.stat().st_size
     assert target["accession"] == _ACCESSION
     assert target["status"] == "matched"
     assert target["source_origin"] == "catalog_direct"
     assert target["availability_evidence"] == "catalog_metadata"
     assert target["target_url"].endswith("/primary.htm")
     assert target["inventory_entry_id"] is None
-    assert target["catalog_direct_selection"] == "submitted_primary"
+    assert target["catalog_direct_selection"] is None
+    assert first.manifest["relation_row_counts"] == {
+        "targets": 1,
+        "target_operations": 3,
+        "source_requests": 1,
+        "operation_inputs": 3,
+    }
+    assert first.manifest["requested_operation_counts"] == {
+        "raw": 1,
+        "render_to_txt": 1,
+        "render_to_xml": 1,
+    }
+    assert first.manifest["default_candidate_operation_counts"] == {
+        "render_to_txt": 1,
+        "render_to_xml": 1,
+    }
+    operations = _relation_rows(validated, "target_operations")
+    inputs = _relation_rows(validated, "operation_inputs")
+    source = _relation_rows(validated, "source_requests")[0]
+    by_operation = {row["operation"]: row for row in operations}
+    assert by_operation["raw"]["requested"]
+    assert by_operation["render_to_txt"]["request_mode"] == "default_candidate"
+    assert by_operation["render_to_xml"]["request_mode"] == "default_candidate"
+    assert len(inputs) == 3
+    assert {row["source_request_id"] for row in inputs} == {source["source_request_id"]}
+    assert source["canonical_path"] == "primary.htm"
     assert first.manifest["inventory_snapshot_id"] is None
     assert first.manifest["inventory_snapshot_digest"] is None
 
@@ -165,7 +206,7 @@ def test_form_parts_have_deterministic_row_boundaries(
     paths = _paths(tmp_path)
     _write_profile(
         paths,
-        [_target("primary", "primary", catalog_direct_selection="submitted_primary")],
+        [_target("primary", "primary")],
     )
     accessions = [f"00000000012400000{number}" for number in (1, 2, 3)]
     rows = [
@@ -184,9 +225,10 @@ def test_form_parts_have_deterministic_row_boundaries(
     monkeypatch.setenv("PARQUET_ROW_GROUP_SIZE", "3")
     validated = read_published_plan(result.plan_id, paths)
 
-    assert [part["rows"] for part in result.manifest["parts"]] == [2, 1]
+    target_parts = _parts(result.manifest, "targets")
+    assert [part["rows"] for part in target_parts] == [2, 1]
     assert validated.manifest["row_group_size"] == 2
-    assert [part["path"].rsplit("/", 1)[-1] for part in result.manifest["parts"]] == [
+    assert [part["path"].rsplit("/", 1)[-1] for part in target_parts] == [
         "part-00000.parquet",
         "part-00001.parquet",
     ]
@@ -268,7 +310,7 @@ def test_inventory_plan_uses_pinned_index_and_distinguishes_package_candidate(
     _write_profile(
         paths,
         [
-            _target("primary", "primary", catalog_direct_selection="submitted_primary"),
+            _target("primary", "primary"),
             _target("exhibit", "EX-21"),
             _target("data_file", "extracted_xbrl_instance"),
             _target("package", "xbrl_zip", optional=True),
@@ -283,13 +325,12 @@ def test_inventory_plan_uses_pinned_index_and_distinguishes_package_candidate(
     result = create_document_plan("catalog-plan", "test-profile", "snapshot-1", paths)
     plan = read_published_plan(result.plan_id, paths)
     rows = []
-    for part in plan.manifest["parts"]:
+    for part in _parts(plan.manifest, "targets"):
         rows.extend(pq.read_table(plan.root / part["path"]).to_pylist())
     by_role = {row["target_role"]: row for row in rows}
 
     assert by_role["primary"]["source_origin"] == "inventory_index"
     assert by_role["primary"]["status"] == "matched"
-    assert by_role["primary"]["catalog_direct_selection"] is None
     assert by_role["exhibit"]["retrieval_mode"] == "bundle_sequence"
     assert by_role["exhibit"]["sequence"] == 2
     assert by_role["data_file"]["status"] == "matched"
@@ -299,17 +340,48 @@ def test_inventory_plan_uses_pinned_index_and_distinguishes_package_candidate(
     assert result.manifest["distinct_accession_coverage"]["inventory_indexed"] == 1
 
 
+def test_explicit_policy_preserves_intent_and_cannot_suppress_raw(
+    tmp_path: Path,
+) -> None:
+    paths = _paths(tmp_path)
+    _write_profile(
+        paths,
+        [_target("primary", "primary", operations=["render_to_xml"])],
+    )
+    _publish_catalog(paths)
+
+    result = create_document_plan("catalog-plan", "test-profile", paths=paths)
+    plan = read_published_plan(result.plan_id, paths)
+    by_operation = {
+        row["operation"]: row for row in _relation_rows(plan, "target_operations")
+    }
+    inputs = _relation_rows(plan, "operation_inputs")
+
+    assert by_operation["raw"]["requested"]
+    assert by_operation["raw"]["request_mode"] == "mandatory_raw"
+    assert by_operation["render_to_txt"]["requested"] is False
+    assert by_operation["render_to_txt"]["request_mode"] == "not_requested"
+    assert by_operation["render_to_xml"]["requested"] is True
+    assert by_operation["render_to_xml"]["request_mode"] == "profile"
+    assert len(inputs) == 2
+    assert result.manifest["requested_operation_counts"] == {
+        "raw": 1,
+        "render_to_xml": 1,
+    }
+    assert result.manifest["unrequested_operation_counts"] == {"render_to_txt": 1}
+
+
 def test_corrupt_target_part_size_is_rejected(tmp_path: Path) -> None:
     paths = _paths(tmp_path)
     _write_profile(
         paths,
-        [_target("primary", "primary", catalog_direct_selection="submitted_primary")],
+        [_target("primary", "primary")],
     )
     _publish_catalog(paths)
     result = create_document_plan("catalog-plan", "test-profile", paths=paths)
     manifest_path = paths.plan_manifest_path(result.plan_id)
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    manifest["parts"][0]["byte_size"] += 1
+    _parts(manifest, "targets")[0]["byte_size"] += 1
     manifest["plan_digest"] = canonical_hash(
         {key: value for key, value in manifest.items() if key != "plan_digest"}
     )
@@ -328,7 +400,7 @@ def test_unindexed_is_unresolved_and_catalog_mismatch_refuses(
     paths = _paths(tmp_path)
     _write_profile(
         paths,
-        [_target("primary", "primary", optional=True, catalog_direct_selection=None)],
+        [_target("primary", "primary", optional=True)],
     )
     _publish_catalog(paths)
     monkeypatch.setattr(
@@ -343,7 +415,9 @@ def test_unindexed_is_unresolved_and_catalog_mismatch_refuses(
 
     result = create_document_plan("catalog-plan", "test-profile", "snapshot-1", paths)
     plan = read_published_plan(result.plan_id, paths)
-    target = pq.read_table(plan.root / plan.manifest["parts"][0]["path"]).to_pylist()[0]
+    target = pq.read_table(
+        plan.root / _parts(plan.manifest, "targets")[0]["path"]
+    ).to_pylist()[0]
 
     assert target["status"] == "unresolved"
     assert target["status_reason"] == "accession_not_indexed"

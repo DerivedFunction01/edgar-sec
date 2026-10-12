@@ -14,6 +14,9 @@ from edgar_sec.pipelines.document_planning.schemas import (
     MATCHER_VERSION,
     PLAN_BUNDLE_SCHEMA_VERSION,
     TARGET_SCHEMA_VERSION,
+    TARGET_OPERATION_SCHEMA_VERSION,
+    SOURCE_REQUEST_SCHEMA_VERSION,
+    OPERATION_INPUT_SCHEMA_VERSION,
 )
 
 
@@ -22,6 +25,9 @@ def _manifest(identity: dict[str, object], plan_id: str) -> dict[str, object]:
         "plan_id": plan_id,
         "bundle_schema_version": PLAN_BUNDLE_SCHEMA_VERSION,
         "target_schema_version": TARGET_SCHEMA_VERSION,
+        "target_operation_schema_version": TARGET_OPERATION_SCHEMA_VERSION,
+        "source_request_schema_version": SOURCE_REQUEST_SCHEMA_VERSION,
+        "operation_input_schema_version": OPERATION_INPUT_SCHEMA_VERSION,
         "matcher_version": MATCHER_VERSION,
         "row_group_size": identity["row_group_size"],
         "profile_id": "primary",
@@ -34,6 +40,16 @@ def _manifest(identity: dict[str, object], plan_id: str) -> dict[str, object]:
         "inventory_snapshot_digest": None,
         "plan_identity": identity,
         "target_row_count": 0,
+        "relation_row_counts": {
+            "targets": 0,
+            "target_operations": 0,
+            "source_requests": 0,
+            "operation_inputs": 0,
+        },
+        "requested_operation_counts": {},
+        "default_candidate_operation_counts": {},
+        "unrequested_operation_counts": {},
+        "unique_source_request_count": 0,
         "status_counts": {},
         "origin_counts": {},
         "reason_counts": {},
@@ -52,6 +68,12 @@ def test_publication_atomically_reuses_only_identical_manifest(tmp_path: Path) -
     identity = {
         "bundle_schema_version": PLAN_BUNDLE_SCHEMA_VERSION,
         "target_schema_version": TARGET_SCHEMA_VERSION,
+        "target_operation_schema_version": TARGET_OPERATION_SCHEMA_VERSION,
+        "source_request_schema_version": SOURCE_REQUEST_SCHEMA_VERSION,
+        "operation_input_schema_version": OPERATION_INPUT_SCHEMA_VERSION,
+        "profile_id": "primary",
+        "profile_schema_version": "1",
+        "profile_version": "1",
         "matcher_version": MATCHER_VERSION,
         "row_group_size": DEFAULT_ROW_GROUP_SIZE,
         "profile_digest": "a" * 64,
@@ -83,6 +105,12 @@ def test_publication_refuses_a_divergent_rerun(tmp_path: Path) -> None:
     identity = {
         "bundle_schema_version": PLAN_BUNDLE_SCHEMA_VERSION,
         "target_schema_version": TARGET_SCHEMA_VERSION,
+        "target_operation_schema_version": TARGET_OPERATION_SCHEMA_VERSION,
+        "source_request_schema_version": SOURCE_REQUEST_SCHEMA_VERSION,
+        "operation_input_schema_version": OPERATION_INPUT_SCHEMA_VERSION,
+        "profile_id": "primary",
+        "profile_schema_version": "1",
+        "profile_version": "1",
         "matcher_version": MATCHER_VERSION,
         "row_group_size": DEFAULT_ROW_GROUP_SIZE,
         "profile_digest": "a" * 64,
@@ -98,7 +126,7 @@ def test_publication_refuses_a_divergent_rerun(tmp_path: Path) -> None:
         plan_id, identity, _manifest(identity, plan_id), first_stage, paths
     )
     changed = _manifest(identity, plan_id)
-    changed["profile_version"] = "2"
+    changed["distinct_accession_coverage"]["catalog_scope"] = 1
     second_stage = tmp_path / "second"
     second_stage.mkdir()
 

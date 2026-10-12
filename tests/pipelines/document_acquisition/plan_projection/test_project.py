@@ -1,29 +1,35 @@
 from __future__ import annotations
 
 import json
-from collections import Counter
 from pathlib import Path
 from typing import Any
 
-import pyarrow as pa
-import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.foundation.hashing import file_sha256
-from edgar_sec.foundation.serialization import canonical_hash
+from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 from edgar_sec.pipelines.document_acquisition.plan_projection.project import (
     AcquisitionProjectError,
     project_acquisition_run,
 )
+from edgar_sec.pipelines.document_acquisition.run_validation import (
+    iter_resolved_work_order_operations,
+    load_validated_work_order,
+)
 from edgar_sec.pipelines.document_acquisition.schemas import (
     target_plan_bundle_schema_version,
     target_plan_matcher_version,
 )
 from edgar_sec.pipelines.document_planning.schemas import (
-    TARGET_SCHEMA,
+    OPERATION_INPUT_SCHEMA_VERSION,
+    SOURCE_REQUEST_SCHEMA_VERSION,
     TARGET_SCHEMA_VERSION,
+    TARGET_OPERATION_SCHEMA_VERSION,
+)
+from tests.pipelines.document_acquisition.plan_projection.plan_fixture import (
+    write_plan_bundle,
 )
 
 
@@ -41,6 +47,9 @@ def _make_plan(
     identity = {
         "bundle_schema_version": target_plan_bundle_schema_version(),
         "target_schema_version": TARGET_SCHEMA_VERSION,
+        "target_operation_schema_version": TARGET_OPERATION_SCHEMA_VERSION,
+        "source_request_schema_version": SOURCE_REQUEST_SCHEMA_VERSION,
+        "operation_input_schema_version": OPERATION_INPUT_SCHEMA_VERSION,
         "matcher_version": target_plan_matcher_version(),
         "row_group_size": DEFAULT_ROW_GROUP_SIZE,
         "profile_digest": "c" * 64,
@@ -51,8 +60,7 @@ def _make_plan(
     }
     plan_id = f"dplan_{canonical_hash(identity)[:32]}"
     plan_root = artifacts_root / "document_planning" / "plans" / plan_id
-    part = plan_root / "targets" / "form=10-K" / "part-00000.parquet"
-    part.parent.mkdir(parents=True)
+    plan_root.mkdir(parents=True)
     rows = []
     for index in range(row_count):
         accession = f"0000000001-24-{index + 1:06d}"
@@ -86,43 +94,7 @@ def _make_plan(
             [plan_id, accession, row["request_id"], row["inventory_entry_id"], status]
         )
         rows.append(row)
-    pq.write_table(
-        pa.Table.from_pylist(rows, schema=TARGET_SCHEMA),
-        part,
-        row_group_size=DEFAULT_ROW_GROUP_SIZE,
-    )
-    statuses = Counter(row["status"] for row in rows)
-    manifest = {
-        "plan_id": plan_id,
-        "bundle_schema_version": target_plan_bundle_schema_version(),
-        "target_schema_version": TARGET_SCHEMA_VERSION,
-        "matcher_version": target_plan_matcher_version(),
-        "row_group_size": identity["row_group_size"],
-        "profile_id": "profile-fixture",
-        "profile_schema_version": "1",
-        "profile_version": "1",
-        "profile_digest": identity["profile_digest"],
-        "catalog_plan_id": identity["catalog_plan_id"],
-        "catalog_plan_digest": identity["catalog_plan_digest"],
-        "inventory_snapshot_id": identity["inventory_snapshot_id"],
-        "inventory_snapshot_digest": identity["inventory_snapshot_digest"],
-        "plan_identity": identity,
-        "target_row_count": len(rows),
-        "status_counts": dict(statuses),
-        "origin_counts": {"inventory_index": len(rows)},
-        "reason_counts": {},
-        "parts": [
-            {
-                "path": "targets/form=10-K/part-00000.parquet",
-                "form": "10-K",
-                "rows": len(rows),
-                "byte_size": part.stat().st_size,
-                "sha256": file_sha256(part),
-            }
-        ],
-    }
-    manifest["plan_digest"] = canonical_hash(manifest)
-    (plan_root / "plan.json").write_text(json.dumps(manifest), encoding="utf-8")
+    write_plan_bundle(plan_root, plan_id, identity, rows)
     return plan_root, rows
 
 
@@ -144,10 +116,29 @@ def test_creates_pinned_run_and_canonical_manifest(project_fixture):
     assert manifest["run_digest"] == canonical_hash(
         {key: value for key, value in manifest.items() if key != "run_digest"}
     )
-    assert manifest["bundle_schema_version"] == 3
+    assert manifest["bundle_schema_version"] == 4
     assert manifest["matcher_version"] == "target-matcher-v2"
-    assert manifest["work_order_schema_version"] == "1"
+    assert manifest["work_order_schema_version"] == "3"
+    assert set(manifest["work_order_relations"]) == {
+        "targets",
+        "target_operations",
+        "source_requests",
+        "operation_inputs",
+        "resolved_operations",
+    }
     assert part["row_count"] == len(rows)
+    operations = list(iter_resolved_work_order_operations(paths, result.run_id))
+    assert len(operations) == 3 * len(rows)
+    raw = next(
+        row
+        for row in operations
+        if row["operation"] == "raw" and row["source_request_id"] is not None
+    )
+    assert raw["support_status"] == "supported"
+    assert raw["selected"] is True
+    assert raw["handler_id"] == "raw_identity"
+    assert raw["source_request_id"] is not None
+    assert raw["source_request_canonical_path"] is not None
     work_order = paths.work_order_root(result.run_id) / "part-00000.parquet"
     assert part["byte_size"] == work_order.stat().st_size
     assert part["sha256"] == file_sha256(work_order)
@@ -174,16 +165,16 @@ def test_state_seed_is_a_bounded_batch_generator(project_fixture, monkeypatch):
 
         def iter_batches(self, **kwargs):
             batches = self.parquet.iter_batches(**kwargs)
-            if "work_order" in self.path.parts:
+            if self.path.parent.name == "work_order":
                 for batch in batches:
                     work_order_batch_sizes.append(batch.num_rows)
                     yield batch
             else:
                 yield from batches
 
-    def inspect_seed(database, targets):
+    def inspect_seed(database, targets, operations=()):
         seen.append(targets)
-        return original_initialize(database, targets)
+        return original_initialize(database, targets, operations)
 
     monkeypatch.setattr(project.pq, "ParquetFile", TrackingParquetFile)
     monkeypatch.setattr(project, "initialize_run_state", inspect_seed)
@@ -224,6 +215,32 @@ def test_divergent_existing_work_order_is_refused(project_fixture):
 
     with pytest.raises(AcquisitionProjectError, match="manifest|digest"):
         project_acquisition_run(plan_root.name, paths=paths)
+
+
+@pytest.mark.parametrize(
+    "field",
+    [
+        "target_operation_schema_version",
+        "source_request_schema_version",
+        "operation_input_schema_version",
+        "resolved_operation_schema_version",
+    ],
+)
+def test_run_manifest_rejects_mismatched_relation_schema_versions(
+    project_fixture, field
+):
+    paths, plan_root, _rows = project_fixture
+    result = project_acquisition_run(plan_root.name, paths=paths)
+    manifest_path = paths.run_manifest_path(result.run_id)
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest[field] += 1
+    manifest["run_digest"] = canonical_hash(
+        {key: value for key, value in manifest.items() if key != "run_digest"}
+    )
+    manifest_path.write_text(canonical_json(manifest), encoding="utf-8")
+
+    with pytest.raises(ValueError, match=field):
+        load_validated_work_order(paths, result.run_id)
 
 
 def test_invalid_target_plan_leaves_no_run_directory(project_fixture):

@@ -18,6 +18,9 @@ from edgar_sec.pipelines.document_planning.schemas import (
     MATCHER_VERSION,
     PLAN_BUNDLE_SCHEMA_VERSION,
     TARGET_SCHEMA_VERSION,
+    TARGET_OPERATION_SCHEMA_VERSION,
+    SOURCE_REQUEST_SCHEMA_VERSION,
+    OPERATION_INPUT_SCHEMA_VERSION,
 )
 from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 
@@ -26,6 +29,12 @@ def _publish_empty_manifest(tmp_path: Path):
     paths = resolve_document_planning_paths(tmp_path, tmp_path / "artifacts")
     identity = {
         "target_schema_version": TARGET_SCHEMA_VERSION,
+        "target_operation_schema_version": TARGET_OPERATION_SCHEMA_VERSION,
+        "source_request_schema_version": SOURCE_REQUEST_SCHEMA_VERSION,
+        "operation_input_schema_version": OPERATION_INPUT_SCHEMA_VERSION,
+        "profile_id": "primary",
+        "profile_schema_version": "1",
+        "profile_version": "1",
         "bundle_schema_version": PLAN_BUNDLE_SCHEMA_VERSION,
         "matcher_version": MATCHER_VERSION,
         "row_group_size": DEFAULT_ROW_GROUP_SIZE,
@@ -40,6 +49,9 @@ def _publish_empty_manifest(tmp_path: Path):
     manifest = {
         "plan_id": plan_id,
         "target_schema_version": TARGET_SCHEMA_VERSION,
+        "target_operation_schema_version": TARGET_OPERATION_SCHEMA_VERSION,
+        "source_request_schema_version": SOURCE_REQUEST_SCHEMA_VERSION,
+        "operation_input_schema_version": OPERATION_INPUT_SCHEMA_VERSION,
         "bundle_schema_version": PLAN_BUNDLE_SCHEMA_VERSION,
         "matcher_version": matcher_version,
         "row_group_size": identity["row_group_size"],
@@ -53,6 +65,16 @@ def _publish_empty_manifest(tmp_path: Path):
         "inventory_snapshot_digest": None,
         "plan_identity": identity,
         "target_row_count": 0,
+        "relation_row_counts": {
+            "targets": 0,
+            "target_operations": 0,
+            "source_requests": 0,
+            "operation_inputs": 0,
+        },
+        "requested_operation_counts": {},
+        "default_candidate_operation_counts": {},
+        "unrequested_operation_counts": {},
+        "unique_source_request_count": 0,
         "status_counts": {},
         "origin_counts": {},
         "reason_counts": {},

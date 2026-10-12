@@ -8,6 +8,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from shutil import copyfile
 from typing import Protocol
+from urllib.parse import urlsplit
 
 from edgar_sec.domain.document_inventory.models import IndexPageInput
 from edgar_sec.domain.identity import AccessionNumber
@@ -111,6 +112,23 @@ def _stream(
     return result
 
 
+def _has_lazy_index_trigger(row: dict[str, object]) -> bool:
+    trigger_id = row["lazy_index_trigger_id"]
+    trigger_version = row["lazy_index_trigger_version"]
+    if (trigger_id is None) != (trigger_version is None):
+        raise ValueError("lazy-index trigger ID and version must be pinned together")
+    if trigger_id is None:
+        return False
+    if (
+        not isinstance(trigger_id, str)
+        or not trigger_id
+        or not isinstance(trigger_version, str)
+        or not trigger_version
+    ):
+        raise ValueError("lazy-index trigger pin is invalid")
+    return True
+
+
 def _outcome(
     target_id: str,
     attempts: tuple[AcquisitionAttempt, ...],
@@ -173,11 +191,7 @@ def acquire_target(
         policy.retain_response_evidence
         and row["target_role"] == "primary"
         and (
-            row["retrieval_mode"] == "bundle_sequence"
-            or (
-                row["source_origin"] == "catalog_direct"
-                and row["catalog_direct_selection"] == "exact_form_with_lazy_index"
-            )
+            row["retrieval_mode"] == "bundle_sequence" or (_has_lazy_index_trigger(row))
         )
     )
     source_path = _new_path(staging_root, "response")
@@ -222,11 +236,7 @@ def acquire_target(
             expected_source_sha256=response.sha256,
         )
         if isinstance(extracted, BundleExtraction):
-            should_screen_sgml = (
-                row["source_origin"] == "catalog_direct"
-                and row["target_role"] == "primary"
-                and row["catalog_direct_selection"] == "exact_form_with_lazy_index"
-            )
+            should_screen_sgml = _has_lazy_index_trigger(row)
             screen_result = (
                 _screen_sgml_type(extracted.selected.document_type, str(row["form"]))
                 if should_screen_sgml
@@ -304,12 +314,7 @@ def acquire_target(
                 None,
             )
 
-    lazy = sgml_recovery or (
-        row["source_origin"] == "catalog_direct"
-        and row["target_role"] == "primary"
-        and row["catalog_direct_selection"] == "exact_form_with_lazy_index"
-        and row["sequence"] == 1
-    )
+    lazy = sgml_recovery or (_has_lazy_index_trigger(row) and row["sequence"] == 1)
     if not lazy:
         selected_path = source_path
         attempt = _attempt(
@@ -574,7 +579,7 @@ def acquire_target(
                 resolution,
                 _utc(clock),
             )
-        if row["catalog_direct_selection"] == "exact_form_with_lazy_index":
+        if _has_lazy_index_trigger(row):
             screen_result = _screen_sgml_type(
                 extracted.selected.document_type, str(row["form"])
             )
@@ -713,6 +718,7 @@ def acquire_target(
         source_path=body_result.path if retain_evidence else None,
         selected_path=selected_path,
         run_root=run_root,
+        selected_filename=urlsplit(selection.selected_url).path.rsplit("/", 1)[-1],
     )
     attempts = (*attempts, body_attempt)
     if (

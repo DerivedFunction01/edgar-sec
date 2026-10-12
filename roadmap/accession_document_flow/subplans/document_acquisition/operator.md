@@ -2,10 +2,15 @@
 
 ## Purpose and status
 
-This is the interactive flow shared by the S9 command group. The operator dispatches
-project, run, fixture create/fill/list/replay, and shared review generate/compare actions
-to CLI services. Status and run-level process orchestration remain incomplete; publish
-fails closed on the S11 gate.
+This is the interactive flow shared by the S9 command group. Project, status, run,
+fixture create/fill/list/replay, and review generate/compare dispatch to CLI services.
+Review is implemented only for the limited S9/S10 fixture slice. The `process --run-id`
+command remains unimplemented despite the available per-target `process_target` service;
+publish fails closed on the S11 gate. Wiring is covered by
+[`operator.py`](../../../../edgar_sec/pipelines/document_acquisition/operator.py),
+[`test_operator.py`](../../../../tests/pipelines/document_acquisition/test_operator.py),
+[`test_review.py`](../../../../tests/pipelines/document_acquisition/commands/test_review.py),
+and [`test_review_adapter.py`](../../../../tests/pipelines/document_acquisition/test_review_adapter.py).
 
 ## Entry and signatures
 
@@ -33,10 +38,10 @@ Document Acquisition
   4. Process acquired targets
   5. Publish a completed run snapshot
   6. Create local fixture
-  7. Capture local fixture evidence (confirmation required)
+  7. Fill local fixture evidence (confirmation required)
   8. List local fixtures
   9. Replay local fixture (confirmation required)
-  10. Review artifact console (build, compare TODOs)
+  10. Review artifact console (limited S9/S10 fixture slice)
   11. Snapshot status/evidence audit (S11 gate)
   0. Exit
 ```
@@ -44,9 +49,14 @@ Document Acquisition
 Project prompts for a published plan ID and delegates to the offline project service.
 Status delegates read-only run inspection. Run is wired to acquisition and separately
 confirms live SEC access, defaulting to no; retry selection is a distinct prompt.
-Fixture create, capture, list, and replay are wired. Process, review, and snapshot audit
-still return TODO results. Publish returns a gate-blocked result and does not create
-parts, manifests, or pointers.
+Fixture create, fill, list, and replay are wired. Review generate/compare are wired for
+the limited S9/S10 fixture slice. The `process --run-id` command and snapshot audit
+remain unimplemented; per-target `process_target` does not provide run orchestration.
+Publish returns a gate-blocked result and does not create parts, manifests, or pointers.
+The CLI routing and per-target processing are covered by
+[`cli.py`](../../../../edgar_sec/pipelines/document_acquisition/cli.py),
+[`test_cli.py`](../../../../tests/pipelines/document_acquisition/test_cli.py), and
+[`test_processing.py`](../../../../tests/pipelines/document_acquisition/test_processing.py).
 
 ## Deferred UX extensions
 
@@ -101,10 +111,12 @@ default-no confirmation before writing. It makes no HTTP request and does not pr
 document bytes. A metadata-only failure creates no output file.
 
 Replay output is a caller-owned file, not managed S10 staging. There is no durable
-replay staging, consumption receipt, or S10 handoff API. Capture refuses exact-form
-lazy-index attempts and acquired bundle attempts because complete source/index response
-evidence is not retained after a run; supported captures are successful direct bodies
-and bodyless failed attempts.
+replay staging, consumption receipt, or S10 handoff API. Capture supports successful
+direct bodies, bodyless failed attempts, bundle responses, and complete lazy-index
+response groups when the run used opt-in `--retain-response-evidence`. Without that
+option, required bundle/lazy response-group members may not be retained and capture
+refuses incomplete evidence. Opt-in capture and replay are covered by
+[`fixture_store/test_capture.py`](../../../../tests/pipelines/document_acquisition/fixture_store/test_capture.py).
 
 ### Snapshot console
 
@@ -126,4 +138,7 @@ error formatting and exit-code mapping in both entry modes. The legacy
 representative S9/S10 evidence and approval required to enable S11 publication.
 
 Tests cover menu transitions, default-no live-network/capture/replay confirmations,
-retry confirmation separation, EOF/Ctrl-C behavior, and command delegation.
+retry confirmation separation, EOF/Ctrl-C behavior, and command delegation. M7b runner
+and retry/isolation coverage is complete; cleanup remains explicitly gated, because a
+receipt or rerun does not authorize deletion. See
+[`test_offline_acceptance.py`](../../../../tests/pipelines/document_acquisition/test_offline_acceptance.py).

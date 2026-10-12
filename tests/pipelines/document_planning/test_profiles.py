@@ -32,14 +32,17 @@ def _rule(selector: str, *targets: dict) -> dict:
 
 
 def _primary(
-    optional: bool = False, catalog_direct_selection: str | None = "submitted_primary"
+    optional: bool = False,
+    catalog_direct_selection: str | None = "submitted_primary",
 ) -> dict:
-    return {
+    target = {
         "role": "primary",
         "type": "primary",
         "optional": optional,
-        "catalog_direct_selection": catalog_direct_selection,
     }
+    if catalog_direct_selection is not None:
+        target["catalog_direct_selection"] = catalog_direct_selection
+    return target
 
 
 def test_selector_aliases_specificity_and_catalog_compatibility(tmp_path: Path) -> None:
@@ -138,7 +141,9 @@ def test_catalog_only_profile_is_accepted_and_schema_version_is_checked(
     tmp_path: Path,
 ) -> None:
     root = tmp_path / "profiles"
-    _write_profile(root, "primary", [_rule("*", _primary())])
+    _write_profile(
+        root, "primary", [_rule("*", _primary(catalog_direct_selection=None))]
+    )
     assert compatible_with_catalog_only(load_profile("primary", root))
 
     # schema_version mismatch
@@ -148,54 +153,71 @@ def test_catalog_only_profile_is_accepted_and_schema_version_is_checked(
     with pytest.raises(ValueError, match="schema_version"):
         load_profile("primary", root)
 
-    # catalog_direct_selection required for catalog-only planning
     _write_profile(
-        root, "no_sel", [_rule("*", _primary(catalog_direct_selection=None))]
+        root,
+        "operations",
+        [
+            _rule(
+                "*",
+                {
+                    **_primary(),
+                    "acquisition_policy": {"operations": ["raw", "raw"]},
+                },
+            )
+        ],
     )
-    assert not compatible_with_catalog_only(load_profile("no_sel", root))
+    with pytest.raises(ValueError, match="must be unique"):
+        load_profile("operations", root)
 
-    # catalog_direct_selection must be one of the valid values
-    data_bad_sel = {
-        "profile_id": "bad_sel",
-        "schema_version": "1",
-        "version": "1.0.0",
-        "rules": [
-            {
-                "form_selector": "*",
-                "targets": [
-                    {
-                        "role": "primary",
-                        "type": "primary",
-                        "optional": False,
-                        "catalog_direct_selection": "invalid_selector",
-                    }
-                ],
-            }
+    _write_profile(
+        root,
+        "bad-selector",
+        [
+            _rule(
+                "*",
+                _primary(catalog_direct_selection="invalid_selector"),
+            )
         ],
-    }
-    (root / "bad_sel.json").write_text(json.dumps(data_bad_sel), encoding="utf-8")
+    )
     with pytest.raises(ValueError, match="invalid catalog_direct_selection"):
-        load_profile("bad_sel", root)
+        load_profile("bad-selector", root)
 
-    # catalog_direct_selection only allowed on primary targets
-    data_ex_sel = {
-        "profile_id": "test",
-        "schema_version": "1",
-        "version": "1.0.0",
-        "rules": [
-            {
-                "form_selector": "*",
-                "targets": [
-                    {
-                        "role": "exhibit",
-                        "type": "EX-21",
-                        "optional": True,
-                        "catalog_direct_selection": "submitted_primary",
-                    }
-                ],
-            }
+    _write_profile(
+        root,
+        "nonprimary-selector",
+        [
+            _rule(
+                "*",
+                {
+                    "role": "exhibit",
+                    "type": "EX-21",
+                    "optional": True,
+                    "catalog_direct_selection": "submitted_primary",
+                },
+            )
         ],
-    }
-    (root / "test.json").write_text(json.dumps(data_ex_sel), encoding="utf-8")
+    )
     with pytest.raises(ValueError, match="only allowed on primary targets"):
-        load_profile("test", root)
+        load_profile("nonprimary-selector", root)
+
+
+@pytest.mark.parametrize("operations", [[], ["unknown"], ["raw", 1]])
+def test_operation_request_must_be_nonempty_and_known(
+    tmp_path: Path, operations: list[object]
+) -> None:
+    root = tmp_path / "profiles"
+    _write_profile(
+        root,
+        "invalid-operations",
+        [
+            _rule(
+                "*",
+                {
+                    **_primary(),
+                    "acquisition_policy": {"operations": operations},
+                },
+            )
+        ],
+    )
+    with pytest.raises(ValueError):
+        load_profile("invalid-operations", root)

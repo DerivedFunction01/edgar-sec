@@ -24,6 +24,7 @@ from edgar_sec.pipelines.document_acquisition.arrow_schemas import WORK_ORDER_SC
 from edgar_sec.pipelines.document_acquisition.models import ProjectedAcquisitionRun
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.run_state.models import (
+    WorkOrderOperationSeed,
     WorkOrderTargetSeed,
 )
 from edgar_sec.pipelines.document_acquisition.run_state.store import (
@@ -41,7 +42,9 @@ from edgar_sec.pipelines.document_acquisition.plan_projection.target_plan import
     load_acquisition_work_order,
 )
 from edgar_sec.pipelines.document_acquisition.run_validation import (
+    compare_operation_seeds,
     compare_work_order_seeds,
+    validate_work_order_relations,
 )
 
 _WORK_ORDER_PART = "part-00000.parquet"
@@ -62,9 +65,14 @@ def _run_id(projection: Any) -> str:
                 "acquisition_contract_version": ACQUISITION_CONTRACT_VERSION,
                 "target_plan_bundle_schema_version": projection.bundle_schema_version,
                 "target_schema_version": projection.target_schema_version,
+                "target_operation_schema_version": projection.target_operation_schema_version,
+                "source_request_schema_version": projection.source_request_schema_version,
+                "operation_input_schema_version": projection.operation_input_schema_version,
+                "resolved_operation_schema_version": projection.resolved_operation_schema_version,
                 "target_matcher_version": projection.matcher_version,
                 "work_order_schema_version": WORK_ORDER_SCHEMA_VERSION,
                 "run_state_schema_version": RUN_STATE_SCHEMA_VERSION,
+                "work_order_relation_digests": projection.relation_digests,
             }
         )[:32]
     )
@@ -91,13 +99,49 @@ def _work_order_seeds(path: Path) -> Iterator[WorkOrderTargetSeed]:
             )
 
 
-def _manifest_for(projection: Any, work_order: Path) -> dict[str, Any]:
-    part = {
-        "path": f"work_order/{_WORK_ORDER_PART}",
-        "row_count": projection.target_row_count,
-        "byte_size": work_order.stat().st_size,
-        "sha256": file_sha256(work_order),
+def _operation_seeds(paths: tuple[Path, ...]) -> Iterator[WorkOrderOperationSeed]:
+    columns = [
+        "operation_id",
+        "target_id",
+        "operation",
+        "requested",
+        "request_mode",
+        "selected",
+        "source_request_id",
+        "input_ordinal",
+        "input_role",
+        "support_status",
+        "support_reason",
+        "capability_id",
+        "capability_version",
+        "handler_id",
+        "handler_version",
+        "output_kind",
+    ]
+    for path in paths:
+        for batch in pq.ParquetFile(path).iter_batches(
+            batch_size=resolve_parquet_read_batch_size(), columns=columns
+        ):
+            for row in batch.to_pylist():
+                yield WorkOrderOperationSeed(**row)
+
+
+def _manifest_for(projection: Any) -> dict[str, Any]:
+    relations = {
+        relation: {
+            "row_count": projection.relation_counts[relation],
+            "sha256": projection.relation_digests[relation],
+            "parts": [
+                {
+                    **part,
+                    "path": f"work_order/{part['path']}",
+                }
+                for part in projection.relation_parts[relation]
+            ],
+        }
+        for relation in projection.relation_parts
     }
+    part = relations["targets"]["parts"][0]
     manifest: dict[str, Any] = {
         "run_id": _run_id(projection),
         "run_schema_version": RUN_SCHEMA_VERSION,
@@ -106,6 +150,10 @@ def _manifest_for(projection: Any, work_order: Path) -> dict[str, Any]:
         "target_plan_digest": projection.plan_digest,
         "bundle_schema_version": projection.bundle_schema_version,
         "target_schema_version": projection.target_schema_version,
+        "target_operation_schema_version": projection.target_operation_schema_version,
+        "source_request_schema_version": projection.source_request_schema_version,
+        "operation_input_schema_version": projection.operation_input_schema_version,
+        "resolved_operation_schema_version": projection.resolved_operation_schema_version,
         "matcher_version": projection.matcher_version,
         "catalog_plan_id": projection.catalog_plan_id,
         "catalog_plan_digest": projection.catalog_plan_digest,
@@ -113,6 +161,7 @@ def _manifest_for(projection: Any, work_order: Path) -> dict[str, Any]:
         "inventory_snapshot_digest": projection.inventory_snapshot_digest,
         "work_order_schema_version": WORK_ORDER_SCHEMA_VERSION,
         "work_order_parts": [part],
+        "work_order_relations": relations,
         "target_row_count": projection.target_row_count,
         "executable_count": projection.executable_count,
         "skipped_count": projection.skipped_count,
@@ -154,6 +203,7 @@ def _validate_database(
     target_count: int,
     executable_count: int,
     skipped_count: int,
+    operation_parts: tuple[Path, ...] = (),
 ) -> None:
     if database.is_symlink() or not database.is_file():
         raise AcquisitionProjectError("run-state database is missing or unsafe")
@@ -177,6 +227,18 @@ def _validate_database(
             raise AcquisitionProjectError(
                 "run-state seeds disagree with the work order"
             )
+        expected_operations, state_operations, operation_mismatch = (
+            compare_operation_seeds(database, operation_parts)
+        )
+        if (
+            operation_mismatch
+            or expected_operations != state_operations
+            or expected_operations
+            != sum(pq.ParquetFile(path).metadata.num_rows for path in operation_parts)
+        ):
+            raise AcquisitionProjectError(
+                "run-state operation seeds disagree with the work order"
+            )
     except AcquisitionProjectError:
         raise
     except (OSError, sqlite3.Error, ValueError, pa.ArrowException) as error:
@@ -197,6 +259,12 @@ def _verify_existing(
     manifest = _load_existing_manifest(paths.run_manifest_path(run_id))
     if manifest != expected_manifest:
         raise AcquisitionProjectError("existing run differs from the validated plan")
+    try:
+        validate_work_order_relations(run_root, manifest)
+    except (OSError, ValueError, sqlite3.Error) as error:
+        raise AcquisitionProjectError(
+            "existing work-order manifest or relation digest is invalid"
+        ) from error
     part = manifest["work_order_parts"][0]
     stored_work_order_root = paths.work_order_root(run_id)
     if (
@@ -230,6 +298,12 @@ def _verify_existing(
         expected_manifest["target_row_count"],
         expected_manifest["executable_count"],
         expected_manifest["skipped_count"],
+        tuple(
+            run_root / descriptor["path"]
+            for descriptor in manifest["work_order_relations"]["resolved_operations"][
+                "parts"
+            ]
+        ),
     )
 
 
@@ -252,7 +326,7 @@ def project_acquisition_run(
             staged_work_order = staged_root / "work_order" / _WORK_ORDER_PART
             projection = load_acquisition_work_order(plan_dir, staged_work_order)
             run_id = _run_id(projection)
-            expected_manifest = _manifest_for(projection, staged_work_order)
+            expected_manifest = _manifest_for(projection)
         except (TargetPlanError, OSError, TypeError, ValueError) as error:
             raise AcquisitionProjectError(
                 f"target plan cannot be projected: {error}"
@@ -273,13 +347,22 @@ def project_acquisition_run(
         staged_database = _staged_path(
             paths, run_id, staged_root, paths.run_state_path(run_id)
         )
-        initialize_run_state(staged_database, _work_order_seeds(staged_work_order))
+        operation_parts = tuple(
+            staged_work_order.parent / part["path"]
+            for part in projection.relation_parts["resolved_operations"]
+        )
+        initialize_run_state(
+            staged_database,
+            _work_order_seeds(staged_work_order),
+            _operation_seeds(operation_parts),
+        )
         _validate_database(
             staged_database,
             staged_work_order,
             projection.target_row_count,
             projection.executable_count,
             projection.skipped_count,
+            operation_parts,
         )
         staged_manifest = _staged_path(
             paths, run_id, staged_root, paths.run_manifest_path(run_id)
