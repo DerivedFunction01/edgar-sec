@@ -58,6 +58,7 @@ class InventoryReviewAdapter(ReviewAdapter):
         artifacts_root: Path | str = "",
         *,
         json: bool = False,
+        no_progress: bool = False,
     ) -> int:
         args = argparse.Namespace(
             fixture=fixture_id,
@@ -65,6 +66,7 @@ class InventoryReviewAdapter(ReviewAdapter):
             limit=limit,
             artifacts_root=str(artifacts_root),
             json=json,
+            no_progress=no_progress,
         )
         fn = _get_cli_dep("cmd_fixture_create", cmd_fixture_create)
         return int(fn(args))
@@ -77,6 +79,7 @@ class InventoryReviewAdapter(ReviewAdapter):
         artifacts_root: Path | str = "",
         *,
         json: bool = False,
+        no_progress: bool = False,
     ) -> int:
         args = argparse.Namespace(
             fixture=fixture_id,
@@ -84,6 +87,7 @@ class InventoryReviewAdapter(ReviewAdapter):
             limit=limit,
             artifacts_root=str(artifacts_root),
             json=json,
+            no_progress=no_progress,
         )
         fn = _get_cli_dep("cmd_fixture_fill", cmd_fixture_fill)
         return int(fn(args))
@@ -99,6 +103,7 @@ class InventoryReviewAdapter(ReviewAdapter):
         capture_id: str | None = None,
         target_id: str | None = None,
         json_output: bool = False,
+        no_progress: bool = False,
     ) -> int:
         if capture_id is not None or target_id is not None:
             raise ValueError(
@@ -112,6 +117,7 @@ class InventoryReviewAdapter(ReviewAdapter):
             accession=list(accessions) if accessions else None,
             artifacts_root=str(artifacts_root),
             json=json_output,
+            no_progress=no_progress,
         )
         return cmd_review_artifacts(args)
 

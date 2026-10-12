@@ -279,17 +279,31 @@ def test_run_commits_every_chunk_with_one_broker(tmp_path: Path, monkeypatch) ->
     fake = _serving_http(items)
     paths = inventory_run_paths(tmp_path, "run-1")
     real_managed = coordinator_module.managed_broker
+    real_client = coordinator_module.IndexPageBrokerClient
     calls = {"count": 0}
+    clients = []
 
     def counting_managed(*args, **kwargs):  # noqa: ANN001, ANN202
         calls["count"] += 1
         return real_managed(*args, **kwargs)
 
+    class TrackedClient(real_client):
+        def __init__(self, socket_path):
+            super().__init__(socket_path)
+            self.closed = False
+            clients.append(self)
+
+        def close(self):
+            self.closed = True
+            super().close()
+
     monkeypatch.setattr(coordinator_module, "managed_broker", counting_managed)
+    monkeypatch.setattr(coordinator_module, "IndexPageBrokerClient", TrackedClient)
     summary = run_missing_accessions(
         items, IDENTITY, paths, http_client=fake, workers=1
     )
     assert calls["count"] == 1
+    assert len(clients) == 1 and clients[0].closed
     assert len(summary.chunks) == 2
     assert summary.committed_count == 2
     assert summary.refusal_count == 0

@@ -74,6 +74,9 @@ def _attach_review_commands(
         help="artifacts root override",
     )
     gen.add_argument("--json", action="store_true", help="emit JSON output")
+    gen.add_argument(
+        "--no-progress", action="store_true", help="disable the terminal progress bar"
+    )
     gen.set_defaults(func=lambda args: _cmd_generate(args, adapter))
 
     cmp_cmd = commands.add_parser(
@@ -125,6 +128,9 @@ def _attach_fixture_commands(
         help="artifacts root override",
     )
     create_cmd.add_argument("--json", action="store_true", help="emit JSON output")
+    create_cmd.add_argument(
+        "--no-progress", action="store_true", help="disable the terminal progress bar"
+    )
     create_cmd.set_defaults(func=lambda args: _cmd_create_fixture(args, adapter))
 
     fill_cmd = commands.add_parser("fill", help="extend an existing fixture")
@@ -140,6 +146,9 @@ def _attach_fixture_commands(
         help="artifacts root override",
     )
     fill_cmd.add_argument("--json", action="store_true", help="emit JSON output")
+    fill_cmd.add_argument(
+        "--no-progress", action="store_true", help="disable the terminal progress bar"
+    )
     fill_cmd.set_defaults(func=lambda args: _cmd_fill_fixture(args, adapter))
 
     list_cmd = commands.add_parser("list", help="list discovered fixtures")
@@ -169,6 +178,7 @@ def _cmd_generate(args: argparse.Namespace, adapter: ReviewArtifactAdapter) -> i
         capture_id=getattr(args, "capture_id", None),
         target_id=getattr(args, "target_id", None),
         json_output=args.json,
+        no_progress=getattr(args, "no_progress", False),
     )
     if not args.json:
         print(f"Review artifacts written to: {output_dir}")
@@ -218,6 +228,7 @@ def _cmd_create_fixture(args: argparse.Namespace, adapter: ReviewAdapter) -> int
         limit=args.limit,
         artifacts_root=args.artifacts_root,
         json=getattr(args, "json", False),
+        no_progress=getattr(args, "no_progress", False),
     )
 
 
@@ -228,6 +239,7 @@ def _cmd_fill_fixture(args: argparse.Namespace, adapter: ReviewAdapter) -> int:
         limit=args.limit,
         artifacts_root=args.artifacts_root,
         json=getattr(args, "json", False),
+        no_progress=getattr(args, "no_progress", False),
     )
 
 

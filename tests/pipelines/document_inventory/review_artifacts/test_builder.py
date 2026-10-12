@@ -103,12 +103,23 @@ def test_parallel_workers_keep_manifest_order_and_case_isolation(
     tmp_path: Path, captured_multi_fixture
 ) -> None:
     fixture, accessions = captured_multi_fixture
-    result = build_review_artifacts(fixture, tmp_path / "review-parallel", workers=2)
+    events = []
+    result = build_review_artifacts(
+        fixture,
+        tmp_path / "review-parallel",
+        workers=2,
+        progress_callback=events.append,
+    )
     lines = (tmp_path / "review-parallel" / "manifest.jsonl").read_text().splitlines()
     records = [json.loads(line) for line in lines]
     assert [record["accession"] for record in records] == list(map(str, accessions))
     assert [record["status"] for record in records] == ["parsed", "unrecognized"]
     assert result.summary.parsed == result.summary.unrecognized == 1
+    assert events == [
+        {"type": "start", "total": 2},
+        {"type": "outcome", "status": "ok"},
+        {"type": "outcome", "status": "failed"},
+    ]
     key_digest = hashlib.sha256(
         f"{records[1]['request_url']}\n{records[1]['response_sha256']}".encode("utf-8")
     ).hexdigest()[:16]
@@ -119,3 +130,25 @@ def test_parallel_workers_keep_manifest_order_and_case_isolation(
     assert (second_dir / "source.inert.html").is_file()
     assert (second_dir / "observations.json").is_file()
     assert not (second_dir / "entries.csv").exists()
+
+
+def test_progress_total_honors_accession_limit(
+    tmp_path: Path, captured_multi_fixture
+) -> None:
+    fixture, accessions = captured_multi_fixture
+    events = []
+
+    result = build_review_artifacts(
+        fixture,
+        tmp_path / "review-limited",
+        accessions=[accessions[1]],
+        limit=1,
+        workers=1,
+        progress_callback=events.append,
+    )
+
+    assert result.summary.total == 1
+    assert events == [
+        {"type": "start", "total": 1},
+        {"type": "outcome", "status": "failed"},
+    ]

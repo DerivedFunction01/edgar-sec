@@ -59,6 +59,9 @@ class IndexPageBrokerClient:
         self._socket_path = Path(state["socket_path"])  # type: ignore[arg-type]
         self._client = SecBrokerClient(self._socket_path)
 
+    def close(self) -> None:
+        self._client.close()
+
     def fetch_index(
         self,
         accession: AccessionNumber,

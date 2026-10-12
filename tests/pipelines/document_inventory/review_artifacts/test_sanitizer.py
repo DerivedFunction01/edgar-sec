@@ -8,7 +8,8 @@ from edgar_sec.pipelines.document_inventory.review_artifacts.sanitizer import (
 
 def test_preview_preserves_tables_and_removes_active_content() -> None:
     source = b"""<html><head><title>private title</title></head><body>
-      <p onclick="run()">Visible <a href="javascript:alert(1)">document</a></p>
+      <p onclick="run()">Visible <a href="javascript:alert(1)">document</a>
+      <a href="/Archives/edgar/data/1/000000000124000001/exhibit.txt" onclick="run()">exhibit.txt</a></p>
       <table><thead><tr><th>Document</th></tr></thead><tbody>
       <tr><td>exhibit.txt</td></tr></tbody></table>
       <script>script-secret</script><style>style-secret</style>
@@ -22,9 +23,13 @@ def test_preview_preserves_tables_and_removes_active_content() -> None:
     assert "Visible" in rendered and "document" in rendered
     assert "Document" in rendered and "exhibit.txt" in rendered
     assert "<table>" in rendered and "<th>" in rendered and "<tr>" in rendered
+    assert '<a href="javascript:alert(1)">document</a>' in rendered
+    assert (
+        '<a href="/Archives/edgar/data/1/000000000124000001/exhibit.txt">exhibit.txt</a>'
+        in rendered
+    )
     for unsafe in (
         "onclick",
-        "javascript:",
         "https://example.test",
         "script-secret",
         "style-secret",
@@ -42,7 +47,15 @@ def test_preview_preserves_tables_and_removes_active_content() -> None:
     assert not tags & {"script", "style", "iframe", "svg", "form", "img", "input"}
 
 
-def test_malformed_input_is_rebuilt_without_attributes() -> None:
+def test_anchor_href_is_escaped_in_output() -> None:
+    rendered = render_inert(b'<a href="/doc?a=1&amp;b=&quot;quoted&quot;">document</a>')
+    assert '<a href="/doc?a=1&amp;b=&quot;quoted&quot;">document</a>' in rendered
+    without_href = render_inert(b'<a name="section" onclick="run()">section</a>')
+    assert "<a>section</a>" in without_href
+    assert "name=" not in without_href and "onclick=" not in without_href
+
+
+def test_malformed_input_is_rebuilt_without_unsafe_attributes() -> None:
     rendered = render_inert(b"<TABLE onclick=x><TR><TD>text</TABLE><SCRIPT>bad")
     assert "<table>" in rendered and "<td>text" in rendered
     assert "onclick" not in rendered and "bad" not in rendered

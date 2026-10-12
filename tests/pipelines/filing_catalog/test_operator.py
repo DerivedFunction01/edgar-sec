@@ -333,6 +333,24 @@ def test_a_draft_name_that_is_not_a_safe_identifier_is_refused(
     assert operator._draft_path(paths, "Quarterly 8-K").name == "quarterly-8-k.json"
 
 
+def test_writing_the_same_draft_twice_keeps_both(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Any
+) -> None:
+    """Blank means a fresh copy: a repeat keeps the first draft and appends a
+    counter, so the operator can draft different policies for one catalog.
+    """
+    paths = _policy_paths(monkeypatch, tmp_path)
+    monkeypatch.setattr(operator, "auto_policy", _stub_auto_policy)
+    monkeypatch.setattr(operator, "prompt_text", lambda prompt, default: "")
+    monkeypatch.setattr(operator, "cmd_plan", lambda args: pytest.fail("planned"))
+
+    operator._action_plan_policy()
+    operator._action_plan_policy()
+
+    written = sorted(p.name for p in paths.policies_root.glob("*.json"))
+    assert written == ["corpus_-1.json", "corpus_.json"]
+
+
 # --- discovery -------------------------------------------------------------
 
 

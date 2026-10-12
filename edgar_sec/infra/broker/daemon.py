@@ -46,6 +46,7 @@ def managed_broker(
         time.sleep(0.05)
 
     if not ready:
+        client.close()
         server.stop()
         thread.join(timeout=2.0)
         raise RuntimeError(
@@ -55,6 +56,7 @@ def managed_broker(
     try:
         yield client
     finally:
+        client.close()
         server.stop()
         thread.join(timeout=3.0)
 

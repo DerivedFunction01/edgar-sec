@@ -34,6 +34,7 @@ from edgar_sec.pipelines.filing_catalog.discovery import (
 )
 from edgar_sec.pipelines.filing_catalog.paths import (
     FilingCatalogPaths,
+    resolve_draft_path,
     resolve_filing_catalog_paths,
     validate_safe_id,
 )
@@ -230,11 +231,14 @@ def _draft_path(paths: FilingCatalogPaths, name: str) -> Path:
 
 def _write_policy_draft(paths: FilingCatalogPaths, catalog: str) -> Path:
     """Write an all-forms draft for ``catalog`` and return its path.
+
     Derived from the catalog's own forms so an operator edits rather than authors.
-    Dates and era bands stay unset: both resolve at plan time.
+    Dates and era bands stay unset: both resolve at plan time. The destination is
+    append-only (see ``resolve_draft_path``), so a repeat never overwrites the first.
     """
     policy = auto_policy(catalog, paths)
-    destination = _draft_path(paths, policy.corpus_id)
+    stem = _draft_path(paths, policy.corpus_id).stem
+    destination = resolve_draft_path(paths.policies_root, stem)
     policy.write(destination)
     print(f"wrote policy draft {destination}")
     print(f"  forms        {len(policy.forms)}")

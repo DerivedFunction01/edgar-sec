@@ -58,6 +58,7 @@ class AcquisitionReviewAdapter(ReviewArtifactAdapter):
         capture_id: str | None = None,
         target_id: str | None = None,
         json_output: bool = False,
+        no_progress: bool = False,
     ) -> int:
         args = argparse.Namespace(
             fixture=fixture_id,
@@ -69,6 +70,7 @@ class AcquisitionReviewAdapter(ReviewArtifactAdapter):
             target_id=target_id,
             artifacts_root=str(artifacts_root),
             json=json_output,
+            no_progress=no_progress,
         )
         command = _get_cli_dep("cmd_review_artifacts", cmd_review_artifacts)
         return int(command(args))

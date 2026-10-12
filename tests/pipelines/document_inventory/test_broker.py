@@ -79,3 +79,20 @@ def test_broker_client_pickle_reconstructs_socket(tmp_path: Path) -> None:
 
     assert restored.socket_path == tmp_path / "b.sock"
     assert restored._client.socket_path == tmp_path / "b.sock"
+
+
+def test_broker_client_close_releases_local_socket() -> None:
+    class Socket:
+        closed = False
+
+        def close(self) -> None:
+            self.closed = True
+
+    client = IndexPageBrokerClient("unused.sock")
+    connection = Socket()
+    client._client._local.sock = connection
+
+    client.close()
+
+    assert connection.closed
+    assert client._client._local.sock is None

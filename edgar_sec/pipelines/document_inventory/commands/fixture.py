@@ -8,6 +8,9 @@ import sys
 from typing import Any
 from uuid import uuid4
 
+from tqdm import tqdm
+
+from edgar_sec.foundation.runtime.progress import make_tqdm_callback
 from edgar_sec.foundation.runtime.render import (
     Grid,
     KeyValueRow,
@@ -50,15 +53,37 @@ def _capture(args: argparse.Namespace, *, create: bool) -> int:
 
     socket_id = f"fixture-{uuid4().hex}"
     broker_path = InventoryPaths(root).broker_socket_path(socket_id)
-
-    with managed_broker(broker_path) as broker:
-        capture = capture_index_pages(
-            cohort,
-            fixture_id=args.fixture,
-            paths=fixture_paths,
-            broker=broker,
-            contribution=contribution,
+    show_progress = (
+        not getattr(args, "json", False)
+        and not getattr(args, "no_progress", False)
+        and sys.stderr.isatty()
+        and bool(cohort.work_items)
+    )
+    progress_bar = (
+        tqdm(
+            total=len(cohort.work_items),
+            desc="Fixture",
+            unit="accession",
+            dynamic_ncols=True,
         )
+        if show_progress
+        else None
+    )
+    try:
+        with managed_broker(broker_path) as broker:
+            capture = capture_index_pages(
+                cohort,
+                fixture_id=args.fixture,
+                paths=fixture_paths,
+                broker=broker,
+                contribution=contribution,
+                progress_callback=(
+                    make_tqdm_callback(progress_bar) if progress_bar else None
+                ),
+            )
+    finally:
+        if progress_bar is not None:
+            progress_bar.close()
 
     result = {
         "fixture_id": args.fixture,

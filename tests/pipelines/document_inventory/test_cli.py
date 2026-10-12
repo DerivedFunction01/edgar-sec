@@ -9,6 +9,7 @@ import pytest
 
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.pipelines.document_inventory import cli
+from edgar_sec.pipelines.document_inventory.commands import fixture as fixture_command
 from edgar_sec.pipelines.document_inventory.fixture_store.capture import (
     create_index_fixture,
 )
@@ -40,6 +41,18 @@ def test_parser_exposes_fixture_and_review_commands() -> None:
     assert args.command == "fixture"
     assert args.fixture_command == "create"
     assert args.limit == 2
+    assert args.no_progress is False
+    assert parser.parse_args(
+        [
+            "fixture",
+            "fill",
+            "--fixture",
+            "f",
+            "--catalog-plan",
+            "p",
+            "--no-progress",
+        ]
+    ).no_progress
     assert (
         parser.parse_args(
             ["review", "generate", "--fixture", "f", "--output", "review"]
@@ -177,8 +190,10 @@ def test_create_uses_shared_capture_command_and_json(
         lambda paths, fixture_id: created.append((paths, fixture_id)),
     )
 
-    def capture(_cohort, *, fixture_id, paths, broker, contribution):
-        captured.append((fixture_id, paths, broker, contribution))
+    def capture(
+        _cohort, *, fixture_id, paths, broker, contribution, progress_callback=None
+    ):
+        captured.append((fixture_id, paths, broker, contribution, progress_callback))
         return IndexCaptureResult(1, 0, 1, 1, 1, ())
 
     monkeypatch.setattr(
@@ -201,9 +216,107 @@ def test_create_uses_shared_capture_command_and_json(
     assert code == 0
     assert created == [(resolve_index_fixture_paths(tmp_path, "f"), "f")]
     assert captured[0][2] is broker
+    assert captured[0][4] is None
     payload = json.loads(capsys.readouterr().out)
     assert payload["requested_accessions"] == 1
     assert payload["responses_added"] == 1
+
+
+@pytest.mark.parametrize(
+    ("tty", "json_output", "no_progress", "expected"),
+    [
+        (True, False, False, True),
+        (True, False, True, False),
+        (True, True, False, False),
+        (False, False, False, False),
+    ],
+)
+def test_fixture_progress_is_tty_only_and_suppression_is_honored(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    tty: bool,
+    json_output: bool,
+    no_progress: bool,
+    expected: bool,
+) -> None:
+    bars = []
+
+    class Bar:
+        def __init__(self, **kwargs) -> None:
+            self.kwargs = kwargs
+            self.updated = 0
+            self.closed = False
+            bars.append(self)
+
+        def update(self, count: int) -> None:
+            self.updated += count
+
+        def set_postfix(self, _values: dict) -> None:
+            return None
+
+        def close(self) -> None:
+            self.closed = True
+
+    monkeypatch.setattr(fixture_command, "tqdm", Bar)
+    monkeypatch.setattr(
+        fixture_command,
+        "sys",
+        SimpleNamespace(stderr=SimpleNamespace(isatty=lambda: tty)),
+    )
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_inventory.commands.fixture.cohort_for_plan",
+        lambda *_args: (
+            {"plan_id": "p", "catalog_id": "c", "scope": "10-K"},
+            _cohort(),
+            _contribution(),
+        ),
+    )
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_inventory.commands.fixture.create_index_fixture",
+        lambda *_args, **_kwargs: None,
+    )
+
+    @contextmanager
+    def managed(_socket: Path):
+        yield object()
+
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_inventory.commands.fixture.managed_broker",
+        managed,
+    )
+
+    def capture(_cohort, *, progress_callback=None, **_kwargs):
+        if progress_callback is not None:
+            progress_callback({"status": "ok"})
+        return IndexCaptureResult(1, 0, 1, 1, 1, ())
+
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_inventory.commands.fixture.capture_index_pages",
+        capture,
+    )
+    argv = [
+        "fixture",
+        "create",
+        "--fixture",
+        "f",
+        "--catalog-plan",
+        "p",
+        "--artifacts",
+        str(tmp_path),
+    ]
+    if json_output:
+        argv.append("--json")
+    if no_progress:
+        argv.append("--no-progress")
+
+    assert cli.main(argv) == 0
+    assert bool(bars) is expected
+    if bars:
+        assert bars[0].kwargs["total"] == 1
+        assert bars[0].updated == 1
+        assert bars[0].closed
+    capsys.readouterr()
 
 
 def test_capture_failure_returns_nonzero(

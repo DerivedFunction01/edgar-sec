@@ -23,6 +23,7 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 - Durable publication pins the branch tip. `base_snapshot_id` selects the delta's lineage base and the S5/S4 identity; when omitted, the tip of the selected branch (default `main`) is used. An explicit base must match the branch tip, so historical bases require a branch created at that tip. `--expected-branch-tip` pins the branch pointer expected at commit; a concurrent move refuses publication without moving the pointer, and a retry re-anti-joins against the new parent.
 - Persisted Run cancellation is recorded before the command returns; incomplete chunks,
   retryable outcomes, parser refusals, and cancellation block independent publication.
+- **Progress output**: Fixture capture and parser review report per-item TTY progress; JSON and non-TTY output remain clean.
 
 ## Command surface
 
@@ -51,6 +52,12 @@ python run.py inventory status --run-id 2024-01-15T120000Z
 
 # Run fetch and parse with multiple workers
 python run.py inventory run --run-id 2024-01-15T120000Z --workers 8
+
+# Create a fixture without the interactive progress bar
+python run.py inventory fixture create --fixture my-fixture --catalog-plan published-plan --no-progress
+
+# Generate parser review artifacts without the interactive progress bar
+python run.py inventory review generate --fixture my-fixture --output ./review-run --no-progress
 
 # Export a projected run, execute the assigned bundle on another machine, then import it
 python run.py inventory distrib commands --work-id run-2024-01-15

@@ -24,9 +24,18 @@ class RecordingAdapter:
         limit=None,
         artifacts_root="",
         json=False,
+        no_progress=False,
     ):
         self.calls.append(
-            ("create", {"id": fixture_id, "plan": catalog_plan, "limit": limit})
+            (
+                "create",
+                {
+                    "id": fixture_id,
+                    "plan": catalog_plan,
+                    "limit": limit,
+                    "no_progress": no_progress,
+                },
+            )
         )
         return 0
 
@@ -37,9 +46,18 @@ class RecordingAdapter:
         limit=None,
         artifacts_root="",
         json=False,
+        no_progress=False,
     ):
         self.calls.append(
-            ("fill", {"id": fixture_id, "plan": catalog_plan, "limit": limit})
+            (
+                "fill",
+                {
+                    "id": fixture_id,
+                    "plan": catalog_plan,
+                    "limit": limit,
+                    "no_progress": no_progress,
+                },
+            )
         )
         return 0
 
@@ -51,8 +69,17 @@ class RecordingAdapter:
         workers=None,
         accessions=None,
         artifacts_root="",
+        capture_id=None,
+        target_id=None,
+        json_output=False,
+        no_progress=False,
     ):
-        self.calls.append(("generate", {"id": fixture_id, "out": output_dir}))
+        self.calls.append(
+            (
+                "generate",
+                {"id": fixture_id, "out": output_dir, "no_progress": no_progress},
+            )
+        )
         return 0
 
     def compare_case(
@@ -68,18 +95,36 @@ def test_cli_dispatches_generate_and_fixture_commands(tmp_path: Path) -> None:
     attach_review_subparsers(subs, adapter)
 
     args = parser.parse_args(
-        ["review", "generate", "--fixture", "f1", "--output", str(tmp_path / "out")]
+        [
+            "review",
+            "generate",
+            "--fixture",
+            "f1",
+            "--output",
+            str(tmp_path / "out"),
+            "--no-progress",
+        ]
     )
     args.func(args)
     assert adapter.calls[-1][0] == "generate"
     assert adapter.calls[-1][1]["id"] == "f1"
+    assert adapter.calls[-1][1]["no_progress"] is True
 
     args = parser.parse_args(
-        ["fixture", "create", "--fixture", "f2", "--catalog-plan", "p1"]
+        [
+            "fixture",
+            "create",
+            "--fixture",
+            "f2",
+            "--catalog-plan",
+            "p1",
+            "--no-progress",
+        ]
     )
     args.func(args)
     assert adapter.calls[-1][0] == "create"
     assert adapter.calls[-1][1]["id"] == "f2"
+    assert adapter.calls[-1][1]["no_progress"] is True
 
     args = parser.parse_args(["fixture", "list"])
     args.func(args)

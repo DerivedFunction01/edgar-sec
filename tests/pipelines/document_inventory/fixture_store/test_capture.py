@@ -24,6 +24,18 @@ def test_capture_writes_response_case_and_membership(
     paths = fixture_paths(tmp_path / "fixture")
     create_index_fixture(paths, fixture_id="f")
     broker = broker_for({url: b"<html>page</html>"})
+    committed_member_counts = []
+
+    def record_progress(event: dict[str, object]) -> None:
+        with sqlite3.connect(paths.storage_path) as connection:
+            committed_member_counts.append(
+                (
+                    event["status"],
+                    connection.execute(
+                        "SELECT COUNT(*) FROM cohort_members"
+                    ).fetchone()[0],
+                )
+            )
 
     result = capture_index_pages(
         cohort,
@@ -31,11 +43,13 @@ def test_capture_writes_response_case_and_membership(
         paths=paths,
         broker=broker.broker,
         contribution=contribution(cohort),
+        progress_callback=record_progress,
     )
 
     assert result.responses_added == result.cases_created == result.members_created == 1
     assert result.responses_processed == 1
     assert not result.failures
+    assert committed_member_counts == [("ok", 1)]
     assert broker.session.calls == [url]
     status = list_fixture(paths)
     assert (status.page_count, status.accession_count, status.membership_count) == (
@@ -64,6 +78,7 @@ def test_fill_reuses_page_and_adds_overlapping_provenance(
     )
     overlapping = make_cohort(accession, "222222222", "source-b", url)
     unused = broker_for({})
+    events = []
 
     result = capture_index_pages(
         overlapping,
@@ -71,9 +86,11 @@ def test_fill_reuses_page_and_adds_overlapping_provenance(
         paths=paths,
         broker=unused.broker,
         contribution=contribution(overlapping, "plan-b"),
+        progress_callback=events.append,
     )
 
     assert unused.session.calls == []
+    assert events == [{"type": "outcome", "status": "ok"}]
     assert result.responses_reused == 1
     assert result.cases_created == result.members_created == 1
     with sqlite3.connect(paths.storage_path) as connection:
@@ -119,14 +136,30 @@ def test_partial_capture_is_durable_and_retryable(
     paths = fixture_paths(tmp_path / "fixture")
     create_index_fixture(paths, fixture_id="f")
     partial = broker_for({urls[0]: b"page"})
+    committed_member_counts = []
+
+    def record_progress(event: dict[str, object]) -> None:
+        with sqlite3.connect(paths.storage_path) as connection:
+            committed_member_counts.append(
+                (
+                    event["status"],
+                    connection.execute(
+                        "SELECT COUNT(*) FROM cohort_members"
+                    ).fetchone()[0],
+                )
+            )
+
     first = capture_index_pages(
         cohort,
         fixture_id="f",
         paths=paths,
         broker=partial.broker,
         contribution=contribution(cohort),
+        progress_callback=record_progress,
     )
     assert len(first.failures) == 1
+    assert sorted(status for status, _ in committed_member_counts) == ["failed", "ok"]
+    assert sorted(count for _, count in committed_member_counts) == [1, 2]
     assert list_fixture(paths).state == "partial"
     retry = broker_for({urls[1]: b"recovered"})
     second = capture_index_pages(
@@ -151,13 +184,16 @@ def test_zero_success_fixture_remains_listable_and_partial(
     cohort = make_cohort(accession, "123456789", "source", url)
     paths = fixture_paths(tmp_path / "fixture")
     create_index_fixture(paths, fixture_id="f")
+    events = []
     result = capture_index_pages(
         cohort,
         fixture_id="f",
         paths=paths,
         broker=broker_for({}).broker,
         contribution=contribution(cohort),
+        progress_callback=events.append,
     )
     assert result.responses_added == result.responses_reused == 0
+    assert events == [{"type": "outcome", "status": "failed"}]
     assert list_fixture(paths).state == "partial"
     assert list_fixture(paths).membership_count == 1

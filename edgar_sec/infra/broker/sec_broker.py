@@ -400,7 +400,7 @@ class SecBroker:
             while not self._stop.is_set():
                 try:
                     request_raw = _recv_frame(conn)
-                except BrokerError:
+                except (BrokerError, TimeoutError):
                     return
                 request = _json_loads(request_raw)
                 request_id = request.get("request_id")

@@ -61,9 +61,9 @@ case file is written atomically.
 `source.inert.html` is rebuilt with the existing selectolax-backed
 `engine.document.html.tree.parse_html`; no new HTML dependency is needed. Preserve
 table headers, rows, cells, and visible filing-page text with an allowlist; discard
-active-content and embedded-resource subtrees, and emit no source attributes. Rendered
-text is escaped; links are plain text. Add only renderer-generated document structure
-and a restrictive CSP.
+active-content and embedded-resource subtrees. Preserve source anchor `href` values,
+escaping them for HTML attributes; discard other source attributes. Rendered text is
+escaped. Add only renderer-generated document structure and a restrictive CSP.
 Regex tag/attribute stripping is not an acceptable sanitizer: malformed markup and
 attribute syntax make it an unreliable security boundary. Review operations read only
 the local fixture store and make zero HTTP requests.

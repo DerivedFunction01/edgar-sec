@@ -37,6 +37,12 @@ def make_tqdm_callback(
         metrics = event.get("metrics") or {}
         event_type = event.get("type", "")
 
+        if event_type == "start":
+            total = event.get("total")
+            if total is not None:
+                pbar.total = int(total)
+                pbar.refresh()
+            return
         if event_type == "worker_failed":
             state["fail"] += int(event.get("count", 1))
             msg = f"worker failed: {event.get('error', 'unknown error')}"

@@ -98,7 +98,16 @@ def _render_node(node: FastHtmlNode, parts: list[str]) -> None:
     tag = node.tag
     if tag in _DROP_SUBTREES or tag in {"head", "title"}:
         return
-    if tag in {"html", "body", "a"}:
+    if tag == "a":
+        href = node.raw_node.attrs.get("href")
+        parts.append("<a")
+        if href is not None:
+            parts.append(f' href="{html.escape(str(href), quote=True)}"')
+        parts.append(">")
+        _children(node, parts)
+        parts.append("</a>")
+        return
+    if tag in {"html", "body"}:
         _children(node, parts)
         return
     if tag not in _ALLOWED_TAGS:

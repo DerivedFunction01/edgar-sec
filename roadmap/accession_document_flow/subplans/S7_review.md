@@ -35,12 +35,12 @@ artifacts. Do not build the interactive wizard here.
 - **Structural sanitizer**: Parse with the existing selectolax-backed
   `engine.document.html.tree.parse_html`, then rebuild with an allowlist that preserves
   table headers, rows, cells, and visible filing-page text. Drop active-content and
-  embedded-resource subtrees, unwrap other unknown tags, and emit no source attributes.
-  Escape all text nodes.
+  embedded-resource subtrees, unwrap other unknown tags, and preserve anchor `href`
+  values while dropping other source attributes. Escape text and href attribute values.
   Do not use regex stripping: it is not a safe HTML parser for malformed or adversarial
   source markup.
-- **Inert links**: Source anchors are rendered as plain text; source URLs and all other
-  source attributes are omitted. Only renderer-generated markup is emitted.
+- **Links**: Source anchors and href values remain visible in the preview; href values
+  are HTML-escaped but not URL-validated. Other source attributes are omitted.
 - **Defense in depth**: Previews include a renderer-generated CSP with `default-src
   'none'`, `img-src 'none'`, `style-src 'none'`, `frame-src 'none'`, `base-uri 'none'`,
   `form-action 'none'`, and `sandbox`. Sanitization is the primary guarantee; CSP is
@@ -146,10 +146,11 @@ inspection remain blocked on those artifacts.
 
 - Deterministic manifests: identical fixture + parser version reproduces byte-identical
   review artifacts.
-- Safe source rendering: hostile and malformed markup cannot preserve active tags,
-  source attributes, or URL-bearing elements; text is escaped, and the generated CSP is
-  present. Tests cover event handlers, obfuscated URL schemes, `srcdoc`, SVG/MathML,
-  raw-text elements, and external-resource tags.
+- Sanitized source rendering: hostile and malformed markup cannot preserve active or
+  embedded-resource tags or non-`href` source attributes. Anchor href values are retained
+  without URL validation and escaped for HTML; text is escaped, and the generated CSP is
+  present. Tests cover event handlers, `srcdoc`, SVG/MathML, raw-text elements, and
+  external-resource tags.
 - Network instrumentation confirms exactly zero HTTP requests during all review runs.
 - If implemented, parser diffs detect row additions, deletions, field modifications,
   and diagnostic shifts across parser versions for the same fixture response.
@@ -172,5 +173,5 @@ S7a fixture create/fill/list works without the originating catalog plan. S7b
 `inventory review generate` serves source-page parse output from pinned fixtures;
 generic `review compare` exists, while semantic parser comparison and later
 `inspect`/plan review follow their source artifacts.
-Source HTML is structurally parsed and rebuilt as inert previews without source
-attributes, active anchors, or remote loads; sanitizer tests cover hostile markup.
+Source HTML is structurally parsed and rebuilt as inert previews with href-only anchors;
+sanitizer tests cover hostile markup and escaped attribute values.

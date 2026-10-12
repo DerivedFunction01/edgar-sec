@@ -24,3 +24,21 @@ def test_tqdm_callback_accepts_aggregated_outcome_counts() -> None:
 
     assert bar.count == 5
     assert bar.postfix == {"ok": 3, "fail": 2, "hist": 0}
+
+
+def test_tqdm_callback_accepts_a_total_start_event() -> None:
+    class _Bar(_ProgressBar):
+        total = None
+        refreshed = False
+
+        def refresh(self) -> None:
+            self.refreshed = True
+
+    bar = _Bar()
+    callback = make_tqdm_callback(bar)
+
+    callback({"type": "start", "total": 23})
+
+    assert bar.total == 23
+    assert bar.refreshed
+    assert bar.count == 0

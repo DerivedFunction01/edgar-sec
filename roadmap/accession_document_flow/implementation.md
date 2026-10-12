@@ -585,9 +585,10 @@ comparison boundary, without restoring the retired pipeline.
   digest and parser version are included in `manifest.jsonl`.
 - **Sanitized inert previews**: `source.inert.html` uses the existing selectolax-backed
   `engine.document.html.tree.parse_html` and a strict structural allowlist rebuild.
-  It drops active/resource subtrees, emits no source attributes, escapes text, and
-  renders links as plain text. Regex stripping is not an HTML security boundary. A
-  renderer-generated restrictive CSP is defense in depth; no new dependency is needed.
+  It drops active/resource subtrees, preserves anchor href values without URL validation,
+  drops other source attributes, and escapes text and href values. Regex stripping is not
+  an HTML security boundary. A renderer-generated restrictive CSP is defense in depth;
+  no new dependency is needed.
 - **Index review comparison** compares two parser runs by accession/table/row
   identity and reports added, removed, or changed type, sequence, description,
   filename, href, size, bundle metadata, and diagnostics. The raw page remains the

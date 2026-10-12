@@ -1,6 +1,4 @@
 """Directory layout for the filing-catalog pipeline.
-The ``current`` pointer lives inside ``snapshots/``; the DAG catalog identifies
-published catalog snapshots separately from policy feature snapshots.
 """
 
 from __future__ import annotations
@@ -79,6 +77,21 @@ def plan_target_file_path(form: str, file_name: str) -> str:
 
 def plan_target_part_path(form: str, index: int) -> str:
     return plan_target_file_path(form, target_part_name(index))
+
+
+def resolve_draft_path(policies_root: Path, stem: str, suffix: str = ".json") -> Path:
+    """Return a unique path for a policy draft under ``policies_root``.
+
+    The first draft keeps its bare name; a repeat appends a counter, so writing
+    the same policy twice never overwrites the first.
+    """
+    safe = validate_safe_id(stem, label="draft stem")
+    candidate = policies_root / f"{safe}{suffix}"
+    counter = 1
+    while candidate.exists():
+        candidate = policies_root / f"{safe}-{counter}{suffix}"
+        counter += 1
+    return candidate
 
 
 @dataclass(frozen=True, slots=True)
@@ -172,6 +185,7 @@ __all__ = [
     "form_partition_directory",
     "plan_target_file_path",
     "plan_target_part_path",
+    "resolve_draft_path",
     "resolve_filing_catalog_paths",
     "validate_safe_id",
     "target_part_name",

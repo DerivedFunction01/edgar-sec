@@ -23,6 +23,7 @@ from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.index_pages.parser import PARSER_FINGERPRINT, parse_html_index
 from edgar_sec.foundation.hashing import file_sha256, sha256_bytes, sha256_text
 from edgar_sec.foundation.runtime.memory import reclaim
+from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json, atomic_write_text
@@ -292,6 +293,12 @@ def _work_cases(
         yield case
 
 
+def _count_work_cases(reader, requested: set[str] | None, limit: int | None) -> int:
+    if requested is None and limit is None:
+        return reader.count_cases()
+    return sum(1 for _ in _work_cases(reader, requested, limit))
+
+
 def build_review_artifacts(
     fixture: FixturePaths,
     output: str | os.PathLike[str],
@@ -299,6 +306,7 @@ def build_review_artifacts(
     accessions: Iterable[str | AccessionNumber] | None = None,
     limit: int | None = None,
     workers: int | None = None,
+    progress_callback: ProgressCallback = None,
 ) -> ReviewRunResult:
     if limit is not None and limit < 1:
         raise ValueError("limit must be positive")
@@ -345,6 +353,14 @@ def build_review_artifacts(
         with open_index_fixture(fixture) as reader:
             fixture_id = reader.fixture_id or fixture.root.name
             worker_count = min(worker_count, max(1, reader.count_cases()))
+            if progress_callback is not None:
+                emit_progress(
+                    progress_callback,
+                    {
+                        "type": "start",
+                        "total": _count_work_cases(reader, requested, limit),
+                    },
+                )
             if worker_count > 1:
                 executor = ProcessPoolExecutor(
                     max_workers=worker_count,
@@ -356,6 +372,13 @@ def build_review_artifacts(
                     canonical_json(_manifest_record(record, review_id, paths)) + "\n"
                 )
                 _summary_record(record.status, counts, record.entry_count)
+                emit_progress(
+                    progress_callback,
+                    {
+                        "type": "outcome",
+                        "status": "ok" if record.status == "parsed" else "failed",
+                    },
+                )
                 if counts["total"] % _RECLAIM_INTERVAL == 0:
                     reclaim()
 

@@ -30,21 +30,23 @@ def test_adapter_create_and_fill(monkeypatch) -> None:
     import edgar_sec.pipelines.document_inventory.cli as inv_cli
 
     adapter = InventoryReviewAdapter()
-    calls: list[str] = []
+    calls = []
     monkeypatch.setattr(
         inv_cli,
         "cmd_fixture_create",
-        lambda args: calls.append("create") or 0,
+        lambda args: calls.append(("create", args)) or 0,
     )
     monkeypatch.setattr(
         inv_cli,
         "cmd_fixture_fill",
-        lambda args: calls.append("fill") or 0,
+        lambda args: calls.append(("fill", args)) or 0,
     )
 
-    assert adapter.create_fixture("f1", "p1") == 0
+    assert adapter.create_fixture("f1", "p1", no_progress=True) == 0
     assert adapter.fill_fixture("f1", "p1") == 0
-    assert calls == ["create", "fill"]
+    assert [call[0] for call in calls] == ["create", "fill"]
+    assert calls[0][1].no_progress
+    assert not calls[1][1].no_progress
 
 
 def test_adapter_build_review_artifacts(tmp_path: Path, monkeypatch) -> None:
@@ -54,12 +56,15 @@ def test_adapter_build_review_artifacts(tmp_path: Path, monkeypatch) -> None:
         "edgar_sec.pipelines.document_inventory.review_adapter.cmd_review_artifacts",
         lambda args: calls.append(args) or 0,
     )
-    code = adapter.build_review_artifacts("f1", tmp_path, limit=5, workers=2)
+    code = adapter.build_review_artifacts(
+        "f1", tmp_path, limit=5, workers=2, no_progress=True
+    )
     assert code == 0
     assert len(calls) == 1
     assert calls[0].fixture == "f1"
     assert calls[0].limit == 5
     assert calls[0].workers == 2
+    assert calls[0].no_progress
 
 
 def test_adapter_compare_case_lifecycle(tmp_path: Path) -> None:

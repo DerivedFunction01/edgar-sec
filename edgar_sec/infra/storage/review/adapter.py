@@ -29,6 +29,7 @@ class ReviewArtifactAdapter(Protocol):
         capture_id: str | None = None,
         target_id: str | None = None,
         json_output: bool = False,
+        no_progress: bool = False,
     ) -> int:
         """Render structured review artifacts for selected fixture cases."""
         ...
@@ -58,6 +59,7 @@ class ReviewAdapter(ReviewArtifactAdapter, Protocol):
         limit: int | None = None,
         artifacts_root: Path | str = "",
         json: bool = False,
+        no_progress: bool = False,
     ) -> int:
         """Capture and persist a new fixture from a catalog plan."""
         ...
@@ -69,6 +71,7 @@ class ReviewAdapter(ReviewArtifactAdapter, Protocol):
         limit: int | None = None,
         artifacts_root: Path | str = "",
         json: bool = False,
+        no_progress: bool = False,
     ) -> int:
         """Extend an existing fixture with additional targets."""
         ...

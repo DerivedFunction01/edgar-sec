@@ -9,6 +9,7 @@ from itertools import groupby
 from edgar_sec.domain.document_inventory.models import InventoryCohort
 from edgar_sec.foundation.compression import compress_payload
 from edgar_sec.foundation.hashing import sha256_bytes
+from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
 from edgar_sec.infra.broker.sec_broker import SecBroker
 from edgar_sec.pipelines.document_inventory.fixture_store._db import (
     load_manifest,
@@ -241,6 +242,7 @@ def capture_index_pages(
     paths: FixturePaths,
     broker: SecBroker,
     contribution: FixtureContribution,
+    progress_callback: ProgressCallback = None,
 ) -> IndexCaptureResult:
     if not paths.manifest_path.is_file() or not paths.storage_path.is_file():
         raise IndexFixtureError(f"fixture does not exist: {paths.root}")
@@ -349,6 +351,13 @@ def capture_index_pages(
                     )
                 captured += 1
             connection.commit()
+            emit_progress(
+                progress_callback,
+                {
+                    "type": "outcome",
+                    "status": "failed" if failure_code is not None else "ok",
+                },
+            )
 
         try:
             next(observations)

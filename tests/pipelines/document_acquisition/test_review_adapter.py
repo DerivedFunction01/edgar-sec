@@ -42,6 +42,7 @@ def test_adapter_build_review_artifacts(tmp_path: Path, monkeypatch) -> None:
         artifacts_root=tmp_path,
         capture_id="capture-a",
         target_id="target-a",
+        no_progress=True,
     )
 
     assert code == 0
@@ -49,6 +50,7 @@ def test_adapter_build_review_artifacts(tmp_path: Path, monkeypatch) -> None:
     assert calls[0].capture_id == "capture-a"
     assert calls[0].target_id == "target-a"
     assert calls[0].accessions == ["0000123456-12-000001"]
+    assert calls[0].no_progress
 
 
 def test_compare_case_uses_processing_review_json(tmp_path: Path) -> None:

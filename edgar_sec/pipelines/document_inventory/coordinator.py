@@ -498,16 +498,14 @@ def _run_pending(
         max_connections=workers,
     ):
         broker = IndexPageBrokerClient(socket_path)
-        pool_cm = (
-            ProcessPoolExecutor(
-                max_workers=workers,
-                max_tasks_per_child=RECLAIM_INTERVAL,
-                mp_context=get_context("spawn"),
-            )
-            if workers > 1
-            else None
-        )
+        pool_cm = None
         try:
+            if workers > 1:
+                pool_cm = ProcessPoolExecutor(
+                    max_workers=workers,
+                    max_tasks_per_child=RECLAIM_INTERVAL,
+                    mp_context=get_context("spawn"),
+                )
             for identity, members in chunks:
                 if stop_requested():
                     break
@@ -558,8 +556,11 @@ def _run_pending(
                 summary.record(outcome)
                 reclaim()
         finally:
-            if pool_cm is not None:
-                pool_cm.shutdown(wait=True)
+            try:
+                if pool_cm is not None:
+                    pool_cm.shutdown(wait=True)
+            finally:
+                broker.close()
     finished = summary.finish()
     return replace(finished, cancelled=stop_requested())
 

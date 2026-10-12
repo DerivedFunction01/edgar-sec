@@ -11,7 +11,7 @@ from typing import Any
 import pytest
 
 from edgar_sec.infra.broker.daemon import managed_broker
-from edgar_sec.infra.broker.sec_broker import SecBrokerClient
+from edgar_sec.infra.broker.sec_broker import SecBroker, SecBrokerClient
 from edgar_sec.infra.sec_http.metrics import HttpMetrics
 
 
@@ -87,6 +87,7 @@ def test_managed_broker_lifecycle_and_fetch(tmp_path: Path) -> None:
         "https://www.sec.gov/Archives/x/doc2.cached": b"<html>doc2 cached</html>",
     }
     fake_http = _FakeHttpClient(payloads)
+    client_socket = None
 
     with managed_broker(socket_path, http_client=fake_http) as client:
         res1 = client.fetch("https://www.sec.gov/Archives/x/doc1.htm")
@@ -102,6 +103,38 @@ def test_managed_broker_lifecycle_and_fetch(tmp_path: Path) -> None:
         res3 = client.fetch("https://www.sec.gov/Archives/missing.htm")
         assert res3["status"] == "failed"
         assert "404" in res3["error"]
+        client_socket = client._local.sock
+
+    assert client_socket is not None
+    assert client_socket.fileno() == -1
+    assert client._local.sock is None
+
+
+def test_idle_connection_timeout_closes_without_raising(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    class Connection:
+        closed = False
+        timeout = None
+
+        def settimeout(self, timeout: float) -> None:
+            self.timeout = timeout
+
+        def close(self) -> None:
+            self.closed = True
+
+    def timeout(_connection) -> bytes:
+        raise TimeoutError("idle connection")
+
+    monkeypatch.setattr("edgar_sec.infra.broker.sec_broker._recv_frame", timeout)
+    connection = Connection()
+    broker = SecBroker(
+        socket_path=tmp_path / "broker.sock", http_client=_FakeHttpClient({})
+    )
+
+    broker.handle_connection(connection)
+
+    assert connection.closed
 
 
 def test_broker_concurrent_workers(tmp_path: Path) -> None:
