@@ -43,8 +43,8 @@ from edgar_sec.infra.storage.duckdb import (
 from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
 
 # Bump when feature derivation changes in a way that requires rebuilding
-FEATURE_SCHEMA_VERSION = "2.0"
-DERIVATION_VERSION = "2.0"
+FEATURE_SCHEMA_VERSION = "2.1"
+DERIVATION_VERSION = "2.1"
 
 UNMATCHED_ERA = "unknown"
 
@@ -553,7 +553,7 @@ class FeatureSnapshotBuilder:
                     ELSE 'other'
                 END AS suffix,
                 f.primary_document, f.document_path, f.archive_url,
-                f.document_path_source, f.reported_size,
+                f.document_path_source, f.primary_exhibit_like, f.reported_size,
                 f.is_xbrl, f.is_inline_xbrl, f.is_xbrl_numeric,
                 CASE WHEN f.reported_size IS NOT NULL
                       AND f.reported_size < {int(self.options["stub_size_threshold"])}

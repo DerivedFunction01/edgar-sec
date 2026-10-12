@@ -22,6 +22,7 @@ import pyarrow.parquet as pq
 
 from edgar_sec.domain.document_inventory.models import IndexWorkItem
 from edgar_sec.foundation.runtime.memory import reclaim
+from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
 from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
 )
@@ -216,6 +217,33 @@ def _url_index(members: Sequence[IndexWorkItem]) -> dict[str, str]:
     return {str(item.accession): item.index_url for item in members}
 
 
+def _emit_outcome_progress(
+    progress_callback: ProgressCallback, status: str, count: int = 1
+) -> None:
+    emit_progress(
+        progress_callback,
+        {
+            "type": "outcome",
+            "status": "ok" if status in {"parsed", "parsed_empty"} else "failed",
+            "count": count,
+        },
+    )
+
+
+def _emit_status_counts(
+    progress_callback: ProgressCallback, counts: dict[str, int]
+) -> None:
+    for status, count in counts.items():
+        _emit_outcome_progress(progress_callback, status, count)
+
+
+def _emit_progress_store(
+    progress: ProgressStore, progress_callback: ProgressCallback
+) -> None:
+    if progress_callback is not None:
+        _emit_status_counts(progress_callback, progress.outcome_status_counts())
+
+
 def _process_chunk_fresh(
     paths: InventoryRunPaths,
     run: InventoryRunManifest,
@@ -227,6 +255,7 @@ def _process_chunk_fresh(
     pool: ProcessPoolExecutor | None,
     profile: RuntimeResourceProfile,
     stop_requested,
+    progress_callback: ProgressCallback,
     force_new_progress: bool = False,
 ) -> ChunkOutcome | None:
     """Resume complete per-accession transactions before exporting the attempt."""
@@ -236,12 +265,14 @@ def _process_chunk_fresh(
     )
     try:
         missing = set(progress.completed_accessions(members))
+        _emit_progress_store(progress, progress_callback)
         pending = tuple(item for item in members if str(item.accession) in missing)
         urls = _url_index(members)
         for result in _bounded_results(
             pending, broker, workers, force_refresh, pool, stop_requested
         ):
-            progress.record(result, index_url=urls[str(result.accession)])
+            status = progress.record(result, index_url=urls[str(result.accession)])
+            _emit_outcome_progress(progress_callback, status)
         if progress.completed_accessions(members):
             return None
         return _export_progress(paths, run, chunk, members, progress)
@@ -294,6 +325,7 @@ def _process_chunk_retry(
     pool: ProcessPoolExecutor | None,
     profile: RuntimeResourceProfile,
     stop_requested,
+    progress_callback: ProgressCallback,
 ) -> ChunkOutcome | None:
     """Carry prior non-retryable outcomes forward and retry only failed accessions."""
     chunk_id = chunk.chunk_id
@@ -311,13 +343,15 @@ def _process_chunk_retry(
             paths.attempt_entries_path(chunk_id, prior_attempt_id),
             profile,
         )
+        _emit_progress_store(progress, progress_callback)
         missing = set(progress.completed_accessions(members))
         retry_items = tuple(item for item in members if str(item.accession) in missing)
         urls = _url_index(members)
         for result in _bounded_results(
             retry_items, broker, workers, force_refresh, pool, stop_requested
         ):
-            progress.record(result, index_url=urls[str(result.accession)])
+            status = progress.record(result, index_url=urls[str(result.accession)])
+            _emit_outcome_progress(progress_callback, status)
         if progress.completed_accessions(members):
             return None
         return _export_progress(paths, run, chunk, members, progress)
@@ -345,30 +379,36 @@ def _decide_chunk(
     chunk_id: str,
     identity: Any,
     retry_failures: bool,
-) -> tuple[str, str | None, ChunkOutcome | None]:
+) -> tuple[str, str | None, ChunkOutcome | None, dict[str, int]]:
     """Classify one chunk as skip/retry/fresh without touching the network.
 
-    Returns ``(mode, prior_attempt_id, ready_outcome)``; only ``skip`` carries a
-    ready outcome, computed here and discarded after appending.
+    The returned status counts describe outcomes reused without retry.
     """
     validation = validate_committed_chunk(paths, chunk_id, run=run, chunk=identity)
     if not (validation.valid and validation.attempt_id and validation.manifest):
         log.info("chunk %s invalid (%s); recomputing", chunk_id, validation.reason)
         mode = "fresh_reset" if paths.chunk_pointer_path(chunk_id).exists() else "fresh"
-        return mode, None, None
+        return mode, None, None, {}
     retry_count = 0
     refusal_count = 0
+    status_counts: dict[str, int] = {}
     parquet = pq.ParquetFile(
         paths.attempt_outcomes_path(chunk_id, validation.attempt_id)
     )
     for batch in parquet.iter_batches(batch_size=resolve_parquet_read_batch_size()):
         for index in range(batch.num_rows):
             status = batch.column("status")[index].as_py()
+            status_counts[status] = status_counts.get(status, 0) + 1
             retry_count += int(status in RETRYABLE_STATUSES)
             refusal_count += int(status in REFUSAL_STATUSES)
     if retry_count and retry_failures:
-        return "retry", validation.attempt_id, None
-    return "skip", None, _reuse_outcome(chunk_id, validation, refusal_count)
+        return "retry", validation.attempt_id, None, status_counts
+    return (
+        "skip",
+        None,
+        _reuse_outcome(chunk_id, validation, refusal_count),
+        status_counts,
+    )
 
 
 def run_missing_accessions(
@@ -381,6 +421,7 @@ def run_missing_accessions(
     workers: int | None = None,
     retry_failures: bool = False,
     stale_lock_confirmed: bool = False,
+    progress_callback: ProgressCallback = None,
 ) -> RunSummary:
     """Validate the run manifest, then commit every chunk with resume and retry.
 
@@ -428,6 +469,7 @@ def run_missing_accessions(
                 retry_failures=retry_failures,
                 profile=resolved,
                 stop_requested=stop_requested,
+                progress_callback=progress_callback,
             )
 
 
@@ -443,6 +485,7 @@ def _run_pending(
     retry_failures: bool,
     profile: RuntimeResourceProfile,
     stop_requested,
+    progress_callback: ProgressCallback = None,
 ) -> RunSummary:
     """Process a Parquet work order one bounded chunk at a time."""
     socket_id = f"{SOCKET_PREFIX}{paths.run_id[-12:]}"
@@ -469,7 +512,7 @@ def _run_pending(
                 if stop_requested():
                     break
                 chunk_id = identity.chunk_id
-                mode, prior_id, ready = _decide_chunk(
+                mode, prior_id, ready, status_counts = _decide_chunk(
                     paths,
                     manifest,
                     chunk_id,
@@ -477,6 +520,7 @@ def _run_pending(
                     retry_failures,
                 )
                 if ready is not None:
+                    _emit_status_counts(progress_callback, status_counts)
                     summary.record(ready)
                     continue
                 if mode == "retry" and prior_id is not None:
@@ -492,6 +536,7 @@ def _run_pending(
                         pool_cm,
                         profile,
                         stop_requested,
+                        progress_callback,
                     )
                 else:
                     outcome = _process_chunk_fresh(
@@ -505,6 +550,7 @@ def _run_pending(
                         pool_cm,
                         profile,
                         stop_requested,
+                        progress_callback,
                         force_new_progress=mode == "fresh_reset",
                     )
                 if outcome is None:

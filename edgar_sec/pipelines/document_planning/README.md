@@ -8,9 +8,9 @@ into an immutable accession-document target plan for later acquisition.
 ## Contracts
 
 - Planning performs no network access and never mutates catalog or inventory state.
-- A filing-catalog plan must use schema 1.3 and declare target-part byte sizes and
-  SHA-256 digests. Older plans remain consumable by their existing readers but are
-  refused as unpinned S6 scope.
+- A filing-catalog plan must use schema 1.4 and declare target-part byte sizes and
+  SHA-256 digests. Older plans lack the current target feature shape and are refused;
+  republish them from the rebuilt filing catalog.
 - Inventory-backed plans pin one immutable snapshot ID and verify its lineage and
   relation parts. `current` is resolved once; catalog-only plans require a profile
   whose requests are primary-only.

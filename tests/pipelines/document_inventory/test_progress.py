@@ -91,6 +91,7 @@ def test_committed_parse_survives_reopen_and_interrupted_parse_rolls_back(
     assert outcomes == 1
     assert refusals == 0
     assert entries == len(parsed.entries)
+    assert reopened.outcome_status_counts() == {"parsed": 1}
     reopened.close()
 
 

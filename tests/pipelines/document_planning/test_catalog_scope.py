@@ -77,7 +77,7 @@ def _publish(
         "plan_id": plan_id,
         "catalog_id": "catalog-1",
         "scope": "deterministic",
-        "plan_schema_version": "1.3",
+        "plan_schema_version": "1.4",
         "plan_fingerprint": "catalog-selection-fingerprint",
         "forms": output_forms if forms is None else forms,
         "counts": counts,

@@ -74,12 +74,12 @@ def _namespace(
         suffixes=[],
         dates=dates,
         limit=None,
+        accession_limit=None,
+        min_exhibit_like=None,
         source="",
         source_snapshot="",
         source_artifacts="",
         artifacts="",
-        cohort="",
-        seed_cohort="",
         parent_plan=parent_plan,
         target_units=target_units,
         branch=branch,
@@ -89,8 +89,7 @@ def _namespace(
 def _ask_catalog() -> str:
     """Pick the catalog to plan from, preferring the published pointer."""
     paths = resolve_filing_catalog_paths()
-    # Filter out empty catalogs in-memory before pagination
-    catalogs = [c for c in discover_catalogs(paths) if c.get('form_counts')]
+    catalogs = discover_catalogs(paths)
     if not catalogs:
         return prompt_text("Catalog id or 'current'", "current")
     current = _current_catalog_index(catalogs, paths)

@@ -43,6 +43,7 @@ KNOWN_DIMENSIONS = (
     "has_revival_gap",
     "locator_class",
     "stub_suspect",
+    "primary_exhibit_like",
     "company_family",
 )
 

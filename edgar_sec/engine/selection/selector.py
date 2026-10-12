@@ -109,6 +109,7 @@ class DeficitSelector:
             raise ValueError("parent selection contains duplicate locator keys")
         selected_candidates: list[dict[str, Any]] = []
         coverage: dict[str, dict[str, int]] = {dim: {} for dim in KNOWN_DIMENSIONS}
+        accession_coverage: dict[str, set[str]] = {}
         signature_counts: Counter[tuple[str, ...]] = Counter()
         deduplicated_signatures = 0
 
@@ -118,6 +119,12 @@ class DeficitSelector:
             signature_counts[classification_signature(candidate)] += 1
             for dimension in KNOWN_DIMENSIONS:
                 value = normalize_value(candidate.get(dimension))
+                if dimension == "primary_exhibit_like":
+                    accession = str(candidate["representative_accession"])
+                    seen = accession_coverage.setdefault(value, set())
+                    if accession in seen:
+                        continue
+                    seen.add(accession)
                 coverage[dimension][value] = coverage[dimension].get(value, 0) + 1
 
         def _record(candidate: dict[str, Any], *, check_cap: bool = True) -> bool:
@@ -152,7 +159,14 @@ class DeficitSelector:
 
             self._select_seed_filers(source, _record, selected_keys, target_units)
             self._select_composites(source, _record, selected_keys, target_units)
-            self._select_floors(source, _record, selected_keys, target_units, coverage)
+            self._select_floors(
+                source,
+                _record,
+                selected_keys,
+                target_units,
+                coverage,
+                accession_coverage,
+            )
             allocation = self._allocate_form_era_cells(
                 source,
                 _record,
@@ -229,6 +243,7 @@ class DeficitSelector:
         selected_keys: list[str],
         target_units: int,
         coverage: dict[str, dict[str, int]],
+        accession_coverage: dict[str, set[str]],
     ) -> None:
         """Chase floors by relative deficit until no floor moves."""
         for round_index in range(self.policy.max_pool_rounds):
@@ -245,6 +260,11 @@ class DeficitSelector:
                     dimension,
                     value,
                     limit=min(needed * 2, self.policy.pool_per_value),
+                    exclude_accessions=(
+                        tuple(accession_coverage.get(normalize_value(value), ()))
+                        if dimension == "primary_exhibit_like"
+                        else ()
+                    ),
                 )
                 for candidate in pool:
                     if record(candidate):

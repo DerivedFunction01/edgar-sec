@@ -43,6 +43,7 @@ DEDUPED_COLUMN = re.compile(r"^(?P<name>.+)_(?P<ordinal>\d+)$")
 # Named explicitly so a "fix" that strips the feature columns cannot pass. `locator_class`
 # is absent on purpose: it has locator grain only, so it is not an occurrence column.
 POLICY_FEATURE_COLUMNS = (
+    "primary_exhibit_like",
     "form_family",
     "era",
     "size_band",

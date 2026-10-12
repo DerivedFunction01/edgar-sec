@@ -93,6 +93,11 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="attest the previous lock owner has stopped",
     )
+    run_cmd.add_argument(
+        "--no-progress",
+        action="store_true",
+        help="disable the terminal progress bar",
+    )
     _add_output_options(run_cmd)
     run_cmd.set_defaults(func=cmd_run)
 

@@ -14,6 +14,9 @@ from edgar_sec.domain.filing_catalog.schemas import (
     PROFILE_COLUMNS,
     PROFILE_SCHEMA_VERSION,
 )
+from edgar_sec.domain.filing_catalog.document_names import (
+    PRIMARY_EXHIBIT_FILENAME_PATTERN,
+)
 from edgar_sec.domain.document.path_facts import PLACEHOLDER_PRIMARY_FILENAMES
 from edgar_sec.domain.sec_urls import SEC_ARCHIVE_BASE
 from edgar_sec.infra.storage.duckdb import sql_identifier, sql_literal, sql_path_list
@@ -21,6 +24,7 @@ from edgar_sec.infra.storage.duckdb import sql_identifier, sql_literal, sql_path
 _PLACEHOLDER_PRIMARY_NAMES_SQL = ", ".join(
     sql_literal(name) for name in sorted(PLACEHOLDER_PRIMARY_FILENAMES)
 )
+_PRIMARY_EXHIBIT_FILENAME_PATTERN_SQL = sql_literal(PRIMARY_EXHIBIT_FILENAME_PATTERN)
 
 
 def build_part_unnest_query(part_path: str) -> str:
@@ -101,6 +105,13 @@ def build_part_unnest_query(part_path: str) -> str:
                          ELSE accession_number || '.txt'
                      END
             END AS archive_url,
+            coalesce(
+                regexp_matches(
+                    lower(coalesce(primary_document, '')),
+                    {_PRIMARY_EXHIBIT_FILENAME_PATTERN_SQL}
+                ),
+                false
+            ) AS primary_exhibit_like,
             reported_size,
             is_xbrl,
             is_inline_xbrl,
@@ -122,6 +133,7 @@ def build_part_unnest_query(part_path: str) -> str:
         document_path,
         archive_url,
         document_path_source,
+        primary_exhibit_like,
         reported_size,
         is_xbrl,
         is_inline_xbrl,
@@ -245,6 +257,13 @@ def build_delta_unnest_query(part_path: str, base_target_paths: Sequence[str]) -
                          ELSE accession_number || '.txt'
                      END
             END AS archive_url,
+            coalesce(
+                regexp_matches(
+                    lower(coalesce(primary_document, '')),
+                    {_PRIMARY_EXHIBIT_FILENAME_PATTERN_SQL}
+                ),
+                false
+            ) AS primary_exhibit_like,
             reported_size,
             is_xbrl,
             is_inline_xbrl,
@@ -267,6 +286,7 @@ def build_delta_unnest_query(part_path: str, base_target_paths: Sequence[str]) -
             document_path,
             archive_url,
             document_path_source,
+            primary_exhibit_like,
             reported_size,
             is_xbrl,
             is_inline_xbrl,

@@ -35,7 +35,7 @@ from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest, PartDescriptor
 
 # Type-faithful to what the builder writes, so a synthetic snapshot cannot hide a bug.
-_BOOL_COLUMNS = frozenset({"has_revival_gap"})
+_BOOL_COLUMNS = frozenset({"has_revival_gap", "primary_exhibit_like"})
 _INT_COLUMNS: dict[str, pa.DataType] = {
     "reported_size": pa.int64(),
     "report_year": pa.int32(),
@@ -59,13 +59,16 @@ _LOCATOR_DEFAULTS: dict[str, Any] = {
     "has_revival_gap": False,
     "locator_class": "single",
     "stub_suspect": "false",
+    "primary_exhibit_like": False,
     "company_family": "example",
     "reported_size": 500_000,
     "report_year": 2020,
     "representative_cik": "0000000001",
 }
 
-_OCCURRENCE_BOOL_COLUMNS = frozenset({"is_xbrl", "is_inline_xbrl", "is_xbrl_numeric"})
+_OCCURRENCE_BOOL_COLUMNS = frozenset(
+    {"is_xbrl", "is_inline_xbrl", "is_xbrl_numeric", "primary_exhibit_like"}
+)
 
 # Written but unread by the pool projection, so a document_path filter binds.
 _EXTRA_LOCATOR_COLUMNS: dict[str, Any] = {
@@ -75,6 +78,7 @@ _EXTRA_LOCATOR_COLUMNS: dict[str, Any] = {
     "document_path": "doc.htm",
     "archive_url": "https://www.sec.gov/Archives/edgar/data/1/a/doc.htm",
     "document_path_source": "primary_document",
+    "primary_exhibit_like": False,
     "representative_accession": "0000000000-20-000001",
 }
 
@@ -93,6 +97,7 @@ _OCCURRENCE_DEFAULTS: dict[str, Any] = {
     "document_path": "doc.htm",
     "archive_url": "https://www.sec.gov/Archives/edgar/data/1/a/doc.htm",
     "document_path_source": "primary_document",
+    "primary_exhibit_like": False,
     "reported_size": 500_000,
     "is_xbrl": True,
     "is_inline_xbrl": True,
@@ -275,6 +280,7 @@ def make_locator(
         "document_locator_key": f"loc-{index:04d}",
         "company_family": company_family,
         "representative_cik": cik or f"{index:010d}",
+        "representative_accession": f"{index:010d}-20-{index:06d}",
         **overrides,
     }
 

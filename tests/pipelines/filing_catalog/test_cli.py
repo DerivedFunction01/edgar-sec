@@ -72,6 +72,23 @@ def test_plan_accepts_repeated_form_and_suffix_flags() -> None:
     assert args.suffixes == [".htm"]
 
 
+def test_plan_accepts_accession_cap_and_exhibit_minimum() -> None:
+    args = build_parser().parse_args(
+        [
+            "plan",
+            "--catalog",
+            "abc",
+            "--accession-limit",
+            "25",
+            "--min-exhibit-like",
+            "3",
+        ]
+    )
+
+    assert args.accession_limit == 25
+    assert args.min_exhibit_like == 3
+
+
 def test_plan_accepts_cohort_selection_flags() -> None:
     args = build_parser().parse_args(
         [

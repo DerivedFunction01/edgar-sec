@@ -14,7 +14,8 @@ planning implementations belong to the infrastructure and pipeline layers.
 - **Target shape declaration**: Column order is declared together; amendments like `10-K/A` are distinct form values.
 - **Deterministic keys**: Locator columns and selection features are declared once; `LOCATOR_POLICY_COLUMNS` is derived rather than restated.
 - **Schema versioning**: Schema and profile versions are tracked independently (`SCHEMA_VERSION`, `TARGET_SCHEMA_VERSION`, `PROFILE_SCHEMA_VERSION`).
-- **Payload integrity**: Target plan version 1.3 declares target-part row counts, sizes, and SHA-256 digests.
+- **Payload integrity**: Target plan version 1.4 declares target-part row counts, sizes, and SHA-256 digests.
+- **Primary-name feature**: `primary_exhibit_like` applies the statutory exhibit filename grammar to `primary_document`; missing names are false.
 - **Path provenance**: Path provenance is a closed vocabulary (`PATH_SOURCE_PRIMARY`, `PATH_SOURCE_BUNDLE`).
 - **Suffix validation**: Suffix inputs are normalized and validated by `normalize_suffixes()`; invalid values are rejected.
 

@@ -200,6 +200,80 @@ def test_floors_are_satisfied_before_the_weighted_fill(
     assert result.report["underfilled_floors"] == {}
 
 
+def test_exhibit_like_floor_counts_unique_accessions(tmp_path: Path) -> None:
+    locators = [
+        make_locator(
+            0,
+            primary_exhibit_like=True,
+            representative_accession="shared-accession",
+            company_family="first-family",
+        ),
+        make_locator(
+            1,
+            primary_exhibit_like=True,
+            representative_accession="shared-accession",
+            company_family="second-family",
+        ),
+        make_locator(
+            2,
+            primary_exhibit_like=True,
+            representative_accession="other-accession",
+            company_family="third-family",
+        ),
+        make_locator(3, primary_exhibit_like=False, company_family="fourth-family"),
+    ]
+    snapshot = write_snapshot(tmp_path / "exhibit-floor", locators)
+    policy = SelectionPolicy(
+        corpus_id="exhibit-floor",
+        forms=["10-K"],
+        base_content_units=2,
+        reserve_size=0,
+        floors={"primary_exhibit_like": {"true": 2}},
+    )
+
+    result = DeficitSelector(snapshot, policy).select()
+
+    assert len(result.active_locators) == 2
+    assert result.report["coverage_distributions"]["primary_exhibit_like"]["true"] == 2
+    assert result.report["underfilled_floors"] == {}
+
+
+def test_exhibit_like_floor_reports_distinct_accession_shortfall(
+    tmp_path: Path,
+) -> None:
+    locators = [
+        make_locator(
+            0,
+            primary_exhibit_like=True,
+            representative_accession="one-accession",
+            company_family="first-family",
+        ),
+        make_locator(
+            1,
+            primary_exhibit_like=True,
+            representative_accession="one-accession",
+            company_family="second-family",
+        ),
+    ]
+    snapshot = write_snapshot(tmp_path / "exhibit-shortfall", locators)
+    policy = SelectionPolicy(
+        corpus_id="exhibit-shortfall",
+        forms=["10-K"],
+        base_content_units=2,
+        reserve_size=0,
+        floors={"primary_exhibit_like": {"true": 2}},
+    )
+
+    result = DeficitSelector(snapshot, policy).select()
+
+    assert result.report["coverage_distributions"]["primary_exhibit_like"]["true"] == 1
+    assert result.report["underfilled_floors"]["primary_exhibit_like"]["true"] == {
+        "required": 2,
+        "selected": 1,
+        "deficit": 1,
+    }
+
+
 def test_an_impossible_floor_is_reported_not_silently_ignored(
     snapshot_dir: Path,
 ) -> None:

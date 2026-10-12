@@ -13,7 +13,7 @@ operation-aware contract.
 The implemented S6 bundle uses `bundle_schema_version=3`,
 `matcher_version="target-matcher-v2"`, and target relation schema version `1`. It
 contains only the target relation; the profile's acquisition policy is not serialized
-as S9-readable operation rows. Catalog input schema `1.3` is source provenance only;
+as S9-readable operation rows. Catalog input schema `1.4` is source provenance only;
 S9 does not reopen that catalog plan.
 
 Operation-aware S9 requires S6 bundle schema v4 with the `target_operations`,

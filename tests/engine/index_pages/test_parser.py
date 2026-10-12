@@ -3,6 +3,8 @@
 import ast
 import typing
 
+import pytest
+
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.document_inventory.models import (
     IndexPageInput,
@@ -147,6 +149,89 @@ def test_bundle_row_is_not_a_child_entry_and_needs_no_sequence() -> None:
     assert page.diagnostics.items == ()
 
 
+@pytest.mark.parametrize(
+    "bundle_href",
+    [
+        "/Archives/edgar/data/7084/0000007084-96-000014.txt",
+        "/Archives/edgar/data/7084/000000708496000014/0000007084-96-000014.txt",
+    ],
+)
+def test_historical_bundle_aliases_emit_canonical_bundle_url(
+    bundle_href: str,
+) -> None:
+    accession = AccessionNumber("0000007084-96-000014")
+    source_url = (
+        "https://www.sec.gov/Archives/edgar/data/7084/000000708496000014/"
+        "0000007084-96-000014-index.html"
+    )
+    source = f"""<table summary='Document Format Files'>
+    <tr><th>Seq</th><th>Description</th><th>Document</th><th>Type</th><th>Size</th></tr>
+    <tr><td>1</td><td>1996 DEFINITIVE PROXY</td><td><a href='/Archives/edgar/data/7084/'></a></td><td>DEF 14A</td><td>128521</td></tr>
+    <tr><td></td><td>Complete submission text file</td><td><a href='{bundle_href}'>0000007084-96-000014.txt</a></td><td></td><td>129826</td></tr>
+    </table>"""
+
+    page = parse_html_index(IndexPageInput(accession, source_url, source.encode()))
+
+    assert isinstance(page, ParsedIndexPage)
+    assert len(page.entries) == 1
+    assert page.entries[0].sequence == 1
+    assert page.entries[0].document_type == "DEF 14A"
+    assert page.entries[0].description == "1996 DEFINITIVE PROXY"
+    assert page.entries[0].document_label is None
+    assert page.entries[0].filename is None
+    assert page.entries[0].href == "/Archives/edgar/data/7084/"
+    assert page.entries[0].archive_url is None
+    assert page.entries[0].byte_size == 128521
+    assert page.bundle_url == (
+        "https://www.sec.gov/Archives/edgar/data/7084/"
+        "000000708496000014/0000007084-96-000014.txt"
+    )
+    assert page.bundle_size == 129826
+    assert [item.code for item in page.diagnostics.items] == ["unsafe_href"]
+    assert page.diagnostics.items[0].row_key == ("document_format", 0)
+
+
+@pytest.mark.parametrize(
+    ("label", "href"),
+    [
+        (
+            "0000123456-26-000099.txt",
+            "/Archives/edgar/data/123456/0000123456-26-000016.txt",
+        ),
+        (
+            "0000123456-26-000016.txt",
+            "/Archives/edgar/data/999999/0000123456-26-000016.txt",
+        ),
+        (
+            "0000123456-26-000016.txt",
+            "/Archives/edgar/data/123456/../0000123456-26-000016.txt",
+        ),
+        (
+            "0000123456-26-000016.txt",
+            "https://attacker.example/Archives/edgar/data/123456/0000123456-26-000016.txt",
+        ),
+        (
+            "0000123456-26-000016.txt",
+            "/Archives/edgar/data/123456/0000123456-26-000016.txt?download=1",
+        ),
+    ],
+)
+def test_root_level_bundle_requires_exact_identity_and_safe_href(
+    label: str, href: str
+) -> None:
+    source = f"""<table summary='Document Format Files'>
+    <tr><th>Seq</th><th>Description</th><th>Document</th><th>Type</th><th>Size</th></tr>
+    <tr><td></td><td>Complete submission text file</td><td><a href='{href}'>{label}</a></td><td></td><td>100</td></tr>
+    </table>"""
+
+    page = _parse(source.encode())
+
+    assert isinstance(page, ParsedIndexPage)
+    assert page.bundle_url is None
+    assert page.bundle_size == 100
+    assert [item.code for item in page.diagnostics.items] == ["unsafe_href"]
+
+
 def test_tables_use_header_labels_instead_of_column_positions() -> None:
     source = b"""<table summary='Data Files'>
     <tr><th>Type</th><th>Document</th><th>Size</th><th>Seq</th><th>Description</th></tr>
@@ -224,7 +309,7 @@ def test_diagnostic_codes_and_union_remain_explicit() -> None:
         UnrecognizedIndexPage,
         IndexParseFailure,
     }
-    assert PARSER_FINGERPRINT == "index-page-v1"
+    assert PARSER_FINGERPRINT == "index-page-v2"
 
 
 def test_parser_imports_only_lower_layers_and_pipeline_siblings() -> None:

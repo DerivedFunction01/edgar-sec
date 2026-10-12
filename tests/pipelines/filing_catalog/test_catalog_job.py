@@ -39,7 +39,12 @@ from edgar_sec.pipelines.filing_catalog.paths import (
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 from tests.support import catalog_fixture_path
 
-_BOOL_COLUMNS = {"is_xbrl", "is_inline_xbrl", "is_xbrl_numeric"}
+_BOOL_COLUMNS = {
+    "is_xbrl",
+    "is_inline_xbrl",
+    "is_xbrl_numeric",
+    "primary_exhibit_like",
+}
 
 
 def _expected_targets() -> list[dict[str, str]]:

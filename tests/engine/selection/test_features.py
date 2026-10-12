@@ -35,6 +35,7 @@ from edgar_sec.infra.storage.dag.retention import analyze_retention
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.filing_catalog.catalog_job import materialize
 from edgar_sec.pipelines.filing_catalog.paths import resolve_filing_catalog_paths
+from tests.support import era_submission_metadata
 
 FORM_BATTERY = (
     "10-K",
@@ -236,6 +237,30 @@ def test_builds_a_feature_snapshot_from_the_published_catalog(
     assert occurrences == 4
     assert locators == 4
     assert families > 1, "clustering collapsed distinct registrants into one family"
+
+
+def test_primary_exhibit_feature_flows_into_policy_snapshot(
+    tmp_path: Path,
+) -> None:
+    source = era_submission_metadata(tmp_path / "era-source.parquet")
+    artifacts_root = tmp_path / "artifacts"
+    manifest = materialize(source, artifacts_root)
+    paths = resolve_filing_catalog_paths(artifacts_root)
+    builder = FeatureSnapshotBuilder(
+        target_root=paths.snapshot_targets_dir(str(manifest["catalog_id"])),
+        profile_path=paths.snapshot_profiles_file(str(manifest["catalog_id"])),
+        output_root=artifacts_root,
+        policy=_policy(),
+    )
+
+    snapshot = builder.build()
+    with connect() as con:
+        count = con.execute(
+            f"SELECT COUNT(*) FROM {snapshot.locator_relation} "
+            "WHERE primary_exhibit_like"
+        ).fetchone()[0]
+
+    assert count > 0
 
 
 def test_rebuilding_the_same_snapshot_reuses_the_published_one(
@@ -476,6 +501,7 @@ _TARGET_DEFAULTS: dict[str, Any] = {
     "document_path": "doc.htm",
     "archive_url": "https://www.sec.gov/Archives/edgar/data/1/doc.htm",
     "document_path_source": "primary_document",
+    "primary_exhibit_like": False,
     "reported_size": 500_000,
     "is_xbrl": True,
     "is_inline_xbrl": True,

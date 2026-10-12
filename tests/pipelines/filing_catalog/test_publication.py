@@ -285,7 +285,7 @@ def test_publish_moves_the_whole_bundle(tmp_path: Path) -> None:
 
 def test_target_plan_schema_version_is_declared() -> None:
     # Every bump makes older bundles non-reusable rather than reinterpreted.
-    assert TARGET_PLAN_SCHEMA_VERSION == "1.3"
+    assert TARGET_PLAN_SCHEMA_VERSION == "1.4"
 
 
 def test_publication_stamps_a_selection_fingerprint(tmp_path: Path) -> None:

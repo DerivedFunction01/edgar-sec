@@ -86,6 +86,8 @@ def test_lifecycle_command_arguments_are_phase_specific() -> None:
     run = parser.parse_args(["run", "--run-id", "r", "--confirm-stale-lock"])
     assert run.confirm_stale_lock
     assert run.retry_failures is False
+    assert run.no_progress is False
+    assert parser.parse_args(["run", "--run-id", "r", "--no-progress"]).no_progress
     publish = parser.parse_args(["publish", "--run-id", "r", "--branch", "alt"])
     assert publish.branch == "alt"
     assert publish.expected_branch_tip is None

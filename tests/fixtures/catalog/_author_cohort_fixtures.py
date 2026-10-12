@@ -13,6 +13,7 @@ from pathlib import Path
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from edgar_sec.domain.filing_catalog.schemas import POLICY_TARGET_SCHEMA
 from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 
 FIXTURES = Path(__file__).resolve().parent
@@ -32,6 +33,7 @@ OBSERVATION_SCHEMA = pa.schema(
         ("document_path", pa.string()),
         ("archive_url", pa.string()),
         ("document_path_source", pa.string()),
+        ("primary_exhibit_like", pa.bool_()),
         ("reported_size", pa.int64()),
         ("is_xbrl", pa.bool_()),
         ("is_inline_xbrl", pa.bool_()),
@@ -268,6 +270,7 @@ def _to_py_row(row: tuple[str, str, str, str | None, str, str]) -> dict[str, obj
         "document_path": f"{accession_raw}.txt",
         "archive_url": f"https://www.sec.gov/Archives/edgar/data/1/{accession_raw}/{accession_raw}.txt",
         "document_path_source": "submission_bundle",
+        "primary_exhibit_like": False,
         "reported_size": 1024,
         "is_xbrl": False,
         "is_inline_xbrl": False,
@@ -281,6 +284,20 @@ def _write_parquet(
     table = pa.Table.from_pylist(
         [_to_py_row(r) for r in rows], schema=OBSERVATION_SCHEMA
     )
+    pq.write_table(
+        table, path, compression="zstd", row_group_size=DEFAULT_ROW_GROUP_SIZE
+    )
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _write_policy_parquet(
+    rows: list[tuple[str, str, str, str | None, str, str]], path: Path
+) -> str:
+    values = [_to_py_row(row) for row in rows]
+    for value in values:
+        for column in POLICY_TARGET_SCHEMA.names:
+            value.setdefault(column, None)
+    table = pa.Table.from_pylist(values, schema=POLICY_TARGET_SCHEMA)
     pq.write_table(
         table, path, compression="zstd", row_group_size=DEFAULT_ROW_GROUP_SIZE
     )
@@ -335,15 +352,19 @@ def _write_plan_fixture(
     (plan_dir / "targets" / "form=8-K").mkdir(parents=True, exist_ok=True)
     ten_k = [r for r in good if r[3] == "10-K"]
     eight_k = [r for r in good if r[3] == "8-K"]
-    sha10k = _write_parquet(ten_k, plan_dir / "targets" / "form=10-K" / "data.parquet")
-    sha8k = _write_parquet(eight_k, plan_dir / "targets" / "form=8-K" / "data.parquet")
+    sha10k = _write_policy_parquet(
+        ten_k, plan_dir / "targets" / "form=10-K" / "data.parquet"
+    )
+    sha8k = _write_policy_parquet(
+        eight_k, plan_dir / "targets" / "form=8-K" / "data.parquet"
+    )
     plan_json = {
         "plan_id": "s1-cohort-plan",
         "catalog_id": "f259fde5d9c69335",
         "scope": "policy",
         "forms": ["10-K", "8-K"],
         "counts": {"10-K": len(ten_k), "8-K": len(eight_k)},
-        "plan_schema_version": "1.2",
+        "plan_schema_version": "1.4",
         "active_targets_count": len(good),
         "request_fingerprint": "0" * 64,
         "target_units": 1,

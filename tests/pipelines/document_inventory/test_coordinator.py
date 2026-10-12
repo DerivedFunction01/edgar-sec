@@ -317,6 +317,25 @@ def test_run_commits_every_chunk_with_one_broker(tmp_path: Path, monkeypatch) ->
     assert not broker_socket.exists()
 
 
+def test_progress_reports_each_recorded_outcome(tmp_path: Path) -> None:
+    items = _items(3)
+    events = []
+    paths = inventory_run_paths(tmp_path, "run-progress")
+
+    run_missing_accessions(
+        items,
+        IDENTITY,
+        paths,
+        http_client=_serving_http(items),
+        workers=1,
+        progress_callback=events.append,
+    )
+
+    assert sum(event["count"] for event in events) == len(items)
+    assert sum(event["count"] for event in events if event["status"] == "ok") == 3
+    assert not any(event["status"] == "failed" for event in events)
+
+
 def test_resume_skips_valid_chunks_without_network(tmp_path: Path) -> None:
     items = _items(4)
     first = _serving_http(items)
@@ -328,6 +347,28 @@ def test_resume_skips_valid_chunks_without_network(tmp_path: Path) -> None:
     )
     assert all(chunk.resumed for chunk in summary.chunks)
     assert second.calls == []
+
+
+def test_reused_chunk_progress_includes_failure_outcomes(tmp_path: Path) -> None:
+    items = _items(3)
+    paths = inventory_run_paths(tmp_path, "run-progress-reuse")
+    first = _serving_http(items, failing={items[1].index_url})
+    run_missing_accessions(items, IDENTITY, paths, http_client=first, workers=1)
+    events = []
+
+    run_missing_accessions(
+        items,
+        IDENTITY,
+        paths,
+        http_client=_serving_http(items),
+        workers=1,
+        progress_callback=events.append,
+    )
+
+    assert events == [
+        {"type": "outcome", "status": "ok", "count": 2},
+        {"type": "outcome", "status": "failed", "count": 1},
+    ]
 
 
 def test_mismatched_identity_refuses_before_first_request(tmp_path: Path) -> None:
@@ -386,6 +427,7 @@ def test_retry_replaces_only_failed_accessions(tmp_path: Path) -> None:
     assert prior_rows[str(items[1].accession)]["status"] == "fetch_failed"
 
     second = _serving_http(items)
+    events = []
     run2 = run_missing_accessions(
         items,
         IDENTITY,
@@ -393,12 +435,16 @@ def test_retry_replaces_only_failed_accessions(tmp_path: Path) -> None:
         http_client=second,
         workers=1,
         retry_failures=True,
+        progress_callback=events.append,
     )
     assert second.calls == [failing_url]
     assert run2.chunks[0].attempt_id != run1.chunks[0].attempt_id
     assert run2.refusal_count == 0
     fresh_rows = _outcome_by_accession(paths, chunk_id, run2.chunks[0].attempt_id)
     assert fresh_rows[str(items[1].accession)]["status"] == "parsed"
+    assert sum(event["count"] for event in events) == len(items)
+    assert sum(event["count"] for event in events if event["status"] == "ok") == 3
+    assert not any(event["status"] == "failed" for event in events)
     carried = fresh_rows[str(items[0].accession)]
     assert carried["page_sha256"] == prior_rows[str(items[0].accession)]["page_sha256"]
     old = paths.attempt_outcomes_path(chunk_id, run1.chunks[0].attempt_id)
@@ -523,13 +569,20 @@ def test_signal_drains_current_result_without_advancing_chunk_pointer(
     assert paths.progress_pointer_path(identity.chunk_id).is_file()
 
     second = _serving_http(items)
+    progress_events = []
     resumed = run_missing_accessions(
-        items, IDENTITY, paths, http_client=second, workers=1
+        items,
+        IDENTITY,
+        paths,
+        http_client=second,
+        workers=1,
+        progress_callback=progress_events.append,
     )
     assert not resumed.cancelled
     assert resumed.status == "completed"
     assert resumed.committed_count == 1
     assert len(second.calls) == len(items) - 1
+    assert sum(event["count"] for event in progress_events) == len(items)
 
 
 def test_pool_stop_does_not_refill_and_drains_submitted_results() -> None:

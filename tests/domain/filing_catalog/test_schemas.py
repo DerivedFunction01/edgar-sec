@@ -48,8 +48,8 @@ def test_profile_schema_appends_only_the_owned_version_column() -> None:
     assert PROFILE_SCHEMA.names[:-1] == list(BORROWED_COLUMNS)
 
 
-def test_target_schema_has_15_columns() -> None:
-    assert len(TARGET_SCHEMA.names) == 15
+def test_target_schema_has_16_columns() -> None:
+    assert len(TARGET_SCHEMA.names) == 16
     assert TARGET_SCHEMA.names == list(TARGET_COLUMNS)
 
 
@@ -58,6 +58,7 @@ def test_target_schema_types() -> None:
     assert str(types["reported_size"]) == "int64"
     assert str(types["occurrence_id"]) == "string"
     assert str(types["document_locator_key"]) == "string"
+    assert str(types["primary_exhibit_like"]) == "bool"
 
 
 def test_company_family_is_not_a_profile_column() -> None:
@@ -67,11 +68,11 @@ def test_company_family_is_not_a_profile_column() -> None:
 
 
 def test_version_constants_are_present_and_ordered() -> None:
-    assert SCHEMA_VERSION == "1.1.0"
-    assert TARGET_SCHEMA_VERSION == "1.1.0"
+    assert SCHEMA_VERSION == "1.2.0"
+    assert TARGET_SCHEMA_VERSION == "1.2.0"
     assert PROFILE_SCHEMA_VERSION == "1.0.0"
-    assert TARGET_PLAN_SCHEMA_VERSION == "1.3"
-    assert READABLE_TARGET_PLAN_SCHEMA_VERSIONS == frozenset({"1.2", "1.3"})
+    assert TARGET_PLAN_SCHEMA_VERSION == "1.4"
+    assert READABLE_TARGET_PLAN_SCHEMA_VERSIONS == frozenset({"1.4"})
 
 
 def test_path_source_constants() -> None:

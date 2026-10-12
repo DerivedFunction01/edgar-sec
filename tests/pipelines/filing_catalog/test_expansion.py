@@ -563,7 +563,12 @@ def test_a_seeded_parent_expands_from_its_own_published_seed_set(
     catalog_id = str(catalog_snapshot[0]["catalog_id"])
     seed_path = _seed_csv(tmp_path / "seed-cik.csv")
 
-    parent = plan_policy()
+    parent = plan_policy(
+        catalog_id,
+        _policy(),
+        artifacts_root,
+        seed_filers=read_seed_filers_csv(seed_path),
+    )
     parent_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(
         parent["plan_id"]
     )
@@ -592,7 +597,9 @@ def test_expanding_a_plan_whose_seed_set_was_edited_is_refused(
 
     parent = plan_policy(
         catalog_id,
+        _policy(),
         artifacts_root,
+        seed_filers=read_seed_filers_csv(seed_path),
     )
     parent_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(
         parent["plan_id"]

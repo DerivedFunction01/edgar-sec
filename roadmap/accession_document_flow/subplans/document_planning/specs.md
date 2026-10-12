@@ -162,7 +162,7 @@ sequence-position guessing are not part of v1.
 Every plan requires a published catalog plan as its accession scope. A named
 inventory snapshot is optional evidence for resolving documents:
 
-S6 accepts catalog-plan schema 1.3 only. That plan manifest must declare every
+S6 accepts catalog-plan schema 1.4 only. That plan manifest must declare every
 selected `targets/form=<escaped-form>/data.parquet` part with form, relative path,
 row count, byte size, and SHA-256; S6 verifies those declarations before reading.
 Schema 1.2 plans lack these payload pins and are refused as S6 scope.
@@ -350,7 +350,7 @@ The normalized profile digest includes profile ID/version/schema version and can
 rules.
 The source digest covers the validated immutable source manifest and the declared part
 digests needed to establish the selected query scope; validate the bytes of each source
-part read. For catalog plans, require version 1.3 and its declared `target_parts`;
+part read. For catalog plans, require version 1.4 and its declared `target_parts`;
 the selection fingerprint alone does not pin target payloads. For inventory, the
 resolved tip and all applicable lineage/part declarations are pinned together.
 

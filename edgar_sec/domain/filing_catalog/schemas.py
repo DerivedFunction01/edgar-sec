@@ -13,11 +13,11 @@ from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 DATASET_NAME = "filing_catalog"
 
 # Bump on a breaking change to TARGET_SCHEMA or PROFILE_SCHEMA respectively.
-SCHEMA_VERSION = "1.1.0"
-TARGET_SCHEMA_VERSION = "1.1.0"
+SCHEMA_VERSION = "1.2.0"
+TARGET_SCHEMA_VERSION = "1.2.0"
 PROFILE_SCHEMA_VERSION = "1.0.0"
-TARGET_PLAN_SCHEMA_VERSION = "1.3"
-READABLE_TARGET_PLAN_SCHEMA_VERSIONS = frozenset({"1.2", TARGET_PLAN_SCHEMA_VERSION})
+TARGET_PLAN_SCHEMA_VERSION = "1.4"
+READABLE_TARGET_PLAN_SCHEMA_VERSIONS = frozenset({TARGET_PLAN_SCHEMA_VERSION})
 
 # Provenance of an effective document path in the filing catalog.
 PATH_SOURCE_PRIMARY = "primary_document"
@@ -77,6 +77,7 @@ _DOCUMENT_SOURCE = (
     "archive_url",
     "document_path_source",
 )
+_PRIMARY_EXHIBIT_LIKE = ("primary_exhibit_like",)
 _REPORTED_SIZE = ("reported_size",)
 _SIZE_BAND = ("size_band",)
 _XBRL_FLAGS = ("is_xbrl", "is_inline_xbrl", "is_xbrl_numeric")
@@ -102,6 +103,7 @@ TARGET_COLUMNS = (
     *_FORM,
     *_FILING_DATES,
     *_DOCUMENT_SOURCE,
+    *_PRIMARY_EXHIBIT_LIKE,
     *_REPORTED_SIZE,
     *_XBRL_FLAGS,
 )
@@ -109,6 +111,7 @@ _TARGET_TYPES = (
     *(pa.string() for _ in (*_OCCURRENCE_ID, *_LOCATOR_ID, *_REGISTRANT_ID, *_FORM)),
     *(pa.string() for _ in _FILING_DATES),
     *(pa.string() for _ in _DOCUMENT_SOURCE),
+    pa.bool_(),
     pa.int64(),
     *(pa.bool_() for _ in _XBRL_FLAGS),
 )
@@ -131,6 +134,7 @@ LOCATOR_POLICY_FEATURES = (
     *_FOREIGN_STATUS,
     *_LIFECYCLE_CLASS,
     *_STUB_SUSPECT,
+    *_PRIMARY_EXHIBIT_LIKE,
     *_SIC,
 )
 LOCATOR_POLICY_COLUMNS = LOCATOR_BASE_COLUMNS + LOCATOR_POLICY_FEATURES
@@ -152,6 +156,7 @@ LOCATOR_FEATURE_COLUMNS = (
     *_HAS_REVIVAL_GAP,
     *_LOCATOR_CLASS,
     *_STUB_SUSPECT,
+    *_PRIMARY_EXHIBIT_LIKE,
     *_REPORTED_SIZE,
     *_FILING_DATES,
     *_DOCUMENT_SOURCE,
@@ -170,6 +175,7 @@ OCCURRENCE_FEATURE_COLUMNS = (
     *_ERA,
     *_SUFFIX,
     *_DOCUMENT_SOURCE,
+    *_PRIMARY_EXHIBIT_LIKE,
     *_REPORTED_SIZE,
     *_SIZE_BAND,
     *_XBRL_FLAGS,
@@ -185,6 +191,31 @@ OCCURRENCE_FEATURE_COLUMNS = (
     *_COMPANY_FAMILY,
     *_HAS_REVIVAL_GAP,
     *_LIFECYCLE_CLASS,
+)
+_POLICY_TARGET_TYPES = {
+    **{field.name: field.type for field in TARGET_SCHEMA},
+    "form_family": pa.string(),
+    "era": pa.string(),
+    "suffix": pa.string(),
+    "size_band": pa.string(),
+    "stub_suspect": pa.string(),
+    "xbrl_state": pa.string(),
+    "sic_code": pa.string(),
+    "owner_org_presence": pa.string(),
+    "foreign_status": pa.string(),
+    "foreign_country_code": pa.string(),
+    "state_of_incorporation": pa.string(),
+    "entity_type": pa.string(),
+    "filer_category_primary": pa.string(),
+    "company_family": pa.string(),
+    "has_revival_gap": pa.bool_(),
+    "lifecycle_class": pa.string(),
+}
+POLICY_TARGET_SCHEMA = pa.schema(
+    [
+        pa.field(column, _POLICY_TARGET_TYPES[column])
+        for column in OCCURRENCE_FEATURE_COLUMNS
+    ]
 )
 
 _OCCURRENCE_DYNAMIC = frozenset((*_SIZE_BAND, *_HAS_REVIVAL_GAP, *_LIFECYCLE_CLASS))
@@ -206,6 +237,7 @@ __all__ = [
     "OCCURRENCE_DYNAMIC_COLUMNS",
     "PATH_SOURCE_BUNDLE",
     "PATH_SOURCE_PRIMARY",
+    "POLICY_TARGET_SCHEMA",
     "PROFILE_COLUMNS",
     "PROFILE_SCHEMA",
     "PROFILE_SCHEMA_VERSION",

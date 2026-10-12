@@ -22,13 +22,13 @@ from edgar_sec.domain.document_inventory.models import (
     inventory_entry_id,
 )
 from edgar_sec.domain.identity import AccessionNumber
-from edgar_sec.domain.sec_urls import validate_archive_url
+from edgar_sec.domain.sec_urls import full_submission_url_for, validate_archive_url
 from edgar_sec.engine.document.html.tree import FastHtmlNode, parse_html
 from edgar_sec.foundation.hashing import sha256_bytes
 
 __all__ = ["PARSER_FINGERPRINT", "parse_html_index"]
 
-PARSER_FINGERPRINT = "index-page-v1"
+PARSER_FINGERPRINT = "index-page-v2"
 
 _DIAGNOSTIC_LIMIT = 32
 _DETAIL_LIMIT = 256
@@ -125,21 +125,30 @@ def parse_html_index(page: IndexPageInput) -> IndexParseOutcome:
             filename = _cell_text((anchor,), 0) if anchor is not None else None
             filename = filename or None
             description = values["description"] or None
+            is_bundle = _is_bundle_row(description, filename, page.accession)
             archive_url = None
+            root_bundle_url = None
             if href is not None:
                 archive_url = _same_accession_archive_url(
                     page.source_url, href, page.accession
                 )
-                if archive_url is None:
+                if is_bundle and filename == f"{page.accession}.txt":
+                    root_bundle_url = _root_level_bundle_url(
+                        page.source_url, href, page.accession
+                    )
+                if archive_url is None and root_bundle_url is None:
                     diagnostics.add("unsafe_href", row_key, href)
 
-            if _is_bundle_row(description, filename, page.accession):
+            if is_bundle:
                 if bundle_url is not None:
                     diagnostics.add(
                         "duplicate_filename", row_key, "duplicate bundle row"
                     )
                 elif archive_url is not None:
                     bundle_url = archive_url
+                    bundle_size = byte_size
+                elif root_bundle_url is not None:
+                    bundle_url = root_bundle_url
                     bundle_size = byte_size
                 elif byte_size is not None:
                     bundle_size = byte_size
@@ -371,6 +380,32 @@ def _same_accession_archive_url(
     except ValueError:
         return None
     return resolved
+
+
+def _root_level_bundle_url(
+    source_url: str, href: str, accession: AccessionNumber
+) -> str | None:
+    if not href.strip() or "?" in href or "#" in href:
+        return None
+    try:
+        source = urlsplit(source_url)
+        target = urlsplit(_resolve_href_without_normalizing(source_url, href.strip()))
+        source_archive = validate_archive_url(source_url, accession)
+    except ValueError:
+        return None
+    expected_path = f"/Archives/edgar/data/{source_archive.archive_cik}/{accession}.txt"
+    if not _same_origin(source, target) or target.path != expected_path:
+        return None
+    canonical = full_submission_url_for(source_archive.archive_cik, accession)
+    try:
+        validate_archive_url(
+            canonical,
+            accession,
+            expected_archive_cik=source_archive.archive_cik,
+        )
+    except ValueError:
+        return None
+    return canonical
 
 
 def _same_origin(source: SplitResult, target: SplitResult) -> bool:

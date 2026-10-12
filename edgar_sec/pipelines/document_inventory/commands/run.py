@@ -4,9 +4,13 @@ from __future__ import annotations
 
 import json
 from dataclasses import asdict
+import sys
 from typing import Any
 
+from tqdm import tqdm
+
 from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.foundation.runtime.progress import make_tqdm_callback
 from edgar_sec.pipelines.document_inventory.commands.common import (
     resolve_artifacts_root,
 )
@@ -29,16 +33,39 @@ def cmd_run(args: Any) -> int:
         "fixture_id": run.fixture_id,
         "work_order_version": run.work_order_version,
     }
-    summary = run_missing_accessions(
-        paths.work_order_path(),
-        identity,
-        paths,
-        http_client=getattr(args, "http_client", None),
-        profile=getattr(args, "profile", None),
-        workers=args.workers,
-        retry_failures=args.retry_failures,
-        stale_lock_confirmed=args.confirm_stale_lock,
+    show_progress = (
+        not getattr(args, "json", False)
+        and not getattr(args, "no_progress", False)
+        and sys.stderr.isatty()
+        and projection.work_order_rows > 0
     )
+    progress_bar = (
+        tqdm(
+            total=projection.work_order_rows,
+            desc="Inventory",
+            unit="accession",
+            dynamic_ncols=True,
+        )
+        if show_progress
+        else None
+    )
+    try:
+        summary = run_missing_accessions(
+            paths.work_order_path(),
+            identity,
+            paths,
+            http_client=getattr(args, "http_client", None),
+            profile=getattr(args, "profile", None),
+            workers=args.workers,
+            retry_failures=args.retry_failures,
+            stale_lock_confirmed=args.confirm_stale_lock,
+            progress_callback=(
+                make_tqdm_callback(progress_bar) if progress_bar else None
+            ),
+        )
+    finally:
+        if progress_bar is not None:
+            progress_bar.close()
     if summary.cancelled:
         atomic_write_json(
             paths.cancelled_path(), {"run_id": summary.run_id, "cancelled": True}

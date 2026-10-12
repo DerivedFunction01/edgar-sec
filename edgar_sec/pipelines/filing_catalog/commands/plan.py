@@ -40,6 +40,11 @@ def cmd_plan(args: argparse.Namespace) -> int:
         if args.scope == SCOPE_POLICY:
             if args.cohort:
                 raise ValueError("--cohort is only valid for deterministic scope")
+            if args.accession_limit is not None or args.min_exhibit_like is not None:
+                raise ValueError(
+                    "--accession-limit and --min-exhibit-like are only valid "
+                    "for deterministic scope"
+                )
             policy = _load_policy(args)
             plan = build_policy_plan(
                 args.catalog,
@@ -58,6 +63,8 @@ def cmd_plan(args: argparse.Namespace) -> int:
                 document_suffixes=(tuple(args.suffixes) if args.suffixes else None),
                 dates=args.dates,
                 limit=args.limit,
+                accession_limit=args.accession_limit,
+                min_exhibit_like=args.min_exhibit_like,
                 cohort=args.cohort or None,
                 progress=emit_progress,
             )

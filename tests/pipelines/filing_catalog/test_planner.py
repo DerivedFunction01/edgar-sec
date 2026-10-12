@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -26,6 +27,7 @@ from edgar_sec.pipelines.filing_catalog.publication import (
     PlanConflictError,
     plan_bundle_complete,
 )
+from tests.support import era_submission_metadata
 
 
 @pytest.fixture
@@ -339,6 +341,76 @@ def test_planner_refuses_a_negative_limit(
 ) -> None:
     with pytest.raises(ValueError, match="limit must be non-negative"):
         plan(catalog_id, artifacts_root, limit=-1)
+
+
+def test_accession_limit_counts_unique_accessions_and_keeps_cofilers(
+    tmp_path: Path,
+) -> None:
+    source = era_submission_metadata(tmp_path / "era-source.parquet")
+    artifacts_root = tmp_path / "accessions"
+    manifest = materialize(source, artifacts_root)
+
+    meta = plan(
+        str(manifest["catalog_id"]),
+        artifacts_root,
+        accession_limit=2,
+        min_exhibit_like=2,
+    )
+    target_files = sorted(
+        _plan_dir(artifacts_root, meta).glob("targets/form=*/data.parquet")
+    )
+    rows = [row for path in target_files for row in pq.read_table(path).to_pylist()]
+
+    assert meta["selected_accessions_count"] == 2
+    assert meta["selected_exhibit_like_accessions_count"] == 2
+    assert len(rows) == 3
+    assert len({row["accession"] for row in rows}) == 2
+    assert sorted(Counter(row["accession"] for row in rows).values()) == [1, 2]
+    assert all(row["primary_exhibit_like"] for row in rows)
+
+
+def test_accession_minimum_can_validate_an_uncapped_cohort(
+    tmp_path: Path,
+) -> None:
+    source = era_submission_metadata(tmp_path / "era-source.parquet")
+    artifacts_root = tmp_path / "uncapped"
+    manifest = materialize(source, artifacts_root)
+
+    meta = plan(str(manifest["catalog_id"]), artifacts_root, min_exhibit_like=1)
+
+    assert meta["selected_exhibit_like_accessions_count"] >= 1
+    assert (
+        meta["selected_accessions_count"]
+        > meta["selected_exhibit_like_accessions_count"]
+    )
+
+
+@pytest.mark.parametrize(
+    ("options", "message"),
+    [
+        ({"limit": 1, "accession_limit": 1}, "mutually exclusive"),
+        ({"limit": 1, "min_exhibit_like": 1}, "cannot be used with per-form limit"),
+        (
+            {"accession_limit": 1, "min_exhibit_like": 2},
+            "cannot exceed accession_limit",
+        ),
+    ],
+)
+def test_accession_quota_rejects_conflicting_limits(
+    catalog_id: str,
+    artifacts_root: Path,
+    options: dict[str, int],
+    message: str,
+) -> None:
+    with pytest.raises(ValueError, match=message):
+        plan(catalog_id, artifacts_root, **options)
+
+
+def test_accession_quota_refuses_when_the_exhibit_minimum_is_unavailable(
+    catalog_id: str, artifacts_root: Path
+) -> None:
+    with pytest.raises(ValueError, match="min_exhibit_like cannot be met"):
+        plan(catalog_id, artifacts_root, min_exhibit_like=1)
 
 
 def test_planner_refuses_an_unsafe_form_filter(

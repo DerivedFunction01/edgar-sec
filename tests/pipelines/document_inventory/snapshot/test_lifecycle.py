@@ -58,6 +58,12 @@ class _RecordingFakeHttp:
 
 
 def _build_plan(artifacts_root: Path, plan_id: str, table: pa.Table) -> None:
+    if "primary_exhibit_like" not in table.column_names:
+        table = table.add_column(
+            11,
+            pa.field("primary_exhibit_like", pa.bool_()),
+            pa.array([False] * table.num_rows, type=pa.bool_()),
+        )
     root = FilingCatalogPaths(artifacts_root).plan_dir(plan_id)
     root.mkdir(parents=True)
     (root / "selection_report.json").write_text("{}", encoding="utf-8")
@@ -76,7 +82,7 @@ def _build_plan(artifacts_root: Path, plan_id: str, table: pa.Table) -> None:
     )
     payload = {
         "plan_id": plan_id,
-        "plan_schema_version": "1.2",
+        "plan_schema_version": "1.4",
         "catalog_id": "catalog-test",
         "scope": "deterministic",
         "forms": forms,

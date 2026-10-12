@@ -90,6 +90,14 @@ def test_materialization_constructs_qualified_placeholder_links(tmp_path) -> Non
             "size": 67488,
         },
         {
+            "accession_number": "0000899681-00-000407",
+            "filing_date": "2000-11-14",
+            "form": "10-Q",
+            "primary_document": "ex-10.1.htm",
+            "archive_url": "",
+            "size": 67488,
+        },
+        {
             "accession_number": "0000899681-00-000406",
             "filing_date": "2000-11-14",
             "form": "10-Q",
@@ -123,6 +131,9 @@ def test_materialization_constructs_qualified_placeholder_links(tmp_path) -> Non
         "https://www.sec.gov/Archives/edgar/data/898015/000089968100000406/"
         "0000899681-00-000406.txt"
     )
+    assert observed["000089968100000407"]["primary_exhibit_like"] is True
+    assert observed["000089968100000405"]["primary_exhibit_like"] is False
+    assert observed["000089968100000406"]["primary_exhibit_like"] is False
 
 
 def test_unnest_query_normalizes_whitespace_primary_documents() -> None:

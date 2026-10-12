@@ -38,19 +38,20 @@ def make_tqdm_callback(
         event_type = event.get("type", "")
 
         if event_type == "worker_failed":
-            state["fail"] += 1
+            state["fail"] += int(event.get("count", 1))
             msg = f"worker failed: {event.get('error', 'unknown error')}"
             if warning:
                 warning(msg)
             else:
                 tqdm.write(msg)
         else:
+            count = int(event.get("count", 1))
             if event.get("status") in ("ok", "cached"):
-                state["ok"] += 1
+                state["ok"] += count
             else:
-                state["fail"] += 1
+                state["fail"] += count
             state["hist"] += int(event.get("historical_files", 0) or 0)
-            pbar.update(1)
+            pbar.update(count)
 
         postfix = {
             "ok": state["ok"],

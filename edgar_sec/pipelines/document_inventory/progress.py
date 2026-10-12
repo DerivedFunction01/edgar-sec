@@ -148,6 +148,14 @@ class ProgressStore:
             [accession],
         ).fetchone()[0]
 
+    def outcome_status_counts(self) -> dict[str, int]:
+        return {
+            status: count
+            for status, count in self._con.execute(
+                "SELECT status, count(*) FROM outcomes GROUP BY status ORDER BY status"
+            ).fetchall()
+        }
+
     def counts(self) -> tuple[int, int, int]:
         return self._con.execute(
             "SELECT count(*), count(*) FILTER (WHERE status IN "
@@ -155,8 +163,9 @@ class ProgressStore:
             "(SELECT count(*) FROM entries) FROM outcomes"
         ).fetchone()
 
-    def record(self, result: Any, *, index_url: str) -> None:
+    def record(self, result: Any, *, index_url: str) -> str:
         outcome = outcome_row(result, index_url=index_url)
+        status = str(outcome["status"])
         values = tuple(outcome.get(field.name) for field in OUTCOME_SCHEMA)
         self._con.execute("BEGIN TRANSACTION")
         try:
@@ -171,6 +180,7 @@ class ProgressStore:
         except BaseException:
             self._con.execute("ROLLBACK")
             raise
+        return status
 
     def import_accession(
         self,

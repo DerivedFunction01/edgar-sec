@@ -22,10 +22,86 @@
 - The tracked tree contains no portable S0 audit result or audit-selected historical
   fixture manifest. The existing fixture/tests do not establish 100–200-page era/form
   coverage or a live SEC finding.
-- Next: obtain a sufficiently broad published catalog snapshot and explicit
-  authorization for SEC research, capture the stratified pages through S2, then commit
-  the portable audit evidence and selected sanitized fixtures before finalizing S3/S6
+- A live review run now exists. It is the input to the
+  analysis below; it is not yet a portable audit result.
+- Next: run the analysis plan in the next section, then commit the portable audit
+  table, selected sanitized fixtures, and decision record before finalizing S3/S6
   acceptance.
+
+## Analysis plan for the live review run
+
+### Run inventory (observed, 2026-10-12)
+
+- 500 cases, 3,957 entry rows (3,207 `document_format`, 750 `data_file`). Every
+  entry has a non-null `sequence`, `document_type`, `filename`, and `href`.
+- Accession-year era, from the accession's middle two digits: legacy `94–99` = 84
+  cases, transition `00–04` = 79, modern `05+` = 337.
+- One legacy case, `0000007084-96-000014`, has `bundle_url: null` and two
+  `unsafe_href` diagnostics (`/Archives/edgar/data/7084/` and the `.txt` path). This is
+  the first concrete legacy edge case to examine.
+- The run has no `form` or `filing_date` columns, so "expected form type" cannot be
+  checked from the run alone. It must be joined to the S1 catalog plan by accession.
+- No case is `unrecognized` or `parse_error`. The run therefore does not exercise the
+  unrecognized-page refusal path.
+
+### Hypotheses to test, not facts to assume
+
+The superseded `roadmap/old/execution_1.md` §1.1 (lines 48–347) makes these claims from
+the catalog and live header audits. S0 must test them against the review run and the
+catalog:
+
+- H1: sequence-1 inversion (sequence-1 exhibit, a later primary) occurs mainly in
+  2000–2004 and is zero after 2005.
+- H2: 1993–1999 filings are monolithic bundles with no individual links.
+- H3: post-2005 exhibit-like primary filenames (for example `ex99-1.htm`, `bylaw.htm`)
+  are registered as the primary form type in the SEC header.
+- H4: statutory exhibit regex and form-token patterns separate exhibits from ticker or
+  company names. The regex and token patterns must be checked against observed
+  filenames, not adopted as given.
+
+### Steps
+
+1. **Integrity.** For each case, confirm `response_sha256` matches the raw bytes of
+   the source record. Record any mismatch between `source.inert.html` and the
+   original response, since the file name suggests inert sanitization.
+2. **Table reconstruction.** Re-parse each `source.inert.html` with the existing
+   selectolax tree (`engine.document.html.tree`), without the production
+   `parse_html_index`, and compare rows to `entries.csv` on `table_kind`,
+   `row_ordinal`, `sequence`, `document_type`, `filename`, `href`, and `byte_size`.
+   Any difference is either a parser regression or capture drift and must be
+   recorded.
+3. **Link consistency.** Check that `href`'s basename equals `filename`, that
+   `archive_url` is the same-accession archive path resolved from `href`, that `/ix?doc=`
+   wrappers unwrap to the archive path, and that `bundle_url` is the advertised
+   `.txt` row, not a synthesized path. Classify each mismatch.
+4. **Sequence versus type.** Join each accession to its S1 catalog form. For each
+   case, compare the sequence-1 `document_type` with the form and family aliases. Report
+   the first sequence whose type matches the form, and every case where sequence 1
+   is an exhibit (`EX-*`, `GRAPHIC`, `ZIP`) while a later row matches the form.
+   Separate duplicate and out-of-order sequences from displacement.
+5. **Edge cases.** Tabulate per era: `unsafe_href` diagnostics, `bundle_url: null`,
+   empty or ambiguous `filename`, duplicate filenames, duplicate or out-of-order
+   sequences, zero-row tables, empty `document_label`, and cases with exhibit-like
+   or form-name-like primary filenames.
+6. **Era cross-tab.** Cross-tabulate steps 3–5 by era (legacy, transition, modern).
+   Each hypothesis H1–H4 gets a supporting count, a counter-example list, and a
+   verdict.
+7. **Filing-catalog policy input.** For the final goal, quantify how many sampled
+   primary documents have exhibit-like or form-name-like filenames that the current
+   `filing_catalog` filters would exclude (filters are in
+   `edgar_sec/domain/filing_catalog/filters.py`), and list them by era and form. This
+   is the evidence for a selection-policy change that admits such filenames. The
+   change itself is a later code task.
+
+### Output and tooling
+
+- The analysis is disposable exploratory tooling, not production code. It lives in
+  `.artifacts/document_inventory/review-runs/run-20261012_012954/analysis/`, and writes
+  `summary.json`, per-step CSVs, and a short markdown report there.
+- Step 1 results decide whether the rest of the analysis is trusted. Steps 2–7 do not
+  start until step 1 is clean or its mismatches are explained.
+- The tracked result is a sanitized portable table, decision record, and selected
+  fixtures under `tests/fixtures/`, produced only after the analysis.
 
 ## Objective
 

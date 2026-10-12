@@ -52,6 +52,42 @@ def test_value_counts_report_distinct_ciks(inventory: InventoryStatistics) -> No
         assert row["cik_count"] == 10
 
 
+def test_exhibit_like_counts_report_distinct_accessions(tmp_path: Path) -> None:
+    locators = [
+        make_locator(
+            0,
+            primary_exhibit_like=True,
+            representative_accession="shared-accession",
+        ),
+        make_locator(
+            1,
+            primary_exhibit_like=True,
+            representative_accession="shared-accession",
+        ),
+        make_locator(
+            2,
+            primary_exhibit_like=True,
+            representative_accession="other-accession",
+        ),
+    ]
+    inventory = InventoryStatistics(write_snapshot(tmp_path / "exhibit", locators))
+
+    counts = {
+        row["value"]: row for row in inventory.value_counts("primary_exhibit_like")
+    }
+
+    assert counts["true"]["locator_count"] == 3
+    assert counts["true"]["accession_count"] == 2
+    assert inventory.check_floor_feasibility({"primary_exhibit_like": {"true": 2}})[
+        "primary_exhibit_like"
+    ]["true"] == {
+        "required": 2,
+        "available": 2,
+        "feasible": True,
+        "deficit": 0,
+    }
+
+
 def test_value_counts_reject_an_unknown_dimension(
     inventory: InventoryStatistics,
 ) -> None:

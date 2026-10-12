@@ -50,9 +50,11 @@ _POOL_SELECTED = frozenset(
         "has_revival_gap",
         "locator_class",
         "stub_suspect",
+        "primary_exhibit_like",
         "company_family",
         "reported_size",
         "representative_cik",
+        "representative_accession",
     }
 )
 
@@ -74,6 +76,7 @@ _OCCURRENCE_SELECTED = frozenset(
         "document_path",
         "archive_url",
         "document_path_source",
+        "primary_exhibit_like",
         "reported_size",
         "is_xbrl",
         "is_inline_xbrl",
@@ -102,6 +105,7 @@ _RANKED_ORDER_EXPR = "sha256(CAST(? AS VARCHAR) || ranked.document_locator_key)"
 _SELECTED_TABLE = "selected_keys"
 _LOCATOR_KEYS_TABLE = "requested_locator_keys"
 _CIK_TABLE = "requested_ciks"
+_ACCESSION_TABLE = "excluded_accessions"
 
 
 class SelectionSessionError(RuntimeError):
@@ -186,6 +190,9 @@ class CandidateSource:
                     f"CREATE OR REPLACE TEMP TABLE {table} "
                     "(document_locator_key VARCHAR)"
                 )
+            con.execute(
+                f"CREATE OR REPLACE TEMP TABLE {_ACCESSION_TABLE} (accession VARCHAR)"
+            )
             self._con = con
             yield self
         finally:
@@ -239,9 +246,38 @@ class CandidateSource:
     # ---------------------------------------------------------------- pools
 
     def pool_for_value(
-        self, dimension: str, value: str, limit: int = 60
+        self,
+        dimension: str,
+        value: str,
+        limit: int = 60,
+        *,
+        exclude_accessions: Sequence[str] = (),
     ) -> list[dict[str, Any]]:
         column = self._dimension(dimension)
+        if dimension == "primary_exhibit_like":
+            self._fill(_ACCESSION_TABLE, exclude_accessions)
+            query = f"""
+                WITH ranked AS (
+                    SELECT {_POOL_SELECT},
+                           ROW_NUMBER() OVER (
+                               PARTITION BY l.representative_accession
+                               ORDER BY {_ORDER_EXPR}
+                           ) AS accession_rank
+                    FROM {self._locator_source()}
+                    WHERE {self._exclusion_predicate()}
+                      AND {self.filters.predicate()}
+                      AND l.{column} = ?
+                      AND l.representative_accession NOT IN (
+                          SELECT accession FROM {_ACCESSION_TABLE}
+                      )
+                )
+                SELECT {_POOL_SELECT}
+                FROM ranked
+                WHERE accession_rank = 1
+                ORDER BY {_RANKED_ORDER_EXPR}
+                LIMIT {int(limit)}
+            """
+            return self._rows(query, [self.seed, value, self.seed])
         query = f"""
             SELECT {_POOL_SELECT}
             FROM {self._locator_source()}
@@ -293,6 +329,27 @@ class CandidateSource:
         """Return candidates satisfying every filter of one composite stratum."""
         clauses = [self._exclusion_predicate(), self.filters.predicate()]
         clauses.extend(f"l.{self._dimension(dimension)} = ?" for dimension in filters)
+        if "primary_exhibit_like" in filters:
+            query = f"""
+                WITH ranked AS (
+                    SELECT {_POOL_SELECT},
+                           ROW_NUMBER() OVER (
+                               PARTITION BY l.representative_accession
+                               ORDER BY {_ORDER_EXPR}
+                           ) AS accession_rank
+                    FROM {self._locator_source()}
+                    WHERE {" AND ".join(clauses)}
+                )
+                SELECT {_POOL_SELECT}
+                FROM ranked
+                WHERE accession_rank = 1
+                ORDER BY {_RANKED_ORDER_EXPR}
+                LIMIT {int(limit)}
+            """
+            params = (
+                [self.seed] + [str(value) for value in filters.values()] + [self.seed]
+            )
+            return self._rows(query, params)
         query = f"""
             SELECT {_POOL_SELECT}
             FROM {self._locator_source()}

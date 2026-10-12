@@ -230,7 +230,7 @@ def _artifacts_root(catalog_artifacts_root: Path) -> Path:
     return catalog_artifacts_root
 
 
-def test_policy_plan_locator_groups_are_the_eighteen_column_schema(
+def test_policy_plan_locator_groups_are_the_nineteen_column_schema(
     catalog_snapshot: tuple[dict[str, object], Path],
     catalog_artifacts_root: Path,
 ) -> None:
@@ -242,7 +242,7 @@ def test_policy_plan_locator_groups_are_the_eighteen_column_schema(
 
     schema = pq.read_schema(plan_dir / LOCATOR_GROUPS_FILE)
     assert list(schema.names) == list(LOCATOR_POLICY_COLUMNS)
-    assert len(schema.names) == 18
+    assert len(schema.names) == 19
     assert set(LOCATOR_BASE_COLUMNS) <= set(schema.names)
 
 
@@ -511,6 +511,7 @@ def test_seed_cohort_replaces_configured_seed_csv_and_is_fingerprinted(
     cohort = _seed_cohort(
         catalog_artifacts_root, tmp_path, name="cohort-seeds", cik="320193"
     )
+    policy = _policy()
 
     meta = plan_policy(
         str(manifest["catalog_id"]),
@@ -560,8 +561,14 @@ def test_a_policy_plan_publishes_its_normalized_seed_set(
     manifest, _ = catalog_snapshot
     artifacts_root = _artifacts_root(catalog_artifacts_root)
     seed_path = _seed_csv(tmp_path / "seed-cik.csv", "default")
+    policy = _policy()
 
-    meta = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
+    meta = plan_policy(
+        str(manifest["catalog_id"]),
+        policy,
+        artifacts_root,
+        seed_filers=read_seed_filers_csv(seed_path),
+    )
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(meta["plan_id"])
 
     sidecar = plan_dir / SEED_FILERS_FILE
@@ -596,15 +603,20 @@ def test_editing_the_seed_csv_changes_the_plan_identity(
     manifest, _ = catalog_snapshot
     artifacts_root = _artifacts_root(catalog_artifacts_root)
     seed_path = _seed_csv(tmp_path / "seed-cik.csv", "default")
+    policy = _policy()
 
     first = plan_policy(
         str(manifest["catalog_id"]),
+        policy,
         artifacts_root,
+        seed_filers=read_seed_filers_csv(seed_path),
     )
     _seed_csv(seed_path, "renamed")
     second = plan_policy(
         str(manifest["catalog_id"]),
+        policy,
         artifacts_root,
+        seed_filers=read_seed_filers_csv(seed_path),
     )
     assert first["seed_fingerprint"] != second["seed_fingerprint"]
     assert first["plan_id"] != second["plan_id"]
@@ -619,12 +631,23 @@ def test_a_seed_plan_reused_after_the_csv_changes_is_refused(
     manifest, _ = catalog_snapshot
     artifacts_root = _artifacts_root(catalog_artifacts_root)
     seed_path = _seed_csv(tmp_path / "seed-cik.csv", "default")
+    policy = _policy()
 
-    first = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
+    first = plan_policy(
+        str(manifest["catalog_id"]),
+        policy,
+        artifacts_root,
+        seed_filers=read_seed_filers_csv(seed_path),
+    )
     plan_dir = resolve_filing_catalog_paths(artifacts_root).plan_dir(first["plan_id"])
 
     _seed_csv(seed_path, "edited")
-    second = plan_policy(str(manifest["catalog_id"]), policy, artifacts_root)
+    second = plan_policy(
+        str(manifest["catalog_id"]),
+        policy,
+        artifacts_root,
+        seed_filers=read_seed_filers_csv(seed_path),
+    )
 
     assert second["plan_id"] != first["plan_id"]
     # The old bundle still verifies; it is not what this request resolves to.

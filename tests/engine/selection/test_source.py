@@ -59,6 +59,44 @@ def test_pool_for_value_matches_and_respects_the_limit(
         assert len(source.pool_for_value("era", "historical", limit=2)) == 2
 
 
+def test_exhibit_like_pools_deduplicate_and_exclude_by_accession(
+    tmp_path: Path,
+) -> None:
+    locators = [
+        make_locator(
+            0,
+            primary_exhibit_like=True,
+            representative_accession="shared-accession",
+        ),
+        make_locator(
+            1,
+            primary_exhibit_like=True,
+            representative_accession="shared-accession",
+        ),
+        make_locator(
+            2,
+            primary_exhibit_like=True,
+            representative_accession="other-accession",
+        ),
+    ]
+    snapshot = write_snapshot(tmp_path / "exhibits", locators)
+
+    with _source(snapshot).session() as source:
+        pool = source.pool_for_value("primary_exhibit_like", "true")
+        remainder = source.pool_for_value(
+            "primary_exhibit_like",
+            "true",
+            exclude_accessions=("shared-accession",),
+        )
+
+    assert len(pool) == 2
+    assert {row["representative_accession"] for row in pool} == {
+        "shared-accession",
+        "other-accession",
+    }
+    assert {row["representative_accession"] for row in remainder} == {"other-accession"}
+
+
 def test_pool_for_value_rejects_an_unknown_dimension(snapshot_dir: Path) -> None:
     """Only dimensions in the declared vocabulary are addressable."""
     with (

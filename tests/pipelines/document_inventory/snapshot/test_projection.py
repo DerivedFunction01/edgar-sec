@@ -12,7 +12,10 @@ import pytest
 
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import index_url_for
-from edgar_sec.domain.filing_catalog.schemas import TARGET_SCHEMA
+from edgar_sec.domain.filing_catalog.schemas import (
+    POLICY_TARGET_SCHEMA,
+    TARGET_SCHEMA,
+)
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
@@ -56,6 +59,14 @@ def _build_plan(
     forms: list[str] | None = None,
     scope: str = "deterministic",
 ) -> Path:
+    if "primary_exhibit_like" not in table.column_names:
+        table = table.add_column(
+            11,
+            pa.field("primary_exhibit_like", pa.bool_()),
+            pa.array([False] * table.num_rows, type=pa.bool_()),
+        )
+    if scope == "policy":
+        table = pa.Table.from_pylist(table.to_pylist(), schema=POLICY_TARGET_SCHEMA)
     catalog_paths = FilingCatalogPaths(artifacts_root)
     root = catalog_paths.plan_dir(plan_id)
     root.mkdir(parents=True)
@@ -77,7 +88,7 @@ def _build_plan(
     )
     payload = {
         "plan_id": plan_id,
-        "plan_schema_version": "1.2",
+        "plan_schema_version": "1.4",
         "catalog_id": "catalog-test",
         "scope": scope,
         "forms": forms,
@@ -144,7 +155,7 @@ def _build_empty_plan(artifacts_root: Path, plan_id: str) -> None:
     )
     payload = {
         "plan_id": plan_id,
-        "plan_schema_version": "1.2",
+        "plan_schema_version": "1.4",
         "catalog_id": "catalog-test",
         "scope": "deterministic",
         "forms": ["10-K"],
@@ -196,6 +207,7 @@ def _write_scale_plan(artifacts_root: Path, row_count: int) -> str:
                 "archive_url": ["https://www.sec.gov/Archives/edgar/data"]
                 * len(batch_rows),
                 "document_path_source": ["primary_document"] * len(batch_rows),
+                "primary_exhibit_like": [False] * len(batch_rows),
                 "reported_size": [None] * len(batch_rows),
                 "is_xbrl": [False] * len(batch_rows),
                 "is_inline_xbrl": [False] * len(batch_rows),
@@ -204,7 +216,7 @@ def _write_scale_plan(artifacts_root: Path, row_count: int) -> str:
             writer.write_table(pa.Table.from_pydict(rows, schema=TARGET_SCHEMA))
     payload = {
         "plan_id": plan_id,
-        "plan_schema_version": "1.2",
+        "plan_schema_version": "1.4",
         "catalog_id": "catalog-scale",
         "scope": "deterministic",
         "forms": ["10-K"],

@@ -20,6 +20,7 @@ from edgar_sec.domain.filing_catalog.filters import (
 )
 from edgar_sec.domain.filing_catalog.schemas import (
     LOCATOR_POLICY_COLUMNS,
+    OCCURRENCE_FEATURE_COLUMNS,
     SCOPE_DETERMINISTIC,
     SCOPE_POLICY,
     TARGET_COLUMNS,
@@ -62,6 +63,12 @@ from edgar_sec.pipelines.filing_catalog.discovery import (
     eligible_year_bounds,
     resolve_catalog_reference,
 )
+from edgar_sec.pipelines.filing_catalog.accessions import (
+    select_accession_groups,
+    selected_accession_counts,
+    validate_limit_options,
+)
+from edgar_sec.pipelines.filing_catalog.cohort_seed import cohort_seed_filers
 from edgar_sec.pipelines.filing_catalog.family_index import (
     resolve_active_family_index,
 )
@@ -177,37 +184,6 @@ def _resolve_cohort(
         raise ValueError(f"unable to load cohort {identifier!r}: {error}") from error
 
 
-def _cohort_seed_filers(record: CohortRecord, dataset: Path) -> dict[str, SeedFiler]:
-    try:
-        with connect() as con:
-            rows = con.execute(
-                "SELECT cik_padded FROM read_parquet(?) ORDER BY ordinal",
-                [str(dataset)],
-            ).fetchall()
-    except Exception as error:
-        raise ValueError(
-            f"unable to read cohort seeds {record.cohort_id!r}: {error}"
-        ) from error
-
-    seed_map: dict[str, SeedFiler] = {}
-    for (cik_value,) in rows:
-        if (
-            not isinstance(cik_value, str)
-            or len(cik_value) != 10
-            or not cik_value.isdigit()
-        ):
-            raise ValueError(f"cohort contains invalid seed CIK: {cik_value!r}")
-        if cik_value in seed_map:
-            raise ValueError(f"cohort contains duplicate seed CIK: {cik_value}")
-        seed_map[cik_value] = SeedFiler(
-            cik=cik_value,
-            seed_group="cohort",
-            coverage_tags=record.name or record.cohort_id,
-            notes=f"From cohort {record.cohort_id}",
-        )
-    return seed_map
-
-
 def plan(
     catalog: str,
     output_root: str | Path | None = None,
@@ -216,6 +192,8 @@ def plan(
     document_suffixes: tuple[str, ...] | None = None,
     dates: str | None = None,
     limit: int | None = None,
+    accession_limit: int | None = None,
+    min_exhibit_like: int | None = None,
     cohort: str | None = None,
     progress: ProgressCallback = None,
     row_group_size: int | None = None,
@@ -227,8 +205,7 @@ def plan(
     row_group_size = resolve_row_group_size(row_group_size)
     if not catalog:
         raise ValueError("catalog is required")
-    if limit is not None and limit < 0:
-        raise ValueError("limit must be non-negative")
+    validate_limit_options(limit, accession_limit, min_exhibit_like)
 
     suffixes = normalize_suffixes(
         document_suffixes
@@ -255,6 +232,8 @@ def plan(
         "document_suffixes": list(suffixes),
         "date_selection": date_selection_to_json(date_selection),
         "limit": limit,
+        "accession_limit": accession_limit,
+        "min_exhibit_like": min_exhibit_like,
         "plan_schema_version": TARGET_PLAN_SCHEMA_VERSION,
     }
     if cohort_input is not None:
@@ -332,6 +311,16 @@ def plan(
             shared_where.append(date_clause)
 
         discovery = " AND ".join(shared_where) if shared_where else "TRUE"
+
+        selected_accessions_count = select_accession_groups(
+            con, source, discovery, accession_limit, min_exhibit_like
+        )
+        if accession_limit is not None:
+            shared_where.append(
+                "accession IN (SELECT accession FROM selected_accessions)"
+            )
+            discovery = " AND ".join(shared_where) if shared_where else "TRUE"
+
         available = [
             str(row[0])
             for row in con.execute(
@@ -384,6 +373,10 @@ def plan(
                 locator_source = f"read_parquet([{file_list}])"
             else:
                 locator_source = f"(SELECT * FROM {source} WHERE false)"
+            (
+                selected_accessions_count,
+                selected_exhibit_like_count,
+            ) = selected_accession_counts(con, locator_source)
             locator_count = copy_query_to_parquet(
                 con,
                 _locator_groups_query(locator_source),
@@ -399,6 +392,8 @@ def plan(
                 "date_selection_text": format_date_selection(date_selection),
                 "active_targets_count": total_rows,
                 "unique_locators_count": locator_count,
+                "selected_accessions_count": selected_accessions_count,
+                "selected_exhibit_like_accessions_count": selected_exhibit_like_count,
                 "counts": counts,
             }
             plan_meta = {
@@ -411,10 +406,14 @@ def plan(
                 "date_selection": date_selection_to_json(date_selection),
                 "date_selection_text": format_date_selection(date_selection),
                 "limit": limit,
+                "accession_limit": accession_limit,
+                "min_exhibit_like": min_exhibit_like,
                 "counts": counts,
                 "selected_rows": total_rows,
                 "active_targets_count": total_rows,
                 "unique_locators_count": locator_count,
+                "selected_accessions_count": selected_accessions_count,
+                "selected_exhibit_like_accessions_count": selected_exhibit_like_count,
                 "request_fingerprint": hashlib.sha256(
                     json.dumps(request, sort_keys=True).encode("utf-8")
                 ).hexdigest(),
@@ -562,7 +561,7 @@ def plan_policy(
     seed_cohort_input = _resolve_cohort(paths.artifacts_root, seed_cohort)
     if seed_cohort_input is not None:
         seed_cohort_record, seed_cohort_dataset = seed_cohort_input
-        pinned_seed = _cohort_seed_filers(seed_cohort_record, seed_cohort_dataset)
+        pinned_seed = cohort_seed_filers(seed_cohort_record, seed_cohort_dataset)
     else:
         pinned_seed = dict(seed_filers) if seed_filers is not None else {}
     seed_fingerprint = compute_seed_fingerprint(pinned_seed)
@@ -682,7 +681,9 @@ def plan_policy(
             # A part is schema-checked against TARGET_SCHEMA, so project the
             # published columns by name: the occurrence relation is a join, so
             # `SELECT *` would publish a `document_locator_key_1` column.
-            target_columns = ", ".join(f"o.{name}" for name in TARGET_COLUMNS)
+            target_columns = ", ".join(
+                f"o.{name}" for name in OCCURRENCE_FEATURE_COLUMNS
+            )
             for form_name in selected_forms:
                 destination = (
                     targets_root / form_partition_directory(form_name) / DATA_FILE_NAME

@@ -24,6 +24,9 @@ and `max_per_company_classification` controls its cap.
 - **Candidate SQL binds values and validates dimensions.** Policy construction rejects
   unknown dimensions and retired fields, and result mapping raises on schema drift rather
   than truncating rows.
+- **`primary_exhibit_like` is an accession-level floor dimension.** Its availability
+  and realized coverage count distinct accessions; the total policy budget remains
+  unique locators, and underfilled floors are reported rather than blocking publication.
 - **Feature snapshots are content-addressed and reused** when their inputs match.
 - **Feature snapshot metadata is stored as a DAG node in the shared SQLite catalog.**
   Its Parquet relations and parent lineage use the DAG catalog contract; no feature
@@ -64,6 +67,8 @@ and `max_per_company_classification` controls its cap.
   plan, and they do not account for competition between floors, caps, and seeds.
 - **No form-name validation against a vocabulary.** An unrecognized form name is accepted and
   yields an empty snapshot rather than an error.
+- **No form-name-like filename classifier.** Only statutory exhibit-like primary filenames
+  are exposed as a policy dimension.
 - **No plan writer, provenance, or work order.** This package returns selection values;
   publication belongs to the pipeline layer.
 - **The selection report is an untyped mapping** with no schema or version field.

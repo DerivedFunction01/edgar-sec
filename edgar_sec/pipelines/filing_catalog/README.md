@@ -15,8 +15,8 @@ for a future acquisition phase.
 Two planning scopes with genuinely different jobs:
 
 - **Deterministic** (`plan --scope deterministic`, the default) — a fast,
-  zero-heuristic slice filtered by forms, document suffixes, a date selection,
-  and an optional limit, producing the base locator projection. The date
+  rule-based slice filtered by forms, document suffixes, a date selection,
+  and an optional per-form row limit or global accession limit, producing the base locator projection. The date
   selection narrows which rows are *eligible*; this scope deliberately refuses
   to reason about eras or cohort balance.
 - **Policy** (`plan --scope policy`) — the selection engine against a declared
@@ -72,7 +72,7 @@ ways a network dependency creeps in.
 - **A plan bundle is complete when it matches its recorded manifest.** That requires
   every required file, the seed sidecar for a policy plan, and a match between the
   on-disk partition set and the one recorded in `plan.json`, so a legitimately empty
-  plan remains complete while a bundle that lost a shard is rejected. Schema 1.3
+  plan remains complete while a bundle that lost a shard is rejected. Schema 1.4
   plans also verify each selected target part's row count, byte size, and SHA-256.
 - **A zero-row plan is still structurally complete and reusable.** The `targets/`
   directory and `locator_groups.parquet` are always written.
@@ -93,6 +93,20 @@ ways a network dependency creeps in.
 - **Form filters are exact allowlists.** A form is selected only when it is named
   verbatim, so an amendment variant such as `10-K/A` is selected by listing it
   explicitly; `--forms 10-K` never reaches `10-K/A`.
+- **Exhibit-like classification is filename-only.** `primary_exhibit_like` applies the
+  statutory exhibit filename grammar to `primary_document`; it does not infer that a
+  link is valid or inspect child links from an index page. Missing primary names are false.
+- **Accession limits preserve accession groups.** `--limit` remains a per-form target-row
+  cap. `--accession-limit` is a mutually exclusive global cap on distinct accessions and
+  publishes all matching co-filer rows for each selected accession, so target-row count
+  can exceed the accession cap. Accessions are considered in ascending accession order.
+  `--min-exhibit-like N` reserves at least N qualifying accessions within that cap, then
+  fills remaining capacity. It can also assert a minimum
+  over an uncapped cohort, but cannot be combined with per-form `--limit`; infeasible
+  deterministic minimums refuse publication.
+- **Policy exhibit coverage is opt-in.** A `primary_exhibit_like=true` floor counts
+  distinct accessions and consumes the existing locator-based policy budget. Policy
+  floors retain their best-effort behavior and report any shortfall.
 - **The date filter is one selection, not separate bounds.** Per-field date flags are
   a `TypeError` at the signature: the selection is one union over `report_date`.
 - **Expansion retains 100% of the parent, and checks compatibility first.** The
@@ -150,7 +164,7 @@ ways a network dependency creeps in.
 | `dag` | Snapshot DAG operations | `[--root]`, `[--json]` |
 | `expand` | scale a policy plan while retaining every parent locator | `--parent-plan`, `--target-units`, `[--artifacts]` |
 | `materialize` | build a catalog snapshot from a Phase 1 snapshot | `[--source]`, `[--source-snapshot]`, `[--source-artifacts]`, `[--artifacts]`, `[--branch]` |
-| `plan` | publish a deterministic or policy-driven target plan | `--catalog`, `[--scope]`, `[--policy]`, `[--auto-policy]`, `[--cohort]`, `[--seed-cohort]`, `[--artifacts]`, `[--forms]`, `[--suffixes]`, `[--dates]`, `[--limit]` |
+| `plan` | publish a deterministic or policy-driven target plan | `--catalog`, `[--scope]`, `[--policy]`, `[--auto-policy]`, `[--cohort]`, `[--seed-cohort]`, `[--artifacts]`, `[--forms]`, `[--suffixes]`, `[--dates]`, `[--limit]`, `[--accession-limit]`, `[--min-exhibit-like]` |
 | `status` | report published catalogs and plans from the DAG catalog | `[--artifacts]` |
 <!-- AUTOGEN:COMMANDS:END -->
 
@@ -162,6 +176,9 @@ python run.py filing-catalog materialize --source-snapshot 2024-01-15T120000Z
 
 # Plan a deterministic target list
 python run.py filing-catalog plan --catalog --scope deterministic --forms 10-K --dates 2023-01-01..2023-12-31 --limit 100
+
+# Cap the global accession count while ensuring exhibit-like primary coverage
+python run.py filing-catalog plan --catalog --scope deterministic --accession-limit 100 --min-exhibit-like 10
 
 # Plan a policy-driven target list
 python run.py filing-catalog plan --catalog --scope policy --auto-policy --cohort curated
@@ -221,12 +238,22 @@ behavior.
 
 The deterministic scope discovers the available forms *after* applying the form,
 suffix, and date filters, writes one `targets/form=<FORM>/data.parquet` per form
-ordered by document locator, applies `limit` within the ordered subquery, and always
-writes `locator_groups.parquet`. The policy scope builds a feature snapshot over the
+ordered by document locator, and applies `--limit` within each form partition. The
+mutually exclusive `--accession-limit` selects distinct accessions globally and keeps
+all matching target rows for a selected accession. `--min-exhibit-like` gives
+exhibit-like accessions priority within that cap, or validates an uncapped cohort.
+`primary_exhibit_like` is derived from `primary_document` using the statutory exhibit
+filename grammar; the already-constructed `archive_url` is unchanged. Both scopes
+always write `locator_groups.parquet`. The policy scope builds a feature snapshot over the
 catalog's target and profile files, runs the quota selector, loads the selected and
 reserve keys into temp tables, and writes the policy locator projection and the
 reserve pool. Both write `plan.json` and `selection_report.json`, stamping
-`plan_fingerprint` from the locator groups the bundle actually holds.
+  `plan_fingerprint` from the locator groups the bundle actually holds.
+
+Policy authors opt into exhibit-like coverage with a floor on
+`primary_exhibit_like=true`. That floor counts distinct accessions, while the policy's
+overall `base_content_units` budget continues to count unique locators; any floor
+shortfall remains visible in `underfilled_floors`.
 
 The deterministic scope's date selection is a *date selection* over `report_date`:
 `--dates` takes one comma-separated union of absolute intervals and recurring
@@ -340,7 +367,7 @@ with it.
 - **`selection_report.json` is an audit artifact.** No production machine reads it or
   the feasibility prediction inside it; they exist for a human reviewing a run.
 - **Selection identity and payload integrity are separate.** `plan_fingerprint`
-  covers selected locator keys; schema 1.3 adds `target_parts` digests for the
+  covers selected locator keys; schema 1.4 adds `target_parts` digests for the
   selected occurrence Parquet files. Other sidecars remain governed by their own
   schema and validation contracts.
 - **A fresh policy plan tolerates an underfilled quota; an expansion does not.**

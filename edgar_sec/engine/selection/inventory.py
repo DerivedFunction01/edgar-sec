@@ -42,13 +42,17 @@ class InventoryStatistics:
             raise UnknownDimensionError(f"unknown selection dimension: {dimension!r}")
 
     def value_counts(self, dimension: str) -> list[dict[str, Any]]:
-        """Per-value counts of unique locators and distinct CIKs; `locator_count` counts
-        distinct *documents*, the unit a floor on that dimension is denominated in.
-        """
+        """Count policy supply by value, using accessions for exhibit-like names."""
         self._require_dimension(dimension)
+        accession_count = (
+            ", COUNT(DISTINCT representative_accession) AS accession_count"
+            if dimension == "primary_exhibit_like"
+            else ""
+        )
         query = f"""
             SELECT {dimension} AS value,
-                   COUNT(DISTINCT document_locator_key) AS locator_count,
+                   COUNT(DISTINCT document_locator_key) AS locator_count
+                   {accession_count},
                    COUNT(DISTINCT representative_cik) AS cik_count
             FROM {self.locator_relation}
             GROUP BY value
@@ -56,14 +60,22 @@ class InventoryStatistics:
         """
         with connect(threads=self._threads, memory_limit=self._memory_limit) as con:
             rows = con.execute(query).fetchall()
-        return [
-            {
-                "value": "none" if row[0] is None else str(row[0]),
+        result = []
+        for row in rows:
+            value = row[0]
+            if isinstance(value, bool):
+                value = str(value).lower()
+            item = {
+                "value": "none" if value is None else str(value),
                 "locator_count": int(row[1]),
-                "cik_count": int(row[2]),
             }
-            for row in rows
-        ]
+            if dimension == "primary_exhibit_like":
+                item["accession_count"] = int(row[2])
+                item["cik_count"] = int(row[3])
+            else:
+                item["cik_count"] = int(row[2])
+            result.append(item)
+        return result
 
     def check_floor_feasibility(
         self, floors: dict[str, dict[str, int]]
@@ -74,7 +86,7 @@ class InventoryStatistics:
         report: dict[str, dict[str, dict[str, Any]]] = {}
         for dimension, requirements in floors.items():
             available = {
-                row["value"]: row["locator_count"]
+                row["value"]: row.get("accession_count", row["locator_count"])
                 for row in self.value_counts(dimension)
             }
             report[dimension] = {}
@@ -108,8 +120,14 @@ class InventoryStatistics:
                     clauses.append(f"{dimension} = ?")
                     params.append(str(value))
                 where = " AND ".join(clauses) if clauses else "TRUE"
+                count_expression = (
+                    "COUNT(DISTINCT representative_accession)"
+                    if "primary_exhibit_like" in filters
+                    else "COUNT(*)"
+                )
                 count = con.execute(
-                    f"SELECT COUNT(*) FROM {self.locator_relation} WHERE {where}",
+                    f"SELECT {count_expression} FROM {self.locator_relation} "
+                    f"WHERE {where}",
                     params,
                 ).fetchone()
                 supply = int(count[0]) if count else 0

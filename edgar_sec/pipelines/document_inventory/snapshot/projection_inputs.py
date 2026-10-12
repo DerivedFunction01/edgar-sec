@@ -10,6 +10,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.domain.filing_catalog.schemas import (
+    POLICY_TARGET_SCHEMA,
     READABLE_TARGET_PLAN_SCHEMA_VERSIONS,
     TARGET_SCHEMA,
 )
@@ -215,8 +216,11 @@ def catalog_plan_parts(
                 "invalid_bundle", detail=f"target part unreadable: {path.name}"
             ) from exc
         schema = parquet.schema_arrow
-        if schema.names != TARGET_SCHEMA.names or not schema.equals(
-            TARGET_SCHEMA, check_metadata=False
+        expected_schema = (
+            POLICY_TARGET_SCHEMA if document["scope"] == "policy" else TARGET_SCHEMA
+        )
+        if schema.names != expected_schema.names or not schema.equals(
+            expected_schema, check_metadata=False
         ):
             raise CohortInputError(
                 "invalid_bundle", detail=f"target schema mismatch: {path.name}"

@@ -127,6 +127,19 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="max rows per form partition",
     )
+    plan_parser.add_argument(
+        "--accession-limit",
+        type=positive_int_type,
+        default=None,
+        help="global maximum distinct accessions; mutually exclusive with --limit",
+    )
+    plan_parser.add_argument(
+        "--min-exhibit-like",
+        type=positive_int_type,
+        default=None,
+        metavar="N",
+        help="minimum exhibit-like primary accessions within the accession cap",
+    )
     plan_parser.set_defaults(func=cmd_plan)
 
     expand_parser = subparsers.add_parser(

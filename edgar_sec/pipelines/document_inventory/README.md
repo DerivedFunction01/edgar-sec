@@ -36,7 +36,7 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 | `publish` | publish a completed inventory run to a DAG branch | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--artifacts]`, `[--json]` |
 | `query` | query active document inventory snapshots | `[--accession]`, `[--form]`, `[--filing-cik]`, `[--source-cik]`, `[--limit]`, `[--artifacts]`, `[--json]` |
 | `review` | generate review artifacts and compare review runs | — |
-| `run` | fetch and parse pending index pages | `--run-id`, `[--retry-failures]`, `[--workers]`, `[--confirm-stale-lock]`, `[--artifacts]`, `[--json]` |
+| `run` | fetch and parse pending index pages | `--run-id`, `[--retry-failures]`, `[--workers]`, `[--confirm-stale-lock]`, `[--no-progress]`, `[--artifacts]`, `[--json]` |
 | `status` | inspect projected inventory runs | `[--run-id]`, `[--artifacts]`, `[--json]` |
 <!-- AUTOGEN:COMMANDS:END -->
 

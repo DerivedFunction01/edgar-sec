@@ -8,6 +8,7 @@ from pathlib import Path, PurePosixPath
 from typing import Iterator
 
 from edgar_sec.domain.filing_catalog.schemas import (
+    POLICY_TARGET_SCHEMA,
     TARGET_PLAN_SCHEMA_VERSION,
     TARGET_SCHEMA,
 )
@@ -250,7 +251,10 @@ def _manifest_parts(root: Path, manifest: dict[str, object]) -> tuple[CatalogPar
             raise CatalogScopeError(
                 f"catalog target part is corrupt: {relative}"
             ) from error
-        if not schema.equals(TARGET_SCHEMA, check_metadata=False):
+        expected_schema = (
+            POLICY_TARGET_SCHEMA if manifest.get("scope") == "policy" else TARGET_SCHEMA
+        )
+        if not schema.equals(expected_schema, check_metadata=False):
             raise CatalogScopeError(f"catalog target part schema mismatch: {relative}")
         if actual_rows != rows:
             raise CatalogScopeError(

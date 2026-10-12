@@ -46,6 +46,9 @@ _SQL_COMPILER_PATHS = frozenset(
         "edgar_sec/engine/selection/features.py",
         "edgar_sec/engine/selection/snapshot_build.py",
         "edgar_sec/pipelines/filing_catalog/planner.py",
+        # The source relation and predicate are compiled by the catalog planner;
+        # accession limits are validated integers and never user-built SQL.
+        "edgar_sec/pipelines/filing_catalog/accessions.py",
         # Source paths bind at read_csv sinks; selected identifiers and delimiters
         # pass through sql_identifier/sql_literal before query composition.
         "edgar_sec/pipelines/cohort/ingestion.py",
