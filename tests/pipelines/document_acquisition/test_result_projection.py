@@ -8,7 +8,7 @@ import pytest
 
 from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.domain.identity import AccessionNumber
-from edgar_sec.pipelines.document_acquisition import result_projection
+from edgar_sec.pipelines.document_acquisition.review_artifacts import result_projection
 from edgar_sec.pipelines.document_acquisition.paths import (
     AcquisitionPaths,
     resolve_acquisition_paths,
@@ -26,7 +26,7 @@ from edgar_sec.pipelines.document_acquisition.processing_models import (
     StagedOutputRef,
 )
 from edgar_sec.foundation.serialization import canonical_hash
-from edgar_sec.pipelines.document_acquisition.result_projection import (
+from edgar_sec.pipelines.document_acquisition.review_artifacts.result_projection import (
     project_terminal_results,
 )
 from edgar_sec.pipelines.document_acquisition.schemas import StagedBodyRef

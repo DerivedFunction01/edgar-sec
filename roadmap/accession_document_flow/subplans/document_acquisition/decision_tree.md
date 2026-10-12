@@ -21,6 +21,12 @@ accession-prefixed child href while preserving stub provenance; that URL is not 
 retrieval authorization. Secondary-document hrefs continue to come from the index and
 are not rewritten.
 
+**Sequence-name distinction:** Review analysis also observes `0001.txt` as a sequence-1
+primary and `0002.txt` through `0007.txt` as sequence-matched exhibit rows. These
+secondary names are ordinary indexed documents, not extensions of the primary-stub
+allowlist. Profile role and observed type/sequence/link determine the target; a numbered
+filename alone does not.
+
 ## Status and entry point
 
 - **Implemented:** `filing_catalog` materialization/plans; S1–S6 inventory and

@@ -22,36 +22,51 @@
 - The tracked tree contains no portable S0 audit result or audit-selected historical
   fixture manifest. The existing fixture/tests do not establish 100–200-page era/form
   coverage or a live SEC finding.
-- A live review run now exists. It is the input to the
-  analysis below; it is not yet a portable audit result.
-- Next: run the analysis plan in the next section, then commit the portable audit
-  table, selected sanitized fixtures, and decision record before finalizing S3/S6
-  acceptance.
+- Four workspace-local review runs have been inspected below. They are useful for
+  selecting decision-tree cases, but their presence does not make the result portable
+  or satisfy the raw-page integrity gate.
+- Next: verify source integrity, reconstruct parser rows from captured pages, and run
+  the selected cases through the relevant S6/S9 decision paths before committing a
+  portable audit table and fixtures.
 
-## Analysis plan for the live review run
+## Analysis plan for review runs
 
-### Run inventory (observed, 2026-10-12)
+### Run inventory (workspace observation, 2026-10-12)
 
-- 500 cases, 3,957 entry rows (3,207 `document_format`, 750 `data_file`). Every
-  entry has a non-null `sequence`, `document_type`, `filename`, and `href`.
-- Accession-year era, from the accession's middle two digits: legacy `94–99` = 84
-  cases, transition `00–04` = 79, modern `05+` = 337.
-- One legacy case, `0000007084-96-000014`, has `bundle_url: null` and two
-  `unsafe_href` diagnostics (`/Archives/edgar/data/7084/` and the `.txt` path). This is
-  the first concrete legacy edge case to examine.
-- The run has no `form` or `filing_date` columns, so "expected form type" cannot be
-  checked from the run alone. It must be joined to the S1 catalog plan by accession.
-- No case is `unrecognized` or `parse_error`. The run therefore does not exercise the
-  unrecognized-page refusal path.
+- The four `index-page-v2` runs contain 2,500, 2,500, 1,000, and 2,000 cases. The two
+  2,500-case runs have identical parsed rows and observations for all shared inputs.
+  The 1,000- and 2,000-case runs overlap the first by 194 and 375 input identities.
+  Together these runs contain 4,931 distinct `(accession, request URL, response
+  digest)` identities; run totals must not be added as unique coverage. The run IDs are
+  `run-20261012_073510`, `run-20261012_081346`, `run-20261012_083608`, and
+  `run-20261012_100448` respectively.
+- The analyzer found a single catalog form context for every case. Its summary can
+  screen direct, bundle-sequence, observed-href-unresolved, and unresolved routes, plus
+  sequence/type and Form 4 path patterns. It does not execute S6 target matching or S9
+  acquisition, so it identifies candidate cases rather than validating those decisions.
+- In the 2,000-case run, the analyzer reports 43 sequence-1 exhibit inversions and
+  3,105 sequence-2-or-3 exhibit rows. In the 1,000-case run it reports 283 Form 4
+  alternative primary-path pairs. These are per-run findings, not verified strata
+  counts; the runs are not yet raw-integrity checked or stratified for S0.
+- Across the distinct input identities, observed `document_format` rows include
+  `0001.txt` 34 times at sequence 1 and secondary `0002.txt` through `0007.txt` 19,
+  11, 10, 7, 6, and 4 times respectively. The latter rows have exhibit types and
+  matching sequence numbers. A numeric filename alone is not a primary-placeholder
+  signal; S6's exact root-level primary policy remains limited to its four documented
+  names.
+- These local outputs are parser-review evidence only. Their persisted digests do not
+  establish that the stored source bytes match `response_sha256`, and no captured-page
+  reconstruction has been recorded. They cannot support an S0 acceptance claim yet.
 
 ### Hypotheses to test, not facts to assume
 
 The superseded `roadmap/old/execution_1.md` §1.1 (lines 48–347) makes these claims from
-the catalog and live header audits. S0 must test them against the review run and the
-catalog:
+the catalog and live header audits. S0 must test them against raw-verified review cases
+and the catalog:
 
 - H1: sequence-1 inversion (sequence-1 exhibit, a later primary) occurs mainly in
-  2000–2004 and is zero after 2005.
+  2000–2004 and is zero after 2005. The current 2,000-case run has 43 candidate
+  inversions; only raw-verified, era/form-stratified cases can adjudicate this claim.
 - H2: 1993–1999 filings are monolithic bundles with no individual links.
 - H3: post-2005 exhibit-like primary filenames (for example `ex99-1.htm`, `bylaw.htm`)
   are registered as the primary form type in the SEC header.
@@ -78,7 +93,9 @@ catalog:
    case, compare the sequence-1 `document_type` with the form and family aliases. Report
    the first sequence whose type matches the form, and every case where sequence 1
    is an exhibit (`EX-*`, `GRAPHIC`, `ZIP`) while a later row matches the form.
-   Separate duplicate and out-of-order sequences from displacement.
+   Separate duplicate and out-of-order sequences from displacement. Include `0001.txt`
+   primary cases separately from sequence-numbered exhibits `0002.txt`–`0007.txt`; do
+   not use filename alone to label a retrieval placeholder.
 5. **Edge cases.** Tabulate per era: `unsafe_href` diagnostics, `bundle_url: null`,
    empty or ambiguous `filename`, duplicate filenames, duplicate or out-of-order
    sequences, zero-row tables, empty `document_label`, and cases with exhibit-like
@@ -95,9 +112,10 @@ catalog:
 
 ### Output and tooling
 
-- The analysis is disposable exploratory tooling, not production code. It lives in
-  `.artifacts/document_inventory/review-runs/run-20261012_012954/analysis/`, and writes
-  `summary.json`, per-step CSVs, and a short markdown report there.
+- The offline review analyzer can analyze selected review runs together and compare
+  shared inputs. The review console accepts multiple run selections. Use run-level
+  counts for screening; deduplicate shared input identities before reporting corpus
+  totals.
 - Step 1 results decide whether the rest of the analysis is trusted. Steps 2–7 do not
   start until step 1 is clean or its mismatches are explained.
 - The tracked result is a sanitized portable table, decision record, and selected

@@ -52,7 +52,7 @@ from edgar_sec.pipelines.document_acquisition.projection_models import (
     ProcessingResultProjection,
     ProjectedTarget,
 )
-from edgar_sec.pipelines.document_acquisition.result_projection import (
+from edgar_sec.pipelines.document_acquisition.review_artifacts.result_projection import (
     project_terminal_results,
 )
 

@@ -61,12 +61,12 @@ def test_action_review_provides_plan_discovery_via_config(
     assert calls[0][2].analyze_action is operator._action_analyze_review_run
 
 
-def test_action_analyze_review_run_dispatches_cli(monkeypatch, tmp_path: Path) -> None:
+def test_action_analyze_review_runs_dispatches_cli(monkeypatch, tmp_path: Path) -> None:
     calls: list[list[str]] = []
     monkeypatch.setattr(operator, "_root", lambda: str(tmp_path))
     monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
 
-    operator._action_analyze_review_run("run-20260101_000000")
+    operator._action_analyze_review_run(("run-20260101_000000", "run-20260102_000000"))
 
     assert calls == [
         [
@@ -74,6 +74,8 @@ def test_action_analyze_review_run_dispatches_cli(monkeypatch, tmp_path: Path) -
             "analyze",
             "--run-id",
             "run-20260101_000000",
+            "--run-id",
+            "run-20260102_000000",
             "--artifacts",
             str(tmp_path),
         ]

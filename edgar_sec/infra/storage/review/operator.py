@@ -35,7 +35,7 @@ class ReviewMenuConfig:
     plan_id: str | None = None
     plans_root: Path | str | None = None
     artifacts_root: Path | str | Callable[[], Path] | None = None
-    analyze_action: Callable[[str], None] | None = None
+    analyze_action: Callable[[tuple[str, ...]], None] | None = None
     title: str = "Review Artifacts & Fixtures Console"
 
     def resolve_root(self) -> Path:
@@ -266,14 +266,28 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         if not runs:
             print(f"No review runs found under {review_root}.")
             return
-        items = [PickItem(key=run.name, label=run.name, value=run) for run in runs]
-        chosen = prompt_paginated_choice(
-            items,
-            default=items[0],
-            prompt_label="Select review run to analyze",
-        )
-        if chosen is not None:
-            config.analyze_action(chosen.key)
+        print("\nAvailable review runs:")
+        for index, run in enumerate(runs, start=1):
+            print(f"  {index}. {run.name}")
+        selection = prompt_text(
+            "Run numbers (comma-separated), 'all', or blank to cancel"
+        ).strip()
+        if not selection:
+            return
+        if selection.lower() == "all":
+            selected = runs
+        else:
+            indices = []
+            for value in selection.split(","):
+                token = value.strip()
+                if not token.isdigit() or not 1 <= int(token) <= len(runs):
+                    print("Invalid review-run selection; analysis cancelled.")
+                    return
+                index = int(token) - 1
+                if index not in indices:
+                    indices.append(index)
+            selected = [runs[index] for index in indices]
+        config.analyze_action(tuple(run.name for run in selected))
 
     def _action_switch_plan() -> None:
         nonlocal session_plan
@@ -304,9 +318,7 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         menu_action("Compare two review runs (diff & summary)", _action_compare),
     ]
     if config.analyze_action is not None:
-        actions.append(
-            menu_action("Analyze an existing review run (offline)", _action_analyze)
-        )
+        actions.append(menu_action("Analyze review runs (offline)", _action_analyze))
     if config.plans_root:
         actions.append(menu_action("Switch active plan", _action_switch_plan, key="s"))
 

@@ -46,7 +46,7 @@ from edgar_sec.pipelines.document_acquisition.review_artifacts.builder import (
     build_processing_review_artifact,
     build_review_artifacts,
 )
-from edgar_sec.pipelines.document_acquisition.result_projection import (
+from edgar_sec.pipelines.document_acquisition.review_artifacts.result_projection import (
     project_terminal_results,
 )
 from edgar_sec.pipelines.document_acquisition.runner import execute_acquisition_run

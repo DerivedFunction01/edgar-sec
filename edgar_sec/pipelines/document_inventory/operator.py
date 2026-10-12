@@ -250,17 +250,12 @@ def _action_distrib() -> None:
     run_distrib_menu(config)
 
 
-def _action_analyze_review_run(run_id: str) -> None:
-    cli_main(
-        [
-            "review",
-            "analyze",
-            "--run-id",
-            run_id,
-            "--artifacts",
-            _root(),
-        ]
-    )
+def _action_analyze_review_run(run_ids: tuple[str, ...]) -> None:
+    args = ["review", "analyze"]
+    for run_id in run_ids:
+        args.extend(("--run-id", run_id))
+    args.extend(("--artifacts", _root()))
+    cli_main(args)
 
 
 def _action_review() -> None:
