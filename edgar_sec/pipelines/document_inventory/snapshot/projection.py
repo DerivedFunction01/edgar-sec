@@ -123,7 +123,7 @@ def _projection_sql(parts: list[tuple[str, Path, int, str]]) -> str:
     selects = [
         f"SELECT document_locator_key, source_cik, accession, form, filing_date, "
         f"report_date, {sql_literal(form)} AS _expected_form "
-        f"FROM read_parquet({sql_literal(str(path))})"
+        f"FROM read_parquet({sql_literal(str(path))}, hive_partitioning=false)"
         for form, path, _count, _digest in parts
     ]
     if not selects:
