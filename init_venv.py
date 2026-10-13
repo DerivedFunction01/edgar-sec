@@ -61,6 +61,8 @@ PACKAGE_GROUPS: dict[str, list[str]] = {
         "pytest",
         "ruff",
         "psutil",
+        "pytest-xdist[psutil]",
+        "pytest-timeout"
     ],
 }
 
