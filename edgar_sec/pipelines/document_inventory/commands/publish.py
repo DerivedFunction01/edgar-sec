@@ -11,8 +11,8 @@ from edgar_sec.pipelines.document_inventory.commands.common import (
     resolve_artifacts_root,
 )
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
-from edgar_sec.pipelines.document_inventory.run_lock import RunLock
-from edgar_sec.pipelines.document_inventory.run_state import (
+from edgar_sec.pipelines.document_inventory.run_state.run_lock import RunLock
+from edgar_sec.pipelines.document_inventory.run_state.run_state import (
     load_run_state,
     load_run_status,
 )

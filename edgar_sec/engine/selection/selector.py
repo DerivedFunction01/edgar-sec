@@ -774,6 +774,7 @@ class DeficitSelector:
             "date_selection_text": self.policy.date_selection_text,
             "form_era_allocation": {
                 "budget": allocation.get("budget", 0),
+                "cap_rejected_candidates": allocation.get("cap_rejected_candidates", 0),
                 "final_target_min": allocation.get("final_target_min", 0),
                 "final_target_max": allocation.get("final_target_max", 0),
                 "unallocated": allocation.get("unallocated", 0),

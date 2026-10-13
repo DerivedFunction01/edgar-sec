@@ -568,7 +568,7 @@ entire primary body for exhibit references.
   not a role classifier, selected-pack evaluator, or acquisition action owner.
 - The former `engine/forms/plugins/evaluators/content_role.py` and evaluator package
   are retired. This plan does not define current runtime behavior.
-- `pipelines/document_acquisition/processing.py` may attach the immutable assessment to
+- `pipelines/document_acquisition/processing/worker.py` may attach the immutable assessment to
   `ProcessingResult` for eligible text/HTML only. It does not change target identity,
   route, profile, acquisition, retry, or normalization behavior. The fingerprint pins
   evaluator, profile, pack, and taxonomy versions when the shadow evaluator runs.

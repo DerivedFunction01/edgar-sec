@@ -7,7 +7,7 @@
 - Depends on S1 cohort projection, S2 index-fixture storage, and loading a published
   `filing_catalog` plan bundle.
 - Mirrored evidence: `tests/pipelines/document_inventory/test_cli.py`,
-  `tests/pipelines/document_inventory/test_review_adapter.py`, and
+  `tests/pipelines/document_inventory/review_artifacts/test_adapter.py`, and
   `tests/pipelines/document_inventory/fixture_store/test_capture.py`.
 - S7b parser review artifacts are also implemented. S0 evidence gathering proceeds
   independently and remains a gate for final parser acceptance.

@@ -541,7 +541,7 @@ receipt contract. Design details are in [S10 processing](../S10_processing.md).
 
 #### Target modules
 
-- `processing_models.py`, `processing.py`, and the S10 per-run coordinator under
+- `processing/models.py`, `processing/worker.py`, and `processing/run.py` under
   `edgar_sec/pipelines/document_acquisition/`
 - `edgar_sec/engine/forms/normalize.py` for `capture_stage_trace=False`
 - Mirrored tests under `tests/pipelines/document_acquisition/` and

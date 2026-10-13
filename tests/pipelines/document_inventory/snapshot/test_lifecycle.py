@@ -16,7 +16,9 @@ from edgar_sec.infra.storage.dag.publication import StaleParentError
 from edgar_sec.pipelines.document_inventory.commands.run import cmd_run
 from edgar_sec.pipelines.document_inventory.commands.publish import cmd_publish
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
-from edgar_sec.pipelines.document_inventory.run_state import load_run_status
+from edgar_sec.pipelines.document_inventory.run_state.run_state import (
+    load_run_status,
+)
 from edgar_sec.pipelines.document_inventory.snapshot.projection import (
     project_catalog_plan,
 )

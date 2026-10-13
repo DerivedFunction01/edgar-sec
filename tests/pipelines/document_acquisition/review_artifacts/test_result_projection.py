@@ -13,11 +13,11 @@ from edgar_sec.pipelines.document_acquisition.paths import (
     AcquisitionPaths,
     resolve_acquisition_paths,
 )
-from edgar_sec.pipelines.document_acquisition.projection_models import (
+from edgar_sec.pipelines.document_acquisition.project.models import (
     ResultProjectionError,
     projected_target_record,
 )
-from edgar_sec.pipelines.document_acquisition.processing_models import (
+from edgar_sec.pipelines.document_acquisition.processing.models import (
     OperationRequest,
     OperationResult,
     ProcessingDiagnostic,

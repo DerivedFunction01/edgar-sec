@@ -37,7 +37,7 @@ from edgar_sec.pipelines.document_inventory.checkpoint import (
 )
 from edgar_sec.pipelines.document_inventory.worker import IndexWorkerFailure
 from edgar_sec.pipelines.document_inventory.paths import inventory_run_paths
-from edgar_sec.pipelines.document_inventory.run_manifest import (
+from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     iter_work_order_chunks,
     write_run_manifest,
     write_work_order,

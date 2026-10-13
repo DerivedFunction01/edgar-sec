@@ -49,7 +49,7 @@ from edgar_sec.pipelines.document_inventory.paths import (
     SNAPSHOT_PART_PREFIX,
     snapshot_id_for,
 )
-from edgar_sec.pipelines.document_inventory.run_manifest import (
+from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     InventoryRunManifest,
     iter_work_order_chunks,
     read_run_manifest,

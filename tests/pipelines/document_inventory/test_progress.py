@@ -14,7 +14,7 @@ from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.document_inventory.paths import inventory_run_paths
 from edgar_sec.pipelines.document_inventory.progress import open_progress
-from edgar_sec.pipelines.document_inventory.run_manifest import (
+from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     iter_work_order_chunks,
     write_run_manifest,
     write_work_order,

@@ -7,7 +7,7 @@ from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_p
 
 
 def cmd_process(args: argparse.Namespace) -> int:
-    from edgar_sec.pipelines.document_acquisition.processing_run import (
+    from edgar_sec.pipelines.document_acquisition.processing.run import (
         execute_processing_run,
     )
 

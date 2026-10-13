@@ -340,7 +340,7 @@ def acquired_processing_request(
     from edgar_sec.pipelines.document_acquisition.plan_projection.project import (
         project_acquisition_run,
     )
-    from edgar_sec.pipelines.document_acquisition.processing_models import (
+    from edgar_sec.pipelines.document_acquisition.processing.models import (
         OperationRequest,
         ProcessingRequest,
     )
@@ -585,7 +585,7 @@ def processing_budget_registry(
     max_input_bytes: int = 256,
     max_output_bytes: int = 256,
 ):
-    from edgar_sec.pipelines.document_acquisition.processing_io import (
+    from edgar_sec.pipelines.document_acquisition.processing.io import (
         ProcessingBudgetPolicy,
         ProcessingBudgetRegistry,
     )
@@ -617,7 +617,7 @@ def minimal_processing_request(
     from edgar_sec.pipelines.document_acquisition.paths import (
         resolve_acquisition_paths,
     )
-    from edgar_sec.pipelines.document_acquisition.processing_models import (
+    from edgar_sec.pipelines.document_acquisition.processing.models import (
         OperationRequest,
         ProcessingRequest,
     )
@@ -701,7 +701,7 @@ def stub_processing_target_validation(
     route: DocumentRoute = DocumentRoute.TEXT,
     effective_path: str = "filing.txt",
 ) -> None:
-    import edgar_sec.pipelines.document_acquisition.processing as processing
+    import edgar_sec.pipelines.document_acquisition.processing.worker as processing
 
     monkeypatch.setattr(
         processing,
@@ -740,7 +740,7 @@ def two_text_processing_operations(request: Any):
 
 
 def failed_processing_operation_result(operation_id: str):
-    from edgar_sec.pipelines.document_acquisition.processing_models import (
+    from edgar_sec.pipelines.document_acquisition.processing.models import (
         OperationResult,
     )
 

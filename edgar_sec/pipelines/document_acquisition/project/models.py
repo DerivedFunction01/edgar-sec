@@ -12,7 +12,7 @@ from urllib.parse import quote
 from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.foundation.serialization import canonical_json
-from edgar_sec.pipelines.document_acquisition.processing_models import (
+from edgar_sec.pipelines.document_acquisition.processing.models import (
     OperationRequest,
     OperationResult,
     ProcessingDiagnostic,

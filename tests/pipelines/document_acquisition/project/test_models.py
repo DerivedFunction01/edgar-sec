@@ -4,7 +4,7 @@ from pathlib import Path
 
 from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.foundation.serialization import canonical_hash, canonical_json
-from edgar_sec.pipelines.document_acquisition.projection_models import (
+from edgar_sec.pipelines.document_acquisition.project.models import (
     ProcessingResultProjection,
     ProjectedTarget,
     fingerprint_targets,

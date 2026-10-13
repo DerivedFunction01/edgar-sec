@@ -25,7 +25,7 @@ from edgar_sec.foundation.runtime.resources import (
 )
 from edgar_sec.infra.storage.atomic import atomic_write_bytes
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
-from edgar_sec.pipelines.document_acquisition.processing_models import (
+from edgar_sec.pipelines.document_acquisition.processing.models import (
     OperationRequest,
     OperationResult,
     ProcessingRequest,

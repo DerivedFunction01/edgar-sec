@@ -8,11 +8,11 @@ from types import SimpleNamespace
 import pytest
 
 from edgar_sec.domain.document.route import DocumentRoute
-from edgar_sec.pipelines.document_acquisition.processing import (
+from edgar_sec.pipelines.document_acquisition.processing.worker import (
     ProcessingError,
     process_target,
 )
-from edgar_sec.pipelines.document_acquisition.processing_io import (
+from edgar_sec.pipelines.document_acquisition.processing.io import (
     ProcessingBudgetRegistry,
 )
 from tests.support import (
@@ -39,8 +39,8 @@ def test_process_target_returns_deterministic_identity_results_and_receipt(
         return SimpleNamespace(text="normalized filing text")
 
     import edgar_sec.engine.forms.normalize as normalizer
-    import edgar_sec.pipelines.document_acquisition.processing as processing
-    import edgar_sec.pipelines.document_acquisition.processing_io as processing_io
+    import edgar_sec.pipelines.document_acquisition.processing.worker as processing
+    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     monkeypatch.setattr(normalizer, "normalize_document", normalize)
     monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
@@ -90,8 +90,8 @@ def test_retry_reuses_prior_success_and_executes_only_selected_failure(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     import edgar_sec.engine.forms.normalize as normalizer
-    import edgar_sec.pipelines.document_acquisition.processing as processing
-    import edgar_sec.pipelines.document_acquisition.processing_io as processing_io
+    import edgar_sec.pipelines.document_acquisition.processing.worker as processing
+    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     paths, request = _minimal_request(tmp_path)
     request = _two_text_operations(request)
@@ -147,8 +147,8 @@ def test_reused_results_skip_memory_admission_for_unselected_operations(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     import edgar_sec.engine.forms.normalize as normalizer
-    import edgar_sec.pipelines.document_acquisition.processing as processing
-    import edgar_sec.pipelines.document_acquisition.processing_io as processing_io
+    import edgar_sec.pipelines.document_acquisition.processing.worker as processing
+    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     paths, request = _minimal_request(tmp_path)
     _stub_target_validation(monkeypatch, request)
@@ -214,8 +214,8 @@ def test_retry_rejects_stale_prior_fingerprint_or_output(
 ) -> None:
     import edgar_sec.engine.document_processing.processor as engine_processor
     import edgar_sec.engine.forms.normalize as normalizer
-    import edgar_sec.pipelines.document_acquisition.processing as processing
-    import edgar_sec.pipelines.document_acquisition.processing_io as processing_io
+    import edgar_sec.pipelines.document_acquisition.processing.worker as processing
+    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     paths, request = _minimal_request(tmp_path)
     _stub_target_validation(monkeypatch, request)
@@ -369,7 +369,7 @@ def test_process_target_uses_lazy_direct_selection_evidence_for_route(
             request.operations[2],
         ),
     )
-    import edgar_sec.pipelines.document_acquisition.processing_io as processing_io
+    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
 
@@ -412,7 +412,7 @@ def test_process_target_keeps_raw_when_normalization_fails(
         raise RuntimeError("fixture handler failure")
 
     import edgar_sec.engine.forms.normalize as normalizer
-    import edgar_sec.pipelines.document_acquisition.processing_io as processing_io
+    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     monkeypatch.setattr(normalizer, "normalize_document", fail_normalize)
     monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
@@ -431,8 +431,8 @@ def test_admitted_transform_hashes_selected_bytes_once(
     import edgar_sec.engine.document_processing.processor as engine_processor
     import edgar_sec.engine.forms.normalize as normalizer
     import edgar_sec.pipelines.document_acquisition.body_handoff as body_handoff
-    import edgar_sec.pipelines.document_acquisition.processing as processing
-    import edgar_sec.pipelines.document_acquisition.processing_io as processing_io
+    import edgar_sec.pipelines.document_acquisition.processing.worker as processing
+    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     paths, request = _minimal_request(tmp_path)
     _stub_target_validation(monkeypatch, request)
@@ -497,8 +497,8 @@ def test_unbudgeted_or_oversized_text_fails_before_body_access(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, budgeted: bool
 ) -> None:
     import edgar_sec.pipelines.document_acquisition.body_handoff as body_handoff
-    import edgar_sec.pipelines.document_acquisition.processing as processing
-    import edgar_sec.pipelines.document_acquisition.processing_io as processing_io
+    import edgar_sec.pipelines.document_acquisition.processing.worker as processing
+    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     paths, request = _minimal_request(tmp_path)
     _stub_target_validation(monkeypatch, request)
@@ -562,7 +562,7 @@ def test_unbudgeted_or_oversized_text_fails_before_body_access(
 def test_raw_only_processing_is_file_backed_and_skips_engine(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    import edgar_sec.pipelines.document_acquisition.processing as processing
+    import edgar_sec.pipelines.document_acquisition.processing.worker as processing
 
     paths, request = _minimal_request(tmp_path)
     _stub_target_validation(monkeypatch, request)
@@ -606,7 +606,7 @@ def test_raw_only_processing_is_file_backed_and_skips_engine(
 def test_unsupported_xml_does_not_block_raw_only_processing(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    import edgar_sec.pipelines.document_acquisition.processing as processing
+    import edgar_sec.pipelines.document_acquisition.processing.worker as processing
 
     paths, request = _minimal_request(tmp_path)
     _stub_target_validation(monkeypatch, request)
@@ -643,8 +643,8 @@ def test_output_above_registered_limit_is_not_staged(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     import edgar_sec.engine.forms.normalize as normalizer
-    import edgar_sec.pipelines.document_acquisition.processing as processing
-    import edgar_sec.pipelines.document_acquisition.processing_io as processing_io
+    import edgar_sec.pipelines.document_acquisition.processing.worker as processing
+    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     paths, request = _minimal_request(tmp_path)
     _stub_target_validation(monkeypatch, request)
@@ -683,7 +683,9 @@ def test_form4_xml_without_registered_handler_is_unsupported(
     tmp_path: Path,
 ) -> None:
     from edgar_sec.domain.document.path_facts import DocumentPathFacts
-    from edgar_sec.pipelines.document_acquisition.processing import _operation_results
+    from edgar_sec.pipelines.document_acquisition.processing.worker import (
+        _operation_results,
+    )
 
     paths, request = _minimal_request(tmp_path)
     raw, _, _ = request.operations
@@ -757,7 +759,7 @@ def test_process_target_refuses_changed_staged_body_without_receipt(
 ) -> None:
     paths, request = _acquired_request(tmp_path)
     request.body.path.write_bytes(b"changed")
-    import edgar_sec.pipelines.document_acquisition.processing_io as processing_io
+    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
 
@@ -771,7 +773,9 @@ def test_process_target_refuses_bundle_without_committed_child_filename(
     tmp_path: Path,
 ) -> None:
     paths, request = _acquired_request(tmp_path)
-    from edgar_sec.pipelines.document_acquisition.processing import _effective_route
+    from edgar_sec.pipelines.document_acquisition.processing.worker import (
+        _effective_route,
+    )
 
     with pytest.raises(ProcessingError, match="bundle child filename"):
         _effective_route(

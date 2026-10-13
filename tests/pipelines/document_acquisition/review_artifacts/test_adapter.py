@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from edgar_sec.pipelines.document_acquisition.review_adapter import (
+from edgar_sec.pipelines.document_acquisition.review_artifacts.adapter import (
     AcquisitionReviewAdapter,
 )
 
@@ -12,11 +12,11 @@ def test_adapter_identity_and_fixture_discovery(tmp_path: Path, monkeypatch) -> 
     adapter = AcquisitionReviewAdapter()
     assert adapter.dataset_name == "document_acquisition"
     monkeypatch.setattr(
-        "edgar_sec.pipelines.document_acquisition.review_adapter.list_fixtures",
+        "edgar_sec.pipelines.document_acquisition.review_artifacts.adapter.list_fixtures",
         lambda _paths: iter(("fixture-a",)),
     )
     monkeypatch.setattr(
-        "edgar_sec.pipelines.document_acquisition.review_adapter.list_fixture_cases",
+        "edgar_sec.pipelines.document_acquisition.review_artifacts.adapter.list_fixture_cases",
         lambda *_args, **_kwargs: [object(), object()],
     )
 
@@ -29,7 +29,7 @@ def test_adapter_build_review_artifacts(tmp_path: Path, monkeypatch) -> None:
     adapter = AcquisitionReviewAdapter()
     calls = []
     monkeypatch.setattr(
-        "edgar_sec.pipelines.document_acquisition.review_adapter.cmd_review_artifacts",
+        "edgar_sec.pipelines.document_acquisition.review_artifacts.adapter.cmd_review_artifacts",
         lambda args: calls.append(args) or 0,
     )
 

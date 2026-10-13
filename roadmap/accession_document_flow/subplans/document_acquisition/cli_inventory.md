@@ -21,8 +21,8 @@ runtime package are retired. Command and fixture wiring are covered by
 [`test_cli.py`](../../../../tests/pipelines/document_acquisition/test_cli.py), and
 [`test_fixture.py`](../../../../tests/pipelines/document_acquisition/commands/test_fixture.py);
 the per-target processing boundary is covered by
-[`processing.py`](../../../../edgar_sec/pipelines/document_acquisition/processing.py)
-and [`test_processing.py`](../../../../tests/pipelines/document_acquisition/test_processing.py).
+[`processing/worker.py`](../../../../edgar_sec/pipelines/document_acquisition/processing/worker.py)
+and [`processing/test_worker.py`](../../../../tests/pipelines/document_acquisition/processing/test_worker.py).
 
 ## Tracked CLI patterns
 
@@ -105,7 +105,7 @@ publish fails closed at the S11 gate. See
 [`operator.py`](../../../../edgar_sec/pipelines/document_acquisition/operator.py),
 [`test_operator.py`](../../../../tests/pipelines/document_acquisition/test_operator.py),
 [`test_review.py`](../../../../tests/pipelines/document_acquisition/commands/test_review.py),
-and [`test_review_adapter.py`](../../../../tests/pipelines/document_acquisition/test_review_adapter.py):
+and [`review_artifacts/test_adapter.py`](../../../../tests/pipelines/document_acquisition/review_artifacts/test_adapter.py):
 
 ```text
 Document Acquisition
@@ -184,4 +184,4 @@ evidence and approval gate. Per-target `process_target` is not a run-level proce
 command or coordinator. M7b lifecycle coverage is complete, but body cleanup remains
 explicitly gated; see
 [`test_offline_acceptance.py`](../../../../tests/pipelines/document_acquisition/test_offline_acceptance.py)
-and [`test_processing.py`](../../../../tests/pipelines/document_acquisition/test_processing.py).
+and [`processing/test_worker.py`](../../../../tests/pipelines/document_acquisition/processing/test_worker.py).

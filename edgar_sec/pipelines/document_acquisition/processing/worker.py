@@ -33,7 +33,7 @@ from edgar_sec.pipelines.document_acquisition.body_handoff import (
     record_body_consumption_receipt,
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
-from edgar_sec.pipelines.document_acquisition.processing_models import (
+from edgar_sec.pipelines.document_acquisition.processing.models import (
     OperationRequest,
     OperationResult,
     ProcessingDiagnostic,
@@ -41,7 +41,7 @@ from edgar_sec.pipelines.document_acquisition.processing_models import (
     ProcessingResult,
     StagedOutputRef,
 )
-from edgar_sec.pipelines.document_acquisition.processing_io import (
+from edgar_sec.pipelines.document_acquisition.processing.io import (
     DEFAULT_PROCESSING_BUDGETS,
     ProcessingBudgetPolicy,
     ProcessingBudgetRegistry,

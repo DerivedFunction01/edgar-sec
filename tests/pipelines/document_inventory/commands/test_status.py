@@ -3,7 +3,9 @@ from __future__ import annotations
 from argparse import Namespace
 
 from edgar_sec.pipelines.document_inventory.commands import status as status_command
-from edgar_sec.pipelines.document_inventory.run_state import InventoryRunStatus
+from edgar_sec.pipelines.document_inventory.run_state.run_state import (
+    InventoryRunStatus,
+)
 
 
 def test_status_renders_lock_owner_and_pending_counts(tmp_path, monkeypatch, capsys):

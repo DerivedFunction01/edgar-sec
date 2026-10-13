@@ -13,7 +13,7 @@ import pytest
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.sec_http.client import SecHttpClient
-from edgar_sec.pipelines.document_acquisition import processing_run
+from edgar_sec.pipelines.document_acquisition.processing import run as processing_run
 from edgar_sec.pipelines.document_acquisition.body_handoff import get_staged_body_ref
 from edgar_sec.pipelines.document_acquisition.models import (
     AcquisitionAttempt,
@@ -21,7 +21,7 @@ from edgar_sec.pipelines.document_acquisition.models import (
     OperationAttempt,
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
-from edgar_sec.pipelines.document_acquisition.processing_models import (
+from edgar_sec.pipelines.document_acquisition.processing.models import (
     OperationRequest,
     ProcessingRequest,
     StagedOutputRef,

@@ -10,7 +10,7 @@ publish fails closed on the S11 gate. Wiring is covered by
 [`operator.py`](../../../../edgar_sec/pipelines/document_acquisition/operator.py),
 [`test_operator.py`](../../../../tests/pipelines/document_acquisition/test_operator.py),
 [`test_review.py`](../../../../tests/pipelines/document_acquisition/commands/test_review.py),
-and [`test_review_adapter.py`](../../../../tests/pipelines/document_acquisition/test_review_adapter.py).
+and [`review_artifacts/test_adapter.py`](../../../../tests/pipelines/document_acquisition/review_artifacts/test_adapter.py).
 
 ## Entry and signatures
 
@@ -56,7 +56,7 @@ Publish returns a gate-blocked result and does not create parts, manifests, or p
 The CLI routing and per-target processing are covered by
 [`cli.py`](../../../../edgar_sec/pipelines/document_acquisition/cli.py),
 [`test_cli.py`](../../../../tests/pipelines/document_acquisition/test_cli.py), and
-[`test_processing.py`](../../../../tests/pipelines/document_acquisition/test_processing.py).
+[`processing/test_worker.py`](../../../../tests/pipelines/document_acquisition/processing/test_worker.py).
 
 ## Deferred UX extensions
 

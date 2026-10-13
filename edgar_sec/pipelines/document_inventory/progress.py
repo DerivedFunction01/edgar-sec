@@ -15,7 +15,11 @@ from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_siz
 
 from .checkpoint import OUTCOME_SCHEMA, RETRYABLE_STATUSES, outcome_row
 from .paths import InventoryRunPaths
-from .run_manifest import ChunkIdentity, InventoryRunManifest, PROGRESS_SCHEMA_VERSION
+from .run_state.run_manifest import (
+    ChunkIdentity,
+    InventoryRunManifest,
+    PROGRESS_SCHEMA_VERSION,
+)
 
 _OUTCOME_INSERT = "INSERT INTO outcomes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 _ENTRY_INSERT = "INSERT INTO entries VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"

@@ -50,7 +50,7 @@ The CLI implements project, status, run, and fixture tracks. Capture and replay 
 | Subcommand | Description | Arguments |
 | :--- | :--- | :--- |
 | `fixture` | manage S9 response fixtures | — |
-| `process` | process acquired target bodies | `--run-id`, `[--workers]`, `[--artifacts]`, `[--json]` |
+| `process` | process acquired target bodies | `--run-id`, `[--retry-failures]`, `[--workers]`, `[--artifacts]`, `[--json]` |
 | `project` | project a published S6 target plan | `--plan-id`, `[--artifacts]`, `[--json]` |
 | `publish` | publish an approved S11 snapshot | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--artifacts]`, `[--json]` |
 | `review` | generate and compare review runs with pipeline-specific commands | — |

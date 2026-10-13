@@ -190,7 +190,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     from edgar_sec.infra.storage.review.cli import attach_review_artifact_subparsers
 
-    from .review_adapter import AcquisitionReviewAdapter
+    from .review_artifacts.adapter import AcquisitionReviewAdapter
 
     attach_review_artifact_subparsers(
         commands, AcquisitionReviewAdapter(), case_filters=True

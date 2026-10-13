@@ -35,16 +35,16 @@ from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_p
 from edgar_sec.pipelines.document_acquisition.plan_projection.project import (
     project_acquisition_run,
 )
-from edgar_sec.pipelines.document_acquisition.processing import (
+from edgar_sec.pipelines.document_acquisition.processing.worker import (
     ProcessingError,
     process_target,
 )
-from edgar_sec.pipelines.document_acquisition.processing_io import (
+from edgar_sec.pipelines.document_acquisition.processing.io import (
     ProcessingBudgetPolicy,
     ProcessingBudgetRegistry,
     expected_operation_pins,
 )
-from edgar_sec.pipelines.document_acquisition.processing_models import (
+from edgar_sec.pipelines.document_acquisition.processing.models import (
     OperationRequest,
     ProcessingRequest,
 )
@@ -531,7 +531,9 @@ def test_review_builder_uses_shared_manifest_and_case_layout(
 def test_process_target_rejects_family_disallowed_operation(
     tmp_path: Path,
 ) -> None:
-    from tests.pipelines.document_acquisition.test_processing import _acquired_request
+    from tests.pipelines.document_acquisition.processing.test_worker import (
+        _acquired_request,
+    )
 
     paths, request = _acquired_request(tmp_path)
     xml = OperationRequest(

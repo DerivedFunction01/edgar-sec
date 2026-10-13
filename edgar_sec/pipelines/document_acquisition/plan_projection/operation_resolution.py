@@ -16,10 +16,10 @@ from edgar_sec.pipelines.document_acquisition.arrow_schemas import (
     RESOLVED_OPERATION_SCHEMA,
 )
 from edgar_sec.pipelines.document_acquisition.schemas import PLAN_RELATION_SCHEMAS
-from edgar_sec.pipelines.document_acquisition.processing_io import (
+from edgar_sec.pipelines.document_acquisition.processing.io import (
     expected_operation_pins,
 )
-from edgar_sec.pipelines.document_acquisition.processing_models import (
+from edgar_sec.pipelines.document_acquisition.processing.models import (
     OperationRequest,
 )
 

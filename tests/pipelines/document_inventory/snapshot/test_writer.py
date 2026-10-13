@@ -32,7 +32,7 @@ from edgar_sec.pipelines.document_inventory.paths import (
     InventoryPaths,
     inventory_run_paths,
 )
-from edgar_sec.pipelines.document_inventory.run_manifest import (
+from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     iter_work_order_chunks,
     write_run_manifest,
     write_work_order,

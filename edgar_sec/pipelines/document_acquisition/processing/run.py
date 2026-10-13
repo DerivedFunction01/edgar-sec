@@ -23,8 +23,8 @@ from edgar_sec.pipelines.document_acquisition.body_handoff import (
     read_body_consumption_receipt,
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
-from edgar_sec.pipelines.document_acquisition.processing import process_target
-from edgar_sec.pipelines.document_acquisition.processing_models import (
+from edgar_sec.pipelines.document_acquisition.processing.worker import process_target
+from edgar_sec.pipelines.document_acquisition.processing.models import (
     OperationResult,
     OperationRequest,
     ProcessingDiagnostic,

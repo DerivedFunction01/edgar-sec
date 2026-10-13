@@ -44,7 +44,7 @@ from .checkpoint import (
 )
 from .paths import InventoryPaths, InventoryRunPaths
 from .progress import ProgressStore, open_progress
-from .run_manifest import (
+from .run_state.run_manifest import (
     ChunkIdentity,
     InventoryRunManifest,
     WORK_ORDER_VERSION,
@@ -53,7 +53,7 @@ from .run_manifest import (
     validate_run_manifest,
     write_run_manifest,
 )
-from .run_lock import RunLock
+from .run_state.run_lock import RunLock
 from .worker import (
     IndexWorkerFailure,
     RECLAIM_INTERVAL,

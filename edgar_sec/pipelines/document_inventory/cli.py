@@ -132,7 +132,7 @@ def build_parser() -> argparse.ArgumentParser:
     query_cmd.set_defaults(func=cmd_query)
 
     from edgar_sec.infra.storage.review.cli import attach_review_subparsers
-    from .review_adapter import InventoryReviewAdapter
+    from .review_artifacts.adapter import InventoryReviewAdapter
 
     review_commands = attach_review_subparsers(commands, InventoryReviewAdapter())
     analyze_cmd = review_commands.add_parser(

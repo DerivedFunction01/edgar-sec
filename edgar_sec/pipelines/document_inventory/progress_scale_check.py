@@ -30,7 +30,11 @@ from edgar_sec.infra.storage.parquet import count_parquet_rows
 from .checkpoint import AttemptWriters, finalize_attempt, validate_committed_chunk
 from .paths import inventory_paths, inventory_run_paths
 from .progress import open_progress
-from .run_manifest import iter_work_order_chunks, write_run_manifest, write_work_order
+from .run_state.run_manifest import (
+    iter_work_order_chunks,
+    write_run_manifest,
+    write_work_order,
+)
 
 DEFAULT_ROWS = 236_000
 MAX_ROWS = 236_000

@@ -141,7 +141,7 @@ def test_review_generate_and_snapshot_have_separate_handlers(
 ) -> None:
     calls = []
     monkeypatch.setattr(
-        "edgar_sec.pipelines.document_acquisition.review_adapter.cmd_review_artifacts",
+        "edgar_sec.pipelines.document_acquisition.review_artifacts.adapter.cmd_review_artifacts",
         lambda args: calls.append(args) or 0,
     )
     review_result = cli.main(

@@ -8,7 +8,7 @@ from typing import Any
 from edgar_sec.pipelines.document_inventory.commands.common import (
     resolve_artifacts_root,
 )
-from edgar_sec.pipelines.document_inventory.run_state import (
+from edgar_sec.pipelines.document_inventory.run_state.run_state import (
     discover_run_statuses,
     load_run_status,
 )

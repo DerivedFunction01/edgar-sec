@@ -19,7 +19,9 @@ from edgar_sec.foundation.runtime.paths import resolve_paths
 from edgar_sec.pipelines.document_inventory.cli import main as cli_main
 from edgar_sec.pipelines.document_inventory.commands.query import cmd_query
 from edgar_sec.pipelines.document_inventory.discovery import discover_plans
-from edgar_sec.pipelines.document_inventory.run_state import discover_run_statuses
+from edgar_sec.pipelines.document_inventory.run_state.run_state import (
+    discover_run_statuses,
+)
 
 MENU_TITLE = "Document Inventory"
 
@@ -264,7 +266,7 @@ def _action_review() -> None:
         run_review_menu,
     )
     from .paths import resolve_filing_catalog_paths
-    from .review_adapter import InventoryReviewAdapter
+    from .review_artifacts.adapter import InventoryReviewAdapter
 
     plans_root = resolve_filing_catalog_paths(_root()).plans_root
     run_review_menu(

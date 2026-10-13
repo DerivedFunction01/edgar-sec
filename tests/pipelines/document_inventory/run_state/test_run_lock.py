@@ -7,7 +7,10 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.pipelines.document_inventory.paths import inventory_run_paths
-from edgar_sec.pipelines.document_inventory.run_lock import RunLock, RunLockError
+from edgar_sec.pipelines.document_inventory.run_state.run_lock import (
+    RunLock,
+    RunLockError,
+)
 
 
 def test_same_run_lock_rejects_competitors(tmp_path: Path) -> None:

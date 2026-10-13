@@ -608,7 +608,9 @@ def test_allocation_redistributes_from_an_exhausted_cell(tmp_path: Path) -> None
     cells = _allocation_cells(result.report)
     assert cells[("8-K", "historical")]["selected"] == 1
     assert cells[("10-K", "modern")]["selected"] == 5
-    assert cells[("8-K", "historical")]["shortfall"] > 0
+    assert cells[("8-K", "historical")]["eligible_capacity"] == 1
+    assert cells[("8-K", "historical")]["target"] == 1
+    assert cells[("8-K", "historical")]["shortfall"] == 0
     assert result.active_count == 6
 
 

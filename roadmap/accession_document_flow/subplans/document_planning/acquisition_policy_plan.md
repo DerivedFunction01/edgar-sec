@@ -518,8 +518,8 @@ HTML/rendered-markup sources, with family-specific renderers taking precedence. 
 an XML, binary, paper, ZIP, or PDF renderer. This export path is not yet wired into S10.
 Phase 3 fetches and verifies source bodies.
 Phase 4's proposed [S10 processing decision tree](../document_acquisition/processing_decision_tree.md)
-and active [S9/S10 plan](../document_acquisition/plan.md) assign `processing_models.py`,
-`processing.py`, and eventual coordination to pipeline adapters that validate S9 state,
+and active [S9/S10 plan](../document_acquisition/plan.md) assign `processing/models.py`,
+`processing/worker.py`, and eventual coordination to pipeline adapters that validate S9 state,
 admit/verify bodies, construct `AcquisitionProcessRequest`, invoke the engine class, and
 own metadata results and receipts. They do not reimplement renderers. Proposed S10
 work-order resolution uses family/route-specific renderer precedence and the eligible

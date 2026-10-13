@@ -40,13 +40,13 @@ from edgar_sec.pipelines.document_inventory.paths import (
     WORK_ORDER_FILE,
     inventory_run_paths,
 )
-from edgar_sec.pipelines.document_inventory.run_manifest import (
+from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     InventoryRunManifest,
     iter_work_order_chunks,
     read_run_manifest,
     validate_work_order,
 )
-from edgar_sec.pipelines.document_inventory.run_state import (
+from edgar_sec.pipelines.document_inventory.run_state.run_state import (
     discover_run_statuses,
     load_run_status,
 )

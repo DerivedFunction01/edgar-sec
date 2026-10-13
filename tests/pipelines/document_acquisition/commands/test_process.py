@@ -9,11 +9,11 @@ from edgar_sec.pipelines.document_acquisition.commands import process
 
 
 def _processing_service(monkeypatch, execute) -> None:
-    module = ModuleType("edgar_sec.pipelines.document_acquisition.processing_run")
+    module = ModuleType("edgar_sec.pipelines.document_acquisition.processing.run")
     module.execute_processing_run = execute
     monkeypatch.setitem(
         sys.modules,
-        "edgar_sec.pipelines.document_acquisition.processing_run",
+        "edgar_sec.pipelines.document_acquisition.processing.run",
         module,
     )
 

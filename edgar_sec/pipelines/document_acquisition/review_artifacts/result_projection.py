@@ -26,7 +26,7 @@ from edgar_sec.pipelines.document_acquisition.body_handoff import (
     get_staged_body_ref,
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
-from edgar_sec.pipelines.document_acquisition.processing_models import (
+from edgar_sec.pipelines.document_acquisition.processing.models import (
     OperationRequest,
     ProcessingRequest,
     ProcessingResult,
@@ -34,7 +34,7 @@ from edgar_sec.pipelines.document_acquisition.processing_models import (
 from edgar_sec.pipelines.document_acquisition.schemas import (
     validate_selected_filename,
 )
-from edgar_sec.pipelines.document_acquisition.projection_models import (
+from edgar_sec.pipelines.document_acquisition.project.models import (
     ProcessingResultProjection,
     ProjectedOperation,
     ProjectedTarget,

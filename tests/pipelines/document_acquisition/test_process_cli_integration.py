@@ -10,7 +10,7 @@ import pytest
 from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.pipelines.document_acquisition import cli
-from edgar_sec.pipelines.document_acquisition import processing_run
+from edgar_sec.pipelines.document_acquisition.processing import run as processing_run
 from edgar_sec.pipelines.document_acquisition.body_handoff import (
     read_body_consumption_receipt,
 )
@@ -18,8 +18,8 @@ from edgar_sec.pipelines.document_acquisition.models import (
     AcquisitionAttempt,
     AcquisitionOutcome,
 )
-from edgar_sec.pipelines.document_acquisition.processing import process_target
-from edgar_sec.pipelines.document_acquisition.processing_io import (
+from edgar_sec.pipelines.document_acquisition.processing.worker import process_target
+from edgar_sec.pipelines.document_acquisition.processing.io import (
     DEFAULT_PROCESSING_BUDGETS,
     ProcessingBudgetPolicy,
     ProcessingBudgetRegistry,

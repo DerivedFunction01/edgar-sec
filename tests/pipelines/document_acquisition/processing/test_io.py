@@ -7,7 +7,7 @@ import pytest
 
 from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
-from edgar_sec.pipelines.document_acquisition.processing_io import (
+from edgar_sec.pipelines.document_acquisition.processing.io import (
     DEFAULT_PROCESSING_BUDGETS,
     ProcessingBudgetExceeded,
     ProcessingBudgetPolicy,
@@ -22,7 +22,7 @@ from edgar_sec.pipelines.document_acquisition.processing_io import (
 def test_route_handler_budget_bounds_input_and_working_set(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    import edgar_sec.pipelines.document_acquisition.processing_io as processing_io
+    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     source = b"verified source"
     path = tmp_path / "selected.bin"

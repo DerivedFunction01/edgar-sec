@@ -5,7 +5,9 @@ from argparse import Namespace
 import pytest
 
 from edgar_sec.pipelines.document_inventory.commands import publish as publish_command
-from edgar_sec.pipelines.document_inventory.run_state import InventoryRunStatus
+from edgar_sec.pipelines.document_inventory.run_state.run_state import (
+    InventoryRunStatus,
+)
 
 
 def _status(state: str, *, valid: bool = True) -> InventoryRunStatus:

@@ -236,7 +236,8 @@ protocols are not imported or copied.
 
 - `tests/pipelines/document_inventory/test_progress.py` exercises atomic per-parse
   recovery; `test_coordinator.py` covers bounded scheduling, resume/retry, run behavior,
-  signal drain, and worker ceilings; `test_run_lock.py` covers exclusive ownership.
+  signal drain, and worker ceilings; `run_state/test_run_lock.py` covers exclusive
+  ownership.
 - `tests/pipelines/document_inventory/test_progress_scale_check.py` runs only a small
   synthetic offline recovery case. A prior explicitly opted-in simulation also passed
   at the documented production-like work-order size, including recovery/resume without

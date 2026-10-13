@@ -7,7 +7,7 @@ import pytest
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.document_inventory.models import IndexWorkItem
 from edgar_sec.pipelines.document_inventory.paths import inventory_run_paths
-from edgar_sec.pipelines.document_inventory.run_manifest import (
+from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     ManifestMismatchError,
     OUTCOME_SCHEMA_VERSION,
     membership_digest,
@@ -18,7 +18,7 @@ from edgar_sec.pipelines.document_inventory.run_manifest import (
     write_run_manifest,
     write_work_order,
 )
-from edgar_sec.pipelines.document_inventory import run_manifest as manifest_module
+import edgar_sec.pipelines.document_inventory.run_state.run_manifest as manifest_module
 
 IDENTITY = {
     "parent_snapshot_id": "snap-1",

@@ -4,7 +4,9 @@ from argparse import Namespace
 from pathlib import Path
 
 import edgar_sec.pipelines.document_inventory.operator as operator
-from edgar_sec.pipelines.document_inventory.run_state import InventoryRunStatus
+from edgar_sec.pipelines.document_inventory.run_state.run_state import (
+    InventoryRunStatus,
+)
 
 
 def test_menu_exposes_operations() -> None:

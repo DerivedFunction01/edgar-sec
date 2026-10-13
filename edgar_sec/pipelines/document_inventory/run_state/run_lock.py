@@ -12,7 +12,7 @@ from typing import Self
 
 from edgar_sec.infra.storage.atomic import _fsync_dir
 
-from .paths import InventoryRunPaths
+from ..paths import InventoryRunPaths
 
 
 class RunLockError(RuntimeError):

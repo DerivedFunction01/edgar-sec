@@ -55,7 +55,7 @@ from edgar_sec.pipelines.document_inventory.paths import (
     resolve_filing_catalog_paths,
 )
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.pipelines.document_inventory.run_manifest import (
+from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     InventoryRunManifest,
     ManifestMismatchError,
     WORK_ORDER_VERSION,

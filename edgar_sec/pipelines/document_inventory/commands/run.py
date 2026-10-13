@@ -15,7 +15,7 @@ from edgar_sec.pipelines.document_inventory.commands.common import (
     resolve_artifacts_root,
 )
 from edgar_sec.pipelines.document_inventory.coordinator import run_missing_accessions
-from edgar_sec.pipelines.document_inventory.run_state import load_run_state
+from edgar_sec.pipelines.document_inventory.run_state.run_state import load_run_state
 
 
 def cmd_run(args: Any) -> int:

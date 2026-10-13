@@ -5,7 +5,7 @@ from edgar_sec.pipelines.document_inventory.paths import (
     InventoryPaths,
     inventory_run_paths,
 )
-from edgar_sec.pipelines.document_inventory.run_state import (
+from edgar_sec.pipelines.document_inventory.run_state.run_state import (
     discover_run_statuses,
     load_run_status,
 )

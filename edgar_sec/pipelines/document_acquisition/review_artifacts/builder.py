@@ -39,16 +39,16 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
     get_fixture_case,
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
-from edgar_sec.pipelines.document_acquisition.processing import (
+from edgar_sec.pipelines.document_acquisition.processing.worker import (
     ProcessingError,
     process_target,
 )
-from edgar_sec.pipelines.document_acquisition.processing_models import (
+from edgar_sec.pipelines.document_acquisition.processing.models import (
     OperationRequest,
     ProcessingRequest,
     ProcessingResult,
 )
-from edgar_sec.pipelines.document_acquisition.projection_models import (
+from edgar_sec.pipelines.document_acquisition.project.models import (
     ProcessingResultProjection,
     ProjectedTarget,
 )

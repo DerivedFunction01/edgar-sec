@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from edgar_sec.pipelines.document_inventory.review_adapter import (
+from edgar_sec.pipelines.document_inventory.review_artifacts.adapter import (
     InventoryReviewAdapter,
 )
 
@@ -18,7 +18,7 @@ def test_adapter_identity() -> None:
 def test_adapter_list_fixtures(tmp_path: Path, monkeypatch) -> None:
     adapter = InventoryReviewAdapter()
     monkeypatch.setattr(
-        "edgar_sec.pipelines.document_inventory.review_adapter.discover_fixtures",
+        "edgar_sec.pipelines.document_inventory.review_artifacts.adapter.discover_fixtures",
         lambda root: [{"fixture_id": "fix-1"}],
     )
     result = adapter.list_fixtures(tmp_path)
@@ -53,7 +53,7 @@ def test_adapter_build_review_artifacts(tmp_path: Path, monkeypatch) -> None:
     adapter = InventoryReviewAdapter()
     calls: list = []
     monkeypatch.setattr(
-        "edgar_sec.pipelines.document_inventory.review_adapter.cmd_review_artifacts",
+        "edgar_sec.pipelines.document_inventory.review_artifacts.adapter.cmd_review_artifacts",
         lambda args: calls.append(args) or 0,
     )
     code = adapter.build_review_artifacts(

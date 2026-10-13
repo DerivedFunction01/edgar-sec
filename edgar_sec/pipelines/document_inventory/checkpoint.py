@@ -44,7 +44,7 @@ from edgar_sec.infra.storage.parquet import (
 
 from .paths import InventoryRunPaths
 from .broker import IndexFetchFailure
-from .run_manifest import (
+from .run_state.run_manifest import (
     OUTCOME_SCHEMA_VERSION,
     ChunkIdentity,
     InventoryRunManifest,

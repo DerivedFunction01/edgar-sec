@@ -13,7 +13,9 @@ from edgar_sec.pipelines.document_inventory.commands.common import (
 from edgar_sec.pipelines.document_inventory.snapshot.projection import (
     project_catalog_plan,
 )
-from edgar_sec.pipelines.document_inventory.run_manifest import read_run_manifest
+from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
+    read_run_manifest,
+)
 
 
 def cmd_project(args: Any) -> int:
