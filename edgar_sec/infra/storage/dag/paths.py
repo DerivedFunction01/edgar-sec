@@ -9,11 +9,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
+from edgar_sec.foundation.runtime.paths import part_file_name
+
 CATALOG_DB_NAME = "catalog.sqlite"
 BRANCHES_DIR_NAME = "branches"
 TAGS_DIR_NAME = "tags"
 STAGING_PREFIX = ".stage-"
-PART_PREFIX = "part-"
 PART_SUFFIX = ".parquet"
 PUBLICATION_LOCK_FILE = ".publication.lock"
 
@@ -64,9 +65,7 @@ class DAGPaths:
         return self.snapshot_dir(snapshot_id) / relation
 
     def part_file(self, snapshot_id: str, relation: str, part_index: int) -> Path:
-        return self.relation_dir(snapshot_id, relation) / (
-            f"{PART_PREFIX}{part_index:05d}{PART_SUFFIX}"
-        )
+        return self.relation_dir(snapshot_id, relation) / part_file_name(part_index)
 
     # --- Staging & Work Directories ---
 
@@ -95,7 +94,6 @@ __all__ = [
     "BRANCHES_DIR_NAME",
     "CATALOG_DB_NAME",
     "DAGPaths",
-    "PART_PREFIX",
     "PART_SUFFIX",
     "PUBLICATION_LOCK_FILE",
     "STAGING_PREFIX",

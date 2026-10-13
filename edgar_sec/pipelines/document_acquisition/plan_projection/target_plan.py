@@ -17,7 +17,7 @@ from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import accession_hyphenated, validate_archive_url
 from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.serialization import canonical_hash
-from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME, part_file_name
 from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
 )
@@ -635,9 +635,7 @@ def load_acquisition_work_order(
                         "sha256": file_sha256(output),
                     }
                 )
-        resolved_path = (
-            destination.parent / "resolved_operations" / "part-00000.parquet"
-        )
+        resolved_path = destination.parent / "resolved_operations" / part_file_name(0)
         resolved_writer = StagedParquetWriter(resolved_path, RESOLVED_OPERATION_SCHEMA)
         try:
             for batch in iter_resolved_operation_batches(
@@ -656,7 +654,7 @@ def load_acquisition_work_order(
             raise
         relation_parts["resolved_operations"].append(
             {
-                "path": "resolved_operations/part-00000.parquet",
+                "path": f"resolved_operations/{part_file_name(0)}",
                 "row_count": manifest["relation_row_counts"]["target_operations"],
                 "byte_size": resolved_path.stat().st_size,
                 "sha256": file_sha256(resolved_path),

@@ -19,6 +19,7 @@ from edgar_sec.domain.document_inventory.schemas import (
     ENTRY_SCHEMA_VERSION,
 )
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.runtime.paths import part_file_name
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 from edgar_sec.foundation.runtime.settings.parquet import (
@@ -46,7 +47,6 @@ from edgar_sec.pipelines.document_inventory.paths import (
     InventoryPaths,
     InventoryRunPaths,
     OUTCOMES_FILE,
-    SNAPSHOT_PART_PREFIX,
     snapshot_id_for,
 )
 from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
@@ -424,7 +424,7 @@ def _write_relation_part(
     query: str,
     key_column: str,
 ) -> dict[str, Any] | None:
-    staged = stage_root / relation / "part-00000.parquet"
+    staged = stage_root / relation / part_file_name(0)
     staged.parent.mkdir(parents=True, exist_ok=True)
     count = copy_query_to_parquet(con, query, staged)
     if count == 0:
@@ -432,7 +432,7 @@ def _write_relation_part(
             staged.unlink()
         return None
     key_min, key_max = _key_range(staged, key_column)
-    relative = f"{relation}/part-00000.parquet"
+    relative = f"{relation}/{part_file_name(0)}"
     return {
         "path": relative,
         "row_count": count,
@@ -466,7 +466,7 @@ def _make_parent_input_dirs(
         root.mkdir(parents=True)
         files = _parent_relation_files(inventory_paths, parent_snapshot_id, relation)
         for index, source in enumerate(files):
-            os.symlink(source, root / f"{SNAPSHOT_PART_PREFIX}{index:05d}.parquet")
+            os.symlink(source, root / part_file_name(index))
         roots.append(root if any(root.iterdir()) else None)
     return roots[0], roots[1]
 

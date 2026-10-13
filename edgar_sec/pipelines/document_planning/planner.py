@@ -16,6 +16,7 @@ import pyarrow.parquet as pq
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.forms.common.processing import AcquisitionOperation
 from edgar_sec.foundation.hashing import file_sha256, sha256_text
+from edgar_sec.foundation.runtime.paths import part_file_name
 from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import connect
@@ -554,10 +555,7 @@ def _sort_and_write_relation_parts(
         relative = (
             plan_target_part_path(current_form, part_index)
             if relation == "targets"
-            else (
-                f"{relation}/{form_partition_directory(current_form)}/"
-                f"part-{part_index:05d}.parquet"
-            )
+            else f"{relation}/{form_partition_directory(current_form)}/{part_file_name(part_index)}"
         )
         path = staging_root / relative
         path.parent.mkdir(parents=True, exist_ok=True)

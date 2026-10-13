@@ -9,7 +9,7 @@ from pathlib import Path
 import pytest
 
 import edgar_sec.foundation.runtime.paths as foundation_paths
-from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME, part_file_name
 from edgar_sec.pipelines.filing_catalog.paths import (
     CURRENT_ALIAS,
     EXPANSION_METADATA_FILE,
@@ -26,7 +26,6 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     plan_target_part_path,
     resolve_filing_catalog_paths,
     validate_safe_id,
-    target_part_name,
 )
 
 
@@ -103,8 +102,8 @@ def test_form_partition_path_escapes_the_form() -> None:
 
 
 def test_target_parts_are_numbered_not_named_after_the_source() -> None:
-    assert target_part_name(0) == "part-00000.parquet"
-    assert target_part_name(12) == "part-00012.parquet"
+    assert part_file_name(0) == "part-00000.parquet"
+    assert part_file_name(12) == "part-00012.parquet"
 
 
 # --- plan bundle members ---------------------------------------------------

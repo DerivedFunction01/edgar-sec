@@ -15,6 +15,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.runtime.paths import part_file_name
 from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
 )
@@ -47,7 +48,7 @@ from edgar_sec.pipelines.document_acquisition.run_validation import (
     validate_work_order_relations,
 )
 
-_WORK_ORDER_PART = "part-00000.parquet"
+_WORK_ORDER_PART = part_file_name(0)
 
 
 class AcquisitionProjectError(ValueError):

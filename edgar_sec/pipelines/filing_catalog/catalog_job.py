@@ -24,6 +24,7 @@ from edgar_sec.domain.submissions.schemas import (
 )
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.runtime.paths import part_file_name
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
 from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
@@ -55,7 +56,6 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     TARGETS_DIR,
     resolve_filing_catalog_paths,
     resolve_metadata_paths,
-    target_part_name,
 )
 
 FALLBACK_POLICY_VERSION = "1.1.0"
@@ -342,7 +342,7 @@ def materialize(
     total_target_rows = 0
     with connect() as con:
         for index, source_path in enumerate(source.paths):
-            shard_name = target_part_name(index)
+            shard_name = part_file_name(index)
             shard_path = targets_dir / shard_name
             if is_delta and base_target_paths:
                 query = build_delta_unnest_query(str(source_path), base_target_paths)
@@ -402,10 +402,10 @@ def materialize(
     }
     target_descriptors = [
         PartDescriptor(
-            path=f"{catalog_id}/{TARGETS_DIR}/{target_part_name(i)}",
+            path=f"{catalog_id}/{TARGETS_DIR}/{part_file_name(i)}",
             sha256=p["artifact_sha256"],
             row_count=p["row_count"],
-            byte_size=Path(targets_dir / target_part_name(i)).stat().st_size,
+            byte_size=Path(targets_dir / part_file_name(i)).stat().st_size,
         )
         for i, p in enumerate(part_metadata)
     ]

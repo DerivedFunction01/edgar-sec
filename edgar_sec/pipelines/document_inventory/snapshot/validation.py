@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-import json
 import hashlib
+import json
 import re
 from pathlib import Path
 
@@ -11,6 +11,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.runtime.paths import part_file_re
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier, sql_path_list
@@ -139,14 +140,12 @@ def _part_files(
             paths, snapshot_id, record.get("path"), staged_root=staged_root
         )
         relative = Path(record["path"])
+        part_name = relative.parts[2] if len(relative.parts) == 3 else relative.parts[1]
         valid_path = (
-            len(relative.parts) == 3
-            and relative.parts[1] == relation
-            and bool(re.fullmatch(r"part-\d{5}\.parquet", relative.parts[2]))
-        ) or (
-            len(relative.parts) == 2
-            and relative.parts[0] == relation
-            and bool(re.fullmatch(r"part-\d{5}\.parquet", relative.parts[1]))
+            len(relative.parts) in (2, 3)
+            and (len(relative.parts) == 3 and relative.parts[1] == relation)
+            or (len(relative.parts) == 2 and relative.parts[0] == relation)
+            and part_file_re().fullmatch(part_name) is not None
         )
         if not valid_path:
             raise ValidationFailedError(

@@ -12,6 +12,7 @@ from edgar_sec.foundation.runtime.paths import (
     resolve_paths,
     transient_dir,
     validate_safe_id,
+    part_file_name,
 )
 from edgar_sec.infra.storage.dag.paths import DAGPaths
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
@@ -62,20 +63,12 @@ def form_partition_directory(form: str) -> str:
     return f"{FORM_PARTITION_KEY}={form_partition_name(form)}"
 
 
-def target_part_name(index: int) -> str:
-    """Return the shard file name for one filing-targets part.
-
-    Numbered by resolved order, not by reusing a source basename shards may share.
-    """
-    return f"part-{index:05d}.parquet"
-
-
 def plan_target_file_path(form: str, file_name: str) -> str:
     return f"{PLAN_TARGETS_DIR}/{form_partition_directory(form)}/{file_name}"
 
 
 def plan_target_part_path(form: str, index: int) -> str:
-    return plan_target_file_path(form, target_part_name(index))
+    return plan_target_file_path(form, part_file_name(index))
 
 
 def resolve_draft_path(policies_root: Path, stem: str, suffix: str = ".json") -> Path:
@@ -187,5 +180,4 @@ __all__ = [
     "resolve_draft_path",
     "resolve_filing_catalog_paths",
     "validate_safe_id",
-    "target_part_name",
 ]
