@@ -120,6 +120,31 @@ def test_upward_search_stops_after_midpoint_exceeds_baseline_tolerance(
     assert profile["trials"]["16"][0]["source"] == "upward_regression"
 
 
+def test_failed_normal_run_is_stored_without_case_timings(
+    monkeypatch, tmp_path: Path
+) -> None:
+    selectors = ["tests/domain/test_sample.py"]
+    monkeypatch.setattr(profiles, "scope_inventory", lambda _selectors: ([], "fp", {}))
+    cache_path = tmp_path / "workers.duckdb"
+
+    profiles.record_normal_run(
+        selectors,
+        2,
+        3.5,
+        tmp_path / "missing-profile.json",
+        cache_path,
+        source="fast_baseline",
+        status="failed",
+    )
+
+    profile = profiles.load_profiles(cache_path)[scope_key(selectors)]
+    trial = profile["trials"]["2"][0]
+    assert trial["wall_seconds"] == 3.5
+    assert trial["status"] == "failed"
+    assert trial["source"] == "fast_baseline"
+    assert trial["item_work"] is None
+
+
 def test_measured_trials_choose_eight_workers_despite_four_regressing() -> None:
     profile = {
         "trials": {

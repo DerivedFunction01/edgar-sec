@@ -203,6 +203,8 @@ def run_tests(
 
         try:
             target_workers = select_workers(test_paths, recalculate=recalculate)
+            worker_source = "calibrated_profile"
+            worker_reason = "adaptive profile selection requested"
         except Exception as exc:
             if isinstance(exc, RuntimeError) and str(exc) == "no tests found":
                 print("==> no tests selected; skipping pytest")
@@ -215,15 +217,40 @@ def run_tests(
 
             fallback = auto_worker_count(available_memory_bytes())
             target_workers = fallback if fallback >= 2 else 0
+            worker_source = "resource_default"
+            worker_reason = "calibration unavailable; using resource default"
     elif workers is None:
-        from edgar_sec.foundation.runtime.resources import (
-            auto_worker_count,
-            available_memory_bytes,
-        )
+        try:
+            from edgar_sec.tools.fast_pytest_worker_calibrator import (
+                default_cache_path,
+            )
+            from edgar_sec.tools.profile_storage import load_profiles
+            from edgar_sec.tools.worker_profile_inventory import scope_key
+            from edgar_sec.tools.worker_profile_search import choose_fast_workers
+            from edgar_sec.tools.pytest_worker_profiles import _resource_ceiling
 
-        target_workers = auto_worker_count(available_memory_bytes())
+            profile = load_profiles(default_cache_path(Path.cwd())).get(
+                scope_key(test_paths)
+            )
+            target_workers, worker_source, worker_reason = choose_fast_workers(
+                profile, test_paths, _resource_ceiling()
+            )
+        except Exception as exc:
+            from edgar_sec.foundation.runtime.resources import (
+                auto_worker_count,
+                available_memory_bytes,
+            )
+
+            fallback = auto_worker_count(available_memory_bytes())
+            target_workers = fallback if fallback >= 2 else 0
+            worker_source = "resource_default"
+            worker_reason = f"profile unavailable: {exc}"
     else:
         target_workers = workers
+        worker_source = "explicit"
+        worker_reason = f"--workers {workers}"
+
+    print(f"==> pytest workers: n={target_workers} ({worker_source}; {worker_reason})")
 
     from edgar_sec.tools.pytest_worker_profiles import record_normal_run
 
@@ -241,13 +268,27 @@ def run_tests(
             *test_paths,
         ]
         started = time.perf_counter()
-        run_cmd(label, command)
-        record_normal_run(
-            test_paths,
-            target_workers,
-            time.perf_counter() - started,
-            profile_output,
-        )
+        status = "failed"
+        try:
+            run_cmd(label, command)
+            status = "ok"
+        finally:
+            elapsed = time.perf_counter() - started
+            if status == "ok":
+                print(f"==> pytest completed in {elapsed:.2f}s at n={target_workers}")
+            else:
+                print(f"==> pytest failed after {elapsed:.2f}s at n={target_workers}")
+            try:
+                record_normal_run(
+                    test_paths,
+                    target_workers,
+                    elapsed,
+                    profile_output,
+                    source=worker_source,
+                    status=status,
+                )
+            except Exception as exc:
+                print(f"==> worker timing record unavailable: {exc}", file=sys.stderr)
 
 
 def main() -> None:
@@ -290,7 +331,7 @@ def main() -> None:
     parser.add_argument(
         "--workers",
         type=int,
-        help="number of pytest-xdist workers for parallel execution (default: auto-calibrate)",
+        help="number of pytest-xdist workers for parallel execution (default: fast scope policy)",
     )
     parser.add_argument(
         "--recalibrate-workers",

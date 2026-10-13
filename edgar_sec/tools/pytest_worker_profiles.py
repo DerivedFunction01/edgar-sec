@@ -368,9 +368,10 @@ def _resource_ceiling() -> int:
             available_memory_bytes,
         )
 
-        return auto_worker_count(available_memory_bytes())
+        logical_cores = detect_hardware_topology()[1]
+        return auto_worker_count(available_memory_bytes(), cpu_cores=logical_cores)
     except Exception:
-        return max(1, detect_hardware_topology()[0])
+        return max(1, detect_hardware_topology()[1])
 
 
 def _calibrate_scope(
@@ -728,42 +729,51 @@ def record_normal_run(
     elapsed: float,
     profile_output: pathlib.Path,
     cache_path: pathlib.Path | None = None,
+    *,
+    source: str = "normal",
+    status: str = "ok",
 ) -> None:
-    if not profile_output.is_file():
-        return
-    try:
-        report = json.loads(profile_output.read_text(encoding="utf-8"))
-        if not report.get("count"):
-            return
-    except (OSError, json.JSONDecodeError, TypeError):
+    report = None
+    if profile_output.is_file():
+        try:
+            report = json.loads(profile_output.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError, TypeError):
+            report = None
+    if status == "ok" and (not report or not report.get("count")):
         return
     cache_path = cache_path or default_cache_path(pathlib.Path.cwd())
     files, fingerprint, fingerprints = scope_inventory(selectors)
     key = scope_key(selectors)
-    cache = load_cache(cache_path) or {}
     profile = (load_profiles(cache_path).get(key)) or _new_profile(
         selectors, key, fingerprint, {}
     )
     profile["inventory_fingerprint"] = fingerprint
-    active_nodeids = {item["nodeid"] for item in report["cases"]}
-    profile["cases"] = {
-        nodeid: case
-        for nodeid, case in profile.get("cases", {}).items()
-        if nodeid in active_nodeids
-    }
-    _merge_case_timings(profile, report["cases"], files, fingerprints)
+    if report:
+        active_nodeids = {item["nodeid"] for item in report["cases"]}
+        profile["cases"] = {
+            nodeid: case
+            for nodeid, case in profile.get("cases", {}).items()
+            if nodeid in active_nodeids
+        }
+        _merge_case_timings(profile, report["cases"], files, fingerprints)
     worker = workers if workers >= 2 else 0
     profile.setdefault("trials", {}).setdefault(str(worker), []).append(
         {
             "wall_seconds": elapsed,
-            "item_work": _case_work(profile["cases"]),
-            "shared_seconds": max(0.0, elapsed - _case_work(profile["cases"])),
+            "item_work": _case_work(profile["cases"]) if report else None,
+            "shared_seconds": (
+                max(0.0, elapsed - _case_work(profile["cases"])) if report else None
+            ),
             "inventory_fingerprint": fingerprint,
-            "status": "ok",
-            "source": "normal",
+            "status": status,
+            "source": source,
             "at": time.time(),
         }
     )
+    if status != "ok":
+        profile["updated_at"] = time.time()
+        _write_profile(cache_path, key, profile)
+        return
     recommendation = _adjusted_recommendation(profile, _case_work(profile["cases"]))
     profile["selected_workers"] = (
         recommendation if recommendation is not None else _profile_worker(profile)
