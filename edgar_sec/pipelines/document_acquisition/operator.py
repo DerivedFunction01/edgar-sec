@@ -10,6 +10,7 @@ from edgar_sec.foundation.runtime.interactive import (
     menu_action,
     operator_entrypoint,
     prompt_text,
+    run_interactive_menu,
 )
 from edgar_sec.foundation.runtime.settings import resolve_settings
 from edgar_sec.foundation.runtime.settings.validators import positive_int_type
@@ -251,13 +252,8 @@ def _action_review_compare() -> None:
     cli_main(["review", "compare", "--base", base, "--new", new])
 
 
-def build_operator_menu() -> tuple[MenuAction, ...]:
+def _build_fixture_review_menu() -> tuple[MenuAction, ...]:
     return build_menu(
-        menu_action("Project a target plan", _action_project),
-        menu_action("Inspect acquisition runs", _action_status),
-        menu_action("Run acquisition (live SEC; confirmation required)", _action_run),
-        menu_action("Process acquired bodies", _action_process),
-        _action("publish", "Publish snapshot (S11 gate)"),
         menu_action("Create local fixture", _action_fixture_create),
         menu_action(
             "Fill local fixture evidence (confirmation required)",
@@ -269,7 +265,50 @@ def build_operator_menu() -> tuple[MenuAction, ...]:
         ),
         menu_action("Generate review artifacts", _action_review_generate),
         menu_action("Compare review runs", _action_review_compare),
-        _action("snapshot status", "Snapshot status/evidence audit (S11 gate)"),
+        _action(
+            "review audit",
+            "Audit acquisition evidence (S9/S10; not implemented)",
+        ),
+    )
+
+
+def _build_snapshot_menu() -> tuple[MenuAction, ...]:
+    return build_menu(
+        _action("publish", "Publish snapshot (S11 gate)"),
+        _action("snapshot status", "Snapshot status (S11 gate)"),
+    )
+
+
+def _action_fixture_review_console() -> None:
+    run_interactive_menu(
+        "Document Acquisition Fixtures & Review Console",
+        _build_fixture_review_menu(),
+    )
+
+
+def _action_snapshot_console() -> None:
+    run_interactive_menu(
+        "Document Acquisition Snapshot Console",
+        _build_snapshot_menu(),
+    )
+
+
+def build_operator_menu() -> tuple[MenuAction, ...]:
+    return build_menu(
+        menu_action("Project a target plan", _action_project),
+        menu_action("Inspect acquisition runs", _action_status),
+        menu_action("Run acquisition (live SEC; confirmation required)", _action_run),
+        menu_action("Process acquired bodies", _action_process),
+        menu_action(
+            "Snapshot console (publish, status; S11 gate)",
+            _action_snapshot_console,
+            key="p",
+        ),
+        menu_action(
+            "Fixtures and review console (fixtures, review, evidence audit)",
+            _action_fixture_review_console,
+            key="f",
+        ),
     )
 
 

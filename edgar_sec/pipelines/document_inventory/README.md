@@ -33,6 +33,7 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 | `dag` | Snapshot DAG operations | `[--root]`, `[--json]` |
 | `distrib` | Distributed worker bundle lifecycle | — |
 | `fixture` | create, fill, and list dataset fixtures | — |
+| `inspect` | validate and inspect a pinned inventory snapshot | `[--snapshot]`, `[--branch]`, `[--artifacts]`, `[--json]` |
 | `project` | project a published catalog plan into a resumable run | `--catalog-plan`, `[--base-snapshot-id]`, `[--branch]`, `[--explicit-refresh]`, `[--chunk-size]`, `[--artifacts]`, `[--json]` |
 | `publish` | publish a completed inventory run to a DAG branch | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--artifacts]`, `[--json]` |
 | `query` | query active document inventory snapshots | `[--accession]`, `[--form]`, `[--filing-cik]`, `[--source-cik]`, `[--limit]`, `[--artifacts]`, `[--json]` |
@@ -49,6 +50,9 @@ python run.py inventory project --catalog-plan plan-2024-01-15 --chunk-size 100
 
 # Check run status
 python run.py inventory status --run-id 2024-01-15T120000Z
+
+# Verify a pinned inventory snapshot
+python run.py inventory inspect --snapshot current --json
 
 # Run fetch and parse with multiple workers
 python run.py inventory run --run-id 2024-01-15T120000Z --workers 8

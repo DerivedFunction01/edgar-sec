@@ -136,7 +136,7 @@ def test_fixture_commands_require_ids() -> None:
 def test_lifecycle_commands_replace_the_all_in_one_builder() -> None:
     parser = cli.build_parser()
     subparsers = next(action for action in parser._actions if action.choices)
-    assert {"project", "run", "status", "publish"} <= set(subparsers.choices)
+    assert {"project", "run", "status", "publish", "inspect"} <= set(subparsers.choices)
     assert "build" not in subparsers.choices
     with pytest.raises(SystemExit):
         parser.parse_args(["build", "--catalog-plan", "p"])
@@ -152,6 +152,9 @@ def test_lifecycle_command_arguments_are_phase_specific() -> None:
     assert run.retry_failures is False
     assert run.no_progress is False
     assert parser.parse_args(["run", "--run-id", "r", "--no-progress"]).no_progress
+    inspect = parser.parse_args(["inspect", "--snapshot", "snapshot-a"])
+    assert inspect.snapshot == "snapshot-a"
+    assert inspect.branch == "main"
     publish = parser.parse_args(["publish", "--run-id", "r", "--branch", "alt"])
     assert publish.branch == "alt"
     assert publish.expected_branch_tip is None

@@ -29,6 +29,7 @@ from edgar_sec.pipelines.metadata_sync.roster import (
     write_roster_rows,
 )
 from edgar_sec.pipelines.metadata_sync.sec_client import SubmissionsClient
+from tests.acquisition_run_fixture import make_acquisition_run
 
 TESTS_ROOT = Path(__file__).resolve().parent
 FIXTURES = TESTS_ROOT / "fixtures"

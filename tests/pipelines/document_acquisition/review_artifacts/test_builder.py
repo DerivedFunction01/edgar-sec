@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import sqlite3
 import shutil
 from dataclasses import replace
 from datetime import UTC, datetime
@@ -489,21 +490,6 @@ def test_review_builder_uses_shared_manifest_and_case_layout(
 ) -> None:
     source_paths, _, _, fixture_case, _ = _captured_text_fixture(tmp_path, monkeypatch)
     output = tmp_path / "review-run"
-    import edgar_sec.pipelines.document_acquisition.review_artifacts.builder as builder
-
-    original_request_for_case = builder._request_for_case
-
-    def pinned_request_for_case(case, *, paths):
-        request = original_request_for_case(case, paths=paths)
-        facts = (
-            DocumentPathFacts.from_sgml_filename(request.selected_filename)
-            if request.selected_filename is not None
-            else DocumentPathFacts.from_archive_path(request.document_path)
-        )
-        return _pin_request_operations(request, facts)
-
-    monkeypatch.setattr(builder, "_request_for_case", pinned_request_for_case)
-    monkeypatch.setattr(builder, "process_target", _process_with_test_budget)
 
     result = build_review_artifacts(
         _FIXTURE_ID,
@@ -526,6 +512,50 @@ def test_review_builder_uses_shared_manifest_and_case_layout(
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     assert artifact["fixture"]["selected_sha256"] == fixture_case.selected_sha256
     assert artifact["family_profile"]["version"] == "v1"
+    operations = {
+        item["operation"]: item for item in artifact["processing"]["operations"]
+    }
+    assert operations["raw"]["capability_id"] == "raw.selected_source"
+    assert operations["raw"]["handler_id"] == "raw_identity"
+    assert operations["render_to_txt"]["capability_id"] in {None, "text.markup"}
+    assert operations["render_to_xml"]["support_status"] == "not_evaluated"
+
+
+def test_review_builder_rejects_tampered_fixture_request_identity(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths, _, _, fixture_case, _ = _captured_text_fixture(tmp_path, monkeypatch)
+    with sqlite3.connect(paths.fixture_database_path(_FIXTURE_ID)) as connection:
+        connection.execute("DROP TRIGGER immutable_case_update")
+        connection.execute(
+            "UPDATE cases SET request_id = ? WHERE capture_id = ? AND target_id = ?",
+            ("tampered-request", fixture_case.capture_id, fixture_case.target_id),
+        )
+        connection.execute(
+            "CREATE TRIGGER immutable_case_update BEFORE UPDATE ON cases "
+            "BEGIN SELECT RAISE(ABORT, 'fixture cases are immutable'); END"
+        )
+
+    output = tmp_path / "tampered-review"
+    result = build_review_artifacts(
+        _FIXTURE_ID,
+        output,
+        paths=paths,
+        capture_id=fixture_case.capture_id,
+        target_id=fixture_case.target_id,
+        workers=1,
+    )
+
+    assert result.summary.total == 1
+    assert result.summary.execution_error == 1
+    record = json.loads(
+        ReviewPaths(output, PIPELINE_REVIEW_MANIFEST_FILE).manifest_path.read_text(
+            encoding="utf-8"
+        )
+    )
+    assert record["status"] == "execution_error"
+    assert record["outputs"] == {}
+    assert "fixture target differs from acquisition work order" in record["error"]
 
 
 def test_process_target_rejects_family_disallowed_operation(

@@ -12,10 +12,10 @@ and settings owners rather than duplicate them. The staged implementation sequen
 and safe parallel workstreams are in the [S9 implementation plan](plan.md).
 
 The dedicated `acquisition` launcher and command/operator are registered. Project,
-status, run, and fixture create/fill/list/replay are wired. Review generate/compare
-work only for the limited S9/S10 fixture slice. The `process --run-id` CLI track is
-not implemented, although per-target `process_target` exists; publish remains gated
-on S11 evidence and approval. The former `documents` launcher and `document_storage`
+status, run, process, and fixture create/fill/list/replay are wired. Review
+generate/compare work only for the limited S9/S10 fixture slice. Publish remains
+gated on S11 evidence and approval; snapshot status and review evidence audit remain
+fail-closed placeholders. The former `documents` launcher and `document_storage`
 runtime package are retired. Command and fixture wiring are covered by
 [`cli.py`](../../../../edgar_sec/pipelines/document_acquisition/cli.py),
 [`test_cli.py`](../../../../tests/pipelines/document_acquisition/test_cli.py), and
@@ -97,11 +97,11 @@ legacy `documents` entry is retired:
   Document Acquisition - Acquire eligible targets from S6 plans and inspect resumable runs
 ```
 
-The registered operator menu exposes project/status/run, process/publish, four fixture
-actions, review, and snapshot evidence audit. Project/status/run and fixture actions
-dispatch to their CLI services. Review generate/compare are wired for the limited
-S9/S10 fixture slice; `process --run-id` and snapshot audit remain unimplemented, and
-publish fails closed at the S11 gate. See
+The registered operator uses numbered lifecycle actions and keyed snapshot and
+fixture/review consoles. Project/status/run/process and fixture actions dispatch to
+their CLI services. Review generate/compare are wired for the limited S9/S10 fixture
+slice; snapshot status and review evidence audit remain placeholders, and publish
+fails closed at the S11 gate. See
 [`operator.py`](../../../../edgar_sec/pipelines/document_acquisition/operator.py),
 [`test_operator.py`](../../../../tests/pipelines/document_acquisition/test_operator.py),
 [`test_review.py`](../../../../tests/pipelines/document_acquisition/commands/test_review.py),
@@ -111,36 +111,31 @@ and [`review_artifacts/test_adapter.py`](../../../../tests/pipelines/document_ac
 Document Acquisition
   1. Project a target plan into an acquisition run
   2. Show acquisition run status
-  3. Run pending acquisition work
+  3. Run acquisition (live SEC; confirmation required)
   4. Process acquired targets
-  5. Publish a completed run snapshot
-  6. Create local fixture
-  7. Fill local fixture evidence (confirmation required)
-  8. List local fixtures
-  9. Replay local fixture (confirmation required)
-  10. Review artifacts console (limited S9/S10 fixture slice)
-  11. Snapshot status/evidence audit (S11 gate)
+  p. Snapshot console (publish, status; S11 gate)
+  f. Fixtures and review console (fixtures, review, evidence audit)
   0. Exit
 ```
 
-The acquisition operator does not register a distribution console because its
-pipeline-specific adapter is not implemented. The shared, pipeline-neutral
-distribution infrastructure is already used by metadata sync and inventory. Inventory
-work selection includes only valid existing runs, and resolving a distribution work ID
-does not project a catalog plan; projection is an explicit inventory operation.
-Snapshot publication is separate from acquisition run completion and remains blocked
-pending representative S9/S10 evidence and explicit S11 approval.
+The snapshot console groups publish and status like inventory's snapshot console; both
+remain behind the S11 gate. The fixture/review console owns the S9/S10 evidence audit
+placeholder because it concerns local acquisition evidence, not a published snapshot.
+Acquisition does not register inventory's distribution or full DAG operations: its
+distribution adapter is not implemented, and publication still requires representative
+S9/S10 evidence and explicit S11 approval.
 
 The local command-line counterpart defines project, status, run, process, publish,
-snapshot status/audit, and acquisition-specific fixture/review commands with stable
-run/plan/snapshot IDs. `project` creates or reuses an offline transient run. Fixture
+snapshot status, and acquisition-specific fixture/review commands. Its fail-closed
+`review audit` placeholder covers S9/S10 evidence. The commands use stable run, plan,
+and snapshot IDs. `project` creates or reuses an offline transient run. Fixture
 creation refuses existing IDs; fill requires fixture/run/target/exact-attempt IDs
 and a positive response-byte cap; list accepts optional fixture/capture/target filters;
 replay requires exact fixture/capture/target IDs and a caller-selected output path.
-The `process --run-id` command and snapshot audit remain fail-closed TODO tracks;
-review generate/compare cover only the limited S9/S10 fixture slice. Publication reports
-its evidence-and-approval gate. The interactive operator separately confirms live
-network work, fixture fill, and replay output, each defaulting to no. CLI network
+Run-level `process --run-id` is wired; unbudgeted transforms still fail closed.
+Snapshot status and review evidence audit are placeholder tracks, and publication
+reports its evidence-and-approval gate. The interactive operator separately confirms
+live network work, fixture fill, and replay output, each defaulting to no. CLI network
 execution is explicit and exposes retry selection rather than silently retrying failed
 requests.
 `acquisition distrib` remains planned and unimplemented. The common CLI uses
@@ -180,8 +175,8 @@ The existing [S9 design](../S9_acquisition.md) and S9a–S9d documents include e
 design material; consult the status records at their tops for current implementation
 state. The legacy `documents` command and `document_storage` runtime are retired.
 Fixture evidence is not an S11 payload store, and S11 publication still requires its
-evidence and approval gate. Per-target `process_target` is not a run-level process
-command or coordinator. M7b lifecycle coverage is complete, but body cleanup remains
-explicitly gated; see
+evidence and approval gate. Run-level processing is available, but it does not make
+unbudgeted normalization production-ready. M7b lifecycle coverage is complete, but
+body cleanup remains explicitly gated; see
 [`test_offline_acceptance.py`](../../../../tests/pipelines/document_acquisition/test_offline_acceptance.py)
 and [`processing/test_worker.py`](../../../../tests/pipelines/document_acquisition/processing/test_worker.py).

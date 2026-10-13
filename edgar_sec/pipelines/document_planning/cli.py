@@ -6,6 +6,7 @@ import argparse
 import sys
 
 from .commands.inspect import cmd_inspect
+from .commands.compare import cmd_compare
 from .commands.plan import cmd_plan
 from .commands.status import cmd_status
 
@@ -40,6 +41,21 @@ def build_parser() -> argparse.ArgumentParser:
     )
     inspect_parser.add_argument("--json", action="store_true")
     inspect_parser.set_defaults(func=cmd_inspect)
+
+    compare_parser = commands.add_parser(
+        "compare", help="compare immutable target plans or profile rules"
+    )
+    compare_parser.add_argument("--base-plan-id")
+    compare_parser.add_argument("--new-plan-id")
+    compare_parser.add_argument("--base-profile-id")
+    compare_parser.add_argument("--new-profile-id")
+    compare_parser.add_argument("--output", help="new or empty review directory")
+    compare_parser.add_argument("--output-id", help="review ID under the default root")
+    compare_parser.add_argument(
+        "--artifacts", default="", help="artifacts root override"
+    )
+    compare_parser.add_argument("--json", action="store_true")
+    compare_parser.set_defaults(func=cmd_compare)
 
     status_parser = commands.add_parser(
         "status", help="list profiles and published plans"

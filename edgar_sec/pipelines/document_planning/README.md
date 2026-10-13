@@ -40,6 +40,7 @@ into an immutable accession-document target plan for later acquisition.
 <!-- AUTOGEN:COMMANDS:START -->
 | Subcommand | Description | Arguments |
 | :--- | :--- | :--- |
+| `compare` | compare immutable target plans or profile rules | `--base-plan-id` + `--new-plan-id` or `--base-profile-id` + `--new-profile-id`, `[--output]`, `[--output-id]`, `[--artifacts]`, `[--json]` |
 | `inspect` | validate and inspect a plan | `--plan-id`, `[--artifacts]`, `[--json]` |
 | `plan` | publish a deterministic target plan | `--catalog-plan`, `[--inventory]`, `[--profile-id]`, `[--auto-primary-profile]`, `[--artifacts]`, `[--json]` |
 | `status` | list profiles and published plans | `[--artifacts]`, `[--json]` |
@@ -56,6 +57,9 @@ python run.py planning plan --catalog-plan plan-2024-01-15 --profile-id primary-
 
 # Inspect a published plan
 python run.py planning inspect --plan-id plan-2024-01-15
+
+# Compare two published target plans
+python run.py planning compare --base-plan-id plan-before --new-plan-id plan-after
 ```
 
 ## Artifact layout

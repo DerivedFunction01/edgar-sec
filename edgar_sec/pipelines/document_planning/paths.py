@@ -23,6 +23,11 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     resolve_filing_catalog_paths,
 )
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
+from edgar_sec.infra.storage.review.paths import (
+    ReviewPaths,
+    review_run_paths,
+    review_runs_root,
+)
 
 PIPELINE_DIR = "document_planning"
 PROFILES_DIR = "profiles"
@@ -85,6 +90,13 @@ class DocumentPlanningPaths:
     @property
     def plans_root(self) -> Path:
         return self.artifacts_root / PIPELINE_DIR / PLANS_DIR
+
+    @property
+    def review_runs_root(self) -> Path:
+        return review_runs_root(self.artifacts_root, PIPELINE_DIR)
+
+    def review_paths(self, review_id: str) -> ReviewPaths:
+        return review_run_paths(self.artifacts_root, PIPELINE_DIR, review_id)
 
     def profile_path(self, profile_id: str) -> Path:
         return self.profiles_root / f"{validate_profile_id(profile_id)}.json"

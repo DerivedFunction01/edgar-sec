@@ -1,12 +1,12 @@
 from __future__ import annotations
 
+import json
 import os
 import shutil
 import tempfile
 from collections.abc import Iterable
 from pathlib import Path
 
-from edgar_sec.domain.document.route import DocumentRoute, document_route
 from edgar_sec.domain.forms.common.processing import (
     AcquisitionOperation,
     DEFAULT_OPERATIONS,
@@ -47,6 +47,11 @@ from edgar_sec.pipelines.document_acquisition.processing.models import (
     OperationRequest,
     ProcessingRequest,
     ProcessingResult,
+)
+from edgar_sec.pipelines.document_acquisition.run_validation import (
+    iter_work_order_rows,
+    iter_resolved_work_order_operations,
+    load_validated_work_order,
 )
 from edgar_sec.pipelines.document_acquisition.project.models import (
     ProcessingResultProjection,
@@ -316,59 +321,116 @@ def _case_id(case: FixtureCaseMetadata) -> str:
     return validate_safe_id(f"{case.accession}--{digest}", "review_case_id")
 
 
-def _operation_requests(case: FixtureCaseMetadata, route: DocumentRoute):
-    profile = get_family_profile(case.form)
-    allowed = profile.allowed_operations if profile is not None else DEFAULT_OPERATIONS
-    version = profile.version if profile is not None else "1"
-    capability_id = "form-family-profile"
-    raw_support = "supported" if AcquisitionOperation.RAW in allowed else "unsupported"
-    text_allowed = AcquisitionOperation.RENDER_TO_TXT in allowed
-    text_requested = text_allowed and route is DocumentRoute.TEXT
-    text_support = (
-        "supported"
-        if text_requested
-        else "not_evaluated"
-        if text_allowed
-        else "unsupported"
+def _operation_requests(case: FixtureCaseMetadata, *, paths: AcquisitionPaths):
+    target_rows = tuple(
+        row
+        for row in iter_work_order_rows(load_validated_work_order(paths, case.run_id))
+        if row["target_id"] == case.target_id
     )
-    return (
-        OperationRequest(
-            operation_id="raw",
-            operation="raw",
-            requested=True,
-            support_status=raw_support,
-            source_request_id=case.request_id,
-            capability_id=capability_id,
-            capability_version=version,
-            handler_id=None,
-            handler_version=None,
-            output_kind="raw",
-        ),
-        OperationRequest(
-            operation_id="text",
-            operation="render_to_txt",
-            requested=text_requested,
-            support_status=text_support,
-            source_request_id=case.request_id,
-            capability_id=capability_id,
-            capability_version=version,
-            handler_id="text_passthrough" if text_requested else None,
-            handler_version="1" if text_requested else None,
-            output_kind="text_verbatim",
-        ),
-        OperationRequest(
-            operation_id="xml",
-            operation="render_to_xml",
-            requested=True,
-            support_status="unsupported",
-            source_request_id=case.request_id,
-            capability_id=capability_id,
-            capability_version=version,
-            handler_id=None,
-            handler_version=None,
-            output_kind="xml",
-        ),
+    rows = tuple(
+        row
+        for row in iter_resolved_work_order_operations(paths, case.run_id)
+        if row["target_id"] == case.target_id
     )
+    manifest = json.loads(
+        paths.run_manifest_path(case.run_id).read_text(encoding="utf-8")
+    )
+    if (
+        manifest.get("target_plan_id") != case.target_plan_id
+        or manifest.get("target_plan_digest") != case.target_plan_digest
+        or case.target_plan_schema_version != str(manifest.get("target_schema_version"))
+        or manifest.get("inventory_snapshot_id") != case.inventory_snapshot_id
+        or manifest.get("inventory_snapshot_digest") != case.inventory_snapshot_digest
+    ):
+        raise ProcessingReviewError("fixture target plan differs from acquisition run")
+    expected_target = {
+        "target_id": case.target_id,
+        "accession": case.accession,
+        "form": case.form,
+        "request_id": case.request_id,
+        "target_role": case.target_role,
+        "target_type": case.target_type,
+        "optional": case.optional,
+        "catalog_direct_selection": case.catalog_direct_selection,
+        "status": case.target_status,
+        "source_origin": case.source_origin,
+        "retrieval_mode": case.retrieval_mode,
+        "target_url": case.target_url,
+    }
+    if case.retrieval_mode == "bundle_sequence":
+        expected_target["sequence"] = case.sequence
+    if len(target_rows) != 1 or any(
+        target_rows[0].get(name) != value for name, value in expected_target.items()
+    ):
+        raise ProcessingReviewError(
+            "fixture target differs from acquisition work order"
+        )
+    if not rows or any(
+        row.get("source_request_target_id")
+        != (case.target_id if row.get("source_request_id") is not None else None)
+        for row in rows
+    ):
+        raise ProcessingReviewError(
+            "fixture source differs from acquisition work order"
+        )
+    expected_operations = {"raw", "render_to_txt", "render_to_xml"}
+    if (
+        len(rows) != len(expected_operations)
+        or {row["operation"] for row in rows} != expected_operations
+        or len({row["operation_id"] for row in rows}) != len(rows)
+    ):
+        raise ProcessingReviewError("work-order operation coverage is invalid")
+
+    operations = []
+    for row in rows:
+        support_status = row["support_status"]
+        pins = tuple(
+            row[name]
+            for name in (
+                "capability_id",
+                "capability_version",
+                "handler_id",
+                "handler_version",
+                "output_kind",
+            )
+        )
+        if support_status not in {"supported", "unsupported", "not_evaluated"}:
+            raise ProcessingReviewError(
+                "work-order operation support status is invalid"
+            )
+        if (
+            support_status == "supported" and not all(pin is not None for pin in pins)
+        ) or (support_status != "supported" and any(pin is not None for pin in pins)):
+            raise ProcessingReviewError("work-order operation pins are inconsistent")
+        requested = row["selected"] is True or (
+            row["requested"] is True and support_status == "unsupported"
+        )
+        if (
+            requested
+            and support_status == "supported"
+            and (
+                not isinstance(row["source_request_id"], str)
+                or row["input_role"] != "selected_target_body"
+            )
+        ):
+            raise ProcessingReviewError(
+                "requested operation lacks a resolved body input"
+            )
+        operations.append(
+            OperationRequest(
+                operation_id=row["operation_id"],
+                operation=row["operation"],
+                requested=requested,
+                support_status=support_status,
+                source_request_id=row["source_request_id"],
+                capability_id=pins[0],
+                capability_version=pins[1],
+                handler_id=pins[2],
+                handler_version=pins[3],
+                output_kind=pins[4],
+            )
+        )
+    return tuple(operations)
 
 
 def _request_for_case(
@@ -386,7 +448,6 @@ def _request_for_case(
         or case.source_byte_size != body.source_response_byte_size
     ):
         raise ProcessingReviewError("retained S9 body differs from fixture identity")
-    route = document_route(archive_url.document_path)
     return ProcessingRequest(
         target_id=case.target_id,
         accession=AccessionNumber.from_any(case.accession),
@@ -397,7 +458,7 @@ def _request_for_case(
         selected_filename=body.selected_filename,
         source_origin=case.source_origin,
         body=body,
-        operations=_operation_requests(case, route),
+        operations=_operation_requests(case, paths=paths),
     )
 
 

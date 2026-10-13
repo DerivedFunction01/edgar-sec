@@ -67,9 +67,12 @@ def test_parser_registers_independent_acquisition_tracks() -> None:
         ],
         ["review", "generate", "--fixture", "f-1"],
         ["review", "compare", "--base", "left", "--new", "right"],
-        ["snapshot", "audit"],
+        ["review", "audit"],
     ):
         assert parser.parse_args(args)
+
+    with pytest.raises(SystemExit):
+        parser.parse_args(["snapshot", "audit"])
 
 
 def test_process_options_preserve_defaults_and_validate_workers() -> None:
@@ -134,6 +137,16 @@ def test_publish_todo_reports_gate_and_does_not_claim_publication(
     payload = json.loads(capsys.readouterr().out)
     assert payload["status"] == "blocked_by_gate"
     assert "representative S9/S10 evidence and explicit approval" in payload["message"]
+
+
+def test_review_audit_remains_fail_closed(capsys: pytest.CaptureFixture[str]) -> None:
+    result = cli.main(["review", "audit", "--json"])
+
+    assert result == 2
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["command"] == "review audit"
+    assert payload["status"] == "not_implemented"
+    assert "no acquisition evidence was read or written" in payload["message"]
 
 
 def test_review_generate_and_snapshot_have_separate_handlers(

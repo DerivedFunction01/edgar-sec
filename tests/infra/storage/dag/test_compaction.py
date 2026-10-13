@@ -15,6 +15,20 @@ from edgar_sec.infra.storage.dag.manifest import (
 from edgar_sec.infra.storage.dag.publication import read_pointer
 from edgar_sec.infra.storage.dag.spec import RelationSpec
 from edgar_sec.infra.storage.parquet import read_parquet_table, write_parquet_table
+from edgar_sec.pipelines.document_inventory.snapshot.reader import (
+    get_accession_bundle,
+    get_accessions_by_cik,
+    get_accessions_by_source_cik,
+    get_active_accession,
+    get_active_entries,
+    query_accessions,
+)
+from edgar_sec.pipelines.document_inventory.snapshot.schema import (
+    SNAPSHOT_ACCESSIONS_SCHEMA,
+    SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
+)
+from edgar_sec.pipelines.document_inventory.snapshot.specs import INVENTORY_RELATIONS
+from edgar_sec.domain.document_inventory.schemas import ENTRY_SCHEMA
 
 SCHEMA = pa.schema([("id", pa.string()), ("val", pa.int64())])
 
@@ -101,6 +115,157 @@ def test_compact_lineage_preserves_parity(tmp_path: Path) -> None:
     assert compacted.checkpoint_anchor_id == "c1"
     assert "records" in compacted.relations
     assert compacted.relations["records"][0].row_count == 3
+
+
+def test_inventory_queries_match_across_compaction(tmp_path: Path) -> None:
+    catalog = DAGCatalog(tmp_path)
+    snapshot_dir = tmp_path / "base"
+    snapshot_dir.mkdir()
+    tables = {
+        "accessions": pa.Table.from_pylist(
+            [
+                {
+                    "accession": "0000000001-24-000001",
+                    "filing_cik": "0000000001",
+                    "form": "10-K",
+                    "filing_date": "2024-03-01",
+                    "report_date": "2023-12-31",
+                    "bundle_url": "bundle-1",
+                    "bundle_size": 1000,
+                    "index_url": "index-1",
+                    "index_sha256": "index-hash-1",
+                    "first_indexed_by": "run-1",
+                },
+                {
+                    "accession": "0000000001-24-000002",
+                    "filing_cik": "0000000001",
+                    "form": "10-Q",
+                    "filing_date": "2024-06-01",
+                    "report_date": "2024-03-31",
+                    "bundle_url": "bundle-2",
+                    "bundle_size": 2000,
+                    "index_url": "index-2",
+                    "index_sha256": "index-hash-2",
+                    "first_indexed_by": "run-1",
+                },
+            ],
+            schema=SNAPSHOT_ACCESSIONS_SCHEMA,
+        ),
+        "entries": pa.Table.from_pylist(
+            [
+                {
+                    "entry_id": "entry-1",
+                    "accession": "0000000001-24-000001",
+                    "table_kind": "document",
+                    "row_ordinal": 0,
+                    "sequence": 1,
+                    "document_type": "10-K",
+                    "document_label": "Annual report",
+                    "description": "Annual report",
+                    "filename": "annual.htm",
+                    "href": "annual.htm",
+                    "archive_url": "archive-1",
+                    "byte_size": 500,
+                },
+                {
+                    "entry_id": "entry-2",
+                    "accession": "0000000001-24-000002",
+                    "table_kind": "document",
+                    "row_ordinal": 0,
+                    "sequence": 1,
+                    "document_type": "10-Q",
+                    "document_label": "Quarterly report",
+                    "description": "Quarterly report",
+                    "filename": "quarterly.htm",
+                    "href": "quarterly.htm",
+                    "archive_url": "archive-2",
+                    "byte_size": 600,
+                },
+            ],
+            schema=ENTRY_SCHEMA,
+        ),
+        "accession_sources": pa.Table.from_pylist(
+            [
+                {
+                    "accession": "0000000001-24-000001",
+                    "source_cik": "0000000002",
+                    "first_seen_by": "run-1",
+                },
+                {
+                    "accession": "0000000001-24-000002",
+                    "source_cik": "0000000001",
+                    "first_seen_by": "run-1",
+                },
+            ],
+            schema=SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
+        ),
+    }
+    relations = {}
+    for relation, table in tables.items():
+        part_path = snapshot_dir / f"{relation}.parquet"
+        write_parquet_table(table, part_path)
+        relations[relation] = (
+            PartDescriptor(
+                f"{relation}.parquet",
+                file_sha256(part_path),
+                table.num_rows,
+                part_path.stat().st_size,
+            ),
+        )
+    catalog.record_node(
+        DAGNodeManifest(
+            snapshot_id="base",
+            kind="checkpoint",
+            parents=(),
+            checkpoint_anchor_id="base",
+            lineage_depth=0,
+            created_at="2026-10-07T00:00:00Z",
+            relations=relations,
+            logical_fingerprint="base-fingerprint",
+        )
+    )
+    catalog.write_pointer("main", "base")
+
+    def inventory_results(snapshot_id: str | None = None) -> dict[str, object]:
+        query = {"snapshot_id": snapshot_id} if snapshot_id is not None else {}
+        return {
+            "accession": get_active_accession(
+                tmp_path, "0000000001-24-000001", **query
+            ),
+            "entries": sorted(
+                get_active_entries(tmp_path, "0000000001-24-000001", **query),
+                key=lambda row: row["entry_id"],
+            ),
+            "filing_cik": sorted(
+                get_accessions_by_cik(tmp_path, "0000000001", **query),
+                key=lambda row: row["accession"],
+            ),
+            "source_cik": sorted(
+                get_accessions_by_source_cik(tmp_path, "0000000002", **query),
+                key=lambda row: row["accession"],
+            ),
+            "filtered": query_accessions(
+                tmp_path,
+                form="10-K",
+                filing_cik="0000000001",
+                source_cik="0000000002",
+                **query,
+            ),
+            "bundle": get_accession_bundle(tmp_path, "0000000001-24-000001", **query),
+        }
+
+    before = inventory_results("base")
+    compact_lineage(
+        tmp_path,
+        INVENTORY_RELATIONS,
+        tip_id="base",
+        new_snapshot_id="compacted",
+        staged_dir=tmp_path / "stage_compacted",
+        publish=True,
+    )
+
+    assert inventory_results("compacted") == before
+    assert inventory_results() == before
 
 
 def test_compact_lineage_multipart_budgeting(tmp_path: Path) -> None:

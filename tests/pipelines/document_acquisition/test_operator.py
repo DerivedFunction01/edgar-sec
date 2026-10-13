@@ -6,9 +6,68 @@ from edgar_sec.pipelines.document_acquisition import operator
 def _menu_action(label_fragment: str):
     return next(
         action
-        for action in operator.build_operator_menu()
+        for action in (
+            *operator.build_operator_menu(),
+            *operator._build_snapshot_menu(),
+            *operator._build_fixture_review_menu(),
+        )
         if label_fragment in action.label
     )
+
+
+def test_menu_groups_fixture_review_actions_like_inventory_consoles(monkeypatch):
+    menu = operator.build_operator_menu()
+    assert [action.key for action in menu] == ["1", "2", "3", "4", "p", "f"]
+    assert "Snapshot console" in menu[4].label
+    assert "Fixtures and review console" in menu[5].label
+
+    opened = []
+    monkeypatch.setattr(
+        operator,
+        "run_interactive_menu",
+        lambda title, actions, **kwargs: opened.append((title, actions, kwargs)) or 0,
+    )
+    menu[4].callback()
+    menu[5].callback()
+
+    snapshot_title, snapshot_actions, snapshot_kwargs = opened[0]
+    assert snapshot_title == "Document Acquisition Snapshot Console"
+    assert [action.key for action in snapshot_actions] == ["1", "2"]
+    assert [action.label for action in snapshot_actions] == [
+        "Publish snapshot (S11 gate)",
+        "Snapshot status (S11 gate)",
+    ]
+    assert snapshot_kwargs == {}
+
+    fixture_title, fixture_actions, fixture_kwargs = opened[1]
+    assert fixture_title == "Document Acquisition Fixtures & Review Console"
+    assert [action.key for action in fixture_actions] == [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+    ]
+    assert [action.label for action in fixture_actions] == [
+        "Create local fixture",
+        "Fill local fixture evidence (confirmation required)",
+        "List local fixtures",
+        "Replay local fixture (confirmation required)",
+        "Generate review artifacts",
+        "Compare review runs",
+        "Audit acquisition evidence (S9/S10; not implemented)",
+    ]
+    assert fixture_kwargs == {}
+
+
+def test_evidence_audit_action_remains_fail_closed(capsys):
+    _menu_action("Audit acquisition evidence").callback()
+
+    message = capsys.readouterr().err
+    assert "not implemented: S9/S10 evidence audit" in message
+    assert "no acquisition evidence was read or written" in message
 
 
 def test_project_action_delegates_to_cli(monkeypatch) -> None:

@@ -2,11 +2,11 @@
 
 ## Purpose and status
 
-This is the interactive flow shared by the S9 command group. Project, status, run,
-fixture create/fill/list/replay, and review generate/compare dispatch to CLI services.
-Review is implemented only for the limited S9/S10 fixture slice. The `process --run-id`
-command remains unimplemented despite the available per-target `process_target` service;
-publish fails closed on the S11 gate. Wiring is covered by
+This is the interactive flow shared by the acquisition command group. Project, status,
+run, process, fixture create/fill/list/replay, and review generate/compare dispatch to
+CLI services. Review is implemented only for the limited S9/S10 fixture slice. Publish
+fails closed on the S11 gate; snapshot status and review evidence audit remain
+placeholders. Wiring is covered by
 [`operator.py`](../../../../edgar_sec/pipelines/document_acquisition/operator.py),
 [`test_operator.py`](../../../../tests/pipelines/document_acquisition/test_operator.py),
 [`test_review.py`](../../../../tests/pipelines/document_acquisition/commands/test_review.py),
@@ -24,39 +24,37 @@ def main(argv: list[str] | None = None) -> int: ...
 
 `main()` dispatches explicit CLI subcommands; with no command it enters the menu.
 The root launcher exposes one `Document Acquisition` entry and does not route through
-the legacy `documents`/`document_storage` operator. Project/status/run and fixture menu
-actions collect inputs and delegate to the same CLI services; there is no distribution
-console.
+the legacy `documents`/`document_storage` operator. Numbered lifecycle actions use the
+root menu; snapshot and fixture/review actions use keyed consoles. Acquisition has no
+distribution adapter or full snapshot DAG console.
 
 ## Main menu
 
 ```text
 Document Acquisition
   1. Project a target plan into an acquisition run
-  2. Show acquisition run status
-  3. Run pending acquisition work
+  2. Inspect acquisition runs
+  3. Run acquisition (live SEC; confirmation required)
   4. Process acquired targets
-  5. Publish a completed run snapshot
-  6. Create local fixture
-  7. Fill local fixture evidence (confirmation required)
-  8. List local fixtures
-  9. Replay local fixture (confirmation required)
-  10. Review artifact console (limited S9/S10 fixture slice)
-  11. Snapshot status/evidence audit (S11 gate)
+  p. Snapshot console (publish, status; S11 gate)
+  f. Fixtures and review console (fixtures, review, evidence audit)
   0. Exit
 ```
 
 Project prompts for a published plan ID and delegates to the offline project service.
 Status delegates read-only run inspection. Run is wired to acquisition and separately
 confirms live SEC access, defaulting to no; retry selection is a distinct prompt.
-Fixture create, fill, list, and replay are wired. Review generate/compare are wired for
-the limited S9/S10 fixture slice. The `process --run-id` command and snapshot audit
-remain unimplemented; per-target `process_target` does not provide run orchestration.
-Publish returns a gate-blocked result and does not create parts, manifests, or pointers.
+Processing dispatches run-level `process --run-id` and defaults retry selection to no.
+The snapshot console groups publish and status; both remain behind the S11 gate. The
+keyed fixture/review console contains create, fill, list, replay, generate, compare,
+and the S9/S10 evidence-audit placeholder. Review generate/compare are wired for the
+limited S9/S10 fixture slice. Publish returns a gate-blocked result and does not create
+parts, manifests, or pointers; snapshot status and review audit remain fail-closed.
 The CLI routing and per-target processing are covered by
 [`cli.py`](../../../../edgar_sec/pipelines/document_acquisition/cli.py),
 [`test_cli.py`](../../../../tests/pipelines/document_acquisition/test_cli.py), and
-[`processing/test_worker.py`](../../../../tests/pipelines/document_acquisition/processing/test_worker.py).
+[`test_process_cli_integration.py`](../../../../tests/pipelines/document_acquisition/test_process_cli_integration.py),
+and [`processing/test_worker.py`](../../../../tests/pipelines/document_acquisition/processing/test_worker.py).
 
 ## Deferred UX extensions
 

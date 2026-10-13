@@ -33,8 +33,8 @@ _TRACKS = {
     "fixture replay": "S9 fixture replay",
     "review generate": "S7 review artifact generation",
     "review compare": "S7 review comparison",
+    "review audit": "S9/S10 evidence audit",
     "snapshot status": "S11 snapshot availability",
-    "snapshot audit": "S9/S10 evidence audit",
 }
 
 
@@ -50,9 +50,10 @@ def report_not_implemented(command: str, *, json_output: bool = False) -> int:
         status = "blocked_by_gate"
     elif command == "snapshot status":
         message = "No acquisition snapshot is published; S11 publication remains gated."
-    elif command == "snapshot audit":
+    elif command == "review audit":
         message = (
-            "No S9/S10 evidence audit is implemented; no snapshot was read or written."
+            "No S9/S10 evidence audit is implemented; no acquisition evidence was "
+            "read or written."
         )
     result = {
         "command": command,
@@ -77,14 +78,14 @@ def cmd_snapshot_status(args: argparse.Namespace) -> int:
     return report_not_implemented("snapshot status", json_output=args.json)
 
 
-def cmd_snapshot_audit(args: argparse.Namespace) -> int:
-    return report_not_implemented("snapshot audit", json_output=args.json)
+def cmd_review_audit(args: argparse.Namespace) -> int:
+    return report_not_implemented("review audit", json_output=args.json)
 
 
 _TODO_HANDLERS = {
     "status": cmd_status,
     "snapshot status": cmd_snapshot_status,
-    "snapshot audit": cmd_snapshot_audit,
+    "review audit": cmd_review_audit,
 }
 
 
@@ -192,16 +193,20 @@ def build_parser() -> argparse.ArgumentParser:
 
     from .review_artifacts.adapter import AcquisitionReviewAdapter
 
-    attach_review_artifact_subparsers(
+    review_commands = attach_review_artifact_subparsers(
         commands, AcquisitionReviewAdapter(), case_filters=True
     )
+    review_audit = review_commands.add_parser(
+        "audit", help="audit S9/S10 acquisition evidence"
+    )
+    _add_output_options(review_audit)
+    _set_todo(review_audit, "review audit")
 
-    snapshot = commands.add_parser("snapshot", help="inspect S11 status and evidence")
+    snapshot = commands.add_parser("snapshot", help="inspect S11 snapshot status")
     snapshot_commands = snapshot.add_subparsers(dest="snapshot_command", required=True)
-    for action in ("status", "audit"):
-        snapshot_action = snapshot_commands.add_parser(action)
-        _add_output_options(snapshot_action)
-        _set_todo(snapshot_action, f"snapshot {action}")
+    snapshot_status = snapshot_commands.add_parser("status")
+    _add_output_options(snapshot_status)
+    _set_todo(snapshot_status, "snapshot status")
 
     return parser
 

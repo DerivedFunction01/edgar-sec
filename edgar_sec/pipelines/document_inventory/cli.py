@@ -31,6 +31,7 @@ from .commands.review import cmd_review_artifacts
 from .commands.run import cmd_run
 from .commands.status import cmd_status
 from .commands.analyze import cmd_review_analyze
+from .commands.inspect_snapshot import cmd_inspect_snapshot
 
 __all__ = [
     "build_parser",
@@ -130,6 +131,16 @@ def build_parser() -> argparse.ArgumentParser:
     query_cmd.add_argument("--limit", type=positive_int_type, help="limit results")
     _add_output_options(query_cmd)
     query_cmd.set_defaults(func=cmd_query)
+
+    inspect_cmd = commands.add_parser(
+        "inspect", help="validate and inspect a pinned inventory snapshot"
+    )
+    inspect_cmd.add_argument(
+        "--snapshot", default="current", help="snapshot ID or current branch tip"
+    )
+    inspect_cmd.add_argument("--branch", default="main", help="branch for current")
+    _add_output_options(inspect_cmd)
+    inspect_cmd.set_defaults(func=cmd_inspect_snapshot)
 
     from edgar_sec.infra.storage.review.cli import attach_review_subparsers
     from .review_artifacts.adapter import InventoryReviewAdapter
