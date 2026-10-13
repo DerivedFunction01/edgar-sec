@@ -6,6 +6,7 @@ import sqlite3
 from datetime import UTC, datetime
 from pathlib import Path
 from types import SimpleNamespace
+import pytest
 
 from edgar_sec.infra.sec_http.streaming import StreamFailure, StreamedResponse
 from edgar_sec.pipelines.document_acquisition import cli
@@ -14,12 +15,16 @@ from edgar_sec.pipelines.document_acquisition.commands import run
 from edgar_sec.pipelines.document_acquisition.fixture_store.capture import (
     FixtureCaptureResult,
 )
-from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
-    FixtureReplayResult,
+from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
+    FixtureSummary,
 )
+from edgar_sec.pipelines.document_acquisition.fixture_store.models import FixturePlanPin
 from edgar_sec.pipelines.document_acquisition.models import AcquisitionPolicy
 from edgar_sec.pipelines.document_acquisition.run_state.store import get_target_state
 from edgar_sec.pipelines.document_acquisition.runner import execute_acquisition_run
+from tests.pipelines.document_acquisition.fixture_store.fixture_helpers import (
+    create_test_fixture_for_run,
+)
 from tests.support import make_acquisition_run
 
 
@@ -85,9 +90,19 @@ def test_fixture_create_delegates_and_emits_stable_json(capsys, tmp_path, monkey
     monkeypatch.setattr(
         fixture,
         "create_fixture",
-        lambda fixture_id, *, paths: (
-            calls.append((fixture_id, paths.artifacts_root)) or fixture_root
+        lambda fixture_id, pin, *, paths: (
+            calls.append((fixture_id, pin, paths.artifacts_root)) or fixture_root
         ),
+    )
+    plan = SimpleNamespace(
+        plan_id="plan-1",
+        manifest={"plan_digest": "a" * 64, "target_schema_version": 1},
+    )
+    monkeypatch.setattr(fixture, "read_published_plan", lambda *_args: plan)
+    monkeypatch.setattr(
+        fixture,
+        "resolve_document_planning_paths",
+        lambda **_kwargs: object(),
     )
 
     result = cli.main(
@@ -96,6 +111,8 @@ def test_fixture_create_delegates_and_emits_stable_json(capsys, tmp_path, monkey
             "create",
             "--fixture",
             "fixture-1",
+            "--plan-id",
+            "plan-1",
             "--artifacts",
             str(tmp_path),
             "--json",
@@ -103,7 +120,13 @@ def test_fixture_create_delegates_and_emits_stable_json(capsys, tmp_path, monkey
     )
 
     assert result == 0
-    assert calls == [("fixture-1", tmp_path.resolve())]
+    assert calls == [
+        (
+            "fixture-1",
+            FixturePlanPin("plan-1", "a" * 64, 1),
+            tmp_path.resolve(),
+        )
+    ]
     assert json.loads(capsys.readouterr().out) == {
         "command": "fixture create",
         "fixture_id": "fixture-1",
@@ -228,15 +251,18 @@ def test_fixture_list_uses_streaming_discovery_and_filters(
 ) -> None:
     calls = []
 
-    def fixture_ids(_paths):
-        yield "fixture-1"
-        yield "fixture-2"
+    summaries = [
+        FixtureSummary("fixture-1", "plan-1", "a" * 64, 1, 2, 4, (("acquired", 4),)),
+        FixtureSummary("fixture-2", "plan-2", "b" * 64, 1, 1, 1, (("failed", 1),)),
+    ]
 
     def fixture_cases(paths, *, fixture_id, capture_id, target_id):
         calls.append((paths.artifacts_root, fixture_id, capture_id, target_id))
         return iter(())
 
-    monkeypatch.setattr(fixture, "list_fixtures", fixture_ids)
+    monkeypatch.setattr(
+        fixture, "list_fixture_summaries", lambda _paths: iter(summaries)
+    )
     monkeypatch.setattr(fixture, "list_fixture_cases", fixture_cases)
 
     result = cli.main(
@@ -260,73 +286,24 @@ def test_fixture_list_uses_streaming_discovery_and_filters(
     assert json.loads(capsys.readouterr().out) == {
         "cases": [],
         "command": "fixture list",
-        "fixtures": ["fixture-2"],
+        "fixtures": [
+            {
+                "acquisition_status_counts": [["failed", 1]],
+                "case_count": 1,
+                "capture_count": 1,
+                "fixture_id": "fixture-2",
+                "target_plan_digest": "b" * 64,
+                "target_plan_id": "plan-2",
+                "target_plan_schema_version": 1,
+            }
+        ],
         "status": "ok",
     }
 
 
-def test_fixture_replay_is_local_and_returns_metadata_only_case(
-    capsys, tmp_path, monkeypatch
-) -> None:
-    calls = []
-
-    def fake_replay(fixture_id, capture_id, target_id, output_path, *, paths):
-        calls.append(
-            (fixture_id, capture_id, target_id, output_path, paths.artifacts_root)
-        )
-        return FixtureReplayResult(
-            fixture_id,
-            capture_id,
-            target_id,
-            "attempt-1",
-            "failed",
-            None,
-            None,
-            None,
-            None,
-        )
-
-    def unexpected(*_args, **_kwargs):
-        raise AssertionError("fixture replay must not start acquisition transport")
-
-    monkeypatch.setattr(fixture, "replay_fixture_case", fake_replay)
-    monkeypatch.setattr(run, "_LazySecTransport", unexpected)
-    monkeypatch.setattr(run, "execute_acquisition_run", unexpected)
-    output = tmp_path / "response.bin"
-
-    result = cli.main(
-        [
-            "fixture",
-            "replay",
-            "--fixture",
-            "fixture-1",
-            "--capture-id",
-            "cap-1",
-            "--target-id",
-            "target-1",
-            "--output",
-            str(output),
-            "--artifacts",
-            str(tmp_path),
-            "--json",
-        ]
-    )
-
-    assert result == 0
-    assert calls == [("fixture-1", "cap-1", "target-1", output, tmp_path.resolve())]
-    assert json.loads(capsys.readouterr().out) == {
-        "acquisition_status": "failed",
-        "attempt_id": "attempt-1",
-        "capture_id": "cap-1",
-        "command": "fixture replay",
-        "fixture_id": "fixture-1",
-        "output_path": None,
-        "response_sha256": None,
-        "selected_byte_size": None,
-        "selected_sha256": None,
-        "status": "metadata_only",
-        "target_id": "target-1",
-    }
+def test_fixture_replay_is_not_a_user_command() -> None:
+    with pytest.raises(SystemExit):
+        cli.main(["fixture", "replay", "--fixture", "fixture-1"])
 
 
 def test_fixture_errors_are_stable_and_json_list_is_atomic(
@@ -334,10 +311,26 @@ def test_fixture_errors_are_stable_and_json_list_is_atomic(
 ):
     monkeypatch.setattr(
         fixture,
+        "read_published_plan",
+        lambda *_args: SimpleNamespace(
+            plan_id="plan-1",
+            manifest={"plan_digest": "a" * 64, "target_schema_version": 1},
+        ),
+    )
+    monkeypatch.setattr(
+        fixture, "resolve_document_planning_paths", lambda **_kwargs: object()
+    )
+    monkeypatch.setattr(
+        fixture,
         "create_fixture",
         lambda *_args, **_kwargs: (_ for _ in ()).throw(ValueError("invalid path")),
     )
-    assert cli.main(["fixture", "create", "--fixture", "bad", "--json"]) == 1
+    assert (
+        cli.main(
+            ["fixture", "create", "--fixture", "bad", "--plan-id", "plan-1", "--json"]
+        )
+        == 1
+    )
     assert json.loads(capsys.readouterr().out) == {
         "command": "fixture create",
         "error": "invalid path",
@@ -348,7 +341,13 @@ def test_fixture_errors_are_stable_and_json_list_is_atomic(
         yield from ()
         raise ValueError("corrupt fixture metadata")
 
-    monkeypatch.setattr(fixture, "list_fixtures", lambda _paths: iter(("fixture-1",)))
+    monkeypatch.setattr(
+        fixture,
+        "list_fixture_summaries",
+        lambda _paths: iter(
+            (FixtureSummary("fixture-1", "plan-1", "a" * 64, 1, 0, 0, ()),)
+        ),
+    )
     monkeypatch.setattr(fixture, "list_fixture_cases", broken_cases)
     assert cli.main(["fixture", "list", "--artifacts", str(tmp_path), "--json"]) == 1
     assert json.loads(capsys.readouterr().out) == {
@@ -358,7 +357,7 @@ def test_fixture_errors_are_stable_and_json_list_is_atomic(
     }
 
 
-def test_bundle_response_fixture_cli_round_trip_preserves_response_and_child(
+def test_bundle_response_fixture_fill_and_list_preserve_response_and_child(
     tmp_path, monkeypatch, capsys
 ) -> None:
     paths, run_id, row = make_acquisition_run(tmp_path, lazy=False, bundle=True)
@@ -375,21 +374,7 @@ def test_bundle_response_fixture_cli_round_trip_preserves_response_and_child(
     assert state is not None and state.last_attempt_id is not None
     artifacts = str(paths.artifacts_root)
 
-    assert (
-        cli.main(
-            [
-                "fixture",
-                "create",
-                "--fixture",
-                "bundle-cli",
-                "--artifacts",
-                artifacts,
-                "--json",
-            ]
-        )
-        == 0
-    )
-    capsys.readouterr()
+    create_test_fixture_for_run(paths, "bundle-cli", run_id)
     assert (
         cli.main(
             [
@@ -445,31 +430,6 @@ def test_bundle_response_fixture_cli_round_trip_preserves_response_and_child(
         }
     assert stored_digests == {envelope_digest}
 
-    output = tmp_path / "bundle-child.bin"
-    assert (
-        cli.main(
-            [
-                "fixture",
-                "replay",
-                "--fixture",
-                "bundle-cli",
-                "--capture-id",
-                capture["capture_id"],
-                "--target-id",
-                "target-1",
-                "--output",
-                str(output),
-                "--artifacts",
-                artifacts,
-                "--json",
-            ]
-        )
-        == 0
-    )
-    replay = json.loads(capsys.readouterr().out)
-    assert replay["selected_sha256"] == selected_digest
-    assert output.read_bytes() == selected
-
 
 def test_fixture_cli_captures_current_successful_retry_attempt(
     tmp_path, monkeypatch, capsys
@@ -495,21 +455,7 @@ def test_fixture_cli_captures_current_successful_retry_attempt(
     assert state.last_attempt_id != first_attempt_id
     artifacts = str(paths.artifacts_root)
 
-    assert (
-        cli.main(
-            [
-                "fixture",
-                "create",
-                "--fixture",
-                "retry-cli",
-                "--artifacts",
-                artifacts,
-                "--json",
-            ]
-        )
-        == 0
-    )
-    capsys.readouterr()
+    create_test_fixture_for_run(paths, "retry-cli", run_id)
     assert (
         cli.main(
             [

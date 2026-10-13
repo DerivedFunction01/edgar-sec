@@ -11,17 +11,16 @@ from edgar_sec.infra.sec_http.streaming import StreamFailure
 from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.pipelines.document_acquisition.fixture_store.capture import (
     capture_fixture_case,
-    create_fixture,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
+    FixturePlanPin,
     FixtureOperationError,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
+    _materialize_fixture_case,
     list_fixture_cases,
-    replay_fixture_case,
 )
 from edgar_sec.pipelines.document_acquisition import cli
-from edgar_sec.pipelines.document_acquisition.commands import run as run_command
 from edgar_sec.pipelines.document_acquisition.models import AcquisitionPolicy
 from edgar_sec.pipelines.document_acquisition.run_state.evidence import (
     get_attempt_evidence_group,
@@ -38,6 +37,12 @@ from tests.pipelines.document_acquisition.test_runner import (
     _UNLINKED_INDEX,
     _MemoryTransport,
     _make_run,
+)
+from .fixture_helpers import (
+    create_test_fixture_for_run,
+    create_test_fixture,
+    initialize_test_fixture,
+    plan_pin_for_run,
 )
 
 
@@ -81,13 +86,13 @@ def _initial_attempt_id(paths, run_id):
         ).fetchone()[0]
 
 
-def test_capture_direct_attempt_is_idempotent_and_replays_without_network(
+def test_capture_direct_attempt_is_idempotent_and_materializes_without_network(
     tmp_path, monkeypatch
 ) -> None:
     paths, run_id, row = _make_run(tmp_path, lazy=False)
     body = b"<html>captured filing</html>"
     _execute_run(paths, run_id, row, {row["target_url"]: body}, monkeypatch)
-    fixture_root = create_fixture("fixture-1", paths=paths)
+    fixture_root = create_test_fixture_for_run(paths, "fixture-1", run_id)
     state = get_target_state(paths.run_state_path(run_id), "target-1")
     assert state is not None and state.last_attempt_id is not None
 
@@ -109,7 +114,7 @@ def test_capture_direct_attempt_is_idempotent_and_replays_without_network(
     )
     cases = list(list_fixture_cases(paths, fixture_id="fixture-1"))
     output = tmp_path / "replayed.html"
-    replay = replay_fixture_case(
+    materialized = _materialize_fixture_case(
         "fixture-1", first.capture_id, "target-1", output, paths=paths
     )
 
@@ -121,16 +126,16 @@ def test_capture_direct_attempt_is_idempotent_and_replays_without_network(
     assert cases[0].acquisition_status == "acquired"
     assert cases[0].target_plan_schema_version == "1"
     assert cases[0].selected_filename == "cover.htm"
-    assert replay.output_path == output
-    assert replay.response_sha256 == first.response_sha256
+    assert materialized.output_path == output
+    assert materialized.response_sha256 == first.response_sha256
     assert output.read_bytes() == body
     with pytest.raises(FixtureOperationError, match="already exists"):
-        replay_fixture_case(
+        _materialize_fixture_case(
             "fixture-1", first.capture_id, "target-1", output, paths=paths
         )
     assert output.read_bytes() == body
     with pytest.raises(FixtureOperationError, match="inside managed artifacts"):
-        replay_fixture_case(
+        _materialize_fixture_case(
             "fixture-1",
             first.capture_id,
             "target-1",
@@ -141,8 +146,32 @@ def test_capture_direct_attempt_is_idempotent_and_replays_without_network(
         assert connection.execute("SELECT COUNT(*) FROM cases").fetchone()[0] == 1
 
 
+def test_capture_refuses_a_fixture_pinned_to_another_plan(
+    tmp_path, monkeypatch
+) -> None:
+    paths, run_id, row = _make_run(tmp_path, lazy=False)
+    _execute_run(
+        paths, run_id, row, {row["target_url"]: b"<html>body</html>"}, monkeypatch
+    )
+    create_test_fixture(
+        paths,
+        "fixture-wrong-plan",
+        FixturePlanPin("plan-other", "b" * 64, 1),
+    )
+
+    with pytest.raises(FixtureOperationError, match="differs from fixture plan pin"):
+        capture_fixture_case(
+            "fixture-wrong-plan",
+            run_id,
+            "target-1",
+            _initial_attempt_id(paths, run_id),
+            paths=paths,
+            max_response_bytes=4096,
+        )
+
+
 @pytest.mark.parametrize("lazy", (False, True))
-def test_capture_and_replay_bodyless_failure_as_typed_metadata(
+def test_capture_and_bodyless_failure_metadata_verification(
     tmp_path, monkeypatch, lazy: bool
 ) -> None:
     paths, run_id, row = _make_run(tmp_path, lazy=lazy)
@@ -156,7 +185,7 @@ def test_capture_and_replay_bodyless_failure_as_typed_metadata(
         failures={row["target_url"]: failure},
     )
     fixture_id = f"fixture-failure-{lazy}"
-    create_fixture(fixture_id, paths=paths)
+    create_test_fixture_for_run(paths, fixture_id, run_id)
     state = get_target_state(paths.run_state_path(run_id), "target-1")
     assert state is not None and state.last_attempt_id is not None
 
@@ -168,7 +197,7 @@ def test_capture_and_replay_bodyless_failure_as_typed_metadata(
         paths=paths,
         max_response_bytes=4096,
     )
-    replay = replay_fixture_case(
+    materialized = _materialize_fixture_case(
         fixture_id,
         captured.capture_id,
         "target-1",
@@ -177,8 +206,8 @@ def test_capture_and_replay_bodyless_failure_as_typed_metadata(
     )
 
     assert captured.response_sha256 is None
-    assert replay.acquisition_status == "failed"
-    assert replay.output_path is None
+    assert materialized.acquisition_status == "failed"
+    assert materialized.output_path is None
     assert not (tmp_path / "should-not-exist.html").exists()
 
 
@@ -202,7 +231,7 @@ def test_capture_refuses_unavailable_bundle_or_lazy_response_evidence(
             selected_url: b"<html>selected</html>",
         }
     _execute_run(paths, run_id, row, responses, monkeypatch)
-    create_fixture(f"fixture-{mode}", paths=paths)
+    create_test_fixture_for_run(paths, f"fixture-{mode}", run_id)
     state = get_target_state(paths.run_state_path(run_id), "target-1")
     assert state is not None and state.last_attempt_id is not None
 
@@ -220,7 +249,7 @@ def test_capture_refuses_unavailable_bundle_or_lazy_response_evidence(
 
 
 @pytest.mark.parametrize("mode", ("bundle", "lazy-direct", "lazy-bundle"))
-def test_opted_in_response_groups_capture_and_replay(tmp_path, monkeypatch, mode):
+def test_opted_in_response_groups_capture_and_materialize(tmp_path, monkeypatch, mode):
     if mode == "bundle":
         paths, run_id, row = _make_run(tmp_path, lazy=False, bundle=True)
         bundle = (
@@ -261,7 +290,7 @@ def test_opted_in_response_groups_capture_and_replay(tmp_path, monkeypatch, mode
         monkeypatch,
         retain_response_evidence=True,
     )
-    create_fixture(f"fixture-{mode}-retained", paths=paths)
+    create_test_fixture_for_run(paths, f"fixture-{mode}-retained", run_id)
     group = get_attempt_evidence_group(
         paths.run_state_path(run_id), "target-1", _initial_attempt_id(paths, run_id)
     )
@@ -278,7 +307,7 @@ def test_opted_in_response_groups_capture_and_replay(tmp_path, monkeypatch, mode
     )
     case = next(iter(list_fixture_cases(paths, fixture_id=f"fixture-{mode}-retained")))
     output = tmp_path / f"{mode}-replayed.bin"
-    replay = replay_fixture_case(
+    materialized = _materialize_fixture_case(
         f"fixture-{mode}-retained",
         captured.capture_id,
         "target-1",
@@ -287,7 +316,7 @@ def test_opted_in_response_groups_capture_and_replay(tmp_path, monkeypatch, mode
     )
 
     assert case.attempt_id == initial_attempt_id
-    assert replay.output_path == output
+    assert materialized.output_path == output
     assert output.read_bytes() == selected
     if mode == "bundle":
         assert case.response_sha256 == hashlib.sha256(bundle).hexdigest()
@@ -381,7 +410,7 @@ def test_capture_refuses_missing_or_malformed_related_evidence(
         selected_path = paths.run_dir(run_id) / relative
         selected_path.write_bytes(b"X" * selected_path.stat().st_size)
         message = "response_sha256 does not match"
-    create_fixture(f"fixture-malformed-{tamper}", paths=paths)
+    create_test_fixture_for_run(paths, f"fixture-malformed-{tamper}", run_id)
 
     with pytest.raises(FixtureOperationError, match=message):
         capture_fixture_case(
@@ -394,9 +423,7 @@ def test_capture_refuses_missing_or_malformed_related_evidence(
         )
 
 
-def test_failed_retained_lazy_group_replays_metadata_and_verifies_bodies(
-    tmp_path, monkeypatch
-):
+def test_failed_retained_lazy_group_verifies_metadata_and_bodies(tmp_path, monkeypatch):
     paths, run_id, row = _make_run(tmp_path, lazy=True)
     selected_url = _INDEX_URL.rsplit("/", 1)[0] + "/report.htm"
     _execute_run(
@@ -414,7 +441,7 @@ def test_failed_retained_lazy_group_replays_metadata_and_verifies_bodies(
         retain_response_evidence=True,
     )
     initial_attempt_id = _initial_attempt_id(paths, run_id)
-    create_fixture("fixture-failed-retained", paths=paths)
+    create_test_fixture_for_run(paths, "fixture-failed-retained", run_id)
     captured = capture_fixture_case(
         "fixture-failed-retained",
         run_id,
@@ -426,7 +453,7 @@ def test_failed_retained_lazy_group_replays_metadata_and_verifies_bodies(
     case = next(iter(list_fixture_cases(paths, fixture_id="fixture-failed-retained")))
     output = tmp_path / "failed-lazy-output.bin"
 
-    replay = replay_fixture_case(
+    materialized = _materialize_fixture_case(
         "fixture-failed-retained",
         captured.capture_id,
         "target-1",
@@ -438,15 +465,15 @@ def test_failed_retained_lazy_group_replays_metadata_and_verifies_bodies(
     assert case.response_sha256 is not None
     assert case.index_response_sha256 == hashlib.sha256(_INDEX).hexdigest()
     assert case.selected_response_sha256 is None
-    assert replay.acquisition_status == "failed"
-    assert replay.response_sha256 == case.response_sha256
-    assert replay.output_path is None
+    assert materialized.acquisition_status == "failed"
+    assert materialized.response_sha256 == case.response_sha256
+    assert materialized.output_path is None
     assert not output.exists()
 
 
 def test_capture_rejects_an_attempt_outside_the_target(tmp_path) -> None:
     paths = resolve_acquisition_paths(artifacts_root=tmp_path)
-    create_fixture("fixture-missing", paths=paths)
+    initialize_test_fixture(paths, "fixture-missing")
 
     with pytest.raises(ValueError):
         capture_fixture_case(
@@ -470,7 +497,7 @@ def test_capture_refuses_manifest_without_plan_provenance(
         {row["target_url"]: b"<html>filing</html>"},
         monkeypatch,
     )
-    create_fixture("fixture-invalid-manifest", paths=paths)
+    create_test_fixture_for_run(paths, "fixture-invalid-manifest", run_id)
     state = get_target_state(paths.run_state_path(run_id), "target-1")
     assert state is not None and state.last_attempt_id is not None
     manifest_path = paths.run_manifest_path(run_id)
@@ -496,7 +523,7 @@ def test_capture_refuses_tampered_staged_bodies(tmp_path, monkeypatch, tamper) -
     paths, run_id, row = _make_run(tmp_path, lazy=False)
     body = b"<html>untampered filing</html>"
     _execute_run(paths, run_id, row, {row["target_url"]: body}, monkeypatch)
-    create_fixture(f"fixture-{tamper}", paths=paths)
+    create_test_fixture_for_run(paths, f"fixture-{tamper}", run_id)
     state = get_target_state(paths.run_state_path(run_id), "target-1")
     assert state is not None and state.last_attempt_id is not None
     relative = state.source_body_relative_path
@@ -529,7 +556,7 @@ def test_capture_enforces_response_size_limit_before_commit(
     paths, run_id, row = _make_run(tmp_path, lazy=False)
     body = b"<html>bounded capture</html>"
     _execute_run(paths, run_id, row, {row["target_url"]: body}, monkeypatch)
-    create_fixture("fixture-limited", paths=paths)
+    create_test_fixture_for_run(paths, "fixture-limited", run_id)
     state = get_target_state(paths.run_state_path(run_id), "target-1")
     assert state is not None and state.last_attempt_id is not None
 
@@ -567,22 +594,9 @@ def test_fixture_cli_completes_offline_retained_lazy_evidence_flow(
     assert state is not None and state.last_attempt_id is not None
     attempt_id = _initial_attempt_id(paths, run_id)
     artifacts = str(paths.artifacts_root)
+    plan_pin = plan_pin_for_run(paths, run_id)
 
-    assert (
-        cli.main(
-            [
-                "fixture",
-                "create",
-                "--fixture",
-                "fixture-cli",
-                "--artifacts",
-                artifacts,
-                "--json",
-            ]
-        )
-        == 0
-    )
-    capsys.readouterr()
+    create_test_fixture(paths, "fixture-cli", plan_pin)
     assert (
         cli.main(
             [
@@ -607,8 +621,6 @@ def test_fixture_cli_completes_offline_retained_lazy_evidence_flow(
     )
     capture_result = json.loads(capsys.readouterr().out)
     capture_id = capture_result["capture_id"]
-    output = tmp_path / "cli-replayed.html"
-
     assert (
         cli.main(
             [
@@ -631,34 +643,8 @@ def test_fixture_cli_completes_offline_retained_lazy_evidence_flow(
     assert case["index_response_sha256"] == hashlib.sha256(_INDEX).hexdigest()
     assert case["selected_response_sha256"] == hashlib.sha256(body).hexdigest()
 
-    def unexpected(*_args, **_kwargs):
-        raise AssertionError("fixture replay must not start acquisition")
-
-    monkeypatch.setattr(run_command, "_LazySecTransport", unexpected)
-    monkeypatch.setattr(run_command, "execute_acquisition_run", unexpected)
-    assert (
-        cli.main(
-            [
-                "fixture",
-                "replay",
-                "--fixture",
-                "fixture-cli",
-                "--capture-id",
-                capture_id,
-                "--target-id",
-                "target-1",
-                "--output",
-                str(output),
-                "--artifacts",
-                artifacts,
-                "--json",
-            ]
-        )
-        == 0
-    )
-    replay_result = json.loads(capsys.readouterr().out)
-    assert replay_result["status"] == "replayed"
-    assert output.read_bytes() == body
+    with pytest.raises(SystemExit):
+        cli.main(["fixture", "replay", "--fixture", "fixture-cli"])
 
 
 def test_capture_refuses_older_document_body_attempt_after_retry(
@@ -687,7 +673,7 @@ def test_capture_refuses_older_document_body_attempt_after_retry(
     )
     state = get_target_state(paths.run_state_path(run_id), "target-1")
     assert state is not None and state.last_attempt_id != older_attempt_id
-    create_fixture("fixture-stale-attempt", paths=paths)
+    create_test_fixture_for_run(paths, "fixture-stale-attempt", run_id)
 
     with pytest.raises(FixtureOperationError) as exc_info:
         capture_fixture_case(

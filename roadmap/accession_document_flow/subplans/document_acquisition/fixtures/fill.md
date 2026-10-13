@@ -2,10 +2,10 @@
 
 ## Purpose and status
 
-Retain exact S9 response evidence in a named fixture for offline replay. The CLI and
-operator call the implemented `capture_fixture_case()` service. Persistence primitives
-atomically append immutable case metadata and optional streamed response bodies to the
-SQLite fixture.
+Retain exact S9 response evidence in a named, S6-plan-pinned fixture for offline review.
+The CLI and operator call the implemented `capture_fixture_case()` service. Persistence
+primitives atomically append immutable case metadata and optional streamed response
+bodies to the SQLite fixture.
 
 ## CLI and operator
 
@@ -13,12 +13,14 @@ SQLite fixture.
 acquisition fixture fill --fixture <id> --run-id <run-id> --target-id <id> --attempt-id <id> [--max-response-bytes <positive-int>]
 ```
 
-All four IDs identify the fixture and exact attempt; capture does not silently choose
-the latest retry. For bundle and lazy-index cases, acquisition must have been run with
-`--retain-response-evidence`; full response-group retention is opt-in and default-off.
-The response-byte cap must be positive. The operator collects the same values and
-requires explicit affirmative confirmation, defaulting to no, before retaining local
-evidence. Capture makes no SEC request.
+The fixture must be pinned to the same validated published S6 plan as the recorded S9
+run. The four IDs identify the fixture and exact attempt; capture does not silently
+choose the latest retry. For bundle and lazy-index cases, acquisition must have been run
+with `--retain-response-evidence`; full response-group retention is opt-in and
+default-off. The response-byte cap must be positive. The console shows the fixture,
+plan, run, target, attempt, and cap, then requires default-no confirmation immediately
+before retaining local evidence. Declining performs no append. Capture makes no SEC
+request.
 
 ```python
 def capture_fixture_case(

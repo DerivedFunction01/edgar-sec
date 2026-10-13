@@ -10,8 +10,8 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.storage import (
     append_fixture_case,
-    initialize_fixture,
 )
+from .fixture_helpers import initialize_test_fixture as initialize_fixture
 
 
 def test_append_compresses_every_body_and_deduplicates(

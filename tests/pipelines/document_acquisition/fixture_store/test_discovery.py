@@ -7,14 +7,15 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
     get_fixture_case,
     iter_fixture_cases,
     iter_fixture_ids,
+    iter_fixtures,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixtureStoreError,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.storage import (
     append_fixture_case,
-    initialize_fixture,
 )
+from .fixture_helpers import initialize_test_fixture as initialize_fixture
 
 
 def _append_case(paths, fixture_id, capture, case_factory, target_id):
@@ -52,6 +53,21 @@ def test_listing_and_filters_are_deterministic(
     assert list(iter_fixture_ids(acquisition_paths)) == [
         "fixture_a",
         "fixture_z",
+    ]
+    summaries = list(iter_fixtures(acquisition_paths))
+    assert [
+        (
+            item.fixture_id,
+            item.target_plan_id,
+            item.target_plan_digest,
+            item.capture_count,
+            item.case_count,
+            item.acquisition_status_counts,
+        )
+        for item in summaries
+    ] == [
+        ("fixture_a", "plan_fixture_test", "a" * 64, 1, 1, (("acquired", 1),)),
+        ("fixture_z", "plan_fixture_test", "a" * 64, 2, 3, (("acquired", 3),)),
     ]
     listed = list(iter_fixture_cases(acquisition_paths))
     assert [(item.fixture_id, item.capture_id, item.target_id) for item in listed] == [

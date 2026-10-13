@@ -17,11 +17,12 @@ from edgar_sec.foundation.io import DEFAULT_IO_CHUNK_SIZE
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
+    FixturePlanPin,
     FixtureStoreError,
     ResponseBodyRef,
 )
-from edgar_sec.pipelines.document_acquisition.fixture_store.replay import (
-    verify_response_row,
+from edgar_sec.pipelines.document_acquisition.fixture_store.body_verification import (
+    _verify_response_row,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
     FIXTURE_KIND,
@@ -66,7 +67,7 @@ FROM cases WHERE capture_id = ? AND target_id = ?"""
 
 
 def initialize_fixture(
-    paths: AcquisitionPaths, fixture_id: str
+    paths: AcquisitionPaths, fixture_id: str, plan_pin: FixturePlanPin
 ) -> foundation_fixtures.FixturePaths:
     fixture = fixture_paths(paths, fixture_id)
     if fixture.root.exists():
@@ -78,6 +79,17 @@ def initialize_fixture(
     try:
         with connection:
             create_schema(connection)
+            connection.executemany(
+                "INSERT INTO fixture_meta (key, value) VALUES (?, ?)",
+                (
+                    ("target_plan_id", plan_pin.target_plan_id),
+                    ("target_plan_digest", plan_pin.target_plan_digest),
+                    (
+                        "target_plan_schema_version",
+                        str(plan_pin.target_plan_schema_version),
+                    ),
+                ),
+            )
         created_at = datetime.now(UTC).isoformat(timespec="seconds")
         envelope = foundation_fixtures.FixtureManifestEnvelope(
             fixture_kind=FIXTURE_KIND,
@@ -86,7 +98,12 @@ def initialize_fixture(
             storage_path=fixture.storage_filename,
             created_at=created_at,
             updated_at=created_at,
-            details={"store_schema_version": SCHEMA_VERSION},
+            details={
+                "store_schema_version": SCHEMA_VERSION,
+                "target_plan_id": plan_pin.target_plan_id,
+                "target_plan_digest": plan_pin.target_plan_digest,
+                "target_plan_schema_version": plan_pin.target_plan_schema_version,
+            },
         )
         atomic_write_json(fixture.manifest_path, envelope.to_mapping(), indent=2)
     except Exception:
@@ -152,7 +169,7 @@ def _add_body(
     if existing is not None:
         if existing[2] != byte_size:
             raise FixtureStoreError("response digest exists with conflicting byte size")
-        verify_response_row(connection, existing)
+        _verify_response_row(connection, existing)
         return True, existing[4], existing[5]
     blob_limit = connection.getlimit(sqlite3.SQLITE_LIMIT_LENGTH)
     if stored_byte_size > blob_limit:
@@ -179,7 +196,7 @@ def _add_body(
         "FROM response_bodies WHERE body_id = ?",
         (cursor.lastrowid,),
     ).fetchone()
-    verify_response_row(connection, row)
+    _verify_response_row(connection, row)
     return False, stored_sha256, stored_byte_size
 
 
@@ -320,6 +337,14 @@ def append_fixture_case(
         _, connection = open_fixture(paths, fixture_id, readonly=False)
         try:
             with connection:
+                pin = dict(connection.execute("SELECT key, value FROM fixture_meta"))
+                if (
+                    capture.get("target_plan_id") != pin["target_plan_id"]
+                    or capture.get("target_plan_digest") != pin["target_plan_digest"]
+                    or str(capture.get("target_plan_schema_version"))
+                    != pin["target_plan_schema_version"]
+                ):
+                    raise FixtureStoreError("capture run differs from fixture plan pin")
                 body_ref = None
                 stored_refs: dict[str, ResponseBodyRef] = {}
                 for field, body_info in staged_responses.items():
@@ -386,7 +411,7 @@ def append_fixture_case(
                             raise FixtureStoreError(
                                 "referenced fixture response body is missing"
                             )
-                        verify_response_row(connection, row)
+                        _verify_response_row(connection, row)
                 capture_values = dict(capture)
                 _insert_immutable(
                     connection,

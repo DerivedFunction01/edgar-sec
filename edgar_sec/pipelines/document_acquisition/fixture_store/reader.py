@@ -13,22 +13,23 @@ from edgar_sec.engine.document.unpacking.streaming import (
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
     FixtureCaseMetadata,
+    FixtureSummary,
     get_fixture_case,
+    iter_fixtures,
     iter_fixture_cases,
-    iter_fixture_ids,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixtureOperationError,
     ResponseBodyRef,
 )
-from edgar_sec.pipelines.document_acquisition.fixture_store.replay import (
-    replay_fixture_response,
+from edgar_sec.pipelines.document_acquisition.fixture_store.body_verification import (
+    _write_verified_response_body,
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 
 
 @dataclass(frozen=True, slots=True)
-class FixtureReplayResult:
+class FixtureMaterializationResult:
     fixture_id: str
     capture_id: str
     target_id: str
@@ -40,8 +41,8 @@ class FixtureReplayResult:
     output_path: Path | None
 
 
-def list_fixtures(paths: AcquisitionPaths) -> Iterator[str]:
-    return iter_fixture_ids(paths)
+def list_fixture_summaries(paths: AcquisitionPaths) -> Iterator[FixtureSummary]:
+    return iter_fixtures(paths)
 
 
 def list_fixture_cases(
@@ -59,29 +60,29 @@ def list_fixture_cases(
     )
 
 
-def _publish_new_file(staged_path: Path, output_path: Path) -> Path:
+def _publish_materialized_body(staged_path: Path, output_path: Path) -> Path:
     output = Path(output_path).expanduser()
     parent = output.parent.resolve(strict=True)
     if not parent.is_dir():
-        raise FixtureOperationError("replay output parent is not a directory")
+        raise FixtureOperationError("materialization parent is not a directory")
     destination = parent / output.name
     if destination.exists() or destination.is_symlink():
-        raise FixtureOperationError("replay output already exists")
+        raise FixtureOperationError("materialized body already exists")
     try:
         os.link(staged_path, destination)
     except FileExistsError as error:
-        raise FixtureOperationError("replay output already exists") from error
+        raise FixtureOperationError("materialized body already exists") from error
     return destination
 
 
-def _replay_destination(paths: AcquisitionPaths, output_path: Path) -> Path:
+def _materialization_destination(paths: AcquisitionPaths, output_path: Path) -> Path:
     output = Path(output_path).expanduser()
     parent = output.parent.resolve(strict=True)
     if not parent.is_dir():
-        raise FixtureOperationError("replay output parent is not a directory")
+        raise FixtureOperationError("materialization parent is not a directory")
     destination = parent / output.name
     if destination.exists() or destination.is_symlink():
-        raise FixtureOperationError("replay output already exists")
+        raise FixtureOperationError("materialized body already exists")
     for root in (
         paths.fixtures_root,
         paths.runs_root,
@@ -90,12 +91,12 @@ def _replay_destination(paths: AcquisitionPaths, output_path: Path) -> Path:
     ):
         if destination.is_relative_to(root.resolve()):
             raise FixtureOperationError(
-                "replay output cannot be inside managed artifacts"
+                "materialized body cannot be inside managed artifacts"
             )
     return destination
 
 
-def _replay_response(
+def _write_fixture_response(
     paths: AcquisitionPaths,
     fixture_id: str,
     case: FixtureCaseMetadata,
@@ -104,7 +105,7 @@ def _replay_response(
     if case.response_sha256 is None:
         raise FixtureOperationError("acquired fixture case has no response body")
     with staged_path.open("xb") as destination:
-        return replay_fixture_response(
+        return _write_verified_response_body(
             paths, fixture_id, case.response_sha256, destination
         )
 
@@ -118,17 +119,17 @@ def _verify_related_response(
     paths: AcquisitionPaths, fixture_id: str, digest: str | None
 ) -> None:
     if digest is not None:
-        replay_fixture_response(paths, fixture_id, digest, _DiscardResponse())
+        _write_verified_response_body(paths, fixture_id, digest, _DiscardResponse())
 
 
-def _replay_selected_body(
+def _materialize_selected_body(
     paths: AcquisitionPaths,
     fixture_id: str,
     case: FixtureCaseMetadata,
     temporary_root: Path,
 ) -> tuple[Path, ResponseBodyRef]:
     source_path = temporary_root / "source-response.bin"
-    response_ref = _replay_response(paths, fixture_id, case, source_path)
+    response_ref = _write_fixture_response(paths, fixture_id, case, source_path)
     selected_path = temporary_root / "selected-body.bin"
     if case.resolution_schema_version is None:
         _verify_related_response(paths, fixture_id, case.index_response_sha256)
@@ -138,7 +139,7 @@ def _replay_selected_body(
         if case.selected_response_sha256 is None:
             raise FixtureOperationError("resolution case has no selected response body")
         with selected_path.open("xb") as selected_file:
-            selected_ref = replay_fixture_response(
+            selected_ref = _write_verified_response_body(
                 paths,
                 fixture_id,
                 case.selected_response_sha256,
@@ -153,7 +154,7 @@ def _replay_selected_body(
                 != case.selected_filename
             ):
                 raise FixtureOperationError(
-                    "replayed selected response differs from captured evidence"
+                    "materialized selected response differs from captured evidence"
                 )
             return selected_path, response_ref
         if (
@@ -171,7 +172,7 @@ def _replay_selected_body(
         )
         if not isinstance(extracted, BundleExtraction):
             raise FixtureOperationError(
-                f"selected bundle replay failed: {extracted.code}"
+                f"selected bundle verification failed: {extracted.code}"
             )
         if (
             extracted.body_sha256 != case.selected_sha256
@@ -180,7 +181,7 @@ def _replay_selected_body(
             != (case.selected_filename or f"sequence-{case.selected_sequence}")
         ):
             raise FixtureOperationError(
-                "replayed selected bundle body differs from captured evidence"
+                "materialized selected bundle body differs from captured evidence"
             )
         return temporary_root / "selected-child.bin", response_ref
     if case.retrieval_mode == "direct_url":
@@ -189,7 +190,7 @@ def _replay_selected_body(
             or case.selected_byte_size != response_ref.byte_size
         ):
             raise FixtureOperationError(
-                "direct replay response differs from selected body"
+                "materialized direct response differs from selected body"
             )
         return source_path, response_ref
     if case.sequence is None or case.selected_sha256 is None:
@@ -211,25 +212,25 @@ def _replay_selected_body(
         != (case.selected_filename or f"sequence-{case.sequence}")
     ):
         raise FixtureOperationError(
-            "replayed bundle body differs from captured evidence"
+            "materialized bundle body differs from captured evidence"
         )
     return selected_path, response_ref
 
 
-def replay_fixture_case(
+def _materialize_fixture_case(
     fixture_id: str,
     capture_id: str,
     target_id: str,
     output_path: Path,
     *,
     paths: AcquisitionPaths,
-) -> FixtureReplayResult:
+) -> FixtureMaterializationResult:
     case = get_fixture_case(paths, fixture_id, capture_id, target_id)
     if case.acquisition_status != "acquired":
         _verify_related_response(paths, fixture_id, case.response_sha256)
         _verify_related_response(paths, fixture_id, case.index_response_sha256)
         _verify_related_response(paths, fixture_id, case.selected_response_sha256)
-        return FixtureReplayResult(
+        return FixtureMaterializationResult(
             fixture_id,
             capture_id,
             target_id,
@@ -244,14 +245,14 @@ def replay_fixture_case(
         raise FixtureOperationError(
             "acquired fixture case has no selected-body identity"
         )
-    destination = _replay_destination(paths, output_path)
+    destination = _materialization_destination(paths, output_path)
     parent = destination.parent
-    with tempfile.TemporaryDirectory(prefix="acq-replay-", dir=parent) as temporary:
-        selected_path, response_ref = _replay_selected_body(
+    with tempfile.TemporaryDirectory(prefix="acq-body-", dir=parent) as temporary:
+        selected_path, response_ref = _materialize_selected_body(
             paths, fixture_id, case, Path(temporary)
         )
-        output_path = _publish_new_file(selected_path, destination)
-    return FixtureReplayResult(
+        output_path = _publish_materialized_body(selected_path, destination)
+    return FixtureMaterializationResult(
         fixture_id,
         capture_id,
         target_id,

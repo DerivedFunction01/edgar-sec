@@ -19,6 +19,7 @@ from edgar_sec.pipelines.document_acquisition.run_state.operations import (
 from edgar_sec.pipelines.document_acquisition.run_state.store import (
     get_target_state,
 )
+from edgar_sec.pipelines.document_acquisition import runner as acquisition_runner
 from edgar_sec.pipelines.document_acquisition.runner import execute_acquisition_run
 from edgar_sec.pipelines.document_acquisition.target_runner import _validate_redirect
 from tests.acquisition_run_fixture import make_acquisition_run as _make_run
@@ -116,6 +117,21 @@ def test_runner_uses_exact_lazy_index_and_atomically_records_all_attempts(
             selected_url: b"<html>selected filing</html>",
         }
     )
+    process = acquisition_runner.process_acquired_target
+    processing_targets: list[str] = []
+
+    def process_under_run_lock(target, **kwargs):
+        assert paths.run_lock_path(run_id).is_file()
+        target_state = get_target_state(
+            paths.run_state_path(run_id), str(target["target_id"])
+        )
+        assert target_state is not None and target_state.outcome == "acquired"
+        processing_targets.append(str(target["target_id"]))
+        return process(target, **kwargs)
+
+    monkeypatch.setattr(
+        acquisition_runner, "process_acquired_target", process_under_run_lock
+    )
 
     report = execute_acquisition_run(
         run_id,
@@ -129,6 +145,7 @@ def test_runner_uses_exact_lazy_index_and_atomically_records_all_attempts(
     assert report.attempted_count == 1
     assert report.target_counts["acquired"] == 1
     assert report.state == "complete"
+    assert processing_targets == ["target-1"]
     assert transport.closed
     assert [url for url, _ in transport.calls] == [
         row["target_url"],
@@ -145,8 +162,8 @@ def test_runner_uses_exact_lazy_index_and_atomically_records_all_attempts(
         paths.run_state_path(run_id), raw_operation_id
     )
     assert operation_state is not None
-    assert operation_state.status == "pending"
-    assert operation_state.attempt_count == 0
+    assert operation_state.status == "succeeded"
+    assert operation_state.attempt_count == 1
     selected_body = paths.run_dir(run_id) / state.selected_body_relative_path
     assert selected_body.read_bytes() == b"<html>selected filing</html>"
     assert state.source_body_relative_path is None

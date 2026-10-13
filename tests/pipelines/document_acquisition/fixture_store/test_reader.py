@@ -4,18 +4,20 @@ import hashlib
 import io
 
 from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
-    replay_fixture_case,
+    _materialize_fixture_case,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.storage import (
     append_fixture_case,
-    initialize_fixture,
 )
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
+from .fixture_helpers import initialize_test_fixture
 
 
-def test_replay_reextracts_and_verifies_a_bundle_case(tmp_path) -> None:
+def test_internal_materialization_reextracts_and_verifies_a_bundle_case(
+    tmp_path,
+) -> None:
     paths = resolve_acquisition_paths(artifacts_root=tmp_path)
-    initialize_fixture(paths, "fixture-bundle")
+    initialize_test_fixture(paths, "fixture-bundle")
     bundle = (
         b"<DOCUMENT><SEQUENCE>2<FILENAME>report.htm<TYPE>10-K<TEXT>selected body"
         b"</TEXT></DOCUMENT>"
@@ -26,7 +28,7 @@ def test_replay_reextracts_and_verifies_a_bundle_case(tmp_path) -> None:
     capture = {
         "capture_id": "capture-bundle",
         "run_id": "run-bundle",
-        "target_plan_id": "plan-bundle",
+        "target_plan_id": "plan_fixture_test",
         "target_plan_digest": "a" * 64,
         "target_plan_schema_version": "1",
         "inventory_snapshot_id": None,
@@ -80,7 +82,7 @@ def test_replay_reextracts_and_verifies_a_bundle_case(tmp_path) -> None:
     )
     output = tmp_path / "bundle-selected.htm"
 
-    replay = replay_fixture_case(
+    replay = _materialize_fixture_case(
         "fixture-bundle",
         "capture-bundle",
         "target-bundle",

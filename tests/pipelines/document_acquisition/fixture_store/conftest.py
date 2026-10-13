@@ -13,7 +13,7 @@ def capture_values():
     return {
         "capture_id": "capture_1",
         "run_id": "run_1",
-        "target_plan_id": "plan_1",
+        "target_plan_id": "plan_fixture_test",
         "target_plan_digest": "a" * 64,
         "target_plan_schema_version": "1",
         "inventory_snapshot_id": None,

@@ -45,6 +45,12 @@ def cmd_run(args: argparse.Namespace) -> int:
         "cancelled": report.cancelled,
         "command": "run",
         "non_retryable_failure_count": report.non_retryable_failure_count,
+        "processing": {
+            "attempted_target_count": report.processing_attempted_target_count,
+            "complete": report.processing_complete,
+            "operation_counts": dict(report.processing_operation_counts),
+            "success": report.processing_success,
+        },
         "retain_response_evidence": args.retain_response_evidence,
         "retryable_failure_count": report.retryable_failure_count,
         "run_id": report.run_id,
@@ -61,10 +67,17 @@ def cmd_run(args: argparse.Namespace) -> int:
             f"pending={report.target_counts.get('pending', 0)}, "
             f"retryable_failures={report.retryable_failure_count}, "
             f"terminal_failures={report.non_retryable_failure_count}, "
+            f"processed_targets={report.processing_attempted_target_count}, "
+            f"processing_operation_counts={report.processing_operation_counts}, "
+            f"processing_complete={report.processing_complete}, "
+            f"processing_success={report.processing_success}, "
             f"retain_response_evidence={args.retain_response_evidence}"
         )
     if report.cancelled:
         return 130
     return (
-        1 if report.state in {"needs_retry", "complete_with_errors", "invalid"} else 0
+        1
+        if report.state in {"needs_retry", "complete_with_errors", "invalid"}
+        or not report.processing_success
+        else 0
     )

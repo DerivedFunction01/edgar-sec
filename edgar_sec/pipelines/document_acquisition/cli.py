@@ -12,9 +12,12 @@ from edgar_sec.pipelines.document_acquisition.commands.fixture import (
     cmd_fixture_create,
     cmd_fixture_fill,
     cmd_fixture_list,
-    cmd_fixture_replay,
 )
-from edgar_sec.pipelines.document_acquisition.commands.process import cmd_process
+from edgar_sec.pipelines.document_acquisition.commands.review import (
+    cmd_review_analyze,
+    cmd_review_artifacts,
+    cmd_review_compare,
+)
 from edgar_sec.pipelines.document_acquisition.commands.project import cmd_project
 from edgar_sec.pipelines.document_acquisition.commands.run import cmd_run
 from edgar_sec.pipelines.document_acquisition.commands.status import cmd_status
@@ -30,10 +33,9 @@ _TRACKS = {
     "fixture create": "S9 fixture initialization",
     "fixture fill": "S9 fixture capture",
     "fixture list": "S9 fixture discovery",
-    "fixture replay": "S9 fixture replay",
     "review generate": "S7 review artifact generation",
     "review compare": "S7 review comparison",
-    "review audit": "S9/S10 evidence audit",
+    "review analyze": "S7 review-run analysis",
     "snapshot status": "S11 snapshot availability",
 }
 
@@ -50,11 +52,6 @@ def report_not_implemented(command: str, *, json_output: bool = False) -> int:
         status = "blocked_by_gate"
     elif command == "snapshot status":
         message = "No acquisition snapshot is published; S11 publication remains gated."
-    elif command == "review audit":
-        message = (
-            "No S9/S10 evidence audit is implemented; no acquisition evidence was "
-            "read or written."
-        )
     result = {
         "command": command,
         "implemented": False,
@@ -78,14 +75,9 @@ def cmd_snapshot_status(args: argparse.Namespace) -> int:
     return report_not_implemented("snapshot status", json_output=args.json)
 
 
-def cmd_review_audit(args: argparse.Namespace) -> int:
-    return report_not_implemented("review audit", json_output=args.json)
-
-
 _TODO_HANDLERS = {
     "status": cmd_status,
     "snapshot status": cmd_snapshot_status,
-    "review audit": cmd_review_audit,
 }
 
 
@@ -139,13 +131,6 @@ def build_parser() -> argparse.ArgumentParser:
     _add_output_options(run)
     run.set_defaults(func=cmd_run)
 
-    process = commands.add_parser("process", help="process acquired target bodies")
-    process.add_argument("--run-id", required=True, help="acquisition run id")
-    process.add_argument("--retry-failures", action="store_true")
-    process.add_argument("--workers", type=positive_int_type)
-    _add_output_options(process)
-    process.set_defaults(func=cmd_process)
-
     publish = commands.add_parser("publish", help="publish an approved S11 snapshot")
     publish.add_argument("--run-id", required=True, help="completed acquisition run id")
     publish.add_argument("--branch", default="main")
@@ -157,6 +142,7 @@ def build_parser() -> argparse.ArgumentParser:
     fixture_commands = fixture.add_subparsers(dest="fixture_command", required=True)
     fixture_create = fixture_commands.add_parser("create", help="initialize a fixture")
     fixture_create.add_argument("--fixture", required=True)
+    fixture_create.add_argument("--plan-id", required=True)
     _add_output_options(fixture_create)
     fixture_create.set_defaults(func=cmd_fixture_create)
     fixture_fill = fixture_commands.add_parser(
@@ -179,28 +165,42 @@ def build_parser() -> argparse.ArgumentParser:
     fixture_list.add_argument("--target-id")
     _add_output_options(fixture_list)
     fixture_list.set_defaults(func=cmd_fixture_list)
-    fixture_replay = fixture_commands.add_parser(
-        "replay", help="replay captured responses"
+    review = commands.add_parser("review", help="generate and inspect review runs")
+    review_commands = review.add_subparsers(dest="review_command", required=True)
+    review_generate = review_commands.add_parser(
+        "generate", help="process captured fixture bodies into review artifacts"
     )
-    fixture_replay.add_argument("--fixture", required=True)
-    fixture_replay.add_argument("--capture-id", required=True)
-    fixture_replay.add_argument("--target-id", required=True)
-    fixture_replay.add_argument("--output", required=True)
-    _add_output_options(fixture_replay)
-    fixture_replay.set_defaults(func=cmd_fixture_replay)
+    review_generate.add_argument("--fixture", required=True)
+    review_generate.add_argument("--output")
+    review_generate.add_argument("--limit", type=positive_int_type)
+    review_generate.add_argument("--workers", type=positive_int_type)
+    review_generate.add_argument("--accession", action="append", dest="accessions")
+    review_generate.add_argument("--capture-id")
+    review_generate.add_argument("--target-id")
+    review_generate.add_argument("--artifacts", dest="artifacts_root", default="")
+    review_generate.add_argument("--json", action="store_true")
+    review_generate.add_argument("--no-progress", action="store_true")
+    review_generate.set_defaults(func=cmd_review_artifacts)
 
-    from edgar_sec.infra.storage.review.cli import attach_review_artifact_subparsers
-
-    from .review_artifacts.adapter import AcquisitionReviewAdapter
-
-    review_commands = attach_review_artifact_subparsers(
-        commands, AcquisitionReviewAdapter(), case_filters=True
+    review_compare = review_commands.add_parser(
+        "compare", help="compare validated acquisition review runs"
     )
-    review_audit = review_commands.add_parser(
-        "audit", help="audit S9/S10 acquisition evidence"
+    review_compare.add_argument("--base", required=True)
+    review_compare.add_argument("--new", required=True)
+    review_compare.add_argument("--output")
+    review_compare.add_argument("--max-display", type=positive_int_type, default=20)
+    review_compare.add_argument("--artifacts", default="")
+    review_compare.add_argument("--json", action="store_true")
+    review_compare.set_defaults(func=cmd_review_compare)
+
+    review_analyze = review_commands.add_parser(
+        "analyze", help="validate and summarize offline acquisition review runs"
     )
-    _add_output_options(review_audit)
-    _set_todo(review_audit, "review audit")
+    review_analyze.add_argument("--run", action="append", required=True)
+    review_analyze.add_argument("--output")
+    review_analyze.add_argument("--artifacts", default="")
+    review_analyze.add_argument("--json", action="store_true")
+    review_analyze.set_defaults(func=cmd_review_analyze)
 
     snapshot = commands.add_parser("snapshot", help="inspect S11 snapshot status")
     snapshot_commands = snapshot.add_subparsers(dest="snapshot_command", required=True)

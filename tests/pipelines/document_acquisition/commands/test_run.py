@@ -26,6 +26,10 @@ def test_run_command_delegates_policy_and_keeps_transport_lazy(
             retryable_failure_count=0,
             non_retryable_failure_count=0,
             cancelled=False,
+            processing_operation_counts={"available": 2},
+            processing_attempted_target_count=2,
+            processing_complete=True,
+            processing_success=True,
         )
 
     monkeypatch.setattr(run, "execute_acquisition_run", fake_run)
@@ -57,6 +61,12 @@ def test_run_command_delegates_policy_and_keeps_transport_lazy(
     payload = json.loads(capsys.readouterr().out)
     assert payload["state"] == "complete"
     assert payload["retain_response_evidence"]
+    assert payload["processing"] == {
+        "attempted_target_count": 2,
+        "complete": True,
+        "operation_counts": {"available": 2},
+        "success": True,
+    }
 
 
 def test_run_uses_configured_response_limit_when_omitted(
@@ -81,6 +91,10 @@ def test_run_uses_configured_response_limit_when_omitted(
                 retryable_failure_count=0,
                 non_retryable_failure_count=0,
                 cancelled=False,
+                processing_operation_counts={},
+                processing_attempted_target_count=0,
+                processing_complete=True,
+                processing_success=True,
             )
         ),
     )
@@ -92,6 +106,35 @@ def test_run_uses_configured_response_limit_when_omitted(
     output = capsys.readouterr().out
     assert "run run-1" in output
     assert "retain_response_evidence=False" in output
+
+
+def test_run_returns_failure_for_processing_errors(
+    tmp_path, monkeypatch, capsys
+) -> None:
+    monkeypatch.setattr(
+        run,
+        "execute_acquisition_run",
+        lambda run_id, **kwargs: SimpleNamespace(
+            run_id=run_id,
+            state="complete",
+            target_counts={"acquired": 1},
+            attempted_count=1,
+            retryable_failure_count=0,
+            non_retryable_failure_count=0,
+            cancelled=False,
+            processing_operation_counts={"failed": 1},
+            processing_attempted_target_count=1,
+            processing_complete=True,
+            processing_success=False,
+        ),
+    )
+
+    result = cli.main(["run", "--run-id", "run-1", "--json"])
+
+    assert result == 1
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["processing"]["operation_counts"] == {"failed": 1}
+    assert payload["processing"]["success"] is False
 
 
 def test_lazy_cli_transport_streams_through_shared_broker(

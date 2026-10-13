@@ -2,9 +2,9 @@
 
 Status: **the S1–S6 inventory/target-planning path, S7a/S7b fixture-review foundations,
 S9 project/status/run and fixture create/fill/list/replay, M7b runner/retry/isolation,
-and limited S9/S10 review generate/compare are implemented.** S10 has a per-target
-`process_target` slice, but `process --run-id`, the requested processing policy, and an
-S10 coordinator/renderers are not implemented. M7b cleanup remains explicitly gated;
+and limited S9/S10 review generate/compare are implemented.** `acquisition run` owns
+per-target acquisition and processing under one run lock; additional processing policy
+and renderer handlers remain incomplete. M7b cleanup remains explicitly gated;
 S11 publication is intentionally gated, and S12 is design-only. S0 historical acceptance
 and S8 operational retention remain open. The former `document_storage` runtime package
 is retired. See the
@@ -44,8 +44,7 @@ current explicit artifact handoffs:
 - `edgar_sec.pipelines.document_planning` (S6): offline target-plan publication from a
   required filing-catalog scope and optional immutable inventory evidence.
 - `edgar_sec.pipelines.document_acquisition` (S9–S10): acquisition of selected
-  payloads and the partial per-target processing service; run-level processing remains
-  unimplemented.
+  payloads and per-target processing within the resumable run lifecycle.
 
 S7 review (with S7a fixture lifecycle and S7b parser review frontloaded before parser
 implementation) is cross-cutting to the three packages. S12 operator integration is
@@ -714,9 +713,13 @@ S9 is specified around its user-facing commands: [project](subplans/document_acq
 
 ### S10 — Processing contract, processor versions, and document review
 
+Lifecycle update: `acquisition run` now processes each acquired or previously acquired
+target under the same run lock and reports acquisition and processing outcomes together.
+The former separate process command is not part of the current CLI/operator surface.
+
 **Details:** [subplan](subplans/S10_processing.md)
 
-M6 currently has an offline per-target worker for raw identity and TEXT-route identity passthrough; the `process --run-id` command does not dispatch to it and remains not implemented. The requested, unimplemented policy requires raw as mandatory; family/route renderer precedence; `normalize_document` as the generic text fallback for eligible text/HTML; no PDF, flat-XML, XSD, ZIP, paper, binary, or unknown-route renders; family-specific lazy-index triggers with none for Form 4; XML transforms consuming declared HTML only; and scoped supersession. No operation-aware S6/S9 schema, S10 coordinator, or renderer handlers are implemented. Review generation/comparison covers only the limited S9/S10 fixture slice. Cleanup and S11 publication remain gated. Evidence: [`cli.py`](../edgar_sec/pipelines/document_acquisition/cli.py), [`processing.py`](../edgar_sec/pipelines/document_acquisition/processing.py), [`test_cli.py`](../tests/pipelines/document_acquisition/test_cli.py), and [`test_processing.py`](../tests/pipelines/document_acquisition/test_processing.py).
+The offline per-target worker supports raw identity and test-budgeted TEXT-route identity passthrough. `acquisition run` invokes it after each successful or previously acquired target while retaining the acquisition run lock; operation-scoped retries reuse validated prior results. Additional processing policy, production route budgets, and renderer handlers remain incomplete. Review generation/comparison covers only the limited S9/S10 fixture slice. Cleanup and S11 publication remain gated. Evidence: [`runner.py`](../edgar_sec/pipelines/document_acquisition/runner.py), [`processing/run.py`](../edgar_sec/pipelines/document_acquisition/processing/run.py), [`test_cli.py`](../tests/pipelines/document_acquisition/test_cli.py), and [`processing/test_run.py`](../tests/pipelines/document_acquisition/processing/test_run.py).
 
 ### S11 — Durable acquisition snapshot publication (design approval gate)
 
@@ -781,8 +784,7 @@ The initial operator surface is explicit-artifact oriented and small:
 | Target planning | `documents plan --catalog-plan <id> [--inventory <snapshot_id|current>] --profile-id <id>` | Catalog-selected accession scope plus optional pinned inventory evidence → immutable target plan with both input pins. No row-level locator fallback. |
 | Project acquisition run (S9) | `acquisition project --plan-id <id>` | Validated S6 target plan → immutable resumable work order; no network. |
 | Inspect acquisition run (S9) | `acquisition status [--run-id <id>]` | Read-only validation and outcome summary; no network. |
-| Run acquisition work (S9) | `acquisition run --run-id <id> [--retry-failures]` | Explicit network execution of pending or explicitly selected retryable targets. |
-| Process acquired targets (S10) | `acquisition process --run-id <id>` | Registered CLI shape, but currently returns not-implemented; `process_target` is a separate per-target service, not run orchestration. |
+| Run acquisition and process targets (S9/S10) | `acquisition run --run-id <id> [--retry-failures]` | Acquires eligible targets and processes each acquired checkpoint under one run lock; reports acquisition and processing outcomes together. |
 | Publish acquisition snapshot (S11; gated) | Proposed `acquisition publish --run-id <id> [--branch <name>] [--allow-errors]` | Design only; publication is gated on representative S9/S10 evidence and explicit approval. |
 | Query acquisition snapshot (S11; gated) | Proposed `acquisition query --snapshot <id|current> [target/slot filters]` | Design only; no published acquisition snapshot or query command is available. |
 | Distribute acquisition (S9) | `acquisition distrib {export,worker,import,list,commands}` | Planned acquisition adapter over implemented pipeline-neutral distribution infrastructure; the acquisition integration remains unimplemented. SEC rate limits are host-local; cross-host coordination/checks are out of scope. See the [command-group design](subplans/document_acquisition/distribution/index.md). |

@@ -7,7 +7,7 @@ import pytest
 from edgar_sec.pipelines.document_acquisition import cli, operator
 
 
-def test_parser_registers_independent_acquisition_tracks() -> None:
+def test_parser_registers_acquisition_tracks() -> None:
     parser = cli.build_parser()
 
     for args in (
@@ -15,18 +15,6 @@ def test_parser_registers_independent_acquisition_tracks() -> None:
         ["status"],
         ["status", "--run-id", "run-1", "--target-id", "target-1"],
         ["run", "--run-id", "run-1", "--max-response-bytes", "1000"],
-        ["process", "--run-id", "run-1"],
-        [
-            "process",
-            "--run-id",
-            "run-1",
-            "--retry-failures",
-            "--workers",
-            "2",
-            "--artifacts",
-            "artifacts",
-            "--json",
-        ],
         ["publish", "--run-id", "run-1"],
         [
             "fixture",
@@ -42,7 +30,7 @@ def test_parser_registers_independent_acquisition_tracks() -> None:
             "--max-response-bytes",
             "1024",
         ],
-        ["fixture", "create", "--fixture", "f-1"],
+        ["fixture", "create", "--fixture", "f-1", "--plan-id", "plan-1"],
         [
             "fixture",
             "list",
@@ -53,39 +41,32 @@ def test_parser_registers_independent_acquisition_tracks() -> None:
             "--target-id",
             "target-1",
         ],
-        [
-            "fixture",
-            "replay",
-            "--fixture",
-            "f-1",
-            "--capture-id",
-            "cap-1",
-            "--target-id",
-            "target-1",
-            "--output",
-            "response.bin",
-        ],
         ["review", "generate", "--fixture", "f-1"],
         ["review", "compare", "--base", "left", "--new", "right"],
-        ["review", "audit"],
+        ["review", "analyze", "--run", "review-run"],
     ):
         assert parser.parse_args(args)
 
     with pytest.raises(SystemExit):
         parser.parse_args(["snapshot", "audit"])
-
-
-def test_process_options_preserve_defaults_and_validate_workers() -> None:
-    parser = cli.build_parser()
-    parsed = parser.parse_args(["process", "--run-id", "run-1"])
-    assert parsed.run_id == "run-1"
-    assert parsed.workers is None
-    assert parsed.artifacts is None
-    assert parsed.json is False
-    assert parsed.retry_failures is False
-
+        parser.parse_args(["review", "audit"])
     with pytest.raises(SystemExit):
-        parser.parse_args(["process", "--run-id", "run-1", "--workers", "0"])
+        parser.parse_args(["fixture", "replay", "--fixture", "f-1"])
+
+
+def test_process_is_not_a_cli_alias_and_run_owns_retry_options() -> None:
+    parser = cli.build_parser()
+    with pytest.raises(SystemExit):
+        parser.parse_args(["process", "--run-id", "run-1"])
+
+    parsed = parser.parse_args(
+        ["run", "--run-id", "run-1", "--retry-failures", "--workers", "2"]
+    )
+    assert parsed.run_id == "run-1"
+    assert parsed.workers == 2
+    assert parsed.retry_failures is True
+    with pytest.raises(SystemExit):
+        parser.parse_args(["run", "--run-id", "run-1", "--workers", "0"])
 
 
 def test_response_ceiling_options_are_optional_but_positive_when_supplied() -> None:
@@ -139,14 +120,16 @@ def test_publish_todo_reports_gate_and_does_not_claim_publication(
     assert "representative S9/S10 evidence and explicit approval" in payload["message"]
 
 
-def test_review_audit_remains_fail_closed(capsys: pytest.CaptureFixture[str]) -> None:
-    result = cli.main(["review", "audit", "--json"])
+def test_review_analyze_dispatches_offline_runs(monkeypatch) -> None:
+    calls = []
+    monkeypatch.setattr(cli, "cmd_review_analyze", lambda args: calls.append(args) or 0)
 
-    assert result == 2
-    payload = json.loads(capsys.readouterr().out)
-    assert payload["command"] == "review audit"
-    assert payload["status"] == "not_implemented"
-    assert "no acquisition evidence was read or written" in payload["message"]
+    result = cli.main(
+        ["review", "analyze", "--run", "run-a", "--run", "run-b", "--json"]
+    )
+
+    assert result == 0
+    assert calls[0].run == ["run-a", "run-b"]
 
 
 def test_review_generate_and_snapshot_have_separate_handlers(
@@ -154,7 +137,7 @@ def test_review_generate_and_snapshot_have_separate_handlers(
 ) -> None:
     calls = []
     monkeypatch.setattr(
-        "edgar_sec.pipelines.document_acquisition.review_artifacts.adapter.cmd_review_artifacts",
+        "edgar_sec.pipelines.document_acquisition.cli.cmd_review_artifacts",
         lambda args: calls.append(args) or 0,
     )
     review_result = cli.main(

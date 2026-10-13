@@ -4,9 +4,12 @@ Layer 4 pipeline contract foundation for S9 accession-document acquisition.
 
 ## Purpose
 
-Projects published S6 target plans into bounded S9 work orders, acquires SEC target bodies within configured byte limits, and owns append-only run-state and fixture evidence. Processing, review, and snapshot publication remain separate stages.
+Projects published S6 target plans into bounded S9 work orders and owns append-only run state and fixture evidence. Each resumable run acquires eligible targets and then processes acquired targets under the same run lock; review and snapshot publication remain separate.
 
-The CLI implements project, status, run, and fixture tracks. Capture and replay require explicit confirmation; live SEC access has a separate confirmation. Bundle and lazy-index response retention is opt-in through `--retain-response-evidence`.
+The CLI implements project, status, combined run/process, and fixture/review tracks. The
+fixture/review console selects a validated published S6 plan for fixture creation; fills
+retain only evidence from an exact recorded S9 run, target, and attempt. Bundle and
+lazy-index response retention is opt-in through `--retain-response-evidence`.
 
 ## Contracts
 
@@ -29,10 +32,11 @@ The CLI implements project, status, run, and fixture tracks. Capture and replay 
 ## Deliberate gaps
 
 - **No family-aware identity screen**: The catalog-direct exact-form selector records direct-body evidence as unverifiable and uses lazy-index lookup; text evidence cannot override the pinned target form or exact index `document_type`.
-- **Bounded fixture evidence**: Direct successful bodies and bodyless failures can be captured without response retention. Bundle-source and lazy-index capture requires opt-in run-level response retention and is refused when complete evidence is unavailable; replay writes verified selected bytes only to a new caller-selected path.
-- **Partial S10 worker**: `process_target` validates one explicit request, enforces form-family operation permissions, supports raw identity and pinned text-route byte identity, and records the S9 receipt. Other transforms remain explicit unsupported outcomes; bundle-child route identity and a run coordinator remain unavailable.
+- **Bounded fixture evidence**: Direct successful bodies and bodyless failures can be captured without response retention. Bundle-source and lazy-index capture requires opt-in run-level response retention and is refused when complete evidence is unavailable. Fixtures are immutable to their published S6 plan pin.
+- **Limited S10 transforms**: `process_target` validates one explicit request, enforces form-family operation permissions, supports raw identity and pinned text-route byte identity, and records the S9 receipt. Other transforms remain explicit unsupported outcomes; bundle-child route identity remains unavailable.
 - **Transient terminal projection**: `review_artifacts.result_projection.project_terminal_results` consumes request/result iterables, joins them with the work order in temporary disk-backed SQLite, verifies staged references, and exposes a closeable target iterator with a deterministic fingerprint. Its spool is not a persisted S10/S11 result or snapshot.
-- **Fixture review boundary**: `review generate` replays captured evidence and writes shared-layout processing review records for retained S9 runs. Cases requiring an unavailable transform or missing retained run body are recorded as failures; review records are not persisted S9/S11 results.
+- **Fixture review boundary**: `review generate` verifies fixture bodies and their pinned S6/S9 work-order identity, then processes the retained S9 staged body through the work order's operation pins. It writes shared-layout review records offline; missing retained run bodies and unavailable transforms are recorded as failures. Review records are not persisted S9/S11 results.
+- **Offline review analysis**: `review analyze` validates manifest and per-case artifact digests before summarizing case and operation outcomes. It does not fetch SEC data or mutate acquisition runs.
 - **No publication**: S11 Parquet/DAG publication remains absent and requires representative S9/S10 evidence and explicit approval.
 - **No full transform review**: Review generation currently exercises raw identity and pinned TEXT passthrough; reviewer labels, non-identity renderers, and exhibit assessment remain future work.
 - **No snapshot reader**: Acquisition snapshot relations and a published acquisition DAG do not exist; snapshot status/audit are gate-aware placeholders, not queries against S5/S6 or legacy storage.
@@ -50,11 +54,10 @@ The CLI implements project, status, run, and fixture tracks. Capture and replay 
 | Subcommand | Description | Arguments |
 | :--- | :--- | :--- |
 | `fixture` | manage S9 response fixtures | — |
-| `process` | process acquired target bodies | `--run-id`, `[--retry-failures]`, `[--workers]`, `[--artifacts]`, `[--json]` |
 | `project` | project a published S6 target plan | `--plan-id`, `[--artifacts]`, `[--json]` |
 | `publish` | publish an approved S11 snapshot | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--artifacts]`, `[--json]` |
-| `review` | generate and compare review runs with pipeline-specific commands | — |
-| `run` | acquire pending S9 target bodies | `--run-id`, `[--retry-failures]`, `[--retain-response-evidence]`, `[--workers]`, `[--max-response-bytes]`, `[--confirm-stale-lock]`, `[--artifacts]`, `[--json]` |
+| `review` | generate, compare, and analyze offline review runs | — |
+| `run` | acquire eligible targets, then process acquired bodies under one run lock | `--run-id`, `[--retry-failures]`, `[--retain-response-evidence]`, `[--workers]`, `[--max-response-bytes]`, `[--confirm-stale-lock]`, `[--artifacts]`, `[--json]` |
 | `snapshot` | inspect S11 status and evidence | — |
 | `status` | inspect resumable acquisition runs | `[--run-id]`, `[--target-id]`, `[--artifacts]`, `[--json]` |
 <!-- AUTOGEN:COMMANDS:END -->
@@ -65,12 +68,12 @@ The CLI implements project, status, run, and fixture tracks. Capture and replay 
 python run.py acquisition --help
 python run.py acquisition project --help
 python run.py acquisition run --help
-python run.py acquisition fixture create --fixture local-review
+python run.py acquisition fixture create --fixture local-review --plan-id PLAN_ID
 python run.py acquisition fixture fill --fixture local-review --run-id RUN --target-id TARGET --attempt-id ATTEMPT
 python run.py acquisition fixture list --fixture local-review
-python run.py acquisition fixture replay --fixture local-review --capture-id CAPTURE --target-id TARGET --output ./replayed-body.bin
 python run.py acquisition review generate --fixture local-review --capture-id CAPTURE --target-id TARGET
 python run.py acquisition review compare --base ./review-runs/run-BASE --new ./review-runs/run-NEW
+python run.py acquisition review analyze --run ./review-runs/run-NEW
 ```
 
 ## Artifact layout
@@ -106,4 +109,8 @@ python run.py acquisition review compare --base ./review-runs/run-BASE --new ./r
 ```
 <!-- AUTOGEN:PATHS:END -->
 
-Run-level processing orchestration and snapshot publication remain unimplemented or gated. Review generation uses retained S9 run artifacts and fixture evidence; per-target processing, fixture replay, review generation, and review comparison perform no HTTP requests or publish S11 artifacts.
+The run reports acquisition and processing outcomes together. Review generation uses
+retained S9 run artifacts and fixture evidence; per-target processing, internal fixture
+body verification, review generation, comparison, and analysis make no HTTP requests or
+publish S11 artifacts. Fixture bodies are materialized only in temporary storage for
+review verification.

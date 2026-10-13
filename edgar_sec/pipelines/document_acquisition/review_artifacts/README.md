@@ -4,9 +4,11 @@ Layer 4 review-run generation from captured S9 cases and transient S10 results.
 
 ## Purpose
 
-The builder replays and verifies captured fixture evidence, processes the matching
-retained S9 body, and writes content-pinned S10 review records in the shared review-run
-layout. Runs remain diagnostic artifacts and do not publish acquisition snapshots.
+The builder materializes and verifies captured fixture evidence internally, validates
+the matching run and work-order pins, and reuses its S10 result to write content-pinned
+review records in the shared review-run layout. It does not consume the body a second
+time or rerun processing. Runs remain diagnostic artifacts and do not publish
+acquisition snapshots.
 
 ## Contracts
 
@@ -14,6 +16,8 @@ layout. Runs remain diagnostic artifacts and do not publish acquisition snapshot
   never initiates SEC requests.
 - **Pinned cases**: Each manifest row identifies its fixture, capture, target, source
   digests, processing profile, receipt, and generated artifact digest.
+- **No raw export**: Review generation writes review artifacts, not a caller-selected
+  copy of the fixture body.
 - **Stable comparison**: Case identifiers and manifest order are deterministic for the
   selected fixtures; the shared review console compares case artifacts.
 - **No publication**: Review outputs are not S9/S11 result schemas or publisher input.

@@ -20,12 +20,16 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
     get_fixture_case,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
+    FixturePlanPin,
     FixtureOperationError,
     FixtureStoreError,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.storage import (
     append_fixture_case,
     initialize_fixture,
+)
+from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
+    fixture_plan_pin,
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.run_state.evidence import (
@@ -54,9 +58,11 @@ class FixtureCaptureResult:
     reused_response: bool
 
 
-def create_fixture(fixture_id: str, *, paths: AcquisitionPaths) -> Path:
+def create_fixture(
+    fixture_id: str, plan_pin: FixturePlanPin, *, paths: AcquisitionPaths
+) -> Path:
     try:
-        return initialize_fixture(paths, fixture_id).root
+        return initialize_fixture(paths, fixture_id, plan_pin).root
     except (FixtureStoreError, OSError, ValueError) as error:
         raise FixtureOperationError(str(error)) from error
 
@@ -226,6 +232,14 @@ def capture_fixture_case(
         or max_response_bytes < 1
     ):
         raise FixtureOperationError("max_response_bytes must be positive")
+    plan_pin = fixture_plan_pin(paths, fixture_id)
+    manifest = _capture_manifest(paths, run_id)
+    if (
+        manifest["target_plan_id"] != plan_pin.target_plan_id
+        or manifest["target_plan_digest"] != plan_pin.target_plan_digest
+        or manifest["target_schema_version"] != plan_pin.target_plan_schema_version
+    ):
+        raise FixtureOperationError("acquisition run differs from fixture plan pin")
     parts = load_validated_work_order(paths, run_id)
     row = _find_target(parts, target_id)
     try:
@@ -439,7 +453,6 @@ def capture_fixture_case(
             "lazy-index capture requires the initial document-body attempt"
         )
 
-    manifest = _capture_manifest(paths, run_id)
     capture_id = (
         "cap_"
         + canonical_hash(

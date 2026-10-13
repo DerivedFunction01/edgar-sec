@@ -10,7 +10,6 @@ import pytest
 from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.pipelines.document_acquisition import cli
-from edgar_sec.pipelines.document_acquisition.processing import run as processing_run
 from edgar_sec.pipelines.document_acquisition.body_handoff import (
     read_body_consumption_receipt,
 )
@@ -18,12 +17,13 @@ from edgar_sec.pipelines.document_acquisition.models import (
     AcquisitionAttempt,
     AcquisitionOutcome,
 )
-from edgar_sec.pipelines.document_acquisition.processing.worker import process_target
+from edgar_sec.pipelines.document_acquisition.processing import run as processing_run
 from edgar_sec.pipelines.document_acquisition.processing.io import (
     DEFAULT_PROCESSING_BUDGETS,
     ProcessingBudgetPolicy,
     ProcessingBudgetRegistry,
 )
+from edgar_sec.pipelines.document_acquisition.processing.worker import process_target
 from edgar_sec.pipelines.document_acquisition.run_state.operations import (
     iter_operation_states,
 )
@@ -34,7 +34,7 @@ from edgar_sec.pipelines.document_acquisition.run_state.store import (
 from tests.acquisition_run_fixture import make_acquisition_run
 
 
-def test_process_cli_completes_offline_s10_processing(
+def test_run_cli_processes_previously_acquired_target_offline(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture
 ) -> None:
     artifacts_root = tmp_path / "artifacts"
@@ -95,14 +95,9 @@ def test_process_cli_completes_offline_s10_processing(
         "edgar_sec.pipelines.document_acquisition.commands.common.sec_transport_factory",
         unexpected_acquisition,
     )
-    monkeypatch.setattr(
-        "edgar_sec.pipelines.document_acquisition.runner.execute_acquisition_run",
-        unexpected_acquisition,
-    )
-
     exit_code = cli.main(
         [
-            "process",
+            "run",
             "--run-id",
             run_id,
             "--artifacts",
@@ -113,10 +108,13 @@ def test_process_cli_completes_offline_s10_processing(
 
     summary = json.loads(capsys.readouterr().out)
     assert exit_code == 0
-    assert summary["complete"] is True
-    assert summary["success"] is True
+    assert summary["processing"]["complete"] is True
+    assert summary["processing"]["success"] is True
     assert summary["run_id"] == run_id
-    assert summary["operation_counts"] == {"available": 1, "not_requested": 2}
+    assert summary["processing"]["operation_counts"] == {
+        "available": 1,
+        "not_requested": 2,
+    }
 
     target_state = get_target_state(paths.run_state_path(run_id), target["target_id"])
     assert target_state is not None
@@ -225,10 +223,6 @@ def test_process_cli_normalizes_text_with_offline_test_budget(
         "edgar_sec.pipelines.document_acquisition.commands.common.sec_transport_factory",
         unexpected_acquisition,
     )
-    monkeypatch.setattr(
-        "edgar_sec.pipelines.document_acquisition.runner.execute_acquisition_run",
-        unexpected_acquisition,
-    )
     assert DEFAULT_PROCESSING_BUDGETS.policies == ()
     test_budgets = ProcessingBudgetRegistry(
         (
@@ -253,7 +247,7 @@ def test_process_cli_normalizes_text_with_offline_test_budget(
 
     exit_code = cli.main(
         [
-            "process",
+            "run",
             "--run-id",
             run_id,
             "--artifacts",
@@ -264,9 +258,12 @@ def test_process_cli_normalizes_text_with_offline_test_budget(
 
     summary = json.loads(capsys.readouterr().out)
     assert exit_code == 0
-    assert summary["complete"] is True
-    assert summary["success"] is True
-    assert summary["operation_counts"] == {"available": 2, "not_selected": 1}
+    assert summary["processing"]["complete"] is True
+    assert summary["processing"]["success"] is True
+    assert summary["processing"]["operation_counts"] == {
+        "available": 2,
+        "not_selected": 1,
+    }
     assert len(process_calls) == 1
     request_operations = {
         operation.operation: operation for operation in process_calls[0].operations

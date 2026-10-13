@@ -5,26 +5,26 @@ import sqlite3
 import pytest
 import zstandard
 
+from edgar_sec.pipelines.document_acquisition.fixture_store.body_verification import (
+    _write_verified_response_body,
+)
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixtureStoreError,
 )
-from edgar_sec.pipelines.document_acquisition.fixture_store.replay import (
-    replay_fixture_response,
-)
 from edgar_sec.pipelines.document_acquisition.fixture_store.storage import (
     append_fixture_case,
-    initialize_fixture,
 )
+from .fixture_helpers import initialize_test_fixture
 
 
-def test_direct_response_replays_exact_bytes(
+def test_fixture_body_materialization_preserves_exact_bytes(
     acquisition_paths, capture_values, case_factory
 ) -> None:
-    initialize_fixture(acquisition_paths, "fixture_replay")
+    initialize_test_fixture(acquisition_paths, "fixture_verified")
     response = b"<html>original response</html>\x00"
     body = append_fixture_case(
         acquisition_paths,
-        "fixture_replay",
+        "fixture_verified",
         capture_values,
         case_factory(),
         io.BytesIO(response),
@@ -33,17 +33,17 @@ def test_direct_response_replays_exact_bytes(
     assert body is not None
 
     output = io.BytesIO()
-    replayed = replay_fixture_response(
-        acquisition_paths, "fixture_replay", body.response_sha256, output
+    verified = _write_verified_response_body(
+        acquisition_paths, "fixture_verified", body.response_sha256, output
     )
-    assert replayed.byte_size == len(response)
+    assert verified.byte_size == len(response)
     assert output.getvalue() == response
 
 
 def test_replay_rejects_body_with_changed_uncompressed_identity(
     acquisition_paths, capture_values, case_factory
 ) -> None:
-    fixture = initialize_fixture(acquisition_paths, "fixture_corrupt")
+    fixture = initialize_test_fixture(acquisition_paths, "fixture_corrupt")
     response = b"original-body"
     body = append_fixture_case(
         acquisition_paths,
@@ -70,7 +70,7 @@ def test_replay_rejects_body_with_changed_uncompressed_identity(
         )
 
     with pytest.raises(FixtureStoreError, match="response size or SHA-256 mismatch"):
-        replay_fixture_response(
+        _write_verified_response_body(
             acquisition_paths,
             "fixture_corrupt",
             body.response_sha256,

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import sqlite3
+from collections import Counter
 from collections.abc import Callable
 from datetime import datetime
 from pathlib import Path
@@ -19,9 +20,19 @@ from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.run_state.locks import RunLock
 from edgar_sec.pipelines.document_acquisition.run_state.store import (
     commit_attempts_and_update_target,
+    get_target_state,
     inspect_run_state,
     iter_target_state_pairs,
     summarize_target_state,
+)
+from edgar_sec.pipelines.document_acquisition.processing.run import (
+    _read_relation_spool,
+    _TERMINAL_OPERATION_STATUSES,
+    _operation_status,
+    process_acquired_target,
+)
+from edgar_sec.pipelines.document_acquisition.run_state.operations import (
+    iter_operation_states,
 )
 from edgar_sec.pipelines.document_acquisition.run_validation import (
     iter_work_order_rows,
@@ -99,54 +110,83 @@ def execute_acquisition_run(
         raise ValueError("resource-derived worker capacity is invalid")
     staging_root = paths.run_staging_root(run_id)
     attempted = 0
+    processed = 0
     cancelled = False
+    processing_counts: Counter[str] = Counter()
+    processing_complete = False
     try:
         with RunLock(
             paths.run_lock_path(run_id),
             run_id,
             stale_local_lock_confirmed=confirm_stale_lock,
         ):
-            run_root = paths.run_dir(run_id).resolve()
-            if (
-                staging_root.is_symlink()
-                or (staging_root.exists() and not staging_root.is_dir())
-                or not staging_root.resolve().is_relative_to(run_root)
-            ):
-                raise ValueError("run staging directory is unsafe")
-            for row, state in iter_target_state_pairs(
-                paths.run_state_path(run_id),
-                iter_work_order_rows(parts),
-            ):
-                if state is None or state.target_id != row["target_id"]:
-                    raise ValueError("work-order targets are missing or duplicated")
+            relation_directory, relation_connection = _read_relation_spool(
+                paths, run_id
+            )
+            try:
+                run_root = paths.run_dir(run_id).resolve()
                 if (
-                    bool(row["executable"]) != state.executable
-                    or row["skip_reason"] != state.skip_reason
+                    staging_root.is_symlink()
+                    or (staging_root.exists() and not staging_root.is_dir())
+                    or not staging_root.resolve().is_relative_to(run_root)
                 ):
-                    raise ValueError("work-order target disagrees with run state")
-                eligible = state.outcome == "pending" or (
-                    retry_failures and state.outcome == "failed" and state.retryable
+                    raise ValueError("run staging directory is unsafe")
+                for row, state in iter_target_state_pairs(
+                    paths.run_state_path(run_id),
+                    iter_work_order_rows(parts),
+                ):
+                    if state is None or state.target_id != row["target_id"]:
+                        raise ValueError("work-order targets are missing or duplicated")
+                    if (
+                        bool(row["executable"]) != state.executable
+                        or row["skip_reason"] != state.skip_reason
+                    ):
+                        raise ValueError("work-order target disagrees with run state")
+                    eligible = state.outcome == "pending" or (
+                        retry_failures and state.outcome == "failed" and state.retryable
+                    )
+                    if eligible:
+                        attempts, outcome, resolution, recorded_at = acquire_target(
+                            row,
+                            state,
+                            run_id=run_id,
+                            paths=paths,
+                            policy=policy,
+                            transport=transport,
+                            clock=clock,
+                        )
+                        _commit(
+                            paths,
+                            row | {"run_id": run_id},
+                            attempts,
+                            outcome,
+                            resolution,
+                            recorded_at,
+                        )
+                        attempted += 1
+                    fresh_state = get_target_state(
+                        paths.run_state_path(run_id), str(row["target_id"])
+                    )
+                    if fresh_state is not None and fresh_state.outcome == "acquired":
+                        if process_acquired_target(
+                            row | {"run_id": run_id},
+                            paths=paths,
+                            retry_failures=retry_failures,
+                            relation_connection=relation_connection,
+                            operation_states_path=paths.run_state_path(run_id),
+                        ):
+                            processed += 1
+                for operation_state in iter_operation_states(
+                    paths.run_state_path(run_id)
+                ):
+                    processing_counts[_operation_status(operation_state)] += 1
+                processing_complete = all(
+                    status in _TERMINAL_OPERATION_STATUSES
+                    for status in processing_counts
                 )
-                if not eligible:
-                    continue
-                attempts, outcome, resolution, recorded_at = acquire_target(
-                    row,
-                    state,
-                    run_id=run_id,
-                    paths=paths,
-                    policy=policy,
-                    transport=transport,
-                    clock=clock,
-                )
-                _commit(
-                    paths,
-                    row | {"run_id": run_id},
-                    attempts,
-                    outcome,
-                    resolution,
-                    recorded_at,
-                )
-                attempted += 1
+            finally:
+                relation_connection.close()
+                relation_directory.cleanup()
     except KeyboardInterrupt:
         cancelled = True
     finally:
@@ -171,6 +211,15 @@ def execute_acquisition_run(
         retryable_failure_count=counts.retryable_failure_count,
         non_retryable_failure_count=counts.non_retryable_failure_count,
         cancelled=cancelled,
+        processing_operation_counts=dict(sorted(processing_counts.items())),
+        processing_attempted_target_count=processed,
+        processing_complete=processing_complete,
+        processing_success=(
+            processing_complete
+            and processing_counts.get("failed", 0) == 0
+            and processing_counts.get("blocked", 0) == 0
+            and processing_counts.get("unsupported", 0) == 0
+        ),
     )
 
 

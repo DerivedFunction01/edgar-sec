@@ -12,10 +12,9 @@ and settings owners rather than duplicate them. The staged implementation sequen
 and safe parallel workstreams are in the [S9 implementation plan](plan.md).
 
 The dedicated `acquisition` launcher and command/operator are registered. Project,
-status, run, process, and fixture create/fill/list/replay are wired. Review
-generate/compare work only for the limited S9/S10 fixture slice. Publish remains
-gated on S11 evidence and approval; snapshot status and review evidence audit remain
-fail-closed placeholders. The former `documents` launcher and `document_storage`
+status, combined run/process, and plan-pinned fixture/review actions are wired. Review
+generation, comparison, and offline analysis cover the limited S9/S10 fixture slice. The
+former `documents` launcher and `document_storage`
 runtime package are retired. Command and fixture wiring are covered by
 [`cli.py`](../../../../edgar_sec/pipelines/document_acquisition/cli.py),
 [`test_cli.py`](../../../../tests/pipelines/document_acquisition/test_cli.py), and
@@ -29,7 +28,7 @@ and [`processing/test_worker.py`](../../../../tests/pipelines/document_acquisiti
 ### Root launcher
 
 [`run.py`](../../../../run.py) registers the **Document Acquisition** entry with
-separate project, acquire, process, publish, fixture, review, and snapshot tracks.
+project, combined run/process, publish, fixture, review, and snapshot tracks.
 S9, S10, and S11 remain distinct owners under the shared command group. The former
 `Document Storage` entry was removed with its runtime package.
 
@@ -98,10 +97,9 @@ legacy `documents` entry is retired:
 ```
 
 The registered operator uses numbered lifecycle actions and keyed snapshot and
-fixture/review consoles. Project/status/run/process and fixture actions dispatch to
-their CLI services. Review generate/compare are wired for the limited S9/S10 fixture
-slice; snapshot status and review evidence audit remain placeholders, and publish
-fails closed at the S11 gate. See
+fixture/review consoles. Project/status/run and fixture actions dispatch to their CLI
+services. Run processes acquired targets under the same run lock; fixture actions are
+plan-pinned and review generation/comparison/analysis are offline. See
 [`operator.py`](../../../../edgar_sec/pipelines/document_acquisition/operator.py),
 [`test_operator.py`](../../../../tests/pipelines/document_acquisition/test_operator.py),
 [`test_review.py`](../../../../tests/pipelines/document_acquisition/commands/test_review.py),
@@ -111,31 +109,24 @@ and [`review_artifacts/test_adapter.py`](../../../../tests/pipelines/document_ac
 Document Acquisition
   1. Project a target plan into an acquisition run
   2. Show acquisition run status
-  3. Run acquisition (live SEC; confirmation required)
-  4. Process acquired targets
+  3. Run acquisition and process acquired targets (live SEC; confirmation required)
   p. Snapshot console (publish, status; S11 gate)
-  f. Fixtures and review console (fixtures, review, evidence audit)
+  f. Fixtures and review console (create, fill, list, generate, compare, analyze)
   0. Exit
 ```
 
-The snapshot console groups publish and status like inventory's snapshot console; both
-remain behind the S11 gate. The fixture/review console owns the S9/S10 evidence audit
-placeholder because it concerns local acquisition evidence, not a published snapshot.
-Acquisition does not register inventory's distribution or full DAG operations: its
-distribution adapter is not implemented, and publication still requires representative
-S9/S10 evidence and explicit S11 approval.
+The snapshot console groups publish and status; the fixture/review console owns local
+fixture evidence and review analysis. Acquisition does not register inventory's
+distribution or full DAG operations: its distribution adapter is not implemented.
 
-The local command-line counterpart defines project, status, run, process, publish,
-snapshot status, and acquisition-specific fixture/review commands. Its fail-closed
-`review audit` placeholder covers S9/S10 evidence. The commands use stable run, plan,
-and snapshot IDs. `project` creates or reuses an offline transient run. Fixture
-creation refuses existing IDs; fill requires fixture/run/target/exact-attempt IDs
-and a positive response-byte cap; list accepts optional fixture/capture/target filters;
-replay requires exact fixture/capture/target IDs and a caller-selected output path.
-Run-level `process --run-id` is wired; unbudgeted transforms still fail closed.
-Snapshot status and review evidence audit are placeholder tracks, and publication
-reports its evidence-and-approval gate. The interactive operator separately confirms
-live network work, fixture fill, and replay output, each defaulting to no. CLI network
+The local command-line counterpart defines project, status, combined run, publish,
+snapshot status/audit, and acquisition-specific fixture/review commands. `project`
+creates or reuses an offline transient run. Fixture creation pins the active published
+plan; fill requires matching fixture/run/target/exact-attempt IDs and a positive
+response-byte cap; list reports deterministic fixture summaries. Review generate,
+compare, and offline analyze cover the limited S9/S10 fixture slice. There is no public
+replay/export action. The interactive operator separately confirms live network work
+and fixture evidence fill, each defaulting to no. CLI network
 execution is explicit and exposes retry selection rather than silently retrying failed
 requests.
 `acquisition distrib` remains planned and unimplemented. The common CLI uses
@@ -157,8 +148,8 @@ behavior:
   selection, bounded transfer, cancellation, and result recording.
 - [Distribute acquisition work](distribution/index.md): define export, remote
   execution, receipt verification, discovery, and coordinator adoption.
-- [Capture and replay fixtures](fixtures/index.md): define explicit capture, fixture
-  discovery, integrity checks, retained-evidence limits, and zero-network replay.
+- [Capture and review fixtures](fixtures/index.md): define S6-pinned fixture capture,
+  deterministic discovery, integrity checks, retained-evidence limits, and offline review.
 - [Operator UX](operator.md): define menu transitions, explicit network confirmation,
   context retention, cancellation, and common CLI/operator dispatch.
 - [Shared schemas](schemas.md), [paths](paths.md), and

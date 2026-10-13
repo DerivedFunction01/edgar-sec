@@ -4,10 +4,10 @@
 
 - Owning stage in [implementation.md](../implementation.md): **S10**.
 - Status: S6 v4 declarative operation/source-input planning and S9's acquisition-owned
-  resolved work order v3/run state are implemented. The `process --run-id` parser, operator
-  action, run-level coordinator, per-target engine dispatch, operation-scoped retry, and
+  resolved work order v3/run state are implemented. `acquisition run` owns per-target
+  acquisition followed by processing under one run lock; operation-scoped retry and the
   atomic run-relative result manifest are wired. Offline CLI integration covers raw-only
-  and test-budgeted TEXT processing; combined targeted package tests pass. Raw remains a staged-file
+  and test-budgeted TEXT processing. Raw remains a staged-file
   reference. Generic `normalize_document` execution requires a versioned route/handler
   budget; the production budget registry is empty, so text normalization fails closed
   before body read/hash and writes no receipt. No representative production input, output,
@@ -38,10 +38,10 @@
 - **Status:** S9 work-order v3 resolves operation support/handler pins and stores operation
   state/attempts. Its nullable lazy-trigger ID/version fields are currently null because no
   reviewed trigger patterns exist; no lazy-index request is authorized. The legacy S6
-  `catalog_direct_selection` field is not runtime trigger authority. The process CLI,
-  operator, coordinator, per-target engine dispatch, validated operation retry, and
-  per-target result manifest are implemented. The coordinator reads the validated work
-  order without reopening S6 or making HTTP requests.
+  `catalog_direct_selection` field is not runtime trigger authority. The run coordinator,
+  per-target engine dispatch, validated operation retry, and per-target result manifest
+  are implemented. Acquisition and processing execute under one run lock; processing
+  does not reopen S6 or make HTTP requests.
 - **Processing boundary:** `process_target` dispatches to the engine under a versioned
   route/handler budget. Raw is a file reference. The production route-budget registry is
   empty, so generic normalization refuses before body read/hash and writes no receipt.
@@ -51,7 +51,7 @@
   persisted separately in run state. Operation-scoped retry reuses only validated prior
   results. S11 publication and cleanup approval remain gated.
 - **Evidence:** S9 projection/validation and operation resolution are in [`plan_projection/target_plan.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/target_plan.py), [`plan_projection/operation_resolution.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/operation_resolution.py), [`run_validation.py`](../../../edgar_sec/pipelines/document_acquisition/run_validation.py), and [`schemas.py`](../../../edgar_sec/pipelines/document_acquisition/schemas.py); [`test_project.py`](../../../tests/pipelines/document_acquisition/plan_projection/test_project.py) pins work-order v3 and [`test_schemas.py`](../../../tests/pipelines/document_acquisition/test_schemas.py) asserts schema version 3. [`target_plan.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/target_plan.py) emits null trigger ID/version pins, [`test_arrow_schemas.py`](../../../tests/pipelines/document_acquisition/test_arrow_schemas.py) covers their nullable schema, and [`test_runner.py`](../../../tests/pipelines/document_acquisition/test_runner.py) covers the no-trigger path. [`target_runner.py`](../../../edgar_sec/pipelines/document_acquisition/target_runner.py) authorizes lazy lookup only from a paired trigger ID/version.
-- **Evidence:** Run coordination, operation state/retry, CLI/operator routing, and atomic result manifests are in [`processing/run.py`](../../../edgar_sec/pipelines/document_acquisition/processing/run.py), [`run_state/operations.py`](../../../edgar_sec/pipelines/document_acquisition/run_state/operations.py), [`commands/process.py`](../../../edgar_sec/pipelines/document_acquisition/commands/process.py), [`cli.py`](../../../edgar_sec/pipelines/document_acquisition/cli.py), and [`operator.py`](../../../edgar_sec/pipelines/document_acquisition/operator.py). [`test_process_cli_integration.py`](../../../tests/pipelines/document_acquisition/test_process_cli_integration.py) covers offline raw-only and test-budgeted TEXT CLI paths; [`processing/test_run.py`](../../../tests/pipelines/document_acquisition/processing/test_run.py) covers coordinator/retry behavior.
+- **Evidence:** Run coordination, operation state/retry, CLI/operator routing, and atomic result manifests are in [`runner.py`](../../../edgar_sec/pipelines/document_acquisition/runner.py), [`processing/run.py`](../../../edgar_sec/pipelines/document_acquisition/processing/run.py), [`run_state/operations.py`](../../../edgar_sec/pipelines/document_acquisition/run_state/operations.py), [`commands/run.py`](../../../edgar_sec/pipelines/document_acquisition/commands/run.py), [`cli.py`](../../../edgar_sec/pipelines/document_acquisition/cli.py), and [`operator.py`](../../../edgar_sec/pipelines/document_acquisition/operator.py). [`test_run_processing_integration.py`](../../../tests/pipelines/document_acquisition/test_run_processing_integration.py) covers offline raw-only and test-budgeted TEXT run paths; [`processing/test_run.py`](../../../tests/pipelines/document_acquisition/processing/test_run.py) covers coordinator/retry behavior.
 - **Evidence:** Engine dispatch and admission are in [`processing/worker.py`](../../../edgar_sec/pipelines/document_acquisition/processing/worker.py), [`processing/io.py`](../../../edgar_sec/pipelines/document_acquisition/processing/io.py), and [`engine/document_processing/processor.py`](../../../edgar_sec/engine/document_processing/processor.py). The empty production budget registry is asserted by [`processing/test_io.py`](../../../tests/pipelines/document_acquisition/processing/test_io.py); pre-body refusal/no-receipt behavior is covered by [`processing/test_worker.py`](../../../tests/pipelines/document_acquisition/processing/test_worker.py); engine handler behavior is covered by [`engine/document_processing/test_processor.py`](../../../tests/engine/document_processing/test_processor.py). The combined targeted S6/S9/S10 suite and policy scanners pass.
 
 ## Objective
@@ -109,11 +109,12 @@ exact-type assertion.
 
 ## Current processing interface and persisted results
 
-The run-level coordinator consumes the validated S9 work-order v3, including resolved
-operation support/handler pins, and the run-state operation relation. It does not reopen
-S6/S5 artifacts or perform acquisition. The `process --run-id` CLI and interactive
-operator use this coordinator. Operation-scoped retries validate prior result manifests
-before reusing terminal results; each attempt is recorded in run state.
+The per-target coordinator consumes the validated S9 work-order v3, including resolved
+operation support/handler pins, and the run-state operation relation. The acquisition
+run invokes it after acquisition or when resuming an acquired target, before releasing
+the run lock. Processing does not reopen S6/S5 artifacts or make HTTP requests.
+Operation-scoped retries validate prior result manifests before reusing terminal results;
+each attempt is recorded in run state.
 
 The per-target `ProcessingRequest`, operation/result models, and engine adapter are owned
 by [`processing/models.py`](../../../edgar_sec/pipelines/document_acquisition/processing/models.py),
@@ -138,9 +139,11 @@ still requires the separate S11/publication or explicit-discard approval gate.
 
 ## Current run-level processing flow
 
-The implemented coordinator reads the validated S9 work-order v3 and run state. It submits
-the resolved operation set for acquired targets; terminal target failures block requested
-operations. It never opens a S5/S6 source artifact or makes an HTTP request.
+The acquisition run reads the validated S9 work-order v3 and run state. For each target
+it acquires eligible work, then submits the resolved operation set if the target is
+acquired. Previously acquired targets are processed on resume; terminal acquisition
+failures block requested operations. Processing never opens a S5/S6 source artifact or
+makes an HTTP request.
 
 1. Validate the `ProcessingRequest` against the S9 work-order row by `target_id`.
    Form, role, type, accession, path and source origin must match that immutable row.

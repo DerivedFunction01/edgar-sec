@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 from typing import Any
 
@@ -20,7 +19,9 @@ from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
 )
 from .paths import (
+    DiscoveredDocumentPlan,
     DocumentPlanningPaths,
+    PublishedDocumentPlan,
     catalog_form_partition_name,
     form_partition_directory,
     plan_target_part_path,
@@ -45,20 +46,6 @@ from .schemas import (
 
 class DocumentPlanError(ValueError):
     """A published target-plan bundle is missing or inconsistent."""
-
-
-@dataclass(frozen=True, slots=True)
-class PublishedDocumentPlan:
-    plan_id: str
-    root: Path
-    manifest: dict[str, Any]
-
-
-@dataclass(frozen=True, slots=True)
-class DiscoveredDocumentPlan:
-    plan_id: str
-    plan: PublishedDocumentPlan | None
-    error: str | None
 
 
 def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:

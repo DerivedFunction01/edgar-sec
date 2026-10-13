@@ -2,13 +2,13 @@
 
 ## Purpose and status
 
-Store append-only S9 acquisition evidence for offline replay.
+Store append-only S9 acquisition evidence for offline review.
 
-**Implemented:** the v3 SQLite schema and shared manifest layout; fixture
+**Implemented:** the plan-pinned v1 SQLite schema and shared manifest layout; fixture
 initialization; atomic append of immutable capture/case metadata and optional response
 streams; Zstandard compression and digest/size verification; read-only fixture/case
-discovery; exact attempt capture for retained evidence; and exact case replay to an
-explicit caller-selected output file. Evidence is in
+discovery; and exact-attempt capture for retained evidence. Review generation uses
+internal temporary body verification. Evidence is in
 `edgar_sec/pipelines/document_acquisition/fixture_store/` and the acquisition fixture
 services.
 
@@ -16,8 +16,9 @@ Capture supports successful direct bodies, bodyless failed attempts, bundle resp
 and complete lazy-index response groups when the required evidence was retained during
 acquisition. Full response-evidence retention is opt-in and default-off via
 `--retain-response-evidence`; without it, bundle/lazy groups may be unavailable to
-post-run capture. Replay remains offline and can verify and extract bundle cases, but
-does not provide the separate S10 handoff; see [fill](fill.md) and [replay](replay.md).
+post-run capture. Fixture creation pins a validated published S6 plan ID, digest, and
+schema version; fill refuses an S9 run from another plan. See [fill](fill.md) and
+[fixture discovery](list.md).
 
 ## Layout
 
@@ -30,10 +31,12 @@ does not provide the separate S10 handoff; see [fill](fill.md) and [replay](repl
 `manifest.json` uses the shared fixture-manifest envelope version 1 (`fixture_kind` is
 `document_acquisition.source_responses`, storage format `sqlite`, storage path
 `fixture.sqlite`). Its `manifest_version` is separate from the S9 fixture-store schema
-version: envelope details pin store schema version 3, and `fixture.sqlite` independently
-pins version 3 through `PRAGMA user_version`. Readers require these store-schema values
-to agree with v3. No v2 fixture files are on disk, and no v2 compatibility or migration
-path is provided. The manifest is an immutable descriptor with no case list or
+version: envelope details pin store schema version 1 and the S6 plan identity, and
+`fixture.sqlite` independently pins version 1 through `PRAGMA user_version`. The same
+plan ID, digest, and schema version are recorded in `fixture_meta`; readers require the
+database pin to match the immutable manifest pin. No acquisition fixtures exist on disk,
+and the rewritten format has no old-schema reader, migration, or dual-version path. The
+manifest is an immutable descriptor with no case list or
 body-digest inventory; it is not a response store. Its `created_at` and `updated_at`
 are equal at creation and remain unchanged as cases are appended; SQLite case
 timestamps are authoritative for captures.
@@ -48,7 +51,7 @@ The implemented schema separates unique response bodies from append-only cases. 
 body is identified by the SHA-256 of its exact response bytes. The append primitive
 accepts related response streams, and capture stores the available members of a
 supported direct, bundle, or lazy-index response group. A bundle-selected child is
-re-derived during replay rather than stored as a second copy.
+re-derived during internal body verification rather than stored as a second copy.
 
 ```sql
 CREATE TABLE fixture_meta (
@@ -171,15 +174,15 @@ and optional inventory inputs. The append primitive supports metadata-only cases
 `stored_sha256` and `stored_byte_size` verify the compressed BLOB. Direct-target
 selected and source digests and sizes agree except for catalog-direct lazy resolution,
 which records the verified initial, index, and selected response identities. Bundle
-cases record selected-child identity and replay re-derives that child from the retained
+cases record selected-child identity and internal verification re-derives that child from the retained
 bundle response.
 
 ## Contracts
 
 - **Exact bytes**: `compressed_body` is the Zstandard encoding of the exact S9 staged
   source body. `byte_size` and `response_sha256` identify the uncompressed source;
-  `stored_byte_size` and `stored_sha256` verify the stored compressed stream. Replay
-  decompresses incrementally, then verifies the uncompressed identity.
+  `stored_byte_size` and `stored_sha256` verify the stored compressed stream. Internal
+  review verification decompresses incrementally, then verifies the uncompressed identity.
 - **Single body store**: `fixture.sqlite` is the sole store for cases and compressed
   response bytes.
   `manifest.json` is an immutable descriptor only. SQLite may use native transaction
@@ -187,11 +190,11 @@ bundle response.
 - **Uniform compression**: compress every response with Zstandard before insertion;
   do not branch on MIME type or assume already-compressed media makes compression
   optional.
-- **Implemented bounded capture/replay primitive**: stream a supplied source through a
+- **Implemented bounded capture/verification primitive**: stream a supplied source through a
   Zstandard encoder into a transient compressed staging file to determine stored
   size/digest, reserve that BLOB length with `zeroblob`, then use incremental SQLite
   BLOB I/O to copy compressed bytes. Close the staging file after append. Decompress
-  incrementally on replay. Never materialize a complete compressed or uncompressed
+  incrementally for internal review verification. Never materialize a complete compressed or uncompressed
   response in Python memory. Enforce the acquisition limit on uncompressed bytes and
   SQLite's BLOB limit on stored bytes.
 - **Atomic append**: insert a new deduplicated compressed response BLOB and its
@@ -202,18 +205,21 @@ bundle response.
 - **Fixture creation marker**: initialize the SQLite schema and `user_version` before
   atomically writing `manifest.json`. A missing/invalid manifest or database is an
   incomplete fixture and is refused, not auto-repaired.
+- **Immutable plan pin**: the fixture manifest and `fixture_meta` agree on the validated
+  published S6 plan ID, input digest, and target schema version. A fill run from another
+  plan is refused; switching the console plan does not alter a fixture.
+- **Single current format**: the store is schema version 1. No legacy reader, migration,
+  compatibility alias, or dual-version behavior is supported.
 - **Implemented response verification**: open the fixture read-only, validate
   `user_version`, schema, integrity, and foreign keys, then stream and verify a body
-  selected by digest. Case-level replay resolves exact fixture/capture/target metadata
-  and verifies recorded lazy-index evidence locally; it does not re-run index selection.
-- **Implemented case replay**: verify the exact source response incrementally. Ordinary
+  selected by digest. Internal review verification resolves exact fixture/capture/target
+  metadata and verifies recorded lazy-index evidence locally; it does not re-run index selection.
+- **Internal case verification**: verify the exact source response incrementally. Ordinary
   direct cases check selected identity; bundle and lazy-resolution cases verify their
   retained response group, locally re-run exact-sequence extraction where selected mode
-  is a bundle, and check selected digest/size. Replay makes zero HTTP requests and leaves
-  fixture state unchanged.
-- **Caller-owned output**: acquired replay writes only to an explicit new output path.
-  Bodyless failures return metadata without creating a file. There is no managed
-  staging handle, S10 receipt, or durable replay cleanup lifecycle.
+  is a bundle, and check selected digest/size. Verification makes zero HTTP requests and
+  leaves fixture state unchanged. Body materialization is confined to review's temporary
+  workspace and is not a user-facing export operation.
 - **Bound SQL inputs**: bind all values. Enable foreign keys on every connection and
   refuse unrelated databases or unsupported schema versions.
 - **Metadata-only failures**: a case without source bytes records its typed outcome
@@ -224,7 +230,7 @@ bundle response.
 - **Fixture export/import**: no standalone fixture archive format is defined; copy or
   move the closed SQLite database as one unit until an explicit interchange contract
   is designed.
-- **Production payload relation**: fixture SQLite is the replay-only compressed BLOB
+- **Production payload relation**: fixture SQLite is the review-evidence compressed BLOB
   store; production snapshot payloads use separate binary/text Parquet relations as
   specified by [the acquisition lifecycle](../lifecycle.md), subject to the unchanged
   S11 design approval gate.
@@ -240,11 +246,11 @@ bundle response.
 
 The implemented store and case services preserve supplied response bytes using bounded
 memory; transaction rollback cannot expose partial evidence; duplicate response
-digests do not duplicate stored BLOBs; listing avoids BLOB reads; and replay verifies
-Zstandard integrity and uncompressed digests. Complete bundle/lazy response-group
+digests do not duplicate stored BLOBs; listing avoids BLOB reads; and internal review
+verification checks Zstandard integrity and uncompressed digests. Complete bundle/lazy response-group
 capture requires evidence retained during acquisition with the default-off
-`--retain-response-evidence` option. Fixture directories contain no external body files,
-and replay output remains a caller-owned file rather than an S10 handoff. M5 receipt/
+`--retain-response-evidence` option. Fixture directories contain no external body files.
+M5 receipt/
 consumer handoff and S10/M7 remain separate work; S11/M9 publication remains subject to
 representative-evidence and explicit-approval gates. Historical corpus/family evaluation
 and distribution are also separate or gated work.

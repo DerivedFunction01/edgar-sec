@@ -188,6 +188,10 @@ class AcquisitionRunReport:
     retryable_failure_count: int
     non_retryable_failure_count: int
     cancelled: bool
+    processing_operation_counts: Mapping[str, int]
+    processing_attempted_target_count: int
+    processing_complete: bool
+    processing_success: bool
 
 
 __all__ = [

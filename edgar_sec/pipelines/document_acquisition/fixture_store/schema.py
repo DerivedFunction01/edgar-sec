@@ -10,12 +10,20 @@ from urllib.parse import quote
 import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
+    FixturePlanPin,
     FixtureStoreError,
 )
+from edgar_sec.foundation.hashing import is_sha256_hex_digest
 from edgar_sec.infra.storage.duckdb import sql_literal
 
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 1
 FIXTURE_KIND = "document_acquisition.source_responses"
+_FIXTURE_DETAIL_KEYS = {
+    "store_schema_version",
+    "target_plan_id",
+    "target_plan_digest",
+    "target_plan_schema_version",
+}
 
 _TABLES = frozenset({"fixture_meta", "response_bodies", "captures", "cases"})
 _CAPTURE_COLUMNS = (
@@ -82,6 +90,8 @@ _EXPECTED_COLUMNS = {
 }
 _IMMUTABILITY_TRIGGERS = frozenset(
     {
+        "immutable_fixture_meta_update",
+        "immutable_fixture_meta_delete",
         "immutable_response_update",
         "immutable_response_delete",
         "immutable_capture_update",
@@ -197,6 +207,10 @@ _SCHEMA = (
               (selected_retrieval_mode = 'bundle_sequence' AND
                selected_sequence IS NOT NULL AND selected_sequence > 0))))
     )""",
+    """CREATE TRIGGER immutable_fixture_meta_update BEFORE UPDATE ON fixture_meta
+        BEGIN SELECT RAISE(ABORT, 'fixture metadata is immutable'); END""",
+    """CREATE TRIGGER immutable_fixture_meta_delete BEFORE DELETE ON fixture_meta
+        BEGIN SELECT RAISE(ABORT, 'fixture metadata is immutable'); END""",
     """CREATE TRIGGER immutable_response_update BEFORE UPDATE ON response_bodies
         BEGIN SELECT RAISE(ABORT, 'fixture response bodies are immutable'); END""",
     """CREATE TRIGGER immutable_response_delete BEFORE DELETE ON response_bodies
@@ -237,31 +251,44 @@ def create_schema(connection: sqlite3.Connection) -> None:
     connection.execute(f"PRAGMA user_version = {sql_literal(str(SCHEMA_VERSION))}")
 
 
-def _validate_manifest(fixture: foundation_fixtures.FixturePaths) -> int:
+def _validate_manifest(
+    fixture: foundation_fixtures.FixturePaths,
+) -> FixturePlanPin:
     try:
         raw = json.loads(fixture.manifest_path.read_text(encoding="utf-8"))
         envelope = foundation_fixtures.FixtureManifestEnvelope.from_mapping(raw)
         schema_version = envelope.details.get("store_schema_version")
+        plan_id = envelope.details.get("target_plan_id")
+        plan_digest = envelope.details.get("target_plan_digest")
+        plan_schema_version = envelope.details.get("target_plan_schema_version")
         if (
             envelope.fixture_kind != FIXTURE_KIND
             or envelope.fixture_id != fixture.fixture_id
             or envelope.storage_format != "sqlite"
             or envelope.storage_path != fixture.storage_filename
             or envelope.created_at != envelope.updated_at
-            or set(envelope.details) != {"store_schema_version"}
+            or set(envelope.details) != _FIXTURE_DETAIL_KEYS
             or type(schema_version) is not int
             or schema_version != SCHEMA_VERSION
+            or not isinstance(plan_id, str)
+            or not plan_id
+            or not is_sha256_hex_digest(plan_digest)
+            or type(plan_schema_version) is not int
+            or plan_schema_version < 1
         ):
             raise ValueError("fixture descriptor does not match the S9 store")
     except (OSError, json.JSONDecodeError, TypeError, ValueError) as exc:
         raise FixtureStoreError(
             f"invalid fixture manifest: {fixture.manifest_path}"
         ) from exc
-    return schema_version
+    return FixturePlanPin(plan_id, plan_digest, plan_schema_version)
 
 
 def validate_database(
-    connection: sqlite3.Connection, database: Path, manifest_version: int
+    connection: sqlite3.Connection,
+    database: Path,
+    manifest_version: int,
+    plan_pin: FixturePlanPin,
 ) -> None:
     database_version = connection.execute("PRAGMA user_version").fetchone()[0]
     if database_version != SCHEMA_VERSION:
@@ -299,6 +326,13 @@ def validate_database(
         raise FixtureStoreError(f"corrupt acquisition fixture database: {database}")
     if connection.execute("PRAGMA foreign_key_check").fetchone() is not None:
         raise FixtureStoreError(f"invalid fixture references: {database}")
+    metadata = dict(connection.execute("SELECT key, value FROM fixture_meta"))
+    if metadata != {
+        "target_plan_id": plan_pin.target_plan_id,
+        "target_plan_digest": plan_pin.target_plan_digest,
+        "target_plan_schema_version": str(plan_pin.target_plan_schema_version),
+    }:
+        raise FixtureStoreError("fixture plan pin differs from its manifest")
 
 
 def open_fixture(
@@ -307,11 +341,19 @@ def open_fixture(
     fixture = fixture_paths(paths, fixture_id)
     if not fixture.manifest_path.is_file() or not fixture.storage_path.is_file():
         raise FixtureStoreError(f"fixture is missing or incomplete: {fixture.root}")
-    manifest_version = _validate_manifest(fixture)
+    plan_pin = _validate_manifest(fixture)
     connection = connect(fixture.storage_path, readonly=readonly)
     try:
-        validate_database(connection, fixture.storage_path, manifest_version)
+        validate_database(connection, fixture.storage_path, SCHEMA_VERSION, plan_pin)
     except Exception:
         connection.close()
         raise
     return fixture, connection
+
+
+def fixture_plan_pin(paths: AcquisitionPaths, fixture_id: str) -> FixturePlanPin:
+    fixture, connection = open_fixture(paths, fixture_id, readonly=True)
+    try:
+        return _validate_manifest(fixture)
+    finally:
+        connection.close()

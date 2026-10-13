@@ -12,6 +12,9 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixtureStoreError,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.schema import open_fixture
+from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
+    fixture_plan_pin,
+)
 
 _CASE_SELECT = """SELECT cases.capture_id, cases.target_id, cases.attempt_id,
     cases.accession, cases.form, cases.request_id, cases.target_role,
@@ -79,6 +82,17 @@ class FixtureCaseMetadata:
     captured_at_utc: str
 
 
+@dataclass(frozen=True, slots=True)
+class FixtureSummary:
+    fixture_id: str
+    target_plan_id: str
+    target_plan_digest: str
+    target_plan_schema_version: int
+    capture_count: int
+    case_count: int
+    acquisition_status_counts: tuple[tuple[str, int], ...]
+
+
 def _validated_fixture_id(fixture_id: str) -> str:
     return validate_path_component(fixture_id, "fixture_id")
 
@@ -115,6 +129,34 @@ def iter_fixture_ids(paths: AcquisitionPaths) -> Iterator[str]:
         _, connection = open_fixture(paths, fixture_id, readonly=True)
         connection.close()
         yield fixture_id
+
+
+def iter_fixtures(paths: AcquisitionPaths) -> Iterator[FixtureSummary]:
+    for fixture_id in _fixture_ids(paths):
+        pin = fixture_plan_pin(paths, fixture_id)
+        _, connection = open_fixture(paths, fixture_id, readonly=True)
+        try:
+            capture_count = int(
+                connection.execute("SELECT COUNT(*) FROM captures").fetchone()[0]
+            )
+            status_counts = tuple(
+                (str(status), int(count))
+                for status, count in connection.execute(
+                    "SELECT acquisition_status, COUNT(*) FROM cases "
+                    "GROUP BY acquisition_status ORDER BY acquisition_status"
+                )
+            )
+            yield FixtureSummary(
+                fixture_id=fixture_id,
+                target_plan_id=pin.target_plan_id,
+                target_plan_digest=pin.target_plan_digest,
+                target_plan_schema_version=pin.target_plan_schema_version,
+                capture_count=capture_count,
+                case_count=sum(count for _, count in status_counts),
+                acquisition_status_counts=status_counts,
+            )
+        finally:
+            connection.close()
 
 
 def _metadata(fixture_id: str, row: tuple[object, ...]) -> FixtureCaseMetadata:
@@ -234,7 +276,9 @@ def get_fixture_case(
 
 __all__ = [
     "FixtureCaseMetadata",
+    "FixtureSummary",
     "get_fixture_case",
+    "iter_fixtures",
     "iter_fixture_cases",
     "iter_fixture_ids",
 ]

@@ -3,21 +3,24 @@
 ## Purpose and status
 
 Execute pending target work from a validated S9 run and resume it safely after
-interruption. The S9 runner, bounded response transfer, exact-sequence extraction,
-and run-state integration are implemented. Execution is serial; S10 processing and
-S11 publication remain gated. Catalog-direct direct-body screens remain unverifiable.
+interruption. The runner performs bounded response transfer and exact-sequence
+extraction, then processes each acquired target before releasing the run lock.
+Execution is serial; S11 publication remains gated. Catalog-direct direct-body screens
+remain unverifiable.
 The catalog-direct exact-form selector compares primary bundle `<TYPE>` with the pinned
 form using strict ASCII equality; mismatch or unverifiable type enters lazy index
 recovery. A recovered bundle candidate must pass the same check. Other selectors do not
-screen the submitted primary. Family-aware HTML/cover evaluation and fixture
-capture/replay command flows are incomplete.
+screen the submitted primary. Family-aware HTML/cover evaluation remains absent.
+Plan-pinned fixture fill, deterministic listing, review generation/comparison, and
+offline review analysis are wired; no user-facing replay or body-export command exists.
 
 ## UX and service signature
 
 The operator selects a projected run, previews pending/assigned/retryable targets,
-then explicitly confirms live SEC access (default no). Retryable failures are a
-separate choice; non-retryable, acquired, skipped, ambiguous, `not_filed`, and
-`required_missing` targets are not retried. The CLI invocation itself authorizes
+then explicitly confirms live SEC access (default no). Retryable acquisition and
+processing failures are retried only when `--retry-failures` is selected;
+non-retryable, acquired, skipped, ambiguous, `not_filed`, and `required_missing`
+targets are not reacquired. The CLI invocation itself authorizes
 network access and accepts `--retry-failures` explicitly. No work produces a
 successful no-op summary without
 constructing a network client.
@@ -40,10 +43,11 @@ def cmd_run(args: argparse.Namespace) -> int: ...
 ```
 
 `execute_acquisition_run` validates the work order, derives resource capacity,
-acquires the run lock, and commits each target outcome before continuing. The current
-runner processes targets serially. The CLI transport lazily creates the shared SEC
-broker on the first request, so a run with no eligible work makes no network request.
-Network and clock dependencies are injected at the transport/test seam.
+acquires the run lock, and commits each target outcome before processing the acquired
+checkpoint and continuing. The current runner processes targets serially. The CLI
+transport lazily creates the shared SEC broker on the first request, so a run with no
+eligible work makes no network request. Network and clock dependencies are injected at
+the transport/test seam.
 
 ## CLI shape
 
@@ -55,7 +59,7 @@ python run.py acquisition run --run-id <run-id> --max-response-bytes <bytes> --w
 python run.py acquisition run --run-id <run-id> --max-response-bytes <bytes> --json
 ```
 
-Invoking the CLI command explicitly starts live work; the interactive operator must
+Invoking the CLI command explicitly starts live acquisition work; the interactive operator must
 separately confirm network execution, defaulting to no. `--workers` is currently an
 upper-bound option only; the runner executes serially. `--retry-failures` explicitly
 opts into eligible retries; `--artifacts` overrides the resolved artifact root and
@@ -69,7 +73,8 @@ A different ceiling or source mode requires a new projected run ID.
 
 ## Execution contract
 
-- Validate the run and acquire its run lock before opening the network client. A
+- Validate the run and acquire its run lock before opening the network client. Hold
+  the same lock through acquisition and processing for each target. A
   lock owned by a live process blocks a second runner. Stale-lock takeover requires
   explicit confirmation that the prior owner has stopped.
 - Use one lazily-created SEC broker per run for request pacing, retries, and failure
@@ -104,35 +109,37 @@ A different ceiling or source mode requires a new projected run ID.
   does not normalize it or define durable payload storage.
 - Commit completed target outcomes as work finishes. Cancellation stops new work,
   cleans partial files, preserves committed results, and leaves unfinished work
-  resumable. Acquired selected files remain staged for the gated S10 handoff; cleanup
-  after processing/publication is not yet implemented. The fixture store supports
-  compressed response persistence and streaming replay; fixture create/fill/list/replay
-  commands are wired. Managed replay-backed run execution and cleanup remain incomplete.
-- `--retry-failures` retries only outcomes classified retryable by the transport
-  contract. It does not repeat acquired, `not_filed`, `required_missing`, ambiguous,
-  or terminally refused work. A later retry does not erase earlier attempt provenance.
+  resumable. Acquired selected files remain staged after processing; cleanup after
+  processing/publication is not yet implemented. The fixture store supports
+  compressed response persistence and internal streaming verification. Fixture
+  create/fill/list and review generate/compare/analyze commands are wired. Projecting a
+  fixture directly into an acquisition run remains a separate contract.
+- `--retry-failures` retries acquisition outcomes classified retryable by the transport
+  contract and retryable processing operations. It does not repeat acquired, `not_filed`,
+  `required_missing`, ambiguous, or terminally refused acquisition work. A later retry
+  does not erase earlier attempt provenance or successful processing results.
 
 ## Outcomes and reporting
 
 Each target retains its S6 identity and receives an S9 outcome such as acquired,
-`not_filed`, `required_missing`, ambiguous, or failed. Report run identity,
-attempted/completed/pending counts, outcome totals, retryable failures, and cancellation.
-An acquired result
-includes a selected-body handle for the downstream processing handoff; payload bytes
-are not embedded in the result record.
+`not_filed`, `required_missing`, ambiguous, or failed. The run report includes acquisition
+outcome totals and processing operation counts, attempts, completion, and success. Report
+run identity, attempted/completed/pending counts, retryable failures, and cancellation.
+Payload bytes are not embedded in the result record.
 
 The detailed transport and extraction boundaries are separate lower-layer contracts;
 see [streaming](transport.md) and [exact sequence selection](extraction.md). Mutable
 state, run locking, retries, and interruption are in [run state](state.md). S10
-body-consumption receipts remain gated with processing.
+body-consumption receipts are recorded during the combined run; cleanup remains gated.
 
 ## Acceptance
 
 Implemented: non-executable targets produce no HTTP request; oversize bodies never
-become partial successes; interrupted runs preserve committed results; and bundle
-selection is exact. Remaining: verified HTML/SGML identity-screen behavior and a
-fixture-replay command path that exercises the acquisition selection flow without
-HTTP.
+become partial successes; interrupted runs preserve committed outcomes; acquisition
+and processing share the run lock; bundle selection is exact; and fixture review uses
+plan pins, source-run processing results, and offline analysis. Remaining: verified
+HTML/SGML identity-screen behavior, durable snapshot publication, and cleanup
+authorization.
 
 Offline tests cover no-work runs, one direct target, bundle target, optional
 `not_filed`, required `required_missing`, lazy-index resolution, 404, retryable and

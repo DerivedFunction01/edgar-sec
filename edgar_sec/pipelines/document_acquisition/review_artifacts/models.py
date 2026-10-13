@@ -8,7 +8,7 @@ from pathlib import Path
 class ReviewSummary:
     total: int
     completed: int
-    replay_failure: int
+    fixture_verification_failure: int
     execution_error: int
 
 

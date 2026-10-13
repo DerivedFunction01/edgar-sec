@@ -14,11 +14,10 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
 from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
     FIXTURE_KIND,
     SCHEMA_VERSION,
+    fixture_plan_pin,
     open_fixture,
 )
-from edgar_sec.pipelines.document_acquisition.fixture_store.storage import (
-    initialize_fixture,
-)
+from .fixture_helpers import initialize_test_fixture as initialize_fixture
 
 
 def test_initialize_writes_shared_manifest_and_schema(acquisition_paths) -> None:
@@ -33,10 +32,15 @@ def test_initialize_writes_shared_manifest_and_schema(acquisition_paths) -> None
     assert envelope.storage_format == "sqlite"
     assert envelope.storage_path == FIXTURE_DATABASE_NAME
     assert envelope.created_at == envelope.updated_at
-    assert SCHEMA_VERSION == 3
-    assert envelope.details == {"store_schema_version": 3}
+    assert SCHEMA_VERSION == 1
+    assert envelope.details == {
+        "store_schema_version": 1,
+        "target_plan_id": "plan_fixture_test",
+        "target_plan_digest": "a" * 64,
+        "target_plan_schema_version": 1,
+    }
     with sqlite3.connect(fixture.storage_path) as connection:
-        assert connection.execute("PRAGMA user_version").fetchone()[0] == 3
+        assert connection.execute("PRAGMA user_version").fetchone()[0] == 1
         assert connection.execute("PRAGMA foreign_keys").fetchone()[0] == 0
     _, connection = open_fixture(acquisition_paths, "fixture_schema", readonly=True)
     try:
@@ -54,19 +58,37 @@ def test_open_refuses_incompatible_schema_and_existing_fixture(
 ) -> None:
     fixture = initialize_fixture(acquisition_paths, "fixture_invalid_schema")
     with sqlite3.connect(fixture.storage_path) as connection:
-        connection.execute("PRAGMA user_version = 1")
+        connection.execute("PRAGMA user_version = 3")
     with pytest.raises(FixtureStoreError, match="unsupported.*schema version"):
         open_fixture(acquisition_paths, "fixture_invalid_schema", readonly=True)
     with pytest.raises(FixtureStoreError, match="already exists or is incomplete"):
         initialize_fixture(acquisition_paths, "fixture_invalid_schema")
 
 
+def test_fixture_plan_pin_is_immutable_in_manifest_and_database(
+    acquisition_paths,
+) -> None:
+    fixture = initialize_fixture(acquisition_paths, "fixture_plan_pin")
+
+    assert fixture_plan_pin(acquisition_paths, "fixture_plan_pin").target_plan_id == (
+        "plan_fixture_test"
+    )
+    with sqlite3.connect(fixture.storage_path) as connection:
+        with pytest.raises(
+            sqlite3.IntegrityError, match="fixture metadata is immutable"
+        ):
+            connection.execute(
+                "UPDATE fixture_meta SET value = ? WHERE key = ?",
+                ("plan-other", "target_plan_id"),
+            )
+
+
 @pytest.mark.parametrize(
     ("manifest_version", "database_version", "message"),
     (
-        (3, 2, "unsupported acquisition fixture schema version"),
+        (1, 2, "unsupported acquisition fixture schema version"),
         (4, 4, "invalid fixture manifest"),
-        (3, 4, "unsupported acquisition fixture schema version"),
+        (1, 4, "unsupported acquisition fixture schema version"),
     ),
 )
 def test_open_rejects_version_mismatch_and_unknown_versions(

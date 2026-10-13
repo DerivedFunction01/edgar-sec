@@ -9,12 +9,12 @@ from typing import BinaryIO
 import zstandard
 
 from edgar_sec.foundation.io import DEFAULT_IO_CHUNK_SIZE
-from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixtureStoreError,
     ResponseBodyRef,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.schema import open_fixture
+from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 
 
 class _NullWriter:
@@ -40,7 +40,7 @@ def _write_all(destination: BinaryIO, chunk: bytes) -> None:
     while remaining:
         written = destination.write(remaining)
         if written is None or written <= 0:
-            raise FixtureStoreError("replay destination did not accept response bytes")
+            raise FixtureStoreError("fixture body destination rejected response bytes")
         remaining = remaining[written:]
 
 
@@ -82,7 +82,7 @@ def _stream_body(
         raise FixtureStoreError("response size or SHA-256 mismatch")
 
 
-def verify_response_row(
+def _verify_response_row(
     connection: sqlite3.Connection, row: tuple[object, ...]
 ) -> None:
     body_id, digest, size, codec, stored_digest, stored_size = row
@@ -106,13 +106,13 @@ def verify_response_row(
         blob.close()
 
 
-def replay_fixture_response(
+def _write_verified_response_body(
     paths: AcquisitionPaths,
     fixture_id: str,
     response_sha256: str,
     destination: BinaryIO,
 ) -> ResponseBodyRef:
-    """Stream one verified response body to a caller-managed binary destination."""
+    """Write one verified response body to an internal temporary destination."""
     _, connection = open_fixture(paths, fixture_id, readonly=True)
     try:
         row = connection.execute(

@@ -7,7 +7,6 @@ import sqlite3
 import sys
 import tempfile
 from dataclasses import asdict
-from pathlib import Path
 
 from edgar_sec.pipelines.document_acquisition.commands.common import response_byte_limit
 from edgar_sec.pipelines.document_acquisition.fixture_store.capture import (
@@ -16,10 +15,16 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.capture import (
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
     list_fixture_cases,
-    list_fixtures,
-    replay_fixture_case,
+    list_fixture_summaries,
 )
-from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
+from edgar_sec.pipelines.document_acquisition.paths import (
+    read_published_plan,
+    resolve_acquisition_paths,
+    resolve_document_planning_paths,
+)
+from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
+    FixturePlanPin,
+)
 
 
 def _fixture_error(command: str, args: argparse.Namespace, error: Exception) -> int:
@@ -42,7 +47,14 @@ def _fixture_error(command: str, args: argparse.Namespace, error: Exception) -> 
 def cmd_fixture_create(args: argparse.Namespace) -> int:
     try:
         paths = resolve_acquisition_paths(artifacts_root=args.artifacts)
-        root = create_fixture(args.fixture, paths=paths)
+        plan_paths = resolve_document_planning_paths(artifacts_root=args.artifacts)
+        plan = read_published_plan(args.plan_id, plan_paths)
+        pin = FixturePlanPin(
+            target_plan_id=plan.plan_id,
+            target_plan_digest=plan.manifest["plan_digest"],
+            target_plan_schema_version=plan.manifest["target_schema_version"],
+        )
+        root = create_fixture(args.fixture, pin, paths=paths)
     except (OSError, RuntimeError, sqlite3.Error, ValueError) as error:
         return _fixture_error("create", args, error)
     payload = {
@@ -112,11 +124,9 @@ def _write_json_array(values, *, stream=None) -> None:
 def cmd_fixture_list(args: argparse.Namespace) -> int:
     try:
         paths = resolve_acquisition_paths(artifacts_root=args.artifacts)
-        fixtures = list_fixtures(paths)
+        fixtures = list(list_fixture_summaries(paths))
         if args.fixture is not None:
-            fixtures = (
-                fixture_id for fixture_id in fixtures if fixture_id == args.fixture
-            )
+            fixtures = [item for item in fixtures if item.fixture_id == args.fixture]
         cases = list_fixture_cases(
             paths,
             fixture_id=args.fixture,
@@ -128,14 +138,27 @@ def cmd_fixture_list(args: argparse.Namespace) -> int:
                 stream.write('{"cases":')
                 _write_json_array((asdict(case) for case in cases), stream=stream)
                 stream.write(',"command":"fixture list","fixtures":')
-                _write_json_array(fixtures, stream=stream)
+                _write_json_array((asdict(item) for item in fixtures), stream=stream)
                 stream.write(',"status":"ok"}\n')
                 stream.seek(0)
                 shutil.copyfileobj(stream, sys.stdout)
         else:
             found_fixtures = False
-            for fixture_id in fixtures:
-                print(f"fixture {fixture_id}")
+            for item in fixtures:
+                status_counts = (
+                    ", ".join(
+                        f"{status}={count}"
+                        for status, count in item.acquisition_status_counts
+                    )
+                    or "no cases"
+                )
+                print(
+                    f"fixture {item.fixture_id}: plan={item.target_plan_id} "
+                    f"digest={item.target_plan_digest} "
+                    f"schema={item.target_plan_schema_version}; "
+                    f"captures={item.capture_count}, cases={item.case_count}; "
+                    f"{status_counts}"
+                )
                 found_fixtures = True
             found_cases = False
             for case in cases:
@@ -151,37 +174,4 @@ def cmd_fixture_list(args: argparse.Namespace) -> int:
                 print("No fixture cases found.")
     except (OSError, RuntimeError, sqlite3.Error, ValueError) as error:
         return _fixture_error("list", args, error)
-    return 0
-
-
-def cmd_fixture_replay(args: argparse.Namespace) -> int:
-    try:
-        paths = resolve_acquisition_paths(artifacts_root=args.artifacts)
-        result = replay_fixture_case(
-            args.fixture,
-            args.capture_id,
-            args.target_id,
-            Path(args.output),
-            paths=paths,
-        )
-    except (OSError, RuntimeError, sqlite3.Error, ValueError) as error:
-        return _fixture_error("replay", args, error)
-    payload = {
-        "command": "fixture replay",
-        **asdict(result),
-        "output_path": str(result.output_path) if result.output_path else None,
-        "status": "replayed" if result.output_path else "metadata_only",
-    }
-    if args.json:
-        print(json.dumps(payload, sort_keys=True))
-    elif result.output_path is None:
-        print(
-            f"replayed {result.fixture_id}/{result.capture_id}/{result.target_id}: "
-            f"{result.acquisition_status}; metadata only"
-        )
-    else:
-        print(
-            f"replayed {result.fixture_id}/{result.capture_id}/{result.target_id}: "
-            f"{result.selected_byte_size} bytes to {result.output_path}"
-        )
     return 0

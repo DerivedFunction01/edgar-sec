@@ -25,7 +25,10 @@ from edgar_sec.infra.storage.review.paths import (
 )
 from edgar_sec.pipelines.document_planning.paths import (
     PLAN_TARGETS_DIR,
+    PublishedDocumentPlan,
+    discover_document_plans,
     form_partition_name,
+    read_published_plan,
     plan_target_part_path,
     resolve_document_planning_paths,
 )
@@ -154,7 +157,11 @@ __all__ = [
     "RUN_STATE_FILE",
     "WORK_ORDER_DIR",
     "AcquisitionPaths",
+    "PublishedDocumentPlan",
+    "discover_document_plans",
     "form_partition_name",
+    "read_published_plan",
     "plan_target_part_path",
     "resolve_acquisition_paths",
+    "resolve_document_planning_paths",
 ]

@@ -32,26 +32,32 @@ from edgar_sec.pipelines.document_acquisition.body_handoff import (
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
     list_fixture_cases,
-    replay_fixture_case,
+    _materialize_fixture_case,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
     FixtureCaseMetadata,
     get_fixture_case,
 )
+from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
+    fixture_plan_pin,
+)
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.processing.worker import (
-    ProcessingError,
     process_target,
+)
+from edgar_sec.pipelines.document_acquisition.processing.run import (
+    _prior_results,
+    _read_prior_processing_result,
+)
+from edgar_sec.pipelines.document_acquisition.run_validation import (
+    iter_resolved_work_order_operations,
+    iter_work_order_rows,
+    load_validated_work_order,
 )
 from edgar_sec.pipelines.document_acquisition.processing.models import (
     OperationRequest,
     ProcessingRequest,
     ProcessingResult,
-)
-from edgar_sec.pipelines.document_acquisition.run_validation import (
-    iter_work_order_rows,
-    iter_resolved_work_order_operations,
-    load_validated_work_order,
 )
 from edgar_sec.pipelines.document_acquisition.project.models import (
     ProcessingResultProjection,
@@ -251,6 +257,7 @@ def _review_payload(
             "capture_attempt_id": fixture.attempt_id,
             "target_plan_id": fixture.target_plan_id,
             "target_plan_digest": fixture.target_plan_digest,
+            "target_plan_schema_version": int(fixture.target_plan_schema_version),
             "target_id": fixture.target_id,
             "source_origin": fixture.source_origin,
             "target_url": fixture.target_url,
@@ -403,7 +410,8 @@ def _operation_requests(case: FixtureCaseMetadata, *, paths: AcquisitionPaths):
         ) or (support_status != "supported" and any(pin is not None for pin in pins)):
             raise ProcessingReviewError("work-order operation pins are inconsistent")
         requested = row["selected"] is True or (
-            row["requested"] is True and support_status == "unsupported"
+            row["requested"] is True
+            and (row["operation"] == "raw" or support_status == "unsupported")
         )
         if (
             requested
@@ -438,8 +446,25 @@ def _request_for_case(
 ) -> ProcessingRequest:
     if case.target_url is None:
         raise ProcessingReviewError("fixture case has no target URL")
-    document_url = case.selected_url or case.target_url
+    document_url = case.target_url
     archive_url = validate_archive_url(document_url, case.accession)
+    pin = fixture_plan_pin(paths, case.fixture_id)
+    if (
+        case.target_plan_id != pin.target_plan_id
+        or case.target_plan_digest != pin.target_plan_digest
+        or case.target_plan_schema_version != str(pin.target_plan_schema_version)
+    ):
+        raise ProcessingReviewError("fixture case differs from its pinned plan")
+    load_validated_work_order(paths, case.run_id)
+    run_manifest = json.loads(
+        paths.run_manifest_path(case.run_id).read_text(encoding="utf-8")
+    )
+    if (
+        run_manifest.get("target_plan_id") != pin.target_plan_id
+        or run_manifest.get("target_plan_digest") != pin.target_plan_digest
+        or run_manifest.get("target_schema_version") != pin.target_plan_schema_version
+    ):
+        raise ProcessingReviewError("acquisition run differs from fixture plan pin")
     body = get_staged_body_ref(paths, case.run_id, case.target_id)
     if (
         case.selected_sha256 != body.sha256
@@ -460,6 +485,50 @@ def _request_for_case(
         body=body,
         operations=_operation_requests(case, paths=paths),
     )
+
+
+def _reuse_run_processing_result(
+    case: FixtureCaseMetadata,
+    request: ProcessingRequest,
+    *,
+    paths: AcquisitionPaths,
+) -> ProcessingResult:
+    run_id = case.run_id
+    target_rows = tuple(
+        row
+        for row in iter_work_order_rows(load_validated_work_order(paths, run_id))
+        if row["target_id"] == case.target_id
+    )
+    if len(target_rows) != 1:
+        raise ProcessingReviewError("fixture target is absent from its work order")
+    target = target_rows[0] | {"run_id": run_id}
+    operation_rows = tuple(
+        row
+        for row in iter_resolved_work_order_operations(paths, run_id)
+        if row["target_id"] == case.target_id
+    )
+    manifest = _read_prior_processing_result(
+        paths, run_id, target, request.body, operation_rows
+    )
+    if manifest is None:
+        raise ProcessingReviewError("source run has no completed processing result")
+    prior_results = _prior_results(
+        paths,
+        run_id,
+        manifest,
+        tuple(operation.operation_id for operation in request.operations),
+    )
+    result = process_target(
+        request,
+        paths=paths,
+        prior_results=prior_results,
+        selected_operation_ids=(),
+    )
+    if result.processing_id != manifest["processing_id"]:
+        raise ProcessingReviewError(
+            "source processing result differs from fixture work-order identity"
+        )
+    return result
 
 
 def _manifest_record(
@@ -484,6 +553,10 @@ def _manifest_record(
         "capture_id": case.capture_id,
         "target_id": case.target_id,
         "accession": case.accession,
+        "run_id": case.run_id,
+        "target_plan_id": case.target_plan_id,
+        "target_plan_digest": case.target_plan_digest,
+        "target_plan_schema_version": int(case.target_plan_schema_version),
         "response_sha256": case.response_sha256,
         "selected_sha256": case.selected_sha256,
         "status": status,
@@ -492,12 +565,12 @@ def _manifest_record(
     }
 
 
-def _verified_replay(case: FixtureCaseMetadata, *, paths: AcquisitionPaths) -> None:
+def _verify_fixture_body(case: FixtureCaseMetadata, *, paths: AcquisitionPaths) -> None:
     if case.acquisition_status != "acquired":
         raise ProcessingReviewError("fixture case is not acquired")
     with tempfile.TemporaryDirectory(prefix="acq-review-") as temporary:
         destination = Path(temporary) / "selected-body.bin"
-        replay = replay_fixture_case(
+        materialized = _materialize_fixture_case(
             case.fixture_id,
             case.capture_id,
             case.target_id,
@@ -505,11 +578,11 @@ def _verified_replay(case: FixtureCaseMetadata, *, paths: AcquisitionPaths) -> N
             paths=paths,
         )
         if (
-            replay.selected_sha256 != case.selected_sha256
-            or replay.selected_byte_size != case.selected_byte_size
+            materialized.selected_sha256 != case.selected_sha256
+            or materialized.selected_byte_size != case.selected_byte_size
             or file_sha256(destination) != case.selected_sha256
         ):
-            raise ProcessingReviewError("fixture replay differs from selected identity")
+            raise ProcessingReviewError("fixture body differs from selected identity")
 
 
 def build_review_artifacts(
@@ -568,16 +641,20 @@ def build_review_artifacts(
     review_paths = ReviewPaths(output_root, PIPELINE_REVIEW_MANIFEST_FILE)
     review_paths.case_staging_root().mkdir(parents=True, exist_ok=True)
     records: list[dict[str, object]] = []
-    counts = {"completed": 0, "replay_failure": 0, "execution_error": 0}
+    counts = {
+        "completed": 0,
+        "fixture_verification_failure": 0,
+        "execution_error": 0,
+    }
 
     for case in cases:
         status = "execution_error"
         artifact = None
         error = None
         try:
-            _verified_replay(case, paths=paths)
+            _verify_fixture_body(case, paths=paths)
         except Exception as exception:
-            status = "replay_failure"
+            status = "fixture_verification_failure"
             error = str(exception) or type(exception).__name__
         else:
             case_id = _case_id(case)
@@ -587,7 +664,7 @@ def build_review_artifacts(
             )
             try:
                 request = _request_for_case(case, paths=paths)
-                result = process_target(request, paths=paths)
+                result = _reuse_run_processing_result(case, request, paths=paths)
                 with project_terminal_results(
                     (request,), (result,), paths=paths, run_id=case.run_id
                 ) as projection:
@@ -629,14 +706,16 @@ def build_review_artifacts(
     summary = ReviewSummary(
         total=len(records),
         completed=counts["completed"],
-        replay_failure=counts["replay_failure"],
+        fixture_verification_failure=counts["fixture_verification_failure"],
         execution_error=counts["execution_error"],
     )
     return ReviewRunResult(
         review_id=review_paths.review_id,
         output_root=output_root,
         summary=summary,
-        exit_code=0 if summary.replay_failure + summary.execution_error == 0 else 1,
+        exit_code=0
+        if summary.fixture_verification_failure + summary.execution_error == 0
+        else 1,
     )
 
 

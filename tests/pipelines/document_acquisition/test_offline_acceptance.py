@@ -29,13 +29,14 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.capture import (
     create_fixture,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
-    replay_fixture_case,
+    _materialize_fixture_case,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
     get_fixture_case,
 )
-from edgar_sec.pipelines.document_acquisition.fixture_store.replay import (
-    replay_fixture_response,
+from edgar_sec.pipelines.document_acquisition.fixture_store.models import FixturePlanPin
+from edgar_sec.pipelines.document_acquisition.fixture_store.body_verification import (
+    _write_verified_response_body,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
     SCHEMA_VERSION as FIXTURE_SCHEMA_VERSION,
@@ -43,7 +44,6 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
 from edgar_sec.pipelines.document_acquisition.body_handoff import (
     get_staged_body_ref,
     read_body_consumption_receipt,
-    record_body_consumption_receipt,
 )
 from edgar_sec.pipelines.document_acquisition.models import AcquisitionPolicy
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
@@ -53,7 +53,6 @@ from edgar_sec.pipelines.document_acquisition.plan_projection.project import (
 from edgar_sec.pipelines.document_acquisition.runner import execute_acquisition_run
 from edgar_sec.pipelines.document_acquisition.run_state.store import get_target_state
 from edgar_sec.pipelines.document_acquisition.schemas import (
-    RECEIPT_SCHEMA_VERSION,
     target_plan_bundle_schema_version,
     target_plan_matcher_version,
 )
@@ -88,6 +87,9 @@ from tests.pipelines.document_acquisition.plan_projection.plan_fixture import (
     write_plan_bundle,
 )
 from tests.support import fixture_path, load_fixture
+from tests.pipelines.document_acquisition.fixture_store.fixture_helpers import (
+    create_test_fixture_for_run,
+)
 
 _ACCESSION = "0000320193-20-000096"
 _ACCESSION_COMPACT = _ACCESSION.replace("-", "")
@@ -236,7 +238,7 @@ class _FixtureReplayTransport:
         assert digest is not None
         path = Path(destination)
         with path.open("xb") as output:
-            response = replay_fixture_response(
+            response = _write_verified_response_body(
                 self.paths, self.fixture_id, digest, output
             )
         assert response.byte_size <= max_response_bytes
@@ -302,7 +304,7 @@ def test_offline_projection_fixture_replay_preserves_selected_body_handoff(
             (source_state.target_id,),
         ).fetchone()[0]
 
-    create_fixture(_FIXTURE_ID, paths=source_paths)
+    create_test_fixture_for_run(source_paths, _FIXTURE_ID, source_projection.run_id)
     captured = capture_fixture_case(
         _FIXTURE_ID,
         source_projection.run_id,
@@ -319,9 +321,9 @@ def test_offline_projection_fixture_replay_preserves_selected_body_handoff(
     )
     with sqlite3.connect(source_paths.fixture_database_path(_FIXTURE_ID)) as db:
         fixture_db_version = db.execute("PRAGMA user_version").fetchone()[0]
-    assert FIXTURE_SCHEMA_VERSION == 3
-    assert fixture_manifest["details"]["store_schema_version"] == 3
-    assert fixture_db_version == 3
+    assert FIXTURE_SCHEMA_VERSION == 1
+    assert fixture_manifest["details"]["store_schema_version"] == 1
+    assert fixture_db_version == 1
     assert fixture_case.response_sha256 == fixture_case.selected_sha256
     assert fixture_case.index_response_sha256 is None
     assert fixture_case.selected_response_sha256 is None
@@ -330,15 +332,15 @@ def test_offline_projection_fixture_replay_preserves_selected_body_handoff(
     standalone_replay_root = tmp_path / "standalone-replay"
     standalone_replay_root.mkdir()
     standalone_output = standalone_replay_root / "selected.html"
-    replay = replay_fixture_case(
+    materialized = _materialize_fixture_case(
         _FIXTURE_ID,
         captured.capture_id,
         source_state.target_id,
         standalone_output,
         paths=source_paths,
     )
-    assert replay.output_path == standalone_output
-    assert replay.selected_sha256 == hashlib.sha256(_SELECTED_BODY).hexdigest()
+    assert materialized.output_path == standalone_output
+    assert materialized.selected_sha256 == hashlib.sha256(_SELECTED_BODY).hexdigest()
     assert standalone_output.read_bytes() == _SELECTED_BODY
 
     replay_root = tmp_path / "replay-artifacts"
@@ -400,22 +402,21 @@ def test_offline_projection_fixture_replay_preserves_selected_body_handoff(
             fake_consumer_size += len(chunk)
     assert fake_consumer_digest.hexdigest() == fake_consumer_ref.sha256
     assert fake_consumer_size == fake_consumer_ref.byte_size
-    fake_receipt = {
-        "receipt_schema_version": RECEIPT_SCHEMA_VERSION,
-        "run_id": fake_consumer_ref.run_id,
-        "target_id": fake_consumer_ref.target_id,
-        "source_response_sha256": fake_consumer_ref.source_response_sha256,
-        "selected_sha256": fake_consumer_ref.sha256,
-        "processing_run_id": "fake-consumer-1",
-        "consumed_at_utc": "2026-10-10T21:00:00Z",
-    }
-    recorded_receipt = record_body_consumption_receipt(replay_paths, fake_receipt)
-    assert recorded_receipt == fake_receipt
-    assert (
-        read_body_consumption_receipt(
-            replay_paths, replay_projection.run_id, source_state.target_id
-        )
-        == fake_receipt
+    receipt_before = read_body_consumption_receipt(
+        replay_paths, replay_projection.run_id, source_state.target_id
+    )
+    assert receipt_before is not None
+    processing_result = json.loads(
+        (
+            replay_paths.run_staging_root(replay_projection.run_id)
+            / "processing"
+            / f"{source_state.target_id}.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert receipt_before["processing_run_id"] == processing_result["processing_id"]
+    assert receipt_before["selected_sha256"] == fake_consumer_ref.sha256
+    assert receipt_before["source_response_sha256"] == (
+        fake_consumer_ref.source_response_sha256
     )
     cleanup_transport = _SyntheticTransport({})
     cleanup_report = execute_acquisition_run(
@@ -434,7 +435,7 @@ def test_offline_projection_fixture_replay_preserves_selected_body_handoff(
         read_body_consumption_receipt(
             replay_paths, replay_projection.run_id, source_state.target_id
         )
-        == fake_receipt
+        == receipt_before
     )
 
     assert (
@@ -659,7 +660,15 @@ def test_prepublication_vertical_acceptance_stays_offline_and_raw_only(
         ).fetchone()[0]
 
     fixture_id = "s12-prepublication-acceptance"
-    create_fixture(fixture_id, paths=acquisition_paths)
+    create_fixture(
+        fixture_id,
+        FixturePlanPin(
+            target_plan_id=target_plan.plan_id,
+            target_plan_digest=target_plan.manifest["plan_digest"],
+            target_plan_schema_version=target_plan.manifest["target_schema_version"],
+        ),
+        paths=acquisition_paths,
+    )
     captured = capture_fixture_case(
         fixture_id,
         projection.run_id,
@@ -675,21 +684,9 @@ def test_prepublication_vertical_acceptance_stays_offline_and_raw_only(
     assert fixture_case.response_sha256 == selected_digest
     assert fixture_case.selected_sha256 == selected_digest
 
-    assert (
-        acquisition_cli.main(
-            [
-                "process",
-                "--run-id",
-                projection.run_id,
-                "--artifacts",
-                str(artifacts_root),
-                "--json",
-            ]
-        )
-        == 0
-    )
-    processing_summary = json.loads(capsys.readouterr().out)
-    assert processing_summary["success"]
+    assert acquisition_report.processing_complete
+    assert acquisition_report.processing_success
+    assert acquisition_report.processing_operation_counts["available"] == 1
     result_path = (
         acquisition_paths.run_staging_root(projection.run_id)
         / "processing"

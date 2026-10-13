@@ -11,7 +11,6 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.domain.identity import AccessionNumber
-from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.domain.document.path_facts import DocumentPathFacts
 from edgar_sec.domain.sec_urls import validate_archive_url
 from edgar_sec.foundation.hashing import file_sha256
@@ -26,7 +25,6 @@ from edgar_sec.pipelines.document_acquisition.body_handoff import (
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.capture import (
     capture_fixture_case,
-    create_fixture,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
     get_fixture_case,
@@ -41,8 +39,6 @@ from edgar_sec.pipelines.document_acquisition.processing.worker import (
     process_target,
 )
 from edgar_sec.pipelines.document_acquisition.processing.io import (
-    ProcessingBudgetPolicy,
-    ProcessingBudgetRegistry,
     expected_operation_pins,
 )
 from edgar_sec.pipelines.document_acquisition.processing.models import (
@@ -53,6 +49,7 @@ from edgar_sec.pipelines.document_acquisition.review_artifacts.builder import (
     build_processing_review_artifact,
     build_review_artifacts,
 )
+import edgar_sec.pipelines.document_acquisition.review_artifacts.builder as review_builder
 from edgar_sec.pipelines.document_acquisition.review_artifacts.result_projection import (
     project_terminal_results,
 )
@@ -66,6 +63,9 @@ from tests.pipelines.document_acquisition.test_offline_acceptance import (
     _SyntheticTransport,
     _TARGET_URL,
     _write_pinned_plan,
+)
+from tests.pipelines.document_acquisition.fixture_store.fixture_helpers import (
+    create_test_fixture_for_run,
 )
 
 _BODY = b"Captured direct text body\n"
@@ -119,7 +119,7 @@ def _captured_text_fixture(
         source_paths.run_state_path(source_projection.run_id), target["target_id"]
     )
     assert source_state is not None and source_state.last_attempt_id is not None
-    create_fixture(_FIXTURE_ID, paths=source_paths)
+    create_test_fixture_for_run(source_paths, _FIXTURE_ID, source_projection.run_id)
     captured = capture_fixture_case(
         _FIXTURE_ID,
         source_projection.run_id,
@@ -276,39 +276,19 @@ def _pin_request_operations(request, path_facts):
     return replace(request, operations=(raw, text, xml))
 
 
-def _test_budget_registry() -> ProcessingBudgetRegistry:
-    from edgar_sec.engine.document_processing.capabilities import get_capability
-
-    descriptor = get_capability("normalize_document")
-    assert descriptor is not None
-    return ProcessingBudgetRegistry(
-        (
-            ProcessingBudgetPolicy(
-                budget_version="review-test-v1",
-                route=DocumentRoute.TEXT,
-                handler_id="normalize_document",
-                handler_version=descriptor.handler_version,
-                max_input_bytes=256,
-                max_output_bytes=512,
-                working_set_reservation_bytes=512,
-            ),
-        )
+def _review_request_result(paths, fixture_case):
+    request = review_builder._request_for_case(fixture_case, paths=paths)
+    result = review_builder._reuse_run_processing_result(
+        fixture_case, request, paths=paths
     )
+    return request, result
 
 
-def _process_with_test_budget(request, **kwargs):
-    return process_target(request, budget_registry=_test_budget_registry(), **kwargs)
-
-
-def test_captured_text_fixture_processes_and_builds_reproducible_review(
+def test_captured_fixture_review_reuses_processing_result(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    _, paths, run_id, fixture_case, target = _captured_text_fixture(
-        tmp_path, monkeypatch
-    )
-    request = _processing_request(paths, run_id, fixture_case, target)
-
-    result = _process_with_test_budget(request, paths=paths)
+    _, paths, run_id, fixture_case, _ = _captured_text_fixture(tmp_path, monkeypatch)
+    request, result = _review_request_result(paths, fixture_case)
     receipt = read_body_consumption_receipt(paths, run_id, request.target_id)
     assert result.route.value == "text"
     assert receipt is not None
@@ -322,20 +302,24 @@ def test_captured_text_fixture_processes_and_builds_reproducible_review(
         ) as repeated_projection:
             assert projection.fingerprint == repeated_projection.fingerprint
         projected = next(projection.iter_targets())
-        assert {item.operation_id for item in projected.operations} == {
-            "raw",
-            "text",
-            "xml",
+        operation_names = {
+            item.operation_id: item.operation for item in request.operations
         }
-        assert {item.status for item in projected.operations} == {
+        projected_operations = {
+            operation_names[projected_operation.operation_id]: projected_operation
+            for projected_operation in projected.operations
+        }
+        assert set(projected_operations) == {"raw", "render_to_txt", "render_to_xml"}
+        assert {item.status for item in projected_operations.values()} == {
             "available",
-            "unsupported",
+            "not_requested",
         }
-        assert projected.operations[0].staged_output_path
+        assert projected_operations["raw"].staged_output_path
         assert (
-            projected.operations[0].output_sha256 == hashlib.sha256(_BODY).hexdigest()
+            projected_operations["raw"].output_sha256
+            == hashlib.sha256(_BODY).hexdigest()
         )
-        for operation in projected.operations:
+        for operation in projected_operations.values():
             if operation.staged_output_path is not None:
                 staged_path = paths.run_dir(run_id) / operation.staged_output_path
                 assert staged_path.is_relative_to(paths.run_staging_root(run_id))
@@ -366,16 +350,19 @@ def test_captured_text_fixture_processes_and_builds_reproducible_review(
             run_id, request.target_id, request.body.sha256
         )
         assert saved["receipt"]["sha256"] == file_sha256(receipt_path)
-        assert [item["status"] for item in saved["processing"]["operations"]] == [
-            "available",
-            "available",
-            "unsupported",
-        ]
-        text_operation = saved["processing"]["operations"][1]
-        assert text_operation["handler_id"] == "normalize_document"
-        assert text_operation["handler_version"] == "1"
-        text_path = paths.run_dir(run_id) / text_operation["staged_output_path"]
-        assert text_operation["output_sha256"] == file_sha256(text_path)
+        saved_operations = {
+            item["operation"]: item for item in saved["processing"]["operations"]
+        }
+        assert {
+            operation: item["status"] for operation, item in saved_operations.items()
+        } == {
+            "raw": "available",
+            "render_to_txt": "not_requested",
+            "render_to_xml": "not_requested",
+        }
+        text_operation = saved_operations["render_to_txt"]
+        assert text_operation["status"] == "not_requested"
+        assert text_operation.get("staged_output_path") is None
 
         before = artifact.path.read_bytes()
         repeated = build_processing_review_artifact(
@@ -390,16 +377,14 @@ def test_captured_text_fixture_processes_and_builds_reproducible_review(
         assert repeated.path.read_bytes() == before
 
 
-def test_numbered_direct_child_fixture_replays_through_processing(
+def test_numbered_direct_child_review_uses_pinned_document_path(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     target_url = f"{_ARCHIVE_ROOT}{_ACCESSION}-0001.txt"
-    _, paths, run_id, fixture_case, target = _captured_text_fixture(
+    _, paths, run_id, fixture_case, _ = _captured_text_fixture(
         tmp_path, monkeypatch, target_url=target_url
     )
-    request = _processing_request(paths, run_id, fixture_case, target)
-
-    result = _process_with_test_budget(request, paths=paths)
+    request, result = _review_request_result(paths, fixture_case)
     with project_terminal_results(
         (request,), (result,), paths=paths, run_id=run_id
     ) as projection:
@@ -410,18 +395,17 @@ def test_numbered_direct_child_fixture_replays_through_processing(
         assert projected.source_sha256 == fixture_case.selected_sha256
 
 
-def test_bundle_selected_filename_crosses_processing_and_projection(
+def test_bundle_selected_filename_is_preserved_in_review(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    _, paths, run_id, fixture_case, target = _captured_text_fixture(
+    _, paths, run_id, fixture_case, _ = _captured_text_fixture(
         tmp_path, monkeypatch, bundle_child=True
     )
-    request = _processing_request(paths, run_id, fixture_case, target)
+    request, result = _review_request_result(paths, fixture_case)
 
     assert fixture_case.selected_filename == "primary-filing.txt"
     assert request.body.selected_filename == fixture_case.selected_filename
     assert request.selected_filename == fixture_case.selected_filename
-    result = _process_with_test_budget(request, paths=paths)
     assert result.route.value == "text"
     assert result.effective_path == fixture_case.selected_filename
     assert read_body_consumption_receipt(paths, run_id, request.target_id) is not None
@@ -460,7 +444,7 @@ def test_bundle_filename_routes_binary_and_unrecognized_bodies(
     filename: str,
     route: str,
 ) -> None:
-    _, paths, run_id, fixture_case, target = _captured_text_fixture(
+    _, paths, run_id, fixture_case, _ = _captured_text_fixture(
         tmp_path,
         monkeypatch,
         bundle_child=True,
@@ -469,13 +453,17 @@ def test_bundle_filename_routes_binary_and_unrecognized_bodies(
         if filename.endswith(".pdf")
         else _BODY,
     )
-    request = _processing_request(paths, run_id, fixture_case, target)
-    result = _process_with_test_budget(request, paths=paths)
+    request, result = _review_request_result(paths, fixture_case)
 
     assert request.selected_filename == filename
     assert result.route.value == route
-    assert result.operation_results[0].status == "available"
-    assert result.operation_results[1].status == "unsupported"
+    operation_names = {item.operation_id: item.operation for item in request.operations}
+    result_by_operation = {
+        operation_names[result_operation.operation_id]: result_operation
+        for result_operation in result.operation_results
+    }
+    assert result_by_operation["raw"].status == "available"
+    assert result_by_operation["render_to_txt"].status == "not_requested"
 
     with project_terminal_results(
         (request,), (result,), paths=paths, run_id=run_id
@@ -488,13 +476,17 @@ def test_bundle_filename_routes_binary_and_unrecognized_bodies(
 def test_review_builder_uses_shared_manifest_and_case_layout(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    source_paths, _, _, fixture_case, _ = _captured_text_fixture(tmp_path, monkeypatch)
+    _, paths, _, fixture_case, _ = _captured_text_fixture(tmp_path, monkeypatch)
     output = tmp_path / "review-run"
+    receipt_path = paths.body_consumption_receipt_path(
+        fixture_case.run_id, fixture_case.target_id, fixture_case.selected_sha256
+    )
+    receipt_before = json.loads(receipt_path.read_text(encoding="utf-8"))
 
     result = build_review_artifacts(
         _FIXTURE_ID,
         output,
-        paths=source_paths,
+        paths=paths,
         capture_id=fixture_case.capture_id,
         target_id=fixture_case.target_id,
         workers=1,
@@ -512,6 +504,7 @@ def test_review_builder_uses_shared_manifest_and_case_layout(
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     assert artifact["fixture"]["selected_sha256"] == fixture_case.selected_sha256
     assert artifact["family_profile"]["version"] == "v1"
+    assert json.loads(receipt_path.read_text(encoding="utf-8")) == receipt_before
     operations = {
         item["operation"]: item for item in artifact["processing"]["operations"]
     }
@@ -519,6 +512,12 @@ def test_review_builder_uses_shared_manifest_and_case_layout(
     assert operations["raw"]["handler_id"] == "raw_identity"
     assert operations["render_to_txt"]["capability_id"] in {None, "text.markup"}
     assert operations["render_to_xml"]["support_status"] == "not_evaluated"
+
+    from edgar_sec.pipelines.document_acquisition.review_artifacts.analyzer import (
+        analyze_review_run,
+    )
+
+    assert analyze_review_run(output)["case_status_counts"] == {"complete": 1}
 
 
 def test_review_builder_rejects_tampered_fixture_request_identity(

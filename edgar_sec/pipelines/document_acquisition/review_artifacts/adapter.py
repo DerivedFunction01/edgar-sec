@@ -11,12 +11,8 @@ from edgar_sec.foundation.runtime.paths import resolve_paths
 from edgar_sec.infra.storage.review.adapter import ReviewArtifactAdapter
 from edgar_sec.infra.storage.review.diff import diff_json
 from edgar_sec.infra.storage.review.models import CaseDiff
-from edgar_sec.pipelines.document_acquisition.commands.review import (
-    cmd_review_artifacts,
-)
 from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
-    list_fixture_cases,
-    list_fixtures,
+    list_fixture_summaries,
 )
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 from edgar_sec.pipelines.document_acquisition.review_artifacts.builder import (
@@ -41,10 +37,15 @@ class AcquisitionReviewAdapter(ReviewArtifactAdapter):
         paths = resolve_acquisition_paths(artifacts_root=root)
         return [
             {
-                "fixture_id": fixture_id,
-                "case_count": len(list_fixture_cases(paths, fixture_id=fixture_id)),
+                "fixture_id": item.fixture_id,
+                "target_plan_id": item.target_plan_id,
+                "target_plan_digest": item.target_plan_digest,
+                "target_plan_schema_version": item.target_plan_schema_version,
+                "capture_count": item.capture_count,
+                "case_count": item.case_count,
+                "acquisition_status_counts": dict(item.acquisition_status_counts),
             }
-            for fixture_id in list_fixtures(paths)
+            for item in list_fixture_summaries(paths)
         ]
 
     def build_review_artifacts(
@@ -72,7 +73,13 @@ class AcquisitionReviewAdapter(ReviewArtifactAdapter):
             json=json_output,
             no_progress=no_progress,
         )
-        command = _get_cli_dep("cmd_review_artifacts", cmd_review_artifacts)
+        command = _get_cli_dep("cmd_review_artifacts", None)
+        if command is None:
+            from edgar_sec.pipelines.document_acquisition.commands.review import (
+                cmd_review_artifacts,
+            )
+
+            command = cmd_review_artifacts
         return int(command(args))
 
     def compare_case(

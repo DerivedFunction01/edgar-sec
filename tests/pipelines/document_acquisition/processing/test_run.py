@@ -13,7 +13,10 @@ import pytest
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.sec_http.client import SecHttpClient
-from edgar_sec.pipelines.document_acquisition.processing import run as processing_run
+from edgar_sec.pipelines.document_acquisition.processing import (
+    run as processing_run,
+    work_order,
+)
 from edgar_sec.pipelines.document_acquisition.body_handoff import get_staged_body_ref
 from edgar_sec.pipelines.document_acquisition.models import (
     AcquisitionAttempt,
@@ -115,7 +118,7 @@ def _acquired_request(tmp_path: Path) -> tuple[AcquisitionPaths, ProcessingReque
         selected_filename=body_ref.selected_filename,
         source_origin=target["source_origin"],
         body=body_ref,
-        operations=processing_run._operation_requests(operations),
+        operations=work_order.operation_requests(operations),
     )
 
 
@@ -504,7 +507,7 @@ def test_raw_body_manifest_and_retry_validation_never_read_or_hash_selected_body
             output_kind=output_kind,
         )
     rows = tuple(resolved_rows)
-    request = replace(original, operations=processing_run._operation_requests(rows))
+    request = replace(original, operations=work_order.operation_requests(rows))
     processing_id = canonical_hash([run_id, request.target_id, "budget-refusal"])
     derived_path = paths.run_staging_root(run_id) / "derived" / "partial.xml"
     derived_path.parent.mkdir(parents=True, exist_ok=True)
@@ -660,7 +663,7 @@ def test_unsupported_default_candidate_is_preserved_as_a_resolved_request() -> N
         for operation in ("raw", "render_to_txt", "render_to_xml")
     )
 
-    projected = processing_run._operation_requests(rows)
+    projected = work_order.operation_requests(rows)
 
     assert projected[2].requested is True
     assert projected[2].support_status == "unsupported"

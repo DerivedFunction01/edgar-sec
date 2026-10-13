@@ -214,7 +214,9 @@ def _effective_route(
             raise ProcessingError("acquired attempt URL differs from work order")
         route_url = str(row["target_url"])
     if retrieval_mode == "direct_url" and committed_filename is not None:
-        raise ProcessingError("direct target has an unexpected selected filename")
+        selected_basename = route_url.rsplit("/", 1)[-1]
+        if resolution is None or committed_filename != selected_basename:
+            raise ProcessingError("direct target has an unexpected selected filename")
     try:
         selected = validate_archive_url(route_url, request.accession)
         if selected_attempt.final_url is not None:

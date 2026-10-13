@@ -2,11 +2,11 @@
 
 ## Purpose and status
 
-This is the interactive flow shared by the acquisition command group. Project, status,
-run, process, fixture create/fill/list/replay, and review generate/compare dispatch to
-CLI services. Review is implemented only for the limited S9/S10 fixture slice. Publish
-fails closed on the S11 gate; snapshot status and review evidence audit remain
-placeholders. Wiring is covered by
+This is the interactive flow shared by the S9 command group. Project, status, combined
+run/process, plan-pinned fixture create/fill/list, and review generate/compare/analyze
+dispatch to CLI services. Review is implemented only for the limited S9/S10 fixture
+slice. A run processes acquired targets under the acquisition run lock. Wiring is
+covered by
 [`operator.py`](../../../../edgar_sec/pipelines/document_acquisition/operator.py),
 [`test_operator.py`](../../../../tests/pipelines/document_acquisition/test_operator.py),
 [`test_review.py`](../../../../tests/pipelines/document_acquisition/commands/test_review.py),
@@ -34,36 +34,35 @@ distribution adapter or full snapshot DAG console.
 Document Acquisition
   1. Project a target plan into an acquisition run
   2. Inspect acquisition runs
-  3. Run acquisition (live SEC; confirmation required)
-  4. Process acquired targets
+  3. Run acquisition and process acquired targets (live SEC; confirmation required)
   p. Snapshot console (publish, status; S11 gate)
-  f. Fixtures and review console (fixtures, review, evidence audit)
+  f. Fixtures and review console (create, fill, list, generate, compare, analyze)
   0. Exit
 ```
 
 Project prompts for a published plan ID and delegates to the offline project service.
-Status delegates read-only run inspection. Run is wired to acquisition and separately
-confirms live SEC access, defaulting to no; retry selection is a distinct prompt.
-Processing dispatches run-level `process --run-id` and defaults retry selection to no.
-The snapshot console groups publish and status; both remain behind the S11 gate. The
-keyed fixture/review console contains create, fill, list, replay, generate, compare,
-and the S9/S10 evidence-audit placeholder. Review generate/compare are wired for the
-limited S9/S10 fixture slice. Publish returns a gate-blocked result and does not create
-parts, manifests, or pointers; snapshot status and review audit remain fail-closed.
+Status delegates read-only run inspection. Run acquires eligible targets, then processes
+acquired targets under one run lock; it confirms live SEC access, defaulting to no, and
+separately prompts whether to retry eligible acquisition and processing failures.
+The keyed fixture/review console selects an active published plan, creates and fills
+plan-pinned fixtures, lists fixtures, generates review artifacts, compares runs, and
+analyzes review runs offline. Fixture fill confirms before retaining local evidence;
+there is no public replay/export action. Review generation remains limited to the
+S9/S10 fixture slice.
+Publish returns a gate-blocked result and does not create parts, manifests, or pointers.
 The CLI routing and per-target processing are covered by
 [`cli.py`](../../../../edgar_sec/pipelines/document_acquisition/cli.py),
 [`test_cli.py`](../../../../tests/pipelines/document_acquisition/test_cli.py), and
-[`test_process_cli_integration.py`](../../../../tests/pipelines/document_acquisition/test_process_cli_integration.py),
+[`test_run_processing_integration.py`](../../../../tests/pipelines/document_acquisition/test_run_processing_integration.py),
 and [`processing/test_worker.py`](../../../../tests/pipelines/document_acquisition/processing/test_worker.py).
 
 ## Deferred UX extensions
 
-### Plan selection
+### Active S6 plan
 
-List validated plans by ID and summary; after selection, show input digest, catalog
-and optional inventory pins, S6 schema versions, and executable/skipped counts.
-Projection is offline, so no SEC prompt appears. A reused run is identified as such;
-invalid plans return to the menu with no run created.
+The fixture/review console lists fully validated published S6 plans by stable ID, target
+row count, and digest. Plan selection is session-local and switchable. Fixture creation
+uses the active plan pin; switching plans never changes existing fixtures.
 
 ### Status detail
 
@@ -81,10 +80,11 @@ them without retry. `Ctrl-C` stops scheduling, commits already completed outcome
 and leaves remaining work resumable. A noninteractive CLI run is an explicit network
 action; no confirmation flag is required.
 
-### Process and publish
+### Run and publish
 
-Process selects acquired targets only and is offline; it does not request another
-document. Publish is disabled until every work-order row has a terminal disposition
+Run uses network access only for eligible acquisition work; processing is performed
+offline for acquired targets before the run lock is released. The run report includes
+both acquisition and processing results. Publish is disabled until every work-order row has a terminal disposition
 and every acquired target has a processing result. It previews incomplete/error states
 and requires explicit `--allow-errors` consent before publishing such a run. A failed
 publication leaves the run resumable and the active snapshot pointer unchanged.
@@ -97,24 +97,25 @@ registered in the acquisition menu or CLI. SEC rate limits remain host-local und
 each machine's configured settings/environment; cross-host coordination and checks
 are out of scope and no aggregate limit is implied.
 
-### Fixture actions
+### Fixture and review actions
 
-Create requires a new fixture ID and refuses an existing ID. Capture requires fixture,
-run, target, exact attempt, and a positive byte cap; after collecting them, the operator
-requires default-no confirmation before retaining local evidence. Listing is read-only
-with optional fixture/capture/target filters and does not select, decompress, or hash
-response BLOBs; opening a fixture still validates SQLite integrity. Replay
-requires exact fixture/capture/target IDs and a caller-selected output path, then asks a
-default-no confirmation before writing. It makes no HTTP request and does not print
-document bytes. A metadata-only failure creates no output file.
+Create requires a new fixture ID and the active S6 plan. Fill is available only for a
+fixture pinned to that active plan and requires exact run, target, and retained attempt
+IDs plus a positive byte cap. It shows these values before a default-no consent prompt;
+declining performs no append. Listing reports plan pins, capture/case counts, and
+acquisition statuses in deterministic order without reading response BLOBs. No
+user-facing replay/export action exists.
 
-Replay output is a caller-owned file, not managed S10 staging. There is no durable
-replay staging, consumption receipt, or S10 handoff API. Capture supports successful
-direct bodies, bodyless failed attempts, bundle responses, and complete lazy-index
-response groups when the run used opt-in `--retain-response-evidence`. Without that
-option, required bundle/lazy response-group members may not be retained and capture
-refuses incomplete evidence. Opt-in capture and replay are covered by
-[`fixture_store/test_capture.py`](../../../../tests/pipelines/document_acquisition/fixture_store/test_capture.py).
+Review generation chooses an active-plan fixture and optional capture/target filters. It
+verifies the selected fixture body in temporary storage, validates its associated S9 run
+and pinned work order, then reviews the staged run body through operation pins.
+Comparison selects validated runs and uses the shared case-level diff. Analysis
+validates review manifests and per-case output digests, reports fixture-verification
+and operation outcomes, and does not mutate review or fixture inputs. Review actions are
+offline with no confirmation checkpoint. Tests are in
+[`test_operator.py`](../../../../tests/pipelines/document_acquisition/test_operator.py),
+[`fixture_store/test_capture.py`](../../../../tests/pipelines/document_acquisition/fixture_store/test_capture.py),
+and [`review_artifacts/test_analyzer.py`](../../../../tests/pipelines/document_acquisition/review_artifacts/test_analyzer.py).
 
 ### Snapshot console
 
@@ -135,7 +136,7 @@ error formatting and exit-code mapping in both entry modes. The legacy
 `document_storage` command surface is retired. Fixture evidence does not satisfy the
 representative S9/S10 evidence and approval required to enable S11 publication.
 
-Tests cover menu transitions, default-no live-network/capture/replay confirmations,
+Tests cover menu transitions, default-no live-network/fill confirmations,
 retry confirmation separation, EOF/Ctrl-C behavior, and command delegation. M7b runner
 and retry/isolation coverage is complete; cleanup remains explicitly gated, because a
 receipt or rerun does not authorize deletion. See

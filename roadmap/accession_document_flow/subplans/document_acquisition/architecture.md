@@ -2,18 +2,18 @@
 
 ## Purpose and status
 
-This document fixes the cross-command boundaries for the partial S9 implementation.
+This document fixes the cross-command boundaries for S9 and its integrated S10 run.
 The code includes the S6 v2 target-plan producer, bounded S9 work-order projection,
 offline run projection/state, compressed SQLite fixture storage, file-backed HTTP and
 broker streaming, bounded exact-sequence extraction, and an integrated serial S9
-runner with catalog-direct lazy-index selection. The current catalog-direct screen is
+runner with catalog-direct lazy-index selection and per-target S10 processing under the
+same run lock. The current catalog-direct screen is
 recorded as unverifiable on the direct-body path. The catalog-direct exact-form selector
 checks primary-bundle `<TYPE>` with strict ASCII equality; mismatch or unverifiable type
 enters lazy recovery, and recovered bundle candidates are checked again. Other selectors
-do not screen the submitted primary. HTML/cover screening is absent. Fixture
-capture/replay command flows
-are incomplete. S10
-processing and S11 publication remain gated. The integrated sequence is specified in
+do not screen the submitted primary. HTML/cover screening is absent. Plan-pinned fixture
+capture and offline review generation are wired; the fixture console has no public raw
+body replay/export action. S11 publication remains gated. The integrated sequence is specified in
 [the lifecycle plan](lifecycle.md); command-level UX flows belong to the linked
 command documents.
 
@@ -49,9 +49,9 @@ command documents.
   `raw: bool`.
 - The pipeline may depend downward on `domain`, `engine`, `infra`, and `foundation`.
   It does not import `pipelines.document_storage` or make an upper layer own S9 state.
-- The only S6 contract imports are direct, unaliased imports from
-  `document_planning.paths` and `document_planning.schemas`. S9 validates the pinned
-  bundle itself; it does not import the S6 planner, discovery, or matching services.
+- The only cross-pipeline S6 contract imports are owner `paths.py` and `schemas.py`
+  modules. The acquisition paths owner exposes validated plan discovery and reads;
+  acquisition does not import the planner or discovery implementation directly.
 - Large-body streaming belongs in the shared SEC HTTP/broker path, and bounded SGML
   extraction belongs in `engine.document.unpacking`; both are integrated by the S9
   runner. S9 validates targets, owns run state, and composes those lower-layer APIs.
@@ -84,14 +84,14 @@ The package should remain split by contract rather than by command spelling alon
 | `plan_projection/` | Validate the S6 v2 bundle and project it into an immutable S9 work order without reopening upstream inputs. |
 | `run_state/` | Create and validate per-run SQLite state, append attempts, apply outcomes, and summarize status. |
 | `plan_projection/project.py` | Derive a deterministic transient run from the pinned S6 plan without network access. |
-| `runner.py` | Implemented serial runner: lock a run, execute eligible targets, and preserve committed results. |
+| `runner.py` | Lock one run, acquire eligible targets, process acquired targets, and preserve both outcomes before releasing the lock. |
 | `distribution_adapter.py` | Adapt acquisition work and outputs to shared distribution infrastructure. |
 | `snapshot/` | **Gated** acquisition-owned binary/text Parquet relations and publication over the shared DAG kernel; no S11 adapter exists yet. |
-| `fixture_store/` and `fixture_operator.py` | Store and discover Zstandard-compressed response evidence; wire exact-attempt capture, read-only listing, and local replay for retained direct bodies and bodyless failures. Bundle/lazy capture and managed S10 replay staging remain incomplete. |
-| `processing/` | Partial S10 processing worker, IO, models, and run coordination with family-operation validation, raw/TEXT passthrough, and receipt recording. |
+| `fixture_store/` and `operator.py` | Store plan-pinned Zstandard response evidence; wire exact-attempt fill, deterministic listing, internal body verification, and fixture/review actions. No public replay/export action or legacy reader exists. |
+| `processing/` | S10 worker, IO, models, per-target result persistence, and integrated run coordination with family-operation validation, raw/TEXT routes, and receipt recording. |
 | `project/models.py` | Streamed terminal processing result projection models used by review. |
-| `review_artifacts/` | Fixture-backed processing review generation, acquisition review adapter, and shared review-run manifest/case layout. |
-| `cli.py` and `operator.py` | Project/run, fixture create/fill/list/replay, review generate/compare, and S11-gated publish surfaces. Run-level processing and publication remain incomplete. |
+| `review_artifacts/` | Verify fixture bodies, reuse the source run's S10 result, and write/compare/analyze offline review runs in the shared manifest/case layout. |
+| `cli.py` and `operator.py` | Project/status, combined acquisition/process run, plan-pinned fixture create/fill/list, review generate/compare/analyze, and separate snapshot surfaces. |
 
 No `__init__.py` barrel exports. Module names are a design proposal; implementation
 may consolidate small command adapters, but it must retain these ownership boundaries

@@ -293,7 +293,6 @@ acquisition project --target-plan <id> --branch <name> [--max-response-bytes <by
 acquisition project --target-plan <id> --branch <name> --fixture <fixture-id>
 acquisition status --run-id <id>
 acquisition run --run-id <id> [--retry-failures]
-acquisition process --run-id <id> [--retry-failures]
 acquisition publish --run-id <id> [--branch <name>] [--allow-errors]
 acquisition query --snapshot <id|current> [target/slot filters]
 acquisition fixture create|fill|list|replay ...
@@ -302,8 +301,9 @@ acquisition distrib export|worker|import ...   # planned; common CLI uses --work
 
 Project resolves and pins the chosen branch tip, chunk size, acquisition byte ceiling,
 and input source mode; `--fixture` pins fixture replay instead of live SEC fallback.
-The interactive operator shows Project, Status, Run, Process, and Publish as distinct
-actions. Run requires explicit network authorization; Process and Publish are local.
+The interactive operator shows Project, Status, combined Run/Process, and Publish.
+Run requires explicit network authorization for acquisition, then processes each
+acquired target under the same run lock; processing itself is offline.
 Publish must target the pinned branch and compare-and-swap the pinned base; a stale tip
 requires re-projecting against the new parent.
 Publish previews target outcome counts, error classes, parent snapshot, and payload

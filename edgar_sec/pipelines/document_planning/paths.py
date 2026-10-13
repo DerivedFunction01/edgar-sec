@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Protocol
+from typing import Any, Protocol
 
 from edgar_sec.foundation.runtime.paths import (
     PLAN_FILE_NAME,
@@ -38,6 +38,20 @@ class CatalogPaths(Protocol):
     def plans_root(self) -> Path: ...
 
     def plan_dir(self, plan_id: str) -> Path: ...
+
+
+@dataclass(frozen=True, slots=True)
+class PublishedDocumentPlan:
+    plan_id: str
+    root: Path
+    manifest: dict[str, Any]
+
+
+@dataclass(frozen=True, slots=True)
+class DiscoveredDocumentPlan:
+    plan_id: str
+    plan: PublishedDocumentPlan | None
+    error: str | None
 
 
 def resolve_catalog_paths(
@@ -128,9 +142,22 @@ def resolve_document_planning_paths(
     return DocumentPlanningPaths(project)
 
 
+def discover_document_plans(paths: DocumentPlanningPaths):
+    from .discovery import discover_document_plans as discover
+
+    return discover(paths)
+
+
+def read_published_plan(plan_id: str, paths: DocumentPlanningPaths | None = None):
+    from .discovery import read_published_plan as read
+
+    return read(plan_id, paths)
+
+
 __all__ = [
     "PROFILES_DIR",
     "CatalogPaths",
+    "DiscoveredDocumentPlan",
     "DocumentPlanningPaths",
     "FORM_PARTITION_GLOB",
     "PIPELINE_DIR",
@@ -146,4 +173,7 @@ __all__ = [
     "plan_target_part_path",
     "validate_catalog_plan_id",
     "validate_profile_id",
+    "PublishedDocumentPlan",
+    "discover_document_plans",
+    "read_published_plan",
 ]
