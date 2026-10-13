@@ -35,6 +35,10 @@ from edgar_sec.tools.worker_profile_inventory import (
     scope_key,
 )
 from edgar_sec.tools.worker_profile_search import (
+    adaptive_worker_candidates,
+    case_inventory_delta,
+    material_case_inventory_change,
+    next_refinement as _next_refinement,
     ordered_candidates,
     prune_higher_candidates,
     should_prune_baseline,
@@ -146,27 +150,6 @@ def _seed_workers(
     return sorted({worker for worker in seeds if worker == 0 or 2 <= worker <= ceiling})
 
 
-def adaptive_worker_candidates(
-    seeds: list[int], ceiling: int, measured: set[int] | None = None
-) -> list[int]:
-    measured = set(measured or ())
-    candidates = [*seeds, 4, 8, 16, 32, ceiling]
-    return sorted(
-        {worker for worker in candidates if worker == 0 or 2 <= worker <= ceiling}
-        - measured
-    )
-
-
-def _next_refinement(best: int, measured: set[int], ceiling: int) -> int | None:
-    lower = max((worker for worker in measured if worker < best), default=0)
-    upper = min((worker for worker in measured if worker > best), default=ceiling + 1)
-    gaps = [(best - lower, (best + lower) // 2), (upper - best, (best + upper) // 2)]
-    for gap, candidate in sorted(gaps, reverse=True):
-        if gap > 2 and 2 <= candidate <= ceiling and candidate not in measured:
-            return candidate
-    return None
-
-
 def _run_scope_probe(selectors: list[str], workers: int) -> dict[str, Any]:
     with tempfile.TemporaryDirectory(prefix="pytest-worker-probe-") as tmpdir:
         output = pathlib.Path(tmpdir) / "profile.json"
@@ -223,7 +206,11 @@ def _merge_case_timings(
         previous = records.get(nodeid, {})
         call_seconds = item.get("phases", {}).get("call")
         previous_call = previous.get("call_seconds")
-        if call_seconds is not None and previous_call is not None:
+        if (
+            previous.get("fingerprint") == fingerprints.get(test_file.as_posix(), "")
+            and call_seconds is not None
+            and previous_call is not None
+        ):
             call_seconds = min(float(call_seconds), float(previous_call))
         records[nodeid] = {
             "file": test_file.as_posix(),
@@ -293,6 +280,7 @@ def _new_profile(
         "selectors": selectors,
         "inventory_fingerprint": fingerprint,
         "cases": cases,
+        "probe_baseline_cases": {},
         "trials": {},
         "search": {"frontier": [], "best": None, "last_completed": None},
         "collect_seconds": None,
@@ -391,6 +379,7 @@ def _calibrate_scope(
     profile = _new_profile(selectors, key, inventory_fingerprint, cases)
     if prior:
         profile["trials"] = prior.get("trials", {})
+        profile["probe_baseline_cases"] = prior.get("probe_baseline_cases", {})
     profile["collect_seconds"] = collection_seconds
     ceiling = _resource_ceiling()
     model = _model_candidate(cache, len(nodeids), ceiling)
@@ -596,6 +585,15 @@ def _calibrate_scope(
         record.get("inventory_fingerprint") == inventory_fingerprint
         for record in contributing_trials
     )
+    if any(
+        record.get("status", "ok") == "ok"
+        and record.get("inventory_fingerprint") == inventory_fingerprint
+        for records in profile["trials"].values()
+        for record in records
+    ):
+        profile["probe_baseline_cases"] = {
+            nodeid: case_file(nodeid, files).as_posix() for nodeid in nodeids
+        }
     profile["updated_at"] = time.time()
     _write_profile(cache_path, key, profile)
     return profile
@@ -628,12 +626,20 @@ def select_workers(
     if fresh and profile and not recalculate:
         nodeids, _ = collect_test_nodeids(selectors)
         cases = _current_cases(nodeids, files, profile, fingerprints)
+        current_inventory = {
+            nodeid: case_file(nodeid, files).as_posix() for nodeid in nodeids
+        }
+        inventory_delta = case_inventory_delta(
+            profile.get("probe_baseline_cases", {}), current_inventory
+        )
+        material_inventory_change = material_case_inventory_change(inventory_delta)
         estimate = _adjusted_recommendation(profile, _case_work(cases))
         coverage = sum(
             not case.get("estimated", False) for case in cases.values()
         ) / max(1, len(cases))
         if (
             estimate is not None
+            and not material_inventory_change
             and coverage >= 0.8
             and all(case.get("duration") is not None for case in cases.values())
         ):

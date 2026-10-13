@@ -43,6 +43,10 @@ def _schema(con: Any) -> None:
         duration DOUBLE, call_seconds DOUBLE, setup_seconds DOUBLE, teardown_seconds DOUBLE,
         estimated BOOLEAN, observed_at DOUBLE, PRIMARY KEY (scope_key, nodeid)
     )""")
+    con.execute("""CREATE TABLE IF NOT EXISTS probe_baseline_cases (
+        scope_key VARCHAR, nodeid VARCHAR, file VARCHAR,
+        PRIMARY KEY (scope_key, nodeid)
+    )""")
     con.execute("""CREATE TABLE IF NOT EXISTS worker_trials (
         scope_key VARCHAR, worker_count INTEGER, wall_seconds DOUBLE, item_work DOUBLE,
         shared_seconds DOUBLE, inventory_fingerprint VARCHAR, status VARCHAR, reason VARCHAR,
@@ -186,6 +190,11 @@ def _profile_from_rows(con: Any, metadata: tuple[Any, ...]) -> dict[str, Any]:
             "estimated": estimated,
             "observed_at": observed,
         }
+    baseline_rows = con.execute(
+        "SELECT nodeid,file FROM probe_baseline_cases WHERE scope_key = ?",
+        [scope],
+    ).fetchall()
+    profile["probe_baseline_cases"] = {nodeid: file for nodeid, file in baseline_rows}
     trial_rows = con.execute(
         "SELECT worker_count,wall_seconds,item_work,shared_seconds,inventory_fingerprint,status,reason,source,repeat,search_order,observed_at FROM worker_trials WHERE scope_key = ? ORDER BY observed_at",
         [scope],
@@ -288,6 +297,24 @@ def write_profile(path: pathlib.Path, key: str, profile: dict[str, Any]) -> None
             )
             con.execute("INSERT INTO case_observations SELECT * FROM profile_case_rows")
             con.unregister("profile_case_rows")
+        con.execute("DELETE FROM probe_baseline_cases WHERE scope_key = ?", [key])
+        baseline_cases = profile.get("probe_baseline_cases", {})
+        if baseline_cases:
+            import pyarrow as pa
+
+            con.register(
+                "profile_baseline_rows",
+                pa.Table.from_pylist(
+                    [
+                        {"scope_key": key, "nodeid": nodeid, "file": file}
+                        for nodeid, file in baseline_cases.items()
+                    ]
+                ),
+            )
+            con.execute(
+                "INSERT INTO probe_baseline_cases SELECT * FROM profile_baseline_rows"
+            )
+            con.unregister("profile_baseline_rows")
         con.execute("DELETE FROM worker_trials WHERE scope_key = ?", [key])
         trial_rows = []
         for worker, records in profile.get("trials", {}).items():

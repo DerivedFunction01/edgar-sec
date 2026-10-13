@@ -72,6 +72,9 @@ def test_aggregate_search_prunes_serial_and_two_worker_probes(
     profile = profiles._calibrate_scope(["tests/domain"], {}, tmp_path / "workers.json")
 
     assert profile["selected_workers"] == 8
+    assert profile["probe_baseline_cases"] == {
+        nodeid: test_file.as_posix() for nodeid in nodeids
+    }
     assert 0 not in calls and 2 not in calls
     assert profile["trials"]["0"][0]["status"] == "pruned"
     assert profile["trials"]["2"][0]["status"] == "pruned"
@@ -250,14 +253,112 @@ def test_fresh_profile_cache_hit_skips_collection(monkeypatch, tmp_path: Path) -
     )
 
 
+def test_material_node_churn_reprobes_instead_of_reusing_scaled_estimate(
+    monkeypatch, tmp_path: Path
+) -> None:
+    test_file = Path("tests/domain/test_sample.py")
+    old_nodeids = [f"{test_file.as_posix()}::test_{index}" for index in range(10)]
+    current_nodeids = [*old_nodeids[:8], f"{test_file.as_posix()}::test_added_a"]
+    baseline = {nodeid: test_file.as_posix() for nodeid in old_nodeids}
+    prior = {
+        "updated_at": time.time(),
+        "selected_workers": 2,
+        "inventory_fingerprint": "old-scope",
+        "probe_baseline_cases": baseline,
+        "cases": {
+            nodeid: {
+                "file": test_file.as_posix(),
+                "folder": "domain",
+                "fingerprint": "old-file",
+                "duration": 1.0,
+                "estimated": False,
+            }
+            for nodeid in old_nodeids
+        },
+        "trials": {
+            "2": [
+                {
+                    "wall_seconds": 5.0,
+                    "item_work": 10.0,
+                    "shared_seconds": 0.0,
+                    "inventory_fingerprint": "old-scope",
+                    "status": "ok",
+                }
+            ]
+        },
+    }
+    key = scope_key([test_file.as_posix()])
+    monkeypatch.setattr(
+        profiles, "load_cache", lambda _path: {"profiles": {key: prior}}
+    )
+    monkeypatch.setattr(
+        profiles,
+        "scope_inventory",
+        lambda _selectors: (
+            [test_file],
+            "new-scope",
+            {test_file.as_posix(): "new-file"},
+        ),
+    )
+    monkeypatch.setattr(
+        profiles,
+        "collect_test_nodeids",
+        lambda _selectors: (current_nodeids, 0.01),
+    )
+    probes = []
+    monkeypatch.setattr(
+        profiles,
+        "_calibrate_scope",
+        lambda *args, **kwargs: (
+            probes.append((args, kwargs)) or {"selected_workers": 4}
+        ),
+    )
+
+    selected = profiles.select_workers(
+        [test_file.as_posix()], cache_path=tmp_path / "workers.duckdb"
+    )
+
+    assert selected == 4
+    assert probes
+
+
 def test_scope_write_preserves_unrelated_profiles(tmp_path: Path) -> None:
     cache_path = tmp_path / "workers.json"
-    profiles._write_profile(cache_path, "folder:tests/a", {"selected_workers": 2})
+    baseline = {"tests/a/test_one.py::test_one": "tests/a/test_one.py"}
+    profiles._write_profile(
+        cache_path,
+        "folder:tests/a",
+        {"selected_workers": 2, "probe_baseline_cases": baseline},
+    )
     profiles._write_profile(cache_path, "folder:tests/b", {"selected_workers": 4})
     cache = profiles.load_cache(cache_path)
     assert cache is not None
     assert cache["profiles"]["folder:tests/a"]["selected_workers"] == 2
     assert cache["profiles"]["folder:tests/b"]["selected_workers"] == 4
+    loaded = profiles.load_profiles(cache_path)["folder:tests/a"]
+    assert loaded["probe_baseline_cases"] == baseline
+
+
+def test_changed_case_fingerprint_does_not_keep_old_call_time() -> None:
+    test_file = Path("tests/domain/test_sample.py")
+    nodeid = f"{test_file.as_posix()}::test_one"
+    profile = {
+        "cases": {
+            nodeid: {
+                "fingerprint": "old",
+                "call_seconds": 1.0,
+            }
+        }
+    }
+
+    profiles._merge_case_timings(
+        profile,
+        [{"nodeid": nodeid, "duration": 3.0, "phases": {"call": 3.0}}],
+        [test_file],
+        {test_file.as_posix(): "new"},
+    )
+
+    assert profile["cases"][nodeid]["call_seconds"] == 3.0
 
 
 def test_resume_candidate_list_excludes_completed_trials() -> None:

@@ -85,3 +85,69 @@ def test_fast_policy_uses_files_as_size_hint_and_caps_worker_counts(tmp_path) ->
     assert profile_search.selector_size_hint(selectors) == 256
     assert profile_search.choose_fast_workers({}, selectors, 3)[0] == 3
     assert profile_search.choose_fast_workers({}, selectors, 2)[0] == 2
+
+
+def test_fast_policy_ignores_trials_from_another_inventory() -> None:
+    selectors = ["tests/domain/test_small.py::test_one"]
+    profile = {
+        "trials": {
+            "0": [{"wall_seconds": 10.0, "inventory_fingerprint": "old"}],
+            "2": [{"wall_seconds": 1.0, "inventory_fingerprint": "old"}],
+        }
+    }
+
+    assert profile_search.choose_fast_workers(
+        profile, selectors, 8, inventory_fingerprint="new"
+    ) == (0, "fast_baseline", "fast policy; selector size hint=1")
+    profile["trials"]["0"].append(
+        {"wall_seconds": 12.0, "inventory_fingerprint": "new"}
+    )
+    assert (
+        profile_search.choose_fast_workers(
+            profile, selectors, 8, inventory_fingerprint="new"
+        )[0]
+        == 2
+    )
+
+
+def test_case_inventory_delta_counts_per_file_churn() -> None:
+    baseline = {
+        "tests/domain/test_a.py::test_keep": "tests/domain/test_a.py",
+        "tests/domain/test_a.py::test_removed": "tests/domain/test_a.py",
+        "tests/domain/test_b.py::test_stable": "tests/domain/test_b.py",
+    }
+    current = {
+        "tests/domain/test_a.py::test_keep": "tests/domain/test_a.py",
+        "tests/domain/test_a.py::test_added": "tests/domain/test_a.py",
+        "tests/domain/test_b.py::test_stable": "tests/domain/test_b.py",
+    }
+
+    delta = profile_search.case_inventory_delta(baseline, current)
+
+    assert delta["tests/domain/test_a.py"] == {
+        "baseline": 2,
+        "current": 2,
+        "added": 1,
+        "removed": 1,
+    }
+    assert delta["tests/domain/test_b.py"] == {
+        "baseline": 1,
+        "current": 1,
+        "added": 0,
+        "removed": 0,
+    }
+    assert profile_search.material_case_inventory_change(delta)
+
+
+def test_case_inventory_delta_ignores_small_scope_churn() -> None:
+    baseline = {
+        f"tests/domain/test_a.py::test_{index}": "tests/domain/test_a.py"
+        for index in range(100)
+    }
+    current = dict(baseline)
+    del current["tests/domain/test_a.py::test_0"]
+    current["tests/domain/test_a.py::test_added"] = "tests/domain/test_a.py"
+
+    delta = profile_search.case_inventory_delta(baseline, current)
+
+    assert not profile_search.material_case_inventory_change(delta)

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import statistics
 import time
+from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
@@ -22,6 +23,27 @@ def ordered_candidates(candidates: list[int]) -> list[int]:
     return sorted(worker for worker in candidates if worker >= 3) + sorted(
         (worker for worker in candidates if worker < 3), reverse=True
     )
+
+
+def adaptive_worker_candidates(
+    seeds: list[int], ceiling: int, measured: set[int] | None = None
+) -> list[int]:
+    measured = set(measured or ())
+    candidates = [*seeds, 4, 8, 16, 32, ceiling]
+    return sorted(
+        {worker for worker in candidates if worker == 0 or 2 <= worker <= ceiling}
+        - measured
+    )
+
+
+def next_refinement(best: int, measured: set[int], ceiling: int) -> int | None:
+    lower = max((worker for worker in measured if worker < best), default=0)
+    upper = min((worker for worker in measured if worker > best), default=ceiling + 1)
+    gaps = [(best - lower, (best + lower) // 2), (upper - best, (best + upper) // 2)]
+    for gap, candidate in sorted(gaps, reverse=True):
+        if gap > 2 and 2 <= candidate <= ceiling and candidate not in measured:
+            return candidate
+    return None
 
 
 def upward_regression(
@@ -70,7 +92,9 @@ def selector_size_hint(selectors: list[str]) -> int:
     return nodeid_count + other_count + len(files) * ESTIMATED_CASES_PER_TEST_FILE
 
 
-def _successful_worker_medians(profile: dict[str, Any]) -> dict[int, float]:
+def _successful_worker_medians(
+    profile: dict[str, Any], inventory_fingerprint: str | None = None
+) -> dict[int, float]:
     medians = {}
     for raw_worker, records in profile.get("trials", {}).items():
         values = [
@@ -78,6 +102,10 @@ def _successful_worker_medians(profile: dict[str, Any]) -> dict[int, float]:
             for record in records
             if record.get("status", "ok") == "ok"
             and record.get("wall_seconds") is not None
+            and (
+                inventory_fingerprint is None
+                or record.get("inventory_fingerprint") == inventory_fingerprint
+            )
         ]
         if values:
             medians[int(raw_worker)] = statistics.median(values)
@@ -88,6 +116,7 @@ def choose_fast_workers(
     profile: dict[str, Any] | None,
     selectors: list[str],
     ceiling: int,
+    inventory_fingerprint: str | None = None,
 ) -> tuple[int, str, str]:
     profile = profile or {}
     if ceiling < 2:
@@ -105,10 +134,17 @@ def choose_fast_workers(
     attempted = {
         int(worker)
         for worker, records in profile.get("trials", {}).items()
-        if any(record.get("status", "ok") in {"ok", "pruned"} for record in records)
+        if any(
+            record.get("status", "ok") in {"ok", "pruned"}
+            and (
+                inventory_fingerprint is None
+                or record.get("inventory_fingerprint") == inventory_fingerprint
+            )
+            for record in records
+        )
     }
-    medians = _successful_worker_medians(profile)
-    regression = upward_regression(profile, None)
+    medians = _successful_worker_medians(profile, inventory_fingerprint)
+    regression = upward_regression(profile, inventory_fingerprint)
     if regression is not None:
         boundary, baseline, baseline_seconds, candidate_seconds = regression
         tiers = [worker for worker in tiers if worker <= boundary]
@@ -139,6 +175,35 @@ def choose_fast_workers(
         workers = min(medians, key=medians.get)
         return workers if workers >= 2 else 0, "observed_history", reason
     return start if start >= 2 else 0, "fast_policy", reason
+
+
+def case_inventory_delta(
+    baseline: dict[str, str], current: dict[str, str]
+) -> dict[str, dict[str, int]]:
+    old_items = {(file, nodeid) for nodeid, file in baseline.items()}
+    new_items = {(file, nodeid) for nodeid, file in current.items()}
+    counts: dict[str, dict[str, int]] = defaultdict(
+        lambda: {"baseline": 0, "current": 0, "added": 0, "removed": 0}
+    )
+    for file, _ in old_items:
+        counts[file]["baseline"] += 1
+    for file, _ in new_items:
+        counts[file]["current"] += 1
+    for file, _ in new_items - old_items:
+        counts[file]["added"] += 1
+    for file, _ in old_items - new_items:
+        counts[file]["removed"] += 1
+    return dict(sorted(counts.items()))
+
+
+def material_case_inventory_change(
+    delta: dict[str, dict[str, int]],
+) -> bool:
+    for counts in delta.values():
+        churn = counts["added"] + counts["removed"]
+        if churn >= 3 or churn / max(1, counts["baseline"]) >= 0.2:
+            return True
+    return False
 
 
 def prune_higher_candidates(
