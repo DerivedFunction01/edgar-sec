@@ -11,12 +11,18 @@ from edgar_sec.domain.sec_urls import (
     full_submission_url_for,
     normalize_accession,
     parse_archive_url,
+    resolve_archive_href,
+    resolve_sec_href,
     validate_archive_url,
 )
 
 ARCHIVE_URL = (
     "https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/"
     "0000320193-20-000096.htm"
+)
+INDEX_URL = (
+    "https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/"
+    "0000320193-20-000096-index.html"
 )
 
 
@@ -134,6 +140,58 @@ def test_validate_archive_url_checks_archive_cik_only_when_supplied() -> None:
     assert validate_archive_url(url, "0000320193-20-000096").archive_cik == "320194"
     with pytest.raises(ValueError, match="wrong archive CIK"):
         validate_archive_url(url, "0000320193-20-000096", expected_archive_cik="320193")
+
+
+def test_resolve_archive_href_unwraps_a_same_origin_inline_viewer() -> None:
+    parts = resolve_archive_href(
+        INDEX_URL,
+        "/ix?doc=/Archives/edgar/data/320193/000032019320000096/"
+        "0000320193-20-000096.htm",
+        "0000320193-20-000096",
+        expected_archive_cik="320193",
+    )
+
+    assert parts.url == ARCHIVE_URL
+
+
+def test_resolve_archive_href_uses_index_url_as_relative_reference_base() -> None:
+    parts = resolve_archive_href(
+        INDEX_URL,
+        "0000320193-20-000096.htm",
+        "0000320193-20-000096",
+        expected_archive_cik="320193",
+    )
+
+    assert parts.url == ARCHIVE_URL
+
+
+def test_resolve_archive_href_preserves_archive_cik_mismatch() -> None:
+    href = ARCHIVE_URL.replace("/320193/", "/320194/")
+
+    with pytest.raises(ValueError, match="wrong archive CIK"):
+        resolve_archive_href(
+            INDEX_URL,
+            href,
+            "0000320193-20-000096",
+            expected_archive_cik="320193",
+        )
+
+
+def test_resolve_archive_href_rejects_cross_origin_reference() -> None:
+    href = f"https://example.com/ix?doc={ARCHIVE_URL}"
+
+    with pytest.raises(ValueError, match="outside the base origin"):
+        resolve_archive_href(
+            INDEX_URL, href, "0000320193-20-000096", expected_archive_cik="320193"
+        )
+
+
+def test_resolve_sec_href_preserves_dot_segments_for_validation() -> None:
+    resolved = resolve_sec_href(INDEX_URL, "../report.htm")
+
+    assert "/000032019320000096/../report.htm" in resolved
+    with pytest.raises(ValueError, match="unsafe segment"):
+        validate_archive_url(resolved, "0000320193-20-000096")
 
 
 @pytest.mark.parametrize(

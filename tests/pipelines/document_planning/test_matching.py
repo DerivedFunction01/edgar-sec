@@ -346,6 +346,97 @@ def test_non_exact_primary_name_retains_direct_link_behavior(filename: str) -> N
     assert rows[0]["retrieval_mode"] == "direct_url"
 
 
+def test_ix_viewer_href_matches_its_safe_archive_url() -> None:
+    archive_url = f"{_ARCHIVE_ROOT}/primary.htm"
+    entry = {
+        "entry_id": "entry-inline-primary",
+        "table_kind": "document_format",
+        "document_type": "10-Q",
+        "filename": "primary.htm",
+        "href": "/ix?doc=/Archives/edgar/data/898015/000089968100000405/primary.htm",
+        "archive_url": archive_url,
+        "sequence": 1,
+        "byte_size": 2000,
+    }
+
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(entry)],
+        (ProfileTarget("primary", "primary", False, "primary:primary"),),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["target_url"] == archive_url
+
+
+def test_relative_inventory_href_uses_index_url_without_bundle() -> None:
+    archive_url = f"{_ARCHIVE_ROOT}/primary.htm"
+    entry = {
+        "entry_id": "entry-relative-primary",
+        "table_kind": "document_format",
+        "document_type": "10-Q",
+        "filename": "primary.htm",
+        "href": "/Archives/edgar/data/898015/000089968100000405/primary.htm",
+        "archive_url": None,
+        "sequence": 1,
+        "byte_size": 2000,
+    }
+
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(entry)],
+        (ProfileTarget("primary", "primary", False, "primary:primary"),),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["target_url"] == archive_url
+
+
+def test_relative_inventory_href_allows_archive_cik_different_from_index() -> None:
+    entry = {
+        "entry_id": "entry-wrong-cik-primary",
+        "table_kind": "document_format",
+        "document_type": "10-Q",
+        "filename": "primary.htm",
+        "href": "/Archives/edgar/data/1307496/000089968100000405/primary.htm",
+        "archive_url": None,
+        "sequence": 1,
+        "byte_size": 2000,
+    }
+
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(entry)],
+        (ProfileTarget("primary", "primary", False, "primary:primary"),),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["target_url"] == (
+        "https://www.sec.gov/Archives/edgar/data/1307496/000089968100000405/primary.htm"
+    )
+
+
+def test_external_ix_viewer_cannot_redirect_to_an_archive_url() -> None:
+    archive_url = f"{_ARCHIVE_ROOT}/primary.htm"
+    entry = {
+        "entry_id": "entry-external-inline-primary",
+        "table_kind": "document_format",
+        "document_type": "10-Q",
+        "filename": "primary.htm",
+        "href": f"https://example.com/ix?doc={archive_url}",
+        "archive_url": archive_url,
+        "sequence": 1,
+        "byte_size": 2000,
+    }
+
+    with pytest.raises(TargetMatchingError, match="unsafe SEC archive URL"):
+        inventory_rows(
+            "plan-1",
+            [_inventory_row(entry, bundle_url=_BUNDLE_URL)],
+            (ProfileTarget("primary", "primary", False, "primary:primary"),),
+        )
+
+
 def test_duplicate_stub_primary_evidence_is_ambiguous() -> None:
     bundle_url = _BUNDLE_URL
     rows = inventory_rows(
@@ -528,20 +619,20 @@ def test_directory_only_href_does_not_enable_external_href_fallback() -> None:
         )
 
 
-def test_inventory_locator_uses_index_archive_cik_not_filing_cik() -> None:
-    accession = "0000950134-01-500666"
+def test_inventory_locator_cik_can_differ_from_index_and_accession_prefix() -> None:
+    accession = "0000902664-25-004119"
     index_url = (
-        "https://www.sec.gov/Archives/edgar/data/4515/"
-        "000095013401500666/0000950134-01-500666-index.html"
+        "https://www.sec.gov/Archives/edgar/data/1337634/"
+        "000090266425004119/0000902664-25-004119-index.html"
     )
     target_url = (
-        "https://www.sec.gov/Archives/edgar/data/4515/"
-        "000095013401500666/d86404e10-q.txt"
+        "https://www.sec.gov/Archives/edgar/data/1307496/"
+        "000090266425004119/ownership.xml"
     )
     candidate = _entry_candidate(
         {"entry_id": "entry-1", "archive_url": target_url},
         {
-            "filing_cik": "0000950134",
+            "filing_cik": "0000902664",
             "index_url": index_url,
         },
         accession,

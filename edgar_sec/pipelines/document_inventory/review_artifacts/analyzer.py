@@ -5,11 +5,14 @@ import json
 from collections import Counter, defaultdict
 from dataclasses import fields
 from pathlib import Path
-from urllib.parse import parse_qs, unquote, urljoin, urlsplit, urlunsplit
+from urllib.parse import unquote, urlsplit
 
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.document_inventory.models import InventoryEntry
-from edgar_sec.domain.sec_urls import DEFAULT_ARCHIVE_URL_POLICY
+from edgar_sec.domain.sec_urls import (
+    DEFAULT_ARCHIVE_URL_POLICY,
+    resolve_sec_href,
+)
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.pipelines.document_inventory.review_artifacts.comparison import (
     compare_review_analysis_runs,
@@ -331,7 +334,7 @@ def _link_findings(case: dict, row: dict) -> list[dict]:
     archive_url = (row.get("archive_url") or "").strip()
     sequence = row["sequence_number"]
     bundle_url = case["observations"].get("bundle_url")
-    target = _unwrap_href(urljoin(case["request_url"], href)) if href else None
+    target = resolve_sec_href(case["request_url"], href) if href else None
     direct_matches = bool(
         archive_url and _matches_accession_archive_path(archive_url, case)
     )
@@ -512,7 +515,7 @@ def _bundle_findings(case: dict) -> list[dict]:
     bundle_url = case["observations"].get("bundle_url")
     if not bundle_url:
         return []
-    target = urljoin(case["request_url"], bundle_url)
+    target = resolve_sec_href(case["request_url"], bundle_url)
     parsed = urlsplit(target)
     findings = []
     if (parsed.hostname or "").lower() not in DEFAULT_ARCHIVE_URL_POLICY.allowed_hosts:
@@ -559,7 +562,7 @@ def _bundle_findings(case: dict) -> list[dict]:
 
 
 def _matches_accession_archive_path(url: str, case: dict) -> bool:
-    target = _unwrap_href(urljoin(case["request_url"], url))
+    target = resolve_sec_href(case["request_url"], url)
     parsed = urlsplit(target)
     if (
         parsed.scheme.lower() not in DEFAULT_ARCHIVE_URL_POLICY.allowed_schemes
@@ -590,7 +593,7 @@ def _matches_accession_archive_path(url: str, case: dict) -> bool:
 
 
 def _matches_accession_bundle_path(url: str, case: dict) -> bool:
-    target = _unwrap_href(urljoin(case["request_url"], url))
+    target = resolve_sec_href(case["request_url"], url)
     parsed = urlsplit(target)
     if (
         parsed.scheme.lower() not in DEFAULT_ARCHIVE_URL_POLICY.allowed_schemes
@@ -697,17 +700,6 @@ def _row_path_kind(row: dict) -> str:
     if extension in {".htm", ".html"}:
         return "html"
     return "other"
-
-
-def _unwrap_href(url: str) -> str:
-    parsed = urlsplit(url)
-    if parsed.path.lower().endswith("/ix") or parsed.path.lower() == "/ix":
-        document = parse_qs(parsed.query).get("doc", [None])[0]
-        if document:
-            if document.startswith("/"):
-                return urlunsplit((parsed.scheme, parsed.netloc, document, "", ""))
-            return urljoin(url, document)
-    return url
 
 
 def _source_archive_cik(request_url: str) -> str | None:

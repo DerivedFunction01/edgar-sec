@@ -107,6 +107,27 @@ def test_empty_and_other_accession_hrefs_are_not_promoted() -> None:
     ]
 
 
+def test_archive_href_may_use_a_cik_different_from_the_index() -> None:
+    accession = AccessionNumber("0000902664-25-004119")
+    source_url = (
+        "https://www.sec.gov/Archives/edgar/data/1337634/"
+        "000090266425004119/0000902664-25-004119-index.html"
+    )
+    source = b"""<table summary='Data Files'>
+    <tr><th>Seq</th><th>Description</th><th>Document</th><th>Type</th><th>Size</th></tr>
+    <tr><td>1</td><td>Ownership</td><td><a href='/Archives/edgar/data/1307496/000090266425004119/ownership.xml'>ownership.xml</a></td><td>4</td><td>10436</td></tr>
+    </table>"""
+
+    page = parse_html_index(IndexPageInput(accession, source_url, source))
+
+    assert isinstance(page, ParsedIndexPage)
+    assert page.entries[0].archive_url == (
+        "https://www.sec.gov/Archives/edgar/data/1307496/"
+        "000090266425004119/ownership.xml"
+    )
+    assert page.diagnostics.items == ()
+
+
 def test_archive_href_policy_rejects_traversal_and_empty_delimiters() -> None:
     hrefs = [
         "/Archives/edgar/data/123456/000012345626000016/../report.htm",
@@ -200,7 +221,7 @@ def test_historical_bundle_aliases_emit_canonical_bundle_url(
         ),
         (
             "0000123456-26-000016.txt",
-            "/Archives/edgar/data/999999/0000123456-26-000016.txt",
+            "/Archives/edgar/data/999999/0000123456-26-000099.txt",
         ),
         (
             "0000123456-26-000016.txt",
@@ -230,6 +251,27 @@ def test_root_level_bundle_requires_exact_identity_and_safe_href(
     assert page.bundle_url is None
     assert page.bundle_size == 100
     assert [item.code for item in page.diagnostics.items] == ["unsafe_href"]
+
+
+def test_root_level_bundle_alias_uses_its_archive_cik() -> None:
+    accession = AccessionNumber("0000123456-26-000016")
+    source_url = (
+        "https://www.sec.gov/Archives/edgar/data/123456/000012345626000016/"
+        "0000123456-26-000016-index.html"
+    )
+    source = b"""<table summary='Document Format Files'>
+    <tr><th>Seq</th><th>Description</th><th>Document</th><th>Type</th><th>Size</th></tr>
+    <tr><td></td><td>Complete submission text file</td><td><a href='/Archives/edgar/data/999999/0000123456-26-000016.txt'>0000123456-26-000016.txt</a></td><td></td><td>100</td></tr>
+    </table>"""
+
+    page = parse_html_index(IndexPageInput(accession, source_url, source))
+
+    assert isinstance(page, ParsedIndexPage)
+    assert page.bundle_url == (
+        "https://www.sec.gov/Archives/edgar/data/999999/"
+        "000012345626000016/0000123456-26-000016.txt"
+    )
+    assert page.diagnostics.items == ()
 
 
 def test_tables_use_header_labels_instead_of_column_positions() -> None:
@@ -309,7 +351,7 @@ def test_diagnostic_codes_and_union_remain_explicit() -> None:
         UnrecognizedIndexPage,
         IndexParseFailure,
     }
-    assert PARSER_FINGERPRINT == "index-page-v2"
+    assert PARSER_FINGERPRINT == "index-page-v4"
 
 
 def test_parser_imports_only_lower_layers_and_pipeline_siblings() -> None:

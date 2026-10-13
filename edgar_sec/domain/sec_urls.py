@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urljoin, urlsplit, urlunsplit
 
 from edgar_sec.domain.identity import AccessionNumber, Cik
 
@@ -222,6 +222,87 @@ def validate_archive_url(
     return archive
 
 
+def resolve_sec_href(base_url: str, reference: str) -> str:
+    """Resolve an index reference while preserving unsafe path segments."""
+    resolved = _resolve_reference_without_normalizing(base_url, reference)
+    base = urlsplit(base_url)
+    parts = urlsplit(resolved)
+    if (
+        parts.scheme.casefold() != "https"
+        or parts.netloc.casefold() != "www.sec.gov"
+        or (parts.scheme.casefold(), parts.netloc.casefold())
+        != (base.scheme.casefold(), base.netloc.casefold())
+        or parts.path.casefold() != "/ix"
+        or parts.fragment
+    ):
+        return resolved
+    try:
+        query = parse_qs(parts.query, keep_blank_values=True, strict_parsing=True)
+    except ValueError:
+        return resolved
+    documents = query.get("doc", ())
+    if set(query) != {"doc"} or len(documents) != 1:
+        return resolved
+    origin = urlunsplit((parts.scheme, parts.netloc, "/", "", ""))
+    unwrapped = _resolve_reference_without_normalizing(origin, documents[0])
+    unwrapped_parts = urlsplit(unwrapped)
+    if (unwrapped_parts.scheme.casefold(), unwrapped_parts.netloc.casefold()) != (
+        parts.scheme.casefold(),
+        parts.netloc.casefold(),
+    ):
+        return resolved
+    return unwrapped
+
+
+def resolve_archive_href(
+    base_url: str,
+    reference: str,
+    accession: AccessionNumber | str,
+    *,
+    expected_archive_cik: Cik | str | int | None = None,
+    policy: ArchiveUrlPolicy = DEFAULT_ARCHIVE_URL_POLICY,
+) -> ArchiveUrlParts:
+    """Resolve an href and validate it against its accession and optional CIK."""
+    base = validate_archive_url(
+        base_url,
+        accession,
+        expected_archive_cik=expected_archive_cik,
+        policy=policy,
+    )
+    resolved = resolve_sec_href(base.url, reference)
+    source = urlsplit(base.url)
+    target = urlsplit(resolved)
+    if (source.scheme.casefold(), source.netloc.casefold()) != (
+        target.scheme.casefold(),
+        target.netloc.casefold(),
+    ):
+        raise ValueError("archive href is outside the base origin")
+    return validate_archive_url(
+        resolved,
+        accession,
+        expected_archive_cik=expected_archive_cik,
+        policy=policy,
+    )
+
+
+def _resolve_reference_without_normalizing(base_url: str, reference: str) -> str:
+    base = urlsplit(base_url)
+    href = urlsplit(reference)
+    if href.scheme:
+        return reference
+    if href.netloc:
+        return f"{base.scheme}:{reference}"
+    if href.path.startswith("/"):
+        path = href.path
+    elif href.path:
+        path = f"{base.path.rsplit('/', 1)[0]}/{href.path}"
+    else:
+        path = base.path
+    query = href.query if "?" in reference else (base.query if not href.path else "")
+    fragment = href.fragment
+    return urlunsplit((base.scheme, base.netloc, path, query, fragment))
+
+
 def full_submission_url_for(archive_cik: str, accession: str) -> str:
     """Build the complete SGML submission ``.txt`` bundle URL for an accession.
 
@@ -249,6 +330,8 @@ __all__ = [
     "normalize_accession",
     "normalize_cik",
     "parse_archive_url",
+    "resolve_archive_href",
+    "resolve_sec_href",
     "submissions_url",
     "validate_archive_url",
 ]
