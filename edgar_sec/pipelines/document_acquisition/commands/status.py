@@ -20,7 +20,7 @@ from edgar_sec.pipelines.document_acquisition.run_validation import (
 )
 
 
-def _run_ids(paths) -> tuple[str, ...]:
+def discover_run_ids(paths) -> tuple[str, ...]:
     root = paths.runs_root
     if root.is_symlink():
         raise ValueError("acquisition runs root is unsafe")
@@ -115,7 +115,7 @@ def cmd_status(args: argparse.Namespace) -> int:
                     print("  " + json.dumps(attempt, sort_keys=True))
             return 0
 
-        run_ids = (args.run_id,) if args.run_id else _run_ids(paths)
+        run_ids = (args.run_id,) if args.run_id else discover_run_ids(paths)
         reports = [_inspect_run(paths, run_id) for run_id in run_ids]
     except (OSError, sqlite3.Error, ValueError) as error:
         payload = {"command": "status", "error": str(error), "status": "error"}

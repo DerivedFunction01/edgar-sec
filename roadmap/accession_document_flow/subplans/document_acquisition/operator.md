@@ -40,15 +40,19 @@ Document Acquisition
   0. Exit
 ```
 
-Project prompts for a published plan ID and delegates to the offline project service.
-Status delegates read-only run inspection. Run acquires eligible targets, then processes
-acquired targets under one run lock; it confirms live SEC access, defaulting to no, and
-separately prompts whether to retry eligible acquisition and processing failures.
+Project selects a fully validated published plan from a paginated list and delegates to
+the offline project service. Status and Run select discovered run IDs from paginated
+lists; Status also pages through validated work-order target IDs or can show all run
+summaries. Missing run roots are reported as empty discovery, not opened as SQLite
+databases. Run acquires eligible targets, then processes acquired targets under one run
+lock; it confirms live SEC access, defaulting to no, and separately prompts whether to
+retry eligible acquisition and processing failures.
 The keyed fixture/review console selects an active published plan, creates and fills
 plan-pinned fixtures, lists fixtures, generates review artifacts, compares runs, and
-analyzes review runs offline. Fixture fill confirms before retaining local evidence;
-there is no public replay/export action. Review generation remains limited to the
-S9/S10 fixture slice.
+analyzes review runs offline. Fill selects a matching run, target, and document-body
+attempt from paginated choices and confirms before retaining local evidence; there is
+no public replay/export action. Comparison and analysis select validated review runs
+through paginated choices. Review generation remains limited to the S9/S10 fixture slice.
 Publish returns a gate-blocked result and does not create parts, manifests, or pointers.
 The CLI routing and per-target processing are covered by
 [`cli.py`](../../../../edgar_sec/pipelines/document_acquisition/cli.py),
@@ -58,17 +62,13 @@ and [`processing/test_worker.py`](../../../../tests/pipelines/document_acquisiti
 
 ## Deferred UX extensions
 
-### Active S6 plan
-
-The fixture/review console lists fully validated published S6 plans by stable ID, target
-row count, and digest. Plan selection is session-local and switchable. Fixture creation
-uses the active plan pin; switching plans never changes existing fixtures.
-
 ### Status detail
 
-List valid and invalid runs with their plan IDs, derived state, and aggregate counts.
-Selecting a valid run shows attempts and target outcomes; invalid runs show the error
-code without a repair action. Inspect never mutates a checkpoint or releases staged
+Run and plan IDs are paginated and filterable. Run-list rows currently show run IDs;
+adding validated plan pins, derived state, and aggregate counts remains deferred. A
+selected run can page through work-order target IDs and show attempts/outcomes. Improve
+inspection of invalid runs so the run-level error remains available without requiring
+valid target-work-order discovery. Inspect never mutates a checkpoint or releases staged
 bodies.
 
 ### Run preview
@@ -100,11 +100,11 @@ are out of scope and no aggregate limit is implied.
 ### Fixture and review actions
 
 Create requires a new fixture ID and the active S6 plan. Fill is available only for a
-fixture pinned to that active plan and requires exact run, target, and retained attempt
-IDs plus a positive byte cap. It shows these values before a default-no consent prompt;
-declining performs no append. Listing reports plan pins, capture/case counts, and
-acquisition statuses in deterministic order without reading response BLOBs. No
-user-facing replay/export action exists.
+fixture pinned to that active plan and pages through matching runs, work-order targets,
+and document-body attempts. It requires a positive byte cap, shows the selected values
+before a default-no consent prompt, and performs no append if declined. Listing reports
+plan pins, capture/case counts, and acquisition statuses in deterministic order without
+reading response BLOBs. No user-facing replay/export action exists.
 
 Review generation chooses an active-plan fixture and optional capture/target filters. It
 verifies the selected fixture body in temporary storage, validates its associated S9 run

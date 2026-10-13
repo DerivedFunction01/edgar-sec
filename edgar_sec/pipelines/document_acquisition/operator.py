@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -22,6 +23,9 @@ from edgar_sec.pipelines.document_acquisition.cli import (
     main as cli_main,
     report_not_implemented,
 )
+from edgar_sec.pipelines.document_acquisition.commands.status import (
+    discover_run_ids,
+)
 from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
     list_fixture_summaries,
 )
@@ -35,6 +39,13 @@ from edgar_sec.pipelines.document_acquisition.paths import (
 from edgar_sec.pipelines.document_acquisition.review_artifacts.analyzer import (
     analyze_review_run,
 )
+from edgar_sec.pipelines.document_acquisition.run_validation import (
+    iter_work_order_rows,
+    load_validated_work_order,
+)
+from edgar_sec.pipelines.document_acquisition.run_state.evidence import (
+    list_target_attempts,
+)
 
 MENU_TITLE = "Document Acquisition"
 
@@ -47,21 +58,69 @@ def _action(command: str, track: str) -> MenuAction:
 
 
 def _action_project() -> None:
-    plan_id = prompt_text("Published S6 target-plan ID").strip()
-    if not plan_id:
+    plan = _select_target_plan()
+    if plan is None:
         print("Projection cancelled.")
         return
-    cli_main(["project", "--plan-id", plan_id])
+    cli_main(["project", "--plan-id", plan.plan_id])
+
+
+def _select_target_plan() -> PublishedDocumentPlan | None:
+    console = _FixtureReviewConsole(resolve_acquisition_paths().artifacts_root)
+    return console.choose_plan()
+
+
+def _run_items(*, include_all: bool = False) -> list[PickItem]:
+    paths = resolve_acquisition_paths()
+    run_ids = discover_run_ids(paths)
+    items = []
+    if include_all:
+        items.append(PickItem("all", "All acquisition runs", ""))
+    items.extend(PickItem(run_id, run_id, run_id) for run_id in run_ids)
+    return items
+
+
+def _choose_run_id(prompt_label: str) -> str | None:
+    items = _run_items()
+    if not items:
+        print("No acquisition runs found; project a target plan first.")
+        return None
+    selected = prompt_paginated_choice(items, prompt_label=prompt_label)
+    return str(selected.value) if selected is not None else None
+
+
+def _target_items(run_id: str) -> list[PickItem]:
+    paths = resolve_acquisition_paths()
+    parts = load_validated_work_order(paths, run_id)
+    items = [PickItem("summary", "Run summary (no target filter)", "")]
+    for row in iter_work_order_rows(parts):
+        target_id = str(row["target_id"])
+        label = target_id
+        if not row["executable"]:
+            label += f" | skipped: {row['skip_reason']}"
+        items.append(PickItem(target_id, label, target_id))
+    return items
 
 
 def _action_status() -> None:
-    run_id = prompt_text("Run ID (blank lists all runs)").strip()
+    items = _run_items(include_all=True)
+    if len(items) == 1 and items[0].key == "all":
+        print("No acquisition runs found.")
+        return
+    selected = prompt_paginated_choice(items, prompt_label="Acquisition run")
+    if selected is None:
+        return
     args = ["status"]
+    run_id = str(selected.value)
     if run_id:
+        target = prompt_paginated_choice(
+            _target_items(run_id), prompt_label="Target status"
+        )
+        if target is None:
+            return
         args.extend(("--run-id", run_id))
-        target_id = prompt_text("Target ID (optional)").strip()
-        if target_id:
-            args.extend(("--target-id", target_id))
+        if target.value:
+            args.extend(("--target-id", str(target.value)))
     cli_main(args)
 
 
@@ -71,9 +130,8 @@ def _configured_response_byte_limit() -> int:
 
 
 def _action_run() -> None:
-    run_id = prompt_text("Projected S9 run ID").strip()
-    if not run_id:
-        print("Acquisition cancelled.")
+    run_id = _choose_run_id("Projected acquisition run")
+    if run_id is None:
         return
     try:
         default_limit = _configured_response_byte_limit()
@@ -240,13 +298,14 @@ class _FixtureReviewConsole:
         fixture_id = self.choose_fixture()
         if fixture_id is None:
             return
-        run_id = prompt_text("Recorded acquisition run ID").strip()
-        target_id = prompt_text("Recorded target ID").strip()
-        attempt_id = prompt_text("Exact retained attempt ID").strip()
-        if not all((run_id, target_id, attempt_id)):
-            print(
-                "Fixture fill cancelled; exact run, target, and attempt are required."
-            )
+        run_id = self.choose_run()
+        if run_id is None:
+            return
+        target_id = self.choose_run_target(run_id)
+        if target_id is None:
+            return
+        attempt_id = self.choose_attempt(run_id, target_id)
+        if attempt_id is None:
             return
         try:
             default_limit = _configured_response_byte_limit()
@@ -288,6 +347,88 @@ class _FixtureReviewConsole:
                 str(self.artifacts_root),
             ]
         )
+
+    def choose_run(self) -> str | None:
+        plan = self.require_plan()
+        if plan is None:
+            return None
+        paths = resolve_acquisition_paths(artifacts_root=self.artifacts_root)
+        items = []
+        for run_id in discover_run_ids(paths):
+            manifest_path = paths.run_manifest_path(run_id)
+            if manifest_path.is_symlink() or not manifest_path.is_file():
+                continue
+            try:
+                manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            if not isinstance(manifest, dict):
+                continue
+            if (
+                manifest.get("target_plan_id") != plan.plan_id
+                or manifest.get("target_plan_digest") != plan.manifest["plan_digest"]
+                or manifest.get("target_schema_version")
+                != plan.manifest["target_schema_version"]
+            ):
+                continue
+            target_count = manifest.get("target_row_count")
+            if isinstance(target_count, bool) or not isinstance(target_count, int):
+                target_count = "?"
+            items.append(
+                PickItem(
+                    run_id,
+                    f"{run_id} | targets={target_count}",
+                    run_id,
+                )
+            )
+        if not items:
+            print("No projected acquisition runs match the active S6 plan.")
+            return None
+        selected = prompt_paginated_choice(items, prompt_label="Acquisition run")
+        return str(selected.value) if selected is not None else None
+
+    def choose_run_target(self, run_id: str) -> str | None:
+        paths = resolve_acquisition_paths(artifacts_root=self.artifacts_root)
+        parts = load_validated_work_order(paths, run_id)
+        items = []
+        for row in iter_work_order_rows(parts):
+            if not row["executable"]:
+                continue
+            target_id = str(row["target_id"])
+            items.append(PickItem(target_id, target_id, target_id))
+        if not items:
+            print(f"No executable targets are available in run {run_id}.")
+            return None
+        selected = prompt_paginated_choice(items, prompt_label="Recorded target")
+        return str(selected.value) if selected is not None else None
+
+    def choose_attempt(self, run_id: str, target_id: str) -> str | None:
+        paths = resolve_acquisition_paths(artifacts_root=self.artifacts_root)
+        attempts = list_target_attempts(paths.run_state_path(run_id), target_id)
+        items = []
+        for index, attempt in enumerate(attempts):
+            if attempt.attempt_kind != "document_body":
+                continue
+            if index > 0 and attempts[index - 1].attempt_kind == "lazy_index":
+                continue
+            evidence = (
+                "body retained"
+                if attempt.source_body_relative_path is not None
+                else "metadata only"
+            )
+            items.append(
+                PickItem(
+                    attempt.attempt_id,
+                    f"{attempt.attempt_id} | attempt={attempt.attempt_number} | "
+                    f"{attempt.outcome} | {evidence}",
+                    attempt.attempt_id,
+                )
+            )
+        if not items:
+            print(f"No document-body attempts are recorded for target {target_id}.")
+            return None
+        selected = prompt_paginated_choice(items, prompt_label="Exact attempt")
+        return str(selected.value) if selected is not None else None
 
     def list_fixtures(self) -> None:
         cli_main(["fixture", "list", "--artifacts", str(self.artifacts_root)])
@@ -357,26 +498,32 @@ class _FixtureReviewConsole:
             )
 
     def analyze_reviews(self) -> None:
-        runs = self.review_runs()
-        if not runs:
+        remaining = self.review_runs()
+        if not remaining:
             print("No validated review runs are available.")
             return
-        print("Validated review runs: " + ", ".join(run.name for run in runs))
-        selected_names = prompt_text(
-            "Review run IDs to analyze (comma-separated)", runs[0].name
-        ).split(",")
-        by_name = {run.name: run for run in runs}
-        names = [name.strip() for name in selected_names if name.strip()]
-        if (
-            not names
-            or len(names) != len(set(names))
-            or any(name not in by_name for name in names)
-        ):
-            print("Review analysis cancelled: select unique validated run IDs.")
+        selected_runs = []
+        while remaining:
+            choices = [PickItem("__done__", "Finish selection", None)]
+            choices.extend(
+                PickItem(str(index), run.name, run)
+                for index, run in enumerate(remaining, 1)
+            )
+            selected = prompt_paginated_choice(
+                choices, prompt_label="Select review run to analyze"
+            )
+            if selected is None:
+                return
+            if selected.key == "__done__":
+                break
+            selected_runs.append(selected.value)
+            remaining = [run for run in remaining if run != selected.value]
+        if not selected_runs:
+            print("Review analysis cancelled: select at least one validated run.")
             return
         args = ["review", "analyze"]
-        for name in names:
-            args.extend(("--run", str(by_name[name])))
+        for run in selected_runs:
+            args.extend(("--run", str(run)))
         args.extend(("--artifacts", str(self.artifacts_root)))
         cli_main(args)
 
