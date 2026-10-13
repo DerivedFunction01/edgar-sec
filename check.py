@@ -14,9 +14,81 @@ Modes:
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
 import sys
 from pathlib import Path
+
+
+def get_calibrated_workers(
+    test_count: int,
+    cache_path: Path | None = None,
+    recalculate: bool = False,
+    calibration_nodeids: list[str] | None = None,
+) -> int:
+    """Get optimized worker count from calibration cache.
+
+    Returns 0 if serial execution is optimal for the test count.
+    Falls back to CPU count if calibration is missing or failed.
+    """
+    try:
+        from edgar_sec.tools.fast_pytest_worker_calibrator import (
+            compute_optimal_workers,
+            load_cache,
+            run_calibration,
+        )
+        from edgar_sec.foundation.checks.lineage import (
+            default_cache_path as lineage_cache_path,
+        )
+        from edgar_sec.foundation.runtime.resources import (
+            auto_worker_count,
+            available_memory_bytes,
+        )
+
+        if cache_path is None:
+            repo_root = Path.cwd()
+            cache_path = lineage_cache_path(repo_root).parent / "pytest_workers.json"
+
+        result = None if recalculate else load_cache(cache_path)
+        if result is None:
+            print("==> recalibrating pytest workers...")
+            result = run_calibration(
+                ["tests"], cache_path=cache_path, all_nodeids=calibration_nodeids
+            )
+
+        c_w = result["c_w"]
+        work_total = result["work_total"]
+        n_crossover = result["n_crossover"]
+        hardware_cap = result["hardware_cap"]
+        ref_tests = result["n_max"]
+        gamma = result["gamma"]
+
+        # Calculate optimal workers for this test count
+        optimal = compute_optimal_workers(
+            test_count, ref_tests, work_total, c_w, n_crossover, hardware_cap, gamma
+        )
+
+        # Cap against memory-based ceiling
+        mem_ceiling = auto_worker_count(available_memory_bytes())
+        workers = min(optimal, mem_ceiling) if optimal > 0 else 0
+        return workers if workers >= 2 else 0
+
+    except Exception as exc:
+        print(f"==> worker calibration unavailable: {exc}", file=sys.stderr)
+        try:
+            from edgar_sec.foundation.runtime.resources import (
+                auto_worker_count,
+                available_memory_bytes,
+            )
+
+            fallback = auto_worker_count(available_memory_bytes())
+        except Exception:
+            fallback = os.cpu_count() or 1
+        return fallback if fallback >= 2 else 0
+
+
+def worker_args(workers: int) -> list[str]:
+    return ["-n", str(workers)] if workers >= 2 else []
 
 
 def run_cmd(label: str, cmd: list[str]) -> None:
@@ -40,86 +112,107 @@ def run_tests(
     explicit_paths: list[str],
     force_all: bool,
     explain: bool,
+    workers: int | None,
+    recalculate: bool = False,
 ) -> None:
     if explicit_paths:
-        run_cmd("explicit pytest targets", [python, "-m", "pytest", *explicit_paths])
-        return
-
-    if force_all:
+        test_paths = explicit_paths
+        label = "explicit pytest targets"
+    elif force_all:
         if Path("tests").is_dir() and any(Path("tests").rglob("test_*.py")):
-            run_cmd("full pytest suite", [python, "-m", "pytest", "tests"])
+            test_paths = ["tests"]
+            label = "full pytest suite"
         else:
             print("==> no tests found.")
-        return
+            return
+    else:
+        from edgar_sec.foundation.checks.git_diff import get_git_status
+        from edgar_sec.foundation.checks.lineage import LineageGraph
+        from edgar_sec.foundation.checks.prose import prose_only_python_files
 
-    from edgar_sec.foundation.checks.git_diff import get_git_status
-    from edgar_sec.foundation.checks.lineage import LineageGraph
-    from edgar_sec.foundation.checks.prose import prose_only_python_files
+        repo_root = Path.cwd()
+        snapshot = get_git_status(repo_root)
 
-    repo_root = Path.cwd()
-    snapshot = get_git_status(repo_root)
-
-    prose = prose_only_python_files(snapshot, repo_root)
-    if prose:
-        print(
-            "==> prose-only python edits (comments/docstrings) excluded from selection:"
-        )
-        for path in sorted(prose):
-            print(f"      - {path}")
-        snapshot = snapshot.excluding(prose)
-
-    if snapshot.is_docs_or_assets_only:
-        print(
-            "==> git change detection: only documentation, assets, or prose changed;"
-            " tests skipped."
-        )
-        return
-
-    if snapshot.touches_root_config:
-        print("==> root configuration modified; running full pytest suite.")
-        run_cmd("pytest suite", [python, "-m", "pytest", "tests"])
-        return
-
-    graph = LineageGraph(repo_root=repo_root)
-    graph.load_cache()
-    graph.sync_files()
-    graph.save_cache()
-
-    result = graph.resolve_tests(
-        changed_sources=snapshot.python_sources,
-        changed_tests=snapshot.python_tests,
-        changed_conftests=snapshot.changed_conftests,
-    )
-
-    if explain:
-        print("==> lineage & test selection explanation:")
-        print(
-            f"    Modified python sources ({len(snapshot.python_sources)}): {list(snapshot.python_sources)}"
-        )
-        print(
-            f"    Modified python tests   ({len(snapshot.python_tests)}): {list(snapshot.python_tests)}"
-        )
-        print(
-            f"    Modified conftests      ({len(snapshot.changed_conftests)}): {list(snapshot.changed_conftests)}"
-        )
-        print(f"    Resolved test targets   ({len(result.test_files)}):")
-        for t in result.test_files:
-            reasons_str = ", ".join(result.reasons.get(t, []))
-            print(f"      - {t} (via {reasons_str})")
-
-    if not result.has_tests:
-        if not snapshot.has_changes:
+        prose = prose_only_python_files(snapshot, repo_root)
+        if prose:
             print(
-                "==> working tree clean; no affected tests found. Use --all for full verification."
+                "==> prose-only python edits (comments/docstrings) excluded from selection:"
             )
-        else:
-            print("==> no tests affected by changes.")
-        return
+            for path in sorted(prose):
+                print(f"      - {path}")
+            snapshot = snapshot.excluding(prose)
 
-    print(
-        f"==> running targeted pytest on {len(result.test_files)} affected test file(s)..."
+        if snapshot.is_docs_or_assets_only:
+            print(
+                "==> git change detection: only documentation, assets, or prose changed;"
+                " tests skipped."
+            )
+            return
+
+        if snapshot.touches_root_config:
+            print("==> root configuration modified; running full pytest suite.")
+            test_paths = ["tests"]
+            label = "pytest suite"
+        else:
+            graph = LineageGraph(repo_root=repo_root)
+            graph.load_cache()
+            graph.sync_files()
+            graph.save_cache()
+
+            result = graph.resolve_tests(
+                changed_sources=snapshot.python_sources,
+                changed_tests=snapshot.python_tests,
+                changed_conftests=snapshot.changed_conftests,
+            )
+
+            if explain:
+                print("==> lineage & test selection explanation:")
+                print(
+                    f"    Modified python sources ({len(snapshot.python_sources)}): {list(snapshot.python_sources)}"
+                )
+                print(
+                    f"    Modified python tests   ({len(snapshot.python_tests)}): {list(snapshot.python_tests)}"
+                )
+                print(
+                    f"    Modified conftests      ({len(snapshot.changed_conftests)}): {list(snapshot.changed_conftests)}"
+                )
+                print(f"    Resolved test targets   ({len(result.test_files)}):")
+                for test_path in result.test_files:
+                    reasons_str = ", ".join(result.reasons.get(test_path, []))
+                    print(f"      - {test_path} (via {reasons_str})")
+
+            if not result.has_tests:
+                if not snapshot.has_changes:
+                    print(
+                        "==> working tree clean; no affected tests found. Use --all for full verification."
+                    )
+                else:
+                    print("==> no tests affected by changes.")
+                return
+
+            test_paths = list(result.test_files)
+            label = "targeted pytest"
+            print(
+                f"==> running targeted pytest on {len(test_paths)} affected test file(s)..."
+            )
+
+    if workers is None:
+        from edgar_sec.tools.fast_pytest_worker_calibrator import collect_test_nodeids
+
+        test_nodeids, _ = collect_test_nodeids(test_paths)
+        calibration_nodeids = test_nodeids if test_paths == ["tests"] else None
+        target_workers = get_calibrated_workers(
+            len(test_nodeids),
+            recalculate=recalculate,
+            calibration_nodeids=calibration_nodeids,
+        )
+    else:
+        target_workers = workers
+
+    run_cmd(
+        label,
+        [python, "-m", "pytest", *worker_args(target_workers), *test_paths],
     )
-    run_cmd("targeted pytest", [python, "-m", "pytest", *result.test_files])
 
 
 def main() -> None:
@@ -160,6 +253,16 @@ def main() -> None:
         help="explain detected git changes and reverse dependency test lineage",
     )
     parser.add_argument(
+        "--workers",
+        type=int,
+        help="number of pytest-xdist workers for parallel execution (default: auto-calibrate)",
+    )
+    parser.add_argument(
+        "--recalibrate-workers",
+        action="store_true",
+        help="force recalibration before running tests",
+    )
+    parser.add_argument(
         "paths",
         nargs="*",
         help="optional explicit test paths or files to execute via pytest",
@@ -192,7 +295,14 @@ def main() -> None:
 
     # Mode 3: --test (pytest only)
     if args.test:
-        run_tests(python, args.paths, args.all, args.explain)
+        run_tests(
+            python,
+            args.paths,
+            args.all,
+            args.explain,
+            args.workers,
+            args.recalibrate_workers,
+        )
         return
 
     # Mode 4: Static checks (format check, lint check, policy scanners)
@@ -209,7 +319,14 @@ def main() -> None:
         return
 
     # Mode 5 (Default): Gate including targeted (or full if --all) pytest
-    run_tests(python, args.paths, args.all, args.explain)
+    run_tests(
+        python,
+        args.paths,
+        args.all,
+        args.explain,
+        args.workers,
+        args.recalibrate_workers,
+    )
 
 
 if __name__ == "__main__":
