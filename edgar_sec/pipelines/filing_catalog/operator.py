@@ -331,7 +331,7 @@ def open_catalog_dag_console() -> None:
         publish_action=_action_materialize,
         publish_label="Materialize a catalog snapshot to DAG",
     )
-    run_dag_menu(config)
+    run_dag_menu(config, argv=[])
 
 
 def build_operator_menu() -> tuple[MenuAction, ...]:

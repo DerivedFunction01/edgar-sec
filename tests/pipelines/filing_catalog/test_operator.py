@@ -94,6 +94,25 @@ def test_the_menu_title_names_the_phase() -> None:
     assert "Filing Catalog" in MENU_TITLE
 
 
+def test_snapshot_console_launches_interactively(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Any
+) -> None:
+    paths = resolve_filing_catalog_paths(tmp_path)
+    calls: list[tuple[Any, list[str] | None]] = []
+    monkeypatch.setattr(operator, "resolve_filing_catalog_paths", lambda: paths)
+    monkeypatch.setattr(
+        "edgar_sec.infra.storage.dag.menu.run_dag_menu",
+        lambda config, argv=None: calls.append((config, argv)) or 0,
+    )
+
+    operator.open_catalog_dag_console()
+
+    assert len(calls) == 1
+    config, argv = calls[0]
+    assert config.snapshots_root() == paths.snapshots_root
+    assert argv == []
+
+
 # --- prompt plumbing -------------------------------------------------------
 
 
@@ -171,6 +190,7 @@ def test_every_prompted_action_builds_a_usable_namespace(
             {"plan_id": "plan-1", "scope": "policy", "unique_locators_count": 100}
         ],
     )
+    monkeypatch.setattr(operator, "open_catalog_dag_console", lambda: None)
     for name in ("cmd_status", "cmd_plan", "cmd_materialize", "cmd_expand"):
         monkeypatch.setattr(operator, name, _capture)
 
@@ -223,6 +243,7 @@ def test_no_action_ever_asks_for_the_artifacts_root(
         operator, "resolve_filing_catalog_paths", lambda root=None: _paths(tmp_path)
     )
     monkeypatch.setattr(operator, "auto_policy", _stub_auto_policy)
+    monkeypatch.setattr(operator, "open_catalog_dag_console", lambda: None)
     for name in ("cmd_status", "cmd_plan", "cmd_materialize", "cmd_expand"):
         monkeypatch.setattr(operator, name, lambda args: seen.append(args) or 0)
 
