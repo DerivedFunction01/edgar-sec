@@ -170,6 +170,11 @@ behavior:
   and pipeline workstreams, and gate runner integration on their contracts.
 - [End-to-end lifecycle and publication](lifecycle.md): define S9/S10 transient state,
   worker bundles, S11 binary/text Parquet relations, cleanup rules, and legacy differences.
+- [Combined acquisition run follow-up](combined_run_follow_up.md): merge target fetch and
+  processing into one resumable CLI/operator action and remove the separate `process` entry.
+- [Fixture and review console follow-up](fixture_review_console_follow_up.md): align local
+  fixture and review interactions with Inventory while retaining acquisition-specific
+  capture and fixture-body verification.
 
 The existing [S9 design](../S9_acquisition.md) and S9a–S9d documents include earlier
 design material; consult the status records at their tops for current implementation
