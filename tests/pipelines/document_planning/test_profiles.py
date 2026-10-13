@@ -6,6 +6,7 @@ import pytest
 from edgar_sec.pipelines.document_planning.profiles import (
     compatible_with_catalog_only,
     discover_profiles,
+    get_or_create_baseline_profile,
     load_profile,
     profile_digest,
     targets_for_form,
@@ -199,6 +200,19 @@ def test_catalog_only_profile_is_accepted_and_schema_version_is_checked(
     )
     with pytest.raises(ValueError, match="only allowed on primary targets"):
         load_profile("nonprimary-selector", root)
+
+
+def test_generated_baseline_profile_omits_null_acquisition_policy(
+    tmp_path: Path,
+) -> None:
+    root = tmp_path / "profiles"
+
+    generated = get_or_create_baseline_profile(root)
+    raw = json.loads((root / "primary-only.json").read_text(encoding="utf-8"))
+
+    assert "acquisition_policy" not in raw["rules"][0]["targets"][0]
+    assert load_profile("primary-only", root).digest == generated.digest
+    assert get_or_create_baseline_profile(root).digest == generated.digest
 
 
 @pytest.mark.parametrize("operations", [[], ["unknown"], ["raw", 1]])

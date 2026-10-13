@@ -350,6 +350,19 @@ def test_typing_filters_the_list_before_a_numbered_answer(monkeypatch) -> None:
     assert chosen.key == "feature"
 
 
+def test_string_default_marks_and_selects_matching_item(monkeypatch, capsys) -> None:
+    items = [
+        PickItem(key="checkpoint", label="Checkpoint", value="checkpoint"),
+        PickItem(key="current", label="Current snapshot", value="current"),
+    ]
+    _pick_answers(monkeypatch, [""])
+
+    chosen = prompt_paginated_choice(items, page_size=10, default="current")
+
+    assert chosen == items[1]
+    assert "  [2] Current snapshot (default)" in capsys.readouterr().out
+
+
 def test_an_empty_list_reports_itself_and_selects_nothing(capsys) -> None:
     assert prompt_paginated_choice([], page_size=10) is None
     assert "No items available." in capsys.readouterr().out

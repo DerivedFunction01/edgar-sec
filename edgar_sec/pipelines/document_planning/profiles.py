@@ -466,7 +466,6 @@ def get_or_create_baseline_profile(
                         "type": "primary",
                         "optional": False,
                         "catalog_direct_selection": "submitted_primary",
-                        "acquisition_policy": None,
                     }
                 ],
             }

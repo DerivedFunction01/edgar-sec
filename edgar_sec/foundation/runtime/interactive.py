@@ -128,8 +128,10 @@ def prompt_paginated_choice(
         print("No items available.")
         return None
 
+    default_key = default.key if isinstance(default, PickItem) else default
+
     def _default_index() -> int | None:
-        target = default.key if isinstance(default, PickItem) else default
+        target = default_key
         if target is None:
             return None
         if active_filter:
@@ -188,7 +190,7 @@ def prompt_paginated_choice(
             f"(Page {current_page}/{total_pages}{filter_banner}):"
         )
         for idx, it in enumerate(page_items, start=1):
-            marker = " (default)" if is_default_page and it.key == default.key else ""
+            marker = " (default)" if is_default_page and it.key == default_key else ""
             print(f"  [{idx}] {it.label}{marker}")
 
         nav_options: list[str] = [f"1-{len(page_items)}"]
@@ -210,6 +212,10 @@ def prompt_paginated_choice(
                 and default in page_items
             ):
                 return default
+            if is_default_page and isinstance(default, str):
+                return next(
+                    (item for item in page_items if item.key == default_key), None
+                )
             return None
         if choice.lower() == "q":
             return None
