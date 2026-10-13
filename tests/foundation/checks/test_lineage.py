@@ -78,6 +78,26 @@ def test_lineage_graph_reverse_transitive_resolution(tmp_path: Path):
     assert any("transitive_dependency" in r for r in reasons)
 
 
+def test_dependency_files_resolves_transitive_test_imports(tmp_path: Path):
+    source = tmp_path / "edgar_sec" / "pkg" / "source.py"
+    middle = tmp_path / "edgar_sec" / "pkg" / "middle.py"
+    test_file = tmp_path / "tests" / "pkg" / "test_source.py"
+    for path in (source, middle, test_file):
+        path.parent.mkdir(parents=True, exist_ok=True)
+    source.write_text("VALUE = 1\n")
+    middle.write_text("from edgar_sec.pkg.source import VALUE\n")
+    test_file.write_text("from edgar_sec.pkg.middle import VALUE\n")
+    graph = LineageGraph(repo_root=tmp_path, cache_path=Path("cache.json"))
+    graph.sync_files([source, middle, test_file])
+
+    assert graph.dependency_files(("tests/pkg/test_source.py",))[
+        "tests/pkg/test_source.py"
+    ] == (
+        "edgar_sec/pkg/middle.py",
+        "edgar_sec/pkg/source.py",
+    )
+
+
 def test_conftest_scoped_invalidation(tmp_path: Path):
     root = tmp_path
     test_dir_a = root / "tests" / "sub_a"

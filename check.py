@@ -17,6 +17,8 @@ import argparse
 import os
 import subprocess
 import sys
+import tempfile
+import time
 from pathlib import Path
 
 
@@ -37,9 +39,7 @@ def get_calibrated_workers(
             load_cache,
             run_calibration,
         )
-        from edgar_sec.foundation.checks.lineage import (
-            default_cache_path as lineage_cache_path,
-        )
+        from edgar_sec.tools.fast_pytest_worker_calibrator import default_cache_path
         from edgar_sec.foundation.runtime.resources import (
             auto_worker_count,
             available_memory_bytes,
@@ -47,7 +47,7 @@ def get_calibrated_workers(
 
         if cache_path is None:
             repo_root = Path.cwd()
-            cache_path = lineage_cache_path(repo_root).parent / "pytest_workers.json"
+            cache_path = default_cache_path(repo_root)
 
         result = None if recalculate else load_cache(cache_path)
         if result is None:
@@ -55,6 +55,7 @@ def get_calibrated_workers(
             result = run_calibration(
                 ["tests"], cache_path=cache_path, all_nodeids=calibration_nodeids
             )
+        result = result.get("machine_model", result)
 
         c_w = result["c_w"]
         work_total = result["work_total"]
@@ -114,6 +115,7 @@ def run_tests(
     explain: bool,
     workers: int | None,
     recalculate: bool = False,
+    calibrate: bool = False,
 ) -> None:
     if explicit_paths:
         test_paths = explicit_paths
@@ -196,23 +198,56 @@ def run_tests(
                 f"==> running targeted pytest on {len(test_paths)} affected test file(s)..."
             )
 
-    if workers is None:
-        from edgar_sec.tools.fast_pytest_worker_calibrator import collect_test_nodeids
+    if workers is None and (calibrate or recalculate):
+        from edgar_sec.tools.pytest_worker_profiles import select_workers
 
-        test_nodeids, _ = collect_test_nodeids(test_paths)
-        calibration_nodeids = test_nodeids if test_paths == ["tests"] else None
-        target_workers = get_calibrated_workers(
-            len(test_nodeids),
-            recalculate=recalculate,
-            calibration_nodeids=calibration_nodeids,
+        try:
+            target_workers = select_workers(test_paths, recalculate=recalculate)
+        except Exception as exc:
+            if isinstance(exc, RuntimeError) and str(exc) == "no tests found":
+                print("==> no tests selected; skipping pytest")
+                return
+            print(f"==> scoped worker calibration unavailable: {exc}", file=sys.stderr)
+            from edgar_sec.foundation.runtime.resources import (
+                auto_worker_count,
+                available_memory_bytes,
+            )
+
+            fallback = auto_worker_count(available_memory_bytes())
+            target_workers = fallback if fallback >= 2 else 0
+    elif workers is None:
+        from edgar_sec.foundation.runtime.resources import (
+            auto_worker_count,
+            available_memory_bytes,
         )
+
+        target_workers = auto_worker_count(available_memory_bytes())
     else:
         target_workers = workers
 
-    run_cmd(
-        label,
-        [python, "-m", "pytest", *worker_args(target_workers), *test_paths],
-    )
+    from edgar_sec.tools.pytest_worker_profiles import record_normal_run
+
+    with tempfile.TemporaryDirectory(prefix="pytest-worker-profile-") as tmpdir:
+        profile_output = Path(tmpdir) / "profile.json"
+        command = [
+            python,
+            "-m",
+            "pytest",
+            *worker_args(target_workers),
+            "-p",
+            "edgar_sec.tools.pytest_worker_profiles",
+            "--worker-profile-output",
+            str(profile_output),
+            *test_paths,
+        ]
+        started = time.perf_counter()
+        run_cmd(label, command)
+        record_normal_run(
+            test_paths,
+            target_workers,
+            time.perf_counter() - started,
+            profile_output,
+        )
 
 
 def main() -> None:
@@ -263,6 +298,11 @@ def main() -> None:
         help="force recalibration before running tests",
     )
     parser.add_argument(
+        "--calibrate-workers",
+        action="store_true",
+        help="run adaptive worker calibration before pytest (otherwise use the resource default)",
+    )
+    parser.add_argument(
         "paths",
         nargs="*",
         help="optional explicit test paths or files to execute via pytest",
@@ -302,6 +342,7 @@ def main() -> None:
             args.explain,
             args.workers,
             args.recalibrate_workers,
+            args.calibrate_workers,
         )
         return
 
@@ -326,6 +367,7 @@ def main() -> None:
         args.explain,
         args.workers,
         args.recalibrate_workers,
+        args.calibrate_workers,
     )
 
 

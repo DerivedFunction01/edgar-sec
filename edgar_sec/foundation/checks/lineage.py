@@ -198,6 +198,30 @@ class LineageGraph:
                 reverse[imported].add(rel_path)
         return reverse
 
+    def dependency_files(
+        self, test_files: tuple[str, ...]
+    ) -> dict[str, tuple[str, ...]]:
+        by_module = {entry.module: path for path, entry in self._entries.items()}
+        dependencies: dict[str, tuple[str, ...]] = {}
+        for test_file in test_files:
+            test = self._entries.get(test_file)
+            pending = list(test.imports) if test else []
+            visited: set[str] = set()
+            paths: set[str] = set()
+            while pending:
+                imported = pending.pop()
+                if imported in visited:
+                    continue
+                visited.add(imported)
+                path = by_module.get(imported)
+                if path is None:
+                    continue
+                paths.add(path)
+                entry = self._entries[path]
+                pending.extend(entry.imports)
+            dependencies[test_file] = tuple(sorted(paths))
+        return dependencies
+
     def resolve_tests(
         self,
         changed_sources: tuple[str, ...],
