@@ -21,7 +21,13 @@ from edgar_sec.pipelines.document_acquisition.commands.review import (
     cmd_review_label,
 )
 from edgar_sec.pipelines.document_acquisition.commands.project import cmd_project
+from edgar_sec.pipelines.document_acquisition.commands.publish import cmd_publish
 from edgar_sec.pipelines.document_acquisition.commands.run import cmd_run
+from edgar_sec.pipelines.document_acquisition.commands.snapshot import (
+    cmd_snapshot_list,
+    cmd_snapshot_query,
+    cmd_snapshot_status,
+)
 from edgar_sec.pipelines.document_acquisition.commands.status import cmd_status
 
 __all__ = ["build_parser", "main", "report_not_implemented"]
@@ -75,27 +81,6 @@ def _add_output_options(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--json", action="store_true", help="emit JSON to stdout")
 
 
-def cmd_snapshot_status(args: argparse.Namespace) -> int:
-    return report_not_implemented("snapshot status", json_output=args.json)
-
-
-_TODO_HANDLERS = {
-    "status": cmd_status,
-    "snapshot status": cmd_snapshot_status,
-}
-
-
-def _set_todo(parser: argparse.ArgumentParser, command: str) -> None:
-    parser.set_defaults(
-        acquisition_command=command,
-        func=_TODO_HANDLERS.get(command, _cmd_todo),
-    )
-
-
-def _cmd_todo(args: argparse.Namespace) -> int:
-    return report_not_implemented(args.acquisition_command, json_output=args.json)
-
-
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="acquisition",
@@ -112,7 +97,7 @@ def build_parser() -> argparse.ArgumentParser:
     status.add_argument("--run-id", help="run identifier (default: list runs)")
     status.add_argument("--target-id", help="show attempts for one run target")
     _add_output_options(status)
-    _set_todo(status, "status")
+    status.set_defaults(func=cmd_status)
 
     run = commands.add_parser("run", help="acquire pending S9 target bodies")
     run.add_argument("--run-id", required=True, help="projected acquisition run id")
@@ -139,8 +124,13 @@ def build_parser() -> argparse.ArgumentParser:
     publish.add_argument("--run-id", required=True, help="completed acquisition run id")
     publish.add_argument("--branch", default="main")
     publish.add_argument("--expected-branch-tip", default=None)
+    publish.add_argument(
+        "--allow-errors",
+        action="store_true",
+        help="allow publishing runs with non-fatal errors",
+    )
     _add_output_options(publish)
-    _set_todo(publish, "publish")
+    publish.set_defaults(func=cmd_publish)
 
     fixture = commands.add_parser("fixture", help="manage S9 response fixtures")
     fixture_commands = fixture.add_subparsers(dest="fixture_command", required=True)
@@ -254,9 +244,26 @@ def build_parser() -> argparse.ArgumentParser:
 
     snapshot = commands.add_parser("snapshot", help="inspect S11 snapshot status")
     snapshot_commands = snapshot.add_subparsers(dest="snapshot_command", required=True)
-    snapshot_status = snapshot_commands.add_parser("status")
+    snapshot_status = snapshot_commands.add_parser(
+        "status", help="show snapshot status"
+    )
+    snapshot_status.add_argument("--branch", default="main")
     _add_output_options(snapshot_status)
-    _set_todo(snapshot_status, "snapshot status")
+    snapshot_status.set_defaults(func=cmd_snapshot_status)
+    snapshot_query = snapshot_commands.add_parser(
+        "query", help="query snapshot relation"
+    )
+    snapshot_query.add_argument("--relation", required=True)
+    snapshot_query.add_argument("--branch", default="main")
+    snapshot_query.add_argument("--snapshot-id", default=None)
+    snapshot_query.add_argument("--limit", type=positive_int_type, default=20)
+    _add_output_options(snapshot_query)
+    snapshot_query.set_defaults(func=cmd_snapshot_query)
+    snapshot_list = snapshot_commands.add_parser(
+        "list", help="list published snapshots"
+    )
+    _add_output_options(snapshot_list)
+    snapshot_list.set_defaults(func=cmd_snapshot_list)
 
     return parser
 

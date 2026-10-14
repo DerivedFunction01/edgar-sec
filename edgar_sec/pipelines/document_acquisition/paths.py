@@ -18,6 +18,8 @@ from edgar_sec.foundation.runtime.paths import (
     validate_safe_id,
 )
 from edgar_sec.foundation.hashing import is_sha256_hex_digest
+from edgar_sec.infra.storage.dag.paths import DAGPaths
+from edgar_sec.infra.storage.dag.publication import PUBLICATION_LOCK_FILE
 from edgar_sec.infra.storage.review.paths import (
     ReviewPaths,
     review_run_paths,
@@ -38,6 +40,7 @@ RUN_STATE_FILE = "state.sqlite"
 RUN_CANCELLED_FILE = "cancelled.json"
 RUN_STAGING_DIR = "staging"
 WORK_ORDER_DIR = "work_order"
+PUBLICATION_RECEIPT_FILE = "publication_receipt.json"
 
 
 @dataclass(frozen=True, slots=True)
@@ -97,6 +100,18 @@ class AcquisitionPaths:
     def snapshot_root(self, snapshot_id: str) -> Path:
         return self.snapshots_root / validate_safe_id(snapshot_id, "snapshot_id")
 
+    @property
+    def catalog_file(self) -> Path:
+        return DAGPaths(self.snapshots_root).catalog_file
+
+    @property
+    def publication_lock_path(self) -> Path:
+        return self.snapshots_root / PUBLICATION_LOCK_FILE
+
+    def publication_receipt_path(self, run_id: str) -> Path:
+        safe_run_id = validate_safe_id(run_id, "run_id")
+        return self.run_dir(safe_run_id) / PUBLICATION_RECEIPT_FILE
+
     def run_dir(self, run_id: str) -> Path:
         safe_run_id = validate_safe_id(run_id, "run_id")
         return transient_dir(self.artifacts_root, DATASET, safe_run_id)
@@ -152,6 +167,7 @@ def resolve_acquisition_paths(
 __all__ = [
     "DATASET",
     "PLAN_TARGETS_DIR",
+    "PUBLICATION_RECEIPT_FILE",
     "RUN_CANCELLED_FILE",
     "RUN_STAGING_DIR",
     "RUN_STATE_FILE",

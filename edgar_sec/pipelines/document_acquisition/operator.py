@@ -548,10 +548,51 @@ def _action_fixture_review_console() -> None:
     )
 
 
+def _action_publish_run() -> None:
+    paths = resolve_acquisition_paths()
+    run_ids = discover_run_ids(paths)
+    if not run_ids:
+        print("No acquisition runs found.")
+        return
+    items = [PickItem(run_id, run_id, run_id) for run_id in run_ids]
+    chosen = prompt_paginated_choice(
+        items, prompt_label="Select completed run to publish"
+    )
+    if chosen is None:
+        return
+    branch = prompt_text("Destination DAG branch", "main").strip() or "main"
+    cli_main(
+        [
+            "publish",
+            "--run-id",
+            str(chosen.value),
+            "--branch",
+            branch,
+            "--artifacts",
+            str(paths.artifacts_root),
+        ]
+    )
+
+
+def _action_inspect_snapshot() -> None:
+    paths = resolve_acquisition_paths()
+    branch = prompt_text("DAG branch to inspect", "main").strip() or "main"
+    cli_main(
+        [
+            "snapshot",
+            "status",
+            "--branch",
+            branch,
+            "--artifacts",
+            str(paths.artifacts_root),
+        ]
+    )
+
+
 def _build_snapshot_menu() -> tuple[MenuAction, ...]:
     return build_menu(
-        _action("publish", "Publish snapshot (S11 gate)"),
-        _action("snapshot status", "Snapshot status (S11 gate)"),
+        menu_action("Publish snapshot (S11 gate)", _action_publish_run),
+        menu_action("Snapshot status (S11 gate)", _action_inspect_snapshot),
     )
 
 

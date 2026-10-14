@@ -130,15 +130,16 @@ def test_response_ceiling_options_are_optional_but_positive_when_supplied() -> N
             cli.build_parser().parse_args(args)
 
 
-def test_publish_todo_reports_gate_and_does_not_claim_publication(
+def test_publish_cli_reports_missing_manifest_when_run_does_not_exist(
     capsys: pytest.CaptureFixture[str],
 ) -> None:
     result = cli.main(["publish", "--run-id", "run-1", "--json"])
 
-    assert result == 2
+    assert result == 1
     payload = json.loads(capsys.readouterr().out)
-    assert payload["status"] == "blocked_by_gate"
-    assert "representative S9/S10 evidence and explicit approval" in payload["message"]
+    assert payload["command"] == "publish"
+    assert payload["status"] == "error"
+    assert "run manifest is missing" in payload["error"]
 
 
 def test_review_analyze_dispatches_offline_runs(monkeypatch) -> None:
@@ -178,7 +179,9 @@ def test_review_generate_and_snapshot_have_separate_handlers(
             "--json",
         ]
     )
-    snapshot_result = cli.main(["snapshot", "status", "--json"])
+    snapshot_result = cli.main(
+        ["snapshot", "status", "--artifacts", str(tmp_path), "--json"]
+    )
     snapshot = json.loads(capsys.readouterr().out)
 
     assert review_result == 0
@@ -187,10 +190,10 @@ def test_review_generate_and_snapshot_have_separate_handlers(
     assert calls[0].target_id == "target-1"
     assert calls[0].output == str(tmp_path / "review")
     assert calls[0].json
-    assert snapshot_result == 2
+    assert snapshot_result == 0
     assert snapshot["command"] == "snapshot status"
-    assert snapshot["status"] == "not_implemented"
-    assert "No acquisition snapshot is published" in snapshot["message"]
+    assert snapshot["published"] is False
+    assert snapshot["snapshot_id"] is None
 
 
 def test_invalid_worker_count_is_refused_by_cli_parser() -> None:
