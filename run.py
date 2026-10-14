@@ -61,6 +61,12 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         module="edgar_sec.apps.viewer.cli",
     ),
     LauncherEntry(
+        id="fetch",
+        label="Filing Runner & Fetch",
+        description="Unified end-to-end filing acquisition and DataFrame extraction",
+        module="edgar_sec.apps.client.cli",
+    ),
+    LauncherEntry(
         id="dag",
         label="Snapshot DAG Console",
         description="Interactive DAG lineage, swimlane graphs, tags, branches, and maintenance",

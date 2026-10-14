@@ -7,6 +7,7 @@ from edgar_sec.domain.forms.common.processing import (
     AcquisitionOperation,
     DocumentProcessingProfile,
 )
+from edgar_sec.domain.forms.families.annual.reports import AnnualReport
 
 # Processing profile for annual family (10-K, 20-F)
 PROFILE = DocumentProcessingProfile(
@@ -18,6 +19,8 @@ PROFILE = DocumentProcessingProfile(
             AcquisitionOperation.RENDER_TO_TXT,
         }
     ),
+    report_class=AnnualReport,
+    preferred_operation=AcquisitionOperation.RENDER_TO_TXT,
 )
 
 PROFILE_20F = DocumentProcessingProfile(
@@ -29,6 +32,8 @@ PROFILE_20F = DocumentProcessingProfile(
             AcquisitionOperation.RENDER_TO_TXT,
         }
     ),
+    report_class=AnnualReport,
+    preferred_operation=AcquisitionOperation.RENDER_TO_TXT,
 )
 
 __all__ = ["PROFILE", "PROFILE_20F"]

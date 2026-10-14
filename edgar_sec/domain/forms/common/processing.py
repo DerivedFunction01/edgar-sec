@@ -11,11 +11,14 @@ from dataclasses import dataclass
 from enum import StrEnum
 
 
-class AcquisitionOperation(StrEnum):
-    """Closed vocabulary of acquisition operations.
+from typing import TYPE_CHECKING
 
-    These names are versioned and resolved against the acquisition capability catalog.
-    """
+if TYPE_CHECKING:
+    from edgar_sec.domain.forms.reports import FormReport
+
+
+class AcquisitionOperation(StrEnum):
+    """Closed vocabulary of acquisition operations."""
 
     RAW = "raw"
     RENDER_TO_TXT = "render_to_txt"
@@ -24,14 +27,13 @@ class AcquisitionOperation(StrEnum):
 
 @dataclass(frozen=True, slots=True)
 class DocumentProcessingProfile:
-    """Declarative processing profile for a form family.
-
-    family, version, allowed_operations.
-    """
+    """Declarative processing profile for a form family."""
 
     family: str
     version: str
     allowed_operations: frozenset[AcquisitionOperation]
+    report_class: type[FormReport] | None = None
+    preferred_operation: AcquisitionOperation | None = None
 
     def has_operation(self, operation: AcquisitionOperation) -> bool:
         """Check if this family supports the given operation."""

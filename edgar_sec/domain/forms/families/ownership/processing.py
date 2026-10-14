@@ -6,6 +6,7 @@ from edgar_sec.domain.forms.common.processing import (
     AcquisitionOperation,
     DocumentProcessingProfile,
 )
+from edgar_sec.domain.forms.families.ownership.reports import OwnershipReport
 
 PROFILE_FORM_3 = DocumentProcessingProfile(
     family="3",
@@ -16,6 +17,8 @@ PROFILE_FORM_3 = DocumentProcessingProfile(
             AcquisitionOperation.RENDER_TO_XML,
         }
     ),
+    report_class=OwnershipReport,
+    preferred_operation=AcquisitionOperation.RENDER_TO_XML,
 )
 
 PROFILE_FORM_4 = DocumentProcessingProfile(
@@ -27,6 +30,8 @@ PROFILE_FORM_4 = DocumentProcessingProfile(
             AcquisitionOperation.RENDER_TO_XML,
         }
     ),
+    report_class=OwnershipReport,
+    preferred_operation=AcquisitionOperation.RENDER_TO_XML,
 )
 
 PROFILE_FORM_5 = DocumentProcessingProfile(
@@ -38,6 +43,8 @@ PROFILE_FORM_5 = DocumentProcessingProfile(
             AcquisitionOperation.RENDER_TO_XML,
         }
     ),
+    report_class=OwnershipReport,
+    preferred_operation=AcquisitionOperation.RENDER_TO_XML,
 )
 
 __all__ = ["PROFILE_FORM_3", "PROFILE_FORM_4", "PROFILE_FORM_5"]
