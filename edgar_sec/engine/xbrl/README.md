@@ -39,11 +39,8 @@ By decomposing taxonomy linkbases into explicit typed relational structures and 
                 ├── geography_dag.json  # Default path to geography DAG taxonomy file.
                 ├── industries.json  # Default path to industry profiles taxonomy file.
                 ├── prime_heads.json  # Default path to prime heads taxonomy file.
+                ├── seed_cohort.json  # Default path to the clean seed cohort input JSON.
                 ├── subatomic_modifiers.json  # Default path to subatomic modifiers taxonomy file.
                 └── typed_relations.json  # Default path to typed relations taxonomy file.
-
-{uploads_root}/
-└── xbrl/
-    └── seed_cohort.json  # Default path to the clean seed cohort input JSON.
 ```
 <!-- AUTOGEN:PATHS:END -->

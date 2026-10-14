@@ -64,7 +64,7 @@ class XbrlPaths:
     @property
     def default_seed_cohort_path(self) -> Path:
         """Default path to the clean seed cohort input JSON."""
-        return self.uploads_root / XBRL_DIR / DEFAULT_SEED_COHORT_FILE
+        return self.default_taxonomy_dir / DEFAULT_SEED_COHORT_FILE
 
     @property
     def default_taxonomy_dir(self) -> Path:
