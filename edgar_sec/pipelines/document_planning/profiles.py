@@ -510,6 +510,73 @@ def targets_for_form(profile: ResolvedProfile, form: str) -> tuple[ProfileTarget
     return ()
 
 
+def get_or_create_exhibit_profile(
+    exhibit_type: str | None = None,
+    profiles_root: str | Path | None = None,
+) -> ResolvedProfile:
+    """Return an exhibit profile targeting the specified exhibit type."""
+    if exhibit_type is None:
+        raise ValueError("exhibit_type is required")
+    norm_type = exhibit_type.strip().upper()
+    safe_id = validate_profile_id(f"exhibit-{norm_type.lower()}")
+    root = (
+        Path(profiles_root).resolve()
+        if profiles_root is not None
+        else resolve_document_planning_paths().profiles_root
+    )
+    root.mkdir(parents=True, exist_ok=True)
+    path = root / f"{safe_id}.json"
+
+    if path.exists():
+        try:
+            return load_profile(safe_id, root)
+        except (OSError, ValueError):
+            pass
+
+    import stat
+    import tempfile
+
+    profile_dict = {
+        "profile_id": safe_id,
+        "schema_version": PROFILE_SCHEMA_VERSION,
+        "version": "1.0.0",
+        "rules": [
+            {
+                "form_selector": "*",
+                "targets": [
+                    {
+                        "role": "primary",
+                        "type": "primary",
+                        "optional": False,
+                        "catalog_direct_selection": "submitted_primary",
+                    },
+                    {
+                        "role": "exhibit",
+                        "type": norm_type,
+                        "optional": True,
+                    },
+                ],
+            }
+        ],
+    }
+
+    temp_fd, temp_path = tempfile.mkstemp(
+        suffix=".json", prefix=f"{safe_id}.", dir=root
+    )
+    try:
+        with os.fdopen(temp_fd, "w", encoding="utf-8") as f:
+            f.write(json.dumps(profile_dict, indent=2, ensure_ascii=False) + "\n")
+        os.chmod(temp_path, stat.S_IRUSR | stat.S_IWUSR)
+        os.replace(temp_path, path)
+    except Exception:
+        try:
+            os.unlink(temp_path)
+        except OSError:
+            pass
+        raise
+    return load_profile(safe_id, root)
+
+
 __all__ = [
     "DiscoveredProfile",
     "ProfileRule",
@@ -518,6 +585,7 @@ __all__ = [
     "compatible_with_catalog_only",
     "discover_profiles",
     "get_or_create_baseline_profile",
+    "get_or_create_exhibit_profile",
     "load_profile",
     "profile_digest",
     "targets_for_form",

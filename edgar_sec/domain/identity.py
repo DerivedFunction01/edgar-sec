@@ -79,6 +79,11 @@ class AccessionNumber:
         """Accession number without hyphens (20 alphanumeric characters)."""
         return self.raw.replace("-", "")
 
+    @property
+    def value(self) -> str:
+        """Accession number in hyphenated form."""
+        return self.raw
+
     def __str__(self) -> str:
         return self.raw
 

@@ -3,12 +3,18 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Sequence
+from typing import TYPE_CHECKING, Literal, Sequence
 
+from edgar_sec.apps.client.cache import DocumentCache, get_default_cache
+from edgar_sec.apps.client.fast_query import query_catalog_fast
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.apps.runner.config import RunnerOptions, TargetSpec
 from edgar_sec.apps.runner.coordinator import PipelineRunner
+from edgar_sec.domain.identity import Cik
 from edgar_sec.infra.sec_http.client import SecHttpClient
+
+if TYPE_CHECKING:
+    from edgar_sec.apps.client.entity import Company
 
 
 class Edgar:
@@ -20,12 +26,21 @@ class Edgar:
         artifacts_root: Path | str | None = None,
         sec_client: SecHttpClient | None = None,
         workers: int | None = None,
+        cache: DocumentCache | None = None,
     ) -> None:
         self.artifacts_root = (
             Path(artifacts_root) if artifacts_root is not None else None
         )
         self.sec_client = sec_client
         self.workers = workers
+        self._cache = cache
+
+    @property
+    def cache(self) -> DocumentCache:
+        """Return DocumentCache instance for this facade."""
+        if self._cache is None:
+            self._cache = get_default_cache()
+        return self._cache
 
     def fetch(
         self,
@@ -38,8 +53,11 @@ class Edgar:
         limit: int | None = None,
         operation: str = "raw",
         family_operations: dict[str, str] | None = None,
+        mode: Literal["fast", "pipeline"] = "fast",
+        publish_snapshot: bool = False,
+        workers: int | None = None,
     ) -> FilingsResult:
-        """Execute end-to-end acquisition and return a relational FilingsResult."""
+        """Execute acquisition and return a relational FilingsResult."""
         form_tuple = (
             (forms,) if isinstance(forms, str) else tuple(str(f) for f in forms)
         )
@@ -48,6 +66,18 @@ class Edgar:
             if isinstance(ciks, (str, int))
             else tuple(str(c) for c in ciks)
         )
+        if mode == "fast" and not publish_snapshot and role == "primary":
+            return query_catalog_fast(
+                ciks=cik_tuple,
+                forms=form_tuple,
+                dates=dates,
+                limit=limit,
+                artifacts_root=self.artifacts_root,
+                cache=self.cache,
+                http_client_factory=(
+                    (lambda: self.sec_client) if self.sec_client else None
+                ),
+            )
         suffix_tuple = (
             (suffixes,)
             if isinstance(suffixes, str)
@@ -61,12 +91,14 @@ class Edgar:
             role=role,
             limit=limit,
         )
+        effective_workers = workers if workers is not None else self.workers
         options = RunnerOptions(
             operation=operation,
             family_operations=family_operations or {},
-            workers=self.workers,
+            workers=effective_workers,
             sec_client=self.sec_client,
             artifacts_root=self.artifacts_root,
+            publish_snapshot=publish_snapshot,
         )
         runner = PipelineRunner(options)
         return runner.run(spec)
@@ -78,21 +110,33 @@ class Edgar:
         operation: str = "raw",
         family_operations: dict[str, str] | None = None,
         role: str = "primary",
+        publish_snapshot: bool = False,
+        workers: int | None = None,
     ) -> FilingsResult:
         """Execute end-to-end acquisition against an arbitrary DuckDB-readable file."""
         spec = TargetSpec(
             role=role,
             input_file=Path(file_path),
         )
+        effective_workers = workers if workers is not None else self.workers
         options = RunnerOptions(
             operation=operation,
             family_operations=family_operations or {},
-            workers=self.workers,
+            workers=effective_workers,
             sec_client=self.sec_client,
             artifacts_root=self.artifacts_root,
+            publish_snapshot=publish_snapshot,
         )
         runner = PipelineRunner(options)
         return runner.run(spec)
+
+    def company(self, identifier: str | int | Cik) -> Company:
+        """Resolve an entity by ticker or CIK and return a Company model."""
+        from edgar_sec.apps.client.entity import Company
+        from edgar_sec.apps.client.resolver import resolve_entity_profile
+
+        profile = resolve_entity_profile(identifier, self.artifacts_root)
+        return Company(profile=profile, facade=self)
 
 
 __all__ = ["Edgar"]

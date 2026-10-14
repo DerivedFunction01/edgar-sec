@@ -55,6 +55,15 @@ class PipelineRunner:
     def _resolve_profile_id(self, spec: TargetSpec) -> str:
         if spec.role == "primary":
             return "primary-only"
+        if spec.role.upper().startswith("EX-"):
+            from edgar_sec.pipelines.document_planning.profiles import (
+                get_or_create_exhibit_profile,
+            )
+
+            profile = get_or_create_exhibit_profile(
+                spec.role, profiles_root=self.planning_paths.profiles_root
+            )
+            return profile.profile_id
         return spec.role
 
     def run(self, spec: TargetSpec) -> FilingsResult:
@@ -67,7 +76,7 @@ class PipelineRunner:
             profile_id,
             paths=self.planning_paths,
         )
-        doc_plan_id = str(doc_plan["plan_id"])
+        doc_plan_id = doc_plan.plan_id
 
         project_result = project_acquisition_run(
             doc_plan_id, paths=self.acquisition_paths
@@ -96,6 +105,19 @@ class PipelineRunner:
         finally:
             transport.close()
 
+        snapshot_id: str | None = None
+        if self.options.publish_snapshot:
+            from edgar_sec.pipelines.document_acquisition.snapshot.writer import (
+                publish_acquisition_run,
+            )
+
+            publication = publish_acquisition_run(
+                self.acquisition_paths,
+                run_id,
+                allow_errors=True,
+            )
+            snapshot_id = publication.snapshot_id
+
         target_parquet_glob = str(
             self.planning_paths.plan_dir(doc_plan_id) / "targets" / "**" / "*.parquet"
         )
@@ -107,6 +129,7 @@ class PipelineRunner:
             target_parquet_glob=target_parquet_glob,
             run_state_sqlite_path=run_state_sqlite_path,
             artifacts_root=self.acquisition_paths.artifacts_root,
+            snapshot_id=snapshot_id,
         )
 
 

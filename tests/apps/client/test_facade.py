@@ -23,7 +23,13 @@ def test_edgar_facade_builds_specs_and_delegates(monkeypatch) -> None:
         "edgar_sec.apps.runner.coordinator.PipelineRunner.run", fake_run
     )
 
-    result = edgar.fetch(forms=["4", "3"], ciks=["109694"], dates="2024", limit=50)
+    result = edgar.fetch(
+        forms=["4", "3"],
+        ciks=["109694"],
+        dates="2024",
+        limit=50,
+        mode="pipeline",
+    )
 
     assert result == "mock_result"
     assert len(captured_specs) == 1
@@ -31,6 +37,20 @@ def test_edgar_facade_builds_specs_and_delegates(monkeypatch) -> None:
     assert captured_specs[0].ciks == ("109694",)
     assert captured_specs[0].dates == "2024"
     assert captured_specs[0].limit == 50
+
+
+def test_edgar_facade_fast_mode_delegation(monkeypatch) -> None:
+    edgar = Edgar()
+
+    def fake_fast_query(**kwargs):
+        return "fast_result"
+
+    monkeypatch.setattr(
+        "edgar_sec.apps.client.facade.query_catalog_fast", fake_fast_query
+    )
+
+    res = edgar.fetch(forms=["10-K"], ciks=["320193"], mode="fast")
+    assert res == "fast_result"
 
 
 def test_edgar_fetch_from_file(monkeypatch, tmp_path) -> None:
@@ -95,3 +115,11 @@ def test_filings_result_dataframe_and_index_access(tmp_path) -> None:
     first_filing = res[0]
     assert first_filing.form in {"4", "10-K"}
     assert first_filing.run_id == "run-1"
+
+
+def test_edgar_company_resolves_profile() -> None:
+    edgar = Edgar()
+    company = edgar.company("0000001750")
+    assert company.cik.value == 1750
+    assert company.name == "AAR CORP"
+    assert "AIR" in company.tickers
