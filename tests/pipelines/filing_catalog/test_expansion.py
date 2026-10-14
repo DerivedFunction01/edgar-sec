@@ -31,12 +31,12 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     SEED_FILERS_FILE,
     resolve_filing_catalog_paths,
 )
-from edgar_sec.pipelines.filing_catalog.planner import plan_policy
+from edgar_sec.pipelines.filing_catalog.planning.policy import plan_policy
 from edgar_sec.pipelines.filing_catalog.publication import (
     plan_fingerprint,
     plan_locator_keys,
 )
-from tests.pipelines.filing_catalog.test_policy_planner import _policy
+from tests.pipelines.filing_catalog.planning.test_policy import _policy
 
 
 def _root(catalog_artifacts_root: Path) -> Path:
@@ -373,7 +373,7 @@ def test_a_deterministic_parent_cannot_be_expanded(
     catalog_artifacts_root: Path,
 ) -> None:
     """A deterministic plan has no policy to extend and no quota to preserve."""
-    from edgar_sec.pipelines.filing_catalog.planner import plan
+    from edgar_sec.pipelines.filing_catalog.planning.deterministic import plan
 
     artifacts_root = _root(catalog_artifacts_root)
     catalog_id = str(catalog_snapshot[0]["catalog_id"])

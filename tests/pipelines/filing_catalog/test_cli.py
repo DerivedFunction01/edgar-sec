@@ -89,6 +89,11 @@ def test_plan_accepts_accession_cap_and_exhibit_minimum() -> None:
     assert args.min_exhibit_like == 3
 
 
+def test_plan_accepts_xbrl_only_flag() -> None:
+    args = build_parser().parse_args(["plan", "--catalog", "abc", "--xbrl-only"])
+    assert args.xbrl_only is True
+
+
 def test_plan_accepts_cohort_selection_flags() -> None:
     args = build_parser().parse_args(
         [

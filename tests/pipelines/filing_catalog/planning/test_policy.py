@@ -50,12 +50,12 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     TARGETS_DIR,
     resolve_filing_catalog_paths,
 )
-from edgar_sec.pipelines.filing_catalog.planner import (
+from edgar_sec.domain.filing_catalog.schemas import (
     SCOPE_DETERMINISTIC,
     SCOPE_POLICY,
-    plan,
-    plan_policy,
 )
+from edgar_sec.pipelines.filing_catalog.planning.deterministic import plan
+from edgar_sec.pipelines.filing_catalog.planning.policy import plan_policy
 from edgar_sec.pipelines.cohort.family_index import publish_family_index
 from edgar_sec.pipelines.filing_catalog.publication import (
     PlanConflictError,

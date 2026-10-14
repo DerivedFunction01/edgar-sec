@@ -22,7 +22,7 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     form_partition_name,
     resolve_filing_catalog_paths,
 )
-from edgar_sec.pipelines.filing_catalog.planner import plan
+from edgar_sec.pipelines.filing_catalog.planning.deterministic import plan
 from edgar_sec.pipelines.filing_catalog.publication import (
     PlanConflictError,
     plan_bundle_complete,
@@ -623,3 +623,22 @@ def test_locator_representatives_are_deterministic(
         _plan_dir(other_root, second) / LOCATOR_GROUPS_FILE
     ).to_pylist()
     assert rows_first == rows_second
+
+
+def test_plan_xbrl_only_filters_non_xbrl_filings(
+    catalog_id: str, artifacts_root: Path
+) -> None:
+    """xbrl_only filter restricts targets to rows with is_xbrl or is_inline_xbrl."""
+    all_plan = plan(catalog_id, artifacts_root)
+    xbrl_plan = plan(catalog_id, artifacts_root, xbrl_only=True)
+    assert xbrl_plan["plan_id"] != all_plan["plan_id"]
+    assert xbrl_plan["xbrl_only"] is True
+
+    plan_dir = _plan_dir(artifacts_root, xbrl_plan)
+    targets_root = plan_dir / PLAN_TARGETS_DIR
+    for part in targets_root.rglob("*.parquet"):
+        table = pq.read_table(part)
+        is_xbrl = table.column("is_xbrl").to_pylist()
+        is_ixbrl = table.column("is_inline_xbrl").to_pylist()
+        for x, ix in zip(is_xbrl, is_ixbrl, strict=True):
+            assert x is True or ix is True

@@ -23,8 +23,13 @@ from edgar_sec.pipelines.document_acquisition.runner import execute_acquisition_
 from edgar_sec.pipelines.document_planning.paths import resolve_document_planning_paths
 from edgar_sec.pipelines.document_planning.planner import create_document_plan
 from edgar_sec.pipelines.filing_catalog.discovery import current_catalog_id
-from edgar_sec.pipelines.filing_catalog.paths import resolve_filing_catalog_paths
-from edgar_sec.pipelines.filing_catalog.planner import plan as build_catalog_plan
+from edgar_sec.pipelines.filing_catalog.paths import (
+    PLAN_TARGETS_DIR,
+    resolve_filing_catalog_paths,
+)
+from edgar_sec.pipelines.filing_catalog.planning.deterministic import (
+    plan as build_catalog_plan,
+)
 
 
 class PipelineRunner:
@@ -119,7 +124,10 @@ class PipelineRunner:
             snapshot_id = publication.snapshot_id
 
         target_parquet_glob = str(
-            self.planning_paths.plan_dir(doc_plan_id) / "targets" / "**" / "*.parquet"
+            self.planning_paths.plan_dir(doc_plan_id)
+            / PLAN_TARGETS_DIR
+            / "**"
+            / "*.parquet"
         )
         run_state_sqlite_path = self.acquisition_paths.run_state_path(run_id)
 

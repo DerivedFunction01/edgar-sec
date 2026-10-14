@@ -43,7 +43,9 @@ def _action_benchmark() -> None:
         PickItem(key=str(idx), label=c["label"], value=c["path"])
         for idx, c in enumerate(cohorts, start=1)
     ]
-    chosen = prompt_paginated_choice(items, prompt_label="Select cohort for benchmark", default=items[0])
+    chosen = prompt_paginated_choice(
+        items, prompt_label="Select cohort for benchmark", default=items[0]
+    )
     if chosen is None:
         return
     print(f"\nExecuting benchmark against: {chosen.value} ...")
@@ -63,7 +65,9 @@ def _action_generate_review() -> None:
         PickItem(key=str(idx), label=c["label"], value=c["path"])
         for idx, c in enumerate(cohorts, start=1)
     ]
-    chosen = prompt_paginated_choice(items, prompt_label="Select cohort for review run", default=items[0])
+    chosen = prompt_paginated_choice(
+        items, prompt_label="Select cohort for review run", default=items[0]
+    )
     if chosen is None:
         return
     limit_raw = prompt_text("Limit filings (press enter for all)", "").strip()
@@ -99,15 +103,22 @@ def _action_compare_runs() -> None:
         )
         for idx, r in enumerate(runs, start=1)
     ]
-    base_choice = prompt_paginated_choice(items, prompt_label="Select base review run", default=items[1])
+    base_choice = prompt_paginated_choice(
+        items, prompt_label="Select base review run", default=items[1]
+    )
     if base_choice is None:
         return
-    new_choice = prompt_paginated_choice(items, prompt_label="Select new review run", default=items[0])
+    new_choice = prompt_paginated_choice(
+        items, prompt_label="Select new review run", default=items[0]
+    )
     if new_choice is None:
         return
 
     adapter = XbrlReviewAdapter()
-    diff_dir = resolve_xbrl_review_paths().review_runs_dir / f"diff-{base_choice.value.name}_vs_{new_choice.value.name}"
+    diff_dir = (
+        resolve_xbrl_review_paths().review_runs_dir
+        / f"diff-{base_choice.value.name}_vs_{new_choice.value.name}"
+    )
     print(f"\nComparing {base_choice.value.name} vs {new_choice.value.name}...")
     summary = compare_review_runs(
         base_dir=base_choice.value,
@@ -139,7 +150,9 @@ def _action_promote_rule() -> None:
         )
         for idx, r in enumerate(runs, start=1)
     ]
-    chosen_run = prompt_paginated_choice(items, prompt_label="Select review run to inspect", default=items[0])
+    chosen_run = prompt_paginated_choice(
+        items, prompt_label="Select review run to inspect", default=items[0]
+    )
     if chosen_run is None:
         return
 
@@ -166,7 +179,9 @@ def _action_promote_rule() -> None:
         )
         for idx, h in enumerate(all_hyps, start=1)
     ]
-    chosen_hyp = prompt_paginated_choice(hyp_items, prompt_label="Select hypothesis to promote")
+    chosen_hyp = prompt_paginated_choice(
+        hyp_items, prompt_label="Select hypothesis to promote"
+    )
     if chosen_hyp is None:
         return
 
@@ -180,7 +195,9 @@ def _action_inspect_rules() -> None:
         print(f"No unification rules database found at {db_p}")
         return
     con = connect(database=db_p, read_only=True)
-    rows = con.execute("SELECT rule_id, target_concept, source_concept, algebraic_weight, scope_firm FROM xbrl_unification_rules").fetchall()
+    rows = con.execute(
+        "SELECT rule_id, target_concept, source_concept, algebraic_weight, scope_firm FROM xbrl_unification_rules"
+    ).fetchall()
     con.close()
     if not rows:
         print("Unification rules table is currently empty.")
@@ -193,7 +210,9 @@ def _action_inspect_rules() -> None:
 def build_operator_menu() -> tuple[MenuAction, ...]:
     """Build the menu action loop for the XBRL review operator console."""
     return build_menu(
-        menu_action("Run semantic robustness benchmark (Seed / S&P 100)", _action_benchmark),
+        menu_action(
+            "Run semantic robustness benchmark (Seed / S&P 100)", _action_benchmark
+        ),
         menu_action("Generate new review run from cohort", _action_generate_review),
         menu_action("Compare two review runs and report diffs", _action_compare_runs),
         menu_action("Inspect and promote candidate hypotheses", _action_promote_rule),

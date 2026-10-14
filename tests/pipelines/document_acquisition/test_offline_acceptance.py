@@ -72,7 +72,9 @@ from edgar_sec.pipelines.document_inventory.snapshot.writer import (
 from edgar_sec.pipelines.document_inventory.run_state.run_state import load_run_state
 from edgar_sec.pipelines.filing_catalog.catalog_job import materialize
 from edgar_sec.pipelines.filing_catalog.paths import resolve_filing_catalog_paths
-from edgar_sec.pipelines.filing_catalog.planner import plan as plan_catalog
+from edgar_sec.pipelines.filing_catalog.planning.deterministic import (
+    plan as plan_catalog,
+)
 from tests.pipelines.document_acquisition.plan_projection.plan_fixture import (
     write_plan_bundle,
 )

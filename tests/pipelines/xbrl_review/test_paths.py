@@ -11,7 +11,10 @@ def test_resolve_xbrl_review_paths(tmp_path: Path) -> None:
     assert paths.artifacts_root == tmp_path
     assert paths.review_runs_dir == tmp_path / "xbrl" / "review-runs"
     assert paths.staging_lake_dir == tmp_path / "xbrl" / "staging_lake"
-    assert paths.unification_rules_db_path == tmp_path / "xbrl" / "unification_rules.duckdb"
+    assert (
+        paths.unification_rules_db_path
+        == tmp_path / "xbrl" / "unification_rules.duckdb"
+    )
 
     paths.ensure_directories()
     assert paths.review_runs_dir.is_dir()

@@ -5,16 +5,15 @@ from __future__ import annotations
 import argparse
 import sys
 
+from edgar_sec.domain.filing_catalog.options import PlanFilterOptions
+from edgar_sec.domain.filing_catalog.schemas import SCOPE_POLICY
 from edgar_sec.engine.selection.policy import SelectionPolicy
 from edgar_sec.foundation.runtime.render import KeyValueRow, render_output
 from edgar_sec.pipelines.filing_catalog.discovery import auto_policy
-from edgar_sec.pipelines.filing_catalog.planner import (
-    SCOPE_POLICY,
-)
-from edgar_sec.pipelines.filing_catalog.planner import (
+from edgar_sec.pipelines.filing_catalog.planning.deterministic import (
     plan as build_plan,
 )
-from edgar_sec.pipelines.filing_catalog.planner import (
+from edgar_sec.pipelines.filing_catalog.planning.policy import (
     plan_policy as build_policy_plan,
 )
 from edgar_sec.pipelines.filing_catalog.publication import PlanConflictError
@@ -56,16 +55,20 @@ def cmd_plan(args: argparse.Namespace) -> int:
         else:
             if args.seed_cohort:
                 raise ValueError("--seed-cohort is only valid for policy scope")
-            plan = build_plan(
-                args.catalog,
-                artifacts,
-                forms=tuple(args.forms) if args.forms else None,
+            filters = PlanFilterOptions(
+                forms=tuple(args.forms) if args.forms else (),
                 document_suffixes=(tuple(args.suffixes) if args.suffixes else None),
                 dates=args.dates,
                 limit=args.limit,
                 accession_limit=args.accession_limit,
                 min_exhibit_like=args.min_exhibit_like,
                 cohort=args.cohort or None,
+                xbrl_only=bool(getattr(args, "xbrl_only", False)),
+            )
+            plan = build_plan(
+                args.catalog,
+                artifacts,
+                filters=filters,
                 progress=emit_progress,
             )
     except (PlanConflictError, ValueError, OSError) as error:

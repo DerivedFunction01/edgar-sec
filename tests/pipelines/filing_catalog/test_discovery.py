@@ -20,7 +20,7 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     validate_safe_id,
 )
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.pipelines.filing_catalog.planner import plan
+from edgar_sec.pipelines.filing_catalog.planning.deterministic import plan
 from edgar_sec.pipelines.filing_catalog.publication import PlanConflictError
 
 

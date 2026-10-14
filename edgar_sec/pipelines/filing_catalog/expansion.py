@@ -28,7 +28,8 @@ from edgar_sec.pipelines.filing_catalog.cohort_seed import (
     SeedFilerSource,
     seed_filer_csv_source,
 )
-from edgar_sec.pipelines.filing_catalog.planner import SCOPE_POLICY, plan_policy
+from edgar_sec.domain.filing_catalog.schemas import SCOPE_POLICY
+from edgar_sec.pipelines.filing_catalog.planning.policy import plan_policy
 from edgar_sec.pipelines.filing_catalog.publication import (
     TARGET_PLAN_SCHEMA_VERSION,
     plan_fingerprint_from_plan,

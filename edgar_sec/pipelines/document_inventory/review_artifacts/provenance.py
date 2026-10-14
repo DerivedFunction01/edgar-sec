@@ -6,6 +6,7 @@ from pathlib import Path
 
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.document_inventory.paths import (
+    PLAN_TARGETS_DIR,
     InventoryPaths,
     resolve_filing_catalog_paths,
 )
@@ -46,7 +47,7 @@ def form_lookup_for_review_records(
 
     target_files = []
     for plan_id in sorted(plan_ids):
-        plan_targets = catalog_paths.plan_dir(plan_id) / "targets"
+        plan_targets = catalog_paths.plan_dir(plan_id) / PLAN_TARGETS_DIR
         target_files.extend(sorted(plan_targets.glob("form=*/**/*.parquet")))
     if not target_files:
         return {}

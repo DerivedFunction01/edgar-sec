@@ -18,7 +18,7 @@ from edgar_sec.infra.storage.dag.cli import (
 from edgar_sec.pipelines.filing_catalog.paths import (
     resolve_filing_catalog_paths,
 )
-from edgar_sec.pipelines.filing_catalog.planner import (
+from edgar_sec.domain.filing_catalog.schemas import (
     SCOPE_DETERMINISTIC,
     SCOPE_POLICY,
 )
@@ -139,6 +139,11 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         metavar="N",
         help="minimum exhibit-like primary accessions within the accession cap",
+    )
+    plan_parser.add_argument(
+        "--xbrl-only",
+        action="store_true",
+        help="restrict targets to filings with XBRL or Inline XBRL evidence",
     )
     plan_parser.set_defaults(func=cmd_plan)
 

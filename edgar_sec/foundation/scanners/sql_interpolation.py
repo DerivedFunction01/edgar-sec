@@ -52,7 +52,8 @@ _SQL_COMPILER_PATHS = frozenset(
         # Feature SQL embeds only relations compiled from validated forms and paths.
         "edgar_sec/engine/selection/features.py",
         "edgar_sec/engine/selection/snapshot_build.py",
-        "edgar_sec/pipelines/filing_catalog/planner.py",
+        "edgar_sec/pipelines/filing_catalog/planning/deterministic.py",
+        "edgar_sec/pipelines/filing_catalog/planning/policy.py",
         # Seed relations and cohort/sidecar paths are SQL-literal escaped before use.
         "edgar_sec/pipelines/filing_catalog/cohort_seed.py",
         # The source relation and predicate are compiled by the catalog planner;

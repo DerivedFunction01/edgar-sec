@@ -67,21 +67,46 @@ class XbrlReviewPaths:
     @property
     def default_seed_cohort_path(self) -> Path:
         """Default seed cohort fixture path."""
-        repo_fixture = self.repo_root / "tests" / "fixtures" / "xbrl" / DEFAULT_SEED_COHORT_FILE
+        repo_fixture = (
+            self.repo_root / "tests" / "fixtures" / "xbrl" / DEFAULT_SEED_COHORT_FILE
+        )
         if repo_fixture.is_file():
             return repo_fixture
-        return self.repo_root / "edgar_sec" / "engine" / "xbrl" / "taxonomy" / DEFAULT_SEED_COHORT_FILE
+        return (
+            self.repo_root
+            / "edgar_sec"
+            / "engine"
+            / "xbrl"
+            / "taxonomy"
+            / DEFAULT_SEED_COHORT_FILE
+        )
 
     @property
     def default_sp100_cohort_path(self) -> Path:
         """Default S&P 100 cohort fixture path."""
-        repo_fixture = self.repo_root / "tests" / "fixtures" / "xbrl" / DEFAULT_SP100_COHORT_FILE
+        repo_fixture = (
+            self.repo_root / "tests" / "fixtures" / "xbrl" / DEFAULT_SP100_COHORT_FILE
+        )
         if repo_fixture.is_file():
             return repo_fixture
-        repo_tax_fixture = self.repo_root / "tests" / "fixtures" / "xbrl" / "taxonomy" / DEFAULT_SP100_COHORT_FILE
+        repo_tax_fixture = (
+            self.repo_root
+            / "tests"
+            / "fixtures"
+            / "xbrl"
+            / "taxonomy"
+            / DEFAULT_SP100_COHORT_FILE
+        )
         if repo_tax_fixture.is_file():
             return repo_tax_fixture
-        return self.repo_root / "edgar_sec" / "engine" / "xbrl" / "taxonomy" / DEFAULT_SP100_COHORT_FILE
+        return (
+            self.repo_root
+            / "edgar_sec"
+            / "engine"
+            / "xbrl"
+            / "taxonomy"
+            / DEFAULT_SP100_COHORT_FILE
+        )
 
     def review_run_paths(self, run_id: str) -> ReviewPaths:
         """Return ReviewPaths handle for a specific chronological review run."""
