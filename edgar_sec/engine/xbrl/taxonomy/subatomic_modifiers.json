@@ -145,8 +145,10 @@
       "Unrecognized",
       "FairValue",
       "Remeasurement",
-      "Translation"
+      "Translation",
+      "MarkToMarketGainLoss"
     ],
+    "realization_state": "UNREALIZED_M2M",
     "description": "Unrealized fair-value or OCI mark-to-market"
   },
   {
@@ -365,15 +367,5 @@
     ],
     "valuation_basis": "FAIR_VALUE",
     "description": "Fair value measurement basis (ASC 820)"
-  },
-  {
-    "modifier_id": "M_UNREALIZED",
-    "category": "REALIZATION_STATE",
-    "keywords": [
-      "Unrealized",
-      "MarkToMarketGainLoss"
-    ],
-    "realization_state": "UNREALIZED_M2M",
-    "description": "Unrealized mark-to-market gain or loss"
   }
 ]

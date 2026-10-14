@@ -21,7 +21,7 @@ def test_load_taxonomy_from_fixtures() -> None:
     taxonomy = load_domain_taxonomy(tax_dir)
 
     assert len(taxonomy.prime_heads) == 12
-    assert len(taxonomy.subatomic_modifiers) == 34
+    assert len(taxonomy.subatomic_modifiers) == 33
     assert taxonomy.atom_relations is not None
     assert len(taxonomy.atom_relations.relations) >= 10
     assert taxonomy.token_lexicon is not None

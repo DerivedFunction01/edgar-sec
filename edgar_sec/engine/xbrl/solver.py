@@ -36,7 +36,7 @@ class XbrlConstraintSolver:
     def solve_placements(
         self,
         facts: Sequence[XbrlFact],
-        calculation_arcs: Sequence[CalculationArc],
+        calculation_arcs: Sequence[CalculationArc] = (),
         *,
         firm: str = "",
         sector: str = "",
