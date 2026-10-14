@@ -61,7 +61,7 @@ YEAR_TOKEN_PATTERN = build_alternation(
 YEAR_TOKEN_RE = re.compile(rf"^\b({YEAR_TOKEN_PATTERN})\b$")
 YEAR_IN_TEXT_RE = re.compile(r"\b(\d{4})\b")
 NUMERIC_YEAR_RE = re.compile(r"\b(\d{2,4})\b")
-NUMERIC_DATE_RE = re.compile(r"\b\d{1,2}/\d{1,2}/\d{2,4}\b")
+NUMERIC_DATE_RE = re.compile(r"\b\d{1,2}[-/]\d{1,2}[-/]\d{2,4}\b")
 _WHITESPACE_RE = re.compile(r"\s+")
 
 TABLE_YEAR_RE = re.compile(
@@ -190,7 +190,10 @@ class ParsedDate:
 
 
 def _sep_pattern(separator: str) -> str:
-    escaped = re.escape(separator)
+    s = separator.strip()
+    if not s:
+        return r"\s+" if separator else r"\s*"
+    escaped = re.escape(s)
     return rf"\s*{escaped}\s*"
 
 
@@ -209,6 +212,8 @@ def _build_format_pattern(tokens: tuple[str, ...], separators: tuple[str, ...]) 
             parts.append(r"(?P<month>\d{1,2})")
         elif token == "YYYY":
             parts.append(r"(?P<year>\d{4})")
+        elif token == "YY":
+            parts.append(r"(?P<year>\d{2})")
     return rf"(?i)\b{''.join(parts)}\b"
 
 
@@ -217,7 +222,7 @@ def _build_formats() -> tuple[DateFormat, ...]:
         (
             "month_day_year",
             ("MM_name", "DD", "YYYY"),
-            (" ", ", "),
+            (" ", ","),
             100,
         ),
         (
@@ -233,16 +238,40 @@ def _build_formats() -> tuple[DateFormat, ...]:
             95,
         ),
         (
+            "day_month_year_dash",
+            ("DD_num", "MM_name", "YYYY"),
+            ("-", "-"),
+            94,
+        ),
+        (
             "year_month_day_iso",
             ("YYYY", "MM", "DD"),
             ("-", "-"),
             110,
         ),
         (
+            "year_month_day_compact",
+            ("YYYY", "MM", "DD"),
+            ("", ""),
+            108,
+        ),
+        (
             "year_month_day_name",
             ("YYYY", "MM_name", "DD"),
             (" ", " "),
             105,
+        ),
+        (
+            "month_year_comma",
+            ("MM_name", "YYYY"),
+            (",",),
+            85,
+        ),
+        (
+            "month_year_space",
+            ("MM_name", "YYYY"),
+            (" ",),
+            80,
         ),
         (
             "month_day_year_numeric",
@@ -256,6 +285,73 @@ def _build_formats() -> tuple[DateFormat, ...]:
             ("-", "-"),
             60,
         ),
+        (
+            "month_day_year_dot",
+            ("MM", "DD", "YYYY"),
+            (".", "."),
+            58,
+        ),
+    ]
+    return tuple(
+        DateFormat(
+            id=fmt_id,
+            pattern=re.compile(_build_format_pattern(tokens, separators)),
+            priority=priority,
+        )
+        for fmt_id, tokens, separators, priority in formats
+    )
+
+
+def _build_2digit_formats() -> tuple[DateFormat, ...]:
+    formats = [
+        (
+            "month_day_year_name_2digit",
+            ("MM_name", "DD", "YY"),
+            (" ", ","),
+            55,
+        ),
+        (
+            "month_day_year_name_2digit_nocomma",
+            ("MM_name", "DD", "YY"),
+            (" ", " "),
+            50,
+        ),
+        (
+            "day_month_year_dash_2digit",
+            ("DD_num", "MM_name", "YY"),
+            ("-", "-"),
+            48,
+        ),
+        (
+            "month_day_year_2digit",
+            ("MM", "DD", "YY"),
+            ("/", "/"),
+            45,
+        ),
+        (
+            "month_day_year_dash_2digit",
+            ("MM", "DD", "YY"),
+            ("-", "-"),
+            40,
+        ),
+        (
+            "month_day_year_dot_2digit",
+            ("MM", "DD", "YY"),
+            (".", "."),
+            38,
+        ),
+        (
+            "month_year_2digit_comma",
+            ("MM_name", "YY"),
+            (",",),
+            35,
+        ),
+        (
+            "month_year_2digit_space",
+            ("MM_name", "YY"),
+            (" ",),
+            30,
+        ),
     ]
     return tuple(
         DateFormat(
@@ -268,12 +364,14 @@ def _build_formats() -> tuple[DateFormat, ...]:
 
 
 SEC_DATE_FORMATS = _build_formats()
+ALL_SEC_DATE_FORMATS = SEC_DATE_FORMATS + _build_2digit_formats()
 
 
 def parse_date(
     text: str,
     *,
-    formats: Sequence[DateFormat] = SEC_DATE_FORMATS,
+    formats: Sequence[DateFormat] = ALL_SEC_DATE_FORMATS,
+    reference_year: int | None = None,
 ) -> ParsedDate | None:
     """Parse a complete date string against known formats."""
     normalized = _WHITESPACE_RE.sub(" ", text).strip()
@@ -287,11 +385,22 @@ def parse_date(
             continue
         year_str = match.group("year")
         month_str = match.group("month")
-        day_str = match.group("day")
-        if not (year_str and month_str and day_str):
+        group_dict = match.groupdict()
+        year_str = group_dict.get("year")
+        month_str = group_dict.get("month")
+        day_str = group_dict.get("day")
+        if not (year_str and month_str):
             continue
         year = int(year_str)
-        if not YEAR_RANGE[0] <= year <= YEAR_RANGE[1]:
+        if len(year_str) <= 2:
+            year = expand_2digit_year(year, reference_year=reference_year)
+        min_year = (
+            min(YEAR_RANGE[0], reference_year - 80) if reference_year else YEAR_RANGE[0]
+        )
+        max_year = (
+            max(YEAR_RANGE[1], reference_year + 50) if reference_year else YEAR_RANGE[1]
+        )
+        if not min_year <= year <= max_year:
             continue
         month = month_name_to_index(month_str)
         if month is None:
@@ -301,7 +410,7 @@ def parse_date(
                 continue
             if not 1 <= month <= 12:
                 continue
-        day = int(ORDINAL_SUFFIX_RE.sub("", day_str))
+        day = int(ORDINAL_SUFFIX_RE.sub("", day_str)) if day_str else 1
         if not 1 <= day <= 31:
             continue
         components = DateComponents(year=year, month=month, day=day)

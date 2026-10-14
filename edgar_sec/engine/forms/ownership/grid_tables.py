@@ -41,6 +41,7 @@ _FOOTNOTE_ENTRY_RE = re.compile(
     r"^\s*(?:[\(\[]\s*(\d{1,3})\s*[\)\]]|(\d{1,3})\.)\s*(.+)", re.MULTILINE
 )
 _CLEAN_NUMERIC_RE = re.compile(r"[\$,\s\(\)]")
+_ACQUIRED_DISPOSED_RE = re.compile(r"\b([AD])\b", re.IGNORECASE)
 
 
 @dataclass(frozen=True, slots=True)
@@ -201,7 +202,7 @@ def parse_table_ii_rows(
         # Amount & A/D
         amount_cell = row[4].strip() if len(row) > 4 else ""
         shares_amount = _extract_number(amount_cell)
-        ad_match = re.search(r"\b([AD])\b", amount_cell, re.IGNORECASE)
+        ad_match = _ACQUIRED_DISPOSED_RE.search(amount_cell)
         ad_code = ad_match.group(1).upper() if ad_match else None
 
         # Exercisable and Expiration Dates

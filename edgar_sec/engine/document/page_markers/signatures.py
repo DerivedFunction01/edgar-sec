@@ -16,6 +16,43 @@ from edgar_sec.foundation.text.dates import (
 
 RE_CONFORMED_SIGNATURE = re.compile(r"^\s*(?:\*\s*)?(?:By\s*:\s*|By\s+)?/\s*s\s*/\s*")
 
+SIGNATURE_DELEGATION_TERMS: tuple[str, ...] = (
+    "attorney-in-fact",
+    "attorney in fact",
+    "power of attorney",
+    "authorized signer",
+    "attorney",
+    "poa",
+    "esq",
+)
+SIGNATURE_TERMINATION_KEYWORDS: tuple[str, ...] = (
+    "by:",
+    "for:",
+    "date",
+    "as",
+    "for",
+)
+_DELEGATION_ALT = build_alternation(SIGNATURE_DELEGATION_TERMS, auto_escape=True)
+_TERMINATION_KEYWORD_ALT = build_alternation(
+    SIGNATURE_TERMINATION_KEYWORDS, auto_escape=True
+)
+_TERMINATION_ALT = build_alternation(
+    [
+        r"[,\n\r]",
+        rf"\s+(?:{_TERMINATION_KEYWORD_ALT})",
+        rf"\s+(?:{_DELEGATION_ALT})\b",
+        r"\s+\*{1,2}",
+        r"\s+\d{1,2}[-/]",
+        r"\s+\d{4}",
+        r"$",
+    ],
+    auto_escape=False,
+)
+RE_CONFORMED_SIGNER_NAME = re.compile(
+    rf"(?:By\s*:\s*|By\s+)?/\s*s\s*/:?\s*([A-Za-z\.\- ]+?)(?={_TERMINATION_ALT})",
+    re.IGNORECASE,
+)
+
 RE_POA_SIGNER = re.compile(r"^\s*\*\s*(?:By\s*:\s*|By\s+)", re.IGNORECASE)
 _SIGNATURE_ASTERISK_RE = re.compile(r"^\s*[*]+\s*$")
 
@@ -232,7 +269,9 @@ def heal_mangled_signature_text(text: str) -> str:
 
 __all__ = [
     "RE_CONFORMED_SIGNATURE",
+    "RE_CONFORMED_SIGNER_NAME",
     "RE_POA_SIGNER",
+    "SIGNATURE_DELEGATION_TERMS",
     "SignatureRegion",
     "find_signature_regions",
     "heal_mangled_signature_text",

@@ -2,22 +2,54 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 import re
 
 from edgar_sec.domain.forms.common.checkmarks import (
     CHECKED_TOKENS,
     CHECKMARK_MARK_RE,
 )
-from edgar_sec.domain.forms.common.vocabulary import SIGNATURE_TITLE_TERMS
-from edgar_sec.domain.taxonomy.jurisdictions import STATE_POSTAL_CODES
+from edgar_sec.domain.forms.families.ownership.models import (
+    FilingPeriod,
+    Form4Metadata,
+    Issuer,
+    ReportingOwner,
+)
+from edgar_sec.domain.taxonomy.legal_forms import LEGAL_FORMS
+from edgar_sec.engine.document.page_markers.signatures import (
+    RE_CONFORMED_SIGNER_NAME,
+)
+from edgar_sec.engine.forms.ownership.patterns import (
+    AMEND_DATE_CLEAN_RE,
+    AMEND_LABEL_RE,
+    AMEND_MATCH_RE,
+    BARE_BOX_NUM_RE,
+    BOX5_SPLIT_RE,
+    CLEAN_TEMPLATE_RE,
+    IRS_RE,
+    ISSUER_LABEL_TERMS,
+    ISSUER_TAIL_RE,
+    NAME_MATCH_RE,
+    NON_OWNER_JURISDICTION_RE,
+    PERIOD_MATCH_RE,
+    PERIOD_PREFIX_RE,
+    PROSE_BOILERPLATE_RE,
+    SIG_NAME_RE,
+    SIG_PERSON_PREFIX_RE,
+    STATE_ZIP_RE,
+    STREET_ANCHOR_RE,
+    STRIP_BOX_NUM_RE,
+    SYMBOL_TAIL_RE,
+    TICKER_DASH_RE,
+    TICKER_PAREN_RE,
+    TITLE_MATCH_RE,
+)
 from edgar_sec.engine.forms.ownership.sections import ClassifiedSection
-from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.dates import (
+    NUMERIC_DATE_RE,
+    RE_FULL_DATE,
+    parse_date,
+)
 
-_STATE_ALT = build_alternation(sorted(STATE_POSTAL_CODES))
-_STATE_ZIP_RE = re.compile(rf"\b({_STATE_ALT})\s+(\d{{5}}(?:-\d{{4}})?)\b")
-_IRS_RE = re.compile(r"\b(\d{2}-\d{7}|\d{9})\b")
-_SIG_DATE_RE = re.compile(r"\b(\d{1,2}[-/]\d{1,2}[-/]\d{2,4})\b")
 _ROLE_TARGETS = (
     ("director", "director"),
     ("officer", "officer"),
@@ -26,81 +58,19 @@ _ROLE_TARGETS = (
 )
 
 
-@dataclass(frozen=True, slots=True)
-class ReportingOwner:
-    name: str | None = None
-    street: str | None = None
-    city: str | None = None
-    state: str | None = None
-    zip_code: str | None = None
-    is_director: bool = False
-    is_officer: bool = False
-    is_ten_percent_owner: bool = False
-    is_other: bool = False
-    officer_title: str | None = None
-
-
-@dataclass(frozen=True, slots=True)
-class Issuer:
-    name: str | None = None
-    trading_symbol: str | None = None
-    irs_number: str | None = None
-
-
-@dataclass(frozen=True, slots=True)
-class FilingPeriod:
-    period_of_report: str | None = None
-    is_amendment: bool = False
-    date_of_original: str | None = None
-
-
-@dataclass(frozen=True, slots=True)
-class Form4Metadata:
-    issuer: Issuer
-    reporting_owner: ReportingOwner
-    period: FilingPeriod
-    signature_name: str | None = None
-    signature_date: str | None = None
-
-
-_TEMPLATE_LABELS = ("Last", "First", "Middle", "Street", "City", "State", "Zip")
-_TEMPLATE_LABEL_ALT = build_alternation(_TEMPLATE_LABELS, auto_escape=True)
-_CLEAN_TEMPLATE_RE = re.compile(rf"\((?:{_TEMPLATE_LABEL_ALT})\)", re.IGNORECASE)
-_CITY_MATCH_RE = re.compile(r"(?:[,\n]|^)\s*([A-Za-z\s\.\-]+),?\s*$")
-_NAME_MATCH_RE = re.compile(r"Reporting Person\*?\s*(.+?)(?:\(Last\)|\n|$)")
-_STREET_MATCH_RE = re.compile(r"(?:\(Middle\)\s*|\n)(.+?)(?:\(Street\)|\n)")
-_TITLE_MATCH_RE = re.compile(r"Description\s*([^\n]+)", re.IGNORECASE)
-_PERIOD_MATCH_RE = re.compile(
-    r"Statement for(?:\s*\(Month/Year\))?\s*:?\s*([A-Za-z0-9/,\- ]+)",
-    re.IGNORECASE,
-)
-_AMEND_MATCH_RE = re.compile(r"Date of Original[^\n]*\n([^\n]+)", re.IGNORECASE)
-_SIG_NAME_TERMINATOR_ALT = build_alternation(
-    [r"\s+\d{1,2}[-/]\d{1,2}[-/]\d{2,4}", r"\n", r"$"],
-    auto_escape=False,
-)
-_SIG_NAME_RE = re.compile(
-    rf"Signature of Reporting Person(?:\s+Date)?\s+([A-Za-z\.\- ]+?)(?:{_SIG_NAME_TERMINATOR_ALT})",
-    re.IGNORECASE,
-)
-_TICKER_KEYWORD_ALT = build_alternation(
-    ["trading symbol", "ticker symbol", "symbol"],
-    auto_escape=True,
-)
-_TICKER_LINE_RE = re.compile(
-    rf"(?:{_TICKER_KEYWORD_ALT})\s*:?\s*(.+)$",
-    re.IGNORECASE,
-)
-
-
 def _clean_template_artifacts(text: str) -> str:
-    return _CLEAN_TEMPLATE_RE.sub("\n", text).strip()
+    return CLEAN_TEMPLATE_RE.sub("\n", text).strip()
 
 
 def _resolve_checked_roles(role_cell_text: str) -> dict[str, bool]:
     solved: dict[str, bool] = {key: False for key, _ in _ROLE_TARGETS}
+    role_lower = role_cell_text.lower()
+    if not any(phrase in role_lower for _, phrase in _ROLE_TARGETS):
+        return solved
     for line in role_cell_text.splitlines():
         line_l = line.lower()
+        if not any(phrase in line_l for _, phrase in _ROLE_TARGETS):
+            continue
         marks: list[re.Match[str]] = []
         for mark_match in CHECKMARK_MARK_RE.finditer(line):
             tok = mark_match.group(0).strip()
@@ -136,29 +106,75 @@ def _parse_reporting_owner(cell_text: str, role_cell_text: str) -> ReportingOwne
     city: str | None = None
     state: str | None = None
     zip_code: str | None = None
+    irs_number: str | None = None
 
     cleaned_cell = _clean_template_artifacts(cell_text)
-    lines = [line.strip() for line in cleaned_cell.splitlines() if line.strip()]
+    raw_lines = cleaned_cell.splitlines()
 
-    for idx, line in enumerate(lines):
-        sz = _STATE_ZIP_RE.search(line)
-        if sz:
+    csz_idx = -1
+    street_candidates: list[tuple[int, str]] = []
+    name_candidates: list[str] = []
+
+    for idx, raw_line in enumerate(raw_lines):
+        line = raw_line.strip()
+        if not line or BARE_BOX_NUM_RE.match(line):
+            continue
+        lower = line.lower()
+        if irs_number is None and (m_irs := IRS_RE.search(line)):
+            irs_number = m_irs.group(1)
+            continue
+        if (
+            not name
+            and "reporting person" in lower
+            and "i.r.s." not in lower
+            and "identification" not in lower
+        ):
+            m = NAME_MATCH_RE.search(line)
+            if m:
+                cap = m.group(1).strip(", \n\r*")
+                if cap and not PROSE_BOILERPLATE_RE.search(cap):
+                    name = cap
+            continue
+        if PROSE_BOILERPLATE_RE.search(line) or NON_OWNER_JURISDICTION_RE.match(line):
+            continue
+        if csz_idx == -1 and (sz := STATE_ZIP_RE.search(line)):
             state = sz.group(1)
             zip_code = sz.group(2)
             city_cand = line[: sz.start()].strip(", \n\r")
             if city_cand:
                 city = city_cand
-            if idx > 0 and street is None:
-                street = lines[idx - 1]
-        elif "reporting person" in line.lower():
-            m = _NAME_MATCH_RE.search(line)
-            if m and m.group(1).strip():
-                name = m.group(1).strip(", \n\r")
-            elif idx + 1 < len(lines):
-                name = lines[idx + 1]
+            csz_idx = idx
+            continue
+        if "$" in line or parse_date(line) or IRS_RE.search(line):
+            continue
+        cleaned = STRIP_BOX_NUM_RE.sub("", line).strip(", \n\r*")
+        if not cleaned:
+            continue
+        has_anchor = bool(STREET_ANCHOR_RE.search(line))
+        has_digits = any(c.isdigit() for c in line)
+        if (
+            has_anchor
+            and (has_digits or any(k in lower for k in ("p.o.", "c/o", "penthouse")))
+        ) or (has_digits and len(cleaned) < 70 and not STATE_ZIP_RE.search(line)):
+            street_candidates.append((idx, cleaned))
+        elif not name and 1 <= len(cleaned.split()) <= 6:
+            name_candidates.append(cleaned)
+
+    if street_candidates:
+        if csz_idx != -1:
+            before_csz = [s for idx, s in street_candidates if idx < csz_idx]
+            street = before_csz[-1] if before_csz else street_candidates[0][1]
+        else:
+            street = street_candidates[0][1]
+
+    if not name and name_candidates:
+        for cand in name_candidates:
+            if cand != street and not (city and city in cand):
+                name = cand
+                break
 
     roles = _resolve_checked_roles(role_cell_text)
-    title_match = _TITLE_MATCH_RE.search(role_cell_text)
+    title_match = TITLE_MATCH_RE.search(role_cell_text)
     officer_title = title_match.group(1).strip() if title_match else None
 
     return ReportingOwner(
@@ -172,46 +188,129 @@ def _parse_reporting_owner(cell_text: str, role_cell_text: str) -> ReportingOwne
         is_ten_percent_owner=roles["ten_percent"],
         is_other=roles["other"],
         officer_title=officer_title,
+        irs_number=irs_number,
     )
 
 
 def _parse_issuer(cell_text: str) -> Issuer:
     lines = [line.strip() for line in cell_text.splitlines() if line.strip()]
-    issuer_line = ""
+    cand = ""
+    last_label_idx = -1
     for idx, line in enumerate(lines):
-        if "trading symbol" in line.lower() or "ticker" in line.lower():
-            m = _TICKER_LINE_RE.search(line)
-            if m and m.group(1).strip():
-                issuer_line = m.group(1).strip()
-                break
-            elif idx + 1 < len(lines):
-                issuer_line = lines[idx + 1]
-                break
+        if any(term in line.lower() for term in ISSUER_LABEL_TERMS):
+            last_label_idx = idx
+            m = SYMBOL_TAIL_RE.search(line)
+            if m:
+                tail = m.group(1).strip()
+                if tail and tail.lower() not in ("or", "and", "or trading symbol"):
+                    cand = tail
+                    break
+            m_iss = ISSUER_TAIL_RE.search(line)
+            if m_iss:
+                tail = m_iss.group(1).strip()
+                if tail and not any(
+                    k in tail.lower() for k in ("trading symbol", "and address")
+                ):
+                    cand = tail
+                    break
+    if not cand and last_label_idx != -1 and last_label_idx + 1 < len(lines):
+        cand = lines[last_label_idx + 1]
+    if not cand and lines:
+        cand = lines[-1]
 
     name: str | None = None
     ticker: str | None = None
-    if issuer_line:
-        parts = issuer_line.rsplit(" ", 1)
-        name = parts[0].strip()
-        ticker = parts[1].strip() if len(parts) > 1 else None
+    if cand:
+        m_paren = TICKER_PAREN_RE.search(cand)
+        if m_paren:
+            name = cand[: m_paren.start()].rstrip(" ,-")
+            ticker = m_paren.group(1).strip("()\"“”',.-")
+            if " and " in ticker:
+                ticker = ticker.split(" and ")[0].strip()
+        else:
+            m_dash = TICKER_DASH_RE.search(cand)
+            if m_dash:
+                name = cand[: m_dash.start()].rstrip(" ,-")
+                ticker = m_dash.group(1).strip("()\"“”',.-")
+            elif " " in cand:
+                parts = cand.rsplit(" ", 1)
+                last = parts[1].strip("()\"“”',.-")
+                if (
+                    1 <= len(last) <= 6
+                    and last.isupper()
+                    and last.lower() not in LEGAL_FORMS
+                ):
+                    name = parts[0].rstrip(" ,-")
+                    ticker = last
+                else:
+                    name = cand.rstrip(" ,-")
+            else:
+                name = cand.rstrip(" ,-")
 
-    irs_match = _IRS_RE.search(cell_text)
+        if not ticker:
+            for line in lines:
+                if line == cand:
+                    continue
+                if any(
+                    term in line.lower()
+                    for term in ("issuer", "trading", "ticker", "i.r.s.")
+                ):
+                    continue
+                m_sub = TICKER_PAREN_RE.search(line)
+                if m_sub:
+                    ticker = m_sub.group(1).strip("()\"“”',.-")
+                    if " and " in ticker:
+                        ticker = ticker.split(" and ")[0].strip()
+                    break
+                stripped = line.strip("()\"“”',.-")
+                if (
+                    1 <= len(stripped) <= 6
+                    and stripped.isupper()
+                    and stripped.lower() not in LEGAL_FORMS
+                ):
+                    ticker = stripped
+                    break
+
+    if name:
+        name = STRIP_BOX_NUM_RE.sub("", name).strip()
+
+    irs_match = IRS_RE.search(cell_text)
     irs_number = irs_match.group(1) if irs_match else None
 
     return Issuer(
-        name=name,
-        trading_symbol=ticker,
+        name=name if name else None,
+        trading_symbol=ticker if ticker else None,
         irs_number=irs_number,
     )
 
 
 def _parse_period(cell_text: str) -> FilingPeriod:
-    period_match = _PERIOD_MATCH_RE.search(cell_text)
-    period = period_match.group(1).strip() if period_match else None
+    m = BOX5_SPLIT_RE.search(cell_text)
+    box4_text = cell_text[: m.start()] if m else cell_text
+    box5_text = cell_text[m.start() :] if m else ""
 
-    amend_match = _AMEND_MATCH_RE.search(cell_text)
-    amend_date = amend_match.group(1).strip() if amend_match else None
-    is_amendment = bool(amend_date and re.search(r"\d", amend_date))
+    period: str | None = None
+    for raw_line in box4_text.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        cleaned = PERIOD_PREFIX_RE.sub("", line).strip()
+        if cleaned and any(c.isdigit() for c in cleaned):
+            period = cleaned
+            break
+
+    amend_date: str | None = None
+    if box5_text:
+        for raw_line in box5_text.splitlines():
+            line = raw_line.strip()
+            if not line or AMEND_LABEL_RE.match(line):
+                continue
+            cleaned = AMEND_DATE_CLEAN_RE.sub("", line).strip()
+            if cleaned and any(c.isdigit() for c in cleaned):
+                amend_date = cleaned
+                break
+
+    is_amendment = bool(amend_date and any(c.isdigit() for c in amend_date))
 
     return FilingPeriod(
         period_of_report=period,
@@ -232,29 +331,111 @@ def parse_metadata(
             period=FilingPeriod(),
         )
 
-    cells = [c for r in boxes_section.resolved_grid.rows for c in r if c.strip()]
-    owner_cell = next((c for c in cells if "reporting person" in c.lower()), "")
-    issuer_cell = next((c for c in cells if "issuer name" in c.lower()), "")
-    period_cell = next((c for c in cells if "statement for" in c.lower()), "")
-    role_cell = next((c for c in cells if "relationship" in c.lower()), "")
+    rows = boxes_section.resolved_grid.rows
+    owner_lines: list[str] = []
+    owner_seen: set[str] = set()
+    role_lines: list[str] = []
+    role_seen: set[str] = set()
+    issuer_cell = ""
+    period_cell = ""
 
-    owner = _parse_reporting_owner(owner_cell, role_cell)
+    for r_idx, row in enumerate(rows):
+        if any(
+            c
+            and (
+                "table i" in (c_low := c.lower())
+                or "table ii" in c_low
+                or "non-derivative" in c_low
+            )
+            for c in row
+        ):
+            break
+        for cell in row[:2]:
+            s = cell.strip()
+            s_low = s.lower()
+            if any(
+                term in s_low
+                for term in (
+                    "issuer name",
+                    "trading symbol",
+                    "statement for",
+                    "4. statement",
+                )
+            ):
+                continue
+            if s and s not in owner_seen:
+                owner_seen.add(s)
+                owner_lines.append(s)
+        for c_idx, cell in enumerate(row):
+            if not cell:
+                continue
+            lower = cell.lower()
+            if "issuer name" in lower and not issuer_cell:
+                cand = cell
+                if r_idx + 1 < len(rows):
+                    below = rows[r_idx + 1][c_idx].strip()
+                    if below and not any(
+                        k in below.lower()
+                        for k in (
+                            "statement for",
+                            "relationship",
+                            "reporting person",
+                            "table i",
+                        )
+                    ):
+                        cand = f"{cell}\n{below}"
+                issuer_cell = cand
+            elif (
+                "statement for" in lower or ("4." in lower and "month" in lower)
+            ) and not period_cell:
+                cand = cell
+                if r_idx + 1 < len(rows):
+                    below = rows[r_idx + 1][c_idx].strip()
+                    if (
+                        below
+                        and any(char.isdigit() for char in below)
+                        and not any(
+                            k in below.lower() for k in ("relationship", "table i")
+                        )
+                    ):
+                        cand = f"{cell}\n{below}"
+                period_cell = cand
+            elif "relationship" in lower or any(
+                term in lower for term in ("director", "officer", "10%")
+            ):
+                s = cell.strip()
+                if s and s not in role_seen:
+                    role_seen.add(s)
+                    role_lines.append(s)
+
+    owner = _parse_reporting_owner("\n".join(owner_lines), "\n".join(role_lines))
     issuer = _parse_issuer(issuer_cell)
     period = _parse_period(period_cell)
 
     sig_name: str | None = None
     sig_date: str | None = None
     if signatures_section is not None:
-        sig_cells = [
-            c for r in signatures_section.resolved_grid.rows for c in r if c.strip()
+        sig_cells: list[str] = [
+            c.strip()
+            for r in signatures_section.resolved_grid.rows
+            for c in r
+            if c and c.strip()
         ]
-        sig_text = " ".join(sig_cells)
-        date_match = _SIG_DATE_RE.search(sig_text)
-        if date_match:
-            sig_date = date_match.group(1)
-        name_match = _SIG_NAME_RE.search(sig_text)
-        if name_match:
-            sig_name = name_match.group(1).strip()
+        sig_text = "\n".join(sig_cells)
+        m_date = RE_FULL_DATE.search(sig_text) or NUMERIC_DATE_RE.search(sig_text)
+        if m_date:
+            sig_date = m_date.group(0).strip()
+        m_sig = RE_CONFORMED_SIGNER_NAME.search(sig_text)
+        if m_sig and (cand_name := m_sig.group(1).strip(" ,.-")):
+            sig_name = cand_name
+        elif (m_pref := SIG_PERSON_PREFIX_RE.search(sig_text)) and (
+            cand_name := m_pref.group(1).strip(" ,.-")
+        ):
+            sig_name = cand_name
+        elif (m_name := SIG_NAME_RE.search(sig_text)) and (
+            cand_name := m_name.group(1).strip(" ,.-")
+        ):
+            sig_name = cand_name
 
     return Form4Metadata(
         issuer=issuer,
@@ -266,9 +447,5 @@ def parse_metadata(
 
 
 __all__ = [
-    "FilingPeriod",
-    "Form4Metadata",
-    "Issuer",
-    "ReportingOwner",
     "parse_metadata",
 ]

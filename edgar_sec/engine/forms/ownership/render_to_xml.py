@@ -13,10 +13,8 @@ from edgar_sec.engine.forms.ownership.grid_tables import (
     parse_table_i_rows,
     parse_table_ii_rows,
 )
-from edgar_sec.engine.forms.ownership.metadata_parser import (
-    Form4Metadata,
-    parse_metadata,
-)
+from edgar_sec.domain.forms.families.ownership.models import Form4Metadata
+from edgar_sec.engine.forms.ownership.metadata_parser import parse_metadata
 from edgar_sec.engine.forms.ownership.sections import (
     Form4Sections,
     partition_form4_tables,

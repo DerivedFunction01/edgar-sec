@@ -51,3 +51,14 @@ def test_partition_form4_detects_unlabelled_footnotes_via_narrative_terms() -> N
     sections = partition_form4_tables(html)
     assert len(sections.footnotes) == 1
     assert sections.footnotes[0].role == SectionRole.FOOTNOTES
+
+
+def test_partition_form4_merges_fragmented_boxes_tables() -> None:
+    html = """<html><body>
+    <table><tr><td>1. Name and Address of Reporting Person*\nJane Doe</td></tr></table>
+    <table><tr><td>4. Statement for Month/Day/Year\n12/02/02</td></tr></table>
+    <table><tr><td>Table I - Non-Derivative Securities Acquired</td></tr></table>
+    </body></html>"""
+    sections = partition_form4_tables(html)
+    assert sections.boxes_1_to_7 is not None
+    assert len(sections.boxes_1_to_7.resolved_grid.rows) == 2

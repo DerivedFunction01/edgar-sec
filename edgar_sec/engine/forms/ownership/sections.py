@@ -11,7 +11,7 @@ from edgar_sec.domain.forms.families.ownership.evidence import (
 )
 from edgar_sec.engine.document.html.tree import FastHtmlNode, parse_html
 from edgar_sec.engine.tables.ascii_html.converter import convert_html_table
-from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
+from edgar_sec.engine.tables.ascii_html.model import RenderBudget, ResolvedGrid
 from edgar_sec.foundation.text.automaton import tokenize
 from edgar_sec.foundation.text.evidence import (
     EvidenceContext,
@@ -21,6 +21,11 @@ from edgar_sec.foundation.text.evidence import (
 
 _COMPILED_FOOTNOTE_PACK = compile_evidence_pack(OWNERSHIP_FOOTNOTE_LEXICAL_PACK)
 _EVIDENCE_CTX = EvidenceContext(min_words=1)
+_UNWRAPPED_BUDGET = RenderBudget(
+    max_table_width=10000,
+    max_column_width=10000,
+    max_text_column_width=10000,
+)
 
 
 class SectionRole(StrEnum):
@@ -61,8 +66,12 @@ def _classify_table_text(
 
     # Relative ordering: Boxes 1 to 7 and Header never appear after transaction tables
     if not past_tables:
-        if "name and address of reporting person" in lower or (
-            "issuer name" in lower and "trading symbol" in lower
+        if (
+            "name and address of reporting person" in lower
+            or ("issuer name" in lower and "trading symbol" in lower)
+            or ("statement for" in lower and "month" in lower)
+            or "i.r.s. identification" in lower
+            or "joint/group filing" in lower
         ):
             return SectionRole.BOXES_1_TO_7
         if "check this box if no longer" in lower or "omb approval" in lower:
@@ -110,7 +119,9 @@ def partition_form4_tables(html_content: str | bytes) -> Form4Sections:
     pending_role: SectionRole | None = None
 
     for idx, table_node in enumerate(tables):
-        result = convert_html_table(table_node, table_index=idx)
+        result = convert_html_table(
+            table_node, table_index=idx, budget=_UNWRAPPED_BUDGET
+        )
         grid = result.resolved_grid
         text = " ".join(" ".join(r) for r in grid.rows).strip()
         num_cols = (
@@ -144,8 +155,23 @@ def partition_form4_tables(html_content: str | bytes) -> Form4Sections:
             resolved_grid=grid,
         )
 
-        if role == SectionRole.BOXES_1_TO_7 and boxes is None:
-            boxes = section
+        if role == SectionRole.BOXES_1_TO_7:
+            if boxes is None:
+                boxes = section
+            else:
+                boxes = ClassifiedSection(
+                    role=boxes.role,
+                    table_index=boxes.table_index,
+                    raw_node=boxes.raw_node,
+                    resolved_grid=ResolvedGrid(
+                        rows=tuple(
+                            list(boxes.resolved_grid.rows)
+                            + list(section.resolved_grid.rows)
+                        ),
+                        column_alignments=boxes.resolved_grid.column_alignments,
+                        column_widths=boxes.resolved_grid.column_widths,
+                    ),
+                )
         elif role == SectionRole.TABLE_I and table_i is None:
             table_i = section
         elif role == SectionRole.TABLE_II and table_ii is None:

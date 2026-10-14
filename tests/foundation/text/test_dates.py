@@ -166,3 +166,44 @@ def test_heal_date_fragments_preserves_prose_with_embedded_date() -> None:
         "For the fiscal year ended December 31, 2024",
     ]
     assert heal_date_fragments(lines) == lines
+
+
+def test_parse_date_2digit_year_time_agnostic() -> None:
+    from edgar_sec.foundation.text.dates import parse_date
+
+    # Historical 2003 Form 4 filing
+    d_hist = parse_date("4/14/03", reference_year=2003)
+    assert d_hist is not None
+    assert d_hist.iso == "2003-04-14"
+
+    d_dash = parse_date("11-26-02", reference_year=2003)
+    assert d_dash is not None
+    assert d_dash.iso == "2002-11-26"
+
+    # Future 2125 Form 4 filing
+    d_fut = parse_date("4/14/25", reference_year=2125)
+    assert d_fut is not None
+    assert d_fut.iso == "2125-04-14"
+
+    d_fut_prev = parse_date("11-26-24", reference_year=2125)
+    assert d_fut_prev is not None
+    assert d_fut_prev.iso == "2124-11-26"
+
+    # Spelled out month with 2-digit year
+    d_alpha = parse_date("Feb 4, 03", reference_year=2003)
+    assert d_alpha is not None
+    assert d_alpha.iso == "2003-02-04"
+
+
+def test_parse_date_extended_formats() -> None:
+    from edgar_sec.foundation.text.dates import parse_date
+
+    assert parse_date("November 22,2002", reference_year=2003).iso == "2002-11-22"
+    assert parse_date("14-Feb-2003", reference_year=2003).iso == "2003-02-14"
+    assert parse_date("14-Feb-03", reference_year=2003).iso == "2003-02-14"
+    assert parse_date("12.31.2002", reference_year=2003).iso == "2002-12-31"
+    assert parse_date("12.31.02", reference_year=2003).iso == "2002-12-31"
+    assert parse_date("2026-09-22").iso == "2026-09-22"
+    assert parse_date("20260922").iso == "2026-09-22"
+    assert parse_date("June 2001").iso == "2001-06-01"
+    assert parse_date("November, 2000").iso == "2000-11-01"
