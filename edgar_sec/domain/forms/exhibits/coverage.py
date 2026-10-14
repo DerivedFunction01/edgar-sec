@@ -116,7 +116,7 @@ ITEM_601_DESCRIPTIONS: dict[str, tuple[str, CoverageStatus]] = {
     "26": ("Invitations for competitive bids", "historical"),
     "27": ("Financial Data Schedule", "historical"),
     "28": ("Information from reports to state insurance authorities", "candidate"),
-    "29": ("Additional exhibits (historical)", "historical"),
+    "29": ("Additional exhibits", "historical"),
     "30": ("Foreign jurisdictions preventing inspections disclosure", "candidate"),
     "31": ("Rule 13a-14(a)/15d-14(a) Certifications (Section 302)", "partial"),
     "31.1": ("Certification of CEO/CFO pursuant to Section 302", "candidate"),
