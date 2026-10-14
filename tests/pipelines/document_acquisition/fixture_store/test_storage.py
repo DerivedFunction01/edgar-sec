@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import io
 import sqlite3
 
 import pytest
@@ -9,18 +8,14 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixtureStoreError,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.schema import open_fixture
-from edgar_sec.pipelines.document_acquisition.fixture_store.storage import (
-    append_fixture_case,
-)
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 from tests.pipelines.document_acquisition.fixture_store.fixture_helpers import (
-    FIXTURE_PLAN_PIN,
     append_test_case,
     initialize_test_fixture,
 )
 
 
-def test_fixture_bodies_are_deduplicated_and_cases_are_run_scoped(tmp_path) -> None:
+def test_fixture_bodies_are_deduplicated_and_cases_are_capture_scoped(tmp_path) -> None:
     paths = resolve_acquisition_paths(artifacts_root=tmp_path)
     initialize_test_fixture(paths, "fixture-a")
     body = b"same selected parser input"
@@ -46,35 +41,11 @@ def test_fixture_body_limit_failure_is_atomic(tmp_path) -> None:
     initialize_test_fixture(paths, "fixture-a")
     body = b"larger than limit"
     with pytest.raises(FixtureStoreError, match="exceeds max_body_bytes"):
-        append_fixture_case(
+        append_test_case(
             paths,
             "fixture-a",
-            {
-                "capture_id": "capture-1",
-                "run_id": "run-1",
-                "target_plan_id": FIXTURE_PLAN_PIN.target_plan_id,
-                "target_plan_digest": FIXTURE_PLAN_PIN.target_plan_digest,
-                "target_plan_schema_version": FIXTURE_PLAN_PIN.target_plan_schema_version,
-                "captured_at_utc": "2026-10-14T00:00:00Z",
-            },
-            {
-                "capture_id": "capture-1",
-                "target_id": "target-a",
-                "attempt_id": "attempt-a",
-                "accession": "0000123456-24-000001",
-                "form": "4",
-                "request_id": "request-a",
-                "target_role": "primary",
-                "target_type": "primary",
-                "source_origin": "inventory_index",
-                "retrieval_mode": "direct_url",
-                "target_url": None,
-                "sequence": None,
-                "selected_filename": "form4.htm",
-                "body_sha256": "0" * 64,
-                "byte_size": len(body),
-            },
-            io.BytesIO(body),
+            "target-a",
+            body,
             max_body_bytes=len(body) - 1,
         )
     _, connection = open_fixture(paths, "fixture-a", readonly=True)

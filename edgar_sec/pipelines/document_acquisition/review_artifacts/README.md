@@ -13,10 +13,10 @@ artifacts and do not publish acquisition snapshots.
 
 - **Offline input**: Review generation parses verified fixture bytes and never initiates
   SEC requests or reads source-run processing outputs.
-- **Pinned cases**: Each manifest row identifies its fixture, run capture, target, body
+- **Pinned cases**: Each manifest row identifies its fixture capture, plan, target, body
   digests, current handler results, and generated artifact digest.
-- **Single parser path**: Current handlers process every acquired fixture case; target,
-  capture, and attempt identifiers are not review filters.
+- **Single parser path**: Current handlers process every captured fixture case; target and
+  capture identifiers are not review filters.
 - **Stable comparison**: Case identifiers and manifest order are deterministic for the
   selected fixtures; the shared review console compares case artifacts.
 - **Digest scope**: Artifact and output digests detect inconsistency or accidental
@@ -43,7 +43,7 @@ python run.py acquisition review compare --base REVIEW_A --new REVIEW_B
 
 ## Deliberate gaps
 
-- **Unavailable bytes**: Fill cannot recover response bodies that the source acquisition
-  run did not retain.
+- **Unavailable bytes**: Failed direct fixture requests remain uncaptured and must be
+  retried explicitly; ordinary source-response and bundle histories are not retained.
 - **No production gates**: Parser review reports current handler behavior; it does not
   authorize production route budgets or publication.

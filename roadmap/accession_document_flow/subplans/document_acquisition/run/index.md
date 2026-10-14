@@ -125,8 +125,8 @@ body-consumption receipts are recorded during the combined run; cleanup remains 
 
 Implemented: non-executable targets produce no HTTP request; oversize bodies never
 become partial successes; interrupted runs preserve committed outcomes; acquisition
-and processing share the run lock; bundle selection is exact; and fixture review uses
-plan pins, source-run processing results, and offline analysis. Remaining: verified
+and processing share the run lock; bundle selection is exact; and plan-driven fixture fill
+captures parser inputs independently of run state for offline review. Remaining: verified
 HTML/SGML identity-screen behavior, durable snapshot publication, and cleanup
 authorization.
 

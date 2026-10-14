@@ -122,13 +122,14 @@ distribution or full DAG operations: its distribution adapter is not implemented
 The local command-line counterpart defines project, status, combined run, publish,
 snapshot status/audit, and acquisition-specific fixture/review commands. `project`
 creates or reuses an offline transient run. Fixture creation pins the active published
-plan; fill discovers a matching run and copies all acquired selected staged bodies, with
-no target/attempt/hash entry and no raw response-retention requirement. List reports
-deterministic run-capture summaries. Review generation parses the fixture bytes with the
-current acquisition-engine handlers; compare and offline analyze consume those parser
-artifacts. Schema v2 rejects the previous response-group fixture format without
-migration. The interactive operator confirms live network work; fixture fill is local
-and requires no consent prompt. CLI network
+plan; fill validates that pin and fetches selected parser inputs from the plan without
+creating or requiring an S9 run. Exact-form catalog-direct targets may fetch and cache
+their accession index once per fixture when no inventory entry is pinned. List reports
+deterministic capture/case/lazy-index summaries. Review generation parses the fixture
+bytes with current acquisition-engine handlers; compare and offline analyze consume those
+parser artifacts. Schema v3 rejects older fixture-store formats without migration. Both
+the interactive operator and CLI require explicit live-network authorization for fill.
+CLI network
 execution is explicit and exposes retry selection rather than silently retrying failed
 requests.
 `acquisition distrib` remains planned and unimplemented. The common CLI uses

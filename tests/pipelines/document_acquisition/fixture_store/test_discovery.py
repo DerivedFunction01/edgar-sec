@@ -20,7 +20,7 @@ from tests.pipelines.document_acquisition.fixture_store.fixture_helpers import (
 )
 
 
-def test_fixture_discovery_is_sorted_and_summaries_are_run_scoped(tmp_path) -> None:
+def test_fixture_discovery_is_sorted_and_summaries_are_capture_scoped(tmp_path) -> None:
     paths = resolve_acquisition_paths(artifacts_root=tmp_path)
     initialize_test_fixture(paths, "fixture-z")
     initialize_test_fixture(paths, "fixture-a")
@@ -32,7 +32,6 @@ def test_fixture_discovery_is_sorted_and_summaries_are_run_scoped(tmp_path) -> N
         "target-c",
         b"c",
         capture_id="capture-2",
-        run_id="run-2",
     )
 
     cases = list(iter_fixture_cases(paths))
@@ -58,12 +57,11 @@ def test_fixture_case_lookup_uses_capture_and_target_identity(tmp_path) -> None:
         "target-a",
         b"second",
         capture_id="capture-2",
-        run_id="run-2",
     )
 
     case = get_fixture_case(paths, "fixture-a", "capture-2", "target-a")
 
-    assert case.run_id == "run-2"
+    assert case.capture_id == "capture-2"
     assert case.byte_size == len(b"second")
     with pytest.raises(FixtureStoreError, match="fixture case not found"):
         get_fixture_case(paths, "fixture-a", "capture-1", "missing")

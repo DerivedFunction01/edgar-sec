@@ -206,68 +206,14 @@ def test_fixture_filter_uses_exact_target_plan_pin(tmp_path) -> None:
     )
 
 
-def test_run_discovery_filters_plan_and_paginates(tmp_path, monkeypatch) -> None:
-    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
-    for run_id, plan_id in (
-        ("run-a", "plan-a"),
-        ("run-b", "plan-b"),
-        ("run-c", "plan-a"),
-    ):
-        paths.run_dir(run_id).mkdir(parents=True)
-        paths.run_manifest_path(run_id).write_text(
-            json.dumps(
-                {
-                    "target_plan_id": plan_id,
-                    "target_plan_digest": "a" * 64,
-                    "target_schema_version": 1,
-                    "target_row_count": 4,
-                }
-            ),
-            encoding="utf-8",
-        )
-    console = _console(tmp_path)
-    monkeypatch.setattr(
-        operator, "discover_run_ids", lambda _paths: ("run-a", "run-b", "run-c")
-    )
-    monkeypatch.setattr(operator, "resolve_acquisition_paths", lambda **_kwargs: paths)
-    monkeypatch.setattr(operator, "load_validated_work_order", lambda *_: object())
-    monkeypatch.setattr(
-        operator,
-        "inspect_run_state",
-        lambda run_id, **_kwargs: SimpleNamespace(
-            state="complete",
-            active_lock=None,
-            target_counts={"acquired": 2 if run_id == "run-c" else 0},
-        ),
-    )
-    observed = {}
-
-    def choose(items, *, prompt_label):
-        observed["label"] = prompt_label
-        observed["items"] = items
-        return items[0]
-
-    monkeypatch.setattr(operator, "prompt_paginated_choice", choose)
-    plan = {
-        "plan_id": "plan-a",
-        "plan_digest": "a" * 64,
-        "target_plan_schema_version": 1,
-    }
-
-    assert console.choose_run(plan) == "run-c"
-    assert observed["label"] == "Acquisition run"
-    assert [item.value for item in observed["items"]] == ["run-c"]
-    assert "targets=4" in observed["items"][0].label
-    assert "acquired=2" in observed["items"][0].label
-
-
-def test_fixture_fill_selects_a_run_without_target_or_attempt_prompts(
+def test_fixture_fill_confirms_direct_plan_fetch_and_bounds_targets(
     tmp_path, monkeypatch
 ) -> None:
     console = _console(tmp_path)
-    plan = {"plan_id": "plan-a"}
+    plan = {"plan_id": "plan-a", "selected_rows": 1174}
     calls = []
-    monkeypatch.setattr(console, "choose_run", lambda _plan: "run-a")
+    answers = iter(("25", "yes"))
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: next(answers))
     monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
 
     assert console.fill_fixture("fixture-a", plan, None, tmp_path)
@@ -278,24 +224,30 @@ def test_fixture_fill_selects_a_run_without_target_or_attempt_prompts(
             "fill",
             "--fixture",
             "fixture-a",
-            "--run-id",
-            "run-a",
+            "--plan-id",
+            "plan-a",
+            "--allow-network",
             "--artifacts",
             str(tmp_path),
+            "--limit",
+            "25",
         ]
     ]
 
 
-def test_fixture_fill_cancelled_at_run_picker_does_not_call_cli(
+def test_fixture_fill_cancelled_before_network_does_not_call_cli(
     tmp_path, monkeypatch
 ) -> None:
     console = _console(tmp_path)
-    monkeypatch.setattr(console, "choose_run", lambda _plan: None)
+    answers = iter(("25", "no"))
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: next(answers))
     monkeypatch.setattr(
         operator, "cli_main", lambda _args: pytest.fail("cancelled fill ran")
     )
 
-    assert not console.fill_fixture("fixture-a", {"plan_id": "plan-a"}, None, tmp_path)
+    assert not console.fill_fixture(
+        "fixture-a", {"plan_id": "plan-a", "selected_rows": 1174}, None, tmp_path
+    )
 
 
 def test_console_analyzes_selected_review_runs_offline(tmp_path, monkeypatch) -> None:

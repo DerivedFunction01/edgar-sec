@@ -18,6 +18,7 @@ class RecordingAdapter:
 
     def __init__(self) -> None:
         self.calls: list[str] = []
+        self.create_args = None
 
     def list_fixtures(self, _root):
         self.calls.append("list")
@@ -36,8 +37,9 @@ class RecordingAdapter:
             },
         ]
 
-    def create_fixture(self, *_a, **_k):
+    def create_fixture(self, *args, **kwargs):
         self.calls.append("create")
+        self.create_args = (args, kwargs)
         return 0
 
     def fill_fixture(self, *_a, **_k):
@@ -91,9 +93,11 @@ def test_create_fixture_uses_the_provided_plan_and_proposes_fx_default(
         adapter=adapter,
         plans_root=plans_dir,
         artifacts_root=tmp_path,
+        fixture_id_default=lambda plan: f"fix-{plan['plan_id'][:8]}-v3",
     )
     assert run_review_menu(config) == 0
     assert adapter.calls == ["create"]
+    assert adapter.create_args[0][0] == "fix-94ea5ab5-v3"
 
 
 def test_create_exits_cleanly_when_no_plans_are_available(

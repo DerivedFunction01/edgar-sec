@@ -77,7 +77,7 @@ def _load_artifact(root: Path, record: dict[str, Any]) -> dict[str, Any]:
     artifact_version = artifact.get("artifact_version")
     if (
         artifact_type != "document_acquisition.processing_review"
-        or artifact_version != 3
+        or artifact_version != 4
     ):
         raise ReviewAnalysisError("case artifact format is unsupported")
     digest = artifact.get("artifact_sha256")
@@ -95,10 +95,9 @@ def _load_artifact(root: Path, record: dict[str, Any]) -> dict[str, Any]:
         or fixture.get("target_plan_digest") != record.get("target_plan_digest")
         or fixture.get("target_plan_schema_version")
         != record.get("target_plan_schema_version")
-        or fixture.get("capture_run_id") != record.get("run_id")
+        or artifact.get("capture_id") != record.get("capture_id")
         or artifact.get("accession") != record.get("accession")
         or artifact.get("target_id") != record.get("target_id")
-        or artifact.get("run_id") != record.get("run_id")
     ):
         raise ReviewAnalysisError("case artifact identity differs from manifest")
     processing = artifact.get("processing")
@@ -202,9 +201,7 @@ def analyze_review_run(run: str | Path) -> dict[str, Any]:
                 if not isinstance(status, str) or status not in _CASE_STATUSES:
                     raise ReviewAnalysisError("review manifest case status is invalid")
                 if (
-                    not isinstance(record.get("run_id"), str)
-                    or not record["run_id"]
-                    or not isinstance(record.get("target_plan_id"), str)
+                    not isinstance(record.get("target_plan_id"), str)
                     or not record["target_plan_id"]
                     or not is_sha256_hex_digest(record.get("target_plan_digest"))
                     or type(record.get("target_plan_schema_version")) is not int

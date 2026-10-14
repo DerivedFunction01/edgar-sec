@@ -25,12 +25,15 @@ from edgar_sec.infra.sec_http.metrics import HttpMetrics
 from edgar_sec.infra.sec_http.streaming import StreamedResponse
 from edgar_sec.pipelines.document_acquisition import cli as acquisition_cli
 from edgar_sec.pipelines.document_acquisition.fixture_store.capture import (
-    capture_fixture_run,
     create_fixture,
 )
-from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
-    get_fixture_case,
+from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
+    list_fixture_cases,
 )
+from edgar_sec.pipelines.document_acquisition.fixture_store.plan_capture import (
+    capture_fixture_plan,
+)
+from edgar_sec.pipelines.document_acquisition.commands.status import discover_run_ids
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import FixturePlanPin
 from edgar_sec.pipelines.document_acquisition.models import AcquisitionPolicy
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
@@ -74,16 +77,13 @@ from tests.pipelines.document_acquisition.plan_projection.plan_fixture import (
     write_plan_bundle,
 )
 from tests.support import fixture_path, load_fixture
-from tests.pipelines.document_acquisition.fixture_store.fixture_helpers import (
-    create_test_fixture_for_run,
-)
 
 _ACCESSION = "0000320193-20-000096"
 _ACCESSION_COMPACT = _ACCESSION.replace("-", "")
 _ARCHIVE_ROOT = f"https://www.sec.gov/Archives/edgar/data/320193/{_ACCESSION_COMPACT}/"
 _TARGET_URL = _ARCHIVE_ROOT + f"{_ACCESSION}.txt"
 _SELECTED_BODY = b"<html>selected filing body</html>"
-_FIXTURE_ID = "offline-acceptance-v3"
+_FIXTURE_ID = "offline-acceptance-v4"
 
 
 def _write_pinned_plan(
@@ -140,8 +140,8 @@ def _write_pinned_plan(
     row["target_id"] = canonical_hash(
         [plan_id, _ACCESSION, row["request_id"], inventory_entry_id, "matched"]
     )
-    write_plan_bundle(plan_root, plan_id, identity, [row])
-    return plan_id, row
+    manifest = write_plan_bundle(plan_root, plan_id, identity, [row])
+    return plan_id, row, manifest
 
 
 class _SyntheticTransport:
@@ -201,42 +201,36 @@ class _FixtureIndexHttp:
         return self.body
 
 
-def test_fixture_fill_and_parser_review_are_offline(tmp_path, monkeypatch) -> None:
+def test_fixture_fill_fetches_from_plan_then_reviews_offline(
+    tmp_path, monkeypatch
+) -> None:
     source_root = tmp_path / "source-artifacts"
     source_paths = resolve_acquisition_paths(artifacts_root=source_root)
-    plan_id, plan_row = _write_pinned_plan(source_root)
-    source_projection = project_acquisition_run(plan_id, paths=source_paths)
-    monkeypatch.setattr(
-        "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
-        lambda: type("Resources", (), {"workers": 1, "worker_ceiling": 1})(),
+    plan_id, plan_row, plan_manifest = _write_pinned_plan(source_root)
+    create_fixture(
+        _FIXTURE_ID,
+        FixturePlanPin(
+            plan_id,
+            plan_manifest["plan_digest"],
+            TARGET_SCHEMA_VERSION,
+        ),
+        paths=source_paths,
     )
     source_transport = _SyntheticTransport({_TARGET_URL: _SELECTED_BODY})
-    source_report = execute_acquisition_run(
-        source_projection.run_id,
-        retry_failures=False,
-        paths=source_paths,
-        policy=AcquisitionPolicy(max_response_bytes=4096),
-        transport=source_transport,
-        clock=lambda: datetime(2026, 10, 10, tzinfo=UTC),
-    )
-    assert source_report.state == "complete"
-    assert source_report.target_counts["acquired"] == 1
-    assert source_transport.calls == [_TARGET_URL]
-    assert source_transport.closed
-
-    state = get_target_state(
-        source_paths.run_state_path(source_projection.run_id), plan_row["target_id"]
-    )
-    assert state is not None and state.selected_body_relative_path
-    create_test_fixture_for_run(source_paths, _FIXTURE_ID, source_projection.run_id)
-    capture = capture_fixture_run(
+    capture = capture_fixture_plan(
         _FIXTURE_ID,
-        source_projection.run_id,
         paths=source_paths,
         max_body_bytes=4096,
+        transport=source_transport,
     )
-    fixture_case = get_fixture_case(
-        source_paths, _FIXTURE_ID, capture.capture_id, state.target_id
+    source_transport.close()
+    assert capture.captured_cases == 1
+    assert source_transport.calls == [_TARGET_URL]
+    assert discover_run_ids(source_paths) == ()
+    fixture_case = next(
+        case
+        for case in list_fixture_cases(source_paths, fixture_id=_FIXTURE_ID)
+        if case.target_id == plan_row["target_id"]
     )
     assert fixture_case.body_sha256 == hashlib.sha256(_SELECTED_BODY).hexdigest()
     assert fixture_case.byte_size == len(_SELECTED_BODY)
@@ -257,7 +251,6 @@ def test_fixture_fill_and_parser_review_are_offline(tmp_path, monkeypatch) -> No
         ]
     )
     assert result == 0
-    assert source_transport.calls == [_TARGET_URL]
     assert source_transport.closed
 
 
@@ -413,14 +406,51 @@ def test_prepublication_vertical_acceptance_stays_offline_and_raw_only(
     assert target_plan.manifest["target_row_count"] == 1
 
     acquisition_paths = resolve_acquisition_paths(artifacts_root=artifacts_root)
+    target_part = next(
+        part["path"]
+        for part in target_plan.manifest["parts"]
+        if part["relation"] == "targets"
+    )
+    target_table = pq.read_table(target_plan.root / target_part)
+    planned_target_id = target_table.to_pylist()[0]["target_id"]
+    body_fixture = load_fixture("document_storage/annual_10k_html.json")
+    selected_body = body_fixture["source_text"].encode("utf-8")
+    selected_digest = hashlib.sha256(selected_body).hexdigest()
+    fixture_id = "s12-prepublication-acceptance"
+    create_fixture(
+        fixture_id,
+        FixturePlanPin(
+            target_plan_id=target_plan.plan_id,
+            target_plan_digest=target_plan.manifest["plan_digest"],
+            target_plan_schema_version=target_plan.manifest["target_schema_version"],
+        ),
+        paths=acquisition_paths,
+    )
+    fixture_transport = _SyntheticTransport({target_url: selected_body})
+    captured = capture_fixture_plan(
+        fixture_id,
+        paths=acquisition_paths,
+        max_body_bytes=100_000,
+        transport=fixture_transport,
+    )
+    fixture_transport.close()
+    assert captured.captured_cases == 1
+    assert fixture_transport.calls == [target_url]
+    assert fixture_transport.closed
+    fixture_case = next(
+        case
+        for case in list_fixture_cases(acquisition_paths, fixture_id=fixture_id)
+        if case.target_id == planned_target_id
+    )
+    assert fixture_case.source_origin == "inventory_index"
+    assert fixture_case.body_sha256 == selected_digest
+    assert fixture_case.byte_size == len(selected_body)
+
     projection = project_acquisition_run(target_plan.plan_id, paths=acquisition_paths)
     monkeypatch.setattr(
         "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
         lambda: type("Resources", (), {"workers": 1, "worker_ceiling": 1})(),
     )
-    body_fixture = load_fixture("document_storage/annual_10k_html.json")
-    selected_body = body_fixture["source_text"].encode("utf-8")
-    selected_digest = hashlib.sha256(selected_body).hexdigest()
     transport = _SyntheticTransport({target_url: selected_body})
     acquisition_report = execute_acquisition_run(
         projection.run_id,
@@ -435,13 +465,6 @@ def test_prepublication_vertical_acceptance_stays_offline_and_raw_only(
     assert transport.calls == [target_url]
     assert transport.closed
 
-    target_part = next(
-        part["path"]
-        for part in target_plan.manifest["parts"]
-        if part["relation"] == "targets"
-    )
-    target_table = pq.read_table(target_plan.root / target_part)
-    planned_target_id = target_table.to_pylist()[0]["target_id"]
     state = get_target_state(
         acquisition_paths.run_state_path(projection.run_id), planned_target_id
     )
@@ -455,29 +478,6 @@ def test_prepublication_vertical_acceptance_stays_offline_and_raw_only(
         acquisition_paths.run_staging_root(projection.run_id)
     )
     assert file_sha256(selected_path) == selected_digest
-    fixture_id = "s12-prepublication-acceptance"
-    create_fixture(
-        fixture_id,
-        FixturePlanPin(
-            target_plan_id=target_plan.plan_id,
-            target_plan_digest=target_plan.manifest["plan_digest"],
-            target_plan_schema_version=target_plan.manifest["target_schema_version"],
-        ),
-        paths=acquisition_paths,
-    )
-    captured = capture_fixture_run(
-        fixture_id,
-        projection.run_id,
-        paths=acquisition_paths,
-        max_body_bytes=100_000,
-    )
-    fixture_case = get_fixture_case(
-        acquisition_paths, fixture_id, captured.capture_id, planned_target_id
-    )
-    assert fixture_case.source_origin == "inventory_index"
-    assert fixture_case.body_sha256 == selected_digest
-    assert fixture_case.byte_size == len(selected_body)
-
     assert acquisition_report.processing_complete
     assert acquisition_report.processing_success
     assert acquisition_report.processing_operation_counts["available"] == 1
@@ -574,7 +574,7 @@ def test_prepublication_vertical_acceptance_stays_offline_and_raw_only(
     assert review_record["body_sha256"] == selected_digest
     assert file_sha256(review_artifact) == review_output["sha256"]
     review_payload = json.loads(review_artifact.read_text(encoding="utf-8"))
-    assert review_payload["artifact_version"] == 3
+    assert review_payload["artifact_version"] == 4
     assert review_payload["fixture"]["body_sha256"] == selected_digest
     assert "receipt" not in review_payload
     assert "projection" not in review_payload

@@ -26,6 +26,7 @@ from edgar_sec.pipelines.document_acquisition.review_artifacts.analyzer import (
     analyze_review_run,
 )
 from tests.pipelines.document_acquisition.fixture_store.fixture_helpers import (
+    append_test_lazy_index,
     append_test_case,
 )
 
@@ -35,35 +36,46 @@ _BODY = (
 )
 
 
-def _fixture(paths, body: bytes = _BODY) -> None:
+def _fixture(paths, body: bytes = _BODY):
     initialize_fixture(
         paths,
         _FIXTURE_ID,
         FixturePlanPin("plan-form4", "a" * 64, 1),
     )
+    index_ref = append_test_lazy_index(paths, _FIXTURE_ID, b"<html>cached index</html>")
     append_test_case(
         paths,
         _FIXTURE_ID,
         "target-form4",
         body,
         pin=FixturePlanPin("plan-form4", "a" * 64, 1),
-        run_id="acquisition-run",
+        selection_source="fixture_lazy_index",
+        index_sha256=index_ref.body_sha256,
+        source_origin="catalog_direct",
     )
+    return index_ref
 
 
 def test_review_generator_parses_verified_form4_fixture_bytes_offline(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     paths = resolve_acquisition_paths(artifacts_root=tmp_path)
-    _fixture(paths)
+    index_ref = _fixture(paths)
     calls = []
     process = AcquisitionProcessor.process
+    verify_index = builder.verify_fixture_lazy_index
+    index_verifications = []
 
     def traced_process(self, request):
         calls.append(request.inputs[0].raw_bytes)
         return process(self, request)
 
+    def traced_index(paths, fixture_id, accession, expected_sha256):
+        index_verifications.append((fixture_id, accession, expected_sha256))
+        return verify_index(paths, fixture_id, accession, expected_sha256)
+
     monkeypatch.setattr(AcquisitionProcessor, "process", traced_process)
+    monkeypatch.setattr(builder, "verify_fixture_lazy_index", traced_index)
     output = tmp_path / "review-run"
 
     result = builder.build_review_artifacts(
@@ -72,12 +84,14 @@ def test_review_generator_parses_verified_form4_fixture_bytes_offline(
 
     assert result.summary.total == result.summary.completed == 1
     assert calls == [_BODY]
+    assert len(index_verifications) == 1
     review_paths = ReviewPaths(output, PIPELINE_REVIEW_MANIFEST_FILE)
     record = json.loads(review_paths.manifest_path.read_text(encoding="utf-8"))
     artifact_path = output / record["outputs"][builder.OBSERVATIONS_FILE]["path"]
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
-    assert artifact["artifact_version"] == 3
+    assert artifact["artifact_version"] == 4
     assert artifact["fixture"]["body_sha256"] == sha256_bytes(_BODY)
+    assert artifact["fixture"]["index_sha256"] == index_ref.body_sha256
     operations = {
         item["operation"]: item for item in artifact["processing"]["operations"]
     }
@@ -131,7 +145,7 @@ def test_review_generator_requires_fixture_cases(tmp_path: Path) -> None:
         FixturePlanPin("plan-form4", "a" * 64, 1),
     )
 
-    with pytest.raises(ValueError, match="no acquired byte cases"):
+    with pytest.raises(ValueError, match="no parser-body cases"):
         builder.build_review_artifacts(
             _FIXTURE_ID, tmp_path / "review-run", paths=paths, no_progress=True
         )

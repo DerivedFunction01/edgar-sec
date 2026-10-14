@@ -47,6 +47,7 @@ class AcquisitionReviewAdapter(ReviewAdapter):
                 "target_plan_schema_version": item.target_plan_schema_version,
                 "capture_count": item.capture_count,
                 "case_count": item.case_count,
+                "lazy_index_count": item.lazy_index_count,
             }
             for item in list_fixture_summaries(paths)
         ]
@@ -83,11 +84,11 @@ class AcquisitionReviewAdapter(ReviewAdapter):
         json: bool = False,
         no_progress: bool = False,
     ) -> int:
-        if limit is not None:
-            raise ValueError("acquisition fixture fill includes the full recorded run")
         args = argparse.Namespace(
             fixture=fixture_id,
-            run_id=catalog_plan,
+            plan_id=catalog_plan,
+            limit=limit,
+            allow_network=False,
             artifacts=str(artifacts_root),
             json=json,
             no_progress=no_progress,

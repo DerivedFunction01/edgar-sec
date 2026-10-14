@@ -16,7 +16,7 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 FIXTURE_KIND = "document_acquisition.parser_bodies"
 _FIXTURE_DETAIL_KEYS = {
     "store_schema_version",
@@ -24,19 +24,21 @@ _FIXTURE_DETAIL_KEYS = {
     "target_plan_digest",
     "target_plan_schema_version",
 }
-_TABLES = frozenset({"fixture_meta", "body_blobs", "captures", "cases"})
+_TABLES = frozenset({"fixture_meta", "body_blobs", "captures", "lazy_indexes", "cases"})
 _CAPTURE_COLUMNS = (
     "capture_id",
-    "run_id",
     "target_plan_id",
     "target_plan_digest",
     "target_plan_schema_version",
     "captured_at_utc",
 )
+_LAZY_INDEX_COLUMNS = ("accession", "index_url", "body_sha256", "byte_size")
 _CASE_COLUMNS = (
     "capture_id",
     "target_id",
-    "attempt_id",
+    "inventory_entry_id",
+    "selection_source",
+    "index_sha256",
     "accession",
     "form",
     "request_id",
@@ -62,6 +64,7 @@ _EXPECTED_COLUMNS = {
         "compressed_body",
     ),
     "captures": _CAPTURE_COLUMNS,
+    "lazy_indexes": _LAZY_INDEX_COLUMNS,
     "cases": _CASE_COLUMNS,
 }
 _IMMUTABILITY_TRIGGERS = frozenset(
@@ -72,6 +75,8 @@ _IMMUTABILITY_TRIGGERS = frozenset(
         "immutable_body_blob_delete",
         "immutable_capture_update",
         "immutable_capture_delete",
+        "immutable_lazy_index_update",
+        "immutable_lazy_index_delete",
         "immutable_case_update",
         "immutable_case_delete",
     }
@@ -96,16 +101,24 @@ _SCHEMA = (
     )""",
     """CREATE TABLE captures (
         capture_id TEXT PRIMARY KEY,
-        run_id TEXT NOT NULL,
         target_plan_id TEXT NOT NULL,
         target_plan_digest TEXT NOT NULL,
         target_plan_schema_version INTEGER NOT NULL,
         captured_at_utc TEXT NOT NULL
     )""",
+    """CREATE TABLE lazy_indexes (
+        accession TEXT PRIMARY KEY,
+        index_url TEXT NOT NULL,
+        body_sha256 TEXT NOT NULL,
+        byte_size INTEGER NOT NULL CHECK (byte_size >= 0),
+        FOREIGN KEY (body_sha256, byte_size) REFERENCES body_blobs(body_sha256, byte_size)
+    )""",
     """CREATE TABLE cases (
         capture_id TEXT NOT NULL,
         target_id TEXT NOT NULL,
-        attempt_id TEXT NOT NULL,
+        inventory_entry_id TEXT,
+        selection_source TEXT NOT NULL CHECK (selection_source IN ('planned_source', 'inventory_index', 'fixture_lazy_index')),
+        index_sha256 TEXT,
         accession TEXT NOT NULL,
         form TEXT NOT NULL,
         request_id TEXT NOT NULL,
@@ -121,6 +134,9 @@ _SCHEMA = (
         PRIMARY KEY (capture_id, target_id),
         FOREIGN KEY (capture_id) REFERENCES captures(capture_id),
         FOREIGN KEY (body_sha256, byte_size) REFERENCES body_blobs(body_sha256, byte_size),
+        FOREIGN KEY (index_sha256) REFERENCES body_blobs(body_sha256),
+        CHECK ((selection_source = 'fixture_lazy_index' AND index_sha256 IS NOT NULL) OR
+            (selection_source != 'fixture_lazy_index' AND index_sha256 IS NULL)),
         CHECK ((retrieval_mode = 'direct_url' AND sequence IS NULL) OR
             (retrieval_mode = 'bundle_sequence' AND sequence IS NOT NULL AND sequence > 0)),
         CHECK (length(body_sha256) = 64 AND body_sha256 NOT GLOB '*[^0-9a-f]*')
@@ -137,6 +153,10 @@ _SCHEMA = (
         BEGIN SELECT RAISE(ABORT, 'fixture captures are immutable'); END""",
     """CREATE TRIGGER immutable_capture_delete BEFORE DELETE ON captures
         BEGIN SELECT RAISE(ABORT, 'fixture captures are immutable'); END""",
+    """CREATE TRIGGER immutable_lazy_index_update BEFORE UPDATE ON lazy_indexes
+        BEGIN SELECT RAISE(ABORT, 'fixture lazy indexes are immutable'); END""",
+    """CREATE TRIGGER immutable_lazy_index_delete BEFORE DELETE ON lazy_indexes
+        BEGIN SELECT RAISE(ABORT, 'fixture lazy indexes are immutable'); END""",
     """CREATE TRIGGER immutable_case_update BEFORE UPDATE ON cases
         BEGIN SELECT RAISE(ABORT, 'fixture cases are immutable'); END""",
     """CREATE TRIGGER immutable_case_delete BEFORE DELETE ON cases

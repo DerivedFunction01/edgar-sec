@@ -21,8 +21,9 @@ def test_parser_registers_acquisition_tracks() -> None:
             "fill",
             "--fixture",
             "f-1",
-            "--run-id",
-            "run-1",
+            "--plan-id",
+            "plan-1",
+            "--allow-network",
         ],
         ["fixture", "create", "--fixture", "f-1", "--plan-id", "plan-1"],
         [

@@ -140,10 +140,12 @@ def build_parser() -> argparse.ArgumentParser:
     _add_output_options(fixture_create)
     fixture_create.set_defaults(func=cmd_fixture_create)
     fixture_fill = fixture_commands.add_parser(
-        "fill", help="capture acquired selected bodies from a run"
+        "fill", help="fetch selected parser inputs from a pinned target plan"
     )
     fixture_fill.add_argument("--fixture", required=True)
-    fixture_fill.add_argument("--run-id", required=True)
+    fixture_fill.add_argument("--plan-id")
+    fixture_fill.add_argument("--allow-network", action="store_true")
+    fixture_fill.add_argument("--limit", type=positive_int_type)
     fixture_fill.add_argument("--no-progress", action="store_true")
     _add_output_options(fixture_fill)
     fixture_fill.set_defaults(func=cmd_fixture_fill)

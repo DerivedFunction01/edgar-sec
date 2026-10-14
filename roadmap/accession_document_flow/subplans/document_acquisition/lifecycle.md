@@ -17,9 +17,12 @@ snapshot queries, distributed workers, and cleanup remain unimplemented. This do
 S11 lifecycle proposal does not describe the current `run.py` command surface.
 
 The current fixture/review CLI creates, fills, and lists plan-pinned fixtures and
-generates, compares, and analyzes review runs. Fixture body verification is internal;
-there is no user-facing raw-body replay/export action. Fixture-to-run projection is also
-not implemented.
+generates, compares, and analyzes review runs. Fixture fill fetches selected parser inputs
+directly from its pinned S6 plan with explicit network consent, without creating an S9
+run. Exact-form lazy selection caches its index page in the fixture if the plan has no
+inventory entry. Review verifies fixture evidence and invokes handlers offline. There is
+no user-facing raw-body replay/export action; fixture-to-run projection is also not
+implemented.
 
 The plan uses Parquet for all published snapshot relations and payloads, with the
 shared `infra.storage.dag` engine publishing immutable parts and advancing the pointer

@@ -33,6 +33,7 @@ class ReviewMenuConfig:
 
     adapter: ReviewAdapter
     plan_id: str | None = None
+    fixture_id_default: Callable[[dict[str, Any]], str] | None = None
     plans_root: Path | str | None = None
     artifacts_root: Path | str | Callable[[], Path] | None = None
     analyze_action: Callable[[tuple[str, ...]], None] | None = None
@@ -155,7 +156,11 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         if plan is None:
             print("No plans available; publish a plan first.")
             return
-        default_fid = f"fix-{plan['plan_id'][:8]}"
+        default_fid = (
+            config.fixture_id_default(plan)
+            if config.fixture_id_default is not None
+            else f"fix-{plan['plan_id'][:8]}"
+        )
         fixture_id = prompt_text("Fixture ID", default_fid).strip()
         if not fixture_id:
             return

@@ -10,10 +10,16 @@ from dataclasses import asdict
 
 from tqdm.auto import tqdm
 
-from edgar_sec.pipelines.document_acquisition.commands.common import response_byte_limit
+from edgar_sec.pipelines.document_acquisition.commands.common import (
+    _LazySecTransport,
+    response_byte_limit,
+    sec_transport_factory,
+)
 from edgar_sec.pipelines.document_acquisition.fixture_store.capture import (
-    capture_fixture_run,
     create_fixture,
+)
+from edgar_sec.pipelines.document_acquisition.fixture_store.plan_capture import (
+    capture_fixture_plan,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
     list_fixture_cases,
@@ -26,6 +32,9 @@ from edgar_sec.pipelines.document_acquisition.paths import (
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixturePlanPin,
+)
+from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
+    fixture_plan_pin,
 )
 
 
@@ -73,9 +82,17 @@ def cmd_fixture_create(args: argparse.Namespace) -> int:
 
 
 def cmd_fixture_fill(args: argparse.Namespace) -> int:
+    if not args.allow_network:
+        return _fixture_error(
+            "fill", args, ValueError("pass --allow-network to fetch fixture inputs")
+        )
+    transport = _LazySecTransport(sec_transport_factory)
     try:
         max_body_bytes = response_byte_limit(None)
         paths = resolve_acquisition_paths(artifacts_root=args.artifacts)
+        pin = fixture_plan_pin(paths, args.fixture)
+        if args.plan_id is not None and args.plan_id != pin.target_plan_id:
+            raise ValueError("selected plan differs from fixture plan pin")
         with tqdm(
             total=None,
             desc=f"Fixture {args.fixture}",
@@ -89,11 +106,12 @@ def cmd_fixture_fill(args: argparse.Namespace) -> int:
                     progress.total = total
                 progress.update(1)
 
-            result = capture_fixture_run(
+            result = capture_fixture_plan(
                 args.fixture,
-                args.run_id,
                 paths=paths,
                 max_body_bytes=max_body_bytes,
+                transport=transport,
+                limit=args.limit,
                 on_target=update_progress,
             )
     except (
@@ -105,14 +123,20 @@ def cmd_fixture_fill(args: argparse.Namespace) -> int:
         ValueError,
     ) as error:
         return _fixture_error("fill", args, error)
+    finally:
+        transport.close()
     payload = {"command": "fixture fill", **asdict(result), "status": "filled"}
     if args.json:
         print(json.dumps(payload, sort_keys=True))
     else:
         print(
-            f"filled {result.fixture_id} from run {result.run_id}: "
+            f"filled {result.fixture_id} from plan: "
             f"{result.captured_cases} byte cases captured; "
-            f"{result.skipped_targets} targets skipped"
+            f"{result.skipped_targets} targets skipped; "
+            f"{result.failed_targets} targets failed; "
+            f"lazy indexes fetched={result.fetched_lazy_indexes}, "
+            f"reused={result.reused_lazy_indexes}; "
+            f"failure codes={result.failure_counts}"
         )
     return 0
 
@@ -162,7 +186,8 @@ def cmd_fixture_list(args: argparse.Namespace) -> int:
             found_cases = False
             for case in cases:
                 print(
-                    f"  {case.capture_id}/{case.target_id}: attempt={case.attempt_id}; "
+                    f"  {case.capture_id}/{case.target_id}: "
+                    f"source={case.selection_source}; "
                     f"body={case.body_sha256} ({case.byte_size} bytes)"
                 )
                 found_cases = True

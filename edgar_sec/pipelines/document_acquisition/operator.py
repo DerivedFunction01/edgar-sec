@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -36,12 +35,6 @@ from edgar_sec.pipelines.document_acquisition.paths import (
 from edgar_sec.pipelines.document_acquisition.run_validation import (
     iter_work_order_rows,
     load_validated_work_order,
-)
-from edgar_sec.pipelines.document_acquisition.run_state.evidence import (
-    list_target_attempts,
-)
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
-    inspect_run_state,
 )
 
 MENU_TITLE = "Document Acquisition"
@@ -259,78 +252,52 @@ class _FixtureReviewConsole:
     def fixture_label(fixture: dict) -> str:
         return (
             f"{fixture['fixture_id']} | cases={fixture['case_count']} | "
-            f"captures={fixture['capture_count']}"
+            f"captures={fixture['capture_count']} | "
+            f"lazy-indexes={fixture['lazy_index_count']}"
         )
-
-    def choose_run(self, plan: dict) -> str | None:
-        paths = resolve_acquisition_paths(artifacts_root=self.artifacts_root)
-        items = []
-        for run_id in discover_run_ids(paths):
-            manifest_path = paths.run_manifest_path(run_id)
-            if manifest_path.is_symlink() or not manifest_path.is_file():
-                continue
-            try:
-                manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-            except (OSError, json.JSONDecodeError):
-                continue
-            if not isinstance(manifest, dict):
-                continue
-            if (
-                manifest.get("target_plan_id") != plan["plan_id"]
-                or manifest.get("target_plan_digest") != plan["plan_digest"]
-                or manifest.get("target_schema_version")
-                != plan["target_plan_schema_version"]
-            ):
-                continue
-            try:
-                load_validated_work_order(paths, run_id)
-            except (OSError, RuntimeError, ValueError):
-                continue
-            report = inspect_run_state(
-                run_id,
-                database_path=paths.run_state_path(run_id),
-                lock_path=paths.run_lock_path(run_id),
-            )
-            acquired_count = report.target_counts.get("acquired", 0)
-            if report.state == "invalid" or report.active_lock or not acquired_count:
-                continue
-            target_count = manifest.get("target_row_count")
-            if isinstance(target_count, bool) or not isinstance(target_count, int):
-                target_count = "?"
-            items.append(
-                PickItem(
-                    run_id,
-                    f"{run_id} | targets={target_count} | acquired={acquired_count}",
-                    run_id,
-                )
-            )
-        if not items:
-            print("No projected acquisition runs match the active S6 plan.")
-            return None
-        selected = prompt_paginated_choice(items, prompt_label="Acquisition run")
-        return str(selected.value) if selected is not None else None
 
     def fill_fixture(
         self, fixture_id: str, plan: dict, _limit: int | None, _root: Path
     ) -> bool:
-        run_id = self.choose_run(plan)
-        if run_id is None:
-            return False
-        return (
-            cli_main(
-                [
-                    "fixture",
-                    "fill",
-                    "--fixture",
-                    fixture_id,
-                    "--run-id",
-                    run_id,
-                    "--artifacts",
-                    str(self.artifacts_root),
-                ]
+        target_count = int(plan.get("selected_rows") or 0)
+        default_limit = min(100, target_count) if target_count else 100
+        raw_limit = prompt_text(
+            f"Maximum new target bodies [default {default_limit}; 'all' for {target_count or 'all'}]",
+            str(default_limit),
+        ).strip()
+        if raw_limit.lower() == "all":
+            limit = None
+        else:
+            try:
+                limit = positive_int_type(raw_limit or str(default_limit))
+            except ValueError:
+                print("Target limit must be a positive integer or 'all'.")
+                return False
+        scope = f"up to {limit} target bodies" if limit else "all target bodies"
+        confirmation = (
+            prompt_text(
+                f"Fetch {scope} from SEC for fixture {fixture_id}? (yes/no)", "no"
             )
-            == 0
+            .strip()
+            .lower()
         )
+        if confirmation not in {"y", "yes"}:
+            print("Fixture fill cancelled; no SEC requests were made.")
+            return False
+        args = [
+            "fixture",
+            "fill",
+            "--fixture",
+            fixture_id,
+            "--plan-id",
+            str(plan["plan_id"]),
+            "--allow-network",
+            "--artifacts",
+            str(self.artifacts_root),
+        ]
+        if limit is not None:
+            args.extend(("--limit", str(limit)))
+        return cli_main(args) == 0
 
     def analyze_reviews(self, run_ids: tuple[str, ...]) -> None:
         args = ["review", "analyze"]
@@ -348,6 +315,9 @@ def _action_fixture_review_console() -> None:
     from edgar_sec.pipelines.document_acquisition.review_artifacts.adapter import (
         AcquisitionReviewAdapter,
     )
+    from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
+        SCHEMA_VERSION,
+    )
 
     artifacts_root = resolve_acquisition_paths().artifacts_root
     console = _FixtureReviewConsole(artifacts_root)
@@ -355,6 +325,9 @@ def _action_fixture_review_console() -> None:
         ReviewMenuConfig(
             adapter=AcquisitionReviewAdapter(),
             artifacts_root=artifacts_root,
+            fixture_id_default=lambda plan: (
+                f"fix-{plan['plan_id'][:8]}-v{SCHEMA_VERSION}"
+            ),
             analyze_action=console.analyze_reviews,
             plan_discovery=console.plan_items,
             plan_summary=console.plan_summary,

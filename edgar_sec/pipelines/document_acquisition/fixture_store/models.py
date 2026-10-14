@@ -38,3 +38,15 @@ class FixturePlanPin:
             or self.target_plan_schema_version < 1
         ):
             raise ValueError("fixture plan pin is invalid")
+
+
+@dataclass(frozen=True, slots=True)
+class FixturePlanCaptureResult:
+    fixture_id: str
+    capture_id: str | None
+    captured_cases: int
+    skipped_targets: int
+    failed_targets: int
+    fetched_lazy_indexes: int
+    reused_lazy_indexes: int
+    failure_counts: dict[str, int]

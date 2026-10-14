@@ -3,10 +3,11 @@
 ## Goal Description
 
 This D0 document records the separate S9 acquisition-suspicion and S10 role-assessment
-contracts. Current S6 projections emit no family-trigger pins, and the S9 runner refuses
-lazy-index recovery without them. The retained `exact_form_with_lazy_index` field does
-not currently authorize an index request. S10 diagnoses the already-selected body against
-pinned S6 intent; diagnostics and operation outputs never feed back into acquisition.
+contracts. Current S6 projections emit no family-trigger pins, and the S9 run runner
+refuses lazy-index recovery without them. Plan-driven fixture fill separately honors
+`exact_form_with_lazy_index` by fetching and caching the accession index when the selected
+target has no inventory entry. S10 diagnoses the already-selected body against pinned S6
+intent; diagnostics and operation outputs never feed back into acquisition.
 The contracts do not share scan results or dataclasses.
 
 **Runtime status:** This is a research/design record, not evidence that an S10 evaluator

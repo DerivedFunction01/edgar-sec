@@ -8,7 +8,10 @@ from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.domain.forms.common.exhibits import DocumentRoleAssessment
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.foundation.hashing import is_sha256_hex_digest
-from edgar_sec.pipelines.document_acquisition.schemas import StagedBodyRef
+from edgar_sec.pipelines.document_acquisition.schemas import (
+    FixtureBodyRef,
+    StagedBodyRef,
+)
 
 OperationName = Literal["raw", "render_to_txt", "render_to_xml"]
 OperationSupport = Literal["supported", "unsupported", "not_evaluated"]
@@ -41,7 +44,7 @@ class ProcessingRequest:
     document_path: str | None
     selected_filename: str | None
     source_origin: Literal["inventory_index", "catalog_direct"]
-    body: StagedBodyRef
+    body: StagedBodyRef | FixtureBodyRef
     operations: tuple[OperationRequest, ...]
 
 

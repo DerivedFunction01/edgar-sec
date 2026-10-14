@@ -17,7 +17,7 @@ def test_adapter_identity_and_fixture_discovery(tmp_path: Path, monkeypatch) -> 
     monkeypatch.setattr(
         "edgar_sec.pipelines.document_acquisition.review_artifacts.adapter.list_fixture_summaries",
         lambda _paths: iter(
-            (FixtureSummary("fixture-a", "plan-a", "a" * 64, 1, 2, 2),)
+            (FixtureSummary("fixture-a", "plan-a", "a" * 64, 1, 2, 2, 0),)
         ),
     )
 
@@ -29,6 +29,7 @@ def test_adapter_identity_and_fixture_discovery(tmp_path: Path, monkeypatch) -> 
             "target_plan_schema_version": 1,
             "capture_count": 2,
             "case_count": 2,
+            "lazy_index_count": 0,
         }
     ]
 

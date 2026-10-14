@@ -2,11 +2,12 @@
 
 ## Purpose and status
 
-Store only selected parser-input bodies and the target metadata needed for offline acquisition-parser review.
+Store selected parser inputs and any lazy-index page required to resolve them for offline
+acquisition-parser review.
 
-**Implemented:** plan-pinned schema v2, append-only run captures, deduplicated Zstandard body storage, bounded integrity verification, run-level fill from staged S9 bodies, deterministic discovery, and offline parser review. The fixture does not retain source response groups, error cases, or acquisition processing outputs.
-
-Fill reads each acquired target's selected staged body directly. It does not require `--retain-response-evidence`, initiate SEC requests, or ask the operator to enter target, attempt, capture, or digest values. Non-acquired targets are skipped; acquired targets with missing or invalid staged bodies fail closed.
+**Implemented:** plan-pinned schema v3, direct plan-driven capture, deduplicated Zstandard
+body storage, verified lazy-index caching, deterministic discovery, and offline parser
+review. Fixture fill does not require an acquisition run.
 
 ## Layout
 
@@ -16,28 +17,49 @@ Fill reads each acquired target's selected staged body directly. It does not req
   fixture.sqlite
 ```
 
-`manifest.json` uses the shared fixture envelope with `fixture_kind=document_acquisition.parser_bodies`. Store schema version 2 is pinned independently by the manifest details and SQLite `user_version`. The fixture manifest and `fixture_meta` pin the published S6 target plan. Schema v1 is rejected; there is no migration or dual-version reader.
+`manifest.json` uses the shared fixture envelope with
+`fixture_kind=document_acquisition.parser_bodies`. Store schema version 3 is pinned
+independently by the manifest details and SQLite `user_version`. The manifest and
+`fixture_meta` pin the published S6 target plan. Earlier store versions are rejected;
+there is no migration or dual-version reader.
 
-The SQLite tables are `fixture_meta`, `body_blobs`, `captures`, and `cases`. A capture identifies one run snapshot; its cases identify acquired targets, their selected-body attempt, parsing metadata, and a body digest/size. Identical body bytes share one compressed BLOB.
+The SQLite tables are `fixture_meta`, `body_blobs`, `captures`, `lazy_indexes`, and
+`cases`. A capture groups selected target bodies from a plan-fill invocation. Lazy index
+pages are cached once per accession and share the content-addressed compressed BLOB
+store with selected bodies.
 
 ## Contracts
 
-- **Parser input only**: A fixture body is the selected staged document body, not the original HTTP response, lazy-index page, or bundle container.
-- **Run-scoped fill**: Fill enumerates the validated work order and captures every acquired target with a verified selected staged body. It never exposes per-target or per-attempt selection.
-- **Stable capture**: Capture identity is derived from the run and its selected target/attempt/body identities. Repeating fill is idempotent; a changed acquired-body set creates a distinct capture.
-- **Exact bytes**: `body_sha256` and `byte_size` identify uncompressed selected-body bytes. `stored_sha256` and `stored_byte_size` verify the Zstandard BLOB.
-- **Bounded storage**: Stream selected bytes through compression into a transient file, reserve the SQLite BLOB, and copy it with incremental BLOB I/O. Decompress incrementally for review verification.
-- **Immutable append**: Capture and case metadata and body BLOBs are inserted transactionally. Existing identities are never overwritten; conflicting metadata or bytes are refused.
-- **Plan pin**: Capture refuses a run whose S6 plan ID, digest, or schema version differs from the fixture pin.
-- **Offline review**: Parser review verifies the body BLOB, then invokes current acquisition-engine handlers directly. It does not use source-run S10 outputs, receipts, or projections.
-- **No compatibility path**: Old response-group fixtures and their target/attempt capture workflows are not read or migrated.
+- **Parser input**: A case BLOB contains the exact selected document bytes consumed by
+  offline parser review; an index BLOB is stored only when exact-form lazy resolution uses
+  it.
+- **Plan-scoped fill**: Fill revalidates the pinned S6 bundle, fetches executable targets
+  directly, and creates no run, attempt, or processing receipt.
+- **Lazy-index cache**: Exact-form lazy targets without an inventory entry fetch an index
+  once per accession; later targets reuse the fixture page and record its digest.
+- **Exact bytes**: `body_sha256`/`byte_size` identify uncompressed bytes;
+  `stored_sha256`/`stored_byte_size` verify each Zstandard BLOB.
+- **Bounded storage**: Stream bytes through compression and incremental SQLite BLOB I/O;
+  decompress incrementally for integrity verification.
+- **Immutable append**: Capture, case, index, and body records cannot be overwritten;
+  equal content shares a BLOB.
+- **Serialized fill**: Concurrent plan fills for one fixture are refused while another
+  fill holds the fixture lock.
+- **Offline review**: Review verifies selected bodies and referenced lazy-index BLOBs before
+  invoking current acquisition-engine handlers. It uses no S9 run outputs.
 
 ## Deliberate gaps
 
-- **Response-history review**: The fixture keeps only the selected parser body. Inspecting raw responses, lazy-index evidence, or failed attempts remains a run-evidence task.
-- **Fixture interchange**: No separate archive/import format is defined; a closed SQLite fixture is the storage unit.
-- **Publication**: Parser-review artifacts are diagnostic only and are not production snapshots or publisher input.
+- **Request history**: Ordinary source responses, bundle containers, and failed HTTP
+  attempts are not retained.
+- **Fixture interchange**: No separate archive/import format is defined; a closed SQLite
+  fixture is the storage unit.
+- **Publication**: Parser-review artifacts are diagnostic only and are not production
+  snapshots or publisher input.
 
 ## Acceptance
 
-Tests cover selected staged-body capture without retained raw responses, run-wide capture grouping, immutable body deduplication, stale-schema rejection, body integrity verification, and offline handler execution from fixture bytes. Production parser budgets and publication remain separately gated by representative evidence and approval.
+Tests cover direct plan capture without run state, lazy-index caching and verification,
+immutable body deduplication, stale-schema rejection, and offline handler execution from
+fixture bytes. Production parser budgets and publication remain separately gated by
+representative evidence and approval.

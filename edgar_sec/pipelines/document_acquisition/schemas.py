@@ -76,6 +76,16 @@ class StagedBodyRef:
     source_response_byte_size: int
 
 
+@dataclass(frozen=True, slots=True)
+class FixtureBodyRef:
+    capture_id: str
+    target_id: str
+    path: Path
+    sha256: str
+    byte_size: int
+    selected_filename: str
+
+
 def validate_selected_filename(value: object) -> str | None:
     if value is None:
         return None

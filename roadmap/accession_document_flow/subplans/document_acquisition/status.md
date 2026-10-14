@@ -18,9 +18,9 @@ python run.py acquisition status --artifacts <path>
 
 Without a run ID, list discovered runs in sorted order; with one, inspect that run.
 Adding `--target-id` lists its chronological attempts for run diagnostics. Fixture fill
-does not require an exact attempt input; it discovers acquired targets and copies their
-current selected staged bodies. Raw response retention remains opt-in for run evidence,
-but is not required by parser fixtures.
+is a separate plan-pinned fetch and does not inspect run attempts or staged bodies. Raw
+response retention remains opt-in for run evidence; parser fixtures retain selected
+inputs and only the lazy-index pages required for resolution.
 Output includes run ID, derived state, aggregate target counts, retryable and terminal
 failure counts, and active-lock host/PID/time without the lock owner token. Invalid
 work-order or manifest state is reported and returns a nonzero result. `--artifacts`

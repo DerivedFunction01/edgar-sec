@@ -19,6 +19,7 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixtureOperationError,
 )
+from edgar_sec.pipelines.document_acquisition.fixture_store.schema import open_fixture
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 
 
@@ -27,10 +28,26 @@ class FixtureMaterializationResult:
     fixture_id: str
     capture_id: str
     target_id: str
-    attempt_id: str
     body_sha256: str
     byte_size: int
     output_path: Path
+
+
+@dataclass(frozen=True, slots=True)
+class FixtureLazyIndex:
+    accession: str
+    index_url: str
+    body_sha256: str
+    byte_size: int
+    body: bytes
+
+
+@dataclass(frozen=True, slots=True)
+class FixtureLazyIndexMetadata:
+    accession: str
+    index_url: str
+    body_sha256: str
+    byte_size: int
 
 
 def list_fixture_summaries(paths: AcquisitionPaths) -> Iterator[FixtureSummary]:
@@ -41,6 +58,63 @@ def list_fixture_cases(
     paths: AcquisitionPaths, *, fixture_id: str | None = None
 ) -> Iterator[FixtureCaseMetadata]:
     return iter_fixture_cases(paths, fixture_id=fixture_id)
+
+
+def read_fixture_lazy_index(
+    paths: AcquisitionPaths, fixture_id: str, accession: str
+) -> FixtureLazyIndex | None:
+    _, connection = open_fixture(paths, fixture_id, readonly=True)
+    try:
+        row = connection.execute(
+            "SELECT index_url, body_sha256, byte_size FROM lazy_indexes "
+            "WHERE accession = ?",
+            (accession,),
+        ).fetchone()
+    finally:
+        connection.close()
+    if row is None:
+        return None
+    with tempfile.TemporaryFile(mode="w+b") as stream:
+        _write_verified_body(paths, fixture_id, row[1], stream)
+        stream.seek(0)
+        body = stream.read()
+    if len(body) != row[2]:
+        raise FixtureOperationError("cached lazy-index size differs from its record")
+    return FixtureLazyIndex(accession, row[0], row[1], row[2], body)
+
+
+def count_fixture_lazy_indexes(paths: AcquisitionPaths, fixture_id: str) -> int:
+    _, connection = open_fixture(paths, fixture_id, readonly=True)
+    try:
+        return int(
+            connection.execute("SELECT COUNT(*) FROM lazy_indexes").fetchone()[0]
+        )
+    finally:
+        connection.close()
+
+
+def verify_fixture_lazy_index(
+    paths: AcquisitionPaths,
+    fixture_id: str,
+    accession: str,
+    expected_sha256: str,
+) -> FixtureLazyIndexMetadata:
+    _, connection = open_fixture(paths, fixture_id, readonly=True)
+    try:
+        row = connection.execute(
+            "SELECT index_url, body_sha256, byte_size FROM lazy_indexes "
+            "WHERE accession = ?",
+            (accession,),
+        ).fetchone()
+    finally:
+        connection.close()
+    if row is None or row[1] != expected_sha256:
+        raise FixtureOperationError(
+            "fixture lazy-index reference is missing or changed"
+        )
+    with tempfile.TemporaryFile(mode="w+b") as stream:
+        _write_verified_body(paths, fixture_id, row[1], stream)
+    return FixtureLazyIndexMetadata(accession, row[0], row[1], row[2])
 
 
 def _materialization_destination(paths: AcquisitionPaths, output_path: Path) -> Path:
@@ -94,7 +168,6 @@ def _materialize_fixture_case(
         fixture_id,
         capture_id,
         target_id,
-        case.attempt_id,
         case.body_sha256,
         case.byte_size,
         destination,

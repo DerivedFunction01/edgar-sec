@@ -44,6 +44,7 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
 from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
     _materialize_fixture_case,
     list_fixture_cases,
+    verify_fixture_lazy_index,
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.processing.assessment import (
@@ -56,12 +57,12 @@ from edgar_sec.pipelines.document_acquisition.processing.models import (
     ProcessingRequest,
     StagedOutputRef,
 )
-from edgar_sec.pipelines.document_acquisition.schemas import StagedBodyRef
+from edgar_sec.pipelines.document_acquisition.schemas import FixtureBodyRef
 
 from .models import ProcessingReviewArtifact, ReviewRunResult, ReviewSummary
 
 OBSERVATIONS_FILE = "processing-review.json"
-_ARTIFACT_VERSION = 3
+_ARTIFACT_VERSION = 4
 _OPERATIONS = ("raw", "render_to_txt", "render_to_xml")
 
 
@@ -77,6 +78,10 @@ def _case_id(case: FixtureCaseMetadata) -> str:
 def _validated_fixture_body(
     case: FixtureCaseMetadata, paths: AcquisitionPaths, destination: Path
 ) -> bytes:
+    if case.index_sha256 is not None:
+        verify_fixture_lazy_index(
+            paths, case.fixture_id, case.accession, case.index_sha256
+        )
     materialized = _materialize_fixture_case(
         case.fixture_id,
         case.capture_id,
@@ -279,16 +284,13 @@ def _process_fixture_body(
                 "error": outcome.error,
             }
         )
-    body_ref = StagedBodyRef(
-        run_id=case.run_id,
+    body_ref = FixtureBodyRef(
+        capture_id=case.capture_id,
         target_id=case.target_id,
         path=body_path,
         sha256=body_sha256,
         byte_size=len(raw_bytes),
         selected_filename=case.selected_filename,
-        source_response_path=None,
-        source_response_sha256=None,
-        source_response_byte_size=None,
     )
     request = ProcessingRequest(
         target_id=case.target_id,
@@ -348,8 +350,9 @@ def _review_payload(
         "fixture": {
             "fixture_id": case.fixture_id,
             "capture_id": case.capture_id,
-            "capture_run_id": case.run_id,
-            "capture_attempt_id": case.attempt_id,
+            "selection_source": case.selection_source,
+            "inventory_entry_id": case.inventory_entry_id,
+            "index_sha256": case.index_sha256,
             "target_plan_id": case.target_plan_id,
             "target_plan_digest": case.target_plan_digest,
             "target_plan_schema_version": int(case.target_plan_schema_version),
@@ -360,7 +363,7 @@ def _review_payload(
             "body_sha256": case.body_sha256,
             "byte_size": case.byte_size,
         },
-        "run_id": case.run_id,
+        "capture_id": case.capture_id,
         "target_id": case.target_id,
         "accession": case.accession,
         "form": case.form,
@@ -418,7 +421,6 @@ def _manifest_record(
         "capture_id": case.capture_id,
         "target_id": case.target_id,
         "accession": case.accession,
-        "run_id": case.run_id,
         "target_plan_id": case.target_plan_id,
         "target_plan_digest": case.target_plan_digest,
         "target_plan_schema_version": int(case.target_plan_schema_version),
@@ -443,7 +445,7 @@ def build_review_artifacts(
     if limit is not None:
         cases = cases[:limit]
     if not cases:
-        raise ValueError("fixture has no acquired byte cases")
+        raise ValueError("fixture has no parser-body cases")
 
     requested_output = Path(output).expanduser()
     if requested_output.is_symlink():

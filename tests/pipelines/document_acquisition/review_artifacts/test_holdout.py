@@ -175,18 +175,17 @@ def _write_review_case(
     plan_digest = "a" * 64
     artifact = {
         "artifact_type": "document_acquisition.processing_review",
-        "artifact_version": 3,
+        "artifact_version": 4,
         "fixture": {
             "fixture_id": fixture_id,
             "capture_id": capture_id,
             "target_id": target_id,
-            "capture_run_id": "source-run",
             "target_plan_id": "plan-a",
             "target_plan_digest": plan_digest,
             "target_plan_schema_version": 1,
             "body_sha256": selected_sha,
         },
-        "run_id": "source-run",
+        "capture_id": capture_id,
         "target_id": target_id,
         "accession": accession,
         "form": "10-K",
@@ -225,7 +224,6 @@ def _write_review_case(
             "capture_id": capture_id,
             "target_id": target_id,
             "accession": accession,
-            "run_id": "source-run",
             "target_plan_id": "plan-a",
             "target_plan_digest": plan_digest,
             "target_plan_schema_version": 1,

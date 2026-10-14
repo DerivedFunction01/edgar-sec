@@ -49,10 +49,11 @@ lock; it confirms live SEC access, defaulting to no, and separately prompts whet
 retry eligible acquisition and processing failures.
 The keyed fixture/review console selects an active published plan, creates and fills
 plan-pinned fixtures, lists fixtures, generates review artifacts, compares runs, and
-analyzes review runs offline. Fill selects a matching run, target, and document-body
-attempt from paginated choices and confirms before retaining local evidence; there is
-no public replay/export action. Comparison and analysis select validated review runs
-through paginated choices. Review generation remains limited to the S9/S10 fixture slice.
+analyzes review runs offline. Fill requests a target limit and explicit SEC-network consent,
+then captures selected parser inputs directly from the pinned plan without requiring a
+projected or completed acquisition run. Comparison and analysis select validated review
+runs through paginated choices. Review generation remains limited to the S9/S10 fixture
+slice.
 Publish returns a gate-blocked result and does not create parts, manifests, or pointers.
 The CLI routing and per-target processing are covered by
 [`cli.py`](../../../../edgar_sec/pipelines/document_acquisition/cli.py),
@@ -100,14 +101,14 @@ are out of scope and no aggregate limit is implied.
 ### Fixture and review actions
 
 Create requires a new fixture ID and the active S6 plan. Fill selects a compatible
-fixture and a discovered run, then captures every acquired selected staged body from that
-run. It does not ask for target, attempt, body-size, or digest input and has no consent
-prompt. Listing reports plan pins and run/case counts deterministically without reading
-body BLOBs. No user-facing replay/export action exists.
+fixture, requests a target limit, and requires affirmative network consent. It fetches the
+fixture's uncaptured executable targets from the pinned plan. Listing reports plan pins and
+capture/case/lazy-index counts deterministically without reading body BLOBs. No
+user-facing replay/export action exists.
 
-Review generation chooses an active-plan fixture, verifies each selected body, and runs
-current acquisition-engine handlers offline. It does not require the associated run's
-processing outputs or expose capture/target filters. Comparison selects validated runs
+Review generation chooses an active-plan fixture, verifies each selected body and any
+referenced lazy-index page, and runs current acquisition-engine handlers offline. It does
+not require an associated acquisition run or expose capture/target filters. Comparison selects validated runs
 and uses the shared case-level diff. Analysis validates review manifests and per-case
 output digests, reports parser outcomes, and does not mutate review or fixture inputs.
 Tests are in

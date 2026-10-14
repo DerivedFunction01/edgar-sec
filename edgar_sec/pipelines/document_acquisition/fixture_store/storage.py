@@ -27,6 +27,7 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
     SCHEMA_VERSION,
     _CAPTURE_COLUMNS,
     _CASE_COLUMNS,
+    _LAZY_INDEX_COLUMNS,
     connect,
     create_schema,
     fixture_paths,
@@ -35,18 +36,25 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 
 _INSERT_CAPTURE_SQL = """INSERT INTO captures (
-    capture_id, run_id, target_plan_id, target_plan_digest,
+    capture_id, target_plan_id, target_plan_digest,
     target_plan_schema_version, captured_at_utc
-) VALUES (?, ?, ?, ?, ?, ?)"""
-_SELECT_CAPTURE_SQL = """SELECT capture_id, run_id, target_plan_id,
+) VALUES (?, ?, ?, ?, ?)"""
+_SELECT_CAPTURE_SQL = """SELECT capture_id, target_plan_id,
     target_plan_digest, target_plan_schema_version, captured_at_utc
 FROM captures WHERE capture_id = ?"""
+_INSERT_LAZY_INDEX_SQL = """INSERT INTO lazy_indexes (
+    accession, index_url, body_sha256, byte_size
+) VALUES (?, ?, ?, ?)"""
+_SELECT_LAZY_INDEX_SQL = """SELECT accession, index_url, body_sha256, byte_size
+FROM lazy_indexes WHERE accession = ?"""
 _INSERT_CASE_SQL = """INSERT INTO cases (
-    capture_id, target_id, attempt_id, accession, form, request_id, target_role,
+    capture_id, target_id, inventory_entry_id, selection_source, index_sha256,
+    accession, form, request_id, target_role,
     target_type, source_origin, retrieval_mode, target_url, sequence,
     selected_filename, body_sha256, byte_size
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
-_SELECT_CASE_SQL = """SELECT capture_id, target_id, attempt_id, accession, form,
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+_SELECT_CASE_SQL = """SELECT capture_id, target_id, inventory_entry_id,
+    selection_source, index_sha256, accession, form,
     request_id, target_role, target_type, source_origin, retrieval_mode,
     target_url, sequence, selected_filename, body_sha256, byte_size
 FROM cases WHERE capture_id = ? AND target_id = ?"""
@@ -197,6 +205,9 @@ def _insert_immutable(
     if table == "captures":
         select_sql, insert_sql = _SELECT_CAPTURE_SQL, _INSERT_CAPTURE_SQL
         key = (values["capture_id"],)
+    elif table == "lazy_indexes":
+        select_sql, insert_sql = _SELECT_LAZY_INDEX_SQL, _INSERT_LAZY_INDEX_SQL
+        key = (values["accession"],)
     elif table == "cases":
         select_sql, insert_sql = _SELECT_CASE_SQL, _INSERT_CASE_SQL
         key = (values["capture_id"], values["target_id"])
@@ -244,7 +255,7 @@ def append_fixture_case(
                     or str(capture.get("target_plan_schema_version"))
                     != pin["target_plan_schema_version"]
                 ):
-                    raise FixtureStoreError("capture run differs from fixture plan pin")
+                    raise FixtureStoreError("capture differs from fixture plan pin")
                 reused, actual_stored_sha256, actual_stored_size = _add_body(
                     connection,
                     staged,
@@ -266,5 +277,73 @@ def append_fixture_case(
             )
         finally:
             connection.close()
+    finally:
+        staged.close()
+
+
+def append_fixture_lazy_index(
+    paths: AcquisitionPaths,
+    fixture_id: str,
+    accession: str,
+    index_url: str,
+    source: BinaryIO,
+    *,
+    max_body_bytes: int,
+) -> FixtureBodyRef:
+    staged, body_sha256, byte_size, stored_sha256, stored_byte_size = _stage_body(
+        source, max_body_bytes
+    )
+    try:
+        _, connection = open_fixture(paths, fixture_id, readonly=False)
+        try:
+            with connection:
+                prior = connection.execute(
+                    _SELECT_LAZY_INDEX_SQL, (accession,)
+                ).fetchone()
+                if prior is not None:
+                    if prior != (accession, index_url, body_sha256, byte_size):
+                        raise FixtureStoreError(
+                            "fixture already caches a different lazy index"
+                        )
+                    row = connection.execute(
+                        "SELECT body_id, body_sha256, byte_size, storage_codec, "
+                        "stored_sha256, stored_byte_size FROM body_blobs "
+                        "WHERE body_sha256 = ?",
+                        (body_sha256,),
+                    ).fetchone()
+                    if row is None:
+                        raise FixtureStoreError("cached lazy-index body is missing")
+                    _verify_body_row(connection, row)
+                    return FixtureBodyRef(body_sha256, byte_size, row[4], row[5], True)
+                reused, actual_stored_sha256, actual_stored_size = _add_body(
+                    connection,
+                    staged,
+                    body_sha256,
+                    byte_size,
+                    stored_sha256,
+                    stored_byte_size,
+                )
+                _insert_immutable(
+                    connection,
+                    "lazy_indexes",
+                    _LAZY_INDEX_COLUMNS,
+                    {
+                        "accession": accession,
+                        "index_url": index_url,
+                        "body_sha256": body_sha256,
+                        "byte_size": byte_size,
+                    },
+                )
+            return FixtureBodyRef(
+                body_sha256,
+                byte_size,
+                actual_stored_sha256,
+                actual_stored_size,
+                reused,
+            )
+        finally:
+            connection.close()
+    except sqlite3.Error as error:
+        raise FixtureStoreError("cannot store fixture lazy index") from error
     finally:
         staged.close()

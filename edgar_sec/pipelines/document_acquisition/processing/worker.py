@@ -629,6 +629,8 @@ def process_target(
     selected_operation_ids: tuple[str, ...] | None = None,
 ) -> ProcessingResult:
     try:
+        if not isinstance(request.body, StagedBodyRef):
+            raise ProcessingError("production processing requires a staged run body")
         validate_safe_id(request.target_id, "target_id")
         _validate_operations(request.operations)
         _validate_family_operations(request)

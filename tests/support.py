@@ -354,7 +354,7 @@ def acquired_processing_request(
     )
 
     paths = resolve_acquisition_paths(artifacts_root=tmp_path / "artifacts")
-    plan_id, target = _write_pinned_plan(paths.artifacts_root)
+    plan_id, target, _ = _write_pinned_plan(paths.artifacts_root)
     import edgar_sec.pipelines.document_acquisition.plan_projection.project as projection
 
     def compare_operation_seeds(

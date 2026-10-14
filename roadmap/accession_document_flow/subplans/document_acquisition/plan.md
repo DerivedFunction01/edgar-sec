@@ -51,24 +51,24 @@ and production evidence are separate axes:
   tested.
 - [x] **M2C — Projection/run state:** validated work-order projection, append-only
   attempts, target state, and locking are implemented.
-- [x] **M2D — Fixture substrate:** schema v2 stores deduplicated selected parser bodies
-  in run-scoped captures. Fill discovers all acquired selected staged bodies; it does not
-  require raw-response retention. The v1 response-group format is rejected without
+- [x] **M2D — Fixture substrate:** schema v3 stores deduplicated selected parser bodies
+  in plan-driven captures and caches required lazy-index pages. Fill fetches the pinned
+  S6 targets without creating run state; earlier fixture formats are rejected without
   migration or a compatibility reader.
 - [x] **M2E — Trace opt-out:** S10's `capture_stage_trace=False` normalizer option is
    implemented.
 - [~] **M3 — Acquisition runner:** direct and bundle acquisition, multi-request
   provenance, and the CLI `run` path are implemented. Catalog-direct lazy-index recovery
-  is not currently executable: projections emit no family-trigger IDs/versions and the
-  runner refuses that branch without them. Other selectors do not screen the submitted
+  remains unavailable in S9 runs: projections emit no family-trigger IDs/versions and the
+  runner refuses that branch. Plan-driven fixture fill separately resolves exact-form
+  lazy selectors for offline parser review. Other selectors do not screen the submitted
   primary. Family-aware HTML evaluation and reviewed triggers remain deferred.
 - [x] **M4 — Fixture/interactive surfaces:** CLI `project`, `status`, `run`, fixture
-  `create`, run-level `fill`, `list`, and review `generate`, `compare`, and `analyze` are
-  wired through the shared paginated review menu. Plan switching is `s`; local fill has
-  no target/attempt/hash prompts or consent confirmation.
-- [x] **M5 — Offline S9 parser acceptance:** a pinned-plan acquisition fills a fixture
-  from selected staged bytes and generates parser artifacts without network calls or
-  source-run processing results.
+  `create`, plan-driven `fill`, `list`, and review `generate`, `compare`, and `analyze` are
+  wired through the shared paginated review menu. Plan switching is `s`; fixture fill
+  requests a limit and explicit network consent.
+- [x] **M5 — Offline parser acceptance:** a plan-pinned fixture captures selected bytes
+  without an acquisition run, then generates parser artifacts offline from those bytes.
 - [~] **M6 — S10 processing:** S6 v4 operation intent and S9 work-order v3 resolution are
   persisted and consumed by `acquisition run`, which processes acquired targets inline
   under the run lock. The per-target service and route/handler seams are wired and can be
@@ -229,7 +229,7 @@ synthetic/offline tests.
    status, run, and fixture services; it does not duplicate planning, retry, or fixture
    behavior.
 7. **The S10 body-processing service can start after M1 and M2E.** It processes
-   fixture-backed `StagedBodyRef` values without waiting for the live S9 runner. M7a
+   fixture-backed `FixtureBodyRef` values without waiting for the live S9 runner. M7a
    composes local fixture replay with the service; M7b separately exercises runner
    lifecycle behavior. M8a wires local fixture/result review before M8b evaluates a
    labeled holdout. Neither development slice requires live SEC access.
@@ -375,24 +375,23 @@ the selected source bytes exactly.
 
 ### M2D: Fixture store substrate (`Layer 4`, Track D)
 
-**Goal:** Establish append-only fixture evidence storage while runner implementation
-proceeds, using M1 schemas and paths.
+**Goal:** Store plan-selected parser bodies and any lazy-index evidence required for
+offline review without creating acquisition-run state.
 
 #### Target modules
 
-- `fixtures/` package for SQLite schema, BLOB lifecycle, fixture manifests, and models
-- Fixture storage tests under `tests/pipelines/document_acquisition/fixtures/`
-- `edgar_sec/pipelines/document_acquisition/fixtures/README.md` if implemented as a
-  separate package under repository package documentation rules
+- `fixture_store/` for SQLite schema, BLOB lifecycle, fixture manifests, and models
+- Mirrored tests under `tests/pipelines/document_acquisition/fixture_store/`
+- `fixture_store/README.md`
 
 #### Verification criteria
 
-- Exact source response bytes are stored as SQLite BLOBs with verified digest and size;
-  metadata/manifests remain descriptors, not body copies.
+- Selected parser-body and lazy-index bytes are stored as content-addressed SQLite BLOBs
+  with verified digest and size; metadata/manifests remain descriptors.
 - Captures append and preserve earlier evidence; fixture paths are confined and schema
   versions agree between manifest and SQLite.
-- Listing is read-only and does not hash every stored body. Replay verifies integrity
-  before returning a managed staged-body reference.
+- Listing is read-only and does not hash every stored body. Review verifies selected
+  bodies and referenced lazy-index pages before parsing.
 
 ### M2E: S10 no-stage-trace normalizer option (`Layer 3`)
 
@@ -505,25 +504,24 @@ contract surfaces the prior finding; the finding alone must not silently rewrite
 
 ### M4: Fixture capture, replay, and local CLI/operator
 
-**Dependencies:** M2C, M2D, and M3; fixture replay also requires M2B for bundle cases.
-CLI service wiring can be prepared in parallel with M3 only after stable service
-signatures are available; final operator tests require the merged services.
+**Dependencies:** M2C, M2D, M2B, and a validated S6 plan bundle. Fixture capture does not
+depend on M3's projected runs or run-state service.
 
 #### Target modules
 
-- Fixture capture/list/replay services and `commands/fixture.py`
+- Plan-driven fixture capture/list/review services and `commands/fixture.py`
 - `cli.py`, `operator.py`, command registration in `run.py`
 - `edgar_sec/pipelines/document_acquisition/README.md`, pipeline/layer README tables,
   and mirrored tests under `tests/pipelines/document_acquisition/`
 
 #### Verification criteria
 
-- Fixture replay makes zero HTTP calls and returns bytes/digests identical to captured
-  source or re-derived selected sequence.
-- Capture is explicit promotion of an already acquired staged response, never a network
-  operation. It does not publish payload snapshots.
-- CLI and operator call the same service functions. Interactive run asks for separate,
-  default-no network and retry confirmations; cancelled actions make no request.
+- Fixture fill captures selected plan sources through an injected bounded transport;
+  review generation makes zero HTTP calls and verifies stored bytes/index evidence.
+- Exact-form lazy selection without an inventory entry fetches and caches one index page
+  per accession. Fill does not create acquisition-run state or publish snapshots.
+- CLI and operator call the same service functions. Interactive fixture fill requests a
+  target limit and default-no SEC-network consent; declined actions make no request.
 - The launcher replaces the legacy `document_storage` route with the new S9 surface
   only when the local commands pass their focused tests. The legacy package itself is
   not deleted here.
@@ -539,10 +537,10 @@ boundary until `process_target` is implemented.
 
 #### Verification criteria
 
-- An offline fixture path exercises plan projection, fixture replay, run-state commit,
-  status inspection, and the staged-body handoff without an HTTP request. A test
-  consumer validates S9 receipt and cleanup refusal before publication/discard without
-  claiming S10 processing.
+- An offline fixture path uses an injected transport to capture plan-selected inputs
+  without a live HTTP request or acquisition run, then verifies and processes fixture
+  bytes offline. Run-state commit/status and staged-body receipt behavior remain covered
+  by separate acquisition-run tests.
 - Keep the S9-consumer test against a pinned S6 contract fixture separate from the
   S5/S6 integration case. Do not describe a fixture-only run as end-to-end inventory
   planning until the upstream S5/S6 gates above pass.

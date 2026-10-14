@@ -2,41 +2,58 @@
 
 ## Purpose and status
 
-Copy every acquired selected body from one recorded S9 run into an immutable, plan-pinned parser fixture. Fill is local and does not require source-response retention or issue SEC requests.
+Fetch selected parser inputs from the fixture's pinned S6 plan into an immutable SQLite
+fixture. Fill is independent of acquisition-run projection and S9 run state. Review
+generation can then invoke the current parser handlers offline.
 
 ## CLI and operator
 
 ```text
-acquisition fixture fill --fixture <id> --run-id <run-id>
+acquisition fixture fill --fixture <id> --allow-network [--limit <targets>]
 ```
 
-The fixture must be pinned to the run's validated published S6 plan. The operator discovers compatible fixtures and runs, then fills the selected run in one operation. Target IDs, attempt IDs, response limits, and hashes are not operator inputs. The body-size ceiling comes from `acquisition.max_response_bytes`.
+The CLI requires `--allow-network`; the interactive console asks separately and defaults
+to no. Fill revalidates the fixture's published S6 plan pin, applies the configured finite
+response-byte limit, and fetches up to the requested number of uncaptured executable
+targets. Repeated fills skip targets already stored in the fixture.
 
 ```python
-def capture_fixture_run(
+def capture_fixture_plan(
     fixture_id: str,
-    run_id: str,
     *,
     paths: AcquisitionPaths,
     max_body_bytes: int,
-) -> FixtureRunCaptureResult: ...
+    transport: AcquisitionTransport,
+    limit: int | None = None,
+) -> FixturePlanCaptureResult: ...
 ```
 
 ## Capture contract
 
-- Validate the fixture plan pin, run manifest, work order, target state, and selected-body handoff before appending bytes.
-- Capture only acquired targets with a verified selected staged body. Non-executable and non-acquired targets are skipped; a missing, corrupt, or oversized selected body refuses the fill.
-- Store the selected document bytes and parser metadata only. Raw HTTP responses, index pages, bundle containers, failed attempts, and source-response groups stay in S9 run evidence.
-- Group all selected target bodies from the run under one deterministic capture identity. Repeated fill of the same run/body set is idempotent; changed bodies produce a distinct capture.
-- Stream each selected body through Zstandard into SQLite, deduplicate equal body digests, and append capture/case metadata transactionally. Refuse conflicts and leave existing fixture records unchanged.
-- Capture does not mutate S9 run state, delete selected staging files, create processing receipts, or publish S11 payloads.
+- Revalidate the pinned S6 bundle and refuse a changed plan identity before requests.
+- Fetch only executable target rows from the pinned work-order projection; do not create
+  an S9 run, run-state database, attempt, processing receipt, or staged run body.
+- Follow inventory-selected target URLs directly. For a catalog-direct
+  `exact_form_with_lazy_index` target without an inventory entry, fetch the accession
+  index, select the pinned form through the shared index parser/selector, and store the
+  verified index page in the fixture. Reuse that page for later targets for the accession;
+  validate a selected bundle child against the indexed form.
+- Store selected parser-body bytes, plan/capture metadata, and lazy-index provenance in
+  Zstandard-compressed SQLite BLOBs. Do not retain ordinary HTTP responses, bundle
+  containers, or failed request histories.
+- Report failed target counts by failure code. Failed targets are not marked captured and
+  can be retried by another fill.
+- Enforce the configured response bound on index, source, and selected body bytes.
 
 ## Deliberate gaps
 
-- **Historical attempts**: Fill captures the current acquired body for each target, not earlier retries or failed-attempt response data.
-- **Missing selected staging**: Fill cannot reconstruct a selected body after its S9 staging file is removed.
-- **Production use**: A parser fixture is diagnostic evidence, not production route-budget approval or publisher input.
+- **Request history**: Failed HTTP attempts and ordinary source-response bodies remain
+  outside the fixture; only a lazy index required for selection is retained.
+- **Production use**: Fixture parser results are diagnostic evidence, not route-budget
+  approval or publisher input.
 
 ## Tests
 
-Offline tests cover run-wide capture grouping, selected-body integrity without source-response retention, skipped targets, size refusal, immutable deduplication, and fixture-plan pinning.
+Offline tests cover plan-only fill without an acquisition run, direct and bundle-selected
+inputs, exact-form index resolution, one-time index caching, response limits, immutable
+body storage, and offline parser review.

@@ -17,11 +17,12 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 
-_CASE_SELECT = """SELECT cases.capture_id, cases.target_id, cases.attempt_id,
+_CASE_SELECT = """SELECT cases.capture_id, cases.target_id,
+    cases.inventory_entry_id, cases.selection_source, cases.index_sha256,
     cases.accession, cases.form, cases.request_id, cases.target_role,
     cases.target_type, cases.source_origin, cases.retrieval_mode,
     cases.target_url, cases.sequence, cases.selected_filename,
-    cases.body_sha256, cases.byte_size, captures.run_id,
+    cases.body_sha256, cases.byte_size,
     captures.target_plan_id, captures.target_plan_digest,
     captures.target_plan_schema_version, captures.captured_at_utc
 FROM cases JOIN captures USING (capture_id)"""
@@ -32,7 +33,9 @@ class FixtureCaseMetadata:
     fixture_id: str
     capture_id: str
     target_id: str
-    attempt_id: str
+    inventory_entry_id: str | None
+    selection_source: str
+    index_sha256: str | None
     accession: str
     form: str
     request_id: str
@@ -45,7 +48,6 @@ class FixtureCaseMetadata:
     selected_filename: str
     body_sha256: str
     byte_size: int
-    run_id: str
     target_plan_id: str
     target_plan_digest: str
     target_plan_schema_version: int
@@ -60,6 +62,7 @@ class FixtureSummary:
     target_plan_schema_version: int
     capture_count: int
     case_count: int
+    lazy_index_count: int
 
 
 def _validated_fixture_id(fixture_id: str) -> str:
@@ -96,30 +99,33 @@ def _fixture_ids(paths: AcquisitionPaths) -> tuple[str, ...]:
 
 
 def _case_from_row(fixture_id: str, row: tuple[object, ...]) -> FixtureCaseMetadata:
-    if not is_sha256_hex_digest(row[13]):
+    if not is_sha256_hex_digest(row[15]):
         raise FixtureStoreError("fixture body digest is invalid")
+    if row[4] is not None and not is_sha256_hex_digest(row[4]):
+        raise FixtureStoreError("fixture lazy-index digest is invalid")
     return FixtureCaseMetadata(
         fixture_id=fixture_id,
         capture_id=row[0],
         target_id=row[1],
-        attempt_id=row[2],
-        accession=row[3],
-        form=row[4],
-        request_id=row[5],
-        target_role=row[6],
-        target_type=row[7],
-        source_origin=row[8],
-        retrieval_mode=row[9],
-        target_url=row[10],
-        sequence=row[11],
-        selected_filename=row[12],
-        body_sha256=row[13],
-        byte_size=row[14],
-        run_id=row[15],
-        target_plan_id=row[16],
-        target_plan_digest=row[17],
-        target_plan_schema_version=int(row[18]),
-        captured_at_utc=row[19],
+        inventory_entry_id=row[2],
+        selection_source=row[3],
+        index_sha256=row[4],
+        accession=row[5],
+        form=row[6],
+        request_id=row[7],
+        target_role=row[8],
+        target_type=row[9],
+        source_origin=row[10],
+        retrieval_mode=row[11],
+        target_url=row[12],
+        sequence=row[13],
+        selected_filename=row[14],
+        body_sha256=row[15],
+        byte_size=row[16],
+        target_plan_id=row[17],
+        target_plan_digest=row[18],
+        target_plan_schema_version=int(row[19]),
+        captured_at_utc=row[20],
     )
 
 
@@ -162,6 +168,9 @@ def list_fixture_summaries(paths: AcquisitionPaths) -> tuple[FixtureSummary, ...
                 "SELECT COUNT(*) FROM captures"
             ).fetchone()[0]
             case_count = connection.execute("SELECT COUNT(*) FROM cases").fetchone()[0]
+            lazy_index_count = connection.execute(
+                "SELECT COUNT(*) FROM lazy_indexes"
+            ).fetchone()[0]
             summaries.append(
                 FixtureSummary(
                     fixture_id,
@@ -170,6 +179,7 @@ def list_fixture_summaries(paths: AcquisitionPaths) -> tuple[FixtureSummary, ...
                     target_plan_version,
                     capture_count,
                     case_count,
+                    lazy_index_count,
                 )
             )
         except (OSError, sqlite3.Error, KeyError, TypeError, ValueError) as error:

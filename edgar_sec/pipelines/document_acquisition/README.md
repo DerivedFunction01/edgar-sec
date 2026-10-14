@@ -9,8 +9,8 @@ Projects published S6 target plans into bounded S9 work orders and owns append-o
 The CLI implements project, status, combined run/process, and fixture/review tracks. The
 fixture/review console follows the shared review menu: create and fill discovered
 fixtures, switch the active S6 plan with `s`, and generate parser reviews from captured
-selected bodies. Fill captures a whole recorded run without target, attempt, or digest
-entry.
+selected bodies. Fixture fill fetches directly from the pinned plan and does not require
+an acquisition run.
 
 ## Contracts
 
@@ -26,6 +26,8 @@ entry.
   not retrieval authorization; S9 executes only the mode pinned by S6.
 - **Distinct evidence**: Processing role, requested type, expected statutory type, index designation, physical sequence, and observed body type remain separate facts.
 - **Finite response limit**: Acquisition runs and fixture body capture resolve `acquisition.max_response_bytes` through the shared settings registry; no unbounded sentinel is accepted.
+- **Plan-driven fixture capture**: Fixture fill validates the pinned S6 bundle and fetches its selected parser inputs directly; the interactive console requires explicit live-network consent.
+- **Lazy-index evidence**: Exact-form lazy selection fetches and caches the accession index in the fixture only when no inventory entry pins the selected document. Repeated targets for that accession reuse the cached page.
 - **Catalog-direct bundle identity**: With the exact-form selector, extracted primary SGML `<TYPE>` is compared to the pinned form as ASCII; mismatch or unverifiable type enters lazy-index recovery. Other selectors do not screen the submitted primary.
 - **Processing boundary**: Engine owns SGML type screening and resolves operation capability/handler pins from path facts; pipeline code owns source selection, the pinned operation contract, and staged outputs. SGML child filenames use content routes even when their names contain slashes.
 - **Transient ownership**: Acquired bodies remain under the shared transient root; receipts do not authorize cleanup, and publication/discard cleanup is not implemented.
@@ -34,7 +36,7 @@ entry.
 ## Deliberate gaps
 
 - **No family-aware identity screen**: The catalog-direct exact-form selector records direct-body evidence as unverifiable and uses lazy-index lookup; text evidence cannot override the pinned target form or exact index `document_type`.
-- **Parser-body fixtures**: Schema v2 stores only acquired selected bodies and parser metadata. Fill reads the run's selected staging area and does not require response-evidence retention; non-acquired targets are skipped.
+- **Parser-body fixtures**: Schema v3 stores selected parser inputs and any lazy-index page used to resolve them. Failed targets are reported but their failed request history is not retained.
 - **Production processing gate**: `process_target` remains subject to the separate route-budget contract. Offline parser review invokes the current `AcquisitionProcessor` handlers directly and does not reuse stored S10 results.
 - **Fixture review boundary**: `review generate` verifies each body digest and runs the current raw/text/XML handlers offline. It writes versioned diagnostic records and handler outputs, not S9/S11 results.
 - **Offline review analysis**: `review analyze` validates manifest, per-case artifact, and label sidecar digests before summarizing operation outcomes and label errors. `review holdout` requires an explicit issuer/time partition. Neither command fetches SEC data or mutates acquisition runs.
@@ -72,7 +74,7 @@ python run.py acquisition --help
 python run.py acquisition project --help
 python run.py acquisition run --help
 python run.py acquisition fixture create --fixture local-review --plan-id PLAN_ID
-python run.py acquisition fixture fill --fixture local-review --run-id RUN
+python run.py acquisition fixture fill --fixture local-review --allow-network --limit 100
 python run.py acquisition fixture list --fixture local-review
 python run.py acquisition review generate --fixture local-review
 python run.py acquisition review compare --base ./review-runs/run-BASE --new ./review-runs/run-NEW
@@ -117,8 +119,8 @@ python run.py acquisition review holdout --run ./review-runs/run-NEW --spec ./ho
 ```
 <!-- AUTOGEN:PATHS:END -->
 
-The run reports acquisition and processing outcomes together. Fixture fill copies
-selected staged bodies into its pinned SQLite store. Review generation verifies those
-body digests and executes the current parser handlers without source-run processing
-outputs; review generation, comparison, and analysis make no HTTP requests or publish
-S11 artifacts.
+The run reports acquisition and processing outcomes together. Fixture fill instead
+fetches parser inputs from the validated pinned plan, stores them in SQLite, and caches
+lazy-index pages when needed. Review generation verifies those bodies and executes the
+current parser handlers offline; review generation, comparison, and analysis make no
+HTTP requests or publish S11 artifacts.
