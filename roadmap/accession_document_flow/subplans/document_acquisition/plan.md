@@ -144,9 +144,10 @@ flowchart TD
     SGML["Track B: Bounded SGML sequence extraction in engine"]
     PROJECT["Track C1: Validate S6 bundle + project immutable work order"]
     STATE["Track C2: SQLite state, attempts, locks, status"]
-    FIXSTORE["Track D1: Fixture storage and read-only listing"]
+    FIXSTORE["Track D1: Fixture storage and read-only discovery"]
     RUN["M3: Local runner integrates work order, state, HTTP, SGML"]
-    FIX["M4: Capture/replay integrates staged run bodies"]
+    FIX["M4: Plan-driven fixture capture and offline replay"]
+    S6PLAN["Pinned S6 target plan"]
     CLI["M4: CLI, operator, launcher and package docs"]
     NTRACE["Track E: S10 no-stage-trace normalizer option"]
     PROCESS["M6: S10 process_target and receipt-gated output"]
@@ -172,8 +173,9 @@ flowchart TD
     STATE --> RUN
     HTTP --> RUN
     SGML --> RUN
+    HTTP --> FIX
     FIXSTORE --> FIX
-    RUN --> FIX
+    S6PLAN --> FIX
     PROCESS --> GATE
     FIXSTORE --> GATE
     GATE --> RUN_GATE
@@ -198,12 +200,9 @@ flowchart TD
     UPSTREAM -. "needed for full inventory-backed vertical run" .-> GATE
 ```
 
-The former M7/M8 ordering conflated fixture composition with the live acquisition path:
-M4's response-capture command consumes an M3 acquisition, while fixture-only integration
-and holdout review were also described as waiting on M3/M4. That is an artificial
-dependency cycle for offline development. M7a and M8a instead consume local fixture-store
-records; new evidence capture remains a separate operation and does not gate wiring or
-synthetic/offline tests.
+M4 fixture capture consumes the pinned S6 plan directly and does not require an M3
+acquisition run. M7a and M8a consume local fixture-store records; evidence capture does
+not gate wiring or synthetic/offline tests.
 
 ### Delegation boundaries
 
@@ -518,8 +517,10 @@ depend on M3's projected runs or run-state service.
 
 - Fixture fill captures selected plan sources through an injected bounded transport;
   review generation makes zero HTTP calls and verifies stored bytes/index evidence.
-- Exact-form lazy selection without an inventory entry fetches and caches one index page
-  per accession. Fill does not create acquisition-run state or publish snapshots.
+- Exact-form catalog-direct lazy selection without a pinned inventory entry fetches and
+  caches one index page per accession. The S6 pin includes parsed inventory relations,
+  not raw index bodies; inventory fixture storage remains inventory-owned. Fill does not
+  create acquisition-run state or publish snapshots.
 - CLI and operator call the same service functions. Interactive fixture fill requests a
   target limit and default-no SEC-network consent; declined actions make no request.
 - The launcher replaces the legacy `document_storage` route with the new S9 surface
@@ -748,7 +749,7 @@ The table below records dependency order, not the current work priority:
 | 2d | M2D fixture store | M1 | SQLite BLOB evidence substrate |
 | 2e | M2E S10 no-trace mode | S10 contract | Opt-out from retaining normalization stage traces |
 | 3 | M3 local runner | M1, M2A–M2C | Resumable local SEC acquisition |
-| 4 | M4 fixtures/CLI/operator | M2B, M2C, M2D, M3 | Local user surface and replay |
+| 4 | M4 fixtures/CLI/operator | M2B, M2C, M2D, pinned S6 plan | Plan-driven local user surface and offline replay |
 | 5 | M5 offline S9 gate | M3, M4 | Fixture-driven acquisition lifecycle verification |
 | 6 | M6 S10 processing | M1, M2E | Typed per-target processing and S9 receipt integration |
 | 7a | M7a offline composition | M2D, M6 | Fixture-driven processing, receipt, and terminal-result projection |
