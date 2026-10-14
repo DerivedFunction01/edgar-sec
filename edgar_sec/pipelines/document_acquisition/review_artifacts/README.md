@@ -1,31 +1,33 @@
 # document_acquisition review_artifacts
 
-Layer 4 review-run generation from captured S9 cases and transient S10 results.
+Layer 4 parser-review generation from captured acquisition cases.
 
 ## Purpose
 
-The builder materializes and verifies captured fixture evidence internally, validates
-the matching run and work-order pins, and reuses its S10 result to write content-pinned
-review records in the shared review-run layout. It does not consume the body a second
-time or rerun processing. Runs remain diagnostic artifacts and do not publish
-acquisition snapshots.
+The builder materializes and verifies fixture bytes, then invokes the current
+`AcquisitionProcessor` handlers directly. It does not need the source run's work order,
+processing result, or receipt, and it never makes SEC requests. Runs are diagnostic
+artifacts and do not publish acquisition snapshots.
 
 ## Contracts
 
-- **Offline input**: Review generation reads fixture records and existing run state; it
-  never initiates SEC requests.
-- **Pinned cases**: Each manifest row identifies its fixture, capture, target, source
-  digests, processing profile, receipt, and generated artifact digest.
-- **No raw export**: Review generation writes review artifacts, not a caller-selected
-  copy of the fixture body.
+- **Offline input**: Review generation parses verified fixture bytes and never initiates
+  SEC requests or reads source-run processing outputs.
+- **Pinned cases**: Each manifest row identifies its fixture, run capture, target, body
+  digests, current handler results, and generated artifact digest.
+- **Single parser path**: Current handlers process every acquired fixture case; target,
+  capture, and attempt identifiers are not review filters.
 - **Stable comparison**: Case identifiers and manifest order are deterministic for the
   selected fixtures; the shared review console compares case artifacts.
+- **Digest scope**: Artifact and output digests detect inconsistency or accidental
+  corruption, not malicious rewrites by someone who can also edit the manifest. A trusted
+  signature or externally pinned digest is required for authenticity.
 - **No publication**: Review outputs are not S9/S11 result schemas or publisher input.
 
 ## Usage examples
 
 ```bash
-python run.py acquisition review generate --fixture FIXTURE --capture-id CAPTURE --target-id TARGET
+python run.py acquisition review generate --fixture FIXTURE
 python run.py acquisition review compare --base REVIEW_A --new REVIEW_B
 ```
 
@@ -34,14 +36,14 @@ python run.py acquisition review compare --base REVIEW_A --new REVIEW_B
 ```text
 {review_run}/
 ├── cases/{accession}--{fixture_capture_digest}/
+│   ├── operations/
 │   └── processing-review.json
 └── manifest.jsonl
 ```
 
 ## Deliberate gaps
 
-- **Retained-run requirement**: Cases whose source run body is no longer available are
-  reported as execution errors; reconstructing a new acquisition run from fixture data
-  remains separate work.
-- **Partial processors**: Raw identity and pinned TEXT passthrough are available; other
-  transforms remain explicit unsupported or not-evaluated outcomes.
+- **Unavailable bytes**: Fill cannot recover response bodies that the source acquisition
+  run did not retain.
+- **No production gates**: Parser review reports current handler behavior; it does not
+  authorize production route budgets or publication.

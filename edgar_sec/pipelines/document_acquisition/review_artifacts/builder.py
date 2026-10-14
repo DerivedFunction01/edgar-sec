@@ -1,320 +1,381 @@
 from __future__ import annotations
 
-import json
 import os
 import shutil
 import tempfile
-from collections.abc import Iterable
 from dataclasses import asdict
 from pathlib import Path
+from urllib.parse import urlsplit
 
-from edgar_sec.domain.forms.common.processing import (
-    AcquisitionOperation,
-    DEFAULT_OPERATIONS,
-)
+from tqdm.auto import tqdm
+
+from edgar_sec.domain.document.path_facts import DocumentPathFacts
+from edgar_sec.domain.document.route import DocumentRoute, content_route, document_route
+from edgar_sec.domain.forms.common.aliases import resolve_alias
+from edgar_sec.domain.forms.common.processing import DEFAULT_OPERATIONS
 from edgar_sec.domain.forms.families.processing_profiles import get_family_profile
 from edgar_sec.domain.identity import AccessionNumber
-from edgar_sec.domain.sec_urls import validate_archive_url
-from edgar_sec.foundation.hashing import (
-    file_sha256,
-    is_sha256_hex_digest,
-    sha256_text,
+from edgar_sec.engine.document_processing.acquisition_capabilities import (
+    resolve_acquisition_capability,
 )
+from edgar_sec.engine.document_processing.capabilities import operation_output_kind
+from edgar_sec.engine.document_processing.processor import (
+    AcquisitionProcessRequest,
+    AcquisitionProcessor,
+    InputRecord,
+    OperationRecord,
+)
+from edgar_sec.foundation.hashing import file_sha256, sha256_bytes, sha256_text
 from edgar_sec.foundation.runtime.paths import validate_safe_id
+from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.serialization import canonical_hash, canonical_json
-from edgar_sec.infra.storage.atomic import atomic_write_json, atomic_write_text
+from edgar_sec.infra.storage.atomic import (
+    atomic_write_bytes,
+    atomic_write_json,
+    atomic_write_text,
+)
 from edgar_sec.infra.storage.review.paths import (
     PIPELINE_REVIEW_MANIFEST_FILE,
     ReviewPaths,
 )
-from edgar_sec.pipelines.document_acquisition.body_handoff import (
-    get_staged_body_ref,
-    read_body_consumption_receipt,
-)
-from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
-    list_fixture_cases,
-    _materialize_fixture_case,
-)
 from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
     FixtureCaseMetadata,
-    get_fixture_case,
 )
-from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
-    fixture_plan_pin,
+from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
+    _materialize_fixture_case,
+    list_fixture_cases,
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
-from edgar_sec.pipelines.document_acquisition.processing.worker import (
-    process_target,
-)
-from edgar_sec.pipelines.document_acquisition.processing.run import (
-    _prior_results,
-    _read_prior_processing_result,
-)
-from edgar_sec.pipelines.document_acquisition.run_validation import (
-    iter_resolved_work_order_operations,
-    iter_work_order_rows,
-    load_validated_work_order,
+from edgar_sec.pipelines.document_acquisition.processing.assessment import (
+    assess_exhibit_processing,
 )
 from edgar_sec.pipelines.document_acquisition.processing.models import (
     OperationRequest,
+    OperationResult,
+    ProcessingDiagnostic,
     ProcessingRequest,
-    ProcessingResult,
+    StagedOutputRef,
 )
-from edgar_sec.pipelines.document_acquisition.project.models import (
-    ProcessingResultProjection,
-    ProjectedTarget,
-)
-from edgar_sec.pipelines.document_acquisition.review_artifacts.result_projection import (
-    project_terminal_results,
-)
+from edgar_sec.pipelines.document_acquisition.schemas import StagedBodyRef
 
 from .models import ProcessingReviewArtifact, ReviewRunResult, ReviewSummary
 
 OBSERVATIONS_FILE = "processing-review.json"
-_ARTIFACT_VERSION = 2
+_ARTIFACT_VERSION = 3
+_OPERATIONS = ("raw", "render_to_txt", "render_to_xml")
 
 
 class ProcessingReviewError(ValueError):
     pass
 
 
-def _family_record(request: ProcessingRequest) -> dict[str, object]:
-    profile = get_family_profile(request.form)
-    allowed = profile.allowed_operations if profile is not None else DEFAULT_OPERATIONS
-    for operation in request.operations:
-        if (
-            operation.requested
-            and operation.support_status == "supported"
-            and AcquisitionOperation(operation.operation) not in allowed
-        ):
-            raise ProcessingReviewError(
-                "requested operation is not allowed by the form-family profile"
-            )
-    return {
-        "family": profile.family if profile is not None else "default",
-        "version": profile.version if profile is not None else "1",
-        "allowed_operations": sorted(item.value for item in allowed),
-    }
+def _case_id(case: FixtureCaseMetadata) -> str:
+    digest = sha256_text(f"{case.fixture_id}\n{case.capture_id}\n{case.target_id}")[:20]
+    return validate_safe_id(f"{case.accession}--{digest}", "review_case_id")
 
 
-def _projected_target(
-    projection: ProcessingResultProjection, result: ProcessingResult
-) -> ProjectedTarget:
-    if not is_sha256_hex_digest(projection.fingerprint):
-        raise ProcessingReviewError("projection fingerprint is invalid")
-    matches = (
-        item for item in projection.iter_targets() if item.target_id == result.target_id
+def _validated_fixture_body(
+    case: FixtureCaseMetadata, paths: AcquisitionPaths, destination: Path
+) -> bytes:
+    materialized = _materialize_fixture_case(
+        case.fixture_id,
+        case.capture_id,
+        case.target_id,
+        destination,
+        paths=paths,
     )
-    target = next(matches, None)
     if (
-        target is None
-        or target.processing_id != result.processing_id
-        or next(matches, None) is not None
+        materialized.body_sha256 != case.body_sha256
+        or materialized.byte_size != case.byte_size
+        or file_sha256(destination) != case.body_sha256
     ):
-        raise ProcessingReviewError("projection does not contain the processing result")
-    if (
-        target.source_sha256 != result.source_sha256
-        or target.route is not result.route
-        or target.effective_path != result.effective_path
-        or target.exhibit_assessment != result.exhibit_assessment
-        or target.exhibit_assessment_fingerprint
-        != result.exhibit_assessment_fingerprint
-    ):
-        raise ProcessingReviewError("projected target differs from processing result")
-    return target
+        raise ProcessingReviewError("fixture body differs from selected identity")
+    return destination.read_bytes()
 
 
-def _operation_records(
-    request: ProcessingRequest, result: ProcessingResult, target: ProjectedTarget
-) -> list[dict[str, object]]:
-    request_operations = {item.operation_id: item for item in request.operations}
-    projected_operations = {item.operation_id: item for item in target.operations}
-    result_operations = {item.operation_id: item for item in result.operation_results}
-    if (
-        request_operations.keys() != result_operations.keys()
-        or request_operations.keys() != projected_operations.keys()
-    ):
-        raise ProcessingReviewError("review operation coverage is incomplete")
-    records = []
-    for operation_id in sorted(request_operations):
-        requested = request_operations[operation_id]
-        produced = result_operations[operation_id]
-        projected = projected_operations[operation_id]
-        produced_representation = (
-            produced.staged_output.representation
-            if produced.staged_output is not None
-            else None
+def _input_path(case: FixtureCaseMetadata) -> tuple[str, str, DocumentPathFacts]:
+    if case.selected_filename is not None:
+        selected_path = case.selected_filename
+        facts = DocumentPathFacts.from_sgml_filename(selected_path)
+        route = content_route(selected_path)
+    else:
+        if case.target_url is None:
+            raise ProcessingReviewError("fixture case has no selected document path")
+        selected_path = urlsplit(case.target_url).path
+        facts = DocumentPathFacts.from_archive_path(selected_path)
+        route = document_route(selected_path)
+    if not facts.path_context or not selected_path:
+        raise ProcessingReviewError("fixture case has no selected document path")
+    return selected_path, route.value, facts
+
+
+def _operation_requests(
+    case: FixtureCaseMetadata,
+    facts: DocumentPathFacts,
+    route: DocumentRoute,
+) -> tuple[OperationRequest, ...]:
+    family = resolve_alias(case.form) or case.form.strip().upper()
+    requests = []
+    for operation in _OPERATIONS:
+        capability = resolve_acquisition_capability(
+            family, case.target_role, operation, facts, route
         )
-        if (
-            projected.status != produced.status
-            or projected.operation_fingerprint != produced.operation_fingerprint
-            or projected.output_sha256 != produced.output_sha256
-            or projected.output_size != produced.output_size
-            or projected.handler_id != produced.handler_id
-            or projected.handler_version != produced.handler_version
-            or projected.staged_output_representation != produced_representation
-            or projected.diagnostics != produced.diagnostics
-        ):
-            raise ProcessingReviewError(
-                "projected operation differs from processing result"
+        output_kind = operation_output_kind(operation)
+        if output_kind is None:
+            raise ProcessingReviewError("processing operation is unsupported")
+        operation_id = (
+            "op_"
+            + canonical_hash(
+                {
+                    "fixture": case.fixture_id,
+                    "capture": case.capture_id,
+                    "target": case.target_id,
+                    "operation": operation,
+                }
+            )[:24]
+        )
+        requests.append(
+            OperationRequest(
+                operation_id=operation_id,
+                operation=operation,
+                requested=True,
+                support_status="supported"
+                if capability.pins is not None
+                else "unsupported",
+                source_request_id=case.request_id,
+                capability_id=capability.capability_id,
+                capability_version=capability.capability_version,
+                handler_id=capability.handler_id,
+                handler_version=capability.handler_version,
+                output_kind=capability.output_kind,
             )
-        records.append(
+        )
+    return tuple(requests)
+
+
+def _process_fixture_body(
+    case: FixtureCaseMetadata,
+    body_path: Path,
+    raw_bytes: bytes,
+    output_root: Path,
+) -> dict[str, object]:
+    selected_path, route_value, facts = _input_path(case)
+    route = DocumentRoute(route_value)
+    operations = _operation_requests(case, facts, route)
+    body_sha256 = sha256_bytes(raw_bytes)
+    if body_sha256 != case.body_sha256 or len(raw_bytes) != case.byte_size:
+        raise ProcessingReviewError(
+            "materialized fixture bytes differ from case identity"
+        )
+    request_id = case.request_id
+    engine_request = AcquisitionProcessRequest(
+        target_id=case.target_id,
+        family=resolve_alias(case.form) or case.form.strip().upper(),
+        role=case.target_role,
+        target_type=case.target_type,
+        path_facts=facts,
+        operations=tuple(
+            OperationRecord(
+                capability_version=operation.capability_version or "",
+                output_kind=operation_output_kind(operation.operation).value,
+                source_ids=(request_id,),
+                operation=operation.operation,
+                handler_id=operation.handler_id,
+                handler_version=operation.handler_version,
+            )
+            for operation in operations
+        ),
+        inputs=(
+            InputRecord(
+                source_id=request_id,
+                locator_provenance=case.target_url or selected_path,
+                selected_path=selected_path,
+                path_facts=facts,
+                sha256=body_sha256,
+                byte_size=len(raw_bytes),
+                raw_bytes=raw_bytes,
+            ),
+        ),
+    )
+    engine_result = AcquisitionProcessor().process(engine_request)
+    result_by_operation = {item.operation: item for item in engine_result.outcomes}
+    artifact_outputs: dict[str, object] = {}
+    operation_results = []
+    operation_records = []
+    for operation in operations:
+        outcome = result_by_operation[operation.operation]
+        output_ref = None
+        output_info = None
+        if outcome.output_bytes is not None and outcome.output_sha256 is not None:
+            if sha256_bytes(outcome.output_bytes) != outcome.output_sha256:
+                raise ProcessingReviewError("parser output digest is invalid")
+            if operation.operation == "raw":
+                output_path = body_path
+                representation = "raw"
+                relative_output = None
+            else:
+                extension = "txt" if operation.operation == "render_to_txt" else "xml"
+                relative_output = f"operations/{operation.operation}.{extension}"
+                output_path = output_root / relative_output
+                atomic_write_bytes(output_path, outcome.output_bytes)
+                representation = "text_normalized" if extension == "txt" else "xml"
+                artifact_outputs[relative_output] = {
+                    "sha256": outcome.output_sha256,
+                    "byte_size": outcome.output_byte_size,
+                }
+            output_ref = StagedOutputRef(
+                staging_id=output_root.name,
+                path=output_path,
+                representation=representation,
+                output_sha256=outcome.output_sha256,
+                output_size=outcome.output_byte_size or 0,
+            )
+            output_info = {
+                "sha256": outcome.output_sha256,
+                "byte_size": outcome.output_byte_size,
+                "path": relative_output,
+            }
+        status = "available" if outcome.status == "ok" else outcome.status
+        diagnostic = (
+            (ProcessingDiagnostic(outcome.error, outcome.error),)
+            if outcome.error is not None
+            else ()
+        )
+        operation_fingerprint = canonical_hash(
             {
-                "operation_id": operation_id,
-                "operation": requested.operation,
-                "requested": requested.requested,
-                "support_status": requested.support_status,
-                "capability_id": requested.capability_id,
-                "capability_version": requested.capability_version,
-                "handler_id": produced.handler_id,
-                "handler_version": produced.handler_version,
-                "status": projected.status,
-                "operation_fingerprint": projected.operation_fingerprint,
-                "output_sha256": projected.output_sha256,
-                "output_size": projected.output_size,
-                "staged_output_representation": projected.staged_output_representation,
-                "staged_output_path": projected.staged_output_path,
-                "diagnostics": [
-                    {"code": item.code, "detail": item.detail}
-                    for item in projected.diagnostics
-                ],
+                "operation": operation.operation,
+                "operation_id": operation.operation_id,
+                "input_sha256": body_sha256,
+                "handler_id": outcome.handler_id,
+                "handler_version": outcome.handler_version,
+                "status": status,
+                "output_sha256": outcome.output_sha256,
+                "error": outcome.error,
             }
         )
-    return records
+        operation_results.append(
+            OperationResult(
+                operation_id=operation.operation_id,
+                operation_fingerprint=operation_fingerprint,
+                status=status,
+                representation_id=outcome.output_kind,
+                output_sha256=outcome.output_sha256,
+                output_size=outcome.output_byte_size,
+                handler_id=outcome.handler_id,
+                handler_version=outcome.handler_version,
+                diagnostics=diagnostic,
+                staged_output=output_ref,
+            )
+        )
+        operation_records.append(
+            {
+                "operation_id": operation.operation_id,
+                "operation": operation.operation,
+                "status": status,
+                "output_kind": outcome.output_kind,
+                "handler_id": outcome.handler_id,
+                "handler_version": outcome.handler_version,
+                "output": output_info,
+                "error": outcome.error,
+            }
+        )
+    body_ref = StagedBodyRef(
+        run_id=case.run_id,
+        target_id=case.target_id,
+        path=body_path,
+        sha256=body_sha256,
+        byte_size=len(raw_bytes),
+        selected_filename=case.selected_filename,
+        source_response_path=None,
+        source_response_sha256=None,
+        source_response_byte_size=None,
+    )
+    request = ProcessingRequest(
+        target_id=case.target_id,
+        accession=AccessionNumber.from_any(case.accession),
+        form=case.form,
+        target_role=case.target_role,
+        target_type=case.target_type,
+        document_path=urlsplit(case.target_url or "").path or None,
+        selected_filename=case.selected_filename,
+        source_origin=case.source_origin,
+        body=body_ref,
+        operations=operations,
+    )
+    assessment, assessment_fingerprint = assess_exhibit_processing(
+        request,
+        tuple(operation_results),
+        route,
+        selected_path,
+    )
+    profile = get_family_profile(case.form)
+    allowed = profile.allowed_operations if profile is not None else DEFAULT_OPERATIONS
+    processing = {
+        "processing_id": canonical_hash(
+            {
+                "fixture_id": case.fixture_id,
+                "capture_id": case.capture_id,
+                "target_id": case.target_id,
+                "body_sha256": body_sha256,
+                "operations": operation_records,
+            }
+        ),
+        "source_sha256": body_sha256,
+        "source_asset_id": canonical_hash(
+            {"sha256": body_sha256, "size": len(raw_bytes)}
+        ),
+        "route": route_value,
+        "effective_path": selected_path,
+        "operations": operation_records,
+        "exhibit_assessment": asdict(assessment) if assessment is not None else None,
+        "exhibit_assessment_fingerprint": assessment_fingerprint,
+        "family_profile": {
+            "family": profile.family if profile is not None else "default",
+            "version": profile.version if profile is not None else "1",
+            "allowed_operations": sorted(item.value for item in allowed),
+        },
+        "outputs": artifact_outputs,
+    }
+    return processing
 
 
 def _review_payload(
-    fixture: FixtureCaseMetadata,
-    request: ProcessingRequest,
-    result: ProcessingResult,
-    projection: ProcessingResultProjection,
-    *,
-    paths: AcquisitionPaths,
+    case: FixtureCaseMetadata, processing: dict[str, object]
 ) -> dict[str, object]:
-    try:
-        stored_fixture = get_fixture_case(
-            paths, fixture.fixture_id, fixture.capture_id, fixture.target_id
-        )
-    except (OSError, ValueError) as error:
-        raise ProcessingReviewError("fixture metadata is unavailable") from error
-    if stored_fixture != fixture:
-        raise ProcessingReviewError("fixture metadata differs from fixture store")
-    if (
-        fixture.acquisition_status != "acquired"
-        or fixture.retrieval_mode != "direct_url"
-        or fixture.response_sha256 is None
-        or fixture.selected_sha256 is None
-        or fixture.source_byte_size is None
-        or fixture.selected_byte_size is None
-    ):
-        raise ProcessingReviewError("fixture is not a captured direct acquisition")
-    if (
-        fixture.target_id != request.target_id
-        or fixture.accession != str(request.accession)
-        or fixture.form != request.form
-        or fixture.selected_sha256 != request.body.sha256
-        or fixture.selected_byte_size != request.body.byte_size
-        or fixture.response_sha256 != request.body.source_response_sha256
-        or fixture.source_byte_size != request.body.source_response_byte_size
-    ):
-        raise ProcessingReviewError("fixture identity differs from processing request")
-    if (
-        result.target_id != request.target_id
-        or request.body.run_id != projection.run_id
-    ):
-        raise ProcessingReviewError("processing result run identity is inconsistent")
-
-    with project_terminal_results(
-        (request,), (result,), paths=paths, run_id=request.body.run_id
-    ) as verified_projection:
-        if verified_projection != projection:
-            raise ProcessingReviewError(
-                "projection changed before review artifact creation"
-            )
-
-    target = _projected_target(projection, result)
-    family = _family_record(request)
-    receipt = read_body_consumption_receipt(
-        paths, request.body.run_id, request.target_id
-    )
-    if receipt is None:
-        raise ProcessingReviewError("processing receipt is missing")
-    if (
-        receipt["run_id"] != request.body.run_id
-        or receipt["target_id"] != request.target_id
-        or receipt["selected_sha256"] != request.body.sha256
-        or receipt["source_response_sha256"] != request.body.source_response_sha256
-        or receipt["processing_run_id"] != result.processing_id
-    ):
-        raise ProcessingReviewError("processing receipt identity differs")
-    receipt_sha256 = canonical_hash(receipt)
-    if not is_sha256_hex_digest(receipt_sha256):
-        raise ProcessingReviewError("receipt digest is invalid")
-
     return {
         "artifact_type": "document_acquisition.processing_review",
         "artifact_version": _ARTIFACT_VERSION,
         "fixture": {
-            "fixture_id": fixture.fixture_id,
-            "capture_id": fixture.capture_id,
-            "capture_run_id": fixture.run_id,
-            "capture_attempt_id": fixture.attempt_id,
-            "target_plan_id": fixture.target_plan_id,
-            "target_plan_digest": fixture.target_plan_digest,
-            "target_plan_schema_version": int(fixture.target_plan_schema_version),
-            "target_id": fixture.target_id,
-            "source_origin": fixture.source_origin,
-            "target_url": fixture.target_url,
-            "retrieval_mode": fixture.retrieval_mode,
-            "response_sha256": fixture.response_sha256,
-            "response_size": fixture.source_byte_size,
-            "selected_sha256": fixture.selected_sha256,
-            "selected_size": fixture.selected_byte_size,
+            "fixture_id": case.fixture_id,
+            "capture_id": case.capture_id,
+            "capture_run_id": case.run_id,
+            "capture_attempt_id": case.attempt_id,
+            "target_plan_id": case.target_plan_id,
+            "target_plan_digest": case.target_plan_digest,
+            "target_plan_schema_version": int(case.target_plan_schema_version),
+            "target_id": case.target_id,
+            "source_origin": case.source_origin,
+            "target_url": case.target_url,
+            "retrieval_mode": case.retrieval_mode,
+            "body_sha256": case.body_sha256,
+            "byte_size": case.byte_size,
         },
-        "run_id": projection.run_id,
-        "target_id": result.target_id,
-        "accession": str(request.accession),
-        "form": request.form,
-        "target_role": request.target_role,
-        "target_type": request.target_type,
-        "family_profile": family,
-        "processing": {
-            "processing_id": result.processing_id,
-            "source_sha256": result.source_sha256,
-            "source_asset_id": result.source_asset_id,
-            "exhibit_assessment": (
-                asdict(result.exhibit_assessment)
-                if result.exhibit_assessment is not None
-                else None
-            ),
-            "exhibit_assessment_fingerprint": result.exhibit_assessment_fingerprint,
-            "route": result.route.value,
-            "effective_path": result.effective_path,
-            "operations": _operation_records(request, result, target),
-        },
-        "receipt": {
-            **receipt,
-            "sha256": receipt_sha256,
-        },
-        "projection": {
-            "fingerprint": projection.fingerprint,
-            "source_staged_path": target.source_staged_path,
-            "source_sha256": target.source_sha256,
-            "source_size": target.source_size,
-        },
+        "run_id": case.run_id,
+        "target_id": case.target_id,
+        "accession": case.accession,
+        "form": case.form,
+        "target_role": case.target_role,
+        "target_type": case.target_type,
+        "processing": processing,
     }
 
 
 def build_processing_review_artifact(
-    fixture: FixtureCaseMetadata,
-    request: ProcessingRequest,
-    result: ProcessingResult,
-    projection: ProcessingResultProjection,
-    *,
-    paths: AcquisitionPaths,
+    case: FixtureCaseMetadata,
+    processing: dict[str, object],
     output_path: Path,
 ) -> ProcessingReviewArtifact:
-    payload = _review_payload(fixture, request, result, projection, paths=paths)
+    payload = _review_payload(case, processing)
     artifact_sha256 = canonical_hash(payload)
     artifact = {**payload, "artifact_sha256": artifact_sha256}
     output_path = Path(output_path)
@@ -333,214 +394,6 @@ def build_processing_review_artifact(
         output_path.parent.mkdir(parents=True, exist_ok=True)
         atomic_write_json(output_path, artifact)
     return ProcessingReviewArtifact(artifact_sha256, output_path)
-
-
-def _case_id(case: FixtureCaseMetadata) -> str:
-    digest = sha256_text(f"{case.fixture_id}\n{case.capture_id}\n{case.target_id}")[:20]
-    return validate_safe_id(f"{case.accession}--{digest}", "review_case_id")
-
-
-def _operation_requests(case: FixtureCaseMetadata, *, paths: AcquisitionPaths):
-    target_rows = tuple(
-        row
-        for row in iter_work_order_rows(load_validated_work_order(paths, case.run_id))
-        if row["target_id"] == case.target_id
-    )
-    rows = tuple(
-        row
-        for row in iter_resolved_work_order_operations(paths, case.run_id)
-        if row["target_id"] == case.target_id
-    )
-    manifest = json.loads(
-        paths.run_manifest_path(case.run_id).read_text(encoding="utf-8")
-    )
-    if (
-        manifest.get("target_plan_id") != case.target_plan_id
-        or manifest.get("target_plan_digest") != case.target_plan_digest
-        or case.target_plan_schema_version != str(manifest.get("target_schema_version"))
-        or manifest.get("inventory_snapshot_id") != case.inventory_snapshot_id
-        or manifest.get("inventory_snapshot_digest") != case.inventory_snapshot_digest
-    ):
-        raise ProcessingReviewError("fixture target plan differs from acquisition run")
-    expected_target = {
-        "target_id": case.target_id,
-        "accession": case.accession,
-        "form": case.form,
-        "request_id": case.request_id,
-        "target_role": case.target_role,
-        "target_type": case.target_type,
-        "optional": case.optional,
-        "catalog_direct_selection": case.catalog_direct_selection,
-        "status": case.target_status,
-        "source_origin": case.source_origin,
-        "retrieval_mode": case.retrieval_mode,
-        "target_url": case.target_url,
-    }
-    if case.retrieval_mode == "bundle_sequence":
-        expected_target["sequence"] = case.sequence
-    if len(target_rows) != 1 or any(
-        target_rows[0].get(name) != value for name, value in expected_target.items()
-    ):
-        raise ProcessingReviewError(
-            "fixture target differs from acquisition work order"
-        )
-    if not rows or any(
-        row.get("source_request_target_id")
-        != (case.target_id if row.get("source_request_id") is not None else None)
-        for row in rows
-    ):
-        raise ProcessingReviewError(
-            "fixture source differs from acquisition work order"
-        )
-    expected_operations = {"raw", "render_to_txt", "render_to_xml"}
-    if (
-        len(rows) != len(expected_operations)
-        or {row["operation"] for row in rows} != expected_operations
-        or len({row["operation_id"] for row in rows}) != len(rows)
-    ):
-        raise ProcessingReviewError("work-order operation coverage is invalid")
-
-    operations = []
-    for row in rows:
-        support_status = row["support_status"]
-        pins = tuple(
-            row[name]
-            for name in (
-                "capability_id",
-                "capability_version",
-                "handler_id",
-                "handler_version",
-                "output_kind",
-            )
-        )
-        if support_status not in {"supported", "unsupported", "not_evaluated"}:
-            raise ProcessingReviewError(
-                "work-order operation support status is invalid"
-            )
-        if (
-            support_status == "supported" and not all(pin is not None for pin in pins)
-        ) or (support_status != "supported" and any(pin is not None for pin in pins)):
-            raise ProcessingReviewError("work-order operation pins are inconsistent")
-        requested = row["selected"] is True or (
-            row["requested"] is True
-            and (row["operation"] == "raw" or support_status == "unsupported")
-        )
-        if (
-            requested
-            and support_status == "supported"
-            and (
-                not isinstance(row["source_request_id"], str)
-                or row["input_role"] != "selected_target_body"
-            )
-        ):
-            raise ProcessingReviewError(
-                "requested operation lacks a resolved body input"
-            )
-        operations.append(
-            OperationRequest(
-                operation_id=row["operation_id"],
-                operation=row["operation"],
-                requested=requested,
-                support_status=support_status,
-                source_request_id=row["source_request_id"],
-                capability_id=pins[0],
-                capability_version=pins[1],
-                handler_id=pins[2],
-                handler_version=pins[3],
-                output_kind=pins[4],
-            )
-        )
-    return tuple(operations)
-
-
-def _request_for_case(
-    case: FixtureCaseMetadata, *, paths: AcquisitionPaths
-) -> ProcessingRequest:
-    if case.target_url is None:
-        raise ProcessingReviewError("fixture case has no target URL")
-    document_url = case.target_url
-    archive_url = validate_archive_url(document_url, case.accession)
-    pin = fixture_plan_pin(paths, case.fixture_id)
-    if (
-        case.target_plan_id != pin.target_plan_id
-        or case.target_plan_digest != pin.target_plan_digest
-        or case.target_plan_schema_version != str(pin.target_plan_schema_version)
-    ):
-        raise ProcessingReviewError("fixture case differs from its pinned plan")
-    load_validated_work_order(paths, case.run_id)
-    run_manifest = json.loads(
-        paths.run_manifest_path(case.run_id).read_text(encoding="utf-8")
-    )
-    if (
-        run_manifest.get("target_plan_id") != pin.target_plan_id
-        or run_manifest.get("target_plan_digest") != pin.target_plan_digest
-        or run_manifest.get("target_schema_version") != pin.target_plan_schema_version
-    ):
-        raise ProcessingReviewError("acquisition run differs from fixture plan pin")
-    body = get_staged_body_ref(paths, case.run_id, case.target_id)
-    if (
-        case.selected_sha256 != body.sha256
-        or case.selected_byte_size != body.byte_size
-        or case.response_sha256 != body.source_response_sha256
-        or case.source_byte_size != body.source_response_byte_size
-    ):
-        raise ProcessingReviewError("retained S9 body differs from fixture identity")
-    return ProcessingRequest(
-        target_id=case.target_id,
-        accession=AccessionNumber.from_any(case.accession),
-        form=case.form,
-        target_role=case.target_role,
-        target_type=case.target_type,
-        document_path=archive_url.document_path,
-        selected_filename=body.selected_filename,
-        source_origin=case.source_origin,
-        body=body,
-        operations=_operation_requests(case, paths=paths),
-    )
-
-
-def _reuse_run_processing_result(
-    case: FixtureCaseMetadata,
-    request: ProcessingRequest,
-    *,
-    paths: AcquisitionPaths,
-) -> ProcessingResult:
-    run_id = case.run_id
-    target_rows = tuple(
-        row
-        for row in iter_work_order_rows(load_validated_work_order(paths, run_id))
-        if row["target_id"] == case.target_id
-    )
-    if len(target_rows) != 1:
-        raise ProcessingReviewError("fixture target is absent from its work order")
-    target = target_rows[0] | {"run_id": run_id}
-    operation_rows = tuple(
-        row
-        for row in iter_resolved_work_order_operations(paths, run_id)
-        if row["target_id"] == case.target_id
-    )
-    manifest = _read_prior_processing_result(
-        paths, run_id, target, request.body, operation_rows
-    )
-    if manifest is None:
-        raise ProcessingReviewError("source run has no completed processing result")
-    prior_results = _prior_results(
-        paths,
-        run_id,
-        manifest,
-        tuple(operation.operation_id for operation in request.operations),
-    )
-    result = process_target(
-        request,
-        paths=paths,
-        prior_results=prior_results,
-        selected_operation_ids=(),
-    )
-    if result.processing_id != manifest["processing_id"]:
-        raise ProcessingReviewError(
-            "source processing result differs from fixture work-order identity"
-        )
-    return result
 
 
 def _manifest_record(
@@ -569,32 +422,11 @@ def _manifest_record(
         "target_plan_id": case.target_plan_id,
         "target_plan_digest": case.target_plan_digest,
         "target_plan_schema_version": int(case.target_plan_schema_version),
-        "response_sha256": case.response_sha256,
-        "selected_sha256": case.selected_sha256,
+        "body_sha256": case.body_sha256,
         "status": status,
         "outputs": outputs,
         "error": None if error is None else error[:2000],
     }
-
-
-def _verify_fixture_body(case: FixtureCaseMetadata, *, paths: AcquisitionPaths) -> None:
-    if case.acquisition_status != "acquired":
-        raise ProcessingReviewError("fixture case is not acquired")
-    with tempfile.TemporaryDirectory(prefix="acq-review-") as temporary:
-        destination = Path(temporary) / "selected-body.bin"
-        materialized = _materialize_fixture_case(
-            case.fixture_id,
-            case.capture_id,
-            case.target_id,
-            destination,
-            paths=paths,
-        )
-        if (
-            materialized.selected_sha256 != case.selected_sha256
-            or materialized.selected_byte_size != case.selected_byte_size
-            or file_sha256(destination) != case.selected_sha256
-        ):
-            raise ProcessingReviewError("fixture body differs from selected identity")
 
 
 def build_review_artifacts(
@@ -602,47 +434,21 @@ def build_review_artifacts(
     output: str | os.PathLike[str],
     *,
     paths: AcquisitionPaths,
-    capture_id: str | None = None,
-    target_id: str | None = None,
-    accessions: Iterable[str | AccessionNumber] | None = None,
     limit: int | None = None,
-    workers: int | None = None,
+    no_progress: bool = False,
 ) -> ReviewRunResult:
     if limit is not None and limit < 1:
         raise ValueError("limit must be positive")
-    if workers not in (None, 1):
-        raise ValueError("acquisition review currently uses one worker")
-    selected_accessions = (
-        None
-        if accessions is None
-        else {str(AccessionNumber.from_any(x)) for x in accessions}
-    )
-    cases = [
-        case
-        for case in list_fixture_cases(
-            paths,
-            fixture_id=fixture_id,
-            capture_id=capture_id,
-            target_id=target_id,
-        )
-        if selected_accessions is None or case.accession in selected_accessions
-    ]
+    cases = list(list_fixture_cases(paths, fixture_id=fixture_id))
     if limit is not None:
-        selected = []
-        selected_accessions_seen: set[str] = set()
-        for case in cases:
-            if (
-                case.accession not in selected_accessions_seen
-                and len(selected_accessions_seen) >= limit
-            ):
-                break
-            selected_accessions_seen.add(case.accession)
-            selected.append(case)
-        cases = selected
+        cases = cases[:limit]
     if not cases:
-        raise ValueError("review selection is empty")
+        raise ValueError("fixture has no acquired byte cases")
 
-    output_root = Path(output).expanduser().resolve()
+    requested_output = Path(output).expanduser()
+    if requested_output.is_symlink():
+        raise ValueError("review output must not be a symlink")
+    output_root = requested_output.resolve()
     if output_root.exists() and (
         not output_root.is_dir() or any(output_root.iterdir())
     ):
@@ -652,55 +458,49 @@ def build_review_artifacts(
     output_root.mkdir(parents=True, exist_ok=True)
     review_paths = ReviewPaths(output_root, PIPELINE_REVIEW_MANIFEST_FILE)
     review_paths.case_staging_root().mkdir(parents=True, exist_ok=True)
-    records: list[dict[str, object]] = []
-    counts = {
-        "completed": 0,
-        "fixture_verification_failure": 0,
-        "execution_error": 0,
-    }
-
-    for case in cases:
+    records = []
+    counts = {"complete": 0, "fixture_verification_failure": 0, "execution_error": 0}
+    for case in tqdm(
+        cases,
+        desc="Parser review",
+        unit="case",
+        dynamic_ncols=True,
+        disable=no_progress,
+    ):
         status = "execution_error"
         artifact = None
         error = None
-        try:
-            _verify_fixture_body(case, paths=paths)
-        except Exception as exception:
-            status = "fixture_verification_failure"
-            error = str(exception) or type(exception).__name__
-        else:
-            case_id = _case_id(case)
-            case_root = review_paths.case_dir(case_id)
-            staging_root = Path(
-                tempfile.mkdtemp(prefix="case-", dir=review_paths.case_staging_root())
-            )
+        case_root = review_paths.case_dir(_case_id(case))
+        staging_root = Path(
+            tempfile.mkdtemp(prefix="case-", dir=review_paths.case_staging_root())
+        )
+        raw_bytes = b""
+        with tempfile.TemporaryDirectory(prefix="fixture-body-") as temporary:
+            body_path = Path(temporary) / "selected-body.bin"
             try:
-                request = _request_for_case(case, paths=paths)
-                result = _reuse_run_processing_result(case, request, paths=paths)
-                with project_terminal_results(
-                    (request,), (result,), paths=paths, run_id=case.run_id
-                ) as projection:
-                    artifact = build_processing_review_artifact(
-                        case,
-                        request,
-                        result,
-                        projection,
-                        paths=paths,
-                        output_path=staging_root / OBSERVATIONS_FILE,
-                    )
-                case_root.parent.mkdir(parents=True, exist_ok=True)
-                os.replace(staging_root, case_root)
-                artifact = ProcessingReviewArtifact(
-                    artifact.artifact_sha256, case_root / OBSERVATIONS_FILE
-                )
-                status = "complete"
-                counts["completed"] += 1
+                raw_bytes = _validated_fixture_body(case, paths, body_path)
             except Exception as exception:
-                shutil.rmtree(staging_root, ignore_errors=True)
+                status = "fixture_verification_failure"
                 error = str(exception) or type(exception).__name__
-                status = "execution_error"
+            else:
+                try:
+                    processing = _process_fixture_body(
+                        case, body_path, raw_bytes, staging_root
+                    )
+                    artifact = build_processing_review_artifact(
+                        case, processing, staging_root / OBSERVATIONS_FILE
+                    )
+                    case_root.parent.mkdir(parents=True, exist_ok=True)
+                    os.replace(staging_root, case_root)
+                    artifact = ProcessingReviewArtifact(
+                        artifact.artifact_sha256, case_root / OBSERVATIONS_FILE
+                    )
+                    status = "complete"
+                except Exception as exception:
+                    error = str(exception) or type(exception).__name__
         if status != "complete":
-            counts[status] += 1
+            shutil.rmtree(staging_root, ignore_errors=True)
+        counts[status] += 1
         records.append(
             _manifest_record(
                 case,
@@ -711,13 +511,15 @@ def build_review_artifacts(
                 error=error,
             )
         )
+        del raw_bytes
+        reclaim()
 
     manifest = "".join(canonical_json(record) + "\n" for record in records)
     atomic_write_text(review_paths.manifest_path, manifest)
     shutil.rmtree(review_paths.case_staging_root(), ignore_errors=True)
     summary = ReviewSummary(
         total=len(records),
-        completed=counts["completed"],
+        completed=counts["complete"],
         fixture_verification_failure=counts["fixture_verification_failure"],
         execution_error=counts["execution_error"],
     )

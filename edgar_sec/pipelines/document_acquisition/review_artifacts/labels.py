@@ -37,7 +37,7 @@ def _review_context(artifact: dict[str, object]) -> dict[str, object]:
     unsigned.pop("artifact_sha256", None)
     if (
         artifact.get("artifact_type") != "document_acquisition.processing_review"
-        or artifact.get("artifact_version") != 2
+        or artifact.get("artifact_version") != 3
         or not is_sha256_hex_digest(digest)
         or canonical_hash(unsigned) != digest
     ):
@@ -74,7 +74,7 @@ def _review_context(artifact: dict[str, object]) -> dict[str, object]:
         or not isinstance(artifact.get("target_type"), str)
     ):
         raise ReviewLabelError("review artifact fixture identity is incomplete")
-    selected_sha256 = fixture.get("selected_sha256")
+    selected_sha256 = fixture.get("body_sha256")
     if not is_sha256_hex_digest(selected_sha256):
         raise ReviewLabelError("selected-body digest is invalid")
     required_versions = (
@@ -313,7 +313,7 @@ def _case_label_directory(
 def load_case_review_labels(
     review_root: Path, review_artifact: dict[str, object]
 ) -> tuple[dict[str, object], ...]:
-    if review_artifact.get("artifact_version") != 2:
+    if review_artifact.get("artifact_version") != 3:
         return ()
     processing = review_artifact.get("processing")
     if (

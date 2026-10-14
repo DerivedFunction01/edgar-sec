@@ -37,13 +37,10 @@ def test_review_generate_uses_configured_root_and_emits_json(
     args = SimpleNamespace(
         fixture="fixture-1",
         output=str(tmp_path / "run-1"),
-        capture_id="capture-1",
-        target_id="target-1",
-        accessions=None,
         limit=None,
-        workers=None,
         artifacts_root="",
         json=True,
+        no_progress=True,
     )
 
     assert review.cmd_review_artifacts(args) == 0

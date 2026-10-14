@@ -13,7 +13,7 @@ from edgar_sec.pipelines.document_acquisition import cli
 from edgar_sec.pipelines.document_acquisition.commands import common, fixture
 from edgar_sec.pipelines.document_acquisition.commands import run
 from edgar_sec.pipelines.document_acquisition.fixture_store.capture import (
-    FixtureCaptureResult,
+    FixtureRunCaptureResult,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
     FixtureSummary,
@@ -77,7 +77,6 @@ def _execute_run(
         paths=paths,
         policy=AcquisitionPolicy(
             max_response_bytes=4096,
-            retain_response_evidence=True,
         ),
         transport=_FixtureCliTransport(responses, failures=failures),
         clock=lambda: datetime(2025, 1, 1, tzinfo=UTC),
@@ -135,37 +134,35 @@ def test_fixture_create_delegates_and_emits_stable_json(capsys, tmp_path, monkey
     }
 
 
-def test_fixture_fill_delegates_all_identifiers_and_policy(
+def test_fixture_fill_captures_a_run_without_target_identifiers(
     capsys, tmp_path, monkeypatch
 ) -> None:
     calls = []
+    monkeypatch.setattr(
+        common,
+        "resolve_settings",
+        lambda *, include: {"acquisition.max_response_bytes": 268435456},
+    )
 
-    def fake_capture(
-        fixture_id, run_id, target_id, attempt_id, *, paths, max_response_bytes
-    ):
+    def fake_capture(fixture_id, run_id, *, paths, max_body_bytes, on_target):
         calls.append(
             (
                 fixture_id,
                 run_id,
-                target_id,
-                attempt_id,
                 paths.artifacts_root,
-                max_response_bytes,
+                max_body_bytes,
+                on_target is not None,
             )
         )
-        return FixtureCaptureResult(
-            fixture_id,
-            "cap-1",
-            run_id,
-            target_id,
-            attempt_id,
-            "failed",
-            None,
-            None,
-            False,
+        return FixtureRunCaptureResult(
+            fixture_id=fixture_id,
+            capture_id="cap-run-1",
+            run_id=run_id,
+            captured_cases=3,
+            skipped_targets=4,
         )
 
-    monkeypatch.setattr(fixture, "capture_fixture_case", fake_capture)
+    monkeypatch.setattr(fixture, "capture_fixture_run", fake_capture)
     result = cli.main(
         [
             "fixture",
@@ -174,34 +171,23 @@ def test_fixture_fill_delegates_all_identifiers_and_policy(
             "fixture-1",
             "--run-id",
             "run-1",
-            "--target-id",
-            "target-1",
-            "--attempt-id",
-            "attempt-1",
-            "--max-response-bytes",
-            "2048",
             "--artifacts",
             str(tmp_path),
             "--json",
+            "--no-progress",
         ]
     )
 
     assert result == 0
-    assert calls == [
-        ("fixture-1", "run-1", "target-1", "attempt-1", tmp_path.resolve(), 2048)
-    ]
+    assert calls == [("fixture-1", "run-1", tmp_path.resolve(), 268435456, True)]
     assert json.loads(capsys.readouterr().out) == {
-        "attempt_id": "attempt-1",
-        "acquisition_status": "failed",
-        "capture_id": "cap-1",
+        "capture_id": "cap-run-1",
+        "captured_cases": 3,
         "command": "fixture fill",
         "fixture_id": "fixture-1",
-        "response_sha256": None,
-        "reused_response": False,
         "run_id": "run-1",
-        "source_byte_size": None,
+        "skipped_targets": 4,
         "status": "filled",
-        "target_id": "target-1",
     }
 
 
@@ -216,11 +202,15 @@ def test_fixture_capture_uses_configured_response_limit_when_omitted(
     )
     monkeypatch.setattr(
         fixture,
-        "capture_fixture_case",
+        "capture_fixture_run",
         lambda *args, **kwargs: (
-            calls.append(kwargs["max_response_bytes"])
-            or FixtureCaptureResult(
-                args[0], "cap-1", args[1], args[2], args[3], "failed", None, None, False
+            calls.append(kwargs["max_body_bytes"])
+            or FixtureRunCaptureResult(
+                fixture_id=args[0],
+                capture_id="cap-run-1",
+                run_id=args[1],
+                captured_cases=1,
+                skipped_targets=0,
             )
         ),
     )
@@ -233,12 +223,9 @@ def test_fixture_capture_uses_configured_response_limit_when_omitted(
             "fixture-1",
             "--run-id",
             "run-1",
-            "--target-id",
-            "target-1",
-            "--attempt-id",
-            "attempt-1",
             "--artifacts",
             str(tmp_path),
+            "--no-progress",
         ]
     )
 
@@ -252,12 +239,12 @@ def test_fixture_list_uses_streaming_discovery_and_filters(
     calls = []
 
     summaries = [
-        FixtureSummary("fixture-1", "plan-1", "a" * 64, 1, 2, 4, (("acquired", 4),)),
-        FixtureSummary("fixture-2", "plan-2", "b" * 64, 1, 1, 1, (("failed", 1),)),
+        FixtureSummary("fixture-1", "plan-1", "a" * 64, 1, 2, 4),
+        FixtureSummary("fixture-2", "plan-2", "b" * 64, 1, 1, 1),
     ]
 
-    def fixture_cases(paths, *, fixture_id, capture_id, target_id):
-        calls.append((paths.artifacts_root, fixture_id, capture_id, target_id))
+    def fixture_cases(paths, *, fixture_id):
+        calls.append((paths.artifacts_root, fixture_id))
         return iter(())
 
     monkeypatch.setattr(
@@ -271,10 +258,6 @@ def test_fixture_list_uses_streaming_discovery_and_filters(
             "list",
             "--fixture",
             "fixture-2",
-            "--capture-id",
-            "cap-1",
-            "--target-id",
-            "target-1",
             "--artifacts",
             str(tmp_path),
             "--json",
@@ -282,13 +265,12 @@ def test_fixture_list_uses_streaming_discovery_and_filters(
     )
 
     assert result == 0
-    assert calls == [(tmp_path.resolve(), "fixture-2", "cap-1", "target-1")]
+    assert calls == [(tmp_path.resolve(), "fixture-2")]
     assert json.loads(capsys.readouterr().out) == {
         "cases": [],
         "command": "fixture list",
         "fixtures": [
             {
-                "acquisition_status_counts": [["failed", 1]],
                 "case_count": 1,
                 "capture_count": 1,
                 "fixture_id": "fixture-2",
@@ -345,7 +327,7 @@ def test_fixture_errors_are_stable_and_json_list_is_atomic(
         fixture,
         "list_fixture_summaries",
         lambda _paths: iter(
-            (FixtureSummary("fixture-1", "plan-1", "a" * 64, 1, 0, 0, ()),)
+            (FixtureSummary("fixture-1", "plan-1", "a" * 64, 1, 0, 0),)
         ),
     )
     monkeypatch.setattr(fixture, "list_fixture_cases", broken_cases)
@@ -384,19 +366,17 @@ def test_bundle_response_fixture_fill_and_list_preserve_response_and_child(
                 "bundle-cli",
                 "--run-id",
                 run_id,
-                "--target-id",
-                "target-1",
-                "--attempt-id",
-                state.last_attempt_id,
                 "--artifacts",
                 artifacts,
                 "--json",
+                "--no-progress",
             ]
         )
         == 0
     )
     capture = json.loads(capsys.readouterr().out)
-    assert capture["attempt_id"] == state.last_attempt_id
+    assert capture["captured_cases"] == 1
+    assert capture["skipped_targets"] == 0
 
     assert (
         cli.main(
@@ -413,22 +393,19 @@ def test_bundle_response_fixture_fill_and_list_preserve_response_and_child(
         == 0
     )
     case = json.loads(capsys.readouterr().out)["cases"][0]
-    envelope_digest = hashlib.sha256(envelope).hexdigest()
     selected_digest = hashlib.sha256(selected).hexdigest()
     assert case["capture_id"] == capture["capture_id"]
     assert case["attempt_id"] == state.last_attempt_id
-    assert case["response_sha256"] == envelope_digest
-    assert case["selected_sha256"] == selected_digest
+    assert case["body_sha256"] == selected_digest
+    assert case["byte_size"] == len(selected)
     assert case["sequence"] == 2
     assert case["selected_filename"] == "report.htm"
     with sqlite3.connect(paths.fixture_database_path("bundle-cli")) as connection:
         stored_digests = {
             value[0]
-            for value in connection.execute(
-                "SELECT response_sha256 FROM response_bodies"
-            )
+            for value in connection.execute("SELECT body_sha256 FROM body_blobs")
         }
-    assert stored_digests == {envelope_digest}
+    assert stored_digests == {selected_digest}
 
 
 def test_fixture_cli_captures_current_successful_retry_attempt(
@@ -465,21 +442,17 @@ def test_fixture_cli_captures_current_successful_retry_attempt(
                 "retry-cli",
                 "--run-id",
                 run_id,
-                "--target-id",
-                "target-1",
-                "--attempt-id",
-                state.last_attempt_id,
                 "--artifacts",
                 artifacts,
                 "--json",
+                "--no-progress",
             ]
         )
         == 0
     )
     captured = json.loads(capsys.readouterr().out)
-    assert captured["attempt_id"] == state.last_attempt_id
-    assert captured["acquisition_status"] == "acquired"
-    assert captured["response_sha256"] == hashlib.sha256(body).hexdigest()
+    assert captured["captured_cases"] == 1
+    assert captured["skipped_targets"] == 0
 
     assert (
         cli.main(
@@ -496,5 +469,7 @@ def test_fixture_cli_captures_current_successful_retry_attempt(
         == 0
     )
     case = json.loads(capsys.readouterr().out)["cases"][0]
+    assert case["attempt_id"] == state.last_attempt_id
+    assert case["body_sha256"] == hashlib.sha256(body).hexdigest()
     assert case["attempt_id"] == state.last_attempt_id
     assert case["attempt_id"] != first_attempt_id

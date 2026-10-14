@@ -1,78 +1,82 @@
-import hashlib
+from __future__ import annotations
+
 import io
-import sqlite3
 
 import pytest
-import zstandard
 
 from edgar_sec.pipelines.document_acquisition.fixture_store.body_verification import (
-    _write_verified_response_body,
+    _verify_body_row,
+    _write_verified_body,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixtureStoreError,
 )
-from edgar_sec.pipelines.document_acquisition.fixture_store.storage import (
-    append_fixture_case,
+from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
+    connect,
+    fixture_paths,
 )
-from .fixture_helpers import initialize_test_fixture
+from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
+from tests.pipelines.document_acquisition.fixture_store.fixture_helpers import (
+    append_test_case,
+    initialize_test_fixture,
+)
 
 
-def test_fixture_body_materialization_preserves_exact_bytes(
-    acquisition_paths, capture_values, case_factory
-) -> None:
-    initialize_test_fixture(acquisition_paths, "fixture_verified")
-    response = b"<html>original response</html>\x00"
-    body = append_fixture_case(
-        acquisition_paths,
-        "fixture_verified",
-        capture_values,
-        case_factory(),
-        io.BytesIO(response),
-        max_response_bytes=len(response),
-    )
-    assert body is not None
+def test_verified_body_writer_reconstructs_exact_bytes(tmp_path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    initialize_test_fixture(paths, "fixture-a")
+    body = b"selected parser body\n" * 30
+    append_test_case(paths, "fixture-a", "target-a", body)
 
     output = io.BytesIO()
-    verified = _write_verified_response_body(
-        acquisition_paths, "fixture_verified", body.response_sha256, output
+    ref = _write_verified_body(
+        paths,
+        "fixture-a",
+        append_test_case(paths, "fixture-a", "target-a", body).body_sha256,
+        output,
     )
-    assert verified.byte_size == len(response)
-    assert output.getvalue() == response
+
+    assert ref.byte_size == len(body)
+    assert output.getvalue() == body
 
 
-def test_replay_rejects_body_with_changed_uncompressed_identity(
-    acquisition_paths, capture_values, case_factory
-) -> None:
-    fixture = initialize_test_fixture(acquisition_paths, "fixture_corrupt")
-    response = b"original-body"
-    body = append_fixture_case(
-        acquisition_paths,
-        "fixture_corrupt",
-        capture_values,
-        case_factory(),
-        io.BytesIO(response),
-        max_response_bytes=len(response),
-    )
-    assert body is not None
-    forged = b"replaced-body"
-    compressed = zstandard.ZstdCompressor().compress(forged)
-    assert len(compressed) == body.stored_byte_size
-    with sqlite3.connect(fixture.storage_path) as connection:
-        connection.execute("DROP TRIGGER immutable_response_update")
+def test_body_verifier_rejects_corrupted_stored_digest(tmp_path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    initialize_test_fixture(paths, "fixture-a")
+    append_test_case(paths, "fixture-a", "target-a", b"fixture body")
+    fixture = fixture_paths(paths, "fixture-a")
+    connection = connect(fixture.storage_path)
+    try:
+        connection.execute("DROP TRIGGER immutable_body_blob_update")
+        connection.execute("UPDATE body_blobs SET stored_sha256 = ?", ("0" * 64,))
+        row = connection.execute(
+            "SELECT body_id, body_sha256, byte_size, storage_codec, stored_sha256, stored_byte_size "
+            "FROM body_blobs"
+        ).fetchone()
+        with pytest.raises(
+            FixtureStoreError, match="stored body size or SHA-256 mismatch"
+        ):
+            _verify_body_row(connection, row)
+    finally:
+        connection.close()
+
+
+def test_body_verifier_rejects_truncated_compressed_blob(tmp_path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    initialize_test_fixture(paths, "fixture-a")
+    append_test_case(paths, "fixture-a", "target-a", b"fixture body")
+    fixture = fixture_paths(paths, "fixture-a")
+    connection = connect(fixture.storage_path)
+    try:
+        connection.execute("DROP TRIGGER immutable_body_blob_update")
         connection.execute(
-            "CREATE TRIGGER immutable_response_update AFTER UPDATE ON response_bodies "
-            "BEGIN SELECT 1; END"
+            "UPDATE body_blobs SET compressed_body = zeroblob(stored_byte_size)"
         )
-        connection.execute(
-            "UPDATE response_bodies SET stored_sha256 = ?, compressed_body = ? "
-            "WHERE response_sha256 = ?",
-            (hashlib.sha256(compressed).hexdigest(), compressed, body.response_sha256),
-        )
-
-    with pytest.raises(FixtureStoreError, match="response size or SHA-256 mismatch"):
-        _write_verified_response_body(
-            acquisition_paths,
-            "fixture_corrupt",
-            body.response_sha256,
-            io.BytesIO(),
-        )
+        row = connection.execute(
+            "SELECT body_id, body_sha256, byte_size, storage_codec, stored_sha256, stored_byte_size "
+            "FROM body_blobs"
+        ).fetchone()
+        with pytest.raises(FixtureStoreError, match="invalid Zstandard fixture body"):
+            _verify_body_row(connection, row)
+    finally:
+        connection.close()

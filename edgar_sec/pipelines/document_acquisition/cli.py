@@ -132,7 +132,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_output_options(publish)
     publish.set_defaults(func=cmd_publish)
 
-    fixture = commands.add_parser("fixture", help="manage S9 response fixtures")
+    fixture = commands.add_parser("fixture", help="manage S9 parser-body fixtures")
     fixture_commands = fixture.add_subparsers(dest="fixture_command", required=True)
     fixture_create = fixture_commands.add_parser("create", help="initialize a fixture")
     fixture_create.add_argument("--fixture", required=True)
@@ -140,23 +140,15 @@ def build_parser() -> argparse.ArgumentParser:
     _add_output_options(fixture_create)
     fixture_create.set_defaults(func=cmd_fixture_create)
     fixture_fill = fixture_commands.add_parser(
-        "fill", help="capture run responses into a fixture"
+        "fill", help="capture acquired selected bodies from a run"
     )
     fixture_fill.add_argument("--fixture", required=True)
     fixture_fill.add_argument("--run-id", required=True)
-    fixture_fill.add_argument("--target-id", required=True)
-    fixture_fill.add_argument("--attempt-id", required=True)
-    fixture_fill.add_argument(
-        "--max-response-bytes",
-        type=positive_int_type,
-        help="response byte ceiling (default: configured acquisition.max_response_bytes)",
-    )
+    fixture_fill.add_argument("--no-progress", action="store_true")
     _add_output_options(fixture_fill)
     fixture_fill.set_defaults(func=cmd_fixture_fill)
     fixture_list = fixture_commands.add_parser("list", help="list validated fixtures")
     fixture_list.add_argument("--fixture")
-    fixture_list.add_argument("--capture-id")
-    fixture_list.add_argument("--target-id")
     _add_output_options(fixture_list)
     fixture_list.set_defaults(func=cmd_fixture_list)
     review = commands.add_parser(
@@ -164,15 +156,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     review_commands = review.add_subparsers(dest="review_command", required=True)
     review_generate = review_commands.add_parser(
-        "generate", help="process captured fixture bodies into review artifacts"
+        "generate", help="parse captured fixture bodies into review artifacts"
     )
     review_generate.add_argument("--fixture", required=True)
     review_generate.add_argument("--output")
     review_generate.add_argument("--limit", type=positive_int_type)
-    review_generate.add_argument("--workers", type=positive_int_type)
-    review_generate.add_argument("--accession", action="append", dest="accessions")
-    review_generate.add_argument("--capture-id")
-    review_generate.add_argument("--target-id")
     review_generate.add_argument("--artifacts", dest="artifacts_root", default="")
     review_generate.add_argument("--json", action="store_true")
     review_generate.add_argument("--no-progress", action="store_true")

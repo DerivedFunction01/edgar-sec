@@ -1,4 +1,4 @@
-"""S9 fixture SQLite schema, locations, and integrity checks."""
+"""Schema and integrity checks for acquisition parser-body fixtures."""
 
 from __future__ import annotations
 
@@ -8,32 +8,29 @@ from pathlib import Path
 from urllib.parse import quote
 
 import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
-from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
+from edgar_sec.foundation.hashing import is_sha256_hex_digest
+from edgar_sec.infra.storage.duckdb import sql_literal
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixturePlanPin,
     FixtureStoreError,
 )
-from edgar_sec.foundation.hashing import is_sha256_hex_digest
-from edgar_sec.infra.storage.duckdb import sql_literal
+from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 
-SCHEMA_VERSION = 1
-FIXTURE_KIND = "document_acquisition.source_responses"
+SCHEMA_VERSION = 2
+FIXTURE_KIND = "document_acquisition.parser_bodies"
 _FIXTURE_DETAIL_KEYS = {
     "store_schema_version",
     "target_plan_id",
     "target_plan_digest",
     "target_plan_schema_version",
 }
-
-_TABLES = frozenset({"fixture_meta", "response_bodies", "captures", "cases"})
+_TABLES = frozenset({"fixture_meta", "body_blobs", "captures", "cases"})
 _CAPTURE_COLUMNS = (
     "capture_id",
     "run_id",
     "target_plan_id",
     "target_plan_digest",
     "target_plan_schema_version",
-    "inventory_snapshot_id",
-    "inventory_snapshot_digest",
     "captured_at_utc",
 )
 _CASE_COLUMNS = (
@@ -45,40 +42,19 @@ _CASE_COLUMNS = (
     "request_id",
     "target_role",
     "target_type",
-    "optional",
-    "catalog_direct_selection",
     "source_origin",
-    "target_status",
     "retrieval_mode",
     "target_url",
-    "final_url",
     "sequence",
-    "acquisition_status",
-    "error_code",
-    "response_sha256",
-    "index_response_sha256",
-    "selected_response_sha256",
-    "resolution_schema_version",
-    "screen_kind",
-    "screen_result",
-    "evaluator_version",
-    "index_parser_version",
-    "matching_entry_ids_json",
-    "selected_sequence",
-    "selected_retrieval_mode",
-    "selected_url",
-    "source_byte_size",
-    "selected_sha256",
-    "selected_byte_size",
     "selected_filename",
-    "content_type",
-    "content_encoding",
+    "body_sha256",
+    "byte_size",
 )
 _EXPECTED_COLUMNS = {
     "fixture_meta": ("key", "value"),
-    "response_bodies": (
+    "body_blobs": (
         "body_id",
-        "response_sha256",
+        "body_sha256",
         "byte_size",
         "storage_codec",
         "stored_sha256",
@@ -92,43 +68,39 @@ _IMMUTABILITY_TRIGGERS = frozenset(
     {
         "immutable_fixture_meta_update",
         "immutable_fixture_meta_delete",
-        "immutable_response_update",
-        "immutable_response_delete",
+        "immutable_body_blob_update",
+        "immutable_body_blob_delete",
         "immutable_capture_update",
         "immutable_capture_delete",
         "immutable_case_update",
         "immutable_case_delete",
     }
 )
-
 _SCHEMA = (
     """CREATE TABLE fixture_meta (
         key TEXT PRIMARY KEY,
         value TEXT NOT NULL
     )""",
-    """CREATE TABLE response_bodies (
+    """CREATE TABLE body_blobs (
         body_id INTEGER PRIMARY KEY,
-        response_sha256 TEXT NOT NULL UNIQUE,
+        body_sha256 TEXT NOT NULL UNIQUE,
         byte_size INTEGER NOT NULL CHECK (byte_size >= 0),
         storage_codec TEXT NOT NULL CHECK (storage_codec = 'zstd'),
         stored_sha256 TEXT NOT NULL,
         stored_byte_size INTEGER NOT NULL CHECK (stored_byte_size >= 0),
         compressed_body BLOB NOT NULL,
-        CHECK (length(response_sha256) = 64 AND response_sha256 NOT GLOB '*[^0-9a-f]*'),
+        CHECK (length(body_sha256) = 64 AND body_sha256 NOT GLOB '*[^0-9a-f]*'),
         CHECK (length(stored_sha256) = 64 AND stored_sha256 NOT GLOB '*[^0-9a-f]*'),
         CHECK (length(compressed_body) = stored_byte_size),
-        UNIQUE (response_sha256, byte_size)
+        UNIQUE (body_sha256, byte_size)
     )""",
     """CREATE TABLE captures (
         capture_id TEXT PRIMARY KEY,
         run_id TEXT NOT NULL,
         target_plan_id TEXT NOT NULL,
         target_plan_digest TEXT NOT NULL,
-        target_plan_schema_version TEXT NOT NULL,
-        inventory_snapshot_id TEXT,
-        inventory_snapshot_digest TEXT,
-        captured_at_utc TEXT NOT NULL,
-        CHECK ((inventory_snapshot_id IS NULL) = (inventory_snapshot_digest IS NULL))
+        target_plan_schema_version INTEGER NOT NULL,
+        captured_at_utc TEXT NOT NULL
     )""",
     """CREATE TABLE cases (
         capture_id TEXT NOT NULL,
@@ -139,82 +111,28 @@ _SCHEMA = (
         request_id TEXT NOT NULL,
         target_role TEXT NOT NULL,
         target_type TEXT NOT NULL,
-        optional INTEGER NOT NULL CHECK (optional IN (0, 1)),
-        catalog_direct_selection TEXT CHECK (catalog_direct_selection IS NULL OR catalog_direct_selection IN ('submitted_primary', 'exact_form_with_lazy_index')),
         source_origin TEXT NOT NULL CHECK (source_origin IN ('inventory_index', 'catalog_direct')),
-        target_status TEXT NOT NULL CHECK (target_status = 'matched'),
         retrieval_mode TEXT NOT NULL CHECK (retrieval_mode IN ('direct_url', 'bundle_sequence')),
         target_url TEXT,
-        final_url TEXT,
         sequence INTEGER,
-        acquisition_status TEXT NOT NULL CHECK (acquisition_status IN ('acquired', 'not_filed', 'required_missing', 'ambiguous', 'failed')),
-        error_code TEXT,
-        response_sha256 TEXT,
-        index_response_sha256 TEXT,
-        selected_response_sha256 TEXT,
-        resolution_schema_version TEXT,
-        screen_kind TEXT,
-        screen_result TEXT,
-        evaluator_version TEXT,
-        index_parser_version TEXT,
-        matching_entry_ids_json TEXT,
-        selected_sequence INTEGER,
-        selected_retrieval_mode TEXT,
-        selected_url TEXT,
-        source_byte_size INTEGER CHECK (source_byte_size IS NULL OR source_byte_size >= 0),
-        selected_sha256 TEXT,
-        selected_byte_size INTEGER CHECK (selected_byte_size IS NULL OR selected_byte_size >= 0),
-        selected_filename TEXT,
-        content_type TEXT,
-        content_encoding TEXT,
+        selected_filename TEXT NOT NULL CHECK (length(selected_filename) > 0),
+        body_sha256 TEXT NOT NULL,
+        byte_size INTEGER NOT NULL CHECK (byte_size >= 0),
         PRIMARY KEY (capture_id, target_id),
         FOREIGN KEY (capture_id) REFERENCES captures(capture_id),
-        FOREIGN KEY (response_sha256, source_byte_size)
-            REFERENCES response_bodies(response_sha256, byte_size),
-        FOREIGN KEY (index_response_sha256) REFERENCES response_bodies(response_sha256),
-        FOREIGN KEY (selected_response_sha256) REFERENCES response_bodies(response_sha256),
-        CHECK ((response_sha256 IS NULL) = (source_byte_size IS NULL)),
-        CHECK ((selected_sha256 IS NULL) = (selected_byte_size IS NULL)),
+        FOREIGN KEY (body_sha256, byte_size) REFERENCES body_blobs(body_sha256, byte_size),
         CHECK ((retrieval_mode = 'direct_url' AND sequence IS NULL) OR
             (retrieval_mode = 'bundle_sequence' AND sequence IS NOT NULL AND sequence > 0)),
-        CHECK (response_sha256 IS NULL OR
-            (length(response_sha256) = 64 AND response_sha256 NOT GLOB '*[^0-9a-f]*')),
-        CHECK (selected_sha256 IS NULL OR
-            (length(selected_sha256) = 64 AND selected_sha256 NOT GLOB '*[^0-9a-f]*')),
-        CHECK (acquisition_status != 'not_filed' OR retrieval_mode = 'bundle_sequence' OR
-            (optional = 1 AND catalog_direct_selection = 'exact_form_with_lazy_index' AND
-             index_response_sha256 IS NOT NULL)),
-        CHECK (acquisition_status != 'required_missing' OR
-            (optional = 0 AND catalog_direct_selection = 'exact_form_with_lazy_index' AND
-             index_response_sha256 IS NOT NULL)),
-        CHECK (acquisition_status != 'acquired' OR
-            (response_sha256 IS NOT NULL AND source_byte_size IS NOT NULL AND
-             selected_sha256 IS NOT NULL AND selected_byte_size IS NOT NULL AND
-             selected_filename IS NOT NULL)),
-        CHECK (acquisition_status != 'acquired' OR retrieval_mode != 'direct_url' OR
-            (response_sha256 = selected_sha256 AND source_byte_size = selected_byte_size) OR
-            (source_origin = 'catalog_direct' AND
-             catalog_direct_selection = 'exact_form_with_lazy_index' AND
-             resolution_schema_version IS NOT NULL AND
-             screen_kind IS NOT NULL AND screen_result IS NOT NULL AND
-             index_response_sha256 IS NOT NULL AND index_parser_version IS NOT NULL AND
-             matching_entry_ids_json IS NOT NULL AND
-             selected_response_sha256 IS NOT NULL AND
-             selected_retrieval_mode IN ('direct_url', 'bundle_sequence') AND
-             selected_url IS NOT NULL AND
-             ((selected_retrieval_mode = 'direct_url' AND
-               selected_response_sha256 = selected_sha256) OR
-              (selected_retrieval_mode = 'bundle_sequence' AND
-               selected_sequence IS NOT NULL AND selected_sequence > 0))))
+        CHECK (length(body_sha256) = 64 AND body_sha256 NOT GLOB '*[^0-9a-f]*')
     )""",
     """CREATE TRIGGER immutable_fixture_meta_update BEFORE UPDATE ON fixture_meta
         BEGIN SELECT RAISE(ABORT, 'fixture metadata is immutable'); END""",
     """CREATE TRIGGER immutable_fixture_meta_delete BEFORE DELETE ON fixture_meta
         BEGIN SELECT RAISE(ABORT, 'fixture metadata is immutable'); END""",
-    """CREATE TRIGGER immutable_response_update BEFORE UPDATE ON response_bodies
-        BEGIN SELECT RAISE(ABORT, 'fixture response bodies are immutable'); END""",
-    """CREATE TRIGGER immutable_response_delete BEFORE DELETE ON response_bodies
-        BEGIN SELECT RAISE(ABORT, 'fixture response bodies are immutable'); END""",
+    """CREATE TRIGGER immutable_body_blob_update BEFORE UPDATE ON body_blobs
+        BEGIN SELECT RAISE(ABORT, 'fixture bodies are immutable'); END""",
+    """CREATE TRIGGER immutable_body_blob_delete BEFORE DELETE ON body_blobs
+        BEGIN SELECT RAISE(ABORT, 'fixture bodies are immutable'); END""",
     """CREATE TRIGGER immutable_capture_update BEFORE UPDATE ON captures
         BEGIN SELECT RAISE(ABORT, 'fixture captures are immutable'); END""",
     """CREATE TRIGGER immutable_capture_delete BEFORE DELETE ON captures
@@ -276,11 +194,11 @@ def _validate_manifest(
             or type(plan_schema_version) is not int
             or plan_schema_version < 1
         ):
-            raise ValueError("fixture descriptor does not match the S9 store")
-    except (OSError, json.JSONDecodeError, TypeError, ValueError) as exc:
+            raise ValueError("fixture descriptor does not match the parser-body store")
+    except (OSError, json.JSONDecodeError, TypeError, ValueError) as error:
         raise FixtureStoreError(
             f"invalid fixture manifest: {fixture.manifest_path}"
-        ) from exc
+        ) from error
     return FixturePlanPin(plan_id, plan_digest, plan_schema_version)
 
 

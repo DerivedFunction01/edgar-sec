@@ -36,6 +36,15 @@ class ReviewMenuConfig:
     plans_root: Path | str | None = None
     artifacts_root: Path | str | Callable[[], Path] | None = None
     analyze_action: Callable[[tuple[str, ...]], None] | None = None
+    plan_discovery: Callable[[], list[PickItem]] | None = None
+    plan_summary: Callable[[Any | None], str] | None = None
+    fixture_filter: Callable[[dict[str, Any], Any], bool] | None = None
+    fixture_label: Callable[[dict[str, Any]], str] | None = None
+    fill_action: Callable[[str, Any, int | None, Path], bool] | None = None
+    prompt_limit: bool = True
+    prompt_output: bool = True
+    prompt_workers: bool = True
+    require_active_plan: bool = False
     title: str = "Review Artifacts & Fixtures Console"
 
     def resolve_root(self) -> Path:
@@ -65,7 +74,19 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
                 "selected_rows": 0,
             }
             return session_plan
-        if config.plans_root:
+        if config.plan_discovery is not None:
+            items = config.plan_discovery()
+            if not items:
+                return None
+            chosen = prompt_paginated_choice(
+                items,
+                prompt_label="Select plan",
+                default=items[0],
+            )
+            if chosen is not None:
+                session_plan = chosen.value
+                return session_plan
+        elif config.plans_root:
             from edgar_sec.domain.plan.discovery import discover_plans
 
             plans = discover_plans(config.plans_root)
@@ -85,13 +106,26 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         return None
 
     def _fixture_label(f: dict[str, Any]) -> str:
+        if config.fixture_label is not None:
+            return config.fixture_label(f)
         fid = f.get("fixture_id", "unknown")
         pages = int(f.get("page_count") or 0)
-        accessions = int(f.get("accession_count") or 0)
-        state = f.get("capture_state", "unknown")
+        accessions = int(f.get("accession_count") or f.get("case_count") or 0)
+        state = f.get("capture_state", f"{f.get('capture_count', 0)} captures")
         return f"{fid}  ({pages:,} pages, {accessions:,} accessions, {state})"
 
+    def _fixtures() -> list[dict[str, Any]]:
+        fixtures = adapter.list_fixtures(root)
+        plan = session_plan
+        if config.fixture_filter is not None and plan is not None:
+            fixtures = [
+                fixture for fixture in fixtures if config.fixture_filter(fixture, plan)
+            ]
+        return fixtures
+
     def _limit_from_plan(plan: dict[str, Any]) -> int | None:
+        if not config.prompt_limit:
+            return None
         scope = plan.get("scope", "unknown")
         rows = plan.get("selected_rows")
         if scope == "policy" and rows:
@@ -132,7 +166,8 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         print(f"Fixture '{fixture_id}' created from plan '{plan['plan_id']}'.")
 
     def _action_fill() -> None:
-        fixtures = adapter.list_fixtures(root)
+        plan = _plan_info() if config.require_active_plan else None
+        fixtures = _fixtures()
         if not fixtures:
             print("No fixtures found to extend.")
             return
@@ -145,15 +180,20 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
             return
         fixture_id = chosen.key
 
-        plan = _plan_info()
+        if plan is None:
+            plan = _plan_info()
         if plan is None:
             print("No plans available; publish a plan first.")
             return
         limit = _limit_from_plan(plan)
-        adapter.fill_fixture(
-            fixture_id, plan["plan_id"], limit=limit, artifacts_root=root
-        )
-        print(f"Fixture '{fixture_id}' extended from plan '{plan['plan_id']}'.")
+        if config.fill_action is None:
+            result = adapter.fill_fixture(
+                fixture_id, plan["plan_id"], limit=limit, artifacts_root=root
+            )
+        else:
+            result = config.fill_action(fixture_id, plan, limit, root)
+        if result is not False:
+            print(f"Fixture '{fixture_id}' extended from plan '{plan['plan_id']}'.")
 
     def _action_list() -> None:
         fixtures = adapter.list_fixtures(root)
@@ -167,7 +207,10 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
             print(f"  * {fid:<24} ({cases} cases)")
 
     def _action_generate() -> None:
-        fixtures = adapter.list_fixtures(root)
+        if config.require_active_plan and _plan_info() is None:
+            print("No plans available; publish a plan first.")
+            return
+        fixtures = _fixtures()
         if not fixtures:
             print("No fixtures found to review.")
             return
@@ -180,13 +223,20 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
             return
         fixture_id = chosen.key
 
-        default_out = f"auto {new_review_run_dir(review_root).name}"
-        out_raw = prompt_text(f"Output run [{default_out}]", "").strip()
-        output_dir = Path(out_raw) if out_raw else new_review_run_dir(review_root)
-        limit_raw = prompt_text("Limit cases (blank for all)", "").strip()
-        limit = int(limit_raw) if limit_raw.isdigit() else None
-        workers_raw = prompt_text("Workers (blank for auto)", "").strip()
-        workers = int(workers_raw) if workers_raw.isdigit() else None
+        output_dir = new_review_run_dir(review_root)
+        if config.prompt_output:
+            default_out = f"auto {output_dir.name}"
+            out_raw = prompt_text(f"Output run [{default_out}]", "").strip()
+            if out_raw:
+                output_dir = Path(out_raw)
+        limit = None
+        if config.prompt_limit:
+            limit_raw = prompt_text("Limit cases (blank for all)", "").strip()
+            limit = int(limit_raw) if limit_raw.isdigit() else None
+        workers = None
+        if config.prompt_workers:
+            workers_raw = prompt_text("Workers (blank for auto)", "").strip()
+            workers = int(workers_raw) if workers_raw.isdigit() else None
         adapter.build_review_artifacts(
             fixture_id=fixture_id,
             output_dir=output_dir,
@@ -291,6 +341,20 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
 
     def _action_switch_plan() -> None:
         nonlocal session_plan
+        if config.plan_discovery is not None:
+            items = config.plan_discovery()
+            if not items:
+                print("No published plans discovered.")
+                return
+            chosen = prompt_paginated_choice(
+                items,
+                prompt_label="Select active plan",
+                default=items[0],
+            )
+            if chosen is not None:
+                session_plan = chosen.value
+                print(f"Active plan switched to {session_plan['plan_id']}")
+            return
         if not config.plans_root:
             print("No plans directory configured for this console.")
             return
@@ -319,12 +383,16 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
     ]
     if config.analyze_action is not None:
         actions.append(menu_action("Analyze review runs (offline)", _action_analyze))
-    if config.plans_root:
+    if config.plans_root or config.plan_discovery is not None:
         actions.append(menu_action("Switch active plan", _action_switch_plan, key="s"))
 
     menu = build_menu(*actions)
 
-    title = (
-        f"{adapter.dataset_name.replace('_', ' ').title()} Fixtures & Review Console"
+    before_menu = (
+        (lambda: config.plan_summary(session_plan))
+        if config.plan_summary is not None
+        else None
     )
-    return run_interactive_menu(title, menu, exit_key="0")
+    return run_interactive_menu(
+        config.title, menu, exit_key="0", before_menu=before_menu
+    )

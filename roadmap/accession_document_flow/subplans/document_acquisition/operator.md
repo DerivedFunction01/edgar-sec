@@ -99,20 +99,18 @@ are out of scope and no aggregate limit is implied.
 
 ### Fixture and review actions
 
-Create requires a new fixture ID and the active S6 plan. Fill is available only for a
-fixture pinned to that active plan and pages through matching runs, work-order targets,
-and document-body attempts. It requires a positive byte cap, shows the selected values
-before a default-no consent prompt, and performs no append if declined. Listing reports
-plan pins, capture/case counts, and acquisition statuses in deterministic order without
-reading response BLOBs. No user-facing replay/export action exists.
+Create requires a new fixture ID and the active S6 plan. Fill selects a compatible
+fixture and a discovered run, then captures every acquired selected staged body from that
+run. It does not ask for target, attempt, body-size, or digest input and has no consent
+prompt. Listing reports plan pins and run/case counts deterministically without reading
+body BLOBs. No user-facing replay/export action exists.
 
-Review generation chooses an active-plan fixture and optional capture/target filters. It
-verifies the selected fixture body in temporary storage, validates its associated S9 run
-and pinned work order, then reviews the staged run body through operation pins.
-Comparison selects validated runs and uses the shared case-level diff. Analysis
-validates review manifests and per-case output digests, reports fixture-verification
-and operation outcomes, and does not mutate review or fixture inputs. Review actions are
-offline with no confirmation checkpoint. Tests are in
+Review generation chooses an active-plan fixture, verifies each selected body, and runs
+current acquisition-engine handlers offline. It does not require the associated run's
+processing outputs or expose capture/target filters. Comparison selects validated runs
+and uses the shared case-level diff. Analysis validates review manifests and per-case
+output digests, reports parser outcomes, and does not mutate review or fixture inputs.
+Tests are in
 [`test_operator.py`](../../../../tests/pipelines/document_acquisition/test_operator.py),
 [`fixture_store/test_capture.py`](../../../../tests/pipelines/document_acquisition/fixture_store/test_capture.py),
 and [`review_artifacts/test_analyzer.py`](../../../../tests/pipelines/document_acquisition/review_artifacts/test_analyzer.py).
@@ -133,12 +131,10 @@ current action; they do not discard a previously selected run context.
 
 Fixture CLI `--json` output is stable and sorted. Command errors use the CLI's typed
 error formatting and exit-code mapping in both entry modes. The legacy
-`document_storage` command surface is retired. The fixture-fill confirmation authorizes
-only local evidence capture; the fixture/review console has no snapshot publishing
-action.
+`document_storage` command surface is retired. The fixture/review console has no snapshot
+publishing action.
 
-Tests cover menu transitions, default-no live-network/fill confirmations,
-retry confirmation separation, EOF/Ctrl-C behavior, and command delegation. M7b runner
+Tests cover menu transitions, live-network confirmation, EOF/Ctrl-C behavior, and command delegation. M7b runner
 and retry/isolation coverage is complete; cleanup remains explicitly gated, because a
 receipt or rerun does not authorize deletion. See
   [`test_offline_acceptance.py`](../../../../tests/pipelines/document_acquisition/test_offline_acceptance.py).

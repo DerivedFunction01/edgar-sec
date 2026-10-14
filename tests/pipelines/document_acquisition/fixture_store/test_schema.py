@@ -8,6 +8,7 @@ from edgar_sec.foundation.runtime.fixtures import (
     FIXTURE_MANIFEST_VERSION,
     FixtureManifestEnvelope,
 )
+from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixtureStoreError,
 )
@@ -32,15 +33,15 @@ def test_initialize_writes_shared_manifest_and_schema(acquisition_paths) -> None
     assert envelope.storage_format == "sqlite"
     assert envelope.storage_path == FIXTURE_DATABASE_NAME
     assert envelope.created_at == envelope.updated_at
-    assert SCHEMA_VERSION == 1
+    assert SCHEMA_VERSION == 2
     assert envelope.details == {
-        "store_schema_version": 1,
+        "store_schema_version": 2,
         "target_plan_id": "plan_fixture_test",
         "target_plan_digest": "a" * 64,
         "target_plan_schema_version": 1,
     }
     with sqlite3.connect(fixture.storage_path) as connection:
-        assert connection.execute("PRAGMA user_version").fetchone()[0] == 1
+        assert connection.execute("PRAGMA user_version").fetchone()[0] == 2
         assert connection.execute("PRAGMA foreign_keys").fetchone()[0] == 0
     _, connection = open_fixture(acquisition_paths, "fixture_schema", readonly=True)
     try:
@@ -86,9 +87,10 @@ def test_fixture_plan_pin_is_immutable_in_manifest_and_database(
 @pytest.mark.parametrize(
     ("manifest_version", "database_version", "message"),
     (
-        (1, 2, "unsupported acquisition fixture schema version"),
+        (2, 1, "unsupported acquisition fixture schema version"),
+        (1, 1, "invalid fixture manifest"),
         (4, 4, "invalid fixture manifest"),
-        (1, 4, "unsupported acquisition fixture schema version"),
+        (2, 4, "unsupported acquisition fixture schema version"),
     ),
 )
 def test_open_rejects_version_mismatch_and_unknown_versions(
@@ -97,7 +99,9 @@ def test_open_rejects_version_mismatch_and_unknown_versions(
     fixture = initialize_fixture(acquisition_paths, "fixture_version_mismatch")
     manifest = json.loads(fixture.manifest_path.read_text(encoding="utf-8"))
     manifest["details"]["store_schema_version"] = manifest_version
-    fixture.manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    if manifest_version == 1:
+        manifest["fixture_kind"] = "document_acquisition.source_responses"
+    fixture.manifest_path.write_text(canonical_json(manifest), encoding="utf-8")
     with sqlite3.connect(fixture.storage_path) as connection:
         connection.execute(f"PRAGMA user_version = {database_version}")
 

@@ -26,9 +26,6 @@ from edgar_sec.pipelines.document_acquisition.cli import (
 from edgar_sec.pipelines.document_acquisition.commands.status import (
     discover_run_ids,
 )
-from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
-    list_fixture_summaries,
-)
 from edgar_sec.pipelines.document_acquisition.paths import (
     PublishedDocumentPlan,
     discover_document_plans,
@@ -36,15 +33,15 @@ from edgar_sec.pipelines.document_acquisition.paths import (
     resolve_acquisition_paths,
     resolve_document_planning_paths,
 )
-from edgar_sec.pipelines.document_acquisition.review_artifacts.analyzer import (
-    analyze_review_run,
-)
 from edgar_sec.pipelines.document_acquisition.run_validation import (
     iter_work_order_rows,
     load_validated_work_order,
 )
 from edgar_sec.pipelines.document_acquisition.run_state.evidence import (
     list_target_attempts,
+)
+from edgar_sec.pipelines.document_acquisition.run_state.store import (
+    inspect_run_state,
 )
 
 MENU_TITLE = "Document Acquisition"
@@ -188,7 +185,6 @@ def _action_run() -> None:
 @dataclass
 class _FixtureReviewConsole:
     artifacts_root: Path
-    active_plan: PublishedDocumentPlan | None = None
 
     @property
     def planning_paths(self):
@@ -205,15 +201,37 @@ class _FixtureReviewConsole:
                 )
             except (OSError, ValueError):
                 continue
-        return valid
+        return sorted(valid, key=lambda plan: plan.plan_id)
 
-    def label(self) -> str:
-        if self.active_plan is None:
+    def plan_summary(self, plan: dict | None) -> str:
+        if plan is None:
             return "Active S6 target plan: none"
         return (
-            f"Active S6 target plan: {self.active_plan.plan_id} "
-            f"(digest {self.active_plan.manifest['plan_digest']})"
+            f"Active S6 target plan: {plan['plan_id']} (digest {plan['plan_digest']})"
         )
+
+    def plan_items(self) -> list[PickItem]:
+        items = []
+        for plan in self.plans():
+            manifest = plan.manifest
+            value = {
+                "plan_id": plan.plan_id,
+                "plan_digest": manifest["plan_digest"],
+                "target_plan_schema_version": manifest["target_schema_version"],
+                "scope": "unknown",
+                "selected_rows": manifest["target_row_count"],
+            }
+            items.append(
+                PickItem(
+                    key=plan.plan_id,
+                    label=(
+                        f"{plan.plan_id} | rows={manifest['target_row_count']} | "
+                        f"{manifest['plan_digest']}"
+                    ),
+                    value=value,
+                )
+            )
+        return items
 
     def choose_plan(self) -> PublishedDocumentPlan | None:
         plans = self.plans()
@@ -229,129 +247,22 @@ class _FixtureReviewConsole:
         selected = prompt_paginated_choice(choices, prompt_label="Published S6 plan")
         return selected.value if selected is not None else None
 
-    def switch_plan(self) -> None:
-        plan = self.choose_plan()
-        if plan is not None:
-            self.active_plan = plan
-            print(f"Active plan set to {plan.plan_id}.")
-
-    def require_plan(self) -> PublishedDocumentPlan | None:
-        if self.active_plan is None:
-            self.active_plan = self.choose_plan()
-        if self.active_plan is None:
-            print("Select a validated published S6 plan first.")
-        return self.active_plan
-
-    def fixtures(self):
-        return list(
-            list_fixture_summaries(
-                resolve_acquisition_paths(artifacts_root=self.artifacts_root)
-            )
+    def fixture_matches_plan(self, fixture: dict, plan: dict) -> bool:
+        return (
+            fixture.get("target_plan_id") == plan["plan_id"]
+            and fixture.get("target_plan_digest") == plan["plan_digest"]
+            and fixture.get("target_plan_schema_version")
+            == plan["target_plan_schema_version"]
         )
 
-    def choose_fixture(self, *, active_plan_only: bool = True) -> str | None:
-        plan = self.require_plan() if active_plan_only else None
-        fixtures = self.fixtures()
-        if plan is not None:
-            fixtures = [
-                item
-                for item in fixtures
-                if item.target_plan_id == plan.plan_id
-                and item.target_plan_digest == plan.manifest["plan_digest"]
-                and item.target_plan_schema_version
-                == plan.manifest["target_schema_version"]
-            ]
-        choices = [
-            PickItem(
-                str(index),
-                f"{item.fixture_id} | {item.case_count} cases | "
-                f"plan={item.target_plan_id}",
-                item.fixture_id,
-            )
-            for index, item in enumerate(fixtures, 1)
-        ]
-        selected = prompt_paginated_choice(choices, prompt_label="Fixture")
-        return selected.value if selected is not None else None
-
-    def create_fixture(self) -> None:
-        plan = self.require_plan()
-        if plan is None:
-            return
-        fixture_id = prompt_text("New fixture ID").strip()
-        if fixture_id:
-            cli_main(
-                [
-                    "fixture",
-                    "create",
-                    "--fixture",
-                    fixture_id,
-                    "--plan-id",
-                    plan.plan_id,
-                    "--artifacts",
-                    str(self.artifacts_root),
-                ]
-            )
-
-    def fill_fixture(self) -> None:
-        if self.require_plan() is None:
-            return
-        fixture_id = self.choose_fixture()
-        if fixture_id is None:
-            return
-        run_id = self.choose_run()
-        if run_id is None:
-            return
-        target_id = self.choose_run_target(run_id)
-        if target_id is None:
-            return
-        attempt_id = self.choose_attempt(run_id, target_id)
-        if attempt_id is None:
-            return
-        try:
-            default_limit = _configured_response_byte_limit()
-            response_limit = positive_int_type(
-                prompt_text("Maximum response bytes", str(default_limit))
-                or str(default_limit)
-            )
-        except (KeyError, TypeError, ValueError) as error:
-            print(f"Fixture fill cancelled: invalid response-byte limit ({error}).")
-            return
-        print(
-            f"Retain evidence for fixture={fixture_id}, plan={self.active_plan.plan_id}, "
-            f"run={run_id}, target={target_id}, attempt={attempt_id}; "
-            f"maximum response bytes={response_limit}."
-        )
-        if (
-            prompt_text("Retain this run's local response evidence? (yes/no)", "no")
-            .strip()
-            .lower()
-            != "yes"
-        ):
-            print("Fixture fill cancelled; no local evidence was retained.")
-            return
-        cli_main(
-            [
-                "fixture",
-                "fill",
-                "--fixture",
-                fixture_id,
-                "--run-id",
-                run_id,
-                "--target-id",
-                target_id,
-                "--attempt-id",
-                attempt_id,
-                "--max-response-bytes",
-                str(response_limit),
-                "--artifacts",
-                str(self.artifacts_root),
-            ]
+    @staticmethod
+    def fixture_label(fixture: dict) -> str:
+        return (
+            f"{fixture['fixture_id']} | cases={fixture['case_count']} | "
+            f"captures={fixture['capture_count']}"
         )
 
-    def choose_run(self) -> str | None:
-        plan = self.require_plan()
-        if plan is None:
-            return None
+    def choose_run(self, plan: dict) -> str | None:
         paths = resolve_acquisition_paths(artifacts_root=self.artifacts_root)
         items = []
         for run_id in discover_run_ids(paths):
@@ -365,11 +276,23 @@ class _FixtureReviewConsole:
             if not isinstance(manifest, dict):
                 continue
             if (
-                manifest.get("target_plan_id") != plan.plan_id
-                or manifest.get("target_plan_digest") != plan.manifest["plan_digest"]
+                manifest.get("target_plan_id") != plan["plan_id"]
+                or manifest.get("target_plan_digest") != plan["plan_digest"]
                 or manifest.get("target_schema_version")
-                != plan.manifest["target_schema_version"]
+                != plan["target_plan_schema_version"]
             ):
+                continue
+            try:
+                load_validated_work_order(paths, run_id)
+            except (OSError, RuntimeError, ValueError):
+                continue
+            report = inspect_run_state(
+                run_id,
+                database_path=paths.run_state_path(run_id),
+                lock_path=paths.run_lock_path(run_id),
+            )
+            acquired_count = report.target_counts.get("acquired", 0)
+            if report.state == "invalid" or report.active_lock or not acquired_count:
                 continue
             target_count = manifest.get("target_row_count")
             if isinstance(target_count, bool) or not isinstance(target_count, int):
@@ -377,7 +300,7 @@ class _FixtureReviewConsole:
             items.append(
                 PickItem(
                     run_id,
-                    f"{run_id} | targets={target_count}",
+                    f"{run_id} | targets={target_count} | acquired={acquired_count}",
                     run_id,
                 )
             )
@@ -387,164 +310,63 @@ class _FixtureReviewConsole:
         selected = prompt_paginated_choice(items, prompt_label="Acquisition run")
         return str(selected.value) if selected is not None else None
 
-    def choose_run_target(self, run_id: str) -> str | None:
-        paths = resolve_acquisition_paths(artifacts_root=self.artifacts_root)
-        parts = load_validated_work_order(paths, run_id)
-        items = []
-        for row in iter_work_order_rows(parts):
-            if not row["executable"]:
-                continue
-            target_id = str(row["target_id"])
-            items.append(PickItem(target_id, target_id, target_id))
-        if not items:
-            print(f"No executable targets are available in run {run_id}.")
-            return None
-        selected = prompt_paginated_choice(items, prompt_label="Recorded target")
-        return str(selected.value) if selected is not None else None
-
-    def choose_attempt(self, run_id: str, target_id: str) -> str | None:
-        paths = resolve_acquisition_paths(artifacts_root=self.artifacts_root)
-        attempts = list_target_attempts(paths.run_state_path(run_id), target_id)
-        items = []
-        for index, attempt in enumerate(attempts):
-            if attempt.attempt_kind != "document_body":
-                continue
-            if index > 0 and attempts[index - 1].attempt_kind == "lazy_index":
-                continue
-            evidence = (
-                "body retained"
-                if attempt.source_body_relative_path is not None
-                else "metadata only"
-            )
-            items.append(
-                PickItem(
-                    attempt.attempt_id,
-                    f"{attempt.attempt_id} | attempt={attempt.attempt_number} | "
-                    f"{attempt.outcome} | {evidence}",
-                    attempt.attempt_id,
-                )
-            )
-        if not items:
-            print(f"No document-body attempts are recorded for target {target_id}.")
-            return None
-        selected = prompt_paginated_choice(items, prompt_label="Exact attempt")
-        return str(selected.value) if selected is not None else None
-
-    def list_fixtures(self) -> None:
-        cli_main(["fixture", "list", "--artifacts", str(self.artifacts_root)])
-
-    def generate_review(self) -> None:
-        fixture_id = self.choose_fixture()
-        if fixture_id is None:
-            return
-        args = ["review", "generate", "--fixture", fixture_id]
-        for option, label in (
-            ("--capture-id", "Capture ID filter"),
-            ("--target-id", "Target ID filter"),
-            ("--output", "Review output directory"),
-        ):
-            value = prompt_text(f"{label} (optional)").strip()
-            if value:
-                args.extend((option, value))
-        args.extend(("--artifacts", str(self.artifacts_root)))
-        cli_main(args)
-
-    def review_runs(self) -> list[Path]:
-        root = resolve_acquisition_paths(
-            artifacts_root=self.artifacts_root
-        ).review_runs_root
-        if not root.exists():
-            return []
-        directories = sorted(
-            (
-                item
-                for item in root.iterdir()
-                if item.is_dir() and not item.name.startswith("diff-")
-            ),
-            key=lambda item: item.name,
-        )
-        valid = []
-        for directory in directories:
-            try:
-                analyze_review_run(directory)
-            except (OSError, ValueError):
-                continue
-            valid.append(directory)
-        return valid
-
-    def choose_review_run(self) -> Path | None:
-        runs = self.review_runs()
-        choices = [
-            PickItem(str(index), run.name, run) for index, run in enumerate(runs, 1)
-        ]
-        selected = prompt_paginated_choice(choices, prompt_label="Review run")
-        return selected.value if selected is not None else None
-
-    def compare_reviews(self) -> None:
-        base = self.choose_review_run()
-        new = self.choose_review_run()
-        if base is not None and new is not None and base != new:
+    def fill_fixture(
+        self, fixture_id: str, plan: dict, _limit: int | None, _root: Path
+    ) -> bool:
+        run_id = self.choose_run(plan)
+        if run_id is None:
+            return False
+        return (
             cli_main(
                 [
-                    "review",
-                    "compare",
-                    "--base",
-                    str(base),
-                    "--new",
-                    str(new),
+                    "fixture",
+                    "fill",
+                    "--fixture",
+                    fixture_id,
+                    "--run-id",
+                    run_id,
                     "--artifacts",
                     str(self.artifacts_root),
                 ]
             )
+            == 0
+        )
 
-    def analyze_reviews(self) -> None:
-        remaining = self.review_runs()
-        if not remaining:
-            print("No validated review runs are available.")
-            return
-        selected_runs = []
-        while remaining:
-            choices = [PickItem("__done__", "Finish selection", None)]
-            choices.extend(
-                PickItem(str(index), run.name, run)
-                for index, run in enumerate(remaining, 1)
-            )
-            selected = prompt_paginated_choice(
-                choices, prompt_label="Select review run to analyze"
-            )
-            if selected is None:
-                return
-            if selected.key == "__done__":
-                break
-            selected_runs.append(selected.value)
-            remaining = [run for run in remaining if run != selected.value]
-        if not selected_runs:
-            print("Review analysis cancelled: select at least one validated run.")
-            return
+    def analyze_reviews(self, run_ids: tuple[str, ...]) -> None:
         args = ["review", "analyze"]
-        for run in selected_runs:
-            args.extend(("--run", str(run)))
+        for run_id in run_ids:
+            args.extend(("--run", run_id))
         args.extend(("--artifacts", str(self.artifacts_root)))
         cli_main(args)
 
 
 def _action_fixture_review_console() -> None:
+    from edgar_sec.infra.storage.review.operator import (
+        ReviewMenuConfig,
+        run_review_menu,
+    )
+    from edgar_sec.pipelines.document_acquisition.review_artifacts.adapter import (
+        AcquisitionReviewAdapter,
+    )
+
     artifacts_root = resolve_acquisition_paths().artifacts_root
     console = _FixtureReviewConsole(artifacts_root)
-    run_interactive_menu(
-        "Document Acquisition Fixtures & Review Console",
-        build_menu(
-            menu_action("Select or switch active S6 plan", console.switch_plan),
-            menu_action("Create fixture for active S6 plan", console.create_fixture),
-            menu_action(
-                "Fill fixture from recorded run evidence", console.fill_fixture
-            ),
-            menu_action("List fixtures deterministically", console.list_fixtures),
-            menu_action("Generate offline review artifacts", console.generate_review),
-            menu_action("Compare validated review runs", console.compare_reviews),
-            menu_action("Analyze review runs (offline)", console.analyze_reviews),
-        ),
-        before_menu=console.label,
+    run_review_menu(
+        ReviewMenuConfig(
+            adapter=AcquisitionReviewAdapter(),
+            artifacts_root=artifacts_root,
+            analyze_action=console.analyze_reviews,
+            plan_discovery=console.plan_items,
+            plan_summary=console.plan_summary,
+            fixture_filter=console.fixture_matches_plan,
+            fixture_label=console.fixture_label,
+            fill_action=console.fill_fixture,
+            prompt_limit=False,
+            prompt_output=False,
+            prompt_workers=False,
+            require_active_plan=True,
+            title="Document Acquisition Fixtures & Review Console",
+        )
     )
 
 

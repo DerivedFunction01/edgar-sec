@@ -24,7 +24,7 @@ def _write_review_run(root):
     case_root.mkdir(parents=True)
     artifact = {
         "artifact_type": "document_acquisition.processing_review",
-        "artifact_version": 1,
+        "artifact_version": 3,
         "fixture": {
             "fixture_id": "fixture-a",
             "capture_id": "capture-a",
@@ -38,10 +38,11 @@ def _write_review_run(root):
         "target_id": "target-a",
         "accession": "0000000001-24-000001",
         "processing": {
+            "outputs": {},
             "operations": [
                 {"operation_id": "raw", "status": "available"},
                 {"operation_id": "xml", "status": "unsupported"},
-            ]
+            ],
         },
     }
     artifact["artifact_sha256"] = canonical_hash(artifact)
@@ -125,11 +126,11 @@ def test_review_analysis_reports_consensus_labels_by_form_and_family(tmp_path) -
     run = tmp_path / "run-labeled"
     artifact_path, manifest_path = _write_review_run(run)
     artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
-    artifact["artifact_version"] = 2
+    artifact["artifact_version"] = 3
     artifact["form"] = "10-K"
     artifact["target_role"] = "exhibit"
     artifact["target_type"] = "EX-3.1"
-    artifact["fixture"]["selected_sha256"] = "b" * 64
+    artifact["fixture"]["body_sha256"] = "b" * 64
     artifact["processing"]["exhibit_assessment"] = {
         "expected_role": "exhibit",
         "expected_type": "EX-3.1",

@@ -1,95 +1,69 @@
 from __future__ import annotations
 
-import hashlib
-import io
+import json
 
+import pytest
+
+from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
+    FixtureOperationError,
+)
 from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
     _materialize_fixture_case,
-)
-from edgar_sec.pipelines.document_acquisition.fixture_store.storage import (
-    append_fixture_case,
+    list_fixture_cases,
+    list_fixture_summaries,
 )
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
-from .fixture_helpers import initialize_test_fixture
+from tests.pipelines.document_acquisition.fixture_store.fixture_helpers import (
+    append_test_case,
+    initialize_test_fixture,
+)
 
 
-def test_internal_materialization_reextracts_and_verifies_a_bundle_case(
-    tmp_path,
-) -> None:
+def test_reader_lists_and_materializes_selected_parser_body(tmp_path) -> None:
     paths = resolve_acquisition_paths(artifacts_root=tmp_path)
-    initialize_test_fixture(paths, "fixture-bundle")
-    bundle = (
-        b"<DOCUMENT><SEQUENCE>2<FILENAME>report.htm<TYPE>10-K<TEXT>selected body"
-        b"</TEXT></DOCUMENT>"
-    )
-    selected_body = b"selected body"
-    source_digest = hashlib.sha256(bundle).hexdigest()
-    selected_digest = hashlib.sha256(selected_body).hexdigest()
-    capture = {
-        "capture_id": "capture-bundle",
-        "run_id": "run-bundle",
-        "target_plan_id": "plan_fixture_test",
-        "target_plan_digest": "a" * 64,
-        "target_plan_schema_version": "1",
-        "inventory_snapshot_id": None,
-        "inventory_snapshot_digest": None,
-        "captured_at_utc": "2025-01-01T00:00:00Z",
-    }
-    case = {
-        "target_id": "target-bundle",
-        "attempt_id": "attempt-bundle",
-        "accession": "0000000001-24-000001",
-        "form": "10-K",
-        "request_id": "request-bundle",
-        "target_role": "primary",
-        "target_type": "primary",
-        "optional": 0,
-        "catalog_direct_selection": "submitted_primary",
-        "source_origin": "catalog_direct",
-        "target_status": "matched",
-        "retrieval_mode": "bundle_sequence",
-        "target_url": "https://www.sec.gov/submission.txt",
-        "final_url": "https://www.sec.gov/submission.txt",
-        "sequence": 2,
-        "acquisition_status": "acquired",
-        "error_code": None,
-        "response_sha256": source_digest,
-        "index_response_sha256": None,
-        "selected_response_sha256": None,
-        "resolution_schema_version": None,
-        "screen_kind": "none",
-        "screen_result": "not_run",
-        "evaluator_version": None,
-        "index_parser_version": None,
-        "matching_entry_ids_json": None,
-        "selected_sequence": None,
-        "selected_retrieval_mode": None,
-        "selected_url": None,
-        "source_byte_size": len(bundle),
-        "selected_sha256": selected_digest,
-        "selected_byte_size": len(selected_body),
-        "selected_filename": "report.htm",
-        "content_type": None,
-        "content_encoding": None,
-    }
-    append_fixture_case(
-        paths,
-        "fixture-bundle",
-        capture,
-        case,
-        io.BytesIO(bundle),
-        max_response_bytes=len(bundle),
-    )
-    output = tmp_path / "bundle-selected.htm"
+    initialize_test_fixture(paths, "fixture-a")
+    body = b"<html><body>selected body</body></html>"
+    append_test_case(paths, "fixture-a", "target-a", body)
 
-    replay = _materialize_fixture_case(
-        "fixture-bundle",
-        "capture-bundle",
-        "target-bundle",
-        output,
-        paths=paths,
+    cases = list(list_fixture_cases(paths, fixture_id="fixture-a"))
+    summaries = list(list_fixture_summaries(paths))
+    output = tmp_path / "body.bin"
+    materialized = _materialize_fixture_case(
+        "fixture-a", "capture-1", "target-a", output, paths=paths
     )
 
-    assert replay.output_path == output
-    assert replay.response_sha256 == source_digest
-    assert output.read_bytes() == selected_body
+    assert cases[0].body_sha256 == materialized.body_sha256
+    assert cases[0].byte_size == len(body)
+    assert summaries[0].case_count == 1
+    assert summaries[0].capture_count == 1
+    assert output.read_bytes() == body
+    assert json.loads(paths.fixture_paths("fixture-a").manifest_path.read_text())[
+        "fixture_kind"
+    ] == ("document_acquisition.parser_bodies")
+
+
+def test_reader_refuses_materialization_inside_fixture_root(tmp_path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    initialize_test_fixture(paths, "fixture-a")
+    append_test_case(paths, "fixture-a", "target-a", b"fixture")
+    output = paths.fixture_paths("fixture-a").root / "body.bin"
+
+    with pytest.raises(FixtureOperationError, match="inside managed artifacts"):
+        _materialize_fixture_case(
+            "fixture-a", "capture-1", "target-a", output, paths=paths
+        )
+
+
+def test_reader_refuses_symlink_destination(tmp_path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    initialize_test_fixture(paths, "fixture-a")
+    append_test_case(paths, "fixture-a", "target-a", b"fixture")
+    target = tmp_path / "external-body.bin"
+    target.write_bytes(b"existing")
+    link = tmp_path / "body-link.bin"
+    link.symlink_to(target)
+
+    with pytest.raises(FixtureOperationError, match="symlink"):
+        _materialize_fixture_case(
+            "fixture-a", "capture-1", "target-a", link, paths=paths
+        )

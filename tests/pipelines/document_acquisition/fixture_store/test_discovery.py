@@ -1,180 +1,81 @@
-import io
+from __future__ import annotations
+
+import json
 
 import pytest
 
-import edgar_sec.pipelines.document_acquisition.fixture_store.discovery as discovery_module
 from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
     get_fixture_case,
     iter_fixture_cases,
-    iter_fixture_ids,
-    iter_fixtures,
+    list_fixture_summaries,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
     FixtureStoreError,
 )
-from edgar_sec.pipelines.document_acquisition.fixture_store.storage import (
-    append_fixture_case,
+from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
+from edgar_sec.foundation.serialization import canonical_json
+from tests.pipelines.document_acquisition.fixture_store.fixture_helpers import (
+    append_test_case,
+    initialize_test_fixture,
 )
-from .fixture_helpers import initialize_test_fixture as initialize_fixture
 
 
-def _append_case(paths, fixture_id, capture, case_factory, target_id):
-    case = case_factory(target_id)
-    response = f"{fixture_id}:{capture['capture_id']}:{target_id}".encode()
-    append_fixture_case(
+def test_fixture_discovery_is_sorted_and_summaries_are_run_scoped(tmp_path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    initialize_test_fixture(paths, "fixture-z")
+    initialize_test_fixture(paths, "fixture-a")
+    append_test_case(paths, "fixture-z", "target-b", b"b")
+    append_test_case(paths, "fixture-z", "target-a", b"a")
+    append_test_case(
         paths,
-        fixture_id,
-        capture,
-        case,
-        io.BytesIO(response),
-        max_response_bytes=len(response),
+        "fixture-z",
+        "target-c",
+        b"c",
+        capture_id="capture-2",
+        run_id="run-2",
     )
 
+    cases = list(iter_fixture_cases(paths))
+    summaries = list_fixture_summaries(paths)
 
-def test_listing_and_filters_are_deterministic(
-    acquisition_paths, capture_values, case_factory
-) -> None:
-    for fixture_id in ("fixture_z", "fixture_a"):
-        initialize_fixture(acquisition_paths, fixture_id)
-    _append_case(
-        acquisition_paths, "fixture_z", capture_values, case_factory, "target_b"
-    )
-    _append_case(
-        acquisition_paths, "fixture_z", capture_values, case_factory, "target_a"
-    )
-    later_capture = {**capture_values, "capture_id": "capture_2"}
-    _append_case(
-        acquisition_paths, "fixture_z", later_capture, case_factory, "target_a"
-    )
-    _append_case(
-        acquisition_paths, "fixture_a", capture_values, case_factory, "target_c"
-    )
-
-    assert list(iter_fixture_ids(acquisition_paths)) == [
-        "fixture_a",
-        "fixture_z",
+    assert [(case.fixture_id, case.capture_id, case.target_id) for case in cases] == [
+        ("fixture-z", "capture-1", "target-a"),
+        ("fixture-z", "capture-1", "target-b"),
+        ("fixture-z", "capture-2", "target-c"),
     ]
-    summaries = list(iter_fixtures(acquisition_paths))
-    assert [
-        (
-            item.fixture_id,
-            item.target_plan_id,
-            item.target_plan_digest,
-            item.capture_count,
-            item.case_count,
-            item.acquisition_status_counts,
-        )
-        for item in summaries
-    ] == [
-        ("fixture_a", "plan_fixture_test", "a" * 64, 1, 1, (("acquired", 1),)),
-        ("fixture_z", "plan_fixture_test", "a" * 64, 2, 3, (("acquired", 3),)),
-    ]
-    listed = list(iter_fixture_cases(acquisition_paths))
-    assert [(item.fixture_id, item.capture_id, item.target_id) for item in listed] == [
-        ("fixture_a", "capture_1", "target_c"),
-        ("fixture_z", "capture_1", "target_a"),
-        ("fixture_z", "capture_1", "target_b"),
-        ("fixture_z", "capture_2", "target_a"),
-    ]
-    assert [
-        (item.fixture_id, item.capture_id, item.target_id)
-        for item in iter_fixture_cases(
-            acquisition_paths,
-            fixture_id="fixture_z",
-            capture_id="capture_1",
-            target_id="target_b",
-        )
-    ] == [("fixture_z", "capture_1", "target_b")]
-    assert list(iter_fixture_cases(acquisition_paths, target_id="target_a")) == [
-        listed[1],
-        listed[3],
-    ]
+    assert [item.fixture_id for item in summaries] == ["fixture-a", "fixture-z"]
+    assert summaries[1].capture_count == 2
+    assert summaries[1].case_count == 3
 
 
-def test_exact_lookup_returns_only_the_requested_case(
-    acquisition_paths, capture_values, case_factory
-) -> None:
-    initialize_fixture(acquisition_paths, "fixture_exact")
-    _append_case(
-        acquisition_paths, "fixture_exact", capture_values, case_factory, "target_1"
-    )
-    _append_case(
-        acquisition_paths, "fixture_exact", capture_values, case_factory, "target_2"
+def test_fixture_case_lookup_uses_capture_and_target_identity(tmp_path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    initialize_test_fixture(paths, "fixture-a")
+    append_test_case(paths, "fixture-a", "target-a", b"first")
+    append_test_case(
+        paths,
+        "fixture-a",
+        "target-a",
+        b"second",
+        capture_id="capture-2",
+        run_id="run-2",
     )
 
-    result = get_fixture_case(
-        acquisition_paths, "fixture_exact", "capture_1", "target_2"
-    )
-    assert (result.fixture_id, result.capture_id, result.target_id) == (
-        "fixture_exact",
-        "capture_1",
-        "target_2",
-    )
+    case = get_fixture_case(paths, "fixture-a", "capture-2", "target-a")
+
+    assert case.run_id == "run-2"
+    assert case.byte_size == len(b"second")
     with pytest.raises(FixtureStoreError, match="fixture case not found"):
-        get_fixture_case(
-            acquisition_paths, "fixture_exact", "capture_missing", "target_2"
-        )
+        get_fixture_case(paths, "fixture-a", "capture-1", "missing")
 
 
-def test_discovery_is_read_only_and_queries_no_response_blobs(
-    acquisition_paths, capture_values, case_factory, monkeypatch
-) -> None:
-    fixture = initialize_fixture(acquisition_paths, "fixture_readonly")
-    _append_case(
-        acquisition_paths,
-        "fixture_readonly",
-        capture_values,
-        case_factory,
-        "target_1",
-    )
-    before = fixture.storage_path.stat()
-    traced: list[str] = []
-    original_open = discovery_module.open_fixture
+def test_discovery_ignores_old_schema_fixture_without_migration(tmp_path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    initialize_test_fixture(paths, "fixture-a")
+    manifest_path = paths.fixture_paths("fixture-a").manifest_path
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["fixture_kind"] = "document_acquisition.source_responses"
+    manifest["details"]["store_schema_version"] = 1
+    manifest_path.write_text(canonical_json(manifest), encoding="utf-8")
 
-    def traced_open(paths, fixture_id, *, readonly):
-        assert readonly is True
-        fixture_paths, connection = original_open(paths, fixture_id, readonly=readonly)
-        connection.set_trace_callback(traced.append)
-        return fixture_paths, connection
-
-    monkeypatch.setattr(discovery_module, "open_fixture", traced_open)
-    assert len(list(iter_fixture_cases(acquisition_paths))) == 1
-    after = fixture.storage_path.stat()
-
-    assert (before.st_size, before.st_mtime_ns) == (after.st_size, after.st_mtime_ns)
-    metadata_sql = [
-        statement.upper()
-        for statement in traced
-        if statement.lstrip().upper().startswith("SELECT")
-        and "CASES" in statement.upper()
-    ]
-    assert metadata_sql
-    assert all("RESPONSE_BODIES" not in statement for statement in metadata_sql)
-    assert all("COMPRESSED_BODY" not in statement for statement in metadata_sql)
-
-
-def test_discovery_rejects_invalid_ids_symlink_roots_and_incomplete_fixtures(
-    acquisition_paths,
-) -> None:
-    with pytest.raises(ValueError, match="fixture_id"):
-        list(iter_fixture_cases(acquisition_paths, fixture_id="../escape"))
-
-    initialize_fixture(acquisition_paths, "fixture_real")
-    link = acquisition_paths.fixtures_root / "fixture_link"
-    link.symlink_to(
-        acquisition_paths.fixture_root("fixture_real"), target_is_directory=True
-    )
-    with pytest.raises(FixtureStoreError, match="symlink"):
-        list(iter_fixture_ids(acquisition_paths))
-
-    link.unlink()
-    (acquisition_paths.fixtures_root / "fixture_incomplete").mkdir()
-    with pytest.raises(FixtureStoreError, match="missing or incomplete"):
-        list(iter_fixture_ids(acquisition_paths))
-    with pytest.raises(FixtureStoreError, match="missing or incomplete"):
-        list(iter_fixture_cases(acquisition_paths))
-
-
-def test_missing_fixture_registry_is_an_empty_listing(acquisition_paths) -> None:
-    assert list(iter_fixture_ids(acquisition_paths)) == []
-    assert list(iter_fixture_cases(acquisition_paths)) == []
+    assert list_fixture_summaries(paths) == ()

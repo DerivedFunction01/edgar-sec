@@ -1,687 +1,163 @@
 from __future__ import annotations
 
 import hashlib
-import json
 import sqlite3
-from datetime import UTC, datetime
 
 import pytest
 
-from edgar_sec.infra.sec_http.streaming import StreamFailure
-from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.pipelines.document_acquisition.fixture_store.capture import (
-    capture_fixture_case,
+    capture_fixture_run,
+    create_fixture,
+)
+from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
+    get_fixture_case,
+    list_fixture_summaries,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
-    FixturePlanPin,
     FixtureOperationError,
+    FixturePlanPin,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
     _materialize_fixture_case,
     list_fixture_cases,
 )
-from edgar_sec.pipelines.document_acquisition import cli
-from edgar_sec.pipelines.document_acquisition.models import AcquisitionPolicy
-from edgar_sec.pipelines.document_acquisition.run_state.evidence import (
-    get_attempt_evidence_group,
-)
-from edgar_sec.pipelines.document_acquisition.run_state.store import (
-    get_target_state,
-)
-from edgar_sec.pipelines.document_acquisition.runner import execute_acquisition_run
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
-from tests.pipelines.document_acquisition.test_runner import (
-    _BUNDLE_URL,
-    _INDEX,
-    _INDEX_URL,
-    _UNLINKED_INDEX,
-    _MemoryTransport,
-    _make_run,
-)
-from .fixture_helpers import (
+from tests.acquisition_run_fixture import make_acquisition_run
+from tests.pipelines.document_acquisition.fixture_store.fixture_helpers import (
     create_test_fixture_for_run,
-    create_test_fixture,
-    initialize_test_fixture,
-    plan_pin_for_run,
 )
 
 
-def _execute_run(
-    paths,
-    run_id,
-    row,
-    responses,
-    monkeypatch,
-    *,
-    failures=None,
-    retry_failures=False,
-    retain_response_evidence=False,
-):
-    monkeypatch.setattr(
-        "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
-        lambda: type("Resources", (), {"workers": 1, "worker_ceiling": 1})(),
-    )
-    report = execute_acquisition_run(
-        run_id,
-        retry_failures=retry_failures,
-        paths=paths,
-        policy=AcquisitionPolicy(
-            max_response_bytes=4096,
-            retain_response_evidence=retain_response_evidence,
-        ),
-        transport=_MemoryTransport(responses, failures=failures),
-        clock=lambda: datetime(2025, 1, 1, tzinfo=UTC),
-    )
-    state = get_target_state(paths.run_state_path(run_id), "target-1")
-    assert state is not None
-    return report, state
-
-
-def _initial_attempt_id(paths, run_id):
+def _mark_acquired(paths, run_id: str, row: dict, body: bytes) -> None:
+    target_id = row["target_id"]
+    selected_dir = paths.run_staging_root(run_id) / "selected"
+    selected_dir.mkdir(parents=True, exist_ok=True)
+    selected_path = selected_dir / f"{target_id}.htm"
+    selected_path.write_bytes(body)
+    relative = selected_path.relative_to(paths.run_dir(run_id)).as_posix()
+    digest = hashlib.sha256(body).hexdigest()
     with sqlite3.connect(paths.run_state_path(run_id)) as connection:
-        return connection.execute(
-            "SELECT attempt_id FROM attempts WHERE target_id = ? "
-            "AND attempt_kind = 'document_body' ORDER BY attempt_number LIMIT 1",
-            ("target-1",),
-        ).fetchone()[0]
+        connection.execute(
+            "UPDATE target_state SET outcome='acquired', source='live_sec', "
+            "attempt_count=1, last_attempt_id=?, source_sha256=?, source_byte_size=?, "
+            "source_body_relative_path=NULL, selected_sha256=?, selected_byte_size=?, "
+            "selected_body_relative_path=? WHERE target_id=?",
+            (
+                f"attempt-{target_id}",
+                digest,
+                len(body),
+                digest,
+                len(body),
+                relative,
+                target_id,
+            ),
+        )
+        connection.execute(
+            "UPDATE operation_state SET status='pending', error_code=NULL, retryable=0 "
+            "WHERE target_id=? AND requested=1 AND selected=1",
+            (target_id,),
+        )
+        connection.execute(
+            "INSERT INTO attempts (attempt_id, target_id, attempt_number, attempt_kind, "
+            "source, outcome, retryable, error_code, http_status, requested_url, final_url, "
+            "started_at_utc, finished_at_utc, source_sha256, source_byte_size, "
+            "source_body_relative_path, selected_sha256, selected_byte_size, "
+            "selected_body_relative_path, selected_filename) "
+            "VALUES (?, ?, 1, 'document_body', 'live_sec', 'acquired', 0, NULL, 200, "
+            "?, ?, '2026-10-14T00:00:00Z', '2026-10-14T00:00:01Z', ?, ?, NULL, ?, ?, ?, ?)",
+            (
+                f"attempt-{target_id}",
+                target_id,
+                row["target_url"],
+                row["target_url"],
+                digest,
+                len(body),
+                digest,
+                len(body),
+                relative,
+                selected_path.name,
+            ),
+        )
 
 
-def test_capture_direct_attempt_is_idempotent_and_materializes_without_network(
-    tmp_path, monkeypatch
+def test_fixture_fill_captures_staged_body_without_raw_response_retention(
+    tmp_path,
 ) -> None:
-    paths, run_id, row = _make_run(tmp_path, lazy=False)
-    body = b"<html>captured filing</html>"
-    _execute_run(paths, run_id, row, {row["target_url"]: body}, monkeypatch)
-    fixture_root = create_test_fixture_for_run(paths, "fixture-1", run_id)
-    state = get_target_state(paths.run_state_path(run_id), "target-1")
-    assert state is not None and state.last_attempt_id is not None
+    paths, run_id, row = make_acquisition_run(tmp_path, lazy=False)
+    body = b"<html><body>offline parser input</body></html>"
+    _mark_acquired(paths, run_id, row, body)
+    create_test_fixture_for_run(paths, "fixture-body", run_id)
+    progress = []
 
-    first = capture_fixture_case(
-        "fixture-1",
+    result = capture_fixture_run(
+        "fixture-body",
         run_id,
-        "target-1",
-        state.last_attempt_id,
         paths=paths,
-        max_response_bytes=4096,
-    )
-    second = capture_fixture_case(
-        "fixture-1",
-        run_id,
-        "target-1",
-        state.last_attempt_id,
-        paths=paths,
-        max_response_bytes=4096,
-    )
-    cases = list(list_fixture_cases(paths, fixture_id="fixture-1"))
-    output = tmp_path / "replayed.html"
-    materialized = _materialize_fixture_case(
-        "fixture-1", first.capture_id, "target-1", output, paths=paths
+        max_body_bytes=1024,
+        on_target=lambda current, total: progress.append((current, total)),
     )
 
-    assert fixture_root.is_dir()
-    assert first.capture_id == second.capture_id
-    assert first.reused_response is False
-    assert second.reused_response is True
-    assert len(cases) == 1
-    assert cases[0].acquisition_status == "acquired"
-    assert cases[0].target_plan_schema_version == "1"
-    assert cases[0].selected_filename == "cover.htm"
-    assert materialized.output_path == output
-    assert materialized.response_sha256 == first.response_sha256
+    case = get_fixture_case(paths, "fixture-body", result.capture_id, row["target_id"])
+    assert result.captured_cases == 1
+    assert result.skipped_targets == 0
+    assert progress == [(1, 1)]
+    assert case.body_sha256 == hashlib.sha256(body).hexdigest()
+    assert case.byte_size == len(body)
+    assert case.attempt_id == f"attempt-{row['target_id']}"
+    output = tmp_path / "materialized.bin"
+    _materialize_fixture_case(
+        "fixture-body", result.capture_id, row["target_id"], output, paths=paths
+    )
     assert output.read_bytes() == body
-    with pytest.raises(FixtureOperationError, match="already exists"):
-        _materialize_fixture_case(
-            "fixture-1", first.capture_id, "target-1", output, paths=paths
-        )
-    assert output.read_bytes() == body
-    with pytest.raises(FixtureOperationError, match="inside managed artifacts"):
-        _materialize_fixture_case(
-            "fixture-1",
-            first.capture_id,
-            "target-1",
-            fixture_root / "replayed.bin",
-            paths=paths,
-        )
-    with sqlite3.connect(paths.fixture_database_path("fixture-1")) as connection:
-        assert connection.execute("SELECT COUNT(*) FROM cases").fetchone()[0] == 1
 
 
-def test_capture_refuses_a_fixture_pinned_to_another_plan(
-    tmp_path, monkeypatch
+def test_one_run_capture_groups_all_acquired_target_bodies(tmp_path) -> None:
+    paths, run_id, first_row = make_acquisition_run(
+        tmp_path, lazy=False, sibling_failure=True
+    )
+    second_row = dict(first_row)
+    second_row.update(target_id="target-2", request_id="request-2")
+    first_body = b"<html>first</html>"
+    second_body = b"<html>second</html>"
+    _mark_acquired(paths, run_id, first_row, first_body)
+    _mark_acquired(paths, run_id, second_row, second_body)
+    create_test_fixture_for_run(paths, "fixture-run", run_id)
+
+    result = capture_fixture_run(
+        "fixture-run", run_id, paths=paths, max_body_bytes=1024
+    )
+
+    cases = list(list_fixture_cases(paths, fixture_id="fixture-run"))
+    assert result.captured_cases == 2
+    assert result.skipped_targets == 0
+    assert {case.capture_id for case in cases} == {result.capture_id}
+    assert {case.target_id for case in cases} == {"target-1", "target-2"}
+    assert list_fixture_summaries(paths)[0].capture_count == 1
+
+
+def test_fixture_fill_refuses_missing_selected_bytes_and_oversized_bodies(
+    tmp_path,
 ) -> None:
-    paths, run_id, row = _make_run(tmp_path, lazy=False)
-    _execute_run(
-        paths, run_id, row, {row["target_url"]: b"<html>body</html>"}, monkeypatch
-    )
-    create_test_fixture(
-        paths,
-        "fixture-wrong-plan",
-        FixturePlanPin("plan-other", "b" * 64, 1),
-    )
+    paths, run_id, row = make_acquisition_run(tmp_path, lazy=False)
+    create_test_fixture_for_run(paths, "fixture-empty", run_id)
 
-    with pytest.raises(FixtureOperationError, match="differs from fixture plan pin"):
-        capture_fixture_case(
-            "fixture-wrong-plan",
-            run_id,
-            "target-1",
-            _initial_attempt_id(paths, run_id),
-            paths=paths,
-            max_response_bytes=4096,
+    with pytest.raises(FixtureOperationError, match="no acquired targets"):
+        capture_fixture_run("fixture-empty", run_id, paths=paths, max_body_bytes=1024)
+
+    body = b"larger than cap"
+    _mark_acquired(paths, run_id, row, body)
+    with pytest.raises(FixtureOperationError, match="exceeds max_body_bytes"):
+        capture_fixture_run(
+            "fixture-empty", run_id, paths=paths, max_body_bytes=len(body) - 1
         )
 
 
-@pytest.mark.parametrize("lazy", (False, True))
-def test_capture_and_bodyless_failure_metadata_verification(
-    tmp_path, monkeypatch, lazy: bool
-) -> None:
-    paths, run_id, row = _make_run(tmp_path, lazy=lazy)
-    failure = StreamFailure("http_not_found", False, 404, "not found")
-    _execute_run(
-        paths,
-        run_id,
-        row,
-        {},
-        monkeypatch,
-        failures={row["target_url"]: failure},
-    )
-    fixture_id = f"fixture-failure-{lazy}"
-    create_test_fixture_for_run(paths, fixture_id, run_id)
-    state = get_target_state(paths.run_state_path(run_id), "target-1")
-    assert state is not None and state.last_attempt_id is not None
-
-    captured = capture_fixture_case(
-        fixture_id,
-        run_id,
-        "target-1",
-        state.last_attempt_id,
-        paths=paths,
-        max_response_bytes=4096,
-    )
-    materialized = _materialize_fixture_case(
-        fixture_id,
-        captured.capture_id,
-        "target-1",
-        tmp_path / "should-not-exist.html",
-        paths=paths,
-    )
-
-    assert captured.response_sha256 is None
-    assert materialized.acquisition_status == "failed"
-    assert materialized.output_path is None
-    assert not (tmp_path / "should-not-exist.html").exists()
-
-
-@pytest.mark.parametrize("mode", ("bundle", "lazy"))
-def test_capture_refuses_unavailable_bundle_or_lazy_response_evidence(
-    tmp_path, monkeypatch, mode: str
-) -> None:
-    if mode == "bundle":
-        paths, run_id, row = _make_run(tmp_path, lazy=False, bundle=True)
-        responses = {
-            row[
-                "target_url"
-            ]: b"<DOCUMENT><SEQUENCE>2<TYPE>10-K<TEXT>body</TEXT></DOCUMENT>"
-        }
-    else:
-        paths, run_id, row = _make_run(tmp_path, lazy=True)
-        selected_url = _INDEX_URL.rsplit("/", 1)[0] + "/report.htm"
-        responses = {
-            row["target_url"]: b"<html>initial</html>",
-            _INDEX_URL: _INDEX,
-            selected_url: b"<html>selected</html>",
-        }
-    _execute_run(paths, run_id, row, responses, monkeypatch)
-    create_test_fixture_for_run(paths, f"fixture-{mode}", run_id)
-    state = get_target_state(paths.run_state_path(run_id), "target-1")
-    assert state is not None and state.last_attempt_id is not None
-
-    with pytest.raises(
-        FixtureOperationError, match="response evidence is incomplete or not retained"
-    ):
-        capture_fixture_case(
-            f"fixture-{mode}",
-            run_id,
-            "target-1",
-            _initial_attempt_id(paths, run_id),
-            paths=paths,
-            max_response_bytes=4096,
-        )
-
-
-@pytest.mark.parametrize("mode", ("bundle", "lazy-direct", "lazy-bundle"))
-def test_opted_in_response_groups_capture_and_materialize(tmp_path, monkeypatch, mode):
-    if mode == "bundle":
-        paths, run_id, row = _make_run(tmp_path, lazy=False, bundle=True)
-        bundle = (
-            b"<DOCUMENT><SEQUENCE>2<FILENAME>report.htm<TYPE>10-K<TEXT>bundle body"
-            b"</TEXT></DOCUMENT>"
-        )
-        responses = {row["target_url"]: bundle}
-        selected = b"bundle body"
-    elif mode == "lazy-direct":
-        paths, run_id, row = _make_run(tmp_path, lazy=True)
-        selected_url = _INDEX_URL.rsplit("/", 1)[0] + "/report.htm"
-        selected = b"<html>selected lazy response</html>"
-        index_body = _INDEX
-        responses = {
-            row["target_url"]: b"<html>initial catalog response</html>",
-            _INDEX_URL: index_body,
-            selected_url: selected,
-        }
-    else:
-        paths, run_id, row = _make_run(tmp_path, lazy=True)
-        selected_url = _BUNDLE_URL
-        selected = b"recovered bundle body"
-        index_body = _UNLINKED_INDEX
-        selected_response = (
-            b"<DOCUMENT><SEQUENCE>2<FILENAME>report.htm<TYPE>10-K<TEXT>"
-            b"recovered bundle body</TEXT></DOCUMENT>"
-        )
-        responses = {
-            row["target_url"]: b"<html>initial catalog response</html>",
-            _INDEX_URL: index_body,
-            selected_url: selected_response,
-        }
-    _execute_run(
-        paths,
-        run_id,
-        row,
-        responses,
-        monkeypatch,
-        retain_response_evidence=True,
-    )
-    create_test_fixture_for_run(paths, f"fixture-{mode}-retained", run_id)
-    group = get_attempt_evidence_group(
-        paths.run_state_path(run_id), "target-1", _initial_attempt_id(paths, run_id)
-    )
-    assert group is not None
-    initial_attempt_id = group.initial_attempt.attempt_id
-
-    captured = capture_fixture_case(
-        f"fixture-{mode}-retained",
-        run_id,
-        "target-1",
-        initial_attempt_id,
-        paths=paths,
-        max_response_bytes=4096,
-    )
-    case = next(iter(list_fixture_cases(paths, fixture_id=f"fixture-{mode}-retained")))
-    output = tmp_path / f"{mode}-replayed.bin"
-    materialized = _materialize_fixture_case(
-        f"fixture-{mode}-retained",
-        captured.capture_id,
-        "target-1",
-        output,
-        paths=paths,
-    )
-
-    assert case.attempt_id == initial_attempt_id
-    assert materialized.output_path == output
-    assert output.read_bytes() == selected
-    if mode == "bundle":
-        assert case.response_sha256 == hashlib.sha256(bundle).hexdigest()
-        assert case.selected_filename == "report.htm"
-    else:
-        if mode == "lazy-direct":
-            selected_url = _INDEX_URL.rsplit("/", 1)[0] + "/report.htm"
-            selected_response = selected
-            selected_mode = "direct_url"
-            index_body = _INDEX
-        else:
-            selected_mode = "bundle_sequence"
-        assert case.retrieval_mode == "direct_url"
-        assert (
-            case.response_sha256
-            == hashlib.sha256(b"<html>initial catalog response</html>").hexdigest()
-        )
-        assert case.response_sha256 != case.selected_sha256
-        assert case.index_response_sha256 == hashlib.sha256(index_body).hexdigest()
-        assert (
-            case.selected_response_sha256
-            == hashlib.sha256(selected_response).hexdigest()
-        )
-        assert case.selected_sequence == 2
-        assert case.selected_retrieval_mode == selected_mode
-        assert case.selected_url == selected_url
-        assert case.selected_filename == "report.htm"
-        assert group.resolution is not None
-        assert json.loads(case.matching_entry_ids_json) == list(
-            group.resolution.matching_entry_ids
-        )
-        with sqlite3.connect(
-            paths.fixture_database_path(f"fixture-{mode}-retained")
-        ) as connection:
-            digests = {
-                row[0]
-                for row in connection.execute(
-                    "SELECT response_sha256 FROM response_bodies"
-                )
-            }
-        assert {
-            case.response_sha256,
-            case.index_response_sha256,
-            case.selected_response_sha256,
-        } <= digests
-        assert (
-            len(
-                {
-                    case.response_sha256,
-                    case.index_response_sha256,
-                    case.selected_response_sha256,
-                }
-            )
-            == 3
-        )
-
-
-@pytest.mark.parametrize("tamper", ("missing-index", "selected-digest"))
-def test_capture_refuses_missing_or_malformed_related_evidence(
-    tmp_path, monkeypatch, tamper
-):
-    paths, run_id, row = _make_run(tmp_path, lazy=True)
-    selected_url = _INDEX_URL.rsplit("/", 1)[0] + "/report.htm"
-    _execute_run(
-        paths,
-        run_id,
-        row,
-        {
-            row["target_url"]: b"<html>initial</html>",
-            _INDEX_URL: _INDEX,
-            selected_url: b"<html>selected</html>",
-        },
-        monkeypatch,
-        retain_response_evidence=True,
-    )
-    state = get_target_state(paths.run_state_path(run_id), "target-1")
-    assert state is not None and state.last_attempt_id is not None
-    group = get_attempt_evidence_group(
-        paths.run_state_path(run_id), "target-1", _initial_attempt_id(paths, run_id)
-    )
-    assert group is not None and group.lazy_index_attempt is not None
-    if tamper == "missing-index":
-        relative = group.lazy_index_attempt.source_body_relative_path
-        assert relative is not None
-        (paths.run_dir(run_id) / relative).unlink()
-        message = "missing or unsafe"
-    else:
-        assert group.selected_body_attempt is not None
-        relative = group.selected_body_attempt.source_body_relative_path
-        assert relative is not None
-        selected_path = paths.run_dir(run_id) / relative
-        selected_path.write_bytes(b"X" * selected_path.stat().st_size)
-        message = "response_sha256 does not match"
-    create_test_fixture_for_run(paths, f"fixture-malformed-{tamper}", run_id)
-
-    with pytest.raises(FixtureOperationError, match=message):
-        capture_fixture_case(
-            f"fixture-malformed-{tamper}",
-            run_id,
-            "target-1",
-            group.initial_attempt.attempt_id,
-            paths=paths,
-            max_response_bytes=4096,
-        )
-
-
-def test_failed_retained_lazy_group_verifies_metadata_and_bodies(tmp_path, monkeypatch):
-    paths, run_id, row = _make_run(tmp_path, lazy=True)
-    selected_url = _INDEX_URL.rsplit("/", 1)[0] + "/report.htm"
-    _execute_run(
-        paths,
-        run_id,
-        row,
-        {
-            row["target_url"]: b"<html>initial failed-group body</html>",
-            _INDEX_URL: _INDEX,
-        },
-        monkeypatch,
-        failures={
-            selected_url: StreamFailure("http_not_found", False, 404, "not found")
-        },
-        retain_response_evidence=True,
-    )
-    initial_attempt_id = _initial_attempt_id(paths, run_id)
-    create_test_fixture_for_run(paths, "fixture-failed-retained", run_id)
-    captured = capture_fixture_case(
-        "fixture-failed-retained",
-        run_id,
-        "target-1",
-        initial_attempt_id,
-        paths=paths,
-        max_response_bytes=4096,
-    )
-    case = next(iter(list_fixture_cases(paths, fixture_id="fixture-failed-retained")))
-    output = tmp_path / "failed-lazy-output.bin"
-
-    materialized = _materialize_fixture_case(
-        "fixture-failed-retained",
-        captured.capture_id,
-        "target-1",
-        output,
-        paths=paths,
-    )
-
-    assert case.acquisition_status == "failed"
-    assert case.response_sha256 is not None
-    assert case.index_response_sha256 == hashlib.sha256(_INDEX).hexdigest()
-    assert case.selected_response_sha256 is None
-    assert materialized.acquisition_status == "failed"
-    assert materialized.response_sha256 == case.response_sha256
-    assert materialized.output_path is None
-    assert not output.exists()
-
-
-def test_capture_rejects_an_attempt_outside_the_target(tmp_path) -> None:
+def test_fixture_create_pins_published_target_plan(tmp_path) -> None:
     paths = resolve_acquisition_paths(artifacts_root=tmp_path)
-    initialize_test_fixture(paths, "fixture-missing")
-
-    with pytest.raises(ValueError):
-        capture_fixture_case(
-            "fixture-missing",
-            "missing-run",
-            "missing-target",
-            "missing-attempt",
-            paths=paths,
-            max_response_bytes=4096,
-        )
-
-
-def test_capture_refuses_manifest_without_plan_provenance(
-    tmp_path, monkeypatch
-) -> None:
-    paths, run_id, row = _make_run(tmp_path, lazy=False)
-    _execute_run(
-        paths,
-        run_id,
-        row,
-        {row["target_url"]: b"<html>filing</html>"},
-        monkeypatch,
+    fixture = create_fixture(
+        "fixture-pin",
+        FixturePlanPin("plan-a", "a" * 64, 1),
+        paths=paths,
     )
-    create_test_fixture_for_run(paths, "fixture-invalid-manifest", run_id)
-    state = get_target_state(paths.run_state_path(run_id), "target-1")
-    assert state is not None and state.last_attempt_id is not None
-    manifest_path = paths.run_manifest_path(run_id)
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    manifest.pop("run_digest")
-    manifest.pop("target_plan_id")
-    manifest["run_digest"] = canonical_hash(manifest)
-    manifest_path.write_text(canonical_json(manifest), encoding="utf-8")
 
-    with pytest.raises(FixtureOperationError, match="target-plan provenance"):
-        capture_fixture_case(
-            "fixture-invalid-manifest",
-            run_id,
-            "target-1",
-            state.last_attempt_id,
-            paths=paths,
-            max_response_bytes=4096,
-        )
-
-
-@pytest.mark.parametrize("tamper", ("symlink", "digest"))
-def test_capture_refuses_tampered_staged_bodies(tmp_path, monkeypatch, tamper) -> None:
-    paths, run_id, row = _make_run(tmp_path, lazy=False)
-    body = b"<html>untampered filing</html>"
-    _execute_run(paths, run_id, row, {row["target_url"]: body}, monkeypatch)
-    create_test_fixture_for_run(paths, f"fixture-{tamper}", run_id)
-    state = get_target_state(paths.run_state_path(run_id), "target-1")
-    assert state is not None and state.last_attempt_id is not None
-    relative = state.source_body_relative_path
-    assert relative is not None
-    staged = paths.run_dir(run_id) / relative
-    staged.unlink()
-    if tamper == "symlink":
-        outside = tmp_path / "outside.bin"
-        outside.write_bytes(body)
-        staged.symlink_to(outside)
-        message = "symlink"
-    else:
-        staged.write_bytes(b"X" * len(body))
-        message = "response_sha256 does not match"
-
-    with pytest.raises(FixtureOperationError, match=message):
-        capture_fixture_case(
-            f"fixture-{tamper}",
-            run_id,
-            "target-1",
-            state.last_attempt_id,
-            paths=paths,
-            max_response_bytes=4096,
-        )
-
-
-def test_capture_enforces_response_size_limit_before_commit(
-    tmp_path, monkeypatch
-) -> None:
-    paths, run_id, row = _make_run(tmp_path, lazy=False)
-    body = b"<html>bounded capture</html>"
-    _execute_run(paths, run_id, row, {row["target_url"]: body}, monkeypatch)
-    create_test_fixture_for_run(paths, "fixture-limited", run_id)
-    state = get_target_state(paths.run_state_path(run_id), "target-1")
-    assert state is not None and state.last_attempt_id is not None
-
-    with pytest.raises(FixtureOperationError, match="exceeds max_response_bytes"):
-        capture_fixture_case(
-            "fixture-limited",
-            run_id,
-            "target-1",
-            state.last_attempt_id,
-            paths=paths,
-            max_response_bytes=len(body) - 1,
-        )
-    assert list(list_fixture_cases(paths, fixture_id="fixture-limited")) == []
-
-
-def test_fixture_cli_completes_offline_retained_lazy_evidence_flow(
-    tmp_path, monkeypatch, capsys
-) -> None:
-    paths, run_id, row = _make_run(tmp_path, lazy=True)
-    selected_url = _INDEX_URL.rsplit("/", 1)[0] + "/report.htm"
-    body = b"<html>offline retained lazy fixture cli</html>"
-    _execute_run(
-        paths,
-        run_id,
-        row,
-        {
-            row["target_url"]: b"<html>initial catalog response</html>",
-            _INDEX_URL: _INDEX,
-            selected_url: body,
-        },
-        monkeypatch,
-        retain_response_evidence=True,
-    )
-    state = get_target_state(paths.run_state_path(run_id), "target-1")
-    assert state is not None and state.last_attempt_id is not None
-    attempt_id = _initial_attempt_id(paths, run_id)
-    artifacts = str(paths.artifacts_root)
-    plan_pin = plan_pin_for_run(paths, run_id)
-
-    create_test_fixture(paths, "fixture-cli", plan_pin)
-    assert (
-        cli.main(
-            [
-                "fixture",
-                "fill",
-                "--fixture",
-                "fixture-cli",
-                "--run-id",
-                run_id,
-                "--target-id",
-                "target-1",
-                "--attempt-id",
-                attempt_id,
-                "--max-response-bytes",
-                "4096",
-                "--artifacts",
-                artifacts,
-                "--json",
-            ]
-        )
-        == 0
-    )
-    capture_result = json.loads(capsys.readouterr().out)
-    capture_id = capture_result["capture_id"]
-    assert (
-        cli.main(
-            [
-                "fixture",
-                "list",
-                "--fixture",
-                "fixture-cli",
-                "--artifacts",
-                artifacts,
-                "--json",
-            ]
-        )
-        == 0
-    )
-    listed = json.loads(capsys.readouterr().out)
-    assert listed["cases"][0]["capture_id"] == capture_id
-    case = listed["cases"][0]
-    assert case["attempt_id"] == attempt_id
-    assert case["response_sha256"] != case["selected_sha256"]
-    assert case["index_response_sha256"] == hashlib.sha256(_INDEX).hexdigest()
-    assert case["selected_response_sha256"] == hashlib.sha256(body).hexdigest()
-
-    with pytest.raises(SystemExit):
-        cli.main(["fixture", "replay", "--fixture", "fixture-cli"])
-
-
-def test_capture_refuses_older_document_body_attempt_after_retry(
-    tmp_path, monkeypatch
-) -> None:
-    paths, run_id, row = _make_run(tmp_path, lazy=False)
-    first_failure = StreamFailure("transport_error", True, None, "temporary failure")
-    _execute_run(
-        paths,
-        run_id,
-        row,
-        {},
-        monkeypatch,
-        failures={row["target_url"]: first_failure},
-        retain_response_evidence=True,
-    )
-    older_attempt_id = _initial_attempt_id(paths, run_id)
-    _execute_run(
-        paths,
-        run_id,
-        row,
-        {row["target_url"]: b"<html>successful retry</html>"},
-        monkeypatch,
-        retry_failures=True,
-        retain_response_evidence=True,
-    )
-    state = get_target_state(paths.run_state_path(run_id), "target-1")
-    assert state is not None and state.last_attempt_id != older_attempt_id
-    create_test_fixture_for_run(paths, "fixture-stale-attempt", run_id)
-
-    with pytest.raises(FixtureOperationError) as exc_info:
-        capture_fixture_case(
-            "fixture-stale-attempt",
-            run_id,
-            "target-1",
-            older_attempt_id,
-            paths=paths,
-            max_response_bytes=4096,
-        )
-    assert str(exc_info.value) == "attempt is not the latest target attempt"
+    assert fixture == paths.fixture_paths("fixture-pin").root

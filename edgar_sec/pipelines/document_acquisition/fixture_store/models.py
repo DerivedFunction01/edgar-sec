@@ -1,4 +1,4 @@
-"""Typed results and errors for acquisition fixture storage."""
+"""Typed results and errors for parser-body fixtures."""
 
 from __future__ import annotations
 
@@ -16,8 +16,8 @@ class FixtureOperationError(ValueError):
 
 
 @dataclass(frozen=True, slots=True)
-class ResponseBodyRef:
-    response_sha256: str
+class FixtureBodyRef:
+    body_sha256: str
     byte_size: int
     stored_sha256: str
     stored_byte_size: int

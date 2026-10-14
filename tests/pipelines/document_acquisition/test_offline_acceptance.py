@@ -25,26 +25,13 @@ from edgar_sec.infra.sec_http.metrics import HttpMetrics
 from edgar_sec.infra.sec_http.streaming import StreamedResponse
 from edgar_sec.pipelines.document_acquisition import cli as acquisition_cli
 from edgar_sec.pipelines.document_acquisition.fixture_store.capture import (
-    capture_fixture_case,
+    capture_fixture_run,
     create_fixture,
-)
-from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
-    _materialize_fixture_case,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.discovery import (
     get_fixture_case,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.models import FixturePlanPin
-from edgar_sec.pipelines.document_acquisition.fixture_store.body_verification import (
-    _write_verified_response_body,
-)
-from edgar_sec.pipelines.document_acquisition.fixture_store.schema import (
-    SCHEMA_VERSION as FIXTURE_SCHEMA_VERSION,
-)
-from edgar_sec.pipelines.document_acquisition.body_handoff import (
-    get_staged_body_ref,
-    read_body_consumption_receipt,
-)
 from edgar_sec.pipelines.document_acquisition.models import AcquisitionPolicy
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 from edgar_sec.pipelines.document_acquisition.plan_projection.project import (
@@ -214,246 +201,64 @@ class _FixtureIndexHttp:
         return self.body
 
 
-class _FixtureReplayTransport:
-    def __init__(
-        self, paths, fixture_id: str, case, *, initial_url=_TARGET_URL
-    ) -> None:
-        self.paths = paths
-        self.fixture_id = fixture_id
-        self.responses = {initial_url: case.response_sha256}
-        self.calls: list[str] = []
-        self.closed = False
-
-    def stream_to_file(
-        self,
-        url,
-        destination,
-        *,
-        max_response_bytes,
-        validate_redirect,
-    ):
-        self.calls.append(url)
-        validate_redirect(url)
-        digest = self.responses[url]
-        assert digest is not None
-        path = Path(destination)
-        with path.open("xb") as output:
-            response = _write_verified_response_body(
-                self.paths, self.fixture_id, digest, output
-            )
-        assert response.byte_size <= max_response_bytes
-        return StreamedResponse(
-            status_code=200,
-            requested_url=url,
-            final_url=url,
-            sha256=response.response_sha256,
-            byte_size=response.byte_size,
-            content_type="text/html",
-            content_encoding=None,
-            path=path,
-        )
-
-    def close(self) -> None:
-        self.closed = True
-
-
-def test_offline_projection_fixture_replay_preserves_selected_body_handoff(
-    tmp_path, monkeypatch, capsys
-) -> None:
+def test_fixture_fill_and_parser_review_are_offline(tmp_path, monkeypatch) -> None:
     source_root = tmp_path / "source-artifacts"
     source_paths = resolve_acquisition_paths(artifacts_root=source_root)
     plan_id, plan_row = _write_pinned_plan(source_root)
     source_projection = project_acquisition_run(plan_id, paths=source_paths)
-    assert source_projection.manifest["bundle_schema_version"] == 4
-    assert source_projection.manifest["inventory_snapshot_id"] is None
-
     monkeypatch.setattr(
         "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
         lambda: type("Resources", (), {"workers": 1, "worker_ceiling": 1})(),
     )
-    clock = lambda: datetime(2026, 10, 10, tzinfo=UTC)
-    source_transport = _SyntheticTransport(
-        {
-            _TARGET_URL: _SELECTED_BODY,
-        }
-    )
+    source_transport = _SyntheticTransport({_TARGET_URL: _SELECTED_BODY})
     source_report = execute_acquisition_run(
         source_projection.run_id,
         retry_failures=False,
         paths=source_paths,
-        policy=AcquisitionPolicy(
-            max_response_bytes=4096,
-            retain_response_evidence=True,
-        ),
+        policy=AcquisitionPolicy(max_response_bytes=4096),
         transport=source_transport,
-        clock=clock,
+        clock=lambda: datetime(2026, 10, 10, tzinfo=UTC),
     )
     assert source_report.state == "complete"
     assert source_report.target_counts["acquired"] == 1
     assert source_transport.calls == [_TARGET_URL]
     assert source_transport.closed
 
-    source_state = get_target_state(
+    state = get_target_state(
         source_paths.run_state_path(source_projection.run_id), plan_row["target_id"]
     )
-    assert source_state is not None and source_state.selected_body_relative_path
-    with sqlite3.connect(source_paths.run_state_path(source_projection.run_id)) as db:
-        initial_attempt_id = db.execute(
-            "SELECT attempt_id FROM attempts WHERE target_id = ? "
-            "AND attempt_kind = 'document_body' ORDER BY attempt_number LIMIT 1",
-            (source_state.target_id,),
-        ).fetchone()[0]
-
+    assert state is not None and state.selected_body_relative_path
     create_test_fixture_for_run(source_paths, _FIXTURE_ID, source_projection.run_id)
-    captured = capture_fixture_case(
+    capture = capture_fixture_run(
         _FIXTURE_ID,
         source_projection.run_id,
-        source_state.target_id,
-        initial_attempt_id,
         paths=source_paths,
-        max_response_bytes=4096,
+        max_body_bytes=4096,
     )
     fixture_case = get_fixture_case(
-        source_paths, _FIXTURE_ID, captured.capture_id, source_state.target_id
+        source_paths, _FIXTURE_ID, capture.capture_id, state.target_id
     )
-    fixture_manifest = json.loads(
-        source_paths.fixture_manifest_path(_FIXTURE_ID).read_text(encoding="utf-8")
-    )
-    with sqlite3.connect(source_paths.fixture_database_path(_FIXTURE_ID)) as db:
-        fixture_db_version = db.execute("PRAGMA user_version").fetchone()[0]
-    assert FIXTURE_SCHEMA_VERSION == 1
-    assert fixture_manifest["details"]["store_schema_version"] == 1
-    assert fixture_db_version == 1
-    assert fixture_case.response_sha256 == fixture_case.selected_sha256
-    assert fixture_case.index_response_sha256 is None
-    assert fixture_case.selected_response_sha256 is None
-    assert fixture_case.selected_retrieval_mode is None
+    assert fixture_case.body_sha256 == hashlib.sha256(_SELECTED_BODY).hexdigest()
+    assert fixture_case.byte_size == len(_SELECTED_BODY)
 
-    standalone_replay_root = tmp_path / "standalone-replay"
-    standalone_replay_root.mkdir()
-    standalone_output = standalone_replay_root / "selected.html"
-    materialized = _materialize_fixture_case(
-        _FIXTURE_ID,
-        captured.capture_id,
-        source_state.target_id,
-        standalone_output,
-        paths=source_paths,
+    review_root = tmp_path / "parser-review"
+    result = acquisition_cli.main(
+        [
+            "review",
+            "generate",
+            "--fixture",
+            _FIXTURE_ID,
+            "--output",
+            str(review_root),
+            "--artifacts",
+            str(source_root),
+            "--no-progress",
+            "--json",
+        ]
     )
-    assert materialized.output_path == standalone_output
-    assert materialized.selected_sha256 == hashlib.sha256(_SELECTED_BODY).hexdigest()
-    assert standalone_output.read_bytes() == _SELECTED_BODY
-
-    replay_root = tmp_path / "replay-artifacts"
-    replay_paths = resolve_acquisition_paths(artifacts_root=replay_root)
-    replay_plan_root = replay_paths.target_plan_dir(plan_id)
-    replay_plan_root.parent.mkdir(parents=True)
-    shutil.copytree(source_paths.target_plan_dir(plan_id), replay_plan_root)
-    replay_paths.fixtures_root.mkdir(parents=True)
-    shutil.copytree(
-        source_paths.fixture_root(_FIXTURE_ID), replay_paths.fixture_root(_FIXTURE_ID)
-    )
-    replay_projection = project_acquisition_run(plan_id, paths=replay_paths)
-    assert replay_projection.run_id == source_projection.run_id
-    assert not replay_projection.reused
-    replay_case = get_fixture_case(
-        replay_paths, _FIXTURE_ID, captured.capture_id, source_state.target_id
-    )
-    fixture_transport = _FixtureReplayTransport(replay_paths, _FIXTURE_ID, replay_case)
-    replay_report = execute_acquisition_run(
-        replay_projection.run_id,
-        retry_failures=False,
-        paths=replay_paths,
-        policy=AcquisitionPolicy(max_response_bytes=4096),
-        transport=fixture_transport,
-        clock=clock,
-    )
-
-    assert replay_report.state == "complete"
-    assert replay_report.target_counts["acquired"] == 1
-    assert fixture_transport.calls == [_TARGET_URL]
-    assert fixture_transport.closed
-    replay_state = get_target_state(
-        replay_paths.run_state_path(replay_projection.run_id), source_state.target_id
-    )
-    assert replay_state is not None
-    assert replay_state.attempt_count == 1
-    assert replay_state.selected_sha256 == hashlib.sha256(_SELECTED_BODY).hexdigest()
-    assert replay_state.selected_body_relative_path is not None
-    staged_body = (
-        replay_paths.run_dir(replay_projection.run_id)
-        / replay_state.selected_body_relative_path
-    )
-    assert staged_body.is_relative_to(
-        replay_paths.run_staging_root(replay_projection.run_id)
-    )
-    assert staged_body.is_file()
-    assert staged_body.stat().st_size == replay_state.selected_byte_size
-    assert file_sha256(staged_body) == replay_state.selected_sha256
-    assert staged_body.read_bytes() == _SELECTED_BODY
-
-    fake_consumer_ref = get_staged_body_ref(
-        replay_paths, replay_projection.run_id, source_state.target_id
-    )
-    with fake_consumer_ref.path.open("rb") as selected_stream:
-        fake_consumer_digest = hashlib.sha256()
-        fake_consumer_size = 0
-        while chunk := selected_stream.read(65536):
-            fake_consumer_digest.update(chunk)
-            fake_consumer_size += len(chunk)
-    assert fake_consumer_digest.hexdigest() == fake_consumer_ref.sha256
-    assert fake_consumer_size == fake_consumer_ref.byte_size
-    receipt_before = read_body_consumption_receipt(
-        replay_paths, replay_projection.run_id, source_state.target_id
-    )
-    assert receipt_before is not None
-    processing_result = json.loads(
-        (
-            replay_paths.run_staging_root(replay_projection.run_id)
-            / "processing"
-            / f"{source_state.target_id}.json"
-        ).read_text(encoding="utf-8")
-    )
-    assert receipt_before["processing_run_id"] == processing_result["processing_id"]
-    assert receipt_before["selected_sha256"] == fake_consumer_ref.sha256
-    assert receipt_before["source_response_sha256"] == (
-        fake_consumer_ref.source_response_sha256
-    )
-    cleanup_transport = _SyntheticTransport({})
-    cleanup_report = execute_acquisition_run(
-        replay_projection.run_id,
-        retry_failures=False,
-        paths=replay_paths,
-        policy=AcquisitionPolicy(max_response_bytes=4096),
-        transport=cleanup_transport,
-        clock=clock,
-    )
-    assert cleanup_report.state == "complete"
-    assert cleanup_transport.closed
-    assert staged_body.is_file()
-    assert file_sha256(staged_body) == fake_consumer_ref.sha256
-    assert (
-        read_body_consumption_receipt(
-            replay_paths, replay_projection.run_id, source_state.target_id
-        )
-        == receipt_before
-    )
-
-    assert (
-        acquisition_cli.main(
-            [
-                "status",
-                "--run-id",
-                replay_projection.run_id,
-                "--artifacts",
-                str(replay_root),
-                "--json",
-            ]
-        )
-        == 0
-    )
-    status_payload = json.loads(capsys.readouterr().out)
-    assert status_payload["runs"][0]["state"] == "complete"
-    assert status_payload["runs"][0]["target_counts"]["acquired"] == 1
+    assert result == 0
+    assert source_transport.calls == [_TARGET_URL]
+    assert source_transport.closed
 
 
 def test_prepublication_vertical_acceptance_stays_offline_and_raw_only(
@@ -621,9 +426,7 @@ def test_prepublication_vertical_acceptance_stays_offline_and_raw_only(
         projection.run_id,
         retry_failures=False,
         paths=acquisition_paths,
-        policy=AcquisitionPolicy(
-            max_response_bytes=100_000, retain_response_evidence=True
-        ),
+        policy=AcquisitionPolicy(max_response_bytes=100_000),
         transport=transport,
         clock=lambda: datetime(2026, 10, 12, tzinfo=UTC),
     )
@@ -652,13 +455,6 @@ def test_prepublication_vertical_acceptance_stays_offline_and_raw_only(
         acquisition_paths.run_staging_root(projection.run_id)
     )
     assert file_sha256(selected_path) == selected_digest
-    with sqlite3.connect(acquisition_paths.run_state_path(projection.run_id)) as db:
-        attempt_id = db.execute(
-            "SELECT attempt_id FROM attempts WHERE target_id = ? "
-            "AND attempt_kind = 'document_body' ORDER BY attempt_number LIMIT 1",
-            (planned_target_id,),
-        ).fetchone()[0]
-
     fixture_id = "s12-prepublication-acceptance"
     create_fixture(
         fixture_id,
@@ -669,20 +465,18 @@ def test_prepublication_vertical_acceptance_stays_offline_and_raw_only(
         ),
         paths=acquisition_paths,
     )
-    captured = capture_fixture_case(
+    captured = capture_fixture_run(
         fixture_id,
         projection.run_id,
-        planned_target_id,
-        attempt_id,
         paths=acquisition_paths,
-        max_response_bytes=100_000,
+        max_body_bytes=100_000,
     )
     fixture_case = get_fixture_case(
         acquisition_paths, fixture_id, captured.capture_id, planned_target_id
     )
     assert fixture_case.source_origin == "inventory_index"
-    assert fixture_case.response_sha256 == selected_digest
-    assert fixture_case.selected_sha256 == selected_digest
+    assert fixture_case.body_sha256 == selected_digest
+    assert fixture_case.byte_size == len(selected_body)
 
     assert acquisition_report.processing_complete
     assert acquisition_report.processing_success
@@ -759,10 +553,6 @@ def test_prepublication_vertical_acceptance_stays_offline_and_raw_only(
                 "generate",
                 "--fixture",
                 fixture_id,
-                "--capture-id",
-                captured.capture_id,
-                "--target-id",
-                planned_target_id,
                 "--output",
                 str(review_output_dir),
                 "--artifacts",
@@ -781,8 +571,13 @@ def test_prepublication_vertical_acceptance_stays_offline_and_raw_only(
     review_output = review_record["outputs"]["processing-review.json"]
     review_artifact = review_output_root / review_output["path"]
     assert review_record["status"] == "complete"
-    assert review_record["selected_sha256"] == selected_digest
+    assert review_record["body_sha256"] == selected_digest
     assert file_sha256(review_artifact) == review_output["sha256"]
+    review_payload = json.loads(review_artifact.read_text(encoding="utf-8"))
+    assert review_payload["artifact_version"] == 3
+    assert review_payload["fixture"]["body_sha256"] == selected_digest
+    assert "receipt" not in review_payload
+    assert "projection" not in review_payload
 
     assert not acquisition_paths.snapshots_root.exists()
     assert not list(acquisition_paths.snapshots_root.rglob("*.parquet"))

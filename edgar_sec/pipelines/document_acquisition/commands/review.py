@@ -10,6 +10,7 @@ from edgar_sec.infra.storage.review.diff import compare_review_runs
 from edgar_sec.infra.storage.review.paths import (
     ReviewPaths,
     new_diff_dir,
+    new_review_run_dir,
     review_runs_root,
 )
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
@@ -31,15 +32,19 @@ from edgar_sec.pipelines.document_acquisition.review_artifacts.holdout import (
 
 def cmd_review_artifacts(args: argparse.Namespace) -> int:
     paths = resolve_acquisition_paths(artifacts_root=args.artifacts_root or None)
+    output = (
+        Path(args.output)
+        if args.output
+        else new_review_run_dir(
+            review_runs_root(paths.artifacts_root, "document_acquisition")
+        )
+    )
     result = build_review_artifacts(
         args.fixture,
-        args.output,
+        output,
         paths=paths,
-        capture_id=args.capture_id,
-        target_id=args.target_id,
-        accessions=args.accessions,
         limit=args.limit,
-        workers=args.workers,
+        no_progress=args.no_progress,
     )
     summary = result.summary
     payload = {

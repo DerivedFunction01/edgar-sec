@@ -124,9 +124,15 @@ def _state(paths: AcquisitionPaths, run_id: str, target_id: str) -> TargetState:
 
 
 def get_staged_body_ref(
-    paths: AcquisitionPaths, run_id: str, target_id: str
+    paths: AcquisitionPaths,
+    run_id: str,
+    target_id: str,
+    *,
+    verify_source: bool = True,
 ) -> StagedBodyRef:
-    ref = get_staged_body_metadata_ref(paths, run_id, target_id)
+    ref = get_staged_body_metadata_ref(
+        paths, run_id, target_id, verify_source=verify_source
+    )
     selected_digest, selected_size = _hash_file(ref.path, "selected body")
     if (selected_digest, selected_size) != (ref.sha256, ref.byte_size):
         raise BodyHandoffError("selected body does not match committed identity")
@@ -143,7 +149,11 @@ def get_staged_body_ref(
 
 
 def get_staged_body_metadata_ref(
-    paths: AcquisitionPaths, run_id: str, target_id: str
+    paths: AcquisitionPaths,
+    run_id: str,
+    target_id: str,
+    *,
+    verify_source: bool = True,
 ) -> StagedBodyRef:
     state = _state(paths, run_id, target_id)
     if state.last_attempt_id is None:
@@ -189,7 +199,7 @@ def get_staged_body_metadata_ref(
         raise BodyHandoffError("selected body attempt identity is inconsistent")
 
     source_path = None
-    if state.source_body_relative_path is not None:
+    if verify_source and state.source_body_relative_path is not None:
         source_path = _verified_relative_path(
             paths, run_id, state.source_body_relative_path, "source response"
         )

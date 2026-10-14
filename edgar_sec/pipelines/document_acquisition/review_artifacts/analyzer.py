@@ -77,7 +77,7 @@ def _load_artifact(root: Path, record: dict[str, Any]) -> dict[str, Any]:
     artifact_version = artifact.get("artifact_version")
     if (
         artifact_type != "document_acquisition.processing_review"
-        or artifact_version not in {1, 2}
+        or artifact_version != 3
     ):
         raise ReviewAnalysisError("case artifact format is unsupported")
     digest = artifact.get("artifact_sha256")
@@ -101,6 +101,42 @@ def _load_artifact(root: Path, record: dict[str, Any]) -> dict[str, Any]:
         or artifact.get("run_id") != record.get("run_id")
     ):
         raise ReviewAnalysisError("case artifact identity differs from manifest")
+    processing = artifact.get("processing")
+    operation_outputs = (
+        processing.get("outputs") if isinstance(processing, dict) else None
+    )
+    if not isinstance(operation_outputs, dict):
+        raise ReviewAnalysisError("case parser output references are invalid")
+    case_root = artifact_path.parent.resolve()
+    for output_name, output_info in operation_outputs.items():
+        relative_output = PurePosixPath(output_name)
+        if (
+            not isinstance(output_name, str)
+            or relative_output.is_absolute()
+            or ".." in relative_output.parts
+            or "\\" in output_name
+            or len(relative_output.parts) != 2
+            or relative_output.parts[0] != "operations"
+            or not isinstance(output_info, dict)
+            or set(output_info) != {"sha256", "byte_size"}
+            or not is_sha256_hex_digest(output_info.get("sha256"))
+            or type(output_info.get("byte_size")) is not int
+            or output_info["byte_size"] < 0
+        ):
+            raise ReviewAnalysisError("case parser output reference is malformed")
+        output_path = case_root.joinpath(*relative_output.parts)
+        current = case_root
+        for part in relative_output.parts:
+            current = current / part
+            if current.is_symlink():
+                raise ReviewAnalysisError("parser output path contains a symlink")
+        if (
+            not output_path.is_file()
+            or not output_path.resolve().is_relative_to(case_root)
+            or output_path.stat().st_size != output_info["byte_size"]
+            or file_sha256(output_path) != output_info["sha256"]
+        ):
+            raise ReviewAnalysisError("parser output is missing or corrupt")
     return artifact
 
 

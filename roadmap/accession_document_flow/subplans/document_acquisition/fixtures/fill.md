@@ -2,74 +2,41 @@
 
 ## Purpose and status
 
-Retain exact S9 response evidence in a named, S6-plan-pinned fixture for offline review.
-The CLI and operator call the implemented `capture_fixture_case()` service. Persistence
-primitives atomically append immutable case metadata and optional streamed response
-bodies to the SQLite fixture.
+Copy every acquired selected body from one recorded S9 run into an immutable, plan-pinned parser fixture. Fill is local and does not require source-response retention or issue SEC requests.
 
 ## CLI and operator
 
 ```text
-acquisition fixture fill --fixture <id> --run-id <run-id> --target-id <id> --attempt-id <id> [--max-response-bytes <positive-int>]
+acquisition fixture fill --fixture <id> --run-id <run-id>
 ```
 
-The fixture must be pinned to the same validated published S6 plan as the recorded S9
-run. The four IDs identify the fixture and exact attempt; capture does not silently
-choose the latest retry. For bundle and lazy-index cases, acquisition must have been run
-with `--retain-response-evidence`; full response-group retention is opt-in and
-default-off. The response-byte cap must be positive. The console shows the fixture,
-plan, run, target, attempt, and cap, then requires default-no confirmation immediately
-before retaining local evidence. Declining performs no append. Capture makes no SEC
-request.
+The fixture must be pinned to the run's validated published S6 plan. The operator discovers compatible fixtures and runs, then fills the selected run in one operation. Target IDs, attempt IDs, response limits, and hashes are not operator inputs. The body-size ceiling comes from `acquisition.max_response_bytes`.
 
 ```python
-def capture_fixture_case(
+def capture_fixture_run(
     fixture_id: str,
     run_id: str,
-    target_id: str,
-    attempt_id: str,
     *,
     paths: AcquisitionPaths,
-    max_response_bytes: int,
-) -> FixtureCaptureResult: ...
+    max_body_bytes: int,
+) -> FixtureRunCaptureResult: ...
 ```
 
 ## Capture contract
 
-- Validate the named existing fixture, run manifest and work order, target membership,
-  exact attempt identity, attempt kind/source, and recorded outcome. The target must
-  occur exactly once in the work order and the attempt must belong to that target.
-- For a successful direct target, validate the body path as run-staging-contained,
-  non-symlink, regular, and consistent with recorded size and digest evidence. For an
-  ordinary direct target, the selected body must match the same recorded identity. A
-  lazy-resolution group instead validates the distinct selected response against its
-  recorded resolution and selected-body identity.
-- Successful direct bodies and bodyless failed attempts can be captured. Bundle and
-  `exact_form_with_lazy_index` cases can also be captured when acquisition retained the
-  complete response group: the source response, any index response, and any selected
-  response needed by the recorded resolution. Missing group members cause refusal; a
-  failure with any body identity/path is not treated as metadata-only.
-- Derive the immutable capture ID deterministically from run ID, target ID, and attempt
-  ID. Repeated identical evidence is idempotent; conflicting immutable records or body
-  evidence are refused. Capture refuses an attempt group superseded by a later target
-  attempt; it does not expose arbitrary historical groups.
-- Stream a retained response through Zstandard and atomically append its compressed
-  BLOB and case metadata. Verify source and stored sizes/digests before commit; the
-  positive response cap bounds uncompressed bytes.
-- Capture does not change the S9 attempt/outcome, remove run staging, or create an S10
-  receipt/handoff. Fixture evidence is distinct from the S11 payload store and does not
-  relax its representative-evidence and approval gate.
+- Validate the fixture plan pin, run manifest, work order, target state, and selected-body handoff before appending bytes.
+- Capture only acquired targets with a verified selected staged body. Non-executable and non-acquired targets are skipped; a missing, corrupt, or oversized selected body refuses the fill.
+- Store the selected document bytes and parser metadata only. Raw HTTP responses, index pages, bundle containers, failed attempts, and source-response groups stay in S9 run evidence.
+- Group all selected target bodies from the run under one deterministic capture identity. Repeated fill of the same run/body set is idempotent; changed bodies produce a distinct capture.
+- Stream each selected body through Zstandard into SQLite, deduplicate equal body digests, and append capture/case metadata transactionally. Refuse conflicts and leave existing fixture records unchanged.
+- Capture does not mutate S9 run state, delete selected staging files, create processing receipts, or publish S11 payloads.
 
 ## Deliberate gaps
 
-- **Processing remains separate**: fixture fill does not itself run S10 or create a
-  consumption receipt. The offline M7a review path composes processing separately; it
-  does not publish S11/M9 payloads. Historical corpus/family evaluation and distribution
-  remain separate or gated work.
+- **Historical attempts**: Fill captures the current acquired body for each target, not earlier retries or failed-attempt response data.
+- **Missing selected staging**: Fill cannot reconstruct a selected body after its S9 staging file is removed.
+- **Production use**: A parser fixture is diagnostic evidence, not production route-budget approval or publisher input.
 
 ## Tests
 
-Offline tests cover the fixture persistence primitives and capture orchestration,
-including deterministic identity, attempt/work-order validation, retained direct-body
-and response-group evidence, metadata-only failures, response limits, immutable
-conflicts, and refusals for incomplete or superseded evidence groups.
+Offline tests cover run-wide capture grouping, selected-body integrity without source-response retention, skipped targets, size refusal, immutable deduplication, and fixture-plan pinning.

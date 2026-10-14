@@ -17,11 +17,7 @@ def test_adapter_identity_and_fixture_discovery(tmp_path: Path, monkeypatch) -> 
     monkeypatch.setattr(
         "edgar_sec.pipelines.document_acquisition.review_artifacts.adapter.list_fixture_summaries",
         lambda _paths: iter(
-            (
-                FixtureSummary(
-                    "fixture-a", "plan-a", "a" * 64, 1, 2, 2, (("acquired", 2),)
-                ),
-            )
+            (FixtureSummary("fixture-a", "plan-a", "a" * 64, 1, 2, 2),)
         ),
     )
 
@@ -33,7 +29,6 @@ def test_adapter_identity_and_fixture_discovery(tmp_path: Path, monkeypatch) -> 
             "target_plan_schema_version": 1,
             "capture_count": 2,
             "case_count": 2,
-            "acquisition_status_counts": {"acquired": 2},
         }
     ]
 
@@ -50,19 +45,13 @@ def test_adapter_build_review_artifacts(tmp_path: Path, monkeypatch) -> None:
         "fixture-a",
         tmp_path / "review",
         limit=4,
-        workers=1,
-        accessions=("0000123456-12-000001",),
         artifacts_root=tmp_path,
-        capture_id="capture-a",
-        target_id="target-a",
         no_progress=True,
     )
 
     assert code == 0
     assert calls[0].fixture == "fixture-a"
-    assert calls[0].capture_id == "capture-a"
-    assert calls[0].target_id == "target-a"
-    assert calls[0].accessions == ["0000123456-12-000001"]
+    assert calls[0].limit == 4
     assert calls[0].no_progress
 
 

@@ -8,9 +8,11 @@ import sys
 import tempfile
 from dataclasses import asdict
 
+from tqdm.auto import tqdm
+
 from edgar_sec.pipelines.document_acquisition.commands.common import response_byte_limit
 from edgar_sec.pipelines.document_acquisition.fixture_store.capture import (
-    capture_fixture_case,
+    capture_fixture_run,
     create_fixture,
 )
 from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
@@ -72,16 +74,28 @@ def cmd_fixture_create(args: argparse.Namespace) -> int:
 
 def cmd_fixture_fill(args: argparse.Namespace) -> int:
     try:
-        max_response_bytes = response_byte_limit(args.max_response_bytes)
+        max_body_bytes = response_byte_limit(None)
         paths = resolve_acquisition_paths(artifacts_root=args.artifacts)
-        result = capture_fixture_case(
-            args.fixture,
-            args.run_id,
-            args.target_id,
-            args.attempt_id,
-            paths=paths,
-            max_response_bytes=max_response_bytes,
-        )
+        with tqdm(
+            total=None,
+            desc=f"Fixture {args.fixture}",
+            unit="target",
+            dynamic_ncols=True,
+            disable=args.no_progress,
+        ) as progress:
+
+            def update_progress(current: int, total: int) -> None:
+                if progress.total is None:
+                    progress.total = total
+                progress.update(1)
+
+            result = capture_fixture_run(
+                args.fixture,
+                args.run_id,
+                paths=paths,
+                max_body_bytes=max_body_bytes,
+                on_target=update_progress,
+            )
     except (
         KeyError,
         OSError,
@@ -95,15 +109,10 @@ def cmd_fixture_fill(args: argparse.Namespace) -> int:
     if args.json:
         print(json.dumps(payload, sort_keys=True))
     else:
-        body = (
-            f", response={result.response_sha256} ({result.source_byte_size} bytes)"
-            if result.response_sha256 is not None
-            else ", metadata only"
-        )
-        reused = ", reused response" if result.reused_response else ""
         print(
-            f"filled {result.fixture_id}/{result.capture_id}/{result.target_id}: "
-            f"{result.acquisition_status}{body}{reused}"
+            f"filled {result.fixture_id} from run {result.run_id}: "
+            f"{result.captured_cases} byte cases captured; "
+            f"{result.skipped_targets} targets skipped"
         )
     return 0
 
@@ -130,8 +139,6 @@ def cmd_fixture_list(args: argparse.Namespace) -> int:
         cases = list_fixture_cases(
             paths,
             fixture_id=args.fixture,
-            capture_id=args.capture_id,
-            target_id=args.target_id,
         )
         if args.json:
             with tempfile.TemporaryFile(mode="w+t", encoding="utf-8") as stream:
@@ -145,27 +152,18 @@ def cmd_fixture_list(args: argparse.Namespace) -> int:
         else:
             found_fixtures = False
             for item in fixtures:
-                status_counts = (
-                    ", ".join(
-                        f"{status}={count}"
-                        for status, count in item.acquisition_status_counts
-                    )
-                    or "no cases"
-                )
                 print(
                     f"fixture {item.fixture_id}: plan={item.target_plan_id} "
                     f"digest={item.target_plan_digest} "
                     f"schema={item.target_plan_schema_version}; "
-                    f"captures={item.capture_count}, cases={item.case_count}; "
-                    f"{status_counts}"
+                    f"captures={item.capture_count}, cases={item.case_count}"
                 )
                 found_fixtures = True
             found_cases = False
             for case in cases:
                 print(
-                    f"  {case.capture_id}/{case.target_id}: {case.acquisition_status}; "
-                    f"attempt={case.attempt_id}; response={case.response_sha256 or 'none'}; "
-                    f"selected={case.selected_sha256 or 'none'}"
+                    f"  {case.capture_id}/{case.target_id}: attempt={case.attempt_id}; "
+                    f"body={case.body_sha256} ({case.byte_size} bytes)"
                 )
                 found_cases = True
             if not found_fixtures:

@@ -8,11 +8,15 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.foundation.runtime.paths import resolve_paths
-from edgar_sec.infra.storage.review.adapter import ReviewArtifactAdapter
+from edgar_sec.infra.storage.review.adapter import ReviewAdapter
 from edgar_sec.infra.storage.review.diff import diff_json
 from edgar_sec.infra.storage.review.models import CaseDiff
 from edgar_sec.pipelines.document_acquisition.fixture_store.reader import (
     list_fixture_summaries,
+)
+from edgar_sec.pipelines.document_acquisition.commands.fixture import (
+    cmd_fixture_create,
+    cmd_fixture_fill,
 )
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 from edgar_sec.pipelines.document_acquisition.review_artifacts.builder import (
@@ -27,7 +31,7 @@ def _get_cli_dep(name: str, fallback: Any) -> Any:
     return fallback
 
 
-class AcquisitionReviewAdapter(ReviewArtifactAdapter):
+class AcquisitionReviewAdapter(ReviewAdapter):
     dataset_name = "document_acquisition"
 
     def list_fixtures(self, artifacts_root: Path | str) -> list[dict[str, Any]]:
@@ -43,10 +47,53 @@ class AcquisitionReviewAdapter(ReviewArtifactAdapter):
                 "target_plan_schema_version": item.target_plan_schema_version,
                 "capture_count": item.capture_count,
                 "case_count": item.case_count,
-                "acquisition_status_counts": dict(item.acquisition_status_counts),
             }
             for item in list_fixture_summaries(paths)
         ]
+
+    def create_fixture(
+        self,
+        fixture_id: str,
+        catalog_plan: str,
+        limit: int | None = None,
+        artifacts_root: Path | str = "",
+        json: bool = False,
+        no_progress: bool = False,
+    ) -> int:
+        if limit is not None:
+            raise ValueError(
+                "acquisition fixture creation includes the full target plan"
+            )
+        args = argparse.Namespace(
+            fixture=fixture_id,
+            plan_id=catalog_plan,
+            artifacts=str(artifacts_root),
+            json=json,
+            no_progress=no_progress,
+        )
+        command = _get_cli_dep("cmd_fixture_create", cmd_fixture_create)
+        return int(command(args))
+
+    def fill_fixture(
+        self,
+        fixture_id: str,
+        catalog_plan: str,
+        limit: int | None = None,
+        artifacts_root: Path | str = "",
+        json: bool = False,
+        no_progress: bool = False,
+    ) -> int:
+        if limit is not None:
+            raise ValueError("acquisition fixture fill includes the full recorded run")
+        args = argparse.Namespace(
+            fixture=fixture_id,
+            run_id=catalog_plan,
+            artifacts=str(artifacts_root),
+            json=json,
+            no_progress=no_progress,
+        )
+        command = _get_cli_dep("cmd_fixture_fill", cmd_fixture_fill)
+        return int(command(args))
 
     def build_review_artifacts(
         self,
@@ -56,19 +103,15 @@ class AcquisitionReviewAdapter(ReviewArtifactAdapter):
         workers: int | None = None,
         accessions: Sequence[str] | None = None,
         artifacts_root: Path | str = "",
-        capture_id: str | None = None,
-        target_id: str | None = None,
         json_output: bool = False,
         no_progress: bool = False,
     ) -> int:
+        if workers is not None or accessions:
+            raise ValueError("acquisition review parses all fixture cases serially")
         args = argparse.Namespace(
             fixture=fixture_id,
             output=str(output_dir),
             limit=limit,
-            workers=workers,
-            accessions=list(accessions) if accessions else None,
-            capture_id=capture_id,
-            target_id=target_id,
             artifacts_root=str(artifacts_root),
             json=json_output,
             no_progress=no_progress,

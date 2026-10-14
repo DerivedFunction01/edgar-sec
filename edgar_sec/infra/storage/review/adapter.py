@@ -26,8 +26,6 @@ class ReviewArtifactAdapter(Protocol):
         workers: int | None = None,
         accessions: Sequence[str] | None = None,
         artifacts_root: Path | str = "",
-        capture_id: str | None = None,
-        target_id: str | None = None,
         json_output: bool = False,
         no_progress: bool = False,
     ) -> int:

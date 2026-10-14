@@ -44,17 +44,17 @@ and production evidence are separate axes:
   are established.
 - [x] **M1 — S9 contracts/configuration:** paths, schemas, models, work-order
   contracts, and the finite `acquisition.max_response_bytes` setting are registered;
-  run and fixture capture accept CLI overrides above environment/config/defaults.
+  run and fixture body capture use the shared setting.
 - [x] **M2A — SEC streaming:** file-backed HTTP and body-free broker streaming are
   implemented and tested.
 - [x] **M2B — SGML extraction:** bounded exact-sequence extraction is implemented and
   tested.
 - [x] **M2C — Projection/run state:** validated work-order projection, append-only
   attempts, target state, and locking are implemented.
-- [x] **M2D — Fixture substrate:** compressed append-only storage, validated read-only
-  discovery, direct/bodyless-failure capture, retained bundle/lazy-index response-group
-  capture, and verified local replay are implemented. Raw response evidence retention
-  is opt-in and defaults off; bundle/lazy-index capture requires it.
+- [x] **M2D — Fixture substrate:** schema v2 stores deduplicated selected parser bodies
+  in run-scoped captures. Fill discovers all acquired selected staged bodies; it does not
+  require raw-response retention. The v1 response-group format is rejected without
+  migration or a compatibility reader.
 - [x] **M2E — Trace opt-out:** S10's `capture_stage_trace=False` normalizer option is
    implemented.
 - [~] **M3 — Acquisition runner:** direct and bundle acquisition, multi-request
@@ -63,14 +63,12 @@ and production evidence are separate axes:
   runner refuses that branch without them. Other selectors do not screen the submitted
   primary. Family-aware HTML evaluation and reviewed triggers remain deferred.
 - [x] **M4 — Fixture/interactive surfaces:** CLI `project`, `status`, `run`, fixture
-  `create`, `fill`, `list`, and review `generate`, `compare`, and `analyze` are wired
-  through the stage CLI/operator. Live acquisition and local evidence fill have separate
-  confirmations. There is no user-facing raw-body replay/export action; review generation
-  verifies fixture bodies internally. Bundle/lazy response groups require opt-in
-  `--retain-response-evidence` during acquisition.
-- [x] **M5 — Offline S9 acceptance:** a pinned-plan fixture replay commits run state;
-  status inspects it, and a fake consumer verifies the selected-body reference and
-  immutable receipt. Runner cleanup retains the body; receipts do not authorize cleanup.
+  `create`, run-level `fill`, `list`, and review `generate`, `compare`, and `analyze` are
+  wired through the shared paginated review menu. Plan switching is `s`; local fill has
+  no target/attempt/hash prompts or consent confirmation.
+- [x] **M5 — Offline S9 parser acceptance:** a pinned-plan acquisition fills a fixture
+  from selected staged bytes and generates parser artifacts without network calls or
+  source-run processing results.
 - [~] **M6 — S10 processing:** S6 v4 operation intent and S9 work-order v3 resolution are
   persisted and consumed by `acquisition run`, which processes acquired targets inline
   under the run lock. The per-target service and route/handler seams are wired and can be
@@ -79,9 +77,10 @@ and production evidence are separate axes:
   the production route/handler budget registry is empty, so derived normalization fails
   closed. Registering a route for production requires representative, provenance-pinned
   S9/S10 cases and measured input, output, and working-set envelopes for that route; the
-  evidence gate is per route/handler, not a reason to delay offline route wiring. Form 4
-  XML still needs an output contract and handler, and family-specific lazy-index triggers
-  and durable source/representation relations remain separate implementation/contracts.
+   evidence gate is per route/handler, not a reason to delay offline route wiring. Form 4
+   XML parsing is exercised by offline fixture review; production routing still requires
+   representative budgets. Family-specific lazy-index triggers and durable
+   source/representation relations remain separate implementation/contracts.
   Malformed XML remains raw-only when no exporter is registered, with focused refusal
   coverage.
 - [x] **M7a — Offline S9/S10 composition:** captured direct-TEXT fixture replay,

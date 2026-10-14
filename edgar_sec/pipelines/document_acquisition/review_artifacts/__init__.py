@@ -1,1 +1,1 @@
-"""Offline review artifacts for acquisition fixtures and processing results."""
+"""Offline parser review artifacts generated from acquisition fixtures."""

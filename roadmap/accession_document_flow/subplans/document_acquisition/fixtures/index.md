@@ -2,64 +2,40 @@
 
 ## Purpose and status
 
-Retain exact S9 acquisition evidence for offline review. New fixtures pin one validated,
-published S6 target plan by stable ID, schema version, and digest. There are no
-pre-existing acquisition fixtures on disk; the rewritten store has no migration, old
-schema reader, alias, or dual-version path. Direct responses and bodyless failed
-attempts can be captured; bundle and lazy-index response groups require evidence retained
-during acquisition with `--retain-response-evidence`.
+Capture selected S9 parser-input bodies for offline review. New schema v2 fixtures pin one validated published S6 target plan by ID, schema version, and digest. Schema v1 response-group fixtures are rejected; no migration, old-schema reader, alias, or dual-version path exists.
 
 ## CLI and operator shape
 
 ```text
 acquisition fixture create --fixture <id> --plan-id <published-s6-plan-id>
-acquisition fixture fill --fixture <id> --run-id <run-id> --target-id <id> --attempt-id <id> [--max-response-bytes <positive-int>]
-acquisition fixture list [--fixture <id>] [--capture-id <id>] [--target-id <id>]
-acquisition review generate --fixture <id> [--capture-id <id>] [--target-id <id>]
+acquisition fixture fill --fixture <id> --run-id <run-id>
+acquisition fixture list [--fixture <id>]
+acquisition review generate --fixture <id> [--output <review-dir>]
 acquisition review compare --base <review-dir> --new <review-dir>
 acquisition review analyze --run <review-dir> [--output <analysis-path>]
 ```
 
-The interactive fixture/review console selects a validated published S6 plan, keeps it
-active for the session, and supports switching plans. Create uses that active plan. Fill
-selects a fixture pinned to the active plan, requires exact run/target/attempt IDs, shows
-the byte cap and evidence identity, and asks default-no consent only before retaining
-local evidence. Fill validates that the recorded S9 run uses the same plan and current
-attempt. Listing is deterministic, read-only, and reports plan pins, capture/case counts,
-and case acquisition statuses. No replay/export command or menu action is provided.
+The shared inventory-style review console supports fixture create, run fill, list,
+parser-review generation, compare, analyze, and `s` to switch the active S6 plan. Fixture
+and run choices are discovered and paginated. Fill captures all acquired selected staged
+bodies from the selected run; the operator never enters target, attempt, capture, or body
+digest values. Listing is deterministic and read-only.
 
 ## Capture contract
 
-- Capture requires a positive response-byte cap and validates the fixture pin, run
-  manifest/work order, target membership, exact recorded attempt, attempt kind/source,
-  and recorded body evidence. It makes no SEC request.
-- A successful direct-body attempt is captured from its verified retained response. A
-  bodyless failed attempt is captured as metadata only. Bundle and lazy-index cases are
-  captured only when the run retained every required response group member.
-- Capture IDs are deterministic from run, target, and attempt identity. Capture and case
-  records are immutable; conflicting evidence is refused.
-- Response bodies are streamed into Zstandard-compressed SQLite BLOBs and verified
-  before the atomic append. The configured cap applies to uncompressed response bytes.
-- Capture accepts only the current unsuperseded attempt group; it is not a historical
-  attempt selection API.
+- Fill validates the fixture pin, run manifest/work order, acquired target state, and selected-body handoff. It makes no SEC request and does not require raw response-evidence retention.
+- Only acquired targets with verified selected staged bodies are captured. Non-executable and non-acquired targets are skipped; missing, corrupt, or oversized staged bodies refuse the fill.
+- Fixtures contain selected document bytes and parsing metadata, not raw HTTP responses, lazy-index pages, bundle containers, or failed attempts.
+- One deterministic capture groups the selected bodies from a run. Capture and case records are immutable; repeated fill is idempotent for the same run/body set.
+- Body BLOBs are streamed into Zstandard-compressed SQLite storage and verified before atomic append. The configured body-size cap is shared with acquisition settings.
 
 ## Listing and internal body verification
 
-Listing opens fixtures read-only and performs SQLite integrity and foreign-key checks.
-It does not decompress or hash response BLOBs. Review generation alone uses internal
-body verification/materialization in temporary storage; it does not export fixture bytes
-to a user-selected path or mutate fixture evidence.
+Listing opens fixtures read-only and performs SQLite integrity and foreign-key checks. It does not decompress or hash body BLOBs. Parser review verifies and materializes each selected body internally; it does not export fixture bytes or mutate fixture evidence.
 
 ## Review console
 
-Review generation verifies the fixture-selected body and its acquisition run/pinned work
-order, then processes the run's staged body using the pinned operations. It remains
-offline and requires the source run and staged body to remain available. A review run
-contains a `manifest.jsonl` and per-case `processing-review.json` artifacts. Comparison
-validates both review runs before computing the shared case-level diff. Offline analysis
-validates manifests and output digests, reports fixture-verification and processing
-outcomes with deterministic per-run aggregates, and never accesses fixture BLOBs.
-Analysis writes a separate report only when `--output` is supplied.
+Review generation invokes current acquisition-engine parser handlers on verified fixture bytes. It does not need the source run's processing results, receipts, or work order and remains offline. A review run contains a `manifest.jsonl`, per-case `processing-review.json` artifacts, and parser outputs. Comparison validates both review runs before computing the shared case-level diff. Offline analysis validates manifests and output digests, reports parser statuses and handler results, and never accesses fixture BLOBs. Analysis writes a separate report only when `--output` is supplied.
 
 ## Detailed contracts
 

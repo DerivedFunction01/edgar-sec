@@ -23,12 +23,6 @@ def test_parser_registers_acquisition_tracks() -> None:
             "f-1",
             "--run-id",
             "run-1",
-            "--target-id",
-            "target-1",
-            "--attempt-id",
-            "attempt-1",
-            "--max-response-bytes",
-            "1024",
         ],
         ["fixture", "create", "--fixture", "f-1", "--plan-id", "plan-1"],
         [
@@ -36,10 +30,6 @@ def test_parser_registers_acquisition_tracks() -> None:
             "list",
             "--fixture",
             "f-1",
-            "--capture-id",
-            "cap-1",
-            "--target-id",
-            "target-1",
         ],
         ["review", "generate", "--fixture", "f-1"],
         ["review", "compare", "--base", "left", "--new", "right"],
@@ -90,27 +80,19 @@ def test_process_is_not_a_cli_alias_and_run_owns_retry_options() -> None:
         parser.parse_args(["run", "--run-id", "run-1", "--workers", "0"])
 
 
-def test_response_ceiling_options_are_optional_but_positive_when_supplied() -> None:
+def test_run_response_ceiling_is_optional_but_positive_when_supplied() -> None:
     parsed_run = cli.build_parser().parse_args(["run", "--run-id", "run-1"])
     assert parsed_run.max_response_bytes is None
     assert not parsed_run.retain_response_evidence
-    parsed_capture = cli.build_parser().parse_args(
-        [
-            "fixture",
-            "fill",
-            "--fixture",
-            "f-1",
-            "--run-id",
-            "run-1",
-            "--target-id",
-            "target-1",
-            "--attempt-id",
-            "attempt-1",
-        ]
-    )
-    assert parsed_capture.max_response_bytes is None
+    with pytest.raises(SystemExit):
+        cli.build_parser().parse_args(
+            ["run", "--run-id", "run-1", "--max-response-bytes", "0"]
+        )
+
+
+def test_fixture_commands_reject_manual_hash_filters() -> None:
+    parser = cli.build_parser()
     for args in (
-        ["run", "--run-id", "run-1", "--max-response-bytes", "0"],
         [
             "fixture",
             "fill",
@@ -119,15 +101,24 @@ def test_response_ceiling_options_are_optional_but_positive_when_supplied() -> N
             "--run-id",
             "run-1",
             "--target-id",
-            "target-1",
-            "--attempt-id",
-            "attempt-1",
-            "--max-response-bytes",
-            "0",
+            "t-1",
         ],
+        [
+            "fixture",
+            "fill",
+            "--fixture",
+            "f-1",
+            "--run-id",
+            "run-1",
+            "--attempt-id",
+            "a-1",
+        ],
+        ["fixture", "list", "--capture-id", "c-1"],
+        ["review", "generate", "--fixture", "f-1", "--target-id", "t-1"],
+        ["review", "generate", "--fixture", "f-1", "--capture-id", "c-1"],
     ):
         with pytest.raises(SystemExit):
-            cli.build_parser().parse_args(args)
+            parser.parse_args(args)
 
 
 def test_publish_cli_reports_missing_manifest_when_run_does_not_exist(
@@ -168,10 +159,6 @@ def test_review_generate_and_snapshot_have_separate_handlers(
             "generate",
             "--fixture",
             "fixture-1",
-            "--capture-id",
-            "capture-1",
-            "--target-id",
-            "target-1",
             "--output",
             str(tmp_path / "review"),
             "--artifacts",
@@ -186,8 +173,6 @@ def test_review_generate_and_snapshot_have_separate_handlers(
 
     assert review_result == 0
     assert calls[0].fixture == "fixture-1"
-    assert calls[0].capture_id == "capture-1"
-    assert calls[0].target_id == "target-1"
     assert calls[0].output == str(tmp_path / "review")
     assert calls[0].json
     assert snapshot_result == 0

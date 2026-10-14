@@ -87,7 +87,7 @@ The package should remain split by contract rather than by command spelling alon
 | `runner.py` | Lock one run, acquire eligible targets, process acquired targets, and preserve both outcomes before releasing the lock. |
 | `distribution_adapter.py` | Adapt acquisition work and outputs to shared distribution infrastructure. |
 | `snapshot/` | **Gated** acquisition-owned binary/text Parquet relations and publication over the shared DAG kernel; no S11 adapter exists yet. |
-| `fixture_store/` and `operator.py` | Store plan-pinned Zstandard response evidence; wire exact-attempt fill, deterministic listing, internal body verification, and fixture/review actions. No public replay/export action or legacy reader exists. |
+| `fixture_store/` and `operator.py` | Store plan-pinned Zstandard parser bodies from whole-run fill; wire deterministic discovery, internal body verification, and the shared fixture/review menu. Schema v1 response-group fixtures are refused without migration. |
 | `processing/` | S10 worker, IO, models, per-target result persistence, and integrated run coordination with family-operation validation, raw/TEXT routes, and receipt recording. |
 | `project/models.py` | Streamed terminal processing result projection models used by review. |
 | `review_artifacts/` | Verify fixture bodies, reuse the source run's S10 result, and write/compare/analyze offline review runs in the shared manifest/case layout. |

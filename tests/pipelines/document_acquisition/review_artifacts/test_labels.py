@@ -16,12 +16,12 @@ from edgar_sec.pipelines.document_acquisition.review_artifacts.labels import (
 def _review_artifact() -> dict[str, object]:
     artifact: dict[str, object] = {
         "artifact_type": "document_acquisition.processing_review",
-        "artifact_version": 2,
+        "artifact_version": 3,
         "fixture": {
             "fixture_id": "fixture_exhibit",
             "capture_id": "capture_exhibit",
             "target_id": "target_exhibit",
-            "selected_sha256": "a" * 64,
+            "body_sha256": "a" * 64,
         },
         "run_id": "run_exhibit",
         "target_id": "target_exhibit",
@@ -30,6 +30,7 @@ def _review_artifact() -> dict[str, object]:
         "target_role": "exhibit",
         "target_type": "EX-3.1",
         "processing": {
+            "outputs": {},
             "exhibit_assessment": {
                 "expected_role": "exhibit",
                 "expected_type": "EX-3.1",
