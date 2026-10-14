@@ -210,10 +210,15 @@ class DomainTaxonomy:
 
     def industry_profile(self, firm_id: str) -> IndustryProfile | None:
         """Lookup an industry profile by firm identifier."""
+        target = firm_id.upper()
         for prof in self.industry_profiles:
-            if prof.firm_id == firm_id:
+            if prof.firm_id.upper() == target:
                 return prof
         return None
+
+    def find_industry(self, firm_id: str) -> IndustryProfile | None:
+        """Lookup an industry profile by ticker or firm identifier."""
+        return self.industry_profile(firm_id)
 
 
 @dataclass(frozen=True, slots=True)

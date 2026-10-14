@@ -61,6 +61,16 @@ def _resolve_ticker_to_cik(
         except Exception:
             pass
 
+    try:
+        from edgar_sec.engine.xbrl.domain import load_domain_taxonomy
+
+        tax = load_domain_taxonomy()
+        ind = tax.find_industry(ticker)
+        if ind is not None:
+            return int(ind.cik)
+    except Exception:
+        pass
+
     return _warm_and_resolve_cohort_ticker(ticker, artifacts_root)
 
 
@@ -69,6 +79,7 @@ def _warm_and_resolve_cohort_ticker(
     artifacts_root: Path | None,
 ) -> int | None:
     """Resolve ticker against official tickers cohort, warming if missing."""
+    from edgar_sec.foundation.runtime.paths import resolve_paths
     from edgar_sec.infra.storage.cohort.catalog import (
         CohortCatalog,
         CohortIdentifierError,
@@ -76,8 +87,13 @@ def _warm_and_resolve_cohort_ticker(
     from edgar_sec.infra.storage.cohort.paths import CohortPaths
     from edgar_sec.pipelines.cohort.sources import refresh_official_source
 
-    paths = CohortPaths(artifacts_root)
-    catalog = CohortCatalog(paths.catalog_path)
+    root = (
+        artifacts_root if artifacts_root is not None else resolve_paths().artifacts_root
+    )
+    paths = CohortPaths(root)
+    if artifacts_root is None and not paths.catalog_file.is_file():
+        return None
+    catalog = CohortCatalog(paths)
     try:
         record = catalog.resolve_cohort_identifier("tickers")
     except CohortIdentifierError:
