@@ -56,6 +56,10 @@ class SubatomicModifier:
     keywords: tuple[str, ...]
     description: str
 
+    @property
+    def pattern_keywords(self) -> tuple[str, ...]:
+        return self.keywords
+
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> SubatomicModifier:
         """Create a SubatomicModifier from raw dictionary mapping."""
@@ -128,9 +132,17 @@ class GeoHierarchyEdge:
 
     child_geo_node: str
     parent_geo_node: str
-    decomposition_scheme: str
-    relation_type: str
-    notes: str
+    decomposition_scheme: str = "PART_WHOLE"
+    relation_type: str = "MERONYM"
+    notes: str = ""
+
+    @property
+    def child_qname(self) -> str:
+        return self.child_geo_node
+
+    @property
+    def parent_qname(self) -> str:
+        return self.parent_geo_node
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> GeoHierarchyEdge:
@@ -138,8 +150,8 @@ class GeoHierarchyEdge:
         return cls(
             child_geo_node=str(data["child_geo_node"]),
             parent_geo_node=str(data["parent_geo_node"]),
-            decomposition_scheme=str(data["decomposition_scheme"]),
-            relation_type=str(data["relation_type"]),
+            decomposition_scheme=str(data.get("decomposition_scheme", "PART_WHOLE")),
+            relation_type=str(data.get("relation_type", "MERONYM")),
             notes=str(data.get("notes", "")),
         )
 
@@ -211,6 +223,11 @@ class SemanticConceptFrame:
     qname: str
     prime_head: str
     modifiers: tuple[str, ...] = ()
+    recognition_book: str = "B_INCOME_STATEMENT"
+    flow_stock: str = "FLOW"
+    timing_horizon: str = "DURATION_PERIOD"
+    valuation_basis: str = "HISTORICAL_AMORTIZED_COST"
+    realization_state: str = "REALIZED_P_L"
     polarity: str = "NEUTRAL"
     expected_weight: int = 1
 
@@ -265,8 +282,12 @@ def _find_taxonomy_file(directory: Path, base_name: str) -> Path:
     raise FileNotFoundError(f"missing taxonomy file for {base_name} in {directory}")
 
 
-def load_domain_taxonomy(taxonomy_dir: Path) -> DomainTaxonomy:
+def load_domain_taxonomy(taxonomy_dir: Path | None = None) -> DomainTaxonomy:
     """Load full domain taxonomy from directory of JSON or CSV files."""
+    if taxonomy_dir is None:
+        from edgar_sec.engine.xbrl.paths import default_taxonomy_dir
+
+        taxonomy_dir = default_taxonomy_dir()
     heads_path = _find_taxonomy_file(taxonomy_dir, "prime_heads")
     mods_path = _find_taxonomy_file(taxonomy_dir, "subatomic_modifiers")
     rels_path = _find_taxonomy_file(taxonomy_dir, "typed_relations")

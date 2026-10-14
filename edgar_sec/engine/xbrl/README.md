@@ -14,10 +14,10 @@ By decomposing taxonomy linkbases into explicit typed relational structures and 
 - **Pure Transform Invariant**: `classify_linkbase_entry` and `extract_filing_linkbases` are pure transformations over parsed index pages and perform zero I/O or network requests.
 - **Layer Boundary Enforcement**: All modules import downward only into `infra`, `domain`, and `foundation`; no imports from `pipelines`, `apps`, or `tools` are permitted.
 - **Atomic Parquet Persistence**: Linkbase tables are written via `infra.storage.parquet.write_parquet_table` using `zstd` compression and governed row group sizes without pipeline-local overrides.
+- **Streaming XML Parsing**: Calculation, presentation, label, and instance XML documents are parsed in bounded memory with defensive entity handling.
 
 ## Deliberate gaps
 
-- **Linkbase XML Graph Parsing**: XML arc traversal and cycle detection are handled in downstream stages; this package owns file classification, network resolution, and tabular indexing.
 - **Dynamic Taxonomy Resolution**: Fetching remote external taxonomies (such as FASB or IFRS standard schemas) is deferred to the taxonomy cache manager.
 
 ## Artifact layout

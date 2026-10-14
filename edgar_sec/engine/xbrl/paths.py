@@ -120,3 +120,8 @@ def resolve_xbrl_paths(
             uploads_root=project.uploads_root,
         )
     return XbrlPaths(project)
+
+
+def default_taxonomy_dir(repo_root: Path | str | None = None) -> Path:
+    """Return default directory housing built-in domain taxonomy files."""
+    return resolve_xbrl_paths(repo_root=repo_root).default_taxonomy_dir

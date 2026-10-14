@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
+from edgar_sec.engine.xbrl.paths import default_taxonomy_dir, resolve_xbrl_paths
 
 
 def test_resolve_xbrl_paths(tmp_path: Path) -> None:
@@ -27,3 +27,4 @@ def test_resolve_xbrl_paths(tmp_path: Path) -> None:
     paths.ensure_directories()
     assert paths.linkbases_dir.exists()
     assert paths.xml_cache_dir.exists()
+    assert default_taxonomy_dir().name == "taxonomy"
