@@ -4,8 +4,11 @@
 
 This is a provisional S10 diagnostic design, not an enabled classifier. Declarative
 authority profiles and exhibit packs now exist under
-[`edgar_sec/domain/forms/exhibits/`](../../../edgar_sec/domain/forms/exhibits/); they are
-source-backed candidate data, not an evaluator or measured classifier. This design uses
+[`edgar_sec/domain/forms/exhibits/`](../../../edgar_sec/domain/forms/exhibits/). A bounded
+opening-view evaluator is wired as a separate, non-authoritative `ProcessingResult`
+assessment for eligible planned exhibits; result/review artifacts pin its versions and
+diagnostic fingerprint. It has only synthetic plumbing coverage and no measured
+classifier behavior. This design uses
 [`uploads/research/exhibits-classification.md`](../../../uploads/research/exhibits-classification.md) as
 research input and the current form evidence-pack APIs as implementation precedent.
 Neither the declarations nor the examples establish precision, recall, or production
@@ -24,9 +27,10 @@ questions. It is not yet a labeled corpus:
   example, the EX-106 examples at the sketch's lines 1452–1455 link to `-index.htm`.
 - No independent human labels, negative set, issuer/time-separated holdout, or
   measured false-positive/false-negative rates are present. The sketch's coverage and
-  frequency descriptions are not calibrated prevalence estimates. A holdout cannot be
-  reviewed reproducibly until acquisition fixtures are wired to S10 and the S7d
-  acquisition/processing review-artifact CLI exists.
+  frequency descriptions are not calibrated prevalence estimates. Review artifacts can
+  carry an assessment and `review label` stores immutable body/review/version-pinned
+  annotations. The holdout command reports raw per-form/family counts from an explicit
+  issuer/time partition; no representative corpus or acceptance threshold is available.
 - Suggested regex snippets are hypotheses, not executable rules. At least one sample
   needs syntax validation before it can be treated as code. Rules must use the
   repository regex builder where applicable and be tested against positive and
@@ -42,12 +46,13 @@ or parsed at runtime.
 
 ## Question and boundary
 
-D0 contracts S9 suspicion and S10 assessment as separate, non-sharing interfaces.
-The current S9 (`exact_form_with_lazy_index`) selector decides whether to fetch
-`-index.html`. The requested next S9 policy uses per-family rendered-text triggers for
-families with reviewed trigger evidence; Form 4 has no trigger. S10 diagnoses the already-
-selected body against pinned S6 intent. S10 output and diagnostic findings do not feed
-back into S9 selection, and the contracts do not share scan results or dataclasses.
+D0 contracts S9 suspicion and S10 assessment as separate, non-sharing interfaces. Current
+S6 projections do not pin family-trigger IDs/versions, so the retained
+`exact_form_with_lazy_index` field does not authorize an S9 `-index.html` request. A future
+S9 policy may use per-family rendered-text triggers with reviewed evidence; Form 4 has no
+trigger. S10 diagnoses the already-selected body against pinned S6 intent. S10 output and
+diagnostic findings do not feed back into S9 selection, and the contracts do not share
+scan results or dataclasses.
 
 Assess the body S9 already selected: does its visible content look consistent with the
 S6-planned role, or does it contain evidence that it may itself be an exhibit rather
@@ -73,10 +78,19 @@ The evaluator is post-selection and read-only:
   remains provenance under the S9 contract; a body-level equality guarantee would
   require a versioned S6 target-plan field.
 
-The private development target is a fixture-backed, offline, diagnostic-only evaluator
-and review loop. It may be built and tested before a representative holdout exists. Such
-work does not make the evaluator publicly production-ready or authorize family
-activation. No legacy evaluator runtime is its owner.
+The private development target is an offline, diagnostic-only evaluator and review loop.
+Assessment transport, immutable labels, and raw holdout counts are wired. Current tests
+are synthetic; representative fixture evidence, near-duplicate review, acceptance
+criteria, and family activation remain open. No legacy evaluator runtime is its owner.
+
+Label scope is whether the selected body matches its pinned planned exhibit identity:
+positive confirms a match, negative rejects it, and ambiguous records an unresolvable
+review. Holdout consensus requires two independent matching labels or a separate
+adjudication that pins all conflicting labels; source annotations remain immutable.
+Partition specs pin the accession century, training cutoff, holdout year window, and
+issuer roster. The report rejects reused selected-body digests and reports raw counts;
+near-duplicate review is explicitly not performed.
+
 The old `EvaluatorDecision` action SPI, `REFETCH_SUB_DOC`, and `SKIP_HARD_STUB` runtime
 support are removed. External EX-13 research evidence may remain as provenance, but it
 does not authorize acquisition or target disposition.
@@ -193,16 +207,17 @@ diagnostic and assessment to S10 metadata; it does not change normalization or
 processing status. `ProcessingResult.processor_fingerprint` includes evaluator,
 evidence-pack, and taxonomy versions whenever assessment is enabled.
 
-Candidate owner, pending corpus review: a leaf module under `engine.document` for
-scoring plus a small domain-owned taxonomy contract only after stable IDs and aliases
-are confirmed. The engine evaluator accepts primitive context/text values and imports
-no S9 pipeline models.
+The opening-view prototype lives beside the exhibit-header probe in
+`engine/forms/plugins/exhibit_selection.py`. It accepts text and pinned context without
+importing S9 pipeline models. Its integration seam, TOC provenance, and broader taxonomy
+remain unsettled.
 
 ## Development sequence and activation gate
 
-1. Wire local S9 fixture reads to the S10 result boundary and S7d acquisition/processing
-   review artifacts. Pin exact response bytes and generated outputs by digest. This is
-   offline development work and does not wait for the M3 live runner or M4 operator.
+1. Use the existing S9 fixture and S7d review generate/compare/analyze path; do not add a
+   second fixture-to-review pipeline. When a role evaluator is implemented, add its
+   versioned assessment and labels to the existing pinned review artifact contract. This
+   is offline development work and does not wait for live retrieval.
 2. Verify supported exhibit-code lists and legal citations against dated SEC/CFR sources;
    record aliases and changes rather than inferring them from filenames.
 3. Capture exact selected source bytes into the S9 fixture format. Label target role,

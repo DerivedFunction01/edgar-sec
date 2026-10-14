@@ -6,10 +6,10 @@
 - Frontloaded fixture CLI: [S7a](S7a_inventory_cli.md). Parser review loop:
   [S7b](S7b_parser_review_bootstrap.md).
 - Status: S7a fixture create/fill/list and S7b parser review artifact generation are
-  implemented. S7c target-plan/snapshot review remains downstream work. S7d now uses the
-  shared `review generate`/`review compare` console and manifest/case layout for captured
-  S9 cases and transient S10 results. Acquisition review generation is limited to
-  retained-run cases and the current raw/TEXT processing boundary.
+  implemented. S7c plan comparison and pinned snapshot inspection are implemented.
+  S7d acquisition fixture review generate/compare/analyze is wired for retained-run
+  cases and the current raw/TEXT processing boundary. It does not implement S10 role
+  assessment, human labels, or the exhibit holdout loop.
 - S7a depends on S1/S2 and `filing_catalog` plan loading. S7b depends on S7a, S2, and
   the S3 type contract. Later S7 surfaces depend on S5/S6 and (for processing review)
   S9/S10.
@@ -75,11 +75,11 @@ artifacts. Do not build the interactive wizard here.
 - **S7c — snapshot inspect**: Reads a pinned published snapshot only, reporting its annual
   partition layout, part manifest, and counts grouped by form and filing year.
 
-- **S7d — acquisition/processing review**: Renders selected S9/S10 cases and compares
-  processing outcomes against pinned fixture and processor fingerprints. It does not
-  affect S7b's parser-development dependency. This review route is not implemented and
-  is required to make S10 exhibit holdout review reproducible; its development can use
-  local fixtures without waiting for the live S9 runner.
+- **S7d — acquisition/processing review**: Generates, compares, and analyzes selected
+  retained S9/S10 cases against pinned fixture and processor fingerprints. It does not
+  affect S7b's parser-development dependency. The route is implemented for the limited
+  raw/TEXT slice; exhibit labels, role-evaluator identity, and holdout assessment remain
+  unimplemented. Local fixture review does not require a live request during review.
 
 S7b reviews the implemented `engine.index_pages.parser.parse_html_index` against pinned
 fixture bytes: it emits the inert source preview and records typed parser outcomes
@@ -100,18 +100,15 @@ verified as implemented. Parser iteration remains owned by S3.
   target-plan-diff.json
 {artifacts_root}/document_acquisition/review-runs/{review_id}/
   manifest.jsonl
-  cases/{target_id}/source.inert.html
-  cases/{target_id}/representation.txt
-  cases/{target_id}/processing.json
+  cases/{target_id}/processing-review.json
 ```
 
 Each `manifest.jsonl` row pins fixture ID, source URL/digest, accession or target ID,
 source snapshot/catalog/plan IDs when applicable, parser/processor fingerprint, result
 status, and digests for generated review files.
 
-S10 processing-review artifacts will be owned and rooted by
-`document_acquisition.paths` when that package is implemented; `document_processing` is
-not a package or dataset name.
+S10 processing-review artifacts are owned and rooted by `document_acquisition.paths`;
+`document_processing` is not a package or dataset name.
 
 ## Command contracts
 
@@ -123,10 +120,10 @@ not a package or dataset name.
 
 ## CLI routes
 
-Implemented fixture and parser review routes use the shared inventory CLI. The current
-command shape is `inventory fixture ...` and `inventory review generate|compare`; these
-routes do not provide acquisition/processing review. Later S7 routes remain dependent on
-their source artifacts:
+Inventory fixture and parser-review routes use the inventory CLI; acquisition fixture
+and processing-review routes use the acquisition CLI. Both are reachable through their
+stage entry in `run.py`. Plan comparison uses `planning compare`; pinned snapshot
+inspection uses the inventory `inspect` command. The current inventory command shape is:
 
 ```text
 inventory fixture create --fixture <id> --catalog-plan <id>
@@ -134,7 +131,11 @@ inventory fixture fill --fixture <id> --catalog-plan <id>
 inventory fixture list
 inventory review generate --fixture <id> [--output <dir>]
 inventory review compare --base <dir> --new <dir>
+inventory review analyze ...
 inventory inspect --snapshot <id|current> [--accession <accession>]
+planning compare ...
+acquisition fixture create|fill|list ...
+acquisition review generate|compare|analyze ...
 ```
 
 ## Tests

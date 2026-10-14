@@ -8,11 +8,18 @@ publication. It fills the gap between resumable acquisition runs and the S11 pay
 store. It is a plan, not evidence that the versioned replacement pipeline or publisher
 is implemented.
 
-The S9 selected-body reference and immutable consumption-receipt boundary is implemented
-and covered by an offline fake-consumer acceptance test. An initial offline S10 worker
-and schema-neutral in-memory terminal-result preflight also exist. Operation-result
-persistence, receipt-driven run-state projection, S11 adoption, publication, and cleanup
-authorization remain unimplemented.
+**Tracked status (2026-10-13):** The S9 selected-body reference and consumption-receipt
+boundary, S6 v4/S9 work-order v3 operation state, and per-target S10 result persistence
+are implemented. `acquisition run` performs acquisition and processing inline. Raw
+identity is supported; production derived normalization remains fail-closed because the
+route/handler budget registry is empty. S11 payload adoption/publication, acquisition
+snapshot queries, distributed workers, and cleanup remain unimplemented. This document's
+S11 lifecycle proposal does not describe the current `run.py` command surface.
+
+The current fixture/review CLI creates, fills, and lists plan-pinned fixtures and
+generates, compares, and analyzes review runs. Fixture body verification is internal;
+there is no user-facing raw-body replay/export action. Fixture-to-run projection is also
+not implemented.
 
 The plan uses Parquet for all published snapshot relations and payloads, with the
 shared `infra.storage.dag` engine publishing immutable parts and advancing the pointer
@@ -284,7 +291,7 @@ Snapshot metadata queries do not materialize payload columns unless requested. D
 compaction carries forward live relation and payload rows; retention prunes only parts
 unreachable from branches, tags, or explicit pins, never by file age alone.
 
-## CLI and operator lifecycle
+## Proposed S11 CLI and operator lifecycle (not registered)
 
 The local acquisition surface becomes:
 
@@ -295,13 +302,14 @@ acquisition status --run-id <id>
 acquisition run --run-id <id> [--retry-failures]
 acquisition publish --run-id <id> [--branch <name>] [--allow-errors]
 acquisition query --snapshot <id|current> [target/slot filters]
-acquisition fixture create|fill|list|replay ...
+acquisition fixture create|fill|list ...
 acquisition distrib export|worker|import ...   # planned; common CLI uses --work-id
 ```
 
 Project resolves and pins the chosen branch tip, chunk size, acquisition byte ceiling,
 and input source mode; `--fixture` pins fixture replay instead of live SEC fallback.
-The interactive operator shows Project, Status, combined Run/Process, and Publish.
+The proposed S11 operator adds publication to the existing Project, Status, and combined
+Run/Process action; it is not the current operator menu.
 Run requires explicit network authorization for acquisition, then processes each
 acquired target under the same run lock; processing itself is offline.
 Publish must target the pinned branch and compare-and-swap the pinned base; a stale tip
@@ -322,7 +330,7 @@ run results; it never implicitly processes, publishes, or captures fixtures.
 | Snapshot rows are keyed by occurrence/document identity and use quarter-bucketed index/payload parts. | Acquisition snapshot rows are run/target and accession/physical-slot evidence, published as DAG Parquet deltas; separate binary and text payload relations join by digest. |
 | Legacy fixtures and old snapshot payload layout drove replay and viewer discovery. | S9 fixture SQLite retains explicit source responses for offline evidence; acquisition snapshots publish only planned selected bodies and distinct S10 representations. The viewer does not register the retired dataset; migration of any externally retained artifact is separate. |
 
-Retain bounded worker execution, integrity checks, explicit fixture replay, immutable
+Retain bounded worker execution, integrity checks, internal fixture-body verification, immutable
 publication, and pointer-last safety as general invariants. Do not port legacy
 date/name candidate gates, occurrence expansion, selected-index schemas, implicit
 delegation, raw/normalized payload ambiguity, or old artifact layouts. The exact

@@ -36,9 +36,11 @@ lazy-index response retention is opt-in through `--retain-response-evidence`.
 - **Limited S10 transforms**: `process_target` validates one explicit request, enforces form-family operation permissions, supports raw identity and pinned text-route byte identity, and records the S9 receipt. Other transforms remain explicit unsupported outcomes; bundle-child route identity remains unavailable.
 - **Transient terminal projection**: `review_artifacts.result_projection.project_terminal_results` consumes request/result iterables, joins them with the work order in temporary disk-backed SQLite, verifies staged references, and exposes a closeable target iterator with a deterministic fingerprint. Its spool is not a persisted S10/S11 result or snapshot.
 - **Fixture review boundary**: `review generate` verifies fixture bodies and their pinned S6/S9 work-order identity, then processes the retained S9 staged body through the work order's operation pins. It writes shared-layout review records offline; missing retained run bodies and unavailable transforms are recorded as failures. Review records are not persisted S9/S11 results.
-- **Offline review analysis**: `review analyze` validates manifest and per-case artifact digests before summarizing case and operation outcomes. It does not fetch SEC data or mutate acquisition runs.
+- **Offline review analysis**: `review analyze` validates manifest, per-case artifact, and label sidecar digests before summarizing operation outcomes and label errors. `review holdout` requires an explicit issuer/time partition. Neither command fetches SEC data or mutates acquisition runs.
+- **Frozen holdout partition**: `review holdout` requires a versioned JSON spec with an explicit accession century, training cutoff, non-overlapping holdout year range, and sorted issuer CIK roster. The report rejects repeated selected-body digests; near-duplicate review is not performed.
 - **No publication**: S11 Parquet/DAG publication remains absent and requires representative S9/S10 evidence and explicit approval.
-- **No full transform review**: Review generation currently exercises raw identity and pinned TEXT passthrough; reviewer labels, non-identity renderers, and exhibit assessment remain future work.
+- **Diagnostic exhibit review only**: Eligible planned-exhibit TEXT results can carry a version-pinned, non-authoritative opening-view assessment into result and review artifacts. `review label` writes immutable human-label sidecars; `review analyze` reports per-form/family counts. This does not establish accuracy, enable a production transform, or activate a family.
+- **No representative holdout**: `review holdout` requires a frozen issuer/time partition and independent labels. Current evidence has no representative labeled corpus; the report marks near-duplicate review as not performed and cannot approve family activation.
 - **No snapshot reader**: Acquisition snapshot relations and a published acquisition DAG do not exist; snapshot status/audit are gate-aware placeholders, not queries against S5/S6 or legacy storage.
 - **No cost-based selection or bundle grouping**: Child, complete-submission, and
   S1-reported sizes remain distinct evidence and do not select transport. A
@@ -56,9 +58,9 @@ lazy-index response retention is opt-in through `--retain-response-evidence`.
 | `fixture` | manage S9 response fixtures | — |
 | `project` | project a published S6 target plan | `--plan-id`, `[--artifacts]`, `[--json]` |
 | `publish` | publish an approved S11 snapshot | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--artifacts]`, `[--json]` |
-| `review` | generate, compare, and analyze offline review runs | — |
-| `run` | acquire eligible targets, then process acquired bodies under one run lock | `--run-id`, `[--retry-failures]`, `[--retain-response-evidence]`, `[--workers]`, `[--max-response-bytes]`, `[--confirm-stale-lock]`, `[--artifacts]`, `[--json]` |
-| `snapshot` | inspect S11 status and evidence | — |
+| `review` | generate, label, and evaluate offline review runs | — |
+| `run` | acquire pending S9 target bodies | `--run-id`, `[--retry-failures]`, `[--retain-response-evidence]`, `[--workers]`, `[--max-response-bytes]`, `[--confirm-stale-lock]`, `[--artifacts]`, `[--json]` |
+| `snapshot` | inspect S11 snapshot status | — |
 | `status` | inspect resumable acquisition runs | `[--run-id]`, `[--target-id]`, `[--artifacts]`, `[--json]` |
 <!-- AUTOGEN:COMMANDS:END -->
 
@@ -74,6 +76,8 @@ python run.py acquisition fixture list --fixture local-review
 python run.py acquisition review generate --fixture local-review --capture-id CAPTURE --target-id TARGET
 python run.py acquisition review compare --base ./review-runs/run-BASE --new ./review-runs/run-NEW
 python run.py acquisition review analyze --run ./review-runs/run-NEW
+python run.py acquisition review label --artifact ./review-runs/run-NEW/cases/CASE/processing-review.json --outcome positive --observed-kind exhibit --observed-authority reg_s_k_item_601 --observed-code 3.1 --annotator-id REVIEWER --annotated-at-utc 2026-10-13T20:00:00Z --evidence-ref normalized-text:chars-0-43
+python run.py acquisition review holdout --run ./review-runs/run-NEW --spec ./holdout-spec.json
 ```
 
 ## Artifact layout

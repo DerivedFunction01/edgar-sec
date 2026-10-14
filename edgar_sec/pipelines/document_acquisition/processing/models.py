@@ -5,7 +5,9 @@ from pathlib import Path
 from typing import Literal
 
 from edgar_sec.domain.document.route import DocumentRoute
+from edgar_sec.domain.forms.common.exhibits import DocumentRoleAssessment
 from edgar_sec.domain.identity import AccessionNumber
+from edgar_sec.foundation.hashing import is_sha256_hex_digest
 from edgar_sec.pipelines.document_acquisition.schemas import StagedBodyRef
 
 OperationName = Literal["raw", "render_to_txt", "render_to_xml"]
@@ -81,7 +83,18 @@ class ProcessingResult:
     route: DocumentRoute
     effective_path: str
     operation_results: tuple[OperationResult, ...]
-    exhibit_assessment: None = None
+    exhibit_assessment: DocumentRoleAssessment | None = None
+    exhibit_assessment_fingerprint: str | None = None
+
+    def __post_init__(self) -> None:
+        if (self.exhibit_assessment is None) != (
+            self.exhibit_assessment_fingerprint is None
+        ):
+            raise ValueError("assessment and diagnostic fingerprint must be paired")
+        if self.exhibit_assessment_fingerprint is not None and not is_sha256_hex_digest(
+            self.exhibit_assessment_fingerprint
+        ):
+            raise ValueError("diagnostic fingerprint is invalid")
 
 
 __all__ = [

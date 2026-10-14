@@ -95,7 +95,10 @@ distribution protocol. A worker bundle includes only assigned relation rows and 
 verified payloads named by `work_reuse_candidates`. S9 must still apply the current
 target's S6/lazy-index selection; the candidate body is reused only if that resolution
 selects the same `source_asset_id`. It never changes target or sequence selection. S9
-workers acquire inputs only; S10 operations execute as a separate processing action.
+workers acquire inputs only. This proposed distributed chunk contains no S10 operation
+results. The current local `acquisition run` invokes per-target S10 processing inline
+before releasing the run lock; there is no separate user-facing `process` action.
+Distributed S10 assignment/result relations remain a separate unimplemented contract.
 The assignment carries each candidate payload digest once even if several targets name
 it; the bundle manifest binds that file to its digest, size, and storage class.
 

@@ -88,22 +88,11 @@ A different ceiling or source mode requires a new projected run ID.
 - For direct targets, the fetched document is the selected body. For legacy bundles,
   the engine scans the complete source in bounded chunks and writes only the exact
   selected sequence to a staged file. It verifies source integrity and structural
-  constraints. When the catalog-direct exact-form selector is active, the runner
-  requires extracted primary `<TYPE>` to match the pinned form by strict ASCII equality.
-  A mismatch or unverifiable type uses lazy index recovery; the recovered bundle is
-  checked again, and a mismatch is terminal. Other selectors do not screen the
-  submitted primary.
-- For a catalog-direct primary pinned with `exact_form_with_lazy_index`, the current
-  direct-body path successfully fetches sequence one, records its `html_cover` screen
-  as `unverifiable`, then fetches the index without a preceding content screen. The
-  primary bundle `<TYPE>` mismatch/unverifiable cases use that authorized recovery
-  path. The index selector requires a unique recognized row whose `document_type`
-  exactly matches the filing form;
-  zero matches yield `not_filed` for optional targets or `required_missing` for
-  required targets, duplicate matches are `ambiguous`, and lookup/parsing failures
-  are `failed`. A selected bundle row is extracted by exact sequence and its `<TYPE>`
-  must also match the filing form; a mismatch fails rather than selecting another row.
-  `submitted_primary` does not authorize recovery. No HTML/cover evaluator exists.
+  constraints. Current S6 projections emit no family-trigger IDs/versions, so the runner
+  refuses the retained `exact_form_with_lazy_index` branch before any index request.
+  Supported work uses a selected direct body or exact bundle sequence; a direct-target
+  failure never switches to bundle or index retrieval. The legacy selector field is not
+  runtime authority. No HTML/cover evaluator exists.
 - Record response and selected-body digests/sizes separately when extraction creates
   a child body. Pass the selected body by managed transient reference to S10. S9
   does not normalize it or define durable payload storage.

@@ -1,9 +1,19 @@
 # S10 Form-Family Processing Decision Tree
 
-**Status: requested policy; not implemented.** This document describes per-target
-operations and outputs. The [S6 acquisition-policy plan](../document_planning/acquisition_policy_plan.md)
-and [S10 processing contract](../S10_processing.md) still need their schema/version
-contracts aligned before implementation. Runtime behavior remains the narrower M6 slice.
+**Status: partial implementation; this tree includes target-state behavior.** S6 bundle
+v4 persists declarative operations and source inputs; the S9 work-order v3 resolves
+operation support and handler pins. The exposed `acquisition run` path invokes
+per-target processing inline under the same run lock. These contracts are wired, but
+derived-operation execution is not production-enabled: `DEFAULT_PROCESSING_BUDGETS` is
+empty, so budget-required normalization fails closed. Raw identity is available, while
+the TEXT identity path is test-budgeted. Form 4 XML handling, a runtime role evaluator,
+and durable operation snapshot publication are not implemented. The remaining decision
+tree below describes policy/representations beyond that executable slice; do not infer
+that a described handler is registered or runnable.
+
+The separate `processing.run.execute_processing_run()` orchestration function is not the
+CLI path. The current run CLI calls acquisition orchestration, which processes each
+acquired target inline; there is no separate `process` operator action.
 
 ## Boundaries
 
@@ -185,10 +195,12 @@ Do not merge `raw` and rendered results because they belong to one target or hap
 have the same digest. Content-addressed storage may share bytes while preserving each
 operation/source reference and provenance.
 
-Current S6 and S9 contracts model one target with one selected body. Multi-operation
-processing requires versioned plan/work-order/run-state/handoff/receipt contracts and a
-parent logical-document view. This is separate from the S5 inventory snapshot and does
-not authorize S11 publication.
+S6 operation intent and S9 operation resolution are now versioned, but the proposed
+`StoredDocument`/`AcquiredSource`/`StoredRepresentation` durable relations and
+operation-aware S11 snapshot are not runtime contracts. Multiple operation rows can be
+represented and resolved; production derived outputs remain blocked by resource-budget
+admission. Keep this lifecycle separate from the S5 inventory snapshot and do not infer
+S11 publication from the S6/S9 operation contracts.
 
 ## Acceptance checks
 
@@ -211,11 +223,11 @@ not authorize S11 publication.
 - Acquisition does not fetch unplanned sources, parse XML, change S6 identity, or publish
   S11 artifacts.
 
-## Existing contracts to reconcile
+## Remaining contract reconciliation
 
-The current [S6 specification](../document_planning/specs.md) and
-[S10 processing contract](../S10_processing.md) still describe single-body/raw-first
-behavior. The separate [S6 acquisition-policy plan](../document_planning/acquisition_policy_plan.md)
-proposes per-target operation sets, default operation priority, shared source inputs, and
-separate stored operation results. Fold accepted behavior into the normative S6/S10 specs
-and version their work-order, snapshot, and receipt contracts before implementation.
+The [S6 specification](../document_planning/specs.md), [acquisition-policy plan](../document_planning/acquisition_policy_plan.md),
+and [S10 processing contract](../S10_processing.md) now describe versioned operation
+intent/resolution and the combined run path. Keep their schema facts aligned with the
+runtime. The separate representation-materialization proposal still describes desired
+durable source/result relations and later S11 publication; it is not a missing S6/S9
+operation schema and does not authorize adding an unbudgeted renderer.

@@ -1,10 +1,12 @@
 # Accession Document Flow — Implementation Roadmap
 
-Status: **the S1–S6 inventory/target-planning path, S7a/S7b fixture-review foundations,
-S9 project/status/run and fixture create/fill/list/replay, M7b runner/retry/isolation,
-and limited S9/S10 review generate/compare are implemented.** `acquisition run` owns
-per-target acquisition and processing under one run lock; additional processing policy
-and renderer handlers remain incomplete. M7b cleanup remains explicitly gated;
+Status (2026-10-13): **S1–S6 inventory/target planning, S7 fixture/review surfaces,
+S9 project/status/run, fixture create/fill/list, M7b runner/retry/isolation, and limited
+S9/S10 review generate/compare/analyze are implemented.** `acquisition run` owns
+per-target acquisition and processing under one run lock. Production derived processing
+remains disabled by the empty route/handler budget registry. Eligible planned exhibits
+carry a private, version-pinned opening-view assessment into review artifacts and label
+sidecars; no representative holdout evidence or family activation exists. M7b cleanup remains explicitly gated;
 S11 publication is intentionally gated, and S12 is design-only. S0 historical acceptance
 and S8 operational retention remain open. The former `document_storage` runtime package
 is retired. See the
@@ -709,6 +711,20 @@ Metadata-only offline DAG lineage compaction into consolidated checkpoint nodes 
 
 **Details:** [subplan](subplans/S9_acquisition.md)
 
+**Current tracked-code status (2026-10-13):** S6 bundle v4 and S9 work-order v3 are
+consumed by `acquisition project` and the combined `acquisition run`; the latter performs
+per-target processing inline. Raw identity is supported, but production derived
+normalization fails closed because `DEFAULT_PROCESSING_BUDGETS` is empty. Current S6
+projections emit no family-trigger IDs/versions, so lazy-index recovery is refused.
+Fixture create/fill/list and review generate/compare/analyze are wired; fixture-body
+verification is internal and there is no user-facing replay/export action. An independent
+`execute_processing_run()` service exists but is not registered; the combined run path
+already performs processing. See [current command inventory](subplans/document_acquisition/cli_inventory.md).
+
+The following earlier implementation inventory is historical and superseded by this
+status and the linked S9/`run.py` audits; do not use its command and feature claims as
+current behavior.
+
 S9 is specified around its user-facing commands: [project](subplans/document_acquisition/project.md), [status](subplans/document_acquisition/status.md), [run](subplans/document_acquisition/run/index.md), [distribution](subplans/document_acquisition/distribution/index.md), and [fixture lifecycle](subplans/document_acquisition/fixtures/index.md). The dedicated acquisition launcher and CLI/operator are registered; project/status/run orchestration, bounded transfer, exact-sequence extraction, exact-form lazy-index selection, strict primary-bundle SGML `<TYPE>` checks, and fixture create/fill/list/replay are implemented. Bundle/lazy response-group retention and fixture replay are supported when run acquisition opts into `--retain-response-evidence`; fixture create/fill/list/replay do not provide managed S10 replay staging. M7b runner/retry/isolation coverage is complete, but selected-body cleanup remains explicitly gated. Review generate/compare are implemented only for the limited S9/S10 fixture slice. `process --run-id` remains unimplemented although the per-target `process_target` worker and in-memory result projection exist. The requested processing policy, an S10 coordinator, operation-aware S6/S9 schemas, and renderer handlers remain unimplemented. S11 publication remains gated. The pipeline-neutral distribution layer is implemented for metadata sync and inventory; SEC limits remain host-local, with cross-host coordination/checks out of scope. See [`cli.py`](../edgar_sec/pipelines/document_acquisition/cli.py), [`processing.py`](../edgar_sec/pipelines/document_acquisition/processing.py), [`test_offline_acceptance.py`](../tests/pipelines/document_acquisition/test_offline_acceptance.py), [`fixture_store/test_capture.py`](../tests/pipelines/document_acquisition/fixture_store/test_capture.py), [`commands/test_review.py`](../tests/pipelines/document_acquisition/commands/test_review.py), [`test_review_adapter.py`](../tests/pipelines/document_acquisition/test_review_adapter.py), and [`test_operator.py`](../tests/pipelines/document_acquisition/test_operator.py). No `document_storage` imports are introduced.
 
 ### S10 — Processing contract, processor versions, and document review
@@ -746,8 +762,8 @@ S1 ─> S6 catalog-direct contract/implementation (independent branch)
 S3 contract ─> S5 schema/query/writer development (synthetic outcomes) ──────────────┴─> S5 publication
 S5 + S6 ─> S7c snapshot/plan review ─────────────────────────────────────────────┐
 S6 ─> acquisition project ─> status/run ─┬─> S10 selected-body processing ────────┤
-                                         ├─> distrib export/worker/import ────────┤
-                                         └─> fixture capture/replay ─────────────┤
+                                         ├─> acquisition distribution (unimplemented)
+                                         └─> fixture capture/review ──────────────┤
 S9/S10 ─> S7d acquisition/processing review ─────────────────────────────────────┤
 S9/S10 evidence ─> S11 Parquet snapshot publication ──────────────────────────────┤
 S1–S11 ─────────────────────────────────────────────────────────────────────────> S12
@@ -760,48 +776,73 @@ iterations, while S3 incorporates S0 evidence as it arrives. S4 worker code and 
 work can develop against the S3 contract; real snapshot publication waits for the
 implemented parser and integrated workers. S6 catalog-only planning remains an
 independent branch while optional inventory evidence waits for S5 and XBRL claims wait
-for S0. Later S7c
-review/inspect, S8 vacuum, and acquisition fixture replay wait for their named source artifacts. S10
-filing-body HTML processing is deferred until S9 fixtures exist. The S11 design is now
-specified in the acquisition subplan; representative S9/S10 evidence and design
-approval gate its implementation.
+for S0. S7c plan comparison and snapshot inspection are implemented; S8 compaction is
+partial. S10 raw identity and test-budgeted TEXT identity are available, while production
+derived normalization remains disabled by the empty budget registry. The S9/S10 local
+fixture review path is wired but does not perform role assessment. S11 publication stays
+separately gated on representative evidence and design approval.
 
 ## 8. CLI Surface by Stage
 
-The initial operator surface is explicit-artifact oriented and small:
+`run.py` owns the root menu and dispatches explicit stage IDs to `document_inventory`,
+`document_planning`, and `document_acquisition` operators. Passing a stage ID and
+arguments dispatches to the same stage CLI. This is stage routing, not a single
+cross-stage workflow; `documents plan` is not a launcher alias.
+
+| Stage | Reachable through `run.py` | Menu-only distinction |
+|---|---|---|
+| Inventory | `inventory project`, `run`, `status`, `publish`, `query`, `inspect`, `review ...`, `dag ...`, `distrib ...` | Inventory has fixture/review and DAG/distribution consoles. |
+| Planning | `planning plan`, `inspect`, `status`, `compare` | `compare` is CLI-reachable but is not a planning operator-menu item. |
+| Acquisition | `acquisition project`, `status`, `run`, `fixture create|fill|list`, `review generate|compare|analyze` | Fixture fill/live network work have separate confirmations. Publish/snapshot status parse but return gated placeholders; there is no acquisition distribution adapter. |
+
+### Pipeline-wiring gaps and optional modules
+
+| Priority | Module/capability | Reachability and disposition |
+|---|---|---|
+| **P1 — production transform enablement** | `document_acquisition.processing.io.DEFAULT_PROCESSING_BUDGETS` and budget admission | The worker/engine route is already called from the combined run, but the registry is empty; `commands/run.py` does not accept/inject production route/handler budgets. Requested budget-dependent rendering therefore fails closed. Populate and validate production policies before enabling derived TEXT/HTML processing. |
+| **P2 — optional processing-only resume** | `document_acquisition.processing.run.execute_processing_run()` | No production caller or separate CLI action. The exposed `acquisition run` instead calls per-target processing inline through `runner.py`; this is not a gap in the combined run path. Wire a separate entry only if processing already-acquired targets without reacquisition is a required operator use case. |
+| **P3 — diagnostic utility** | `document_inventory.progress_scale_check` | Has a standalone module entry point but is not registered in the inventory CLI/operator. It is an offline scale simulation, not a required inventory or acquisition runtime stage. |
+| **P4 — menu convenience** | `document_planning.compare` | Registered in the stage CLI and reachable through `python run.py planning compare`; absent only from the interactive planning menu. |
+
+Acquisition distribution and S11 publication/query are not hidden implementations: the
+acquisition distribution adapter is absent, and its S11 commands are placeholders.
+
+The current stage command surface is explicit-artifact oriented:
 
 | Stage | Initial command shape | Input / output |
 |---|---|---|
 | Create fixture (S7a) | `inventory fixture create --fixture <id> --catalog-plan <id>` | Catalog plan cohort → new append-only raw index-page fixture. |
 | Fill/extend fixture (S7a) | `inventory fixture fill --fixture <id> --catalog-plan <id>` | Another/extended plan cohort → append fixture observations and pages. |
 | List fixtures (S7a) | `inventory fixture list` | Local fixture manifests/counts; does not require source plans to exist. |
-| Parser review (S7b) | `inventory review-artifacts --fixture <id> --output <dir>` | Pinned raw pages → inert source preview, parser status/diagnostics, and entries when available. |
-| Compare parser runs (optional S7b) | `inventory review --base <dir> --new <dir>` | Two fixture-pinned parser runs → structured differences. |
+| Parser review (S7b) | `inventory review generate --fixture <id> [--output <dir>]` | Pinned raw pages → parser status/diagnostics and review artifacts. |
+| Compare parser runs (S7b) | `inventory review compare --base <dir> --new <dir>` | Two fixture-pinned parser runs → structured differences. |
+| Analyze review runs | `inventory review analyze --run-id <id> [--run-id <id> ...]` | Offline analysis of selected inventory review runs. |
 | Project inventory run | `inventory project --catalog-plan <id> [--base-snapshot-id <id>] [--branch <name>] [--chunk-size <n>]` | Published catalog plan → offline projection, work order, and run pinned to the selected branch tip. |
 | Run inventory work | `inventory run --run-id <id> [--retry-failures]` | Resumable index-page fetch/parse of pending work; direct CLI invocation is explicit network intent and does not prompt. |
 | Inspect inventory run | `inventory status [--run-id <id>] [--json]` | Read-only run state from persisted manifests and attempt pointers. |
 | Publish inventory run | `inventory publish --run-id <id> [--branch <name>] [--expected-branch-tip <id>]` | Offline publication of validated committed work; refuses unless the selected branch still points at the run's pinned base. |
-| Target planning | `documents plan --catalog-plan <id> [--inventory <snapshot_id|current>] --profile-id <id>` | Catalog-selected accession scope plus optional pinned inventory evidence → immutable target plan with both input pins. No row-level locator fallback. |
+| Inspect inventory snapshot | `inventory inspect --snapshot <id|current> [--accession <accession>]` | Read-only validation and inspection of a pinned snapshot. |
+| Target planning | `planning plan --catalog-plan <id> [--inventory <snapshot_id|current>] --profile-id <id>` | Catalog-selected accession scope plus optional pinned inventory evidence → immutable target plan with both input pins. No row-level locator fallback. |
+| Inspect/compare plans | `planning inspect|status|compare ...` | Stage CLI routes; comparison is not an operator-menu action. |
 | Project acquisition run (S9) | `acquisition project --plan-id <id>` | Validated S6 target plan → immutable resumable work order; no network. |
 | Inspect acquisition run (S9) | `acquisition status [--run-id <id>]` | Read-only validation and outcome summary; no network. |
 | Run acquisition and process targets (S9/S10) | `acquisition run --run-id <id> [--retry-failures]` | Acquires eligible targets and processes each acquired checkpoint under one run lock; reports acquisition and processing outcomes together. |
-| Publish acquisition snapshot (S11; gated) | Proposed `acquisition publish --run-id <id> [--branch <name>] [--allow-errors]` | Design only; publication is gated on representative S9/S10 evidence and explicit approval. |
-| Query acquisition snapshot (S11; gated) | Proposed `acquisition query --snapshot <id|current> [target/slot filters]` | Design only; no published acquisition snapshot or query command is available. |
-| Distribute acquisition (S9) | `acquisition distrib {export,worker,import,list,commands}` | Planned acquisition adapter over implemented pipeline-neutral distribution infrastructure; the acquisition integration remains unimplemented. SEC rate limits are host-local; cross-host coordination/checks are out of scope. See the [command-group design](subplans/document_acquisition/distribution/index.md). |
-| Acquisition fixture (S9) | `acquisition fixture {create,fill,list,replay}` | Explicit exact-response BLOB capture in a fixture SQLite database and zero-network replay; bundle/lazy response-group retention is opt-in via `--retain-response-evidence`; no durable snapshot publication. |
+| Publish acquisition snapshot (S11; gated) | Registered `acquisition publish --run-id <id>` placeholder | CLI parses the command and returns a gate/placeholder response; no publisher is implemented. |
+| Acquisition snapshot status (S11; gated) | Registered `acquisition snapshot status` placeholder | CLI/operator route exists but returns an unimplemented response; no acquisition snapshot/query service exists. |
+| Distribute acquisition (S9) | No registered `acquisition distrib` command | Acquisition distribution adapter is not implemented; the shared layer is wired only to inventory/metadata sync. |
+| Acquisition fixture/review (S9/S10) | `acquisition fixture {create,fill,list}`; `acquisition review {generate,compare,analyze}` | Fixture evidence uses SQLite BLOBs; bundle/lazy group capture requires `--retain-response-evidence`. Review body verification is internal; there is no user-facing raw replay/export action. |
 | Accession query | `inventory query --snapshot current --accession <accession>` | Filing facts, all observed child/data-file rows, and source-CIK relations; no network. |
 | Form/CIK query | `inventory query --snapshot current --form <form> [--filing-cik <cik>] [--source-cik <cik>]`, `--filing-cik <cik>`, or `--source-cik <cik>` | Matching accessions/entries from annual parts and distinct filing/source-CIK postings; no network. |
-| Vacuum | `inventory vacuum --snapshot <snapshot-id|current> --retention <policy-id>` | Compact DAG delta lineages into checkpoint nodes and prune unreachable parts; parity-gated, atomically publish `current`. |
-| Inspect (later S7c) | `inventory inspect --snapshot <id|current> [--accession <accession>]` | Reads a pinned snapshot manifest/partition or one accession; no network. |
+| Snapshot maintenance (S8) | `inventory dag ...` / inventory DAG console | Generic DAG compaction/retention routes exist; public inventory query parity, part ownership, age retention, and transient staging cleanup are still incomplete. |
+| Inspect snapshot (S7c) | `inventory inspect --snapshot <id|current> [--accession <accession>]` | Reads a pinned snapshot manifest/partition or one accession; no network. |
 
-`index.json` parsing and the umbrella interactive wizard are added only in their owning
-subplans. No query, projection, status, or publication
-command fetches index pages or filing bodies; only `inventory run` fetches index pages
-for accessions missing from its pinned base. In the approved Inventory operator,
-Project, Status, and Run are top-level Inventory actions alongside the existing root
-shortcuts. Acquisition has its own Process/Publish actions: `acquisition publish`
-publishes a validated S9/S10 run, while the Inventory snapshot-publish action remains
-owned by S5.
+`index.json` parsing and the S12 umbrella workflow are not part of the current stage
+commands. No query, projection, status, or publication command fetches index pages or
+filing bodies; only `inventory run` fetches index pages for accessions missing from its
+pinned base. Inventory exposes Project, Status, Run, fixture/review, and DAG actions.
+Acquisition exposes one combined Run action that acquires and processes eligible targets;
+its Publish menu item is a gate-blocked placeholder, not a working S11 publisher.
+Inventory snapshot publication remains owned by S5.
 
 ## 9. Retired Pipeline Module Disposition
 

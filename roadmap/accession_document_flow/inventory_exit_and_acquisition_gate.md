@@ -1,6 +1,6 @@
 # Inventory Exit and Acquisition Entry Gate
 
-Status checked: 2026-10-09. This is the handoff summary for inventory work and the
+Status checked: 2026-10-13. This is the handoff summary for inventory work and the
 boundary between offline target planning and document-body acquisition. Stage
 contracts remain in the linked subplans; this file records what is implemented,
 what is verified, and what still gates a production handoff.
@@ -12,12 +12,12 @@ the runtime logical-fingerprint gate and removes superseded rows from the compac
 output. It does **not** establish byte-identical Parquet, public inventory query parity,
 or deletion of old immutable snapshot files.
 
-S6 target planning can start now as an offline feature. S0 does not block non-XBRL
-planning; XBRL requests remain `constructed_candidate` without an availability claim.
-S9 work-order and streaming code can start after the S6 row/source contract is fixed
-and can use local fixture plans. Production body acquisition must wait for a validated
-S6 bundle and source-specific retrieval evidence. Broad historical acquisition remains
-gated by S0.
+S6 target planning is implemented and runs offline from a required filing-catalog plan
+and optional pinned inventory snapshot. S0 does not block non-XBRL planning; XBRL requests
+remain `constructed_candidate` without an availability claim. S9 projection and
+`acquisition run` are implemented for matched direct/bundle targets; run performs the
+supported S10 processing step inline. Production derived normalization remains disabled
+by the empty processing-budget registry. Historical coverage claims remain gated by S0.
 
 ## Stage status
 
@@ -28,10 +28,14 @@ gated by S0.
 | [S2](subplans/S2_index_fixture_store.md) | Raw-page capture/replay and successful-case reuse are implemented. | Use it for S0 evidence; it does not replace the live survey. |
 | [S3](subplans/S3_index_parser.md) | Typed parser, standard-layout fixture, and synthetic edge tests exist. | S0-era/table evidence and historical acceptance. S5 refuses failed or unrecognized page outcomes rather than publishing them. |
 | [S4](subplans/S4_broker_worker.md) | Bounded, resumable worker execution is integrated into the S5 build. An offline scale simulation was reported as passed in prior work; its run report is not tracked. | Preserve a reproducible resource-validation report before operational rollout; no live SEC workload is established here. |
-| [S5](subplans/S5_snapshot_publication.md) | Production build, snapshot publication, active reader/query paths, pointer-last update, and accession-scoped `scoped_mask` supersession are implemented. The reader accepts an immutable `snapshot_id` pin. | Move relation schemas/specs to the permitted pipeline `schemas.py`; correct or remove the ignored Python/CLI base-snapshot override. |
-| [S6](subplans/S6_target_plans.md) | Detailed design exists; no `document_planning` implementation is present. | Implement role/type profiles, bounded pinned source adapters, immutable bundle publication, stage-owned CLI/operator, and offline tests. |
-| [S7a/S7b](subplans/S7a_inventory_cli.md) · [S7b](subplans/S7b_parser_review_bootstrap.md) | Fixture lifecycle and parser-review artifact generation exist. | Keyed field-level parser comparison and S7c/S7d review surfaces remain incomplete; these are not prerequisites to start S6. |
+| [S5](subplans/S5_snapshot_publication.md) | Production build, snapshot publication, active reader/query paths, pointer-last update, and accession-scoped `scoped_mask` supersession are implemented. Relation schemas live in `schemas.py`; inventory projection/publication accept and validate pinned base snapshots. | No S5 implementation blocker identified here; the remaining S8 query/ownership/retention work is listed separately. |
+| [S6](subplans/S6_target_plans.md) | Versioned target-plan generation, inventory-snapshot pinning, plan inspect/list, and stage-owned CLI/operator are implemented. | Production profile expansion and XBRL availability claims remain bounded by their evidence requirements; S12's `documents plan` alias is absent. |
+| [S7a/S7b](subplans/S7a_inventory_cli.md) · [S7](subplans/S7_review.md) | Fixture lifecycle and parser review are implemented; S7c plan compare/snapshot inspect and limited S7d acquisition review are wired. | Keyed semantic parser diffs and role-assessment labels/evaluator review remain incomplete. |
 | [S8](subplans/S8_vacuum.md) | Generic and inventory-relation compaction tests pass; details below. | Public-query parity, part-ownership validation, and safe transient staging cleanup remain open. Durable campaign retention uses explicit DAG tags, not automatic plan-directory discovery. |
+| [S9](subplans/S9_acquisition.md) | `project`, `status`, and combined live `run` are wired; direct/bundle acquisition is bounded and serial. | Production derived normalization, family-trigger lazy-index selection, acquisition distribution adapter, and cleanup remain incomplete/gated. |
+| [S10](subplans/S10_processing.md) | Per-target raw processing is integrated into `acquisition run`; TEXT identity passthrough is test-budgeted. | Production route/handler budgets are empty; Form 4 XML and S10 role evaluation remain unimplemented. |
+| [S11](subplans/S11_payload_design.md) | Design only; CLI routes are gate/placeholder responses. | Durable payload snapshot publisher/query requires representative evidence and explicit design approval. |
+| [S12](subplans/S12_operator_integration.md) | Root `run.py` exposes the three stage operators; manual stage sequence is available. | No integrated `documents plan`/cross-stage end-to-end quality gate. |
 
 ## S8 verification and corrected claim
 
@@ -92,17 +96,15 @@ The supplied S6 design is aligned with the detailed subplan as follows:
   catalog paths. Without a snapshot, profiles are primary-only and catalog-direct rows
   never synthesize inventory entries. A catalog-direct match validates the supplied
   path, not its index-declared document type. Each catalog-direct primary pins either
-  `submitted_primary` or `exact_form_with_lazy_index`: the former accepts the submitted
-  locator as-is; the latter authorizes S9 to fetch an index only after its bounded
-  post-fetch mismatch/unverifiable screen. S10 never fetches an index or repairs a
-  locator. Neither selector changes the immutable S6 plan or creates an S5 inventory
-  entry.
-- The source digest must cover the validated manifest and every source part used by the
-  planner. The existing catalog-plan fingerprint alone does not prove those bytes.
-  Although S5 now accepts a named `snapshot_id`, S6 must not import the sibling reader:
-  it returns materialized lists and violates the pipeline import boundary. S5 must
-  move canonical relation schemas/specifications to its permitted `schemas.py` contract;
-  S6 streams the pinned lineage using lower-layer DAG APIs.
+  `submitted_primary` or the retained `exact_form_with_lazy_index` selector field. The
+  latter is not current runtime authority: current projections emit no family-trigger
+  IDs/versions and S9 refuses lazy recovery without them. A future selector change must
+  pin reviewed trigger evidence. S10 never fetches an index or repairs a locator. Neither
+  selector changes the immutable S6 plan or creates an S5 inventory entry.
+- S6 pins the catalog plan and optional inventory snapshot IDs/digests, validates source
+  relation parts and plan identity, and streams pinned snapshot lineage through the
+  lower-layer DAG reader. Shared S5/S6 relation contracts live in `schemas.py`; the
+  direct cross-pipeline schema import is the permitted boundary, not a remaining move.
 - `plan_id` must be deterministic from profile digest, required catalog plan ID/digest,
   nullable inventory snapshot ID/digest, schema version, and matcher version. Divergent
   reuse of the same plan ID is refused.
@@ -123,41 +125,33 @@ The supplied S6 design is aligned with the detailed subplan as follows:
 The root roadmap, design overview, and retirement map use the same three-package
 ownership and derived role/type identity as the S6 subplan.
 
-## Gates for acquisition
+## Current handoff and production gates
 
-### Begin S6 planning implementation
+### S6 planning (implemented)
 
-- Keep planning offline. Use the selected catalog plan as the complete accession scope;
-  do not add S6 filters. An optional snapshot supplies all locator evidence, with no
-  catalog fallback for unindexed accessions.
-- The named-snapshot reader path exists; add source-part digest validation and
-  deterministic two-pin plan identity before publishing. First move S5 relation schemas
-  into its pipeline `schemas.py`; S6 then uses bounded lower-layer DAG reads rather than
-  importing the reader.
-- Publish `plan.json` and ordered form-partitioned target parts as one atomic immutable
-  bundle with schema, coverage/count, and digest validation. Reusing a plan ID with
-  different inputs fails.
-- S6 requires filing-catalog plan schema 1.4 with declared row counts, byte sizes,
-  and SHA-256 digests for selected target parts; legacy plan payloads are not accepted
-  as pinned accession scope.
-- Test primary/exhibit/data-file matching, no sequence guessing, `not_filed` versus
-  required_missing, graphic and extracted-instance selectors, per-candidate `ambiguous`,
-  catalog-direct refusal, and constructed-only XBRL outcomes offline.
+- Use `python run.py planning plan --catalog-plan <id> --inventory <snapshot-id|current>
+  --profile-id <id>` to publish the immutable target plan. It performs no network request.
+- The catalog plan defines accession scope. A supplied inventory snapshot is the sole
+  locator source; an absent accession is unresolved and receives no catalog fallback.
+- `planning inspect`, `planning status`, and `planning compare` are implemented stage-CLI
+  routes. Compare is not a separate interactive-menu action.
 
-### Begin S9 implementation
+### S9/S10 manual run path
 
-- Freeze the S6 target row/source contract and make a validated local plan bundle
-  available. Build adapters and transport against fixtures; no S0 live survey is needed
-  to develop the generic streaming transport.
-- Direct retrieval requires a validated same-accession URL. Bundle retrieval requires
-  the source accession's advertised bundle URL and an observed sequence; S6 stores the
-  exact bundle URL in `target_url`, so S9 need not reopen the snapshot. Never infer a
-  sequence from position or catalog order.
-- A plan manifest pins source provenance but does not keep its source snapshot alive.
-  The immutable target bundle is self-contained for S9. If an audit or future re-planning
-  campaign needs the source retained, arrange an explicit DAG tag.
+- Project with `acquisition project --plan-id <id>`, inspect with `acquisition status`,
+  then execute live network work with `acquisition run --run-id <id>`.
+- The combined run processes supported operations for acquired targets under the same
+  lock. Production-derived normalization is still blocked by an empty route/handler
+  budget registry; unsupported/unbudgeted operations fail closed.
+- Only matched targets with supported direct or advertised bundle-sequence locators
+  execute. Ordinary direct failures do not switch to bundle retrieval. Current work-order
+  projections do not pin lazy-index triggers, so that recovery path is refused.
 
-### Enable production body acquisition
+Fixture fill is separate local evidence capture; bundle/lazy response groups require
+`--retain-response-evidence` at acquisition. Review generate/compare/analyze is offline
+and depends on the acquisition run and staged body. It does not publish S11 payloads.
+
+### Broader production rollout
 
 - Complete S0 for the historical eras/forms to be claimed, or explicitly constrain the
   rollout to a parser-accepted source population. Do not interpret missing page data as
@@ -171,18 +165,18 @@ ownership and derived role/type identity as the S6 subplan.
 
 ## Remaining work, ordered by dependency
 
-1. Move S5 relation contracts into the allowed schema module, then freeze the S6
-   catalog-scope/optional-evidence contracts and implement source validation, bounded
-   pinned reads, immutable target-plan publication, and the stage-owned menu operator.
-   Catalog-only primary planning can proceed independently of S0; inventory-evidence
-   planning waits on S5. See the [S6 parallel implementation plan](subplans/document_planning/plan.md).
-2. Run the authorized S0 survey and publish durable audit evidence; use it to finalize
-   S3 coverage and XBRL availability policy.
-3. Add canonical inventory query parity and verify node-local part ownership for S8;
-   add transient staging lease/TTL cleanup as a distinct maintenance operation.
- 4. Complete S9 acceptance against immutable S6 bundles, then gather representative
-    acquisition and S10 processing evidence before the S11 payload-store decision.
+1. Populate production route/handler budgets and validate supported derived processors;
+   keep Form 4 XML and family-trigger lazy recovery disabled until their contracts and
+   evidence exist.
+2. Run the authorized S0 survey to finalize historical S3 acceptance and XBRL
+   availability claims.
+3. Complete S8 public-query parity, physical part-ownership validation, age-based
+   retention, and active-run-safe transient staging cleanup.
+4. Gather representative S9/S10 evidence and resolve the S11 payload schema/approval
+   gate before implementing durable acquisition publication.
+5. Implement the S12 integrated cross-stage quality gate. Stage-owned commands already
+   support a manual run; the root launcher has no single `documents plan` workflow.
 
-S7c/S7d review and S12 end-to-end operator integration follow their source artifacts;
-they improve auditability but do not block offline S6 development. The legacy
-`document_storage` runtime is retired; S11 payload storage remains separately gated.
+The acquisition distribution adapter is also unimplemented; the inventory and generic
+distribution code do not constitute an acquisition adapter. The legacy
+`document_storage` runtime is retired.

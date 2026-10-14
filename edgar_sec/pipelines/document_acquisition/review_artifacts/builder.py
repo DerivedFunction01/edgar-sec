@@ -5,6 +5,7 @@ import os
 import shutil
 import tempfile
 from collections.abc import Iterable
+from dataclasses import asdict
 from pathlib import Path
 
 from edgar_sec.domain.forms.common.processing import (
@@ -70,7 +71,7 @@ from edgar_sec.pipelines.document_acquisition.review_artifacts.result_projection
 from .models import ProcessingReviewArtifact, ReviewRunResult, ReviewSummary
 
 OBSERVATIONS_FILE = "processing-review.json"
-_ARTIFACT_VERSION = 1
+_ARTIFACT_VERSION = 2
 
 
 class ProcessingReviewError(ValueError):
@@ -115,6 +116,9 @@ def _projected_target(
         target.source_sha256 != result.source_sha256
         or target.route is not result.route
         or target.effective_path != result.effective_path
+        or target.exhibit_assessment != result.exhibit_assessment
+        or target.exhibit_assessment_fingerprint
+        != result.exhibit_assessment_fingerprint
     ):
         raise ProcessingReviewError("projected target differs from processing result")
     return target
@@ -271,11 +275,19 @@ def _review_payload(
         "target_id": result.target_id,
         "accession": str(request.accession),
         "form": request.form,
+        "target_role": request.target_role,
+        "target_type": request.target_type,
         "family_profile": family,
         "processing": {
             "processing_id": result.processing_id,
             "source_sha256": result.source_sha256,
             "source_asset_id": result.source_asset_id,
+            "exhibit_assessment": (
+                asdict(result.exhibit_assessment)
+                if result.exhibit_assessment is not None
+                else None
+            ),
+            "exhibit_assessment_fingerprint": result.exhibit_assessment_fingerprint,
             "route": result.route.value,
             "effective_path": result.effective_path,
             "operations": _operation_records(request, result, target),

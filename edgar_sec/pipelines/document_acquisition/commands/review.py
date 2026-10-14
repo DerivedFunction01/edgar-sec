@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.domain.forms.common.exhibits import ExhibitIdentity
 from edgar_sec.infra.storage.review.diff import compare_review_runs
 from edgar_sec.infra.storage.review.paths import (
     ReviewPaths,
@@ -17,6 +18,14 @@ from edgar_sec.pipelines.document_acquisition.review_artifacts.builder import (
 )
 from edgar_sec.pipelines.document_acquisition.review_artifacts.analyzer import (
     analyze_review_runs,
+)
+from edgar_sec.pipelines.document_acquisition.review_artifacts.labels import (
+    build_review_label,
+    load_processing_review_artifact,
+    write_review_label,
+)
+from edgar_sec.pipelines.document_acquisition.review_artifacts.holdout import (
+    analyze_holdout_review_run,
 )
 
 
@@ -94,6 +103,67 @@ def cmd_review_analyze(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_review_label(args: argparse.Namespace) -> int:
+    artifact_path = Path(args.artifact).expanduser()
+    review_root, artifact = load_processing_review_artifact(artifact_path)
+    analyze_review_runs((review_root,))
+    observed_identity = None
+    if args.observed_kind == "exhibit":
+        if not args.observed_authority or not args.observed_code:
+            raise ValueError("exhibit labels require observed authority and code")
+        observed_identity = ExhibitIdentity(
+            authority_id=args.observed_authority,
+            code=args.observed_code,
+        )
+    elif args.observed_authority or args.observed_code:
+        raise ValueError("non-exhibit labels cannot carry an exhibit identity")
+    label = build_review_label(
+        artifact,
+        outcome=args.outcome,
+        observed_kind=args.observed_kind,
+        observed_identity=observed_identity,
+        annotator_id=args.annotator_id,
+        annotated_at_utc=args.annotated_at_utc,
+        evidence_ref=args.evidence_ref,
+        rationale=args.rationale,
+        annotation_kind=args.annotation_kind,
+        supersedes_label_sha256=tuple(args.supersedes or ()),
+    )
+    path = write_review_label(review_root, artifact, label)
+    result = {
+        "label_sha256": label["artifact_sha256"],
+        "target_id": label["target_id"],
+        "outcome": label["outcome"],
+        "path": str(path),
+    }
+    if args.json:
+        print(json.dumps(result, sort_keys=True))
+    else:
+        print(f"label {label['artifact_sha256']}: {label['outcome']} -> {path}")
+    return 0
+
+
+def cmd_review_holdout(args: argparse.Namespace) -> int:
+    run = _review_run_path(args.run, args.artifacts)
+    spec = json.loads(Path(args.spec).expanduser().read_text(encoding="utf-8"))
+    if not isinstance(spec, dict):
+        raise ValueError("holdout partition specification must be an object")
+    report = analyze_holdout_review_run(
+        run,
+        spec,
+        output=Path(args.output) if args.output else None,
+    )
+    if args.json:
+        print(json.dumps(report, sort_keys=True))
+    else:
+        print(
+            f"holdout {report['protocol_id']}: "
+            f"{report['labeled_holdout_cases']} labeled cases; "
+            f"exact duplicate and near-copy review remain separate evidence"
+        )
+    return 0
+
+
 def cmd_review_compare(args: argparse.Namespace) -> int:
     from edgar_sec.pipelines.document_acquisition.review_artifacts.adapter import (
         AcquisitionReviewAdapter,
@@ -134,4 +204,10 @@ def cmd_review_compare(args: argparse.Namespace) -> int:
     return 0
 
 
-__all__ = ["cmd_review_analyze", "cmd_review_artifacts", "cmd_review_compare"]
+__all__ = [
+    "cmd_review_analyze",
+    "cmd_review_artifacts",
+    "cmd_review_compare",
+    "cmd_review_holdout",
+    "cmd_review_label",
+]

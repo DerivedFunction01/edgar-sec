@@ -42,33 +42,29 @@ Status markers are maintained against tracked code and focused offline tests:
   is opt-in and defaults off; bundle/lazy-index capture requires it.
 - [x] **M2E — Trace opt-out:** S10's `capture_stage_trace=False` normalizer option is
    implemented.
-- [~] **M3 — Acquisition runner:** direct and bundle acquisition, exact-form lazy-index
-  selection, multi-request provenance, and the CLI `run` path are implemented. The
-  catalog-direct exact-form selector compares primary bundle `<TYPE>` to the pinned
-  form using strict ASCII equality; mismatch or unverifiable type enters lazy index
-  recovery. Other selectors do not screen the submitted primary. The direct catalog
-  screen remains unverifiable, and family-aware HTML evaluation is deferred.
-- [x] **M4 — Fixture/interactive surfaces:** CLI `project`, `status`, `run`, and
-  fixture `create`, `capture`, `list`, and `replay` are wired; the operator delegates
-  these actions and confirms live acquisition, evidence capture, and replay output.
-  An integrated lazy-index fixture round trip and exact-attempt retry refusal are
-  tested. Bundle and lazy-index groups require opt-in `--retain-response-evidence`.
-  Processing, review, and snapshot tracks remain gated or incomplete.
+- [~] **M3 — Acquisition runner:** direct and bundle acquisition, multi-request
+  provenance, and the CLI `run` path are implemented. Catalog-direct lazy-index recovery
+  is not currently executable: projections emit no family-trigger IDs/versions and the
+  runner refuses that branch without them. Other selectors do not screen the submitted
+  primary. Family-aware HTML evaluation and reviewed triggers remain deferred.
+- [x] **M4 — Fixture/interactive surfaces:** CLI `project`, `status`, `run`, fixture
+  `create`, `fill`, `list`, and review `generate`, `compare`, and `analyze` are wired
+  through the stage CLI/operator. Live acquisition and local evidence fill have separate
+  confirmations. There is no user-facing raw-body replay/export action; review generation
+  verifies fixture bodies internally. Bundle/lazy response groups require opt-in
+  `--retain-response-evidence` during acquisition.
 - [x] **M5 — Offline S9 acceptance:** a pinned-plan fixture replay commits run state;
   status inspects it, and a fake consumer verifies the selected-body reference and
   immutable receipt. Runner cleanup retains the body; receipts do not authorize cleanup.
-- [~] **M6 — S10 processing:** `process_target` validates an explicit v1 work-order
-  target and staged body, returns deterministic raw identity results (plus text identity
-  on the `TEXT` route), enforces form-family operation permissions, and records the S9
-  receipt. Offline fixture tests cover the worker. A schema-neutral in-memory result
-  preflight consumes explicit terminal request/result pairs without processor-liveness
-  checks. M7b now carries the bundle-selected filename through the S9 attempt record and
-  S10 handoff. Operation-intent persistence, export renderers, full-run projection, and
-  S11 remain unavailable. The requested next policy requires a new S6/S9 contract before
-  the coordinator: mandatory raw; family/route-specific renderers before generic handlers;
-  `normalize_document` as the generic `render_to_txt` fallback; evidence-backed generic
-  XML only after specific handlers; family-specific lazy-index triggers; and explicit
-  plan-scoped processor-version supersession. These policies are not implemented.
+- [~] **M6 — S10 processing:** S6 v4 operation intent and S9 work-order v3 resolution are
+  persisted and consumed by `acquisition run`, which processes acquired targets inline
+  under the run lock. Raw identity works; TEXT identity is test-budgeted. The production
+  route/handler budget registry is empty, so derived normalization fails closed and has
+  no usable CLI default. Form 4 XML, family-specific lazy-index triggers, and the
+  proposed durable source/representation relations remain unavailable. A separate
+  run-level processor function exists but is not registered; the exposed `run` command
+  already processes each target. Malformed XML remains raw-only when no exporter is
+  registered, with focused refusal coverage.
 - [x] **M7a — Offline S9/S10 composition:** captured direct-TEXT fixture replay,
   `process_target`, actual request/result projection, receipt verification, stable
   fingerprint, staged-output integrity, and unavailable-operation placeholders are
@@ -85,11 +81,12 @@ Status markers are maintained against tracked code and focused offline tests:
   separate explicit discard or publication-adoption action. No S5/S6 schema or durable
   payload output is written.
 - [~] **M8 — Exhibit/identity development:** source-backed profiles and declarative packs
-  exist in `domain/forms/exhibits/`; the offline S9/S10 composition now emits a
-  deterministic processing review artifact through the shared `review generate` and
-  `review compare` console. No S10 body evaluator or fixture-label workflow is wired.
-  Offline evaluator/review development is not blocked on a holdout. Holdout metrics and
-  activation remain separate acceptance gates.
+  exist in `domain/forms/exhibits/`; a bounded opening-view assessment is attached to
+  `ProcessingResult` and version-pinned review artifact v2 for eligible planned exhibits.
+  Immutable label sidecars, review CLI capture, and explicit issuer/time holdout count
+  reports are wired. These paths have synthetic plumbing coverage only; representative
+  labels, near-duplicate review, accepted holdout metrics, and family activation remain
+  separate gates.
   Full duplicate/owner reconciliation of candidate signals also remains open and is
   required before activating a family, not before building review tooling or evaluating
   an unambiguous candidate.
@@ -105,9 +102,9 @@ Status markers are maintained against tracked code and focused offline tests:
 ## 2. Readiness and parallelization
 
 The current S9 runner is local and serial; SEC rate limits remain host-local, and
-cross-host coordination is out of scope. S9 accepts a validated S6 bundle, but a full
-S5-to-S6-to-S9 vertical claim remains separate from the pinned-plan tests. S10's trace
-opt-out and processing service are prerequisites for the planned S9-to-S10 integration.
+cross-host coordination is out of scope. The manual S5-to-S6-to-S9-to-S10 path is
+available when its published source artifacts exist. This does not provide production
+derived text normalization or an integrated S12 quality gate.
 The approval-gated Parquet/DAG publication contract is specified in
 [the acquisition lifecycle](lifecycle.md), but no S11 publisher exists. S0 historical
 parser acceptance and live operational rollout gates remain in force.

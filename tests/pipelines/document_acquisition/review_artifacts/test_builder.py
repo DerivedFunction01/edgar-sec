@@ -334,6 +334,11 @@ def test_captured_fixture_review_reuses_processing_result(
             output_path=artifact_path,
         )
         saved = json.loads(artifact.path.read_text(encoding="utf-8"))
+        assert saved["artifact_version"] == 2
+        assert saved["target_role"] == request.target_role
+        assert saved["target_type"] == request.target_type
+        assert saved["processing"]["exhibit_assessment"] is None
+        assert saved["processing"]["exhibit_assessment_fingerprint"] is None
         assert saved["artifact_sha256"] == canonical_hash(
             {key: value for key, value in saved.items() if key != "artifact_sha256"}
         )

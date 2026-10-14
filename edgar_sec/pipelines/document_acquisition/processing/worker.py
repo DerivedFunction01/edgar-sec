@@ -41,6 +41,9 @@ from edgar_sec.pipelines.document_acquisition.processing.models import (
     ProcessingResult,
     StagedOutputRef,
 )
+from edgar_sec.pipelines.document_acquisition.processing.assessment import (
+    assess_exhibit_processing,
+)
 from edgar_sec.pipelines.document_acquisition.processing.io import (
     DEFAULT_PROCESSING_BUDGETS,
     ProcessingBudgetPolicy,
@@ -713,6 +716,9 @@ def process_target(
             prior_by_id,
             selected_ids,
         )
+        exhibit_assessment, assessment_fingerprint = assess_exhibit_processing(
+            request, operation_results, route, effective_path
+        )
         raw_result = next(
             item
             for item in operation_results
@@ -755,6 +761,8 @@ def process_target(
         route=route,
         effective_path=effective_path,
         operation_results=operation_results,
+        exhibit_assessment=exhibit_assessment,
+        exhibit_assessment_fingerprint=assessment_fingerprint,
     )
 
 

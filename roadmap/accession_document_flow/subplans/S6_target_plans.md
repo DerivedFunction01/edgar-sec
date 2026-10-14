@@ -9,8 +9,10 @@
   requested operations and source inputs, but does not resolve acquisition/processing
   support, handler IDs or versions, renderer availability, or lazy-index triggers.
   Ordinary target-match outcomes and source-locator evidence remain S6 outputs. S9
-  resolver/work-order implementation remains in progress. Resolution belongs to the
-  `document_acquisition` S9/S10 work-order policy.
+  work-order v3 and operation resolution are implemented in `document_acquisition`;
+  production derived rendering remains disabled by the empty route/handler budget
+  registry. Family-specific lazy-index trigger pins are not emitted, so that branch is
+  not executable.
   Use the current implementation
   and the retrieval-scope reconciliation below for target-plan behavior.
 - **Retrieval-scope reconciliation:** review-run and fixture evidence establishes that
@@ -40,9 +42,11 @@ matching recognizes accession-prefixed numbered child URLs, catalog primary cons
 from exact `primaryDocument` metadata, exact `0000` placeholder handling, and observed
 bundle-sequence source inputs. [`test_matching.py`](../../../tests/pipelines/document_planning/test_matching.py)
 covers numbered extensions/sequences, prefixed links, placeholder behavior, and locator
-  refusals. S6 intent relations carry declarations only, not acquisition/processing
-  resolution metadata. S9 resolver/work-order implementation remains in progress; these
-  matching tests do not establish resolved support or a lazy trigger policy.
+refusals. S6 intent relations carry declarations only, not acquisition/processing
+resolution metadata. S9 work-order v3 resolves support/handler pins for the run, but the
+production route/handler budget registry is empty and family-specific lazy triggers are
+not emitted. These matching tests do not establish a runnable derived renderer or lazy
+index-recovery policy.
 
 ## Objective
 

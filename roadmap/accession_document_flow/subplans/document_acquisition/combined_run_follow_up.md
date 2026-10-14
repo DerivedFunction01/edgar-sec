@@ -1,12 +1,21 @@
 # Combined acquisition run follow-up
 
+**Status (2026-10-13): Implemented.** `acquisition run --run-id <id>` is the single
+acquisition/processing lifecycle command and operator action. The per-target worker is
+called inline under one run lock; there is no separate `process` CLI action. The
+standalone `processing.run.execute_processing_run()` function remains in the package but
+has no production caller and is not required for combined-run processing. Current
+evidence is in [`commands/run.py`](../../../../edgar_sec/pipelines/document_acquisition/commands/run.py),
+[`runner.py`](../../../../edgar_sec/pipelines/document_acquisition/runner.py), and
+[`test_run_processing_integration.py`](../../../../tests/pipelines/document_acquisition/test_run_processing_integration.py).
+
 ## Objective
 
 Make acquisition and processing one resumable run action. A single `acquisition run --run-id <id>` and one interactive menu action must fetch each eligible target and process its selected body as part of the same per-target execution, like `document_inventory` fetches and parses within its run. Remove the standalone `process` CLI subcommand and operator item; do not add a compatibility alias.
 
 This changes the lifecycle boundary, not the processing safety policy. Preserve raw-first behavior, versioned operation pins, fail-closed resource admission, receipt rules, staged outputs, and the S11 publication/cleanup gate.
 
-## Current structure and reason for follow-up
+## Original structure (superseded)
 
 - `runner.execute_acquisition_run()` validates and locks a run, acquires eligible targets, persists target outcomes, then returns. It does not dispatch processing.
 - `processing.run.execute_processing_run()` independently validates and locks the same run, selects targets already marked `acquired`, dispatches operations, and persists processing manifests and operation attempts.
@@ -15,7 +24,7 @@ This changes the lifecycle boundary, not the processing safety policy. Preserve 
 
 The separate processing coordinator was a deferral boundary in earlier subplans. The target lifecycle is to run acquisition and processing together; `process_target()` and the processing engine remain internal per-target implementation pieces, not separate entry points.
 
-## Target execution contract
+## Implemented execution contract
 
 1. Projecting a plan, inspecting status, review/fixture actions, and S11 publication remain separate actions.
 2. One `run` coordinator owns the run lock and processes targets serially. For each eligible target, it acquires/selects the body, commits acquisition provenance and the acquired checkpoint, then dispatches that target's requested operations before moving on.
@@ -26,7 +35,7 @@ The separate processing coordinator was a deferral boundary in earlier subplans.
 7. Preserve the current transport byte limits, cancellation, per-target persistence, receipt validation, and no-cleanup-before-S11 rules. A single action does not publish a snapshot, discard staged files, or enable production normalization budgets.
 8. Report both acquisition and operation outcomes from the combined run and read-only status surfaces. Do not expose a processing-only workers option unless a real, resource-budgeted scheduling contract is implemented; current execution is serial.
 
-## Implementation sequence
+## Completed implementation sequence
 
 1. Refactor run orchestration around one per-target lifecycle. Reuse the existing target acquisition, request construction, operation retry/result validation, atomic result-manifest, and operation-state helpers. Take the run lock once; avoid calling a second coordinator that tries to acquire it again. Keep the acquisition checkpoint durable so interruption never forces a repeat HTTP request for an already acquired target.
 2. Integrate operation results into the `run` result and terminal-state reporting. Exercise acquisition followed immediately by processing with injected transports and test budgets; test acquired-but-unprocessed recovery with no transport calls.
@@ -34,7 +43,7 @@ The separate processing coordinator was a deferral boundary in earlier subplans.
 4. Update offline acceptance and focused tests for the unified run, retry semantics, interruption/resume, summary output, and no-network processing of acquired bodies. Keep lower-level `process_target()` and engine tests; move command/coordinator integration coverage to the run surface.
 5. Reconcile active roadmap contracts and diagrams listed below so they no longer specify fetch and process as separate user steps. Keep historic design records labeled as historic rather than silently rewriting their evidence.
 
-## Affected code and tests
+## Implemented code and tests
 
 ### Runtime code
 
@@ -43,7 +52,7 @@ The separate processing coordinator was a deferral boundary in earlier subplans.
 - `edgar_sec/pipelines/document_acquisition/commands/run.py`: dispatch the combined coordinator and report.
 - `edgar_sec/pipelines/document_acquisition/commands/process.py`: retire after its operation is integrated into `run`.
 - `edgar_sec/pipelines/document_acquisition/runner.py` and `target_runner.py`: compose acquisition and processing per target while retaining acquisition attempt evidence and checkpoints.
-- `edgar_sec/pipelines/document_acquisition/processing/run.py`: retire `execute_processing_run()` as an independent lifecycle coordinator; preserve/refactor its per-target result validation, retry, manifest, and run-state helpers for use by the combined coordinator.
+- `edgar_sec/pipelines/document_acquisition/processing/run.py`: `execute_processing_run()` remains as an unused internal coordinator with no CLI/operator caller. Removing or refactoring this dead-end entry is optional cleanup; the combined `run` path calls per-target processing inline.
 - `edgar_sec/pipelines/document_acquisition/commands/status.py`, `models.py`, `processing/worker.py`, `run_state/operations.py`, and `run_state/store.py`: expose operation counts/status alongside acquisition state without changing read-only inspection or append-only attempt semantics.
 
 ### Mirrored tests
@@ -55,16 +64,17 @@ The separate processing coordinator was a deferral boundary in earlier subplans.
 - Extend `test_offline_acceptance.py` to run acquisition and processing through one coordinator using fake transport and test-only budgets. Add an interruption case after acquisition commit proving resume performs no HTTP refetch.
 - Keep fixture/review tests that directly test per-target processing; they are not lifecycle entry points.
 
-## Active documentation to reconcile
+## Documentation reconciliation status
 
-- `roadmap/accession_document_flow/design.md`: show one acquisition execution step containing per-target fetch then process, while retaining the network/local boundary and the later S11 gate.
-- `roadmap/accession_document_flow/implementation.md`, `subplans/S9_acquisition.md`, and `subplans/S10_processing.md`: replace stale claims that the process command/coordinator is absent and describe one run lifecycle with a processing sub-contract.
-- `subplans/document_acquisition/plan.md`: remove the remaining standalone S9-to-S10 integration prerequisite from the active run sequence; retain production enablement and S11 gates.
-- `subplans/document_acquisition/operator.md` and `cli_inventory.md`: remove menu item 4 and the `acquisition process` entry; document one run action and its combined retry/network-confirmation behavior.
-- `subplans/document_acquisition/lifecycle.md`, `run/index.md`, and `run/state.md`: replace the two-command handoff with per-target acquisition/processing and internal acquired-state recovery. Keep receipts as evidence of body consumption, not deletion permission.
-- `subplans/document_acquisition/representation_materialization_contract.md`: align ownership language with local per-target acquisition plus operation materialization; keep the not-yet-implemented distribution wire contract explicitly deferred.
-- `subplans/S12_operator_integration.md`: combine acquisition and processing into one offline acceptance step while preserving zero-network proof and the S11 gate.
-- `subplans/document_acquisition/distribution/index.md`, `import.md`, and related worker contracts: these are planned, not implemented, but currently describe acquisition-only worker results. Reconcile them to the combined unit before implementing an acquisition distribution adapter; do not expand scope to implement distribution here.
+- Current local-run descriptions are reconciled in `design.md`, `implementation.md`,
+  `S9_acquisition.md`, `S10_processing.md`, the acquisition plan/operator/CLI inventory,
+  `run/index.md`, `S12_operator_integration.md`, and the linked decision trees.
+- The separate processing-run function remains an unused internal coordinator; no
+  `process` CLI or operator action exists. This is an optional cleanup, not a missing
+  part of combined `acquisition run`.
+- `representation_materialization_contract.md` and the distribution subplans describe
+  future distributed work. The acquisition distribution adapter is not implemented and
+  must be reconciled to the combined run before that adapter is built.
 
 Do not edit the frozen `subplans/document_inventory/follow_up_run_plan.md`. Keep S11 publication, durable payload layout, explicit discard/cleanup, fixture project-source mode, production normalization budgets/handlers, and the unimplemented acquisition distribution adapter outside this follow-up's implementation scope.
 

@@ -603,13 +603,32 @@ def test_raw_only_processing_is_file_backed_and_skips_engine(
     assert receipt_calls == [True]
 
 
-def test_unsupported_xml_does_not_block_raw_only_processing(
+def test_malformed_xml_remains_raw_only_without_registered_exporters(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     import edgar_sec.pipelines.document_acquisition.processing.worker as processing
 
     paths, request = _minimal_request(tmp_path)
-    _stub_target_validation(monkeypatch, request)
+    malformed_xml = b"<root><unclosed>"
+    request.body.path.write_bytes(malformed_xml)
+    body = replace(
+        request.body,
+        sha256=hashlib.sha256(malformed_xml).hexdigest(),
+        byte_size=len(malformed_xml),
+    )
+    _stub_target_validation(
+        monkeypatch, request, route=DocumentRoute.XML, effective_path="report.xml"
+    )
+    text = replace(
+        request.operations[1],
+        requested=True,
+        support_status="unsupported",
+        capability_id=None,
+        capability_version=None,
+        handler_id=None,
+        handler_version=None,
+        output_kind=None,
+    )
     xml = replace(
         request.operations[2],
         requested=True,
@@ -620,7 +639,12 @@ def test_unsupported_xml_does_not_block_raw_only_processing(
         handler_version=None,
         output_kind=None,
     )
-    request = replace(request, operations=(request.operations[0], xml))
+    request = replace(
+        request,
+        body=body,
+        document_path="report.xml",
+        operations=(request.operations[0], text, xml),
+    )
     monkeypatch.setattr(
         processing.AcquisitionProcessor,
         "process",
@@ -637,6 +661,7 @@ def test_unsupported_xml_does_not_block_raw_only_processing(
     assert result.operation_results[0].status == "available"
     assert result.operation_results[0].staged_output.path == request.body.path
     assert result.operation_results[1].status == "unsupported"
+    assert result.operation_results[2].status == "unsupported"
 
 
 def test_output_above_registered_limit_is_not_staged(

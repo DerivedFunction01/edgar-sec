@@ -133,11 +133,12 @@ current action; they do not discard a previously selected run context.
 
 Fixture CLI `--json` output is stable and sorted. Command errors use the CLI's typed
 error formatting and exit-code mapping in both entry modes. The legacy
-`document_storage` command surface is retired. Fixture evidence does not satisfy the
-representative S9/S10 evidence and approval required to enable S11 publication.
+`document_storage` command surface is retired. The fixture-fill confirmation authorizes
+only local evidence capture; the fixture/review console has no snapshot publishing
+action.
 
 Tests cover menu transitions, default-no live-network/fill confirmations,
 retry confirmation separation, EOF/Ctrl-C behavior, and command delegation. M7b runner
 and retry/isolation coverage is complete; cleanup remains explicitly gated, because a
 receipt or rerun does not authorize deletion. See
-[`test_offline_acceptance.py`](../../../../tests/pipelines/document_acquisition/test_offline_acceptance.py).
+  [`test_offline_acceptance.py`](../../../../tests/pipelines/document_acquisition/test_offline_acceptance.py).

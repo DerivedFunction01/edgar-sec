@@ -17,6 +17,8 @@ from edgar_sec.pipelines.document_acquisition.commands.review import (
     cmd_review_analyze,
     cmd_review_artifacts,
     cmd_review_compare,
+    cmd_review_holdout,
+    cmd_review_label,
 )
 from edgar_sec.pipelines.document_acquisition.commands.project import cmd_project
 from edgar_sec.pipelines.document_acquisition.commands.run import cmd_run
@@ -36,6 +38,8 @@ _TRACKS = {
     "review generate": "S7 review artifact generation",
     "review compare": "S7 review comparison",
     "review analyze": "S7 review-run analysis",
+    "review label": "M8 exhibit label capture",
+    "review holdout": "M8 issuer/time-separated exhibit evaluation",
     "snapshot status": "S11 snapshot availability",
 }
 
@@ -165,7 +169,9 @@ def build_parser() -> argparse.ArgumentParser:
     fixture_list.add_argument("--target-id")
     _add_output_options(fixture_list)
     fixture_list.set_defaults(func=cmd_fixture_list)
-    review = commands.add_parser("review", help="generate and inspect review runs")
+    review = commands.add_parser(
+        "review", help="generate, label, and evaluate offline review runs"
+    )
     review_commands = review.add_subparsers(dest="review_command", required=True)
     review_generate = review_commands.add_parser(
         "generate", help="process captured fixture bodies into review artifacts"
@@ -201,6 +207,50 @@ def build_parser() -> argparse.ArgumentParser:
     review_analyze.add_argument("--artifacts", default="")
     review_analyze.add_argument("--json", action="store_true")
     review_analyze.set_defaults(func=cmd_review_analyze)
+
+    review_label = review_commands.add_parser(
+        "label", help="record a pinned, immutable exhibit review label"
+    )
+    review_label.add_argument("--artifact", required=True)
+    review_label.add_argument(
+        "--outcome", required=True, choices=("positive", "negative", "ambiguous")
+    )
+    review_label.add_argument(
+        "--observed-kind",
+        required=True,
+        choices=(
+            "exhibit",
+            "primary_report",
+            "data_file",
+            "graphic",
+            "paper",
+            "unknown",
+        ),
+    )
+    review_label.add_argument("--observed-authority")
+    review_label.add_argument("--observed-code")
+    review_label.add_argument("--annotator-id", required=True)
+    review_label.add_argument("--annotated-at-utc", required=True)
+    review_label.add_argument("--evidence-ref", required=True)
+    review_label.add_argument("--rationale", default="")
+    review_label.add_argument(
+        "--annotation-kind",
+        choices=("independent", "adjudication"),
+        default="independent",
+    )
+    review_label.add_argument("--supersedes", action="append")
+    review_label.add_argument("--json", action="store_true")
+    review_label.set_defaults(func=cmd_review_label)
+
+    review_holdout = review_commands.add_parser(
+        "holdout", help="report pinned exhibit labels on a frozen holdout partition"
+    )
+    review_holdout.add_argument("--run", required=True)
+    review_holdout.add_argument("--spec", required=True)
+    review_holdout.add_argument("--output")
+    review_holdout.add_argument("--artifacts", default="")
+    review_holdout.add_argument("--json", action="store_true")
+    review_holdout.set_defaults(func=cmd_review_holdout)
 
     snapshot = commands.add_parser("snapshot", help="inspect S11 snapshot status")
     snapshot_commands = snapshot.add_subparsers(dest="snapshot_command", required=True)

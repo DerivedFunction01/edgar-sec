@@ -44,6 +44,27 @@ def test_parser_registers_acquisition_tracks() -> None:
         ["review", "generate", "--fixture", "f-1"],
         ["review", "compare", "--base", "left", "--new", "right"],
         ["review", "analyze", "--run", "review-run"],
+        ["review", "holdout", "--run", "review-run", "--spec", "holdout.json"],
+        [
+            "review",
+            "label",
+            "--artifact",
+            "review/cases/case-a/processing-review.json",
+            "--outcome",
+            "positive",
+            "--observed-kind",
+            "exhibit",
+            "--observed-authority",
+            "reg_s_k_item_601",
+            "--observed-code",
+            "3.1",
+            "--annotator-id",
+            "reviewer-a",
+            "--annotated-at-utc",
+            "2026-10-13T20:00:00Z",
+            "--evidence-ref",
+            "text:0-40",
+        ],
     ):
         assert parser.parse_args(args)
 

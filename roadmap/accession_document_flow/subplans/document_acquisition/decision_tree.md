@@ -1,7 +1,7 @@
 # Accession-to-document acquisition decision tree
 
 This is the contract map from Phase-1 filing metadata through catalog selection,
-inventory, target planning, and the proposed acquisition/processing handoffs. It
+inventory, target planning, and acquisition/processing handoffs. It
 separates implemented behavior, proposed behavior, and frozen legacy behavior; a
 calendar-era label is never a substitute for an observed locator or a pinned target.
 
@@ -29,14 +29,24 @@ the target. Never derive a child URL from the display filename alone.
 
 - **Implemented:** `filing_catalog` materialization/plans; S1–S6 inventory and
   profile-based target planning; S2/S3/S4 fixture, parser, and worker foundations;
-  S7 review foundations. `document_planning` is a separate pipeline from the older
-  `filing_catalog` locator-plan contract.
-- **Implemented:** the S9 acquisition package validates pinned S6 modes and performs
-  bounded direct acquisition or exact-sequence extraction. It does not compare sizes,
-  group targets into one bundle request, or switch an ordinary failed direct request to
-  bundle mode. S10 has an initial offline target worker and result projection; the
-  operation-aware coordinator and requested family/route renderer policy remain
-  unimplemented.
+  S7 review surfaces. `document_planning` is a separate pipeline from the older
+  `filing_catalog` locator-plan contract. Planning can consume an immutable S5 snapshot,
+  but does not create or run that snapshot.
+- **Implemented:** S9 validates pinned S6 plans, projects acquisition runs, and executes
+  bounded direct acquisition or exact-sequence extraction. `acquisition run` invokes
+  per-target S10 processing under the same run lock and persists operation state/results.
+  It does not compare sizes, group targets into one bundle request, or switch an ordinary
+  failed direct request to bundle mode. Fixture create/fill/list and offline review
+  generate/compare/analyze are routed through the acquisition operator/CLI.
+- **Partial:** S6 v4 declares operation/source-input intent and S9 work-order v3 resolves
+  operation support/handler pins, but production text/HTML normalization remains disabled:
+  the production route/handler budget registry is empty, so unbudgeted transforms fail
+  closed. Raw identity and the test-budgeted TEXT path are covered. Form 4 XML and the
+  S10 role-assessment evaluator are not runtime features. Lazy-index trigger pins are
+  null, so the old selector field does not authorize index recovery.
+- **Not implemented/gated:** S11 durable acquisition-payload publication and the S12
+  cross-stage vertical quality gate. S9 stage commands can be run manually through
+  `run.py`; no `documents plan` end-to-end command exists.
 - **Documentation reconciliation:** `implementation.md` reports S1–S6 implemented
   and `document_planning` has profile, catalog-scope, inventory-evidence, matching,
   publication, operator, and CLI modules. Current matching permits accession-prefixed
@@ -67,13 +77,18 @@ arbitrary URL is not passed directly to S9. See
 
 Code anchors for the implemented path are `engine/submissions/filings.py`,
 `pipelines/filing_catalog/materialization.py` and `planner.py`,
-`pipelines/document_inventory/snapshot/projection.py`, and
-`pipelines/document_planning/planner.py` / `matching.py`. Former candidate and fallback
-behavior is retained only as historical context. The
+`pipelines/document_inventory/snapshot/projection.py`,
+`pipelines/document_planning/planner.py` / `matching.py`, and
+`pipelines/document_acquisition/runner.py` / `processing/run.py`. Former candidate and
+fallback behavior is retained only as historical context. The
 engine's `scan_filing_bundle()` remains a non-S9 reference; S9 uses its bounded exact
 sequence extractor and never falls back from an ordinary direct failure to a bundle.
 
 ## End-to-end flow
+
+The graph combines current and target-state paths: S9 direct/bundle run, raw and
+test-budgeted S10 processing, and local fixture review are wired. Production derived
+rendering, role assessment, lazy-index recovery, and S11 publication are not enabled.
 
 ```mermaid
 flowchart TD
@@ -111,7 +126,7 @@ flowchart TD
     POLICY -->|inventory-backed / none| FINALBODY["Assign exact planned physical slot"]
     POLICY -->|submitted_primary| SUBMITTED["Accept catalog sequence 1 as submitted<br/>no type evidence required"]
     SUBMITTED --> FINALBODY
-    POLICY -->|exact_form_with_lazy_index| SCREEN["Strict SGML <TYPE> screen;<br/>direct HTML is unverifiable"]
+    POLICY -->|only with pinned family trigger;<br/>current plans have none| SCREEN["Strict SGML <TYPE> screen;<br/>direct HTML is unverifiable"]
     SCREEN -->|form_match| FINALBODY
     SCREEN -->|not_run / type_mismatch / unverifiable| LAZY["Fetch and parse -index.html<br/>S9 fails closed on not_run/unverifiable"]
     LAZY -->|one matching indexed slot| RECOVER["Select direct or exact bundle sequence<br/>retain sequence-1 attempt"]
@@ -121,16 +136,23 @@ flowchart TD
     LAZY -->|duplicate / fetch or parse failure| RECOVERYRESULT2["ambiguous / failed<br/>with index evidence"]
     RECOVER --> FINALBODY
 
-    FINALBODY --> S10["S10 M6 partial<br/>requested: raw + family-specific handler<br/>or generic text normalizer fallback"]
+    FINALBODY --> S10["S10 current: raw / test TEXT<br/>derived handler path budget-gated"]
     S10 --> RESULT["Per-operation results<br/>raw plus requested supported outputs"]
     S10 --> RECEIPT["Write S9 BodyConsumptionReceipt<br/>after verified read; does not clean body"]
-    S10 -. "optional capture_review" .-> REVIEW["S7 promotes staged review output<br/>not a payload store"]
+    REVIEW["S7 local fixture review<br/>generate / compare / analyze"]
     RESULT --> PUBLISH["S11 publishes immutable acquisition snapshot<br/>binary and text payload Parquet relations"]
     PUBLISH --> CLEAN["Publication receipt permits transient cleanup"]
     S5 -. "pinned metadata-only reconciliation<br/>no document-body fetch" .-> S11["S11 Parquet/DAG snapshot relations<br/>slots, payloads, sparse types, target selections"]
 
-    FIXTURE["Optional S9 fixture capture/replay<br/>exact response bytes for offline evidence"] -. "replay source; not production storage" .-> BODY
+    FIXTURE["Optional S9 response-evidence retention<br/>for local fixture/review"] -. "offline evidence; not production storage" .-> BODY
+    FIXTURE -. "fixture verification" .-> REVIEW
+    BODY -. "run staged body" .-> REVIEW
 ```
+
+The `exact_form_with_lazy_index` graph branch is conditional design, not an active path:
+current projections carry no trigger IDs/versions and the target runner refuses that
+branch without them. S11 publication/cleanup nodes are likewise not available through
+the current pipeline.
 
 ## Component handoffs
 
@@ -141,15 +163,16 @@ flowchart TD
 | S2/S4/S3 inventory run | Missing/explicitly refreshed accession work items, shared broker or pinned fixture bytes. | Typed page outcomes/checkpoints plus observed document/data rows and separate bundle URL/size metadata. | Known accessions reuse snapshot facts; fetch/parse failure is never empty inventory. No child body is acquired here. S0 evidence gates final historical parser acceptance. |
 | Inventory publish / S5 | Validated cohort, committed S4 results, expected parent snapshot. | Cumulative immutable inventory snapshot and current pointer advanced only after complete validation. | Failed or unrecognized accessions prevent publication; inventory stores observed index facts, not targets or payloads. |
 | S6 target planning (implemented) | Required pinned catalog plan; optional pinned S5 snapshot; versioned profile. | Immutable target-plan bundle with one target row per request/candidate and explicit status/provenance/retrieval locator. | Without a snapshot only primary catalog-direct planning is valid. With a snapshot it is the sole locator evidence; never fall back to catalog paths. Accession-prefixed numbered child URLs may be direct locators. Role-eligible bundle-sequence locators require an advertised bundle and observed positive sequence; exact `0000` primary names require that bundle route. |
-| S9 acquisition (implemented) | Validated S6 plan bundle, pinned source provenance, supported matched locators. | Append-only attempts/outcomes, exact source and selected-body digests, transient staged body reference, and for lazy recovery a target-to-physical-slot resolution record. | Executes the pinned target mode; no size comparison, cross-target bundle grouping, or ordinary direct-failure fallback. The separate catalog-direct `exact_form_with_lazy_index` selector can request its bounded index recovery. |
-| S10 processing (M6 partial; requested policy not implemented) | Acquired S9 body assigned to the immutable S6 target; pinned S6 operation intent. | Current code returns raw/TEXT identity results and an S9 consumption receipt. The requested path returns raw plus family-specific operations or generic text-normalizer fallback. | Processes only the resolved body. It never changes targets, types, slots, routes, or acquisition outcomes and cannot fetch an index, create targets, or trigger retries. |
+| S9 acquisition (implemented) | Validated S6 plan bundle, pinned source provenance, supported matched locators. | `acquisition run` records attempts/outcomes, exact source and selected-body digests, staged-body references, and operation state/results under one run lock. | Executes direct or exact bundle-sequence targets. It does not compare sizes, group targets into one bundle request, or switch an ordinary failed direct request to bundle mode. Lazy index recovery is not currently executable because no family trigger pins are emitted. |
+| S10 processing (partial; combined run wired) | Acquired S9 body plus pinned operation/work-order state. | Raw identity is supported; the test-budgeted TEXT identity route is covered. The production route/handler budget registry is empty, so derived text/HTML normalization fails closed. | Processes only the resolved body. It never changes targets, types, slots, routes, or acquisition outcomes and cannot fetch an index, create targets, or trigger retries. Form 4 XML and role assessment are not runtime features. |
 | S11 snapshot publication (planned; approval-gated) | Validated S9/S10 run, imported worker receipts, expected DAG parent. | Immutable acquisition Parquet snapshot with separate binary-route and text-route payload relations joined to target/slot evidence by digest. | Design and schema live in [the lifecycle plan](lifecycle.md); durable publication waits for representative S9/S10 evidence and S11 approval. Reconciliation consumes pinned S5 facts and does not alter S5/S6 schemas. |
 
-The full inventory path is catalog materialization → catalog plan → S5 inventory
-publication → S6 plan → S9 acquisition → S10 processing → S11 acquisition snapshot
-publication. The catalog-direct route
+The manual prepublication path is catalog materialization → catalog plan → S5 inventory
+publication (when using inventory evidence) → S6 plan → S9 acquisition → S10 processing.
+S11 acquisition snapshot publication remains gated and is not part of the current runnable
+path. The catalog-direct route
 skips S5 only for a primary-only profile and intentionally has weaker evidence. Its
-lazy-index path is an explicit selector-authorized exception, not a fallback for an
+future lazy-index path is an explicit trigger-authorized exception, not a fallback for an
 accession missing from a selected inventory snapshot.
 
 ## S6 planning decisions
@@ -223,24 +246,27 @@ child's actual `<TYPE>` as provenance; validating it against a pinned inventory 
 would require a versioned S6 plan field. See [S6 matching](../S6_target_plans.md) and
 [S9 extraction](run/extraction.md).
 
-## Current catalog-direct selector and lazy recovery
+## Catalog-direct selector contract and lazy-recovery gate
 
-The selector matrix below describes the implemented uniform policy. It is the replacement
-target for the requested family-specific policy documented after it.
+The S6 plan may carry `submitted_primary` or
+`exact_form_with_lazy_index`, but that selector value alone is not current runtime
+authority to fetch an index. S6 projections presently emit null family-trigger IDs and
+versions, and the S9 runner requires a pinned trigger before it will enter lazy recovery.
+The second row below describes the retained contract, not an executable path for current
+plans.
 
 Catalog-only planning remains primary-only. The profile selector is binary:
 
 | Selector | Initial slot behavior | Identity/recovery behavior |
 |---|---|---|
-| `submitted_primary` | Fetch the catalog primary link, anchored to physical sequence 1. | Accept as submitted; do not inspect type or fetch an index. `slot_types` stays empty unless evidence is observed independently. |
-| `exact_form_with_lazy_index` | Fetch the same sequence-1 candidate. The expected statutory type is the filing form, independent of `target_role=primary`, the index primary designation, or sequence number. | For a successful direct-body response, the current `html_cover` screen is `unverifiable` and the pinned selector may fetch one index. For a primary bundle body, compare the extracted SGML `<TYPE>` with strict ASCII equality; mismatch/unverifiable type triggers that lookup. Only a unique index row whose observed `document_type` matches the expected form family through the shared alias registry chooses the actual physical slot. No date/name heuristic or S10 assessment selects it. |
+| `submitted_primary` | Fetch the catalog primary link, anchored to physical sequence 1. | Accept as submitted; do not inspect type or fetch an index. `slot_types` stays empty unless evidence is observed independently. This is the supported catalog-direct path. |
+| `exact_form_with_lazy_index` | The retained selector contract starts from the same sequence-1 candidate. | Only with a pinned family-trigger ID/version may the screen authorize one index request. The designed bundle check uses strict ASCII equality on SGML `<TYPE>`; HTML is currently unverifiable. Only a unique index row whose observed `document_type` matches the expected form family through the shared alias registry chooses the actual physical slot. Current projections have no trigger pins, so this path is refused before the screen runs. |
 
-`exact_form` is dropped. The lazy selector remains an explicit S6-pinned behavior.
-HTML has no reliable SGML `<TYPE>` field, so the direct-body screen is unverifiable;
-there is no HTML cover evaluator. A 404 or other transport failure does not trigger
-ordinary bundle fallback. If the lazy lookup is recognized
-but has no filing-form row, report a typed absence with index evidence; duplicates are
-ambiguous, and failed/unrecognized index responses are failures, not absence.
+`exact_form` is dropped. A lazy selector requires an explicit S6 trigger pin, which
+current projections do not provide. If enabled by a later versioned policy, a 404 or
+other transport failure still does not trigger ordinary bundle fallback; a recognized
+index without a filing-form row is a typed absence, duplicates are ambiguous, and failed
+or unrecognized index responses are failures, not absence.
 
 For catalog-direct selection, the initial payload remains associated with slot 1 even
 when it is an exhibit. Lazy lookup may enrich metadata for every observed sequence
@@ -249,22 +275,23 @@ links, and target-to-selected-slot assignment separate. S10 receives only the fi
 selected body. This selector-authorized S9 lookup does not publish or mutate an S5
 snapshot.
 
-The local screen and the index's `document_type` answer different questions. The
-screen decides whether to spend a request; only an index/bundle metadata row creates a
-`slot_types` fact. A positive local SGML screen is recorded in the target
-resolution and does not populate that relation; `form_match` means “do not fetch the
-index,” not “the body is proven to have the expected statutory type.” Preserve evaluator
-version/outcome and index-response/parser provenance with the resolution. Do not treat
-cover-boundary diagnostics in S10 as another recovery trigger.
+When a family trigger is implemented, the local screen and index `document_type` answer
+different questions. The screen decides whether to spend a request; only an index/bundle
+metadata row creates a `slot_types` fact. A positive local SGML screen is recorded in the
+target resolution and does not populate that relation; `form_match` means “do not fetch
+the index,” not “the body is proven to have the expected statutory type.” Preserve
+evaluator version/outcome and index-response/parser provenance with the resolution. Do
+not treat cover-boundary diagnostics in S10 as another recovery trigger.
 
 ### Requested family-specific lazy-index policy (not implemented)
 
-Replace the uniform `exact_form_with_lazy_index` selector with versioned per-family
-triggers. A trigger may scan rendered text only for a family whose trigger evidence has
-been designed and reviewed; `raw` alone is not a trigger. Form 4 has no designed trigger
-and must not perform lazy-index lookup. Its raw selection remains tied to the pinned URL
-and observed exhibit-like links available for that filing era. The replacement is a new
-S6 policy version, not a backward-compatibility alias for the uniform selector.
+The old selector value does not currently authorize a lookup because the plan contains no
+trigger pins. Replace that dormant field with versioned per-family triggers. A trigger may
+scan rendered text only for a family whose trigger evidence has been designed and
+reviewed; `raw` alone is not a trigger. Form 4 has no designed trigger and must not
+perform lazy-index lookup. Its raw selection remains tied to the pinned URL and observed
+exhibit-like links available for that filing era. The replacement is a new S6 policy
+version, not a backward-compatibility alias for the uniform selector.
 
 ---
 
@@ -334,15 +361,17 @@ different filing eras, document formats, and exhibit link states.
 - **Outcome:** Sequence 1 inversion is completely bypassed at planning time with zero regex
   heuristics, while unlinked exhibit is retrieved safely via bundle sequence.
 
-### Example 3: 2001 Form 10-K without a pinned index (Catalog-Direct, Lazy Recovery)
+### Example 3: future catalog-direct recovery policy (not currently executable)
 - **Filing:** Form `10-K`, Accession `0000888888-01-000456`.
 - **Plan state:** no inventory snapshot is pinned (catalog-only run).
 - **Catalog metadata:** Catalog lists `primary_document = dex231.htm` (misindexed Seq 1 exhibit).
-- **Profile:** primary target with `catalog_direct_selection = exact_form_with_lazy_index`.
+- **Profile:** primary target with a future `exact_form_with_lazy_index` policy and a
+  versioned family-trigger pin. Current S6 projections emit no such trigger.
 - **Initial acquisition:** S9 fetches the catalog URL into physical slot 1. The expected type is `10-K`; the slot is not asserted to be primary by its sequence.
-- **ASCII case:** S9 reads the bounded SGML header, observes `<TYPE>EX-23.1`, and triggers lazy index lookup.
-- **HTML case:** the direct-body `html_cover` screen is unverifiable; under the pinned
-  selector a successful sequence-1 response triggers one bounded index lookup. No HTML
+- **ASCII case:** Under that future pinned policy, S9 reads the bounded SGML header,
+  observes `<TYPE>EX-23.1`, and may trigger lazy index lookup.
+- **HTML case:** the direct-body `html_cover` screen is unverifiable; under the future
+  pinned policy a successful sequence-1 response triggers one bounded index lookup. No HTML
   cover evaluator is run.
 - **Lazy lookup:** a recognized `-index.html` reports Seq 1 as `EX-23.1` and Seq 2 as `10-K`. S9 records both slot types, acquires Seq 2 from its exact direct or bundle locator, and assigns the target to slot 2. Seq 1 remains available as an acquired slot if durable storage has been approved.
 - **Processing:** S10 receives only the slot-2 body under the same S6 `target_id`; its own cover diagnostic cannot trigger further lookup.
@@ -421,27 +450,28 @@ Path routing is independent of era and form. A rendered XSL path (including a ne
 override generic renderers; generic XML transforms require reviewed evidence. Route
 handling does not fetch an alternate archive-root candidate in S10.
 
-If a primary's cover-required profile finds no cover boundary, S10 emits
+Under a future role-assessment profile, if a primary's cover-required policy finds no
+cover boundary, S10 may emit
 `cover_boundary_not_detected`; it does not reclassify the primary, refetch a bundle,
-or replan. An optional exhibit assessment is diagnostic-only. If S10 has fully read
-and verified the selected bytes, it writes the S9 `BodyConsumptionReceipt` even when
-later processing fails or is unrecognized. Admission refusal before reading or digest
-mismatch has no receipt, so S9 retains the staged body. Cleanup follows only after the
-matching receipt is durable. See [S10 processing](../S10_processing.md).
+or replan. An optional exhibit assessment is diagnostic-only and is not currently
+implemented. Independently, when S10 has fully read and verified selected bytes, it writes
+the S9 `BodyConsumptionReceipt` even when later processing fails or is unrecognized.
+Admission refusal before reading or digest mismatch has no receipt, so S9 retains the
+staged body. Cleanup follows only after the matching receipt is durable. See
+[S10 processing](../S10_processing.md).
 
 ## Explicitly excluded recovery branches
 
 - No automatic S9/S10 index lookup, filename search, era-based reclassification, or
-  target replacement. The sole exception is catalog-direct
-  `exact_form_with_lazy_index`, which authorizes one bounded lookup only after its
-  defined body-screen suspicion.
+  target replacement. A future lazy-index exception requires a versioned family-trigger
+  pin; current projections provide none and the runner refuses that branch.
 - No fallback from a missing inventory accession to its catalog primary link.
 - No fallback from a direct URL 404 or transient failure to the bundle, another URL,
   or sequence 1.
 - No comparison between a fetched bundle child's `<TYPE>` and a pinned S5 row in the
   ordinary inventory-backed path until a future versioned S6 contract carries that
-  observed type. Catalog-direct lazy recovery instead selects by its freshly fetched
-  index rows under the explicit selector.
+  observed type. Any future catalog-direct recovery would select by freshly fetched
+  index rows under its pinned trigger policy.
 - No S10 evaluator action that schedules an exhibit. Companion targets such as EX-13
   must be in the S6 profile/plan before acquisition begins.
 - No durable raw/normalized payload publication before S11 review and explicit

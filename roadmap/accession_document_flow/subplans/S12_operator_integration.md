@@ -3,18 +3,19 @@
 ## Owner and status
 
 - Owning stage in [implementation.md](../implementation.md): **S12**.
-- Status: inventory's split lifecycle CLI/operator is implemented; the cross-stage
-  vertical verification gate remains design-only.
+- Status (checked 2026-10-13): the root `run.py` launcher and inventory, planning, and
+  acquisition stage operators/CLIs are wired. The cross-stage vertical verification gate
+  and `documents plan` workflow remain design-only.
 - Depends on: S1–S11 public contracts, including the command-oriented S9 contracts
   under [document_acquisition](document_acquisition/cli_inventory.md).
 - Non-blocking: the integrated cross-stage operator; the legacy `document_storage`
   package is already retired. Stage-owned S6 CLI/operator work belongs to S6.
 
-## Current tracked-code audit (2026-10-09)
+## Current tracked-code audit (2026-10-13)
 
 - **Status: inventory lifecycle and stage-local planning/acquisition commands exist; the S12 cross-stage surface and offline vertical gate are not implemented.** There is no integrated `documents plan` command or fixture-driven plan-to-acquisition-to-processing-to-vacuum-to-review run matching this contract.
 - **Evidence:** [`document_inventory/cli.py`](../../../edgar_sec/pipelines/document_inventory/cli.py), [`document_planning/cli.py`](../../../edgar_sec/pipelines/document_planning/cli.py), and [`document_acquisition/cli.py`](../../../edgar_sec/pipelines/document_acquisition/cli.py) own the current stage-local command surfaces. The former `document_storage` command and runtime package are retired.
-- **Next step:** defer the vertical integration test until S10 processing and its fixtures are implemented; then wire explicit artifact IDs and add the zero-network, no-payload-write end-to-end fixture gate. Durable payload storage remains a separate S11 gate.
+- **Next step:** stage-owned S6 plan, S9 run, and local S7 review paths now exist. Production derived S10 processing remains disabled by the empty route/handler budget registry, and this S12 document's full gate additionally includes gated S11 publication and S8 maintenance. No integrated cross-stage run or quality gate currently orchestrates these stages; durable payload storage remains a separate S11 gate.
 
 ## Objective
 
@@ -59,8 +60,9 @@ not interchangeable, and the latter is not a verified legal co-filer list.
 never triggers network work.
 
 S12 does not define the stage-owned production acquisition CLI; that belongs to S9's
-command contracts. Acquisition and processing run from explicit S9 work orders and
-fixture replay. The S6 package-local operator is implemented by the S6 pipeline; an
+command contracts. `acquisition run` processes each acquired target inline; the S7
+fixture-review CLI separately consumes retained source evidence and run-staged bodies.
+The S6 package-local operator is implemented by the S6 pipeline; an
 integrated operator that moves among inventory, planning, acquisition, processing,
 and review remains a later S12 decision.
 

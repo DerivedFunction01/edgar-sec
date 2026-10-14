@@ -73,14 +73,14 @@ flowchart TD
         TARGET["Independent immutable target plan<br/>pins source and provenance"]
     end
 
-    subgraph S4["Stage 4 · document_acquisition (later, network)"]
+    subgraph S4["S9 · document_acquisition (implemented for supported locators, network)"]
         ACQ["Fetch selected direct URL<br/>or bundle and selected sequence"]
         FIX["Acquisition fixture/evidence<br/>source URL and body digest"]
     end
 
-    subgraph S5["S10 · document_acquisition processing (later, zero network)"]
-        NORM["Process captured document bytes"]
-        REVIEW["Review artifacts and diffs<br/>fixture replay only"]
+    subgraph S10["S10 · document_acquisition processing (partial, zero network)"]
+        NORM["Process acquired target inline<br/>raw identity; derived route budget-gated"]
+        REVIEW["Offline fixture review<br/>limited processing slice"]
     end
 
     STORE["Stage 6 · durable payload storage<br/>schema designed from reviewed outputs"]

@@ -5,6 +5,7 @@ import inspect
 import sqlite3
 import tempfile
 from collections import Counter
+from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
 from pathlib import PurePosixPath
@@ -182,6 +183,8 @@ def _persist_processing_result(
     row_by_id = {str(row["operation_id"]): row for row in rows}
     if len(results) != len(rows) or set(results) != set(row_by_id):
         raise ValueError("processing result coverage differs from resolved work order")
+    assessment = getattr(result, "exhibit_assessment", None)
+    assessment_fingerprint = getattr(result, "exhibit_assessment_fingerprint", None)
     manifest = {
         "schema_version": _PROCESSING_RESULT_SCHEMA_VERSION,
         "run_id": request.body.run_id,
@@ -189,6 +192,8 @@ def _persist_processing_result(
         "processing_id": result.processing_id,
         "source_sha256": result.source_sha256,
         "source_asset_id": result.source_asset_id,
+        "exhibit_assessment": (asdict(assessment) if assessment is not None else None),
+        "exhibit_assessment_fingerprint": assessment_fingerprint,
         "body_verified_by_processing": _body_receipt_verified(
             paths, request.body, result.processing_id
         ),
@@ -248,6 +253,17 @@ def _read_prior_processing_result(
         or type(manifest.get("body_verified_by_processing")) is not bool
     ):
         raise ValueError("processing result manifest identity differs from work order")
+    assessment = manifest.get("exhibit_assessment")
+    assessment_fingerprint = manifest.get("exhibit_assessment_fingerprint")
+    if (
+        (assessment is None) != (assessment_fingerprint is None)
+        or (assessment is not None and not isinstance(assessment, dict))
+        or (
+            assessment_fingerprint is not None
+            and not is_sha256_hex_digest(assessment_fingerprint)
+        )
+    ):
+        raise ValueError("processing result diagnostic assessment is invalid")
     if manifest["body_verified_by_processing"] != _body_receipt_verified(
         paths, body, manifest["processing_id"]
     ):

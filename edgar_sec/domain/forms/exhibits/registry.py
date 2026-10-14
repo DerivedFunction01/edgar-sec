@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from edgar_sec.domain.forms.common.exhibits import ExhibitIdentity
+from edgar_sec.domain.forms.common.exhibits import ExhibitIdentity, ExhibitPack
+from edgar_sec.domain.forms.exhibits.coverage import get_coverage_entry
 from edgar_sec.domain.forms.exhibits.packs import (
     ex1,
     ex2,
@@ -42,7 +43,7 @@ from edgar_sec.domain.forms.exhibits.packs import (
     ex107,
 )
 
-_PACK_BY_CODE: dict[tuple[str, str], object] = {
+_PACK_BY_CODE: dict[tuple[str, str], ExhibitPack] = {
     # Tier 1: Item 601 (reg_s_k_item_601)
     ("reg_s_k_item_601", "3.1"): ex3_1.PACK,
     ("reg_s_k_item_601", "3.2"): ex3_2.PACK,
@@ -98,17 +99,31 @@ _PACK_BY_CODE: dict[tuple[str, str], object] = {
 """Authority-qualified (authority_id, code) -> pack lookup."""
 
 
-def resolve_pack_for_identity(identity: ExhibitIdentity) -> object | None:
+def _has_active_pack(authority_id: str, code: str, pack: ExhibitPack) -> bool:
+    entry = get_coverage_entry(authority_id, code)
+    return (
+        entry is not None
+        and entry.coverage_status in ("candidate", "partial")
+        and pack.authority_id == authority_id
+    )
+
+
+def resolve_pack_for_identity(identity: ExhibitIdentity) -> ExhibitPack | None:
     """Resolve content pack for an exhibit identity.
 
     Returns the pack object if found, otherwise None.
     """
-    return _PACK_BY_CODE.get((identity.authority_id, identity.code))
+    pack = _PACK_BY_CODE.get((identity.authority_id, identity.code))
+    if pack is None or not _has_active_pack(identity.authority_id, identity.code, pack):
+        return None
+    return pack
 
 
 def list_active_packs() -> tuple[tuple[str, str], ...]:
     """List active pack IDs as (authority_id, code) tuples."""
-    return tuple(_PACK_BY_CODE.keys())
+    return tuple(
+        key for key, pack in _PACK_BY_CODE.items() if _has_active_pack(*key, pack)
+    )
 
 
 __all__ = [

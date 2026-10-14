@@ -413,6 +413,8 @@ def _project_target(
         effective_path=effective_path,
         processing_id=result.processing_id,
         operations=projected_operations,
+        exhibit_assessment=result.exhibit_assessment,
+        exhibit_assessment_fingerprint=result.exhibit_assessment_fingerprint,
     )
 
 

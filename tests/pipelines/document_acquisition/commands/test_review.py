@@ -81,6 +81,104 @@ def test_review_analyze_delegates_selected_runs_and_emits_json(
     assert json.loads(capsys.readouterr().out) == report
 
 
+def test_review_label_validates_run_before_writing_sidecar(
+    tmp_path: Path, monkeypatch, capsys
+) -> None:
+    root = tmp_path / "review"
+    artifact_path = root / "cases" / "case-a" / "processing-review.json"
+    artifact = {"artifact_sha256": "a" * 64}
+    calls = []
+    monkeypatch.setattr(
+        review,
+        "load_processing_review_artifact",
+        lambda path: (root, artifact) if path == artifact_path else None,
+    )
+    monkeypatch.setattr(
+        review,
+        "analyze_review_runs",
+        lambda runs: calls.append(("validate", runs)),
+    )
+    label = {
+        "artifact_sha256": "b" * 64,
+        "target_id": "target-a",
+        "outcome": "positive",
+    }
+    monkeypatch.setattr(
+        review,
+        "build_review_label",
+        lambda source, **kwargs: calls.append(("build", source, kwargs)) or label,
+    )
+    label_path = root / "labels" / "label.json"
+    monkeypatch.setattr(
+        review,
+        "write_review_label",
+        lambda run, source, record: (
+            calls.append(("write", run, source, record)) or label_path
+        ),
+    )
+
+    assert (
+        review.cmd_review_label(
+            SimpleNamespace(
+                artifact=str(artifact_path),
+                outcome="positive",
+                observed_kind="exhibit",
+                observed_authority="reg_s_k_item_601",
+                observed_code="3.1",
+                annotator_id="reviewer-a",
+                annotated_at_utc="2026-10-13T20:00:00Z",
+                evidence_ref="text:0-40",
+                rationale="matches",
+                annotation_kind="independent",
+                supersedes=None,
+                json=True,
+            )
+        )
+        == 0
+    )
+
+    assert calls[0] == ("validate", (root,))
+    assert calls[1][0] == "build"
+    assert calls[2] == ("write", root, artifact, label)
+    assert json.loads(capsys.readouterr().out)["label_sha256"] == "b" * 64
+
+
+def test_review_holdout_loads_a_frozen_spec_and_emits_report(
+    tmp_path: Path, monkeypatch, capsys
+) -> None:
+    run = tmp_path / "review-run"
+    run.mkdir()
+    spec_path = tmp_path / "holdout.json"
+    spec = {"schema_version": 1, "protocol_id": "holdout-v1"}
+    spec_path.write_text(json.dumps(spec), encoding="utf-8")
+    output = tmp_path / "holdout-report.json"
+    calls = []
+    report = {"protocol_id": "holdout-v1", "labeled_holdout_cases": 2}
+    monkeypatch.setattr(
+        review,
+        "analyze_holdout_review_run",
+        lambda selected_run, selected_spec, *, output: (
+            calls.append((selected_run, selected_spec, output)) or report
+        ),
+    )
+
+    assert (
+        review.cmd_review_holdout(
+            SimpleNamespace(
+                run=str(run),
+                spec=str(spec_path),
+                output=str(output),
+                artifacts="",
+                json=True,
+            )
+        )
+        == 0
+    )
+
+    assert calls == [(run, spec, output)]
+    assert json.loads(capsys.readouterr().out) == report
+
+
 def test_review_compare_validates_both_runs_before_shared_case_diff(
     tmp_path: Path, monkeypatch, capsys
 ) -> None:

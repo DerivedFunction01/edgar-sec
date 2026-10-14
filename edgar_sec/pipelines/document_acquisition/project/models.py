@@ -5,11 +5,16 @@ import json
 import sqlite3
 import tempfile
 from collections.abc import Iterable, Iterator
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from urllib.parse import quote
 
 from edgar_sec.domain.document.route import DocumentRoute
+from edgar_sec.domain.forms.common.exhibits import (
+    DocumentRoleAssessment,
+    EvidenceSpan,
+    ExhibitIdentity,
+)
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.pipelines.document_acquisition.processing.models import (
@@ -61,6 +66,8 @@ class ProjectedTarget:
     effective_path: str
     processing_id: str
     operations: tuple[ProjectedOperation, ...]
+    exhibit_assessment: DocumentRoleAssessment | None = None
+    exhibit_assessment_fingerprint: str | None = None
 
 
 @dataclass(slots=True)
@@ -185,6 +192,12 @@ def result_record(result: ProcessingResult) -> dict[str, object]:
         if isinstance(result.route, DocumentRoute)
         else result.route,
         "effective_path": result.effective_path,
+        "exhibit_assessment": (
+            asdict(result.exhibit_assessment)
+            if result.exhibit_assessment is not None
+            else None
+        ),
+        "exhibit_assessment_fingerprint": result.exhibit_assessment_fingerprint,
         "operation_results": [
             {
                 "operation_id": item.operation_id,
@@ -214,6 +227,24 @@ def result_record(result: ProcessingResult) -> dict[str, object]:
             for item in result.operation_results
         ],
     }
+
+
+def _assessment_from_record(record: object) -> DocumentRoleAssessment | None:
+    if record is None:
+        return None
+    if not isinstance(record, dict):
+        raise ResultProjectionError("assessment record is invalid")
+    data = dict(record)
+    data["expected_identity"] = ExhibitIdentity(**data["expected_identity"])
+    if data["observed_identity"] is not None:
+        data["observed_identity"] = ExhibitIdentity(**data["observed_identity"])
+    data["supporting_evidence"] = tuple(
+        EvidenceSpan(**item) for item in data["supporting_evidence"]
+    )
+    data["contradicting_evidence"] = tuple(
+        EvidenceSpan(**item) for item in data["contradicting_evidence"]
+    )
+    return DocumentRoleAssessment(**data)
 
 
 def result_from_record(record: dict[str, object]) -> ProcessingResult:
@@ -250,6 +281,7 @@ def result_from_record(record: dict[str, object]) -> ProcessingResult:
                 staged_output=staged_output,
             )
         )
+    assessment = _assessment_from_record(record.get("exhibit_assessment"))
     return ProcessingResult(
         processing_id=record["processing_id"],
         target_id=record["target_id"],
@@ -258,6 +290,8 @@ def result_from_record(record: dict[str, object]) -> ProcessingResult:
         route=DocumentRoute(record["route"]),
         effective_path=record["effective_path"],
         operation_results=tuple(operation_results),
+        exhibit_assessment=assessment,
+        exhibit_assessment_fingerprint=record.get("exhibit_assessment_fingerprint"),
     )
 
 
@@ -279,6 +313,12 @@ def projected_target_record(target: ProjectedTarget) -> dict[str, object]:
         "route": target.route.value,
         "effective_path": target.effective_path,
         "processing_id": target.processing_id,
+        "exhibit_assessment": (
+            asdict(target.exhibit_assessment)
+            if target.exhibit_assessment is not None
+            else None
+        ),
+        "exhibit_assessment_fingerprint": target.exhibit_assessment_fingerprint,
         "operations": [
             {
                 "operation_id": operation.operation_id,
@@ -321,6 +361,8 @@ def _projected_target_from_record(record: dict[str, object]) -> ProjectedTarget:
         route=DocumentRoute(record["route"]),
         effective_path=record["effective_path"],
         processing_id=record["processing_id"],
+        exhibit_assessment=_assessment_from_record(record.get("exhibit_assessment")),
+        exhibit_assessment_fingerprint=record.get("exhibit_assessment_fingerprint"),
         operations=tuple(
             ProjectedOperation(
                 operation_id=operation["operation_id"],

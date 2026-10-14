@@ -85,6 +85,36 @@ def _representation_name(route: DocumentRoute, detected: Representation) -> str:
     return REPRESENTATION_ASCII
 
 
+def _line_start_offset(text: str, line: int) -> int:
+    offset = 0
+    for _ in range(line):
+        newline = text.find("\n", offset)
+        if newline < 0:
+            return len(text)
+        offset = newline + 1
+    return offset
+
+
+def _trim_text_with_toc_span(
+    text: str, toc_span: TocSpan | None
+) -> tuple[str, TocSpan | None]:
+    leading = len(text) - len(text.lstrip())
+    leading_lines = text[:leading].count("\n")
+    normalized = text.strip()
+    if toc_span is None:
+        return normalized, None
+
+    start_line = max(0, toc_span.start_line - leading_lines)
+    end_line = max(0, toc_span.end_line - leading_lines)
+    return normalized, replace(
+        toc_span,
+        start_line=start_line,
+        end_line=end_line,
+        start_offset=_line_start_offset(normalized, start_line),
+        end_offset=_line_start_offset(normalized, end_line),
+    )
+
+
 def _normalize_paper_stub(raw_bytes: bytes, *, form: str | None) -> NormalizationResult:
     """Record a paper submission without running the form-driven prose pipeline.
 
@@ -345,8 +375,9 @@ def normalize_document(
     )
     closing_span = find_closing_span(text, search_from=closing_search_from)
 
+    text, toc_span = _trim_text_with_toc_span(text, toc_span)
     return NormalizationResult(
-        text=text.strip(),
+        text=text,
         family=family,
         representation=_representation_name(route, representation),
         cover_boundary=boundary,

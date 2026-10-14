@@ -1,11 +1,12 @@
 # S6 Declarative Target Plans and S9/S10 Acquisition Policy
 
-**Status:** `document_planning` generates target plans and carries declarative requested
-operations and source inputs. S6 bundle v4, target schema v1, and matcher v2 are implemented
-as declarative-only; the explicitly mirrored tests passed (106). `document_planning` does
-not resolve acquisition/processing support, handler IDs/versions, renderer availability, or
-lazy-index trigger policy. S9 resolver/work-order implementation remains in progress; those
-runtime resolutions belong to `document_acquisition`'s S9/S10 work-order policy.
+**Status (2026-10-13):** `document_planning` generates target plans with declarative
+operation/source-input intent. S6 bundle v4, target schema v1, and matcher v2 are
+implemented. S9 work-order v3 and operation resolution are also implemented in
+`document_acquisition`; current plans emit no family-trigger IDs/versions, and production
+derived processing remains disabled because `DEFAULT_PROCESSING_BUDGETS` is empty. Do not
+treat this design plan's described renderers or lazy-index triggers as enabled runtime
+capabilities.
 
 ## Goal
 
@@ -266,10 +267,11 @@ Keep the request, family allowance, path strategy, and implementation declaratio
    such as `raw`, `render_to_txt`, or `render_to_xml`. It does not declare that a processor
    implementation exists.
 3. **S9/S10 work-order policy** in `pipelines/document_acquisition` resolves requested
-   operations against family/role/path facts. S9 owns acquisition support, source inputs,
-   and reviewed lazy-index triggers. S10 owns processing support, renderer availability,
-   and handler ID/version selection. The S6 intent relations are implemented as
-   declarative-only; S9 resolver/work-order implementation remains in progress.
+    operations against family/role/path facts. S9 owns acquisition support, source inputs,
+    and trigger authorization; current work-order v3 resolves operation support and
+    handler ID/version pins, but emits no lazy-index trigger pins. S10 owns processing
+    support and execution admission; production derived routes remain disabled by the
+    empty budget registry. S6 stays declarative-only.
 4. **Engine handler metadata/registry** in `engine/document_processing/capabilities.py`
    and `registry.py` declares handler IDs, accepted generic input facts, output kind, and
    implementation version, then binds IDs to code at runtime. S10 work-order resolution
@@ -466,28 +468,27 @@ initial feature phase; subsequent phases have separate layer owners and acceptan
 - Shared path facts and target-plan generation exist.
 - S6 bundle v4, target schema v1, and matcher v2 are implemented as declarative-only;
   106 explicitly mirrored tests passed.
-- S9 resolver/work-order implementation remains in progress. Support, handlers, renderer
-  availability, and lazy-index triggers are resolved by `document_acquisition` S9/S10,
-  not by `document_planning`.
+- S9 work-order v3 and operation resolution are implemented and consumed by the
+  combined `acquisition run`. Current projections emit no family-trigger pins.
+- The production route/handler budget registry is empty, so production derived rendering
+  fails closed even though the operation policy/work-order modules are wired.
 
-**Phase 3-7 (Pending):**
-
-- S9 source acquisition pipeline updates
-- S10 processing orchestration integration
-- Offline integration tests with fixtures
-- Engine handler bindings (registry implementations)
-- All DocumentRoute consumers migrated to DocumentPathFacts
+**Current implementation delta:** S9 direct/bundle acquisition, S9 work-order resolution,
+combined acquisition-and-processing run, fixture/review tooling, and offline composition
+tests are wired. The remaining work is production S10 budget/handler enablement, reviewed
+family lazy-index triggers, evaluator/holdout work, and S11 publication; see the table
+below for per-phase status.
 
 | Phase | Owner | Scope and exit contract | Status |
 |---|---|---|---|
 | 0. Shared path facts | `domain/document` and retained engine consumers | Shared path facts are implemented. The former storage pipeline was retired rather than extended; no storage-only policy or fallback is moved into it. No acquisition operations are implemented here. | ✅ Implemented |
 | 1. S6 target planning | `pipelines/document_planning` | Generate deterministic target plans and carry declarative requested operations/source inputs. Do not resolve support, handler/version, renderer availability, or lazy-index triggers. Bundle v4, target schema v1, and matcher v2 are implemented as declarative-only; 106 explicitly mirrored tests passed. | ✅ Implemented |
 | 2. Engine processing | `engine/document_processing` | Execute only validated S10 work-order inputs. S9/S10 work-order policy resolves support and handler/version metadata before engine dispatch; runtime implementation status is tracked by the S10 plan. | Separate owner |
-| 3. S9 source acquisition | `pipelines/document_acquisition` | Existing acquisition baseline remains; resolver/work-order policy implementation is in progress. S9 owns source support and fail-closed family-specific lazy-index triggers, with Form 4 having no trigger. | ◐ In progress |
-| 4. S10 processing orchestration (M6) | `pipelines/document_acquisition` | An initial offline `process_target` validates work-order/body identity, verifies staged bytes, records an S9 consumption receipt, and returns transient identity results. Engine renderers, full operation-intent execution, review staging, and coordinator remain incomplete. | ◐ Partial |
+| 3. S9 source acquisition | `pipelines/document_acquisition` | Direct/bundle acquisition, run orchestration, and S9 work-order v3 resolution are integrated. Current plans have no lazy-index trigger pins; Form 4 has no trigger. | ✅ Implemented for supported targets; lazy recovery deferred |
+| 4. S10 processing orchestration (M6) | `pipelines/document_acquisition` | Per-target operation states/results run inline in `acquisition run`; raw identity is supported and TEXT identity is test-budgeted. Production derived routes fail closed because the route/handler budget registry is empty. | ◐ Partial |
 | 5a. Offline fixture composition (M7a) | `pipelines/document_acquisition` plus local fixtures | Replay a captured direct-TEXT S9 fixture, pass the actual request/result to terminal projection, and verify receipt, coverage, fingerprint, and staged-output integrity without HTTP. Emit a content-addressed processing-review artifact. Do not clean staged bodies based on the receipt alone; no durable representation payload is written. M3/M4 runner integration is not required. | ✅ Implemented |
-| 5b. Runner lifecycle integration (M7b) | `pipelines/document_acquisition` | Verify runner orchestration, retry, sibling failure isolation, and cleanup after explicit discard or publication adoption over fixture-backed processing. Review output remains S7-owned. | ✅ Runner/retry/isolation complete; cleanup remains gated |
-| 6a. Fixture/review wiring (M8a) | S10 exhibit-assessment and S7d owners | The shared review console, pipeline artifact writer, and offline fixture handoff are wired; fixture-label workflow and exhibit evaluator remain incomplete. This development work does not require holdout evidence or live SEC access. | ◐ Partial |
+| 5b. Runner lifecycle integration (M7b) | `pipelines/document_acquisition` | Runner orchestration, retry, sibling failure isolation, and fixture-backed processing are covered. Review output remains S7-owned. | ✅ Runner/retry/isolation complete; cleanup remains gated |
+| 6a. Fixture/review wiring (M8a) | S10 exhibit-assessment and S7d owners | Acquisition fixture fill and review generate/compare/analyze are wired for the supported S9/S10 slice; fixture-label workflow and exhibit evaluator remain incomplete. This development work does not require holdout evidence or live SEC access. | ◐ Partial |
 | 6b. Holdout acceptance (M8b) | S10 exhibit-assessment owner | Evaluate reviewed, issuer/accession/time-separated fixture labels in diagnostic shadow mode; report per-family errors. This gates accuracy claims; activation additionally requires resolved pack ownership and recorded family acceptance. Neither gates M8a development. | ⏳ Pending |
 | 7. Durable acquisition snapshot (M9) | acquisition publication owner | Publish versioned S5/S6/S9/S10 evidence only after its independent acceptance gate. S11 content publication remains separately gated. | ⏳ Pending |
 
@@ -515,24 +516,20 @@ resolution; do not pin a resolved catalog or selected handler/version in S6. Eng
 processing remains separately owned from target planning.
 `normalize_document` is the intended generic `render_to_txt` fallback for text and
 HTML/rendered-markup sources, with family-specific renderers taking precedence. It is not
-an XML, binary, paper, ZIP, or PDF renderer. This export path is not yet wired into S10.
-Phase 3 fetches and verifies source bodies.
-Phase 4's proposed [S10 processing decision tree](../document_acquisition/processing_decision_tree.md)
-and active [S9/S10 plan](../document_acquisition/plan.md) assign `processing/models.py`,
-`processing/worker.py`, and eventual coordination to pipeline adapters that validate S9 state,
-admit/verify bodies, construct `AcquisitionProcessRequest`, invoke the engine class, and
-own metadata results and receipts. They do not reimplement renderers. Proposed S10
-work-order resolution uses family/route-specific renderer precedence and the eligible
-normalizer fallback; data, graphics, and packages stay on route-specific handling.
-`target_type` is provenance, not a content-route override. S10 diagnostics cannot change
-the S6 target or S9 state. M6/M7 remain subject to their existing approval gates.
+an XML, binary, paper, ZIP, or PDF renderer. The engine normalizer is wired through S10,
+but production use is disabled by the empty route/handler budget registry; the default
+`acquisition run` path fails closed for budget-dependent normalization. The combined run
+validates the S9 work order, admits/verifies bodies, constructs per-target requests,
+invokes engine handlers, and owns metadata results/receipts. `target_type` is provenance,
+not a content-route override. S10 diagnostics cannot change the S6 target or S9 state.
 
-Before implementation, reconcile the proposed multi-operation/source-request model with
-the normative [S10 processing contract](../S10_processing.md). The requested policy keeps
-flat XML/XSD raw-only without validation, uses the engine normalizer as the generic text
-renderer, and applies family-specific handlers before eligible generic ones. Preserve
-route-specific memory admission, same-bytes digest verification, metadata-only results,
-receipt timing, and S7 review ownership unless their owner versions a change.
+S6 operation/source-input intent and S9 work-order resolution are implemented. The
+remaining checks below specify per-operation behavior and enablement requirements; they
+are not evidence that every listed family renderer is available. Flat XML/XSD stays
+raw-only without a handler contract; the engine normalizer is the generic text renderer
+only when an eligible route/handler budget is configured. Preserve route-specific memory
+admission, same-bytes digest verification, metadata-only results, receipt timing, and S7
+review ownership unless their owner versions a change.
 
 ## S6 declarative-plan acceptance
 
@@ -555,10 +552,11 @@ These checks belong to S9/S10 work-order policy, not S6 planning:
 - S9 fetches or reuses each eligible source request, verifies response/selected hashes
   and sizes, replays the recorded body, and records per-source outcomes. Acquisition
   failure does not trigger an unplanned URL/operation fallback.
-- S10 tests the generic normalizer text path and family-specific overrides on admitted
-  bytes, including output digest/size, handler-version fingerprints, and independent
-  per-operation failures. PDF extraction remains unavailable; output-fidelity corpus
-  tests belong to the renderer gate.
+- Engine tests exercise the generic normalizer text path and family-specific overrides on
+  admitted bytes, including output digest/size, handler-version fingerprints, and
+  independent per-operation failures. Production acquisition remains fail-closed until
+  measured route/handler budgets are registered. PDF extraction remains unavailable;
+  output-fidelity corpus tests belong to the renderer gate.
 - Lazy-index triggers require a reviewed family-specific pattern and fail closed when no
   pattern is available. Form 4 has no lazy trigger.
 - This plan defines no Form 4 XML output or handler contract. Flat XML/XSD remains raw

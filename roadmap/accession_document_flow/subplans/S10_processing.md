@@ -13,27 +13,32 @@
   before body read/hash and writes no receipt. No representative production input, output,
   or working-set envelopes exist. Form 4 XML remains unsupported: its output contract and
   handler are absent.
-  The retired `document_storage.FilingProcessor` is not a current runtime owner. Exhibit
-  packs are not an active evaluator or holdout evidence.
-- A processing-review artifact writer is exercised by captured S9 fixture replay and is
-  wired to shared review generate/compare for the limited S9/S10 fixture slice. Reviewer
-  labels, exhibit assessment, and full transform coverage remain incomplete; S10 runtime
-  does not depend on review. See [`review_artifacts/builder.py`](../../../edgar_sec/pipelines/document_acquisition/review_artifacts/builder.py),
+   The retired `document_storage.FilingProcessor` is not a current runtime owner. Eligible
+   planned exhibits can carry a private, version-pinned opening-view assessment; current
+   coverage is synthetic, and no holdout accuracy or family activation is implied.
+- A processing-review artifact writer is exercised by captured S9 fixture evidence and is
+  wired to shared review generate/compare/analyze for the limited S9/S10 fixture slice.
+  Artifact v2 can pin an assessment; `review label` stores immutable sidecars and
+  `review holdout` reports counts from an explicit issuer/time partition. No representative
+  labels or holdout outcomes are tracked; S10 runtime does not depend on review. See
+  [`review_artifacts/builder.py`](../../../edgar_sec/pipelines/document_acquisition/review_artifacts/builder.py),
   [`commands/review.py`](../../../edgar_sec/pipelines/document_acquisition/commands/review.py),
   and [`review_artifacts/test_builder.py`](../../../tests/pipelines/document_acquisition/review_artifacts/test_builder.py).
-- S11 publication consumes S10 outputs after its fixture-driven gate; see the
-  [acquisition lifecycle plan](document_acquisition/lifecycle.md). Publication and cleanup
-  remain approval-gated.
+- S11 is a separate, unimplemented durable-payload path; it is not a prerequisite or
+  approval prompt for `acquisition run` or the local fixture/review console. The only
+  local evidence confirmation is fixture fill; review generation and analysis are offline.
+  See the [acquisition lifecycle plan](document_acquisition/lifecycle.md) for the distinct
+  S11 design.
 - Production gates remain: measured route-budget evidence, a Form 4 XML output
   contract/handler, reviewed family lazy-index triggers, serialization/effect of the
   already-defined plan-scoped supersession selector in a new immutable snapshot, and S11
-  publication/cleanup approval. No supersession pruning occurs.
+  payload publication/cleanup design. No supersession pruning occurs.
 - Per-operation IDs, results, attempts, and payload relations are defined in the
   [representation materialization contract](document_acquisition/representation_materialization_contract.md).
 - Exhibit assessment proposal: [S10 taxonomy and evidence-pack design](S10_exhibit_assessment.md).
 - Legacy behavior audit: [document_storage processing trace](S10_legacy_processing_trace.md).
 
-## Current tracked-code audit (2026-10-12)
+## Current tracked-code audit (2026-10-13)
 
 - **Status:** S9 work-order v3 resolves operation support/handler pins and stores operation
   state/attempts. Its nullable lazy-trigger ID/version fields are currently null because no

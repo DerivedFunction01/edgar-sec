@@ -1,5 +1,10 @@
 # Acquisition Fixtures & Review Console Follow-up
 
+**Status (2026-10-13): Implemented.** The acquisition operator uses the active-plan,
+fixture, and review flow below; implementation is evidenced by
+[`operator.py`](../../../../edgar_sec/pipelines/document_acquisition/operator.py),
+[`fixtures/index.md`](fixtures/index.md), and the mirrored operator/review tests.
+
 ## Objective
 
 Align the acquisition fixture/review console with the implemented
@@ -20,12 +25,12 @@ legacy readers, compatibility aliases, or dual-version behavior.
 
 ## Current behavior
 
-The acquisition operator has a dedicated fixture/review submenu. It creates an empty
-fixture store, captures a selected run/target/attempt into it, lists fixture cases,
-replays one captured selected body to a new caller-chosen path, generates review
-artifacts, and compares review runs. Fill and replay ask default-no confirmations.
-`review audit` is a fail-closed placeholder. The console has no active-plan selection,
-does not bind a fixture to a published S6 plan, and does not analyze review runs.
+The acquisition operator selects an active published S6 plan, creates a plan-pinned
+fixture, fills it from an exact recorded run/target/attempt with default-no confirmation,
+and lists discovered fixtures. The same offline console generates, compares, and analyzes
+review runs. Review generation verifies fixture bytes internally; there is no public
+raw-body replay/export action. Existing acquisition fixtures do not exist on disk; the
+store is a rewrite without a legacy reader or migration.
 
 Inventory's shared review console selects a published plan, creates/fills fixtures
 against that plan, discovers fixtures, generates review artifacts, compares runs,
@@ -55,7 +60,7 @@ body remaining available. A standalone raw-body export would be a different feat
 add it only if there is a concrete user workflow that needs a file outside the review
 artifacts.
 
-## Target console
+## Implemented console
 
 ```text
 Document Acquisition Fixtures & Review Console
@@ -101,17 +106,19 @@ outside the fixture/review console.
 7. **Comparison:** Select two validated acquisition review runs, compute the existing
    case-level diff, and display its summary. Do not compare acquisition runs through
    Inventory's schema-specific parser analyzer.
-8. **Offline analysis:** Replace the `review audit` placeholder with a review-run
-    analysis command/menu action. Validate selected run manifests and output digests,
-    report acquisition-specific processing and fixture-verification outcomes, plus
-    stable per-run aggregates. Make zero network calls. Keep it read-only with respect
-    to fixtures and review runs; write a separate analysis result only when an explicit
-    output path is selected.
+ 8. **Offline analysis:** The acquisition-specific review analyzer validates selected
+    review manifests and output digests, reports acquisition-specific processing and
+    fixture-verification outcomes, and returns stable per-run aggregates. It makes zero
+    network calls and is read-only with respect to fixtures and review runs; a separate
+    analysis result is written only when an explicit output path is selected.
 9. **Evidence boundary:** Fixture/review acceptance is based on local provenance,
     integrity, and review-output validation. Do not require evidence or approval from
     another acquisition workflow to use this console.
 
-## Implementation sequence
+## Completed implementation sequence
+
+The following sequence records completed implementation work; the acceptance section
+describes current behavior, not remaining prerequisites.
 
 1. Define and test the new fixture manifest/store around the immutable S6 plan pin.
    Pin the plan's stable ID, schema version, and input digest; validate that a fill run

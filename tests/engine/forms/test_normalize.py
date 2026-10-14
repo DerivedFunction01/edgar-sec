@@ -5,6 +5,8 @@ from __future__ import annotations
 import pytest
 
 from edgar_sec.engine.forms.normalize import NormalizationResult, normalize_document
+from edgar_sec.engine.forms.normalize import _trim_text_with_toc_span
+from edgar_sec.engine.forms.cover.toc.models import TocSpan
 from edgar_sec.engine.tables.protection.tags import SENTINEL_PREFIX, SENTINEL_SUFFIX
 from tests.support import load_fixture
 
@@ -100,6 +102,27 @@ def test_normalize_empty_payload() -> None:
     assert len(res.stage_trace) >= 1
     assert res.stage_trace[0].stage == "unpacked"
     assert res.stage_trace[0].char_count == 0
+
+
+def test_toc_offsets_match_trimmed_normalized_text() -> None:
+    text = "\ncover\nTABLE OF CONTENTS\nITEM 1. BUSINESS\nITEM 2. PROPERTIES\nbody\n"
+    span = TocSpan(
+        start_line=2,
+        end_line=5,
+        start_offset=text.index("TABLE"),
+        end_offset=text.index("body"),
+        method="test",
+        confidence=1.0,
+    )
+
+    normalized, aligned = _trim_text_with_toc_span(text, span)
+
+    assert aligned is not None
+    assert aligned.start_line == 1
+    assert aligned.end_line == 4
+    assert normalized[aligned.start_offset : aligned.end_offset] == (
+        "TABLE OF CONTENTS\nITEM 1. BUSINESS\nITEM 2. PROPERTIES\n"
+    )
 
 
 _HARD_WRAPPED = (

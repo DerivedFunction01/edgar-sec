@@ -3,17 +3,19 @@
 ## Owner and status
 
 - Owning stage in [S9](S9_acquisition.md): acquisition work-order boundary.
-- Status: S6 target-plan production and the S9a bounded Parquet adapter are
-  implemented. The S6 bundle is v3 and contains the target relation only; no new
-  operation-aware S6/S9 schema is implemented. Acquisition remains the separate S9 run.
+- Status (2026-10-13): S6 bundle v4, S9 target/work-order v3, and bounded Parquet
+  projection are implemented. S6 carries declarative operation/source-input intent and
+  S9 resolves operation support/handler pins. The combined `acquisition run` processes
+  each acquired target inline; production derived rendering remains blocked by the empty
+  budget registry.
 - Depends on: S6 target-plan schema and S4 broker lifecycle; the target bundle is
   self-contained for acquisition.
 
-## Current tracked-code audit (2026-10-12)
+## Current tracked-code audit (2026-10-13)
 
-- **Status: S9a projection and S9 acquisition are integrated.** The current S6 producer emits target-only bundle schema v3 with declared target-part byte sizes. `plan_projection.target_plan` validates that pinned bundle and streams every target into the target-only Parquet work-order schema; `plan_projection.project` binds it to the immutable run manifest and state database. S9 performs bounded HTTP acquisition and exact bundle-sequence extraction. This does not implement operation-aware S6/S9 schemas, S10 coordination, or renderer handlers.
+- **Status: projection and the combined acquisition/processing run are integrated.** `plan_projection.target_plan` validates the pinned S6 bundle and streams target plus resolved operation rows into the S9 work-order schema; `plan_projection.project` binds it to the immutable run manifest and state database. S9 performs bounded HTTP acquisition and exact bundle-sequence extraction. The runner invokes per-target processing inline; derived production renderers remain unavailable because the budget registry is empty. A separate process-only run command is not registered or required by the combined path.
 - **Evidence:** [`plan_projection/target_plan.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/target_plan.py), [`plan_projection/project.py`](../../../edgar_sec/pipelines/document_acquisition/plan_projection/project.py), [`schemas.py`](../../../edgar_sec/pipelines/document_acquisition/schemas.py), and [`arrow_schemas.py`](../../../edgar_sec/pipelines/document_acquisition/arrow_schemas.py) own the target-only contracts. [`test_offline_acceptance.py`](../../../tests/pipelines/document_acquisition/test_offline_acceptance.py) pins bundle schema v3; [`plan_projection/test_target_plan.py`](../../../tests/pipelines/document_acquisition/plan_projection/test_target_plan.py) covers validation/projection. The former catalog-plan adapter is retired with `document_storage`.
-- **Next step:** complete remaining historical mismatch coverage. Family-aware lazy-index triggers and the requested S10 processing policy remain unimplemented; `process --run-id`, an S10 coordinator, and renderer handlers do not exist. `process_target` is a per-target service. M7b runner/retry/isolation coverage is complete, but cleanup remains explicitly gated; S11 publication remains gated.
+- **Next step:** complete remaining historical mismatch coverage and populate resource-reviewed production handler budgets before enabling derived normalization. Current S6 projections do not pin family-specific lazy-index triggers. M7b runner/retry/isolation coverage is complete, but cleanup and S11 publication remain separately gated.
 
 ## Objective
 

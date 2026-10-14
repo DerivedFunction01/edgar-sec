@@ -9,6 +9,10 @@ from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.review.paths import PIPELINE_REVIEW_MANIFEST_FILE
+from edgar_sec.pipelines.document_acquisition.review_artifacts.labels import (
+    ReviewLabelError,
+    load_case_review_labels,
+)
 
 _CASE_STATUSES = {
     "complete",
@@ -69,9 +73,11 @@ def _load_artifact(root: Path, record: dict[str, Any]) -> dict[str, Any]:
         raise ReviewAnalysisError("case artifact is unreadable") from error
     if not isinstance(artifact, dict):
         raise ReviewAnalysisError("case artifact must be a JSON object")
+    artifact_type = artifact.get("artifact_type")
+    artifact_version = artifact.get("artifact_version")
     if (
-        artifact.get("artifact_type") != "document_acquisition.processing_review"
-        or artifact.get("artifact_version") != 1
+        artifact_type != "document_acquisition.processing_review"
+        or artifact_version not in {1, 2}
     ):
         raise ReviewAnalysisError("case artifact format is unsupported")
     digest = artifact.get("artifact_sha256")
@@ -98,6 +104,23 @@ def _load_artifact(root: Path, record: dict[str, Any]) -> dict[str, Any]:
     return artifact
 
 
+def _case_label_outcome(labels: tuple[dict[str, object], ...]) -> str | None:
+    adjudications = tuple(
+        label for label in labels if label.get("annotation_kind") == "adjudication"
+    )
+    if len(adjudications) > 1:
+        raise ReviewAnalysisError("case has multiple adjudication labels")
+    if adjudications:
+        return str(adjudications[0]["outcome"])
+    independent = tuple(
+        label for label in labels if label.get("annotation_kind") == "independent"
+    )
+    outcomes = {str(label["outcome"]) for label in independent}
+    if len(independent) >= 2 and len(outcomes) == 1:
+        return next(iter(outcomes))
+    return None
+
+
 def analyze_review_run(run: str | Path) -> dict[str, Any]:
     requested_root = Path(run).expanduser()
     if requested_root.is_symlink():
@@ -110,6 +133,9 @@ def analyze_review_run(run: str | Path) -> dict[str, Any]:
         raise ReviewAnalysisError("review manifest is missing or unsafe")
     statuses: Counter[str] = Counter()
     operations: Counter[str] = Counter()
+    label_annotations: Counter[str] = Counter()
+    family_form_metrics: dict[tuple[str, str], Counter[str]] = {}
+    unresolved_label_cases = 0
     seen: set[tuple[str, str, str]] = set()
     previous: tuple[str, str, str] | None = None
     total = 0
@@ -178,6 +204,54 @@ def analyze_review_run(run: str | Path) -> dict[str, Any]:
                             )
                         operation_ids.add(operation["operation_id"])
                         operations[operation["status"]] += 1
+                    try:
+                        labels = load_case_review_labels(root, artifact)
+                    except ReviewLabelError as error:
+                        raise ReviewAnalysisError(
+                            "case review labels are invalid"
+                        ) from error
+                    if labels:
+                        for label in labels:
+                            label_annotations[str(label["outcome"])] += 1
+                        family_key = (
+                            str(artifact.get("form", "")),
+                            str(artifact.get("target_type", "")),
+                        )
+                        counts = family_form_metrics.setdefault(family_key, Counter())
+                        counts["annotations"] += len(labels)
+                        counts["cases"] += 1
+                        outcome = _case_label_outcome(labels)
+                        if outcome is None:
+                            unresolved_label_cases += 1
+                            counts["unresolved_cases"] += 1
+                            continue
+                        processing = artifact["processing"]
+                        assessment = processing.get("exhibit_assessment")
+                        disposition = (
+                            assessment.get("disposition")
+                            if isinstance(assessment, dict)
+                            else None
+                        )
+                        prediction = {
+                            "consistent": "positive",
+                            "possible_role_mismatch": "negative",
+                        }.get(disposition, "ambiguous")
+                        counts["resolved_cases"] += 1
+                        if outcome == "ambiguous":
+                            counts["ambiguous_labels"] += 1
+                        elif prediction == "ambiguous":
+                            counts["prediction_abstentions"] += 1
+                            counts[f"{outcome}_abstentions"] += 1
+                            if outcome == "positive":
+                                counts["false_negatives"] += 1
+                        elif outcome == "positive" and prediction == "positive":
+                            counts["true_positives"] += 1
+                        elif outcome == "positive":
+                            counts["false_negatives"] += 1
+                        elif prediction == "positive":
+                            counts["false_positives"] += 1
+                        else:
+                            counts["true_negatives"] += 1
                 elif record.get("outputs") != {}:
                     raise ReviewAnalysisError(
                         "failed case unexpectedly references outputs"
@@ -191,6 +265,34 @@ def analyze_review_run(run: str | Path) -> dict[str, Any]:
         "total_cases": total,
         "case_status_counts": {key: statuses[key] for key in sorted(statuses)},
         "operation_status_counts": {key: operations[key] for key in sorted(operations)},
+        "label_annotation_counts": {
+            key: label_annotations[key] for key in ("positive", "negative", "ambiguous")
+        },
+        "unresolved_label_cases": unresolved_label_cases,
+        "family_form_metrics": [
+            {
+                "form": form,
+                "family": family,
+                **{
+                    key: counts[key]
+                    for key in (
+                        "annotations",
+                        "cases",
+                        "resolved_cases",
+                        "unresolved_cases",
+                        "true_positives",
+                        "false_positives",
+                        "true_negatives",
+                        "false_negatives",
+                        "ambiguous_labels",
+                        "prediction_abstentions",
+                        "positive_abstentions",
+                        "negative_abstentions",
+                    )
+                },
+            }
+            for (form, family), counts in sorted(family_form_metrics.items())
+        ],
     }
 
 
