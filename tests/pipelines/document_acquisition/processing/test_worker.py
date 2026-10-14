@@ -829,10 +829,7 @@ def test_form4_xml_with_registered_handler_succeeds(
     assert results[1].status == "available"
     assert results[1].staged_output is not None
     assert results[1].staged_output.representation == "xml"
-    assert (
-        b'<ownershipDocument format="html_passthrough">'
-        in results[1].staged_output.path.read_bytes()
-    )
+    assert b"<ownershipDocument>" in results[1].staged_output.path.read_bytes()
 
 
 def test_process_target_rejects_selected_filename_for_direct_target(

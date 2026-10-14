@@ -7,6 +7,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
+from edgar_sec.domain.forms.common.vocabulary import SIGNATURE_TITLE_TERMS
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import (
     NUMERIC_DATE_RE,
@@ -34,7 +35,7 @@ _SIGNATURE_HEADER_RE = re.compile(
 _SIGNATURE_UNDERLINE_RE = re.compile(r"^\s*[_=-]{3,}\s*$")
 
 _SIGNATURE_TITLE_RE = re.compile(
-    rf"\b(?:{build_alternation(('director', 'officer', 'president', 'treasurer', 'secretary', 'chief', 'vice', 'principal', 'accounting', 'financial', 'executive', 'attorney'), auto_escape=True)})\b",
+    rf"\b(?:{build_alternation(SIGNATURE_TITLE_TERMS, auto_escape=True)})\b",
     re.IGNORECASE,
 )
 _SIGNATURE_LAYOUT_GAP_RE = re.compile(r"\s{2,}|\t")

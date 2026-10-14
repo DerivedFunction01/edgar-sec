@@ -114,8 +114,7 @@ def test_form4_html_to_xml_handler_wraps_html_and_preserves_xml() -> None:
         "4", "primary", "primary", "nbr59.htm", facts, DocumentRoute.MARKUP
     )
     html_out = reg.handler(b"<html><body>Test</body></html>", context)
-    assert b'<ownershipDocument format="html_passthrough">' in html_out
-    assert b"&lt;html&gt;&lt;body&gt;Test&lt;/body&gt;&lt;/html&gt;" in html_out
+    assert b"<ownershipDocument>" in html_out
     xml_input = b'<?xml version="1.0"?><ownershipDocument/>'
     xml_out = reg.handler(xml_input, context)
     assert xml_out == xml_input

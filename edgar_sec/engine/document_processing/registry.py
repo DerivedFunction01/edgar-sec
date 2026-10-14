@@ -151,19 +151,10 @@ def _normalize_document(raw_bytes: bytes, context: HandlerContext) -> str:
     return result.text
 
 
-def _form4_html_to_xml(raw_bytes: bytes, _context: HandlerContext) -> bytes:
-    stripped = raw_bytes.strip()
-    if stripped.startswith(b"<?xml") or stripped.startswith(b"<ownershipDocument"):
-        return raw_bytes
-    text = raw_bytes.decode("utf-8", errors="replace")
-    escaped = html.escape(text)
-    xml_str = (
-        '<?xml version="1.0" encoding="utf-8"?>\n'
-        '<ownershipDocument format="html_passthrough">\n'
-        f"  <rawHtmlContent>{escaped}</rawHtmlContent>\n"
-        "</ownershipDocument>\n"
-    )
-    return xml_str.encode("utf-8")
+def _form4_html_to_xml(raw_bytes: bytes, context: HandlerContext) -> bytes:
+    from edgar_sec.engine.forms.ownership.render_to_xml import render_form4_to_xml
+
+    return render_form4_to_xml(raw_bytes, context)
 
 
 def default_handler_registry() -> HandlerRegistry:
