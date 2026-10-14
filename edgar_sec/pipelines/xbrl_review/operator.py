@@ -1,13 +1,13 @@
-"""Interactive operator console for XBRL semantic review and staging."""
+"""Interactive operator console for XBRL semantic review and DAG staging."""
 
 from __future__ import annotations
 
-import argparse
 import json
 from pathlib import Path
 import sys
 
-from edgar_sec.engine.xbrl.review.benchmark import execute_cohort_benchmark
+import pyarrow.parquet as pq
+
 from edgar_sec.foundation.runtime.interactive import (
     MenuAction,
     PickItem,
@@ -15,16 +15,19 @@ from edgar_sec.foundation.runtime.interactive import (
     menu_action,
     operator_entrypoint,
     prompt_paginated_choice,
-    prompt_text,
 )
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.infra.storage.review.diff import compare_review_runs
 from edgar_sec.pipelines.xbrl_review.cli import main as cli_main
 from edgar_sec.pipelines.xbrl_review.discovery import (
     discover_cohorts,
+    discover_plans,
     discover_review_runs,
 )
-from edgar_sec.pipelines.xbrl_review.paths import resolve_xbrl_review_paths
+from edgar_sec.pipelines.xbrl_review.paths import (
+    HYPOTHESES_FILE,
+    xbrl_paths,
+)
 from edgar_sec.pipelines.xbrl_review.review import (
     execute_review_generation,
     promote_review_rule,
@@ -34,26 +37,51 @@ from edgar_sec.pipelines.xbrl_review.review_artifacts.adapter import XbrlReviewA
 MENU_TITLE = "XBRL Semantic Review & Staging"
 
 
-def _action_benchmark() -> None:
-    cohorts = discover_cohorts()
-    if not cohorts:
-        print("No cohorts discovered.")
-        return
-    items = [
-        PickItem(key=str(idx), label=c["label"], value=c["path"])
-        for idx, c in enumerate(cohorts, start=1)
+def _action_project() -> None:
+    mode_items = [
+        PickItem(
+            key="1", label="Pipeline Dataset / Cohort (sp100, seed)", value="dataset"
+        ),
+        PickItem(key="2", label="Published Catalog Plan", value="plan"),
     ]
-    chosen = prompt_paginated_choice(
-        items, prompt_label="Select cohort for benchmark", default=items[0]
-    )
-    if chosen is None:
+    chosen_mode = prompt_paginated_choice(mode_items, prompt_label="Select input mode")
+    if chosen_mode is None:
         return
-    print(f"\nExecuting benchmark against: {chosen.value} ...")
-    report = execute_cohort_benchmark(cohort_source=chosen.value)
-    print(
-        f"\nBenchmark completed: {report.passed_tests}/{report.total_tests} passed "
-        f"({report.accuracy_pct}%) in {round(report.total_latency_ms, 2)} ms."
-    )
+
+    cli_args = ["project"]
+    if chosen_mode.value == "plan":
+        plans = discover_plans()
+        if not plans:
+            print("No published filing catalog plans discovered.")
+            return
+        plan_items = [
+            PickItem(key=str(idx), label=f"{p.plan_id} ({p.name})", value=p.plan_id)
+            for idx, p in enumerate(plans, start=1)
+        ]
+        chosen_plan = prompt_paginated_choice(
+            plan_items, prompt_label="Select catalog plan"
+        )
+        if chosen_plan is None:
+            return
+        cli_args.extend(["--catalog-plan", chosen_plan.value])
+    else:
+        cohorts = discover_cohorts()
+        if not cohorts:
+            print("No dataset cohorts discovered.")
+            return
+        cohort_items = [
+            PickItem(key=str(idx), label=c["label"], value=str(c["path"]))
+            for idx, c in enumerate(cohorts, start=1)
+        ]
+        chosen_cohort = prompt_paginated_choice(
+            cohort_items, prompt_label="Select cohort dataset"
+        )
+        if chosen_cohort is None:
+            return
+        cli_args.extend(["--dataset", chosen_cohort.value])
+
+    print(f"\nProjecting XBRL execution with: {' '.join(cli_args)}")
+    cli_main(cli_args)
 
 
 def _action_generate_review() -> None:
@@ -70,8 +98,17 @@ def _action_generate_review() -> None:
     )
     if chosen is None:
         return
-    limit_raw = prompt_text("Limit filings (press enter for all)", "").strip()
-    limit = int(limit_raw) if limit_raw.isdigit() else None
+
+    limit_items = [
+        PickItem(key="1", label="All filings in cohort", value=None),
+        PickItem(key="2", label="10 filings (quick verification)", value=10),
+        PickItem(key="3", label="25 filings", value=25),
+        PickItem(key="4", label="50 filings", value=50),
+    ]
+    chosen_limit = prompt_paginated_choice(
+        limit_items, prompt_label="Select filing limit", default=limit_items[0]
+    )
+    limit = chosen_limit.value if chosen_limit is not None else None
 
     raw = json.loads(chosen.value.read_text(encoding="utf-8"))
     filings = raw if isinstance(raw, list) else raw.get("filings", [])
@@ -116,7 +153,7 @@ def _action_compare_runs() -> None:
 
     adapter = XbrlReviewAdapter()
     diff_dir = (
-        resolve_xbrl_review_paths().review_runs_dir
+        xbrl_paths().review_runs_root
         / f"diff-{base_choice.value.name}_vs_{new_choice.value.name}"
     )
     print(f"\nComparing {base_choice.value.name} vs {new_choice.value.name}...")
@@ -160,11 +197,11 @@ def _action_promote_rule() -> None:
     all_hyps: list[dict] = []
     if cases_dir.is_dir():
         for cp in cases_dir.iterdir():
-            hyp_p = cp / "hypotheses.json"
+            hyp_p = cp / HYPOTHESES_FILE
             if hyp_p.is_file():
                 try:
-                    all_hyps.extend(json.loads(hyp_p.read_text(encoding="utf-8")))
-                except (OSError, json.JSONDecodeError):
+                    all_hyps.extend(pq.read_table(hyp_p).to_pylist())
+                except (OSError, ValueError):
                     pass
 
     if not all_hyps:
@@ -190,7 +227,7 @@ def _action_promote_rule() -> None:
 
 
 def _action_inspect_rules() -> None:
-    db_p = resolve_xbrl_review_paths().unification_rules_db_path
+    db_p = xbrl_paths().unification_rules_db_path
     if not db_p.is_file():
         print(f"No unification rules database found at {db_p}")
         return
@@ -207,16 +244,28 @@ def _action_inspect_rules() -> None:
         print(f"  * {r[0]:<36} {r[2]} -> {r[1]} (weight={r[3]}, firm={r[4]})")
 
 
+def _action_dag() -> None:
+    dag_items = [
+        PickItem(key="1", label="Status & HEAD Pointer", value=["dag", "status"]),
+        PickItem(key="2", label="Commit Lineage Log", value=["dag", "log"]),
+        PickItem(key="3", label="List Branches", value=["dag", "branch"]),
+        PickItem(key="4", label="Integrity & Health Doctor", value=["dag", "doctor"]),
+    ]
+    chosen = prompt_paginated_choice(dag_items, prompt_label="Select DAG operation")
+    if chosen is None:
+        return
+    cli_main(chosen.value)
+
+
 def build_operator_menu() -> tuple[MenuAction, ...]:
     """Build the menu action loop for the XBRL review operator console."""
     return build_menu(
-        menu_action(
-            "Run semantic robustness benchmark (Seed / S&P 100)", _action_benchmark
-        ),
-        menu_action("Generate new review run from cohort", _action_generate_review),
+        menu_action("Project batch execution from plan or dataset", _action_project),
+        menu_action("Generate review run from cohort", _action_generate_review),
         menu_action("Compare two review runs and report diffs", _action_compare_runs),
         menu_action("Inspect and promote candidate hypotheses", _action_promote_rule),
         menu_action("Query promoted unification rules database", _action_inspect_rules),
+        menu_action("Inspect DAG catalog, lineage, and branch pointers", _action_dag),
     )
 
 

@@ -38,6 +38,7 @@ RUN_LOCK_FILE = "run.lock"
 RUN_MANIFEST_FILE = "run_manifest.json"
 MANIFEST_FILE = "manifest.json"
 POINTER_FILE = "current.json"
+ATTEMPT_PREFIX = "attempt-"
 PUBLICATION_LOCK_FILE = ".publication.lock"
 _PATH_COMPONENT_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\Z")
 
@@ -187,6 +188,7 @@ def resolve_paths(repo_root: Path | str | None = None) -> ProjectPaths:
 
 
 __all__ = [
+    "ATTEMPT_PREFIX",
     "CASES_DIR",
     "CHUNKS_DIR",
     "CURRENT_DIR",

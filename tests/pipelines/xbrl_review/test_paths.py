@@ -2,28 +2,35 @@
 
 from pathlib import Path
 
-from edgar_sec.pipelines.xbrl_review.paths import resolve_xbrl_review_paths
+from edgar_sec.pipelines.xbrl_review.paths import (
+    WORK_ORDER_FILE,
+    xbrl_paths,
+    xbrl_run_paths,
+)
 
 
-def test_resolve_xbrl_review_paths(tmp_path: Path) -> None:
-    """Verify standard paths and directory creation."""
-    paths = resolve_xbrl_review_paths(artifacts_root=tmp_path)
+def test_xbrl_paths_properties(tmp_path: Path) -> None:
+    """Verify standard paths and directory properties."""
+    paths = xbrl_paths(artifacts_root=tmp_path)
     assert paths.artifacts_root == tmp_path
-    assert paths.review_runs_dir == tmp_path / "xbrl" / "review-runs"
-    assert paths.staging_lake_dir == tmp_path / "xbrl" / "staging_lake"
+    assert paths.review_runs_root == tmp_path / "xbrl" / "review-runs"
+    assert paths.snapshots_root == tmp_path / "xbrl" / "snapshots"
     assert (
         paths.unification_rules_db_path
         == tmp_path / "xbrl" / "unification_rules.duckdb"
     )
 
-    paths.ensure_directories()
-    assert paths.review_runs_dir.is_dir()
-    assert paths.staging_lake_dir.is_dir()
-
-
-def test_review_run_paths(tmp_path: Path) -> None:
-    """Verify ReviewPaths derivation for chronological run ID."""
-    paths = resolve_xbrl_review_paths(artifacts_root=tmp_path)
-    rp = paths.review_run_paths("run-20261014_120000")
+    rp = paths.review_paths("run-20261014_120000")
     assert rp.root == tmp_path / "xbrl" / "review-runs" / "run-20261014_120000"
     assert rp.cases_dir == rp.root / "cases"
+    assert paths.default_seed_cohort_path.name == "seed_cohort.json"
+    assert paths.default_sp100_cohort_path.name == "sp100_cohort.json"
+
+
+def test_xbrl_run_paths_derivation(tmp_path: Path) -> None:
+    """Verify XbrlRunPaths derivation for execution run ID."""
+    run_p = xbrl_run_paths(tmp_path, "run-20261014_120000")
+    assert run_p.run_root == tmp_path / "transient" / "xbrl" / "run-20261014_120000"
+    assert run_p.work_order_path().name == WORK_ORDER_FILE
+    assert run_p.chunk_dir("0000").name == "0000"
+    assert run_p.attempt_dir("0000", "01").name == "attempt-01"

@@ -330,19 +330,17 @@ def run_benchmark(
 
 
 def execute_cohort_benchmark(
-    cohort_source: Path | None = None,
+    cohort_source: Path,
     taxonomy_dir: Path | None = None,
     output_path: Path | None = None,
 ) -> BenchmarkReport:
     """Load cohort and taxonomy, execute benchmark batteries, and write report."""
-    paths = resolve_xbrl_paths()
-    cohort_p = cohort_source or paths.default_seed_cohort_path
-    cohort = load_seed_cohort(cohort_p)
+    cohort = load_seed_cohort(cohort_source)
     tax = load_domain_taxonomy(taxonomy_dir)
     kb = EvidenceKnowledgeBase(taxonomy=tax)
     solver = XbrlConstraintSolver(kb)
 
     report = run_benchmark(cohort, solver)
-    dest = output_path or paths.default_benchmark_report_path
-    atomic_write_json(dest, report.to_dict(), indent=2)
+    if output_path is not None:
+        atomic_write_json(output_path, report.to_dict(), indent=2)
     return report

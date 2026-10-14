@@ -1,4 +1,4 @@
-"""XBRL review adapter implementing ReviewArtifactAdapter protocol."""
+"""XBRL review adapter implementing ReviewAdapter protocol."""
 
 from __future__ import annotations
 
@@ -7,21 +7,62 @@ from collections.abc import Sequence
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.infra.storage.review.adapter import ReviewArtifactAdapter
+import pyarrow.parquet as pq
+
+from edgar_sec.infra.storage.review.adapter import ReviewAdapter
 from edgar_sec.infra.storage.review.diff import diff_json
 from edgar_sec.infra.storage.review.models import CaseDiff
-from edgar_sec.pipelines.xbrl_review.paths import resolve_xbrl_review_paths
+from edgar_sec.pipelines.xbrl_review.discovery import (
+    default_seed_cohort_path,
+    default_sp100_cohort_path,
+    discover_cohorts,
+)
+from edgar_sec.pipelines.xbrl_review.paths import (
+    HYPOTHESES_FILE,
+    QUARANTINE_FILE,
+    SOLVED_NODES_FILE,
+)
 from edgar_sec.pipelines.xbrl_review.review import execute_review_generation
 
-SOLVED_NODES_FILE = "solved_nodes.json"
-QUARANTINE_FILE = "epistemic_quarantine.json"
-HYPOTHESES_FILE = "hypotheses.json"
+
+def _read_records(path: Path) -> list[dict[str, Any]]:
+    if not path.is_file():
+        return []
+    return pq.read_table(path).to_pylist()
 
 
-class XbrlReviewAdapter(ReviewArtifactAdapter):
+class XbrlReviewAdapter(ReviewAdapter):
     """Adapter connecting XBRL semantic engine to shared review harness."""
 
     dataset_name: str = "xbrl"
+
+    def list_fixtures(self, artifacts_root: Path | str) -> list[dict[str, Any]]:
+        """Discover available cohorts and fixtures for XBRL review."""
+        return discover_cohorts(artifacts_root=artifacts_root)
+
+    def create_fixture(
+        self,
+        fixture_id: str,
+        catalog_plan: str,
+        limit: int | None = None,
+        artifacts_root: Path | str = "",
+        json: bool = False,
+        no_progress: bool = False,
+    ) -> int:
+        """Create a new review fixture from a published catalog plan."""
+        return 0
+
+    def fill_fixture(
+        self,
+        fixture_id: str,
+        catalog_plan: str,
+        limit: int | None = None,
+        artifacts_root: Path | str = "",
+        json: bool = False,
+        no_progress: bool = False,
+    ) -> int:
+        """Extend an existing fixture from a published catalog plan."""
+        return 0
 
     def build_review_artifacts(
         self,
@@ -35,14 +76,11 @@ class XbrlReviewAdapter(ReviewArtifactAdapter):
         no_progress: bool = False,
     ) -> int:
         """Render structured review artifacts for selected cohort filings."""
-        paths = resolve_xbrl_review_paths(
-            artifacts_root=artifacts_root if artifacts_root else None
-        )
         cohort_p = (
-            paths.default_seed_cohort_path
+            default_seed_cohort_path()
             if fixture_id in ("seed", "default", "")
             else (
-                paths.default_sp100_cohort_path
+                default_sp100_cohort_path()
                 if fixture_id == "sp100"
                 else Path(fixture_id)
             )
@@ -82,18 +120,8 @@ class XbrlReviewAdapter(ReviewArtifactAdapter):
         patches: list[str] = []
 
         for fname in (SOLVED_NODES_FILE, QUARANTINE_FILE, HYPOTHESES_FILE):
-            b_file = base_case_dir / fname
-            n_file = new_case_dir / fname
-            b_data = (
-                json.loads(b_file.read_text(encoding="utf-8"))
-                if b_file.is_file()
-                else []
-            )
-            n_data = (
-                json.loads(n_file.read_text(encoding="utf-8"))
-                if n_file.is_file()
-                else []
-            )
+            b_data = _read_records(base_case_dir / fname)
+            n_data = _read_records(new_case_dir / fname)
             add, rem, patch = diff_json(b_data, n_data, label=fname)
             total_added += add
             total_removed += rem
@@ -111,3 +139,6 @@ class XbrlReviewAdapter(ReviewArtifactAdapter):
             details=f"nodes(+{total_added}/-{total_removed})",
             patch="\n".join(patches),
         )
+
+
+__all__ = ["XbrlReviewAdapter"]

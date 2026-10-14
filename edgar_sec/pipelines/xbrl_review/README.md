@@ -31,8 +31,8 @@ The package provides both an interactive terminal console (`operator.py`) with p
 # Launch interactive review and staging operator console
 .venv/bin/python run.py xbrl
 
-# Run robustness benchmark across S&P 100 cohort
-.venv/bin/python run.py xbrl benchmark --cohort-file tests/fixtures/xbrl/sp100_cohort.json
+# Project work order from catalog plan or uniform dataset
+.venv/bin/python run.py xbrl project --dataset edgar_sec/pipelines/xbrl_review/fixtures/sp100_cohort.json
 
 # Generate review artifacts from seed cohort
 .venv/bin/python run.py xbrl review generate --fixture seed
@@ -42,6 +42,9 @@ The package provides both an interactive terminal console (`operator.py`) with p
 
 # Promote candidate hypothesis rule into DuckDB knowledge base
 .venv/bin/python run.py xbrl review promote --rule-id HYP_SHADOW_0000950170-24-087843_0 --run-dir .artifacts/xbrl/review-runs/run-20261014_120000
+
+# Inspect DAG status and branch tip
+.venv/bin/python run.py xbrl dag status
 ```
 
 ## Artifact layout

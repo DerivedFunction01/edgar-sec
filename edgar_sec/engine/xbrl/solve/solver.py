@@ -24,6 +24,9 @@ from edgar_sec.engine.xbrl.schema.models import (
 )
 
 
+SOLVER_FINGERPRINT = "xbrl-solver-v1"
+
+
 class XbrlConstraintSolver:
     """Graph solver reconciling XBRL facts, calculation linkbases, and declarative rules."""
 

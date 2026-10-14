@@ -19,7 +19,11 @@ import fcntl
 import psutil
 
 from edgar_sec.infra.storage.atomic import atomic_write_json
-from edgar_sec.foundation.runtime.paths import ProjectPaths, resolve_paths
+from edgar_sec.foundation.runtime.paths import (
+    ProjectPaths,
+    resolve_paths,
+    PUBLICATION_LOCK_FILE,
+)
 
 COHORTS_DIR_NAME = "cohorts"
 CATALOG_DB_NAME = "cohorts.sqlite"
@@ -38,7 +42,7 @@ _LOCK_STATE = threading.local()
 
 class PublicationLock:
     def __init__(self, paths: CohortPaths) -> None:
-        self.path = paths.cohorts_root / ".publication.lock"
+        self.path = paths.cohorts_root / PUBLICATION_LOCK_FILE
         self._key = str(self.path.resolve())
         self._entered = False
         self._owner_pid: int | None = None
