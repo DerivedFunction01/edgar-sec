@@ -62,6 +62,54 @@ MAJOR_CURRENCIES: dict[str, dict[str, Any]] = {
         "prefix": True,
         "suffix": False,
     },
+    "HKD": {
+        "names": ["hong kong dollar", "hong kong dollars", "hkd"],
+        "symbols": ["HK$", "HKD$"],
+        "prefix": True,
+        "suffix": False,
+    },
+    "TWD": {
+        "names": ["new taiwan dollar", "taiwan dollar", "twd", "ntd"],
+        "symbols": ["NT$", "NTD"],
+        "prefix": True,
+        "suffix": False,
+    },
+    "KRW": {
+        "names": ["korean won", "krw", "south korean won"],
+        "symbols": ["₩", "KRW"],
+        "prefix": True,
+        "suffix": False,
+    },
+    "SGD": {
+        "names": ["singapore dollar", "singapore dollars", "sgd"],
+        "symbols": ["S$", "SGD$"],
+        "prefix": True,
+        "suffix": False,
+    },
+    "BRL": {
+        "names": ["real", "reais", "brazilian real", "brl"],
+        "symbols": ["R$"],
+        "prefix": True,
+        "suffix": False,
+    },
+    "MXN": {
+        "names": ["mexican peso", "mexican pesos", "mxn"],
+        "symbols": ["Mex$", "MXN$"],
+        "prefix": True,
+        "suffix": False,
+    },
+    "SEK": {
+        "names": ["krona", "kronor", "swedish krona", "sek"],
+        "symbols": ["kr", "SEK"],
+        "prefix": True,
+        "suffix": False,
+    },
+    "ILS": {
+        "names": ["shekel", "shekels", "new israeli shekel", "ils", "nis"],
+        "symbols": ["₪", "NIS"],
+        "prefix": True,
+        "suffix": False,
+    },
 }
 
 PREFIX_SYMBOLS: set[str] = set()

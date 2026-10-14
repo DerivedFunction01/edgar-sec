@@ -607,6 +607,14 @@ class XbrlConstraintSolver:
                             f"{e.source}({v}) * {e.algebraic_weight}"
                             for v, e in resolved_vals
                         )
+                        comps = tuple(
+                            GranularComponent(
+                                identifier=e.source_concept or str(e.source),
+                                value=v,
+                                weight=e.algebraic_weight,
+                            )
+                            for v, e in resolved_vals
+                        )
                         return AggregateFact(
                             measure_id=target_concept,
                             entity=entity,
@@ -614,6 +622,7 @@ class XbrlConstraintSolver:
                             unit=unit,
                             value=round(total, 4),
                             basis="DERIVED_EXACT",
+                            components=comps,
                             derivation_path=path,
                             resolution_tier="SUBATOMIC_ALGEBRAIC_IDENTITY",
                         )
