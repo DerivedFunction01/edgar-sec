@@ -26,6 +26,45 @@ class FilingAttachment:
     sha256: str | None = None
     description: str | None = None
     storage_path: Path | None = None
+    fetcher: Callable[[FilingAttachment], bytes | None] | None = None
+
+    @property
+    def is_graphic(self) -> bool:
+        doc_type = self.document_type.upper()
+        if doc_type == "GRAPHIC":
+            return True
+        return self.filename.lower().endswith((".jpg", ".jpeg", ".png", ".gif", ".bmp"))
+
+    @property
+    def is_xml(self) -> bool:
+        return self.filename.lower().endswith((".xml", ".xsd"))
+
+    def raw(self) -> bytes | None:
+        """Return raw bytes of this attachment."""
+        if self.storage_path is not None and self.storage_path.is_file():
+            return self.storage_path.read_bytes()
+        if self.fetcher is not None:
+            return self.fetcher(self)
+        return None
+
+    def text(self) -> str | None:
+        """Return text representation if attachment is not binary."""
+        if self.is_graphic:
+            return None
+        data = self.raw()
+        if data is not None:
+            return data.decode("utf-8", errors="replace")
+        return None
+
+    def save(self, destination: Path | str) -> Path:
+        """Save attachment bytes to destination path."""
+        data = self.raw()
+        if data is None:
+            raise FileNotFoundError(f"no payload available for {self.filename}")
+        target = Path(destination).resolve()
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(data)
+        return target
 
 
 @dataclass(frozen=True, slots=True)
@@ -53,6 +92,10 @@ class FilingAggregate:
     attachment_loader: (
         Callable[[FilingAggregate], tuple[FilingAttachment, ...]] | None
     ) = None
+    document_opener: Callable[[FilingAggregate, str], bytes | None] | None = None
+    bundle_fetcher: Callable[[FilingAggregate], bytes | None] | None = None
+    index_fetcher: Callable[[FilingAggregate], str | None] | None = None
+    renderer: Callable[[FilingAggregate], str | bytes | None] | None = None
 
     @property
     def is_joint_filing(self) -> bool:
@@ -133,6 +176,53 @@ class FilingAggregate:
         if self.cache_clearer is not None:
             return self.cache_clearer(self.accession.value)
         return 0
+
+    @property
+    def graphics(self) -> tuple[FilingAttachment, ...]:
+        """Return all graphic attachments."""
+        return tuple(a for a in self.get_attachments() if a.is_graphic)
+
+    def open_document(self, filename: str) -> bytes:
+        """Fetch and return bytes of an arbitrary document within the accession."""
+        if self.document_opener is not None:
+            data = self.document_opener(self, filename)
+            if data is not None:
+                return data
+        raise FileNotFoundError(
+            f"document {filename!r} not available for {self.accession}"
+        )
+
+    def full_submission_bundle(self) -> bytes:
+        """Fetch and return the complete SGML submission .txt bundle."""
+        if self.bundle_fetcher is not None:
+            data = self.bundle_fetcher(self)
+            if data is not None:
+                return data
+        raise FileNotFoundError(
+            f"full submission bundle not available for {self.accession}"
+        )
+
+    def save_bundle(self, destination: Path | str) -> Path:
+        """Save the full submission bundle to destination path."""
+        data = self.full_submission_bundle()
+        target = Path(destination).resolve()
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(data)
+        return target
+
+    def index_page(self) -> str:
+        """Fetch and return the filing index HTML page."""
+        if self.index_fetcher is not None:
+            content = self.index_fetcher(self)
+            if content is not None:
+                return content
+        raise FileNotFoundError(f"index page not available for {self.accession}")
+
+    def render(self) -> str | bytes | None:
+        """Render filing using injected renderer or raw primary bytes."""
+        if self.renderer is not None:
+            return self.renderer(self)
+        return self.raw()
 
 
 __all__ = ["FilingAggregate", "FilingAttachment"]

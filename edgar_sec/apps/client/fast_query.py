@@ -16,8 +16,10 @@ from edgar_sec.domain.sec_urls import (
     accession_hyphenated,
     archives_url,
     full_submission_url_for,
+    index_url_for,
     submissions_url,
 )
+from edgar_sec.engine.forms.render import render_filing
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.filing_catalog.paths import (
@@ -99,6 +101,7 @@ def _make_document_fetcher(
 
 
 def _make_attachment_loader(
+    doc_cache: DocumentCache,
     http_client_factory: Callable[[], SecHttpClient] | None = None,
 ) -> Callable[[FilingAggregate], tuple[FilingAttachment, ...]]:
     """Create a lazy attachment loader closure querying the -index.html page."""
@@ -140,21 +143,177 @@ def _make_attachment_loader(
         )
         if not isinstance(outcome, ParsedIndexPage):
             return ()
+
+        def _make_att_fetcher(
+            target_url: str, fname: str
+        ) -> Callable[[FilingAttachment], bytes | None]:
+            def _fetch_att(_att: FilingAttachment) -> bytes | None:
+                cached = doc_cache.get(filing.accession.raw, fname)
+                if cached is not None:
+                    return cached
+                if not target_url:
+                    return None
+                cli = _get_client()
+                fn = getattr(cli, "get_bytes", getattr(cli, "get", None))
+                if fn is None:
+                    return None
+                data = fn(target_url)
+                if data:
+                    doc_cache.put(
+                        accession=filing.accession.raw,
+                        cik=str(filing.primary_cik.value),
+                        form=filing.form,
+                        filename=fname,
+                        content=data,
+                        content_type=_detect_content_type(fname),
+                    )
+                    return data
+                return None
+
+            return _fetch_att
+
         attachments: list[FilingAttachment] = []
         for entry in outcome.entries:
+            fname = entry.filename or ""
+            a_url = entry.archive_url or ""
             attachments.append(
                 FilingAttachment(
-                    attachment_id=str(entry.sequence or entry.filename or ""),
+                    attachment_id=str(entry.sequence or fname or ""),
                     document_type=entry.document_type or "",
-                    filename=entry.filename or "",
-                    url=entry.archive_url or "",
+                    filename=fname,
+                    url=a_url,
                     size=entry.byte_size,
                     description=entry.description,
+                    fetcher=_make_att_fetcher(a_url, fname) if a_url else None,
                 )
             )
         return tuple(attachments)
 
     return _load
+
+
+def _make_document_opener(
+    doc_cache: DocumentCache,
+    http_client_factory: Callable[[], SecHttpClient] | None = None,
+) -> Callable[[FilingAggregate, str], bytes | None]:
+    client_holder: list[SecHttpClient | None] = [None]
+
+    def _get_client() -> SecHttpClient:
+        if client_holder[0] is None:
+            client_holder[0] = (
+                http_client_factory()
+                if http_client_factory is not None
+                else SecHttpClient()
+            )
+        return client_holder[0]
+
+    def _open(filing: FilingAggregate, filename: str) -> bytes | None:
+        cached = doc_cache.get(filing.accession.raw, filename)
+        if cached is not None:
+            return cached
+        url = archives_url(filing.primary_cik.value, filing.accession.raw, filename)
+        client = _get_client()
+        fetch_fn = getattr(client, "get_bytes", getattr(client, "get", None))
+        if fetch_fn is None:
+            return None
+        data = fetch_fn(url)
+        if data:
+            doc_cache.put(
+                accession=filing.accession.raw,
+                cik=str(filing.primary_cik.value),
+                form=filing.form,
+                filename=filename,
+                content=data,
+                content_type=_detect_content_type(filename),
+            )
+            return data
+        return None
+
+    return _open
+
+
+def _make_bundle_fetcher(
+    doc_cache: DocumentCache,
+    http_client_factory: Callable[[], SecHttpClient] | None = None,
+) -> Callable[[FilingAggregate], bytes | None]:
+    client_holder: list[SecHttpClient | None] = [None]
+
+    def _get_client() -> SecHttpClient:
+        if client_holder[0] is None:
+            client_holder[0] = (
+                http_client_factory()
+                if http_client_factory is not None
+                else SecHttpClient()
+            )
+        return client_holder[0]
+
+    def _fetch(filing: FilingAggregate) -> bytes | None:
+        fname = f"{filing.accession.raw}.txt"
+        cached = doc_cache.get(filing.accession.raw, fname)
+        if cached is not None:
+            return cached
+        url = full_submission_url_for(
+            str(filing.primary_cik.value), filing.accession.raw
+        )
+        client = _get_client()
+        fetch_fn = getattr(client, "get_bytes", getattr(client, "get", None))
+        if fetch_fn is None:
+            return None
+        data = fetch_fn(url)
+        if data:
+            doc_cache.put(
+                accession=filing.accession.raw,
+                cik=str(filing.primary_cik.value),
+                form=filing.form,
+                filename=fname,
+                content=data,
+                content_type="text/plain",
+            )
+            return data
+        return None
+
+    return _fetch
+
+
+def _make_index_fetcher(
+    doc_cache: DocumentCache,
+    http_client_factory: Callable[[], SecHttpClient] | None = None,
+) -> Callable[[FilingAggregate], str | None]:
+    client_holder: list[SecHttpClient | None] = [None]
+
+    def _get_client() -> SecHttpClient:
+        if client_holder[0] is None:
+            client_holder[0] = (
+                http_client_factory()
+                if http_client_factory is not None
+                else SecHttpClient()
+            )
+        return client_holder[0]
+
+    def _fetch(filing: FilingAggregate) -> str | None:
+        fname = f"{filing.accession.raw}-index.html"
+        cached = doc_cache.get(filing.accession.raw, fname)
+        if cached is not None:
+            return cached.decode("utf-8", errors="replace")
+        url = index_url_for(filing.accession, filing.primary_cik)
+        client = _get_client()
+        fetch_fn = getattr(client, "get_bytes", getattr(client, "get", None))
+        if fetch_fn is None:
+            return None
+        data = fetch_fn(url)
+        if data:
+            doc_cache.put(
+                accession=filing.accession.raw,
+                cik=str(filing.primary_cik.value),
+                form=filing.form,
+                filename=fname,
+                content=data,
+                content_type="text/html",
+            )
+            return data.decode("utf-8", errors="replace")
+        return None
+
+    return _fetch
 
 
 def _materialize_from_submissions(
@@ -168,6 +327,10 @@ def _materialize_from_submissions(
     attachment_loader: (
         Callable[[FilingAggregate], tuple[FilingAttachment, ...]] | None
     ) = None,
+    document_opener: Callable[[FilingAggregate, str], bytes | None] | None = None,
+    bundle_fetcher: Callable[[FilingAggregate], bytes | None] | None = None,
+    index_fetcher: Callable[[FilingAggregate], str | None] | None = None,
+    renderer: Callable[[FilingAggregate], str | bytes | None] | None = None,
 ) -> list[FilingAggregate]:
     """Materialize filing aggregates on-the-fly from SEC submissions JSON."""
     cik_inst = cik if isinstance(cik, Cik) else Cik.from_raw(cik)
@@ -228,6 +391,10 @@ def _materialize_from_submissions(
                 zpath, accession=filing.accession.raw
             ),
             attachment_loader=attachment_loader,
+            document_opener=document_opener,
+            bundle_fetcher=bundle_fetcher,
+            index_fetcher=index_fetcher,
+            renderer=renderer,
         )
         results.append(agg)
         if limit is not None and len(results) >= limit:
@@ -266,7 +433,10 @@ def query_catalog_fast(
 
     doc_cache = cache if cache is not None else get_default_cache()
     fetcher = _make_document_fetcher(doc_cache, http_client_factory)
-    attachment_loader = _make_attachment_loader(http_client_factory)
+    attachment_loader = _make_attachment_loader(doc_cache, http_client_factory)
+    document_opener = _make_document_opener(doc_cache, http_client_factory)
+    bundle_fetcher = _make_bundle_fetcher(doc_cache, http_client_factory)
+    index_fetcher = _make_index_fetcher(doc_cache, http_client_factory)
 
     aggregates: list[FilingAggregate] = []
 
@@ -287,6 +457,10 @@ def query_catalog_fast(
                     doc_cache=doc_cache,
                     client=client,
                     attachment_loader=attachment_loader,
+                    document_opener=document_opener,
+                    bundle_fetcher=bundle_fetcher,
+                    index_fetcher=index_fetcher,
+                    renderer=render_filing,
                 )
                 aggregates.extend(on_the_fly)
             if limit is not None:
@@ -373,6 +547,10 @@ def query_catalog_fast(
                 zpath, accession=filing.accession.raw
             ),
             attachment_loader=attachment_loader,
+            document_opener=document_opener,
+            bundle_fetcher=bundle_fetcher,
+            index_fetcher=index_fetcher,
+            renderer=render_filing,
         )
         aggregates.append(agg)
 
@@ -392,6 +570,10 @@ def query_catalog_fast(
                 doc_cache=doc_cache,
                 client=client,
                 attachment_loader=attachment_loader,
+                document_opener=document_opener,
+                bundle_fetcher=bundle_fetcher,
+                index_fetcher=index_fetcher,
+                renderer=render_filing,
             )
             aggregates.extend(on_the_fly)
         if limit is not None:

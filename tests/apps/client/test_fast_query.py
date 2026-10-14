@@ -186,3 +186,93 @@ def test_query_catalog_fast_on_the_fly_materialization(tmp_path: Path) -> None:
     assert filing.accession.raw == "0000320193-23-000106"
     assert filing.form == "10-K"
     assert filing.primary_document_path == "aapl-20230930.htm"
+
+
+def test_query_catalog_fast_documents_and_attachments(tmp_path: Path) -> None:
+    mock_client = MagicMock()
+    html_index = b"""
+    <html>
+    <body>
+    <table summary="Document Format Files">
+    <tr><th>Seq</th><th>Description</th><th>Document</th><th>Type</th><th>Size</th></tr>
+    <tr><td>1</td><td>10-K</td><a href="aapl-20230930.htm">aapl-20230930.htm</a><td>10-K</td><td>1000</td></tr>
+    <tr><td>2</td><td>EX-21.1</td><a href="ex21.htm">ex21.htm</a><td>EX-21.1</td><td>200</td></tr>
+    <tr><td>3</td><td>GRAPHIC</td><a href="logo.png">logo.png</a><td>GRAPHIC</td><td>50</td></tr>
+    </table>
+    </body>
+    </html>
+    """
+
+    def mock_get_bytes(url: str) -> bytes:
+        if "index.html" in url:
+            return html_index
+        if "ex21.htm" in url:
+            return b"<html>Subsidiaries List</html>"
+        if "logo.png" in url:
+            return b"\x89PNG\r\n\x1a\n"
+        if url.endswith(".txt"):
+            return b"SGML SUBMISSION BUNDLE"
+        if "custom.htm" in url:
+            return b"<html>Custom Doc</html>"
+        return b"<html>Primary Doc</html>"
+
+    mock_client.get_bytes.side_effect = mock_get_bytes
+    cache = DocumentCache(db_path=tmp_path / "cache.sqlite")
+
+    submissions_payload = {
+        "cik": "0000320193",
+        "filings": {
+            "recent": {
+                "accessionNumber": ["0000320193-23-000106"],
+                "filingDate": ["2023-11-03"],
+                "reportDate": ["2023-09-30"],
+                "form": ["10-K"],
+                "primaryDocument": ["aapl-20230930.htm"],
+            }
+        },
+    }
+    import json
+
+    mock_client.get_bytes.return_value = None
+
+    result = query_catalog_fast(
+        ciks=["320193"],
+        forms="10-K",
+        artifacts_root=tmp_path / "empty",
+        cache=cache,
+        http_client_factory=lambda: mock_client,
+    )
+    # Restore side effect after submissions lookup
+    mock_client.get_bytes.return_value = json.dumps(submissions_payload).encode("utf-8")
+    result = query_catalog_fast(
+        ciks=["320193"],
+        forms="10-K",
+        artifacts_root=tmp_path / "empty",
+        cache=cache,
+        http_client_factory=lambda: mock_client,
+    )
+    filing = result.latest()
+    assert filing is not None
+
+    # Switch to side effect for document fetches
+    mock_client.get_bytes.return_value = None
+    mock_client.get_bytes.side_effect = mock_get_bytes
+
+    # 1. Non-standard document fetchers
+    bundle = filing.full_submission_bundle()
+    assert bundle == b"SGML SUBMISSION BUNDLE"
+    assert "<table" in filing.index_page()
+    assert filing.open_document("custom.htm") == b"<html>Custom Doc</html>"
+
+    # 2. Exhibits and graphics
+    exhibits = filing.exhibits
+    assert len(exhibits) == 1
+    assert exhibits[0].document_type == "EX-21.1"
+    assert exhibits[0].raw() == b"<html>Subsidiaries List</html>"
+    assert exhibits[0].text() == "<html>Subsidiaries List</html>"
+
+    graphics = filing.graphics
+    assert len(graphics) == 1
+    assert graphics[0].filename == "logo.png"
+    assert graphics[0].raw() == b"\x89PNG\r\n\x1a\n"
+    assert graphics[0].text() is None

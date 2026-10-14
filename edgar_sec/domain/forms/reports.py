@@ -30,9 +30,11 @@ class CompanyReport(FormReport):
     """Specialized base projection for periodic and current reports."""
 
     def text(self) -> str | None:
-        data = self.filing.raw()
-        if data is not None:
-            return data.decode("utf-8", errors="replace")
+        rendered = self.filing.render()
+        if isinstance(rendered, str):
+            return rendered
+        if rendered is not None:
+            return rendered.decode("utf-8", errors="replace")
         return None
 
 
