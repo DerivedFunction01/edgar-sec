@@ -37,7 +37,7 @@ def test_planning_versions_are_stable_contract_values() -> None:
     assert TARGET_SCHEMA_VERSION == 1
     assert PLAN_BUNDLE_SCHEMA_VERSION == 4
     assert PROFILE_SCHEMA_VERSION == "1"
-    assert MATCHER_VERSION == "target-matcher-v2"
+    assert MATCHER_VERSION == "target-matcher-v4"
     assert TARGET_OPERATION_SCHEMA.names == [
         "operation_id",
         "target_id",

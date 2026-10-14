@@ -13,7 +13,7 @@ from edgar_sec.foundation.hashing import (
     is_sha256_hex_digest,
     sha256_text,
 )
-from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME, part_file_name
 from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
@@ -254,10 +254,7 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> None:
         expected_name = (
             plan_target_part_path(form, expected_index)
             if relation == "targets"
-            else (
-                f"{relation}/{form_partition_directory(form)}/"
-                f"part-{expected_index:05d}.parquet"
-            )
+            else f"{relation}/{form_partition_directory(form)}/{part_file_name(expected_index)}"
         )
         if relative != expected_name:
             raise DocumentPlanError("relation parts are not numbered consecutively")

@@ -13,6 +13,7 @@ from edgar_sec.foundation.runtime.paths import (
     MANIFEST_FILE,
     POINTER_FILE,
     RUN_MANIFEST_FILE,
+    part_file_name,
 )
 from edgar_sec.infra.storage.dag.paths import DAGPaths
 from edgar_sec.infra.storage.review.paths import (
@@ -66,7 +67,6 @@ __all__ = [
     "PUBLICATION_LOCK_FILE",
     "NEW_SOURCES_FILE",
     "RUN_MANIFEST_FILE",
-    "SNAPSHOT_PART_PREFIX",
     "WORK_ORDER_FILE",
     "inventory_run_paths",
     "inventory_paths",
@@ -85,7 +85,6 @@ DATASET = "document_inventory"
 #: Files inside one attempt directory.
 OUTCOMES_FILE = "outcomes.parquet"
 ENTRIES_FILE = "entries.parquet"
-SNAPSHOT_PART_PREFIX = "part-"
 
 #: Files at the run root.
 LOCK_FILE = "run.lock"

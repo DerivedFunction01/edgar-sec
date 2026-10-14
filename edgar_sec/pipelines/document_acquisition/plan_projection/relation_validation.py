@@ -8,6 +8,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
+from edgar_sec.foundation.runtime.paths import part_file_name
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
@@ -176,7 +177,7 @@ def validate_additional_relations(
         if relation == "targets":
             expected = plan_target_part_path(form, index)
         else:
-            expected = f"{relation}/{partition}/part-{index:05d}.parquet"
+            expected = f"{relation}/{partition}/{part_file_name(index)}"
         order = (relation, form, relative)
         if relative != expected or (
             previous_order is not None and order <= previous_order

@@ -15,6 +15,7 @@ from typing import Any
 
 from edgar_sec.domain.submissions.schemas import SCHEMA_VERSION
 from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.runtime.paths import part_file_name
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.manifest import (
     DAGNodeManifest,
@@ -301,7 +302,7 @@ def publish_parts(
             published.append(source)
             continue
 
-        name = f"part-{chunk_index:05d}.parquet"
+        name = part_file_name(chunk_index)
         chunk_index += 1
         destination = parts_dir / name
         shutil.copy2(source, destination)

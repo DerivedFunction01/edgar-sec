@@ -19,6 +19,17 @@ RUNTIME_DIR = "runtime"
 DATA_FILE_NAME = "data.parquet"
 PARQUET_PART_GLOB = "part-*.parquet"
 
+
+def part_file_name(index: int) -> str:
+    """Return the shard file name for a numbered parquet part."""
+    return f"part-{index:05d}.parquet"
+
+
+def part_file_re() -> re.Pattern[str]:
+    """Return the regex pattern matching a valid part file name."""
+    return re.compile(r"part-\d{5}\.parquet")
+
+
 # Universal pipeline constants used across layers.
 PLANS_DIR = "plans"
 CHUNKS_DIR = "chunks"
@@ -187,6 +198,8 @@ __all__ = [
     "POINTER_FILE",
     "PUBLICATION_LOCK_FILE",
     "PARQUET_PART_GLOB",
+    "part_file_name",
+    "part_file_re",
     "RUN_LOCK_FILE",
     "RUN_MANIFEST_FILE",
     "RUNS_DIR",
