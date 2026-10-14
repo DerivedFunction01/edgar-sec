@@ -2,10 +2,11 @@
 
 ## Purpose
 
-Partitions form-specific evidence and structural definitions across the three SEC filing
-families: `annual/` for Form 10-K and 20-F, `quarterly/` for Form 10-Q, and `current/`
-for Form 8-K. Each subpackage supplies body-start evidence, Part/Item structural
-taxonomies, and — for annual and quarterly — its checkbox schema.
+Partitions form-specific evidence and structural definitions across SEC filing
+families: `annual/` for Form 10-K and 20-F, `quarterly/` for Form 10-Q, `current/`
+for Form 8-K, and `ownership/` for Section 16 insider reports (Form 4). Each
+subpackage supplies declarative processing profiles, body evidence, and structural
+taxonomies.
 
 ## Contracts
 

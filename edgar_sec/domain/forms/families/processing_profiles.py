@@ -8,7 +8,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from edgar_sec.domain.forms.common.aliases import resolve_alias
-from edgar_sec.domain.forms.common.processing import DocumentProcessingProfile
+from edgar_sec.domain.forms.common.processing import (
+    AcquisitionOperation,
+    DocumentProcessingProfile,
+)
 from edgar_sec.domain.forms.common.schemas import CoverCheckboxSchema
 from edgar_sec.domain.forms.families.annual.processing import (
     PROFILE as ANNUAL_PROFILE,
@@ -21,6 +24,9 @@ from edgar_sec.domain.forms.families.current.checkmarks import (
 )
 from edgar_sec.domain.forms.families.current.processing import (
     PROFILE as CURRENT_PROFILE,
+)
+from edgar_sec.domain.forms.families.ownership.processing import (
+    PROFILE as OWNERSHIP_PROFILE,
 )
 from edgar_sec.domain.forms.families.quarterly.checkmarks import (
     QUARTERLY_CHECKBOX_SCHEMA,
@@ -65,6 +71,10 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         profile=CURRENT_PROFILE,
         cover_checkbox_schema=SIX_K_CHECKBOX_SCHEMA,
     ),
+    ProcessingCatalogEntry(
+        family="4",
+        profile=OWNERSHIP_PROFILE,
+    ),
 )
 
 _FAMILY_ENTRY_BY_FAMILY = {entry.family: entry for entry in FAMILY_PROCESSING_PROFILES}
@@ -72,9 +82,9 @@ _FAMILY_ENTRY_BY_FAMILY = {entry.family: entry for entry in FAMILY_PROCESSING_PR
 
 def get_family_entry(family: str | None) -> ProcessingCatalogEntry | None:
     """Get catalog data for a canonical or aliased filing form."""
-    normalized = resolve_alias(family)
-    if normalized is None:
+    if not family:
         return None
+    normalized = resolve_alias(family) or family.strip().upper()
     return _FAMILY_ENTRY_BY_FAMILY.get(normalized)
 
 
@@ -92,6 +102,7 @@ __all__ = [
     "ANNUAL_PROFILE",
     "QUARTERLY_PROFILE",
     "CURRENT_PROFILE",
+    "OWNERSHIP_PROFILE",
     "ProcessingCatalogEntry",
     "get_family_entry",
     "get_family_profile",

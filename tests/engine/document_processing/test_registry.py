@@ -94,4 +94,28 @@ def test_registry_exposes_handler_capability_and_operation_output_contract() -> 
         "normalize_document"
     )
     assert operation_output_kind("render_to_txt") is HandlerOutputKind.TEXT
+    assert operation_output_kind("render_to_xml") is HandlerOutputKind.XML
     assert operation_output_kind("unknown") is None
+
+
+def test_form4_html_to_xml_handler_wraps_html_and_preserves_xml() -> None:
+    from edgar_sec.engine.document_processing.registry import (
+        DEFAULT_HANDLER_REGISTRY,
+        HandlerContext,
+    )
+    from edgar_sec.domain.document.path_facts import DocumentPathFacts
+    from edgar_sec.domain.document.route import DocumentRoute
+
+    reg = DEFAULT_HANDLER_REGISTRY.resolve("render_to_xml", "4", DocumentRoute.MARKUP)
+    assert reg is not None
+    assert reg.handler_id == "form4_html_to_xml"
+    facts = DocumentPathFacts.from_archive_path("nbr59.htm")
+    context = HandlerContext(
+        "4", "primary", "primary", "nbr59.htm", facts, DocumentRoute.MARKUP
+    )
+    html_out = reg.handler(b"<html><body>Test</body></html>", context)
+    assert b'<ownershipDocument format="html_passthrough">' in html_out
+    assert b"&lt;html&gt;&lt;body&gt;Test&lt;/body&gt;&lt;/html&gt;" in html_out
+    xml_input = b'<?xml version="1.0"?><ownershipDocument/>'
+    xml_out = reg.handler(xml_input, context)
+    assert xml_out == xml_input

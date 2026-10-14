@@ -721,7 +721,7 @@ def test_output_above_registered_limit_is_not_staged(
     assert receipt_calls == []
 
 
-def test_form4_xml_without_registered_handler_is_unsupported(
+def test_form_xml_without_registered_handler_is_unsupported(
     tmp_path: Path,
 ) -> None:
     from edgar_sec.domain.document.path_facts import DocumentPathFacts
@@ -733,20 +733,20 @@ def test_form4_xml_without_registered_handler_is_unsupported(
     raw, _, _ = request.operations
     xml = replace(
         request.operations[2],
-        operation_id="form4-xml",
+        operation_id="form10k-xml",
         operation="render_to_xml",
         requested=True,
         support_status="supported",
-        capability_id="form4.htm.render_to_xml",
+        capability_id="10-K.render_to_xml",
         capability_version="v1",
-        handler_id="form4_html_to_xml",
+        handler_id="unregistered_xml",
         handler_version="1",
         output_kind="xml",
     )
-    request = replace(request, form="4", operations=(raw, xml))
+    request = replace(request, form="10-K", operations=(raw, xml))
     effective_path = "report.htm"
     body = request.body.path.read_bytes()
-    processing_id = "proc_form4_xml_test"
+    processing_id = "proc_unregistered_xml_test"
     results = _operation_results(
         request,
         paths,
@@ -769,6 +769,70 @@ def test_form4_xml_without_registered_handler_is_unsupported(
     assert results[1].diagnostics[0].code == "route_unsupported"
     assert results[1].staged_output is None
     assert request.body.path.read_bytes() == body
+
+
+def test_form4_xml_with_registered_handler_succeeds(
+    tmp_path: Path,
+) -> None:
+    from edgar_sec.domain.document.path_facts import DocumentPathFacts
+    from edgar_sec.pipelines.document_acquisition.processing.io import (
+        ProcessingBudgetPolicy,
+    )
+    from edgar_sec.pipelines.document_acquisition.processing.worker import (
+        _operation_results,
+    )
+
+    paths, request = _minimal_request(tmp_path)
+    raw, _, _ = request.operations
+    xml = replace(
+        request.operations[2],
+        operation_id="form4-xml",
+        operation="render_to_xml",
+        requested=True,
+        support_status="supported",
+        capability_id="4.render_to_xml",
+        capability_version="v1",
+        handler_id="form4_html_to_xml",
+        handler_version="1",
+        output_kind="xml",
+    )
+    request = replace(request, form="4", operations=(raw, xml))
+    effective_path = "report.htm"
+    body = request.body.path.read_bytes()
+    processing_id = "proc_form4_xml_test"
+    budget = ProcessingBudgetPolicy(
+        budget_version="v1",
+        route=DocumentRoute.MARKUP,
+        handler_id="form4_html_to_xml",
+        handler_version="1",
+        max_input_bytes=10000,
+        max_output_bytes=10000,
+        working_set_reservation_bytes=10000,
+    )
+    results = _operation_results(
+        request,
+        paths,
+        DocumentRoute.MARKUP,
+        effective_path,
+        DocumentPathFacts.from_archive_path(effective_path),
+        request.body,
+        body,
+        processing_id,
+        {},
+        {"form4-xml": budget},
+        {},
+        {},
+        frozenset({raw.operation_id, xml.operation_id}),
+    )
+
+    assert results[0].status == "available"
+    assert results[1].status == "available"
+    assert results[1].staged_output is not None
+    assert results[1].staged_output.representation == "xml"
+    assert (
+        b'<ownershipDocument format="html_passthrough">'
+        in results[1].staged_output.path.read_bytes()
+    )
 
 
 def test_process_target_rejects_selected_filename_for_direct_target(

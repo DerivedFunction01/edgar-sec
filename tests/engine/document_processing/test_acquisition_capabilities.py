@@ -55,3 +55,17 @@ def test_unknown_operation_is_unsupported() -> None:
     facts = DocumentPathFacts.from_archive_path("filing.xml")
     entry = resolve_acquisition_capability("10-K", "primary", "unknown", facts)
     assert entry.status is CapabilityStatus.UNSUPPORTED
+
+
+def test_form_4_resolves_render_to_xml() -> None:
+    facts = DocumentPathFacts.from_archive_path("nbr59.htm")
+    entry = resolve_acquisition_capability("4", "primary", "render_to_xml", facts)
+    assert entry.status is CapabilityStatus.SUPPORTED
+    assert entry.pins == ("4.render_to_xml", "v1", "form4_html_to_xml", "1", "xml")
+
+
+def test_form_4_does_not_resolve_render_to_txt() -> None:
+    facts = DocumentPathFacts.from_archive_path("nbr59.htm")
+    entry = resolve_acquisition_capability("4", "primary", "render_to_txt", facts)
+    assert entry.status is CapabilityStatus.UNSUPPORTED
+    assert entry.pins is None

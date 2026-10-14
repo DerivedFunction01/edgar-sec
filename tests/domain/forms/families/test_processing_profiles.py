@@ -56,3 +56,13 @@ def test_current_forms_have_no_period_label_schema() -> None:
     assert EIGHT_K_CHECKBOX_SCHEMA.report_period_transition is None
     assert SIX_K_CHECKBOX_SCHEMA.report_period_companion is None
     assert SIX_K_CHECKBOX_SCHEMA.report_period_transition is None
+
+
+def test_ownership_form_4_has_catalog_entry() -> None:
+    entry = get_family_entry("4")
+    assert entry is not None
+    assert entry.family == "4"
+    assert entry.cover_checkbox_schema is None
+    profile = get_family_profile("4")
+    assert profile is not None
+    assert profile.family == "4"

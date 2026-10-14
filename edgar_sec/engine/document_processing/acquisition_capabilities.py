@@ -110,14 +110,12 @@ def resolve_acquisition_capability(
                 if capability_id is not None:
                     handler_id = "normalize_document"
             elif operation == "render_to_xml":
-                if (
-                    normalized_family == "4"
-                    and role == "primary"
-                    and facts.suffix == ".htm"
-                    and facts.suffix_class is DocumentSuffixClass.MARKUP
-                ):
-                    capability_id = "form4.htm.render_to_xml"
-                    handler_id = "form4_html_to_xml"
+                candidate_reg = handlers.resolve(
+                    operation, normalized_family, effective_route
+                )
+                if candidate_reg is not None:
+                    capability_id = f"{normalized_family}.render_to_xml"
+                    handler_id = candidate_reg.handler_id
 
     registration = handlers.resolve(operation, normalized_family, effective_route)
     expected_output_kind = operation_output_kind(operation)
