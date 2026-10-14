@@ -93,7 +93,7 @@ def test_smoke_3_client_fetch_end_to_end_mocked(monkeypatch, tmp_path: Path) -> 
         lambda self, spec: expected_result,
     )
 
-    res = edgar.fetch(forms=["4"], ciks=["109694"], operation="auto")
+    res = edgar.fetch(forms=["4"], ciks=["109694"], operation="auto", mode="pipeline")
     assert res.run_id == "run-smoke-1"
     assert res.snapshot_id == "snap-smoke-1"
     df = res.to_df()

@@ -131,17 +131,23 @@ def _make_attachment_loader(
             return ()
         if not html_bytes:
             return ()
-        outcome = parse_html_index(IndexPageInput(url=url, response_bytes=html_bytes))
+        outcome = parse_html_index(
+            IndexPageInput(
+                accession=filing.accession,
+                source_url=url,
+                response_bytes=html_bytes,
+            )
+        )
         if not isinstance(outcome, ParsedIndexPage):
             return ()
         attachments: list[FilingAttachment] = []
         for entry in outcome.entries:
             attachments.append(
                 FilingAttachment(
-                    attachment_id=str(entry.sequence or entry.filename),
-                    document_type=entry.document_type,
-                    filename=entry.filename,
-                    url=entry.archive_url,
+                    attachment_id=str(entry.sequence or entry.filename or ""),
+                    document_type=entry.document_type or "",
+                    filename=entry.filename or "",
+                    url=entry.archive_url or "",
                     size=entry.byte_size,
                     description=entry.description,
                 )
