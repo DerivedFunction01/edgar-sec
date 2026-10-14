@@ -20,6 +20,7 @@ from edgar_sec.domain.filing_catalog.schemas import (
     READABLE_TARGET_PLAN_SCHEMA_VERSIONS,
     TARGET_PLAN_SCHEMA_VERSION,
 )
+from edgar_sec.domain.plan import fingerprint
 from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
@@ -107,35 +108,7 @@ def plan_fingerprint(plan_meta: dict[str, Any], locator_keys: Iterable[str]) -> 
             while row := cursor.fetchone():
                 yield str(row[0])
 
-        return plan_fingerprint_from_sorted_keys(plan_meta, sorted_keys())
-
-
-def plan_fingerprint_from_sorted_keys(
-    plan_meta: dict[str, Any], locator_keys: Iterable[str]
-) -> str:
-    """Hash identity and an already sorted locator-key stream."""
-    digest = hashlib.sha256()
-    digest.update(
-        (
-            b'{"catalog_id":'
-            + json.dumps(plan_meta.get("catalog_id"), separators=(",", ":")).encode()
-            + b',"locator_keys":['
-        )
-    )
-    first = True
-    for key in locator_keys:
-        if not first:
-            digest.update(b",")
-        digest.update(json.dumps(key, separators=(",", ":")).encode())
-        first = False
-    digest.update(
-        b'],"plan_id":'
-        + json.dumps(plan_meta.get("plan_id"), separators=(",", ":")).encode()
-        + b',"scope":'
-        + json.dumps(plan_meta.get("scope"), separators=(",", ":")).encode()
-        + b"}"
-    )
-    return digest.hexdigest()[:32]
+        return fingerprint.plan_fingerprint_from_sorted_keys(plan_meta, sorted_keys())
 
 
 def plan_fingerprint_from_plan(plan_dir: str | Path, plan_meta: dict[str, Any]) -> str:
@@ -156,7 +129,7 @@ def plan_fingerprint_from_plan(plan_dir: str | Path, plan_meta: dict[str, Any]) 
                 for row_index in range(batch.num_rows):
                     yield str(column[row_index].as_py())
 
-        return plan_fingerprint_from_sorted_keys(plan_meta, sorted_keys())
+        return fingerprint.plan_fingerprint_from_sorted_keys(plan_meta, sorted_keys())
 
 
 def plan_bundle_complete(plan_dir: Path, scope: str = "") -> bool:
@@ -405,7 +378,6 @@ __all__ = [
     "plan_bundle_complete",
     "plan_fingerprint",
     "plan_fingerprint_from_plan",
-    "plan_fingerprint_from_sorted_keys",
     "plan_identity",
     "plan_locator_keys",
     "publish_plan_bundle",

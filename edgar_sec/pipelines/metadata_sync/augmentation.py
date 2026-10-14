@@ -13,6 +13,7 @@ from typing import Any
 
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
 from edgar_sec.foundation.hashing import sha256_text
+from edgar_sec.engine.company_family.cohort import execute_delta_roster
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import (
     connect,
@@ -21,7 +22,6 @@ from edgar_sec.infra.storage.duckdb import (
     find_null_keys,
 )
 from edgar_sec.infra.storage.dag.manifest import ordered_parts_fingerprint
-from edgar_sec.pipelines.cohort.operations import execute_delta_roster
 
 from .merger import (
     MergeError,

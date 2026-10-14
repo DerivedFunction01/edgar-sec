@@ -37,6 +37,18 @@ FailureCode = Literal[
     "source_mismatch",
     "io_error",
 ]
+SgmlTypeScreen = Literal["form_match", "type_mismatch", "unverifiable"]
+
+
+def screen_sgml_document_type(observed: str | None, expected: str) -> SgmlTypeScreen:
+    if observed is None:
+        return "unverifiable"
+    try:
+        observed_ascii = observed.encode("ascii")
+        expected_ascii = expected.encode("ascii")
+    except UnicodeEncodeError:
+        return "unverifiable"
+    return "form_match" if observed_ascii == expected_ascii else "type_mismatch"
 
 
 @dataclass(frozen=True, slots=True)

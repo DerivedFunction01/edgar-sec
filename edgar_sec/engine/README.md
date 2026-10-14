@@ -22,8 +22,9 @@ own the domain vocabulary or schemas it consumes (that is `edgar_sec/domain`).
 - **reflow/**: conservative ASCII reflow, untagged-table tagging, line-coordinate mapping
 - **forms/**: stage order, result record, cover decision chain, family profiles
 - **forms/plugins/**: bounded exhibit-header probe
+- **document_processing/**: acquisition operation resolution and runtime handlers
 - **selection/**: Phase 2 target-plan selection: features, policy, selector, source
-- **company_family/**: name normalization and universe-scale family assignment
+- **company_family/**: name normalization, universe-scale family assignment, and bounded cohort sampling
 - **submissions/**: submission unrolling, profiling, building
 - **index_pages/**: pure SEC filing index-page HTML parser
 

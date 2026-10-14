@@ -11,6 +11,7 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.domain.identity import AccessionNumber
+from edgar_sec.domain.plan import fingerprint
 from edgar_sec.domain.sec_urls import index_url_for
 from edgar_sec.domain.filing_catalog.schemas import (
     POLICY_TARGET_SCHEMA,
@@ -34,10 +35,6 @@ from edgar_sec.pipelines.document_inventory.snapshot.schema import (
     SNAPSHOT_RELATION_VERSION,
 )
 from edgar_sec.pipelines.filing_catalog.paths import FilingCatalogPaths
-from edgar_sec.pipelines.filing_catalog.publication import (
-    plan_fingerprint,
-    plan_fingerprint_from_sorted_keys,
-)
 from tests.support import fixture_path
 
 _OBSERVATIONS = fixture_path("catalog") / "cohort_observations.parquet"
@@ -97,7 +94,9 @@ def _build_plan(
         "active_targets_count": sum(counts.values()),
         "unique_locators_count": len(locator_keys),
     }
-    payload["plan_fingerprint"] = plan_fingerprint(payload, locator_keys)
+    payload["plan_fingerprint"] = fingerprint.plan_fingerprint_from_sorted_keys(
+        payload, locator_keys
+    )
     (root / "plan.json").write_text(json.dumps(payload), encoding="utf-8")
     return root
 
@@ -164,7 +163,9 @@ def _build_empty_plan(artifacts_root: Path, plan_id: str) -> None:
         "active_targets_count": 0,
         "unique_locators_count": 0,
     }
-    payload["plan_fingerprint"] = plan_fingerprint(payload, [])
+    payload["plan_fingerprint"] = fingerprint.plan_fingerprint_from_sorted_keys(
+        payload, []
+    )
     (root / "plan.json").write_text(json.dumps(payload), encoding="utf-8")
 
 
@@ -225,7 +226,7 @@ def _write_scale_plan(artifacts_root: Path, row_count: int) -> str:
         "active_targets_count": row_count,
         "unique_locators_count": row_count,
     }
-    payload["plan_fingerprint"] = plan_fingerprint_from_sorted_keys(
+    payload["plan_fingerprint"] = fingerprint.plan_fingerprint_from_sorted_keys(
         payload, (f"doc-{number:06d}" for number in range(1, row_count + 1))
     )
     (root / "plan.json").write_text(json.dumps(payload), encoding="utf-8")

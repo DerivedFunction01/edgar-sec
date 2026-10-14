@@ -25,6 +25,21 @@ classify the path or retry a failed direct URL through the bundle.
 Status markers are maintained against tracked code and focused offline tests:
 `[x]` complete, `[~]` partially complete, `[ ]` not complete or gated.
 
+These markers describe implementation progress, not production authorization. Development
+and production evidence are separate axes:
+
+- **Development-ready** means route, handler, evaluator, schema, or CLI wiring may be
+  implemented and tested with synthetic or already-captured local fixtures. A live SEC
+  fetch is not a prerequisite to wire the path.
+- **Evidence-gated production** means enabling a route or family, or publishing durable
+  payloads, requires provenance-pinned representative source cases and the specific
+  measurements or review listed below. SEC retrieval is one way to obtain missing cases,
+  not a prerequisite for offline development.
+- **MVP acceptance** is scoped: a route or family can be accepted with a documented error
+  profile and limitations. NLP work does not require zero false positives/negatives or an
+  exhaustive taxonomy; it does require an explicit acceptance decision for the enabled
+  scope.
+
 - [x] **M0 — API seams:** shared transport, parser, and pipeline ownership contracts
   are established.
 - [x] **M1 — S9 contracts/configuration:** paths, schemas, models, work-order
@@ -58,13 +73,17 @@ Status markers are maintained against tracked code and focused offline tests:
   immutable receipt. Runner cleanup retains the body; receipts do not authorize cleanup.
 - [~] **M6 — S10 processing:** S6 v4 operation intent and S9 work-order v3 resolution are
   persisted and consumed by `acquisition run`, which processes acquired targets inline
-  under the run lock. Raw identity works; TEXT identity is test-budgeted. The production
-  route/handler budget registry is empty, so derived normalization fails closed and has
-  no usable CLI default. Form 4 XML, family-specific lazy-index triggers, and the
-  proposed durable source/representation relations remain unavailable. A separate
-  run-level processor function exists but is not registered; the exposed `run` command
-  already processes each target. Malformed XML remains raw-only when no exporter is
-  registered, with focused refusal coverage.
+  under the run lock. The per-target service and route/handler seams are wired and can be
+  extended against offline fixtures; raw identity works and TEXT is covered with an
+  injected test budget. This development readiness does not enable production transforms:
+  the production route/handler budget registry is empty, so derived normalization fails
+  closed. Registering a route for production requires representative, provenance-pinned
+  S9/S10 cases and measured input, output, and working-set envelopes for that route; the
+  evidence gate is per route/handler, not a reason to delay offline route wiring. Form 4
+  XML still needs an output contract and handler, and family-specific lazy-index triggers
+  and durable source/representation relations remain separate implementation/contracts.
+  Malformed XML remains raw-only when no exporter is registered, with focused refusal
+  coverage.
 - [x] **M7a — Offline S9/S10 composition:** captured direct-TEXT fixture replay,
   `process_target`, actual request/result projection, receipt verification, stable
   fingerprint, staged-output integrity, and unavailable-operation placeholders are
@@ -84,9 +103,14 @@ Status markers are maintained against tracked code and focused offline tests:
   exist in `domain/forms/exhibits/`; a bounded opening-view assessment is attached to
   `ProcessingResult` and version-pinned review artifact v2 for eligible planned exhibits.
   Immutable label sidecars, review CLI capture, and explicit issuer/time holdout count
-  reports are wired. These paths have synthetic plumbing coverage only; representative
-  labels, near-duplicate review, accepted holdout metrics, and family activation remain
-  separate gates.
+  reports are wired. M8a development is ready and does not wait on a live SEC fetch. M8b
+  family activation is evidence-gated: it needs representative selected-body cases,
+  independent labels, a partitioned holdout report, reviewed errors, and a recorded
+  acceptance decision for each enabled family. Exact duplicate selected bodies are
+  rejected; near-duplicate risk must be reviewed and recorded for the bounded holdout.
+  Acceptance is an MVP decision for a declared family/scope with known limitations, not a
+  demand for zero errors or an exhaustive taxonomy. SEC fetching is needed only to fill
+  representative-evidence gaps, not to wire or iterate on diagnostic review tooling.
   Full duplicate/owner reconciliation of candidate signals also remains open and is
   required before activating a family, not before building review tooling or evaluating
   an unambiguous candidate.
@@ -96,8 +120,10 @@ Status markers are maintained against tracked code and focused offline tests:
   do not claim historical validation from partial fixtures.
 - [ ] **M9 — S11 publication:** durable snapshot publication remains gated on
   the approved result schema, representative S9/S10 evidence, and explicit approval.
-  Those gates control durable publication, not offline result projection or private
-  development against disposable fixtures.
+  This does not block offline publisher/schema/query development and tests against
+  disposable fixtures. The evidence and approval gates block enabling durable production
+  writes, adoption receipts, or cleanup; representative M8 holdout acceptance is not a
+  prerequisite for publishing the base S9/S10 relations.
 
 ## 2. Readiness and parallelization
 
@@ -556,9 +582,11 @@ receipt contract. Design details are in [S10 processing](../S10_processing.md).
   leave the acquired body staged without a receipt.
 - The normalizer's no-trace option preserves the existing output for current callers
   and avoids S10's intermediate full-text trace records.
-- Route-specific working-set envelopes are measured before a route is enabled for
-  parallel large-body processing. Until then, unsupported input is refused with a
-  typed budget diagnostic rather than admitted on an unmeasured guess.
+- Route/handler wiring and synthetic tests may proceed offline. A derived route is not
+  production-enabled until representative input/output/working-set envelopes support its
+  versioned budget; until then production execution fails closed with a typed budget
+  diagnostic. Parallel large-body processing must additionally stay within the measured
+  working-set envelope.
 - Exhibit assessment may be developed and run in diagnostic-only shadow mode before
   holdout evaluation. It remains non-authoritative and cannot alter planned targets,
   processing status, or acquisition. Enabling a family requires M8b's reviewed holdout
@@ -640,25 +668,30 @@ reviewed labels. This is a data-acceptance gate, not a prerequisite for M8a deve
 - Curate exact selected-body fixtures and independent labels across supported forms,
   issuers, routes, positive exhibit bodies, real primary reports, ambiguous cases, and
   negatives.
-- Verify legal codes and effective dates; partition by issuer/accession/time to prevent
-  near-copy leakage and report per-family/per-form false-positive and false-negative
-  counts. Do not infer corpus evidence from upload examples or synthetic fixtures.
-- Review rule hits and misses and record acceptance per enabled family. Until then,
-  results remain private diagnostic shadow output and no family is enabled for
-  authoritative use. The D5 duplicate/owner audit must also be resolved for that family;
-  it is not a prerequisite for fixture wiring or reporting holdout counts.
+- Verify legal codes and effective dates; partition by issuer/accession/time, reject exact
+  selected-body duplicates, and review likely near-copies within the bounded holdout.
+  Report per-family/per-form false-positive and false-negative counts. Do not infer corpus
+  evidence from upload examples or synthetic fixtures.
+- Review rule hits and misses and record an explicit MVP acceptance decision per enabled
+  family, including known errors and scope limitations; zero errors and exhaustive
+  taxonomy coverage are not required. Until acceptance, results remain private diagnostic
+  shadow output and no family is enabled for authoritative use. The D5 duplicate/owner
+  audit must also be resolved for that family; it is not a prerequisite for fixture
+  wiring or reporting holdout counts.
 - Include evaluator/taxonomy/pack versions in fingerprints and review artifacts.
 
 ### M9: Durable acquisition snapshot publication
 
-**Dependencies:** M7a's fixture-driven S9-to-S10 gate, the shared DAG kernel, an approved
-result schema, and S11 review of the [lifecycle publication contract](lifecycle.md).
-M7b runner behavior and M8b exhibit holdout are not prerequisites for publishing the
-base S9/S10 result relations; any included diagnostic fields remain version-pinned and
-non-authoritative. This work is now planned;
-the prior deferral of the durable-store design is replaced by the specific Parquet/DAG
-proposal in that contract. Durable writes remain disabled until the representative
-S9/S10 cases pass the S11 approval checklist.
+**Development dependencies:** M7a's fixture-driven S9-to-S10 gate, the shared DAG kernel,
+and the [lifecycle publication proposal](lifecycle.md). M9 schema, writer, query, recovery,
+and cleanup behavior can be developed and tested against disposable runs now; resolve the
+remaining contract decisions as part of that offline implementation.
+
+**Production enablement:** Durable writes require an approved result schema, S11 review,
+representative S9/S10 evidence, and explicit approval. M7b runner behavior and M8b exhibit
+holdout are not prerequisites for the base S9/S10 result relations; any included diagnostic
+fields remain version-pinned and non-authoritative. The prior deferral of the durable-store
+design is replaced by the specific Parquet/DAG proposal in the lifecycle document.
 
 **Goal:** Publish completed S9/S10 run evidence and selected payloads as immutable,
 queryable acquisition snapshots without changing S5 or S6.
@@ -712,7 +745,7 @@ queryable acquisition snapshots without changing S5 or S6.
 | 7b | M7b runner lifecycle | M3, M4, M7a | Runner/retry/cleanup integration verification |
 | 8a | M8a review wiring | M2D, M6 | Private S10 shadow evaluator, S7d acquisition/processing CLI, and offline fixture/label workflow |
 | 8b | M8b evidence acceptance | M8a, reviewed labeled corpus | Holdout evaluation and per-family activation decisions |
-| 9 | M9 durable snapshot publication | M7a, DAG kernel, approved result schema, S11 review | Binary/text Parquet payload relations in immutable acquisition DAG snapshots |
+| 9 | M9 durable snapshot publication | M7a, DAG kernel, lifecycle proposal; approval/evidence gate production enablement | Offline publisher/query/recovery tests against disposable runs; production Parquet snapshots remain disabled pending approval |
 
 Parallel assignments should keep the shared S9 schema/path owner separate from
 service implementers, and assign each lower-layer track to one owner per package. The

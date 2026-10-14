@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.domain.document.route import DocumentRoute
+from edgar_sec.domain.document.route import content_route
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.pipelines.document_acquisition.review_artifacts import result_projection
 from edgar_sec.pipelines.document_acquisition.paths import (
@@ -267,6 +268,29 @@ def test_project_terminal_results_preserves_statuses_and_is_deterministic(
                     "targets": [projected_target_record(projected)],
                 }
             )
+
+
+def test_sgml_child_slash_uses_content_suffix_route(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths, request, result = _projection_inputs(tmp_path, monkeypatch)
+    filename = "xsl10K_X01/filing.htm"
+    body = replace(request.body, selected_filename=filename)
+    request = replace(request, selected_filename=filename, body=body)
+    result = replace(
+        result,
+        route=content_route(filename),
+        effective_path=filename,
+    )
+    monkeypatch.setattr(
+        result_projection, "validate_selected_filename", lambda value: value
+    )
+    monkeypatch.setattr(result_projection, "get_staged_body_ref", lambda *_: body)
+
+    with project_terminal_results(
+        (request,), (result,), paths=paths, run_id=_RUN_ID
+    ) as projection:
+        assert next(projection.iter_targets()).route is DocumentRoute.MARKUP
 
 
 def test_projection_spool_is_removed_when_closed(

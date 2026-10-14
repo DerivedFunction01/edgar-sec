@@ -55,16 +55,3 @@ def build_resolution(
         selected_url=selection.selected_url if selection else None,
         result=result,
     )
-
-
-def screen_sgml_type(
-    observed: str | None, expected: str
-) -> Literal["form_match", "type_mismatch", "unverifiable"]:
-    if observed is None:
-        return "unverifiable"
-    try:
-        observed_ascii = observed.encode("ascii")
-        expected_ascii = expected.encode("ascii")
-    except UnicodeEncodeError:
-        return "unverifiable"
-    return "form_match" if observed_ascii == expected_ascii else "type_mismatch"

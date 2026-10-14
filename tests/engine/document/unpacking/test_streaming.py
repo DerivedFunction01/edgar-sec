@@ -11,8 +11,17 @@ from edgar_sec.engine.document.unpacking.streaming import (
     BundleExtraction,
     BundleExtractionFailure,
     extract_bundle_sequence,
+    screen_sgml_document_type,
 )
 from edgar_sec.engine.document.unpacking.unpacker import extract_target_sub_document
+
+
+def test_sgml_type_screen_requires_ascii_and_exact_form_identity() -> None:
+    assert screen_sgml_document_type("10-K", "10-K") == "form_match"
+    assert screen_sgml_document_type("10-k", "10-K") == "type_mismatch"
+    assert screen_sgml_document_type("8-K", "10-K") == "type_mismatch"
+    assert screen_sgml_document_type("10-Ké", "10-K") == "unverifiable"
+    assert screen_sgml_document_type(None, "10-K") == "unverifiable"
 
 
 def _document(

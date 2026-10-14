@@ -12,6 +12,9 @@ import pytest
 
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.document.path_facts import DocumentPathFacts
+from edgar_sec.engine.document_processing.acquisition_capabilities import (
+    resolve_acquisition_capability,
+)
 from edgar_sec.domain.sec_urls import validate_archive_url
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_hash
@@ -37,9 +40,6 @@ from edgar_sec.pipelines.document_acquisition.plan_projection.project import (
 from edgar_sec.pipelines.document_acquisition.processing.worker import (
     ProcessingError,
     process_target,
-)
-from edgar_sec.pipelines.document_acquisition.processing.io import (
-    expected_operation_pins,
 )
 from edgar_sec.pipelines.document_acquisition.processing.models import (
     OperationRequest,
@@ -232,7 +232,9 @@ def _processing_request(paths, run_id, fixture_case, target):
 def _pin_request_operations(request, path_facts):
     raw, text, xml = request.operations
     raw = replace(raw, capability_id="raw.selected_source")
-    raw_pins = expected_operation_pins(request, raw, path_facts)
+    raw_pins = resolve_acquisition_capability(
+        request.form, request.target_role, raw.operation, path_facts
+    ).pins
     assert raw_pins is not None
     raw = replace(
         raw,
@@ -242,7 +244,9 @@ def _pin_request_operations(request, path_facts):
         handler_version=raw_pins[3],
         output_kind=raw_pins[4],
     )
-    text_pins = expected_operation_pins(request, text, path_facts)
+    text_pins = resolve_acquisition_capability(
+        request.form, request.target_role, text.operation, path_facts
+    ).pins
     if text_pins is None:
         text = replace(
             text,

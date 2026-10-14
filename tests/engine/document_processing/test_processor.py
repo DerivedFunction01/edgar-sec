@@ -36,12 +36,13 @@ def _input(
     body: bytes = b"<html><body><p>Filed text.</p></body></html>",
     *,
     digest: str | None = None,
+    facts: DocumentPathFacts | None = None,
 ) -> InputRecord:
     return InputRecord(
         source_id=source_id,
         locator_provenance="pinned_selected_body",
         selected_path=path,
-        path_facts=_path_facts(path),
+        path_facts=facts or _path_facts(path),
         sha256=digest or sha256_bytes(body),
         byte_size=len(body),
         raw_bytes=body,
@@ -54,13 +55,14 @@ def _request(
     *,
     path: str = "document.html",
     role: str = "primary",
+    facts: DocumentPathFacts | None = None,
 ) -> AcquisitionProcessRequest:
     return AcquisitionProcessRequest(
         target_id="target",
         family="10-K",
         role=role,
         target_type="primary",
-        path_facts=_path_facts(path),
+        path_facts=facts or _path_facts(path),
         operations=operations,
         inputs=inputs,
     )
@@ -69,7 +71,7 @@ def _request(
 def test_raw_is_exact_identity_with_materialized_output_metadata() -> None:
     body = b"\x00\xff<raw>\n"
     request = _request(
-        (OperationRecord("1", "raw_bytes", ("source",), operation="raw"),),
+        (OperationRecord("v1", "raw_bytes", ("source",), operation="raw"),),
         (_input(body=body),),
     )
 
@@ -85,7 +87,7 @@ def test_raw_is_exact_identity_with_materialized_output_metadata() -> None:
 
 def test_render_to_txt_uses_generic_normalizer_fallback() -> None:
     body = b"<html><body><p>Filed text.</p></body></html>"
-    operation = OperationRecord("1", "text", ("source",), operation="render_to_txt")
+    operation = OperationRecord("v1", "text", ("source",), operation="render_to_txt")
 
     outcome = (
         AcquisitionProcessor()
@@ -107,7 +109,7 @@ def test_render_to_txt_uses_generic_normalizer_fallback() -> None:
 
 def test_render_to_txt_normalizes_plain_text_route() -> None:
     body = b"A short filing statement.\n"
-    operation = OperationRecord("1", "text", ("source",), operation="render_to_txt")
+    operation = OperationRecord("v1", "text", ("source",), operation="render_to_txt")
 
     outcome = (
         AcquisitionProcessor()
@@ -150,7 +152,7 @@ def test_family_route_handler_precedes_generic_fallback() -> None:
         family="10-K",
         route=DocumentRoute.MARKUP,
     )
-    operation = OperationRecord("1", "text", ("source",), operation="render_to_txt")
+    operation = OperationRecord("v1", "text", ("source",), operation="render_to_txt")
 
     outcome = (
         AcquisitionProcessor(registry)
@@ -162,8 +164,58 @@ def test_family_route_handler_precedes_generic_fallback() -> None:
     assert (outcome.handler_id, outcome.handler_version) == ("10k_html_text", "7")
 
 
+def test_processor_distinguishes_archive_and_sgml_paths_with_slashes() -> None:
+    markup = ProcessingCapability(
+        handler_id="markup_text",
+        handler_version="1",
+        operation="render_to_txt",
+        input_facts="markup body",
+        output_kind=HandlerOutputKind.TEXT,
+    )
+    rendered = ProcessingCapability(
+        handler_id="rendered_text",
+        handler_version="1",
+        operation="render_to_txt",
+        input_facts="rendered markup body",
+        output_kind=HandlerOutputKind.TEXT,
+    )
+    registry = HandlerRegistry(
+        ProcessingCapabilityRegistry((*DEFAULT_CAPABILITIES.list(), markup, rendered))
+    )
+    registry.register(
+        "markup_text",
+        "1",
+        "render_to_txt",
+        HandlerOutputKind.TEXT,
+        lambda _body, _context: "content route",
+        family="10-K",
+        route=DocumentRoute.MARKUP,
+    )
+    registry.register(
+        "rendered_text",
+        "1",
+        "render_to_txt",
+        HandlerOutputKind.TEXT,
+        lambda _body, _context: "published route",
+        family="10-K",
+        route=DocumentRoute.RENDERED,
+    )
+    path = "xsl10K_X01/filing.htm"
+    operation = OperationRecord("v1", "text", ("source",), operation="render_to_txt")
+
+    for facts, expected in (
+        (DocumentPathFacts.from_archive_path(path), "published route"),
+        (DocumentPathFacts.from_sgml_filename(path), "content route"),
+    ):
+        request = _request(
+            (operation,), (_input(path=path, facts=facts),), path=path, facts=facts
+        )
+        outcome = AcquisitionProcessor(registry).process(request).outcomes[0]
+        assert outcome.output_text == expected
+
+
 def test_flat_xml_and_unknown_operations_remain_unsupported() -> None:
-    operation = OperationRecord("1", "text", ("source",), operation="render_to_txt")
+    operation = OperationRecord("v1", "text", ("source",), operation="render_to_txt")
     unsupported_render = (
         AcquisitionProcessor()
         .process(
@@ -175,7 +227,7 @@ def test_flat_xml_and_unknown_operations_remain_unsupported() -> None:
         AcquisitionProcessor()
         .process(
             _request(
-                (OperationRecord("1", "xml", ("source",), operation="render_to_xml"),),
+                (OperationRecord("v1", "xml", ("source",), operation="render_to_xml"),),
                 (_input(),),
             )
         )
@@ -196,7 +248,7 @@ def test_flat_xml_and_unknown_operations_remain_unsupported() -> None:
     "path", ["filing.pdf", "filing.paper", "filing.zip", "filing.bin"]
 )
 def test_non_text_routes_do_not_use_normalizer_fallback(path: str) -> None:
-    operation = OperationRecord("1", "text", ("source",), operation="render_to_txt")
+    operation = OperationRecord("v1", "text", ("source",), operation="render_to_txt")
 
     outcome = (
         AcquisitionProcessor()
@@ -238,9 +290,9 @@ def test_invalid_source_and_handler_failure_do_not_suppress_sibling_results() ->
         route=DocumentRoute.MARKUP,
     )
     operations = (
-        OperationRecord("1", "text", ("source",), operation="render_to_txt"),
-        OperationRecord("1", "raw_bytes", ("source",), operation="raw"),
-        OperationRecord("1", "raw_bytes", ("missing",), operation="raw"),
+        OperationRecord("v1", "text", ("source",), operation="render_to_txt"),
+        OperationRecord("v1", "raw_bytes", ("source",), operation="raw"),
+        OperationRecord("v1", "raw_bytes", ("missing",), operation="raw"),
     )
 
     outcomes = (
@@ -258,7 +310,7 @@ def test_invalid_source_and_handler_failure_do_not_suppress_sibling_results() ->
 
 
 def test_invalid_input_digest_fails_operation() -> None:
-    operation = OperationRecord("1", "raw_bytes", ("source",), operation="raw")
+    operation = OperationRecord("v1", "raw_bytes", ("source",), operation="raw")
     outcome = (
         AcquisitionProcessor()
         .process(_request((operation,), (_input(digest="0" * 64),)))
@@ -285,7 +337,7 @@ def test_path_facts_type_is_validated() -> None:
         source.raw_bytes,
     )
     request = _request(
-        (OperationRecord("1", "raw_bytes", ("source",), operation="raw"),),
+        (OperationRecord("v1", "raw_bytes", ("source",), operation="raw"),),
         (invalid,),
     )
     request = AcquisitionProcessRequest(

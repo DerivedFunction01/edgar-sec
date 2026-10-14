@@ -219,7 +219,7 @@ def _source_record(context: _Context, source: str) -> CohortRecord:
 
 
 def _cmd_sample(args: Any, context: _Context) -> int:
-    from edgar_sec.pipelines.cohort.operations import (
+    from edgar_sec.engine.company_family.cohort import (
         FamilyIndexNotFoundError,
         sample_cohort,
     )

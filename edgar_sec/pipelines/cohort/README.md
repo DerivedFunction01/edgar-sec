@@ -19,6 +19,8 @@ Provides Phase 0 command-line and interactive orchestration for the shared cohor
   headless list, query, and find results use aligned tables.
 - Official SEC source refresh is owned here; `diff` accepts cohort IDs/names and
   the active `universe`/`tickers` aliases, with optional canonical delta publication.
+- Bounded sampling and roster-delta Parquet transformations are owned by
+  `engine.company_family`; this pipeline resolves inputs and handles CLI/catalog writes.
 
 ## Command Surface
 

@@ -122,11 +122,6 @@ def _check_cross_pipeline_import(
 
     caller_kind = Path(path_str).stem
     target_kind = target_parts[-1]
-    if caller_kind not in {"paths", "schemas"} and target_kind not in {
-        "paths",
-        "schemas",
-    }:
-        return None
     allowed = (
         caller_kind in {"paths", "schemas"}
         and target_kind == caller_kind

@@ -11,7 +11,7 @@ import pytest
 
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 import edgar_sec.pipelines.cohort.ingestion as cohort_ingestion
-import edgar_sec.pipelines.cohort.operations as cohort_operations
+import edgar_sec.engine.company_family.cohort as cohort_engine
 from edgar_sec.pipelines.cohort.operations import execute_set_operation
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
 from edgar_sec.infra.storage.object_store.store import ObjectStore
@@ -399,7 +399,7 @@ def test_sample_uses_derived_publication_with_source_parameters(
             )
         )
 
-    monkeypatch.setattr(cohort_operations, "sample_cohort", materialize)
+    monkeypatch.setattr(cohort_engine, "sample_cohort", materialize)
     monkeypatch.setattr(cohort_ingestion, "publish_derived_cohort", publish)
 
     assert (

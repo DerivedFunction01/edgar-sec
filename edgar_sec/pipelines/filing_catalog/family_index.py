@@ -7,12 +7,12 @@ from pathlib import Path
 import pyarrow.parquet as pq
 
 from edgar_sec.domain.taxonomy.family_vocab import rule_fingerprint_payload
+from edgar_sec.engine.company_family.cohort import FamilyIndexNotFoundError
 from edgar_sec.engine.company_family.assignment import ASSIGNMENT_COLUMNS
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.models import FamilyIndexRecord
-from edgar_sec.pipelines.cohort.operations import FamilyIndexNotFoundError
 from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 
 

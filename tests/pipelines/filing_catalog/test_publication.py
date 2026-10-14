@@ -10,6 +10,7 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.domain.filing_catalog.schemas import TARGET_PLAN_SCHEMA_VERSION
+from edgar_sec.domain.plan import fingerprint
 from edgar_sec.pipelines.filing_catalog.paths import REQUIRED_PLAN_FILES
 from edgar_sec.pipelines.filing_catalog.publication import (
     PlanConflictError,
@@ -295,6 +296,9 @@ def test_publication_stamps_a_selection_fingerprint(tmp_path: Path) -> None:
     document = json.loads((bundle / "plan.json").read_text(encoding="utf-8"))
     assert document["plan_fingerprint"]
     assert document["plan_fingerprint"] == plan_fingerprint(document, ["a", "b"])
+    assert document[
+        "plan_fingerprint"
+    ] == fingerprint.plan_fingerprint_from_sorted_keys(document, ["a", "b"])
 
 
 def test_reuse_refuses_a_work_order_that_was_edited(tmp_path: Path) -> None:

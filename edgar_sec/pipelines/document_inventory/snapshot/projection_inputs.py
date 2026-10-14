@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterator
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -14,9 +14,13 @@ from edgar_sec.domain.filing_catalog.schemas import (
     READABLE_TARGET_PLAN_SCHEMA_VERSIONS,
     TARGET_SCHEMA,
 )
+from edgar_sec.domain.plan import fingerprint
+from edgar_sec.domain.plan.discovery import discover_plans
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.document_inventory.cohort import CohortInputError
 from edgar_sec.pipelines.document_inventory.paths import (
     FORM_PARTITION_GLOB,
@@ -35,10 +39,6 @@ from edgar_sec.pipelines.document_inventory.snapshot.schema import (
     SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_RELATION_VERSION,
 )
-from edgar_sec.pipelines.filing_catalog.discovery import discover_plans
-from edgar_sec.pipelines.filing_catalog.publication import (
-    plan_fingerprint_from_plan,
-)
 
 __all__ = ["base_snapshot_parts", "catalog_plan_parts"]
 
@@ -55,10 +55,28 @@ def _read_json(path: Path, *, label: str) -> dict[str, Any]:
     return payload
 
 
+def _plan_fingerprint(root: Path, plan_meta: dict[str, Any]) -> str:
+    locator_path = root / LOCATOR_GROUPS_FILE
+    with connect() as con:
+        reader = con.execute(
+            "SELECT document_locator_key FROM read_parquet(?) "
+            "ORDER BY document_locator_key",
+            [str(locator_path)],
+        ).to_arrow_reader(batch_size=resolve_read_batch_size())
+
+        def sorted_keys() -> Iterator[str]:
+            for batch in reader:
+                column = batch.column(0)
+                for row_index in range(batch.num_rows):
+                    yield str(column[row_index].as_py())
+
+        return fingerprint.plan_fingerprint_from_sorted_keys(plan_meta, sorted_keys())
+
+
 def catalog_plan_parts(
     plan_id: str, paths: FilingCatalogPaths
 ) -> tuple[Path, dict[str, Any], list[tuple[str, Path, int, str]], str, str]:
-    known = {str(item.get("plan_id")) for item in discover_plans(paths)}
+    known = {item.plan_id for item in discover_plans(paths.plans_root)}
     if plan_id not in known:
         raise CohortInputError(
             "invalid_bundle", detail=f"unpublished catalog plan {plan_id!r}"
@@ -164,7 +182,7 @@ def catalog_plan_parts(
         raise CohortInputError(
             "invalid_bundle", detail="plan has no selection fingerprint"
         )
-    if plan_fingerprint_from_plan(root, document) != recorded_fingerprint:
+    if _plan_fingerprint(root, document) != recorded_fingerprint:
         raise CohortInputError(
             "invalid_bundle", detail="plan selection fingerprint mismatch"
         )

@@ -20,6 +20,11 @@ class HandlerOutputKind(StrEnum):
     XML = "xml"
 
 
+def operation_output_kind(operation: str) -> HandlerOutputKind | None:
+    value = _OUTPUT_BY_OPERATION.get(operation)
+    return HandlerOutputKind(value) if value is not None else None
+
+
 @dataclass(frozen=True, slots=True)
 class ProcessingCapability:
     handler_id: str
@@ -113,4 +118,5 @@ __all__ = [
     "get_catalog_version",
     "has_capability",
     "list_capabilities",
+    "operation_output_kind",
 ]

@@ -7,11 +7,18 @@ from datetime import UTC, datetime
 import pyarrow as pa
 
 from edgar_sec.domain.document.path_facts import DocumentPathFacts
-from edgar_sec.domain.document.route import DocumentRoute, document_route
+from edgar_sec.domain.document.route import (
+    DocumentRoute,
+    content_route,
+    document_route,
+)
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.forms.common.processing import (
     AcquisitionOperation,
     DEFAULT_OPERATIONS,
+)
+from edgar_sec.engine.document_processing.acquisition_capabilities import (
+    resolve_acquisition_capability,
 )
 from edgar_sec.domain.forms.families.processing_profiles import get_family_profile
 from edgar_sec.domain.identity import AccessionNumber
@@ -50,7 +57,6 @@ from edgar_sec.pipelines.document_acquisition.processing.io import (
     ProcessingBudgetRegistry,
     ProcessingIOError,
     admit_requested_operations,
-    expected_operation_pins,
     operation_fingerprint,
     operation_pins,
     read_bounded_source,
@@ -229,7 +235,7 @@ def _effective_route(
     if retrieval_mode == "bundle_sequence" or committed_filename is not None:
         if committed_filename is None:
             raise ProcessingError("bundle child filename is absent from S9 handoff")
-        return document_route(committed_filename), committed_filename
+        return content_route(committed_filename), committed_filename
     if retrieval_mode != "direct_url":
         raise ProcessingError("selected target retrieval mode is unresolved")
     return document_route(selected.document_path), selected.document_path
@@ -243,10 +249,15 @@ def _document_path_facts(
         if request.selected_filename is not None
         else DocumentPathFacts.from_archive_path(effective_path)
     )
+    route_from_facts = (
+        content_route(facts.path_context)
+        if request.selected_filename is not None
+        else document_route(facts.path_context)
+    )
     if (
         not facts.path_context
         or facts.path_context != effective_path
-        or document_route(facts.path_context) is not route
+        or route_from_facts is not route
     ):
         raise ProcessingError("effective document path facts are inconsistent")
     return facts
@@ -262,7 +273,12 @@ def _validate_mandatory_raw(
         or raw_operations[0].support_status != "supported"
         or not (raw_operations[0].source_request_id or "").strip()
         or operation_pins(raw_operations[0])
-        != expected_operation_pins(request, raw_operations[0], facts)
+        != resolve_acquisition_capability(
+            request.form,
+            request.target_role,
+            raw_operations[0].operation,
+            facts,
+        ).pins
     ):
         raise ProcessingError("matched acquired target lacks mandatory pinned raw")
     return raw_operations[0]
@@ -344,7 +360,13 @@ def _operation_results(
             code = "source_request_missing"
             detail = "The supported operation has no pinned source request."
         else:
-            expected = expected_operation_pins(request, operation, path_facts)
+            expected = resolve_acquisition_capability(
+                request.form,
+                request.target_role,
+                operation.operation,
+                path_facts,
+                route,
+            ).pins
             if expected is None:
                 status = "unsupported"
                 code = "route_unsupported"

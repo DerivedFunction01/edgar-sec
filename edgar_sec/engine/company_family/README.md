@@ -2,7 +2,8 @@
 
 Assigns every registrant a family key so downstream selection does not over-represent one
 registrant group. Assignment is a DuckDB pipeline over the compiled registrant universe;
-the result is published as a Parquet relation, not an in-memory index.
+the result is published as a Parquet relation, not an in-memory index. The package also
+owns bounded cohort sampling and roster deltas used by pipeline orchestration.
 
 ## Purpose
 
@@ -24,6 +25,7 @@ by construction rather than by coincidence of spelling.
 - **Assignment is deterministic.** It depends on the roster and the word lists, not on
   input ordering or process state. The cache id covers both.
 - **Nothing is fetched.** The roster is the only input; the engine has no source to reach.
+- **Family sampling fails closed.** Grouped samples require a readable family index with the expected schema; absent or malformed indexes are rejected.
 
 
 

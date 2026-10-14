@@ -16,6 +16,7 @@ from edgar_sec.domain.sec_urls import full_submission_url_for, validate_archive_
 from edgar_sec.engine.document.unpacking.streaming import (
     BundleExtraction,
     extract_bundle_sequence,
+    screen_sgml_document_type,
 )
 from edgar_sec.engine.index_pages.parser import parse_html_index
 from edgar_sec.infra.sec_http.streaming import (
@@ -33,7 +34,6 @@ from edgar_sec.pipelines.document_acquisition.attempts import (
 )
 from edgar_sec.pipelines.document_acquisition.resolution import (
     build_resolution as _resolution,
-    screen_sgml_type as _screen_sgml_type,
 )
 from edgar_sec.pipelines.document_acquisition.models import (
     AcquisitionAttempt,
@@ -238,7 +238,9 @@ def acquire_target(
         if isinstance(extracted, BundleExtraction):
             should_screen_sgml = _has_lazy_index_trigger(row)
             screen_result = (
-                _screen_sgml_type(extracted.selected.document_type, str(row["form"]))
+                screen_sgml_document_type(
+                    extracted.selected.document_type, str(row["form"])
+                )
                 if should_screen_sgml
                 else "form_match"
             )
@@ -580,7 +582,7 @@ def acquire_target(
                 _utc(clock),
             )
         if _has_lazy_index_trigger(row):
-            screen_result = _screen_sgml_type(
+            screen_result = screen_sgml_document_type(
                 extracted.selected.document_type, str(row["form"])
             )
             if screen_result != "form_match":

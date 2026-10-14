@@ -10,6 +10,7 @@ from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.engine.document_processing.capabilities import (
     DEFAULT_CAPABILITIES,
     HandlerOutputKind,
+    ProcessingCapability,
     ProcessingCapabilityRegistry,
 )
 
@@ -124,6 +125,9 @@ class HandlerRegistry:
             ),
             None,
         )
+
+    def capability_for(self, handler_id: str) -> ProcessingCapability | None:
+        return self._capabilities.get(handler_id)
 
     def list(self) -> tuple[HandlerRegistration, ...]:
         return tuple(self._handlers.values())

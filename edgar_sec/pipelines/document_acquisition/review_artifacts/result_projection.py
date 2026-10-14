@@ -13,7 +13,11 @@ from urllib.parse import quote
 
 import pyarrow as pa
 
-from edgar_sec.domain.document.route import DocumentRoute, document_route
+from edgar_sec.domain.document.route import (
+    DocumentRoute,
+    content_route,
+    document_route,
+)
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import validate_archive_url
 from edgar_sec.foundation.hashing import is_sha256_hex_digest
@@ -390,7 +394,7 @@ def _project_target(
     if request.selected_filename != verified.selected_filename:
         raise ResultProjectionError("selected filename differs from S9 handoff")
     if request.selected_filename is not None and (
-        result.route != document_route(request.selected_filename)
+        result.route != content_route(request.selected_filename)
         or effective_path != request.selected_filename
     ):
         raise ResultProjectionError("processing route differs from selected document")

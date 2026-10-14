@@ -3,9 +3,21 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from edgar_sec.domain.document.path_facts import DocumentPathFacts
-from edgar_sec.domain.document.route import DocumentRoute, document_route
-from edgar_sec.engine.document_processing.capabilities import HandlerOutputKind
+from edgar_sec.domain.document.path_facts import (
+    DocumentPathFacts,
+    DocumentPathShape,
+)
+from edgar_sec.domain.document.route import (
+    content_route,
+    document_route,
+)
+from edgar_sec.engine.document_processing.acquisition_capabilities import (
+    resolve_acquisition_capability,
+)
+from edgar_sec.engine.document_processing.capabilities import (
+    HandlerOutputKind,
+    operation_output_kind,
+)
 from edgar_sec.engine.document_processing.registry import (
     DEFAULT_HANDLER_REGISTRY,
     HandlerContext,
@@ -68,16 +80,6 @@ class AcquisitionProcessResult:
     outcomes: tuple[OperationOutcome, ...]
 
 
-_OPERATION_OUTPUTS = {
-    "raw": HandlerOutputKind.RAW_BYTES,
-    "render_to_txt": HandlerOutputKind.TEXT,
-    "render_to_xml": HandlerOutputKind.XML,
-}
-_TEXT_FALLBACK_ROUTES = frozenset(
-    {DocumentRoute.MARKUP, DocumentRoute.RENDERED, DocumentRoute.TEXT}
-)
-
-
 class AcquisitionProcessor:
     def __init__(self, registry: HandlerRegistry = DEFAULT_HANDLER_REGISTRY) -> None:
         self._registry = registry
@@ -108,7 +110,7 @@ class AcquisitionProcessor:
             "text": "render_to_txt",
             "xml": "render_to_xml",
         }.get(operation_record.output_kind, "unknown")
-        expected_kind = _OPERATION_OUTPUTS.get(operation)
+        expected_kind = operation_output_kind(operation)
         if expected_kind is None:
             return self._outcome(operation, "unsupported", "unknown_operation")
         if operation_record.output_kind != expected_kind.value:
@@ -123,23 +125,36 @@ class AcquisitionProcessor:
         if error:
             return self._outcome(operation, "failed", error)
 
-        route = document_route(input_record.selected_path)
-        registration = self._registry.resolve(operation, request.family, route)
-        if (
-            operation == "render_to_txt"
-            and registration is not None
-            and registration.handler_id == "normalize_document"
-            and route not in _TEXT_FALLBACK_ROUTES
-        ):
-            registration = None
-        if registration is None:
+        route = (
+            document_route(input_record.path_facts.path_context)
+            if input_record.path_facts.path_shape is DocumentPathShape.NESTED
+            else content_route(input_record.path_facts.path_context)
+        )
+        capability = resolve_acquisition_capability(
+            request.family,
+            request.role,
+            operation,
+            input_record.path_facts,
+            route,
+            handlers=self._registry,
+        )
+        registration = capability.registration
+        pins = capability.pins
+        if registration is None or pins is None:
             return self._outcome(operation, "unsupported", "handler_not_registered")
         if (
-            operation_record.handler_id is not None
-            and operation_record.handler_id != registration.handler_id
-        ) or (
-            operation_record.handler_version is not None
-            and operation_record.handler_version != registration.handler_version
+            (
+                operation_record.capability_version is not None
+                and operation_record.capability_version != pins[1]
+            )
+            or (
+                operation_record.handler_id is not None
+                and operation_record.handler_id != registration.handler_id
+            )
+            or (
+                operation_record.handler_version is not None
+                and operation_record.handler_version != registration.handler_version
+            )
         ):
             return self._outcome(operation, "failed", "handler_pin_mismatch")
 
@@ -194,6 +209,8 @@ class AcquisitionProcessor:
             input_record.path_facts, DocumentPathFacts
         ):
             return "invalid_path_facts"
+        if request.path_facts != input_record.path_facts:
+            return "path_facts_mismatch"
         if not all(
             isinstance(value, str)
             for value in (
@@ -206,6 +223,8 @@ class AcquisitionProcessor:
             return "invalid_request_metadata"
         if not input_record.selected_path.strip():
             return "invalid_selected_path"
+        if input_record.path_facts.path_context != input_record.selected_path:
+            return "selected_path_facts_mismatch"
         return None
 
     @staticmethod

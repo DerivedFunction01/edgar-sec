@@ -69,6 +69,7 @@ ways a network dependency creeps in.
   instead of forking a new one. A directory that exists but describes a different
   request, is incomplete, or no longer matches its recorded selection fingerprint is
   a `PlanConflictError`, never a rewrite.
+- **Plan fingerprints have one domain contract.** The pipeline streams and sorts locator keys from Parquet; `domain.plan.fingerprint` hashes those keys with plan identity while preserving the published digest bytes.
 - **A plan bundle is complete when it matches its recorded manifest.** That requires
   every required file, the seed sidecar for a policy plan, and a match between the
   on-disk partition set and the one recorded in `plan.json`, so a legitimately empty

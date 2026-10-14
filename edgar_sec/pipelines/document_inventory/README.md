@@ -10,6 +10,7 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 
 - Fixture capture reuses successful pages and records additional source membership; failed pages remain retryable. Replay validates the response digest and returns exact decompressed bytes. Inventory fixtures live at `{artifacts_root}/document_inventory/fixtures/<fixture_id>/`; their `manifest.json` uses the shared `foundation.runtime.fixtures` envelope, while `details` and the SQLite schema remain inventory-owned.
 - Plan and fixture discovery reads manifests only; the operator selects discovered artifacts instead of accepting arbitrary plan JSON paths.
+- Plan discovery and the stable sorted-key fingerprint contract live in `domain.plan`; this pipeline owns its Parquet reads and supplies the ordered locator-key stream.
 - `engine.index_pages.parser.parse_html_index` transforms explicit bytes to typed domain
   records without network or artifact access; unknown structure never becomes an empty
   successful parse.

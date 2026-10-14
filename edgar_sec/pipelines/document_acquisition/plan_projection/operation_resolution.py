@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from types import SimpleNamespace
 from collections.abc import Iterator
 from pathlib import Path
 from typing import Any
@@ -8,6 +7,10 @@ from typing import Any
 import pyarrow as pa
 
 from edgar_sec.domain.document.path_facts import DocumentPathFacts
+from edgar_sec.domain.document.route import document_route
+from edgar_sec.engine.document_processing.acquisition_capabilities import (
+    resolve_acquisition_capability,
+)
 from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
 )
@@ -16,12 +19,6 @@ from edgar_sec.pipelines.document_acquisition.arrow_schemas import (
     RESOLVED_OPERATION_SCHEMA,
 )
 from edgar_sec.pipelines.document_acquisition.schemas import PLAN_RELATION_SCHEMAS
-from edgar_sec.pipelines.document_acquisition.processing.io import (
-    expected_operation_pins,
-)
-from edgar_sec.pipelines.document_acquisition.processing.models import (
-    OperationRequest,
-)
 
 _OPERATIONS = {"raw", "render_to_txt", "render_to_xml"}
 _DEFAULT_PRIORITY = {"render_to_xml": 0, "render_to_txt": 1}
@@ -47,7 +44,6 @@ def resolve_operation_group(
     facts = DocumentPathFacts.from_archive_path(
         (source["canonical_path"] or "") if source is not None else ""
     )
-    request = SimpleNamespace(form=target["form"], target_role=target["target_role"])
     resolved = []
     for intent in operations:
         operation = intent["operation"]
@@ -62,19 +58,13 @@ def resolve_operation_group(
             support_reason = None
             pins = None
         else:
-            candidate = OperationRequest(
-                operation_id=intent["operation_id"],
-                operation=operation,
-                requested=True,
-                support_status="supported",
-                source_request_id=source_id,
-                capability_id="raw.selected_source" if operation == "raw" else None,
-                capability_version="v1" if operation == "raw" else None,
-                handler_id=None,
-                handler_version=None,
-                output_kind=None,
-            )
-            pins = expected_operation_pins(request, candidate, facts)
+            pins = resolve_acquisition_capability(
+                target["form"],
+                target["target_role"],
+                operation,
+                facts,
+                document_route(facts.path_context),
+            ).pins
             support_status = "supported" if pins is not None else "unsupported"
             support_reason = (
                 None

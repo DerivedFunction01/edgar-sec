@@ -9,6 +9,7 @@ from edgar_sec.engine.document_processing.capabilities import (
     HandlerOutputKind,
     ProcessingCapability,
     ProcessingCapabilityRegistry,
+    operation_output_kind,
 )
 from edgar_sec.engine.document_processing.registry import HandlerRegistry
 
@@ -85,3 +86,12 @@ def test_capability_rejects_operation_output_mismatch() -> None:
                 ),
             )
         )
+
+
+def test_registry_exposes_handler_capability_and_operation_output_contract() -> None:
+    registry = HandlerRegistry()
+    assert registry.capability_for("normalize_document") == DEFAULT_CAPABILITIES.get(
+        "normalize_document"
+    )
+    assert operation_output_kind("render_to_txt") is HandlerOutputKind.TEXT
+    assert operation_output_kind("unknown") is None

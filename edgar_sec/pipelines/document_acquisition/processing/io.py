@@ -8,14 +8,11 @@ from pathlib import Path
 
 from edgar_sec.domain.document.path_facts import (
     DocumentPathFacts,
-    DocumentPathShape,
-    DocumentSuffixClass,
 )
 from edgar_sec.domain.document.route import DocumentRoute
-from edgar_sec.domain.forms.common.aliases import resolve_alias
-from edgar_sec.domain.forms.common.processing import AcquisitionOperation
-from edgar_sec.domain.forms.families.processing_profiles import get_family_profile
-from edgar_sec.engine.document_processing.capabilities import get_capability
+from edgar_sec.engine.document_processing.acquisition_capabilities import (
+    resolve_acquisition_capability,
+)
 from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.runtime.paths import validate_safe_id
 from edgar_sec.foundation.serialization import canonical_hash
@@ -333,72 +330,6 @@ def operation_pins(
     )
 
 
-def expected_operation_pins(
-    request: ProcessingRequest,
-    operation: OperationRequest,
-    facts: DocumentPathFacts,
-) -> tuple[str, str, str, str, str] | None:
-    if operation.operation == "raw":
-        descriptor = get_capability("raw_identity")
-        if not operation.capability_id or descriptor is None:
-            return None
-        return (
-            operation.capability_id,
-            "v1",
-            "raw_identity",
-            descriptor.handler_version if descriptor else "",
-            descriptor.output_kind.value if descriptor else "raw_bytes",
-        )
-
-    profile = get_family_profile(request.form)
-    if profile is None:
-        return None
-    capability_id = handler_id = output_kind = None
-    if operation.operation == "render_to_txt":
-        if facts.suffix_class is DocumentSuffixClass.TEXT:
-            capability_id = "text.plain"
-        elif facts.suffix_class is DocumentSuffixClass.MARKUP:
-            capability_id = "text.markup"
-        elif (
-            facts.suffix_class is DocumentSuffixClass.XML
-            and facts.path_shape is DocumentPathShape.NESTED
-            and facts.path_context.split("/", 1)[0].casefold().startswith("xsl")
-        ):
-            capability_id = "text.rendered_markup"
-        handler_id = "normalize_document"
-        output_kind = "text"
-    elif operation.operation == "render_to_xml":
-        family = resolve_alias(request.form)
-        if (
-            family == "4"
-            and request.target_role == "primary"
-            and facts.suffix == ".htm"
-            and facts.suffix_class is DocumentSuffixClass.MARKUP
-        ):
-            capability_id = "form4.htm.render_to_xml"
-            handler_id = "form4_html_to_xml"
-            output_kind = "xml"
-    if (
-        capability_id is None
-        or AcquisitionOperation(operation.operation) not in profile.allowed_operations
-    ):
-        return None
-    descriptor = get_capability(handler_id or "")
-    if (
-        descriptor is None
-        or descriptor.operation != operation.operation
-        or descriptor.output_kind.value != output_kind
-    ):
-        return None
-    return (
-        capability_id,
-        profile.version,
-        descriptor.handler_id,
-        descriptor.handler_version,
-        descriptor.output_kind.value,
-    )
-
-
 def resolve_requested_operation_budgets(
     request: ProcessingRequest,
     route: DocumentRoute,
@@ -414,7 +345,9 @@ def resolve_requested_operation_budgets(
             or not (operation.source_request_id or "").strip()
         ):
             continue
-        expected = expected_operation_pins(request, operation, facts)
+        expected = resolve_acquisition_capability(
+            request.form, request.target_role, operation.operation, facts, route
+        ).pins
         if expected is None or operation_pins(operation) != expected:
             continue
         policy = registry.get(
@@ -444,7 +377,9 @@ def admit_requested_operations(
             or not (operation.source_request_id or "").strip()
         ):
             continue
-        expected = expected_operation_pins(request, operation, facts)
+        expected = resolve_acquisition_capability(
+            request.form, request.target_role, operation.operation, facts
+        ).pins
         if expected is None or operation_pins(operation) != expected:
             continue
         policy = budget_profiles.get(operation.operation_id)

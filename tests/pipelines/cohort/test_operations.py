@@ -12,12 +12,9 @@ from edgar_sec.pipelines.cohort.operations import (
     CohortRef,
     compile_ast_to_sql,
     diff_cohorts,
-    execute_delta_roster,
     execute_set_operation,
     parse_expression,
-    sample_cohort,
     serialize_expression,
-    FamilyIndexNotFoundError,
 )
 from edgar_sec.infra.storage.cohort.paths import CohortPaths
 from edgar_sec.infra.storage.duckdb import connect
@@ -92,21 +89,6 @@ def test_union_falls_back_to_right_name_when_left_is_blank(tmp_path: Path) -> No
     ]
 
 
-def test_delta_anti_join_uses_base_cik_and_resets_ordinals(tmp_path: Path) -> None:
-    requested = _dataset(
-        tmp_path / "requested.parquet",
-        [(10, "0000000001", "One"), (20, "0000000002", "Two")],
-    )
-    pq.write_table(pa.table({"cik": ["0000000001"]}), tmp_path / "base.parquet")
-    output = tmp_path / "delta.parquet"
-
-    assert execute_delta_roster(requested, tmp_path / "base.parquet", output) == 1
-    assert pq.read_table(output).to_pylist() == [
-        {"ordinal": 0, "cik_padded": "0000000002", "name": "Two"}
-    ]
-    assert pq.read_metadata(tmp_path / "base.parquet").num_rows == 1
-
-
 def test_diff_report_counts_and_bounds_samples(tmp_path: Path) -> None:
     left = _dataset(
         tmp_path / "left.parquet",
@@ -154,83 +136,3 @@ def test_expression_parser_and_compiler(tmp_path: Path) -> None:
     with connect() as con:
         rows = con.execute(f"SELECT cik_padded, name FROM ({sql})").fetchall()
     assert rows == [("0000000001", "first"), ("0000000002", "second")]
-
-
-def test_modulo_sampling_is_deterministic(tmp_path: Path) -> None:
-    source = _dataset(
-        tmp_path / "source.parquet",
-        [
-            (0, "0000000001", "A"),
-            (1, "0000000002", "B"),
-            (2, "0000000003", "C"),
-            (3, "0000000004", "D"),
-        ],
-    )
-    first = tmp_path / "first.parquet"
-    second = tmp_path / "second.parquet"
-
-    assert sample_cohort(source, first, rate_percent=50) == sample_cohort(
-        source, second, rate_percent=50
-    )
-    assert pq.read_table(first).to_pylist() == pq.read_table(second).to_pylist()
-
-
-def test_family_sampling_prefers_operating_rows_and_fails_closed(
-    tmp_path: Path,
-) -> None:
-    source = _dataset(
-        tmp_path / "source.parquet",
-        [
-            (0, "0000000001", "A"),
-            (1, "0000000002", "B"),
-            (2, "0000000003", "C"),
-            (3, "0000000004", "D"),
-        ],
-    )
-    family = tmp_path / "family.parquet"
-    pq.write_table(
-        pa.table(
-            {
-                "cik": ["0000000001", "0000000002", "0000000003"],
-                "company_family": ["shared", "shared", "solo"],
-                "family_kind": ["spv", "entity", "entity"],
-            }
-        ),
-        family,
-    )
-    output = tmp_path / "family-sample.parquet"
-
-    assert (
-        sample_cohort(
-            source,
-            output,
-            group_by_family=True,
-            family_index_dataset=family,
-            rate_percent=100,
-        )
-        == 3
-    )
-    assert "0000000002" in pq.read_table(output).column("cik_padded").to_pylist()
-    assert "0000000001" not in pq.read_table(output).column("cik_padded").to_pylist()
-    with pytest.raises(FamilyIndexNotFoundError):
-        sample_cohort(source, tmp_path / "missing.parquet", group_by_family=True)
-
-
-def test_random_sample_limit_is_seeded(tmp_path: Path) -> None:
-    source = _dataset(
-        tmp_path / "source.parquet",
-        [
-            (0, "0000000001", "A"),
-            (1, "0000000002", "B"),
-            (2, "0000000003", "C"),
-            (3, "0000000004", "D"),
-        ],
-    )
-    first = tmp_path / "first.parquet"
-    second = tmp_path / "second.parquet"
-
-    sample_cohort(source, first, method="random", sample_limit=2, seed=7)
-    sample_cohort(source, second, method="random", sample_limit=2, seed=7)
-
-    assert pq.read_table(first).to_pylist() == pq.read_table(second).to_pylist()
-    assert pq.read_metadata(first).num_rows == 2

@@ -387,6 +387,23 @@ def test_process_target_uses_lazy_direct_selection_evidence_for_route(
     assert result.operation_results[2].status == "not_requested"
 
 
+def test_route_changes_invalidate_prior_operation_fingerprints(tmp_path: Path) -> None:
+    from edgar_sec.pipelines.document_acquisition.processing.io import (
+        operation_fingerprint,
+    )
+
+    _paths, request = _acquired_request(tmp_path, lazy_selected=True)
+    operation = request.operations[1]
+    markup = operation_fingerprint(
+        request, operation, request.body, DocumentRoute.MARKUP, "report.htm", None
+    )
+    rendered = operation_fingerprint(
+        request, operation, request.body, DocumentRoute.RENDERED, "report.htm", None
+    )
+
+    assert markup != rendered
+
+
 def test_process_target_rejects_route_pin_that_conflicts_with_lazy_selection(
     tmp_path: Path,
 ) -> None:
