@@ -76,7 +76,7 @@ class PipelineRunner:
             profile_id,
             paths=self.planning_paths,
         )
-        doc_plan_id = str(doc_plan["plan_id"])
+        doc_plan_id = doc_plan.plan_id
 
         project_result = project_acquisition_run(
             doc_plan_id, paths=self.acquisition_paths

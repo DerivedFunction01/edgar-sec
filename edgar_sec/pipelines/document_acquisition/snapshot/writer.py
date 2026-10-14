@@ -628,7 +628,11 @@ def _collect_payload_bytes(
             "selected_file"
         )
         if sha and rel_file:
-            path = staging_root / rel_file
+            path = (
+                paths.run_dir(run_id) / rel_file
+                if str(rel_file).startswith("staging/")
+                else staging_root / rel_file
+            )
             if path.is_file():
                 data = path.read_bytes()
                 if sha256_bytes(data) == sha:
