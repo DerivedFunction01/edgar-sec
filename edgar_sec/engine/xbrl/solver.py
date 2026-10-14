@@ -10,45 +10,14 @@ from edgar_sec.engine.xbrl.decomposer import infer_semantic_frame
 from edgar_sec.engine.xbrl.evidence import EvidenceKnowledgeBase
 from edgar_sec.engine.xbrl.gold import PlacementPrediction
 from edgar_sec.engine.xbrl.models import (
+    AggregateFact,
     CalculationArc,
+    ConceptBreakdown,
+    GranularComponent,
     PresentationArc,
+    Verdict,
     XbrlFact,
 )
-
-
-@dataclass(frozen=True, slots=True)
-class GranularComponent:
-    """Constituent component in a financial concept breakdown."""
-
-    identifier: str
-    value: float
-    weight: float = 1.0
-    member_dimension: str | None = None
-    is_direct: bool = True
-
-
-@dataclass(frozen=True, slots=True)
-class ConceptBreakdown:
-    """Granular breakdown of a financial concept into constituent parts."""
-
-    target_concept: str
-    total_value: float | None
-    components: tuple[GranularComponent, ...]
-    is_balanced: bool = True
-    discrepancy: float = 0.0
-
-
-@dataclass(frozen=True, slots=True)
-class SolvedGoal:
-    """Evaluated financial target value with provenance and derivation path."""
-
-    target_concept: str
-    computed_value: float | None
-    resolution_tier: str
-    derivation_path: tuple[str, ...] = ()
-    confidence: float = 1.0
-    is_direct: bool = False
-    breakdown: ConceptBreakdown | None = None
 
 
 class XbrlConstraintSolver:
@@ -114,7 +83,7 @@ class XbrlConstraintSolver:
                 )
                 continue
 
-            # 3. Subatomic prime head induction
+            # 3. Subatomic prime head induction via declarative taxonomy graph
             if self.enable_head_induction:
                 frame = infer_semantic_frame(
                     qname,
@@ -122,30 +91,16 @@ class XbrlConstraintSolver:
                     unit=fact.unit,
                     balance=fact.balance,
                 )
-                if frame.prime_head == "H_REVENUE":
+                head_edge = self.kb.taxonomy.find_head_placement(
+                    frame.prime_head,
+                    sector=sector,
+                )
+                if head_edge is not None:
                     predictions.append(
                         PlacementPrediction(
                             concept_qname=qname,
-                            predicted_parent="us-gaap:GrossProfit",
-                            predicted_weight=1.0,
-                        )
-                    )
-                    continue
-                if frame.prime_head == "H_COST":
-                    predictions.append(
-                        PlacementPrediction(
-                            concept_qname=qname,
-                            predicted_parent="us-gaap:GrossProfit",
-                            predicted_weight=-1.0,
-                        )
-                    )
-                    continue
-                if frame.prime_head == "H_EXPENSE":
-                    predictions.append(
-                        PlacementPrediction(
-                            concept_qname=qname,
-                            predicted_parent="us-gaap:OperatingIncomeLoss",
-                            predicted_weight=-1.0,
+                            predicted_parent=head_edge.target_node,
+                            predicted_weight=head_edge.algebraic_weight,
                         )
                     )
                     continue
@@ -200,6 +155,18 @@ class XbrlConstraintSolver:
                                     member_dimension=d_axis,
                                 )
                             )
+
+            # Apply antichain cut: prevent ancestor and descendant from co-existing
+            pruned_components: list[GranularComponent] = []
+            for comp in components:
+                has_ancestor_present = any(
+                    comp.identifier != other.identifier
+                    and self.kb.is_geo_subsumed(comp.identifier, other.identifier)
+                    for other in components
+                )
+                if not has_ancestor_present:
+                    pruned_components.append(comp)
+            components = pruned_components if pruned_components else components
 
             top_val = None
             for f in facts:
@@ -275,6 +242,129 @@ class XbrlConstraintSolver:
             discrepancy=discrepancy,
         )
 
+    def classify_candidate_facts(
+        self,
+        target_concept: str,
+        facts: Sequence[XbrlFact],
+        calculation_arcs: Sequence[CalculationArc] = (),
+    ) -> tuple[Verdict, ...]:
+        """Classify candidate facts into ACCEPT, REJECT, or UNKNOWN with materiality priority."""
+        target_local = (
+            target_concept.split(":")[-1] if ":" in target_concept else target_concept
+        )
+        child_arc_map = {
+            a.child_qname: a.weight
+            for a in calculation_arcs
+            if (
+                a.parent_qname == target_concept
+                or a.parent_qname.split(":")[-1] == target_local
+            )
+        }
+        child_locals = {k.split(":")[-1] for k in child_arc_map}
+
+        max_val = 1.0
+        for f in facts:
+            if isinstance(f.value, (int, float)):
+                max_val = max(max_val, abs(float(f.value)))
+
+        verdicts: list[Verdict] = []
+        for f in facts:
+            qname = f.concept_qname
+            q_loc = qname.split(":")[-1]
+            val = float(f.value) if isinstance(f.value, (int, float)) else 0.0
+            prio = round(abs(val) / max_val, 4)
+
+            if qname == target_concept or q_loc == target_local:
+                role = "LEAF" if f.dimensions else "ROOT"
+                verdicts.append(
+                    Verdict(
+                        concept_qname=qname,
+                        measure_id=target_concept,
+                        decision="ACCEPT",
+                        role=role,
+                        weight=1.0,
+                        priority=prio,
+                    )
+                )
+                continue
+
+            if qname in child_arc_map or q_loc in child_locals:
+                w = child_arc_map.get(qname, 1.0)
+                verdicts.append(
+                    Verdict(
+                        concept_qname=qname,
+                        measure_id=target_concept,
+                        decision="ACCEPT",
+                        role="LEAF",
+                        weight=w,
+                        priority=prio,
+                    )
+                )
+                continue
+
+            if not isinstance(f.value, (int, float)):
+                verdicts.append(
+                    Verdict(
+                        concept_qname=qname,
+                        measure_id=target_concept,
+                        decision="REJECT",
+                        reject_reason="NON_NUMERIC_PROSE",
+                        priority=0.0,
+                    )
+                )
+                continue
+
+            if (
+                ":" in qname
+                and not qname.startswith("us-gaap:")
+                and not qname.startswith("dei:")
+            ):
+                verdicts.append(
+                    Verdict(
+                        concept_qname=qname,
+                        measure_id=target_concept,
+                        decision="UNKNOWN",
+                        unknown_reason="UNSEEN_SIGNATURE",
+                        priority=prio,
+                    )
+                )
+            else:
+                verdicts.append(
+                    Verdict(
+                        concept_qname=qname,
+                        measure_id=target_concept,
+                        decision="REJECT",
+                        reject_reason="OTHER_STATEMENT",
+                        priority=prio,
+                    )
+                )
+
+        return tuple(verdicts)
+
+    def _resolve_source_node_value(
+        self,
+        node_name: str,
+        fact_vals: dict[str, float],
+        local_fact_vals: dict[str, float],
+        facts: Sequence[XbrlFact],
+        calculation_arcs: Sequence[CalculationArc],
+    ) -> float | None:
+        """Resolve value for a relational source node directly, via aliases, or recursively."""
+        node_local = node_name.split(":")[-1]
+        direct_val = fact_vals.get(node_name, local_fact_vals.get(node_local))
+        if direct_val is not None:
+            return direct_val
+
+        # Declarative equivalence traversal over SAME_CONCEPT taxonomy relations
+        equivalences = self.kb.taxonomy.equivalent_concepts(node_local)
+        for cand in equivalences:
+            val = fact_vals.get(cand, local_fact_vals.get(cand.split(":")[-1]))
+            if val is not None:
+                return val
+
+        sub_fact = self.evaluate_goal(node_name, facts, calculation_arcs)
+        return sub_fact.value
+
     def evaluate_goal(
         self,
         target_concept: str,
@@ -282,8 +372,11 @@ class XbrlConstraintSolver:
         calculation_arcs: Sequence[CalculationArc] = (),
         *,
         axis_filter: str | None = None,
-    ) -> SolvedGoal:
-        """Evaluate a financial concept directly, via dimensional sum, or multi-hop roll-up."""
+        entity: str = "",
+        period: str = "",
+        unit: str = "USD",
+    ) -> AggregateFact:
+        """Evaluate an aggregate financial fact emitting canonical basis and derivation path."""
         if axis_filter is not None:
             bd = self.breakdown_concept(
                 target_concept, facts, calculation_arcs, axis=axis_filter
@@ -291,12 +384,19 @@ class XbrlConstraintSolver:
             if bd.components:
                 total = sum(c.value * c.weight for c in bd.components)
                 path = tuple(f"{c.identifier}={c.value}" for c in bd.components)
-                return SolvedGoal(
-                    target_concept=target_concept,
-                    computed_value=round(total, 4),
-                    resolution_tier="DIMENSIONAL_ANTICHAIN_SUM",
+                return AggregateFact(
+                    measure_id=target_concept,
+                    entity=entity,
+                    period=period,
+                    unit=unit,
+                    value=round(total, 4),
+                    basis="DERIVED_EXACT",
+                    slice_dimensions={axis_filter: "*"},
+                    components=bd.components,
+                    residual=bd.discrepancy,
                     derivation_path=path,
                     breakdown=bd,
+                    resolution_tier="DIMENSIONAL_ANTICHAIN_SUM",
                 )
 
         target_local = (
@@ -313,20 +413,35 @@ class XbrlConstraintSolver:
             if not f.dimensions and isinstance(f.value, (int, float))
         }
 
-        # 1. Direct fact match
-        if target_concept in fact_vals:
-            return SolvedGoal(
-                target_concept=target_concept,
-                computed_value=fact_vals[target_concept],
+        # 1. Direct fact match or equivalent concept match
+        direct_val = fact_vals.get(target_concept, local_fact_vals.get(target_local))
+        resolved_concept = target_concept
+        if direct_val is None:
+            equivs = self.kb.taxonomy.equivalent_concepts(target_local)
+            for cand in equivs:
+                cand_val = fact_vals.get(cand, local_fact_vals.get(cand.split(":")[-1]))
+                if cand_val is not None:
+                    direct_val = cand_val
+                    resolved_concept = cand
+                    break
+
+        if direct_val is not None:
+            bd = self.breakdown_concept(resolved_concept, facts, calculation_arcs)
+            if bd.components:
+                basis = "REPORTED_VERIFIED" if bd.is_balanced else "CONFLICT"
+            else:
+                basis = "REPORTED"
+            return AggregateFact(
+                measure_id=target_concept,
+                entity=entity,
+                period=period,
+                unit=unit,
+                value=direct_val,
+                basis=basis,
+                components=bd.components,
+                residual=bd.discrepancy,
+                breakdown=bd,
                 resolution_tier="DIRECT_ANCHOR",
-                is_direct=True,
-            )
-        if target_local in local_fact_vals:
-            return SolvedGoal(
-                target_concept=target_concept,
-                computed_value=local_fact_vals[target_local],
-                resolution_tier="DIRECT_ANCHOR",
-                is_direct=True,
             )
 
         # 2. Multi-hop derivation via calculation arcs
@@ -353,122 +468,77 @@ class XbrlConstraintSolver:
                     break
             if all_resolved and path:
                 bd = self.breakdown_concept(target_concept, facts, calculation_arcs)
-                return SolvedGoal(
-                    target_concept=target_concept,
-                    computed_value=round(total, 4),
-                    resolution_tier="DERIVED_MULTI_HOP",
+                return AggregateFact(
+                    measure_id=target_concept,
+                    entity=entity,
+                    period=period,
+                    unit=unit,
+                    value=round(total, 4),
+                    basis="DERIVED_EXACT",
+                    components=bd.components,
+                    residual=bd.discrepancy,
                     derivation_path=tuple(path),
-                    is_direct=False,
                     breakdown=bd,
+                    resolution_tier="DERIVED_MULTI_HOP",
                 )
 
-        # 3. Cross-root algebraic derivation (subatomic identities)
-        if target_local in ("GrossProfit", "GrossMargin"):
-            rev = local_fact_vals.get("Revenues") or local_fact_vals.get(
-                "RevenueFromContractWithCustomerExcludingAssessedTax"
+        # 3. Declarative Relational Graph Traversal (PART_OF / CONTRA_OF / DERIVED_FROM)
+        target_edges = [
+            e
+            for e in self.kb.taxonomy.typed_relations
+            if (
+                e.target_node == target_concept
+                or e.target_node == target_local
+                or e.target_node.split(":")[-1] == target_local
             )
-            cogs = (
-                local_fact_vals.get("CostOfGoodsAndServicesSold")
-                or local_fact_vals.get("CostOfGoodsSold")
-                or local_fact_vals.get("CostOfRevenue")
-            )
-            if rev is not None and cogs is not None:
-                gp = rev - cogs
-                return SolvedGoal(
-                    target_concept=target_concept,
-                    computed_value=round(gp, 4),
-                    resolution_tier="SUBATOMIC_ALGEBRAIC_IDENTITY",
-                    derivation_path=(f"Revenues({rev}) - COGS({cogs})",),
-                )
+            and e.relation_type in ("PART_OF", "CONTRA_OF", "DERIVED_FROM")
+        ]
+        if target_edges:
+            edge_groups: dict[str, list[Any]] = {}
+            for e in target_edges:
+                key = e.formula_id or e.edge_id
+                edge_groups.setdefault(key, []).append(e)
 
-        if target_local in ("OperatingIncomeLoss", "OperatingIncome"):
-            gp_goal = self.evaluate_goal("GrossProfit", facts, calculation_arcs)
-            op_exp = local_fact_vals.get("OperatingExpenses")
-            if gp_goal.computed_value is not None and op_exp is not None:
-                op_inc = gp_goal.computed_value - op_exp
-                return SolvedGoal(
-                    target_concept=target_concept,
-                    computed_value=round(op_inc, 4),
-                    resolution_tier="SUBATOMIC_ALGEBRAIC_IDENTITY",
-                    derivation_path=(
-                        f"GrossProfit({gp_goal.computed_value}) - OpEx({op_exp})",
-                    ),
-                )
+            for group_edges in edge_groups.values():
+                resolved_vals: list[tuple[float, Any]] = []
+                all_found = True
+                for edge in group_edges:
+                    val = self._resolve_source_node_value(
+                        edge.source_node,
+                        fact_vals,
+                        local_fact_vals,
+                        facts,
+                        calculation_arcs,
+                    )
+                    if val is not None:
+                        resolved_vals.append((val, edge))
+                    else:
+                        all_found = False
+                        break
 
-        if target_local in ("Assets", "AssetsTotal"):
-            cur = local_fact_vals.get("AssetsCurrent")
-            noncur = local_fact_vals.get("AssetsNoncurrent")
-            if cur is not None and noncur is not None:
-                total_assets = cur + noncur
-                return SolvedGoal(
-                    target_concept=target_concept,
-                    computed_value=round(total_assets, 4),
-                    resolution_tier="SUBATOMIC_ALGEBRAIC_IDENTITY",
-                    derivation_path=(
-                        f"AssetsCurrent({cur}) + AssetsNoncurrent({noncur})",
-                    ),
-                )
-            liab = local_fact_vals.get("Liabilities")
-            equity = local_fact_vals.get("StockholdersEquity") or local_fact_vals.get(
-                "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"
-            )
-            if liab is not None and equity is not None:
-                total_assets = liab + equity
-                return SolvedGoal(
-                    target_concept=target_concept,
-                    computed_value=round(total_assets, 4),
-                    resolution_tier="SUBATOMIC_ALGEBRAIC_IDENTITY",
-                    derivation_path=(f"Liabilities({liab}) + Equity({equity})",),
-                )
+                if all_found and resolved_vals:
+                    total = sum(v * e.algebraic_weight for v, e in resolved_vals)
+                    path = tuple(
+                        f"{e.source_node}({v}) * {e.algebraic_weight}"
+                        for v, e in resolved_vals
+                    )
+                    return AggregateFact(
+                        measure_id=target_concept,
+                        entity=entity,
+                        period=period,
+                        unit=unit,
+                        value=round(total, 4),
+                        basis="DERIVED_EXACT",
+                        derivation_path=path,
+                        resolution_tier="SUBATOMIC_ALGEBRAIC_IDENTITY",
+                    )
 
-        if target_local in ("FreeCashFlow", "FCF"):
-            ocf = local_fact_vals.get("OperatingCashFlow") or local_fact_vals.get(
-                "NetCashProvidedByUsedInOperatingActivities"
-            )
-            capex = (
-                local_fact_vals.get("CapitalExpenditures")
-                or local_fact_vals.get("PaymentsToAcquirePropertyPlantAndEquipment")
-                or local_fact_vals.get("PaymentsToAcquireProductiveAssets")
-            )
-            if ocf is not None and capex is not None:
-                fcf = ocf - abs(capex)
-                return SolvedGoal(
-                    target_concept=target_concept,
-                    computed_value=round(fcf, 4),
-                    resolution_tier="SUBATOMIC_ALGEBRAIC_IDENTITY",
-                    derivation_path=(f"OCF({ocf}) - CapEx({capex})",),
-                )
-
-        if target_local in ("ComprehensiveIncomeNet", "ComprehensiveIncome"):
-            ni = local_fact_vals.get("NetIncomeLoss") or local_fact_vals.get(
-                "NetIncome"
-            )
-            oci = local_fact_vals.get(
-                "OtherComprehensiveIncomeLossNetOfTax"
-            ) or local_fact_vals.get("OtherComprehensiveIncomeLoss")
-            if ni is not None and oci is not None:
-                comp = ni + oci
-                return SolvedGoal(
-                    target_concept=target_concept,
-                    computed_value=round(comp, 4),
-                    resolution_tier="SUBATOMIC_ALGEBRAIC_IDENTITY",
-                    derivation_path=(f"NetIncome({ni}) + OCI({oci})",),
-                )
-
-        if target_local in ("LiabilitiesAndStockholdersEquity",):
-            liab = local_fact_vals.get("Liabilities")
-            equity = local_fact_vals.get("StockholdersEquity")
-            if liab is not None and equity is not None:
-                total_le = liab + equity
-                return SolvedGoal(
-                    target_concept=target_concept,
-                    computed_value=round(total_le, 4),
-                    resolution_tier="SUBATOMIC_ALGEBRAIC_IDENTITY",
-                    derivation_path=(f"Liabilities({liab}) + Equity({equity})",),
-                )
-
-        return SolvedGoal(
-            target_concept=target_concept,
-            computed_value=None,
+        return AggregateFact(
+            measure_id=target_concept,
+            entity=entity,
+            period=period,
+            unit=unit,
+            value=None,
+            basis="NOT_AVAILABLE",
             resolution_tier="UNRESOLVED",
         )

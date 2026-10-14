@@ -86,3 +86,73 @@ class FilingXbrl:
     cik: Cik
     facts: tuple[XbrlFact, ...]
     linkbases: LinkbaseBundle
+
+
+@dataclass(frozen=True, slots=True)
+class GranularComponent:
+    """Constituent component in a financial concept breakdown."""
+
+    identifier: str
+    value: float
+    weight: float = 1.0
+    member_dimension: str | None = None
+    is_direct: bool = True
+
+
+@dataclass(frozen=True, slots=True)
+class ConceptBreakdown:
+    """Granular breakdown of a financial concept into constituent parts."""
+
+    target_concept: str
+    total_value: float | None
+    components: tuple[GranularComponent, ...]
+    is_balanced: bool = True
+    discrepancy: float = 0.0
+
+
+@dataclass(frozen=True, slots=True)
+class Verdict:
+    """Three-valued classification of an XBRL fact within a target query domain."""
+
+    concept_qname: str
+    measure_id: str
+    decision: str  # ACCEPT | REJECT | UNKNOWN
+    role: str | None = None  # ROOT | SUBTOTAL | LEAF
+    weight: float = 1.0
+    reject_reason: str | None = None
+    unknown_reason: str | None = (
+        None  # UNSEEN_SIGNATURE | RESIDUAL_ONLY | LOW_SUPPORT | CONFLICT | NO_STRUCTURE
+    )
+    priority: float = 0.0
+
+
+@dataclass(frozen=True, slots=True)
+class AggregateFact:
+    """Canonical aggregate financial fact with mathematical basis and provenance."""
+
+    measure_id: str
+    entity: str
+    period: str
+    unit: str
+    value: float | None
+    basis: str  # REPORTED_VERIFIED | REPORTED | DERIVED_EXACT | DERIVED_PARTIAL | CONFLICT | NOT_AVAILABLE
+    slice_dimensions: Mapping[str, str] = field(default_factory=dict)
+    components: tuple[GranularComponent, ...] = ()
+    coverage: float = 1.0
+    residual: float = 0.0
+    derivation_path: tuple[str, ...] = ()
+    confidence: float = 1.0
+    breakdown: ConceptBreakdown | None = None
+    resolution_tier: str = ""
+
+    @property
+    def target_concept(self) -> str:
+        return self.measure_id
+
+    @property
+    def computed_value(self) -> float | None:
+        return self.value
+
+    @property
+    def is_direct(self) -> bool:
+        return self.basis in ("REPORTED", "REPORTED_VERIFIED")

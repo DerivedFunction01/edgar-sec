@@ -175,3 +175,138 @@ def test_evaluate_goal_extended_accounting_identities() -> None:
     le_goal = solver.evaluate_goal("LiabilitiesAndStockholdersEquity", facts)
     assert le_goal.computed_value == 512163.0
     assert le_goal.resolution_tier == "SUBATOMIC_ALGEBRAIC_IDENTITY"
+
+
+def test_classify_candidate_facts_verdict_model() -> None:
+    """Verify 3-valued classification (ACCEPT/REJECT/UNKNOWN) and unknown priority."""
+    tax = load_domain_taxonomy()
+    solver = XbrlConstraintSolver(EvidenceKnowledgeBase(taxonomy=tax))
+    acc = AccessionNumber("0000950170-24-087843")
+    calc_arcs = [
+        CalculationArc("us-gaap:GrossProfit", "us-gaap:Revenues", weight=1.0),
+        CalculationArc("us-gaap:GrossProfit", "us-gaap:CostOfGoodsSold", weight=-1.0),
+    ]
+    facts = [
+        XbrlFact(acc, "us-gaap:GrossProfit", 1000.0),
+        XbrlFact(acc, "us-gaap:Revenues", 1500.0),
+        XbrlFact(acc, "us-gaap:CostOfGoodsSold", 500.0),
+        XbrlFact(acc, "us-gaap:PolicyNote", "prose text block", unit=None),
+        XbrlFact(acc, "msft:UnrealizedGainLossExtension", 250.0),
+    ]
+
+    verdicts = solver.classify_candidate_facts("us-gaap:GrossProfit", facts, calc_arcs)
+    assert len(verdicts) == 5
+
+    v_root = next(v for v in verdicts if v.concept_qname == "us-gaap:GrossProfit")
+    assert v_root.decision == "ACCEPT"
+    assert v_root.role == "ROOT"
+
+    v_rev = next(v for v in verdicts if v.concept_qname == "us-gaap:Revenues")
+    assert v_rev.decision == "ACCEPT"
+    assert v_rev.role == "LEAF"
+
+    v_prose = next(v for v in verdicts if v.concept_qname == "us-gaap:PolicyNote")
+    assert v_prose.decision == "REJECT"
+    assert v_prose.reject_reason == "NON_NUMERIC_PROSE"
+
+    v_unk = next(
+        v for v in verdicts if v.concept_qname == "msft:UnrealizedGainLossExtension"
+    )
+    assert v_unk.decision == "UNKNOWN"
+    assert v_unk.unknown_reason == "UNSEEN_SIGNATURE"
+    assert v_unk.priority > 0.0
+
+
+def test_evaluate_goal_basis_states() -> None:
+    """Verify 6 basis outcomes (REPORTED_VERIFIED, REPORTED, DERIVED_EXACT, NOT_AVAILABLE)."""
+    tax = load_domain_taxonomy()
+    solver = XbrlConstraintSolver(EvidenceKnowledgeBase(taxonomy=tax))
+    acc = AccessionNumber("0000950170-24-087843")
+    calc_arcs = [
+        CalculationArc("us-gaap:GrossProfit", "us-gaap:Revenues", weight=1.0),
+        CalculationArc("us-gaap:GrossProfit", "us-gaap:CostOfGoodsSold", weight=-1.0),
+    ]
+
+    # 1. REPORTED_VERIFIED
+    facts_verified = [
+        XbrlFact(acc, "us-gaap:GrossProfit", 1000.0),
+        XbrlFact(acc, "us-gaap:Revenues", 1500.0),
+        XbrlFact(acc, "us-gaap:CostOfGoodsSold", 500.0),
+    ]
+    g_ver = solver.evaluate_goal("us-gaap:GrossProfit", facts_verified, calc_arcs)
+    assert g_ver.basis == "REPORTED_VERIFIED"
+    assert g_ver.value == 1000.0
+    assert g_ver.residual == 0.0
+
+    # 2. REPORTED (no child arcs)
+    facts_rep = [XbrlFact(acc, "us-gaap:Revenues", 245122.0)]
+    g_rep = solver.evaluate_goal("us-gaap:Revenues", facts_rep, ())
+    assert g_rep.basis == "REPORTED"
+    assert g_rep.value == 245122.0
+
+    # 3. DERIVED_EXACT (missing root)
+    facts_derived = [
+        XbrlFact(acc, "us-gaap:Revenues", 1500.0),
+        XbrlFact(acc, "us-gaap:CostOfGoodsSold", 500.0),
+    ]
+    g_der = solver.evaluate_goal("us-gaap:GrossProfit", facts_derived, calc_arcs)
+    assert g_der.basis == "DERIVED_EXACT"
+    assert g_der.value == 1000.0
+
+    # 4. NOT_AVAILABLE
+    g_na = solver.evaluate_goal("us-gaap:UnknownConcept", facts_rep, ())
+    assert g_na.basis == "NOT_AVAILABLE"
+    assert g_na.value is None
+
+
+def test_declarative_same_concept_aliases_transitive() -> None:
+    """Verify transitive equivalence closure over declarative SAME_CONCEPT taxonomy edges."""
+    tax = load_domain_taxonomy()
+    rev_equivs = tax.equivalent_concepts("Revenues")
+    assert "RevenueFromContractWithCustomerExcludingAssessedTax" in rev_equivs
+    assert "SalesRevenueNet" in rev_equivs
+
+    ocf_equivs = tax.equivalent_concepts("Operating_Cash_Flow")
+    assert "NetCashProvidedByUsedInOperatingActivities" in ocf_equivs
+    assert "OperatingCashFlow" in ocf_equivs
+
+    solver = XbrlConstraintSolver(EvidenceKnowledgeBase(taxonomy=tax))
+    acc = AccessionNumber("0000950170-24-087843")
+    facts = [
+        XbrlFact(
+            acc, "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", 50000.0
+        ),
+        XbrlFact(acc, "us-gaap:CostOfGoodsSold", 30000.0),
+    ]
+    gp_goal = solver.evaluate_goal("GrossProfit", facts)
+    assert gp_goal.value == 20000.0
+    assert gp_goal.basis == "DERIVED_EXACT"
+
+
+def test_uk_vs_eu_antichain_geography_cut() -> None:
+    """Verify UK and EU are disjoint peers, pruning subsumed Germany to prevent double counting."""
+    tax = load_domain_taxonomy()
+    kb = EvidenceKnowledgeBase(taxonomy=tax)
+    solver = XbrlConstraintSolver(kb)
+    acc = AccessionNumber("0000950170-24-087843")
+    axis = "us-gaap:StatementGeographicalAxis"
+    facts = [
+        XbrlFact(
+            acc,
+            "us-gaap:Revenues",
+            60000.0,
+            dimensions={axis: "srt:EuropeanUnionMember"},
+        ),
+        XbrlFact(acc, "us-gaap:Revenues", 40000.0, dimensions={axis: "country:GB"}),
+        XbrlFact(acc, "us-gaap:Revenues", 20000.0, dimensions={axis: "country:DE"}),
+    ]
+
+    breakdown = solver.breakdown_concept("Revenues", facts, axis=axis)
+    comp_ids = {c.identifier for c in breakdown.components}
+    assert "country:DE" not in comp_ids
+    assert "srt:EuropeanUnionMember" in comp_ids
+    assert "country:GB" in comp_ids
+
+    goal = solver.evaluate_goal("Revenues", facts, axis_filter=axis)
+    assert goal.computed_value == 100000.0
+    assert goal.resolution_tier == "DIMENSIONAL_ANTICHAIN_SUM"

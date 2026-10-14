@@ -99,6 +99,7 @@ class TypedRelation:
     algebraic_weight: float
     sic_scope: str
     description: str
+    formula_id: str | None = None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> TypedRelation:
@@ -111,9 +112,10 @@ class TypedRelation:
             algebraic_weight=float(data["algebraic_weight"]),
             sic_scope=str(data["sic_scope"]),
             description=str(data["description"]),
+            formula_id=str(data["formula_id"]) if data.get("formula_id") else None,
         )
 
-    def to_tuple(self) -> tuple[str, str, str, str, float, str, str]:
+    def to_tuple(self) -> tuple[str, str, str, str, float, str, str, str | None]:
         """Convert into canonical raw tuple representation."""
         return (
             self.edge_id,
@@ -123,6 +125,7 @@ class TypedRelation:
             self.algebraic_weight,
             self.sic_scope,
             self.description,
+            self.formula_id,
         )
 
 
@@ -185,6 +188,46 @@ class IndustryProfile:
 
 
 @dataclass(frozen=True, slots=True)
+class AxisFamilyMapping:
+    """Mapping of axis pattern to canonical axis family."""
+
+    axis_pattern: str
+    axis_family: str
+    description: str = ""
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> AxisFamilyMapping:
+        """Create an AxisFamilyMapping from raw dictionary mapping."""
+        return cls(
+            axis_pattern=str(data["axis_pattern"]),
+            axis_family=str(data["axis_family"]),
+            description=str(data.get("description", "")),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class UnitMapping:
+    """Mapping of raw XBRL unit token to canonical unit class."""
+
+    raw_unit: str
+    unit_class: str
+    currency_code: str | None = None
+    unit_type: str = "CURRENCY"
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> UnitMapping:
+        """Create a UnitMapping from raw dictionary mapping."""
+        return cls(
+            raw_unit=str(data["raw_unit"]),
+            unit_class=str(data["unit_class"]),
+            currency_code=str(data["currency_code"])
+            if data.get("currency_code")
+            else None,
+            unit_type=str(data.get("unit_type", "CURRENCY")),
+        )
+
+
+@dataclass(frozen=True, slots=True)
 class DomainTaxonomy:
     """Aggregated domain taxonomy containing heads, modifiers, and relations."""
 
@@ -193,6 +236,8 @@ class DomainTaxonomy:
     typed_relations: tuple[TypedRelation, ...]
     geography_edges: tuple[GeoHierarchyEdge, ...] = ()
     industry_profiles: tuple[IndustryProfile, ...] = ()
+    axis_families: tuple[AxisFamilyMapping, ...] = ()
+    units: tuple[UnitMapping, ...] = ()
 
     def prime_head(self, head_id: str) -> PrimeHead | None:
         """Lookup a prime head by unique identifier."""
@@ -219,6 +264,65 @@ class DomainTaxonomy:
     def find_industry(self, firm_id: str) -> IndustryProfile | None:
         """Lookup an industry profile by ticker or firm identifier."""
         return self.industry_profile(firm_id)
+
+    def find_head_placement(
+        self,
+        head_id: str,
+        sector: str = "",
+    ) -> TypedRelation | None:
+        """Find default placement edge for a prime head from the taxonomy graph."""
+        sector_match: TypedRelation | None = None
+        universal_match: TypedRelation | None = None
+        for edge in self.typed_relations:
+            if edge.source_node == head_id:
+                if sector and edge.sic_scope == sector:
+                    sector_match = edge
+                elif edge.sic_scope in ("ALL", "*"):
+                    universal_match = edge
+        return sector_match or universal_match
+
+    def classify_axis(self, axis_qname: str) -> str:
+        """Classify an axis QName into its canonical semantic family using declarative taxonomy."""
+        local = axis_qname.split(":")[-1].lower().removeprefix("statement")
+        for mapping in self.axis_families:
+            if mapping.axis_pattern.lower() in local:
+                return mapping.axis_family
+        return "OTHER"
+
+    def normalize_unit(self, unit: str | None) -> str:
+        """Normalize raw XBRL unit token using declarative taxonomy."""
+        if not unit:
+            return "PURE"
+        u_clean = unit.strip().upper()
+        for mapping in self.units:
+            if mapping.raw_unit.upper() == u_clean:
+                return mapping.unit_class
+        return u_clean
+
+    def equivalent_concepts(self, concept: str) -> set[str]:
+        """Find all equivalent concepts connected via SAME_CONCEPT or ALIAS_OF edges."""
+        target = concept.split(":")[-1]
+        equivalences: set[str] = {concept, target}
+        changed = True
+        while changed:
+            changed = False
+            for edge in self.typed_relations:
+                if edge.relation_type in ("SAME_CONCEPT", "EQUIVALENT_TO", "ALIAS_OF"):
+                    src = edge.source_node.split(":")[-1]
+                    tgt = edge.target_node.split(":")[-1]
+                    if (src in equivalences or edge.source_node in equivalences) and (
+                        tgt not in equivalences
+                    ):
+                        equivalences.add(tgt)
+                        equivalences.add(edge.target_node)
+                        changed = True
+                    elif (tgt in equivalences or edge.target_node in equivalences) and (
+                        src not in equivalences
+                    ):
+                        equivalences.add(src)
+                        equivalences.add(edge.source_node)
+                        changed = True
+        return equivalences
 
 
 @dataclass(frozen=True, slots=True)
@@ -279,42 +383,55 @@ def load_industry_profiles(source: Path) -> tuple[IndustryProfile, ...]:
     return tuple(IndustryProfile.from_dict(row) for row in records)
 
 
-def _find_taxonomy_file(directory: Path, base_name: str) -> Path:
-    for ext in (".json", ".csv", ".tsv"):
-        candidate = directory / f"{base_name}{ext}"
-        if candidate.is_file():
-            return candidate
-    raise FileNotFoundError(f"missing taxonomy file for {base_name} in {directory}")
+def load_axis_families(source: Path) -> tuple[AxisFamilyMapping, ...]:
+    """Load axis family mappings taxonomy from JSON or CSV file."""
+    records = _read_records(source)
+    return tuple(AxisFamilyMapping.from_dict(row) for row in records)
 
 
-def load_domain_taxonomy(taxonomy_dir: Path | None = None) -> DomainTaxonomy:
-    """Load full domain taxonomy from directory of JSON or CSV files."""
-    if taxonomy_dir is None:
-        from edgar_sec.engine.xbrl.paths import default_taxonomy_dir
+def load_units(source: Path) -> tuple[UnitMapping, ...]:
+    """Load unit mappings taxonomy from JSON or CSV file."""
+    records = _read_records(source)
+    return tuple(UnitMapping.from_dict(row) for row in records)
 
-        taxonomy_dir = default_taxonomy_dir()
-    heads_path = _find_taxonomy_file(taxonomy_dir, "prime_heads")
-    mods_path = _find_taxonomy_file(taxonomy_dir, "subatomic_modifiers")
-    rels_path = _find_taxonomy_file(taxonomy_dir, "typed_relations")
 
-    geo_edges: tuple[GeoHierarchyEdge, ...] = ()
-    try:
-        geo_path = _find_taxonomy_file(taxonomy_dir, "geography_dag")
-        geo_edges = load_geography_dag(geo_path)
-    except FileNotFoundError:
-        pass
+def load_domain_taxonomy(
+    taxonomy_source: Any | None = None,
+) -> DomainTaxonomy:
+    """Load full domain taxonomy using XbrlPaths layout resolution."""
+    from edgar_sec.engine.xbrl.paths import XbrlPaths, resolve_xbrl_paths
 
-    ind_profiles: tuple[IndustryProfile, ...] = ()
-    try:
-        ind_path = _find_taxonomy_file(taxonomy_dir, "industries")
-        ind_profiles = load_industry_profiles(ind_path)
-    except FileNotFoundError:
-        pass
+    if isinstance(taxonomy_source, (str, Path)):
+        base_dir = Path(taxonomy_source)
+        x_paths = resolve_xbrl_paths()
+    elif isinstance(taxonomy_source, XbrlPaths):
+        x_paths = taxonomy_source
+        base_dir = x_paths.default_taxonomy_dir
+    else:
+        x_paths = resolve_xbrl_paths()
+        base_dir = x_paths.default_taxonomy_dir
+
+    heads_p = base_dir / x_paths.default_prime_heads_path.name
+    mods_p = base_dir / x_paths.default_subatomic_modifiers_path.name
+    rels_p = base_dir / x_paths.default_typed_relations_path.name
+    geo_p = base_dir / x_paths.default_geography_path.name
+    ind_p = base_dir / x_paths.default_industries_path.name
+    axis_p = base_dir / x_paths.default_axis_families_path.name
+    unit_p = base_dir / x_paths.default_units_path.name
+
+    if not heads_p.is_file():
+        raise FileNotFoundError(f"missing prime_heads in {base_dir}")
+    if not mods_p.is_file():
+        raise FileNotFoundError(f"missing subatomic_modifiers in {base_dir}")
+    if not rels_p.is_file():
+        raise FileNotFoundError(f"missing typed_relations in {base_dir}")
 
     return DomainTaxonomy(
-        prime_heads=load_prime_heads(heads_path),
-        subatomic_modifiers=load_subatomic_modifiers(mods_path),
-        typed_relations=load_typed_relations(rels_path),
-        geography_edges=geo_edges,
-        industry_profiles=ind_profiles,
+        prime_heads=load_prime_heads(heads_p),
+        subatomic_modifiers=load_subatomic_modifiers(mods_p),
+        typed_relations=load_typed_relations(rels_p),
+        geography_edges=load_geography_dag(geo_p) if geo_p.is_file() else (),
+        industry_profiles=load_industry_profiles(ind_p) if ind_p.is_file() else (),
+        axis_families=load_axis_families(axis_p) if axis_p.is_file() else (),
+        units=load_units(unit_p) if unit_p.is_file() else (),
     )
