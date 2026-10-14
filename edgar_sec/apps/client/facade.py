@@ -199,5 +199,4 @@ class Edgar:
         return parse_filing_xbrl(filing)
 
 
-
 __all__ = ["Edgar"]

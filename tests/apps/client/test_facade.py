@@ -259,13 +259,8 @@ def test_edgar_facade_fetches_and_opens_linkbases(tmp_path: Path) -> None:
     assert any(a.parent_qname == "us-gaap:GrossProfit" for a in cal_arcs)
 
     pre_bytes = filing.open_linkbase("_pre.xml")
-<<<<<<< HEAD
-    assert pre_bytes == b'<presentationLinkbase firm="MSFT"/>'
-
-=======
     assert b"presentationLink" in pre_bytes
 
     xbrl = edgar.xbrl(filing)
     assert len(xbrl.linkbases.calculation_arcs) == 4
     assert len(xbrl.linkbases.presentation_arcs) == 2
->>>>>>> refs/remotes/origin/main
