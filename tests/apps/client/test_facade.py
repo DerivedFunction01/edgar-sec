@@ -117,7 +117,20 @@ def test_filings_result_dataframe_and_index_access(tmp_path) -> None:
     assert first_filing.run_id == "run-1"
 
 
-def test_edgar_company_resolves_profile() -> None:
+def test_edgar_company_resolves_profile(monkeypatch) -> None:
+    from edgar_sec.domain.identity import Cik
+    from edgar_sec.domain.submissions.models import EntityProfile, Listing
+
+    mock_profile = EntityProfile(
+        cik=Cik.from_raw(1750),
+        name="AAR CORP",
+        listings=(Listing(ticker="AIR", exchange="NYSE"),),
+    )
+    monkeypatch.setattr(
+        "edgar_sec.apps.client.resolver.resolve_entity_profile",
+        lambda *args, **kwargs: mock_profile,
+    )
+
     edgar = Edgar()
     company = edgar.company("0000001750")
     assert company.cik.value == 1750
@@ -170,3 +183,67 @@ def test_edgar_and_company_clear_cache(tmp_path: Path) -> None:
     )
     cleared = edgar.clear_cache(scope="responses", kind="text", vacuum=True)
     assert cleared["responses"] == 1
+
+
+def test_edgar_facade_fetches_and_opens_linkbases(tmp_path: Path) -> None:
+    """Verify facade fetches and resolves linkbase attachments."""
+    import json
+    from unittest.mock import MagicMock
+    from edgar_sec.apps.client.cache import DocumentCache
+
+    mock_client = MagicMock()
+    submissions_payload = {
+        "cik": "0000789019",
+        "name": "MICROSOFT CORP",
+        "filings": {
+            "recent": {
+                "accessionNumber": ["0000950170-24-087843"],
+                "filingDate": ["2024-07-30"],
+                "reportDate": ["2024-06-30"],
+                "form": ["10-K"],
+                "primaryDocument": ["msft-20240630.htm"],
+            }
+        },
+    }
+    index_html = b"""
+    <html><body>
+    <table summary="Document Format Files">
+    <tr><th>Seq</th><th>Description</th><th>Document</th><th>Type</th><th>Size</th></tr>
+    <tr><td>1</td><td>10-K</td><td><a href="msft-20240630.htm">msft-20240630.htm</a></td><td>10-K</td><td>1000</td></tr>
+    <tr><td>2</td><td>EX-101.CAL</td><td><a href="msft-20240630_cal.xml">msft-20240630_cal.xml</a></td><td>EX-101.CAL</td><td>5000</td></tr>
+    <tr><td>3</td><td>EX-101.PRE</td><td><a href="msft-20240630_pre.xml">msft-20240630_pre.xml</a></td><td>EX-101.PRE</td><td>8000</td></tr>
+    <tr><td>4</td><td>EX-101.SCH</td><td><a href="msft-20240630.xsd">msft-20240630.xsd</a></td><td>EX-101.SCH</td><td>12000</td></tr>
+    </table>
+    </body></html>
+    """
+
+    def mock_get(url: str) -> bytes:
+        if "submissions" in url:
+            return json.dumps(submissions_payload).encode("utf-8")
+        if "index.html" in url:
+            return index_html
+        if "_cal.xml" in url:
+            return b'<calculationLinkbase firm="MSFT"/>'
+        if "_pre.xml" in url:
+            return b'<presentationLinkbase firm="MSFT"/>'
+        return b"default"
+
+    mock_client.get_bytes.side_effect = mock_get
+    cache = DocumentCache(db_path=tmp_path / "cache.sqlite")
+
+    edgar = Edgar(sec_client=mock_client, cache=cache, artifacts_root=tmp_path)
+    result = edgar.fetch(ciks="789019", forms="10-K", limit=1, mode="fast")
+
+    assert len(result) == 1
+    filing = result.latest()
+    assert filing is not None
+
+    linkbases = filing.linkbases
+    assert len(linkbases) == 3
+
+    cal_bytes = filing.open_linkbase("_cal.xml")
+    assert cal_bytes == b'<calculationLinkbase firm="MSFT"/>'
+
+    pre_bytes = filing.open_linkbase("_pre.xml")
+    assert pre_bytes == b'<presentationLinkbase firm="MSFT"/>'
+

@@ -16,6 +16,8 @@ TAXONOMY_DIR = "taxonomy"
 DEFAULT_PRIME_HEADS_FILE = "prime_heads.json"
 DEFAULT_SUBATOMIC_MODIFIERS_FILE = "subatomic_modifiers.json"
 DEFAULT_TYPED_RELATIONS_FILE = "typed_relations.json"
+DEFAULT_GEOGRAPHY_FILE = "geography_dag.json"
+DEFAULT_INDUSTRIES_FILE = "industries.json"
 
 
 @dataclass(frozen=True, slots=True)
@@ -83,6 +85,16 @@ class XbrlPaths:
     def default_typed_relations_path(self) -> Path:
         """Default path to typed relations taxonomy file."""
         return self.default_taxonomy_dir / DEFAULT_TYPED_RELATIONS_FILE
+
+    @property
+    def default_geography_path(self) -> Path:
+        """Default path to geography DAG taxonomy file."""
+        return self.default_taxonomy_dir / DEFAULT_GEOGRAPHY_FILE
+
+    @property
+    def default_industries_path(self) -> Path:
+        """Default path to industry profiles taxonomy file."""
+        return self.default_taxonomy_dir / DEFAULT_INDUSTRIES_FILE
 
     def linkbase_parquet_path(self, cohort_id: str = "seed") -> Path:
         """Return the Parquet path for a named cohort's linkbases."""

@@ -123,12 +123,64 @@ class TypedRelation:
 
 
 @dataclass(frozen=True, slots=True)
+class GeoHierarchyEdge:
+    """Geography hierarchy meronymy edge."""
+
+    child_geo_node: str
+    parent_geo_node: str
+    decomposition_scheme: str
+    relation_type: str
+    notes: str
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> GeoHierarchyEdge:
+        """Create a GeoHierarchyEdge from raw dictionary mapping."""
+        return cls(
+            child_geo_node=str(data["child_geo_node"]),
+            parent_geo_node=str(data["parent_geo_node"]),
+            decomposition_scheme=str(data["decomposition_scheme"]),
+            relation_type=str(data["relation_type"]),
+            notes=str(data.get("notes", "")),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class IndustryProfile:
+    """Firm entity industry and classification profile."""
+
+    firm_id: str
+    company_name: str
+    cik: str
+    sic_code: int
+    ff48_industry: str
+    sector: str
+    domicile: str
+    functional_currency: str
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> IndustryProfile:
+        """Create an IndustryProfile from raw dictionary mapping."""
+        return cls(
+            firm_id=str(data["firm_id"]),
+            company_name=str(data["company_name"]),
+            cik=str(data["cik"]),
+            sic_code=int(data["sic_code"]),
+            ff48_industry=str(data["ff48_industry"]),
+            sector=str(data["sector"]),
+            domicile=str(data.get("domicile", "US")),
+            functional_currency=str(data.get("functional_currency", "USD")),
+        )
+
+
+@dataclass(frozen=True, slots=True)
 class DomainTaxonomy:
     """Aggregated domain taxonomy containing heads, modifiers, and relations."""
 
     prime_heads: tuple[PrimeHead, ...]
     subatomic_modifiers: tuple[SubatomicModifier, ...]
     typed_relations: tuple[TypedRelation, ...]
+    geography_edges: tuple[GeoHierarchyEdge, ...] = ()
+    industry_profiles: tuple[IndustryProfile, ...] = ()
 
     def prime_head(self, head_id: str) -> PrimeHead | None:
         """Lookup a prime head by unique identifier."""
@@ -142,6 +194,13 @@ class DomainTaxonomy:
         for mod in self.subatomic_modifiers:
             if mod.modifier_id == modifier_id:
                 return mod
+        return None
+
+    def industry_profile(self, firm_id: str) -> IndustryProfile | None:
+        """Lookup an industry profile by firm identifier."""
+        for prof in self.industry_profiles:
+            if prof.firm_id == firm_id:
+                return prof
         return None
 
 
@@ -186,6 +245,18 @@ def load_typed_relations(source: Path) -> tuple[TypedRelation, ...]:
     return tuple(TypedRelation.from_dict(row) for row in records)
 
 
+def load_geography_dag(source: Path) -> tuple[GeoHierarchyEdge, ...]:
+    """Load geography hierarchy edges from CSV or JSON file."""
+    records = _read_records(source)
+    return tuple(GeoHierarchyEdge.from_dict(row) for row in records)
+
+
+def load_industry_profiles(source: Path) -> tuple[IndustryProfile, ...]:
+    """Load industry classification profiles from JSON or CSV file."""
+    records = _read_records(source)
+    return tuple(IndustryProfile.from_dict(row) for row in records)
+
+
 def _find_taxonomy_file(directory: Path, base_name: str) -> Path:
     for ext in (".json", ".csv", ".tsv"):
         candidate = directory / f"{base_name}{ext}"
@@ -199,8 +270,25 @@ def load_domain_taxonomy(taxonomy_dir: Path) -> DomainTaxonomy:
     heads_path = _find_taxonomy_file(taxonomy_dir, "prime_heads")
     mods_path = _find_taxonomy_file(taxonomy_dir, "subatomic_modifiers")
     rels_path = _find_taxonomy_file(taxonomy_dir, "typed_relations")
+
+    geo_edges: tuple[GeoHierarchyEdge, ...] = ()
+    try:
+        geo_path = _find_taxonomy_file(taxonomy_dir, "geography_dag")
+        geo_edges = load_geography_dag(geo_path)
+    except FileNotFoundError:
+        pass
+
+    ind_profiles: tuple[IndustryProfile, ...] = ()
+    try:
+        ind_path = _find_taxonomy_file(taxonomy_dir, "industries")
+        ind_profiles = load_industry_profiles(ind_path)
+    except FileNotFoundError:
+        pass
+
     return DomainTaxonomy(
         prime_heads=load_prime_heads(heads_path),
         subatomic_modifiers=load_subatomic_modifiers(mods_path),
         typed_relations=load_typed_relations(rels_path),
+        geography_edges=geo_edges,
+        industry_profiles=ind_profiles,
     )

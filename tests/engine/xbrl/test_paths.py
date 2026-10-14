@@ -21,6 +21,8 @@ def test_resolve_xbrl_paths(tmp_path: Path) -> None:
     assert paths.default_prime_heads_path.name == "prime_heads.json"
     assert paths.default_subatomic_modifiers_path.name == "subatomic_modifiers.json"
     assert paths.default_typed_relations_path.name == "typed_relations.json"
+    assert paths.default_geography_path.name == "geography_dag.json"
+    assert paths.default_industries_path.name == "industries.json"
 
     paths.ensure_directories()
     assert paths.linkbases_dir.exists()
