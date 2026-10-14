@@ -30,9 +30,9 @@ class CompanyReport(FormReport):
     """Specialized base projection for periodic and current reports."""
 
     def text(self) -> str | None:
-        path = self.filing.primary_storage_path
-        if path is not None and path.is_file():
-            return path.read_text(encoding="utf-8", errors="replace")
+        data = self.filing.raw()
+        if data is not None:
+            return data.decode("utf-8", errors="replace")
         return None
 
 

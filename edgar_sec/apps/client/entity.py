@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Sequence
+from pathlib import Path
+from typing import TYPE_CHECKING, Literal, Sequence
 
 from edgar_sec.domain.identity import Cik
 from edgar_sec.domain.submissions.models import Address, EntityProfile
 
 if TYPE_CHECKING:
+    from edgar_sec.apps.client.facade import Edgar
     from edgar_sec.apps.client.models import FilingsResult
 
 
@@ -17,6 +19,7 @@ class Company:
     """Company entity projection providing metadata and filing access."""
 
     profile: EntityProfile
+    facade: Edgar | None = None
 
     @property
     def cik(self) -> Cik:
@@ -61,17 +64,38 @@ class Company:
         limit: int | None = None,
         dates: str | None = None,
         operation: str = "raw",
+        mode: Literal["fast", "pipeline"] = "fast",
+        publish_snapshot: bool = False,
+        workers: int | None = None,
     ) -> FilingsResult:
         """Fetch filings for this company."""
         from edgar_sec.apps.client.facade import Edgar
 
-        return Edgar.fetch(
-            ciks=self.cik,
-            forms=forms,
+        client = self.facade or Edgar()
+        return client.fetch(
+            ciks=self.cik.value,
+            forms=forms or (),
             limit=limit,
             dates=dates,
             operation=operation,
+            mode=mode,
+            publish_snapshot=publish_snapshot,
+            workers=workers,
         )
+
+    def clear_cache(self) -> int:
+        """Clear cached documents for this company."""
+        from edgar_sec.apps.client.cache import get_default_cache
+
+        cache = self.facade.cache if self.facade else get_default_cache()
+        return cache.clear(cik=self.cik.value)
+
+    def export_cache_zip(self, zip_path: Path | str) -> Path:
+        """Export cached documents for this company to a ZIP archive."""
+        from edgar_sec.apps.client.cache import get_default_cache
+
+        cache = self.facade.cache if self.facade else get_default_cache()
+        return cache.export_zip(zip_path, cik=self.cik.value)
 
 
 __all__ = ["Company"]

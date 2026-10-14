@@ -12,10 +12,7 @@ class OwnershipReport(FormReport):
     """Specialized projection for insider ownership reports."""
 
     def xml(self) -> bytes | None:
-        path = self.filing.primary_storage_path
-        if path is not None and path.is_file():
-            return path.read_bytes()
-        return None
+        return self.filing.raw()
 
 
 __all__ = ["OwnershipReport"]
