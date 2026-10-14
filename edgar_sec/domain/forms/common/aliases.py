@@ -81,20 +81,22 @@ def form_family(form: str) -> str:
 
     A form that is *entirely* suffixes (``/A``) returns the original, not an empty string.
     """
-    base = form.upper().strip()
+    form_str = str(form)
+    base = form_str.upper().strip()
     for suffix in FORM_FAMILY_SUFFIXES:
         base = base.removesuffix(suffix)
-    return base.strip("_-") or form
+    return base.strip("_-") or form_str
 
 
 def resolve_alias(form: str | None) -> str | None:
     """Resolve a raw form string to its canonical family, or None if unknown."""
     if not form:
         return None
-    direct = _ALIAS_LOOKUP.get(form.strip().upper())
+    form_str = str(form).strip().upper()
+    direct = _ALIAS_LOOKUP.get(form_str)
     if direct is not None:
         return direct
-    family = form_family(form)
+    family = form_family(form_str)
     direct = _ALIAS_LOOKUP.get(family)
     if direct is not None:
         return direct
@@ -103,7 +105,7 @@ def resolve_alias(form: str | None) -> str | None:
 
 def aliases_for_family(family: str) -> tuple[str, ...]:
     """Return the canonical alias tuple for a form family."""
-    return FORM_FAMILY_ALIASES.get(family.upper(), ())
+    return FORM_FAMILY_ALIASES.get(str(family).upper(), ())
 
 
 __all__ = [

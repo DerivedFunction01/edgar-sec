@@ -59,7 +59,7 @@ def resolve_operation_group(
             pins = None
         else:
             pins = resolve_acquisition_capability(
-                target["form"],
+                str(target["form"]),
                 target["target_role"],
                 operation,
                 facts,

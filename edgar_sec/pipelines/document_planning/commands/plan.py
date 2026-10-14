@@ -25,7 +25,7 @@ def cmd_plan(args: argparse.Namespace) -> int:
     try:
         result = create_document_plan(
             args.catalog_plan,
-            args.profile_id,
+            profile_id,
             args.inventory,
             paths,
         )
