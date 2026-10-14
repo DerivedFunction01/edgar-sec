@@ -138,6 +138,53 @@ def test_edgar_company_resolves_profile(monkeypatch) -> None:
     assert "AIR" in company.tickers
 
 
+def test_edgar_and_company_clear_cache(tmp_path: Path) -> None:
+    from edgar_sec.apps.client.cache import DocumentCache
+    from edgar_sec.infra.sec_http.client import SecHttpClient
+
+    doc_cache = DocumentCache(db_path=tmp_path / "docs.sqlite")
+    sec_client = SecHttpClient(cache_dir=tmp_path / "http_cache")
+
+    doc_cache.put(
+        accession="0000320193-23-000106",
+        cik=320193,
+        form="10-K",
+        filename="doc.htm",
+        content=b"content",
+    )
+    assert sec_client._cache is not None
+    sec_client._cache.put(
+        "https://data.sec.gov/submissions/CIK0000320193.json",
+        b"{}",
+        sha256="1",
+        byte_size=2,
+        content_kind="json",
+    )
+
+    edgar = Edgar(cache=doc_cache, sec_client=sec_client)
+    company = edgar.company("AAPL")
+
+    stats = edgar.cache_stats()
+    assert stats is not None
+    assert stats["responses_count"] == 1
+
+    res = company.clear_cache(scope="all")
+    assert res["documents"] >= 1
+    assert res["responses"] >= 1
+
+    edgar.vacuum_cache()
+
+    sec_client._cache.put(
+        "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl.htm",
+        b"html",
+        sha256="2",
+        byte_size=4,
+        content_kind="text",
+    )
+    cleared = edgar.clear_cache(scope="responses", kind="text", vacuum=True)
+    assert cleared["responses"] == 1
+
+
 def test_edgar_facade_fetches_and_opens_linkbases(tmp_path: Path) -> None:
     """Verify facade fetches and resolves linkbase attachments."""
     import json
