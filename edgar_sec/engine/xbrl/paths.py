@@ -15,11 +15,18 @@ DEFAULT_SEED_COHORT_FILE = "seed_cohort.json"
 TAXONOMY_DIR = "taxonomy"
 DEFAULT_PRIME_HEADS_FILE = "prime_heads.json"
 DEFAULT_SUBATOMIC_MODIFIERS_FILE = "subatomic_modifiers.json"
-DEFAULT_TYPED_RELATIONS_FILE = "typed_relations.json"
+DEFAULT_TOKEN_LEXICON_FILE = "token_lexicon.json"
+DEFAULT_ATOM_RELATIONS_FILE = "atom_relations.json"
+DEFAULT_RELATION_TYPES_FILE = "relation_types.json"
 DEFAULT_GEOGRAPHY_FILE = "geography_dag.json"
 DEFAULT_INDUSTRIES_FILE = "industries.json"
 DEFAULT_AXIS_FAMILIES_FILE = "axis_families.json"
 DEFAULT_UNITS_FILE = "units.json"
+DEFAULT_GRAMMATICAL_FRAMES_FILE = "grammatical_frames.json"
+DEFAULT_MEMBER_ROLES_FILE = "member_roles.json"
+DEFAULT_INSTRUMENTS_DAG_FILE = "instruments_dag.json"
+DEFAULT_VALUATION_RULES_FILE = "valuation_rules.json"
+DEFAULT_SUBSPACE_INVARIANTS_FILE = "subspace_invariants.json"
 
 
 @dataclass(frozen=True, slots=True)
@@ -84,9 +91,19 @@ class XbrlPaths:
         return self.default_taxonomy_dir / DEFAULT_SUBATOMIC_MODIFIERS_FILE
 
     @property
-    def default_typed_relations_path(self) -> Path:
-        """Default path to typed relations taxonomy file."""
-        return self.default_taxonomy_dir / DEFAULT_TYPED_RELATIONS_FILE
+    def default_token_lexicon_path(self) -> Path:
+        """Default path to token lexicon taxonomy file."""
+        return self.default_taxonomy_dir / DEFAULT_TOKEN_LEXICON_FILE
+
+    @property
+    def default_atom_relations_path(self) -> Path:
+        """Default path to atom relations taxonomy file."""
+        return self.default_taxonomy_dir / DEFAULT_ATOM_RELATIONS_FILE
+
+    @property
+    def default_relation_types_path(self) -> Path:
+        """Default path to relation types taxonomy file."""
+        return self.default_taxonomy_dir / DEFAULT_RELATION_TYPES_FILE
 
     @property
     def default_geography_path(self) -> Path:
@@ -107,6 +124,31 @@ class XbrlPaths:
     def default_units_path(self) -> Path:
         """Default path to units taxonomy file."""
         return self.default_taxonomy_dir / DEFAULT_UNITS_FILE
+
+    @property
+    def default_grammatical_frames_path(self) -> Path:
+        """Default path to grammatical frames taxonomy file."""
+        return self.default_taxonomy_dir / DEFAULT_GRAMMATICAL_FRAMES_FILE
+
+    @property
+    def default_member_roles_path(self) -> Path:
+        """Default path to member roles taxonomy file."""
+        return self.default_taxonomy_dir / DEFAULT_MEMBER_ROLES_FILE
+
+    @property
+    def default_instruments_dag_path(self) -> Path:
+        """Default path to financial instruments DAG file."""
+        return self.default_taxonomy_dir / DEFAULT_INSTRUMENTS_DAG_FILE
+
+    @property
+    def default_valuation_rules_path(self) -> Path:
+        """Default path to valuation and fair value rules file."""
+        return self.default_taxonomy_dir / DEFAULT_VALUATION_RULES_FILE
+
+    @property
+    def default_subspace_invariants_path(self) -> Path:
+        """Default path to multidimensional subspace routing invariants file."""
+        return self.default_taxonomy_dir / DEFAULT_SUBSPACE_INVARIANTS_FILE
 
     def linkbase_parquet_path(self, cohort_id: str = "seed") -> Path:
         """Return the Parquet path for a named cohort's linkbases."""

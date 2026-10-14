@@ -8,6 +8,10 @@ import json
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.engine.xbrl.atoms import Atom
+from edgar_sec.engine.xbrl.lexicon import TokenLexicon
+from edgar_sec.engine.xbrl.relations import AtomRelationGraph
+
 
 @dataclass(frozen=True, slots=True)
 class PrimeHead:
@@ -20,10 +24,33 @@ class PrimeHead:
     normal_balance: str
     is_dual_role_primitive: int
     description: str
+    canonical_concept: str = ""
+    recognition_book: str = "B_INCOME_STATEMENT"
+    flow_stock: str = "FLOW"
+    timing_horizon: str = "DURATION_PERIOD"
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> PrimeHead:
         """Create a PrimeHead instance from raw dictionary mapping."""
+        rec_book = str(data.get("recognition_book", ""))
+        if not rec_book:
+            st = str(data.get("statement_type", ""))
+            if "BalanceSheet" in st:
+                rec_book = "B_BALANCE_SHEET"
+            elif "CashFlow" in st:
+                rec_book = "B_CASH_FLOW_STATEMENT"
+            else:
+                rec_book = "B_INCOME_STATEMENT"
+
+        f_stock = str(data.get("flow_stock", ""))
+        if not f_stock:
+            ec = str(data.get("economic_class", ""))
+            f_stock = "STOCK" if ec.startswith("STOCK") else "FLOW"
+
+        t_horizon = str(data.get("timing_horizon", ""))
+        if not t_horizon:
+            t_horizon = "POINT_IN_TIME" if f_stock == "STOCK" else "DURATION_PERIOD"
+
         return cls(
             head_id=str(data["head_id"]),
             head_symbol=str(data["head_symbol"]),
@@ -32,6 +59,10 @@ class PrimeHead:
             normal_balance=str(data["normal_balance"]),
             is_dual_role_primitive=int(data["is_dual_role_primitive"]),
             description=str(data["description"]),
+            canonical_concept=str(data.get("canonical_concept", "")),
+            recognition_book=rec_book,
+            flow_stock=f_stock,
+            timing_horizon=t_horizon,
         )
 
     def to_tuple(self) -> tuple[str, str, str, str, str, int, str]:
@@ -55,6 +86,8 @@ class SubatomicModifier:
     category: str
     keywords: tuple[str, ...]
     description: str
+    valuation_basis: str | None = None
+    realization_state: str | None = None
 
     @property
     def pattern_keywords(self) -> tuple[str, ...]:
@@ -76,6 +109,8 @@ class SubatomicModifier:
             category=str(data["category"]),
             keywords=keywords,
             description=str(data["description"]),
+            valuation_basis=data.get("valuation_basis"),
+            realization_state=data.get("realization_state"),
         )
 
     def to_tuple(self) -> tuple[str, str, tuple[str, ...], str]:
@@ -85,47 +120,6 @@ class SubatomicModifier:
             self.category,
             self.keywords,
             self.description,
-        )
-
-
-@dataclass(frozen=True, slots=True)
-class TypedRelation:
-    """Typed relational edge representation."""
-
-    edge_id: str
-    source_node: str
-    target_node: str
-    relation_type: str
-    algebraic_weight: float
-    sic_scope: str
-    description: str
-    formula_id: str | None = None
-
-    @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> TypedRelation:
-        """Create a TypedRelation from raw dictionary mapping."""
-        return cls(
-            edge_id=str(data["edge_id"]),
-            source_node=str(data["source_node"]),
-            target_node=str(data["target_node"]),
-            relation_type=str(data["relation_type"]),
-            algebraic_weight=float(data["algebraic_weight"]),
-            sic_scope=str(data["sic_scope"]),
-            description=str(data["description"]),
-            formula_id=str(data["formula_id"]) if data.get("formula_id") else None,
-        )
-
-    def to_tuple(self) -> tuple[str, str, str, str, float, str, str, str | None]:
-        """Convert into canonical raw tuple representation."""
-        return (
-            self.edge_id,
-            self.source_node,
-            self.target_node,
-            self.relation_type,
-            self.algebraic_weight,
-            self.sic_scope,
-            self.description,
-            self.formula_id,
         )
 
 
@@ -160,6 +154,17 @@ class GeoHierarchyEdge:
 
 
 @dataclass(frozen=True, slots=True)
+class GeoResolution:
+    """Resolved geographic coordinate with domicile-relative domestic/foreign status."""
+
+    canonical_node: str
+    is_domestic: bool
+    is_foreign: bool
+    ancestor_regions: tuple[str, ...]
+    decomposition_schemes: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
 class IndustryProfile:
     """Firm entity industry and classification profile."""
 
@@ -189,11 +194,13 @@ class IndustryProfile:
 
 @dataclass(frozen=True, slots=True)
 class AxisFamilyMapping:
-    """Mapping of axis pattern to canonical axis family."""
+    """Mapping of axis pattern to canonical axis family and scope tokens."""
 
     axis_pattern: str
     axis_family: str
     description: str = ""
+    default_axis_qname: str = ""
+    scope_tokens: tuple[str, ...] = ()
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> AxisFamilyMapping:
@@ -202,6 +209,8 @@ class AxisFamilyMapping:
             axis_pattern=str(data["axis_pattern"]),
             axis_family=str(data["axis_family"]),
             description=str(data.get("description", "")),
+            default_axis_qname=str(data.get("default_axis_qname", "")),
+            scope_tokens=tuple(str(t).lower() for t in data.get("scope_tokens", ())),
         )
 
 
@@ -228,16 +237,132 @@ class UnitMapping:
 
 
 @dataclass(frozen=True, slots=True)
+class GrammaticalFrame:
+    """Declarative grammatical frame for directional and polarity normalization."""
+
+    frame_id: str
+    prefix_tokens: tuple[str, ...]
+    direction: float = 1.0
+    polarity: str = "NEUTRAL"
+    strip_tokens: tuple[str, ...] = ()
+    description: str = ""
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> GrammaticalFrame:
+        """Create a GrammaticalFrame from raw dictionary mapping."""
+        raw_prefix = data.get("prefix_tokens", ())
+        raw_strip = data.get("strip_tokens", ())
+        return cls(
+            frame_id=str(data["frame_id"]),
+            prefix_tokens=tuple(str(t).lower() for t in raw_prefix),
+            direction=float(data.get("direction", 1.0)),
+            polarity=str(data.get("polarity", "NEUTRAL")),
+            strip_tokens=tuple(str(t).lower() for t in raw_strip),
+            description=str(data.get("description", "")),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class MemberRoleMapping:
+    """Mapping of member substring pattern to semantic role."""
+
+    pattern: str
+    role: str
+    description: str = ""
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> MemberRoleMapping:
+        """Create a MemberRoleMapping from raw dictionary mapping."""
+        return cls(
+            pattern=str(data["pattern"]).lower(),
+            role=str(data["role"]),
+            description=str(data.get("description", "")),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class InstrumentEdge:
+    """Financial instrument hyponymy edge."""
+
+    child_instrument: str
+    parent_instrument: str
+    relation_type: str = "SUBTYPE_OF"
+    description: str = ""
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> InstrumentEdge:
+        """Create an InstrumentEdge from raw dictionary mapping."""
+        return cls(
+            child_instrument=str(data["child_instrument"]),
+            parent_instrument=str(data["parent_instrument"]),
+            relation_type=str(data.get("relation_type", "SUBTYPE_OF")),
+            description=str(data.get("description", "")),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class ValuationRule:
+    """Valuation basis and fair value hierarchy rule."""
+
+    member_pattern: str
+    hierarchy_level: str
+    implies_valuation_basis: str
+    description: str = ""
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> ValuationRule:
+        """Create a ValuationRule from raw dictionary mapping."""
+        return cls(
+            member_pattern=str(data["member_pattern"]).lower(),
+            hierarchy_level=str(data["hierarchy_level"]),
+            implies_valuation_basis=str(data["implies_valuation_basis"]),
+            description=str(data.get("description", "")),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class SubspaceInvariant:
+    """Multidimensional algebraic routing rule based on feature coordinates."""
+
+    rule_id: str
+    measure: str
+    book: str
+    instrument_ancestor: str
+    target_node: str
+    algebraic_weight: float = 1.0
+    description: str = ""
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> SubspaceInvariant:
+        """Create a SubspaceInvariant from raw dictionary mapping."""
+        return cls(
+            rule_id=str(data["rule_id"]),
+            measure=str(data["measure"]),
+            book=str(data["book"]),
+            instrument_ancestor=str(data["instrument_ancestor"]),
+            target_node=str(data["target_node"]),
+            algebraic_weight=float(data.get("algebraic_weight", 1.0)),
+            description=str(data.get("description", "")),
+        )
+
+
+@dataclass(frozen=True, slots=True)
 class DomainTaxonomy:
     """Aggregated domain taxonomy containing heads, modifiers, and relations."""
 
     prime_heads: tuple[PrimeHead, ...]
     subatomic_modifiers: tuple[SubatomicModifier, ...]
-    typed_relations: tuple[TypedRelation, ...]
+    token_lexicon: TokenLexicon | None = None
+    atom_relations: AtomRelationGraph | None = None
     geography_edges: tuple[GeoHierarchyEdge, ...] = ()
     industry_profiles: tuple[IndustryProfile, ...] = ()
     axis_families: tuple[AxisFamilyMapping, ...] = ()
     units: tuple[UnitMapping, ...] = ()
+    grammatical_frames: tuple[GrammaticalFrame, ...] = ()
+    member_roles: tuple[MemberRoleMapping, ...] = ()
+    instruments_dag: tuple[InstrumentEdge, ...] = ()
+    valuation_rules: tuple[ValuationRule, ...] = ()
+    subspace_invariants: tuple[SubspaceInvariant, ...] = ()
 
     def prime_head(self, head_id: str) -> PrimeHead | None:
         """Lookup a prime head by unique identifier."""
@@ -265,22 +390,6 @@ class DomainTaxonomy:
         """Lookup an industry profile by ticker or firm identifier."""
         return self.industry_profile(firm_id)
 
-    def find_head_placement(
-        self,
-        head_id: str,
-        sector: str = "",
-    ) -> TypedRelation | None:
-        """Find default placement edge for a prime head from the taxonomy graph."""
-        sector_match: TypedRelation | None = None
-        universal_match: TypedRelation | None = None
-        for edge in self.typed_relations:
-            if edge.source_node == head_id:
-                if sector and edge.sic_scope == sector:
-                    sector_match = edge
-                elif edge.sic_scope in ("ALL", "*"):
-                    universal_match = edge
-        return sector_match or universal_match
-
     def classify_axis(self, axis_qname: str) -> str:
         """Classify an axis QName into its canonical semantic family using declarative taxonomy."""
         local = axis_qname.split(":")[-1].lower().removeprefix("statement")
@@ -288,6 +397,157 @@ class DomainTaxonomy:
             if mapping.axis_pattern.lower() in local:
                 return mapping.axis_family
         return "OTHER"
+
+    def find_token_axis(self, token: str) -> tuple[str, str] | None:
+        """Find axis family and default axis QName for a scope token from taxonomy."""
+        tok_low = token.lower()
+        for mapping in self.axis_families:
+            if tok_low in mapping.scope_tokens:
+                axis_qname = (
+                    mapping.default_axis_qname
+                    or f"us-gaap:{mapping.axis_family.title()}Axis"
+                )
+                return mapping.axis_family, axis_qname
+        for geo in self.geography_edges:
+            child_low = geo.child_geo_node.lower().split(":")[-1].removesuffix("member")
+            parent_low = (
+                geo.parent_geo_node.lower().split(":")[-1].removesuffix("member")
+            )
+            if tok_low in (child_low, parent_low):
+                return "GEOGRAPHY", "us-gaap:StatementGeographicalAxis"
+        return None
+
+    def resolve_geography(
+        self,
+        token_or_qname: str,
+        firm_domicile: str = "US",
+    ) -> GeoResolution | None:
+        """Resolve raw token or node against geography DAG and firm domicile."""
+        t_clean = token_or_qname.strip()
+        t_low = t_clean.lower().split(":")[-1].removesuffix("member")
+        domicile_node = f"country:{firm_domicile.upper()}"
+        domicile_low = firm_domicile.lower()
+
+        target_node: str | None = None
+        for edge in self.geography_edges:
+            c_low = edge.child_geo_node.lower().split(":")[-1].removesuffix("member")
+            p_low = edge.parent_geo_node.lower().split(":")[-1].removesuffix("member")
+            if t_clean in (edge.child_geo_node, edge.parent_geo_node):
+                target_node = (
+                    edge.child_geo_node
+                    if t_clean == edge.child_geo_node
+                    else edge.parent_geo_node
+                )
+                break
+            if t_low in (c_low, p_low):
+                target_node = (
+                    edge.child_geo_node if t_low == c_low else edge.parent_geo_node
+                )
+                break
+
+        if target_node is None and self.token_lexicon is not None:
+            matches, _ = self.token_lexicon.scan_tokens((t_clean,))
+            for m in matches:
+                if m.entry.role == "INDEXICAL":
+                    if m.entry.indexical == "DOMICILE":
+                        target_node = domicile_node
+                        break
+                    if m.entry.indexical == "FOREIGN":
+                        target_node = "srt:ForeignMember"
+                        break
+
+        if target_node is None:
+            return None
+
+        is_domestic = target_node == domicile_node
+        is_foreign = not is_domestic
+
+        ancestors: list[str] = []
+        schemes: list[str] = []
+        frontier = [target_node]
+        visited = {target_node}
+        while frontier:
+            curr = frontier.pop(0)
+            for edge in self.geography_edges:
+                if edge.child_geo_node == curr:
+                    if edge.parent_geo_node not in visited:
+                        visited.add(edge.parent_geo_node)
+                        frontier.append(edge.parent_geo_node)
+                        ancestors.append(edge.parent_geo_node)
+                    if edge.decomposition_scheme not in schemes:
+                        schemes.append(edge.decomposition_scheme)
+
+        return GeoResolution(
+            canonical_node=target_node,
+            is_domestic=is_domestic,
+            is_foreign=is_foreign,
+            ancestor_regions=tuple(ancestors),
+            decomposition_schemes=tuple(schemes),
+        )
+
+    def match_grammatical_frame(
+        self,
+        tokens: tuple[str, ...],
+    ) -> GrammaticalFrame | None:
+        """Match token sequence against declarative grammatical frames."""
+        tokens_low = [t.lower() for t in tokens]
+        for frame in self.grammatical_frames:
+            k = len(frame.prefix_tokens)
+            if len(tokens_low) >= k and tuple(tokens_low[:k]) == frame.prefix_tokens:
+                return frame
+        return None
+
+    def classify_member_role(self, member_qname: str) -> str:
+        """Classify dimension member role using declarative taxonomy patterns."""
+        local = member_qname.split(":")[-1].lower()
+        for mapping in self.member_roles:
+            if mapping.pattern in local:
+                return mapping.role
+        return "NORMAL"
+
+    def is_instrument_subtype(self, child: str, parent: str) -> bool:
+        """Check if child instrument is equal to or a subtype of parent instrument."""
+        c_clean = child.split(":")[-1].lower()
+        p_clean = parent.split(":")[-1].lower()
+        if c_clean == p_clean:
+            return True
+        frontier = [child]
+        visited = {child}
+        while frontier:
+            curr = frontier.pop(0)
+            curr_clean = curr.split(":")[-1].lower()
+            if curr_clean == p_clean:
+                return True
+            for edge in self.instruments_dag:
+                edge_c = edge.child_instrument.split(":")[-1].lower()
+                if edge_c == curr_clean and edge.parent_instrument not in visited:
+                    visited.add(edge.parent_instrument)
+                    frontier.append(edge.parent_instrument)
+        return False
+
+    def resolve_valuation_basis(self, member_qname: str) -> tuple[str, str]:
+        """Resolve hierarchy level and valuation basis for a dimension member."""
+        local = member_qname.split(":")[-1].lower()
+        for rule in self.valuation_rules:
+            if rule.member_pattern in local:
+                return rule.hierarchy_level, rule.implies_valuation_basis
+        return "UNSPECIFIED", "HISTORICAL_COST"
+
+    def match_subspace_invariant(
+        self,
+        measure: str,
+        book: str,
+        instrument: str | None = None,
+    ) -> SubspaceInvariant | None:
+        """Match coordinate features against multidimensional algebraic routing rules."""
+        m_clean = measure.split(":")[-1]
+        for rule in self.subspace_invariants:
+            if rule.measure == m_clean and rule.book == book:
+                if instrument is None:
+                    return rule
+                if self.is_instrument_subtype(instrument, rule.instrument_ancestor):
+                    return rule
+        return None
 
     def normalize_unit(self, unit: str | None) -> str:
         """Normalize raw XBRL unit token using declarative taxonomy."""
@@ -300,29 +560,9 @@ class DomainTaxonomy:
         return u_clean
 
     def equivalent_concepts(self, concept: str) -> set[str]:
-        """Find all equivalent concepts connected via SAME_CONCEPT or ALIAS_OF edges."""
+        """Find concepts equivalent by coordinate identity in the atom lattice."""
         target = concept.split(":")[-1]
-        equivalences: set[str] = {concept, target}
-        changed = True
-        while changed:
-            changed = False
-            for edge in self.typed_relations:
-                if edge.relation_type in ("SAME_CONCEPT", "EQUIVALENT_TO", "ALIAS_OF"):
-                    src = edge.source_node.split(":")[-1]
-                    tgt = edge.target_node.split(":")[-1]
-                    if (src in equivalences or edge.source_node in equivalences) and (
-                        tgt not in equivalences
-                    ):
-                        equivalences.add(tgt)
-                        equivalences.add(edge.target_node)
-                        changed = True
-                    elif (tgt in equivalences or edge.target_node in equivalences) and (
-                        src not in equivalences
-                    ):
-                        equivalences.add(src)
-                        equivalences.add(edge.source_node)
-                        changed = True
-        return equivalences
+        return {concept, target}
 
 
 @dataclass(frozen=True, slots=True)
@@ -332,6 +572,8 @@ class SemanticConceptFrame:
     qname: str
     prime_head: str
     modifiers: tuple[str, ...] = ()
+    atom: Atom | None = None
+    residual_tokens: tuple[str, ...] = ()
     recognition_book: str = "B_INCOME_STATEMENT"
     flow_stock: str = "FLOW"
     timing_horizon: str = "DURATION_PERIOD"
@@ -365,12 +607,6 @@ def load_subatomic_modifiers(source: Path) -> tuple[SubatomicModifier, ...]:
     return tuple(SubatomicModifier.from_dict(row) for row in records)
 
 
-def load_typed_relations(source: Path) -> tuple[TypedRelation, ...]:
-    """Load typed relations taxonomy from JSON, CSV, or TSV file."""
-    records = _read_records(source)
-    return tuple(TypedRelation.from_dict(row) for row in records)
-
-
 def load_geography_dag(source: Path) -> tuple[GeoHierarchyEdge, ...]:
     """Load geography hierarchy edges from CSV or JSON file."""
     records = _read_records(source)
@@ -395,6 +631,36 @@ def load_units(source: Path) -> tuple[UnitMapping, ...]:
     return tuple(UnitMapping.from_dict(row) for row in records)
 
 
+def load_grammatical_frames(source: Path) -> tuple[GrammaticalFrame, ...]:
+    """Load grammatical frames taxonomy from JSON or CSV file."""
+    records = _read_records(source)
+    return tuple(GrammaticalFrame.from_dict(row) for row in records)
+
+
+def load_member_roles(source: Path) -> tuple[MemberRoleMapping, ...]:
+    """Load member roles taxonomy from JSON or CSV file."""
+    records = _read_records(source)
+    return tuple(MemberRoleMapping.from_dict(row) for row in records)
+
+
+def load_instruments_dag(source: Path) -> tuple[InstrumentEdge, ...]:
+    """Load instruments DAG taxonomy from JSON or CSV file."""
+    records = _read_records(source)
+    return tuple(InstrumentEdge.from_dict(row) for row in records)
+
+
+def load_valuation_rules(source: Path) -> tuple[ValuationRule, ...]:
+    """Load valuation rules taxonomy from JSON or CSV file."""
+    records = _read_records(source)
+    return tuple(ValuationRule.from_dict(row) for row in records)
+
+
+def load_subspace_invariants(source: Path) -> tuple[SubspaceInvariant, ...]:
+    """Load subspace invariants taxonomy from JSON or CSV file."""
+    records = _read_records(source)
+    return tuple(SubspaceInvariant.from_dict(row) for row in records)
+
+
 def load_domain_taxonomy(
     taxonomy_source: Any | None = None,
 ) -> DomainTaxonomy:
@@ -413,25 +679,43 @@ def load_domain_taxonomy(
 
     heads_p = base_dir / x_paths.default_prime_heads_path.name
     mods_p = base_dir / x_paths.default_subatomic_modifiers_path.name
-    rels_p = base_dir / x_paths.default_typed_relations_path.name
+    lexicon_p = base_dir / x_paths.default_token_lexicon_path.name
+    rels_p = base_dir / x_paths.default_atom_relations_path.name
+    types_p = base_dir / x_paths.default_relation_types_path.name
     geo_p = base_dir / x_paths.default_geography_path.name
     ind_p = base_dir / x_paths.default_industries_path.name
     axis_p = base_dir / x_paths.default_axis_families_path.name
     unit_p = base_dir / x_paths.default_units_path.name
+    frame_p = base_dir / x_paths.default_grammatical_frames_path.name
+    role_p = base_dir / x_paths.default_member_roles_path.name
+    inst_p = base_dir / x_paths.default_instruments_dag_path.name
+    val_p = base_dir / x_paths.default_valuation_rules_path.name
+    sub_p = base_dir / x_paths.default_subspace_invariants_path.name
 
     if not heads_p.is_file():
         raise FileNotFoundError(f"missing prime_heads in {base_dir}")
     if not mods_p.is_file():
         raise FileNotFoundError(f"missing subatomic_modifiers in {base_dir}")
-    if not rels_p.is_file():
-        raise FileNotFoundError(f"missing typed_relations in {base_dir}")
+
+    token_lexicon = TokenLexicon.load_json(lexicon_p) if lexicon_p.is_file() else None
+    atom_relations = (
+        AtomRelationGraph.load_json(rels_p, types_p) if rels_p.is_file() else None
+    )
 
     return DomainTaxonomy(
         prime_heads=load_prime_heads(heads_p),
         subatomic_modifiers=load_subatomic_modifiers(mods_p),
-        typed_relations=load_typed_relations(rels_p),
+        token_lexicon=token_lexicon,
+        atom_relations=atom_relations,
         geography_edges=load_geography_dag(geo_p) if geo_p.is_file() else (),
         industry_profiles=load_industry_profiles(ind_p) if ind_p.is_file() else (),
         axis_families=load_axis_families(axis_p) if axis_p.is_file() else (),
         units=load_units(unit_p) if unit_p.is_file() else (),
+        grammatical_frames=load_grammatical_frames(frame_p)
+        if frame_p.is_file()
+        else (),
+        member_roles=load_member_roles(role_p) if role_p.is_file() else (),
+        instruments_dag=load_instruments_dag(inst_p) if inst_p.is_file() else (),
+        valuation_rules=load_valuation_rules(val_p) if val_p.is_file() else (),
+        subspace_invariants=load_subspace_invariants(sub_p) if sub_p.is_file() else (),
     )

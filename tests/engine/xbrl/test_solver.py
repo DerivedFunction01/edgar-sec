@@ -259,17 +259,9 @@ def test_evaluate_goal_basis_states() -> None:
     assert g_na.value is None
 
 
-def test_declarative_same_concept_aliases_transitive() -> None:
-    """Verify transitive equivalence closure over declarative SAME_CONCEPT taxonomy edges."""
+def test_subatomic_algebraic_derivation_gross_profit() -> None:
+    """Verify GrossProfit derived from Revenue and COGS via atom relations."""
     tax = load_domain_taxonomy()
-    rev_equivs = tax.equivalent_concepts("Revenues")
-    assert "RevenueFromContractWithCustomerExcludingAssessedTax" in rev_equivs
-    assert "SalesRevenueNet" in rev_equivs
-
-    ocf_equivs = tax.equivalent_concepts("Operating_Cash_Flow")
-    assert "NetCashProvidedByUsedInOperatingActivities" in ocf_equivs
-    assert "OperatingCashFlow" in ocf_equivs
-
     solver = XbrlConstraintSolver(EvidenceKnowledgeBase(taxonomy=tax))
     acc = AccessionNumber("0000950170-24-087843")
     facts = [
@@ -281,6 +273,7 @@ def test_declarative_same_concept_aliases_transitive() -> None:
     gp_goal = solver.evaluate_goal("GrossProfit", facts)
     assert gp_goal.value == 20000.0
     assert gp_goal.basis == "DERIVED_EXACT"
+    assert gp_goal.resolution_tier == "SUBATOMIC_ALGEBRAIC_IDENTITY"
 
 
 def test_uk_vs_eu_antichain_geography_cut() -> None:

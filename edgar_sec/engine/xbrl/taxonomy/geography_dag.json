@@ -565,5 +565,96 @@
     "decomposition_scheme": "D_GEO_NORTH_AMER",
     "relation_type": "MERONYMY_PART_OF",
     "notes": "United States is a sub-region of North America"
+  },
+  {
+    "child_geo_node": "country:MX",
+    "parent_geo_node": "srt:NorthAmericaMember",
+    "decomposition_scheme": "D_GEO_USMCA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Mexico is part of North America under USMCA / NAFTA trade bloc"
+  },
+  {
+    "child_geo_node": "country:US",
+    "parent_geo_node": "srt:NorthAmericaMember",
+    "decomposition_scheme": "D_GEO_USMCA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "United States is part of North America under USMCA"
+  },
+  {
+    "child_geo_node": "country:CA",
+    "parent_geo_node": "srt:NorthAmericaMember",
+    "decomposition_scheme": "D_GEO_USMCA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Canada is part of North America under USMCA"
+  },
+  {
+    "child_geo_node": "country:CN",
+    "parent_geo_node": "corp:GreaterChinaMember",
+    "decomposition_scheme": "D_GEO_GREATER_CHINA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Mainland China is a constituent of Greater China"
+  },
+  {
+    "child_geo_node": "country:HK",
+    "parent_geo_node": "corp:GreaterChinaMember",
+    "decomposition_scheme": "D_GEO_GREATER_CHINA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Hong Kong SAR is a constituent of Greater China"
+  },
+  {
+    "child_geo_node": "country:TW",
+    "parent_geo_node": "corp:GreaterChinaMember",
+    "decomposition_scheme": "D_GEO_GREATER_CHINA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Taiwan is a constituent of Greater China"
+  },
+  {
+    "child_geo_node": "country:MO",
+    "parent_geo_node": "corp:GreaterChinaMember",
+    "decomposition_scheme": "D_GEO_GREATER_CHINA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Macau SAR is a constituent of Greater China"
+  },
+  {
+    "child_geo_node": "corp:GreaterChinaMember",
+    "parent_geo_node": "srt:AsiaPacificMember",
+    "decomposition_scheme": "D_GEO_APAC",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Greater China rolls up into Asia-Pacific"
+  },
+  {
+    "child_geo_node": "srt:EuropeMember",
+    "parent_geo_node": "srt:EMEAMember",
+    "decomposition_scheme": "D_GEO_EMEA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Europe is a constituent of EMEA"
+  },
+  {
+    "child_geo_node": "srt:MiddleEastMember",
+    "parent_geo_node": "srt:EMEAMember",
+    "decomposition_scheme": "D_GEO_EMEA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Middle East is a constituent of EMEA"
+  },
+  {
+    "child_geo_node": "srt:AfricaMember",
+    "parent_geo_node": "srt:EMEAMember",
+    "decomposition_scheme": "D_GEO_EMEA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Africa is a constituent of EMEA"
+  },
+  {
+    "child_geo_node": "srt:CentralAmericaMember",
+    "parent_geo_node": "srt:LatinAmericaMember",
+    "decomposition_scheme": "D_GEO_CORP_LATAM",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Central America rolls up into Latin America"
+  },
+  {
+    "child_geo_node": "srt:SouthAmericaMember",
+    "parent_geo_node": "srt:LatinAmericaMember",
+    "decomposition_scheme": "D_GEO_CORP_LATAM",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "South America rolls up into Latin America"
   }
 ]

@@ -36,11 +36,20 @@ By decomposing taxonomy linkbases into explicit typed relational structures and 
     └── engine/
         └── xbrl/
             └── taxonomy/  # Directory housing accounting domain taxonomy files.
+                ├── atom_relations.json  # Default path to atom relations taxonomy file.
+                ├── axis_families.json  # Default path to axis families taxonomy file.
                 ├── geography_dag.json  # Default path to geography DAG taxonomy file.
+                ├── grammatical_frames.json  # Default path to grammatical frames taxonomy file.
                 ├── industries.json  # Default path to industry profiles taxonomy file.
+                ├── instruments_dag.json  # Default path to financial instruments DAG file.
+                ├── member_roles.json  # Default path to member roles taxonomy file.
                 ├── prime_heads.json  # Default path to prime heads taxonomy file.
+                ├── relation_types.json  # Default path to relation types taxonomy file.
                 ├── seed_cohort.json  # Default path to the clean seed cohort input JSON.
                 ├── subatomic_modifiers.json  # Default path to subatomic modifiers taxonomy file.
-                └── typed_relations.json  # Default path to typed relations taxonomy file.
+                ├── subspace_invariants.json  # Default path to multidimensional subspace routing invariants file.
+                ├── token_lexicon.json  # Default path to token lexicon taxonomy file.
+                ├── units.json  # Default path to units taxonomy file.
+                └── valuation_rules.json  # Default path to valuation and fair value rules file.
 ```
 <!-- AUTOGEN:PATHS:END -->

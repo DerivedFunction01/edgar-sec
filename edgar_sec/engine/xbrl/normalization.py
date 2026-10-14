@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from datetime import date
 from typing import Mapping
 
+from edgar_sec.engine.xbrl.atoms import Atom
 from edgar_sec.engine.xbrl.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.engine.xbrl.models import XbrlFact
 
@@ -47,6 +48,8 @@ class NormalizedFact:
     unit_class: str
     canonical_value: float | None
     dimensions: tuple[DimensionSlice, ...] = ()
+    atom: Atom | None = None
+    residual_tokens: tuple[str, ...] = ()
 
     @property
     def is_undimensioned(self) -> bool:
@@ -121,16 +124,13 @@ def classify_axis_family(
     return tax.classify_axis(axis_qname)
 
 
-def classify_member_role(member_qname: str) -> str:
+def classify_member_role(
+    member_qname: str,
+    taxonomy: DomainTaxonomy | None = None,
+) -> str:
     """Classify a dimension member QName into its accounting aggregation role."""
-    local = member_qname.split(":")[-1].lower()
-    if local.endswith("domain") or local.endswith("axis") or "default" in local:
-        return "DEFAULT"
-    if "total" in local:
-        return "TOTAL"
-    if any(k in local for k in ("elimination", "reconcil", "corporate", "other")):
-        return "RECONCILING"
-    return "NORMAL"
+    tax = taxonomy or load_domain_taxonomy()
+    return tax.classify_member_role(member_qname)
 
 
 def normalize_unit_class(
@@ -147,14 +147,15 @@ def normalize_dimension_slices(
     taxonomy: DomainTaxonomy | None = None,
 ) -> tuple[DimensionSlice, ...]:
     """Convert raw dimension mapping into sorted canonical DimensionSlice tuples."""
+    tax = taxonomy or load_domain_taxonomy()
     slices: list[DimensionSlice] = []
     for axis, member in sorted(dimensions.items()):
         slices.append(
             DimensionSlice(
-                axis_family=classify_axis_family(axis, taxonomy),
+                axis_family=classify_axis_family(axis, tax),
                 axis_qname=axis,
                 member_qname=member,
-                member_role=classify_member_role(member),
+                member_role=classify_member_role(member, tax),
             )
         )
     return tuple(slices)
@@ -184,10 +185,12 @@ def normalize_fact(
             val = None
 
     measure_id = fact.concept_qname
-    if taxonomy is not None:
-        equivs = taxonomy.equivalent_concepts(measure_id)
-        if equivs:
-            measure_id = sorted(equivs, key=len)[0]
+    atom: Atom | None = None
+    residuals: tuple[str, ...] = ()
+    if taxonomy is not None and taxonomy.token_lexicon is not None:
+        from edgar_sec.engine.xbrl.decomposer import decompose_concept
+
+        atom, residuals, _, _ = decompose_concept(measure_id, taxonomy.token_lexicon)
 
     return NormalizedFact(
         raw_fact=fact,
@@ -199,4 +202,6 @@ def normalize_fact(
         unit_class=unit_coord,
         canonical_value=val,
         dimensions=dim_slices,
+        atom=atom,
+        residual_tokens=residuals,
     )

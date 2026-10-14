@@ -20,7 +20,9 @@ def test_resolve_xbrl_paths(tmp_path: Path) -> None:
     )
     assert paths.default_prime_heads_path.name == "prime_heads.json"
     assert paths.default_subatomic_modifiers_path.name == "subatomic_modifiers.json"
-    assert paths.default_typed_relations_path.name == "typed_relations.json"
+    assert paths.default_token_lexicon_path.name == "token_lexicon.json"
+    assert paths.default_atom_relations_path.name == "atom_relations.json"
+    assert paths.default_relation_types_path.name == "relation_types.json"
     assert paths.default_geography_path.name == "geography_dag.json"
     assert paths.default_industries_path.name == "industries.json"
 

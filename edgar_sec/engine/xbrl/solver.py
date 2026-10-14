@@ -6,7 +6,8 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from typing import Any
 
-from edgar_sec.engine.xbrl.decomposer import infer_semantic_frame
+from edgar_sec.engine.xbrl.atoms import Atom
+from edgar_sec.engine.xbrl.decomposer import decompose_concept, infer_semantic_frame
 from edgar_sec.engine.xbrl.evidence import EvidenceKnowledgeBase
 from edgar_sec.engine.xbrl.gold import PlacementPrediction
 from edgar_sec.engine.xbrl.models import (
@@ -84,23 +85,43 @@ class XbrlConstraintSolver:
                 continue
 
             # 3. Subatomic prime head induction via declarative taxonomy graph
-            if self.enable_head_induction:
-                frame = infer_semantic_frame(
-                    qname,
-                    self.kb.taxonomy,
-                    unit=fact.unit,
-                    balance=fact.balance,
+            if (
+                self.enable_head_induction
+                and self.kb.taxonomy.atom_relations is not None
+            ):
+                lexicon = self.kb.taxonomy.token_lexicon
+                if lexicon is not None:
+                    atom, _, _, _ = decompose_concept(qname, lexicon)
+                else:
+                    frame = infer_semantic_frame(
+                        qname,
+                        self.kb.taxonomy,
+                        unit=fact.unit,
+                        balance=fact.balance,
+                    )
+                    atom = Atom(frame.prime_head, frozenset(frame.modifiers))
+                edges = self.kb.taxonomy.atom_relations.find_inherited_edges(
+                    atom, "PART_OF"
                 )
-                head_edge = self.kb.taxonomy.find_head_placement(
-                    frame.prime_head,
-                    sector=sector,
-                )
-                if head_edge is not None:
+                if edges:
+                    best_edge = edges[0]
+                    head_def = self.kb.taxonomy.prime_head(best_edge.target.head)
+                    target_concept = best_edge.target_concept or (
+                        head_def.canonical_concept
+                        if (head_def and head_def.canonical_concept)
+                        else best_edge.target.head
+                    )
+                    pred_parent = (
+                        f"us-gaap:{target_concept}"
+                        if ":" not in target_concept
+                        else target_concept
+                    )
                     predictions.append(
                         PlacementPrediction(
                             concept_qname=qname,
-                            predicted_parent=head_edge.target_node,
-                            predicted_weight=head_edge.algebraic_weight,
+                            predicted_parent=pred_parent,
+                            predicted_weight=best_edge.algebraic_weight,
+                            is_abstained=False,
                         )
                     )
                     continue
@@ -365,6 +386,56 @@ class XbrlConstraintSolver:
         sub_fact = self.evaluate_goal(node_name, facts, calculation_arcs)
         return sub_fact.value
 
+    def _resolve_atom_value(
+        self,
+        edge: Any,
+        facts: Sequence[XbrlFact],
+        calculation_arcs: Sequence[CalculationArc],
+        *,
+        visited: set[str] | None = None,
+    ) -> float | None:
+        """Resolve value for an atom relation source directly from facts or recursively."""
+        lexicon = self.kb.taxonomy.token_lexicon
+        if lexicon is None:
+            return None
+
+        matching: list[tuple[float, Atom]] = []
+        for f in facts:
+            if f.dimensions:
+                continue
+            v = None
+            if isinstance(f.value, (int, float)):
+                v = float(f.value)
+            elif isinstance(f.value, str):
+                try:
+                    v = float(f.value)
+                except ValueError:
+                    pass
+            if v is None:
+                continue
+            f_atom, _, _, _ = decompose_concept(f.concept_qname, lexicon)
+            if f_atom.is_a(edge.source):
+                matching.append((v, f_atom))
+
+        if matching:
+            matching.sort(key=lambda item: len(item[1].modifiers))
+            return matching[0][0]
+
+        v_set = visited if visited is not None else set()
+        head_def = self.kb.taxonomy.prime_head(edge.source.head)
+        source_concept = getattr(edge, "source_concept", None) or (
+            head_def.canonical_concept if head_def else None
+        )
+        if source_concept and source_concept not in v_set:
+            v_set.add(source_concept)
+            sub_agg = self.evaluate_goal(
+                source_concept, facts, calculation_arcs, _visited=v_set
+            )
+            if sub_agg.value is not None:
+                return sub_agg.value
+
+        return None
+
     def evaluate_goal(
         self,
         target_concept: str,
@@ -375,6 +446,7 @@ class XbrlConstraintSolver:
         entity: str = "",
         period: str = "",
         unit: str = "USD",
+        _visited: set[str] | None = None,
     ) -> AggregateFact:
         """Evaluate an aggregate financial fact emitting canonical basis and derivation path."""
         if axis_filter is not None:
@@ -423,6 +495,18 @@ class XbrlConstraintSolver:
                 if cand_val is not None:
                     direct_val = cand_val
                     resolved_concept = cand
+                    break
+
+        lexicon = self.kb.taxonomy.token_lexicon
+        if direct_val is None and lexicon is not None:
+            target_atom, _, _, _ = decompose_concept(target_concept, lexicon)
+            for f in facts:
+                if f.dimensions or not isinstance(f.value, (int, float)):
+                    continue
+                f_atom, _, _, _ = decompose_concept(f.concept_qname, lexicon)
+                if f_atom == target_atom:
+                    direct_val = float(f.value)
+                    resolved_concept = f.concept_qname
                     break
 
         if direct_val is not None:
@@ -482,56 +566,57 @@ class XbrlConstraintSolver:
                     resolution_tier="DERIVED_MULTI_HOP",
                 )
 
-        # 3. Declarative Relational Graph Traversal (PART_OF / CONTRA_OF / DERIVED_FROM)
-        target_edges = [
-            e
-            for e in self.kb.taxonomy.typed_relations
-            if (
-                e.target_node == target_concept
-                or e.target_node == target_local
-                or e.target_node.split(":")[-1] == target_local
-            )
-            and e.relation_type in ("PART_OF", "CONTRA_OF", "DERIVED_FROM")
-        ]
-        if target_edges:
-            edge_groups: dict[str, list[Any]] = {}
-            for e in target_edges:
-                key = e.formula_id or e.edge_id
-                edge_groups.setdefault(key, []).append(e)
+        # 3. Declarative Relational Graph Traversal over Atom Coordinates
+        atom_graph = self.kb.taxonomy.atom_relations
+        if atom_graph is not None and lexicon is not None:
+            target_atom, _, _, _ = decompose_concept(target_concept, lexicon)
+            incoming_edges = [
+                e
+                for e in atom_graph.relations
+                if e.relation_type in ("PART_OF", "CONTRA_OF", "DERIVED_FROM")
+                and (
+                    target_atom.is_a(e.target)
+                    or (
+                        e.target_concept
+                        and e.target_concept.split(":")[-1] == target_local
+                    )
+                )
+            ]
+            if incoming_edges:
+                edge_groups: dict[str, list[Any]] = {}
+                for e in incoming_edges:
+                    key = getattr(e, "formula_id", None) or e.edge_id
+                    edge_groups.setdefault(key, []).append(e)
 
-            for group_edges in edge_groups.values():
-                resolved_vals: list[tuple[float, Any]] = []
-                all_found = True
-                for edge in group_edges:
-                    val = self._resolve_source_node_value(
-                        edge.source_node,
-                        fact_vals,
-                        local_fact_vals,
-                        facts,
-                        calculation_arcs,
-                    )
-                    if val is not None:
-                        resolved_vals.append((val, edge))
-                    else:
-                        all_found = False
-                        break
+                for group_edges in edge_groups.values():
+                    resolved_vals: list[tuple[float, Any]] = []
+                    all_found = True
+                    for edge in group_edges:
+                        val = self._resolve_atom_value(
+                            edge, facts, calculation_arcs, visited=_visited
+                        )
+                        if val is not None:
+                            resolved_vals.append((val, edge))
+                        else:
+                            all_found = False
+                            break
 
-                if all_found and resolved_vals:
-                    total = sum(v * e.algebraic_weight for v, e in resolved_vals)
-                    path = tuple(
-                        f"{e.source_node}({v}) * {e.algebraic_weight}"
-                        for v, e in resolved_vals
-                    )
-                    return AggregateFact(
-                        measure_id=target_concept,
-                        entity=entity,
-                        period=period,
-                        unit=unit,
-                        value=round(total, 4),
-                        basis="DERIVED_EXACT",
-                        derivation_path=path,
-                        resolution_tier="SUBATOMIC_ALGEBRAIC_IDENTITY",
-                    )
+                    if all_found and resolved_vals:
+                        total = sum(v * e.algebraic_weight for v, e in resolved_vals)
+                        path = tuple(
+                            f"{e.source}({v}) * {e.algebraic_weight}"
+                            for v, e in resolved_vals
+                        )
+                        return AggregateFact(
+                            measure_id=target_concept,
+                            entity=entity,
+                            period=period,
+                            unit=unit,
+                            value=round(total, 4),
+                            basis="DERIVED_EXACT",
+                            derivation_path=path,
+                            resolution_tier="SUBATOMIC_ALGEBRAIC_IDENTITY",
+                        )
 
         return AggregateFact(
             measure_id=target_concept,

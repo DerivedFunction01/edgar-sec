@@ -1,0 +1,47 @@
+[
+  {
+    "rule_id": "RULE_NONOP_DERIVATIVE_P_L",
+    "measure": "GainLoss",
+    "book": "P_L",
+    "instrument_ancestor": "DerivativeMember",
+    "target_node": "NonoperatingIncomeExpense",
+    "algebraic_weight": 1.0,
+    "description": "Derivative gains/losses recognized in P&L roll into NonoperatingIncomeExpense (+1.0)"
+  },
+  {
+    "rule_id": "RULE_NONOP_INVESTMENT_P_L",
+    "measure": "GainLoss",
+    "book": "P_L",
+    "instrument_ancestor": "InvestmentMember",
+    "target_node": "NonoperatingIncomeExpense",
+    "algebraic_weight": 1.0,
+    "description": "Investment fair value / realized gains/losses recognized in P&L roll into NonoperatingIncomeExpense (+1.0)"
+  },
+  {
+    "rule_id": "RULE_OCI_AFS_DEBT",
+    "measure": "GainLoss",
+    "book": "OCI",
+    "instrument_ancestor": "DebtSecurityAFSMember",
+    "target_node": "OtherComprehensiveIncomeNet",
+    "algebraic_weight": 1.0,
+    "description": "Unrealized AFS debt gains/losses in OCI roll into OtherComprehensiveIncomeNet (+1.0)"
+  },
+  {
+    "rule_id": "RULE_OCI_CASH_FLOW_HEDGE",
+    "measure": "GainLoss",
+    "book": "OCI",
+    "instrument_ancestor": "DerivativeMember",
+    "target_node": "OtherComprehensiveIncomeNet",
+    "algebraic_weight": 1.0,
+    "description": "Effective cash flow hedge gains/losses in OCI roll into OtherComprehensiveIncomeNet (+1.0)"
+  },
+  {
+    "rule_id": "RULE_OCI_FX_TRANSLATION",
+    "measure": "GainLoss",
+    "book": "OCI",
+    "instrument_ancestor": "ForeignExchangeContractMember",
+    "target_node": "OtherComprehensiveIncomeNet",
+    "algebraic_weight": 1.0,
+    "description": "Foreign currency translation adjustments in OCI roll into OtherComprehensiveIncomeNet (+1.0)"
+  }
+]

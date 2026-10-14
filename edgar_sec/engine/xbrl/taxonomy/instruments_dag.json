@@ -1,0 +1,92 @@
+[
+  {
+    "child_instrument": "InterestRateSwapMember",
+    "parent_instrument": "SwapMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Interest rate swap is a subtype of Swap"
+  },
+  {
+    "child_instrument": "CreditDefaultSwapMember",
+    "parent_instrument": "SwapMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Credit default swap is a subtype of Swap"
+  },
+  {
+    "child_instrument": "ForeignExchangeContractMember",
+    "parent_instrument": "DerivativeMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "FX forward/swap contract is a subtype of Derivative"
+  },
+  {
+    "child_instrument": "SwapMember",
+    "parent_instrument": "DerivativeMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Swap contracts roll up into Derivative"
+  },
+  {
+    "child_instrument": "OptionMember",
+    "parent_instrument": "DerivativeMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Options contracts roll up into Derivative"
+  },
+  {
+    "child_instrument": "ForwardContractMember",
+    "parent_instrument": "DerivativeMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Forward contracts roll up into Derivative"
+  },
+  {
+    "child_instrument": "FuturesContractMember",
+    "parent_instrument": "DerivativeMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Futures contracts roll up into Derivative"
+  },
+  {
+    "child_instrument": "DerivativeMember",
+    "parent_instrument": "FinancialInstrumentMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "All derivative contracts roll up into FinancialInstrument"
+  },
+  {
+    "child_instrument": "EquitySecuritiesMember",
+    "parent_instrument": "EquityInvestmentMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Public/private equity securities roll into EquityInvestment"
+  },
+  {
+    "child_instrument": "EquityInvestmentMember",
+    "parent_instrument": "InvestmentMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Equity investments roll up into Investment"
+  },
+  {
+    "child_instrument": "DebtSecurityAFSMember",
+    "parent_instrument": "DebtSecurityMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Available-for-sale debt securities roll up into DebtSecurity"
+  },
+  {
+    "child_instrument": "DebtSecurityHTMMember",
+    "parent_instrument": "DebtSecurityMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Held-to-maturity debt securities roll up into DebtSecurity"
+  },
+  {
+    "child_instrument": "DebtSecurityTradingMember",
+    "parent_instrument": "DebtSecurityMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Trading debt securities roll up into DebtSecurity"
+  },
+  {
+    "child_instrument": "DebtSecurityMember",
+    "parent_instrument": "InvestmentMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Debt securities roll up into Investment"
+  },
+  {
+    "child_instrument": "InvestmentMember",
+    "parent_instrument": "FinancialInstrumentMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Investments roll up into FinancialInstrument"
+  }
+]

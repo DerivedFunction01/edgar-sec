@@ -50,7 +50,7 @@ def test_evidence_laplace_confidence() -> None:
 
 def test_evidence_cryptographic_freeze() -> None:
     """Verify read-only lock and SHA-256 seal after freeze."""
-    tax = DomainTaxonomy((), (), (), (), ())
+    tax = DomainTaxonomy(prime_heads=(), subatomic_modifiers=())
     kb = EvidenceKnowledgeBase(taxonomy=tax)
     rule = UnificationRule("R1", "us-gaap:Revenues", "us-gaap:Revenues")
     kb.add_rule(rule)
@@ -69,7 +69,11 @@ def test_evidence_geography_subsumption() -> None:
         GeoHierarchyEdge("country:MX", "srt:LatinAmericaMember"),
         GeoHierarchyEdge("srt:LatinAmericaMember", "srt:AmericasMember"),
     )
-    tax = DomainTaxonomy((), (), (), edges, ())
+    tax = DomainTaxonomy(
+        prime_heads=(),
+        subatomic_modifiers=(),
+        geography_edges=edges,
+    )
     kb = EvidenceKnowledgeBase(taxonomy=tax)
 
     assert kb.is_geo_subsumed("country:MX", "srt:LatinAmericaMember")

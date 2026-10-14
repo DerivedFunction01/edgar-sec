@@ -2,193 +2,378 @@
   {
     "modifier_id": "M_SALES_GOODS",
     "category": "REVENUE_TYPE",
-    "keywords": ["Sales", "Goods", "Product", "Merchandise", "Hardware", "Automotive"],
+    "keywords": [
+      "Sales",
+      "Goods",
+      "Product",
+      "Merchandise",
+      "Hardware",
+      "Automotive"
+    ],
     "description": "Physical goods or product sales"
   },
   {
     "modifier_id": "M_SERVICE_CLOUD",
     "category": "REVENUE_TYPE",
-    "keywords": ["Service", "Services", "Cloud", "Subscription", "SaaS", "Server", "Office", "Dynamics"],
+    "keywords": [
+      "Service",
+      "Services",
+      "Cloud",
+      "Subscription",
+      "SaaS",
+      "Server",
+      "Office",
+      "Dynamics"
+    ],
     "description": "Cloud, subscription, or service revenue"
   },
   {
     "modifier_id": "M_REAL_ESTATE",
     "category": "REVENUE_TYPE",
-    "keywords": ["RealEstate", "Rental", "Leasing", "Property", "Homebuilding"],
+    "keywords": [
+      "RealEstate",
+      "Rental",
+      "Leasing",
+      "Property",
+      "Homebuilding"
+    ],
     "description": "Real estate rental or property revenue/assets"
   },
   {
     "modifier_id": "M_INSURANCE_PREMIUM",
     "category": "REVENUE_TYPE",
-    "keywords": ["Premium", "Premiums", "Policyholder", "Underwriting"],
+    "keywords": [
+      "Premium",
+      "Premiums",
+      "Policyholder",
+      "Underwriting"
+    ],
     "description": "Insurance earned premiums or underwriting"
   },
   {
     "modifier_id": "M_BANKING_INTEREST",
     "category": "DOMAIN_VERTICAL",
-    "keywords": ["InterestIncome", "InterestExpense", "Interest", "NetInterest"],
+    "keywords": [
+      "InterestIncome",
+      "InterestExpense",
+      "Interest",
+      "NetInterest"
+    ],
     "description": "Interest income, expense, or net interest margin"
   },
   {
     "modifier_id": "M_BANKING_NONINTEREST",
     "category": "DOMAIN_VERTICAL",
-    "keywords": ["Noninterest", "Fee", "Commission"],
+    "keywords": [
+      "Noninterest",
+      "Fee",
+      "Commission"
+    ],
     "description": "Banking noninterest income or expense"
   },
   {
     "modifier_id": "M_RD",
     "category": "EXPENSE_NATURE",
-    "keywords": ["Research", "Development"],
+    "keywords": [
+      "Research",
+      "Development"
+    ],
     "description": "Research and development activities"
   },
   {
     "modifier_id": "M_SGA",
     "category": "EXPENSE_NATURE",
-    "keywords": ["Selling", "General", "Administrative", "Marketing"],
+    "keywords": [
+      "Selling",
+      "General",
+      "Administrative",
+      "Marketing"
+    ],
     "description": "Selling, general, and administrative activities"
   },
   {
     "modifier_id": "M_DA_DEPLETION",
     "category": "EXPENSE_NATURE",
-    "keywords": ["Depreciation", "Depletion", "Amortization", "Amortisation"],
+    "keywords": [
+      "Depreciation",
+      "Depletion",
+      "Amortization",
+      "Amortisation"
+    ],
     "description": "Depreciation, depletion, and amortization"
   },
   {
     "modifier_id": "M_SBC",
     "category": "EXPENSE_NATURE",
-    "keywords": ["ShareBased", "StockBased", "EmployeeBenefits"],
+    "keywords": [
+      "ShareBased",
+      "StockBased",
+      "EmployeeBenefits"
+    ],
     "description": "Share-based compensation or employee benefits"
   },
   {
     "modifier_id": "M_TAX_INCOME",
     "category": "EXPENSE_NATURE",
-    "keywords": ["IncomeTax", "IncomeTaxes", "Tax", "Taxes", "DeferredIncomeTax"],
+    "keywords": [
+      "IncomeTax",
+      "IncomeTaxes",
+      "Tax",
+      "Taxes",
+      "DeferredIncomeTax"
+    ],
     "description": "Current or deferred income taxes"
   },
   {
     "modifier_id": "M_REALIZED",
     "category": "REALIZATION_STATE",
-    "keywords": ["Realized", "Recognized", "SaleOf", "Maturities", "Paid", "Received"],
+    "keywords": [
+      "Realized",
+      "Recognized",
+      "SaleOf",
+      "Maturities",
+      "Paid",
+      "Received"
+    ],
     "description": "Realized in cash or recognized in P&L"
   },
   {
     "modifier_id": "M_UNREALIZED",
     "category": "REALIZATION_STATE",
-    "keywords": ["Unrealized", "Unrecognized", "FairValue", "Remeasurement", "Translation"],
+    "keywords": [
+      "Unrealized",
+      "Unrecognized",
+      "FairValue",
+      "Remeasurement",
+      "Translation"
+    ],
     "description": "Unrealized fair-value or OCI mark-to-market"
   },
   {
     "modifier_id": "M_RECLASSIFIED_OCI",
     "category": "REALIZATION_STATE",
-    "keywords": ["Reclassified", "Reclassification", "FromAOCI", "FromAccumulatedOCI"],
+    "keywords": [
+      "Reclassified",
+      "Reclassification",
+      "FromAOCI",
+      "FromAccumulatedOCI"
+    ],
     "description": "Recycled from AOCI into Net Income"
   },
   {
     "modifier_id": "M_DERIVATIVE_HEDGE",
     "category": "INSTRUMENT_TYPE",
-    "keywords": ["Derivative", "Derivatives", "Hedge", "Hedging", "Forward", "Swap", "Option"],
+    "keywords": [
+      "Derivative",
+      "Derivatives",
+      "Hedge",
+      "Hedging",
+      "Forward",
+      "Swap",
+      "Option"
+    ],
     "description": "Derivative or hedging instrument"
   },
   {
     "modifier_id": "M_AFS_SECURITY",
     "category": "INSTRUMENT_TYPE",
-    "keywords": ["AvailableForSale", "MarketableSecurities", "DebtSecurities", "Investments"],
+    "keywords": [
+      "AvailableForSale",
+      "MarketableSecurities",
+      "DebtSecurities",
+      "Investments"
+    ],
     "description": "Available-for-sale or marketable securities"
   },
   {
     "modifier_id": "M_FX_CURRENCY",
     "category": "INSTRUMENT_TYPE",
-    "keywords": ["ForeignCurrency", "ExchangeRate", "ForeignExchange", "Translation"],
+    "keywords": [
+      "ForeignCurrency",
+      "ExchangeRate",
+      "ForeignExchange",
+      "Translation"
+    ],
     "description": "Foreign exchange transaction or translation"
   },
   {
     "modifier_id": "M_RECEIVABLE",
     "category": "WORKING_CAPITAL",
-    "keywords": ["Receivable", "Receivables", "VendorNonTrade"],
+    "keywords": [
+      "Receivable",
+      "Receivables",
+      "VendorNonTrade"
+    ],
     "description": "Trade, financing, or vendor non-trade receivables"
   },
   {
     "modifier_id": "M_INVENTORY",
     "category": "WORKING_CAPITAL",
-    "keywords": ["Inventory", "Inventories", "RawMaterials", "Consumables"],
+    "keywords": [
+      "Inventory",
+      "Inventories",
+      "RawMaterials",
+      "Consumables"
+    ],
     "description": "Merchandise, materials, or WIP inventory"
   },
   {
     "modifier_id": "M_PAYABLE_ACCRUED",
     "category": "WORKING_CAPITAL",
-    "keywords": ["Payable", "Payables", "Accrued", "Compensation"],
+    "keywords": [
+      "Payable",
+      "Payables",
+      "Accrued",
+      "Compensation"
+    ],
     "description": "Accounts payable or accrued liabilities"
   },
   {
     "modifier_id": "M_CONTRACT_UNEARNED",
     "category": "WORKING_CAPITAL",
-    "keywords": ["ContractWithCustomerLiability", "Unearned", "DeferredRevenue"],
+    "keywords": [
+      "ContractWithCustomerLiability",
+      "Unearned",
+      "DeferredRevenue"
+    ],
     "description": "Unearned / deferred contract revenue"
   },
   {
     "modifier_id": "M_PPE_TANGIBLE",
     "category": "LONG_LIVED_ASSET",
-    "keywords": ["PropertyPlantAndEquipment", "Property", "ProductiveAssets"],
+    "keywords": [
+      "PropertyPlantAndEquipment",
+      "Property",
+      "ProductiveAssets"
+    ],
     "description": "Tangible property, plant, and equipment"
   },
   {
     "modifier_id": "M_INTANGIBLE_GOODWILL",
     "category": "LONG_LIVED_ASSET",
-    "keywords": ["Goodwill", "Intangible", "Intangibles", "FiniteLived"],
+    "keywords": [
+      "Goodwill",
+      "Intangible",
+      "Intangibles",
+      "FiniteLived"
+    ],
     "description": "Goodwill and intangible assets"
   },
   {
     "modifier_id": "M_CONTENT_FILM",
     "category": "DOMAIN_VERTICAL",
-    "keywords": ["FilmCost", "FilmCosts", "ContentCost", "ContentAssets", "ProducedAndLicensed"],
+    "keywords": [
+      "FilmCost",
+      "FilmCosts",
+      "ContentCost",
+      "ContentAssets",
+      "ProducedAndLicensed"
+    ],
     "description": "ASC 926 film and streaming content"
   },
   {
     "modifier_id": "M_LEASE_ROU",
     "category": "LONG_LIVED_ASSET",
-    "keywords": ["OperatingLease", "FinanceLease", "RightOfUse", "Lease"],
+    "keywords": [
+      "OperatingLease",
+      "FinanceLease",
+      "RightOfUse",
+      "Lease"
+    ],
     "description": "ASC 842 right-of-use assets and lease liabilities"
   },
   {
     "modifier_id": "M_DEBT_BORROWING",
     "category": "FINANCING_CLAIM",
-    "keywords": ["Debt", "LongTermDebt", "ShortTermBorrowings", "CommercialPaper", "Notes"],
+    "keywords": [
+      "Debt",
+      "LongTermDebt",
+      "ShortTermBorrowings",
+      "CommercialPaper",
+      "Notes"
+    ],
     "description": "Short-term or long-term debt borrowings"
   },
   {
     "modifier_id": "M_ARO_DECOMMISSIONING",
     "category": "DOMAIN_VERTICAL",
-    "keywords": ["AssetRetirementObligation", "AssetRetirementObligations", "Decommissioning"],
+    "keywords": [
+      "AssetRetirementObligation",
+      "AssetRetirementObligations",
+      "Decommissioning"
+    ],
     "description": "ASC 410 asset retirement obligation"
   },
   {
     "modifier_id": "M_TREASURY_REPURCHASE",
     "category": "EQUITY_COMPONENT",
-    "keywords": ["TreasuryStock", "RepurchaseOfCommonStock", "Repurchase"],
+    "keywords": [
+      "TreasuryStock",
+      "RepurchaseOfCommonStock",
+      "Repurchase"
+    ],
     "description": "Share repurchase or treasury stock contra-equity"
   },
   {
     "modifier_id": "M_RETAINED_EARNINGS",
     "category": "EQUITY_COMPONENT",
-    "keywords": ["RetainedEarnings", "AccumulatedDeficit"],
+    "keywords": [
+      "RetainedEarnings",
+      "AccumulatedDeficit"
+    ],
     "description": "Cumulative retained earnings"
   },
   {
     "modifier_id": "M_DIVIDEND",
     "category": "EQUITY_COMPONENT",
-    "keywords": ["Dividend", "Dividends"],
+    "keywords": [
+      "Dividend",
+      "Dividends"
+    ],
     "description": "Common or preferred dividends"
   },
   {
     "modifier_id": "M_COMMON_DILUTION",
     "category": "EQUITY_COMPONENT",
-    "keywords": ["CommonStock", "PaidInCapital", "WeightedAverageNumber", "Diluted", "Basic"],
+    "keywords": [
+      "CommonStock",
+      "PaidInCapital",
+      "WeightedAverageNumber",
+      "Diluted",
+      "Basic"
+    ],
     "description": "Common equity and share dilution"
   },
   {
     "modifier_id": "M_CURRENT_HORIZON",
     "category": "MATURITY_HORIZON",
-    "keywords": ["Current", "ShortTerm", "NinetyDays", "ThreeMonths", "YearOne"],
+    "keywords": [
+      "Current",
+      "ShortTerm",
+      "NinetyDays",
+      "ThreeMonths",
+      "YearOne"
+    ],
     "description": "Current (<= 12 months) liquidity/maturity"
+  },
+  {
+    "modifier_id": "M_FAIR_VALUE",
+    "category": "VALUATION_BASIS",
+    "keywords": [
+      "FairValue",
+      "MarkToMarket"
+    ],
+    "valuation_basis": "FAIR_VALUE",
+    "description": "Fair value measurement basis (ASC 820)"
+  },
+  {
+    "modifier_id": "M_UNREALIZED",
+    "category": "REALIZATION_STATE",
+    "keywords": [
+      "Unrealized",
+      "MarkToMarketGainLoss"
+    ],
+    "realization_state": "UNREALIZED_M2M",
+    "description": "Unrealized mark-to-market gain or loss"
   }
 ]

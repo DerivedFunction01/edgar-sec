@@ -190,5 +190,19 @@
     "category": "MATURITY_HORIZON",
     "keywords": ["Current", "ShortTerm", "NinetyDays", "ThreeMonths", "YearOne"],
     "description": "Current (<= 12 months) liquidity/maturity"
+  },
+  {
+    "modifier_id": "M_FAIR_VALUE",
+    "category": "VALUATION_BASIS",
+    "keywords": ["FairValue", "MarkToMarket"],
+    "valuation_basis": "FAIR_VALUE",
+    "description": "Fair value measurement basis (ASC 820)"
+  },
+  {
+    "modifier_id": "M_UNREALIZED",
+    "category": "REALIZATION_STATE",
+    "keywords": ["Unrealized", "MarkToMarketGainLoss"],
+    "realization_state": "UNREALIZED_M2M",
+    "description": "Unrealized mark-to-market gain or loss"
   }
 ]

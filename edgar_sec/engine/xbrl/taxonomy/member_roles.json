@@ -1,0 +1,10 @@
+[
+  {"pattern": "domain", "role": "DEFAULT", "description": "Dimension domain head member"},
+  {"pattern": "axis", "role": "DEFAULT", "description": "Dimension axis root member"},
+  {"pattern": "default", "role": "DEFAULT", "description": "Explicit default dimension member"},
+  {"pattern": "total", "role": "TOTAL", "description": "Aggregated total dimension member"},
+  {"pattern": "elimination", "role": "RECONCILING", "description": "Intercompany elimination member"},
+  {"pattern": "reconcil", "role": "RECONCILING", "description": "Reconciliation adjustment member"},
+  {"pattern": "corporate", "role": "RECONCILING", "description": "Unallocated corporate overhead"},
+  {"pattern": "other", "role": "RECONCILING", "description": "Residual and other member"}
+]
