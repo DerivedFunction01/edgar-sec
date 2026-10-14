@@ -694,6 +694,43 @@ class SecHttpClient:
             raise PermanentHttpError(url, "expected JSON object at root")
         return parsed, len(raw), sha256_bytes(raw)
 
+    def clear_cache(
+        self,
+        *,
+        url: str | None = None,
+        url_pattern: str | None = None,
+        cik: str | int | None = None,
+        kind: str | None = None,
+        older_than_s: int | float | None = None,
+        expired_only: bool = False,
+        clear_failures: bool = False,
+        vacuum: bool = True,
+    ) -> int:
+        """Clear matching entries from the response cache."""
+        if self._cache is not None:
+            return self._cache.clear(
+                url=url,
+                url_pattern=url_pattern,
+                cik=cik,
+                kind=kind,
+                older_than_s=older_than_s,
+                expired_only=expired_only,
+                clear_failures=clear_failures,
+                vacuum=vacuum,
+            )
+        return 0
+
+    def vacuum_cache(self) -> None:
+        """Reclaim and defragment response cache database file."""
+        if self._cache is not None:
+            self._cache.vacuum()
+
+    def cache_stats(self) -> dict[str, object] | None:
+        """Return statistics about response cache storage."""
+        if self._cache is not None:
+            return self._cache.stats()
+        return None
+
 
 __all__ = [
     "PermanentHttpError",

@@ -119,3 +119,111 @@ def test_mutable_does_not_pin_an_expired_entry(tmp_path: Path) -> None:
         )
     finally:
         cache.close()
+
+
+def test_sql_cache_clear_by_url_and_cik(tmp_path: Path) -> None:
+    cache = SqlCache(tmp_path, ttl_s=3600)
+    try:
+        url_sub = "https://data.sec.gov/submissions/CIK0000320193.json"
+        url_doc = (
+            "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl.htm"
+        )
+        url_other = "https://data.sec.gov/submissions/CIK0000789019.json"
+
+        cache.put(url_sub, b"aapl sub", sha256="s1", byte_size=8, content_kind="json")
+        cache.put(url_doc, b"aapl doc", sha256="d1", byte_size=8, content_kind="html")
+        cache.put(url_other, b"msft sub", sha256="m1", byte_size=8, content_kind="json")
+
+        assert cache.clear(url=url_other) == 1
+        assert cache.get(url_other) is None
+        assert cache.get(url_sub) == b"aapl sub"
+        assert cache.get(url_doc) == b"aapl doc"
+
+        assert cache.clear(cik="0000320193") == 2
+        assert cache.get(url_sub) is None
+        assert cache.get(url_doc) is None
+    finally:
+        cache.close()
+
+
+def test_sql_cache_clear_does_not_clear_larger_cik_substring(tmp_path: Path) -> None:
+    """Verify that clearing CIK=1 does not touch CIK=10 or CIK=100."""
+    cache = SqlCache(tmp_path, ttl_s=3600)
+    try:
+        url_1_sub = "https://data.sec.gov/submissions/CIK0000000001.json"
+        url_1_doc = (
+            "https://www.sec.gov/Archives/edgar/data/1/000000000123000001/doc.htm"
+        )
+
+        url_10_sub = "https://data.sec.gov/submissions/CIK0000000010.json"
+        url_10_doc = (
+            "https://www.sec.gov/Archives/edgar/data/10/000000001023000001/doc.htm"
+        )
+
+        url_100_sub = "https://data.sec.gov/submissions/CIK0000000100.json"
+        url_100_doc = (
+            "https://www.sec.gov/Archives/edgar/data/100/000000010023000001/doc.htm"
+        )
+
+        cache.put(url_1_sub, b"c1", sha256="s1", byte_size=2, content_kind="json")
+        cache.put(url_1_doc, b"d1", sha256="d1", byte_size=2, content_kind="html")
+        cache.put(url_10_sub, b"c10", sha256="s10", byte_size=3, content_kind="json")
+        cache.put(url_10_doc, b"d10", sha256="d10", byte_size=3, content_kind="html")
+        cache.put(url_100_sub, b"c100", sha256="s100", byte_size=4, content_kind="json")
+        cache.put(url_100_doc, b"d100", sha256="d100", byte_size=4, content_kind="html")
+
+        # Clearing CIK 1 must ONLY delete CIK 1, not 10 or 100
+        assert cache.clear(cik=1) == 2
+        assert cache.get(url_1_sub) is None
+        assert cache.get(url_1_doc) is None
+
+        assert cache.get(url_10_sub) == b"c10"
+        assert cache.get(url_10_doc) == b"d10"
+        assert cache.get(url_100_sub) == b"c100"
+        assert cache.get(url_100_doc) == b"d100"
+
+        # Clearing CIK 10 must ONLY delete CIK 10, not 100
+        assert cache.clear(cik=10) == 2
+        assert cache.get(url_10_sub) is None
+        assert cache.get(url_10_doc) is None
+        assert cache.get(url_100_sub) == b"c100"
+        assert cache.get(url_100_doc) == b"d100"
+    finally:
+        cache.close()
+
+
+def test_sql_cache_clear_by_pattern_and_stats(tmp_path: Path) -> None:
+    cache = SqlCache(tmp_path, ttl_s=3600)
+    try:
+        cache.put(
+            "https://data.sec.gov/submissions/CIK0000000001.json",
+            b"sub 1",
+            sha256="a",
+            byte_size=5,
+            content_kind="json",
+        )
+        cache.put(
+            "https://www.sec.gov/Archives/edgar/data/1/0001/doc.htm",
+            b"doc 1",
+            sha256="b",
+            byte_size=5,
+            content_kind="html",
+        )
+
+        stats = cache.stats()
+        assert stats["responses_count"] == 2
+        assert stats["total_bytes"] == 10
+
+        assert cache.clear(url_pattern="%.htm%") == 1
+        assert (
+            cache.get("https://www.sec.gov/Archives/edgar/data/1/0001/doc.htm") is None
+        )
+        assert (
+            cache.get("https://data.sec.gov/submissions/CIK0000000001.json") is not None
+        )
+
+        cache.vacuum()
+        assert cache.clear() == 1
+        assert cache.stats()["responses_count"] == 0
+    finally:
+        cache.close()

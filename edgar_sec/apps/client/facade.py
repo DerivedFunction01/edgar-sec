@@ -31,7 +31,17 @@ class Edgar:
         self.artifacts_root = (
             Path(artifacts_root) if artifacts_root is not None else None
         )
-        self.sec_client = sec_client
+        if sec_client is not None:
+            self.sec_client = sec_client
+        else:
+            from edgar_sec.foundation.runtime.paths import resolve_paths
+
+            root = (
+                self.artifacts_root
+                if self.artifacts_root is not None
+                else resolve_paths().artifacts_root
+            )
+            self.sec_client = SecHttpClient(cache_dir=root / "cache")
         self.workers = workers
         self._cache = cache
 
@@ -137,6 +147,48 @@ class Edgar:
 
         profile = resolve_entity_profile(identifier, self.artifacts_root)
         return Company(profile=profile, facade=self)
+
+    def clear_cache(
+        self,
+        *,
+        scope: Literal["all", "documents", "responses"] = "all",
+        cik: str | int | None = None,
+        accession: str | None = None,
+        url: str | None = None,
+        url_pattern: str | None = None,
+        kind: str | None = None,
+        older_than_s: int | float | None = None,
+        expired_only: bool = False,
+        clear_failures: bool = False,
+        vacuum: bool = True,
+    ) -> dict[str, int]:
+        """Clear documents cache, responses cache, or both matching filters."""
+        cleared: dict[str, int] = {"documents": 0, "responses": 0}
+        if scope in ("all", "documents"):
+            cleared["documents"] = self.cache.clear(accession=accession, cik=cik)
+        if scope in ("all", "responses"):
+            client = self.sec_client or SecHttpClient()
+            cleared["responses"] = client.clear_cache(
+                url=url,
+                url_pattern=url_pattern,
+                cik=cik,
+                kind=kind,
+                older_than_s=older_than_s,
+                expired_only=expired_only,
+                clear_failures=clear_failures,
+                vacuum=vacuum,
+            )
+        return cleared
+
+    def vacuum_cache(self) -> None:
+        """Compact SQLite response database and reclaim free space."""
+        client = self.sec_client or SecHttpClient()
+        client.vacuum_cache()
+
+    def cache_stats(self) -> dict[str, object] | None:
+        """Return statistics describing the SQLite response cache."""
+        client = self.sec_client or SecHttpClient()
+        return client.cache_stats()
 
 
 __all__ = ["Edgar"]

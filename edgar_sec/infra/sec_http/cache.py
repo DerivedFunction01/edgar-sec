@@ -221,6 +221,126 @@ class SqlCache:
                 "DELETE FROM url_failures WHERE url_sha256 = ?", (digest,)
             )
 
+    def clear(
+        self,
+        *,
+        url: str | None = None,
+        url_pattern: str | None = None,
+        cik: str | int | None = None,
+        kind: str | None = None,
+        older_than_s: int | float | None = None,
+        expired_only: bool = False,
+        clear_failures: bool = False,
+        vacuum: bool = True,
+    ) -> int:
+        """Delete matching cached HTTP responses and optionally vacuum database."""
+        conditions: list[str] = []
+        params: list[object] = []
+
+        if url is not None:
+            conditions.append("url = ?")
+            params.append(url)
+
+        if url_pattern is not None:
+            conditions.append("url LIKE ?")
+            params.append(url_pattern)
+
+        if cik is not None:
+            s = str(cik).strip()
+            padded = s.zfill(10)
+            bare = str(int(s)) if s.isdigit() else s
+            conditions.append("(url LIKE ? OR url LIKE ? OR url LIKE ?)")
+            params.extend([f"%CIK{padded}%", f"%/data/{bare}/%", f"%/data/{padded}/%"])
+
+        if kind is not None:
+            conditions.append("content_kind = ?")
+            params.append(kind)
+
+        if older_than_s is not None and older_than_s > 0:
+            cutoff = time.strftime(
+                "%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - older_than_s)
+            )
+            conditions.append("fetched_at <= ?")
+            params.append(cutoff)
+
+        if expired_only:
+            conditions.append("expires_at IS NOT NULL AND expires_at <= ?")
+            params.append(_now())
+
+        where_sql = f"WHERE {' AND '.join(conditions)}" if conditions else ""
+        query = f"DELETE FROM url_responses {where_sql}"
+
+        with self._lock:
+            with self._con:
+                cursor = self._con.execute(query, tuple(params))
+                deleted = cursor.rowcount
+
+                if clear_failures:
+                    fail_conds: list[str] = []
+                    fail_params: list[object] = []
+                    if url is not None:
+                        fail_conds.append("url = ?")
+                        fail_params.append(url)
+                    if url_pattern is not None:
+                        fail_conds.append("url LIKE ?")
+                        fail_params.append(url_pattern)
+                    if cik is not None:
+                        s = str(cik).strip()
+                        padded = s.zfill(10)
+                        bare = str(int(s)) if s.isdigit() else s
+                        fail_conds.append("(url LIKE ? OR url LIKE ? OR url LIKE ?)")
+                        fail_params.extend(
+                            [f"%CIK{padded}%", f"%/data/{bare}/%", f"%/data/{padded}/%"]
+                        )
+                    fail_where = (
+                        f"WHERE {' AND '.join(fail_conds)}" if fail_conds else ""
+                    )
+                    fail_query = f"DELETE FROM url_failures {fail_where}"
+                    self._con.execute(fail_query, tuple(fail_params))
+
+            if vacuum and deleted > 0:
+                self._con.execute("VACUUM")
+
+        return deleted
+
+    def vacuum(self) -> None:
+        """Reclaim free space and defragment SQLite database file."""
+        with self._lock:
+            self._con.execute("VACUUM")
+
+    def stats(self) -> dict[str, object]:
+        """Return cache storage statistics."""
+        with self._lock:
+            row = self._con.execute(
+                """
+                SELECT
+                    COUNT(*) as count,
+                    COALESCE(SUM(byte_size), 0) as total_bytes,
+                    COALESCE(SUM(LENGTH(payload)), 0) as compressed_bytes,
+                    MIN(fetched_at) as oldest,
+                    MAX(fetched_at) as newest
+                FROM url_responses
+                """
+            ).fetchone()
+            fail_row = self._con.execute(
+                "SELECT COUNT(*) as count FROM url_failures"
+            ).fetchone()
+            expired_row = self._con.execute(
+                "SELECT COUNT(*) as count FROM url_responses WHERE expires_at IS NOT NULL AND expires_at <= ?",
+                (_now(),),
+            ).fetchone()
+        db_size = self.db_path.stat().st_size if self.db_path.is_file() else 0
+        return {
+            "responses_count": row["count"] if row else 0,
+            "failures_count": fail_row["count"] if fail_row else 0,
+            "expired_count": expired_row["count"] if expired_row else 0,
+            "total_bytes": row["total_bytes"] if row else 0,
+            "compressed_bytes": row["compressed_bytes"] if row else 0,
+            "oldest_fetched_at": row["oldest"] if row else None,
+            "newest_fetched_at": row["newest"] if row else None,
+            "db_size_bytes": db_size,
+        }
+
     def close(self) -> None:
         with self._lock:
             self._con.close()

@@ -83,12 +83,37 @@ class Company:
             workers=workers,
         )
 
-    def clear_cache(self) -> int:
-        """Clear cached documents for this company."""
+    def clear_cache(
+        self,
+        *,
+        scope: Literal["all", "documents", "responses"] = "all",
+        url_pattern: str | None = None,
+        kind: str | None = None,
+        older_than_s: int | float | None = None,
+        vacuum: bool = True,
+    ) -> dict[str, int]:
+        """Clear cached documents and/or HTTP responses for this company."""
         from edgar_sec.apps.client.cache import get_default_cache
+        from edgar_sec.infra.sec_http.client import SecHttpClient
 
-        cache = self.facade.cache if self.facade else get_default_cache()
-        return cache.clear(cik=self.cik.value)
+        cleared: dict[str, int] = {"documents": 0, "responses": 0}
+        if scope in ("all", "documents"):
+            cache = self.facade.cache if self.facade else get_default_cache()
+            cleared["documents"] = cache.clear(cik=self.cik.value)
+        if scope in ("all", "responses"):
+            client = (
+                self.facade.sec_client
+                if self.facade and self.facade.sec_client
+                else SecHttpClient()
+            )
+            cleared["responses"] = client.clear_cache(
+                cik=self.cik.value,
+                url_pattern=url_pattern,
+                kind=kind,
+                older_than_s=older_than_s,
+                vacuum=vacuum,
+            )
+        return cleared
 
     def export_cache_zip(self, zip_path: Path | str) -> Path:
         """Export cached documents for this company to a ZIP archive."""
