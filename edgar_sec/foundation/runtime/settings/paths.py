@@ -62,7 +62,7 @@ def get_paths_specs() -> dict[str, dict[str, SettingSpec]]:
                 env=True,
                 machine_local=True,
                 validate=validate_non_negative_int,
-                description="HTTP cache lifetime for mutable JSON URLs in seconds; zero means forever",
+                description="HTTP cache lifetime for mutable URLs in seconds; zero means forever",
             ),
         },
     }

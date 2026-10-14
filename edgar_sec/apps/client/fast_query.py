@@ -443,7 +443,7 @@ def query_catalog_fast(
         else str(catalog_paths.catalog_root / "**" / TARGETS_DIR / "*.parquet")
     )
 
-    doc_cache = cache if cache is not None else get_default_cache()
+    doc_cache = cache if cache is not None else get_default_cache(artifacts_root)
     fetcher = _make_document_fetcher(doc_cache, http_client_factory)
     attachment_loader = _make_attachment_loader(doc_cache, http_client_factory)
     document_opener = _make_document_opener(doc_cache, http_client_factory)

@@ -33,9 +33,14 @@ class Edgar:
         self.artifacts_root = (
             Path(artifacts_root) if artifacts_root is not None else None
         )
-        if sec_client is not None:
-            self.sec_client = sec_client
-        else:
+        self.workers = workers
+        self._sec_client = sec_client
+        self._cache = cache
+
+    @property
+    def sec_client(self) -> SecHttpClient:
+        """Return SecHttpClient instance for this facade."""
+        if self._sec_client is None:
             from edgar_sec.foundation.runtime.paths import resolve_paths
 
             root = (
@@ -43,15 +48,18 @@ class Edgar:
                 if self.artifacts_root is not None
                 else resolve_paths().artifacts_root
             )
-            self.sec_client = SecHttpClient(cache_dir=root / "cache")
-        self.workers = workers
-        self._cache = cache
+            self._sec_client = SecHttpClient(cache_dir=root / "cache")
+        return self._sec_client
+
+    @sec_client.setter
+    def sec_client(self, value: SecHttpClient | None) -> None:
+        self._sec_client = value
 
     @property
     def cache(self) -> DocumentCache:
         """Return DocumentCache instance for this facade."""
         if self._cache is None:
-            self._cache = get_default_cache()
+            self._cache = get_default_cache(self.artifacts_root)
         return self._cache
 
     def fetch(

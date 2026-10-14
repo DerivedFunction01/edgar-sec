@@ -40,8 +40,8 @@ def test_runner_options_defaults() -> None:
     assert auto_options.resolve_operation("UNKNOWN") == "raw"
 
 
-def test_pipeline_runner_resolves_profile_id() -> None:
-    runner = PipelineRunner(RunnerOptions())
+def test_pipeline_runner_resolves_profile_id(tmp_path) -> None:
+    runner = PipelineRunner(RunnerOptions(artifacts_root=tmp_path))
     primary_spec = TargetSpec(role="primary")
     exhibit_spec = TargetSpec(role="EX-21")
 

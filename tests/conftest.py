@@ -20,14 +20,23 @@ def sample_source() -> Path:
 
 
 @pytest.fixture(scope="session", autouse=True)
-def no_production_cohort_writes() -> Iterator[None]:
-    """Fail the session if a test adds a cohort to this repository's own tree."""
-    root = DEFAULT_ARTIFACTS_ROOT / "cohorts"
-    before = {path.name for path in root.iterdir()} if root.is_dir() else set()
+def no_production_artifact_writes() -> Iterator[None]:
+    """Fail session if tests write to this repository's own artifacts tree."""
+    guarded = ("cohorts", "cache", "document_planning")
+    before = {
+        sub: (
+            {p.name for p in (DEFAULT_ARTIFACTS_ROOT / sub).iterdir()}
+            if (DEFAULT_ARTIFACTS_ROOT / sub).is_dir()
+            else set()
+        )
+        for sub in guarded
+    }
     yield
-    after = {path.name for path in root.iterdir()} if root.is_dir() else set()
-    leaked = sorted(after - before)
-    assert not leaked, (
-        f"tests wrote production cohorts under {root}: {leaked}. "
-        "Pass tmp_path as the cohort storage root when compiling one."
-    )
+    for sub in guarded:
+        root = DEFAULT_ARTIFACTS_ROOT / sub
+        after = {p.name for p in root.iterdir()} if root.is_dir() else set()
+        leaked = sorted(after - before[sub])
+        assert not leaked, (
+            f"tests wrote production artifacts under {root}: {leaked}. "
+            "Pass tmp_path as the artifacts_root when running operations in tests."
+        )

@@ -22,15 +22,20 @@ from edgar_sec.foundation.runtime.resources import derive_resources
 class DocumentCache:
     """Thread-safe SQLite store for acquired filing document payloads."""
 
-    def __init__(self, db_path: Path | str | None = None) -> None:
-        if db_path is None:
-            artifacts_root = resolve_paths().artifacts_root
-            cache_dir = artifacts_root / "cache"
-            cache_dir.mkdir(parents=True, exist_ok=True)
-            self.db_path = cache_dir / "documents.sqlite"
-        else:
+    def __init__(
+        self,
+        db_path: Path | str | None = None,
+        *,
+        artifacts_root: Path | str | None = None,
+    ) -> None:
+        if db_path is not None:
             self.db_path = Path(db_path).resolve()
-            self.db_path.parent.mkdir(parents=True, exist_ok=True)
+        elif artifacts_root is not None:
+            self.db_path = Path(artifacts_root).resolve() / "cache" / "documents.sqlite"
+        else:
+            root = resolve_paths().artifacts_root
+            self.db_path = root / "cache" / "documents.sqlite"
+        self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self._lock = threading.Lock()
         self._init_db()
 
@@ -261,8 +266,12 @@ class DocumentCache:
             conn.close()
 
 
-def get_default_cache() -> DocumentCache:
-    """Return singleton instance of default DocumentCache."""
+def get_default_cache(
+    artifacts_root: Path | str | None = None,
+) -> DocumentCache:
+    """Return DocumentCache for default or specified artifacts root."""
+    if artifacts_root is not None:
+        return DocumentCache(artifacts_root=artifacts_root)
     global _DEFAULT_CACHE
     if _DEFAULT_CACHE is None:
         with _CACHE_LOCK:

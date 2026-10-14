@@ -11,8 +11,8 @@ from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.apps.runner.config import TargetSpec
 
 
-def test_edgar_facade_builds_specs_and_delegates(monkeypatch) -> None:
-    edgar = Edgar()
+def test_edgar_facade_builds_specs_and_delegates(monkeypatch, tmp_path) -> None:
+    edgar = Edgar(artifacts_root=tmp_path)
     captured_specs = []
 
     def fake_run(self, spec: TargetSpec):
@@ -39,8 +39,8 @@ def test_edgar_facade_builds_specs_and_delegates(monkeypatch) -> None:
     assert captured_specs[0].limit == 50
 
 
-def test_edgar_facade_fast_mode_delegation(monkeypatch) -> None:
-    edgar = Edgar()
+def test_edgar_facade_fast_mode_delegation(monkeypatch, tmp_path) -> None:
+    edgar = Edgar(artifacts_root=tmp_path)
 
     def fake_fast_query(**kwargs):
         return "fast_result"
@@ -54,7 +54,7 @@ def test_edgar_facade_fast_mode_delegation(monkeypatch) -> None:
 
 
 def test_edgar_fetch_from_file(monkeypatch, tmp_path) -> None:
-    edgar = Edgar()
+    edgar = Edgar(artifacts_root=tmp_path)
     captured_specs = []
 
     def fake_run(self, spec: TargetSpec):
@@ -117,7 +117,7 @@ def test_filings_result_dataframe_and_index_access(tmp_path) -> None:
     assert first_filing.run_id == "run-1"
 
 
-def test_edgar_company_resolves_profile(monkeypatch) -> None:
+def test_edgar_company_resolves_profile(monkeypatch, tmp_path) -> None:
     from edgar_sec.domain.identity import Cik
     from edgar_sec.domain.submissions.models import EntityProfile, Listing
 
@@ -131,7 +131,7 @@ def test_edgar_company_resolves_profile(monkeypatch) -> None:
         lambda *args, **kwargs: mock_profile,
     )
 
-    edgar = Edgar()
+    edgar = Edgar(artifacts_root=tmp_path)
     company = edgar.company("0000001750")
     assert company.cik.value == 1750
     assert company.name == "AAR CORP"
@@ -142,8 +142,15 @@ def test_edgar_and_company_clear_cache(tmp_path: Path) -> None:
     from edgar_sec.apps.client.cache import DocumentCache
     from edgar_sec.infra.sec_http.client import SecHttpClient
 
+    class Tripwire:
+        def get(self, *_args, **_kwargs):
+            raise AssertionError("network transport reached unexpectedly in unit test")
+
     doc_cache = DocumentCache(db_path=tmp_path / "docs.sqlite")
-    sec_client = SecHttpClient(cache_dir=tmp_path / "http_cache")
+    sec_client = SecHttpClient(
+        cache_dir=tmp_path / "http_cache",
+        session_factory=Tripwire,
+    )
 
     doc_cache.put(
         accession="0000320193-23-000106",
@@ -161,7 +168,13 @@ def test_edgar_and_company_clear_cache(tmp_path: Path) -> None:
         content_kind="json",
     )
 
-    edgar = Edgar(cache=doc_cache, sec_client=sec_client)
+    artifacts_root = tmp_path / "artifacts"
+    artifacts_root.mkdir()
+    edgar = Edgar(
+        cache=doc_cache,
+        sec_client=sec_client,
+        artifacts_root=artifacts_root,
+    )
     company = edgar.company("AAPL")
 
     stats = edgar.cache_stats()
