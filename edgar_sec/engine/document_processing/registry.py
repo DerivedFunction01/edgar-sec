@@ -174,12 +174,28 @@ def default_handler_registry() -> HandlerRegistry:
         _normalize_document,
     )
     registry.register(
+        "form3_html_to_xml",
+        "1",
+        "render_to_xml",
+        HandlerOutputKind.XML,
+        _form4_html_to_xml,
+        family="3",
+    )
+    registry.register(
         "form4_html_to_xml",
         "1",
         "render_to_xml",
         HandlerOutputKind.XML,
         _form4_html_to_xml,
         family="4",
+    )
+    registry.register(
+        "form5_html_to_xml",
+        "1",
+        "render_to_xml",
+        HandlerOutputKind.XML,
+        _form4_html_to_xml,
+        family="5",
     )
     return registry
 

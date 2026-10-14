@@ -89,7 +89,21 @@ DEFAULT_CAPABILITIES = ProcessingCapabilityRegistry(
             output_kind=HandlerOutputKind.TEXT,
         ),
         ProcessingCapability(
+            handler_id="form3_html_to_xml",
+            handler_version="1",
+            operation="render_to_xml",
+            input_facts="markup route primary html body",
+            output_kind=HandlerOutputKind.XML,
+        ),
+        ProcessingCapability(
             handler_id="form4_html_to_xml",
+            handler_version="1",
+            operation="render_to_xml",
+            input_facts="markup route primary html body",
+            output_kind=HandlerOutputKind.XML,
+        ),
+        ProcessingCapability(
+            handler_id="form5_html_to_xml",
             handler_version="1",
             operation="render_to_xml",
             input_facts="markup route primary html body",

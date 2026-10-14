@@ -218,7 +218,8 @@ def render_form4_to_xml(
 
     root = ET.Element("ownershipDocument")
     _add_text_elem(root, "schemaVersion", "X0206")
-    _add_text_elem(root, "documentType", "4")
+    doc_type = context.family if context and context.family else "4"
+    _add_text_elem(root, "documentType", doc_type)
     _add_text_elem(root, "periodOfReport", metadata.period.period_of_report)
 
     _build_issuer_xml(root, metadata)

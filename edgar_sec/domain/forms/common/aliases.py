@@ -49,6 +49,18 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "6-K",
         "6-K/A",
     ),
+    "3": (
+        "3",
+        "3/A",
+    ),
+    "4": (
+        "4",
+        "4/A",
+    ),
+    "5": (
+        "5",
+        "5/A",
+    ),
 }
 
 # Suffixes stripped when collapsing a raw form string to its base family.

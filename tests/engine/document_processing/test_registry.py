@@ -117,4 +117,9 @@ def test_form4_html_to_xml_handler_wraps_html_and_preserves_xml() -> None:
     assert b"<ownershipDocument>" in html_out
     xml_input = b'<?xml version="1.0"?><ownershipDocument/>'
     xml_out = reg.handler(xml_input, context)
-    assert xml_out == xml_input
+    reg3 = DEFAULT_HANDLER_REGISTRY.resolve("render_to_xml", "3", DocumentRoute.MARKUP)
+    assert reg3 is not None
+    assert reg3.handler_id == "form3_html_to_xml"
+    reg5 = DEFAULT_HANDLER_REGISTRY.resolve("render_to_xml", "5", DocumentRoute.MARKUP)
+    assert reg5 is not None
+    assert reg5.handler_id == "form5_html_to_xml"

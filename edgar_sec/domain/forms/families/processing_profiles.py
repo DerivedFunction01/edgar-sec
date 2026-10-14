@@ -26,7 +26,9 @@ from edgar_sec.domain.forms.families.current.processing import (
     PROFILE as CURRENT_PROFILE,
 )
 from edgar_sec.domain.forms.families.ownership.processing import (
-    PROFILE as OWNERSHIP_PROFILE,
+    PROFILE_FORM_3,
+    PROFILE_FORM_4,
+    PROFILE_FORM_5,
 )
 from edgar_sec.domain.forms.families.quarterly.checkmarks import (
     QUARTERLY_CHECKBOX_SCHEMA,
@@ -72,8 +74,16 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         cover_checkbox_schema=SIX_K_CHECKBOX_SCHEMA,
     ),
     ProcessingCatalogEntry(
+        family="3",
+        profile=PROFILE_FORM_3,
+    ),
+    ProcessingCatalogEntry(
         family="4",
-        profile=OWNERSHIP_PROFILE,
+        profile=PROFILE_FORM_4,
+    ),
+    ProcessingCatalogEntry(
+        family="5",
+        profile=PROFILE_FORM_5,
     ),
 )
 

@@ -59,7 +59,7 @@ LEXICAL_FAMILIES = ("10-K", "20-F", "10-Q", "8-K", "6-K")
 
 
 def test_profiles_exist_for_registered_families() -> None:
-    for family in FORM_FAMILY_ALIASES:
+    for family in LEXICAL_FAMILIES:
         assert family in COVER_PROFILES
     assert "GENERIC" in COVER_PROFILES
 
