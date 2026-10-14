@@ -176,9 +176,17 @@ def test_edgar_facade_fetches_and_opens_linkbases(tmp_path: Path) -> None:
         if "index.html" in url:
             return index_html
         if "_cal.xml" in url:
-            return b'<calculationLinkbase firm="MSFT"/>'
+            from tests.support import fixture_path
+
+            return fixture_path("xbrl/msft-20240630_cal.xml").read_bytes()
         if "_pre.xml" in url:
-            return b'<presentationLinkbase firm="MSFT"/>'
+            from tests.support import fixture_path
+
+            return fixture_path("xbrl/msft-20240630_pre.xml").read_bytes()
+        if ".xsd" in url:
+            from tests.support import fixture_path
+
+            return fixture_path("xbrl/msft-20240630.xsd").read_bytes()
         return b"default"
 
     mock_client.get_bytes.side_effect = mock_get
@@ -195,7 +203,17 @@ def test_edgar_facade_fetches_and_opens_linkbases(tmp_path: Path) -> None:
     assert len(linkbases) == 3
 
     cal_bytes = filing.open_linkbase("_cal.xml")
-    assert cal_bytes == b'<calculationLinkbase firm="MSFT"/>'
+    assert b"calculationLink" in cal_bytes
+
+    from edgar_sec.engine.xbrl.linkbase_parser import parse_calculation_linkbase
+
+    cal_arcs = parse_calculation_linkbase(cal_bytes)
+    assert len(cal_arcs) == 4
+    assert any(a.parent_qname == "us-gaap:GrossProfit" for a in cal_arcs)
 
     pre_bytes = filing.open_linkbase("_pre.xml")
-    assert pre_bytes == b'<presentationLinkbase firm="MSFT"/>'
+    assert b"presentationLink" in pre_bytes
+
+    xbrl = edgar.xbrl(filing)
+    assert len(xbrl.linkbases.calculation_arcs) == 4
+    assert len(xbrl.linkbases.presentation_arcs) == 2

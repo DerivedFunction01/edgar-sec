@@ -12,6 +12,7 @@ from edgar_sec.domain.submissions.models import Address, EntityProfile
 if TYPE_CHECKING:
     from edgar_sec.apps.client.facade import Edgar
     from edgar_sec.apps.client.models import FilingsResult
+    from edgar_sec.engine.xbrl.models import FilingXbrl
 
 
 @dataclass(frozen=True, slots=True)
@@ -96,6 +97,17 @@ class Company:
 
         cache = self.facade.cache if self.facade else get_default_cache()
         return cache.export_zip(zip_path, cik=self.cik.value)
+
+    def xbrl(self, form: str | None = None) -> FilingXbrl | None:
+        """Fetch latest filing and return parsed FilingXbrl."""
+        if self.facade is None:
+            return None
+        forms = [form] if form is not None else ()
+        filings = self.filings(forms=forms, limit=1)
+        latest = filings.latest()
+        if latest is None:
+            return None
+        return self.facade.xbrl(latest)
 
 
 __all__ = ["Company"]

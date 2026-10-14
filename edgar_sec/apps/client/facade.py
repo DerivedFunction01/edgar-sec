@@ -15,6 +15,8 @@ from edgar_sec.infra.sec_http.client import SecHttpClient
 
 if TYPE_CHECKING:
     from edgar_sec.apps.client.entity import Company
+    from edgar_sec.domain.document.aggregate import FilingAggregate
+    from edgar_sec.engine.xbrl.models import FilingXbrl
 
 
 class Edgar:
@@ -137,6 +139,12 @@ class Edgar:
 
         profile = resolve_entity_profile(identifier, self.artifacts_root)
         return Company(profile=profile, facade=self)
+
+    def xbrl(self, filing: FilingAggregate) -> FilingXbrl:
+        """Parse and return complete FilingXbrl bundle from filing linkbases."""
+        from edgar_sec.engine.xbrl.filing_parser import parse_filing_xbrl
+
+        return parse_filing_xbrl(filing)
 
 
 __all__ = ["Edgar"]

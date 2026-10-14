@@ -1,64 +1,75 @@
-"""Tests for linkbase Parquet serialization and deserialization."""
+"""Unit tests for XBRL Parquet serialization of linkbases and facts."""
 
 from pathlib import Path
+import pyarrow.parquet as pq
 
-from edgar_sec.domain.identity import AccessionNumber, Cik
-from edgar_sec.engine.xbrl.discovery import DiscoveredLinkbase, LinkbaseType
+from edgar_sec.domain.identity import AccessionNumber
+from edgar_sec.engine.xbrl.models import (
+    CalculationArc,
+    PresentationArc,
+    XbrlFact,
+)
 from edgar_sec.engine.xbrl.storage import (
-    linkbases_to_arrow_table,
-    read_linkbase_parquet,
-    write_linkbase_parquet,
+    write_calculation_arcs_parquet,
+    write_facts_parquet,
+    write_presentation_arcs_parquet,
 )
 
 
-def _sample_linkbases() -> tuple[DiscoveredLinkbase, ...]:
-    acc = AccessionNumber.from_any("0000950170-24-087843")
-    cik = Cik(789019)
-    return (
-        DiscoveredLinkbase(
-            accession=acc,
-            cik=cik,
-            linkbase_type=LinkbaseType.CALCULATION,
-            document_type="EX-101.CAL",
-            filename="msft-20240630_cal.xml",
-            archive_url="https://www.sec.gov/Archives/cal.xml",
-            byte_size=284500,
-            sequence=3,
-            description="Calculation Linkbase",
-        ),
-        DiscoveredLinkbase(
-            accession=acc,
-            cik=cik,
-            linkbase_type=LinkbaseType.PRESENTATION,
-            document_type="EX-101.PRE",
-            filename="msft-20240630_pre.xml",
-            archive_url="https://www.sec.gov/Archives/pre.xml",
-            byte_size=451200,
-            sequence=6,
-            description="Presentation Linkbase",
-        ),
-    )
-
-
-def test_linkbases_arrow_conversion() -> None:
-    """Verify Arrow table schema and length."""
-    table = linkbases_to_arrow_table(_sample_linkbases())
-    assert table.num_rows == 2
-    assert "linkbase_type" in table.column_names
-    assert table.column("linkbase_type")[0].as_py() == "calculation"
-
-
-def test_parquet_round_trip(tmp_path: Path) -> None:
-    """Verify atomic Parquet serialization and round-trip read."""
-    dest = tmp_path / "linkbases.parquet"
-    items = _sample_linkbases()
-    written = write_linkbase_parquet(items, dest)
-    assert written == 2
-    assert dest.exists()
-
-    table = read_linkbase_parquet(dest)
-    assert table.num_rows == 2
-    assert table.column("filename").to_pylist() == [
-        "msft-20240630_cal.xml",
-        "msft-20240630_pre.xml",
+def test_write_calculation_and_presentation_parquet(tmp_path: Path) -> None:
+    """Verify writing calculation and presentation arcs to Parquet."""
+    calc_arcs = [
+        CalculationArc(
+            parent_qname="us-gaap:GrossProfit",
+            child_qname="us-gaap:Revenues",
+            weight=1.0,
+            order=1.0,
+            role_uri="http://msft/role/Income",
+        )
     ]
+    calc_path = tmp_path / "calc.parquet"
+    assert write_calculation_arcs_parquet(calc_arcs, calc_path) == 1
+    assert calc_path.is_file()
+
+    table = pq.read_table(calc_path)
+    assert table.num_rows == 1
+    assert table.column("parent_qname")[0].as_py() == "us-gaap:GrossProfit"
+    assert table.column("weight")[0].as_py() == 1.0
+
+    pres_arcs = [
+        PresentationArc(
+            parent_qname="us-gaap:Abstract",
+            child_qname="us-gaap:GrossProfit",
+            order=1.0,
+            role_uri="http://msft/role/Income",
+        )
+    ]
+    pres_path = tmp_path / "pres.parquet"
+    assert write_presentation_arcs_parquet(pres_arcs, pres_path) == 1
+    assert pres_path.is_file()
+
+
+def test_write_facts_parquet(tmp_path: Path) -> None:
+    """Verify writing XBRL facts with dimensional slices to Parquet."""
+    facts = [
+        XbrlFact(
+            accession=AccessionNumber("0000950170-24-087843"),
+            concept_qname="us-gaap:Revenues",
+            value=245122000000.0,
+            unit="USD",
+            decimals=-6,
+            period_type="duration",
+            start_date="2023-07-01",
+            end_date="2024-06-30",
+            dimensions={"srt:ProductOrServiceAxis": "msft:CloudMember"},
+            context_id="c-1",
+        )
+    ]
+    facts_path = tmp_path / "facts.parquet"
+    assert write_facts_parquet(facts, facts_path) == 1
+    assert facts_path.is_file()
+
+    table = pq.read_table(facts_path)
+    assert table.num_rows == 1
+    assert table.column("numeric_value")[0].as_py() == 245122000000.0
+    assert "CloudMember" in table.column("dimensions_json")[0].as_py()
