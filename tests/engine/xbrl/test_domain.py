@@ -25,6 +25,8 @@ def test_load_taxonomy_from_fixtures() -> None:
     assert len(taxonomy.prime_heads) == 15
     assert len(taxonomy.subatomic_modifiers) == 32
     assert len(taxonomy.typed_relations) == 55
+    assert len(taxonomy.geography_edges) == 81
+    assert len(taxonomy.industry_profiles) == 273
 
     rev = taxonomy.prime_head("H_REVENUE")
     assert rev is not None
@@ -38,8 +40,14 @@ def test_load_taxonomy_from_fixtures() -> None:
     assert sales.category == "REVENUE_TYPE"
     assert "Goods" in sales.keywords
 
+    aapl = taxonomy.industry_profile("AAPL")
+    assert aapl is not None
+    assert aapl.company_name == "Apple Inc."
+    assert aapl.sic_code == 3571
+
     assert taxonomy.prime_head("NON_EXISTENT") is None
     assert taxonomy.modifier("NON_EXISTENT") is None
+    assert taxonomy.industry_profile("NON_EXISTENT") is None
 
 
 def test_tuple_conversion_and_concept_frame() -> None:

@@ -36,6 +36,8 @@ By decomposing taxonomy linkbases into explicit typed relational structures and 
     └── engine/
         └── xbrl/
             └── taxonomy/  # Directory housing accounting domain taxonomy files.
+                ├── geography_dag.json  # Default path to geography DAG taxonomy file.
+                ├── industries.json  # Default path to industry profiles taxonomy file.
                 ├── prime_heads.json  # Default path to prime heads taxonomy file.
                 ├── subatomic_modifiers.json  # Default path to subatomic modifiers taxonomy file.
                 └── typed_relations.json  # Default path to typed relations taxonomy file.

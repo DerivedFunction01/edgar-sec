@@ -198,6 +198,9 @@ def test_query_catalog_fast_documents_and_attachments(tmp_path: Path) -> None:
     <tr><td>1</td><td>10-K</td><td><a href="aapl-20230930.htm">aapl-20230930.htm</a></td><td>10-K</td><td>1000</td></tr>
     <tr><td>2</td><td>EX-21.1</td><td><a href="ex21.htm">ex21.htm</a></td><td>EX-21.1</td><td>200</td></tr>
     <tr><td>3</td><td>GRAPHIC</td><td><a href="logo.png">logo.png</a></td><td>GRAPHIC</td><td>50</td></tr>
+    <tr><td>4</td><td>EX-101.CAL</td><td><a href="aapl-20230930_cal.xml">aapl-20230930_cal.xml</a></td><td>EX-101.CAL</td><td>5000</td></tr>
+    <tr><td>5</td><td>EX-101.PRE</td><td><a href="aapl-20230930_pre.xml">aapl-20230930_pre.xml</a></td><td>EX-101.PRE</td><td>8000</td></tr>
+    <tr><td>6</td><td>EX-101.SCH</td><td><a href="aapl-20230930.xsd">aapl-20230930.xsd</a></td><td>EX-101.SCH</td><td>12000</td></tr>
     </table>
     </body>
     </html>
@@ -226,6 +229,12 @@ def test_query_catalog_fast_documents_and_attachments(tmp_path: Path) -> None:
             return b"<html>Subsidiaries List</html>"
         if "logo.png" in url:
             return b"\x89PNG\r\n\x1a\n"
+        if "_cal.xml" in url:
+            return b"<calculationLinkbase/>"
+        if "_pre.xml" in url:
+            return b"<presentationLinkbase/>"
+        if ".xsd" in url:
+            return b"<schemaDefinition/>"
         if url.endswith(".txt"):
             return b"SGML SUBMISSION BUNDLE"
         if "custom.htm" in url:
@@ -253,13 +262,20 @@ def test_query_catalog_fast_documents_and_attachments(tmp_path: Path) -> None:
 
     # 2. Exhibits and graphics
     exhibits = filing.exhibits
-    assert len(exhibits) == 1
-    assert exhibits[0].document_type == "EX-21.1"
-    assert exhibits[0].raw() == b"<html>Subsidiaries List</html>"
-    assert exhibits[0].text() == "<html>Subsidiaries List</html>"
+    assert len(exhibits) == 4
+    ex21 = next(a for a in exhibits if a.document_type == "EX-21.1")
+    assert ex21.raw() == b"<html>Subsidiaries List</html>"
+    assert ex21.text() == "<html>Subsidiaries List</html>"
 
     graphics = filing.graphics
     assert len(graphics) == 1
     assert graphics[0].filename == "logo.png"
     assert graphics[0].raw() == b"\x89PNG\r\n\x1a\n"
     assert graphics[0].text() is None
+
+    # 3. XBRL linkbases
+    linkbases = filing.linkbases
+    assert len(linkbases) == 3
+    assert filing.open_linkbase("_cal.xml") == b"<calculationLinkbase/>"
+    assert filing.open_linkbase("_pre.xml") == b"<presentationLinkbase/>"
+    assert filing.open_linkbase(".xsd") == b"<schemaDefinition/>"

@@ -182,6 +182,39 @@ class FilingAggregate:
         """Return all graphic attachments."""
         return tuple(a for a in self.get_attachments() if a.is_graphic)
 
+    @property
+    def linkbases(self) -> tuple[FilingAttachment, ...]:
+        """Return all discovered XBRL linkbase, schema, and instance attachments."""
+        return tuple(
+            a
+            for a in self.get_attachments()
+            if a.document_type.upper().startswith("EX-101")
+            or a.filename.lower().endswith(
+                (
+                    "_cal.xml",
+                    "_pre.xml",
+                    "_def.xml",
+                    "_lab.xml",
+                    ".xsd",
+                    "_htm.xml",
+                    "-xbrl.zip",
+                    "_xbrl.zip",
+                )
+            )
+        )
+
+    def open_linkbase(self, suffix_or_type: str) -> bytes:
+        """Fetch and return bytes of a linkbase document by suffix or type."""
+        token = suffix_or_type.lower().strip()
+        for a in self.linkbases:
+            if token in a.filename.lower() or token in a.document_type.lower():
+                data = a.raw()
+                if data is not None:
+                    return data
+        raise FileNotFoundError(
+            f"linkbase {suffix_or_type!r} not found for {self.accession}"
+        )
+
     def open_document(self, filename: str) -> bytes:
         """Fetch and return bytes of an arbitrary document within the accession."""
         if self.document_opener is not None:
