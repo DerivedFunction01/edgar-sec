@@ -11,6 +11,10 @@ from typing import Any
 from edgar_sec.apps.client.cache import DocumentCache, get_default_cache
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
+from edgar_sec.domain.document_inventory.models import IndexPageInput, ParsedIndexPage
+from edgar_sec.domain.forms.common.aliases import resolve_alias
+from edgar_sec.domain.forms.common.processing import AcquisitionOperation
+from edgar_sec.domain.forms.families.processing_profiles import get_family_entry
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.domain.sec_urls import (
     accession_hyphenated,
@@ -19,9 +23,12 @@ from edgar_sec.domain.sec_urls import (
     index_url_for,
     submissions_url,
 )
+from edgar_sec.engine.forms.plugins.exhibit_selection import probe_exhibit_header
 from edgar_sec.engine.forms.render import render_filing
+from edgar_sec.engine.index_pages.parser import parse_html_index
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.storage.duckdb import connect
+from edgar_sec.pipelines.document_acquisition.index_selection import select_index_entry
 from edgar_sec.pipelines.filing_catalog.paths import (
     resolve_filing_catalog_paths,
     TARGETS_DIR,
@@ -54,6 +61,111 @@ def _resolve_primary_url(filing: FilingAggregate) -> str:
     return archives_url(filing.primary_cik.value, filing.accession.value, fname)
 
 
+def _is_suspected_inversion(
+    form: str, filename: str, content: bytes | None = None
+) -> bool:
+    """Check if a filename or opening bytes indicate an inverted exhibit."""
+    entry = get_family_entry(form)
+    if entry is None or not entry.profile.has_operation(
+        AcquisitionOperation.RENDER_TO_TXT
+    ):
+        return False
+    leaf = Path(filename).name.lower()
+    norm_leaf = leaf.replace("-", "").replace("_", "")
+    expected = (entry.family or "").lower().replace("-", "").replace("_", "")
+    if leaf.startswith(("ex", "exhibit")) and (
+        not expected or not norm_leaf.startswith(expected)
+    ):
+        return True
+    if content:
+        head = content[:2000]
+        if b"<TYPE>EX-" in head or b"<TYPE>GRAPHIC" in head:
+            return True
+        try:
+            head_text = head.decode("ascii", errors="ignore")
+            lines = tuple(head_text.splitlines()[:25])
+            if probe_exhibit_header(head_text, lines) is not None:
+                return True
+        except Exception:
+            pass
+    return False
+
+
+def _recover_inverted_primary(
+    filing: FilingAggregate,
+    cache: DocumentCache,
+    get_client: Callable[[], SecHttpClient],
+) -> bytes | None:
+    """Recover the true primary document via lazy index parsing on inversion."""
+    idx_name = f"{filing.accession.raw}-index.html"
+    idx_bytes = cache.get(filing.accession.raw, idx_name)
+    url = index_url_for(filing.accession, filing.primary_cik)
+    if idx_bytes is None:
+        client = get_client()
+        fetch_fn = getattr(client, "get_bytes", getattr(client, "get", None))
+        if fetch_fn is not None:
+            idx_bytes = fetch_fn(url)
+            if idx_bytes:
+                cache.put(
+                    accession=filing.accession.raw,
+                    cik=str(filing.primary_cik.value),
+                    form=filing.form,
+                    filename=idx_name,
+                    content=idx_bytes,
+                    content_type="text/html",
+                )
+    if not idx_bytes:
+        return None
+
+    parsed = parse_html_index(IndexPageInput(filing.accession, url, idx_bytes))
+    if not isinstance(parsed, ParsedIndexPage):
+        return None
+
+    selection = select_index_entry(
+        parsed,
+        accession=filing.accession,
+        expected_form=filing.form,
+        optional=False,
+    )
+    if selection.result != "selected" or not selection.entry:
+        return None
+
+    recovered_name = selection.entry.filename or ""
+    if not recovered_name:
+        return None
+
+    cached_rec = cache.get(filing.accession.raw, recovered_name)
+    if cached_rec is not None:
+        object.__setattr__(filing, "primary_document_path", recovered_name)
+        if selection.entry.archive_url:
+            object.__setattr__(
+                filing, "primary_document_url", selection.entry.archive_url
+            )
+        return cached_rec
+
+    fetch_url = selection.entry.archive_url or archives_url(
+        filing.primary_cik.value, filing.accession.raw, recovered_name
+    )
+    client = get_client()
+    fetch_fn = getattr(client, "get_bytes", getattr(client, "get", None))
+    if fetch_fn is None:
+        return None
+    rec_bytes = fetch_fn(fetch_url)
+    if rec_bytes is not None:
+        cache.put(
+            accession=filing.accession.raw,
+            cik=str(filing.primary_cik.value),
+            form=filing.form,
+            filename=recovered_name,
+            content=rec_bytes,
+            content_type=_detect_content_type(recovered_name),
+        )
+        object.__setattr__(filing, "primary_document_path", recovered_name)
+        object.__setattr__(filing, "primary_document_url", fetch_url)
+        return rec_bytes
+    return None
+
+
 def _make_document_fetcher(
     cache: DocumentCache,
     http_client_factory: Callable[[], SecHttpClient] | None = None,
@@ -72,8 +184,18 @@ def _make_document_fetcher(
     def _fetch(filing: FilingAggregate) -> bytes | None:
         filename = _resolve_primary_filename(filing)
         acc_str = filing.accession.value
+
+        if _is_suspected_inversion(filing.form, filename):
+            recovered = _recover_inverted_primary(filing, cache, _get_client)
+            if recovered is not None:
+                return recovered
+
         cached = cache.get(acc_str, filename)
         if cached is not None:
+            if _is_suspected_inversion(filing.form, filename, cached):
+                recovered = _recover_inverted_primary(filing, cache, _get_client)
+                if recovered is not None:
+                    return recovered
             return cached
 
         url = _resolve_primary_url(filing)
@@ -95,6 +217,10 @@ def _make_document_fetcher(
                 content=response_bytes,
                 content_type=c_type,
             )
+            if _is_suspected_inversion(filing.form, filename, response_bytes):
+                recovered = _recover_inverted_primary(filing, cache, _get_client)
+                if recovered is not None:
+                    return recovered
         return response_bytes
 
     return _fetch
@@ -184,19 +310,41 @@ def _make_attachment_loader(
 
             return _fetch_att
 
+        def _make_att_renderer(
+            entry_type: str, fname: str
+        ) -> Callable[[FilingAttachment], str | bytes | None]:
+            def _render_att(att: FilingAttachment) -> str | bytes | None:
+                raw_b = att.raw()
+                if raw_b is None:
+                    return None
+                if att.is_graphic:
+                    return raw_b
+                from edgar_sec.engine.forms.render import render_document
+
+                return render_document(
+                    raw_b,
+                    form=entry_type or att.document_type,
+                    filename=fname or att.filename,
+                    operation=AcquisitionOperation.RENDER_TO_TXT,
+                )
+
+            return _render_att
+
         attachments: list[FilingAttachment] = []
         for entry in outcome.entries:
             fname = entry.filename or ""
             a_url = entry.archive_url or ""
+            dtype = entry.document_type or ""
             attachments.append(
                 FilingAttachment(
                     attachment_id=str(entry.sequence or fname or ""),
-                    document_type=entry.document_type or "",
+                    document_type=dtype,
                     filename=fname,
                     url=a_url,
                     size=entry.byte_size,
                     description=entry.description,
                     fetcher=_make_att_fetcher(a_url, fname) if a_url else None,
+                    renderer=_make_att_renderer(dtype, fname),
                 )
             )
         return tuple(attachments)

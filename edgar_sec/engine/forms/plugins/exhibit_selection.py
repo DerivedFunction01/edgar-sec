@@ -23,9 +23,9 @@ if TYPE_CHECKING:
 # Precompiled Patterns (Module Load Time)
 # =============================================================================
 
-# Line-anchored exhibit designation pattern
+# Line-anchored exhibit designation pattern (permits leading whitespace/indentation)
 DESIGNATION_RE = re.compile(
-    r"(?m)^EXHIBIT\s+(\d+(?:\.\d+)*)|^EX-(\d+(?:\.\d+)*)",
+    r"(?m)^\s*(?:EXHIBIT\s+(\d+(?:\.\d+)*)|EX-(\d+(?:\.\d+)*))",
     re.IGNORECASE,
 )
 
