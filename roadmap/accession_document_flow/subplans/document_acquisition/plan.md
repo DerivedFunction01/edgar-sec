@@ -728,7 +728,20 @@ queryable acquisition snapshots without changing S5 or S6.
 
 ## 4. Execution order and delegation
 
-| Order | Workstream | Dependencies | Primary deliverables |
+### Next goal set: M6 and M9 development
+
+M6 and M9 are the next active development goals. Start them from the existing offline
+contracts and fixture path; neither waits for M8b's labeled holdout or a new live SEC
+fetch. M6 completes the S10 route/handler contracts and offline coverage, keeping
+production budgets empty until route-specific evidence supports them. M9 advances the
+publisher, schema, query, recovery, and cleanup contracts against disposable runs; do not
+enable durable production writes until its separate S11 approval and evidence gates pass.
+These tracks may proceed in parallel from M7a. M8b remains a later, evidence-driven
+activation decision, not a prerequisite for either development goal.
+
+The table below records dependency order, not the current work priority:
+
+| Dependency order | Workstream | Dependencies | Primary deliverables |
 |---:|---|---|---|
 | 0 | M0 interface freeze | Existing contracts | Broker staging/RPC and parser seams pinned |
 | 1 | M1 shared S9 types/paths | M0 | Stable schemas, paths, settings, models |

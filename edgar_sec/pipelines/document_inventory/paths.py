@@ -12,6 +12,8 @@ import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.foundation.runtime.paths import (
     MANIFEST_FILE,
     POINTER_FILE,
+    PUBLICATION_LOCK_FILE,
+    RUN_LOCK_FILE,
     RUN_MANIFEST_FILE,
     part_file_name,
 )
@@ -44,7 +46,6 @@ __all__ = [
     "ENTRIES_FILE",
     "InventoryPaths",
     "InventoryRunPaths",
-    "LOCK_FILE",
     "MANIFEST_FILE",
     "OUTCOMES_FILE",
     "POINTER_FILE",
@@ -64,7 +65,6 @@ __all__ = [
     "PLAN_TARGETS_DIR",
     "REQUIRED_PLAN_FILES",
     "SEED_FILERS_FILE",
-    "PUBLICATION_LOCK_FILE",
     "NEW_SOURCES_FILE",
     "RUN_MANIFEST_FILE",
     "WORK_ORDER_FILE",
@@ -87,9 +87,7 @@ OUTCOMES_FILE = "outcomes.parquet"
 ENTRIES_FILE = "entries.parquet"
 
 #: Files at the run root.
-LOCK_FILE = "run.lock"
 CANCELLED_FILE = "cancelled.json"
-PUBLICATION_LOCK_FILE = foundation_paths.PUBLICATION_LOCK_FILE
 
 #: Pointer naming the current committed attempt for a chunk.
 PROGRESS_DIR = "progress"
@@ -223,7 +221,7 @@ class InventoryRunPaths:
         return self.run_root / RUN_MANIFEST_FILE
 
     def lock_path(self) -> Path:
-        return self.run_root / LOCK_FILE
+        return self.run_root / RUN_LOCK_FILE
 
     def cancelled_path(self) -> Path:
         return self.run_root / CANCELLED_FILE

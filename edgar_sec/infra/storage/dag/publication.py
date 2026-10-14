@@ -11,7 +11,7 @@ from types import TracebackType
 from typing import Any, Self
 
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.dag.paths import PUBLICATION_LOCK_FILE
+from edgar_sec.foundation.runtime.paths import PUBLICATION_LOCK_FILE
 from .manifest import DAGNodeManifest
 
 

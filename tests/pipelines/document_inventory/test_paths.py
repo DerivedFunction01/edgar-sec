@@ -17,7 +17,6 @@ from edgar_sec.infra.storage.review.paths import REVIEW_RUNS_DIR
 from edgar_sec.pipelines.document_inventory.paths import (
     CHUNKS_DIR,
     DATASET,
-    LOCK_FILE,
     OUTCOMES_FILE,
     PUBLICATION_DIR,
     RUN_MANIFEST_FILE,
@@ -46,7 +45,7 @@ def test_snapshots_root_stays_out_of_transient(tmp_path: Path) -> None:
 def test_run_manifest_lock_and_publication_paths(tmp_path: Path) -> None:
     paths = inventory_run_paths(tmp_path, "run-1")
     assert paths.run_manifest_path() == paths.run_root / RUN_MANIFEST_FILE
-    assert paths.lock_path() == paths.run_root / LOCK_FILE
+    assert paths.lock_path() == paths.run_root / foundation_paths.RUN_LOCK_FILE
     assert paths.publication_dir() == paths.run_root / PUBLICATION_DIR
 
 

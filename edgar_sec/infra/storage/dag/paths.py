@@ -9,14 +9,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from edgar_sec.foundation.runtime.paths import part_file_name
+from edgar_sec.foundation.runtime.paths import PUBLICATION_LOCK_FILE, part_file_name
 
 CATALOG_DB_NAME = "catalog.sqlite"
 BRANCHES_DIR_NAME = "branches"
 TAGS_DIR_NAME = "tags"
 STAGING_PREFIX = ".stage-"
 PART_SUFFIX = ".parquet"
-PUBLICATION_LOCK_FILE = ".publication.lock"
 
 
 @dataclass(frozen=True, slots=True)
