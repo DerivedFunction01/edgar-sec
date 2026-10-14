@@ -40,7 +40,7 @@ into an immutable accession-document target plan for later acquisition.
 <!-- AUTOGEN:COMMANDS:START -->
 | Subcommand | Description | Arguments |
 | :--- | :--- | :--- |
-| `compare` | compare immutable target plans or profile rules | `--base-plan-id` + `--new-plan-id` or `--base-profile-id` + `--new-profile-id`, `[--output]`, `[--output-id]`, `[--artifacts]`, `[--json]` |
+| `compare` | compare immutable target plans or profile rules | `[--base-plan-id]`, `[--new-plan-id]`, `[--base-profile-id]`, `[--new-profile-id]`, `[--output]`, `[--output-id]`, `[--artifacts]`, `[--json]` |
 | `inspect` | validate and inspect a plan | `--plan-id`, `[--artifacts]`, `[--json]` |
 | `plan` | publish a deterministic target plan | `--catalog-plan`, `[--inventory]`, `[--profile-id]`, `[--auto-primary-profile]`, `[--artifacts]`, `[--json]` |
 | `status` | list profiles and published plans | `[--artifacts]`, `[--json]` |
@@ -71,8 +71,9 @@ python run.py planning compare --base-plan-id plan-before --new-plan-id plan-aft
     ├── plans/
     │   └── {plan_id}/
     │       └── plan.json
-    └── profiles/
-        └── {profile_id}.json
+    ├── profiles/
+    │   └── {profile_id}.json
+    └── review-runs/
 ```
 <!-- AUTOGEN:PATHS:END -->
 

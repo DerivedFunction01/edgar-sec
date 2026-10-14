@@ -58,7 +58,7 @@ lazy-index response retention is opt-in through `--retain-response-evidence`.
 | :--- | :--- | :--- |
 | `fixture` | manage S9 response fixtures | — |
 | `project` | project a published S6 target plan | `--plan-id`, `[--artifacts]`, `[--json]` |
-| `publish` | publish an approved S11 snapshot | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--artifacts]`, `[--json]` |
+| `publish` | publish an approved S11 snapshot | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--allow-errors]`, `[--artifacts]`, `[--json]` |
 | `review` | generate, label, and evaluate offline review runs | — |
 | `run` | acquire pending S9 target bodies | `--run-id`, `[--retry-failures]`, `[--retain-response-evidence]`, `[--workers]`, `[--max-response-bytes]`, `[--confirm-stale-lock]`, `[--artifacts]`, `[--json]` |
 | `snapshot` | inspect S11 snapshot status | — |
@@ -93,7 +93,9 @@ python run.py acquisition review holdout --run ./review-runs/run-NEW --spec ./ho
 │   │       └── manifest.json
 │   ├── review-runs/
 │   └── snapshots/
-│       └── {snapshot_id}/
+│       ├── {snapshot_id}/
+│       ├── .publication.lock
+│       └── catalog.sqlite
 ├── document_planning/
 │   └── plans/
 │       └── {plan_id}/
@@ -108,6 +110,7 @@ python run.py acquisition review holdout --run ./review-runs/run-NEW --spec ./ho
             ├── staging/
             ├── work_order/
             ├── cancelled.json
+            ├── publication_receipt.json
             ├── run.lock
             ├── run_manifest.json
             └── state.sqlite

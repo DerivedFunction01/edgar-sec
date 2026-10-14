@@ -1,0 +1,137 @@
+[
+  {
+    "head_id": "H_REVENUE",
+    "head_symbol": "REVENUE",
+    "economic_class": "FLOW_INFLOW",
+    "statement_type": "IncomeStatement",
+    "normal_balance": "CREDIT",
+    "is_dual_role_primitive": 0,
+    "description": "Gross or net top-line economic inflow from goods, services, leases, or premiums"
+  },
+  {
+    "head_id": "H_COST",
+    "head_symbol": "COST",
+    "economic_class": "FLOW_DIRECT_COST",
+    "statement_type": "IncomeStatement",
+    "normal_balance": "DEBIT",
+    "is_dual_role_primitive": 0,
+    "description": "Direct cost of goods/services sold or capitalized acquisition cost"
+  },
+  {
+    "head_id": "H_EXPENSE",
+    "head_symbol": "EXPENSE",
+    "economic_class": "FLOW_OUTFLOW",
+    "statement_type": "IncomeStatement",
+    "normal_balance": "DEBIT",
+    "is_dual_role_primitive": 0,
+    "description": "Operating or non-operating period expense outflow (R&D, SG&A, D&A, Tax, Interest)"
+  },
+  {
+    "head_id": "H_GAIN_LOSS",
+    "head_symbol": "GAIN_LOSS",
+    "economic_class": "FLOW_DUAL_PRIMITIVE",
+    "statement_type": "IncomeStatement_Or_OCI",
+    "normal_balance": "SIGNED_DELTA",
+    "is_dual_role_primitive": 1,
+    "description": "Dual-role primitive & component: Realized/Unrealized/Reclassified gain or loss"
+  },
+  {
+    "head_id": "H_NET_INCOME",
+    "head_symbol": "NET_INCOME",
+    "economic_class": "FLOW_BOTTOM_LINE",
+    "statement_type": "IncomeStatement",
+    "normal_balance": "CREDIT",
+    "is_dual_role_primitive": 0,
+    "description": "Bottom-line or intermediate profit subtotal (GrossProfit, OperatingIncome, NetIncome)"
+  },
+  {
+    "head_id": "H_OCI_FLOW",
+    "head_symbol": "OCI_FLOW",
+    "economic_class": "FLOW_DUAL_PRIMITIVE",
+    "statement_type": "ComprehensiveIncome",
+    "normal_balance": "SIGNED_DELTA",
+    "is_dual_role_primitive": 1,
+    "description": "Dual-role primitive & component: Period other comprehensive income flow (unrealized FX, AFS, hedges)"
+  },
+  {
+    "head_id": "H_AOCI_STOCK",
+    "head_symbol": "AOCI_STOCK",
+    "economic_class": "STOCK_DUAL_PRIMITIVE",
+    "statement_type": "BalanceSheet",
+    "normal_balance": "SIGNED_DELTA",
+    "is_dual_role_primitive": 1,
+    "description": "Dual-role primitive & component: Cumulative unrealized OCI reserve inside StockholdersEquity"
+  },
+  {
+    "head_id": "H_CASH",
+    "head_symbol": "CASH",
+    "economic_class": "FLOW_OR_STOCK_LIQUIDITY",
+    "statement_type": "CashFlow_Or_BalanceSheet",
+    "normal_balance": "DEBIT",
+    "is_dual_role_primitive": 0,
+    "description": "Cash and cash equivalents anchor or cash flow statement movement"
+  },
+  {
+    "head_id": "H_ASSET",
+    "head_symbol": "ASSET",
+    "economic_class": "STOCK_RESOURCE",
+    "statement_type": "BalanceSheet",
+    "normal_balance": "DEBIT",
+    "is_dual_role_primitive": 0,
+    "description": "Present economic resource controlled by the entity (Receivables, Inventory, PP&E, Goodwill, Intangibles)"
+  },
+  {
+    "head_id": "H_LIABILITY",
+    "head_symbol": "LIABILITY",
+    "economic_class": "STOCK_OBLIGATION",
+    "statement_type": "BalanceSheet",
+    "normal_balance": "CREDIT",
+    "is_dual_role_primitive": 0,
+    "description": "Present economic obligation (Payables, Unearned Revenue, Debt, Lease Liabilities, ARO, Loss Reserves)"
+  },
+  {
+    "head_id": "H_EQUITY",
+    "head_symbol": "EQUITY",
+    "economic_class": "STOCK_RESIDUAL_CLAIM",
+    "statement_type": "BalanceSheet",
+    "normal_balance": "CREDIT",
+    "is_dual_role_primitive": 0,
+    "description": "Residual claim on assets after deducting liabilities (CommonStock, RetainedEarnings, StockholdersEquity)"
+  },
+  {
+    "head_id": "H_CONTRA",
+    "head_symbol": "CONTRA",
+    "economic_class": "VALUATION_OFFSET",
+    "statement_type": "BalanceSheet_Or_Income",
+    "normal_balance": "CONTRA",
+    "is_dual_role_primitive": 0,
+    "description": "Valuation allowance, accumulated depreciation/amortization, or treasury stock offset"
+  },
+  {
+    "head_id": "H_COMMITMENT",
+    "head_symbol": "COMMITMENT",
+    "economic_class": "STOCK_BACKLOG_MEMO",
+    "statement_type": "FootnoteDisclosure",
+    "normal_balance": "CREDIT",
+    "is_dual_role_primitive": 0,
+    "description": "Contracted revenue backlog (RPO) or uncommenced lease/purchase commitment"
+  },
+  {
+    "head_id": "H_SHARE_UNIT",
+    "head_symbol": "SHARE_UNIT",
+    "economic_class": "DENOMINATION_COUNT",
+    "statement_type": "Income_Or_Cover",
+    "normal_balance": "NONE",
+    "is_dual_role_primitive": 0,
+    "description": "Common share count (basic, diluted, issued, outstanding) or per-share denominator"
+  },
+  {
+    "head_id": "H_METRIC_RATIO",
+    "head_symbol": "METRIC_RATIO",
+    "economic_class": "NON_GAAP_OR_KPI",
+    "statement_type": "FootnoteDisclosure",
+    "normal_balance": "NONE",
+    "is_dual_role_primitive": 0,
+    "description": "Operational count, headcount, union share, or non-GAAP/ratio metric"
+  }
+]

@@ -27,6 +27,7 @@ own the domain vocabulary or schemas it consumes (that is `edgar_sec/domain`).
 - **company_family/**: name normalization, universe-scale family assignment, and bounded cohort sampling
 - **submissions/**: submission unrolling, profiling, building
 - **index_pages/**: pure SEC filing index-page HTML parser
+- **xbrl/**: taxonomy linkbase discovery, classification, and Parquet storage
 
 Each package's README carries its deliberate gaps.
 
