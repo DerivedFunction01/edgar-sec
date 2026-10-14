@@ -94,5 +94,13 @@ class Edgar:
         runner = PipelineRunner(options)
         return runner.run(spec)
 
+    def company(self, identifier: str | int | Cik) -> Company:
+        """Resolve an entity by ticker or CIK and return a Company model."""
+        from edgar_sec.apps.client.entity import Company
+        from edgar_sec.apps.client.resolver import resolve_entity_profile
+
+        profile = resolve_entity_profile(identifier, self.artifacts_root)
+        return Company(profile=profile)
+
 
 __all__ = ["Edgar"]

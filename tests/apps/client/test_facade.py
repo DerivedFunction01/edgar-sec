@@ -95,3 +95,11 @@ def test_filings_result_dataframe_and_index_access(tmp_path) -> None:
     first_filing = res[0]
     assert first_filing.form in {"4", "10-K"}
     assert first_filing.run_id == "run-1"
+
+
+def test_edgar_company_resolves_profile() -> None:
+    edgar = Edgar()
+    company = edgar.company("0000001750")
+    assert company.cik.value == 1750
+    assert company.name == "AAR CORP"
+    assert "AIR" in company.tickers

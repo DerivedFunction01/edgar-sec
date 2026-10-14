@@ -27,6 +27,7 @@ class FilingsResult:
     target_parquet_glob: str
     run_state_sqlite_path: Path
     artifacts_root: Path
+    snapshot_id: str | None = None
 
     def sql(self, query: str, **params: Any) -> duckdb.DuckDBPyRelation:
         """Run arbitrary SQL across filings, cofilers, and targets."""

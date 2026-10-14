@@ -46,7 +46,7 @@ def test_pipeline_runner_resolves_profile_id() -> None:
     exhibit_spec = TargetSpec(role="EX-21")
 
     assert runner._resolve_profile_id(primary_spec) == "primary-only"
-    assert runner._resolve_profile_id(exhibit_spec) == "EX-21"
+    assert runner._resolve_profile_id(exhibit_spec) == "exhibit-ex-21"
 
 
 def test_pipeline_runner_raises_when_no_catalog_discovered(tmp_path) -> None:

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from edgar_sec.domain.identity import AccessionNumber, Cik
 
@@ -43,6 +43,7 @@ class FilingAggregate:
     attachments: tuple[FilingAttachment, ...] = ()
     run_id: str | None = None
     plan_id: str | None = None
+    xbrl: Any | None = None
 
     @property
     def is_joint_filing(self) -> bool:
