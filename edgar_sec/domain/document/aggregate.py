@@ -27,6 +27,7 @@ class FilingAttachment:
     description: str | None = None
     storage_path: Path | None = None
     fetcher: Callable[[FilingAttachment], bytes | None] | None = None
+    renderer: Callable[[FilingAttachment], str | bytes | None] | None = None
 
     @property
     def is_graphic(self) -> bool:
@@ -55,6 +56,14 @@ class FilingAttachment:
         if data is not None:
             return data.decode("utf-8", errors="replace")
         return None
+
+    def render(self) -> str | bytes | None:
+        """Render attachment through configured renderer or fallback to text/raw."""
+        if self.renderer is not None:
+            return self.renderer(self)
+        if self.is_graphic:
+            return self.raw()
+        return self.text()
 
     def save(self, destination: Path | str) -> Path:
         """Save attachment bytes to destination path."""
