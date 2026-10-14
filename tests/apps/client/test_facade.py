@@ -265,7 +265,7 @@ def test_edgar_facade_fetches_and_opens_linkbases(tmp_path: Path) -> None:
     cal_bytes = filing.open_linkbase("_cal.xml")
     assert b"calculationLink" in cal_bytes
 
-    from edgar_sec.engine.xbrl.linkbase_parser import parse_calculation_linkbase
+    from edgar_sec.engine.xbrl.parsing.linkbase_parser import parse_calculation_linkbase
 
     cal_arcs = parse_calculation_linkbase(cal_bytes)
     assert len(cal_arcs) == 4

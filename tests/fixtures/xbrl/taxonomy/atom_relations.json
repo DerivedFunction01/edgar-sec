@@ -544,5 +544,131 @@
     },
     "operator": "DIV",
     "description": "R&D intensity derived as R&D Expense / Revenues"
+  },
+  {
+    "edge_id": "R_PART_DERIV_NET_ASSET_GROSS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE_HEDGE"
+      ]
+    },
+    "source_concept": "DerivativeAssetsGross",
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE_HEDGE"
+      ]
+    },
+    "target_concept": "DerivativeAssetsNet",
+    "formula_id": "FORMULA_DERIVATIVE_NET_ASSET",
+    "description": "Gross derivative assets contribute +1.0 to Net Derivative Assets"
+  },
+  {
+    "edge_id": "R_PART_DERIV_NET_ASSET_NETTING",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_MASTER_NETTING_OFFSET"
+      ]
+    },
+    "source_concept": "DerivativeAssetFairValueOffsetAgainstNetting",
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE_HEDGE"
+      ]
+    },
+    "target_concept": "DerivativeAssetsNet",
+    "formula_id": "FORMULA_DERIVATIVE_NET_ASSET",
+    "description": "Master netting offsets subtract -1.0 from Net Derivative Assets"
+  },
+  {
+    "edge_id": "R_PART_DERIV_NET_ASSET_COLLATERAL",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_COLLATERAL_OFFSET"
+      ]
+    },
+    "source_concept": "DerivativeAssetFairValueOffsetAgainstCollateral",
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE_HEDGE"
+      ]
+    },
+    "target_concept": "DerivativeAssetsNet",
+    "formula_id": "FORMULA_DERIVATIVE_NET_ASSET",
+    "description": "Cash collateral offsets subtract -1.0 from Net Derivative Assets"
+  },
+  {
+    "edge_id": "R_PART_DERIV_NET_LIAB_GROSS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE_HEDGE"
+      ]
+    },
+    "source_concept": "DerivativeLiabilitiesGross",
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE_HEDGE"
+      ]
+    },
+    "target_concept": "DerivativeLiabilitiesNet",
+    "formula_id": "FORMULA_DERIVATIVE_NET_LIABILITY",
+    "description": "Gross derivative liabilities contribute +1.0 to Net Derivative Liabilities"
+  },
+  {
+    "edge_id": "R_PART_DERIV_NET_LIAB_NETTING",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_MASTER_NETTING_OFFSET"
+      ]
+    },
+    "source_concept": "DerivativeLiabilityFairValueOffsetAgainstNetting",
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE_HEDGE"
+      ]
+    },
+    "target_concept": "DerivativeLiabilitiesNet",
+    "formula_id": "FORMULA_DERIVATIVE_NET_LIABILITY",
+    "description": "Master netting offsets subtract -1.0 from Net Derivative Liabilities"
+  },
+  {
+    "edge_id": "R_PART_DERIV_NET_LIAB_COLLATERAL",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_COLLATERAL_OFFSET"
+      ]
+    },
+    "source_concept": "DerivativeLiabilityFairValueOffsetAgainstCollateral",
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE_HEDGE"
+      ]
+    },
+    "target_concept": "DerivativeLiabilitiesNet",
+    "formula_id": "FORMULA_DERIVATIVE_NET_LIABILITY",
+    "description": "Cash collateral offsets subtract -1.0 from Net Derivative Liabilities"
   }
 ]

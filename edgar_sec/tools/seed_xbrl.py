@@ -8,17 +8,17 @@ import sys
 
 from edgar_sec.domain.document_inventory.models import IndexPageInput, ParsedIndexPage
 from edgar_sec.engine.index_pages.parser import parse_html_index
-from edgar_sec.engine.xbrl.cohort import (
+from edgar_sec.engine.xbrl.discovery.cohort import (
     SeedFiling,
     load_seed_cohort,
 )
-from edgar_sec.engine.xbrl.discovery import (
+from edgar_sec.engine.xbrl.discovery.discovery import (
     DiscoveredLinkbase,
     extract_filing_linkbases,
 )
-from edgar_sec.engine.xbrl.fetcher import fetch_cohort_linkbases
+from edgar_sec.engine.xbrl.discovery.fetcher import fetch_cohort_linkbases
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
-from edgar_sec.engine.xbrl.storage import write_linkbase_parquet
+from edgar_sec.engine.xbrl.storage.storage import write_linkbase_parquet
 from edgar_sec.foundation.runtime.env import get_env
 from edgar_sec.infra.sec_http.client import SecHttpClient
 

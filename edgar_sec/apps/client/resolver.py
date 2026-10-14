@@ -62,7 +62,7 @@ def _resolve_ticker_to_cik(
             pass
 
     try:
-        from edgar_sec.engine.xbrl.domain import load_domain_taxonomy
+        from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 
         tax = load_domain_taxonomy()
         ind = tax.find_industry(ticker)

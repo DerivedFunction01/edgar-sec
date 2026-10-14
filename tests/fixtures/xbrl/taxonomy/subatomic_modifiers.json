@@ -367,5 +367,113 @@
     ],
     "valuation_basis": "FAIR_VALUE",
     "description": "Fair value measurement basis (ASC 820)"
+  },
+  {
+    "modifier_id": "M_SWAP",
+    "category": "INSTRUMENT_DERIVATIVE",
+    "keywords": [
+      "Swap",
+      "Swaps",
+      "InterestRateSwap",
+      "BasisSwap",
+      "CurrencySwap"
+    ],
+    "description": "Derivative swap contracts"
+  },
+  {
+    "modifier_id": "M_OPTION",
+    "category": "INSTRUMENT_DERIVATIVE",
+    "keywords": [
+      "Option",
+      "Options",
+      "CallOption",
+      "PutOption",
+      "Swaption",
+      "Cap",
+      "Floor",
+      "Collar"
+    ],
+    "description": "Derivative option contracts"
+  },
+  {
+    "modifier_id": "M_FORWARD",
+    "category": "INSTRUMENT_DERIVATIVE",
+    "keywords": [
+      "Forward",
+      "Forwards",
+      "ForwardContract",
+      "FXForward"
+    ],
+    "description": "Derivative forward contracts"
+  },
+  {
+    "modifier_id": "M_FUTURES",
+    "category": "INSTRUMENT_DERIVATIVE",
+    "keywords": [
+      "Futures",
+      "FuturesContract",
+      "CommodityFutures",
+      "IndexFutures"
+    ],
+    "description": "Exchange-traded derivative futures contracts"
+  },
+  {
+    "modifier_id": "M_FAIR_VALUE_HEDGE",
+    "category": "HEDGE_DESIGNATION",
+    "keywords": [
+      "FairValueHedge",
+      "FairValueHedging"
+    ],
+    "description": "Fair value hedge accounting designation (ASC 815-20)"
+  },
+  {
+    "modifier_id": "M_CASH_FLOW_HEDGE",
+    "category": "HEDGE_DESIGNATION",
+    "keywords": [
+      "CashFlowHedge",
+      "CashFlowHedging"
+    ],
+    "description": "Cash flow hedge accounting designation (ASC 815-30)"
+  },
+  {
+    "modifier_id": "M_NET_INVESTMENT_HEDGE",
+    "category": "HEDGE_DESIGNATION",
+    "keywords": [
+      "NetInvestmentHedge",
+      "NetInvestmentHedging"
+    ],
+    "description": "Net investment hedge accounting designation (ASC 815-35)"
+  },
+  {
+    "modifier_id": "M_UNDESIGNATED_ECONOMIC",
+    "category": "HEDGE_DESIGNATION",
+    "keywords": [
+      "Undesignated",
+      "EconomicHedge",
+      "NotDesignatedAsHedging"
+    ],
+    "description": "Undesignated or economic hedging derivatives"
+  },
+  {
+    "modifier_id": "M_COLLATERAL_OFFSET",
+    "category": "NETTING_OFFSET",
+    "keywords": [
+      "CollateralOffset",
+      "CashCollateralReceived",
+      "CashCollateralPosted",
+      "MarginOffset"
+    ],
+    "description": "Cash collateral offset against derivative positions (ASC 210-20)"
+  },
+  {
+    "modifier_id": "M_MASTER_NETTING_OFFSET",
+    "category": "NETTING_OFFSET",
+    "keywords": [
+      "MasterNettingOffset",
+      "BilateralNetting",
+      "ISDANetting",
+      "CounterpartyNetting"
+    ],
+    "description": "Master netting agreement offsets under ISDA"
   }
 ]

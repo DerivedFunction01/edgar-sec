@@ -1,0 +1,1 @@
+"""XBRL normalize subpackage."""

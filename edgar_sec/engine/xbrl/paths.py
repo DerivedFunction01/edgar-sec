@@ -27,6 +27,15 @@ DEFAULT_MEMBER_ROLES_FILE = "member_roles.json"
 DEFAULT_INSTRUMENTS_DAG_FILE = "instruments_dag.json"
 DEFAULT_VALUATION_RULES_FILE = "valuation_rules.json"
 DEFAULT_SUBSPACE_INVARIANTS_FILE = "subspace_invariants.json"
+REVIEW_RUNS_DIR = "review-runs"
+STAGING_LAKE_DIR = "staging_lake"
+DEFAULT_SP100_COHORT_FILE = "sp100_cohort.json"
+UNIFICATION_RULES_DB_FILE = "unification_rules.duckdb"
+SOLVED_NODES_FILE = "solved_nodes.parquet"
+EPISTEMIC_QUARANTINE_FILE = "epistemic_quarantine.parquet"
+DEFAULT_BENCHMARK_REPORT_FILE = "benchmark_report.json"
+
+from edgar_sec.infra.storage.review.paths import ReviewPaths
 
 
 @dataclass(frozen=True, slots=True)
@@ -150,6 +159,35 @@ class XbrlPaths:
         """Default path to multidimensional subspace routing invariants file."""
         return self.default_taxonomy_dir / DEFAULT_SUBSPACE_INVARIANTS_FILE
 
+    @property
+    def review_runs_dir(self) -> Path:
+        """Directory housing diagnostic review runs."""
+        return self.xbrl_root / REVIEW_RUNS_DIR
+
+    @property
+    def staging_lake_dir(self) -> Path:
+        """Directory housing out-of-core staging Parquet tables."""
+        return self.xbrl_root / STAGING_LAKE_DIR
+
+    @property
+    def unification_rules_db_path(self) -> Path:
+        """Path to canonical DuckDB unification rules database."""
+        return self.xbrl_root / UNIFICATION_RULES_DB_FILE
+
+    @property
+    def default_sp100_cohort_path(self) -> Path:
+        """Default path to the S&P 100 cohort input JSON."""
+        return self.default_taxonomy_dir / DEFAULT_SP100_COHORT_FILE
+
+    @property
+    def default_benchmark_report_path(self) -> Path:
+        """Default path to output benchmark report JSON."""
+        return self.xbrl_root / DEFAULT_BENCHMARK_REPORT_FILE
+
+    def review_run_paths(self, run_id: str) -> ReviewPaths:
+        """Return standardized review path resolver for a specific run ID."""
+        return ReviewPaths(root=self.review_runs_dir / run_id)
+
     def linkbase_parquet_path(self, cohort_id: str = "seed") -> Path:
         """Return the Parquet path for a named cohort's linkbases."""
         return self.linkbases_dir / f"{cohort_id}_{DEFAULT_LINKBASES_FILE}"
@@ -158,6 +196,8 @@ class XbrlPaths:
         """Create artifact directories if they do not exist."""
         self.linkbases_dir.mkdir(parents=True, exist_ok=True)
         self.xml_cache_dir.mkdir(parents=True, exist_ok=True)
+        self.review_runs_dir.mkdir(parents=True, exist_ok=True)
+        self.staging_lake_dir.mkdir(parents=True, exist_ok=True)
 
 
 def resolve_xbrl_paths(

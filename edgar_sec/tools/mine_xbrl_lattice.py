@@ -7,18 +7,18 @@ from collections.abc import Sequence
 from pathlib import Path
 import sys
 
-from edgar_sec.engine.xbrl.cohort import (
+from edgar_sec.engine.xbrl.discovery.cohort import (
     SeedFiling,
     load_seed_cohort,
 )
-from edgar_sec.engine.xbrl.duality import split_concept_tokens
-from edgar_sec.engine.xbrl.linkbase_parser import parse_calculation_linkbase
-from edgar_sec.engine.xbrl.mining import (
+from edgar_sec.engine.xbrl.normalize.duality import split_concept_tokens
+from edgar_sec.engine.xbrl.parsing.linkbase_parser import parse_calculation_linkbase
+from edgar_sec.engine.xbrl.evidence.mining import (
     ArcPolarityResolver,
     CollocationMiner,
     SupportCounter,
 )
-from edgar_sec.engine.xbrl.models import CalculationArc
+from edgar_sec.engine.xbrl.schema.models import CalculationArc
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.infra.storage.atomic import atomic_write_json
 

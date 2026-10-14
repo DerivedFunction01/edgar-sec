@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from edgar_sec.engine.xbrl.storage import read_linkbase_parquet
+from edgar_sec.engine.xbrl.storage.storage import read_linkbase_parquet
 from edgar_sec.tools.seed_xbrl import main
 from tests.support import fixture_path
 

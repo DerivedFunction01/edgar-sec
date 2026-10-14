@@ -12,7 +12,7 @@ from edgar_sec.domain.submissions.models import Address, EntityProfile
 if TYPE_CHECKING:
     from edgar_sec.apps.client.facade import Edgar
     from edgar_sec.apps.client.models import FilingsResult
-    from edgar_sec.engine.xbrl.models import FilingXbrl
+    from edgar_sec.engine.xbrl.schema.models import FilingXbrl
 
 
 @dataclass(frozen=True, slots=True)

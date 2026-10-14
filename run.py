@@ -72,6 +72,12 @@ ENTRIES: tuple[LauncherEntry, ...] = (
         description="Interactive DAG lineage, swimlane graphs, tags, branches, and maintenance",
         module="edgar_sec.infra.storage.dag.operator",
     ),
+    LauncherEntry(
+        id="xbrl",
+        label="XBRL Semantic Engine",
+        description="XBRL solver, counter-solver, and review & staging engine",
+        module="edgar_sec.engine.xbrl.review.cli",
+    ),
 )
 
 
