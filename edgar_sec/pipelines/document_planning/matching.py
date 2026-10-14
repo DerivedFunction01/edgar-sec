@@ -130,7 +130,7 @@ def _catalog_has_placeholder_primary(accession: CatalogScopeAccession) -> bool:
 def _catalog_primary_urls(
     accession: CatalogScopeAccession, canonical_accession: str
 ) -> tuple[str, ...]:
-    candidates: set[str] = set()
+    candidates_by_path: dict[str, set[str]] = {}
     for occurrence in accession.occurrences:
         primary = (occurrence.primary_document or "").strip()
         document = (occurrence.document_path or "").strip()
@@ -167,12 +167,15 @@ def _catalog_primary_urls(
                 canonical_accession,
                 expected_archive_cik=occurrence.source_cik,
             )
-        candidates.add(safe)
-    if len(candidates) > 1:
+        candidates_by_path.setdefault(expected_path.casefold(), set()).add(safe)
+    if len(candidates_by_path) > 1:
         raise TargetMatchingError(
             f"conflicting catalog primary paths for {canonical_accession}"
         )
-    return tuple(sorted(candidates))
+    if not candidates_by_path:
+        return ()
+    urls = next(iter(candidates_by_path.values()))
+    return (sorted(urls)[0],)
 
 
 def inventory_rows(

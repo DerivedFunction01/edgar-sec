@@ -137,6 +137,43 @@ def test_catalog_primary_fallback_uses_source_cik() -> None:
     )
 
 
+def test_catalog_primary_cofilres_sharing_same_path_reconciles_to_single_url() -> None:
+    target = ProfileTarget("primary", "primary", False, "primary:primary")
+    scope = CatalogScopeAccession(
+        "000000000124000001",
+        "3",
+        "2024-01-02",
+        (
+            _occurrence(None, source_cik="20", primary_document="doc.xml"),
+            _occurrence(None, source_cik="10", primary_document="doc.xml"),
+        ),
+    )
+
+    rows = catalog_only_rows("plan-1", scope, (target,))
+
+    assert len(rows) == 1
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["target_url"] == (
+        "https://www.sec.gov/Archives/edgar/data/10/000000000124000001/doc.xml"
+    )
+
+
+def test_catalog_primary_cofilres_conflicting_paths_raises_matching_error() -> None:
+    target = ProfileTarget("primary", "primary", False, "primary:primary")
+    scope = CatalogScopeAccession(
+        "000000000124000001",
+        "3",
+        "2024-01-02",
+        (
+            _occurrence(None, source_cik="10", primary_document="doc1.xml"),
+            _occurrence(None, source_cik="20", primary_document="doc2.xml"),
+        ),
+    )
+
+    with pytest.raises(TargetMatchingError, match="conflicting catalog primary paths"):
+        catalog_only_rows("plan-1", scope, (target,))
+
+
 @pytest.mark.parametrize(
     "filename",
     ["0001.txt", "0002.txt", "0004.pdf", "0007.htm", "0026.htm"],
