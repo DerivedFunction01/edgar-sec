@@ -123,15 +123,27 @@ def _make_attachment_loader(
         return client_holder[0]
 
     def _load(filing: FilingAggregate) -> tuple[FilingAttachment, ...]:
+        fname = f"{filing.accession.raw}-index.html"
+        html_bytes = doc_cache.get(filing.accession.raw, fname)
         url = index_url_for(filing.accession, filing.primary_cik)
-        client = _get_client()
-        fetch_fn = getattr(client, "get_bytes", getattr(client, "get", None))
-        if fetch_fn is None:
-            return ()
-        try:
-            html_bytes = fetch_fn(url)
-        except Exception:
-            return ()
+        if html_bytes is None:
+            client = _get_client()
+            fetch_fn = getattr(client, "get_bytes", getattr(client, "get", None))
+            if fetch_fn is None:
+                return ()
+            try:
+                html_bytes = fetch_fn(url)
+            except Exception:
+                return ()
+            if html_bytes:
+                doc_cache.put(
+                    accession=filing.accession.raw,
+                    cik=str(filing.primary_cik.value),
+                    form=filing.form,
+                    filename=fname,
+                    content=html_bytes,
+                    content_type="text/html",
+                )
         if not html_bytes:
             return ()
         outcome = parse_html_index(
