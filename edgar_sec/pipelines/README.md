@@ -41,6 +41,8 @@ the details below are the layer-level contracts only.
   owns review generation, its acquisition adapter, and shared-layout processing review evidence.
 - [`cohort/`](cohort/README.md) — Phase 0 cohort registry; manages shared cohort
   records and workspace expressions before metadata collection begins.
+- [`xbrl_review/`](xbrl_review/README.md) — Multi-firm semantic lattice review,
+  cohort staging, objective case comparison, and hypothesis rule promotion into the DuckDB knowledge base.
 
 Layer 4 is the only layer permitted to orchestrate. Orchestration means ordering,
 chunking, checkpointing, validating, and publishing — deciding *what happens

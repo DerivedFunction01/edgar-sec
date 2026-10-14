@@ -74,9 +74,9 @@ ENTRIES: tuple[LauncherEntry, ...] = (
     ),
     LauncherEntry(
         id="xbrl",
-        label="XBRL Semantic Engine",
-        description="XBRL solver, counter-solver, and review & staging engine",
-        module="edgar_sec.engine.xbrl.review.cli",
+        label="XBRL Semantic Review",
+        description="XBRL solver, counter-solver, and review & staging console",
+        module="edgar_sec.pipelines.xbrl_review.operator",
     ),
 )
 
