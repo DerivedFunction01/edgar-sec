@@ -18,6 +18,8 @@ from edgar_sec.pipelines.document_acquisition.run_state.store import (
     _url_value,
 )
 
+_RESOLUTION_SCHEMA_VERSION = "1"
+
 _ATTEMPT_COLUMNS = """attempt_id, target_id, attempt_number, attempt_kind, source,
     requested_url, outcome, retryable, error_code, http_status, final_url,
     started_at_utc, finished_at_utc, source_sha256, source_byte_size,
@@ -90,7 +92,7 @@ def _resolution_from_row(row: tuple[object, ...]) -> TargetSlotResolution:
     selected_sequence = row[14]
     selected_mode = row[15]
 
-    if schema_version != "1":
+    if schema_version != _RESOLUTION_SCHEMA_VERSION:
         raise ValueError("unsupported target-slot resolution schema version")
     if selector != "exact_form_with_lazy_index":
         raise ValueError("invalid persisted resolution field: selector")

@@ -27,6 +27,7 @@ from edgar_sec.infra.storage.parquet import StagedParquetWriter
 from edgar_sec.pipelines.document_inventory.paths import InventoryRunPaths
 
 WORK_ORDER_VERSION = "3"
+PROJECTION_VERSION = "1"
 OUTCOME_SCHEMA_VERSION = 1
 PROGRESS_SCHEMA_VERSION = 1
 WORK_ORDER_SCHEMA = pa.schema(
@@ -40,6 +41,7 @@ _FETCH_MODES = frozenset({"live", "force_refresh"})
 
 __all__ = [
     "WORK_ORDER_VERSION",
+    "PROJECTION_VERSION",
     "OUTCOME_SCHEMA_VERSION",
     "PROGRESS_SCHEMA_VERSION",
     "WORK_ORDER_SCHEMA",

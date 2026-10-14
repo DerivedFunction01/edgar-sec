@@ -34,6 +34,7 @@ from edgar_sec.pipelines.document_inventory.paths import (
 from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
     InventoryRunManifest,
     ManifestMismatchError,
+    PROJECTION_VERSION,
     WORK_ORDER_VERSION,
     iter_work_order_chunks,
     read_run_manifest,
@@ -112,7 +113,7 @@ def _read_persisted_projection(
     except ValueError as exc:
         raise ValueError("run path escapes the transient inventory root") from exc
     manifest = _read_projection_manifest(paths.projection_manifest_path())
-    if manifest.get("projection_version") != "1":
+    if manifest.get("projection_version") != PROJECTION_VERSION:
         raise ValueError("unsupported projection manifest version")
     if manifest.get("run_id") != paths.run_id:
         raise ValueError("projection run id differs from its directory")
