@@ -646,3 +646,36 @@ def test_interrupt_during_transfer_leaves_target_pending_and_cleans_partial(
     state = get_target_state(paths.run_state_path(run_id), "target-1")
     assert state is not None and state.attempt_count == 0
     assert not list(paths.run_staging_root(run_id).iterdir())
+
+
+def test_concurrent_execution_acquires_multiple_targets(tmp_path, monkeypatch) -> None:
+    paths, run_id, row = _make_run(tmp_path, lazy=False, sibling_failure=True)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
+        lambda: SimpleNamespace(workers=2, worker_ceiling=4),
+    )
+    sibling_url = row["target_url"].rsplit("/", 1)[0] + "/sibling.htm"
+    transport = _MemoryTransport(
+        {
+            row["target_url"]: b"selected primary body",
+            sibling_url: b"selected sibling body",
+        },
+    )
+    progress_records: list[dict] = []
+    report = execute_acquisition_run(
+        run_id,
+        retry_failures=False,
+        paths=paths,
+        policy=AcquisitionPolicy(max_response_bytes=4096, requested_workers=2),
+        transport=transport,
+        clock=lambda: datetime(2025, 1, 1, tzinfo=UTC),
+        progress_callback=progress_records.append,
+    )
+
+    assert report.target_counts["acquired"] == 2
+    assert report.attempted_count == 2
+    assert len(progress_records) == 2
+    state1 = get_target_state(paths.run_state_path(run_id), "target-1")
+    state2 = get_target_state(paths.run_state_path(run_id), "target-2")
+    assert state1 is not None and state1.outcome == "acquired"
+    assert state2 is not None and state2.outcome == "acquired"

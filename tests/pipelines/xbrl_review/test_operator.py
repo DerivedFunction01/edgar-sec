@@ -1,5 +1,7 @@
 """Tests for XBRL review operator console and menus."""
 
+import pytest
+
 from edgar_sec.pipelines.xbrl_review.operator import build_operator_menu, main
 
 
@@ -15,5 +17,6 @@ def test_build_operator_menu() -> None:
 
 def test_operator_main_delegates_to_cli() -> None:
     """Verify operator entrypoint forwards non-empty argv to CLI."""
-    exit_code = main(["--help"])
-    assert exit_code == 0
+    with pytest.raises(SystemExit) as exc_info:
+        main(["--help"])
+    assert exc_info.value.code == 0

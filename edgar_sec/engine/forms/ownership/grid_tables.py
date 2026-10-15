@@ -93,6 +93,72 @@ def _extract_footnote_ids(text: str) -> tuple[str, ...]:
     return tuple(_FOOTNOTE_REF_RE.findall(text))
 
 
+def _table_i_column_mapping(
+    grid_rows: tuple[tuple[str, ...], ...], header_count: int
+) -> dict[str, int]:
+    num_cols = len(grid_rows[0]) if grid_rows else 0
+    header_text = " ".join(
+        " ".join(grid_rows[r]) for r in range(min(header_count, len(grid_rows)))
+    ).lower()
+    has_3a = "3a" in header_text or "deemed" in header_text or num_cols >= 8
+    if has_3a:
+        return {
+            "title": 0,
+            "date": 1,
+            "code": 3,
+            "amount": 4,
+            "following": 5,
+            "form": 6,
+            "nature": 7,
+        }
+    return {
+        "title": 0,
+        "date": 1,
+        "code": 2,
+        "amount": 3,
+        "following": 4,
+        "form": 5,
+        "nature": 6,
+    }
+
+
+def _table_ii_column_mapping(
+    grid_rows: tuple[tuple[str, ...], ...], header_count: int
+) -> dict[str, int]:
+    num_cols = len(grid_rows[0]) if grid_rows else 0
+    header_text = " ".join(
+        " ".join(grid_rows[r]) for r in range(min(header_count, len(grid_rows)))
+    ).lower()
+    has_3a = "3a" in header_text or "deemed" in header_text or num_cols >= 12
+    if has_3a:
+        return {
+            "title": 0,
+            "price": 1,
+            "date": 2,
+            "code": 4,
+            "amount": 5,
+            "dates": 6,
+            "underlying": 7,
+            "deriv_price": 8,
+            "following": 9,
+            "form": 10,
+            "nature": 11,
+        }
+    return {
+        "title": 0,
+        "price": 1,
+        "date": 2,
+        "code": 3,
+        "amount": 4,
+        "dates": 5,
+        "underlying": 6,
+        "deriv_price": 7,
+        "following": 8,
+        "form": 9,
+        "nature": 10,
+    }
+
+
 def parse_table_i_rows(
     section: ClassifiedSection | None,
 ) -> list[NonDerivativeTransaction]:
@@ -100,29 +166,35 @@ def parse_table_i_rows(
     if section is None or len(section.resolved_grid.rows) <= 1:
         return []
 
+    header_count = max(1, section.resolved_grid.header_row_count)
+    cols = _table_i_column_mapping(section.resolved_grid.rows, header_count)
     results: list[NonDerivativeTransaction] = []
-    for row in section.resolved_grid.rows[1:]:
+    for row in section.resolved_grid.rows[header_count:]:
         if not any(c.strip() for c in row):
             continue
 
-        security_title = row[0].strip() if len(row) > 0 else ""
-        if not security_title or "title of security" in security_title.lower():
+        security_title = row[cols["title"]].strip() if len(row) > cols["title"] else ""
+        if (
+            not security_title
+            or "title of" in security_title.lower()
+            or "instr." in security_title.lower()
+        ):
             continue
 
-        # Date & footnotes
-        date_cell = row[1].strip() if len(row) > 1 else ""
+        date_col = cols["date"]
+        date_cell = row[date_col].strip() if len(row) > date_col else ""
         date_match = NUMERIC_DATE_RE.search(date_cell)
         trans_date = date_match.group(0) if date_match else None
         footnotes = list(_extract_footnote_ids(date_cell))
 
-        # Code & voluntary flag
-        code_cell = row[2].strip() if len(row) > 2 else ""
+        code_col = cols["code"]
+        code_cell = row[code_col].strip() if len(row) > code_col else ""
         code_match = _TRANSACTION_CODE_RE.search(code_cell)
         trans_code = code_match.group(1) if code_match else None
         equity_swap = bool(code_match and code_match.group(2))
 
-        # Amount, A/D, Price
-        amount_cell = row[3].strip() if len(row) > 3 else ""
+        amt_col = cols["amount"]
+        amount_cell = row[amt_col].strip() if len(row) > amt_col else ""
         shares_amount: float | None = None
         ad_code: str | None = None
         price: float | None = None
@@ -138,16 +210,16 @@ def parse_table_i_rows(
         elif is_numeric_cell(amount_cell):
             shares_amount = _extract_number(amount_cell)
 
-        # End of Month
-        following_cell = row[4].strip() if len(row) > 4 else ""
+        foll_col = cols["following"]
+        following_cell = row[foll_col].strip() if len(row) > foll_col else ""
         shares_owned_following = _extract_number(following_cell)
 
-        # Ownership Form
-        form_cell = row[5].strip().upper() if len(row) > 5 else ""
+        form_col = cols["form"]
+        form_cell = row[form_col].strip().upper() if len(row) > form_col else ""
         direct_or_indirect = form_cell if form_cell in ("D", "I") else None
 
-        # Nature
-        nature = row[6].strip() if len(row) > 6 else ""
+        nat_col = cols["nature"]
+        nature = row[nat_col].strip() if len(row) > nat_col else ""
 
         results.append(
             NonDerivativeTransaction(
@@ -174,39 +246,45 @@ def parse_table_ii_rows(
     if section is None or len(section.resolved_grid.rows) <= 1:
         return []
 
+    header_count = max(1, section.resolved_grid.header_row_count)
+    cols = _table_ii_column_mapping(section.resolved_grid.rows, header_count)
     results: list[DerivativeTransaction] = []
-    for row in section.resolved_grid.rows[1:]:
+    for row in section.resolved_grid.rows[header_count:]:
         if not any(c.strip() for c in row):
             continue
 
-        security_title = row[0].strip() if len(row) > 0 else ""
-        if not security_title or "title of derivative" in security_title.lower():
+        security_title = row[cols["title"]].strip() if len(row) > cols["title"] else ""
+        if (
+            not security_title
+            or "title of" in security_title.lower()
+            or "instr." in security_title.lower()
+        ):
             continue
 
-        # Exercise Price
-        price_cell = row[1].strip() if len(row) > 1 else ""
+        price_col = cols["price"]
+        price_cell = row[price_col].strip() if len(row) > price_col else ""
         exercise_price = _extract_number(price_cell)
 
-        # Trans Date
-        date_cell = row[2].strip() if len(row) > 2 else ""
+        date_col = cols["date"]
+        date_cell = row[date_col].strip() if len(row) > date_col else ""
         date_match = NUMERIC_DATE_RE.search(date_cell)
         trans_date = date_match.group(0) if date_match else None
         footnotes = list(_extract_footnote_ids(date_cell))
 
-        # Code
-        code_cell = row[3].strip() if len(row) > 3 else ""
+        code_col = cols["code"]
+        code_cell = row[code_col].strip() if len(row) > code_col else ""
         code_match = _TRANSACTION_CODE_RE.search(code_cell)
         trans_code = code_match.group(1) if code_match else None
         equity_swap = bool(code_match and code_match.group(2))
 
-        # Amount & A/D
-        amount_cell = row[4].strip() if len(row) > 4 else ""
+        amt_col = cols["amount"]
+        amount_cell = row[amt_col].strip() if len(row) > amt_col else ""
         shares_amount = _extract_number(amount_cell)
         ad_match = _ACQUIRED_DISPOSED_RE.search(amount_cell)
         ad_code = ad_match.group(1).upper() if ad_match else None
 
-        # Exercisable and Expiration Dates
-        dates_cell = row[5].strip() if len(row) > 5 else ""
+        dates_col = cols["dates"]
+        dates_cell = row[dates_col].strip() if len(row) > dates_col else ""
         exercisable_date: str | None = None
         expiration_date: str | None = None
         date_matches = NUMERIC_DATE_RE.findall(dates_cell)
@@ -216,8 +294,8 @@ def parse_table_ii_rows(
         elif len(date_matches) == 1:
             exercisable_date = date_matches[0]
 
-        # Underlying Securities
-        underlying_cell = row[6].strip() if len(row) > 6 else ""
+        u_col = cols["underlying"]
+        underlying_cell = row[u_col].strip() if len(row) > u_col else ""
         underlying_title: str | None = None
         underlying_shares: float | None = None
         if "-" in underlying_cell:
@@ -228,20 +306,31 @@ def parse_table_ii_rows(
         elif underlying_cell:
             underlying_title = underlying_cell
 
-        # Price of derivative
-        deriv_price_cell = row[7].strip() if len(row) > 7 else ""
+        if underlying_title and (
+            bool(NUMERIC_DATE_RE.search(underlying_title)) or "|" in underlying_title
+        ):
+            date_matches = NUMERIC_DATE_RE.findall(underlying_title)
+            if not exercisable_date and len(date_matches) >= 1:
+                exercisable_date = date_matches[0]
+            if not expiration_date and len(date_matches) >= 2:
+                expiration_date = date_matches[1]
+            underlying_title = None
+            underlying_shares = None
+
+        deriv_col = cols["deriv_price"]
+        deriv_price_cell = row[deriv_col].strip() if len(row) > deriv_col else ""
         deriv_price = _extract_number(deriv_price_cell)
 
-        # Following shares
-        following_cell = row[8].strip() if len(row) > 8 else ""
+        foll_col = cols["following"]
+        following_cell = row[foll_col].strip() if len(row) > foll_col else ""
         following_shares = _extract_number(following_cell)
 
-        # Ownership Form
-        form_cell = row[9].strip().upper() if len(row) > 9 else ""
+        form_col = cols["form"]
+        form_cell = row[form_col].strip().upper() if len(row) > form_col else ""
         direct_or_indirect = form_cell if form_cell in ("D", "I") else None
 
-        # Nature
-        nature = row[10].strip() if len(row) > 10 else ""
+        nat_col = cols["nature"]
+        nature = row[nat_col].strip() if len(row) > nat_col else ""
 
         results.append(
             DerivativeTransaction(

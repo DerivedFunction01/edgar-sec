@@ -124,8 +124,12 @@ def resolve_xbrl_review_paths(
     repo_root: Path | str | None = None,
 ) -> XbrlReviewPaths:
     """Resolve standard paths layout for XBRL review pipeline."""
-    project = resolve_paths(
-        artifacts_root=Path(artifacts_root) if artifacts_root else None,
-        repo_root=Path(repo_root) if repo_root else None,
-    )
+    root = Path(repo_root).resolve() if repo_root is not None else None
+    project = resolve_paths(root)
+    if artifacts_root is not None:
+        project = ProjectPaths(
+            repo_root=project.repo_root,
+            artifacts_root=Path(artifacts_root).resolve(),
+            uploads_root=project.uploads_root,
+        )
     return XbrlReviewPaths(project=project)

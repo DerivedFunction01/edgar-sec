@@ -96,11 +96,13 @@ def list_plans(metadata: MetadataPaths) -> list[PlanSummary]:
         plan_summary(metadata, entry.name) for entry in root.iterdir() if entry.is_dir()
     ]
     mtimes = {
-        entry.name: entry.stat().st_mtime for entry in root.iterdir() if entry.is_dir()
+        entry.name: entry.stat().st_mtime_ns
+        for entry in root.iterdir()
+        if entry.is_dir()
     }
     return sorted(
         found,
-        key=lambda item: (mtimes.get(item["plan_id"], 0.0), item["plan_id"]),
+        key=lambda item: (mtimes.get(item["plan_id"], 0), item["plan_id"]),
         reverse=True,
     )
 

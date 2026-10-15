@@ -14,6 +14,9 @@ from edgar_sec.engine.forms.ownership.grid_tables import (
     parse_table_ii_rows,
 )
 from edgar_sec.domain.forms.families.ownership.models import Form4Metadata
+from edgar_sec.engine.document.html.cleaner import (
+    strip_decorative_presentation_attributes,
+)
 from edgar_sec.engine.forms.ownership.metadata_parser import parse_metadata
 from edgar_sec.engine.forms.ownership.sections import (
     Form4Sections,
@@ -196,7 +199,8 @@ def _build_unparsed_sections_xml(root: ET.Element, sections: Form4Sections) -> N
         unparsed_el.attrib["tableIndex"] = str(sec.table_index)
         unparsed_el.attrib["role"] = str(sec.role)
         raw_html = getattr(sec.raw_node, "html", None)
-        unparsed_el.text = raw_html() if callable(raw_html) else str(raw_html or "")
+        raw_str = raw_html() if callable(raw_html) else str(raw_html or "")
+        unparsed_el.text = strip_decorative_presentation_attributes(raw_str)
 
 
 def render_form4_to_xml(
@@ -241,6 +245,7 @@ def render_form4_to_xml(
 
     _build_unparsed_sections_xml(root, sections)
 
+    ET.indent(root, space="    ")
     xml_bytes = ET.tostring(root, encoding="utf-8", xml_declaration=True)
     return xml_bytes
 

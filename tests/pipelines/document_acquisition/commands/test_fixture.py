@@ -121,7 +121,16 @@ def test_fixture_fill_captures_plan_targets_and_emits_counts(
     )
     monkeypatch.setattr(fixture, "fixture_plan_pin", lambda *_args: pin)
 
-    def capture(fixture_id, *, paths, max_body_bytes, transport, limit, on_target):
+    def capture(
+        fixture_id,
+        *,
+        paths,
+        max_body_bytes,
+        transport,
+        limit,
+        on_target,
+        workers=None,
+    ):
         calls.append(
             (
                 fixture_id,

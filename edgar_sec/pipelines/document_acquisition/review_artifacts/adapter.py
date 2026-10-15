@@ -107,12 +107,13 @@ class AcquisitionReviewAdapter(ReviewAdapter):
         json_output: bool = False,
         no_progress: bool = False,
     ) -> int:
-        if workers is not None or accessions:
-            raise ValueError("acquisition review parses all fixture cases serially")
+        if accessions:
+            raise ValueError("acquisition review parses all fixture cases")
         args = argparse.Namespace(
             fixture=fixture_id,
             output=str(output_dir),
             limit=limit,
+            workers=workers,
             artifacts_root=str(artifacts_root),
             json=json_output,
             no_progress=no_progress,

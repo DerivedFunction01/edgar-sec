@@ -44,6 +44,7 @@ def cmd_review_artifacts(args: argparse.Namespace) -> int:
         output,
         paths=paths,
         limit=args.limit,
+        workers=getattr(args, "workers", None),
         no_progress=args.no_progress,
     )
     summary = result.summary
@@ -83,12 +84,14 @@ def _review_run_path(value: str, artifacts_root: str | None) -> Path:
 
 
 def cmd_review_analyze(args: argparse.Namespace) -> int:
+    from edgar_sec.foundation.serialization import pretty_json
+
     runs = tuple(_review_run_path(value, args.artifacts) for value in args.run)
     report = analyze_review_runs(
         runs, output=Path(args.output) if args.output else None
     )
     if args.json:
-        print(json.dumps(report, sort_keys=True))
+        print(pretty_json(report))
     else:
         for run in report["runs"]:
             statuses = ", ".join(
@@ -105,6 +108,28 @@ def cmd_review_analyze(args: argparse.Namespace) -> int:
                 f"review {run['review_id']}: {run['total_cases']} cases; "
                 f"{statuses}; operations: {operation_statuses}"
             )
+            for fam_rep in run.get("family_reports", []):
+                fam = fam_rep.get("family", "")
+                case_count = fam_rep.get("case_count", 0)
+                print(f"\n--- Form Family '{fam}' Analysis ({case_count} cases) ---")
+                print("  Top Element Counts:")
+                for tag, cnt in list(fam_rep.get("element_counts", {}).items())[:10]:
+                    print(f"    {tag}: {cnt}")
+                anom_count = fam_rep.get("anomaly_count", 0)
+                print(f"  Anomalies: {anom_count}")
+                for anom in fam_rep.get("anomalies", [])[:5]:
+                    val = anom.get("value")
+                    val_str = f" (value: {val})" if val is not None else ""
+                    print(
+                        f"    [{anom['kind']}] {anom['accession']}: {anom['detail']}{val_str}"
+                    )
+                unp_count = fam_rep.get("unparsed_section_count", 0)
+                print(f"  Unparsed Sections: {unp_count}")
+                for sample in fam_rep.get("unparsed_samples", [])[:3]:
+                    print(
+                        f"    [table {sample['table_index']} - role={sample['role']} - "
+                        f"{sample['char_length']} chars]: {sample['snippet'][:100]}..."
+                    )
     return 0
 
 

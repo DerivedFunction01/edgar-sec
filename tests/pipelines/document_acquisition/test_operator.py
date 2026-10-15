@@ -53,9 +53,10 @@ def test_menu_routes_fixture_review_to_shared_console(monkeypatch):
     assert config.prompt_limit is False
     assert config.prompt_output is False
     assert config.prompt_workers is False
-    assert config.require_active_plan is True
+    assert config.require_active_plan is False
+    assert config.fixture_filter is None
+    assert config.plan_summary is None
     assert callable(config.plan_discovery)
-    assert callable(config.fixture_filter)
     assert callable(config.fill_action)
 
 

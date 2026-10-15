@@ -113,6 +113,7 @@ def test_review_analysis_validates_artifacts_and_aggregates_deterministically(
                 },
                 "unresolved_label_cases": 0,
                 "family_form_metrics": [],
+                "family_reports": [],
             }
         ],
     }

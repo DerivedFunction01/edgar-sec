@@ -13,11 +13,13 @@ from edgar_sec.engine.document.html.tree import FastHtmlNode, parse_html
 from edgar_sec.engine.tables.ascii_html.converter import convert_html_table
 from edgar_sec.engine.tables.ascii_html.model import RenderBudget, ResolvedGrid
 from edgar_sec.foundation.text.automaton import tokenize
+from edgar_sec.foundation.text.dates import MONTH_RE
 from edgar_sec.foundation.text.evidence import (
     EvidenceContext,
     compile_evidence_pack,
     score_tokens,
 )
+
 
 _COMPILED_FOOTNOTE_PACK = compile_evidence_pack(OWNERSHIP_FOOTNOTE_LEXICAL_PACK)
 _EVIDENCE_CTX = EvidenceContext(min_words=1)
@@ -98,7 +100,10 @@ def _classify_table_text(
             return SectionRole.FOOTNOTES
 
     if len(lower.strip()) < 80 and (
-        "form 4" in lower or "page " in lower or "(continued)" in lower
+        "form 4" in lower
+        or "page " in lower
+        or "(continued)" in lower
+        or (past_tables and "-" in lower and bool(MONTH_RE.search(lower)))
     ):
         return SectionRole.PAGE_ARTIFACT
     return SectionRole.UNPARSED

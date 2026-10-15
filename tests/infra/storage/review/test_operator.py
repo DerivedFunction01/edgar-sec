@@ -25,6 +25,7 @@ class RecordingAdapter:
         return [
             {
                 "fixture_id": "fix-aaa",
+                "target_plan_id": "embedded-plan-999",
                 "page_count": 1,
                 "accession_count": 10,
                 "capture_state": "complete",
@@ -209,7 +210,20 @@ def test_review_menu_switch_plan(
         adapter=adapter,
         artifacts_root=tmp_path,
         plans_root=plans_dir,
+        require_active_plan=True,
     )
     answers = iter(["s", "2", "0"])
     monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
     assert run_review_menu(config) == 0
+
+
+def test_fill_uses_embedded_target_plan_id_when_no_active_plan(
+    tmp_path: Path, monkeypatch
+) -> None:
+    adapter = RecordingAdapter()
+    answers = iter(["2", "1", "", "0"])
+    monkeypatch.setattr("builtins.input", lambda _p="": next(answers))
+
+    config = ReviewMenuConfig(adapter=adapter, artifacts_root=tmp_path)
+    assert run_review_menu(config) == 0
+    assert adapter.calls == ["list", "fill"]

@@ -236,6 +236,14 @@ class _FixtureReviewConsole:
         self, fixture_id: str, plan: dict, _limit: int | None, _root: Path
     ) -> bool:
         target_count = int(plan.get("selected_rows") or 0)
+        if not target_count and "plan_id" in plan:
+            try:
+                pub_plan = read_published_plan(
+                    str(plan["plan_id"]), self.planning_paths
+                )
+                target_count = int(pub_plan.manifest.get("target_row_count") or 0)
+            except (OSError, ValueError):
+                pass
         default_limit = min(100, target_count) if target_count else 100
         raw_limit = prompt_text(
             f"Maximum new target bodies [default {default_limit}; 'all' for {target_count or 'all'}]",
@@ -302,14 +310,11 @@ def _action_fixture_review_console() -> None:
             ),
             analyze_action=console.analyze_reviews,
             plan_discovery=console.plan_items,
-            plan_summary=console.plan_summary,
-            fixture_filter=console.fixture_matches_plan,
             fixture_label=console.fixture_label,
             fill_action=console.fill_fixture,
             prompt_limit=False,
             prompt_output=False,
             prompt_workers=False,
-            require_active_plan=True,
             title="Document Acquisition Fixtures & Review Console",
         )
     )

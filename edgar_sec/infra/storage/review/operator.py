@@ -186,7 +186,19 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         fixture_id = chosen.key
 
         if plan is None:
-            plan = _plan_info()
+            val = chosen.value if isinstance(chosen.value, dict) else {}
+            if "target_plan_id" in val:
+                plan = {
+                    "plan_id": val["target_plan_id"],
+                    "plan_digest": val.get("target_plan_digest", ""),
+                    "target_plan_schema_version": val.get(
+                        "target_plan_schema_version", 1
+                    ),
+                    "scope": "unknown",
+                    "selected_rows": val.get("selected_rows", 0),
+                }
+            else:
+                plan = _plan_info()
         if plan is None:
             print("No plans available; publish a plan first.")
             return
@@ -388,7 +400,9 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
     ]
     if config.analyze_action is not None:
         actions.append(menu_action("Analyze review runs (offline)", _action_analyze))
-    if config.plans_root or config.plan_discovery is not None:
+    if (config.plans_root or config.plan_discovery is not None) and (
+        config.require_active_plan or config.plan_summary is not None
+    ):
         actions.append(menu_action("Switch active plan", _action_switch_plan, key="s"))
 
     menu = build_menu(*actions)

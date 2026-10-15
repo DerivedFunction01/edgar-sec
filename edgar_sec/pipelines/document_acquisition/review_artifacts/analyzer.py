@@ -156,6 +156,30 @@ def _case_label_outcome(labels: tuple[dict[str, object], ...]) -> str | None:
     return None
 
 
+def _dispatch_family_analysis(
+    family: str, cases: list[tuple[Path, dict[str, Any]]]
+) -> dict[str, Any] | None:
+    from edgar_sec.domain.forms.families.processing_profiles import get_family_profile
+    import importlib
+
+    profile = get_family_profile(family)
+    if profile is None or not profile.review_analyzer:
+        return None
+
+    mod = importlib.import_module(profile.review_analyzer)
+    analyzer_fn = getattr(mod, "analyze_case", None)
+    summarizer_fn = getattr(mod, "summarize_cases", None)
+    if analyzer_fn is None or summarizer_fn is None:
+        return None
+
+    reports = [
+        rep
+        for case_dir, record in cases
+        if (rep := analyzer_fn(case_dir, record)) is not None
+    ]
+    return summarizer_fn(reports) if reports else None
+
+
 def analyze_review_run(run: str | Path) -> dict[str, Any]:
     requested_root = Path(run).expanduser()
     if requested_root.is_symlink():
@@ -170,6 +194,7 @@ def analyze_review_run(run: str | Path) -> dict[str, Any]:
     operations: Counter[str] = Counter()
     label_annotations: Counter[str] = Counter()
     family_form_metrics: dict[tuple[str, str], Counter[str]] = {}
+    cases_by_family: dict[str, list[tuple[Path, dict[str, Any]]]] = {}
     unresolved_label_cases = 0
     seen: set[tuple[str, str, str]] = set()
     previous: tuple[str, str, str] | None = None
@@ -178,6 +203,7 @@ def analyze_review_run(run: str | Path) -> dict[str, Any]:
         with manifest.open("r", encoding="utf-8") as stream:
             for line in stream:
                 record = json.loads(line)
+
                 if not isinstance(record, dict):
                     raise ReviewAnalysisError("review manifest record is not an object")
                 identity = (
@@ -214,7 +240,21 @@ def analyze_review_run(run: str | Path) -> dict[str, Any]:
                 statuses[status] += 1
                 if status == "complete":
                     artifact = _load_artifact(root, record)
+                    family = str(
+                        (
+                            artifact.get("processing", {})
+                            .get("family_profile", {})
+                            .get("family")
+                        )
+                        or artifact.get("form", "")
+                    )
+                    rel_parts = PurePosixPath(
+                        record["outputs"]["processing-review.json"]["path"]
+                    ).parts
+                    case_dir = (root / rel_parts[0] / rel_parts[1]).resolve()
+                    cases_by_family.setdefault(family, []).append((case_dir, record))
                     processing = artifact.get("processing")
+
                     values = (
                         processing.get("operations")
                         if isinstance(processing, dict)
@@ -293,6 +333,11 @@ def analyze_review_run(run: str | Path) -> dict[str, Any]:
         raise ReviewAnalysisError("review manifest is unreadable") from error
     if total == 0:
         raise ReviewAnalysisError("review manifest has no cases")
+    family_reports = []
+    for fam_name, fam_cases in sorted(cases_by_family.items()):
+        fam_rep = _dispatch_family_analysis(fam_name, fam_cases)
+        if fam_rep is not None:
+            family_reports.append(fam_rep)
     return {
         "review_id": root.name,
         "total_cases": total,
@@ -326,6 +371,7 @@ def analyze_review_run(run: str | Path) -> dict[str, Any]:
             }
             for (form, family), counts in sorted(family_form_metrics.items())
         ],
+        "family_reports": family_reports,
     }
 
 

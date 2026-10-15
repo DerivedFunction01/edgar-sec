@@ -3,12 +3,16 @@ from __future__ import annotations
 import fcntl
 import os
 import tempfile
+import threading
 import uuid
 from collections.abc import Callable, Iterator
+from concurrent.futures import FIRST_COMPLETED, Future, ThreadPoolExecutor, wait
 from contextlib import contextmanager
 from datetime import UTC, datetime
 from pathlib import Path
 from urllib.parse import urlsplit
+
+from edgar_sec.foundation.runtime.resources import derive_resources
 
 from edgar_sec.domain.document_inventory.models import IndexPageInput
 from edgar_sec.domain.identity import AccessionNumber
@@ -97,6 +101,9 @@ def _stream_response(
     return response
 
 
+_SQLITE_LAZY_LOCK = threading.Lock()
+
+
 def _lazy_index(
     fixture_id: str,
     accession: AccessionNumber,
@@ -110,36 +117,37 @@ def _lazy_index(
 ) -> tuple[str, str, bytes, int, bool]:
     archive = validate_archive_url(target_url, accession)
     index_url = index_url_for(accession, archive.archive_cik)
-    cached = read_fixture_lazy_index(paths, fixture_id, str(accession))
-    if cached is not None:
-        if cached.index_url != index_url:
-            raise _TargetCaptureError("cached_index_url_mismatch")
-        return index_url, cached.body_sha256, cached.body, 0, True
-    response = _stream_response(
-        transport,
-        index_url,
-        staging / f"index-{accession}.bin",
-        accession,
-        policy,
-    )
-    if response.byte_size > max_body_bytes:
-        raise _TargetCaptureError("lazy_index_too_large")
-    with response.path.open("rb") as stream:
-        index_ref = append_fixture_lazy_index(
-            paths,
-            fixture_id,
-            str(accession),
+    with _SQLITE_LAZY_LOCK:
+        cached = read_fixture_lazy_index(paths, fixture_id, str(accession))
+        if cached is not None:
+            if cached.index_url != index_url:
+                raise _TargetCaptureError("cached_index_url_mismatch")
+            return index_url, cached.body_sha256, cached.body, 0, True
+        response = _stream_response(
+            transport,
             index_url,
-            stream,
-            max_body_bytes=max_body_bytes,
+            staging / f"index-{accession}-{uuid.uuid4().hex}.bin",
+            accession,
+            policy,
         )
-    return (
-        index_url,
-        index_ref.body_sha256,
-        response.path.read_bytes(),
-        1,
-        False,
-    )
+        if response.byte_size > max_body_bytes:
+            raise _TargetCaptureError("lazy_index_too_large")
+        with response.path.open("rb") as stream:
+            index_ref = append_fixture_lazy_index(
+                paths,
+                fixture_id,
+                str(accession),
+                index_url,
+                stream,
+                max_body_bytes=max_body_bytes,
+            )
+        return (
+            index_url,
+            index_ref.body_sha256,
+            response.path.read_bytes(),
+            1,
+            False,
+        )
 
 
 def _resolve_lazy_target(
@@ -324,6 +332,7 @@ def capture_fixture_plan(
     max_body_bytes: int,
     transport: AcquisitionTransport,
     limit: int | None = None,
+    workers: int | None = None,
     on_target: Callable[[int, int], None] | None = None,
 ) -> FixturePlanCaptureResult:
     if (
@@ -345,6 +354,7 @@ def capture_fixture_plan(
             max_body_bytes=max_body_bytes,
             transport=transport,
             limit=limit,
+            workers=workers,
             on_target=on_target,
         )
 
@@ -357,6 +367,7 @@ def _capture_fixture_plan_locked(
     max_body_bytes: int,
     transport: AcquisitionTransport,
     limit: int | None,
+    workers: int | None,
     on_target: Callable[[int, int], None] | None,
 ) -> FixturePlanCaptureResult:
     with tempfile.TemporaryDirectory(prefix="acquisition-fixture-plan-") as temporary:
@@ -392,30 +403,20 @@ def _capture_fixture_plan_locked(
         policy = AcquisitionPolicy(max_response_bytes=max_body_bytes)
         with tempfile.TemporaryDirectory(prefix="fixture-target-") as target_temp:
             staging = Path(target_temp)
-            for row in iter_work_order_rows((projection.parquet_path,)):
-                target_id = str(row["target_id"])
-                if target_id in existing_targets or not row["executable"]:
-                    skipped += 1
-                    continue
-                if limit is not None and considered >= limit:
-                    break
-                considered += 1
-                if on_target is not None:
-                    on_target(considered, total)
+            resources = derive_resources()
+            worker_count = (
+                min(resources.workers, resources.worker_ceiling)
+                if workers is None
+                else min(workers, resources.worker_ceiling)
+            )
+            worker_count = max(1, worker_count)
+
+            def _fetch_target(
+                target_row: dict[str, object],
+            ) -> tuple[dict[str, object], tuple[object, ...] | None, Exception | None]:
                 try:
-                    (
-                        body_path,
-                        target_url,
-                        retrieval_mode,
-                        sequence,
-                        filename,
-                        index_sha256,
-                        fetched_index_count,
-                        selection_source,
-                        body_sha256,
-                        body_byte_size,
-                    ) = _capture_document(
-                        row,
+                    result = _capture_document(
+                        target_row,
                         fixture_id=fixture_id,
                         paths=paths,
                         staging=staging,
@@ -423,52 +424,134 @@ def _capture_fixture_plan_locked(
                         policy=policy,
                         transport=transport,
                     )
-                    case = {
-                        "capture_id": capture_id,
-                        "target_id": target_id,
-                        "inventory_entry_id": row["inventory_entry_id"],
-                        "selection_source": selection_source,
-                        "index_sha256": index_sha256,
-                        "accession": str(row["accession"]),
-                        "form": str(row["form"]),
-                        "request_id": str(row["request_id"]),
-                        "target_role": str(row["target_role"]),
-                        "target_type": str(row["target_type"]),
-                        "source_origin": str(row["source_origin"]),
-                        "retrieval_mode": retrieval_mode,
-                        "target_url": target_url,
-                        "sequence": sequence,
-                        "selected_filename": filename,
-                        "body_sha256": body_sha256,
-                        "byte_size": body_byte_size,
-                    }
-                    with body_path.open("rb") as source:
-                        append_fixture_case(
-                            paths,
-                            fixture_id,
-                            capture,
-                            case,
-                            source,
-                            max_body_bytes=max_body_bytes,
+                    return target_row, result, None
+                except Exception as exc:
+                    return target_row, None, exc
+
+            def _commit_outcome(
+                target_row: dict[str, object],
+                res: tuple[object, ...] | None,
+                exc: Exception | None,
+            ) -> None:
+                nonlocal captured, skipped, failed, reused_indexes
+                target_id = str(target_row["target_id"])
+                if exc is not None:
+                    if isinstance(exc, _TargetSkipped):
+                        skipped += 1
+                    elif isinstance(exc, _TargetCaptureError):
+                        failed += 1
+                        failure_counts[str(exc)] = failure_counts.get(str(exc), 0) + 1
+                    elif isinstance(exc, ValueError):
+                        failed += 1
+                        failure_counts["target_validation"] = (
+                            failure_counts.get("target_validation", 0) + 1
                         )
-                    captured += 1
-                    if index_sha256 is not None and fetched_index_count == 0:
-                        reused_indexes += 1
-                    existing_targets.add(target_id)
-                except _TargetSkipped:
-                    skipped += 1
-                except _TargetCaptureError as error:
-                    failed += 1
-                    failure_counts[str(error)] = failure_counts.get(str(error), 0) + 1
-                except ValueError as error:
-                    failed += 1
-                    failure_counts["target_validation"] = (
-                        failure_counts.get("target_validation", 0) + 1
+                    elif isinstance(exc, OSError):
+                        raise FixtureOperationError(
+                            f"cannot capture target {target_id}: {exc}"
+                        ) from exc
+                    else:
+                        failed += 1
+                        failure_counts[type(exc).__name__] = (
+                            failure_counts.get(type(exc).__name__, 0) + 1
+                        )
+                    return
+
+                (
+                    body_path,
+                    target_url,
+                    retrieval_mode,
+                    sequence,
+                    filename,
+                    index_sha256,
+                    fetched_index_count,
+                    selection_source,
+                    body_sha256,
+                    body_byte_size,
+                ) = res  # type: ignore[misc]
+                case = {
+                    "capture_id": capture_id,
+                    "target_id": target_id,
+                    "inventory_entry_id": target_row["inventory_entry_id"],
+                    "selection_source": selection_source,
+                    "index_sha256": index_sha256,
+                    "accession": str(target_row["accession"]),
+                    "form": str(target_row["form"]),
+                    "request_id": str(target_row["request_id"]),
+                    "target_role": str(target_row["target_role"]),
+                    "target_type": str(target_row["target_type"]),
+                    "source_origin": str(target_row["source_origin"]),
+                    "retrieval_mode": retrieval_mode,
+                    "target_url": target_url,
+                    "sequence": sequence,
+                    "selected_filename": filename,
+                    "body_sha256": body_sha256,
+                    "byte_size": body_byte_size,
+                }
+                with body_path.open("rb") as source:
+                    append_fixture_case(
+                        paths,
+                        fixture_id,
+                        capture,
+                        case,
+                        source,
+                        max_body_bytes=max_body_bytes,
                     )
-                except OSError as error:
-                    raise FixtureOperationError(
-                        f"cannot capture target {target_id}: {error}"
-                    ) from error
+                try:
+                    body_path.unlink(missing_ok=True)
+                except OSError:
+                    pass
+                captured += 1
+                if index_sha256 is not None and fetched_index_count == 0:
+                    reused_indexes += 1
+                existing_targets.add(target_id)
+
+            executor = ThreadPoolExecutor(
+                max_workers=worker_count, thread_name_prefix="fixture-fill"
+            )
+            pending: dict[
+                Future[
+                    tuple[
+                        dict[str, object],
+                        tuple[object, ...] | None,
+                        Exception | None,
+                    ]
+                ],
+                dict[str, object],
+            ] = {}
+            try:
+                for row in iter_work_order_rows((projection.parquet_path,)):
+                    target_id = str(row["target_id"])
+                    if target_id in existing_targets or not row["executable"]:
+                        skipped += 1
+                        continue
+                    if limit is not None and considered >= limit:
+                        break
+                    considered += 1
+                    fut = executor.submit(_fetch_target, row)
+                    pending[fut] = row
+                    if len(pending) >= worker_count:
+                        done, _ = wait(pending, return_when=FIRST_COMPLETED)
+                        for f in done:
+                            t_row = pending.pop(f)
+                            _, res, exc = f.result()
+                            _commit_outcome(t_row, res, exc)
+                            if on_target is not None:
+                                on_target(considered, total)
+
+                while pending:
+                    done, _ = wait(pending, return_when=FIRST_COMPLETED)
+                    for f in done:
+                        t_row = pending.pop(f)
+                        _, res, exc = f.result()
+                        _commit_outcome(t_row, res, exc)
+                        if on_target is not None:
+                            on_target(considered, total)
+            except KeyboardInterrupt:
+                executor.shutdown(wait=False, cancel_futures=True)
+                raise
+            else:
+                executor.shutdown(wait=True)
     return FixturePlanCaptureResult(
         fixture_id,
         capture_id if captured else None,

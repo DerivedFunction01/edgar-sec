@@ -110,6 +110,28 @@ _RE_NOISE_ATTRS = re.compile(
     rf"(?i)\s+(?:{_NOISE_ATTRS_ALT})=(?:[\"'][^>\"']*[\"']|[^>\s\"']+)"
 )
 
+_DECORATIVE_ATTRS_ALT = build_alternation(
+    [
+        "width",
+        "height",
+        "border",
+        "cellspacing",
+        "cellpadding",
+        "align",
+        "valign",
+        "bgcolor",
+        "background",
+        "style",
+        "hspace",
+        "vspace",
+    ],
+    auto_escape=True,
+)
+_RE_DECORATIVE_ATTR = re.compile(
+    rf"""(?i)\s+(?:{_DECORATIVE_ATTRS_ALT})\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)"""
+)
+_RE_BARE_FONT_TAG = re.compile(r"(?i)</?font\b[^>]*>")
+
 
 _METADATA_PREFIX_ALT = build_alternation(["mso", "data"], auto_escape=True)
 _METADATA_LANG_ALT = build_alternation(["xml:lang", "lang"], auto_escape=True)
@@ -330,6 +352,15 @@ def strip_non_displaying_blocks(html: str) -> str:
     return _RE_HEAD_SCRIPT_STYLE.sub(" ", html)
 
 
+def strip_decorative_presentation_attributes(html: str) -> str:
+    """Strip visual layout and presentation attributes from HTML markup."""
+    if not html:
+        return html
+    cleaned = _RE_BARE_FONT_TAG.sub("", html)
+    cleaned = _RE_DECORATIVE_ATTR.sub("", cleaned)
+    return sanitize_unicode_whitespace(cleaned)
+
+
 def clean_html_for_parsing(html: str) -> str:
     """Unified HTML cleaning entry point.
     Order is a contract: XBRL first, so glyph normalization sees unwrapped tags; whitespace last.
@@ -347,6 +378,7 @@ __all__ = [
     "clean_html_for_parsing",
     "normalize_font_qualified_glyphs",
     "strip_benign_font_styles",
+    "strip_decorative_presentation_attributes",
     "strip_font_tag_and_noise_attributes",
     "strip_ixbrl_inline_tags",
     "strip_non_displaying_blocks",
