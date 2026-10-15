@@ -35,6 +35,7 @@ from edgar_sec.engine.forms.ownership.patterns import (
     PROSE_BOILERPLATE_RE,
     SIG_NAME_RE,
     SIG_PERSON_PREFIX_RE,
+    SIG_BOILERPLATE_TERMS,
     STATE_ZIP_RE,
     STREET_ANCHOR_RE,
     STRIP_BOX_NUM_RE,
@@ -49,6 +50,17 @@ from edgar_sec.foundation.text.dates import (
     RE_FULL_DATE,
     parse_date,
 )
+
+
+def _is_valid_signature_name(cand: str) -> bool:
+    if not cand or len(cand) > 60:
+        return False
+    lower = cand.lower()
+    if any(term in lower for term in SIG_BOILERPLATE_TERMS):
+        return False
+    words = cand.split()
+    return 1 <= len(words) <= 6
+
 
 _ROLE_TARGETS = (
     ("director", "director"),
@@ -176,6 +188,24 @@ def _parse_reporting_owner(cell_text: str, role_cell_text: str) -> ReportingOwne
     roles = _resolve_checked_roles(role_cell_text)
     title_match = TITLE_MATCH_RE.search(role_cell_text)
     officer_title = title_match.group(1).strip() if title_match else None
+    if officer_title:
+        officer_title = re.split(
+            r"(?i)\b7\.\s*individual|\bindividual or joint", officer_title
+        )[0].strip()
+        if (
+            not officer_title
+            or any(
+                bad in officer_title.lower()
+                for bad in (
+                    "individual or joint",
+                    "check applicable",
+                    "joint/group",
+                    "7.",
+                )
+            )
+            or len(officer_title.split()) > 7
+        ):
+            officer_title = None
 
     return ReportingOwner(
         name=name,
@@ -415,24 +445,31 @@ def parse_metadata(
     sig_name: str | None = None
     sig_date: str | None = None
     if signatures_section is not None:
-        sig_cells: list[str] = [
-            c.strip()
-            for r in signatures_section.resolved_grid.rows
-            for c in r
-            if c and c.strip()
-        ]
-        sig_text = "\n".join(sig_cells)
+        clean_lines: list[str] = []
+        for r in signatures_section.resolved_grid.rows:
+            for c in r:
+                if not c or not c.strip():
+                    continue
+                for line in c.splitlines():
+                    s = line.strip()
+                    if s and not any(
+                        term in s.lower() for term in SIG_BOILERPLATE_TERMS
+                    ):
+                        clean_lines.append(s)
+        sig_text = "\n".join(clean_lines)
         m_date = RE_FULL_DATE.search(sig_text) or NUMERIC_DATE_RE.search(sig_text)
         if m_date:
             sig_date = m_date.group(0).strip()
         m_sig = RE_CONFORMED_SIGNER_NAME.search(sig_text)
-        if m_sig and (cand_name := m_sig.group(1).strip(" ,.-")):
-            sig_name = cand_name
-        elif (m_pref := SIG_PERSON_PREFIX_RE.search(sig_text)) and (
-            cand_name := m_pref.group(1).strip(" ,.-")
+        if m_sig and _is_valid_signature_name(
+            cand_name := m_sig.group(1).strip(" ,.-")
         ):
             sig_name = cand_name
-        elif (m_name := SIG_NAME_RE.search(sig_text)) and (
+        elif (
+            m_pref := SIG_PERSON_PREFIX_RE.search(sig_text)
+        ) and _is_valid_signature_name(cand_name := m_pref.group(1).strip(" ,.-")):
+            sig_name = cand_name
+        elif (m_name := SIG_NAME_RE.search(sig_text)) and _is_valid_signature_name(
             cand_name := m_name.group(1).strip(" ,.-")
         ):
             sig_name = cand_name

@@ -80,3 +80,39 @@ def test_summarize_ownership_cases_aggregates_metrics() -> None:
     assert summary["anomaly_count"] == 2
     assert summary["unparsed_section_count"] == 1
     assert len(summary["unparsed_samples"]) == 1
+    assert "field_completeness" in summary
+    assert summary["field_completeness"]["issuerName"] == "1/2 (50%)"
+
+
+def test_mask_normalized_pattern() -> None:
+    from edgar_sec.engine.forms.ownership.analysis import mask_normalized_pattern
+
+    assert (
+        mask_normalized_pattern("Employee Stock Option 02/06/2002 Grant")
+        == "Employee Stock Option DATE_PATTERN Grant"
+    )
+    assert (
+        mask_normalized_pattern("Statement for June 2001") == "Statement for MONTH ###"
+    )
+
+
+def test_detects_header_leaks_and_signature_boilerplate() -> None:
+    xml_with_leaks = b"""<?xml version="1.0" encoding="utf-8"?>
+<ownershipDocument>
+    <derivativeTable>
+        <derivativeHolding>
+            <underlyingSecurity>
+                <underlyingSecurityTitle><value>Deemed Execution Date, if any (Month/Day/Year)</value></underlyingSecurityTitle>
+            </underlyingSecurity>
+        </derivativeHolding>
+    </derivativeTable>
+    <ownerSignature>
+        <signatureName>m displays a currently valid OMB number</signatureName>
+        <signatureDate>07/03/2001</signatureDate>
+    </ownerSignature>
+</ownershipDocument>
+"""
+    res = analyze_ownership_xml(xml_with_leaks, accession="0001-01-000003")
+    kinds = [a["kind"] for a in res["anomalies"]]
+    assert "header_leak_in_underlying_security_title" in kinds
+    assert "boilerplate_in_signature_name" in kinds

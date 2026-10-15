@@ -197,6 +197,38 @@ NON_OWNER_JURISDICTION_RE = re.compile(
     rf"^\s*(?:{NON_OWNER_JURISDICTION_ALT})\s*$", re.IGNORECASE
 )
 
+HEADER_LEAK_PHRASES = (
+    "deemed execution",
+    "date of original",
+    "title of security",
+    "individual or joint",
+    "price of derivative",
+    "amount or number",
+    "conversion or exercise",
+)
+
+SIG_BOILERPLATE_TERMS = (
+    "criminal",
+    "violation",
+    "omb",
+    "federal",
+    "intentional",
+    "misstatement",
+    "instruction",
+    "valid omb",
+    "respond",
+    "warning",
+    "pursuant",
+    "reminder",
+    "note:",
+    "potential persons",
+    "displays a currently",
+    "18 u.s.c.",
+    "15 u.s.c.",
+    "sec 1474",
+    "sec 2474",
+)
+
 __all__ = [
     "AMEND_DATE_CLEAN_RE",
     "AMEND_LABEL_RE",
@@ -205,6 +237,7 @@ __all__ = [
     "BOX5_SPLIT_RE",
     "CITY_MATCH_RE",
     "CLEAN_TEMPLATE_RE",
+    "HEADER_LEAK_PHRASES",
     "IRS_RE",
     "ISSUER_LABEL_TERMS",
     "ISSUER_TAIL_RE",
@@ -213,6 +246,7 @@ __all__ = [
     "PERIOD_MATCH_RE",
     "PERIOD_PREFIX_RE",
     "PROSE_BOILERPLATE_RE",
+    "SIG_BOILERPLATE_TERMS",
     "SIG_NAME_RE",
     "SIG_PERSON_PREFIX_RE",
     "STATE_ZIP_RE",
@@ -220,6 +254,7 @@ __all__ = [
     "STREET_MATCH_RE",
     "STRIP_BOX_NUM_RE",
     "SYMBOL_TAIL_RE",
+    "TEMPLATE_LABELS",
     "TICKER_DASH_RE",
     "TICKER_PAREN_RE",
     "TITLE_MATCH_RE",

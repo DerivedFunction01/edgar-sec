@@ -75,3 +75,29 @@ def test_parse_table_i_and_table_ii_rows() -> None:
 
     footnotes = parse_footnotes(sections.footnotes)
     assert footnotes.get("1") == "Gift of shares to charitable foundation."
+
+
+def test_parse_table_ii_strips_header_leaks() -> None:
+    html = """<html><body>
+    <table><tr><td>Table II - Derivative Securities Acquired</td></tr></table>
+    <table>
+      <tr>
+        <td>1. Title of Derivative</td><td>2. Exercise Price</td><td>3. Trans Date</td>
+        <td>4. Code</td><td>5. Amount</td><td>6. Date Exercisable and Exp Date</td>
+        <td>7. Title and Amount Underlying</td><td>8. Price</td><td>9. End of Month</td><td>10. Form</td><td>11. Nature</td>
+      </tr>
+      <tr>
+        <td>Deemed Execution Date, if any (Month/Day/Year)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Employee Stock Option</td><td>$10.00</td><td>06/01/2001</td>
+        <td>A</td><td>100</td><td>06/01/2002 | 06/01/2011</td>
+        <td>Deemed Execution Date, if any (Month/Day/Year)</td><td></td><td>100</td><td>D</td><td></td>
+      </tr>
+    </table>
+    </body></html>"""
+    sections = partition_form4_tables(html)
+    t2_rows = parse_table_ii_rows(sections.table_ii)
+    assert len(t2_rows) == 1
+    assert t2_rows[0].security_title == "Employee Stock Option"
+    assert t2_rows[0].underlying_security_title is None

@@ -62,3 +62,18 @@ def test_partition_form4_merges_fragmented_boxes_tables() -> None:
     sections = partition_form4_tables(html)
     assert sections.boxes_1_to_7 is not None
     assert len(sections.boxes_1_to_7.resolved_grid.rows) == 2
+
+
+def test_partition_form4_filters_statutory_page_artifacts_and_merged_box6() -> None:
+    html = """<html><body>
+    <table><tr><td>1. Name and Address of Reporting Person*\nJane Doe</td></tr></table>
+    <table><tr><td>5. If Amendment, Date of Original (Month/Day/Year)</td></tr></table>
+    <table><tr><td>6. Relationship of Reporting Person(s) to Issuer\n[X] Officer Vice President</td></tr></table>
+    <table><tr><td>Table I - Non-Derivative Securities Acquired</td></tr></table>
+    <table><tr><td>Note:&nbsp;File three copies of this Form, one of which must be manually signed.</td></tr></table>
+    <table><tr><td>SEC 1474 (9-02) (Over)</td></tr></table>
+    </body></html>"""
+    sections = partition_form4_tables(html)
+    assert sections.boxes_1_to_7 is not None
+    assert len(sections.boxes_1_to_7.resolved_grid.rows) == 3
+    assert len(sections.unparsed) == 0

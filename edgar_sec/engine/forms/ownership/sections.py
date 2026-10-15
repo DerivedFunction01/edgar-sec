@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from enum import StrEnum
 
@@ -27,6 +28,18 @@ _UNWRAPPED_BUDGET = RenderBudget(
     max_table_width=10000,
     max_column_width=10000,
     max_text_column_width=10000,
+)
+
+_STATUTORY_PAGE_ARTIFACT_PHRASES = (
+    "reminder: report on a separate",
+    "potential persons who are to respond",
+    "note: file three copies",
+    "see instruction 4(b)(v)",
+    "see instruction 6 for procedure",
+    "sec 1474",
+    "sec 2474",
+    "(over)",
+    "persons who respond to the collection",
 )
 
 
@@ -62,8 +75,12 @@ class Form4Sections:
 def _classify_table_text(
     text: str, num_cols: int = 0, past_tables: bool = False
 ) -> SectionRole:
-    lower = text.lower()
-    if not lower.strip():
+    lower = " ".join(text.lower().split())
+    if not lower:
+        return SectionRole.PAGE_ARTIFACT
+
+    stripped_alnum = re.sub(r"[^a-z0-9]", "", lower)
+    if not stripped_alnum:
         return SectionRole.PAGE_ARTIFACT
 
     # Relative ordering: Boxes 1 to 7 and Header never appear after transaction tables
@@ -74,6 +91,8 @@ def _classify_table_text(
             or ("statement for" in lower and "month" in lower)
             or "i.r.s. identification" in lower
             or "joint/group filing" in lower
+            or ("if amendment" in lower and "date of original" in lower)
+            or "relationship of reporting person" in lower
         ):
             return SectionRole.BOXES_1_TO_7
         if "check this box if no longer" in lower or "omb approval" in lower:
@@ -88,18 +107,26 @@ def _classify_table_text(
     if "signature of reporting person" in lower or "intentional misstatements" in lower:
         return SectionRole.SIGNATURES
 
-    # Footnote classification with relative ordering boost in trailing zone
-    if num_cols < 4 and not any(veto in lower for veto in FOOTNOTE_VETO_PHRASES):
-        fn_score = score_tokens(tokenize(lower), _COMPILED_FOOTNOTE_PACK, _EVIDENCE_CTX)
-        if fn_score.classification == "matched" and not fn_score.exclusions:
-            return SectionRole.FOOTNOTES
-        # In the trailing zone after Table I/II, any block with footnote markers is footnotes
-        if past_tables and any(
-            m in lower for m in ("(1)", "(2)", "1.", "2.", "(a)", "*")
-        ):
-            return SectionRole.FOOTNOTES
+    if any(phrase in lower for phrase in _STATUTORY_PAGE_ARTIFACT_PHRASES):
+        return SectionRole.PAGE_ARTIFACT
 
-    if len(lower.strip()) < 80 and (
+    # Footnote classification with relative ordering boost in trailing zone
+    if past_tables and (
+        "footnote description" in lower
+        or "explanation of responses" in lower
+        or any(m in lower for m in ("(1)", "(2)", "1.", "2.", "(a)", "*"))
+    ):
+        return SectionRole.FOOTNOTES
+
+    if not any(veto in lower for veto in FOOTNOTE_VETO_PHRASES):
+        if num_cols < 6:
+            fn_score = score_tokens(
+                tokenize(lower), _COMPILED_FOOTNOTE_PACK, _EVIDENCE_CTX
+            )
+            if fn_score.classification == "matched" and not fn_score.exclusions:
+                return SectionRole.FOOTNOTES
+
+    if len(lower) < 80 and (
         "form 4" in lower
         or "page " in lower
         or "(continued)" in lower

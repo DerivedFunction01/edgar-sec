@@ -8,7 +8,12 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE
+from edgar_sec.foundation.text.dates import (
+    MONTH_PATTERN,
+    NUMERIC_DATE_RE,
+)
+
+_MONTH_WORD_RE = re.compile(rf"(?i)\b(?:{MONTH_PATTERN})\b")
 
 _VALID_TRANSACTION_CODES = frozenset(
     {
@@ -34,6 +39,49 @@ _VALID_TRANSACTION_CODES = frozenset(
     }
 )
 
+_HEADER_LEAK_PHRASES = (
+    "deemed execution",
+    "date of original",
+    "title of security",
+    "individual or joint",
+    "price of derivative",
+    "amount or number",
+    "conversion or exercise",
+)
+
+_SIGNATURE_BOILERPLATE_PHRASES = (
+    "omb",
+    "reminder",
+    "potential persons",
+    "see instruction",
+    "criminal violations",
+    "valid omb",
+    "intentional misstatements",
+)
+
+_STATUTORY_BOILERPLATE_PHRASES = (
+    "reminder: report on a separate",
+    "potential persons who are to respond",
+    "note: file three copies",
+    "intentional misstatements",
+    "see instruction",
+    "form 4",
+    "check this box if no longer",
+    "table i - non-derivative",
+    "table ii - derivative",
+    "sec 1474",
+    "sec 2474",
+    "(over)",
+)
+
+
+def mask_normalized_pattern(text: str) -> str:
+    """Mask text into structural placeholders for digits, months, and dates."""
+    masked = NUMERIC_DATE_RE.sub("DATE_PATTERN", text)
+    masked = _MONTH_WORD_RE.sub("MONTH", masked)
+    masked = re.sub(r"\d+", "###", masked)
+    return re.sub(r"\s+", " ", masked).strip()
+
 
 def _element_text(elem: ET.Element | None) -> str:
     if elem is None or elem.text is None:
@@ -52,6 +100,7 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
             "element_counts": {},
             "anomalies": [{"kind": "xml_parse_error", "detail": str(err)}],
             "unparsed_sections": [],
+            "core_fields": {},
         }
 
     element_counts: Counter[str] = Counter()
@@ -61,10 +110,11 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
     for elem in root.iter():
         element_counts[elem.tag] += 1
 
-    # Invariant: underlyingSecurityTitle should not contain dates
+    # Invariant: underlyingSecurityTitle should not contain dates or column headers
     for u_elem in root.iter("underlyingSecurityTitle"):
         val_elem = u_elem.find("value")
         text = _element_text(val_elem if val_elem is not None else u_elem)
+        lower = text.lower()
         if text and (NUMERIC_DATE_RE.search(text) or "|" in text):
             anomalies.append(
                 {
@@ -74,18 +124,51 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
                     "detail": "underlying security title contains date pattern",
                 }
             )
+        if text and any(header in lower for header in _HEADER_LEAK_PHRASES):
+            anomalies.append(
+                {
+                    "accession": accession,
+                    "kind": "header_leak_in_underlying_security_title",
+                    "value": text,
+                    "detail": "underlying security title contains column header text",
+                }
+            )
 
-    # Invariant: securityTitle should not contain instruction boilerplate
+    # Invariant: securityTitle should not contain instruction boilerplate or column headers
     for s_elem in root.iter("securityTitle"):
         val_elem = s_elem.find("value")
         text = _element_text(val_elem if val_elem is not None else s_elem)
-        if text and ("title of" in text.lower() or "instr." in text.lower()):
+        lower = text.lower()
+        if text and ("title of" in lower or "instr." in lower):
             anomalies.append(
                 {
                     "accession": accession,
                     "kind": "boilerplate_in_security_title",
                     "value": text,
                     "detail": "security title contains instruction header text",
+                }
+            )
+        if text and any(header in lower for header in _HEADER_LEAK_PHRASES):
+            anomalies.append(
+                {
+                    "accession": accession,
+                    "kind": "header_leak_in_security_title",
+                    "value": text,
+                    "detail": "security title contains column header text",
+                }
+            )
+
+    # Invariant: signatureName should not contain statutory boilerplate
+    for sig_name_elem in root.iter("signatureName"):
+        text = _element_text(sig_name_elem)
+        lower = text.lower()
+        if text and any(b in lower for b in _SIGNATURE_BOILERPLATE_PHRASES):
+            anomalies.append(
+                {
+                    "accession": accession,
+                    "kind": "boilerplate_in_signature_name",
+                    "value": text,
+                    "detail": "signature name contains statutory boilerplate text",
                 }
             )
 
@@ -131,12 +214,28 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
                 }
             )
 
+    # Check presence of canonical core fields
+    core_fields: dict[str, bool] = {
+        "periodOfReport": bool(_element_text(root.find("periodOfReport"))),
+        "issuerName": bool(_element_text(root.find("issuer/issuerName"))),
+        "issuerTradingSymbol": bool(
+            _element_text(root.find("issuer/issuerTradingSymbol"))
+        ),
+        "rptOwnerName": bool(
+            _element_text(root.find("reportingOwner/reportingOwnerId/rptOwnerName"))
+        ),
+        "signatureName": bool(_element_text(root.find("ownerSignature/signatureName"))),
+        "signatureDate": bool(_element_text(root.find("ownerSignature/signatureDate"))),
+    }
+
     # Collect unparsed sections with clean sample snippets
     for unp in root.iter("unparsedSection"):
         t_idx = unp.attrib.get("tableIndex", "")
         role = unp.attrib.get("role", "")
         text = _element_text(unp)
         snippet = re.sub(r"\s+", " ", text)[:240].strip()
+        lower_snip = snippet.lower()
+        is_boilerplate = any(b in lower_snip for b in _STATUTORY_BOILERPLATE_PHRASES)
         unparsed_sections.append(
             {
                 "accession": accession,
@@ -144,15 +243,67 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
                 "role": role,
                 "char_length": len(text),
                 "snippet": snippet,
+                "is_boilerplate": is_boilerplate,
             }
         )
+
+    field_values: dict[str, list[str]] = {
+        "securityTitle": [
+            text
+            for s in root.iter("securityTitle")
+            if (
+                text := _element_text(
+                    s.find("value") if s.find("value") is not None else s
+                )
+            )
+        ],
+        "underlyingSecurityTitle": [
+            text
+            for u in root.iter("underlyingSecurityTitle")
+            if (
+                text := _element_text(
+                    u.find("value") if u.find("value") is not None else u
+                )
+            )
+        ],
+        "signatureName": [
+            text for sig in root.iter("signatureName") if (text := _element_text(sig))
+        ],
+        "officerTitle": [
+            text for off in root.iter("officerTitle") if (text := _element_text(off))
+        ],
+        "rptOwnerName": [
+            text for own in root.iter("rptOwnerName") if (text := _element_text(own))
+        ],
+    }
 
     return {
         "accession": accession,
         "element_counts": dict(sorted(element_counts.items())),
         "anomalies": anomalies,
         "unparsed_sections": unparsed_sections,
+        "core_fields": core_fields,
+        "field_values": field_values,
     }
+
+
+def extract_word_ngrams(text: str, n: int = 2) -> list[str]:
+    """Extract lowercased word n-grams from text."""
+    words = [w.lower() for w in re.findall(r"[A-Za-z0-9#_]+", text)]
+    if n == 1:
+        return words
+    if len(words) < n:
+        return []
+    return [" ".join(words[i : i + n]) for i in range(len(words) - n + 1)]
+
+
+_FIELD_WORD_LIMITS: dict[str, int] = {
+    "securityTitle": 7,
+    "underlyingSecurityTitle": 7,
+    "signatureName": 4,
+    "officerTitle": 6,
+    "rptOwnerName": 6,
+}
 
 
 def analyze_ownership_review_case(
@@ -172,23 +323,148 @@ def summarize_ownership_cases(case_reports: list[dict[str, Any]]) -> dict[str, A
     total_elements: Counter[str] = Counter()
     all_anomalies: list[dict[str, Any]] = []
     all_unparsed: list[dict[str, Any]] = []
+    field_counts: Counter[str] = Counter()
 
     for rep in case_reports:
         for tag, count in rep.get("element_counts", {}).items():
             total_elements[tag] += count
+        for field, present in rep.get("core_fields", {}).items():
+            if present:
+                field_counts[field] += 1
         all_anomalies.extend(rep.get("anomalies", []))
         all_unparsed.extend(rep.get("unparsed_sections", []))
 
-    # Take representative samples of unparsed sections (up to 10 unique snippets)
+    case_count = max(1, len(case_reports))
+    field_completeness = {
+        field: f"{field_counts[field]}/{case_count} ({field_counts[field] * 100 // case_count}%)"
+        for field in (
+            "periodOfReport",
+            "issuerName",
+            "issuerTradingSymbol",
+            "rptOwnerName",
+            "signatureName",
+            "signatureDate",
+        )
+    }
+
+    substantive_unparsed = [
+        item for item in all_unparsed if not item.get("is_boilerplate")
+    ]
+    boilerplate_unparsed_count = len(all_unparsed) - len(substantive_unparsed)
+
+    # Take representative samples prioritizing substantive unparsed sections
     seen_snippets: set[str] = set()
     unparsed_samples: list[dict[str, Any]] = []
-    for item in all_unparsed:
+    target_pool = substantive_unparsed if substantive_unparsed else all_unparsed
+    for item in target_pool:
         snip = item["snippet"]
         if snip not in seen_snippets:
             seen_snippets.add(snip)
             unparsed_samples.append(item)
             if len(unparsed_samples) >= 10:
                 break
+
+    # Outlier and uncommonness analysis across corpus
+    missing_signatures = [
+        rep["accession"]
+        for rep in case_reports
+        if not rep.get("core_fields", {}).get("signatureName")
+    ]
+    missing_periods = [
+        rep["accession"]
+        for rep in case_reports
+        if not rep.get("core_fields", {}).get("periodOfReport")
+    ]
+    missing_owners = [
+        rep["accession"]
+        for rep in case_reports
+        if not rep.get("core_fields", {}).get("rptOwnerName")
+    ]
+
+    word_count_outliers: list[dict[str, Any]] = []
+    field_pattern_counts: dict[str, Counter[str]] = {
+        f: Counter()
+        for f in (
+            "securityTitle",
+            "underlyingSecurityTitle",
+            "signatureName",
+            "officerTitle",
+        )
+    }
+    field_pattern_samples: dict[str, dict[str, str]] = {
+        f: {}
+        for f in (
+            "securityTitle",
+            "underlyingSecurityTitle",
+            "signatureName",
+            "officerTitle",
+        )
+    }
+    field_ngram_counts: dict[str, Counter[str]] = {
+        f: Counter()
+        for f in (
+            "securityTitle",
+            "underlyingSecurityTitle",
+            "signatureName",
+            "officerTitle",
+        )
+    }
+
+    for rep in case_reports:
+        acc = rep.get("accession", "")
+        for fld, vals in rep.get("field_values", {}).items():
+            limit = _FIELD_WORD_LIMITS.get(fld, 10)
+            for v in vals:
+                w_list = v.split()
+                if len(w_list) > limit:
+                    word_count_outliers.append(
+                        {
+                            "accession": acc,
+                            "field": fld,
+                            "word_count": len(w_list),
+                            "value": v[:120],
+                        }
+                    )
+                if fld in field_pattern_counts:
+                    pat = mask_normalized_pattern(v)
+                    field_pattern_counts[fld][pat] += 1
+                    if pat not in field_pattern_samples[fld]:
+                        field_pattern_samples[fld][pat] = acc
+                    for ng in extract_word_ngrams(v, n=2):
+                        field_ngram_counts[fld][ng] += 1
+
+    common_patterns_by_field: dict[str, list[dict[str, Any]]] = {}
+    uncommon_patterns_by_field: dict[str, list[dict[str, Any]]] = {}
+    rare_ngrams_by_field: dict[str, list[dict[str, Any]]] = {}
+
+    for fld, pat_counter in field_pattern_counts.items():
+        if not pat_counter:
+            continue
+        common_patterns_by_field[fld] = [
+            {"pattern": p, "count": c} for p, c in pat_counter.most_common(5)
+        ]
+        uncommon_candidates = [
+            {
+                "pattern": p,
+                "count": c,
+                "sample_accession": field_pattern_samples[fld][p],
+            }
+            for p, c in sorted(pat_counter.items(), key=lambda kv: (kv[1], kv[0]))
+            if c <= 2 and (case_count < 10 or c < case_count * 0.05)
+        ]
+        if uncommon_candidates:
+            uncommon_patterns_by_field[fld] = uncommon_candidates[:5]
+
+    for fld, ng_counter in field_ngram_counts.items():
+        if not ng_counter:
+            continue
+        rare_candidates = [
+            {"ngram": ng, "count": c}
+            for ng, c in sorted(ng_counter.items(), key=lambda kv: (kv[1], kv[0]))
+            if c <= 2 and (case_count < 10 or c < case_count * 0.05)
+        ]
+        if rare_candidates:
+            rare_ngrams_by_field[fld] = rare_candidates[:5]
 
     return {
         "family": "4",
@@ -197,7 +473,30 @@ def summarize_ownership_cases(case_reports: list[dict[str, Any]]) -> dict[str, A
         "anomaly_count": len(all_anomalies),
         "anomalies": all_anomalies,
         "unparsed_section_count": len(all_unparsed),
+        "boilerplate_unparsed_count": boilerplate_unparsed_count,
+        "substantive_unparsed_count": len(substantive_unparsed),
         "unparsed_samples": unparsed_samples,
+        "field_completeness": field_completeness,
+        "outliers": {
+            "missing_fields": {
+                "missing_signatures": {
+                    "count": len(missing_signatures),
+                    "sample_accessions": missing_signatures[:5],
+                },
+                "missing_periods": {
+                    "count": len(missing_periods),
+                    "sample_accessions": missing_periods[:5],
+                },
+                "missing_owners": {
+                    "count": len(missing_owners),
+                    "sample_accessions": missing_owners[:5],
+                },
+            },
+            "word_count_outliers": word_count_outliers[:10],
+            "common_patterns": common_patterns_by_field,
+            "uncommon_patterns": uncommon_patterns_by_field,
+            "rare_ngrams": rare_ngrams_by_field,
+        },
     }
 
 
@@ -208,6 +507,8 @@ __all__ = [
     "analyze_case",
     "analyze_ownership_review_case",
     "analyze_ownership_xml",
+    "extract_word_ngrams",
+    "mask_normalized_pattern",
     "summarize_cases",
     "summarize_ownership_cases",
 ]

@@ -124,3 +124,18 @@ def test_parse_period_and_amendments() -> None:
     assert p2.period_of_report == "02/19/2003"
     assert p2.is_amendment is True
     assert p2.date_of_original == "01/15/2003"
+
+
+def test_parse_metadata_rejects_omb_and_statutory_boilerplate() -> None:
+    html = """<html><body>
+    <table><tr><td>1. Name and Address of Reporting Person*\nJane Doe</td></tr></table>
+    <table><tr>
+      <td>** Intentional misstatements or omissions of facts constitute Federal Criminal Violations.</td>
+      <td>m displays a currently valid OMB number\n**Signature of Reporting Person</td>
+      <td>10/15/2026</td>
+    </tr></table>
+    </body></html>"""
+    sections = partition_form4_tables(html)
+    meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
+    assert meta.signature_name is None
+    assert meta.signature_date == "10/15/2026"

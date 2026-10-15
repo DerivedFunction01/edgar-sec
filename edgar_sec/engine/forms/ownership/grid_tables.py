@@ -5,6 +5,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 import re
 
+from edgar_sec.engine.forms.ownership.patterns import (
+    HEADER_LEAK_PHRASES,
+    TEMPLATE_LABELS,
+)
 from edgar_sec.engine.forms.ownership.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import (
     CURRENCY_TOKEN_RE,
@@ -101,25 +105,35 @@ def _table_i_column_mapping(
         " ".join(grid_rows[r]) for r in range(min(header_count, len(grid_rows)))
     ).lower()
     has_3a = "3a" in header_text or "deemed" in header_text or num_cols >= 8
-    if has_3a:
-        return {
-            "title": 0,
-            "date": 1,
-            "code": 3,
-            "amount": 4,
-            "following": 5,
-            "form": 6,
-            "nature": 7,
-        }
-    return {
+    mapping = {
         "title": 0,
         "date": 1,
-        "code": 2,
-        "amount": 3,
-        "following": 4,
-        "form": 5,
-        "nature": 6,
+        "code": 3 if has_3a else 2,
+        "amount": 4 if has_3a else 3,
+        "following": 5 if has_3a else 4,
+        "form": 6 if has_3a else 5,
+        "nature": 7 if has_3a else 6,
     }
+    if header_count > 0 and grid_rows:
+        for c in range(num_cols):
+            col_text = " ".join(
+                grid_rows[r][c]
+                for r in range(min(header_count, len(grid_rows)))
+                if len(grid_rows[r]) > c
+            ).lower()
+            if "title of security" in col_text or (c == 0 and "title" in col_text):
+                mapping["title"] = c
+            elif "transaction date" in col_text:
+                mapping["date"] = c
+            elif "transaction code" in col_text or "instr. 8" in col_text:
+                mapping["code"] = c
+            elif "beneficially owned" in col_text or "following" in col_text:
+                mapping["following"] = c
+            elif "ownership form" in col_text or "direct (d)" in col_text:
+                mapping["form"] = c
+            elif "nature of indirect" in col_text:
+                mapping["nature"] = c
+    return mapping
 
 
 def _table_ii_column_mapping(
@@ -130,33 +144,48 @@ def _table_ii_column_mapping(
         " ".join(grid_rows[r]) for r in range(min(header_count, len(grid_rows)))
     ).lower()
     has_3a = "3a" in header_text or "deemed" in header_text or num_cols >= 12
-    if has_3a:
-        return {
-            "title": 0,
-            "price": 1,
-            "date": 2,
-            "code": 4,
-            "amount": 5,
-            "dates": 6,
-            "underlying": 7,
-            "deriv_price": 8,
-            "following": 9,
-            "form": 10,
-            "nature": 11,
-        }
-    return {
+    mapping = {
         "title": 0,
         "price": 1,
         "date": 2,
-        "code": 3,
-        "amount": 4,
-        "dates": 5,
-        "underlying": 6,
-        "deriv_price": 7,
-        "following": 8,
-        "form": 9,
-        "nature": 10,
+        "code": 4 if has_3a else 3,
+        "amount": 5 if has_3a else 4,
+        "dates": 6 if has_3a else 5,
+        "underlying": 7 if has_3a else 6,
+        "deriv_price": 8 if has_3a else 7,
+        "following": 9 if has_3a else 8,
+        "form": 10 if has_3a else 9,
+        "nature": 11 if has_3a else 10,
     }
+    scan_limit = min(4, len(grid_rows))
+    if scan_limit > 0 and grid_rows:
+        for c in range(num_cols):
+            col_text = " ".join(
+                grid_rows[r][c] for r in range(scan_limit) if len(grid_rows[r]) > c
+            ).lower()
+            if "conversion or exercise" in col_text or (
+                c == 1 and "price" in col_text and "derivative" not in col_text
+            ):
+                mapping["price"] = c
+            elif "transaction date" in col_text and "deemed" not in col_text:
+                mapping["date"] = c
+            elif "transaction code" in col_text or "instr. 8" in col_text:
+                mapping["code"] = c
+            elif "date exercisable" in col_text or "expiration date" in col_text:
+                mapping["dates"] = c
+            elif "underlying" in col_text or "title and amount" in col_text:
+                mapping["underlying"] = c
+            elif "amount or number of shares" in col_text:
+                mapping["underlying_shares"] = c
+            elif "price of derivative" in col_text:
+                mapping["deriv_price"] = c
+            elif "beneficially owned" in col_text or "following" in col_text:
+                mapping["following"] = c
+            elif "ownership form" in col_text or "direct (d)" in col_text:
+                mapping["form"] = c
+            elif "nature of indirect" in col_text:
+                mapping["nature"] = c
+    return mapping
 
 
 def parse_table_i_rows(
@@ -174,10 +203,15 @@ def parse_table_i_rows(
             continue
 
         security_title = row[cols["title"]].strip() if len(row) > cols["title"] else ""
+        sec_title_low = security_title.lower()
         if (
             not security_title
-            or "title of" in security_title.lower()
-            or "instr." in security_title.lower()
+            or "title of" in sec_title_low
+            or "instr." in sec_title_low
+            or "month/day" in sec_title_low
+            or "table i" in sec_title_low
+            or any(f"({lbl.lower()})" in sec_title_low for lbl in TEMPLATE_LABELS)
+            or any(h in sec_title_low for h in HEADER_LEAK_PHRASES)
         ):
             continue
 
@@ -254,10 +288,15 @@ def parse_table_ii_rows(
             continue
 
         security_title = row[cols["title"]].strip() if len(row) > cols["title"] else ""
+        sec_title_low = security_title.lower()
         if (
             not security_title
-            or "title of" in security_title.lower()
-            or "instr." in security_title.lower()
+            or "title of" in sec_title_low
+            or "instr." in sec_title_low
+            or "month/day" in sec_title_low
+            or "table ii" in sec_title_low
+            or any(f"({lbl.lower()})" in sec_title_low for lbl in TEMPLATE_LABELS)
+            or any(h in sec_title_low for h in HEADER_LEAK_PHRASES)
         ):
             continue
 
@@ -298,13 +337,26 @@ def parse_table_ii_rows(
         underlying_cell = row[u_col].strip() if len(row) > u_col else ""
         underlying_title: str | None = None
         underlying_shares: float | None = None
-        if "-" in underlying_cell:
+        ushares_col = cols.get("underlying_shares")
+        if (
+            ushares_col is not None
+            and len(row) > ushares_col
+            and row[ushares_col].strip()
+        ):
+            underlying_shares = _extract_number(row[ushares_col].strip())
+            underlying_title = underlying_cell if underlying_cell else None
+        elif "-" in underlying_cell:
             u_parts = [p.strip() for p in underlying_cell.rsplit("-", 1)]
             underlying_title = u_parts[0]
             if len(u_parts) > 1:
                 underlying_shares = _extract_number(u_parts[1])
         elif underlying_cell:
             underlying_title = underlying_cell
+
+        if underlying_title and is_numeric_cell(underlying_title):
+            if not underlying_shares:
+                underlying_shares = _extract_number(underlying_title)
+            underlying_title = None
 
         if underlying_title and (
             bool(NUMERIC_DATE_RE.search(underlying_title)) or "|" in underlying_title
@@ -316,6 +368,16 @@ def parse_table_ii_rows(
                 expiration_date = date_matches[1]
             underlying_title = None
             underlying_shares = None
+
+        if underlying_title:
+            u_low = underlying_title.lower()
+            if (
+                any(h in u_low for h in HEADER_LEAK_PHRASES)
+                or "instr." in u_low
+                or "month/day" in u_low
+            ):
+                underlying_title = None
+                underlying_shares = None
 
         deriv_col = cols["deriv_price"]
         deriv_price_cell = row[deriv_col].strip() if len(row) > deriv_col else ""

@@ -130,6 +130,36 @@ def cmd_review_analyze(args: argparse.Namespace) -> int:
                         f"    [table {sample['table_index']} - role={sample['role']} - "
                         f"{sample['char_length']} chars]: {sample['snippet'][:100]}..."
                     )
+                if outliers := fam_rep.get("outliers"):
+                    print("  Outliers & Uncommon Patterns:")
+                    missing = outliers.get("missing_fields", {})
+                    if sig_miss := missing.get("missing_signatures"):
+                        if sig_miss["count"] > 0:
+                            samples = ", ".join(sig_miss["sample_accessions"][:3])
+                            print(
+                                f"    Missing Signatures: {sig_miss['count']} cases (samples: {samples})"
+                            )
+                    if wc_outliers := outliers.get("word_count_outliers"):
+                        print(f"    Word Count Outliers ({len(wc_outliers)}):")
+                        for wco in wc_outliers[:5]:
+                            print(
+                                f"      [{wco['field']}] {wco['accession']} "
+                                f"({wco['word_count']} words): '{wco['value']}'"
+                            )
+                    if unp_pats := outliers.get("uncommon_patterns"):
+                        print("    Uncommon Normalized Patterns:")
+                        for fld, plist in unp_pats.items():
+                            for pentry in plist[:2]:
+                                print(
+                                    f"      [{fld}] '{pentry['pattern']}' "
+                                    f"({pentry['count']} cases, sample: {pentry['sample_accession']})"
+                                )
+                    if rare_ngs := outliers.get("rare_ngrams"):
+                        print("    Rare N-Grams:")
+                        for fld, nglist in rare_ngs.items():
+                            ng_str = ", ".join(f"'{ng['ngram']}'" for ng in nglist[:3])
+                            if ng_str:
+                                print(f"      [{fld}]: {ng_str}")
     return 0
 
 
