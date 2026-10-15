@@ -19,10 +19,7 @@ from edgar_sec.foundation.runtime.interactive import (
 )
 from edgar_sec.foundation.runtime.settings import resolve_settings
 from edgar_sec.foundation.runtime.settings.validators import positive_int_type
-from edgar_sec.pipelines.document_acquisition.cli import (
-    main as cli_main,
-    report_not_implemented,
-)
+from edgar_sec.pipelines.document_acquisition.cli import main as cli_main
 from edgar_sec.pipelines.document_acquisition.commands.status import (
     discover_run_ids,
 )
@@ -39,13 +36,6 @@ from edgar_sec.pipelines.document_acquisition.run_validation import (
 )
 
 MENU_TITLE = "Document Acquisition"
-
-
-def _action(command: str, track: str) -> MenuAction:
-    return menu_action(
-        track,
-        lambda: report_not_implemented(command),
-    )
 
 
 def _action_project() -> None:
@@ -337,12 +327,18 @@ def _action_publish_run() -> None:
     )
     if chosen is None:
         return
+    run_id = str(chosen.value)
     branch = prompt_text("Destination DAG branch", "main").strip() or "main"
+    if not prompt_confirm(
+        f"Publish acquisition run {run_id} to DAG branch {branch}?", default=False
+    ):
+        print("Publication cancelled; the snapshot DAG was not changed.")
+        return
     cli_main(
         [
             "publish",
             "--run-id",
-            str(chosen.value),
+            run_id,
             "--branch",
             branch,
             "--artifacts",
@@ -368,8 +364,8 @@ def _action_inspect_snapshot() -> None:
 
 def _build_snapshot_menu() -> tuple[MenuAction, ...]:
     return build_menu(
-        menu_action("Publish snapshot (S11 gate)", _action_publish_run),
-        menu_action("Snapshot status (S11 gate)", _action_inspect_snapshot),
+        menu_action("Publish snapshot", _action_publish_run),
+        menu_action("Snapshot status", _action_inspect_snapshot),
     )
 
 
@@ -386,7 +382,7 @@ def build_operator_menu() -> tuple[MenuAction, ...]:
         menu_action("Inspect acquisition runs", _action_status),
         menu_action("Run acquisition and process acquired bodies", _action_run),
         menu_action(
-            "Snapshot console (publish, status; S11 gate)",
+            "Snapshot console (publish, status)",
             _action_snapshot_console,
             key="p",
         ),

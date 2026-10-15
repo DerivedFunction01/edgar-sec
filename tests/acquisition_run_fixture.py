@@ -52,6 +52,8 @@ def make_acquisition_run(
     executable: bool = True,
     sibling_failure: bool = False,
     default_candidates: bool = False,
+    form: str = "10-K",
+    filename: str | None = None,
 ):
     paths = resolve_acquisition_paths(artifacts_root=artifacts_root)
     run_id = "acq_test-run"
@@ -61,15 +63,16 @@ def make_acquisition_run(
     archive_root = (
         f"https://www.sec.gov/Archives/edgar/data/320193/{_ACCESSION_COMPACT}/"
     )
-    target_url = (
-        f"{archive_root}{_ACCESSION}.txt"
-        if bundle or default_candidates
-        else f"{archive_root}cover.htm"
-    )
+    if filename is not None:
+        target_url = f"{archive_root}{filename}"
+    elif bundle or default_candidates:
+        target_url = f"{archive_root}{_ACCESSION}.txt"
+    else:
+        target_url = f"{archive_root}cover.htm"
     row = {
         "target_id": "target-1",
         "accession": _ACCESSION,
-        "form": "10-K",
+        "form": form,
         "filing_date": "2020-01-30",
         "request_id": "request-1",
         "target_role": "primary",

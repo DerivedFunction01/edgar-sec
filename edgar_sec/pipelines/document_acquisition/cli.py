@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import argparse
-import json
 import sqlite3
 import sys
 
@@ -30,50 +29,7 @@ from edgar_sec.pipelines.document_acquisition.commands.snapshot import (
 )
 from edgar_sec.pipelines.document_acquisition.commands.status import cmd_status
 
-__all__ = ["build_parser", "main", "report_not_implemented"]
-
-
-_TRACKS = {
-    "project": "S9 target-plan projection",
-    "status": "S9 run-state inspection",
-    "run": "S9 network acquisition",
-    "publish": "S11 Parquet/DAG publication",
-    "fixture create": "S9 fixture initialization",
-    "fixture fill": "S9 fixture capture",
-    "fixture list": "S9 fixture discovery",
-    "review generate": "S7 review artifact generation",
-    "review compare": "S7 review comparison",
-    "review analyze": "S7 review-run analysis",
-    "review label": "M8 exhibit label capture",
-    "review holdout": "M8 issuer/time-separated exhibit evaluation",
-    "snapshot status": "S11 snapshot availability",
-}
-
-
-def report_not_implemented(command: str, *, json_output: bool = False) -> int:
-    track = _TRACKS[command]
-    message = "This command track is not implemented; no work was performed."
-    status = "not_implemented"
-    if command == "publish":
-        message = (
-            "S11 publication is gated on representative S9/S10 evidence and explicit "
-            "approval; no work was performed."
-        )
-        status = "blocked_by_gate"
-    elif command == "snapshot status":
-        message = "No acquisition snapshot is published; S11 publication remains gated."
-    result = {
-        "command": command,
-        "implemented": False,
-        "message": message,
-        "status": status,
-        "track": track,
-    }
-    if json_output:
-        print(json.dumps(result, sort_keys=True))
-    else:
-        print(f"not implemented: {track}; {message}", file=sys.stderr)
-    return 2
+__all__ = ["build_parser", "main"]
 
 
 def _add_output_options(parser: argparse.ArgumentParser) -> None:
@@ -120,7 +76,9 @@ def build_parser() -> argparse.ArgumentParser:
     _add_output_options(run)
     run.set_defaults(func=cmd_run)
 
-    publish = commands.add_parser("publish", help="publish an approved S11 snapshot")
+    publish = commands.add_parser(
+        "publish", help="publish a completed run to the S11 snapshot DAG"
+    )
     publish.add_argument("--run-id", required=True, help="completed acquisition run id")
     publish.add_argument("--branch", default="main")
     publish.add_argument("--expected-branch-tip", default=None)

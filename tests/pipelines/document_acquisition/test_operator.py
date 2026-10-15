@@ -73,8 +73,8 @@ def test_snapshot_console_keeps_its_independent_contract(monkeypatch):
     assert title == "Document Acquisition Snapshot Console"
     assert [action.key for action in actions] == ["1", "2"]
     assert [action.label for action in actions] == [
-        "Publish snapshot (S11 gate)",
-        "Snapshot status (S11 gate)",
+        "Publish snapshot",
+        "Snapshot status",
     ]
     assert kwargs == {}
 
@@ -286,3 +286,77 @@ def test_operator_exposes_one_fixture_review_console_without_export_action() -> 
     assert any("Fixtures and review console" in label for label in labels)
     assert not any("Replay local fixture" in label for label in labels)
     assert not any("Create local fixture" in label for label in labels)
+
+
+def test_publish_action_requires_confirmation_and_dispatches_selected_run(
+    tmp_path, monkeypatch
+) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    choices = iter((operator.PickItem("run-1", "run-1", "run-1"),))
+    calls = []
+    confirms = iter((True,))
+    monkeypatch.setattr(operator, "resolve_acquisition_paths", lambda: paths)
+    monkeypatch.setattr(operator, "discover_run_ids", lambda _paths: ["run-1"])
+    monkeypatch.setattr(
+        operator, "prompt_paginated_choice", lambda *_args, **_kwargs: next(choices)
+    )
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "main")
+    monkeypatch.setattr(
+        operator, "prompt_confirm", lambda *_args, **_kwargs: next(confirms)
+    )
+    monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
+
+    operator._action_publish_run()
+
+    assert calls == [
+        [
+            "publish",
+            "--run-id",
+            "run-1",
+            "--branch",
+            "main",
+            "--artifacts",
+            str(tmp_path),
+        ]
+    ]
+
+
+def test_publish_action_cancellation_does_not_dispatch(tmp_path, monkeypatch, capsys):
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    monkeypatch.setattr(operator, "resolve_acquisition_paths", lambda: paths)
+    monkeypatch.setattr(operator, "discover_run_ids", lambda _paths: ["run-1"])
+    monkeypatch.setattr(
+        operator,
+        "prompt_paginated_choice",
+        lambda *_args, **_kwargs: operator.PickItem("run-1", "run-1", "run-1"),
+    )
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "main")
+    monkeypatch.setattr(operator, "prompt_confirm", lambda *_args, **_kwargs: False)
+    monkeypatch.setattr(
+        operator, "cli_main", lambda _args: pytest.fail("cancelled publish ran")
+    )
+
+    operator._action_publish_run()
+
+    assert "Publication cancelled" in capsys.readouterr().out
+
+
+def test_snapshot_status_action_dispatches_selected_branch(tmp_path, monkeypatch):
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    calls = []
+    monkeypatch.setattr(operator, "resolve_acquisition_paths", lambda: paths)
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "main")
+    monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
+
+    operator._action_inspect_snapshot()
+
+    assert calls == [
+        [
+            "snapshot",
+            "status",
+            "--branch",
+            "main",
+            "--artifacts",
+            str(tmp_path),
+        ]
+    ]

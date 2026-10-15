@@ -95,6 +95,95 @@ class ProcessingBudgetRegistry:
 DEFAULT_PROCESSING_BUDGETS = ProcessingBudgetRegistry()
 
 
+def production_processing_budgets() -> ProcessingBudgetRegistry:
+    """Return verified production execution budget envelopes for registered route handlers."""
+    return ProcessingBudgetRegistry(
+        (
+            ProcessingBudgetPolicy(
+                budget_version="production_v1",
+                route=DocumentRoute.MARKUP,
+                handler_id="normalize_document",
+                handler_version="1",
+                max_input_bytes=67_108_864,
+                max_output_bytes=33_554_432,
+                working_set_reservation_bytes=134_217_728,
+            ),
+            ProcessingBudgetPolicy(
+                budget_version="production_v1",
+                route=DocumentRoute.TEXT,
+                handler_id="normalize_document",
+                handler_version="1",
+                max_input_bytes=67_108_864,
+                max_output_bytes=33_554_432,
+                working_set_reservation_bytes=134_217_728,
+            ),
+            ProcessingBudgetPolicy(
+                budget_version="production_v1",
+                route=DocumentRoute.RENDERED,
+                handler_id="normalize_document",
+                handler_version="1",
+                max_input_bytes=67_108_864,
+                max_output_bytes=33_554_432,
+                working_set_reservation_bytes=134_217_728,
+            ),
+            ProcessingBudgetPolicy(
+                budget_version="production_v1",
+                route=DocumentRoute.MARKUP,
+                handler_id="form4_html_to_xml",
+                handler_version="1",
+                max_input_bytes=16_777_216,
+                max_output_bytes=16_777_216,
+                working_set_reservation_bytes=67_108_864,
+            ),
+            ProcessingBudgetPolicy(
+                budget_version="production_v1",
+                route=DocumentRoute.XML,
+                handler_id="form4_html_to_xml",
+                handler_version="1",
+                max_input_bytes=16_777_216,
+                max_output_bytes=16_777_216,
+                working_set_reservation_bytes=67_108_864,
+            ),
+            ProcessingBudgetPolicy(
+                budget_version="production_v1",
+                route=DocumentRoute.MARKUP,
+                handler_id="form3_html_to_xml",
+                handler_version="1",
+                max_input_bytes=16_777_216,
+                max_output_bytes=16_777_216,
+                working_set_reservation_bytes=67_108_864,
+            ),
+            ProcessingBudgetPolicy(
+                budget_version="production_v1",
+                route=DocumentRoute.XML,
+                handler_id="form3_html_to_xml",
+                handler_version="1",
+                max_input_bytes=16_777_216,
+                max_output_bytes=16_777_216,
+                working_set_reservation_bytes=67_108_864,
+            ),
+            ProcessingBudgetPolicy(
+                budget_version="production_v1",
+                route=DocumentRoute.MARKUP,
+                handler_id="form5_html_to_xml",
+                handler_version="1",
+                max_input_bytes=16_777_216,
+                max_output_bytes=16_777_216,
+                working_set_reservation_bytes=67_108_864,
+            ),
+            ProcessingBudgetPolicy(
+                budget_version="production_v1",
+                route=DocumentRoute.XML,
+                handler_id="form5_html_to_xml",
+                handler_version="1",
+                max_input_bytes=16_777_216,
+                max_output_bytes=16_777_216,
+                working_set_reservation_bytes=67_108_864,
+            ),
+        )
+    )
+
+
 def select_operation_execution(
     request: ProcessingRequest,
     prior_results: tuple[OperationResult, ...] | None,
@@ -521,6 +610,7 @@ __all__ = [
     "ProcessingIOError",
     "admit_processing_budget",
     "operation_fingerprint",
+    "production_processing_budgets",
     "resolve_requested_operation_budgets",
     "read_bounded_source",
     "select_operation_execution",

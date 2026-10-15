@@ -90,3 +90,26 @@ def test_derived_output_stages_atomically_with_verified_identity(
             expected_sha256="0" * 64,
             expected_size=len(output),
         )
+
+
+def test_production_processing_budgets_registers_standard_handlers() -> None:
+    from edgar_sec.pipelines.document_acquisition.processing.io import (
+        production_processing_budgets,
+    )
+
+    budgets = production_processing_budgets()
+    assert len(budgets.policies) == 9
+
+    norm_markup = budgets.get(DocumentRoute.MARKUP, "normalize_document", "1")
+    assert norm_markup is not None
+    assert norm_markup.max_input_bytes == 67_108_864
+
+    norm_text = budgets.get(DocumentRoute.TEXT, "normalize_document", "1")
+    assert norm_text is not None
+
+    form4_xml = budgets.get(DocumentRoute.XML, "form4_html_to_xml", "1")
+    assert form4_xml is not None
+    assert form4_xml.max_input_bytes == 16_777_216
+
+    form4_markup = budgets.get(DocumentRoute.MARKUP, "form4_html_to_xml", "1")
+    assert form4_markup is not None

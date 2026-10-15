@@ -20,6 +20,10 @@ from edgar_sec.pipelines.document_acquisition.body_handoff import (
     read_body_consumption_receipt,
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
+from edgar_sec.pipelines.document_acquisition.processing.io import (
+    ProcessingBudgetRegistry,
+    production_processing_budgets,
+)
 from edgar_sec.pipelines.document_acquisition.processing.worker import process_target
 from edgar_sec.pipelines.document_acquisition.processing import work_order
 from edgar_sec.pipelines.document_acquisition.processing.models import (
@@ -386,7 +390,16 @@ def _process_target(
     prior_result: dict[str, object] | None,
     states: dict[str, object],
     retry_failures: bool,
+    budget_registry: ProcessingBudgetRegistry | None = None,
 ) -> ProcessingResult:
+    parameters = inspect.signature(process_target).parameters
+    kwargs: dict[str, object] = {}
+    if "budget_registry" in parameters:
+        kwargs["budget_registry"] = (
+            budget_registry
+            if budget_registry is not None
+            else production_processing_budgets()
+        )
     reused = tuple(
         operation.operation_id
         for operation in request.operations
@@ -395,12 +408,11 @@ def _process_target(
         and not _eligible(states[operation.operation_id], retry_failures)
     )
     if not reused:
-        return process_target(request, paths=paths)
+        return process_target(request, paths=paths, **kwargs)
     if prior_result is None:
         raise ProcessingRunIntegrationError(
             "completed operation state has no validated S10 result manifest"
         )
-    parameters = inspect.signature(process_target).parameters
     operation_parameter = next(
         (
             name
@@ -423,6 +435,7 @@ def _process_target(
         request,
         paths=paths,
         prior_results=_prior_results(paths, request.body.run_id, prior_result, reused),
+        **kwargs,
         **{operation_parameter: selected_operation_ids},
     )
 
@@ -548,6 +561,7 @@ def process_acquired_target(
     retry_failures: bool,
     relation_connection: sqlite3.Connection,
     operation_states_path: Path,
+    budget_registry: ProcessingBudgetRegistry | None = None,
 ) -> bool:
     target_id = str(target["target_id"])
     target_state = get_target_state(operation_states_path, target_id)
@@ -596,6 +610,7 @@ def process_acquired_target(
             prior_result=prior_result,
             states=states,
             retry_failures=retry_failures,
+            budget_registry=budget_registry,
         )
     except ProcessingRunIntegrationError:
         raise
