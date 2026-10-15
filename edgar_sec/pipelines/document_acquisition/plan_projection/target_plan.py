@@ -580,7 +580,7 @@ def _iter_projected_batches(parts: tuple[Path, ...]):
         "ELSE NULL END AS lazy_index_trigger_id, "
         f"CASE WHEN {trigger_predicate} THEN '1' "
         "ELSE NULL END AS lazy_index_trigger_version "
-        f"FROM read_parquet({sql_path_list([str(path) for path in parts])}) AS target "
+        f"FROM read_parquet({sql_path_list([str(path) for path in parts])}, hive_partitioning=false) AS target "
         "ORDER BY form, accession, request_id, "
         "COALESCE(inventory_entry_id, ''), status"
     )

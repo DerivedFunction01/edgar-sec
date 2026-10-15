@@ -582,3 +582,26 @@ def test_load_work_order_lazy_index_trigger_projection(
     assert versions[0] == "1"
     assert triggers[1] is None
     assert versions[1] is None
+
+
+def test_load_work_order_numeric_form_hive_partition_safety(
+    target_plan_factory, tmp_path
+) -> None:
+    """Numeric form partition names must not be inferred as INT64 in DuckDB."""
+    base_rows = _rows("test_plan")
+    custom_rows = [
+        dict(
+            base_rows[0],
+            form="4",
+            source_origin="catalog_direct",
+            target_role="primary",
+            target_type="primary",
+            catalog_direct_selection="submitted_primary",
+            inventory_entry_id=None,
+        ),
+    ]
+    plan_root, _ = target_plan_factory(custom_rows, has_inventory_snapshot=False)
+    out = load_acquisition_work_order(plan_root, tmp_path / "work_order.parquet")
+    table = pq.read_table(out.parquet_path)
+    assert table.column("form").to_pylist() == ["4"]
+    assert table.column("lazy_index_trigger_id").to_pylist() == [None]
