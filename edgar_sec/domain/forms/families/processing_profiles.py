@@ -107,13 +107,25 @@ def get_family_profile(family: str) -> DocumentProcessingProfile | None:
     return entry.profile if entry is not None else None
 
 
+LAZY_INDEX_FORM_FAMILIES: frozenset[str] = frozenset({"10-K", "10-Q", "8-K", "20-F"})
+
+
+def get_lazy_index_trigger(family: str | None) -> tuple[str, str] | None:
+    """Return trigger ID and version for declared lazy-index families."""
+    entry = get_family_entry(family)
+    if entry is None or entry.family not in LAZY_INDEX_FORM_FAMILIES:
+        return None
+    return f"{entry.family}.exact_form", "1"
+
+
 __all__ = [
     "FAMILY_PROCESSING_PROFILES",
+    "LAZY_INDEX_FORM_FAMILIES",
     "ANNUAL_PROFILE",
     "QUARTERLY_PROFILE",
     "CURRENT_PROFILE",
-    "OWNERSHIP_PROFILE",
     "ProcessingCatalogEntry",
     "get_family_entry",
     "get_family_profile",
+    "get_lazy_index_trigger",
 ]

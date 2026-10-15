@@ -57,12 +57,15 @@ and production evidence are separate axes:
   migration or a compatibility reader.
 - [x] **M2E — Trace opt-out:** S10's `capture_stage_trace=False` normalizer option is
    implemented.
-- [~] **M3 — Acquisition runner:** direct and bundle acquisition, multi-request
+- [x] **M3 — Acquisition runner:** direct and bundle acquisition, multi-request
   provenance, and the CLI `run` path are implemented. Catalog-direct lazy-index recovery
-  remains unavailable in S9 runs: projections emit no family-trigger IDs/versions and the
-  runner refuses that branch. Plan-driven fixture fill separately resolves exact-form
-  lazy selectors for offline parser review. Other selectors do not screen the submitted
-  primary. Family-aware HTML evaluation and reviewed triggers remain deferred.
+  and candidate primary screening are development-ready across S9 runs and client fast query.
+  Projections emit versioned family-trigger IDs (`<family>.exact_form`, version `"1"`) for
+  registered lazy-index form families (`10-K`, `10-Q`, `8-K`, `20-F`) via `LAZY_INDEX_FORM_FAMILIES`.
+  Candidate document screening is unified under `engine.document.screening.screen_candidate_document`,
+  providing immediate `<TYPE>` fast-path evaluation for SGML/ASCII and normalized-text
+  exhibit/title screening for HTML representations, while raw representations safely bypass
+  screening.
 - [x] **M4 — Fixture/interactive surfaces:** CLI `project`, `status`, `run`, fixture
   `create`, plan-driven `fill`, `list`, and review `generate`, `compare`, and `analyze` are
   wired through the shared paginated review menu. Plan switching is `s`; fixture fill

@@ -15,13 +15,16 @@ import pyarrow.parquet as pq
 
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import accession_hyphenated, validate_archive_url
+from edgar_sec.domain.forms.families.processing_profiles import (
+    LAZY_INDEX_FORM_FAMILIES,
+)
 from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME, part_file_name
 from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
 )
-from edgar_sec.infra.storage.duckdb import connect, sql_path_list
+from edgar_sec.infra.storage.duckdb import connect, sql_literal, sql_path_list
 from edgar_sec.infra.storage.parquet import StagedParquetWriter
 from edgar_sec.pipelines.document_acquisition.arrow_schemas import (
     RESOLVED_OPERATION_SCHEMA,
@@ -561,11 +564,22 @@ def _iter_projected_batches(parts: tuple[Path, ...]):
         "WHEN retrieval_mode NOT IN ('direct_url', 'bundle_sequence') "
         "THEN 'unsupported_retrieval_mode' ELSE NULL END"
     )
+    eligible_forms_sql = ", ".join(
+        sql_literal(family) for family in sorted(LAZY_INDEX_FORM_FAMILIES)
+    )
+    trigger_predicate = (
+        "catalog_direct_selection = 'exact_form_with_lazy_index' "
+        "AND source_origin = 'catalog_direct' "
+        "AND target_role = 'primary' "
+        f"AND form IN ({eligible_forms_sql})"
+    )
     query = (
         "SELECT target.*, ("
         f"{reason} IS NULL) AS executable, {reason} AS skip_reason "
-        ", NULL::VARCHAR AS lazy_index_trigger_id, "
-        "NULL::VARCHAR AS lazy_index_trigger_version "
+        f", CASE WHEN {trigger_predicate} THEN form || '.exact_form' "
+        "ELSE NULL END AS lazy_index_trigger_id, "
+        f"CASE WHEN {trigger_predicate} THEN '1' "
+        "ELSE NULL END AS lazy_index_trigger_version "
         f"FROM read_parquet({sql_path_list([str(path) for path in parts])}) AS target "
         "ORDER BY form, accession, request_id, "
         "COALESCE(inventory_entry_id, ''), status"

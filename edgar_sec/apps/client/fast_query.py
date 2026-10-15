@@ -23,7 +23,7 @@ from edgar_sec.domain.sec_urls import (
     index_url_for,
     submissions_url,
 )
-from edgar_sec.engine.forms.plugins.exhibit_selection import probe_exhibit_header
+from edgar_sec.engine.document.screening import screen_candidate_document
 from edgar_sec.engine.forms.render import render_filing
 from edgar_sec.engine.index_pages.parser import parse_html_index
 from edgar_sec.infra.sec_http.client import SecHttpClient
@@ -59,36 +59,6 @@ def _resolve_primary_url(filing: FilingAggregate) -> str:
             str(filing.primary_cik.value), filing.accession.value
         )
     return archives_url(filing.primary_cik.value, filing.accession.value, fname)
-
-
-def _is_suspected_inversion(
-    form: str, filename: str, content: bytes | None = None
-) -> bool:
-    """Check if a filename or opening bytes indicate an inverted exhibit."""
-    entry = get_family_entry(form)
-    if entry is None or not entry.profile.has_operation(
-        AcquisitionOperation.RENDER_TO_TXT
-    ):
-        return False
-    leaf = Path(filename).name.lower()
-    norm_leaf = leaf.replace("-", "").replace("_", "")
-    expected = (entry.family or "").lower().replace("-", "").replace("_", "")
-    if leaf.startswith(("ex", "exhibit")) and (
-        not expected or not norm_leaf.startswith(expected)
-    ):
-        return True
-    if content:
-        head = content[:2000]
-        if b"<TYPE>EX-" in head or b"<TYPE>GRAPHIC" in head:
-            return True
-        try:
-            head_text = head.decode("ascii", errors="ignore")
-            lines = tuple(head_text.splitlines()[:25])
-            if probe_exhibit_header(head_text, lines) is not None:
-                return True
-        except Exception:
-            pass
-    return False
 
 
 def _recover_inverted_primary(
@@ -185,14 +155,18 @@ def _make_document_fetcher(
         filename = _resolve_primary_filename(filing)
         acc_str = filing.accession.value
 
-        if _is_suspected_inversion(filing.form, filename):
+        screen = screen_candidate_document(filing.form, filename=filename)
+        if screen.is_inversion:
             recovered = _recover_inverted_primary(filing, cache, _get_client)
             if recovered is not None:
                 return recovered
 
         cached = cache.get(acc_str, filename)
         if cached is not None:
-            if _is_suspected_inversion(filing.form, filename, cached):
+            screen = screen_candidate_document(
+                filing.form, filename=filename, raw_content=cached
+            )
+            if screen.is_inversion:
                 recovered = _recover_inverted_primary(filing, cache, _get_client)
                 if recovered is not None:
                     return recovered
@@ -217,7 +191,10 @@ def _make_document_fetcher(
                 content=response_bytes,
                 content_type=c_type,
             )
-            if _is_suspected_inversion(filing.form, filename, response_bytes):
+            screen = screen_candidate_document(
+                filing.form, filename=filename, raw_content=response_bytes
+            )
+            if screen.is_inversion:
                 recovered = _recover_inverted_primary(filing, cache, _get_client)
                 if recovered is not None:
                     return recovered
@@ -476,6 +453,38 @@ def _make_index_fetcher(
     return _fetch
 
 
+def _make_filing_renderer(
+    doc_cache: DocumentCache,
+    http_client_factory: Callable[[], SecHttpClient] | None = None,
+) -> Callable[[FilingAggregate], str | bytes]:
+    client_holder: list[SecHttpClient | None] = [None]
+
+    def _get_client() -> SecHttpClient:
+        if client_holder[0] is None:
+            client_holder[0] = (
+                http_client_factory()
+                if http_client_factory is not None
+                else SecHttpClient()
+            )
+        return client_holder[0]
+
+    def _render(filing: FilingAggregate) -> str | bytes:
+        rendered = render_filing(filing)
+        if isinstance(rendered, str):
+            screen = screen_candidate_document(
+                filing.form,
+                filename=filing.primary_document_path,
+                normalized_text=rendered,
+            )
+            if screen.is_inversion:
+                recovered = _recover_inverted_primary(filing, doc_cache, _get_client)
+                if recovered is not None:
+                    return render_filing(filing)
+        return rendered
+
+    return _render
+
+
 def _materialize_from_submissions(
     cik: str | int | Cik,
     forms: str | Sequence[str] | None,
@@ -597,6 +606,7 @@ def query_catalog_fast(
     document_opener = _make_document_opener(doc_cache, http_client_factory)
     bundle_fetcher = _make_bundle_fetcher(doc_cache, http_client_factory)
     index_fetcher = _make_index_fetcher(doc_cache, http_client_factory)
+    filing_renderer = _make_filing_renderer(doc_cache, http_client_factory)
 
     aggregates: list[FilingAggregate] = []
 
@@ -620,7 +630,7 @@ def query_catalog_fast(
                     document_opener=document_opener,
                     bundle_fetcher=bundle_fetcher,
                     index_fetcher=index_fetcher,
-                    renderer=render_filing,
+                    renderer=filing_renderer,
                 )
                 aggregates.extend(on_the_fly)
             if limit is not None:
@@ -710,7 +720,7 @@ def query_catalog_fast(
             document_opener=document_opener,
             bundle_fetcher=bundle_fetcher,
             index_fetcher=index_fetcher,
-            renderer=render_filing,
+            renderer=filing_renderer,
         )
         aggregates.append(agg)
 
@@ -733,7 +743,7 @@ def query_catalog_fast(
                 document_opener=document_opener,
                 bundle_fetcher=bundle_fetcher,
                 index_fetcher=index_fetcher,
-                renderer=render_filing,
+                renderer=filing_renderer,
             )
             aggregates.extend(on_the_fly)
         if limit is not None:

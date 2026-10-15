@@ -28,14 +28,14 @@ an acquisition run.
 - **Finite response limit**: Acquisition runs and fixture body capture resolve `acquisition.max_response_bytes` through the shared settings registry; no unbounded sentinel is accepted.
 - **Plan-driven fixture capture**: Fixture fill validates the pinned S6 bundle and fetches its selected parser inputs directly; the interactive console requires explicit live-network consent.
 - **Lazy-index evidence**: Exact-form lazy selection fetches and caches the accession index in the fixture only when no inventory entry pins the selected document. Repeated targets for that accession reuse the cached page.
-- **Catalog-direct bundle identity**: With the exact-form selector, extracted primary SGML `<TYPE>` is compared to the pinned form as ASCII; mismatch or unverifiable type enters lazy-index recovery. Other selectors do not screen the submitted primary.
-- **Processing boundary**: Engine owns SGML type screening and resolves operation capability/handler pins from path facts; pipeline code owns source selection, the pinned operation contract, and staged outputs. SGML child filenames use content routes even when their names contain slashes.
+- **Catalog-direct and bundle identity**: Candidate primary document screening is owned by `engine.document.screening.screen_candidate_document`. With the exact-form selector, candidate bodies are screened across SGML `<TYPE>`, filename, exhibit headers, and normalized cover text; mismatch or unverifiable type triggers lazy-index recovery.
+- **Processing boundary**: Engine owns candidate screening and resolves operation capability/handler pins from path facts; pipeline code owns source selection, the pinned operation contract, and staged outputs. SGML child filenames use content routes even when their names contain slashes.
 - **Transient ownership**: Acquired bodies remain under the shared transient root; receipts do not authorize cleanup, and publication/discard cleanup is not implemented.
 - **Payload boundary**: Future snapshot payloads use separate binary and text Parquet relations; this package does not introduce an external CAS or durable payload directory.
 
 ## Deliberate gaps
 
-- **No family-aware identity screen**: The catalog-direct exact-form selector records direct-body evidence as unverifiable and uses lazy-index lookup; text evidence cannot override the pinned target form or exact index `document_type`.
+- **Evidence-gated family activation**: While candidate document screening and catalog-direct lazy-index recovery are development-ready for registered families (`10-K`, `10-Q`, `8-K`, `20-F`), activating new form families requires representative holdout cases and acceptance decisions.
 - **Parser-body fixtures**: Schema v3 stores selected parser inputs and any lazy-index page used to resolve them. Failed targets are reported but their failed request history is not retained.
 - **Production processing gate**: `process_target` remains subject to the separate route-budget contract. Offline parser review invokes the current `AcquisitionProcessor` handlers directly and does not reuse stored S10 results.
 - **Fixture review boundary**: `review generate` verifies each body digest and runs the current raw/text/XML handlers offline. It writes versioned diagnostic records and handler outputs, not S9/S11 results.
