@@ -146,7 +146,6 @@ def _normalize_document(raw_bytes: bytes, context: HandlerContext) -> str:
         form=context.family if context.role == "primary" else None,
         document_path=context.selected_path,
         content_route=context.route,
-        capture_stage_trace=False,
     )
     return result.text
 
