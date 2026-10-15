@@ -7,7 +7,7 @@ from collections import Counter
 from collections.abc import Callable
 from datetime import datetime
 from pathlib import Path
-
+from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.pipelines.document_acquisition.models import (
     AcquisitionAttempt,
@@ -99,6 +99,7 @@ def execute_acquisition_run(
     transport: AcquisitionTransport,
     clock: Callable[[], datetime],
     confirm_stale_lock: bool = False,
+    progress_callback: ProgressCallback = None,
 ) -> AcquisitionRunReport:
     parts = load_validated_work_order(paths, run_id)
     resources = derive_resources()
@@ -176,6 +177,16 @@ def execute_acquisition_run(
                             operation_states_path=paths.run_state_path(run_id),
                         ):
                             processed += 1
+                    status = (
+                        "ok"
+                        if fresh_state is not None
+                        and fresh_state.outcome in {"acquired", "skipped"}
+                        else "failed"
+                    )
+                    emit_progress(
+                        progress_callback,
+                        {"status": status, "count": 1},
+                    )
                 for operation_state in iter_operation_states(
                     paths.run_state_path(run_id)
                 ):

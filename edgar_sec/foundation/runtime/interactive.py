@@ -83,6 +83,27 @@ def prompt_text(prompt: str, default: str = "") -> str:
         return default
 
 
+_CONFIRM_TRUE = {"y", "yes", "true", "1"}
+_CONFIRM_FALSE = {"n", "no", "false", "0"}
+
+
+def prompt_confirm(prompt: str, default: bool = False) -> bool:
+    """Prompt user for a yes/no confirmation with boolean return value."""
+    display = prompt.rstrip()
+    if not any(display.endswith(s) for s in (")", "]")):
+        display = f"{display} (yes/no)"
+    hint = "yes" if default else "no"
+    while True:
+        raw = prompt_text(display, hint).strip().lower()
+        if not raw:
+            return default
+        if raw in _CONFIRM_TRUE:
+            return True
+        if raw in _CONFIRM_FALSE:
+            return False
+        print(f"Invalid choice '{raw}', please enter 'yes' or 'no' (or 'y'/'n').")
+
+
 def prompt_choice(
     title: str,
     choices: list[tuple[str, str]],
@@ -332,6 +353,7 @@ __all__ = [
     "menu_action",
     "operator_entrypoint",
     "prompt_choice",
+    "prompt_confirm",
     "prompt_paginated_choice",
     "prompt_text",
     "run_interactive_menu",

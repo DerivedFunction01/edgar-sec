@@ -143,10 +143,13 @@ def test_run_items_discover_safe_runs_in_sorted_order(tmp_path, monkeypatch) -> 
 
 def test_run_action_uses_paged_run_choice(monkeypatch) -> None:
     calls = []
-    answers = iter(("4096", "no", "no", "yes"))
+    confirms = iter((False, False, True))
     monkeypatch.setattr(operator, "_choose_run_id", lambda _prompt: "run-1")
     monkeypatch.setattr(operator, "_configured_response_byte_limit", lambda: 1024)
-    monkeypatch.setattr(operator, "prompt_text", lambda *_args: next(answers))
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "4096")
+    monkeypatch.setattr(
+        operator, "prompt_confirm", lambda *_args, **_kw: next(confirms)
+    )
     monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
 
     operator._action_run()
@@ -212,8 +215,8 @@ def test_fixture_fill_confirms_direct_plan_fetch_and_bounds_targets(
     console = _console(tmp_path)
     plan = {"plan_id": "plan-a", "selected_rows": 1174}
     calls = []
-    answers = iter(("25", "yes"))
-    monkeypatch.setattr(operator, "prompt_text", lambda *_args: next(answers))
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "25")
+    monkeypatch.setattr(operator, "prompt_confirm", lambda *_args, **_kw: True)
     monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
 
     assert console.fill_fixture("fixture-a", plan, None, tmp_path)
@@ -239,8 +242,8 @@ def test_fixture_fill_cancelled_before_network_does_not_call_cli(
     tmp_path, monkeypatch
 ) -> None:
     console = _console(tmp_path)
-    answers = iter(("25", "no"))
-    monkeypatch.setattr(operator, "prompt_text", lambda *_args: next(answers))
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "25")
+    monkeypatch.setattr(operator, "prompt_confirm", lambda *_args, **_kw: False)
     monkeypatch.setattr(
         operator, "cli_main", lambda _args: pytest.fail("cancelled fill ran")
     )

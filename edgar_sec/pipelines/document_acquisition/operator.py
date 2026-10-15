@@ -12,6 +12,7 @@ from edgar_sec.foundation.runtime.interactive import (
     build_menu,
     menu_action,
     operator_entrypoint,
+    prompt_confirm,
     prompt_paginated_choice,
     prompt_text,
     run_interactive_menu,
@@ -138,27 +139,12 @@ def _action_run() -> None:
     except ValueError:
         print("Acquisition cancelled: enter a positive response-byte limit.")
         return
-    retry = (
-        prompt_text(
-            "Retry eligible failed acquisition/processing targets? (yes/no)", "no"
-        )
-        .strip()
-        .lower()
+    retry = prompt_confirm(
+        "Retry eligible failed acquisition/processing targets?", default=False
     )
-    if retry not in {"yes", "no"}:
-        print("Acquisition cancelled: answer yes or no for retry selection.")
-        return
-    retain = (
-        prompt_text("Retain raw response evidence? (yes/no)", "no").strip().lower()
-        or "no"
-    )
-    if retain not in {"yes", "no"}:
-        print("Acquisition cancelled: answer yes or no for response retention.")
-        return
-    confirm = (
-        prompt_text("Allow live SEC network access? (yes/no)", "no").strip().lower()
-    )
-    if confirm != "yes":
+    retain = prompt_confirm("Retain raw response evidence?", default=False)
+    confirm = prompt_confirm("Allow live SEC network access?", default=False)
+    if not confirm:
         print("Acquisition cancelled; no network request was made.")
         return
     args = [
@@ -168,9 +154,9 @@ def _action_run() -> None:
         "--max-response-bytes",
         str(effective_limit),
     ]
-    if retry == "yes":
+    if retry:
         args.append("--retry-failures")
-    if retain == "yes":
+    if retain:
         args.append("--retain-response-evidence")
     cli_main(args)
 
@@ -274,14 +260,10 @@ class _FixtureReviewConsole:
                 print("Target limit must be a positive integer or 'all'.")
                 return False
         scope = f"up to {limit} target bodies" if limit else "all target bodies"
-        confirmation = (
-            prompt_text(
-                f"Fetch {scope} from SEC for fixture {fixture_id}? (yes/no)", "no"
-            )
-            .strip()
-            .lower()
+        confirmation = prompt_confirm(
+            f"Fetch {scope} from SEC for fixture {fixture_id}?", default=False
         )
-        if confirmation not in {"y", "yes"}:
+        if not confirmation:
             print("Fixture fill cancelled; no SEC requests were made.")
             return False
         args = [

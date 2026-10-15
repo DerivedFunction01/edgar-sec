@@ -14,6 +14,7 @@ from edgar_sec.foundation.runtime.interactive import (
     menu_action,
     operator_entrypoint,
     prompt_choice,
+    prompt_confirm,
     prompt_paginated_choice,
     prompt_text,
     run_interactive_menu,
@@ -146,6 +147,44 @@ def test_prompt_choice_keeps_asking_until_a_valid_key(monkeypatch, capsys) -> No
     _answers(monkeypatch, ["zzz", "b"])
     assert prompt_choice("Pick", [("a", "Alpha"), ("b", "Beta")]) == "b"
     assert "Invalid option" in capsys.readouterr().out
+
+
+def test_prompt_confirm_accepts_yes_variants(monkeypatch) -> None:
+    for reply in ("y", "yes", "Y", "YES", "1", "true"):
+        _answers(monkeypatch, [reply])
+        assert prompt_confirm("Continue?") is True
+
+
+def test_prompt_confirm_accepts_no_variants(monkeypatch) -> None:
+    for reply in ("n", "no", "N", "NO", "0", "false"):
+        _answers(monkeypatch, [reply])
+        assert prompt_confirm("Continue?", default=True) is False
+
+
+def test_prompt_confirm_returns_default_on_blank_or_eof(monkeypatch) -> None:
+    _answers(monkeypatch, [""])
+    assert prompt_confirm("Continue?", default=False) is False
+    _answers(monkeypatch, [""])
+    assert prompt_confirm("Continue?", default=True) is True
+
+
+def test_prompt_confirm_reprompts_on_invalid_input(monkeypatch, capsys) -> None:
+    _answers(monkeypatch, ["maybe", "y"])
+    assert prompt_confirm("Proceed?") is True
+    assert "Invalid choice 'maybe'" in capsys.readouterr().out
+
+
+def test_prompt_confirm_appends_hint_only_when_missing(monkeypatch) -> None:
+    asked = []
+    monkeypatch.setattr(
+        "edgar_sec.foundation.runtime.interactive.input",
+        lambda prompt: asked.append(prompt) or "y",
+        raising=False,
+    )
+    prompt_confirm("Are you sure?")
+    assert asked[-1] == "Are you sure? (yes/no) [no]: "
+    prompt_confirm("Already has hint? (yes/no)")
+    assert asked[-1] == "Already has hint? (yes/no) [no]: "
 
 
 def test_the_entrypoint_runs_the_header_only_for_the_interactive_path(
