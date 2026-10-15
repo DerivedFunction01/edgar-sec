@@ -1,4 +1,4 @@
-"""Explicit offline scale check for the S4 progress journal."""
+"""Explicit offline scale check for the progress journal."""
 
 from __future__ import annotations
 
@@ -49,7 +49,7 @@ _MIB = 1024 * 1024
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="edgar_sec.pipelines.document_inventory.progress_scale_check",
-        description="Run the explicitly opted-in offline S4 progress simulation",
+        description="Run the explicitly opted-in offline progress simulation",
     )
     parser.add_argument(
         "--run-simulation",

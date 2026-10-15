@@ -1,4 +1,4 @@
-"""Shared inventory records: S1 cohort projections and S3 parser outcomes.
+"""Shared inventory records: cohort projections and parser outcomes.
 
 These frozen, slotted dataclasses are the only inventory vocabulary that crosses a
 stage boundary; pipeline readers and checkpoint code import them rather than

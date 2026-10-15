@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import tempfile
+import threading
 from collections.abc import Callable
 from contextlib import AbstractContextManager
 from pathlib import Path
@@ -32,30 +33,38 @@ class _LazySecTransport:
         self._socket_directory: tempfile.TemporaryDirectory[str] | None = None
         self._broker_context: AbstractContextManager[SecBrokerClient] | None = None
         self._broker: SecBrokerClient | None = None
+        self._lock = threading.Lock()
+
+    def warm(self) -> None:
+        self._start_broker()
 
     def _start_broker(self) -> SecBrokerClient:
         if self._broker is not None:
             return self._broker
-        self._http_client = self._factory()
-        try:
-            self._socket_directory = tempfile.TemporaryDirectory(
-                prefix="edgar-sec-broker-"
-            )
-            socket_path = Path(self._socket_directory.name) / "broker.sock"
-            context = managed_broker(socket_path, http_client=self._http_client)
-            broker = context.__enter__()
-        except Exception:
+        with self._lock:
+            if self._broker is not None:
+                return self._broker
+            self._http_client = self._factory()
             try:
-                self._http_client.close()
-            finally:
-                self._http_client = None
-                if self._socket_directory is not None:
-                    self._socket_directory.cleanup()
-                    self._socket_directory = None
-            raise
-        self._broker_context = context
-        self._broker = broker
-        return broker
+                self._socket_directory = tempfile.TemporaryDirectory(
+                    prefix="edgar-sec-broker-"
+                )
+                socket_path = Path(self._socket_directory.name) / "broker.sock"
+                context = managed_broker(socket_path, http_client=self._http_client)
+                broker = context.__enter__()
+            except Exception:
+                try:
+                    if self._http_client is not None:
+                        self._http_client.close()
+                finally:
+                    self._http_client = None
+                    if self._socket_directory is not None:
+                        self._socket_directory.cleanup()
+                        self._socket_directory = None
+                raise
+            self._broker_context = context
+            self._broker = broker
+            return broker
 
     def stream_to_file(
         self,
@@ -121,20 +130,25 @@ class _LazySecTransport:
         )
 
     def close(self) -> None:
-        try:
-            if self._broker is not None:
-                self._broker.close()
-        finally:
+        with self._lock:
             try:
-                if self._broker_context is not None:
-                    self._broker_context.__exit__(None, None, None)
+                if self._broker is not None:
+                    self._broker.close()
             finally:
+                self._broker = None
                 try:
-                    if self._http_client is not None:
-                        self._http_client.close()
+                    if self._broker_context is not None:
+                        self._broker_context.__exit__(None, None, None)
                 finally:
-                    if self._socket_directory is not None:
-                        self._socket_directory.cleanup()
+                    self._broker_context = None
+                    try:
+                        if self._http_client is not None:
+                            self._http_client.close()
+                    finally:
+                        self._http_client = None
+                        if self._socket_directory is not None:
+                            self._socket_directory.cleanup()
+                            self._socket_directory = None
 
 
 def response_byte_limit(value: int | None) -> int:

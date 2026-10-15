@@ -207,7 +207,7 @@ For the exact `primaryDocument` names `0000.txt`, `0000.htm`, `0001.txt`, and
 `primary_document_stub:<name>` fallback reason, while the SQL fallback applies the
 same exact-name qualification and retains the primary-document stub classification
 rather than treating the name as a missing-primary bundle path. This is locator
-construction, not evidence authorizing S6 retrieval; S6 leaves catalog-only
+construction, not evidence authorizing retrieval; planning leaves catalog-only
 placeholder targets unresolved without inventory sequence and bundle evidence. It
 does not rewrite secondary-document hrefs from an index.
 

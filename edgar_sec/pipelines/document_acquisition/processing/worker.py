@@ -145,7 +145,7 @@ def _effective_route(
     body: StagedBodyRef,
 ) -> tuple[DocumentRoute, str]:
     if row["retrieval_mode"] == "bundle_sequence" and request.selected_filename is None:
-        raise ProcessingError("bundle child filename is absent from S9 handoff")
+        raise ProcessingError("bundle child filename is absent from handoff")
     try:
         requested_filename = validate_selected_filename(request.selected_filename)
         committed_filename = validate_selected_filename(body.selected_filename)
@@ -155,7 +155,7 @@ def _effective_route(
     except (OSError, ValueError, sqlite3.Error) as error:
         raise ProcessingError("selected target evidence is invalid") from error
     if requested_filename != committed_filename:
-        raise ProcessingError("selected filename differs from committed S9 handoff")
+        raise ProcessingError("selected filename differs from committed handoff")
     if state is None or state.outcome != "acquired" or state.last_attempt_id is None:
         raise ProcessingError("acquired target has no selected attempt")
     selected_attempt = get_attempt(
@@ -228,7 +228,7 @@ def _effective_route(
         raise ProcessingError("selected route URL is invalid") from error
     if retrieval_mode == "bundle_sequence" or committed_filename is not None:
         if committed_filename is None:
-            raise ProcessingError("bundle child filename is absent from S9 handoff")
+            raise ProcessingError("bundle child filename is absent from handoff")
         return content_route(committed_filename), committed_filename
     if retrieval_mode != "direct_url":
         raise ProcessingError("selected target retrieval mode is unresolved")

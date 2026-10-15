@@ -14,7 +14,7 @@ Own inventory snapshot relations, pre-fetch plan projection, and bounded merge p
 - Unchanged annual relation parts are inherited by manifest reference; snapshot files
   and pointers are owned by `document_inventory.paths`.
 - Filing-CIK identity and catalog source-CIK associations use distinct relations.
-- Catalog plans are projected before S4; normalized cohort facts and source edges are
+- Catalog plans are projected before the inventory phase; normalized cohort facts and source edges are
   retained separately, and only missing accession pages enter the work order.
 
 ## Usage examples

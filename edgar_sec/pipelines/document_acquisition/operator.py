@@ -213,7 +213,9 @@ class _FixtureReviewConsole:
             )
             for index, plan in enumerate(plans, 1)
         ]
-        selected = prompt_paginated_choice(choices, prompt_label="Published S6 plan")
+        selected = prompt_paginated_choice(
+            choices, prompt_label="Published target plan"
+        )
         return selected.value if selected is not None else None
 
     def fixture_matches_plan(self, fixture: dict, plan: dict) -> bool:

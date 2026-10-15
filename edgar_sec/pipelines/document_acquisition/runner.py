@@ -1,4 +1,4 @@
-"""Execute validated S9 work orders with bounded response staging."""
+"""Execute validated work orders with bounded response staging."""
 
 from __future__ import annotations
 
@@ -239,6 +239,8 @@ def execute_acquisition_run(
                             attempted += 1
                         _handle_acquired_or_skipped(row)
                 else:
+                    if hasattr(transport, "warm") and callable(transport.warm):
+                        transport.warm()
                     pool = ThreadPoolExecutor(max_workers=bounded_workers)
                     in_flight: dict[Future, tuple[dict[str, object], TargetState]] = {}
                     max_in_flight = bounded_workers * 2

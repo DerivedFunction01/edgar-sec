@@ -398,7 +398,7 @@ def _process_target(
         return process_target(request, paths=paths)
     if prior_result is None:
         raise ProcessingRunIntegrationError(
-            "completed operation state has no validated S10 result manifest"
+            "completed operation state has no validated result manifest"
         )
     parameters = inspect.signature(process_target).parameters
     if "prior_results" not in parameters or "selected_operation_ids" not in parameters:
@@ -578,7 +578,7 @@ def process_acquired_target(
         if prior_result is None and any(
             state.status == "succeeded" for state in states.values()
         ):
-            raise ValueError("completed operations have no S10 result manifest")
+            raise ValueError("completed operations have no result manifest")
         return False
     started_at = datetime.now(UTC).isoformat().replace("+00:00", "Z")
     try:

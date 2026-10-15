@@ -99,7 +99,7 @@ CHUNKS_DIR = foundation_paths.CHUNKS_DIR
 #: Prefix for one immutable attempt directory inside a chunk.
 ATTEMPT_PREFIX = "attempt-"
 
-#: S5-owned staging directory inside a run.
+#: Staging directory inside a run.
 PUBLICATION_DIR = "publication"
 PUBLICATION_OUTCOMES_FILE = "publication_outcomes.parquet"
 PUBLICATION_ENTRIES_FILE = "publication_entries.parquet"
@@ -109,7 +109,7 @@ KNOWN_ACCESSIONS_FILE = "known_accessions.parquet"
 CANDIDATE_ENTRIES_FILE = "candidate_entries.parquet"
 NEW_SOURCES_FILE = "new_sources.parquet"
 
-#: Published snapshot root, owned by S5, separate from transient state.
+#: Published snapshot root, separate from transient state.
 WORK_ORDER_FILE = "work_order.parquet"
 COHORT_ACCESSIONS_FILE = "cohort_accessions.parquet"
 COHORT_SOURCES_FILE = "cohort_sources.parquet"
@@ -214,7 +214,7 @@ class InventoryRunPaths:
 
     @property
     def snapshots_root(self) -> Path:
-        """Published snapshot root, owned by S5."""
+        """Published snapshot root."""
         return foundation_paths.snapshots_root(self.artifacts_root, DATASET)
 
     def run_manifest_path(self) -> Path:
@@ -227,7 +227,7 @@ class InventoryRunPaths:
         return self.run_root / CANCELLED_FILE
 
     def publication_dir(self) -> Path:
-        """S5-owned staging directory inside this run."""
+        """Staging directory inside this run."""
         return self.run_root / PUBLICATION_DIR
 
     def work_order_path(self) -> Path:

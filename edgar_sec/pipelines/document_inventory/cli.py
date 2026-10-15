@@ -75,7 +75,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="force re-fetch of index pages",
     )
     project_cmd.add_argument(
-        "--chunk-size", type=positive_int_type, help="accessions per S4 chunk"
+        "--chunk-size", type=positive_int_type, help="accessions per chunk"
     )
     _add_output_options(project_cmd)
     project_cmd.set_defaults(func=cmd_project)

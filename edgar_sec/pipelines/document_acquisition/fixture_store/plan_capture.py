@@ -506,6 +506,8 @@ def _capture_fixture_plan_locked(
                     reused_indexes += 1
                 existing_targets.add(target_id)
 
+            if hasattr(transport, "warm") and callable(transport.warm):
+                transport.warm()
             executor = ThreadPoolExecutor(
                 max_workers=worker_count, thread_name_prefix="fixture-fill"
             )

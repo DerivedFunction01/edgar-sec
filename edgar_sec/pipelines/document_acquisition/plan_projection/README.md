@@ -1,6 +1,6 @@
 # plan_projection
 
-Layer 4 subpackage for converting published S6 target plans into S9 acquisition work orders.
+Layer 4 subpackage for converting published target plans into acquisition work orders.
 
 ## Purpose
 

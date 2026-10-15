@@ -16,6 +16,6 @@ The `exhibits` package provides a source-qualified code ledger, authority profil
 ## Deliberate gaps
 
 - **Form 20-F disabled**: All Form 20-F coverage rows have `coverage_status="disabled"`.
-- **No body evaluator**: Layer 1 contains source-backed pack declarations, but no text parsing, scoring, or S10 assessment runtime.
+- **No body evaluator**: Layer 1 contains source-backed pack declarations, but no text parsing, scoring, or assessment runtime.
 - **No holdout evidence**: The packs have no labeled issuer/accession-separated evaluation corpus or measured error rates; activation remains gated on fixture-backed review and recorded acceptance.
 - **Exhibit authority only**: Primary form profiles are defined in their respective family packages (`families/annual/`, `families/quarterly/`, `families/current/`).

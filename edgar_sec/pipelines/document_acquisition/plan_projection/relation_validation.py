@@ -484,7 +484,7 @@ def validate_resolved_operations(relations: dict[str, tuple[Path, ...]]) -> None
         )
     if any(failures):
         raise RelationValidationError(
-            "resolved operations disagree with S6 intent, inputs, or support policy"
+            "resolved operations disagree with intent, inputs, or support policy"
         )
 
 

@@ -1,4 +1,4 @@
-"""Acquire one validated S9 target with bounded response staging."""
+"""Acquire one validated target with bounded response staging."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""Transactional DuckDB journal for resumable S4 chunk attempts."""
+"""Transactional DuckDB journal for resumable chunk attempts."""
 
 from __future__ import annotations
 

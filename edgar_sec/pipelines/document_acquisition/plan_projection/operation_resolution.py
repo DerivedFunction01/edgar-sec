@@ -50,7 +50,7 @@ def resolve_operation_group(
         requested = intent["requested"]
         mode = intent["request_mode"]
         if operation not in _OPERATIONS:
-            raise ValueError("operation is outside the S6 vocabulary")
+            raise ValueError("operation is outside the vocabulary")
         input_row = inputs_by_operation.pop(intent["operation_id"], None)
         source_id = input_row["source_request_id"] if input_row else None
         if not requested:

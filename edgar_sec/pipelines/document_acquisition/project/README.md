@@ -4,7 +4,7 @@ Layer 4 result projection models for document acquisition.
 
 ## Purpose
 
-Defines the streamed terminal result projection used by acquisition review. S6 plan validation and work-order creation remain in `plan_projection/`.
+Defines the streamed terminal result projection used by acquisition review. Plan validation and work-order creation remain in `plan_projection/`.
 
 ## Contracts
 
@@ -13,4 +13,4 @@ Defines the streamed terminal result projection used by acquisition review. S6 p
 
 ## Deliberate gaps
 
-- **No S6 plan projection**: This package models S10 result projection; acquisition work-order projection remains separate.
+- **No plan projection**: This package models result projection; acquisition work-order projection remains separate.

@@ -1,4 +1,4 @@
-"""Validate S6 target bundles and stream their S9 work-order projection."""
+"""Validate target bundles and stream their work-order projection."""
 
 from __future__ import annotations
 
@@ -77,7 +77,7 @@ _SELECTORS = frozenset({"submitted_primary", "exact_form_with_lazy_index"})
 
 
 class TargetPlanError(ValueError):
-    """An S6 target bundle or its S9 work-order projection is invalid."""
+    """A target bundle or its work-order projection is invalid."""
 
 
 @dataclass(frozen=True, slots=True)
@@ -155,11 +155,11 @@ def _validate_manifest(plan_dir: Path) -> tuple[Path, dict[str, Any]]:
     ):
         raise TargetPlanError(
             "missing or unsupported target-plan bundle schema version; "
-            f"S9 requires bundle version {_PLAN_BUNDLE_SCHEMA_VERSION}"
+            f"requires bundle version {_PLAN_BUNDLE_SCHEMA_VERSION}"
         )
     if manifest.get("matcher_version") != _TARGET_MATCHER_VERSION:
         raise TargetPlanError(
-            f"unsupported target matcher version; S9 requires {_TARGET_MATCHER_VERSION}"
+            f"unsupported target matcher version; requires {_TARGET_MATCHER_VERSION}"
         )
     target_schema_version = manifest.get("target_schema_version")
     if (
@@ -384,7 +384,7 @@ def _validate_parts(
     for descriptor in parts:
         if "byte_size" not in descriptor:
             raise TargetPlanError(
-                "target part descriptor is missing declared byte_size; S6 manifest contract must be updated"
+                "target part descriptor is missing declared byte_size; manifest contract must be updated"
             )
         relative, form, rows, digest, byte_size = (
             descriptor.get("path"),
@@ -594,7 +594,7 @@ def load_acquisition_work_order(
     plan_dir: str | os.PathLike[str],
     parquet_path: str | os.PathLike[str],
 ) -> WorkOrderProjection:
-    """Validate an entire S6 bundle, then atomically stream its work-order rows."""
+    """Validate an entire bundle, then atomically stream its work-order rows."""
     validated = _validate_target_plan(Path(plan_dir))
     destination = Path(parquet_path).resolve()
     if destination == validated.root or destination.is_relative_to(validated.root):
