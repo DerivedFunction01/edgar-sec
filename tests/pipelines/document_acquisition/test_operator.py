@@ -35,7 +35,7 @@ def _console(tmp_path):
 def test_menu_routes_fixture_review_to_shared_console(monkeypatch):
     menu = operator.build_operator_menu()
     assert [action.key for action in menu] == ["1", "2", "3", "p", "f"]
-    assert "Snapshot console" in menu[3].label
+    assert "Snapshot DAG console" in menu[3].label
     assert "Fixtures and review console" in menu[4].label
 
     from edgar_sec.infra.storage.review import operator as review_operator
@@ -59,24 +59,22 @@ def test_menu_routes_fixture_review_to_shared_console(monkeypatch):
     assert callable(config.fill_action)
 
 
-def test_snapshot_console_keeps_its_independent_contract(monkeypatch):
+def test_menu_routes_snapshot_console_to_shared_dag_console(monkeypatch):
+    from edgar_sec.infra.storage.dag import menu as dag_menu
+
     opened = []
     monkeypatch.setattr(
-        operator,
-        "run_interactive_menu",
-        lambda title, actions, **kwargs: opened.append((title, actions, kwargs)) or 0,
+        dag_menu,
+        "run_dag_menu",
+        lambda config: opened.append(config) or 0,
     )
 
-    _menu_action("Snapshot console").callback()
+    _menu_action("Snapshot DAG console").callback()
 
-    title, actions, kwargs = opened[0]
-    assert title == "Document Acquisition Snapshot Console"
-    assert [action.key for action in actions] == ["1", "2"]
-    assert [action.label for action in actions] == [
-        "Publish snapshot",
-        "Snapshot status",
-    ]
-    assert kwargs == {}
+    config = opened[0]
+    assert config.title == "Document Acquisition Snapshot DAG Console"
+    assert config.publish_action is operator._action_publish_run
+    assert callable(config.snapshots_root)
 
 
 def test_project_action_delegates_to_cli(monkeypatch) -> None:
@@ -339,24 +337,3 @@ def test_publish_action_cancellation_does_not_dispatch(tmp_path, monkeypatch, ca
     operator._action_publish_run()
 
     assert "Publication cancelled" in capsys.readouterr().out
-
-
-def test_snapshot_status_action_dispatches_selected_branch(tmp_path, monkeypatch):
-    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
-    calls = []
-    monkeypatch.setattr(operator, "resolve_acquisition_paths", lambda: paths)
-    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "main")
-    monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
-
-    operator._action_inspect_snapshot()
-
-    assert calls == [
-        [
-            "snapshot",
-            "status",
-            "--branch",
-            "main",
-            "--artifacts",
-            str(tmp_path),
-        ]
-    ]

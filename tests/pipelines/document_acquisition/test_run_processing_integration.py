@@ -18,11 +18,6 @@ from edgar_sec.pipelines.document_acquisition.models import (
     AcquisitionOutcome,
 )
 from edgar_sec.pipelines.document_acquisition.processing import run as processing_run
-from edgar_sec.pipelines.document_acquisition.processing.io import (
-    DEFAULT_PROCESSING_BUDGETS,
-    ProcessingBudgetPolicy,
-    ProcessingBudgetRegistry,
-)
 from edgar_sec.pipelines.document_acquisition.processing.worker import process_target
 from edgar_sec.pipelines.document_acquisition.run_state.operations import (
     iter_operation_states,
@@ -159,7 +154,7 @@ def test_run_cli_processes_previously_acquired_target_offline(
     assert body.decode("ascii") not in manifest_text
 
 
-def test_process_cli_normalizes_text_with_offline_test_budget(
+def test_process_cli_normalizes_text_offline(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture
 ) -> None:
     artifacts_root = tmp_path / "artifacts"
@@ -223,27 +218,13 @@ def test_process_cli_normalizes_text_with_offline_test_budget(
         "edgar_sec.pipelines.document_acquisition.commands.common.sec_transport_factory",
         unexpected_acquisition,
     )
-    assert DEFAULT_PROCESSING_BUDGETS.policies == ()
-    test_budgets = ProcessingBudgetRegistry(
-        (
-            ProcessingBudgetPolicy(
-                budget_version="offline-text-test-v1",
-                route=DocumentRoute.TEXT,
-                handler_id="normalize_document",
-                handler_version="1",
-                max_input_bytes=256,
-                max_output_bytes=256,
-                working_set_reservation_bytes=64,
-            ),
-        )
-    )
     process_calls = []
 
-    def process_with_test_budget(request, *, paths):
+    def spy_process_target(request, *, paths, **kwargs):
         process_calls.append(request)
-        return process_target(request, paths=paths, budget_registry=test_budgets)
+        return process_target(request, paths=paths, **kwargs)
 
-    monkeypatch.setattr(processing_run, "process_target", process_with_test_budget)
+    monkeypatch.setattr(processing_run, "process_target", spy_process_target)
 
     exit_code = cli.main(
         [
@@ -311,10 +292,9 @@ def test_process_cli_normalizes_text_with_offline_test_budget(
     assert receipt["source_response_sha256"] == digest
     assert receipt["selected_sha256"] == digest
     assert receipt["processing_run_id"] == manifest["processing_id"]
-    assert DEFAULT_PROCESSING_BUDGETS.policies == ()
 
 
-def test_run_cli_processes_target_with_production_budgets(
+def test_run_cli_processes_target_end_to_end(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture
 ) -> None:
     artifacts_root = tmp_path / "artifacts"
@@ -414,7 +394,7 @@ def test_run_cli_processes_target_with_production_budgets(
     assert file_sha256(staged_text_path) == text_output["sha256"]
 
 
-def test_run_cli_processes_form4_with_production_budgets(
+def test_run_cli_processes_form4_end_to_end(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture
 ) -> None:
     artifacts_root = tmp_path / "artifacts"

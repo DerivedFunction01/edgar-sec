@@ -347,33 +347,20 @@ def _action_publish_run() -> None:
     )
 
 
-def _action_inspect_snapshot() -> None:
-    paths = resolve_acquisition_paths()
-    branch = prompt_text("DAG branch to inspect", "main").strip() or "main"
-    cli_main(
-        [
-            "snapshot",
-            "status",
-            "--branch",
-            branch,
-            "--artifacts",
-            str(paths.artifacts_root),
-        ]
+def _action_dag() -> None:
+    from edgar_sec.infra.storage.dag.menu import DAGMenuConfig, run_dag_menu
+    from edgar_sec.pipelines.document_acquisition.snapshot.specs import (
+        ACQUISITION_RELATIONS,
     )
 
-
-def _build_snapshot_menu() -> tuple[MenuAction, ...]:
-    return build_menu(
-        menu_action("Publish snapshot", _action_publish_run),
-        menu_action("Snapshot status", _action_inspect_snapshot),
+    config = DAGMenuConfig(
+        snapshots_root=lambda: resolve_acquisition_paths().snapshots_root,
+        title="Document Acquisition Snapshot DAG Console",
+        specs=ACQUISITION_RELATIONS,
+        publish_action=_action_publish_run,
+        publish_label="Publish completed acquisition run to DAG",
     )
-
-
-def _action_snapshot_console() -> None:
-    run_interactive_menu(
-        "Document Acquisition Snapshot Console",
-        _build_snapshot_menu(),
-    )
+    run_dag_menu(config)
 
 
 def build_operator_menu() -> tuple[MenuAction, ...]:
@@ -382,8 +369,8 @@ def build_operator_menu() -> tuple[MenuAction, ...]:
         menu_action("Inspect acquisition runs", _action_status),
         menu_action("Run acquisition and process acquired bodies", _action_run),
         menu_action(
-            "Snapshot console (publish, status)",
-            _action_snapshot_console,
+            "Snapshot DAG console (publish, switch current, inspect, branches, tags)",
+            _action_dag,
             key="p",
         ),
         menu_action(

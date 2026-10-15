@@ -12,16 +12,12 @@ from edgar_sec.pipelines.document_acquisition.processing.worker import (
     ProcessingError,
     process_target,
 )
-from edgar_sec.pipelines.document_acquisition.processing.io import (
-    ProcessingBudgetRegistry,
-)
 from tests.support import (
     PROCESSING_TEST_BODY as _BODY,
     acquired_processing_request as _acquired_request,
     failed_processing_operation_result,
     minimal_processing_request as _minimal_request,
     processing_body_receipt as _processing_body_receipt,
-    processing_budget_registry as _budget_registry,
     stub_processing_target_validation as _stub_target_validation,
     two_text_processing_operations as _two_text_operations,
 )
@@ -43,7 +39,6 @@ def test_process_target_returns_deterministic_identity_results_and_receipt(
     import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     monkeypatch.setattr(normalizer, "normalize_document", normalize)
-    monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
     monkeypatch.setattr(
         processing,
         "get_staged_body_metadata_ref",
@@ -56,8 +51,8 @@ def test_process_target_returns_deterministic_identity_results_and_receipt(
         lambda *_args: receipt_calls.append(True),
     )
 
-    first = process_target(request, paths=paths, budget_registry=_budget_registry())
-    second = process_target(request, paths=paths, budget_registry=_budget_registry())
+    first = process_target(request, paths=paths)
+    second = process_target(request, paths=paths)
 
     assert first == second
     assert first.route.value == "text"
@@ -96,7 +91,6 @@ def test_retry_reuses_prior_success_and_executes_only_selected_failure(
     paths, request = _minimal_request(tmp_path)
     request = _two_text_operations(request)
     _stub_target_validation(monkeypatch, request)
-    monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
     monkeypatch.setattr(
         processing, "get_staged_body_metadata_ref", lambda *_args: request.body
     )
@@ -115,7 +109,7 @@ def test_retry_reuses_prior_success_and_executes_only_selected_failure(
         return SimpleNamespace(text="first output")
 
     monkeypatch.setattr(normalizer, "normalize_document", normalize)
-    initial = process_target(request, paths=paths, budget_registry=_budget_registry())
+    initial = process_target(request, paths=paths)
 
     assert [result.status for result in initial.operation_results] == [
         "available",
@@ -129,7 +123,6 @@ def test_retry_reuses_prior_success_and_executes_only_selected_failure(
     retried = process_target(
         request,
         paths=paths,
-        budget_registry=_budget_registry(),
         prior_results=(first_raw, first_success),
         selected_operation_ids=("text-retry",),
     )
@@ -143,16 +136,14 @@ def test_retry_reuses_prior_success_and_executes_only_selected_failure(
     assert receipt_calls == [initial.processing_id, initial.processing_id]
 
 
-def test_reused_results_skip_memory_admission_for_unselected_operations(
+def test_reused_results_skip_body_read_for_unselected_operations(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     import edgar_sec.engine.forms.normalize as normalizer
     import edgar_sec.pipelines.document_acquisition.processing.worker as processing
-    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     paths, request = _minimal_request(tmp_path)
     _stub_target_validation(monkeypatch, request)
-    monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
     monkeypatch.setattr(
         processing, "get_staged_body_metadata_ref", lambda *_args: request.body
     )
@@ -170,12 +161,7 @@ def test_reused_results_skip_memory_admission_for_unselected_operations(
             handler_calls.append(True) or SimpleNamespace(text="completed")
         ),
     )
-    initial = process_target(request, paths=paths, budget_registry=_budget_registry())
-    monkeypatch.setattr(
-        processing_io,
-        "available_memory_bytes",
-        lambda: pytest.fail("reused operations must not be re-admitted"),
-    )
+    initial = process_target(request, paths=paths)
     monkeypatch.setattr(
         processing,
         "read_bounded_source",
@@ -190,7 +176,6 @@ def test_reused_results_skip_memory_admission_for_unselected_operations(
     reused = process_target(
         request,
         paths=paths,
-        budget_registry=_budget_registry(),
         prior_results=initial.operation_results[:2],
         selected_operation_ids=(),
     )
@@ -205,22 +190,18 @@ def test_reused_results_skip_memory_admission_for_unselected_operations(
 
 @pytest.mark.parametrize(
     "stale_kind",
-    ["fingerprint", "output", "raw_path", "raw_digest", "raw_size", "source", "budget"],
+    ["fingerprint", "output", "raw_path", "raw_digest", "raw_size", "source"],
 )
 def test_retry_rejects_stale_prior_fingerprint_or_output(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
     stale_kind: str,
 ) -> None:
-    import edgar_sec.engine.document_processing.processor as engine_processor
     import edgar_sec.engine.forms.normalize as normalizer
     import edgar_sec.pipelines.document_acquisition.processing.worker as processing
-    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     paths, request = _minimal_request(tmp_path)
     _stub_target_validation(monkeypatch, request)
-    registry = _budget_registry()
-    monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
     monkeypatch.setattr(
         processing, "get_staged_body_metadata_ref", lambda *_args: request.body
     )
@@ -230,10 +211,9 @@ def test_retry_rejects_stale_prior_fingerprint_or_output(
         "normalize_document",
         lambda *_args, **_kwargs: SimpleNamespace(text="completed"),
     )
-    completed = process_target(request, paths=paths, budget_registry=registry)
+    completed = process_target(request, paths=paths)
     prior = completed.operation_results
     replay_request = request
-    replay_registry = registry
 
     if stale_kind == "fingerprint":
         prior = (
@@ -267,14 +247,7 @@ def test_retry_rejects_stale_prior_fingerprint_or_output(
             "get_staged_body_metadata_ref",
             lambda *_args: replay_request.body,
         )
-    elif stale_kind == "budget":
-        replay_registry = _budget_registry(budget_version="test-v2")
 
-    monkeypatch.setattr(
-        processing_io,
-        "available_memory_bytes",
-        lambda: pytest.fail("no selected operation should be admitted"),
-    )
     monkeypatch.setattr(
         processing,
         "read_bounded_source",
@@ -292,7 +265,6 @@ def test_retry_rejects_stale_prior_fingerprint_or_output(
         process_target(
             replay_request,
             paths=paths,
-            budget_registry=replay_registry,
             prior_results=prior[:2],
             selected_operation_ids=(),
         )
@@ -371,13 +343,7 @@ def test_process_target_uses_lazy_direct_selection_evidence_for_route(
     )
     import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
-    monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
-
-    result = process_target(
-        request,
-        paths=paths,
-        budget_registry=_budget_registry(DocumentRoute.MARKUP),
-    )
+    result = process_target(request, paths=paths)
 
     assert result.route.value == "markup"
     assert result.effective_path == "report.htm"
@@ -395,10 +361,10 @@ def test_route_changes_invalidate_prior_operation_fingerprints(tmp_path: Path) -
     _paths, request = _acquired_request(tmp_path, lazy_selected=True)
     operation = request.operations[1]
     markup = operation_fingerprint(
-        request, operation, request.body, DocumentRoute.MARKUP, "report.htm", None
+        request, operation, request.body, DocumentRoute.MARKUP, "report.htm"
     )
     rendered = operation_fingerprint(
-        request, operation, request.body, DocumentRoute.RENDERED, "report.htm", None
+        request, operation, request.body, DocumentRoute.RENDERED, "report.htm"
     )
 
     assert markup != rendered
@@ -432,8 +398,7 @@ def test_process_target_keeps_raw_when_normalization_fails(
     import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
 
     monkeypatch.setattr(normalizer, "normalize_document", fail_normalize)
-    monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
-    result = process_target(request, paths=paths, budget_registry=_budget_registry())
+    result = process_target(request, paths=paths)
 
     assert result.operation_results[0].status == "available"
     assert result.operation_results[1].status == "failed"
@@ -458,7 +423,6 @@ def test_admitted_transform_hashes_selected_bytes_once(
         "normalize_document",
         lambda *_args, **_kwargs: SimpleNamespace(text="admitted text"),
     )
-    monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
     metadata_refs = []
     monkeypatch.setattr(
         processing,
@@ -490,7 +454,7 @@ def test_admitted_transform_hashes_selected_bytes_once(
         return original_hash(raw_bytes)
 
     monkeypatch.setattr(engine_processor, "sha256_bytes", count_selected_hash)
-    result = process_target(request, paths=paths, budget_registry=_budget_registry())
+    result = process_target(request, paths=paths)
 
     assert selected_hashes == [_BODY]
     assert metadata_refs == [request.body]
@@ -507,73 +471,6 @@ def test_process_target_requires_pinned_raw_for_matched_target(tmp_path: Path) -
         process_target(request, paths=paths)
     assert request.body.path.read_bytes() == _BODY
     assert _processing_body_receipt(paths, request.body) is None
-
-
-@pytest.mark.parametrize("budgeted", [False, True])
-def test_unbudgeted_or_oversized_text_fails_before_body_access(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, budgeted: bool
-) -> None:
-    import edgar_sec.pipelines.document_acquisition.body_handoff as body_handoff
-    import edgar_sec.pipelines.document_acquisition.processing.worker as processing
-    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
-
-    paths, request = _minimal_request(tmp_path)
-    _stub_target_validation(monkeypatch, request)
-    original_body = request.body.path.read_bytes()
-    if budgeted:
-        registry = _budget_registry(max_input_bytes=1, max_output_bytes=16)
-        monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
-    else:
-        registry = ProcessingBudgetRegistry()
-
-    hashed = []
-    opened = []
-    receipts = []
-    metadata_refs = []
-
-    def unexpected_hash(*args: object, **_kwargs: object) -> None:
-        hashed.append(args)
-        raise AssertionError("selected body must not be hashed before admission")
-
-    def unexpected_read(*args: object, **_kwargs: object) -> None:
-        opened.append(args)
-        raise AssertionError("selected body must not be read before admission")
-
-    def unexpected_receipt(*args: object, **_kwargs: object) -> None:
-        receipts.append(args)
-        raise AssertionError("budget rejection must not record a receipt")
-
-    monkeypatch.setattr(body_handoff, "_hash_file", unexpected_hash)
-    monkeypatch.setattr(processing_io.os, "open", unexpected_read)
-    monkeypatch.setattr(processing, "read_bounded_source", unexpected_read)
-    monkeypatch.setattr(
-        processing,
-        "get_staged_body_ref",
-        lambda *_args: pytest.fail("budget refusal used byte-verifying handoff"),
-    )
-    monkeypatch.setattr(
-        processing,
-        "get_staged_body_metadata_ref",
-        lambda *_args: metadata_refs.append(request.body) or request.body,
-    )
-    monkeypatch.setattr(
-        processing, "record_body_consumption_receipt", unexpected_receipt
-    )
-
-    result = process_target(request, paths=paths, budget_registry=registry)
-
-    assert result.operation_results[0].status == "available"
-    assert result.operation_results[1].status == "blocked"
-    assert (
-        result.operation_results[1].diagnostics[0].code == "processing_budget_exceeded"
-    )
-    assert result.operation_results[0].staged_output.path == request.body.path
-    assert result.operation_results[0].output_sha256 == request.body.sha256
-    assert result.operation_results[0].output_size == request.body.byte_size
-    assert result.operation_results[1].staged_output is None
-    assert hashed == opened == receipts == []
-    assert metadata_refs == [request.body]
-    assert request.body.path.read_bytes() == original_body
 
 
 def test_raw_only_processing_is_file_backed_and_skips_engine(
@@ -681,46 +578,6 @@ def test_malformed_xml_remains_raw_only_without_registered_exporters(
     assert result.operation_results[2].status == "unsupported"
 
 
-def test_output_above_registered_limit_is_not_staged(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    import edgar_sec.engine.forms.normalize as normalizer
-    import edgar_sec.pipelines.document_acquisition.processing.worker as processing
-    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
-
-    paths, request = _minimal_request(tmp_path)
-    _stub_target_validation(monkeypatch, request)
-    monkeypatch.setattr(
-        normalizer,
-        "normalize_document",
-        lambda *_args, **_kwargs: SimpleNamespace(text="x" * 32),
-    )
-    monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
-    monkeypatch.setattr(
-        processing,
-        "get_staged_body_metadata_ref",
-        lambda *_args: request.body,
-    )
-    receipt_calls = []
-    monkeypatch.setattr(
-        processing, "_record_receipt", lambda *_args: receipt_calls.append(True)
-    )
-
-    result = process_target(
-        request,
-        paths=paths,
-        budget_registry=_budget_registry(max_output_bytes=16),
-    )
-
-    raw, text = result.operation_results[:2]
-    assert raw.status == "available"
-    assert text.status == "failed"
-    assert text.diagnostics[0].code == "processing_budget_exceeded"
-    assert text.staged_output is None
-    assert not (paths.run_staging_root(request.body.run_id) / "processing").exists()
-    assert receipt_calls == []
-
-
 def test_form_xml_without_registered_handler_is_unsupported(
     tmp_path: Path,
 ) -> None:
@@ -757,9 +614,6 @@ def test_form_xml_without_registered_handler_is_unsupported(
         body,
         processing_id,
         {},
-        {},
-        {},
-        {},
         frozenset({raw.operation_id, xml.operation_id}),
     )
 
@@ -775,9 +629,6 @@ def test_form4_xml_with_registered_handler_succeeds(
     tmp_path: Path,
 ) -> None:
     from edgar_sec.domain.document.path_facts import DocumentPathFacts
-    from edgar_sec.pipelines.document_acquisition.processing.io import (
-        ProcessingBudgetPolicy,
-    )
     from edgar_sec.pipelines.document_acquisition.processing.worker import (
         _operation_results,
     )
@@ -800,15 +651,6 @@ def test_form4_xml_with_registered_handler_succeeds(
     effective_path = "report.htm"
     body = request.body.path.read_bytes()
     processing_id = "proc_form4_xml_test"
-    budget = ProcessingBudgetPolicy(
-        budget_version="v1",
-        route=DocumentRoute.MARKUP,
-        handler_id="form4_html_to_xml",
-        handler_version="1",
-        max_input_bytes=10000,
-        max_output_bytes=10000,
-        working_set_reservation_bytes=10000,
-    )
     results = _operation_results(
         request,
         paths,
@@ -818,9 +660,6 @@ def test_form4_xml_with_registered_handler_succeeds(
         request.body,
         body,
         processing_id,
-        {},
-        {"form4-xml": budget},
-        {},
         {},
         frozenset({raw.operation_id, xml.operation_id}),
     )
@@ -862,12 +701,9 @@ def test_process_target_refuses_changed_staged_body_without_receipt(
 ) -> None:
     paths, request = _acquired_request(tmp_path)
     request.body.path.write_bytes(b"changed")
-    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
-
-    monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
 
     with pytest.raises(ProcessingError):
-        process_target(request, paths=paths, budget_registry=_budget_registry())
+        process_target(request, paths=paths)
 
     assert _processing_body_receipt(paths, request.body) is None
 
