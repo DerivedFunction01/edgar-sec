@@ -87,10 +87,33 @@ STREET_ANCHOR_TERMS: tuple[str, ...] = (
     "three",
 )
 
+RELATIONSHIP_TO_ISSUER_TERMS: tuple[str, ...] = (
+    "director",
+    "officer",
+    "executive officer",
+    "10% owner",
+    "10% stockholder",
+    "promoter",
+    "immediate family",
+    "beneficial owner",
+)
+
+SEC_FILE_NUMBER_PREFIXES: tuple[str, ...] = (
+    "000",
+    "001",
+    "002",
+    "005",
+    "028",
+    "033",
+    "333",
+)
+
 __all__ = [
     "EXCHANGE_PREFIX_TERMS",
     "ISSUER_LABEL_TERMS",
     "NON_OWNER_JURISDICTION_TERMS",
+    "RELATIONSHIP_TO_ISSUER_TERMS",
+    "SEC_FILE_NUMBER_PREFIXES",
     "STREET_ANCHOR_TERMS",
     "SYMBOL_TERMS",
     "TEMPLATE_LABELS",

@@ -8,7 +8,12 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.engine.forms.common.statutory import HEADER_LEAK_RE
+from edgar_sec.engine.forms.common.signatures import SIG_BOILERPLATE_TERMS
+from edgar_sec.engine.forms.common.statutory import (
+    HEADER_LEAK_RE,
+    STATUTORY_PAGE_ARTIFACT_RE,
+)
+from edgar_sec.engine.forms.ownership.patterns import PROSE_BOILERPLATE_RE
 from edgar_sec.foundation.text.dates import (
     MONTH_PATTERN,
     NUMERIC_DATE_RE,
@@ -43,31 +48,6 @@ _VALID_TRANSACTION_CODES = frozenset(
         "U",
         "K",
     }
-)
-
-_SIGNATURE_BOILERPLATE_PHRASES = (
-    "omb",
-    "reminder",
-    "potential persons",
-    "see instruction",
-    "criminal violations",
-    "valid omb",
-    "intentional misstatements",
-)
-
-_STATUTORY_BOILERPLATE_PHRASES = (
-    "reminder: report on a separate",
-    "potential persons who are to respond",
-    "note: file three copies",
-    "intentional misstatements",
-    "see instruction",
-    "form 4",
-    "check this box if no longer",
-    "table i - non-derivative",
-    "table ii - derivative",
-    "sec 1474",
-    "sec 2474",
-    "(over)",
 )
 
 _FIELD_PATHS: dict[str, tuple[str, ...]] = {
@@ -298,7 +278,7 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
     for sig_name_elem in root.iter("signatureName"):
         text = _element_text(sig_name_elem)
         lower = text.lower()
-        if text and any(b in lower for b in _SIGNATURE_BOILERPLATE_PHRASES):
+        if text and any(b in lower for b in SIG_BOILERPLATE_TERMS):
             anomalies.append(
                 {
                     "accession": accession,
@@ -431,7 +411,10 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
         text = _element_text(unp)
         snippet = _WHITESPACE_RE.sub(" ", text)[:240].strip()
         lower_snip = snippet.lower()
-        is_boilerplate = any(b in lower_snip for b in _STATUTORY_BOILERPLATE_PHRASES)
+        is_boilerplate = bool(
+            STATUTORY_PAGE_ARTIFACT_RE.search(lower_snip)
+            or PROSE_BOILERPLATE_RE.search(lower_snip)
+        )
         unparsed_sections.append(
             {
                 "accession": accession,

@@ -8,6 +8,8 @@ from edgar_sec.domain.forms.common.entities import (
     EXCHANGE_PREFIX_TERMS,
     ISSUER_LABEL_TERMS,
     NON_OWNER_JURISDICTION_TERMS,
+    RELATIONSHIP_TO_ISSUER_TERMS,
+    SEC_FILE_NUMBER_PREFIXES,
     STREET_ANCHOR_TERMS,
     SYMBOL_TERMS,
     TEMPLATE_LABELS,
@@ -63,10 +65,26 @@ NON_OWNER_JURISDICTION_RE = re.compile(
 STRIP_BOX_NUM_RE = re.compile(r"^\s*(?:\[\d{1,2}\]|\d{1,2}\.)\s*")
 BARE_BOX_NUM_RE = re.compile(r"^\s*\d{1,2}\.?\s*$")
 
+RELATIONSHIP_TO_ISSUER_ALT = build_alternation(
+    RELATIONSHIP_TO_ISSUER_TERMS, auto_escape=True
+)
+RELATIONSHIP_TO_ISSUER_RE = re.compile(
+    rf"\b(?:{RELATIONSHIP_TO_ISSUER_ALT})\b", re.IGNORECASE
+)
+
+SEC_FILE_PREFIX_ALT = build_alternation(SEC_FILE_NUMBER_PREFIXES, auto_escape=True)
+SEC_FILE_NUMBER_RE = re.compile(
+    rf"\b(?:{SEC_FILE_PREFIX_ALT})-\d{{4,8}}\b", re.IGNORECASE
+)
+CUSIP_RE = re.compile(r"\b[0-9A-Z]{9}\b")
+CRD_RE = re.compile(r"\b\d{1,9}\b")
+
 __all__ = [
     "BARE_BOX_NUM_RE",
     "CITY_MATCH_RE",
     "CLEAN_TEMPLATE_RE",
+    "CRD_RE",
+    "CUSIP_RE",
     "EXCHANGE_PREFIX_ALT",
     "IRS_RE",
     "ISSUER_LABEL_TERMS",
@@ -76,6 +94,10 @@ __all__ = [
     "NAME_MATCH_RE",
     "NON_OWNER_JURISDICTION_ALT",
     "NON_OWNER_JURISDICTION_RE",
+    "RELATIONSHIP_TO_ISSUER_ALT",
+    "RELATIONSHIP_TO_ISSUER_RE",
+    "SEC_FILE_NUMBER_RE",
+    "SEC_FILE_PREFIX_ALT",
     "STATE_ALT",
     "STATE_ZIP_RE",
     "STREET_ANCHOR_ALT",

@@ -110,3 +110,46 @@ COMMON_STATUTORY_LEXICAL_PACK = LexicalEvidencePack(
         ),
     ),
 )
+
+RULE_10B5_1_PHRASES: tuple[str, ...] = (
+    "affirmative defense conditions of rule 10b5-1(c)",
+    "affirmative defense conditions of rule 10b5-1",
+    "date of plan adoption or giving of instruction",
+    "satisfy rule 10b5-1",
+    "written trading plan",
+    "trading instructions to satisfy rule 10b5-1",
+    "relying on rule 10b5-1",
+    "rule 10b5-1(c)",
+    "rule 10b5-1",
+)
+
+CERTIFICATION_DECLARATION_PHRASES: tuple[str, ...] = (
+    "after reasonable inquiry and to the best of my knowledge and belief",
+    "i certify that the information set forth in this statement is true",
+    "true, complete and correct",
+    "true complete and correct",
+    "terms of submission",
+    "undertaking to furnish",
+)
+
+OMB_BURDEN_PHRASES: tuple[str, ...] = (
+    "estimated average burden hours per response",
+    "average burden hours per response",
+    "burden hours per response",
+    "omb number",
+    "currently valid omb control number",
+)
+
+__all__ = [
+    "CERTIFICATION_DECLARATION_PHRASES",
+    "COMMON_STATUTORY_LEXICAL_PACK",
+    "HEADER_LEAK_PHRASES",
+    "OMB_BURDEN_PHRASES",
+    "RULE_10B5_1_PHRASES",
+    "STATUTORY_CRIMINAL_WARNING_PHRASES",
+    "STATUTORY_DECISIVE_PHRASES",
+    "STATUTORY_PAGE_BOILERPLATE",
+    "STATUTORY_STRONG_NGRAMS",
+    "STATUTORY_STRONG_UNIGRAMS",
+    "STATUTORY_SUPPORT_TERMS",
+]

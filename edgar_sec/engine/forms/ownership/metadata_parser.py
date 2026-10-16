@@ -23,6 +23,7 @@ from edgar_sec.engine.forms.common.entities import (
     ISSUER_TAIL_RE,
     NAME_MATCH_RE,
     NON_OWNER_JURISDICTION_RE,
+    RELATIONSHIP_TO_ISSUER_RE,
     STATE_ZIP_RE,
     STREET_ANCHOR_RE,
     STRIP_BOX_NUM_RE,
@@ -520,7 +521,8 @@ def parse_metadata(
         for c_idx, (cell, lower) in enumerate(zip(row, lowered_row, strict=True)):
             if not cell or not (
                 "relationship" in lower
-                or any(term in lower for term in ("director", "officer", "10%"))
+                or bool(RELATIONSHIP_TO_ISSUER_RE.search(lower))
+                or "10%" in lower
             ):
                 continue
             role_text = " ".join(

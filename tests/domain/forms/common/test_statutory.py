@@ -1,7 +1,10 @@
 """Unit tests for domain statutory warning lexical packs."""
 
 from edgar_sec.domain.forms.common.statutory import (
+    CERTIFICATION_DECLARATION_PHRASES,
     COMMON_STATUTORY_LEXICAL_PACK,
+    OMB_BURDEN_PHRASES,
+    RULE_10B5_1_PHRASES,
     STATUTORY_CRIMINAL_WARNING_PHRASES,
 )
 from edgar_sec.foundation.text.automaton import tokenize
@@ -26,3 +29,12 @@ def test_common_statutory_lexical_pack_matching():
     score = score_tokens(tokenize(text), pack, ctx)
     assert score.score > 0
     assert not score.exclusions
+
+
+def test_statutory_phrases_and_certifications():
+    """Verify 10b5-1, OMB burden, and certification declaration phrases."""
+    assert any("rule 10b5-1" in p for p in RULE_10B5_1_PHRASES)
+    assert any("burden hours" in p for p in OMB_BURDEN_PHRASES)
+    assert any(
+        "true, complete and correct" in p for p in CERTIFICATION_DECLARATION_PHRASES
+    )
