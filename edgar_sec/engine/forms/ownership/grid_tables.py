@@ -5,7 +5,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 import re
 
-from edgar_sec.engine.forms.ownership.patterns import HEADER_LEAK_RE, TEMPLATE_LABELS
+from edgar_sec.domain.forms.common.entities import TEMPLATE_LABELS
+from edgar_sec.engine.forms.common.statutory import (
+    HEADER_LEAK_RE,
+    STATUTORY_PAGE_ARTIFACT_RE,
+)
 from edgar_sec.engine.forms.ownership.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import (
     CURRENCY_TOKEN_RE,
@@ -138,6 +142,7 @@ def _is_artifact_title(title: str, table_label: str) -> bool:
         or not title.strip(" *_-=")
         or bool(NUMERIC_DATE_RE.fullmatch(lower.strip()))
         or any(phrase in lower for phrase in _TABLE_ARTIFACT_PHRASES)
+        or STATUTORY_PAGE_ARTIFACT_RE.search(lower) is not None
         or "title of" in lower
         or "instr." in lower
         or "month/day" in lower

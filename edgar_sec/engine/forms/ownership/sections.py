@@ -6,13 +6,17 @@ import re
 from dataclasses import dataclass
 from enum import StrEnum
 
+from edgar_sec.domain.forms.common.signatures import (
+    COMMON_SIGNATURE_LEXICAL_PACK,
+)
+from edgar_sec.domain.forms.common.statutory import (
+    COMMON_STATUTORY_LEXICAL_PACK,
+)
 from edgar_sec.domain.forms.families.ownership.evidence import (
     FOOTNOTE_VETO_PHRASES,
     OWNERSHIP_BOXES_LEXICAL_PACK,
     OWNERSHIP_FOOTNOTE_LEXICAL_PACK,
     OWNERSHIP_HEADER_LEXICAL_PACK,
-    OWNERSHIP_SIGNATURE_LEXICAL_PACK,
-    OWNERSHIP_STATUTORY_LEXICAL_PACK,
     OWNERSHIP_TABLE_I_LEXICAL_PACK,
     OWNERSHIP_TABLE_II_LEXICAL_PACK,
 )
@@ -39,8 +43,8 @@ _COMPILED_HEADER_PACK = compile_evidence_pack(OWNERSHIP_HEADER_LEXICAL_PACK)
 _COMPILED_BOXES_PACK = compile_evidence_pack(OWNERSHIP_BOXES_LEXICAL_PACK)
 _COMPILED_TABLE_I_PACK = compile_evidence_pack(OWNERSHIP_TABLE_I_LEXICAL_PACK)
 _COMPILED_TABLE_II_PACK = compile_evidence_pack(OWNERSHIP_TABLE_II_LEXICAL_PACK)
-_COMPILED_SIGNATURE_PACK = compile_evidence_pack(OWNERSHIP_SIGNATURE_LEXICAL_PACK)
-_COMPILED_STATUTORY_PACK = compile_evidence_pack(OWNERSHIP_STATUTORY_LEXICAL_PACK)
+_COMPILED_SIGNATURE_PACK = compile_evidence_pack(COMMON_SIGNATURE_LEXICAL_PACK)
+_COMPILED_STATUTORY_PACK = compile_evidence_pack(COMMON_STATUTORY_LEXICAL_PACK)
 _EVIDENCE_CTX = EvidenceContext(min_words=1)
 _FOOTNOTE_VETO_RE = re.compile(
     build_alternation(FOOTNOTE_VETO_PHRASES, auto_escape=True, compact=True)
