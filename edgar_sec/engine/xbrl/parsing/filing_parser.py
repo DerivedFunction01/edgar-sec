@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.identity import Cik
+from edgar_sec.engine.xbrl.discovery.discovery import LinkbaseType, classify_linkbase
 from edgar_sec.engine.xbrl.parsing.instance_parser import parse_instance_facts
 from edgar_sec.engine.xbrl.parsing.linkbase_parser import parse_linkbase_bundle
 from edgar_sec.engine.xbrl.schema.models import FilingXbrl
@@ -18,17 +19,22 @@ def parse_filing_xbrl(filing: FilingAggregate) -> FilingXbrl:
     ins_bytes: bytes | None = None
 
     for att in filing.linkbases:
-        fname = att.filename.lower()
-        dtype = (att.document_type or "").upper()
-        if fname.endswith("_cal.xml") or "CAL" in dtype:
+        lb_type = classify_linkbase(
+            att.document_type or "",
+            att.filename or "",
+            att.description or "",
+        )
+        if lb_type is None:
+            continue
+        if lb_type == LinkbaseType.CALCULATION:
             cal_bytes = att.raw()
-        elif fname.endswith("_pre.xml") or "PRE" in dtype:
+        elif lb_type == LinkbaseType.PRESENTATION:
             pre_bytes = att.raw()
-        elif fname.endswith("_lab.xml") or "LAB" in dtype:
+        elif lb_type == LinkbaseType.LABEL:
             lab_bytes = att.raw()
-        elif fname.endswith(".xsd") or "SCH" in dtype:
+        elif lb_type == LinkbaseType.SCHEMA:
             xsd_bytes = att.raw()
-        elif fname.endswith("_htm.xml") or "INS" in dtype:
+        elif lb_type == LinkbaseType.INSTANCE:
             ins_bytes = att.raw()
 
     bundle = parse_linkbase_bundle(

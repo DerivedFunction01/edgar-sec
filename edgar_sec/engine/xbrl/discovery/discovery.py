@@ -25,6 +25,54 @@ class LinkbaseType(StrEnum):
     PACKAGE = "package"
 
 
+def classify_linkbase(
+    doc_type: str, filename: str, description: str
+) -> LinkbaseType | None:
+    """Classify a document entry into a recognized linkbase type.
+
+    Uses strict document type, filename suffix, and description guards;
+    ambiguous entries return None.
+    """
+    dt = doc_type.strip().upper()
+    fn = filename.strip().lower()
+    desc = description.strip().upper()
+
+    if dt == "EX-101.CAL" or fn.endswith("_cal.xml"):
+        return LinkbaseType.CALCULATION
+    if "CALCULATION LINKBASE" in desc:
+        return LinkbaseType.CALCULATION
+
+    if dt == "EX-101.PRE" or fn.endswith("_pre.xml"):
+        return LinkbaseType.PRESENTATION
+    if "PRESENTATION LINKBASE" in desc:
+        return LinkbaseType.PRESENTATION
+
+    if dt == "EX-101.DEF" or fn.endswith("_def.xml"):
+        return LinkbaseType.DEFINITION
+    if "DEFINITION LINKBASE" in desc:
+        return LinkbaseType.DEFINITION
+
+    if dt == "EX-101.LAB" or fn.endswith("_lab.xml"):
+        return LinkbaseType.LABEL
+    if "LABEL LINKBASE" in desc:
+        return LinkbaseType.LABEL
+
+    if dt == "EX-101.SCH" or fn.endswith(".xsd"):
+        return LinkbaseType.SCHEMA
+    if "TAXONOMY EXTENSION SCHEMA" in desc:
+        return LinkbaseType.SCHEMA
+
+    if dt == "EX-101.INS" or fn.endswith("_htm.xml"):
+        return LinkbaseType.INSTANCE
+    if "EXTRACTED XBRL INSTANCE" in desc:
+        return LinkbaseType.INSTANCE
+
+    if fn.endswith("-xbrl.zip") or fn.endswith("_xbrl.zip"):
+        return LinkbaseType.PACKAGE
+
+    return None
+
+
 @dataclass(frozen=True, slots=True)
 class DiscoveredLinkbase:
     """One discovered linkbase or instance file from a filing index."""
@@ -42,44 +90,11 @@ class DiscoveredLinkbase:
 
 def classify_linkbase_entry(entry: InventoryEntry) -> LinkbaseType | None:
     """Classify an inventory entry into a recognized linkbase type."""
-    doc_type = (entry.document_type or "").strip().upper()
-    filename = (entry.filename or "").strip().lower()
-    description = (entry.description or "").strip().upper()
-
-    if doc_type == "EX-101.CAL" or filename.endswith("_cal.xml"):
-        return LinkbaseType.CALCULATION
-    if "CALCULATION LINKBASE" in description:
-        return LinkbaseType.CALCULATION
-
-    if doc_type == "EX-101.PRE" or filename.endswith("_pre.xml"):
-        return LinkbaseType.PRESENTATION
-    if "PRESENTATION LINKBASE" in description:
-        return LinkbaseType.PRESENTATION
-
-    if doc_type == "EX-101.DEF" or filename.endswith("_def.xml"):
-        return LinkbaseType.DEFINITION
-    if "DEFINITION LINKBASE" in description:
-        return LinkbaseType.DEFINITION
-
-    if doc_type == "EX-101.LAB" or filename.endswith("_lab.xml"):
-        return LinkbaseType.LABEL
-    if "LABEL LINKBASE" in description:
-        return LinkbaseType.LABEL
-
-    if doc_type == "EX-101.SCH" or filename.endswith(".xsd"):
-        return LinkbaseType.SCHEMA
-    if "TAXONOMY EXTENSION SCHEMA" in description:
-        return LinkbaseType.SCHEMA
-
-    if doc_type == "EX-101.INS" or filename.endswith("_htm.xml"):
-        return LinkbaseType.INSTANCE
-    if "EXTRACTED XBRL INSTANCE" in description:
-        return LinkbaseType.INSTANCE
-
-    if filename.endswith("-xbrl.zip") or filename.endswith("_xbrl.zip"):
-        return LinkbaseType.PACKAGE
-
-    return None
+    return classify_linkbase(
+        entry.document_type or "",
+        entry.filename or "",
+        entry.description or "",
+    )
 
 
 def extract_filing_linkbases(
