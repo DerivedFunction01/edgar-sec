@@ -51,7 +51,13 @@ class FilingsResult:
     query_backed: bool = False
     query_sql: str | None = None
     query_params: tuple[Any, ...] = ()
+    query_tables: dict[str, Any] | None = None
     query_factories: dict[str, Any] | None = None
+
+    def _prepare_query_con(self, con: duckdb.DuckDBPyConnection) -> None:
+        if self.query_tables:
+            for tbl_name, tbl in self.query_tables.items():
+                con.register(tbl_name, tbl)
 
     def _make_query_filing(self, row: tuple[Any, ...]) -> FilingAggregate:
         from edgar_sec.domain.identity import AccessionNumber, Cik
@@ -125,6 +131,7 @@ class FilingsResult:
             return self._snapshot_relation(query, params)
         con = connect()
         if self.query_backed and self.query_sql:
+            self._prepare_query_con(con)
             catalog_view_sql = f"CREATE TEMP VIEW catalog AS {self.query_sql}"
             con.execute(catalog_view_sql, list(self.query_params))
             con.execute("CREATE TEMP VIEW filings AS SELECT * FROM catalog")
@@ -186,6 +193,7 @@ class FilingsResult:
             return self._snapshot_relation("SELECT * FROM catalog").to_arrow_table()
         if self.query_backed and self.query_sql:
             with connect() as con:
+                self._prepare_query_con(con)
                 return (
                     con.execute(self.query_sql, list(self.query_params))
                     .arrow()
@@ -199,6 +207,7 @@ class FilingsResult:
             return self._snapshot_relation("SELECT * FROM catalog").df()
         if self.query_backed and self.query_sql:
             with connect() as con:
+                self._prepare_query_con(con)
                 return con.execute(self.query_sql, list(self.query_params)).df()
         return self.to_arrow().to_pandas()
 
@@ -309,6 +318,7 @@ class FilingsResult:
             return snapshot_filing_at(self, latest=True)
         if self.query_backed and self.query_sql:
             with connect() as con:
+                self._prepare_query_con(con)
                 stmt = f"SELECT * FROM ({self.query_sql}) ORDER BY filing_date DESC, accession DESC LIMIT 1"
                 row = con.execute(stmt, list(self.query_params)).fetchone()
                 return self._make_query_filing(row) if row is not None else None
@@ -326,6 +336,7 @@ class FilingsResult:
             return snapshot_filing_at(self)
         if self.query_backed and self.query_sql:
             with connect() as con:
+                self._prepare_query_con(con)
                 stmt = f"SELECT * FROM ({self.query_sql}) LIMIT 1"
                 row = con.execute(stmt, list(self.query_params)).fetchone()
                 return self._make_query_filing(row) if row is not None else None
@@ -420,6 +431,7 @@ class FilingsResult:
             )
         if self.query_backed and self.query_sql:
             with connect() as con:
+                self._prepare_query_con(con)
                 count_query = f"SELECT count(*) FROM ({self.query_sql})"
                 res = con.execute(count_query, list(self.query_params)).fetchone()
                 return int(res[0]) if res else 0
@@ -440,6 +452,7 @@ class FilingsResult:
             return
         if self.query_backed and self.query_sql:
             with connect() as con:
+                self._prepare_query_con(con)
                 cursor = con.execute(self.query_sql, list(self.query_params))
                 while rows := cursor.fetchmany(resolve_read_batch_size()):
                     for row in rows:
@@ -555,6 +568,7 @@ class FilingsResult:
             if resolved_index < 0:
                 raise IndexError(f"index {index} out of range for FilingsResult")
             with connect() as con:
+                self._prepare_query_con(con)
                 item_query = f"{self.query_sql} LIMIT 1 OFFSET ?"
                 row = con.execute(
                     item_query,

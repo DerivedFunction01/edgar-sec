@@ -7,6 +7,8 @@ from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import Any
 
+import pyarrow as pa
+
 from edgar_sec.apps.client.cache import DocumentCache, get_default_cache
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
@@ -579,6 +581,37 @@ def _materialize_from_submissions(
     return results
 
 
+def _collect_submissions_fallback(
+    ciks: Sequence[Any],
+    forms: str | Sequence[str] | None,
+    dates: str | None,
+    limit: int | None,
+    factories: dict[str, Any],
+    client: SecHttpClient,
+    doc_cache: DocumentCache,
+) -> tuple[FilingAggregate, ...]:
+    aggregates: list[FilingAggregate] = []
+    for c in ciks:
+        on_the_fly = _materialize_from_submissions(
+            cik=c,
+            forms=forms,
+            dates=dates,
+            limit=limit,
+            fetcher=factories["fetcher"],
+            doc_cache=doc_cache,
+            client=client,
+            attachment_loader=factories["attachment_loader"],
+            document_opener=factories["document_opener"],
+            bundle_fetcher=factories["bundle_fetcher"],
+            index_fetcher=factories["index_fetcher"],
+            renderer=factories["renderer"],
+        )
+        aggregates.extend(on_the_fly)
+    if limit is not None:
+        aggregates = aggregates[: int(limit)]
+    return tuple(aggregates)
+
+
 def query_catalog_fast(
     ciks: Sequence[str | int | Cik] | None = None,
     forms: str | Sequence[str] | None = None,
@@ -610,56 +643,48 @@ def query_catalog_fast(
     )
 
     doc_cache = cache if cache is not None else get_default_cache(artifacts_root)
-    fetcher = _make_document_fetcher(doc_cache, http_client_factory)
-    attachment_loader = _make_attachment_loader(doc_cache, http_client_factory)
-    document_opener = _make_document_opener(doc_cache, http_client_factory)
-    bundle_fetcher = _make_bundle_fetcher(doc_cache, http_client_factory)
-    index_fetcher = _make_index_fetcher(doc_cache, http_client_factory)
-    filing_renderer = _make_filing_renderer(
-        doc_cache,
-        http_client_factory,
-        operation=operation,
-        family_operations=family_operations,
-    )
-
-    aggregates: list[FilingAggregate] = []
+    factories = {
+        "fetcher": _make_document_fetcher(doc_cache, http_client_factory),
+        "cache_clearer": doc_cache.clear,
+        "zip_exporter": lambda filing, zpath: doc_cache.export_zip(
+            zpath, accession=filing.accession.raw
+        ),
+        "attachment_loader": _make_attachment_loader(doc_cache, http_client_factory),
+        "document_opener": _make_document_opener(doc_cache, http_client_factory),
+        "bundle_fetcher": _make_bundle_fetcher(doc_cache, http_client_factory),
+        "index_fetcher": _make_index_fetcher(doc_cache, http_client_factory),
+        "renderer": _make_filing_renderer(
+            doc_cache,
+            http_client_factory,
+            operation=operation,
+            family_operations=family_operations,
+        ),
+    }
 
     if not found_files:
+        items = ()
         if ciks:
             client = (
                 http_client_factory()
                 if http_client_factory is not None
                 else SecHttpClient()
             )
-            for c in ciks:
-                on_the_fly = _materialize_from_submissions(
-                    cik=c,
-                    forms=forms,
-                    dates=dates,
-                    limit=limit,
-                    fetcher=fetcher,
-                    doc_cache=doc_cache,
-                    client=client,
-                    attachment_loader=attachment_loader,
-                    document_opener=document_opener,
-                    bundle_fetcher=bundle_fetcher,
-                    index_fetcher=index_fetcher,
-                    renderer=filing_renderer,
-                )
-                aggregates.extend(on_the_fly)
-            if limit is not None:
-                aggregates = aggregates[: int(limit)]
+            items = _collect_submissions_fallback(
+                ciks, forms, dates, limit, factories, client, doc_cache
+            )
         return FilingsResult(
             run_id="fast-path",
             plan_id="fast-path",
             target_parquet_glob=targets_pattern,
             run_state_sqlite_path=doc_cache.db_path,
             artifacts_root=catalog_paths.artifacts_root,
-            items=tuple(aggregates),
+            items=items,
         )
 
     clauses: list[str] = []
     params: list[Any] = [found_files]
+    query_tables: dict[str, Any] | None = None
+    join_clause = ""
 
     if ciks:
         cik_queries: list[Any] = []
@@ -680,11 +705,13 @@ def query_catalog_fast(
             clauses.append(f"source_cik IN ({placeholders})")
             params.extend(cik_queries)
         else:
-            str_queries = [str(x) for x in cik_queries]
-            clauses.append(
-                "CAST(source_cik AS VARCHAR) IN (SELECT unnest(?::VARCHAR[]))"
+            distinct_ciks = sorted({str(x) for x in cik_queries})
+            cik_table = pa.Table.from_arrays(
+                [pa.array(distinct_ciks, type=pa.string())],
+                names=["filter_cik"],
             )
-            params.append(str_queries)
+            query_tables = {"_target_ciks": cik_table}
+            join_clause = "SEMI JOIN _target_ciks ON CAST(source_cik AS VARCHAR) = _target_ciks.filter_cik"
 
     if forms:
         form_list = [forms] if isinstance(forms, str) else list(forms)
@@ -716,6 +743,7 @@ def query_catalog_fast(
             primary_document,
             primary_doc_url
         FROM read_parquet(?)
+        {join_clause}
         {where_sql}
         ORDER BY filing_date DESC, accession DESC
         {limit_sql}
@@ -725,7 +753,12 @@ def query_catalog_fast(
     if ciks:
         with connect() as con:
             try:
-                check_sql = f"SELECT 1 FROM read_parquet(?) {where_sql} LIMIT 1"
+                if query_tables:
+                    for tname, tbl in query_tables.items():
+                        con.register(tname, tbl)
+                check_sql = (
+                    f"SELECT 1 FROM read_parquet(?) {join_clause} {where_sql} LIMIT 1"
+                )
                 has_matches = con.execute(check_sql, params).fetchone() is not None
             except Exception:
                 has_matches = False
@@ -738,45 +771,17 @@ def query_catalog_fast(
             if http_client_factory is not None
             else SecHttpClient()
         )
-        for c in ciks:
-            on_the_fly = _materialize_from_submissions(
-                cik=c,
-                forms=forms,
-                dates=dates,
-                limit=limit,
-                fetcher=fetcher,
-                doc_cache=doc_cache,
-                client=client,
-                attachment_loader=attachment_loader,
-                document_opener=document_opener,
-                bundle_fetcher=bundle_fetcher,
-                index_fetcher=index_fetcher,
-                renderer=filing_renderer,
-            )
-            aggregates.extend(on_the_fly)
-        if limit is not None:
-            aggregates = aggregates[: int(limit)]
+        items = _collect_submissions_fallback(
+            ciks, forms, dates, limit, factories, client, doc_cache
+        )
         return FilingsResult(
             run_id="fast-path",
             plan_id="fast-path",
             target_parquet_glob=targets_pattern,
             run_state_sqlite_path=doc_cache.db_path,
             artifacts_root=catalog_paths.artifacts_root,
-            items=tuple(aggregates),
+            items=items,
         )
-
-    factories = {
-        "fetcher": fetcher,
-        "cache_clearer": doc_cache.clear,
-        "zip_exporter": lambda filing, zpath: doc_cache.export_zip(
-            zpath, accession=filing.accession.raw
-        ),
-        "attachment_loader": attachment_loader,
-        "document_opener": document_opener,
-        "bundle_fetcher": bundle_fetcher,
-        "index_fetcher": index_fetcher,
-        "renderer": filing_renderer,
-    }
 
     return FilingsResult(
         run_id="fast-path",
@@ -787,6 +792,7 @@ def query_catalog_fast(
         query_backed=True,
         query_sql=query,
         query_params=tuple(params),
+        query_tables=query_tables,
         query_factories=factories,
         items=None,
     )
