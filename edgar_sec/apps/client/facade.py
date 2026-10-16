@@ -42,6 +42,9 @@ class Edgar:
         self.workers = workers
         self._sec_client = sec_client
         self._cache = cache
+        self._sections_cache: dict[str, SectionSequence] = {}
+        self._text_cache: dict[str, str] = {}
+        self._notes_cache: dict[str, NotesSequence] = {}
 
     @property
     def sec_client(self) -> SecHttpClient:
@@ -339,6 +342,9 @@ class Edgar:
         vacuum: bool = True,
     ) -> dict[str, int]:
         """Clear documents cache, responses cache, or both matching filters."""
+        self._sections_cache.clear()
+        self._text_cache.clear()
+        self._notes_cache.clear()
         cleared: dict[str, int] = {"documents": 0, "responses": 0}
         if scope in ("all", "documents"):
             cleared["documents"] = self.cache.clear(accession=accession, cik=cik)
@@ -381,6 +387,10 @@ class Edgar:
         if not filing.has_sections:
             return SectionSequence(sections=(), family=filing.form)
 
+        acc = filing.accession.value
+        if text is None and acc in self._sections_cache:
+            return self._sections_cache[acc]
+
         body = text if text is not None else self._extract_filing_text(filing)
         if not body:
             return SectionSequence(sections=(), family=filing.form)
@@ -402,13 +412,16 @@ class Edgar:
         toc_span = (
             (toc_info.start_line, toc_info.end_line) if toc_info is not None else None
         )
-        return detect_section_sequence(
+        seq = detect_section_sequence(
             body,
             family=family,
             taxonomy_items=taxonomy,
             toc_span=toc_span,
             renderer_version=entry.profile.version if entry else "1",
         )
+        if text is None:
+            self._sections_cache[acc] = seq
+        return seq
 
     def section(
         self, filing: FilingAggregate, item: str, text: str | None = None
@@ -420,15 +433,7 @@ class Edgar:
         if not body:
             return ""
         seq = self.sections(filing, text=body)
-        canon = item.upper().strip()
-        if not canon.startswith("ITEM"):
-            canon = f"ITEM {canon}"
-        target = next((s for s in seq.sections if s.item_identifier == canon), None)
-        if target is None:
-            return ""
-        lines = body.splitlines()
-        end = (target.end_line + 1) if target.end_line is not None else len(lines)
-        return "\n".join(lines[target.start_line : end])
+        return seq.get_text(body, item)
 
     def notes(self, filing: FilingAggregate, text: str | None = None) -> NotesSequence:
         """Detect and return financial statement footnotes."""
@@ -443,15 +448,22 @@ class Edgar:
         if not filing.has_notes:
             return NotesSequence(notes=())
 
+        acc = filing.accession.value
+        if text is None and acc in self._notes_cache:
+            return self._notes_cache[acc]
+
         body = text if text is not None else self._extract_filing_text(filing)
         if not body:
             return NotesSequence(notes=())
 
         prof = get_family_profile(filing.form)
-        return detect_notes_sequence(
+        seq = detect_notes_sequence(
             body,
             renderer_version=prof.version if prof else "1",
         )
+        if text is None:
+            self._notes_cache[acc] = seq
+        return seq
 
     def note(
         self,
@@ -466,13 +478,15 @@ class Edgar:
         if not body:
             return ""
         seq = self.notes(filing, text=body)
-        num = int(str(number).replace("NOTE", "").strip())
-        target = next((n for n in seq.notes if n.note_number == num), None)
-        if target is None:
+        try:
+            num = (
+                int(number)
+                if isinstance(number, int)
+                else int("".join(c for c in str(number) if c.isdigit()))
+            )
+        except (ValueError, TypeError):
             return ""
-        lines = body.splitlines()
-        end = (target.end_line + 1) if target.end_line is not None else len(lines)
-        return "\n".join(lines[target.start_line : end])
+        return seq.get_text(body, num)
 
     def toc(self, filing: FilingAggregate, text: str | None = None) -> TocSpan | None:
         """Return detected Table of Contents span if present."""
@@ -486,11 +500,18 @@ class Edgar:
         return find_toc_span(body)
 
     def _extract_filing_text(self, filing: FilingAggregate) -> str:
+        acc = filing.accession.value
+        cached = self._text_cache.get(acc)
+        if cached is not None:
+            return cached
         from edgar_sec.domain.forms.reports import CompanyReport
 
         report = filing.as_report()
         if isinstance(report, CompanyReport):
-            return report.text() or ""
+            text = report.text() or ""
+            if text:
+                self._text_cache[acc] = text
+            return text
         return ""
 
 

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 
+from edgar_sec.engine.document.page_markers.candidates import line_offsets
 from edgar_sec.engine.forms.sections.models import (
     CandidateKind,
     NotesSequence,
@@ -38,6 +39,7 @@ def detect_notes_sequence(
     """Detect monotonic financial statement footnotes across the notes block."""
     lines = text.splitlines()
     total_lines = len(lines)
+    offsets = line_offsets(lines)
 
     if scope_span is not None:
         start_line, end_line = scope_span
@@ -106,22 +108,32 @@ def detect_notes_sequence(
         )
 
     bounded_notes: list[ResolvedNote] = []
+    text_len = len(text)
     for idx, note in enumerate(resolved):
         next_note = next(
             (n for n in resolved[idx + 1 :] if n.start_line > note.start_line),
             None,
         )
         bounded_end = next_note.start_line - 1 if next_note else end_line
+        norm_end_line = max(note.start_line, bounded_end)
+        start_char = (
+            offsets[note.start_line] if note.start_line < len(offsets) else text_len
+        )
+        end_char = (
+            offsets[norm_end_line + 1] if norm_end_line + 1 < len(offsets) else text_len
+        )
         bounded_notes.append(
             ResolvedNote(
                 note_number=note.note_number,
                 note_label=note.note_label,
                 start_line=note.start_line,
-                end_line=max(note.start_line, bounded_end),
+                end_line=norm_end_line,
                 title=note.title,
                 raw_heading=note.raw_heading,
                 confidence=note.confidence,
                 grouped_with=note.grouped_with,
+                start_char=start_char,
+                end_char=end_char,
             )
         )
 

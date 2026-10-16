@@ -66,7 +66,12 @@ def extract_section_candidates(
         if toc_lines and line_no in toc_lines:
             continue
         stripped = raw_line.strip()
-        if not stripped or is_page_marker_line(stripped):
+        if (
+            not stripped
+            or len(stripped) > 200
+            or stripped[0].islower()
+            or is_page_marker_line(stripped)
+        ):
             continue
 
         prev_line = lines[line_no - 1] if line_no > 0 else ""

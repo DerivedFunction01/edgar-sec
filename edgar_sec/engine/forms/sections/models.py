@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import StrEnum
 
 
@@ -42,6 +42,8 @@ class ResolvedSection:
     confidence: float
     is_omitted: bool = False
     grouped_with: tuple[str, ...] = ()
+    start_char: int | None = None
+    end_char: int | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -56,6 +58,64 @@ class SectionSequence:
     payload_sha256: str | None = None
     representation_id: str | None = None
     renderer_version: str | None = None
+    _by_id_cache: dict[str, ResolvedSection] = field(
+        default_factory=dict, init=False, repr=False, compare=False, hash=False
+    )
+
+    def __post_init__(self) -> None:
+        object.__setattr__(
+            self,
+            "_by_id_cache",
+            {s.item_identifier: s for s in self.sections},
+        )
+
+    def get(self, item: str) -> ResolvedSection | None:
+        """Find section by item identifier (e.g. 'ITEM 1A' or '1A') in O(1)."""
+        canon = item.upper().strip()
+        if not canon.startswith("ITEM"):
+            canon = f"ITEM {canon}"
+        return self._by_id_cache.get(canon)
+
+    def find_section_for_line(self, line_number: int) -> ResolvedSection | None:
+        """Find section containing line_number using bisect in O(log S)."""
+        if not self.sections:
+            return None
+        import bisect
+
+        starts = [s.start_line for s in self.sections]
+        idx = bisect.bisect_right(starts, line_number) - 1
+        if idx < 0:
+            return None
+        sec = self.sections[idx]
+        if sec.end_line is not None and line_number > sec.end_line:
+            return None
+        return sec
+
+    def find_section_for_offset(self, char_offset: int) -> ResolvedSection | None:
+        """Find section containing char_offset using bisect in O(log S)."""
+        if not self.sections:
+            return None
+        import bisect
+
+        starts = [s.start_char or 0 for s in self.sections]
+        idx = bisect.bisect_right(starts, char_offset) - 1
+        if idx < 0:
+            return None
+        sec = self.sections[idx]
+        if sec.end_char is not None and char_offset >= sec.end_char:
+            return None
+        return sec
+
+    def get_text(self, text: str, item: str) -> str:
+        """Extract text of section in O(1) via direct substring slicing."""
+        sec = self.get(item)
+        if sec is None:
+            return ""
+        if sec.start_char is not None and sec.end_char is not None:
+            return text[sec.start_char : sec.end_char].rstrip()
+        lines = text.splitlines()
+        end = (sec.end_line + 1) if sec.end_line is not None else len(lines)
+        return "\n".join(lines[sec.start_line : end])
 
 
 @dataclass(frozen=True, slots=True)
@@ -70,6 +130,8 @@ class ResolvedNote:
     raw_heading: str
     confidence: float
     grouped_with: tuple[int, ...] = ()
+    start_char: int | None = None
+    end_char: int | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -82,3 +144,43 @@ class NotesSequence:
     payload_sha256: str | None = None
     representation_id: str | None = None
     renderer_version: str | None = None
+    _by_num_cache: dict[int, ResolvedNote] = field(
+        default_factory=dict, init=False, repr=False, compare=False, hash=False
+    )
+
+    def __post_init__(self) -> None:
+        object.__setattr__(
+            self,
+            "_by_num_cache",
+            {n.note_number: n for n in self.notes},
+        )
+
+    def get(self, note_number: int) -> ResolvedNote | None:
+        """Find footnote by note number in O(1)."""
+        return self._by_num_cache.get(note_number)
+
+    def find_note_for_line(self, line_number: int) -> ResolvedNote | None:
+        """Find footnote containing line_number using bisect in O(log N)."""
+        if not self.notes:
+            return None
+        import bisect
+
+        starts = [n.start_line for n in self.notes]
+        idx = bisect.bisect_right(starts, line_number) - 1
+        if idx < 0:
+            return None
+        note = self.notes[idx]
+        if note.end_line is not None and line_number > note.end_line:
+            return None
+        return note
+
+    def get_text(self, text: str, note_number: int) -> str:
+        """Extract text of footnote in O(1) via direct substring slicing."""
+        note = self.get(note_number)
+        if note is None:
+            return ""
+        if note.start_char is not None and note.end_char is not None:
+            return text[note.start_char : note.end_char].rstrip()
+        lines = text.splitlines()
+        end = (note.end_line + 1) if note.end_line is not None else len(lines)
+        return "\n".join(lines[note.start_line : end])

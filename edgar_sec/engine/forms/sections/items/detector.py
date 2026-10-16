@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 from typing import TYPE_CHECKING
 
+from edgar_sec.engine.document.page_markers.candidates import line_offsets
 from edgar_sec.engine.forms.sections.items.candidates import extract_section_candidates
 from edgar_sec.engine.forms.sections.models import (
     CandidateKind,
@@ -85,6 +86,7 @@ def detect_section_sequence(
     """Detect monotonic statutory Part/Item sections across a document."""
     lines = text.splitlines()
     total_lines = len(lines)
+    offsets = line_offsets(lines)
     toc_line_set = (
         set(range(toc_span[0], toc_span[1] + 1)) if toc_span is not None else None
     )
@@ -171,23 +173,33 @@ def detect_section_sequence(
 
     # Compute bounding spans between consecutive distinct start lines
     bounded_sections: list[ResolvedSection] = []
+    text_len = len(text)
     for idx, sec in enumerate(resolved):
         next_sec = next(
             (s for s in resolved[idx + 1 :] if s.start_line > sec.start_line),
             None,
         )
         end_line = next_sec.start_line - 1 if next_sec else total_lines
+        norm_end_line = max(sec.start_line, end_line)
+        start_char = (
+            offsets[sec.start_line] if sec.start_line < len(offsets) else text_len
+        )
+        end_char = (
+            offsets[norm_end_line + 1] if norm_end_line + 1 < len(offsets) else text_len
+        )
         bounded_sections.append(
             ResolvedSection(
                 item_identifier=sec.item_identifier,
                 start_line=sec.start_line,
-                end_line=max(sec.start_line, end_line),
+                end_line=norm_end_line,
                 title=sec.title,
                 raw_heading=sec.raw_heading,
                 kind=sec.kind,
                 confidence=sec.confidence,
                 is_omitted=sec.is_omitted,
                 grouped_with=sec.grouped_with,
+                start_char=start_char,
+                end_char=end_char,
             )
         )
 
