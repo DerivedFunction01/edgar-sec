@@ -335,7 +335,7 @@ def classify_candidate(
         (BARE_ROMAN, PageMarkerKind.ROMAN_NUMBER, "roman", True),
         (LEADING_NUMBER_LABEL, PageMarkerKind.NUMBER_FIRST, "arabic", False),
         (TRAILING_NUMBER_LABEL, PageMarkerKind.TRAILING_NUMBER, "arabic", False),
-        (PIPE_HEADER_NUMBER_LABEL, PageMarkerKind.TRAILING_NUMBER, "arabic", False),
+        (PIPE_HEADER_NUMBER_LABEL, PageMarkerKind.TRAILING_NUMBER, "arabic", True),
         (INLINE_PAGE_LABEL, PageMarkerKind.INLINE_PAGE_NUMBER, "arabic", False),
     )
     for pattern, family, namespace, whole_line in checks:

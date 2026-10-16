@@ -404,3 +404,17 @@ def test_every_applied_policy_leaves_no_sgml_page_tag(
     assert "ABC CORP" not in result
     assert "Confidential footer" not in result
     assert "Body 5" in result
+
+
+def test_pipe_header_sequence_is_stripped_completely() -> None:
+    lines = [
+        line
+        for index in range(1, 6)
+        for line in (f"Body {index}", f"Company | Form 10-K | {index}", "<PAGE>")
+    ]
+    result, _artifacts, _templates, _next_id = apply_page_markers(
+        "\n".join(lines) + "\n"
+    )
+    assert "Company | Form 10-K" not in result
+    for index in range(1, 6):
+        assert f"Body {index}" in result

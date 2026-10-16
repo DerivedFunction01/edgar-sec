@@ -30,11 +30,14 @@ def _cand(line: str, index: int = 0) -> PageCandidate | None:
 
 
 def test_pipe_header_line_classifies_as_a_trailing_number() -> None:
-    candidate = _cand("Apple Inc. | 2025 Form 10-K | 1")
+    line = "Apple Inc. | 2025 Form 10-K | 1"
+    candidate = _cand(line)
     assert candidate is not None
     assert candidate.value == 1
     assert candidate.family == PageMarkerKind.TRAILING_NUMBER
-    assert candidate.text == "Apple Inc. | 2025 Form 10-K | 1"
+    assert candidate.text == line
+    assert candidate.start == 0
+    assert candidate.end == len(line)
 
 
 @pytest.mark.parametrize(
