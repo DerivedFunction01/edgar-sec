@@ -2,7 +2,7 @@
 
 ## Purpose
 
-S6 turns a published filing-catalog plan and an optional pinned inventory snapshot
+Planning turns a published filing-catalog plan and an optional pinned inventory snapshot
 into an immutable accession-document target plan for later acquisition.
 
 ## Contracts
@@ -27,7 +27,7 @@ into an immutable accession-document target plan for later acquisition.
 - **Current locator selection**: A usable matched child link selects `direct_url`
   for ordinary paths; exact placeholder-primary filenames override direct retrieval.
   The exact names are `0000.txt`, `0000.htm`, `0001.txt`, and `0001.htm`, independent
-  of form/date; nested paths and arbitrary suffix matches are excluded. S6 selects
+  of form/date; nested paths and arbitrary suffix matches are excluded. Planning selects
   `bundle_sequence` only when inventory supplies the exact observed primary filename,
   a positive sequence, and the pinned accession bundle URL. Catalog-only placeholder
   targets remain unresolved without that sequence evidence. Filing-catalog URL
@@ -94,11 +94,11 @@ python run.py planning compare --base-plan-id plan-before --new-plan-id plan-aft
   published snapshot.
 - Constructed XBRL package URLs are unverified candidates; availability is not
   probed during offline planning.
-- Advertised child size, full-submission bundle size, and S1-reported catalog size
+- Advertised child size, full-submission bundle size, and catalog-reported catalog size
   are distinct observations. They are not compared to select direct versus bundle
   retrieval; a size-aware optimizer is deferred. The exact-filename placeholder rule is separate
   and requires an advertised bundle URL plus exact observed positive sequence; it does
   not apply to the complete-submission accession `.txt` filename.
 - Constructing an XBRL ZIP candidate does not authorize fetching or unzipping it.
-  S0 availability evidence and a separate policy are required before execution or
+  catalog availability evidence and a separate policy are required before execution or
   asset selection.

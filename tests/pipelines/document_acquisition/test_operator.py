@@ -35,7 +35,7 @@ def _console(tmp_path):
 def test_menu_routes_fixture_review_to_shared_console(monkeypatch):
     menu = operator.build_operator_menu()
     assert [action.key for action in menu] == ["1", "2", "3", "p", "f"]
-    assert "Snapshot console" in menu[3].label
+    assert "Snapshot DAG console" in menu[3].label
     assert "Fixtures and review console" in menu[4].label
 
     from edgar_sec.infra.storage.review import operator as review_operator
@@ -53,30 +53,29 @@ def test_menu_routes_fixture_review_to_shared_console(monkeypatch):
     assert config.prompt_limit is False
     assert config.prompt_output is False
     assert config.prompt_workers is False
-    assert config.require_active_plan is True
+    assert config.require_active_plan is False
+    assert config.fixture_filter is None
+    assert config.plan_summary is None
     assert callable(config.plan_discovery)
-    assert callable(config.fixture_filter)
     assert callable(config.fill_action)
 
 
-def test_snapshot_console_keeps_its_independent_contract(monkeypatch):
+def test_menu_routes_snapshot_console_to_shared_dag_console(monkeypatch):
+    from edgar_sec.infra.storage.dag import menu as dag_menu
+
     opened = []
     monkeypatch.setattr(
-        operator,
-        "run_interactive_menu",
-        lambda title, actions, **kwargs: opened.append((title, actions, kwargs)) or 0,
+        dag_menu,
+        "run_dag_menu",
+        lambda config: opened.append(config) or 0,
     )
 
-    _menu_action("Snapshot console").callback()
+    _menu_action("Snapshot DAG console").callback()
 
-    title, actions, kwargs = opened[0]
-    assert title == "Document Acquisition Snapshot Console"
-    assert [action.key for action in actions] == ["1", "2"]
-    assert [action.label for action in actions] == [
-        "Publish snapshot (S11 gate)",
-        "Snapshot status (S11 gate)",
-    ]
-    assert kwargs == {}
+    config = opened[0]
+    assert config.title == "Document Acquisition Snapshot DAG Console"
+    assert config.publish_action is operator._action_publish_run
+    assert callable(config.snapshots_root)
 
 
 def test_project_action_delegates_to_cli(monkeypatch) -> None:
@@ -143,10 +142,13 @@ def test_run_items_discover_safe_runs_in_sorted_order(tmp_path, monkeypatch) -> 
 
 def test_run_action_uses_paged_run_choice(monkeypatch) -> None:
     calls = []
-    answers = iter(("4096", "no", "no", "yes"))
+    confirms = iter((False, False, True))
     monkeypatch.setattr(operator, "_choose_run_id", lambda _prompt: "run-1")
     monkeypatch.setattr(operator, "_configured_response_byte_limit", lambda: 1024)
-    monkeypatch.setattr(operator, "prompt_text", lambda *_args: next(answers))
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "4096")
+    monkeypatch.setattr(
+        operator, "prompt_confirm", lambda *_args, **_kw: next(confirms)
+    )
     monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
 
     operator._action_run()
@@ -212,8 +214,8 @@ def test_fixture_fill_confirms_direct_plan_fetch_and_bounds_targets(
     console = _console(tmp_path)
     plan = {"plan_id": "plan-a", "selected_rows": 1174}
     calls = []
-    answers = iter(("25", "yes"))
-    monkeypatch.setattr(operator, "prompt_text", lambda *_args: next(answers))
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "25")
+    monkeypatch.setattr(operator, "prompt_confirm", lambda *_args, **_kw: True)
     monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
 
     assert console.fill_fixture("fixture-a", plan, None, tmp_path)
@@ -239,8 +241,8 @@ def test_fixture_fill_cancelled_before_network_does_not_call_cli(
     tmp_path, monkeypatch
 ) -> None:
     console = _console(tmp_path)
-    answers = iter(("25", "no"))
-    monkeypatch.setattr(operator, "prompt_text", lambda *_args: next(answers))
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "25")
+    monkeypatch.setattr(operator, "prompt_confirm", lambda *_args, **_kw: False)
     monkeypatch.setattr(
         operator, "cli_main", lambda _args: pytest.fail("cancelled fill ran")
     )
@@ -283,3 +285,56 @@ def test_operator_exposes_one_fixture_review_console_without_export_action() -> 
     assert any("Fixtures and review console" in label for label in labels)
     assert not any("Replay local fixture" in label for label in labels)
     assert not any("Create local fixture" in label for label in labels)
+
+
+def test_publish_action_requires_confirmation_and_dispatches_selected_run(
+    tmp_path, monkeypatch
+) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    choices = iter((operator.PickItem("run-1", "run-1", "run-1"),))
+    calls = []
+    confirms = iter((True,))
+    monkeypatch.setattr(operator, "resolve_acquisition_paths", lambda: paths)
+    monkeypatch.setattr(operator, "discover_run_ids", lambda _paths: ["run-1"])
+    monkeypatch.setattr(
+        operator, "prompt_paginated_choice", lambda *_args, **_kwargs: next(choices)
+    )
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "main")
+    monkeypatch.setattr(
+        operator, "prompt_confirm", lambda *_args, **_kwargs: next(confirms)
+    )
+    monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
+
+    operator._action_publish_run()
+
+    assert calls == [
+        [
+            "publish",
+            "--run-id",
+            "run-1",
+            "--branch",
+            "main",
+            "--artifacts",
+            str(tmp_path),
+        ]
+    ]
+
+
+def test_publish_action_cancellation_does_not_dispatch(tmp_path, monkeypatch, capsys):
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    monkeypatch.setattr(operator, "resolve_acquisition_paths", lambda: paths)
+    monkeypatch.setattr(operator, "discover_run_ids", lambda _paths: ["run-1"])
+    monkeypatch.setattr(
+        operator,
+        "prompt_paginated_choice",
+        lambda *_args, **_kwargs: operator.PickItem("run-1", "run-1", "run-1"),
+    )
+    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "main")
+    monkeypatch.setattr(operator, "prompt_confirm", lambda *_args, **_kwargs: False)
+    monkeypatch.setattr(
+        operator, "cli_main", lambda _args: pytest.fail("cancelled publish ran")
+    )
+
+    operator._action_publish_run()
+
+    assert "Publication cancelled" in capsys.readouterr().out

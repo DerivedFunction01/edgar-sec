@@ -12,4 +12,4 @@ Transform an SEC filing index-page response into typed inventory outcomes withou
 
 ## Deliberate gaps
 
-- **Final era/table rules**: Await empirical audit (S0); current behavior covered by standard filing-page fixture.
+- **Final era/table rules**: Await empirical audit; current behavior covered by standard filing-page fixture.

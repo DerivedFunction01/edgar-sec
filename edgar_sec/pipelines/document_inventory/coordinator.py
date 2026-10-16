@@ -1,4 +1,4 @@
-"""S4 coordinator: bounded in-flight scheduling, chunk commit, and resume.
+"""Coordinator: bounded in-flight scheduling, chunk commit, and resume.
 
 Owns the broker lifecycle, the process pool, and the pointer-last commit
 protocol. The per-accession task lives in ``worker.py``; the broker adapter

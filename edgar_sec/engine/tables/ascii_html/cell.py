@@ -338,6 +338,16 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
                     b_bot_w = bw
             elif prop == "border-bottom-color":
                 b_bot_c = val.lower()
+            elif prop == "border-left-style":
+                b_left_s = _BORDER_STYLES.get(val.lower(), BorderStyle.SOLID)
+                if b_left_w == 0.0:
+                    b_left_w = 1.0
+            elif prop == "border-left-width":
+                left_width, _, _ = parse_dimension_px(val)
+                if left_width is not None:
+                    b_left_w = left_width
+            elif prop == "border-left-color":
+                b_left_c = val.lower()
             elif prop == "border-top-style":
                 b_top_s = _BORDER_STYLES.get(val.lower(), BorderStyle.SOLID)
                 if b_top_w == 0.0:
@@ -348,6 +358,16 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
                     b_top_w = tw
             elif prop == "border-top-color":
                 b_top_c = val.lower()
+            elif prop == "border-right-style":
+                b_right_s = _BORDER_STYLES.get(val.lower(), BorderStyle.SOLID)
+                if b_right_w == 0.0:
+                    b_right_w = 1.0
+            elif prop == "border-right-width":
+                right_width, _, _ = parse_dimension_px(val)
+                if right_width is not None:
+                    b_right_w = right_width
+            elif prop == "border-right-color":
+                b_right_c = val.lower()
 
     # Fast inline check for element children: a text-only node skips the whole subtree walk.
     _c = raw_node.child

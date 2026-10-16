@@ -1,4 +1,4 @@
-"""Per-accession process task for the S4 broker-backed worker pool.
+"""Per-accession process task for the broker-backed worker pool.
 
 Module-level so the spawn context can pickle it as the process task; the
 response envelope and parser-only structures are released before returning.

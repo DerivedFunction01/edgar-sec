@@ -18,7 +18,6 @@ from edgar_sec.pipelines.document_acquisition.processing.models import (
 from edgar_sec.pipelines.document_acquisition.processing.worker import process_target
 from tests.support import (
     minimal_processing_request,
-    processing_budget_registry,
     stub_processing_target_validation,
 )
 
@@ -90,15 +89,12 @@ def test_processing_attaches_diagnostic_without_changing_operation_status(
             text="EXHIBIT 3.1\nARTICLES OF INCORPORATION\n"
         ),
     )
-    monkeypatch.setattr(processing_io, "available_memory_bytes", lambda: 4096)
     monkeypatch.setattr(
         processing, "get_staged_body_metadata_ref", lambda *_args: request.body
     )
     monkeypatch.setattr(processing, "_record_receipt", lambda *_args: None)
 
-    result = process_target(
-        request, paths=paths, budget_registry=processing_budget_registry()
-    )
+    result = process_target(request, paths=paths)
 
     assert result.exhibit_assessment is not None
     assert result.exhibit_assessment.disposition == "consistent"

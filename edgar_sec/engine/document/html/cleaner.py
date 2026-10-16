@@ -78,6 +78,7 @@ _RE_STYLE_FONT_FAMILY = re.compile(
 )
 _RE_FACE_ATTR = re.compile(r"(?i)\bface\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+))")
 _RE_GLYPH = re.compile(r"[\u00a8\u00a3\u00fe\u00fdrRnNuUoOxX]")
+_RE_NUMERIC_GLYPH_ENTITY = re.compile(r"&#(?:x([0-9a-f]+)|(\d+));?", re.IGNORECASE)
 _VOID_TAGS = frozenset(
     {
         "area",
@@ -109,6 +110,28 @@ _NOISE_ATTRS_ALT = build_alternation(
 _RE_NOISE_ATTRS = re.compile(
     rf"(?i)\s+(?:{_NOISE_ATTRS_ALT})=(?:[\"'][^>\"']*[\"']|[^>\s\"']+)"
 )
+
+_DECORATIVE_ATTRS_ALT = build_alternation(
+    [
+        "width",
+        "height",
+        "border",
+        "cellspacing",
+        "cellpadding",
+        "align",
+        "valign",
+        "bgcolor",
+        "background",
+        "style",
+        "hspace",
+        "vspace",
+    ],
+    auto_escape=True,
+)
+_RE_DECORATIVE_ATTR = re.compile(
+    rf"""(?i)\s+(?:{_DECORATIVE_ATTRS_ALT})\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)"""
+)
+_RE_BARE_FONT_TAG = re.compile(r"(?i)</?font\b[^>]*>")
 
 
 _METADATA_PREFIX_ALT = build_alternation(["mso", "data"], auto_escape=True)
@@ -193,7 +216,10 @@ def normalize_font_qualified_glyphs(html: str) -> str:
             if opaque_depth or current_font is None:
                 output.append(token)
             else:
-                output.append(_replace_font_glyphs(token, current_font))
+                decoded = _RE_NUMERIC_GLYPH_ENTITY.sub(
+                    _decode_numeric_glyph_entity, token
+                )
+                output.append(_replace_font_glyphs(decoded, current_font))
             continue
 
         if token.startswith("<!--"):
@@ -237,6 +263,14 @@ def normalize_font_qualified_glyphs(html: str) -> str:
                 ).strip()
 
     return "".join(output)
+
+
+def _decode_numeric_glyph_entity(match: re.Match[str]) -> str:
+    value = int(match.group(1), 16) if match.group(1) else int(match.group(2))
+    if value > 0x10FFFF:
+        return match.group(0)
+    glyph = chr(value)
+    return glyph if _RE_GLYPH.fullmatch(glyph) else match.group(0)
 
 
 def strip_benign_font_styles(html: str) -> str:
@@ -330,6 +364,15 @@ def strip_non_displaying_blocks(html: str) -> str:
     return _RE_HEAD_SCRIPT_STYLE.sub(" ", html)
 
 
+def strip_decorative_presentation_attributes(html: str) -> str:
+    """Strip visual layout and presentation attributes from HTML markup."""
+    if not html:
+        return html
+    cleaned = _RE_BARE_FONT_TAG.sub("", html)
+    cleaned = _RE_DECORATIVE_ATTR.sub("", cleaned)
+    return sanitize_unicode_whitespace(cleaned)
+
+
 def clean_html_for_parsing(html: str) -> str:
     """Unified HTML cleaning entry point.
     Order is a contract: XBRL first, so glyph normalization sees unwrapped tags; whitespace last.
@@ -347,6 +390,7 @@ __all__ = [
     "clean_html_for_parsing",
     "normalize_font_qualified_glyphs",
     "strip_benign_font_styles",
+    "strip_decorative_presentation_attributes",
     "strip_font_tag_and_noise_attributes",
     "strip_ixbrl_inline_tags",
     "strip_non_displaying_blocks",

@@ -11,6 +11,8 @@ from edgar_sec.foundation.serialization import (
     canonical_hash,
     canonical_json,
     json_safe,
+    pretty_json,
+    prettify_xml,
     safe_dumps,
 )
 
@@ -81,3 +83,17 @@ def test_safe_dumps_preserves_key_order_where_canonical_json_sorts() -> None:
     payload = {"zebra": 1, "apple": 2}
     assert safe_dumps(payload) == '{"zebra": 1, "apple": 2}'
     assert canonical_json(payload) == '{"apple":2,"zebra":1}'
+
+
+def test_pretty_json_indents_and_sorts_keys() -> None:
+    output = pretty_json({"b": 2, "a": 1})
+    assert output == '{\n  "a": 1,\n  "b": 2\n}'
+
+
+def test_prettify_xml_indents_tree() -> None:
+    raw = "<root><child><grandchild>val</grandchild></child></root>"
+    formatted = prettify_xml(raw, indent="  ")
+    assert (
+        "<root>\n  <child>\n    <grandchild>val</grandchild>\n  </child>\n</root>"
+        in formatted
+    )

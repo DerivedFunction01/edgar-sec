@@ -14,14 +14,14 @@ Layer 4 consumes published `filing_catalog` plans and imports downward only.
 - `engine.index_pages.parser.parse_html_index` transforms explicit bytes to typed domain
   records without network or artifact access; unknown structure never becomes an empty
   successful parse.
-- S4 work orders are sorted Parquet relations with validated identity; only one bounded chunk is read into worker memory at a time.
+- Work orders are sorted Parquet relations with validated identity; only one bounded chunk is read into worker memory at a time.
 - The coordinator holds an exclusive run lock; completed accession results are journaled atomically and incomplete chunks resume from validated progress.
 - SIGINT/SIGTERM stop new submissions, drain in-flight work, and leave incomplete chunk pointers unchanged.
 - `run_missing_accessions` returns aggregate run counters and a bounded prefix of per-chunk details, rather than retaining one result object per work-order chunk.
 - Snapshot candidate staging writes outcomes, entries, and source-CIK edges incrementally. The anti-join runs in resource-configured DuckDB and emits Parquet relations without collecting full accession keys in Python.
-- The S5 projection validates a published catalog plan, writes normalized cohort relations, and pins a sorted pre-fetch work order before any SEC request.
+- The projection validates a published catalog plan, writes normalized cohort relations, and pins a sorted pre-fetch work order before any SEC request.
 - Worker distribution selects only validated, projected inventory runs. The shared work picker never projects catalog plans; receipts bind the run's work order and imported committed attempts are revalidated.
-- Durable publication pins the branch tip. `base_snapshot_id` selects the delta's lineage base and the S5/S4 identity; when omitted, the tip of the selected branch (default `main`) is used. An explicit base must match the branch tip, so historical bases require a branch created at that tip. `--expected-branch-tip` pins the branch pointer expected at commit; a concurrent move refuses publication without moving the pointer, and a retry re-anti-joins against the new parent.
+- Durable publication pins the branch tip. `base_snapshot_id` selects the delta's lineage base and the identity; when omitted, the tip of the selected branch (default `main`) is used. An explicit base must match the branch tip, so historical bases require a branch created at that tip. `--expected-branch-tip` pins the branch pointer expected at commit; a concurrent move refuses publication without moving the pointer, and a retry re-anti-joins against the new parent.
 - Persisted Run cancellation is recorded before the command returns; incomplete chunks,
   retryable outcomes, parser refusals, and cancellation block independent publication.
 - **Progress output**: Fixture capture and parser review report per-item TTY progress; JSON and non-TTY output remain clean.
@@ -91,7 +91,7 @@ python run.py inventory query --accession 0000320193-23-000004 --limit 10
 │   │       ├── fixture.sqlite
 │   │       └── manifest.json
 │   ├── review-runs/
-│   └── snapshots/  # Published snapshot root, owned by S5.
+│   └── snapshots/  # Published snapshot root, owned by the publication layer.
 │       ├── {snapshot_id}/
 │       ├── .publication.lock
 │       └── catalog.sqlite  # SQLite DAG catalog database for published inventory snapshots.
@@ -109,7 +109,7 @@ python run.py inventory query --accession 0000320193-23-000004 --limit 10
             │       │   ├── current.json
             │       │   └── progress-{attempt_id}.duckdb
             │       └── current.json
-            ├── publication/  # S5-owned staging directory inside this run.
+            ├── publication/  # Publication-owned staging directory inside this run.
             ├── cancelled.json
             ├── cohort_accessions.parquet
             ├── cohort_sources.parquet
@@ -126,7 +126,7 @@ depth does not exceed the Unix-domain socket path limit.
 ## Deliberate gaps
 
 - The parser has not completed the historical SEC layout audit; final acceptance still
-  depends on S0 evidence.
+  depends on catalog evidence.
 - `cohort.py` remains an in-memory projection for small fixture and review inputs; the
   production build uses the streamed catalog-plan projection in `snapshot/`.
 - Refreshes hide prior entry rows from active snapshot queries through DAG scoped masking,

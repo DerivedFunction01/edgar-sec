@@ -302,3 +302,13 @@ def test_full_corpus_identity_and_io_stay_cheap(tmp_path: Path) -> None:
     assert time.perf_counter() - started < 60.0
     assert loaded.row_count == size
     assert loaded.range_ciks(0, 2) == ciks[:2]
+
+
+def test_roster_lookup_name(tmp_path: Path) -> None:
+    roster, _ = write_roster_rows(
+        [("0000320193", "Apple Inc."), ("0000789019", "Microsoft Corp.")],
+        tmp_path / "roster.parquet",
+    )
+    assert roster.lookup_name("320193") == "Apple Inc."
+    assert roster.lookup_name("0000789019") == "Microsoft Corp."
+    assert roster.lookup_name("9999999999") is None

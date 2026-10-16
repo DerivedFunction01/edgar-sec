@@ -42,6 +42,8 @@ _TERMINATION_ALT = build_alternation(
         rf"\s+(?:{_TERMINATION_KEYWORD_ALT})",
         rf"\s+(?:{_DELEGATION_ALT})\b",
         r"\s+\*{1,2}",
+        r"\s+[_=]{3,}",
+        r"[_=]{3,}",
         r"\s+\d{1,2}[-/]",
         r"\s+\d{4}",
         r"$",
@@ -49,7 +51,7 @@ _TERMINATION_ALT = build_alternation(
     auto_escape=False,
 )
 RE_CONFORMED_SIGNER_NAME = re.compile(
-    rf"(?:By\s*:\s*|By\s+)?/\s*s\s*/:?\s*([A-Za-z\.\- ]+?)(?={_TERMINATION_ALT})",
+    rf"(?:By\s*:\s*|By\s+)?/\s*s\s*/:?\s*([A-Za-z’‘'\.\- ]+?)(?={_TERMINATION_ALT})",
     re.IGNORECASE,
 )
 

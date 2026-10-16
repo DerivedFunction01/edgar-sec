@@ -17,6 +17,7 @@ from typing import Any
 from edgar_sec.foundation.hashing import sha256_bytes
 from edgar_sec.foundation.runtime.paths import resolve_paths
 from edgar_sec.foundation.runtime.resources import derive_resources
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 
 
 class DocumentCache:
@@ -202,6 +203,7 @@ class DocumentCache:
         dest_dir.mkdir(parents=True, exist_ok=True)
         conn = self._connect()
         written: list[Path] = []
+        batch_size = resolve_read_batch_size()
         try:
             if accession is not None:
                 cursor = conn.execute(
@@ -219,11 +221,12 @@ class DocumentCache:
                 cursor = conn.execute(
                     "SELECT accession, filename, content FROM cached_documents"
                 )
-            for acc, fname, content in cursor.fetchall():
-                out_path = dest_dir / acc / fname
-                out_path.parent.mkdir(parents=True, exist_ok=True)
-                out_path.write_bytes(content)
-                written.append(out_path)
+            while rows := cursor.fetchmany(batch_size):
+                for acc, fname, content in rows:
+                    out_path = dest_dir / acc / fname
+                    out_path.parent.mkdir(parents=True, exist_ok=True)
+                    out_path.write_bytes(content)
+                    written.append(out_path)
             return written
         finally:
             conn.close()
@@ -238,6 +241,7 @@ class DocumentCache:
         target_zip = Path(zip_path).resolve()
         target_zip.parent.mkdir(parents=True, exist_ok=True)
         conn = self._connect()
+        batch_size = resolve_read_batch_size()
         try:
             if accession is not None:
                 cursor = conn.execute(
@@ -255,12 +259,12 @@ class DocumentCache:
                 cursor = conn.execute(
                     "SELECT accession, filename, content FROM cached_documents"
                 )
-            rows = cursor.fetchall()
             with zipfile.ZipFile(
                 target_zip, mode="w", compression=zipfile.ZIP_DEFLATED
             ) as archive:
-                for acc, fname, content in rows:
-                    archive.writestr(f"{acc}/{fname}", content)
+                while rows := cursor.fetchmany(batch_size):
+                    for acc, fname, content in rows:
+                        archive.writestr(f"{acc}/{fname}", content)
             return target_zip
         finally:
             conn.close()

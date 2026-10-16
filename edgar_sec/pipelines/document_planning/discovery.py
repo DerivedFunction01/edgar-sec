@@ -334,7 +334,7 @@ def _validate_parts(root: Path, manifest: dict[str, Any]) -> None:
         or input_row_count < matched_count
         or input_row_count > sum(requested_operation_counts.values())
     ):
-        raise DocumentPlanError("plan operation or source counts violate S6 invariants")
+        raise DocumentPlanError("plan operation or source counts violate invariants")
     actual_files = {path.resolve() for path in root.rglob("*.parquet")}
     if actual_files != declared_files:
         raise DocumentPlanError("plan bundle has undeclared or missing relation parts")

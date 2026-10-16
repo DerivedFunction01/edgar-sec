@@ -1,4 +1,4 @@
-"""Outcome/entry Parquet schemas, attempt commit, and chunk pointer for S4.
+"""Outcome/entry Parquet schemas, attempt commit, and chunk pointer.
 
 One outcome row per accession, zero-or-more entry rows per parsed page. The chunk
 pointer is the commit marker: an attempt without a valid manifest and pointer is never
@@ -107,7 +107,7 @@ RETRYABLE_STATUSES = frozenset({STATUS_FETCH_FAILED, STATUS_WORKER_ERROR})
 #: Parser refusals need parser/code changes and a new run intent, never a retry.
 PARSER_REFUSAL_STATUSES = frozenset({STATUS_UNRECOGNIZED, STATUS_PARSE_FAILURE})
 
-#: Every outcome that is not a recognized parse; a refusal blocks S5 publication.
+#: Every outcome that is not a recognized parse; a refusal blocks publication.
 REFUSAL_STATUSES = RETRYABLE_STATUSES | PARSER_REFUSAL_STATUSES
 
 ALL_STATUSES = frozenset(

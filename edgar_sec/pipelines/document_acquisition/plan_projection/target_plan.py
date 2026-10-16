@@ -1,4 +1,4 @@
-"""Validate S6 target bundles and stream their S9 work-order projection."""
+"""Validate target bundles and stream their work-order projection."""
 
 from __future__ import annotations
 
@@ -15,13 +15,16 @@ import pyarrow.parquet as pq
 
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import accession_hyphenated, validate_archive_url
+from edgar_sec.domain.forms.families.processing_profiles import (
+    LAZY_INDEX_FORM_FAMILIES,
+)
 from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME, part_file_name
 from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
 )
-from edgar_sec.infra.storage.duckdb import connect, sql_path_list
+from edgar_sec.infra.storage.duckdb import connect, sql_literal, sql_path_list
 from edgar_sec.infra.storage.parquet import StagedParquetWriter
 from edgar_sec.pipelines.document_acquisition.arrow_schemas import (
     RESOLVED_OPERATION_SCHEMA,
@@ -74,7 +77,7 @@ _SELECTORS = frozenset({"submitted_primary", "exact_form_with_lazy_index"})
 
 
 class TargetPlanError(ValueError):
-    """An S6 target bundle or its S9 work-order projection is invalid."""
+    """A target bundle or its work-order projection is invalid."""
 
 
 @dataclass(frozen=True, slots=True)
@@ -152,11 +155,11 @@ def _validate_manifest(plan_dir: Path) -> tuple[Path, dict[str, Any]]:
     ):
         raise TargetPlanError(
             "missing or unsupported target-plan bundle schema version; "
-            f"S9 requires bundle version {_PLAN_BUNDLE_SCHEMA_VERSION}"
+            f"requires bundle version {_PLAN_BUNDLE_SCHEMA_VERSION}"
         )
     if manifest.get("matcher_version") != _TARGET_MATCHER_VERSION:
         raise TargetPlanError(
-            f"unsupported target matcher version; S9 requires {_TARGET_MATCHER_VERSION}"
+            f"unsupported target matcher version; requires {_TARGET_MATCHER_VERSION}"
         )
     target_schema_version = manifest.get("target_schema_version")
     if (
@@ -381,7 +384,7 @@ def _validate_parts(
     for descriptor in parts:
         if "byte_size" not in descriptor:
             raise TargetPlanError(
-                "target part descriptor is missing declared byte_size; S6 manifest contract must be updated"
+                "target part descriptor is missing declared byte_size; manifest contract must be updated"
             )
         relative, form, rows, digest, byte_size = (
             descriptor.get("path"),
@@ -561,12 +564,23 @@ def _iter_projected_batches(parts: tuple[Path, ...]):
         "WHEN retrieval_mode NOT IN ('direct_url', 'bundle_sequence') "
         "THEN 'unsupported_retrieval_mode' ELSE NULL END"
     )
+    eligible_forms_sql = ", ".join(
+        sql_literal(family) for family in sorted(LAZY_INDEX_FORM_FAMILIES)
+    )
+    trigger_predicate = (
+        "catalog_direct_selection = 'exact_form_with_lazy_index' "
+        "AND source_origin = 'catalog_direct' "
+        "AND target_role = 'primary' "
+        f"AND form IN ({eligible_forms_sql})"
+    )
     query = (
         "SELECT target.*, ("
         f"{reason} IS NULL) AS executable, {reason} AS skip_reason "
-        ", NULL::VARCHAR AS lazy_index_trigger_id, "
-        "NULL::VARCHAR AS lazy_index_trigger_version "
-        f"FROM read_parquet({sql_path_list([str(path) for path in parts])}) AS target "
+        f", CASE WHEN {trigger_predicate} THEN form || '.exact_form' "
+        "ELSE NULL END AS lazy_index_trigger_id, "
+        f"CASE WHEN {trigger_predicate} THEN '1' "
+        "ELSE NULL END AS lazy_index_trigger_version "
+        f"FROM read_parquet({sql_path_list([str(path) for path in parts])}, hive_partitioning=false) AS target "
         "ORDER BY form, accession, request_id, "
         "COALESCE(inventory_entry_id, ''), status"
     )
@@ -580,7 +594,7 @@ def load_acquisition_work_order(
     plan_dir: str | os.PathLike[str],
     parquet_path: str | os.PathLike[str],
 ) -> WorkOrderProjection:
-    """Validate an entire S6 bundle, then atomically stream its work-order rows."""
+    """Validate an entire bundle, then atomically stream its work-order rows."""
     validated = _validate_target_plan(Path(plan_dir))
     destination = Path(parquet_path).resolve()
     if destination == validated.root or destination.is_relative_to(validated.root):

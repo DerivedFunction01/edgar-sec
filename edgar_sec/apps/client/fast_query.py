@@ -3,15 +3,22 @@
 from __future__ import annotations
 
 import json
-import mimetypes
 from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import Any
 
+import pyarrow as pa
+
 from edgar_sec.apps.client.cache import DocumentCache, get_default_cache
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
+from edgar_sec.domain.document.path_facts import mime_type_for_suffix
 from edgar_sec.domain.document_inventory.models import IndexPageInput, ParsedIndexPage
+from edgar_sec.domain.filing_catalog.filters import (
+    AbsoluteDateClause,
+    date_selection_matches,
+    resolve_date_selection,
+)
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.forms.common.processing import AcquisitionOperation
 from edgar_sec.domain.forms.families.processing_profiles import get_family_entry
@@ -23,9 +30,10 @@ from edgar_sec.domain.sec_urls import (
     index_url_for,
     submissions_url,
 )
-from edgar_sec.engine.forms.plugins.exhibit_selection import probe_exhibit_header
+from edgar_sec.engine.document.screening import screen_candidate_document
 from edgar_sec.engine.forms.render import render_filing
 from edgar_sec.engine.index_pages.parser import parse_html_index
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.document_acquisition.index_selection import select_index_entry
@@ -33,11 +41,6 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     resolve_filing_catalog_paths,
     TARGETS_DIR,
 )
-
-
-def _detect_content_type(filename: str) -> str:
-    guess, _ = mimetypes.guess_type(filename)
-    return guess or "application/octet-stream"
 
 
 def _resolve_primary_filename(filing: FilingAggregate) -> str:
@@ -59,36 +62,6 @@ def _resolve_primary_url(filing: FilingAggregate) -> str:
             str(filing.primary_cik.value), filing.accession.value
         )
     return archives_url(filing.primary_cik.value, filing.accession.value, fname)
-
-
-def _is_suspected_inversion(
-    form: str, filename: str, content: bytes | None = None
-) -> bool:
-    """Check if a filename or opening bytes indicate an inverted exhibit."""
-    entry = get_family_entry(form)
-    if entry is None or not entry.profile.has_operation(
-        AcquisitionOperation.RENDER_TO_TXT
-    ):
-        return False
-    leaf = Path(filename).name.lower()
-    norm_leaf = leaf.replace("-", "").replace("_", "")
-    expected = (entry.family or "").lower().replace("-", "").replace("_", "")
-    if leaf.startswith(("ex", "exhibit")) and (
-        not expected or not norm_leaf.startswith(expected)
-    ):
-        return True
-    if content:
-        head = content[:2000]
-        if b"<TYPE>EX-" in head or b"<TYPE>GRAPHIC" in head:
-            return True
-        try:
-            head_text = head.decode("ascii", errors="ignore")
-            lines = tuple(head_text.splitlines()[:25])
-            if probe_exhibit_header(head_text, lines) is not None:
-                return True
-        except Exception:
-            pass
-    return False
 
 
 def _recover_inverted_primary(
@@ -158,7 +131,7 @@ def _recover_inverted_primary(
             form=filing.form,
             filename=recovered_name,
             content=rec_bytes,
-            content_type=_detect_content_type(recovered_name),
+            content_type=mime_type_for_suffix(recovered_name),
         )
         object.__setattr__(filing, "primary_document_path", recovered_name)
         object.__setattr__(filing, "primary_document_url", fetch_url)
@@ -185,14 +158,18 @@ def _make_document_fetcher(
         filename = _resolve_primary_filename(filing)
         acc_str = filing.accession.value
 
-        if _is_suspected_inversion(filing.form, filename):
+        screen = screen_candidate_document(filing.form, filename=filename)
+        if screen.is_inversion:
             recovered = _recover_inverted_primary(filing, cache, _get_client)
             if recovered is not None:
                 return recovered
 
         cached = cache.get(acc_str, filename)
         if cached is not None:
-            if _is_suspected_inversion(filing.form, filename, cached):
+            screen = screen_candidate_document(
+                filing.form, filename=filename, raw_content=cached
+            )
+            if screen.is_inversion:
                 recovered = _recover_inverted_primary(filing, cache, _get_client)
                 if recovered is not None:
                     return recovered
@@ -208,7 +185,7 @@ def _make_document_fetcher(
             return None
         response_bytes = fetch_fn(url)
         if response_bytes is not None:
-            c_type = _detect_content_type(filename)
+            c_type = mime_type_for_suffix(filename)
             cache.put(
                 accession=acc_str,
                 cik=filing.primary_cik.value,
@@ -217,7 +194,10 @@ def _make_document_fetcher(
                 content=response_bytes,
                 content_type=c_type,
             )
-            if _is_suspected_inversion(filing.form, filename, response_bytes):
+            screen = screen_candidate_document(
+                filing.form, filename=filename, raw_content=response_bytes
+            )
+            if screen.is_inversion:
                 recovered = _recover_inverted_primary(filing, cache, _get_client)
                 if recovered is not None:
                     return recovered
@@ -303,7 +283,7 @@ def _make_attachment_loader(
                         form=filing.form,
                         filename=fname,
                         content=data,
-                        content_type=_detect_content_type(fname),
+                        content_type=mime_type_for_suffix(fname),
                     )
                     return data
                 return None
@@ -384,7 +364,7 @@ def _make_document_opener(
                 form=filing.form,
                 filename=filename,
                 content=data,
-                content_type=_detect_content_type(filename),
+                content_type=mime_type_for_suffix(filename),
             )
             return data
         return None
@@ -476,6 +456,43 @@ def _make_index_fetcher(
     return _fetch
 
 
+def _make_filing_renderer(
+    doc_cache: DocumentCache,
+    http_client_factory: Callable[[], SecHttpClient] | None = None,
+    operation: str = "raw",
+    family_operations: dict[str, str] | None = None,
+) -> Callable[..., str | bytes]:
+    client_holder: list[SecHttpClient | None] = [None]
+
+    def _get_client() -> SecHttpClient:
+        if client_holder[0] is None:
+            client_holder[0] = (
+                http_client_factory()
+                if http_client_factory is not None
+                else SecHttpClient()
+            )
+        return client_holder[0]
+
+    def _render(
+        filing: FilingAggregate, operation_override: str | None = None
+    ) -> str | bytes:
+        op = operation_override or (family_operations or {}).get(filing.form, operation)
+        rendered = render_filing(filing, operation=op)
+        if isinstance(rendered, str):
+            screen = screen_candidate_document(
+                filing.form,
+                filename=filing.primary_document_path,
+                normalized_text=rendered,
+            )
+            if screen.is_inversion:
+                recovered = _recover_inverted_primary(filing, doc_cache, _get_client)
+                if recovered is not None:
+                    return render_filing(filing, operation=op)
+        return rendered
+
+    return _render
+
+
 def _materialize_from_submissions(
     cik: str | int | Cik,
     forms: str | Sequence[str] | None,
@@ -518,6 +535,7 @@ def _materialize_from_submissions(
     primary_docs = recent.get("primaryDocument", [])
 
     allowed_forms = {forms} if isinstance(forms, str) else set(forms) if forms else None
+    date_sel = resolve_date_selection(dates) if dates else ()
 
     results: list[FilingAggregate] = []
     total = len(accessions)
@@ -527,7 +545,7 @@ def _materialize_from_submissions(
             continue
 
         f_date = str(filing_dates[idx]) if idx < len(filing_dates) else ""
-        if dates and not f_date.startswith(dates):
+        if date_sel and not date_selection_matches(date_sel, f_date):
             continue
 
         acc_str = str(accessions[idx])
@@ -563,12 +581,45 @@ def _materialize_from_submissions(
     return results
 
 
+def _collect_submissions_fallback(
+    ciks: Sequence[Any],
+    forms: str | Sequence[str] | None,
+    dates: str | None,
+    limit: int | None,
+    factories: dict[str, Any],
+    client: SecHttpClient,
+    doc_cache: DocumentCache,
+) -> tuple[FilingAggregate, ...]:
+    aggregates: list[FilingAggregate] = []
+    for c in ciks:
+        on_the_fly = _materialize_from_submissions(
+            cik=c,
+            forms=forms,
+            dates=dates,
+            limit=limit,
+            fetcher=factories["fetcher"],
+            doc_cache=doc_cache,
+            client=client,
+            attachment_loader=factories["attachment_loader"],
+            document_opener=factories["document_opener"],
+            bundle_fetcher=factories["bundle_fetcher"],
+            index_fetcher=factories["index_fetcher"],
+            renderer=factories["renderer"],
+        )
+        aggregates.extend(on_the_fly)
+    if limit is not None:
+        aggregates = aggregates[: int(limit)]
+    return tuple(aggregates)
+
+
 def query_catalog_fast(
     ciks: Sequence[str | int | Cik] | None = None,
     forms: str | Sequence[str] | None = None,
     dates: str | None = None,
     limit: int | None = None,
     *,
+    operation: str = "raw",
+    family_operations: dict[str, str] | None = None,
     artifacts_root: Path | str | None = None,
     cache: DocumentCache | None = None,
     http_client_factory: Callable[[], SecHttpClient] | None = None,
@@ -592,50 +643,48 @@ def query_catalog_fast(
     )
 
     doc_cache = cache if cache is not None else get_default_cache(artifacts_root)
-    fetcher = _make_document_fetcher(doc_cache, http_client_factory)
-    attachment_loader = _make_attachment_loader(doc_cache, http_client_factory)
-    document_opener = _make_document_opener(doc_cache, http_client_factory)
-    bundle_fetcher = _make_bundle_fetcher(doc_cache, http_client_factory)
-    index_fetcher = _make_index_fetcher(doc_cache, http_client_factory)
-
-    aggregates: list[FilingAggregate] = []
+    factories = {
+        "fetcher": _make_document_fetcher(doc_cache, http_client_factory),
+        "cache_clearer": doc_cache.clear,
+        "zip_exporter": lambda filing, zpath: doc_cache.export_zip(
+            zpath, accession=filing.accession.raw
+        ),
+        "attachment_loader": _make_attachment_loader(doc_cache, http_client_factory),
+        "document_opener": _make_document_opener(doc_cache, http_client_factory),
+        "bundle_fetcher": _make_bundle_fetcher(doc_cache, http_client_factory),
+        "index_fetcher": _make_index_fetcher(doc_cache, http_client_factory),
+        "renderer": _make_filing_renderer(
+            doc_cache,
+            http_client_factory,
+            operation=operation,
+            family_operations=family_operations,
+        ),
+    }
 
     if not found_files:
+        items = ()
         if ciks:
             client = (
                 http_client_factory()
                 if http_client_factory is not None
                 else SecHttpClient()
             )
-            for c in ciks:
-                on_the_fly = _materialize_from_submissions(
-                    cik=c,
-                    forms=forms,
-                    dates=dates,
-                    limit=limit,
-                    fetcher=fetcher,
-                    doc_cache=doc_cache,
-                    client=client,
-                    attachment_loader=attachment_loader,
-                    document_opener=document_opener,
-                    bundle_fetcher=bundle_fetcher,
-                    index_fetcher=index_fetcher,
-                    renderer=render_filing,
-                )
-                aggregates.extend(on_the_fly)
-            if limit is not None:
-                aggregates = aggregates[: int(limit)]
+            items = _collect_submissions_fallback(
+                ciks, forms, dates, limit, factories, client, doc_cache
+            )
         return FilingsResult(
             run_id="fast-path",
             plan_id="fast-path",
             target_parquet_glob=targets_pattern,
             run_state_sqlite_path=doc_cache.db_path,
             artifacts_root=catalog_paths.artifacts_root,
-            items=tuple(aggregates),
+            items=items,
         )
 
     clauses: list[str] = []
     params: list[Any] = [found_files]
+    query_tables: dict[str, Any] | None = None
+    join_clause = ""
 
     if ciks:
         cik_queries: list[Any] = []
@@ -651,9 +700,18 @@ def query_catalog_fast(
                         int(s) if s.isdigit() else s,
                     ]
                 )
-        placeholders = ", ".join(["?"] * len(cik_queries))
-        clauses.append(f"source_cik IN ({placeholders})")
-        params.extend(cik_queries)
+        if len(ciks) <= 32:
+            placeholders = ", ".join(["?"] * len(cik_queries))
+            clauses.append(f"source_cik IN ({placeholders})")
+            params.extend(cik_queries)
+        else:
+            distinct_ciks = sorted({str(x) for x in cik_queries})
+            cik_table = pa.Table.from_arrays(
+                [pa.array(distinct_ciks, type=pa.string())],
+                names=["filter_cik"],
+            )
+            query_tables = {"_target_ciks": cik_table}
+            join_clause = "SEMI JOIN _target_ciks ON CAST(source_cik AS VARCHAR) = _target_ciks.filter_cik"
 
     if forms:
         form_list = [forms] if isinstance(forms, str) else list(forms)
@@ -662,8 +720,15 @@ def query_catalog_fast(
         params.extend(form_list)
 
     if dates:
-        clauses.append("filing_date LIKE ?")
-        params.append(f"{dates}%")
+        date_sel = resolve_date_selection(dates)
+        for clause in date_sel:
+            if isinstance(clause, AbsoluteDateClause):
+                if clause.start_date:
+                    clauses.append("filing_date >= ?")
+                    params.append(clause.iso_start)
+                if clause.end_date:
+                    clauses.append("filing_date <= ?")
+                    params.append(clause.iso_end)
 
     where_sql = f"WHERE {' AND '.join(clauses)}" if clauses else ""
     limit_sql = f"LIMIT {int(limit)}" if limit is not None else ""
@@ -678,66 +743,45 @@ def query_catalog_fast(
             primary_document,
             primary_doc_url
         FROM read_parquet(?)
+        {join_clause}
         {where_sql}
         ORDER BY filing_date DESC, accession DESC
         {limit_sql}
     """
 
-    with connect() as con:
-        try:
-            rows = con.execute(query, params).fetchall()
-        except Exception:
-            rows = []
+    has_matches = False
+    if ciks:
+        with connect() as con:
+            try:
+                if query_tables:
+                    for tname, tbl in query_tables.items():
+                        con.register(tname, tbl)
+                check_sql = (
+                    f"SELECT 1 FROM read_parquet(?) {join_clause} {where_sql} LIMIT 1"
+                )
+                has_matches = con.execute(check_sql, params).fetchone() is not None
+            except Exception:
+                has_matches = False
+    else:
+        has_matches = True
 
-    for acc_str, cik_val, form_val, f_date, r_date, p_doc, p_url in rows:
-        acc = AccessionNumber.from_any(acc_str)
-        cik_inst = Cik.from_raw(cik_val)
-        agg = FilingAggregate(
-            accession=acc,
-            primary_cik=cik_inst,
-            ciks=(cik_inst,),
-            form=str(form_val),
-            filing_date=str(f_date or ""),
-            report_date=str(r_date) if r_date else None,
-            primary_document_path=str(p_doc or ""),
-            primary_document_url=str(p_url) if p_url else None,
-            fetcher=fetcher,
-            cache_clearer=doc_cache.clear,
-            zip_exporter=lambda filing, zpath: doc_cache.export_zip(
-                zpath, accession=filing.accession.raw
-            ),
-            attachment_loader=attachment_loader,
-            document_opener=document_opener,
-            bundle_fetcher=bundle_fetcher,
-            index_fetcher=index_fetcher,
-            renderer=render_filing,
-        )
-        aggregates.append(agg)
-
-    if not aggregates and ciks:
+    if not has_matches and ciks:
         client = (
             http_client_factory()
             if http_client_factory is not None
             else SecHttpClient()
         )
-        for c in ciks:
-            on_the_fly = _materialize_from_submissions(
-                cik=c,
-                forms=forms,
-                dates=dates,
-                limit=limit,
-                fetcher=fetcher,
-                doc_cache=doc_cache,
-                client=client,
-                attachment_loader=attachment_loader,
-                document_opener=document_opener,
-                bundle_fetcher=bundle_fetcher,
-                index_fetcher=index_fetcher,
-                renderer=render_filing,
-            )
-            aggregates.extend(on_the_fly)
-        if limit is not None:
-            aggregates = aggregates[: int(limit)]
+        items = _collect_submissions_fallback(
+            ciks, forms, dates, limit, factories, client, doc_cache
+        )
+        return FilingsResult(
+            run_id="fast-path",
+            plan_id="fast-path",
+            target_parquet_glob=targets_pattern,
+            run_state_sqlite_path=doc_cache.db_path,
+            artifacts_root=catalog_paths.artifacts_root,
+            items=items,
+        )
 
     return FilingsResult(
         run_id="fast-path",
@@ -745,5 +789,10 @@ def query_catalog_fast(
         target_parquet_glob=targets_pattern,
         run_state_sqlite_path=doc_cache.db_path,
         artifacts_root=catalog_paths.artifacts_root,
-        items=tuple(aggregates),
+        query_backed=True,
+        query_sql=query,
+        query_params=tuple(params),
+        query_tables=query_tables,
+        query_factories=factories,
+        items=None,
     )

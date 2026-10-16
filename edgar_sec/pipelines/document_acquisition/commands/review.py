@@ -44,6 +44,7 @@ def cmd_review_artifacts(args: argparse.Namespace) -> int:
         output,
         paths=paths,
         limit=args.limit,
+        workers=getattr(args, "workers", None),
         no_progress=args.no_progress,
     )
     summary = result.summary
@@ -83,12 +84,14 @@ def _review_run_path(value: str, artifacts_root: str | None) -> Path:
 
 
 def cmd_review_analyze(args: argparse.Namespace) -> int:
+    from edgar_sec.foundation.serialization import pretty_json
+
     runs = tuple(_review_run_path(value, args.artifacts) for value in args.run)
     report = analyze_review_runs(
         runs, output=Path(args.output) if args.output else None
     )
     if args.json:
-        print(json.dumps(report, sort_keys=True))
+        print(pretty_json(report))
     else:
         for run in report["runs"]:
             statuses = ", ".join(
@@ -105,6 +108,95 @@ def cmd_review_analyze(args: argparse.Namespace) -> int:
                 f"review {run['review_id']}: {run['total_cases']} cases; "
                 f"{statuses}; operations: {operation_statuses}"
             )
+            for fam_rep in run.get("family_reports", []):
+                fam = fam_rep.get("family", "")
+                case_count = fam_rep.get("case_count", 0)
+                print(f"\n--- Form Family '{fam}' Analysis ({case_count} cases) ---")
+                print("  Top Element Counts:")
+                for tag, cnt in list(fam_rep.get("element_counts", {}).items())[:10]:
+                    print(f"    {tag}: {cnt}")
+                anom_count = fam_rep.get("anomaly_count", 0)
+                print(f"  Anomalies: {anom_count}")
+                for anom in fam_rep.get("anomalies", [])[:5]:
+                    val = anom.get("value")
+                    val_str = f" (value: {val})" if val is not None else ""
+                    print(
+                        f"    [{anom['kind']}] {anom['accession']}: {anom['detail']}{val_str}"
+                    )
+                if review_count := fam_rep.get("review_signal_count", 0):
+                    print(f"  Review Signals: {review_count}")
+                    for signal in fam_rep.get("review_signal_samples", [])[:3]:
+                        print(
+                            f"    [{signal['kind']}] {signal['accession']}: "
+                            f"{signal['value']}"
+                        )
+                if scorecard := fam_rep.get("field_scorecard"):
+                    missing_fields = [
+                        (field, values)
+                        for field, values in scorecard.items()
+                        if (
+                            values.get("scope") == "document"
+                            and values.get("cases_without_value", 0)
+                        )
+                        or values.get("blank_occurrences", 0)
+                    ]
+                    if missing_fields:
+                        print("  Missing or Blank Canonical Fields:")
+                        for field, values in missing_fields:
+                            missing_count = values.get("cases_without_value", 0)
+                            blanks = values.get("blank_occurrences", 0)
+                            print(
+                                f"    {field}: missing in {missing_count}/{case_count} cases; "
+                                f"blank values={blanks}"
+                            )
+                if frequencies := fam_rep.get("value_frequencies"):
+                    print("  Ownership Value Frequencies:")
+                    for field, distribution in frequencies.items():
+                        values = distribution.get("top_values", [])[:5]
+                        rendered = ", ".join(
+                            f"{entry['value']!r} ({entry['count']})" for entry in values
+                        )
+                        print(
+                            f"    {field}: {distribution['distinct_values']} distinct; "
+                            f"top: {rendered}"
+                        )
+                unp_count = fam_rep.get("unparsed_section_count", 0)
+                print(f"  Unparsed Sections: {unp_count}")
+                for sample in fam_rep.get("unparsed_samples", [])[:3]:
+                    print(
+                        f"    [table {sample['table_index']} - role={sample['role']} - "
+                        f"{sample['char_length']} chars]: {sample['snippet'][:100]}..."
+                    )
+                if outliers := fam_rep.get("outliers"):
+                    print("  Outliers & Uncommon Patterns:")
+                    missing = outliers.get("missing_fields", {})
+                    if sig_miss := missing.get("missing_signatures"):
+                        if sig_miss["count"] > 0:
+                            samples = ", ".join(sig_miss["sample_accessions"][:3])
+                            print(
+                                f"    Missing Signatures: {sig_miss['count']} cases (samples: {samples})"
+                            )
+                    if wc_outliers := outliers.get("word_count_outliers"):
+                        print(f"    Word Count Outliers ({len(wc_outliers)}):")
+                        for wco in wc_outliers[:5]:
+                            print(
+                                f"      [{wco['field']}] {wco['accession']} "
+                                f"({wco['word_count']} words): '{wco['value']}'"
+                            )
+                    if unp_pats := outliers.get("uncommon_patterns"):
+                        print("    Uncommon Normalized Patterns:")
+                        for fld, plist in unp_pats.items():
+                            for pentry in plist[:2]:
+                                print(
+                                    f"      [{fld}] '{pentry['pattern']}' "
+                                    f"({pentry['count']} cases, sample: {pentry['sample_accession']})"
+                                )
+                    if rare_ngs := outliers.get("rare_ngrams"):
+                        print("    Rare N-Grams:")
+                        for fld, nglist in rare_ngs.items():
+                            ng_str = ", ".join(f"'{ng['ngram']}'" for ng in nglist[:3])
+                            if ng_str:
+                                print(f"      [{fld}]: {ng_str}")
     return 0
 
 

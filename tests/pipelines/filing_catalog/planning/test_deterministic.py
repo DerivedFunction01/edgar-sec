@@ -642,3 +642,21 @@ def test_plan_xbrl_only_filters_non_xbrl_filings(
         is_ixbrl = table.column("is_inline_xbrl").to_pylist()
         for x, ix in zip(is_xbrl, is_ixbrl, strict=True):
             assert x is True or ix is True
+
+
+def test_plan_accessions_filters_targets(catalog_id: str, artifacts_root: Path) -> None:
+    """Accessions filter restricts planning targets strictly to matching accessions."""
+    all_plan = plan(catalog_id, artifacts_root)
+    all_dir = _plan_dir(artifacts_root, all_plan)
+    locators = pq.read_table(all_dir / LOCATOR_GROUPS_FILE)
+    target_acc = locators.column("representative_accession").to_pylist()[0]
+
+    filtered_plan = plan(catalog_id, artifacts_root, accessions=(target_acc,))
+    assert filtered_plan["plan_id"] != all_plan["plan_id"]
+    assert filtered_plan["accessions"] == [target_acc]
+
+    filtered_dir = _plan_dir(artifacts_root, filtered_plan)
+    for part in (filtered_dir / PLAN_TARGETS_DIR).rglob("*.parquet"):
+        table = pq.read_table(part)
+        for acc in table.column("accession").to_pylist():
+            assert acc == target_acc

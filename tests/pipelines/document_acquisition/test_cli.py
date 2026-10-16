@@ -196,3 +196,32 @@ def test_operator_dispatches_command_args_through_same_cli(
     payload = json.loads(capsys.readouterr().out)
     assert payload["command"] == "project"
     assert payload["status"] == "error"
+
+
+def test_cmd_run_forwards_progress_callback(monkeypatch) -> None:
+    """Verify cmd_run invokes execute_acquisition_run with progress callback parameter."""
+    from edgar_sec.pipelines.document_acquisition.commands.run import cmd_run
+    from edgar_sec.pipelines.document_acquisition.models import AcquisitionRunReport
+
+    calls = []
+    dummy = AcquisitionRunReport(
+        run_id="run-1",
+        state="complete",
+        target_counts={},
+        attempted_count=0,
+        retryable_failure_count=0,
+        non_retryable_failure_count=0,
+        cancelled=False,
+        processing_operation_counts={},
+        processing_attempted_target_count=0,
+        processing_complete=True,
+        processing_success=True,
+    )
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_acquisition.commands.run.execute_acquisition_run",
+        lambda *args, **kwargs: calls.append(kwargs) or dummy,
+    )
+    parser = cli.build_parser()
+    args = parser.parse_args(["run", "--run-id", "run-1", "--json"])
+    assert cmd_run(args) == 0
+    assert "progress_callback" in calls[0]

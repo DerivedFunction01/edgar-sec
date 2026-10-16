@@ -61,7 +61,7 @@ class DAGMenuConfig:
         )
 
     def resolve_specs(self) -> Sequence[RelationSpec] | None:
-        """Resolve relation specs for S8 compaction."""
+        """Resolve relation specs for compaction."""
         if callable(self.specs):
             return self.specs()
         return self.specs
@@ -396,7 +396,7 @@ def create_dag_menu(config: DAGMenuConfig) -> tuple[MenuAction, ...]:
     if config.specs is not None:
         actions.append(
             menu_action(
-                "Compact lineage (S8 Checkpoint parity merge)",
+                "Compact lineage (checkpoint parity merge)",
                 lambda: cmd_compact(root, specs=config.resolve_specs()),
             )
         )

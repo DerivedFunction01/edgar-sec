@@ -12,16 +12,14 @@ from edgar_sec.foundation.runtime.interactive import (
     build_menu,
     menu_action,
     operator_entrypoint,
+    prompt_confirm,
     prompt_paginated_choice,
     prompt_text,
     run_interactive_menu,
 )
 from edgar_sec.foundation.runtime.settings import resolve_settings
 from edgar_sec.foundation.runtime.settings.validators import positive_int_type
-from edgar_sec.pipelines.document_acquisition.cli import (
-    main as cli_main,
-    report_not_implemented,
-)
+from edgar_sec.pipelines.document_acquisition.cli import main as cli_main
 from edgar_sec.pipelines.document_acquisition.commands.status import (
     discover_run_ids,
 )
@@ -38,13 +36,6 @@ from edgar_sec.pipelines.document_acquisition.run_validation import (
 )
 
 MENU_TITLE = "Document Acquisition"
-
-
-def _action(command: str, track: str) -> MenuAction:
-    return menu_action(
-        track,
-        lambda: report_not_implemented(command),
-    )
 
 
 def _action_project() -> None:
@@ -138,27 +129,12 @@ def _action_run() -> None:
     except ValueError:
         print("Acquisition cancelled: enter a positive response-byte limit.")
         return
-    retry = (
-        prompt_text(
-            "Retry eligible failed acquisition/processing targets? (yes/no)", "no"
-        )
-        .strip()
-        .lower()
+    retry = prompt_confirm(
+        "Retry eligible failed acquisition/processing targets?", default=False
     )
-    if retry not in {"yes", "no"}:
-        print("Acquisition cancelled: answer yes or no for retry selection.")
-        return
-    retain = (
-        prompt_text("Retain raw response evidence? (yes/no)", "no").strip().lower()
-        or "no"
-    )
-    if retain not in {"yes", "no"}:
-        print("Acquisition cancelled: answer yes or no for response retention.")
-        return
-    confirm = (
-        prompt_text("Allow live SEC network access? (yes/no)", "no").strip().lower()
-    )
-    if confirm != "yes":
+    retain = prompt_confirm("Retain raw response evidence?", default=False)
+    confirm = prompt_confirm("Allow live SEC network access?", default=False)
+    if not confirm:
         print("Acquisition cancelled; no network request was made.")
         return
     args = [
@@ -168,9 +144,9 @@ def _action_run() -> None:
         "--max-response-bytes",
         str(effective_limit),
     ]
-    if retry == "yes":
+    if retry:
         args.append("--retry-failures")
-    if retain == "yes":
+    if retain:
         args.append("--retain-response-evidence")
     cli_main(args)
 
@@ -237,7 +213,9 @@ class _FixtureReviewConsole:
             )
             for index, plan in enumerate(plans, 1)
         ]
-        selected = prompt_paginated_choice(choices, prompt_label="Published S6 plan")
+        selected = prompt_paginated_choice(
+            choices, prompt_label="Published target plan"
+        )
         return selected.value if selected is not None else None
 
     def fixture_matches_plan(self, fixture: dict, plan: dict) -> bool:
@@ -260,6 +238,14 @@ class _FixtureReviewConsole:
         self, fixture_id: str, plan: dict, _limit: int | None, _root: Path
     ) -> bool:
         target_count = int(plan.get("selected_rows") or 0)
+        if not target_count and "plan_id" in plan:
+            try:
+                pub_plan = read_published_plan(
+                    str(plan["plan_id"]), self.planning_paths
+                )
+                target_count = int(pub_plan.manifest.get("target_row_count") or 0)
+            except (OSError, ValueError):
+                pass
         default_limit = min(100, target_count) if target_count else 100
         raw_limit = prompt_text(
             f"Maximum new target bodies [default {default_limit}; 'all' for {target_count or 'all'}]",
@@ -274,14 +260,10 @@ class _FixtureReviewConsole:
                 print("Target limit must be a positive integer or 'all'.")
                 return False
         scope = f"up to {limit} target bodies" if limit else "all target bodies"
-        confirmation = (
-            prompt_text(
-                f"Fetch {scope} from SEC for fixture {fixture_id}? (yes/no)", "no"
-            )
-            .strip()
-            .lower()
+        confirmation = prompt_confirm(
+            f"Fetch {scope} from SEC for fixture {fixture_id}?", default=False
         )
-        if confirmation not in {"y", "yes"}:
+        if not confirmation:
             print("Fixture fill cancelled; no SEC requests were made.")
             return False
         args = [
@@ -330,14 +312,11 @@ def _action_fixture_review_console() -> None:
             ),
             analyze_action=console.analyze_reviews,
             plan_discovery=console.plan_items,
-            plan_summary=console.plan_summary,
-            fixture_filter=console.fixture_matches_plan,
             fixture_label=console.fixture_label,
             fill_action=console.fill_fixture,
             prompt_limit=False,
             prompt_output=False,
             prompt_workers=False,
-            require_active_plan=True,
             title="Document Acquisition Fixtures & Review Console",
         )
     )
@@ -355,12 +334,18 @@ def _action_publish_run() -> None:
     )
     if chosen is None:
         return
+    run_id = str(chosen.value)
     branch = prompt_text("Destination DAG branch", "main").strip() or "main"
+    if not prompt_confirm(
+        f"Publish acquisition run {run_id} to DAG branch {branch}?", default=False
+    ):
+        print("Publication cancelled; the snapshot DAG was not changed.")
+        return
     cli_main(
         [
             "publish",
             "--run-id",
-            str(chosen.value),
+            run_id,
             "--branch",
             branch,
             "--artifacts",
@@ -369,33 +354,20 @@ def _action_publish_run() -> None:
     )
 
 
-def _action_inspect_snapshot() -> None:
-    paths = resolve_acquisition_paths()
-    branch = prompt_text("DAG branch to inspect", "main").strip() or "main"
-    cli_main(
-        [
-            "snapshot",
-            "status",
-            "--branch",
-            branch,
-            "--artifacts",
-            str(paths.artifacts_root),
-        ]
+def _action_dag() -> None:
+    from edgar_sec.infra.storage.dag.menu import DAGMenuConfig, run_dag_menu
+    from edgar_sec.pipelines.document_acquisition.snapshot.specs import (
+        ACQUISITION_RELATIONS,
     )
 
-
-def _build_snapshot_menu() -> tuple[MenuAction, ...]:
-    return build_menu(
-        menu_action("Publish snapshot (S11 gate)", _action_publish_run),
-        menu_action("Snapshot status (S11 gate)", _action_inspect_snapshot),
+    config = DAGMenuConfig(
+        snapshots_root=lambda: resolve_acquisition_paths().snapshots_root,
+        title="Document Acquisition Snapshot DAG Console",
+        specs=ACQUISITION_RELATIONS,
+        publish_action=_action_publish_run,
+        publish_label="Publish completed acquisition run to DAG",
     )
-
-
-def _action_snapshot_console() -> None:
-    run_interactive_menu(
-        "Document Acquisition Snapshot Console",
-        _build_snapshot_menu(),
-    )
+    run_dag_menu(config)
 
 
 def build_operator_menu() -> tuple[MenuAction, ...]:
@@ -404,8 +376,8 @@ def build_operator_menu() -> tuple[MenuAction, ...]:
         menu_action("Inspect acquisition runs", _action_status),
         menu_action("Run acquisition and process acquired bodies", _action_run),
         menu_action(
-            "Snapshot console (publish, status; S11 gate)",
-            _action_snapshot_console,
+            "Snapshot DAG console (publish, switch current, inspect, branches, tags)",
+            _action_dag,
             key="p",
         ),
         menu_action(

@@ -59,6 +59,32 @@ def convert_html_table(
     return render_source_table(table_node, table_index=table_index, budget=budget)
 
 
+def resolve_html_table_grid(
+    table_html: str | bytes | FastHtmlNode,
+    *,
+    table_index: int = 0,
+) -> ResolvedGrid:
+    """Resolve table rows and spans without calculating visual widths or ASCII output."""
+    if isinstance(table_html, FastHtmlNode):
+        table_node = table_html
+    else:
+        tree = parse_html(table_html)
+        table_node = tree.css_first("table")
+        if table_node is None:
+            return ResolvedGrid(
+                rows=(),
+                column_alignments=(),
+                column_widths=(),
+                confidence=0.0,
+                veto_reasons=("No <table> tag found",),
+            )
+    return render_source_table(
+        table_node,
+        table_index=table_index,
+        render_ascii=False,
+    ).resolved_grid
+
+
 def convert_html_tables_to_ascii(
     html_content: str,
     *,
@@ -315,4 +341,5 @@ __all__ = [
     "convert_html_table",
     "convert_html_tables_to_ascii",
     "convert_html_tables_to_ascii_with_metadata",
+    "resolve_html_table_grid",
 ]

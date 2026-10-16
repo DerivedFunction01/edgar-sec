@@ -160,15 +160,15 @@ def test_interactive_run_requires_default_no_consent(
     prompts = []
     monkeypatch.setattr(
         operator,
-        "prompt_text",
-        lambda label, default="": prompts.append((label, default)) or default,
+        "prompt_confirm",
+        lambda label, default=False: prompts.append((label, default)) or default,
     )
     monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
 
     operator._action_run()
 
     assert calls == []
-    assert prompts == [("Start network execution? (yes/no)", "no")]
+    assert prompts == [("Start network execution?", False)]
 
 
 def test_interactive_run_dispatches_after_consent(monkeypatch, tmp_path: Path) -> None:
@@ -197,7 +197,7 @@ def test_interactive_run_dispatches_after_consent(monkeypatch, tmp_path: Path) -
     monkeypatch.setattr(
         operator, "prompt_paginated_choice", lambda items, **_kwargs: items[0]
     )
-    monkeypatch.setattr(operator, "prompt_text", lambda *_args: "yes")
+    monkeypatch.setattr(operator, "prompt_confirm", lambda *_args, **_kw: True)
     monkeypatch.setattr(operator, "cli_main", lambda args: calls.append(args) or 0)
 
     operator._action_run()

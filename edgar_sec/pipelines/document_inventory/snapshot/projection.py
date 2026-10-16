@@ -1,4 +1,4 @@
-"""Bounded projection of published catalog plans into transient S4 work orders."""
+"""Bounded projection of published catalog plans into transient work orders."""
 
 from __future__ import annotations
 

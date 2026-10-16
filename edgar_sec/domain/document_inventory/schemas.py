@@ -1,6 +1,6 @@
 """The durable entry Arrow schema for the inventory dataset.
 
-S4 writes this schema into every attempt's `entries.parquet`; S5 consumes it when
+This schema is written into every attempt's `entries.parquet` and consumed when
 merging into the published snapshot. Field order and types are part of the
 contract: bump `ENTRY_SCHEMA_VERSION` rather than editing the schema in place.
 """

@@ -56,4 +56,30 @@ def safe_dumps(value: Any) -> str:
     return json.dumps(json_safe(value), default=str)
 
 
-__all__ = ["canonical_hash", "canonical_json", "json_safe", "safe_dumps"]
+def pretty_json(data: Any, *, indent: int = 2) -> str:
+    """Format data as indented JSON with sorted keys."""
+    return json.dumps(json_safe(data), indent=indent, sort_keys=True)
+
+
+def prettify_xml(xml_content: str | bytes | Any, *, indent: str = "    ") -> str:
+    """Format XML element or markup string with standard indentation."""
+    import xml.etree.ElementTree as ET
+
+    if isinstance(xml_content, ET.Element):
+        root = xml_content
+    elif isinstance(xml_content, bytes):
+        root = ET.fromstring(xml_content.decode("utf-8", errors="replace"))
+    else:
+        root = ET.fromstring(str(xml_content))
+    ET.indent(root, space=indent)
+    return ET.tostring(root, encoding="unicode")
+
+
+__all__ = [
+    "canonical_hash",
+    "canonical_json",
+    "json_safe",
+    "pretty_json",
+    "prettify_xml",
+    "safe_dumps",
+]

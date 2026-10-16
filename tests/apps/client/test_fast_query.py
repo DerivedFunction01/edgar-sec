@@ -279,3 +279,50 @@ def test_query_catalog_fast_documents_and_attachments(tmp_path: Path) -> None:
     assert filing.open_linkbase("_cal.xml") == b"<calculationLinkbase/>"
     assert filing.open_linkbase("_pre.xml") == b"<presentationLinkbase/>"
     assert filing.open_linkbase(".xsd") == b"<schemaDefinition/>"
+
+
+def test_query_catalog_fast_large_cik_filter(tmp_path: Path) -> None:
+    targets_dir = tmp_path / "filing_catalog" / "filing_targets"
+    targets_dir.mkdir(parents=True, exist_ok=True)
+
+    table = pa.Table.from_arrays(
+        [
+            pa.array(["0000320193-23-000106", "0000789019-23-000001"]),
+            pa.array([320193, 789019]),
+            pa.array(["10-K", "10-K"]),
+            pa.array(["2023-11-03", "2023-10-25"]),
+            pa.array(["2023-09-30", "2023-09-30"]),
+            pa.array(["aapl-20230930.htm", "msft-20230930.htm"]),
+            pa.array(
+                [
+                    "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm",
+                    "https://www.sec.gov/Archives/edgar/data/789019/000078901923000001/msft-20230930.htm",
+                ]
+            ),
+        ],
+        names=[
+            "accession",
+            "source_cik",
+            "form",
+            "filing_date",
+            "report_date",
+            "primary_document",
+            "primary_doc_url",
+        ],
+    )
+    pq.write_table(table, targets_dir / "part-00000.parquet")
+
+    large_ciks = [f"{i:010d}" for i in range(1, 40)] + ["0000320193"]
+    cache = DocumentCache(db_path=tmp_path / "test_docs.sqlite")
+    res = query_catalog_fast(
+        ciks=large_ciks,
+        forms="10-K",
+        artifacts_root=tmp_path,
+        cache=cache,
+    )
+    assert len(res) == 1
+    filings = list(res)
+    assert len(filings) == 1
+    assert filings[0].accession.raw == "0000320193-23-000106"
+    assert res.to_arrow().num_rows == 1
+    assert len(res.to_df()) == 1

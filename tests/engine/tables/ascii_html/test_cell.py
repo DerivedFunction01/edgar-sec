@@ -60,6 +60,20 @@ def test_html_attributes_and_inline_css_normalize_into_one_cell_style() -> None:
     assert style.is_bold is True
 
 
+def test_vertical_border_longhands_are_retained_on_cells() -> None:
+    style = _style_of(
+        '<table><tr><td style="border-left-style: solid; border-left-width: 2px; '
+        "border-left-color: #123; border-right-style: dotted; "
+        'border-right-width: 3px; border-right-color: #456">x</td></tr></table>'
+    )
+    assert style.border_left_width == 2.0
+    assert style.border_left_style is BorderStyle.SOLID
+    assert style.border_left_color == "#123"
+    assert style.border_right_width == 3.0
+    assert style.border_right_style is BorderStyle.DOTTED
+    assert style.border_right_color == "#456"
+
+
 def test_typography_is_inherited_from_a_nested_bold_tag() -> None:
     assert _style_of(STYLED_TD).is_bold is True
     # An attribute-free cell short-circuits to the default style, so a nested <b> does

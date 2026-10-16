@@ -12,6 +12,7 @@ from edgar_sec.foundation.runtime.interactive import (
     build_menu,
     menu_action,
     operator_entrypoint,
+    prompt_confirm,
     prompt_paginated_choice,
     prompt_text,
 )
@@ -153,37 +154,29 @@ def _action_run() -> None:
             "A run lock exists for "
             f"pid={owner.get('pid', '?')} host={owner.get('host', '?')}"
         )
-        if prompt_text(
-            "Confirm the prior owner has stopped? (yes/no)", "no"
-        ).strip().lower() not in {
-            "yes",
-            "y",
-        }:
+        if not prompt_confirm("Confirm the prior owner has stopped?", default=False):
             print("Run cancelled; stale-lock recovery was not confirmed.")
             return
         stale_lock_args = ["--confirm-stale-lock"]
     else:
         stale_lock_args = []
     if status.pending_accessions:
-        prompt = "Start network execution? (yes/no)"
+        prompt = "Start network execution?"
         print(
             f"Run {status.run_id} may contact the SEC for "
             f"{status.pending_accessions} pending accessions in "
             f"{status.outstanding_chunks} chunks."
         )
     else:
-        prompt = "Continue Run without pending network requests? (yes/no)"
+        prompt = "Continue Run without pending network requests?"
         print(f"Run {status.run_id} has no pending accessions.")
-    if prompt_text(prompt, "no").strip().lower() not in {
-        "yes",
-        "y",
-    }:
+    if not prompt_confirm(prompt, default=False):
         print("Run cancelled; no network requests were made.")
         return
     retry_args = []
-    if status.retryable_failures and prompt_text(
-        "Retry previously failed fetches? (yes/no)", "no"
-    ).strip().lower() in {"yes", "y"}:
+    if status.retryable_failures and prompt_confirm(
+        "Retry previously failed fetches?", default=False
+    ):
         retry_args.append("--retry-failures")
     cli_main(
         [

@@ -4,9 +4,9 @@
 
 Partitions form-specific evidence and structural definitions across SEC filing
 families: `annual/` for Form 10-K and 20-F, `quarterly/` for Form 10-Q, `current/`
-for Form 8-K, and `ownership/` for Section 16 insider reports (Form 4). Each
-subpackage supplies declarative processing profiles, body evidence, and structural
-taxonomies.
+for Form 8-K, `ownership/` for Section 16 insider reports (Form 4), and `registration/`
+for Securities Act registration statements (Form S-1). Each subpackage supplies
+declarative processing profiles, body evidence, and structural taxonomies.
 
 ## Contracts
 

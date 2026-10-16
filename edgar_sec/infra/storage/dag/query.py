@@ -7,7 +7,6 @@ from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
 from pathlib import Path
-from typing import Any
 
 import duckdb
 import pyarrow as pa
@@ -180,7 +179,7 @@ def query_point(
     key_value: str,
     key_column: str | None = None,
     all_specs: Sequence[RelationSpec] | None = None,
-) -> list[dict[str, Any]]:
+) -> pa.Table:
     """Execute high-speed point query with automatic range pruning."""
     col = key_column or spec.entity_key or spec.primary_key[0]
     if col == "filing_cik" and "accession" in [f.name for f in spec.schema]:
@@ -194,9 +193,7 @@ def query_point(
     }
     compile_pruned_views(con, target_specs, lineage, snapshots_root, ranges)
     stmt = f"SELECT * FROM active_{sql_identifier(spec.name)} WHERE {sql_identifier(col)} = ?"
-    cursor = con.execute(stmt, [key_value])
-    columns = [desc[0] for desc in cursor.description]
-    return [dict(zip(columns, row)) for row in cursor.fetchall()]
+    return con.execute(stmt, [key_value]).arrow().read_all()
 
 
 __all__ = [

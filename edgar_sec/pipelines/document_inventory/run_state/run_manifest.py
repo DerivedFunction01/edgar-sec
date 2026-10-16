@@ -1,4 +1,4 @@
-"""Path-backed work-order identity and resumable chunk manifests for S4."""
+"""Path-backed work-order identity and resumable chunk manifests."""
 
 from __future__ import annotations
 

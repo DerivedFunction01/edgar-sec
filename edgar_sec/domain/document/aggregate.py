@@ -11,6 +11,7 @@ import zipfile
 from edgar_sec.domain.identity import AccessionNumber, Cik
 
 if TYPE_CHECKING:
+    from edgar_sec.domain.forms.common.processing import DocumentProcessingProfile
     from edgar_sec.domain.forms.reports import FormReport
 
 
@@ -39,6 +40,34 @@ class FilingAttachment:
     @property
     def is_xml(self) -> bool:
         return self.filename.lower().endswith((".xml", ".xsd"))
+
+    @property
+    def raw_metadata(self) -> PayloadMetadata:
+        from edgar_sec.domain.document.metadata import detect_raw_metadata
+
+        return detect_raw_metadata(self.filename)
+
+    @property
+    def render_metadata(self) -> PayloadMetadata:
+        from edgar_sec.domain.document.metadata import detect_render_metadata
+
+        return detect_render_metadata(None, self.raw_metadata, "raw")
+
+    @property
+    def raw_format(self) -> str:
+        return self.raw_metadata.format_name
+
+    @property
+    def render_format(self) -> str:
+        return self.render_metadata.format_name
+
+    @property
+    def raw_content_type(self) -> str:
+        return self.raw_metadata.content_type
+
+    @property
+    def render_content_type(self) -> str:
+        return self.render_metadata.content_type
 
     def raw(self) -> bytes | None:
         """Return raw bytes of this attachment."""
@@ -128,12 +157,64 @@ class FilingAggregate:
             a
             for a in self.get_attachments()
             if a.document_type.upper().startswith("EX-")
+            or a.filename.lower().startswith("ex")
+            or "_ex" in a.filename.lower()
         )
+
+    def exhibit(self, type_or_number: str | int) -> FilingAttachment | None:
+        """Safe exhibit retrieval by document type, number, or filename token."""
+        token = str(type_or_number).upper().strip()
+        canon_ex = f"EX-{token}" if not token.startswith("EX-") else token
+        for a in self.exhibits:
+            dt = a.document_type.upper()
+            if dt == canon_ex or dt == token:
+                return a
+        for a in self.exhibits:
+            dt = a.document_type.upper()
+            if dt.startswith(f"{canon_ex}.") or dt.startswith(f"{canon_ex}-"):
+                return a
+        for a in self.exhibits:
+            fn = a.filename.lower()
+            if token.lower() in fn or canon_ex.lower() in fn:
+                return a
+        return None
 
     def as_report(self) -> FormReport:
         from edgar_sec.domain.forms.reports import get_report_projection
 
         return get_report_projection(self)
+
+    @property
+    def raw_metadata(self) -> PayloadMetadata:
+        from edgar_sec.domain.document.metadata import detect_raw_metadata
+
+        return detect_raw_metadata(self.primary_document_path)
+
+    @property
+    def render_metadata(self) -> PayloadMetadata:
+        from edgar_sec.domain.document.metadata import detect_render_metadata
+
+        return detect_render_metadata(self.form, self.raw_metadata)
+
+    @property
+    def raw_format(self) -> str:
+        return self.raw_metadata.format_name
+
+    @property
+    def render_format(self) -> str:
+        return self.render_metadata.format_name
+
+    @property
+    def raw_content_type(self) -> str:
+        return self.raw_metadata.content_type
+
+    @property
+    def render_content_type(self) -> str:
+        return self.render_metadata.content_type
+
+    @property
+    def render_operation(self) -> str:
+        return self.render_metadata.operation
 
     def raw(self) -> bytes | None:
         """Return raw bytes of the primary filing document."""
@@ -192,8 +273,48 @@ class FilingAggregate:
         return tuple(a for a in self.get_attachments() if a.is_graphic)
 
     @property
+    def processing_profile(self) -> DocumentProcessingProfile | None:
+        """Return the declarative processing profile for this filing form."""
+        from edgar_sec.domain.forms.families.processing_profiles import (
+            get_family_profile,
+        )
+
+        return get_family_profile(self.form)
+
+    def _is_xbrl_eligible(self) -> bool:
+        prof = self.processing_profile
+        return prof.has_xbrl if prof is not None else False
+
+    @property
+    def has_xbrl(self) -> bool:
+        """Report whether filing contains verified XBRL data."""
+        if not self._is_xbrl_eligible():
+            return False
+        return len(self.linkbases) > 0
+
+    @property
+    def has_toc(self) -> bool:
+        """Report whether filing form family supports Table of Contents."""
+        prof = self.processing_profile
+        return prof.has_toc if prof is not None else False
+
+    @property
+    def has_sections(self) -> bool:
+        """Report whether filing form family supports statutory Part/Item sections."""
+        prof = self.processing_profile
+        return prof.has_sections if prof is not None else False
+
+    @property
+    def has_notes(self) -> bool:
+        """Report whether filing form family supports financial statement notes."""
+        prof = self.processing_profile
+        return prof.has_notes if prof is not None else False
+
+    @property
     def linkbases(self) -> tuple[FilingAttachment, ...]:
         """Return all discovered XBRL linkbase, schema, and instance attachments."""
+        if not self._is_xbrl_eligible():
+            return ()
         return tuple(
             a
             for a in self.get_attachments()
@@ -214,6 +335,10 @@ class FilingAggregate:
 
     def open_linkbase(self, suffix_or_type: str) -> bytes:
         """Fetch and return bytes of a linkbase document by suffix or type."""
+        if not self.has_xbrl:
+            raise FileNotFoundError(
+                f"no linkbase matching {suffix_or_type!r} in verified index for {self.accession}"
+            )
         token = suffix_or_type.lower().strip()
         for a in self.linkbases:
             if token in a.filename.lower() or token in a.document_type.lower():
@@ -221,7 +346,7 @@ class FilingAggregate:
                 if data is not None:
                     return data
         raise FileNotFoundError(
-            f"linkbase {suffix_or_type!r} not found for {self.accession}"
+            f"no linkbase matching {suffix_or_type!r} in verified index for {self.accession}"
         )
 
     def open_document(self, filename: str) -> bytes:
@@ -260,10 +385,15 @@ class FilingAggregate:
                 return content
         raise FileNotFoundError(f"index page not available for {self.accession}")
 
-    def render(self) -> str | bytes | None:
+    def render(self, operation: str | None = None) -> str | bytes | None:
         """Render filing using injected renderer or raw primary bytes."""
         if self.renderer is not None:
-            return self.renderer(self)
+            try:
+                return self.renderer(self, operation=operation)
+            except TypeError:
+                return self.renderer(self)
+        if operation == "raw":
+            return self.raw()
         return self.raw()
 
 

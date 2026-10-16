@@ -3,23 +3,12 @@ from __future__ import annotations
 import hashlib
 import os
 import stat
-from dataclasses import dataclass
 from pathlib import Path
 
-from edgar_sec.domain.document.path_facts import (
-    DocumentPathFacts,
-)
 from edgar_sec.domain.document.route import DocumentRoute
-from edgar_sec.engine.document_processing.acquisition_capabilities import (
-    resolve_acquisition_capability,
-)
 from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.runtime.paths import validate_safe_id
 from edgar_sec.foundation.serialization import canonical_hash
-from edgar_sec.foundation.runtime.resources import (
-    available_memory_bytes,
-    usable_memory_bytes,
-)
 from edgar_sec.infra.storage.atomic import atomic_write_bytes
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.processing.models import (
@@ -33,66 +22,6 @@ from edgar_sec.pipelines.document_acquisition.schemas import StagedBodyRef
 
 class ProcessingIOError(ValueError):
     pass
-
-
-class ProcessingBudgetExceeded(ValueError):
-    pass
-
-
-@dataclass(frozen=True, slots=True)
-class ProcessingBudgetPolicy:
-    budget_version: str
-    route: DocumentRoute
-    handler_id: str
-    handler_version: str
-    max_input_bytes: int
-    max_output_bytes: int
-    working_set_reservation_bytes: int
-
-    def __post_init__(self) -> None:
-        validate_safe_id(self.budget_version, "budget_version")
-        validate_safe_id(self.handler_id, "handler_id")
-        validate_safe_id(self.handler_version, "handler_version")
-        if not isinstance(self.route, DocumentRoute):
-            raise ValueError("processing budget route is invalid")
-        limits = (
-            self.max_input_bytes,
-            self.max_output_bytes,
-            self.working_set_reservation_bytes,
-        )
-        if any(type(value) is not int or value < 0 for value in limits):
-            raise ValueError("processing budget byte limits must be finite integers")
-        if self.max_input_bytes == 0 or self.max_output_bytes == 0:
-            raise ValueError("processing input and output limits must be positive")
-
-
-@dataclass(frozen=True, slots=True)
-class ProcessingBudgetRegistry:
-    policies: tuple[ProcessingBudgetPolicy, ...] = ()
-
-    def __post_init__(self) -> None:
-        keys = [
-            (policy.route, policy.handler_id, policy.handler_version)
-            for policy in self.policies
-        ]
-        if len(keys) != len(set(keys)):
-            raise ValueError("processing budget policy keys must be unique")
-
-    def get(
-        self, route: DocumentRoute, handler_id: str, handler_version: str
-    ) -> ProcessingBudgetPolicy | None:
-        return next(
-            (
-                policy
-                for policy in self.policies
-                if (policy.route, policy.handler_id, policy.handler_version)
-                == (route, handler_id, handler_version)
-            ),
-            None,
-        )
-
-
-DEFAULT_PROCESSING_BUDGETS = ProcessingBudgetRegistry()
 
 
 def select_operation_execution(
@@ -161,7 +90,6 @@ def operation_fingerprint(
     body: StagedBodyRef,
     route: DocumentRoute,
     effective_path: str,
-    budget: ProcessingBudgetPolicy | None,
 ) -> str:
     return canonical_hash(
         {
@@ -195,23 +123,8 @@ def operation_fingerprint(
             ),
             "effective_path": effective_path,
             "route": route.value,
-            "processing_budget": _budget_identity(budget),
         }
     )
-
-
-def _budget_identity(policy: ProcessingBudgetPolicy | None) -> dict[str, object] | None:
-    if policy is None:
-        return None
-    return {
-        "budget_version": policy.budget_version,
-        "route": policy.route.value,
-        "handler_id": policy.handler_id,
-        "handler_version": policy.handler_version,
-        "max_input_bytes": policy.max_input_bytes,
-        "max_output_bytes": policy.max_output_bytes,
-        "working_set_reservation_bytes": policy.working_set_reservation_bytes,
-    }
 
 
 def validate_prior_operation_result(
@@ -221,7 +134,6 @@ def validate_prior_operation_result(
     body: StagedBodyRef,
     processing_id: str,
     fingerprint: str,
-    budget: ProcessingBudgetPolicy | None,
 ) -> None:
     if result.operation_fingerprint != fingerprint:
         raise ProcessingIOError("prior operation fingerprint is stale")
@@ -280,8 +192,6 @@ def validate_prior_operation_result(
             raise ProcessingIOError("prior raw reference differs from selected body")
         return
 
-    if budget is None or output.output_size > budget.max_output_bytes:
-        raise ProcessingIOError("prior derived output has no matching budget")
     expected_path = (
         paths.run_staging_root(body.run_id)
         / "processing"
@@ -330,97 +240,9 @@ def operation_pins(
     )
 
 
-def resolve_requested_operation_budgets(
-    request: ProcessingRequest,
-    route: DocumentRoute,
-    facts: DocumentPathFacts,
-    registry: ProcessingBudgetRegistry,
-) -> dict[str, ProcessingBudgetPolicy]:
-    policies: dict[str, ProcessingBudgetPolicy] = {}
-    for operation in request.operations:
-        if (
-            not operation.requested
-            or operation.support_status != "supported"
-            or operation.operation == "raw"
-            or not (operation.source_request_id or "").strip()
-        ):
-            continue
-        expected = resolve_acquisition_capability(
-            request.form, request.target_role, operation.operation, facts, route
-        ).pins
-        if expected is None or operation_pins(operation) != expected:
-            continue
-        policy = registry.get(
-            route, operation.handler_id or "", operation.handler_version or ""
-        )
-        if policy is not None:
-            policies[operation.operation_id] = policy
-    return policies
-
-
-def admit_requested_operations(
-    request: ProcessingRequest,
-    facts: DocumentPathFacts,
-    input_size: int,
-    selected_operation_ids: frozenset[str],
-    budget_profiles: dict[str, ProcessingBudgetPolicy],
-) -> tuple[dict[str, ProcessingBudgetPolicy], dict[str, str]]:
-    policies: dict[str, ProcessingBudgetPolicy] = {}
-    failures: dict[str, str] = {}
-    available = None
-    for operation in request.operations:
-        if (
-            operation.operation_id not in selected_operation_ids
-            or not operation.requested
-            or operation.support_status != "supported"
-            or operation.operation == "raw"
-            or not (operation.source_request_id or "").strip()
-        ):
-            continue
-        expected = resolve_acquisition_capability(
-            request.form, request.target_role, operation.operation, facts
-        ).pins
-        if expected is None or operation_pins(operation) != expected:
-            continue
-        policy = budget_profiles.get(operation.operation_id)
-        if policy is None:
-            failures[operation.operation_id] = (
-                "no versioned budget is registered for this route and handler"
-            )
-            continue
-        if available is None:
-            available = available_memory_bytes()
-        if not admit_processing_budget(policy, input_size, available_bytes=available):
-            failures[operation.operation_id] = (
-                "input or working set exceeds the registered processing budget"
-            )
-            continue
-        policies[operation.operation_id] = policy
-    return policies, failures
-
-
-def admit_processing_budget(
-    policy: ProcessingBudgetPolicy,
-    input_size: int,
-    *,
-    available_bytes: int | None = None,
-) -> bool:
-    if type(input_size) is not int or input_size < 0:
-        return False
-    if input_size > policy.max_input_bytes:
-        return False
-    available = available_memory_bytes() if available_bytes is None else available_bytes
-    usable = usable_memory_bytes(
-        available, reserve_bytes=policy.working_set_reservation_bytes
-    )
-    return policy.max_input_bytes + policy.max_output_bytes <= usable
-
-
 def read_bounded_source(
     path: Path,
     expected_size: int,
-    *,
-    max_input_bytes: int,
 ) -> bytes:
     if (
         isinstance(expected_size, bool)
@@ -428,10 +250,6 @@ def read_bounded_source(
         or expected_size < 0
     ):
         raise ProcessingIOError("selected source size is invalid")
-    if type(max_input_bytes) is not int or max_input_bytes < 1:
-        raise ProcessingIOError("selected source has no finite input budget")
-    if expected_size > max_input_bytes:
-        raise ProcessingBudgetExceeded("selected source exceeds its input budget")
 
     flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
     try:
@@ -514,14 +332,9 @@ def stage_derived_output(
 
 
 __all__ = [
-    "DEFAULT_PROCESSING_BUDGETS",
-    "ProcessingBudgetExceeded",
-    "ProcessingBudgetPolicy",
-    "ProcessingBudgetRegistry",
     "ProcessingIOError",
-    "admit_processing_budget",
     "operation_fingerprint",
-    "resolve_requested_operation_budgets",
+    "operation_pins",
     "read_bounded_source",
     "select_operation_execution",
     "stage_derived_output",

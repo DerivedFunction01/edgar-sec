@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import argparse
-import json
 import sqlite3
 import sys
 
@@ -30,50 +29,7 @@ from edgar_sec.pipelines.document_acquisition.commands.snapshot import (
 )
 from edgar_sec.pipelines.document_acquisition.commands.status import cmd_status
 
-__all__ = ["build_parser", "main", "report_not_implemented"]
-
-
-_TRACKS = {
-    "project": "S9 target-plan projection",
-    "status": "S9 run-state inspection",
-    "run": "S9 network acquisition",
-    "publish": "S11 Parquet/DAG publication",
-    "fixture create": "S9 fixture initialization",
-    "fixture fill": "S9 fixture capture",
-    "fixture list": "S9 fixture discovery",
-    "review generate": "S7 review artifact generation",
-    "review compare": "S7 review comparison",
-    "review analyze": "S7 review-run analysis",
-    "review label": "M8 exhibit label capture",
-    "review holdout": "M8 issuer/time-separated exhibit evaluation",
-    "snapshot status": "S11 snapshot availability",
-}
-
-
-def report_not_implemented(command: str, *, json_output: bool = False) -> int:
-    track = _TRACKS[command]
-    message = "This command track is not implemented; no work was performed."
-    status = "not_implemented"
-    if command == "publish":
-        message = (
-            "S11 publication is gated on representative S9/S10 evidence and explicit "
-            "approval; no work was performed."
-        )
-        status = "blocked_by_gate"
-    elif command == "snapshot status":
-        message = "No acquisition snapshot is published; S11 publication remains gated."
-    result = {
-        "command": command,
-        "implemented": False,
-        "message": message,
-        "status": status,
-        "track": track,
-    }
-    if json_output:
-        print(json.dumps(result, sort_keys=True))
-    else:
-        print(f"not implemented: {track}; {message}", file=sys.stderr)
-    return 2
+__all__ = ["build_parser", "main"]
 
 
 def _add_output_options(parser: argparse.ArgumentParser) -> None:
@@ -84,11 +40,11 @@ def _add_output_options(parser: argparse.ArgumentParser) -> None:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="acquisition",
-        description="Project and operate on S9 acquisition runs.",
+        description="Project and operate on acquisition runs.",
     )
     commands = parser.add_subparsers(dest="command", required=True)
 
-    project = commands.add_parser("project", help="project a published S6 target plan")
+    project = commands.add_parser("project", help="project a published target plan")
     project.add_argument("--plan-id", required=True, help="published target-plan id")
     _add_output_options(project)
     project.set_defaults(func=cmd_project)
@@ -99,7 +55,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_output_options(status)
     status.set_defaults(func=cmd_status)
 
-    run = commands.add_parser("run", help="acquire pending S9 target bodies")
+    run = commands.add_parser("run", help="acquire pending target bodies")
     run.add_argument("--run-id", required=True, help="projected acquisition run id")
     run.add_argument("--retry-failures", action="store_true")
     run.add_argument("--retain-response-evidence", action="store_true")
@@ -120,7 +76,9 @@ def build_parser() -> argparse.ArgumentParser:
     _add_output_options(run)
     run.set_defaults(func=cmd_run)
 
-    publish = commands.add_parser("publish", help="publish an approved S11 snapshot")
+    publish = commands.add_parser(
+        "publish", help="publish a completed run to the snapshot DAG"
+    )
     publish.add_argument("--run-id", required=True, help="completed acquisition run id")
     publish.add_argument("--branch", default="main")
     publish.add_argument("--expected-branch-tip", default=None)
@@ -132,7 +90,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_output_options(publish)
     publish.set_defaults(func=cmd_publish)
 
-    fixture = commands.add_parser("fixture", help="manage S9 parser-body fixtures")
+    fixture = commands.add_parser("fixture", help="manage parser-body fixtures")
     fixture_commands = fixture.add_subparsers(dest="fixture_command", required=True)
     fixture_create = fixture_commands.add_parser("create", help="initialize a fixture")
     fixture_create.add_argument("--fixture", required=True)
@@ -146,6 +104,7 @@ def build_parser() -> argparse.ArgumentParser:
     fixture_fill.add_argument("--plan-id")
     fixture_fill.add_argument("--allow-network", action="store_true")
     fixture_fill.add_argument("--limit", type=positive_int_type)
+    fixture_fill.add_argument("-j", "--workers", type=positive_int_type)
     fixture_fill.add_argument("--no-progress", action="store_true")
     _add_output_options(fixture_fill)
     fixture_fill.set_defaults(func=cmd_fixture_fill)
@@ -163,6 +122,7 @@ def build_parser() -> argparse.ArgumentParser:
     review_generate.add_argument("--fixture", required=True)
     review_generate.add_argument("--output")
     review_generate.add_argument("--limit", type=positive_int_type)
+    review_generate.add_argument("-j", "--workers", type=positive_int_type)
     review_generate.add_argument("--artifacts", dest="artifacts_root", default="")
     review_generate.add_argument("--json", action="store_true")
     review_generate.add_argument("--no-progress", action="store_true")
@@ -232,7 +192,7 @@ def build_parser() -> argparse.ArgumentParser:
     review_holdout.add_argument("--json", action="store_true")
     review_holdout.set_defaults(func=cmd_review_holdout)
 
-    snapshot = commands.add_parser("snapshot", help="inspect S11 snapshot status")
+    snapshot = commands.add_parser("snapshot", help="inspect snapshot status")
     snapshot_commands = snapshot.add_subparsers(dest="snapshot_command", required=True)
     snapshot_status = snapshot_commands.add_parser(
         "status", help="show snapshot status"

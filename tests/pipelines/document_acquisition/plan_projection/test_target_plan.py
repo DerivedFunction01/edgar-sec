@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -41,8 +42,10 @@ from tests.pipelines.document_acquisition.plan_projection.plan_fixture import (
 def target_plan_factory(tmp_path):
     def build(
         rows: list[dict[str, Any]] | None = None,
+        *,
+        has_inventory_snapshot: bool = True,
     ) -> tuple[Path, list[dict[str, Any]]]:
-        inventory_digest = "b" * 64
+        inventory_digest = "b" * 64 if has_inventory_snapshot else None
         identity = {
             "bundle_schema_version": target_plan_bundle_schema_version(),
             "target_schema_version": TARGET_SCHEMA_VERSION,
@@ -54,13 +57,25 @@ def target_plan_factory(tmp_path):
             "profile_digest": "c" * 64,
             "catalog_plan_id": "catalog-fixture",
             "catalog_plan_digest": "a" * 64,
-            "inventory_snapshot_id": "snapshot-fixture",
+            "inventory_snapshot_id": (
+                "snapshot-fixture" if has_inventory_snapshot else None
+            ),
             "inventory_snapshot_digest": inventory_digest,
         }
         plan_id = f"dplan_{canonical_hash(identity)[:32]}"
         plan_root = tmp_path / plan_id
         plan_root.mkdir(parents=True)
         target_rows = rows or _rows(plan_id)
+        for row in target_rows:
+            row["target_id"] = canonical_hash(
+                [
+                    plan_id,
+                    row["accession"],
+                    row["request_id"],
+                    row["inventory_entry_id"],
+                    row["status"],
+                ]
+            )
         write_plan_bundle(plan_root, plan_id, identity, target_rows)
         return plan_root, target_rows
 
@@ -527,6 +542,66 @@ def _replace_part(root: Path, rows: list[dict[str, Any]]) -> None:
         for descriptor in manifest["parts"]
         if descriptor["relation"] == "targets"
     )
+    manifest["target_row_count"] = len(rows)
+    manifest["status_counts"] = dict(Counter(row["status"] for row in rows))
+    manifest["origin_counts"] = dict(Counter(row["source_origin"] for row in rows))
+    target_descriptor["rows"] = len(rows)
     target_descriptor["byte_size"] = part.stat().st_size
     target_descriptor["sha256"] = file_sha256(part)
     _seal_manifest(manifest, root)
+
+
+def test_load_work_order_lazy_index_trigger_projection(
+    target_plan_factory, tmp_path
+) -> None:
+    base_rows = _rows("test_plan")
+    custom_rows = [
+        dict(
+            base_rows[0],
+            source_origin="catalog_direct",
+            target_role="primary",
+            target_type="primary",
+            catalog_direct_selection="exact_form_with_lazy_index",
+            inventory_entry_id=None,
+        ),
+        dict(
+            base_rows[1],
+            source_origin="catalog_direct",
+            target_role="primary",
+            target_type="primary",
+            catalog_direct_selection="submitted_primary",
+            inventory_entry_id=None,
+        ),
+    ]
+    plan_root, _ = target_plan_factory(custom_rows, has_inventory_snapshot=False)
+    out = load_acquisition_work_order(plan_root, tmp_path / "work_order.parquet")
+    table = pq.read_table(out.parquet_path)
+    triggers = table.column("lazy_index_trigger_id").to_pylist()
+    versions = table.column("lazy_index_trigger_version").to_pylist()
+    assert triggers[0] == "10-K.exact_form"
+    assert versions[0] == "1"
+    assert triggers[1] is None
+    assert versions[1] is None
+
+
+def test_load_work_order_numeric_form_hive_partition_safety(
+    target_plan_factory, tmp_path
+) -> None:
+    """Numeric form partition names must not be inferred as INT64 in DuckDB."""
+    base_rows = _rows("test_plan")
+    custom_rows = [
+        dict(
+            base_rows[0],
+            form="4",
+            source_origin="catalog_direct",
+            target_role="primary",
+            target_type="primary",
+            catalog_direct_selection="submitted_primary",
+            inventory_entry_id=None,
+        ),
+    ]
+    plan_root, _ = target_plan_factory(custom_rows, has_inventory_snapshot=False)
+    out = load_acquisition_work_order(plan_root, tmp_path / "work_order.parquet")
+    table = pq.read_table(out.parquet_path)
+    assert table.column("form").to_pylist() == ["4"]
+    assert table.column("lazy_index_trigger_id").to_pylist() == [None]

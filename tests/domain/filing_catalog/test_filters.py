@@ -9,13 +9,17 @@ import pytest
 from edgar_sec.domain.filing_catalog.filters import (
     DEFAULT_DOCUMENT_SUFFIXES,
     AbsoluteDateClause,
+    DateInterval,
+    DateRange,
     RecurringDateClause,
     date_selection_from_json,
+    date_selection_matches,
     date_selection_to_json,
     format_date_selection,
     normalize_date_selection,
     normalize_suffixes,
     parse_date_selection,
+    resolve_date_selection,
 )
 
 
@@ -357,3 +361,78 @@ def test_a_persisted_selection_is_validated_on_construction() -> None:
         RecurringDateClause("month", (13,), None, None)
     with pytest.raises(ValueError, match="granularity must be one of"):
         RecurringDateClause("decade", (1,), None, None)
+
+
+def test_date_range_factories_and_conversion() -> None:
+    r_year = DateRange.year(2023)
+    assert r_year.start == date(2023, 1, 1)
+    assert r_year.end == date(2023, 12, 31)
+    assert r_year.to_clause() == AbsoluteDateClause(
+        date(2023, 1, 1), date(2023, 12, 31)
+    )
+
+    r_between = DateRange.between(2020, 2024)
+    assert r_between.start == date(2020, 1, 1)
+    assert r_between.end == date(2024, 12, 31)
+
+    r_since = DateRange.since("2023-06-01")
+    assert r_since.start == date(2023, 6, 1)
+    assert r_since.end is None
+
+    r_until = DateRange.until("2023-06-01")
+    assert r_until.start is None
+    assert r_until.end == date(2023, 6, 1)
+
+
+def test_date_interval_factories_and_conversion() -> None:
+    q = DateInterval.quarters(1)
+    assert q.granularity == "quarter"
+    assert q.values == (1,)
+    assert q.start_year is None
+    assert q.to_clause() == RecurringDateClause("quarter", (1,), None, None)
+
+    q_span = DateInterval.quarters(1, 3, years=(2015, 2020))
+    assert q_span.values == (1, 3)
+    assert q_span.start_year == 2015
+    assert q_span.end_year == 2020
+
+    m = DateInterval.months(12)
+    assert m.granularity == "month"
+    assert m.values == (12,)
+
+
+def test_resolve_date_selection_polymorphism() -> None:
+    assert resolve_date_selection(None) == ()
+    assert resolve_date_selection("") == ()
+
+    sel_range = resolve_date_selection(DateRange.year(2023))
+    assert sel_range == (AbsoluteDateClause(date(2023, 1, 1), date(2023, 12, 31)),)
+
+    sel_interval = resolve_date_selection(DateInterval.quarters(1))
+    assert sel_interval == (RecurringDateClause("quarter", (1,), None, None),)
+
+    sel_date = resolve_date_selection(date(2023, 5, 1))
+    assert sel_date == (AbsoluteDateClause(date(2023, 5, 1), date(2023, 5, 1)),)
+
+    sel_tuple = resolve_date_selection((date(2023, 1, 1), date(2023, 12, 31)))
+    assert sel_tuple == (AbsoluteDateClause(date(2023, 1, 1), date(2023, 12, 31)),)
+
+    sel_str = resolve_date_selection("2023-01-01..2023-12-31")
+    assert sel_str == (AbsoluteDateClause(date(2023, 1, 1), date(2023, 12, 31)),)
+
+
+def test_date_selection_matches() -> None:
+    """Validate date_selection_matches against ranges and intervals."""
+    sel_range = resolve_date_selection(DateRange.between(2020, 2022))
+    assert date_selection_matches(sel_range, "2020-05-15")
+    assert date_selection_matches(sel_range, "2022-12-31")
+    assert not date_selection_matches(sel_range, "2019-12-31")
+    assert not date_selection_matches(sel_range, "2023-01-01")
+    assert not date_selection_matches(sel_range, None)
+    assert not date_selection_matches(sel_range, "invalid-date")
+
+    sel_q1 = resolve_date_selection(DateInterval.quarters(1))
+    assert date_selection_matches(sel_q1, "2022-02-15")
+    assert not date_selection_matches(sel_q1, "2022-05-15")
+
+    assert date_selection_matches((), "2022-05-15")

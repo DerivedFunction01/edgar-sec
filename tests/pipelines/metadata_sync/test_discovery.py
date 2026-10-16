@@ -68,11 +68,17 @@ def test_plan_summary_reports_size_and_progress(tmp_path: Path) -> None:
 
 def test_list_plans_is_newest_first(tmp_path: Path) -> None:
     metadata = resolve_metadata_paths(tmp_path)
+    import os
+
     first = _write_plan(metadata, chunk_size=4, roster_ciks=("0000001985",))
     second = _write_plan(
         metadata, chunk_size=2, roster_ciks=("0000001985", "0000001761")
     )
     third = _write_plan(metadata, chunk_size=1, roster_ciks=("0000000020",))
+
+    os.utime(metadata.plan_dir(first), (1_000_000, 1_000_000))
+    os.utime(metadata.plan_dir(second), (2_000_000, 2_000_000))
+    os.utime(metadata.plan_dir(third), (3_000_000, 3_000_000))
 
     listed = [item["plan_id"] for item in list_plans(metadata)]
     assert set(listed) == {first, second, third}

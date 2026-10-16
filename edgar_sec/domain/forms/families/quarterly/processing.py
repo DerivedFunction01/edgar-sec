@@ -21,6 +21,11 @@ PROFILE = DocumentProcessingProfile(
     ),
     report_class=QuarterlyReport,
     preferred_operation=AcquisitionOperation.RENDER_TO_TXT,
+    review_analyzer="edgar_sec.engine.forms.analysis",
+    has_toc=True,
+    has_sections=True,
+    has_notes=True,
+    has_xbrl=True,
 )
 
 __all__ = ["PROFILE"]

@@ -20,22 +20,22 @@ the details below are the layer-level contracts only.
 - [`filing_catalog/`](filing_catalog/README.md) — Phase 2. Zero network.
   Materializes a catalog snapshot from a Phase 1 snapshot and publishes
   immutable, content-addressed target plans for the next phase to consume.
-- [`document_inventory/`](document_inventory/README.md) — Phase S1–S5 in progress.
+- [`document_inventory/`](document_inventory/README.md) — Phase in progress.
   Projects selected cohorts, captures and replays index pages, builds parser-review
-  artifacts, and contains a streamed pre-fetch projection, path-backed S4, and bounded
-  S5 anti-join primitives. Its [`run_state/`](document_inventory/run_state/README.md)
+  artifacts, and contains a streamed pre-fetch projection and bounded
+  anti-join primitives. Its [`run_state/`](document_inventory/run_state/README.md)
   package owns run identity, locks, and status; [`review_artifacts/`](document_inventory/review_artifacts/README.md)
   owns persisted review output and the shared review adapter.
-- [`document_planning/`](document_planning/README.md) — offline S6 target planning
+- [`document_planning/`](document_planning/README.md) — offline target planning
   from a digest-pinned filing-catalog plan and an optional immutable inventory
   snapshot. It publishes no acquisition work.
-- [`document_acquisition/`](document_acquisition/README.md) — S9 work-order projection,
-  bounded SEC acquisition, fixture management, partial offline S10 processing, and
-  shared fixture-backed review. S11 publication remains gated. Its [`commands/`](document_acquisition/commands/README.md)
+- [`document_acquisition/`](document_acquisition/README.md) — work-order projection,
+  bounded SEC acquisition, fixture management, partial offline processing, and
+  shared fixture-backed review. Publication remains gated. Its [`commands/`](document_acquisition/commands/README.md)
   package owns CLI handlers; [`processing/`](document_acquisition/processing/README.md)
   owns per-target processing and run coordination; [`project/`](document_acquisition/project/README.md)
   owns result projection models; [`plan_projection/`](document_acquisition/plan_projection/README.md)
-  validates S6 bundles and creates bounded work orders; [`fixture_store/`](document_acquisition/fixture_store/README.md)
+  validates bundles and creates bounded work orders; [`fixture_store/`](document_acquisition/fixture_store/README.md)
   owns compressed response evidence and replay; [`run_state/`](document_acquisition/run_state/README.md)
   owns the per-run SQLite ledger and locks; [`review_artifacts/`](document_acquisition/review_artifacts/README.md)
   owns review generation, its acquisition adapter, and shared-layout processing review evidence.

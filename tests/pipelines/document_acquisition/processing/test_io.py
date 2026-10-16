@@ -5,56 +5,26 @@ from pathlib import Path
 
 import pytest
 
-from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 from edgar_sec.pipelines.document_acquisition.processing.io import (
-    DEFAULT_PROCESSING_BUDGETS,
-    ProcessingBudgetExceeded,
-    ProcessingBudgetPolicy,
-    ProcessingBudgetRegistry,
     ProcessingIOError,
-    admit_processing_budget,
     read_bounded_source,
     stage_derived_output,
 )
 
 
-def test_route_handler_budget_bounds_input_and_working_set(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    import edgar_sec.pipelines.document_acquisition.processing.io as processing_io
-
+def test_read_bounded_source_verifies_size_and_content(tmp_path: Path) -> None:
     source = b"verified source"
     path = tmp_path / "selected.bin"
     path.write_bytes(source)
-    monkeypatch.setattr(
-        processing_io,
-        "available_memory_bytes",
-        lambda: 256,
-    )
-    policy = ProcessingBudgetPolicy(
-        budget_version="test-v1",
-        route=DocumentRoute.TEXT,
-        handler_id="normalize_document",
-        handler_version="1",
-        max_input_bytes=64,
-        max_output_bytes=64,
-        working_set_reservation_bytes=16,
-    )
-    registry = ProcessingBudgetRegistry((policy,))
 
-    assert registry.get(DocumentRoute.TEXT, "normalize_document", "1") == policy
-    assert DEFAULT_PROCESSING_BUDGETS.policies == ()
-    assert admit_processing_budget(policy, len(source))
-    assert not admit_processing_budget(policy, policy.max_input_bytes + 1)
-    assert not admit_processing_budget(policy, len(source), available_bytes=32)
+    assert read_bounded_source(path, len(source)) == source
 
-    assert (
-        read_bounded_source(path, len(source), max_input_bytes=policy.max_input_bytes)
-        == source
-    )
-    with pytest.raises(ProcessingBudgetExceeded, match="input budget"):
-        read_bounded_source(path, len(source), max_input_bytes=len(source) - 1)
+    with pytest.raises(ProcessingIOError, match="size or file type differs"):
+        read_bounded_source(path, len(source) + 1)
+
+    with pytest.raises(ProcessingIOError, match="size is invalid"):
+        read_bounded_source(path, -1)
 
 
 def test_derived_output_stages_atomically_with_verified_identity(

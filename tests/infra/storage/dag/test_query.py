@@ -172,9 +172,10 @@ def test_query_point_upsert_precedence(tmp_path: Path) -> None:
     con = connect()
 
     # Query accession that was updated in d1
-    rows = query_point(con, SPEC, lineage, root, "0000000001-25-000001")
-    assert len(rows) == 1
-    assert rows[0]["val"] == 999  # delta update won over c0
+    table = query_point(con, SPEC, lineage, root, "0000000001-25-000001")
+    assert isinstance(table, pa.Table)
+    assert table.num_rows == 1
+    assert table["val"][0].as_py() == 999  # delta update won over c0
 
 
 def test_query_point_by_filing_cik(tmp_path: Path) -> None:
@@ -183,9 +184,10 @@ def test_query_point_by_filing_cik(tmp_path: Path) -> None:
     con = connect()
 
     # Query by filing_cik with automatic accession range derivation
-    rows = query_point(con, SPEC, lineage, root, "0000000002", key_column="filing_cik")
-    assert len(rows) == 2
-    assert {r["accession"] for r in rows} == {
+    table = query_point(con, SPEC, lineage, root, "0000000002", key_column="filing_cik")
+    assert isinstance(table, pa.Table)
+    assert table.num_rows == 2
+    assert set(table["accession"].to_pylist()) == {
         "0000000002-25-000001",
         "0000000002-25-000002",
     }
@@ -345,7 +347,7 @@ def test_query_point_scoped_mask_supersession(tmp_path: Path) -> None:
 
     lineage = walk_lineage(tmp_path, "d1")
     con = connect()
-    rows = query_point(
+    table = query_point(
         con,
         entry_spec,
         lineage,
@@ -353,5 +355,6 @@ def test_query_point_scoped_mask_supersession(tmp_path: Path) -> None:
         "0000000001-25-000001",
         all_specs=(SPEC, entry_spec),
     )
-    assert len(rows) == 1
-    assert rows[0]["entry_id"] == "e3"
+    assert isinstance(table, pa.Table)
+    assert table.num_rows == 1
+    assert table["entry_id"][0].as_py() == "e3"

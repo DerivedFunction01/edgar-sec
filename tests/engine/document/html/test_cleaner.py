@@ -130,6 +130,15 @@ def test_normalize_font_qualified_glyphs() -> None:
     assert "[ ]" in normalized_unchecked
 
 
+def test_normalize_font_qualified_numeric_glyph_entities() -> None:
+    normalized = normalize_font_qualified_glyphs(
+        '<font face="Wingdings">&#120;</font>'
+        '<span style="font-family: Webdings">&#x6f;</span>'
+    )
+    assert normalized.count("[X]") == 1
+    assert normalized.count("[ ]") == 1
+
+
 def test_normalize_font_qualified_glyphs_leaves_ordinary_fonts_alone() -> None:
     text = '<p style="font-family: Arial">Quarterly results</p>'
     assert normalize_font_qualified_glyphs(text) == text

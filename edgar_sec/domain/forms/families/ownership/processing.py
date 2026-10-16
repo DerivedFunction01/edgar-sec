@@ -19,6 +19,7 @@ PROFILE_FORM_3 = DocumentProcessingProfile(
     ),
     report_class=OwnershipReport,
     preferred_operation=AcquisitionOperation.RENDER_TO_XML,
+    review_analyzer="edgar_sec.engine.forms.ownership.analysis",
 )
 
 PROFILE_FORM_4 = DocumentProcessingProfile(
@@ -32,6 +33,7 @@ PROFILE_FORM_4 = DocumentProcessingProfile(
     ),
     report_class=OwnershipReport,
     preferred_operation=AcquisitionOperation.RENDER_TO_XML,
+    review_analyzer="edgar_sec.engine.forms.ownership.analysis",
 )
 
 PROFILE_FORM_5 = DocumentProcessingProfile(
@@ -45,6 +47,8 @@ PROFILE_FORM_5 = DocumentProcessingProfile(
     ),
     report_class=OwnershipReport,
     preferred_operation=AcquisitionOperation.RENDER_TO_XML,
+    review_analyzer="edgar_sec.engine.forms.ownership.analysis",
 )
+
 
 __all__ = ["PROFILE_FORM_3", "PROFILE_FORM_4", "PROFILE_FORM_5"]

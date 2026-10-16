@@ -22,7 +22,7 @@ artifacts and do not publish acquisition snapshots.
 - **Digest scope**: Artifact and output digests detect inconsistency or accidental
   corruption, not malicious rewrites by someone who can also edit the manifest. A trusted
   signature or externally pinned digest is required for authenticity.
-- **No publication**: Review outputs are not S9/S11 result schemas or publisher input.
+- **No publication**: Review outputs are not result schemas or publisher input.
 
 ## Usage examples
 

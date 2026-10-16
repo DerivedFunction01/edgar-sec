@@ -1,4 +1,4 @@
-"""S10 document role assessment data contract."""
+"""Document role assessment data contract."""
 
 from __future__ import annotations
 
@@ -37,7 +37,7 @@ class EvidenceSpan:
 
 @dataclass(frozen=True, slots=True)
 class DocumentRoleAssessment:
-    """S10 role-assessment result for one document body."""
+    """Role-assessment result for one document body."""
 
     expected_role: Literal["primary", "exhibit", "schedule"]
     expected_type: str

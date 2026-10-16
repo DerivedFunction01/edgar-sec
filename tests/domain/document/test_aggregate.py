@@ -96,3 +96,44 @@ def test_filing_aggregate_non_standard_accessors(tmp_path: Path) -> None:
     assert filing.open_document("subsidiaries.htm") == b"content of subsidiaries.htm"
     assert filing.render() == "NORMALIZED 10-K TEXT"
     assert filing.as_report().text() == "NORMALIZED 10-K TEXT"
+
+
+def test_filing_aggregate_payload_metadata() -> None:
+    filing_form4 = FilingAggregate(
+        accession=AccessionNumber.from_any("0001181431-05-056000"),
+        primary_cik=Cik(109694),
+        ciks=(Cik(109694),),
+        form="4",
+        filing_date="2005-09-15",
+        primary_document_path="xslF345X01/form4.xml",
+    )
+    assert filing_form4.raw_format == "xml"
+    assert filing_form4.raw_content_type == "text/xml"
+    assert filing_form4.render_format == "xml"
+    assert filing_form4.render_operation == "render_to_xml"
+
+    filing_legacy = FilingAggregate(
+        accession=AccessionNumber.from_any("0000950123-01-000001"),
+        primary_cik=Cik(100),
+        ciks=(Cik(100),),
+        form="4",
+        filing_date="2001-01-01",
+        primary_document_path="form4.htm",
+    )
+    assert filing_legacy.raw_format == "htm"
+    assert filing_legacy.raw_content_type == "text/html"
+    assert filing_legacy.render_format == "xml"
+    assert filing_legacy.render_operation == "render_to_xml"
+
+
+def test_filing_attachment_payload_metadata() -> None:
+    attachment = FilingAttachment(
+        attachment_id="att-pdf",
+        document_type="EX-99.1",
+        filename="presentation.pdf",
+        url="https://sec.gov/ex99.pdf",
+    )
+    assert attachment.raw_format == "pdf"
+    assert attachment.raw_content_type == "application/pdf"
+    assert attachment.render_format == "pdf"
+    assert attachment.raw_metadata.is_binary

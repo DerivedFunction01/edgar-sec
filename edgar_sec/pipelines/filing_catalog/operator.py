@@ -62,11 +62,35 @@ def _namespace(
     parent_plan: str = "",
     target_units: int = 0,
     branch: str = "main",
+    suffixes: str = "",
+    limits: str = "",
+    xbrl_only: bool = False,
 ) -> argparse.Namespace:
     """Build a namespace with every field the dispatched command reads.
     Every ``cmd_*`` dereferences each field; omitting one raises inside the wizard.
     ``artifacts`` defaults to empty -- the configured project root, not an override.
     """
+    limit = None
+    accession_limit = None
+    min_exhibit_like = None
+    if limits.strip():
+        parts = [p.strip() for p in limits.split(",")]
+        if len(parts) >= 1 and parts[0]:
+            try:
+                accession_limit = int(parts[0])
+            except ValueError:
+                pass
+        if len(parts) >= 2 and parts[1]:
+            try:
+                limit = int(parts[1])
+            except ValueError:
+                pass
+        if len(parts) >= 3 and parts[2]:
+            try:
+                min_exhibit_like = int(parts[2])
+            except ValueError:
+                pass
+
     return argparse.Namespace(
         command=command,
         catalog=catalog,
@@ -74,13 +98,13 @@ def _namespace(
         scope=scope,
         policy=policy,
         auto_policy=False,
-        suffixes=[],
+        suffixes=[s for s in suffixes.replace(",", " ").split() if s],
         cohort=cohort,
         seed_cohort=seed_cohort,
         dates=dates,
-        limit=None,
-        accession_limit=None,
-        min_exhibit_like=None,
+        limit=limit,
+        accession_limit=accession_limit,
+        min_exhibit_like=min_exhibit_like,
         source="",
         source_snapshot="",
         source_artifacts="",
@@ -88,6 +112,7 @@ def _namespace(
         parent_plan=parent_plan,
         target_units=target_units,
         branch=branch,
+        xbrl_only=xbrl_only,
     )
 
 
@@ -211,7 +236,25 @@ def _action_plan() -> None:
     catalog = _ask_catalog()
     forms = prompt_text("Forms (space separated, blank for all)", "")
     dates = _ask_dates()
-    cmd_plan(_namespace("plan", catalog=catalog, forms=forms, dates=dates))
+    suffixes = prompt_text("Suffixes (e.g. .htm .txt, blank for all)", "")
+    limits = prompt_text(
+        "Limits: accession_limit,limit,min_exhibit_like (e.g. 100,,5 or blank)", ""
+    )
+    xbrl_only = (
+        prompt_text("XBRL-only (true/false, default false)", "false").strip().lower()
+        == "true"
+    )
+    cmd_plan(
+        _namespace(
+            "plan",
+            catalog=catalog,
+            forms=forms,
+            dates=dates,
+            suffixes=suffixes,
+            limits=limits,
+            xbrl_only=xbrl_only,
+        )
+    )
 
 
 def _draft_path(paths: FilingCatalogPaths, name: str) -> Path:

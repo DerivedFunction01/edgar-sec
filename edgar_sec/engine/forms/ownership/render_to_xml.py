@@ -14,10 +14,13 @@ from edgar_sec.engine.forms.ownership.grid_tables import (
     parse_table_ii_rows,
 )
 from edgar_sec.domain.forms.families.ownership.models import Form4Metadata
+from edgar_sec.engine.document.html.cleaner import (
+    strip_decorative_presentation_attributes,
+)
 from edgar_sec.engine.forms.ownership.metadata_parser import parse_metadata
 from edgar_sec.engine.forms.ownership.sections import (
-    Form4Sections,
-    partition_form4_tables,
+    OwnershipSections,
+    partition_ownership_tables,
 )
 
 if TYPE_CHECKING:
@@ -186,7 +189,7 @@ def _build_derivative_xml(root: ET.Element, rows: list[DerivativeTransaction]) -
             _add_valued_elem(own_el, "directOrIndirectOwnership", r.direct_or_indirect)
 
 
-def _build_unparsed_sections_xml(root: ET.Element, sections: Form4Sections) -> None:
+def _build_unparsed_sections_xml(root: ET.Element, sections: OwnershipSections) -> None:
     unparsed_nodes = list(sections.unparsed)
     if not unparsed_nodes:
         return
@@ -196,7 +199,8 @@ def _build_unparsed_sections_xml(root: ET.Element, sections: Form4Sections) -> N
         unparsed_el.attrib["tableIndex"] = str(sec.table_index)
         unparsed_el.attrib["role"] = str(sec.role)
         raw_html = getattr(sec.raw_node, "html", None)
-        unparsed_el.text = raw_html() if callable(raw_html) else str(raw_html or "")
+        raw_str = raw_html() if callable(raw_html) else str(raw_html or "")
+        unparsed_el.text = strip_decorative_presentation_attributes(raw_str)
 
 
 def render_form4_to_xml(
@@ -209,7 +213,7 @@ def render_form4_to_xml(
         return raw_bytes
 
     text = raw_bytes.decode("utf-8", errors="replace")
-    sections = partition_form4_tables(text)
+    sections = partition_ownership_tables(text)
 
     metadata = parse_metadata(sections.boxes_1_to_7, sections.signatures)
     table_i_rows = parse_table_i_rows(sections.table_i)
@@ -241,6 +245,7 @@ def render_form4_to_xml(
 
     _build_unparsed_sections_xml(root, sections)
 
+    ET.indent(root, space="    ")
     xml_bytes = ET.tostring(root, encoding="utf-8", xml_declaration=True)
     return xml_bytes
 

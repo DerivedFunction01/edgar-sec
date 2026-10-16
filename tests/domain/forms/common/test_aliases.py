@@ -49,7 +49,7 @@ def test_all_suffixes_collapse_to_original() -> None:
 
 
 def test_unknown_form_returns_none() -> None:
-    assert resolve_alias("S-1") is None
+    assert resolve_alias("Not a Form") is None
     assert resolve_alias(None) is None
     assert resolve_alias("") is None
 

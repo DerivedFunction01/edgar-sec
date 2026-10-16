@@ -1,4 +1,4 @@
-"""Acquire one validated S9 target with bounded response staging."""
+"""Acquire one validated target with bounded response staging."""
 
 from __future__ import annotations
 
@@ -13,27 +13,25 @@ from urllib.parse import urlsplit
 from edgar_sec.domain.document_inventory.models import IndexPageInput
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import full_submission_url_for, validate_archive_url
+from edgar_sec.engine.document.screening import screen_candidate_document
 from edgar_sec.engine.document.unpacking.streaming import (
     BundleExtraction,
     extract_bundle_sequence,
-    screen_sgml_document_type,
 )
 from edgar_sec.engine.index_pages.parser import parse_html_index
+from edgar_sec.foundation.io import DEFAULT_IO_CHUNK_SIZE
 from edgar_sec.infra.sec_http.streaming import (
     StreamFailure,
     StreamResult,
     StreamedResponse,
 )
-from edgar_sec.pipelines.document_acquisition.index_selection import (
-    IndexSelection,
-    select_index_entry,
-)
 from edgar_sec.pipelines.document_acquisition.attempts import (
     build_attempt as _attempt,
     relative_path as _relative,
 )
-from edgar_sec.pipelines.document_acquisition.resolution import (
-    build_resolution as _resolution,
+from edgar_sec.pipelines.document_acquisition.index_selection import (
+    IndexSelection,
+    select_index_entry,
 )
 from edgar_sec.pipelines.document_acquisition.models import (
     AcquisitionAttempt,
@@ -42,6 +40,9 @@ from edgar_sec.pipelines.document_acquisition.models import (
     AcquisitionStatus,
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
+from edgar_sec.pipelines.document_acquisition.resolution import (
+    build_resolution as _resolution,
+)
 from edgar_sec.pipelines.document_acquisition.run_state.models import TargetState
 
 
@@ -113,18 +114,12 @@ def _stream(
 
 
 def _has_lazy_index_trigger(row: dict[str, object]) -> bool:
-    trigger_id = row["lazy_index_trigger_id"]
-    trigger_version = row["lazy_index_trigger_version"]
-    if (trigger_id is None) != (trigger_version is None):
+    t_id, t_ver = row["lazy_index_trigger_id"], row["lazy_index_trigger_version"]
+    if (t_id is None) != (t_ver is None):
         raise ValueError("lazy-index trigger ID and version must be pinned together")
-    if trigger_id is None:
+    if t_id is None:
         return False
-    if (
-        not isinstance(trigger_id, str)
-        or not trigger_id
-        or not isinstance(trigger_version, str)
-        or not trigger_version
-    ):
+    if not (isinstance(t_id, str) and t_id and isinstance(t_ver, str) and t_ver):
         raise ValueError("lazy-index trigger pin is invalid")
     return True
 
@@ -190,9 +185,7 @@ def acquire_target(
     retain_evidence = (
         policy.retain_response_evidence
         and row["target_role"] == "primary"
-        and (
-            row["retrieval_mode"] == "bundle_sequence" or (_has_lazy_index_trigger(row))
-        )
+        and (row["retrieval_mode"] == "bundle_sequence" or _has_lazy_index_trigger(row))
     )
     source_path = _new_path(staging_root, "response")
     selected_path: Path | None = None
@@ -236,20 +229,20 @@ def acquire_target(
             expected_source_sha256=response.sha256,
         )
         if isinstance(extracted, BundleExtraction):
-            should_screen_sgml = _has_lazy_index_trigger(row)
-            screen_result = (
-                screen_sgml_document_type(
-                    extracted.selected.document_type, str(row["form"])
+            screen = (
+                screen_candidate_document(
+                    str(row["form"]),
+                    observed_sgml_type=extracted.selected.document_type,
                 )
-                if should_screen_sgml
-                else "form_match"
+                if _has_lazy_index_trigger(row)
+                else None
             )
-            if screen_result != "form_match":
+            if screen is not None and screen.screen_result != "form_match":
                 sgml_recovery = True
                 screen_context = {
-                    "screen_kind": "sgml_type",
-                    "screen_result": screen_result,
-                    "observed_body_type": extracted.selected.document_type,
+                    "screen_kind": screen.screen_kind,
+                    "screen_result": screen.screen_result,
+                    "observed_body_type": screen.observed_body_type,
                 }
                 selected_path.unlink(missing_ok=True)
             else:
@@ -316,7 +309,31 @@ def acquire_target(
                 None,
             )
 
-    lazy = sgml_recovery or (_has_lazy_index_trigger(row) and row["sequence"] == 1)
+    direct_screen_recovery = False
+    if (
+        row["retrieval_mode"] == "direct_url"
+        and _has_lazy_index_trigger(row)
+        and row["sequence"] == 1
+    ):
+        head = b""
+        try:
+            with source_path.open("rb") as f:
+                head = f.read(DEFAULT_IO_CHUNK_SIZE)
+        except OSError:
+            pass
+        screen = screen_candidate_document(
+            str(row["form"]),
+            filename=urlsplit(requested_url).path.rsplit("/", 1)[-1],
+            raw_content=head,
+        )
+        if screen.screen_result != "form_match":
+            direct_screen_recovery = True
+            screen_context = {
+                "screen_kind": screen.screen_kind,
+                "screen_result": screen.screen_result,
+                "observed_body_type": screen.observed_body_type,
+            }
+    lazy = sgml_recovery or direct_screen_recovery
     if not lazy:
         selected_path = source_path
         attempt = _attempt(
@@ -570,22 +587,15 @@ def acquire_target(
                 "failed",
                 **screen_context,
             )
-            return (
-                attempts,
-                _outcome(
-                    state.target_id,
-                    attempts,
-                    status,
-                    error_code=extracted.code if status == "failed" else None,
-                ),
-                resolution,
-                _utc(clock),
-            )
+            err = extracted.code if status == "failed" else None
+            outcome = _outcome(state.target_id, attempts, status, error_code=err)
+            return attempts, outcome, resolution, _utc(clock)
         if _has_lazy_index_trigger(row):
-            screen_result = screen_sgml_document_type(
-                extracted.selected.document_type, str(row["form"])
+            screen = screen_candidate_document(
+                str(row["form"]),
+                observed_sgml_type=extracted.selected.document_type,
             )
-            if screen_result != "form_match":
+            if screen.screen_result != "form_match":
                 selected_path.unlink(missing_ok=True)
                 body_attempt = _attempt(
                     target_id=state.target_id,
@@ -601,7 +611,7 @@ def acquire_target(
                     outcome="failed",
                     error_code=(
                         "document_type_mismatch"
-                        if screen_result == "type_mismatch"
+                        if screen.screen_result == "type_mismatch"
                         else "document_type_unverifiable"
                     ),
                 )
@@ -671,10 +681,7 @@ def acquire_target(
             return (
                 attempts,
                 _outcome(
-                    state.target_id,
-                    attempts,
-                    "failed",
-                    error_code="source_mismatch",
+                    state.target_id, attempts, "failed", error_code="source_mismatch"
                 ),
                 resolution,
                 _utc(clock),
@@ -754,12 +761,7 @@ def acquire_target(
         )
         return (
             attempts,
-            _outcome(
-                state.target_id,
-                attempts,
-                "failed",
-                error_code="source_mismatch",
-            ),
+            _outcome(state.target_id, attempts, "failed", error_code="source_mismatch"),
             resolution,
             _utc(clock),
         )

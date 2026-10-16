@@ -1,1 +1,1 @@
-"""S9 acquisition path and contract foundation."""
+"""Acquisition path and contract foundation."""

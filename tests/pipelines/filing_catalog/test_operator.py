@@ -179,7 +179,20 @@ def test_every_prompted_action_builds_a_usable_namespace(
         return 0
 
     # In menu order; the counts are why each action's answers appear where they do.
-    answers = iter(["cat-1", "10-K", "@Q1[1999..2001]", "cat-2", "1", "1", "5000"])
+    answers = iter(
+        [
+            "cat-1",
+            "10-K",
+            "@Q1[1999..2001]",
+            "",
+            "",
+            "",
+            "cat-2",
+            "1",
+            "1",
+            "5000",
+        ]
+    )
     monkeypatch.setattr("builtins.input", lambda _="": next(answers))
     monkeypatch.setattr(operator, "discover_catalogs", lambda _paths: [])
     monkeypatch.setattr(operator, "discover_policies", lambda _paths: [_DRAFT])

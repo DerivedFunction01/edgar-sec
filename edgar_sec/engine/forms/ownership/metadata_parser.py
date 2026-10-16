@@ -35,8 +35,12 @@ from edgar_sec.engine.forms.ownership.patterns import (
     PROSE_BOILERPLATE_RE,
     SIG_NAME_RE,
     SIG_PERSON_PREFIX_RE,
+    SIG_BOILERPLATE_TERMS,
+    SIG_BY_NAME_RE,
+    SIG_DELEGATED_NAME_RE,
     STATE_ZIP_RE,
     STREET_ANCHOR_RE,
+    SIG_UNDERLINED_NAME_RE,
     STRIP_BOX_NUM_RE,
     SYMBOL_TAIL_RE,
     TICKER_DASH_RE,
@@ -50,16 +54,103 @@ from edgar_sec.foundation.text.dates import (
     parse_date,
 )
 
+_REPORTING_PERSON_PLURAL_RE = re.compile(r"^\(s\)\s*", re.IGNORECASE)
+_OFFICER_TITLE_BOUNDARY_RE = re.compile(
+    r"\b7\.\s*individual|\bindividual or joint", re.IGNORECASE
+)
+_METADATA_TABLE_MARKERS = ("table i", "table ii", "non-derivative")
+_OWNER_TEMPLATE_FIELDS = frozenset(
+    ("last", "first", "middle", "street", "city", "state", "zip")
+)
+_ISSUER_TEMPLATE_FIELDS = frozenset(("issuer name", "ticker or trading symbol"))
+_PERIOD_TEMPLATE_FIELDS = frozenset(("month/day", "year"))
+_OWNER_LABEL_MARKERS = (
+    "issuer name",
+    "trading symbol",
+    "statement for",
+    "4. statement",
+)
+_ISSUER_LOOKAHEAD_EXCLUSIONS = (
+    "statement for",
+    "relationship",
+    "reporting person",
+    "table i",
+)
+_PERIOD_LOOKAHEAD_EXCLUSIONS = ("relationship", "table i")
+
+
+def _is_valid_signature_name(cand: str) -> bool:
+    if not cand or len(cand) > 60:
+        return False
+    lower = cand.lower()
+    if lower.strip(" .:-") in {
+        "date",
+        "signature",
+        "power of attorney",
+        "attorney-in-fact",
+        "attorney in fact",
+    }:
+        return False
+    if any(term in lower for term in SIG_BOILERPLATE_TERMS):
+        return False
+    words = cand.split()
+    return 1 <= len(words) <= 6
+
+
 _ROLE_TARGETS = (
     ("director", "director"),
     ("officer", "officer"),
     ("ten_percent", "10%"),
     ("other", "other"),
 )
+_SIGNATURE_NAME_PATTERNS = (
+    RE_CONFORMED_SIGNER_NAME,
+    SIG_UNDERLINED_NAME_RE,
+    SIG_BY_NAME_RE,
+    SIG_DELEGATED_NAME_RE,
+    SIG_PERSON_PREFIX_RE,
+    SIG_NAME_RE,
+)
 
 
 def _clean_template_artifacts(text: str) -> str:
     return CLEAN_TEMPLATE_RE.sub("\n", text).strip()
+
+
+def _extract_template_fields(
+    rows: tuple[tuple[str, ...], ...],
+    lowered_rows: tuple[tuple[str, ...], ...],
+    accepted_fields: frozenset[str],
+) -> dict[str, str]:
+    fields: dict[str, str] = {}
+    for r_idx, (row, lowered_row) in enumerate(zip(rows, lowered_rows, strict=True)):
+        for index, label in enumerate(lowered_row):
+            field = label.strip("() :.")
+            if field not in accepted_fields or field in fields:
+                continue
+            right_val = next(
+                (cell.strip() for cell in row[index + 1 :] if cell.strip()), ""
+            )
+            right_clean = right_val.strip("() :.").lower()
+            if (
+                not right_val
+                or right_clean in accepted_fields
+                or any(
+                    right_clean.startswith(p)
+                    for p in ("3.", "4.", "5.", "6.", "7.", "table", "irs")
+                )
+            ) and r_idx > 0:
+                above_val = ""
+                if index < len(rows[r_idx - 1]):
+                    above_val = rows[r_idx - 1][index].strip()
+                if not above_val and index > 0 and index - 1 < len(rows[r_idx - 1]):
+                    above_val = rows[r_idx - 1][index - 1].strip()
+                above_clean = above_val.strip("() :.").lower()
+                if above_val and above_clean not in accepted_fields:
+                    fields[field] = above_val
+                    continue
+            fields[field] = right_val
+    return fields
 
 
 def _resolve_checked_roles(role_cell_text: str) -> dict[str, bool]:
@@ -100,13 +191,28 @@ def _resolve_checked_roles(role_cell_text: str) -> dict[str, bool]:
     return solved
 
 
-def _parse_reporting_owner(cell_text: str, role_cell_text: str) -> ReportingOwner:
+def _parse_reporting_owner(
+    cell_text: str,
+    role_cell_text: str,
+    template_fields: dict[str, str] | None = None,
+) -> ReportingOwner:
     name: str | None = None
     street: str | None = None
     city: str | None = None
     state: str | None = None
     zip_code: str | None = None
     irs_number: str | None = None
+
+    fields = template_fields or {}
+    last = fields.get("last")
+    first = fields.get("first")
+    middle = fields.get("middle")
+    if last and first:
+        name = f"{last}, {first}" + (f" {middle}" if middle else "")
+    street = fields.get("street")
+    city = fields.get("city")
+    state = fields.get("state")
+    zip_code = fields.get("zip")
 
     cleaned_cell = _clean_template_artifacts(cell_text)
     raw_lines = cleaned_cell.splitlines()
@@ -128,10 +234,13 @@ def _parse_reporting_owner(cell_text: str, role_cell_text: str) -> ReportingOwne
             and "reporting person" in lower
             and "i.r.s." not in lower
             and "identification" not in lower
+            and "relationship" not in lower
+            and "to issuer" not in lower
         ):
             m = NAME_MATCH_RE.search(line)
             if m:
                 cap = m.group(1).strip(", \n\r*")
+                cap = _REPORTING_PERSON_PLURAL_RE.sub("", cap)
                 if cap and not PROSE_BOILERPLATE_RE.search(cap):
                     name = cap
             continue
@@ -157,7 +266,7 @@ def _parse_reporting_owner(cell_text: str, role_cell_text: str) -> ReportingOwne
             and (has_digits or any(k in lower for k in ("p.o.", "c/o", "penthouse")))
         ) or (has_digits and len(cleaned) < 70 and not STATE_ZIP_RE.search(line)):
             street_candidates.append((idx, cleaned))
-        elif not name and 1 <= len(cleaned.split()) <= 6:
+        elif not name and 1 <= len(cleaned.split()) <= 20 and len(cleaned) <= 160:
             name_candidates.append(cleaned)
 
     if street_candidates:
@@ -176,6 +285,22 @@ def _parse_reporting_owner(cell_text: str, role_cell_text: str) -> ReportingOwne
     roles = _resolve_checked_roles(role_cell_text)
     title_match = TITLE_MATCH_RE.search(role_cell_text)
     officer_title = title_match.group(1).strip() if title_match else None
+    if officer_title:
+        officer_title = _OFFICER_TITLE_BOUNDARY_RE.split(officer_title)[0].strip()
+        if (
+            not officer_title
+            or any(
+                bad in officer_title.lower()
+                for bad in (
+                    "individual or joint",
+                    "check applicable",
+                    "joint/group",
+                    "7.",
+                )
+            )
+            or len(officer_title.split()) > 7
+        ):
+            officer_title = None
 
     return ReportingOwner(
         name=name,
@@ -332,6 +457,16 @@ def parse_metadata(
         )
 
     rows = boxes_section.resolved_grid.rows
+    lowered_rows = tuple(tuple(cell.lower() for cell in row) for row in rows)
+    owner_template_fields = _extract_template_fields(
+        rows, lowered_rows, _OWNER_TEMPLATE_FIELDS
+    )
+    issuer_template_fields = _extract_template_fields(
+        rows, lowered_rows, _ISSUER_TEMPLATE_FIELDS
+    )
+    period_template_fields = _extract_template_fields(
+        rows, lowered_rows, _PERIOD_TEMPLATE_FIELDS
+    )
     owner_lines: list[str] = []
     owner_seen: set[str] = set()
     role_lines: list[str] = []
@@ -339,103 +474,139 @@ def parse_metadata(
     issuer_cell = ""
     period_cell = ""
 
-    for r_idx, row in enumerate(rows):
+    for r_idx, (row, lowered_row) in enumerate(zip(rows, lowered_rows, strict=True)):
         if any(
-            c
-            and (
-                "table i" in (c_low := c.lower())
-                or "table ii" in c_low
-                or "non-derivative" in c_low
-            )
-            for c in row
+            marker in cell_lower
+            for cell_lower in lowered_row
+            for marker in _METADATA_TABLE_MARKERS
         ):
             break
-        for cell in row[:2]:
+        for cell, cell_lower in zip(row[:2], lowered_row[:2], strict=True):
             s = cell.strip()
-            s_low = s.lower()
-            if any(
-                term in s_low
-                for term in (
-                    "issuer name",
-                    "trading symbol",
-                    "statement for",
-                    "4. statement",
-                )
-            ):
+            if any(term in cell_lower for term in _OWNER_LABEL_MARKERS):
                 continue
             if s and s not in owner_seen:
                 owner_seen.add(s)
                 owner_lines.append(s)
-        for c_idx, cell in enumerate(row):
+        for c_idx, (cell, lower) in enumerate(zip(row, lowered_row, strict=True)):
             if not cell:
                 continue
-            lower = cell.lower()
             if "issuer name" in lower and not issuer_cell:
                 cand = cell
-                if r_idx + 1 < len(rows):
-                    below = rows[r_idx + 1][c_idx].strip()
-                    if below and not any(
-                        k in below.lower()
-                        for k in (
-                            "statement for",
-                            "relationship",
-                            "reporting person",
-                            "table i",
+                right = next(
+                    (value.strip() for value in row[c_idx + 1 :] if value.strip()), ""
+                )
+                if right and not any(
+                    marker in right.lower() for marker in _ISSUER_LOOKAHEAD_EXCLUSIONS
+                ):
+                    cand = f"{cell}\n{right}"
+                elif r_idx + 1 < len(rows):
+                    for next_r in range(r_idx + 1, min(r_idx + 4, len(rows))):
+                        below = (
+                            rows[next_r][c_idx].strip()
+                            if c_idx < len(rows[next_r])
+                            else ""
                         )
-                    ):
-                        cand = f"{cell}\n{below}"
+                        below_lower = (
+                            lowered_rows[next_r][c_idx]
+                            if c_idx < len(lowered_rows[next_r])
+                            else ""
+                        )
+                        if below and not any(
+                            marker in below_lower
+                            for marker in _ISSUER_LOOKAHEAD_EXCLUSIONS
+                        ):
+                            cand = f"{cell}\n{below}"
+                            break
                 issuer_cell = cand
             elif (
                 "statement for" in lower or ("4." in lower and "month" in lower)
             ) and not period_cell:
                 cand = cell
                 if r_idx + 1 < len(rows):
-                    below = rows[r_idx + 1][c_idx].strip()
-                    if (
-                        below
-                        and any(char.isdigit() for char in below)
-                        and not any(
-                            k in below.lower() for k in ("relationship", "table i")
+                    for next_r in range(r_idx + 1, min(r_idx + 4, len(rows))):
+                        below = (
+                            rows[next_r][c_idx].strip()
+                            if c_idx < len(rows[next_r])
+                            else ""
                         )
-                    ):
-                        cand = f"{cell}\n{below}"
+                        below_lower = (
+                            lowered_rows[next_r][c_idx]
+                            if c_idx < len(lowered_rows[next_r])
+                            else ""
+                        )
+                        if (
+                            below
+                            and any(char.isdigit() for char in below)
+                            and not any(
+                                marker in below_lower
+                                for marker in _PERIOD_LOOKAHEAD_EXCLUSIONS
+                            )
+                        ):
+                            cand = f"{cell}\n{below}"
+                            break
                 period_cell = cand
-            elif "relationship" in lower or any(
-                term in lower for term in ("director", "officer", "10%")
+        for c_idx, (cell, lower) in enumerate(zip(row, lowered_row, strict=True)):
+            if not cell or not (
+                "relationship" in lower
+                or any(term in lower for term in ("director", "officer", "10%"))
             ):
-                s = cell.strip()
-                if s and s not in role_seen:
-                    role_seen.add(s)
-                    role_lines.append(s)
+                continue
+            role_text = " ".join(
+                value.strip()
+                for value in row[max(0, c_idx - 1) : c_idx + 2]
+                if value.strip()
+            )
+            if role_text and role_text not in role_seen:
+                role_seen.add(role_text)
+                role_lines.append(role_text)
 
-    owner = _parse_reporting_owner("\n".join(owner_lines), "\n".join(role_lines))
+    if not period_cell and period_template_fields.get("month/day"):
+        period_date = period_template_fields["month/day"]
+        year = period_template_fields.get("year")
+        if year and year not in period_date:
+            period_date = f"{period_date} {year}"
+        period_cell = f"Statement for\n{period_date}"
+
+    owner = _parse_reporting_owner(
+        "\n".join(owner_lines), "\n".join(role_lines), owner_template_fields
+    )
     issuer = _parse_issuer(issuer_cell)
+    if issuer_template_fields:
+        issuer = Issuer(
+            name=issuer_template_fields.get("issuer name", issuer.name),
+            trading_symbol=issuer_template_fields.get(
+                "ticker or trading symbol", issuer.trading_symbol
+            ),
+            irs_number=issuer.irs_number,
+        )
     period = _parse_period(period_cell)
 
     sig_name: str | None = None
     sig_date: str | None = None
     if signatures_section is not None:
-        sig_cells: list[str] = [
-            c.strip()
-            for r in signatures_section.resolved_grid.rows
-            for c in r
-            if c and c.strip()
-        ]
-        sig_text = "\n".join(sig_cells)
+        clean_lines: list[str] = []
+        for r in signatures_section.resolved_grid.rows:
+            for c in r:
+                if not c or not c.strip():
+                    continue
+                for line in c.splitlines():
+                    s = line.strip()
+                    if s and not any(
+                        term in s.lower() for term in SIG_BOILERPLATE_TERMS
+                    ):
+                        clean_lines.append(s)
+        sig_text = "\n".join(clean_lines)
         m_date = RE_FULL_DATE.search(sig_text) or NUMERIC_DATE_RE.search(sig_text)
         if m_date:
             sig_date = m_date.group(0).strip()
-        m_sig = RE_CONFORMED_SIGNER_NAME.search(sig_text)
-        if m_sig and (cand_name := m_sig.group(1).strip(" ,.-")):
-            sig_name = cand_name
-        elif (m_pref := SIG_PERSON_PREFIX_RE.search(sig_text)) and (
-            cand_name := m_pref.group(1).strip(" ,.-")
-        ):
-            sig_name = cand_name
-        elif (m_name := SIG_NAME_RE.search(sig_text)) and (
-            cand_name := m_name.group(1).strip(" ,.-")
-        ):
-            sig_name = cand_name
+        for pattern in _SIGNATURE_NAME_PATTERNS:
+            match = pattern.search(sig_text)
+            if match:
+                candidate = match.group(1).strip(" ,.-")
+                if _is_valid_signature_name(candidate):
+                    sig_name = candidate
+                    break
 
     return Form4Metadata(
         issuer=issuer,

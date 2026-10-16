@@ -19,9 +19,10 @@ _FORM_PATTERNS = [
     r"8-?K(?:/[Aa])?",
     r"20-?F(?:/[Aa])?",
     r"6-?K(?:/[Aa])?",
+    r"S-?1(?:/[Aa])?",
 ]
 _FORM_LITERAL_RE = re.compile(
-    rf"(?:['\"]\s*({build_alternation(_FORM_PATTERNS)})\s*['\"]|\bform\s*==\s*['\"](?:10-|20-|8-|6-))",
+    rf"(?:['\"]\s*({build_alternation(_FORM_PATTERNS)})\s*['\"]|\bform\s*==\s*['\"](?:10-|20-|8-|6-|S-))",
     re.IGNORECASE,
 )
 
@@ -29,6 +30,8 @@ _ALLOWED_PATHS = (
     "edgar_sec/domain/forms/families/annual/",
     "edgar_sec/domain/forms/families/quarterly/",
     "edgar_sec/domain/forms/families/current/",
+    "edgar_sec/domain/forms/families/registration/",
+    "edgar_sec/engine/forms/registration/",
     "tests/",
     "edgar_sec/domain/forms/common/aliases.py",
     "edgar_sec/engine/forms/plugins/registry.py",

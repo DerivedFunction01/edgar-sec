@@ -1,13 +1,18 @@
 from __future__ import annotations
 
+import multiprocessing
 import os
 import shutil
 import tempfile
+from collections import deque
+from concurrent.futures import Future, ProcessPoolExecutor
 from dataclasses import asdict
 from pathlib import Path
 from urllib.parse import urlsplit
 
 from tqdm.auto import tqdm
+
+from edgar_sec.foundation.runtime.resources import derive_resources
 
 from edgar_sec.domain.document.path_facts import DocumentPathFacts
 from edgar_sec.domain.document.route import DocumentRoute, content_route, document_route
@@ -215,9 +220,15 @@ def _process_fixture_body(
             if sha256_bytes(outcome.output_bytes) != outcome.output_sha256:
                 raise ProcessingReviewError("parser output digest is invalid")
             if operation.operation == "raw":
-                output_path = body_path
+                ext = facts.suffix.lstrip(".") if facts.suffix else "raw"
+                relative_output = f"operations/raw.{ext}"
+                output_path = output_root / relative_output
+                atomic_write_bytes(output_path, outcome.output_bytes)
                 representation = "raw"
-                relative_output = None
+                artifact_outputs[relative_output] = {
+                    "sha256": outcome.output_sha256,
+                    "byte_size": outcome.output_byte_size,
+                }
             else:
                 extension = "txt" if operation.operation == "render_to_txt" else "xml"
                 relative_output = f"operations/{operation.operation}.{extension}"
@@ -228,6 +239,7 @@ def _process_fixture_body(
                     "sha256": outcome.output_sha256,
                     "byte_size": outcome.output_byte_size,
                 }
+
             output_ref = StagedOutputRef(
                 staging_id=output_root.name,
                 path=output_path,
@@ -334,6 +346,10 @@ def _process_fixture_body(
         "family_profile": {
             "family": profile.family if profile is not None else "default",
             "version": profile.version if profile is not None else "1",
+            "has_toc": profile.has_toc if profile is not None else False,
+            "has_sections": profile.has_sections if profile is not None else False,
+            "has_notes": profile.has_notes if profile is not None else False,
+            "has_xbrl": profile.has_xbrl if profile is not None else False,
             "allowed_operations": sorted(item.value for item in allowed),
         },
         "outputs": artifact_outputs,
@@ -431,12 +447,56 @@ def _manifest_record(
     }
 
 
+_RECLAIM_INTERVAL = 25
+
+
+def _process_review_case_worker(
+    case: FixtureCaseMetadata,
+    paths: AcquisitionPaths,
+    case_root: Path,
+    staging_root: Path,
+    review_paths: ReviewPaths,
+) -> tuple[str, ProcessingReviewArtifact | None, str | None]:
+    status = "execution_error"
+    artifact = None
+    error = None
+    raw_bytes = b""
+    with tempfile.TemporaryDirectory(prefix="fixture-body-") as temporary:
+        body_path = Path(temporary) / "selected-body.bin"
+        try:
+            raw_bytes = _validated_fixture_body(case, paths, body_path)
+        except Exception as exception:
+            status = "fixture_verification_failure"
+            error = str(exception) or type(exception).__name__
+        else:
+            try:
+                processing = _process_fixture_body(
+                    case, body_path, raw_bytes, staging_root
+                )
+                artifact = build_processing_review_artifact(
+                    case, processing, staging_root / OBSERVATIONS_FILE
+                )
+                case_root.parent.mkdir(parents=True, exist_ok=True)
+                os.replace(staging_root, case_root)
+                artifact = ProcessingReviewArtifact(
+                    artifact.artifact_sha256, case_root / OBSERVATIONS_FILE
+                )
+                status = "complete"
+            except Exception as exception:
+                error = str(exception) or type(exception).__name__
+    if status != "complete":
+        shutil.rmtree(staging_root, ignore_errors=True)
+    del raw_bytes
+    return status, artifact, error
+
+
 def build_review_artifacts(
     fixture_id: str,
     output: str | os.PathLike[str],
     *,
     paths: AcquisitionPaths,
     limit: int | None = None,
+    workers: int | None = None,
     no_progress: bool = False,
 ) -> ReviewRunResult:
     if limit is not None and limit < 1:
@@ -446,6 +506,16 @@ def build_review_artifacts(
         cases = cases[:limit]
     if not cases:
         raise ValueError("fixture has no parser-body cases")
+
+    resources = derive_resources()
+    if workers is not None and workers < 1:
+        raise ValueError("workers must be positive")
+    worker_count = (
+        min(resources.workers, resources.worker_ceiling)
+        if workers is None
+        else min(workers, resources.worker_ceiling)
+    )
+    worker_count = max(1, min(worker_count, len(cases)))
 
     requested_output = Path(output).expanduser()
     if requested_output.is_symlink():
@@ -462,59 +532,114 @@ def build_review_artifacts(
     review_paths.case_staging_root().mkdir(parents=True, exist_ok=True)
     records = []
     counts = {"complete": 0, "fixture_verification_failure": 0, "execution_error": 0}
-    for case in tqdm(
-        cases,
-        desc="Parser review",
-        unit="case",
-        dynamic_ncols=True,
-        disable=no_progress,
-    ):
-        status = "execution_error"
-        artifact = None
-        error = None
-        case_root = review_paths.case_dir(_case_id(case))
-        staging_root = Path(
-            tempfile.mkdtemp(prefix="case-", dir=review_paths.case_staging_root())
+
+    if worker_count == 1:
+        with tqdm(
+            cases,
+            desc="Parser review",
+            unit="case",
+            dynamic_ncols=True,
+            disable=no_progress,
+        ) as pbar:
+            for case in pbar:
+                case_root = review_paths.case_dir(_case_id(case))
+                staging_root = Path(
+                    tempfile.mkdtemp(
+                        prefix="case-", dir=review_paths.case_staging_root()
+                    )
+                )
+                st, art, err = _process_review_case_worker(
+                    case, paths, case_root, staging_root, review_paths
+                )
+                counts[st] += 1
+                records.append(
+                    _manifest_record(
+                        case,
+                        review_paths.review_id,
+                        review_paths,
+                        status=st,
+                        output=art,
+                        error=err,
+                    )
+                )
+                if (
+                    counts["complete"]
+                    + counts["fixture_verification_failure"]
+                    + counts["execution_error"]
+                ) % _RECLAIM_INTERVAL == 0:
+                    reclaim()
+    else:
+        executor = ProcessPoolExecutor(
+            max_workers=worker_count,
+            mp_context=multiprocessing.get_context("spawn"),
         )
-        raw_bytes = b""
-        with tempfile.TemporaryDirectory(prefix="fixture-body-") as temporary:
-            body_path = Path(temporary) / "selected-body.bin"
+        pending: deque[
+            tuple[
+                FixtureCaseMetadata,
+                Future[tuple[str, ProcessingReviewArtifact | None, str | None]],
+            ]
+        ] = deque()
+
+        def _drain_oldest(pbar) -> None:
+            c, fut = pending.popleft()
             try:
-                raw_bytes = _validated_fixture_body(case, paths, body_path)
-            except Exception as exception:
-                status = "fixture_verification_failure"
-                error = str(exception) or type(exception).__name__
-            else:
-                try:
-                    processing = _process_fixture_body(
-                        case, body_path, raw_bytes, staging_root
-                    )
-                    artifact = build_processing_review_artifact(
-                        case, processing, staging_root / OBSERVATIONS_FILE
-                    )
-                    case_root.parent.mkdir(parents=True, exist_ok=True)
-                    os.replace(staging_root, case_root)
-                    artifact = ProcessingReviewArtifact(
-                        artifact.artifact_sha256, case_root / OBSERVATIONS_FILE
-                    )
-                    status = "complete"
-                except Exception as exception:
-                    error = str(exception) or type(exception).__name__
-        if status != "complete":
-            shutil.rmtree(staging_root, ignore_errors=True)
-        counts[status] += 1
-        records.append(
-            _manifest_record(
-                case,
-                review_paths.review_id,
-                review_paths,
-                status=status,
-                output=artifact if status == "complete" else None,
-                error=error,
+                st, art, err = fut.result()
+            except Exception as exc:
+                st, art, err = "execution_error", None, str(exc)
+            counts[st] += 1
+            records.append(
+                _manifest_record(
+                    c,
+                    review_paths.review_id,
+                    review_paths,
+                    status=st,
+                    output=art,
+                    error=err,
+                )
             )
-        )
-        del raw_bytes
-        reclaim()
+            pbar.update(1)
+            processed = (
+                counts["complete"]
+                + counts["fixture_verification_failure"]
+                + counts["execution_error"]
+            )
+            if processed % _RECLAIM_INTERVAL == 0:
+                reclaim()
+
+        try:
+            with tqdm(
+                total=len(cases),
+                desc="Parser review",
+                unit="case",
+                dynamic_ncols=True,
+                disable=no_progress,
+            ) as pbar:
+                for case in cases:
+                    case_root = review_paths.case_dir(_case_id(case))
+                    staging_root = Path(
+                        tempfile.mkdtemp(
+                            prefix="case-", dir=review_paths.case_staging_root()
+                        )
+                    )
+                    fut = executor.submit(
+                        _process_review_case_worker,
+                        case,
+                        paths,
+                        case_root,
+                        staging_root,
+                        review_paths,
+                    )
+                    pending.append((case, fut))
+                    if len(pending) >= worker_count * 2:
+                        _drain_oldest(pbar)
+
+                while pending:
+                    _drain_oldest(pbar)
+        except KeyboardInterrupt:
+            executor.shutdown(wait=False, cancel_futures=True)
+            raise
+        finally:
+            executor.shutdown(wait=True)
 
     manifest = "".join(canonical_json(record) + "\n" for record in records)
     atomic_write_text(review_paths.manifest_path, manifest)

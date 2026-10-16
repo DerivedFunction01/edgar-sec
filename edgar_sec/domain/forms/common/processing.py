@@ -34,6 +34,11 @@ class DocumentProcessingProfile:
     allowed_operations: frozenset[AcquisitionOperation]
     report_class: type[FormReport] | None = None
     preferred_operation: AcquisitionOperation | None = None
+    review_analyzer: str | None = None
+    has_toc: bool = False
+    has_sections: bool = False
+    has_notes: bool = False
+    has_xbrl: bool = False
 
     def has_operation(self, operation: AcquisitionOperation) -> bool:
         """Check if this family supports the given operation."""

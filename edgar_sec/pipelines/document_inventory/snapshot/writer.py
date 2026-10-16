@@ -1,4 +1,4 @@
-"""Bounded merge and pointer-last publication of validated S4 attempts."""
+"""Bounded merge and pointer-last publication of validated attempts."""
 
 from __future__ import annotations
 
@@ -138,9 +138,7 @@ def _copy_committed_attempts(
         identity.digest != run.work_order_digest
         or identity.row_count != run.work_order_rows
     ):
-        raise ValidationFailedError(
-            "work order does not match the pinned S4 run manifest"
-        )
+        raise ValidationFailedError("work order does not match the pinned run manifest")
     outcomes_path = publication_dir / "committed_outcomes.parquet"
     entries_path = publication_dir / "committed_entries.parquet"
     outcome_writer = StagedParquetWriter(outcomes_path, OUTCOME_SCHEMA)
@@ -309,22 +307,16 @@ def _create_merge_relations(
         status = con.execute("SELECT status FROM invalid_outcomes LIMIT 1").fetchone()[
             0
         ]
-        raise ValidationFailedError(
-            f"S4 refusal outcome blocks publication: {status!r}"
-        )
+        raise ValidationFailedError(f"refusal outcome blocks publication: {status!r}")
     if con.execute(
         "SELECT count(*) FROM staged_outcomes o ANTI JOIN cohort_accessions c USING(accession)"
     ).fetchone()[0]:
-        raise ValidationFailedError(
-            "an S4 outcome is absent from the cohort projection"
-        )
+        raise ValidationFailedError("an outcome is absent from the cohort projection")
     if con.execute(
         "SELECT count(*) FROM staged_outcomes o JOIN cohort_accessions c USING(accession) "
         "WHERE o.index_url IS DISTINCT FROM c.index_url"
     ).fetchone()[0]:
-        raise ValidationFailedError(
-            "S4 outcome URL differs from its projected accession"
-        )
+        raise ValidationFailedError("outcome URL differs from its projected accession")
     if con.execute(
         "SELECT count(*) FROM (SELECT accession FROM cohort_accessions GROUP BY accession "
         "HAVING count(*) > 1)"
@@ -342,9 +334,7 @@ def _create_merge_relations(
         "LEFT JOIN staged_entries e USING(accession) GROUP BY o.accession, o.entry_count "
         "HAVING o.entry_count IS NULL OR o.entry_count != count(e.entry_id))"
     ).fetchone()[0]:
-        raise ValidationFailedError(
-            "S4 outcome entry count differs from its entry rows"
-        )
+        raise ValidationFailedError("outcome entry count differs from its entry rows")
 
     metadata_conflicts = con.execute(
         "SELECT count(*) FROM cohort_accessions c JOIN parent_accessions p USING(accession) "
@@ -515,13 +505,11 @@ def publish_committed_chunks(
     CAS pointer update under an exclusive publication lock.
     """
     if run.run_id != run_paths.run_id:
-        raise ValidationFailedError("S4 run manifest identity differs from its paths")
+        raise ValidationFailedError("run manifest identity differs from its paths")
     if read_run_manifest(run_paths) != run:
-        raise ValidationFailedError(
-            "S4 run manifest differs from its persisted identity"
-        )
+        raise ValidationFailedError("run manifest differs from its persisted identity")
     if run.parent_snapshot_id != (expected_parent_snapshot_id or ""):
-        raise ValidationFailedError("expected parent differs from the pinned S4 run")
+        raise ValidationFailedError("expected parent differs from the pinned run")
     cohort_accessions = Path(cohort_accessions_path).resolve()
     cohort_sources = Path(cohort_sources_path).resolve()
     _validate_input(cohort_accessions, _COHORT_ACCESSIONS_SCHEMA, "cohort accessions")

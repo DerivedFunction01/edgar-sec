@@ -52,15 +52,10 @@ from edgar_sec.pipelines.document_acquisition.processing.assessment import (
     assess_exhibit_processing,
 )
 from edgar_sec.pipelines.document_acquisition.processing.io import (
-    DEFAULT_PROCESSING_BUDGETS,
-    ProcessingBudgetPolicy,
-    ProcessingBudgetRegistry,
     ProcessingIOError,
-    admit_requested_operations,
     operation_fingerprint,
     operation_pins,
     read_bounded_source,
-    resolve_requested_operation_budgets,
     select_operation_execution,
     stage_derived_output,
     validate_prior_operation_result,
@@ -85,7 +80,6 @@ from edgar_sec.pipelines.document_acquisition.schemas import (
 
 _NO_RECEIPT_DIAGNOSTICS = frozenset(
     {
-        "processing_budget_exceeded",
         "invalid_source_bytes",
         "invalid_source_size",
         "source_size_mismatch",
@@ -151,7 +145,7 @@ def _effective_route(
     body: StagedBodyRef,
 ) -> tuple[DocumentRoute, str]:
     if row["retrieval_mode"] == "bundle_sequence" and request.selected_filename is None:
-        raise ProcessingError("bundle child filename is absent from S9 handoff")
+        raise ProcessingError("bundle child filename is absent from handoff")
     try:
         requested_filename = validate_selected_filename(request.selected_filename)
         committed_filename = validate_selected_filename(body.selected_filename)
@@ -161,7 +155,7 @@ def _effective_route(
     except (OSError, ValueError, sqlite3.Error) as error:
         raise ProcessingError("selected target evidence is invalid") from error
     if requested_filename != committed_filename:
-        raise ProcessingError("selected filename differs from committed S9 handoff")
+        raise ProcessingError("selected filename differs from committed handoff")
     if state is None or state.outcome != "acquired" or state.last_attempt_id is None:
         raise ProcessingError("acquired target has no selected attempt")
     selected_attempt = get_attempt(
@@ -234,7 +228,7 @@ def _effective_route(
         raise ProcessingError("selected route URL is invalid") from error
     if retrieval_mode == "bundle_sequence" or committed_filename is not None:
         if committed_filename is None:
-            raise ProcessingError("bundle child filename is absent from S9 handoff")
+            raise ProcessingError("bundle child filename is absent from handoff")
         return content_route(committed_filename), committed_filename
     if retrieval_mode != "direct_url":
         raise ProcessingError("selected target retrieval mode is unresolved")
@@ -293,9 +287,6 @@ def _operation_results(
     body: StagedBodyRef,
     source: bytes | None,
     processing_id: str,
-    budget_identities: dict[str, ProcessingBudgetPolicy],
-    execution_budgets: dict[str, ProcessingBudgetPolicy],
-    budget_failures: dict[str, str],
     prior_by_id: dict[str, OperationResult],
     selected_ids: frozenset[str],
 ) -> tuple[OperationResult, ...]:
@@ -310,9 +301,8 @@ def _operation_results(
         if prior is not None:
             results.append(prior)
             continue
-        budget = budget_identities.get(operation.operation_id)
         fingerprint = operation_fingerprint(
-            request, operation, body, route, effective_path, budget
+            request, operation, body, route, effective_path
         )
         status = "failed"
         code = "capability_pin_mismatch"
@@ -373,120 +363,90 @@ def _operation_results(
                 detail = "No registered handler admits this effective document route."
             elif operation_pins(operation) != expected:
                 status = "failed"
-            elif operation.operation_id in budget_failures:
-                status = "blocked"
-                code = "processing_budget_exceeded"
-                detail = budget_failures[operation.operation_id]
-            elif budget_failures:
-                status = "blocked"
-                code = "processing_budget_exceeded"
-                detail = (
-                    "Another requested operation failed admission before body access."
-                )
             elif source is None:
                 status = "failed"
-                code = "processing_budget_exceeded"
-                detail = "No admitted input materialization budget is available."
+                code = "source_unavailable"
+                detail = "Source bytes are not available for processing."
             else:
-                policy = execution_budgets.get(operation.operation_id)
-                if policy is None:
-                    status = "failed"
-                    code = "processing_budget_exceeded"
-                    detail = (
-                        "No versioned budget is registered for this route and handler."
-                    )
-                    policy = None
-                if policy is not None:
-                    processor = AcquisitionProcessor()
-                    engine_result = processor.process(
-                        AcquisitionProcessRequest(
-                            target_id=request.target_id,
-                            family=resolve_alias(request.form) or request.form,
-                            role=request.target_role,
-                            target_type=request.target_type,
-                            path_facts=path_facts,
-                            operations=(
-                                OperationRecord(
-                                    capability_version=operation.capability_version
-                                    or "",
-                                    output_kind=operation.output_kind or "",
-                                    source_ids=(operation.source_request_id,),
-                                    operation=operation.operation,
-                                    handler_id=operation.handler_id,
-                                    handler_version=operation.handler_version,
-                                ),
+                processor = AcquisitionProcessor()
+                engine_result = processor.process(
+                    AcquisitionProcessRequest(
+                        target_id=request.target_id,
+                        family=resolve_alias(request.form) or request.form,
+                        role=request.target_role,
+                        target_type=request.target_type,
+                        path_facts=path_facts,
+                        operations=(
+                            OperationRecord(
+                                capability_version=operation.capability_version or "",
+                                output_kind=operation.output_kind or "",
+                                source_ids=(operation.source_request_id,),
+                                operation=operation.operation,
+                                handler_id=operation.handler_id,
+                                handler_version=operation.handler_version,
                             ),
-                            inputs=(
-                                InputRecord(
-                                    source_id=operation.source_request_id,
-                                    locator_provenance=operation.source_request_id
-                                    or "",
-                                    selected_path=effective_path,
-                                    path_facts=path_facts,
-                                    sha256=body.sha256,
-                                    byte_size=body.byte_size,
-                                    raw_bytes=source,
-                                ),
+                        ),
+                        inputs=(
+                            InputRecord(
+                                source_id=operation.source_request_id,
+                                locator_provenance=operation.source_request_id or "",
+                                selected_path=effective_path,
+                                path_facts=path_facts,
+                                sha256=body.sha256,
+                                byte_size=body.byte_size,
+                                raw_bytes=source,
                             ),
-                        )
+                        ),
                     )
-                    outcome = engine_result.outcomes[0]
-                    if outcome.status == "ok":
-                        output = outcome.output_bytes
-                        if output is not None and len(output) > policy.max_output_bytes:
+                )
+                outcome = engine_result.outcomes[0]
+                if outcome.status == "ok":
+                    output = outcome.output_bytes
+                    if (
+                        output is None
+                        or outcome.output_sha256 is None
+                        or outcome.output_byte_size != len(output)
+                        or hashlib.sha256(output).hexdigest() != outcome.output_sha256
+                    ):
+                        status = "failed"
+                        code = "output_identity_mismatch"
+                        detail = "The engine output failed digest or size validation."
+                    else:
+                        try:
+                            staged_output = stage_derived_output(
+                                paths=paths,
+                                run_id=body.run_id,
+                                processing_id=processing_id,
+                                operation_id=canonical_hash(operation.operation_id)[
+                                    :24
+                                ],
+                                representation="text_normalized"
+                                if outcome.output_kind == "text"
+                                else "xml",
+                                output=output,
+                                expected_sha256=outcome.output_sha256,
+                                expected_size=outcome.output_byte_size
+                                if outcome.output_byte_size is not None
+                                else -1,
+                            )
+                        except (OSError, ProcessingIOError, ValueError):
                             status = "failed"
-                            code = "processing_budget_exceeded"
-                            detail = "The engine output exceeds its registered output budget."
-                        elif (
-                            output is None
-                            or outcome.output_sha256 is None
-                            or outcome.output_byte_size != len(output)
-                            or hashlib.sha256(output).hexdigest()
-                            != outcome.output_sha256
-                        ):
-                            status = "failed"
-                            code = "output_identity_mismatch"
+                            code = "output_staging_failed"
                             detail = (
-                                "The engine output failed digest or size validation."
+                                "The derived output could not be staged and verified."
                             )
                         else:
-                            try:
-                                staged_output = stage_derived_output(
-                                    paths=paths,
-                                    run_id=body.run_id,
-                                    processing_id=processing_id,
-                                    operation_id=canonical_hash(operation.operation_id)[
-                                        :24
-                                    ],
-                                    representation="text_normalized"
-                                    if outcome.output_kind == "text"
-                                    else "xml",
-                                    output=output,
-                                    expected_sha256=outcome.output_sha256,
-                                    expected_size=outcome.output_byte_size
-                                    if outcome.output_byte_size is not None
-                                    else -1,
-                                )
-                            except (OSError, ProcessingIOError, ValueError):
-                                status = "failed"
-                                code = "output_staging_failed"
-                                detail = "The derived output could not be staged and verified."
-                            else:
-                                status = "available"
-                                code = detail = ""
-                                representation = staged_output.representation
-                                output_sha256 = outcome.output_sha256
-                                output_size = outcome.output_byte_size
-                                handler_id = outcome.handler_id
-                                handler_version = outcome.handler_version
-                    else:
-                        status = (
-                            "failed" if outcome.status == "failed" else "unsupported"
-                        )
-                        code = outcome.error or "handler_unavailable"
-                        detail = (
-                            "The engine did not produce an admitted operation output."
-                        )
+                            status = "available"
+                            code = detail = ""
+                            representation = staged_output.representation
+                            output_sha256 = outcome.output_sha256
+                            output_size = outcome.output_byte_size
+                            handler_id = outcome.handler_id
+                            handler_version = outcome.handler_version
+                else:
+                    status = "failed" if outcome.status == "failed" else "unsupported"
+                    code = outcome.error or "handler_unavailable"
+                    detail = "The engine did not produce an admitted operation output."
         diagnostics = (ProcessingDiagnostic(code, detail),) if code else ()
         representation_id = (
             f"rep_{canonical_hash([fingerprint, representation])[:32]}"
@@ -624,7 +584,6 @@ def process_target(
     request: ProcessingRequest,
     *,
     paths: AcquisitionPaths,
-    budget_registry: ProcessingBudgetRegistry = DEFAULT_PROCESSING_BUDGETS,
     prior_results: tuple[OperationResult, ...] | None = None,
     selected_operation_ids: tuple[str, ...] | None = None,
 ) -> ProcessingResult:
@@ -650,20 +609,7 @@ def process_target(
         route, effective_path = _effective_route(paths, request, row, request.body)
         path_facts = _document_path_facts(request, effective_path, route)
         raw_operation = _validate_mandatory_raw(request, path_facts)
-        budget_identities = resolve_requested_operation_budgets(
-            request,
-            route,
-            path_facts,
-            budget_registry,
-        )
         processing_id = _processing_id(request, route, effective_path)
-        execution_budgets, budget_failures = admit_requested_operations(
-            request,
-            path_facts,
-            request.body.byte_size,
-            selected_ids,
-            budget_identities,
-        )
         source_sha256 = request.body.sha256
         source_asset_id = (
             "asset_"
@@ -689,7 +635,6 @@ def process_target(
                 metadata_body,
                 route,
                 effective_path,
-                budget_identities.get(operation_id),
             )
             validate_prior_operation_result(
                 paths,
@@ -698,22 +643,20 @@ def process_target(
                 metadata_body,
                 processing_id,
                 fingerprint,
-                budget_identities.get(operation_id),
             )
 
+        derived_selected = any(
+            op.operation_id in selected_ids and op.operation != "raw"
+            for op in request.operations
+            if op.requested and op.support_status == "supported"
+        )
         source = None
         body_consumed = False
         verified_body = metadata_body
-        if budget_failures:
-            pass
-        elif execution_budgets:
-            verified_body = metadata_body
+        if derived_selected:
             source = read_bounded_source(
                 verified_body.path,
                 verified_body.byte_size,
-                max_input_bytes=min(
-                    policy.max_input_bytes for policy in execution_budgets.values()
-                ),
             )
             body_consumed = True
         elif raw_operation.operation_id in selected_ids:
@@ -734,9 +677,6 @@ def process_target(
             verified_body,
             source,
             processing_id,
-            budget_identities,
-            execution_budgets,
-            budget_failures,
             prior_by_id,
             selected_ids,
         )
@@ -763,7 +703,7 @@ def process_target(
             for result in operation_results
             for diagnostic in result.diagnostics
         )
-        if body_consumed and not budget_failures and not receipt_refused:
+        if body_consumed and not receipt_refused:
             _record_receipt(paths, verified_body, processing_id)
     except ProcessingError:
         raise

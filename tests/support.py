@@ -579,33 +579,6 @@ def acquired_processing_request(
     )
 
 
-def processing_budget_registry(
-    route: DocumentRoute = DocumentRoute.TEXT,
-    *,
-    budget_version: str = "test-v1",
-    max_input_bytes: int = 256,
-    max_output_bytes: int = 256,
-):
-    from edgar_sec.pipelines.document_acquisition.processing.io import (
-        ProcessingBudgetPolicy,
-        ProcessingBudgetRegistry,
-    )
-
-    return ProcessingBudgetRegistry(
-        (
-            ProcessingBudgetPolicy(
-                budget_version=budget_version,
-                route=route,
-                handler_id="normalize_document",
-                handler_version="1",
-                max_input_bytes=max_input_bytes,
-                max_output_bytes=max_output_bytes,
-                working_set_reservation_bytes=64,
-            ),
-        )
-    )
-
-
 def minimal_processing_request(
     tmp_path: Path,
     *,
@@ -784,7 +757,6 @@ __all__ = [
     "fixture_path",
     "acquired_processing_request",
     "minimal_processing_request",
-    "processing_budget_registry",
     "stub_processing_target_validation",
     "two_text_processing_operations",
     "failed_processing_operation_result",

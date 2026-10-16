@@ -4,7 +4,7 @@ Layer 4 acquisition subpackage for the mutable per-run ledger.
 
 ## Purpose
 
-This package stores current target outcomes and append-only acquisition attempts/resolution evidence in a run-scoped SQLite database. It supplies cursor-backed target selection, SQL-derived summaries, and token-owned run locks for later S9 orchestration.
+This package stores current target outcomes and append-only acquisition attempts/resolution evidence in a run-scoped SQLite database. It supplies cursor-backed target selection, SQL-derived summaries, and token-owned run locks for later acquisition orchestration.
 
 ## Contracts
 
@@ -16,4 +16,4 @@ This package stores current target outcomes and append-only acquisition attempts
 ## Deliberate gaps
 
 - **No acquisition runner**: This package does not schedule HTTP work, process bodies, or invoke fixture replay.
-- **No cleanup authority**: Run-state receipts or processing acknowledgements do not authorize deletion before S11 publication or explicit discard.
+- **No cleanup authority**: Run-state receipts or processing acknowledgements do not authorize deletion before publication or explicit discard.

@@ -106,6 +106,9 @@ def cmd_fixture_fill(args: argparse.Namespace) -> int:
                     progress.total = total
                 progress.update(1)
 
+            fill_kwargs = {}
+            if getattr(args, "workers", None) is not None:
+                fill_kwargs["workers"] = args.workers
             result = capture_fixture_plan(
                 args.fixture,
                 paths=paths,
@@ -113,6 +116,7 @@ def cmd_fixture_fill(args: argparse.Namespace) -> int:
                 transport=transport,
                 limit=args.limit,
                 on_target=update_progress,
+                **fill_kwargs,
             )
     except (
         KeyError,

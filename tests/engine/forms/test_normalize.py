@@ -43,13 +43,6 @@ def test_annual_10k_ascii_golden() -> None:
     assert "\x1b" not in res.text
     assert "\x00" not in res.text
 
-    stage_names = [s.stage for s in res.stage_trace]
-    assert stage_names == exp["stage_order"]
-    for stage_rec in res.stage_trace:
-        assert len(stage_rec.text_identity) == 64  # SHA-256 hex digest
-        assert stage_rec.line_count > 0
-        assert stage_rec.char_count > 0
-
 
 def test_annual_10k_html_golden() -> None:
     data = load_fixture("document_storage/annual_10k_html.json")
@@ -85,13 +78,6 @@ def test_annual_10k_html_golden() -> None:
     assert SENTINEL_PREFIX not in res.text
     assert SENTINEL_SUFFIX not in res.text
 
-    stage_names = [s.stage for s in res.stage_trace]
-    assert stage_names == exp["stage_order"]
-    for stage_rec in res.stage_trace:
-        assert len(stage_rec.text_identity) == 64
-        assert stage_rec.line_count > 0
-        assert stage_rec.char_count > 0
-
 
 def test_normalize_empty_payload() -> None:
     res = normalize_document(b"", form="10-K")
@@ -99,9 +85,6 @@ def test_normalize_empty_payload() -> None:
     assert res.representation == "ascii"
     assert res.cover_boundary.start_line is None
     assert res.cover_boundary.end_line is None
-    assert len(res.stage_trace) >= 1
-    assert res.stage_trace[0].stage == "unpacked"
-    assert res.stage_trace[0].char_count == 0
 
 
 def test_toc_offsets_match_trimmed_normalized_text() -> None:
@@ -213,7 +196,6 @@ def test_paper_route_skips_form_driven_stages() -> None:
     )
 
     assert res.representation == "ascii"
-    assert [s.stage for s in res.stage_trace] == ["unpacked"]
     assert res.reflow is None
     assert res.body_start is None
     assert res.cover_boundary.method.value == "disabled"
@@ -243,21 +225,3 @@ def test_xhtml_path_is_markup_not_text() -> None:
     res = normalize_document(_HARD_WRAPPED, form="REGDEX", document_path="note.xhtml")
 
     assert res.reflow is None
-
-
-def test_normalize_with_capture_stage_trace_false() -> None:
-    """verify capture_stage_trace=False returns empty trace but identical output."""
-    data = load_fixture("document_storage/annual_10k_normalization.json")
-    raw_bytes = data["source_text"].encode("utf-8")
-    form = data.get("form", "10-K")
-    exp = data["expectations"]
-
-    res_full = normalize_document(raw_bytes, form=form)
-    res_no_trace = normalize_document(raw_bytes, form=form, capture_stage_trace=False)
-
-    assert res_no_trace.stage_trace == []
-    assert res_full.text == res_no_trace.text
-    assert res_full.representation == res_no_trace.representation
-    assert res_full.cover_boundary == res_no_trace.cover_boundary
-    assert res_full.body_start == res_no_trace.body_start
-    assert res_full.closing_span == res_no_trace.closing_span
