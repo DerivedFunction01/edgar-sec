@@ -1,18 +1,21 @@
 <!-- SENTINEL: FORM_13F -->
+
 # FORM 13F: INFORMATION REQUIRED OF INSTITUTIONAL INVESTMENT MANAGERS
 
 Information required of institutional investment managers pursuant to Section 13(f) of the Securities Exchange Act of 1934 and rules thereunder.
 
 <!-- SENTINEL: OMB_APPROVAL -->
+
 ## OMB APPROVAL
 
 **OMB Number:** 3235-0006  
 **Expires:** January 31, 2029  
-**Estimated Average Burden Hours per Response:** 2.0  
+**Estimated Average Burden Hours per Response:** 2.0
 
 > **Notice:** Persons who respond to the collection of information contained in this form are not required to respond unless the form displays a currently valid OMB control number.
 
 <!-- SENTINEL: COVER_PAGE -->
+
 ## COVER PAGE
 
 **UNITED STATES SECURITIES AND EXCHANGE COMMISSION**  
@@ -20,77 +23,80 @@ Washington, D.C. 20549
 
 **FORM 13F COVER PAGE**
 
-**Report for the Calendar Year or Quarter Ended:** ____________________
+**Report for the Calendar Year or Quarter Ended:** ********\_\_\_\_********
 
-- [ ] Check here if Amendment  
-  - **Amendment Number:** ____________________  
-  - *This Amendment (Check only one):*  
-    - [ ] is a restatement.  
+- [ ] Check here if Amendment
+  - **Amendment Number:** ********\_\_\_\_********
+  - _This Amendment (Check only one):_
+    - [ ] is a restatement.
     - [ ] adds new holdings entries.
 
 ### Institutional Investment Manager Filing this Report
 
-**Name:** ___________________________________  
-**Address:** ___________________________________  
-**Form 13F File Number:** 28-____________________  
-**CRD Number (if applicable):** ____________________  
-**SEC File Number (if applicable):** ____________________  
+**Name:** ****************\_\_\_****************  
+**Address:** ****************\_\_\_****************  
+**Form 13F File Number:** 28-********\_\_\_\_********  
+**CRD Number (if applicable):** ********\_\_\_\_********  
+**SEC File Number (if applicable):** ********\_\_\_\_********
 
 The institutional investment manager filing this report and the person by whom it is signed hereby represent that the person signing the report is authorized to submit it, that all information contained herein is true, correct and complete, and that it is understood that all required items, statements, schedules, lists, and tables, are considered integral parts of this form.
 
 ### Person Signing this Report on Behalf of Reporting Manager
 
-**Name:** ___________________________________  
-**Title:** ___________________________________  
-**Phone:** ___________________________________  
+**Name:** ****************\_\_\_****************  
+**Title:** ****************\_\_\_****************  
+**Phone:** ****************\_\_\_****************
 
 **Signature, Place, and Date of Signing:**  
 `___________________________________` `___________________` `_____________`  
-*[Signature]* *[City, State]* *[Date]*
+_[Signature]_ _[City, State]_ _[Date]_
 
 ### Report Type
 
-*(Check only one)*
+_(Check only one)_
 
-- [ ] **13F HOLDINGS REPORT.** *(Check here if all holdings of this reporting manager are reported in this report.)*
-- [ ] **13F NOTICE.** *(Check here if no holdings reported are in this report, and all holdings are reported by other reporting manager(s).)*
-- [ ] **13F COMBINATION REPORT.** *(Check here if a portion of the holdings for this reporting manager are reported in this report and a portion are reported by other reporting manager(s).)*
+- [ ] **13F HOLDINGS REPORT.** _(Check here if all holdings of this reporting manager are reported in this report.)_
+- [ ] **13F NOTICE.** _(Check here if no holdings reported are in this report, and all holdings are reported by other reporting manager(s).)_
+- [ ] **13F COMBINATION REPORT.** _(Check here if a portion of the holdings for this reporting manager are reported in this report and a portion are reported by other reporting manager(s).)_
 
 ### List of Other Managers Reporting for this Manager
 
-*(If there are no entries in this list, omit this section.)*
+_(If there are no entries in this list, omit this section.)_
 
 | Name | Form 13F File No. | CRD No. (if applicable) | SEC File No. (if applicable) |
-| :--- | :--- | :--- | :--- |
-| | 28- | | |
+| :--- | :---------------- | :---------------------- | :--------------------------- |
+|      | 28-               |                         |                              |
 
 <!-- SENTINEL: SUMMARY_PAGE -->
+
 ## SUMMARY PAGE
 
 ### Report Summary
 
-**Number of Other Included Managers:** __________________________  
-**Form 13F Information Table Entry Total:** __________________________  
-**Form 13F Information Table Value Total:** $__________________________ *(round to nearest dollar)*  
+**Number of Other Included Managers:** ************\_\_************  
+**Form 13F Information Table Entry Total:** ************\_\_************  
+**Form 13F Information Table Value Total:** $************\_\_************ _(round to nearest dollar)_
 
-- [ ] **Confidential Treatment Requested.** *(The Manager has omitted from this public Form 13F one or more holding(s) for which it is requesting confidential treatment from the U.S. Securities and Exchange Commission pursuant to section 13(f) of the Exchange Act and rule 24b-2 thereunder.)*
+- [ ] **Confidential Treatment Requested.** _(The Manager has omitted from this public Form 13F one or more holding(s) for which it is requesting confidential treatment from the U.S. Securities and Exchange Commission pursuant to section 13(f) of the Exchange Act and rule 24b-2 thereunder.)_
 
 ### List of Other Included Managers
 
-Provide a numbered list of the name(s) and Form 13F file number(s) of all institutional investment managers with respect to which this report is filed, other than the manager filing this report. *(If there are no entries in this list, state "NONE".)*
+Provide a numbered list of the name(s) and Form 13F file number(s) of all institutional investment managers with respect to which this report is filed, other than the manager filing this report. _(If there are no entries in this list, state "NONE".)_
 
 | No. | Name | Form 13F File No. | CRD No. (if applicable) | SEC File No. (if applicable) |
-| :---: | :--- | :--- | :--- | :--- |
-| | | 28- | | |
+| :-: | :--- | :---------------- | :---------------------- | :--------------------------- |
+|     |      | 28-               |                         |                              |
 
 <!-- SENTINEL: INFORMATION_TABLE -->
+
 ## FORM 13F INFORMATION TABLE
 
 | Column 1: Name of Issuer | Column 2: Title of Class | Column 3: CUSIP | Column 3: FIGI (Optional) | Column 4: Market Value (Nearest Dollar) | Column 5: Amount of Securities (SH/PRN) | Column 5: SH / PRN | Column 5: Put / Call | Column 6: Investment Discretion (SOLE / DFND / OTR) | Column 7: Other Managers | Column 8: Voting Authority — Sole | Column 8: Voting Authority — Shared | Column 8: Voting Authority — None |
-| :--- | :--- | :---: | :---: | ---: | ---: | :---: | :---: | :---: | :---: | ---: | ---: | ---: |
-| | | | | | | | | | | | | |
+| :----------------------- | :----------------------- | :-------------: | :-----------------------: | --------------------------------------: | --------------------------------------: | :----------------: | :------------------: | :-------------------------------------------------: | :----------------------: | --------------------------------: | ----------------------------------: | --------------------------------: |
+|                          |                          |                 |                           |                                         |                                         |                    |                      |                                                     |                          |                                   |                                     |                                   |
 
 <!-- SENTINEL: GENERAL_INSTRUCTIONS -->
+
 ## GENERAL INSTRUCTIONS
 
 - **1. Rule as to Use of Form 13F:** Institutional investment managers ("Managers") must use Form 13F for reports to the Commission required by Section 13(f) of the Securities Exchange Act of 1934 [15 U.S.C. 78m(f)] ("Exchange Act") and rule 13f-1 [17 CFR 240.13f-1] thereunder. Rule 13f-1(a) provides that every Manager which exercises investment discretion with respect to accounts holding Section 13(f) securities, as defined in rule 13f-1(c), having an aggregate fair market value on the last trading day of any month of any calendar year of at least $100,000,000 shall file a report on Form 13F with the Commission within 45 days after the last day of such calendar year and within 45 days after the last day of each of the first three calendar quarters of the subsequent calendar year.
@@ -101,6 +107,7 @@ Provide a numbered list of the name(s) and Form 13F file number(s) of all instit
 - **4. Official List of Section 13(f) Securities:** The official list of Section 13(f) securities published by the Commission ("13F List") lists the securities the holdings of which a Manager is to report on Form 13F. See rule 13f-1(c) [17 CFR 240.13f-1(c)]. Form 13F filers may rely on the current 13F List in determining whether they need to report any particular securities holding. The current 13F List is available on [SEC 13F Lists](https://www.sec.gov/divisions/investment/13flists.htm). The 13F List is updated quarterly.
 
 <!-- SENTINEL: CONFIDENTIAL_TREATMENT -->
+
 ## INSTRUCTIONS FOR CONFIDENTIAL TREATMENT REQUESTS
 
 Pursuant to Section 13(f)(4) of the Exchange Act [15 U.S.C. 78m(f)(4)], the Commission (1) may prevent or delay public disclosure of information reported on this form in accordance with Section 552 of Title 5 of the United States Code, the Freedom of Information Act [5 U.S.C. 552], and (2) shall not disclose information reported on this form identifying securities held by the account of a natural person or an estate or trust (other than a business trust or investment company).
@@ -134,6 +141,7 @@ THIS FILING LISTS SECURITIES HOLDINGS REPORTED ON THE FORM 13F FILED ON [DATE] P
 ```
 
 <!-- SENTINEL: SPECIAL_INSTRUCTIONS -->
+
 ## SPECIAL INSTRUCTIONS
 
 - **1.** This form consists of three parts: the Form 13F Cover Page ("Cover Page"), the Form 13F Summary Page ("Summary Page"), and the Form 13F Information Table ("Information Table").

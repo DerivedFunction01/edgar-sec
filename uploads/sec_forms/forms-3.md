@@ -1,16 +1,19 @@
 <!-- SENTINEL: FORM_S3 -->
+
 # FORM S-3: REGISTRATION STATEMENT UNDER THE SECURITIES ACT OF 1933
 
 <!-- SENTINEL: OMB_APPROVAL -->
+
 ## OMB APPROVAL
 
 **OMB Number:** 3235-0073  
 **Expires:** February 28, 2029  
-**Estimated Average Burden Hours per Response:** 114.71  
+**Estimated Average Burden Hours per Response:** 114.71
 
 > **Notice:** Potential persons who are to respond to the collection of information contained in this Form are not required to respond unless the Form displays a currently valid OMB control number.
 
 <!-- SENTINEL: COVER_PAGE -->
+
 ## COVER PAGE
 
 **UNITED STATES SECURITIES AND EXCHANGE COMMISSION**  
@@ -21,25 +24,25 @@ Washington, D.C. 20549
 
 ### Registrant & Offering Details
 
-**Exact Name of Registrant as Specified in Its Charter:** ___________________________________  
-**State or Other Jurisdiction of Incorporation or Organization:** ___________________________________  
-**I.R.S. Employer Identification Number:** ___________________________________  
-**Address, Including Zip Code, and Telephone Number, Including Area Code, of Registrant's Principal Executive Offices:** ___________________________________  
-**Name, Address, Including Zip Code, and Telephone Number, Including Area Code, of Agent for Service:** ___________________________________  
-**Approximate Date of Commencement of Proposed Sale to the Public:** ___________________________________  
+**Exact Name of Registrant as Specified in Its Charter:** ****************\_\_\_****************  
+**State or Other Jurisdiction of Incorporation or Organization:** ****************\_\_\_****************  
+**I.R.S. Employer Identification Number:** ****************\_\_\_****************  
+**Address, Including Zip Code, and Telephone Number, Including Area Code, of Registrant's Principal Executive Offices:** ****************\_\_\_****************  
+**Name, Address, Including Zip Code, and Telephone Number, Including Area Code, of Agent for Service:** ****************\_\_\_****************  
+**Approximate Date of Commencement of Proposed Sale to the Public:** ****************\_\_\_****************
 
 ### Filing Characteristics & Elections
 
 - [ ] If the only securities being registered on this Form are being offered pursuant to dividend or interest reinvestment plans, please check the following box.
 - [ ] If any of the securities being registered on this Form are to be offered on a delayed or continuous basis pursuant to Rule 415 under the Securities Act of 1933, other than securities offered only in connection with dividend or interest reinvestment plans, check the following box.
-- [ ] If this Form is filed to register additional securities for an offering pursuant to Rule 462(b) under the Securities Act, please check the following box and list the Securities Act registration statement number of the earlier effective registration statement for the same offering: ____________________
-- [ ] If this Form is a post-effective amendment filed pursuant to Rule 462(c) under the Securities Act, check the following box and list the Securities Act registration statement number of the earlier effective registration statement for the same offering: ____________________
+- [ ] If this Form is filed to register additional securities for an offering pursuant to Rule 462(b) under the Securities Act, please check the following box and list the Securities Act registration statement number of the earlier effective registration statement for the same offering: ********\_\_\_\_********
+- [ ] If this Form is a post-effective amendment filed pursuant to Rule 462(c) under the Securities Act, check the following box and list the Securities Act registration statement number of the earlier effective registration statement for the same offering: ********\_\_\_\_********
 - [ ] If this Form is a registration statement pursuant to General Instruction I.D. or a post-effective amendment thereto that shall become effective upon filing with the Commission pursuant to Rule 462(e) under the Securities Act, check the following box.
 - [ ] If this Form is a post-effective amendment to a registration statement filed pursuant to General Instruction I.D. filed to register additional securities or additional classes of securities pursuant to Rule 413(b) under the Securities Act, check the following box.
 
 ### Filer Status & Accounting Standards Elections
 
-Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. *See definitions of "large accelerated filer," "accelerated filer," "smaller reporting company" and "emerging growth company" in Rule 12b-2 of the Exchange Act.*
+Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. _See definitions of "large accelerated filer," "accelerated filer," "smaller reporting company" and "emerging growth company" in Rule 12b-2 of the Exchange Act._
 
 - [ ] Large accelerated filer
 - [ ] Accelerated filer
@@ -50,9 +53,11 @@ Indicate by check mark whether the registrant is a large accelerated filer, an a
 - [ ] If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 7(a)(2)(B) of Securities Act.
 
 <!-- SENTINEL: GENERAL_INSTRUCTIONS -->
+
 ## GENERAL INSTRUCTIONS
 
 <!-- SENTINEL: GENERAL_INSTRUCTION_I -->
+
 ### I. Eligibility Requirements for Use of Form S-3
 
 This instruction sets forth registrant requirements and transaction requirements for the use of Form S-3. Any registrant which meets the requirements of I.A below ("Registrant Requirements") may use this Form for the registration of securities under the Securities Act of 1933 ("Securities Act") which are offered in any transaction specified in I.B below ("Transaction Requirement") provided that the requirements applicable to the specified transaction are met. With respect to majority-owned subsidiaries, see Instruction I.C below. With respect to well-known seasoned issuers and majority-owned subsidiaries of well-known seasoned issuers, see Instruction I.D below.
@@ -99,6 +104,7 @@ Security offerings of majority-owned subsidiaries may be registered on this Form
 Any registrant that is a well-known seasoned issuer as defined in Rule 405 may use this Form for automatic shelf registration of securities offerings. An automatic shelf registration statement becomes effective immediately upon filing pursuant to Rule 462(e) and (f).
 
 <!-- SENTINEL: PART_I -->
+
 ## PART I—INFORMATION REQUIRED IN PROSPECTUS
 
 - **Item 1. Forepart of the Registration Statement and Outside Front Cover Page of Prospectus:** Furnish information required by Item 501 of Regulation S-K.
@@ -119,6 +125,7 @@ Any registrant that is a well-known seasoned issuer as defined in Rule 405 may u
 - **Item 13. Disclosure of Commission Position on Indemnification for Securities Act Liabilities:** Furnish information required by Item 510 of Regulation S-K.
 
 <!-- SENTINEL: PART_II -->
+
 ## PART II—INFORMATION NOT REQUIRED IN PROSPECTUS
 
 - **Item 14. Other Expenses of Issuance and Distribution:** Furnish information required by Item 511 of Regulation S-K.
@@ -127,37 +134,39 @@ Any registrant that is a well-known seasoned issuer as defined in Rule 405 may u
 - **Item 17. Undertakings:** Furnish the undertakings required by Item 512 of Regulation S-K.
 
 <!-- SENTINEL: FILING_FEE_TABLES -->
+
 ### Calculation of Filing Fee Tables
 
-**Form Type:** ____________________  
-**Exact Name of Registrant as Specified in Its Charter:** ___________________________________  
+**Form Type:** ********\_\_\_\_********  
+**Exact Name of Registrant as Specified in Its Charter:** ****************\_\_\_****************
 
 #### Table 1: Newly Registered and Carry Forward Securities
 
-| Security Type | Security Class Title | Fee Calculation or Carry Forward Rule | Amount Registered | Proposed Maximum Offering Price Per Unit | Maximum Aggregate Offering Price | Fee Rate | Amount of Registration Fee | Carry Forward Form Type | Carry Forward File Number | Carry Forward Initial Effective Date | Filing Fee Previously Paid In Connection with Unsold Securities to be Carried Forward |
-| :--- | :--- | :---: | ---: | ---: | ---: | ---: | ---: | :---: | :---: | :---: | ---: |
-| **Newly Registered Securities** | | | | | | | | | | | |
-| Fees to Be Paid | X | X | X | X | X | X | X | | | | |
-| Fees Previously Paid | X | X | X | X | X | X | X | | | | |
-| **Carry Forward Securities** | | | | | | | | | | | |
-| Carry Forward Securities | X | X | X | | X | | | X | X | X | X |
-| **Totals** | | | | | | | | | | | |
-| Total Offering Amounts | | | | | **X** | | **X** | | | | |
-| Total Fees Previously Paid | | | | | | | **X** | | | | |
-| Total Fee Offsets | | | | | | | **X** | | | | |
-| Net Fee Due | | | | | | | **X** | | | | |
+| Security Type                   | Security Class Title | Fee Calculation or Carry Forward Rule | Amount Registered | Proposed Maximum Offering Price Per Unit | Maximum Aggregate Offering Price | Fee Rate | Amount of Registration Fee | Carry Forward Form Type | Carry Forward File Number | Carry Forward Initial Effective Date | Filing Fee Previously Paid In Connection with Unsold Securities to be Carried Forward |
+| :------------------------------ | :------------------- | :-----------------------------------: | ----------------: | ---------------------------------------: | -------------------------------: | -------: | -------------------------: | :---------------------: | :-----------------------: | :----------------------------------: | ------------------------------------------------------------------------------------: |
+| **Newly Registered Securities** |                      |                                       |                   |                                          |                                  |          |                            |                         |                           |                                      |                                                                                       |
+| Fees to Be Paid                 | X                    |                   X                   |                 X |                                        X |                                X |        X |                          X |                         |                           |                                      |                                                                                       |
+| Fees Previously Paid            | X                    |                   X                   |                 X |                                        X |                                X |        X |                          X |                         |                           |                                      |                                                                                       |
+| **Carry Forward Securities**    |                      |                                       |                   |                                          |                                  |          |                            |                         |                           |                                      |                                                                                       |
+| Carry Forward Securities        | X                    |                   X                   |                 X |                                          |                                X |          |                            |            X            |             X             |                  X                   |                                                                                     X |
+| **Totals**                      |                      |                                       |                   |                                          |                                  |          |                            |                         |                           |                                      |                                                                                       |
+| Total Offering Amounts          |                      |                                       |                   |                                          |                            **X** |          |                      **X** |                         |                           |                                      |                                                                                       |
+| Total Fees Previously Paid      |                      |                                       |                   |                                          |                                  |          |                      **X** |                         |                           |                                      |                                                                                       |
+| Total Fee Offsets               |                      |                                       |                   |                                          |                                  |          |                      **X** |                         |                           |                                      |                                                                                       |
+| Net Fee Due                     |                      |                                       |                   |                                          |                                  |          |                      **X** |                         |                           |                                      |                                                                                       |
 
 <!-- SENTINEL: SIGNATURES -->
+
 ## SIGNATURES
 
-Pursuant to the requirements of the Securities Act of 1933, the registrant certifies that it has reasonable grounds to believe that it meets all of the requirements for filing on Form S-3 and has duly caused this registration statement to be signed on its behalf by the undersigned, thereunto duly authorized, in the City of ____________________, State of ____________________, on ____________________, 20____.
+Pursuant to the requirements of the Securities Act of 1933, the registrant certifies that it has reasonable grounds to believe that it meets all of the requirements for filing on Form S-3 and has duly caused this registration statement to be signed on its behalf by the undersigned, thereunto duly authorized, in the City of ********\_\_\_\_********, State of ********\_\_\_\_********, on ********\_\_\_\_********, 20\_\_\_\_.
 
-**(Registrant):** ___________________________________  
-**By (Signature and Title):** ___________________________________  
+**(Registrant):** ****************\_\_\_****************  
+**By (Signature and Title):** ****************\_\_\_****************
 
 Pursuant to the requirements of the Securities Act of 1933, this registration statement has been signed by the following persons in the capacities and on the dates indicated:
 
-| Signature | Title | Date |
-| :--- | :--- | :--- |
-| ___________________________________ | ___________________________________ | ____________________ |
-| ___________________________________ | ___________________________________ | ____________________ |
+| Signature                              | Title                                  | Date                     |
+| :------------------------------------- | :------------------------------------- | :----------------------- |
+| ****************\_\_\_**************** | ****************\_\_\_**************** | ********\_\_\_\_******** |
+| ****************\_\_\_**************** | ****************\_\_\_**************** | ********\_\_\_\_******** |

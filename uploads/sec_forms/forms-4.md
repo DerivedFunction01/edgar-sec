@@ -1,18 +1,21 @@
 <!-- SENTINEL: FORM_S4 -->
+
 # FORM S-4: REGISTRATION STATEMENT UNDER THE SECURITIES ACT OF 1933
 
 Registration statement under the Securities Act of 1933 for securities issued in business combination transactions, mergers, and exchange offers.
 
 <!-- SENTINEL: OMB_APPROVAL -->
+
 ## OMB APPROVAL
 
 **OMB Number:** 3235-0324  
 **Expires:** June 30, 2029  
-**Estimated Average Burden Hours per Response:** 954.06  
+**Estimated Average Burden Hours per Response:** 954.06
 
 > **Notice:** Potential persons who are to respond to the collection of information contained in this Form are not required to respond unless the Form displays a currently valid OMB control number.
 
 <!-- SENTINEL: COVER_PAGE -->
+
 ## COVER PAGE
 
 **UNITED STATES SECURITIES AND EXCHANGE COMMISSION**  
@@ -23,23 +26,23 @@ Washington, D.C. 20549
 
 ### Registrant & Offering Details
 
-**Exact Name of Registrant as Specified in Its Charter:** ___________________________________  
-**State or Other Jurisdiction of Incorporation or Organization:** ___________________________________  
-**Primary Standard Industrial Classification Code Number:** ___________________________________  
-**I.R.S. Employer Identification Number:** ___________________________________  
-**Address, Including Zip Code, and Telephone Number, Including Area Code, of Registrant's Principal Executive Offices:** ___________________________________  
-**Name, Address, Including Zip Code, and Telephone Number, Including Area Code, of Agent for Service:** ___________________________________  
-**Approximate Date of Commencement of Proposed Sale of Securities to the Public:** ___________________________________  
+**Exact Name of Registrant as Specified in Its Charter:** ****************\_\_\_****************  
+**State or Other Jurisdiction of Incorporation or Organization:** ****************\_\_\_****************  
+**Primary Standard Industrial Classification Code Number:** ****************\_\_\_****************  
+**I.R.S. Employer Identification Number:** ****************\_\_\_****************  
+**Address, Including Zip Code, and Telephone Number, Including Area Code, of Registrant's Principal Executive Offices:** ****************\_\_\_****************  
+**Name, Address, Including Zip Code, and Telephone Number, Including Area Code, of Agent for Service:** ****************\_\_\_****************  
+**Approximate Date of Commencement of Proposed Sale of Securities to the Public:** ****************\_\_\_****************
 
 ### Transaction Characteristics & Filing Elections
 
 - [ ] If the securities being registered on this Form are being offered in connection with the formation of a holding company and there is compliance with General Instruction G, check the following box.
-- [ ] If this Form is filed to register additional securities for an offering pursuant to Rule 462(b) under the Securities Act, check the following box and list the Securities Act registration statement number of the earlier effective registration statement for the same offering: ____________________
-- [ ] If this Form is a post-effective amendment filed pursuant to Rule 462(d) under the Securities Act, check the following box and list the Securities Act registration statement number of the earlier effective registration statement for the same offering: ____________________
+- [ ] If this Form is filed to register additional securities for an offering pursuant to Rule 462(b) under the Securities Act, check the following box and list the Securities Act registration statement number of the earlier effective registration statement for the same offering: ********\_\_\_\_********
+- [ ] If this Form is a post-effective amendment filed pursuant to Rule 462(d) under the Securities Act, check the following box and list the Securities Act registration statement number of the earlier effective registration statement for the same offering: ********\_\_\_\_********
 
 ### Filer Status & Accounting Standards Elections
 
-Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or emerging growth company. *See definitions in Rule 12b-2 of the Exchange Act.*
+Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or emerging growth company. _See definitions in Rule 12b-2 of the Exchange Act._
 
 - [ ] Large accelerated filer
 - [ ] Accelerated filer
@@ -57,9 +60,11 @@ If applicable, place an X in the box to designate the appropriate rule provision
 - [ ] Exchange Act Rule 14d-1(d) (Cross-Border Third-Party Tender Offer)
 
 <!-- SENTINEL: GENERAL_INSTRUCTIONS -->
+
 ## GENERAL INSTRUCTIONS
 
 <!-- SENTINEL: GENERAL_INSTRUCTION_A -->
+
 ### A. Rule as to Use of Form S-4
 
 - **1.** This Form may be used for registration under the Securities Act of 1933 ("Securities Act") of securities to be issued:
@@ -72,6 +77,7 @@ If applicable, place an X in the box to designate the appropriate rule provision
 - **3.** This Form shall not be used if the registrant is a registered investment company or a business development company as defined in Section 2(a)(48) of the Investment Company Act of 1940.
 
 <!-- SENTINEL: GENERAL_INSTRUCTION_B -->
+
 ### B. Information with Respect to the Registrant
 
 - **1.** Information with respect to the registrant shall be provided in accordance with:
@@ -80,6 +86,7 @@ If applicable, place an X in the box to designate the appropriate rule provision
   - **c.** Item 14 of this Form, if the registrant does not meet the requirements for use of Form S-3, or if it otherwise elects this alternative.
 
 <!-- SENTINEL: GENERAL_INSTRUCTION_C -->
+
 ### C. Information with Respect to the Company Being Acquired
 
 - **1.** Information with respect to the company whose securities are being acquired shall be provided in accordance with:
@@ -88,6 +95,7 @@ If applicable, place an X in the box to designate the appropriate rule provision
   - **c.** Item 17 of this Form, if the company being acquired does not meet the requirements for use of Form S-3 or if this alternative is otherwise elected.
 
 <!-- SENTINEL: PART_I -->
+
 ## PART I—INFORMATION REQUIRED IN THE PROSPECTUS
 
 ### A. INFORMATION ABOUT THE TRANSACTION
@@ -119,6 +127,7 @@ If applicable, place an X in the box to designate the appropriate rule provision
 - **Item 19. Information if Proxies, Consents or Authorizations are not to be Solicited:** Information statement disclosures under Regulation 14C.
 
 <!-- SENTINEL: PART_II -->
+
 ## PART II—INFORMATION NOT REQUIRED IN PROSPECTUS
 
 - **Item 20. Indemnification of Directors and Officers:** Item 702 of Regulation S-K.
@@ -126,9 +135,10 @@ If applicable, place an X in the box to designate the appropriate rule provision
 - **Item 22. Undertakings:** Item 512 undertakings.
 
 <!-- SENTINEL: SIGNATURES -->
+
 ## SIGNATURES
 
-Pursuant to the requirements of the Securities Act of 1933, the registrant has duly caused this registration statement to be signed on its behalf by the undersigned, thereunto duly authorized, in the City of ____________________, State of ____________________, on ____________________, 20____.
+Pursuant to the requirements of the Securities Act of 1933, the registrant has duly caused this registration statement to be signed on its behalf by the undersigned, thereunto duly authorized, in the City of ********\_\_\_\_********, State of ********\_\_\_\_********, on ********\_\_\_\_********, 20\_\_\_\_.
 
-**(Registrant):** ___________________________________  
-**By (Signature and Title):** ___________________________________
+**(Registrant):** ****************\_\_\_****************  
+**By (Signature and Title):** ****************\_\_\_****************

@@ -6,9 +6,10 @@ Companion engineering plan to [uploads/form_cover_profile_playbook.md](form_cove
 
 ## 1. Executive Summary & Problem Framing
 
-Modern EDGAR filings increasingly mandate structured, machine-readable XML schemas, while historical archives (and occasional filer errors) contain unstructured or tabular HTML/ASCII presentations. 
+Modern EDGAR filings increasingly mandate structured, machine-readable XML schemas, while historical archives (and occasional filer errors) contain unstructured or tabular HTML/ASCII presentations.
 
 Following the implementation of Form 4 (`ownershipDocument` XML schema and pre-2003 HTML-to-XML converter), this document:
+
 1. **Audits all forms in `uploads/sec_forms/`** to classify which require an XML-based acquisition and rendering pipeline.
 2. **Defines modern vs. legacy XML requirements** for each target family.
 3. **Identifies repetitive patterns** (signatures, corporate roles, jurats, statutory warnings, OMB control blocks, and address/tax grids) currently confined to `ownership/`.
@@ -20,19 +21,20 @@ Following the implementation of Form 4 (`ownershipDocument` XML schema and pre-2
 
 Of the 20 form specifications in [uploads/sec_forms/](sec_forms/) and [uploads/exhibits.md](exhibits.md), the following forms mandate structured XML pipelines:
 
-| Form Specification | Form Family / Description | Modern SEC XML Schema | Legacy Presentation Format | Required Pipeline Operation |
-| :--- | :--- | :--- | :--- | :--- |
-| [form3.md](sec_forms/form3.md) | **Form 3**: Initial Beneficial Ownership | `<ownershipDocument>` (X0508) | Tabular HTML / ASCII tables | `AcquisitionOperation.RENDER_TO_XML` |
-| [form4.md](sec_forms/form4.md) | **Form 4**: Changes in Beneficial Ownership | `<ownershipDocument>` (X0508) | Tabular HTML / ASCII tables | `AcquisitionOperation.RENDER_TO_XML` *(Implemented)* |
-| [form5.md](sec_forms/form5.md) | **Form 5**: Annual Beneficial Ownership | `<ownershipDocument>` (X0508) | Tabular HTML / ASCII tables | `AcquisitionOperation.RENDER_TO_XML` |
-| [form144.md](sec_forms/form144.md) | **Form 144**: Proposed Sale of Securities | `<noticeOfProposedSaleOfSecurities>` | Multi-tier HTML / ASCII tables | `AcquisitionOperation.RENDER_TO_XML` |
-| [formd.md](sec_forms/formd.md) | **Form D**: Notice of Exempt Offering | `<edgarSubmission>` / `<offeringData>` | 16-item Tabular HTML notice | `AcquisitionOperation.RENDER_TO_XML` |
-| [form13f.md](sec_forms/form13f.md) | **Form 13F**: Institutional Holdings (HR/NT) | `<edgarSubmission>` / `<informationTable>` | 8-column ASCII text / HTML | `AcquisitionOperation.RENDER_TO_XML` |
-| [schedule13d.md](sec_forms/schedule13d.md) | **Schedule 13D**: 5%+ Beneficial Ownership | `<schedule13D>` (Mandated 2024) | HTML narrative + 14-row Matrix | Hybrid (Matrix XML + Narrative txt) |
-| [schedule13g.md](sec_forms/schedule13g.md) | **Schedule 13G**: Passive Ownership | `<schedule13G>` (Mandated 2024) | HTML narrative + Cover Matrix | Hybrid (Matrix XML + Narrative txt) |
-| [exhibits.md](exhibits.md) (EX-107) | **EX-107**: Structured Filing Fee Tables | `<fee_tables>` / Rule 107 XML | Unstructured HTML fee tables | `AcquisitionOperation.RENDER_TO_XML` |
+| Form Specification                         | Form Family / Description                    | Modern SEC XML Schema                      | Legacy Presentation Format     | Required Pipeline Operation                          |
+| :----------------------------------------- | :------------------------------------------- | :----------------------------------------- | :----------------------------- | :--------------------------------------------------- |
+| [form3.md](sec_forms/form3.md)             | **Form 3**: Initial Beneficial Ownership     | `<ownershipDocument>` (X0508)              | Tabular HTML / ASCII tables    | `AcquisitionOperation.RENDER_TO_XML`                 |
+| [form4.md](sec_forms/form4.md)             | **Form 4**: Changes in Beneficial Ownership  | `<ownershipDocument>` (X0508)              | Tabular HTML / ASCII tables    | `AcquisitionOperation.RENDER_TO_XML` _(Implemented)_ |
+| [form5.md](sec_forms/form5.md)             | **Form 5**: Annual Beneficial Ownership      | `<ownershipDocument>` (X0508)              | Tabular HTML / ASCII tables    | `AcquisitionOperation.RENDER_TO_XML`                 |
+| [form144.md](sec_forms/form144.md)         | **Form 144**: Proposed Sale of Securities    | `<noticeOfProposedSaleOfSecurities>`       | Multi-tier HTML / ASCII tables | `AcquisitionOperation.RENDER_TO_XML`                 |
+| [formd.md](sec_forms/formd.md)             | **Form D**: Notice of Exempt Offering        | `<edgarSubmission>` / `<offeringData>`     | 16-item Tabular HTML notice    | `AcquisitionOperation.RENDER_TO_XML`                 |
+| [form13f.md](sec_forms/form13f.md)         | **Form 13F**: Institutional Holdings (HR/NT) | `<edgarSubmission>` / `<informationTable>` | 8-column ASCII text / HTML     | `AcquisitionOperation.RENDER_TO_XML`                 |
+| [schedule13d.md](sec_forms/schedule13d.md) | **Schedule 13D**: 5%+ Beneficial Ownership   | `<schedule13D>` (Mandated 2024)            | HTML narrative + 14-row Matrix | Hybrid (Matrix XML + Narrative txt)                  |
+| [schedule13g.md](sec_forms/schedule13g.md) | **Schedule 13G**: Passive Ownership          | `<schedule13G>` (Mandated 2024)            | HTML narrative + Cover Matrix  | Hybrid (Matrix XML + Narrative txt)                  |
+| [exhibits.md](exhibits.md) (EX-107)        | **EX-107**: Structured Filing Fee Tables     | `<fee_tables>` / Rule 107 XML              | Unstructured HTML fee tables   | `AcquisitionOperation.RENDER_TO_XML`                 |
 
 ### Non-XML Forms in `uploads/sec_forms/` (Text / Cover Profiles Only)
+
 - **Periodic Reports**: [10-k.md](sec_forms/10-k.md), [10-q.md](sec_forms/10-q.md), [20-f.md](sec_forms/20-f.md). (Text/iXBRL narratives; target is `render_to_txt`).
 - **Current Reports**: [8-k.md](sec_forms/8-k.md), [6-k.md](sec_forms/6-k.md). (Item-driven narrative events; target is `render_to_txt`).
 - **Proxy Statements**: [def14a.md](sec_forms/def14a.md). (Narrative governance materials).
@@ -44,6 +46,7 @@ Of the 20 form specifications in [uploads/sec_forms/](sec_forms/) and [uploads/e
 ## 3. Deep-Dive on Target XML Forms
 
 ### A. Section 16 Ownership Forms (Forms 3, 4, 5)
+
 - **Shared XML Root**: `<ownershipDocument>`
 - **Structural Differences**:
   - **Form 3**: Initial holdings only. Table I (Non-Derivative Holdings) and Table II (Derivative Holdings) contain no transaction codes, dates, or prices; only title of security, amount owned, and ownership form (Direct/Indirect).
@@ -52,6 +55,7 @@ Of the 20 form specifications in [uploads/sec_forms/](sec_forms/) and [uploads/e
 - **Common Engine**: Both Form 3 and Form 5 can reuse the existing `edgar_sec/engine/forms/ownership/` table grid and cell resolution logic with minor schema branches.
 
 ### B. Form 144 (Notice of Proposed Sale of Securities)
+
 - **Mandate**: Mandated electronic XML submission since April 13, 2023 (SEC Release 33-11070).
 - **XML Root**: `<noticeOfProposedSaleOfSecurities>`
 - **Legacy Problem**: Prior to April 2023, filed as filer-authored HTML tables.
@@ -64,6 +68,7 @@ Of the 20 form specifications in [uploads/sec_forms/](sec_forms/) and [uploads/e
   - `signatureAndRepresentations`: 10b5-1 plan adoption date, conformed signature, 18 U.S.C. 1001 caution.
 
 ### C. Form D (Notice of Exempt Offering of Securities)
+
 - **Mandate**: Pure structured XML electronic filing mandated since March 16, 2009 (SEC Release 33-8891).
 - **XML Root**: `<edgarSubmission>` with `<offeringData>`
 - **Structure**: 16 standardized items:
@@ -74,6 +79,7 @@ Of the 20 form specifications in [uploads/sec_forms/](sec_forms/) and [uploads/e
   - Signatures & Terms of Submission: Issuer name, signature, signer name, title, date.
 
 ### D. Form 13F (Institutional Investment Manager Holdings)
+
 - **Mandate**: Structured XML mandated since May 20, 2013; updated in 2023 for FIGI.
 - **XML Root**: `<edgarSubmission>` with:
   - `<coverPage>`: Period ended, manager name, address, Form 13F file number (28-xxxx), report type (13F HOLDINGS REPORT, NOTICE, COMBINATION).
@@ -82,6 +88,7 @@ Of the 20 form specifications in [uploads/sec_forms/](sec_forms/) and [uploads/e
 - **Legacy Problem**: Pre-2013 filings are plain ASCII 8-column fixed-width tables.
 
 ### E. Schedules 13D & 13G (Beneficial Ownership)
+
 - **Mandate**: Structured XML mandated under SEC Release 33-11253 (effective late 2024).
 - **Structure**:
   - Cover Page Disclosure Matrix: 14 numbered rows (Filer Name, Group Member, Source of Funds, Citizenship, Voting Power [Sole/Shared], Dispositive Power [Sole/Shared], Aggregate Beneficial Ownership, Percent of Class, Type of Reporting Person).
@@ -106,6 +113,7 @@ edgar_sec/
 ```
 
 ### A. Signatures & Delegation Subsystem
+
 Repeated across Forms 3, 4, 5, 144, D, 13F, 13D, 13G, and periodic reports:
 
 1. **Conformed Markings**:
@@ -118,6 +126,7 @@ Repeated across Forms 3, 4, 5, 144, D, 13F, 13D, 13G, and periodic reports:
    - `Notary Public`, `Subscribed and sworn`, `Commission expires`, `My commission`, `State of`, `County of`, `SS.`.
 
 **Factored Domain Model** (`domain/forms/common/signatures.py`):
+
 ```python
 @dataclass(frozen=True, slots=True)
 class Signatory:
@@ -135,6 +144,7 @@ class SignatureBlock:
 ```
 
 ### B. Statutory Warnings & Criminal Boilerplate
+
 Repeated verbatim across Forms 3, 4, 5, 144, D:
 
 1. **Federal Criminal Violations**:
@@ -146,10 +156,13 @@ Repeated verbatim across Forms 3, 4, 5, 144, D:
    - `"SEC 1474"`, `"SEC 2474"`, `"(over)"`.
 
 **Factored Domain Module** (`domain/forms/common/statutory.py`):
+
 - Provides compiled veto regexes (`STATUTORY_BOILERPLATE_VETOES`) and cleanup masks so table parsers do not leak boilerplate into extracted data cells.
 
 ### C. Filer Identity, Address, and Tax ID Parsing
+
 Repeated across all forms:
+
 - `STATE_ZIP_RE`: State abbreviation + 5-digit/9-digit ZIP code.
 - `IRS_RE`: 9-digit IRS employer/tax identification number (`XX-XXXXXXX`).
 - `STREET_ANCHOR_TERMS`: `street`, `st`, `avenue`, `ave`, `boulevard`, `blvd`, `road`, `rd`, `suite`, `ste`, `floor`, `fl`.
@@ -160,6 +173,7 @@ Repeated across all forms:
 ## 5. Architectural Integration: Extensible XML Dispatcher
 
 Currently, `edgar_sec/engine/forms/render.py` hardcodes Form 4:
+
 ```python
 if target_op == AcquisitionOperation.RENDER_TO_XML:
     from edgar_sec.engine.forms.ownership.render_to_xml import render_form4_to_xml
@@ -168,6 +182,7 @@ if target_op == AcquisitionOperation.RENDER_TO_XML:
 ```
 
 ### Proposed Generalized Dispatch Architecture:
+
 1. **Renderer Registry** in `edgar_sec/engine/forms/xml/`:
    ```python
    XML_RENDERER_CATALOG: dict[str, Callable[[bytes], bytes]] = {

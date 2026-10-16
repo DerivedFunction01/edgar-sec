@@ -35,7 +35,7 @@ _(Print or Type Responses)_
 **1. Name and Address of Reporting Person:\***
 
 - **Name:** **\*\*\*\***\_\_\_\_**\*\*\*\*** (Last), **\*\*\*\***\_\_\_\_**\*\*\*\*** (First), **\*\*\*\***\_\_\_\_**\*\*\*\*** (Middle)
-- **Address:** ******\*\*\*\*******\_\_\_******\*\*\*\******* (Street), **\*\*\*\***\_\_\_\_**\*\*\*\*** (City), **\*\*\*\***\_\_\_\_**\*\*\*\*** (State), **\*\*\*\***\_\_\_\_**\*\*\*\*** (Zip/Postal Code), **\*\*\*\***\_\_\_\_**\*\*\*\*** (Country)
+- **Address:** **\*\***\*\*\*\***\*\***\_\_\_**\*\***\*\*\*\***\*\*** (Street), **\*\*\*\***\_\_\_\_**\*\*\*\*** (City), **\*\*\*\***\_\_\_\_**\*\*\*\*** (State), **\*\*\*\***\_\_\_\_**\*\*\*\*** (Zip/Postal Code), **\*\*\*\***\_\_\_\_**\*\*\*\*** (Country)
 
 > **Note:** \* If the form is filed by more than one reporting person, see Instruction 4(b)(v).
 
@@ -53,7 +53,7 @@ _(Check all applicable)_
 - [ ] Officer (give title below)
 - [ ] 10% Owner
 - [ ] Other (specify below)
-  - Title / Other Specification: ********\*\*\*\*********\_\_\_********\*\*\*\*********
+  - Title / Other Specification: **\*\*\*\***\*\*\*\***\*\*\*\***\_\_\_**\*\*\*\***\*\*\*\***\*\*\*\***
 
 **6. Individual or Joint/Group Filing:**  
 _(Check Applicable Line)_
@@ -85,8 +85,8 @@ _(Check Applicable Line)_
 
 ## SIGNATURES
 
-**Signature of Reporting Person:** ******\*\*\*\*******\_\_\_******\*\*\*\*******  
-**Date:** ****\*\*****\_\_\_\_****\*\*****
+**Signature of Reporting Person:** **\*\***\*\*\*\***\*\***\_\_\_**\*\***\*\*\*\***\*\***  
+**Date:** \***\*\*\*\*\***\_\_\_\_\***\*\*\*\*\***
 
 > **Caution:** Intentional misstatements or omissions of facts constitute Federal Criminal Violations. See 18 U.S.C. 1001 and 15 U.S.C. 78ff(a).
 
