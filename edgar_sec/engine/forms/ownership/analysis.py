@@ -8,12 +8,18 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.engine.forms.ownership.patterns import HEADER_LEAK_RE
 from edgar_sec.foundation.text.dates import (
     MONTH_PATTERN,
     NUMERIC_DATE_RE,
+    parse_date,
 )
 
 _MONTH_WORD_RE = re.compile(rf"(?i)\b(?:{MONTH_PATTERN})\b")
+_CIK_MASK_RE = re.compile(r"\bCIK\s*[:#]?\s*\d{1,10}\b", re.IGNORECASE)
+_DIGIT_RUN_RE = re.compile(r"\d+")
+_WHITESPACE_RE = re.compile(r"\s+")
+_WORD_NGRAM_RE = re.compile(r"[A-Za-z0-9#_]+")
 
 _VALID_TRANSACTION_CODES = frozenset(
     {
@@ -37,16 +43,6 @@ _VALID_TRANSACTION_CODES = frozenset(
         "U",
         "K",
     }
-)
-
-_HEADER_LEAK_PHRASES = (
-    "deemed execution",
-    "date of original",
-    "title of security",
-    "individual or joint",
-    "price of derivative",
-    "amount or number",
-    "conversion or exercise",
 )
 
 _SIGNATURE_BOILERPLATE_PHRASES = (
@@ -74,13 +70,142 @@ _STATUTORY_BOILERPLATE_PHRASES = (
     "(over)",
 )
 
+_FIELD_PATHS: dict[str, tuple[str, ...]] = {
+    "periodOfReport": ("periodOfReport",),
+    "issuerName": ("issuer/issuerName",),
+    "issuerTradingSymbol": ("issuer/issuerTradingSymbol",),
+    "rptOwnerName": ("reportingOwner/reportingOwnerId/rptOwnerName",),
+    "isDirector": ("reportingOwner/reportingOwnerRelationship/isDirector",),
+    "isOfficer": ("reportingOwner/reportingOwnerRelationship/isOfficer",),
+    "isTenPercentOwner": (
+        "reportingOwner/reportingOwnerRelationship/isTenPercentOwner",
+    ),
+    "isOther": ("reportingOwner/reportingOwnerRelationship/isOther",),
+    "officerTitle": ("reportingOwner/reportingOwnerRelationship/officerTitle",),
+    "signatureName": ("ownerSignature/signatureName",),
+    "signatureDate": ("ownerSignature/signatureDate",),
+    "securityTitle": (
+        "nonDerivativeTable/*/securityTitle/value",
+        "derivativeTable/*/securityTitle/value",
+    ),
+    "transactionDate": (
+        "nonDerivativeTable/*/transactionDate/value",
+        "derivativeTable/*/transactionDate/value",
+    ),
+    "transactionCode": (
+        "nonDerivativeTable/*/transactionCoding/transactionCode",
+        "derivativeTable/*/transactionCoding/transactionCode",
+    ),
+    "transactionShares": (
+        "nonDerivativeTable/*/transactionAmounts/transactionShares/value",
+        "derivativeTable/*/transactionAmounts/transactionShares/value",
+    ),
+    "transactionPricePerShare": (
+        "nonDerivativeTable/*/transactionAmounts/transactionPricePerShare/value",
+        "derivativeTable/*/transactionAmounts/transactionPricePerShare/value",
+    ),
+    "transactionAcquiredDisposedCode": (
+        "nonDerivativeTable/*/transactionAmounts/transactionAcquiredDisposedCode/value",
+        "derivativeTable/*/transactionAmounts/transactionAcquiredDisposedCode/value",
+    ),
+    "sharesOwnedFollowingTransaction": (
+        "nonDerivativeTable/*/postTransactionAmounts/sharesOwnedFollowingTransaction/value",
+        "derivativeTable/*/postTransactionAmounts/sharesOwnedFollowingTransaction/value",
+    ),
+    "directOrIndirectOwnership": (
+        "nonDerivativeTable/*/ownershipNature/directOrIndirectOwnership/value",
+        "derivativeTable/*/ownershipNature/directOrIndirectOwnership/value",
+    ),
+    "natureOfOwnership": (
+        "nonDerivativeTable/*/ownershipNature/natureOfOwnership/value",
+    ),
+    "conversionOrExercisePrice": ("derivativeTable/*/conversionOrExercisePrice/value",),
+    "exerciseDate": (
+        "derivativeTable/*/exerciseDateAndExpirationDate/exerciseDate/value",
+    ),
+    "expirationDate": (
+        "derivativeTable/*/exerciseDateAndExpirationDate/expirationDate/value",
+    ),
+    "underlyingSecurityTitle": (
+        "derivativeTable/*/underlyingSecurity/underlyingSecurityTitle/value",
+    ),
+    "underlyingSecurityShares": (
+        "derivativeTable/*/underlyingSecurity/underlyingSecurityShares/value",
+    ),
+}
+
+_DOCUMENT_FIELDS = frozenset(
+    {
+        "periodOfReport",
+        "issuerName",
+        "issuerTradingSymbol",
+        "rptOwnerName",
+        "isDirector",
+        "isOfficer",
+        "isTenPercentOwner",
+        "isOther",
+        "officerTitle",
+        "signatureName",
+        "signatureDate",
+    }
+)
+_REQUIRED_DOCUMENT_FIELDS = ("periodOfReport", "issuerName", "rptOwnerName")
+_FIELD_VALUE_TAGS = {
+    "securityTitle": "securityTitle",
+    "underlyingSecurityTitle": "underlyingSecurityTitle",
+    "officerTitle": "officerTitle",
+    "signatureName": "signatureName",
+    "rptOwnerName": "rptOwnerName",
+    "transactionCode": "transactionCode",
+    "transactionFormType": "transactionFormType",
+    "equitySwapInvolved": "equitySwapInvolved",
+    "transactionAcquiredDisposedCode": "transactionAcquiredDisposedCode",
+    "directOrIndirectOwnership": "directOrIndirectOwnership",
+    "natureOfOwnership": "natureOfOwnership",
+    "isDirector": "isDirector",
+    "isOfficer": "isOfficer",
+    "isTenPercentOwner": "isTenPercentOwner",
+    "isOther": "isOther",
+}
+
 
 def mask_normalized_pattern(text: str) -> str:
     """Mask text into structural placeholders for digits, months, and dates."""
-    masked = NUMERIC_DATE_RE.sub("DATE_PATTERN", text)
+    masked = _CIK_MASK_RE.sub("CIK_###", text)
+    masked = NUMERIC_DATE_RE.sub("DATE_PATTERN", masked)
     masked = _MONTH_WORD_RE.sub("MONTH", masked)
-    masked = re.sub(r"\d+", "###", masked)
-    return re.sub(r"\s+", " ", masked).strip()
+    masked = _DIGIT_RUN_RE.sub("###", masked)
+    return _WHITESPACE_RE.sub(" ", masked).strip()
+
+
+def _field_observations(root: ET.Element) -> dict[str, dict[str, int]]:
+    observations: dict[str, dict[str, int]] = {}
+    for field, paths in _FIELD_PATHS.items():
+        elements = [element for path in paths for element in root.findall(path)]
+        populated = sum(bool(_element_text(element)) for element in elements)
+        observations[field] = {
+            "occurrences": len(elements),
+            "populated_occurrences": populated,
+            "blank_occurrences": len(elements) - populated,
+        }
+    return observations
+
+
+def _field_values(root: ET.Element) -> dict[str, list[str]]:
+    return {
+        field: [
+            text
+            for element in root.iter(tag)
+            if (
+                text := _element_text(
+                    element.find("value")
+                    if element.find("value") is not None
+                    else element
+                )
+            )
+        ]
+        for field, tag in _FIELD_VALUE_TAGS.items()
+    }
 
 
 def _element_text(elem: ET.Element | None) -> str:
@@ -105,10 +230,21 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
 
     element_counts: Counter[str] = Counter()
     anomalies: list[dict[str, Any]] = []
+    review_signals: list[dict[str, Any]] = []
     unparsed_sections: list[dict[str, Any]] = []
 
     for elem in root.iter():
         element_counts[elem.tag] += 1
+
+    if root.tag != "ownershipDocument":
+        anomalies.append(
+            {
+                "accession": accession,
+                "kind": "invalid_document_envelope",
+                "value": root.tag,
+                "detail": "root element is not ownershipDocument",
+            }
+        )
 
     # Invariant: underlyingSecurityTitle should not contain dates or column headers
     for u_elem in root.iter("underlyingSecurityTitle"):
@@ -124,7 +260,7 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
                     "detail": "underlying security title contains date pattern",
                 }
             )
-        if text and any(header in lower for header in _HEADER_LEAK_PHRASES):
+        if text and HEADER_LEAK_RE.search(text):
             anomalies.append(
                 {
                     "accession": accession,
@@ -148,7 +284,7 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
                     "detail": "security title contains instruction header text",
                 }
             )
-        if text and any(header in lower for header in _HEADER_LEAK_PHRASES):
+        if text and HEADER_LEAK_RE.search(text):
             anomalies.append(
                 {
                     "accession": accession,
@@ -190,7 +326,7 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
         for d_elem in root.iter(date_tag):
             val_elem = d_elem.find("value")
             text = _element_text(val_elem if val_elem is not None else d_elem)
-            if text and not NUMERIC_DATE_RE.search(text):
+            if text and parse_date(text) is None:
                 anomalies.append(
                     {
                         "accession": accession,
@@ -199,6 +335,53 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
                         "detail": f"{date_tag} does not contain recognized date",
                     }
                 )
+
+    for date_tag in ("signatureDate",):
+        for d_elem in root.iter(date_tag):
+            text = _element_text(d_elem)
+            if text and parse_date(text) is None:
+                anomalies.append(
+                    {
+                        "accession": accession,
+                        "kind": f"invalid_{date_tag}",
+                        "value": text,
+                        "detail": f"{date_tag} is not a valid recognized date",
+                    }
+                )
+
+    for date_tag in ("securityTitle",):
+        for s_elem in root.iter(date_tag):
+            val_elem = s_elem.find("value")
+            text = _element_text(val_elem if val_elem is not None else s_elem)
+            if text and NUMERIC_DATE_RE.search(text):
+                finding = {
+                    "accession": accession,
+                    "kind": "date_in_security_title",
+                    "value": text,
+                    "detail": "security title contains a complete date pattern",
+                }
+                if "option" in text.lower():
+                    review_signals.append(
+                        {
+                            **finding,
+                            "kind": "date_in_option_security_title",
+                            "detail": "date appears in a descriptive option title; source text preserved",
+                        }
+                    )
+                else:
+                    anomalies.append(finding)
+
+    for code_elem in root.iter("transactionCode"):
+        code = _element_text(code_elem)
+        if code and HEADER_LEAK_RE.search(code):
+            anomalies.append(
+                {
+                    "accession": accession,
+                    "kind": "header_leak_in_transaction_code",
+                    "value": code,
+                    "detail": "transaction code contains column header text",
+                }
+            )
 
     # Invariant: directOrIndirectOwnership must be D or I
     for own_elem in root.iter("directOrIndirectOwnership"):
@@ -227,13 +410,26 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
         "signatureName": bool(_element_text(root.find("ownerSignature/signatureName"))),
         "signatureDate": bool(_element_text(root.find("ownerSignature/signatureDate"))),
     }
+    field_observations = _field_observations(root)
+    missing_required_fields = [
+        field for field in _REQUIRED_DOCUMENT_FIELDS if not core_fields.get(field)
+    ]
+    if missing_required_fields:
+        anomalies.append(
+            {
+                "accession": accession,
+                "kind": "missing_required_fields",
+                "value": ", ".join(missing_required_fields),
+                "detail": "required Form 4 document fields are missing or blank",
+            }
+        )
 
     # Collect unparsed sections with clean sample snippets
     for unp in root.iter("unparsedSection"):
         t_idx = unp.attrib.get("tableIndex", "")
         role = unp.attrib.get("role", "")
         text = _element_text(unp)
-        snippet = re.sub(r"\s+", " ", text)[:240].strip()
+        snippet = _WHITESPACE_RE.sub(" ", text)[:240].strip()
         lower_snip = snippet.lower()
         is_boilerplate = any(b in lower_snip for b in _STATUTORY_BOILERPLATE_PHRASES)
         unparsed_sections.append(
@@ -247,49 +443,24 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
             }
         )
 
-    field_values: dict[str, list[str]] = {
-        "securityTitle": [
-            text
-            for s in root.iter("securityTitle")
-            if (
-                text := _element_text(
-                    s.find("value") if s.find("value") is not None else s
-                )
-            )
-        ],
-        "underlyingSecurityTitle": [
-            text
-            for u in root.iter("underlyingSecurityTitle")
-            if (
-                text := _element_text(
-                    u.find("value") if u.find("value") is not None else u
-                )
-            )
-        ],
-        "signatureName": [
-            text for sig in root.iter("signatureName") if (text := _element_text(sig))
-        ],
-        "officerTitle": [
-            text for off in root.iter("officerTitle") if (text := _element_text(off))
-        ],
-        "rptOwnerName": [
-            text for own in root.iter("rptOwnerName") if (text := _element_text(own))
-        ],
-    }
+    field_values = _field_values(root)
 
     return {
         "accession": accession,
         "element_counts": dict(sorted(element_counts.items())),
         "anomalies": anomalies,
+        "review_signals": review_signals,
         "unparsed_sections": unparsed_sections,
         "core_fields": core_fields,
+        "field_observations": field_observations,
+        "missing_required_fields": missing_required_fields,
         "field_values": field_values,
     }
 
 
 def extract_word_ngrams(text: str, n: int = 2) -> list[str]:
     """Extract lowercased word n-grams from text."""
-    words = [w.lower() for w in re.findall(r"[A-Za-z0-9#_]+", text)]
+    words = [w.lower() for w in _WORD_NGRAM_RE.findall(text)]
     if n == 1:
         return words
     if len(words) < n:
@@ -322,8 +493,13 @@ def summarize_ownership_cases(case_reports: list[dict[str, Any]]) -> dict[str, A
     """Aggregate individual Form 4 case analyses into an overall ownership run summary."""
     total_elements: Counter[str] = Counter()
     all_anomalies: list[dict[str, Any]] = []
+    all_review_signals: list[dict[str, Any]] = []
     all_unparsed: list[dict[str, Any]] = []
     field_counts: Counter[str] = Counter()
+    observation_counts: dict[str, Counter[str]] = {
+        field: Counter() for field in _FIELD_PATHS
+    }
+    field_case_counts: Counter[str] = Counter()
 
     for rep in case_reports:
         for tag, count in rep.get("element_counts", {}).items():
@@ -331,7 +507,12 @@ def summarize_ownership_cases(case_reports: list[dict[str, Any]]) -> dict[str, A
         for field, present in rep.get("core_fields", {}).items():
             if present:
                 field_counts[field] += 1
+        for field, observation in rep.get("field_observations", {}).items():
+            observation_counts[field].update(observation)
+            if observation.get("populated_occurrences", 0):
+                field_case_counts[field] += 1
         all_anomalies.extend(rep.get("anomalies", []))
+        all_review_signals.extend(rep.get("review_signals", []))
         all_unparsed.extend(rep.get("unparsed_sections", []))
 
     case_count = max(1, len(case_reports))
@@ -345,6 +526,20 @@ def summarize_ownership_cases(case_reports: list[dict[str, Any]]) -> dict[str, A
             "signatureName",
             "signatureDate",
         )
+    }
+    field_scorecard = {
+        field: {
+            "scope": "document" if field in _DOCUMENT_FIELDS else "repeated_record",
+            "cases_with_value": field_case_counts[field],
+            "cases_without_value": len(case_reports) - field_case_counts[field],
+            "case_missing_percent": round(
+                (len(case_reports) - field_case_counts[field]) * 100 / case_count, 2
+            ),
+            "occurrences": observation_counts[field]["occurrences"],
+            "populated_occurrences": observation_counts[field]["populated_occurrences"],
+            "blank_occurrences": observation_counts[field]["blank_occurrences"],
+        }
+        for field in _FIELD_PATHS
     }
 
     substantive_unparsed = [
@@ -363,6 +558,10 @@ def summarize_ownership_cases(case_reports: list[dict[str, Any]]) -> dict[str, A
             unparsed_samples.append(item)
             if len(unparsed_samples) >= 10:
                 break
+
+    review_signal_samples = sorted(
+        all_review_signals, key=lambda item: (item["accession"], item["value"])
+    )[:20]
 
     # Outlier and uncommonness analysis across corpus
     missing_signatures = [
@@ -409,6 +608,12 @@ def summarize_ownership_cases(case_reports: list[dict[str, Any]]) -> dict[str, A
             "officerTitle",
         )
     }
+    value_counts: dict[str, Counter[str]] = {
+        field: Counter() for field in _FIELD_VALUE_TAGS
+    }
+    value_case_counts: dict[str, dict[str, set[str]]] = {
+        field: {} for field in _FIELD_VALUE_TAGS
+    }
 
     for rep in case_reports:
         acc = rep.get("accession", "")
@@ -432,6 +637,41 @@ def summarize_ownership_cases(case_reports: list[dict[str, Any]]) -> dict[str, A
                         field_pattern_samples[fld][pat] = acc
                     for ng in extract_word_ngrams(v, n=2):
                         field_ngram_counts[fld][ng] += 1
+                if fld in value_counts:
+                    value_counts[fld][v] += 1
+                    value_case_counts[fld].setdefault(v, set()).add(acc)
+
+    value_frequencies = {}
+    for field, counts in value_counts.items():
+        if not counts:
+            continue
+        top_values = [
+            {
+                "value": value,
+                "count": count,
+                "case_count": len(value_case_counts[field][value]),
+                "sample_accession": min(value_case_counts[field][value]),
+            }
+            for value, count in counts.most_common(20)
+        ]
+        rare_values = [
+            {
+                "value": value,
+                "count": count,
+                "case_count": len(value_case_counts[field][value]),
+                "sample_accession": min(value_case_counts[field][value]),
+            }
+            for value, count in sorted(
+                counts.items(), key=lambda item: (item[1], item[0])
+            )
+            if count <= 2
+        ][:20]
+        value_frequencies[field] = {
+            "occurrences": sum(counts.values()),
+            "distinct_values": len(counts),
+            "top_values": top_values,
+            "rare_values": rare_values,
+        }
 
     common_patterns_by_field: dict[str, list[dict[str, Any]]] = {}
     uncommon_patterns_by_field: dict[str, list[dict[str, Any]]] = {}
@@ -472,11 +712,16 @@ def summarize_ownership_cases(case_reports: list[dict[str, Any]]) -> dict[str, A
         "element_counts": dict(sorted(total_elements.items(), key=lambda kv: -kv[1])),
         "anomaly_count": len(all_anomalies),
         "anomalies": all_anomalies,
+        "review_signal_count": len(all_review_signals),
+        "review_signals": all_review_signals,
+        "review_signal_samples": review_signal_samples,
         "unparsed_section_count": len(all_unparsed),
         "boilerplate_unparsed_count": boilerplate_unparsed_count,
         "substantive_unparsed_count": len(substantive_unparsed),
         "unparsed_samples": unparsed_samples,
         "field_completeness": field_completeness,
+        "field_scorecard": field_scorecard,
+        "value_frequencies": value_frequencies,
         "outliers": {
             "missing_fields": {
                 "missing_signatures": {

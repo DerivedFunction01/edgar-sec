@@ -333,28 +333,22 @@ def run_review_menu(config: ReviewMenuConfig) -> int:
         if not runs:
             print(f"No review runs found under {review_root}.")
             return
-        print("\nAvailable review runs:")
-        for index, run in enumerate(runs, start=1):
-            print(f"  {index}. {run.name}")
-        selection = prompt_text(
-            "Run numbers (comma-separated), 'all', or blank to cancel"
-        ).strip()
-        if not selection:
+        items = [
+            PickItem(
+                key=r.name,
+                label=r.name,
+                value=r,
+            )
+            for r in runs
+        ]
+        chosen = prompt_paginated_choice(
+            items,
+            default=items[0],
+            prompt_label="Select review run to analyze",
+        )
+        if chosen is None:
             return
-        if selection.lower() == "all":
-            selected = runs
-        else:
-            indices = []
-            for value in selection.split(","):
-                token = value.strip()
-                if not token.isdigit() or not 1 <= int(token) <= len(runs):
-                    print("Invalid review-run selection; analysis cancelled.")
-                    return
-                index = int(token) - 1
-                if index not in indices:
-                    indices.append(index)
-            selected = [runs[index] for index in indices]
-        config.analyze_action(tuple(run.name for run in selected))
+        config.analyze_action((chosen.value.name,))
 
     def _action_switch_plan() -> None:
         nonlocal session_plan

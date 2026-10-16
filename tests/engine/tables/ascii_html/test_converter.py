@@ -4,10 +4,12 @@ from __future__ import annotations
 
 import pytest
 
+import edgar_sec.engine.tables.ascii_html.renderer as renderer
 from edgar_sec.engine.tables.ascii_html.converter import (
     convert_html_table,
     convert_html_tables_to_ascii,
     convert_html_tables_to_ascii_with_metadata,
+    resolve_html_table_grid,
 )
 from edgar_sec.engine.tables.ascii_html.model import TableGeometry
 from edgar_sec.engine.tables.ascii_html.renderer import render_grid_to_ascii
@@ -39,6 +41,21 @@ def test_the_metadata_facade_returns_one_geometry_per_rendered_table() -> None:
     assert len(geometries) == 2
     assert all(isinstance(geometry, TableGeometry) for geometry in geometries)
     assert [geometry.table_index for geometry in geometries] == [0, 1]
+
+
+def test_grid_only_resolver_skips_visual_column_widths(monkeypatch) -> None:
+    def fail_width_calculation(*args, **kwargs):
+        pytest.fail("grid-only resolution must not calculate visual widths")
+
+    monkeypatch.setattr(renderer, "compute_column_widths", fail_width_calculation)
+
+    grid = resolve_html_table_grid(
+        "<table><tr><th>Name</th><th>Amount</th></tr>"
+        "<tr><td>Common Stock</td><td>1000</td></tr></table>"
+    )
+
+    assert grid.rows == (("Name", "Amount"), ("Common Stock", "1000"))
+    assert grid.column_widths == ()
 
 
 def test_a_document_with_no_tables_keeps_its_text_and_has_no_geometry() -> None:

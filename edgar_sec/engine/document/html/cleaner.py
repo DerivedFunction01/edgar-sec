@@ -78,6 +78,7 @@ _RE_STYLE_FONT_FAMILY = re.compile(
 )
 _RE_FACE_ATTR = re.compile(r"(?i)\bface\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+))")
 _RE_GLYPH = re.compile(r"[\u00a8\u00a3\u00fe\u00fdrRnNuUoOxX]")
+_RE_NUMERIC_GLYPH_ENTITY = re.compile(r"&#(?:x([0-9a-f]+)|(\d+));?", re.IGNORECASE)
 _VOID_TAGS = frozenset(
     {
         "area",
@@ -215,7 +216,10 @@ def normalize_font_qualified_glyphs(html: str) -> str:
             if opaque_depth or current_font is None:
                 output.append(token)
             else:
-                output.append(_replace_font_glyphs(token, current_font))
+                decoded = _RE_NUMERIC_GLYPH_ENTITY.sub(
+                    _decode_numeric_glyph_entity, token
+                )
+                output.append(_replace_font_glyphs(decoded, current_font))
             continue
 
         if token.startswith("<!--"):
@@ -259,6 +263,14 @@ def normalize_font_qualified_glyphs(html: str) -> str:
                 ).strip()
 
     return "".join(output)
+
+
+def _decode_numeric_glyph_entity(match: re.Match[str]) -> str:
+    value = int(match.group(1), 16) if match.group(1) else int(match.group(2))
+    if value > 0x10FFFF:
+        return match.group(0)
+    glyph = chr(value)
+    return glyph if _RE_GLYPH.fullmatch(glyph) else match.group(0)
 
 
 def strip_benign_font_styles(html: str) -> str:

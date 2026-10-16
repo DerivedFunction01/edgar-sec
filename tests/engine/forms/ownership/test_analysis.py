@@ -77,7 +77,7 @@ def test_summarize_ownership_cases_aggregates_metrics() -> None:
     rep2 = analyze_ownership_xml(SAMPLE_ANOMALOUS_XML, accession="0001-01-000002")
     summary = summarize_ownership_cases([rep1, rep2])
     assert summary["case_count"] == 2
-    assert summary["anomaly_count"] == 2
+    assert summary["anomaly_count"] == 3
     assert summary["unparsed_section_count"] == 1
     assert len(summary["unparsed_samples"]) == 1
     assert "field_completeness" in summary
@@ -93,6 +93,9 @@ def test_mask_normalized_pattern() -> None:
     )
     assert (
         mask_normalized_pattern("Statement for June 2001") == "Statement for MONTH ###"
+    )
+    assert mask_normalized_pattern("CIK: 0000123456 filed June 2001") == (
+        "CIK_### filed MONTH ###"
     )
 
 
@@ -116,3 +119,99 @@ def test_detects_header_leaks_and_signature_boilerplate() -> None:
     kinds = [a["kind"] for a in res["anomalies"]]
     assert "header_leak_in_underlying_security_title" in kinds
     assert "boilerplate_in_signature_name" in kinds
+
+
+def test_analysis_reports_blank_canonical_fields_and_invalid_dates() -> None:
+    xml = b"""<ownershipDocument>
+    <periodOfReport>03/01/2003</periodOfReport>
+    <issuer><issuerName>ACME INC</issuerName></issuer>
+    <reportingOwner><reportingOwnerId><rptOwnerName>Jane Doe</rptOwnerName></reportingOwnerId></reportingOwner>
+    <nonDerivativeTable><nonDerivativeTransaction>
+      <securityTitle><value>Common Stock 03/01/2003</value></securityTitle>
+      <transactionDate><value>02/30/2003</value></transactionDate>
+      <transactionAmounts><transactionShares><value /></transactionShares></transactionAmounts>
+    </nonDerivativeTransaction></nonDerivativeTable>
+    <ownerSignature><signatureName>Jane Doe</signatureName><signatureDate>not a date</signatureDate></ownerSignature>
+    </ownershipDocument>"""
+
+    report = analyze_ownership_xml(xml, accession="0001-01-000004")
+    kinds = [anomaly["kind"] for anomaly in report["anomalies"]]
+
+    assert "date_in_security_title" in kinds
+    assert "invalid_transactionDate" in kinds
+    assert "invalid_signatureDate" in kinds
+    assert report["field_observations"]["transactionShares"] == {
+        "occurrences": 1,
+        "populated_occurrences": 0,
+        "blank_occurrences": 1,
+    }
+    summary = summarize_ownership_cases([report])
+    assert summary["field_scorecard"]["transactionShares"]["blank_occurrences"] == 1
+    assert summary["field_scorecard"]["issuerTradingSymbol"]["cases_without_value"] == 1
+
+
+def test_summary_counts_categorical_and_title_values() -> None:
+    xml = b"""<ownershipDocument>
+    <reportingOwner><reportingOwnerRelationship>
+      <isDirector>1</isDirector><isOfficer>0</isOfficer>
+      <isTenPercentOwner>0</isTenPercentOwner><isOther>0</isOther>
+      <officerTitle>Chief Executive Officer</officerTitle>
+    </reportingOwnerRelationship></reportingOwner>
+    <nonDerivativeTable>
+      <nonDerivativeTransaction><securityTitle><value>Common Stock</value></securityTitle>
+        <transactionCoding><transactionCode>P</transactionCode></transactionCoding></nonDerivativeTransaction>
+      <nonDerivativeTransaction><securityTitle><value>Common Stock</value></securityTitle>
+        <transactionCoding><transactionCode>S</transactionCode></transactionCoding></nonDerivativeTransaction>
+      <nonDerivativeHolding><securityTitle><value>Preferred Stock</value></securityTitle></nonDerivativeHolding>
+    </nonDerivativeTable>
+    </ownershipDocument>"""
+
+    report = analyze_ownership_xml(xml, accession="0001-01-000005")
+    summary = summarize_ownership_cases([report])
+    frequencies = summary["value_frequencies"]
+
+    assert frequencies["transactionCode"]["distinct_values"] == 2
+    assert frequencies["transactionCode"]["top_values"] == [
+        {
+            "value": "P",
+            "count": 1,
+            "case_count": 1,
+            "sample_accession": "0001-01-000005",
+        },
+        {
+            "value": "S",
+            "count": 1,
+            "case_count": 1,
+            "sample_accession": "0001-01-000005",
+        },
+    ]
+    assert frequencies["securityTitle"]["distinct_values"] == 2
+    assert frequencies["securityTitle"]["top_values"][0] == {
+        "value": "Common Stock",
+        "count": 2,
+        "case_count": 1,
+        "sample_accession": "0001-01-000005",
+    }
+    assert frequencies["officerTitle"]["top_values"][0]["value"] == (
+        "Chief Executive Officer"
+    )
+    assert frequencies["isDirector"]["top_values"][0]["value"] == "1"
+
+
+def test_option_title_date_is_reported_as_review_signal() -> None:
+    xml = b"""<ownershipDocument>
+    <periodOfReport>04/02/2003</periodOfReport>
+    <issuer><issuerName>ACME INC</issuerName></issuer>
+    <reportingOwner><reportingOwnerId><rptOwnerName>Jane Doe</rptOwnerName></reportingOwnerId></reportingOwner>
+    <derivativeTable><derivativeTransaction>
+      <securityTitle><value>BOD 4/1/03 Stock Options (Rights to Buy)</value></securityTitle>
+    </derivativeTransaction></derivativeTable>
+    </ownershipDocument>"""
+
+    report = analyze_ownership_xml(xml, accession="0001-01-000006")
+    summary = summarize_ownership_cases([report])
+
+    assert not report["anomalies"]
+    assert report["review_signals"][0]["kind"] == "date_in_option_security_title"
+    assert summary["review_signal_count"] == 1
+    assert summary["review_signal_samples"][0]["accession"] == "0001-01-000006"

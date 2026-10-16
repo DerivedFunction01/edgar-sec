@@ -123,6 +123,43 @@ def cmd_review_analyze(args: argparse.Namespace) -> int:
                     print(
                         f"    [{anom['kind']}] {anom['accession']}: {anom['detail']}{val_str}"
                     )
+                if review_count := fam_rep.get("review_signal_count", 0):
+                    print(f"  Review Signals: {review_count}")
+                    for signal in fam_rep.get("review_signal_samples", [])[:3]:
+                        print(
+                            f"    [{signal['kind']}] {signal['accession']}: "
+                            f"{signal['value']}"
+                        )
+                if scorecard := fam_rep.get("field_scorecard"):
+                    missing_fields = [
+                        (field, values)
+                        for field, values in scorecard.items()
+                        if (
+                            values.get("scope") == "document"
+                            and values.get("cases_without_value", 0)
+                        )
+                        or values.get("blank_occurrences", 0)
+                    ]
+                    if missing_fields:
+                        print("  Missing or Blank Canonical Fields:")
+                        for field, values in missing_fields:
+                            missing_count = values.get("cases_without_value", 0)
+                            blanks = values.get("blank_occurrences", 0)
+                            print(
+                                f"    {field}: missing in {missing_count}/{case_count} cases; "
+                                f"blank values={blanks}"
+                            )
+                if frequencies := fam_rep.get("value_frequencies"):
+                    print("  Ownership Value Frequencies:")
+                    for field, distribution in frequencies.items():
+                        values = distribution.get("top_values", [])[:5]
+                        rendered = ", ".join(
+                            f"{entry['value']!r} ({entry['count']})" for entry in values
+                        )
+                        print(
+                            f"    {field}: {distribution['distinct_values']} distinct; "
+                            f"top: {rendered}"
+                        )
                 unp_count = fam_rep.get("unparsed_section_count", 0)
                 print(f"  Unparsed Sections: {unp_count}")
                 for sample in fam_rep.get("unparsed_samples", [])[:3]:

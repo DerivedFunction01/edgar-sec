@@ -1,4 +1,4 @@
-"""Table classification and section partitioning for Form 4 HTML filings."""
+"""Table classification and section partitioning for Section 16 ownership HTML filings."""
 
 from __future__ import annotations
 
@@ -8,39 +8,45 @@ from enum import StrEnum
 
 from edgar_sec.domain.forms.families.ownership.evidence import (
     FOOTNOTE_VETO_PHRASES,
+    OWNERSHIP_BOXES_LEXICAL_PACK,
     OWNERSHIP_FOOTNOTE_LEXICAL_PACK,
+    OWNERSHIP_HEADER_LEXICAL_PACK,
+    OWNERSHIP_SIGNATURE_LEXICAL_PACK,
+    OWNERSHIP_STATUTORY_LEXICAL_PACK,
+    OWNERSHIP_TABLE_I_LEXICAL_PACK,
+    OWNERSHIP_TABLE_II_LEXICAL_PACK,
 )
+from edgar_sec.engine.document.html.cleaner import normalize_font_qualified_glyphs
 from edgar_sec.engine.document.html.tree import FastHtmlNode, parse_html
-from edgar_sec.engine.tables.ascii_html.converter import convert_html_table
-from edgar_sec.engine.tables.ascii_html.model import RenderBudget, ResolvedGrid
+from edgar_sec.engine.forms.ownership.patterns import (
+    OWNERSHIP_CONTINUATION_RE,
+    OWNERSHIP_MASTHEAD_RE,
+    OWNERSHIP_PAGE_MARKER_RE,
+)
+from edgar_sec.engine.tables.ascii_html.converter import resolve_html_table_grid
+from edgar_sec.engine.tables.ascii_html.model import HorizontalAlign, ResolvedGrid
+from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.automaton import tokenize
-from edgar_sec.foundation.text.dates import MONTH_RE
+from edgar_sec.foundation.text.dates import MONTH_RE, NUMERIC_DATE_RE
 from edgar_sec.foundation.text.evidence import (
     EvidenceContext,
     compile_evidence_pack,
     score_tokens,
 )
 
-
 _COMPILED_FOOTNOTE_PACK = compile_evidence_pack(OWNERSHIP_FOOTNOTE_LEXICAL_PACK)
+_COMPILED_HEADER_PACK = compile_evidence_pack(OWNERSHIP_HEADER_LEXICAL_PACK)
+_COMPILED_BOXES_PACK = compile_evidence_pack(OWNERSHIP_BOXES_LEXICAL_PACK)
+_COMPILED_TABLE_I_PACK = compile_evidence_pack(OWNERSHIP_TABLE_I_LEXICAL_PACK)
+_COMPILED_TABLE_II_PACK = compile_evidence_pack(OWNERSHIP_TABLE_II_LEXICAL_PACK)
+_COMPILED_SIGNATURE_PACK = compile_evidence_pack(OWNERSHIP_SIGNATURE_LEXICAL_PACK)
+_COMPILED_STATUTORY_PACK = compile_evidence_pack(OWNERSHIP_STATUTORY_LEXICAL_PACK)
 _EVIDENCE_CTX = EvidenceContext(min_words=1)
-_UNWRAPPED_BUDGET = RenderBudget(
-    max_table_width=10000,
-    max_column_width=10000,
-    max_text_column_width=10000,
+_FOOTNOTE_VETO_RE = re.compile(
+    build_alternation(FOOTNOTE_VETO_PHRASES, auto_escape=True, compact=True)
 )
-
-_STATUTORY_PAGE_ARTIFACT_PHRASES = (
-    "reminder: report on a separate",
-    "potential persons who are to respond",
-    "note: file three copies",
-    "see instruction 4(b)(v)",
-    "see instruction 6 for procedure",
-    "sec 1474",
-    "sec 2474",
-    "(over)",
-    "persons who respond to the collection",
-)
+_SIGNATURE_CONTINUATION_PHRASES = ("/s/", "by:", "for:", "date")
+_NON_ALNUM_RE = re.compile(r"[^a-z0-9]")
 
 
 class SectionRole(StrEnum):
@@ -63,7 +69,7 @@ class ClassifiedSection:
 
 
 @dataclass(frozen=True, slots=True)
-class Form4Sections:
+class OwnershipSections:
     boxes_1_to_7: ClassifiedSection | None
     table_i: ClassifiedSection | None
     table_ii: ClassifiedSection | None
@@ -72,162 +78,292 @@ class Form4Sections:
     unparsed: list[ClassifiedSection]
 
 
+def _is_header_table(lower: str) -> bool:
+    if bool(OWNERSHIP_MASTHEAD_RE.search(lower)):
+        return True
+    if bool(OWNERSHIP_CONTINUATION_RE.search(lower)) and "ticker" in lower:
+        return True
+    score = score_tokens(tokenize(lower), _COMPILED_HEADER_PACK, _EVIDENCE_CTX)
+    return score.score >= 2 and not score.exclusions
+
+
+def _is_box_table(lower: str) -> bool:
+    if "derivative" in lower and "non-derivative" not in lower:
+        return False
+    score = score_tokens(tokenize(lower), _COMPILED_BOXES_PACK, _EVIDENCE_CTX)
+    return score.score >= 2 and not score.exclusions
+
+
+def _is_table_i_table(lower: str, past_tables: bool) -> bool:
+    score = score_tokens(tokenize(lower), _COMPILED_TABLE_I_PACK, _EVIDENCE_CTX)
+    return score.score >= 2 and not score.exclusions
+
+
+def _is_table_ii_table(lower: str) -> bool:
+    score = score_tokens(tokenize(lower), _COMPILED_TABLE_II_PACK, _EVIDENCE_CTX)
+    return score.score >= 2 and not score.exclusions
+
+
+def _is_signature_table(lower: str, past_tables: bool) -> bool:
+    score = score_tokens(tokenize(lower), _COMPILED_SIGNATURE_PACK, _EVIDENCE_CTX)
+    if "signature_decisive" in score.satisfied_tiers and not score.exclusions:
+        return True
+    if not past_tables:
+        return False
+    if "/s/" in lower or "-s-" in lower or "signature:" in lower:
+        return True
+    if (
+        len(lower) < 60
+        and ("date" in lower or "dated" in lower)
+        and bool(NUMERIC_DATE_RE.search(lower) or MONTH_RE.search(lower))
+    ):
+        return True
+    return score.score >= 2 and not score.exclusions
+
+
+def _is_page_artifact_table(lower: str, past_tables: bool, num_cols: int) -> bool:
+    score = score_tokens(tokenize(lower), _COMPILED_STATUTORY_PACK, _EVIDENCE_CTX)
+    if score.score >= 2:
+        return True
+    if len(lower) < 80:
+        if bool(OWNERSHIP_PAGE_MARKER_RE.search(lower)):
+            return True
+        if (
+            past_tables
+            and num_cols < 3
+            and bool(MONTH_RE.search(lower) or NUMERIC_DATE_RE.search(lower))
+        ):
+            return True
+    return False
+
+
+def _is_footnote_table(lower: str, past_tables: bool, num_cols: int) -> bool:
+    if "footnote description" in lower or "explanation of responses" in lower:
+        return True
+    if lower.startswith("*"):
+        return True
+    if past_tables and num_cols < 6:
+        if (
+            any(
+                f"({i})" in lower or f"[{i}]" in lower or f"{i}." in lower
+                for i in range(1, 20)
+            )
+            or "*" in lower
+        ):
+            return True
+    if not _FOOTNOTE_VETO_RE.search(lower) and num_cols < 6:
+        fn_score = score_tokens(tokenize(lower), _COMPILED_FOOTNOTE_PACK, _EVIDENCE_CTX)
+        if fn_score.classification == "matched" and not fn_score.exclusions:
+            return True
+    return False
+
+
 def _classify_table_text(
     text: str, num_cols: int = 0, past_tables: bool = False
 ) -> SectionRole:
     lower = " ".join(text.lower().split())
-    if not lower:
+    if not lower or not _NON_ALNUM_RE.sub("", lower):
         return SectionRole.PAGE_ARTIFACT
 
-    stripped_alnum = re.sub(r"[^a-z0-9]", "", lower)
-    if not stripped_alnum:
-        return SectionRole.PAGE_ARTIFACT
-
-    # Relative ordering: Boxes 1 to 7 and Header never appear after transaction tables
-    if not past_tables:
-        if (
-            "name and address of reporting person" in lower
-            or ("issuer name" in lower and "trading symbol" in lower)
-            or ("statement for" in lower and "month" in lower)
-            or "i.r.s. identification" in lower
-            or "joint/group filing" in lower
-            or ("if amendment" in lower and "date of original" in lower)
-            or "relationship of reporting person" in lower
-        ):
-            return SectionRole.BOXES_1_TO_7
-        if "check this box if no longer" in lower or "omb approval" in lower:
-            return SectionRole.HEADER
-
-    if "non-derivative" in lower or (
-        "title of security" in lower and "derivative" not in lower
-    ):
-        return SectionRole.TABLE_I
-    if "derivative" in lower:
+    if _is_header_table(lower):
+        return SectionRole.HEADER
+    if _is_table_ii_table(lower):
         return SectionRole.TABLE_II
-    if "signature of reporting person" in lower or "intentional misstatements" in lower:
+    if _is_table_i_table(lower, past_tables):
+        return SectionRole.TABLE_I
+    if _is_signature_table(lower, past_tables):
         return SectionRole.SIGNATURES
-
-    if any(phrase in lower for phrase in _STATUTORY_PAGE_ARTIFACT_PHRASES):
+    if _is_box_table(lower):
+        return SectionRole.BOXES_1_TO_7
+    if _is_page_artifact_table(lower, past_tables, num_cols):
         return SectionRole.PAGE_ARTIFACT
-
-    # Footnote classification with relative ordering boost in trailing zone
-    if past_tables and (
-        "footnote description" in lower
-        or "explanation of responses" in lower
-        or any(m in lower for m in ("(1)", "(2)", "1.", "2.", "(a)", "*"))
-    ):
+    if _is_footnote_table(lower, past_tables, num_cols):
         return SectionRole.FOOTNOTES
-
-    if not any(veto in lower for veto in FOOTNOTE_VETO_PHRASES):
-        if num_cols < 6:
-            fn_score = score_tokens(
-                tokenize(lower), _COMPILED_FOOTNOTE_PACK, _EVIDENCE_CTX
-            )
-            if fn_score.classification == "matched" and not fn_score.exclusions:
-                return SectionRole.FOOTNOTES
-
-    if len(lower) < 80 and (
-        "form 4" in lower
-        or "page " in lower
-        or "(continued)" in lower
-        or (past_tables and "-" in lower and bool(MONTH_RE.search(lower)))
-    ):
-        return SectionRole.PAGE_ARTIFACT
     return SectionRole.UNPARSED
 
 
-def partition_form4_tables(html_content: str | bytes) -> Form4Sections:
-    """Partition Form 4 HTML tables into typed functional sections."""
-    tree = parse_html(html_content)
-    tables = tree.css("table")
+def _merge_sections(
+    existing: ClassifiedSection, incoming: ClassifiedSection
+) -> ClassifiedSection:
+    return ClassifiedSection(
+        role=existing.role,
+        table_index=existing.table_index,
+        raw_node=existing.raw_node,
+        resolved_grid=ResolvedGrid(
+            rows=tuple(
+                list(existing.resolved_grid.rows) + list(incoming.resolved_grid.rows)
+            ),
+            column_alignments=existing.resolved_grid.column_alignments,
+            column_widths=existing.resolved_grid.column_widths,
+        ),
+    )
 
-    boxes: ClassifiedSection | None = None
-    table_i: ClassifiedSection | None = None
-    table_ii: ClassifiedSection | None = None
-    signatures: ClassifiedSection | None = None
-    footnotes: list[ClassifiedSection] = []
-    unparsed: list[ClassifiedSection] = []
 
-    pending_role: SectionRole | None = None
-
-    for idx, table_node in enumerate(tables):
-        result = convert_html_table(
-            table_node, table_index=idx, budget=_UNWRAPPED_BUDGET
+def _standalone_signature_section(
+    tree: FastHtmlNode, table_count: int
+) -> ClassifiedSection | None:
+    paragraphs = tree.css("p")
+    for start, paragraph in enumerate(paragraphs):
+        if paragraph.find_parent("table") is not None:
+            continue
+        text = paragraph.text(separator="\n").strip()
+        normalized = " ".join(text.lower().split())
+        if "signature of reporting person" not in normalized:
+            continue
+        rows = [(text,)]
+        for continuation in paragraphs[start + 1 :]:
+            if continuation.find_parent("table") is not None:
+                break
+            text = continuation.text(separator="\n").strip()
+            if any(
+                phrase in text.lower() for phrase in _SIGNATURE_CONTINUATION_PHRASES
+            ):
+                rows.append((text,))
+            else:
+                break
+        return ClassifiedSection(
+            role=SectionRole.SIGNATURES,
+            table_index=table_count,
+            raw_node=paragraph,
+            resolved_grid=ResolvedGrid(
+                rows=tuple(rows),
+                column_alignments=(HorizontalAlign.LEFT,),
+                column_widths=(max(map(len, (row[0] for row in rows))),),
+            ),
         )
-        grid = result.resolved_grid
+    return None
+
+
+class OwnershipSectionAssembler:
+    """Stateful assembler aggregating tables into typed ownership sections."""
+
+    __slots__ = (
+        "boxes",
+        "table_i",
+        "table_ii",
+        "signatures",
+        "footnotes",
+        "unparsed",
+        "pending_banner",
+    )
+
+    def __init__(self) -> None:
+        self.boxes: ClassifiedSection | None = None
+        self.table_i: ClassifiedSection | None = None
+        self.table_ii: ClassifiedSection | None = None
+        self.signatures: ClassifiedSection | None = None
+        self.footnotes: list[ClassifiedSection] = []
+        self.unparsed: list[ClassifiedSection] = []
+        self.pending_banner: SectionRole | None = None
+
+    @property
+    def past_tables(self) -> bool:
+        return self.table_i is not None or self.table_ii is not None
+
+    def accumulate(self, idx: int, node: FastHtmlNode, grid: ResolvedGrid) -> None:
         text = " ".join(" ".join(r) for r in grid.rows).strip()
         num_cols = (
             len(grid.column_widths)
             if grid.column_widths
             else (len(grid.rows[0]) if grid.rows else 0)
         )
-        past_tables = table_i is not None or table_ii is not None
-        role = _classify_table_text(text, num_cols=num_cols, past_tables=past_tables)
+        role = _classify_table_text(
+            text, num_cols=num_cols, past_tables=self.past_tables
+        )
 
-        # Connect standalone section banners (1-cell title rows) to following grid
         is_banner = (
             len(grid.rows) <= 1
             and (len(grid.rows[0]) <= 1 if grid.rows else False)
             and role in (SectionRole.TABLE_I, SectionRole.TABLE_II)
+            and ("table i" in text.lower() or "table ii" in text.lower())
+            and "amount of" not in text.lower()
         )
         if is_banner:
-            pending_role = role
-            continue
+            self.pending_banner = role
+            return
 
-        if pending_role and role == SectionRole.UNPARSED and len(grid.rows) > 1:
-            role = pending_role
-            pending_role = None
-        else:
-            pending_role = None
+        if role == SectionRole.UNPARSED:
+            if self.pending_banner:
+                role = self.pending_banner
+            elif (
+                self.table_i is not None
+                and self.table_ii is None
+                and self.signatures is None
+                and num_cols >= 6
+            ):
+                role = SectionRole.TABLE_I
+            elif (
+                self.signatures is not None and len(text) < 100 and len(grid.rows) <= 2
+            ):
+                role = SectionRole.SIGNATURES
+        self.pending_banner = None
 
         section = ClassifiedSection(
-            role=role,
-            table_index=idx,
-            raw_node=table_node,
-            resolved_grid=grid,
+            role=role, table_index=idx, raw_node=node, resolved_grid=grid
+        )
+        self._append_section(section)
+
+    def _append_section(self, section: ClassifiedSection) -> None:
+        if section.role == SectionRole.BOXES_1_TO_7:
+            self.boxes = (
+                section if self.boxes is None else _merge_sections(self.boxes, section)
+            )
+        elif section.role == SectionRole.TABLE_I:
+            self.table_i = (
+                section
+                if self.table_i is None
+                else _merge_sections(self.table_i, section)
+            )
+        elif section.role == SectionRole.TABLE_II:
+            self.table_ii = (
+                section
+                if self.table_ii is None
+                else _merge_sections(self.table_ii, section)
+            )
+        elif section.role == SectionRole.SIGNATURES:
+            self.signatures = (
+                section
+                if self.signatures is None
+                else _merge_sections(self.signatures, section)
+            )
+        elif section.role == SectionRole.FOOTNOTES:
+            self.footnotes.append(section)
+        elif section.role == SectionRole.UNPARSED:
+            self.unparsed.append(section)
+
+    def build(self, tree: FastHtmlNode, table_count: int) -> OwnershipSections:
+        sigs = self.signatures
+        if sigs is None:
+            sigs = _standalone_signature_section(tree, table_count)
+        return OwnershipSections(
+            boxes_1_to_7=self.boxes,
+            table_i=self.table_i,
+            table_ii=self.table_ii,
+            signatures=sigs,
+            footnotes=self.footnotes,
+            unparsed=self.unparsed,
         )
 
-        if role == SectionRole.BOXES_1_TO_7:
-            if boxes is None:
-                boxes = section
-            else:
-                boxes = ClassifiedSection(
-                    role=boxes.role,
-                    table_index=boxes.table_index,
-                    raw_node=boxes.raw_node,
-                    resolved_grid=ResolvedGrid(
-                        rows=tuple(
-                            list(boxes.resolved_grid.rows)
-                            + list(section.resolved_grid.rows)
-                        ),
-                        column_alignments=boxes.resolved_grid.column_alignments,
-                        column_widths=boxes.resolved_grid.column_widths,
-                    ),
-                )
-        elif role == SectionRole.TABLE_I and table_i is None:
-            table_i = section
-        elif role == SectionRole.TABLE_II and table_ii is None:
-            table_ii = section
-        elif role == SectionRole.SIGNATURES and signatures is None:
-            signatures = section
-        elif role == SectionRole.FOOTNOTES:
-            footnotes.append(section)
-        elif role == SectionRole.UNPARSED:
-            unparsed.append(section)
 
-    return Form4Sections(
-        boxes_1_to_7=boxes,
-        table_i=table_i,
-        table_ii=table_ii,
-        signatures=signatures,
-        footnotes=footnotes,
-        unparsed=unparsed,
+def partition_ownership_tables(html_content: str | bytes) -> OwnershipSections:
+    """Partition Section 16 ownership HTML tables into typed functional sections."""
+    text = (
+        html_content.decode("utf-8", errors="replace")
+        if isinstance(html_content, bytes)
+        else html_content
     )
+    tree = parse_html(normalize_font_qualified_glyphs(text))
+    assembler = OwnershipSectionAssembler()
+    for idx, table_node in enumerate(tree.css("table")):
+        grid = resolve_html_table_grid(table_node, table_index=idx)
+        assembler.accumulate(idx, table_node, grid)
+    return assembler.build(tree, len(tree.css("table")))
 
 
 __all__ = [
     "ClassifiedSection",
-    "Form4Sections",
+    "OwnershipSectionAssembler",
+    "OwnershipSections",
     "SectionRole",
-    "partition_form4_tables",
+    "partition_ownership_tables",
 ]

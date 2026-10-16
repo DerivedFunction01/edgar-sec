@@ -19,8 +19,8 @@ from edgar_sec.engine.document.html.cleaner import (
 )
 from edgar_sec.engine.forms.ownership.metadata_parser import parse_metadata
 from edgar_sec.engine.forms.ownership.sections import (
-    Form4Sections,
-    partition_form4_tables,
+    OwnershipSections,
+    partition_ownership_tables,
 )
 
 if TYPE_CHECKING:
@@ -189,7 +189,7 @@ def _build_derivative_xml(root: ET.Element, rows: list[DerivativeTransaction]) -
             _add_valued_elem(own_el, "directOrIndirectOwnership", r.direct_or_indirect)
 
 
-def _build_unparsed_sections_xml(root: ET.Element, sections: Form4Sections) -> None:
+def _build_unparsed_sections_xml(root: ET.Element, sections: OwnershipSections) -> None:
     unparsed_nodes = list(sections.unparsed)
     if not unparsed_nodes:
         return
@@ -213,7 +213,7 @@ def render_form4_to_xml(
         return raw_bytes
 
     text = raw_bytes.decode("utf-8", errors="replace")
-    sections = partition_form4_tables(text)
+    sections = partition_ownership_tables(text)
 
     metadata = parse_metadata(sections.boxes_1_to_7, sections.signatures)
     table_i_rows = parse_table_i_rows(sections.table_i)

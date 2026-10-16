@@ -78,6 +78,8 @@ def render_source_table(
     table_input: FastHtmlNode | SourceTable,
     table_index: int = 0,
     budget: RenderBudget = DEFAULT_RENDER_BUDGET,
+    *,
+    render_ascii: bool = True,
 ) -> TableRenderResult:
     """Render a single HTML <table> node or SourceTable into canonical ASCII table format."""
     if isinstance(table_input, SourceTable):
@@ -150,14 +152,17 @@ def render_source_table(
                 terminal_header_rows.add(r)
             next_non_empty_idx = r
 
-    col_widths, layout_diags = compute_column_widths(
-        raw_grid,
-        col_alignments,
-        span_constraints=span_constraints,
-        prefix_positions=prefix_positions,
-        budget=budget,
-        single_col_rows=single_col_grid,
-    )
+    if render_ascii:
+        col_widths, layout_diags = compute_column_widths(
+            raw_grid,
+            col_alignments,
+            span_constraints=span_constraints,
+            prefix_positions=prefix_positions,
+            budget=budget,
+            single_col_rows=single_col_grid,
+        )
+    else:
+        col_widths, layout_diags = [], []
 
     resolved_grid = ResolvedGrid(
         rows=tuple(tuple(r) for r in raw_grid),
@@ -173,6 +178,13 @@ def render_source_table(
     confidence, veto_reasons = evaluate_table_confidence(
         source_table, resolved_grid, span_groups
     )
+    if not render_ascii:
+        return TableRenderResult(
+            ascii_text="",
+            resolved_grid=resolved_grid,
+            confidence=confidence,
+            diagnostics=tuple(veto_reasons),
+        )
 
     row_top_borders: dict[int, dict[int, BorderStyle]] = {}
     row_bot_borders: dict[int, dict[int, BorderStyle]] = {}
