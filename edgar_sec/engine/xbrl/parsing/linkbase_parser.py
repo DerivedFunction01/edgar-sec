@@ -35,7 +35,7 @@ def parse_calculation_linkbase(
         return ()
     arcs: list[CalculationArc] = []
 
-    for link in root:
+    for link in root.iter():
         if strip_namespace(link.tag) != "calculationLink":
             continue
         role_uri = _get_attr(link, "role") or ""
@@ -91,7 +91,7 @@ def parse_presentation_linkbase(
         return ()
     arcs: list[PresentationArc] = []
 
-    for link in root:
+    for link in root.iter():
         if strip_namespace(link.tag) != "presentationLink":
             continue
         role_uri = _get_attr(link, "role") or ""
@@ -141,7 +141,7 @@ def parse_label_linkbase(xml_data: bytes | str) -> tuple[ConceptLabel, ...]:
     label_resources: dict[str, tuple[str, str, str]] = {}
     label_arcs: list[tuple[str, str]] = []
 
-    for link in root:
+    for link in root.iter():
         if strip_namespace(link.tag) != "labelLink":
             continue
         for child in link:
@@ -227,9 +227,12 @@ def parse_linkbase_bundle(
     xsd: bytes | str | None = None,
 ) -> LinkbaseBundle:
     """Build unified LinkbaseBundle from optional XML components."""
-    cal_arcs = parse_calculation_linkbase(cal_xml) if cal_xml else ()
-    pre_arcs = parse_presentation_linkbase(pre_xml) if pre_xml else ()
-    labels = parse_label_linkbase(lab_xml) if lab_xml else ()
+    cal_source = cal_xml if cal_xml else xsd
+    pre_source = pre_xml if pre_xml else xsd
+    lab_source = lab_xml if lab_xml else xsd
+    cal_arcs = parse_calculation_linkbase(cal_source) if cal_source else ()
+    pre_arcs = parse_presentation_linkbase(pre_source) if pre_source else ()
+    labels = parse_label_linkbase(lab_source) if lab_source else ()
     decls = parse_schema_declarations(xsd) if xsd else ()
     return LinkbaseBundle(
         calculation_arcs=cal_arcs,

@@ -1,0 +1,71 @@
+{
+  "firm": "APD",
+  "accession": "0000002969-25-000055",
+  "cik": "0000002969",
+  "sic_code": 2810,
+  "sector": "Materials",
+  "fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED INCOME STATEMENTS",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "line_range": [
+      1860,
+      1890
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Sales",
+        "reported_value": 12100600000.0,
+        "table_value": 12100,
+        "line_number": 1863,
+        "snippet": "Sales                                                            $12,037.3  $12,100.6  $12,600.0"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
+        "label": "Cost of sales",
+        "reported_value": 8168700000.0,
+        "table_value": 8168,
+        "line_number": 1864,
+        "snippet": "Cost of sales                                                      8,256.0    8,168.7    8,833.0"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating Income (Loss)",
+        "reported_value": 4466100000.0,
+        "table_value": 4466,
+        "line_number": 1872,
+        "snippet": "Operating Income (Loss)                                            (877.0)    4,466.1    2,494.6"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLossIncludingPortionAttributableToNonredeemableNoncontrollingInterest",
+        "label": "Net Income (Loss)",
+        "reported_value": 3862400000.0,
+        "table_value": 3862,
+        "line_number": 1883,
+        "snippet": "Net Income (Loss)                                                  (354.4)    3,862.4    2,338.6"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossMargin = Revenues - CostOfSales",
+      "left_concept": "apd:GrossMarginDerived",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "weight": 1.0,
+          "value": 12100600000.0
+        },
+        {
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "weight": -1.0,
+          "value": 8168700000.0
+        }
+      ],
+      "computed_sum": 3931900000.0,
+      "target_value": 3931900000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

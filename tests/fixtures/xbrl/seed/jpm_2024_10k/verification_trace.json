@@ -1,0 +1,63 @@
+{
+  "firm": "JPM",
+  "accession": "0001628280-26-008131",
+  "cik": "0000019617",
+  "sic_code": 6021,
+  "sector": "Financials",
+  "fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Selected income statement data",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "line_range": [
+      2135,
+      2155
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:RevenuesNetOfInterestExpense",
+        "label": "Total net revenue",
+        "reported_value": 177556000000.0,
+        "table_value": 177556,
+        "line_number": 2140,
+        "snippet": "Total net revenue                                                                                                               $ 182,447    $ 177,556 (g)      $ 158,104"
+      },
+      {
+        "concept_qname": "us-gaap:NoninterestExpense",
+        "label": "Total noninterest expense",
+        "reported_value": 91797000000.0,
+        "table_value": 91797,
+        "line_number": 2141,
+        "snippet": "Total noninterest expense                                                                                                          95,640       91,797 (g)         87,172"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income",
+        "reported_value": 58471000000.0,
+        "table_value": 58471,
+        "line_number": 2149,
+        "snippet": "Net income                                                                                                                       $ 57,048         $ 58,471       $ 49,552"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "PreProvisionProfit = TotalNetRevenue - TotalNoninterestExpense",
+      "left_concept": "jpm:PreProvisionProfit",
+      "components": [
+        {
+          "concept": "us-gaap:RevenuesNetOfInterestExpense",
+          "weight": 1.0,
+          "value": 177556000000.0
+        },
+        {
+          "concept": "us-gaap:NoninterestExpense",
+          "weight": -1.0,
+          "value": 91797000000.0
+        }
+      ],
+      "computed_sum": 85759000000.0,
+      "target_value": 85759000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}
