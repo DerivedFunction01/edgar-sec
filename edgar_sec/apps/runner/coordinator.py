@@ -191,6 +191,7 @@ class PipelineRunner:
             dates=config.resolved_date_string(),
             cohort=cohort_id,
             limit=config.limit,
+            accessions=tuple(config.accessions) if config.accessions else None,
         )
         return str(plan_meta["plan_id"])
 

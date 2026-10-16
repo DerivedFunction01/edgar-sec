@@ -10,6 +10,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import pyarrow as pa
+import pyarrow.compute as pc
 
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.foundation.hashing import file_sha256
@@ -81,13 +82,11 @@ def inspect_chunk(
         ):
             return None
         if expected_fingerprint:
-            fingerprints = {
-                value
-                for value in table.column("input_fingerprint").to_pylist()
-                if value
-            }
-            if fingerprints - {expected_fingerprint}:
-                return None
+            non_null = pc.drop_null(table.column("input_fingerprint"))
+            if len(non_null) > 0:
+                uniques = pc.unique(non_null).to_pylist()
+                if any(u != expected_fingerprint for u in uniques):
+                    return None
     elif row_count == 0:
         return None
 

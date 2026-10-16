@@ -99,6 +99,7 @@ def plan(
     min_exhibit_like: int | None = None,
     cohort: str | None = None,
     xbrl_only: bool = False,
+    accessions: tuple[str, ...] | None = None,
     progress: ProgressCallback = None,
     row_group_size: int | None = None,
 ) -> dict[str, Any]:
@@ -116,6 +117,7 @@ def plan(
         min_exhibit_like=min_exhibit_like,
         cohort=cohort,
         xbrl_only=xbrl_only,
+        accessions=accessions,
     )
     validate_limit_options(
         effective_filters.limit,
@@ -151,6 +153,11 @@ def plan(
         "accession_limit": effective_filters.accession_limit,
         "min_exhibit_like": effective_filters.min_exhibit_like,
         "xbrl_only": bool(effective_filters.xbrl_only),
+        "accessions": (
+            list(sorted(effective_filters.accessions))
+            if effective_filters.accessions is not None
+            else None
+        ),
         "plan_schema_version": TARGET_PLAN_SCHEMA_VERSION,
     }
     if cohort_input is not None:
@@ -223,6 +230,11 @@ def plan(
             shared_where.append(date_clause)
         if effective_filters.xbrl_only:
             shared_where.append("(is_xbrl = TRUE OR is_inline_xbrl = TRUE)")
+        if effective_filters.accessions:
+            acc_list = ", ".join(
+                sql_literal(str(a).strip()) for a in effective_filters.accessions
+            )
+            shared_where.append(f"accession IN ({acc_list})")
 
         discovery = " AND ".join(shared_where) if shared_where else "TRUE"
 
@@ -322,6 +334,11 @@ def plan(
                 "accession_limit": effective_filters.accession_limit,
                 "min_exhibit_like": effective_filters.min_exhibit_like,
                 "xbrl_only": bool(effective_filters.xbrl_only),
+                "accessions": (
+                    list(sorted(effective_filters.accessions))
+                    if effective_filters.accessions is not None
+                    else None
+                ),
                 "counts": counts,
                 "selected_rows": total_rows,
                 "active_targets_count": total_rows,

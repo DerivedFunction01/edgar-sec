@@ -10,26 +10,20 @@ import duckdb
 import pyarrow as pa
 
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
-from edgar_sec.domain.filing_catalog.document_names import (
-    is_primary_exhibit_filename,
-)
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.domain.filing_catalog.filters import DateSelection
-from edgar_sec.engine.xbrl.discovery.discovery import classify_linkbase
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 
-if TYPE_CHECKING:
-    import pandas as pd
-
-
-from collections.abc import Sequence
-
-
-def _is_exhibit_attachment(doc_type: str, filename: str) -> bool:
-    dt = doc_type.upper()
-    return dt.startswith("EX-") or is_primary_exhibit_filename(filename)
+from edgar_sec.apps.client.tables import (
+    build_catalog_table,
+    build_exhibits_table,
+    build_index_table,
+    build_joined_table,
+    build_linkbases_table,
+    build_payload_table,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -54,6 +48,36 @@ class FilingsResult:
     operation: str = "raw"
     family_operations: dict[str, str] | None = None
     items: tuple[FilingAggregate, ...] | None = None
+    query_backed: bool = False
+    query_sql: str | None = None
+    query_params: tuple[Any, ...] = ()
+    query_factories: dict[str, Any] | None = None
+
+    def _make_query_filing(self, row: tuple[Any, ...]) -> FilingAggregate:
+        from edgar_sec.domain.identity import AccessionNumber, Cik
+
+        acc_str, cik_val, form_val, f_date, r_date, p_doc, p_url = row
+        acc = AccessionNumber.from_any(acc_str)
+        cik_inst = Cik.from_raw(cik_val)
+        factories = self.query_factories or {}
+        return FilingAggregate(
+            accession=acc,
+            primary_cik=cik_inst,
+            ciks=(cik_inst,),
+            form=str(form_val),
+            filing_date=str(f_date or ""),
+            report_date=str(r_date) if r_date else None,
+            primary_document_path=str(p_doc or ""),
+            primary_document_url=str(p_url) if p_url else None,
+            fetcher=factories.get("fetcher"),
+            cache_clearer=factories.get("cache_clearer"),
+            zip_exporter=factories.get("zip_exporter"),
+            attachment_loader=factories.get("attachment_loader"),
+            document_opener=factories.get("document_opener"),
+            bundle_fetcher=factories.get("bundle_fetcher"),
+            index_fetcher=factories.get("index_fetcher"),
+            renderer=factories.get("renderer"),
+        )
 
     def _all_filings(self) -> tuple[FilingAggregate, ...]:
         if self.items is not None:
@@ -61,310 +85,63 @@ class FilingsResult:
         return tuple(self)
 
     def _catalog_table(self) -> pa.Table:
-        filings = self._all_filings()
-        accessions = [f.accession.value for f in filings]
-        forms = [f.form for f in filings]
-        filing_dates = [f.filing_date for f in filings]
-        report_dates = [f.report_date or "" for f in filings]
-        primary_docs = [
-            f.primary_document_path
-            or (f.primary_document_url.split("/")[-1] if f.primary_document_url else "")
-            for f in filings
-        ]
-        primary_urls = [f.primary_document_url or "" for f in filings]
-        return pa.Table.from_arrays(
-            [
-                pa.array(accessions, type=pa.string()),
-                pa.array(forms, type=pa.string()),
-                pa.array(filing_dates, type=pa.string()),
-                pa.array(report_dates, type=pa.string()),
-                pa.array(primary_docs, type=pa.string()),
-                pa.array(primary_urls, type=pa.string()),
-            ],
-            names=[
-                "accession",
-                "form",
-                "filing_date",
-                "report_date",
-                "primary_document",
-                "primary_doc_url",
-            ],
-        )
+        if self.query_backed and self.query_sql:
+            with connect() as con:
+                return (
+                    con.execute(self.query_sql, list(self.query_params))
+                    .arrow()
+                    .read_all()
+                )
+        if self.items is None and not self.snapshot_backed and self.target_parquet_glob:
+            with connect() as con:
+                q = (
+                    "SELECT DISTINCT accession, form, filing_date, "
+                    "'' AS report_date, "
+                    "regexp_extract(target_url, '[^/]+$', 0) AS primary_document, "
+                    "target_url AS primary_doc_url "
+                    "FROM read_parquet(?) ORDER BY accession"
+                )
+                return con.execute(q, [self.target_parquet_glob]).arrow().read_all()
+        return build_catalog_table(self._all_filings())
 
     def _index_table(self) -> pa.Table:
-        filings = self._all_filings()
-        accs: list[str] = []
-        seqs: list[int] = []
-        dtypes: list[str] = []
-        fnames: list[str] = []
-        descs: list[str] = []
-        sizes: list[int] = []
-        urls: list[str] = []
-        is_exs: list[bool] = []
-
-        for f in filings:
-            atts = f.get_attachments()
-            for idx, a in enumerate(atts, 1):
-                accs.append(f.accession.value)
-                seq_val = idx
-                try:
-                    if a.attachment_id and a.attachment_id.isdigit():
-                        seq_val = int(a.attachment_id)
-                except Exception:
-                    pass
-                seqs.append(seq_val)
-                dtypes.append(a.document_type)
-                fnames.append(a.filename)
-                descs.append(a.description or "")
-                sizes.append(a.size or 0)
-                urls.append(a.url)
-                is_exs.append(_is_exhibit_attachment(a.document_type, a.filename))
-
-        return pa.Table.from_arrays(
-            [
-                pa.array(accs, type=pa.string()),
-                pa.array(seqs, type=pa.int32()),
-                pa.array(dtypes, type=pa.string()),
-                pa.array(fnames, type=pa.string()),
-                pa.array(descs, type=pa.string()),
-                pa.array(sizes, type=pa.int64()),
-                pa.array(urls, type=pa.string()),
-                pa.array(is_exs, type=pa.bool_()),
-            ],
-            names=[
-                "accession",
-                "sequence",
-                "document_type",
-                "filename",
-                "description",
-                "size",
-                "url",
-                "is_exhibit",
-            ],
-        )
+        return build_index_table(self._all_filings())
 
     def _exhibits_table(self, types: Sequence[str] | str = ()) -> pa.Table:
-        filings = self._all_filings()
-        filter_types = (
-            {types.upper()}
-            if isinstance(types, str) and types
-            else {t.upper() for t in types}
-            if types
-            else None
-        )
-        accs: list[str] = []
-        forms: list[str] = []
-        dtypes: list[str] = []
-        descs: list[str] = []
-        fnames: list[str] = []
-        sizes: list[int] = []
-        urls: list[str] = []
-
-        for f in filings:
-            for ex in f.exhibits:
-                dt = ex.document_type
-                if filter_types is not None:
-                    matched = False
-                    canon_dt = dt.upper()
-                    for ft in filter_types:
-                        canon_ft = f"EX-{ft}" if not ft.startswith("EX-") else ft
-                        if (
-                            canon_dt == canon_ft
-                            or canon_dt == ft
-                            or canon_dt.startswith(f"{canon_ft}.")
-                        ):
-                            matched = True
-                            break
-                    if not matched:
-                        continue
-                accs.append(f.accession.value)
-                forms.append(f.form)
-                dtypes.append(dt)
-                descs.append(ex.description or "")
-                fnames.append(ex.filename)
-                sizes.append(ex.size or 0)
-                urls.append(ex.url)
-
-        return pa.Table.from_arrays(
-            [
-                pa.array(accs, type=pa.string()),
-                pa.array(forms, type=pa.string()),
-                pa.array(dtypes, type=pa.string()),
-                pa.array(descs, type=pa.string()),
-                pa.array(fnames, type=pa.string()),
-                pa.array(sizes, type=pa.int64()),
-                pa.array(urls, type=pa.string()),
-            ],
-            names=[
-                "accession",
-                "form",
-                "document_type",
-                "description",
-                "filename",
-                "size",
-                "url",
-            ],
-        )
+        return build_exhibits_table(self._all_filings(), types=types)
 
     def _linkbases_table(self) -> pa.Table:
-        filings = self._all_filings()
-        accs: list[str] = []
-        forms: list[str] = []
-        lb_types: list[str] = []
-        dtypes: list[str] = []
-        fnames: list[str] = []
-        urls: list[str] = []
-
-        for f in filings:
-            for lb in f.linkbases:
-                accs.append(f.accession.value)
-                forms.append(f.form)
-                lb_types.append(
-                    classify_linkbase(
-                        lb.document_type or "",
-                        lb.filename or "",
-                        lb.description or "",
-                    ).value
-                )
-                dtypes.append(lb.document_type)
-                fnames.append(lb.filename)
-                urls.append(lb.url)
-
-        return pa.Table.from_arrays(
-            [
-                pa.array(accs, type=pa.string()),
-                pa.array(forms, type=pa.string()),
-                pa.array(lb_types, type=pa.string()),
-                pa.array(dtypes, type=pa.string()),
-                pa.array(fnames, type=pa.string()),
-                pa.array(urls, type=pa.string()),
-            ],
-            names=[
-                "accession",
-                "form",
-                "linkbase_type",
-                "document_type",
-                "filename",
-                "url",
-            ],
-        )
+        return build_linkbases_table(self._all_filings())
 
     def _payload_table(self) -> pa.Table:
-        filings = self._all_filings()
-        tids: list[str] = []
-        accs: list[str] = []
-        outcomes: list[str] = []
-        attempts: list[int] = []
-        durations: list[int] = []
-        shas: list[str] = []
-        sizes: list[int] = []
-        paths: list[str] = []
-
-        for idx, f in enumerate(filings, 1):
-            tids.append(f"tgt_{idx:03d}")
-            accs.append(f.accession.value)
-            has_body = (
-                f.primary_storage_path is not None and f.primary_storage_path.is_file()
-            ) or f.fetcher is not None
-            outcomes.append("acquired" if has_body else "planned")
-            attempts.append(1)
-            durations.append(0)
-            shas.append(f.primary_sha256 or "")
-            b_size = 0
-            if f.primary_storage_path and f.primary_storage_path.is_file():
-                try:
-                    b_size = f.primary_storage_path.stat().st_size
-                except OSError:
-                    b_size = 0
-            sizes.append(b_size)
-            paths.append(str(f.primary_storage_path) if f.primary_storage_path else "")
-
-        return pa.Table.from_arrays(
-            [
-                pa.array(tids, type=pa.string()),
-                pa.array(accs, type=pa.string()),
-                pa.array(outcomes, type=pa.string()),
-                pa.array(attempts, type=pa.int32()),
-                pa.array(durations, type=pa.int64()),
-                pa.array(shas, type=pa.string()),
-                pa.array(sizes, type=pa.int64()),
-                pa.array(paths, type=pa.string()),
-            ],
-            names=[
-                "target_id",
-                "accession",
-                "outcome",
-                "attempt_count",
-                "duration_ms",
-                "body_sha256",
-                "body_byte_size",
-                "body_storage_path",
-            ],
-        )
+        return build_payload_table(self._all_filings())
 
     def _joined_table(self) -> pa.Table:
-        filings = self._all_filings()
-        accs: list[str] = []
-        forms: list[str] = []
-        filing_dates: list[str] = []
-        primary_docs: list[str] = []
-        outcomes: list[str] = []
-        sizes: list[int | None] = []
-        paths: list[str | None] = []
-        urls: list[str] = []
-
-        for f in filings:
-            accs.append(f.accession.value)
-            forms.append(f.form)
-            filing_dates.append(f.filing_date)
-            pdoc = f.primary_document_path or (
-                f.primary_document_url.split("/")[-1] if f.primary_document_url else ""
-            )
-            primary_docs.append(pdoc)
-            has_body = (
-                f.primary_storage_path is not None and f.primary_storage_path.is_file()
-            ) or f.fetcher is not None
-            outcomes.append("acquired" if has_body else "planned")
-            b_size = None
-            if f.primary_storage_path and f.primary_storage_path.is_file():
-                try:
-                    b_size = f.primary_storage_path.stat().st_size
-                except OSError:
-                    pass
-            sizes.append(b_size)
-            paths.append(
-                str(f.primary_storage_path) if f.primary_storage_path else None
-            )
-            urls.append(f.primary_document_url or "")
-
-        return pa.Table.from_arrays(
-            [
-                pa.array(accs, type=pa.string()),
-                pa.array(forms, type=pa.string()),
-                pa.array(filing_dates, type=pa.string()),
-                pa.array(primary_docs, type=pa.string()),
-                pa.array(outcomes, type=pa.string()),
-                pa.array(sizes, type=pa.int64()),
-                pa.array(paths, type=pa.string()),
-                pa.array(urls, type=pa.string()),
-            ],
-            names=[
-                "accession",
-                "form",
-                "filing_date",
-                "primary_document",
-                "outcome",
-                "body_byte_size",
-                "body_storage_path",
-                "target_url",
-            ],
-        )
+        return build_joined_table(self._all_filings())
 
     def sql(self, query: str, **params: Any) -> duckdb.DuckDBPyRelation:
         """Run arbitrary SQL across catalog, index, exhibits, linkbases, and payload."""
         if self.snapshot_backed:
             return self._snapshot_relation(query, params)
         con = connect()
+        if self.query_backed and self.query_sql:
+            catalog_view_sql = f"CREATE TEMP VIEW catalog AS {self.query_sql}"
+            con.execute(catalog_view_sql, list(self.query_params))
+            con.execute("CREATE TEMP VIEW filings AS SELECT * FROM catalog")
+            lower_q = query.lower()
+            if any(t in lower_q for t in ("index", "attachments")):
+                con.register("index", self._index_table())
+                con.register("attachments", self._index_table())
+            if "exhibits" in lower_q:
+                con.register("exhibits", self._exhibits_table())
+            if "linkbases" in lower_q:
+                con.register("linkbases", self._linkbases_table())
+            if any(t in lower_q for t in ("payload", "staged")):
+                con.register("payload", self._payload_table())
+                con.register("staged", self._payload_table())
+            if "joined" in lower_q:
+                con.register("joined", self._joined_table())
+            return con.sql(query, params=params)
         catalog_t = self._catalog_table()
         index_t = self._index_table()
         exhibits_t = self._exhibits_table()
@@ -407,12 +184,22 @@ class FilingsResult:
         """Export core catalog filings table as a PyArrow Table."""
         if self.snapshot_backed:
             return self._snapshot_relation("SELECT * FROM catalog").to_arrow_table()
+        if self.query_backed and self.query_sql:
+            with connect() as con:
+                return (
+                    con.execute(self.query_sql, list(self.query_params))
+                    .arrow()
+                    .read_all()
+                )
         return self._catalog_table()
 
     def to_df(self) -> pd.DataFrame:
         """Export core catalog filings table as a Pandas DataFrame."""
         if self.snapshot_backed:
             return self._snapshot_relation("SELECT * FROM catalog").df()
+        if self.query_backed and self.query_sql:
+            with connect() as con:
+                return con.execute(self.query_sql, list(self.query_params)).df()
         return self.to_arrow().to_pandas()
 
     def attachments_df(self) -> pd.DataFrame:
@@ -520,6 +307,11 @@ class FilingsResult:
             from edgar_sec.apps.client.snapshots import snapshot_filing_at
 
             return snapshot_filing_at(self, latest=True)
+        if self.query_backed and self.query_sql:
+            with connect() as con:
+                stmt = f"SELECT * FROM ({self.query_sql}) ORDER BY filing_date DESC, accession DESC LIMIT 1"
+                row = con.execute(stmt, list(self.query_params)).fetchone()
+                return self._make_query_filing(row) if row is not None else None
         return max(
             self,
             key=lambda f: (f.filing_date, f.accession.value),
@@ -532,6 +324,11 @@ class FilingsResult:
             from edgar_sec.apps.client.snapshots import snapshot_filing_at
 
             return snapshot_filing_at(self)
+        if self.query_backed and self.query_sql:
+            with connect() as con:
+                stmt = f"SELECT * FROM ({self.query_sql}) LIMIT 1"
+                row = con.execute(stmt, list(self.query_params)).fetchone()
+                return self._make_query_filing(row) if row is not None else None
         return next(iter(self), None)
 
     def filter(
@@ -573,6 +370,25 @@ class FilingsResult:
                 snapshot_filter_limit=new_limit,
                 snapshot_filter_empty=empty,
             )
+        if self.query_backed and self.query_sql:
+            clauses: list[str] = []
+            params: list[Any] = list(self.query_params)
+            if allowed_forms:
+                forms_list = sorted(allowed_forms)
+                placeholders = ", ".join(["?"] * len(forms_list))
+                clauses.append(f"form IN ({placeholders})")
+                params.extend(forms_list)
+            if date is not None:
+                clauses.append("filing_date LIKE ?")
+                params.append(f"{date}%")
+            where_sql = f"WHERE {' AND '.join(clauses)}" if clauses else ""
+            limit_sql = f"LIMIT {int(limit)}" if limit is not None else ""
+            new_query = f"SELECT * FROM ({self.query_sql}) {where_sql} {limit_sql}"
+            return replace(
+                self,
+                query_sql=new_query,
+                query_params=tuple(params),
+            )
         filtered = [
             f
             for f in self
@@ -602,6 +418,11 @@ class FilingsResult:
                     "SELECT count(*) AS n FROM selected_targets"
                 ).fetchone()[0]
             )
+        if self.query_backed and self.query_sql:
+            with connect() as con:
+                count_query = f"SELECT count(*) FROM ({self.query_sql})"
+                res = con.execute(count_query, list(self.query_params)).fetchone()
+                return int(res[0]) if res else 0
         with connect() as con:
             return con.execute(
                 "SELECT count(DISTINCT accession) FROM read_parquet(?)",
@@ -616,6 +437,13 @@ class FilingsResult:
             from edgar_sec.apps.client.snapshots import iter_snapshot_filings
 
             yield from iter_snapshot_filings(self)
+            return
+        if self.query_backed and self.query_sql:
+            with connect() as con:
+                cursor = con.execute(self.query_sql, list(self.query_params))
+                while rows := cursor.fetchmany(resolve_read_batch_size()):
+                    for row in rows:
+                        yield self._make_query_filing(row)
             return
         storage_by_target: dict[str, Path] = {}
         if self.run_state_sqlite_path and self.run_state_sqlite_path.is_file():
@@ -722,6 +550,19 @@ class FilingsResult:
             if filing is None:
                 raise IndexError(f"index {index} out of range for FilingsResult")
             return filing
+        if self.query_backed and self.query_sql:
+            resolved_index = index if index >= 0 else len(self) + index
+            if resolved_index < 0:
+                raise IndexError(f"index {index} out of range for FilingsResult")
+            with connect() as con:
+                item_query = f"{self.query_sql} LIMIT 1 OFFSET ?"
+                row = con.execute(
+                    item_query,
+                    [*self.query_params, int(resolved_index)],
+                ).fetchone()
+                if row is None:
+                    raise IndexError(f"index {index} out of range for FilingsResult")
+                return self._make_query_filing(row)
         if index < 0:
             index = len(self) + index
         for current_idx, filing in enumerate(self):

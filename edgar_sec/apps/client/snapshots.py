@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator, Sequence
 from pathlib import Path
+import threading
 from typing import Any
 
 from edgar_sec.apps.client.models import FilingsResult
@@ -288,44 +289,85 @@ def register_snapshot_views(
     }
 
 
+_SESSION_CACHE: dict[tuple[Path, str], tuple[Any, dict[str, str]]] = {}
+_SESSION_LOCK = threading.Lock()
+
+
+def clear_snapshot_session_cache() -> None:
+    """Close and clear cached DuckDB snapshot connections."""
+    with _SESSION_LOCK:
+        for con, _ in _SESSION_CACHE.values():
+            try:
+                con.close()
+            except Exception:
+                pass
+        _SESSION_CACHE.clear()
+
+
+def _get_snapshot_connection(
+    artifacts_root: Path, snapshot_id: str
+) -> tuple[Any, dict[str, str]]:
+    key = (Path(artifacts_root).resolve(), str(snapshot_id))
+    with _SESSION_LOCK:
+        entry = _SESSION_CACHE.get(key)
+        if entry is None:
+            snapshots_root, lineage = _snapshot_lineage(artifacts_root, snapshot_id)
+            con = connect()
+            views = compile_virtual_views(
+                con, ACQUISITION_RELATIONS, lineage, snapshots_root
+            )
+            entry = (con, views)
+            _SESSION_CACHE[key] = entry
+        return entry
+
+
+class SnapshotSession:
+    """Reusable session caching compiled views for lazy snapshot access."""
+
+    def __init__(self, artifacts_root: Path, snapshot_id: str) -> None:
+        self.artifacts_root = Path(artifacts_root)
+        self.snapshot_id = snapshot_id
+
+    def connection(self) -> tuple[Any, dict[str, str]]:
+        return _get_snapshot_connection(self.artifacts_root, self.snapshot_id)
+
+    def load_payload(self, sha256: str) -> bytes:
+        return _load_snapshot_payload(self.artifacts_root, self.snapshot_id, sha256)
+
+    def load_attachments(self, accession: str) -> tuple[FilingAttachment, ...]:
+        return _snapshot_attachments(self.artifacts_root, self.snapshot_id, accession)
+
+
 def _load_snapshot_payload(
     artifacts_root: Path, snapshot_id: str, sha256: str
 ) -> bytes:
-    snapshots_root, lineage = _snapshot_lineage(artifacts_root, snapshot_id)
-    with connect() as con:
-        views = compile_virtual_views(
-            con, ACQUISITION_RELATIONS, lineage, snapshots_root
-        )
-        for relation in ("text_payloads", "binary_payloads"):
-            view = sql_identifier(views[relation])
-            row = con.execute(
-                f"SELECT payload_bytes FROM {view} WHERE payload_sha256 = ? LIMIT 1",
-                [sha256],
-            ).fetchone()
-            if row is not None and row[0] is not None:
-                return bytes(row[0])
+    con, views = _get_snapshot_connection(artifacts_root, snapshot_id)
+    for relation in ("text_payloads", "binary_payloads"):
+        view = sql_identifier(views[relation])
+        row = con.execute(
+            f"SELECT payload_bytes FROM {view} WHERE payload_sha256 = ? LIMIT 1",
+            [sha256],
+        ).fetchone()
+        if row is not None and row[0] is not None:
+            return bytes(row[0])
     raise FileNotFoundError(f"snapshot payload {sha256!r} is missing")
 
 
 def _snapshot_attachments(
     artifacts_root: Path, snapshot_id: str, accession: str
 ) -> tuple[FilingAttachment, ...]:
-    snapshots_root, lineage = _snapshot_lineage(artifacts_root, snapshot_id)
-    with connect() as con:
-        views = compile_virtual_views(
-            con, ACQUISITION_RELATIONS, lineage, snapshots_root
-        )
-        slots = sql_identifier(views["acquisition_slots"])
-        assets = sql_identifier(views["source_assets"])
-        types = sql_identifier(views["slot_types"])
-        rows = con.execute(
-            f"SELECT s.sequence, COALESCE(st.statutory_type, ''), "
-            f"COALESCE(sa.canonical_path, s.locator), s.locator "
-            f"FROM {slots} s LEFT JOIN {assets} sa ON s.source_asset_id = sa.source_asset_id "
-            f"LEFT JOIN {types} st ON s.accession = st.accession AND s.sequence = st.sequence "
-            "WHERE s.accession = ? ORDER BY s.sequence",
-            [accession],
-        ).fetchall()
+    con, views = _get_snapshot_connection(artifacts_root, snapshot_id)
+    slots = sql_identifier(views["acquisition_slots"])
+    assets = sql_identifier(views["source_assets"])
+    types = sql_identifier(views["slot_types"])
+    rows = con.execute(
+        f"SELECT s.sequence, COALESCE(st.statutory_type, ''), "
+        f"COALESCE(sa.canonical_path, s.locator), s.locator "
+        f"FROM {slots} s LEFT JOIN {assets} sa ON s.source_asset_id = sa.source_asset_id "
+        f"LEFT JOIN {types} st ON s.accession = st.accession AND s.sequence = st.sequence "
+        "WHERE s.accession = ? ORDER BY s.sequence",
+        [accession],
+    ).fetchall()
     return tuple(
         FilingAttachment(
             attachment_id=str(seq),
@@ -338,8 +380,12 @@ def _snapshot_attachments(
 
 
 def _make_snapshot_filing(
-    row: tuple[Any, ...], artifacts_root: Path, snapshot_id: str
+    row: tuple[Any, ...],
+    artifacts_root: Path,
+    snapshot_id: str,
+    session: SnapshotSession | None = None,
 ) -> FilingAggregate:
+    sess = session or SnapshotSession(artifacts_root, snapshot_id)
     (
         target_id,
         accession,
@@ -361,14 +407,8 @@ def _make_snapshot_filing(
         primary_document_path=str(target_url).split("/")[-1] if target_url else "",
         primary_sha256=str(sha) if sha else None,
         primary_document_url=str(target_url or ""),
-        attachment_loader=lambda _f: _snapshot_attachments(
-            artifacts_root, snapshot_id, str(accession)
-        ),
-        fetcher=(
-            (lambda _f: _load_snapshot_payload(artifacts_root, snapshot_id, str(sha)))
-            if sha
-            else None
-        ),
+        attachment_loader=lambda _f: sess.load_attachments(str(accession)),
+        fetcher=((lambda _f: sess.load_payload(str(sha))) if sha else None),
         renderer=lambda f, operation=None: render_filing(
             f, operation=operation or "raw"
         ),
@@ -378,6 +418,7 @@ def _make_snapshot_filing(
 def iter_snapshot_filings(result: FilingsResult) -> Iterator[FilingAggregate]:
     if result.snapshot_id is None:
         return
+    session = SnapshotSession(result.artifacts_root, result.snapshot_id)
     with connect() as con:
         register_snapshot_views(
             con,
@@ -399,7 +440,7 @@ def iter_snapshot_filings(result: FilingsResult) -> Iterator[FilingAggregate]:
         while rows := cursor.fetchmany(resolve_read_batch_size()):
             for row in rows:
                 yield _make_snapshot_filing(
-                    row, result.artifacts_root, result.snapshot_id
+                    row, result.artifacts_root, result.snapshot_id, session=session
                 )
 
 
@@ -408,6 +449,7 @@ def snapshot_filing_at(
 ) -> FilingAggregate | None:
     if result.snapshot_id is None:
         return None
+    session = SnapshotSession(result.artifacts_root, result.snapshot_id)
     with connect() as con:
         register_snapshot_views(
             con,
@@ -430,7 +472,9 @@ def snapshot_filing_at(
             [int(offset)],
         ).fetchone()
     return (
-        _make_snapshot_filing(row, result.artifacts_root, result.snapshot_id)
+        _make_snapshot_filing(
+            row, result.artifacts_root, result.snapshot_id, session=session
+        )
         if row is not None
         else None
     )
@@ -438,5 +482,6 @@ def snapshot_filing_at(
 
 __all__ = [
     "SnapshotConsole",
+    "SnapshotSession",
     "query_filings_from_snapshot",
 ]

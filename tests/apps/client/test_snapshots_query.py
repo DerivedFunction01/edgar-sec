@@ -102,3 +102,19 @@ def test_facade_snapshot_access_and_tag(tmp_path: Path) -> None:
     res_tag = edgar.from_snapshot("prod-v1")
     assert len(res_tag) == 1
     assert res_tag[0].raw() == b"<html>Sample filing content</html>"
+
+
+def test_snapshot_session_caching(tmp_path: Path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    run_id, _ = _setup_run(tmp_path, "run-1")
+    pub = publish_acquisition_run(paths, run_id, branch_name="main")
+
+    from edgar_sec.apps.client.snapshots import SnapshotSession
+
+    session = SnapshotSession(tmp_path, pub.snapshot_id)
+    con1, views1 = session.connection()
+    con2, views2 = session.connection()
+    assert con1 is con2
+    assert views1 == views2
+    attachments = session.load_attachments("0000320193-23-000106")
+    assert isinstance(attachments, tuple)

@@ -675,9 +675,16 @@ def query_catalog_fast(
                         int(s) if s.isdigit() else s,
                     ]
                 )
-        placeholders = ", ".join(["?"] * len(cik_queries))
-        clauses.append(f"source_cik IN ({placeholders})")
-        params.extend(cik_queries)
+        if len(ciks) <= 32:
+            placeholders = ", ".join(["?"] * len(cik_queries))
+            clauses.append(f"source_cik IN ({placeholders})")
+            params.extend(cik_queries)
+        else:
+            str_queries = [str(x) for x in cik_queries]
+            clauses.append(
+                "CAST(source_cik AS VARCHAR) IN (SELECT unnest(?::VARCHAR[]))"
+            )
+            params.append(str_queries)
 
     if forms:
         form_list = [forms] if isinstance(forms, str) else list(forms)
@@ -714,39 +721,18 @@ def query_catalog_fast(
         {limit_sql}
     """
 
-    with connect() as con:
-        try:
-            cursor = con.execute(query, params)
-        except Exception:
-            cursor = None
-        if cursor is not None:
-            while rows := cursor.fetchmany(resolve_read_batch_size()):
-                for acc_str, cik_val, form_val, f_date, r_date, p_doc, p_url in rows:
-                    acc = AccessionNumber.from_any(acc_str)
-                    cik_inst = Cik.from_raw(cik_val)
-                    agg = FilingAggregate(
-                        accession=acc,
-                        primary_cik=cik_inst,
-                        ciks=(cik_inst,),
-                        form=str(form_val),
-                        filing_date=str(f_date or ""),
-                        report_date=str(r_date) if r_date else None,
-                        primary_document_path=str(p_doc or ""),
-                        primary_document_url=str(p_url) if p_url else None,
-                        fetcher=fetcher,
-                        cache_clearer=doc_cache.clear,
-                        zip_exporter=lambda filing, zpath: doc_cache.export_zip(
-                            zpath, accession=filing.accession.raw
-                        ),
-                        attachment_loader=attachment_loader,
-                        document_opener=document_opener,
-                        bundle_fetcher=bundle_fetcher,
-                        index_fetcher=index_fetcher,
-                        renderer=filing_renderer,
-                    )
-                    aggregates.append(agg)
+    has_matches = False
+    if ciks:
+        with connect() as con:
+            try:
+                check_sql = f"SELECT 1 FROM read_parquet(?) {where_sql} LIMIT 1"
+                has_matches = con.execute(check_sql, params).fetchone() is not None
+            except Exception:
+                has_matches = False
+    else:
+        has_matches = True
 
-    if not aggregates and ciks:
+    if not has_matches and ciks:
         client = (
             http_client_factory()
             if http_client_factory is not None
@@ -770,6 +756,27 @@ def query_catalog_fast(
             aggregates.extend(on_the_fly)
         if limit is not None:
             aggregates = aggregates[: int(limit)]
+        return FilingsResult(
+            run_id="fast-path",
+            plan_id="fast-path",
+            target_parquet_glob=targets_pattern,
+            run_state_sqlite_path=doc_cache.db_path,
+            artifacts_root=catalog_paths.artifacts_root,
+            items=tuple(aggregates),
+        )
+
+    factories = {
+        "fetcher": fetcher,
+        "cache_clearer": doc_cache.clear,
+        "zip_exporter": lambda filing, zpath: doc_cache.export_zip(
+            zpath, accession=filing.accession.raw
+        ),
+        "attachment_loader": attachment_loader,
+        "document_opener": document_opener,
+        "bundle_fetcher": bundle_fetcher,
+        "index_fetcher": index_fetcher,
+        "renderer": filing_renderer,
+    }
 
     return FilingsResult(
         run_id="fast-path",
@@ -777,5 +784,9 @@ def query_catalog_fast(
         target_parquet_glob=targets_pattern,
         run_state_sqlite_path=doc_cache.db_path,
         artifacts_root=catalog_paths.artifacts_root,
-        items=tuple(aggregates),
+        query_backed=True,
+        query_sql=query,
+        query_params=tuple(params),
+        query_factories=factories,
+        items=None,
     )

@@ -161,6 +161,23 @@ class Roster:
         """
         return dict(self.iter_rows())
 
+    def lookup_name(self, cik: str) -> str | None:
+        """Lookup curated company name for CIK without cohort materialization."""
+        if self.dataset is None or self.is_empty:
+            return None
+        from edgar_sec.domain.identity import Cik
+
+        padded = Cik.from_raw(cik).to_10digit()
+        table = pq.read_table(
+            self.dataset,
+            columns=["name"],
+            filters=[("cik_padded", "=", padded)],
+        )
+        if table.num_rows == 0:
+            return None
+        val = table.column("name")[0].as_py()
+        return str(val or "")
+
 
 def _row_group_span(handle: pq.ParquetFile, index: int) -> tuple[int, int] | None:
     """The ordinal range one row group covers, or ``None`` when unknowable.
@@ -336,8 +353,11 @@ def read_cik_index(path: str | os.PathLike[str]) -> tuple[str, ...]:
     ciks = tuple(
         str(value) for value in pq.read_table(target).column("cik").to_pylist()
     )
-    if list(ciks) != sorted(set(ciks)):
-        raise RosterError(f"CIK index is not sorted and distinct: {target}")
+    prev: str | None = None
+    for value in ciks:
+        if prev is not None and value <= prev:
+            raise RosterError(f"CIK index is not sorted and distinct: {target}")
+        prev = value
     return ciks
 
 

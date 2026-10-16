@@ -18,6 +18,7 @@ class PlanFilterOptions:
     min_exhibit_like: int | None = None
     cohort: str | None = None
     xbrl_only: bool = False
+    accessions: tuple[str, ...] | None = None
 
     def to_request_dict(self) -> dict[str, Any]:
         """Convert filter options to canonical request properties for plan hashing."""
@@ -34,6 +35,9 @@ class PlanFilterOptions:
             "min_exhibit_like": self.min_exhibit_like,
             "cohort": self.cohort,
             "xbrl_only": self.xbrl_only,
+            "accessions": (
+                list(sorted(self.accessions)) if self.accessions is not None else None
+            ),
         }
 
 
