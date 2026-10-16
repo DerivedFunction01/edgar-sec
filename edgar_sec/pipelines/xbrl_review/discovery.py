@@ -1,4 +1,4 @@
-"""Manifest-only discovery for cohorts and review runs in XBRL review pipeline."""
+"""Manifest-only discovery for cohorts, plans, and review runs in XBRL review."""
 
 from __future__ import annotations
 
@@ -6,17 +6,29 @@ import json
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.pipelines.xbrl_review.paths import resolve_xbrl_review_paths
+from edgar_sec.domain.plan.discovery import discover_plans as _discover_plans
+from edgar_sec.domain.plan.envelope import PlanEnvelope
+from edgar_sec.pipelines.xbrl_review.paths import (
+    default_seed_cohort_path,
+    default_sp100_cohort_path,
+    resolve_filing_catalog_paths,
+    xbrl_paths,
+)
+
+
+def discover_plans(artifacts_root: str | Path | None = None) -> list[PlanEnvelope]:
+    """Discover published catalog plans."""
+    paths = resolve_filing_catalog_paths(artifacts_root)
+    return _discover_plans(paths.plans_root)
 
 
 def discover_cohorts(
     artifacts_root: Path | str | None = None,
 ) -> list[dict[str, Any]]:
     """Discover available cohorts for XBRL review and benchmark validation."""
-    paths = resolve_xbrl_review_paths(artifacts_root=artifacts_root)
     cohorts: list[dict[str, Any]] = []
 
-    seed_p = paths.default_seed_cohort_path
+    seed_p = default_seed_cohort_path(artifacts_root)
     if seed_p.is_file():
         cohorts.append(
             {
@@ -26,7 +38,7 @@ def discover_cohorts(
             }
         )
 
-    sp100_p = paths.default_sp100_cohort_path
+    sp100_p = default_sp100_cohort_path(artifacts_root)
     if sp100_p.is_file():
         cohorts.append(
             {
@@ -36,15 +48,6 @@ def discover_cohorts(
             }
         )
 
-    if paths.cohorts_dir.is_dir():
-        for cp in sorted(paths.cohorts_dir.glob("*.json")):
-            cohorts.append(
-                {
-                    "cohort_id": cp.stem,
-                    "label": f"Custom Cohort ({cp.name})",
-                    "path": cp,
-                }
-            )
     return cohorts
 
 
@@ -52,8 +55,8 @@ def discover_review_runs(
     artifacts_root: Path | str | None = None,
 ) -> list[dict[str, Any]]:
     """Discover historical review runs and manifests without heavy file scans."""
-    paths = resolve_xbrl_review_paths(artifacts_root=artifacts_root)
-    runs_dir = paths.review_runs_dir
+    paths = xbrl_paths(artifacts_root=artifacts_root)
+    runs_dir = paths.review_runs_root
     if not runs_dir.is_dir():
         return []
 
@@ -78,3 +81,12 @@ def discover_review_runs(
                 }
             )
     return runs
+
+
+__all__ = [
+    "default_seed_cohort_path",
+    "default_sp100_cohort_path",
+    "discover_cohorts",
+    "discover_plans",
+    "discover_review_runs",
+]

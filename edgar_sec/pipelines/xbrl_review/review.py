@@ -14,10 +14,24 @@ from edgar_sec.engine.xbrl.schema.models import CalculationArc, XbrlFact
 from edgar_sec.engine.xbrl.solve.counter_solver import CounterSolver
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
+import pyarrow as pa
+import pyarrow.parquet as pq
+
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import connect
+from edgar_sec.infra.storage.parquet import write_parquet_table
 from edgar_sec.infra.storage.review.paths import ReviewPaths
-from edgar_sec.pipelines.xbrl_review.paths import resolve_xbrl_review_paths
+from edgar_sec.pipelines.xbrl_review.paths import (
+    HYPOTHESES_FILE,
+    QUARANTINE_FILE,
+    SOLVED_NODES_FILE,
+    xbrl_paths,
+)
+from edgar_sec.pipelines.xbrl_review.schemas import (
+    HYPOTHESES_SCHEMA,
+    QUARANTINE_SCHEMA,
+    SOLVED_NODES_SCHEMA,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -101,8 +115,7 @@ def execute_review_generation(
     """Execute solver and counter-solver on cohort and stage diagnostic cases."""
     now = datetime.now(timezone.utc)
     resolved_run_id = run_id or f"run-{now.strftime('%Y%m%d_%H%M%S')}"
-    paths = resolve_xbrl_review_paths()
-    paths.ensure_directories()
+    paths = xbrl_paths()
     if output_root is not None:
         run_dir = (
             output_root
@@ -111,14 +124,12 @@ def execute_review_generation(
         )
         review_paths = ReviewPaths(root=run_dir)
     else:
-        review_paths = paths.review_run_paths(resolved_run_id)
+        review_paths = paths.review_paths(resolved_run_id)
 
     run_dir = review_paths.root
     run_dir.mkdir(parents=True, exist_ok=True)
     cases_dir = review_paths.cases_dir
     cases_dir.mkdir(parents=True, exist_ok=True)
-    staging_lake_dir = paths.staging_lake_dir
-    staging_lake_dir.mkdir(parents=True, exist_ok=True)
 
     tax = load_domain_taxonomy()
     kb = EvidenceKnowledgeBase(taxonomy=tax)
@@ -228,20 +239,23 @@ def execute_review_generation(
             case_hypotheses.append(hyp)
         all_hypotheses.extend(case_hypotheses)
 
-        atomic_write_json(
-            case_dir / "solved_nodes.json",
-            [asdict(s) for s in case_solved],
-            indent=2,
+        write_parquet_table(
+            pa.Table.from_pylist(
+                [asdict(s) for s in case_solved], schema=SOLVED_NODES_SCHEMA
+            ),
+            case_dir / SOLVED_NODES_FILE,
         )
-        atomic_write_json(
-            case_dir / "epistemic_quarantine.json",
-            [asdict(q) for q in case_quarantine],
-            indent=2,
+        write_parquet_table(
+            pa.Table.from_pylist(
+                [asdict(q) for q in case_quarantine], schema=QUARANTINE_SCHEMA
+            ),
+            case_dir / QUARANTINE_FILE,
         )
-        atomic_write_json(
-            case_dir / "hypotheses.json",
-            [asdict(h) for h in case_hypotheses],
-            indent=2,
+        write_parquet_table(
+            pa.Table.from_pylist(
+                [asdict(h) for h in case_hypotheses], schema=HYPOTHESES_SCHEMA
+            ),
+            case_dir / HYPOTHESES_FILE,
         )
 
     manifest_data = {
@@ -272,17 +286,16 @@ def promote_review_rule(
     db_path: Path | None = None,
 ) -> PromotedRuleRecord:
     """Promote an approved hypothesis rule to the target DuckDB database."""
-    target_db = db_path or resolve_xbrl_review_paths().unification_rules_db_path
+    target_db = db_path or xbrl_paths().unification_rules_db_path
     target_db.parent.mkdir(parents=True, exist_ok=True)
 
     cases_dir = run_dir / "cases"
     matched_hyp: dict[str, Any] | None = None
     if cases_dir.is_dir():
         for case_p in cases_dir.iterdir():
-            hyp_p = case_p / "hypotheses.json"
+            hyp_p = case_p / HYPOTHESES_FILE
             if hyp_p.is_file():
-                hyps = json.loads(hyp_p.read_text(encoding="utf-8"))
-                for h in hyps:
+                for h in pq.read_table(hyp_p).to_pylist():
                     if h.get("rule_id") == rule_id:
                         matched_hyp = h
                         break

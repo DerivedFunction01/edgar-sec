@@ -76,6 +76,8 @@ _SQL_COMPILER_PATHS = frozenset(
         # row values and limits remain bound parameters.
         "edgar_sec/pipelines/cohort/workspace.py",
         "edgar_sec/pipelines/cohort/sources.py",
+        # Target paths and base snapshot paths are escaped with sql_literal before query composition.
+        "edgar_sec/pipelines/xbrl_review/commands/project.py",
     }
 )
 

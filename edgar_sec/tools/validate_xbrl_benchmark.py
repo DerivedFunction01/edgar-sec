@@ -14,9 +14,9 @@ from edgar_sec.engine.xbrl.review.benchmark import (
 from edgar_sec.engine.xbrl.discovery.cohort import load_seed_cohort
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
-from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
 from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.pipelines.xbrl_review.paths import default_seed_cohort_path, xbrl_paths
 
 __all__ = [
     "BenchmarkReport",
@@ -64,8 +64,9 @@ def main(argv: list[str] | None = None) -> int:
     parser = _build_parser()
     args = parser.parse_args(argv)
 
-    paths = resolve_xbrl_paths()
-    cohort_source = args.cohort_file or paths.default_seed_cohort_path
+    cohort_source = (
+        Path(args.cohort_file) if args.cohort_file else default_seed_cohort_path()
+    )
     if not cohort_source.exists():
         sys.stderr.write(f"Cohort file not found: {cohort_source}\n")
         return 1
@@ -110,7 +111,7 @@ def main(argv: list[str] | None = None) -> int:
                 f"exp={r.expected} act={r.actual} ({round(r.latency_ms, 2)}ms)\n"
             )
 
-    out_path = args.output or paths.default_benchmark_report_path
+    out_path = args.output or (xbrl_paths().transient_root / "benchmark_report.json")
     atomic_write_json(out_path, report.to_dict(), indent=2)
     sys.stdout.write(f"Report written to: {out_path}\n")
 

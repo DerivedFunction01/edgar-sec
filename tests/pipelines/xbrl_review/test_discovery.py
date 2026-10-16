@@ -7,7 +7,7 @@ from edgar_sec.pipelines.xbrl_review.discovery import (
     discover_cohorts,
     discover_review_runs,
 )
-from edgar_sec.pipelines.xbrl_review.paths import resolve_xbrl_review_paths
+from edgar_sec.pipelines.xbrl_review.paths import xbrl_paths
 
 
 def test_discover_cohorts() -> None:
@@ -20,8 +20,8 @@ def test_discover_cohorts() -> None:
 
 def test_discover_review_runs(tmp_path: Path) -> None:
     """Verify discovery of historical run directories and manifests."""
-    paths = resolve_xbrl_review_paths(artifacts_root=tmp_path)
-    run_dir = paths.review_runs_dir / "run-20261014_100000"
+    paths = xbrl_paths(tmp_path)
+    run_dir = paths.review_runs_root / "run-20261014_100000"
     run_dir.mkdir(parents=True, exist_ok=True)
     atomic_write_json(
         run_dir / "manifest.jsonl",

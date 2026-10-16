@@ -29,11 +29,7 @@ By decomposing taxonomy linkbases into explicit typed relational structures and 
     ├── linkbases/  # Directory housing linkbase Parquet inventories.
     │   ├── linkbases.parquet  # Default linkbase inventory Parquet file path.
     │   └── {cohort_id}_linkbases.parquet  # Return the Parquet path for a named cohort's linkbases.
-    ├── review-runs/  # Directory housing diagnostic review runs.
-    ├── staging_lake/  # Directory housing out-of-core staging Parquet tables.
-    ├── xml/  # Directory housing cached linkbase XML source files.
-    ├── benchmark_report.json  # Default path to output benchmark report JSON.
-    └── unification_rules.duckdb  # Path to canonical DuckDB unification rules database.
+    └── xml/  # Directory housing cached linkbase XML source files.
 
 {repo_root}/
 └── edgar_sec/
@@ -49,8 +45,6 @@ By decomposing taxonomy linkbases into explicit typed relational structures and 
                 ├── member_roles.json  # Default path to member roles taxonomy file.
                 ├── prime_heads.json  # Default path to prime heads taxonomy file.
                 ├── relation_types.json  # Default path to relation types taxonomy file.
-                ├── seed_cohort.json  # Default path to the clean seed cohort input JSON.
-                ├── sp100_cohort.json  # Default path to the S&P 100 cohort input JSON.
                 ├── subatomic_modifiers.json  # Default path to subatomic modifiers taxonomy file.
                 ├── subspace_invariants.json  # Default path to multidimensional subspace routing invariants file.
                 ├── token_lexicon.json  # Default path to token lexicon taxonomy file.
