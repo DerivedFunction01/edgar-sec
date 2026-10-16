@@ -44,6 +44,16 @@ from edgar_sec.domain.forms.families.registration.processing import (
 )
 
 
+from edgar_sec.domain.forms.common.models import ItemDefinition
+from edgar_sec.domain.forms.families.annual.taxonomy import (
+    FORM_10K_ITEMS,
+    FORM_20F_ITEMS,
+)
+from edgar_sec.domain.forms.families.current.taxonomy import FORM_8K_ITEMS
+from edgar_sec.domain.forms.families.quarterly.taxonomy import FORM_10Q_ITEMS
+from edgar_sec.domain.forms.families.registration.taxonomy import FORM_S1_ITEMS
+
+
 @dataclass(frozen=True, slots=True)
 class ProcessingCatalogEntry:
     """Entry in the processing catalog."""
@@ -51,6 +61,7 @@ class ProcessingCatalogEntry:
     family: str
     profile: DocumentProcessingProfile
     cover_checkbox_schema: CoverCheckboxSchema | None = None
+    taxonomy_items: tuple[ItemDefinition, ...] = ()
 
 
 FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
@@ -58,26 +69,36 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         family="10-K",
         profile=ANNUAL_PROFILE,
         cover_checkbox_schema=ANNUAL_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_10K_ITEMS,
     ),
     ProcessingCatalogEntry(
         family="20-F",
         profile=ANNUAL_PROFILE_20F,
         cover_checkbox_schema=ANNUAL_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_20F_ITEMS,
     ),
     ProcessingCatalogEntry(
         family="10-Q",
         profile=QUARTERLY_PROFILE,
         cover_checkbox_schema=QUARTERLY_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_10Q_ITEMS,
     ),
     ProcessingCatalogEntry(
         family="8-K",
         profile=CURRENT_PROFILE,
         cover_checkbox_schema=EIGHT_K_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_8K_ITEMS,
     ),
     ProcessingCatalogEntry(
         family="6-K",
         profile=CURRENT_PROFILE,
         cover_checkbox_schema=SIX_K_CHECKBOX_SCHEMA,
+    ),
+    ProcessingCatalogEntry(
+        family="S-1",
+        profile=PROFILE_S1,
+        cover_checkbox_schema=S1_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_S1_ITEMS,
     ),
     ProcessingCatalogEntry(
         family="3",
@@ -90,11 +111,6 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
     ProcessingCatalogEntry(
         family="5",
         profile=PROFILE_FORM_5,
-    ),
-    ProcessingCatalogEntry(
-        family="S-1",
-        profile=PROFILE_S1,
-        cover_checkbox_schema=S1_CHECKBOX_SCHEMA,
     ),
 )
 

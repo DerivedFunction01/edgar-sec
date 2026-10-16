@@ -16,6 +16,11 @@ from edgar_sec.infra.sec_http.client import SecHttpClient
 if TYPE_CHECKING:
     from edgar_sec.apps.client.entity import Company
     from edgar_sec.domain.document.aggregate import FilingAggregate
+    from edgar_sec.engine.forms.cover.toc.models import TocSpan
+    from edgar_sec.engine.forms.sections.models import (
+        NotesSequence,
+        SectionSequence,
+    )
     from edgar_sec.engine.xbrl.schema.models import FilingXbrl
 
 
@@ -276,6 +281,88 @@ class Edgar:
         from edgar_sec.engine.xbrl.parsing.filing_parser import parse_filing_xbrl
 
         return parse_filing_xbrl(filing)
+
+    def sections(
+        self, filing: FilingAggregate, text: str | None = None
+    ) -> SectionSequence:
+        """Detect and return full statutory Part/Item section sequence."""
+        from edgar_sec.domain.forms.common.aliases import resolve_alias
+        from edgar_sec.domain.forms.families.processing_profiles import (
+            get_family_entry,
+        )
+        from edgar_sec.engine.forms.sections.items.detector import (
+            detect_section_sequence,
+        )
+
+        body = text if text is not None else self._extract_filing_text(filing)
+        family = resolve_alias(filing.form) or filing.form.strip().upper()
+        entry = get_family_entry(family)
+        taxonomy = entry.taxonomy_items if entry is not None else ()
+        toc_info = (
+            self.toc(filing, text=body) if entry and entry.profile.has_toc else None
+        )
+        toc_span = (
+            (toc_info.start_line, toc_info.end_line) if toc_info is not None else None
+        )
+        return detect_section_sequence(
+            body,
+            family=family,
+            taxonomy_items=taxonomy,
+            toc_span=toc_span,
+        )
+
+    def section(
+        self, filing: FilingAggregate, item: str, text: str | None = None
+    ) -> str:
+        """Extract and return text of a specific section (e.g. 'ITEM 1A')."""
+        body = text if text is not None else self._extract_filing_text(filing)
+        seq = self.sections(filing, text=body)
+        canon = item.upper().strip()
+        if not canon.startswith("ITEM"):
+            canon = f"ITEM {canon}"
+        target = next((s for s in seq.sections if s.item_identifier == canon), None)
+        if target is None:
+            return ""
+        lines = body.splitlines()
+        end = target.end_line or len(lines)
+        return "\n".join(lines[target.start_line : end])
+
+    def notes(self, filing: FilingAggregate, text: str | None = None) -> NotesSequence:
+        """Detect and return financial statement footnotes."""
+        from edgar_sec.engine.forms.sections.notes.detector import (
+            detect_notes_sequence,
+        )
+
+        body = text if text is not None else self._extract_filing_text(filing)
+        return detect_notes_sequence(body)
+
+    def note(
+        self,
+        filing: FilingAggregate,
+        number: int | str,
+        text: str | None = None,
+    ) -> str:
+        """Extract and return clean text of a specific financial note."""
+        body = text if text is not None else self._extract_filing_text(filing)
+        seq = self.notes(filing, text=body)
+        num = int(str(number).replace("NOTE", "").strip())
+        target = next((n for n in seq.notes if n.note_number == num), None)
+        if target is None:
+            return ""
+        lines = body.splitlines()
+        end = target.end_line or len(lines)
+        return "\n".join(lines[target.start_line : end])
+
+    def toc(self, filing: FilingAggregate, text: str | None = None) -> TocSpan | None:
+        """Return detected Table of Contents span if present."""
+        from edgar_sec.engine.forms.cover.toc.finder import find_toc_span
+
+        body = text if text is not None else self._extract_filing_text(filing)
+        return find_toc_span(body)
+
+    def _extract_filing_text(self, filing: FilingAggregate) -> str:
+        data = filing.raw()
+        return data.decode("utf-8", errors="ignore") if data else ""
 
 
 __all__ = ["Edgar"]

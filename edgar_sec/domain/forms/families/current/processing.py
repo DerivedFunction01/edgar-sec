@@ -21,6 +21,9 @@ PROFILE = DocumentProcessingProfile(
     ),
     report_class=CurrentReport,
     preferred_operation=AcquisitionOperation.RENDER_TO_TXT,
+    has_toc=False,
+    has_sections=True,
+    has_notes=False,
 )
 
 __all__ = ["PROFILE"]

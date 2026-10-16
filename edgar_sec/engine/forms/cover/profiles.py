@@ -82,6 +82,9 @@ class CoverProfile:
     derived_taxonomy: dict | None = None
     checkbox_schema: CoverCheckboxSchema | None = None
     cover_table_cleaners: tuple[str, ...] = ()
+    has_toc: bool = False
+    has_sections: bool = False
+    has_notes: bool = False
 
 
 def _make_profile(
@@ -95,6 +98,7 @@ def _make_profile(
     cover_table_cleaners: tuple[str, ...] = (),
 ) -> CoverProfile:
     family_entry = get_family_entry(family)
+    prof = family_entry.profile if family_entry is not None else None
     return CoverProfile(
         family=family,
         boundary=boundary,
@@ -110,6 +114,9 @@ def _make_profile(
             family_entry.cover_checkbox_schema if family_entry is not None else None
         ),
         cover_table_cleaners=cover_table_cleaners,
+        has_toc=prof.has_toc if prof is not None else False,
+        has_sections=prof.has_sections if prof is not None else False,
+        has_notes=prof.has_notes if prof is not None else False,
     )
 
 
