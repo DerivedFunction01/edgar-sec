@@ -21,7 +21,7 @@ def test_load_taxonomy_from_fixtures() -> None:
     taxonomy = load_domain_taxonomy(tax_dir)
 
     assert len(taxonomy.prime_heads) == 12
-    assert len(taxonomy.subatomic_modifiers) == 43
+    assert len(taxonomy.subatomic_modifiers) == 51
     assert taxonomy.atom_relations is not None
     assert len(taxonomy.atom_relations.relations) >= 16
     assert taxonomy.token_lexicon is not None
@@ -31,7 +31,11 @@ def test_load_taxonomy_from_fixtures() -> None:
     swap = taxonomy.modifier("M_SWAP")
     assert swap is not None
     assert swap.category == "INSTRUMENT_DERIVATIVE"
-    assert "InterestRateSwap" in swap.keywords
+    assert "InterestRateSwap" not in swap.keywords
+
+    risk_fx = taxonomy.modifier("M_RISK_FX")
+    assert risk_fx is not None
+    assert risk_fx.category == "DERIVATIVE_UNDERLYING_RISK"
 
     cf_hedge = taxonomy.modifier("M_CASH_FLOW_HEDGE")
     assert cf_hedge is not None

@@ -11,6 +11,7 @@ from edgar_sec.engine.xbrl.schema.models import (
     XbrlFact,
 )
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
+from edgar_sec.engine.xbrl.solve.antichain import CandidateRelation
 
 
 def test_solve_placements_via_calc_arc_and_kb() -> None:
@@ -321,3 +322,92 @@ def test_subatomic_algebraic_derivation_derivative_net_asset() -> None:
     assert net_goal.value == 30000.0
     assert net_goal.basis == "DERIVED_EXACT"
     assert net_goal.resolution_tier == "SUBATOMIC_ALGEBRAIC_IDENTITY"
+
+
+def test_solver_rejects_double_counting_and_keeps_violation_trace() -> None:
+    tax = load_domain_taxonomy()
+    solver = XbrlConstraintSolver(EvidenceKnowledgeBase(taxonomy=tax))
+    acc = AccessionNumber("0000950170-24-087843")
+    facts = [
+        XbrlFact(acc, "us-gaap:AssetsCurrent", 10.0),
+        XbrlFact(acc, "us-gaap:CashAndCashEquivalentsAtCarryingValue", 7.0),
+    ]
+    arcs = [
+        CalculationArc("us-gaap:Assets", "us-gaap:AssetsCurrent", 1.0),
+        CalculationArc(
+            "us-gaap:Assets", "us-gaap:CashAndCashEquivalentsAtCarryingValue", 1.0
+        ),
+        CalculationArc(
+            "us-gaap:AssetsCurrent",
+            "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+            1.0,
+        ),
+    ]
+
+    aggregate = solver.evaluate_goal("us-gaap:Assets", facts, arcs)
+    assert aggregate.value is None
+    assert aggregate.basis == "CONFLICT_DOUBLE_COUNTING"
+    assert aggregate.resolution_tier == "ANTICHAIN_CONFLICT"
+    assert any("AssetsCurrent" in trace for trace in aggregate.derivation_path)
+    assert any("CashAndCashEquivalents" in trace for trace in aggregate.derivation_path)
+
+
+def test_solver_resolves_candidate_frontier_for_broad_income_query() -> None:
+    tax = load_domain_taxonomy()
+    solver = XbrlConstraintSolver(EvidenceKnowledgeBase(taxonomy=tax))
+    acc = AccessionNumber("0000950170-24-087843")
+    facts = [
+        XbrlFact(acc, "us-gaap:NetIncomeLoss", 88_136.0),
+        XbrlFact(acc, "us-gaap:OperatingIncomeLoss", 109_433.0),
+        XbrlFact(acc, "us-gaap:NonoperatingIncomeExpense", 2_000.0),
+    ]
+    arcs = [
+        CalculationArc("us-gaap:NetIncomeLoss", "us-gaap:OperatingIncomeLoss", 1.0),
+        CalculationArc(
+            "us-gaap:NetIncomeLoss", "us-gaap:NonoperatingIncomeExpense", 1.0
+        ),
+    ]
+
+    frontier = solver.resolve_query_frontier("Income", facts, arcs)
+    assert len(frontier.candidates) == 3
+    relations = {
+        frozenset((pair.concept_a, pair.concept_b)): pair.relation
+        for pair in frontier.pairwise_relations
+    }
+    assert (
+        relations[frozenset(("us-gaap:NetIncomeLoss", "us-gaap:OperatingIncomeLoss"))]
+        == CandidateRelation.ANCESTOR_DESCENDANT_OVERLAP
+    )
+    assert (
+        relations[
+            frozenset(
+                ("us-gaap:OperatingIncomeLoss", "us-gaap:NonoperatingIncomeExpense")
+            )
+        ]
+        == CandidateRelation.DISJOINT_SIBLING
+    )
+
+
+def test_retail_costs_and_operating_income_relations_compose() -> None:
+    tax = load_domain_taxonomy()
+    solver = XbrlConstraintSolver(EvidenceKnowledgeBase(taxonomy=tax))
+    acc = AccessionNumber("0000950170-24-087843")
+    facts = [
+        XbrlFact(
+            acc,
+            "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            100.0,
+        ),
+        XbrlFact(acc, "retail:CostOfSales", 10.0),
+        XbrlFact(acc, "retail:Fulfillment", 2.0),
+        XbrlFact(acc, "retail:TechnologyAndInfrastructure", 1.0),
+        XbrlFact(acc, "retail:SalesAndMarketingExpense", 3.0),
+        XbrlFact(acc, "retail:GeneralAndAdministrativeExpense", 4.0),
+    ]
+
+    costs = solver.evaluate_goal("CostsAndExpenses", facts)
+    operating_income = solver.evaluate_goal("OperatingIncome", facts)
+    assert costs.value == 20.0
+    assert costs.resolution_tier == "SUBATOMIC_ALGEBRAIC_IDENTITY"
+    assert operating_income.value == 80.0
+    assert operating_income.resolution_tier == "SUBATOMIC_ALGEBRAIC_IDENTITY"

@@ -1,0 +1,342 @@
+"""Scoped concept queries over filing facts and accounting graphs."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from enum import StrEnum
+from typing import Mapping
+
+from edgar_sec.engine.xbrl.schema.atoms import Atom
+from edgar_sec.engine.xbrl.schema.models import AggregateFact, CalculationArc, XbrlFact
+from edgar_sec.engine.xbrl.solve.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
+from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
+from edgar_sec.engine.xbrl.normalize.decomposer import split_camel_case
+
+
+class QueryMode(StrEnum):
+    REPORTED_ONLY = "REPORTED_ONLY"
+    DERIVE_ONLY = "DERIVE_ONLY"
+    VERIFY_DERIVATION = "VERIFY_DERIVATION"
+
+
+class QueryStatus(StrEnum):
+    REPORTED = "REPORTED"
+    DERIVED = "DERIVED"
+    VERIFIED = "VERIFIED"
+    AMBIGUOUS = "AMBIGUOUS"
+    UNAVAILABLE = "UNAVAILABLE"
+    CONFLICT = "CONFLICT"
+
+
+@dataclass(frozen=True, slots=True)
+class FinancialQuery:
+    term: str
+    scope: FactScope
+    mode: QueryMode = QueryMode.REPORTED_ONLY
+
+
+@dataclass(frozen=True, slots=True)
+class FinancialQueryResult:
+    query: FinancialQuery
+    status: QueryStatus
+    candidate_qnames: tuple[str, ...] = ()
+    candidate_facts: tuple[XbrlFact, ...] = ()
+    target_atom: Atom | None = None
+    reported_fact: XbrlFact | None = None
+    aggregate: AggregateFact | None = None
+    discrepancy: float | None = None
+    message: str = ""
+
+    @property
+    def value(self) -> float | None:
+        if self.aggregate is not None:
+            return self.aggregate.value
+        if self.reported_fact is not None and isinstance(
+            self.reported_fact.value, (int, float)
+        ):
+            return float(self.reported_fact.value)
+        return None
+
+
+DEFAULT_ALIASES: Mapping[str, tuple[str, ...]] = {
+    "aoci": (
+        "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+        "us-gaap:OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent",
+    ),
+    "cfo": ("us-gaap:NetCashProvidedByUsedInOperatingActivities",),
+    "eps": (
+        "us-gaap:EarningsPerShareBasic",
+        "us-gaap:EarningsPerShareDiluted",
+    ),
+}
+
+
+class FinancialQueryEngine:
+    def __init__(
+        self,
+        solver: XbrlConstraintSolver,
+        aliases: Mapping[str, tuple[str, ...]] | None = None,
+    ) -> None:
+        self.solver = solver
+        self.taxonomy = solver.kb.taxonomy
+        self.aliases = aliases or DEFAULT_ALIASES
+
+    @staticmethod
+    def _normalize_term(term: str) -> str:
+        return "".join(
+            character.casefold() for character in term if character.isalnum()
+        )
+
+    @staticmethod
+    def _context_key(fact: XbrlFact) -> tuple[object, ...]:
+        return (
+            str(fact.accession),
+            fact.unit,
+            fact.period_type,
+            fact.start_date,
+            fact.end_date,
+            fact.instant_date,
+            tuple(sorted(fact.dimensions.items())),
+        )
+
+    def _resolve_candidates(
+        self,
+        term: str,
+        scoped_facts: tuple[XbrlFact, ...],
+        facts: tuple[XbrlFact, ...],
+        calculation_arcs: tuple[CalculationArc, ...],
+    ) -> tuple[tuple[str, ...], Atom | None]:
+        qnames = {fact.concept_qname for fact in facts}
+        qnames.update(arc.parent_qname for arc in calculation_arcs)
+        available = {fact.concept_qname for fact in scoped_facts}
+        available.update(arc.parent_qname for arc in calculation_arcs)
+        normalized = self._normalize_term(term)
+        alias_names = self.aliases.get(normalized)
+        if alias_names is not None:
+            known = set(alias_names) & qnames
+            if not known:
+                return (), None
+            scoped = known & available
+            return tuple(sorted(scoped or known)), None
+        if ":" in term:
+            return (term,) if term in qnames else (), None
+
+        lexicon = self.taxonomy.token_lexicon
+        if lexicon is None:
+            return (), None
+        target_atom, residuals, _, _ = decompose_concept(term, lexicon)
+        if target_atom.head == "H_UNKNOWN" or residuals:
+            return (), target_atom
+
+        matches = {
+            qname
+            for qname in qnames
+            if qname in available
+            and decompose_concept(qname, lexicon)[0] == target_atom
+        }
+        return tuple(sorted(matches)), target_atom
+
+    @staticmethod
+    def _deduplicate_context_facts(
+        facts: tuple[XbrlFact, ...],
+    ) -> tuple[XbrlFact, ...] | None:
+        by_context: dict[tuple[object, ...], dict[float, XbrlFact]] = {}
+        for fact in facts:
+            if not isinstance(fact.value, (int, float)):
+                continue
+            by_context.setdefault(FinancialQueryEngine._context_key(fact), {})[
+                float(fact.value)
+            ] = fact
+        if any(len(values) > 1 for values in by_context.values()):
+            return None
+        return tuple(next(iter(values.values())) for values in by_context.values())
+
+    @staticmethod
+    def _precision_tolerance(fact: XbrlFact) -> float:
+        if fact.decimals is None:
+            return 0.0001
+        return 0.5 * (10.0 ** (-fact.decimals))
+
+    def execute(
+        self,
+        query: FinancialQuery,
+        facts: tuple[XbrlFact, ...] | list[XbrlFact],
+        calculation_arcs: tuple[CalculationArc, ...] | list[CalculationArc] = (),
+    ) -> FinancialQueryResult:
+        all_facts = tuple(facts)
+        arcs = tuple(calculation_arcs)
+        scoped_facts = query.scope.select(list(all_facts))
+        accessions = {str(fact.accession) for fact in scoped_facts}
+        if query.scope.accession is None and len(accessions) > 1:
+            return FinancialQueryResult(
+                query,
+                QueryStatus.AMBIGUOUS,
+                candidate_facts=scoped_facts,
+                message="A filing accession is required to prevent cross-entity matches.",
+            )
+        candidates, atom = self._resolve_candidates(
+            query.term, scoped_facts, all_facts, arcs
+        )
+        if not candidates:
+            return FinancialQueryResult(
+                query,
+                QueryStatus.UNAVAILABLE,
+                target_atom=atom,
+                message="No concept in this filing matches the query term.",
+            )
+        if len(candidates) > 1:
+            return FinancialQueryResult(
+                query,
+                QueryStatus.AMBIGUOUS,
+                candidate_qnames=candidates,
+                target_atom=atom,
+                message="The query term resolves to multiple concepts.",
+            )
+
+        target = candidates[0]
+        target_facts = tuple(
+            fact for fact in scoped_facts if fact.concept_qname == target
+        )
+        numeric_targets = self._deduplicate_context_facts(target_facts)
+        if numeric_targets is None:
+            return FinancialQueryResult(
+                query,
+                QueryStatus.CONFLICT,
+                candidate_qnames=candidates,
+                candidate_facts=target_facts,
+                target_atom=atom,
+                message="Conflicting values exist in the selected XBRL context.",
+            )
+        if len(numeric_targets) > 1:
+            return FinancialQueryResult(
+                query,
+                QueryStatus.AMBIGUOUS,
+                candidate_qnames=candidates,
+                candidate_facts=numeric_targets,
+                target_atom=atom,
+                message="The query scope matches multiple fact contexts.",
+            )
+        reported_fact = numeric_targets[0] if numeric_targets else None
+
+        if reported_fact is None and query.mode == QueryMode.REPORTED_ONLY:
+            return FinancialQueryResult(
+                query,
+                QueryStatus.UNAVAILABLE,
+                candidate_qnames=candidates,
+                target_atom=atom,
+                message="No reported fact exists in the selected XBRL context.",
+            )
+        if reported_fact is not None and query.mode == QueryMode.REPORTED_ONLY:
+            return FinancialQueryResult(
+                query,
+                QueryStatus.REPORTED,
+                candidate_qnames=candidates,
+                target_atom=atom,
+                reported_fact=reported_fact,
+            )
+
+        if query.scope.instant_date is None and query.scope.start_date is None:
+            return FinancialQueryResult(
+                query,
+                QueryStatus.AMBIGUOUS,
+                candidate_qnames=candidates,
+                candidate_facts=target_facts,
+                target_atom=atom,
+                reported_fact=reported_fact,
+                message="A query period is required to derive across filing facts.",
+            )
+
+        if query.scope.unit is None:
+            units = {fact.unit for fact in scoped_facts if fact.unit is not None}
+            if len(units) > 1:
+                return FinancialQueryResult(
+                    query,
+                    QueryStatus.AMBIGUOUS,
+                    candidate_qnames=candidates,
+                    candidate_facts=target_facts,
+                    target_atom=atom,
+                    reported_fact=reported_fact,
+                    message="A query unit is required to prevent mixed-unit derivation.",
+                )
+
+        derivation_atom = atom
+        if derivation_atom is None and self.taxonomy.token_lexicon is not None:
+            derivation_atom = decompose_concept(target, self.taxonomy.token_lexicon)[0]
+        derive_facts = tuple(
+            fact
+            for fact in scoped_facts
+            if fact.concept_qname != target
+            and not (
+                derivation_atom is not None
+                and self.taxonomy.token_lexicon is not None
+                and decompose_concept(fact.concept_qname, self.taxonomy.token_lexicon)[
+                    0
+                ]
+                == derivation_atom
+            )
+        )
+        period = query.scope.instant_date or query.scope.end_date or ""
+        unit = query.scope.unit or (reported_fact.unit if reported_fact else "USD")
+        aggregate = self.solver.evaluate_goal(
+            target,
+            derive_facts,
+            arcs,
+            entity=query.scope.accession or "",
+            period=period,
+            unit=unit,
+        )
+        if aggregate.value is None:
+            if query.mode == QueryMode.VERIFY_DERIVATION and reported_fact is not None:
+                return FinancialQueryResult(
+                    query,
+                    QueryStatus.REPORTED,
+                    candidate_qnames=candidates,
+                    target_atom=atom,
+                    reported_fact=reported_fact,
+                    message="The reported fact exists but no graph derivation was available.",
+                )
+            return FinancialQueryResult(
+                query,
+                QueryStatus.UNAVAILABLE,
+                candidate_qnames=candidates,
+                target_atom=atom,
+                reported_fact=reported_fact,
+                aggregate=aggregate,
+                message="No derivation is available from the selected context.",
+            )
+
+        if query.mode == QueryMode.VERIFY_DERIVATION and reported_fact is not None:
+            discrepancy = abs(float(reported_fact.value) - aggregate.value)
+            tolerance = self._precision_tolerance(reported_fact)
+            status = (
+                QueryStatus.VERIFIED
+                if discrepancy <= tolerance
+                else QueryStatus.CONFLICT
+            )
+            return FinancialQueryResult(
+                query,
+                status,
+                candidate_qnames=candidates,
+                target_atom=atom,
+                reported_fact=reported_fact,
+                aggregate=aggregate,
+                discrepancy=discrepancy,
+                message=(
+                    "Graph derivation reconciles to the reported fact."
+                    if status == QueryStatus.VERIFIED
+                    else "Graph derivation does not reconcile to the reported fact."
+                ),
+            )
+
+        return FinancialQueryResult(
+            query,
+            QueryStatus.DERIVED,
+            candidate_qnames=candidates,
+            target_atom=atom,
+            reported_fact=reported_fact,
+            aggregate=aggregate,
+        )
+
+    def parse_terms(self, term: str) -> tuple[str, ...]:
+        return split_camel_case(term)

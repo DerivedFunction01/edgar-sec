@@ -6,6 +6,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
+from edgar_sec.engine.xbrl.solve.scoping import FactScope
 
 
 @dataclass(frozen=True, slots=True)
@@ -28,32 +29,44 @@ def _find_fact_value(
     period_type: str | None = None,
     require_unsegmented: bool = True,
 ) -> float | None:
-    for f in facts:
-        if f.concept_qname != concept_qname:
-            continue
-        if period_type is not None and f.period_type != period_type:
-            continue
-        if require_unsegmented and f.dimensions:
-            continue
-        if isinstance(f.value, (int, float)):
-            return float(f.value)
-    return None
+    matches = [
+        f
+        for f in facts
+        if f.concept_qname == concept_qname
+        and (period_type is None or f.period_type == period_type)
+        and (not require_unsegmented or not f.dimensions)
+        and isinstance(f.value, (int, float))
+    ]
+    contexts = {
+        (
+            f.unit,
+            f.period_type,
+            f.start_date,
+            f.end_date,
+            f.instant_date,
+            tuple(sorted(f.dimensions.items())),
+        )
+        for f in matches
+    }
+    values = {float(f.value) for f in matches}
+    if len(contexts) != 1 or len(values) != 1:
+        return None
+    return next(iter(values))
 
 
 def verify_balance_sheet_identity(
     facts: Sequence[XbrlFact],
     tolerance: float = 0.15,
+    *,
+    scope: FactScope | None = None,
 ) -> IdentityVerification | None:
     """Verify standard fundamental balance sheet equation Assets == Liabilities + Equity."""
-    assets = _find_fact_value(
-        facts, "us-gaap:Assets", period_type="instant"
-    ) or _find_fact_value(facts, "us-gaap:Assets")
-    liab = _find_fact_value(
-        facts, "us-gaap:Liabilities", period_type="instant"
-    ) or _find_fact_value(facts, "us-gaap:Liabilities")
+    selected = scope.select(list(facts)) if scope else facts
+    assets = _find_fact_value(selected, "us-gaap:Assets", period_type="instant")
+    liab = _find_fact_value(selected, "us-gaap:Liabilities", period_type="instant")
     equity = _find_fact_value(
-        facts, "us-gaap:StockholdersEquity", period_type="instant"
-    ) or _find_fact_value(facts, "us-gaap:StockholdersEquity")
+        selected, "us-gaap:StockholdersEquity", period_type="instant"
+    )
 
     if assets is None or liab is None or equity is None:
         return None
@@ -74,15 +87,20 @@ def verify_balance_sheet_identity(
 def verify_gross_profit_identity(
     facts: Sequence[XbrlFact],
     tolerance: float = 0.15,
+    *,
+    scope: FactScope | None = None,
 ) -> IdentityVerification | None:
     """Verify Income Statement GrossProfit == Revenues - CostOfGoodsSold."""
-    gp = _find_fact_value(facts, "us-gaap:GrossProfit")
+    selected = scope.select(list(facts)) if scope else facts
+    gp = _find_fact_value(selected, "us-gaap:GrossProfit", period_type="duration")
     rev = _find_fact_value(
-        facts, "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
-    ) or _find_fact_value(facts, "us-gaap:Revenues")
+        selected,
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        period_type="duration",
+    ) or _find_fact_value(selected, "us-gaap:Revenues", period_type="duration")
     cogs = _find_fact_value(
-        facts, "us-gaap:CostOfGoodsAndServicesSold"
-    ) or _find_fact_value(facts, "us-gaap:CostOfRevenue")
+        selected, "us-gaap:CostOfGoodsAndServicesSold", period_type="duration"
+    ) or _find_fact_value(selected, "us-gaap:CostOfRevenue", period_type="duration")
 
     if gp is None or rev is None or cogs is None:
         return None
@@ -103,18 +121,42 @@ def verify_gross_profit_identity(
 def verify_operating_income_identity(
     facts: Sequence[XbrlFact],
     tolerance: float = 0.15,
+    *,
+    scope: FactScope | None = None,
 ) -> IdentityVerification | None:
     """Verify OperatingIncomeLoss == GrossProfit - OperatingExpenses."""
-    opinc = _find_fact_value(facts, "us-gaap:OperatingIncomeLoss")
-    gp = _find_fact_value(facts, "us-gaap:GrossProfit")
+    selected = scope.select(list(facts)) if scope else facts
+    opinc = _find_fact_value(
+        selected, "us-gaap:OperatingIncomeLoss", period_type="duration"
+    )
+    gp = _find_fact_value(selected, "us-gaap:GrossProfit", period_type="duration")
     if opinc is None or gp is None:
         return None
 
-    rnd = _find_fact_value(facts, "us-gaap:ResearchAndDevelopmentExpense") or 0.0
-    sm = _find_fact_value(facts, "us-gaap:SellingAndMarketingExpense") or 0.0
-    ga = _find_fact_value(facts, "us-gaap:GeneralAndAdministrativeExpense") or 0.0
+    rnd = (
+        _find_fact_value(
+            selected,
+            "us-gaap:ResearchAndDevelopmentExpense",
+            period_type="duration",
+        )
+        or 0.0
+    )
+    sm = (
+        _find_fact_value(
+            selected, "us-gaap:SellingAndMarketingExpense", period_type="duration"
+        )
+        or 0.0
+    )
+    ga = (
+        _find_fact_value(
+            selected,
+            "us-gaap:GeneralAndAdministrativeExpense",
+            period_type="duration",
+        )
+        or 0.0
+    )
     opex_total = (
-        _find_fact_value(facts, "us-gaap:OperatingExpenses")
+        _find_fact_value(selected, "us-gaap:OperatingExpenses", period_type="duration")
         if (rnd == 0.0 and sm == 0.0 and ga == 0.0)
         else (rnd + sm + ga)
     )
@@ -140,14 +182,17 @@ def verify_dimensional_rollup(
     total_qname: str,
     axis_qname: str,
     tolerance: float = 0.15,
+    *,
+    scope: FactScope | None = None,
 ) -> IdentityVerification | None:
     """Verify sum of dimensional coordinate member facts equals unsegmented total."""
-    total_val = _find_fact_value(facts, total_qname, require_unsegmented=True)
+    selected = scope.select(list(facts)) if scope else facts
+    total_val = _find_fact_value(selected, total_qname, require_unsegmented=True)
     if total_val is None:
         return None
 
     member_vals: list[float] = []
-    for f in facts:
+    for f in selected:
         if f.concept_qname == total_qname and axis_qname in f.dimensions:
             if isinstance(f.value, (int, float)):
                 member_vals.append(float(f.value))
@@ -171,18 +216,21 @@ def verify_dimensional_rollup(
 def verify_all_accounting_identities(
     facts: Sequence[XbrlFact],
     tolerance: float = 0.15,
+    *,
+    scope: FactScope | None = None,
 ) -> tuple[IdentityVerification, ...]:
     """Run all standard accounting conservation checks across available facts."""
+    selected = scope.select(list(facts)) if scope else facts
     results: list[IdentityVerification] = []
-    bs = verify_balance_sheet_identity(facts, tolerance=tolerance)
+    bs = verify_balance_sheet_identity(selected, tolerance=tolerance)
     if bs is not None:
         results.append(bs)
 
-    gp = verify_gross_profit_identity(facts, tolerance=tolerance)
+    gp = verify_gross_profit_identity(selected, tolerance=tolerance)
     if gp is not None:
         results.append(gp)
 
-    op = verify_operating_income_identity(facts, tolerance=tolerance)
+    op = verify_operating_income_identity(selected, tolerance=tolerance)
     if op is not None:
         results.append(op)
 

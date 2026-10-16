@@ -5,10 +5,12 @@
   "sic_code": 3571,
   "sector": "Technology",
   "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
   "statement_of_operations": {
     "title": "CONSOLIDATED STATEMENTS OF OPERATIONS",
     "unit": "USD in millions",
     "scale": 1000000,
+    "period_column_index": 0,
     "line_range": [
       910,
       955
@@ -16,11 +18,12 @@
     "concepts": [
       {
         "concept_qname": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
-        "label": "Products sales",
-        "reported_value": 294866000000.0,
-        "table_value": 294866,
-        "line_number": 920,
-        "snippet": "Products                                             $ 294,866           $ 298,085           $ 316,199"
+        "label": "Total net sales",
+        "reported_value": 391035000000.0,
+        "table_value": 391035,
+        "dimensions": {},
+        "line_number": 923,
+        "snippet": "Total net sales                                          391,035             383,285             394,328"
       },
       {
         "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",

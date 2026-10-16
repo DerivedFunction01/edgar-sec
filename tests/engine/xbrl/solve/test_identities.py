@@ -8,6 +8,7 @@ from edgar_sec.engine.xbrl.solve.identities import (
     verify_dimensional_rollup,
     verify_gross_profit_identity,
 )
+from edgar_sec.engine.xbrl.solve.scoping import FactScope
 from edgar_sec.engine.xbrl.parsing.instance_parser import parse_instance_facts
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
 
@@ -78,3 +79,53 @@ def test_verify_all_accounting_identities() -> None:
     results = verify_all_accounting_identities(facts)
     assert len(results) >= 2
     assert all(r.passed for r in results)
+
+
+def test_balance_sheet_identity_uses_the_requested_fact_scope() -> None:
+    acc = AccessionNumber("0000950170-24-087843")
+    facts = [
+        XbrlFact(
+            acc,
+            "us-gaap:Assets",
+            100.0,
+            unit="USD",
+            period_type="instant",
+            instant_date="2024-06-30",
+        ),
+        XbrlFact(
+            acc,
+            "us-gaap:Assets",
+            80.0,
+            unit="USD",
+            period_type="instant",
+            instant_date="2023-06-30",
+        ),
+        XbrlFact(
+            acc,
+            "us-gaap:Liabilities",
+            60.0,
+            unit="USD",
+            period_type="instant",
+            instant_date="2024-06-30",
+        ),
+        XbrlFact(
+            acc,
+            "us-gaap:StockholdersEquity",
+            40.0,
+            unit="USD",
+            period_type="instant",
+            instant_date="2024-06-30",
+        ),
+    ]
+    scope = FactScope(
+        accession="0000950170-24-087843",
+        instant_date="2024-06-30",
+        unit="USD",
+    )
+
+    assert verify_balance_sheet_identity(facts) is None
+    outcome = verify_balance_sheet_identity(facts, scope=scope)
+    assert outcome is not None
+    assert outcome.passed
+    assert outcome.lhs_value == 100.0
+    assert outcome.rhs_value == 100.0

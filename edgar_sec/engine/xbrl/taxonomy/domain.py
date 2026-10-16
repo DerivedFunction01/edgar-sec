@@ -288,6 +288,9 @@ class InstrumentEdge:
     parent_instrument: str
     relation_type: str = "SUBTYPE_OF"
     description: str = ""
+    underlying_risk: str = "ALL_RISK"
+    contract_structure: str = "ALL_STRUCT"
+    hedge_designation: str = "ALL_DESIGNATION"
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> InstrumentEdge:
@@ -297,6 +300,9 @@ class InstrumentEdge:
             parent_instrument=str(data["parent_instrument"]),
             relation_type=str(data.get("relation_type", "SUBTYPE_OF")),
             description=str(data.get("description", "")),
+            underlying_risk=str(data.get("underlying_risk", "ALL_RISK")),
+            contract_structure=str(data.get("contract_structure", "ALL_STRUCT")),
+            hedge_designation=str(data.get("hedge_designation", "ALL_DESIGNATION")),
         )
 
 
@@ -511,6 +517,32 @@ class DomainTaxonomy:
         p_clean = parent.split(":")[-1].lower()
         if c_clean == p_clean:
             return True
+        c_edge = next(
+            (
+                e
+                for e in self.instruments_dag
+                if e.relation_type == "SUBTYPE_OF"
+                and e.child_instrument.split(":")[-1].lower() == c_clean
+            ),
+            None,
+        )
+        p_edge = next(
+            (
+                e
+                for e in self.instruments_dag
+                if e.relation_type == "SUBTYPE_OF"
+                and e.child_instrument.split(":")[-1].lower() == p_clean
+            ),
+            None,
+        )
+        if (
+            c_edge
+            and p_edge
+            and c_edge.contract_structure != "ALL_STRUCT"
+            and p_edge.contract_structure != "ALL_STRUCT"
+        ):
+            if c_edge.contract_structure != p_edge.contract_structure:
+                return False
         frontier = [child]
         visited = {child}
         while frontier:
@@ -519,11 +551,24 @@ class DomainTaxonomy:
             if curr_clean == p_clean:
                 return True
             for edge in self.instruments_dag:
+                if edge.relation_type != "SUBTYPE_OF":
+                    continue
                 edge_c = edge.child_instrument.split(":")[-1].lower()
                 if edge_c == curr_clean and edge.parent_instrument not in visited:
                     visited.add(edge.parent_instrument)
                     frontier.append(edge.parent_instrument)
         return False
+
+    def are_contract_structures_exclusive(
+        self, structure_a: str, structure_b: str
+    ) -> bool:
+        """Check declared mutual exclusion between contract structures."""
+        return any(
+            edge.relation_type == "MUTUALLY_EXCLUSIVE"
+            and {edge.child_instrument, edge.parent_instrument}
+            == {structure_a.upper(), structure_b.upper()}
+            for edge in self.instruments_dag
+        )
 
     def resolve_valuation_basis(self, member_qname: str) -> tuple[str, str]:
         """Resolve hierarchy level and valuation basis for a dimension member."""

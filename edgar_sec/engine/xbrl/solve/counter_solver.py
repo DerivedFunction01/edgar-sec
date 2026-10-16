@@ -7,8 +7,8 @@ from dataclasses import dataclass
 from typing import Any
 
 from edgar_sec.engine.xbrl.evidence.evidence import UnificationRule
-from edgar_sec.engine.xbrl.schema.models import CalculationArc, XbrlFact
-from edgar_sec.engine.xbrl.solve.solver import AggregateFact, XbrlConstraintSolver
+from edgar_sec.engine.xbrl.schema.models import AggregateFact, CalculationArc, XbrlFact
+from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
 
 
 @dataclass(frozen=True, slots=True)

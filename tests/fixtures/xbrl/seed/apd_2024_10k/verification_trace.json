@@ -5,10 +5,12 @@
   "sic_code": 2810,
   "sector": "Materials",
   "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2025,
   "statement_of_operations": {
     "title": "CONSOLIDATED INCOME STATEMENTS",
     "unit": "USD in millions",
     "scale": 1000000,
+    "period_column_index": 1,
     "line_range": [
       1860,
       1890
@@ -18,7 +20,7 @@
         "concept_qname": "us-gaap:Revenues",
         "label": "Sales",
         "reported_value": 12100600000.0,
-        "table_value": 12100,
+        "table_value": 12100.6,
         "line_number": 1863,
         "snippet": "Sales                                                            $12,037.3  $12,100.6  $12,600.0"
       },
@@ -26,7 +28,7 @@
         "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
         "label": "Cost of sales",
         "reported_value": 8168700000.0,
-        "table_value": 8168,
+        "table_value": 8168.7,
         "line_number": 1864,
         "snippet": "Cost of sales                                                      8,256.0    8,168.7    8,833.0"
       },
@@ -34,7 +36,7 @@
         "concept_qname": "us-gaap:OperatingIncomeLoss",
         "label": "Operating Income (Loss)",
         "reported_value": 4466100000.0,
-        "table_value": 4466,
+        "table_value": 4466.1,
         "line_number": 1872,
         "snippet": "Operating Income (Loss)                                            (877.0)    4,466.1    2,494.6"
       },
@@ -42,7 +44,7 @@
         "concept_qname": "us-gaap:NetIncomeLossIncludingPortionAttributableToNonredeemableNoncontrollingInterest",
         "label": "Net Income (Loss)",
         "reported_value": 3862400000.0,
-        "table_value": 3862,
+        "table_value": 3862.4,
         "line_number": 1883,
         "snippet": "Net Income (Loss)                                                  (354.4)    3,862.4    2,338.6"
       }

@@ -151,6 +151,62 @@ def test_verify_breakdown_clean_match() -> None:
     assert res.derived_value == 230.0
 
 
+def test_verify_breakdown_missing_rendered_row_is_not_valid() -> None:
+    breakdown = ConceptBreakdown(
+        target_concept="us-gaap:Revenues",
+        total_value=100.0,
+        components=(GranularComponent("ProductsRevenue", 100.0),),
+        is_balanced=True,
+        discrepancy=0.0,
+    )
+
+    result = DoubleCountVerifier.verify_breakdown(
+        "A different filing row ........ 100", breakdown, "Total revenue"
+    )
+    assert not result.is_valid
+    assert result.printed_value is None
+    assert "unverified" in result.message
+
+
+def test_verify_cited_row_selects_requested_period_column() -> None:
+    text = "Total revenue    $ 716,924   $ 637,959   $ 574,785"
+
+    result = DoubleCountVerifier.verify_cited_row(
+        text,
+        "Total revenue",
+        637_959_000_000.0,
+        line_number=1,
+        line_range=(1, 1),
+        scale=1_000_000,
+        column_index=1,
+        expected_snippet=text,
+    )
+    assert result.is_valid
+    assert result.printed_value == 637_959.0
+    assert result.citation == f"line 1: {text}"
+
+
+def test_verify_cited_row_rejects_wrong_label_and_stale_citation() -> None:
+    text = "Total assets        100   90"
+    wrong_label = DoubleCountVerifier.verify_cited_row(
+        text,
+        "Net income",
+        100.0,
+        line_number=1,
+        line_range=(1, 1),
+    )
+    stale_line = DoubleCountVerifier.verify_cited_row(
+        text,
+        "Total assets",
+        100.0,
+        line_number=2,
+        line_range=(1, 1),
+    )
+
+    assert not wrong_label.is_valid
+    assert not stale_line.is_valid
+
+
 def test_verify_breakdown_detects_double_counting_parent() -> None:
     """Verify detection when constituent set includes the target parent itself."""
     table_text = "Total Derivative Assets ........ $ 230"

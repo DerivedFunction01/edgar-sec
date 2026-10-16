@@ -2,6 +2,7 @@
 
 from edgar_sec.engine.xbrl.normalize.decomposer import (
     decompose_concept,
+    decompose_concept_expression,
     infer_semantic_frame,
     split_camel_case,
 )
@@ -50,6 +51,64 @@ def test_subordinator_clause_boundary_splitting() -> None:
     )
     assert cost_atom.head == "H_COST"
     assert "M_SALES_GOODS" in cost_atom.modifiers
+
+
+def test_net_of_expression_preserves_both_operand_atoms() -> None:
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+
+    expression = decompose_concept_expression(
+        "us-gaap:RevenuesNetOfInterestExpense", tax.token_lexicon
+    )
+    atom, residuals, _, _ = decompose_concept(
+        "us-gaap:RevenuesNetOfInterestExpense", tax.token_lexicon
+    )
+    assert expression.operator == "NET_OF"
+    assert expression.operands[0].head == "H_REVENUE"
+    assert expression.operands[1].head == "H_EXPENSE"
+    assert "M_INTEREST" in expression.operands[1].modifiers
+    assert expression.weights == (1.0, -1.0)
+    assert atom.head == "H_REVENUE"
+    assert "V_NET" in atom.modifiers
+    assert residuals == ()
+
+    for concept in (
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "us-gaap:DerivativeAssetFairValueGrossAssetIncludingNotSubjectToMasterNettingArrangement",
+    ):
+        expression = decompose_concept_expression(concept, tax.token_lexicon)
+        assert expression.operator is None
+
+
+def test_long_derivative_qnames_keep_instrument_and_offset_factors() -> None:
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    concepts = {
+        "us-gaap:DerivativeLiabilityFairValueGrossLiabilityIncludingNotSubjectToMasterNettingArrangement": {
+            "H_LIABILITY",
+            "M_DERIVATIVE",
+            "M_FAIR_VALUE",
+            "V_GROSS",
+            "M_NOT_SUBJECT_TO_NETTING",
+        },
+        "us-gaap:DerivativeCollateralObligationToReturnCash": {
+            "H_CASH",
+            "M_DERIVATIVE",
+            "M_CASH_COLLATERAL_OFFSET",
+            "M_COLLATERAL_RETURN",
+        },
+        "us-gaap:DerivativeCollateralRightToReclaimCash": {
+            "H_CASH",
+            "M_DERIVATIVE",
+            "M_CASH_COLLATERAL_OFFSET",
+            "M_COLLATERAL_RECLAIM",
+        },
+    }
+
+    for concept, expected in concepts.items():
+        atom, residuals, _, _ = decompose_concept(concept, tax.token_lexicon)
+        assert {atom.head, *atom.modifiers} == expected
+        assert residuals == ()
 
 
 def test_infer_semantic_frame_canonical_and_unseen() -> None:

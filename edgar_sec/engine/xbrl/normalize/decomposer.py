@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass
+
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, SemanticConceptFrame
 from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
@@ -38,8 +40,77 @@ def decompose_concept(
     lexicon: TokenLexicon,
 ) -> tuple[Atom, tuple[str, ...], float, tuple[str, ...]]:
     """Decompose an XBRL concept QName into an Atom coordinate, residuals, and frame."""
+    expression = decompose_concept_expression(concept_qname, lexicon)
+    return (
+        expression.atom,
+        expression.residuals,
+        expression.direction,
+        expression.indexicals,
+    )
+
+
+@dataclass(frozen=True, slots=True)
+class ConceptExpression:
+    atom: Atom
+    operator: str | None
+    operands: tuple[Atom, ...]
+    weights: tuple[float, ...]
+    residuals: tuple[str, ...]
+    direction: float = 1.0
+    indexicals: tuple[str, ...] = ()
+
+
+def decompose_concept_expression(
+    concept_qname: str,
+    lexicon: TokenLexicon,
+) -> ConceptExpression:
+    """Preserve binary NET_OF operand atoms while deriving the query coordinate."""
     local_name = concept_qname.split(":")[-1] if ":" in concept_qname else concept_qname
     tokens = split_camel_case(local_name)
+    matches, _ = lexicon.scan_tokens(tokens)
+    operators = [match for match in matches if match.entry.role == "NET_OF"]
+    if len(operators) > 1:
+        return ConceptExpression(
+            atom=Atom("H_UNKNOWN"),
+            operator=None,
+            operands=(),
+            weights=(),
+            residuals=tokens,
+        )
+    if operators:
+        operator = operators[0]
+        left, left_residuals, direction, indexicals = _decompose_flat_tokens(
+            tokens[: operator.start], lexicon
+        )
+        right, right_residuals, _, _ = _decompose_flat_tokens(
+            tokens[operator.end :], lexicon
+        )
+        operator_atom = operator.entry.atom or "V_NET"
+        return ConceptExpression(
+            atom=Atom(left.head, left.modifiers | {operator_atom}),
+            operator="NET_OF",
+            operands=(left, right),
+            weights=(1.0, -1.0),
+            residuals=left_residuals + right_residuals,
+            direction=direction,
+            indexicals=indexicals,
+        )
+
+    atom, residuals, direction, indexicals = _decompose_flat_tokens(tokens, lexicon)
+    return ConceptExpression(
+        atom=atom,
+        operator=None,
+        operands=(atom,),
+        weights=(1.0,),
+        residuals=residuals,
+        direction=direction,
+        indexicals=indexicals,
+    )
+
+
+def _decompose_flat_tokens(
+    tokens: tuple[str, ...], lexicon: TokenLexicon
+) -> tuple[Atom, tuple[str, ...], float, tuple[str, ...]]:
     matches, residuals = lexicon.scan_tokens(tokens)
 
     sub_idx: int | None = None
@@ -72,13 +143,13 @@ def decompose_concept(
 
     mods: set[str] = set()
     for idx, m in enumerate(primary_matches):
-        if idx != head_match_idx and m.entry.atom:
+        if idx != head_match_idx and m.entry.atom and m.entry.role != "HEAD":
             mods.add(m.entry.atom)
         if m.entry.mods:
             mods.update(m.entry.mods)
 
     for m in subord_matches:
-        if m.entry.atom:
+        if m.entry.atom and m.entry.role != "HEAD":
             mods.add(m.entry.atom)
         if m.entry.mods:
             mods.update(m.entry.mods)

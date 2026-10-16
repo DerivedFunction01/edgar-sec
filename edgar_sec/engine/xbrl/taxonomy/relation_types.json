@@ -18,6 +18,8 @@
     "algebraic_class": "VALUATION_NETTING",
     "directionality": "DIRECTED_ACYCLIC",
     "is_computed": false,
+    "algebraic_weight": -1.0,
+    "formula": "net = gross + algebraic_weight * contra",
     "description": "Contra offset against gross account with weight -1.0; nets into target with V_NET modifier"
   },
   {

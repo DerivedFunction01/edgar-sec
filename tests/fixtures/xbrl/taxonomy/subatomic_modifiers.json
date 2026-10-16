@@ -373,10 +373,7 @@
     "category": "INSTRUMENT_DERIVATIVE",
     "keywords": [
       "Swap",
-      "Swaps",
-      "InterestRateSwap",
-      "BasisSwap",
-      "CurrencySwap"
+      "Swaps"
     ],
     "description": "Derivative swap contracts"
   },
@@ -388,7 +385,6 @@
       "Options",
       "CallOption",
       "PutOption",
-      "Swaption",
       "Cap",
       "Floor",
       "Collar"
@@ -401,8 +397,7 @@
     "keywords": [
       "Forward",
       "Forwards",
-      "ForwardContract",
-      "FXForward"
+      "ForwardContract"
     ],
     "description": "Derivative forward contracts"
   },
@@ -411,9 +406,7 @@
     "category": "INSTRUMENT_DERIVATIVE",
     "keywords": [
       "Futures",
-      "FuturesContract",
-      "CommodityFutures",
-      "IndexFutures"
+      "FuturesContract"
     ],
     "description": "Exchange-traded derivative futures contracts"
   },
@@ -475,5 +468,76 @@
       "CounterpartyNetting"
     ],
     "description": "Master netting agreement offsets under ISDA"
+  },
+  {
+    "modifier_id": "M_RISK_FX",
+    "category": "DERIVATIVE_UNDERLYING_RISK",
+    "keywords": [
+      "FX",
+      "ForeignExchange",
+      "Currency",
+      "CrossCurrency"
+    ],
+    "description": "Foreign-exchange and currency underlying risk"
+  },
+  {
+    "modifier_id": "M_RISK_IR",
+    "category": "DERIVATIVE_UNDERLYING_RISK",
+    "keywords": [
+      "InterestRate",
+      "Treasury",
+      "SOFR",
+      "IR"
+    ],
+    "description": "Interest-rate underlying risk"
+  },
+  {
+    "modifier_id": "M_RISK_COMMODITY",
+    "category": "DERIVATIVE_UNDERLYING_RISK",
+    "keywords": [
+      "Commodity",
+      "Energy",
+      "Metals",
+      "Agriculture"
+    ],
+    "description": "Commodity-price underlying risk"
+  },
+  {
+    "modifier_id": "M_RISK_EQUITY",
+    "category": "DERIVATIVE_UNDERLYING_RISK",
+    "keywords": [
+      "Equity",
+      "Index",
+      "Stock"
+    ],
+    "description": "Equity and equity-index underlying risk"
+  },
+  {
+    "modifier_id": "M_RISK_CREDIT",
+    "category": "DERIVATIVE_UNDERLYING_RISK",
+    "keywords": [
+      "Credit",
+      "CDS",
+      "CreditDefault"
+    ],
+    "description": "Credit-spread and credit-default underlying risk"
+  },
+  {
+    "modifier_id": "M_NOT_SUBJECT_TO_NETTING",
+    "category": "NETTING_OFFSET",
+    "keywords": ["NotSubjectToMasterNettingArrangement"],
+    "description": "Derivative amounts presented before master-netting offsets"
+  },
+  {
+    "modifier_id": "M_COLLATERAL_RETURN",
+    "category": "NETTING_OFFSET",
+    "keywords": ["ObligationToReturnCash", "CollateralReturnObligation"],
+    "description": "Cash collateral obligation to return amounts received"
+  },
+  {
+    "modifier_id": "M_COLLATERAL_RECLAIM",
+    "category": "NETTING_OFFSET",
+    "keywords": ["RightToReclaimCash", "CollateralReclaimRight"],
+    "description": "Cash collateral right to reclaim amounts pledged"
   }
 ]

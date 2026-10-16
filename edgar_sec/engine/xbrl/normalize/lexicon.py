@@ -18,6 +18,7 @@ class LexiconEntry:
     mods: tuple[str, ...] = ()
     direction: float | None = None
     indexical: str | None = None
+    followed_by_any: tuple[str, ...] = ()
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> LexiconEntry:
@@ -40,6 +41,9 @@ class LexiconEntry:
             mods=mods,
             direction=float(data["direction"]) if "direction" in data else None,
             indexical=data.get("indexical"),
+            followed_by_any=tuple(
+                str(token).lower() for token in data.get("followed_by_any", ())
+            ),
         )
 
 
@@ -59,10 +63,9 @@ class TokenLexicon:
         """Initialize lexicon with entries indexed by phrase length."""
         self._entries = entries
         self._max_len = max((len(e.phrase) for e in entries), default=1)
-        self._phrase_map: dict[tuple[str, ...], LexiconEntry] = {}
+        self._phrase_map: dict[tuple[str, ...], list[LexiconEntry]] = {}
         for entry in sorted(entries, key=lambda e: len(e.phrase), reverse=True):
-            if entry.phrase not in self._phrase_map:
-                self._phrase_map[entry.phrase] = entry
+            self._phrase_map.setdefault(entry.phrase, []).append(entry)
 
     @property
     def entries(self) -> tuple[LexiconEntry, ...]:
@@ -90,8 +93,30 @@ class TokenLexicon:
             matched = False
             for length in range(min(self._max_len, n - i), 0, -1):
                 candidate = lower_tokens[i : i + length]
-                if candidate in self._phrase_map:
-                    entry = self._phrase_map[candidate]
+                alternatives = self._phrase_map.get(candidate)
+                if alternatives:
+                    following = lower_tokens[i + length :]
+                    entry = next(
+                        (
+                            option
+                            for option in alternatives
+                            if option.followed_by_any
+                            and any(
+                                following and following[0] == expected
+                                for expected in option.followed_by_any
+                            )
+                        ),
+                        next(
+                            (
+                                option
+                                for option in alternatives
+                                if not option.followed_by_any
+                            ),
+                            None,
+                        ),
+                    )
+                    if entry is None:
+                        continue
                     matches.append(LexiconMatch(start=i, end=i + length, entry=entry))
                     i += length
                     matched = True

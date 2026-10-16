@@ -5,10 +5,12 @@
   "sic_code": 3711,
   "sector": "Consumer_Discretionary",
   "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
   "statement_of_operations": {
     "title": "Consolidated Income Statements",
     "unit": "USD in millions",
     "scale": 1000000,
+    "period_column_index": 2,
     "line_range": [
       3205,
       3230
@@ -17,16 +19,24 @@
       {
         "concept_qname": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
         "label": "Total revenues",
-        "reported_value": 158057000000.0,
-        "table_value": 158057,
+        "reported_value": 184992000000.0,
+        "table_value": 184992,
         "line_number": 3208,
         "snippet": "Total revenues (Note 4)                                                      158,057     176,191     184,992"
       },
       {
+        "concept_qname": "us-gaap:CostsAndExpenses",
+        "label": "Total costs and expenses",
+        "reported_value": 179773000000.0,
+        "table_value": 179773,
+        "line_number": 3215,
+        "snippet": "Total costs and expenses                                                     151,781     170,733     179,773"
+      },
+      {
         "concept_qname": "us-gaap:OperatingIncomeLoss",
         "label": "Operating income/(loss)",
-        "reported_value": 6276000000.0,
-        "table_value": 6276,
+        "reported_value": 5219000000.0,
+        "table_value": 5219,
         "line_number": 3217,
         "snippet": "Operating income/(loss)                                                        6,276       5,458       5,219"
       }
@@ -38,16 +48,16 @@
         {
           "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
           "weight": 1.0,
-          "value": 158057000000.0
+          "value": 184992000000.0
         },
         {
           "concept": "us-gaap:CostsAndExpenses",
           "weight": -1.0,
-          "value": 151781000000.0
+          "value": 179773000000.0
         }
       ],
-      "computed_sum": 6276000000.0,
-      "target_value": 6276000000.0,
+      "computed_sum": 5219000000.0,
+      "target_value": 5219000000.0,
       "discrepancy": 0.0,
       "is_valid_antichain": true
     }

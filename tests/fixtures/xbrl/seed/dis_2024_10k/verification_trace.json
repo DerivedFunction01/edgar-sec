@@ -5,10 +5,12 @@
   "sic_code": 4888,
   "sector": "Hospitality & Entertainment",
   "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2025,
   "statement_of_operations": {
     "title": "CONSOLIDATED STATEMENTS OF INCOME",
     "unit": "USD in millions",
     "scale": 1000000,
+    "period_column_index": 1,
     "line_range": [
       1155,
       1185
@@ -26,7 +28,8 @@
         "concept_qname": "us-gaap:CostsAndExpenses",
         "label": "Total costs and expenses",
         "reported_value": 79447000000.0,
-        "table_value": 79447,
+        "table_value": -79447,
+        "display_sign": -1,
         "line_number": 1170,
         "snippet": "Total costs and expenses                                         (80,593)    (79,447)                    (1) %"
       },
