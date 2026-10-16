@@ -121,7 +121,7 @@ def _is_signature_table(lower: str, past_tables: bool) -> bool:
     return score.score >= 2 and not score.exclusions
 
 
-def _is_page_artifact_table(lower: str, past_tables: bool, num_cols: int) -> bool:
+def _is_page_artifact_table(lower: str, num_cols: int) -> bool:
     score = score_tokens(tokenize(lower), _COMPILED_STATUTORY_PACK, _EVIDENCE_CTX)
     if score.score >= 2:
         return True
@@ -129,9 +129,18 @@ def _is_page_artifact_table(lower: str, past_tables: bool, num_cols: int) -> boo
         if bool(OWNERSHIP_PAGE_MARKER_RE.search(lower)):
             return True
         if (
-            past_tables
-            and num_cols < 3
+            num_cols < 3
             and bool(MONTH_RE.search(lower) or NUMERIC_DATE_RE.search(lower))
+            and not any(
+                k in lower
+                for k in (
+                    "table",
+                    "name and address",
+                    "issuer name",
+                    "statement for",
+                    "date of original",
+                )
+            )
         ):
             return True
     return False
@@ -165,21 +174,58 @@ def _classify_table_text(
     if not lower or not _NON_ALNUM_RE.sub("", lower):
         return SectionRole.PAGE_ARTIFACT
 
-    if _is_header_table(lower):
-        return SectionRole.HEADER
     if _is_table_ii_table(lower):
         return SectionRole.TABLE_II
+    if _is_box_table(lower):
+        return SectionRole.BOXES_1_TO_7
+    if _is_header_table(lower):
+        return SectionRole.HEADER
     if _is_table_i_table(lower, past_tables):
         return SectionRole.TABLE_I
     if _is_signature_table(lower, past_tables):
         return SectionRole.SIGNATURES
-    if _is_box_table(lower):
-        return SectionRole.BOXES_1_TO_7
-    if _is_page_artifact_table(lower, past_tables, num_cols):
+    if _is_page_artifact_table(lower, num_cols):
         return SectionRole.PAGE_ARTIFACT
     if _is_footnote_table(lower, past_tables, num_cols):
         return SectionRole.FOOTNOTES
     return SectionRole.UNPARSED
+
+
+def _find_table_i_split(rows: tuple[tuple[str, ...], ...]) -> int | None:
+    for i in range(1, len(rows)):
+        row_text = " ".join(rows[i]).lower()
+        if "table ii" in row_text:
+            continue
+        if (
+            "table i" in row_text
+            and any(
+                k in row_text
+                for k in (
+                    "non-derivative",
+                    "non derivative",
+                    "securities",
+                    "acquired",
+                    "beneficially owned",
+                )
+            )
+        ) or (
+            "title of security" in row_text
+            and any(k in row_text for k in ("instr", "transaction", "amount"))
+        ):
+            return i
+    return None
+
+
+def _find_signature_split(rows: tuple[tuple[str, ...], ...]) -> int | None:
+    for i in range(1, len(rows)):
+        row_text = " ".join(rows[i]).lower()
+        if "signature of reporting person" in row_text or (
+            ("/s/" in row_text or "signature" in row_text)
+            and ("date" in row_text or "attorney" in row_text)
+            and len(row_text) < 150
+        ):
+            return i
+    return None
 
 
 def _merge_sections(
@@ -270,6 +316,71 @@ class OwnershipSectionAssembler:
         role = _classify_table_text(
             text, num_cols=num_cols, past_tables=self.past_tables
         )
+
+        t1_split = _find_table_i_split(grid.rows)
+        if (
+            t1_split is not None
+            and 0 < t1_split < len(grid.rows)
+            and role in (SectionRole.BOXES_1_TO_7, SectionRole.HEADER)
+        ):
+            box_grid = ResolvedGrid(
+                rows=grid.rows[:t1_split],
+                column_alignments=grid.column_alignments,
+                column_widths=grid.column_widths,
+            )
+            t1_grid = ResolvedGrid(
+                rows=grid.rows[t1_split:],
+                column_alignments=grid.column_alignments,
+                column_widths=grid.column_widths,
+            )
+            self._append_section(
+                ClassifiedSection(
+                    role=SectionRole.BOXES_1_TO_7,
+                    table_index=idx,
+                    raw_node=node,
+                    resolved_grid=box_grid,
+                )
+            )
+            self._append_section(
+                ClassifiedSection(
+                    role=SectionRole.TABLE_I,
+                    table_index=idx,
+                    raw_node=node,
+                    resolved_grid=t1_grid,
+                )
+            )
+            return
+
+        if role == SectionRole.TABLE_II:
+            sig_split = _find_signature_split(grid.rows)
+            if sig_split is not None and 0 < sig_split < len(grid.rows):
+                t2_grid = ResolvedGrid(
+                    rows=grid.rows[:sig_split],
+                    column_alignments=grid.column_alignments,
+                    column_widths=grid.column_widths,
+                )
+                sig_grid = ResolvedGrid(
+                    rows=grid.rows[sig_split:],
+                    column_alignments=grid.column_alignments,
+                    column_widths=grid.column_widths,
+                )
+                self._append_section(
+                    ClassifiedSection(
+                        role=SectionRole.TABLE_II,
+                        table_index=idx,
+                        raw_node=node,
+                        resolved_grid=t2_grid,
+                    )
+                )
+                self._append_section(
+                    ClassifiedSection(
+                        role=SectionRole.SIGNATURES,
+                        table_index=idx,
+                        raw_node=node,
+                        resolved_grid=sig_grid,
+                    )
+                )
+                return
 
         is_banner = (
             len(grid.rows) <= 1

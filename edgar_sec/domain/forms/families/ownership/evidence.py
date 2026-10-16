@@ -267,8 +267,11 @@ BOXES_DECISIVE_PHRASES: tuple[str, ...] = (
     "ticker symbol",
     "statement for month",
     "statement for year",
-    "statement of changes in beneficial ownership",
-    "statement of beneficial ownership",
+    "date of event requiring statement",
+    "date of event",
+    "statement for issuer fiscal year ended",
+    "fiscal year ended",
+    "earliest transaction required",
     "identification number",
     "irs identification",
     "joint group filing",
@@ -337,7 +340,7 @@ OWNERSHIP_BOXES_LEXICAL_PACK = LexicalEvidencePack(
             support=True,
         ),
     ),
-    exclusion_terms=("derivative", "signature"),
+    exclusion_terms=("signature",),
 )
 
 HEADER_DECISIVE_PHRASES: tuple[str, ...] = (
@@ -346,7 +349,11 @@ HEADER_DECISIVE_PHRASES: tuple[str, ...] = (
     "omb approval",
     "statement of changes in beneficial ownership",
     "statement of beneficial ownership",
+    "initial statement of beneficial ownership",
+    "annual statement of beneficial ownership",
     "changes in beneficial ownership",
+    "form 3 holdings reported",
+    "form 4 transactions reported",
     "filed pursuant to",
     "continuation statement",
 )

@@ -40,6 +40,34 @@ class FilingAttachment:
     def is_xml(self) -> bool:
         return self.filename.lower().endswith((".xml", ".xsd"))
 
+    @property
+    def raw_metadata(self) -> PayloadMetadata:
+        from edgar_sec.domain.document.metadata import detect_raw_metadata
+
+        return detect_raw_metadata(self.filename)
+
+    @property
+    def render_metadata(self) -> PayloadMetadata:
+        from edgar_sec.domain.document.metadata import detect_render_metadata
+
+        return detect_render_metadata(None, self.raw_metadata, "raw")
+
+    @property
+    def raw_format(self) -> str:
+        return self.raw_metadata.format_name
+
+    @property
+    def render_format(self) -> str:
+        return self.render_metadata.format_name
+
+    @property
+    def raw_content_type(self) -> str:
+        return self.raw_metadata.content_type
+
+    @property
+    def render_content_type(self) -> str:
+        return self.render_metadata.content_type
+
     def raw(self) -> bytes | None:
         """Return raw bytes of this attachment."""
         if self.storage_path is not None and self.storage_path.is_file():
@@ -134,6 +162,38 @@ class FilingAggregate:
         from edgar_sec.domain.forms.reports import get_report_projection
 
         return get_report_projection(self)
+
+    @property
+    def raw_metadata(self) -> PayloadMetadata:
+        from edgar_sec.domain.document.metadata import detect_raw_metadata
+
+        return detect_raw_metadata(self.primary_document_path)
+
+    @property
+    def render_metadata(self) -> PayloadMetadata:
+        from edgar_sec.domain.document.metadata import detect_render_metadata
+
+        return detect_render_metadata(self.form, self.raw_metadata)
+
+    @property
+    def raw_format(self) -> str:
+        return self.raw_metadata.format_name
+
+    @property
+    def render_format(self) -> str:
+        return self.render_metadata.format_name
+
+    @property
+    def raw_content_type(self) -> str:
+        return self.raw_metadata.content_type
+
+    @property
+    def render_content_type(self) -> str:
+        return self.render_metadata.content_type
+
+    @property
+    def render_operation(self) -> str:
+        return self.render_metadata.operation
 
     def raw(self) -> bytes | None:
         """Return raw bytes of the primary filing document."""
@@ -260,10 +320,15 @@ class FilingAggregate:
                 return content
         raise FileNotFoundError(f"index page not available for {self.accession}")
 
-    def render(self) -> str | bytes | None:
+    def render(self, operation: str | None = None) -> str | bytes | None:
         """Render filing using injected renderer or raw primary bytes."""
         if self.renderer is not None:
-            return self.renderer(self)
+            try:
+                return self.renderer(self, operation=operation)
+            except TypeError:
+                return self.renderer(self)
+        if operation == "raw":
+            return self.raw()
         return self.raw()
 
 

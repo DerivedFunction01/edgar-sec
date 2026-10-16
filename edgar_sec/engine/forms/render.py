@@ -19,23 +19,46 @@ class UnsupportedRenderOperation(ValueError):
     """Raised when an unsupported render operation is requested for a form."""
 
 
+def _normalize_operation(
+    operation: str | AcquisitionOperation | None,
+) -> AcquisitionOperation | None:
+    if operation is None:
+        return None
+    if isinstance(operation, AcquisitionOperation):
+        return operation
+    val = str(operation).strip().lower()
+    if val in ("render_to_xml", "xml"):
+        return AcquisitionOperation.RENDER_TO_XML
+    if val in ("render_to_txt", "txt"):
+        return AcquisitionOperation.RENDER_TO_TXT
+    if val == "raw":
+        return AcquisitionOperation.RAW
+    try:
+        return AcquisitionOperation(val)
+    except ValueError:
+        return None
+
+
 def render_document(
     raw_bytes: bytes,
     *,
     form: str | None = None,
     filename: str | None = None,
-    operation: AcquisitionOperation | None = None,
+    operation: str | AcquisitionOperation | None = None,
 ) -> str | bytes:
     """Render raw document bytes according to form family profile or target operation."""
     profile = get_family_profile(form) if form else None
-    target_op = operation or (
+    target_op = _normalize_operation(operation) or (
         profile.preferred_operation if profile else AcquisitionOperation.RAW
     )
+
+    if target_op == AcquisitionOperation.RAW:
+        return raw_bytes
 
     if target_op == AcquisitionOperation.RENDER_TO_TXT:
         if profile and not profile.has_operation(AcquisitionOperation.RENDER_TO_TXT):
             raise UnsupportedRenderOperation(
-                f"Form {form!r} does not support text rendering; use .xml() or .raw()"
+                f"Form {form!r} does not support text rendering; use .render() or .raw()"
             )
         from edgar_sec.engine.forms.normalize import normalize_document
 
@@ -48,7 +71,7 @@ def render_document(
     if target_op == AcquisitionOperation.RENDER_TO_XML:
         if profile and not profile.has_operation(AcquisitionOperation.RENDER_TO_XML):
             raise UnsupportedRenderOperation(
-                f"Form {form!r} does not support XML rendering; use .text() or .raw()"
+                f"Form {form!r} does not support XML rendering; use .render() or .raw()"
             )
         from edgar_sec.engine.forms.ownership.render_to_xml import render_form4_to_xml
 
@@ -61,7 +84,7 @@ def render_document(
 def render_filing(
     filing: FilingAggregate,
     *,
-    operation: AcquisitionOperation | None = None,
+    operation: str | AcquisitionOperation | None = None,
 ) -> str | bytes:
     """Render the primary document of a filing aggregate."""
     raw_data = filing.raw()

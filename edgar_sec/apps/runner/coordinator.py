@@ -138,6 +138,8 @@ class PipelineRunner:
             run_state_sqlite_path=run_state_sqlite_path,
             artifacts_root=self.acquisition_paths.artifacts_root,
             snapshot_id=snapshot_id,
+            operation=self.options.operation,
+            family_operations=dict(self.options.family_operations),
         )
 
 

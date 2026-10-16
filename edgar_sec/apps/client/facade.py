@@ -92,6 +92,8 @@ class Edgar:
                 forms=form_tuple,
                 dates=dates,
                 limit=limit,
+                operation=operation,
+                family_operations=family_operations,
                 artifacts_root=self.artifacts_root,
                 cache=self.cache,
                 http_client_factory=(

@@ -39,6 +39,11 @@ from edgar_sec.domain.forms.families.quarterly.evidence import (
     QuarterlyReportEvidence,
 )
 from edgar_sec.domain.forms.families.quarterly.taxonomy import FORM_10Q_DERIVED
+from edgar_sec.domain.forms.families.registration.evidence import (
+    REGISTRATION_SHAPE_TERMS,
+    RegistrationEvidence,
+)
+from edgar_sec.domain.forms.families.registration.taxonomy import FORM_S1_DERIVED
 from edgar_sec.engine.forms.cover.models import (
     BoundarySignal,
     CoverBoundaryPolicy,
@@ -300,6 +305,79 @@ def build_generic_cover_profile(family: str) -> CoverProfile:
     )
 
 
+def build_registration_profile(family: str) -> CoverProfile:
+    """Cover profile for registration statements (Form S-1)."""
+    registration = RegistrationEvidence()
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.TOC_TRANSITION,
+                BoundarySignal.PART_FALLBACK,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=COMMON_COVER_LABELS,
+        healing_rules=tuple(COMMON_PHRASE_RULES),
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(
+                *COMMON_COVER_LABELS,
+                *COVER_EVIDENCE_TERMS,
+                *REGISTRATION_SHAPE_TERMS,
+            ),
+            labels=COMMON_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=(
+                "PART I",
+                "PART II",
+                "ITEM 1",
+                "ITEM 2",
+                "ITEM 3",
+                "ITEM 4",
+                "ITEM 5",
+                "ITEM 6",
+                "ITEM 7",
+                "ITEM 8",
+                "ITEM 9",
+                "ITEM 10",
+                "ITEM 11",
+                "ITEM 11A",
+                "ITEM 12",
+                "ITEM 12A",
+                "ITEM 13",
+                "ITEM 14",
+                "ITEM 15",
+                "ITEM 16",
+                "ITEM 17",
+            ),
+            semantic_headings=(
+                "prospectus summary",
+                "risk factors",
+                "use of proceeds",
+                "dilution",
+                "capitalization",
+                "plan of distribution",
+                "underwriting",
+                *FORWARD_LOOKING_PHRASES,
+                "preliminary prospectus",
+                "subject to completion",
+                "index to consolidated financial statements",
+            ),
+            body_ngrams=registration.body_ngrams,
+            body_verbs=registration.body_verbs,
+            body_terms=registration.body_terms,
+            cover_terms=registration.cover_terms,
+            lexical=registration.body_lexical,
+        ),
+        derived_taxonomy=FORM_S1_DERIVED,
+    )
+
+
 def build_no_cover_profile(family: str) -> CoverProfile:
     """Build a generic baseline cover profile (alias for build_generic_cover_profile)."""
     return build_generic_cover_profile(family)
@@ -315,6 +393,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
     quarterly = _dataclass_replace(
         build_quarterly_profile("10-Q"), derived_taxonomy=FORM_10Q_DERIVED
     )
+    registration_s1 = build_registration_profile("S-1")
     generic_8k = build_current_profile("8-K")
     current = CurrentReportEvidence()
     generic_6k = _dataclass_replace(
@@ -339,6 +418,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "10-K": annual_common,
         "20-F": annual_foreign,
         "10-Q": quarterly,
+        "S-1": registration_s1,
         "8-K": generic_8k,
         "6-K": generic_6k,
         "GENERIC": generic,
@@ -379,5 +459,6 @@ __all__ = [
     "build_generic_cover_profile",
     "build_no_cover_profile",
     "build_quarterly_profile",
+    "build_registration_profile",
     "get_profile",
 ]

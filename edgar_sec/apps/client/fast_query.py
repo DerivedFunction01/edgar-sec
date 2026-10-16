@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import mimetypes
 from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import Any
@@ -11,6 +10,7 @@ from typing import Any
 from edgar_sec.apps.client.cache import DocumentCache, get_default_cache
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
+from edgar_sec.domain.document.path_facts import mime_type_for_suffix
 from edgar_sec.domain.document_inventory.models import IndexPageInput, ParsedIndexPage
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.forms.common.processing import AcquisitionOperation
@@ -33,11 +33,6 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     resolve_filing_catalog_paths,
     TARGETS_DIR,
 )
-
-
-def _detect_content_type(filename: str) -> str:
-    guess, _ = mimetypes.guess_type(filename)
-    return guess or "application/octet-stream"
 
 
 def _resolve_primary_filename(filing: FilingAggregate) -> str:
@@ -128,7 +123,7 @@ def _recover_inverted_primary(
             form=filing.form,
             filename=recovered_name,
             content=rec_bytes,
-            content_type=_detect_content_type(recovered_name),
+            content_type=mime_type_for_suffix(recovered_name),
         )
         object.__setattr__(filing, "primary_document_path", recovered_name)
         object.__setattr__(filing, "primary_document_url", fetch_url)
@@ -182,7 +177,7 @@ def _make_document_fetcher(
             return None
         response_bytes = fetch_fn(url)
         if response_bytes is not None:
-            c_type = _detect_content_type(filename)
+            c_type = mime_type_for_suffix(filename)
             cache.put(
                 accession=acc_str,
                 cik=filing.primary_cik.value,
@@ -280,7 +275,7 @@ def _make_attachment_loader(
                         form=filing.form,
                         filename=fname,
                         content=data,
-                        content_type=_detect_content_type(fname),
+                        content_type=mime_type_for_suffix(fname),
                     )
                     return data
                 return None
@@ -361,7 +356,7 @@ def _make_document_opener(
                 form=filing.form,
                 filename=filename,
                 content=data,
-                content_type=_detect_content_type(filename),
+                content_type=mime_type_for_suffix(filename),
             )
             return data
         return None
@@ -456,7 +451,9 @@ def _make_index_fetcher(
 def _make_filing_renderer(
     doc_cache: DocumentCache,
     http_client_factory: Callable[[], SecHttpClient] | None = None,
-) -> Callable[[FilingAggregate], str | bytes]:
+    operation: str = "raw",
+    family_operations: dict[str, str] | None = None,
+) -> Callable[..., str | bytes]:
     client_holder: list[SecHttpClient | None] = [None]
 
     def _get_client() -> SecHttpClient:
@@ -468,8 +465,11 @@ def _make_filing_renderer(
             )
         return client_holder[0]
 
-    def _render(filing: FilingAggregate) -> str | bytes:
-        rendered = render_filing(filing)
+    def _render(
+        filing: FilingAggregate, operation_override: str | None = None
+    ) -> str | bytes:
+        op = operation_override or (family_operations or {}).get(filing.form, operation)
+        rendered = render_filing(filing, operation=op)
         if isinstance(rendered, str):
             screen = screen_candidate_document(
                 filing.form,
@@ -479,7 +479,7 @@ def _make_filing_renderer(
             if screen.is_inversion:
                 recovered = _recover_inverted_primary(filing, doc_cache, _get_client)
                 if recovered is not None:
-                    return render_filing(filing)
+                    return render_filing(filing, operation=op)
         return rendered
 
     return _render
@@ -578,6 +578,8 @@ def query_catalog_fast(
     dates: str | None = None,
     limit: int | None = None,
     *,
+    operation: str = "raw",
+    family_operations: dict[str, str] | None = None,
     artifacts_root: Path | str | None = None,
     cache: DocumentCache | None = None,
     http_client_factory: Callable[[], SecHttpClient] | None = None,
@@ -606,7 +608,12 @@ def query_catalog_fast(
     document_opener = _make_document_opener(doc_cache, http_client_factory)
     bundle_fetcher = _make_bundle_fetcher(doc_cache, http_client_factory)
     index_fetcher = _make_index_fetcher(doc_cache, http_client_factory)
-    filing_renderer = _make_filing_renderer(doc_cache, http_client_factory)
+    filing_renderer = _make_filing_renderer(
+        doc_cache,
+        http_client_factory,
+        operation=operation,
+        family_operations=family_operations,
+    )
 
     aggregates: list[FilingAggregate] = []
 

@@ -33,6 +33,10 @@ from edgar_sec.domain.forms.families.quarterly.checkmarks import (
     QUARTERLY_CHECKBOX_SCHEMA,
 )
 from edgar_sec.domain.forms.families.quarterly.taxonomy import FORM_10Q_DERIVED
+from edgar_sec.domain.forms.families.registration.checkmarks import (
+    S1_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.registration.taxonomy import FORM_S1_DERIVED
 from edgar_sec.engine.forms.cover.models import BoundarySignal
 from edgar_sec.engine.forms.cover.profiles import (
     ANNUAL_COVER_LABELS,
@@ -47,15 +51,16 @@ from edgar_sec.engine.forms.cover.profiles import (
     build_current_profile,
     build_no_cover_profile,
     build_quarterly_profile,
+    build_registration_profile,
     get_profile,
 )
 from edgar_sec.engine.forms.cover.rules import compile_cover_rules
 from edgar_sec.foundation.text.evidence import LexicalEvidencePack
 
-COVER_FAMILIES = ("10-K", "20-F", "10-Q")
+COVER_FAMILIES = ("10-K", "20-F", "10-Q", "S-1")
 GENERIC_FAMILIES = ("8-K", "6-K", "GENERIC")
 NO_COVER_FAMILIES = ("8-K", "6-K", "GENERIC")
-LEXICAL_FAMILIES = ("10-K", "20-F", "10-Q", "8-K", "6-K")
+LEXICAL_FAMILIES = ("10-K", "20-F", "10-Q", "8-K", "6-K", "S-1")
 
 
 def test_profiles_exist_for_registered_families() -> None:
@@ -152,7 +157,9 @@ def test_cover_table_cleaners_configuration() -> None:
         ("6-K/A", "6-K"),
         ("20FR12B", "20-F"),
         ("10-q", "10-Q"),
-        ("S-1", "GENERIC"),
+        ("S-1", "S-1"),
+        ("S-1/A", "S-1"),
+        ("S-1MEF", "S-1"),
         ("", "GENERIC"),
     ],
 )
@@ -334,7 +341,7 @@ def test_builders_compose_the_registry_entries() -> None:
     assert current.boundary is not None
     assert current.labels == COMMON_COVER_LABELS
 
-    generic = build_no_cover_profile("S-1")
+    generic = build_no_cover_profile("UNKNOWN_FORM")
     assert generic.boundary is not None
     assert generic.healing_rules == tuple(COMMON_PHRASE_RULES)
     assert generic.cover_evidence is not None
@@ -369,3 +376,21 @@ def test_cover_bearing_profiles_enable_every_signal_but_incorporated_reference(
     else:
         expected.discard(BoundarySignal.AMENDMENT_TRANSITION)
     assert set(policy.signals) == expected
+
+
+def test_s1_profile_contracts() -> None:
+    s1 = get_profile("S-1")
+    assert s1.family == "S-1"
+    assert s1.checkbox_schema == S1_CHECKBOX_SCHEMA
+    assert s1.derived_taxonomy == FORM_S1_DERIVED
+    assert s1.boundary is not None
+    assert BoundarySignal.INCORPORATED_REFERENCE not in s1.boundary.signals
+    assert BoundarySignal.AMENDMENT_TRANSITION not in s1.boundary.signals
+    assert BoundarySignal.TOC_TRANSITION in s1.boundary.signals
+    assert BoundarySignal.PART_FALLBACK in s1.boundary.signals
+    assert BoundarySignal.ITEM_FALLBACK in s1.boundary.signals
+    assert BoundarySignal.BODY_PROSE_FALLBACK in s1.boundary.signals
+    assert s1.body_evidence is not None
+    assert "PART I" in s1.body_evidence.structural_headings
+    assert "PART II" in s1.body_evidence.structural_headings
+    assert "prospectus summary" in s1.body_evidence.semantic_headings

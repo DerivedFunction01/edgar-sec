@@ -28,6 +28,8 @@ class FilingsResult:
     run_state_sqlite_path: Path
     artifacts_root: Path
     snapshot_id: str | None = None
+    operation: str = "raw"
+    family_operations: dict[str, str] | None = None
     items: tuple[FilingAggregate, ...] | None = None
 
     def sql(self, query: str, **params: Any) -> duckdb.DuckDBPyRelation:
@@ -152,6 +154,8 @@ class FilingsResult:
             run_state_sqlite_path=self.run_state_sqlite_path,
             artifacts_root=self.artifacts_root,
             snapshot_id=self.snapshot_id,
+            operation=self.operation,
+            family_operations=self.family_operations,
             items=tuple(filtered),
         )
 
@@ -168,33 +172,94 @@ class FilingsResult:
         if self.items is not None:
             yield from self.items
             return
+        storage_by_target: dict[str, Path] = {}
+        if self.run_state_sqlite_path and self.run_state_sqlite_path.is_file():
+            import sqlite3
+
+            run_dir = self.run_state_sqlite_path.parent
+            try:
+                with sqlite3.connect(self.run_state_sqlite_path) as conn:
+                    cols = {
+                        r[1]
+                        for r in conn.execute(
+                            "PRAGMA table_info(target_state)"
+                        ).fetchall()
+                    }
+                    if "selected_body_relative_path" in cols:
+                        stmt = "SELECT target_id, selected_body_relative_path FROM target_state WHERE outcome = 'acquired'"
+                    elif "source_body_relative_path" in cols:
+                        stmt = "SELECT target_id, source_body_relative_path FROM target_state WHERE outcome = 'acquired'"
+                    else:
+                        stmt = "SELECT target_id, body_storage_path FROM target_state WHERE outcome = 'acquired'"
+                    for tid, bpath in conn.execute(stmt):
+                        if bpath:
+                            full_path = run_dir / bpath
+                            if full_path.is_file():
+                                storage_by_target[str(tid)] = full_path
+            except Exception:
+                pass
+
+        import re
+        from edgar_sec.engine.forms.render import render_filing
+
         with connect() as con:
-            rows = con.execute(
-                "SELECT DISTINCT accession, form, filing_date, target_url "
-                "FROM read_parquet(?) "
-                "ORDER BY accession",
-                [self.target_parquet_glob],
-            ).fetchall()
-        for accession_str, form, filing_date, target_url in rows:
+            schema_cols = {
+                row[0]
+                for row in con.execute(
+                    "DESCRIBE SELECT * FROM read_parquet(?)",
+                    [self.target_parquet_glob],
+                ).fetchall()
+            }
+            if "target_id" in schema_cols:
+                rows = con.execute(
+                    "SELECT DISTINCT target_id, accession, form, filing_date, target_url "
+                    "FROM read_parquet(?) "
+                    "ORDER BY accession",
+                    [self.target_parquet_glob],
+                ).fetchall()
+            else:
+                raw_rows = con.execute(
+                    "SELECT DISTINCT accession, form, filing_date, target_url "
+                    "FROM read_parquet(?) "
+                    "ORDER BY accession",
+                    [self.target_parquet_glob],
+                ).fetchall()
+                rows = [(None, r[0], r[1], r[2], r[3]) for r in raw_rows]
+        for target_id, accession_str, form, filing_date, target_url in rows:
             acc = AccessionNumber.from_any(accession_str)
-            storage_path = None
-            staging_dir = resolve_acquisition_paths(
-                self.artifacts_root
-            ).run_staging_root(self.run_id)
-            if staging_dir.is_dir():
-                matches = list(staging_dir.glob(f"*{acc.normalized}*"))
-                if matches:
-                    storage_path = matches[0]
+            storage_path = storage_by_target.get(str(target_id))
+            if storage_path is None:
+                staging_dir = resolve_acquisition_paths(
+                    self.artifacts_root
+                ).run_staging_root(self.run_id)
+                if staging_dir.is_dir():
+                    matches = list(staging_dir.glob(f"*{acc.normalized}*"))
+                    if matches:
+                        storage_path = matches[0]
+
+            cik_match = re.search(r"/data/(\d+)/", target_url) if target_url else None
+            cik_inst = (
+                Cik.from_raw(cik_match.group(1)) if cik_match else Cik.from_raw(1)
+            )
+            doc_path = target_url.split("/")[-1] if target_url else None
+            effective_op = (self.family_operations or {}).get(
+                str(form)
+            ) or self.operation
 
             yield FilingAggregate(
                 accession=acc,
-                primary_cik=Cik.from_raw(1),
-                ciks=(Cik.from_raw(1),),
-                form=form,
-                filing_date=filing_date or "",
+                primary_cik=cik_inst,
+                ciks=(cik_inst,),
+                form=str(form),
+                filing_date=str(filing_date or ""),
+                primary_document_path=doc_path,
                 primary_storage_path=storage_path,
+                primary_document_url=target_url,
                 run_id=self.run_id,
                 plan_id=self.plan_id,
+                renderer=lambda f, operation=None: render_filing(
+                    f, operation=operation or effective_op
+                ),
             )
 
     def __getitem__(self, index: int) -> FilingAggregate:

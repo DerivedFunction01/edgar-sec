@@ -46,9 +46,24 @@ _NUMERIC_TOKEN_RE = re.compile(r"\d[\d,]*(?:\.\d+)?")
 _ACQUIRED_DISPOSED_RE = re.compile(r"\b([AD])\b", re.IGNORECASE)
 _DIRECT_INDIRECT_RE = re.compile(r"\b([DI])\b", re.IGNORECASE)
 _TABLE_ARTIFACT_PHRASES = (
-    "reminder: report on a separate line",
+    "reminder:",
+    "reminder report on a separate",
     "potential persons who are to respond",
     "form 4 (continued)",
+    "form 5 (continued)",
+    "form 3 (continued)",
+    "date exercisable",
+    "expiration date",
+    "title and amount of underlying",
+    "underlying securities",
+    "intentional misstatements",
+    "see 18 u.s.c.",
+    "file three copies",
+    "currently valid omb",
+    "explanation of responses",
+    "no unreported activity",
+    "see instruction",
+    "if the form is filed by more than one",
 )
 _TABLE_I_HEADER_MARKERS = (
     "title of security",
@@ -117,10 +132,11 @@ def _header_rows(
 
 
 def _is_artifact_title(title: str, table_label: str) -> bool:
-    lower = title.lower()
+    lower = " ".join(title.lower().split())
     return (
         not title
         or not title.strip(" *_-=")
+        or bool(NUMERIC_DATE_RE.fullmatch(lower.strip()))
         or any(phrase in lower for phrase in _TABLE_ARTIFACT_PHRASES)
         or "title of" in lower
         or "instr." in lower
@@ -195,16 +211,21 @@ def _table_i_column_mapping(
     )
     header_text = " ".join(" ".join(row) for row in header_rows)
     has_3a = "3a" in header_text or "deemed execution date" in header_text
+    is_holding = (
+        num_cols <= 5
+        and "transaction date" not in header_text
+        and "transaction code" not in header_text
+    )
     mapping = {
         "title": 0,
-        "date": 1,
-        "code": 3 if has_3a else 2,
-        "amount": 4 if has_3a else 3,
+        "date": None if is_holding else 1,
+        "code": None if is_holding else (3 if has_3a else 2),
+        "amount": None if is_holding else (4 if has_3a else 3),
         "ad": None,
         "price": None,
-        "following": 5 if has_3a else 4,
-        "form": 6 if has_3a else 5,
-        "nature": 7 if has_3a else 6,
+        "following": 1 if is_holding else (5 if has_3a else 4),
+        "form": 2 if is_holding else (6 if has_3a else 5),
+        "nature": 3 if is_holding else (7 if has_3a else 6),
     }
     if header_rows:
         for c in range(num_cols):
@@ -341,17 +362,29 @@ def parse_table_i_rows(
         if _is_artifact_title(security_title, "table i"):
             continue
 
-        date_cell = row[date_col].strip() if len(row) > date_col else ""
+        date_cell = (
+            row[date_col].strip()
+            if date_col is not None and len(row) > date_col
+            else ""
+        )
         date_match = NUMERIC_DATE_RE.search(date_cell)
         trans_date = date_match.group(0) if date_match else None
         footnotes = list(_extract_footnote_ids(date_cell))
 
-        code_cell = row[code_col].strip() if len(row) > code_col else ""
+        code_cell = (
+            row[code_col].strip()
+            if code_col is not None and len(row) > code_col
+            else ""
+        )
         code_match = _TRANSACTION_CODE_RE.search(code_cell)
         trans_code = code_match.group(1) if code_match else None
         equity_swap = bool(code_match and code_match.group(2))
 
-        amount_cell = row[amount_col].strip() if len(row) > amount_col else ""
+        amount_cell = (
+            row[amount_col].strip()
+            if amount_col is not None and len(row) > amount_col
+            else ""
+        )
         shares_amount: float | None = None
         ad_code: str | None = None
         price: float | None = None
@@ -375,14 +408,26 @@ def parse_table_i_rows(
             price_cell = row[price_col].strip() if len(row) > price_col else ""
             price = _extract_number(price_cell)
 
-        following_cell = row[following_col].strip() if len(row) > following_col else ""
+        following_cell = (
+            row[following_col].strip()
+            if following_col is not None and len(row) > following_col
+            else ""
+        )
         shares_owned_following = _extract_number(following_cell)
 
-        form_cell = row[form_col].strip().upper() if len(row) > form_col else ""
+        form_cell = (
+            row[form_col].strip().upper()
+            if form_col is not None and len(row) > form_col
+            else ""
+        )
         form_match = _DIRECT_INDIRECT_RE.search(form_cell)
         direct_or_indirect = form_match.group(1).upper() if form_match else None
 
-        nature = row[nature_col].strip() if len(row) > nature_col else ""
+        nature = (
+            row[nature_col].strip()
+            if nature_col is not None and len(row) > nature_col
+            else ""
+        )
 
         results.append(
             NonDerivativeTransaction(
@@ -465,7 +510,11 @@ def parse_table_ii_rows(
                     ad_code = transaction_type
                     break
 
-        dates_cell = row[dates_col].strip() if len(row) > dates_col else ""
+        dates_cell = (
+            row[dates_col].strip()
+            if dates_col is not None and len(row) > dates_col
+            else ""
+        )
         exercisable_date: str | None = None
         expiration_date: str | None = None
         if exercisable_col is not None:
@@ -485,7 +534,9 @@ def parse_table_ii_rows(
                 exercisable_date = date_matches[0]
 
         underlying_cell = (
-            row[underlying_col].strip() if len(row) > underlying_col else ""
+            row[underlying_col].strip()
+            if underlying_col is not None and len(row) > underlying_col
+            else ""
         )
         underlying_title: str | None = None
         underlying_shares: float | None = None

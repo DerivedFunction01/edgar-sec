@@ -123,15 +123,33 @@ def _extract_template_fields(
     accepted_fields: frozenset[str],
 ) -> dict[str, str]:
     fields: dict[str, str] = {}
-    for row, lowered_row in zip(rows, lowered_rows, strict=True):
+    for r_idx, (row, lowered_row) in enumerate(zip(rows, lowered_rows, strict=True)):
         for index, label in enumerate(lowered_row):
             field = label.strip("() :.")
             if field not in accepted_fields or field in fields:
                 continue
-            value = next(
+            right_val = next(
                 (cell.strip() for cell in row[index + 1 :] if cell.strip()), ""
             )
-            fields[field] = value
+            right_clean = right_val.strip("() :.").lower()
+            if (
+                not right_val
+                or right_clean in accepted_fields
+                or any(
+                    right_clean.startswith(p)
+                    for p in ("3.", "4.", "5.", "6.", "7.", "table", "irs")
+                )
+            ) and r_idx > 0:
+                above_val = ""
+                if index < len(rows[r_idx - 1]):
+                    above_val = rows[r_idx - 1][index].strip()
+                if not above_val and index > 0 and index - 1 < len(rows[r_idx - 1]):
+                    above_val = rows[r_idx - 1][index - 1].strip()
+                above_clean = above_val.strip("() :.").lower()
+                if above_val and above_clean not in accepted_fields:
+                    fields[field] = above_val
+                    continue
+            fields[field] = right_val
     return fields
 
 
@@ -483,29 +501,50 @@ def parse_metadata(
                 ):
                     cand = f"{cell}\n{right}"
                 elif r_idx + 1 < len(rows):
-                    below = rows[r_idx + 1][c_idx].strip()
-                    below_lower = lowered_rows[r_idx + 1][c_idx]
-                    if below and not any(
-                        marker in below_lower for marker in _ISSUER_LOOKAHEAD_EXCLUSIONS
-                    ):
-                        cand = f"{cell}\n{below}"
+                    for next_r in range(r_idx + 1, min(r_idx + 4, len(rows))):
+                        below = (
+                            rows[next_r][c_idx].strip()
+                            if c_idx < len(rows[next_r])
+                            else ""
+                        )
+                        below_lower = (
+                            lowered_rows[next_r][c_idx]
+                            if c_idx < len(lowered_rows[next_r])
+                            else ""
+                        )
+                        if below and not any(
+                            marker in below_lower
+                            for marker in _ISSUER_LOOKAHEAD_EXCLUSIONS
+                        ):
+                            cand = f"{cell}\n{below}"
+                            break
                 issuer_cell = cand
             elif (
                 "statement for" in lower or ("4." in lower and "month" in lower)
             ) and not period_cell:
                 cand = cell
                 if r_idx + 1 < len(rows):
-                    below = rows[r_idx + 1][c_idx].strip()
-                    below_lower = lowered_rows[r_idx + 1][c_idx]
-                    if (
-                        below
-                        and any(char.isdigit() for char in below)
-                        and not any(
-                            marker in below_lower
-                            for marker in _PERIOD_LOOKAHEAD_EXCLUSIONS
+                    for next_r in range(r_idx + 1, min(r_idx + 4, len(rows))):
+                        below = (
+                            rows[next_r][c_idx].strip()
+                            if c_idx < len(rows[next_r])
+                            else ""
                         )
-                    ):
-                        cand = f"{cell}\n{below}"
+                        below_lower = (
+                            lowered_rows[next_r][c_idx]
+                            if c_idx < len(lowered_rows[next_r])
+                            else ""
+                        )
+                        if (
+                            below
+                            and any(char.isdigit() for char in below)
+                            and not any(
+                                marker in below_lower
+                                for marker in _PERIOD_LOOKAHEAD_EXCLUSIONS
+                            )
+                        ):
+                            cand = f"{cell}\n{below}"
+                            break
                 period_cell = cand
         for c_idx, (cell, lower) in enumerate(zip(row, lowered_row, strict=True)):
             if not cell or not (

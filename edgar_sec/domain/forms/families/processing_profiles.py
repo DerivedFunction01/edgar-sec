@@ -36,6 +36,12 @@ from edgar_sec.domain.forms.families.quarterly.checkmarks import (
 from edgar_sec.domain.forms.families.quarterly.processing import (
     PROFILE as QUARTERLY_PROFILE,
 )
+from edgar_sec.domain.forms.families.registration.checkmarks import (
+    S1_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.registration.processing import (
+    PROFILE_S1,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -85,6 +91,11 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         family="5",
         profile=PROFILE_FORM_5,
     ),
+    ProcessingCatalogEntry(
+        family="S-1",
+        profile=PROFILE_S1,
+        cover_checkbox_schema=S1_CHECKBOX_SCHEMA,
+    ),
 )
 
 _FAMILY_ENTRY_BY_FAMILY = {entry.family: entry for entry in FAMILY_PROCESSING_PROFILES}
@@ -107,7 +118,9 @@ def get_family_profile(family: str) -> DocumentProcessingProfile | None:
     return entry.profile if entry is not None else None
 
 
-LAZY_INDEX_FORM_FAMILIES: frozenset[str] = frozenset({"10-K", "10-Q", "8-K", "20-F"})
+LAZY_INDEX_FORM_FAMILIES: frozenset[str] = frozenset(
+    {"10-K", "10-Q", "8-K", "20-F", "S-1"}
+)
 
 
 def get_lazy_index_trigger(family: str | None) -> tuple[str, str] | None:

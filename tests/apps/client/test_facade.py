@@ -277,3 +277,26 @@ def test_edgar_facade_fetches_and_opens_linkbases(tmp_path: Path) -> None:
     xbrl = edgar.xbrl(filing)
     assert len(xbrl.linkbases.calculation_arcs) == 4
     assert len(xbrl.linkbases.presentation_arcs) == 2
+
+
+def test_edgar_facade_fetch_operation_forwarding(monkeypatch, tmp_path) -> None:
+    edgar = Edgar(artifacts_root=tmp_path)
+    captured = {}
+
+    def fake_fast_query(**kwargs):
+        captured.update(kwargs)
+        return "fast_result"
+
+    monkeypatch.setattr(
+        "edgar_sec.apps.client.facade.query_catalog_fast", fake_fast_query
+    )
+
+    edgar.fetch(
+        forms=["4"],
+        ciks=["320193"],
+        operation="xml",
+        family_operations={"4": "render_to_xml"},
+        mode="fast",
+    )
+    assert captured["operation"] == "xml"
+    assert captured["family_operations"] == {"4": "render_to_xml"}
