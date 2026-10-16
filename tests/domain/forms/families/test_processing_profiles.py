@@ -47,8 +47,8 @@ def test_family_entry_lookup_resolves_form_aliases() -> None:
 
 
 def test_unknown_family_has_no_catalog_entry() -> None:
-    assert get_family_entry("S-1") is None
-    assert get_family_profile("S-1") is None
+    assert get_family_entry("X-1") is None
+    assert get_family_profile("X-1") is None
 
 
 def test_current_forms_have_no_period_label_schema() -> None:

@@ -21,6 +21,7 @@ if TYPE_CHECKING:
         NotesSequence,
         SectionSequence,
     )
+    from edgar_sec.apps.client.snapshots import SnapshotConsole
     from edgar_sec.engine.xbrl.schema.models import FilingXbrl
 
 
@@ -103,10 +104,43 @@ class Edgar:
         operation: str = "raw",
         operations: Sequence[str] | str = (),
         family_operations: dict[str, str] | None = None,
-        mode: Literal["fast", "pipeline"] = "fast",
+        mode: Literal["fast", "pipeline", "snapshot"] = "fast",
+        snapshot: str = "main",
         workers: int | None = None,
     ) -> FilingsResult:
         """Execute acquisition and return a relational FilingsResult."""
+        if mode == "snapshot":
+            from edgar_sec.apps.client.snapshots import (
+                query_filings_from_snapshot,
+            )
+
+            form_tuple = (
+                query.forms
+                if query is not None
+                else (
+                    (forms,) if isinstance(forms, str) else tuple(str(f) for f in forms)
+                )
+            )
+            cik_tuple = (
+                query.ciks
+                if query is not None
+                else (
+                    (str(ciks),)
+                    if isinstance(ciks, (str, int))
+                    else tuple(str(c) for c in ciks)
+                )
+            )
+            date_filter = query.dates if query is not None else dates
+            limit_val = query.limit if query is not None else limit
+            return query_filings_from_snapshot(
+                self.artifacts_root,
+                snapshot_id_or_tag=snapshot,
+                forms=form_tuple,
+                ciks=cik_tuple,
+                dates=date_filter,
+                limit=limit_val,
+            )
+
         if query is not None:
             if mode == "pipeline" or query.roles != ("primary",) or query.input_file:
                 return self.pipeline(query)
@@ -225,6 +259,58 @@ class Edgar:
             artifacts_root=self.artifacts_root,
         )
         return self.pipeline(config)
+
+    def from_snapshot(
+        self,
+        snapshot_or_tag: str = "main",
+        *,
+        forms: Sequence[str] | str = (),
+        ciks: Sequence[str | int] | str | int = (),
+        dates: DateFilterInput = None,
+        limit: int | None = None,
+    ) -> FilingsResult:
+        """Hydrate filings directly and offline from a published DAG snapshot."""
+        from edgar_sec.apps.client.snapshots import query_filings_from_snapshot
+
+        form_tuple = (
+            (forms,) if isinstance(forms, str) else tuple(str(f) for f in forms)
+        )
+        cik_tuple = (
+            (str(ciks),)
+            if isinstance(ciks, (str, int))
+            else tuple(str(c) for c in ciks)
+        )
+        return query_filings_from_snapshot(
+            self.artifacts_root,
+            snapshot_id_or_tag=snapshot_or_tag,
+            forms=form_tuple,
+            ciks=cik_tuple,
+            dates=dates,
+            limit=limit,
+        )
+
+    @property
+    def snapshots(self) -> SnapshotConsole:
+        """Return SnapshotConsole instance bound to this facade."""
+        from edgar_sec.apps.client.snapshots import SnapshotConsole
+
+        return SnapshotConsole(self.artifacts_root)
+
+    def clean(
+        self,
+        scope: Literal["transient", "plans", "all"] = "all",
+        run_id: str | None = None,
+        plan_id: str | None = None,
+    ) -> dict[str, int]:
+        """Manual lifecycle cleanup for transient runs and plan bundles."""
+        from edgar_sec.apps.runner.cleanup import clear_plans, clear_transient
+
+        res = {"transient": 0, "plans": 0}
+        if scope in ("transient", "all"):
+            res["transient"] = clear_transient(self.artifacts_root, run_id=run_id)
+        if scope in ("plans", "all"):
+            res["plans"] = clear_plans(self.artifacts_root, plan_id=plan_id)
+        return res
 
     def company(self, identifier: str | int | Cik) -> Company:
         """Resolve an entity by ticker or CIK and return a Company model."""

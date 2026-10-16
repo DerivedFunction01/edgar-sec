@@ -21,6 +21,7 @@ PROFILE_S1 = DocumentProcessingProfile(
     has_toc=True,
     has_sections=True,
     has_notes=True,
+    has_xbrl=True,
 )
 
 __all__ = ["PROFILE_S1"]

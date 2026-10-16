@@ -162,6 +162,7 @@ class PipelineRunner:
                 artifacts_root=self.config.artifacts_root,
                 workers=self.config.workers,
                 sec_client=self.config.sec_client,
+                cleanup=getattr(cfg, "cleanup", self.config.cleanup),
             )
 
         ciks = self._resolve_target_ciks(cfg)
@@ -214,7 +215,7 @@ class PipelineRunner:
         run_state_sqlite_path = self.acquisition_paths.run_state_path(run_id)
 
         effective_op = cfg.operations[0] if cfg.operations else "raw"
-        return FilingsResult(
+        result = FilingsResult(
             run_id=run_id,
             plan_id=doc_plan_id,
             target_parquet_glob=target_parquet_glob,
@@ -223,6 +224,50 @@ class PipelineRunner:
             snapshot_id=snapshot_id,
             operation=effective_op,
         )
+
+        if cfg.cleanup in ("transient", "all"):
+            from edgar_sec.apps.runner.cleanup import clear_plans, clear_transient
+            from edgar_sec.domain.document.aggregate import FilingAggregate
+
+            preloaded_items: list[FilingAggregate] = []
+            for filing in result:
+                data = filing.raw()
+                preloaded_items.append(
+                    FilingAggregate(
+                        accession=filing.accession,
+                        primary_cik=filing.primary_cik,
+                        ciks=filing.ciks,
+                        form=filing.form,
+                        filing_date=filing.filing_date,
+                        report_date=filing.report_date,
+                        acceptance_datetime=filing.acceptance_datetime,
+                        primary_document_path=filing.primary_document_path,
+                        primary_sha256=filing.primary_sha256,
+                        primary_storage_path=None,
+                        attachments=filing.attachments,
+                        run_id=filing.run_id,
+                        plan_id=filing.plan_id,
+                        xbrl=filing.xbrl,
+                        primary_document_url=filing.primary_document_url,
+                        fetcher=(lambda d=data: lambda f: d)(),
+                        renderer=filing.renderer,
+                    )
+                )
+            clear_transient(self.acquisition_paths.artifacts_root, run_id=run_id)
+            if cfg.cleanup == "all":
+                clear_plans(self.planning_paths.artifacts_root, plan_id=doc_plan_id)
+            result = FilingsResult(
+                run_id=run_id,
+                plan_id=doc_plan_id,
+                target_parquet_glob=target_parquet_glob,
+                run_state_sqlite_path=run_state_sqlite_path,
+                artifacts_root=self.acquisition_paths.artifacts_root,
+                snapshot_id=snapshot_id,
+                operation=effective_op,
+                items=tuple(preloaded_items),
+            )
+
+        return result
 
 
 __all__ = ["PipelineRunner"]

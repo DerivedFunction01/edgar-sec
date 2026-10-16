@@ -85,6 +85,7 @@ class CoverProfile:
     has_toc: bool = False
     has_sections: bool = False
     has_notes: bool = False
+    has_xbrl: bool = False
 
 
 def _make_profile(
@@ -117,6 +118,7 @@ def _make_profile(
         has_toc=prof.has_toc if prof is not None else False,
         has_sections=prof.has_sections if prof is not None else False,
         has_notes=prof.has_notes if prof is not None else False,
+        has_xbrl=prof.has_xbrl if prof is not None else False,
     )
 
 

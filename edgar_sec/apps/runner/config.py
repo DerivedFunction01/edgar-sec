@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from edgar_sec.infra.sec_http.client import SecHttpClient
 
 MaterializeMode = Literal["none", "specific", "all"]
+CleanupMode = Literal["retain", "transient", "all"]
 
 DateFilterInput = (
     DateRange
@@ -65,6 +66,7 @@ class PipelineConfig(FilingQuery):
     """End-to-end S6 pipeline orchestration specification adding execution policies."""
 
     materialize: MaterializeMode = "specific"
+    cleanup: CleanupMode = "retain"
     sync_metadata: bool = True
     workers: int | None = None
     sec_client: SecHttpClient | None = None
@@ -72,6 +74,7 @@ class PipelineConfig(FilingQuery):
 
 
 __all__ = [
+    "CleanupMode",
     "DateFilterInput",
     "FilingQuery",
     "MaterializeMode",

@@ -156,7 +156,27 @@ class FilingAggregate:
             a
             for a in self.get_attachments()
             if a.document_type.upper().startswith("EX-")
+            or a.filename.lower().startswith("ex")
+            or "_ex" in a.filename.lower()
         )
+
+    def exhibit(self, type_or_number: str | int) -> FilingAttachment | None:
+        """Safe exhibit retrieval by document type, number, or filename token."""
+        token = str(type_or_number).upper().strip()
+        canon_ex = f"EX-{token}" if not token.startswith("EX-") else token
+        for a in self.exhibits:
+            dt = a.document_type.upper()
+            if dt == canon_ex or dt == token:
+                return a
+        for a in self.exhibits:
+            dt = a.document_type.upper()
+            if dt.startswith(f"{canon_ex}.") or dt.startswith(f"{canon_ex}-"):
+                return a
+        for a in self.exhibits:
+            fn = a.filename.lower()
+            if token.lower() in fn or canon_ex.lower() in fn:
+                return a
+        return None
 
     def as_report(self) -> FormReport:
         from edgar_sec.domain.forms.reports import get_report_projection
@@ -251,9 +271,26 @@ class FilingAggregate:
         """Return all graphic attachments."""
         return tuple(a for a in self.get_attachments() if a.is_graphic)
 
+    def _is_xbrl_eligible(self) -> bool:
+        from edgar_sec.domain.forms.families.processing_profiles import (
+            get_family_profile,
+        )
+
+        prof = get_family_profile(self.form)
+        return prof.has_xbrl if prof is not None else False
+
+    @property
+    def has_xbrl(self) -> bool:
+        """Report whether filing contains verified XBRL data."""
+        if not self._is_xbrl_eligible():
+            return False
+        return len(self.linkbases) > 0
+
     @property
     def linkbases(self) -> tuple[FilingAttachment, ...]:
         """Return all discovered XBRL linkbase, schema, and instance attachments."""
+        if not self._is_xbrl_eligible():
+            return ()
         return tuple(
             a
             for a in self.get_attachments()
@@ -274,6 +311,10 @@ class FilingAggregate:
 
     def open_linkbase(self, suffix_or_type: str) -> bytes:
         """Fetch and return bytes of a linkbase document by suffix or type."""
+        if not self.has_xbrl:
+            raise FileNotFoundError(
+                f"no linkbase matching {suffix_or_type!r} in verified index for {self.accession}"
+            )
         token = suffix_or_type.lower().strip()
         for a in self.linkbases:
             if token in a.filename.lower() or token in a.document_type.lower():
@@ -281,7 +322,7 @@ class FilingAggregate:
                 if data is not None:
                     return data
         raise FileNotFoundError(
-            f"linkbase {suffix_or_type!r} not found for {self.accession}"
+            f"no linkbase matching {suffix_or_type!r} in verified index for {self.accession}"
         )
 
     def open_document(self, filename: str) -> bytes:
