@@ -1,0 +1,71 @@
+{
+  "firm": "JNJ",
+  "accession": "0000200406-25-000038",
+  "cik": "0000200406",
+  "sic_code": 2834,
+  "sector": "Healthcare",
+  "fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated statements of earnings",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "line_range": [
+      1465,
+      1495
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "Sales to customers",
+        "reported_value": 88821000000.0,
+        "table_value": 88821,
+        "line_number": 1468,
+        "snippet": "Sales to customers                                               $88,821   85,159   79,990"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
+        "label": "Cost of products sold",
+        "reported_value": 27471000000.0,
+        "table_value": 27471,
+        "line_number": 1470,
+        "snippet": "Cost of products sold                                             27,471   26,553   24,596"
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross profit",
+        "reported_value": 61350000000.0,
+        "table_value": 61350,
+        "line_number": 1471,
+        "snippet": "Gross profit                                                      61,350   58,606   55,394"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net earnings",
+        "reported_value": 14066000000.0,
+        "table_value": 14066,
+        "line_number": 1484,
+        "snippet": "Net earnings                                                     $14,066   35,153   17,941"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossProfit = SalesToCustomers - CostOfProductsSold",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "weight": 1.0,
+          "value": 88821000000.0
+        },
+        {
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "weight": -1.0,
+          "value": 27471000000.0
+        }
+      ],
+      "computed_sum": 61350000000.0,
+      "target_value": 61350000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}
