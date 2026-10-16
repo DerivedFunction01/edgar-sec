@@ -69,7 +69,7 @@ def get_active_accession(
     lineage = walk_lineage(root, tip)
     con = connect(profile)
     try:
-        rows = query_point(
+        table = query_point(
             con,
             INVENTORY_ACCESSIONS_SPEC,
             lineage,
@@ -78,7 +78,7 @@ def get_active_accession(
             key_column="accession",
             all_specs=INVENTORY_RELATIONS,
         )
-        return rows[0] if rows else None
+        return table.to_pylist()[0] if table.num_rows > 0 else None
     finally:
         con.close()
 
@@ -99,7 +99,7 @@ def get_active_entries(
     lineage = walk_lineage(root, tip)
     con = connect(profile)
     try:
-        return query_point(
+        table = query_point(
             con,
             INVENTORY_ENTRIES_SPEC,
             lineage,
@@ -108,6 +108,7 @@ def get_active_entries(
             key_column="accession",
             all_specs=INVENTORY_RELATIONS,
         )
+        return table.to_pylist()
     finally:
         con.close()
 
@@ -128,7 +129,7 @@ def get_accessions_by_cik(
     lineage = walk_lineage(root, tip)
     con = connect(profile)
     try:
-        return query_point(
+        table = query_point(
             con,
             INVENTORY_ACCESSIONS_SPEC,
             lineage,
@@ -137,6 +138,7 @@ def get_accessions_by_cik(
             key_column="filing_cik",
             all_specs=INVENTORY_RELATIONS,
         )
+        return table.to_pylist()
     finally:
         con.close()
 

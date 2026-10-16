@@ -50,6 +50,7 @@ from edgar_sec.engine.forms.cover.models import (
 )
 
 if TYPE_CHECKING:
+    from edgar_sec.domain.forms.common.processing import DocumentProcessingProfile
     from edgar_sec.domain.forms.common.schemas import CoverCheckboxSchema
     from edgar_sec.foundation.text.healing import PhraseSequenceRule
 
@@ -82,10 +83,25 @@ class CoverProfile:
     derived_taxonomy: dict | None = None
     checkbox_schema: CoverCheckboxSchema | None = None
     cover_table_cleaners: tuple[str, ...] = ()
-    has_toc: bool = False
-    has_sections: bool = False
-    has_notes: bool = False
-    has_xbrl: bool = False
+    processing_profile: DocumentProcessingProfile | None = None
+
+    @property
+    def has_toc(self) -> bool:
+        return self.processing_profile.has_toc if self.processing_profile else False
+
+    @property
+    def has_sections(self) -> bool:
+        return (
+            self.processing_profile.has_sections if self.processing_profile else False
+        )
+
+    @property
+    def has_notes(self) -> bool:
+        return self.processing_profile.has_notes if self.processing_profile else False
+
+    @property
+    def has_xbrl(self) -> bool:
+        return self.processing_profile.has_xbrl if self.processing_profile else False
 
 
 def _make_profile(
@@ -115,10 +131,7 @@ def _make_profile(
             family_entry.cover_checkbox_schema if family_entry is not None else None
         ),
         cover_table_cleaners=cover_table_cleaners,
-        has_toc=prof.has_toc if prof is not None else False,
-        has_sections=prof.has_sections if prof is not None else False,
-        has_notes=prof.has_notes if prof is not None else False,
-        has_xbrl=prof.has_xbrl if prof is not None else False,
+        processing_profile=prof,
     )
 
 

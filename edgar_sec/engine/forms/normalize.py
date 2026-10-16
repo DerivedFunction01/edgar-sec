@@ -62,6 +62,7 @@ from edgar_sec.engine.forms.cover.reflow import (
 from edgar_sec.engine.forms.cover.tables.cleaner import clean_cover_tables
 from edgar_sec.engine.forms.cover.toc.finder import find_toc_span
 from edgar_sec.engine.forms.cover.toc.models import TocSpan
+from edgar_sec.engine.forms.sections.models import NotesSequence, SectionSequence
 from edgar_sec.engine.reflow.engine.mapper import build_line_mapper
 from edgar_sec.engine.reflow.engine.rewrapper import reflow_ascii
 from edgar_sec.engine.reflow.types import ReflowPolicy, ReflowResult
@@ -155,6 +156,8 @@ class NormalizationResult:
     reflow: ReflowResult | None = None
     table_geometries: tuple[TableGeometry, ...] = ()
     cover_checkmarks: CoverCheckmarkResult | None = None
+    sections: SectionSequence | None = None
+    notes: NotesSequence | None = None
 
 
 def normalize_document(
@@ -347,6 +350,39 @@ def normalize_document(
     closing_span = find_closing_span(text, search_from=closing_search_from)
 
     text, toc_span = _trim_text_with_toc_span(text, toc_span)
+
+    sections = None
+    notes = None
+    if profile.has_sections:
+        from edgar_sec.domain.forms.families.processing_profiles import (
+            get_family_entry,
+        )
+        from edgar_sec.engine.forms.sections.items.detector import (
+            detect_section_sequence,
+        )
+
+        entry = get_family_entry(family)
+        taxonomy = entry.taxonomy_items if entry is not None else ()
+        if taxonomy:
+            raw_toc = (
+                (toc_span.start_line, toc_span.end_line)
+                if toc_span is not None
+                else None
+            )
+            sections = detect_section_sequence(
+                text,
+                family=family,
+                taxonomy_items=taxonomy,
+                toc_span=raw_toc,
+            )
+
+    if profile.has_notes:
+        from edgar_sec.engine.forms.sections.notes.detector import (
+            detect_notes_sequence,
+        )
+
+        notes = detect_notes_sequence(text)
+
     return NormalizationResult(
         text=text,
         family=family,
@@ -361,6 +397,8 @@ def normalize_document(
         reflow=reflow_result,
         table_geometries=table_geometries,
         cover_checkmarks=checkmark_inference,
+        sections=sections,
+        notes=notes,
     )
 
 

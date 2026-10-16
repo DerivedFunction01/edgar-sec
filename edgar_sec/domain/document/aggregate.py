@@ -11,6 +11,7 @@ import zipfile
 from edgar_sec.domain.identity import AccessionNumber, Cik
 
 if TYPE_CHECKING:
+    from edgar_sec.domain.forms.common.processing import DocumentProcessingProfile
     from edgar_sec.domain.forms.reports import FormReport
 
 
@@ -271,12 +272,17 @@ class FilingAggregate:
         """Return all graphic attachments."""
         return tuple(a for a in self.get_attachments() if a.is_graphic)
 
-    def _is_xbrl_eligible(self) -> bool:
+    @property
+    def processing_profile(self) -> DocumentProcessingProfile | None:
+        """Return the declarative processing profile for this filing form."""
         from edgar_sec.domain.forms.families.processing_profiles import (
             get_family_profile,
         )
 
-        prof = get_family_profile(self.form)
+        return get_family_profile(self.form)
+
+    def _is_xbrl_eligible(self) -> bool:
+        prof = self.processing_profile
         return prof.has_xbrl if prof is not None else False
 
     @property
@@ -285,6 +291,24 @@ class FilingAggregate:
         if not self._is_xbrl_eligible():
             return False
         return len(self.linkbases) > 0
+
+    @property
+    def has_toc(self) -> bool:
+        """Report whether filing form family supports Table of Contents."""
+        prof = self.processing_profile
+        return prof.has_toc if prof is not None else False
+
+    @property
+    def has_sections(self) -> bool:
+        """Report whether filing form family supports statutory Part/Item sections."""
+        prof = self.processing_profile
+        return prof.has_sections if prof is not None else False
+
+    @property
+    def has_notes(self) -> bool:
+        """Report whether filing form family supports financial statement notes."""
+        prof = self.processing_profile
+        return prof.has_notes if prof is not None else False
 
     @property
     def linkbases(self) -> tuple[FilingAttachment, ...]:

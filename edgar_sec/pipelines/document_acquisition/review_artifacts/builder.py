@@ -346,6 +346,10 @@ def _process_fixture_body(
         "family_profile": {
             "family": profile.family if profile is not None else "default",
             "version": profile.version if profile is not None else "1",
+            "has_toc": profile.has_toc if profile is not None else False,
+            "has_sections": profile.has_sections if profile is not None else False,
+            "has_notes": profile.has_notes if profile is not None else False,
+            "has_xbrl": profile.has_xbrl if profile is not None else False,
             "allowed_operations": sorted(item.value for item in allowed),
         },
         "outputs": artifact_outputs,
