@@ -15,38 +15,35 @@ from edgar_sec.domain.forms.families.ownership.models import (
     ReportingOwner,
 )
 from edgar_sec.domain.taxonomy.legal_forms import LEGAL_FORMS
-from edgar_sec.engine.document.page_markers.signatures import (
-    RE_CONFORMED_SIGNER_NAME,
-)
-from edgar_sec.engine.forms.ownership.patterns import (
-    AMEND_DATE_CLEAN_RE,
-    AMEND_LABEL_RE,
-    AMEND_MATCH_RE,
+from edgar_sec.engine.forms.common.entities import (
     BARE_BOX_NUM_RE,
-    BOX5_SPLIT_RE,
     CLEAN_TEMPLATE_RE,
     IRS_RE,
     ISSUER_LABEL_TERMS,
     ISSUER_TAIL_RE,
     NAME_MATCH_RE,
     NON_OWNER_JURISDICTION_RE,
-    PERIOD_MATCH_RE,
-    PERIOD_PREFIX_RE,
-    PROSE_BOILERPLATE_RE,
-    SIG_NAME_RE,
-    SIG_PERSON_PREFIX_RE,
-    SIG_BOILERPLATE_TERMS,
-    SIG_BY_NAME_RE,
-    SIG_DELEGATED_NAME_RE,
     STATE_ZIP_RE,
     STREET_ANCHOR_RE,
-    SIG_UNDERLINED_NAME_RE,
     STRIP_BOX_NUM_RE,
     SYMBOL_TAIL_RE,
     TICKER_DASH_RE,
     TICKER_PAREN_RE,
     TITLE_MATCH_RE,
 )
+from edgar_sec.engine.forms.common.periods import (
+    AMEND_DATE_CLEAN_RE,
+    AMEND_LABEL_RE,
+    AMEND_MATCH_RE,
+    BOX5_SPLIT_RE,
+    PERIOD_MATCH_RE,
+    PERIOD_PREFIX_RE,
+)
+from edgar_sec.engine.forms.common.signatures import (
+    SIG_BOILERPLATE_TERMS,
+    extract_signature_candidate,
+)
+from edgar_sec.engine.forms.ownership.patterns import PROSE_BOILERPLATE_RE
 from edgar_sec.engine.forms.ownership.sections import ClassifiedSection
 from edgar_sec.foundation.text.dates import (
     NUMERIC_DATE_RE,
@@ -79,37 +76,11 @@ _ISSUER_LOOKAHEAD_EXCLUSIONS = (
 _PERIOD_LOOKAHEAD_EXCLUSIONS = ("relationship", "table i")
 
 
-def _is_valid_signature_name(cand: str) -> bool:
-    if not cand or len(cand) > 60:
-        return False
-    lower = cand.lower()
-    if lower.strip(" .:-") in {
-        "date",
-        "signature",
-        "power of attorney",
-        "attorney-in-fact",
-        "attorney in fact",
-    }:
-        return False
-    if any(term in lower for term in SIG_BOILERPLATE_TERMS):
-        return False
-    words = cand.split()
-    return 1 <= len(words) <= 6
-
-
 _ROLE_TARGETS = (
     ("director", "director"),
     ("officer", "officer"),
     ("ten_percent", "10%"),
     ("other", "other"),
-)
-_SIGNATURE_NAME_PATTERNS = (
-    RE_CONFORMED_SIGNER_NAME,
-    SIG_UNDERLINED_NAME_RE,
-    SIG_BY_NAME_RE,
-    SIG_DELEGATED_NAME_RE,
-    SIG_PERSON_PREFIX_RE,
-    SIG_NAME_RE,
 )
 
 
@@ -597,16 +568,7 @@ def parse_metadata(
                     ):
                         clean_lines.append(s)
         sig_text = "\n".join(clean_lines)
-        m_date = RE_FULL_DATE.search(sig_text) or NUMERIC_DATE_RE.search(sig_text)
-        if m_date:
-            sig_date = m_date.group(0).strip()
-        for pattern in _SIGNATURE_NAME_PATTERNS:
-            match = pattern.search(sig_text)
-            if match:
-                candidate = match.group(1).strip(" ,.-")
-                if _is_valid_signature_name(candidate):
-                    sig_name = candidate
-                    break
+        sig_name, sig_date = extract_signature_candidate(sig_text)
 
     return Form4Metadata(
         issuer=issuer,

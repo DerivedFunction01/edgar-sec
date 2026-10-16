@@ -95,50 +95,6 @@ OWNERSHIP_FOOTNOTE_LEXICAL_PACK = LexicalEvidencePack(
 
 OWNERSHIP_FORM_NAMES: tuple[str, ...] = ("form 3", "form 4", "form 5")
 
-STATUTORY_PAGE_BOILERPLATE: tuple[str, ...] = (
-    "reminder: report on a separate",
-    "potential persons who are to respond",
-    "note: file three copies",
-    "see instruction 4(b)(v)",
-    "see instruction 6 for procedure",
-    "sec 1474",
-    "sec 2474",
-    "(over)",
-    "persons who respond to the collection",
-)
-
-NOTARY_AND_JURAT_PHRASES: tuple[str, ...] = (
-    "notary public",
-    "subscribed and sworn",
-    "commission expires",
-    "my commission",
-    "state of",
-    "county of",
-)
-
-CORPORATE_OFFICER_TITLES: tuple[str, ...] = (
-    "vice president",
-    "president",
-    "corporate secretary",
-    "secretary",
-    "treasurer",
-    "chief executive",
-    "chief financial",
-    "assistant secretary",
-)
-
-CORPORATE_SIGNATORY_ROLES: tuple[str, ...] = (
-    "president",
-    "manager",
-    "general partner",
-    "managing member",
-    "director",
-    "secretary",
-    "treasurer",
-    "authorized signatory",
-    "attorney-in-fact",
-    "trustee",
-)
 
 TABLE_I_HOLDING_PHRASES: tuple[str, ...] = (
     "amount of securities beneficially owned",
@@ -391,178 +347,11 @@ OWNERSHIP_HEADER_LEXICAL_PACK = LexicalEvidencePack(
     ),
 )
 
-SIGNATURE_DECISIVE_PHRASES: tuple[str, ...] = (
-    "signature of reporting person",
-    "signature of",
-    "intentional misstatements",
-    "federal criminal violations",
-    "power of attorney",
-    "attorney in fact",
-    "know all by these presents",
-    "for executing forms",
-    "notary public",
-    "subscribed and sworn",
-    "commission expires",
-    "my commission",
-    "state of",
-    "county of",
-    "very truly yours",
-    "authorized signatory",
-    "managing member",
-    "general partner",
-)
-
-SIGNATURE_STRONG_NGRAMS: tuple[str, ...] = (
-    "print name",
-    "vice president",
-    "corporate secretary",
-    "chief executive",
-    "chief financial",
-    "assistant secretary",
-)
-
-SIGNATURE_STRONG_UNIGRAMS: tuple[str, ...] = (
-    "signature",
-    "title",
-    "president",
-    "secretary",
-    "treasurer",
-    "trustee",
-    "manager",
-    "director",
-    "officer",
-    "by",
-)
-
-SIGNATURE_SUPPORT_TERMS: tuple[str, ...] = (
-    "date",
-    "dated",
-    "address",
-    "capacity",
-    "duly",
-    "authorized",
-    "executed",
-    "behalf",
-    "by",
-)
-
-OWNERSHIP_SIGNATURE_LEXICAL_PACK = LexicalEvidencePack(
-    name="ownership_signature",
-    tiers=(
-        EvidenceTier(
-            name="signature_decisive",
-            priority=30,
-            value=3,
-            terms=SIGNATURE_DECISIVE_PHRASES,
-            match_kind="ngram",
-            min_distinct_hits=1,
-        ),
-        EvidenceTier(
-            name="signature_strong_ngram",
-            priority=25,
-            value=2,
-            terms=SIGNATURE_STRONG_NGRAMS,
-            match_kind="ngram",
-            min_distinct_hits=1,
-        ),
-        EvidenceTier(
-            name="signature_strong_unigram",
-            priority=20,
-            value=2,
-            terms=SIGNATURE_STRONG_UNIGRAMS,
-            match_kind="unigram",
-            min_distinct_hits=2,
-        ),
-        EvidenceTier(
-            name="signature_support",
-            priority=10,
-            value=1,
-            terms=SIGNATURE_SUPPORT_TERMS,
-            match_kind="unigram",
-            min_distinct_hits=2,
-            support=True,
-        ),
-    ),
-    exclusion_terms=("non-derivative", "derivative"),
-)
-
-STATUTORY_DECISIVE_PHRASES: tuple[str, ...] = (
-    "reminder report on a separate",
-    "potential persons who are to respond",
-    "note file three copies",
-    "see instruction",
-    "sec 1474",
-    "sec 2474",
-    "collection of information",
-    "omb approval",
-    "currently valid omb",
-)
-
-STATUTORY_STRONG_NGRAMS: tuple[str, ...] = ("company address",)
-
-STATUTORY_STRONG_UNIGRAMS: tuple[str, ...] = (
-    "agent",
-    "fax",
-    "phone",
-    "toll",
-    "logo",
-    "tel",
-)
-
-STATUTORY_SUPPORT_TERMS: tuple[str, ...] = (
-    "copies",
-    "procedure",
-    "separate",
-    "respond",
-    "control",
-    "number",
-)
-
-OWNERSHIP_STATUTORY_LEXICAL_PACK = LexicalEvidencePack(
-    name="ownership_statutory",
-    tiers=(
-        EvidenceTier(
-            name="statutory_decisive",
-            priority=30,
-            value=3,
-            terms=STATUTORY_DECISIVE_PHRASES,
-            match_kind="ngram",
-            min_distinct_hits=1,
-        ),
-        EvidenceTier(
-            name="statutory_strong_ngram",
-            priority=25,
-            value=2,
-            terms=STATUTORY_STRONG_NGRAMS,
-            match_kind="ngram",
-            min_distinct_hits=1,
-        ),
-        EvidenceTier(
-            name="statutory_strong_unigram",
-            priority=20,
-            value=2,
-            terms=STATUTORY_STRONG_UNIGRAMS,
-            match_kind="unigram",
-            min_distinct_hits=2,
-        ),
-        EvidenceTier(
-            name="statutory_support",
-            priority=10,
-            value=1,
-            terms=STATUTORY_SUPPORT_TERMS,
-            match_kind="unigram",
-            min_distinct_hits=2,
-            support=True,
-        ),
-    ),
-)
 
 __all__ = [
     "BOXES_DECISIVE_PHRASES",
     "BOXES_STRONG_TERMS",
     "BOXES_SUPPORT_TERMS",
-    "CORPORATE_OFFICER_TITLES",
-    "CORPORATE_SIGNATORY_ROLES",
     "FOOTNOTE_DECISIVE_PHRASES",
     "FOOTNOTE_EXCLUSION_TERMS",
     "FOOTNOTE_STRONG_VERBS",
@@ -570,24 +359,12 @@ __all__ = [
     "FOOTNOTE_VETO_PHRASES",
     "HEADER_DECISIVE_PHRASES",
     "HEADER_SUPPORT_TERMS",
-    "NOTARY_AND_JURAT_PHRASES",
     "OWNERSHIP_BOXES_LEXICAL_PACK",
     "OWNERSHIP_FOOTNOTE_LEXICAL_PACK",
     "OWNERSHIP_FORM_NAMES",
     "OWNERSHIP_HEADER_LEXICAL_PACK",
-    "OWNERSHIP_SIGNATURE_LEXICAL_PACK",
-    "OWNERSHIP_STATUTORY_LEXICAL_PACK",
     "OWNERSHIP_TABLE_I_LEXICAL_PACK",
     "OWNERSHIP_TABLE_II_LEXICAL_PACK",
-    "SIGNATURE_DECISIVE_PHRASES",
-    "SIGNATURE_STRONG_NGRAMS",
-    "SIGNATURE_STRONG_UNIGRAMS",
-    "SIGNATURE_SUPPORT_TERMS",
-    "STATUTORY_DECISIVE_PHRASES",
-    "STATUTORY_PAGE_BOILERPLATE",
-    "STATUTORY_STRONG_NGRAMS",
-    "STATUTORY_STRONG_UNIGRAMS",
-    "STATUTORY_SUPPORT_TERMS",
     "TABLE_I_DECISIVE_PHRASES",
     "TABLE_I_HOLDING_PHRASES",
     "TABLE_I_STRONG_PHRASES",

@@ -5,7 +5,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 import re
 
-from edgar_sec.engine.forms.ownership.patterns import HEADER_LEAK_RE, TEMPLATE_LABELS
+from edgar_sec.domain.forms.common.entities import TEMPLATE_LABELS
+from edgar_sec.engine.forms.common.statutory import HEADER_LEAK_RE
 from edgar_sec.engine.forms.ownership.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import (
     CURRENCY_TOKEN_RE,

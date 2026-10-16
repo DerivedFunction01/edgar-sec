@@ -8,7 +8,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.engine.forms.ownership.patterns import HEADER_LEAK_RE
+from edgar_sec.engine.forms.common.statutory import HEADER_LEAK_RE
 from edgar_sec.foundation.text.dates import (
     MONTH_PATTERN,
     NUMERIC_DATE_RE,
