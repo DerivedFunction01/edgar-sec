@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import tempfile
+import csv
+from dataclasses import replace
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -14,6 +16,7 @@ from edgar_sec.domain.identity import Cik
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
 from edgar_sec.infra.storage.cohort.paths import CohortPaths, resolve_cohort_paths
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.pipelines.cohort.ingestion import ingest_file_to_cohort
 from edgar_sec.pipelines.document_acquisition.commands.common import (
     _LazySecTransport,
@@ -31,6 +34,7 @@ from edgar_sec.pipelines.document_planning.planner import create_document_plan
 from edgar_sec.pipelines.filing_catalog.discovery import current_catalog_id
 from edgar_sec.pipelines.filing_catalog.paths import (
     PLAN_TARGETS_DIR,
+    SNAPSHOT_FILE,
     resolve_filing_catalog_paths,
 )
 from edgar_sec.pipelines.filing_catalog.planning.deterministic import (
@@ -49,70 +53,116 @@ class PipelineRunner:
         self.acquisition_paths = resolve_acquisition_paths(root)
         self.cohort_paths = resolve_cohort_paths(root)
 
-    def _resolve_target_ciks(self, config: FilingQuery) -> tuple[str, ...]:
-        ciks: list[str] = [str(Cik.from_raw(c).value).zfill(10) for c in config.ciks]
-        for ticker in config.tickers:
-            profile = resolve_entity_profile(ticker, self.config.artifacts_root)
-            if profile and profile.cik:
-                ciks.append(str(profile.cik.value).zfill(10))
-        if config.input_file:
-            path = Path(config.input_file)
-            if path.is_file():
-                is_parquet = path.suffix.lower() == ".parquet"
-                with connect() as con:
-                    describe_sql = (
-                        "DESCRIBE SELECT * FROM read_parquet(?)"
-                        if is_parquet
-                        else "DESCRIBE SELECT * FROM read_csv_auto(?)"
-                    )
-                    schema_cols = {
-                        r[0].lower()
-                        for r in con.execute(describe_sql, [str(path)]).fetchall()
-                    }
-                    if "cik" in schema_cols or "source_cik" in schema_cols:
-                        col = "cik" if "cik" in schema_cols else "source_cik"
-                        safe_col = sql_identifier(col)
-                        cik_sql = (
-                            f"SELECT DISTINCT {safe_col} FROM read_parquet(?) WHERE {safe_col} IS NOT NULL"
-                            if is_parquet
-                            else f"SELECT DISTINCT {safe_col} FROM read_csv_auto(?) WHERE {safe_col} IS NOT NULL"
-                        )
-                        for r in con.execute(cik_sql, [str(path)]).fetchall():
-                            ciks.append(str(Cik.from_raw(r[0]).value).zfill(10))
-                    elif "ticker" in schema_cols:
-                        ticker_sql = (
-                            "SELECT DISTINCT ticker FROM read_parquet(?) WHERE ticker IS NOT NULL"
-                            if is_parquet
-                            else "SELECT DISTINCT ticker FROM read_csv_auto(?) WHERE ticker IS NOT NULL"
-                        )
-                        for r in con.execute(ticker_sql, [str(path)]).fetchall():
-                            prof = resolve_entity_profile(
-                                str(r[0]), self.config.artifacts_root
-                            )
-                            if prof and prof.cik:
-                                ciks.append(str(prof.cik.value).zfill(10))
-        return tuple(dict.fromkeys(ciks))
-
-    def _create_ephemeral_cohort(self, ciks: tuple[str, ...]) -> str | None:
-        if not ciks:
+    def _resolve_target_cohort(self, config: FilingQuery) -> str | None:
+        input_path = Path(config.input_file) if config.input_file else None
+        if input_path is not None and not input_path.is_file():
+            input_path = None
+        if not config.ciks and not config.tickers and input_path is None:
             return None
+
         catalog = CohortCatalog(self.cohort_paths)
-        with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".csv", encoding="utf-8", delete=False
-        ) as tmp:
-            tmp.write("cik_padded\n")
-            for c in ciks:
-                tmp.write(f"{c}\n")
-            tmp_path = Path(tmp.name)
+        row_count = 0
+        tmp_path: Path | None = None
         try:
+            with tempfile.NamedTemporaryFile(
+                mode="w", suffix=".csv", encoding="utf-8", delete=False
+            ) as tmp:
+                tmp_path = Path(tmp.name)
+                writer = csv.writer(tmp)
+                writer.writerow(("cik_padded",))
+
+                def add_cik(value: Any) -> None:
+                    nonlocal row_count
+                    writer.writerow((str(Cik.from_raw(value).value).zfill(10),))
+                    row_count += 1
+
+                for cik in config.ciks:
+                    add_cik(cik)
+                for ticker in config.tickers:
+                    profile = resolve_entity_profile(ticker, self.config.artifacts_root)
+                    if profile and profile.cik:
+                        add_cik(profile.cik.value)
+
+                if input_path is not None:
+                    self._write_input_targets(input_path, writer, add_cik)
+            if row_count == 0:
+                return None
             res = ingest_file_to_cohort(
                 tmp_path,
                 catalog=catalog,
                 paths=self.cohort_paths,
             )
-            return res.record.cohort_id
+            return res.cohort.cohort_id
         finally:
-            tmp_path.unlink(missing_ok=True)
+            if tmp_path is not None:
+                tmp_path.unlink(missing_ok=True)
+
+    def _write_input_targets(
+        self,
+        input_path: Path,
+        writer: Any,
+        add_cik: Any,
+    ) -> None:
+        is_parquet = input_path.suffix.lower() == ".parquet"
+        reader = "read_parquet(?)" if is_parquet else "read_csv_auto(?)"
+        with connect() as con:
+            schema_cols = {
+                str(row[0]).lower()
+                for row in con.execute(
+                    f"DESCRIBE SELECT * FROM {reader}", [str(input_path)]
+                ).fetchall()
+            }
+            if "cik" in schema_cols or "source_cik" in schema_cols:
+                col = sql_identifier("cik" if "cik" in schema_cols else "source_cik")
+                cursor = con.execute(
+                    f"SELECT DISTINCT {col} FROM {reader} WHERE {col} IS NOT NULL",
+                    [str(input_path)],
+                )
+                while batch := cursor.fetchmany(resolve_read_batch_size()):
+                    for (value,) in batch:
+                        add_cik(value)
+                return
+            if "ticker" not in schema_cols:
+                return
+            tickers = (
+                f"SELECT DISTINCT upper(trim(CAST(ticker AS VARCHAR))) AS ticker "
+                f"FROM {reader} WHERE ticker IS NOT NULL AND trim(CAST(ticker AS VARCHAR)) <> ''"
+            )
+            profile_pattern = str(
+                self.catalog_paths.snapshots_root / "**" / SNAPSHOT_FILE
+            )
+            try:
+                cursor = con.execute(
+                    "WITH source_tickers AS (" + tickers + "), mapped AS ("
+                    "SELECT s.ticker, min(try_cast(p.cik AS BIGINT)) AS cik "
+                    "FROM source_tickers s LEFT JOIN read_parquet(?) p "
+                    "ON list_contains(list_transform(p.listings, x -> upper(x.ticker)), s.ticker) "
+                    "GROUP BY s.ticker) SELECT ticker, cik FROM mapped ORDER BY ticker",
+                    [str(input_path), profile_pattern],
+                )
+                while batch := cursor.fetchmany(resolve_read_batch_size()):
+                    for ticker, cik in batch:
+                        if cik is None:
+                            profile = resolve_entity_profile(
+                                str(ticker), self.config.artifacts_root
+                            )
+                            if profile and profile.cik:
+                                add_cik(profile.cik.value)
+                        else:
+                            add_cik(cik)
+            except Exception:
+                cursor = con.execute(
+                    "SELECT DISTINCT upper(trim(CAST(ticker AS VARCHAR))) "
+                    f"FROM {reader} WHERE ticker IS NOT NULL ORDER BY 1",
+                    [str(input_path)],
+                )
+                while batch := cursor.fetchmany(resolve_read_batch_size()):
+                    for (ticker,) in batch:
+                        profile = resolve_entity_profile(
+                            str(ticker), self.config.artifacts_root
+                        )
+                        if profile and profile.cik:
+                            add_cik(profile.cik.value)
 
     def _resolve_profile_id(self, roles: tuple[str, ...]) -> str:
         for role in roles:
@@ -165,8 +215,7 @@ class PipelineRunner:
                 cleanup=getattr(cfg, "cleanup", self.config.cleanup),
             )
 
-        ciks = self._resolve_target_ciks(cfg)
-        cohort_id = self._create_ephemeral_cohort(ciks)
+        cohort_id = self._resolve_target_cohort(cfg)
         catalog_plan_id = self._resolve_catalog_plan(cfg, cohort_id)
         profile_id = self._resolve_profile_id(cfg.roles)
 
@@ -227,30 +276,27 @@ class PipelineRunner:
 
         if cfg.cleanup in ("transient", "all"):
             from edgar_sec.apps.runner.cleanup import clear_plans, clear_transient
-            from edgar_sec.domain.document.aggregate import FilingAggregate
+            from edgar_sec.apps.client.cache import DocumentCache
 
-            preloaded_items: list[FilingAggregate] = []
+            cache = DocumentCache(artifacts_root=self.acquisition_paths.artifacts_root)
+            preloaded_items = []
             for filing in result:
                 data = filing.raw()
+                filename = f"{run_id}/{Path(filing.primary_document_path).name}"
+                if data is not None:
+                    cache.put(
+                        filing.accession.value,
+                        filing.primary_cik.value,
+                        filing.form,
+                        filename,
+                        data,
+                    )
+                accession = filing.accession.value
                 preloaded_items.append(
-                    FilingAggregate(
-                        accession=filing.accession,
-                        primary_cik=filing.primary_cik,
-                        ciks=filing.ciks,
-                        form=filing.form,
-                        filing_date=filing.filing_date,
-                        report_date=filing.report_date,
-                        acceptance_datetime=filing.acceptance_datetime,
-                        primary_document_path=filing.primary_document_path,
-                        primary_sha256=filing.primary_sha256,
+                    replace(
+                        filing,
                         primary_storage_path=None,
-                        attachments=filing.attachments,
-                        run_id=filing.run_id,
-                        plan_id=filing.plan_id,
-                        xbrl=filing.xbrl,
-                        primary_document_url=filing.primary_document_url,
-                        fetcher=(lambda d=data: lambda f: d)(),
-                        renderer=filing.renderer,
+                        fetcher=lambda _f, a=accession, n=filename: cache.get(a, n),
                     )
                 )
             clear_transient(self.acquisition_paths.artifacts_root, run_id=run_id)

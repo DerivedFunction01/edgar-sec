@@ -108,11 +108,10 @@ def test_runner_cleanup_transient_policy(monkeypatch, tmp_path: Path) -> None:
     )
     staging_dir = run_dir / "staging"
     staging_dir.mkdir(parents=True)
-    staged_file = staging_dir / "aapl-20230930.htm"
+    staged_file = staging_dir / "000032019323000106-aapl.htm"
     staged_file.write_text("AAPL 10-K body content")
 
-    monkeypatch.setattr(runner, "_resolve_target_ciks", lambda cfg: ("0000320193",))
-    monkeypatch.setattr(runner, "_create_ephemeral_cohort", lambda ciks: "cohort-1")
+    monkeypatch.setattr(runner, "_resolve_target_cohort", lambda cfg: "cohort-1")
     monkeypatch.setattr(runner, "_resolve_catalog_plan", lambda cfg, ch: "cat-plan-1")
     monkeypatch.setattr(
         "edgar_sec.apps.runner.coordinator.create_document_plan",
@@ -135,3 +134,4 @@ def test_runner_cleanup_transient_policy(monkeypatch, tmp_path: Path) -> None:
     res = runner.run(config)
     assert not run_dir.exists()
     assert len(res) == 1
+    assert res[0].raw() == b"AAPL 10-K body content"

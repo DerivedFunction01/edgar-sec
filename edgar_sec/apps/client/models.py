@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Iterator
 
@@ -14,8 +14,10 @@ from edgar_sec.domain.filing_catalog.document_names import (
     is_primary_exhibit_filename,
 )
 from edgar_sec.domain.identity import AccessionNumber, Cik
+from edgar_sec.domain.filing_catalog.filters import DateSelection
 from edgar_sec.engine.xbrl.discovery.discovery import classify_linkbase
 from edgar_sec.infra.storage.duckdb import connect
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 
 if TYPE_CHECKING:
@@ -40,6 +42,15 @@ class FilingsResult:
     run_state_sqlite_path: Path
     artifacts_root: Path
     snapshot_id: str | None = None
+    snapshot_backed: bool = False
+    snapshot_forms: tuple[str, ...] = ()
+    snapshot_ciks: tuple[str, ...] = ()
+    snapshot_date_selection: DateSelection = ()
+    snapshot_limit: int | None = None
+    snapshot_filter_forms: tuple[str, ...] = ()
+    snapshot_date_prefix: str | None = None
+    snapshot_filter_limit: int | None = None
+    snapshot_filter_empty: bool = False
     operation: str = "raw"
     family_operations: dict[str, str] | None = None
     items: tuple[FilingAggregate, ...] | None = None
@@ -351,6 +362,8 @@ class FilingsResult:
 
     def sql(self, query: str, **params: Any) -> duckdb.DuckDBPyRelation:
         """Run arbitrary SQL across catalog, index, exhibits, linkbases, and payload."""
+        if self.snapshot_backed:
+            return self._snapshot_relation(query, params)
         con = connect()
         catalog_t = self._catalog_table()
         index_t = self._index_table()
@@ -369,32 +382,92 @@ class FilingsResult:
         con.register("joined", joined_t)
         return con.sql(query, params=params)
 
+    def _snapshot_relation(
+        self, query: str, params: dict[str, Any] | None = None
+    ) -> duckdb.DuckDBPyRelation:
+        from edgar_sec.apps.client.snapshots import register_snapshot_views
+
+        con = connect()
+        register_snapshot_views(
+            con,
+            self.artifacts_root,
+            self.snapshot_id or "",
+            forms=self.snapshot_forms,
+            ciks=self.snapshot_ciks,
+            dates=self.snapshot_date_selection,
+            limit=self.snapshot_limit,
+            filter_forms=self.snapshot_filter_forms,
+            date_prefix=self.snapshot_date_prefix,
+            filter_limit=self.snapshot_filter_limit,
+            filter_empty=self.snapshot_filter_empty,
+        )
+        return con.sql(query, params=params or {})
+
     def to_arrow(self) -> pa.Table:
         """Export core catalog filings table as a PyArrow Table."""
+        if self.snapshot_backed:
+            return self._snapshot_relation("SELECT * FROM catalog").to_arrow_table()
         return self._catalog_table()
 
     def to_df(self) -> pd.DataFrame:
         """Export core catalog filings table as a Pandas DataFrame."""
+        if self.snapshot_backed:
+            return self._snapshot_relation("SELECT * FROM catalog").df()
         return self.to_arrow().to_pandas()
 
     def attachments_df(self) -> pd.DataFrame:
         """Export submission envelope attachments table as a Pandas DataFrame."""
+        if self.snapshot_backed:
+            return self._snapshot_relation("SELECT * FROM index").df()
         return self._index_table().to_pandas()
 
     def exhibits(self, types: Sequence[str] | str = ()) -> pd.DataFrame:
         """Export exhibits table as a Pandas DataFrame."""
+        if self.snapshot_backed:
+            filter_types = (
+                (types.upper(),)
+                if isinstance(types, str) and types
+                else tuple(t.upper() for t in types)
+                if types
+                else ()
+            )
+            if not filter_types:
+                return self._snapshot_relation("SELECT * FROM exhibits").df()
+            clauses: list[str] = []
+            values: dict[str, str] = {}
+            for item in filter_types:
+                canonical = item if item.startswith("EX-") else f"EX-{item}"
+                slot = len(values)
+                clauses.append(
+                    f"(upper(document_type) = $p{slot} "
+                    f"OR upper(document_type) = $p{slot + 1} "
+                    f"OR upper(document_type) LIKE $p{slot + 2})"
+                )
+                values[f"p{slot}"] = canonical
+                values[f"p{slot + 1}"] = item
+                values[f"p{slot + 2}"] = f"{canonical}.%"
+            return self._snapshot_relation(
+                "SELECT * FROM exhibits WHERE " + " OR ".join(clauses),
+                values,
+            ).df()
         return self._exhibits_table(types=types).to_pandas()
 
     def linkbases_df(self) -> pd.DataFrame:
         """Export verified XBRL linkbases table as a Pandas DataFrame."""
+        if self.snapshot_backed:
+            return self._snapshot_relation("SELECT * FROM linkbases").df()
         return self._linkbases_table().to_pandas()
 
     def staged_df(self) -> pd.DataFrame:
         """Export execution payload and state table as a Pandas DataFrame."""
+        if self.snapshot_backed:
+            return self._snapshot_relation("SELECT * FROM staged").df()
         return self._payload_table().to_pandas()
 
     def joined_df(self) -> pd.DataFrame:
         """Export consolidated joined table as a Pandas DataFrame."""
+        if self.snapshot_backed:
+            return self._snapshot_relation("SELECT * FROM joined").df()
         return self._joined_table().to_pandas()
 
     def clean(self) -> int:
@@ -405,6 +478,13 @@ class FilingsResult:
 
     def cofilers(self) -> pd.DataFrame:
         """Return co-filers table linking accessions to all associated CIKs."""
+        if self.snapshot_backed:
+            return self._snapshot_relation(
+                "SELECT t.accession, t.form, t.filing_date, "
+                "COALESCE(c.cik, t.cik) AS cik "
+                "FROM selected_targets t LEFT JOIN accession_ciks c USING (accession) "
+                "ORDER BY t.accession, c.cik"
+            ).df()
         if self.items is not None:
             import pandas as pd
 
@@ -436,18 +516,23 @@ class FilingsResult:
 
     def latest(self) -> FilingAggregate | None:
         """Return the latest filing by filing date, or None if empty."""
-        filings = list(self)
-        if not filings:
-            return None
+        if self.snapshot_backed:
+            from edgar_sec.apps.client.snapshots import snapshot_filing_at
+
+            return snapshot_filing_at(self, latest=True)
         return max(
-            filings,
+            self,
             key=lambda f: (f.filing_date, f.accession.value),
+            default=None,
         )
 
     def first(self) -> FilingAggregate | None:
         """Return the first filing in the collection, or None if empty."""
-        filings = list(self)
-        return filings[0] if filings else None
+        if self.snapshot_backed:
+            from edgar_sec.apps.client.snapshots import snapshot_filing_at
+
+            return snapshot_filing_at(self)
+        return next(iter(self), None)
 
     def filter(
         self,
@@ -455,8 +540,39 @@ class FilingsResult:
         date: str | None = None,
         limit: int | None = None,
     ) -> FilingsResult:
-        """Filter filings in-memory and return a new FilingsResult."""
+        """Filter filings and return a new FilingsResult."""
         allowed_forms = {form} if isinstance(form, str) else set(form) if form else None
+        if self.items is None and self.snapshot_backed:
+            existing_forms = set(self.snapshot_filter_forms)
+            if allowed_forms is not None:
+                existing_forms = (
+                    existing_forms & allowed_forms if existing_forms else allowed_forms
+                )
+            empty = self.snapshot_filter_empty or (
+                allowed_forms is not None and not existing_forms
+            )
+            prefix = self.snapshot_date_prefix
+            if date is not None:
+                if prefix is not None and not (
+                    prefix.startswith(date) or date.startswith(prefix)
+                ):
+                    empty = True
+                else:
+                    prefix = (
+                        max((prefix, date), key=len) if prefix is not None else date
+                    )
+            new_limit = self.snapshot_filter_limit
+            if limit is not None:
+                new_limit = (
+                    int(limit) if new_limit is None else min(new_limit, int(limit))
+                )
+            return replace(
+                self,
+                snapshot_filter_forms=tuple(sorted(existing_forms)),
+                snapshot_date_prefix=prefix,
+                snapshot_filter_limit=new_limit,
+                snapshot_filter_empty=empty,
+            )
         filtered = [
             f
             for f in self
@@ -480,6 +596,12 @@ class FilingsResult:
     def __len__(self) -> int:
         if self.items is not None:
             return len(self.items)
+        if self.snapshot_backed:
+            return int(
+                self._snapshot_relation(
+                    "SELECT count(*) AS n FROM selected_targets"
+                ).fetchone()[0]
+            )
         with connect() as con:
             return con.execute(
                 "SELECT count(DISTINCT accession) FROM read_parquet(?)",
@@ -489,6 +611,11 @@ class FilingsResult:
     def __iter__(self) -> Iterator[FilingAggregate]:
         if self.items is not None:
             yield from self.items
+            return
+        if self.snapshot_backed:
+            from edgar_sec.apps.client.snapshots import iter_snapshot_filings
+
+            yield from iter_snapshot_filings(self)
             return
         storage_by_target: dict[str, Path] = {}
         if self.run_state_sqlite_path and self.run_state_sqlite_path.is_file():
@@ -529,60 +656,72 @@ class FilingsResult:
                 ).fetchall()
             }
             if "target_id" in schema_cols:
-                rows = con.execute(
+                cursor = con.execute(
                     "SELECT DISTINCT target_id, accession, form, filing_date, target_url "
-                    "FROM read_parquet(?) "
-                    "ORDER BY accession",
+                    "FROM read_parquet(?) ORDER BY accession",
                     [self.target_parquet_glob],
-                ).fetchall()
+                )
             else:
-                raw_rows = con.execute(
-                    "SELECT DISTINCT accession, form, filing_date, target_url "
-                    "FROM read_parquet(?) "
-                    "ORDER BY accession",
+                cursor = con.execute(
+                    "SELECT DISTINCT NULL AS target_id, accession, form, filing_date, target_url "
+                    "FROM read_parquet(?) ORDER BY accession",
                     [self.target_parquet_glob],
-                ).fetchall()
-                rows = [(None, r[0], r[1], r[2], r[3]) for r in raw_rows]
-        for target_id, accession_str, form, filing_date, target_url in rows:
-            acc = AccessionNumber.from_any(accession_str)
-            storage_path = storage_by_target.get(str(target_id))
-            if storage_path is None:
-                staging_dir = resolve_acquisition_paths(
-                    self.artifacts_root
-                ).run_staging_root(self.run_id)
-                if staging_dir.is_dir():
-                    matches = list(staging_dir.glob(f"*{acc.normalized}*"))
-                    if matches:
-                        storage_path = matches[0]
+                )
+            while rows := cursor.fetchmany(resolve_read_batch_size()):
+                for target_id, accession_str, form, filing_date, target_url in rows:
+                    acc = AccessionNumber.from_any(accession_str)
+                    storage_path = storage_by_target.get(str(target_id))
+                    if storage_path is None:
+                        staging_dir = resolve_acquisition_paths(
+                            artifacts_root=self.artifacts_root
+                        ).run_staging_root(self.run_id)
+                        if staging_dir.is_dir():
+                            matches = list(staging_dir.glob(f"*{acc.normalized}*"))
+                            if matches:
+                                storage_path = matches[0]
 
-            cik_match = re.search(r"/data/(\d+)/", target_url) if target_url else None
-            cik_inst = (
-                Cik.from_raw(cik_match.group(1)) if cik_match else Cik.from_raw(1)
-            )
-            doc_path = target_url.split("/")[-1] if target_url else None
-            effective_op = (self.family_operations or {}).get(
-                str(form)
-            ) or self.operation
+                    cik_match = (
+                        re.search(r"/data/(\d+)/", target_url) if target_url else None
+                    )
+                    cik_inst = (
+                        Cik.from_raw(cik_match.group(1))
+                        if cik_match
+                        else Cik.from_raw(1)
+                    )
+                    doc_path = target_url.split("/")[-1] if target_url else None
+                    effective_op = (self.family_operations or {}).get(
+                        str(form)
+                    ) or self.operation
 
-            yield FilingAggregate(
-                accession=acc,
-                primary_cik=cik_inst,
-                ciks=(cik_inst,),
-                form=str(form),
-                filing_date=str(filing_date or ""),
-                primary_document_path=doc_path,
-                primary_storage_path=storage_path,
-                primary_document_url=target_url,
-                run_id=self.run_id,
-                plan_id=self.plan_id,
-                renderer=lambda f, operation=None: render_filing(
-                    f, operation=operation or effective_op
-                ),
-            )
+                    yield FilingAggregate(
+                        accession=acc,
+                        primary_cik=cik_inst,
+                        ciks=(cik_inst,),
+                        form=str(form),
+                        filing_date=str(filing_date or ""),
+                        primary_document_path=doc_path,
+                        primary_storage_path=storage_path,
+                        primary_document_url=target_url,
+                        run_id=self.run_id,
+                        plan_id=self.plan_id,
+                        renderer=lambda f, operation=None: render_filing(
+                            f, operation=operation or effective_op
+                        ),
+                    )
 
     def __getitem__(self, index: int) -> FilingAggregate:
         if self.items is not None:
             return self.items[index]
+        if self.snapshot_backed:
+            from edgar_sec.apps.client.snapshots import snapshot_filing_at
+
+            resolved_index = index if index >= 0 else len(self) + index
+            if resolved_index < 0:
+                raise IndexError(f"index {index} out of range for FilingsResult")
+            filing = snapshot_filing_at(self, offset=resolved_index)
+            if filing is None:
+                raise IndexError(f"index {index} out of range for FilingsResult")
+            return filing
         if index < 0:
             index = len(self) + index
         for current_idx, filing in enumerate(self):

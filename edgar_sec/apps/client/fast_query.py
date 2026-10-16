@@ -31,6 +31,7 @@ from edgar_sec.domain.sec_urls import (
 from edgar_sec.engine.document.screening import screen_candidate_document
 from edgar_sec.engine.forms.render import render_filing
 from edgar_sec.engine.index_pages.parser import parse_html_index
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.document_acquisition.index_selection import select_index_entry
@@ -715,34 +716,35 @@ def query_catalog_fast(
 
     with connect() as con:
         try:
-            rows = con.execute(query, params).fetchall()
+            cursor = con.execute(query, params)
         except Exception:
-            rows = []
-
-    for acc_str, cik_val, form_val, f_date, r_date, p_doc, p_url in rows:
-        acc = AccessionNumber.from_any(acc_str)
-        cik_inst = Cik.from_raw(cik_val)
-        agg = FilingAggregate(
-            accession=acc,
-            primary_cik=cik_inst,
-            ciks=(cik_inst,),
-            form=str(form_val),
-            filing_date=str(f_date or ""),
-            report_date=str(r_date) if r_date else None,
-            primary_document_path=str(p_doc or ""),
-            primary_document_url=str(p_url) if p_url else None,
-            fetcher=fetcher,
-            cache_clearer=doc_cache.clear,
-            zip_exporter=lambda filing, zpath: doc_cache.export_zip(
-                zpath, accession=filing.accession.raw
-            ),
-            attachment_loader=attachment_loader,
-            document_opener=document_opener,
-            bundle_fetcher=bundle_fetcher,
-            index_fetcher=index_fetcher,
-            renderer=filing_renderer,
-        )
-        aggregates.append(agg)
+            cursor = None
+        if cursor is not None:
+            while rows := cursor.fetchmany(resolve_read_batch_size()):
+                for acc_str, cik_val, form_val, f_date, r_date, p_doc, p_url in rows:
+                    acc = AccessionNumber.from_any(acc_str)
+                    cik_inst = Cik.from_raw(cik_val)
+                    agg = FilingAggregate(
+                        accession=acc,
+                        primary_cik=cik_inst,
+                        ciks=(cik_inst,),
+                        form=str(form_val),
+                        filing_date=str(f_date or ""),
+                        report_date=str(r_date) if r_date else None,
+                        primary_document_path=str(p_doc or ""),
+                        primary_document_url=str(p_url) if p_url else None,
+                        fetcher=fetcher,
+                        cache_clearer=doc_cache.clear,
+                        zip_exporter=lambda filing, zpath: doc_cache.export_zip(
+                            zpath, accession=filing.accession.raw
+                        ),
+                        attachment_loader=attachment_loader,
+                        document_opener=document_opener,
+                        bundle_fetcher=bundle_fetcher,
+                        index_fetcher=index_fetcher,
+                        renderer=filing_renderer,
+                    )
+                    aggregates.append(agg)
 
     if not aggregates and ciks:
         client = (

@@ -40,6 +40,12 @@ _NEUTRAL_CALLS = frozenset({"join", "int", "float", "bool", "len", "str", "sorte
 _SQL_COMPILER_PATHS = frozenset(
     {
         "edgar_sec/infra/storage/duckdb.py",
+        # Runner input SQL uses only format-selected readers and allowlisted columns;
+        # source paths are bound values and ticker lookup is a fixed join.
+        "edgar_sec/apps/runner/coordinator.py",
+        # Snapshot SQL embeds registry-owned relation names and escaped normalized
+        # filters; date predicates come from the validated selection compiler.
+        "edgar_sec/apps/client/snapshots.py",
         # Operator SQL is guarded as read-only and restricted to snapshot/session sources.
         "edgar_sec/infra/storage/dag/console.py",
         "edgar_sec/engine/selection/source.py",
