@@ -11,6 +11,7 @@ from edgar_sec.engine.forms.sections.models import (
 )
 from edgar_sec.engine.forms.sections.notes.candidates import extract_note_candidates
 from edgar_sec.engine.forms.sections.sequence import MonotonicSequenceTracker
+from edgar_sec.foundation.hashing import sha256_text
 
 _RE_NOTES_START = re.compile(
     r"^\s*(?:NOTES?\s+TO\s+(?:CONSOLIDATED\s+)?FINANCIAL\s+STATEMENTS)\b",
@@ -30,6 +31,9 @@ def detect_notes_sequence(
     text: str,
     *,
     scope_span: tuple[int, int] | None = None,
+    payload_sha256: str | None = None,
+    representation_id: str | None = None,
+    renderer_version: str | None = None,
 ) -> NotesSequence:
     """Detect monotonic financial statement footnotes across the notes block."""
     lines = text.splitlines()
@@ -121,8 +125,12 @@ def detect_notes_sequence(
             )
         )
 
+    digest = payload_sha256 or (sha256_text(text) if text else None)
     return NotesSequence(
         notes=tuple(bounded_notes),
         anachronistic_rejections=anachronisms,
         non_contiguous_rejections=non_contiguous,
+        payload_sha256=digest,
+        representation_id=representation_id,
+        renderer_version=renderer_version,
     )

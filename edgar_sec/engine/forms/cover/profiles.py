@@ -103,6 +103,10 @@ class CoverProfile:
     def has_xbrl(self) -> bool:
         return self.processing_profile.has_xbrl if self.processing_profile else False
 
+    @property
+    def version(self) -> str:
+        return self.processing_profile.version if self.processing_profile else "v1"
+
 
 def _make_profile(
     family: str,

@@ -582,6 +582,31 @@ def _assemble_snapshot_tables(
                 }
             )
 
+    doc_sections: list[dict[str, Any]] = []
+    doc_notes: list[dict[str, Any]] = []
+    staging_root = paths.run_staging_root(run_id)
+    if staging_root.is_dir():
+        for candidate in staging_root.rglob("*sections.json"):
+            if candidate.is_file():
+                try:
+                    s_data = json.loads(candidate.read_text(encoding="utf-8"))
+                    if isinstance(s_data, list):
+                        doc_sections.extend(s_data)
+                    elif isinstance(s_data, dict) and "sections" in s_data:
+                        doc_sections.extend(s_data["sections"])
+                except Exception:
+                    pass
+        for candidate in staging_root.rglob("*notes.json"):
+            if candidate.is_file():
+                try:
+                    n_data = json.loads(candidate.read_text(encoding="utf-8"))
+                    if isinstance(n_data, list):
+                        doc_notes.extend(n_data)
+                    elif isinstance(n_data, dict) and "notes" in n_data:
+                        doc_notes.extend(n_data["notes"])
+                except Exception:
+                    pass
+
     return {
         "accession_ciks": _to_table(
             "accession_ciks",
@@ -611,6 +636,8 @@ def _assemble_snapshot_tables(
         "payload_index": _to_table("payload_index", payload_index_rows),
         "binary_payloads": _to_table("binary_payloads", binary_rows),
         "text_payloads": _to_table("text_payloads", text_rows),
+        "document_sections": _to_table("document_sections", doc_sections),
+        "document_notes": _to_table("document_notes", doc_notes),
     }
 
 

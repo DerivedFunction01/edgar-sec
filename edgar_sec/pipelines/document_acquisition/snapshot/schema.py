@@ -218,6 +218,39 @@ TEXT_PAYLOADS_SCHEMA = pa.schema(
     ]
 )
 
+DOCUMENT_SECTIONS_SCHEMA = pa.schema(
+    [
+        pa.field("accession", pa.string(), nullable=False),
+        pa.field("logical_document_id", pa.string(), nullable=False),
+        pa.field("representation_id", pa.string(), nullable=False),
+        pa.field("payload_sha256", pa.string(), nullable=False),
+        pa.field("renderer_version", pa.string(), nullable=False),
+        pa.field("form", pa.string(), nullable=False),
+        pa.field("item_identifier", pa.string(), nullable=False),
+        pa.field("canonical_name", pa.string(), nullable=False),
+        pa.field("heading", pa.string(), nullable=False),
+        pa.field("start_line", pa.int32(), nullable=False),
+        pa.field("end_line", pa.int32(), nullable=False),
+        pa.field("is_omitted", pa.bool_(), nullable=False),
+    ]
+)
+
+DOCUMENT_NOTES_SCHEMA = pa.schema(
+    [
+        pa.field("accession", pa.string(), nullable=False),
+        pa.field("logical_document_id", pa.string(), nullable=False),
+        pa.field("representation_id", pa.string(), nullable=False),
+        pa.field("payload_sha256", pa.string(), nullable=False),
+        pa.field("renderer_version", pa.string(), nullable=False),
+        pa.field("form", pa.string(), nullable=False),
+        pa.field("note_number", pa.int32(), nullable=False),
+        pa.field("note_label", pa.string(), nullable=False),
+        pa.field("heading", pa.string(), nullable=False),
+        pa.field("start_line", pa.int32(), nullable=False),
+        pa.field("end_line", pa.int32(), nullable=False),
+    ]
+)
+
 SNAPSHOT_RELATION_SCHEMAS = {
     "accession_ciks": ACCESSION_CIKS_SCHEMA,
     "source_assets": SOURCE_ASSETS_SCHEMA,
@@ -235,6 +268,8 @@ SNAPSHOT_RELATION_SCHEMAS = {
     "payload_index": PAYLOAD_INDEX_SCHEMA,
     "binary_payloads": BINARY_PAYLOADS_SCHEMA,
     "text_payloads": TEXT_PAYLOADS_SCHEMA,
+    "document_sections": DOCUMENT_SECTIONS_SCHEMA,
+    "document_notes": DOCUMENT_NOTES_SCHEMA,
 }
 
 __all__ = [
@@ -242,6 +277,8 @@ __all__ = [
     "ACQUISITION_ATTEMPTS_SCHEMA",
     "ACQUISITION_SLOTS_SCHEMA",
     "BINARY_PAYLOADS_SCHEMA",
+    "DOCUMENT_NOTES_SCHEMA",
+    "DOCUMENT_SECTIONS_SCHEMA",
     "LOGICAL_DOCUMENTS_SCHEMA",
     "OPERATION_ATTEMPTS_SCHEMA",
     "OPERATION_RESULTS_SCHEMA",

@@ -97,7 +97,7 @@ def analyze_form_case(
     body_text = "\n".join(body_lines)
 
     detected_items: list[str] = []
-    if entry and entry.taxonomy_items:
+    if entry and entry.profile.has_sections and entry.taxonomy_items:
         seq = detect_section_sequence(
             body_text,
             family=resolved_family,

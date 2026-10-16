@@ -9,6 +9,8 @@ from .schema import (
     ACQUISITION_ATTEMPTS_SCHEMA,
     ACQUISITION_SLOTS_SCHEMA,
     BINARY_PAYLOADS_SCHEMA,
+    DOCUMENT_NOTES_SCHEMA,
+    DOCUMENT_SECTIONS_SCHEMA,
     LOGICAL_DOCUMENTS_SCHEMA,
     OPERATION_ATTEMPTS_SCHEMA,
     OPERATION_RESULTS_SCHEMA,
@@ -167,6 +169,24 @@ TEXT_PAYLOADS_SPEC = RelationSpec(
     entity_key="payload_sha256",
 )
 
+DOCUMENT_SECTIONS_SPEC = RelationSpec(
+    name="document_sections",
+    schema=DOCUMENT_SECTIONS_SCHEMA,
+    primary_key=("representation_id", "item_identifier", "start_line"),
+    merge_strategy="upsert",
+    sort_order=("accession", "item_identifier", "start_line"),
+    entity_key="accession",
+)
+
+DOCUMENT_NOTES_SPEC = RelationSpec(
+    name="document_notes",
+    schema=DOCUMENT_NOTES_SCHEMA,
+    primary_key=("representation_id", "note_number", "start_line"),
+    merge_strategy="upsert",
+    sort_order=("accession", "note_number", "start_line"),
+    entity_key="accession",
+)
+
 ACQUISITION_RELATIONS: tuple[RelationSpec, ...] = (
     ACCESSION_CIKS_SPEC,
     SOURCE_ASSETS_SPEC,
@@ -184,6 +204,8 @@ ACQUISITION_RELATIONS: tuple[RelationSpec, ...] = (
     PAYLOAD_INDEX_SPEC,
     BINARY_PAYLOADS_SPEC,
     TEXT_PAYLOADS_SPEC,
+    DOCUMENT_SECTIONS_SPEC,
+    DOCUMENT_NOTES_SPEC,
 )
 
 ACQUISITION_RELATIONS_BY_NAME: dict[str, RelationSpec] = {
@@ -197,6 +219,8 @@ __all__ = [
     "ACQUISITION_RELATIONS_BY_NAME",
     "ACQUISITION_SLOTS_SPEC",
     "BINARY_PAYLOADS_SPEC",
+    "DOCUMENT_NOTES_SPEC",
+    "DOCUMENT_SECTIONS_SPEC",
     "LOGICAL_DOCUMENTS_SPEC",
     "OPERATION_ATTEMPTS_SPEC",
     "OPERATION_RESULTS_SPEC",

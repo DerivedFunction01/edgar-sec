@@ -12,6 +12,7 @@ from edgar_sec.engine.forms.sections.models import (
     SectionSequence,
 )
 from edgar_sec.engine.forms.sections.sequence import MonotonicSequenceTracker
+from edgar_sec.foundation.hashing import sha256_text
 
 if TYPE_CHECKING:
     from edgar_sec.domain.forms.common.models import ItemDefinition
@@ -77,6 +78,9 @@ def detect_section_sequence(
     family: str,
     taxonomy_items: tuple[ItemDefinition, ...],
     toc_span: tuple[int, int] | None = None,
+    payload_sha256: str | None = None,
+    representation_id: str | None = None,
+    renderer_version: str | None = None,
 ) -> SectionSequence:
     """Detect monotonic statutory Part/Item sections across a document."""
     lines = text.splitlines()
@@ -89,6 +93,16 @@ def detect_section_sequence(
         lines, taxonomy_items=taxonomy_items, toc_lines=toc_line_set
     )
     candidates, _ = _filter_pseudo_toc_candidates(raw_candidates, lines)
+    refined_candidates: list[SectionCandidate] = []
+    for idx, c in enumerate(candidates):
+        if c.kind == CandidateKind.STANDARD and not c.title and not c.is_omitted:
+            has_titled = any(
+                ahead.identifiers == c.identifiers and (ahead.title or ahead.is_omitted)
+                for ahead in candidates[idx + 1 : idx + 5]
+            )
+            if has_titled:
+                continue
+        refined_candidates.append(c)
 
     canonical_order = tuple(
         item_def.item.replace("ITEM", "").strip() for item_def in taxonomy_items
@@ -99,7 +113,7 @@ def detect_section_sequence(
     anachronisms = 0
     non_contiguous = 0
 
-    for cand in candidates:
+    for idx, cand in enumerate(refined_candidates):
         if cand.preceded_by_continuation:
             continue
 
@@ -107,6 +121,14 @@ def detect_section_sequence(
             if not tracker.validate_group_contiguity(cand.identifiers):
                 non_contiguous += 1
                 continue
+            if not cand.title and not cand.is_omitted:
+                has_titled = any(
+                    ahead.identifiers[0] in cand.identifiers
+                    and (ahead.title or ahead.is_omitted)
+                    for ahead in refined_candidates[idx + 1 : idx + 10]
+                )
+                if has_titled:
+                    continue
             if not tracker.accept_group(cand.identifiers):
                 anachronisms += 1
                 continue
@@ -172,10 +194,14 @@ def detect_section_sequence(
     missing = tracker.missing_items(canonical_order)
     missing_labels = tuple(f"ITEM {m}" for m in missing)
 
+    digest = payload_sha256 or (sha256_text(text) if text else None)
     return SectionSequence(
         family=family,
         sections=tuple(bounded_sections),
         missing_items=missing_labels,
         anachronistic_rejections=anachronisms,
         non_contiguous_rejections=non_contiguous,
+        payload_sha256=digest,
+        representation_id=representation_id,
+        renderer_version=renderer_version,
     )

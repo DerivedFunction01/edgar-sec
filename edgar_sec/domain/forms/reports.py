@@ -30,7 +30,7 @@ class CompanyReport(FormReport):
     """Specialized base projection for periodic and current reports."""
 
     def text(self) -> str | None:
-        rendered = self.filing.render()
+        rendered = self.filing.render("render_to_txt")
         if isinstance(rendered, str):
             return rendered
         if rendered is not None:

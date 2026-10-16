@@ -36,9 +36,9 @@ class MonotonicSequenceTracker(Generic[T]):
         return True
 
     def accept(self, identifier: T) -> bool:
-        """Advance state if monotonic; reject backward anachronisms."""
+        """Advance state if strictly monotonic; reject anachronisms and repeats."""
         idx = self._order_map.get(identifier)
-        if idx is None or idx < self._current_idx:
+        if idx is None or idx <= self._current_idx or identifier in self._visited:
             return False
         self._current_idx = idx
         self._visited.add(identifier)
@@ -46,15 +46,15 @@ class MonotonicSequenceTracker(Generic[T]):
 
     def accept_group(self, identifiers: tuple[T, ...]) -> bool:
         """Advance state across contiguous group elements to the last item."""
-        if not identifiers:
+        if not identifiers or any(item in self._visited for item in identifiers):
             return False
         first_idx = self._order_map.get(identifiers[0])
-        if first_idx is None or first_idx < self._current_idx:
+        if first_idx is None or first_idx <= self._current_idx:
             return False
         if not self.validate_group_contiguity(identifiers):
             return False
         last_idx = self._order_map.get(identifiers[-1])
-        if last_idx is None or last_idx < self._current_idx:
+        if last_idx is None or last_idx < first_idx:
             return False
         self._current_idx = last_idx
         for item in identifiers:

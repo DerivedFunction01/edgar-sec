@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Literal, Sequence
 
 from edgar_sec.apps.client.cache import DocumentCache, get_default_cache
-from edgar_sec.apps.client.fast_query import query_catalog_fast
+from edgar_sec.apps.client.fast_query.query import query_catalog_fast
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.apps.runner.config import DateFilterInput, FilingQuery, PipelineConfig
 from edgar_sec.apps.runner.coordinator import PipelineRunner
@@ -101,7 +101,7 @@ class Edgar:
         suffixes: Sequence[str] | str = (),
         roles: Sequence[str] | str = ("primary",),
         limit: int | None = None,
-        operation: str = "raw",
+        operation: str | None = None,
         operations: Sequence[str] | str = (),
         family_operations: dict[str, str] | None = None,
         mode: Literal["fast", "pipeline", "snapshot"] = "fast",
@@ -186,7 +186,11 @@ class Edgar:
             if isinstance(suffixes, str)
             else tuple(str(s) for s in suffixes)
         )
-        op_list = tuple(operations) if operations else (operation,)
+        op_list = (
+            tuple(operations)
+            if operations
+            else ((operation,) if operation is not None else ())
+        )
 
         q = FilingQuery(
             tickers=ticker_tuple,
@@ -212,7 +216,7 @@ class Edgar:
                 forms=form_tuple,
                 dates=q.resolved_date_string(),
                 limit=limit,
-                operation=op_list[0] if op_list else "raw",
+                operation=op_list[0] if op_list else None,
                 family_operations=family_operations,
                 artifacts_root=self.artifacts_root,
                 cache=self.cache,
@@ -372,6 +376,15 @@ class Edgar:
         self, filing: FilingAggregate, text: str | None = None
     ) -> SectionSequence:
         """Detect and return full statutory Part/Item section sequence."""
+        from edgar_sec.engine.forms.sections.models import SectionSequence
+
+        if not filing.has_sections:
+            return SectionSequence(sections=(), family=filing.form)
+
+        body = text if text is not None else self._extract_filing_text(filing)
+        if not body:
+            return SectionSequence(sections=(), family=filing.form)
+
         from edgar_sec.domain.forms.common.aliases import resolve_alias
         from edgar_sec.domain.forms.families.processing_profiles import (
             get_family_entry,
@@ -380,7 +393,6 @@ class Edgar:
             detect_section_sequence,
         )
 
-        body = text if text is not None else self._extract_filing_text(filing)
         family = resolve_alias(filing.form) or filing.form.strip().upper()
         entry = get_family_entry(family)
         taxonomy = entry.taxonomy_items if entry is not None else ()
@@ -395,13 +407,18 @@ class Edgar:
             family=family,
             taxonomy_items=taxonomy,
             toc_span=toc_span,
+            renderer_version=entry.profile.version if entry else "1",
         )
 
     def section(
         self, filing: FilingAggregate, item: str, text: str | None = None
     ) -> str:
         """Extract and return text of a specific section (e.g. 'ITEM 1A')."""
+        if not filing.has_sections:
+            return ""
         body = text if text is not None else self._extract_filing_text(filing)
+        if not body:
+            return ""
         seq = self.sections(filing, text=body)
         canon = item.upper().strip()
         if not canon.startswith("ITEM"):
@@ -410,17 +427,31 @@ class Edgar:
         if target is None:
             return ""
         lines = body.splitlines()
-        end = target.end_line or len(lines)
+        end = (target.end_line + 1) if target.end_line is not None else len(lines)
         return "\n".join(lines[target.start_line : end])
 
     def notes(self, filing: FilingAggregate, text: str | None = None) -> NotesSequence:
         """Detect and return financial statement footnotes."""
+        from edgar_sec.domain.forms.families.processing_profiles import (
+            get_family_profile,
+        )
+        from edgar_sec.engine.forms.sections.models import NotesSequence
         from edgar_sec.engine.forms.sections.notes.detector import (
             detect_notes_sequence,
         )
 
+        if not filing.has_notes:
+            return NotesSequence(notes=())
+
         body = text if text is not None else self._extract_filing_text(filing)
-        return detect_notes_sequence(body)
+        if not body:
+            return NotesSequence(notes=())
+
+        prof = get_family_profile(filing.form)
+        return detect_notes_sequence(
+            body,
+            renderer_version=prof.version if prof else "1",
+        )
 
     def note(
         self,
@@ -429,26 +460,38 @@ class Edgar:
         text: str | None = None,
     ) -> str:
         """Extract and return clean text of a specific financial note."""
+        if not filing.has_notes:
+            return ""
         body = text if text is not None else self._extract_filing_text(filing)
+        if not body:
+            return ""
         seq = self.notes(filing, text=body)
         num = int(str(number).replace("NOTE", "").strip())
         target = next((n for n in seq.notes if n.note_number == num), None)
         if target is None:
             return ""
         lines = body.splitlines()
-        end = target.end_line or len(lines)
+        end = (target.end_line + 1) if target.end_line is not None else len(lines)
         return "\n".join(lines[target.start_line : end])
 
     def toc(self, filing: FilingAggregate, text: str | None = None) -> TocSpan | None:
         """Return detected Table of Contents span if present."""
+        if not filing.has_toc:
+            return None
+        body = text if text is not None else self._extract_filing_text(filing)
+        if not body:
+            return None
         from edgar_sec.engine.forms.cover.toc.finder import find_toc_span
 
-        body = text if text is not None else self._extract_filing_text(filing)
         return find_toc_span(body)
 
     def _extract_filing_text(self, filing: FilingAggregate) -> str:
-        data = filing.raw()
-        return data.decode("utf-8", errors="ignore") if data else ""
+        from edgar_sec.domain.forms.reports import CompanyReport
+
+        report = filing.as_report()
+        if isinstance(report, CompanyReport):
+            return report.text() or ""
+        return ""
 
 
 __all__ = ["Edgar"]

@@ -125,6 +125,26 @@ class FilingsResult:
     def _joined_table(self) -> pa.Table:
         return build_joined_table(self._all_filings())
 
+    def _sections_table(self) -> pa.Table:
+        from edgar_sec.apps.client.tables import build_sections_table
+
+        return build_sections_table(self._all_filings())
+
+    def _notes_table(self) -> pa.Table:
+        from edgar_sec.apps.client.tables import build_notes_table
+
+        return build_notes_table(self._all_filings())
+
+    @property
+    def sections(self) -> pa.Table:
+        """Return Arrow table of resolved statutory sections for covered filings."""
+        return self._sections_table()
+
+    @property
+    def notes(self) -> pa.Table:
+        """Return Arrow table of financial statement footnotes for covered filings."""
+        return self._notes_table()
+
     def sql(self, query: str, **params: Any) -> duckdb.DuckDBPyRelation:
         """Run arbitrary SQL across catalog, index, exhibits, linkbases, and payload."""
         if self.snapshot_backed:
@@ -148,6 +168,10 @@ class FilingsResult:
                 con.register("staged", self._payload_table())
             if "joined" in lower_q:
                 con.register("joined", self._joined_table())
+            if "sections" in lower_q:
+                con.register("sections", self._sections_table())
+            if "notes" in lower_q:
+                con.register("notes", self._notes_table())
             return con.sql(query, params=params)
         catalog_t = self._catalog_table()
         index_t = self._index_table()
@@ -164,6 +188,11 @@ class FilingsResult:
         con.register("payload", payload_t)
         con.register("staged", payload_t)
         con.register("joined", joined_t)
+        lower_q = query.lower()
+        if "sections" in lower_q:
+            con.register("sections", self._sections_table())
+        if "notes" in lower_q:
+            con.register("notes", self._notes_table())
         return con.sql(query, params=params)
 
     def _snapshot_relation(
@@ -265,6 +294,18 @@ class FilingsResult:
         if self.snapshot_backed:
             return self._snapshot_relation("SELECT * FROM joined").df()
         return self._joined_table().to_pandas()
+
+    def sections_df(self) -> pd.DataFrame:
+        """Export resolved statutory sections table as a Pandas DataFrame."""
+        if self.snapshot_backed:
+            return self._snapshot_relation("SELECT * FROM sections").df()
+        return self._sections_table().to_pandas()
+
+    def notes_df(self) -> pd.DataFrame:
+        """Export financial statement footnotes table as a Pandas DataFrame."""
+        if self.snapshot_backed:
+            return self._snapshot_relation("SELECT * FROM notes").df()
+        return self._notes_table().to_pandas()
 
     def clean(self) -> int:
         """Delete transient execution files for this run."""
@@ -550,7 +591,11 @@ class FilingsResult:
                         ),
                     )
 
-    def __getitem__(self, index: int) -> FilingAggregate:
+    def __getitem__(self, index: int | slice) -> Any:
+        if isinstance(index, slice):
+            total = len(self)
+            start, stop, step = index.indices(total)
+            return [self[i] for i in range(start, stop, step)]
         if self.items is not None:
             return self.items[index]
         if self.snapshot_backed:
@@ -569,7 +614,7 @@ class FilingsResult:
                 raise IndexError(f"index {index} out of range for FilingsResult")
             with connect() as con:
                 self._prepare_query_con(con)
-                item_query = f"{self.query_sql} LIMIT 1 OFFSET ?"
+                item_query = f"SELECT * FROM ({self.query_sql}) LIMIT 1 OFFSET ?"
                 row = con.execute(
                     item_query,
                     [*self.query_params, int(resolved_index)],

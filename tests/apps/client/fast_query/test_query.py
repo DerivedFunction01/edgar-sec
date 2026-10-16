@@ -12,7 +12,7 @@ import pytest
 
 from edgar_sec.apps.client.cache import DocumentCache
 from edgar_sec.apps.client.facade import Edgar
-from edgar_sec.apps.client.fast_query import query_catalog_fast
+from edgar_sec.apps.client.fast_query.query import query_catalog_fast
 from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.forms.reports import CompanyReport

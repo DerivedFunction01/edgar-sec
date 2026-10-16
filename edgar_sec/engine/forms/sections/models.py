@@ -53,6 +53,9 @@ class SectionSequence:
     missing_items: tuple[str, ...] = ()
     anachronistic_rejections: int = 0
     non_contiguous_rejections: int = 0
+    payload_sha256: str | None = None
+    representation_id: str | None = None
+    renderer_version: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -76,3 +79,6 @@ class NotesSequence:
     notes: tuple[ResolvedNote, ...]
     anachronistic_rejections: int = 0
     non_contiguous_rejections: int = 0
+    payload_sha256: str | None = None
+    representation_id: str | None = None
+    renderer_version: str | None = None

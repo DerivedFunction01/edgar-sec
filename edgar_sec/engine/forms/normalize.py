@@ -353,6 +353,13 @@ def normalize_document(
 
     sections = None
     notes = None
+    if profile.has_sections or profile.has_notes:
+        from edgar_sec.foundation.hashing import sha256_text
+
+        text_sha = sha256_text(text)
+    else:
+        text_sha = None
+
     if profile.has_sections:
         from edgar_sec.domain.forms.families.processing_profiles import (
             get_family_entry,
@@ -374,6 +381,8 @@ def normalize_document(
                 family=family,
                 taxonomy_items=taxonomy,
                 toc_span=raw_toc,
+                payload_sha256=text_sha,
+                renderer_version=profile.version,
             )
 
     if profile.has_notes:
@@ -381,7 +390,11 @@ def normalize_document(
             detect_notes_sequence,
         )
 
-        notes = detect_notes_sequence(text)
+        notes = detect_notes_sequence(
+            text,
+            payload_sha256=text_sha,
+            renderer_version=profile.version,
+        )
 
     return NormalizationResult(
         text=text,

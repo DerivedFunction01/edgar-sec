@@ -13,9 +13,9 @@ from edgar_sec.pipelines.document_acquisition.snapshot.specs import (
 
 
 def test_acquisition_relation_specs_are_valid() -> None:
-    assert len(ACQUISITION_RELATIONS) == 16
-    assert len(ACQUISITION_RELATIONS_BY_NAME) == 16
-    assert len(SNAPSHOT_RELATION_SCHEMAS) == 16
+    assert len(ACQUISITION_RELATIONS) == 18
+    assert len(ACQUISITION_RELATIONS_BY_NAME) == 18
+    assert len(SNAPSHOT_RELATION_SCHEMAS) == 18
 
     for spec in ACQUISITION_RELATIONS:
         assert spec.name in ACQUISITION_RELATIONS_BY_NAME

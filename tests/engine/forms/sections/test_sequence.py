@@ -18,6 +18,7 @@ def test_monotonic_sequence_rejects_backward_anachronisms() -> None:
     order = ("1", "1A", "2", "3", "7", "8")
     tracker = MonotonicSequenceTracker[str](order)
     assert tracker.accept("7") is True
+    assert tracker.accept("7") is False
     assert tracker.accept("1") is False
     assert tracker.accept("2") is False
     assert tracker.current_index == order.index("7")

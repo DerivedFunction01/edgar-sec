@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 from typing import TYPE_CHECKING
 
+from edgar_sec.engine.document.page_markers.detector import is_page_marker_line
 from edgar_sec.engine.forms.cover.structure import is_preceding_continuation
 from edgar_sec.engine.forms.sections.models import CandidateKind, SectionCandidate
 from edgar_sec.foundation.regex.builder import build_alternation
@@ -24,6 +25,9 @@ _OMITTED_TERMS = (
 )
 _OMITTED_ALT = build_alternation(list(_OMITTED_TERMS), auto_escape=True)
 _RE_OMITTED = re.compile(rf"\b(?:{_OMITTED_ALT})\b", re.IGNORECASE)
+
+_RE_ITEM_TOKEN = re.compile(r"\b\d+[A-Z]?\b", re.IGNORECASE)
+_RE_LEADING_PUNCT = re.compile(r"^[\s:.\-]+")
 
 _RE_ITEM_SINGLE = re.compile(
     r"^\s*(?:[\|+•\t-]\s*)?ITEMS?\s+(\d+[A-Z]?(?:\.\d{1,2})?)\b(?:\s*[:.\-]\s*|\s+)?(?:\(\s*continued\s*\))?(.*)$",
@@ -62,7 +66,7 @@ def extract_section_candidates(
         if toc_lines and line_no in toc_lines:
             continue
         stripped = raw_line.strip()
-        if not stripped:
+        if not stripped or is_page_marker_line(stripped):
             continue
 
         prev_line = lines[line_no - 1] if line_no > 0 else ""
@@ -72,11 +76,10 @@ def extract_section_candidates(
         grouped_match = _RE_ITEM_GROUPED.search(stripped)
         if grouped_match:
             raw_ids = grouped_match.group(0)
-            raw_title = stripped[grouped_match.end() :].strip()
-            item_ids = tuple(
-                token.upper()
-                for token in re.findall(r"\b\d+[A-Z]?\b", raw_ids, re.IGNORECASE)
-            )
+            raw_title = _RE_LEADING_PUNCT.sub(
+                "", stripped[grouped_match.end() :]
+            ).strip()
+            item_ids = tuple(token.upper() for token in _RE_ITEM_TOKEN.findall(raw_ids))
             is_omitted = bool(_RE_OMITTED.search(raw_title))
             candidates.append(
                 SectionCandidate(
@@ -95,8 +98,18 @@ def extract_section_candidates(
         single_match = _RE_ITEM_SINGLE.match(stripped)
         if single_match:
             item_id = single_match.group(1).upper()
-            raw_title = single_match.group(2).strip()
+            raw_title = _RE_LEADING_PUNCT.sub("", single_match.group(2)).strip()
             is_omitted = bool(_RE_OMITTED.search(raw_title))
+            if not raw_title and not is_omitted:
+                for lookahead in range(line_no + 1, min(line_no + 3, len(lines))):
+                    next_s = lines[lookahead].strip()
+                    if next_s:
+                        norm_next = " ".join(next_s.lower().split())
+                        if norm_next in title_to_item or any(
+                            norm_next.startswith(k) for k in title_to_item
+                        ):
+                            raw_title = next_s
+                        break
             candidates.append(
                 SectionCandidate(
                     line_number=line_no,
