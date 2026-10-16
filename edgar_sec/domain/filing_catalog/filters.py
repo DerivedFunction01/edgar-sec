@@ -134,6 +134,107 @@ DateClause = AbsoluteDateClause | RecurringDateClause
 DateSelection = tuple[DateClause, ...]
 
 
+@dataclass(frozen=True, slots=True, order=True)
+class DateRange:
+    """Inclusive continuous date range for catalog and pipeline filtering."""
+
+    start: date | None = None
+    end: date | None = None
+
+    @classmethod
+    def year(cls, year: int) -> DateRange:
+        """Span an entire calendar year: year-01-01 .. year-12-31."""
+        return cls(start=date(year, 1, 1), end=date(year, 12, 31))
+
+    @classmethod
+    def between(cls, start: date | int | str, end: date | int | str) -> DateRange:
+        """Span between two dates, years, or ISO strings inclusive."""
+        s = (
+            date(start, 1, 1)
+            if isinstance(start, int)
+            else (date.fromisoformat(start) if isinstance(start, str) else start)
+        )
+        e = (
+            date(end, 12, 31)
+            if isinstance(end, int)
+            else (date.fromisoformat(end) if isinstance(end, str) else end)
+        )
+        return cls(start=s, end=e)
+
+    @classmethod
+    def since(cls, start: date | str) -> DateRange:
+        """Open-ended range starting from a date."""
+        s = date.fromisoformat(start) if isinstance(start, str) else start
+        return cls(start=s, end=None)
+
+    @classmethod
+    def until(cls, end: date | str) -> DateRange:
+        """Open-ended range up to a date."""
+        e = date.fromisoformat(end) if isinstance(end, str) else end
+        return cls(start=None, end=e)
+
+    def to_clause(self) -> AbsoluteDateClause:
+        return AbsoluteDateClause(start_date=self.start, end_date=self.end)
+
+    def to_selection(self) -> DateSelection:
+        return (self.to_clause(),)
+
+
+@dataclass(frozen=True, slots=True, order=True)
+class DateInterval:
+    """Periodic recurring interval (e.g. quarters or months across years)."""
+
+    granularity: str = GRANULARITY_QUARTER
+    values: tuple[int, ...] = (1,)
+    start_year: int | None = None
+    end_year: int | None = None
+
+    @classmethod
+    def quarters(
+        cls, *quarters: int, years: tuple[int, int] | int | None = None
+    ) -> DateInterval:
+        """Periodic quarters across years."""
+        s_y, e_y = (
+            (years, years)
+            if isinstance(years, int)
+            else (years if years else (None, None))
+        )
+        return cls(
+            granularity=GRANULARITY_QUARTER,
+            values=quarters or (1,),
+            start_year=s_y,
+            end_year=e_y,
+        )
+
+    @classmethod
+    def months(
+        cls, *months: int, years: tuple[int, int] | int | None = None
+    ) -> DateInterval:
+        """Periodic months across years."""
+        s_y, e_y = (
+            (years, years)
+            if isinstance(years, int)
+            else (years if years else (None, None))
+        )
+        return cls(
+            granularity=GRANULARITY_MONTH,
+            values=months or (1,),
+            start_year=s_y,
+            end_year=e_y,
+        )
+
+    def to_clause(self) -> RecurringDateClause:
+        return RecurringDateClause(
+            granularity=self.granularity,
+            values=self.values,
+            start_year=self.start_year,
+            end_year=self.end_year,
+        )
+
+    def to_selection(self) -> DateSelection:
+        return (self.to_clause(),)
+
+
 def _end_of_month(year: int, month: int) -> date:
     return date(year, month, monthrange(year, month)[1])
 
@@ -606,6 +707,69 @@ def normalize_suffixes(values: tuple[str, ...] | list[str]) -> tuple[str, ...]:
     return tuple(normalized)
 
 
+def resolve_date_selection(dates: Any) -> DateSelection:
+    """Resolve polymorphic date filter representations into a canonical DateSelection."""
+    if dates is None or dates == "" or dates == ():
+        return ()
+    if isinstance(dates, DateRange):
+        return dates.to_selection()
+    if isinstance(dates, DateInterval):
+        return dates.to_selection()
+    if isinstance(dates, AbsoluteDateClause):
+        return (dates,)
+    if isinstance(dates, RecurringDateClause):
+        return (dates,)
+    if isinstance(dates, date):
+        return (AbsoluteDateClause(start_date=dates, end_date=dates),)
+    if isinstance(dates, str):
+        return parse_date_selection(dates)
+    if isinstance(dates, (tuple, list)):
+        if not dates:
+            return ()
+        if len(dates) == 2 and (
+            isinstance(dates[0], (date, type(None)))
+            and isinstance(dates[1], (date, type(None)))
+        ):
+            return (AbsoluteDateClause(start_date=dates[0], end_date=dates[1]),)
+        clauses: list[DateClause] = []
+        for item in dates:
+            clauses.extend(resolve_date_selection(item))
+        return normalize_date_selection(clauses)
+    raise ValueError(f"unsupported date filter format: {type(dates).__name__}")
+
+
+def date_selection_matches(selection: DateSelection, target: date | str | None) -> bool:
+    """Return whether an ISO date string or date object satisfies the selection."""
+    if not selection:
+        return True
+    if target is None:
+        return False
+    try:
+        d = date.fromisoformat(target) if isinstance(target, str) else target
+    except ValueError:
+        return False
+    for clause in selection:
+        if isinstance(clause, AbsoluteDateClause):
+            if clause.start_date is not None and d < clause.start_date:
+                continue
+            if clause.end_date is not None and d > clause.end_date:
+                continue
+            return True
+        if isinstance(clause, RecurringDateClause):
+            if clause.start_year is not None and d.year < clause.start_year:
+                continue
+            if clause.end_year is not None and d.year > clause.end_year:
+                continue
+            val = (
+                (d.month - 1) // 3 + 1
+                if clause.granularity == GRANULARITY_QUARTER
+                else d.month
+            )
+            if val in clause.values:
+                return True
+    return False
+
+
 __all__ = [
     "DEFAULT_DOCUMENT_SUFFIXES",
     "GRANULARITY_MONTH",
@@ -614,12 +778,16 @@ __all__ = [
     "RECURRING_GRANULARITIES",
     "AbsoluteDateClause",
     "DateClause",
+    "DateInterval",
+    "DateRange",
     "DateSelection",
     "RecurringDateClause",
     "date_selection_from_json",
+    "date_selection_matches",
     "date_selection_to_json",
     "format_date_selection",
     "normalize_date_selection",
     "normalize_suffixes",
     "parse_date_selection",
+    "resolve_date_selection",
 ]

@@ -6,7 +6,7 @@ from pathlib import Path
 import xml.etree.ElementTree as ET
 
 from edgar_sec.apps.client.facade import Edgar
-from edgar_sec.apps.runner.config import RunnerOptions, TargetSpec
+from edgar_sec.apps.runner.config import PipelineConfig
 from edgar_sec.apps.runner.coordinator import PipelineRunner
 from edgar_sec.domain.document.aggregate import FilingAggregate
 from edgar_sec.domain.forms.families.ownership.reports import OwnershipReport
@@ -15,8 +15,8 @@ from edgar_sec.pipelines.document_planning.profiles import get_or_create_exhibit
 
 
 def test_smoke_1_exhibit_targeting_resolves_profile(tmp_path: Path) -> None:
-    runner = PipelineRunner(RunnerOptions(artifacts_root=tmp_path))
-    profile_id = runner._resolve_profile_id(TargetSpec(role="EX-21"))
+    runner = PipelineRunner(PipelineConfig(artifacts_root=tmp_path))
+    profile_id = runner._resolve_profile_id(("EX-21",))
     assert profile_id == "exhibit-ex-21"
 
     profile = get_or_create_exhibit_profile("EX-21", profiles_root=tmp_path)

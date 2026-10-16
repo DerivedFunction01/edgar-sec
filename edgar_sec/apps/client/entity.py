@@ -66,7 +66,6 @@ class Company:
         dates: str | None = None,
         operation: str = "raw",
         mode: Literal["fast", "pipeline"] = "fast",
-        publish_snapshot: bool = False,
         workers: int | None = None,
     ) -> FilingsResult:
         """Fetch filings for this company."""
@@ -80,7 +79,6 @@ class Company:
             dates=dates,
             operation=operation,
             mode=mode,
-            publish_snapshot=publish_snapshot,
             workers=workers,
         )
 

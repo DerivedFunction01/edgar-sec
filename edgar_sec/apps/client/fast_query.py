@@ -12,6 +12,11 @@ from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
 from edgar_sec.domain.document.path_facts import mime_type_for_suffix
 from edgar_sec.domain.document_inventory.models import IndexPageInput, ParsedIndexPage
+from edgar_sec.domain.filing_catalog.filters import (
+    AbsoluteDateClause,
+    date_selection_matches,
+    resolve_date_selection,
+)
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.forms.common.processing import AcquisitionOperation
 from edgar_sec.domain.forms.families.processing_profiles import get_family_entry
@@ -527,6 +532,7 @@ def _materialize_from_submissions(
     primary_docs = recent.get("primaryDocument", [])
 
     allowed_forms = {forms} if isinstance(forms, str) else set(forms) if forms else None
+    date_sel = resolve_date_selection(dates) if dates else ()
 
     results: list[FilingAggregate] = []
     total = len(accessions)
@@ -536,7 +542,7 @@ def _materialize_from_submissions(
             continue
 
         f_date = str(filing_dates[idx]) if idx < len(filing_dates) else ""
-        if dates and not f_date.startswith(dates):
+        if date_sel and not date_selection_matches(date_sel, f_date):
             continue
 
         acc_str = str(accessions[idx])
@@ -679,8 +685,15 @@ def query_catalog_fast(
         params.extend(form_list)
 
     if dates:
-        clauses.append("filing_date LIKE ?")
-        params.append(f"{dates}%")
+        date_sel = resolve_date_selection(dates)
+        for clause in date_sel:
+            if isinstance(clause, AbsoluteDateClause):
+                if clause.start_date:
+                    clauses.append("filing_date >= ?")
+                    params.append(clause.iso_start)
+                if clause.end_date:
+                    clauses.append("filing_date <= ?")
+                    params.append(clause.iso_end)
 
     where_sql = f"WHERE {' AND '.join(clauses)}" if clauses else ""
     limit_sql = f"LIMIT {int(limit)}" if limit is not None else ""

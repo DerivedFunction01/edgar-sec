@@ -134,4 +134,3 @@ def test_registration_body_phrases_exclude_toc_and_deep_matter() -> None:
     assert "in our opinion" not in REGISTRATION_BODY_PHRASES
     assert "we have" in REGISTRATION_BODY_PHRASES
     assert "selling stockholders" in REGISTRATION_BODY_PHRASES
-

@@ -8,15 +8,15 @@ import pytest
 
 from edgar_sec.apps.client.facade import Edgar
 from edgar_sec.apps.client.models import FilingsResult
-from edgar_sec.apps.runner.config import TargetSpec
+from edgar_sec.apps.runner.config import FilingQuery, PipelineConfig
 
 
 def test_edgar_facade_builds_specs_and_delegates(monkeypatch, tmp_path) -> None:
     edgar = Edgar(artifacts_root=tmp_path)
-    captured_specs = []
+    captured_configs = []
 
-    def fake_run(self, spec: TargetSpec):
-        captured_specs.append(spec)
+    def fake_run(self, config=None):
+        captured_configs.append(config or self.config)
         return "mock_result"
 
     monkeypatch.setattr(
@@ -32,11 +32,11 @@ def test_edgar_facade_builds_specs_and_delegates(monkeypatch, tmp_path) -> None:
     )
 
     assert result == "mock_result"
-    assert len(captured_specs) == 1
-    assert captured_specs[0].forms == ("4", "3")
-    assert captured_specs[0].ciks == ("109694",)
-    assert captured_specs[0].dates == "2024"
-    assert captured_specs[0].limit == 50
+    assert len(captured_configs) == 1
+    assert captured_configs[0].forms == ("4", "3")
+    assert captured_configs[0].ciks == ("109694",)
+    assert captured_configs[0].dates == "2024"
+    assert captured_configs[0].limit == 50
 
 
 def test_edgar_facade_fast_mode_delegation(monkeypatch, tmp_path) -> None:
@@ -55,10 +55,10 @@ def test_edgar_facade_fast_mode_delegation(monkeypatch, tmp_path) -> None:
 
 def test_edgar_fetch_from_file(monkeypatch, tmp_path) -> None:
     edgar = Edgar(artifacts_root=tmp_path)
-    captured_specs = []
+    captured_configs = []
 
-    def fake_run(self, spec: TargetSpec):
-        captured_specs.append(spec)
+    def fake_run(self, config=None):
+        captured_configs.append(config or self.config)
         return "file_result"
 
     monkeypatch.setattr(
@@ -71,7 +71,54 @@ def test_edgar_fetch_from_file(monkeypatch, tmp_path) -> None:
     result = edgar.fetch_from_file(csv_file, operation="raw")
 
     assert result == "file_result"
-    assert captured_specs[0].input_file == csv_file
+    assert captured_configs[0].input_file == csv_file
+
+
+def test_edgar_pipeline_delegates_pipeline_config(monkeypatch, tmp_path) -> None:
+    edgar = Edgar(artifacts_root=tmp_path)
+    captured_configs = []
+
+    def fake_run(self, config=None):
+        captured_configs.append(config or self.config)
+        return "pipeline_result"
+
+    monkeypatch.setattr(
+        "edgar_sec.apps.runner.coordinator.PipelineRunner.run", fake_run
+    )
+
+    cfg = PipelineConfig(
+        forms=("10-K",),
+        ciks=("320193",),
+        materialize="specific",
+    )
+    res = edgar.pipeline(cfg)
+    assert res == "pipeline_result"
+    assert len(captured_configs) == 1
+    assert captured_configs[0].materialize == "specific"
+
+
+def test_edgar_fetch_with_filing_query(monkeypatch, tmp_path) -> None:
+    edgar = Edgar(artifacts_root=tmp_path)
+    captured_fast = {}
+
+    def fake_fast_query(**kwargs):
+        captured_fast.update(kwargs)
+        return "fast_query_result"
+
+    monkeypatch.setattr(
+        "edgar_sec.apps.client.facade.query_catalog_fast", fake_fast_query
+    )
+
+    query = FilingQuery(
+        forms=("10-Q",),
+        ciks=("109694",),
+        dates="2023",
+        limit=10,
+    )
+    res = edgar.fetch(query)
+    assert res == "fast_query_result"
+    assert captured_fast["forms"] == ("10-Q",)
+    assert captured_fast["ciks"] == ("109694",)
 
 
 def test_filings_result_dataframe_and_index_access(tmp_path) -> None:

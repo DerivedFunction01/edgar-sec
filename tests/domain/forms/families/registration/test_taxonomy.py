@@ -33,4 +33,3 @@ def test_form_s1_empirical_item_names() -> None:
     assert "experts" in item_map["ITEM 10"].names
     assert "where you can find more information" in item_map["ITEM 12"].names
     assert "where you can find additional information" in item_map["ITEM 12"].names
-
