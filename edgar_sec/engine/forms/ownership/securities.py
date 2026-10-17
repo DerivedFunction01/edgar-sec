@@ -218,7 +218,12 @@ def parse_table_i_rows(
 
         raw_title = indexed_cells[0][1]
         security_title = _clean_title(raw_title)
-        if not security_title or is_numeric_cell(security_title):
+        if (
+            not security_title
+            or is_numeric_cell(security_title)
+            or NUMERIC_DATE_RE.fullmatch(security_title)
+            or _FOOTNOTE_REF_RE.fullmatch(security_title)
+        ):
             continue
 
         direct_or_indirect: str | None = None
@@ -376,7 +381,12 @@ def parse_table_ii_rows(
 
         raw_title = indexed_cells[0][1]
         security_title = _clean_title(raw_title)
-        if not security_title or is_numeric_cell(security_title):
+        if (
+            not security_title
+            or is_numeric_cell(security_title)
+            or NUMERIC_DATE_RE.fullmatch(security_title)
+            or _FOOTNOTE_REF_RE.fullmatch(security_title)
+        ):
             continue
 
         direct_or_indirect: str | None = None

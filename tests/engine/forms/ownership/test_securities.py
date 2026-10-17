@@ -315,3 +315,16 @@ def test_parse_table_ii_ignores_numbered_header_cells_as_data() -> None:
     </body></html>"""
     sections = partition_ownership_tables(html)
     assert parse_table_ii_rows(sections.table_ii) == []
+
+
+def test_parse_table_ii_ignores_date_as_security_title() -> None:
+    """Ignore rows whose first cell is a date rather than security title."""
+    html = """<html><body>
+    <table><tr><td>Table II - Derivative Securities</td></tr></table>
+    <table>
+      <tr><td>1. Title</td><td>2. Price</td></tr>
+      <tr><td>06/16/01</td><td>06/16/08</td><td>Common Stock</td><td>15,000</td><td>D</td></tr>
+    </table>
+    </body></html>"""
+    sections = partition_ownership_tables(html)
+    assert parse_table_ii_rows(sections.table_ii) == []
