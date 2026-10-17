@@ -105,6 +105,11 @@ def _project_interval(
     for col in interval_cols:
         if cell_idx < len(interval_cells):
             _, cell = interval_cells[cell_idx]
+            if col.anchor_validator and not col.anchor_validator(cell):
+                if col.is_required:
+                    return False
+                result[col.name] = None
+                continue
             val = col.data_extractor(cell) if col.data_extractor else cell
             if col.is_required or len(interval_cells) - cell_idx > len(req_cols):
                 result[col.name] = val

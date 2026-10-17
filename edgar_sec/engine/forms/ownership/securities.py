@@ -6,6 +6,11 @@ from dataclasses import dataclass
 import re
 
 from edgar_sec.domain.forms.families.ownership.models import VALID_TRANSACTION_CODES
+from edgar_sec.engine.forms.common.alignment import (
+    CanonicalColumn,
+    TableSchema,
+    align_row_to_schema,
+)
 from edgar_sec.engine.forms.common.numbers import clean_numeric
 from edgar_sec.engine.forms.common.statutory import STATUTORY_PAGE_ARTIFACT_RE
 from edgar_sec.engine.forms.common.tables import is_instruction_row
@@ -186,6 +191,92 @@ def _extract_footnote_ids(text: str) -> tuple[str, ...]:
     return tuple(_FOOTNOTE_REF_RE.findall(text))
 
 
+_TABLE_I_SCHEMA = TableSchema(
+    name="ownership_table_i",
+    columns=(
+        CanonicalColumn(index=0, name="security_title", is_required=True),
+        CanonicalColumn(
+            index=1,
+            name="transaction_date",
+            is_required=False,
+            is_anchor=True,
+            anchor_validator=lambda s: bool(NUMERIC_DATE_RE.search(s)),
+            data_extractor=lambda s: (
+                m.group(0) if (m := NUMERIC_DATE_RE.search(s)) else None
+            ),
+        ),
+        CanonicalColumn(index=2, name="deemed_execution_date", is_required=False),
+        CanonicalColumn(
+            index=3,
+            name="transaction_code",
+            is_required=False,
+            is_anchor=True,
+            anchor_validator=lambda s: bool(_TRANSACTION_CODE_RE.search(s)),
+            data_extractor=lambda s: (
+                m.group(1).upper() if (m := _TRANSACTION_CODE_RE.search(s)) else None
+            ),
+        ),
+        CanonicalColumn(
+            index=4,
+            name="equity_swap",
+            is_required=False,
+            is_anchor=True,
+            anchor_validator=lambda s: s.strip().upper() == "V",
+            data_extractor=lambda s: True,
+        ),
+        CanonicalColumn(
+            index=5,
+            name="shares_amount",
+            is_required=False,
+            data_extractor=_extract_number,
+        ),
+        CanonicalColumn(
+            index=6,
+            name="acquired_disposed_code",
+            is_required=False,
+            is_anchor=True,
+            anchor_validator=lambda s: bool(
+                _ACQUIRED_DISPOSED_RE.fullmatch(s.strip("() "))
+            ),
+            data_extractor=lambda s: (
+                m.group(1).upper()
+                if (m := _ACQUIRED_DISPOSED_RE.fullmatch(s.strip("() ")))
+                else None
+            ),
+        ),
+        CanonicalColumn(
+            index=7,
+            name="price_per_share",
+            is_required=False,
+            is_anchor=True,
+            anchor_validator=lambda s: "$" in s or "/sh" in s.lower(),
+            data_extractor=_extract_number,
+        ),
+        CanonicalColumn(
+            index=8,
+            name="shares_owned_following",
+            is_required=False,
+            data_extractor=_extract_number,
+        ),
+        CanonicalColumn(
+            index=9,
+            name="direct_or_indirect",
+            is_required=True,
+            is_anchor=True,
+            anchor_validator=lambda s: bool(
+                _DIRECT_INDIRECT_RE.fullmatch(s.strip("() "))
+            ),
+            data_extractor=lambda s: (
+                m.group(1).upper()
+                if (m := _DIRECT_INDIRECT_RE.fullmatch(s.strip("() ")))
+                else None
+            ),
+        ),
+        CanonicalColumn(index=10, name="nature_of_ownership", is_required=False),
+    ),
+)
+
+
 def parse_table_i_rows(
     section: ClassifiedSection | None,
 ) -> list[NonDerivativeTransaction]:
@@ -209,6 +300,47 @@ def parse_table_i_rows(
 
         if _is_table_header_row(row, "table i"):
             continue
+
+        footnotes = list(_extract_footnote_ids(row_str))
+        split_cells = tuple(
+            part.strip()
+            for c in row
+            if c.strip()
+            for part in c.split("|")
+            if part.strip()
+        )
+        aligned = align_row_to_schema(split_cells, _TABLE_I_SCHEMA)
+        if aligned is not None and (
+            aligned.get("transaction_date")
+            or aligned.get("transaction_code")
+            or aligned.get("shares_amount")
+            or aligned.get("shares_owned_following")
+        ):
+            sec_t = _clean_title(aligned.get("security_title") or "")
+            if (
+                sec_t
+                and not is_numeric_cell(sec_t)
+                and not NUMERIC_DATE_RE.fullmatch(sec_t)
+                and not _FOOTNOTE_REF_RE.fullmatch(sec_t)
+            ):
+                code_raw = aligned.get("transaction_code")
+                eq_swap = bool(code_raw and any("v" in p.lower() for p in split_cells))
+                results.append(
+                    NonDerivativeTransaction(
+                        security_title=sec_t,
+                        transaction_date=aligned.get("transaction_date"),
+                        transaction_code=code_raw,
+                        equity_swap_involved=eq_swap,
+                        shares_amount=aligned.get("shares_amount"),
+                        acquired_disposed_code=aligned.get("acquired_disposed_code"),
+                        price_per_share=aligned.get("price_per_share"),
+                        shares_owned_following=aligned.get("shares_owned_following"),
+                        direct_or_indirect=aligned.get("direct_or_indirect"),
+                        nature_of_ownership=aligned.get("nature_of_ownership"),
+                        footnote_ids=tuple(footnotes),
+                    )
+                )
+                continue
 
         indexed_cells = [(i, c.strip()) for i, c in enumerate(row) if c.strip()]
         if not indexed_cells:
