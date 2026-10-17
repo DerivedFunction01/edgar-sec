@@ -79,6 +79,21 @@ def test_proxy_reference_disclosures_describe_other_sections() -> None:
     assert is_proxy_reference_disclosure("ITEM 1. BUSINESS") is False
     assert is_proxy_reference_disclosure("PART I") is False
     assert is_proxy_reference_disclosure("PART III") is False
+    assert (
+        is_proxy_reference_disclosure(
+            "INFORMATION REQUIRED IN THE SECTION 10(a) PROSPECTUS"
+        )
+        is False
+    )
+    wrapped_s8 = ["INFORMATION REQUIRED IN THE", "SECTION 10(a) PROSPECTUS"]
+    assert is_proxy_reference_disclosure(wrapped_s8) is False
+    assert is_proxy_reference_disclosure(wrapped_s8, 0) is False
+    wrapped_proxy = [
+        "The information required by",
+        "Part III is incorporated by reference from the Proxy Statement",
+    ]
+    assert is_proxy_reference_disclosure(wrapped_proxy) is True
+    assert is_proxy_reference_disclosure(wrapped_proxy, 0) is True
 
 
 def test_enabled_reads_the_policy_signal_tuple() -> None:

@@ -45,7 +45,7 @@ _MAX_PARAGRAPH_WORDS = 160
 _SCORE_CONFIDENCE = {0: 0.0, 1: 0.5, 2: 0.7, 3: 0.85}
 
 _COVER_START_SEARCH_WINDOW = 60
-_COVER_START_CLUSTER_GAP = 5
+_COVER_START_CLUSTER_GAP = 12
 
 
 def prev_nonblank_line(lines: list[str], start_line: int) -> tuple[int, str] | None:
@@ -75,11 +75,34 @@ def is_toc_like_line(stripped: str) -> bool:
     )
 
 
-def is_proxy_reference_disclosure(line: str) -> bool:
-    """Return whether a line describes another section rather than the cover."""
-    stripped = line.strip().lower()
+def is_proxy_reference_disclosure(
+    line_or_lines: str | list[str],
+    line_number: int | None = None,
+    *,
+    window: int = 3,
+) -> bool:
+    """Return whether text describes proxy/external incorporation rather than cover."""
+    if isinstance(line_or_lines, list) and line_number is not None:
+        slice_lines = line_or_lines[
+            line_number : min(len(line_or_lines), line_number + window)
+        ]
+        text = " ".join(line.strip() for line in slice_lines if line.strip())
+    elif isinstance(line_or_lines, list):
+        text = " ".join(line.strip() for line in line_or_lines if line.strip())
+    else:
+        text = line_or_lines
+
+    normalized = " ".join(text.split()).lower()
+    if not normalized:
+        return False
+    if (
+        "in the section 10" in normalized
+        or "in the registration statement" in normalized
+        or "in registration statement" in normalized
+    ):
+        return False
     return bool(
-        stripped.startswith(
+        normalized.startswith(
             (
                 "portions of",
                 "the information required",
@@ -89,12 +112,12 @@ def is_proxy_reference_disclosure(line: str) -> bool:
                 "refer to",
             )
         )
-        or "proxy statement" in stripped
-        or "annual meeting of stockholders" in stripped
-        or "annual meeting of shareholders" in stripped
-        or "indicate by check mark" in stripped
-        or "pursuant to item 405" in stripped
-        or "delinquent filers" in stripped
+        or "proxy statement" in normalized
+        or "annual meeting of stockholders" in normalized
+        or "annual meeting of shareholders" in normalized
+        or "indicate by check mark" in normalized
+        or "pursuant to item 405" in normalized
+        or "delinquent filers" in normalized
     )
 
 

@@ -346,6 +346,7 @@ def build_registration_profile(family: str) -> CoverProfile:
                 BoundarySignal.PAGE_MARKERS,
                 BoundarySignal.TOC_TRANSITION,
                 BoundarySignal.PART_FALLBACK,
+                BoundarySignal.AMENDMENT_TRANSITION,
                 BoundarySignal.ITEM_FALLBACK,
                 BoundarySignal.BODY_PROSE_FALLBACK,
             )

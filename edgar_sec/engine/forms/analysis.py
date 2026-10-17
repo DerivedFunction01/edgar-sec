@@ -69,6 +69,15 @@ def _extract_corridor_ngrams(lines: list[str]) -> list[str]:
     return ngrams
 
 
+def _is_swallow_heading(line: str, phrase: str) -> bool:
+    s = line.strip().lower()
+    if phrase not in s:
+        return False
+    if s.startswith(("see ", "in ", "refer to", "as described in")):
+        return False
+    return len(s.split()) <= 10
+
+
 def analyze_boundary_corridor(
     lines: list[str],
     end_line: int,
@@ -77,11 +86,14 @@ def analyze_boundary_corridor(
     """Evaluate pre- and post-boundary lines for out-of-place n-grams."""
     pre_slice = lines[max(0, end_line - window) : max(0, end_line)]
     post_slice = lines[end_line : min(len(lines), end_line + window)]
-    pre_text = " ".join(pre_slice).lower()
     post_text = " ".join(post_slice).lower()
 
     leak_hits = [p for p in _COVER_LEAK_PHRASES if p in post_text]
-    swallow_hits = [p for p in _BODY_SWALLOW_PHRASES if p in pre_text]
+    swallow_hits = [
+        p
+        for p in _BODY_SWALLOW_PHRASES
+        if any(_is_swallow_heading(line, p) for line in pre_slice)
+    ]
 
     return {
         "pre_ngrams": _extract_corridor_ngrams(pre_slice),

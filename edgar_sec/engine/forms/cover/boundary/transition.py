@@ -83,7 +83,7 @@ def _next_cover_transition(
                     and next_match.role == match.role
                 )
                 or is_continuation_prose(following[1])
-                or is_proxy_reference_disclosure(following[1])
+                or is_proxy_reference_disclosure(lines, following[0])
             ):
                 child = True
         if child:

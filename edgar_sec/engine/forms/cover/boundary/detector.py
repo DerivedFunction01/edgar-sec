@@ -33,6 +33,9 @@ from edgar_sec.foundation.regex.builder import build_alternation
 # ITEM 1 sequence. Order matters: more specific patterns first.
 _AMENDMENT_TRANSITION_PATTERNS = [
     r"explanatory\s+(?:note|statement)",
+    r"deregistration\s+of\s+securities",
+    r"termination\s+of\s+registration",
+    r"introduction",
     r"report\s+of\s+independent\s+(?:registered\s+public\s+accounting\s+firm|auditors?)",
     r"index\s+to\s+(?:consolidated\s+)?financial\s+statements",
     r"index\s+to\s+exhibits",
@@ -149,7 +152,7 @@ def find_cover_boundary(
                 continue
             if identity_count < 2 and first_page is None:
                 continue
-            if is_proxy_reference_disclosure(lines[index]):
+            if is_proxy_reference_disclosure(lines, index):
                 continue
             phrase_end_line = line_at_offset(text, match.end()) + 1
             transition = _next_cover_transition(lines, phrase_end_line, search_limit)
@@ -280,7 +283,7 @@ def find_cover_boundary(
             if following is not None:
                 if is_continuation_prose(following[1]):
                     continue
-                if is_proxy_reference_disclosure(following[1]):
+                if is_proxy_reference_disclosure(lines, following[0]):
                     continue
             pair_evidence = []
             if following is not None:
@@ -356,7 +359,7 @@ def find_cover_boundary(
             if following is not None:
                 if is_continuation_prose(following[1]):
                     continue
-                if is_proxy_reference_disclosure(following[1]):
+                if is_proxy_reference_disclosure(lines, following[0]):
                     continue
             evidence.append(
                 BoundaryEvidence(
