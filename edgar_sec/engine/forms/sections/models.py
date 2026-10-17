@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from bisect import bisect_right
 from dataclasses import dataclass, field
 from enum import StrEnum
 
@@ -61,12 +62,28 @@ class SectionSequence:
     _by_id_cache: dict[str, ResolvedSection] = field(
         default_factory=dict, init=False, repr=False, compare=False, hash=False
     )
+    _line_starts: tuple[int, ...] = field(
+        default_factory=tuple, init=False, repr=False, compare=False, hash=False
+    )
+    _char_starts: tuple[int, ...] = field(
+        default_factory=tuple, init=False, repr=False, compare=False, hash=False
+    )
 
     def __post_init__(self) -> None:
         object.__setattr__(
             self,
             "_by_id_cache",
             {s.item_identifier: s for s in self.sections},
+        )
+        object.__setattr__(
+            self,
+            "_line_starts",
+            tuple(s.start_line for s in self.sections),
+        )
+        object.__setattr__(
+            self,
+            "_char_starts",
+            tuple(s.start_char or 0 for s in self.sections),
         )
 
     def get(self, item: str) -> ResolvedSection | None:
@@ -80,10 +97,7 @@ class SectionSequence:
         """Find section containing line_number using bisect in O(log S)."""
         if not self.sections:
             return None
-        import bisect
-
-        starts = [s.start_line for s in self.sections]
-        idx = bisect.bisect_right(starts, line_number) - 1
+        idx = bisect_right(self._line_starts, line_number) - 1
         if idx < 0:
             return None
         sec = self.sections[idx]
@@ -95,10 +109,7 @@ class SectionSequence:
         """Find section containing char_offset using bisect in O(log S)."""
         if not self.sections:
             return None
-        import bisect
-
-        starts = [s.start_char or 0 for s in self.sections]
-        idx = bisect.bisect_right(starts, char_offset) - 1
+        idx = bisect_right(self._char_starts, char_offset) - 1
         if idx < 0:
             return None
         sec = self.sections[idx]
@@ -147,12 +158,20 @@ class NotesSequence:
     _by_num_cache: dict[int, ResolvedNote] = field(
         default_factory=dict, init=False, repr=False, compare=False, hash=False
     )
+    _line_starts: tuple[int, ...] = field(
+        default_factory=tuple, init=False, repr=False, compare=False, hash=False
+    )
 
     def __post_init__(self) -> None:
         object.__setattr__(
             self,
             "_by_num_cache",
             {n.note_number: n for n in self.notes},
+        )
+        object.__setattr__(
+            self,
+            "_line_starts",
+            tuple(n.start_line for n in self.notes),
         )
 
     def get(self, note_number: int) -> ResolvedNote | None:
@@ -163,10 +182,7 @@ class NotesSequence:
         """Find footnote containing line_number using bisect in O(log N)."""
         if not self.notes:
             return None
-        import bisect
-
-        starts = [n.start_line for n in self.notes]
-        idx = bisect.bisect_right(starts, line_number) - 1
+        idx = bisect_right(self._line_starts, line_number) - 1
         if idx < 0:
             return None
         note = self.notes[idx]
