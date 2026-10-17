@@ -42,14 +42,18 @@ _FOOTNOTE_ENTRY_RE = re.compile(
 )
 _ACQUIRED_DISPOSED_RE = re.compile(r"\b([AD])\b", re.IGNORECASE)
 _DIRECT_INDIRECT_RE = re.compile(r"\b([DI])\b", re.IGNORECASE)
+_INSTRUCTION_TOKEN_RE = re.compile(r"[a-z0-9\(\)]+")
+_OWNERSHIP_FORM_VALUES = frozenset(("D", "I"))
+_FOOTNOTE_PREFIX_CHARS = frozenset("([0123456789*")
 
 
 def _is_table_header_row(row: tuple[str, ...], table_label: str) -> bool:
+    for c in row:
+        if c and NUMERIC_DATE_RE.search(c):
+            return False
     lower_cells = [c.lower().strip() for c in row if c.strip()]
     if not lower_cells:
         return True
-    if any(NUMERIC_DATE_RE.search(c) for c in lower_cells):
-        return False
     row_str = " ".join(lower_cells)
     if table_label in row_str or any(k in row_str for k in HEADER_LABELS):
         return True
@@ -100,11 +104,11 @@ def _is_valid_row_security_title(title: str) -> bool:
 def _extract_ownership_form(
     indexed_cells: list[tuple[int, str]],
 ) -> tuple[str | None, str | None, int]:
-    for idx, (_, cell) in reversed(list(enumerate(indexed_cells))):
-        m = _DIRECT_INDIRECT_RE.fullmatch(cell.strip("() "))
-        if m:
+    for idx in range(len(indexed_cells) - 1, -1, -1):
+        clean = indexed_cells[idx][1].strip("() ").upper()
+        if clean in _OWNERSHIP_FORM_VALUES:
             nature = indexed_cells[idx + 1][1] if idx + 1 < len(indexed_cells) else None
-            return m.group(1).upper(), nature, idx
+            return clean, nature, idx
     return None, None, -1
 
 
@@ -159,7 +163,7 @@ def _is_statutory_or_instruction(row_str: str) -> bool:
         return True
     if any(k in low for k in ("omb information", "sec 1474", "sec 2474")):
         return True
-    tokens = frozenset(re.findall(r"[a-z0-9\(\)]+", low))
+    tokens = frozenset(_INSTRUCTION_TOKEN_RE.findall(low))
     return any(sig.issubset(tokens) for sig in INSTRUCTION_TOKEN_SETS)
 
 
@@ -224,11 +228,8 @@ def _extract_ad(s: str) -> str | None:
 
 
 def _extract_di(s: str) -> str | None:
-    return (
-        m.group(1).upper()
-        if (m := _DIRECT_INDIRECT_RE.fullmatch(s.strip("() ")))
-        else None
-    )
+    clean = s.strip("() ").upper()
+    return clean if clean in _OWNERSHIP_FORM_VALUES else None
 
 
 def _col(
@@ -266,7 +267,7 @@ def _is_price(s: str) -> bool:
 
 
 def _is_di(s: str) -> bool:
-    return bool(_DIRECT_INDIRECT_RE.fullmatch(s.strip("() ")))
+    return s.strip("() ").upper() in _OWNERSHIP_FORM_VALUES
 
 
 def _is_underlying(s: str) -> bool:
@@ -429,23 +430,13 @@ def parse_table_i_rows(
 
         trans_date: str | None = None
         date_col_idx = -1
-        for idx, (_, cell) in enumerate(indexed_cells[1:], start=1):
-            if form_idx != -1 and idx >= form_idx:
-                break
-            m = NUMERIC_DATE_RE.search(cell)
-            if m:
-                trans_date = m.group(0)
-                date_col_idx = idx
-                break
-
-        trans_code, equity_swap, code_col_idx = _find_trans_code(
-            indexed_cells, form_idx, date_col_idx
-        )
-        ad_code = _find_ad_code(indexed_cells, form_idx, {date_col_idx, code_col_idx})
-
+        trans_code: str | None = None
+        equity_swap = False
+        code_col_idx = -1
+        ad_code: str | None = None
         shares_amount: float | None = None
         price_per_share: float | None = None
-        shares_owned_following: float | None = None
+        remaining_nums: list[float] = []
 
         for idx, (_, cell) in enumerate(indexed_cells[1:], start=1):
             if form_idx != -1 and idx >= form_idx:
@@ -460,19 +451,43 @@ def parse_table_i_rows(
                         ad_code = ad_m.group(1).upper()
                 if len(parts) >= 3 and parts[2]:
                     price_per_share = _extract_number(parts[2])
+                continue
 
-        if price_per_share is None:
-            for idx, (_, cell) in enumerate(indexed_cells[1:], start=1):
-                if form_idx != -1 and idx >= form_idx:
-                    break
-                if "$" in cell or "/sh" in cell.lower():
-                    price_per_share = _extract_number(cell)
-                    break
+            if trans_date is None and (m := NUMERIC_DATE_RE.search(cell)):
+                trans_date = m.group(0)
+                date_col_idx = idx
+                continue
 
-        remaining_nums = _find_remaining_numbers(
-            indexed_cells, form_idx, {date_col_idx, code_col_idx}
-        )
+            if (
+                trans_code is None
+                and idx != date_col_idx
+                and (m := _TRANSACTION_CODE_RE.search(cell))
+            ):
+                trans_code = m.group(1).upper()
+                equity_swap = bool(m.group(2))
+                code_col_idx = idx
+                continue
 
+            if ad_code is None and (
+                m := _ACQUIRED_DISPOSED_RE.fullmatch(cell.strip("() "))
+            ):
+                ad_code = m.group(1).upper()
+                continue
+
+            if price_per_share is None and ("$" in cell or "/sh" in cell.lower()):
+                price_per_share = _extract_number(cell)
+                continue
+
+            if (
+                "|" not in cell
+                and "$" not in cell
+                and "/sh" not in cell.lower()
+                and is_numeric_cell(cell)
+            ):
+                if (val := _extract_number(cell)) is not None:
+                    remaining_nums.append(val)
+
+        shares_owned_following: float | None = None
         if trans_code is not None or trans_date is not None:
             if shares_amount is None and remaining_nums:
                 shares_amount = remaining_nums.pop(0)
@@ -741,11 +756,18 @@ def parse_footnotes(sections: list[ClassifiedSection]) -> dict[str, str]:
     for section in sections:
         for row in section.resolved_grid.rows:
             for cell in row:
-                for match in _FOOTNOTE_ENTRY_RE.finditer(cell or ""):
-                    fn_id = match.group(1) or match.group(2)
-                    text = match.group(3).strip()
-                    if fn_id and text:
-                        footnotes[fn_id] = text
+                if not cell:
+                    continue
+                for line in cell.splitlines():
+                    s = line.lstrip()
+                    if not s or s[0] not in _FOOTNOTE_PREFIX_CHARS:
+                        continue
+                    m = _FOOTNOTE_ENTRY_RE.match(s)
+                    if m:
+                        fn_id = m.group(1) or m.group(2)
+                        text = m.group(3).strip()
+                        if fn_id and text:
+                            footnotes[fn_id] = text
     return footnotes
 
 

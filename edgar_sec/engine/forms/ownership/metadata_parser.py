@@ -64,12 +64,22 @@ _REPORTING_PERSON_PLURAL_RE = re.compile(r"^\(s\)\s*", re.IGNORECASE)
 _OFFICER_TITLE_BOUNDARY_RE = re.compile(
     r"\b7\.\s*individual|\bindividual or joint", re.IGNORECASE
 )
+_FORM_MASTHEAD_RE = re.compile(r"(?i)^f\s*o\s*r\s*m\s*[345]\b")
+_TRAILING_FOOTNOTE_NUM_RE = re.compile(r"(?<=[a-zA-Z\.])\d{1,2}$")
+_STARTS_DIGITS_RE = re.compile(r"^\d+\b")
+_TRAILING_AND_OR_RE = re.compile(r"\s+(?:and|or)\s*$", flags=re.IGNORECASE)
+_DIGIT_CHAR_RE = re.compile(r"\d")
+_WHITESPACE_COLLAPSE_RE = re.compile(r"\s+")
 _METADATA_TABLE_MARKERS = ("table i", "table ii", "non-derivative")
 _OWNER_TEMPLATE_FIELDS = frozenset(
     ("last", "first", "middle", "street", "city", "state", "zip")
 )
 _ISSUER_TEMPLATE_FIELDS = frozenset(("issuer name", "ticker or trading symbol"))
 _PERIOD_TEMPLATE_FIELDS = frozenset(("month/day", "year"))
+_ALL_TEMPLATE_FIELDS = (
+    _OWNER_TEMPLATE_FIELDS | _ISSUER_TEMPLATE_FIELDS | _PERIOD_TEMPLATE_FIELDS
+)
+_CHECKMARK_CHARS = frozenset("xX[]()_✓✔☑☒■●*þý")
 _OWNER_LABEL_MARKERS = (
     "issuer name",
     "trading symbol",
@@ -157,6 +167,8 @@ def _resolve_checked_roles(role_cell_text: str) -> dict[str, bool]:
     if not any(phrase in role_lower for _, phrase in _ROLE_TARGETS):
         return solved
     for line in role_cell_text.splitlines():
+        if not any(c in _CHECKMARK_CHARS for c in line):
+            continue
         line_l = line.lower()
         if not any(phrase in line_l for _, phrase in _ROLE_TARGETS):
             continue
@@ -255,6 +267,30 @@ def _parse_reporting_owner(
                     cap = cap.split(",")[0].strip()
                 if cap and not PROSE_BOILERPLATE_RE.search(cap):
                     name = cap
+            if not name and idx + 1 < len(raw_lines):
+                next_l = raw_lines[idx + 1].strip()
+                if next_l and not any(
+                    k in next_l.lower()
+                    for k in (
+                        "issuer",
+                        "ticker",
+                        "(last)",
+                        "street",
+                        "table",
+                        "check",
+                        "form",
+                        "sec ",
+                    )
+                ):
+                    cap = _WHITESPACE_COLLAPSE_RE.sub(" ", next_l).strip(
+                        ", \n\r*:\xa0\t"
+                    )
+                    if (
+                        cap
+                        and not PROSE_BOILERPLATE_RE.search(cap)
+                        and not _FORM_MASTHEAD_RE.match(cap)
+                    ):
+                        name = cap
             continue
         if PROSE_BOILERPLATE_RE.search(line) or NON_OWNER_JURISDICTION_RE.match(line):
             continue
@@ -271,10 +307,10 @@ def _parse_reporting_owner(
         cleaned = STRIP_BOX_NUM_RE.sub("", line).strip(", \n\r*")
         if not cleaned:
             continue
-        cleaned_no_fn = re.sub(r"(?<=[a-zA-Z\.])\d{1,2}$", "", cleaned).strip()
+        cleaned_no_fn = _TRAILING_FOOTNOTE_NUM_RE.sub("", cleaned).strip()
         has_anchor = bool(STREET_ANCHOR_RE.search(line))
         has_digits = any(c.isdigit() for c in cleaned_no_fn)
-        starts_digits = bool(re.match(r"^\d+\b", cleaned_no_fn))
+        starts_digits = bool(_STARTS_DIGITS_RE.match(cleaned_no_fn))
         if (
             has_anchor
             and (has_digits or any(k in lower for k in ("p.o.", "c/o", "penthouse")))
@@ -286,6 +322,7 @@ def _parse_reporting_owner(
             not name
             and 1 <= len(cleaned_no_fn.split()) <= 20
             and len(cleaned_no_fn) <= 160
+            and not _FORM_MASTHEAD_RE.match(cleaned_no_fn)
         ):
             name_candidates.append(cleaned_no_fn)
 
@@ -385,9 +422,7 @@ def _parse_issuer(cell_text: str) -> Issuer:
                     and last.isupper()
                     and last.lower() not in LEGAL_FORMS
                 ):
-                    p_name = re.sub(
-                        r"\s+(?:and|or)\s*$", "", parts[0], flags=re.IGNORECASE
-                    )
+                    p_name = _TRAILING_AND_OR_RE.sub("", parts[0])
                     name = p_name.rstrip(" ,-")
                     ticker = last
                 else:
@@ -442,6 +477,25 @@ def _parse_issuer(cell_text: str) -> Issuer:
                     ticker = stripped
                     break
 
+    if not name or name in ("=", "-"):
+        for line in lines:
+            if line != cand and not any(
+                term in line.lower()
+                for term in (
+                    "issuer name",
+                    "trading symbol",
+                    "ticker symbol",
+                    "and ticker",
+                    "or trading",
+                    "(last)",
+                    "(street)",
+                )
+            ):
+                cleaned = STRIP_BOX_NUM_RE.sub("", line).strip(" ,=-")
+                if cleaned and any(c.isalpha() for c in cleaned):
+                    name = cleaned
+                    break
+
     if name:
         name = STRIP_BOX_NUM_RE.sub("", name).strip()
 
@@ -466,7 +520,7 @@ def _parse_period(cell_text: str) -> FilingPeriod:
         if not line:
             continue
         cleaned = PERIOD_PREFIX_RE.sub("", line).strip()
-        if cleaned and any(c.isdigit() for c in cleaned):
+        if cleaned and len(_DIGIT_CHAR_RE.findall(cleaned)) >= 2:
             period = cleaned
             break
 
@@ -506,15 +560,18 @@ def parse_metadata(
 
     rows = boxes_section.resolved_grid.rows
     lowered_rows = tuple(tuple(cell.lower() for cell in row) for row in rows)
-    owner_template_fields = _extract_template_fields(
-        rows, lowered_rows, _OWNER_TEMPLATE_FIELDS
+    all_template_fields = _extract_template_fields(
+        rows, lowered_rows, _ALL_TEMPLATE_FIELDS
     )
-    issuer_template_fields = _extract_template_fields(
-        rows, lowered_rows, _ISSUER_TEMPLATE_FIELDS
-    )
-    period_template_fields = _extract_template_fields(
-        rows, lowered_rows, _PERIOD_TEMPLATE_FIELDS
-    )
+    owner_template_fields = {
+        k: v for k, v in all_template_fields.items() if k in _OWNER_TEMPLATE_FIELDS
+    }
+    issuer_template_fields = {
+        k: v for k, v in all_template_fields.items() if k in _ISSUER_TEMPLATE_FIELDS
+    }
+    period_template_fields = {
+        k: v for k, v in all_template_fields.items() if k in _PERIOD_TEMPLATE_FIELDS
+    }
     owner_lines: list[str] = []
     owner_seen: set[str] = set()
     role_lines: list[str] = []
@@ -529,22 +586,22 @@ def parse_metadata(
             for marker in _METADATA_TABLE_MARKERS
         ):
             break
-        for cell, cell_lower in zip(row[:2], lowered_row[:2], strict=True):
-            s = cell.strip()
-            if any(term in cell_lower for term in _OWNER_LABEL_MARKERS):
-                continue
-            if (
-                is_instruction_row(s)
-                or STATUTORY_PAGE_ARTIFACT_RE.search(s) is not None
-                or HEADER_LEAK_RE.search(s) is not None
-            ):
-                continue
-            if s and s not in owner_seen:
-                owner_seen.add(s)
-                owner_lines.append(s)
         for c_idx, (cell, lower) in enumerate(zip(row, lowered_row, strict=True)):
             if not cell:
                 continue
+            if c_idx < 2:
+                s = cell.strip()
+                if (
+                    not any(term in lower for term in _OWNER_LABEL_MARKERS)
+                    and not is_instruction_row(s)
+                    and STATUTORY_PAGE_ARTIFACT_RE.search(s) is None
+                    and HEADER_LEAK_RE.search(s) is None
+                    and s
+                    and s not in owner_seen
+                ):
+                    owner_seen.add(s)
+                    owner_lines.append(s)
+
             if "issuer name" in lower and not issuer_cell:
                 cand = cell
                 right = next(
@@ -582,7 +639,10 @@ def parse_metadata(
                             break
                 issuer_cell = cand
             elif (
-                "statement for" in lower or ("4." in lower and "month" in lower)
+                "statement for" in lower
+                or ("4." in lower and "month" in lower)
+                or "date of event" in lower
+                or "requiring statement" in lower
             ) and not period_cell:
                 cand = cell
                 if r_idx + 1 < len(rows):
@@ -617,21 +677,20 @@ def parse_metadata(
                             cand = f"{cell}\n{below}"
                             break
                 period_cell = cand
-        for c_idx, (cell, lower) in enumerate(zip(row, lowered_row, strict=True)):
-            if not cell or not (
+
+            if (
                 "relationship" in lower
                 or bool(RELATIONSHIP_TO_ISSUER_RE.search(lower))
                 or "10%" in lower
             ):
-                continue
-            role_text = " ".join(
-                value.strip()
-                for value in row[max(0, c_idx - 1) : c_idx + 2]
-                if value.strip()
-            )
-            if role_text and role_text not in role_seen:
-                role_seen.add(role_text)
-                role_lines.append(role_text)
+                role_text = " ".join(
+                    value.strip()
+                    for value in row[max(0, c_idx - 1) : c_idx + 2]
+                    if value.strip()
+                )
+                if role_text and role_text not in role_seen:
+                    role_seen.add(role_text)
+                    role_lines.append(role_text)
 
     if not period_cell and period_template_fields.get("month/day"):
         period_date = period_template_fields["month/day"]
@@ -682,25 +741,26 @@ def parse_metadata(
                 if sig_name:
                     break
 
-        clean_lines: list[str] = []
-        for r in grid.rows:
-            for c in r:
-                if not c or not c.strip():
-                    continue
-                for line in c.splitlines():
-                    s = line.strip()
-                    if s and not any(
-                        term in s.lower() for term in SIG_BOILERPLATE_TERMS
-                    ):
-                        clean_lines.append(s)
-        sig_text = "\n".join(clean_lines)
-        cand_name, cand_date = extract_signature_candidate(sig_text)
-        if not sig_name and cand_name:
-            sig_name = extract_clean_signatory_name(cand_name) or (
-                cand_name if is_valid_signature_name(cand_name) else None
-            )
-        if not sig_date:
-            sig_date = cand_date
+        if not (sig_name and sig_date):
+            clean_lines: list[str] = []
+            for r in grid.rows:
+                for c in r:
+                    if not c or not c.strip():
+                        continue
+                    for line in c.splitlines():
+                        s = line.strip()
+                        if s and not any(
+                            term in s.lower() for term in SIG_BOILERPLATE_TERMS
+                        ):
+                            clean_lines.append(s)
+            sig_text = "\n".join(clean_lines)
+            cand_name, cand_date = extract_signature_candidate(sig_text)
+            if not sig_name and cand_name:
+                sig_name = extract_clean_signatory_name(cand_name) or (
+                    cand_name if is_valid_signature_name(cand_name) else None
+                )
+            if not sig_date:
+                sig_date = cand_date
 
     return Form4Metadata(
         issuer=issuer,

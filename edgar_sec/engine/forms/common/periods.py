@@ -23,7 +23,10 @@ BOX5_SPLIT_RE = re.compile(rf"(?i)(?:{BOX5_SPLIT_ALT})")
 
 PERIOD_PREFIX_TERMS = (
     r"4\.\s*",
+    r"2\.\s*",
     r"statement\s+for\s*(?:\([^)]*\))?\s*:?\s*",
+    r"date\s+of\s+event\s*(?:requiring\s+statement)?\s*:?\s*",
+    r"requiring\s+statement\s*:?\s*",
     r"\(?month\s*/\s*(?:day\s*/\s*)?year\)?\s*:?\s*",
     r"\(?month\s*/\s*year\)?\s*:?\s*",
 )

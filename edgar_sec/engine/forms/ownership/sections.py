@@ -48,6 +48,7 @@ _FOOTNOTE_VETO_RE = re.compile(
 )
 _SIGNATURE_CONTINUATION_PHRASES = ("/s/", "by:", "for:", "date")
 _NON_ALNUM_RE = re.compile(r"[^a-z0-9]")
+_PRE_COLUMN_SPLIT_RE = re.compile(r"\s{2,}")
 
 
 class SectionRole(StrEnum):
@@ -515,7 +516,7 @@ def partition_ownership_tables(html_content: str | bytes) -> OwnershipSections:
     if not table_nodes and tree.css("pre"):
         for idx, pre_node in enumerate(tree.css("pre")):
             lines = [l for l in pre_node.text().splitlines() if l.strip()]
-            rows = tuple(tuple(re.split(r"\s{2,}", l.strip())) for l in lines)
+            rows = tuple(tuple(_PRE_COLUMN_SPLIT_RE.split(l.strip())) for l in lines)
             if not rows:
                 continue
             num_cols = max(len(r) for r in rows)

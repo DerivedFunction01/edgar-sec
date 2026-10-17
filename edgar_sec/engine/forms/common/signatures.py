@@ -132,6 +132,11 @@ SIG_DELEGATED_NAME_SUFFIX_ALT = build_alternation(
     ("power of attorney", "attorney-in-fact", "attorney in fact"),
     auto_escape=True,
 )
+SIG_DELEGATED_SPLIT_RE = re.compile(rf"(?i)\b(?:{SIG_DELEGATED_NAME_SUFFIX_ALT})\b")
+SIG_BY_PREFIX_RE = re.compile(r"(?i)^(?:by\s*:?\s*)+")
+SIG_TRAILING_PAREN_NUM_RE = re.compile(r"\s*\(\d+\)$")
+SIG_CONFORMED_PREFIX_RE = re.compile(rf"(?i)^(?:{CONFORMED_SIGNATURE_ALT})\s*")
+SIG_LEADING_RULE_RE = re.compile(r"^[\*_= \-\t]+")
 SIG_DELEGATED_NAME_RE = re.compile(
     r"(?:^|\n)\s*([A-Za-z][A-Za-z.,’‘\-']*(?:\s+[A-Za-z][A-Za-z.,’‘\-']*){1,5}?)"
     rf"\s*,?\s+(?:{SIG_DELEGATED_NAME_SUFFIX_ALT})\b",
@@ -150,7 +155,8 @@ SIG_PERSON_PREFIX_RE = re.compile(
 SIG_BOILERPLATE_TERMS: tuple[str, ...] = (
     "criminal",
     "violation",
-    "omb",
+    "omb number",
+    "omb approval",
     "federal",
     "intentional",
     "misstatement",
@@ -211,9 +217,9 @@ def clean_signature_name(raw_text: str) -> str:
     """Strip underline runs, prefix labels, and conformed markers from a name."""
     cleaned = CONFORMED_SIGNATURE_RE.sub(" ", raw_text)
     cleaned = CLEAN_LINE_RE.sub(" ", cleaned)
-    cleaned = re.sub(r"(?i)^(?:by\s*:?\s*)+", "", cleaned.strip())
+    cleaned = SIG_BY_PREFIX_RE.sub("", cleaned.strip())
     cleaned = PREFIX_STRIP_RE.sub("", cleaned.strip())
-    cleaned = re.sub(r"\s*\(\d+\)$", "", cleaned.strip())
+    cleaned = SIG_TRAILING_PAREN_NUM_RE.sub("", cleaned.strip())
     cleaned = WHITESPACE_RE.sub(" ", cleaned).strip()
     return cleaned.strip(" ,.-/")
 
@@ -231,7 +237,7 @@ def resolve_delegated_signer(
     """Resolve signatory name, delegation kind, and agent name if delegated."""
     cleaned = clean_signature_name(text)
     if bool(SIG_DELEGATED_NAME_RE.search(text)):
-        parts = re.split(rf"(?i)\b(?:{SIG_DELEGATED_NAME_SUFFIX_ALT})\b", cleaned)
+        parts = SIG_DELEGATED_SPLIT_RE.split(cleaned)
         agent = parts[0].strip(" ,.-/") if parts else None
         return cleaned, DelegationKind.POWER_OF_ATTORNEY, agent
     return cleaned, DelegationKind.DIRECT, None
@@ -382,15 +388,15 @@ def extract_clean_signatory_name(raw_text: str) -> str | None:
     """Extract and validate clean Title Cased signatory name from raw cell text."""
     if not raw_text:
         return None
-    s = re.sub(r"(?i)^(?:by\s*:?\s*)+", "", raw_text.strip())
-    s = re.sub(rf"(?i)^(?:{CONFORMED_SIGNATURE_ALT})\s*", "", s.strip())
-    s = re.sub(r"^[\*_= \-\t]+", "", s.strip())
+    s = SIG_BY_PREFIX_RE.sub("", raw_text.strip())
+    s = SIG_CONFORMED_PREFIX_RE.sub("", s.strip())
+    s = SIG_LEADING_RULE_RE.sub("", s.strip())
     m_sig_label = SIG_LABEL_RE.search(s)
     if m_sig_label:
         before = s[: m_sig_label.start()].strip()
         after = s[m_sig_label.end() :].strip()
         s = before if before else after
-    s = re.sub(r"\s*\(\d+\)$", "", s.strip())
+    s = SIG_TRAILING_PAREN_NUM_RE.sub("", s.strip())
     parts = SIG_DELIMITER_SPLIT_RE.split(s)
     cand = parts[0].strip(" ,.-*()_") if parts else s.strip(" ,.-*()_")
     if len(parts) > 1 and parts[1].strip(" ,.-*()_").lower() in (
@@ -404,7 +410,7 @@ def extract_clean_signatory_name(raw_text: str) -> str | None:
         "v",
     ):
         cand = f"{cand}, {parts[1].strip(' ,.-*()_')}"
-    cand = re.sub(r"\s*\(\d+\)$", "", cand).strip(" ,.-*()_")
+    cand = SIG_TRAILING_PAREN_NUM_RE.sub("", cand).strip(" ,.-*()_")
     cand = NUMERIC_DATE_RE.sub("", cand).strip(" ,.-*()_")
     cand = RE_FULL_DATE.sub("", cand).strip(" ,.-*()_")
     words = cand.split()
