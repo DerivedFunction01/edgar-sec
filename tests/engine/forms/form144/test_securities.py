@@ -1,10 +1,10 @@
-"""Tests for Form 144 Table I and Table II extraction."""
+"""Tests for Form 144 Table I and Table II extraction in securities.py."""
 
-from edgar_sec.engine.forms.form144.grid_tables import (
+from edgar_sec.engine.forms.form144.sections import partition_form144_tables
+from edgar_sec.engine.forms.form144.securities import (
     parse_table_i_rows,
     parse_table_ii_rows,
 )
-from edgar_sec.engine.forms.form144.sections import partition_form144_tables
 
 SAMPLE_HTML = """
 <html><body>

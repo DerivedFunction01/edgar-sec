@@ -12,7 +12,7 @@ from edgar_sec.domain.forms.families.form144.models import (
     TableISecurityItem,
     TableIISecuritySoldItem,
 )
-from edgar_sec.engine.forms.form144.grid_tables import (
+from edgar_sec.engine.forms.form144.securities import (
     parse_table_i_rows,
     parse_table_ii_rows,
 )
