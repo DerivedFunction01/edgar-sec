@@ -112,21 +112,39 @@ def _extract_template_fields(
             if (
                 not right_val
                 or right_clean in accepted_fields
+                or BARE_BOX_NUM_RE.match(right_clean)
                 or any(
                     right_clean.startswith(p)
                     for p in ("3.", "4.", "5.", "6.", "7.", "table", "irs")
                 )
-            ) and r_idx > 0:
+            ):
                 above_val = ""
-                if index < len(rows[r_idx - 1]):
-                    above_val = rows[r_idx - 1][index].strip()
-                if not above_val and index > 0 and index - 1 < len(rows[r_idx - 1]):
-                    above_val = rows[r_idx - 1][index - 1].strip()
+                for prev_r in range(r_idx - 1, -1, -1):
+                    if any(c.strip() for c in rows[prev_r]):
+                        if index < len(rows[prev_r]):
+                            above_val = rows[prev_r][index].strip()
+                        if (
+                            not above_val
+                            and index > 0
+                            and index - 1 < len(rows[prev_r])
+                        ):
+                            above_val = rows[prev_r][index - 1].strip()
+                        break
                 above_clean = above_val.strip("() :.").lower()
-                if above_val and above_clean not in accepted_fields:
+                if (
+                    above_val
+                    and above_clean not in accepted_fields
+                    and not BARE_BOX_NUM_RE.match(above_clean)
+                ):
                     fields[field] = above_val
                     continue
-            fields[field] = right_val
+                fields[field] = ""
+            elif (
+                right_val
+                and right_clean not in accepted_fields
+                and not BARE_BOX_NUM_RE.match(right_clean)
+            ):
+                fields[field] = right_val
     return fields
 
 
@@ -505,8 +523,13 @@ def parse_metadata(
                 right = next(
                     (value.strip() for value in row[c_idx + 1 :] if value.strip()), ""
                 )
-                if right and not any(
-                    marker in right.lower() for marker in _ISSUER_LOOKAHEAD_EXCLUSIONS
+                if (
+                    right
+                    and not BARE_BOX_NUM_RE.match(right)
+                    and not any(
+                        marker in right.lower()
+                        for marker in _ISSUER_LOOKAHEAD_EXCLUSIONS
+                    )
                 ):
                     cand = f"{cell}\n{right}"
                 elif r_idx + 1 < len(rows):
@@ -520,9 +543,13 @@ def parse_metadata(
                         )
                         below = target_row[target_idx].strip()
                         below_lower = lowered_rows[next_r][target_idx]
-                        if below and not any(
-                            marker in below_lower
-                            for marker in _ISSUER_LOOKAHEAD_EXCLUSIONS
+                        if (
+                            below
+                            and not BARE_BOX_NUM_RE.match(below)
+                            and not any(
+                                marker in below_lower
+                                for marker in _ISSUER_LOOKAHEAD_EXCLUSIONS
+                            )
                         ):
                             cand = f"{cell}\n{below}"
                             break
