@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from collections.abc import Callable
+from dataclasses import dataclass, replace
 import re
+from typing import Any
 
 from edgar_sec.domain.forms.families.ownership.models import VALID_TRANSACTION_CODES
 from edgar_sec.engine.forms.common.alignment import (
@@ -58,22 +60,47 @@ _SUBHEADER_CELLS = frozenset(
         "following",
     }
 )
-_INSTRUCTION_TOKEN_SETS = (
-    frozenset({"filed", "pursuant", "section", "16"}),
-    frozenset({"investment", "company", "act"}),
-    frozenset({"check", "box", "longer", "subject"}),
-    frozenset({"form", "obligations", "continue"}),
-    frozenset({"affirmative", "defense", "10b5-1"}),
-    frozenset({"written", "trading", "plan"}),
-    frozenset({"reminder", "report", "separate", "line"}),
-    frozenset({"intentional", "misstatements", "criminal"}),
-    frozenset({"18", "u.s.c", "1001"}),
-    frozenset({"15", "u.s.c", "78ff"}),
-    frozenset({"omb", "approval"}),
-    frozenset({"3235-0287"}),
-    frozenset({"burden", "hours"}),
-    frozenset({"print", "type", "responses"}),
+_INSTRUCTION_TOKEN_SETS = tuple(
+    frozenset(s.split())
+    for s in (
+        "filed pursuant section 16",
+        "investment company act",
+        "check box longer subject",
+        "form obligations continue",
+        "affirmative defense 10b5-1",
+        "written trading plan",
+        "reminder report separate line",
+        "intentional misstatements criminal",
+        "18 u.s.c 1001",
+        "15 u.s.c 78ff",
+        "omb approval",
+        "3235-0287",
+        "burden hours",
+        "print type responses",
+    )
 )
+
+
+_HEADER_LABELS = (
+    "title of security",
+    "title of derivative",
+    "title of class",
+    "transaction date",
+    "conversion or exercise",
+    "date of earliest",
+    "deemed execution date",
+)
+_HEADER_SUB_KEYWORDS = (
+    "instr.",
+    "month/day",
+    "end of month",
+    "exercise",
+    "conversion",
+    "expiration",
+    "following",
+    "underlying",
+)
+_EXACT_HEADER_CELLS = ("code", "v", "amount", "price", "(a) or (d)")
 
 
 def _is_table_header_row(row: tuple[str, ...], table_label: str) -> bool:
@@ -83,43 +110,12 @@ def _is_table_header_row(row: tuple[str, ...], table_label: str) -> bool:
     if any(NUMERIC_DATE_RE.search(c) for c in lower_cells):
         return False
     row_str = " ".join(lower_cells)
-    if any(
-        k in row_str
-        for k in (
-            table_label,
-            "title of security",
-            "title of derivative",
-            "title of class",
-        )
-    ):
-        return True
-    if any(
-        k in row_str
-        for k in (
-            "transaction date",
-            "conversion or exercise",
-            "date of earliest",
-            "deemed execution date",
-        )
-    ):
+    if table_label in row_str or any(k in row_str for k in _HEADER_LABELS):
         return True
     header_keywords = sum(
         1
         for c in lower_cells
-        if any(
-            k in c
-            for k in (
-                "instr.",
-                "month/day",
-                "end of month",
-                "exercise",
-                "conversion",
-                "expiration",
-                "following",
-                "underlying",
-            )
-        )
-        or c in ("code", "v", "amount", "price", "(a) or (d)")
+        if any(k in c for k in _HEADER_SUB_KEYWORDS) or c in _EXACT_HEADER_CELLS
     )
     hits = sum(
         1
@@ -133,6 +129,69 @@ def _is_table_header_row(row: tuple[str, ...], table_label: str) -> bool:
 def _clean_title(text: str) -> str:
     cleaned = _FOOTNOTE_REF_RE.sub("", text).strip()
     return " ".join(cleaned.split())
+
+
+def _is_valid_row_security_title(title: str) -> bool:
+    return bool(
+        title
+        and not is_numeric_cell(title)
+        and not NUMERIC_DATE_RE.fullmatch(title)
+        and not _FOOTNOTE_REF_RE.fullmatch(title)
+    )
+
+
+def _extract_ownership_form(
+    indexed_cells: list[tuple[int, str]],
+) -> tuple[str | None, str | None, int]:
+    for idx, (_, cell) in reversed(list(enumerate(indexed_cells))):
+        m = _DIRECT_INDIRECT_RE.fullmatch(cell.strip("() "))
+        if m:
+            nature = indexed_cells[idx + 1][1] if idx + 1 < len(indexed_cells) else None
+            return m.group(1).upper(), nature, idx
+    return None, None, -1
+
+
+def _find_trans_code(
+    cells: list[tuple[int, str]], end_idx: int, exclude_idx: int
+) -> tuple[str | None, bool, int]:
+    for idx, (_, cell) in enumerate(cells[1:], start=1):
+        if end_idx != -1 and idx >= end_idx:
+            break
+        if idx != exclude_idx and (m := _TRANSACTION_CODE_RE.search(cell)):
+            return m.group(1).upper(), bool(m.group(2)), idx
+    return None, False, -1
+
+
+def _find_ad_code(
+    cells: list[tuple[int, str]], end_idx: int, exclude_indices: set[int]
+) -> str | None:
+    for idx, (_, cell) in enumerate(cells[1:], start=1):
+        if end_idx != -1 and idx >= end_idx:
+            break
+        if idx not in exclude_indices and (
+            m := _ACQUIRED_DISPOSED_RE.fullmatch(cell.strip("() "))
+        ):
+            return m.group(1).upper()
+    return None
+
+
+def _find_remaining_numbers(
+    cells: list[tuple[int, str]], end_idx: int, exclude_indices: set[int]
+) -> list[float]:
+    nums: list[float] = []
+    for idx, (_, cell) in enumerate(cells[1:], start=1):
+        if end_idx != -1 and idx >= end_idx:
+            break
+        if (
+            idx not in exclude_indices
+            and "|" not in cell
+            and "$" not in cell
+            and "/sh" not in cell.lower()
+            and is_numeric_cell(cell)
+        ):
+            if (val := _extract_number(cell)) is not None:
+                nums.append(val)
+    return nums
 
 
 def _is_statutory_or_instruction(row_str: str) -> bool:
@@ -191,117 +250,178 @@ def _extract_footnote_ids(text: str) -> tuple[str, ...]:
     return tuple(_FOOTNOTE_REF_RE.findall(text))
 
 
+def _extract_date(s: str) -> str | None:
+    return m.group(0) if (m := NUMERIC_DATE_RE.search(s)) else None
+
+
+def _extract_code(s: str) -> str | None:
+    return m.group(1).upper() if (m := _TRANSACTION_CODE_RE.search(s)) else None
+
+
+def _extract_ad(s: str) -> str | None:
+    return (
+        m.group(1).upper()
+        if (m := _ACQUIRED_DISPOSED_RE.fullmatch(s.strip("() ")))
+        else None
+    )
+
+
+def _extract_di(s: str) -> str | None:
+    return (
+        m.group(1).upper()
+        if (m := _DIRECT_INDIRECT_RE.fullmatch(s.strip("() ")))
+        else None
+    )
+
+
+def _col(
+    index: int,
+    name: str,
+    is_required: bool = False,
+    is_anchor: bool = False,
+    anchor_validator: Callable[[str], bool] | None = None,
+    data_extractor: Callable[[str], Any] | None = None,
+) -> CanonicalColumn:
+    return CanonicalColumn(
+        index=index,
+        name=name,
+        is_required=is_required,
+        is_anchor=is_anchor,
+        anchor_validator=anchor_validator,
+        data_extractor=data_extractor,
+    )
+
+
+def _is_date(s: str) -> bool:
+    return bool(NUMERIC_DATE_RE.search(s))
+
+
+def _is_code(s: str) -> bool:
+    return bool(_TRANSACTION_CODE_RE.search(s))
+
+
+def _is_ad(s: str) -> bool:
+    return bool(_ACQUIRED_DISPOSED_RE.fullmatch(s.strip("() ")))
+
+
+def _is_price(s: str) -> bool:
+    return "$" in s or "/sh" in s.lower()
+
+
+def _is_di(s: str) -> bool:
+    return bool(_DIRECT_INDIRECT_RE.fullmatch(s.strip("() ")))
+
+
+def _is_underlying(s: str) -> bool:
+    return any(
+        k in s.lower()
+        for k in (
+            "common",
+            "preferred",
+            "class a",
+            "class b",
+            "ordinary",
+            "stock",
+            "shares",
+        )
+    )
+
+
 _TABLE_I_SCHEMA = TableSchema(
     name="ownership_table_i",
     columns=(
-        CanonicalColumn(index=0, name="security_title", is_required=True),
-        CanonicalColumn(
-            index=1,
-            name="transaction_date",
-            is_required=False,
-            is_anchor=True,
-            anchor_validator=lambda s: bool(NUMERIC_DATE_RE.search(s)),
-            data_extractor=lambda s: (
-                m.group(0) if (m := NUMERIC_DATE_RE.search(s)) else None
-            ),
+        _col(0, "security_title", is_required=True),
+        _col(1, "transaction_date", False, True, _is_date, _extract_date),
+        _col(2, "deemed_execution_date"),
+        _col(3, "transaction_code", False, True, _is_code, _extract_code),
+        _col(
+            4,
+            "equity_swap",
+            False,
+            True,
+            lambda s: s.strip().upper() == "V",
+            lambda s: True,
         ),
-        CanonicalColumn(index=2, name="deemed_execution_date", is_required=False),
-        CanonicalColumn(
-            index=3,
-            name="transaction_code",
-            is_required=False,
-            is_anchor=True,
-            anchor_validator=lambda s: bool(_TRANSACTION_CODE_RE.search(s)),
-            data_extractor=lambda s: (
-                m.group(1).upper() if (m := _TRANSACTION_CODE_RE.search(s)) else None
-            ),
-        ),
-        CanonicalColumn(
-            index=4,
-            name="equity_swap",
-            is_required=False,
-            is_anchor=True,
-            anchor_validator=lambda s: s.strip().upper() == "V",
-            data_extractor=lambda s: True,
-        ),
-        CanonicalColumn(
-            index=5,
-            name="shares_amount",
-            is_required=False,
-            data_extractor=_extract_number,
-        ),
-        CanonicalColumn(
-            index=6,
-            name="acquired_disposed_code",
-            is_required=False,
-            is_anchor=True,
-            anchor_validator=lambda s: bool(
-                _ACQUIRED_DISPOSED_RE.fullmatch(s.strip("() "))
-            ),
-            data_extractor=lambda s: (
-                m.group(1).upper()
-                if (m := _ACQUIRED_DISPOSED_RE.fullmatch(s.strip("() ")))
-                else None
-            ),
-        ),
-        CanonicalColumn(
-            index=7,
-            name="price_per_share",
-            is_required=False,
-            is_anchor=True,
-            anchor_validator=lambda s: "$" in s or "/sh" in s.lower(),
-            data_extractor=_extract_number,
-        ),
-        CanonicalColumn(
-            index=8,
-            name="shares_owned_following",
-            is_required=False,
-            data_extractor=_extract_number,
-        ),
-        CanonicalColumn(
-            index=9,
-            name="direct_or_indirect",
-            is_required=True,
-            is_anchor=True,
-            anchor_validator=lambda s: bool(
-                _DIRECT_INDIRECT_RE.fullmatch(s.strip("() "))
-            ),
-            data_extractor=lambda s: (
-                m.group(1).upper()
-                if (m := _DIRECT_INDIRECT_RE.fullmatch(s.strip("() ")))
-                else None
-            ),
-        ),
-        CanonicalColumn(index=10, name="nature_of_ownership", is_required=False),
+        _col(5, "shares_amount", False, False, None, _extract_number),
+        _col(6, "acquired_disposed_code", False, True, _is_ad, _extract_ad),
+        _col(7, "price_per_share", False, True, _is_price, _extract_number),
+        _col(8, "shares_owned_following", False, False, None, _extract_number),
+        _col(9, "direct_or_indirect", True, True, _is_di, _extract_di),
+        _col(10, "nature_of_ownership"),
     ),
 )
+
+_COMMON_TABLE_II_TAIL = (
+    _col(0, "exercisable_date", False, True, _is_date, _extract_date),
+    _col(1, "expiration_date", False, True, _is_date, _extract_date),
+    _col(2, "underlying_security_title", False, True, _is_underlying, _clean_title),
+    _col(3, "underlying_shares_amount", False, False, None, _extract_number),
+    _col(4, "price_of_derivative", False, True, _is_price, _extract_number),
+    _col(5, "derivative_shares_owned_following", False, False, None, _extract_number),
+    _col(6, "direct_or_indirect", True, True, _is_di, _extract_di),
+    _col(7, "nature_of_ownership"),
+)
+
+_TX_TABLE_II_PREFIX = (
+    _col(0, "security_title", is_required=True),
+    _col(1, "conversion_or_exercise_price", False, True, _is_price, _extract_number),
+    _col(2, "transaction_date", False, True, _is_date, _extract_date),
+    _col(3, "deemed_execution_date"),
+    _col(4, "transaction_code", False, True, _is_code, _extract_code),
+    _col(5, "equity_swap", False, False, lambda s: s.strip().upper() == "V"),
+    _col(6, "shares_amount", False, False, None, _extract_number),
+    _col(7, "acquired_disposed_code", False, False, _is_ad, _extract_ad),
+)
+
+_HOLDING_TABLE_II_PREFIX = (
+    _col(0, "security_title", is_required=True),
+    _col(1, "conversion_or_exercise_price", False, True, _is_price, _extract_number),
+)
+
+
+def _build_table_ii_schema(
+    prefix: tuple[CanonicalColumn, ...], name: str
+) -> TableSchema:
+    cols = tuple(
+        replace(c, index=i) for i, c in enumerate(prefix + _COMMON_TABLE_II_TAIL)
+    )
+    return TableSchema(name=name, columns=cols)
+
+
+_TABLE_II_TX_SCHEMA = _build_table_ii_schema(
+    _TX_TABLE_II_PREFIX, "ownership_table_ii_tx"
+)
+_TABLE_II_HOLDING_SCHEMA = _build_table_ii_schema(
+    _HOLDING_TABLE_II_PREFIX, "ownership_table_ii_holding"
+)
+
+
+def _iter_clean_table_rows(
+    section: ClassifiedSection | None, table_label: str
+) -> list[tuple[tuple[str, ...], str, list[str]]]:
+    if section is None or len(section.resolved_grid.rows) <= 1:
+        return []
+    out: list[tuple[tuple[str, ...], str, list[str]]] = []
+    for row in section.resolved_grid.rows:
+        if not any(c.strip() for c in row):
+            continue
+        row_str = " ".join(c.strip() for c in row if c.strip())
+        if any(term in row_str.lower() for term in _TABLE_TERMINATORS):
+            break
+        if _is_statutory_or_instruction(row_str) or _is_table_header_row(
+            row, table_label
+        ):
+            continue
+        out.append((row, row_str, list(_extract_footnote_ids(row_str))))
+    return out
 
 
 def parse_table_i_rows(
     section: ClassifiedSection | None,
 ) -> list[NonDerivativeTransaction]:
     """Parse Non-Derivative transaction and holding rows from Table I."""
-    if section is None or len(section.resolved_grid.rows) <= 1:
-        return []
-
     results: list[NonDerivativeTransaction] = []
-    for row in section.resolved_grid.rows:
-        if not any(c.strip() for c in row):
-            continue
-
-        row_str = " ".join(c.strip() for c in row if c.strip())
-        row_lower = row_str.lower()
-
-        if any(term in row_lower for term in _TABLE_TERMINATORS):
-            break
-
-        if _is_statutory_or_instruction(row_str):
-            continue
-
-        if _is_table_header_row(row, "table i"):
-            continue
-
-        footnotes = list(_extract_footnote_ids(row_str))
+    for row, row_str, footnotes in _iter_clean_table_rows(section, "table i"):
         split_cells = tuple(
             part.strip()
             for c in row
@@ -317,12 +437,7 @@ def parse_table_i_rows(
             or aligned.get("shares_owned_following")
         ):
             sec_t = _clean_title(aligned.get("security_title") or "")
-            if (
-                sec_t
-                and not is_numeric_cell(sec_t)
-                and not NUMERIC_DATE_RE.fullmatch(sec_t)
-                and not _FOOTNOTE_REF_RE.fullmatch(sec_t)
-            ):
+            if _is_valid_row_security_title(sec_t):
                 code_raw = aligned.get("transaction_code")
                 eq_swap = bool(code_raw and any("v" in p.lower() for p in split_cells))
                 results.append(
@@ -350,25 +465,10 @@ def parse_table_i_rows(
 
         raw_title = indexed_cells[0][1]
         security_title = _clean_title(raw_title)
-        if (
-            not security_title
-            or is_numeric_cell(security_title)
-            or NUMERIC_DATE_RE.fullmatch(security_title)
-            or _FOOTNOTE_REF_RE.fullmatch(security_title)
-        ):
+        if not _is_valid_row_security_title(security_title):
             continue
 
-        direct_or_indirect: str | None = None
-        nature: str | None = None
-        form_idx = -1
-        for idx, (_, cell) in reversed(list(enumerate(indexed_cells))):
-            m = _DIRECT_INDIRECT_RE.fullmatch(cell.strip("() "))
-            if m:
-                direct_or_indirect = m.group(1).upper()
-                form_idx = idx
-                if idx + 1 < len(indexed_cells):
-                    nature = indexed_cells[idx + 1][1]
-                break
+        direct_or_indirect, nature, form_idx = _extract_ownership_form(indexed_cells)
 
         trans_date: str | None = None
         date_col_idx = -1
@@ -381,31 +481,10 @@ def parse_table_i_rows(
                 date_col_idx = idx
                 break
 
-        trans_code: str | None = None
-        equity_swap = False
-        code_col_idx = -1
-        for idx, (_, cell) in enumerate(indexed_cells[1:], start=1):
-            if form_idx != -1 and idx >= form_idx:
-                break
-            if idx == date_col_idx:
-                continue
-            m = _TRANSACTION_CODE_RE.search(cell)
-            if m:
-                trans_code = m.group(1).upper()
-                equity_swap = bool(m.group(2))
-                code_col_idx = idx
-                break
-
-        ad_code: str | None = None
-        for idx, (_, cell) in enumerate(indexed_cells[1:], start=1):
-            if form_idx != -1 and idx >= form_idx:
-                break
-            if idx in (date_col_idx, code_col_idx):
-                continue
-            m = _ACQUIRED_DISPOSED_RE.fullmatch(cell.strip("() "))
-            if m:
-                ad_code = m.group(1).upper()
-                break
+        trans_code, equity_swap, code_col_idx = _find_trans_code(
+            indexed_cells, form_idx, date_col_idx
+        )
+        ad_code = _find_ad_code(indexed_cells, form_idx, {date_col_idx, code_col_idx})
 
         shares_amount: float | None = None
         price_per_share: float | None = None
@@ -433,18 +512,9 @@ def parse_table_i_rows(
                     price_per_share = _extract_number(cell)
                     break
 
-        remaining_nums: list[float] = []
-        for idx, (_, cell) in enumerate(indexed_cells[1:], start=1):
-            if form_idx != -1 and idx >= form_idx:
-                break
-            if idx in (date_col_idx, code_col_idx):
-                continue
-            if "|" in cell or "$" in cell or "/sh" in cell.lower():
-                continue
-            if is_numeric_cell(cell):
-                val = _extract_number(cell)
-                if val is not None:
-                    remaining_nums.append(val)
+        remaining_nums = _find_remaining_numbers(
+            indexed_cells, form_idx, {date_col_idx, code_col_idx}
+        )
 
         if trans_code is not None or trans_date is not None:
             if shares_amount is None and remaining_nums:
@@ -485,53 +555,80 @@ def parse_table_ii_rows(
     section: ClassifiedSection | None,
 ) -> list[DerivativeTransaction]:
     """Parse Derivative transaction and holding rows from Table II."""
-    if section is None or len(section.resolved_grid.rows) <= 1:
-        return []
-
     results: list[DerivativeTransaction] = []
-    for row in section.resolved_grid.rows:
-        if not any(c.strip() for c in row):
-            continue
-
-        row_str = " ".join(c.strip() for c in row if c.strip())
-        row_lower = row_str.lower()
-
-        if any(term in row_lower for term in _TABLE_TERMINATORS):
-            break
-
-        if _is_statutory_or_instruction(row_str):
-            continue
-
-        if _is_table_header_row(row, "table ii"):
-            continue
+    for row, row_str, footnotes in _iter_clean_table_rows(section, "table ii"):
+        split_cells = tuple(
+            part.strip()
+            for c in row
+            if c.strip()
+            for part in c.split("|")
+            if part.strip()
+        )
+        if split_cells:
+            has_tx = any(_TRANSACTION_CODE_RE.search(c) for c in split_cells[1:])
+            schema = _TABLE_II_TX_SCHEMA if has_tx else _TABLE_II_HOLDING_SCHEMA
+            aligned = align_row_to_schema(split_cells, schema)
+            if aligned is not None and (
+                aligned.get("transaction_date")
+                or aligned.get("transaction_code")
+                or aligned.get("shares_amount")
+                or aligned.get("derivative_shares_owned_following")
+                or aligned.get("exercisable_date")
+                or aligned.get("expiration_date")
+            ):
+                sec_t = _clean_title(aligned.get("security_title") or "")
+                if _is_valid_row_security_title(sec_t):
+                    code_raw = aligned.get("transaction_code")
+                    eq_swap = bool(
+                        code_raw and any("v" in p.lower() for p in split_cells)
+                    )
+                    ad_code = aligned.get("acquired_disposed_code")
+                    if not ad_code and code_raw:
+                        ad_code = (
+                            "D"
+                            if code_raw in ("M", "C", "D", "S", "F")
+                            else ("A" if code_raw == "A" else None)
+                        )
+                    results.append(
+                        DerivativeTransaction(
+                            security_title=sec_t,
+                            conversion_or_exercise_price=aligned.get(
+                                "conversion_or_exercise_price"
+                            ),
+                            transaction_date=aligned.get("transaction_date"),
+                            transaction_code=code_raw,
+                            equity_swap_involved=eq_swap,
+                            shares_amount=aligned.get("shares_amount"),
+                            acquired_disposed_code=ad_code,
+                            exercisable_date=aligned.get("exercisable_date"),
+                            expiration_date=aligned.get("expiration_date"),
+                            underlying_security_title=aligned.get(
+                                "underlying_security_title"
+                            ),
+                            underlying_shares_amount=aligned.get(
+                                "underlying_shares_amount"
+                            ),
+                            price_of_derivative=aligned.get("price_of_derivative"),
+                            derivative_shares_owned_following=aligned.get(
+                                "derivative_shares_owned_following"
+                            ),
+                            direct_or_indirect=aligned.get("direct_or_indirect"),
+                            nature_of_ownership=aligned.get("nature_of_ownership"),
+                            footnote_ids=tuple(footnotes),
+                        )
+                    )
+                    continue
 
         indexed_cells = [(i, c.strip()) for i, c in enumerate(row) if c.strip()]
         if not indexed_cells:
             continue
 
-        footnotes = list(_extract_footnote_ids(row_str))
-
         raw_title = indexed_cells[0][1]
         security_title = _clean_title(raw_title)
-        if (
-            not security_title
-            or is_numeric_cell(security_title)
-            or NUMERIC_DATE_RE.fullmatch(security_title)
-            or _FOOTNOTE_REF_RE.fullmatch(security_title)
-        ):
+        if not _is_valid_row_security_title(security_title):
             continue
 
-        direct_or_indirect: str | None = None
-        nature: str | None = None
-        form_idx = -1
-        for idx, (_, cell) in reversed(list(enumerate(indexed_cells))):
-            m = _DIRECT_INDIRECT_RE.fullmatch(cell.strip("() "))
-            if m:
-                direct_or_indirect = m.group(1).upper()
-                form_idx = idx
-                if idx + 1 < len(indexed_cells):
-                    nature = indexed_cells[idx + 1][1]
-                break
+        direct_or_indirect, nature, form_idx = _extract_ownership_form(indexed_cells)
 
         exercise_price: float | None = None
         price_col_idx = -1
@@ -541,20 +638,9 @@ def parse_table_ii_rows(
                 price_col_idx = idx
                 break
 
-        trans_code: str | None = None
-        equity_swap = False
-        code_col_idx = -1
-        for idx, (_, cell) in enumerate(indexed_cells[1:], start=1):
-            if form_idx != -1 and idx >= form_idx:
-                break
-            if idx == price_col_idx:
-                continue
-            m = _TRANSACTION_CODE_RE.search(cell)
-            if m:
-                trans_code = m.group(1).upper()
-                equity_swap = bool(m.group(2))
-                code_col_idx = idx
-                break
+        trans_code, equity_swap, code_col_idx = _find_trans_code(
+            indexed_cells, form_idx, price_col_idx
+        )
 
         trans_date: str | None = None
         exercisable_date: str | None = None
@@ -599,21 +685,17 @@ def parse_table_ii_rows(
             elif not exercisable_date and len(found_dates) == 1:
                 exercisable_date = found_dates[0][1]
 
-        ad_code: str | None = None
-        if trans_code in ("M", "C", "D", "S", "F"):
-            ad_code = "D"
-        elif trans_code == "A":
-            ad_code = "A"
-
-        for idx, (_, cell) in enumerate(indexed_cells[1:], start=1):
-            if form_idx != -1 and idx >= form_idx:
-                break
-            if idx in (price_col_idx, code_col_idx) or idx in date_col_indices:
-                continue
-            m = _ACQUIRED_DISPOSED_RE.fullmatch(cell.strip("() "))
-            if m:
-                ad_code = m.group(1).upper()
-                break
+        ad_code = (
+            "D"
+            if trans_code in ("M", "C", "D", "S", "F")
+            else ("A" if trans_code == "A" else None)
+        )
+        if not ad_code:
+            ad_code = _find_ad_code(
+                indexed_cells,
+                form_idx,
+                {price_col_idx, code_col_idx} | date_col_indices,
+            )
 
         underlying_title: str | None = None
         underlying_shares: float | None = None
@@ -644,20 +726,11 @@ def parse_table_ii_rows(
                     underlying_col_indices.add(idx + 1)
                 break
 
-        remaining_nums: list[float] = []
-        for idx, (_, cell) in enumerate(indexed_cells[1:], start=1):
-            if form_idx != -1 and idx >= form_idx:
-                break
-            if (
-                idx in (price_col_idx, code_col_idx)
-                or idx in date_col_indices
-                or idx in underlying_col_indices
-            ):
-                continue
-            if is_numeric_cell(cell):
-                val = _extract_number(cell)
-                if val is not None:
-                    remaining_nums.append(val)
+        remaining_nums = _find_remaining_numbers(
+            indexed_cells,
+            form_idx,
+            {price_col_idx, code_col_idx} | date_col_indices | underlying_col_indices,
+        )
 
         shares_amount: float | None = None
         following_shares: float | None = None
@@ -709,9 +782,7 @@ def parse_footnotes(sections: list[ClassifiedSection]) -> dict[str, str]:
     for section in sections:
         for row in section.resolved_grid.rows:
             for cell in row:
-                if not cell:
-                    continue
-                for match in _FOOTNOTE_ENTRY_RE.finditer(cell):
+                for match in _FOOTNOTE_ENTRY_RE.finditer(cell or ""):
                     fn_id = match.group(1) or match.group(2)
                     text = match.group(3).strip()
                     if fn_id and text:

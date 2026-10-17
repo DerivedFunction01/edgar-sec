@@ -328,3 +328,26 @@ def test_parse_table_ii_ignores_date_as_security_title() -> None:
     </body></html>"""
     sections = partition_ownership_tables(html)
     assert parse_table_ii_rows(sections.table_ii) == []
+
+
+def test_parse_table_ii_holding_row() -> None:
+    """Verify Table II derivative holding row without transaction date or code."""
+    html = """<html><body>
+    <table><tr><td>Table II - Derivative Securities</td></tr></table>
+    <table>
+      <tr><td>1. Title</td><td>2. Price</td><td>6. Date Exercisable</td><td>Expiration</td><td>7. Title</td><td>Amount</td><td>9. Following</td><td>10. Form</td></tr>
+      <tr><td>Employee Stock Option</td><td>$10.50</td><td>01/01/2004</td><td>01/01/2014</td><td>Common Stock</td><td>5,000</td><td>5,000</td><td>D</td></tr>
+    </table>
+    </body></html>"""
+    sections = partition_ownership_tables(html)
+    rows = parse_table_ii_rows(sections.table_ii)
+    assert len(rows) == 1
+    assert rows[0].security_title == "Employee Stock Option"
+    assert rows[0].conversion_or_exercise_price == 10.5
+    assert rows[0].transaction_date is None
+    assert rows[0].transaction_code is None
+    assert rows[0].exercisable_date == "01/01/2004"
+    assert rows[0].expiration_date == "01/01/2014"
+    assert rows[0].underlying_security_title == "Common Stock"
+    assert rows[0].underlying_shares_amount == 5000.0
+    assert rows[0].direct_or_indirect == "D"
