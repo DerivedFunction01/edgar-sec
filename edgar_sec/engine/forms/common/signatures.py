@@ -73,25 +73,33 @@ SIG_NAME_RE = re.compile(
 )
 SIG_BY_NAME_TITLE_ALT = build_alternation(
     (
+        "accounting",
+        "assistant",
+        "attorney",
+        "chief",
+        "comp",
+        "counsel",
         "dir",
         "director",
-        "officer",
-        "president",
-        "pres",
-        "treasurer",
-        "treas",
-        "secretary",
-        "sec",
-        "chief",
         "exec",
         "executive",
-        "vice",
-        "principal",
-        "accounting",
         "financial",
-        "attorney",
-        "comp",
+        "general counsel",
+        "manager",
+        "managing",
+        "member",
+        "officer",
+        "partner",
+        "pres",
+        "president",
+        "principal",
         "prog",
+        "sec",
+        "secretary",
+        "treas",
+        "treasurer",
+        "trustee",
+        "vice",
     ),
     auto_escape=True,
 )
@@ -115,7 +123,7 @@ SIG_BY_NAME_TERMINATOR_ALT = build_alternation(
     auto_escape=False,
 )
 SIG_BY_NAME_RE = re.compile(
-    r"\bBy\s*:\s*(?:By\s+)?(?:/\s*s\s*/\s*)?"
+    rf"\bBy\s*:\s*(?:By\s+)?(?:{CONFORMED_SIGNATURE_ALT})?\s*"
     r"([A-Za-z][A-Za-z.,’‘\-']*(?:\s+[A-Za-z][A-Za-z.,’‘\-']*){0,5}?)"
     rf"(?=\s*(?:{SIG_BY_NAME_TERMINATOR_ALT}))",
     re.IGNORECASE,
@@ -175,26 +183,37 @@ def is_valid_signature_name(cand: str) -> bool:
     """Validate candidate signature name string against boilerplate and length."""
     if not cand or len(cand) > 60:
         return False
-    lower = cand.lower()
-    if lower.strip(" .:-") in {
+    lower = cand.lower().strip(" .:-")
+    if lower in {
         "date",
         "signature",
+        "reporting person",
         "power of attorney",
         "attorney-in-fact",
         "attorney in fact",
+        "common stock",
+        "units",
+        "code",
+        "d",
+        "i",
+        "a",
     }:
         return False
     if any(term in lower for term in SIG_BOILERPLATE_TERMS):
         return False
     words = cand.split()
-    return 1 <= len(words) <= 6
+    if not (1 <= len(words) <= 6):
+        return False
+    return len(words) > 1 or len(cand) >= 4
 
 
 def clean_signature_name(raw_text: str) -> str:
     """Strip underline runs, prefix labels, and conformed markers from a name."""
     cleaned = CONFORMED_SIGNATURE_RE.sub(" ", raw_text)
     cleaned = CLEAN_LINE_RE.sub(" ", cleaned)
+    cleaned = re.sub(r"(?i)^(?:by\s*:?\s*)+", "", cleaned.strip())
     cleaned = PREFIX_STRIP_RE.sub("", cleaned.strip())
+    cleaned = re.sub(r"\s*\(\d+\)$", "", cleaned.strip())
     cleaned = WHITESPACE_RE.sub(" ", cleaned).strip()
     return cleaned.strip(" ,.-/")
 
@@ -300,6 +319,108 @@ def is_signature_table(
     return score.score >= 2 and not score.exclusions
 
 
+DISALLOWED_SIGNATURE_NAME_WORDS: frozenset[str] = frozenset(
+    (
+        "reporting",
+        "person",
+        "signature",
+        "date",
+        "power",
+        "attorney",
+        "fact",
+        "units",
+        "stock",
+        "common",
+        "shares",
+        "title",
+        "security",
+        "derivative",
+        "month",
+        "year",
+        "see",
+        "instruction",
+        "copies",
+        "form",
+        "page",
+        "intentional",
+        "misstatements",
+        "omissions",
+        "facts",
+        "constitute",
+        "federal",
+        "criminal",
+        "violations",
+        "note",
+        "inc",
+        "corp",
+        "corporation",
+        "company",
+        "llc",
+    )
+)
+
+SIG_DELIMITER_TERMS = (
+    r",\s*",
+    r"\s+by\b",
+    r"\s+as\b",
+    r"\s+for\b",
+    r"\s+poa\b",
+    r"\s+attorney-in-fact\b",
+    r"\s+attorney\s+in\s+fact\b",
+    r"\n",
+    r"\t",
+    r"\s{2,}",
+)
+SIG_DELIMITER_ALT = build_alternation(SIG_DELIMITER_TERMS, auto_escape=False)
+SIG_DELIMITER_SPLIT_RE = re.compile(rf"(?i)(?:{SIG_DELIMITER_ALT})")
+SIG_LABEL_RE = re.compile(r"(?i)\*{0,2}\s*signature\s+of\s+reporting\s+person")
+TITLE_CASE_WORD_RE = re.compile(r"^[A-Z][a-zA-Z’‘'\.\-]*$")
+ALL_CAPS_WORD_RE = re.compile(r"^[A-Z][A-Z\.\-]*$")
+
+
+def extract_clean_signatory_name(raw_text: str) -> str | None:
+    """Extract and validate clean Title Cased signatory name from raw cell text."""
+    if not raw_text:
+        return None
+    s = re.sub(r"(?i)^(?:by\s*:?\s*)+", "", raw_text.strip())
+    s = re.sub(rf"(?i)^(?:{CONFORMED_SIGNATURE_ALT})\s*", "", s.strip())
+    s = re.sub(r"^[\*_= \-\t]+", "", s.strip())
+    m_sig_label = SIG_LABEL_RE.search(s)
+    if m_sig_label:
+        before = s[: m_sig_label.start()].strip()
+        after = s[m_sig_label.end() :].strip()
+        s = before if before else after
+    s = re.sub(r"\s*\(\d+\)$", "", s.strip())
+    parts = SIG_DELIMITER_SPLIT_RE.split(s)
+    cand = parts[0].strip(" ,.-*()_") if parts else s.strip(" ,.-*()_")
+    if len(parts) > 1 and parts[1].strip(" ,.-*()_").lower() in (
+        "jr",
+        "jr.",
+        "sr",
+        "sr.",
+        "ii",
+        "iii",
+        "iv",
+        "v",
+    ):
+        cand = f"{cand}, {parts[1].strip(' ,.-*()_')}"
+    cand = re.sub(r"\s*\(\d+\)$", "", cand).strip(" ,.-*()_")
+    cand = NUMERIC_DATE_RE.sub("", cand).strip(" ,.-*()_")
+    cand = RE_FULL_DATE.sub("", cand).strip(" ,.-*()_")
+    words = cand.split()
+    if not (2 <= len(words) <= 6):
+        return None
+    lower_words = [w.lower().strip(".,()'-*") for w in words]
+    if any(w in DISALLOWED_SIGNATURE_NAME_WORDS for w in lower_words):
+        return None
+    if any(MONTH_RE.search(w) for w in lower_words):
+        return None
+    is_title_or_caps = all(
+        TITLE_CASE_WORD_RE.match(w) or ALL_CAPS_WORD_RE.match(w) for w in words
+    )
+    return cand if is_title_or_caps else None
+
+
 __all__ = [
     "CLEAN_LINE_RE",
     "CONFORMED_SIGNATURE_ALT",
@@ -328,6 +449,7 @@ __all__ = [
     "SIG_UNDERLINED_NAME_RE",
     "WHITESPACE_RE",
     "clean_signature_name",
+    "extract_clean_signatory_name",
     "extract_signature_block",
     "extract_signature_candidate",
     "is_signature_table",

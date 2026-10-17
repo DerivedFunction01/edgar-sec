@@ -27,6 +27,7 @@ SIGNATURE_DELEGATION_TERMS: tuple[str, ...] = (
 )
 SIGNATURE_TERMINATION_KEYWORDS: tuple[str, ...] = (
     "by:",
+    "by",
     "for:",
     "date",
     "as",
@@ -41,7 +42,8 @@ _TERMINATION_ALT = build_alternation(
         r"[,\n\r]",
         rf"\s+(?:{_TERMINATION_KEYWORD_ALT})",
         rf"\s+(?:{_DELEGATION_ALT})\b",
-        r"\s+\*{1,2}",
+        r"\*{1,2}",
+        r"\s*\(\d+\)",
         r"\s+[_=]{3,}",
         r"[_=]{3,}",
         r"\s+\d{1,2}[-/]",
@@ -50,8 +52,11 @@ _TERMINATION_ALT = build_alternation(
     ],
     auto_escape=False,
 )
+_CONFORMED_PREFIX_ALT = build_alternation(
+    [r"/\s*s\s*/:?", r"[sS]/\s*", r"/s\s+"], auto_escape=False
+)
 RE_CONFORMED_SIGNER_NAME = re.compile(
-    rf"(?:By\s*:\s*|By\s+)?/\s*s\s*/:?\s*([A-Za-z’‘'\.\- ]+?)(?={_TERMINATION_ALT})",
+    rf"(?:By\s*:\s*|By\s+)?(?:{_CONFORMED_PREFIX_ALT})\s*([A-Za-z’‘'\.\- ]+?)(?={_TERMINATION_ALT})",
     re.IGNORECASE,
 )
 

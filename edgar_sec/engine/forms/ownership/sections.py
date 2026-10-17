@@ -158,8 +158,18 @@ def _classify_table_text(
     if not lower or not _NON_ALNUM_RE.sub("", lower):
         return SectionRole.PAGE_ARTIFACT
 
+    if (num_cols < 6 or past_tables) and (
+        "explanation of responses" in lower or "footnote description" in lower
+    ):
+        return SectionRole.FOOTNOTES
     if _is_table_ii_table(lower):
         return SectionRole.TABLE_II
+    if (
+        _is_table_i_table(lower, past_tables)
+        and past_tables
+        and not any(k in lower for k in ("name and address", "issuer name and"))
+    ):
+        return SectionRole.TABLE_I
     if _is_box_table(lower):
         return SectionRole.BOXES_1_TO_7
     if _is_header_table(lower):
@@ -278,6 +288,13 @@ def _standalone_signature_section(
         if "signature of reporting person" not in normalized:
             continue
         rows = [(text,)]
+        if start > 0 and paragraphs[start - 1].find_parent("table") is None:
+            prev_txt = paragraphs[start - 1].text(separator="\n").strip()
+            if any(p in prev_txt.lower() for p in ("/s/", "-s-", "by:", "for:")) or (
+                len(prev_txt) < 80
+                and not any(k in prev_txt.lower() for k in ("table", "form", "sec "))
+            ):
+                rows.insert(0, (prev_txt,))
         for continuation in paragraphs[start + 1 :]:
             if continuation.find_parent("table") is not None:
                 break
@@ -344,11 +361,8 @@ class OwnershipSectionAssembler:
             and 0 < t1_split < len(grid.rows)
             and (
                 role in (SectionRole.BOXES_1_TO_7, SectionRole.HEADER)
-                or (
-                    role == SectionRole.TABLE_I
-                    and _is_box_table(
-                        " ".join(" ".join(r) for r in grid.rows[:t1_split]).lower()
-                    )
+                or _is_box_table(
+                    " ".join(" ".join(r) for r in grid.rows[:t1_split]).lower()
                 )
             )
         ):
@@ -380,10 +394,10 @@ class OwnershipSectionAssembler:
             )
             return
 
-        if role == SectionRole.TABLE_II:
+        if role in (SectionRole.TABLE_I, SectionRole.TABLE_II):
             sig_split = _find_signature_split(grid.rows)
             if sig_split is not None and 0 < sig_split < len(grid.rows):
-                t2_grid = ResolvedGrid(
+                main_grid = ResolvedGrid(
                     rows=grid.rows[:sig_split],
                     column_alignments=grid.column_alignments,
                     column_widths=grid.column_widths,
@@ -395,10 +409,10 @@ class OwnershipSectionAssembler:
                 )
                 self._append_section(
                     ClassifiedSection(
-                        role=SectionRole.TABLE_II,
+                        role=role,
                         table_index=idx,
                         raw_node=node,
-                        resolved_grid=t2_grid,
+                        resolved_grid=main_grid,
                     )
                 )
                 self._append_section(

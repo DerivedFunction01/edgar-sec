@@ -77,7 +77,7 @@ EXCHANGE_PREFIX_ALT = build_alternation(
     auto_escape=True,
 )
 TICKER_PAREN_RE = re.compile(
-    rf"\s*\((?:(?:{EXCHANGE_PREFIX_ALT})\s*:\s*)?(?:[\"“”']\s*)?([A-Za-z0-9\.\-]+(?:\s+and\s+[A-Za-z0-9\.\-]+)?)(?:\s*[\"“”'])?\)\s*$",
+    rf"\s*\((?:(?:{EXCHANGE_PREFIX_ALT})\s*:\s*)?(?:[\"“”'‘’]+\s*)?([A-Za-z0-9\.\-]+(?:\s+and\s+[A-Za-z0-9\.\-]+)?)(?:\s*[\"“”'‘’]+)?\)\s*$",
     re.IGNORECASE,
 )
 TICKER_DASH_RE = re.compile(r"\s+[—\-]\s+([A-Za-z0-9]{1,6})\s*$")

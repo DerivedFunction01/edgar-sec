@@ -42,7 +42,10 @@ from edgar_sec.engine.forms.common.periods import (
 )
 from edgar_sec.engine.forms.common.signatures import (
     SIG_BOILERPLATE_TERMS,
+    clean_signature_name,
+    extract_clean_signatory_name,
     extract_signature_candidate,
+    is_valid_signature_name,
 )
 from edgar_sec.engine.forms.common.statutory import (
     HEADER_LEAK_RE,
@@ -654,8 +657,33 @@ def parse_metadata(
     sig_name: str | None = None
     sig_date: str | None = None
     if signatures_section is not None:
+        grid = signatures_section.resolved_grid
+        for r_idx, row in enumerate(grid.rows):
+            r_str = " ".join(row).lower()
+            if "signature of reporting person" in r_str or "signature of" in r_str:
+                for cell in row:
+                    cand = extract_clean_signatory_name(cell)
+                    if cand:
+                        sig_name = cand
+                        break
+                if not sig_name and r_idx > 0:
+                    prev_row = grid.rows[r_idx - 1]
+                    for cell in prev_row:
+                        cand = extract_clean_signatory_name(cell)
+                        if cand:
+                            sig_name = cand
+                            break
+                    if len(prev_row) > 1 and prev_row[1].strip():
+                        m_d = RE_FULL_DATE.search(
+                            prev_row[1]
+                        ) or NUMERIC_DATE_RE.search(prev_row[1])
+                        if m_d:
+                            sig_date = m_d.group(0).strip()
+                if sig_name:
+                    break
+
         clean_lines: list[str] = []
-        for r in signatures_section.resolved_grid.rows:
+        for r in grid.rows:
             for c in r:
                 if not c or not c.strip():
                     continue
@@ -666,7 +694,13 @@ def parse_metadata(
                     ):
                         clean_lines.append(s)
         sig_text = "\n".join(clean_lines)
-        sig_name, sig_date = extract_signature_candidate(sig_text)
+        cand_name, cand_date = extract_signature_candidate(sig_text)
+        if not sig_name and cand_name:
+            sig_name = extract_clean_signatory_name(cand_name) or (
+                cand_name if is_valid_signature_name(cand_name) else None
+            )
+        if not sig_date:
+            sig_date = cand_date
 
     return Form4Metadata(
         issuer=issuer,

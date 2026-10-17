@@ -69,6 +69,10 @@ def _is_table_header_row(row: tuple[str, ...], table_label: str) -> bool:
 
 def _clean_title(text: str) -> str:
     cleaned = _FOOTNOTE_REF_RE.sub("", text).strip()
+    if " - " in cleaned:
+        parts = cleaned.rsplit(" - ", 1)
+        if len(parts) == 2 and is_numeric_cell(parts[1]):
+            cleaned = parts[0]
     return " ".join(cleaned.split())
 
 
@@ -76,9 +80,18 @@ def _is_valid_row_security_title(title: str) -> bool:
     if not title or is_numeric_cell(title) or _FOOTNOTE_REF_RE.fullmatch(title):
         return False
     lower = title.lower()
-    if "instr." in lower or "title of" in lower or bool(HEADER_LEAK_RE.search(title)):
+    if (
+        "instr." in lower
+        or "title of" in lower
+        or "transaction" in lower
+        or "beneficially owned" in lower
+        or "disposed of" in lower
+        or bool(HEADER_LEAK_RE.search(title))
+    ):
         return False
-    stripped = title.strip("*() AD")
+    stripped = title.strip("*() AD-")
+    if not stripped or stripped in ("0", "1-for"):
+        return False
     if NUMERIC_DATE_RE.search(stripped) and "option" not in lower:
         return False
     return True
@@ -308,7 +321,7 @@ _COMMON_TABLE_II_TAIL = (
 
 _TX_TABLE_II_PREFIX = (
     _col(0, "security_title", is_required=True),
-    _col(1, "conversion_or_exercise_price", False, True, _is_price, _extract_number),
+    _col(1, "conversion_or_exercise_price", False, False, None, _extract_number),
     _col(2, "transaction_date", False, True, _is_date, _extract_date),
     _col(3, "deemed_execution_date"),
     _col(4, "transaction_code", False, True, _is_code, _extract_code),
@@ -319,7 +332,7 @@ _TX_TABLE_II_PREFIX = (
 
 _HOLDING_TABLE_II_PREFIX = (
     _col(0, "security_title", is_required=True),
-    _col(1, "conversion_or_exercise_price", False, True, _is_price, _extract_number),
+    _col(1, "conversion_or_exercise_price", False, False, None, _extract_number),
 )
 
 
@@ -653,10 +666,12 @@ def parse_table_ii_rows(
             if "-" in cell:
                 parts = [p.strip() for p in cell.rsplit("-", 1)]
                 if len(parts) == 2 and is_numeric_cell(parts[1]):
-                    underlying_title = _clean_title(parts[0])
-                    underlying_shares = _extract_number(parts[1])
-                    underlying_col_indices.add(idx)
-                    break
+                    cand_title = _clean_title(parts[0])
+                    if cand_title and _is_valid_row_security_title(cand_title):
+                        underlying_title = cand_title
+                        underlying_shares = _extract_number(parts[1])
+                        underlying_col_indices.add(idx)
+                        break
             elif any(
                 k in cell.lower()
                 for k in ("common stock", "preferred stock", "class a", "class b")
