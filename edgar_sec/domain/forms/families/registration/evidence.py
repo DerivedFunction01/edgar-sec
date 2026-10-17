@@ -57,8 +57,11 @@ REGISTRATION_SHAPE_TERMS: tuple[str, ...] = (
     "agent for service",
     "primary standard industrial classification code number",
     "primary standard industrial classification",
+    "calculation of registration fee",
     "calculation of filing fee tables",
     "calculation of filing fee",
+    "proposed maximum offering price",
+    "proposed maximum aggregate offering price",
 )
 
 # Decisive registration body phrases: 2-3 word hits confirming early body prose.
@@ -90,6 +93,14 @@ REGISTRATION_BODY_PHRASES: tuple[str, ...] = (
     "plan of distribution",
     "description of capital",
     "description of securities",
+    # Transaction & merger anchors (Form S-4)
+    "the merger",
+    "merger agreement",
+    "the exchange offer",
+    "special meeting",
+    "questions and answers",
+    # Benefit plan anchors (Form S-8)
+    "incorporation of documents by reference",
 )
 
 REGISTRATION_BODY_SOFT_PHRASES: tuple[str, ...] = (

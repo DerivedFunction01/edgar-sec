@@ -11,8 +11,12 @@ from edgar_sec.engine.forms.analysis import analyze_form_case, summarize_form_ca
 def analyze_registration_review_case(
     case_dir: Path, record: dict[str, Any]
 ) -> dict[str, Any] | None:
-    """Analyze a single Form S-1 review case directory producing diagnostics."""
-    rep = analyze_form_case(case_dir, record, form="S-1", family="S-1")
+    """Analyze a single registration review case directory producing diagnostics."""
+    resolved_form = str(record.get("form") or record.get("family") or "S-1")
+    resolved_family = str(record.get("family") or resolved_form)
+    rep = analyze_form_case(
+        case_dir, record, form=resolved_form, family=resolved_family
+    )
     if rep is None:
         return None
     cm = rep["checkmarks"]
@@ -26,8 +30,9 @@ def analyze_registration_review_case(
 def summarize_registration_cases(
     case_reports: list[dict[str, Any]],
 ) -> dict[str, Any]:
-    """Aggregate individual Form S-1 case analyses into an overall summary."""
-    summary = summarize_form_cases(case_reports, family="S-1")
+    """Aggregate individual registration case analyses into an overall summary."""
+    family = case_reports[0].get("family", "S-1") if case_reports else "S-1"
+    summary = summarize_form_cases(case_reports, family=family)
     if summary.get("case_count", 0) == 0:
         return summary
     rule_415_hits = sum(
