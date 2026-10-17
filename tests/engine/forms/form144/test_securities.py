@@ -34,3 +34,21 @@ def test_parse_tables():
     assert len(table_ii) == 1
     assert table_ii[0].amount_sold == 1000
     assert table_ii[0].gross_proceeds == 30000.0
+
+
+def test_parse_table_i_missing_optional_columns():
+    """Verify deficit resolution when payment date and donor columns are omitted."""
+    html = """<html><body>
+    <table>
+      <tr><td>TABLE I - SECURITIES TO BE SOLD</td></tr>
+      <tr><td>Common Stock</td><td>02/20/2021</td><td>Direct Purchase</td><td>10,000</td></tr>
+    </table>
+    </body></html>"""
+    sections = partition_form144_tables(html)
+    items = parse_table_i_rows(sections.table_i)
+    assert len(items) == 1
+    assert items[0].class_title == "Common Stock"
+    assert items[0].acquired_date == "02/20/2021"
+    assert items[0].nature_of_acquisition == "Direct Purchase"
+    assert items[0].amount_acquired == 10000
+    assert items[0].payment_date == "02/20/2021"

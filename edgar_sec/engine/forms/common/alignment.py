@@ -106,7 +106,7 @@ def _project_interval(
         if cell_idx < len(interval_cells):
             _, cell = interval_cells[cell_idx]
             val = col.data_extractor(cell) if col.data_extractor else cell
-            if col.is_required or len(interval_cells) - cell_idx >= len(req_cols):
+            if col.is_required or len(interval_cells) - cell_idx > len(req_cols):
                 result[col.name] = val
                 cell_idx += 1
                 if col in req_cols:

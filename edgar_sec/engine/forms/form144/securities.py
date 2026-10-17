@@ -8,6 +8,11 @@ from edgar_sec.domain.forms.families.form144.models import (
     TableISecurityItem,
     TableIISecuritySoldItem,
 )
+from edgar_sec.engine.forms.common.alignment import (
+    CanonicalColumn,
+    TableSchema,
+    align_row_to_schema,
+)
 from edgar_sec.engine.forms.common.numbers import clean_numeric
 from edgar_sec.engine.forms.common.statutory import STATUTORY_PAGE_ARTIFACT_RE
 from edgar_sec.engine.forms.common.tables import is_instruction_row
@@ -106,6 +111,79 @@ def _is_table_ii_header(row: tuple[str, ...]) -> bool:
     return header_hits >= 2
 
 
+_TABLE_I_SCHEMA = TableSchema(
+    name="form144_table_i",
+    columns=(
+        CanonicalColumn(index=0, name="class_title", is_required=True),
+        CanonicalColumn(
+            index=1,
+            name="acquired_date",
+            is_required=True,
+            is_anchor=True,
+            anchor_validator=lambda s: bool(NUMERIC_DATE_RE.search(s)),
+            data_extractor=lambda s: (
+                m.group(0) if (m := NUMERIC_DATE_RE.search(s)) else None
+            ),
+        ),
+        CanonicalColumn(index=2, name="nature_of_acquisition", is_required=True),
+        CanonicalColumn(index=3, name="donor_or_seller_name", is_required=False),
+        CanonicalColumn(
+            index=4,
+            name="amount_acquired",
+            is_required=True,
+            data_extractor=clean_numeric,
+        ),
+        CanonicalColumn(
+            index=5,
+            name="payment_date",
+            is_required=False,
+            is_anchor=True,
+            anchor_validator=lambda s: bool(NUMERIC_DATE_RE.search(s)),
+            data_extractor=lambda s: (
+                m.group(0) if (m := NUMERIC_DATE_RE.search(s)) else None
+            ),
+        ),
+        CanonicalColumn(index=6, name="nature_of_payment", is_required=False),
+    ),
+)
+
+_TABLE_II_SCHEMA = TableSchema(
+    name="form144_table_ii",
+    columns=(
+        CanonicalColumn(index=0, name="seller_name", is_required=True),
+        CanonicalColumn(index=1, name="class_title", is_required=True),
+        CanonicalColumn(
+            index=2,
+            name="sale_date",
+            is_required=True,
+            is_anchor=True,
+            anchor_validator=lambda s: bool(NUMERIC_DATE_RE.search(s)),
+            data_extractor=lambda s: (
+                m.group(0) if (m := NUMERIC_DATE_RE.search(s)) else None
+            ),
+        ),
+        CanonicalColumn(
+            index=3,
+            name="amount_sold",
+            is_required=True,
+            data_extractor=clean_numeric,
+        ),
+        CanonicalColumn(
+            index=4,
+            name="gross_proceeds",
+            is_required=False,
+            is_anchor=True,
+            anchor_validator=lambda s: (
+                "$" in s or (is_numeric_cell(s) and clean_numeric(s) is not None)
+            ),
+            data_extractor=lambda s: (
+                float(n) if (n := clean_numeric(s)) is not None else None
+            ),
+        ),
+    ),
+)
+
+
 def parse_table_i_rows(section: ClassifiedSection | None) -> list[TableISecurityItem]:
     """Map acquisition history rows from Table I."""
     if section is None or len(section.resolved_grid.rows) <= 1:
@@ -124,6 +202,27 @@ def parse_table_i_rows(section: ClassifiedSection | None) -> list[TableISecurity
             break
 
         if _is_form144_instruction(row_str) or _is_table_i_header(row):
+            continue
+
+        aligned = align_row_to_schema(tuple(raw_cells), _TABLE_I_SCHEMA)
+        if aligned is not None:
+            acq_d = aligned.get("acquired_date")
+            pay_d = aligned.get("payment_date") or acq_d
+            items.append(
+                TableISecurityItem(
+                    class_title=aligned.get("class_title"),
+                    acquired_date=acq_d,
+                    nature_of_acquisition=aligned.get("nature_of_acquisition"),
+                    donor_or_seller_name=aligned.get("donor_or_seller_name"),
+                    is_gift=bool(
+                        (nat := aligned.get("nature_of_acquisition"))
+                        and "gift" in str(nat).lower()
+                    ),
+                    amount_acquired=aligned.get("amount_acquired"),
+                    payment_date=pay_d,
+                    nature_of_payment=aligned.get("nature_of_payment"),
+                )
+            )
             continue
 
         dates: list[tuple[int, str]] = []
@@ -201,6 +300,19 @@ def parse_table_ii_rows(
             break
 
         if _is_form144_instruction(row_str) or _is_table_ii_header(row):
+            continue
+
+        aligned = align_row_to_schema(tuple(raw_cells), _TABLE_II_SCHEMA)
+        if aligned is not None:
+            items.append(
+                TableIISecuritySoldItem(
+                    seller_name=aligned.get("seller_name"),
+                    class_title=aligned.get("class_title"),
+                    sale_date=aligned.get("sale_date"),
+                    amount_sold=aligned.get("amount_sold"),
+                    gross_proceeds=aligned.get("gross_proceeds"),
+                )
+            )
             continue
 
         sale_date: str | None = None
