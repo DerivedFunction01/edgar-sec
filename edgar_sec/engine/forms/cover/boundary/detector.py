@@ -32,7 +32,7 @@ from edgar_sec.foundation.regex.builder import build_alternation
 # Amendment structural transitions ending a 10-K/A cover with no PART I /
 # ITEM 1 sequence. Order matters: more specific patterns first.
 _AMENDMENT_TRANSITION_PATTERNS = [
-    r"explanatory\s+(?:note|statement)",
+    r"explanatory\s+(?:note|statement)(?:\s*/\s*deregistration\s+of\s+securities)?",
     r"deregistration\s+of\s+securities",
     r"termination\s+of\s+registration",
     r"introduction",
@@ -88,7 +88,7 @@ def find_cover_boundary(
         body_evidence=body_evidence,
     )
     scan_start = cover_start.start_line if cover_start.start_line is not None else 0
-    search_limit = max(200, int(len(lines) * 0.25))
+    search_limit = max(250, scan_start + 180, int(len(lines) * 0.25))
     scan_start = min(scan_start, search_limit)
     evidence: list[BoundaryEvidence] = []
 

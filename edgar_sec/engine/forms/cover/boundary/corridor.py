@@ -44,7 +44,7 @@ _MAX_PARAGRAPH_WORDS = 160
 # score-1 evidence stays ambiguous and below the acceptance gate.
 _SCORE_CONFIDENCE = {0: 0.0, 1: 0.5, 2: 0.7, 3: 0.85}
 
-_COVER_START_SEARCH_WINDOW = 60
+_COVER_START_SEARCH_WINDOW = 140
 _COVER_START_CLUSTER_GAP = 12
 
 

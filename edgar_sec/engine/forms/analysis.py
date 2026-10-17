@@ -12,7 +12,7 @@ from edgar_sec.engine.forms.cover.boundary.detector import (
     find_cover_boundary_for_profile,
 )
 from edgar_sec.engine.forms.cover.checkmarks.solver import infer_cover_checkmarks
-from edgar_sec.engine.forms.cover.models import BoundaryInput
+from edgar_sec.engine.forms.cover.models import BoundaryInput, BoundarySignal
 from edgar_sec.engine.forms.cover.profiles import get_profile
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.engine.forms.sections.notes.detector import detect_notes_sequence
@@ -33,7 +33,7 @@ _FILER_STATUS_KEYS = (
     "emerging_growth_company",
 )
 
-_COVER_LEAK_PHRASES: tuple[str, ...] = (
+_UNIVERSAL_COVER_LEAK_PHRASES: tuple[str, ...] = (
     "calculation of registration fee",
     "proposed maximum offering price",
     "amount of registration fee",
@@ -42,6 +42,10 @@ _COVER_LEAK_PHRASES: tuple[str, ...] = (
     "exact name of registrant",
     "indicate by check mark",
     "large accelerated filer",
+)
+
+_ANNUAL_COVER_LEAK_PHRASES: tuple[str, ...] = (
+    *_UNIVERSAL_COVER_LEAK_PHRASES,
     "documents incorporated by reference",
 )
 
@@ -81,6 +85,8 @@ def _is_swallow_heading(line: str, phrase: str) -> bool:
 def analyze_boundary_corridor(
     lines: list[str],
     end_line: int,
+    *,
+    family: str | None = None,
     window: int = 10,
 ) -> dict[str, Any]:
     """Evaluate pre- and post-boundary lines for out-of-place n-grams."""
@@ -88,7 +94,16 @@ def analyze_boundary_corridor(
     post_slice = lines[end_line : min(len(lines), end_line + window)]
     post_text = " ".join(post_slice).lower()
 
-    leak_hits = [p for p in _COVER_LEAK_PHRASES if p in post_text]
+    profile = get_profile(family) if family else None
+    has_inc_ref = (
+        profile is not None
+        and profile.boundary is not None
+        and BoundarySignal.INCORPORATED_REFERENCE in profile.boundary.signals
+    )
+    active_leaks = (
+        _ANNUAL_COVER_LEAK_PHRASES if has_inc_ref else _UNIVERSAL_COVER_LEAK_PHRASES
+    )
+    leak_hits = [p for p in active_leaks if p in post_text]
     swallow_hits = [
         p
         for p in _BODY_SWALLOW_PHRASES
@@ -185,7 +200,7 @@ def analyze_form_case(
     start = boundary.start_line or 0
     end = boundary.end_line or 0
     cover_lines = max(0, end - start)
-    corridor = analyze_boundary_corridor(lines, end, window=10)
+    corridor = analyze_boundary_corridor(lines, end, family=resolved_family, window=10)
 
     anomalies: list[dict[str, Any]] = []
     if boundary.confidence < _MEDIUM_CONFIDENCE_THRESHOLD:

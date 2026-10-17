@@ -99,3 +99,20 @@ def test_summarize_cases_aggregation(tmp_path: Path) -> None:
     assert "corridor_scorecard" in summary
     assert summary["corridor_scorecard"]["leak_case_count"] == 0
     assert summary["taxonomy_scorecard"]["mean_items_per_case"] > 0
+
+
+def test_analyze_boundary_corridor_family_leak_filtering() -> None:
+    from edgar_sec.engine.forms.analysis import analyze_boundary_corridor
+
+    lines = [
+        "CALCULATION OF REGISTRATION FEE",
+        "Common Stock",
+        "PART I",
+        "DOCUMENTS INCORPORATED BY REFERENCE",
+        "Portions of the proxy statement are incorporated.",
+    ]
+    s8_result = analyze_boundary_corridor(lines, end_line=2, family="S-8")
+    assert s8_result["leak_hits"] == []
+
+    k_result = analyze_boundary_corridor(lines, end_line=2, family="10-K")
+    assert "documents incorporated by reference" in k_result["leak_hits"]

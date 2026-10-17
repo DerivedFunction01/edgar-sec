@@ -179,3 +179,15 @@ def test_boundary_input_accepts_both_text_forms() -> None:
             ).start_line
             == 0
         )
+
+
+def test_cover_start_handles_long_registration_number_preambles() -> None:
+    preamble = [f"Registration Statement File No. 333-{10000 + i}" for i in range(25)]
+    body = [
+        *preamble,
+        *COVER,
+    ]
+    result = find_cover_start(
+        "\n".join(body), _policy(BoundarySignal.COVER_IDENTITY_AND_LAYOUT)
+    )
+    assert result.start_line == 25
