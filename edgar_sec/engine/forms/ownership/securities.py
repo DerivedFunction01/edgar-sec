@@ -14,8 +14,19 @@ from edgar_sec.engine.forms.common.alignment import (
     align_row_to_schema,
 )
 from edgar_sec.engine.forms.common.numbers import clean_numeric
-from edgar_sec.engine.forms.common.statutory import STATUTORY_PAGE_ARTIFACT_RE
+from edgar_sec.engine.forms.common.statutory import (
+    HEADER_LEAK_RE,
+    STATUTORY_PAGE_ARTIFACT_RE,
+)
 from edgar_sec.engine.forms.common.tables import is_instruction_row
+from edgar_sec.engine.forms.ownership.patterns import (
+    EXACT_HEADER_CELLS,
+    HEADER_LABELS,
+    HEADER_SUB_KEYWORDS,
+    INSTRUCTION_TOKEN_SETS,
+    SUBHEADER_CELLS,
+    TABLE_TERMINATORS,
+)
 from edgar_sec.engine.forms.ownership.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
 from edgar_sec.foundation.regex.builder import build_alternation
@@ -32,76 +43,6 @@ _FOOTNOTE_ENTRY_RE = re.compile(
 _ACQUIRED_DISPOSED_RE = re.compile(r"\b([AD])\b", re.IGNORECASE)
 _DIRECT_INDIRECT_RE = re.compile(r"\b([DI])\b", re.IGNORECASE)
 
-_TABLE_TERMINATORS = (
-    "/s/",
-    "** signature",
-    "signature of reporting person",
-    "explanation of responses",
-)
-_SUBHEADER_CELLS = frozenset(
-    {
-        "code",
-        "v",
-        "amount",
-        "price",
-        "(a) or (d)",
-        "(a)",
-        "(d)",
-        "instr. 3",
-        "instr. 4",
-        "instr. 5",
-        "instr. 8",
-        "date",
-        "title",
-        "exercise",
-        "conversion",
-        "exercisable",
-        "expiration",
-        "following",
-    }
-)
-_INSTRUCTION_TOKEN_SETS = tuple(
-    frozenset(s.split())
-    for s in (
-        "filed pursuant section 16",
-        "investment company act",
-        "check box longer subject",
-        "form obligations continue",
-        "affirmative defense 10b5-1",
-        "written trading plan",
-        "reminder report separate line",
-        "intentional misstatements criminal",
-        "18 u.s.c 1001",
-        "15 u.s.c 78ff",
-        "omb approval",
-        "3235-0287",
-        "burden hours",
-        "print type responses",
-    )
-)
-
-
-_HEADER_LABELS = (
-    "title of security",
-    "title of derivative",
-    "title of class",
-    "transaction date",
-    "conversion or exercise",
-    "date of earliest",
-    "deemed execution date",
-)
-_HEADER_SUB_KEYWORDS = (
-    "instr.",
-    "month/day",
-    "end of month",
-    "exercise",
-    "conversion",
-    "expiration",
-    "following",
-    "underlying",
-)
-_EXACT_HEADER_CELLS = ("code", "v", "amount", "price", "(a) or (d)")
-
 
 def _is_table_header_row(row: tuple[str, ...], table_label: str) -> bool:
     lower_cells = [c.lower().strip() for c in row if c.strip()]
@@ -110,17 +51,17 @@ def _is_table_header_row(row: tuple[str, ...], table_label: str) -> bool:
     if any(NUMERIC_DATE_RE.search(c) for c in lower_cells):
         return False
     row_str = " ".join(lower_cells)
-    if table_label in row_str or any(k in row_str for k in _HEADER_LABELS):
+    if table_label in row_str or any(k in row_str for k in HEADER_LABELS):
         return True
     header_keywords = sum(
         1
         for c in lower_cells
-        if any(k in c for k in _HEADER_SUB_KEYWORDS) or c in _EXACT_HEADER_CELLS
+        if any(k in c for k in HEADER_SUB_KEYWORDS) or c in EXACT_HEADER_CELLS
     )
     hits = sum(
         1
         for c in lower_cells
-        if c in _SUBHEADER_CELLS
+        if c in SUBHEADER_CELLS
         or any(k in c for k in ("instr.", "month/day", "end of month"))
     )
     return header_keywords >= 1 and hits >= 2
@@ -132,12 +73,15 @@ def _clean_title(text: str) -> str:
 
 
 def _is_valid_row_security_title(title: str) -> bool:
-    return bool(
-        title
-        and not is_numeric_cell(title)
-        and not NUMERIC_DATE_RE.fullmatch(title)
-        and not _FOOTNOTE_REF_RE.fullmatch(title)
-    )
+    if not title or is_numeric_cell(title) or _FOOTNOTE_REF_RE.fullmatch(title):
+        return False
+    lower = title.lower()
+    if "instr." in lower or "title of" in lower or bool(HEADER_LEAK_RE.search(title)):
+        return False
+    stripped = title.strip("*() AD")
+    if NUMERIC_DATE_RE.search(stripped) and "option" not in lower:
+        return False
+    return True
 
 
 def _extract_ownership_form(
@@ -203,7 +147,7 @@ def _is_statutory_or_instruction(row_str: str) -> bool:
     if any(k in low for k in ("omb information", "sec 1474", "sec 2474")):
         return True
     tokens = frozenset(re.findall(r"[a-z0-9\(\)]+", low))
-    return any(sig.issubset(tokens) for sig in _INSTRUCTION_TOKEN_SETS)
+    return any(sig.issubset(tokens) for sig in INSTRUCTION_TOKEN_SETS)
 
 
 @dataclass(frozen=True, slots=True)
@@ -406,7 +350,7 @@ def _iter_clean_table_rows(
         if not any(c.strip() for c in row):
             continue
         row_str = " ".join(c.strip() for c in row if c.strip())
-        if any(term in row_str.lower() for term in _TABLE_TERMINATORS):
+        if any(term in row_str.lower() for term in TABLE_TERMINATORS):
             break
         if _is_statutory_or_instruction(row_str) or _is_table_header_row(
             row, table_label

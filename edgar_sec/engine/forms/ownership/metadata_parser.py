@@ -234,8 +234,22 @@ def _parse_reporting_owner(
         ):
             m = NAME_MATCH_RE.search(line)
             if m:
-                cap = m.group(1).strip(", \n\r*")
+                cap = m.group(1).strip(", \n\r*:\xa0")
                 cap = _REPORTING_PERSON_PLURAL_RE.sub("", cap)
+                if any(
+                    k in cap.lower()
+                    for k in (
+                        ", po box",
+                        ", p.o. box",
+                        ", suite",
+                        ", st.",
+                        ", street",
+                        ", ave",
+                        ", road",
+                        ", rd.",
+                    )
+                ):
+                    cap = cap.split(",")[0].strip()
                 if cap and not PROSE_BOILERPLATE_RE.search(cap):
                     name = cap
             continue
@@ -254,15 +268,23 @@ def _parse_reporting_owner(
         cleaned = STRIP_BOX_NUM_RE.sub("", line).strip(", \n\r*")
         if not cleaned:
             continue
+        cleaned_no_fn = re.sub(r"(?<=[a-zA-Z\.])\d{1,2}$", "", cleaned).strip()
         has_anchor = bool(STREET_ANCHOR_RE.search(line))
-        has_digits = any(c.isdigit() for c in line)
+        has_digits = any(c.isdigit() for c in cleaned_no_fn)
+        starts_digits = bool(re.match(r"^\d+\b", cleaned_no_fn))
         if (
             has_anchor
             and (has_digits or any(k in lower for k in ("p.o.", "c/o", "penthouse")))
-        ) or (has_digits and len(cleaned) < 70 and not STATE_ZIP_RE.search(line)):
-            street_candidates.append((idx, cleaned))
-        elif not name and 1 <= len(cleaned.split()) <= 20 and len(cleaned) <= 160:
-            name_candidates.append(cleaned)
+        ) or (
+            starts_digits and len(cleaned_no_fn) < 70 and not STATE_ZIP_RE.search(line)
+        ):
+            street_candidates.append((idx, cleaned_no_fn))
+        elif (
+            not name
+            and 1 <= len(cleaned_no_fn.split()) <= 20
+            and len(cleaned_no_fn) <= 160
+        ):
+            name_candidates.append(cleaned_no_fn)
 
     if street_candidates:
         if csz_idx != -1:
@@ -457,6 +479,8 @@ def _parse_period(cell_text: str) -> FilingPeriod:
                 break
 
     is_amendment = bool(amend_date and any(c.isdigit() for c in amend_date))
+    if not period and is_amendment:
+        period = amend_date
 
     return FilingPeriod(
         period_of_report=period,
@@ -569,6 +593,16 @@ def parse_metadata(
                         )
                         below = target_row[target_idx].strip()
                         below_lower = lowered_rows[next_r][target_idx]
+                        if not (below and any(char.isdigit() for char in below)):
+                            for c_cand, c_cand_lower in zip(
+                                target_row, lowered_rows[next_r]
+                            ):
+                                if c_cand.strip() and any(
+                                    char.isdigit() for char in c_cand
+                                ):
+                                    below = c_cand.strip()
+                                    below_lower = c_cand_lower
+                                    break
                         if (
                             below
                             and any(char.isdigit() for char in below)

@@ -59,7 +59,84 @@ PROSE_BOILERPLATE_TERMS: tuple[str, ...] = (
 PROSE_BOILERPLATE_ALT = build_alternation(PROSE_BOILERPLATE_TERMS, auto_escape=True)
 PROSE_BOILERPLATE_RE = re.compile(rf"(?:{PROSE_BOILERPLATE_ALT})", re.IGNORECASE)
 
+TABLE_TERMINATORS: tuple[str, ...] = (
+    "/s/",
+    "** signature",
+    "signature of reporting person",
+    "explanation of responses",
+)
+
+SUBHEADER_CELLS: frozenset[str] = frozenset(
+    {
+        "code",
+        "v",
+        "amount",
+        "price",
+        "(a) or (d)",
+        "(a)",
+        "(d)",
+        "instr. 3",
+        "instr. 4",
+        "instr. 5",
+        "instr. 8",
+        "date",
+        "title",
+        "exercise",
+        "conversion",
+        "exercisable",
+        "expiration",
+        "following",
+    }
+)
+
+INSTRUCTION_TOKEN_SETS: tuple[frozenset[str], ...] = tuple(
+    frozenset(s.split())
+    for s in (
+        "filed pursuant section 16",
+        "investment company act",
+        "check box longer subject",
+        "form obligations continue",
+        "affirmative defense 10b5-1",
+        "written trading plan",
+        "reminder report separate line",
+        "intentional misstatements criminal",
+        "18 u.s.c 1001",
+        "15 u.s.c 78ff",
+        "omb approval",
+        "3235-0287",
+        "burden hours",
+        "print type responses",
+    )
+)
+
+HEADER_LABELS: tuple[str, ...] = (
+    "title of security",
+    "title of derivative",
+    "title of class",
+    "transaction date",
+    "conversion or exercise",
+    "date of earliest",
+    "deemed execution date",
+)
+
+HEADER_SUB_KEYWORDS: tuple[str, ...] = (
+    "instr.",
+    "month/day",
+    "end of month",
+    "exercise",
+    "conversion",
+    "expiration",
+    "following",
+    "underlying",
+)
+
+EXACT_HEADER_CELLS: tuple[str, ...] = ("code", "v", "amount", "price", "(a) or (d)")
+
 __all__ = [
+    "EXACT_HEADER_CELLS",
+    "HEADER_LABELS",
+    "HEADER_SUB_KEYWORDS",
+    "INSTRUCTION_TOKEN_SETS",
     "OWNERSHIP_CONTINUATION_RE",
     "OWNERSHIP_FORM_ALT",
     "OWNERSHIP_MASTHEAD_RE",
@@ -67,4 +144,6 @@ __all__ = [
     "PROSE_BOILERPLATE_ALT",
     "PROSE_BOILERPLATE_RE",
     "PROSE_BOILERPLATE_TERMS",
+    "SUBHEADER_CELLS",
+    "TABLE_TERMINATORS",
 ]

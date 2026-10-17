@@ -224,7 +224,16 @@ def render_form4_to_xml(
     _add_text_elem(root, "schemaVersion", "X0206")
     doc_type = context.family if context and context.family else "4"
     _add_text_elem(root, "documentType", doc_type)
-    _add_text_elem(root, "periodOfReport", metadata.period.period_of_report)
+    period = metadata.period.period_of_report
+    if not period and metadata.period.date_of_original:
+        period = metadata.period.date_of_original
+    if not period:
+        tx_dates = [r.transaction_date for r in table_i_rows if r.transaction_date] + [
+            r.transaction_date for r in table_ii_rows if r.transaction_date
+        ]
+        if tx_dates:
+            period = tx_dates[0]
+    _add_text_elem(root, "periodOfReport", period)
 
     _build_issuer_xml(root, metadata)
     _build_owner_xml(root, metadata)

@@ -229,6 +229,43 @@ def _merge_sections(
     )
 
 
+def _standalone_boxes_section(
+    tree: FastHtmlNode, table_count: int
+) -> ClassifiedSection | None:
+    paragraphs = tree.css("p")
+    rows: list[tuple[str]] = []
+    first_p: FastHtmlNode | None = None
+    for paragraph in paragraphs:
+        if paragraph.find_parent("table") is not None:
+            continue
+        text = paragraph.text(separator=" ").strip()
+        lower = text.lower()
+        if any(
+            marker in lower
+            for marker in (
+                "reporting person",
+                "issuer name",
+                "statement for",
+                "relationship of reporting",
+            )
+        ):
+            if first_p is None:
+                first_p = paragraph
+            rows.append((text,))
+    if len(rows) >= 2 and first_p is not None:
+        return ClassifiedSection(
+            role=SectionRole.BOXES_1_TO_7,
+            table_index=table_count + 1,
+            raw_node=first_p,
+            resolved_grid=ResolvedGrid(
+                rows=tuple(rows),
+                column_alignments=(HorizontalAlign.LEFT,),
+                column_widths=(max(map(len, (r[0] for r in rows))),),
+            ),
+        )
+    return None
+
+
 def _standalone_signature_section(
     tree: FastHtmlNode, table_count: int
 ) -> ClassifiedSection | None:
@@ -305,7 +342,15 @@ class OwnershipSectionAssembler:
         if (
             t1_split is not None
             and 0 < t1_split < len(grid.rows)
-            and role in (SectionRole.BOXES_1_TO_7, SectionRole.HEADER)
+            and (
+                role in (SectionRole.BOXES_1_TO_7, SectionRole.HEADER)
+                or (
+                    role == SectionRole.TABLE_I
+                    and _is_box_table(
+                        " ".join(" ".join(r) for r in grid.rows[:t1_split]).lower()
+                    )
+                )
+            )
         ):
             box_grid = ResolvedGrid(
                 rows=grid.rows[:t1_split],
@@ -427,11 +472,14 @@ class OwnershipSectionAssembler:
             self.unparsed.append(section)
 
     def build(self, tree: FastHtmlNode, table_count: int) -> OwnershipSections:
+        boxes = self.boxes
+        if boxes is None:
+            boxes = _standalone_boxes_section(tree, table_count)
         sigs = self.signatures
         if sigs is None:
             sigs = _standalone_signature_section(tree, table_count)
         return OwnershipSections(
-            boxes_1_to_7=self.boxes,
+            boxes_1_to_7=boxes,
             table_i=self.table_i,
             table_ii=self.table_ii,
             signatures=sigs,
@@ -449,10 +497,26 @@ def partition_ownership_tables(html_content: str | bytes) -> OwnershipSections:
     )
     tree = parse_html(normalize_font_qualified_glyphs(text))
     assembler = OwnershipSectionAssembler()
-    for idx, table_node in enumerate(tree.css("table")):
+    table_nodes = tree.css("table")
+    if not table_nodes and tree.css("pre"):
+        for idx, pre_node in enumerate(tree.css("pre")):
+            lines = [l for l in pre_node.text().splitlines() if l.strip()]
+            rows = tuple(tuple(re.split(r"\s{2,}", l.strip())) for l in lines)
+            if not rows:
+                continue
+            num_cols = max(len(r) for r in rows)
+            grid = ResolvedGrid(
+                rows=rows,
+                column_alignments=(HorizontalAlign.LEFT,) * num_cols,
+                column_widths=(50,) * num_cols,
+            )
+            assembler.accumulate(idx, pre_node, grid)
+        return assembler.build(tree, len(tree.css("pre")))
+
+    for idx, table_node in enumerate(table_nodes):
         grid = resolve_html_table_grid(table_node, table_index=idx)
         assembler.accumulate(idx, table_node, grid)
-    return assembler.build(tree, len(tree.css("table")))
+    return assembler.build(tree, len(table_nodes))
 
 
 __all__ = [
