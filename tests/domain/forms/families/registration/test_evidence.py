@@ -15,6 +15,9 @@ from edgar_sec.domain.forms.families.registration.evidence import (
     REGISTRATION_REPORT_TITLES,
     REGISTRATION_SHAPE_TERMS,
     RegistrationEvidence,
+    S3_REPORT_TITLES,
+    S4_REPORT_TITLES,
+    S8_REPORT_TITLES,
 )
 from edgar_sec.foundation.text.automaton import CaseMode
 from edgar_sec.foundation.text.evidence import compile_evidence_pack
@@ -41,6 +44,9 @@ def test_registration_evidence_terms_populated() -> None:
     assert len(REGISTRATION_BODY_GENERAL_TERMS) > 0
     assert len(REGISTRATION_COVER_EXCLUSION_TERMS) > 0
     assert len(REGISTRATION_REPORT_TITLES) > 0
+    assert len(S3_REPORT_TITLES) > 0
+    assert len(S4_REPORT_TITLES) > 0
+    assert len(S8_REPORT_TITLES) > 0
     assert len(REGISTRATION_SHAPE_TERMS) > 0
 
 

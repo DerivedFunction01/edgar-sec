@@ -24,4 +24,63 @@ PROFILE_S1 = DocumentProcessingProfile(
     has_xbrl=True,
 )
 
-__all__ = ["PROFILE_S1"]
+PROFILE_S3 = DocumentProcessingProfile(
+    family="S-3",
+    version="v1",
+    allowed_operations=frozenset(
+        {
+            AcquisitionOperation.RAW,
+            AcquisitionOperation.RENDER_TO_TXT,
+        }
+    ),
+    report_class=RegistrationReport,
+    preferred_operation=AcquisitionOperation.RENDER_TO_TXT,
+    review_analyzer="edgar_sec.engine.forms.registration.analysis",
+    has_toc=True,
+    has_sections=True,
+    has_notes=True,
+    has_xbrl=True,
+)
+
+PROFILE_S4 = DocumentProcessingProfile(
+    family="S-4",
+    version="v1",
+    allowed_operations=frozenset(
+        {
+            AcquisitionOperation.RAW,
+            AcquisitionOperation.RENDER_TO_TXT,
+        }
+    ),
+    report_class=RegistrationReport,
+    preferred_operation=AcquisitionOperation.RENDER_TO_TXT,
+    review_analyzer="edgar_sec.engine.forms.registration.analysis",
+    has_toc=True,
+    has_sections=True,
+    has_notes=True,
+    has_xbrl=True,
+)
+
+PROFILE_S8 = DocumentProcessingProfile(
+    family="S-8",
+    version="v1",
+    allowed_operations=frozenset(
+        {
+            AcquisitionOperation.RAW,
+            AcquisitionOperation.RENDER_TO_TXT,
+        }
+    ),
+    report_class=RegistrationReport,
+    preferred_operation=AcquisitionOperation.RENDER_TO_TXT,
+    review_analyzer="edgar_sec.engine.forms.registration.analysis",
+    has_toc=True,
+    has_sections=True,
+    has_notes=True,
+    has_xbrl=True,
+)
+
+__all__ = [
+    "PROFILE_S1",
+    "PROFILE_S3",
+    "PROFILE_S4",
+    "PROFILE_S8",
+]

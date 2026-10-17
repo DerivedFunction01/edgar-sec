@@ -28,6 +28,7 @@ from edgar_sec.domain.forms.families.annual.evidence import (
 )
 from edgar_sec.domain.forms.families.annual.taxonomy import (
     FORM_10K_DERIVED,
+    FORM_10K_ITEMS,
     FORM_20F_DERIVED,
 )
 from edgar_sec.domain.forms.families.current.evidence import (
@@ -43,7 +44,13 @@ from edgar_sec.domain.forms.families.registration.evidence import (
     REGISTRATION_SHAPE_TERMS,
     RegistrationEvidence,
 )
-from edgar_sec.domain.forms.families.registration.taxonomy import FORM_S1_DERIVED
+from edgar_sec.domain.forms.families.registration.taxonomy import (
+    FORM_S1_DERIVED,
+    FORM_S1_ITEMS,
+    FORM_S3_DERIVED,
+    FORM_S4_DERIVED,
+    FORM_S8_DERIVED,
+)
 from edgar_sec.engine.forms.cover.models import (
     BoundarySignal,
     CoverBoundaryPolicy,
@@ -144,6 +151,13 @@ def build_annual_profile(family: str) -> CoverProfile:
     incorporated-by-reference block, and the only one enabling AMENDMENT_TRANSITION.
     """
     annual = AnnualReportEvidence()
+    family_entry = get_family_entry(family)
+    items = (
+        family_entry.taxonomy_items
+        if family_entry is not None and family_entry.taxonomy_items
+        else FORM_10K_ITEMS
+    )
+    headings = ("PART I", *(d.item for d in items))
     return _make_profile(
         family=family,
         boundary=CoverBoundaryPolicy(
@@ -173,33 +187,7 @@ def build_annual_profile(family: str) -> CoverProfile:
             healing_rules=annual.healing_rules,
         ),
         body_evidence=BodyEvidencePack(
-            # Every canonical SEC Item, so 10-K/A amendments starting at Item 8
-            # are covered too, not just base-10K Item 1.
-            structural_headings=(
-                "PART I",
-                "ITEM 1",
-                "ITEM 1A",
-                "ITEM 1B",
-                "ITEM 1C",
-                "ITEM 2",
-                "ITEM 3",
-                "ITEM 4",
-                "ITEM 5",
-                "ITEM 6",
-                "ITEM 7",
-                "ITEM 7A",
-                "ITEM 8",
-                "ITEM 9",
-                "ITEM 9A",
-                "ITEM 9B",
-                "ITEM 9C",
-                "ITEM 10",
-                "ITEM 11",
-                "ITEM 12",
-                "ITEM 13",
-                "ITEM 14",
-                "ITEM 15",
-            ),
+            structural_headings=headings,
             semantic_headings=(
                 "management's discussion and analysis",
                 "risk factors",
@@ -331,9 +319,25 @@ def build_generic_cover_profile(family: str) -> CoverProfile:
     )
 
 
+_REGISTRATION_DERIVED = {
+    "S-1": FORM_S1_DERIVED,
+    "S-3": FORM_S3_DERIVED,
+    "S-4": FORM_S4_DERIVED,
+    "S-8": FORM_S8_DERIVED,
+}
+
+
 def build_registration_profile(family: str) -> CoverProfile:
-    """Cover profile for registration statements (Form S-1)."""
+    """Cover profile for registration statements (Form S-1, S-3, S-4, S-8)."""
     registration = RegistrationEvidence()
+    family_entry = get_family_entry(family)
+    items = (
+        family_entry.taxonomy_items
+        if family_entry is not None and family_entry.taxonomy_items
+        else FORM_S1_ITEMS
+    )
+    headings = ("PART I", "PART II", *(d.item for d in items))
+    derived = _REGISTRATION_DERIVED.get(family, FORM_S1_DERIVED)
     return _make_profile(
         family=family,
         boundary=CoverBoundaryPolicy(
@@ -358,29 +362,7 @@ def build_registration_profile(family: str) -> CoverProfile:
             labels=COMMON_COVER_LABELS,
         ),
         body_evidence=BodyEvidencePack(
-            structural_headings=(
-                "PART I",
-                "PART II",
-                "ITEM 1",
-                "ITEM 2",
-                "ITEM 3",
-                "ITEM 4",
-                "ITEM 5",
-                "ITEM 6",
-                "ITEM 7",
-                "ITEM 8",
-                "ITEM 9",
-                "ITEM 10",
-                "ITEM 11",
-                "ITEM 11A",
-                "ITEM 12",
-                "ITEM 12A",
-                "ITEM 13",
-                "ITEM 14",
-                "ITEM 15",
-                "ITEM 16",
-                "ITEM 17",
-            ),
+            structural_headings=headings,
             semantic_headings=(
                 "prospectus summary",
                 "risk factors",
@@ -400,7 +382,7 @@ def build_registration_profile(family: str) -> CoverProfile:
             cover_terms=registration.cover_terms,
             lexical=registration.body_lexical,
         ),
-        derived_taxonomy=FORM_S1_DERIVED,
+        derived_taxonomy=derived,
     )
 
 
@@ -420,6 +402,9 @@ def _build_profiles() -> dict[str, CoverProfile]:
         build_quarterly_profile("10-Q"), derived_taxonomy=FORM_10Q_DERIVED
     )
     registration_s1 = build_registration_profile("S-1")
+    registration_s3 = build_registration_profile("S-3")
+    registration_s4 = build_registration_profile("S-4")
+    registration_s8 = build_registration_profile("S-8")
     generic_8k = build_current_profile("8-K")
     current = CurrentReportEvidence()
     generic_6k = _dataclass_replace(
@@ -445,6 +430,9 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "20-F": annual_foreign,
         "10-Q": quarterly,
         "S-1": registration_s1,
+        "S-3": registration_s3,
+        "S-4": registration_s4,
+        "S-8": registration_s8,
         "8-K": generic_8k,
         "6-K": generic_6k,
         "GENERIC": generic,

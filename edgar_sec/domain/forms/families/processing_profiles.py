@@ -39,9 +39,15 @@ from edgar_sec.domain.forms.families.quarterly.processing import (
 )
 from edgar_sec.domain.forms.families.registration.checkmarks import (
     S1_CHECKBOX_SCHEMA,
+    S3_CHECKBOX_SCHEMA,
+    S4_CHECKBOX_SCHEMA,
+    S8_CHECKBOX_SCHEMA,
 )
 from edgar_sec.domain.forms.families.registration.processing import (
     PROFILE_S1,
+    PROFILE_S3,
+    PROFILE_S4,
+    PROFILE_S8,
 )
 
 
@@ -52,7 +58,12 @@ from edgar_sec.domain.forms.families.annual.taxonomy import (
 )
 from edgar_sec.domain.forms.families.current.taxonomy import FORM_8K_ITEMS
 from edgar_sec.domain.forms.families.quarterly.taxonomy import FORM_10Q_ITEMS
-from edgar_sec.domain.forms.families.registration.taxonomy import FORM_S1_ITEMS
+from edgar_sec.domain.forms.families.registration.taxonomy import (
+    FORM_S1_ITEMS,
+    FORM_S3_ITEMS,
+    FORM_S4_ITEMS,
+    FORM_S8_ITEMS,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -102,6 +113,24 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         taxonomy_items=FORM_S1_ITEMS,
     ),
     ProcessingCatalogEntry(
+        family="S-3",
+        profile=PROFILE_S3,
+        cover_checkbox_schema=S3_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_S3_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="S-4",
+        profile=PROFILE_S4,
+        cover_checkbox_schema=S4_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_S4_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="S-8",
+        profile=PROFILE_S8,
+        cover_checkbox_schema=S8_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_S8_ITEMS,
+    ),
+    ProcessingCatalogEntry(
         family="3",
         profile=PROFILE_FORM_3,
     ),
@@ -140,7 +169,7 @@ def get_family_profile(family: str) -> DocumentProcessingProfile | None:
 
 
 LAZY_INDEX_FORM_FAMILIES: frozenset[str] = frozenset(
-    {"10-K", "10-Q", "8-K", "20-F", "S-1"}
+    {"10-K", "10-Q", "8-K", "20-F", "S-1", "S-3", "S-4", "S-8"}
 )
 
 

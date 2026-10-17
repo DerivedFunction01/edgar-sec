@@ -35,8 +35,16 @@ from edgar_sec.domain.forms.families.quarterly.checkmarks import (
 from edgar_sec.domain.forms.families.quarterly.taxonomy import FORM_10Q_DERIVED
 from edgar_sec.domain.forms.families.registration.checkmarks import (
     S1_CHECKBOX_SCHEMA,
+    S3_CHECKBOX_SCHEMA,
+    S4_CHECKBOX_SCHEMA,
+    S8_CHECKBOX_SCHEMA,
 )
-from edgar_sec.domain.forms.families.registration.taxonomy import FORM_S1_DERIVED
+from edgar_sec.domain.forms.families.registration.taxonomy import (
+    FORM_S1_DERIVED,
+    FORM_S3_DERIVED,
+    FORM_S4_DERIVED,
+    FORM_S8_DERIVED,
+)
 from edgar_sec.engine.forms.cover.models import BoundarySignal
 from edgar_sec.engine.forms.cover.profiles import (
     ANNUAL_COVER_LABELS,
@@ -57,10 +65,10 @@ from edgar_sec.engine.forms.cover.profiles import (
 from edgar_sec.engine.forms.cover.rules import compile_cover_rules
 from edgar_sec.foundation.text.evidence import LexicalEvidencePack
 
-COVER_FAMILIES = ("10-K", "20-F", "10-Q", "S-1")
+COVER_FAMILIES = ("10-K", "20-F", "10-Q", "S-1", "S-3", "S-4", "S-8")
 GENERIC_FAMILIES = ("8-K", "6-K", "GENERIC")
 NO_COVER_FAMILIES = ("8-K", "6-K", "GENERIC")
-LEXICAL_FAMILIES = ("10-K", "20-F", "10-Q", "8-K", "6-K", "S-1")
+LEXICAL_FAMILIES = ("10-K", "20-F", "10-Q", "8-K", "6-K", "S-1", "S-3", "S-4", "S-8")
 
 
 def test_profiles_exist_for_registered_families() -> None:
@@ -297,6 +305,10 @@ def test_generic_profile_declares_no_lexical_pack() -> None:
         ("10-Q", "quarterly_body_start"),
         ("8-K", "current_body_start"),
         ("6-K", "current_body_start"),
+        ("S-1", "registration_body_start"),
+        ("S-3", "registration_body_start"),
+        ("S-4", "registration_body_start"),
+        ("S-8", "registration_body_start"),
     ],
 )
 def test_lexical_pack_identity_per_family(family: str, expected: str) -> None:
@@ -309,6 +321,10 @@ def test_lexical_pack_identity_per_family(family: str, expected: str) -> None:
         ("10-K", FORM_10K_DERIVED),
         ("20-F", FORM_20F_DERIVED),
         ("10-Q", FORM_10Q_DERIVED),
+        ("S-1", FORM_S1_DERIVED),
+        ("S-3", FORM_S3_DERIVED),
+        ("S-4", FORM_S4_DERIVED),
+        ("S-8", FORM_S8_DERIVED),
         ("8-K", None),
         ("6-K", None),
         ("GENERIC", None),
@@ -324,6 +340,10 @@ def test_checkbox_schemas_come_from_the_family_catalog() -> None:
     assert get_profile("10-Q").checkbox_schema is QUARTERLY_CHECKBOX_SCHEMA
     assert get_profile("8-K").checkbox_schema is EIGHT_K_CHECKBOX_SCHEMA
     assert get_profile("6-K").checkbox_schema is SIX_K_CHECKBOX_SCHEMA
+    assert get_profile("S-1").checkbox_schema is S1_CHECKBOX_SCHEMA
+    assert get_profile("S-3").checkbox_schema is S3_CHECKBOX_SCHEMA
+    assert get_profile("S-4").checkbox_schema is S4_CHECKBOX_SCHEMA
+    assert get_profile("S-8").checkbox_schema is S8_CHECKBOX_SCHEMA
     assert get_profile("GENERIC").checkbox_schema is None
 
 
@@ -394,3 +414,33 @@ def test_s1_profile_contracts() -> None:
     assert "PART I" in s1.body_evidence.structural_headings
     assert "PART II" in s1.body_evidence.structural_headings
     assert "prospectus summary" in s1.body_evidence.semantic_headings
+
+
+def test_s3_profile_contracts() -> None:
+    s3 = get_profile("S-3")
+    assert s3.family == "S-3"
+    assert s3.checkbox_schema == S3_CHECKBOX_SCHEMA
+    assert s3.derived_taxonomy == FORM_S3_DERIVED
+    assert s3.boundary is not None
+    assert "ITEM 1" in s3.body_evidence.structural_headings
+    assert "ITEM 16" in s3.body_evidence.structural_headings
+
+
+def test_s4_profile_contracts() -> None:
+    s4 = get_profile("S-4")
+    assert s4.family == "S-4"
+    assert s4.checkbox_schema == S4_CHECKBOX_SCHEMA
+    assert s4.derived_taxonomy == FORM_S4_DERIVED
+    assert s4.boundary is not None
+    assert "ITEM 1" in s4.body_evidence.structural_headings
+    assert "ITEM 21" in s4.body_evidence.structural_headings
+
+
+def test_s8_profile_contracts() -> None:
+    s8 = get_profile("S-8")
+    assert s8.family == "S-8"
+    assert s8.checkbox_schema == S8_CHECKBOX_SCHEMA
+    assert s8.derived_taxonomy == FORM_S8_DERIVED
+    assert s8.boundary is not None
+    assert "ITEM 1" in s8.body_evidence.structural_headings
+    assert "ITEM 8" in s8.body_evidence.structural_headings

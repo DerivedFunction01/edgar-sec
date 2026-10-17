@@ -20,6 +20,9 @@ _FORM_PATTERNS = [
     r"20-?F(?:/[Aa])?",
     r"6-?K(?:/[Aa])?",
     r"S-?1(?:/[Aa])?",
+    r"S-?3(?:/[Aa])?",
+    r"S-?4(?:/[Aa])?",
+    r"S-?8(?:/[Aa])?",
 ]
 _FORM_LITERAL_RE = re.compile(
     rf"(?:['\"]\s*({build_alternation(_FORM_PATTERNS)})\s*['\"]|\bform\s*==\s*['\"](?:10-|20-|8-|6-|S-))",

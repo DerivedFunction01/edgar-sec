@@ -23,6 +23,34 @@ REGISTRATION_REPORT_TITLES: tuple[str, ...] = (
     "amendment no.",
 )
 
+S3_REPORT_TITLES: tuple[str, ...] = (
+    "form s-3",
+    "form s-3asr",
+    "form s-3d",
+    "registration statement under the securities act of 1933",
+    "pre-effective amendment no.",
+    "post-effective amendment no.",
+    "amendment no.",
+)
+
+S4_REPORT_TITLES: tuple[str, ...] = (
+    "form s-4",
+    "form s-4ef",
+    "registration statement under the securities act of 1933",
+    "pre-effective amendment no.",
+    "post-effective amendment no.",
+    "amendment no.",
+)
+
+S8_REPORT_TITLES: tuple[str, ...] = (
+    "form s-8",
+    "form s-8pos",
+    "registration statement under the securities act of 1933",
+    "pre-effective amendment no.",
+    "post-effective amendment no.",
+    "amendment no.",
+)
+
 REGISTRATION_SHAPE_TERMS: tuple[str, ...] = (
     "approximate date of commencement of proposed sale to the public",
     "approximate date of commencement of proposed sale",
@@ -307,4 +335,7 @@ __all__ = [
     "REGISTRATION_REPORT_TITLES",
     "REGISTRATION_SHAPE_TERMS",
     "RegistrationEvidence",
+    "S3_REPORT_TITLES",
+    "S4_REPORT_TITLES",
+    "S8_REPORT_TITLES",
 ]
