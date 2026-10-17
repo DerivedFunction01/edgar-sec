@@ -1,11 +1,17 @@
 """Unit tests for domain common entities vocabulary."""
 
 from edgar_sec.domain.forms.common.entities import (
+    CANONICAL_EXCHANGE_NAMES,
+    EXCHANGE_ALIASES,
     EXCHANGE_PREFIX_TERMS,
+    INSTRUCTION_SIGNATURE_PHRASES,
     ISSUER_LABEL_TERMS,
     RELATIONSHIP_TO_ISSUER_TERMS,
+    SECONDARY_UNIT_DESIGNATORS,
     SEC_FILE_NUMBER_PREFIXES,
     STREET_ANCHOR_TERMS,
+    STREET_TYPE_SUFFIXES,
+    TABULAR_STOPWORDS,
     TEMPLATE_LABELS,
 )
 
@@ -20,7 +26,12 @@ def test_template_labels():
 def test_street_anchor_and_exchange_terms():
     """Verify street anchors and major stock exchange terms."""
     assert "street" in STREET_ANCHOR_TERMS
-    assert "avenue" in STREET_ANCHOR_TERMS
+    assert "court" in STREET_TYPE_SUFFIXES
+    assert "suite" in SECONDARY_UNIT_DESIGNATORS
+    assert "NYSE" in CANONICAL_EXCHANGE_NAMES
+    assert EXCHANGE_ALIASES["NASDQ"] == "NASDAQ"
+    assert "the" in TABULAR_STOPWORDS
+    assert any("whose account" in p for p in INSTRUCTION_SIGNATURE_PHRASES)
     assert "nasdaq" in EXCHANGE_PREFIX_TERMS
     assert "issuer name" in ISSUER_LABEL_TERMS
 

@@ -73,9 +73,21 @@ def render_document(
             raise UnsupportedRenderOperation(
                 f"Form {form!r} does not support XML rendering; use .render() or .raw()"
             )
-        from edgar_sec.engine.forms.ownership.render_to_xml import render_form4_to_xml
+        family = profile.family if profile else form
+        from edgar_sec.engine.document_processing.registry import (
+            DEFAULT_HANDLER_REGISTRY,
+        )
 
-        xml_bytes = render_form4_to_xml(raw_bytes)
+        reg = (
+            DEFAULT_HANDLER_REGISTRY.resolve("render_to_xml", family, None)
+            if family
+            else None
+        )
+        if reg is None:
+            raise UnsupportedRenderOperation(
+                f"Form {form!r} has no registered XML renderer"
+            )
+        xml_bytes = reg.handler(raw_bytes, None)  # type: ignore[arg-type]
         return xml_bytes.decode("utf-8", errors="replace")
 
     return raw_bytes

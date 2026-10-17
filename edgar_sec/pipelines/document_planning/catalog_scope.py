@@ -34,7 +34,7 @@ _ACCESSION_RE = re.compile(r"^[0-9]{18}$")
 _DEFAULT_BATCH_SIZE = 2_048
 _MAX_BATCH_SIZE = 65_536
 
-_FORM_CHARS = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.-/")
+_FORM_CHARS = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.-/ ")
 _SCOPE_COLUMNS = (
     "occurrence_id",
     "document_locator_key",

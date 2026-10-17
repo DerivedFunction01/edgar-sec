@@ -25,6 +25,7 @@ from edgar_sec.domain.forms.families.current.checkmarks import (
 from edgar_sec.domain.forms.families.current.processing import (
     PROFILE as CURRENT_PROFILE,
 )
+from edgar_sec.domain.forms.families.form144.processing import PROFILE_FORM_144
 from edgar_sec.domain.forms.families.ownership.processing import (
     PROFILE_FORM_3,
     PROFILE_FORM_4,
@@ -111,6 +112,10 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
     ProcessingCatalogEntry(
         family="5",
         profile=PROFILE_FORM_5,
+    ),
+    ProcessingCatalogEntry(
+        family="144",
+        profile=PROFILE_FORM_144,
     ),
 )
 

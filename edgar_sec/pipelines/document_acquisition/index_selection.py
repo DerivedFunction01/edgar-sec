@@ -8,9 +8,10 @@ from edgar_sec.domain.document_inventory.models import (
     InventoryEntry,
     ParsedIndexPage,
 )
+from edgar_sec.domain.document.route import archive_root_candidate
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.identity import AccessionNumber
-from edgar_sec.domain.sec_urls import validate_archive_url
+from edgar_sec.domain.sec_urls import archives_url, validate_archive_url
 
 
 @dataclass(frozen=True, slots=True)
@@ -60,7 +61,7 @@ def select_index_entry(
     selected = matching[0]
     if selected.archive_url:
         try:
-            validate_archive_url(
+            target_archive = validate_archive_url(
                 selected.archive_url,
                 accession,
                 expected_archive_cik=source_archive.archive_cik,
@@ -69,8 +70,16 @@ def select_index_entry(
             return IndexSelection(
                 "failed", entry_ids, None, "index_entry_unaddressable"
             )
+        selected_url = target_archive.url
+        root_cand = archive_root_candidate(target_archive.document_path)
+        if root_cand is not None and root_cand.casefold().endswith(".xml"):
+            selected_url = archives_url(
+                target_archive.archive_cik,
+                target_archive.accession,
+                root_cand,
+            )
         return IndexSelection(
-            "selected", entry_ids, selected, None, "direct_url", selected.archive_url
+            "selected", entry_ids, selected, None, "direct_url", selected_url
         )
     if selected.sequence is None or not outcome.bundle_url:
         return IndexSelection("failed", entry_ids, None, "index_entry_unaddressable")

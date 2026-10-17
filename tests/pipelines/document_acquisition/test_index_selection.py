@@ -202,3 +202,20 @@ def test_refuses_parser_failure() -> None:
 
     assert result.result == "failed"
     assert result.error_code == "index_unrecognized"
+
+
+def test_select_index_entry_unwraps_xsl_nested_xml() -> None:
+    xsl_url = (
+        "https://www.sec.gov/Archives/edgar/data/1/000000000124000001/"
+        "xslForm144_X01/primary_doc.xml"
+    )
+    page = _page(_entry("e1", "144", archive_url=xsl_url))
+
+    result = select_index_entry(
+        page, accession=ACCESSION, expected_form="144", optional=False
+    )
+
+    assert result.result == "selected"
+    assert result.selected_url == (
+        "https://www.sec.gov/Archives/edgar/data/1/000000000124000001/primary_doc.xml"
+    )

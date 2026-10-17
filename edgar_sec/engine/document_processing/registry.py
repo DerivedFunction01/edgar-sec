@@ -156,6 +156,12 @@ def _form4_html_to_xml(raw_bytes: bytes, context: HandlerContext) -> bytes:
     return render_form4_to_xml(raw_bytes, context)
 
 
+def _form144_html_to_xml(raw_bytes: bytes, context: HandlerContext) -> bytes:
+    from edgar_sec.engine.forms.form144.render_to_xml import render_form144_to_xml
+
+    return render_form144_to_xml(raw_bytes, context)
+
+
 def default_handler_registry() -> HandlerRegistry:
     registry = HandlerRegistry()
     registry.register(
@@ -195,6 +201,14 @@ def default_handler_registry() -> HandlerRegistry:
         HandlerOutputKind.XML,
         _form4_html_to_xml,
         family="5",
+    )
+    registry.register(
+        "form144_html_to_xml",
+        "1",
+        "render_to_xml",
+        HandlerOutputKind.XML,
+        _form144_html_to_xml,
+        family="144",
     )
     return registry
 

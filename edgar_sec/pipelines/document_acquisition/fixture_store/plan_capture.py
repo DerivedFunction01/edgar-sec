@@ -15,8 +15,13 @@ from urllib.parse import urlsplit
 from edgar_sec.foundation.runtime.resources import derive_resources
 
 from edgar_sec.domain.document_inventory.models import IndexPageInput
+from edgar_sec.domain.document.route import archive_root_candidate
 from edgar_sec.domain.identity import AccessionNumber
-from edgar_sec.domain.sec_urls import index_url_for, validate_archive_url
+from edgar_sec.domain.sec_urls import (
+    archives_url,
+    index_url_for,
+    validate_archive_url,
+)
 from edgar_sec.engine.document.unpacking.streaming import (
     BundleExtractionFailure,
     extract_bundle_sequence,
@@ -273,6 +278,19 @@ def _capture_document(
         )
     if not isinstance(target_url, str):
         raise _TargetCaptureError("target_url_missing")
+    if retrieval_mode == "direct_url":
+        try:
+            parsed_archive = validate_archive_url(target_url, accession)
+            root_cand = archive_root_candidate(parsed_archive.document_path)
+            if root_cand is not None and root_cand.casefold().endswith(".xml"):
+                target_url = archives_url(
+                    parsed_archive.archive_cik,
+                    parsed_archive.accession,
+                    root_cand,
+                )
+                filename = root_cand
+        except ValueError:
+            pass
     if retrieval_mode not in {"direct_url", "bundle_sequence"}:
         raise _TargetCaptureError("retrieval_mode_unsupported")
     if retrieval_mode == "direct_url" and not filename:

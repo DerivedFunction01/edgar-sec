@@ -9,7 +9,9 @@ from edgar_sec.engine.forms.common.entities import (
     SEC_FILE_NUMBER_RE,
     STATE_ZIP_RE,
     STREET_ANCHOR_RE,
+    STREET_SUFFIX_RE,
     TICKER_PAREN_RE,
+    normalize_exchange_name,
 )
 
 
@@ -27,6 +29,21 @@ def test_clean_template_and_ticker():
     match = TICKER_PAREN_RE.search("(NASDAQ: AAPL)")
     assert match is not None
     assert match.group(1) == "AAPL"
+
+
+def test_street_suffix_and_exchange_normalization():
+    """Verify exchange normalization and CT state vs Ct suffix disambiguation."""
+    assert normalize_exchange_name("Traded on NASDQ") == "NASDAQ"
+    assert normalize_exchange_name("Listed on NYSE") == "NYSE"
+    assert normalize_exchange_name("Unknown Exchange") is None
+
+    matches = list(STREET_SUFFIX_RE.finditer("100 Main Street, Hartford, CT 06103"))
+    assert len(matches) == 1
+    assert matches[0].group(0).lower() == "street"
+
+    court_matches = list(STREET_SUFFIX_RE.finditer("15 Maple Ct, Hartford, CT 06103"))
+    assert len(court_matches) == 1
+    assert court_matches[0].group(0).lower() == "ct"
 
 
 def test_identifiers_and_relationships():

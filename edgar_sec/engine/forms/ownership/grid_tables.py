@@ -10,6 +10,7 @@ from edgar_sec.engine.forms.common.statutory import (
     HEADER_LEAK_RE,
     STATUTORY_PAGE_ARTIFACT_RE,
 )
+from edgar_sec.engine.forms.common.numbers import clean_numeric
 from edgar_sec.engine.forms.ownership.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import (
     CURRENCY_TOKEN_RE,
@@ -188,16 +189,8 @@ class DerivativeTransaction:
 
 
 def _extract_number(text: str) -> float | None:
-    if text.isascii() and text.isdigit():
-        return float(text)
-    cleaned = _CLEAN_NUMERIC_RE.sub("", text)
-    if not cleaned:
-        return None
-    try:
-        return float(cleaned)
-    except ValueError:
-        match = _NUMERIC_TOKEN_RE.search(cleaned)
-        return float(match.group(0).replace(",", "")) if match else None
+    num = clean_numeric(text)
+    return float(num) if num is not None else None
 
 
 def _extract_footnote_ids(text: str) -> tuple[str, ...]:

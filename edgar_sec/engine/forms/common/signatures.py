@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 
 from edgar_sec.domain.forms.common.signatures import (
+    COMMON_SIGNATURE_LEXICAL_PACK,
     CONFORMED_SIGNATURE_TOKENS,
     CORPORATE_OFFICER_TITLES,
     CORPORATE_SIGNATORY_ROLES,
@@ -18,9 +19,16 @@ from edgar_sec.engine.document.page_markers.signatures import (
     RE_CONFORMED_SIGNER_NAME,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.automaton import tokenize
 from edgar_sec.foundation.text.dates import (
+    MONTH_RE,
     NUMERIC_DATE_RE,
     RE_FULL_DATE,
+)
+from edgar_sec.foundation.text.evidence import (
+    EvidenceContext,
+    compile_evidence_pack,
+    score_tokens,
 )
 
 CONFORMED_SIGNATURE_ALT = build_alternation(
@@ -128,7 +136,7 @@ SIG_UNDERLINED_NAME_RE = re.compile(
     re.IGNORECASE,
 )
 SIG_PERSON_PREFIX_RE = re.compile(
-    r"([A-Za-z’‘'\.\- ]{3,40}?)\s*\n?(?:[^\n]*\d{2,4}\s*\n?)?\s*\*{1,2}\s*Signature of Reporting Person",
+    r"(?:^|\n)[^\S\r\n]*([A-Za-z’‘'\.\- ]{3,40}?)[^\S\r\n]*\n(?:\s*\d{2,4}\s*\n)?\s*\*{1,2}\s*Signature of Reporting Person",
     re.IGNORECASE,
 )
 SIG_BOILERPLATE_TERMS: tuple[str, ...] = (
@@ -217,7 +225,13 @@ def extract_signature_candidate(sig_text: str) -> tuple[str | None, str | None]:
     m_date = RE_FULL_DATE.search(sig_text) or NUMERIC_DATE_RE.search(sig_text)
     if m_date:
         sig_date = m_date.group(0).strip()
+    lower = sig_text.lower()
+    has_sig_rep_person = "signature of reporting person" in lower
     for pattern in SIGNATURE_NAME_PATTERNS:
+        if (
+            pattern is SIG_PERSON_PREFIX_RE or pattern is SIG_NAME_RE
+        ) and not has_sig_rep_person:
+            continue
         match = pattern.search(sig_text)
         if match:
             candidate = match.group(1).strip(" ,.-")
@@ -242,6 +256,48 @@ def extract_signature_block(text: str) -> SignatureBlock | None:
         has_notary=has_notary,
         raw_text=text,
     )
+
+
+_COMPILED_SIGNATURE_PACK = compile_evidence_pack(COMMON_SIGNATURE_LEXICAL_PACK)
+_EVIDENCE_CTX = EvidenceContext(min_words=1)
+
+
+def is_signature_table(
+    lower: str,
+    past_tables: bool,
+    *,
+    extra_markers: tuple[str, ...] = (),
+) -> bool:
+    """Classify whether table text represents a conformed signature section."""
+    if not past_tables and not any(
+        k in lower
+        for k in (
+            "signature",
+            "misstatement",
+            "criminal",
+            "presents",
+            "attorney",
+            "notary",
+            "sworn",
+            "signatory",
+            "yours",
+        )
+    ):
+        return False
+    score = score_tokens(tokenize(lower), _COMPILED_SIGNATURE_PACK, _EVIDENCE_CTX)
+    if "signature_decisive" in score.satisfied_tiers and not score.exclusions:
+        return True
+    if not past_tables:
+        return False
+    if any(marker in lower for marker in ("/s/", "-s-", "signature:", *extra_markers)):
+        return True
+    if (
+        len(lower) < 80
+        and ("date" in lower or "dated" in lower)
+        and bool(NUMERIC_DATE_RE.search(lower) or MONTH_RE.search(lower))
+    ):
+        return True
+    return score.score >= 2 and not score.exclusions
 
 
 __all__ = [
@@ -274,6 +330,7 @@ __all__ = [
     "clean_signature_name",
     "extract_signature_block",
     "extract_signature_candidate",
+    "is_signature_table",
     "is_valid_signature_name",
     "parse_conformed_signature",
     "resolve_delegated_signer",

@@ -6,12 +6,10 @@ import re
 from dataclasses import dataclass
 from enum import StrEnum
 
-from edgar_sec.domain.forms.common.signatures import (
-    COMMON_SIGNATURE_LEXICAL_PACK,
-)
 from edgar_sec.domain.forms.common.statutory import (
     COMMON_STATUTORY_LEXICAL_PACK,
 )
+from edgar_sec.engine.forms.common.signatures import is_signature_table
 from edgar_sec.domain.forms.families.ownership.evidence import (
     FOOTNOTE_VETO_PHRASES,
     OWNERSHIP_BOXES_LEXICAL_PACK,
@@ -43,7 +41,6 @@ _COMPILED_HEADER_PACK = compile_evidence_pack(OWNERSHIP_HEADER_LEXICAL_PACK)
 _COMPILED_BOXES_PACK = compile_evidence_pack(OWNERSHIP_BOXES_LEXICAL_PACK)
 _COMPILED_TABLE_I_PACK = compile_evidence_pack(OWNERSHIP_TABLE_I_LEXICAL_PACK)
 _COMPILED_TABLE_II_PACK = compile_evidence_pack(OWNERSHIP_TABLE_II_LEXICAL_PACK)
-_COMPILED_SIGNATURE_PACK = compile_evidence_pack(COMMON_SIGNATURE_LEXICAL_PACK)
 _COMPILED_STATUTORY_PACK = compile_evidence_pack(COMMON_STATUTORY_LEXICAL_PACK)
 _EVIDENCE_CTX = EvidenceContext(min_words=1)
 _FOOTNOTE_VETO_RE = re.compile(
@@ -108,23 +105,6 @@ def _is_table_ii_table(lower: str) -> bool:
     return score.score >= 2 and not score.exclusions
 
 
-def _is_signature_table(lower: str, past_tables: bool) -> bool:
-    score = score_tokens(tokenize(lower), _COMPILED_SIGNATURE_PACK, _EVIDENCE_CTX)
-    if "signature_decisive" in score.satisfied_tiers and not score.exclusions:
-        return True
-    if not past_tables:
-        return False
-    if "/s/" in lower or "-s-" in lower or "signature:" in lower:
-        return True
-    if (
-        len(lower) < 60
-        and ("date" in lower or "dated" in lower)
-        and bool(NUMERIC_DATE_RE.search(lower) or MONTH_RE.search(lower))
-    ):
-        return True
-    return score.score >= 2 and not score.exclusions
-
-
 def _is_page_artifact_table(lower: str, num_cols: int) -> bool:
     score = score_tokens(tokenize(lower), _COMPILED_STATUTORY_PACK, _EVIDENCE_CTX)
     if score.score >= 2:
@@ -186,7 +166,7 @@ def _classify_table_text(
         return SectionRole.HEADER
     if _is_table_i_table(lower, past_tables):
         return SectionRole.TABLE_I
-    if _is_signature_table(lower, past_tables):
+    if is_signature_table(lower, past_tables):
         return SectionRole.SIGNATURES
     if _is_page_artifact_table(lower, num_cols):
         return SectionRole.PAGE_ARTIFACT

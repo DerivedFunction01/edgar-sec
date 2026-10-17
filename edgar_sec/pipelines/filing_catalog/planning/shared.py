@@ -16,6 +16,7 @@ from edgar_sec.pipelines.filing_catalog.publication import PlanConflictError
 
 _ID_SAFE = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.")
 _FORM_SEPARATOR = "/"
+_FORM_SAFE = _ID_SAFE | {_FORM_SEPARATOR, " "}
 
 
 def validate_forms(forms: tuple[str, ...]) -> tuple[str, ...]:
@@ -23,7 +24,7 @@ def validate_forms(forms: tuple[str, ...]) -> tuple[str, ...]:
     for form in forms:
         if not form or not form.strip():
             raise ValueError("form filters must be non-empty")
-        if not set(form) <= _ID_SAFE | {_FORM_SEPARATOR}:
+        if not set(form) <= _FORM_SAFE:
             raise ValueError(f"unsafe form filter: {form!r}")
     return tuple(dict.fromkeys(forms))
 

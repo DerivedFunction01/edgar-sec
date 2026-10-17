@@ -52,6 +52,15 @@ def test_render_document_refuses_cross_modal() -> None:
             operation=AcquisitionOperation.RENDER_TO_TXT,
         )
 
+    with pytest.raises(
+        UnsupportedRenderOperation, match="has no registered XML renderer"
+    ):
+        render_document(
+            b"<doc/>",
+            form="NONEXISTENT",
+            operation=AcquisitionOperation.RENDER_TO_XML,
+        )
+
 
 def test_render_document_raw_pass_through() -> None:
     binary_data = b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR"

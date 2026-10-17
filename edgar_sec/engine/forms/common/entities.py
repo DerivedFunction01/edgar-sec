@@ -5,21 +5,53 @@ from __future__ import annotations
 import re
 
 from edgar_sec.domain.forms.common.entities import (
+    CANONICAL_EXCHANGE_NAMES,
+    EXCHANGE_ALIASES,
     EXCHANGE_PREFIX_TERMS,
     ISSUER_LABEL_TERMS,
     NON_OWNER_JURISDICTION_TERMS,
     RELATIONSHIP_TO_ISSUER_TERMS,
     SEC_FILE_NUMBER_PREFIXES,
     STREET_ANCHOR_TERMS,
+    STREET_TYPE_SUFFIXES,
     SYMBOL_TERMS,
     TEMPLATE_LABELS,
 )
-from edgar_sec.domain.taxonomy.jurisdictions import STATE_POSTAL_CODES
+from edgar_sec.domain.taxonomy.jurisdictions import STATE_NAMES, STATE_POSTAL_CODES
 from edgar_sec.foundation.regex.builder import build_alternation
 
 STATE_ALT = build_alternation(sorted(STATE_POSTAL_CODES))
-STATE_ZIP_RE = re.compile(rf"\b({STATE_ALT})\s+(\d{{5}}(?:-\d{{4}})?)\b")
+_STATE_ZIP_ALT = build_alternation(
+    sorted((*STATE_POSTAL_CODES, *STATE_NAMES)), auto_escape=True
+)
+STATE_ZIP_RE = re.compile(
+    rf"\b({_STATE_ZIP_ALT})\s+(\d{{5}}(?:-\d{{4}})?)\b", re.IGNORECASE
+)
 IRS_RE = re.compile(r"\b(\d{2}-\d{7}|\d{9})\b")
+
+EXCHANGE_ALT = build_alternation((*CANONICAL_EXCHANGE_NAMES, *EXCHANGE_ALIASES))
+EXCHANGE_RE = re.compile(rf"\b({EXCHANGE_ALT})\b", re.IGNORECASE)
+
+
+def normalize_exchange_name(text: str) -> str | None:
+    """Normalize stock exchange name or alias to canonical form."""
+    match = EXCHANGE_RE.search(text)
+    if not match:
+        return None
+    exchange = match.group(1).upper()
+    return EXCHANGE_ALIASES.get(exchange, exchange)
+
+
+_COLLIDING_SUFFIXES = ("ct", "fl")
+_NON_COLLIDING_SUFFIXES = tuple(
+    s for s in STREET_TYPE_SUFFIXES if s not in _COLLIDING_SUFFIXES
+)
+_NON_COLLIDING_ALT = build_alternation(_NON_COLLIDING_SUFFIXES, auto_escape=True)
+_COLLIDING_ALT = build_alternation(_COLLIDING_SUFFIXES, auto_escape=True)
+STREET_SUFFIX_RE = re.compile(
+    rf"\b(?:{_NON_COLLIDING_ALT})\.?(?=\s|,|$)|(?:\b(?:{_COLLIDING_ALT})\.?(?!\s+\d{{5}})(?=\s|,|$))",
+    re.IGNORECASE,
+)
 
 TEMPLATE_LABEL_ALT = build_alternation(TEMPLATE_LABELS, auto_escape=True)
 CLEAN_TEMPLATE_RE = re.compile(rf"\((?:{TEMPLATE_LABEL_ALT})\)", re.IGNORECASE)
@@ -85,7 +117,9 @@ __all__ = [
     "CLEAN_TEMPLATE_RE",
     "CRD_RE",
     "CUSIP_RE",
+    "EXCHANGE_ALT",
     "EXCHANGE_PREFIX_ALT",
+    "EXCHANGE_RE",
     "IRS_RE",
     "ISSUER_LABEL_TERMS",
     "ISSUER_TAIL_ALT",
@@ -103,6 +137,7 @@ __all__ = [
     "STREET_ANCHOR_ALT",
     "STREET_ANCHOR_RE",
     "STREET_MATCH_RE",
+    "STREET_SUFFIX_RE",
     "STRIP_BOX_NUM_RE",
     "SYMBOL_ALT",
     "SYMBOL_TAIL_RE",
@@ -110,4 +145,5 @@ __all__ = [
     "TICKER_DASH_RE",
     "TICKER_PAREN_RE",
     "TITLE_MATCH_RE",
+    "normalize_exchange_name",
 ]
