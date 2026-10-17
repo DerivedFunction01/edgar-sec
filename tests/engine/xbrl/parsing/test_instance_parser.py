@@ -43,3 +43,22 @@ def test_parse_instance_facts() -> None:
     assert assets_fact.value == 512163000000.0
     assert assets_fact.period_type == "instant"
     assert assets_fact.instant_date == "2024-06-30"
+
+
+def test_extract_units_divide() -> None:
+    """Verify divide unit parsing preserves numerator and denominator."""
+    import xml.etree.ElementTree as ET
+    from edgar_sec.engine.xbrl.parsing.instance_parser import _extract_units
+
+    xml = (
+        b'<xbrli:xbrl xmlns:xbrli="http://www.xbrl.org/2003/instance" '
+        b'xmlns:iso4217="http://www.xbrl.org/2003/iso4217">'
+        b'<xbrli:unit id="USD"><xbrli:measure>iso4217:USD</xbrli:measure></xbrli:unit>'
+        b'<xbrli:unit id="usdPerShare"><xbrli:divide>'
+        b"<xbrli:unitNumerator><xbrli:measure>iso4217:USD</xbrli:measure></xbrli:unitNumerator>"
+        b"<xbrli:unitDenominator><xbrli:measure>shares</xbrli:measure></xbrli:unitDenominator>"
+        b"</xbrli:divide></xbrli:unit></xbrli:xbrl>"
+    )
+    units = _extract_units(ET.fromstring(xml))
+    assert units["USD"] == "USD"
+    assert units["usdPerShare"] == "USD/shares"

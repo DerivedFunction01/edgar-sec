@@ -1,7 +1,7 @@
 [
   {
     "edge_id": "R_PART_GP_REV",
-    "relation_type": "PART_OF",
+    "relation_type": "CONTRA_OF",
     "algebraic_weight": 1.0,
     "source": {
       "head": "H_REVENUE",
@@ -116,6 +116,44 @@
     "target_concept": "Assets",
     "formula_id": "FORMULA_ASSETS",
     "description": "Noncurrent Assets contribute +1.0 to Total Assets"
+  },
+  {
+    "edge_id": "R_PART_LIAB_CURR",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_CURRENT"
+      ]
+    },
+    "source_concept": "LiabilitiesCurrent",
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "target_concept": "Liabilities",
+    "formula_id": "FORMULA_LIABILITIES",
+    "description": "Current Liabilities contribute +1.0 to Total Liabilities"
+  },
+  {
+    "edge_id": "R_PART_LIAB_NONCURR",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_NONCURRENT"
+      ]
+    },
+    "source_concept": "LiabilitiesNoncurrent",
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "target_concept": "Liabilities",
+    "formula_id": "FORMULA_LIABILITIES",
+    "description": "Noncurrent Liabilities contribute +1.0 to Total Liabilities"
   },
   {
     "edge_id": "R_PART_LE_LIAB",
@@ -568,12 +606,12 @@
   },
   {
     "edge_id": "R_PART_DERIV_NET_ASSET_NETTING",
-    "relation_type": "PART_OF",
+    "relation_type": "CONTRA_OF",
     "algebraic_weight": -1.0,
     "source": {
       "head": "H_ASSET",
       "mods": [
-        "M_MASTER_NETTING_OFFSET"
+        "M_COUNTERPARTY_NETTING"
       ]
     },
     "source_concept": "DerivativeAssetFairValueOffsetAgainstNetting",
@@ -589,12 +627,12 @@
   },
   {
     "edge_id": "R_PART_DERIV_NET_ASSET_COLLATERAL",
-    "relation_type": "PART_OF",
+    "relation_type": "CONTRA_OF",
     "algebraic_weight": -1.0,
     "source": {
       "head": "H_ASSET",
       "mods": [
-        "M_COLLATERAL_OFFSET"
+        "M_CASH_COLLATERAL_OFFSET"
       ]
     },
     "source_concept": "DerivativeAssetFairValueOffsetAgainstCollateral",
@@ -631,12 +669,12 @@
   },
   {
     "edge_id": "R_PART_DERIV_NET_LIAB_NETTING",
-    "relation_type": "PART_OF",
+    "relation_type": "CONTRA_OF",
     "algebraic_weight": -1.0,
     "source": {
       "head": "H_LIABILITY",
       "mods": [
-        "M_MASTER_NETTING_OFFSET"
+        "M_COUNTERPARTY_NETTING"
       ]
     },
     "source_concept": "DerivativeLiabilityFairValueOffsetAgainstNetting",
@@ -652,12 +690,12 @@
   },
   {
     "edge_id": "R_PART_DERIV_NET_LIAB_COLLATERAL",
-    "relation_type": "PART_OF",
+    "relation_type": "CONTRA_OF",
     "algebraic_weight": -1.0,
     "source": {
       "head": "H_LIABILITY",
       "mods": [
-        "M_COLLATERAL_OFFSET"
+        "M_CASH_COLLATERAL_OFFSET"
       ]
     },
     "source_concept": "DerivativeLiabilityFairValueOffsetAgainstCollateral",
@@ -670,5 +708,574 @@
     "target_concept": "DerivativeLiabilitiesNet",
     "formula_id": "FORMULA_DERIVATIVE_NET_LIABILITY",
     "description": "Cash collateral offsets subtract -1.0 from Net Derivative Liabilities"
+  },
+  {
+    "edge_id": "R_PART_PRE_PROVISION_REVENUE",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": [
+        "V_NET"
+      ]
+    },
+    "source_concept": "RevenuesNetOfInterestExpense",
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_PRE_PROVISION"
+      ]
+    },
+    "target_concept": "PreProvisionProfit",
+    "formula_id": "FORMULA_PRE_PROVISION_PROFIT",
+    "description": "Net interest and noninterest revenue contribute to pre-provision profit"
+  },
+  {
+    "edge_id": "R_PART_PRE_PROVISION_EXPENSE",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_BANKING_NONINTEREST"
+      ]
+    },
+    "source_concept": "NoninterestExpense",
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_PRE_PROVISION"
+      ]
+    },
+    "target_concept": "PreProvisionProfit",
+    "formula_id": "FORMULA_PRE_PROVISION_PROFIT",
+    "description": "Noninterest expense reduces pre-provision profit"
+  },
+  {
+    "edge_id": "R_PART_RETAIL_OPINC_REVENUE",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "source_concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "target_concept": "OperatingIncome",
+    "formula_id": "FORMULA_RETAIL_OPERATING_INCOME",
+    "description": "Revenue contributes to operating income before operating costs"
+  },
+  {
+    "edge_id": "R_PART_RETAIL_OPINC_COSTS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": [
+        "M_COSTS_AND_EXPENSES"
+      ]
+    },
+    "source_concept": "CostsAndExpenses",
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "target_concept": "OperatingIncome",
+    "formula_id": "FORMULA_RETAIL_OPERATING_INCOME",
+    "description": "Operating costs and expenses reduce operating income"
+  },
+  {
+    "edge_id": "R_PART_COSTS_FULFILLMENT",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_FULFILLMENT"
+      ]
+    },
+    "source_concept": "Fulfillment",
+    "target": {
+      "head": "H_COST",
+      "mods": [
+        "M_COSTS_AND_EXPENSES"
+      ]
+    },
+    "target_concept": "CostsAndExpenses",
+    "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
+    "description": "Fulfillment costs are included in costs and expenses"
+  },
+  {
+    "edge_id": "R_PART_COSTS_TECH_INFRA",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_TECH_INFRA"
+      ]
+    },
+    "source_concept": "TechnologyAndInfrastructure",
+    "target": {
+      "head": "H_COST",
+      "mods": [
+        "M_COSTS_AND_EXPENSES"
+      ]
+    },
+    "target_concept": "CostsAndExpenses",
+    "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
+    "description": "Technology and infrastructure costs are included in costs and expenses"
+  },
+  {
+    "edge_id": "R_PART_COSTS_SALES_MARKETING",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_SGA"
+      ]
+    },
+    "source_concept": "SalesAndMarketingExpense",
+    "target": {
+      "head": "H_COST",
+      "mods": [
+        "M_COSTS_AND_EXPENSES"
+      ]
+    },
+    "target_concept": "CostsAndExpenses",
+    "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
+    "description": "Sales and marketing costs are included in costs and expenses"
+  },
+  {
+    "edge_id": "R_PART_COSTS_GENERAL_ADMIN",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_SGA"
+      ]
+    },
+    "source_concept": "GeneralAndAdministrativeExpense",
+    "target": {
+      "head": "H_COST",
+      "mods": [
+        "M_COSTS_AND_EXPENSES"
+      ]
+    },
+    "target_concept": "CostsAndExpenses",
+    "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
+    "description": "General and administrative costs are included in costs and expenses"
+  },
+  {
+    "edge_id": "R_PART_COSTS_COST_OF_SALES",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "source_concept": "CostOfSales",
+    "target": {
+      "head": "H_COST",
+      "mods": [
+        "M_COSTS_AND_EXPENSES"
+      ]
+    },
+    "target_concept": "CostsAndExpenses",
+    "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
+    "description": "Cost of sales is included in costs and expenses"
+  },
+  {
+    "edge_id": "R_PART_MATERIALS_GROSS_MARGIN_REVENUE",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "source_concept": "Revenues",
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_GROSS_MARGIN"
+      ]
+    },
+    "target_concept": "GrossMarginDerived",
+    "formula_id": "FORMULA_MATERIALS_GROSS_MARGIN",
+    "description": "Revenue contributes to derived gross margin"
+  },
+  {
+    "edge_id": "R_PART_MATERIALS_GROSS_MARGIN_COGS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "source_concept": "CostOfGoodsAndServicesSold",
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_GROSS_MARGIN"
+      ]
+    },
+    "target_concept": "GrossMarginDerived",
+    "formula_id": "FORMULA_MATERIALS_GROSS_MARGIN",
+    "description": "Cost of goods and services sold reduces derived gross margin"
+  },
+  {
+    "edge_id": "R_PART_HOSPITALITY_MARGIN_REVENUE",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "source_concept": "Revenues",
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_PRETAX_OPERATING_MARGIN"
+      ]
+    },
+    "target_concept": "PreTaxOperatingMargin",
+    "formula_id": "FORMULA_PRETAX_OPERATING_MARGIN",
+    "description": "Revenue contributes to pretax operating margin"
+  },
+  {
+    "edge_id": "R_PART_HOSPITALITY_MARGIN_COSTS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "source_concept": "CostsAndExpenses",
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_PRETAX_OPERATING_MARGIN"
+      ]
+    },
+    "target_concept": "PreTaxOperatingMargin",
+    "formula_id": "FORMULA_PRETAX_OPERATING_MARGIN",
+    "description": "Costs and expenses reduce pretax operating margin"
+  },
+  {
+    "edge_id": "R_DUAL_NOTIONAL_DERIV_ASSET",
+    "relation_type": "DUAL_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COMMITMENT",
+      "mods": [
+        "M_NOTIONAL_AMOUNT"
+      ]
+    },
+    "source_concept": "NotionalAmount",
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_FAIR_VALUE",
+        "M_DERIVATIVE_HEDGE"
+      ]
+    },
+    "target_concept": "DerivativeAssetsGross",
+    "description": "Contract notional is distinct from derivative asset fair value"
+  },
+  {
+    "edge_id": "R_DUAL_NOTIONAL_DERIV_LIABILITY",
+    "relation_type": "DUAL_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COMMITMENT",
+      "mods": [
+        "M_NOTIONAL_AMOUNT"
+      ]
+    },
+    "source_concept": "NotionalAmount",
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_FAIR_VALUE",
+        "M_DERIVATIVE_HEDGE"
+      ]
+    },
+    "target_concept": "DerivativeLiabilitiesGross",
+    "description": "Contract notional is distinct from derivative liability fair value"
+  },
+  {
+    "edge_id": "R_NET_DERIVATIVE_ASSET_GROSS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE",
+        "M_FAIR_VALUE",
+        "V_GROSS",
+        "M_NOT_SUBJECT_TO_NETTING"
+      ]
+    },
+    "source_concept": "DerivativeAssetFairValueGrossAssetIncludingNotSubjectToMasterNettingArrangement",
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE"
+      ]
+    },
+    "target_concept": "DerivativeAssets",
+    "formula_id": "FORMULA_DERIVATIVE_ASSETS_NET",
+    "description": "Gross derivative asset fair value contributes to the net balance"
+  },
+  {
+    "edge_id": "R_NET_DERIVATIVE_ASSET_OFFSET",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE",
+        "M_FAIR_VALUE",
+        "V_GROSS"
+      ]
+    },
+    "source_concept": "DerivativeAssetFairValueGrossLiability",
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE"
+      ]
+    },
+    "target_concept": "DerivativeAssets",
+    "formula_id": "FORMULA_DERIVATIVE_ASSETS_NET",
+    "description": "Recognized asset-side netting offsets reduce derivative assets"
+  },
+  {
+    "edge_id": "R_NET_DERIVATIVE_ASSET_COLLATERAL",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_DERIVATIVE",
+        "M_CASH_COLLATERAL_OFFSET",
+        "M_COLLATERAL_RECLAIM"
+      ]
+    },
+    "source_concept": "DerivativeCollateralRightToReclaimCash",
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE"
+      ]
+    },
+    "target_concept": "DerivativeAssets",
+    "formula_id": "FORMULA_DERIVATIVE_ASSETS_NET",
+    "description": "Cash collateral pledged reduces derivative assets"
+  },
+  {
+    "edge_id": "R_NET_DERIVATIVE_LIABILITY_GROSS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE",
+        "M_FAIR_VALUE",
+        "V_GROSS",
+        "M_NOT_SUBJECT_TO_NETTING"
+      ]
+    },
+    "source_concept": "DerivativeLiabilityFairValueGrossLiabilityIncludingNotSubjectToMasterNettingArrangement",
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE"
+      ]
+    },
+    "target_concept": "DerivativeLiabilities",
+    "formula_id": "FORMULA_DERIVATIVE_LIABILITIES_NET",
+    "description": "Gross derivative liability fair value contributes to the net balance"
+  },
+  {
+    "edge_id": "R_NET_DERIVATIVE_LIABILITY_OFFSET",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE",
+        "M_FAIR_VALUE",
+        "V_GROSS"
+      ]
+    },
+    "source_concept": "DerivativeLiabilityFairValueGrossAsset",
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE"
+      ]
+    },
+    "target_concept": "DerivativeLiabilities",
+    "formula_id": "FORMULA_DERIVATIVE_LIABILITIES_NET",
+    "description": "Liability-side netting offsets reduce derivative liabilities"
+  },
+  {
+    "edge_id": "R_NET_DERIVATIVE_LIABILITY_COLLATERAL",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_DERIVATIVE",
+        "M_CASH_COLLATERAL_OFFSET",
+        "M_COLLATERAL_RETURN"
+      ]
+    },
+    "source_concept": "DerivativeCollateralObligationToReturnCash",
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE"
+      ]
+    },
+    "target_concept": "DerivativeLiabilities",
+    "formula_id": "FORMULA_DERIVATIVE_LIABILITIES_NET",
+    "description": "Cash collateral return obligations increase net derivative liabilities"
+  },
+  {
+    "edge_id": "R_NET_OF_REVENUES_GROSS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "source_concept": "Revenues",
+    "target": {
+      "head": "H_REVENUE",
+      "mods": [
+        "V_NET"
+      ]
+    },
+    "target_concept": "RevenuesNetOfInterestExpense",
+    "formula_id": "FORMULA_REVENUES_NET_OF_INTEREST_EXPENSE",
+    "description": "Gross revenue is the positive operand of a net-of expression"
+  },
+  {
+    "edge_id": "R_NET_OF_REVENUES_INTEREST_EXPENSE",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_INTEREST"
+      ]
+    },
+    "source_concept": "InterestExpense",
+    "target": {
+      "head": "H_REVENUE",
+      "mods": [
+        "V_NET"
+      ]
+    },
+    "target_concept": "RevenuesNetOfInterestExpense",
+    "formula_id": "FORMULA_REVENUES_NET_OF_INTEREST_EXPENSE",
+    "description": "Interest expense is subtracted by the NET_OF operator"
+  },
+  {
+    "edge_id": "R_PART_CASH_OPERATING",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "source_concept": "NetCashProvidedByUsedInOperatingActivities",
+    "target": {
+      "head": "H_CASH",
+      "mods": [
+        "M_CHANGE"
+      ]
+    },
+    "target_concept": "CashPeriodIncreaseDecrease",
+    "formula_id": "FORMULA_CASH_FLOW",
+    "description": "Operating cash flow contributes +1.0 to Net Cash Flow"
+  },
+  {
+    "edge_id": "R_PART_CASH_INVESTING",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_INVESTING"
+      ]
+    },
+    "source_concept": "NetCashProvidedByUsedInInvestingActivities",
+    "target": {
+      "head": "H_CASH",
+      "mods": [
+        "M_CHANGE"
+      ]
+    },
+    "target_concept": "CashPeriodIncreaseDecrease",
+    "formula_id": "FORMULA_CASH_FLOW",
+    "description": "Investing cash flow contributes +1.0 to Net Cash Flow"
+  },
+  {
+    "edge_id": "R_PART_CASH_FINANCING",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_FINANCING"
+      ]
+    },
+    "source_concept": "NetCashProvidedByUsedInFinancingActivities",
+    "target": {
+      "head": "H_CASH",
+      "mods": [
+        "M_CHANGE"
+      ]
+    },
+    "target_concept": "CashPeriodIncreaseDecrease",
+    "formula_id": "FORMULA_CASH_FLOW",
+    "description": "Financing cash flow contributes +1.0 to Net Cash Flow"
+  },
+  {
+    "edge_id": "R_PART_CASH_FX",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_FX_CURRENCY"
+      ]
+    },
+    "source_concept": "EffectOfExchangeRateOnCash",
+    "target": {
+      "head": "H_CASH",
+      "mods": [
+        "M_CHANGE"
+      ]
+    },
+    "target_concept": "CashPeriodIncreaseDecrease",
+    "formula_id": "FORMULA_CASH_FLOW",
+    "description": "FX effect contributes +1.0 to Net Cash Flow"
   }
 ]

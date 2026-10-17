@@ -358,6 +358,20 @@
     "description": "Current (<= 12 months) liquidity/maturity"
   },
   {
+    "modifier_id": "M_NONCURRENT_HORIZON",
+    "category": "MATURITY_HORIZON",
+    "keywords": [
+      "Noncurrent",
+      "LongTerm",
+      "AfterYearOne",
+      "MoreThanOneYear",
+      "YearsTwoThroughFive",
+      "AfterFiveYears"
+    ],
+    "description": "Noncurrent (> 12 months) temporal maturity horizon"
+  },
+
+  {
     "modifier_id": "M_FAIR_VALUE",
     "category": "VALUATION_BASIS",
     "keywords": [
@@ -711,5 +725,36 @@
     "category": "NETTING_OFFSET",
     "keywords": ["RightToReclaimCash", "CollateralReclaimRight"],
     "description": "Cash collateral right to reclaim amounts pledged"
+  },
+  {
+    "modifier_id": "M_CHANGE",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Increase",
+      "Decrease",
+      "PeriodIncreaseDecrease",
+      "Change",
+      "Delta"
+    ],
+    "description": "Period increase, decrease, or net change flow"
+  },
+  {
+    "modifier_id": "M_INVESTING",
+    "category": "CASH_FLOW_ACTIVITY",
+    "keywords": [
+      "Investing",
+      "InvestingActivities",
+      "InvestmentActivities"
+    ],
+    "description": "Cash flows provided by or used in investing activities"
+  },
+  {
+    "modifier_id": "M_FINANCING",
+    "category": "CASH_FLOW_ACTIVITY",
+    "keywords": [
+      "Financing",
+      "FinancingActivities"
+    ],
+    "description": "Cash flows provided by or used in financing activities"
   }
 ]

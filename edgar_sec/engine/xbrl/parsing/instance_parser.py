@@ -72,6 +72,14 @@ def _extract_contexts(root: ET.Element) -> dict[str, _ParsedContext]:
     return contexts
 
 
+def _find_measure_text(elem: ET.Element) -> str:
+    for child in elem.iter():
+        if strip_namespace(child.tag) == "measure":
+            val = (child.text or "").strip()
+            return val.split(":")[-1] if ":" in val else val
+    return ""
+
+
 def _extract_units(root: ET.Element) -> dict[str, str]:
     units: dict[str, str] = {}
     for elem in root:
@@ -80,14 +88,23 @@ def _extract_units(root: ET.Element) -> dict[str, str]:
         uid = elem.attrib.get("id")
         if not uid:
             continue
-        measure_val = ""
-        for child in elem.iter():
-            if strip_namespace(child.tag) == "measure":
-                measure_val = (child.text or "").strip()
-                if ":" in measure_val:
-                    measure_val = measure_val.split(":")[-1]
-                break
-        units[uid] = measure_val
+        divide = next((c for c in elem if strip_namespace(c.tag) == "divide"), None)
+        if divide is not None:
+            num_elem = next(
+                (c for c in divide if strip_namespace(c.tag) == "unitNumerator"), None
+            )
+            den_elem = next(
+                (c for c in divide if strip_namespace(c.tag) == "unitDenominator"), None
+            )
+            num = _find_measure_text(num_elem) if num_elem is not None else ""
+            den = _find_measure_text(den_elem) if den_elem is not None else ""
+            if num and den:
+                units[uid] = f"{num}/{den}"
+                continue
+            if num or den:
+                units[uid] = num or den
+                continue
+        units[uid] = _find_measure_text(elem)
     return units
 
 

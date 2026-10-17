@@ -8,7 +8,8 @@
       "Product",
       "Merchandise",
       "Hardware",
-      "Automotive"
+      "Automotive",
+      "Auto"
     ],
     "description": "Physical goods or product sales"
   },
@@ -21,9 +22,7 @@
       "Cloud",
       "Subscription",
       "SaaS",
-      "Server",
-      "Office",
-      "Dynamics"
+      "Server"
     ],
     "description": "Cloud, subscription, or service revenue"
   },
@@ -359,6 +358,20 @@
     "description": "Current (<= 12 months) liquidity/maturity"
   },
   {
+    "modifier_id": "M_NONCURRENT_HORIZON",
+    "category": "MATURITY_HORIZON",
+    "keywords": [
+      "Noncurrent",
+      "LongTerm",
+      "AfterYearOne",
+      "MoreThanOneYear",
+      "YearsTwoThroughFive",
+      "AfterFiveYears"
+    ],
+    "description": "Noncurrent (> 12 months) temporal maturity horizon"
+  },
+
+  {
     "modifier_id": "M_FAIR_VALUE",
     "category": "VALUATION_BASIS",
     "keywords": [
@@ -470,26 +483,114 @@
     "description": "Master netting agreement offsets under ISDA"
   },
   {
-    "modifier_id": "M_RISK_FX",
-    "category": "DERIVATIVE_UNDERLYING_RISK",
+    "modifier_id": "M_PRE_PROVISION",
+    "category": "DOMAIN_VERTICAL",
     "keywords": [
-      "FX",
-      "ForeignExchange",
-      "Currency",
-      "CrossCurrency"
+      "PreProvision",
+      "PreProvisionNetRevenue",
+      "PreProvisionProfit"
     ],
-    "description": "Foreign-exchange and currency underlying risk"
+    "description": "Banking operating income before credit-loss provision"
   },
   {
-    "modifier_id": "M_RISK_IR",
-    "category": "DERIVATIVE_UNDERLYING_RISK",
+    "modifier_id": "M_FINANCING_RECEIVABLE",
+    "category": "WORKING_CAPITAL",
     "keywords": [
-      "InterestRate",
-      "Treasury",
-      "SOFR",
-      "IR"
+      "FinancingReceivable",
+      "FinancingReceivables",
+      "Loans"
     ],
-    "description": "Interest-rate underlying risk"
+    "description": "Loans and other financing receivables"
+  },
+  {
+    "modifier_id": "M_CREDIT_LOSS_PROVISION",
+    "category": "EXPENSE_NATURE",
+    "keywords": [
+      "CreditLossProvision",
+      "ProvisionForCreditLosses",
+      "AllowanceForCreditLosses"
+    ],
+    "description": "Provision and allowance for credit losses"
+  },
+  {
+    "modifier_id": "M_FULFILLMENT",
+    "category": "EXPENSE_NATURE",
+    "keywords": [
+      "Fulfillment",
+      "Fulfilment",
+      "Warehousing",
+      "Shipping"
+    ],
+    "description": "Order fulfillment, warehousing, and shipping costs"
+  },
+  {
+    "modifier_id": "M_TECH_INFRA",
+    "category": "EXPENSE_NATURE",
+    "keywords": [
+      "TechnologyInfrastructure",
+      "ComputingInfrastructure",
+      "CloudInfrastructure",
+      "Datacenter"
+    ],
+    "description": "Technology, computing, and cloud infrastructure costs"
+  },
+  {
+    "modifier_id": "M_RESTRUCTURING",
+    "category": "EXPENSE_NATURE",
+    "keywords": [
+      "Restructuring",
+      "Severance",
+      "Reorganization"
+    ],
+    "description": "Organizational restructuring, severance, and impairment costs"
+  },
+  {
+    "modifier_id": "M_ACTIVISM_COSTS",
+    "category": "EXPENSE_NATURE",
+    "keywords": [
+      "ShareholderActivism",
+      "ProxyDefense",
+      "GovernanceDefense"
+    ],
+    "description": "Shareholder activism advisory and proxy defense costs"
+  },
+  {
+    "modifier_id": "M_PENSION_DEFINED_BENEFIT",
+    "category": "EMPLOYEE_BENEFIT",
+    "keywords": [
+      "DefinedBenefitPlan",
+      "Pension",
+      "Postretirement"
+    ],
+    "description": "Defined benefit pension and post-retirement obligations"
+  },
+  {
+    "modifier_id": "M_SBC_AWARD",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "ShareBasedPaymentAward",
+      "EquityBasedAward",
+      "StockBasedAward"
+    ],
+    "description": "Share-based compensation payment awards"
+  },
+  {
+    "modifier_id": "M_ROU_LEASE",
+    "category": "LONG_LIVED_ASSET",
+    "keywords": [
+      "RightOfUseAsset",
+      "OperatingLeaseRightOfUseAsset"
+    ],
+    "description": "Operating lease right-of-use assets"
+  },
+  {
+    "modifier_id": "M_CONTRACT_CUSTOMER",
+    "category": "REVENUE_TYPE",
+    "keywords": [
+      "ContractWithCustomer",
+      "ContractsWithCustomers"
+    ],
+    "description": "Revenue contract scope under ASC 606"
   },
   {
     "modifier_id": "M_RISK_COMMODITY",
@@ -513,14 +614,99 @@
     "description": "Equity and equity-index underlying risk"
   },
   {
+    "modifier_id": "M_RISK_FX",
+    "category": "DERIVATIVE_UNDERLYING_RISK",
+    "keywords": ["FX", "ForeignExchange", "Currency", "CrossCurrency"],
+    "description": "Foreign-exchange and currency underlying risk"
+  },
+  {
+    "modifier_id": "M_RISK_IR",
+    "category": "DERIVATIVE_UNDERLYING_RISK",
+    "keywords": ["InterestRate", "Treasury", "SOFR"],
+    "description": "Interest-rate underlying risk"
+  },
+  {
     "modifier_id": "M_RISK_CREDIT",
     "category": "DERIVATIVE_UNDERLYING_RISK",
-    "keywords": [
-      "Credit",
-      "CDS",
-      "CreditDefault"
-    ],
+    "keywords": ["Credit", "CDS", "CreditDefault"],
     "description": "Credit-spread and credit-default underlying risk"
+  },
+  {
+    "modifier_id": "M_CAP_FLOOR_COLLAR",
+    "category": "INSTRUMENT_DERIVATIVE",
+    "keywords": [
+      "InterestRateCap",
+      "InterestRateFloor",
+      "InterestRateCollar",
+      "CapFloor"
+    ],
+    "description": "Nonlinear interest-rate option contracts"
+  },
+  {
+    "modifier_id": "M_SWAPTION",
+    "category": "INSTRUMENT_DERIVATIVE",
+    "keywords": [
+      "Swaption",
+      "Swaptions"
+    ],
+    "description": "Option to enter an underlying swap agreement"
+  },
+  {
+    "modifier_id": "M_CROSS_CURRENCY_SWAP",
+    "category": "INSTRUMENT_DERIVATIVE",
+    "keywords": [
+      "CrossCurrencySwap",
+      "CrossCurrencyBasisSwap"
+    ],
+    "description": "Cross-currency and multi-currency basis swaps"
+  },
+  {
+    "modifier_id": "M_NOTIONAL_AMOUNT",
+    "category": "DERIVATIVE_MEASURE",
+    "keywords": [
+      "NotionalAmount",
+      "NotionalPrincipal",
+      "NotionalValue"
+    ],
+    "description": "Off-balance-sheet derivative contract notional"
+  },
+  {
+    "modifier_id": "M_COUNTERPARTY_NETTING",
+    "category": "NETTING_OFFSET",
+    "keywords": [
+      "MasterNettingAgreement",
+      "CounterpartyNetting",
+      "BilateralNetting"
+    ],
+    "description": "ASC 210-20 counterparty master-netting offset"
+  },
+  {
+    "modifier_id": "M_CASH_COLLATERAL_OFFSET",
+    "category": "NETTING_OFFSET",
+    "keywords": [
+      "CashCollateralReceived",
+      "CashCollateralPledged",
+      "VariationMargin"
+    ],
+    "description": "Cash collateral held or pledged against derivative positions"
+  },
+  {
+    "modifier_id": "M_PRETAX_OPERATING_MARGIN",
+    "category": "VALUATION_BASIS",
+    "keywords": [
+      "PreTaxOperatingMargin",
+      "PretaxOperatingMargin"
+    ],
+    "description": "Operating margin measured before income taxes"
+  },
+  {
+    "modifier_id": "M_COSTS_AND_EXPENSES",
+    "category": "EXPENSE_NATURE",
+    "keywords": [
+      "CostsAndExpenses",
+      "OperatingCostsAndExpenses"
+    ],
+    "description": "Aggregate operating cost and expense grouping"
   },
   {
     "modifier_id": "M_NOT_SUBJECT_TO_NETTING",
@@ -539,5 +725,36 @@
     "category": "NETTING_OFFSET",
     "keywords": ["RightToReclaimCash", "CollateralReclaimRight"],
     "description": "Cash collateral right to reclaim amounts pledged"
+  },
+  {
+    "modifier_id": "M_CHANGE",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Increase",
+      "Decrease",
+      "PeriodIncreaseDecrease",
+      "Change",
+      "Delta"
+    ],
+    "description": "Period increase, decrease, or net change flow"
+  },
+  {
+    "modifier_id": "M_INVESTING",
+    "category": "CASH_FLOW_ACTIVITY",
+    "keywords": [
+      "Investing",
+      "InvestingActivities",
+      "InvestmentActivities"
+    ],
+    "description": "Cash flows provided by or used in investing activities"
+  },
+  {
+    "modifier_id": "M_FINANCING",
+    "category": "CASH_FLOW_ACTIVITY",
+    "keywords": [
+      "Financing",
+      "FinancingActivities"
+    ],
+    "description": "Cash flows provided by or used in financing activities"
   }
 ]

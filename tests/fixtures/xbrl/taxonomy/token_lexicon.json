@@ -1,209 +1,1890 @@
 [
-  {"phrase": ["Revenue", "From", "Contract", "With", "Customer", "Excluding", "Assessed", "Tax"], "role": "HEAD", "atom": "H_REVENUE"},
-  {"phrase": ["Revenue", "From", "Contract", "With", "Customer"], "role": "HEAD", "atom": "H_REVENUE"},
-  {"phrase": ["Revenue"], "role": "HEAD", "atom": "H_REVENUE"},
-  {"phrase": ["Revenues"], "role": "HEAD", "atom": "H_REVENUE"},
-  {"phrase": ["Premiums", "Earned"], "role": "HEAD", "atom": "H_REVENUE"},
-  {"phrase": ["Premiums"], "role": "HEAD", "atom": "H_REVENUE"},
-  {"phrase": ["Income"], "role": "HEAD", "atom": "H_INCOME"},
-  {"phrase": ["Profit"], "role": "HEAD", "atom": "H_INCOME"},
-  {"phrase": ["Loss"], "role": "HEAD", "atom": "H_INCOME"},
-  {"phrase": ["Margin"], "role": "HEAD", "atom": "H_INCOME"},
-  {"phrase": ["Cost"], "role": "HEAD", "atom": "H_COST"},
-  {"phrase": ["Costs"], "role": "HEAD", "atom": "H_COST"},
-  {"phrase": ["Expense"], "role": "HEAD", "atom": "H_EXPENSE"},
-  {"phrase": ["Expenses"], "role": "HEAD", "atom": "H_EXPENSE"},
-  {"phrase": ["Asset"], "role": "HEAD", "atom": "H_ASSET"},
-  {"phrase": ["Assets"], "role": "HEAD", "atom": "H_ASSET"},
-  {"phrase": ["Receivable"], "role": "HEAD", "atom": "H_ASSET"},
-  {"phrase": ["Receivables"], "role": "HEAD", "atom": "H_ASSET"},
-  {"phrase": ["Inventory"], "role": "HEAD", "atom": "H_ASSET"},
-  {"phrase": ["Inventories"], "role": "HEAD", "atom": "H_ASSET"},
-  {"phrase": ["Goodwill"], "role": "HEAD", "atom": "H_ASSET"},
-  {"phrase": ["Properties"], "role": "HEAD", "atom": "H_ASSET"},
-  {"phrase": ["Equipment"], "role": "HEAD", "atom": "H_ASSET"},
-  {"phrase": ["Liability"], "role": "HEAD", "atom": "H_LIABILITY"},
-  {"phrase": ["Liabilities"], "role": "HEAD", "atom": "H_LIABILITY"},
-  {"phrase": ["Obligation"], "role": "HEAD", "atom": "H_LIABILITY"},
-  {"phrase": ["Obligations"], "role": "HEAD", "atom": "H_LIABILITY"},
-  {"phrase": ["Debt"], "role": "HEAD", "atom": "H_LIABILITY"},
-  {"phrase": ["Payable"], "role": "HEAD", "atom": "H_LIABILITY"},
-  {"phrase": ["Payables"], "role": "HEAD", "atom": "H_LIABILITY"},
-  {"phrase": ["Reserve"], "role": "HEAD", "atom": "H_LIABILITY"},
-  {"phrase": ["Reserves"], "role": "HEAD", "atom": "H_LIABILITY"},
-  {"phrase": ["Equity"], "role": "HEAD", "atom": "H_EQUITY"},
-  {"phrase": ["Retained", "Earnings"], "role": "HEAD", "atom": "H_EQUITY"},
-  {"phrase": ["Accumulated", "Deficit"], "role": "HEAD", "atom": "H_EQUITY"},
-  {"phrase": ["Cash"], "role": "HEAD", "atom": "H_CASH"},
-  {"phrase": ["Cash", "Equivalents"], "role": "HEAD", "atom": "H_CASH"},
-  {"phrase": ["Cash", "And", "Cash", "Equivalents"], "role": "HEAD", "atom": "H_CASH"},
-  {"phrase": ["Share"], "role": "HEAD", "atom": "H_SHARE"},
-  {"phrase": ["Shares"], "role": "HEAD", "atom": "H_SHARE"},
-  {"phrase": ["Warrant"], "role": "HEAD", "atom": "H_SHARE"},
-  {"phrase": ["Warrants"], "role": "HEAD", "atom": "H_SHARE"},
-  {"phrase": ["Performance", "Obligation"], "role": "HEAD", "atom": "H_COMMITMENT"},
-  {"phrase": ["Commitment"], "role": "HEAD", "atom": "H_COMMITMENT"},
-  {"phrase": ["Commitments"], "role": "HEAD", "atom": "H_COMMITMENT"},
-  {"phrase": ["Backlog"], "role": "HEAD", "atom": "H_COMMITMENT"},
-  {"phrase": ["Employees"], "role": "HEAD", "atom": "H_WORKFORCE"},
-  {"phrase": ["Headcount"], "role": "HEAD", "atom": "H_WORKFORCE"},
-  {"phrase": ["Workforce"], "role": "HEAD", "atom": "H_WORKFORCE"},
-  {"phrase": ["Price", "Per", "Share"], "role": "HEAD", "atom": "H_UNIT_RATE"},
-  {"phrase": ["Exercise", "Price"], "role": "HEAD", "atom": "H_UNIT_RATE"},
-  {"phrase": ["Per", "Share"], "role": "HEAD", "atom": "H_UNIT_RATE"},
-
-  {"phrase": ["Held", "For"], "role": "SUBORDINATOR"},
-  {"phrase": ["Attributable", "To"], "role": "SUBORDINATOR"},
-  {"phrase": ["Arising", "From"], "role": "SUBORDINATOR"},
-  {"phrase": ["Applicable", "To"], "role": "SUBORDINATOR"},
-  {"phrase": ["Incurred", "In"], "role": "SUBORDINATOR"},
-  {"phrase": ["Provided", "By", "Used", "In"], "role": "SUBORDINATOR"},
-  {"phrase": ["Provided", "By"], "role": "SUBORDINATOR"},
-  {"phrase": ["Used", "In"], "role": "SUBORDINATOR"},
-  {"phrase": ["Excluding"], "role": "SUBORDINATOR"},
-  {"phrase": ["Including"], "role": "SUBORDINATOR"},
-  {"phrase": ["Net", "Of"], "role": "NET_OF", "atom": "V_NET"},
-  {"phrase": ["To", "Acquire"], "role": "SUBORDINATOR"},
-  {"phrase": ["Paid", "For"], "role": "SUBORDINATOR"},
-  {"phrase": ["Covered", "By"], "role": "SUBORDINATOR"},
-
-  {"phrase": ["Net"], "role": "NETTING", "atom": "V_NET"},
-  {"phrase": ["Gross"], "role": "NETTING", "atom": "V_GROSS"},
-  {"phrase": ["Basic"], "role": "NETTING", "atom": "V_BASIC"},
-  {"phrase": ["Diluted"], "role": "NETTING", "atom": "V_DILUTED"},
-
-  {"phrase": ["Payments", "To"], "role": "HEAD", "atom": "H_CASH", "direction": -1.0},
-  {"phrase": ["Payments", "For"], "role": "HEAD", "atom": "H_CASH", "direction": -1.0},
-  {"phrase": ["Payments"], "role": "HEAD", "atom": "H_CASH", "direction": -1.0},
-  {"phrase": ["Repayments"], "role": "HEAD", "atom": "H_CASH", "direction": -1.0},
-  {"phrase": ["Costs"], "role": "FRAME", "direction": -1.0},
-  {"phrase": ["Proceeds", "From"], "role": "HEAD", "atom": "H_CASH", "direction": 1.0},
-  {"phrase": ["Proceeds"], "role": "HEAD", "atom": "H_CASH", "direction": 1.0},
-
-  {"phrase": ["Domestic"], "role": "INDEXICAL", "indexical": "DOMICILE"},
-  {"phrase": ["Foreign"], "role": "INDEXICAL", "indexical": "FOREIGN"},
-  {"phrase": ["International"], "role": "INDEXICAL", "indexical": "FOREIGN"},
-
-  {"phrase": ["Sales"], "role": "MODIFIER", "atom": "M_SALES_GOODS"},
-  {"phrase": ["Goods"], "role": "MODIFIER", "atom": "M_SALES_GOODS"},
-  {"phrase": ["Product"], "role": "MODIFIER", "atom": "M_SALES_GOODS"},
-  {"phrase": ["Real", "Estate"], "role": "MODIFIER", "atom": "M_REAL_ESTATE"},
-  {"phrase": ["Rental"], "role": "MODIFIER", "atom": "M_REAL_ESTATE"},
-  {"phrase": ["Service"], "role": "MODIFIER", "atom": "M_SERVICE"},
-  {"phrase": ["Services"], "role": "MODIFIER", "atom": "M_SERVICE"},
-  {"phrase": ["Cloud"], "role": "MODIFIER", "atom": "M_SERVICE"},
-  {"phrase": ["Subscription"], "role": "MODIFIER", "atom": "M_SERVICE"},
-  {"phrase": ["SaaS"], "role": "MODIFIER", "atom": "M_SERVICE"},
-  {"phrase": ["License"], "role": "MODIFIER", "atom": "M_LICENSE"},
-  {"phrase": ["Licensing"], "role": "MODIFIER", "atom": "M_LICENSE"},
-  {"phrase": ["Insurance"], "role": "MODIFIER", "atom": "M_INSURANCE_PREMIUM"},
-  {"phrase": ["Operating"], "role": "MODIFIER", "atom": "M_OPERATING"},
-  {"phrase": ["Gross", "Profit"], "role": "HEAD", "atom": "H_INCOME", "mods": ["M_GROSS_MARGIN"]},
-  {"phrase": ["Gross", "Margin"], "role": "HEAD", "atom": "H_INCOME", "mods": ["M_GROSS_MARGIN"]},
-  {"phrase": ["Operating", "Income"], "role": "HEAD", "atom": "H_INCOME", "mods": ["M_OPERATING"]},
-  {"phrase": ["Net", "Income"], "role": "HEAD", "atom": "H_INCOME", "mods": ["M_NET_BOTTOMLINE"]},
-  {"phrase": ["Other", "Comprehensive", "Income"], "role": "HEAD", "atom": "H_INCOME", "mods": ["M_OCI"]},
-  {"phrase": ["Comprehensive", "Income"], "role": "HEAD", "atom": "H_INCOME", "mods": ["M_COMPREHENSIVE"]},
-  {"phrase": ["Free", "Cash", "Flow"], "role": "HEAD", "atom": "H_CASH", "mods": ["M_FREE_CASH_FLOW"]},
-  {"phrase": ["Liabilities", "And", "Stockholders", "Equity"], "role": "HEAD", "atom": "H_LIABILITY", "mods": ["M_EQUITY_TOTAL"]},
-  {"phrase": ["Stockholders", "Equity"], "role": "HEAD", "atom": "H_EQUITY"},
-  {"phrase": ["Research", "And", "Development"], "role": "MODIFIER", "atom": "M_RD"},
-  {"phrase": ["Selling", "General", "And", "Administrative"], "role": "MODIFIER", "atom": "M_SGA"},
-  {"phrase": ["Selling", "General", "Administrative"], "role": "MODIFIER", "atom": "M_SGA"},
-  {"phrase": ["General", "And", "Administrative"], "role": "MODIFIER", "atom": "M_SGA"},
-  {"phrase": ["Sales", "And", "Marketing"], "role": "MODIFIER", "atom": "M_SGA"},
-  {"phrase": ["Share", "Based", "Compensation"], "role": "MODIFIER", "atom": "M_SBC"},
-  {"phrase": ["Depreciation", "And", "Amortization"], "role": "MODIFIER", "atom": "M_DEPR_AMORT"},
-  {"phrase": ["Depreciation"], "role": "MODIFIER", "atom": "M_DEPR_AMORT"},
-  {"phrase": ["Amortization"], "role": "MODIFIER", "atom": "M_DEPR_AMORT"},
-  {"phrase": ["Interest"], "role": "MODIFIER", "atom": "M_INTEREST"},
-  {"phrase": ["Income", "Tax"], "role": "MODIFIER", "atom": "M_TAX"},
-  {"phrase": ["Tax"], "role": "MODIFIER", "atom": "M_TAX"},
-  {"phrase": ["Taxes"], "role": "MODIFIER", "atom": "M_TAX"},
-  {"phrase": ["Medical", "Claims"], "role": "MODIFIER", "atom": "M_MEDICAL_CLAIM"},
-  {"phrase": ["Accounts", "Receivable"], "role": "MODIFIER", "atom": "M_RECEIVABLE"},
-  {"phrase": ["Inventory"], "role": "MODIFIER", "atom": "M_INVENTORY"},
-  {"phrase": ["Goodwill"], "role": "MODIFIER", "atom": "M_GOODWILL"},
-  {"phrase": ["Content", "And", "Film"], "role": "MODIFIER", "atom": "M_CONTENT_FILM"},
-  {"phrase": ["Regulatory"], "role": "MODIFIER", "atom": "M_REGULATORY_ASC980"},
-  {"phrase": ["Crypto", "Asset"], "role": "MODIFIER", "atom": "M_CRYPTO_DIGITAL"},
-  {"phrase": ["Derivative"], "role": "MODIFIER", "atom": "M_DERIVATIVE"},
-  {"phrase": ["Contract", "With", "Customer"], "role": "MODIFIER", "atom": "M_DEFERRED_REVENUE"},
-  {"phrase": ["Deferred", "Revenue"], "role": "MODIFIER", "atom": "M_DEFERRED_REVENUE"},
-  {"phrase": ["Long", "Term", "Debt"], "role": "MODIFIER", "atom": "M_DEBT"},
-  {"phrase": ["Capital", "Lease"], "role": "MODIFIER", "atom": "M_LEASE"},
-  {"phrase": ["Operating", "Lease"], "role": "MODIFIER", "atom": "M_LEASE"},
-  {"phrase": ["Asset", "Retirement"], "role": "MODIFIER", "atom": "M_ARO_DECOMMISSIONING"},
-  {"phrase": ["Unpaid", "Claims"], "role": "MODIFIER", "atom": "M_CLAIM_RESERVE"},
-  {"phrase": ["Retained", "Earnings"], "role": "MODIFIER", "atom": "M_RETAINED_EARNINGS"},
-  {"phrase": ["Temporary", "Equity"], "role": "MODIFIER", "atom": "M_TEMPORARY_MEZZANINE"},
-  {"phrase": ["Accumulated", "Other", "Comprehensive", "Income"], "role": "MODIFIER", "atom": "M_AOCI"},
-  {"phrase": ["Foreign", "Currency", "Translation"], "role": "MODIFIER", "atom": "M_FX_CTA"},
-  {"phrase": ["Property", "Plant", "And", "Equipment"], "role": "MODIFIER", "atom": "M_PPE_CAPEX"},
-  {"phrase": ["Common"], "role": "MODIFIER", "atom": "M_COMMON"},
-  {"phrase": ["Preferred"], "role": "MODIFIER", "atom": "M_PREFERRED"},
-  {"phrase": ["Client", "Incentives"], "role": "MODIFIER", "atom": "M_CONTRA_INCENTIVE"},
-  {"phrase": ["Incentives"], "role": "MODIFIER", "atom": "M_CONTRA_INCENTIVE"},
-  {"phrase": ["Allowance", "For", "Doubtful", "Accounts"], "role": "MODIFIER", "atom": "M_CONTRA_ALLOWANCE"},
-  {"phrase": ["Debt", "Discount"], "role": "MODIFIER", "atom": "M_CONTRA_DISCOUNT"},
-  {"phrase": ["Treasury", "Stock"], "role": "MODIFIER", "atom": "M_CONTRA_TREASURY"},
-  {"phrase": ["Remaining", "Performance", "Obligation"], "role": "MODIFIER", "atom": "M_RPO_BACKLOG"},
-  {"phrase": ["Uncommenced"], "role": "MODIFIER", "atom": "M_UNCOMMENCED"},
-  {"phrase": ["Collective", "Bargaining"], "role": "MODIFIER", "atom": "M_UNION_CBA"},
-  {"phrase": ["Warrant"], "role": "MODIFIER", "atom": "M_WARRANT"},
-  {"phrase": ["Exercise", "Price"], "role": "MODIFIER", "atom": "M_EXERCISE_PRICE"},
-  {"phrase": ["Noninterest"], "role": "MODIFIER", "atom": "M_NONINTEREST"},
-  {"phrase": ["Investment"], "role": "MODIFIER", "atom": "M_INVESTMENT"},
-  {"phrase": ["Sale", "Of", "Properties"], "role": "MODIFIER", "atom": "M_DISPOSAL_GAIN"},
-  {"phrase": ["Fair", "Value"], "role": "MODIFIER", "atom": "M_FAIR_VALUE"},
-  {"phrase": ["Current"], "role": "MODIFIER", "atom": "M_CURRENT"},
-  {"phrase": ["Noncurrent"], "role": "MODIFIER", "atom": "M_NONCURRENT"},
-  {"phrase": ["Working", "Capital"], "role": "MODIFIER", "atom": "M_WORKING_CAPITAL"},
-  {"phrase": ["Development", "And", "Sale"], "role": "MODIFIER", "atom": "M_HELD_FOR_SALE"},
-  {"phrase": ["Sale"], "role": "MODIFIER", "atom": "M_PURPOSE_SALE"},
-  {"phrase": ["Interest", "Rate"], "role": "MODIFIER", "atom": "M_RISK_IR"},
-  {"phrase": ["Foreign", "Exchange"], "role": "MODIFIER", "atom": "M_RISK_FX"},
-  {"phrase": ["Cross", "Currency"], "role": "MODIFIER", "atom": "M_RISK_FX"},
-  {"phrase": ["Credit", "Default"], "role": "MODIFIER", "atom": "M_RISK_CREDIT"},
-  {"phrase": ["FX"], "role": "MODIFIER", "atom": "M_RISK_FX"},
-  {"phrase": ["Currency"], "role": "MODIFIER", "atom": "M_RISK_FX"},
-  {"phrase": ["Treasury"], "role": "MODIFIER", "atom": "M_RISK_IR"},
-  {"phrase": ["SOFR"], "role": "MODIFIER", "atom": "M_RISK_IR"},
-  {"phrase": ["Commodity"], "role": "MODIFIER", "atom": "M_RISK_COMMODITY"},
-  {"phrase": ["Energy"], "role": "MODIFIER", "atom": "M_RISK_COMMODITY"},
-  {"phrase": ["Metal"], "role": "MODIFIER", "atom": "M_RISK_COMMODITY"},
-  {"phrase": ["Metals"], "role": "MODIFIER", "atom": "M_RISK_COMMODITY"},
-  {"phrase": ["Agriculture"], "role": "MODIFIER", "atom": "M_RISK_COMMODITY"},
-  {"phrase": ["Credit"], "role": "MODIFIER", "atom": "M_RISK_CREDIT"},
-  {"phrase": ["CDS"], "role": "MODIFIER", "atom": "M_RISK_CREDIT"},
-  {"phrase": ["Not", "Subject", "To", "Master", "Netting", "Arrangement"], "role": "MODIFIER", "atom": "M_NOT_SUBJECT_TO_NETTING"},
-  {"phrase": ["Collateral"], "role": "MODIFIER", "atom": "M_CASH_COLLATERAL_OFFSET"},
-  {"phrase": ["Obligation", "To", "Return"], "role": "MODIFIER", "atom": "M_COLLATERAL_RETURN", "mods": ["M_CASH_COLLATERAL_OFFSET"]},
-  {"phrase": ["Right", "To", "Reclaim"], "role": "MODIFIER", "atom": "M_COLLATERAL_RECLAIM", "mods": ["M_CASH_COLLATERAL_OFFSET"]},
-  {"phrase": ["Index"], "role": "MODIFIER", "atom": "M_RISK_EQUITY"},
-  {"phrase": ["Equity"], "role": "MODIFIER", "atom": "M_RISK_EQUITY", "followed_by_any": ["Forward", "Forwards", "Futures", "Option", "Options", "Swap", "Swaps", "Swaption", "Derivative"]},
-  {"phrase": ["Stock"], "role": "MODIFIER", "atom": "M_RISK_EQUITY", "followed_by_any": ["Forward", "Forwards", "Futures", "Option", "Options", "Swap", "Swaps", "Swaption", "Derivative"]},
-  {"phrase": ["Swap"], "role": "MODIFIER", "atom": "M_SWAP"},
-  {"phrase": ["Swaps"], "role": "MODIFIER", "atom": "M_SWAP"},
-  {"phrase": ["Option"], "role": "MODIFIER", "atom": "M_OPTION"},
-  {"phrase": ["Options"], "role": "MODIFIER", "atom": "M_OPTION"},
-  {"phrase": ["Forward"], "role": "MODIFIER", "atom": "M_FORWARD"},
-  {"phrase": ["Forwards"], "role": "MODIFIER", "atom": "M_FORWARD"},
-  {"phrase": ["Futures"], "role": "MODIFIER", "atom": "M_FUTURES"},
-  {"phrase": ["Fair", "Value", "Hedge"], "role": "MODIFIER", "atom": "M_FAIR_VALUE_HEDGE"},
-  {"phrase": ["Cash", "Flow", "Hedge"], "role": "MODIFIER", "atom": "M_CASH_FLOW_HEDGE"},
-  {"phrase": ["Net", "Investment", "Hedge"], "role": "MODIFIER", "atom": "M_NET_INVESTMENT_HEDGE"},
-  {"phrase": ["Undesignated"], "role": "MODIFIER", "atom": "M_UNDESIGNATED_ECONOMIC"},
-  {"phrase": ["Collateral", "Offset"], "role": "MODIFIER", "atom": "M_COLLATERAL_OFFSET"},
-  {"phrase": ["Master", "Netting"], "role": "MODIFIER", "atom": "M_MASTER_NETTING_OFFSET"},
-  {"phrase": ["Interest", "Rate", "Cap"], "role": "MODIFIER", "atom": "M_RISK_IR", "mods": ["M_OPTION"]},
-  {"phrase": ["Interest", "Rate", "Floor"], "role": "MODIFIER", "atom": "M_RISK_IR", "mods": ["M_OPTION"]},
-  {"phrase": ["Interest", "Rate", "Collar"], "role": "MODIFIER", "atom": "M_RISK_IR", "mods": ["M_OPTION"]},
-  {"phrase": ["Cap"], "role": "MODIFIER", "atom": "M_OPTION"},
-  {"phrase": ["Floor"], "role": "MODIFIER", "atom": "M_OPTION"},
-  {"phrase": ["Collar"], "role": "MODIFIER", "atom": "M_OPTION"},
-  {"phrase": ["Swaption"], "role": "MODIFIER", "atom": "M_OPTION"},
-  {"phrase": ["Cross", "Currency", "Swap"], "role": "MODIFIER", "atom": "M_RISK_FX", "mods": ["M_SWAP"]},
-  {"phrase": ["Commodity", "Contract"], "role": "MODIFIER", "atom": "M_RISK_COMMODITY"},
-  {"phrase": ["Equity", "Derivative"], "role": "MODIFIER", "atom": "M_RISK_EQUITY"}
+  {
+    "phrase": [
+      "Revenue",
+      "From",
+      "Contract",
+      "With",
+      "Customer",
+      "Excluding",
+      "Assessed",
+      "Tax"
+    ],
+    "role": "HEAD",
+    "atom": "H_REVENUE"
+  },
+  {
+    "phrase": [
+      "Revenue",
+      "From",
+      "Contract",
+      "With",
+      "Customer"
+    ],
+    "role": "HEAD",
+    "atom": "H_REVENUE"
+  },
+  {
+    "phrase": [
+      "Revenue"
+    ],
+    "role": "HEAD",
+    "atom": "H_REVENUE"
+  },
+  {
+    "phrase": [
+      "Revenues"
+    ],
+    "role": "HEAD",
+    "atom": "H_REVENUE"
+  },
+  {
+    "phrase": [
+      "Premiums",
+      "Earned"
+    ],
+    "role": "HEAD",
+    "atom": "H_REVENUE"
+  },
+  {
+    "phrase": [
+      "Premiums"
+    ],
+    "role": "HEAD",
+    "atom": "H_REVENUE"
+  },
+  {
+    "phrase": [
+      "Income"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Profit"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Loss"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Margin"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Cost"
+    ],
+    "role": "HEAD",
+    "atom": "H_COST"
+  },
+  {
+    "phrase": [
+      "Costs"
+    ],
+    "role": "HEAD",
+    "atom": "H_COST"
+  },
+  {
+    "phrase": [
+      "Expense"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE"
+  },
+  {
+    "phrase": [
+      "Expenses"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE"
+  },
+  {
+    "phrase": [
+      "Asset"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Assets"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Receivable"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Receivables"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Inventory"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Inventories"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Goodwill"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Properties"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Equipment"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Liability"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Liabilities"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Obligation"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Obligations"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Debt"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Payable"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Payables"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Reserve"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Reserves"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Equity"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Retained",
+      "Earnings"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Accumulated",
+      "Deficit"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Cash"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH"
+  },
+  {
+    "phrase": [
+      "Cash",
+      "Equivalents"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH"
+  },
+  {
+    "phrase": [
+      "Cash",
+      "And",
+      "Cash",
+      "Equivalents"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH"
+  },
+  {
+    "phrase": [
+      "Share"
+    ],
+    "role": "HEAD",
+    "atom": "H_SHARE"
+  },
+  {
+    "phrase": [
+      "Shares"
+    ],
+    "role": "HEAD",
+    "atom": "H_SHARE"
+  },
+  {
+    "phrase": [
+      "Warrant"
+    ],
+    "role": "HEAD",
+    "atom": "H_SHARE"
+  },
+  {
+    "phrase": [
+      "Warrants"
+    ],
+    "role": "HEAD",
+    "atom": "H_SHARE"
+  },
+  {
+    "phrase": [
+      "Performance",
+      "Obligation"
+    ],
+    "role": "HEAD",
+    "atom": "H_COMMITMENT"
+  },
+  {
+    "phrase": [
+      "Commitment"
+    ],
+    "role": "HEAD",
+    "atom": "H_COMMITMENT"
+  },
+  {
+    "phrase": [
+      "Commitments"
+    ],
+    "role": "HEAD",
+    "atom": "H_COMMITMENT"
+  },
+  {
+    "phrase": [
+      "Backlog"
+    ],
+    "role": "HEAD",
+    "atom": "H_COMMITMENT"
+  },
+  {
+    "phrase": [
+      "Employees"
+    ],
+    "role": "HEAD",
+    "atom": "H_WORKFORCE"
+  },
+  {
+    "phrase": [
+      "Headcount"
+    ],
+    "role": "HEAD",
+    "atom": "H_WORKFORCE"
+  },
+  {
+    "phrase": [
+      "Workforce"
+    ],
+    "role": "HEAD",
+    "atom": "H_WORKFORCE"
+  },
+  {
+    "phrase": [
+      "Price",
+      "Per",
+      "Share"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE"
+  },
+  {
+    "phrase": [
+      "Exercise",
+      "Price"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE"
+  },
+  {
+    "phrase": [
+      "Per",
+      "Share"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE"
+  },
+  {
+    "phrase": [
+      "Of"
+    ],
+    "role": "SUBORDINATOR"
+  },
+  {
+    "phrase": [
+      "Held",
+      "For"
+    ],
+    "role": "SUBORDINATOR"
+  },
+  {
+    "phrase": [
+      "Attributable",
+      "To"
+    ],
+    "role": "SUBORDINATOR"
+  },
+  {
+    "phrase": [
+      "Arising",
+      "From"
+    ],
+    "role": "SUBORDINATOR"
+  },
+  {
+    "phrase": [
+      "Applicable",
+      "To"
+    ],
+    "role": "SUBORDINATOR"
+  },
+  {
+    "phrase": [
+      "Incurred",
+      "In"
+    ],
+    "role": "SUBORDINATOR"
+  },
+  {
+    "phrase": [
+      "Provided",
+      "By",
+      "Used",
+      "In"
+    ],
+    "role": "SUBORDINATOR"
+  },
+  {
+    "phrase": [
+      "Provided",
+      "By"
+    ],
+    "role": "SUBORDINATOR"
+  },
+  {
+    "phrase": [
+      "Used",
+      "In"
+    ],
+    "role": "SUBORDINATOR"
+  },
+  {
+    "phrase": [
+      "Excluding"
+    ],
+    "role": "SUBORDINATOR"
+  },
+  {
+    "phrase": [
+      "Including"
+    ],
+    "role": "SUBORDINATOR"
+  },
+  {
+    "phrase": [
+      "Net",
+      "Of"
+    ],
+    "role": "NET_OF",
+    "atom": "V_NET"
+  },
+  {
+    "phrase": [
+      "To",
+      "Acquire"
+    ],
+    "role": "SUBORDINATOR"
+  },
+  {
+    "phrase": [
+      "Paid",
+      "For"
+    ],
+    "role": "SUBORDINATOR"
+  },
+  {
+    "phrase": [
+      "Covered",
+      "By"
+    ],
+    "role": "SUBORDINATOR"
+  },
+  {
+    "phrase": [
+      "Net"
+    ],
+    "role": "NETTING",
+    "atom": "V_NET"
+  },
+  {
+    "phrase": [
+      "Gross"
+    ],
+    "role": "NETTING",
+    "atom": "V_GROSS"
+  },
+  {
+    "phrase": [
+      "Basic"
+    ],
+    "role": "NETTING",
+    "atom": "V_BASIC"
+  },
+  {
+    "phrase": [
+      "Diluted"
+    ],
+    "role": "NETTING",
+    "atom": "V_DILUTED"
+  },
+  {
+    "phrase": [
+      "Payments",
+      "To"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "direction": -1.0
+  },
+  {
+    "phrase": [
+      "Payments",
+      "For"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "direction": -1.0
+  },
+  {
+    "phrase": [
+      "Payments"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "direction": -1.0
+  },
+  {
+    "phrase": [
+      "Repayments"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "direction": -1.0
+  },
+  {
+    "phrase": [
+      "Costs"
+    ],
+    "role": "FRAME",
+    "direction": -1.0
+  },
+  {
+    "phrase": [
+      "Proceeds",
+      "From"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "direction": 1.0
+  },
+  {
+    "phrase": [
+      "Proceeds"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "direction": 1.0
+  },
+  {
+    "phrase": [
+      "Domestic"
+    ],
+    "role": "INDEXICAL",
+    "indexical": "DOMICILE"
+  },
+  {
+    "phrase": [
+      "Foreign"
+    ],
+    "role": "INDEXICAL",
+    "indexical": "FOREIGN"
+  },
+  {
+    "phrase": [
+      "International"
+    ],
+    "role": "INDEXICAL",
+    "indexical": "FOREIGN"
+  },
+  {
+    "phrase": [
+      "Sales"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SALES_GOODS"
+  },
+  {
+    "phrase": [
+      "Goods"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SALES_GOODS"
+  },
+  {
+    "phrase": [
+      "Product"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SALES_GOODS"
+  },
+  {
+    "phrase": [
+      "Real",
+      "Estate"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_REAL_ESTATE"
+  },
+  {
+    "phrase": [
+      "Rental"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_REAL_ESTATE"
+  },
+  {
+    "phrase": [
+      "Service"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SERVICE"
+  },
+  {
+    "phrase": [
+      "Services"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SERVICE"
+  },
+  {
+    "phrase": [
+      "Cloud"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SERVICE"
+  },
+  {
+    "phrase": [
+      "Subscription"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SERVICE"
+  },
+  {
+    "phrase": [
+      "SaaS"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SERVICE"
+  },
+  {
+    "phrase": [
+      "License"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_LICENSE"
+  },
+  {
+    "phrase": [
+      "Licensing"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_LICENSE"
+  },
+  {
+    "phrase": [
+      "Insurance"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_INSURANCE_PREMIUM"
+  },
+  {
+    "phrase": [
+      "Operating"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_OPERATING"
+  },
+  {
+    "phrase": [
+      "Gross",
+      "Profit"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_GROSS_MARGIN"
+    ]
+  },
+  {
+    "phrase": [
+      "Gross",
+      "Margin"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_GROSS_MARGIN"
+    ]
+  },
+  {
+    "phrase": [
+      "Operating",
+      "Income"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_OPERATING"
+    ]
+  },
+  {
+    "phrase": [
+      "Net",
+      "Income"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_NET_BOTTOMLINE"
+    ]
+  },
+  {
+    "phrase": [
+      "Other",
+      "Comprehensive",
+      "Income"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_OCI"
+    ]
+  },
+  {
+    "phrase": [
+      "Comprehensive",
+      "Income"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_COMPREHENSIVE"
+    ]
+  },
+  {
+    "phrase": [
+      "Free",
+      "Cash",
+      "Flow"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_FREE_CASH_FLOW"
+    ]
+  },
+  {
+    "phrase": [
+      "Liabilities",
+      "And",
+      "Stockholders",
+      "Equity"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_EQUITY_TOTAL"
+    ]
+  },
+  {
+    "phrase": [
+      "Stockholders",
+      "Equity"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Research",
+      "And",
+      "Development"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RD"
+  },
+  {
+    "phrase": [
+      "Selling",
+      "General",
+      "And",
+      "Administrative"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SGA"
+  },
+  {
+    "phrase": [
+      "Selling",
+      "General",
+      "Administrative"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SGA"
+  },
+  {
+    "phrase": [
+      "General",
+      "And",
+      "Administrative"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SGA"
+  },
+  {
+    "phrase": [
+      "Sales",
+      "And",
+      "Marketing"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SGA"
+  },
+  {
+    "phrase": [
+      "Share",
+      "Based",
+      "Compensation"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SBC"
+  },
+  {
+    "phrase": [
+      "Depreciation",
+      "And",
+      "Amortization"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DEPR_AMORT"
+  },
+  {
+    "phrase": [
+      "Depreciation"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DEPR_AMORT"
+  },
+  {
+    "phrase": [
+      "Amortization"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DEPR_AMORT"
+  },
+  {
+    "phrase": [
+      "Interest"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_INTEREST"
+  },
+  {
+    "phrase": [
+      "Income",
+      "Tax"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_TAX"
+  },
+  {
+    "phrase": [
+      "Tax"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_TAX"
+  },
+  {
+    "phrase": [
+      "Taxes"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_TAX"
+  },
+  {
+    "phrase": [
+      "Medical",
+      "Claims"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_MEDICAL_CLAIM"
+  },
+  {
+    "phrase": [
+      "Accounts",
+      "Receivable"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RECEIVABLE"
+  },
+  {
+    "phrase": [
+      "Inventory"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_INVENTORY"
+  },
+  {
+    "phrase": [
+      "Goodwill"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_GOODWILL"
+  },
+  {
+    "phrase": [
+      "Content",
+      "And",
+      "Film"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CONTENT_FILM"
+  },
+  {
+    "phrase": [
+      "Regulatory"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_REGULATORY_ASC980"
+  },
+  {
+    "phrase": [
+      "Crypto",
+      "Asset"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CRYPTO_DIGITAL"
+  },
+  {
+    "phrase": [
+      "Derivative"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DERIVATIVE"
+  },
+  {
+    "phrase": [
+      "Contract",
+      "With",
+      "Customer"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CONTRACT_CUSTOMER"
+  },
+  {
+    "phrase": [
+      "Deferred",
+      "Revenue"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DEFERRED_REVENUE"
+  },
+  {
+    "phrase": [
+      "Capital",
+      "Lease"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_LEASE"
+  },
+  {
+    "phrase": [
+      "Operating",
+      "Lease"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_LEASE"
+  },
+  {
+    "phrase": [
+      "Asset",
+      "Retirement"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_ARO_DECOMMISSIONING"
+  },
+  {
+    "phrase": [
+      "Unpaid",
+      "Claims"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CLAIM_RESERVE"
+  },
+  {
+    "phrase": [
+      "Retained",
+      "Earnings"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RETAINED_EARNINGS"
+  },
+  {
+    "phrase": [
+      "Temporary",
+      "Equity"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_TEMPORARY_MEZZANINE"
+  },
+  {
+    "phrase": [
+      "Accumulated",
+      "Other",
+      "Comprehensive",
+      "Income"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_AOCI"
+  },
+  {
+    "phrase": [
+      "Foreign",
+      "Currency",
+      "Translation"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FX_CTA"
+  },
+  {
+    "phrase": [
+      "Property",
+      "Plant",
+      "And",
+      "Equipment"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PPE_CAPEX"
+  },
+  {
+    "phrase": [
+      "Common"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_COMMON"
+  },
+  {
+    "phrase": [
+      "Preferred"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PREFERRED"
+  },
+  {
+    "phrase": [
+      "Client",
+      "Incentives"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CONTRA_INCENTIVE"
+  },
+  {
+    "phrase": [
+      "Incentives"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CONTRA_INCENTIVE"
+  },
+  {
+    "phrase": [
+      "Allowance",
+      "For",
+      "Doubtful",
+      "Accounts"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CONTRA_ALLOWANCE"
+  },
+  {
+    "phrase": [
+      "Debt",
+      "Discount"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CONTRA_DISCOUNT"
+  },
+  {
+    "phrase": [
+      "Treasury",
+      "Stock"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CONTRA_TREASURY"
+  },
+  {
+    "phrase": [
+      "Remaining",
+      "Performance",
+      "Obligation"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RPO_BACKLOG"
+  },
+  {
+    "phrase": [
+      "Uncommenced"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_UNCOMMENCED"
+  },
+  {
+    "phrase": [
+      "Collective",
+      "Bargaining"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_UNION_CBA"
+  },
+  {
+    "phrase": [
+      "Warrant"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_WARRANT"
+  },
+  {
+    "phrase": [
+      "Exercise",
+      "Price"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_EXERCISE_PRICE"
+  },
+  {
+    "phrase": [
+      "Noninterest"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_NONINTEREST"
+  },
+  {
+    "phrase": [
+      "Investment"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_INVESTMENT"
+  },
+  {
+    "phrase": [
+      "Sale",
+      "Of",
+      "Properties"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DISPOSAL_GAIN"
+  },
+  {
+    "phrase": [
+      "Fair",
+      "Value"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FAIR_VALUE"
+  },
+  {
+    "phrase": [
+      "Current"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CURRENT"
+  },
+  {
+    "phrase": [
+      "Noncurrent"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_NONCURRENT"
+  },
+  {
+    "phrase": [
+      "Long",
+      "Term"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_NONCURRENT"
+  },
+  {
+    "phrase": [
+      "Short",
+      "Term"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CURRENT"
+  },
+  {
+    "phrase": [
+      "Working",
+      "Capital"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_WORKING_CAPITAL"
+  },
+  {
+    "phrase": [
+      "Development",
+      "And",
+      "Sale"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_HELD_FOR_SALE"
+  },
+  {
+    "phrase": [
+      "Sale"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PURPOSE_SALE"
+  },
+  {
+    "phrase": [
+      "Interest",
+      "Rate"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_IR"
+  },
+  {
+    "phrase": [
+      "Foreign",
+      "Exchange"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_FX"
+  },
+  {
+    "phrase": [
+      "Cross",
+      "Currency"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_FX"
+  },
+  {
+    "phrase": [
+      "Credit",
+      "Default"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_CREDIT"
+  },
+  {
+    "phrase": [
+      "FX"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_FX"
+  },
+  {
+    "phrase": [
+      "Currency"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_FX"
+  },
+  {
+    "phrase": [
+      "Treasury"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_IR"
+  },
+  {
+    "phrase": [
+      "SOFR"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_IR"
+  },
+  {
+    "phrase": [
+      "Commodity"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_COMMODITY"
+  },
+  {
+    "phrase": [
+      "Energy"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_COMMODITY"
+  },
+  {
+    "phrase": [
+      "Metal"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_COMMODITY"
+  },
+  {
+    "phrase": [
+      "Metals"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_COMMODITY"
+  },
+  {
+    "phrase": [
+      "Agriculture"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_COMMODITY"
+  },
+  {
+    "phrase": [
+      "Credit"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_CREDIT"
+  },
+  {
+    "phrase": [
+      "CDS"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_CREDIT"
+  },
+  {
+    "phrase": [
+      "Not",
+      "Subject",
+      "To",
+      "Master",
+      "Netting",
+      "Arrangement"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_NOT_SUBJECT_TO_NETTING"
+  },
+  {
+    "phrase": [
+      "Collateral"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CASH_COLLATERAL_OFFSET"
+  },
+  {
+    "phrase": [
+      "Obligation",
+      "To",
+      "Return"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_COLLATERAL_RETURN",
+    "mods": [
+      "M_CASH_COLLATERAL_OFFSET"
+    ]
+  },
+  {
+    "phrase": [
+      "Right",
+      "To",
+      "Reclaim"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_COLLATERAL_RECLAIM",
+    "mods": [
+      "M_CASH_COLLATERAL_OFFSET"
+    ]
+  },
+  {
+    "phrase": [
+      "Index"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_EQUITY"
+  },
+  {
+    "phrase": [
+      "Equity"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_EQUITY",
+    "followed_by_any": [
+      "Forward",
+      "Forwards",
+      "Futures",
+      "Option",
+      "Options",
+      "Swap",
+      "Swaps",
+      "Swaption",
+      "Derivative"
+    ]
+  },
+  {
+    "phrase": [
+      "Stock"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_EQUITY",
+    "followed_by_any": [
+      "Forward",
+      "Forwards",
+      "Futures",
+      "Option",
+      "Options",
+      "Swap",
+      "Swaps",
+      "Swaption",
+      "Derivative"
+    ]
+  },
+  {
+    "phrase": [
+      "Swap"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SWAP"
+  },
+  {
+    "phrase": [
+      "Swaps"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SWAP"
+  },
+  {
+    "phrase": [
+      "Option"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_OPTION"
+  },
+  {
+    "phrase": [
+      "Options"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_OPTION"
+  },
+  {
+    "phrase": [
+      "Forward"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FORWARD"
+  },
+  {
+    "phrase": [
+      "Forwards"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FORWARD"
+  },
+  {
+    "phrase": [
+      "Futures"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FUTURES"
+  },
+  {
+    "phrase": [
+      "Fair",
+      "Value",
+      "Hedge"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FAIR_VALUE_HEDGE"
+  },
+  {
+    "phrase": [
+      "Cash",
+      "Flow",
+      "Hedge"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CASH_FLOW_HEDGE"
+  },
+  {
+    "phrase": [
+      "Net",
+      "Investment",
+      "Hedge"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_NET_INVESTMENT_HEDGE"
+  },
+  {
+    "phrase": [
+      "Undesignated"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_UNDESIGNATED_ECONOMIC"
+  },
+  {
+    "phrase": [
+      "Collateral",
+      "Offset"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_COLLATERAL_OFFSET"
+  },
+  {
+    "phrase": [
+      "Master",
+      "Netting"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_MASTER_NETTING_OFFSET"
+  },
+  {
+    "phrase": [
+      "Pre",
+      "Provision",
+      "Profit"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_PRE_PROVISION"
+    ]
+  },
+  {
+    "phrase": [
+      "Pre",
+      "Provision"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PRE_PROVISION"
+  },
+  {
+    "phrase": [
+      "Financing",
+      "Receivable"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_FINANCING_RECEIVABLE"
+    ]
+  },
+  {
+    "phrase": [
+      "Financing",
+      "Receivables"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_FINANCING_RECEIVABLE"
+    ]
+  },
+  {
+    "phrase": [
+      "Provision",
+      "For",
+      "Credit",
+      "Losses"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_CREDIT_LOSS_PROVISION"
+    ]
+  },
+  {
+    "phrase": [
+      "Fulfillment"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FULFILLMENT"
+  },
+  {
+    "phrase": [
+      "Technology",
+      "And",
+      "Infrastructure"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_TECH_INFRA"
+  },
+  {
+    "phrase": [
+      "Shareholder",
+      "Activism"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_ACTIVISM_COSTS"
+  },
+  {
+    "phrase": [
+      "Defined",
+      "Benefit",
+      "Plan"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_PENSION_DEFINED_BENEFIT"
+    ]
+  },
+  {
+    "phrase": [
+      "Share",
+      "Based",
+      "Payment",
+      "Award"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_SBC_AWARD"
+    ]
+  },
+  {
+    "phrase": [
+      "Right",
+      "Of",
+      "Use",
+      "Asset"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_ROU_LEASE"
+    ]
+  },
+  {
+    "phrase": [
+      "Contract",
+      "With",
+      "Customer"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CONTRACT_CUSTOMER"
+  },
+  {
+    "phrase": [
+      "Interest",
+      "Rate",
+      "Cap"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_IR",
+    "mods": [
+      "M_OPTION",
+      "M_CAP_FLOOR_COLLAR"
+    ]
+  },
+  {
+    "phrase": [
+      "Interest",
+      "Rate",
+      "Floor"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_IR",
+    "mods": [
+      "M_OPTION",
+      "M_CAP_FLOOR_COLLAR"
+    ]
+  },
+  {
+    "phrase": [
+      "Interest",
+      "Rate",
+      "Collar"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_IR",
+    "mods": [
+      "M_OPTION",
+      "M_CAP_FLOOR_COLLAR"
+    ]
+  },
+  {
+    "phrase": [
+      "Cap"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_OPTION",
+    "mods": [
+      "M_CAP_FLOOR_COLLAR"
+    ]
+  },
+  {
+    "phrase": [
+      "Floor"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_OPTION",
+    "mods": [
+      "M_CAP_FLOOR_COLLAR"
+    ]
+  },
+  {
+    "phrase": [
+      "Collar"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_OPTION",
+    "mods": [
+      "M_CAP_FLOOR_COLLAR"
+    ]
+  },
+  {
+    "phrase": [
+      "Swaption"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_OPTION",
+    "mods": [
+      "M_SWAPTION"
+    ]
+  },
+  {
+    "phrase": [
+      "Cross",
+      "Currency",
+      "Swap"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_FX",
+    "mods": [
+      "M_SWAP",
+      "M_CROSS_CURRENCY_SWAP"
+    ]
+  },
+  {
+    "phrase": [
+      "Commodity",
+      "Contract"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RISK_COMMODITY"
+  },
+  {
+    "phrase": [
+      "Notional",
+      "Amount"
+    ],
+    "role": "HEAD",
+    "atom": "H_COMMITMENT",
+    "mods": [
+      "M_NOTIONAL_AMOUNT"
+    ]
+  },
+  {
+    "phrase": [
+      "Master",
+      "Netting",
+      "Agreement"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_COUNTERPARTY_NETTING"
+  },
+  {
+    "phrase": [
+      "Collateral",
+      "Received"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CASH_COLLATERAL_OFFSET"
+  },
+  {
+    "phrase": [
+      "Collateral",
+      "Pledged"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CASH_COLLATERAL_OFFSET"
+  },
+  {
+    "phrase": [
+      "Cash",
+      "Collateral",
+      "Received"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CASH_COLLATERAL_OFFSET"
+  },
+  {
+    "phrase": [
+      "Cash",
+      "Collateral",
+      "Pledged"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CASH_COLLATERAL_OFFSET"
+  },
+  {
+    "phrase": [
+      "Costs",
+      "And",
+      "Expenses"
+    ],
+    "role": "HEAD",
+    "atom": "H_COST",
+    "mods": [
+      "M_COSTS_AND_EXPENSES"
+    ]
+  },
+  {
+    "phrase": [
+      "Gross",
+      "Margin",
+      "Derived"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_GROSS_MARGIN"
+    ]
+  },
+  {
+    "phrase": [
+      "Pretax",
+      "Operating",
+      "Margin"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_PRETAX_OPERATING_MARGIN"
+    ]
+  },
+  {
+    "phrase": [
+      "Increase"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CHANGE"
+  },
+  {
+    "phrase": [
+      "Decrease"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CHANGE"
+  },
+  {
+    "phrase": [
+      "Exchange",
+      "Rate"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FX_CURRENCY"
+  },
+  {
+    "phrase": [
+      "Investing"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_INVESTING"
+  },
+  {
+    "phrase": [
+      "Financing"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FINANCING"
+  }
 ]

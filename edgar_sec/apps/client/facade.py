@@ -372,11 +372,13 @@ class Edgar:
         client = self.sec_client or SecHttpClient()
         return client.cache_stats()
 
-    def xbrl(self, filing: FilingAggregate) -> FilingXbrl:
-        """Parse and return complete FilingXbrl bundle from filing linkbases."""
+    def xbrl(self, filing: FilingAggregate) -> Xbrl:
+        """Parse linkbases and return unified interactive Xbrl facade."""
+        from edgar_sec.apps.client.xbrl import Xbrl
         from edgar_sec.engine.xbrl.parsing.filing_parser import parse_filing_xbrl
 
-        return parse_filing_xbrl(filing)
+        bundle = parse_filing_xbrl(filing)
+        return Xbrl(bundle)
 
     def sections(
         self, filing: FilingAggregate, text: str | None = None
