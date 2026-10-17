@@ -10,6 +10,7 @@ from edgar_sec.apps.client.rendering import (
     render_debt_ascii,
     render_derivatives_ascii,
     render_statement_ascii,
+    render_statement_table,
     statement_to_dataframe,
 )
 from edgar_sec.engine.xbrl.solve.antichain import AntiChainOutcome
@@ -66,12 +67,16 @@ class StatementView:
         """Export statement nodes and multi-year series to a DataFrame."""
         return statement_to_dataframe(self.graph, include_yoy=include_yoy)
 
+    def render_table(self, view: str = "standard") -> str:
+        """Render clean multi-column accounting statement table."""
+        return render_statement_table(self.graph, view=view)
+
     def render_ascii(self, show_yoy: bool = True) -> str:
         """Render hierarchical ASCII tree with multi-year and YoY values."""
         return render_statement_ascii(self.graph, show_yoy=show_yoy)
 
     def __str__(self) -> str:
-        return self.render_ascii()
+        return self.render_table()
 
     def __repr__(self) -> str:
         r = self.root.concept_qname if self.root else "None"
@@ -116,11 +121,21 @@ class DerivativePortfolioView:
     def positions(self) -> tuple[Any, ...]:
         return self.graph.positions
 
+    @property
+    def risk_categories(self) -> tuple[str, ...]:
+        return tuple(self.graph.by_risk.keys())
+
+    @property
+    def risk_totals(self) -> dict[str, dict[str, float]]:
+        return dict(self.graph.risk_totals)
+
     def by_risk(self, risk_type: str) -> tuple[Any, ...]:
-        return self.graph.by_risk(risk_type)
+        return self.graph.positions_by_risk(risk_type)
 
     def by_structure(self, structure: str) -> tuple[Any, ...]:
-        return self.graph.by_structure(structure)
+        return tuple(
+            p for p in self.graph.positions if structure.lower() in p.label.lower()
+        )
 
     def to_dataframe(self) -> Any:
         """Export derivative positions to a tabular DataFrame."""
@@ -169,6 +184,10 @@ class DebtStructureView:
     @property
     def maturities(self) -> tuple[Any, ...]:
         return self.graph.maturities
+
+    @property
+    def maturities_by_year(self) -> dict[str, float]:
+        return dict(self.graph.maturities_by_year)
 
     def to_dataframe(self) -> Any:
         """Export debt tranches to a tabular DataFrame."""

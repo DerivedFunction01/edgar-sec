@@ -756,5 +756,97 @@
       "FinancingActivities"
     ],
     "description": "Cash flows provided by or used in financing activities"
+  },
+  {
+    "modifier_id": "M_DEBT",
+    "category": "FINANCING_CLAIM",
+    "keywords": [
+      "Debt",
+      "Debentures",
+      "Bonds",
+      "Notes",
+      "Borrowings"
+    ],
+    "description": "Debt borrowing obligation"
+  },
+  {
+    "modifier_id": "M_COMMERCIAL_PAPER",
+    "category": "FINANCING_CLAIM",
+    "keywords": [
+      "CommercialPaper"
+    ],
+    "description": "Commercial paper short-term debt obligation"
+  },
+  {
+    "modifier_id": "M_CONVERTIBLE",
+    "category": "FINANCING_CLAIM",
+    "keywords": [
+      "Convertible"
+    ],
+    "description": "Convertible debt or preferred claim"
+  },
+  {
+    "modifier_id": "M_ZERO_COUPON",
+    "category": "FINANCING_CLAIM",
+    "keywords": [
+      "ZeroCoupon"
+    ],
+    "description": "Zero coupon discount debt obligation"
+  },
+  {
+    "modifier_id": "M_SENIOR",
+    "category": "FINANCING_CLAIM",
+    "keywords": [
+      "Senior"
+    ],
+    "description": "Senior ranking debt priority"
+  },
+  {
+    "modifier_id": "M_SUBORDINATED",
+    "category": "FINANCING_CLAIM",
+    "keywords": [
+      "Subordinated"
+    ],
+    "description": "Subordinated junior ranking debt claim"
+  },
+  {
+    "modifier_id": "M_MATURITY",
+    "category": "MATURITY_HORIZON",
+    "keywords": [
+      "Maturity",
+      "Maturities",
+      "ContractualMaturity"
+    ],
+    "description": "Contractual debt or lease maturity schedule"
+  },
+  {
+    "modifier_id": "M_OPERATING",
+    "category": "CASH_FLOW_ACTIVITY",
+    "keywords": [
+      "Operating",
+      "OperatingActivities",
+      "OperatingActivity"
+    ],
+    "description": "Operating activities or operations scope"
+  },
+  {
+    "modifier_id": "M_DISCONTINUED",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "Discontinued",
+      "DiscontinuedOperations",
+      "DisposalGroup"
+    ],
+    "description": "Discontinued operations or disposal groups"
+  },
+  {
+    "modifier_id": "M_CONTINUING",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "Continuing",
+      "ContinuingOperations"
+    ],
+    "description": "Continuing operations"
   }
 ]
+

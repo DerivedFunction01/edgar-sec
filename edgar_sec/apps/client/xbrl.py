@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
+from edgar_sec.apps.client.comparison import ComparisonView, compare_companies
 from edgar_sec.apps.client.facts import XbrlFactSet
 from edgar_sec.apps.client.financials import XbrlFinancials
 from edgar_sec.apps.client.statements import XbrlStatements
 from edgar_sec.apps.client.views import StatementView
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
-from edgar_sec.engine.xbrl.schema.models import FilingXbrl
+from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle
 from edgar_sec.engine.xbrl.solve.query import (
     FinancialQuery,
     FinancialQueryEngine,
@@ -48,6 +49,21 @@ class Xbrl:
         kb = EvidenceKnowledgeBase(self._taxonomy)
         solver = XbrlConstraintSolver(kb)
         self._query_engine = FinancialQueryEngine(solver)
+
+    @property
+    def accession(self) -> str:
+        """Return the filing accession number."""
+        return str(self._filing.accession)
+
+    @property
+    def cik(self) -> str:
+        """Return the filer CIK."""
+        return str(self._filing.cik)
+
+    @property
+    def linkbases(self) -> LinkbaseBundle | None:
+        """Return raw linkbase bundle attached to this filing."""
+        return self._filing.linkbases
 
     def query(
         self,
@@ -99,6 +115,15 @@ class Xbrl:
         """Trace the upward topological rollup chain from child concept to root."""
         stmt = self.graph(root_concept, period_type=period_type, year=year)
         return stmt.chain(child_concept)
+
+    def compare(
+        self,
+        others: Sequence[Xbrl],
+        metrics: Sequence[str] | None = None,
+        year: int | str | None = None,
+    ) -> ComparisonView:
+        """Compare this filing against other filings across coordinate subspaces."""
+        return compare_companies([self, *others], metrics=metrics, year=year)
 
     def __repr__(self) -> str:
         return f"<Xbrl accession={self._filing.accession} facts={len(self.facts)}>"

@@ -9,8 +9,11 @@ from edgar_sec.engine.xbrl.schema.models import CalculationArc, XbrlFact
 from edgar_sec.engine.xbrl.solve.statement import (
     BalanceSheetGraph,
     CashFlowGraph,
+    DebtStructureGraph,
+    DerivativePortfolioGraph,
     IncomeStatementGraph,
     StatementGraph,
+    StatementNode,
     build_statement_graph,
 )
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
@@ -69,36 +72,69 @@ class StatementComposer:
         return ""
 
     def find_income_statement_root(self) -> str:
-        """Find the root concept for Statement of Operations via canonical sink."""
+        """Find the root concept for Statement of Operations via calculation topology."""
         lex = self._taxonomy.token_lexicon
         if not lex or not self._arcs:
             return ""
 
         all_parents = {a.parent_qname for a in self._arcs}
-        candidates = all_parents
+        dag_roots = self._dag_roots()
+        matches: list[tuple[int, int, int, str]] = []
 
-        matches: list[tuple[int, int, str]] = []
+        duration_parents = {
+            f.concept_qname
+            for f in self._facts
+            if f.period_type == "duration" and f.concept_qname in all_parents
+        }
+        candidates = duration_parents if duration_parents else all_parents
+
         for p in candidates:
-            atom, _, _, _ = decompose_concept(p, lex)
+            atom, val_type, _, _ = decompose_concept(p, lex)
             if atom.head not in ("H_INCOME", "H_PROFIT", "H_MARGIN", "H_LOSS"):
                 continue
             if "M_COMPREHENSIVE" in atom.modifiers or "M_OCI" in atom.modifiers:
                 continue
-            if "M_NET_BOTTOMLINE" in atom.modifiers:
+            is_net = (
+                "M_NET_BOTTOMLINE" in atom.modifiers
+                or "V_NET" in atom.modifiers
+                or val_type == "V_NET"
+            )
+            is_dag_root = p in dag_roots
+            has_comprehensive_parent = any(
+                a.child_qname == p
+                and bool(
+                    {"M_COMPREHENSIVE", "M_OCI"}
+                    & decompose_concept(a.parent_qname, lex)[0].modifiers
+                )
+                for a in self._arcs
+            )
+
+            if is_net and (is_dag_root or has_comprehensive_parent):
                 priority = 0
-            elif "M_OPERATING" in atom.modifiers:
+            elif is_net:
                 priority = 1
-            elif "M_GROSS" in atom.modifiers or "M_GROSS_MARGIN" in atom.modifiers:
+            elif is_dag_root:
                 priority = 2
-            elif "M_PRETAX_OPERATING_MARGIN" in atom.modifiers:
+            elif "M_OPERATING" in atom.modifiers:
                 priority = 3
-            else:
+            elif (
+                "M_GROSS" in atom.modifiers
+                or "M_GROSS_MARGIN" in atom.modifiers
+                or "V_GROSS" in atom.modifiers
+                or val_type == "V_GROSS"
+            ):
                 priority = 4
-            matches.append((priority, len(p.split(":")[-1]), p))
+            elif "M_PRETAX_OPERATING_MARGIN" in atom.modifiers:
+                priority = 5
+            else:
+                priority = 6
+
+            num_children = len([a for a in self._arcs if a.parent_qname == p])
+            matches.append((priority, -num_children, len(p.split(":")[-1]), p))
 
         if matches:
             matches.sort()
-            return matches[0][2]
+            return matches[0][3]
         return ""
 
     def find_balance_sheet_root(self) -> str:
@@ -132,8 +168,9 @@ class StatementComposer:
     def _find_concept_by_atom(
         self,
         target_head: str,
-        target_mods: set[str],
-        excluded_mods: set[str] = frozenset(),
+        target_mods: set[str] | frozenset[str] = frozenset(),
+        excluded_mods: set[str] | frozenset[str] = frozenset(),
+        target_valence: str | None = None,
     ) -> str | None:
         lex = self._taxonomy.token_lexicon
         if not lex:
@@ -142,11 +179,15 @@ class StatementComposer:
         all_concepts = all_parents | {a.child_qname for a in self._arcs}
         candidates: list[tuple[int, int, int, str]] = []
         for c in all_concepts:
-            atom, _, _, _ = decompose_concept(c, lex)
-            if atom.head == target_head and target_mods.issubset(atom.modifiers):
+            atom, val_type, _, _ = decompose_concept(c, lex)
+            if atom.head == target_head:
+                if target_mods and not target_mods.issubset(atom.modifiers):
+                    continue
+                if target_valence and val_type != target_valence:
+                    continue
                 if excluded_mods and any(m in atom.modifiers for m in excluded_mods):
                     continue
-                extra_mods = len(atom.modifiers - target_mods)
+                extra_mods = len(atom.modifiers - set(target_mods))
                 is_leaf = 1 if c not in all_parents else 0
                 name_len = len(c.split(":")[-1])
                 candidates.append((extra_mods, is_leaf, name_len, c))
@@ -163,15 +204,36 @@ class StatementComposer:
     ) -> CashFlowGraph:
         """Build tripartite CashFlowGraph auto-linking operating, investing, and financing."""
         root = self.find_cash_flow_root()
-        cfo_qname = self._find_concept_by_atom(
-            "H_CASH", {"M_OPERATING", "V_NET"}
-        ) or self._find_concept_by_atom("H_CASH", {"M_OPERATING"})
-        cfi_qname = self._find_concept_by_atom(
-            "H_CASH", {"M_INVESTING", "V_NET"}
-        ) or self._find_concept_by_atom("H_CASH", {"M_INVESTING"})
-        cff_qname = self._find_concept_by_atom(
-            "H_CASH", {"M_FINANCING", "V_NET"}
-        ) or self._find_concept_by_atom("H_CASH", {"M_FINANCING"})
+        cfo_qname = (
+            self._find_concept_by_atom(
+                "H_CASH", {"M_OPERATING", "V_NET"}, excluded_mods={"M_DISCONTINUED"}
+            )
+            or self._find_concept_by_atom(
+                "H_CASH", {"M_OPERATING"}, excluded_mods={"M_DISCONTINUED"}
+            )
+            or self._find_concept_by_atom("H_CASH", {"M_OPERATING", "V_NET"})
+            or self._find_concept_by_atom("H_CASH", {"M_OPERATING"})
+        )
+        cfi_qname = (
+            self._find_concept_by_atom(
+                "H_CASH", {"M_INVESTING", "V_NET"}, excluded_mods={"M_DISCONTINUED"}
+            )
+            or self._find_concept_by_atom(
+                "H_CASH", {"M_INVESTING"}, excluded_mods={"M_DISCONTINUED"}
+            )
+            or self._find_concept_by_atom("H_CASH", {"M_INVESTING", "V_NET"})
+            or self._find_concept_by_atom("H_CASH", {"M_INVESTING"})
+        )
+        cff_qname = (
+            self._find_concept_by_atom(
+                "H_CASH", {"M_FINANCING", "V_NET"}, excluded_mods={"M_DISCONTINUED"}
+            )
+            or self._find_concept_by_atom(
+                "H_CASH", {"M_FINANCING"}, excluded_mods={"M_DISCONTINUED"}
+            )
+            or self._find_concept_by_atom("H_CASH", {"M_FINANCING", "V_NET"})
+            or self._find_concept_by_atom("H_CASH", {"M_FINANCING"})
+        )
 
         cfo_graph = (
             build_statement_graph(
@@ -320,6 +382,59 @@ class StatementComposer:
             equity_graph=equity_graph,
         )  # type: ignore[return-value]
 
+    def _find_gross_profit_concept(self) -> str | None:
+        lex = self._taxonomy.token_lexicon
+        if not lex:
+            return None
+        for parent in {a.parent_qname for a in self._arcs}:
+            child_arcs = [a for a in self._arcs if a.parent_qname == parent]
+            has_rev = any(
+                a.weight > 0
+                and decompose_concept(a.child_qname, lex)[0].head == "H_REVENUE"
+                for a in child_arcs
+            )
+            has_cost = any(
+                a.weight < 0
+                and (
+                    decompose_concept(a.child_qname, lex)[0].head == "H_COST"
+                    or "M_COGS" in decompose_concept(a.child_qname, lex)[0].modifiers
+                )
+                for a in child_arcs
+            )
+            if has_rev and has_cost:
+                return parent
+
+        return (
+            self._find_concept_by_atom("H_INCOME", {"M_GROSS"})
+            or self._find_concept_by_atom("H_INCOME", {"M_GROSS_MARGIN"})
+            or self._find_concept_by_atom("H_INCOME", target_valence="V_GROSS")
+        )
+
+    def _find_operating_income_concept(self) -> str | None:
+        lex = self._taxonomy.token_lexicon
+        if not lex:
+            return None
+        op = self._find_concept_by_atom("H_INCOME", {"M_OPERATING"})
+        if op:
+            return op
+        for parent in {a.parent_qname for a in self._arcs}:
+            child_arcs = [a for a in self._arcs if a.parent_qname == parent]
+            has_opex = any(
+                a.weight < 0
+                and any(
+                    m in ("M_OPERATING", "M_RD", "M_SGA")
+                    for m in decompose_concept(a.child_qname, lex)[0].modifiers
+                )
+                for a in child_arcs
+            )
+            if has_opex and decompose_concept(parent, lex)[0].head in (
+                "H_INCOME",
+                "H_PROFIT",
+                "H_LOSS",
+            ):
+                return parent
+        return None
+
     def compose_income_statement(
         self,
         period: str | None = None,
@@ -327,10 +442,8 @@ class StatementComposer:
     ) -> IncomeStatementGraph:
         """Build IncomeStatementGraph auto-linking gross profit and operating income."""
         root = self.find_income_statement_root()
-        gross_profit_qname = self._find_concept_by_atom(
-            "H_INCOME", {"M_GROSS"}
-        ) or self._find_concept_by_atom("H_INCOME", {"M_GROSS_MARGIN"})
-        operating_inc_qname = self._find_concept_by_atom("H_INCOME", {"M_OPERATING"})
+        gross_profit_qname = self._find_gross_profit_concept()
+        operating_inc_qname = self._find_operating_income_concept()
 
         gross_graph = (
             build_statement_graph(
@@ -379,3 +492,272 @@ class StatementComposer:
             gross_profit_graph=gross_graph,
             operating_income_graph=op_inc_graph,
         )  # type: ignore[return-value]
+
+    def _classify_risk(
+        self,
+        concept_qname: str,
+        dimensions: Mapping[str, str],
+    ) -> str:
+        for mem in dimensions.values():
+            risk = self._taxonomy.resolve_instrument_risk(mem)
+            if risk:
+                return risk
+
+        lex = self._taxonomy.token_lexicon
+        mods: set[str] = set()
+        if lex:
+            atom, _, _, _ = decompose_concept(concept_qname, lex)
+            mods.update(atom.modifiers)
+            for ax, mem in dimensions.items():
+                mods.update(decompose_concept(ax, lex)[0].modifiers)
+                mods.update(decompose_concept(mem, lex)[0].modifiers)
+
+        mod_risk_map = {
+            "M_RISK_IR": "interest_rate",
+            "M_RISK_FX": "foreign_exchange",
+            "M_RISK_CREDIT": "credit",
+            "M_RISK_COMMODITY": "commodity",
+            "M_RISK_EQUITY": "equity",
+        }
+        for mod, risk_type in mod_risk_map.items():
+            if mod in mods:
+                return risk_type
+
+        return self._taxonomy.resolve_instrument_risk(concept_qname) or "other"
+
+    def compose_derivative_portfolio(
+        self,
+        year: int | str | None = None,
+    ) -> DerivativePortfolioGraph:
+        """Resolve dynamic derivative portfolio exposures, risk buckets, and netting."""
+        lex = self._taxonomy.token_lexicon
+        target_year = str(year) if year is not None else None
+        positions: list[StatementNode] = []
+        by_risk: dict[str, list[StatementNode]] = {}
+        risk_totals: dict[str, dict[str, float]] = {}
+
+        gross_assets = None
+        net_assets = None
+        gross_liab = None
+        net_liab = None
+        notional = None
+        collateral = None
+        netting = None
+
+        for f in self._facts:
+            if not isinstance(f.value, (int, float)):
+                continue
+            yr = (f.instant_date or f.end_date or "")[:4]
+            if target_year and yr != target_year:
+                continue
+
+            atom, val_type, _, _ = (
+                decompose_concept(f.concept_qname, lex)
+                if lex
+                else (Atom("H_UNKNOWN"), "V_GROSS", (), 0)
+            )
+            is_deriv = "M_DERIVATIVE" in atom.modifiers or any(
+                "Derivative" in ax for ax in f.dimensions
+            )
+            val = float(f.value)
+
+            if not f.dimensions:
+                if atom.head == "H_ASSET" and "M_DERIVATIVE" in atom.modifiers:
+                    if "V_NET" in atom.modifiers or val_type == "V_NET":
+                        net_assets = val if net_assets is None else max(net_assets, val)
+                    else:
+                        gross_assets = (
+                            val if gross_assets is None else max(gross_assets, val)
+                        )
+                elif atom.head == "H_LIABILITY" and "M_DERIVATIVE" in atom.modifiers:
+                    if "V_NET" in atom.modifiers or val_type == "V_NET":
+                        net_liab = val if net_liab is None else max(net_liab, val)
+                    else:
+                        gross_liab = val if gross_liab is None else max(gross_liab, val)
+                elif atom.head == "H_NOTIONAL":
+                    notional = val if notional is None else max(notional, val)
+                elif "M_CASH_COLLATERAL_OFFSET" in atom.modifiers:
+                    collateral = val if collateral is None else max(collateral, val)
+                elif "M_NOT_SUBJECT_TO_NETTING" in atom.modifiers:
+                    netting = val if netting is None else max(netting, val)
+
+            if is_deriv:
+                risk_cat = self._classify_risk(f.concept_qname, f.dimensions)
+                lbl = self._labels.get(f.concept_qname, f.concept_qname.split(":")[-1])
+                node = StatementNode(
+                    concept_qname=f.concept_qname,
+                    atom=atom,
+                    label=lbl,
+                    facts=(f,),
+                    value=val,
+                )
+                positions.append(node)
+                by_risk.setdefault(risk_cat, []).append(node)
+                rt = risk_totals.setdefault(
+                    risk_cat,
+                    {"gross_assets": 0.0, "gross_liabilities": 0.0, "notional": 0.0},
+                )
+                if atom.head == "H_ASSET":
+                    rt["gross_assets"] += val
+                elif atom.head == "H_LIABILITY":
+                    rt["gross_liabilities"] += val
+                elif atom.head == "H_NOTIONAL":
+                    rt["notional"] += val
+
+        return DerivativePortfolioGraph(
+            gross_assets=gross_assets,
+            net_assets=net_assets,
+            gross_liabilities=gross_liab,
+            net_liabilities=net_liab,
+            notional_amount=notional,
+            collateral_offsets=collateral,
+            master_netting_offsets=netting,
+            positions=tuple(positions),
+            by_risk={k: tuple(v) for k, v in by_risk.items()},
+            risk_totals=risk_totals,
+        )
+
+    def compose_debt_structure(
+        self,
+        year: int | str | None = None,
+    ) -> DebtStructureGraph:
+        """Resolve capital debt structure, tranches, and maturity schedules."""
+        lex = self._taxonomy.token_lexicon
+        target_year = str(year) if year is not None else None
+        positions: list[StatementNode] = []
+        maturities: list[StatementNode] = []
+        maturities_by_year: dict[str, float] = {}
+
+        total_debt = None
+        current_debt = None
+        lt_debt = None
+        cp = None
+        leases = None
+
+        for f in self._facts:
+            if not isinstance(f.value, (int, float)):
+                continue
+            yr = (f.instant_date or f.end_date or "")[:4]
+            if target_year and yr != target_year:
+                continue
+
+            atom, _, _, _ = (
+                decompose_concept(f.concept_qname, lex)
+                if lex
+                else (Atom("H_UNKNOWN"), (), (), 0)
+            )
+            val = float(f.value)
+
+            if atom.head == "H_LIABILITY":
+                is_debt = bool(
+                    atom.modifiers
+                    & {"M_DEBT", "M_DEBT_BORROWING", "M_COMMERCIAL_PAPER"}
+                )
+                if is_debt:
+                    if not f.dimensions:
+                        if "M_COMMERCIAL_PAPER" in atom.modifiers:
+                            cp = val if cp is None else max(cp, val)
+                        if "M_CURRENT" in atom.modifiers:
+                            current_debt = (
+                                val if current_debt is None else max(current_debt, val)
+                            )
+                        elif "M_NONCURRENT" in atom.modifiers:
+                            lt_debt = val if lt_debt is None else max(lt_debt, val)
+                        elif "M_COMMERCIAL_PAPER" not in atom.modifiers:
+                            total_debt = (
+                                val if total_debt is None else max(total_debt, val)
+                            )
+                    lbl = self._labels.get(
+                        f.concept_qname, f.concept_qname.split(":")[-1]
+                    )
+                    positions.append(
+                        StatementNode(
+                            concept_qname=f.concept_qname,
+                            atom=atom,
+                            label=lbl,
+                            facts=(f,),
+                            value=val,
+                        )
+                    )
+                elif (atom.modifiers & {"M_LEASE", "M_ROU_LEASE"}) and not f.dimensions:
+                    leases = val if leases is None else max(leases, val)
+
+            dim_mods: set[str] = set()
+            if lex:
+                for ax in f.dimensions:
+                    dim_mods.update(decompose_concept(ax, lex)[0].modifiers)
+            is_mat = bool(
+                (atom.modifiers | dim_mods) & {"M_MATURITY", "M_MATURITY_HORIZON"}
+            )
+            if is_mat:
+                lbl = self._labels.get(f.concept_qname, f.concept_qname.split(":")[-1])
+                mat_node = StatementNode(
+                    concept_qname=f.concept_qname,
+                    atom=atom,
+                    label=lbl,
+                    facts=(f,),
+                    value=val,
+                )
+                maturities.append(mat_node)
+                for mem in f.dimensions.values():
+                    mem_yr = mem[-4:]
+                    if mem_yr.isdigit():
+                        maturities_by_year[mem_yr] = val
+
+        if total_debt is None:
+            parts = [p for p in (current_debt, lt_debt) if p is not None]
+            if parts:
+                total_debt = sum(parts)
+            elif cp is not None:
+                total_debt = cp
+
+        return DebtStructureGraph(
+            total_debt=total_debt,
+            current_debt=current_debt,
+            long_term_debt=lt_debt,
+            commercial_paper=cp,
+            leases=leases,
+            positions=tuple(positions),
+            maturities=tuple(maturities),
+            maturities_by_year=maturities_by_year,
+        )
+
+    def resolve_subspace(
+        self,
+        target_head: str,
+        target_mods: set[str] | frozenset[str] = frozenset(),
+        excluded_mods: set[str] | frozenset[str] = frozenset(),
+        *,
+        is_instant: bool = False,
+        year: int | str | None = None,
+    ) -> float | None:
+        """Resolve a coordinate subspace to an aggregate root or maximal antichain sum."""
+        lex = self._taxonomy.token_lexicon
+        if not lex:
+            return None
+        target_yr = str(year) if year is not None else None
+        for f in self._facts:
+            if f.dimensions or not isinstance(f.value, (int, float)):
+                continue
+            yr = (f.instant_date if is_instant else f.end_date or "")[:4]
+            if target_yr and yr != target_yr:
+                continue
+            atom, _, _, _ = decompose_concept(f.concept_qname, lex)
+            if atom.head == target_head and target_mods.issubset(atom.modifiers):
+                if not excluded_mods or not (excluded_mods & atom.modifiers):
+                    if len(atom.modifiers - target_mods) == 0:
+                        return float(f.value)
+
+        partition_vals: list[float] = []
+        for f in self._facts:
+            if f.dimensions or not isinstance(f.value, (int, float)):
+                continue
+            yr = (f.instant_date if is_instant else f.end_date or "")[:4]
+            if target_yr and yr != target_yr:
+                continue
+            atom, _, _, _ = decompose_concept(f.concept_qname, lex)
+            if atom.head == target_head and target_mods.issubset(atom.modifiers):
+                if not excluded_mods or not (excluded_mods & atom.modifiers):
+                    partition_vals.append(float(f.value))
+
+        return max(partition_vals, key=abs) if partition_vals else None

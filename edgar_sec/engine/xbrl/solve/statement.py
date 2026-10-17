@@ -172,6 +172,29 @@ class IncomeStatementGraph(StatementGraph):
         self.gross_profit_graph = gross_profit_graph
         self.operating_income_graph = operating_income_graph
 
+    @property
+    def gross_profit(self) -> float | None:
+        """Gross profit node value if present in graph."""
+        return (
+            self.gross_profit_graph.root.value
+            if self.gross_profit_graph and self.gross_profit_graph.root
+            else None
+        )
+
+    @property
+    def operating_income(self) -> float | None:
+        """Operating income node value if present in graph."""
+        return (
+            self.operating_income_graph.root.value
+            if self.operating_income_graph and self.operating_income_graph.root
+            else None
+        )
+
+    @property
+    def net_income(self) -> float | None:
+        """Net income root value."""
+        return self.root.value if self.root else None
+
 
 class BalanceSheetGraph(StatementGraph):
     """Algebraic graph for Statement of Financial Position with sub-graphs."""
@@ -321,6 +344,12 @@ class DerivativePortfolioGraph:
     collateral_offsets: float | None = None
     master_netting_offsets: float | None = None
     positions: tuple[StatementNode, ...] = ()
+    by_risk: Mapping[str, tuple[StatementNode, ...]] = field(default_factory=dict)
+    risk_totals: Mapping[str, dict[str, float]] = field(default_factory=dict)
+
+    def positions_by_risk(self, risk_type: str) -> tuple[StatementNode, ...]:
+        """Return derivative positions classified under a specific risk category."""
+        return self.by_risk.get(risk_type, ())
 
 
 @dataclass(frozen=True, slots=True)
@@ -330,8 +359,11 @@ class DebtStructureGraph:
     total_debt: float | None = None
     current_debt: float | None = None
     long_term_debt: float | None = None
+    commercial_paper: float | None = None
     leases: float | None = None
     positions: tuple[StatementNode, ...] = ()
+    maturities: tuple[StatementNode, ...] = ()
+    maturities_by_year: Mapping[str, float] = field(default_factory=dict)
 
 
 def build_statement_graph(

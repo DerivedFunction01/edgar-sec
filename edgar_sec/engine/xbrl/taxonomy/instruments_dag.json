@@ -202,5 +202,17 @@
     "parent_instrument": "OPTION",
     "relation_type": "MUTUALLY_EXCLUSIVE",
     "description": "A contract cannot simultaneously be a swap and an option"
+  },
+  {
+    "child_instrument": "CommercialPaperMember",
+    "parent_instrument": "DebtSecurityMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Commercial paper rolls up into DebtSecurity"
+  },
+  {
+    "child_instrument": "DebenturesMember",
+    "parent_instrument": "DebtSecurityMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Debentures roll up into DebtSecurity"
   }
 ]

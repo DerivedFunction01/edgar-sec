@@ -117,3 +117,46 @@ def test_xbrl_chain_and_graph() -> None:
     custom_graph = xbrl.graph("us-gaap:Assets")
     assert custom_graph.root is not None
     assert custom_graph.root.value == 512163000000.0
+
+
+def test_xbrl_statement_table_and_comparison() -> None:
+    """Verify clean accounting table formatting and multi-firm comparison."""
+    msft = _create_xbrl_facade("msft")
+    aapl = _create_xbrl_facade("aapl")
+    jpm = _create_xbrl_facade("jpm")
+
+    inc = aapl.statements.income_statement()
+    table_str = inc.render_table()
+    assert "[INCOME STATEMENT]" in table_str
+    assert "FY 2024" in table_str
+    assert "FY 2023" in table_str
+    assert "YoY (%)" in table_str
+    assert "$391,035,000,000" in table_str
+    assert "$93,736,000,000" in table_str
+    assert "(+)" not in table_str
+    assert str(inc) == table_str
+
+    comp_view = msft.compare([aapl, jpm])
+    c_table = comp_view.render_table()
+    assert "Revenue" in c_table
+    assert "Operating Margin" in c_table
+    assert "Net Margin" in c_table
+    assert "Return on Assets (ROA)" in c_table
+
+    c_df = comp_view.to_dataframe()
+    assert len(c_df) > 0
+
+
+def test_xbrl_macro_commitments_and_cash_flow() -> None:
+    """Verify ASC 606 RPO backlog, Capex, and Free Cash Flow derivation."""
+    msft = _create_xbrl_facade("msft")
+    aapl = _create_xbrl_facade("aapl")
+
+    assert msft.financials.rpo == 275_000_000_000.0
+    assert msft.financials.capex == 44_477_000_000.0
+    assert msft.financials.free_cash_flow == 74_071_000_000.0
+    assert "2024" in msft.financials.capex_series
+
+    assert aapl.financials.rpo is None
+    assert aapl.financials.capex == 9_447_000_000.0
+    assert aapl.financials.free_cash_flow == 108_807_000_000.0

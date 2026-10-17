@@ -570,6 +570,31 @@ class DomainTaxonomy:
             for edge in self.instruments_dag
         )
 
+    def resolve_instrument_risk(self, instrument_or_member: str) -> str | None:
+        """Resolve canonical underlying risk type via graph traversal on instruments DAG."""
+        risk_map = {
+            "IR": "interest_rate",
+            "FX": "foreign_exchange",
+            "CP": "credit",
+            "EQ": "equity",
+            "CM": "commodity",
+        }
+        target = instrument_or_member.split(":")[-1].lower()
+        frontier = [target]
+        visited = {target}
+        while frontier:
+            curr = frontier.pop(0)
+            for edge in self.instruments_dag:
+                c_clean = edge.child_instrument.split(":")[-1].lower()
+                if c_clean == curr:
+                    if edge.underlying_risk in risk_map:
+                        return risk_map[edge.underlying_risk]
+                    p_clean = edge.parent_instrument.split(":")[-1].lower()
+                    if p_clean not in visited:
+                        visited.add(p_clean)
+                        frontier.append(p_clean)
+        return None
+
     def resolve_valuation_basis(self, member_qname: str) -> tuple[str, str]:
         """Resolve hierarchy level and valuation basis for a dimension member."""
         local = member_qname.split(":")[-1].lower()
