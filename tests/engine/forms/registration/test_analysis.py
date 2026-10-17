@@ -68,6 +68,8 @@ def test_analyze_case_valid_synthetic(tmp_path: Path) -> None:
     assert result["boundary"]["end_line"] > 15
     assert result["checkmarks"]["rule_415"] is True
     assert result["checkmarks"]["filer_status"] == "large_accelerated_filer"
+    assert "rule_415" in result["checkmarks"]["checked_keys"]
+    assert "corridor" in result
     assert result["taxonomy"]["item_count"] > 0
 
 
@@ -93,4 +95,7 @@ def test_summarize_cases_aggregation(tmp_path: Path) -> None:
         summary["checkmark_scorecard"]["filer_status_counts"]["large_accelerated_filer"]
         == 1
     )
+    assert summary["checkmark_scorecard"]["checked_counts"]["rule_415"] == 1
+    assert "corridor_scorecard" in summary
+    assert summary["corridor_scorecard"]["leak_case_count"] == 0
     assert summary["taxonomy_scorecard"]["mean_items_per_case"] > 0
