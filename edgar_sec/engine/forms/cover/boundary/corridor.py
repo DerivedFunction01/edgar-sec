@@ -84,10 +84,14 @@ def is_proxy_reference_disclosure(line: str) -> bool:
                 "portions of",
                 "the information required",
                 "information required",
+                "certain information required",
                 "see part",
                 "refer to",
             )
         )
+        or "proxy statement" in stripped
+        or "annual meeting of stockholders" in stripped
+        or "annual meeting of shareholders" in stripped
         or "indicate by check mark" in stripped
         or "pursuant to item 405" in stripped
         or "delinquent filers" in stripped
@@ -278,13 +282,18 @@ def _find_body_root_backward(
         if not stripped:
             continue
         upper = stripped.upper()
-        if "<TABLE" in upper:
+        if "</TABLE" in upper or "</FN" in upper:
             in_table = True
             continue
-        if "</TABLE" in upper:
+        if "<TABLE" in upper or "<FN" in upper:
             in_table = False
             continue
         if in_table or is_toc_like_line(stripped):
+            continue
+        if stripped.startswith(("(", "[", "*")) and any(
+            stripped.startswith(f"({i})") or stripped.startswith(f"[{i}]")
+            for i in range(1, 10)
+        ):
             continue
         match = match_structural_line(stripped, index)
         if match is not None and match.is_exact_heading:

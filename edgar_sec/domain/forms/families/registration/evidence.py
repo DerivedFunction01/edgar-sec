@@ -184,7 +184,9 @@ REGISTRATION_BODY_VERBS: tuple[str, ...] = (
     *FORWARD_LOOKING_VERBS[:5],
 )
 
-REGISTRATION_BODY_FORWARD_TERMS: tuple[str, ...] = FORWARD_LOOKING_TERMS
+REGISTRATION_BODY_FORWARD_TERMS: tuple[str, ...] = tuple(
+    term for term in FORWARD_LOOKING_TERMS if term not in ("certain", "may")
+)
 
 REGISTRATION_BODY_GENERAL_TERMS: tuple[str, ...] = (
     "continue",
@@ -231,6 +233,9 @@ REGISTRATION_COVER_EXCLUSION_TERMS: tuple[str, ...] = (
     "incorporation",
     "employer",
     "identification",
+    "fee",
+    "calculation",
+    "antidilution",
 )
 
 REGISTRATION_BODY_LEXICAL_PACK = LexicalEvidencePack(

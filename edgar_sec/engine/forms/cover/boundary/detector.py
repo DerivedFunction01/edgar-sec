@@ -202,6 +202,7 @@ def find_cover_boundary(
                 lines=lines,
                 rules=rules,
                 continued_cover=True,
+                confirm_backward=not bool(transition),
             )
 
     if enabled(policy, BoundarySignal.TOC_TRANSITION):
@@ -261,6 +262,7 @@ def find_cover_boundary(
                 cover_start=cover_start,
                 lines=lines,
                 rules=rules,
+                confirm_backward=False,
             )
 
     if enabled(policy, BoundarySignal.PART_FALLBACK):

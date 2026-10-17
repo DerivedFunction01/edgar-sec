@@ -64,7 +64,21 @@ def test_proxy_reference_disclosures_describe_other_sections() -> None:
     assert is_proxy_reference_disclosure("Portions of Item 1 are incorporated") is True
     assert is_proxy_reference_disclosure("indicate by check mark") is True
     assert is_proxy_reference_disclosure("pursuant to Item 405") is True
+    assert (
+        is_proxy_reference_disclosure(
+            "Part III of this report is incorporated by reference from the Proxy Statement"
+        )
+        is True
+    )
+    assert (
+        is_proxy_reference_disclosure(
+            "Certain information required by Part I is incorporated by reference"
+        )
+        is True
+    )
     assert is_proxy_reference_disclosure("ITEM 1. BUSINESS") is False
+    assert is_proxy_reference_disclosure("PART I") is False
+    assert is_proxy_reference_disclosure("PART III") is False
 
 
 def test_enabled_reads_the_policy_signal_tuple() -> None:
