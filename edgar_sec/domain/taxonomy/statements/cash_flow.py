@@ -15,6 +15,12 @@ OPERATING_ACTIVITIES_TERMS: tuple[str, ...] = (
     "net cash provided by operating activities",
     "net cash used in operating activities",
     "net cash provided by (used in) operating activities",
+    "net cash used in (provided by) operating activities",
+    "net cash from operations",
+    "cash from operations",
+    "cash provided by operations",
+    "cash used in operations",
+    "cash flows from operations",
 )
 
 INVESTING_ACTIVITIES_TERMS: tuple[str, ...] = (
@@ -23,6 +29,12 @@ INVESTING_ACTIVITIES_TERMS: tuple[str, ...] = (
     "net cash provided by investing activities",
     "net cash used in investing activities",
     "net cash used in (provided by) investing activities",
+    "net cash from investing",
+    "net cash used in investing",
+    "net cash provided by investing",
+    "cash from investing",
+    "cash used in investing",
+    "cash flows from investing",
 )
 
 FINANCING_ACTIVITIES_TERMS: tuple[str, ...] = (
@@ -31,6 +43,12 @@ FINANCING_ACTIVITIES_TERMS: tuple[str, ...] = (
     "net cash provided by financing activities",
     "net cash used in financing activities",
     "net cash provided by (used in) financing activities",
+    "net cash from financing",
+    "net cash used in financing",
+    "net cash provided by financing",
+    "cash from financing",
+    "cash used in financing",
+    "cash flows from financing",
 )
 
 CASH_FLOW_ACTIVITIES_TRIO: tuple[str, ...] = (
@@ -40,6 +58,10 @@ CASH_FLOW_ACTIVITIES_TRIO: tuple[str, ...] = (
     "supplemental disclosures",
     "supplemental cash flow disclosures",
     "supplemental cash flow information",
+    "cash flows statements",
+    "cash flow statements",
+    "statement of cash flows",
+    "statements of cash flows",
 )
 
 CASH_FLOW_TAIL_TERMS: tuple[str, ...] = (

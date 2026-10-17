@@ -20,6 +20,9 @@ def test_cash_flow_terms_populated() -> None:
     assert len(CASH_FLOW_ACTIVITIES_TRIO) > 0
     assert len(CASH_FLOW_TAIL_TERMS) > 0
     assert "balance sheet" in CASH_FLOW_VETOES
+    assert "net cash from operations" in OPERATING_ACTIVITIES_TERMS
+    assert "net cash used in financing" in FINANCING_ACTIVITIES_TERMS
+    assert "net cash used in investing" in INVESTING_ACTIVITIES_TERMS
 
 
 def test_cash_flow_tail_regex_matches_period_variants() -> None:

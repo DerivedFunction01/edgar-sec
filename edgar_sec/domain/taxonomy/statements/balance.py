@@ -77,7 +77,13 @@ BALANCE_SHEET_TAIL_RE = re.compile(
     rf"^\s*{_BALANCE_SHEET_TAIL_PATTERN}(?=\s|$)", re.IGNORECASE
 )
 
-BALANCE_SHEET_VETOES: tuple[str, ...] = ("activities",)
+BALANCE_SHEET_VETOES: tuple[str, ...] = (
+    "activities",
+    "cash flows",
+    "cash flow",
+    "statement of cash flows",
+    "statements of cash flows",
+)
 
 from edgar_sec.domain.taxonomy.tables.shapes import ShapeConstraint
 from edgar_sec.domain.taxonomy.tables.specs import (

@@ -20,6 +20,7 @@ def test_balance_sheet_terms_populated() -> None:
     assert len(CASH_TERMS) > 0
     assert len(BALANCE_SHEET_TAIL_TERMS) > 0
     assert "activities" in BALANCE_SHEET_VETOES
+    assert "cash flows" in BALANCE_SHEET_VETOES
 
 
 def test_balance_tail_regex_matches_expected() -> None:
