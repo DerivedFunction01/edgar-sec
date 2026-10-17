@@ -382,3 +382,26 @@ def test_parse_metadata_excludes_statutory_boilerplate_from_owner_name() -> None
     meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
     assert meta.reporting_owner.name == "Jane Smith"
     assert "Section 16" not in (meta.reporting_owner.name or "")
+
+
+def test_parse_metadata_same_row_right_cell_period() -> None:
+    """Verify period date located on the same row to the right is extracted."""
+    html = """<html><body><table>
+      <tr><td>1. Name: Jane Smith</td><td>2. Issuer: Acme ACM</td></tr>
+      <tr><td>4.</td><td>Statement for Month/Year</td><td>April, 2001</td></tr>
+    </table></body></html>"""
+    sections = partition_ownership_tables(html)
+    meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
+    assert meta.period.period_of_report == "April, 2001"
+
+
+def test_parse_metadata_vertical_lookahead_skips_intervening_address() -> None:
+    """Verify vertical lookahead does not get trapped by non-date address numbers."""
+    html = """<html><body><table>
+      <tr><td>Jane Smith</td><td>4. Statement for Month/Day/Year</td></tr>
+      <tr><td>5 East Greenway Plaza</td><td></td></tr>
+      <tr><td>Houston, TX 77046</td><td>07/17/2002</td></tr>
+    </table></body></html>"""
+    sections = partition_ownership_tables(html)
+    meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
+    assert meta.period.period_of_report == "07/17/2002"

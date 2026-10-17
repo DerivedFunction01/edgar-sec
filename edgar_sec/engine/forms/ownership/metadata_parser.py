@@ -645,7 +645,20 @@ def parse_metadata(
                 or "requiring statement" in lower
             ) and not period_cell:
                 cand = cell
-                if r_idx + 1 < len(rows):
+                right = next(
+                    (value.strip() for value in row[c_idx + 1 :] if value.strip()), ""
+                )
+                if (
+                    right
+                    and not BARE_BOX_NUM_RE.match(right)
+                    and any(char.isdigit() for char in right)
+                    and not any(
+                        marker in right.lower()
+                        for marker in _PERIOD_LOOKAHEAD_EXCLUSIONS
+                    )
+                ):
+                    cand = f"{cell}\n{right}"
+                elif r_idx + 1 < len(rows):
                     frac = (c_idx + 0.5) / max(1, len(row))
                     for next_r in range(r_idx + 1, min(r_idx + 4, len(rows))):
                         target_row = rows[next_r]
@@ -656,23 +669,24 @@ def parse_metadata(
                         )
                         below = target_row[target_idx].strip()
                         below_lower = lowered_rows[next_r][target_idx]
-                        if not (below and any(char.isdigit() for char in below)):
-                            for c_cand, c_cand_lower in zip(
-                                target_row, lowered_rows[next_r]
-                            ):
-                                if c_cand.strip() and any(
-                                    char.isdigit() for char in c_cand
-                                ):
-                                    below = c_cand.strip()
-                                    below_lower = c_cand_lower
-                                    break
-                        if (
-                            below
-                            and any(char.isdigit() for char in below)
-                            and not any(
-                                marker in below_lower
-                                for marker in _PERIOD_LOOKAHEAD_EXCLUSIONS
-                            )
+                        has_date = bool(
+                            NUMERIC_DATE_RE.search(below) or RE_FULL_DATE.search(below)
+                        )
+                        if not has_date:
+                            for offset in (1, -1):
+                                test_idx = target_idx + offset
+                                if 0 <= test_idx < len(target_row):
+                                    c_cand = target_row[test_idx].strip()
+                                    if NUMERIC_DATE_RE.search(
+                                        c_cand
+                                    ) or RE_FULL_DATE.search(c_cand):
+                                        below = c_cand
+                                        below_lower = lowered_rows[next_r][test_idx]
+                                        has_date = True
+                                        break
+                        if has_date and not any(
+                            marker in below_lower
+                            for marker in _PERIOD_LOOKAHEAD_EXCLUSIONS
                         ):
                             cand = f"{cell}\n{below}"
                             break
