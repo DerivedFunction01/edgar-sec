@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-import re
 from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import UTC, date, datetime
+from functools import lru_cache
+import re
 
 from edgar_sec.foundation.regex.builder import build_alternation
 
@@ -365,26 +366,20 @@ def _build_2digit_formats() -> tuple[DateFormat, ...]:
 
 SEC_DATE_FORMATS = _build_formats()
 ALL_SEC_DATE_FORMATS = SEC_DATE_FORMATS + _build_2digit_formats()
+_ALL_SEC_DATE_FORMATS_ORDERED = tuple(
+    sorted(ALL_SEC_DATE_FORMATS, key=lambda fmt: fmt.priority, reverse=True)
+)
 
 
-def parse_date(
-    text: str,
-    *,
-    formats: Sequence[DateFormat] = ALL_SEC_DATE_FORMATS,
-    reference_year: int | None = None,
+def _parse_date_with_formats(
+    normalized: str,
+    ordered: Sequence[DateFormat],
+    reference_year: int | None,
 ) -> ParsedDate | None:
-    """Parse a complete date string against known formats."""
-    normalized = _WHITESPACE_RE.sub(" ", text).strip()
-    if not normalized:
-        return None
-
-    ordered = sorted(formats, key=lambda fmt: fmt.priority, reverse=True)
     for fmt in ordered:
         match = fmt.pattern.search(normalized)
         if not match:
             continue
-        year_str = match.group("year")
-        month_str = match.group("month")
         group_dict = match.groupdict()
         year_str = group_dict.get("year")
         month_str = group_dict.get("month")
@@ -419,6 +414,31 @@ def parse_date(
         source = match.group(0).strip()
         return ParsedDate(format_id=fmt.id, source=source, components=components)
     return None
+
+
+@lru_cache(maxsize=4096)
+def _parse_date_default_cached(normalized: str) -> ParsedDate | None:
+    return _parse_date_with_formats(normalized, _ALL_SEC_DATE_FORMATS_ORDERED, None)
+
+
+def parse_date(
+    text: str,
+    *,
+    formats: Sequence[DateFormat] = ALL_SEC_DATE_FORMATS,
+    reference_year: int | None = None,
+) -> ParsedDate | None:
+    """Parse a complete date string against known formats."""
+    normalized = _WHITESPACE_RE.sub(" ", text).strip()
+    if not normalized:
+        return None
+    if formats is ALL_SEC_DATE_FORMATS and reference_year is None:
+        return _parse_date_default_cached(normalized)
+    ordered = (
+        _ALL_SEC_DATE_FORMATS_ORDERED
+        if formats is ALL_SEC_DATE_FORMATS
+        else sorted(formats, key=lambda fmt: fmt.priority, reverse=True)
+    )
+    return _parse_date_with_formats(normalized, ordered, reference_year)
 
 
 def expand_2digit_year(

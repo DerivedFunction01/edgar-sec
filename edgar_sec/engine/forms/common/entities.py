@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from functools import lru_cache
 import re
 
 from edgar_sec.domain.forms.common.entities import (
@@ -33,6 +34,7 @@ EXCHANGE_ALT = build_alternation((*CANONICAL_EXCHANGE_NAMES, *EXCHANGE_ALIASES))
 EXCHANGE_RE = re.compile(rf"\b({EXCHANGE_ALT})\b", re.IGNORECASE)
 
 
+@lru_cache(maxsize=512)
 def normalize_exchange_name(text: str) -> str | None:
     """Normalize stock exchange name or alias to canonical form."""
     match = EXCHANGE_RE.search(text)

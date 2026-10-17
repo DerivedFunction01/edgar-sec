@@ -25,6 +25,15 @@ class TableSchema:
 
     name: str
     columns: tuple[CanonicalColumn, ...]
+    anchor_columns: tuple[CanonicalColumn, ...] = ()
+
+    def __post_init__(self) -> None:
+        if not self.anchor_columns:
+            object.__setattr__(
+                self,
+                "anchor_columns",
+                tuple(c for c in self.columns if c.is_anchor and c.anchor_validator),
+            )
 
     def get_column(self, index: int) -> CanonicalColumn:
         return self.columns[index]
@@ -48,11 +57,10 @@ def find_strict_anchors(
     schema: TableSchema,
 ) -> list[AnchorMatch]:
     """Identify strict format anchors maintaining monotonic canonical ordering."""
-    anchor_cols = [c for c in schema.columns if c.is_anchor and c.anchor_validator]
     matches: list[AnchorMatch] = []
     used_cells: set[int] = set()
 
-    for col in anchor_cols:
+    for col in schema.anchor_columns:
         assert col.anchor_validator is not None
         for c_idx, cell in enumerate(cells):
             if c_idx in used_cells:

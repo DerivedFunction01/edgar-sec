@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from functools import lru_cache
 import re
 
 from edgar_sec.engine.tables.numeric_cells import CURRENCY_TOKEN_RE
@@ -14,6 +15,7 @@ _PREFIXES = ("up to", "approx.", "approx")
 _NULL_TOKENS = frozenset({"-", "--", "none", "n/a", "nil", "null"})
 
 
+@lru_cache(maxsize=2048)
 def clean_numeric(text: str | None) -> float | int | None:
     """Extract and parse numeric amounts from formatted cell strings."""
     if not text:

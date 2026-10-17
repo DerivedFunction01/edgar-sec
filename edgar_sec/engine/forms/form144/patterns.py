@@ -26,11 +26,9 @@ PLAN_ADOPTION_RE = re.compile(
     re.IGNORECASE,
 )
 
-CLEAN_NUM_STRIP_RE = re.compile(r"[,\$]")
 NUMERIC_TOKEN_RE = re.compile(r"^\s*[\$]?\s*([0-9][0-9,]*(?:\.[0-9]+)?)\b")
 
 __all__ = [
-    "CLEAN_NUM_STRIP_RE",
     "CONFORMED_SIG_RE",
     "NOTICE_DATE_LABEL_RE",
     "NUMERIC_TOKEN_RE",
