@@ -8,6 +8,11 @@ from edgar_sec.domain.forms.families.form144.models import (
     BrokerDetails,
     ProposedSaleItem,
 )
+from edgar_sec.engine.forms.common.alignment import (
+    CanonicalColumn,
+    TableSchema,
+    align_row_to_schema,
+)
 from edgar_sec.engine.forms.common.entities import (
     STATE_ZIP_RE,
     STREET_SUFFIX_RE,
@@ -40,6 +45,10 @@ def _is_box3_header(row: tuple[str, ...]) -> bool:
         )
     ):
         return False
+    if any(m in text for m in ("(e)", "(f)", "(g)")) and not any(
+        c.isdigit() for c in text
+    ):
+        return True
     return any(
         k in text
         for k in (
@@ -48,7 +57,9 @@ def _is_box3_header(row: tuple[str, ...]) -> bool:
             "title of the class",
             "to be sold",
             "aggregate market value",
-            "approximate date",
+            "approximate",
+            "securities exchange",
+            "number of shares",
         )
     )
 
@@ -117,6 +128,94 @@ def _extract_leading_number(text: str) -> tuple[float | int | None, bool]:
     return (num, has_curr) if num is not None else (None, False)
 
 
+def _is_currency_cell(s: str) -> bool:
+    return any(c in s for c in ALL_CURRENCY_SYMBOLS)
+
+
+def _is_date_cell(s: str) -> bool:
+    return parse_date(s) is not None if "as of" not in s.lower() else False
+
+
+def _is_exchange_cell(s: str) -> bool:
+    return normalize_exchange_name(s) is not None
+
+
+_BOX_3_SCHEMA = TableSchema(
+    name="form144_box3",
+    columns=(
+        CanonicalColumn(index=0, name="class_title", is_required=False),
+        CanonicalColumn(index=1, name="broker", is_required=False),
+        CanonicalColumn(
+            index=2,
+            name="units_to_be_sold",
+            is_required=False,
+            data_extractor=lambda s: _extract_leading_number(s)[0],
+        ),
+        CanonicalColumn(
+            index=3,
+            name="aggregate_market_value",
+            is_required=False,
+            is_anchor=True,
+            anchor_validator=_is_currency_cell,
+            data_extractor=lambda s: (
+                float(n) if (n := _extract_leading_number(s)[0]) is not None else None
+            ),
+        ),
+        CanonicalColumn(
+            index=4,
+            name="units_outstanding",
+            is_required=False,
+            data_extractor=lambda s: _extract_leading_number(s)[0],
+        ),
+        CanonicalColumn(
+            index=5,
+            name="approx_sale_date",
+            is_required=False,
+            is_anchor=True,
+            anchor_validator=_is_date_cell,
+            data_extractor=lambda s: d.display if (d := parse_date(s)) else None,
+        ),
+        CanonicalColumn(
+            index=6,
+            name="exchange_name",
+            is_required=False,
+            is_anchor=True,
+            anchor_validator=_is_exchange_cell,
+            data_extractor=normalize_exchange_name,
+        ),
+    ),
+)
+
+
+_BOX_3_PART2_SCHEMA = TableSchema(
+    name="form144_box3_part2",
+    columns=(
+        CanonicalColumn(
+            index=0,
+            name="units_outstanding",
+            is_required=False,
+            data_extractor=lambda s: _extract_leading_number(s)[0],
+        ),
+        CanonicalColumn(
+            index=1,
+            name="approx_sale_date",
+            is_required=False,
+            is_anchor=True,
+            anchor_validator=_is_date_cell,
+            data_extractor=lambda s: d.display if (d := parse_date(s)) else None,
+        ),
+        CanonicalColumn(
+            index=2,
+            name="exchange_name",
+            is_required=False,
+            is_anchor=True,
+            anchor_validator=_is_exchange_cell,
+            data_extractor=normalize_exchange_name,
+        ),
+    ),
+)
+
+
 def parse_proposed_sale_box_3(section: ClassifiedSection | None) -> ProposedSaleItem:
     """Extract proposed sale fields from Box 3 section grid using a state machine."""
     if section is None:
@@ -157,6 +256,37 @@ def parse_proposed_sale_box_3(section: ClassifiedSection | None) -> ProposedSale
                 cells.append(c)
 
         rem_cells = [c for c in cells if not _SEC_FILE_RE.match(c)]
+
+        has_curr = any(_is_currency_cell(c) for c in rem_cells)
+        has_dt_or_exch = any(
+            _is_date_cell(c) or _is_exchange_cell(c) for c in rem_cells
+        )
+        schema = (
+            _BOX_3_PART2_SCHEMA
+            if has_dt_or_exch and not has_curr and len(rem_cells) <= 4
+            else _BOX_3_SCHEMA
+        )
+        aligned = align_row_to_schema(tuple(rem_cells), schema)
+        if aligned is not None and (
+            aligned.get("aggregate_market_value") is not None
+            or aligned.get("approx_sale_date") is not None
+            or aligned.get("exchange_name") is not None
+        ):
+            if class_title is None and aligned.get("class_title"):
+                class_title = " ".join(aligned["class_title"].split())
+            if not broker_parts and aligned.get("broker"):
+                broker_parts.append(aligned["broker"])
+            if units is None and aligned.get("units_to_be_sold") is not None:
+                units = aligned["units_to_be_sold"]
+            if val is None and aligned.get("aggregate_market_value") is not None:
+                val = aligned["aggregate_market_value"]
+            if out is None and aligned.get("units_outstanding") is not None:
+                out = aligned["units_outstanding"]
+            if dt is None and aligned.get("approx_sale_date") is not None:
+                dt = aligned["approx_sale_date"]
+            if exch is None and aligned.get("exchange_name") is not None:
+                exch = aligned["exchange_name"]
+            continue
 
         if exch is None:
             for idx in range(len(rem_cells) - 1, -1, -1):
