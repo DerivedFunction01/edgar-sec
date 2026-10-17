@@ -96,6 +96,21 @@ raise UnsupportedRenderOperation(f"Form {form!r} has no registered XML renderer"
 - **Contextual Continuations**: Merge sibling fragments only when their section context and row/column evidence match; otherwise retain them in `unparsedSections`.
 - **No Field-Presence Suppression**: Do not discard distinct source values just because a destination field is already populated. Suppress only verified duplicates or explicit no-report markers after representing their meaning.
 
+### Rule 11: Single-Pass Token State Machines Over Fixed Column Guessing
+
+- **Prohibition**: Never attempt to construct brittle fixed column-index mappings (`mapping["code"] = 3`) by guessing column positions from multi-row headers across unaligned ASCII or legacy HTML grids.
+- **Enforcement**: Process tabular data rows as typed token streams (state machines). Resolve cell values by their intrinsic value types (dates, transaction codes, currency-prefixed numerics, single-letter disposition or form codes) and relative positional order, leaving instrument titles and descriptions to remaining text tokens.
+
+### Rule 12: Table Boundary Termination Over Post-Hoc Cell Filtering
+
+- **Prohibition**: Never let trailing signature blocks, notary jurats, or footnote explanation sections enter data row iteration to be filtered cell-by-cell with localized string checks.
+- **Enforcement**: Terminate table row collection immediately upon encountering structural boundary markers (`/s/`, `** signature`, `Explanation of Responses`). This prevents non-tabular text from ever reaching title or description fields.
+
+### Rule 13: Centralized Statutory Vocabulary Over Localized Phrase Duplication
+
+- **Prohibition**: Never maintain private, ad-hoc lists of legal boilerplate or artifact phrases inside individual form parsers.
+- **Enforcement**: Always import and reuse repository-level statutory evidence packs and precompiled alternations (`STATUTORY_PAGE_BOILERPLATE`, `STATUTORY_CRIMINAL_WARNING_PHRASES`, `is_instruction_row`, `HEADER_LEAK_RE`) from `domain.forms.common.statutory` and `engine.forms.common.*`.
+
 ---
 
 ## 4. The Canonical Modular Architecture (The Standard Form Pattern)
@@ -159,7 +174,7 @@ edgar_sec/
 4. **`grid_tables.py`**:
 
 - Strictly handles repetitive tabular data rows (e.g. primary transactions, secondary historical transactions, security distribution schedules).
-- Maps wrapped and marker-shifted headers to column indices, extracts typed values, and cleans numeric amounts via `clean_numeric(...)`.
+- Uses header boundary detection to isolate data rows, extracts values via single-pass relative positional token state machines, and terminates cleanly before signature or footnote blocks.
 
 5. **`render_to_xml.py`**:
 
@@ -315,6 +330,8 @@ _Missing-field counts always mix genuine source omissions with parser gaps; deve
 - **Marker-Shifted Headers**: Handle wrapped column headers, numbered sub-item markers, and footnotes without corrupting adjacent columns. Leave market-dependent or optional values unset when the source filing does not specify an amount.
 - **Contextual Continuation Merging**: Headerless continuation rows must merge with preceding tables only when column layouts, date alignments, and numeric structures match. Represent explicit negative disclosures (e.g. "None", "N/A") via distinct empty or no-report models rather than dropping rows.
 - **Footnotes and Remarks**: Section notes and post-table remarks map to `<remarks>` or XML footnote elements. Preserve signature blocks even when positioned next to legal boilerplate or filing agent stamps.
+- **Typed Token State Machines**: Extract repetitive table rows via single-pass token matching (temporal dates, enumerated transaction/operation codes, numerical amounts, and textual security titles) rather than brittle fixed-column coordinates that degrade when columns merge or shift.
+- **Structural Boundary Termination**: Stop table row collection cleanly at structural boundary signals (signature lines, notary jurats, footnote section headers) rather than letting trailing non-tabular sections leak into data fields.
 - **Namespace-Independent Diagnostics**: Review analysis must use namespace-independent element matching so that any `unparsedSection` embedded within the default SEC schema envelope is captured in diagnostic scorecards and audit samples.
 
 ### Triage Workflow for Remaining Extraction Gaps

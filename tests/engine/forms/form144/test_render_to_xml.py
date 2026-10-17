@@ -20,7 +20,8 @@ SAMPLE_HTML = """
 <tr><td>2 (a) NAME OF PERSON FOR WHOSE ACCOUNT SOLD</td><td>John Smith</td><td>(b) RELATIONSHIP TO ISSUER</td><td>Director</td></tr>
 </table>
 <table>
-<tr><td>3 (a) Title of the Class</td><td>Common Stock</td><td>(c) Number of Shares To Be Sold</td><td>10,000</td></tr>
+<tr><td>3 (a) Title of the Class</td><td>(b) Name of Broker</td><td>(c) Number of Shares To Be Sold</td></tr>
+<tr><td>Common Stock</td><td>Goldman Sachs</td><td>10,000</td></tr>
 </table>
 <table>
 <tr><td>TABLE I - SECURITIES TO BE SOLD</td></tr>

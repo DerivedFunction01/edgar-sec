@@ -44,6 +44,11 @@ from edgar_sec.engine.forms.common.signatures import (
     SIG_BOILERPLATE_TERMS,
     extract_signature_candidate,
 )
+from edgar_sec.engine.forms.common.statutory import (
+    HEADER_LEAK_RE,
+    STATUTORY_PAGE_ARTIFACT_RE,
+)
+from edgar_sec.engine.forms.common.tables import is_instruction_row
 from edgar_sec.engine.forms.ownership.patterns import PROSE_BOILERPLATE_RE
 from edgar_sec.engine.forms.ownership.sections import ClassifiedSection
 from edgar_sec.foundation.text.dates import (
@@ -337,12 +342,38 @@ def _parse_issuer(cell_text: str) -> Issuer:
                     and last.isupper()
                     and last.lower() not in LEGAL_FORMS
                 ):
-                    name = parts[0].rstrip(" ,-")
+                    p_name = re.sub(
+                        r"\s+(?:and|or)\s*$", "", parts[0], flags=re.IGNORECASE
+                    )
+                    name = p_name.rstrip(" ,-")
                     ticker = last
                 else:
                     name = cand.rstrip(" ,-")
             else:
                 name = cand.rstrip(" ,-")
+
+        if not ticker:
+            for delim in ("/", " - ", " — ", " and ", " or "):
+                if delim in cand:
+                    parts = cand.split(delim, 1)
+                    p0 = parts[0].strip("()\"“”',.- ")
+                    p1 = parts[1].strip("()\"“”',.- ")
+                    if (
+                        1 <= len(p1) <= 8
+                        and p1.replace(".", "").isupper()
+                        and p1.lower() not in LEGAL_FORMS
+                    ):
+                        name = parts[0].rstrip(" ,-")
+                        ticker = p1
+                        break
+                    if (
+                        1 <= len(p0) <= 8
+                        and p0.replace(".", "").isupper()
+                        and p0.lower() not in LEGAL_FORMS
+                    ):
+                        name = parts[1].rstrip(" ,-")
+                        ticker = p0
+                        break
 
         if not ticker:
             for line in lines:
@@ -457,6 +488,12 @@ def parse_metadata(
             s = cell.strip()
             if any(term in cell_lower for term in _OWNER_LABEL_MARKERS):
                 continue
+            if (
+                is_instruction_row(s)
+                or STATUTORY_PAGE_ARTIFACT_RE.search(s) is not None
+                or HEADER_LEAK_RE.search(s) is not None
+            ):
+                continue
             if s and s not in owner_seen:
                 owner_seen.add(s)
                 owner_lines.append(s)
@@ -473,17 +510,16 @@ def parse_metadata(
                 ):
                     cand = f"{cell}\n{right}"
                 elif r_idx + 1 < len(rows):
+                    frac = (c_idx + 0.5) / max(1, len(row))
                     for next_r in range(r_idx + 1, min(r_idx + 4, len(rows))):
-                        below = (
-                            rows[next_r][c_idx].strip()
-                            if c_idx < len(rows[next_r])
-                            else ""
+                        target_row = rows[next_r]
+                        if not target_row:
+                            continue
+                        target_idx = min(
+                            len(target_row) - 1, int(frac * len(target_row))
                         )
-                        below_lower = (
-                            lowered_rows[next_r][c_idx]
-                            if c_idx < len(lowered_rows[next_r])
-                            else ""
-                        )
+                        below = target_row[target_idx].strip()
+                        below_lower = lowered_rows[next_r][target_idx]
                         if below and not any(
                             marker in below_lower
                             for marker in _ISSUER_LOOKAHEAD_EXCLUSIONS
@@ -496,17 +532,16 @@ def parse_metadata(
             ) and not period_cell:
                 cand = cell
                 if r_idx + 1 < len(rows):
+                    frac = (c_idx + 0.5) / max(1, len(row))
                     for next_r in range(r_idx + 1, min(r_idx + 4, len(rows))):
-                        below = (
-                            rows[next_r][c_idx].strip()
-                            if c_idx < len(rows[next_r])
-                            else ""
+                        target_row = rows[next_r]
+                        if not target_row:
+                            continue
+                        target_idx = min(
+                            len(target_row) - 1, int(frac * len(target_row))
                         )
-                        below_lower = (
-                            lowered_rows[next_r][c_idx]
-                            if c_idx < len(lowered_rows[next_r])
-                            else ""
-                        )
+                        below = target_row[target_idx].strip()
+                        below_lower = lowered_rows[next_r][target_idx]
                         if (
                             below
                             and any(char.isdigit() for char in below)

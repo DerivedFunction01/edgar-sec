@@ -43,9 +43,34 @@ class Form4Metadata:
     signature_date: str | None = None
 
 
+VALID_TRANSACTION_CODES: frozenset[str] = frozenset(
+    {
+        "P",
+        "S",
+        "A",
+        "D",
+        "F",
+        "I",
+        "M",
+        "C",
+        "E",
+        "H",
+        "O",
+        "X",
+        "G",
+        "L",
+        "W",
+        "Z",
+        "J",
+        "U",
+        "K",
+    }
+)
+
 __all__ = [
     "FilingPeriod",
     "Form4Metadata",
     "Issuer",
     "ReportingOwner",
+    "VALID_TRANSACTION_CODES",
 ]

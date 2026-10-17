@@ -8,6 +8,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.domain.forms.families.ownership.models import VALID_TRANSACTION_CODES
 from edgar_sec.engine.forms.common.signatures import SIG_BOILERPLATE_TERMS
 from edgar_sec.engine.forms.common.statutory import (
     HEADER_LEAK_RE,
@@ -26,29 +27,6 @@ _DIGIT_RUN_RE = re.compile(r"\d+")
 _WHITESPACE_RE = re.compile(r"\s+")
 _WORD_NGRAM_RE = re.compile(r"[A-Za-z0-9#_]+")
 
-_VALID_TRANSACTION_CODES = frozenset(
-    {
-        "P",
-        "S",
-        "A",
-        "D",
-        "F",
-        "I",
-        "M",
-        "C",
-        "E",
-        "H",
-        "O",
-        "X",
-        "G",
-        "L",
-        "W",
-        "Z",
-        "J",
-        "U",
-        "K",
-    }
-)
 
 _FIELD_PATHS: dict[str, tuple[str, ...]] = {
     "periodOfReport": ("periodOfReport",),
@@ -288,10 +266,39 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
                 }
             )
 
+    # Invariant: rptOwnerName and issuerName should not contain statutory boilerplate
+    for owner_elem in root.iter("rptOwnerName"):
+        text = _element_text(owner_elem)
+        lower = text.lower()
+        if text and (
+            any(
+                phrase in lower
+                for phrase in (
+                    "filed pursuant to",
+                    "section 16(a)",
+                    "holding company act",
+                    "investment company act",
+                    "(first)",
+                    "(middle)",
+                    "check this box",
+                )
+            )
+            or HEADER_LEAK_RE.search(text)
+            or STATUTORY_PAGE_ARTIFACT_RE.search(text)
+        ):
+            anomalies.append(
+                {
+                    "accession": accession,
+                    "kind": "boilerplate_in_rpt_owner_name",
+                    "value": text,
+                    "detail": "reporting owner name contains statutory or template boilerplate",
+                }
+            )
+
     # Invariant: transactionCode must be a recognized SEC code
     for code_elem in root.iter("transactionCode"):
         code = _element_text(code_elem)
-        if code and code.upper() not in _VALID_TRANSACTION_CODES:
+        if code and code.upper() not in VALID_TRANSACTION_CODES:
             anomalies.append(
                 {
                     "accession": accession,

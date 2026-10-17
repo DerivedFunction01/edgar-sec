@@ -343,3 +343,42 @@ def test_parse_metadata_extracts_signature_outside_tables() -> None:
     assert sections.signatures is not None
     assert meta.signature_name == "Mary L. Rose"
     assert meta.signature_date == "04/28/03"
+
+
+def test_parse_issuer_fallback_delimiter_splitting() -> None:
+    """Verify fallback state machine splitting on slash, dash, and conjunction delimiters."""
+    from edgar_sec.engine.forms.ownership.metadata_parser import _parse_issuer
+
+    iss1 = _parse_issuer(
+        "2. Issuer Name and Ticker\nFarmers National Banc Corp./FMNB.OB"
+    )
+    assert iss1.name == "Farmers National Banc Corp."
+    assert iss1.trading_symbol == "FMNB.OB"
+
+    iss2 = _parse_issuer(
+        "2. Issuer Name and Ticker\nOil States International, Inc. - OIS"
+    )
+    assert iss2.name == "Oil States International, Inc."
+    assert iss2.trading_symbol == "OIS"
+
+    iss3 = _parse_issuer("2. Issuer Name and Ticker\nAcme Corp and ACM")
+    assert iss3.name == "Acme Corp"
+    assert iss3.trading_symbol == "ACM"
+
+
+def test_parse_metadata_excludes_statutory_boilerplate_from_owner_name() -> None:
+    """Verify statutory boilerplate in row[:2] is rejected from candidate owner lines."""
+    html = """<html><body>
+    <table>
+      <tr><td>Filed pursuant to Section 16(a) of the Securities Exchange Act of 1934</td><td>2. Issuer Name: Acme Corp</td></tr>
+      <tr><td>Check this box if no longer subject to Section 16</td><td>3. IRS: 12-3456789</td></tr>
+      <tr><td>1. Name and Address of Reporting Person</td><td>4. Statement for 01/15/2003</td></tr>
+      <tr><td>Jane Smith</td><td></td></tr>
+      <tr><td>100 Main St</td><td></td></tr>
+      <tr><td>Boston, MA 02110</td><td></td></tr>
+    </table>
+    </body></html>"""
+    sections = partition_ownership_tables(html)
+    meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
+    assert meta.reporting_owner.name == "Jane Smith"
+    assert "Section 16" not in (meta.reporting_owner.name or "")

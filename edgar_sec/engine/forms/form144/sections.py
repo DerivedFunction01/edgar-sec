@@ -11,8 +11,10 @@ from edgar_sec.engine.forms.common.entities import (
     EXCHANGE_RE,
     IRS_RE,
     STATE_ZIP_RE,
+    normalize_exchange_name,
 )
 from edgar_sec.engine.forms.common.signatures import is_signature_table
+from edgar_sec.engine.forms.common.tables import is_instruction_row
 from edgar_sec.domain.forms.families.form144.evidence import (
     FORM144_BOX_1_2_LEXICAL_PACK,
     FORM144_BOX_3_LEXICAL_PACK,
@@ -341,6 +343,34 @@ def _has_instruction_container(table: FastHtmlNode) -> bool:
     )
 
 
+def _is_instruction_table(lower: str, tbl: FastHtmlNode | None = None) -> bool:
+    if (
+        "$" in lower
+        or _has_cover_value_evidence(lower)
+        or "/s/" in lower
+        or "(signature)" in lower
+        or any(
+            k in lower
+            for k in (
+                "3(a)",
+                "3 (a)",
+                "1(a)",
+                "1 (a)",
+                "2(a)",
+                "2 (a)",
+                "table i",
+                "table ii",
+            )
+        )
+    ):
+        return False
+    if any(normalize_exchange_name(t) for t in lower.split()):
+        return False
+    if tbl is not None and _has_instruction_container(tbl):
+        return True
+    return is_instruction_row(lower)
+
+
 def _has_box3_value_row(grid: ResolvedGrid) -> bool:
     for row in grid.rows:
         numeric_count = sum(NUMERIC_TOKEN_RE.search(cell) is not None for cell in row)
@@ -366,7 +396,7 @@ def partition_form144_tables(html_text: str) -> Form144Sections:
     unparsed: list[ClassifiedSection] = []
 
     for idx, tbl in enumerate(tables):
-        raw_text = tbl.raw_node.text(deep=True)
+        raw_text = tbl.raw_node.text(separator=" ")
         lower = " ".join(raw_text.lower().split())
         past_tables = bool(
             table_i is not None
@@ -379,25 +409,19 @@ def partition_form144_tables(html_text: str) -> Form144Sections:
             if role == SectionRole.PROPOSED_SALE_BOX_3
             else None
         )
-        if _has_instruction_container(tbl) and role not in {
-            SectionRole.TABLE_I,
-            SectionRole.TABLE_II,
-            SectionRole.PAGE_ARTIFACT,
-        }:
-            has_data = (
-                (role in {SectionRole.COVER_BOX_1_2, SectionRole.COMBINED_COVER})
-                and _has_cover_value_evidence(lower)
-            ) or (
-                role == SectionRole.PROPOSED_SALE_BOX_3
-                and (
-                    _has_box_3_values(lower)
-                    or (box3_grid is not None and _has_box3_value_row(box3_grid))
-                )
-            )
-            has_signature = role == SectionRole.SIGNATURES and (
-                "/s/" in lower or "(signature)" in lower
-            )
-            if not has_data and not has_signature:
+        if _is_instruction_table(lower, tbl):
+            if role == SectionRole.PROPOSED_SALE_BOX_3:
+                if box3_grid is not None and not _has_box3_value_row(box3_grid):
+                    role = SectionRole.INSTRUCTIONS
+            elif role not in {
+                SectionRole.TABLE_I,
+                SectionRole.TABLE_II,
+                SectionRole.PAGE_ARTIFACT,
+                SectionRole.REMARKS,
+                SectionRole.COVER_BOX_1_2,
+                SectionRole.COMBINED_COVER,
+                SectionRole.SIGNATURES,
+            }:
                 role = SectionRole.INSTRUCTIONS
         grid = (
             box3_grid

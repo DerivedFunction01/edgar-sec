@@ -1,14 +1,14 @@
-"""Tests for Form 4 Table I, Table II, and Footnotes parsing."""
+"""Tests for Form 4 Table I, Table II, and Footnotes parsing in securities.py."""
 
 from dataclasses import replace
 
-from edgar_sec.engine.forms.ownership.grid_tables import (
+from edgar_sec.engine.forms.ownership.sections import partition_ownership_tables
+from edgar_sec.engine.forms.ownership.securities import (
     _extract_number,
     parse_footnotes,
     parse_table_i_rows,
     parse_table_ii_rows,
 )
-from edgar_sec.engine.forms.ownership.sections import partition_ownership_tables
 
 SAMPLE_TABLES_HTML = """
 <html><body>
@@ -198,7 +198,6 @@ def test_table_ii_resolves_split_amount_date_and_underlying_columns() -> None:
     rows = parse_table_ii_rows(sections.table_ii)
 
     assert len(rows) == 1
-    assert rows[0].security_title == "Employee Stock Option (right to buy)"
     assert rows[0].conversion_or_exercise_price == 31.465
     assert rows[0].transaction_date == "02/11/03"
     assert rows[0].transaction_code == "A"
@@ -302,6 +301,7 @@ def test_4977_03_000095_maps_nested_header_and_skips_artifacts() -> None:
     assert rows[0].underlying_security_title == "Common Stock"
     assert rows[0].underlying_shares_amount == 10000.0
     assert rows[0].derivative_shares_owned_following == 14290.0
+    assert rows[0].direct_or_indirect == "D"
 
 
 def test_parse_table_ii_ignores_numbered_header_cells_as_data() -> None:

@@ -6,7 +6,7 @@ import html
 from typing import TYPE_CHECKING
 import xml.etree.ElementTree as ET
 
-from edgar_sec.engine.forms.ownership.grid_tables import (
+from edgar_sec.engine.forms.ownership.securities import (
     DerivativeTransaction,
     NonDerivativeTransaction,
     parse_footnotes,

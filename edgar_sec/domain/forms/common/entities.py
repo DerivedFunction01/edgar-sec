@@ -219,6 +219,10 @@ INSTRUCTION_SIGNATURE_PHRASES: tuple[str, ...] = (
     "intentional misstatements",
     "criminal violations",
     "regulation s-t",
+    "filed pursuant to section 16",
+    "section 16(a)",
+    "subject to section 16",
+    "statement of changes in beneficial ownership",
 )
 
 RELATIONSHIP_TO_ISSUER_TERMS: tuple[str, ...] = (

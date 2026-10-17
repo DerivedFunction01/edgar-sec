@@ -9,6 +9,12 @@ from edgar_sec.domain.forms.families.form144.models import (
     ReportingPerson,
 )
 from edgar_sec.engine.forms.common.entities import IRS_RE, STATE_ZIP_RE
+from edgar_sec.engine.forms.common.tables import (
+    address_from_column_headers,
+    address_from_inline_cells,
+    extract_labeled_field,
+    parse_address_parts,
+)
 from edgar_sec.engine.forms.form144.patterns import (
     PHONE_RE,
     SEC_FILE_BARE_RE,
@@ -16,132 +22,24 @@ from edgar_sec.engine.forms.form144.patterns import (
 )
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 
-
-def _clean_candidate(text: str, excluded: tuple[str, ...]) -> str | None:
-    value = text.strip(" \t\r\n:;,-")
-    lower = value.lower()
-    if len(value) < 2 or any(term in lower for term in excluded):
-        return None
-    return value
-
-
-def _value_for_label(
-    rows: tuple[tuple[str, ...], ...],
-    row_idx: int,
-    col_idx: int,
-    label: str,
-    excluded: tuple[str, ...],
-) -> str | None:
-    row = rows[row_idx]
-    cell = row[col_idx]
-    lines = [line.strip() for line in cell.splitlines() if line.strip()]
-    for line_idx, line in enumerate(lines):
-        lower = line.lower()
-        if label not in lower:
-            continue
-        tail = line[lower.find(label) + len(label) :]
-        if ")" in tail:
-            tail = tail[tail.rfind(")") + 1 :]
-        value = _clean_candidate(tail, excluded)
-        if value:
-            return value
-        value_lines: list[str] = []
-        for candidate in lines[line_idx + 1 :]:
-            if candidate.lower().strip(" .:;") == "are to be sold":
-                continue
-            value = _clean_candidate(candidate, excluded)
-            if not value:
-                break
-            value_lines.append(value)
-        if value_lines:
-            return " ".join(value_lines)
-
-    if col_idx + 1 < len(row):
-        value = _clean_candidate(row[col_idx + 1], excluded)
-        if value:
-            return value
-    if row_idx + 1 < len(rows):
-        for candidate in rows[row_idx + 1]:
-            value = _clean_candidate(candidate, excluded)
-            if not value:
-                continue
-            marker = value.replace(" ", "").lower()
-            if marker in {"(a)", "(b)", "(c)", "(d)", "(e)", "(f)", "(g)"} or (
-                len(marker) == 4
-                and marker[0].isdigit()
-                and marker[1] == "("
-                and marker[2] in "abcdefg"
-                and marker[3] == ")"
-            ):
-                continue
-            return value
-    return None
-
-
-def _address_parts(text: str) -> tuple[str | None, str | None, str | None, str | None]:
-    match = STATE_ZIP_RE.search(text)
-    if not match:
-        return text.strip() or None, None, None, None
-    prefix = text[: match.start()].strip().rstrip(",")
-    pieces = [piece.strip() for piece in prefix.split(",") if piece.strip()]
-    city = pieces.pop() if len(pieces) > 1 else None
-    street = ", ".join(pieces) if pieces else prefix or None
-    return street, city, match.group(1), match.group(2)
-
-
-def _address_from_columns(
-    labels: tuple[str, ...], values: tuple[str, ...]
-) -> tuple[str | None, str | None, str | None, str | None] | None:
-    field_terms = ("street", "city", "state", "zip")
-    indexes: list[int] = []
-    for term in field_terms:
-        matches = [i for i, cell in enumerate(labels) if term in cell.lower()]
-        if len(matches) != 1:
-            return None
-        indexes.append(matches[0])
-    if len(set(indexes)) != len(indexes) or any(i >= len(values) for i in indexes):
-        return None
-    street, city, state, zip_code = (values[i].strip() or None for i in indexes)
-    return street, city, state, zip_code
-
-
-def _address_from_inline_cells(
-    row: tuple[str, ...],
-) -> tuple[str | None, str | None, str | None, str | None] | None:
-    fields: dict[str, str] = {}
-    terms = ("street", "city", "state", "zip code")
-    for term in terms:
-        for cell in row:
-            lines = [line.strip() for line in cell.splitlines() if line.strip()]
-            for line_idx, line in enumerate(lines):
-                lower = line.lower()
-                if term not in lower:
-                    continue
-                if sum(candidate in lower for candidate in terms) > 1:
-                    continue
-                tail = line[lower.find(term) + len(term) :]
-                value = _clean_candidate(tail, ("street", "city", "state", "zip code"))
-                if value:
-                    fields[term] = value
-                    break
-                if line_idx + 1 < len(lines):
-                    value = _clean_candidate(
-                        lines[line_idx + 1], ("street", "city", "state", "zip code")
-                    )
-                    if value:
-                        fields[term] = value
-                        break
-            if term in fields:
-                break
-    if not fields:
-        return None
-    state_zip = STATE_ZIP_RE.search(" ".join(row))
-    state = fields.get("state")
-    zip_code = fields.get("zip code")
-    if state_zip:
-        state = state or state_zip.group(1)
-        zip_code = zip_code or state_zip.group(2)
-    return fields.get("street"), fields.get("city"), state, zip_code
+_ISSUER_LABELS = ("name of issuer", "1 (a)", "1(a)")
+_SELLER_LABELS = (
+    "person for whose account the securities are to be sold",
+    "person for whose account sold",
+    "person for whose account",
+    "2 (a)",
+    "2(a)",
+)
+_ISSUER_EXCLUDED = ("irs", "sec file", "relationship", "address", "telephone")
+_SELLER_EXCLUDED = ("irs", "relationship", "address", "issuer", "telephone")
+_RELATIONSHIPS = (
+    "officer",
+    "director",
+    "10% stockholder",
+    "affiliate",
+    "trustee",
+    "other",
+)
 
 
 def _labeled_address(
@@ -155,7 +53,7 @@ def _labeled_address(
         )
         if label_line_idx is None:
             continue
-        inline = _address_from_inline_cells(labels)
+        inline = address_from_inline_cells(labels)
         if inline:
             return inline
         label_line = lines[label_line_idx]
@@ -164,17 +62,17 @@ def _labeled_address(
         if zip_label_idx >= 0:
             label_tail = label_tail[zip_label_idx + len("zip code") :]
         if STATE_ZIP_RE.search(label_tail):
-            return _address_parts(label_tail)
+            return parse_address_parts(label_tail)
         if row_idx + 1 < len(rows):
-            columns = _address_from_columns(labels, rows[row_idx + 1])
+            columns = address_from_column_headers(labels, rows[row_idx + 1])
             if columns:
                 return columns
         row_tail = " ".join(labels[col_idx + 1 :])
         if STATE_ZIP_RE.search(row_tail):
-            return _address_parts(row_tail)
+            return parse_address_parts(row_tail)
         following_lines = lines[label_line_idx + 1 :]
         if any(STATE_ZIP_RE.search(line) for line in following_lines):
-            return _address_parts(" ".join(following_lines))
+            return parse_address_parts(" ".join(following_lines))
         value_lines = [
             line
             for line in following_lines
@@ -184,12 +82,12 @@ def _labeled_address(
             )
         ]
         if value_lines:
-            return _address_parts(" ".join(value_lines))
+            return parse_address_parts(" ".join(value_lines))
         if row_idx + 1 < len(rows):
             candidate = " ".join(
                 part.strip() for part in rows[row_idx + 1] if part.strip()
             )
-            return _address_parts(candidate)
+            return parse_address_parts(candidate)
         return None
     return None
 
@@ -219,7 +117,7 @@ def _recover_address_street(
                 for phrase in ("name of", "relationship to issuer", "zip code")
             ):
                 continue
-            aligned = _address_from_columns(labels, candidate_row)
+            aligned = address_from_column_headers(labels, candidate_row)
             if aligned:
                 return (
                     street,
@@ -234,11 +132,14 @@ def _recover_address_street(
 def parse_cover_box_1_2(
     section: ClassifiedSection | None,
 ) -> tuple[IssuerInformation, ReportingPerson]:
+    """Extract issuer and reporting person details from Form 144 Cover Boxes 1 & 2."""
     if section is None:
         return IssuerInformation(), ReportingPerson()
 
     grid = section.resolved_grid
-    issuer_name: str | None = None
+    issuer_name = extract_labeled_field(grid, _ISSUER_LABELS, excluded=_ISSUER_EXCLUDED)
+    seller_name = extract_labeled_field(grid, _SELLER_LABELS, excluded=_SELLER_EXCLUDED)
+
     irs_num: str | None = None
     sec_file: str | None = None
     issuer_street: str | None = None
@@ -246,7 +147,6 @@ def parse_cover_box_1_2(
     issuer_state: str | None = None
     issuer_zip: str | None = None
     phone: str | None = None
-    seller_name: str | None = None
     seller_street: str | None = None
     seller_city: str | None = None
     seller_state: str | None = None
@@ -258,47 +158,8 @@ def parse_cover_box_1_2(
         row_text = " ".join(c.strip() for c in row if c.strip())
         lower_row = row_text.lower()
 
-        for c_idx, cell in enumerate(row):
-            c_clean = cell.strip()
-            c_lower = c_clean.lower()
-            if not c_clean:
-                continue
-            if (
-                "name of issuer" in c_lower or "1 (a)" in c_lower or "1(a)" in c_lower
-            ) and issuer_name is None:
-                issuer_name = _value_for_label(
-                    grid.rows,
-                    row_idx,
-                    c_idx,
-                    "name of issuer",
-                    ("irs", "sec file", "relationship", "address", "telephone"),
-                )
-            if (
-                "person for whose account" in c_lower
-                or "2 (a)" in c_lower
-                or "2(a)" in c_lower
-            ) and seller_name is None:
-                seller_relationship_labeled |= "relationship to issuer" in c_lower
-                seller_label = next(
-                    (
-                        label
-                        for label in (
-                            "person for whose account the securities are to be sold",
-                            "person for whose account sold",
-                            "person for whose account",
-                        )
-                        if label in c_lower
-                    ),
-                    None,
-                )
-                if seller_label:
-                    seller_name = _value_for_label(
-                        grid.rows,
-                        row_idx,
-                        c_idx,
-                        seller_label,
-                        ("irs", "relationship", "address", "issuer", "telephone"),
-                    )
+        if "relationship to issuer" in lower_row:
+            seller_relationship_labeled = True
 
         irs_match = IRS_RE.search(row_text)
         if irs_match and not irs_num:
@@ -324,8 +185,7 @@ def parse_cover_box_1_2(
             parts = _recover_address_street(grid.rows, row_idx, parts)
             if parts:
                 issuer_street, issuer_city, issuer_state, issuer_zip = parts
-        if "relationship to issuer" in lower_row:
-            seller_relationship_labeled = True
+
         if "address" in lower_row and (
             "person for whose" in lower_row
             or (
@@ -341,7 +201,7 @@ def parse_cover_box_1_2(
                 address_row = " ".join(grid.rows[row_idx])
                 zip_label = address_row.lower().rfind("zip code")
                 if zip_label >= 0:
-                    recovered = _address_parts(
+                    recovered = parse_address_parts(
                         address_row[zip_label + len("zip code") :]
                     )
                     if recovered[1]:
@@ -349,14 +209,7 @@ def parse_cover_box_1_2(
             if parts and not seller_street:
                 seller_street, seller_city, seller_state, seller_zip = parts
 
-        for relationship in (
-            "officer",
-            "director",
-            "10% stockholder",
-            "affiliate",
-            "trustee",
-            "other",
-        ):
+        for relationship in _RELATIONSHIPS:
             if relationship in lower_row and relationship.title() not in relationships:
                 relationships.append(relationship.title())
 
