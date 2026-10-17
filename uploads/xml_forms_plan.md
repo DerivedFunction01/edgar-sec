@@ -21,8 +21,8 @@ Of the form specifications across repository manifests, forms requiring structur
 
 | Form Family                    | Description                      | Modern SEC XML Schema                      | Historical Format               | Required Pipeline Operation          | Status          |
 | ------------------------------ | -------------------------------- | ------------------------------------------ | ------------------------------- | ------------------------------------ | --------------- |
-| **Section 16 (Forms 3, 4, 5)** | Beneficial Ownership Disclosures | `<ownershipDocument>`                      | Tabular HTML / ASCII tables     | `AcquisitionOperation.RENDER_TO_XML` | Active / Phased |
-| **Form 144**                   | Proposed Sale of Securities      | `<noticeOfProposedSaleOfSecurities>`       | Multi-tier HTML / ASCII tables  | `AcquisitionOperation.RENDER_TO_XML` | Implemented     |
+| **Section 16 (Forms 3, 4, 5)** | Beneficial Ownership Disclosures | `<ownershipDocument>`                      | Tabular HTML / ASCII tables     | `AcquisitionOperation.RENDER_TO_XML` | Implemented (AASM) |
+| **Form 144**                   | Proposed Sale of Securities      | `<noticeOfProposedSaleOfSecurities>`       | Multi-tier HTML / ASCII tables  | `AcquisitionOperation.RENDER_TO_XML` | Implemented (AASM) |
 | **Form D**                     | Notice of Exempt Offering        | `<edgarSubmission>` / `<offeringData>`     | 16-item Tabular HTML notice     | `AcquisitionOperation.RENDER_TO_XML` | Planned         |
 | **Form 13F**                   | Institutional Holdings           | `<edgarSubmission>` / `<informationTable>` | Fixed-width ASCII / HTML tables | `AcquisitionOperation.RENDER_TO_XML` | Planned         |
 | **Schedule 13D/G**             | 5%+ Beneficial Ownership         | `<schedule13D>` / `<schedule13G>`          | Narrative HTML + Cover Matrix   | Hybrid (Matrix XML + Narrative TXT)  | Planned         |
@@ -96,10 +96,13 @@ raise UnsupportedRenderOperation(f"Form {form!r} has no registered XML renderer"
 - **Contextual Continuations**: Merge sibling fragments only when their section context and row/column evidence match; otherwise retain them in `unparsedSections`.
 - **No Field-Presence Suppression**: Do not discard distinct source values just because a destination field is already populated. Suppress only verified duplicates or explicit no-report markers after representing their meaning.
 
-### Rule 11: Single-Pass Token State Machines Over Fixed Column Guessing
+### Rule 11: Form-Schema Anchor Alignment State Machine (AASM) Over Fixed Coordinates
 
-- **Prohibition**: Never attempt to construct brittle fixed column-index mappings (`mapping["code"] = 3`) by guessing column positions from multi-row headers across unaligned ASCII or legacy HTML grids.
-- **Enforcement**: Process tabular data rows as typed token streams (state machines). Resolve cell values by their intrinsic value types (dates, transaction codes, currency-prefixed numerics, single-letter disposition or form codes) and relative positional order, leaving instrument titles and descriptions to remaining text tokens.
+- **Prohibition**: Never attempt to construct brittle fixed column-index mappings (`mapping["code"] = 3`) by guessing column positions from multi-row headers across unaligned ASCII or tabular HTML grids.
+- **Enforcement**: Model tabular data using `TableSchema` with typed `CanonicalColumn` definitions from `edgar_sec.engine.forms.common.alignment`. Process rows through the Anchor Alignment State Machine:
+  1. **Strict Anchor Identification**: Detect high-confidence invariant tokens (ISO/US dates, transaction codes, currency-prefixed values, ownership codes `'D'/'I'`, and market exchange acronyms) in $O(N \cdot M)$ time.
+  2. **Deficit Deduction**: When cell count is less than column count ($L_{\text{cells}} < L_{\text{cols}}$), deduce missing optional columns as `None` without shifting adjacent required columns.
+  3. **Interval Projection**: Match unanchored cells strictly within the candidate columns bounded by adjacent anchors.
 
 ### Rule 12: Table Boundary Termination Over Post-Hoc Cell Filtering
 
@@ -132,7 +135,7 @@ edgar_sec/
 │   ├── patterns.py           # Precompiled module-level regexes via build_alternation
 │   ├── sections.py           # HTML table classification and SectionRole partitioning
 │   ├── metadata_parser.py    # Non-tabular/header metadata & signature extraction via lookahead
-│   ├── grid_tables.py        # Tabular transaction/holdings row mapping (Grids, Schedules)
+│   ├── securities.py         # Tabular transaction/holdings parsing via Anchor Alignment State Machine
 │   ├── render_to_xml.py      # Canonical XML synthesis and native XML pass-through
 │   ├── analysis.py           # Field completeness, scorecards, and anomaly detection
 │   └── README.md             # Architectural contracts and layout
@@ -146,7 +149,7 @@ edgar_sec/
         ├── test_patterns.py
         ├── test_sections.py
         ├── test_metadata_parser.py
-        ├── test_grid_tables.py
+        ├── test_securities.py
         ├── test_render_to_xml.py
         └── test_analysis.py
 
@@ -171,10 +174,10 @@ edgar_sec/
 - Extracts metadata from non-tabular cover boxes (entity identity, CIK, SEC file number, tax IDs, addresses, execution dates, signatories).
 - Handles wrapped labels, values in adjacent or following cells, inline address columns, and marker columns without treating header markers as values.
 
-4. **`grid_tables.py`**:
+4. **`securities.py`**:
 
-- Strictly handles repetitive tabular data rows (e.g. primary transactions, secondary historical transactions, security distribution schedules).
-- Uses header boundary detection to isolate data rows, extracts values via single-pass relative positional token state machines, and terminates cleanly before signature or footnote blocks.
+- Strictly handles repetitive tabular data rows (e.g. primary transactions, secondary historical transactions, derivative holdings, security distribution schedules).
+- Uses `TableSchema` and `align_row_to_schema` from `edgar_sec.engine.forms.common.alignment` with strict anchors, deficit deduction for missing optional columns, and interval projection. Terminates cleanly before signature or footnote blocks.
 
 5. **`render_to_xml.py`**:
 
@@ -229,7 +232,7 @@ ProcessingCatalogEntry(family="<form_family>", profile=PROFILE_FORM_<FORM_FAMILY
 1. Create `patterns.py` with precompiled module constants using `build_alternation`.
 2. Create `sections.py` with `SectionRole` classification and `partition_<form_family>_tables`.
 3. Create `metadata_parser.py` using structural cell lookaheads for cover boxes, identity, and signatures.
-4. Create `grid_tables.py` for repetitive tabular row extraction.
+4. Create `securities.py` using `TableSchema` and `align_row_to_schema` from `edgar_sec.engine.forms.common.alignment` for tabular row extraction.
 5. Create `render_to_xml.py` producing canonical `<edgarSubmission>` XML with native XML pass-through and embedding `unparsedSections`.
 6. Create `analysis.py` providing semantic review analysis, unparsed table sniffing, and anomaly reporting for offline evaluation.
 
@@ -271,7 +274,7 @@ registry.register(
 - `test_patterns.py`: Pattern compilation and regex matching.
 - `test_sections.py`: Multi-table partitioning and classification.
 - `test_metadata_parser.py`: Cover box extraction and signature resolution.
-- `test_grid_tables.py`: Tabular row mapping and type conversion.
+- `test_securities.py`: Tabular row mapping, schema alignment, and type conversion.
 - `test_render_to_xml.py`: Native XML pass-through, HTML-to-XML conversion, and unparsed section serialization.
 - `test_analysis.py`: Semantic case analysis and scorecard computation.
 
@@ -330,7 +333,7 @@ _Missing-field counts always mix genuine source omissions with parser gaps; deve
 - **Marker-Shifted Headers**: Handle wrapped column headers, numbered sub-item markers, and footnotes without corrupting adjacent columns. Leave market-dependent or optional values unset when the source filing does not specify an amount.
 - **Contextual Continuation Merging**: Headerless continuation rows must merge with preceding tables only when column layouts, date alignments, and numeric structures match. Represent explicit negative disclosures (e.g. "None", "N/A") via distinct empty or no-report models rather than dropping rows.
 - **Footnotes and Remarks**: Section notes and post-table remarks map to `<remarks>` or XML footnote elements. Preserve signature blocks even when positioned next to legal boilerplate or filing agent stamps.
-- **Typed Token State Machines**: Extract repetitive table rows via single-pass token matching (temporal dates, enumerated transaction/operation codes, numerical amounts, and textual security titles) rather than brittle fixed-column coordinates that degrade when columns merge or shift.
+- **Anchor Alignment State Machine**: Extract repetitive table rows via canonical column schemas and strict anchor recognition (temporal dates, enumerated transaction/operation codes, numerical amounts, and textual security titles), using deficit deduction to handle missing optional columns rather than brittle fixed-column coordinates that degrade when columns merge or shift.
 - **Structural Boundary Termination**: Stop table row collection cleanly at structural boundary signals (signature lines, notary jurats, footnote section headers) rather than letting trailing non-tabular sections leak into data fields.
 - **Namespace-Independent Diagnostics**: Review analysis must use namespace-independent element matching so that any `unparsedSection` embedded within the default SEC schema envelope is captured in diagnostic scorecards and audit samples.
 
