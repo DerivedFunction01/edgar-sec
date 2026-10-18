@@ -47,3 +47,32 @@ def test_extract_ascii_header_pipe_table() -> None:
     assert meta.issuer.name == "Loews Corporation"
     assert meta.issuer.trading_symbol == "LTR"
     assert meta.reporting_owner.is_director is True
+
+
+def test_extract_ascii_header_with_checkboxes() -> None:
+    text = (
+        "|_| Check this box if no longer subject to Section 16.\n"
+        "1.   Name and Address of Reporting Person*\n"
+        "Mao, Shing\n"
+        "(Last) (First) (Middle)\n"
+        "3050 East Hillcrest Drive\n"
+        "(Street)\n"
+        "Westlake Village, CA 91362\n"
+        "(City) (State) (Zip)\n"
+        "2.   Issuer Name and Ticker or Trading Symbol\n"
+        "Diodes Incorporated (DIOD)\n"
+        "4.   Statement for Month/Day/Year\n"
+        "March 14, 2003\n"
+        "6.   Relationship of Reporting Person(s) to Issuer\n"
+        "|X| Director\n"
+        "|_| Officer (give title below)\n"
+        "TABLE I - NON-DERIVATIVE SECURITIES\n"
+        "/s/ Shing Mao   03/14/2003\n"
+    )
+    boxes, sigs = extract_ascii_header_and_signatures(text)
+    assert boxes is not None
+    meta = parse_metadata(boxes, sigs)
+    assert meta.issuer.name == "Diodes Incorporated"
+    assert meta.issuer.trading_symbol == "DIOD"
+    assert meta.reporting_owner.name == "Mao, Shing"
+    assert meta.reporting_owner.is_director is True

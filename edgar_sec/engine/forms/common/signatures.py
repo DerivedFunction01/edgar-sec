@@ -173,6 +173,10 @@ SIG_BOILERPLATE_TERMS: tuple[str, ...] = (
     "15 u.s.c.",
     "sec 1474",
     "sec 2474",
+    "table i",
+    "table ii",
+    "table 1",
+    "table 2",
 )
 
 SIGNATURE_NAME_PATTERNS: tuple[re.Pattern[str], ...] = (
@@ -203,6 +207,10 @@ def is_valid_signature_name(cand: str) -> bool:
         "d",
         "i",
         "a",
+        "table i",
+        "table ii",
+        "table 1",
+        "table 2",
     }:
         return False
     if any(term in lower for term in SIG_BOILERPLATE_TERMS):

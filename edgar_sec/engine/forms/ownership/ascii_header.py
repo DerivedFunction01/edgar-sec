@@ -42,7 +42,7 @@ _TABLE_START_RE = re.compile(_TABLE_START_ALT, re.IGNORECASE)
 _HORIZONTAL_RULE_RE = re.compile(r"^[\s\-=+_|]{4,}$")
 
 _IRS_TERMS = (
-    r"i\.?r\.?s\.?",
+    r"\bi\.?r\.?s\.?\b",
     r"social security",
     r"identification number",
 )
@@ -75,7 +75,11 @@ _RE_WRAP_IGNORE = re.compile(rf"^(?:{_WRAP_IGNORE_ALT})$", re.IGNORECASE)
 
 
 def _unfold_side_by_side_columns(lines: list[str]) -> list[str]:
-    pipe_rows = [l for l in lines if l.strip().startswith("|")]
+    pipe_rows = [
+        l
+        for l in lines
+        if l.strip().startswith("|") and l.strip().endswith("|") and l.count("|") >= 2
+    ]
     if len(pipe_rows) >= 5:
         cols: dict[int, list[str]] = {}
         for l in pipe_rows:

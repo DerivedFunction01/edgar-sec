@@ -27,6 +27,7 @@ _EXPLANATION_TERMS = (
 )
 _EXPLANATION_ALT = build_alternation(_EXPLANATION_TERMS, auto_escape=False)
 _EXPLANATION_RE = re.compile(_EXPLANATION_ALT, re.IGNORECASE)
+_CAPTION_TAG_RE = re.compile(r"<\/?CAPTION>", re.IGNORECASE)
 
 _RE_TABLE_I_OR_II = re.compile(r"^\s*Table\s+I{1,2}\b", re.IGNORECASE)
 _RE_PIPE_RULE = re.compile(r"^\|?[-=+|]{10,}\|?$")
@@ -108,6 +109,7 @@ def _parse_sc_block(lines: list[str]) -> list[tuple[str, ...]]:
             not s
             or s.startswith("</TABLE")
             or s.startswith("<PAGE")
+            or s.upper().startswith("<CAPTION")
             or _HORIZONTAL_RULE_RE.match(s)
         ):
             continue
@@ -118,7 +120,8 @@ def _parse_sc_block(lines: list[str]) -> list[tuple[str, ...]]:
         for i in range(len(col_starts)):
             st = col_starts[i]
             en = col_starts[i + 1] if i + 1 < len(col_starts) else len(line)
-            cells.append(line[st:en].strip() if st < len(line) else "")
+            raw = line[st:en].strip() if st < len(line) else ""
+            cells.append(_CAPTION_TAG_RE.sub("", raw).strip())
 
         if any(cells):
             if tbl_rows and not any(cells[1:8]) and (cells[0] or cells[-1]):
@@ -144,14 +147,18 @@ def _process_pipe_lines(sub_lines: list[str]) -> list[tuple[str, ...]]:
                 chunks.append(curr_chunk)
                 curr_chunk = []
             continue
-        if "<CAPTION>" in l or _EXPLANATION_RE.search(l):
+        s = l.strip()
+        if s.upper().startswith("<CAPTION"):
+            continue
+        if _EXPLANATION_RE.search(l):
             break
         if "|" in l:
-            parts = (
-                [p.strip() for p in l.split("|")[1:-1]]
-                if l.strip().startswith("|")
-                else [p.strip() for p in l.split("|")]
-            )
+            raw_parts = l.split("|")
+            if l.startswith("|"):
+                raw_parts = raw_parts[1:]
+            if l.rstrip().endswith("|"):
+                raw_parts = raw_parts[:-1]
+            parts = [_CAPTION_TAG_RE.sub("", p).strip() for p in raw_parts]
             if any(p for p in parts):
                 curr_chunk.append(parts)
 
@@ -174,7 +181,9 @@ def _process_pipe_lines(sub_lines: list[str]) -> list[tuple[str, ...]]:
                         prev.endswith("/")
                         or c.startswith("/")
                         or prev.endswith("-")
-                        or (_RE_SLASH_DIGIT.search(prev) and c.isdigit())
+                        or (
+                            _RE_SLASH_DIGIT.search(prev) and c.isdigit() and len(c) == 1
+                        )
                     ):
                         merged[idx] = prev + c
                     else:

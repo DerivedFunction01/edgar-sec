@@ -60,3 +60,30 @@ def test_extract_footnotes() -> None:
     fn_map = parse_footnotes(fns)
     assert "1" in fn_map
     assert "vest in three" in fn_map["1"]
+
+
+def test_caption_stripping_and_pipe_date_wrapping() -> None:
+    text = (
+        "<TABLE>\n"
+        "Table I - Non-Derivative Securities\n"
+        "<CAPTION>\n"
+        "Common Stock <CAPTION> | 05/15/2002 | P | 100 | 100 | D |\n"
+        "</TABLE>\n"
+        "<TABLE>\n"
+        "Table II - Derivative Securities\n"
+        "Option(4)    |21.25 | | | | | |1/2/9|1/2/0|Common|5,000| |5,000|D| |\n"
+        "             |      | | | | | |9    |8    |      |     | |     | | |\n"
+        "</TABLE>\n"
+    )
+    t1, t2, fns = extract_ascii_tables_and_footnotes(text, AsciiShape.PIPE_UNDERSCORE)
+    assert t1 is not None
+    r1 = parse_table_i_rows(t1)
+    assert len(r1) == 1
+    assert r1[0].security_title == "Common Stock"
+    assert "<CAPTION>" not in r1[0].security_title
+
+    assert t2 is not None
+    r2 = parse_table_ii_rows(t2)
+    assert len(r2) == 1
+    assert r2[0].exercisable_date == "1/2/99"
+    assert r2[0].expiration_date == "1/2/08"

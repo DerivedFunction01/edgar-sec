@@ -10,6 +10,7 @@ from edgar_sec.engine.forms.common.signatures import (
     clean_signature_name,
     extract_signature_block,
     extract_signature_candidate,
+    is_valid_signature_name,
     parse_conformed_signature,
     resolve_delegated_signer,
 )
@@ -68,3 +69,12 @@ def test_extract_signature_block():
     assert block is not None
     assert block.is_conformed is True
     assert len(block.signatories) >= 1
+
+
+def test_is_valid_signature_name():
+    """Verify acceptance of person names and rejection of boilerplate."""
+    assert is_valid_signature_name("John Doe") is True
+    assert is_valid_signature_name("Table I") is False
+    assert is_valid_signature_name("TABLE II") is False
+    assert is_valid_signature_name("Table 1") is False
+    assert is_valid_signature_name("Table 2") is False

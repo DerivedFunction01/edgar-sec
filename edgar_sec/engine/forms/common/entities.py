@@ -67,7 +67,12 @@ CLEAN_TEMPLATE_RE = re.compile(rf"\((?:{TEMPLATE_LABEL_ALT})\)", re.IGNORECASE)
 CITY_MATCH_RE = re.compile(r"(?:[,\n]|^)\s*([A-Za-z\s\.\-]+),?\s*$")
 NAME_MATCH_RE = re.compile(r"Reporting Person(?:\(s\))?\*?\s*(.+?)(?:\(Last\)|\n|$)")
 STREET_MATCH_RE = re.compile(r"(?:\(Middle\)\s*|\n)(.+?)(?:\(Street\)|\n)")
-TITLE_MATCH_RE = re.compile(r"Description\s*([^\n]+)", re.IGNORECASE)
+TITLE_LABEL_TERMS = (
+    r"Description\s*",
+    r"(?:(?:give\s+)?title\s+below|specify\s+below)\)?(?:[^\n]*\n\s*){1,2}",
+)
+TITLE_LABEL_ALT = build_alternation(TITLE_LABEL_TERMS, auto_escape=False)
+TITLE_MATCH_RE = re.compile(rf"(?:{TITLE_LABEL_ALT})([A-Za-z][^\n]+)", re.IGNORECASE)
 
 STREET_ANCHOR_ALT = build_alternation(STREET_ANCHOR_TERMS, auto_escape=True)
 STREET_ANCHOR_RE = re.compile(rf"\b(?:{STREET_ANCHOR_ALT})\b", re.IGNORECASE)

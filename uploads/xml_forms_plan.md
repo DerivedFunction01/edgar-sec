@@ -19,14 +19,14 @@ To handle both modern native XML and historical tabular HTML within a unified da
 
 Of the form specifications across repository manifests, forms requiring structured XML acquisition and rendering pipelines follow a common transition pattern:
 
-| Form Family                    | Description                      | Modern SEC XML Schema                      | Historical Format               | Required Pipeline Operation          | Status          |
-| ------------------------------ | -------------------------------- | ------------------------------------------ | ------------------------------- | ------------------------------------ | --------------- |
+| Form Family                    | Description                      | Modern SEC XML Schema                      | Historical Format               | Required Pipeline Operation          | Status             |
+| ------------------------------ | -------------------------------- | ------------------------------------------ | ------------------------------- | ------------------------------------ | ------------------ |
 | **Section 16 (Forms 3, 4, 5)** | Beneficial Ownership Disclosures | `<ownershipDocument>`                      | Tabular HTML / ASCII tables     | `AcquisitionOperation.RENDER_TO_XML` | Implemented (AASM) |
 | **Form 144**                   | Proposed Sale of Securities      | `<noticeOfProposedSaleOfSecurities>`       | Multi-tier HTML / ASCII tables  | `AcquisitionOperation.RENDER_TO_XML` | Implemented (AASM) |
-| **Form D**                     | Notice of Exempt Offering        | `<edgarSubmission>` / `<offeringData>`     | 16-item Tabular HTML notice     | `AcquisitionOperation.RENDER_TO_XML` | Planned         |
-| **Form 13F**                   | Institutional Holdings           | `<edgarSubmission>` / `<informationTable>` | Fixed-width ASCII / HTML tables | `AcquisitionOperation.RENDER_TO_XML` | Planned         |
-| **Schedule 13D/G**             | 5%+ Beneficial Ownership         | `<schedule13D>` / `<schedule13G>`          | Narrative HTML + Cover Matrix   | Hybrid (Matrix XML + Narrative TXT)  | Planned         |
-| **EX-107**                     | Filing Fee Tables                | `<fee_tables>` / Rule 107 XML              | Unstructured HTML fee tables    | `AcquisitionOperation.RENDER_TO_XML` | Planned         |
+| **Form D**                     | Notice of Exempt Offering        | `<edgarSubmission>` / `<offeringData>`     | 16-item Tabular HTML notice     | `AcquisitionOperation.RENDER_TO_XML` | Planned            |
+| **Form 13F**                   | Institutional Holdings           | `<edgarSubmission>` / `<informationTable>` | Fixed-width ASCII / HTML tables | `AcquisitionOperation.RENDER_TO_XML` | Planned            |
+| **Schedule 13D/G**             | 5%+ Beneficial Ownership         | `<schedule13D>` / `<schedule13G>`          | Narrative HTML + Cover Matrix   | Hybrid (Matrix XML + Narrative TXT)  | Planned            |
+| **EX-107**                     | Filing Fee Tables                | `<fee_tables>` / Rule 107 XML              | Unstructured HTML fee tables    | `AcquisitionOperation.RENDER_TO_XML` | Planned            |
 
 ---
 
@@ -348,3 +348,509 @@ _Missing-field counts always mix genuine source omissions with parser gaps; deve
 .venv/bin/python check.py tests/engine/forms/<form_family>/ tests/domain/forms/families/<form_family>/
 
 ```
+
+---
+
+## 7. Turnkey Form Implementation Template (Beginning-to-End Blueprint)
+
+When implementing a new XML form family from scratch (e.g. Schedule 13D/G, Form D, Form 13F, EX-107), follow this standardized blueprint. Replace `<form_family>` (e.g. `schedule13`) and `<FORM_NAME>` (e.g. `SCHEDULE_13`) throughout.
+
+### 7.1 Discovery Phase: Ground Truth Mining Script
+
+Create a temporary discovery script in `scratch/mine_<form_family>_xml_structure.py` to extract exact tag paths, namespaces, value patterns, and frequencies from canonical SEC XML fixtures before writing code:
+
+```python
+"""Discovery script to mine canonical XML schema structure and tag patterns."""
+
+from collections import Counter
+from pathlib import Path
+import xml.etree.ElementTree as ET
+
+FIXTURE_CASES = Path(".artifacts/document_acquisition/review-runs/<run_id>/cases")
+
+
+def main() -> None:
+    tag_counter = Counter()
+    sample_values: dict[str, list[str]] = {}
+
+    for xml_file in FIXTURE_CASES.glob("*/operations/raw.xml"):
+        try:
+            tree = ET.parse(xml_file)
+            root = tree.getroot()
+            for elem in root.iter():
+                tag = elem.tag
+                tag_counter[tag] += 1
+                if elem.text and elem.text.strip():
+                    sample_values.setdefault(tag, []).append(elem.text.strip())
+        except Exception as e:
+            print(f"Error parsing {xml_file}: {e}")
+
+    print("=== Discovered Tags & Frequencies ===")
+    for tag, count in tag_counter.most_common(50):
+        print(f"{tag}: {count}")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+### 7.2 Domain Layer Blueprint (`edgar_sec/domain/forms/families/<form_family>/`)
+
+#### File 1: `models.py`
+
+Slotted, immutable dataclasses defining the typed document hierarchy:
+
+```python
+"""Domain models for <form_family> filings."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True, slots=True)
+class <FormFamily>Header:
+    """Cover metadata and filing identification."""
+
+    filer_name: str | None
+    filer_cik: str | None
+    irs_number: str | None
+    file_number: str | None
+
+
+@dataclass(frozen=True, slots=True)
+class <FormFamily>ItemRow:
+    """Tabular or structured item disclosures."""
+
+    item_number: str
+    description: str | None
+    amount: float | None
+
+
+@dataclass(frozen=True, slots=True)
+class <FormFamily>Document:
+    """Root canonical representation of <form_family> submission."""
+
+    header: <FormFamily>Header
+    items: tuple[<FormFamily>ItemRow, ...]
+    unparsed_sections: tuple[str, ...]
+```
+
+#### File 2: `evidence.py`
+
+Lexical evidence packs for section and table classification:
+
+```python
+"""Lexical evidence packs for <form_family> document parsing."""
+
+from __future__ import annotations
+
+from edgar_sec.foundation.text.evidence import EvidenceLexicalPack
+
+<FORM_FAMILY>_HEADER_LEXICAL_PACK = EvidenceLexicalPack(
+    primary=(
+        "<primary term 1>",
+        "<primary term 2>",
+    ),
+    secondary=(
+        "<secondary term 1>",
+        "<secondary term 2>",
+    ),
+    veto=(
+        "<veto phrase 1>",
+    ),
+)
+```
+
+#### File 3: `processing.py`
+
+Filing profile registration:
+
+```python
+"""Processing profile definition for <form_family>."""
+
+from __future__ import annotations
+
+from edgar_sec.domain.forms.families.models import FormProcessingProfile
+from edgar_sec.domain.pipelines.document_acquisition.operations import (
+    AcquisitionOperation,
+)
+
+PROFILE_FORM_<FORM_FAMILY> = FormProcessingProfile(
+    family="<form_family>",
+    supported_operations=(AcquisitionOperation.RENDER_TO_XML,),
+    review_analyzer="edgar_sec.engine.forms.<form_family>.analysis",
+)
+```
+
+#### File 4: `reports.py`
+
+Typed case and summary diagnostic reports for offline evaluation:
+
+```python
+"""Report data models for <form_family> review evaluation."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True, slots=True)
+class <FormFamily>CaseReport:
+    """Semantic evaluation report for a single accession."""
+
+    accession_number: str
+    is_valid: bool
+    missing_fields: tuple[str, ...]
+    anomalies: tuple[str, ...]
+
+
+@dataclass(frozen=True, slots=True)
+class <FormFamily>SummaryReport:
+    """Aggregated report across the test fixture corpus."""
+
+    total_cases: int
+    field_scorecard: dict[str, float]
+    anomalies: tuple[str, ...]
+```
+
+### 7.3 Engine Layer Blueprint (`edgar_sec/engine/forms/<form_family>/`)
+
+#### File 1: `patterns.py`
+
+Precompiled regular expressions using `build_alternation`:
+
+```python
+"""Compiled regular expression patterns for <form_family> parsing."""
+
+from __future__ import annotations
+
+import re
+
+from edgar_sec.foundation.regex.builder import build_alternation
+
+_SECTION_TITLE_TERMS = (
+    r"<title variant a>",
+    r"<title variant b>",
+    r"<title variant c>",
+)
+_SECTION_TITLE_ALT = build_alternation(_SECTION_TITLE_TERMS, auto_escape=False)
+SECTION_TITLE_RE = re.compile(rf"(?i)^\s*(?:{_SECTION_TITLE_ALT})")
+```
+
+#### File 2: `sections.py`
+
+Table and section role classification:
+
+```python
+"""Section classification and grid extraction for <form_family>."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from enum import StrEnum
+
+from edgar_sec.engine.document.html.tree import parse_html
+from edgar_sec.engine.tables.ascii_html.converter import resolve_html_table_grid
+from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
+
+
+class SectionRole(StrEnum):
+    HEADER = "header"
+    COVER_PAGE = "cover_page"
+    TABLE_PRIMARY = "table_primary"
+    SIGNATURES = "signatures"
+    UNPARSED = "unparsed"
+
+
+@dataclass(frozen=True, slots=True)
+class ClassifiedSection:
+    role: SectionRole
+    table_index: int
+    resolved_grid: ResolvedGrid
+
+
+@dataclass(frozen=True, slots=True)
+class <FormFamily>Sections:
+    header: ClassifiedSection | None
+    primary_table: ClassifiedSection | None
+    signatures: ClassifiedSection | None
+    unparsed: tuple[ClassifiedSection, ...]
+
+
+def partition_<form_family>_tables(raw_html: str) -> <FormFamily>Sections:
+    """Partition HTML into classified structured sections."""
+    # Classify and resolve grids
+    ...
+```
+
+#### File 3: `metadata_parser.py`
+
+Cover box and metadata extraction:
+
+```python
+"""Metadata extraction for <form_family>."""
+
+from __future__ import annotations
+
+from edgar_sec.domain.forms.families.<form_family>.models import <FormFamily>Header
+from edgar_sec.engine.forms.<form_family>.sections import ClassifiedSection
+
+
+def parse_header_metadata(section: ClassifiedSection | None) -> <FormFamily>Header:
+    """Extract header fields from classified cover section."""
+    ...
+```
+
+#### File 4: `items.py` (or Tabular Items Parser (e.g. `securities.py`))
+
+Tabular data parsing using the Anchor Alignment State Machine (AASM):
+
+```python
+"""Tabular row extraction via schema alignment for <form_family>."""
+
+from __future__ import annotations
+
+from edgar_sec.domain.forms.families.<form_family>.models import <FormFamily>ItemRow
+from edgar_sec.engine.forms.common.alignment import (
+    CanonicalColumn,
+    TableSchema,
+    align_row_to_schema,
+)
+from edgar_sec.engine.forms.<form_family>.sections import ClassifiedSection
+
+_TABLE_SCHEMA = TableSchema(
+    columns=(
+        CanonicalColumn("item", is_anchor=True, validator=lambda x: bool(x)),
+        CanonicalColumn("description", is_anchor=False),
+        CanonicalColumn("amount", is_anchor=False),
+    )
+)
+
+
+def parse_primary_items(
+    section: ClassifiedSection | None,
+) -> tuple[<FormFamily>ItemRow, ...]:
+    """Parse table rows using canonical schema alignment."""
+    if not section or not section.resolved_grid:
+        return ()
+    rows: list[<FormFamily>ItemRow] = []
+    for raw_row in section.resolved_grid.rows:
+        aligned = align_row_to_schema(raw_row, _TABLE_SCHEMA)
+        if aligned:
+            # Construct row
+            ...
+    return tuple(rows)
+```
+
+#### File 5: `render_to_xml.py`
+
+Canonical XML synthesis and native pass-through:
+
+```python
+"""Canonical XML synthesis and pass-through for <form_family>."""
+
+from __future__ import annotations
+
+import re
+import xml.etree.ElementTree as ET
+
+from edgar_sec.engine.document.html.cleaner import (
+    strip_decorative_presentation_attributes,
+)
+from edgar_sec.engine.forms.<form_family>.metadata_parser import (
+    parse_header_metadata,
+)
+from edgar_sec.engine.forms.<form_family>.securities import parse_primary_items
+from edgar_sec.engine.forms.<form_family>.sections import (
+    partition_<form_family>_tables,
+)
+
+_XML_DECL_RE = re.compile(r"^\s*<\?xml\b", re.IGNORECASE)
+_ROOT_ENVELOPE_RE = re.compile(r"<\s*<rootTag>\b", re.IGNORECASE)
+
+
+def render_to_xml(raw_bytes: bytes) -> str:
+    """Render raw document bytes into canonical XML."""
+    text = raw_bytes.decode("utf-8", errors="replace")
+    if _XML_DECL_RE.search(text) or _ROOT_ENVELOPE_RE.search(text):
+        return text
+
+    sections = partition_<form_family>_tables(text)
+    header = parse_header_metadata(sections.header)
+    items = parse_primary_items(sections.primary_table)
+
+    root = ET.Element("<rootTag>")
+    # Synthesize XML nodes conforming to official schema
+    ...
+
+    # Mandatory unparsed sections diagnostic embedding
+    if sections.unparsed:
+        unp_root = ET.SubElement(root, "unparsedSections")
+        for u in sections.unparsed:
+            sec_el = ET.SubElement(unp_root, "unparsedSection")
+            sec_el.set("tableIndex", str(u.table_index))
+            sec_el.set("role", str(u.role))
+            sec_el.text = strip_decorative_presentation_attributes(u.raw_text)
+
+    return ET.tostring(root, encoding="utf-8").decode("utf-8")
+```
+
+#### File 6: `analysis.py`
+
+Semantic scorecard and anomaly analyzer:
+
+```python
+"""Semantic review analyzer for <form_family>."""
+
+from __future__ import annotations
+
+from pathlib import Path
+import xml.etree.ElementTree as ET
+
+from edgar_sec.domain.forms.families.<form_family>.reports import (
+    <FormFamily>CaseReport,
+    <FormFamily>SummaryReport,
+)
+
+
+def analyze_case(case_dir: Path) -> <FormFamily>CaseReport:
+    """Analyze a single case output XML."""
+    xml_path = case_dir / "operations" / "rendered.xml"
+    if not xml_path.exists():
+        return <FormFamily>CaseReport(
+            accession_number=case_dir.name,
+            is_valid=False,
+            missing_fields=("rendered.xml",),
+            anomalies=(),
+        )
+    ...
+
+
+def summarize_cases(
+    case_reports: list[<FormFamily>CaseReport],
+) -> <FormFamily>SummaryReport:
+    """Aggregate individual case reports into a summary scorecard."""
+    ...
+```
+
+### 7.4 System Wiring & Registration Checklist
+
+1. **`edgar_sec/domain/forms/common/aliases.py`**:
+   Add family aliases mapping submission type to canonical family string:
+   ```python
+   "<form_family>": ("<PRIMARY_TYPE>", "<AMENDMENT_TYPE>"),
+   ```
+2. **`edgar_sec/domain/forms/families/processing_profiles.py`**:
+   Import `PROFILE_FORM_<FORM_FAMILY>` and register:
+   ```python
+   ProcessingCatalogEntry(family="<form_family>", profile=PROFILE_FORM_<FORM_FAMILY>),
+   ```
+3. **`edgar_sec/engine/document_processing/capabilities.py`**:
+   Register capability in `DEFAULT_CAPABILITIES`:
+   ```python
+   ProcessingCapability(
+       handler_id="<form_family>_html_to_xml",
+       handler_version="1",
+       operation="render_to_xml",
+       input_facts="markup route primary html body",
+       output_kind=HandlerOutputKind.XML,
+   ),
+   ```
+4. **`edgar_sec/engine/document_processing/registry.py`**:
+   Register handler in `default_handler_registry()`:
+   ```python
+   registry.register(
+       "<form_family>_html_to_xml",
+       "1",
+       "render_to_xml",
+       HandlerOutputKind.XML,
+       _<form_family>_html_to_xml,
+       family="<form_family>",
+   )
+   ```
+
+---
+
+## 8. Concrete Worked Example: Schedule 13D/G Implementation Plan
+
+Schedule 13 filings (beneficial ownership disclosures exceeding 5%) provide the ideal model for implementing a new hybrid tabular/narrative form family from beginning to end.
+
+### 8.1 Structural Anatomy of Schedule 13D/G
+
+Schedule 13 filings combine:
+
+1. **Cover Page Table / Matrix (Items 1–14)**:
+   - CUSIP Number & SEC File Number.
+   - Names of Reporting Persons (Box 1).
+   - Checkbox options (Box 2: Group disclosure, Box 3: SEC use only, Box 4: Source of funds).
+   - Citizenship / Place of Organization (Box 6).
+   - Number of Shares Beneficially Owned (Sole Voting Box 7, Shared Voting Box 8, Sole Dispositive Box 9, Shared Dispositive Box 10).
+   - Aggregate Amount Beneficially Owned (Box 11) & Checkbox for Exclusion (Box 12).
+   - Percent of Class Represented (Box 13).
+   - Type of Reporting Person (Box 14: `IN`, `IV`, `IA`, `CO`, `BK`, `BD`, etc.).
+2. **Narrative Disclosures (Items 1–7)**:
+   - Item 1: Security and Issuer.
+   - Item 2: Identity and Background.
+   - Item 3: Source and Amount of Funds or Other Consideration.
+   - Item 4: Purpose of Transaction.
+   - Item 5: Interest in Securities of the Issuer.
+   - Item 6: Contracts, Arrangements, Understandings or Relationships.
+   - Item 7: Material to be Filed as Exhibits.
+3. **Signatures Block**:
+   - Dated certification and signatory attestation lines.
+
+### 8.2 Canonical XML Target Representation (`<schedule13D>`)
+
+Modern electronic Schedule 13 filings emit structured XML:
+
+```xml
+<schedule13D xmlns="http://www.sec.gov/edgar/schedule13D">
+  <coverPage>
+    <issuerInfo>
+      <issuerName>ACME CORP</issuerName>
+      <cusipNumber>123456789</cusipNumber>
+    </issuerInfo>
+    <reportingPerson>
+      <name>Jane Doe</name>
+      <citizenship>US</citizenship>
+      <sharesOwned>
+        <soleVotingPower>1500000</soleVotingPower>
+        <sharedVotingPower>0</sharedVotingPower>
+        <soleDispositivePower>1500000</soleDispositivePower>
+        <sharedDispositivePower>0</sharedDispositivePower>
+        <aggregateAmount>1500000</aggregateAmount>
+        <percentOfClass>6.5</percentOfClass>
+      </sharesOwned>
+      <typeOfReportingPerson>IN</typeOfReportingPerson>
+    </reportingPerson>
+  </coverPage>
+  <narrativeItems>
+    <item1>...</item1>
+    <item2>...</item2>
+  </narrativeItems>
+  <signatureBlock>
+    <signature>/s/ Jane Doe</signature>
+    <date>2023-05-15</date>
+  </signatureBlock>
+</schedule13D>
+```
+
+### 8.3 Step-by-Step Schedule 13 Execution Sequence
+
+1. **Mine Raw XML**:
+   Run `scratch/mine_schedule13_xml_structure.py` over sample XML filings to discover schema tags, namespaces, and enumerated reporting person codes (`IN`, `CO`, `PN`, etc.).
+2. **Define Domain Models**:
+   Create `domain/forms/families/schedule13/models.py` with `Schedule13CoverMatrix`, `BeneficialOwnershipShares`, `NarrativeDisclosures`, and `Schedule13Document`.
+3. **Build Classification Patterns**:
+   Create `engine/forms/schedule13/patterns.py` matching CUSIP numbers (`\b[0-9A-Z]{9}\b`), Item 1–14 matrix boxes, and Item 1–7 narrative section headers.
+4. **Implement Section Partitioning**:
+   In `engine/forms/schedule13/sections.py`, separate cover matrix tables from body narrative sections.
+5. **Implement Cover Page & Matrix Parser**:
+   In `engine/forms/schedule13/cover_parser.py`, map Boxes 1–14 using coordinate cell lookup, checkbox resolution, and numerical share parsing.
+6. **Implement Narrative Item Extraction**:
+   In `engine/forms/schedule13/narrative_parser.py`, segment text bounded by Item 1–7 headers.
+7. **Synthesize Canonical XML**:
+   In `engine/forms/schedule13/render_to_xml.py`, assemble `<schedule13D>` / `<schedule13G>` XML with unparsed section retention.
+8. **Register and Verify**:
+   Add aliases in `aliases.py`, register catalog entry, capabilities, and handlers, add mirrored unit tests, and pass `check.py`.
