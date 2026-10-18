@@ -362,6 +362,13 @@ DISALLOWED_SIGNATURE_NAME_WORDS: frozenset[str] = frozenset(
         "corporation",
         "company",
         "llc",
+        "gross",
+        "proceeds",
+        "market",
+        "value",
+        "aggregate",
+        "approximate",
+        "approx",
     )
 )
 
@@ -373,6 +380,10 @@ SIG_DELIMITER_TERMS = (
     r"\s+poa\b",
     r"\s+attorney-in-fact\b",
     r"\s+attorney\s+in\s+fact\b",
+    r"\s+atty\s+in\s+fact\b",
+    r"\s+atty\b",
+    r"\s*[\u2013\u2014]\s*",
+    r"\s*/\s*",
     r"\n",
     r"\t",
     r"\s{2,}",
@@ -412,8 +423,12 @@ def extract_clean_signatory_name(raw_text: str) -> str | None:
         s = before if before else after
     s = SIG_TRAILING_PAREN_NUM_RE.sub("", s.strip())
     parts = SIG_DELIMITER_SPLIT_RE.split(s)
-    cand = parts[0].strip(" ,.-*()_") if parts else s.strip(" ,.-*()_")
-    if len(parts) > 1 and parts[1].strip(" ,.-*()_").lower() in (
+    cand = (
+        parts[0].strip(" ,.-*()_\u2013\u2014/")
+        if parts
+        else s.strip(" ,.-*()_\u2013\u2014/")
+    )
+    if len(parts) > 1 and parts[1].strip(" ,.-*()_\u2013\u2014/").lower() in (
         "jr",
         "jr.",
         "sr",
@@ -423,14 +438,14 @@ def extract_clean_signatory_name(raw_text: str) -> str | None:
         "iv",
         "v",
     ):
-        cand = f"{cand}, {parts[1].strip(' ,.-*()_')}"
-    cand = SIG_TRAILING_PAREN_NUM_RE.sub("", cand).strip(" ,.-*()_")
-    cand = NUMERIC_DATE_RE.sub("", cand).strip(" ,.-*()_")
-    cand = RE_FULL_DATE.sub("", cand).strip(" ,.-*()_")
+        cand = f"{cand}, {parts[1].strip(' ,.-*()_\u2013\u2014/')}"
+    cand = SIG_TRAILING_PAREN_NUM_RE.sub("", cand).strip(" ,.-*()_\u2013\u2014/")
+    cand = NUMERIC_DATE_RE.sub("", cand).strip(" ,.-*()_\u2013\u2014/")
+    cand = RE_FULL_DATE.sub("", cand).strip(" ,.-*()_\u2013\u2014/")
     words = cand.split()
     if not (2 <= len(words) <= 6):
         return None
-    lower_words = [w.lower().strip(".,()'-*") for w in words]
+    lower_words = [w.lower().strip(".,()'-*\u2013\u2014/") for w in words]
     if any(w in DISALLOWED_SIGNATURE_NAME_WORDS for w in lower_words):
         return None
     if any(MONTH_RE.fullmatch(w) for w in lower_words):

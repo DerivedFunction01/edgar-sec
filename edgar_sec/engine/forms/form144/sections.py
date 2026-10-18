@@ -37,7 +37,11 @@ from edgar_sec.engine.tables.ascii_html.converter import resolve_html_table_grid
 from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.automaton import tokenize
-from edgar_sec.foundation.text.dates import parse_date
+from edgar_sec.foundation.text.dates import (
+    NUMERIC_DATE_RE,
+    RE_FULL_DATE,
+    parse_date,
+)
 from edgar_sec.foundation.text.evidence import (
     EvidenceContext,
     compile_evidence_pack,
@@ -271,9 +275,54 @@ def _merge_sections(
     )
 
 
+def _is_box3_data_row(row: tuple[str, ...]) -> bool:
+    if len(row) < 5:
+        return False
+    row_text = " ".join(row).lower()
+    has_market = (
+        "nyse" in row_text
+        or "nasdaq" in row_text
+        or "otc" in row_text
+        or "stock exchange" in row_text
+        or bool(EXCHANGE_RE.search(row_text))
+    )
+    has_date = bool(
+        parse_date(row_text)
+        or NUMERIC_DATE_RE.search(row_text)
+        or RE_FULL_DATE.search(row_text)
+    )
+    num_count = sum(bool(NUMERIC_TOKEN_RE.search(c)) for c in row if c.strip())
+    return has_market and has_date and num_count >= 2
+
+
 def _is_table_ii_continuation(
     candidate: ResolvedGrid, existing: ClassifiedSection
 ) -> bool:
+    rows = [
+        row
+        for row in candidate.rows
+        if any(c.strip() for c in row)
+        and not (
+            row[0].strip().lower().startswith("remarks")
+            and not any(c.strip() for c in row[1:])
+        )
+    ]
+    if not rows:
+        return False
+    if len(rows) == 1 and all(
+        cell.strip().lower() in {"n/a", "none", "no reported"}
+        for cell in rows[0]
+        if cell.strip()
+    ):
+        return True
+    first_row_text = " ".join(rows[0]).lower()
+    if any(
+        k in first_row_text for k in ("trade date", "date of sale", "sale date")
+    ) and any(
+        k in first_row_text
+        for k in ("shares", "units", "amount", "price", "principal", "proceeds")
+    ):
+        return True
     header = next(
         (
             row
@@ -284,22 +333,21 @@ def _is_table_ii_continuation(
         (),
     )
     width = len(header)
-    rows = [row for row in candidate.rows if any(c.strip() for c in row)]
-    if len(rows) == 1 and all(
-        cell.strip().lower() in {"n/a", "none", "no reported"}
-        for cell in rows[0]
-        if cell.strip()
-    ):
-        return True
     if width < 5:
         return False
+    if any(
+        all(c.strip().lower() in {"none", "n/a", ""} for c in row[1:])
+        for row in rows
+        if len(row) >= 4
+    ):
+        return True
     rows = [row for row in rows if len(row) >= width]
     matching_rows = sum(
         1
         for row in rows
-        if parse_date(row[2])
-        and NUMERIC_TOKEN_RE.search(row[3])
-        and NUMERIC_TOKEN_RE.search(row[4])
+        if (parse_date(row[2]) or bool(NUMERIC_DATE_RE.search(row[2])))
+        and any(c.isdigit() for c in row[3])
+        and any(c.isdigit() for c in row[4])
     )
     return matching_rows >= 1 and matching_rows * 2 >= len(rows)
 
@@ -408,12 +456,40 @@ def partition_form144_tables(html_text: str) -> Form144Sections:
             or table_ii is not None
             or proposed_sale_box_3 is not None
         )
+        pre_grid = resolve_html_table_grid(tbl)
+        if (
+            proposed_sale_box_3 is not None
+            and pre_grid.rows
+            and _is_box3_data_row(pre_grid.rows[0])
+        ):
+            proposed_sale_box_3 = _merge_sections(
+                proposed_sale_box_3,
+                ClassifiedSection(
+                    role=SectionRole.PROPOSED_SALE_BOX_3,
+                    table_index=idx,
+                    raw_node=tbl,
+                    resolved_grid=ResolvedGrid(
+                        rows=(pre_grid.rows[0],),
+                        column_alignments=(),
+                        column_widths=(),
+                        confidence=1.0,
+                    ),
+                ),
+            )
+            pre_grid = ResolvedGrid(
+                rows=pre_grid.rows[1:],
+                column_alignments=pre_grid.column_alignments,
+                column_widths=pre_grid.column_widths,
+                confidence=pre_grid.confidence,
+            )
+            if not pre_grid.rows:
+                continue
+            lower = " ".join(
+                " ".join(" ".join(r) for r in pre_grid.rows).lower().split()
+            )
+
         role = _classify_table(lower, past_tables=past_tables)
-        box3_grid = (
-            resolve_html_table_grid(tbl)
-            if role == SectionRole.PROPOSED_SALE_BOX_3
-            else None
-        )
+        box3_grid = pre_grid if role == SectionRole.PROPOSED_SALE_BOX_3 else None
         if _is_instruction_table(lower, tbl):
             if role == SectionRole.PROPOSED_SALE_BOX_3:
                 if box3_grid is not None and not _has_box3_value_row(box3_grid):
@@ -431,21 +507,28 @@ def partition_form144_tables(html_text: str) -> Form144Sections:
         grid = (
             box3_grid
             if role == SectionRole.PROPOSED_SALE_BOX_3 and box3_grid is not None
-            else resolve_html_table_grid(tbl)
+            else pre_grid
             if role in _DATA_ROLES
             else _EMPTY_GRID
         )
         if role == SectionRole.UNPARSED:
-            candidate_grid = resolve_html_table_grid(tbl)
+            candidate_grid = pre_grid
             if table_ii is not None and (
                 is_single_cell_empty_table(candidate_grid.rows)
                 or _is_table_ii_continuation(candidate_grid, table_ii)
             ):
                 role = SectionRole.TABLE_II
                 grid = candidate_grid
-            elif signatures and is_trailing_signature_table(
-                lower, len(candidate_grid.rows)
-            ):
+            elif (
+                signatures
+                or any(
+                    any(
+                        m in tables[next_idx].text().lower()
+                        for m in ("signature", "date of notice")
+                    )
+                    for next_idx in range(idx + 1, min(len(tables), idx + 3))
+                )
+            ) and is_trailing_signature_table(lower, len(candidate_grid.rows)):
                 role = SectionRole.SIGNATURES
                 grid = candidate_grid
             elif "date of notice" in lower and (
@@ -493,6 +576,40 @@ def partition_form144_tables(html_text: str) -> Form144Sections:
             if table_i is None:
                 table_i = section
         elif role == SectionRole.TABLE_II:
+            remarks_row = next(
+                (r for r in grid.rows if r[0].strip().lower().startswith("remarks")),
+                None,
+            )
+            if remarks_row:
+                t2_rows = tuple(
+                    r
+                    for r in grid.rows
+                    if not r[0].strip().lower().startswith("remarks")
+                )
+                grid = ResolvedGrid(
+                    rows=t2_rows,
+                    column_alignments=grid.column_alignments,
+                    column_widths=grid.column_widths,
+                    confidence=grid.confidence,
+                )
+                section = ClassifiedSection(
+                    role=role, table_index=idx, raw_node=tbl, resolved_grid=grid
+                )
+                rem_text = " ".join(c.strip() for c in remarks_row if c.strip())
+                if len(rem_text) > len("remarks:"):
+                    remarks.append(
+                        ClassifiedSection(
+                            role=SectionRole.REMARKS,
+                            table_index=idx,
+                            raw_node=tbl,
+                            resolved_grid=ResolvedGrid(
+                                rows=(remarks_row,),
+                                column_alignments=(),
+                                column_widths=(),
+                                confidence=1.0,
+                            ),
+                        )
+                    )
             if table_ii is None:
                 table_ii = section
             else:

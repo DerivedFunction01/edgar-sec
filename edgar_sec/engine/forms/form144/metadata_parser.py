@@ -86,11 +86,23 @@ def parse_signatures(
                 notice_date = signature_block.signatories[0].date
 
     if not conformed_name and full_text:
-        for line in full_text[-3000:].splitlines():
-            cand = extract_clean_signatory_name(line)
-            if cand:
-                conformed_name = cand
-                break
+        tail_lines = [
+            line.strip()
+            for line in parse_html(full_text[-4000:]).text().splitlines()
+            if line.strip()
+        ]
+        for line in reversed(tail_lines):
+            if any(m in line.lower() for m in ("/s/", "-s-", "signature", "by:")):
+                cand = extract_clean_signatory_name(line)
+                if cand:
+                    conformed_name = cand
+                    break
+        if not conformed_name:
+            for line in reversed(tail_lines):
+                cand = extract_clean_signatory_name(line)
+                if cand:
+                    conformed_name = cand
+                    break
 
     if not notice_date:
         notice_match = NOTICE_DATE_LABEL_RE.search(combined)

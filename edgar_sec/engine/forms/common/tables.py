@@ -269,7 +269,12 @@ def is_single_cell_empty_table(
     rows: tuple[tuple[str, ...], ...] | list[tuple[str, ...]],
 ) -> bool:
     """Detect whether a table contains only empty / negative placeholder entries."""
-    clean_cells = [cell.strip().lower() for row in rows for cell in row if cell.strip()]
+    clean_cells = [
+        cell.strip().lower()
+        for row in rows
+        for cell in row
+        if cell.strip() and not cell.strip().lower().startswith("remarks")
+    ]
     return bool(clean_cells) and all(
         c in _EMPTY_CONTINUATION_WORDS for c in clean_cells
     )
