@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from edgar_sec.foundation.hashing import is_sha256_hex_digest
 from edgar_sec.pipelines.document_acquisition.models import (
     AcquisitionAttempt,
     TargetSlotResolution,
@@ -67,10 +68,7 @@ def _resolution_from_row(row: tuple[object, ...]) -> TargetSlotResolution:
 
     def digest(value: object, name: str, *, optional: bool = False) -> str | None:
         result = text(value, name, optional=optional)
-        if result is not None and (
-            len(result) != 64
-            or any(character not in "0123456789abcdef" for character in result)
-        ):
+        if result is not None and not is_sha256_hex_digest(result):
             raise ValueError(f"invalid persisted resolution field: {name}")
         return result
 

@@ -13,7 +13,7 @@ from edgar_sec.domain.filing_catalog.schemas import (
     TARGET_SCHEMA,
 )
 from edgar_sec.domain.plan.discovery import read_plan_envelope
-from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.foundation.serialization import canonical_hash
 from edgar_sec.infra.storage.duckdb import connect
@@ -29,7 +29,6 @@ from .paths import (
     validate_catalog_plan_id,
 )
 
-_DIGEST_RE = re.compile(r"^[0-9a-f]{64}$")
 _ACCESSION_RE = re.compile(r"^[0-9]{18}$")
 _DEFAULT_BATCH_SIZE = 2_048
 _MAX_BATCH_SIZE = 65_536
@@ -185,7 +184,7 @@ def _manifest_parts(root: Path, manifest: dict[str, object]) -> tuple[CatalogPar
             or isinstance(byte_size, bool)
             or byte_size < 0
             or not isinstance(digest, str)
-            or not _DIGEST_RE.fullmatch(digest)
+            or not is_sha256_hex_digest(digest)
         ):
             raise CatalogScopeError(
                 "catalog target part has invalid path, form, row_count, byte_size, or sha256"

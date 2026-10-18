@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import os
-import re
 import shutil
 import tempfile
 from collections.abc import Sequence
@@ -15,7 +14,7 @@ from typing import Any, Literal
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.foundation.runtime.settings.parquet import (
@@ -40,7 +39,6 @@ _NAME_COLUMNS = {
     "company_name",
 }
 _INGEST_SCHEMA_VERSION = "1.0.0"
-_SHA256_HEX_RE = re.compile(r"[0-9a-f]{64}")
 _CANONICAL_SCHEMA = pa.schema(
     [
         pa.field("ordinal", pa.int64()),
@@ -249,10 +247,7 @@ def _cohort_id(roster_id: str, origin_kind: str, origin_details: dict[str, Any])
     identity = roster_id
     if origin_kind == "official_source":
         snapshot_id = origin_details.get("source_snapshot_id")
-        if (
-            not isinstance(snapshot_id, str)
-            or _SHA256_HEX_RE.fullmatch(snapshot_id) is None
-        ):
+        if not is_sha256_hex_digest(snapshot_id):
             raise ValueError(
                 "official source requires a lowercase SHA-256 source_snapshot_id"
             )

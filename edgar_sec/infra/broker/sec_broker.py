@@ -20,6 +20,7 @@ from urllib.parse import unquote, urlsplit
 
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.domain.sec_urls import validate_archive_url
+from edgar_sec.foundation.hashing import is_sha256_hex_digest
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.infra.sec_http.errors import (
@@ -341,9 +342,7 @@ class SecBroker:
                 status_code = self._field(streamed, "status_code")
                 final_url = self._field(streamed, "final_url")
                 if (
-                    not isinstance(digest, str)
-                    or len(digest) != 64
-                    or any(char not in "0123456789abcdef" for char in digest)
+                    not is_sha256_hex_digest(digest)
                     or not isinstance(size, int)
                     or isinstance(size, bool)
                     or size <= 0

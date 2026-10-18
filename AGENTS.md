@@ -153,6 +153,7 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 - `prose-length`: **Fails the gate** on a docstring or comment block over its cap. Enforces the
   "Code Comments and Docstrings" caps below, with tighter caps for tests.
 - `regex-alternations`: Bans hand-crafted 3+ branch alternation literals, so `foundation.regex.builder` is used.
+- `sha256-validation`: Bans duplicate SHA-256 string validation (regex, length/all, or letters in a set) outside `foundation.hashing.is_sha256_hex_digest`; SQL validation is not scanned.
 - `legacy-shims`: Bans backward-compatibility aliases and transitional shims (enforces §1.1).
 - `json-io`: Bans redundant JSON helper definitions and non-atomic JSON writes.
 - `date-patterns`: Bans private month tables and hand-crafted date patterns.

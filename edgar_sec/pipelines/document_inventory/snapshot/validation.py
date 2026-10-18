@@ -4,13 +4,12 @@ from __future__ import annotations
 
 import hashlib
 import json
-import re
 from pathlib import Path
 
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.runtime.paths import part_file_re
 from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
 
@@ -33,7 +32,6 @@ from edgar_sec.domain.document_inventory.schemas import (
     ENTRY_SCHEMA_VERSION,
 )
 
-_SHA256_HEX_RE = re.compile(r"[0-9a-f]{64}")
 _RELATIONS = {spec.name: spec.schema for spec in INVENTORY_RELATIONS}
 _RELATION_PKS = {spec.name: spec.primary_key for spec in INVENTORY_RELATIONS}
 _RELATION_ENTITY_KEYS = {
@@ -90,7 +88,7 @@ def _validate_parquet(
         or isinstance(row_count, bool)
         or row_count < 0
         or not isinstance(digest, str)
-        or _SHA256_HEX_RE.fullmatch(digest) is None
+        or not is_sha256_hex_digest(digest)
         or (
             row_groups is not None
             and (

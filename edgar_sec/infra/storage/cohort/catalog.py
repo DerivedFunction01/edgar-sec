@@ -13,7 +13,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Iterator
 
-from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.serialization import canonical_json
 
 from .models import CohortRecord, FamilyIndexRecord
@@ -23,7 +23,6 @@ from .paths import (
 )
 
 MANIFEST_SCHEMA_VERSION = "2.0.0"
-_HEX_SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 _FAMILY_INDEX_ID_RE = re.compile(r"^[a-f0-9]{32}$")
 _HEX_PREFIX_RE = re.compile(r"[0-9a-fA-F]+")
 
@@ -204,15 +203,13 @@ class CohortCatalog:
         pinned: bool = False,
         tags: Sequence[str] = (),
     ) -> CohortRecord:
-        if not _HEX_SHA256_RE.fullmatch(roster_id):
+        if not is_sha256_hex_digest(roster_id):
             raise ValueError("roster_id must be a lowercase SHA-256 digest")
         source_details = origin_details or {}
         identity_digest = roster_id
         if origin_kind == "official_source":
             identity_digest = source_details.get("source_snapshot_id", "")
-            if not isinstance(identity_digest, str) or not _HEX_SHA256_RE.fullmatch(
-                identity_digest
-            ):
+            if not is_sha256_hex_digest(identity_digest):
                 raise ValueError(
                     "official source cohorts require a SHA-256 source_snapshot_id"
                 )
@@ -220,7 +217,7 @@ class CohortCatalog:
             raise ValueError(
                 "cohort_id must be c- followed by the identity digest's first 16 hex digits"
             )
-        if not _HEX_SHA256_RE.fullmatch(dataset_sha256):
+        if not is_sha256_hex_digest(dataset_sha256):
             raise ValueError("dataset_sha256 must be a lowercase SHA-256 digest")
         if row_count < 0 or distinct_cik_count < 0 or distinct_cik_count > row_count:
             raise ValueError("cohort row counts are inconsistent")
@@ -330,13 +327,9 @@ class CohortCatalog:
             raise ValueError(
                 "family_index_id must be 32 lowercase hexadecimal characters"
             )
-        if not isinstance(rules_fingerprint, str) or not _HEX_SHA256_RE.fullmatch(
-            rules_fingerprint
-        ):
+        if not is_sha256_hex_digest(rules_fingerprint):
             raise ValueError("rules_fingerprint must be a lowercase SHA-256 digest")
-        if not isinstance(dataset_sha256, str) or not _HEX_SHA256_RE.fullmatch(
-            dataset_sha256
-        ):
+        if not is_sha256_hex_digest(dataset_sha256):
             raise ValueError("dataset_sha256 must be a lowercase SHA-256 digest")
 
         dataset_file = self.paths.family_index_file(family_index_id)
