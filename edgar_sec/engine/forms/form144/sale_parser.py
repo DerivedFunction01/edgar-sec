@@ -129,7 +129,8 @@ def _extract_leading_number(text: str) -> tuple[float | int | None, bool]:
 
 
 def _is_currency_cell(s: str) -> bool:
-    return any(c in s for c in ALL_CURRENCY_SYMBOLS)
+    num, is_curr = _extract_leading_number(s)
+    return is_curr and num is not None
 
 
 def _is_date_cell(s: str) -> bool:

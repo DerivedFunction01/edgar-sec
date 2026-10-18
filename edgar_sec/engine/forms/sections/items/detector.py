@@ -24,6 +24,8 @@ _MIN_PSEUDO_TOC_CLUSTER_SIZE = 3
 
 _RE_NON_PROSE = re.compile(r"^(?:page\s+)?\d+$|^[\.\-\s|+=]+$", re.IGNORECASE)
 
+_RE_SUBSTANTIVE_PROSE = re.compile(r"[a-zA-Z]{3,}")
+
 
 def _has_substantive_prose_between(
     lines: list[str], start_line: int, end_line: int
@@ -33,7 +35,7 @@ def _has_substantive_prose_between(
         stripped = lines[line_idx].strip()
         if not stripped or _RE_NON_PROSE.match(stripped):
             continue
-        if re.search(r"[a-zA-Z]{3,}", stripped):
+        if _RE_SUBSTANTIVE_PROSE.search(stripped):
             return True
     return False
 

@@ -40,6 +40,7 @@ _NAME_COLUMNS = {
     "company_name",
 }
 _INGEST_SCHEMA_VERSION = "1.0.0"
+_SHA256_HEX_RE = re.compile(r"[0-9a-f]{64}")
 _CANONICAL_SCHEMA = pa.schema(
     [
         pa.field("ordinal", pa.int64()),
@@ -250,7 +251,7 @@ def _cohort_id(roster_id: str, origin_kind: str, origin_details: dict[str, Any])
         snapshot_id = origin_details.get("source_snapshot_id")
         if (
             not isinstance(snapshot_id, str)
-            or re.fullmatch(r"[0-9a-f]{64}", snapshot_id) is None
+            or _SHA256_HEX_RE.fullmatch(snapshot_id) is None
         ):
             raise ValueError(
                 "official source requires a lowercase SHA-256 source_snapshot_id"

@@ -25,6 +25,8 @@ _RE_NOTE_NUMERIC = re.compile(
     r"^\s*(?:[\|+•\t-]\s*)?(\d{1,2})\.\s+([A-Z][A-Za-z0-9\s,&'-]+)$"
 )
 
+_RE_DIGIT_TOKEN = re.compile(r"\b\d+\b")
+
 
 def extract_note_candidates(
     lines: list[str],
@@ -49,7 +51,7 @@ def extract_note_candidates(
         if grouped_match:
             raw_ids = grouped_match.group(0)
             raw_title = stripped[grouped_match.end() :].strip()
-            note_ids = tuple(re.findall(r"\b\d+\b", raw_ids))
+            note_ids = tuple(_RE_DIGIT_TOKEN.findall(raw_ids))
             candidates.append(
                 SectionCandidate(
                     line_number=line_no,

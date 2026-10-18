@@ -76,6 +76,8 @@ _ARCHIVE_PATH_RE = re.compile(
     r"(?P<accession>\d{10,18}?)/(?P<document_path>.+)$"
 )
 
+_SCHEME_RE = re.compile(r"[a-z][a-z0-9+.-]*")
+
 
 def normalize_accession(accession: str) -> str | None:
     """Return the unhyphenated accession, or None when it is not well formed.
@@ -121,7 +123,7 @@ class ArchiveUrlPolicy:
         hosts = frozenset(item.casefold() for item in self.allowed_hosts)
         if not schemes or not hosts or any(not item for item in (*schemes, *hosts)):
             raise ValueError("archive URL policy needs schemes and hosts")
-        if any(not re.fullmatch(r"[a-z][a-z0-9+.-]*", item) for item in schemes):
+        if any(_SCHEME_RE.fullmatch(item) is None for item in schemes):
             raise ValueError("archive URL policy contains an invalid scheme")
         if any("/" in item or ":" in item or "@" in item for item in hosts):
             raise ValueError("archive URL policy contains an invalid host")

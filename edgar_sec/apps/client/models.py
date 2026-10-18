@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+
 from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Iterator
@@ -24,6 +26,9 @@ from edgar_sec.apps.client.tables import (
     build_linkbases_table,
     build_payload_table,
 )
+
+
+_CIK_URL_RE = re.compile(r"/data/(\d+)/")
 
 
 @dataclass(frozen=True, slots=True)
@@ -526,7 +531,6 @@ class FilingsResult:
             except Exception:
                 pass
 
-        import re
         from edgar_sec.engine.forms.render import render_filing
 
         with connect() as con:
@@ -562,9 +566,7 @@ class FilingsResult:
                             if matches:
                                 storage_path = matches[0]
 
-                    cik_match = (
-                        re.search(r"/data/(\d+)/", target_url) if target_url else None
-                    )
+                    cik_match = _CIK_URL_RE.search(target_url) if target_url else None
                     cik_inst = (
                         Cik.from_raw(cik_match.group(1))
                         if cik_match

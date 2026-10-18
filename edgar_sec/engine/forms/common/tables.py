@@ -99,7 +99,7 @@ def extract_labeled_field(
     *,
     excluded: tuple[str, ...] = (),
     lookahead_cols: int = 1,
-    lookdown_rows: int = 1,
+    lookdown_rows: int = 3,
 ) -> str | None:
     """Resolve field value from 2D coordinates: inline tail, right cell, or row below."""
     for row_idx, row in enumerate(grid.rows):
@@ -142,9 +142,11 @@ def extract_labeled_field(
                     val = clean_field_candidate(row[col_idx + 1], excluded)
                     if val and not any(lbl in val.lower() for lbl in labels):
                         return val
-                if lookdown_rows >= 1 and row_idx + 1 < len(grid.rows):
-                    target_row = grid.rows[row_idx + 1]
-                    if target_row:
+                if lookdown_rows >= 1:
+                    for d in range(1, min(lookdown_rows + 1, len(grid.rows) - row_idx)):
+                        target_row = grid.rows[row_idx + d]
+                        if not any(c.strip() for c in target_row):
+                            continue
                         prop_idx = min(
                             len(target_row) - 1,
                             max(
@@ -253,6 +255,26 @@ def address_from_inline_cells(
     return fields.get("street"), fields.get("city"), state, zip_code
 
 
+_EMPTY_CONTINUATION_WORDS: frozenset[str] = frozenset(
+    {"none", "n/a", "no reported", "not applicable", "nil", "0"}
+)
+
+
+def is_trailing_signature_table(text: str, row_count: int) -> bool:
+    """Classify whether a short trailing table represents a signature continuation."""
+    return len(text.strip()) < 100 and row_count <= 2
+
+
+def is_single_cell_empty_table(
+    rows: tuple[tuple[str, ...], ...] | list[tuple[str, ...]],
+) -> bool:
+    """Detect whether a table contains only empty / negative placeholder entries."""
+    clean_cells = [cell.strip().lower() for row in rows for cell in row if cell.strip()]
+    return bool(clean_cells) and all(
+        c in _EMPTY_CONTINUATION_WORDS for c in clean_cells
+    )
+
+
 __all__ = [
     "GridPartition",
     "address_from_column_headers",
@@ -260,6 +282,8 @@ __all__ = [
     "clean_field_candidate",
     "extract_labeled_field",
     "is_instruction_row",
+    "is_single_cell_empty_table",
+    "is_trailing_signature_table",
     "parse_address_parts",
     "partition_grid_rows",
 ]

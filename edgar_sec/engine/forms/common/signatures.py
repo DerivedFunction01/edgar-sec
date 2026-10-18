@@ -379,16 +379,30 @@ SIG_DELIMITER_TERMS = (
 )
 SIG_DELIMITER_ALT = build_alternation(SIG_DELIMITER_TERMS, auto_escape=False)
 SIG_DELIMITER_SPLIT_RE = re.compile(rf"(?i)(?:{SIG_DELIMITER_ALT})")
-SIG_LABEL_RE = re.compile(r"(?i)\*{0,2}\s*signature\s+of\s+reporting\s+person")
+SIG_LABEL_TERMS = (
+    r"\*{0,2}\s*signature\s+of\s+reporting\s+person",
+    r"\(?\s*signature\s*\)?",
+    r"\(?\s*signed\s*\)?",
+)
+SIG_LABEL_ALT = build_alternation(SIG_LABEL_TERMS, auto_escape=False)
+SIG_LABEL_RE = re.compile(rf"(?i){SIG_LABEL_ALT}")
 TITLE_CASE_WORD_RE = re.compile(r"^[A-Z][a-zA-Z’‘'\.\-]*$")
 ALL_CAPS_WORD_RE = re.compile(r"^[A-Z][A-Z\.\-]*$")
+SIG_TRAILING_PAREN_RE = re.compile(r"\s*\([^\)]+\)$")
+SIG_SEGMENT_SPLIT_RE = re.compile(r"\s+(?:&|and)\s+")
 
 
 def extract_clean_signatory_name(raw_text: str) -> str | None:
     """Extract and validate clean Title Cased signatory name from raw cell text."""
     if not raw_text:
         return None
-    s = SIG_BY_PREFIX_RE.sub("", raw_text.strip())
+    s = SIG_TRAILING_PAREN_RE.sub("", raw_text.strip())
+    if " & " in s or " and " in s:
+        segments = SIG_SEGMENT_SPLIT_RE.split(s)
+        cleaned_segs = [extract_clean_signatory_name(seg) for seg in segments]
+        if all(seg is not None for seg in cleaned_segs):
+            return " & ".join(cleaned_segs)
+    s = SIG_BY_PREFIX_RE.sub("", s.strip())
     s = SIG_CONFORMED_PREFIX_RE.sub("", s.strip())
     s = SIG_LEADING_RULE_RE.sub("", s.strip())
     m_sig_label = SIG_LABEL_RE.search(s)
@@ -419,12 +433,52 @@ def extract_clean_signatory_name(raw_text: str) -> str | None:
     lower_words = [w.lower().strip(".,()'-*") for w in words]
     if any(w in DISALLOWED_SIGNATURE_NAME_WORDS for w in lower_words):
         return None
-    if any(MONTH_RE.search(w) for w in lower_words):
+    if any(MONTH_RE.fullmatch(w) for w in lower_words):
         return None
     is_title_or_caps = all(
         TITLE_CASE_WORD_RE.match(w) or ALL_CAPS_WORD_RE.match(w) for w in words
     )
     return cand if is_title_or_caps else None
+
+
+def scan_signature_grid(
+    rows: tuple[tuple[str, ...], ...] | list[tuple[str, ...]],
+) -> tuple[str | None, str | None]:
+    """Scan 2D grid rows to extract clean signatory name and date."""
+    sig_name: str | None = None
+    sig_date: str | None = None
+    for r_idx, row in enumerate(rows):
+        r_str = " ".join(row).lower()
+        if not sig_name and any(
+            marker in r_str for marker in ("signature", "/s/", "-s-")
+        ):
+            for cell in row:
+                cand = extract_clean_signatory_name(cell)
+                if cand:
+                    sig_name = cand
+                    break
+            if not sig_name and r_idx + 1 < len(rows):
+                for cell in rows[r_idx + 1]:
+                    cand = extract_clean_signatory_name(cell)
+                    if cand:
+                        sig_name = cand
+                        break
+            if not sig_name and r_idx > 0:
+                for cell in rows[r_idx - 1]:
+                    cand = extract_clean_signatory_name(cell)
+                    if cand:
+                        sig_name = cand
+                        break
+
+        if not sig_date and any(marker in r_str for marker in ("date", "notice")):
+            for cell in row:
+                m_date = RE_FULL_DATE.search(cell) or NUMERIC_DATE_RE.search(cell)
+                if m_date and "as of" not in cell.lower():
+                    sig_date = m_date.group(0).strip()
+                    break
+        if sig_name and sig_date:
+            break
+    return sig_name, sig_date
 
 
 __all__ = [
@@ -462,4 +516,5 @@ __all__ = [
     "is_valid_signature_name",
     "parse_conformed_signature",
     "resolve_delegated_signer",
+    "scan_signature_grid",
 ]

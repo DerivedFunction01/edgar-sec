@@ -20,6 +20,8 @@ from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
 from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE
 
+_FORM144_TOKEN_RE = re.compile(r"[a-z0-9\(\)]+")
+
 _TABLE_TERMINATORS = (
     "/s/",
     "** signature",
@@ -51,7 +53,7 @@ def _is_form144_instruction(row_str: str) -> bool:
         return True
     if is_instruction_row(low) or STATUTORY_PAGE_ARTIFACT_RE.search(low) is not None:
         return True
-    tokens = frozenset(re.findall(r"[a-z0-9\(\)]+", low))
+    tokens = frozenset(_FORM144_TOKEN_RE.findall(low))
     return any(sig.issubset(tokens) for sig in _FORM144_INSTRUCTION_TOKEN_SETS)
 
 

@@ -18,6 +18,7 @@ DEFAULT_GAMMA = 0.76
 CACHE_VERSION = 4
 CACHE_EXPIRY_DAYS = 30
 PROBE_TIMEOUT_SECONDS = 600
+_COLLECTED_RE = re.compile(r"^\d+ tests? collected\b")
 
 
 def detect_hardware_topology() -> tuple[int, int]:
@@ -124,7 +125,7 @@ def collect_test_nodeids(test_args: list[str]) -> tuple[list[str], float]:
         if line.strip()
         and not line.startswith("=")
         and not line.startswith("collected")
-        and not re.match(r"^\d+ tests? collected\b", line.strip())
+        and not _COLLECTED_RE.match(line.strip())
     ]
     if not nodeids:
         raise RuntimeError("no tests found")

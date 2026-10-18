@@ -6,14 +6,16 @@ from edgar_sec.domain.forms.families.form144.models import NoticeSignature
 from edgar_sec.engine.document.html.tree import parse_html
 from edgar_sec.engine.forms.common.signatures import (
     clean_signature_name,
+    extract_clean_signatory_name,
     extract_signature_block,
+    scan_signature_grid,
 )
 from edgar_sec.engine.forms.form144.patterns import (
-    CONFORMED_SIG_RE,
     NOTICE_DATE_LABEL_RE,
     PLAN_ADOPTION_RE,
 )
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
+from edgar_sec.foundation.text.dates import parse_date
 
 
 def parse_remarks(sections: list[ClassifiedSection] | None) -> str | None:
@@ -37,12 +39,16 @@ def parse_signatures(
     | None,
     full_text: str = "",
 ) -> NoticeSignature:
-    combined = ""
-    if section is not None:
-        sections = [section] if isinstance(section, ClassifiedSection) else section
-        combined += "\n".join(
-            " ".join(row) for item in sections for row in item.resolved_grid.rows
-        )
+    sections_list = (
+        [section]
+        if isinstance(section, ClassifiedSection)
+        else list(section)
+        if section is not None
+        else []
+    )
+    combined = "\n".join(
+        " ".join(row) for item in sections_list for row in item.resolved_grid.rows
+    )
     if not combined.strip():
         combined = full_text[-4000:] if len(full_text) > 4000 else full_text
 
@@ -50,34 +56,46 @@ def parse_signatures(
     plan_dates: list[str] = []
     conformed_name: str | None = None
 
-    signature_block = extract_signature_block(combined)
-    if (not signature_block or not signature_block.signatories) and full_text:
-        marker = full_text.lower().rfind("/s/")
-        if marker >= 0:
-            start = max(0, marker - 2000)
-            end = min(len(full_text), marker + 2000)
-            fallback = full_text[start:end]
-        else:
-            fallback = full_text[-4000:] if len(full_text) > 4000 else full_text
-        fallback = parse_html(fallback).text()
-        fallback_block = extract_signature_block(fallback)
-        if fallback_block and fallback_block.signatories:
-            combined = fallback
-            signature_block = fallback_block
-    if signature_block and signature_block.signatories:
-        conformed_name = signature_block.signatories[0].name
-        if signature_block.signatories[0].date:
-            notice_date = signature_block.signatories[0].date
+    for sec_item in sections_list:
+        grid_name, grid_date = scan_signature_grid(sec_item.resolved_grid.rows)
+        if not conformed_name and grid_name:
+            conformed_name = grid_name
+        if not notice_date and grid_date:
+            notice_date = grid_date
+        if conformed_name and notice_date:
+            break
 
     if not conformed_name:
-        conformed_match = CONFORMED_SIG_RE.search(combined)
-        if conformed_match:
-            conformed_name = clean_signature_name(conformed_match.group(1))
+        signature_block = extract_signature_block(combined)
+        if (not signature_block or not signature_block.signatories) and full_text:
+            marker = full_text.lower().rfind("/s/")
+            if marker >= 0:
+                start = max(0, marker - 2000)
+                end = min(len(full_text), marker + 2000)
+                fallback = full_text[start:end]
+            else:
+                fallback = full_text[-4000:] if len(full_text) > 4000 else full_text
+            fallback = parse_html(fallback).text()
+            fallback_block = extract_signature_block(fallback)
+            if fallback_block and fallback_block.signatories:
+                combined = fallback
+                signature_block = fallback_block
+        if signature_block and signature_block.signatories:
+            conformed_name = signature_block.signatories[0].name
+            if signature_block.signatories[0].date and not notice_date:
+                notice_date = signature_block.signatories[0].date
+
+    if not conformed_name and full_text:
+        for line in full_text[-3000:].splitlines():
+            cand = extract_clean_signatory_name(line)
+            if cand:
+                conformed_name = cand
+                break
 
     if not notice_date:
         notice_match = NOTICE_DATE_LABEL_RE.search(combined)
         if notice_match:
-            notice_date = notice_match.group(1).strip()
+            notice_date = (notice_match.group(1) or notice_match.group(2)).strip()
 
     plan_match = PLAN_ADOPTION_RE.search(combined)
     if plan_match:

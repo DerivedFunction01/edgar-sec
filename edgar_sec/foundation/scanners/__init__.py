@@ -18,6 +18,7 @@ from .regex_alternations import SCANNER as REGEX_ALTERNATIONS_SCANNER
 from .resources import SCANNER as RESOURCES_SCANNER
 from .secrets import SCANNER as SECRETS_SCANNER
 from .sql_interpolation import SCANNER as SQL_INTERPOLATION_SCANNER
+from .uncompiled_regex import SCANNER as UNCOMPILED_REGEX_SCANNER
 from .whole_file_read import SCANNER as WHOLE_FILE_READ_SCANNER
 
 ALL_SCANNERS: tuple[Scanner, ...] = (
@@ -31,6 +32,7 @@ ALL_SCANNERS: tuple[Scanner, ...] = (
     RESOURCES_SCANNER,
     WHOLE_FILE_READ_SCANNER,
     REGEX_ALTERNATIONS_SCANNER,
+    UNCOMPILED_REGEX_SCANNER,
     LEGACY_SHIMS_SCANNER,
     JSON_IO_SCANNER,
     DATE_PATTERNS_SCANNER,
@@ -57,6 +59,7 @@ __all__ = [
     "SECRETS_SCANNER",
     "SQL_INTERPOLATION_SCANNER",
     "WHOLE_FILE_READ_SCANNER",
+    "UNCOMPILED_REGEX_SCANNER",
     "Scanner",
     "ScannerFinding",
 ]

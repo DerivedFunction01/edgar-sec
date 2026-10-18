@@ -379,8 +379,11 @@ def _cmd_diff(args: Any, context: _Context) -> int:
     return 0
 
 
+_DURATION_RE = re.compile(r"([0-9]+)([smhd])")
+
+
 def _duration_seconds(value: str) -> int:
-    match = re.fullmatch(r"([0-9]+)([smhd])", value.strip().lower())
+    match = _DURATION_RE.fullmatch(value.strip().lower())
     if match is None:
         raise ValueError(
             "duration must use seconds, minutes, hours, or days (e.g. 24h)"

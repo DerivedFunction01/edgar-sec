@@ -33,6 +33,7 @@ from edgar_sec.domain.document_inventory.schemas import (
     ENTRY_SCHEMA_VERSION,
 )
 
+_SHA256_HEX_RE = re.compile(r"[0-9a-f]{64}")
 _RELATIONS = {spec.name: spec.schema for spec in INVENTORY_RELATIONS}
 _RELATION_PKS = {spec.name: spec.primary_key for spec in INVENTORY_RELATIONS}
 _RELATION_ENTITY_KEYS = {
@@ -89,7 +90,7 @@ def _validate_parquet(
         or isinstance(row_count, bool)
         or row_count < 0
         or not isinstance(digest, str)
-        or not re.fullmatch(r"[0-9a-f]{64}", digest)
+        or _SHA256_HEX_RE.fullmatch(digest) is None
         or (
             row_groups is not None
             and (

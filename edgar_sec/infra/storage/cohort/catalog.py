@@ -25,6 +25,7 @@ from .paths import (
 MANIFEST_SCHEMA_VERSION = "2.0.0"
 _HEX_SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 _FAMILY_INDEX_ID_RE = re.compile(r"^[a-f0-9]{32}$")
+_HEX_PREFIX_RE = re.compile(r"[0-9a-fA-F]+")
 
 _SCHEMA_SQL = """
 CREATE TABLE IF NOT EXISTS cohorts (
@@ -674,7 +675,7 @@ class CohortCatalog:
                 raise CohortIdentifierError(
                     f"Ambiguous or short hash prefix {id_or_name!r}; hash lookups require at least {min_prefix_len} characters"
                 )
-            if not re.fullmatch(r"[0-9a-fA-F]+", prefix):
+            if _HEX_PREFIX_RE.fullmatch(prefix) is None:
                 raise CohortIdentifierError(f"Cohort not found: {id_or_name!r}")
             rows = connection.execute(
                 "SELECT * FROM cohorts WHERE cohort_id LIKE ? OR cohort_id LIKE ? ORDER BY cohort_id",

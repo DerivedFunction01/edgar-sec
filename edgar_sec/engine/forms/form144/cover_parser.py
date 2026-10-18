@@ -12,6 +12,7 @@ from edgar_sec.engine.forms.common.entities import IRS_RE, STATE_ZIP_RE
 from edgar_sec.engine.forms.common.tables import (
     address_from_column_headers,
     address_from_inline_cells,
+    clean_field_candidate,
     extract_labeled_field,
     parse_address_parts,
 )
@@ -21,6 +22,8 @@ from edgar_sec.engine.forms.form144.patterns import (
     SEC_FILE_LABEL_RE,
 )
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
+
+_STREET_NUM_PAREN_RE = re.compile(r"^\d+\s*\([a-z]\)", re.IGNORECASE)
 
 _ISSUER_LABELS = ("name of issuer", "1 (a)", "1(a)")
 _SELLER_LABELS = (
@@ -110,7 +113,7 @@ def _recover_address_street(
             if address_idx >= len(candidate_row):
                 continue
             street = candidate_row[address_idx].strip()
-            if not street or re.match(r"^\d+\s*\([a-z]\)", street, re.IGNORECASE):
+            if not street or _STREET_NUM_PAREN_RE.match(street):
                 continue
             if any(
                 phrase in street.lower()
@@ -138,6 +141,37 @@ def parse_cover_box_1_2(
 
     grid = section.resolved_grid
     issuer_name = extract_labeled_field(grid, _ISSUER_LABELS, excluded=_ISSUER_EXCLUDED)
+    if not issuer_name and grid.rows:
+        for row in grid.rows[:3]:
+            for cell in row:
+                c = cell.strip()
+                if not c:
+                    continue
+                c_low = c.lower()
+                if any(
+                    k in c_low
+                    for k in (
+                        "omb",
+                        "united states",
+                        "form 144",
+                        "notice of proposed",
+                        "sec use only",
+                        "document sequence",
+                        "cusip",
+                    )
+                ):
+                    continue
+                if any(lbl in c_low for lbl in _ISSUER_LABELS) or any(
+                    term in c_low for term in _ISSUER_EXCLUDED
+                ):
+                    continue
+                cand = clean_field_candidate(c, _ISSUER_EXCLUDED)
+                if cand and len(cand) >= 3 and not any(char.isdigit() for char in cand):
+                    issuer_name = cand
+                    break
+            if issuer_name:
+                break
+
     seller_name = extract_labeled_field(grid, _SELLER_LABELS, excluded=_SELLER_EXCLUDED)
 
     irs_num: str | None = None

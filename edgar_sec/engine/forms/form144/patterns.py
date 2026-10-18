@@ -13,9 +13,9 @@ SEC_FILE_LABEL_RE = re.compile(
 )
 SEC_FILE_BARE_RE = re.compile(r"\b([0-9]{1,3}-[0-9]{4,7})\b")
 PHONE_RE = re.compile(r"\(?\b\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}\b")
-CONFORMED_SIG_RE = re.compile(r"/s/[^\S\r\n]*([A-Za-z’‘'\.\,\- ]{2,60})")
+_NOTICE_DATE_PAT = r"([A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4}|\d{1,2}[-/]\d{1,2}[-/]\d{2,4})"
 NOTICE_DATE_LABEL_RE = re.compile(
-    r"(?:date of notice|date\s*:?)\s*[:\s]*([A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4}|\d{1,2}[-/]\d{1,2}[-/]\d{2,4})",
+    rf"(?:(?:date of notice|date\s*:?)\s*[:\s]*{_NOTICE_DATE_PAT}|{_NOTICE_DATE_PAT}\s*date of notice)",
     re.IGNORECASE,
 )
 
@@ -29,7 +29,6 @@ PLAN_ADOPTION_RE = re.compile(
 NUMERIC_TOKEN_RE = re.compile(r"^\s*[\$]?\s*([0-9][0-9,]*(?:\.[0-9]+)?)\b")
 
 __all__ = [
-    "CONFORMED_SIG_RE",
     "NOTICE_DATE_LABEL_RE",
     "NUMERIC_TOKEN_RE",
     "PLAN_ADOPTION_ALT",

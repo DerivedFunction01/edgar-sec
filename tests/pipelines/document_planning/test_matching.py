@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import re
 
+_ARCHIVE_FILENAME_RE = re.compile(r"\d{4}\.[A-Za-z0-9]+", re.ASCII)
+
 import pytest
 
 from edgar_sec.pipelines.document_planning.catalog_scope import (
@@ -286,7 +288,7 @@ def _placeholder_entry(
 ) -> dict[str, object]:
     archive_filename = (
         f"{_ACCESSION}-{filename}"
-        if re.fullmatch(r"\d{4}\.[A-Za-z0-9]+", filename, re.ASCII)
+        if _ARCHIVE_FILENAME_RE.fullmatch(filename)
         else filename
     )
     return {

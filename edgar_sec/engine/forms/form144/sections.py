@@ -14,7 +14,11 @@ from edgar_sec.engine.forms.common.entities import (
     normalize_exchange_name,
 )
 from edgar_sec.engine.forms.common.signatures import is_signature_table
-from edgar_sec.engine.forms.common.tables import is_instruction_row
+from edgar_sec.engine.forms.common.tables import (
+    is_instruction_row,
+    is_single_cell_empty_table,
+    is_trailing_signature_table,
+)
 from edgar_sec.domain.forms.families.form144.evidence import (
     FORM144_BOX_1_2_LEXICAL_PACK,
     FORM144_BOX_3_LEXICAL_PACK,
@@ -52,6 +56,7 @@ _INSTRUCTION_VETO_RE = re.compile(
     build_alternation(FORM144_INSTRUCTION_VETO_PHRASES, auto_escape=True, compact=True)
 )
 _NON_ALNUM_RE = re.compile(r"[^a-z0-9]")
+_NUMBERED_NOTE_RE = re.compile(r"^\d+[.)]?\s+[a-z]")
 
 
 class SectionRole(StrEnum):
@@ -182,19 +187,16 @@ def _classify_table(lower: str, past_tables: bool = False) -> SectionRole:
         or ("date of notice" in lower and "(signature)" in lower)
     ):
         return SectionRole.SIGNATURES
-    if _is_instruction_block(lower):
-        return SectionRole.INSTRUCTIONS
-
     has_cover_marker = (
         "name of issuer" in lower
         or ("issuer" in lower and "person for whose account" in lower)
         or (
             "address of issuer" in lower
-            and any(term in lower for term in ("zip code", "telephone no", "state"))
+            and any(
+                term in lower
+                for term in ("zip code", "telephone no", "state", "city", "street")
+            )
         )
-    )
-    has_box_1_2 = has_cover_marker and (
-        _has_cover_value_evidence(lower) or not _has_instruction_evidence(lower)
     )
     has_box_3 = (
         ("3 (a)" in lower or "3(a)" in lower)
@@ -204,12 +206,15 @@ def _classify_table(lower: str, past_tables: bool = False) -> SectionRole:
         and any(w in lower for w in ("shares", "units", "market value", "approx"))
     )
 
-    if has_box_1_2 and has_box_3:
+    if has_cover_marker and has_box_3:
         return SectionRole.COMBINED_COVER
-    if has_box_1_2:
+    if has_cover_marker:
         return SectionRole.COVER_BOX_1_2
     if has_box_3:
         return SectionRole.PROPOSED_SALE_BOX_3
+
+    if _is_instruction_block(lower):
+        return SectionRole.INSTRUCTIONS
 
     if is_signature_table(lower, past_tables):
         return SectionRole.SIGNATURES
@@ -247,7 +252,7 @@ def _is_numbered_note(lower: str) -> bool:
         end = lower.find(")")
         if end > 1 and lower[1:end].isdigit():
             return True
-    return len(lower) >= 100 and re.match(r"^\d+[.)]?\s+[a-z]", lower) is not None
+    return len(lower) >= 100 and _NUMBERED_NOTE_RE.match(lower) is not None
 
 
 def _merge_sections(
@@ -430,35 +435,39 @@ def partition_form144_tables(html_text: str) -> Form144Sections:
             if role in _DATA_ROLES
             else _EMPTY_GRID
         )
-        if role == SectionRole.UNPARSED and (
-            table_ii is not None
-            or proposed_sale_box_3 is not None
-            or cover_box_1_2 is not None
-        ):
-            if any(c.isdigit() for c in lower) or any(
-                k in lower for k in ("none", "n/a", "no reported")
+        if role == SectionRole.UNPARSED:
+            candidate_grid = resolve_html_table_grid(tbl)
+            if table_ii is not None and (
+                is_single_cell_empty_table(candidate_grid.rows)
+                or _is_table_ii_continuation(candidate_grid, table_ii)
             ):
-                candidate_grid = resolve_html_table_grid(tbl)
-                if table_ii is not None and _is_table_ii_continuation(
-                    candidate_grid, table_ii
-                ):
-                    role = SectionRole.TABLE_II
-                    grid = candidate_grid
-                elif proposed_sale_box_3 is not None and _is_box3_continuation(
-                    candidate_grid, proposed_sale_box_3
-                ):
-                    role = SectionRole.PROPOSED_SALE_BOX_3
-                    grid = candidate_grid
-                elif (
-                    cover_box_1_2 is not None
-                    and "address" in lower
-                    and "street" in lower
-                    and "zip code" in lower
-                    and "issuer" not in lower
-                    and STATE_ZIP_RE.search(lower)
-                ):
-                    role = SectionRole.COVER_BOX_1_2
-                    grid = candidate_grid
+                role = SectionRole.TABLE_II
+                grid = candidate_grid
+            elif signatures and is_trailing_signature_table(
+                lower, len(candidate_grid.rows)
+            ):
+                role = SectionRole.SIGNATURES
+                grid = candidate_grid
+            elif "date of notice" in lower and (
+                "signature" in lower or "____" in lower
+            ):
+                role = SectionRole.SIGNATURES
+                grid = candidate_grid
+            elif proposed_sale_box_3 is not None and _is_box3_continuation(
+                candidate_grid, proposed_sale_box_3
+            ):
+                role = SectionRole.PROPOSED_SALE_BOX_3
+                grid = candidate_grid
+            elif (
+                cover_box_1_2 is not None
+                and "address" in lower
+                and "street" in lower
+                and "zip code" in lower
+                and "issuer" not in lower
+                and STATE_ZIP_RE.search(lower)
+            ):
+                role = SectionRole.COVER_BOX_1_2
+                grid = candidate_grid
         section = ClassifiedSection(
             role=role, table_index=idx, raw_node=tbl, resolved_grid=grid
         )

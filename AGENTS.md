@@ -147,6 +147,9 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
 - `whole-file-read`: Bans `read_bytes()` consumed by a digest constructor. Hashing a whole
   artifact to prove it intact materializes the file; use `file_sha256`. Narrow on purpose —
   a `read_bytes()` feeding `json.loads` on a small payload is a different trade and is not flagged.
+- `uncompiled-regex`: Bans uncompiled `re.search`/`match`/`findall`/`finditer`/`split`/
+  `sub`/`subn`/`fullmatch` calls. Compile the pattern once into a module-level constant
+  and call its method instead.
 - `prose-length`: **Fails the gate** on a docstring or comment block over its cap. Enforces the
   "Code Comments and Docstrings" caps below, with tighter caps for tests.
 - `regex-alternations`: Bans hand-crafted 3+ branch alternation literals, so `foundation.regex.builder` is used.
