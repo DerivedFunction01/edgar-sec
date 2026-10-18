@@ -66,7 +66,7 @@ class SectionRole(StrEnum):
 class ClassifiedSection:
     role: SectionRole
     table_index: int
-    raw_node: FastHtmlNode
+    raw_node: FastHtmlNode | None
     resolved_grid: ResolvedGrid
 
 

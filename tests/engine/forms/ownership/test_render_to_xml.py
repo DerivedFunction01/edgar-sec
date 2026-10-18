@@ -54,3 +54,33 @@ def test_render_form4_to_xml_passthrough_for_xml_input() -> None:
     )
     result = render_form4_to_xml(raw_xml)
     assert result == raw_xml
+
+
+def test_render_form4_to_xml_ascii_input() -> None:
+    ascii_bytes = (
+        b"FORM 4\n"
+        b"1. Name and Address of Reporting Person*\n"
+        b"Smith, Jane\n"
+        b"2. Issuer Name and Ticker or Trading Symbol\n"
+        b"ACME CORP (ACM)\n"
+        b"4. Statement for Month/Day/Year\n"
+        b"06/01/2001\n"
+        b"6. Relationship of Reporting Person\n"
+        b"[X] Director\n"
+        b"<TABLE>\n"
+        b"<CAPTION>\n"
+        b"Table I - Non-Derivative Securities\n"
+        b"<S>              <C>          <C>    <C>      <C>      <C>    <C>\n"
+        b"1. Title         2. Date      3.Code 4.Amount 5.Owned  6.Form 7.Nature\n"
+        b"Common Stock     06/01/2001   P      200 A    200      D\n"
+        b"</TABLE>\n"
+        b"/s/ Jane Smith   06/01/2001\n"
+    )
+    xml_bytes = render_form4_to_xml(ascii_bytes)
+    root = ET.fromstring(xml_bytes)
+    assert root.tag == "ownershipDocument"
+    assert root.findtext("issuer/issuerTradingSymbol") == "ACM"
+    assert root.findtext("reportingOwner/reportingOwnerRelationship/isDirector") == "1"
+    tx = root.find("nonDerivativeTable/nonDerivativeTransaction")
+    assert tx is not None
+    assert tx.findtext("transactionCoding/transactionCode") == "P"

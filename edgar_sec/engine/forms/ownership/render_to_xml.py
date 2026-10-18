@@ -214,6 +214,16 @@ def render_form4_to_xml(
 
     text = raw_bytes.decode("utf-8", errors="replace")
     sections = partition_ownership_tables(text)
+    if (
+        sections.boxes_1_to_7 is None
+        and sections.table_i is None
+        and sections.table_ii is None
+    ):
+        from edgar_sec.engine.forms.ownership.ascii_parser import parse_ascii_form4
+
+        ascii_secs = parse_ascii_form4(text)
+        if ascii_secs is not None:
+            sections = ascii_secs
 
     metadata = parse_metadata(sections.boxes_1_to_7, sections.signatures)
     table_i_rows = parse_table_i_rows(sections.table_i)
