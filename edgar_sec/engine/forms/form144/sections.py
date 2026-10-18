@@ -23,12 +23,12 @@ from edgar_sec.domain.forms.families.form144.evidence import (
     FORM144_BOX_1_2_LEXICAL_PACK,
     FORM144_BOX_3_LEXICAL_PACK,
     FORM144_HEADER_LEXICAL_PACK,
-    FORM144_INSTRUCTION_VETO_PHRASES,
     FORM144_TABLE_I_LEXICAL_PACK,
     FORM144_TABLE_II_LEXICAL_PACK,
 )
 from edgar_sec.engine.document.html.tree import FastHtmlNode, parse_html
 from edgar_sec.engine.forms.form144.patterns import (
+    FORM144_INSTRUCTION_VETO_RE,
     NUMERIC_TOKEN_RE,
     PHONE_RE,
     SEC_FILE_LABEL_RE,
@@ -56,9 +56,6 @@ _COMPILED_TABLE_II_PACK = compile_evidence_pack(FORM144_TABLE_II_LEXICAL_PACK)
 _COMPILED_STATUTORY_PACK = compile_evidence_pack(COMMON_STATUTORY_LEXICAL_PACK)
 _EVIDENCE_CTX = EvidenceContext(min_words=1)
 
-_INSTRUCTION_VETO_RE = re.compile(
-    build_alternation(FORM144_INSTRUCTION_VETO_PHRASES, auto_escape=True, compact=True)
-)
 _NON_ALNUM_RE = re.compile(r"[^a-z0-9]")
 _NUMBERED_NOTE_RE = re.compile(r"^\d+[.)]?\s+[a-z]")
 
@@ -151,7 +148,7 @@ def _has_instruction_evidence(lower: str) -> bool:
     if "instructions:" in lower and "table i" not in lower and "table ii" not in lower:
         return True
     return (
-        bool(_INSTRUCTION_VETO_RE.search(lower))
+        bool(FORM144_INSTRUCTION_VETO_RE.search(lower))
         and "table i" not in lower
         and "table ii" not in lower
     )

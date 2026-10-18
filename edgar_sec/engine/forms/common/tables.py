@@ -13,8 +13,17 @@ from edgar_sec.engine.forms.common.entities import BARE_BOX_NUM_RE, STATE_ZIP_RE
 from edgar_sec.engine.tables.ascii_html.converter import ResolvedGrid
 from edgar_sec.foundation.regex.builder import build_alternation
 
+IGNORE_SUBBOX_MARKERS: tuple[str, ...] = (
+    "(a)",
+    "(b)",
+    "(c)",
+    "(d)",
+    "(e)",
+    "(f)",
+    "(g)",
+)
 _STOPWORDS_SET = frozenset(TABULAR_STOPWORDS)
-_IGNORE_MARKERS = frozenset({"(a)", "(b)", "(c)", "(d)", "(e)", "(f)", "(g)"})
+_IGNORE_MARKERS = frozenset(IGNORE_SUBBOX_MARKERS)
 _CONJUNCTIONS = ("and", "or", "&", "/")
 _CONJUNCTION_ALT = build_alternation(_CONJUNCTIONS, auto_escape=True)
 _CONJUNCTION_LABEL_RE = re.compile(rf"^\s*(?:{_CONJUNCTION_ALT})\b", re.IGNORECASE)
@@ -280,15 +289,45 @@ def is_single_cell_empty_table(
     )
 
 
+HORIZONTAL_RULE_RE = re.compile(r"^[\s\-=_*]{4,}$")
+_SGML_TAG_RE = re.compile(r"</?[A-Za-z]+(?:\s+[^>]*)?>")
+_LINE_NUMBER_PREFIX_RE = re.compile(r"^\d+\s*:\s*")
+WHITESPACE_COLUMN_SPLIT_RE = re.compile(r"\t+|\s{2,}")
+FOOTNOTE_REF_RE = re.compile(r"[\(\[]\s*(\d{1,3})\s*[\)\]]")
+
+
+def is_horizontal_rule_line(line: str) -> bool:
+    """Detect whether a line is a horizontal divider or dash rule."""
+    return bool(HORIZONTAL_RULE_RE.match(line))
+
+
+def strip_markup_tags(text: str) -> str:
+    """Strip SGML/HTML tags and line-number prefixes from text."""
+    cleaned = _LINE_NUMBER_PREFIX_RE.sub("", text).strip()
+    return _SGML_TAG_RE.sub(" ", cleaned).strip()
+
+
+def strip_footnote_references(text: str) -> str:
+    """Strip bracketed or parenthesized numeric footnote indicators."""
+    return " ".join(FOOTNOTE_REF_RE.sub("", text).split())
+
+
 __all__ = [
+    "FOOTNOTE_REF_RE",
     "GridPartition",
+    "HORIZONTAL_RULE_RE",
+    "IGNORE_SUBBOX_MARKERS",
+    "WHITESPACE_COLUMN_SPLIT_RE",
     "address_from_column_headers",
     "address_from_inline_cells",
     "clean_field_candidate",
     "extract_labeled_field",
+    "is_horizontal_rule_line",
     "is_instruction_row",
     "is_single_cell_empty_table",
     "is_trailing_signature_table",
     "parse_address_parts",
     "partition_grid_rows",
+    "strip_footnote_references",
+    "strip_markup_tags",
 ]

@@ -55,6 +55,12 @@ STREET_SUFFIX_RE = re.compile(
     re.IGNORECASE,
 )
 
+
+def is_street_or_address_line(text: str) -> bool:
+    """Detect whether text contains a street suffix or state/zip address indicator."""
+    return bool(STREET_SUFFIX_RE.search(text) or STATE_ZIP_RE.search(text))
+
+
 TEMPLATE_LABEL_ALT = build_alternation(TEMPLATE_LABELS, auto_escape=True)
 CLEAN_TEMPLATE_RE = re.compile(rf"\((?:{TEMPLATE_LABEL_ALT})\)", re.IGNORECASE)
 
@@ -147,5 +153,6 @@ __all__ = [
     "TICKER_DASH_RE",
     "TICKER_PAREN_RE",
     "TITLE_MATCH_RE",
+    "is_street_or_address_line",
     "normalize_exchange_name",
 ]
