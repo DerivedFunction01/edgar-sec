@@ -440,6 +440,13 @@ def partition_form144_tables(html_text: str) -> Form144Sections:
     """Extract and classify tables from Form 144 HTML text into canonical sections."""
     root = parse_html(html_text)
     tables = root.css("table")
+    if not tables:
+        from edgar_sec.engine.forms.form144.ascii_parser import parse_ascii_form144
+
+        ascii_secs = parse_ascii_form144(html_text)
+        if ascii_secs is not None:
+            return ascii_secs
+
     cover_box_1_2: ClassifiedSection | None = None
     proposed_sale_box_3: ClassifiedSection | None = None
     table_i: ClassifiedSection | None = None
@@ -620,6 +627,25 @@ def partition_form144_tables(html_text: str) -> Form144Sections:
             remarks.append(section)
         elif role == SectionRole.UNPARSED:
             unparsed.append(section)
+
+    has_cover = cover_box_1_2 is not None and bool(cover_box_1_2.resolved_grid.rows)
+    has_b3 = proposed_sale_box_3 is not None and bool(
+        proposed_sale_box_3.resolved_grid.rows
+    )
+
+    if not (has_cover and has_b3):
+        from edgar_sec.engine.forms.form144.ascii_parser import parse_ascii_form144
+
+        ascii_secs = parse_ascii_form144(html_text)
+        if ascii_secs is not None:
+            if not has_cover and not has_b3:
+                return ascii_secs
+            if not has_cover and ascii_secs.cover_box_1_2 is not None:
+                cover_box_1_2 = ascii_secs.cover_box_1_2
+            if not has_b3 and ascii_secs.proposed_sale_box_3 is not None:
+                proposed_sale_box_3 = ascii_secs.proposed_sale_box_3
+            if not signatures and ascii_secs.signatures:
+                signatures = ascii_secs.signatures
 
     return Form144Sections(
         cover_box_1_2=cover_box_1_2,

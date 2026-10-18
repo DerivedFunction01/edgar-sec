@@ -237,6 +237,26 @@ def parse_proposed_sale_box_3(section: ClassifiedSection | None) -> ProposedSale
     broker_parts: list[str] = []
 
     for row in rows[first_hdr + 1 :]:
+        if section.raw_node is None and len(row) == 7:
+            r_class, r_broker, r_units, r_val, r_out, r_dt, r_exch = row
+            if r_class and class_title is None:
+                class_title = r_class
+            if r_broker and not broker_parts:
+                broker_parts.append(r_broker)
+            if r_units and units is None:
+                units = clean_numeric(r_units)
+            if r_val and val is None:
+                n = clean_numeric(r_val)
+                val = float(n) if n is not None else None
+            if r_out and out is None:
+                out = clean_numeric(r_out)
+            if r_dt and dt is None:
+                parsed_dt = parse_date(r_dt)
+                dt = parsed_dt.display if parsed_dt else None
+            if r_exch and exch is None:
+                exch = normalize_exchange_name(r_exch)
+            continue
+
         raw_cells = [c.strip() for c in row if c.strip()]
         if not raw_cells:
             continue
