@@ -26,10 +26,21 @@ def test_generated_xml_uses_sec_namespaces_and_repeated_standard_fields() -> Non
                 EvidenceState.VALUE,
             ),
             CoverItemEvidence(
-                4, "Source of Funds WC and PF", "WC and PF", EvidenceState.VALUE
+                2, "Group membership", "a. [ ] b. [X]", EvidenceState.VALUE
+            ),
+            CoverItemEvidence(
+                4,
+                "Source of Funds 00 WC and PF",
+                "00-Funds of investment advisory clients WC and PF",
+                EvidenceState.VALUE,
             ),
             CoverItemEvidence(5, "Legal proceedings [X]", "[X]", EvidenceState.CHECKED),
-            CoverItemEvidence(14, "Type IN and OO", "IN and OO", EvidenceState.VALUE),
+            CoverItemEvidence(
+                14,
+                "Type IN, OO, and 00",
+                "IN, OO, 00-Private Foundation",
+                EvidenceState.VALUE,
+            ),
         ),
         comment_content="Source comment.",
     )
@@ -63,18 +74,23 @@ def test_generated_xml_uses_sec_namespaces_and_repeated_standard_fields() -> Non
         == "SCHEDULE 13D/A"
     )
     assert root.findtext(".//s:issuerCusipNumber", namespaces=ns) == "1234567890123"
+    assert root.findtext(".//s:memberOfGroup", namespaces=ns) == "b"
     assert root.findtext(".//com:street1", namespaces=ns) == "123 Main St"
     assert [node.text for node in root.findall(".//s:fundType", ns)] == [
+        "00",
         "WC",
         "PF",
+        "00",
         "WC",
         "PF",
     ]
     assert [node.text for node in root.findall(".//s:typeOfReportingPerson", ns)] == [
         "IN",
         "OO",
+        "00",
         "IN",
         "OO",
+        "00",
     ]
     assert len(root.findall(".//s:reportingPersonInfo", ns)) == 2
     assert len(root.findall(".//s:commentContent", ns)) == 2

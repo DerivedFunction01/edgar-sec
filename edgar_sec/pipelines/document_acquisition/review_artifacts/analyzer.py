@@ -128,14 +128,25 @@ def _load_artifact(root: Path, record: dict[str, Any]) -> dict[str, Any]:
         for part in relative_output.parts:
             current = current / part
             if current.is_symlink():
-                raise ReviewAnalysisError("parser output path contains a symlink")
-        if (
-            not output_path.is_file()
-            or not output_path.resolve().is_relative_to(case_root)
-            or output_path.stat().st_size != output_info["byte_size"]
-            or file_sha256(output_path) != output_info["sha256"]
-        ):
-            raise ReviewAnalysisError("parser output is missing or corrupt")
+                raise ReviewAnalysisError(
+                    f"parser output path contains a symlink: {output_name}"
+                )
+        if not output_path.is_file():
+            raise ReviewAnalysisError(f"parser output is missing: {output_name}")
+        if not output_path.resolve().is_relative_to(case_root):
+            raise ReviewAnalysisError(
+                f"parser output escapes the case directory: {output_name}"
+            )
+        actual_size = output_path.stat().st_size
+        if actual_size != output_info["byte_size"]:
+            raise ReviewAnalysisError(
+                f"parser output size differs from its reference: {output_name} "
+                f"(expected {output_info['byte_size']}, found {actual_size})"
+            )
+        if file_sha256(output_path) != output_info["sha256"]:
+            raise ReviewAnalysisError(
+                f"parser output digest differs from its reference: {output_name}"
+            )
     return artifact
 
 

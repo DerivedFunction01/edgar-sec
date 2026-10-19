@@ -8,6 +8,7 @@ from edgar_sec.engine.forms.beneficial_ownership.renderer import (
     render_schedule13d_to_xml,
     render_schedule13g_to_xml,
 )
+from edgar_sec.engine.forms.normalize import normalize_document
 
 _SAMPLE_HTML = b"""<html>
 <body>
@@ -70,6 +71,30 @@ def test_render_schedule13d_to_xml_generates_valid_xml() -> None:
 
     shares = root.find(".//{http://www.sec.gov/edgar/schedule13D}soleVotingPower")
     assert shares is not None and shares.text == "50,000"
+
+    signature = root.find(".//{http://www.sec.gov/edgar/schedule13D}signature")
+    assert signature is not None and signature.text == "Jane Smith"
+    signature_date = root.find(".//{http://www.sec.gov/edgar/schedule13D}date")
+    assert signature_date is not None and signature_date.text == "January 1, 2020"
+    item_text = root.find(
+        ".//{http://www.sec.gov/edgar/schedule13D}item1/"
+        "{http://www.sec.gov/edgar/schedule13D}commentText"
+    )
+    assert item_text is not None and "Jane Smith" not in (item_text.text or "")
+
+    normalized = normalize_document(_SAMPLE_HTML, form="13D")
+    extractions = root.findall(
+        "./{http://www.sec.gov/edgar/schedule13D}extractionProvenance/"
+        "{http://www.sec.gov/edgar/schedule13D}fieldExtraction"
+    )
+    unparsed = root.find("./{http://www.sec.gov/edgar/schedule13D}unparsedSections")
+    assert extractions and unparsed is not None
+    assert int(unparsed.attrib["sourceLength"]) == len(normalized.text)
+    for field in extractions:
+        start = int(field.attrib["startOffset"])
+        end = int(field.attrib["endOffset"])
+        source = field.find("{http://www.sec.gov/edgar/schedule13D}sourceText")
+        assert source is not None and source.text == normalized.text[start:end]
 
 
 def test_render_schedule13d_to_xml_passes_through_native_xml() -> None:

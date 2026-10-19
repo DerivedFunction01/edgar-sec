@@ -15,6 +15,23 @@ class EvidenceState(StrEnum):
 
 
 @dataclass(frozen=True, slots=True)
+class FieldExtraction:
+    field_path: str
+    start_offset: int
+    end_offset: int
+    source_text: str
+    shared_source_group: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class UnparsedSection:
+    start_offset: int
+    end_offset: int
+    text: str
+    role: str = "unparsed"
+
+
+@dataclass(frozen=True, slots=True)
 class CoverItemEvidence:
     number: int
     source_text: str
@@ -69,6 +86,16 @@ class IssuerMetadata:
 
 
 @dataclass(frozen=True, slots=True)
+class NarrativeField:
+    tag: str
+    value: str
+    start_offset: int
+    end_offset: int
+    source_text: str
+    shared_source_group: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
 class NarrativeItem:
     number: int
     heading: str
@@ -76,6 +103,7 @@ class NarrativeItem:
     start_offset: int
     end_offset: int
     raw_heading: str = ""
+    parsed_fields: tuple[NarrativeField, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -91,6 +119,9 @@ class BeneficialOwnershipDocument:
     previous_accession_number: str | None = None
     residual_text: str = ""
     diagnostics: tuple[str, ...] = ()
+    source_length: int = 0
+    field_extractions: tuple[FieldExtraction, ...] = ()
+    unparsed_sections: tuple[UnparsedSection, ...] = ()
 
     @property
     def items1_to_7(self) -> tuple[NarrativeItem, ...]:
@@ -102,7 +133,10 @@ __all__ = [
     "BeneficialOwnershipDocument",
     "CoverItemEvidence",
     "EvidenceState",
+    "FieldExtraction",
     "IssuerMetadata",
+    "NarrativeField",
     "NarrativeItem",
     "ReportingPersonCover",
+    "UnparsedSection",
 ]

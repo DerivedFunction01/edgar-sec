@@ -128,3 +128,200 @@ def test_extract_reporting_person_covers_finds_multiple_filers() -> None:
     assert len(people) == 2
     assert people[0].first_item(1).value == "Acme Holdings LLC"
     assert people[1].first_item(1).value == "Acme Holdings LLC"
+
+
+def test_cover_parser_accepts_check_if_wording_without_box() -> None:
+    person = parse_reporting_person_matrix(
+        """1. Name of Reporting Person.
+Beacon LLC
+11. Aggregate Amount Beneficially Owned by Each Reporting Person: 20,924,055
+12. Check if the Aggregate Amount in Row (11) Excludes Certain Shares (See Instructions): [ ]
+13. Percent of Class Represented by Amount in Row (11): Approximately 100%
+14. Type of Reporting Person: OO (Limited Liability Company)""",
+        family="13D",
+    )
+
+    assert person.first_item("aggregateAmountOwned").value == "20,924,055"
+    assert (
+        person.first_item("isAggregateExcludeShares").state is EvidenceState.UNCHECKED
+    )
+    assert person.first_item("percentOfClass").value == "Approximately 100%"
+    assert person.first_item("reportingPersonName").value == "Beacon LLC"
+
+
+def test_cover_parser_keeps_long_names_and_discards_repeated_labels() -> None:
+    person = parse_reporting_person_matrix(
+        """1. Names of Reporting Persons
+Thirsty Brook 2010 Irrevocable Trust
+Names of Reporting Persons Thirsty Brook 2010 Irrevocable Trust
+2. Check the Appropriate Box if a Member of a Group
+(a) [ ]
+3. SEC Use Only""",
+        family="13D",
+    )
+
+    assert (
+        person.first_item("reportingPersonName").value
+        == "Thirsty Brook 2010 Irrevocable Trust"
+    )
+
+
+def test_cover_parser_removes_underlines_and_narrative_tail() -> None:
+    person = parse_reporting_person_matrix(
+        """1. Name of Reporting Person
+Beacon Capital Partners LLC
+11. Aggregate Amount Beneficially Owned by Each Reporting Person
+20,000
+____________________
+Item 3. Source and Amount of Funds or Other Consideration
+This Schedule 13D has been filed for the purpose of ...""",
+        family="13D",
+    )
+
+    assert person.first_item("aggregateAmountOwned").value == "20,000"
+
+
+def test_cover_parser_stops_at_wrapped_power_labels_with_interleaved_values() -> None:
+    person = parse_reporting_person_matrix(
+        """1. Name of Reporting Person
+Beacon Capital LLC
+6. Citizenship or Place of Organization
+Kentucky
+Number of Shares 7. Sole Voting 2
+Beneficially Owned Power 9
+by Each Reporting 0
+Person With 8. Shared 0
+Voting
+Power
+9. Sole 2
+Dispositive 9
+Power 0
+10. Shared 0
+Dispositive
+Power
+11. Aggregate Amount Beneficially Owned
+2,900
+""",
+        family="13D",
+    )
+
+    assert person.first_item("citizenshipOrOrganization").value == "Kentucky"
+    assert person.first_item("soleVotingPower").value == "2 9 0"
+    assert person.first_item("sharedVotingPower").value == "0"
+    assert person.first_item("soleDispositivePower").value == "2 9 0"
+    assert person.first_item("sharedDispositivePower").value == "0"
+
+
+def test_cover_parser_cleans_irs_prefix_and_preserves_multiple_type_codes() -> None:
+    person = parse_reporting_person_matrix(
+        """1. Names of reporting persons
+I.R.S. identification nos. of above persons (entities only)
+Gabelli Funds, LLC I.D. No. 13-4044523
+2. Check the appropriate box if a member of a group
+(a) [ ]
+6. Citizenship or place of organization
+New York
+7. Sole voting power
+459,600 (Item 5)
+8. Shared voting power
+None Person : With
+9. Sole dispositive power
+459,600 (Item 5)
+:10 Shared dispositive power
+None
+11. Aggregate amount beneficially owned by each reporting person
+459,600 (Item 5)
+12. Check if the aggregate amount in row (11) excludes certain shares
+[ ]
+13. Percent of class represented by amount in row (11)
+2.64%
+14. Type of reporting person (SEE INSTRUCTIONS)
+IA, CO
+====""",
+        family="13D",
+    )
+
+    assert person.first_item("reportingPersonName").value == "Gabelli Funds, LLC"
+    assert person.first_item("sharedVotingPower").value == "None"
+    assert person.first_item("soleDispositivePower").value == "459,600 (Item 5)"
+    assert person.first_item("sharedDispositivePower").value == "None"
+    assert person.first_item("typeOfReportingPerson").value == "IA, CO"
+    assert person.comment_content is None
+
+
+def test_cover_parser_normalizes_bare_checkbox_marks_and_repeated_row_numbers() -> None:
+    person = parse_reporting_person_matrix(
+        """1. Name of Reporting Person
+Beacon Capital LLC
+2. Check the appropriate box if a member of a group
+(a) X (b) [ ]
+5. Check box if disclosure of legal proceedings is required
+X
+7. Sole Voting Power
+7 900,000
+8. Shared Voting Power
+0
+9. Sole Dispositive Power
+9 PERSON 900,000 WITH
+10. Shared Dispositive Power
+0
+11. Aggregate Amount Beneficially Owned
+900,000
+12. Check if the aggregate amount in row (11) excludes certain shares
+X
+13. Percent of class
+5%
+14. Type of reporting person
+IN""",
+        family="13D",
+    )
+
+    assert person.first_item("memberOfGroup").value == "(a) [X] (b) [ ]"
+    assert person.first_item("legalProceedings").state is EvidenceState.CHECKED
+    assert person.first_item("soleVotingPower").value == "900,000"
+    assert person.first_item("sharedVotingPower").value == "0"
+    assert person.first_item("soleDispositivePower").value == "900,000"
+    assert person.first_item("isAggregateExcludeShares").state is EvidenceState.CHECKED
+    assert person.first_item("aggregateAmountOwned").value == "900,000"
+
+
+def test_cover_parser_removes_cross_column_power_text_from_citizenship() -> None:
+    person = parse_reporting_person_matrix(
+        """1. Name of Reporting Person
+Beacon Capital LLC
+6. Citizenship or place of organization
+USA Shares Voting Power Beneficially 943,762 Owned by Each 8. Shared Reporting Voting Power Person With 120,090
+7. Sole Voting Power
+7 943,762
+8. Shared Voting Power
+None : With :
+9. Sole Dispositive Power
+9 943,762
+10. Shared Dispositive Power
+0
+11. Aggregate Amount Beneficially Owned
+BY EACH PERSON 943,762
+13. Percent of class
+7.5%
+14. Type of reporting person
+CO""",
+        family="13D",
+    )
+
+    assert person.first_item("citizenshipOrOrganization").value == "USA"
+    assert person.first_item("sharedVotingPower").value == "None"
+    assert person.first_item("soleDispositivePower").value == "943,762"
+    assert person.first_item("aggregateAmountOwned").value == "943,762"
+
+
+def test_cover_parser_removes_type_row_number_and_instruction_footer() -> None:
+    person = parse_reporting_person_matrix(
+        """1. Name of Reporting Person
+Beacon Capital LLC
+14. Type of reporting person
+* 14 OO *SEE INSTRUCTIONS BEFORE FILLING OUT 13D""",
+        family="13D",
+    )
+
+    assert person.first_item("typeOfReportingPerson").value == "OO"
+    assert person.comment_content is None

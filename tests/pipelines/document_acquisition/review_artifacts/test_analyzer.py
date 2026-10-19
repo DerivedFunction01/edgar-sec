@@ -192,6 +192,42 @@ def test_review_analysis_refuses_a_tampered_case_output(tmp_path) -> None:
         analyze_review_runs((run,))
 
 
+def test_review_analysis_identifies_a_stale_parser_output_reference(tmp_path) -> None:
+    run = tmp_path / "run-stale-output"
+    artifact_path, manifest_path = _write_review_run(run)
+    case_root = artifact_path.parent
+    operations = case_root / "operations"
+    operations.mkdir()
+    parser_output = operations / "render_to_xml.xml"
+    parser_output.write_text("original", encoding="utf-8")
+    artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+    artifact["processing"]["outputs"] = {
+        "operations/render_to_xml.xml": {
+            "byte_size": parser_output.stat().st_size,
+            "sha256": file_sha256(parser_output),
+        }
+    }
+    artifact["artifact_sha256"] = canonical_hash(
+        {key: value for key, value in artifact.items() if key != "artifact_sha256"}
+    )
+    artifact_path.write_text(canonical_json(artifact), encoding="utf-8")
+    records = [json.loads(line) for line in manifest_path.read_text().splitlines()]
+    records[0]["outputs"]["processing-review.json"]["sha256"] = file_sha256(
+        artifact_path
+    )
+    manifest_path.write_text(
+        "".join(canonical_json(record) + "\n" for record in records),
+        encoding="utf-8",
+    )
+    parser_output.write_text("stale", encoding="utf-8")
+
+    with pytest.raises(
+        ReviewAnalysisError,
+        match="parser output size differs from its reference: operations/render_to_xml.xml",
+    ):
+        analyze_review_runs((run,))
+
+
 def test_review_analysis_writes_a_separate_explicit_report(tmp_path) -> None:
     run = tmp_path / "run-a"
     _write_review_run(run)

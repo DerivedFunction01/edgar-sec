@@ -14,12 +14,14 @@ from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     NarrativeItem,
     ReportingPersonCover,
 )
+from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
+    two_character_codes,
+)
 
 SCHEDULE_13D_NS = "http://www.sec.gov/edgar/schedule13D"
 SCHEDULE_13G_NS = "http://www.sec.gov/edgar/schedule13G"
 COMMON_NS = "http://www.sec.gov/edgar/common"
-_RE_GROUP_OPTION = re.compile(r"\(\s*([ab])\s*\)", re.IGNORECASE)
-_RE_FUND_SPLIT = re.compile(r"[^A-Za-z]+")
+_RE_GROUP_OPTION = re.compile(r"(?i)(?:\(\s*([ab])\s*\)|(?<!\w)([ab])[.)])")
 
 
 def _tag(name: str) -> str:
@@ -71,18 +73,8 @@ def _checked_group(value: str | None) -> str | None:
     for index, option in enumerate(options):
         end = options[index + 1].start() if index + 1 < len(options) else len(value)
         if CANONICAL_CHECKED in value[option.end() : end]:
-            return option.group(1).lower()
+            return (option.group(1) or option.group(2)).lower()
     return None
-
-
-def _fund_types(value: str | None) -> tuple[str, ...]:
-    if not value:
-        return ()
-    result: list[str] = []
-    for token in _RE_FUND_SPLIT.split(value):
-        if len(token) == 2 and token.isupper() and token not in result:
-            result.append(token)
-    return tuple(result)
 
 
 def _add_checkbox_value(
@@ -109,7 +101,7 @@ def _reporting_person_xml(parent: ET.Element, person: ReportingPersonCover) -> N
         _source_value(person, "memberOfGroup") or _source_value(person, 2)
     )
     _add_text(info, "memberOfGroup", member_group)
-    for fund_type in _fund_types(
+    for fund_type in two_character_codes(
         _first_value(person, "fundType") or _first_value(person, 4)
     ):
         _add_text(info, "fundType", fund_type)
@@ -145,7 +137,7 @@ def _reporting_person_xml(parent: ET.Element, person: ReportingPersonCover) -> N
         "percentOfClass",
         _first_value(person, "percentOfClass") or _first_value(person, 13),
     )
-    for type_code in _fund_types(
+    for type_code in two_character_codes(
         _first_value(person, "typeOfReportingPerson") or _first_value(person, 14)
     ):
         _add_text(info, "typeOfReportingPerson", type_code)
@@ -187,7 +179,13 @@ def _cover_xml(parent: ET.Element, doc: BeneficialOwnershipDocument) -> None:
 
 
 def _narrative_xml(parent: ET.Element, item: NarrativeItem) -> None:
+    if item.number in {2, 5} and not item.parsed_fields:
+        return
     item_element = ET.SubElement(parent, _tag(f"item{item.number}"))
+    if item.parsed_fields:
+        for field in item.parsed_fields:
+            _add_text(item_element, field.tag, field.value)
+        return
     field_map_13d = {
         1: "commentText",
         2: "filingPersonName",
@@ -211,6 +209,44 @@ def _signature_xml(parent: ET.Element, doc: BeneficialOwnershipDocument) -> None
         _add_text(details, "signature", person.name)
         _add_text(details, "title", person.title)
         _add_text(details, "date", person.date)
+
+
+def _diagnostics_xml(root: ET.Element, doc: BeneficialOwnershipDocument) -> None:
+    provenance = ET.SubElement(
+        root,
+        _tag("extractionProvenance"),
+        {"sourceLength": str(doc.source_length)},
+    )
+    for extraction in doc.field_extractions:
+        field = ET.SubElement(
+            provenance,
+            _tag("fieldExtraction"),
+            {
+                "fieldPath": extraction.field_path,
+                "startOffset": str(extraction.start_offset),
+                "endOffset": str(extraction.end_offset),
+            },
+        )
+        if extraction.shared_source_group:
+            field.set("sharedSourceGroup", extraction.shared_source_group)
+        _add_text(field, "sourceText", extraction.source_text)
+
+    unparsed = ET.SubElement(
+        root,
+        _tag("unparsedSections"),
+        {"sourceLength": str(doc.source_length)},
+    )
+    for section in doc.unparsed_sections:
+        node = ET.SubElement(
+            unparsed,
+            _tag("unparsedSection"),
+            {
+                "startOffset": str(section.start_offset),
+                "endOffset": str(section.end_offset),
+                "role": section.role,
+            },
+        )
+        node.text = section.text
 
 
 def build_beneficial_ownership_xml(doc: BeneficialOwnershipDocument) -> bytes:
@@ -254,6 +290,7 @@ def build_beneficial_ownership_xml(doc: BeneficialOwnershipDocument) -> bytes:
                 )
             _narrative_xml(items, item)
     _signature_xml(form_data, doc)
+    _diagnostics_xml(root, doc)
     return ET.tostring(root, encoding="utf-8", xml_declaration=True)
 
 

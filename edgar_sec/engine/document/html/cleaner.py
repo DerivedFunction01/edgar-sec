@@ -133,6 +133,7 @@ _RE_DECORATIVE_ATTR = re.compile(
     rf"""(?i)\s+(?:{_DECORATIVE_ATTRS_ALT})\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)"""
 )
 _RE_BARE_FONT_TAG = re.compile(r"(?i)</?font\b[^>]*>")
+_RE_FONT_CLOSE = re.compile(r"(?i)</font\s*>")
 
 
 _METADATA_PREFIX_ALT = build_alternation(["mso", "data"], auto_escape=True)
@@ -316,9 +317,10 @@ def strip_font_tag_and_noise_attributes(html: str) -> str:
                 return ""
 
             new_attrs = _RE_FONT_ATTRS.sub(_clean_attr, attrs)
-            return f"<font{new_attrs}>"
+            return f"<font{new_attrs}>" if new_attrs.strip() else ""
 
         html = _RE_FONT_TAG.sub(_clean_tag, html)
+        html = _RE_FONT_CLOSE.sub("", html)
     if (
         "tabindex=" in html
         or "target=" in html
