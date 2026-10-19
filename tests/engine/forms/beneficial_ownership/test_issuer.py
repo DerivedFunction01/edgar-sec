@@ -92,9 +92,11 @@ Level 5, 97 Pacific Highway, North Sydney C3 NSW 2060 Australia
 def test_extract_issuer_metadata_drops_missing_cusip_marker_and_page_residue() -> None:
     missing = extract_issuer_metadata("None. (CUSIP Number)")
     contaminated = extract_issuer_metadata("53071M500 SCHEDULE13D Page2 (CUSIP Number)")
+    residue_only = extract_issuer_metadata("SCHEDULE 13D (CUSIP Number)")
 
     assert missing.cusip is None
     assert contaminated.cusip == "53071M500"
+    assert residue_only.cusip is None
 
 
 def test_extract_issuer_metadata_splits_inline_notice_contact_phone_and_address() -> (

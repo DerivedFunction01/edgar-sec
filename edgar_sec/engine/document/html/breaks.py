@@ -94,13 +94,17 @@ def collapse_marker_runs(text: str) -> str:
     return _RE_PAGE_SENTINEL_RUN.sub(f"\n{PAGE_MARKER_LINE}\n", text)
 
 
-def render_html_to_break_text(html: str) -> NormalizedHtmlText:
+def render_html_to_break_text(
+    html: str, *, unwrap_false_tables: bool = True
+) -> NormalizedHtmlText:
     """Project HTML into the text frame, carrying page boundaries across.
     Break markup becomes the transport sentinel before projection, then the canonical ``<PAGE>`` marker; the declared policy decides each marker's fate.
     """
     if not html:
         return NormalizedHtmlText("", ())
-    normalized = normalize_html_document(insert_page_sentinels(html))
+    normalized = normalize_html_document(
+        insert_page_sentinels(html), unwrap_false_tables=unwrap_false_tables
+    )
     converted = collapse_marker_runs(
         str(normalized).replace(PAGE_SPLIT_SENTINEL, f"\n{PAGE_MARKER_LINE}\n")
     )

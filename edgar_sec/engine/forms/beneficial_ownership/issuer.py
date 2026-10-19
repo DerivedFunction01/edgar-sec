@@ -371,7 +371,7 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
             elif page_marker := cusip_page_residue_match(value):
                 prefix = value[: page_marker.start()]
                 tokens = list(_CUSIP_TOKEN_RE.finditer(prefix))
-                value = tokens[-1].group(0) if tokens else value
+                value = tokens[-1].group(0) if tokens else None
         selected[field] = value
     issuer_address = _address(selected["issuer_address"])
     notice_address = _address(selected["notice_address"])

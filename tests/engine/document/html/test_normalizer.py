@@ -202,6 +202,25 @@ def test_normalize_html_document_unwraps_a_false_table() -> None:
     assert "Single narrative cell" in result
 
 
+def test_false_table_unwrapping_can_be_disabled_without_skipping_rendering() -> None:
+    label = "Number of Shares Beneficially Owned by Each Reporting Person With"
+    html = (
+        "<table><tr><td colspan='3' rowspan='4'>"
+        f"{label}</td><td>7.</td><td>Sole Voting Power 0</td></tr>"
+        "<tr><td>8.</td><td>Shared Voting Power 100</td></tr>"
+        "<tr><td>9.</td><td>Sole Dispositive Power 0</td></tr>"
+        "<tr><td>10.</td><td>Shared Dispositive Power 100</td></tr></table>"
+    )
+
+    result = normalize_html_document(html, unwrap_false_tables=False)
+
+    assert "<TABLE>" in result
+    assert result.count(label) == 1
+    assert all(value in result for value in ("7.", "8.", "9.", "10."))
+    assert all(value in result for value in ("Sole Voting Power 0", "100"))
+    assert len(result.table_geometries) == 1
+
+
 def test_injected_cleanup_replaces_the_default_policy() -> None:
     seen: list[str] = []
 

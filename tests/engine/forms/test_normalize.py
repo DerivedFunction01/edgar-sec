@@ -79,6 +79,39 @@ def test_annual_10k_html_golden() -> None:
     assert SENTINEL_SUFFIX not in res.text
 
 
+def test_schedule_13d_and_13g_profiles_preserve_span_tables() -> None:
+    label = "Number of Shares Beneficially Owned by Each Reporting Person With"
+    html = (
+        "<html><body><table><tr><td colspan='3' rowspan='4'>"
+        f"{label}</td><td>7.</td><td>Sole Voting Power 0</td></tr>"
+        "<tr><td>8.</td><td>Shared Voting Power 100</td></tr>"
+        "<tr><td>9.</td><td>Sole Dispositive Power 0</td></tr>"
+        "<tr><td>10.</td><td>Shared Dispositive Power 100</td></tr>"
+        "</table></body></html>"
+    ).encode()
+
+    for form in ("SC 13D/A", "SCHEDULE 13G/A"):
+        result = normalize_document(html, form=form)
+        assert "<TABLE>" in result.text
+        assert result.text.count(label) == 1
+        assert all(value in result.text for value in ("7.", "8.", "9.", "10."))
+        numbered_lines = [
+            line
+            for line in result.text.splitlines()
+            if any(f"{number}." in line for number in (7, 8, 9, 10))
+        ]
+        assert len(numbered_lines) == 4
+        assert all(
+            sum(f"{number}." in line for number in (7, 8, 9, 10)) == 1
+            for line in numbered_lines
+        )
+        assert len(result.table_geometries) == 1
+
+    annual = normalize_document(html, form="10-K")
+    assert "<TABLE>" not in annual.text
+    assert annual.text.count(label) > 1
+
+
 def test_normalize_empty_payload() -> None:
     res = normalize_document(b"", form="10-K")
     assert res.text == ""

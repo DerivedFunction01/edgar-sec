@@ -217,6 +217,7 @@ def normalize_html_document(
     html: str,
     *,
     cleanup_tables: Callable[[str], str] | None = None,
+    unwrap_false_tables: bool = True,
 ) -> NormalizedHtmlText:
     """Render an HTML document into normalized text without tree text extraction.
     Tables render while surrounding markup stays serialized, or paragraph cohesion is lost.
@@ -224,7 +225,7 @@ def normalize_html_document(
     if not html:
         return NormalizedHtmlText("", ())
 
-    metadata_cleanup = cleanup_tables is None
+    metadata_cleanup = cleanup_tables is None and unwrap_false_tables
 
     cleaned = clean_html_for_parsing(html)
     hybrid = normalize_hybrid_pre_text(cleaned)
@@ -235,7 +236,7 @@ def normalize_html_document(
     )
     if metadata_cleanup:
         rendered, geometries = cleanup_false_tables_with_metadata(rendered, geometries)
-    else:
+    elif cleanup_tables is not None:
         rendered = cleanup_tables(rendered)
     normalized = decompose_html_structures(rendered)
     if hybrid.protected:

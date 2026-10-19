@@ -180,6 +180,10 @@ def normalize_document(
 
     text, representation, _encoding = prepare_input_text(raw_bytes)
 
+    canonical_family = resolve_alias(form)
+    family = canonical_family or (form.upper().strip() if form else "GENERIC")
+    profile = get_profile(canonical_family)
+
     table_geometries: tuple[TableGeometry, ...] = ()
     analysis: PageMarkerAnalysis | None = None
 
@@ -191,13 +195,11 @@ def normalize_document(
             _templates,
             _next_id,
             table_geometries,
-        ) = apply_fast_html_page_policy(text)
+        ) = apply_fast_html_page_policy(
+            text, unwrap_false_tables=profile.unwrap_false_tables
+        )
     else:
         text, analysis, _artifacts, _templates, _next_id = apply_text_policy(text)
-
-    canonical_family = resolve_alias(form)
-    family = canonical_family or (form.upper().strip() if form else "GENERIC")
-    profile = get_profile(canonical_family)
 
     boundary = find_cover_boundary_for_profile(
         BoundaryInput(

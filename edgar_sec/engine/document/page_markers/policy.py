@@ -307,6 +307,7 @@ def apply_fast_html_page_policy(
     first_id: int = 1,
     context: dict[str, Any] | None = None,
     allow_letter_number: bool = True,
+    unwrap_false_tables: bool = True,
 ) -> tuple[
     str,
     PageMarkerAnalysis,
@@ -319,7 +320,9 @@ def apply_fast_html_page_policy(
     Table furniture is admitted only here: a rendered ``<TABLE>`` is how a filing prints a banner.
     """
 
-    normalized = render_html_to_break_text(html)
+    normalized = render_html_to_break_text(
+        html, unwrap_false_tables=unwrap_false_tables
+    )
     text = str(normalized)
     analysis_context = dict(context or {})
     analysis_context["allow_table_furniture"] = True
@@ -353,6 +356,7 @@ def apply_html_policy(
     *,
     first_id: int = 1,
     allow_letter_number: bool = True,
+    unwrap_false_tables: bool = True,
 ) -> tuple[
     str,
     PageMarkerAnalysis,
@@ -369,6 +373,7 @@ def apply_html_policy(
         policy,
         first_id=first_id,
         allow_letter_number=allow_letter_number,
+        unwrap_false_tables=unwrap_false_tables,
     )
 
 

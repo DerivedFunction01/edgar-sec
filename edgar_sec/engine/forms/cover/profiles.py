@@ -94,6 +94,7 @@ class CoverProfile:
     derived_taxonomy: dict | None = None
     checkbox_schema: CoverCheckboxSchema | None = None
     cover_table_cleaners: tuple[str, ...] = ()
+    unwrap_false_tables: bool = True
     processing_profile: DocumentProcessingProfile | None = None
 
     @property
@@ -128,6 +129,7 @@ def _make_profile(
     body_evidence: BodyEvidencePack | None = None,
     derived_taxonomy: dict | None = None,
     cover_table_cleaners: tuple[str, ...] = (),
+    unwrap_false_tables: bool = True,
 ) -> CoverProfile:
     family_entry = get_family_entry(family)
     prof = family_entry.profile if family_entry is not None else None
@@ -146,6 +148,7 @@ def _make_profile(
             family_entry.cover_checkbox_schema if family_entry is not None else None
         ),
         cover_table_cleaners=cover_table_cleaners,
+        unwrap_false_tables=unwrap_false_tables,
         processing_profile=prof,
     )
 
@@ -453,6 +456,7 @@ def build_beneficial_ownership_profile(family: str = "13D") -> CoverProfile:
                 *FORWARD_LOOKING_PHRASES,
             ),
         ),
+        unwrap_false_tables=False,
     )
 
 

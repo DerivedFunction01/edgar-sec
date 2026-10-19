@@ -155,6 +155,17 @@ def test_cover_table_cleaners_configuration() -> None:
     assert get_profile("GENERIC").cover_table_cleaners == ()
 
 
+@pytest.mark.parametrize("family", ("13D", "13G"))
+def test_beneficial_ownership_profiles_retain_false_tables(family: str) -> None:
+    assert get_profile(family).unwrap_false_tables is False
+
+
+@pytest.mark.parametrize("form", ("10-K", "SC 13D/A", "SCHEDULE 13G/A"))
+def test_false_table_policy_follows_canonical_form_profile(form: str) -> None:
+    expected = form == "10-K"
+    assert get_profile(form).unwrap_false_tables is expected
+
+
 @pytest.mark.parametrize(
     ("raw", "expected"),
     [
