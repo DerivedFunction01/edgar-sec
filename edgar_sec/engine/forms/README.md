@@ -7,6 +7,8 @@ Composes filing document parsing and normalization and returns the result record
 Normalization combines document preparation, page policy, cover analysis, table
 handling, and representation-specific reflow.
 
+Beneficial ownership (Schedule 13D and 13G) parsing and XML rendering live in `beneficial_ownership/`.
+
 ## Contracts
 
 - **Stage order is owned by `normalize.py`.** See its docstring for the current

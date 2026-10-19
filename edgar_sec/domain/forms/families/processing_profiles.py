@@ -64,6 +64,14 @@ from edgar_sec.domain.forms.families.registration.taxonomy import (
     FORM_S4_ITEMS,
     FORM_S8_ITEMS,
 )
+from edgar_sec.domain.forms.families.beneficial_ownership.processing import (
+    PROFILE_SCHEDULE_13D,
+    PROFILE_SCHEDULE_13G,
+)
+from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
+    SCHEDULE_13D_ITEMS,
+    SCHEDULE_13G_ITEMS,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -145,6 +153,16 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
     ProcessingCatalogEntry(
         family="144",
         profile=PROFILE_FORM_144,
+    ),
+    ProcessingCatalogEntry(
+        family="13D",
+        profile=PROFILE_SCHEDULE_13D,
+        taxonomy_items=SCHEDULE_13D_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="13G",
+        profile=PROFILE_SCHEDULE_13G,
+        taxonomy_items=SCHEDULE_13G_ITEMS,
     ),
 )
 

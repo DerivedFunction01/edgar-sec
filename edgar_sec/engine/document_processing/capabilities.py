@@ -116,6 +116,20 @@ DEFAULT_CAPABILITIES = ProcessingCapabilityRegistry(
             input_facts="markup route primary html body",
             output_kind=HandlerOutputKind.XML,
         ),
+        ProcessingCapability(
+            handler_id="schedule13d_to_xml",
+            handler_version="1",
+            operation="render_to_xml",
+            input_facts="text, markup, or native Schedule 13D XML",
+            output_kind=HandlerOutputKind.XML,
+        ),
+        ProcessingCapability(
+            handler_id="schedule13g_to_xml",
+            handler_version="1",
+            operation="render_to_xml",
+            input_facts="text, markup, or native Schedule 13G XML",
+            output_kind=HandlerOutputKind.XML,
+        ),
     )
 )
 

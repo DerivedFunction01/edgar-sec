@@ -24,7 +24,7 @@ _RE_IXBRL_TAG = re.compile(rf"(?i)</?(?:{_IXBRL_PREFIXES}):[a-z][a-z0-9_.-]*[^>]
 
 
 # Standard families carry no downstream signal; symbolic fonts do.
-_PRESERVED_FAMILIES = ("wingdings", "webdings", "symbol")
+_PRESERVED_FAMILIES = ("wingdings 2", "wingdings2", "wingdings", "webdings", "symbol")
 _PRESERVED_FAMILIES_ALT = build_alternation(_PRESERVED_FAMILIES, auto_escape=True)
 _RE_HAS_PRESERVED_FAMILY = re.compile(rf"(?i)\b(?:{_PRESERVED_FAMILIES_ALT})\b")
 
@@ -60,7 +60,7 @@ _SIDE_SUFFIX_ALT = build_alternation(
 # properties while preserving structural borders, alignment, widths, page breaks, symbolic fonts.
 _RE_BENIGN_STYLE_DECL = re.compile(
     r"(?i)(?<![a-z-])(?:"
-    rf"font-family\s*:\s*(?![^;\"'\n>]*(?:{_PRESERVED_FAMILIES_ALT}))[^;\"'\n>]*"
+    rf"(?:font-family|font)\s*:\s*(?![^;\"'\n>]*(?:{_PRESERVED_FAMILIES_ALT}))[^;\"'\n>]*"
     r"|font-size\s*:[^;\"'\n>]*"
     r"|(?:background-)?color\s*:[^;\"'\n>]*"
     rf"|(?:{_BOX_SPACING_ALT})(?:-(?:{_SIDE_SUFFIX_ALT}))?\s*:[^;\"'\n>]*"
@@ -76,6 +76,7 @@ _RE_TAG_OR_TEXT = re.compile(r"(?is)<!--.*?-->|<[^>]*>|[^<]+")
 _RE_STYLE_FONT_FAMILY = re.compile(
     r"(?i)\bfont-family\s*:\s*([^;\"]+)|(?<=style=[\"'])\s*([a-z0-9\s,'\"_-]+?)(?:;|\"|'|$)"
 )
+_RE_STYLE_FONT = re.compile(r"(?i)\bfont\s*:\s*([^;\"]+)")
 _RE_FACE_ATTR = re.compile(r"(?i)\bface\s*=\s*(?:\"([^\"]*)\"|'([^']*)'|([^\s>]+))")
 _RE_GLYPH = re.compile(r"[\u00a8\u00a3\u00fe\u00fdrRnNuUoOxX]")
 _RE_NUMERIC_GLYPH_ENTITY = re.compile(r"&#(?:x([0-9a-f]+)|(\d+));?", re.IGNORECASE)
@@ -247,20 +248,25 @@ def normalize_font_qualified_glyphs(html: str) -> str:
             continue
 
         font_stack.append(current_font)
-        tok_lower = token.lower()
-        if "font-family" in tok_lower:
+        declared_font: str | None = None
+        face_match = _RE_FACE_ATTR.search(token)
+        if face_match:
+            declared_font = next(
+                (value for value in face_match.groups() if value is not None), ""
+            ).strip()
+        else:
             style_match = _RE_STYLE_FONT_FAMILY.search(token)
             if style_match:
-                current_font = (
+                declared_font = (
                     style_match.group(1) or style_match.group(2) or ""
                 ).strip()
-                continue
-        if "face=" in tok_lower or "face =" in tok_lower:
-            face_match = _RE_FACE_ATTR.search(token)
-            if face_match:
-                current_font = next(
-                    (value for value in face_match.groups() if value is not None), ""
-                ).strip()
+            else:
+                shorthand_match = _RE_STYLE_FONT.search(token)
+                if shorthand_match:
+                    declared_font = shorthand_match.group(1).strip()
+        if declared_font is not None:
+            pres_match = _RE_HAS_PRESERVED_FAMILY.search(declared_font)
+            current_font = pres_match.group(0) if pres_match else None
 
     return "".join(output)
 

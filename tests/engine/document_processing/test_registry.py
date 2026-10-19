@@ -123,3 +123,16 @@ def test_form4_html_to_xml_handler_wraps_html_and_preserves_xml() -> None:
     reg5 = DEFAULT_HANDLER_REGISTRY.resolve("render_to_xml", "5", DocumentRoute.MARKUP)
     assert reg5 is not None
     assert reg5.handler_id == "form5_html_to_xml"
+
+
+def test_schedule13d_renderer_is_registered_for_markup_and_text_routes() -> None:
+    from edgar_sec.domain.document.route import DocumentRoute
+    from edgar_sec.engine.document_processing.registry import DEFAULT_HANDLER_REGISTRY
+
+    markup = DEFAULT_HANDLER_REGISTRY.resolve(
+        "render_to_xml", "13D", DocumentRoute.MARKUP
+    )
+    text = DEFAULT_HANDLER_REGISTRY.resolve("render_to_xml", "13D", DocumentRoute.TEXT)
+
+    assert markup is not None and markup.handler_id == "schedule13d_to_xml"
+    assert text is not None and text.handler_id == "schedule13d_to_xml"

@@ -51,6 +51,10 @@ from edgar_sec.domain.forms.families.registration.taxonomy import (
     FORM_S4_DERIVED,
     FORM_S8_DERIVED,
 )
+from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
+    SCHEDULE_13D_ITEMS,
+    SCHEDULE_13G_ITEMS,
+)
 from edgar_sec.engine.forms.cover.models import (
     BoundarySignal,
     CoverBoundaryPolicy,
@@ -397,6 +401,61 @@ def build_no_cover_profile(family: str) -> CoverProfile:
     return build_generic_cover_profile(family)
 
 
+_BENEFICIAL_OWNERSHIP_COVER_LABELS: tuple[str, ...] = (
+    "names of reporting persons",
+    "name of reporting person",
+    "check the appropriate box if a member of a group",
+    "sec use only",
+    "source of funds",
+    "check box if disclosure of legal proceedings",
+    "citizenship or place of organization",
+    "sole voting power",
+    "shared voting power",
+    "sole dispositive power",
+    "shared dispositive power",
+    "aggregate amount beneficially owned",
+    "percent of class",
+    "type of reporting person",
+    "cusip number",
+    "name of issuer",
+    "rule 13d-1(b)",
+    "rule 13d-1(c)",
+    "rule 13d-1(d)",
+)
+
+
+def build_beneficial_ownership_profile(family: str = "13D") -> CoverProfile:
+    """Cover profile for beneficial ownership statements (Schedule 13D/13G)."""
+    items = SCHEDULE_13G_ITEMS if family == "13G" else SCHEDULE_13D_ITEMS
+    structural_headings = tuple(d.item for d in items)
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_BENEFICIAL_OWNERSHIP_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=_BENEFICIAL_OWNERSHIP_COVER_LABELS,
+            labels=_BENEFICIAL_OWNERSHIP_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=structural_headings,
+            semantic_headings=(
+                "signature",
+                "signatures",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+    )
+
+
 def _build_profiles() -> dict[str, CoverProfile]:
     annual_common = _dataclass_replace(
         build_annual_profile("10-K"), derived_taxonomy=FORM_10K_DERIVED
@@ -430,6 +489,8 @@ def _build_profiles() -> dict[str, CoverProfile]:
             lexical=current.body_lexical,
         ),
     )
+    schedule13d = build_beneficial_ownership_profile("13D")
+    schedule13g = build_beneficial_ownership_profile("13G")
     generic = build_generic_cover_profile("GENERIC")
     return {
         "10-K": annual_common,
@@ -441,6 +502,8 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "S-8": registration_s8,
         "8-K": generic_8k,
         "6-K": generic_6k,
+        "13D": schedule13d,
+        "13G": schedule13g,
         "GENERIC": generic,
     }
 
@@ -480,5 +543,6 @@ __all__ = [
     "build_no_cover_profile",
     "build_quarterly_profile",
     "build_registration_profile",
+    "build_beneficial_ownership_profile",
     "get_profile",
 ]

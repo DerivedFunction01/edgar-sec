@@ -129,6 +129,11 @@ def test_normalize_font_qualified_glyphs() -> None:
     )
     assert "[ ]" in normalized_unchecked
 
+    shorthand = normalize_font_qualified_glyphs(
+        '<p style="font: 10pt Wingdings; margin: 0">o</p>'
+    )
+    assert "[ ]" in shorthand
+
 
 def test_normalize_font_qualified_numeric_glyph_entities() -> None:
     normalized = normalize_font_qualified_glyphs(
