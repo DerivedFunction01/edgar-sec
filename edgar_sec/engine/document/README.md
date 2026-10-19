@@ -29,7 +29,8 @@ cleaned, projected, and had its page furniture resolved.
 - **Wrappers are `__slots__`-only and hold no parsed state.** `node.parent`
   returns a fresh wrapper, so compare with `==`, never by identity.
 - **No barrel re-exports.** Every `__init__.py` is a docstring.
-- **Layer discipline.** Imports only `foundation`, `domain`, and `engine.tables`.
+- **Layer discipline.** Imports only `foundation`, `domain`, `engine.tables`, and
+  sibling document primitives such as the shared signature detector.
 
 ## Command surface
 

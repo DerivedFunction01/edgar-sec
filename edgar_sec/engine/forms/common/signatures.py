@@ -6,7 +6,6 @@ import re
 
 from edgar_sec.domain.forms.common.signatures import (
     COMMON_SIGNATURE_LEXICAL_PACK,
-    CONFORMED_SIGNATURE_TOKENS,
     CORPORATE_OFFICER_TITLES,
     CORPORATE_SIGNATORY_ROLES,
     NOTARY_AND_JURAT_PHRASES,
@@ -15,7 +14,9 @@ from edgar_sec.domain.forms.common.signatures import (
     Signatory,
     SignatureBlock,
 )
-from edgar_sec.engine.document.page_markers.signatures import (
+from edgar_sec.engine.document.signatures import (
+    CONFORMED_SIGNATURE_ALT,
+    CONFORMED_SIGNATURE_RE,
     RE_CONFORMED_SIGNER_NAME,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
@@ -31,10 +32,6 @@ from edgar_sec.foundation.text.evidence import (
     score_tokens,
 )
 
-CONFORMED_SIGNATURE_ALT = build_alternation(
-    CONFORMED_SIGNATURE_TOKENS, auto_escape=True
-)
-CONFORMED_SIGNATURE_RE = re.compile(rf"(?i){CONFORMED_SIGNATURE_ALT}")
 CLEAN_LINE_RE = re.compile(r"[_=\-\*]{2,}")
 WHITESPACE_RE = re.compile(r"\s+")
 PREFIX_STRIP_TERMS = (

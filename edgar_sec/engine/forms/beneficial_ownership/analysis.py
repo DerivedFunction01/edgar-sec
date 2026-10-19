@@ -6,7 +6,10 @@ import re
 from typing import Any
 import xml.etree.ElementTree as ET
 
-from edgar_sec.engine.forms.common.statutory import STATUTORY_PAGE_ARTIFACT_RE
+from edgar_sec.engine.forms.common.statutory import (
+    HEADER_LEAK_RE,
+    STATUTORY_PAGE_ARTIFACT_RE,
+)
 from edgar_sec.engine.forms.beneficial_ownership.provenance_analysis import (
     analyze_extraction_provenance,
 )
@@ -14,6 +17,15 @@ from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import 
     cover_field_has_layout_residue,
     has_descriptive_numeric_qualifier,
     is_eight_character_cusip,
+    is_unavailable_cusip,
+    cusip_page_residue_match,
+    parsed_field_boilerplate_match,
+)
+from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
+    CATEGORICAL_FIELDS,
+    CHECKBOX_FIELDS,
+    COVER_VALUE_FIELDS,
+    FIELD_TAGS,
 )
 from edgar_sec.engine.forms.beneficial_ownership.field_observations import (
     empty_field_observations,
@@ -23,67 +35,17 @@ from edgar_sec.engine.forms.common.signatures import (
     clean_signature_name,
     is_valid_signature_name,
 )
+from edgar_sec.engine.document.signatures import (
+    CONFORMED_SIGNATURE_RE,
+    RE_SIGNATURE_DATE_LINE,
+    RE_SIGNATURE_HEADING,
+)
 from edgar_sec.foundation.regex.builder import build_alternation
 
 _SCHEDULE_13D_NS = "http://www.sec.gov/edgar/schedule13D"
 _SCHEDULE_13G_NS = "http://www.sec.gov/edgar/schedule13G"
 _ALLOWED_NAMESPACES = {_SCHEDULE_13D_NS, _SCHEDULE_13G_NS}
 
-_FIELD_TAGS: dict[str, tuple[str, ...]] = {
-    "issuerName": ("issuerName",),
-    "issuerCusip": ("issuerCusipNumber", "issuerCUSIP"),
-    "noticeContact": ("personName",),
-    "securitiesClassTitle": ("securitiesClassTitle",),
-    "dateOfEvent": ("dateOfEvent",),
-    "reportingPersonName": ("reportingPersonName",),
-    "memberOfGroup": ("memberOfGroup",),
-    "fundType": ("fundType",),
-    "legalProceedings": ("legalProceedings",),
-    "citizenshipOrOrganization": ("citizenshipOrOrganization",),
-    "soleVotingPower": ("soleVotingPower",),
-    "sharedVotingPower": ("sharedVotingPower",),
-    "soleDispositivePower": ("soleDispositivePower",),
-    "sharedDispositivePower": ("sharedDispositivePower",),
-    "aggregateAmountOwned": ("aggregateAmountOwned",),
-    "isAggregateExcludeShares": ("isAggregateExcludeShares",),
-    "percentOfClass": ("percentOfClass",),
-    "typeOfReportingPerson": ("typeOfReportingPerson",),
-    "item1": ("item1",),
-    "item2": ("item2",),
-    "item3": ("item3",),
-    "item4": ("item4",),
-    "item5": ("item5",),
-    "item6": ("item6",),
-    "item7": ("item7",),
-    "item8": ("item8",),
-    "item9": ("item9",),
-    "item10": ("item10",),
-    "signature": ("signature",),
-}
-_CATEGORICAL_TAGS = (
-    "memberOfGroup",
-    "fundType",
-    "legalProceedings",
-    "citizenshipOrOrganization",
-    "typeOfReportingPerson",
-    "isAggregateExcludeShares",
-)
-_CHECKBOX_TAGS = ("legalProceedings", "isAggregateExcludeShares")
-_COVER_VALUE_FIELDS = (
-    "issuerName",
-    "issuerCusip",
-    "noticeContact",
-    "reportingPersonName",
-    "securitiesClassTitle",
-    "dateOfEvent",
-    "citizenshipOrOrganization",
-    "soleVotingPower",
-    "sharedVotingPower",
-    "soleDispositivePower",
-    "sharedDispositivePower",
-    "aggregateAmountOwned",
-    "percentOfClass",
-)
 _NUMERIC_COVER_RE = re.compile(
     r"(?i)^\s*[-_:]*\s*(?:(?:approximately|approx\.?)\s*)?\$?(?:\d[\d,\s]*(?:\.\d+)?|--?0--?|--?|NONE|NIL|N/?A|NOT\s+APPLICABLE)\s*(?:\(\s*(?:SEE\s+)?ITEM\s+\d+[A-Z]?\s*\)\s*)*(?:\(\s*[A-Z0-9]+\s*\)\s*)*[*†‡]*[-_:.,\s]*$"
 )
@@ -102,20 +64,9 @@ _PERCENT_COVER_RE = re.compile(
     r"(?i)^\s*[-_:]*\s*(?:(?:approximately|approx\.?)\s*)?\$?\d[\d,\s]*(?:\.\d+)?\s*%?\d{0,2}[A-Z]?\s*(?:\(\s*(?:SEE\s+)?ITEM\s+\d+[A-Z]?\s*\)\s*)*(?:\(\s*[A-Z0-9]+\s*\)\s*)*[*†‡]*[-_:.,\s]*$"
 )
 _CUSIP_RE = re.compile(r"(?i)^[0-9A-Z*@#]{9}$")
-_CUSIP_UNAVAILABLE_NOT_ALT = build_alternation(
-    ("AVAILABLE", "APPLICABLE", "PROVIDED"), auto_escape=True, compact=True
-)
-_CUSIP_UNAVAILABLE_ALT = build_alternation(
-    (r"NONE\.?", r"N/?A", rf"NOT\s+(?:{_CUSIP_UNAVAILABLE_NOT_ALT})", "UNKNOWN"),
-    compact=False,
-)
-_CUSIP_UNAVAILABLE_RE = re.compile(rf"(?i)^\s*(?:{_CUSIP_UNAVAILABLE_ALT})\s*$")
-_CUSIP_PAGE_RESIDUE_RE = re.compile(r"(?i)\bSCHEDULE\s+13[DG]\b|\bPAGE\s+\d+\b")
 _MULTI_CLASS_VALUE_RE = re.compile(r"(?i)\bSERIES\s+[A-Z]\b.{0,180}?\d[\d,]*(?:\.\d+)?")
 _ITEM_SUBSECTION_RE = re.compile(r"(?im)^\s*\([a-f]\)\s")
-_SIGNATURE_HEADING_RE = re.compile(r"(?i)\bSIGNATURES?\b")
-_SIGNATURE_AUTHORSHIP_RE = re.compile(r"(?i)/\s*s\s*/")
-_SIGNATURE_DATE_LABEL_RE = re.compile(r"(?i)^\s*(?:DATED|DATE)\s*:")
+_NARRATIVE_FIELD_NAMES = {f"item{number}" for number in range(1, 11)}
 
 
 def _local_name(tag: str) -> str:
@@ -132,18 +83,35 @@ def _elements(root: ET.Element, names: tuple[str, ...]) -> list[ET.Element]:
 
 
 def _source_has_signature(source_text: str) -> bool:
-    for heading in _SIGNATURE_HEADING_RE.finditer(source_text):
+    for heading in RE_SIGNATURE_HEADING.finditer(source_text):
         section = source_text[heading.end() : heading.end() + 3000]
-        if _SIGNATURE_AUTHORSHIP_RE.search(section):
+        if CONFORMED_SIGNATURE_RE.search(section):
             return True
         lines = section.splitlines()
         for index, line in enumerate(lines):
-            if not _SIGNATURE_DATE_LABEL_RE.match(line):
+            if not RE_SIGNATURE_DATE_LINE.match(line):
                 continue
             for name_line in lines[index + 1 : index + 5]:
                 candidate = clean_signature_name(name_line)
                 if is_valid_signature_name(candidate):
                     return True
+    return False
+
+
+def _boilerplate_match(field: str, value: str) -> re.Match[str] | None:
+    if field in _NARRATIVE_FIELD_NAMES or field == "signature":
+        return None
+    return parsed_field_boilerplate_match(value)
+
+
+def _is_narrative_element(
+    element: ET.Element, parents: dict[ET.Element, ET.Element]
+) -> bool:
+    current = element
+    while current in parents:
+        current = parents[current]
+        if _local_name(current.tag) in _NARRATIVE_FIELD_NAMES:
+            return True
     return False
 
 
@@ -163,7 +131,7 @@ def _analyze_xml(
             "form": family,
             "family": family,
             "error": "malformed_xml",
-            "field_observations": empty_field_observations(_FIELD_TAGS),
+            "field_observations": empty_field_observations(FIELD_TAGS),
             "anomalies": [
                 {
                     "accession": accession,
@@ -179,6 +147,7 @@ def _analyze_xml(
 
     anomalies: list[dict[str, Any]] = []
     review_signals: list[dict[str, Any]] = []
+    parents = {child: parent for parent in root.iter() for child in parent}
     namespace, _, _ = root.tag.rpartition("}")
     ns_uri = namespace.removeprefix("{")
     root_name = _local_name(root.tag)
@@ -245,8 +214,8 @@ def _analyze_xml(
             seen_items.add(name)
             item_text = _text(child)
             if (
-                _SIGNATURE_HEADING_RE.search(item_text)
-                and _SIGNATURE_AUTHORSHIP_RE.search(item_text)
+                RE_SIGNATURE_HEADING.search(item_text)
+                and CONFORMED_SIGNATURE_RE.search(item_text)
                 and not any(
                     _text(element) for element in _elements(root, ("signature",))
                 )
@@ -311,10 +280,26 @@ def _analyze_xml(
             }
         )
 
-    for name in _COVER_VALUE_FIELDS:
-        for element in _elements(root, _FIELD_TAGS[name]):
+    for name in COVER_VALUE_FIELDS:
+        for element in _elements(root, FIELD_TAGS[name]):
             value = _text(element)
-            if value and cover_field_has_layout_residue(name, value):
+            boilerplate = (
+                None
+                if _is_narrative_element(element, parents)
+                else _boilerplate_match(name, value)
+            )
+            if boilerplate is not None:
+                anomalies.append(
+                    {
+                        "accession": accession,
+                        "kind": "boilerplate_in_parsed_field",
+                        "field": name,
+                        "value": value,
+                        "matched_text": boilerplate.group(0),
+                        "detail": f"parsed field {name!r} contains filing boilerplate",
+                    }
+                )
+            elif value and cover_field_has_layout_residue(name, value):
                 anomalies.append(
                     {
                         "accession": accession,
@@ -333,8 +318,13 @@ def _analyze_xml(
         "aggregateAmountOwned",
         "percentOfClass",
     ):
-        for element in _elements(root, _FIELD_TAGS[field]):
+        for element in _elements(root, FIELD_TAGS[field]):
             value = _text(element)
+            if (
+                not _is_narrative_element(element, parents)
+                and _boilerplate_match(field, value) is not None
+            ):
+                continue
             contamination = cover_field_has_layout_residue(field, value)
             value_pattern = (
                 _PERCENT_COVER_RE if field == "percentOfClass" else _NUMERIC_COVER_RE
@@ -371,10 +361,10 @@ def _analyze_xml(
                     }
                 )
 
-    for element in _elements(root, _FIELD_TAGS["issuerCusip"]):
+    for element in _elements(root, FIELD_TAGS["issuerCusip"]):
         value = _text(element)
         normalized = value.replace(" ", "").replace("-", "")
-        if _CUSIP_UNAVAILABLE_RE.fullmatch(value):
+        if is_unavailable_cusip(value):
             anomalies.append(
                 {
                     "accession": accession,
@@ -384,7 +374,7 @@ def _analyze_xml(
                     "detail": "a missing-CUSIP marker is emitted as a CUSIP value",
                 }
             )
-        elif _CUSIP_PAGE_RESIDUE_RE.search(value):
+        elif cusip_page_residue_match(value):
             anomalies.append(
                 {
                     "accession": accession,
@@ -415,7 +405,7 @@ def _analyze_xml(
                 }
             )
 
-    for name in _CHECKBOX_TAGS:
+    for name in CHECKBOX_FIELDS:
         for element in _elements(root, (name,)):
             value = _text(element).upper()
             if value and value not in {"Y", "N"}:
@@ -429,16 +419,16 @@ def _analyze_xml(
                     }
                 )
 
-    observations = field_observations(root, _FIELD_TAGS)
+    observations = field_observations(root, FIELD_TAGS)
     field_values = {
         field: [
             value for element in _elements(root, names) if (value := _text(element))
         ]
-        for field, names in _FIELD_TAGS.items()
+        for field, names in FIELD_TAGS.items()
     }
     value_frequencies = {
         name: [_text(element) for element in _elements(root, (name,)) if _text(element)]
-        for name in _CATEGORICAL_TAGS
+        for name in CATEGORICAL_FIELDS
     }
     unparsed_sections = []
     for element in _elements(root, ("unparsedSection",)):
@@ -490,7 +480,7 @@ def _analyze_xml(
 def _empty_observations() -> dict[str, dict[str, int]]:
     return {
         field: {"occurrences": 0, "populated_occurrences": 0, "blank_occurrences": 0}
-        for field in _FIELD_TAGS
+        for field in FIELD_TAGS
     }
 
 
@@ -509,7 +499,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
             "form": "13G" if "13G" in expected_family.upper() else "13D",
             "family": "13G" if "13G" in expected_family.upper() else "13D",
             "error": "missing_rendered_xml",
-            "field_observations": empty_field_observations(_FIELD_TAGS),
+            "field_observations": empty_field_observations(FIELD_TAGS),
             "anomalies": [
                 {
                     "accession": accession,
@@ -537,7 +527,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
             "form": "13G" if "13G" in expected_family.upper() else "13D",
             "family": "13G" if "13G" in expected_family.upper() else "13D",
             "error": "unreadable_xml",
-            "field_observations": empty_field_observations(_FIELD_TAGS),
+            "field_observations": empty_field_observations(FIELD_TAGS),
             "anomalies": [
                 {
                     "accession": accession,
@@ -566,7 +556,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
 
 def summarize_cases(case_reports: list[dict[str, Any]]) -> dict[str, Any]:
     case_count = len(case_reports)
-    observations: dict[str, Counter[str]] = {field: Counter() for field in _FIELD_TAGS}
+    observations: dict[str, Counter[str]] = {field: Counter() for field in FIELD_TAGS}
     anomalies: list[dict[str, Any]] = []
     anomaly_counts: Counter[str] = Counter()
     anomaly_case_accessions: dict[str, set[str]] = {}
@@ -579,10 +569,10 @@ def summarize_cases(case_reports: list[dict[str, Any]]) -> dict[str, Any]:
     unparsed_sections: list[dict[str, Any]] = []
     boilerplate_unparsed_count = 0
     value_counts: dict[str, Counter[str]] = {
-        name: Counter() for name in _CATEGORICAL_TAGS
+        name: Counter() for name in CATEGORICAL_FIELDS
     }
     value_cases: dict[str, dict[str, set[str]]] = {
-        name: {} for name in _CATEGORICAL_TAGS
+        name: {} for name in CATEGORICAL_FIELDS
     }
 
     for report in case_reports:

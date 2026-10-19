@@ -5,7 +5,7 @@ column gap starts, where a numeric cell starts, which columns rows share.
 
 from __future__ import annotations
 
-from edgar_sec.engine.document.page_markers.signatures import (
+from edgar_sec.engine.document.signatures import (
     RE_SIGNATURE_LABEL_LINE,
     SIGNATURE_LABEL_PREFIXES,
     is_signature_label_line,

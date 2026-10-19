@@ -9,6 +9,10 @@ from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     IssuerMetadata,
 )
 from edgar_sec.engine.forms.common.tables import parse_address_parts
+from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
+    cusip_page_residue_match,
+    is_unavailable_cusip,
+)
 from edgar_sec.foundation.regex.builder import build_alternation
 
 _FIELD_LABELS: dict[str, tuple[str, ...]] = {
@@ -64,13 +68,6 @@ _WHITESPACE_RE = re.compile(r"\s+")
 _TABLE_MARKUP_RE = re.compile(r"(?i)^\s*</?TABLE>\s*$")
 _ATTENTION_RE = re.compile(r"(?i)^\s*ATTENTION\s*:\s*(?P<name>.+?)\s*$")
 _COPY_TO_RE = re.compile(r"(?i)^\s*(?:WITH\s+)?COPY\s+TO\s*:?\s*$")
-_CUSIP_UNAVAILABLE_ALT = build_alternation(
-    ("NONE", "N/A", "NA", "NOT AVAILABLE", "NOT APPLICABLE", "UNKNOWN"),
-    auto_escape=True,
-    compact=True,
-)
-_CUSIP_UNAVAILABLE_RE = re.compile(rf"(?i)^\s*(?:{_CUSIP_UNAVAILABLE_ALT})\.?\s*$")
-_CUSIP_PAGE_RE = re.compile(r"(?i)\bSCHEDULE\s*13[DG]\b|\bPAGE\s*\d+\b")
 _CUSIP_TOKEN_RE = re.compile(r"(?i)(?<![0-9A-Z])[0-9A-Z*@#]{9}(?![0-9A-Z])")
 _PHONE_LABEL_ALT = build_alternation(
     ("TEL", "TELEPHONE", "PHONE"), auto_escape=True, compact=True
@@ -369,9 +366,9 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
         }
         value = next(iter(unique.values())) if len(unique) == 1 else None
         if field == "cusip" and value:
-            if _CUSIP_UNAVAILABLE_RE.fullmatch(value):
+            if is_unavailable_cusip(value):
                 value = None
-            elif page_marker := _CUSIP_PAGE_RE.search(value):
+            elif page_marker := cusip_page_residue_match(value):
                 prefix = value[: page_marker.start()]
                 tokens = list(_CUSIP_TOKEN_RE.finditer(prefix))
                 value = tokens[-1].group(0) if tokens else value

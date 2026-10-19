@@ -2,10 +2,23 @@ from __future__ import annotations
 
 import re
 
-from edgar_sec.engine.forms.common.statutory import HEADER_LEAK_RE
+from edgar_sec.engine.forms.common.statutory import (
+    HEADER_LEAK_RE,
+    STATUTORY_PAGE_ARTIFACT_RE,
+)
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.engine.forms.beneficial_ownership.vocabulary import COVER_LABEL_PHRASES
 
 _CUSIP_SHORT_RE = re.compile(r"(?i)^[0-9A-Z*@#]{8}$")
+_CUSIP_UNAVAILABLE_NOT_ALT = build_alternation(
+    ("AVAILABLE", "APPLICABLE", "PROVIDED"), auto_escape=True, compact=True
+)
+_CUSIP_UNAVAILABLE_ALT = build_alternation(
+    (r"NONE\.?", r"N/?A\.?", rf"NOT\s+(?:{_CUSIP_UNAVAILABLE_NOT_ALT})", "UNKNOWN"),
+    compact=False,
+)
+_CUSIP_UNAVAILABLE_RE = re.compile(rf"(?i)^\s*(?:{_CUSIP_UNAVAILABLE_ALT})\s*$")
+_CUSIP_PAGE_RESIDUE_RE = re.compile(r"(?i)\bSCHEDULE\s*13[DG]\b|\bPAGE\s*\d+\b")
 _ANY_NUMBER_RE = re.compile(r"\d")
 _FUND_CODE_SPLIT_RE = re.compile(r"[^A-Za-z0-9]+")
 _NUMERIC_FOOTNOTE_RE = re.compile(r"(?i)^\s*\d[\d,]*(?:\.\d+)?\s*\[\d+\]\s*$")
@@ -28,33 +41,7 @@ _QUALIFIED_NUMERIC_PHRASES = (
     "including",
 )
 _COVER_LABEL_LEAK_ALT = build_alternation(
-    (
-        "name of reporting person",
-        "names of reporting persons",
-        "check the appropriate box",
-        "source of funds",
-        "sec use only",
-        "check if disclosure of legal proceedings",
-        "citizenship or place of organization",
-        "sole voting power",
-        "shared voting power",
-        "sole dispositive power",
-        "shared dispositive power",
-        "aggregate amount beneficially owned",
-        "owned by",
-        "owned by each reporting person",
-        "person with",
-        "identification nos. of above persons",
-        "i.d. no.",
-        "percent of class represented",
-        "type of reporting person",
-        "see instructions",
-        "pursuant to items",
-        "by each person",
-        "voting power",
-        "dispositive power",
-        "shares beneficially owned",
-    ),
+    (*COVER_LABEL_PHRASES,),
     auto_escape=True,
     compact=True,
 )
@@ -84,10 +71,46 @@ _POWER_LAYOUT_LEAK_ALT = build_alternation(
 _POWER_LAYOUT_LEAK_RE = re.compile(rf"(?i)^\s*(?:{_POWER_LAYOUT_LEAK_ALT})")
 _POWER_LAYOUT_TRAILING_WITH_RE = re.compile(r"(?i)\bWITH\s*$")
 _NEVER_MATCH_RE = re.compile(r"(?!)")
+_PARSED_FIELD_BOILERPLATE_ALT = build_alternation(
+    (
+        "I.R.S. IDENTIFICATION",
+        "CHECK THE APPROPRIATE BOX",
+        "CHECK APPROPRIATE BOX",
+        "TYPE OF REPORTING PERSON",
+        "SCHEDULE 13D",
+        "SCHEDULE 13G",
+        "SECURITIES AND EXCHANGE COMMISSION",
+        "UNDER THE SECURITIES EXCHANGE ACT",
+        "SEE INSTRUCTIONS",
+        "SIGNATURE",
+        "ITEM 1.",
+        "ITEM 2.",
+        "ITEM 3.",
+        "ITEM 4.",
+        "ITEM 5.",
+        "ITEM 6.",
+        "ITEM 7.",
+        "PERSONS WHO ARE TO RESPOND",
+        "COLLECTION OF INFORMATION",
+    ),
+    auto_escape=True,
+    compact=True,
+)
+_PARSED_FIELD_BOILERPLATE_RE = re.compile(
+    rf"(?i)(?<![A-Z])(?:{_PARSED_FIELD_BOILERPLATE_ALT})(?![A-Z])"
+)
 
 
 def is_eight_character_cusip(value: str) -> bool:
     return bool(_CUSIP_SHORT_RE.fullmatch(value))
+
+
+def is_unavailable_cusip(value: str) -> bool:
+    return bool(_CUSIP_UNAVAILABLE_RE.fullmatch(value))
+
+
+def cusip_page_residue_match(value: str) -> re.Match[str] | None:
+    return _CUSIP_PAGE_RESIDUE_RE.search(value)
 
 
 def two_character_codes(value: str | None) -> tuple[str, ...]:
@@ -127,9 +150,20 @@ def cover_field_has_layout_residue(field: str, value: str) -> bool:
     )
 
 
+def parsed_field_boilerplate_match(value: str) -> re.Match[str] | None:
+    for pattern in (STATUTORY_PAGE_ARTIFACT_RE, HEADER_LEAK_RE):
+        match = pattern.search(value)
+        if match is not None:
+            return match
+    return _PARSED_FIELD_BOILERPLATE_RE.search(value)
+
+
 __all__ = [
     "cover_field_has_layout_residue",
+    "cusip_page_residue_match",
     "has_descriptive_numeric_qualifier",
     "is_eight_character_cusip",
+    "is_unavailable_cusip",
+    "parsed_field_boilerplate_match",
     "two_character_codes",
 ]

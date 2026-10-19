@@ -11,9 +11,12 @@ from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     NarrativeField,
     NarrativeItem,
 )
-from edgar_sec.engine.document.page_markers.signatures import (
+from edgar_sec.engine.document.signatures import (
+    CONFORMED_SIGNATURE_RE,
     RE_CONFORMED_SIGNATURE,
     RE_CONFORMED_SIGNER_NAME,
+)
+from edgar_sec.engine.document.page_markers.signatures import (
     find_signature_regions,
 )
 from edgar_sec.engine.forms.common.signatures import (
@@ -30,6 +33,7 @@ from edgar_sec.foundation.regex.builder import build_alternation
 from .cover_parser import extract_reporting_person_covers
 from .issuer import extract_issuer_metadata
 from .provenance import build_field_extractions, build_unparsed_sections
+from .vocabulary import ITEM_SUBSECTION_FIELDS
 
 _RE_ITEM_NUM = re.compile(r"\d+")
 _RE_FIRST_PERSON = re.compile(
@@ -42,26 +46,10 @@ _SIGNATURE_TABLE_TAIL_ALT = build_alternation(
     auto_escape=True,
 )
 _RE_SIGNATURE_TABLE_TAIL = re.compile(rf"(?i)\s+(?:{_SIGNATURE_TABLE_TAIL_ALT})\b.*$")
-_RE_SIGNATURE_MARKER = re.compile(r"(?i)/\s*s\s*/")
 _RE_SIGNATURE_HTML_TAG = re.compile(r"</?[^>]+>")
 _RE_NARRATIVE_SUBSECTION = re.compile(
     r"(?im)^[ \t]*\(([a-f])\)(?:\s+and\s+\(([a-f])\))?\.?[ \t]*"
 )
-_ITEM_SUBSECTION_FIELDS = {
-    2: {
-        "a": "filingPersonName",
-        "b": "principalBusinessAddress",
-        "c": "principalBusiness",
-        "f": "citizenshipOrOrganization",
-    },
-    5: {
-        "a": "percentageOfClassSecurities",
-        "b": "numberOfShares",
-        "c": "transactionDesc",
-        "d": "listOfShareholders",
-        "e": "date5PercentOwnership",
-    },
-}
 
 
 def _body_sections(
@@ -143,7 +131,7 @@ def _signature_block(suffix: str) -> SignatureBlock | None:
     matches = list(RE_CONFORMED_SIGNER_NAME.finditer(suffix))
     matched_markers = set()
     for index, match in enumerate(matches):
-        marker = _RE_SIGNATURE_MARKER.search(suffix, match.start(), match.end())
+        marker = CONFORMED_SIGNATURE_RE.search(suffix, match.start(), match.end())
         if marker is not None:
             matched_markers.add(marker.start())
         line_start = suffix.rfind("\n", 0, match.start()) + 1
@@ -181,7 +169,7 @@ def _signature_block(suffix: str) -> SignatureBlock | None:
                 date = extract_signature_candidate(date_line)[1]
         if candidate:
             signatories.append(Signatory(name=candidate, date=date))
-    for marker in _RE_SIGNATURE_MARKER.finditer(suffix):
+    for marker in CONFORMED_SIGNATURE_RE.finditer(suffix):
         if marker.start() in matched_markers:
             continue
         line_start = suffix.rfind("\n", 0, marker.start()) + 1
@@ -250,7 +238,7 @@ def _narrative_fields(
     source_text: str,
     source_start: int,
 ) -> tuple[NarrativeField, ...]:
-    field_map = _ITEM_SUBSECTION_FIELDS.get(number)
+    field_map = ITEM_SUBSECTION_FIELDS.get(number)
     if not field_map or not body.strip():
         return ()
     matches = list(_RE_NARRATIVE_SUBSECTION.finditer(body))

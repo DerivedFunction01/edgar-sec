@@ -8,59 +8,17 @@ import re
 from dataclasses import dataclass
 
 from edgar_sec.domain.forms.common.vocabulary import SIGNATURE_TITLE_TERMS
+from edgar_sec.engine.document.signatures import (
+    RE_CONFORMED_SIGNATURE,
+    RE_POA_SIGNER,
+    is_conformed_signature_line,
+)
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import (
     NUMERIC_DATE_RE,
     contains_date,
 )
 
-RE_CONFORMED_SIGNATURE = re.compile(r"^\s*(?:\*\s*)?(?:By\s*:\s*|By\s+)?/\s*s\s*/\s*")
-
-SIGNATURE_DELEGATION_TERMS: tuple[str, ...] = (
-    "attorney-in-fact",
-    "attorney in fact",
-    "power of attorney",
-    "authorized signer",
-    "attorney",
-    "poa",
-    "esq",
-)
-SIGNATURE_TERMINATION_KEYWORDS: tuple[str, ...] = (
-    "by:",
-    "by",
-    "for:",
-    "date",
-    "as",
-    "for",
-)
-_DELEGATION_ALT = build_alternation(SIGNATURE_DELEGATION_TERMS, auto_escape=True)
-_TERMINATION_KEYWORD_ALT = build_alternation(
-    SIGNATURE_TERMINATION_KEYWORDS, auto_escape=True
-)
-_TERMINATION_ALT = build_alternation(
-    [
-        r"[,\n\r]",
-        rf"\s+(?:{_TERMINATION_KEYWORD_ALT})",
-        rf"\s+(?:{_DELEGATION_ALT})\b",
-        r"\*{1,2}",
-        r"\s*\(\d+\)",
-        r"\s+[_=]{3,}",
-        r"[_=]{3,}",
-        r"\s+\d{1,2}[-/]",
-        r"\s+\d{4}",
-        r"$",
-    ],
-    auto_escape=False,
-)
-_CONFORMED_PREFIX_ALT = build_alternation(
-    [r"/\s*s\s*/:?", r"[sS]/\s*", r"/s\s+"], auto_escape=False
-)
-RE_CONFORMED_SIGNER_NAME = re.compile(
-    rf"(?:By\s*:\s*|By\s+)?(?:{_CONFORMED_PREFIX_ALT})\s*([A-Za-z’‘'\.\- ]+?)(?={_TERMINATION_ALT})",
-    re.IGNORECASE,
-)
-
-RE_POA_SIGNER = re.compile(r"^\s*\*\s*(?:By\s*:\s*|By\s+)", re.IGNORECASE)
 _SIGNATURE_ASTERISK_RE = re.compile(r"^\s*[*]+\s*$")
 
 # A signature marker followed by a letter-spaced name: `/s/ A LICE L. J OLLA`. At least one
@@ -85,27 +43,6 @@ _SIGNATURE_TITLE_RE = re.compile(
 _SIGNATURE_LAYOUT_GAP_RE = re.compile(r"\s{2,}|\t")
 
 
-SIGNATURE_LABEL_PREFIXES: tuple[str, ...] = (
-    "/s/ ",
-    "By:",
-    "Name:",
-    "Title:",
-    "Date:",
-    "Signature:",
-)
-RE_SIGNATURE_LABEL_LINE = re.compile(
-    rf"^\s*(?:\*\s*)?(?:{build_alternation(SIGNATURE_LABEL_PREFIXES, auto_escape=True)})\s*",
-    re.IGNORECASE,
-)
-
-
-def is_signature_label_line(line: str) -> bool:
-    """Return whether a line opens a shared signature-block label.
-    Such a line is layout, not prose, so a reflow must leave its block alone.
-    """
-    return bool(RE_SIGNATURE_LABEL_LINE.match(line))
-
-
 @dataclass(frozen=True, slots=True)
 class SignatureRegion:
     """One complete, line-preserving signature layout region."""
@@ -116,13 +53,6 @@ class SignatureRegion:
     confidence: float
     signer_count: int
     lines: tuple[str, ...] = ()
-
-
-def is_conformed_signature_line(line: str) -> bool:
-    """Return whether a raw line starts with a conformed marker or POA signature."""
-    if "/" in line:
-        return bool(RE_CONFORMED_SIGNATURE.match(line))
-    return bool("*" in line and RE_POA_SIGNER.match(line))
 
 
 def _signature_row(line: str, previous: str = "") -> bool:
@@ -275,14 +205,9 @@ def heal_mangled_signature_text(text: str) -> str:
 
 
 __all__ = [
-    "RE_CONFORMED_SIGNATURE",
-    "RE_CONFORMED_SIGNER_NAME",
-    "RE_POA_SIGNER",
-    "SIGNATURE_DELEGATION_TERMS",
     "SignatureRegion",
     "find_signature_regions",
     "heal_mangled_signature_text",
-    "is_conformed_signature_line",
     "mask_signature_regions",
     "normalize_signature_marker",
     "restore_signature_regions",

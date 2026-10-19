@@ -17,6 +17,9 @@ from edgar_sec.domain.forms.families.beneficial_ownership.models import (
 from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
     two_character_codes,
 )
+from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
+    REPORTING_PERSON_XML_SLOTS,
+)
 
 SCHEDULE_13D_NS = "http://www.sec.gov/edgar/schedule13D"
 SCHEDULE_13G_NS = "http://www.sec.gov/edgar/schedule13G"
@@ -115,13 +118,7 @@ def _reporting_person_xml(parent: ET.Element, person: ReportingPersonCover) -> N
         "citizenshipOrOrganization",
         _first_value(person, "citizenshipOrOrganization") or _first_value(person, 6),
     )
-    for tag_name, fallback_num in (
-        ("soleVotingPower", 7),
-        ("sharedVotingPower", 8),
-        ("soleDispositivePower", 9),
-        ("sharedDispositivePower", 10),
-        ("aggregateAmountOwned", 11),
-    ):
+    for tag_name, fallback_num in REPORTING_PERSON_XML_SLOTS:
         _add_text(
             info,
             tag_name,

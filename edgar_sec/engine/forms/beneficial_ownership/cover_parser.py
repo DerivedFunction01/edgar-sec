@@ -9,8 +9,18 @@ from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     EvidenceState,
     ReportingPersonCover,
 )
+from edgar_sec.domain.forms.common.checkmarks import (
+    CANONICAL_CHECKED,
+    CANONICAL_UNCHECKED,
+)
 from edgar_sec.engine.forms.common.statutory import HEADER_LEAK_RE
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
+    MATRIX_CHECKED_MARK_RE,
+    MATRIX_UNCHECKED_MARK_RE,
+    REPORTING_PERSON_SLOT_NUMBERS_13D,
+    REPORTING_PERSON_SLOT_NUMBERS_13G,
+)
 
 _POWER_TERMS = build_alternation(
     [
@@ -35,18 +45,12 @@ _RE_PERSON_WITH_NOISE = re.compile(r"(?i)\bPERSON\s*[:|]\s*WITH\b")
 _RE_ROW_NUMBER_PREFIX = re.compile(r"^\s*(\d{1,2})\s+")
 _RE_POWER_LEADING_WITH = re.compile(r"(?i)^\s*WITH\b")
 _RE_POWER_TRAILING_WITH = re.compile(r"(?i)\bWITH\s*[:|]?\s*$")
-_CHECKED_MARK_ALT = build_alternation(
-    (r"\[\s*[X✓]\s*\]", "☒", "✓", r"(?<!\w)X(?!\w)"), compact=False
-)
-_UNCHECKED_MARK_ALT = build_alternation((r"\[\s*\]", "☐"), compact=False)
-_RE_CHECKED_MARK = re.compile(_CHECKED_MARK_ALT, re.IGNORECASE)
-_RE_UNCHECKED_MARK = re.compile(_UNCHECKED_MARK_ALT)
 
 _RE_NAME = re.compile(
     r"(?i)(?:^|[\s\n])(?:\(?1\)?\s*[.:]?\s*)?(?:NAMES?\s+OF\s+REPORTING\s+PERSONS?|NAME\s+OF\s+REPORTING\s+PERSON)"
 )
 _RE_GROUP = re.compile(
-    r"(?i)(?:^|[\s\n])(?:\(?2\)?\s*[.:]?\s*)?(?:CHECK\s+(?:THE\s+)?APPROPRIATE\s+BOX\s+IF\s+A\s+MEMBER\s+OF\s+A\s+GROUP)"
+    r"(?i)(?:^|[\s\n])(?:\(?2\)?\s*[.:]?\s*)?(?:CHECK\s+(?:THE\s+)?APPROPRIATE\s+BOX\s+IF\s+A\s+MEMBER\s+OF\s+(?:A\s+)?(?:GROUP|ROW))"
 )
 _RE_SEC_USE = re.compile(r"(?i)(?:^|[\s\n])(?:\(?3\)?\s*[.:]?\s*)?(?:SEC\s+USE\s+ONLY)")
 _RE_FUNDS = re.compile(
@@ -74,7 +78,7 @@ _RE_AGGREGATE = re.compile(
     r"(?i)(?:^|[\s\n])(?:\(?\d+\)?\s*[.:]?\s*)?(?:AGGREGATE\s+AMOUNT\s+BENEFICIALLY\s+OWNED)"
 )
 _RE_EXCLUDES = re.compile(
-    r"(?i)(?:^|[\s\n])(?:\(?\d+\)?\s*[.:]?\s*)?(?:CHECK\s+(?:BOX\s+)?IF\s+(?:THE\s+)?AGGREGATE\s+AMOUNT\s+(?:IN\s+ROW\s+\(?\d+\)?|IN\s+ROW\s+\d+)?\s*EXCLUDES)"
+    r"(?i)(?:^|[\s\n])(?:\(?\d+\)?\s*[.:]?\s*)?(?:CHECK\s+(?:BOX\s+)?IF\s+(?:THE\s+)?AGGREGATE\s+AMOUNT\s+(?:IN\s+ROW\s+(?:\[\s*[X✓]?\s*\]\s*)?\(?\d+\)?\s*(?:\[\s*[X✓]?\s*\]\s*)?)?EXCLUDES)"
 )
 _RE_PERCENT = re.compile(
     r"(?i)(?:^|[\s\n])(?:\(?\d+\)?\s*[.:]?\s*)?(?:PERCENT\s+OF\s+CLASS)"
@@ -83,37 +87,36 @@ _RE_TYPE = re.compile(
     r"(?i)(?:^|[\s\n])(?:\(?\d+\)?\s*[.:]?\s*)?(?:TYPE\s+OF\s+REPORTING\s+PERSON)"
 )
 
-_SLOT_DEFS_13D: tuple[tuple[str, int, re.Pattern[str]], ...] = (
-    ("reportingPersonName", 1, _RE_NAME),
-    ("memberOfGroup", 2, _RE_GROUP),
-    ("secUseOnly", 3, _RE_SEC_USE),
-    ("fundType", 4, _RE_FUNDS),
-    ("legalProceedings", 5, _RE_LEGAL),
-    ("citizenshipOrOrganization", 6, _RE_CITIZENSHIP),
-    ("soleVotingPower", 7, _RE_SOLE_VOTE),
-    ("sharedVotingPower", 8, _RE_SHARED_VOTE),
-    ("soleDispositivePower", 9, _RE_SOLE_DISP),
-    ("sharedDispositivePower", 10, _RE_SHARED_DISP),
-    ("aggregateAmountOwned", 11, _RE_AGGREGATE),
-    ("isAggregateExcludeShares", 12, _RE_EXCLUDES),
-    ("percentOfClass", 13, _RE_PERCENT),
-    ("typeOfReportingPerson", 14, _RE_TYPE),
-)
+_SLOT_PATTERNS = {
+    "reportingPersonName": _RE_NAME,
+    "memberOfGroup": _RE_GROUP,
+    "secUseOnly": _RE_SEC_USE,
+    "fundType": _RE_FUNDS,
+    "legalProceedings": _RE_LEGAL,
+    "citizenshipOrOrganization": _RE_CITIZENSHIP,
+    "soleVotingPower": _RE_SOLE_VOTE,
+    "sharedVotingPower": _RE_SHARED_VOTE,
+    "soleDispositivePower": _RE_SOLE_DISP,
+    "sharedDispositivePower": _RE_SHARED_DISP,
+    "aggregateAmountOwned": _RE_AGGREGATE,
+    "isAggregateExcludeShares": _RE_EXCLUDES,
+    "percentOfClass": _RE_PERCENT,
+    "typeOfReportingPerson": _RE_TYPE,
+}
 
-_SLOT_DEFS_13G: tuple[tuple[str, int, re.Pattern[str]], ...] = (
-    ("reportingPersonName", 1, _RE_NAME),
-    ("memberOfGroup", 2, _RE_GROUP),
-    ("secUseOnly", 3, _RE_SEC_USE),
-    ("citizenshipOrOrganization", 4, _RE_CITIZENSHIP),
-    ("soleVotingPower", 5, _RE_SOLE_VOTE),
-    ("sharedVotingPower", 6, _RE_SHARED_VOTE),
-    ("soleDispositivePower", 7, _RE_SOLE_DISP),
-    ("sharedDispositivePower", 8, _RE_SHARED_DISP),
-    ("aggregateAmountOwned", 9, _RE_AGGREGATE),
-    ("isAggregateExcludeShares", 10, _RE_EXCLUDES),
-    ("percentOfClass", 11, _RE_PERCENT),
-    ("typeOfReportingPerson", 12, _RE_TYPE),
-)
+
+def _slot_definitions(
+    family: str,
+) -> tuple[tuple[str, int, re.Pattern[str]], ...]:
+    slot_numbers = (
+        REPORTING_PERSON_SLOT_NUMBERS_13G
+        if family == "13G"
+        else REPORTING_PERSON_SLOT_NUMBERS_13D
+    )
+    return tuple(
+        (field, number, _SLOT_PATTERNS[field]) for field, number in slot_numbers
+    )
+
 
 _RE_PERSON_SPLIT = re.compile(
     r"(?im)^\s*1\b\s*[.:]?\s*(?:NAMES?\s+OF\s+REPORTING\s+PERSONS?|NAME\s+OF\s+REPORTING\s+PERSON)"
@@ -136,9 +139,15 @@ _RE_LABEL_PERCENT = re.compile(
 _RE_LABEL_INSTRUCTIONS = re.compile(r"(?i)^\s*[*†‡]?\s*\(?\s*SEE\s+INSTRUCTIONS\s*\)?")
 _RE_INSTRUCTION_TRAILER = re.compile(r"(?i)^\s*[*†‡]?\s*\(?SEE\s+INSTRUCTIONS\b.*$")
 _RE_IRS_ID = re.compile(
-    r"(?i)^\s*(?:S\.S\.\s+OR\s+)?I\.R\.S\.\s+IDENTIFICATION\s+NOS?\.?\s+OF\s+ABOVE\s+PERSONS?\s*(?:\(ENTITIES\s+ONLY\))?\s*"
+    rf"(?i)\s*[/|:,-]*\s*(?:S\.S\.\s+OR\s+)?I\.R\.S\.\s+IDENTIFICATION\s+(?:{build_alternation(('NOS?', 'NUMBER'), auto_escape=False, compact=True)})\.?\s+OF\s+(?:{build_alternation(('ABOVE', 'SUCH'), auto_escape=True, compact=True)})\s+PERSONS?\s*(?:\(ENTITIES\s+ONLY\))?\s*"
 )
 _RE_PERSON_ID_TRAILER = re.compile(r"(?i)\s+(?:I\.\s*D\.|ID)\s+NO\.?\s*:?\s*[\d-]+\s*$")
+_ID_ONLY_ALT = build_alternation(
+    (r"\d[\d -]*", r"N/?A", r"NONE\.?"),
+    auto_escape=False,
+    compact=True,
+)
+_RE_ID_ONLY = re.compile(rf"(?i)^\s*(?:{_ID_ONLY_ALT})\s*$")
 _RE_TYPE_CODES_WITH_REST = re.compile(
     r"(?i)^\s*((?:[A-Z]{2}(?:\s*,\s*|\s+))*[A-Z]{2})(?:\s+(.*))?$"
 )
@@ -166,7 +175,7 @@ def parse_reporting_person_matrix(
     base_offset: int = 0,
 ) -> ReportingPersonCover:
     """Parses statutory disclosure slots for a single reporting person."""
-    slot_defs = _SLOT_DEFS_13G if family == "13G" else _SLOT_DEFS_13D
+    slot_defs = _slot_definitions(family)
     slot_spans: list[tuple[str, int, int, int, re.Pattern[str], tuple[str, ...]]] = []
     cur_pos = 0
     for tag, slot_num, pat in slot_defs:
@@ -222,8 +231,8 @@ def parse_reporting_person_matrix(
 
         val = val.lstrip(" \t\r\n:.-|")
         if tag == "memberOfGroup":
-            val = _RE_CHECKED_MARK.sub("[X]", val)
-            val = _RE_UNCHECKED_MARK.sub("[ ]", val)
+            val = MATRIX_CHECKED_MARK_RE.sub(CANONICAL_CHECKED, val)
+            val = MATRIX_UNCHECKED_MARK_RE.sub(CANONICAL_UNCHECKED, val)
         if tag in (
             "soleVotingPower",
             "sharedVotingPower",
@@ -240,7 +249,18 @@ def parse_reporting_person_matrix(
             val = _RE_NUMBER_OF.sub("", val)
             val = _RE_CITIZENSHIP_TAIL.sub(" ", val)
         elif tag == "reportingPersonName":
-            val = _RE_IRS_ID.sub("", val)
+            irs_label = _RE_IRS_ID.search(val)
+            if irs_label is not None:
+                before = val[: irs_label.start()].strip(" \t:|/,-")
+                after = val[irs_label.end() :].lstrip(" \t:.-|/")
+                after = _RE_PERSON_ID_TRAILER.sub("", after).strip()
+                if not before or before.casefold() in {"and", "or"}:
+                    val = after
+                elif not after or _RE_ID_ONLY.fullmatch(after):
+                    val = before
+                else:
+                    val = before
+            val = val.lstrip(" \t:.-|")
             val = _RE_PERSON_ID_TRAILER.sub("", val)
 
         val = " ".join(val.split()).strip()
@@ -250,12 +270,12 @@ def parse_reporting_person_matrix(
                 val = row_parts[1]
 
         if tag in ("legalProceedings", "isAggregateExcludeShares"):
-            if _RE_CHECKED_MARK.search(val):
+            if MATRIX_CHECKED_MARK_RE.search(val):
                 state = EvidenceState.CHECKED
-                c_val: str | None = "[X]"
-            elif _RE_UNCHECKED_MARK.search(val):
+                c_val: str | None = CANONICAL_CHECKED
+            elif MATRIX_UNCHECKED_MARK_RE.search(val):
                 state = EvidenceState.UNCHECKED
-                c_val = "[ ]"
+                c_val = CANONICAL_UNCHECKED
             else:
                 state = EvidenceState.BLANK
                 c_val = None

@@ -5,37 +5,21 @@ from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     FieldExtraction,
     UnparsedSection,
 )
+from edgar_sec.domain.forms.common.checkmarks import (
+    CANONICAL_CHECKED,
+    CANONICAL_UNCHECKED,
+)
 from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
     two_character_codes,
 )
+from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
+    NARRATIVE_FIELDS,
+    REPORTING_PERSON_FIELDS,
+)
 
-_NARRATIVE_FIELDS = {
-    1: "commentText",
-    2: "filingPersonName",
-    3: "fundsSource",
-    4: "transactionPurpose",
-    5: "percentageOfClassSecurities",
-    6: "contractDescription",
-    7: "filedExhibits",
-}
 _ISSUER_FIELDS = (
     ("securitiesClassTitle", "issuer.security_class"),
     ("dateOfEvent", "issuer.event_date"),
-)
-_PERSON_FIELDS = (
-    "reportingPersonName",
-    "memberOfGroup",
-    "fundType",
-    "legalProceedings",
-    "citizenshipOrOrganization",
-    "soleVotingPower",
-    "sharedVotingPower",
-    "soleDispositivePower",
-    "sharedDispositivePower",
-    "aggregateAmountOwned",
-    "isAggregateExcludeShares",
-    "percentOfClass",
-    "typeOfReportingPerson",
 )
 
 
@@ -204,9 +188,12 @@ def build_field_extractions(
 
     for person_index, person in enumerate(document.reporting_persons, start=1):
         for item in person.items:
-            if item.tag not in _PERSON_FIELDS:
+            if item.tag not in REPORTING_PERSON_FIELDS:
                 continue
-            if item.tag == "memberOfGroup" and "[X]" not in (item.value or "").upper():
+            if (
+                item.tag == "memberOfGroup"
+                and CANONICAL_CHECKED not in (item.value or "").upper()
+            ):
                 continue
             if item.tag in {
                 "fundType",
@@ -216,9 +203,9 @@ def build_field_extractions(
             if item.tag in {"legalProceedings", "isAggregateExcludeShares"}:
                 value = item.value
                 if item.state.value == "checked":
-                    value = "[X]"
+                    value = CANONICAL_CHECKED
                 elif item.state.value == "unchecked":
-                    value = "[ ]"
+                    value = CANONICAL_UNCHECKED
             else:
                 value = item.value
             _append_extraction(
@@ -266,7 +253,7 @@ def build_field_extractions(
                     )
                 )
             continue
-        field = _NARRATIVE_FIELDS.get(item.number, "commentText")
+        field = NARRATIVE_FIELDS.get(item.number, "commentText")
         _append_extraction(
             extractions,
             source_text,

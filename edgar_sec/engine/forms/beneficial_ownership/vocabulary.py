@@ -1,0 +1,215 @@
+"""Shared field and slot vocabulary for beneficial-ownership forms."""
+
+from __future__ import annotations
+
+import re
+
+from edgar_sec.domain.forms.common.checkmarks import (
+    CHECKED_INNER,
+    CHECKED_SYMBOLS,
+    UNCHECKED_SYMBOLS,
+)
+from edgar_sec.foundation.regex.builder import build_alternation
+
+FIELD_TAGS: dict[str, tuple[str, ...]] = {
+    "issuerName": ("issuerName",),
+    "issuerCusip": ("issuerCusipNumber", "issuerCUSIP"),
+    "noticeContact": ("personName",),
+    "securitiesClassTitle": ("securitiesClassTitle",),
+    "dateOfEvent": ("dateOfEvent",),
+    "reportingPersonName": ("reportingPersonName",),
+    "memberOfGroup": ("memberOfGroup",),
+    "fundType": ("fundType",),
+    "legalProceedings": ("legalProceedings",),
+    "citizenshipOrOrganization": ("citizenshipOrOrganization",),
+    "soleVotingPower": ("soleVotingPower",),
+    "sharedVotingPower": ("sharedVotingPower",),
+    "soleDispositivePower": ("soleDispositivePower",),
+    "sharedDispositivePower": ("sharedDispositivePower",),
+    "aggregateAmountOwned": ("aggregateAmountOwned",),
+    "isAggregateExcludeShares": ("isAggregateExcludeShares",),
+    "percentOfClass": ("percentOfClass",),
+    "typeOfReportingPerson": ("typeOfReportingPerson",),
+    "item1": ("item1",),
+    "item2": ("item2",),
+    "item3": ("item3",),
+    "item4": ("item4",),
+    "item5": ("item5",),
+    "item6": ("item6",),
+    "item7": ("item7",),
+    "item8": ("item8",),
+    "item9": ("item9",),
+    "item10": ("item10",),
+    "signature": ("signature",),
+}
+
+CATEGORICAL_FIELDS = (
+    "memberOfGroup",
+    "fundType",
+    "legalProceedings",
+    "citizenshipOrOrganization",
+    "typeOfReportingPerson",
+    "isAggregateExcludeShares",
+)
+CHECKBOX_FIELDS = ("legalProceedings", "isAggregateExcludeShares")
+COVER_VALUE_FIELDS = (
+    "issuerName",
+    "issuerCusip",
+    "noticeContact",
+    "reportingPersonName",
+    "securitiesClassTitle",
+    "dateOfEvent",
+    "citizenshipOrOrganization",
+    "soleVotingPower",
+    "sharedVotingPower",
+    "soleDispositivePower",
+    "sharedDispositivePower",
+    "aggregateAmountOwned",
+    "percentOfClass",
+)
+COVER_LABEL_PHRASES = (
+    "name of reporting person",
+    "names of reporting persons",
+    "check the appropriate box",
+    "source of funds",
+    "sec use only",
+    "check if disclosure of legal proceedings",
+    "citizenship or place of organization",
+    "sole voting power",
+    "shared voting power",
+    "sole dispositive power",
+    "shared dispositive power",
+    "aggregate amount beneficially owned",
+    "owned by",
+    "owned by each reporting person",
+    "person with",
+    "identification nos. of above persons",
+    "i.d. no.",
+    "percent of class represented",
+    "type of reporting person",
+    "see instructions",
+    "pursuant to items",
+    "by each person",
+    "voting power",
+    "dispositive power",
+    "shares beneficially owned",
+)
+
+REPORTING_PERSON_FIELDS = (
+    "reportingPersonName",
+    "memberOfGroup",
+    "fundType",
+    "legalProceedings",
+    "citizenshipOrOrganization",
+    "soleVotingPower",
+    "sharedVotingPower",
+    "soleDispositivePower",
+    "sharedDispositivePower",
+    "aggregateAmountOwned",
+    "isAggregateExcludeShares",
+    "percentOfClass",
+    "typeOfReportingPerson",
+)
+REPORTING_PERSON_XML_SLOTS = (
+    ("soleVotingPower", 7),
+    ("sharedVotingPower", 8),
+    ("soleDispositivePower", 9),
+    ("sharedDispositivePower", 10),
+    ("aggregateAmountOwned", 11),
+)
+
+NARRATIVE_FIELDS = {
+    1: "commentText",
+    2: "filingPersonName",
+    3: "fundsSource",
+    4: "transactionPurpose",
+    5: "percentageOfClassSecurities",
+    6: "contractDescription",
+    7: "filedExhibits",
+}
+ITEM_SUBSECTION_FIELDS = {
+    2: {
+        "a": "filingPersonName",
+        "b": "principalBusinessAddress",
+        "c": "principalBusiness",
+        "f": "citizenshipOrOrganization",
+    },
+    5: {
+        "a": "percentageOfClassSecurities",
+        "b": "numberOfShares",
+        "c": "transactionDesc",
+        "d": "listOfShareholders",
+        "e": "date5PercentOwnership",
+    },
+}
+
+REPORTING_PERSON_SLOT_NUMBERS_13D = (
+    ("reportingPersonName", 1),
+    ("memberOfGroup", 2),
+    ("secUseOnly", 3),
+    ("fundType", 4),
+    ("legalProceedings", 5),
+    ("citizenshipOrOrganization", 6),
+    ("soleVotingPower", 7),
+    ("sharedVotingPower", 8),
+    ("soleDispositivePower", 9),
+    ("sharedDispositivePower", 10),
+    ("aggregateAmountOwned", 11),
+    ("isAggregateExcludeShares", 12),
+    ("percentOfClass", 13),
+    ("typeOfReportingPerson", 14),
+)
+REPORTING_PERSON_SLOT_NUMBERS_13G = (
+    ("reportingPersonName", 1),
+    ("memberOfGroup", 2),
+    ("secUseOnly", 3),
+    ("citizenshipOrOrganization", 4),
+    ("soleVotingPower", 5),
+    ("sharedVotingPower", 6),
+    ("soleDispositivePower", 7),
+    ("sharedDispositivePower", 8),
+    ("aggregateAmountOwned", 9),
+    ("isAggregateExcludeShares", 10),
+    ("percentOfClass", 11),
+    ("typeOfReportingPerson", 12),
+)
+
+_MATRIX_CHECKED_INNER = "".join(
+    inner.strip() for inner in CHECKED_INNER if inner.strip() in ("x", "✓")
+)
+_MATRIX_CHECKED_SYMBOLS = tuple(
+    symbol for symbol in CHECKED_SYMBOLS if symbol in ("☒", "✓")
+)
+MATRIX_CHECKED_MARK_RE = re.compile(
+    build_alternation(
+        (
+            rf"\[\s*[{_MATRIX_CHECKED_INNER}]\s*\]",
+            *_MATRIX_CHECKED_SYMBOLS,
+            r"(?<!\w)X(?!\w)",
+        ),
+        compact=False,
+    ),
+    re.IGNORECASE,
+)
+_MATRIX_UNCHECKED_SYMBOLS = tuple(
+    symbol for symbol in UNCHECKED_SYMBOLS if symbol == "☐"
+)
+MATRIX_UNCHECKED_MARK_RE = re.compile(
+    build_alternation((r"\[\s*\]", *_MATRIX_UNCHECKED_SYMBOLS), compact=False)
+)
+
+__all__ = [
+    "CATEGORICAL_FIELDS",
+    "CHECKBOX_FIELDS",
+    "COVER_VALUE_FIELDS",
+    "COVER_LABEL_PHRASES",
+    "FIELD_TAGS",
+    "ITEM_SUBSECTION_FIELDS",
+    "MATRIX_CHECKED_MARK_RE",
+    "MATRIX_UNCHECKED_MARK_RE",
+    "NARRATIVE_FIELDS",
+    "REPORTING_PERSON_FIELDS",
+    "REPORTING_PERSON_XML_SLOTS",
+    "REPORTING_PERSON_SLOT_NUMBERS_13D",
+    "REPORTING_PERSON_SLOT_NUMBERS_13G",
+]

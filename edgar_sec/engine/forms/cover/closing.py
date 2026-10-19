@@ -8,9 +8,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from edgar_sec.engine.document.page_markers.signatures import (
-    RE_CONFORMED_SIGNATURE,
-)
+from edgar_sec.engine.document.signatures import RE_CONFORMED_SIGNATURE
 from edgar_sec.engine.forms.cover.models import BoundaryEvidence
 from edgar_sec.engine.tables.toc.patterns import (
     RE_PAGE_SUFFIX,

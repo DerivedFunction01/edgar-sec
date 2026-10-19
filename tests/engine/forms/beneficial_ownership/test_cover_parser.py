@@ -166,6 +166,36 @@ Names of Reporting Persons Thirsty Brook 2010 Irrevocable Trust
     )
 
 
+def test_cover_parser_strips_slash_prefixed_irs_label() -> None:
+    person = parse_reporting_person_matrix(
+        "1. Name of Reporting Person / I.R.S. Identification Nos. of Above Persons "
+        "(entities only): Beacon LLC 2. Check the Appropriate Box if a Member of a Group: [ ]"
+    )
+
+    assert person.first_item("reportingPersonName").value == "Beacon LLC"
+
+
+def test_cover_parser_removes_irs_label_after_name() -> None:
+    person = parse_reporting_person_matrix(
+        "1. Name of Reporting Person Sagard Capital Partners, L.P. "
+        "I.R.S. Identification No. of Above Person (Entities Only): 20-3332164 "
+        "2. Check the Appropriate Box if a Member of a Group: [ ]"
+    )
+
+    assert person.first_item("reportingPersonName").value == (
+        "Sagard Capital Partners, L.P."
+    )
+
+
+def test_cover_parser_keeps_name_after_leading_irs_label() -> None:
+    person = parse_reporting_person_matrix(
+        "1. Name of Reporting Person OR I.R.S. Identification No. of Above Person: "
+        "Tencent Holdings Limited 2. Check the Appropriate Box if a Member of a Group: [ ]"
+    )
+
+    assert person.first_item("reportingPersonName").value == "Tencent Holdings Limited"
+
+
 def test_cover_parser_removes_underlines_and_narrative_tail() -> None:
     person = parse_reporting_person_matrix(
         """1. Name of Reporting Person

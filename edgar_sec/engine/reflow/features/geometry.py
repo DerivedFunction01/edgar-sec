@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from edgar_sec.engine.document.page_markers.signatures import is_signature_label_line
+from edgar_sec.engine.document.signatures import is_signature_label_line
 from edgar_sec.engine.tables.tokens import numeric_cell_starts
 from edgar_sec.foundation.text.patterns import (
     RE_COLUMN_GAP,

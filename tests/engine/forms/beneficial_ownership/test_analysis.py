@@ -313,7 +313,7 @@ def test_analysis_identifies_narrative_item_leakage_in_cover_values(
     report = analyze_case(_write_case(tmp_path, xml), {"accession": "a"})
 
     assert report is not None
-    assert report["anomalies"][0]["kind"] == "cover_field_contamination"
+    assert report["anomalies"][0]["kind"] == "boilerplate_in_parsed_field"
     assert report["anomalies"][0]["field"] == "aggregateAmountOwned"
     assert len(report["anomalies"]) == 1
 
@@ -347,14 +347,14 @@ def test_analysis_identifies_common_cover_header_residue(tmp_path: Path) -> None
     fields = {
         (item.get("field"), item["kind"])
         for item in report["anomalies"]
-        if item["kind"] == "cover_field_contamination"
+        if item["kind"] in {"cover_field_contamination", "boilerplate_in_parsed_field"}
     }
     assert {
         ("dateOfEvent", "cover_field_contamination"),
         ("issuerCusip", "cover_field_contamination"),
         ("noticeContact", "cover_field_contamination"),
-        ("reportingPersonName", "cover_field_contamination"),
         ("sharedVotingPower", "cover_field_contamination"),
+        ("reportingPersonName", "boilerplate_in_parsed_field"),
         ("soleDispositivePower", "cover_field_contamination"),
     } <= fields
 
@@ -397,6 +397,23 @@ def test_analysis_reports_missing_xml_after_text_rendering(tmp_path: Path) -> No
     assert report is not None
     assert report["error"] == "missing_rendered_xml"
     assert report["anomalies"][0]["kind"] == "missing_rendered_xml"
+
+
+def test_analysis_flags_boilerplate_in_non_cover_fields(tmp_path: Path) -> None:
+    xml = SAMPLE_XML.replace(
+        "<issuerName>Example Corp</issuerName>",
+        "<issuerName>SECURITIES AND EXCHANGE COMMISSION Example Corp</issuerName>",
+    ).replace(
+        "<legalProceedings>N</legalProceedings>",
+        "<legalProceedings>N</legalProceedings><personName>Schedule 13D</personName>",
+    )
+    report = analyze_case(_write_case(tmp_path, xml), {"accession": "a"})
+
+    assert report is not None
+    assert {(item["kind"], item["field"]) for item in report["anomalies"]} == {
+        ("boilerplate_in_parsed_field", "issuerName"),
+        ("boilerplate_in_parsed_field", "noticeContact"),
+    }
 
 
 def test_summary_filters_statutory_unparsed_sections(tmp_path: Path) -> None:

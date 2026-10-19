@@ -7,13 +7,15 @@ from __future__ import annotations
 
 import pytest
 
-from edgar_sec.engine.document.page_markers.signatures import (
+from edgar_sec.engine.document.signatures import (
     RE_CONFORMED_SIGNATURE,
     RE_POA_SIGNER,
-    find_signature_regions,
-    heal_mangled_signature_text,
     is_conformed_signature_line,
     is_signature_label_line,
+)
+from edgar_sec.engine.document.page_markers.signatures import (
+    find_signature_regions,
+    heal_mangled_signature_text,
     mask_signature_regions,
     normalize_signature_marker,
     restore_signature_regions,

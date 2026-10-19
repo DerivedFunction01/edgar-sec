@@ -45,8 +45,8 @@ from .geometry import (
     _line_gap_starts,
     _numeric_cell_starts,
     _shared_columns,
-    is_signature_label_line,
 )
+from edgar_sec.engine.document.signatures import is_signature_label_line
 
 _WINDOW_BOUNDS = ((0, 20), (21, 40), (41, 60), (61, 80))
 _TARGET_WIDTH = 80
