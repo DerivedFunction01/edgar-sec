@@ -1,0 +1,17 @@
+from edgar_sec.engine.forms.ownership.period_parser import parse_period
+
+
+def test_period_parser_recognizes_period_and_amendment_dates() -> None:
+    original = parse_period(
+        "4. Statement for\nMonth/Day/Year\n12/31/02\n5. If Amendment,\nDate of Original\n(Month/Day/Year)"
+    )
+    assert original.period_of_report == "12/31/02"
+    assert original.is_amendment is False
+    assert original.date_of_original is None
+
+    amendment = parse_period(
+        "4. Statement for Month/Day/Year\n02/19/2003\n5. If Amendment, Date of Original (Month/Day/Year)\n01/15/2003"
+    )
+    assert amendment.period_of_report == "02/19/2003"
+    assert amendment.is_amendment is True
+    assert amendment.date_of_original == "01/15/2003"

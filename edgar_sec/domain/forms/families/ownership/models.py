@@ -1,4 +1,4 @@
-"""Domain models and schemas for SEC Form 4 ownership filings."""
+"""Domain models and schemas for ownership filings."""
 
 from __future__ import annotations
 
@@ -11,6 +11,7 @@ class ReportingOwner:
     street: str | None = None
     city: str | None = None
     state: str | None = None
+    country: str | None = None
     zip_code: str | None = None
     is_director: bool = False
     is_officer: bool = False
@@ -35,7 +36,7 @@ class FilingPeriod:
 
 
 @dataclass(frozen=True, slots=True)
-class Form4Metadata:
+class OwnershipMetadata:
     issuer: Issuer
     reporting_owner: ReportingOwner
     period: FilingPeriod
@@ -43,34 +44,9 @@ class Form4Metadata:
     signature_date: str | None = None
 
 
-VALID_TRANSACTION_CODES: frozenset[str] = frozenset(
-    {
-        "P",
-        "S",
-        "A",
-        "D",
-        "F",
-        "I",
-        "M",
-        "C",
-        "E",
-        "H",
-        "O",
-        "X",
-        "G",
-        "L",
-        "W",
-        "Z",
-        "J",
-        "U",
-        "K",
-    }
-)
-
 __all__ = [
     "FilingPeriod",
-    "Form4Metadata",
+    "OwnershipMetadata",
     "Issuer",
     "ReportingOwner",
-    "VALID_TRANSACTION_CODES",
 ]

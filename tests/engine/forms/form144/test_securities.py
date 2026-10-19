@@ -33,7 +33,7 @@ def test_parse_tables():
     assert not nothing_to_report
     assert len(table_ii) == 1
     assert table_ii[0].amount_sold == 1000
-    assert table_ii[0].gross_proceeds == 30000.0
+    assert table_ii[0].gross_proceeds == "30000.00"
 
 
 def test_parse_table_i_missing_optional_columns():
@@ -48,7 +48,7 @@ def test_parse_table_i_missing_optional_columns():
     items = parse_table_i_rows(sections.table_i)
     assert len(items) == 1
     assert items[0].class_title == "Common Stock"
-    assert items[0].acquired_date == "02/20/2021"
+    assert items[0].acquired_date == "2021-02-20"
     assert items[0].nature_of_acquisition == "Direct Purchase"
     assert items[0].amount_acquired == 10000
-    assert items[0].payment_date == "02/20/2021"
+    assert items[0].payment_date == "2021-02-20"

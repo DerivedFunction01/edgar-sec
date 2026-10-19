@@ -7,7 +7,10 @@ from typing import TYPE_CHECKING
 
 from edgar_sec.domain.document.path_facts import DocumentSuffixClass
 from edgar_sec.domain.document.route import DocumentRoute
+from edgar_sec.engine.document_processing.outputs import HandlerOutput, HandlerSidecar
 from edgar_sec.engine.forms.normalize import normalize_document
+from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
+from edgar_sec.engine.forms.common.dates import external_reference_year
 from .parser import parse_beneficial_ownership_document
 from .render_to_xml import (
     SCHEDULE_13D_NS,
@@ -34,10 +37,17 @@ def _is_native_xml(raw_bytes: bytes) -> bool:
 
 def render_beneficial_ownership_to_xml(
     raw_bytes: bytes, context: HandlerContext | None = None
-) -> bytes:
+) -> HandlerOutput:
     """Renders raw Schedule 13D/13G filing payload into conforming SEC XML."""
     if _is_native_xml(raw_bytes):
-        return raw_bytes
+        return HandlerOutput(
+            content=raw_bytes,
+            sidecars=(
+                HandlerSidecar(
+                    "unparsed_sections.json", serialize_unparsed_sections(())
+                ),
+            ),
+        )
     form = context.family if context is not None else "13D"
     path = context.selected_path if context is not None else None
     route = context.route if context is not None else None
@@ -68,19 +78,29 @@ def render_beneficial_ownership_to_xml(
             DocumentRoute.TEXT,
         }:
             raise ValueError("unsupported beneficial ownership source route")
-    doc = parse_beneficial_ownership_document(normalized, form=form)
-    return build_beneficial_ownership_xml(doc)
+    reference_year = (
+        external_reference_year(
+            getattr(context, "report_date", None),
+            getattr(context, "filing_date", None),
+        )
+        if context is not None
+        else None
+    )
+    doc = parse_beneficial_ownership_document(
+        normalized, form=form, reference_year=reference_year
+    )
+    return build_beneficial_ownership_xml(doc, reference_year)
 
 
 def render_schedule13d_to_xml(
     raw_bytes: bytes, context: HandlerContext | None = None
-) -> bytes:
+) -> HandlerOutput:
     return render_beneficial_ownership_to_xml(raw_bytes, context)
 
 
 def render_schedule13g_to_xml(
     raw_bytes: bytes, context: HandlerContext | None = None
-) -> bytes:
+) -> HandlerOutput:
     return render_beneficial_ownership_to_xml(raw_bytes, context)
 
 

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import re
 from edgar_sec.domain.document.path_facts import (
     DocumentPathFacts,
     DocumentPathShape,
@@ -23,7 +24,14 @@ from edgar_sec.engine.document_processing.registry import (
     HandlerContext,
     HandlerRegistry,
 )
+from edgar_sec.engine.document_processing.outputs import (
+    HandlerOutput,
+    HandlerSidecar,
+    ProducedSidecar,
+)
 from edgar_sec.foundation.hashing import sha256_bytes
+
+_SIDECAR_NAME_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$")
 
 
 @dataclass(frozen=True, slots=True)
@@ -56,6 +64,9 @@ class AcquisitionProcessRequest:
     path_facts: DocumentPathFacts
     operations: tuple[OperationRecord, ...]
     inputs: tuple[InputRecord, ...]
+    include_analysis_artifacts: bool = False
+    filing_date: str | None = None
+    report_date: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -69,6 +80,7 @@ class OperationOutcome:
     output_byte_size: int | None
     handler_id: str | None
     handler_version: str | None
+    sidecar_outputs: tuple[ProducedSidecar, ...] = ()
     error: str | None = None
 
 
@@ -165,10 +177,23 @@ class AcquisitionProcessor:
             selected_path=input_record.selected_path,
             path_facts=input_record.path_facts,
             route=route,
+            include_analysis_artifacts=request.include_analysis_artifacts,
+            filing_date=request.filing_date,
+            report_date=request.report_date,
         )
         try:
             output = registration.handler(input_record.raw_bytes, context)
-            output_bytes, output_text = self._encode_output(output, expected_kind)
+            if isinstance(output, HandlerOutput):
+                primary = output.content
+                sidecars = (
+                    self._encode_sidecars(output.sidecars)
+                    if context.include_analysis_artifacts
+                    else ()
+                )
+            else:
+                primary = output
+                sidecars = ()
+            output_bytes, output_text = self._encode_output(primary, expected_kind)
             if operation == "raw" and output_bytes != input_record.raw_bytes:
                 return self._outcome(operation, "failed", "raw_handler_changed_source")
         except Exception as error:
@@ -188,6 +213,7 @@ class AcquisitionProcessor:
             output_byte_size=len(output_bytes),
             handler_id=registration.handler_id,
             handler_version=registration.handler_version,
+            sidecar_outputs=sidecars,
         )
 
     @staticmethod
@@ -221,6 +247,8 @@ class AcquisitionProcessor:
             )
         ):
             return "invalid_request_metadata"
+        if type(request.include_analysis_artifacts) is not bool:
+            return "invalid_request_metadata"
         if not input_record.selected_path.strip():
             return "invalid_selected_path"
         if input_record.path_facts.path_context != input_record.selected_path:
@@ -246,6 +274,38 @@ class AcquisitionProcessor:
         raise TypeError("byte handler returned an incompatible value")
 
     @staticmethod
+    def _encode_sidecars(
+        sidecars: tuple[HandlerSidecar, ...],
+    ) -> tuple[ProducedSidecar, ...]:
+        output = []
+        seen: set[str] = set()
+        for sidecar in sidecars:
+            if (
+                not _SIDECAR_NAME_RE.fullmatch(sidecar.name)
+                or sidecar.name in {".", ".."}
+                or "/" in sidecar.name
+                or "\\" in sidecar.name
+                or sidecar.name in seen
+            ):
+                raise ValueError("handler sidecar name is invalid or duplicated")
+            seen.add(sidecar.name)
+            if isinstance(sidecar.content, str):
+                content = sidecar.content.encode("utf-8")
+            elif isinstance(sidecar.content, bytes):
+                content = sidecar.content
+            else:
+                raise TypeError("handler sidecar must contain str or bytes")
+            output.append(
+                ProducedSidecar(
+                    name=sidecar.name,
+                    content=content,
+                    sha256=sha256_bytes(content),
+                    byte_size=len(content),
+                )
+            )
+        return tuple(output)
+
+    @staticmethod
     def _outcome(operation: str, status: str, error: str) -> OperationOutcome:
         return OperationOutcome(
             operation=operation,
@@ -257,6 +317,7 @@ class AcquisitionProcessor:
             output_byte_size=None,
             handler_id=None,
             handler_version=None,
+            sidecar_outputs=(),
             error=error,
         )
 

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
 import re
 from typing import TYPE_CHECKING
 import xml.etree.ElementTree as ET
@@ -12,6 +13,7 @@ from edgar_sec.domain.forms.families.form144.models import (
     TableISecurityItem,
     TableIISecuritySoldItem,
 )
+from edgar_sec.domain.taxonomy.jurisdictions import EDGAR_JURISDICTION_CODES
 from edgar_sec.engine.forms.form144.securities import (
     parse_table_i_rows,
     parse_table_ii_rows,
@@ -22,9 +24,18 @@ from edgar_sec.engine.forms.form144.metadata_parser import (
     parse_signatures,
 )
 from edgar_sec.engine.forms.form144.sale_parser import parse_proposed_sale_box_3
-from edgar_sec.engine.document.html.cleaner import (
-    strip_decorative_presentation_attributes,
+from edgar_sec.engine.document_processing.outputs import HandlerOutput, HandlerSidecar
+from edgar_sec.engine.forms.common.numbers import (
+    normalize_schema_number,
 )
+from edgar_sec.engine.forms.common.dates import (
+    external_reference_year,
+    format_iso_date,
+    normalize_iso_date,
+    resolve_reference_year,
+)
+from edgar_sec.engine.forms.common.extraction import FieldKind, FieldSpec, extract_value
+from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
 from edgar_sec.engine.forms.form144.sections import (
     Form144Sections,
     partition_form144_tables,
@@ -42,10 +53,151 @@ _EDGAR_SUBMISSION_RE = re.compile(
 def _add_text_elem(
     parent: ET.Element, tag: str, text: str | int | float | None
 ) -> ET.Element:
-    elem = ET.SubElement(parent, tag)
+    elem = ET.Element(tag)
     if text is not None:
         elem.text = str(text)
+        parent.append(elem)
     return elem
+
+
+def _xml_date(value: str | None, reported_year: int | None) -> str | None:
+    canonical = normalize_iso_date(value, reported_year)
+    return format_iso_date(canonical, month_first=True)
+
+
+def _xml_integer(value: int | float | str | None) -> str | None:
+    if value is None:
+        return None
+    return normalize_schema_number(
+        str(value), integer=True, allow_integral_decimal=True
+    )
+
+
+def _xml_decimal(value: int | float | str | None) -> str | None:
+    if value is None:
+        return None
+    return normalize_schema_number(
+        str(value),
+        integer=False,
+        strip_currency=True,
+        allow_accounting_negative=True,
+        allow_negative=True,
+    )
+
+
+def _canonicalize_dates(
+    doc: Form144Document,
+    reference_year: int | None,
+) -> tuple[Form144Document, tuple[dict[str, object], ...]]:
+    unresolved: list[dict[str, object]] = []
+
+    def normalize(value: str | None, path: str) -> str | None:
+        result = extract_value(
+            value,
+            FieldSpec(path, FieldKind.DATE),
+            reference_year=reference_year,
+        )
+        if record := result.unresolved_record():
+            unresolved.append(record)
+        return result.value
+
+    def normalize_jurisdiction(value: str | None, path: str) -> str | None:
+        result = extract_value(
+            value,
+            FieldSpec(
+                path,
+                FieldKind.JURISDICTION,
+                allowed_values=EDGAR_JURISDICTION_CODES,
+            ),
+        )
+        if record := result.unresolved_record():
+            unresolved.append(record)
+        return result.value
+
+    proposed = replace(
+        doc.proposed_sale,
+        approx_sale_date=normalize(
+            doc.proposed_sale.approx_sale_date, "proposed_sale.approx_sale_date"
+        ),
+    )
+    issuer = replace(
+        doc.issuer,
+        state_or_country=normalize_jurisdiction(
+            doc.issuer.state_or_country, "issuer.state_or_country"
+        ),
+    )
+    reporting_person = replace(
+        doc.reporting_person,
+        state_or_country=normalize_jurisdiction(
+            doc.reporting_person.state_or_country, "reporting_person.state_or_country"
+        ),
+    )
+    if proposed.broker is not None:
+        proposed = replace(
+            proposed,
+            broker=replace(
+                proposed.broker,
+                state_or_country=normalize_jurisdiction(
+                    proposed.broker.state_or_country,
+                    "proposed_sale.broker.state_or_country",
+                ),
+            ),
+        )
+    table_i = tuple(
+        replace(
+            item,
+            acquired_date=normalize(
+                item.acquired_date, f"table_i[{index}].acquired_date"
+            ),
+            payment_date=normalize(item.payment_date, f"table_i[{index}].payment_date"),
+        )
+        for index, item in enumerate(doc.securities_to_be_sold)
+    )
+    table_ii = tuple(
+        replace(
+            item,
+            sale_date=normalize(item.sale_date, f"table_ii[{index}].sale_date"),
+        )
+        for index, item in enumerate(doc.securities_sold_past_3_months)
+    )
+    signature = doc.signature
+    if signature is not None:
+        signature = replace(
+            signature,
+            notice_date=normalize(signature.notice_date, "signature.notice_date"),
+            plan_adoption_dates=tuple(
+                normalized
+                for index, value in enumerate(signature.plan_adoption_dates)
+                if (
+                    normalized := normalize(
+                        value, f"signature.plan_adoption_dates[{index}]"
+                    )
+                )
+            ),
+        )
+    return (
+        replace(
+            doc,
+            issuer=issuer,
+            reporting_person=reporting_person,
+            proposed_sale=proposed,
+            securities_to_be_sold=table_i,
+            securities_sold_past_3_months=table_ii,
+            signature=signature,
+        ),
+        tuple(unresolved),
+    )
+
+
+def _document_dates(doc: Form144Document) -> tuple[str | None, ...]:
+    return (
+        doc.signature.notice_date if doc.signature else None,
+        doc.proposed_sale.approx_sale_date,
+        *(item.acquired_date for item in doc.securities_to_be_sold),
+        *(item.payment_date for item in doc.securities_to_be_sold),
+        *(item.sale_date for item in doc.securities_sold_past_3_months),
+        *(doc.signature.plan_adoption_dates if doc.signature else ()),
+    )
 
 
 def _build_issuer_xml(form_data: ET.Element, doc: Form144Document) -> None:
@@ -86,7 +238,7 @@ def _build_issuer_xml(form_data: ET.Element, doc: Form144Document) -> None:
 
 
 def _build_securities_information_xml(
-    form_data: ET.Element, item: ProposedSaleItem
+    form_data: ET.Element, item: ProposedSaleItem, reported_year: int | None
 ) -> None:
     sec_el = ET.SubElement(form_data, "securitiesInformation")
     if item.class_title:
@@ -108,49 +260,36 @@ def _build_securities_information_xml(
             _add_text_elem(addr_el, "com:zipCode", item.broker.zip_code)
 
     if item.units_to_be_sold is not None:
-        val = (
-            int(item.units_to_be_sold)
-            if isinstance(item.units_to_be_sold, int)
-            or (
-                isinstance(item.units_to_be_sold, float)
-                and item.units_to_be_sold.is_integer()
-            )
-            else item.units_to_be_sold
-        )
-        _add_text_elem(sec_el, "noOfUnitsSold", val)
+        _add_text_elem(sec_el, "noOfUnitsSold", _xml_integer(item.units_to_be_sold))
     if item.aggregate_market_value is not None:
-        val = (
-            int(item.aggregate_market_value)
-            if item.aggregate_market_value.is_integer()
-            else f"{item.aggregate_market_value:.2f}"
+        _add_text_elem(
+            sec_el, "aggregateMarketValue", _xml_decimal(item.aggregate_market_value)
         )
-        _add_text_elem(sec_el, "aggregateMarketValue", val)
     if item.units_outstanding is not None:
-        val = (
-            int(item.units_outstanding)
-            if isinstance(item.units_outstanding, int)
-            or (
-                isinstance(item.units_outstanding, float)
-                and item.units_outstanding.is_integer()
-            )
-            else item.units_outstanding
+        _add_text_elem(
+            sec_el, "noOfUnitsOutstanding", _xml_integer(item.units_outstanding)
         )
-        _add_text_elem(sec_el, "noOfUnitsOutstanding", val)
     if item.approx_sale_date:
-        _add_text_elem(sec_el, "approxSaleDate", item.approx_sale_date)
+        _add_text_elem(
+            sec_el, "approxSaleDate", _xml_date(item.approx_sale_date, reported_year)
+        )
     if item.exchange_name:
         _add_text_elem(sec_el, "securitiesExchangeName", item.exchange_name)
 
 
 def _build_table_i_xml(
-    form_data: ET.Element, items: tuple[TableISecurityItem, ...]
+    form_data: ET.Element,
+    items: tuple[TableISecurityItem, ...],
+    reported_year: int | None,
 ) -> None:
     for item in items:
         row_el = ET.SubElement(form_data, "securitiesToBeSold")
         if item.class_title:
             _add_text_elem(row_el, "securitiesClassTitle", item.class_title)
         if item.acquired_date:
-            _add_text_elem(row_el, "acquiredDate", item.acquired_date)
+            _add_text_elem(
+                row_el, "acquiredDate", _xml_date(item.acquired_date, reported_year)
+            )
         if item.nature_of_acquisition:
             _add_text_elem(
                 row_el, "natureOfAcquisitionTransaction", item.nature_of_acquisition
@@ -161,18 +300,13 @@ def _build_table_i_xml(
             )
         _add_text_elem(row_el, "isGiftTransaction", "Y" if item.is_gift else "N")
         if item.amount_acquired is not None:
-            val = (
-                int(item.amount_acquired)
-                if isinstance(item.amount_acquired, int)
-                or (
-                    isinstance(item.amount_acquired, float)
-                    and item.amount_acquired.is_integer()
-                )
-                else item.amount_acquired
+            _add_text_elem(
+                row_el, "amountOfSecuritiesAcquired", _xml_integer(item.amount_acquired)
             )
-            _add_text_elem(row_el, "amountOfSecuritiesAcquired", val)
         if item.payment_date:
-            _add_text_elem(row_el, "paymentDate", item.payment_date)
+            _add_text_elem(
+                row_el, "paymentDate", _xml_date(item.payment_date, reported_year)
+            )
         if item.nature_of_payment:
             _add_text_elem(row_el, "natureOfPayment", item.nature_of_payment)
 
@@ -181,6 +315,7 @@ def _build_table_ii_xml(
     form_data: ET.Element,
     nothing_to_report: bool,
     items: tuple[TableIISecuritySoldItem, ...],
+    reported_year: int | None,
 ) -> None:
     if nothing_to_report or not items:
         _add_text_elem(
@@ -201,57 +336,50 @@ def _build_table_ii_xml(
         if item.class_title:
             _add_text_elem(row_el, "securitiesClassTitle", item.class_title)
         if item.sale_date:
-            _add_text_elem(row_el, "saleDate", item.sale_date)
+            _add_text_elem(row_el, "saleDate", _xml_date(item.sale_date, reported_year))
         if item.amount_sold is not None:
-            val = (
-                int(item.amount_sold)
-                if isinstance(item.amount_sold, int)
-                or (
-                    isinstance(item.amount_sold, float)
-                    and item.amount_sold.is_integer()
-                )
-                else item.amount_sold
+            _add_text_elem(
+                row_el, "amountOfSecuritiesSold", _xml_integer(item.amount_sold)
             )
-            _add_text_elem(row_el, "amountOfSecuritiesSold", val)
         if item.gross_proceeds is not None:
-            val = (
-                int(item.gross_proceeds)
-                if item.gross_proceeds.is_integer()
-                else f"{item.gross_proceeds:.2f}"
-            )
-            _add_text_elem(row_el, "grossProceeds", val)
+            _add_text_elem(row_el, "grossProceeds", _xml_decimal(item.gross_proceeds))
 
 
-def _build_signature_xml(form_data: ET.Element, doc: Form144Document) -> None:
+def _build_signature_xml(
+    form_data: ET.Element, doc: Form144Document, reported_year: int | None
+) -> None:
     if not doc.signature:
         return
     sig_el = ET.SubElement(form_data, "noticeSignature")
     if doc.signature.notice_date:
-        _add_text_elem(sig_el, "noticeDate", doc.signature.notice_date)
+        _add_text_elem(
+            sig_el, "noticeDate", _xml_date(doc.signature.notice_date, reported_year)
+        )
     if doc.signature.plan_adoption_dates:
         plans_el = ET.SubElement(sig_el, "planAdoptionDates")
         for pd in doc.signature.plan_adoption_dates:
-            _add_text_elem(plans_el, "planAdoptionDate", pd)
+            _add_text_elem(plans_el, "planAdoptionDate", _xml_date(pd, reported_year))
     if doc.signature.signature:
         _add_text_elem(sig_el, "signature", doc.signature.signature)
 
 
-def _build_unparsed_sections_xml(root: ET.Element, sections: Form144Sections) -> None:
-    unparsed_nodes = list(sections.unparsed)
-    if not unparsed_nodes:
-        return
-    container = ET.SubElement(root, "unparsedSections")
-    for sec in unparsed_nodes:
-        unparsed_el = ET.SubElement(container, "unparsedSection")
-        unparsed_el.attrib["tableIndex"] = str(sec.table_index)
-        unparsed_el.attrib["role"] = str(sec.role)
-        raw_html = getattr(sec.raw_node, "html", None)
-        raw_str = raw_html() if callable(raw_html) else str(raw_html or "")
-        unparsed_el.text = strip_decorative_presentation_attributes(raw_str)
+def _unparsed_records(sections: Form144Sections) -> tuple[dict[str, object], ...]:
+    records: list[dict[str, object]] = []
+    for section in sections.unparsed:
+        content = str(getattr(section.raw_node, "html", ""))
+        records.append(
+            {
+                "role": str(section.role),
+                "content_type": "text/html",
+                "content": content,
+                "table_index": section.table_index,
+            }
+        )
+    return tuple(records)
 
 
 def build_canonical_form144_xml(
-    doc: Form144Document, sections: Form144Sections | None = None
+    doc: Form144Document, reference_year: int | None = None
 ) -> bytes:
     """Serialize Form144Document into canonical SEC XML envelope bytes."""
     root = ET.Element(
@@ -265,44 +393,55 @@ def build_canonical_form144_xml(
     _add_text_elem(header, "submissionType", "144")
 
     form_data = ET.SubElement(root, "formData")
+    reported_year = reference_year
     _build_issuer_xml(form_data, doc)
-    _build_securities_information_xml(form_data, doc.proposed_sale)
-    _build_table_i_xml(form_data, doc.securities_to_be_sold)
+    _build_securities_information_xml(form_data, doc.proposed_sale, reported_year)
+    _build_table_i_xml(form_data, doc.securities_to_be_sold, reported_year)
     _build_table_ii_xml(
         form_data,
         doc.nothing_to_report_past_3_months,
         doc.securities_sold_past_3_months,
+        reported_year,
     )
 
     if doc.remarks:
         _add_text_elem(form_data, "remarks", doc.remarks)
 
-    _build_signature_xml(form_data, doc)
-    if sections:
-        _build_unparsed_sections_xml(root, sections)
+    _build_signature_xml(form_data, doc, reported_year)
     return ET.tostring(root, encoding="utf-8", xml_declaration=True)
 
 
 def render_form144_to_xml(
     raw_bytes: bytes, context: HandlerContext | None = None
-) -> bytes:
+) -> bytes | HandlerOutput:
     """Render Form 144 document bytes to canonical XML."""
     prefix = raw_bytes[:1000].decode("utf-8", errors="ignore")
     if _XML_DECL_RE.search(prefix) or _EDGAR_SUBMISSION_RE.search(prefix):
         try:
-            tree = ET.fromstring(raw_bytes)
-            return ET.tostring(tree, encoding="utf-8", xml_declaration=True)
+            ET.fromstring(raw_bytes)
+            return raw_bytes
         except ET.ParseError:
             pass
 
     text = raw_bytes.decode("utf-8", errors="ignore")
-    sections = partition_form144_tables(text)
+    report_date = getattr(context, "report_date", None) if context is not None else None
+    filing_date = getattr(context, "filing_date", None) if context is not None else None
+    external_year = external_reference_year(report_date, filing_date)
+    sections = partition_form144_tables(text, external_year)
 
     issuer, seller = parse_cover_box_1_2(sections.cover_box_1_2)
-    proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3)
-    table_i = parse_table_i_rows(sections.table_i)
-    nothing_to_report, table_ii = parse_table_ii_rows(sections.table_ii)
-    sig = parse_signatures(sections.signatures, full_text=text)
+    proposed = parse_proposed_sale_box_3(
+        sections.proposed_sale_box_3, reference_year=external_year
+    )
+    table_i = parse_table_i_rows(sections.table_i, reference_year=external_year)
+    nothing_to_report, table_ii = parse_table_ii_rows(
+        sections.table_ii, reference_year=external_year
+    )
+    sig = parse_signatures(
+        sections.signatures,
+        full_text=text,
+        reference_year=external_year,
+    )
 
     doc = Form144Document(
         issuer=issuer,
@@ -314,7 +453,24 @@ def render_form144_to_xml(
         remarks=parse_remarks(sections.remarks),
         signature=sig,
     )
-    return build_canonical_form144_xml(doc, sections=sections)
+    reference_year = resolve_reference_year(
+        report_date,
+        filing_date,
+        _document_dates(doc),
+    )
+    doc, unresolved_dates = _canonicalize_dates(doc, reference_year)
+    xml_bytes = build_canonical_form144_xml(doc, reference_year)
+    records = (*unresolved_dates, *_unparsed_records(sections))
+    if records:
+        return HandlerOutput(
+            content=xml_bytes,
+            sidecars=(
+                HandlerSidecar(
+                    "unparsed_sections.json", serialize_unparsed_sections(records)
+                ),
+            ),
+        )
+    return xml_bytes
 
 
 __all__ = [

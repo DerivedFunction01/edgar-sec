@@ -4,21 +4,22 @@ from __future__ import annotations
 
 from edgar_sec.engine.forms.ownership.analysis import (
     analyze_ownership_xml,
+    analyze_ownership_review_case,
     summarize_ownership_cases,
 )
+from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
 
 SAMPLE_CLEAN_XML = b"""<?xml version="1.0" encoding="utf-8"?>
 <ownershipDocument>
-    <schemaVersion>X0206</schemaVersion>
     <documentType>4</documentType>
-    <periodOfReport>03/01/2003</periodOfReport>
+    <periodOfReport>2003-03-01</periodOfReport>
     <issuer>
-        <issuerName>ACME INC</issuerName>
+        <issuerCik>0000000001</issuerCik>
         <issuerTradingSymbol>ACM</issuerTradingSymbol>
     </issuer>
     <reportingOwner>
         <reportingOwnerId>
-            <rptOwnerName>Smith, Jane</rptOwnerName>
+            <rptOwnerCik>0000000002</rptOwnerCik>
         </reportingOwnerId>
     </reportingOwner>
     <derivativeTable>
@@ -26,8 +27,8 @@ SAMPLE_CLEAN_XML = b"""<?xml version="1.0" encoding="utf-8"?>
             <securityTitle><value>Common Stock Option</value></securityTitle>
             <conversionOrExercisePrice><value>10.0</value></conversionOrExercisePrice>
             <exerciseDateAndExpirationDate>
-                <exerciseDate><value>03/01/2004</value></exerciseDate>
-                <expirationDate><value>03/01/2013</value></expirationDate>
+                <exerciseDate><value>2004-03-01</value></exerciseDate>
+                <expirationDate><value>2013-03-01</value></expirationDate>
             </exerciseDateAndExpirationDate>
             <underlyingSecurity>
                 <underlyingSecurityTitle><value>Common Stock</value></underlyingSecurityTitle>
@@ -35,6 +36,8 @@ SAMPLE_CLEAN_XML = b"""<?xml version="1.0" encoding="utf-8"?>
             </underlyingSecurity>
         </derivativeHolding>
     </derivativeTable>
+    <ownerSignature><signatureName>Jane Smith</signatureName>
+        <signatureDate>2003-03-01</signatureDate></ownerSignature>
 </ownershipDocument>
 """
 
@@ -72,16 +75,44 @@ def test_analyze_ownership_xml_detects_anomalies_and_unparsed() -> None:
     assert res["unparsed_sections"][0]["table_index"] == "5"
 
 
+def test_review_analysis_loads_common_sidecar(tmp_path) -> None:
+    operations = tmp_path / "operations"
+    operations.mkdir()
+    (operations / "render_to_xml.xml").write_bytes(
+        b"<ownershipDocument><documentType>4</documentType></ownershipDocument>"
+    )
+    (operations / "unparsed_sections.json").write_bytes(
+        serialize_unparsed_sections(
+            [
+                {
+                    "role": "unparsed",
+                    "content_type": "text/html",
+                    "content": "<table>review content</table>",
+                    "table_index": 2,
+                }
+            ]
+        )
+    )
+
+    report = analyze_ownership_review_case(tmp_path, {"accession": "a1"})
+
+    assert report is not None
+    assert report["unparsed_sections"][0]["table_index"] == "2"
+    assert report["unparsed_sections"][0]["snippet"] == (
+        "<table>review content</table>"
+    )
+
+
 def test_summarize_ownership_cases_aggregates_metrics() -> None:
     rep1 = analyze_ownership_xml(SAMPLE_CLEAN_XML, accession="0001-01-000001")
     rep2 = analyze_ownership_xml(SAMPLE_ANOMALOUS_XML, accession="0001-01-000002")
     summary = summarize_ownership_cases([rep1, rep2])
     assert summary["case_count"] == 2
-    assert summary["anomaly_count"] == 3
+    assert summary["anomaly_count"] == 4
     assert summary["unparsed_section_count"] == 1
     assert len(summary["unparsed_samples"]) == 1
     assert "field_completeness" in summary
-    assert summary["field_completeness"]["issuerName"] == "1/2 (50%)"
+    assert summary["field_completeness"]["issuerName"] == "0/2 (0%)"
 
 
 def test_mask_normalized_pattern() -> None:
@@ -123,9 +154,9 @@ def test_detects_header_leaks_and_signature_boilerplate() -> None:
 
 def test_analysis_reports_blank_canonical_fields_and_invalid_dates() -> None:
     xml = b"""<ownershipDocument>
-    <periodOfReport>03/01/2003</periodOfReport>
-    <issuer><issuerName>ACME INC</issuerName></issuer>
-    <reportingOwner><reportingOwnerId><rptOwnerName>Jane Doe</rptOwnerName></reportingOwnerId></reportingOwner>
+    <periodOfReport>2003-03-01</periodOfReport>
+    <issuer><issuerCik>0000000001</issuerCik><issuerTradingSymbol>ACM</issuerTradingSymbol></issuer>
+    <reportingOwner><reportingOwnerId><rptOwnerCik>0000000002</rptOwnerCik></reportingOwnerId></reportingOwner>
     <nonDerivativeTable><nonDerivativeTransaction>
       <securityTitle><value>Common Stock 03/01/2003</value></securityTitle>
       <transactionDate><value>02/30/2003</value></transactionDate>
@@ -147,7 +178,59 @@ def test_analysis_reports_blank_canonical_fields_and_invalid_dates() -> None:
     }
     summary = summarize_ownership_cases([report])
     assert summary["field_scorecard"]["transactionShares"]["blank_occurrences"] == 1
-    assert summary["field_scorecard"]["issuerTradingSymbol"]["cases_without_value"] == 1
+    assert summary["field_scorecard"]["issuerTradingSymbol"]["cases_without_value"] == 0
+
+
+def test_analysis_checks_confirmed_ownership_choice_lists() -> None:
+    xml = b"""<ownershipDocument>
+      <documentType>4</documentType>
+      <reportingOwner><reportingOwnerAddress>
+        <rptOwnerState>ZZ</rptOwnerState>
+      </reportingOwnerAddress></reportingOwner>
+      <nonDerivativeTable><nonDerivativeTransaction>
+        <transactionCoding><transactionCode>K</transactionCode></transactionCoding>
+        <transactionAmounts><transactionAcquiredDisposedCode><value>X</value>
+        </transactionAcquiredDisposedCode></transactionAmounts>
+      </nonDerivativeTransaction></nonDerivativeTable>
+    </ownershipDocument>"""
+
+    report = analyze_ownership_xml(xml, accession="0001-01-000007")
+
+    assert {
+        "invalid_transaction_code",
+        "invalid_transactionAcquiredDisposedCode",
+        "invalid_rptOwnerState",
+    }.issubset({anomaly["kind"] for anomaly in report["anomalies"]})
+
+
+def test_analysis_reports_missing_ciks_and_not_applicable_fields() -> None:
+    xml = b"""<ownershipDocument>
+      <schemaVersion>X0206</schemaVersion><documentType>4</documentType>
+      <issuer><issuerName>ACME</issuerName></issuer>
+      <reportingOwner><reportingOwnerId><rptOwnerName>Jane Doe</rptOwnerName>
+      </reportingOwnerId></reportingOwner>
+    </ownershipDocument>"""
+
+    report = analyze_ownership_xml(xml, accession="0001-01-000010")
+
+    missing = next(
+        anomaly
+        for anomaly in report["anomalies"]
+        if anomaly["kind"] == "missing_required_fields"
+    )
+    assert set(missing["value"].split(", ")) == {
+        "periodOfReport",
+        "issuerCik",
+        "issuerTradingSymbol",
+        "rptOwnerCik",
+        "signatureName",
+        "signatureDate",
+    }
+    assert {
+        "not_applicable_schemaVersion",
+        "not_applicable_issuerName",
+        "not_applicable_rptOwnerName",
+    }.issubset({anomaly["kind"] for anomaly in report["anomalies"]})
 
 
 def test_summary_counts_categorical_and_title_values() -> None:
@@ -200,12 +283,14 @@ def test_summary_counts_categorical_and_title_values() -> None:
 
 def test_option_title_date_is_reported_as_review_signal() -> None:
     xml = b"""<ownershipDocument>
-    <periodOfReport>04/02/2003</periodOfReport>
-    <issuer><issuerName>ACME INC</issuerName></issuer>
-    <reportingOwner><reportingOwnerId><rptOwnerName>Jane Doe</rptOwnerName></reportingOwnerId></reportingOwner>
+    <periodOfReport>2003-04-02</periodOfReport>
+    <issuer><issuerCik>0000000001</issuerCik><issuerTradingSymbol>ACM</issuerTradingSymbol></issuer>
+    <reportingOwner><reportingOwnerId><rptOwnerCik>0000000002</rptOwnerCik></reportingOwnerId></reportingOwner>
     <derivativeTable><derivativeTransaction>
       <securityTitle><value>BOD 4/1/03 Stock Options (Rights to Buy)</value></securityTitle>
     </derivativeTransaction></derivativeTable>
+    <ownerSignature><signatureName>Jane Doe</signatureName>
+      <signatureDate>2003-04-02</signatureDate></ownerSignature>
     </ownershipDocument>"""
 
     report = analyze_ownership_xml(xml, accession="0001-01-000006")

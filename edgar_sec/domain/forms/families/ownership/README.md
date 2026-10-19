@@ -4,12 +4,12 @@ Domain layer package for Section 16 insider ownership report definitions.
 
 ## Purpose
 
-Supplies declarative processing profiles and acquisition operation rules for SEC ownership filings (Form 4).
+Supplies declarative processing profiles and acquisition operation rules for SEC Forms 3, 4, and 5.
 
 ## Contracts
 
-- **Supported operations**: Form 4 allows verbatim `raw` storage and `render_to_xml` transform.
-- **No text rendering**: Form 4 drops `render_to_txt` to avoid lossy table flattening.
+- **Supported operations**: Forms 3, 4, and 5 allow verbatim `raw` storage and `render_to_xml` transform.
+- **No text rendering**: Ownership filings drop `render_to_txt` to avoid lossy table flattening.
 
 ## Deliberate gaps
 

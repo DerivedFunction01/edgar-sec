@@ -24,6 +24,10 @@ from edgar_sec.engine.document_processing.acquisition_capabilities import (
     resolve_acquisition_capability,
 )
 from edgar_sec.engine.document_processing.capabilities import operation_output_kind
+from edgar_sec.engine.forms.common.unparsed import (
+    UNPARSED_SECTIONS_FILE,
+    serialize_unparsed_sections,
+)
 from edgar_sec.engine.document_processing.processor import (
     AcquisitionProcessRequest,
     AcquisitionProcessor,
@@ -206,6 +210,7 @@ def _process_fixture_body(
                 raw_bytes=raw_bytes,
             ),
         ),
+        include_analysis_artifacts=True,
     )
     engine_result = AcquisitionProcessor().process(engine_request)
     result_by_operation = {item.operation: item for item in engine_result.outcomes}
@@ -216,6 +221,7 @@ def _process_fixture_body(
         outcome = result_by_operation[operation.operation]
         output_ref = None
         output_info = None
+        sidecar_outputs = []
         if outcome.output_bytes is not None and outcome.output_sha256 is not None:
             if sha256_bytes(outcome.output_bytes) != outcome.output_sha256:
                 raise ProcessingReviewError("parser output digest is invalid")
@@ -239,6 +245,49 @@ def _process_fixture_body(
                     "sha256": outcome.output_sha256,
                     "byte_size": outcome.output_byte_size,
                 }
+
+            for sidecar in outcome.sidecar_outputs:
+                if (
+                    sha256_bytes(sidecar.content) != sidecar.sha256
+                    or len(sidecar.content) != sidecar.byte_size
+                ):
+                    raise ProcessingReviewError("parser sidecar digest is invalid")
+                relative_sidecar = f"operations/{sidecar.name}"
+                if relative_sidecar in artifact_outputs:
+                    raise ProcessingReviewError("parser sidecar path is duplicated")
+                sidecar_path = output_root / relative_sidecar
+                atomic_write_bytes(sidecar_path, sidecar.content)
+                artifact_outputs[relative_sidecar] = {
+                    "sha256": sidecar.sha256,
+                    "byte_size": sidecar.byte_size,
+                }
+                sidecar_outputs.append(
+                    {
+                        "path": relative_sidecar,
+                        "sha256": sidecar.sha256,
+                        "byte_size": sidecar.byte_size,
+                    }
+                )
+            if operation.operation == "render_to_xml" and not any(
+                item["path"] == f"operations/{UNPARSED_SECTIONS_FILE}"
+                for item in sidecar_outputs
+            ):
+                content = serialize_unparsed_sections(())
+                digest = sha256_bytes(content)
+                relative_sidecar = f"operations/{UNPARSED_SECTIONS_FILE}"
+                sidecar_path = output_root / relative_sidecar
+                atomic_write_bytes(sidecar_path, content)
+                artifact_outputs[relative_sidecar] = {
+                    "sha256": digest,
+                    "byte_size": len(content),
+                }
+                sidecar_outputs.append(
+                    {
+                        "path": relative_sidecar,
+                        "sha256": digest,
+                        "byte_size": len(content),
+                    }
+                )
 
             output_ref = StagedOutputRef(
                 staging_id=output_root.name,
@@ -267,6 +316,7 @@ def _process_fixture_body(
                 "handler_version": outcome.handler_version,
                 "status": status,
                 "output_sha256": outcome.output_sha256,
+                "sidecar_outputs": sidecar_outputs,
                 "error": outcome.error,
             }
         )
@@ -293,6 +343,7 @@ def _process_fixture_body(
                 "handler_id": outcome.handler_id,
                 "handler_version": outcome.handler_version,
                 "output": output_info,
+                "sidecar_outputs": sidecar_outputs,
                 "error": outcome.error,
             }
         )

@@ -9,6 +9,7 @@ from edgar_sec.domain.forms.common.entities import (
     INSTRUCTION_SIGNATURE_PHRASES,
     TABULAR_STOPWORDS,
 )
+from edgar_sec.domain.taxonomy.jurisdictions import edgar_jurisdiction_code
 from edgar_sec.engine.forms.common.entities import BARE_BOX_NUM_RE, STATE_ZIP_RE
 from edgar_sec.engine.tables.ascii_html.converter import ResolvedGrid
 from edgar_sec.foundation.regex.builder import build_alternation
@@ -203,6 +204,20 @@ def parse_address_parts(
     """Split full address text into street, city, state, and postal code."""
     match = STATE_ZIP_RE.search(text)
     if not match:
+        parts = [part.strip() for part in text.split(",") if part.strip()]
+        for suffix_size in (1, 2):
+            if len(parts) <= suffix_size:
+                continue
+            jurisdiction = edgar_jurisdiction_code(", ".join(parts[-suffix_size:]))
+            if jurisdiction is None:
+                continue
+            prefix = parts[:-suffix_size]
+            city = prefix.pop() if len(prefix) > 1 else None
+            street = ", ".join(prefix) or None
+            if city is None and prefix and not prefix[0][:1].isdigit():
+                city = prefix.pop()
+                street = ", ".join(prefix) or None
+            return street, city, jurisdiction, None
         return text.strip() or None, None, None, None
     prefix = text[: match.start()].strip().rstrip(",")
     pieces = [piece.strip() for piece in prefix.split(",") if piece.strip()]

@@ -36,6 +36,7 @@ class CatalogAccessionScopeRow:
     accession: str
     form: str
     filing_date: str
+    report_date: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -46,6 +47,7 @@ class InventoryEvidenceRow:
     indexed: bool
     accession_row: Mapping[str, Any] | None
     entry_row: Mapping[str, Any] | None
+    catalog_report_date: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -71,7 +73,7 @@ class InventoryEvidenceSource:
         try:
             con.execute(
                 "CREATE TEMP TABLE requested_scope "
-                "(accession VARCHAR, form VARCHAR, filing_date VARCHAR)"
+                "(accession VARCHAR, form VARCHAR, filing_date VARCHAR, report_date VARCHAR)"
             )
             scope_iter = iter(accessions)
             previous_accession: str | None = None
@@ -92,8 +94,11 @@ class InventoryEvidenceSource:
 
                 con.execute("DELETE FROM requested_scope")
                 con.executemany(
-                    "INSERT INTO requested_scope VALUES (?, ?, ?)",
-                    [(row.accession, row.form, row.filing_date) for row in batch],
+                    "INSERT INTO requested_scope VALUES (?, ?, ?, ?)",
+                    [
+                        (row.accession, row.form, row.filing_date, row.report_date)
+                        for row in batch
+                    ],
                 )
                 lower, upper = batch[0].accession, batch[-1].accession
                 compile_pruned_views(
@@ -117,7 +122,7 @@ class InventoryEvidenceSource:
             for name in self._entry_columns
         )
         query = (
-            "SELECT s.accession, s.form, s.filing_date, "
+            "SELECT s.accession, s.form, s.filing_date, s.report_date, "
             f"{accession_select}, {entry_select} "
             "FROM requested_scope s "
             "LEFT JOIN active_accessions a USING (accession) "
@@ -126,11 +131,11 @@ class InventoryEvidenceSource:
         )
         cursor = con.execute(query)
         accession_width = len(self._accession_columns)
-        entry_start = 3 + accession_width
+        entry_start = 4 + accession_width
         while rows := cursor.fetchmany(batch_size):
             for values in rows:
-                accession, form, filing_date = values[:3]
-                raw_accession = values[3:entry_start]
+                accession, form, filing_date, report_date = values[:4]
+                raw_accession = values[4:entry_start]
                 raw_entry = values[entry_start:]
                 indexed = raw_accession[0] is not None
                 if indexed:
@@ -138,6 +143,7 @@ class InventoryEvidenceSource:
                     if (
                         accession_row["form"] != form
                         or accession_row["filing_date"] != filing_date
+                        or accession_row["report_date"] != report_date
                     ):
                         raise InventoryEvidenceError(
                             f"inventory facts disagree with catalog for {accession}"
@@ -157,6 +163,7 @@ class InventoryEvidenceSource:
                     indexed=indexed,
                     accession_row=accession_row,
                     entry_row=entry_row,
+                    catalog_report_date=report_date,
                 )
 
 

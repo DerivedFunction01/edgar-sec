@@ -26,14 +26,18 @@ _FORM4_MARKER_ALT = build_alternation(_FORM4_MARKER_TERMS, auto_escape=False)
 _FORM4_MARKER_RE = re.compile(_FORM4_MARKER_ALT, re.IGNORECASE)
 
 
-def parse_ascii_form4(raw_text: str) -> OwnershipSections | None:
+def parse_ascii_form4(
+    raw_text: str, reference_year: int | None = None
+) -> OwnershipSections | None:
     """Parse Form 4 ASCII text into typed OwnershipSections."""
     if not _FORM4_MARKER_RE.search(raw_text):
         return None
 
     shape = detect_ascii_shape(raw_text)
 
-    boxes_1_to_7, signatures = extract_ascii_header_and_signatures(raw_text)
+    boxes_1_to_7, signatures = extract_ascii_header_and_signatures(
+        raw_text, reference_year
+    )
     table_i, table_ii, footnotes = extract_ascii_tables_and_footnotes(raw_text, shape)
 
     if boxes_1_to_7 is None and table_i is None and table_ii is None:

@@ -1,8 +1,10 @@
 """Tests for Form 4 XML document generation."""
 
 import xml.etree.ElementTree as ET
+from types import SimpleNamespace
 
-from edgar_sec.engine.forms.ownership.render_to_xml import render_form4_to_xml
+from edgar_sec.engine.document_processing.outputs import HandlerOutput
+from edgar_sec.engine.forms.ownership.render_to_xml import render_ownership_to_xml
 
 SAMPLE_DOC_HTML = b"""
 <html><body>
@@ -15,48 +17,86 @@ SAMPLE_DOC_HTML = b"""
 <table><tr><td>Table I - Non-Derivative Securities</td></tr></table>
 <table>
   <tr><td>Title</td><td>Date</td><td>Code</td><td>Amount</td><td>Owned</td><td>Form</td><td>Nature</td></tr>
-  <tr><td>Common Stock</td><td>06/01/2001</td><td>P</td><td>500 | A | $10.00</td><td>500</td><td>D</td><td></td></tr>
+  <tr><td>Common Stock</td><td>06/01/2001</td><td>P</td><td>500.000 | A | $10.00</td><td>500.000</td><td>D</td><td></td></tr>
 </table>
 <table><tr><td>Signature of Reporting Person\nStephen V. Hooks\n07-03-2001</td></tr></table>
 </body></html>
 """
 
 
-def test_render_form4_to_xml_generates_valid_envelope() -> None:
-    xml_bytes = render_form4_to_xml(SAMPLE_DOC_HTML)
+def test_render_ownership_to_xml_generates_valid_envelope() -> None:
+    result = render_ownership_to_xml(SAMPLE_DOC_HTML)
+    xml_bytes = result.content if isinstance(result, HandlerOutput) else result
     root = ET.fromstring(xml_bytes)
 
     assert root.tag == "ownershipDocument"
-    assert root.findtext("schemaVersion") == "X0206"
+    assert root.find("schemaVersion") is None
     assert root.findtext("documentType") == "4"
-    assert root.findtext("periodOfReport") == "June 2001"
-    assert root.findtext("issuer/issuerName") == "ACME CORP"
+    assert root.findtext("periodOfReport") == "2001-06-01"
+    assert root.find("issuer/issuerName") is None
     assert root.findtext("issuer/issuerTradingSymbol") == "ACM"
-    assert (
-        root.findtext("reportingOwner/reportingOwnerId/rptOwnerName")
-        == "Hooks, Stephen V."
-    )
+    assert root.find("reportingOwner/reportingOwnerId/rptOwnerName") is None
     assert root.findtext("reportingOwner/reportingOwnerRelationship/isOfficer") == "1"
+    assert (
+        root.findtext("reportingOwner/reportingOwnerAddress/rptOwnerNonUSAddressFlag")
+        == "0"
+    )
 
     tx = root.find("nonDerivativeTable/nonDerivativeTransaction")
     assert tx is not None
     assert tx.findtext("securityTitle/value") == "Common Stock"
     assert tx.findtext("transactionCoding/transactionCode") == "P"
-    assert tx.findtext("transactionAmounts/transactionShares/value") == "500.0"
+    assert tx.findtext("transactionAmounts/transactionShares/value") == "500"
+    assert tx.findtext("transactionAmounts/transactionPricePerShare/value") == "10.00"
+    assert (
+        tx.findtext("postTransactionAmounts/sharesOwnedFollowingTransaction/value")
+        == "500"
+    )
 
     assert root.findtext("ownerSignature/signatureName") == "Stephen V. Hooks"
-    assert root.findtext("ownerSignature/signatureDate") == "07-03-2001"
+    assert root.findtext("ownerSignature/signatureDate") == "2001-07-03"
 
 
-def test_render_form4_to_xml_passthrough_for_xml_input() -> None:
+def test_render_ownership_to_xml_passthrough_for_xml_input() -> None:
     raw_xml = (
         b'<?xml version="1.0"?><ownershipDocument><test>true</test></ownershipDocument>'
     )
-    result = render_form4_to_xml(raw_xml)
+    result = render_ownership_to_xml(raw_xml)
     assert result == raw_xml
 
 
-def test_render_form4_to_xml_ascii_input() -> None:
+def test_renderer_moves_unparsed_html_to_sidecar() -> None:
+    source = SAMPLE_DOC_HTML.replace(
+        b"<table><tr><td>Signature of Reporting Person",
+        b"<table><tr><td>Additional unclassified section</td></tr></table>"
+        b"<table><tr><td>Signature of Reporting Person",
+    )
+
+    result = render_ownership_to_xml(source)
+
+    assert isinstance(result, HandlerOutput)
+    root = ET.fromstring(result.content)
+    assert root.find(".//unparsedSection") is None
+    assert len(result.sidecars) == 1
+    assert result.sidecars[0].name == "unparsed_sections.json"
+    assert b'"content_type":"text/html"' in result.sidecars[0].content
+    assert b"Additional unclassified section" in result.sidecars[0].content
+
+
+def test_renderer_anchors_two_digit_dates_to_report_period() -> None:
+    source = SAMPLE_DOC_HTML.replace(b"06/01/2001", b"06/01/01").replace(
+        b"07-03-2001", b"07-03-01"
+    )
+
+    result = render_ownership_to_xml(source)
+
+    assert isinstance(result, bytes)
+    root = ET.fromstring(result)
+    assert root.findtext("periodOfReport") == "2001-06-01"
+    assert root.findtext("ownerSignature/signatureDate") == "2001-07-03"
+
+
+def test_render_ownership_to_xml_ascii_input() -> None:
     ascii_bytes = (
         b"FORM 4\n"
         b"1. Name and Address of Reporting Person*\n"
@@ -76,7 +116,7 @@ def test_render_form4_to_xml_ascii_input() -> None:
         b"</TABLE>\n"
         b"/s/ Jane Smith   06/01/2001\n"
     )
-    xml_bytes = render_form4_to_xml(ascii_bytes)
+    xml_bytes = render_ownership_to_xml(ascii_bytes)
     root = ET.fromstring(xml_bytes)
     assert root.tag == "ownershipDocument"
     assert root.findtext("issuer/issuerTradingSymbol") == "ACM"
@@ -84,3 +124,50 @@ def test_render_form4_to_xml_ascii_input() -> None:
     tx = root.find("nonDerivativeTable/nonDerivativeTransaction")
     assert tx is not None
     assert tx.findtext("transactionCoding/transactionCode") == "P"
+
+
+def test_form5_uses_form5_document_and_transaction_types() -> None:
+    result = render_ownership_to_xml(SAMPLE_DOC_HTML, SimpleNamespace(family="5"))
+    xml_bytes = result.content if isinstance(result, HandlerOutput) else result
+    root = ET.fromstring(xml_bytes)
+
+    assert root.findtext("documentType") == "5"
+    assert (
+        root.findtext(
+            "nonDerivativeTable/nonDerivativeTransaction/transactionCoding/transactionFormType"
+        )
+        == "5"
+    )
+
+
+def test_form3_does_not_mislabel_form4_transaction_rows() -> None:
+    result = render_ownership_to_xml(SAMPLE_DOC_HTML, SimpleNamespace(family="3"))
+    assert isinstance(result, HandlerOutput)
+    root = ET.fromstring(result.content)
+
+    assert root.findtext("documentType") == "3"
+    assert root.find("nonDerivativeTable/nonDerivativeTransaction") is None
+    assert b"Common Stock" in result.sidecars[0].content
+
+
+def test_form3_holding_table_uses_shared_row_extractor() -> None:
+    source = SAMPLE_DOC_HTML.replace(
+        b"<tr><td>Title</td><td>Date</td><td>Code</td><td>Amount</td><td>Owned</td><td>Form</td><td>Nature</td></tr>",
+        b"<tr><td>Title</td><td>Date</td><td>Deemed</td><td>Code</td><td>Swap</td><td>Amount</td><td>A/D</td><td>Price</td><td>Owned</td><td>Form</td><td>Nature</td></tr>",
+    ).replace(
+        b"<tr><td>Common Stock</td><td>06/01/2001</td><td>P</td><td>500.000 | A | $10.00</td><td>500.000</td><td>D</td><td></td></tr>",
+        b"<tr><td>Common Stock</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>500.000</td><td>D</td><td></td></tr>",
+    )
+    result = render_ownership_to_xml(source, SimpleNamespace(family="3"))
+    xml_bytes = result.content if isinstance(result, HandlerOutput) else result
+    root = ET.fromstring(xml_bytes)
+
+    holding = root.find("nonDerivativeTable/nonDerivativeHolding")
+    assert holding is not None
+    assert (
+        holding.findtext("postTransactionAmounts/sharesOwnedFollowingTransaction/value")
+        == "500"
+    )
+    assert root.find("nonDerivativeTable/nonDerivativeTransaction") is None
+    if isinstance(result, HandlerOutput):
+        assert b"non_derivative_table" not in result.sidecars[0].content

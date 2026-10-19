@@ -106,6 +106,8 @@ def operation_fingerprint(
             "target_id": request.target_id,
             "accession": str(request.accession),
             "form": request.form,
+            "filing_date": request.filing_date,
+            "report_date": request.report_date,
             "target_role": request.target_role,
             "target_type": request.target_type,
             "document_path": request.document_path,

@@ -143,54 +143,6 @@ def test_parse_metadata_handles_stacked_2row_layout() -> None:
     assert meta.signature_date == "February 4, 2003"
 
 
-def test_parse_metadata_conformed_signatures_and_tickers() -> None:
-    from edgar_sec.engine.forms.ownership.metadata_parser import _parse_issuer
-
-    iss1 = _parse_issuer("Issuer Name: Macrovision Corporation (Nasdaq: MVSN)")
-    assert iss1.name == "Macrovision Corporation"
-    assert iss1.trading_symbol == "MVSN"
-
-    iss2 = _parse_issuer(
-        '2. Issuer Name and Ticker: Dendrite International Inc ("DRTE")'
-    )
-    assert iss2.name == "Dendrite International Inc"
-    assert iss2.trading_symbol == "DRTE"
-
-    iss3 = _parse_issuer("Issuer Name: Emerson Electric Co. - EMR")
-    assert iss3.name == "Emerson Electric Co."
-    assert iss3.trading_symbol == "EMR"
-
-    iss4 = _parse_issuer(
-        "2. Issuer Name and Ticker or Trading Symbol\nSizeler Property Investors, Inc.\nSIZ"
-    )
-    assert iss4.name == "Sizeler Property Investors, Inc."
-    assert iss4.trading_symbol == "SIZ"
-
-    iss5 = _parse_issuer(
-        "2. Issuer Name and Ticker or Trading Symbol\nThe Neiman Marcus Group, Inc.\n(NMG.A and NMG.B)"
-    )
-    assert iss5.name == "The Neiman Marcus Group, Inc."
-    assert iss5.trading_symbol == "NMG.A"
-
-
-def test_parse_period_and_amendments() -> None:
-    from edgar_sec.engine.forms.ownership.metadata_parser import _parse_period
-
-    p1 = _parse_period(
-        "4. Statement for\nMonth/Day/Year\n12/31/02\n5. If Amendment,\nDate of Original\n(Month/Day/Year)"
-    )
-    assert p1.period_of_report == "12/31/02"
-    assert p1.is_amendment is False
-    assert p1.date_of_original is None
-
-    p2 = _parse_period(
-        "4. Statement for Month/Day/Year\n02/19/2003\n5. If Amendment, Date of Original (Month/Day/Year)\n01/15/2003"
-    )
-    assert p2.period_of_report == "02/19/2003"
-    assert p2.is_amendment is True
-    assert p2.date_of_original == "01/15/2003"
-
-
 def test_parse_metadata_rejects_omb_and_statutory_boilerplate() -> None:
     html = """<html><body>
     <table><tr><td>1. Name and Address of Reporting Person*\nJane Doe</td></tr></table>
@@ -343,27 +295,6 @@ def test_parse_metadata_extracts_signature_outside_tables() -> None:
     assert sections.signatures is not None
     assert meta.signature_name == "Mary L. Rose"
     assert meta.signature_date == "04/28/03"
-
-
-def test_parse_issuer_fallback_delimiter_splitting() -> None:
-    """Verify fallback state machine splitting on slash, dash, and conjunction delimiters."""
-    from edgar_sec.engine.forms.ownership.metadata_parser import _parse_issuer
-
-    iss1 = _parse_issuer(
-        "2. Issuer Name and Ticker\nFarmers National Banc Corp./FMNB.OB"
-    )
-    assert iss1.name == "Farmers National Banc Corp."
-    assert iss1.trading_symbol == "FMNB.OB"
-
-    iss2 = _parse_issuer(
-        "2. Issuer Name and Ticker\nOil States International, Inc. - OIS"
-    )
-    assert iss2.name == "Oil States International, Inc."
-    assert iss2.trading_symbol == "OIS"
-
-    iss3 = _parse_issuer("2. Issuer Name and Ticker\nAcme Corp and ACM")
-    assert iss3.name == "Acme Corp"
-    assert iss3.trading_symbol == "ACM"
 
 
 def test_parse_metadata_excludes_statutory_boilerplate_from_owner_name() -> None:

@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
+import json
 import xml.etree.ElementTree as ET
 
 from edgar_sec.engine.forms.beneficial_ownership.renderer import (
     render_schedule13d_to_xml,
     render_schedule13g_to_xml,
 )
-from edgar_sec.engine.forms.normalize import normalize_document
+from edgar_sec.engine.document_processing.outputs import HandlerOutput
 
 _SAMPLE_HTML = b"""<html>
 <body>
@@ -57,7 +58,10 @@ _SAMPLE_HTML = b"""<html>
 
 
 def test_render_schedule13d_to_xml_generates_valid_xml() -> None:
-    xml_bytes = render_schedule13d_to_xml(_SAMPLE_HTML)
+    output = render_schedule13d_to_xml(_SAMPLE_HTML)
+    assert isinstance(output, HandlerOutput)
+    xml_bytes = output.content
+    assert isinstance(xml_bytes, bytes)
     root = ET.fromstring(xml_bytes)
     assert "edgarSubmission" in root.tag
     schema_ver = root.find("{http://www.sec.gov/edgar/schedule13D}schemaVersion")
@@ -70,31 +74,29 @@ def test_render_schedule13d_to_xml_generates_valid_xml() -> None:
     assert legal is not None and legal.text == "N"
 
     shares = root.find(".//{http://www.sec.gov/edgar/schedule13D}soleVotingPower")
-    assert shares is not None and shares.text == "50,000"
+    assert shares is not None and shares.text == "50000"
 
     signature = root.find(".//{http://www.sec.gov/edgar/schedule13D}signature")
     assert signature is not None and signature.text == "Jane Smith"
     signature_date = root.find(".//{http://www.sec.gov/edgar/schedule13D}date")
-    assert signature_date is not None and signature_date.text == "January 1, 2020"
+    assert signature_date is not None and signature_date.text == "01-01-2020"
     item_text = root.find(
         ".//{http://www.sec.gov/edgar/schedule13D}item1/"
         "{http://www.sec.gov/edgar/schedule13D}commentText"
     )
     assert item_text is not None and "Jane Smith" not in (item_text.text or "")
 
-    normalized = normalize_document(_SAMPLE_HTML, form="13D")
-    extractions = root.findall(
-        "./{http://www.sec.gov/edgar/schedule13D}extractionProvenance/"
-        "{http://www.sec.gov/edgar/schedule13D}fieldExtraction"
+    assert (
+        root.find(".//{http://www.sec.gov/edgar/schedule13D}extractionProvenance")
+        is None
     )
-    unparsed = root.find("./{http://www.sec.gov/edgar/schedule13D}unparsedSections")
-    assert extractions and unparsed is not None
-    assert int(unparsed.attrib["sourceLength"]) == len(normalized.text)
-    for field in extractions:
-        start = int(field.attrib["startOffset"])
-        end = int(field.attrib["endOffset"])
-        source = field.find("{http://www.sec.gov/edgar/schedule13D}sourceText")
-        assert source is not None and source.text == normalized.text[start:end]
+    assert (
+        root.find(".//{http://www.sec.gov/edgar/schedule13D}unparsedSections") is None
+    )
+    assert len(output.sidecars) == 1
+    assert output.sidecars[0].name == "unparsed_sections.json"
+    payload = json.loads(output.sidecars[0].content)
+    assert set(payload) == {"unparsed_sections"}
 
 
 def test_render_schedule13d_to_xml_passes_through_native_xml() -> None:
@@ -102,7 +104,9 @@ def test_render_schedule13d_to_xml_passes_through_native_xml() -> None:
 <edgarSubmission xmlns="http://www.sec.gov/edgar/schedule13D" xmlns:com="http://www.sec.gov/edgar/common">
 <schemaVersion>X0202</schemaVersion>
 </edgarSubmission>"""
-    assert render_schedule13d_to_xml(native) == native
+    output = render_schedule13d_to_xml(native)
+    assert isinstance(output, HandlerOutput)
+    assert output.content == native
 
 
 def test_render_schedule13g_to_xml_passes_through_native_xml() -> None:
@@ -110,4 +114,21 @@ def test_render_schedule13g_to_xml_passes_through_native_xml() -> None:
 <edgarSubmission xmlns="http://www.sec.gov/edgar/schedule13G" xmlns:com="http://www.sec.gov/edgar/common">
 <schemaVersion>X0202</schemaVersion>
 </edgarSubmission>"""
-    assert render_schedule13g_to_xml(native) == native
+    output = render_schedule13g_to_xml(native)
+    assert isinstance(output, HandlerOutput)
+    assert output.content == native
+
+
+def test_unresolved_scalars_are_sidecar_evidence_not_xml_values() -> None:
+    html = _SAMPLE_HTML.replace(b"50,000</p>", b"12 shares and more</p>", 1)
+    output = render_schedule13d_to_xml(html)
+    assert isinstance(output.content, bytes)
+    root = ET.fromstring(output.content)
+    assert root.find(".//{http://www.sec.gov/edgar/schedule13D}soleVotingPower") is None
+    payload = json.loads(output.sidecars[0].content)
+    unresolved = [
+        item
+        for item in payload["unparsed_sections"]
+        if str(item["role"]).startswith("normalization.unresolved:")
+    ]
+    assert unresolved

@@ -25,6 +25,7 @@ from edgar_sec.engine.forms.common.signatures import (
     extract_signature_candidate,
     is_valid_signature_name,
 )
+from edgar_sec.engine.forms.common.dates import normalize_iso_date, reported_year
 from edgar_sec.engine.forms.normalize import NormalizationResult
 from edgar_sec.engine.forms.sections.items.candidates import extract_section_candidates
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
@@ -292,7 +293,10 @@ def _narrative_fields(
 
 
 def parse_beneficial_ownership_document(
-    result: NormalizationResult, *, form: str | None = None
+    result: NormalizationResult,
+    *,
+    form: str | None = None,
+    reference_year: int | None = None,
 ) -> BeneficialOwnershipDocument:
     """Parses a normalized beneficial ownership result into a document model."""
     lines = result.text.splitlines()
@@ -326,6 +330,7 @@ def parse_beneficial_ownership_document(
     header_text = cover_text[: first_match.start()] if first_match else cover_text
 
     issuer = extract_issuer_metadata(header_text)
+    reference_year = reference_year or reported_year((issuer.event_date,))
     reporting_persons = extract_reporting_person_covers(
         cover_text, family=family, base_offset=0
     )
@@ -461,8 +466,28 @@ def parse_beneficial_ownership_document(
     unparsed_sections = build_unparsed_sections(
         result.text, field_extractions, document.narrative_items
     )
+    issuer = replace(
+        document.issuer,
+        event_date=normalize_iso_date(document.issuer.event_date, reference_year)
+        or document.issuer.event_date,
+    )
+    signature_block = document.signature_block
+    if signature_block is not None:
+        signature_block = replace(
+            signature_block,
+            signatories=tuple(
+                replace(
+                    signatory,
+                    date=normalize_iso_date(signatory.date, reference_year)
+                    or signatory.date,
+                )
+                for signatory in signature_block.signatories
+            ),
+        )
     return replace(
         document,
+        issuer=issuer,
+        signature_block=signature_block,
         residual_text="\n\n".join(section.text for section in unparsed_sections),
         field_extractions=field_extractions,
         unparsed_sections=unparsed_sections,

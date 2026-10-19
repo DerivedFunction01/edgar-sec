@@ -21,7 +21,7 @@ def test_shared_schema_contract_versions_are_explicit() -> None:
     assert ACQUISITION_CONTRACT_VERSION == "3"
     assert RECEIPT_SCHEMA_VERSION == "1"
     assert RUN_SCHEMA_VERSION == "3"
-    assert WORK_ORDER_SCHEMA_VERSION == "3"
+    assert WORK_ORDER_SCHEMA_VERSION == "4"
 
 
 def test_s6_relation_contract_load_is_deferred() -> None:
@@ -30,7 +30,7 @@ def test_s6_relation_contract_load_is_deferred() -> None:
     schema = target_relation_schema()
     assert isinstance(schema, pa.Schema)
     assert schema.names[0] == "target_id"
-    assert target_relation_schema_version() == 1
+    assert target_relation_schema_version() == 2
 
 
 def test_staged_body_ref_keeps_source_and_selected_identity_separate(tmp_path) -> None:

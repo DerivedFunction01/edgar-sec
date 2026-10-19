@@ -22,6 +22,7 @@ from edgar_sec.engine.document_processing.processor import (
     InputRecord,
     OperationRecord,
 )
+from edgar_sec.engine.document_processing.outputs import HandlerOutput, HandlerSidecar
 from edgar_sec.engine.document_processing.registry import HandlerRegistry
 from edgar_sec.foundation.hashing import sha256_bytes
 
@@ -56,6 +57,7 @@ def _request(
     path: str = "document.html",
     role: str = "primary",
     facts: DocumentPathFacts | None = None,
+    include_analysis_artifacts: bool = False,
 ) -> AcquisitionProcessRequest:
     return AcquisitionProcessRequest(
         target_id="target",
@@ -65,6 +67,7 @@ def _request(
         path_facts=facts or _path_facts(path),
         operations=operations,
         inputs=inputs,
+        include_analysis_artifacts=include_analysis_artifacts,
     )
 
 
@@ -162,6 +165,50 @@ def test_family_route_handler_precedes_generic_fallback() -> None:
 
     assert outcome.output_text == "family-route"
     assert (outcome.handler_id, outcome.handler_version) == ("10k_html_text", "7")
+
+
+def test_analysis_sidecars_are_returned_only_when_requested() -> None:
+    capability = ProcessingCapability(
+        handler_id="10k_html_text",
+        handler_version="7",
+        operation="render_to_txt",
+        input_facts="10-K HTML body",
+        output_kind=HandlerOutputKind.TEXT,
+    )
+    registry = HandlerRegistry(
+        ProcessingCapabilityRegistry((*DEFAULT_CAPABILITIES.list(), capability))
+    )
+    registry.register(
+        "10k_html_text",
+        "7",
+        "render_to_txt",
+        HandlerOutputKind.TEXT,
+        lambda _body, _context: HandlerOutput(
+            "normalized",
+            (HandlerSidecar("unparsed_sections.json", b'{"unparsed_sections":[]}'),),
+        ),
+        family="10-K",
+        route=DocumentRoute.MARKUP,
+    )
+    operation = OperationRecord("v1", "text", ("source",), operation="render_to_txt")
+
+    ordinary = (
+        AcquisitionProcessor(registry)
+        .process(_request((operation,), (_input(),)))
+        .outcomes[0]
+    )
+    review = (
+        AcquisitionProcessor(registry)
+        .process(_request((operation,), (_input(),), include_analysis_artifacts=True))
+        .outcomes[0]
+    )
+
+    assert ordinary.output_text == "normalized"
+    assert ordinary.sidecar_outputs == ()
+    assert review.sidecar_outputs[0].name == "unparsed_sections.json"
+    assert review.sidecar_outputs[0].sha256 == sha256_bytes(
+        review.sidecar_outputs[0].content
+    )
 
 
 def test_processor_distinguishes_archive_and_sgml_paths_with_slashes() -> None:

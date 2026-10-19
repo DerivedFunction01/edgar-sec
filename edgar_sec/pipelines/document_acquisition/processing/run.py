@@ -557,6 +557,8 @@ def process_acquired_target(
         target_id=target_id,
         accession=AccessionNumber.from_any(target["accession"]),
         form=str(target["form"]),
+        filing_date=target.get("filing_date"),
+        report_date=target.get("report_date"),
         target_role=target["target_role"],
         target_type=str(target["target_type"]),
         document_path=validate_archive_url(

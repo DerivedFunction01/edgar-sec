@@ -41,6 +41,7 @@ _SCOPE_COLUMNS = (
     "accession",
     "form",
     "filing_date",
+    "report_date",
     "primary_document",
     "document_path",
     "archive_url",
@@ -92,6 +93,7 @@ class CatalogScopeAccession:
     form: str
     filing_date: str | None
     occurrences: tuple[CatalogOccurrence, ...]
+    report_date: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -379,6 +381,7 @@ def _iter_accessions(
     current_accession: str | None = None
     current_form: str | None = None
     current_date: str | None = None
+    current_report_date: str | None = None
     occurrences: dict[str, CatalogOccurrence] = {}
     try:
         with connect() as con:
@@ -403,6 +406,7 @@ def _iter_accessions(
                             f"catalog accession has no form: {accession}"
                         )
                     filing_date = str(row.get("filing_date") or "").strip() or None
+                    report_date = str(row.get("report_date") or "").strip() or None
                     counts[form] = counts.get(form, 0) + 1
                     if current_accession != accession:
                         if current_accession is not None:
@@ -411,10 +415,12 @@ def _iter_accessions(
                                 current_form or "",
                                 current_date,
                                 tuple(occurrences[key] for key in sorted(occurrences)),
+                                current_report_date,
                             )
                         current_accession = accession
                         current_form = form
                         current_date = filing_date
+                        current_report_date = report_date
                         occurrences = {}
                     elif current_form != form:
                         raise CatalogScopeError(
@@ -426,6 +432,16 @@ def _iter_accessions(
                         )
                     elif current_date is None:
                         current_date = filing_date
+                    if (
+                        current_report_date
+                        and report_date
+                        and current_report_date != report_date
+                    ):
+                        raise CatalogScopeError(
+                            f"conflicting catalog report dates for accession {accession}"
+                        )
+                    if current_report_date is None:
+                        current_report_date = report_date
                     occurrence = _occurrence(row)
                     previous = occurrences.get(occurrence.occurrence_id)
                     if previous is not None and previous != occurrence:
@@ -445,6 +461,7 @@ def _iter_accessions(
             current_form or "",
             current_date,
             tuple(occurrences[key] for key in sorted(occurrences)),
+            current_report_date,
         )
     expected_counts = {part.form: 0 for part in scope.parts}
     for form, count in counts.items():

@@ -8,7 +8,15 @@ import re
 from typing import Any
 import xml.etree.ElementTree as ET
 
+from edgar_sec.domain.forms.families.form144.taxonomy import (
+    FORM144_LIVE_TEST_TYPES,
+    FORM144_SUBMISSION_TYPES,
+)
+from edgar_sec.engine.forms.common.extraction import validate_xml_schema
+from edgar_sec.engine.forms.form144.field_specs import FORM144_FIELD_SPECS
 from edgar_sec.engine.forms.common.statutory import HEADER_LEAK_RE
+from edgar_sec.engine.forms.common.unparsed import load_unparsed_sections
+from edgar_sec.engine.document.html.tree import parse_html
 
 _CORE_FIELDS = (
     "issuerName",
@@ -28,6 +36,14 @@ _BOILERPLATE_TERMS = (
     "potential persons",
     "transmit for filing",
 )
+
+
+def _children(parent: ET.Element, name: str) -> list[ET.Element]:
+    return [child for child in parent if _clean_tag(child.tag) == name]
+
+
+def _has_text(parent: ET.Element, name: str) -> bool:
+    return any((child.text or "").strip() for child in _children(parent, name))
 
 
 def _clean_tag(tag: str) -> str:
@@ -73,6 +89,229 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
     anomalies: list[dict[str, Any]] = []
     review_signals: list[dict[str, Any]] = []
 
+    anomalies.extend(validate_xml_schema(root, FORM144_FIELD_SPECS, accession))
+
+    header = next(
+        (node for node in root.iter() if _clean_tag(node.tag) == "headerData"), None
+    )
+    form_data = next(
+        (node for node in root.iter() if _clean_tag(node.tag) == "formData"), None
+    )
+
+    def require(parent: ET.Element | None, name: str, path: str) -> None:
+        if parent is None or not _has_text(parent, name):
+            anomalies.append(
+                {
+                    "accession": accession,
+                    "kind": f"missing_schema_{path}",
+                    "detail": f"Required schema value {path} is missing",
+                }
+            )
+
+    require(header, "submissionType", "submissionType")
+    filer_info = (
+        next(
+            (node for node in header.iter() if _clean_tag(node.tag) == "filerInfo"),
+            None,
+        )
+        if header is not None
+        else None
+    )
+    require(filer_info, "liveTestFlag", "liveTestFlag")
+    if filer_info is None or not _children(filer_info, "flags"):
+        require(filer_info, "flags", "flags")
+    for field in ("cik", "ccc"):
+        parent = (
+            next(
+                (
+                    node
+                    for node in header.iter()
+                    if _clean_tag(node.tag) == "filerCredentials"
+                ),
+                None,
+            )
+            if header is not None
+            else None
+        )
+        require(parent, field, field)
+    contact = (
+        next(
+            (node for node in header.iter() if _clean_tag(node.tag) == "contact"), None
+        )
+        if header is not None
+        else None
+    )
+    for field in ("contactName", "contactPhone", "contactEmail"):
+        require(contact, field, field)
+
+    submission_type = next(iter(tag_values.get("submissionType", [])), "")
+    if submission_type == "144/A":
+        require(header, "previousAccessionNumber", "previousAccessionNumber")
+    elif submission_type and submission_type not in FORM144_SUBMISSION_TYPES:
+        anomalies.append(
+            {
+                "accession": accession,
+                "kind": "invalid_submissionType",
+                "detail": f"Unsupported Form 144 submission type: {submission_type}",
+            }
+        )
+    live_test = next(iter(tag_values.get("liveTestFlag", [])), "")
+    if live_test and live_test not in FORM144_LIVE_TEST_TYPES:
+        anomalies.append(
+            {
+                "accession": accession,
+                "kind": "invalid_liveTestFlag",
+                "detail": f"Unsupported Form 144 live/test flag: {live_test}",
+            }
+        )
+
+    issuer = (
+        next((node for node in form_data if _clean_tag(node.tag) == "issuerInfo"), None)
+        if form_data is not None
+        else None
+    )
+    for field in (
+        "issuerCik",
+        "issuerName",
+        "issuerContactPhone",
+        "nameOfPersonForWhoseAccountTheSecuritiesAreToBeSold",
+    ):
+        require(issuer, field, field)
+    issuer_address = (
+        next((node for node in issuer if _clean_tag(node.tag) == "issuerAddress"), None)
+        if issuer is not None
+        else None
+    )
+    for field in ("street1", "city", "stateOrCountry", "zipCode"):
+        require(issuer_address, field, f"issuerAddress.{field}")
+    relationships = (
+        next(
+            (
+                node
+                for node in issuer
+                if _clean_tag(node.tag) == "relationshipsToIssuer"
+            ),
+            None,
+        )
+        if issuer is not None
+        else None
+    )
+    if relationships is None or not _children(relationships, "relationshipToIssuer"):
+        require(relationships, "relationshipToIssuer", "relationshipToIssuer")
+    information = (
+        _children(form_data, "securitiesInformation") if form_data is not None else []
+    )
+    if not information:
+        require(form_data, "securitiesInformation", "securitiesInformation")
+    if form_data is not None and not _children(form_data, "securitiesToBeSold"):
+        require(form_data, "securitiesToBeSold", "securitiesToBeSold")
+    for index, item in enumerate(information):
+        for field in (
+            "securitiesClassTitle",
+            "noOfUnitsSold",
+            "aggregateMarketValue",
+            "noOfUnitsOutstanding",
+            "approxSaleDate",
+            "securitiesExchangeName",
+        ):
+            require(item, field, f"securitiesInformation[{index}].{field}")
+        broker = next(
+            (
+                node
+                for node in item
+                if _clean_tag(node.tag) == "brokerOrMarketmakerDetails"
+            ),
+            None,
+        )
+        require(broker, "name", f"securitiesInformation[{index}].broker.name")
+        address = (
+            next((node for node in broker if _clean_tag(node.tag) == "address"), None)
+            if broker is not None
+            else None
+        )
+        for field in ("street1", "city", "stateOrCountry", "zipCode"):
+            require(
+                address, field, f"securitiesInformation[{index}].broker.address.{field}"
+            )
+
+    flag = next(
+        iter(tag_values.get("nothingToReportFlagOnSecuritiesSoldInPast3Months", [])),
+        "",
+    )
+    require(
+        form_data,
+        "nothingToReportFlagOnSecuritiesSoldInPast3Months",
+        "nothingToReportFlagOnSecuritiesSoldInPast3Months",
+    )
+    if (
+        flag == "N"
+        and form_data is not None
+        and not _children(form_data, "securitiesSoldInPast3Months")
+    ):
+        require(form_data, "securitiesSoldInPast3Months", "securitiesSoldInPast3Months")
+    if (
+        flag == "Y"
+        and form_data is not None
+        and _children(form_data, "securitiesSoldInPast3Months")
+    ):
+        anomalies.append(
+            {
+                "accession": accession,
+                "kind": "conflicting_nothingToReportFlag",
+                "detail": "No-report flag Y conflicts with reported securities sales",
+            }
+        )
+    if form_data is not None:
+        for index, item in enumerate(_children(form_data, "securitiesToBeSold")):
+            for field in (
+                "securitiesClassTitle",
+                "acquiredDate",
+                "natureOfAcquisitionTransaction",
+                "isGiftTransaction",
+                "amountOfSecuritiesAcquired",
+                "natureOfPayment",
+            ):
+                require(item, field, f"securitiesToBeSold[{index}].{field}")
+        for index, item in enumerate(
+            _children(form_data, "securitiesSoldInPast3Months")
+        ):
+            seller = next(
+                (node for node in item if _clean_tag(node.tag) == "sellerDetails"),
+                None,
+            )
+            require(seller, "name", f"securitiesSoldInPast3Months[{index}].seller.name")
+            address = (
+                next(
+                    (node for node in seller if _clean_tag(node.tag) == "address"), None
+                )
+                if seller is not None
+                else None
+            )
+            for field in ("street1", "city", "stateOrCountry", "zipCode"):
+                require(
+                    address,
+                    field,
+                    f"securitiesSoldInPast3Months[{index}].seller.address.{field}",
+                )
+            for field in (
+                "securitiesClassTitle",
+                "saleDate",
+                "amountOfSecuritiesSold",
+                "grossProceeds",
+            ):
+                require(item, field, f"securitiesSoldInPast3Months[{index}].{field}")
+
+    signature = (
+        next(
+            (node for node in form_data if _clean_tag(node.tag) == "noticeSignature"),
+            None,
+        )
+        if form_data is not None
+        else None
+    )
+    require(signature, "noticeDate", "noticeDate")
+    require(signature, "signature", "signature")
+
     for req in (
         "issuerName",
         "nameOfPersonForWhoseAccountTheSecuritiesAreToBeSold",
@@ -105,25 +344,6 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
                     }
                 )
 
-    for amt in tag_values.get("noOfUnitsSold", []):
-        try:
-            if float(amt) <= 0:
-                anomalies.append(
-                    {
-                        "accession": accession,
-                        "kind": "invalid_units",
-                        "detail": f"Units sold is zero or negative: {amt}",
-                    }
-                )
-        except ValueError:
-            anomalies.append(
-                {
-                    "accession": accession,
-                    "kind": "invalid_units",
-                    "detail": f"Non-numeric units sold: {amt}",
-                }
-            )
-
     if tag_values.get("planAdoptionDate"):
         for pd in tag_values["planAdoptionDate"]:
             review_signals.append(
@@ -148,12 +368,15 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
     relationships = tag_values.get("relationshipToIssuer", [])
 
     unparsed_sections: list[dict[str, Any]] = []
-    for unp in root.iter():
-        if _clean_tag(unp.tag) != "unparsedSection":
-            continue
-        t_idx = unp.attrib.get("tableIndex", "")
-        role = unp.attrib.get("role", "")
-        text = "".join(unp.itertext()).strip()
+    for record_section in load_unparsed_sections(case_dir, root):
+        t_idx = record_section.get("table_index", "")
+        role = str(record_section.get("role", ""))
+        content = str(record_section.get("content", ""))
+        text = (
+            parse_html(content).text()
+            if record_section.get("content_type") == "text/html"
+            else content
+        ).strip()
         snippet = " ".join(text.split())[:240].strip()
         lower_snip = snippet.lower()
         is_boilerplate = any(term in lower_snip for term in _BOILERPLATE_TERMS)

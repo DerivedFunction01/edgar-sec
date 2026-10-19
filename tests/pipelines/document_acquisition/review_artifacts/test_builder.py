@@ -100,6 +100,14 @@ def test_review_generator_parses_verified_form4_fixture_bytes_offline(
     assert operations["raw"]["output"]["sha256"] == sha256_bytes(_BODY)
     assert operations["render_to_xml"]["status"] == "available"
     assert operations["render_to_xml"]["handler_id"] == "form4_html_to_xml"
+    unparsed_path = artifact_path.parent / "operations" / "unparsed_sections.json"
+    unparsed_payload = json.loads(unparsed_path.read_text(encoding="utf-8"))
+    assert set(unparsed_payload) == {"unparsed_sections"}
+    assert isinstance(unparsed_payload["unparsed_sections"], list)
+    assert artifact["processing"]["outputs"]["operations/unparsed_sections.json"] == {
+        "sha256": file_sha256(unparsed_path),
+        "byte_size": unparsed_path.stat().st_size,
+    }
     for relative, output_info in artifact["processing"]["outputs"].items():
         path = artifact_path.parent / relative
         assert file_sha256(path) == output_info["sha256"]

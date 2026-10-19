@@ -44,9 +44,9 @@ class BrokerDetails:
 class ProposedSaleItem:
     class_title: str | None = None
     broker: BrokerDetails | None = None
-    units_to_be_sold: float | int | None = None
-    aggregate_market_value: float | None = None
-    units_outstanding: float | int | None = None
+    units_to_be_sold: int | None = None
+    aggregate_market_value: str | float | int | None = None
+    units_outstanding: int | None = None
     approx_sale_date: str | None = None
     exchange_name: str | None = None
 
@@ -58,7 +58,7 @@ class TableISecurityItem:
     nature_of_acquisition: str | None = None
     donor_or_seller_name: str | None = None
     is_gift: bool = False
-    amount_acquired: float | int | None = None
+    amount_acquired: int | None = None
     payment_date: str | None = None
     nature_of_payment: str | None = None
 
@@ -69,8 +69,8 @@ class TableIISecuritySoldItem:
     seller_address: str | None = None
     class_title: str | None = None
     sale_date: str | None = None
-    amount_sold: float | int | None = None
-    gross_proceeds: float | None = None
+    amount_sold: int | None = None
+    gross_proceeds: str | float | int | None = None
 
 
 @dataclass(frozen=True, slots=True)

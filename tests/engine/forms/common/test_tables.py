@@ -76,6 +76,19 @@ def test_parse_address_helpers():
     assert c_zip == "10012"
 
 
+def test_parse_address_resolves_non_us_jurisdiction_names():
+    street, city, country, zip_code = parse_address_parts(
+        "123 Main Street, Toronto, Ontario, Canada"
+    )
+
+    assert (street, city, country, zip_code) == (
+        "123 Main Street",
+        "Toronto",
+        "A6",
+        None,
+    )
+
+
 def test_extract_labeled_field_proportional_column_mapping():
     """Verify proportional column lookdown across variable-width grid rows."""
     rows = (

@@ -77,6 +77,7 @@ def render_document(
         from edgar_sec.engine.document_processing.registry import (
             DEFAULT_HANDLER_REGISTRY,
         )
+        from edgar_sec.engine.document_processing.outputs import HandlerOutput
 
         reg = (
             DEFAULT_HANDLER_REGISTRY.resolve("render_to_xml", family, None)
@@ -87,8 +88,17 @@ def render_document(
             raise UnsupportedRenderOperation(
                 f"Form {form!r} has no registered XML renderer"
             )
-        xml_bytes = reg.handler(raw_bytes, None)  # type: ignore[arg-type]
-        return xml_bytes.decode("utf-8", errors="replace")
+        handler_output = reg.handler(raw_bytes, None)  # type: ignore[arg-type]
+        xml_bytes = (
+            handler_output.content
+            if isinstance(handler_output, HandlerOutput)
+            else handler_output
+        )
+        return (
+            xml_bytes
+            if isinstance(xml_bytes, str)
+            else xml_bytes.decode("utf-8", errors="replace")
+        )
 
     return raw_bytes
 

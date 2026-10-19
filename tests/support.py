@@ -530,6 +530,8 @@ def acquired_processing_request(
         target_id=target["target_id"],
         accession=AccessionNumber.from_any(target["accession"]),
         form=target["form"],
+        filing_date=target["filing_date"],
+        report_date=target.get("report_date"),
         target_role=target["target_role"],
         target_type=target["target_type"],
         document_path=validate_archive_url(

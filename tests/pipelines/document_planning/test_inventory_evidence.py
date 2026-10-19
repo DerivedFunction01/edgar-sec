@@ -116,7 +116,7 @@ def _write_snapshot(root: Path) -> tuple[InventoryPaths, Path]:
 
 def _scope_rows() -> tuple[CatalogAccessionScopeRow, ...]:
     return tuple(
-        CatalogAccessionScopeRow(accession, "10-K", "2024-01-15")
+        CatalogAccessionScopeRow(accession, "10-K", "2024-01-15", "2023-12-31")
         for accession in _ACCESSIONS
     )
 
@@ -164,7 +164,9 @@ def test_snapshot_part_digest_is_verified_before_streaming(tmp_path: Path) -> No
 def test_indexed_accession_form_and_date_must_match_catalog(tmp_path: Path) -> None:
     paths, _ = _write_snapshot(tmp_path)
     source = _open_source(paths)
-    scope = (CatalogAccessionScopeRow(_ACCESSIONS[0], "20-F", "2024-01-15"),)
+    scope = (
+        CatalogAccessionScopeRow(_ACCESSIONS[0], "20-F", "2024-01-15", "2023-12-31"),
+    )
 
     with pytest.raises(InventoryEvidenceError, match="facts disagree"):
         list(source.stream(scope))
@@ -174,8 +176,8 @@ def test_scope_stream_must_be_unique_and_sorted(tmp_path: Path) -> None:
     paths, _ = _write_snapshot(tmp_path)
     source = _open_source(paths)
     scope = (
-        CatalogAccessionScopeRow(_ACCESSIONS[1], "10-K", "2024-01-15"),
-        CatalogAccessionScopeRow(_ACCESSIONS[0], "10-K", "2024-01-15"),
+        CatalogAccessionScopeRow(_ACCESSIONS[1], "10-K", "2024-01-15", "2023-12-31"),
+        CatalogAccessionScopeRow(_ACCESSIONS[0], "10-K", "2024-01-15", "2023-12-31"),
     )
 
     with pytest.raises(InventoryEvidenceError, match="unique and sorted"):

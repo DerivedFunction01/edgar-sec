@@ -35,6 +35,10 @@ from edgar_sec.engine.forms.common.signatures import (
     clean_signature_name,
     is_valid_signature_name,
 )
+from edgar_sec.engine.forms.common.unparsed import load_unparsed_sections
+from edgar_sec.engine.forms.beneficial_ownership.schema_analysis import (
+    analyze_schema_xml,
+)
 from edgar_sec.engine.document.signatures import (
     CONFORMED_SIGNATURE_RE,
     RE_SIGNATURE_DATE_LINE,
@@ -110,7 +114,7 @@ def _is_narrative_element(
     current = element
     while current in parents:
         current = parents[current]
-        if _local_name(current.tag) in _NARRATIVE_FIELD_NAMES:
+        if _local_name(current.tag).casefold() in _NARRATIVE_FIELD_NAMES:
             return True
     return False
 
@@ -120,7 +124,8 @@ def _analyze_xml(
     accession: str,
     expected_family: str = "",
     source_text: str | None = None,
-    require_provenance: bool = False,
+    unparsed_records: tuple[dict[str, object], ...] = (),
+    unparsed_error: str | None = None,
 ) -> dict[str, Any]:
     try:
         root = ET.fromstring(xml_text)
@@ -142,6 +147,7 @@ def _analyze_xml(
             "review_signals": [],
             "value_frequencies": {},
             "unparsed_sections": [],
+            "date_normalization_evidence": [],
             "extraction_coverage": None,
         }
 
@@ -176,6 +182,7 @@ def _analyze_xml(
                 "detail": f"rendered XML family {family} differs from expected {expected}",
             }
         )
+    anomalies.extend(analyze_schema_xml(root, accession, family))
 
     direct_children = {_local_name(child.tag) for child in root}
     for required in ("headerData", "formData"):
@@ -188,11 +195,11 @@ def _analyze_xml(
                 }
             )
 
-    item_containers = _elements(root, ("items1To7", "narrativeItems"))
+    item_containers = _elements(root, ("items1To7", "narrativeItems", "items"))
     for container in item_containers:
         seen_items: set[str] = set()
         for child in container:
-            name = _local_name(child.tag)
+            name = _local_name(child.tag).casefold()
             if name not in {f"item{number}" for number in range(1, 11)}:
                 anomalies.append(
                     {
@@ -431,22 +438,34 @@ def _analyze_xml(
         for name in CATEGORICAL_FIELDS
     }
     unparsed_sections = []
-    for element in _elements(root, ("unparsedSection",)):
-        value = _text(element)
-        role = element.attrib.get("role", "")
-        is_boilerplate = bool(STATUTORY_PAGE_ARTIFACT_RE.search(value))
-        unparsed_sections.append(
-            {
-                "accession": accession,
-                "table_index": element.attrib.get("tableIndex", ""),
-                "role": role,
-                "char_length": len(value),
-                "start_offset": element.attrib.get("startOffset", ""),
-                "end_offset": element.attrib.get("endOffset", ""),
-                "snippet": " ".join(value.split())[:240],
-                "is_boilerplate": is_boilerplate,
+    date_normalization_evidence = []
+    for record in unparsed_records:
+        value = str(record.get("content", ""))
+        role = str(record.get("role", ""))
+        if role.startswith("normalization.date:"):
+            evidence = {
+                "field": role.removeprefix("normalization.date:"),
+                "content": value,
+                "reported_year_anchor": record.get("reported_year_anchor"),
             }
-        )
+            for key in ("start_offset", "end_offset"):
+                if key in record:
+                    evidence[key] = record[key]
+            date_normalization_evidence.append(evidence)
+            continue
+        is_boilerplate = bool(STATUTORY_PAGE_ARTIFACT_RE.search(value))
+        section = {
+            "accession": accession,
+            "role": role,
+            "content_type": record.get("content_type", "text/plain"),
+            "char_length": len(value),
+            "snippet": " ".join(value.split())[:240],
+            "is_boilerplate": is_boilerplate,
+        }
+        for key in ("table_index", "start_offset", "end_offset"):
+            if key in record:
+                section[key] = record[key]
+        unparsed_sections.append(section)
         if role in {"item2.unparsed", "item5.unparsed"} and value.strip():
             review_signals.append(
                 {
@@ -457,11 +476,29 @@ def _analyze_xml(
                     "snippet": " ".join(value.split())[:240],
                 }
             )
+        if role.startswith("normalization.unresolved:"):
+            anomalies.append(
+                {
+                    "accession": accession,
+                    "kind": "unresolved_scalar_normalization",
+                    "field": role.removeprefix("normalization.unresolved:"),
+                    "snippet": " ".join(value.split())[:240],
+                    "detail": "recognized scalar evidence could not be normalized to its XML type",
+                }
+            )
 
     provenance_anomalies, extraction_coverage = analyze_extraction_provenance(
-        root, source_text, accession, required=require_provenance
+        root, source_text, accession, required=False
     )
     anomalies.extend(provenance_anomalies)
+    if unparsed_error is not None:
+        anomalies.append(
+            {
+                "accession": accession,
+                "kind": "invalid_unparsed_sections_sidecar",
+                "detail": unparsed_error,
+            }
+        )
     return {
         "accession": accession,
         "form": family,
@@ -473,6 +510,7 @@ def _analyze_xml(
         "review_signals": review_signals,
         "value_frequencies": value_frequencies,
         "unparsed_sections": unparsed_sections,
+        "date_normalization_evidence": date_normalization_evidence,
         "extraction_coverage": extraction_coverage,
     }
 
@@ -510,6 +548,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
             "review_signals": [],
             "value_frequencies": {},
             "unparsed_sections": [],
+            "date_normalization_evidence": [],
             "extraction_coverage": None,
         }
     source_text: str | None = None
@@ -538,19 +577,28 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
             "review_signals": [],
             "value_frequencies": {},
             "unparsed_sections": [],
+            "date_normalization_evidence": [],
             "extraction_coverage": None,
         }
     operations_dir = case_dir / "operations"
-    raw_suffixes = {
-        path.suffix.lower() for path in operations_dir.glob("raw.*") if path.is_file()
-    }
-    require_provenance = bool(raw_suffixes.intersection({".htm", ".html", ".txt"}))
+    unparsed_records: tuple[dict[str, object], ...] = ()
+    unparsed_error: str | None = None
+    try:
+        root = ET.fromstring(xml_text)
+        unparsed_records = load_unparsed_sections(case_dir, root)
+    except ET.ParseError:
+        pass
+    except ValueError as error:
+        unparsed_error = str(error)
+    except OSError as error:
+        unparsed_error = str(error)
     return _analyze_xml(
         xml_text,
         accession,
         expected_family,
         source_text,
-        require_provenance=require_provenance,
+        unparsed_records=unparsed_records,
+        unparsed_error=unparsed_error,
     )
 
 

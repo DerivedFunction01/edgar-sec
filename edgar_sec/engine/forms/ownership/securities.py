@@ -1,4 +1,4 @@
-"""Form 4 Table I (Non-Derivative) and Table II (Derivative) row extraction."""
+"""Ownership Table I (Non-Derivative) and Table II (Derivative) row extraction."""
 
 from __future__ import annotations
 
@@ -7,13 +7,16 @@ from dataclasses import dataclass, replace
 import re
 from typing import Any
 
-from edgar_sec.domain.forms.families.ownership.models import VALID_TRANSACTION_CODES
+from edgar_sec.domain.forms.families.ownership.taxonomy import VALID_TRANSACTION_CODES
+from edgar_sec.engine.forms.common.extraction import normalize_record_dates
 from edgar_sec.engine.forms.common.alignment import (
     CanonicalColumn,
     TableSchema,
     align_row_to_schema,
 )
-from edgar_sec.engine.forms.common.numbers import clean_numeric
+from edgar_sec.engine.forms.common.numbers import (
+    extract_schema_number,
+)
 from edgar_sec.engine.forms.common.statutory import (
     HEADER_LEAK_RE,
     STATUTORY_PAGE_ARTIFACT_RE,
@@ -37,14 +40,10 @@ _TRANSACTION_CODE_ALT = build_alternation(
 )
 _TRANSACTION_CODE_RE = re.compile(rf"\b({_TRANSACTION_CODE_ALT})\b(?:\s*\|\s*([Vv]))?")
 _FOOTNOTE_REF_RE = re.compile(r"[\(\[](\d{1,3})[\)\]]")
-_FOOTNOTE_ENTRY_RE = re.compile(
-    r"^\s*(?:[\(\[]\s*(\d{1,3})\s*[\)\]]|(\d{1,3})\.)\s*(.+)", re.MULTILINE
-)
 _ACQUIRED_DISPOSED_RE = re.compile(r"\b([AD])\b", re.IGNORECASE)
 _DIRECT_INDIRECT_RE = re.compile(r"\b([DI])\b", re.IGNORECASE)
 _INSTRUCTION_TOKEN_RE = re.compile(r"[a-z0-9\(\)]+")
 _OWNERSHIP_FORM_VALUES = frozenset(("D", "I"))
-_FOOTNOTE_PREFIX_CHARS = frozenset("([0123456789*")
 
 
 def _is_table_header_row(row: tuple[str, ...], table_label: str) -> bool:
@@ -138,8 +137,8 @@ def _find_ad_code(
 
 def _find_remaining_numbers(
     cells: list[tuple[int, str]], end_idx: int, exclude_indices: set[int]
-) -> list[float]:
-    nums: list[float] = []
+) -> list[str]:
+    nums: list[str] = []
     for idx, (_, cell) in enumerate(cells[1:], start=1):
         if end_idx != -1 and idx >= end_idx:
             break
@@ -150,7 +149,7 @@ def _find_remaining_numbers(
             and "/sh" not in cell.lower()
             and is_numeric_cell(cell)
         ):
-            if (val := _extract_number(cell)) is not None:
+            if (val := extract_schema_number(cell)) is not None:
                 nums.append(val)
     return nums
 
@@ -173,10 +172,10 @@ class NonDerivativeTransaction:
     transaction_date: str | None = None
     transaction_code: str | None = None
     equity_swap_involved: bool = False
-    shares_amount: float | None = None
+    shares_amount: str | None = None
     acquired_disposed_code: str | None = None
-    price_per_share: float | None = None
-    shares_owned_following: float | None = None
+    price_per_share: str | None = None
+    shares_owned_following: str | None = None
     direct_or_indirect: str | None = None
     nature_of_ownership: str | None = None
     footnote_ids: tuple[str, ...] = ()
@@ -185,26 +184,21 @@ class NonDerivativeTransaction:
 @dataclass(frozen=True, slots=True)
 class DerivativeTransaction:
     security_title: str
-    conversion_or_exercise_price: float | None = None
+    conversion_or_exercise_price: str | None = None
     transaction_date: str | None = None
     transaction_code: str | None = None
     equity_swap_involved: bool = False
-    shares_amount: float | None = None
+    shares_amount: str | None = None
     acquired_disposed_code: str | None = None
     exercisable_date: str | None = None
     expiration_date: str | None = None
     underlying_security_title: str | None = None
-    underlying_shares_amount: float | None = None
-    price_of_derivative: float | None = None
-    derivative_shares_owned_following: float | None = None
+    underlying_shares_amount: str | None = None
+    price_of_derivative: str | None = None
+    derivative_shares_owned_following: str | None = None
     direct_or_indirect: str | None = None
     nature_of_ownership: str | None = None
     footnote_ids: tuple[str, ...] = ()
-
-
-def _extract_number(text: str) -> float | None:
-    num = clean_numeric(text)
-    return float(num) if num is not None else None
 
 
 def _extract_footnote_ids(text: str) -> tuple[str, ...]:
@@ -300,10 +294,10 @@ _TABLE_I_SCHEMA = TableSchema(
             lambda s: s.strip().upper() == "V",
             lambda s: True,
         ),
-        _col(5, "shares_amount", False, False, None, _extract_number),
+        _col(5, "shares_amount", False, False, None, extract_schema_number),
         _col(6, "acquired_disposed_code", False, True, _is_ad, _extract_ad),
-        _col(7, "price_per_share", False, True, _is_price, _extract_number),
-        _col(8, "shares_owned_following", False, False, None, _extract_number),
+        _col(7, "price_per_share", False, True, _is_price, extract_schema_number),
+        _col(8, "shares_owned_following", False, False, None, extract_schema_number),
         _col(9, "direct_or_indirect", True, True, _is_di, _extract_di),
         _col(10, "nature_of_ownership"),
     ),
@@ -313,27 +307,34 @@ _COMMON_TABLE_II_TAIL = (
     _col(0, "exercisable_date", False, True, _is_date, _extract_date),
     _col(1, "expiration_date", False, True, _is_date, _extract_date),
     _col(2, "underlying_security_title", False, True, _is_underlying, _clean_title),
-    _col(3, "underlying_shares_amount", False, False, None, _extract_number),
-    _col(4, "price_of_derivative", False, True, _is_price, _extract_number),
-    _col(5, "derivative_shares_owned_following", False, False, None, _extract_number),
+    _col(3, "underlying_shares_amount", False, False, None, extract_schema_number),
+    _col(4, "price_of_derivative", False, True, _is_price, extract_schema_number),
+    _col(
+        5,
+        "derivative_shares_owned_following",
+        False,
+        False,
+        None,
+        extract_schema_number,
+    ),
     _col(6, "direct_or_indirect", True, True, _is_di, _extract_di),
     _col(7, "nature_of_ownership"),
 )
 
 _TX_TABLE_II_PREFIX = (
     _col(0, "security_title", is_required=True),
-    _col(1, "conversion_or_exercise_price", False, False, None, _extract_number),
+    _col(1, "conversion_or_exercise_price", False, False, None, extract_schema_number),
     _col(2, "transaction_date", False, True, _is_date, _extract_date),
     _col(3, "deemed_execution_date"),
     _col(4, "transaction_code", False, True, _is_code, _extract_code),
     _col(5, "equity_swap", False, False, lambda s: s.strip().upper() == "V"),
-    _col(6, "shares_amount", False, False, None, _extract_number),
+    _col(6, "shares_amount", False, False, None, extract_schema_number),
     _col(7, "acquired_disposed_code", False, False, _is_ad, _extract_ad),
 )
 
 _HOLDING_TABLE_II_PREFIX = (
     _col(0, "security_title", is_required=True),
-    _col(1, "conversion_or_exercise_price", False, False, None, _extract_number),
+    _col(1, "conversion_or_exercise_price", False, False, None, extract_schema_number),
 )
 
 
@@ -376,6 +377,8 @@ def _iter_clean_table_rows(
 
 def parse_table_i_rows(
     section: ClassifiedSection | None,
+    reference_year: int | None = None,
+    holding_only: bool = False,
 ) -> list[NonDerivativeTransaction]:
     """Parse Non-Derivative transaction and holding rows from Table I."""
     results: list[NonDerivativeTransaction] = []
@@ -434,9 +437,9 @@ def parse_table_i_rows(
         equity_swap = False
         code_col_idx = -1
         ad_code: str | None = None
-        shares_amount: float | None = None
-        price_per_share: float | None = None
-        remaining_nums: list[float] = []
+        shares_amount: str | None = None
+        price_per_share: str | None = None
+        remaining_nums: list[str] = []
 
         for idx, (_, cell) in enumerate(indexed_cells[1:], start=1):
             if form_idx != -1 and idx >= form_idx:
@@ -444,13 +447,13 @@ def parse_table_i_rows(
             if "|" in cell:
                 parts = [p.strip() for p in cell.split("|")]
                 if len(parts) >= 1 and parts[0]:
-                    shares_amount = _extract_number(parts[0])
+                    shares_amount = extract_schema_number(parts[0])
                 if len(parts) >= 2 and parts[1]:
                     ad_m = _ACQUIRED_DISPOSED_RE.search(parts[1])
                     if ad_m:
                         ad_code = ad_m.group(1).upper()
                 if len(parts) >= 3 and parts[2]:
-                    price_per_share = _extract_number(parts[2])
+                    price_per_share = extract_schema_number(parts[2])
                 continue
 
             if trans_date is None and (m := NUMERIC_DATE_RE.search(cell)):
@@ -475,7 +478,7 @@ def parse_table_i_rows(
                 continue
 
             if price_per_share is None and ("$" in cell or "/sh" in cell.lower()):
-                price_per_share = _extract_number(cell)
+                price_per_share = extract_schema_number(cell)
                 continue
 
             if (
@@ -484,10 +487,10 @@ def parse_table_i_rows(
                 and "/sh" not in cell.lower()
                 and is_numeric_cell(cell)
             ):
-                if (val := _extract_number(cell)) is not None:
+                if (val := extract_schema_number(cell)) is not None:
                     remaining_nums.append(val)
 
-        shares_owned_following: float | None = None
+        shares_owned_following: str | None = None
         if trans_code is not None or trans_date is not None:
             if shares_amount is None and remaining_nums:
                 shares_amount = remaining_nums.pop(0)
@@ -520,11 +523,26 @@ def parse_table_i_rows(
                 footnote_ids=tuple(footnotes),
             )
         )
-    return results
+    if holding_only:
+        results = [
+            row
+            for row in results
+            if not row.transaction_date
+            and not row.transaction_code
+            and (
+                row.shares_owned_following is not None or row.shares_amount is not None
+            )
+        ]
+    return [
+        normalize_record_dates(row, ("transaction_date",), reference_year)
+        for row in results
+    ]
 
 
 def parse_table_ii_rows(
     section: ClassifiedSection | None,
+    reference_year: int | None = None,
+    holding_only: bool = False,
 ) -> list[DerivativeTransaction]:
     """Parse Derivative transaction and holding rows from Table II."""
     results: list[DerivativeTransaction] = []
@@ -602,11 +620,11 @@ def parse_table_ii_rows(
 
         direct_or_indirect, nature, form_idx = _extract_ownership_form(indexed_cells)
 
-        exercise_price: float | None = None
+        exercise_price: str | None = None
         price_col_idx = -1
         for idx, (_, cell) in enumerate(indexed_cells[1:5], start=1):
             if "$" in cell or is_numeric_cell(cell):
-                exercise_price = _extract_number(cell)
+                exercise_price = extract_schema_number(cell)
                 price_col_idx = idx
                 break
 
@@ -670,7 +688,7 @@ def parse_table_ii_rows(
             )
 
         underlying_title: str | None = None
-        underlying_shares: float | None = None
+        underlying_shares: str | None = None
         underlying_col_indices: set[int] = set()
 
         for idx, (_, cell) in enumerate(indexed_cells[1:], start=1):
@@ -684,7 +702,7 @@ def parse_table_ii_rows(
                     cand_title = _clean_title(parts[0])
                     if cand_title and _is_valid_row_security_title(cand_title):
                         underlying_title = cand_title
-                        underlying_shares = _extract_number(parts[1])
+                        underlying_shares = extract_schema_number(parts[1])
                         underlying_col_indices.add(idx)
                         break
             elif any(
@@ -696,7 +714,7 @@ def parse_table_ii_rows(
                 if idx + 1 < len(indexed_cells) and is_numeric_cell(
                     indexed_cells[idx + 1][1]
                 ):
-                    underlying_shares = _extract_number(indexed_cells[idx + 1][1])
+                    underlying_shares = extract_schema_number(indexed_cells[idx + 1][1])
                     underlying_col_indices.add(idx + 1)
                 break
 
@@ -706,8 +724,8 @@ def parse_table_ii_rows(
             {price_col_idx, code_col_idx} | date_col_indices | underlying_col_indices,
         )
 
-        shares_amount: float | None = None
-        following_shares: float | None = None
+        shares_amount: str | None = None
+        following_shares: str | None = None
 
         if trans_code is not None or trans_date is not None:
             if remaining_nums:
@@ -747,34 +765,22 @@ def parse_table_ii_rows(
                 footnote_ids=tuple(footnotes),
             )
         )
-    return results
-
-
-def parse_footnotes(sections: list[ClassifiedSection]) -> dict[str, str]:
-    """Extract footnote id to text mappings."""
-    footnotes: dict[str, str] = {}
-    for section in sections:
-        for row in section.resolved_grid.rows:
-            for cell in row:
-                if not cell:
-                    continue
-                for line in cell.splitlines():
-                    s = line.lstrip()
-                    if not s or s[0] not in _FOOTNOTE_PREFIX_CHARS:
-                        continue
-                    m = _FOOTNOTE_ENTRY_RE.match(s)
-                    if m:
-                        fn_id = m.group(1) or m.group(2)
-                        text = m.group(3).strip()
-                        if fn_id and text:
-                            footnotes[fn_id] = text
-    return footnotes
-
-
-__all__ = [
-    "DerivativeTransaction",
-    "NonDerivativeTransaction",
-    "parse_footnotes",
-    "parse_table_i_rows",
-    "parse_table_ii_rows",
-]
+    if holding_only:
+        results = [
+            row
+            for row in results
+            if not row.transaction_date
+            and not row.transaction_code
+            and (
+                row.derivative_shares_owned_following is not None
+                or row.shares_amount is not None
+            )
+        ]
+    return [
+        normalize_record_dates(
+            row,
+            ("transaction_date", "exercisable_date", "expiration_date"),
+            reference_year,
+        )
+        for row in results
+    ]

@@ -15,8 +15,8 @@ def test_parse_signatures_and_plan_adoption_date():
     sections = partition_form144_tables(html)
     signature = parse_signatures(sections.signatures, full_text=html)
     assert signature.signature == "/s/ Jane Doe"
-    assert signature.notice_date == "May 10, 2022"
-    assert signature.plan_adoption_dates == ("12/01/2021",)
+    assert signature.notice_date == "2022-05-10"
+    assert signature.plan_adoption_dates == ("2021-12-01",)
 
 
 def test_signature_block_with_footer_is_not_discarded_as_instructions():

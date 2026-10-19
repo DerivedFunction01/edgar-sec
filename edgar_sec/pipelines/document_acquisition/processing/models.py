@@ -46,6 +46,8 @@ class ProcessingRequest:
     source_origin: Literal["inventory_index", "catalog_direct"]
     body: StagedBodyRef | FixtureBodyRef
     operations: tuple[OperationRequest, ...]
+    filing_date: str | None = None
+    report_date: str | None = None
 
 
 @dataclass(frozen=True, slots=True)

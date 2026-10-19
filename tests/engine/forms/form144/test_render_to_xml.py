@@ -2,7 +2,14 @@
 
 import xml.etree.ElementTree as ET
 
+from edgar_sec.engine.document_processing.outputs import HandlerOutput
 from edgar_sec.engine.forms.form144.render_to_xml import render_form144_to_xml
+from edgar_sec.engine.forms.common.unparsed import deserialize_unparsed_sections
+from edgar_sec.engine.forms.form144.render_to_xml import (
+    _xml_date,
+    _xml_decimal,
+    _xml_integer,
+)
 
 SAMPLE_XML = """<?xml version="1.0" encoding="utf-8"?>
 <edgarSubmission xmlns="http://www.sec.gov/edgar/ownership">
@@ -43,10 +50,22 @@ def test_native_xml_pass_through():
     assert "edgarSubmission" in root.tag
     submission_type = root.find(".//{*}submissionType")
     assert submission_type is not None and submission_type.text == "144"
+    assert xml_bytes == SAMPLE_XML
+
+
+def test_schema_scalar_normalization_uses_filing_year_anchor():
+    assert _xml_date("01/15/09", 2023) == "01-15-2009"
+    assert _xml_date("01/15/09", None) is None
+    assert _xml_date("Jan 15, 09", 2023) == "01-15-2009"
+    assert _xml_date("Jan 15, 09", None) is None
+    assert _xml_integer(10000.0) == "10000"
+    assert _xml_integer("10,000") == "10000"
+    assert _xml_decimal("$1,234.1200") == "1234.1200"
 
 
 def test_html_to_xml_conversion():
-    xml_bytes = render_form144_to_xml(SAMPLE_HTML)
+    result = render_form144_to_xml(SAMPLE_HTML)
+    xml_bytes = result.content if isinstance(result, HandlerOutput) else result
     root = ET.fromstring(xml_bytes)
     assert "edgarSubmission" in root.tag
     issuer = root.find(".//{*}issuerName")
@@ -64,3 +83,17 @@ def test_html_to_xml_conversion():
         remarks is not None
         and remarks.text == "Delivery under the equity compensation plan."
     )
+
+
+def test_unparsed_tables_are_sidecars_not_schema_xml():
+    html = b"<html><body><table><tr><td>Unclassified table content</td></tr></table></body></html>"
+    result = render_form144_to_xml(html)
+    assert isinstance(result, HandlerOutput)
+    root = ET.fromstring(result.content)
+    assert not any(elem.tag.endswith("unparsedSection") for elem in root.iter())
+    assert len(result.sidecars) == 1
+    assert result.sidecars[0].name == "unparsed_sections.json"
+    records = deserialize_unparsed_sections(result.sidecars[0].content)
+    assert records[0]["content_type"] == "text/html"
+    assert "Unclassified table content" in records[0]["content"]
+    assert "table_index" in records[0]

@@ -5,6 +5,8 @@ import pytest
 from edgar_sec.engine.forms.common.numbers import (
     clean_numeric,
     format_scaled_number_string,
+    normalize_schema_decimal,
+    normalize_schema_integer,
     parse_scaled_number,
 )
 
@@ -68,3 +70,14 @@ def test_format_scaled_number_string() -> None:
     assert format_scaled_number_string("$250M") == "250000000"
     assert format_scaled_number_string("$612,007.46") == "612007.46"
     assert format_scaled_number_string("invalid") is None
+
+
+def test_schema_numeric_normalizers_preserve_decimal_precision() -> None:
+    assert normalize_schema_decimal("50.0004") == "50.0004"
+    assert normalize_schema_decimal("$50.0004") is None
+    assert normalize_schema_decimal("10,642,388") == "10642388"
+    assert normalize_schema_decimal("-0.00") == "0"
+    assert normalize_schema_integer("10,642,388") == "10642388"
+    assert normalize_schema_integer("3.5") is None
+    assert normalize_schema_integer("10,64,388") is None
+    assert normalize_schema_integer("-5") is None

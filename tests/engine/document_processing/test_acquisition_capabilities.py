@@ -61,7 +61,7 @@ def test_form_4_resolves_render_to_xml() -> None:
     facts = DocumentPathFacts.from_archive_path("nbr59.htm")
     entry = resolve_acquisition_capability("4", "primary", "render_to_xml", facts)
     assert entry.status is CapabilityStatus.SUPPORTED
-    assert entry.pins == ("4.render_to_xml", "v1", "form4_html_to_xml", "1", "xml")
+    assert entry.pins == ("4.render_to_xml", "v1", "form4_html_to_xml", "2", "xml")
 
 
 def test_form_4_does_not_resolve_render_to_txt() -> None:

@@ -125,7 +125,9 @@ def write_plan_bundle(
                 )
             path = plan_root / relative
             path.parent.mkdir(parents=True, exist_ok=True)
-            values = [{name: row[name] for name in schema.names} for row in form_rows]
+            values = [
+                {name: row.get(name) for name in schema.names} for row in form_rows
+            ]
             pq.write_table(
                 pa.Table.from_pylist(values, schema=schema),
                 path,

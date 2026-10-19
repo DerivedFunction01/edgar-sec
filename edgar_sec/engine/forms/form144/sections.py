@@ -433,14 +433,16 @@ def _has_box3_value_row(grid: ResolvedGrid) -> bool:
     return False
 
 
-def partition_form144_tables(html_text: str) -> Form144Sections:
+def partition_form144_tables(
+    html_text: str, reference_year: int | None = None
+) -> Form144Sections:
     """Extract and classify tables from Form 144 HTML text into canonical sections."""
     root = parse_html(html_text)
     tables = root.css("table")
     if not tables:
         from edgar_sec.engine.forms.form144.ascii_parser import parse_ascii_form144
 
-        ascii_secs = parse_ascii_form144(html_text)
+        ascii_secs = parse_ascii_form144(html_text, reference_year)
         if ascii_secs is not None:
             return ascii_secs
 
@@ -633,7 +635,7 @@ def partition_form144_tables(html_text: str) -> Form144Sections:
     if not (has_cover and has_b3):
         from edgar_sec.engine.forms.form144.ascii_parser import parse_ascii_form144
 
-        ascii_secs = parse_ascii_form144(html_text)
+        ascii_secs = parse_ascii_form144(html_text, reference_year)
         if ascii_secs is not None:
             if not has_cover and not has_b3:
                 return ascii_secs

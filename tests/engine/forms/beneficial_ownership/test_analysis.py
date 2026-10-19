@@ -4,6 +4,7 @@ from edgar_sec.engine.forms.beneficial_ownership.analysis import (
     analyze_case,
     summarize_cases,
 )
+from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
 
 SAMPLE_XML = """<edgarSubmission xmlns="http://www.sec.gov/edgar/schedule13D">
   <schemaVersion>X0202</schemaVersion>
@@ -11,7 +12,7 @@ SAMPLE_XML = """<edgarSubmission xmlns="http://www.sec.gov/edgar/schedule13D">
   <formData>
     <coverPageHeader>
       <securitiesClassTitle>Common Stock</securitiesClassTitle>
-      <dateOfEvent>01/02/2024</dateOfEvent>
+      <dateOfEvent>01-02-2024</dateOfEvent>
       <issuerInfo><issuerName>Example Corp</issuerName>
         <issuerCusips><issuerCusipNumber>123456789</issuerCusipNumber></issuerCusips>
       </issuerInfo>
@@ -22,7 +23,7 @@ SAMPLE_XML = """<edgarSubmission xmlns="http://www.sec.gov/edgar/schedule13D">
       <typeOfReportingPerson>IN</typeOfReportingPerson>
     </reportingPersonInfo></reportingPersons>
     <items1To7><item1><commentText>Source-faithful text</commentText></item1></items1To7>
-    <signatureInfo><signaturePerson><signatureDetails><signature>/s/ Jane Doe</signature></signatureDetails></signaturePerson></signatureInfo>
+    <signatureInfo><signaturePerson><signatureDetails><signature>/s/ Jane Doe</signature><title>Director</title><date>01-02-2024</date></signatureDetails></signaturePerson></signatureInfo>
   </formData>
 </edgarSubmission>"""
 
@@ -204,7 +205,8 @@ def test_analysis_detects_flattened_items_and_missing_signatures(
         "/s/ Jane Doe</filedExhibits></item7></items1To7>",
     ).replace(
         "<signatureInfo><signaturePerson><signatureDetails>"
-        "<signature>/s/ Jane Doe</signature></signatureDetails></signaturePerson>"
+        "<signature>/s/ Jane Doe</signature><title>Director</title>"
+        "<date>01-02-2024</date></signatureDetails></signaturePerson>"
         "</signatureInfo>",
         "",
     )
@@ -220,6 +222,7 @@ def test_analysis_detects_flattened_items_and_missing_signatures(
         ("flattened_narrative_field", "item5.percentageOfClassSecurities"),
         ("signature_contained_in_narrative_item", "item7"),
         ("signature_missing_from_xml", None),
+        ("missing_required_schema_field", "signatureInfo"),
     }
 
 
@@ -321,7 +324,7 @@ def test_analysis_identifies_narrative_item_leakage_in_cover_values(
 def test_analysis_identifies_common_cover_header_residue(tmp_path: Path) -> None:
     xml = (
         SAMPLE_XML.replace(
-            "<dateOfEvent>01/02/2024</dateOfEvent>",
+            "<dateOfEvent>01-02-2024</dateOfEvent>",
             "<dateOfEvent>________ February 2, 2011________</dateOfEvent>",
         )
         .replace(
@@ -360,8 +363,24 @@ def test_analysis_identifies_common_cover_header_residue(tmp_path: Path) -> None
 
 
 def test_analysis_recognizes_13g_xml_family(tmp_path: Path) -> None:
-    xml = SAMPLE_XML.replace("schedule13D", "schedule13G").replace(
-        "SCHEDULE 13D", "SCHEDULE 13G"
+    xml = (
+        SAMPLE_XML.replace("schedule13D", "schedule13G")
+        .replace("SCHEDULE 13D", "SCHEDULE 13G")
+        .replace("dateOfEvent", "eventDateRequiresFilingThisStatement")
+        .replace(
+            "<reportingPersons><reportingPersonInfo>",
+            "<coverPageHeaderReportingPersonDetails>",
+        )
+        .replace(
+            "</reportingPersonInfo></reportingPersons>",
+            "</coverPageHeaderReportingPersonDetails>",
+        )
+        .replace("items1To7", "items")
+        .replace("<item1>", "<Item1>")
+        .replace("</item1>", "</Item1>")
+        .replace("signatureInfo", "signatureInformation")
+        .replace("<memberOfGroup>", "<memberGroup>")
+        .replace("</memberOfGroup>", "</memberGroup>")
     )
     report = analyze_case(
         _write_case(tmp_path, xml), {"accession": "a", "form": "SC 13G/A"}
@@ -376,6 +395,23 @@ def test_analysis_recognizes_13g_xml_family(tmp_path: Path) -> None:
     )
     assert mixed is not None
     assert summarize_cases([report, mixed])["family"] == "mixed"
+
+
+def test_analysis_flags_invalid_schedule_codes_and_schema_dates(tmp_path: Path) -> None:
+    xml = SAMPLE_XML.replace(
+        "<typeOfReportingPerson>IN</typeOfReportingPerson>",
+        "<typeOfReportingPerson>XX</typeOfReportingPerson>",
+    ).replace(
+        "<dateOfEvent>01-02-2024</dateOfEvent>", "<dateOfEvent>02-30-2024</dateOfEvent>"
+    )
+
+    report = analyze_case(_write_case(tmp_path, xml), {"accession": "a"})
+
+    assert report is not None
+    assert {(item["kind"], item["field"]) for item in report["anomalies"]} == {
+        ("invalid_schema_code", "typeOfReportingPerson"),
+        ("invalid_schema_date", "dateOfEvent"),
+    }
 
 
 def test_analysis_reports_malformed_xml(tmp_path: Path) -> None:
@@ -433,3 +469,39 @@ def test_summary_filters_statutory_unparsed_sections(tmp_path: Path) -> None:
     assert summary["boilerplate_unparsed_count"] == 1
     assert summary["substantive_unparsed_count"] == 1
     assert summary["unparsed_samples"][0]["snippet"] == "Unmapped disclosure data"
+
+
+def test_analysis_loads_unparsed_sidecar_and_flags_unresolved_scalar(
+    tmp_path: Path,
+) -> None:
+    case_dir = _write_case(tmp_path, SAMPLE_XML)
+    records = (
+        {
+            "role": "item5.unparsed",
+            "content_type": "text/plain",
+            "content": "Unparsed subsection text",
+            "start_offset": 12,
+            "end_offset": 36,
+        },
+        {
+            "role": "normalization.unresolved:aggregateAmountOwned",
+            "content_type": "text/plain",
+            "content": "12 shares and more",
+        },
+    )
+    (case_dir / "operations" / "unparsed_sections.json").write_bytes(
+        serialize_unparsed_sections(records)
+    )
+
+    report = analyze_case(case_dir, {"accession": "a"})
+
+    assert report is not None
+    assert [section["role"] for section in report["unparsed_sections"]] == [
+        "item5.unparsed",
+        "normalization.unresolved:aggregateAmountOwned",
+    ]
+    assert report["unparsed_sections"][0]["start_offset"] == 12
+    assert {item["kind"] for item in report["anomalies"]} == {
+        "unresolved_scalar_normalization"
+    }
+    assert report["review_signals"][0]["kind"] == "unparsed_narrative_content"

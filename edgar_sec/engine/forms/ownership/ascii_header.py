@@ -143,6 +143,7 @@ def _unfold_side_by_side_columns(lines: list[str]) -> list[str]:
 
 def extract_ascii_header_and_signatures(
     text: str,
+    reference_year: int | None = None,
 ) -> tuple[ClassifiedSection | None, ClassifiedSection | None]:
     """Extract synthetic ClassifiedSections for Boxes 1-7 and signatures."""
     m_tbl = _TABLE_START_RE.search(text)
@@ -203,7 +204,7 @@ def extract_ascii_header_and_signatures(
     all_lines = text.splitlines()
     start_sig = max(0, int(len(all_lines) * 0.4))
     sig_name, sig_date = extract_columnar_signature_and_date(
-        all_lines, start_idx=start_sig
+        all_lines, start_idx=start_sig, reference_year=reference_year
     )
     if not sig_name or not sig_date:
         tail_text = "\n".join(all_lines[start_sig:])

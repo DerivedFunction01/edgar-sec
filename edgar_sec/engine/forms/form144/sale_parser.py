@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from functools import partial
 
 from edgar_sec.domain.forms.families.form144.models import (
     BrokerDetails,
@@ -13,22 +14,39 @@ from edgar_sec.engine.forms.common.alignment import (
     TableSchema,
     align_row_to_schema,
 )
+from edgar_sec.engine.forms.common.dates import normalize_iso_date
 from edgar_sec.engine.forms.common.entities import (
     STATE_ZIP_RE,
     STREET_SUFFIX_RE,
     normalize_exchange_name,
 )
-from edgar_sec.engine.forms.common.numbers import clean_numeric
 from edgar_sec.engine.forms.common.tables import is_instruction_row
+from edgar_sec.engine.forms.common.numbers import (
+    normalize_schema_integer_value,
+    normalize_schema_number,
+)
 from edgar_sec.engine.forms.form144.patterns import NUMERIC_TOKEN_RE
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.tables.currencies import ALL_CURRENCY_SYMBOLS
+from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import parse_date
 
 _SEC_FILE_RE = re.compile(r"^\d{1,3}-\d{4,7}$")
+_FORM144_INTEGER = partial(normalize_schema_integer_value, strip_units=True)
+_FORM144_DECIMAL = partial(
+    normalize_schema_number,
+    integer=False,
+    strip_currency=True,
+    allow_accounting_negative=True,
+    allow_negative=True,
+)
 _SPLIT_EXPLANATION_RE = re.compile(
     r"\s+(?:as of|based on|\(based|\(as of)\b", flags=re.IGNORECASE
 )
+_QUANTITY_PREFIX_ALT = build_alternation(
+    ("up to", "approximately", "approximate", "approx", "about")
+)
+_QUANTITY_PREFIX_RE = re.compile(rf"^(?:{_QUANTITY_PREFIX_ALT})\.?\s+", re.I)
 
 
 def _is_box3_header(row: tuple[str, ...]) -> bool:
@@ -116,7 +134,7 @@ def _parse_broker(lines: list[str]) -> BrokerDetails | None:
     )
 
 
-def _extract_leading_number(text: str) -> tuple[float | int | None, bool]:
+def _extract_leading_number(text: str) -> tuple[int | str | None, bool]:
     cleaned = text.strip()
     if not cleaned:
         return None, False
@@ -124,8 +142,14 @@ def _extract_leading_number(text: str) -> tuple[float | int | None, bool]:
         return None, False
     has_curr = any(s in cleaned for s in ALL_CURRENCY_SYMBOLS)
     primary = _SPLIT_EXPLANATION_RE.split(cleaned)[0].strip()
-    num = clean_numeric(primary)
+    primary = _QUANTITY_PREFIX_RE.sub("", primary)
+    num = _FORM144_DECIMAL(primary) if has_curr else _FORM144_INTEGER(primary)
     return (num, has_curr) if num is not None else (None, False)
+
+
+def _extract_units(text: str) -> int | None:
+    value, is_currency = _extract_leading_number(text)
+    return value if isinstance(value, int) and not is_currency else None
 
 
 def _is_currency_cell(s: str) -> bool:
@@ -150,7 +174,7 @@ _BOX_3_SCHEMA = TableSchema(
             index=2,
             name="units_to_be_sold",
             is_required=False,
-            data_extractor=lambda s: _extract_leading_number(s)[0],
+            data_extractor=_extract_units,
         ),
         CanonicalColumn(
             index=3,
@@ -158,15 +182,13 @@ _BOX_3_SCHEMA = TableSchema(
             is_required=False,
             is_anchor=True,
             anchor_validator=_is_currency_cell,
-            data_extractor=lambda s: (
-                float(n) if (n := _extract_leading_number(s)[0]) is not None else None
-            ),
+            data_extractor=_FORM144_DECIMAL,
         ),
         CanonicalColumn(
             index=4,
             name="units_outstanding",
             is_required=False,
-            data_extractor=lambda s: _extract_leading_number(s)[0],
+            data_extractor=_extract_units,
         ),
         CanonicalColumn(
             index=5,
@@ -195,7 +217,7 @@ _BOX_3_PART2_SCHEMA = TableSchema(
             index=0,
             name="units_outstanding",
             is_required=False,
-            data_extractor=lambda s: _extract_leading_number(s)[0],
+            data_extractor=_extract_units,
         ),
         CanonicalColumn(
             index=1,
@@ -217,7 +239,10 @@ _BOX_3_PART2_SCHEMA = TableSchema(
 )
 
 
-def parse_proposed_sale_box_3(section: ClassifiedSection | None) -> ProposedSaleItem:
+def parse_proposed_sale_box_3(
+    section: ClassifiedSection | None,
+    reference_year: int | None = None,
+) -> ProposedSaleItem:
     """Extract proposed sale fields from Box 3 section grid using a state machine."""
     if section is None:
         return ProposedSaleItem()
@@ -229,9 +254,9 @@ def parse_proposed_sale_box_3(section: ClassifiedSection | None) -> ProposedSale
     first_hdr = next((idx for idx, r in enumerate(rows) if _is_box3_header(r)), 0)
 
     class_title: str | None = None
-    units: float | int | None = None
-    val: float | None = None
-    out: float | int | None = None
+    units: int | None = None
+    val: str | None = None
+    out: int | None = None
     dt: str | None = None
     exch: str | None = None
     broker_parts: list[str] = []
@@ -244,12 +269,11 @@ def parse_proposed_sale_box_3(section: ClassifiedSection | None) -> ProposedSale
             if r_broker and not broker_parts:
                 broker_parts.append(r_broker)
             if r_units and units is None:
-                units = clean_numeric(r_units)
+                units = _FORM144_INTEGER(r_units)
             if r_val and val is None:
-                n = clean_numeric(r_val)
-                val = float(n) if n is not None else None
+                val = _FORM144_DECIMAL(r_val)
             if r_out and out is None:
-                out = clean_numeric(r_out)
+                out = _FORM144_INTEGER(r_out)
             if r_dt and dt is None:
                 parsed_dt = parse_date(r_dt)
                 dt = parsed_dt.display if parsed_dt else None
@@ -328,7 +352,7 @@ def parse_proposed_sale_box_3(section: ClassifiedSection | None) -> ProposedSale
                     rem_cells.pop(idx)
                     break
 
-        numeric_items: list[tuple[float | int, bool, str]] = []
+        numeric_items: list[tuple[int | str, bool, str]] = []
         text_items: list[str] = []
         for c in rem_cells:
             num, is_curr = _extract_leading_number(c)
@@ -338,26 +362,36 @@ def parse_proposed_sale_box_3(section: ClassifiedSection | None) -> ProposedSale
                 text_items.append(c)
 
         if len(numeric_items) >= 3:
-            units = units if units is not None else numeric_items[0][0]
-            val = val if val is not None else float(numeric_items[1][0])
-            out = out if out is not None else numeric_items[2][0]
+            integer_items = [item for item in numeric_items if not item[1]]
+            if integer_items:
+                units = units if units is not None else int(integer_items[0][0])
+                if len(integer_items) > 1:
+                    out = out if out is not None else int(integer_items[-1][0])
+            proceeds = next((item for item in numeric_items if item[1]), None)
+            if proceeds is None:
+                proceeds = numeric_items[1]
+            val = val if val is not None else _FORM144_DECIMAL(proceeds[2])
         elif len(numeric_items) == 2:
-            n1, _, _ = numeric_items[0]
+            n1, is_curr1, _ = numeric_items[0]
             n2, is_curr2, _ = numeric_items[1]
-            units = units if units is not None else n1
+            units = units if units is not None else (int(n1) if not is_curr1 else None)
             if is_curr2:
-                val = val if val is not None else float(n2)
-            elif n2 > n1 * 5:
-                out = out if out is not None else n2
+                val = val if val is not None else _FORM144_DECIMAL(numeric_items[1][2])
+            elif is_curr1:
+                val = val if val is not None else _FORM144_DECIMAL(numeric_items[0][2])
+                if units is None:
+                    units = int(n2)
+            elif not is_curr2 and not is_curr1 and int(n2) > int(n1) * 5:
+                out = out if out is not None else int(n2)
             else:
-                val = val if val is not None else float(n2)
+                val = val if val is not None else _FORM144_DECIMAL(numeric_items[1][2])
         elif len(numeric_items) == 1:
-            if units is None:
-                units = numeric_items[0][0]
+            if units is None and not numeric_items[0][1]:
+                units = int(numeric_items[0][0])
             elif val is None and numeric_items[0][1]:
-                val = float(numeric_items[0][0])
-            elif out is None:
-                out = numeric_items[0][0]
+                val = _FORM144_DECIMAL(numeric_items[0][2])
+            elif out is None and not numeric_items[0][1]:
+                out = int(numeric_items[0][0])
 
         for t in text_items:
             lower = t.lower()
@@ -401,9 +435,9 @@ def parse_proposed_sale_box_3(section: ClassifiedSection | None) -> ProposedSale
         units_to_be_sold=units,
         aggregate_market_value=val,
         units_outstanding=out,
-        approx_sale_date=dt,
+        approx_sale_date=normalize_iso_date(dt, reference_year) or dt,
         exchange_name=exch,
     )
 
 
-__all__ = ["clean_numeric", "parse_proposed_sale_box_3"]
+__all__ = ["parse_proposed_sale_box_3"]

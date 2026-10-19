@@ -14,6 +14,7 @@ from edgar_sec.engine.document_processing.capabilities import (
     ProcessingCapability,
     ProcessingCapabilityRegistry,
 )
+from edgar_sec.engine.document_processing.outputs import HandlerOutput
 
 
 @dataclass(frozen=True, slots=True)
@@ -24,9 +25,12 @@ class HandlerContext:
     selected_path: str
     path_facts: DocumentPathFacts
     route: DocumentRoute
+    include_analysis_artifacts: bool = False
+    filing_date: str | None = None
+    report_date: str | None = None
 
 
-Handler = Callable[[bytes, HandlerContext], bytes | str]
+Handler = Callable[[bytes, HandlerContext], bytes | str | HandlerOutput]
 
 
 @dataclass(frozen=True, slots=True)
@@ -150,19 +154,25 @@ def _normalize_document(raw_bytes: bytes, context: HandlerContext) -> str:
     return result.text
 
 
-def _form4_html_to_xml(raw_bytes: bytes, context: HandlerContext) -> bytes:
-    from edgar_sec.engine.forms.ownership.render_to_xml import render_form4_to_xml
+def _ownership_html_to_xml(
+    raw_bytes: bytes, context: HandlerContext
+) -> bytes | HandlerOutput:
+    from edgar_sec.engine.forms.ownership.render_to_xml import render_ownership_to_xml
 
-    return render_form4_to_xml(raw_bytes, context)
+    return render_ownership_to_xml(raw_bytes, context)
 
 
-def _form144_html_to_xml(raw_bytes: bytes, context: HandlerContext) -> bytes:
+def _form144_html_to_xml(
+    raw_bytes: bytes, context: HandlerContext
+) -> bytes | HandlerOutput:
     from edgar_sec.engine.forms.form144.render_to_xml import render_form144_to_xml
 
     return render_form144_to_xml(raw_bytes, context)
 
 
-def _schedule13d_to_xml(raw_bytes: bytes, context: HandlerContext) -> bytes:
+def _schedule13d_to_xml(
+    raw_bytes: bytes, context: HandlerContext
+) -> bytes | HandlerOutput:
     from edgar_sec.engine.forms.beneficial_ownership.renderer import (
         render_schedule13d_to_xml,
     )
@@ -170,7 +180,9 @@ def _schedule13d_to_xml(raw_bytes: bytes, context: HandlerContext) -> bytes:
     return render_schedule13d_to_xml(raw_bytes, context)
 
 
-def _schedule13g_to_xml(raw_bytes: bytes, context: HandlerContext) -> bytes:
+def _schedule13g_to_xml(
+    raw_bytes: bytes, context: HandlerContext
+) -> bytes | HandlerOutput:
     from edgar_sec.engine.forms.beneficial_ownership.renderer import (
         render_schedule13g_to_xml,
     )
@@ -196,31 +208,31 @@ def default_handler_registry() -> HandlerRegistry:
     )
     registry.register(
         "form3_html_to_xml",
-        "1",
+        "2",
         "render_to_xml",
         HandlerOutputKind.XML,
-        _form4_html_to_xml,
+        _ownership_html_to_xml,
         family="3",
     )
     registry.register(
         "form4_html_to_xml",
-        "1",
+        "2",
         "render_to_xml",
         HandlerOutputKind.XML,
-        _form4_html_to_xml,
+        _ownership_html_to_xml,
         family="4",
     )
     registry.register(
         "form5_html_to_xml",
-        "1",
+        "2",
         "render_to_xml",
         HandlerOutputKind.XML,
-        _form4_html_to_xml,
+        _ownership_html_to_xml,
         family="5",
     )
     registry.register(
         "form144_html_to_xml",
-        "1",
+        "2",
         "render_to_xml",
         HandlerOutputKind.XML,
         _form144_html_to_xml,
@@ -228,7 +240,7 @@ def default_handler_registry() -> HandlerRegistry:
     )
     registry.register(
         "schedule13d_to_xml",
-        "1",
+        "2",
         "render_to_xml",
         HandlerOutputKind.XML,
         _schedule13d_to_xml,
@@ -236,7 +248,7 @@ def default_handler_registry() -> HandlerRegistry:
     )
     registry.register(
         "schedule13g_to_xml",
-        "1",
+        "2",
         "render_to_xml",
         HandlerOutputKind.XML,
         _schedule13g_to_xml,

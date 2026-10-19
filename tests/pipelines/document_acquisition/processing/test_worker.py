@@ -644,7 +644,7 @@ def test_form4_xml_with_registered_handler_succeeds(
         capability_id="4.render_to_xml",
         capability_version="v1",
         handler_id="form4_html_to_xml",
-        handler_version="1",
+        handler_version="2",
         output_kind="xml",
     )
     request = replace(request, form="4", operations=(raw, xml))

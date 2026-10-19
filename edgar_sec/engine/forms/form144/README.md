@@ -4,14 +4,15 @@ Form 144 table classification, HTML-to-XML grid normalization, and semantic revi
 
 ## Purpose
 
-Extracts structured Form 144 data from legacy HTML multi-tier tables and synthesizes canonical `<edgarSubmission>` XML matching SEC electronic filing specifications.
+Extracts supported Form 144 fields from legacy HTML tables and serializes them using the supplied XML field types and formats.
 
 Provides automated semantic diagnostics for review runs, auditing field completeness, detecting statutory boilerplate leaks, and flagging unparsed sections.
 
 ## Contracts
 
-- **XML synthesis conformity**: Output XML conforms to `<edgarSubmission>` with `<formData>` containing issuer, proposed sale, Table I, Table II, and signature blocks.
+- **Schema-shaped output**: Recognized values use Form 144 XML field types; the analyzer reports missing conditional and required values.
 - **Source fidelity**: Values absent from source filings remain unpopulated without fabricated defaults.
+- **Unparsed tables**: Review runs persist residual table HTML in `operations/unparsed_sections.json`, outside XML payloads.
 - **Downward layering**: Imports only domain and infra modules; never tools, apps, or pipelines.
 
 ## Deliberate gaps

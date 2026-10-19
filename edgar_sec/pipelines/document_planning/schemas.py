@@ -7,12 +7,12 @@ import pyarrow as pa
 from edgar_sec.domain.filing_catalog.schemas import TARGET_PLAN_SCHEMA_VERSION
 from edgar_sec.pipelines.document_inventory.schemas import INVENTORY_RELATIONS
 
-TARGET_SCHEMA_VERSION = 1
+TARGET_SCHEMA_VERSION = 2
 TARGET_OPERATION_SCHEMA_VERSION = 1
 SOURCE_REQUEST_SCHEMA_VERSION = 1
 OPERATION_INPUT_SCHEMA_VERSION = 1
-PLAN_BUNDLE_SCHEMA_VERSION = 4
-MATCHER_VERSION = "target-matcher-v4"
+PLAN_BUNDLE_SCHEMA_VERSION = 5
+MATCHER_VERSION = "target-matcher-v5"
 PROFILE_SCHEMA_VERSION = "1"
 
 TARGET_COLUMNS = (
@@ -20,6 +20,7 @@ TARGET_COLUMNS = (
     "accession",
     "form",
     "filing_date",
+    "report_date",
     "request_id",
     "target_role",
     "target_type",
@@ -42,6 +43,7 @@ TARGET_SCHEMA = pa.schema(
         pa.field("accession", pa.string(), nullable=False),
         pa.field("form", pa.string(), nullable=False),
         pa.field("filing_date", pa.string(), nullable=False),
+        pa.field("report_date", pa.string(), nullable=True),
         pa.field("request_id", pa.string(), nullable=False),
         pa.field("target_role", pa.string(), nullable=False),
         pa.field("target_type", pa.string(), nullable=False),

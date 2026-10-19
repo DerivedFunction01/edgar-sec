@@ -15,7 +15,7 @@ from edgar_sec.engine.forms.form144.patterns import (
     PLAN_ADOPTION_RE,
 )
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
-from edgar_sec.foundation.text.dates import parse_date
+from edgar_sec.engine.forms.common.dates import normalize_iso_date
 
 
 def parse_remarks(sections: list[ClassifiedSection] | None) -> str | None:
@@ -38,6 +38,7 @@ def parse_signatures(
     | tuple[ClassifiedSection, ...]
     | None,
     full_text: str = "",
+    reference_year: int | None = None,
 ) -> NoticeSignature:
     sections_list = (
         [section]
@@ -112,6 +113,11 @@ def parse_signatures(
     plan_match = PLAN_ADOPTION_RE.search(combined)
     if plan_match:
         plan_dates.append(plan_match.group(1).strip())
+
+    notice_date = normalize_iso_date(notice_date, reference_year) or notice_date
+    plan_dates = [
+        normalize_iso_date(value, reference_year) or value for value in plan_dates
+    ]
 
     return NoticeSignature(
         notice_date=notice_date,

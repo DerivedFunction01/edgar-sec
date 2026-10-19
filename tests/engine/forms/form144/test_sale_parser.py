@@ -1,7 +1,6 @@
 """Tests for Form 144 proposed-sale extraction."""
 
 from edgar_sec.engine.forms.form144.sale_parser import (
-    clean_numeric,
     parse_proposed_sale_box_3,
 )
 from edgar_sec.engine.forms.form144.sections import partition_form144_tables
@@ -25,7 +24,7 @@ def test_parse_box_three_values_and_human_readable_sale_date():
     proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3)
     assert proposed.class_title == "Common Stock"
     assert proposed.units_to_be_sold == 5000
-    assert proposed.aggregate_market_value == 150000.0
+    assert proposed.aggregate_market_value == "150000.00"
     assert proposed.exchange_name == "NYSE"
 
 
@@ -79,9 +78,9 @@ def test_parse_box_three_source_backed_sibling_continuation():
     assert proposed.class_title == "Common Stock"
     assert proposed.broker is not None and proposed.broker.name == "Example Broker"
     assert proposed.units_to_be_sold == 1000
-    assert proposed.aggregate_market_value == 2500
+    assert proposed.aggregate_market_value == "2500"
     assert proposed.units_outstanding == 10000
-    assert proposed.approx_sale_date == "08/03/2004"
+    assert proposed.approx_sale_date == "2004-08-03"
     assert proposed.exchange_name == "NASDAQ"
 
 
@@ -111,7 +110,7 @@ def test_parse_data_row_continued_after_box3_header():
     assert proposed.broker.state_or_country == "FL"
     assert proposed.broker.zip_code == "32174"
     assert proposed.units_to_be_sold == 56000
-    assert proposed.aggregate_market_value == 1949360
+    assert proposed.aggregate_market_value == "1949360"
     assert proposed.units_outstanding == 319200181
     assert proposed.approx_sale_date == "10/26/09"
     assert proposed.exchange_name == "NYSE"
@@ -146,7 +145,7 @@ def test_parse_box3_values_in_spacer_columns_after_marked_labels():
     assert proposed.broker.state_or_country == "OH"
     assert proposed.broker.zip_code == "44144"
     assert proposed.units_to_be_sold == 12200
-    assert proposed.aggregate_market_value == 463600
+    assert proposed.aggregate_market_value == "463600.00"
     assert proposed.units_outstanding == 34602416
     assert proposed.approx_sale_date == "2/27/04"
     assert proposed.exchange_name == "NASDAQ"
@@ -184,13 +183,7 @@ def test_nearby_header_rows_and_trailing_instructions_bound_box3_data():
     assert proposed.class_title == "Common Stock"
     assert proposed.broker is not None and proposed.broker.name == "Example Broker"
     assert proposed.units_to_be_sold == 100
-    assert proposed.aggregate_market_value == 500
+    assert proposed.aggregate_market_value == "500"
     assert proposed.units_outstanding == 10000
     assert proposed.approx_sale_date == "10/26/09"
     assert proposed.exchange_name == "NYSE"
-
-
-def test_clean_numeric():
-    assert clean_numeric("Up to 5,000") == 5000
-    assert clean_numeric("$150,000.00") == 150000.0
-    assert clean_numeric("not reported") is None

@@ -4,9 +4,8 @@ and the cases where stripping must not happen.
 
 from __future__ import annotations
 
-from types import MappingProxyType
-
 import pytest
+from types import MappingProxyType
 
 from edgar_sec.domain.taxonomy.family_vocab import (
     ABBR_MAP,
@@ -28,6 +27,7 @@ from edgar_sec.domain.taxonomy.family_vocab import (
     strippable_postal_codes,
 )
 from edgar_sec.domain.taxonomy.jurisdictions import (
+    EDGAR_JURISDICTION_CODES,
     JURISDICTION_RE,
     STATE_NAMES,
     STATE_POSTAL_CODES,
@@ -166,6 +166,7 @@ def test_tables_are_immutable() -> None:
         AMBIGUOUS_POSTAL_CODES,
         LEGAL_FORMS,
         STATE_POSTAL_CODES,
+        EDGAR_JURISDICTION_CODES,
     ):
         assert isinstance(table, frozenset)
     with pytest.raises(TypeError):

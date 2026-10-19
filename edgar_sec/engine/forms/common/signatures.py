@@ -512,6 +512,7 @@ def extract_columnar_signature_and_date(
     lines: Sequence[str],
     *,
     start_idx: int = 0,
+    reference_year: int | None = None,
 ) -> tuple[str | None, str | None]:
     """Scan trailing lines backward for conformed signature and notice date."""
     from edgar_sec.engine.forms.common.tables import (
@@ -567,19 +568,23 @@ def extract_columnar_signature_and_date(
                                 sig_name = cand
                                 break
                         if sig_name:
-                            if not sig_date and len(cols) > 1 and parse_date(cols[0]):
-                                sig_date = parse_date(cols[0]).display
+                            if not sig_date and len(cols) > 1:
+                                parsed = parse_date(
+                                    cols[0], reference_year=reference_year
+                                )
+                                if parsed:
+                                    sig_date = parsed.display
                             break
 
         if not sig_date and ("date of notice" in lower or lower.startswith("date:")):
-            p_d = parse_date(line)
+            p_d = parse_date(line, reference_year=reference_year)
             if p_d and "as of" not in lower:
                 sig_date = p_d.display
             else:
                 for d in (-2, -1, 1, 2):
                     if 0 <= idx + d < total_lines:
                         adj_l = strip_markup_tags(lines[idx + d])
-                        p_adj = parse_date(adj_l)
+                        p_adj = parse_date(adj_l, reference_year=reference_year)
                         if p_adj and "as of" not in adj_l.lower():
                             sig_date = p_adj.display
                             break

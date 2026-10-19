@@ -1,11 +1,10 @@
-"""Tests for Form 4 Table I, Table II, and Footnotes parsing in securities.py."""
+"""Tests for ownership transaction-table parsing."""
 
 from dataclasses import replace
 
 from edgar_sec.engine.forms.ownership.sections import partition_ownership_tables
+from edgar_sec.engine.forms.common.numbers import extract_schema_number
 from edgar_sec.engine.forms.ownership.securities import (
-    _extract_number,
-    parse_footnotes,
     parse_table_i_rows,
     parse_table_ii_rows,
 )
@@ -49,10 +48,11 @@ SAMPLE_TABLES_HTML = """
 
 
 def test_extract_number_fast_path_preserves_numeric_fallbacks() -> None:
-    assert _extract_number("00123") == 123.0
-    assert _extract_number("1,234.50") == 1234.5
-    assert _extract_number("$8.00") == 8.0
-    assert _extract_number("²") is None
+    assert extract_schema_number("00123") == "123"
+    assert extract_schema_number("1,234.50") == "1234.50"
+    assert extract_schema_number("$8.00") == "8.00"
+    assert extract_schema_number("123456789012345678.90") == "123456789012345678.90"
+    assert extract_schema_number("²") is None
 
 
 def test_parse_table_i_and_table_ii_rows() -> None:
@@ -61,52 +61,27 @@ def test_parse_table_i_and_table_ii_rows() -> None:
     t1_rows = parse_table_i_rows(sections.table_i)
     assert len(t1_rows) == 2
     assert t1_rows[0].security_title == "Common Stock"
-    assert t1_rows[0].transaction_date == "04/01/1999"
+    assert t1_rows[0].transaction_date == "1999-04-01"
     assert t1_rows[0].transaction_code == "G"
     assert t1_rows[0].equity_swap_involved is True
-    assert t1_rows[0].shares_amount == 3000.0
+    assert t1_rows[0].shares_amount == "3000.000"
     assert t1_rows[0].acquired_disposed_code == "D"
-    assert t1_rows[0].shares_owned_following == 23337.0
+    assert t1_rows[0].shares_owned_following == "23337.000"
     assert t1_rows[0].direct_or_indirect == "D"
     assert t1_rows[0].footnote_ids == ("1",)
 
     assert t1_rows[1].direct_or_indirect == "I"
     assert t1_rows[1].nature_of_ownership == "By 401(k) Plan"
-    assert t1_rows[1].shares_owned_following == 541.158
+    assert t1_rows[1].shares_owned_following == "541.158"
 
     t2_rows = parse_table_ii_rows(sections.table_ii)
     assert len(t2_rows) == 1
     assert t2_rows[0].security_title == "1996 Stock Option"
-    assert t2_rows[0].conversion_or_exercise_price == 18.75
-    assert t2_rows[0].exercisable_date == "07/25/1997"
-    assert t2_rows[0].expiration_date == "07/25/2006"
+    assert t2_rows[0].conversion_or_exercise_price == "18.7500"
+    assert t2_rows[0].exercisable_date == "1997-07-25"
+    assert t2_rows[0].expiration_date == "2006-07-25"
     assert t2_rows[0].underlying_security_title == "Common Stock"
-    assert t2_rows[0].underlying_shares_amount == 7550.0
-
-    footnotes = parse_footnotes(sections.footnotes)
-    assert footnotes.get("1") == "Gift of shares to charitable foundation."
-
-
-def test_parse_footnotes_finds_all_entries_in_multiline_cell() -> None:
-    sections = partition_ownership_tables(SAMPLE_TABLES_HTML)
-    source = sections.footnotes[0]
-    grid = replace(
-        source.resolved_grid,
-        rows=(
-            (
-                "Explanation of Responses:\n"
-                "  (1) Gift of shares to charitable foundation.\n"
-                "  [2] Shares acquired under the applicable plan.",
-            ),
-        ),
-    )
-
-    footnotes = parse_footnotes([replace(source, resolved_grid=grid)])
-
-    assert footnotes == {
-        "1": "Gift of shares to charitable foundation.",
-        "2": "Shares acquired under the applicable plan.",
-    }
+    assert t2_rows[0].underlying_shares_amount == "7550.000"
 
 
 def test_parse_table_ii_strips_header_leaks() -> None:
@@ -157,15 +132,15 @@ def test_table_i_resolves_multiline_header_columns() -> None:
     </table></body></html>"""
 
     sections = partition_ownership_tables(html)
-    rows = parse_table_i_rows(sections.table_i)
+    rows = parse_table_i_rows(sections.table_i, reference_year=2002)
 
     assert len(rows) == 1
-    assert rows[0].transaction_date == "7/30/02"
+    assert rows[0].transaction_date == "2002-07-30"
     assert rows[0].transaction_code == "S"
-    assert rows[0].shares_amount == 5000.0
+    assert rows[0].shares_amount == "5000"
     assert rows[0].acquired_disposed_code == "D"
-    assert rows[0].price_per_share == 8.0
-    assert rows[0].shares_owned_following == 51500.0
+    assert rows[0].price_per_share == "8"
+    assert rows[0].shares_owned_following == "51500"
     assert rows[0].direct_or_indirect == "D"
 
 
@@ -195,19 +170,19 @@ def test_table_ii_resolves_split_amount_date_and_underlying_columns() -> None:
     </table></body></html>"""
 
     sections = partition_ownership_tables(html)
-    rows = parse_table_ii_rows(sections.table_ii)
+    rows = parse_table_ii_rows(sections.table_ii, reference_year=2003)
 
     assert len(rows) == 1
-    assert rows[0].conversion_or_exercise_price == 31.465
-    assert rows[0].transaction_date == "02/11/03"
+    assert rows[0].conversion_or_exercise_price == "31.4650"
+    assert rows[0].transaction_date == "2003-02-11"
     assert rows[0].transaction_code == "A"
-    assert rows[0].shares_amount == 50000.0
+    assert rows[0].shares_amount == "50000"
     assert rows[0].acquired_disposed_code == "A"
-    assert rows[0].exercisable_date == "02/11/06"
-    assert rows[0].expiration_date == "02/11/13"
+    assert rows[0].exercisable_date == "2006-02-11"
+    assert rows[0].expiration_date == "2013-02-11"
     assert rows[0].underlying_security_title == "Common Stock"
-    assert rows[0].underlying_shares_amount == 50000.0
-    assert rows[0].derivative_shares_owned_following == 50000.0
+    assert rows[0].underlying_shares_amount == "50000"
+    assert rows[0].derivative_shares_owned_following == "50000"
     assert rows[0].direct_or_indirect == "D"
 
 
@@ -288,19 +263,19 @@ def test_4977_03_000095_maps_nested_header_and_skips_artifacts() -> None:
     resolved_grid = replace(section.resolved_grid, rows=grid_rows, header_row_count=0)
     section = replace(section, resolved_grid=resolved_grid)
 
-    rows = parse_table_ii_rows(section)
+    rows = parse_table_ii_rows(section, reference_year=2003)
 
     assert len(rows) == 1
     assert rows[0].security_title == "Employee Stock Option (right to buy)"
-    assert rows[0].transaction_date == "03/18/03"
+    assert rows[0].transaction_date == "2003-03-18"
     assert rows[0].transaction_code == "M"
-    assert rows[0].shares_amount == 10000.0
+    assert rows[0].shares_amount == "10000"
     assert rows[0].acquired_disposed_code == "D"
-    assert rows[0].exercisable_date == "06/28/93"
-    assert rows[0].expiration_date == "06/28/03"
+    assert rows[0].exercisable_date == "1993-06-28"
+    assert rows[0].expiration_date == "2003-06-28"
     assert rows[0].underlying_security_title == "Common Stock"
-    assert rows[0].underlying_shares_amount == 10000.0
-    assert rows[0].derivative_shares_owned_following == 14290.0
+    assert rows[0].underlying_shares_amount == "10000"
+    assert rows[0].derivative_shares_owned_following == "14290"
     assert rows[0].direct_or_indirect == "D"
 
 
@@ -343,11 +318,11 @@ def test_parse_table_ii_holding_row() -> None:
     rows = parse_table_ii_rows(sections.table_ii)
     assert len(rows) == 1
     assert rows[0].security_title == "Employee Stock Option"
-    assert rows[0].conversion_or_exercise_price == 10.5
+    assert rows[0].conversion_or_exercise_price == "10.50"
     assert rows[0].transaction_date is None
     assert rows[0].transaction_code is None
-    assert rows[0].exercisable_date == "01/01/2004"
-    assert rows[0].expiration_date == "01/01/2014"
+    assert rows[0].exercisable_date == "2004-01-01"
+    assert rows[0].expiration_date == "2014-01-01"
     assert rows[0].underlying_security_title == "Common Stock"
-    assert rows[0].underlying_shares_amount == 5000.0
+    assert rows[0].underlying_shares_amount == "5000"
     assert rows[0].direct_or_indirect == "D"

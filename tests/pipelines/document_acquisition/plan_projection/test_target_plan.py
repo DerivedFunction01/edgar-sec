@@ -212,10 +212,10 @@ def test_projects_targets_and_preserves_v4_operation_relations(
         "candidate_not_authorized",
         "target_not_matched",
     ]
-    assert target_plan_bundle_schema_version() == 4
-    assert target_plan_matcher_version() == "target-matcher-v4"
-    assert result.bundle_schema_version == 4
-    assert result.matcher_version == "target-matcher-v4"
+    assert target_plan_bundle_schema_version() == 5
+    assert target_plan_matcher_version() == "target-matcher-v5"
+    assert result.bundle_schema_version == 5
+    assert result.matcher_version == "target-matcher-v5"
     assert result.target_schema_version == TARGET_SCHEMA_VERSION
     assert sum(
         part["row_count"] for part in result.relation_parts["target_operations"]
@@ -469,7 +469,7 @@ def test_matcher_version_mismatch_is_rejected_before_output(
     _seal_manifest(manifest, plan_root)
     output = tmp_path / "work-order.parquet"
 
-    with pytest.raises(TargetPlanError, match="requires target-matcher-v4"):
+    with pytest.raises(TargetPlanError, match="requires target-matcher-v5"):
         load_acquisition_work_order(plan_root, output)
 
     assert not output.exists()

@@ -310,7 +310,10 @@ def _inventory_scope_rows(
                 f"catalog accession lacks a filing date: {item.accession}"
             )
         yield CatalogAccessionScopeRow(
-            str(AccessionNumber.from_any(item.accession)), item.form, item.filing_date
+            str(AccessionNumber.from_any(item.accession)),
+            item.form,
+            item.filing_date,
+            item.report_date,
         )
 
 

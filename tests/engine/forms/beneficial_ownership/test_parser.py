@@ -8,12 +8,10 @@ from edgar_sec.domain.forms.families.processing_profiles import get_family_entry
 from edgar_sec.engine.forms.beneficial_ownership.parser import (
     parse_beneficial_ownership_document,
 )
-from edgar_sec.engine.forms.beneficial_ownership.provenance_analysis import (
-    analyze_extraction_provenance,
-)
 from edgar_sec.engine.forms.beneficial_ownership.render_to_xml import (
     build_beneficial_ownership_xml,
 )
+from edgar_sec.engine.forms.common.unparsed import deserialize_unparsed_sections
 from edgar_sec.engine.forms.cover.models import BoundaryMethod, CoverBoundary
 from edgar_sec.engine.forms.normalize import NormalizationResult
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
@@ -203,10 +201,11 @@ def test_parser_maps_known_item_subparts_and_preserves_unmapped_text() -> None:
     )
 
     document = parse_beneficial_ownership_document(result, form="13D")
-    xml = ET.fromstring(build_beneficial_ownership_xml(document))
+    output = build_beneficial_ownership_xml(document)
+    xml = ET.fromstring(output.content)
     namespace = {"s": "http://www.sec.gov/edgar/schedule13D"}
-    item2 = xml.find(".//s:item2", namespace)
-    item5 = xml.find(".//s:item5", namespace)
+    item2 = xml.find(".//s:Item2", namespace)
+    item5 = xml.find(".//s:Item5", namespace)
     assert item2 is not None and item5 is not None
     assert [child.tag.rsplit("}", 1)[-1] for child in item2] == [
         "filingPersonName",
@@ -224,11 +223,16 @@ def test_parser_maps_known_item_subparts_and_preserves_unmapped_text() -> None:
     assert any(
         section.role == "item2.unparsed" for section in document.unparsed_sections
     )
-
-    anomalies, coverage = analyze_extraction_provenance(xml, text, "a", required=True)
-    assert anomalies == []
-    assert coverage is not None
-    assert coverage["uncovered_nonwhitespace_characters"] == 0
+    assert (
+        xml.find(".//{http://www.sec.gov/edgar/schedule13D}extractionProvenance")
+        is None
+    )
+    assert xml.find(".//{http://www.sec.gov/edgar/schedule13D}unparsedSections") is None
+    sections = deserialize_unparsed_sections(output.sidecars[0].content)
+    item2_unparsed = next(
+        section for section in sections if section["role"] == "item2.unparsed"
+    )
+    assert item2_unparsed["content"] in text
 
 
 def test_parser_reads_signatures_from_sec_table_rows() -> None:
@@ -275,6 +279,6 @@ def test_parser_reads_signatures_from_sec_table_rows() -> None:
         "Joanne Hawkins",
     ]
     assert [signer.date for signer in document.signature_block.signatories] == [
-        "June 25, 2003",
-        "June 25, 2003",
+        "2003-06-25",
+        "2003-06-25",
     ]

@@ -2,6 +2,23 @@ from __future__ import annotations
 
 from edgar_sec.domain.forms.common.models import ItemDefinition
 
+SCHEDULE_13D_SUBMISSION_TYPES = frozenset({"SCHEDULE 13D", "SCHEDULE 13D/A"})
+SCHEDULE_13G_SUBMISSION_TYPES = frozenset({"SCHEDULE 13G", "SCHEDULE 13G/A"})
+SCHEDULE_LIVE_TEST_TYPES = frozenset({"LIVE", "TEST"})
+SCHEDULE_13D_MEMBER_TYPES = frozenset({"a", "b"})
+SCHEDULE_13D_FUND_TYPES = frozenset({"SC", "BK", "AF", "WC", "PF", "OO"})
+SCHEDULE_13D_REPORTING_PERSON_TYPES = frozenset(
+    {"BD", "BK", "CP", "CO", "EP", "IN", "IA", "IC", "IV", "HC", "PN", "SA", "OO"}
+)
+SCHEDULE_13G_RULE_TYPES = frozenset({"Rule 13d-1(b)", "Rule 13d-1(c)", "Rule 13d-1(d)"})
+SCHEDULE_13G_GROUP_TYPES = frozenset({"a", "b"})
+SCHEDULE_13G_REPORTING_PERSON_TYPES = frozenset(
+    {"BD", "BK", "CP", "CO", "EP", "FI", "HC", "IA", "IC", "IN", "IV", "PN", "SA", "OO"}
+)
+SCHEDULE_13G_BUSINESS_ENGAGED_TYPES = frozenset(
+    {"BD", "BK", "CP", "EP", "FI", "HC", "IA", "IC", "IV", "SA", "OO"}
+)
+
 SCHEDULE_13D_ITEMS: tuple[ItemDefinition, ...] = (
     ItemDefinition("ITEM 1", 1, ("security and issuer", "security", "issuer")),
     ItemDefinition("ITEM 2", 1, ("identity and background", "identity", "background")),
@@ -91,4 +108,17 @@ SCHEDULE_13G_ITEMS: tuple[ItemDefinition, ...] = (
     ),
 )
 
-__all__ = ["SCHEDULE_13D_ITEMS", "SCHEDULE_13G_ITEMS"]
+__all__ = [
+    "SCHEDULE_13D_FUND_TYPES",
+    "SCHEDULE_13D_ITEMS",
+    "SCHEDULE_13D_MEMBER_TYPES",
+    "SCHEDULE_13D_REPORTING_PERSON_TYPES",
+    "SCHEDULE_13D_SUBMISSION_TYPES",
+    "SCHEDULE_13G_BUSINESS_ENGAGED_TYPES",
+    "SCHEDULE_13G_GROUP_TYPES",
+    "SCHEDULE_13G_ITEMS",
+    "SCHEDULE_13G_REPORTING_PERSON_TYPES",
+    "SCHEDULE_13G_RULE_TYPES",
+    "SCHEDULE_13G_SUBMISSION_TYPES",
+    "SCHEDULE_LIVE_TEST_TYPES",
+]

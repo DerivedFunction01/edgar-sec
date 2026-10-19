@@ -118,6 +118,8 @@ def _target_row(
     if (
         AccessionNumber.from_any(str(row["accession"])) != accession
         or row["form"] != request.form
+        or row["filing_date"] != request.filing_date
+        or row["report_date"] != request.report_date
         or row["target_role"] != request.target_role
         or row["target_type"] != request.target_type
         or row["source_origin"] != request.source_origin
@@ -375,6 +377,8 @@ def _operation_results(
                         family=resolve_alias(request.form) or request.form,
                         role=request.target_role,
                         target_type=request.target_type,
+                        filing_date=request.filing_date,
+                        report_date=request.report_date,
                         path_facts=path_facts,
                         operations=(
                             OperationRecord(

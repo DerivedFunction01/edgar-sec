@@ -1,4 +1,4 @@
-"""Semantic review analysis for Form 4 ownership documents."""
+"""Semantic review analysis for ownership documents."""
 
 from __future__ import annotations
 
@@ -8,17 +8,18 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.domain.forms.families.ownership.models import VALID_TRANSACTION_CODES
 from edgar_sec.engine.forms.common.signatures import SIG_BOILERPLATE_TERMS
 from edgar_sec.engine.forms.common.statutory import (
     HEADER_LEAK_RE,
     STATUTORY_PAGE_ARTIFACT_RE,
 )
+from edgar_sec.engine.forms.common.dates import parse_schema_date, reported_year
+from edgar_sec.engine.forms.common.unparsed import load_unparsed_sections
 from edgar_sec.engine.forms.ownership.patterns import PROSE_BOILERPLATE_RE
+from edgar_sec.engine.forms.ownership.schema import ownership_schema_anomalies
 from edgar_sec.foundation.text.dates import (
     MONTH_PATTERN,
     NUMERIC_DATE_RE,
-    parse_date,
 )
 
 _MONTH_WORD_RE = re.compile(rf"(?i)\b(?:{MONTH_PATTERN})\b")
@@ -30,8 +31,10 @@ _WORD_NGRAM_RE = re.compile(r"[A-Za-z0-9#_]+")
 
 _FIELD_PATHS: dict[str, tuple[str, ...]] = {
     "periodOfReport": ("periodOfReport",),
+    "issuerCik": ("issuer/issuerCik",),
     "issuerName": ("issuer/issuerName",),
     "issuerTradingSymbol": ("issuer/issuerTradingSymbol",),
+    "rptOwnerCik": ("reportingOwner/reportingOwnerId/rptOwnerCik",),
     "rptOwnerName": ("reportingOwner/reportingOwnerId/rptOwnerName",),
     "isDirector": ("reportingOwner/reportingOwnerRelationship/isDirector",),
     "isOfficer": ("reportingOwner/reportingOwnerRelationship/isOfficer",),
@@ -95,8 +98,10 @@ _FIELD_PATHS: dict[str, tuple[str, ...]] = {
 _DOCUMENT_FIELDS = frozenset(
     {
         "periodOfReport",
+        "issuerCik",
         "issuerName",
         "issuerTradingSymbol",
+        "rptOwnerCik",
         "rptOwnerName",
         "isDirector",
         "isOfficer",
@@ -107,7 +112,14 @@ _DOCUMENT_FIELDS = frozenset(
         "signatureDate",
     }
 )
-_REQUIRED_DOCUMENT_FIELDS = ("periodOfReport", "issuerName", "rptOwnerName")
+_REQUIRED_DOCUMENT_FIELDS = (
+    "periodOfReport",
+    "issuerCik",
+    "issuerTradingSymbol",
+    "rptOwnerCik",
+    "signatureName",
+    "signatureDate",
+)
 _FIELD_VALUE_TAGS = {
     "securityTitle": "securityTitle",
     "underlyingSecurityTitle": "underlyingSecurityTitle",
@@ -172,8 +184,14 @@ def _element_text(elem: ET.Element | None) -> str:
     return elem.text.strip()
 
 
-def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, Any]:
-    """Inspect Form 4 XML envelope for tag counts, semantic anomalies, and unparsed sections."""
+def analyze_ownership_xml(
+    xml_bytes: bytes,
+    accession: str = "",
+    *,
+    unparsed_sections: tuple[dict[str, object], ...] | None = None,
+    case_dir: Path | None = None,
+) -> dict[str, Any]:
+    """Inspect ownership XML fields, schema anomalies, and unparsed sections."""
     try:
         root = ET.fromstring(xml_bytes)
     except ET.ParseError as err:
@@ -187,9 +205,16 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
         }
 
     element_counts: Counter[str] = Counter()
-    anomalies: list[dict[str, Any]] = []
+    anomalies: list[dict[str, Any]] = ownership_schema_anomalies(root, accession)
     review_signals: list[dict[str, Any]] = []
-    unparsed_sections: list[dict[str, Any]] = []
+    source_sections = (
+        unparsed_sections
+        if unparsed_sections is not None
+        else load_unparsed_sections(case_dir or Path("/__ownership_no_case__"), root)
+    )
+    analyzed_sections: list[dict[str, Any]] = []
+    period_text = _element_text(root.find("periodOfReport"))
+    reference_year = reported_year((period_text,))
 
     for elem in root.iter():
         element_counts[elem.tag] += 1
@@ -295,25 +320,19 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
                 }
             )
 
-    # Invariant: transactionCode must be a recognized SEC code
-    for code_elem in root.iter("transactionCode"):
-        code = _element_text(code_elem)
-        if code and code.upper() not in VALID_TRANSACTION_CODES:
-            anomalies.append(
-                {
-                    "accession": accession,
-                    "kind": "invalid_transaction_code",
-                    "value": code,
-                    "detail": f"unknown transaction code '{code}'",
-                }
-            )
-
     # Invariant: dates must match numeric date structure
-    for date_tag in ("transactionDate", "exerciseDate", "expirationDate"):
+    for date_tag in (
+        "periodOfReport",
+        "dateOfOriginalSubmission",
+        "transactionDate",
+        "exerciseDate",
+        "expirationDate",
+    ):
         for d_elem in root.iter(date_tag):
             val_elem = d_elem.find("value")
             text = _element_text(val_elem if val_elem is not None else d_elem)
-            if text and parse_date(text) is None:
+            parsed_date = parse_schema_date(text, reference_year) if text else None
+            if text and (parsed_date is None or text != parsed_date.iso):
                 anomalies.append(
                     {
                         "accession": accession,
@@ -326,7 +345,8 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
     for date_tag in ("signatureDate",):
         for d_elem in root.iter(date_tag):
             text = _element_text(d_elem)
-            if text and parse_date(text) is None:
+            parsed_date = parse_schema_date(text, reference_year) if text else None
+            if text and (parsed_date is None or text != parsed_date.iso):
                 anomalies.append(
                     {
                         "accession": accession,
@@ -387,12 +407,16 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
     # Check presence of canonical core fields
     core_fields: dict[str, bool] = {
         "periodOfReport": bool(_element_text(root.find("periodOfReport"))),
+        "issuerCik": bool(_element_text(root.find("issuer/issuerCik"))),
         "issuerName": bool(_element_text(root.find("issuer/issuerName"))),
         "issuerTradingSymbol": bool(
             _element_text(root.find("issuer/issuerTradingSymbol"))
         ),
         "rptOwnerName": bool(
             _element_text(root.find("reportingOwner/reportingOwnerId/rptOwnerName"))
+        ),
+        "rptOwnerCik": bool(
+            _element_text(root.find("reportingOwner/reportingOwnerId/rptOwnerCik"))
         ),
         "signatureName": bool(_element_text(root.find("ownerSignature/signatureName"))),
         "signatureDate": bool(_element_text(root.find("ownerSignature/signatureDate"))),
@@ -407,26 +431,23 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
                 "accession": accession,
                 "kind": "missing_required_fields",
                 "value": ", ".join(missing_required_fields),
-                "detail": "required Form 4 document fields are missing or blank",
+                "detail": "required ownership document fields are missing or blank",
             }
         )
 
-    # Collect unparsed sections with clean sample snippets
-    for unp in root.iter("unparsedSection"):
-        t_idx = unp.attrib.get("tableIndex", "")
-        role = unp.attrib.get("role", "")
-        text = _element_text(unp)
+    for unparsed in source_sections:
+        text = str(unparsed.get("content", ""))
         snippet = _WHITESPACE_RE.sub(" ", text)[:240].strip()
         lower_snip = snippet.lower()
         is_boilerplate = bool(
             STATUTORY_PAGE_ARTIFACT_RE.search(lower_snip)
             or PROSE_BOILERPLATE_RE.search(lower_snip)
         )
-        unparsed_sections.append(
+        analyzed_sections.append(
             {
                 "accession": accession,
-                "table_index": t_idx,
-                "role": role,
+                "table_index": str(unparsed.get("table_index", "")),
+                "role": str(unparsed.get("role", "")),
                 "char_length": len(text),
                 "snippet": snippet,
                 "is_boilerplate": is_boilerplate,
@@ -440,7 +461,7 @@ def analyze_ownership_xml(xml_bytes: bytes, accession: str = "") -> dict[str, An
         "element_counts": dict(sorted(element_counts.items())),
         "anomalies": anomalies,
         "review_signals": review_signals,
-        "unparsed_sections": unparsed_sections,
+        "unparsed_sections": analyzed_sections,
         "core_fields": core_fields,
         "field_observations": field_observations,
         "missing_required_fields": missing_required_fields,
@@ -476,11 +497,15 @@ def analyze_ownership_review_case(
     if not xml_path.is_file():
         return None
     xml_bytes = xml_path.read_bytes()
-    return analyze_ownership_xml(xml_bytes, accession=accession)
+    root = ET.fromstring(xml_bytes)
+    unparsed_sections = load_unparsed_sections(case_dir, root)
+    return analyze_ownership_xml(
+        xml_bytes, accession=accession, unparsed_sections=unparsed_sections
+    )
 
 
 def summarize_ownership_cases(case_reports: list[dict[str, Any]]) -> dict[str, Any]:
-    """Aggregate individual Form 4 case analyses into an overall ownership run summary."""
+    """Aggregate ownership case analyses into a run summary."""
     total_elements: Counter[str] = Counter()
     all_anomalies: list[dict[str, Any]] = []
     all_review_signals: list[dict[str, Any]] = []

@@ -16,7 +16,7 @@ from edgar_sec.pipelines.document_planning.schemas import (
 def test_target_schema_matches_order_types_and_nullability() -> None:
     assert TARGET_SCHEMA.names == list(TARGET_COLUMNS)
     assert [field.type for field in TARGET_SCHEMA] == [
-        *(pa.string() for _ in range(7)),
+        *(pa.string() for _ in range(8)),
         pa.bool_(),
         *(pa.string() for _ in range(6)),
         pa.int32(),
@@ -30,14 +30,15 @@ def test_target_schema_matches_order_types_and_nullability() -> None:
         "sequence",
         "byte_size",
         "catalog_direct_selection",
+        "report_date",
     }
 
 
 def test_planning_versions_are_stable_contract_values() -> None:
-    assert TARGET_SCHEMA_VERSION == 1
-    assert PLAN_BUNDLE_SCHEMA_VERSION == 4
+    assert TARGET_SCHEMA_VERSION == 2
+    assert PLAN_BUNDLE_SCHEMA_VERSION == 5
     assert PROFILE_SCHEMA_VERSION == "1"
-    assert MATCHER_VERSION == "target-matcher-v4"
+    assert MATCHER_VERSION == "target-matcher-v5"
     assert TARGET_OPERATION_SCHEMA.names == [
         "operation_id",
         "target_id",

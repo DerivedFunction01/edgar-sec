@@ -515,7 +515,9 @@ def _build_grids(
     return cover_grid, b3_grid, sig_grid
 
 
-def parse_ascii_form144(raw_text: str) -> Form144Sections | None:
+def parse_ascii_form144(
+    raw_text: str, reference_year: int | None = None
+) -> Form144Sections | None:
     """Parse Form 144 from ASCII / SGML / PRE text into Form144Sections."""
     from edgar_sec.engine.forms.form144.sections import (
         ClassifiedSection,
@@ -535,7 +537,7 @@ def parse_ascii_form144(raw_text: str) -> Form144Sections | None:
     start_sig_idx = max(0, int(total_lines * 0.45))
 
     sig_name, sig_date = extract_columnar_signature_and_date(
-        lines, start_idx=start_sig_idx
+        lines, start_idx=start_sig_idx, reference_year=reference_year
     )
     slots.sig_name = sig_name
     slots.sig_date = sig_date

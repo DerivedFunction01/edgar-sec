@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from decimal import Decimal, InvalidOperation
 from functools import lru_cache
 import re
 
@@ -34,6 +35,33 @@ _SCALED_NUMERIC_RE = re.compile(
     rf"^\s*([\$€£]?)\s*([\d,]+(?:\.\d+)?)\s*({_SCALE_ALT})?\s*$",
     re.IGNORECASE,
 )
+_SCHEMA_DECIMAL_RE = re.compile(
+    r"^[+-]?(?:[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)(?:\.[0-9]+)?$"
+)
+_SCHEMA_INTEGER_RE = re.compile(r"^(?:[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)$")
+_SCHEMA_NUMERIC_TOKEN_RE = re.compile(r"(?<![\w.])([+-]?[0-9][0-9,]*(?:\.[0-9]+)?)")
+_SCHEMA_UNIT_SUFFIX_ALT = build_alternation(
+    ("shares", "share", "shs", "sh", "units", "unit")
+)
+_SCHEMA_UNIT_SUFFIX_RE = re.compile(rf"(?i)\s*(?:{_SCHEMA_UNIT_SUFFIX_ALT})\.?$")
+_SCHEMA_CURRENCY_RE = re.compile(CURRENCY_TOKEN_RE.pattern)
+_SCHEMA_PERCENT_RE = re.compile(r"(?i)(?:%|\s+percent)\s*$")
+_SCHEMA_TRAILING_MARKS_RE = re.compile(r"[*†‡]+$")
+_SCHEMA_ZERO_DASHES_RE = re.compile(r"^-0-$")
+_SCHEMA_FOOTNOTE_LABEL_ALT = build_alternation(
+    (r"ITEM\s+\d+[A-Z]?", r"\d+", r"[A-Z]"),
+    auto_escape=False,
+    compact=False,
+)
+_SCHEMA_FOOTNOTE_REF_ALT = build_alternation(
+    (
+        rf"\(\s*(?:{_SCHEMA_FOOTNOTE_LABEL_ALT})\s*\)",
+        r"\[\s*(?:\d+|[A-Z])\s*\]",
+    ),
+    auto_escape=False,
+    compact=False,
+)
+_SCHEMA_FOOTNOTES_RE = re.compile(rf"(?i)(?:\s*(?:{_SCHEMA_FOOTNOTE_REF_ALT}))+\s*$")
 
 _HYPHENATED_ALPHA_RE = re.compile(r"[a-z0-9]-[a-z0-9]", re.IGNORECASE)
 _SUB_BOX_LABEL_RE = re.compile(
@@ -126,8 +154,114 @@ def format_scaled_number_string(token: str) -> str | None:
     return f"{val:.2f}"
 
 
+def normalize_schema_decimal(text: str | None) -> str | None:
+    if not text:
+        return None
+    value = text.strip()
+    if not _SCHEMA_DECIMAL_RE.fullmatch(value):
+        return None
+    try:
+        number = Decimal(value.replace(",", ""))
+    except InvalidOperation:
+        return None
+    if number.is_zero():
+        return "0"
+    return format(number, "f")
+
+
+def normalize_schema_integer(text: str | None) -> str | None:
+    if not text:
+        return None
+    value = text.strip()
+    if not _SCHEMA_INTEGER_RE.fullmatch(value):
+        return None
+    return str(int(value.replace(",", "")))
+
+
+def normalize_schema_number(
+    text: str | None,
+    *,
+    integer: bool,
+    strip_currency: bool = False,
+    strip_units: bool = False,
+    strip_percent: bool = False,
+    strip_footnotes: bool = False,
+    allow_accounting_negative: bool = False,
+    allow_negative: bool = False,
+    allow_integral_decimal: bool = False,
+) -> str | None:
+    if not text:
+        return None
+    value = text.strip()
+    value = _SCHEMA_TRAILING_MARKS_RE.sub("", value).strip()
+    if strip_footnotes:
+        value = _SCHEMA_FOOTNOTES_RE.sub("", value).strip()
+    if strip_units:
+        value = _SCHEMA_UNIT_SUFFIX_RE.sub("", value).strip()
+    if strip_percent:
+        value = _SCHEMA_PERCENT_RE.sub("", value).strip()
+    if strip_currency:
+        value = _SCHEMA_CURRENCY_RE.sub("", value).strip()
+
+    negative = value.startswith("(") and value.endswith(")")
+    if negative:
+        if not allow_accounting_negative:
+            return None
+        value = value[1:-1].strip()
+    if _SCHEMA_ZERO_DASHES_RE.fullmatch(value):
+        return "0"
+
+    if integer and allow_integral_decimal:
+        decimal = normalize_schema_decimal(value)
+        if decimal is not None:
+            try:
+                number = Decimal(decimal)
+            except InvalidOperation:
+                return None
+            if number == number.to_integral_value():
+                normalized = str(int(number))
+            else:
+                return None
+        else:
+            normalized = normalize_schema_integer(value)
+    else:
+        normalized = (
+            normalize_schema_integer(value)
+            if integer
+            else normalize_schema_decimal(value)
+        )
+    if normalized is None:
+        return None
+    if negative and normalized != "0":
+        normalized = f"-{normalized}"
+    if not allow_negative and normalized.startswith("-"):
+        return None
+    return normalized
+
+
+def normalize_schema_integer_value(text: str | None, **policy: bool) -> int | None:
+    normalized = normalize_schema_number(text, integer=True, **policy)
+    return int(normalized) if normalized is not None else None
+
+
+def extract_schema_number(text: str) -> str | None:
+    match = _SCHEMA_NUMERIC_TOKEN_RE.search(text)
+    if match is None:
+        return None
+    number = match.group(1)
+    negative = text.strip().startswith("(") and text.strip().endswith(")")
+    if negative:
+        number = f"-{number.lstrip('+-')}"
+    return normalize_schema_number(number, integer=False, allow_negative=negative)
+
+
 __all__ = [
     "clean_numeric",
+    "extract_schema_number",
     "format_scaled_number_string",
+    "normalize_schema_decimal",
+    "normalize_schema_integer",
+    "normalize_schema_integer_value",
+    "normalize_schema_number",
     "parse_scaled_number",
 ]

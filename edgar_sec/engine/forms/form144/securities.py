@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from functools import partial
 import re
 
 from edgar_sec.domain.forms.families.form144.models import (
@@ -13,14 +14,27 @@ from edgar_sec.engine.forms.common.alignment import (
     TableSchema,
     align_row_to_schema,
 )
-from edgar_sec.engine.forms.common.numbers import clean_numeric
 from edgar_sec.engine.forms.common.statutory import STATUTORY_PAGE_ARTIFACT_RE
 from edgar_sec.engine.forms.common.tables import is_instruction_row
+from edgar_sec.engine.forms.common.numbers import (
+    normalize_schema_integer_value,
+    normalize_schema_number,
+)
+from edgar_sec.engine.forms.common.extraction import normalize_record_dates
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
+from edgar_sec.engine.tables.currencies import ALL_CURRENCY_SYMBOLS
 from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE
 
 _FORM144_TOKEN_RE = re.compile(r"[a-z0-9\(\)]+")
+_FORM144_INTEGER = partial(normalize_schema_integer_value, strip_units=True)
+_FORM144_DECIMAL = partial(
+    normalize_schema_number,
+    integer=False,
+    strip_currency=True,
+    allow_accounting_negative=True,
+    allow_negative=True,
+)
 
 _TABLE_TERMINATORS = (
     "/s/",
@@ -133,7 +147,7 @@ _TABLE_I_SCHEMA = TableSchema(
             index=4,
             name="amount_acquired",
             is_required=True,
-            data_extractor=clean_numeric,
+            data_extractor=_FORM144_INTEGER,
         ),
         CanonicalColumn(
             index=5,
@@ -168,25 +182,24 @@ _TABLE_II_SCHEMA = TableSchema(
             index=3,
             name="amount_sold",
             is_required=True,
-            data_extractor=clean_numeric,
+            data_extractor=_FORM144_INTEGER,
         ),
         CanonicalColumn(
             index=4,
             name="gross_proceeds",
             is_required=False,
             is_anchor=True,
-            anchor_validator=lambda s: (
-                "$" in s or (is_numeric_cell(s) and clean_numeric(s) is not None)
-            ),
-            data_extractor=lambda s: (
-                float(n) if (n := clean_numeric(s)) is not None else None
-            ),
+            anchor_validator=lambda s: _FORM144_DECIMAL(s) is not None,
+            data_extractor=_FORM144_DECIMAL,
         ),
     ),
 )
 
 
-def parse_table_i_rows(section: ClassifiedSection | None) -> list[TableISecurityItem]:
+def parse_table_i_rows(
+    section: ClassifiedSection | None,
+    reference_year: int | None = None,
+) -> list[TableISecurityItem]:
     """Map acquisition history rows from Table I."""
     if section is None or len(section.resolved_grid.rows) <= 1:
         return []
@@ -237,15 +250,16 @@ def parse_table_i_rows(section: ClassifiedSection | None) -> list[TableISecurity
         payment_date = dates[1][1] if len(dates) > 1 else acquired_date
         date_indices = {d[0] for d in dates}
 
-        amount_val: float | int | None = None
+        amount_val: int | None = None
         amount_idx = -1
         for idx, cell in enumerate(raw_cells):
             if idx in date_indices:
                 continue
             if is_numeric_cell(cell):
-                amount_val = clean_numeric(cell)
-                amount_idx = idx
-                break
+                amount_val = _FORM144_INTEGER(cell)
+                if amount_val is not None:
+                    amount_idx = idx
+                    break
 
         text_cells = [
             cell
@@ -273,11 +287,15 @@ def parse_table_i_rows(section: ClassifiedSection | None) -> list[TableISecurity
                 nature_of_payment=pay_nature,
             )
         )
-    return items
+    return [
+        normalize_record_dates(item, ("acquired_date", "payment_date"), reference_year)
+        for item in items
+    ]
 
 
 def parse_table_ii_rows(
     section: ClassifiedSection | None,
+    reference_year: int | None = None,
 ) -> tuple[bool, list[TableIISecuritySoldItem]]:
     """Map securities sold past 3 months from Table II."""
     if section is None or len(section.resolved_grid.rows) <= 1:
@@ -326,24 +344,38 @@ def parse_table_ii_rows(
                 date_idx = idx
                 break
 
-        numeric_items: list[tuple[int, float | int]] = []
+        numeric_items: list[tuple[int, int | str, str, bool]] = []
         for idx, cell in enumerate(raw_cells):
             if idx == date_idx:
                 continue
-            if "$" in cell or is_numeric_cell(cell):
-                n = clean_numeric(cell)
-                if n is not None:
-                    numeric_items.append((idx, n))
+            has_currency = any(symbol in cell for symbol in ALL_CURRENCY_SYMBOLS)
+            if has_currency:
+                number = _FORM144_DECIMAL(cell)
+                if number is not None:
+                    numeric_items.append((idx, number, cell, True))
+                continue
+            integer = _FORM144_INTEGER(cell)
+            if integer is not None:
+                numeric_items.append((idx, integer, cell, False))
+            elif is_numeric_cell(cell) and (decimal := _FORM144_DECIMAL(cell)):
+                numeric_items.append((idx, decimal, cell, True))
 
         num_indices = {n[0] for n in numeric_items}
-        amount_sold: float | int | None = None
-        gross_proceeds: float | None = None
+        amount_sold: int | None = None
+        gross_proceeds: str | None = None
 
-        if len(numeric_items) >= 2:
-            amount_sold = numeric_items[0][1]
-            gross_proceeds = float(numeric_items[1][1])
-        elif len(numeric_items) == 1:
-            amount_sold = numeric_items[0][1]
+        amount_item = next((item for item in numeric_items if not item[3]), None)
+        proceeds_item = next((item for item in numeric_items if item[3]), None)
+        if amount_item is not None:
+            amount_sold = int(amount_item[1])
+        if proceeds_item is not None:
+            gross_proceeds = str(proceeds_item[1])
+        if proceeds_item is None and amount_item is not None and len(numeric_items) > 1:
+            next_item = next(
+                (item for item in numeric_items if item is not amount_item), None
+            )
+            if next_item is not None:
+                gross_proceeds = _FORM144_DECIMAL(next_item[2])
 
         text_cells = [
             cell
@@ -368,7 +400,9 @@ def parse_table_ii_rows(
         )
 
     nothing_to_report = len(items) == 0
-    return nothing_to_report, items
+    return nothing_to_report, [
+        normalize_record_dates(item, ("sale_date",), reference_year) for item in items
+    ]
 
 
 __all__ = [

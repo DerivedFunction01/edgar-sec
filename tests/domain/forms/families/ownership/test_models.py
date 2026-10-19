@@ -6,7 +6,7 @@ import pytest
 
 from edgar_sec.domain.forms.families.ownership.models import (
     FilingPeriod,
-    Form4Metadata,
+    OwnershipMetadata,
     Issuer,
     ReportingOwner,
 )
@@ -26,7 +26,7 @@ def test_domain_models_instantiation_and_defaults() -> None:
     assert period.period_of_report == "June 2003"
     assert period.is_amendment is False
 
-    meta = Form4Metadata(issuer=issuer, reporting_owner=owner, period=period)
+    meta = OwnershipMetadata(issuer=issuer, reporting_owner=owner, period=period)
     assert meta.issuer.name == "Acme Corp"
     assert meta.reporting_owner.name == "John Doe"
     assert meta.signature_name is None
