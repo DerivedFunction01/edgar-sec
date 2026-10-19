@@ -82,6 +82,7 @@ def resolve_html_table_grid(
         table_node,
         table_index=table_index,
         render_ascii=False,
+        browser_whitespace=False,
     ).resolved_grid
 
 

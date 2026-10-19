@@ -80,12 +80,17 @@ def render_source_table(
     budget: RenderBudget = DEFAULT_RENDER_BUDGET,
     *,
     render_ascii: bool = True,
+    browser_whitespace: bool = True,
 ) -> TableRenderResult:
     """Render a single HTML <table> node or SourceTable into canonical ASCII table format."""
     if isinstance(table_input, SourceTable):
         source_table = table_input
     else:
-        source_table, _ = extract_source_table(table_input, table_index=table_index)
+        source_table, _ = extract_source_table(
+            table_input,
+            table_index=table_index,
+            browser_whitespace=browser_whitespace,
+        )
     if not source_table.rows:
         return _empty_render_result("Empty source table")
 

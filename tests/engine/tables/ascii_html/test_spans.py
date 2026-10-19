@@ -116,6 +116,29 @@ def test_preformatted_white_space_keeps_its_newlines() -> None:
     assert "\n" in source.rows[0][0].text
 
 
+def test_source_newline_collapses_before_numeric_marker() -> None:
+    source, _ = _source("<table><tr><td><strong>Item\n  5.</strong></td></tr></table>")
+    assert source.rows[0][0].text == "Item 5."
+
+
+def test_soft_breaks_collapse_while_paragraph_boundaries_survive() -> None:
+    source, _ = _source(
+        "<table><tr><td>before<br>break<div>container</div>"
+        "<p>paragraph</p><p>end</p></td></tr></table>"
+    )
+    assert source.rows[0][0].text == "before break container\n\nparagraph\n\nend"
+
+
+def test_a_numeric_marker_after_br_keeps_its_line_break() -> None:
+    source, _ = _source("<table><tr><td><strong>Item<br>5.</strong></td></tr></table>")
+    assert source.rows[0][0].text == "Item\n5."
+
+
+def test_pre_element_preserves_its_literal_newlines() -> None:
+    source, _ = _source("<table><tr><td><pre>one\ntwo</pre></td></tr></table>")
+    assert source.rows[0][0].text == "one\ntwo"
+
+
 def test_header_band_repair_extends_a_label_over_its_repeated_subheaders() -> None:
     source, _ = _source(
         "<table>"

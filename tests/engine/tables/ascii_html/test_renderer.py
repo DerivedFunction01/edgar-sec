@@ -125,6 +125,19 @@ def test_non_breaking_spaces_never_leak_into_the_output() -> None:
     assert "Weighted Average Grant-Date Fair Value" in header_lines[0]
 
 
+def test_source_wrapped_item_heading_stays_on_one_rendered_line() -> None:
+    text = convert_html_table(
+        '<table cellpadding="0" cellspacing="0" id="list" width="100%">'
+        "<tr><td align='right' style='width:36pt'><strong>Item\n  5.&#160;&#160;"
+        "</strong></td><td><div align='justify'><strong>Interest in Securities of the "
+        "Issuer</strong></div></td></tr></table>"
+    ).ascii_text
+
+    row = next(line for line in text.splitlines() if "Interest in Securities" in line)
+    assert "Item 5." in row
+    assert "Item 5." not in text.splitlines()[text.splitlines().index(row) + 1]
+
+
 def test_a_row_header_cell_is_not_duplicated_across_its_continuation_rows() -> None:
     lines = _lines(
         "<table><tr><th>Category</th><th>Item</th></tr>"

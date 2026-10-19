@@ -5,9 +5,15 @@ A source table is a grid of *cells*, not *positions*: one cell may own many thro
 
 from __future__ import annotations
 
+import re
 from typing import TYPE_CHECKING
 
 from edgar_sec.engine.document.html.tree import FastHtmlNode
+from edgar_sec.engine.document.html.tags import (
+    CONTAINER_BLOCK_TAGS,
+    PARAGRAPH_TAGS,
+    TABLE_AND_PRE_TAGS,
+)
 from edgar_sec.foundation.text.dates import is_year_token
 
 from ..tokens import PREFIX_SYMBOLS, is_numeric_cell
@@ -25,6 +31,91 @@ if TYPE_CHECKING:
 
 _INDENT_SOURCE_TAGS: frozenset[str] = frozenset({"div", "p", "span"})
 _INDENT_STOP_TAGS: frozenset[str] = frozenset({"table", "tr", "td", "th"})
+_HTML_WHITESPACE_RE = re.compile(r"[\t\n\r\f ]+")
+
+
+def _extract_cell_text(
+    cell: FastHtmlNode,
+    *,
+    preserve_whitespace: bool,
+    browser_whitespace: bool,
+) -> str:
+    if not browser_whitespace:
+        text = cell.text(separator="\n", strip=True)
+        return _normalize_whitespace(text, preserve_newlines=preserve_whitespace)
+
+    chunks: list[str] = []
+    raw_text = cell.raw_node.text(deep=True) or ""
+    pre_newline_marker = "\ue002"
+    while pre_newline_marker in raw_text:
+        pre_newline_marker += "\ue002"
+    paragraph_marker = "\ue001"
+    while paragraph_marker in raw_text or paragraph_marker == pre_newline_marker:
+        paragraph_marker += "\ue001"
+
+    def has_content() -> bool:
+        return any(chunk.strip() for chunk in chunks)
+
+    def append_block_break(count: int, preserve: bool) -> None:
+        if not has_content():
+            return
+        if chunks and not preserve:
+            chunks[-1] = chunks[-1].rstrip(" ")
+        trailing = len(chunks[-1]) - len(chunks[-1].rstrip("\n"))
+        if trailing < count:
+            chunks.append("\n" * (count - trailing))
+
+    def append_break(preserve: bool) -> None:
+        if not has_content():
+            return
+        if chunks and not preserve:
+            chunks[-1] = chunks[-1].rstrip(" ")
+        chunks.append("\n")
+
+    def walk(parent, in_preformatted: bool) -> None:
+        child = parent.child
+        while child is not None:
+            tag = (child.tag or "").lower()
+            if tag == "-text":
+                text = child.text(deep=False)
+                preserve = in_preformatted or preserve_whitespace
+                if not preserve:
+                    text = _HTML_WHITESPACE_RE.sub(" ", text)
+                    if not chunks:
+                        text = text.lstrip(" ")
+                    elif chunks[-1].endswith("\n"):
+                        text = text.lstrip(" ")
+                    elif chunks[-1].endswith(" "):
+                        text = text.lstrip(" ")
+                elif in_preformatted and not preserve_whitespace:
+                    text = text.replace("\r\n", "\n").replace("\r", "\n")
+                    text = text.replace("\n", pre_newline_marker)
+                chunks.append(text)
+            elif tag == "br":
+                append_break(in_preformatted or preserve_whitespace)
+            else:
+                child_preformatted = in_preformatted or tag == "pre"
+                if tag in PARAGRAPH_TAGS:
+                    append_block_break(2, in_preformatted or preserve_whitespace)
+                    walk(child, child_preformatted)
+                    append_block_break(2, child_preformatted or preserve_whitespace)
+                elif tag in CONTAINER_BLOCK_TAGS or tag in TABLE_AND_PRE_TAGS:
+                    append_block_break(1, in_preformatted or preserve_whitespace)
+                    walk(child, child_preformatted)
+                    append_block_break(1, child_preformatted or preserve_whitespace)
+                else:
+                    walk(child, child_preformatted)
+            child = child.next
+
+    walk(cell.raw_node, False)
+    text = "".join(chunks)
+    if not preserve_whitespace:
+        text = text.strip()
+    if preserve_whitespace:
+        return _normalize_whitespace(text, preserve_newlines=True)
+    text = text.replace("\n\n", paragraph_marker)
+    text = _normalize_whitespace(text)
+    return text.replace(paragraph_marker, "\n\n").replace(pre_newline_marker, "\n")
 
 
 def _iter_indent_descendants(cell: FastHtmlNode):
@@ -45,6 +136,8 @@ def extract_source_table(
     table_node: FastHtmlNode,
     table_index: int = 0,
     parent_table_index: int | None = None,
+    *,
+    browser_whitespace: bool = True,
 ) -> tuple[SourceTable, list[SourceTable]]:
     """Extract a SourceTable and any nested child tables, isolated from the parent."""
     nested_tables: list[SourceTable] = []
@@ -95,6 +188,7 @@ def extract_source_table(
                             sub_t,
                             table_index=sub_idx,
                             parent_table_index=table_index,
+                            browser_whitespace=browser_whitespace,
                         )
                         nested_tables.append(sub_source)
                         nested_tables.extend(sub_nested)
@@ -139,9 +233,12 @@ def extract_source_table(
             nbsp_indent = min(8, (nbsp_count // 2) * 2) if nbsp_count >= 2 else 0
 
             total_indent = max(css_indent, nbsp_indent)
-            cell_text = child.text(separator="\n", strip=True)
             preserve_nl = cell_style.white_space in ("pre", "pre-wrap")
-            cell_text = _normalize_whitespace(cell_text, preserve_newlines=preserve_nl)
+            cell_text = _extract_cell_text(
+                child,
+                preserve_whitespace=preserve_nl,
+                browser_whitespace=browser_whitespace,
+            )
             if is_numeric_cell(cell_text) or cell_style.text_align in (
                 HorizontalAlign.RIGHT,
                 HorizontalAlign.CENTER,
