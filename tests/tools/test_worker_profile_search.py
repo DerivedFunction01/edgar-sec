@@ -110,6 +110,335 @@ def test_fast_policy_ignores_trials_from_another_inventory() -> None:
     )
 
 
+def test_warm_policy_moves_one_tier_toward_larger_work_forecast() -> None:
+    context = "same-machine"
+    profile = {
+        "cases": {
+            f"tests/domain/test_a.py::test_{index}": {
+                "duration": 20.0,
+                "estimated": False,
+            }
+            for index in range(10)
+        },
+        "trials": {
+            "4": [
+                {
+                    "wall_seconds": 100.0,
+                    "item_work": 100.0,
+                    "shared_seconds": 0.0,
+                    "inventory_fingerprint": "old",
+                    "context_fingerprint": context,
+                    "status": "ok",
+                    "at": 3.0,
+                }
+            ],
+            "8": [
+                {
+                    "wall_seconds": 80.0,
+                    "item_work": 100.0,
+                    "shared_seconds": 0.0,
+                    "inventory_fingerprint": "old",
+                    "context_fingerprint": context,
+                    "status": "ok",
+                    "at": 2.0,
+                }
+            ],
+            "12": [
+                {
+                    "wall_seconds": 60.0,
+                    "item_work": 100.0,
+                    "shared_seconds": 0.0,
+                    "inventory_fingerprint": "old",
+                    "context_fingerprint": context,
+                    "status": "ok",
+                    "at": 1.0,
+                }
+            ],
+        },
+    }
+
+    workers, source, reason = profile_search.choose_fast_workers(
+        profile,
+        [f"tests/domain/test_a.py::test_{index}" for index in range(10)],
+        16,
+        inventory_fingerprint="new",
+        context_fingerprint=context,
+    )
+
+    assert workers == 8
+    assert source == "warm_forecast"
+    assert "one tier" in reason
+
+
+def test_warm_policy_moves_one_tier_down_for_smaller_work() -> None:
+    context = "same-machine"
+    profile = {
+        "cases": {
+            f"tests/domain/test_a.py::test_{index}": {
+                "duration": 1.0,
+                "estimated": False,
+            }
+            for index in range(10)
+        },
+        "trials": {
+            str(worker): [
+                {
+                    "wall_seconds": seconds,
+                    "item_work": 100.0,
+                    "context_fingerprint": context,
+                    "status": "ok",
+                    "at": observed_at,
+                }
+            ]
+            for worker, seconds, observed_at in (
+                (2, 10.0, 1.0),
+                (4, 20.0, 2.0),
+                (8, 30.0, 3.0),
+            )
+        },
+    }
+
+    assert profile_search.choose_fast_workers(
+        profile,
+        [f"tests/domain/test_a.py::test_{index}" for index in range(10)],
+        8,
+        inventory_fingerprint="new",
+        context_fingerprint=context,
+    ) == (4, "warm_forecast", "one tier toward work forecast n=2")
+
+
+def test_warm_policy_clamps_prior_worker_to_new_resource_ceiling() -> None:
+    context = "same-machine"
+    profile = {
+        "cases": {
+            f"tests/domain/test_a.py::test_{index}": {
+                "duration": 10.0,
+                "estimated": False,
+            }
+            for index in range(10)
+        },
+        "trials": {
+            "4": [
+                {
+                    "wall_seconds": 100.0,
+                    "item_work": 100.0,
+                    "context_fingerprint": context,
+                    "status": "ok",
+                    "at": 1.0,
+                }
+            ],
+            "8": [
+                {
+                    "wall_seconds": 80.0,
+                    "item_work": 100.0,
+                    "context_fingerprint": context,
+                    "status": "ok",
+                    "at": 2.0,
+                }
+            ],
+        },
+    }
+
+    assert (
+        profile_search.choose_fast_workers(
+            profile,
+            [f"tests/domain/test_a.py::test_{index}" for index in range(10)],
+            4,
+            inventory_fingerprint="new",
+            context_fingerprint=context,
+        )[0]
+        == 4
+    )
+
+
+def test_warm_policy_uses_last_worker_when_case_coverage_is_low() -> None:
+    context = "same-machine"
+    profile = {
+        "cases": {
+            f"tests/domain/test_a.py::test_{index}": {
+                "duration": 10.0,
+                "estimated": index >= 2,
+            }
+            for index in range(10)
+        },
+        "trials": {
+            "4": [
+                {
+                    "wall_seconds": 100.0,
+                    "item_work": 100.0,
+                    "shared_seconds": 0.0,
+                    "context_fingerprint": context,
+                    "status": "ok",
+                    "at": 1.0,
+                }
+            ],
+            "8": [
+                {
+                    "wall_seconds": 80.0,
+                    "item_work": 100.0,
+                    "shared_seconds": 0.0,
+                    "context_fingerprint": context,
+                    "status": "ok",
+                    "at": 2.0,
+                }
+            ],
+        },
+    }
+
+    assert profile_search.choose_fast_workers(
+        profile,
+        [f"tests/domain/test_a.py::test_{index}" for index in range(10)],
+        16,
+        inventory_fingerprint="new",
+        context_fingerprint=context,
+    ) == (
+        8,
+        "warm_fallback",
+        "reusing last compatible worker until more timings are available",
+    )
+
+
+def test_warm_fallback_resumes_tier_exploration_after_first_run() -> None:
+    context = "same-machine"
+    profile = {
+        "cases": {
+            f"tests/domain/test_{index}.py::test_one": {
+                "duration": 1.0,
+                "estimated": False,
+            }
+            for index in range(16)
+        },
+        "trials": {
+            "4": [
+                {
+                    "wall_seconds": 10.0,
+                    "item_work": 16.0,
+                    "inventory_fingerprint": "new",
+                    "context_fingerprint": context,
+                    "status": "ok",
+                    "at": 2.0,
+                }
+            ]
+        },
+    }
+    selectors = [f"tests/domain/test_{index}.py" for index in range(256)]
+
+    assert (
+        profile_search.choose_fast_workers(
+            profile,
+            selectors,
+            8,
+            inventory_fingerprint="new",
+            context_fingerprint=context,
+        )[0]
+        == 8
+    )
+
+
+def test_warm_policy_probes_near_tied_adjacent_tier_once() -> None:
+    context = "same-machine"
+    cases = {
+        f"tests/domain/test_a.py::test_{index}": {
+            "duration": 10.0,
+            "estimated": False,
+        }
+        for index in range(10)
+    }
+    profile = {
+        "cases": cases,
+        "trials": {
+            "4": [
+                {
+                    "wall_seconds": 100.0,
+                    "item_work": 100.0,
+                    "context_fingerprint": context,
+                    "inventory_fingerprint": "old",
+                    "status": "ok",
+                    "at": 2.0,
+                }
+            ],
+            "8": [
+                {
+                    "wall_seconds": 110.0,
+                    "item_work": 100.0,
+                    "context_fingerprint": context,
+                    "inventory_fingerprint": "old",
+                    "status": "ok",
+                    "at": 1.0,
+                }
+            ],
+        },
+    }
+    selectors = [f"tests/domain/test_a.py::test_{index}" for index in range(10)]
+
+    assert profile_search.choose_fast_workers(
+        profile,
+        selectors,
+        8,
+        inventory_fingerprint="new",
+        context_fingerprint=context,
+    ) == (
+        8,
+        "warm_challenger",
+        "adjacent n=8 forecast is within 25% of n=4",
+    )
+    profile["trials"]["8"].append(
+        {
+            "wall_seconds": 110.0,
+            "item_work": 100.0,
+            "context_fingerprint": context,
+            "inventory_fingerprint": "new",
+            "status": "ok",
+            "at": 3.0,
+        }
+    )
+    assert (
+        profile_search.choose_fast_workers(
+            profile,
+            selectors,
+            8,
+            inventory_fingerprint="new",
+            context_fingerprint=context,
+        )[0]
+        == 4
+    )
+
+
+def test_warm_policy_ignores_trials_from_other_contexts() -> None:
+    profile = {
+        "cases": {
+            f"tests/domain/test_a.py::test_{index}": {
+                "duration": 10.0,
+                "estimated": False,
+            }
+            for index in range(10)
+        },
+        "trials": {
+            "8": [
+                {
+                    "wall_seconds": 1.0,
+                    "item_work": 100.0,
+                    "shared_seconds": 0.0,
+                    "context_fingerprint": "old-context",
+                    "inventory_fingerprint": "old-inventory",
+                    "status": "ok",
+                }
+            ]
+        },
+    }
+
+    assert (
+        profile_search.choose_fast_workers(
+            profile,
+            [f"tests/domain/test_a.py::test_{index}" for index in range(10)],
+            8,
+            inventory_fingerprint="new-inventory",
+            context_fingerprint="new-context",
+        )[0]
+        == 0
+    )
+
+
 def test_case_inventory_delta_counts_per_file_churn() -> None:
     baseline = {
         "tests/domain/test_a.py::test_keep": "tests/domain/test_a.py",

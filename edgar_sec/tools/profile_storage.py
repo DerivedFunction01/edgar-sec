@@ -10,7 +10,7 @@ from typing import Any
 
 from edgar_sec.infra.storage.duckdb import connect
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 
 
 def default_store_path(repo_root: pathlib.Path) -> pathlib.Path:
@@ -27,7 +27,15 @@ def _schema(con: Any) -> None:
         "SELECT value FROM schema_metadata WHERE key = 'version'"
     ).fetchone()
     if row and int(row[0]) != SCHEMA_VERSION:
-        raise RuntimeError(f"unsupported pytest profile schema version: {row[0]}")
+        con.execute("DROP TABLE IF EXISTS worker_trials")
+        con.execute("DROP TABLE IF EXISTS probe_baseline_cases")
+        con.execute("DROP TABLE IF EXISTS case_observations")
+        con.execute("DROP TABLE IF EXISTS profile_metadata")
+        con.execute("DROP TABLE IF EXISTS machine_calibration")
+        con.execute("DROP TABLE IF EXISTS schema_metadata")
+        con.execute(
+            "CREATE TABLE schema_metadata (key VARCHAR PRIMARY KEY, value VARCHAR NOT NULL)"
+        )
     con.execute(
         "INSERT OR REPLACE INTO schema_metadata VALUES ('version', ?)",
         [str(SCHEMA_VERSION)],
@@ -49,8 +57,9 @@ def _schema(con: Any) -> None:
     )""")
     con.execute("""CREATE TABLE IF NOT EXISTS worker_trials (
         scope_key VARCHAR, worker_count INTEGER, wall_seconds DOUBLE, item_work DOUBLE,
-        shared_seconds DOUBLE, inventory_fingerprint VARCHAR, status VARCHAR, reason VARCHAR,
-        source VARCHAR, repeat BOOLEAN, search_order INTEGER, observed_at DOUBLE
+        shared_seconds DOUBLE, inventory_fingerprint VARCHAR, context_fingerprint VARCHAR,
+        status VARCHAR, reason VARCHAR, source VARCHAR, repeat BOOLEAN,
+        search_order INTEGER, observed_at DOUBLE
     )""")
     con.execute("""CREATE TABLE IF NOT EXISTS machine_calibration (
         machine_key VARCHAR PRIMARY KEY, physical_cores INTEGER, logical_cores INTEGER,
@@ -196,7 +205,7 @@ def _profile_from_rows(con: Any, metadata: tuple[Any, ...]) -> dict[str, Any]:
     ).fetchall()
     profile["probe_baseline_cases"] = {nodeid: file for nodeid, file in baseline_rows}
     trial_rows = con.execute(
-        "SELECT worker_count,wall_seconds,item_work,shared_seconds,inventory_fingerprint,status,reason,source,repeat,search_order,observed_at FROM worker_trials WHERE scope_key = ? ORDER BY observed_at",
+        "SELECT worker_count,wall_seconds,item_work,shared_seconds,inventory_fingerprint,context_fingerprint,status,reason,source,repeat,search_order,observed_at FROM worker_trials WHERE scope_key = ? ORDER BY observed_at",
         [scope],
     ).fetchall()
     for row in trial_rows:
@@ -206,6 +215,7 @@ def _profile_from_rows(con: Any, metadata: tuple[Any, ...]) -> dict[str, Any]:
             item,
             shared,
             fp,
+            context_fp,
             status,
             reason,
             source,
@@ -218,6 +228,7 @@ def _profile_from_rows(con: Any, metadata: tuple[Any, ...]) -> dict[str, Any]:
             "item_work": item,
             "shared_seconds": shared,
             "inventory_fingerprint": fp,
+            "context_fingerprint": context_fp,
             "status": status,
             "source": source,
             "repeat": repeat,
@@ -227,6 +238,7 @@ def _profile_from_rows(con: Any, metadata: tuple[Any, ...]) -> dict[str, Any]:
         if reason:
             record["reason"] = reason
         profile["trials"].setdefault(str(worker), []).append(record)
+        profile["context_fingerprint"] = context_fp
     return profile
 
 
@@ -327,6 +339,7 @@ def write_profile(path: pathlib.Path, key: str, profile: dict[str, Any]) -> None
                         record.get("item_work"),
                         record.get("shared_seconds"),
                         record.get("inventory_fingerprint"),
+                        record.get("context_fingerprint"),
                         record.get("status", "ok"),
                         record.get("reason") or record.get("error"),
                         record.get("source"),
@@ -345,6 +358,7 @@ def write_profile(path: pathlib.Path, key: str, profile: dict[str, Any]) -> None
                 "item_work",
                 "shared_seconds",
                 "inventory_fingerprint",
+                "context_fingerprint",
                 "status",
                 "reason",
                 "source",

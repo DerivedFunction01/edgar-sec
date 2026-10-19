@@ -112,15 +112,175 @@ def _successful_worker_medians(
     return medians
 
 
+def forecast_worker_seconds(
+    profile: dict[str, Any], work: float, context_fingerprint: str | None = None
+) -> dict[int, float]:
+    forecasts: dict[int, list[float]] = defaultdict(list)
+    if work <= 0:
+        return {}
+    for raw_worker, records in profile.get("trials", {}).items():
+        for record in records:
+            if (
+                record.get("status", "ok") != "ok"
+                or record.get("wall_seconds") is None
+                or (
+                    context_fingerprint is not None
+                    and record.get("context_fingerprint") != context_fingerprint
+                )
+            ):
+                continue
+            base_work = float(
+                record.get("item_work") or profile.get("base_item_work") or 0
+            )
+            if base_work <= 0:
+                continue
+            shared = float(record.get("shared_seconds") or 0)
+            forecasts[int(raw_worker)].append(
+                shared
+                + max(0.0, float(record["wall_seconds"]) - shared) * work / base_work
+            )
+    return {worker: statistics.median(values) for worker, values in forecasts.items()}
+
+
+def _worker_tiers(ceiling: int) -> list[int]:
+    return sorted(
+        {
+            worker
+            for worker in (0, 2, 4, 8, 12, 16, 20, 24, 32, ceiling)
+            if worker == 0 or 2 <= worker <= ceiling
+        }
+    )
+
+
+def _latest_context_worker(
+    profile: dict[str, Any], context_fingerprint: str
+) -> int | None:
+    latest: tuple[float, int] | None = None
+    for raw_worker, records in profile.get("trials", {}).items():
+        for index, record in enumerate(records):
+            if (
+                record.get("context_fingerprint") != context_fingerprint
+                or record.get("status", "ok") != "ok"
+                or record.get("wall_seconds") is None
+            ):
+                continue
+            observed_at = float(record.get("at") or index)
+            if latest is None or observed_at >= latest[0]:
+                latest = (observed_at, int(raw_worker))
+    return latest[1] if latest is not None else None
+
+
+def _choose_warm_workers(
+    profile: dict[str, Any],
+    ceiling: int,
+    inventory_fingerprint: str | None,
+    context_fingerprint: str,
+) -> tuple[int, str, str] | None:
+    history = [
+        record
+        for records in profile.get("trials", {}).values()
+        for record in records
+        if record.get("context_fingerprint") == context_fingerprint
+        and record.get("status", "ok") == "ok"
+        and record.get("wall_seconds") is not None
+    ]
+    if not history:
+        return None
+
+    cases = list(profile.get("cases", {}).values())
+    durations = [case.get("duration") for case in cases]
+    observed = sum(
+        duration is not None and not case.get("estimated", False)
+        for case, duration in zip(cases, durations, strict=True)
+    )
+    coverage = observed / max(1, len(cases))
+    complete = bool(cases) and all(duration is not None for duration in durations)
+    work = sum(max(0.0, float(duration or 0.0)) for duration in durations)
+    forecasts = (
+        forecast_worker_seconds(profile, work, context_fingerprint)
+        if complete and coverage >= 0.8
+        else {}
+    )
+    forecasts = {
+        worker: seconds
+        for worker, seconds in forecasts.items()
+        if worker == 0 or 2 <= worker <= ceiling
+    }
+    origin = _latest_context_worker(profile, context_fingerprint)
+    tiers = _worker_tiers(ceiling)
+    attempted = {
+        int(worker)
+        for worker, records in profile.get("trials", {}).items()
+        if any(
+            record.get("inventory_fingerprint") == inventory_fingerprint
+            and record.get("status", "ok") in {"ok", "pruned"}
+            for record in records
+        )
+    }
+
+    if origin is None:
+        return None
+    if len(forecasts) < 2:
+        if attempted:
+            return None
+        return (
+            min(tiers, key=lambda worker: abs(worker - min(origin, ceiling))),
+            "warm_fallback",
+            "reusing last compatible worker until more timings are available",
+        )
+    origin = min(tiers, key=lambda worker: abs(worker - min(origin, ceiling)))
+    forecast_target = min(forecasts, key=forecasts.get)
+    target_seconds = forecasts[forecast_target]
+    target = min(tiers, key=lambda worker: abs(worker - min(forecast_target, ceiling)))
+    if target != origin:
+        origin_index = tiers.index(origin)
+        target_index = tiers.index(target)
+        candidate = tiers[origin_index + (1 if target_index > origin_index else -1)]
+        return (
+            candidate,
+            "warm_forecast",
+            f"one tier toward work forecast n={target}",
+        )
+    neighbors = [
+        worker
+        for worker in tiers
+        if abs(tiers.index(worker) - tiers.index(origin)) == 1
+        and worker in forecasts
+        and worker not in attempted
+        and forecasts[worker] <= target_seconds * (1 + WORKER_REGRESSION_TOLERANCE)
+    ]
+    if neighbors:
+        challenger = min(neighbors, key=forecasts.get)
+        return (
+            challenger,
+            "warm_challenger",
+            f"adjacent n={challenger} forecast is within "
+            f"{WORKER_REGRESSION_TOLERANCE:.0%} of n={target}",
+        )
+    return (
+        origin,
+        "warm_fallback",
+        f"keeping forecast winner n={target}; no untried near-tied neighbor",
+    )
+
+
 def choose_fast_workers(
     profile: dict[str, Any] | None,
     selectors: list[str],
     ceiling: int,
     inventory_fingerprint: str | None = None,
+    context_fingerprint: str | None = None,
 ) -> tuple[int, str, str]:
     profile = profile or {}
     if ceiling < 2:
         return 0, "resource_default", "resource ceiling allows serial execution only"
+
+    if context_fingerprint is not None:
+        warm = _choose_warm_workers(
+            profile, ceiling, inventory_fingerprint, context_fingerprint
+        )
+        if warm is not None:
+            return warm
 
     item_count = selector_size_hint(selectors)
     start = 0 if item_count < 256 else min(4, ceiling)

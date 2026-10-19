@@ -75,10 +75,13 @@ def _case_fingerprint(
     return digest.hexdigest()
 
 
-def _environment_fingerprint() -> str:
+def execution_context_fingerprint() -> str:
     from edgar_sec.foundation.runtime.resources import (
         auto_worker_count,
         available_memory_bytes,
+    )
+    from edgar_sec.tools.fast_pytest_worker_calibrator import (
+        detect_hardware_topology,
     )
 
     versions = {"python": sys.version, "pytest": importlib.metadata.version("pytest")}
@@ -95,9 +98,13 @@ def _environment_fingerprint() -> str:
             config_hashes[name] = file_sha256(path)
     from edgar_sec.foundation.serialization import canonical_json
 
+    hardware_topology = detect_hardware_topology()
     payload = {
         "versions": versions,
-        "worker_ceiling": auto_worker_count(available_memory_bytes()),
+        "hardware_topology": hardware_topology,
+        "worker_ceiling": auto_worker_count(
+            available_memory_bytes(), cpu_cores=hardware_topology[1]
+        ),
         "config": config_hashes,
     }
     return hashlib.sha256(canonical_json(payload).encode()).hexdigest()
@@ -105,7 +112,7 @@ def _environment_fingerprint() -> str:
 
 def scope_inventory(
     selectors: list[str],
-) -> tuple[list[pathlib.Path], str, dict[str, str]]:
+) -> tuple[list[pathlib.Path], str, dict[str, str], str]:
     files = _selector_files(selectors)
     from edgar_sec.foundation.checks.lineage import LineageGraph
     from edgar_sec.foundation.hashing import file_sha256
@@ -123,8 +130,9 @@ def scope_inventory(
     inventory = [
         {"path": path.as_posix(), "fingerprint": file_sha256(path)} for path in files
     ]
+    context_fingerprint = execution_context_fingerprint()
     payload = {
-        "environment": _environment_fingerprint(),
+        "environment": context_fingerprint,
         "inventory": inventory,
         "cases": fingerprints,
     }
@@ -132,6 +140,7 @@ def scope_inventory(
         files,
         hashlib.sha256(canonical_json(payload).encode()).hexdigest(),
         fingerprints,
+        context_fingerprint,
     )
 
 

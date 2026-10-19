@@ -229,18 +229,27 @@ def run_tests(
                 scope_inventory,
                 scope_key,
             )
-            from edgar_sec.tools.worker_profile_search import choose_fast_workers
-            from edgar_sec.tools.pytest_worker_profiles import _resource_ceiling
+            from edgar_sec.tools.pytest_worker_profiles import (
+                _resource_ceiling,
+                choose_fast_workers_for_scope,
+            )
 
             profile = load_profiles(default_cache_path(Path.cwd())).get(
                 scope_key(test_paths)
             )
-            _, inventory_fingerprint, _ = scope_inventory(test_paths)
-            target_workers, worker_source, worker_reason = choose_fast_workers(
-                profile,
-                test_paths,
-                _resource_ceiling(),
-                inventory_fingerprint=inventory_fingerprint,
+            files, inventory_fingerprint, fingerprints, context_fingerprint = (
+                scope_inventory(test_paths)
+            )
+            target_workers, worker_source, worker_reason = (
+                choose_fast_workers_for_scope(
+                    profile,
+                    test_paths,
+                    _resource_ceiling(),
+                    inventory_fingerprint,
+                    context_fingerprint,
+                    files,
+                    fingerprints,
+                )
             )
         except Exception as exc:
             from edgar_sec.foundation.runtime.resources import (

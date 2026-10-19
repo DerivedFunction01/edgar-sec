@@ -45,7 +45,7 @@ def test_aggregate_search_prunes_serial_and_two_worker_probes(
     monkeypatch.setattr(
         profiles,
         "scope_inventory",
-        lambda _selectors: ([test_file], "scope-v1", fingerprints),
+        lambda _selectors: ([test_file], "scope-v1", fingerprints, "context-v1"),
     )
     monkeypatch.setattr(
         profiles, "collect_test_nodeids", lambda _selectors: (nodeids, 0.01)
@@ -90,7 +90,7 @@ def test_upward_search_stops_after_midpoint_exceeds_baseline_tolerance(
     monkeypatch.setattr(
         profiles,
         "scope_inventory",
-        lambda _selectors: ([test_file], "scope-v1", fingerprints),
+        lambda _selectors: ([test_file], "scope-v1", fingerprints, "context-v1"),
     )
     monkeypatch.setattr(
         profiles, "collect_test_nodeids", lambda _selectors: (nodeids, 0.01)
@@ -127,7 +127,11 @@ def test_failed_normal_run_is_stored_without_case_timings(
     monkeypatch, tmp_path: Path
 ) -> None:
     selectors = ["tests/domain/test_sample.py"]
-    monkeypatch.setattr(profiles, "scope_inventory", lambda _selectors: ([], "fp", {}))
+    monkeypatch.setattr(
+        profiles,
+        "scope_inventory",
+        lambda _selectors: ([], "fp", {}, "context-v1"),
+    )
     cache_path = tmp_path / "workers.duckdb"
 
     profiles.record_normal_run(
@@ -170,61 +174,68 @@ def test_adjusted_estimates_keep_shared_overhead_unscaled() -> None:
     assert profiles._adjusted_recommendation(profile, 5.0) == 0
 
 
-def test_case_estimate_uses_file_then_folder_distribution() -> None:
-    file = Path("tests/pipelines/test_new.py")
-    cases = {
-        "tests/pipelines/test_old.py::test_a": {
-            "file": "tests/pipelines/test_old.py",
-            "folder": "pipelines",
-            "duration": 2.0,
-        },
-        "tests/pipelines/test_other.py::test_b": {
-            "file": "tests/pipelines/test_other.py",
-            "folder": "pipelines",
-            "duration": 4.0,
-        },
-    }
-    assert profiles._case_estimate(file, cases) == 3.0
-    cases[next(iter(cases))]["file"] = file.as_posix()
-    assert profiles._case_estimate(file, cases) == 2.0
-
-
-def test_inventory_delta_preserves_unchanged_cases_and_estimates_new_cases(
-    tmp_path: Path,
-) -> None:
-    test_file = tmp_path / "tests" / "pipelines" / "test_sample.py"
-    test_file.parent.mkdir(parents=True)
-    test_file.write_text("def test_old(): pass\ndef test_new(): pass\n")
-    unchanged = f"{test_file.as_posix()}::test_old"
-    added = f"{test_file.as_posix()}::test_new"
-    removed = "tests/pipelines/test_removed.py::test_removed"
+def test_fast_scope_selection_warm_starts_on_inventory_change(monkeypatch) -> None:
+    old_file = Path("tests/domain/test_old.py")
+    new_file = Path("tests/domain/test_new.py")
+    old_nodeids = [f"{old_file.as_posix()}::test_{index}" for index in range(10)]
+    new_nodeids = [f"{new_file.as_posix()}::test_{index}" for index in range(2)]
+    context = "context-v1"
     prior = {
+        "inventory_fingerprint": "old-inventory",
+        "context_fingerprint": context,
         "cases": {
-            unchanged: {
-                "file": test_file.as_posix(),
-                "folder": "pipelines",
-                "fingerprint": "current",
-                "duration": 3.0,
+            nodeid: {
+                "file": old_file.as_posix(),
+                "folder": "domain",
+                "fingerprint": "old-file",
+                "duration": 10.0,
                 "estimated": False,
-            },
-            removed: {
-                "file": "tests/pipelines/test_removed.py",
-                "folder": "pipelines",
-                "fingerprint": "old",
-                "duration": 8.0,
-                "estimated": False,
-            },
-        }
+            }
+            for nodeid in old_nodeids
+        },
+        "trials": {
+            "4": [
+                {
+                    "wall_seconds": 100.0,
+                    "item_work": 100.0,
+                    "shared_seconds": 0.0,
+                    "inventory_fingerprint": "old-inventory",
+                    "context_fingerprint": context,
+                    "status": "ok",
+                    "at": 3.0,
+                }
+            ],
+            "8": [
+                {
+                    "wall_seconds": 80.0,
+                    "item_work": 100.0,
+                    "shared_seconds": 0.0,
+                    "inventory_fingerprint": "old-inventory",
+                    "context_fingerprint": context,
+                    "status": "ok",
+                    "at": 2.0,
+                }
+            ],
+        },
     }
-
-    cases = profiles._current_cases(
-        [unchanged, added], [test_file], prior, {test_file.as_posix(): "current"}
+    monkeypatch.setattr(
+        profiles,
+        "collect_test_nodeids",
+        lambda _selectors: ([*old_nodeids, *new_nodeids], 0.01),
     )
 
-    assert cases[unchanged]["duration"] == 3.0
-    assert cases[added]["duration"] == 3.0
-    assert cases[added]["estimated"] is True
-    assert removed not in cases
+    workers, source, _ = profiles.choose_fast_workers_for_scope(
+        prior,
+        ["tests/domain"],
+        16,
+        "new-inventory",
+        context,
+        [old_file, new_file],
+        {old_file.as_posix(): "old-file", new_file.as_posix(): "new-file"},
+    )
+
+    assert workers == 8
+    assert source == "warm_forecast"
 
 
 def test_fresh_profile_cache_hit_skips_collection(monkeypatch, tmp_path: Path) -> None:
@@ -238,7 +249,9 @@ def test_fresh_profile_cache_hit_skips_collection(monkeypatch, tmp_path: Path) -
         profiles, "load_cache", lambda _path: {"profiles": {key: profile}}
     )
     monkeypatch.setattr(
-        profiles, "scope_inventory", lambda _selectors: ([], "same", {})
+        profiles,
+        "scope_inventory",
+        lambda _selectors: ([], "same", {}, "context-v1"),
     )
     monkeypatch.setattr(
         profiles,
@@ -298,6 +311,7 @@ def test_material_node_churn_reprobes_instead_of_reusing_scaled_estimate(
             [test_file],
             "new-scope",
             {test_file.as_posix(): "new-file"},
+            "context-v1",
         ),
     )
     monkeypatch.setattr(

@@ -28,6 +28,7 @@ from edgar_sec.tools.fast_pytest_worker_calibrator import (
     load_cache,
 )
 from edgar_sec.tools.profile_storage import load_profiles, write_profile
+from edgar_sec.tools.worker_profile_cases import case_work, current_cases
 from edgar_sec.tools.worker_profile_inventory import (
     case_file,
     folder_name,
@@ -37,6 +38,8 @@ from edgar_sec.tools.worker_profile_inventory import (
 from edgar_sec.tools.worker_profile_search import (
     adaptive_worker_candidates,
     case_inventory_delta,
+    choose_fast_workers,
+    forecast_worker_seconds,
     material_case_inventory_change,
     next_refinement as _next_refinement,
     ordered_candidates,
@@ -101,29 +104,6 @@ def pytest_sessionfinish(session: Any, exitstatus: int) -> None:
         {"count": len(cases), "cases": cases},
         canonical=False,
     )
-
-
-def _case_work(cases: dict[str, dict[str, Any]]) -> float:
-    return sum(max(0.0, float(case.get("duration") or 0.0)) for case in cases.values())
-
-
-def _case_estimate(
-    test_file: pathlib.Path, cases: dict[str, dict[str, Any]]
-) -> float | None:
-    same_file = [
-        float(case["duration"])
-        for case in cases.values()
-        if case.get("file") == test_file.as_posix() and case.get("duration") is not None
-    ]
-    if same_file:
-        return statistics.median(same_file)
-    same_folder = [
-        float(case["duration"])
-        for case in cases.values()
-        if case.get("duration") is not None
-        and case.get("folder") == folder_name(test_file)
-    ]
-    return statistics.median(same_folder) if same_folder else None
 
 
 def _model_candidate(cache: dict[str, Any], count: int, ceiling: int) -> int:
@@ -224,7 +204,9 @@ def _merge_case_timings(
         }
 
 
-def _profile_worker(profile: dict[str, Any]) -> int:
+def _profile_worker(
+    profile: dict[str, Any], context_fingerprint: str | None = None
+) -> int:
     ranked = []
     for raw_worker, records in profile.get("trials", {}).items():
         valid = [
@@ -232,6 +214,10 @@ def _profile_worker(profile: dict[str, Any]) -> int:
             for record in records
             if record.get("status", "ok") == "ok"
             and record.get("wall_seconds") is not None
+            and (
+                context_fingerprint is None
+                or record.get("context_fingerprint") == context_fingerprint
+            )
         ]
         if valid:
             ranked.append((statistics.median(valid), int(raw_worker)))
@@ -246,8 +232,12 @@ def _profile_worker(profile: dict[str, Any]) -> int:
 
 
 def _recommended_worker(profile: dict[str, Any]) -> int:
-    estimate = _adjusted_recommendation(profile, _case_work(profile.get("cases", {})))
-    return estimate if estimate is not None else _profile_worker(profile)
+    estimate = _adjusted_recommendation(profile, case_work(profile.get("cases", {})))
+    return (
+        estimate
+        if estimate is not None
+        else _profile_worker(profile, profile.get("context_fingerprint"))
+    )
 
 
 def _best_wall_seconds(
@@ -289,58 +279,46 @@ def _new_profile(
     }
 
 
-def _current_cases(
-    nodeids: list[str],
+def choose_fast_workers_for_scope(
+    profile: dict[str, Any] | None,
+    selectors: list[str],
+    ceiling: int,
+    inventory_fingerprint: str,
+    context_fingerprint: str,
     files: list[pathlib.Path],
-    prior: dict[str, Any],
     fingerprints: dict[str, str],
-) -> dict[str, dict[str, Any]]:
-    old_cases = prior.get("cases", {})
-    current = {}
-    for nodeid in nodeids:
-        test_file = case_file(nodeid, files)
-        fingerprint = fingerprints.get(test_file.as_posix(), "")
-        old = old_cases.get(nodeid)
-        if old and old.get("fingerprint") == fingerprint:
-            current[nodeid] = dict(old)
-            continue
-        duration = _case_estimate(test_file, old_cases)
-        current[nodeid] = {
-            "file": test_file.as_posix(),
-            "folder": folder_name(test_file),
-            "fingerprint": fingerprint,
-            "duration": duration,
-            "estimated": duration is not None,
-            "observed_at": None,
-        }
-    return current
+) -> tuple[int, str, str]:
+    working = dict(profile or {})
+    has_compatible_history = any(
+        record.get("context_fingerprint") == context_fingerprint
+        for records in working.get("trials", {}).values()
+        for record in records
+    )
+    if (
+        working
+        and has_compatible_history
+        and working.get("inventory_fingerprint") != inventory_fingerprint
+    ):
+        nodeids, _ = collect_test_nodeids(selectors)
+        working["cases"] = current_cases(nodeids, files, working, fingerprints)
+    return choose_fast_workers(
+        working,
+        selectors,
+        ceiling,
+        inventory_fingerprint=inventory_fingerprint,
+        context_fingerprint=context_fingerprint,
+    )
 
 
 def _adjusted_recommendation(profile: dict[str, Any], work: float) -> int | None:
     if work <= 0:
         return None
-    forecasts: dict[int, list[float]] = {}
-    for raw_worker, records in profile.get("trials", {}).items():
-        for record in records:
-            if (
-                record.get("status", "ok") == "ok"
-                and record.get("wall_seconds") is not None
-            ):
-                base_work = float(
-                    record.get("item_work") or profile.get("base_item_work") or 0
-                )
-                if base_work <= 0:
-                    continue
-                shared = float(record.get("shared_seconds") or 0)
-                forecasts.setdefault(int(raw_worker), []).append(
-                    shared
-                    + max(0.0, float(record["wall_seconds"]) - shared)
-                    * work
-                    / base_work
-                )
+    forecasts = forecast_worker_seconds(
+        profile, work, profile.get("context_fingerprint")
+    )
     trials = {
-        str(worker): [{"wall_seconds": statistics.median(values)}]
-        for worker, values in forecasts.items()
+        str(worker): [{"wall_seconds": seconds}]
+        for worker, seconds in forecasts.items()
     }
     return _profile_worker({"trials": trials}) if trials else None
 
@@ -373,10 +351,13 @@ def _calibrate_scope(
     force: bool = False,
 ) -> dict[str, Any]:
     key = scope_key(selectors)
-    files, inventory_fingerprint, fingerprints = scope_inventory(selectors)
+    files, inventory_fingerprint, fingerprints, context_fingerprint = scope_inventory(
+        selectors
+    )
     nodeids, collection_seconds = collect_test_nodeids(selectors)
-    cases = _current_cases(nodeids, files, prior or case_seed or {}, fingerprints)
+    cases = current_cases(nodeids, files, prior or case_seed or {}, fingerprints)
     profile = _new_profile(selectors, key, inventory_fingerprint, cases)
+    profile["context_fingerprint"] = context_fingerprint
     if prior:
         profile["trials"] = prior.get("trials", {})
         profile["probe_baseline_cases"] = prior.get("probe_baseline_cases", {})
@@ -437,6 +418,7 @@ def _calibrate_scope(
                 "reason": "optimistic_call_work_exceeds_best",
                 "lower_bound_seconds": lower_bound,
                 "inventory_fingerprint": inventory_fingerprint,
+                "context_fingerprint": context_fingerprint,
                 "source": "lower_bound",
                 "search_order": sum(map(len, profile["trials"].values())),
                 "at": time.time(),
@@ -479,12 +461,13 @@ def _calibrate_scope(
             try:
                 trial = _run_scope_probe(selectors, worker)
                 _merge_case_timings(profile, trial["cases"], files, fingerprints)
-                item_work = _case_work(profile["cases"])
+                item_work = case_work(profile["cases"])
                 record = {
                     "wall_seconds": trial["wall_seconds"],
                     "item_work": item_work,
                     "shared_seconds": max(0.0, trial["wall_seconds"] - item_work),
                     "inventory_fingerprint": inventory_fingerprint,
+                    "context_fingerprint": context_fingerprint,
                     "status": "ok",
                     "source": "seed" if worker in seeds else "coarse",
                     "repeat": len(profile["trials"].get(str(worker), [])) > 0,
@@ -496,6 +479,7 @@ def _calibrate_scope(
                     "status": "timeout",
                     "error": str(exc),
                     "inventory_fingerprint": inventory_fingerprint,
+                    "context_fingerprint": context_fingerprint,
                     "at": time.time(),
                 }
             except RuntimeError as exc:
@@ -504,6 +488,7 @@ def _calibrate_scope(
                     "status": "failed",
                     "error": str(exc),
                     "inventory_fingerprint": inventory_fingerprint,
+                    "context_fingerprint": context_fingerprint,
                     "at": time.time(),
                 }
             profile["trials"].setdefault(str(worker), []).append(record)
@@ -574,7 +559,7 @@ def _calibrate_scope(
                 profile["search"]["frontier"] = [refinement]
                 _write_profile(cache_path, key, profile)
     profile["selected_workers"] = _recommended_worker(profile)
-    profile["base_item_work"] = _case_work(profile["cases"])
+    profile["base_item_work"] = case_work(profile["cases"])
     contributing_trials = [
         record
         for records in profile["trials"].values()
@@ -609,7 +594,7 @@ def select_workers(
     cache = load_cache(cache_path) or {}
     profiles = cache.get("profiles") or load_profiles(cache_path)
     key = scope_key(selectors)
-    files, fingerprint, fingerprints = scope_inventory(selectors)
+    files, fingerprint, fingerprints, context_fingerprint = scope_inventory(selectors)
     profile = profiles.get(key)
     now = time.time()
     fresh = bool(
@@ -625,7 +610,7 @@ def select_workers(
         return int(profile.get("selected_workers", 0))
     if fresh and profile and not recalculate:
         nodeids, _ = collect_test_nodeids(selectors)
-        cases = _current_cases(nodeids, files, profile, fingerprints)
+        cases = current_cases(nodeids, files, profile, fingerprints)
         current_inventory = {
             nodeid: case_file(nodeid, files).as_posix() for nodeid in nodeids
         }
@@ -633,7 +618,9 @@ def select_workers(
             profile.get("probe_baseline_cases", {}), current_inventory
         )
         material_inventory_change = material_case_inventory_change(inventory_delta)
-        estimate = _adjusted_recommendation(profile, _case_work(cases))
+        estimate = _adjusted_recommendation(
+            {**profile, "context_fingerprint": context_fingerprint}, case_work(cases)
+        )
         coverage = sum(
             not case.get("estimated", False) for case in cases.values()
         ) / max(1, len(cases))
@@ -671,7 +658,7 @@ def select_workers(
                 or now - float(folder_profile.get("updated_at", 0))
                 > CACHE_EXPIRY_DAYS * 86400
             )
-            _, folder_fingerprint, _ = scope_inventory(folder_selectors)
+            _, folder_fingerprint, _, _ = scope_inventory(folder_selectors)
             if (
                 recalculate
                 or expired
@@ -748,12 +735,14 @@ def record_normal_run(
     if status == "ok" and (not report or not report.get("count")):
         return
     cache_path = cache_path or default_cache_path(pathlib.Path.cwd())
-    files, fingerprint, fingerprints = scope_inventory(selectors)
+    files, fingerprint, fingerprints, context_fingerprint = scope_inventory(selectors)
     key = scope_key(selectors)
     profile = (load_profiles(cache_path).get(key)) or _new_profile(
         selectors, key, fingerprint, {}
     )
-    profile["inventory_fingerprint"] = fingerprint
+    if report or not profile.get("inventory_fingerprint"):
+        profile["inventory_fingerprint"] = fingerprint
+    profile["context_fingerprint"] = context_fingerprint
     if report:
         active_nodeids = {item["nodeid"] for item in report["cases"]}
         profile["cases"] = {
@@ -766,11 +755,12 @@ def record_normal_run(
     profile.setdefault("trials", {}).setdefault(str(worker), []).append(
         {
             "wall_seconds": elapsed,
-            "item_work": _case_work(profile["cases"]) if report else None,
+            "item_work": case_work(profile["cases"]) if report else None,
             "shared_seconds": (
-                max(0.0, elapsed - _case_work(profile["cases"])) if report else None
+                max(0.0, elapsed - case_work(profile["cases"])) if report else None
             ),
             "inventory_fingerprint": fingerprint,
+            "context_fingerprint": context_fingerprint,
             "status": status,
             "source": source,
             "at": time.time(),
@@ -780,11 +770,13 @@ def record_normal_run(
         profile["updated_at"] = time.time()
         _write_profile(cache_path, key, profile)
         return
-    recommendation = _adjusted_recommendation(profile, _case_work(profile["cases"]))
+    recommendation = _adjusted_recommendation(profile, case_work(profile["cases"]))
     profile["selected_workers"] = (
-        recommendation if recommendation is not None else _profile_worker(profile)
+        recommendation
+        if recommendation is not None
+        else _profile_worker(profile, context_fingerprint)
     )
-    profile["base_item_work"] = _case_work(profile["cases"])
+    profile["base_item_work"] = case_work(profile["cases"])
     profile["recommendation_direct"] = all(
         trial.get("inventory_fingerprint") == fingerprint
         for records in profile["trials"].values()
