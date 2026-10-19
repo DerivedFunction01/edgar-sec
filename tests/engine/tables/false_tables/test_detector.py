@@ -104,6 +104,17 @@ def test_a_single_column_of_one_number_is_also_unwrapped() -> None:
     assert is_false_grid((("1,200",),)) is True
 
 
+def test_single_column_transaction_rows_are_retained_as_tabular_data() -> None:
+    rows = (
+        ("1/10/11 3,900 117.9500",),
+        ("1/07/11 200 117.6500",),
+        ("1/06/11 1,200 117.6917",),
+        ("1/03/11 2,500 117.9584",),
+    )
+    assert _is_single_column_prose([row[0] for row in rows]) is False
+    assert is_false_grid(rows) is False
+
+
 def test_a_lead_in_prose_row_followed_by_bullets_is_unwrapped() -> None:
     grid = (
         ("The following risk factors apply:", ""),

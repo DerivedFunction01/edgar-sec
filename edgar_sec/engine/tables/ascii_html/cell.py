@@ -482,6 +482,8 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
 _NORMALIZE_TRANS = str.maketrans(
     {ch: " " for ch in NORMALIZE_TO_SPACE} | {ch: None for ch in STRIP_ZERO_WIDTH}
 )
+_NBSP_PLACEHOLDER = "\ue000"
+_RE_NBSP_RUN = re.compile(r"\xa0{2,}")
 _SENTENCE_END_RE = re.compile(r"[:.!?\)]\s*$")
 _RE_PARAGRAPH_SPLIT = re.compile(r"\n\s*\n+")
 _RE_DOTS = re.compile(r"\.{4,}")
@@ -519,16 +521,18 @@ def _collapse_non_structural_newlines(text: str) -> str:
         if p_lines:
             out_paragraphs.append("\n".join(p_lines))
 
-    return "\n".join(out_paragraphs)
+    return "\n".join(out_paragraphs).replace(_NBSP_PLACEHOLDER, " ")
 
 
 def normalize_cell_whitespace(text: str, *, preserve_newlines: bool = False) -> str:
     """Normalize cell text whitespace, dots, and soft wrapping newlines."""
-    text = text.translate(_NORMALIZE_TRANS)
+    text = _RE_NBSP_RUN.sub(
+        lambda match: _NBSP_PLACEHOLDER * len(match.group()), text
+    ).translate(_NORMALIZE_TRANS)
     text = _RE_DOTS.sub("...", text)
     if not preserve_newlines:
         text = _collapse_non_structural_newlines(text)
-    return text
+    return text.replace(_NBSP_PLACEHOLDER, " ")
 
 
 def _split_wide_hyphenated(text: str, width: int) -> str:

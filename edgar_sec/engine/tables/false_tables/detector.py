@@ -9,6 +9,7 @@ import re
 from collections.abc import Sequence
 from typing import TYPE_CHECKING
 
+from edgar_sec.foundation.text.dates import parse_date
 from edgar_sec.foundation.text.tokens import (
     BULLET_MARKER_RE,
     ORDERED_MARKER_PREFIX_RE,
@@ -33,8 +34,24 @@ _RE_NUMERIC_SEPARATOR = re.compile(r"^[-=\s]+$")
 _RE_UNAMBIGUOUS_MARKER = re.compile(r"\[\d{1,3}\]|[\*\†\‡\§\#]+")
 
 
+def _has_tabular_data(line: str) -> bool:
+    tokens = line.split()
+    numeric_positions = [
+        index for index, token in enumerate(tokens) if is_numeric_cell(token)
+    ]
+    if len(numeric_positions) >= 2:
+        return True
+    return any(
+        parse_date(token) is not None
+        and any(position > index for position in numeric_positions)
+        for index, token in enumerate(tokens)
+    )
+
+
 def _is_single_column_prose(lines: list[str]) -> bool:
     """Return whether every row carries at least one nonnumeric word."""
+    if lines and sum(_has_tabular_data(line) for line in lines) * 5 >= len(lines):
+        return False
     if len(lines) == 1 and is_numeric_cell(lines[0]):
         return True
     return bool(lines) and all(

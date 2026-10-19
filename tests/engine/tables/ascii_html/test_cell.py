@@ -155,6 +155,12 @@ def test_non_breaking_and_zero_width_characters_become_breakable_spaces() -> Non
     assert normalize_cell_whitespace("ab") == "ab"
 
 
+def test_non_breaking_space_runs_preserve_tabular_column_gaps() -> None:
+    text = "1/10/11\xa0\xa0\xa0\xa03,900\xa0\xa0\xa0117.9500"
+    assert normalize_cell_whitespace(text) == "1/10/11    3,900   117.9500"
+    assert normalize_cell_whitespace("one   two") == "one two"
+
+
 def test_soft_wrapping_newlines_collapse_but_paragraphs_and_bullets_survive() -> None:
     assert normalize_cell_whitespace("one two\nthree four") == "one two three four"
     assert "\n" in normalize_cell_whitespace("first para.\n\nsecond para.")
