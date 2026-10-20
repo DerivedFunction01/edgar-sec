@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.forms.common.alignment import align_row_to_schema
+from edgar_sec.engine.forms.common.alignment import (
+    align_row_to_schema,
+    has_exact_source_positions,
+)
 from edgar_sec.engine.forms.common.row_extraction import (
     normalize_row_record,
     split_row_cells,
@@ -25,8 +28,8 @@ from edgar_sec.engine.forms.ownership.table_common import (
     is_footnote_marker,
     is_valid_row_security_title,
     iter_clean_table_rows,
-    split_composite_underlying_cell,
-    split_ownership_row_cells,
+    split_composite_underlying_source_cells,
+    split_ownership_row_cells_with_positions,
     strip_footnote_refs,
     trailing_ownership_form,
 )
@@ -42,9 +45,10 @@ def parse_table_ii_rows(
     """Parse Derivative transaction and holding rows from Table II."""
     results: list[DerivativeTransaction] = []
     for row, row_str, footnotes in iter_clean_table_rows(section, "table ii"):
-        split_cells = split_composite_underlying_cell(
-            split_ownership_row_cells(row, frozenset(footnotes))
+        source_cells = split_composite_underlying_source_cells(
+            split_ownership_row_cells_with_positions(row, frozenset(footnotes))
         )
+        split_cells = tuple(cell.text for cell in source_cells if cell.text)
         if split_cells:
             form_index, _ = trailing_ownership_form(split_cells)
             code_cells = [
@@ -52,7 +56,13 @@ def parse_table_ii_rows(
             ]
             has_tx = any(TRANSACTION_CODE_RE.search(c) for c in code_cells[1:])
             schema = TABLE_II_TX_SCHEMA if has_tx else TABLE_II_HOLDING_SCHEMA
-            aligned = align_row_to_schema(split_cells, schema)
+            aligned = align_row_to_schema(source_cells, schema)
+            if aligned is not None and aligned.get("direct_or_indirect") is None:
+                trailing_form, _ = trailing_ownership_form(split_cells)
+                if trailing_form != -1 or not has_exact_source_positions(
+                    source_cells, schema
+                ):
+                    aligned = None
             if aligned is not None and (
                 aligned.get("transaction_date")
                 or aligned.get("transaction_code")
@@ -64,9 +74,7 @@ def parse_table_ii_rows(
                 sec_t = clean_title(aligned.get("security_title") or "")
                 if is_valid_row_security_title(sec_t):
                     code_raw = aligned.get("transaction_code")
-                    eq_swap = bool(
-                        code_raw and any("v" in p.lower() for p in split_cells)
-                    )
+                    eq_swap = bool(code_raw and aligned.get("equity_swap"))
                     ad_code = aligned.get("acquired_disposed_code")
                     if not ad_code and code_raw:
                         ad_code = (
@@ -131,6 +139,11 @@ def parse_table_ii_rows(
 
         trans_code, equity_swap, code_col_idx = find_trans_code(
             indexed_cells, form_idx, price_col_idx
+        )
+        equity_swap = equity_swap or any(
+            part.strip().upper() == "V"
+            for _, cell in indexed_cells
+            for part in cell.split("|")
         )
 
         trans_date: str | None = None

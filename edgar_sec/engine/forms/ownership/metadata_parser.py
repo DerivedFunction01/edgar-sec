@@ -20,6 +20,7 @@ from edgar_sec.engine.forms.common.signatures import (
     extract_clean_signatory_name,
     extract_signature_candidate,
     is_valid_signature_name,
+    scan_signature_grid,
 )
 from edgar_sec.engine.forms.common.statutory import (
     HEADER_LEAK_RE,
@@ -357,24 +358,17 @@ def parse_metadata(
                 "signature of reporting person" in row_text
                 or "signature of" in row_text
             ):
-                for cell in row:
-                    candidate = extract_clean_signatory_name(cell)
-                    if candidate:
-                        signature_name = candidate
-                        break
-                if not signature_name and row_index > 0:
-                    previous_row = grid.rows[row_index - 1]
-                    for cell in previous_row:
-                        candidate = extract_clean_signatory_name(cell)
-                        if candidate:
-                            signature_name = candidate
-                            break
-                    if len(previous_row) > 1 and previous_row[1].strip():
-                        date_match = RE_FULL_DATE.search(
-                            previous_row[1]
-                        ) or NUMERIC_DATE_RE.search(previous_row[1])
-                        if date_match:
-                            signature_date = date_match.group(0).strip()
+                if not signature_name:
+                    signature_name, _ = scan_signature_grid((row,))
+                    if not signature_name and row_index > 0:
+                        previous_row = grid.rows[row_index - 1]
+                        signature_name, _ = scan_signature_grid((row, previous_row))
+                        if len(previous_row) > 1 and previous_row[1].strip():
+                            date_match = RE_FULL_DATE.search(
+                                previous_row[1]
+                            ) or NUMERIC_DATE_RE.search(previous_row[1])
+                            if date_match:
+                                signature_date = date_match.group(0).strip()
                 if signature_name:
                     break
 

@@ -4,6 +4,7 @@ import pytest
 
 from edgar_sec.engine.forms.common.alignment import (
     CanonicalColumn,
+    SourceCell,
     TableSchema,
     align_row_to_schema,
     find_strict_anchors,
@@ -91,6 +92,149 @@ def test_find_strict_anchors_monotonicity(sample_schema: TableSchema) -> None:
     assert len(anchors) == 3
     assert [a.col_index for a in anchors] == [1, 3, 5]
     assert [a.cell_index for a in anchors] == [1, 2, 4]
+
+
+def test_align_source_cells_keeps_an_empty_column_at_its_position() -> None:
+    schema = TableSchema(
+        name="positioned_schema",
+        columns=(
+            CanonicalColumn(
+                index=0,
+                name="title",
+                is_required=True,
+                is_anchor=True,
+                anchor_validator=lambda value: value == "Common Stock",
+            ),
+            CanonicalColumn(
+                index=1,
+                name="ownership_form",
+                is_required=True,
+                is_anchor=True,
+                anchor_validator=lambda value: value in {"D", "I"},
+            ),
+            CanonicalColumn(index=2, name="nature", is_required=False),
+        ),
+    )
+
+    result = align_row_to_schema(
+        (
+            SourceCell(0, 0, "Common Stock"),
+            SourceCell(1, 0, ""),
+            SourceCell(2, 0, "By spouse"),
+        ),
+        schema,
+    )
+
+    assert result == {
+        "title": "Common Stock",
+        "ownership_form": None,
+        "nature": "By spouse",
+    }
+
+
+def test_aligned_source_cells_preserve_invalid_values_without_shifting() -> None:
+    schema = TableSchema(
+        name="positioned_schema",
+        columns=(
+            CanonicalColumn(
+                index=0,
+                name="title",
+                is_required=True,
+                is_anchor=True,
+                anchor_validator=lambda value: value == "Common Stock",
+            ),
+            CanonicalColumn(
+                index=1,
+                name="ownership_form",
+                is_required=False,
+                is_anchor=True,
+                anchor_validator=lambda value: value in {"D", "I"},
+                value_validator=lambda value: value in {"D", "I"},
+                preserve_invalid_exact_value=True,
+            ),
+            CanonicalColumn(
+                index=2,
+                name="nature",
+                is_required=False,
+                is_anchor=True,
+                anchor_validator=lambda value: value == "D",
+            ),
+        ),
+    )
+
+    result = align_row_to_schema(
+        (
+            SourceCell(0, 0, "Common Stock"),
+            SourceCell(1, 0, "By spouse"),
+            SourceCell(2, 0, "D"),
+        ),
+        schema,
+    )
+
+    assert result == {
+        "title": "Common Stock",
+        "ownership_form": "By spouse",
+        "nature": "D",
+    }
+
+
+def test_invalid_exact_values_are_rejected_without_opt_in() -> None:
+    schema = TableSchema(
+        name="positioned_schema",
+        columns=(
+            CanonicalColumn(
+                index=0,
+                name="title",
+                is_anchor=True,
+                anchor_validator=lambda value: bool(value),
+            ),
+            CanonicalColumn(
+                index=1,
+                name="date",
+                is_anchor=True,
+                anchor_validator=lambda value: value.isdigit(),
+                value_validator=lambda value: value.isdigit(),
+            ),
+        ),
+    )
+
+    result = align_row_to_schema(
+        (SourceCell(0, 0, "Common Stock"), SourceCell(1, 0, "Immediately")),
+        schema,
+    )
+
+    assert result is None
+
+
+def test_source_cells_with_non_schema_width_use_compacted_anchor_alignment() -> None:
+    schema = TableSchema(
+        name="positioned_schema",
+        columns=(
+            CanonicalColumn(index=0, name="title", is_required=True),
+            CanonicalColumn(
+                index=1,
+                name="transaction_code",
+                is_anchor=True,
+                anchor_validator=lambda value: value in {"P", "S"},
+            ),
+            CanonicalColumn(
+                index=2,
+                name="shares",
+                data_extractor=lambda value: value,
+                value_validator=lambda value: value.isdigit(),
+            ),
+        ),
+    )
+    source_cells = (
+        SourceCell(0, 0, "Common Stock"),
+        SourceCell(1, 0, ""),
+        SourceCell(2, 0, "P"),
+        SourceCell(3, 0, "100"),
+    )
+
+    assert align_row_to_schema(source_cells, schema) == align_row_to_schema(
+        ("Common Stock", "P", "100"), schema
+    )
 
 
 def test_value_contract_eliminates_an_assignment() -> None:

@@ -2,6 +2,11 @@
 
 from __future__ import annotations
 
+from edgar_sec.domain.forms.common.phrases import (
+    PhraseCategory,
+    PhraseEffect,
+    PhraseRule,
+)
 from edgar_sec.foundation.text.evidence import EvidenceTier, LexicalEvidencePack
 
 FORM144_HEADER_DECISIVE_PHRASES: tuple[str, ...] = (
@@ -226,10 +231,19 @@ FORM144_INSTRUCTION_VETO_PHRASES: tuple[str, ...] = (
     "executing a sale directly with a market maker",
 )
 
+FORM144_INSTRUCTION_PHRASE_RULE = PhraseRule(
+    "form144.instruction_veto",
+    tuple((phrase,) for phrase in FORM144_INSTRUCTION_VETO_PHRASES),
+    PhraseCategory.INSTRUCTION,
+    effect=PhraseEffect.BOUNDARY,
+    family_ids=frozenset({"144"}),
+)
+
 __all__ = [
     "FORM144_BOX_1_2_LEXICAL_PACK",
     "FORM144_BOX_3_LEXICAL_PACK",
     "FORM144_HEADER_LEXICAL_PACK",
+    "FORM144_INSTRUCTION_PHRASE_RULE",
     "FORM144_INSTRUCTION_VETO_PHRASES",
     "FORM144_TABLE_I_LEXICAL_PACK",
     "FORM144_TABLE_II_LEXICAL_PACK",

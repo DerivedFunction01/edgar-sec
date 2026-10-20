@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
-from edgar_sec.engine.forms.common.alignment import align_row_to_schema
+from edgar_sec.engine.forms.common.alignment import (
+    align_row_to_schema,
+    has_exact_source_positions,
+)
 from edgar_sec.engine.forms.common.row_extraction import (
     normalize_row_record,
     split_row_cells,
@@ -21,7 +24,7 @@ from edgar_sec.engine.forms.ownership.table_common import (
     is_footnote_marker,
     is_valid_row_security_title,
     iter_clean_table_rows,
-    split_ownership_row_cells,
+    split_ownership_row_cells_with_positions,
     strip_footnote_refs,
 )
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
@@ -35,9 +38,19 @@ def parse_table_i_rows(
 ) -> list[NonDerivativeTransaction]:
     """Parse Non-Derivative transaction and holding rows from Table I."""
     results: list[NonDerivativeTransaction] = []
+    last_security_title: str | None = None
     for row, row_str, footnotes in iter_clean_table_rows(section, "table i"):
-        split_cells = split_ownership_row_cells(row, frozenset(footnotes))
-        aligned = align_row_to_schema(split_cells, TABLE_I_SCHEMA)
+        source_cells = split_ownership_row_cells_with_positions(
+            row, frozenset(footnotes)
+        )
+        split_cells = tuple(cell.text for cell in source_cells if cell.text)
+        aligned = align_row_to_schema(source_cells, TABLE_I_SCHEMA)
+        if aligned is not None and aligned.get("direct_or_indirect") is None:
+            trailing_form, _, _ = extract_ownership_form(list(enumerate(split_cells)))
+            if trailing_form is not None or not has_exact_source_positions(
+                source_cells, TABLE_I_SCHEMA
+            ):
+                aligned = None
         if aligned is not None and (
             aligned.get("transaction_date")
             or aligned.get("transaction_code")
@@ -45,9 +58,11 @@ def parse_table_i_rows(
             or aligned.get("shares_owned_following")
         ):
             sec_t = clean_title(aligned.get("security_title") or "")
+            if not sec_t:
+                sec_t = last_security_title or ""
             if is_valid_row_security_title(sec_t):
                 code_raw = aligned.get("transaction_code")
-                eq_swap = bool(code_raw and any("v" in p.lower() for p in split_cells))
+                eq_swap = bool(code_raw and aligned.get("equity_swap"))
                 results.append(
                     NonDerivativeTransaction(
                         security_title=sec_t,
@@ -63,6 +78,7 @@ def parse_table_i_rows(
                         footnote_ids=tuple(footnotes),
                     )
                 )
+                last_security_title = sec_t
                 continue
 
         footnote_set = frozenset(footnotes)
@@ -77,10 +93,21 @@ def parse_table_i_rows(
 
         footnotes = list(extract_footnote_ids(row_str))
 
-        raw_title = indexed_cells[0][1]
-        security_title = clean_title(raw_title)
+        if row and not row[0].strip():
+            if last_security_title is None:
+                continue
+            security_title = last_security_title
+        else:
+            raw_title = indexed_cells[0][1]
+            security_title = clean_title(raw_title)
         if not is_valid_row_security_title(security_title):
             continue
+
+        has_equity_swap_marker = any(
+            part.strip().upper() == "V"
+            for _, cell in indexed_cells
+            for part in cell.split("|")
+        )
 
         direct_or_indirect, nature, form_idx = extract_ownership_form(indexed_cells)
 
@@ -120,7 +147,7 @@ def parse_table_i_rows(
                 and (m := TRANSACTION_CODE_RE.search(cell))
             ):
                 trans_code = m.group(1).upper()
-                equity_swap = bool(m.group(2))
+                equity_swap = bool(m.group(2)) or has_equity_swap_marker
                 code_col_idx = idx
                 continue
 
@@ -176,6 +203,7 @@ def parse_table_i_rows(
                 footnote_ids=tuple(footnotes),
             )
         )
+        last_security_title = security_title
     if holding_only:
         results = [
             row

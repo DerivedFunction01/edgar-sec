@@ -6,6 +6,10 @@ from edgar_sec.foundation.text.evidence import (
     EvidenceTier,
     LexicalEvidencePack,
 )
+from edgar_sec.domain.forms.common.phrases import (
+    PhraseCategory,
+    PhraseRule,
+)
 
 STATUTORY_CRIMINAL_WARNING_PHRASES: tuple[str, ...] = (
     "intentional misstatements or omissions of facts constitute federal criminal violations",
@@ -140,9 +144,43 @@ OMB_BURDEN_PHRASES: tuple[str, ...] = (
     "currently valid omb control number",
 )
 
+COMMON_FORM_PHRASE_RULES = (
+    PhraseRule(
+        "statutory.header_leak",
+        tuple((phrase,) for phrase in HEADER_LEAK_PHRASES),
+        PhraseCategory.TABLE_HEADING,
+    ),
+    PhraseRule(
+        "statutory.criminal_warning",
+        tuple((phrase,) for phrase in STATUTORY_CRIMINAL_WARNING_PHRASES),
+        PhraseCategory.WARNING,
+    ),
+    PhraseRule(
+        "statutory.page_boilerplate",
+        tuple((phrase,) for phrase in STATUTORY_PAGE_BOILERPLATE),
+        PhraseCategory.BOILERPLATE,
+    ),
+    PhraseRule(
+        "statutory.certification",
+        tuple((phrase,) for phrase in CERTIFICATION_DECLARATION_PHRASES),
+        PhraseCategory.CERTIFICATION,
+    ),
+    PhraseRule(
+        "statutory.omb_burden",
+        tuple((phrase,) for phrase in OMB_BURDEN_PHRASES),
+        PhraseCategory.OMB_NOTICE,
+    ),
+    PhraseRule(
+        "statutory.rule_10b5_1",
+        tuple((phrase,) for phrase in RULE_10B5_1_PHRASES),
+        PhraseCategory.INSTRUCTION,
+    ),
+)
+
 __all__ = [
     "CERTIFICATION_DECLARATION_PHRASES",
     "COMMON_STATUTORY_LEXICAL_PACK",
+    "COMMON_FORM_PHRASE_RULES",
     "HEADER_LEAK_PHRASES",
     "OMB_BURDEN_PHRASES",
     "RULE_10B5_1_PHRASES",

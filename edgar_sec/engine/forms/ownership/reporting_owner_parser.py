@@ -28,7 +28,7 @@ from edgar_sec.engine.forms.common.entities import (
 )
 from edgar_sec.engine.forms.common.signatures import extract_clean_signatory_name
 from edgar_sec.engine.forms.common.tables import parse_address_parts
-from edgar_sec.engine.forms.ownership.patterns import PROSE_BOILERPLATE_RE
+from edgar_sec.engine.forms.ownership.patterns import is_ownership_boilerplate
 from edgar_sec.engine.forms.ownership.relationship_box import RelationshipBox
 from edgar_sec.foundation.text.dates import parse_date
 
@@ -155,7 +155,7 @@ def parse_reporting_owner(
                     )
                 ):
                     candidate = candidate.split(",")[0].strip()
-                if candidate and not PROSE_BOILERPLATE_RE.search(candidate):
+                if candidate and not is_ownership_boilerplate(candidate):
                     name = candidate
             if not name and index + 1 < len(raw_lines):
                 next_line = raw_lines[index + 1].strip()
@@ -177,12 +177,12 @@ def parse_reporting_owner(
                     )
                     if (
                         candidate
-                        and not PROSE_BOILERPLATE_RE.search(candidate)
+                        and not is_ownership_boilerplate(candidate)
                         and not _FORM_MASTHEAD_RE.match(candidate)
                     ):
                         name = candidate
             continue
-        if PROSE_BOILERPLATE_RE.search(line) or NON_OWNER_JURISDICTION_RE.match(line):
+        if is_ownership_boilerplate(line) or NON_OWNER_JURISDICTION_RE.match(line):
             continue
         if csz_idx == -1 and (state_zip := STATE_ZIP_RE.search(line)):
             state = state_zip.group(1)

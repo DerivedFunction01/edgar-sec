@@ -6,12 +6,18 @@ import re
 
 from edgar_sec.domain.forms.common.statutory import (
     CERTIFICATION_DECLARATION_PHRASES,
+    COMMON_FORM_PHRASE_RULES,
     HEADER_LEAK_PHRASES,
     OMB_BURDEN_PHRASES,
     RULE_10B5_1_PHRASES,
     STATUTORY_PAGE_BOILERPLATE,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.engine.forms.common.phrases import (
+    PhraseMatch,
+    compile_phrase_rules,
+    match_phrase_rules,
+)
 
 HEADER_LEAK_ALT = build_alternation(HEADER_LEAK_PHRASES, auto_escape=True, compact=True)
 HEADER_LEAK_RE = re.compile(HEADER_LEAK_ALT, re.IGNORECASE)
@@ -37,7 +43,27 @@ CERTIFICATION_DECLARATION_RE = re.compile(
     rf"(?i)\b(?:{CERTIFICATION_DECLARATION_ALT})\b"
 )
 
+_COMPILED_COMMON_FORM_PHRASE_RULES = compile_phrase_rules(COMMON_FORM_PHRASE_RULES)
+
+
+def annotate_common_form_phrases(
+    text: str,
+    *,
+    family_id: str | None = None,
+    section_role: str | None = None,
+    source_id: str | None = None,
+) -> tuple[PhraseMatch, ...]:
+    return match_phrase_rules(
+        text,
+        _COMPILED_COMMON_FORM_PHRASE_RULES,
+        family_id=family_id,
+        section_role=section_role,
+        source_id=source_id,
+    )
+
+
 __all__ = [
+    "annotate_common_form_phrases",
     "CERTIFICATION_DECLARATION_ALT",
     "CERTIFICATION_DECLARATION_RE",
     "HEADER_LEAK_ALT",

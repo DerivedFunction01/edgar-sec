@@ -214,6 +214,51 @@ def test_table_candidates_support_above_label_orientation() -> None:
     assert {candidate.orientation for candidate in candidates} == {"above_label"}
 
 
+def test_table_candidates_distinguish_left_and_right_marks_in_one_cell() -> None:
+    geometry = SimpleNamespace(
+        rows=(
+            ("o Large accelerated filer",),
+            ("Accelerated filer o",),
+        )
+    )
+
+    candidates = extract_table_candidates(geometry, table_index=0)
+
+    assert [candidate.orientation for candidate in candidates] == [
+        "left_of_label",
+        "right_of_label",
+    ]
+
+
+def test_table_candidates_distinguish_vertical_marks_in_one_cell() -> None:
+    geometry = SimpleNamespace(
+        rows=(
+            ("o\nLarge accelerated filer",),
+            ("Large accelerated filer\no",),
+        )
+    )
+
+    candidates = extract_table_candidates(geometry, table_index=0)
+
+    assert [candidate.orientation for candidate in candidates] == [
+        "above_label",
+        "below_label",
+    ]
+
+
+def test_line_candidates_distinguish_left_and_right_marks() -> None:
+    text = "FORM 10-K\n[X] ANNUAL REPORT\nTRANSITION REPORT [ ]\n"
+
+    candidates = extract_cover_candidates(text, _boundary(text), family="10-K")
+
+    assert {
+        candidate.semantic_key: candidate.orientation for candidate in candidates
+    } == {
+        "annual": "left_of_label",
+        "transition": "right_of_label",
+    }
+
+
 def test_a_pure_yes_no_table_row_becomes_one_binary_question() -> None:
     geometry = SimpleNamespace(rows=(("", "o Yes", "x No"),))
     candidates = extract_table_candidates(geometry, table_index=0)

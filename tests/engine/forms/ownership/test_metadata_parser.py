@@ -201,6 +201,24 @@ def test_parse_metadata_handles_reporting_person_plural_and_by_signature() -> No
     assert meta.signature_date == "04/25/03"
 
 
+def test_parse_metadata_uses_preceding_grid_row_for_signer_and_anchored_date() -> None:
+    html = """<html><body>
+    <table><tr><td>1. Name and Address of Reporting Person<br>Jane Doe</td></tr></table>
+    <table>
+      <tr><td>By: Alice Example</td><td>01/02/03</td></tr>
+      <tr><td>Signature of Reporting Person</td><td>Date</td></tr>
+    </table>
+    </body></html>"""
+
+    sections = partition_ownership_tables(html)
+    meta = parse_metadata(
+        sections.boxes_1_to_7, sections.signatures, reference_year=2003
+    )
+
+    assert meta.signature_name == "Alice Example"
+    assert meta.signature_date == "2003-01-02"
+
+
 def test_parse_metadata_retains_long_entity_reporting_owner_name() -> None:
     owner = (
         "Administrative Committee of the Modine Manufacturing Company "

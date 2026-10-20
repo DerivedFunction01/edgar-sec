@@ -84,7 +84,13 @@ OWNERSHIP_TABLE_II_ROW_SPEC = RowSpec(
             allowed_values=VALID_TRANSACTION_CODES,
         ),
         _column(
-            "shares_amount", "transactionShares", FieldKind.NUMBER, value_child=True
+            "shares_amount",
+            "transactionShares",
+            FieldKind.NUMBER,
+            value_child=True,
+            minimum="0",
+            maximum="999999999999.9999",
+            max_scale=4,
         ),
         _column(
             "acquired_disposed_code",

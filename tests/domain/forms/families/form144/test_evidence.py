@@ -2,6 +2,8 @@
 
 from edgar_sec.domain.forms.families.form144.evidence import (
     FORM144_BOX_1_2_LEXICAL_PACK,
+    FORM144_INSTRUCTION_PHRASE_RULE,
+    FORM144_INSTRUCTION_VETO_PHRASES,
     FORM144_TABLE_I_LEXICAL_PACK,
     FORM144_TABLE_II_LEXICAL_PACK,
 )
@@ -38,3 +40,15 @@ def test_table_i_and_ii_evidence():
     t2_scored = score_tokens(t2_tokens, compiled_t2, EvidenceContext(min_words=1))
     assert t2_scored.score >= 3
     assert t2_scored.classification == "matched"
+
+
+def test_instruction_phrase_rule_is_family_scoped_and_source_neutral():
+    phrases = {
+        phrase
+        for sequence in FORM144_INSTRUCTION_PHRASE_RULE.sequences
+        for phrase in sequence
+    }
+
+    assert FORM144_INSTRUCTION_PHRASE_RULE.rule_id == "form144.instruction_veto"
+    assert FORM144_INSTRUCTION_PHRASE_RULE.family_ids == frozenset({"144"})
+    assert phrases == set(FORM144_INSTRUCTION_VETO_PHRASES)

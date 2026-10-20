@@ -102,3 +102,64 @@ def test_table_i_resolves_multiline_header_columns() -> None:
     assert rows[0].price_per_share == "8"
     assert rows[0].shares_owned_following == "51500"
     assert rows[0].direct_or_indirect == "D"
+
+
+def test_table_i_keeps_nature_in_its_column_when_source_omits_ownership_form() -> None:
+    html = """<html><body>
+    <table><tr><td>Table I - Non-Derivative Securities</td></tr></table>
+    <table>
+      <tr>
+        <td>1. Title of Security</td><td>2. Transaction Date</td>
+        <td>3. Deemed Execution Date</td><td>4. Transaction Code</td>
+        <td>5. Equity Swap</td><td>6. Shares</td><td>7. Acquired/Disposed</td>
+        <td>8. Price</td><td>9. Shares Owned Following</td>
+        <td>10. Ownership Form</td><td>11. Nature</td>
+      </tr>
+      <tr>
+        <td>Common Stock</td><td>04/01/1999</td><td></td><td>P</td><td></td>
+        <td>100</td><td>A</td><td>$1.00</td><td>200</td><td></td><td>By spouse</td>
+      </tr>
+    </table>
+    </body></html>"""
+
+    rows = parse_table_i_rows(partition_ownership_tables(html).table_i)
+
+    assert len(rows) == 1
+    assert rows[0].shares_owned_following == "200"
+    assert rows[0].direct_or_indirect is None
+    assert rows[0].nature_of_ownership == "By spouse"
+
+
+def test_accession_0000950138_02_000382_carries_title_and_equity_swap_marker() -> None:
+    html = """<html><body>
+    <table><tr><td>Table I - Non-Derivative Securities</td></tr></table>
+    <table>
+      <tr>
+        <td>1. Title of Security</td><td>2. Transaction Date</td>
+        <td>3. Deemed Execution Date</td><td>4. Transaction Code</td>
+        <td>5. Equity Swap</td><td>6. Shares</td><td>7. Acquired/Disposed</td>
+        <td>8. Price</td><td>9. Shares Owned Following</td>
+        <td>10. Ownership Form</td><td>11. Nature</td>
+      </tr>
+      <tr>
+        <td>Common Stock</td><td>11/18/02</td><td></td><td>G</td><td>V</td>
+        <td>950</td><td>D</td><td></td><td>252,184</td><td>D</td><td></td>
+      </tr>
+      <tr>
+        <td></td><td></td><td></td><td>G</td><td>V</td><td>500</td><td>A</td>
+        <td></td><td>34,278</td><td>I</td><td>Spouse</td>
+      </tr>
+    </table>
+    </body></html>"""
+
+    rows = parse_table_i_rows(partition_ownership_tables(html).table_i)
+
+    assert len(rows) == 2
+    assert rows[1].security_title == "Common Stock"
+    assert rows[1].transaction_code == "G"
+    assert rows[1].equity_swap_involved is True
+    assert rows[1].shares_amount == "500"
+    assert rows[1].acquired_disposed_code == "A"
+    assert rows[1].shares_owned_following == "34278"
+    assert rows[1].direct_or_indirect == "I"
+    assert rows[1].nature_of_ownership == "Spouse"

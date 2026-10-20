@@ -6,6 +6,7 @@ from decimal import Decimal, InvalidOperation
 from functools import lru_cache
 import re
 
+from edgar_sec.domain.forms.common.missing_values import COMMON_NUMERIC_NULL_POLICY
 from edgar_sec.engine.tables.numeric_cells import CURRENCY_TOKEN_RE
 from edgar_sec.foundation.regex.builder import build_alternation
 
@@ -14,8 +15,6 @@ _NUMERIC_TOKEN_RE = re.compile(
 )
 _PUNCT_STRIP_RE = re.compile(rf"[,\s]|(?:{CURRENCY_TOKEN_RE.pattern})")
 _PREFIXES = ("up to", "approx.", "approx")
-_NULL_TOKENS = frozenset({"-", "--", "none", "n/a", "nil", "null"})
-
 _SCALE_MULTIPLIERS: dict[str, int] = {
     "k": 1_000,
     "thousand": 1_000,
@@ -40,6 +39,7 @@ _SCHEMA_DECIMAL_RE = re.compile(
 )
 _SCHEMA_INTEGER_RE = re.compile(r"^(?:[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)$")
 _SCHEMA_NUMERIC_TOKEN_RE = re.compile(r"(?<![\w.])([+-]?[0-9][0-9,]*(?:\.[0-9]+)?)")
+_SPACED_THOUSANDS_SEPARATOR_RE = re.compile(r"(?<=\d),\s+(?=\d{3}(?:\D|$))")
 _SCHEMA_UNIT_SUFFIX_ALT = build_alternation(
     ("shares", "share", "shs", "sh", "units", "unit")
 )
@@ -116,12 +116,10 @@ def parse_scaled_number(token: str) -> int | float | None:
 @lru_cache(maxsize=2048)
 def clean_numeric(text: str | None) -> float | int | None:
     """Extract and parse numeric amounts from formatted cell strings."""
-    if not text:
+    if text is None or COMMON_NUMERIC_NULL_POLICY.is_missing(text):
         return None
     cleaned = text.strip()
     lower = cleaned.lower()
-    if lower in _NULL_TOKENS:
-        return None
     for prefix in _PREFIXES:
         if lower.startswith(prefix):
             cleaned = cleaned[len(prefix) :].strip()
@@ -302,7 +300,8 @@ def normalize_schema_integer_value(text: str | None, **policy: bool) -> int | No
 
 
 def extract_schema_number(text: str) -> str | None:
-    match = _SCHEMA_NUMERIC_TOKEN_RE.search(text)
+    normalized_text = _SPACED_THOUSANDS_SEPARATOR_RE.sub(",", text)
+    match = _SCHEMA_NUMERIC_TOKEN_RE.search(normalized_text)
     if match is None:
         return None
     number = match.group(1)

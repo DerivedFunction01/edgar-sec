@@ -10,6 +10,7 @@ from typing import Any
 from edgar_sec.domain.forms.families.ownership.taxonomy import VALID_TRANSACTION_CODES
 from edgar_sec.engine.forms.common.alignment import (
     CanonicalColumn,
+    SourceCell,
     TableSchema,
 )
 from edgar_sec.engine.forms.common.numbers import (
@@ -124,14 +125,26 @@ def split_ownership_row_cells(
     A footnote reference beside a value is metadata, so it is stripped from the
     cell that carries the value; the reference itself stays on the row.
     """
-    parts: list[str] = []
-    for cell in row:
-        for part in cell.split("|"):
+    return tuple(
+        cell.text
+        for cell in split_ownership_row_cells_with_positions(row, footnote_ids)
+        if cell.text
+    )
+
+
+def split_ownership_row_cells_with_positions(
+    row: Sequence[str], footnote_ids: frozenset[str] = frozenset()
+) -> tuple[SourceCell, ...]:
+    cells: list[SourceCell] = []
+    for column_index, cell in enumerate(row):
+        for part_index, part in enumerate(cell.split("|")):
             text = part.strip()
             if not text or is_footnote_marker(text, footnote_ids):
-                continue
-            parts.append(strip_footnote_refs(text))
-    return tuple(parts)
+                text = ""
+            else:
+                text = strip_footnote_refs(text)
+            cells.append(SourceCell(column_index, part_index, text))
+    return tuple(cells)
 
 
 def is_valid_row_security_title(title: str) -> bool:
@@ -319,6 +332,7 @@ def _col(
     anchor_validator: Callable[[str], bool] | None = None,
     data_extractor: Callable[[str], Any] | None = None,
     value_validator: Callable[[str], bool] | None = None,
+    preserve_invalid_exact_value: bool = False,
 ) -> CanonicalColumn:
     return CanonicalColumn(
         index=index,
@@ -328,6 +342,7 @@ def _col(
         anchor_validator=anchor_validator,
         data_extractor=data_extractor,
         value_validator=value_validator,
+        preserve_invalid_exact_value=preserve_invalid_exact_value,
     )
 
 
@@ -377,12 +392,27 @@ def split_composite_underlying_cell(cells: Sequence[str]) -> tuple[str, ...]:
     A filer writes the underlying security and its share count in one cell; read
     as a title alone, the amount is lost.
     """
-    out: list[str] = []
+    source_cells = tuple(SourceCell(index, 0, cell) for index, cell in enumerate(cells))
+    return tuple(
+        cell.text for cell in split_composite_underlying_source_cells(source_cells)
+    )
+
+
+def split_composite_underlying_source_cells(
+    cells: Sequence[SourceCell],
+) -> tuple[SourceCell, ...]:
+    out: list[SourceCell] = []
     for index, cell in enumerate(cells):
-        match = _COMPOSITE_UNDERLYING_RE.match(cell) if index else None
+        match = _COMPOSITE_UNDERLYING_RE.match(cell.text) if index else None
         if match is not None and _is_underlying(match.group("title")):
-            out.append(match.group("title"))
-            out.append(match.group("amount"))
+            out.append(
+                SourceCell(cell.column_index, cell.part_index, match.group("title"))
+            )
+            out.append(
+                SourceCell(
+                    cell.column_index, cell.part_index + 1, match.group("amount")
+                )
+            )
             continue
         out.append(cell)
     return tuple(out)
@@ -402,9 +432,9 @@ TABLE_I_SCHEMA = TableSchema(
             is_anchor=True,
             anchor_validator=_is_present,
         ),
-        _col(1, "transaction_date", False, True, _is_date, _extract_date),
+        _col(1, "transaction_date", False, True, _is_date, _extract_date, _is_date),
         _col(2, "deemed_execution_date"),
-        _col(3, "transaction_code", False, True, _is_code, _extract_code),
+        _col(3, "transaction_code", False, True, _is_code, _extract_code, _is_code),
         _col(
             4,
             "equity_swap",
@@ -412,6 +442,7 @@ TABLE_I_SCHEMA = TableSchema(
             True,
             lambda s: s.strip().upper() == "V",
             lambda s: True,
+            lambda s: s.strip().upper() == "V",
         ),
         _col(
             5,
@@ -422,7 +453,7 @@ TABLE_I_SCHEMA = TableSchema(
             extract_ownership_number,
             is_nonnegative_number,
         ),
-        _col(6, "acquired_disposed_code", False, True, _is_ad, _extract_ad),
+        _col(6, "acquired_disposed_code", False, True, _is_ad, _extract_ad, _is_ad),
         _col(
             7,
             "price_per_share",
@@ -441,14 +472,32 @@ TABLE_I_SCHEMA = TableSchema(
             extract_ownership_number,
             is_nonnegative_number,
         ),
-        _col(9, "direct_or_indirect", True, True, _is_di, _extract_di),
+        _col(9, "direct_or_indirect", False, True, _is_di, _extract_di),
         _col(10, "nature_of_ownership"),
     ),
 )
 
 _COMMON_TABLE_II_TAIL = (
-    _col(0, "exercisable_date", False, True, _is_date, _extract_date),
-    _col(1, "expiration_date", False, True, _is_date, _extract_date),
+    _col(
+        0,
+        "exercisable_date",
+        False,
+        True,
+        _is_date,
+        _extract_date,
+        _is_date,
+        preserve_invalid_exact_value=True,
+    ),
+    _col(
+        1,
+        "expiration_date",
+        False,
+        True,
+        _is_date,
+        _extract_date,
+        _is_date,
+        preserve_invalid_exact_value=True,
+    ),
     _col(2, "underlying_security_title", False, True, _is_underlying, clean_title),
     _col(
         3,
@@ -477,7 +526,7 @@ _COMMON_TABLE_II_TAIL = (
         extract_ownership_number,
         is_nonnegative_number,
     ),
-    _col(6, "direct_or_indirect", True, True, _is_di, _extract_di),
+    _col(6, "direct_or_indirect", False, True, _is_di, _extract_di, _is_di),
     _col(7, "nature_of_ownership"),
 )
 
@@ -498,9 +547,9 @@ _TX_TABLE_II_PREFIX = (
         extract_ownership_number,
         is_nonnegative_number,
     ),
-    _col(2, "transaction_date", False, True, _is_date, _extract_date),
+    _col(2, "transaction_date", False, True, _is_date, _extract_date, _is_date),
     _col(3, "deemed_execution_date"),
-    _col(4, "transaction_code", False, True, _is_code, _extract_code),
+    _col(4, "transaction_code", False, True, _is_code, _extract_code, _is_code),
     _col(5, "equity_swap", False, False, lambda s: s.strip().upper() == "V"),
     _col(
         6,
@@ -511,7 +560,7 @@ _TX_TABLE_II_PREFIX = (
         extract_ownership_number,
         is_nonnegative_number,
     ),
-    _col(7, "acquired_disposed_code", False, False, _is_ad, _extract_ad),
+    _col(7, "acquired_disposed_code", False, False, _is_ad, _extract_ad, _is_ad),
 )
 
 _HOLDING_TABLE_II_PREFIX = (
@@ -585,4 +634,8 @@ __all__ = [
     "find_trans_code",
     "is_valid_row_security_title",
     "iter_clean_table_rows",
+    "split_composite_underlying_cell",
+    "split_composite_underlying_source_cells",
+    "split_ownership_row_cells",
+    "split_ownership_row_cells_with_positions",
 ]

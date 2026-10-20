@@ -29,6 +29,12 @@ from edgar_sec.engine.forms.cover.checkmarks.frames import (
 from edgar_sec.engine.forms.cover.checkmarks.models import CheckboxCandidate
 from edgar_sec.engine.forms.cover.checkmarks.yes_no_pairs import YES_NO_WORD_RE
 from edgar_sec.engine.forms.cover.models import CoverBoundary
+from edgar_sec.engine.forms.common.mark_association import (
+    MarkLabelRelation,
+    SpanPosition,
+    relation_between,
+    select_unique_nearest,
+)
 from edgar_sec.engine.tables.protection.tags import mask_tagged_tables
 from edgar_sec.foundation.text.dates import parse_date
 from edgar_sec.foundation.text.patterns import RE_SEPARATOR_LINE
@@ -67,6 +73,31 @@ def _labels_for_schema(
 
 
 _NEWLINE_RE = re.compile(r"\n")
+
+
+def _orientation(mark: SpanPosition, label: SpanPosition) -> str:
+    relation = relation_between(mark, label)
+    return {
+        MarkLabelRelation.LEFT: "left_of_label",
+        MarkLabelRelation.RIGHT: "right_of_label",
+        MarkLabelRelation.ABOVE: "above_label",
+        MarkLabelRelation.BELOW: "below_label",
+        MarkLabelRelation.SAME_CELL: "same_cell",
+        MarkLabelRelation.SAME_LINE: "same_line",
+        MarkLabelRelation.UNRESOLVED: "unresolved",
+    }[relation]
+
+
+def _span_position(
+    row: int,
+    column: int | None,
+    line: int,
+    span: tuple[int, int],
+    source_text: str | None = None,
+) -> SpanPosition:
+    if source_text is not None:
+        line = source_text.count("\n", 0, span[0])
+    return SpanPosition(row, column, line, span[0], span[1])
 
 
 @dataclass(frozen=True, slots=True)
@@ -183,7 +214,22 @@ def _yes_no_candidates(
                 source_region=f"table-{table_index}/row-{row_index}/column-{column}",
                 row=row_index,
                 column=column,
-                orientation="same_cell",
+                orientation=_orientation(
+                    _span_position(
+                        row_index,
+                        column,
+                        0,
+                        (marks[0].start(), marks[0].end()),
+                        text,
+                    ),
+                    _span_position(
+                        row_index,
+                        column,
+                        0,
+                        (answer.start(), answer.end()),
+                        text,
+                    ),
+                ),
                 mark_span=(marks[0].start(), marks[0].end()),
             )
         )
@@ -269,7 +315,20 @@ def _line_yes_no_candidates(
                             f"line-{line_index}-mark-{line_offset + mark.start()}"
                         ),
                         row=line_index,
-                        orientation="same_line",
+                        orientation=_orientation(
+                            _span_position(
+                                line_index,
+                                None,
+                                0,
+                                (mark.start(), mark.end()),
+                            ),
+                            _span_position(
+                                line_index,
+                                None,
+                                0,
+                                (answer.start(), answer.end()),
+                            ),
+                        ),
                         mark_span=(
                             line_offset + mark.start(),
                             line_offset + mark.end(),
@@ -329,32 +388,62 @@ def extract_table_candidates(
         all_left = len(labels) == len(marks) > 1 and all(
             marks[i][0] < labels[i][0] for i in range(len(labels))
         )
+        cell_texts = {column: text for column, text, _, _ in cells}
         for label_idx, (label_column, (key, phrase, start, end, group)) in enumerate(
             labels
         ):
+            label_position = _span_position(
+                row_index,
+                label_column,
+                0,
+                (start, end),
+                cell_texts[label_column],
+            )
             same_cell = [
                 (column, match) for column, match in marks if column == label_column
             ]
             if same_cell:
-                related = same_cell
+                selected = select_unique_nearest(
+                    label_position,
+                    same_cell,
+                    position_of=lambda item: _span_position(
+                        row_index,
+                        item[0],
+                        0,
+                        (item[1].start(), item[1].end()),
+                        cell_texts[item[0]],
+                    ),
+                )
+                related = [selected] if selected is not None else []
             elif all_right or all_left:
                 related = [marks[label_idx]]
             else:
                 available = [m for m in marks if id(m[1]) not in used_marks]
                 if not available:
                     available = marks
-                related = sorted(
+                selected = select_unique_nearest(
+                    label_position,
                     available,
-                    key=lambda item: abs(item[0] - label_column),
-                )[:1]
+                    position_of=lambda item: _span_position(
+                        row_index,
+                        item[0],
+                        0,
+                        (item[1].start(), item[1].end()),
+                        cell_texts[item[0]],
+                    ),
+                )
+                related = [selected] if selected is not None else []
             for mark_column, mark in related:
                 used_marks.add(id(mark))
-                orientation = (
-                    "left_of_label"
-                    if mark_column < label_column
-                    else "right_of_label"
-                    if mark_column > label_column
-                    else "same_cell"
+                orientation = _orientation(
+                    _span_position(
+                        row_index,
+                        mark_column,
+                        0,
+                        (mark.start(), mark.end()),
+                        cell_texts[mark_column],
+                    ),
+                    label_position,
                 )
                 candidates.append(
                     _candidate_from_match(
@@ -388,20 +477,49 @@ def extract_table_candidates(
                 (other_row, item)
                 for other_row, label_cells in label_rows
                 for item in label_cells
+                if item[2]
             ]
             unused_options = [
                 option
                 for option in label_options
                 if (option[0], option[1][0]) not in used_vertical_labels
             ]
-            other_row, (label_column, _, found, _) = min(
-                unused_options or label_options,
-                key=lambda item: abs(item[0] - row_index) + abs(item[1][0] - column),
+            target = _span_position(
+                row_index,
+                column,
+                0,
+                (marks_in_cell[0].start(), marks_in_cell[0].end()),
+                cell_text,
             )
+            selected = select_unique_nearest(
+                target,
+                unused_options or label_options,
+                position_of=lambda option: _span_position(
+                    option[0],
+                    option[1][0],
+                    0,
+                    (option[1][2][0][2], option[1][2][0][3]),
+                    option[1][1],
+                ),
+            )
+            if selected is None:
+                continue
+            other_row, (label_column, label_text, found, _) = selected
             used_vertical_labels.add((other_row, label_column))
             key, phrase, start, end, group = found[0]
-            orientation = "above_label" if row_index < other_row else "below_label"
             for mark in marks_in_cell:
+                orientation = _orientation(
+                    _span_position(
+                        row_index,
+                        column,
+                        0,
+                        (mark.start(), mark.end()),
+                        cell_text,
+                    ),
+                    _span_position(
+                        other_row, label_column, 0, (start, end), label_text
+                    ),
+                )
                 candidates.append(
                     _candidate_from_match(
                         key=key,
@@ -521,6 +639,7 @@ def extract_cover_candidates(
         if not labels:
             continue
         all_line_marks = signals.marks
+        used_line_marks: set[int] = set()
         for label_index, (key, phrase, start, end, group) in enumerate(labels):
             line_marks = all_line_marks
             if group == REPORT_PERIOD_GROUP:
@@ -534,27 +653,38 @@ def extract_cover_candidates(
             elif len(labels) == 1:
                 mark_refs = [(line_index, mark) for mark in line_marks]
             elif line_marks:
-                mark_refs = [
-                    (
-                        line_index,
-                        min(line_marks, key=lambda mark: abs(mark.start() - start)),
-                    )
-                ]
+                selected = select_unique_nearest(
+                    _span_position(line_index, None, 0, (start, end)),
+                    [mark for mark in line_marks if id(mark) not in used_line_marks],
+                    position_of=lambda mark: _span_position(
+                        line_index, None, 0, (mark.start(), mark.end())
+                    ),
+                )
+                mark_refs = [(line_index, selected)] if selected is not None else []
             else:
                 mark_refs = []
+            used_line_marks.update(id(mark) for _, mark in mark_refs)
             if not mark_refs:
                 if group == REPORT_PERIOD_GROUP:
                     continue
-                for nearby_index in range(
-                    max(0, line_index - 2),
-                    min(len(lines), line_index + 3),
-                ):
-                    if nearby_index == line_index:
-                        continue
-                    mark_refs.extend(
-                        (nearby_index, mark)
-                        for mark in _signals_for(nearby_index).marks
+                nearby_marks = [
+                    (nearby_index, mark)
+                    for nearby_index in range(
+                        max(0, line_index - 2),
+                        min(len(lines), line_index + 3),
                     )
+                    if nearby_index != line_index
+                    for mark in _signals_for(nearby_index).marks
+                ]
+                selected = select_unique_nearest(
+                    _span_position(line_index, None, 0, (start, end)),
+                    nearby_marks,
+                    position_of=lambda item: _span_position(
+                        item[0], None, 0, (item[1].start(), item[1].end())
+                    ),
+                )
+                if selected is not None:
+                    mark_refs.append(selected)
             row_text = " ".join(
                 [line]
                 + [
@@ -579,14 +709,11 @@ def extract_cover_candidates(
                         row_text=row_text or line,
                         source_region=f"line-{mark_line}-mark-{mark_start}",
                         row=line_index,
-                        orientation=(
-                            "above_label"
-                            if mark_line < line_index
-                            else "below_label"
-                            if mark_line > line_index
-                            else "left_of_label"
-                            if mark.start() < start
-                            else "right_of_label"
+                        orientation=_orientation(
+                            _span_position(
+                                mark_line, None, 0, (mark.start(), mark.end())
+                            ),
+                            _span_position(line_index, None, 0, (start, end)),
                         ),
                         mark_span=(mark_start, mark_end),
                         answer_matches=_signals_for(mark_line).answers,

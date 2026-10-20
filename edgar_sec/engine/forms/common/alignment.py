@@ -18,6 +18,7 @@ class CanonicalColumn:
     anchor_validator: Callable[[str], bool] | None = None
     data_extractor: Callable[[str], Any] | None = None
     value_validator: Callable[[str], bool] | None = None
+    preserve_invalid_exact_value: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -42,6 +43,13 @@ class TableSchema:
     @property
     def total_columns(self) -> int:
         return len(self.columns)
+
+
+@dataclass(frozen=True, slots=True)
+class SourceCell:
+    column_index: int
+    part_index: int
+    text: str
 
 
 @dataclass(frozen=True, slots=True)
@@ -97,6 +105,49 @@ def _later_acceptor(cols: list[CanonicalColumn], index: int, cell: str) -> bool:
         later.value_validator is not None and later.value_validator(cell)
         for later in cols[index + 1 :]
     )
+
+
+def has_exact_source_positions(
+    cells: tuple[SourceCell, ...], schema: TableSchema
+) -> bool:
+    return len(cells) == schema.total_columns and all(
+        cell.column_index == index and cell.part_index == 0
+        for index, cell in enumerate(cells)
+    )
+
+
+def _positional_projection(
+    cells: tuple[SourceCell, ...], schema: TableSchema
+) -> tuple[bool, dict[str, Any] | None]:
+    if not has_exact_source_positions(cells, schema):
+        return False, None
+
+    result: dict[str, Any] = {}
+    valid_anchor_count = 0
+    has_invalid_values = False
+    for column, source_cell in zip(schema.columns, cells, strict=True):
+        value = source_cell.text.strip()
+        if not value:
+            result[column.name] = None
+            continue
+        if (
+            column.is_anchor
+            and column.anchor_validator is not None
+            and column.anchor_validator(value)
+        ):
+            valid_anchor_count += 1
+        if column.value_validator is not None and not column.value_validator(value):
+            if not column.preserve_invalid_exact_value:
+                return True, None
+            has_invalid_values = True
+            result[column.name] = value
+            continue
+        result[column.name] = (
+            column.data_extractor(value) if column.data_extractor else value
+        )
+    if has_invalid_values and valid_anchor_count < 2:
+        return True, None
+    return True, result
 
 
 def _project_interval(
@@ -163,11 +214,18 @@ def _project_interval(
 
 
 def align_row_to_schema(
-    cells: tuple[str, ...],
+    cells: tuple[str, ...] | tuple[SourceCell, ...],
     schema: TableSchema,
 ) -> dict[str, Any] | None:
     """Align raw row cells to canonical schema columns using anchor intervals."""
-    clean_cells = [c.strip() for c in cells]
+    if cells and isinstance(cells[0], SourceCell):
+        source_cells = tuple(cells)
+        aligned, result = _positional_projection(source_cells, schema)
+        if aligned:
+            return result
+        clean_cells = [cell.text.strip() for cell in source_cells if cell.text.strip()]
+    else:
+        clean_cells = [c.strip() for c in cells]
     indexed_cells = [(i, c) for i, c in enumerate(clean_cells) if c]
     if not indexed_cells:
         return None
@@ -214,7 +272,9 @@ def align_row_to_schema(
 __all__ = [
     "AnchorMatch",
     "CanonicalColumn",
+    "SourceCell",
     "TableSchema",
     "align_row_to_schema",
     "find_strict_anchors",
+    "has_exact_source_positions",
 ]

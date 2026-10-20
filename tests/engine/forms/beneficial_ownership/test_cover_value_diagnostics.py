@@ -4,6 +4,7 @@ from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import 
     cover_field_has_layout_residue,
     has_descriptive_numeric_qualifier,
     is_eight_character_cusip,
+    parsed_field_boilerplate_match,
     two_character_codes,
 )
 
@@ -36,3 +37,18 @@ def test_two_character_codes_preserves_numeric_fund_codes() -> None:
     assert two_character_codes("(SEE INSTRUCTIONS) 00-Funds of advisory clients") == (
         "00",
     )
+
+
+def test_parsed_field_boilerplate_uses_shared_phrase_annotations() -> None:
+    assert (
+        parsed_field_boilerplate_match("Date of original filing") == "Date of original"
+    )
+    assert parsed_field_boilerplate_match("See instruction\n6 for procedure") == (
+        "See instruction\n6 for procedure"
+    )
+    assert parsed_field_boilerplate_match("I.R.S. Identification No.") == (
+        "I.R.S. Identification"
+    )
+    assert parsed_field_boilerplate_match("SCHEDULE 13D") == "SCHEDULE 13D"
+    assert parsed_field_boilerplate_match("ITEM 4. Source of funds") == "ITEM 4."
+    assert parsed_field_boilerplate_match("Jane Doe") is None

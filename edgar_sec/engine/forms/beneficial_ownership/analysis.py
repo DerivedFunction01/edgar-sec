@@ -6,6 +6,9 @@ import re
 from typing import Any
 import xml.etree.ElementTree as ET
 
+from edgar_sec.domain.forms.families.beneficial_ownership.identifiers import (
+    CUSIP_UNAVAILABLE_POLICY,
+)
 from edgar_sec.engine.forms.common.extraction import local_name
 from edgar_sec.engine.forms.common.statutory import (
     HEADER_LEAK_RE,
@@ -18,7 +21,6 @@ from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import 
     cover_field_has_layout_residue,
     has_descriptive_numeric_qualifier,
     is_eight_character_cusip,
-    is_unavailable_cusip,
     cusip_page_residue_match,
     parsed_field_boilerplate_match,
 )
@@ -99,7 +101,7 @@ def _source_has_signature(source_text: str) -> bool:
     return False
 
 
-def _boilerplate_match(field: str, value: str) -> re.Match[str] | None:
+def _boilerplate_match(field: str, value: str) -> str | None:
     if field in _NARRATIVE_FIELD_NAMES or field == "signature":
         return None
     return parsed_field_boilerplate_match(value)
@@ -299,7 +301,7 @@ def _analyze_xml(
                         "kind": "boilerplate_in_parsed_field",
                         "field": name,
                         "value": value,
-                        "matched_text": boilerplate.group(0),
+                        "matched_text": boilerplate,
                         "detail": f"parsed field {name!r} contains filing boilerplate",
                     }
                 )
@@ -368,7 +370,7 @@ def _analyze_xml(
     for element in _elements(root, FIELD_TAGS["issuerCusip"]):
         value = _text(element)
         normalized = value.replace(" ", "").replace("-", "")
-        if is_unavailable_cusip(value):
+        if CUSIP_UNAVAILABLE_POLICY.is_missing(value):
             anomalies.append(
                 {
                     "accession": accession,

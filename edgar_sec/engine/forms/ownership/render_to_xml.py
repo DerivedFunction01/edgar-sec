@@ -309,6 +309,16 @@ def _build_derivative_xml(
                 reference_year,
                 unresolved,
             )
+        shares_amount = values["shares_amount"]
+        if (
+            not is_holding
+            and shares_amount is not None
+            and constraint_issue(shares_amount, _row_field(spec, "shares_amount"))
+            is None
+        ):
+            amounts_el = ET.SubElement(tx_el, "transactionAmounts")
+            _emit(amounts_el, spec, "shares_amount", values)
+            _emit(amounts_el, spec, "acquired_disposed_code", values)
         if (
             values["exercisable_date"] is not None
             or values["expiration_date"] is not None
@@ -316,13 +326,18 @@ def _build_derivative_xml(
             exp_el = ET.SubElement(tx_el, "exerciseDateAndExpirationDate")
             _emit(exp_el, spec, "exercisable_date", values)
             _emit(exp_el, spec, "expiration_date", values)
-        if (
-            values["underlying_security_title"] is not None
-            or values["underlying_shares_amount"] is not None
-        ):
+        if values["underlying_shares_amount"] is not None:
             under_el = ET.SubElement(tx_el, "underlyingSecurity")
             _emit(under_el, spec, "underlying_security_title", values)
             _emit(under_el, spec, "underlying_shares_amount", values)
+        elif values["underlying_security_title"] is not None:
+            record = build_scalar_evidence_record(
+                f"table_ii[{index}].underlyingSecurityTitle",
+                values["underlying_security_title"],
+                status="missing_underlying_amount",
+            )
+            if record is not None:
+                unresolved.append(record)
         shares_owned = values["derivative_shares_owned_following"]
         if shares_owned is None and is_holding:
             shares_owned = values["shares_amount"]

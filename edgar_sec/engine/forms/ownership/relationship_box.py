@@ -17,8 +17,12 @@ from edgar_sec.domain.forms.common.checkmarks import (
     mark_token_state,
 )
 from edgar_sec.engine.forms.common.entities import NON_OWNER_JURISDICTION_RE
+from edgar_sec.engine.forms.common.mark_association import (
+    SpanPosition,
+    select_unique_nearest,
+)
 from edgar_sec.engine.forms.common.marks import canonicalize_filled_marks
-from edgar_sec.engine.forms.ownership.patterns import PROSE_BOILERPLATE_RE
+from edgar_sec.engine.forms.ownership.patterns import is_ownership_boilerplate
 from edgar_sec.foundation.regex.builder import build_alternation
 
 ROLE_KEYS = ("director", "officer", "ten_percent", "other")
@@ -348,10 +352,12 @@ def _bind_roles(
     roles = {key: False for key in ROLE_KEYS}
     bound: list[tuple[int, bool]] = []
     used: set[int] = set()
+    scope_start = 0
     for index, token in enumerate(tokens):
         if token.kind is not TokenKind.LABEL:
             continue
-        mark = _nearest_mark(tokens, index, used)
+        mark = _nearest_mark(tokens, index, scope_start, used)
+        scope_start = index + 1
         if mark is None:
             continue
         used.add(mark)
@@ -377,15 +383,25 @@ def _value_anchor(tokens: Sequence[Token], bound: Sequence[tuple[int, bool]]) ->
     return bound[-1][0]
 
 
-def _nearest_mark(tokens: Sequence[Token], index: int, used: set[int]) -> int | None:
-    """Find the mark that names a label, searching back to the previous label."""
-    for candidate in range(index - 1, -1, -1):
-        token = tokens[candidate]
-        if token.kind is TokenKind.LABEL:
-            return None
-        if token.kind is TokenKind.MARK:
-            return None if candidate in used else candidate
-    return None
+def _nearest_mark(
+    tokens: Sequence[Token], index: int, scope_start: int, used: set[int]
+) -> int | None:
+    """Select a unique nearest mark in the reading-order interval before a label."""
+    candidates = [
+        candidate
+        for candidate in range(scope_start, index)
+        if tokens[candidate].kind is TokenKind.MARK and candidate not in used
+    ]
+    selected = select_unique_nearest(
+        _token_position(tokens[index]),
+        candidates,
+        position_of=lambda candidate: _token_position(tokens[candidate]),
+    )
+    return selected
+
+
+def _token_position(token: Token) -> SpanPosition:
+    return SpanPosition(token.row, token.column, token.line, token.offset, token.end)
 
 
 def _is_value_text(text: str) -> bool:
@@ -395,7 +411,7 @@ def _is_value_text(text: str) -> bool:
     lowered = stripped.lower()
     if any(term in lowered for term in _VALUE_REJECT_TERMS):
         return False
-    if PROSE_BOILERPLATE_RE.search(stripped):
+    if is_ownership_boilerplate(stripped):
         return False
     if NON_OWNER_JURISDICTION_RE.match(stripped):
         return False

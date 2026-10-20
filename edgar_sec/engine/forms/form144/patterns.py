@@ -6,7 +6,12 @@ import re
 
 from edgar_sec.domain.forms.families.form144.evidence import (
     FORM144_BOX_1_2_DECISIVE_PHRASES,
-    FORM144_INSTRUCTION_VETO_PHRASES,
+    FORM144_INSTRUCTION_PHRASE_RULE,
+)
+from edgar_sec.engine.forms.common.phrases import (
+    PhraseMatch,
+    compile_phrase_rules,
+    match_phrase_rules,
 )
 from edgar_sec.engine.forms.common.tables import IGNORE_SUBBOX_MARKERS
 from edgar_sec.foundation.regex.builder import build_alternation
@@ -32,13 +37,20 @@ PLAN_ADOPTION_RE = re.compile(
 
 NUMERIC_TOKEN_RE = re.compile(r"^\s*[\$]?\s*([0-9][0-9,]*(?:\.[0-9]+)?)\b")
 
-_INSTRUCTION_ALT = build_alternation(
-    FORM144_INSTRUCTION_VETO_PHRASES, auto_escape=True, compact=True
+_COMPILED_FORM144_INSTRUCTION_RULE = compile_phrase_rules(
+    (FORM144_INSTRUCTION_PHRASE_RULE,)
 )
-FORM144_INSTRUCTION_VETO_RE = re.compile(_INSTRUCTION_ALT, re.IGNORECASE)
 FORM144_NUMBERED_INSTRUCTION_RE = re.compile(
     r"^\s*[123]\s*\.\s*\(\s*[a-g]\s*\)", re.IGNORECASE
 )
+
+
+def form144_instruction_matches(text: str) -> tuple[PhraseMatch, ...]:
+    return match_phrase_rules(
+        text,
+        _COMPILED_FORM144_INSTRUCTION_RULE,
+        family_id="144",
+    )
 
 
 def is_form144_instruction_line(line: str) -> bool:
@@ -51,7 +63,7 @@ def is_form144_instruction_line(line: str) -> bool:
         return False
     if FORM144_NUMBERED_INSTRUCTION_RE.search(line):
         return True
-    return bool(FORM144_INSTRUCTION_VETO_RE.search(line))
+    return bool(form144_instruction_matches(line))
 
 
 SECURITY_CLASS_TERMS: tuple[str, ...] = (
@@ -171,7 +183,6 @@ __all__ = [
     "BOX_3D_TAIL_RE",
     "BOX_3G_EXCHANGE_RE",
     "COVER_HEADER_OR_SUBBOX_TERMS",
-    "FORM144_INSTRUCTION_VETO_RE",
     "FORM144_NUMBERED_INSTRUCTION_RE",
     "NOTICE_DATE_LABEL_RE",
     "NUMERIC_TOKEN_RE",
@@ -188,4 +199,5 @@ __all__ = [
     "SECURITY_CLASS_TERMS",
     "is_cover_header_or_subbox_line",
     "is_form144_instruction_line",
+    "form144_instruction_matches",
 ]

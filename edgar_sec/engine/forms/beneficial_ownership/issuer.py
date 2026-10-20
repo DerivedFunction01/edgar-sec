@@ -4,6 +4,9 @@ from __future__ import annotations
 
 import re
 
+from edgar_sec.domain.forms.families.beneficial_ownership.identifiers import (
+    CUSIP_UNAVAILABLE_POLICY,
+)
 from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     AddressDetails,
     IssuerMetadata,
@@ -11,7 +14,6 @@ from edgar_sec.domain.forms.families.beneficial_ownership.models import (
 from edgar_sec.engine.forms.common.tables import parse_address_parts
 from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
     cusip_page_residue_match,
-    is_unavailable_cusip,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
 
@@ -366,7 +368,7 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
         }
         value = next(iter(unique.values())) if len(unique) == 1 else None
         if field == "cusip" and value:
-            if is_unavailable_cusip(value):
+            if CUSIP_UNAVAILABLE_POLICY.is_missing(value):
                 value = None
             elif page_marker := cusip_page_residue_match(value):
                 prefix = value[: page_marker.start()]

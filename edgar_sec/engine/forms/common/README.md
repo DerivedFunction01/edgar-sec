@@ -5,9 +5,10 @@ Reusable engine parsers and extraction utilities shared across multi-form pipeli
 ## Purpose
 
 Provides reusable token-based extractors for conformed signatures, delegation structures,
-and legal notice boundary detection across diverse SEC form families. Owns the shared
-field contract every form family normalizes through: value types, date anchoring,
-jurisdiction resolution, tabular row extraction, and unresolved-content evidence.
+source-aware phrase annotations, and legal notice boundary detection across diverse SEC
+form families. Owns the shared field contract every form family normalizes through: value
+types, date anchoring, jurisdiction resolution, tabular row extraction, and
+unresolved-content evidence.
 
 ## Contracts
 
@@ -17,6 +18,7 @@ jurisdiction resolution, tabular row extraction, and unresolved-content evidence
 - **One field contract**: Families declare fields and table columns as specs; this module owns normalization, constraint checking, and XML emission.
 - **One evidence record**: Unresolved scalar values and unparsed regions share a single sidecar record shape.
 - **One mark writer**: `marks.py` owns how a recognized mark is written back into parser input; the token vocabulary stays in the domain layer.
+- **Source-aware phrase matches**: Phrase classification returns source offsets and neighboring lines; matching never mutates parser input.
 
 ## Deliberate gaps
 

@@ -8,6 +8,7 @@ from edgar_sec.engine.forms.common.statutory import (
     OMB_NUMBER_RE,
     RULE_10B5_1_RE,
     STATUTORY_PAGE_ARTIFACT_RE,
+    annotate_common_form_phrases,
 )
 
 
@@ -36,3 +37,30 @@ def test_omb_rule10b5_and_certifications():
             "I certify that the information set forth in this statement is true, complete and correct."
         )
     )
+
+
+def test_annotate_common_phrases_keeps_offsets_and_neighbor_context():
+    text = (
+        "Signature of reporting person\n"
+        "Intentional misstatements or omissions of facts\n"
+        "constitute Federal criminal violations.\n"
+        "18 U.S.C. 1001\n"
+    )
+
+    matches = annotate_common_form_phrases(
+        text,
+        family_id="ownership",
+        section_role="signatures",
+        source_id="filing-1",
+    )
+    warning = next(
+        match for match in matches if match.rule_id == "statutory.criminal_warning"
+    )
+
+    assert text[warning.start_offset : warning.end_offset] == warning.matched_text
+    assert warning.matched_text.endswith("Federal criminal violations")
+    assert warning.start_line == 2
+    assert warning.end_line == 3
+    assert warning.previous_lines == ("Signature of reporting person",)
+    assert warning.next_lines == ("18 U.S.C. 1001",)
+    assert warning.source_id == "filing-1"

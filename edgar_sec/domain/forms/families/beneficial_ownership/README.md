@@ -11,6 +11,8 @@ Provides immutable data structures representing cover page reporting person matr
 - **Unified matrix representation**: Reporting person cover evidence carries both statutory line numbers and canonical semantic tags, allowing uniform extraction across Schedule 13D (14 slots) and Schedule 13G (12 slots).
 - **Statutory item sequence**: Narrative taxonomies map statutory item headings for 13D (Items 1–7) and 13G (Items 1–10).
 - **Leaf imports only**: Submodules must be imported directly without package re-exports.
+- **CUSIP availability is field-specific**: Explicit unavailable markers apply only to CUSIP values; numeric nulls and table placeholders keep their own policies.
+- **Phrase rules are scoped**: Cover-label and boilerplate phrases classify only candidate values; raw text and neighboring evidence remain available.
 
 ## Deliberate gaps
 

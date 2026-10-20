@@ -6,6 +6,12 @@ import re
 
 from edgar_sec.domain.forms.families.ownership.evidence import (
     OWNERSHIP_FORM_NAMES,
+    OWNERSHIP_PROSE_BOILERPLATE_RULE,
+)
+from edgar_sec.engine.forms.common.phrases import (
+    PhraseMatch,
+    compile_phrase_rules,
+    match_phrase_rules,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
 
@@ -20,45 +26,22 @@ OWNERSHIP_PAGE_MARKER_RE = re.compile(
     rf"(?i)\b(?:{OWNERSHIP_FORM_ALT})\b|page\s+\d+|\(continued\)"
 )
 
-PROSE_BOILERPLATE_TERMS: tuple[str, ...] = (
-    "check this box if no longer",
-    "check this box if no longer subject",
-    "form 4 or form 5 obligations",
-    "see instruction",
-    "washington, d.c.",
-    "securities and exchange commission",
-    "statement of changes in beneficial ownership",
-    "name and address of reporting person",
-    "name and address",
-    "(print or type responses)",
-    "print or type responses",
-    "issuer name and ticker",
-    "ticker or trading symbol",
-    "or trading symbol",
-    "trading symbol",
-    "i.r.s. identification number",
-    "if an entity (voluntary)",
-    "statement for month/day/year",
-    "if amendment, date of original",
-    "relationship of reporting person",
-    "to issuer",
-    "check all applicable",
-    "individual or joint/group filing",
-    "table i - non-derivative",
-    "table ii - derivative",
-    "reminder: report on a separate line",
-    "report on a separate line for each class",
-    "potential persons who are to respond",
-    "*intentional misstatements",
-    "**signature of reporting person",
-    "person* (last, first, middle)",
-    "last, first, middle",
-    "(last, first, middle)",
-    "if an entity",
-    *OWNERSHIP_FORM_NAMES,
+_COMPILED_PROSE_BOILERPLATE_RULE = compile_phrase_rules(
+    (OWNERSHIP_PROSE_BOILERPLATE_RULE,)
 )
-PROSE_BOILERPLATE_ALT = build_alternation(PROSE_BOILERPLATE_TERMS, auto_escape=True)
-PROSE_BOILERPLATE_RE = re.compile(rf"(?:{PROSE_BOILERPLATE_ALT})", re.IGNORECASE)
+
+
+def match_ownership_boilerplate(text: str) -> tuple[PhraseMatch, ...]:
+    return match_phrase_rules(
+        text,
+        _COMPILED_PROSE_BOILERPLATE_RULE,
+        family_id="ownership",
+    )
+
+
+def is_ownership_boilerplate(text: str) -> bool:
+    return bool(match_ownership_boilerplate(text))
+
 
 TABLE_TERMINATORS: tuple[str, ...] = (
     "/s/",
@@ -142,9 +125,8 @@ __all__ = [
     "OWNERSHIP_FORM_ALT",
     "OWNERSHIP_MASTHEAD_RE",
     "OWNERSHIP_PAGE_MARKER_RE",
-    "PROSE_BOILERPLATE_ALT",
-    "PROSE_BOILERPLATE_RE",
-    "PROSE_BOILERPLATE_TERMS",
     "SUBHEADER_CELLS",
     "TABLE_TERMINATORS",
+    "is_ownership_boilerplate",
+    "match_ownership_boilerplate",
 ]

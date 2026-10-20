@@ -2,6 +2,11 @@
 
 from __future__ import annotations
 
+from edgar_sec.domain.forms.common.phrases import (
+    PhraseCategory,
+    PhraseEffect,
+    PhraseRule,
+)
 from edgar_sec.foundation.text.evidence import EvidenceTier, LexicalEvidencePack
 
 FOOTNOTE_DECISIVE_PHRASES: tuple[str, ...] = (
@@ -94,6 +99,52 @@ OWNERSHIP_FOOTNOTE_LEXICAL_PACK = LexicalEvidencePack(
 )
 
 OWNERSHIP_FORM_NAMES: tuple[str, ...] = ("form 3", "form 4", "form 5")
+
+PROSE_BOILERPLATE_TERMS: tuple[str, ...] = (
+    "check this box if no longer",
+    "check this box if no longer subject",
+    "form 4 or form 5 obligations",
+    "see instruction",
+    "washington, d.c.",
+    "securities and exchange commission",
+    "statement of changes in beneficial ownership",
+    "name and address of reporting person",
+    "name and address",
+    "(print or type responses)",
+    "print or type responses",
+    "issuer name and ticker",
+    "ticker or trading symbol",
+    "or trading symbol",
+    "trading symbol",
+    "i.r.s. identification number",
+    "if an entity (voluntary)",
+    "statement for month/day/year",
+    "if amendment, date of original",
+    "relationship of reporting person",
+    "to issuer",
+    "check all applicable",
+    "individual or joint/group filing",
+    "table i - non-derivative",
+    "table ii - derivative",
+    "reminder: report on a separate line",
+    "report on a separate line for each class",
+    "potential persons who are to respond",
+    "*intentional misstatements",
+    "**signature of reporting person",
+    "person* (last, first, middle)",
+    "last, first, middle",
+    "(last, first, middle)",
+    "if an entity",
+    *OWNERSHIP_FORM_NAMES,
+)
+
+OWNERSHIP_PROSE_BOILERPLATE_RULE = PhraseRule(
+    "ownership.prose_boilerplate",
+    tuple((phrase,) for phrase in PROSE_BOILERPLATE_TERMS),
+    PhraseCategory.BOILERPLATE,
+    effect=PhraseEffect.EXCLUDE_FROM_VALUE,
+    family_ids=frozenset({"ownership"}),
+)
 
 
 TABLE_I_HOLDING_PHRASES: tuple[str, ...] = (
@@ -362,9 +413,11 @@ __all__ = [
     "OWNERSHIP_BOXES_LEXICAL_PACK",
     "OWNERSHIP_FOOTNOTE_LEXICAL_PACK",
     "OWNERSHIP_FORM_NAMES",
+    "OWNERSHIP_PROSE_BOILERPLATE_RULE",
     "OWNERSHIP_HEADER_LEXICAL_PACK",
     "OWNERSHIP_TABLE_I_LEXICAL_PACK",
     "OWNERSHIP_TABLE_II_LEXICAL_PACK",
+    "PROSE_BOILERPLATE_TERMS",
     "TABLE_I_DECISIVE_PHRASES",
     "TABLE_I_HOLDING_PHRASES",
     "TABLE_I_STRONG_PHRASES",

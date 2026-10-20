@@ -7,7 +7,9 @@ from edgar_sec.engine.forms.ownership.table_common import (
     is_footnote_marker,
     is_nature_like,
     split_composite_underlying_cell,
+    split_composite_underlying_source_cells,
     split_ownership_row_cells,
+    split_ownership_row_cells_with_positions,
     trailing_ownership_form,
 )
 
@@ -62,6 +64,35 @@ def test_a_footnote_reference_beside_a_value_is_stripped() -> None:
     cells = split_ownership_row_cells(("Phantom Stock Unit", "279 (6)", "D"))
 
     assert cells == ("Phantom Stock Unit", "279", "D")
+
+
+def test_positioned_row_cells_keep_empty_and_footnote_columns() -> None:
+    cells = split_ownership_row_cells_with_positions(
+        ("Common Stock", "", "100 (1)", "(2)"), frozenset({"1", "2"})
+    )
+
+    assert [(cell.column_index, cell.text) for cell in cells] == [
+        (0, "Common Stock"),
+        (1, ""),
+        (2, "100"),
+        (3, ""),
+    ]
+
+
+def test_composite_underlying_split_retains_source_column_provenance() -> None:
+    cells = split_composite_underlying_source_cells(
+        split_ownership_row_cells_with_positions(
+            ("Option", "Common Stock - 60,000.00", "", "D")
+        )
+    )
+
+    assert [(cell.column_index, cell.part_index, cell.text) for cell in cells] == [
+        (0, 0, "Option"),
+        (1, 0, "Common Stock"),
+        (1, 1, "60,000.00"),
+        (2, 0, ""),
+        (3, 0, "D"),
+    ]
 
 
 def test_a_composite_underlying_cell_splits_into_title_and_amount() -> None:

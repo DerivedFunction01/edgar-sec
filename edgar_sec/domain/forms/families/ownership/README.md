@@ -10,6 +10,7 @@ Supplies declarative processing profiles and acquisition operation rules for SEC
 
 - **Supported operations**: Forms 3, 4, and 5 allow verbatim `raw` storage and `render_to_xml` transform.
 - **No text rendering**: Ownership filings drop `render_to_txt` to avoid lossy table flattening.
+- **Boilerplate is scoped**: Shared phrase rules identify ownership prose terms; candidate extraction retains source text and decides whether to exclude a match.
 
 ## Deliberate gaps
 

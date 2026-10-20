@@ -31,14 +31,15 @@ full hypothesis table rather than resolved arbitrarily.
 ## Deliberate gaps
 
 - **`schemas.py` is not declared here.** `CheckboxConstraint`,
-  `CoverCheckboxSchema`, `STATUTORY_CHECKBOX_CONSTRAINTS`, `ANNUAL_CHECKBOX_SCHEMA`,
-  and `QUARTERLY_CHECKBOX_SCHEMA` live in
-  `edgar_sec/domain/forms/common/schemas.py` and
-  `edgar_sec/domain/forms/families/{annual,quarterly}/checkmarks.py`. `solver.py`
-  imports them from there.
-- **Only `10-K`, `20-F`, and `10-Q` are inferable.** Any other family yields
-  `NOT_APPLICABLE`, because no schema is declared for it. A `10-Q` with a
-  transition-report period has no declared schema in this slice.
+  `CoverCheckboxSchema`, and `STATUTORY_CHECKBOX_CONSTRAINTS` live in
+  `edgar_sec/domain/forms/common/schemas.py`; family schemas live in
+  `edgar_sec/domain/forms/families/{annual,quarterly,current,registration}/checkmarks.py`.
+  `solver.py` consumes them through `FAMILY_PROCESSING_PROFILES`.
+- **Inference follows `FAMILY_PROCESSING_PROFILES` schema scope**: `10-K`, `20-F`,
+  `10-Q`, `8-K`, `6-K`, `S-1`, `S-3`, `S-4`, and `S-8` have cover checkbox
+  schemas. Registered profiles `3`, `4`, `5`, `144`, `13D`, and `13G` have no
+  schema and return `NOT_APPLICABLE`; unknown families and unknown cover ends do
+  too. A schema-backed family returns `ABSENT` when extraction finds no candidates.
 - **More than two ambiguous glyph classes is `UNRESOLVED`.** The hypothesis
   enumeration is a full cross-product; past two glyphs it is refused rather than
   bounded, so a cover with three different Wingdings symbols is not solved.

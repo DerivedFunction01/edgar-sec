@@ -114,6 +114,19 @@ def test_prose_relationship_box_binds_marks_in_reading_order() -> None:
     assert box.officer_title == "Executive Officer"
 
 
+def test_equally_near_marks_leave_a_role_association_unresolved() -> None:
+    rows = _rows(
+        ("6. Relationship of Reporting Person(s) to Issuer",),
+        ("X", "", "X"),
+        ("", "Director", ""),
+    )
+
+    box = parse_relationship_box(rows)
+
+    assert box is not None
+    assert box.roles["director"] is False
+
+
 def test_a_box_without_a_relationship_header_is_not_resolved() -> None:
     assert parse_relationship_box([("1. Name and Address", "2. Issuer Name")]) is None
 

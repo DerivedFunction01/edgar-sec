@@ -5,6 +5,8 @@ from types import SimpleNamespace
 
 from edgar_sec.engine.document_processing.outputs import HandlerOutput
 from edgar_sec.engine.forms.ownership.render_to_xml import render_ownership_to_xml
+from edgar_sec.engine.forms.ownership.sections import partition_ownership_tables
+from edgar_sec.engine.forms.ownership.table_ii import parse_table_ii_rows
 
 SAMPLE_DOC_HTML = b"""
 <html><body>
@@ -318,3 +320,125 @@ def test_a_derivative_transaction_keeps_its_ownership_nature() -> None:
         nature.findtext("natureOfOwnership/value")
         == "Deferred Compensation Stock Program"
     )
+
+
+def test_accession_0000950103_02_001311_preserves_positioned_amounts() -> None:
+    html = b"""
+<html><body>
+<table><tr><td>Table II - Derivative Securities Acquired, Disposed of, or Beneficially Owned</td></tr></table>
+<table>
+  <tr>
+    <td rowspan="2">1. Title of Derivative Security</td>
+    <td rowspan="2">2. Conversion or Exercise Price</td>
+    <td rowspan="2">3. Transaction Date</td>
+    <td rowspan="2">3A. Deemed Execution Date</td>
+    <td colspan="2">4. Transaction Code</td>
+    <td colspan="2">5. Derivative Securities Acquired or Disposed</td>
+    <td colspan="2">6. Date Exercisable and Expiration</td>
+    <td colspan="2">7. Title and Amount of Underlying Securities</td>
+    <td rowspan="2">8. Price</td><td rowspan="2">9. Following</td>
+    <td rowspan="2">10. Form</td><td rowspan="2">11. Nature</td>
+  </tr>
+  <tr>
+    <td>Code</td><td>V</td><td>Acquired (A)</td><td>Disposed (D)</td>
+    <td>Date Exercisable</td><td>Expiration Date</td><td>Title</td><td>Amount</td>
+  </tr>
+  <tr>
+    <td>Option to Purchase Class A Special Common Stock</td><td>$32.8437</td>
+    <td>11/18/02</td><td></td><td>A</td><td></td><td>13, 875</td><td></td>
+    <td>Immediately</td><td>5/03/2009</td>
+    <td>Class A Special Common Stock</td><td>13, 875</td><td></td>
+    <td>13, 875</td><td>I</td><td>By GRAT</td>
+  </tr>
+</table>
+</body></html>
+"""
+    sections = partition_ownership_tables(html.decode())
+    rows = parse_table_ii_rows(sections.table_ii, reference_year=2002)
+
+    assert len(rows) == 1
+    row = rows[0]
+    assert row.transaction_date == "2002-11-18"
+    assert row.shares_amount == "13875"
+    assert row.underlying_shares_amount == "13875"
+    assert row.derivative_shares_owned_following == "13875"
+    assert row.exercisable_date == "Immediately"
+
+    result = render_ownership_to_xml(
+        html,
+        SimpleNamespace(family="4", report_date="2002-11-18", filing_date="2002-12-02"),
+    )
+
+    assert isinstance(result, HandlerOutput)
+    root = ET.fromstring(result.content)
+    transaction = root.find("derivativeTable/derivativeTransaction")
+    assert transaction is not None
+    assert transaction.findtext("transactionAmounts/transactionShares/value") == "13875"
+    assert (
+        transaction.findtext("transactionAmounts/transactionAcquiredDisposedCode/value")
+        == "A"
+    )
+    assert (
+        transaction.findtext("underlyingSecurity/underlyingSecurityShares/value")
+        == "13875"
+    )
+    assert (
+        transaction.findtext(
+            "postTransactionAmounts/sharesOwnedFollowingTransaction/value"
+        )
+        == "13875"
+    )
+    dates = transaction.find("exerciseDateAndExpirationDate")
+    assert dates is not None
+    assert dates.find("exerciseDate") is None
+    assert dates.findtext("expirationDate/value") == "2009-05-03"
+    assert transaction.findtext("transactionDate/value") == "2002-11-18"
+    assert b'"normalization.unresolved:table_ii[0].exerciseDate"' in (
+        result.sidecars[0].content
+    )
+    assert b'"content":"Immediately"' in result.sidecars[0].content
+    for field in (
+        "transactionShares",
+        "underlyingSecurityShares",
+        "sharesOwnedFollowingTransaction",
+    ):
+        assert f"normalization.unresolved:table_ii[0].{field}".encode() not in (
+            result.sidecars[0].content
+        )
+
+
+def test_underlying_title_without_an_amount_is_retained_as_evidence() -> None:
+    html = b"""
+<html><body>
+<table><tr><td>Table II - Derivative Securities Acquired</td></tr></table>
+<table>
+  <tr>
+    <td>Title</td><td>Exercise Price</td><td>Transaction Date</td><td>Deemed Date</td>
+    <td>Code</td><td>V</td><td>Acquired</td><td>Disposed</td>
+    <td>Exercise Date</td><td>Expiration</td><td>Underlying Title</td>
+    <td>Underlying Shares</td><td>Derivative Price</td><td>Following</td>
+    <td>D/I</td><td>Nature</td>
+  </tr>
+  <tr>
+    <td>Employee Stock Option</td><td>$10.00</td><td>06/01/2001</td><td></td>
+    <td>A</td><td></td><td>100</td><td></td><td>06/01/2002</td><td>06/01/2011</td>
+    <td>Common Stock</td><td></td><td></td><td>100</td><td>D</td><td></td>
+  </tr>
+</table>
+</body></html>
+"""
+    result = render_ownership_to_xml(
+        html,
+        SimpleNamespace(family="4", report_date="2001-06-01", filing_date="2001-06-02"),
+    )
+
+    assert isinstance(result, HandlerOutput)
+    transaction = ET.fromstring(result.content).find(
+        "derivativeTable/derivativeTransaction"
+    )
+    assert transaction is not None
+    assert transaction.find("underlyingSecurity") is None
+    assert b'"normalization.unresolved:table_ii[0].underlyingSecurityTitle"' in (
+        result.sidecars[0].content
+    )
+    assert b'"content":"Common Stock"' in result.sidecars[0].content

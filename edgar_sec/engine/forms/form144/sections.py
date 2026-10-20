@@ -28,10 +28,10 @@ from edgar_sec.domain.forms.families.form144.evidence import (
 )
 from edgar_sec.engine.document.html.tree import FastHtmlNode, parse_html
 from edgar_sec.engine.forms.form144.patterns import (
-    FORM144_INSTRUCTION_VETO_RE,
     NUMERIC_TOKEN_RE,
     PHONE_RE,
     SEC_FILE_LABEL_RE,
+    form144_instruction_matches,
 )
 from edgar_sec.engine.tables.ascii_html.converter import resolve_html_table_grid
 from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
@@ -148,7 +148,7 @@ def _has_instruction_evidence(lower: str) -> bool:
     if "instructions:" in lower and "table i" not in lower and "table ii" not in lower:
         return True
     return (
-        bool(FORM144_INSTRUCTION_VETO_RE.search(lower))
+        bool(form144_instruction_matches(lower))
         and "table i" not in lower
         and "table ii" not in lower
     )

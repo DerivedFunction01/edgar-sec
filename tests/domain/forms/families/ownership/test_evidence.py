@@ -9,6 +9,8 @@ from edgar_sec.domain.forms.families.ownership.evidence import (
     FOOTNOTE_SUPPORT_TERMS,
     FOOTNOTE_VETO_PHRASES,
     OWNERSHIP_FOOTNOTE_LEXICAL_PACK,
+    OWNERSHIP_PROSE_BOILERPLATE_RULE,
+    PROSE_BOILERPLATE_TERMS,
 )
 from edgar_sec.foundation.text.automaton import tokenize
 from edgar_sec.foundation.text.evidence import (
@@ -30,6 +32,17 @@ def test_ownership_evidence_terms() -> None:
     assert "vesting" in FOOTNOTE_STRONG_VERBS
     assert "ticker" in FOOTNOTE_EXCLUSION_TERMS
     assert "table i" in FOOTNOTE_VETO_PHRASES
+
+
+def test_prose_boilerplate_rule_owns_the_existing_ownership_vocabulary() -> None:
+    phrases = {
+        phrase
+        for sequence in OWNERSHIP_PROSE_BOILERPLATE_RULE.sequences
+        for phrase in sequence
+    }
+
+    assert OWNERSHIP_PROSE_BOILERPLATE_RULE.family_ids == frozenset({"ownership"})
+    assert phrases == set(PROSE_BOILERPLATE_TERMS)
 
 
 def test_ownership_footnote_lexical_pack_tiers() -> None:

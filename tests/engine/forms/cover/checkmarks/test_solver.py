@@ -4,7 +4,13 @@ from __future__ import annotations
 
 from types import SimpleNamespace
 
+import pytest
+
 from edgar_sec.domain.forms.families.annual.checkmarks import ANNUAL_CHECKBOX_SCHEMA
+from edgar_sec.domain.forms.families.processing_profiles import (
+    FAMILY_PROCESSING_PROFILES,
+    get_family_entry,
+)
 from edgar_sec.engine.forms.cover.checkmarks.candidates import extract_table_candidates
 from edgar_sec.engine.forms.cover.checkmarks.models import (
     CheckboxCandidate,
@@ -19,6 +25,22 @@ from edgar_sec.engine.forms.cover.checkmarks.solver import (
     solve_statutory_constraints,
 )
 from edgar_sec.engine.forms.cover.models import BoundaryMethod, CoverBoundary
+
+_SCHEMA_FAMILY_CASES = (
+    ("10-K", "Annual report", "annual"),
+    ("20-F", "Annual report", "annual"),
+    ("10-Q", "Quarterly report", "quarterly"),
+    (
+        "8-K",
+        "Written communications pursuant to Rule 425",
+        "written_communications_rule_425",
+    ),
+    ("6-K", "Form 20-F", "annual_report_form_20f"),
+    ("S-1", "Rule 415 under the Securities Act", "rule_415"),
+    ("S-3", "Rule 462(e)", "rule_462e"),
+    ("S-4", "General instruction G", "instruction_g"),
+    ("S-8", "Well-known seasoned issuer", "well_known_seasoned_issuer"),
+)
 
 
 def _filer_candidates(glyphs: tuple[str, str, str, str, str]):
@@ -248,6 +270,59 @@ def test_a_family_without_a_schema_is_not_applicable() -> None:
         infer_cover_checkmarks(text, _boundary(text), family="ABC").status
         is InferenceStatus.NOT_APPLICABLE
     )
+
+
+@pytest.mark.parametrize(
+    ("family", "label", "semantic_key"),
+    _SCHEMA_FAMILY_CASES,
+)
+def test_registered_checkmark_schemas_reach_resolved_inference(
+    family: str,
+    label: str,
+    semantic_key: str,
+) -> None:
+    entry = get_family_entry(family)
+    assert entry is not None
+    assert entry.cover_checkbox_schema is not None
+
+    text = f"FORM {family}\n{label} [X]\nYes [X] No o\n"
+    result = infer_cover_checkmarks(text, _boundary(text), family=family)
+
+    assert result.status is InferenceStatus.RESOLVED
+    assert any(item.semantic_key == semantic_key for item in result.candidates)
+    assert [(item.source_token, item.state) for item in result.decisions] == [
+        ("o", "unchecked")
+    ]
+
+
+def test_checkmark_schema_cases_cover_registered_profile_scope() -> None:
+    schema_families = {
+        entry.family
+        for entry in FAMILY_PROCESSING_PROFILES
+        if entry.cover_checkbox_schema is not None
+    }
+    schema_less_families = {
+        entry.family
+        for entry in FAMILY_PROCESSING_PROFILES
+        if entry.cover_checkbox_schema is None
+    }
+
+    assert schema_families == {family for family, _, _ in _SCHEMA_FAMILY_CASES}
+    assert schema_less_families == {"3", "4", "5", "144", "13D", "13G"}
+
+
+@pytest.mark.parametrize("family", ("3", "4", "5", "144", "13D", "13G"))
+def test_registered_profiles_without_checkmark_schemas_are_not_applicable(
+    family: str,
+) -> None:
+    entry = get_family_entry(family)
+    assert entry is not None
+    assert entry.cover_checkbox_schema is None
+
+    text = f"FORM {family}\nYes [X] No o\n"
+    result = infer_cover_checkmarks(text, _boundary(text), family=family)
+
+    assert result.status is InferenceStatus.NOT_APPLICABLE
 
 
 def test_an_unknown_boundary_end_is_not_applicable() -> None:

@@ -15,7 +15,7 @@ from edgar_sec.engine.forms.common.statutory import (
 )
 from edgar_sec.engine.forms.common.dates import parse_schema_date, reported_year
 from edgar_sec.engine.forms.common.unparsed import load_unparsed_sections
-from edgar_sec.engine.forms.ownership.patterns import PROSE_BOILERPLATE_RE
+from edgar_sec.engine.forms.ownership.patterns import is_ownership_boilerplate
 from edgar_sec.engine.forms.ownership.schema import ownership_schema_anomalies
 from edgar_sec.foundation.text.dates import (
     MONTH_PATTERN,
@@ -462,7 +462,7 @@ def analyze_ownership_xml(
         lower_snip = snippet.lower()
         is_boilerplate = bool(
             STATUTORY_PAGE_ARTIFACT_RE.search(lower_snip)
-            or PROSE_BOILERPLATE_RE.search(lower_snip)
+            or is_ownership_boilerplate(lower_snip)
         )
         analyzed_sections.append(
             {

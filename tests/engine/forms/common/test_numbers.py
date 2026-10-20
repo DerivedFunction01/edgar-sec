@@ -4,6 +4,8 @@ import pytest
 
 from edgar_sec.engine.forms.common.numbers import (
     clean_numeric,
+    extract_schema_number,
+    extract_schema_number_or_token,
     format_scaled_number_string,
     normalize_schema_decimal,
     normalize_schema_integer,
@@ -34,6 +36,11 @@ def test_clean_numeric_negatives_and_nulls() -> None:
     assert clean_numeric("N/A") is None
     assert clean_numeric("") is None
     assert clean_numeric(None) is None
+
+
+@pytest.mark.parametrize("value", ("", "   ", "-", "--", "none", "n/a", "nil", "null"))
+def test_clean_numeric_common_null_markers(value: str) -> None:
+    assert clean_numeric(value) is None
 
 
 def test_parse_scaled_number_basic() -> None:
@@ -81,3 +88,10 @@ def test_schema_numeric_normalizers_preserve_decimal_precision() -> None:
     assert normalize_schema_integer("3.5") is None
     assert normalize_schema_integer("10,64,388") is None
     assert normalize_schema_integer("-5") is None
+
+
+def test_schema_extraction_accepts_whitespace_in_thousands_grouping() -> None:
+    assert extract_schema_number("13, 875") == "13875"
+    assert extract_schema_number("13,\t875") == "13875"
+    assert extract_schema_number_or_token("13, 875") == "13875"
+    assert extract_schema_number("13, 87") is None
