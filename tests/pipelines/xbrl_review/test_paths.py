@@ -3,7 +3,9 @@
 from pathlib import Path
 
 from edgar_sec.pipelines.xbrl_review.paths import (
+    FIXTURES_DIR,
     WORK_ORDER_FILE,
+    default_seed_cohort_path,
     xbrl_paths,
     xbrl_run_paths,
 )
@@ -13,6 +15,11 @@ def test_xbrl_paths_properties(tmp_path: Path) -> None:
     """Verify standard paths and directory properties."""
     paths = xbrl_paths(artifacts_root=tmp_path)
     assert paths.artifacts_root == tmp_path
+    assert paths.fixtures_root == tmp_path / "xbrl" / "fixtures"
+    fixture = paths.fixture_paths("golden")
+    assert paths.fixture_root("golden") == fixture.root
+    assert paths.fixture_manifest_path("golden") == fixture.manifest_path
+    assert paths.fixture_database_path("golden") == fixture.storage_path
     assert paths.review_runs_root == tmp_path / "xbrl" / "review-runs"
     assert paths.snapshots_root == tmp_path / "xbrl" / "snapshots"
     assert (
@@ -23,8 +30,11 @@ def test_xbrl_paths_properties(tmp_path: Path) -> None:
     rp = paths.review_paths("run-20261014_120000")
     assert rp.root == tmp_path / "xbrl" / "review-runs" / "run-20261014_120000"
     assert rp.cases_dir == rp.root / "cases"
-    assert paths.default_seed_cohort_path.name == "seed_cohort.json"
+    assert paths.builtin_fixtures_dir == FIXTURES_DIR
+    assert paths.default_seed_cohort_path == FIXTURES_DIR / "seed_cohort.json"
+    assert paths.default_seed_cohort_path.is_file()
     assert paths.default_sp100_cohort_path.name == "sp100_cohort.json"
+    assert default_seed_cohort_path(tmp_path) == paths.default_seed_cohort_path
 
 
 def test_xbrl_run_paths_derivation(tmp_path: Path) -> None:

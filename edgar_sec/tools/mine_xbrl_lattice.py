@@ -21,6 +21,7 @@ from edgar_sec.engine.xbrl.evidence.mining import (
 from edgar_sec.engine.xbrl.schema.models import CalculationArc
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.pipelines.xbrl_review.paths import default_seed_cohort_path
 
 
 def _build_parser() -> argparse.ArgumentParser:
@@ -132,7 +133,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     paths = resolve_xbrl_paths()
-    cohort_source = args.cohort_file or paths.default_seed_cohort_path
+    cohort_source = args.cohort_file or default_seed_cohort_path()
     if not cohort_source.exists():
         sys.stderr.write(f"Cohort file not found: {cohort_source}\n")
         return 1

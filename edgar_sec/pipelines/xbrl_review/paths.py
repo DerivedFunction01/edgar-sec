@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 from pathlib import Path
 
+import edgar_sec.foundation.runtime.fixtures as foundation_fixtures
 import edgar_sec.foundation.runtime.paths as foundation_paths
 from edgar_sec.foundation.runtime.paths import (
     ATTEMPT_PREFIX,
@@ -56,7 +57,12 @@ class XbrlPaths:
         self.artifacts_root = Path(artifacts_root).resolve()
 
     @property
+    def fixtures_root(self) -> Path:
+        """Root directory for XBRL fixture stores."""
+        return foundation_fixtures.fixtures_root(self.artifacts_root, DATASET)
+
     def fixture_root(self, fixture_id: str) -> Path:
+        """Root directory for one XBRL fixture."""
         return self.fixture_paths(fixture_id).root
 
     def fixture_paths(self, fixture_id: str) -> foundation_fixtures.FixturePaths:
@@ -72,17 +78,17 @@ class XbrlPaths:
 
     @property
     def builtin_fixtures_dir(self) -> Path:
-        """Directory housing built-in pipeline evaluation datasets."""
+        """Package-local cohort inputs; not published artifacts. :no-docgen:"""
         return FIXTURES_DIR
 
     @property
     def default_seed_cohort_path(self) -> Path:
-        """Path to default seed cohort fixture."""
+        """Package-local seed cohort input. :no-docgen:"""
         return self.builtin_fixtures_dir / DEFAULT_SEED_COHORT_FILE
 
     @property
     def default_sp100_cohort_path(self) -> Path:
-        """Path to default S&P 100 cohort fixture."""
+        """Package-local S&P 100 cohort input. :no-docgen:"""
         return self.builtin_fixtures_dir / DEFAULT_SP100_COHORT_FILE
 
     @property

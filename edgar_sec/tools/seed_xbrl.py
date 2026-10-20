@@ -21,6 +21,7 @@ from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.engine.xbrl.storage.storage import write_linkbase_parquet
 from edgar_sec.foundation.runtime.env import get_env
 from edgar_sec.infra.sec_http.client import SecHttpClient
+from edgar_sec.pipelines.xbrl_review.paths import default_seed_cohort_path
 
 
 def _build_parser() -> argparse.ArgumentParser:
@@ -32,8 +33,8 @@ def _build_parser() -> argparse.ArgumentParser:
         "--output",
         "-o",
         type=Path,
-        default=None,
-        help="Optional destination path for linkbases.parquet (defaults to xbrl artifacts).",
+        required=True,
+        help="Destination path for linkbases.parquet.",
     )
     parser.add_argument(
         "--artifacts-root",
@@ -97,11 +98,13 @@ def main(argv: list[str] | None = None) -> int:
     parser = _build_parser()
     args = parser.parse_args(argv)
 
-    paths = resolve_xbrl_paths(args.artifacts_root)
+    paths = resolve_xbrl_paths(artifacts_root=args.artifacts_root)
     paths.ensure_directories()
-    dest = args.output or paths.default_linkbases_path
+    dest = args.output
 
-    cohort_source = args.cohort_file or paths.default_seed_cohort_path
+    cohort_source = args.cohort_file or default_seed_cohort_path(
+        artifacts_root=args.artifacts_root
+    )
     if not cohort_source.exists():
         raise FileNotFoundError(f"Cohort file not found: {cohort_source}")
     cohort = load_seed_cohort(cohort_source)

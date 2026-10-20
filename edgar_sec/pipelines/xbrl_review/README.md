@@ -23,6 +23,12 @@ The package provides both an interactive terminal console (`operator.py`) with p
 ## Command surface
 
 <!-- AUTOGEN:COMMANDS:START -->
+| Subcommand | Description | Arguments |
+| :--- | :--- | :--- |
+| `dag` | Snapshot DAG operations | `[--root]`, `[--json]` |
+| `fixture` | create, fill, and list dataset fixtures | — |
+| `project` | project a catalog plan or dataset into a resumable run | `[--catalog-plan]`, `[--dataset]`, `[--queries]`, `[--base-snapshot-id]`, `[--branch]`, `[--explicit-refresh]`, `[--chunk-size]`, `[--artifacts]`, `[--json]` |
+| `review` | generate and compare review runs with pipeline-specific commands | — |
 <!-- AUTOGEN:COMMANDS:END -->
 
 ### Usage examples
@@ -50,4 +56,35 @@ The package provides both an interactive terminal console (`operator.py`) with p
 ## Artifact layout
 
 <!-- AUTOGEN:PATHS:START -->
+```text
+{artifacts_root}/
+├── transient/
+│   └── xbrl/
+│       └── {run_id}/
+│           ├── chunks/
+│           │   └── {chunk_id}/
+│           │       ├── attempt-{attempt_id}/
+│           │       │   ├── hypotheses.parquet
+│           │       │   ├── manifest.json
+│           │       │   ├── quarantine.parquet
+│           │       │   ├── rule_trace.parquet
+│           │       │   └── solved_nodes.parquet
+│           │       └── current.json
+│           ├── cohort_accessions.parquet
+│           ├── projection_manifest.json
+│           ├── run.lock
+│           ├── run_manifest.json
+│           └── work_order.parquet
+└── xbrl/
+    ├── fixtures/  # Root directory for XBRL fixture stores.
+    │   └── {fixture_id}/  # Root directory for one XBRL fixture.
+    │       ├── fixture.sqlite
+    │       └── manifest.json
+    ├── review-runs/
+    ├── snapshots/
+    │   ├── {snapshot_id}/
+    │   ├── .publication.lock
+    │   └── catalog.sqlite  # SQLite DAG catalog database for published XBRL snapshots.
+    └── unification_rules.duckdb
+```
 <!-- AUTOGEN:PATHS:END -->

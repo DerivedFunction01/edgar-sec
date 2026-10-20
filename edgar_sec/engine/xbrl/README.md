@@ -26,9 +26,6 @@ By decomposing taxonomy linkbases into explicit typed relational structures and 
 ```text
 {artifacts_root}/
 └── xbrl/  # Root directory for all published XBRL artifacts.
-    ├── linkbases/  # Directory housing linkbase Parquet inventories.
-    │   ├── linkbases.parquet  # Default linkbase inventory Parquet file path.
-    │   └── {cohort_id}_linkbases.parquet  # Return the Parquet path for a named cohort's linkbases.
     └── xml/  # Directory housing cached linkbase XML source files.
 
 {repo_root}/
