@@ -157,86 +157,95 @@ def _is_currency_cell(s: str) -> bool:
     return is_curr and num is not None
 
 
-def _is_date_cell(s: str) -> bool:
-    return parse_date(s) is not None if "as of" not in s.lower() else False
+def _is_date_cell(s: str, reference_year: int | None = None) -> bool:
+    if "as of" in s.lower():
+        return False
+    return parse_date(s, reference_year=reference_year) is not None
+
+
+def _date_display(s: str, reference_year: int | None = None) -> str | None:
+    parsed = parse_date(s, reference_year=reference_year)
+    return parsed.display if parsed is not None else None
 
 
 def _is_exchange_cell(s: str) -> bool:
     return normalize_exchange_name(s) is not None
 
 
-_BOX_3_SCHEMA = TableSchema(
-    name="form144_box3",
-    columns=(
-        CanonicalColumn(index=0, name="class_title", is_required=False),
-        CanonicalColumn(index=1, name="broker", is_required=False),
-        CanonicalColumn(
-            index=2,
-            name="units_to_be_sold",
-            is_required=False,
-            data_extractor=_extract_units,
+def _box3_schema(reference_year: int | None) -> TableSchema:
+    return TableSchema(
+        name="form144_box3",
+        columns=(
+            CanonicalColumn(index=0, name="class_title", is_required=False),
+            CanonicalColumn(index=1, name="broker", is_required=False),
+            CanonicalColumn(
+                index=2,
+                name="units_to_be_sold",
+                is_required=False,
+                data_extractor=_extract_units,
+            ),
+            CanonicalColumn(
+                index=3,
+                name="aggregate_market_value",
+                is_required=False,
+                is_anchor=True,
+                anchor_validator=_is_currency_cell,
+                data_extractor=_FORM144_DECIMAL,
+            ),
+            CanonicalColumn(
+                index=4,
+                name="units_outstanding",
+                is_required=False,
+                data_extractor=_extract_units,
+            ),
+            CanonicalColumn(
+                index=5,
+                name="approx_sale_date",
+                is_required=False,
+                is_anchor=True,
+                anchor_validator=lambda s: _is_date_cell(s, reference_year),
+                data_extractor=lambda s: _date_display(s, reference_year),
+            ),
+            CanonicalColumn(
+                index=6,
+                name="exchange_name",
+                is_required=False,
+                is_anchor=True,
+                anchor_validator=_is_exchange_cell,
+                data_extractor=normalize_exchange_name,
+            ),
         ),
-        CanonicalColumn(
-            index=3,
-            name="aggregate_market_value",
-            is_required=False,
-            is_anchor=True,
-            anchor_validator=_is_currency_cell,
-            data_extractor=_FORM144_DECIMAL,
-        ),
-        CanonicalColumn(
-            index=4,
-            name="units_outstanding",
-            is_required=False,
-            data_extractor=_extract_units,
-        ),
-        CanonicalColumn(
-            index=5,
-            name="approx_sale_date",
-            is_required=False,
-            is_anchor=True,
-            anchor_validator=_is_date_cell,
-            data_extractor=lambda s: d.display if (d := parse_date(s)) else None,
-        ),
-        CanonicalColumn(
-            index=6,
-            name="exchange_name",
-            is_required=False,
-            is_anchor=True,
-            anchor_validator=_is_exchange_cell,
-            data_extractor=normalize_exchange_name,
-        ),
-    ),
-)
+    )
 
 
-_BOX_3_PART2_SCHEMA = TableSchema(
-    name="form144_box3_part2",
-    columns=(
-        CanonicalColumn(
-            index=0,
-            name="units_outstanding",
-            is_required=False,
-            data_extractor=_extract_units,
+def _box3_part2_schema(reference_year: int | None) -> TableSchema:
+    return TableSchema(
+        name="form144_box3_part2",
+        columns=(
+            CanonicalColumn(
+                index=0,
+                name="units_outstanding",
+                is_required=False,
+                data_extractor=_extract_units,
+            ),
+            CanonicalColumn(
+                index=1,
+                name="approx_sale_date",
+                is_required=False,
+                is_anchor=True,
+                anchor_validator=lambda s: _is_date_cell(s, reference_year),
+                data_extractor=lambda s: _date_display(s, reference_year),
+            ),
+            CanonicalColumn(
+                index=2,
+                name="exchange_name",
+                is_required=False,
+                is_anchor=True,
+                anchor_validator=_is_exchange_cell,
+                data_extractor=normalize_exchange_name,
+            ),
         ),
-        CanonicalColumn(
-            index=1,
-            name="approx_sale_date",
-            is_required=False,
-            is_anchor=True,
-            anchor_validator=_is_date_cell,
-            data_extractor=lambda s: d.display if (d := parse_date(s)) else None,
-        ),
-        CanonicalColumn(
-            index=2,
-            name="exchange_name",
-            is_required=False,
-            is_anchor=True,
-            anchor_validator=_is_exchange_cell,
-            data_extractor=normalize_exchange_name,
-        ),
-    ),
-)
+    )
 
 
 def parse_proposed_sale_box_3(
@@ -275,7 +284,7 @@ def parse_proposed_sale_box_3(
             if r_out and out is None:
                 out = _FORM144_INTEGER(r_out)
             if r_dt and dt is None:
-                parsed_dt = parse_date(r_dt)
+                parsed_dt = parse_date(r_dt, reference_year=reference_year)
                 dt = parsed_dt.display if parsed_dt else None
             if r_exch and exch is None:
                 exch = normalize_exchange_name(r_exch)
@@ -304,12 +313,12 @@ def parse_proposed_sale_box_3(
 
         has_curr = any(_is_currency_cell(c) for c in rem_cells)
         has_dt_or_exch = any(
-            _is_date_cell(c) or _is_exchange_cell(c) for c in rem_cells
+            _is_date_cell(c, reference_year) or _is_exchange_cell(c) for c in rem_cells
         )
         schema = (
-            _BOX_3_PART2_SCHEMA
+            _box3_part2_schema(reference_year)
             if has_dt_or_exch and not has_curr and len(rem_cells) <= 4
-            else _BOX_3_SCHEMA
+            else _box3_schema(reference_year)
         )
         aligned = align_row_to_schema(tuple(rem_cells), schema)
         if aligned is not None and (
@@ -346,7 +355,7 @@ def parse_proposed_sale_box_3(
                 cell_val = rem_cells[idx]
                 if "as of" in cell_val.lower():
                     continue
-                match_dt = parse_date(cell_val)
+                match_dt = parse_date(cell_val, reference_year=reference_year)
                 if match_dt:
                     dt = match_dt.display
                     rem_cells.pop(idx)

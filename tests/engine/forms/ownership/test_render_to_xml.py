@@ -171,3 +171,119 @@ def test_form3_holding_table_uses_shared_row_extractor() -> None:
     assert root.find("nonDerivativeTable/nonDerivativeTransaction") is None
     if isinstance(result, HandlerOutput):
         assert b"non_derivative_table" not in result.sidecars[0].content
+
+
+def test_report_date_anchors_two_digit_transaction_dates() -> None:
+    source = SAMPLE_DOC_HTML.replace(b"06/01/2001", b"06/01/40")
+
+    result = render_ownership_to_xml(
+        source,
+        SimpleNamespace(family="4", report_date="2024-12-31", filing_date="2019-12-31"),
+    )
+    xml_bytes = result.content if isinstance(result, HandlerOutput) else result
+    root = ET.fromstring(xml_bytes)
+
+    assert (
+        root.findtext(
+            "nonDerivativeTable/nonDerivativeTransaction/transactionDate/value"
+        )
+        == "2040-06-01"
+    )
+
+
+def test_filing_date_anchors_two_digit_dates_without_a_report_date() -> None:
+    source = SAMPLE_DOC_HTML.replace(b"06/01/2001", b"06/01/40")
+
+    result = render_ownership_to_xml(
+        source, SimpleNamespace(family="4", filing_date="2019-12-31")
+    )
+    xml_bytes = result.content if isinstance(result, HandlerOutput) else result
+    root = ET.fromstring(xml_bytes)
+
+    assert (
+        root.findtext(
+            "nonDerivativeTable/nonDerivativeTransaction/transactionDate/value"
+        )
+        == "1940-06-01"
+    )
+
+
+def test_unanchored_two_digit_dates_are_omitted_and_recorded() -> None:
+    source = (
+        SAMPLE_DOC_HTML.replace(b"June 2001", b"June 01")
+        .replace(b"06/01/2001", b"06/01/01")
+        .replace(b"07-03-2001", b"07-03-01")
+    )
+
+    result = render_ownership_to_xml(source, SimpleNamespace(family="4"))
+
+    assert isinstance(result, HandlerOutput)
+    root = ET.fromstring(result.content)
+    assert root.findtext("periodOfReport") is None
+    assert (
+        root.find("nonDerivativeTable/nonDerivativeTransaction/transactionDate") is None
+    )
+    assert b"normalization.unresolved:periodOfReport" in result.sidecars[0].content
+    assert b"normalization.unresolved:table_i[0].transactionDate" in (
+        result.sidecars[0].content
+    )
+
+
+def test_invalid_numeric_values_are_omitted_and_recorded() -> None:
+    source = SAMPLE_DOC_HTML.replace(
+        b"<tr><td>Common Stock</td><td>06/01/2001</td><td>P</td><td>500.000 | A | $10.00</td><td>500.000</td><td>D</td><td></td></tr>",
+        b"<tr><td>Common Stock</td><td>06/01/2001</td><td>P</td><td>-500 | A | $10.00</td><td>500.000</td><td>D</td><td></td></tr>",
+    )
+
+    result = render_ownership_to_xml(source, SimpleNamespace(family="4"))
+
+    assert isinstance(result, HandlerOutput)
+    root = ET.fromstring(result.content)
+    assert (
+        root.findtext(
+            "nonDerivativeTable/nonDerivativeTransaction/transactionAmounts/transactionShares/value"
+        )
+        is None
+    )
+    assert b"normalization.unresolved:table_i[0].transactionShares" in (
+        result.sidecars[0].content
+    )
+
+
+def test_unresolvable_dates_do_not_leave_empty_containers() -> None:
+    source = (
+        SAMPLE_DOC_HTML.replace(
+            b"<tr><td>Common Stock</td><td>06/01/2001</td><td>P</td><td>500.000 | A | $10.00</td><td>500.000</td><td>D</td><td></td></tr>",
+            b"<tr><td>Common Stock</td><td>06/01/01</td><td>P</td><td>500.000 | A | $10.00</td><td>500.000</td><td>D</td><td></td></tr>",
+        )
+        .replace(b"June 2001", b"June 01")
+        .replace(b"07-03-2001", b"07-03-01")
+    )
+
+    result = render_ownership_to_xml(source, SimpleNamespace(family="4"))
+
+    assert isinstance(result, HandlerOutput)
+    root = ET.fromstring(result.content)
+    transaction = root.find("nonDerivativeTable/nonDerivativeTransaction")
+    assert transaction is not None
+    for element in transaction.iter():
+        assert len(element) or (element.text or "").strip(), element.tag
+
+
+def test_full_year_source_date_anchors_two_digit_period() -> None:
+    source = SAMPLE_DOC_HTML.replace(b"June 2001", b"June 01").replace(
+        b"06/01/2001", b"06/01/01"
+    )
+
+    result = render_ownership_to_xml(source, SimpleNamespace(family="4"))
+
+    xml_bytes = result.content if isinstance(result, HandlerOutput) else result
+    root = ET.fromstring(xml_bytes)
+
+    assert root.findtext("periodOfReport") == "2001-06-01"
+    assert (
+        root.findtext(
+            "nonDerivativeTable/nonDerivativeTransaction/transactionDate/value"
+        )
+        == "2001-06-01"
+    )

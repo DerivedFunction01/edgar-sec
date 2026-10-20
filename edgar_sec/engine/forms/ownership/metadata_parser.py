@@ -1,15 +1,19 @@
 from __future__ import annotations
 
+from dataclasses import replace
+
 from edgar_sec.domain.forms.families.ownership.models import (
     FilingPeriod,
     Issuer,
     OwnershipMetadata,
     ReportingOwner,
 )
+from edgar_sec.engine.forms.common.dates import reported_year
 from edgar_sec.engine.forms.common.entities import (
     BARE_BOX_NUM_RE,
     RELATIONSHIP_TO_ISSUER_RE,
 )
+from edgar_sec.engine.forms.common.extraction import FieldSpec, normalize_value
 from edgar_sec.engine.forms.common.signatures import (
     SIG_BOILERPLATE_TERMS,
     extract_clean_signatory_name,
@@ -21,6 +25,7 @@ from edgar_sec.engine.forms.common.statutory import (
     STATUTORY_PAGE_ARTIFACT_RE,
 )
 from edgar_sec.engine.forms.common.tables import is_instruction_row
+from edgar_sec.engine.forms.ownership.field_specs import OWNERSHIP_METADATA_FIELDS
 from edgar_sec.engine.forms.ownership.issuer_parser import parse_issuer
 from edgar_sec.engine.forms.ownership.period_parser import parse_period
 from edgar_sec.engine.forms.ownership.reporting_owner_parser import (
@@ -107,6 +112,38 @@ def _extract_template_fields(
             ):
                 fields[field] = right_value
     return fields
+
+
+def _canonical_date(
+    value: str | None,
+    spec: FieldSpec,
+    reference_year: int | None,
+) -> str | None:
+    """Canonicalize a date, retaining the raw text when it cannot be resolved."""
+    if not value:
+        return value
+    normalized = normalize_value(value, spec, reference_year)
+    return normalized if normalized is not None else value
+
+
+def _canonical_period(
+    period: FilingPeriod,
+    year: int | None,
+) -> FilingPeriod:
+    """Canonicalize the reported period, anchoring two-digit years to the source."""
+    return replace(
+        period,
+        period_of_report=_canonical_date(
+            period.period_of_report,
+            OWNERSHIP_METADATA_FIELDS["periodOfReport"],
+            year,
+        ),
+        date_of_original=_canonical_date(
+            period.date_of_original,
+            OWNERSHIP_METADATA_FIELDS["dateOfOriginalSubmission"],
+            year,
+        ),
+    )
 
 
 def parse_metadata(
@@ -358,12 +395,21 @@ def parse_metadata(
             if not signature_date:
                 signature_date = candidate_date
 
+    year = reference_year
+    if year is None:
+        year = reported_year(
+            (period.period_of_report, period.date_of_original, signature_date)
+        )
     return OwnershipMetadata(
         issuer=issuer,
         reporting_owner=owner,
-        period=period,
+        period=_canonical_period(period, year),
         signature_name=signature_name,
-        signature_date=signature_date,
+        signature_date=_canonical_date(
+            signature_date,
+            OWNERSHIP_METADATA_FIELDS["signatureDate"],
+            year,
+        ),
     )
 
 

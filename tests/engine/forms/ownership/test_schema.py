@@ -141,3 +141,33 @@ def test_decimal_limits_and_amendment_date_applicability() -> None:
     assert "invalid_transactionShares_decimal" in kinds
     assert "invalid_transactionPricePerShare_decimal" in kinds
     assert "invalid_transactionTotalValue_decimal" in kinds
+
+
+def test_schema_applies_singleton_cardinality_to_ownership_fields() -> None:
+    root = ET.fromstring(
+        """<ownershipDocument>
+          <documentType>4</documentType>
+          <documentType>4</documentType>
+          <periodOfReport>2024-01-31</periodOfReport>
+        </ownershipDocument>"""
+    )
+
+    anomalies = ownership_schema_anomalies(root, "0001-01-000012")
+
+    assert "excess_documentType" in {item["kind"] for item in anomalies}
+
+
+def test_schema_does_not_apply_ownership_rules_to_other_families() -> None:
+    root = ET.fromstring(
+        """<edgarSubmission><headerData><submissionType>144</submissionType>
+          </headerData><formData><issuerInfo><issuerName>Acme</issuerName>
+          </issuerInfo></formData></edgarSubmission>"""
+    )
+
+    anomalies = ownership_schema_anomalies(root, "0001-01-000013")
+
+    assert not {
+        item["kind"]
+        for item in anomalies
+        if item["kind"].startswith(("invalid_", "excess_"))
+    }

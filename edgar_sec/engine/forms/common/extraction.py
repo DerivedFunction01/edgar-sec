@@ -12,7 +12,10 @@ from edgar_sec.engine.forms.common.dates import (
     format_iso_date,
     normalize_iso_date,
 )
-from edgar_sec.engine.forms.common.numbers import normalize_schema_number
+from edgar_sec.engine.forms.common.numbers import (
+    normalize_schema_magnitude,
+    normalize_schema_number,
+)
 
 _Record = TypeVar("_Record")
 
@@ -21,6 +24,7 @@ class FieldKind(StrEnum):
     TEXT = "text"
     INTEGER = "integer"
     DECIMAL = "decimal"
+    NUMBER = "number"
     DATE = "date"
     BOOLEAN = "boolean"
     ENUM = "enum"
@@ -68,6 +72,7 @@ class ExtractedValue:
     start_offset: int | None = None
     end_offset: int | None = None
     reported_year_anchor: int | None = None
+    normalized: str | None = None
 
     def unresolved_record(self) -> dict[str, object] | None:
         return build_unresolved_record(
@@ -186,6 +191,16 @@ def _normalize(value: str, spec: FieldSpec, reference_year: int | None) -> str |
             allow_negative=spec.allow_negative,
             allow_integral_decimal=spec.allow_integral_decimal,
         )
+    if spec.kind is FieldKind.NUMBER:
+        return normalize_schema_magnitude(
+            value,
+            strip_currency=spec.strip_currency,
+            strip_units=spec.strip_units,
+            strip_percent=spec.strip_percent,
+            strip_footnotes=spec.strip_footnotes,
+            allow_accounting_negative=spec.allow_accounting_negative,
+            allow_negative=spec.allow_negative,
+        )
     if spec.kind is FieldKind.DATE:
         return normalize_iso_date(
             value,
@@ -217,6 +232,39 @@ def normalize_jurisdiction_code(
     return code
 
 
+def normalize_value(
+    value: str | None,
+    spec: FieldSpec,
+    reference_year: int | None = None,
+) -> str | None:
+    """Apply a field's type normalization policy, ignoring value constraints."""
+    if value is None or not value.strip():
+        return None
+    return _normalize(value, spec, reference_year)
+
+
+def constraint_issue(value: str | None, spec: FieldSpec) -> str | None:
+    """Return the first constraint a normalized value violates, if any."""
+    if value is None:
+        return None
+    if spec.max_length is not None and len(value) > spec.max_length:
+        return "max_length"
+    if spec.allowed_values and value not in spec.allowed_values:
+        return "choice"
+    if spec.kind in {FieldKind.INTEGER, FieldKind.DECIMAL, FieldKind.NUMBER}:
+        try:
+            number = Decimal(value)
+        except InvalidOperation:
+            return "invalid_number"
+        if spec.minimum is not None and number < Decimal(spec.minimum):
+            return "minimum"
+        if spec.maximum is not None and number > Decimal(spec.maximum):
+            return "maximum"
+        if spec.max_scale is not None and len(value.partition(".")[2]) > spec.max_scale:
+            return "scale"
+    return None
+
+
 def extract_value(
     raw_value: str | None,
     spec: FieldSpec,
@@ -236,47 +284,188 @@ def extract_value(
             end_offset,
             reference_year,
         )
-    normalized = _normalize(raw_value, spec, reference_year)
-    issue = None if normalized is not None else f"invalid_{spec.kind.value}"
-    if normalized is not None and spec.max_length and len(normalized) > spec.max_length:
-        normalized = None
-        issue = "max_length"
-    if (
-        normalized is not None
-        and spec.allowed_values
-        and normalized not in spec.allowed_values
-    ):
-        normalized = None
-        issue = "choice"
-    if normalized is not None and spec.kind in {FieldKind.INTEGER, FieldKind.DECIMAL}:
-        try:
-            number = Decimal(normalized)
-        except InvalidOperation:
-            normalized = None
-            issue = "invalid_number"
-        else:
-            if spec.minimum is not None and number < Decimal(spec.minimum):
-                normalized = None
-                issue = "minimum"
-            if spec.maximum is not None and number > Decimal(spec.maximum):
-                normalized = None
-                issue = "maximum"
-            if (
-                normalized is not None
-                and spec.max_scale is not None
-                and len(normalized.partition(".")[2]) > spec.max_scale
-            ):
-                normalized = None
-                issue = "scale"
+    normalized = normalize_value(raw_value, spec, reference_year)
+    if normalized is None:
+        return ExtractedValue(
+            spec.path,
+            raw_value,
+            None,
+            f"invalid_{spec.kind.value}",
+            start_offset,
+            end_offset,
+            reference_year,
+        )
+    issue = constraint_issue(normalized, spec)
+    if issue is not None:
+        return ExtractedValue(
+            spec.path,
+            raw_value,
+            None,
+            issue,
+            start_offset,
+            end_offset,
+            reference_year,
+            normalized,
+        )
     return ExtractedValue(
         spec.path,
         raw_value,
         normalized,
-        issue,
+        None,
         start_offset,
         end_offset,
         reference_year,
+        normalized,
     )
+
+
+def format_field_value(value: str | None, spec: FieldSpec) -> str | None:
+    """Render a normalized value in the lexeme its schema declares."""
+    if value is None:
+        return None
+    if spec.kind is FieldKind.DATE:
+        return format_iso_date(value, month_first=spec.date_lexeme == "MDY")
+    return value
+
+
+def emit_field_value(parent: ET.Element, spec: FieldSpec, value: str) -> None:
+    """Write a normalized value into a schema element."""
+    element = ET.SubElement(parent, spec.path)
+    rendered = format_field_value(value, spec)
+    if spec.value_child:
+        value_element = ET.SubElement(element, "value")
+        value_element.text = rendered
+    else:
+        element.text = rendered
+
+
+def add_field_element(
+    parent: ET.Element,
+    spec: FieldSpec,
+    value: str | None,
+    *,
+    reference_year: int | None = None,
+    unresolved: list[dict[str, object]] | None = None,
+    path: str | None = None,
+) -> None:
+    """Emit a schema field through the shared contract, recording unresolved values."""
+    field_path = path or spec.path
+    normalized = normalize_value(value, spec, reference_year)
+    if normalized is None:
+        if value and value.strip():
+            record = build_scalar_evidence_record(
+                field_path,
+                value,
+                status="unresolved",
+                reference_year=reference_year,
+            )
+            if record is not None and unresolved is not None:
+                unresolved.append(record)
+        return
+    issue = constraint_issue(normalized, spec)
+    if issue is not None:
+        record = build_scalar_evidence_record(
+            field_path,
+            value,
+            status="constraint_violation",
+            normalized_value=normalized,
+            reference_year=reference_year,
+        )
+        if record is not None and unresolved is not None:
+            unresolved.append(record)
+    element = ET.SubElement(parent, spec.path)
+    rendered = format_field_value(normalized, spec)
+    if spec.value_child:
+        value_element = ET.SubElement(element, "value")
+        value_element.text = rendered
+    else:
+        element.text = rendered
+
+
+@dataclass(frozen=True, slots=True)
+class RequiredElement:
+    """A required XML element addressed by its parent path and local tag."""
+
+    parent: str
+    name: str
+    field: str
+    kind: str = "missing_required_schema_field"
+    detail: str = "the supplied XML mapping requires this field"
+    require_text: bool = True
+
+
+def local_name(tag: str) -> str:
+    """Return an element tag without its namespace prefix."""
+    return tag.rsplit("}", 1)[-1]
+
+
+def find_child_element(parent: ET.Element | None, name: str) -> ET.Element | None:
+    """Find a direct child by local name, ignoring namespace prefixes."""
+    if parent is None:
+        return None
+    return next(
+        (element for element in parent if local_name(element.tag) == name),
+        None,
+    )
+
+
+def xml_element_text(element: ET.Element | None) -> str:
+    """Return the trimmed text of an element, ignoring namespace prefixes."""
+    if element is None:
+        return ""
+    return (element.text or "").strip()
+
+
+def find_xml_element(root: ET.Element, path: str) -> ET.Element | None:
+    """Resolve a slash-separated element path, ignoring namespace prefixes."""
+    current: ET.Element | None = root
+    for part in path.split("/"):
+        if not part:
+            continue
+        if current is None:
+            return None
+        current = next(
+            (child for child in current if local_name(child.tag) == part),
+            None,
+        )
+    return current
+
+
+def validate_xml_required(
+    root: ET.Element,
+    requirements: Sequence[RequiredElement],
+    accession: str,
+) -> list[dict[str, str]]:
+    """Report required elements that are absent from the supplied XML."""
+    anomalies: list[dict[str, str]] = []
+    for requirement in requirements:
+        parent = (
+            find_xml_element(root, requirement.parent) if requirement.parent else root
+        )
+        child = (
+            next(
+                (
+                    element
+                    for element in parent
+                    if local_name(element.tag) == requirement.name
+                ),
+                None,
+            )
+            if parent is not None
+            else None
+        )
+        if child is None or (
+            requirement.require_text and not (child.text or "").strip()
+        ):
+            anomalies.append(
+                {
+                    "accession": accession,
+                    "kind": requirement.kind,
+                    "field": requirement.field,
+                    "detail": requirement.detail,
+                }
+            )
+    return anomalies
 
 
 def validate_values(
@@ -409,15 +598,26 @@ __all__ = [
     "ExtractedValue",
     "FieldKind",
     "FieldSpec",
+    "RequiredElement",
+    "add_field_element",
     "build_scalar_evidence_record",
     "build_unresolved_record",
+    "constraint_issue",
+    "emit_field_value",
     "extract_value",
+    "find_child_element",
+    "local_name",
+    "find_xml_element",
+    "format_field_value",
     "normalize_record_dates",
     "normalize_record_fields",
     "normalize_jurisdiction_code",
+    "normalize_value",
     "validate_values",
     "validate_xml_cardinality",
+    "validate_xml_required",
     "validate_xml_schema",
     "validate_xml_values",
     "xml_date_is_valid",
+    "xml_element_text",
 ]

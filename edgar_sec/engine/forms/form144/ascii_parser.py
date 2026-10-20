@@ -223,7 +223,10 @@ def _extract_cover_fields(lines: list[str], slots: Form144AsciiSlots) -> None:
 
 
 def _extract_proposed_sales(
-    lines: list[str], slots: Form144AsciiSlots, full_text: str
+    lines: list[str],
+    slots: Form144AsciiSlots,
+    full_text: str,
+    reference_year: int | None = None,
 ) -> None:
     cutoff = min(len(lines), max(40, int(len(lines) * 0.85)))
 
@@ -276,8 +279,10 @@ def _extract_proposed_sales(
                 if not target_rec.exchange and normalize_exchange_name(clean_c):
                     target_rec.exchange = normalize_exchange_name(clean_c)
                     continue
-                if not target_rec.approx_sale_date and parse_date(clean_c):
-                    parsed_d = parse_date(clean_c)
+                if not target_rec.approx_sale_date and parse_date(
+                    clean_c, reference_year=reference_year
+                ):
+                    parsed_d = parse_date(clean_c, reference_year=reference_year)
                     if parsed_d:
                         target_rec.approx_sale_date = parsed_d.display
                     continue
@@ -435,8 +440,10 @@ def _extract_proposed_sales(
                                     rec.shares_outstanding = nums[2]
                     if not rec.exchange and normalize_exchange_name(clean_v):
                         rec.exchange = normalize_exchange_name(clean_v)
-                    elif not rec.approx_sale_date and parse_date(clean_v):
-                        parsed_d = parse_date(clean_v)
+                    elif not rec.approx_sale_date and parse_date(
+                        clean_v, reference_year=reference_year
+                    ):
+                        parsed_d = parse_date(clean_v, reference_year=reference_year)
                         if parsed_d:
                             rec.approx_sale_date = parsed_d.display
                     elif (
@@ -543,7 +550,7 @@ def parse_ascii_form144(
     slots.sig_date = sig_date
 
     _extract_cover_fields(lines, slots)
-    _extract_proposed_sales(lines, slots, raw_text)
+    _extract_proposed_sales(lines, slots, raw_text, reference_year)
 
     # Require at least issuer_name or reporting_person to consider it a Form 144
     if not slots.issuer_name and not slots.reporting_person:

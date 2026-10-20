@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from functools import partial
 import re
+from dataclasses import replace
 
 from edgar_sec.domain.forms.families.form144.models import (
     TableISecurityItem,
@@ -17,10 +18,20 @@ from edgar_sec.engine.forms.common.alignment import (
 from edgar_sec.engine.forms.common.statutory import STATUTORY_PAGE_ARTIFACT_RE
 from edgar_sec.engine.forms.common.tables import is_instruction_row
 from edgar_sec.engine.forms.common.numbers import (
+    extract_schema_number_or_token,
     normalize_schema_integer_value,
     normalize_schema_number,
 )
-from edgar_sec.engine.forms.common.extraction import normalize_record_dates
+from edgar_sec.engine.forms.common.row_extraction import (
+    as_integer,
+    normalize_row_record,
+    scan_date_cells,
+    split_row_cells,
+)
+from edgar_sec.engine.forms.form144.row_specs import (
+    FORM144_TABLE_I_ROW_SPEC,
+    FORM144_TABLE_II_ROW_SPEC,
+)
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
 from edgar_sec.engine.tables.currencies import ALL_CURRENCY_SYMBOLS
@@ -28,6 +39,16 @@ from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE
 
 _FORM144_TOKEN_RE = re.compile(r"[a-z0-9\(\)]+")
 _FORM144_INTEGER = partial(normalize_schema_integer_value, strip_units=True)
+
+
+def _integer_or_token(text: str) -> int | str | None:
+    """Return the policy-conformant integer, or the raw token it rejects."""
+    value = _FORM144_INTEGER(text)
+    if value is not None:
+        return value
+    return extract_schema_number_or_token(text)
+
+
 _FORM144_DECIMAL = partial(
     normalize_schema_number,
     integer=False,
@@ -147,7 +168,7 @@ _TABLE_I_SCHEMA = TableSchema(
             index=4,
             name="amount_acquired",
             is_required=True,
-            data_extractor=_FORM144_INTEGER,
+            data_extractor=_integer_or_token,
         ),
         CanonicalColumn(
             index=5,
@@ -182,7 +203,7 @@ _TABLE_II_SCHEMA = TableSchema(
             index=3,
             name="amount_sold",
             is_required=True,
-            data_extractor=_FORM144_INTEGER,
+            data_extractor=_integer_or_token,
         ),
         CanonicalColumn(
             index=4,
@@ -240,11 +261,7 @@ def parse_table_i_rows(
             )
             continue
 
-        dates: list[tuple[int, str]] = []
-        for idx, cell in enumerate(raw_cells):
-            m = NUMERIC_DATE_RE.search(cell)
-            if m:
-                dates.append((idx, m.group(0)))
+        dates = list(scan_date_cells(raw_cells))
 
         acquired_date = dates[0][1] if dates else None
         payment_date = dates[1][1] if len(dates) > 1 else acquired_date
@@ -287,9 +304,17 @@ def parse_table_i_rows(
                 nature_of_payment=pay_nature,
             )
         )
-    return [
-        normalize_record_dates(item, ("acquired_date", "payment_date"), reference_year)
+    normalized_items = [
+        normalize_row_record(
+            item,
+            FORM144_TABLE_I_ROW_SPEC,
+            reference_year=reference_year,
+        )[0]
         for item in items
+    ]
+    return [
+        replace(item, amount_acquired=as_integer(item.amount_acquired))
+        for item in normalized_items
     ]
 
 
@@ -335,14 +360,9 @@ def parse_table_ii_rows(
             )
             continue
 
-        sale_date: str | None = None
-        date_idx = -1
-        for idx, cell in enumerate(raw_cells):
-            m = NUMERIC_DATE_RE.search(cell)
-            if m:
-                sale_date = m.group(0)
-                date_idx = idx
-                break
+        scanned_dates = scan_date_cells(raw_cells)
+        sale_date = scanned_dates[0][1] if scanned_dates else None
+        date_idx = scanned_dates[0][0] if scanned_dates else -1
 
         numeric_items: list[tuple[int, int | str, str, bool]] = []
         for idx, cell in enumerate(raw_cells):
@@ -400,8 +420,17 @@ def parse_table_ii_rows(
         )
 
     nothing_to_report = len(items) == 0
+    normalized_items = [
+        normalize_row_record(
+            item,
+            FORM144_TABLE_II_ROW_SPEC,
+            reference_year=reference_year,
+        )[0]
+        for item in items
+    ]
     return nothing_to_report, [
-        normalize_record_dates(item, ("sale_date",), reference_year) for item in items
+        replace(item, amount_sold=as_integer(item.amount_sold))
+        for item in normalized_items
     ]
 
 

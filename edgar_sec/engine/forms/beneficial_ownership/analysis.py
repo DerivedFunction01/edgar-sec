@@ -6,6 +6,7 @@ import re
 from typing import Any
 import xml.etree.ElementTree as ET
 
+from edgar_sec.engine.forms.common.extraction import local_name
 from edgar_sec.engine.forms.common.statutory import (
     HEADER_LEAK_RE,
     STATUTORY_PAGE_ARTIFACT_RE,
@@ -73,17 +74,13 @@ _ITEM_SUBSECTION_RE = re.compile(r"(?im)^\s*\([a-f]\)\s")
 _NARRATIVE_FIELD_NAMES = {f"item{number}" for number in range(1, 11)}
 
 
-def _local_name(tag: str) -> str:
-    return tag.rsplit("}", 1)[-1]
-
-
 def _text(element: ET.Element) -> str:
     return " ".join(part.strip() for part in element.itertext() if part.strip())
 
 
 def _elements(root: ET.Element, names: tuple[str, ...]) -> list[ET.Element]:
     wanted = set(names)
-    return [element for element in root.iter() if _local_name(element.tag) in wanted]
+    return [element for element in root.iter() if local_name(element.tag) in wanted]
 
 
 def _source_has_signature(source_text: str) -> bool:
@@ -114,7 +111,7 @@ def _is_narrative_element(
     current = element
     while current in parents:
         current = parents[current]
-        if _local_name(current.tag).casefold() in _NARRATIVE_FIELD_NAMES:
+        if local_name(current.tag).casefold() in _NARRATIVE_FIELD_NAMES:
             return True
     return False
 
@@ -156,7 +153,7 @@ def _analyze_xml(
     parents = {child: parent for parent in root.iter() for child in parent}
     namespace, _, _ = root.tag.rpartition("}")
     ns_uri = namespace.removeprefix("{")
-    root_name = _local_name(root.tag)
+    root_name = local_name(root.tag)
     family = (
         "13G"
         if ns_uri == _SCHEDULE_13G_NS
@@ -184,7 +181,7 @@ def _analyze_xml(
         )
     anomalies.extend(analyze_schema_xml(root, accession, family))
 
-    direct_children = {_local_name(child.tag) for child in root}
+    direct_children = {local_name(child.tag) for child in root}
     for required in ("headerData", "formData"):
         if required not in direct_children:
             anomalies.append(
@@ -199,7 +196,7 @@ def _analyze_xml(
     for container in item_containers:
         seen_items: set[str] = set()
         for child in container:
-            name = _local_name(child.tag).casefold()
+            name = local_name(child.tag).casefold()
             if name not in {f"item{number}" for number in range(1, 11)}:
                 anomalies.append(
                     {
@@ -240,7 +237,7 @@ def _analyze_xml(
             if name == "item2":
                 for element in child:
                     if (
-                        _local_name(element.tag) == "filingPersonName"
+                        local_name(element.tag) == "filingPersonName"
                         and len(_text(element)) > 240
                         and len(_ITEM_SUBSECTION_RE.findall(_text(element))) >= 2
                     ):
@@ -258,7 +255,7 @@ def _analyze_xml(
             elif name == "item5":
                 for element in child:
                     if (
-                        _local_name(element.tag) == "percentageOfClassSecurities"
+                        local_name(element.tag) == "percentageOfClassSecurities"
                         and len(_text(element)) > 240
                         and len(_ITEM_SUBSECTION_RE.findall(_text(element))) >= 2
                     ):

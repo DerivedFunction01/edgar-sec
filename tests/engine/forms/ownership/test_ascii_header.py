@@ -27,7 +27,7 @@ def test_extract_ascii_header_columns() -> None:
     assert meta.issuer.name == "ACME CORP"
     assert meta.issuer.trading_symbol == "ACM"
     assert meta.reporting_owner.is_director is True
-    assert meta.period.period_of_report == "05/15/2002"
+    assert meta.period.period_of_report == "2002-05-15"
 
 
 def test_extract_ascii_header_pipe_table() -> None:

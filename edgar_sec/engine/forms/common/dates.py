@@ -21,7 +21,7 @@ def parse_schema_date(
         parsed is None
         or parsed.ambiguous
         or ("month_year" in parsed.format_id and not allow_month_year)
-        or (reference_year is None and parsed.format_id.endswith("_2digit"))
+        or (reference_year is None and "2digit" in parsed.format_id)
     ):
         return None
     return parsed
@@ -43,7 +43,7 @@ def reported_year(values: Iterable[str | None]) -> int | None:
         if (
             parsed is not None
             and not parsed.ambiguous
-            and not parsed.format_id.endswith("_2digit")
+            and "2digit" not in parsed.format_id
         ):
             return parsed.components.year
     return None

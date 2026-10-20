@@ -35,11 +35,11 @@ def test_parse_metadata_extracts_owner_and_issuer() -> None:
     assert meta.reporting_owner.is_director is False
     assert meta.reporting_owner.officer_title == "Vice President"
 
-    assert meta.period.period_of_report == "June 2001"
+    assert meta.period.period_of_report == "2001-06-01"
     assert meta.period.is_amendment is False
 
     assert meta.signature_name == "Stephen V. Hooks"
-    assert meta.signature_date == "07-03-2001"
+    assert meta.signature_date == "2001-07-03"
 
 
 def test_parse_metadata_associates_font_checkbox_with_adjacent_role_cell() -> None:
@@ -90,7 +90,7 @@ def test_parse_metadata_joins_fragmented_box_fields() -> None:
     assert owner.is_ten_percent_owner is False
     assert meta.issuer.name == "Community Trust Bancorp, Inc."
     assert meta.issuer.trading_symbol == "CTBI"
-    assert meta.period.period_of_report == "February 26 2003"
+    assert meta.period.period_of_report == "2003-02-26"
     assert sections.unparsed == []
 
 
@@ -138,9 +138,9 @@ def test_parse_metadata_handles_stacked_2row_layout() -> None:
     assert meta.issuer.name == "InterDigital Communications Corporation"
     assert meta.issuer.trading_symbol == "IDCC"
     assert meta.reporting_owner.name == "Merritt, William J."
-    assert meta.period.period_of_report == "02/19/2003"
+    assert meta.period.period_of_report == "2003-02-19"
     assert meta.signature_name == "Louis E. Stellato"
-    assert meta.signature_date == "February 4, 2003"
+    assert meta.signature_date == "2003-02-04"
 
 
 def test_parse_metadata_rejects_omb_and_statutory_boilerplate() -> None:
@@ -155,7 +155,7 @@ def test_parse_metadata_rejects_omb_and_statutory_boilerplate() -> None:
     sections = partition_ownership_tables(html)
     meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
     assert meta.signature_name is None
-    assert meta.signature_date == "10/15/2026"
+    assert meta.signature_date == "2026-10-15"
 
 
 def test_parse_metadata_handles_reporting_person_plural_and_by_signature() -> None:
@@ -323,7 +323,7 @@ def test_parse_metadata_same_row_right_cell_period() -> None:
     </table></body></html>"""
     sections = partition_ownership_tables(html)
     meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
-    assert meta.period.period_of_report == "April, 2001"
+    assert meta.period.period_of_report == "2001-04-01"
 
 
 def test_parse_metadata_vertical_lookahead_skips_intervening_address() -> None:
@@ -335,4 +335,4 @@ def test_parse_metadata_vertical_lookahead_skips_intervening_address() -> None:
     </table></body></html>"""
     sections = partition_ownership_tables(html)
     meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
-    assert meta.period.period_of_report == "07/17/2002"
+    assert meta.period.period_of_report == "2002-07-17"

@@ -432,11 +432,12 @@ def _cover_xml(
             )
         else:
             unresolved.append(
-                {
-                    "role": "normalization.unresolved:ruleDesignation",
-                    "content_type": "text/plain",
-                    "content": doc.rule_designation,
-                }
+                build_scalar_evidence_record(
+                    "ruleDesignation",
+                    doc.rule_designation,
+                    status="unresolved",
+                )
+                or {}
             )
 
     contact_fields = (

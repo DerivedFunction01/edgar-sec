@@ -1,13 +1,9 @@
-"""Tests for ownership transaction-table parsing."""
+"""Tests for ownership Table II (Derivative) row extraction."""
 
 from dataclasses import replace
 
 from edgar_sec.engine.forms.ownership.sections import partition_ownership_tables
-from edgar_sec.engine.forms.common.numbers import extract_schema_number
-from edgar_sec.engine.forms.ownership.securities import (
-    parse_table_i_rows,
-    parse_table_ii_rows,
-)
+from edgar_sec.engine.forms.ownership.table_ii import parse_table_ii_rows
 
 SAMPLE_TABLES_HTML = """
 <html><body>
@@ -47,32 +43,8 @@ SAMPLE_TABLES_HTML = """
 """
 
 
-def test_extract_number_fast_path_preserves_numeric_fallbacks() -> None:
-    assert extract_schema_number("00123") == "123"
-    assert extract_schema_number("1,234.50") == "1234.50"
-    assert extract_schema_number("$8.00") == "8.00"
-    assert extract_schema_number("123456789012345678.90") == "123456789012345678.90"
-    assert extract_schema_number("²") is None
-
-
-def test_parse_table_i_and_table_ii_rows() -> None:
+def test_parse_table_ii_rows() -> None:
     sections = partition_ownership_tables(SAMPLE_TABLES_HTML)
-
-    t1_rows = parse_table_i_rows(sections.table_i)
-    assert len(t1_rows) == 2
-    assert t1_rows[0].security_title == "Common Stock"
-    assert t1_rows[0].transaction_date == "1999-04-01"
-    assert t1_rows[0].transaction_code == "G"
-    assert t1_rows[0].equity_swap_involved is True
-    assert t1_rows[0].shares_amount == "3000.000"
-    assert t1_rows[0].acquired_disposed_code == "D"
-    assert t1_rows[0].shares_owned_following == "23337.000"
-    assert t1_rows[0].direct_or_indirect == "D"
-    assert t1_rows[0].footnote_ids == ("1",)
-
-    assert t1_rows[1].direct_or_indirect == "I"
-    assert t1_rows[1].nature_of_ownership == "By 401(k) Plan"
-    assert t1_rows[1].shares_owned_following == "541.158"
 
     t2_rows = parse_table_ii_rows(sections.table_ii)
     assert len(t2_rows) == 1
@@ -81,7 +53,7 @@ def test_parse_table_i_and_table_ii_rows() -> None:
     assert t2_rows[0].exercisable_date == "1997-07-25"
     assert t2_rows[0].expiration_date == "2006-07-25"
     assert t2_rows[0].underlying_security_title == "Common Stock"
-    assert t2_rows[0].underlying_shares_amount == "7550.000"
+    assert t2_rows[0].underlying_shares_amount == "7550"
 
 
 def test_parse_table_ii_strips_header_leaks() -> None:
@@ -108,40 +80,6 @@ def test_parse_table_ii_strips_header_leaks() -> None:
     assert len(t2_rows) == 1
     assert t2_rows[0].security_title == "Employee Stock Option"
     assert t2_rows[0].underlying_security_title is None
-
-
-def test_table_i_resolves_multiline_header_columns() -> None:
-    html = """<html><body><table>
-    <tr><td></td><td colspan="9">Table I - Non-Derivative Securities Acquired, Disposed of, or Beneficially Owned</td></tr>
-    <tr>
-      <td>1. Title of Security</td><td>2. Transaction Date (Month/Day/Year)</td>
-      <td colspan="2">3. Transaction Code (Instr. 8)</td>
-      <td colspan="3">4. Securities Acquired (A) or Disposed of (D)</td>
-      <td>5. Amount of Securities Beneficially Owned at End of Month</td>
-      <td>6. Ownership Form: Direct (D) or Indirect (I)</td>
-      <td>7. Nature of Indirect Beneficial Ownership</td>
-    </tr>
-    <tr>
-      <td></td><td></td><td>Code</td><td>V</td><td>Amount</td>
-      <td>(A) or (D)</td><td>Price</td><td></td><td></td><td></td>
-    </tr>
-    <tr>
-      <td>Common Stock, $.10 par value</td><td>7/30/02</td><td>S</td><td></td>
-      <td>5,000</td><td>(D)</td><td>$8/shr</td><td>51,500</td><td>(D)</td><td></td>
-    </tr>
-    </table></body></html>"""
-
-    sections = partition_ownership_tables(html)
-    rows = parse_table_i_rows(sections.table_i, reference_year=2002)
-
-    assert len(rows) == 1
-    assert rows[0].transaction_date == "2002-07-30"
-    assert rows[0].transaction_code == "S"
-    assert rows[0].shares_amount == "5000"
-    assert rows[0].acquired_disposed_code == "D"
-    assert rows[0].price_per_share == "8"
-    assert rows[0].shares_owned_following == "51500"
-    assert rows[0].direct_or_indirect == "D"
 
 
 def test_table_ii_resolves_split_amount_date_and_underlying_columns() -> None:

@@ -25,17 +25,25 @@ from edgar_sec.engine.forms.form144.metadata_parser import (
 )
 from edgar_sec.engine.forms.form144.sale_parser import parse_proposed_sale_box_3
 from edgar_sec.engine.document_processing.outputs import HandlerOutput, HandlerSidecar
-from edgar_sec.engine.forms.common.numbers import (
-    normalize_schema_number,
-)
 from edgar_sec.engine.forms.common.dates import (
     external_reference_year,
-    format_iso_date,
     normalize_iso_date,
     resolve_reference_year,
 )
-from edgar_sec.engine.forms.common.extraction import FieldKind, FieldSpec, extract_value
+from edgar_sec.engine.forms.common.extraction import (
+    FieldKind,
+    FieldSpec,
+    add_field_element,
+    extract_value,
+    format_field_value,
+)
+from edgar_sec.engine.forms.common.row_extraction import normalize_row_record
 from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
+from edgar_sec.engine.forms.form144.row_specs import (
+    FORM144_PROPOSED_SALE_ROW_SPEC,
+    FORM144_TABLE_I_ROW_SPEC,
+    FORM144_TABLE_II_ROW_SPEC,
+)
 from edgar_sec.engine.forms.form144.sections import (
     Form144Sections,
     partition_form144_tables,
@@ -62,26 +70,9 @@ def _add_text_elem(
 
 def _xml_date(value: str | None, reported_year: int | None) -> str | None:
     canonical = normalize_iso_date(value, reported_year)
-    return format_iso_date(canonical, month_first=True)
-
-
-def _xml_integer(value: int | float | str | None) -> str | None:
-    if value is None:
-        return None
-    return normalize_schema_number(
-        str(value), integer=True, allow_integral_decimal=True
-    )
-
-
-def _xml_decimal(value: int | float | str | None) -> str | None:
-    if value is None:
-        return None
-    return normalize_schema_number(
-        str(value),
-        integer=False,
-        strip_currency=True,
-        allow_accounting_negative=True,
-        allow_negative=True,
+    return format_field_value(
+        canonical,
+        FieldSpec("date", FieldKind.DATE, date_lexeme="MDY"),
     )
 
 
@@ -114,11 +105,18 @@ def _canonicalize_dates(
             unresolved.append(record)
         return result.value
 
-    proposed = replace(
-        doc.proposed_sale,
-        approx_sale_date=normalize(
-            doc.proposed_sale.approx_sale_date, "proposed_sale.approx_sale_date"
-        ),
+    def normalize_rows(record, spec, prefix: str):
+        normalized, evidence = normalize_row_record(
+            record,
+            spec,
+            reference_year=reference_year,
+            path_prefix=prefix,
+        )
+        unresolved.extend(evidence.evidence())
+        return normalized
+
+    proposed = normalize_rows(
+        doc.proposed_sale, FORM144_PROPOSED_SALE_ROW_SPEC, "proposed_sale."
     )
     issuer = replace(
         doc.issuer,
@@ -144,20 +142,11 @@ def _canonicalize_dates(
             ),
         )
     table_i = tuple(
-        replace(
-            item,
-            acquired_date=normalize(
-                item.acquired_date, f"table_i[{index}].acquired_date"
-            ),
-            payment_date=normalize(item.payment_date, f"table_i[{index}].payment_date"),
-        )
+        normalize_rows(item, FORM144_TABLE_I_ROW_SPEC, f"table_i[{index}].")
         for index, item in enumerate(doc.securities_to_be_sold)
     )
     table_ii = tuple(
-        replace(
-            item,
-            sale_date=normalize(item.sale_date, f"table_ii[{index}].sale_date"),
-        )
+        normalize_rows(item, FORM144_TABLE_II_ROW_SPEC, f"table_ii[{index}].")
         for index, item in enumerate(doc.securities_sold_past_3_months)
     )
     signature = doc.signature
@@ -237,6 +226,13 @@ def _build_issuer_xml(form_data: ET.Element, doc: Form144Document) -> None:
             _add_text_elem(rels_el, "relationshipToIssuer", rel)
 
 
+def _row_field(spec, name: str) -> FieldSpec:
+    column = spec.column(name)
+    if column is None:
+        raise KeyError(name)
+    return column.field
+
+
 def _build_securities_information_xml(
     form_data: ET.Element, item: ProposedSaleItem, reported_year: int | None
 ) -> None:
@@ -259,19 +255,34 @@ def _build_securities_information_xml(
         if item.broker.zip_code:
             _add_text_elem(addr_el, "com:zipCode", item.broker.zip_code)
 
+    spec = FORM144_PROPOSED_SALE_ROW_SPEC
     if item.units_to_be_sold is not None:
-        _add_text_elem(sec_el, "noOfUnitsSold", _xml_integer(item.units_to_be_sold))
+        add_field_element(
+            sec_el,
+            _row_field(spec, "units_to_be_sold"),
+            str(item.units_to_be_sold),
+            reference_year=reported_year,
+        )
     if item.aggregate_market_value is not None:
-        _add_text_elem(
-            sec_el, "aggregateMarketValue", _xml_decimal(item.aggregate_market_value)
+        add_field_element(
+            sec_el,
+            _row_field(spec, "aggregate_market_value"),
+            str(item.aggregate_market_value),
+            reference_year=reported_year,
         )
     if item.units_outstanding is not None:
-        _add_text_elem(
-            sec_el, "noOfUnitsOutstanding", _xml_integer(item.units_outstanding)
+        add_field_element(
+            sec_el,
+            _row_field(spec, "units_outstanding"),
+            str(item.units_outstanding),
+            reference_year=reported_year,
         )
     if item.approx_sale_date:
-        _add_text_elem(
-            sec_el, "approxSaleDate", _xml_date(item.approx_sale_date, reported_year)
+        add_field_element(
+            sec_el,
+            _row_field(spec, "approx_sale_date"),
+            item.approx_sale_date,
+            reference_year=reported_year,
         )
     if item.exchange_name:
         _add_text_elem(sec_el, "securitiesExchangeName", item.exchange_name)
@@ -284,11 +295,15 @@ def _build_table_i_xml(
 ) -> None:
     for item in items:
         row_el = ET.SubElement(form_data, "securitiesToBeSold")
+        spec = FORM144_TABLE_I_ROW_SPEC
         if item.class_title:
             _add_text_elem(row_el, "securitiesClassTitle", item.class_title)
         if item.acquired_date:
-            _add_text_elem(
-                row_el, "acquiredDate", _xml_date(item.acquired_date, reported_year)
+            add_field_element(
+                row_el,
+                _row_field(spec, "acquired_date"),
+                item.acquired_date,
+                reference_year=reported_year,
             )
         if item.nature_of_acquisition:
             _add_text_elem(
@@ -300,12 +315,18 @@ def _build_table_i_xml(
             )
         _add_text_elem(row_el, "isGiftTransaction", "Y" if item.is_gift else "N")
         if item.amount_acquired is not None:
-            _add_text_elem(
-                row_el, "amountOfSecuritiesAcquired", _xml_integer(item.amount_acquired)
+            add_field_element(
+                row_el,
+                _row_field(spec, "amount_acquired"),
+                str(item.amount_acquired),
+                reference_year=reported_year,
             )
         if item.payment_date:
-            _add_text_elem(
-                row_el, "paymentDate", _xml_date(item.payment_date, reported_year)
+            add_field_element(
+                row_el,
+                _row_field(spec, "payment_date"),
+                item.payment_date,
+                reference_year=reported_year,
             )
         if item.nature_of_payment:
             _add_text_elem(row_el, "natureOfPayment", item.nature_of_payment)
@@ -326,6 +347,7 @@ def _build_table_ii_xml(
     _add_text_elem(form_data, "nothingToReportFlagOnSecuritiesSoldInPast3Months", "N")
     for item in items:
         row_el = ET.SubElement(form_data, "securitiesSoldInPast3Months")
+        spec = FORM144_TABLE_II_ROW_SPEC
         if item.seller_name or item.seller_address:
             seller_el = ET.SubElement(row_el, "sellerDetails")
             if item.seller_name:
@@ -336,13 +358,26 @@ def _build_table_ii_xml(
         if item.class_title:
             _add_text_elem(row_el, "securitiesClassTitle", item.class_title)
         if item.sale_date:
-            _add_text_elem(row_el, "saleDate", _xml_date(item.sale_date, reported_year))
+            add_field_element(
+                row_el,
+                _row_field(spec, "sale_date"),
+                item.sale_date,
+                reference_year=reported_year,
+            )
         if item.amount_sold is not None:
-            _add_text_elem(
-                row_el, "amountOfSecuritiesSold", _xml_integer(item.amount_sold)
+            add_field_element(
+                row_el,
+                _row_field(spec, "amount_sold"),
+                str(item.amount_sold),
+                reference_year=reported_year,
             )
         if item.gross_proceeds is not None:
-            _add_text_elem(row_el, "grossProceeds", _xml_decimal(item.gross_proceeds))
+            add_field_element(
+                row_el,
+                _row_field(spec, "gross_proceeds"),
+                str(item.gross_proceeds),
+                reference_year=reported_year,
+            )
 
 
 def _build_signature_xml(

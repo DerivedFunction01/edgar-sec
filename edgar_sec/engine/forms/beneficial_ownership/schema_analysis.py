@@ -18,17 +18,16 @@ from edgar_sec.domain.taxonomy.jurisdictions import EDGAR_JURISDICTION_CODES
 from edgar_sec.engine.forms.common.extraction import (
     FieldKind,
     FieldSpec,
+    RequiredElement,
+    local_name,
+    validate_xml_required,
     validate_xml_values,
 )
 
 
-def _local_name(tag: str) -> str:
-    return tag.rsplit("}", 1)[-1]
-
-
 def _elements(root: ET.Element, names: tuple[str, ...]) -> list[ET.Element]:
     name_set = set(names)
-    return [element for element in root.iter() if _local_name(element.tag) in name_set]
+    return [element for element in root.iter() if local_name(element.tag) in name_set]
 
 
 def _text(element: ET.Element) -> str:
@@ -39,7 +38,6 @@ def analyze_schema_xml(
     root: ET.Element, accession: str, family: str
 ) -> list[dict[str, Any]]:
     anomalies: list[dict[str, Any]] = []
-    form_data = _elements(root, ("formData",))
     required_nodes = (
         (
             "coverPageHeader",
@@ -50,13 +48,21 @@ def analyze_schema_xml(
         if family == "13G"
         else ("coverPageHeader", "reportingPersons", "items1To7", "signatureInfo")
     )
-    if form_data:
-        direct_names = {_local_name(element.tag) for element in form_data[0]}
-        anomalies.extend(
-            _missing_field(accession, name)
-            for name in required_nodes
-            if name not in direct_names
+    anomalies.extend(
+        validate_xml_required(
+            root,
+            tuple(
+                RequiredElement(
+                    parent="formData",
+                    name=name,
+                    field=name,
+                    require_text=False,
+                )
+                for name in required_nodes
+            ),
+            accession,
         )
+    )
 
     choices = {
         "submissionType": (
@@ -124,11 +130,20 @@ def analyze_schema_xml(
         )
 
     for details in _elements(root, ("signatureDetails",)):
-        for required in ("signature", "title", "date"):
-            if not any(_text(element) for element in _elements(details, (required,))):
-                anomalies.append(
-                    _missing_field(accession, f"signatureDetails.{required}")
-                )
+        anomalies.extend(
+            validate_xml_required(
+                details,
+                tuple(
+                    RequiredElement(
+                        parent="",
+                        name=required,
+                        field=f"signatureDetails.{required}",
+                    )
+                    for required in ("signature", "title", "date")
+                ),
+                accession,
+            )
+        )
         anomalies.extend(
             validate_xml_values(
                 details,

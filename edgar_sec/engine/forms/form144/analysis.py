@@ -12,7 +12,7 @@ from edgar_sec.domain.forms.families.form144.taxonomy import (
     FORM144_LIVE_TEST_TYPES,
     FORM144_SUBMISSION_TYPES,
 )
-from edgar_sec.engine.forms.common.extraction import validate_xml_schema
+from edgar_sec.engine.forms.common.extraction import local_name, validate_xml_schema
 from edgar_sec.engine.forms.form144.field_specs import FORM144_FIELD_SPECS
 from edgar_sec.engine.forms.common.statutory import HEADER_LEAK_RE
 from edgar_sec.engine.forms.common.unparsed import load_unparsed_sections
@@ -39,15 +39,11 @@ _BOILERPLATE_TERMS = (
 
 
 def _children(parent: ET.Element, name: str) -> list[ET.Element]:
-    return [child for child in parent if _clean_tag(child.tag) == name]
+    return [child for child in parent if local_name(child.tag) == name]
 
 
 def _has_text(parent: ET.Element, name: str) -> bool:
     return any((child.text or "").strip() for child in _children(parent, name))
-
-
-def _clean_tag(tag: str) -> str:
-    return tag.split("}")[-1] if "}" in tag else tag
 
 
 def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | None:
@@ -78,7 +74,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
 
     tag_values: dict[str, list[str]] = {}
     for elem in root.iter():
-        clean = _clean_tag(elem.tag)
+        clean = local_name(elem.tag)
         if elem.text and elem.text.strip():
             tag_values.setdefault(clean, []).append(elem.text.strip())
 
@@ -92,10 +88,10 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
     anomalies.extend(validate_xml_schema(root, FORM144_FIELD_SPECS, accession))
 
     header = next(
-        (node for node in root.iter() if _clean_tag(node.tag) == "headerData"), None
+        (node for node in root.iter() if local_name(node.tag) == "headerData"), None
     )
     form_data = next(
-        (node for node in root.iter() if _clean_tag(node.tag) == "formData"), None
+        (node for node in root.iter() if local_name(node.tag) == "formData"), None
     )
 
     def require(parent: ET.Element | None, name: str, path: str) -> None:
@@ -111,7 +107,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
     require(header, "submissionType", "submissionType")
     filer_info = (
         next(
-            (node for node in header.iter() if _clean_tag(node.tag) == "filerInfo"),
+            (node for node in header.iter() if local_name(node.tag) == "filerInfo"),
             None,
         )
         if header is not None
@@ -126,7 +122,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
                 (
                     node
                     for node in header.iter()
-                    if _clean_tag(node.tag) == "filerCredentials"
+                    if local_name(node.tag) == "filerCredentials"
                 ),
                 None,
             )
@@ -136,7 +132,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
         require(parent, field, field)
     contact = (
         next(
-            (node for node in header.iter() if _clean_tag(node.tag) == "contact"), None
+            (node for node in header.iter() if local_name(node.tag) == "contact"), None
         )
         if header is not None
         else None
@@ -166,7 +162,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
         )
 
     issuer = (
-        next((node for node in form_data if _clean_tag(node.tag) == "issuerInfo"), None)
+        next((node for node in form_data if local_name(node.tag) == "issuerInfo"), None)
         if form_data is not None
         else None
     )
@@ -178,7 +174,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
     ):
         require(issuer, field, field)
     issuer_address = (
-        next((node for node in issuer if _clean_tag(node.tag) == "issuerAddress"), None)
+        next((node for node in issuer if local_name(node.tag) == "issuerAddress"), None)
         if issuer is not None
         else None
     )
@@ -189,7 +185,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
             (
                 node
                 for node in issuer
-                if _clean_tag(node.tag) == "relationshipsToIssuer"
+                if local_name(node.tag) == "relationshipsToIssuer"
             ),
             None,
         )
@@ -219,13 +215,13 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
             (
                 node
                 for node in item
-                if _clean_tag(node.tag) == "brokerOrMarketmakerDetails"
+                if local_name(node.tag) == "brokerOrMarketmakerDetails"
             ),
             None,
         )
         require(broker, "name", f"securitiesInformation[{index}].broker.name")
         address = (
-            next((node for node in broker if _clean_tag(node.tag) == "address"), None)
+            next((node for node in broker if local_name(node.tag) == "address"), None)
             if broker is not None
             else None
         )
@@ -276,13 +272,13 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
             _children(form_data, "securitiesSoldInPast3Months")
         ):
             seller = next(
-                (node for node in item if _clean_tag(node.tag) == "sellerDetails"),
+                (node for node in item if local_name(node.tag) == "sellerDetails"),
                 None,
             )
             require(seller, "name", f"securitiesSoldInPast3Months[{index}].seller.name")
             address = (
                 next(
-                    (node for node in seller if _clean_tag(node.tag) == "address"), None
+                    (node for node in seller if local_name(node.tag) == "address"), None
                 )
                 if seller is not None
                 else None
@@ -303,7 +299,7 @@ def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | Non
 
     signature = (
         next(
-            (node for node in form_data if _clean_tag(node.tag) == "noticeSignature"),
+            (node for node in form_data if local_name(node.tag) == "noticeSignature"),
             None,
         )
         if form_data is not None

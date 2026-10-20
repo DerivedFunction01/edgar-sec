@@ -272,7 +272,7 @@ def _merge_sections(
     )
 
 
-def _is_box3_data_row(row: tuple[str, ...]) -> bool:
+def _is_box3_data_row(row: tuple[str, ...], reference_year: int | None = None) -> bool:
     if len(row) < 5:
         return False
     row_text = " ".join(row).lower()
@@ -284,7 +284,7 @@ def _is_box3_data_row(row: tuple[str, ...]) -> bool:
         or bool(EXCHANGE_RE.search(row_text))
     )
     has_date = bool(
-        parse_date(row_text)
+        parse_date(row_text, reference_year=reference_year)
         or NUMERIC_DATE_RE.search(row_text)
         or RE_FULL_DATE.search(row_text)
     )
@@ -293,7 +293,9 @@ def _is_box3_data_row(row: tuple[str, ...]) -> bool:
 
 
 def _is_table_ii_continuation(
-    candidate: ResolvedGrid, existing: ClassifiedSection
+    candidate: ResolvedGrid,
+    existing: ClassifiedSection,
+    reference_year: int | None = None,
 ) -> bool:
     rows = [
         row
@@ -349,12 +351,16 @@ def _is_table_ii_continuation(
     return matching_rows >= 1 and matching_rows * 2 >= len(rows)
 
 
-def _is_box3_continuation(candidate: ResolvedGrid, existing: ClassifiedSection) -> bool:
+def _is_box3_continuation(
+    candidate: ResolvedGrid,
+    existing: ClassifiedSection,
+    reference_year: int | None = None,
+) -> bool:
     rows = [row for row in candidate.rows if any(cell.strip() for cell in row)]
     text = " ".join(" ".join(row) for row in rows).lower()
     if all(marker in text for marker in ("outstanding", "approx", "exchange")) and any(
         any(NUMERIC_TOKEN_RE.search(cell) for cell in row)
-        and any(parse_date(cell) for cell in row)
+        and any(parse_date(cell, reference_year=reference_year) for cell in row)
         and any(EXCHANGE_RE.search(cell) for cell in row)
         for row in rows
     ):
@@ -374,7 +380,7 @@ def _is_box3_continuation(candidate: ResolvedGrid, existing: ClassifiedSection) 
     return any(
         (len(row) == width or (sec_use_only and len(row) == width - 1))
         and sum(NUMERIC_TOKEN_RE.search(cell) is not None for cell in row) >= 2
-        and any(parse_date(cell) for cell in row)
+        and any(parse_date(cell, reference_year=reference_year) for cell in row)
         and any(EXCHANGE_RE.search(cell) for cell in row)
         for row in rows
     )
@@ -421,10 +427,10 @@ def _is_instruction_table(lower: str, tbl: FastHtmlNode | None = None) -> bool:
     return is_instruction_row(lower)
 
 
-def _has_box3_value_row(grid: ResolvedGrid) -> bool:
+def _has_box3_value_row(grid: ResolvedGrid, reference_year: int | None = None) -> bool:
     for row in grid.rows:
         numeric_count = sum(NUMERIC_TOKEN_RE.search(cell) is not None for cell in row)
-        has_date = any(parse_date(cell) for cell in row)
+        has_date = any(parse_date(cell, reference_year=reference_year) for cell in row)
         has_exchange = any(EXCHANGE_RE.search(cell) for cell in row)
         if numeric_count >= 3 or (numeric_count >= 2 and (has_date or has_exchange)):
             return True
@@ -466,7 +472,7 @@ def partition_form144_tables(
         if (
             proposed_sale_box_3 is not None
             and pre_grid.rows
-            and _is_box3_data_row(pre_grid.rows[0])
+            and _is_box3_data_row(pre_grid.rows[0], reference_year)
         ):
             proposed_sale_box_3 = _merge_sections(
                 proposed_sale_box_3,
@@ -498,7 +504,9 @@ def partition_form144_tables(
         box3_grid = pre_grid if role == SectionRole.PROPOSED_SALE_BOX_3 else None
         if _is_instruction_table(lower, tbl):
             if role == SectionRole.PROPOSED_SALE_BOX_3:
-                if box3_grid is not None and not _has_box3_value_row(box3_grid):
+                if box3_grid is not None and not _has_box3_value_row(
+                    box3_grid, reference_year
+                ):
                     role = SectionRole.INSTRUCTIONS
             elif role not in {
                 SectionRole.TABLE_I,
@@ -521,7 +529,7 @@ def partition_form144_tables(
             candidate_grid = pre_grid
             if table_ii is not None and (
                 is_single_cell_empty_table(candidate_grid.rows)
-                or _is_table_ii_continuation(candidate_grid, table_ii)
+                or _is_table_ii_continuation(candidate_grid, table_ii, reference_year)
             ):
                 role = SectionRole.TABLE_II
                 grid = candidate_grid
@@ -543,7 +551,7 @@ def partition_form144_tables(
                 role = SectionRole.SIGNATURES
                 grid = candidate_grid
             elif proposed_sale_box_3 is not None and _is_box3_continuation(
-                candidate_grid, proposed_sale_box_3
+                candidate_grid, proposed_sale_box_3, reference_year
             ):
                 role = SectionRole.PROPOSED_SALE_BOX_3
                 grid = candidate_grid

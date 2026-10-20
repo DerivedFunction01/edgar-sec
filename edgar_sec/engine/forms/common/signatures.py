@@ -406,6 +406,7 @@ TITLE_CASE_WORD_RE = re.compile(r"^[A-Z][a-zA-Z’‘'\.\-]*$")
 ALL_CAPS_WORD_RE = re.compile(r"^[A-Z][A-Z\.\-]*$")
 SIG_TRAILING_PAREN_RE = re.compile(r"\s*\([^\)]+\)$")
 SIG_SEGMENT_SPLIT_RE = re.compile(r"\s+(?:&|and)\s+")
+SIG_NAME_TRIM_CHARS = " ,.-*()_\u2013\u2014/"
 
 
 def extract_clean_signatory_name(raw_text: str) -> str | None:
@@ -429,11 +430,9 @@ def extract_clean_signatory_name(raw_text: str) -> str | None:
     s = SIG_TRAILING_PAREN_NUM_RE.sub("", s.strip())
     parts = SIG_DELIMITER_SPLIT_RE.split(s)
     cand = (
-        parts[0].strip(" ,.-*()_\u2013\u2014/")
-        if parts
-        else s.strip(" ,.-*()_\u2013\u2014/")
+        parts[0].strip(SIG_NAME_TRIM_CHARS) if parts else s.strip(SIG_NAME_TRIM_CHARS)
     )
-    if len(parts) > 1 and parts[1].strip(" ,.-*()_\u2013\u2014/").lower() in (
+    if len(parts) > 1 and parts[1].strip(SIG_NAME_TRIM_CHARS).lower() in (
         "jr",
         "jr.",
         "sr",
@@ -443,10 +442,10 @@ def extract_clean_signatory_name(raw_text: str) -> str | None:
         "iv",
         "v",
     ):
-        cand = f"{cand}, {parts[1].strip(' ,.-*()_\u2013\u2014/')}"
-    cand = SIG_TRAILING_PAREN_NUM_RE.sub("", cand).strip(" ,.-*()_\u2013\u2014/")
-    cand = NUMERIC_DATE_RE.sub("", cand).strip(" ,.-*()_\u2013\u2014/")
-    cand = RE_FULL_DATE.sub("", cand).strip(" ,.-*()_\u2013\u2014/")
+        cand = f"{cand}, {parts[1].strip(SIG_NAME_TRIM_CHARS)}"
+    cand = SIG_TRAILING_PAREN_NUM_RE.sub("", cand).strip(SIG_NAME_TRIM_CHARS)
+    cand = NUMERIC_DATE_RE.sub("", cand).strip(SIG_NAME_TRIM_CHARS)
+    cand = RE_FULL_DATE.sub("", cand).strip(SIG_NAME_TRIM_CHARS)
     words = cand.split()
     if not (2 <= len(words) <= 6):
         return None
@@ -616,6 +615,7 @@ __all__ = [
     "SIG_DELEGATED_NAME_SUFFIX_ALT",
     "SIG_NAME_RE",
     "SIG_NAME_TERMINATOR_ALT",
+    "SIG_NAME_TRIM_CHARS",
     "SIG_PERSON_PREFIX_RE",
     "SIG_UNDERLINED_NAME_RE",
     "WHITESPACE_RE",

@@ -5,10 +5,13 @@ import xml.etree.ElementTree as ET
 from edgar_sec.engine.document_processing.outputs import HandlerOutput
 from edgar_sec.engine.forms.form144.render_to_xml import render_form144_to_xml
 from edgar_sec.engine.forms.common.unparsed import deserialize_unparsed_sections
+from edgar_sec.engine.forms.common.extraction import normalize_value
 from edgar_sec.engine.forms.form144.render_to_xml import (
     _xml_date,
-    _xml_decimal,
-    _xml_integer,
+)
+from edgar_sec.engine.forms.form144.row_specs import (
+    FORM144_TABLE_I_ROW_SPEC,
+    FORM144_TABLE_II_ROW_SPEC,
 )
 
 SAMPLE_XML = """<?xml version="1.0" encoding="utf-8"?>
@@ -58,9 +61,16 @@ def test_schema_scalar_normalization_uses_filing_year_anchor():
     assert _xml_date("01/15/09", None) is None
     assert _xml_date("Jan 15, 09", 2023) == "01-15-2009"
     assert _xml_date("Jan 15, 09", None) is None
-    assert _xml_integer(10000.0) == "10000"
-    assert _xml_integer("10,000") == "10000"
-    assert _xml_decimal("$1,234.1200") == "1234.1200"
+
+
+def test_numeric_columns_normalize_through_the_shared_row_specs():
+    acquired = FORM144_TABLE_I_ROW_SPEC.column("amount_acquired")
+    proceeds = FORM144_TABLE_II_ROW_SPEC.column("gross_proceeds")
+    assert acquired is not None and proceeds is not None
+    assert normalize_value("10,000", acquired.field) == "10000"
+    assert normalize_value("10000.0", acquired.field) == "10000"
+    assert normalize_value("$1,234.1200", proceeds.field) == "1234.1200"
+    assert normalize_value("not-a-number", acquired.field) is None
 
 
 def test_html_to_xml_conversion():
@@ -97,3 +107,23 @@ def test_unparsed_tables_are_sidecars_not_schema_xml():
     assert records[0]["content_type"] == "text/html"
     assert "Unclassified table content" in records[0]["content"]
     assert "table_index" in records[0]
+
+
+def test_invalid_numeric_values_are_omitted_and_recorded():
+    html = SAMPLE_HTML.replace(
+        b"<tr><td>Common Stock</td><td>01/01/2021</td><td>Direct Purchase</td><td>Issuer</td><td>10,000</td></tr>",
+        b"<tr><td>Common Stock</td><td>01/01/2021</td><td>Direct Purchase</td><td>Issuer</td><td>-10,000</td></tr>",
+    )
+
+    result = render_form144_to_xml(html)
+
+    assert isinstance(result, HandlerOutput)
+    root = ET.fromstring(result.content)
+    assert root.find(".//{*}amountOfSecuritiesAcquired") is None
+    records = deserialize_unparsed_sections(result.sidecars[0].content)
+    unresolved = [
+        record for record in records if str(record["role"]).startswith("normalization.")
+    ]
+    assert unresolved
+    assert unresolved[0]["content"] == "-10,000"
+    assert unresolved[0]["normalization_status"]

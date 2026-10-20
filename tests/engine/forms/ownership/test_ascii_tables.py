@@ -4,10 +4,8 @@ from edgar_sec.engine.forms.ownership.ascii_shape import AsciiShape
 from edgar_sec.engine.forms.ownership.ascii_tables import (
     extract_ascii_tables_and_footnotes,
 )
-from edgar_sec.engine.forms.ownership.securities import (
-    parse_table_i_rows,
-    parse_table_ii_rows,
-)
+from edgar_sec.engine.forms.ownership.table_i import parse_table_i_rows
+from edgar_sec.engine.forms.ownership.table_ii import parse_table_ii_rows
 
 
 def test_extract_sc_table_i() -> None:

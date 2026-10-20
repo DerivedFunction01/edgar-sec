@@ -6,7 +6,7 @@ from edgar_sec.domain.forms.families.ownership.taxonomy import (
     OWNERSHIP_HOLDING_FORM_TYPES,
     OWNERSHIP_TRANSACTION_FORM_TYPES,
 )
-from edgar_sec.engine.forms.common.extraction import validate_xml_values
+from edgar_sec.engine.forms.common.extraction import validate_xml_schema
 from edgar_sec.engine.forms.ownership.field_specs import OWNERSHIP_SCHEMA_FIELDS
 
 
@@ -47,7 +47,7 @@ def ownership_schema_anomalies(
     root: ET.Element, accession: str
 ) -> list[dict[str, str]]:
     anomalies: list[dict[str, str]] = []
-    anomalies.extend(validate_xml_values(root, OWNERSHIP_SCHEMA_FIELDS, accession))
+    anomalies.extend(validate_xml_schema(root, OWNERSHIP_SCHEMA_FIELDS, accession))
     document_type = (root.findtext("documentType") or "").strip()
     original_date = root.find("dateOfOriginalSubmission")
     if document_type.endswith("/A") and not _field_value(original_date):

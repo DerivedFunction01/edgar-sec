@@ -178,6 +178,27 @@ def normalize_schema_integer(text: str | None) -> str | None:
     return str(int(value.replace(",", "")))
 
 
+def _strip_schema_policy(
+    text: str,
+    *,
+    strip_currency: bool,
+    strip_units: bool,
+    strip_percent: bool,
+    strip_footnotes: bool,
+) -> str:
+    value = text.strip()
+    value = _SCHEMA_TRAILING_MARKS_RE.sub("", value).strip()
+    if strip_footnotes:
+        value = _SCHEMA_FOOTNOTES_RE.sub("", value).strip()
+    if strip_units:
+        value = _SCHEMA_UNIT_SUFFIX_RE.sub("", value).strip()
+    if strip_percent:
+        value = _SCHEMA_PERCENT_RE.sub("", value).strip()
+    if strip_currency:
+        value = _SCHEMA_CURRENCY_RE.sub("", value).strip()
+    return value
+
+
 def normalize_schema_number(
     text: str | None,
     *,
@@ -192,16 +213,13 @@ def normalize_schema_number(
 ) -> str | None:
     if not text:
         return None
-    value = text.strip()
-    value = _SCHEMA_TRAILING_MARKS_RE.sub("", value).strip()
-    if strip_footnotes:
-        value = _SCHEMA_FOOTNOTES_RE.sub("", value).strip()
-    if strip_units:
-        value = _SCHEMA_UNIT_SUFFIX_RE.sub("", value).strip()
-    if strip_percent:
-        value = _SCHEMA_PERCENT_RE.sub("", value).strip()
-    if strip_currency:
-        value = _SCHEMA_CURRENCY_RE.sub("", value).strip()
+    value = _strip_schema_policy(
+        text,
+        strip_currency=strip_currency,
+        strip_units=strip_units,
+        strip_percent=strip_percent,
+        strip_footnotes=strip_footnotes,
+    )
 
     negative = value.startswith("(") and value.endswith(")")
     if negative:
@@ -239,6 +257,45 @@ def normalize_schema_number(
     return normalized
 
 
+def normalize_schema_magnitude(
+    text: str | None,
+    *,
+    strip_currency: bool = False,
+    strip_units: bool = False,
+    strip_percent: bool = False,
+    strip_footnotes: bool = False,
+    allow_accounting_negative: bool = False,
+    allow_negative: bool = False,
+) -> str | None:
+    """Normalize a schema decimal that may be written as an integral decimal."""
+    if not text:
+        return None
+    value = _strip_schema_policy(
+        text,
+        strip_currency=strip_currency,
+        strip_units=strip_units,
+        strip_percent=strip_percent,
+        strip_footnotes=strip_footnotes,
+    )
+    negative = value.startswith("(") and value.endswith(")")
+    if negative:
+        if not allow_accounting_negative:
+            return None
+        value = value[1:-1].strip()
+    if _SCHEMA_ZERO_DASHES_RE.fullmatch(value):
+        return "0"
+    decimal = normalize_schema_decimal(value)
+    if decimal is None:
+        return None
+    number = Decimal(decimal)
+    normalized = str(int(number)) if number == number.to_integral_value() else decimal
+    if negative and normalized != "0":
+        normalized = f"-{normalized}"
+    if not allow_negative and normalized.startswith("-"):
+        return None
+    return normalized
+
+
 def normalize_schema_integer_value(text: str | None, **policy: bool) -> int | None:
     normalized = normalize_schema_number(text, integer=True, **policy)
     return int(normalized) if normalized is not None else None
@@ -255,13 +312,24 @@ def extract_schema_number(text: str) -> str | None:
     return normalize_schema_number(number, integer=False, allow_negative=negative)
 
 
+def extract_schema_number_or_token(text: str) -> str | None:
+    """Return the policy-conformant number, or the raw token the policy rejects."""
+    normalized = extract_schema_number(text)
+    if normalized is not None:
+        return normalized
+    match = _SCHEMA_NUMERIC_TOKEN_RE.search(text)
+    return match.group(1) if match is not None else None
+
+
 __all__ = [
     "clean_numeric",
     "extract_schema_number",
+    "extract_schema_number_or_token",
     "format_scaled_number_string",
     "normalize_schema_decimal",
     "normalize_schema_integer",
     "normalize_schema_integer_value",
+    "normalize_schema_magnitude",
     "normalize_schema_number",
     "parse_scaled_number",
 ]

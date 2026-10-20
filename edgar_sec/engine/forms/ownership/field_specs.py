@@ -12,13 +12,97 @@ from edgar_sec.engine.forms.common.extraction import FieldKind, FieldSpec
 _COUNTRY_CODES = EDGAR_JURISDICTION_CODES - OWNERSHIP_STATE_CODES
 _XML_BOOLEAN_VALUES = frozenset({"true", "false", "1", "0"})
 
+OWNERSHIP_METADATA_FIELDS: dict[str, FieldSpec] = {
+    "documentType": FieldSpec(
+        "documentType",
+        FieldKind.ENUM,
+        allowed_values=OWNERSHIP_DOCUMENT_TYPES,
+    ),
+    "periodOfReport": FieldSpec(
+        "periodOfReport",
+        FieldKind.DATE,
+        allow_month_year=True,
+    ),
+    "dateOfOriginalSubmission": FieldSpec(
+        "dateOfOriginalSubmission",
+        FieldKind.DATE,
+    ),
+    "signatureName": FieldSpec("signatureName", FieldKind.TEXT),
+    "signatureDate": FieldSpec("signatureDate", FieldKind.DATE),
+    "issuerTradingSymbol": FieldSpec("issuerTradingSymbol", FieldKind.TEXT),
+    "officerTitle": FieldSpec("officerTitle", FieldKind.TEXT),
+    "rptOwnerStreet1": FieldSpec("rptOwnerStreet1", FieldKind.TEXT),
+    "rptOwnerCity": FieldSpec("rptOwnerCity", FieldKind.TEXT),
+    "rptOwnerZipCode": FieldSpec("rptOwnerZipCode", FieldKind.TEXT),
+    "rptOwnerNonUSAddressFlag": FieldSpec(
+        "rptOwnerNonUSAddressFlag",
+        FieldKind.ENUM,
+        allowed_values=_XML_BOOLEAN_VALUES,
+    ),
+    "rptOwnerState": FieldSpec(
+        "rptOwnerState",
+        FieldKind.ENUM,
+        allowed_values=OWNERSHIP_STATE_CODES,
+    ),
+    "rptOwnerCountry": FieldSpec(
+        "rptOwnerCountry",
+        FieldKind.ENUM,
+        allowed_values=_COUNTRY_CODES,
+    ),
+    "transactionFormType": FieldSpec(
+        "transactionFormType",
+        FieldKind.ENUM,
+        allowed_values=frozenset({"3", "4", "5"}),
+    ),
+    "equitySwapInvolved": FieldSpec(
+        "equitySwapInvolved",
+        FieldKind.ENUM,
+        allowed_values=_XML_BOOLEAN_VALUES,
+    ),
+    **{
+        field: FieldSpec(
+            field,
+            FieldKind.ENUM,
+            allowed_values=_XML_BOOLEAN_VALUES,
+        )
+        for field in (
+            "isDirector",
+            "isOfficer",
+            "isTenPercentOwner",
+            "isOther",
+        )
+    },
+}
+
 OWNERSHIP_SCHEMA_FIELDS = (
     FieldSpec(
         "documentType",
         FieldKind.ENUM,
+        max_occurs=1,
         allowed_values=OWNERSHIP_DOCUMENT_TYPES,
         anomaly_kind="invalid_document_type",
         detail="documentType is not permitted by the ownership schema",
+    ),
+    FieldSpec(
+        "periodOfReport",
+        FieldKind.DATE,
+        max_occurs=1,
+        anomaly_kind="invalid_period_of_report",
+        detail="periodOfReport must be an ISO calendar date",
+    ),
+    FieldSpec(
+        "dateOfOriginalSubmission",
+        FieldKind.DATE,
+        max_occurs=1,
+        anomaly_kind="invalid_date_of_original_submission",
+        detail="dateOfOriginalSubmission must be an ISO calendar date",
+    ),
+    FieldSpec(
+        "issuerTradingSymbol",
+        FieldKind.TEXT,
+        max_occurs=1,
+        anomaly_kind="invalid_issuer_trading_symbol",
+        detail="issuerTradingSymbol must be a single trading symbol",
     ),
     FieldSpec(
         "transactionCode",
@@ -107,4 +191,4 @@ OWNERSHIP_SCHEMA_FIELDS = (
     ),
 )
 
-__all__ = ["OWNERSHIP_SCHEMA_FIELDS"]
+__all__ = ["OWNERSHIP_METADATA_FIELDS", "OWNERSHIP_SCHEMA_FIELDS"]
