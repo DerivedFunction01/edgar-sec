@@ -7,22 +7,21 @@ from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
 from shutil import copyfile
-from typing import Protocol
 from urllib.parse import urlsplit
 
 from edgar_sec.domain.document_inventory.models import IndexPageInput
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import full_submission_url_for, validate_archive_url
-from edgar_sec.engine.document.screening import screen_candidate_document
+from edgar_sec.engine.document.screening import (
+    screen_candidate_document,
+)
 from edgar_sec.engine.document.unpacking.streaming import (
     BundleExtraction,
     extract_bundle_sequence,
 )
 from edgar_sec.engine.index_pages.parser import parse_html_index
-from edgar_sec.foundation.io import DEFAULT_IO_CHUNK_SIZE
 from edgar_sec.infra.sec_http.streaming import (
     StreamFailure,
-    StreamResult,
     StreamedResponse,
 )
 from edgar_sec.pipelines.document_acquisition.attempts import (
@@ -38,23 +37,23 @@ from edgar_sec.pipelines.document_acquisition.models import (
     AcquisitionOutcome,
     AcquisitionPolicy,
     AcquisitionStatus,
+    TargetSlotResolution,
+)
+from edgar_sec.pipelines.document_acquisition.runner_support import (
+    AcquisitionTransport,
+    apply_structure_screen as _apply_structure_screen,
+    has_lazy_index_trigger as _has_lazy_index_trigger,
+    outcome as _outcome,
+    read_screen_head as _read_screen_head,
+    resolution_screen_kind as _resolution_screen_kind,
+    stream as _stream,
+    unresolved_source_outcome as _unresolved_source_outcome,
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.resolution import (
     build_resolution as _resolution,
 )
 from edgar_sec.pipelines.document_acquisition.run_state.models import TargetState
-
-
-class AcquisitionTransport(Protocol):
-    def stream_to_file(
-        self,
-        url: str,
-        destination: str | Path,
-        *,
-        max_response_bytes: int,
-        validate_redirect: Callable[[str], None],
-    ) -> StreamResult: ...
 
 
 def _utc(clock: Callable[[], datetime]) -> str:
@@ -66,94 +65,6 @@ def _utc(clock: Callable[[], datetime]) -> str:
 
 def _new_path(staging_root: Path, prefix: str) -> Path:
     return staging_root / f"{prefix}-{uuid.uuid4().hex}.bin"
-
-
-def _validate_redirect(
-    url: str,
-    accession: AccessionNumber,
-    expected_archive_cik: str | int | None = None,
-) -> None:
-    try:
-        validate_archive_url(url, accession, expected_archive_cik=expected_archive_cik)
-    except ValueError as error:
-        raise ValueError("redirect URL is malformed") from error
-
-
-def _stream(
-    transport: AcquisitionTransport,
-    url: str,
-    destination: Path,
-    accession: AccessionNumber,
-    policy: AcquisitionPolicy,
-) -> StreamResult:
-    try:
-        archive = validate_archive_url(url, accession)
-    except ValueError as error:
-        raise ValueError("redirect URL is malformed") from error
-    expected_archive_cik = archive.archive_cik
-    result = transport.stream_to_file(
-        url,
-        destination,
-        max_response_bytes=policy.max_response_bytes,
-        validate_redirect=lambda redirect: _validate_redirect(
-            redirect, accession, expected_archive_cik
-        ),
-    )
-    if isinstance(result, StreamedResponse):
-        try:
-            _validate_redirect(result.final_url, accession, expected_archive_cik)
-        except ValueError:
-            result.path.unlink(missing_ok=True)
-            return StreamFailure(
-                "unsafe_redirect",
-                False,
-                result.status_code,
-                "response final URL is outside the requested accession",
-            )
-    return result
-
-
-def _has_lazy_index_trigger(row: dict[str, object]) -> bool:
-    t_id, t_ver = row["lazy_index_trigger_id"], row["lazy_index_trigger_version"]
-    if (t_id is None) != (t_ver is None):
-        raise ValueError("lazy-index trigger ID and version must be pinned together")
-    if t_id is None:
-        return False
-    if not (isinstance(t_id, str) and t_id and isinstance(t_ver, str) and t_ver):
-        raise ValueError("lazy-index trigger pin is invalid")
-    return True
-
-
-def _outcome(
-    target_id: str,
-    attempts: tuple[AcquisitionAttempt, ...],
-    status: AcquisitionStatus,
-    *,
-    error_code: str | None = None,
-    source_sha256: str | None = None,
-    source_byte_size: int | None = None,
-    source_path: Path | None = None,
-    selected_sha256: str | None = None,
-    selected_byte_size: int | None = None,
-    selected_path: Path | None = None,
-) -> AcquisitionOutcome:
-    last = attempts[-1]
-    return AcquisitionOutcome(
-        target_id=target_id,
-        source=last.source,
-        status=status,
-        attempt_count=last.attempt_number,
-        last_attempt_id=last.attempt_id,
-        error_code=error_code,
-        retryable=last.retryable if status == "failed" else False,
-        source_sha256=source_sha256,
-        source_byte_size=source_byte_size,
-        source_body_relative_path=source_path,
-        selected_sha256=selected_sha256,
-        selected_byte_size=selected_byte_size,
-        body_lifecycle="staged" if status == "acquired" else None,
-        selected_body_relative_path=selected_path,
-    )
 
 
 def acquire_target(
@@ -214,6 +125,8 @@ def acquire_target(
         )
 
     sgml_recovery = False
+    fallback_selected_path = source_path
+    fallback_selected_filename: str | None = None
     screen_context: dict[str, str | None] = {
         "screen_kind": "html_cover",
         "screen_result": "unverifiable",
@@ -230,9 +143,14 @@ def acquire_target(
         )
         if isinstance(extracted, BundleExtraction):
             screen = (
-                screen_candidate_document(
+                _apply_structure_screen(
+                    screen_candidate_document(
+                        str(row["form"]),
+                        observed_sgml_type=extracted.selected.document_type,
+                    ),
                     str(row["form"]),
-                    observed_sgml_type=extracted.selected.document_type,
+                    str(row["target_role"]),
+                    _read_screen_head(selected_path),
                 )
                 if _has_lazy_index_trigger(row)
                 else None
@@ -240,11 +158,12 @@ def acquire_target(
             if screen is not None and screen.screen_result != "form_match":
                 sgml_recovery = True
                 screen_context = {
-                    "screen_kind": screen.screen_kind,
+                    "screen_kind": _resolution_screen_kind(screen),
                     "screen_result": screen.screen_result,
                     "observed_body_type": screen.observed_body_type,
                 }
-                selected_path.unlink(missing_ok=True)
+                fallback_selected_path = selected_path
+                fallback_selected_filename = extracted.selected.filename
             else:
                 attempt = _attempt(
                     target_id=state.target_id,
@@ -315,21 +234,21 @@ def acquire_target(
         and _has_lazy_index_trigger(row)
         and row["sequence"] == 1
     ):
-        head = b""
-        try:
-            with source_path.open("rb") as f:
-                head = f.read(DEFAULT_IO_CHUNK_SIZE)
-        except OSError:
-            pass
-        screen = screen_candidate_document(
+        head = _read_screen_head(source_path)
+        screen = _apply_structure_screen(
+            screen_candidate_document(
+                str(row["form"]),
+                filename=urlsplit(requested_url).path.rsplit("/", 1)[-1],
+                raw_content=head,
+            ),
             str(row["form"]),
-            filename=urlsplit(requested_url).path.rsplit("/", 1)[-1],
-            raw_content=head,
+            str(row["target_role"]),
+            head,
         )
         if screen.screen_result != "form_match":
             direct_screen_recovery = True
             screen_context = {
-                "screen_kind": screen.screen_kind,
+                "screen_kind": _resolution_screen_kind(screen),
                 "screen_result": screen.screen_result,
                 "observed_body_type": screen.observed_body_type,
             }
@@ -403,8 +322,6 @@ def acquire_target(
         selected_path=None,
         run_root=run_root,
     )
-    if not retain_evidence:
-        source_path.unlink(missing_ok=True)
     archive_cik = validate_archive_url(requested_url, accession).archive_cik
     index_url = full_submission_url_for(archive_cik, str(accession))
     index_url = index_url.removesuffix(".txt") + "-index.html"
@@ -425,28 +342,25 @@ def acquire_target(
             selected_path=None,
             run_root=run_root,
         )
-        resolution = _resolution(
-            row | {"run_id": run_id},
-            response,
-            index_attempt,
-            None,
-            None,
-            "failed",
-            **screen_context,
-        )
-        attempts = (first_attempt, index_attempt)
-        return (
-            attempts,
-            _outcome(
-                state.target_id,
-                attempts,
-                "failed",
-                error_code=index_result.code,
-                source_sha256=response.sha256,
-                source_byte_size=response.byte_size,
-            ),
-            resolution,
-            _utc(clock),
+        return _unresolved_source_outcome(
+            row=row,
+            state=state,
+            run_id=run_id,
+            run_root=run_root,
+            response=response,
+            first_attempt=first_attempt,
+            index_attempt=index_attempt,
+            index_response=None,
+            index_result="failed",
+            number=number,
+            started=started,
+            finished=finished,
+            source_path=source_path,
+            selected_path=fallback_selected_path,
+            selected_filename=fallback_selected_filename,
+            retain_evidence=retain_evidence,
+            screen_context=screen_context,
+            clock=clock,
         )
 
     index_bytes = index_result.path.read_bytes()
@@ -478,27 +392,25 @@ def acquire_target(
     attempts = (first_attempt, index_attempt)
     if selection.result != "selected":
         status = selection.result
-        resolution = _resolution(
-            row | {"run_id": run_id},
-            response,
-            index_attempt,
-            index_result,
-            selection,
-            "not_filed" if status == "not_filed" else status,
-            **screen_context,
-        )
-        return (
-            attempts,
-            _outcome(
-                state.target_id,
-                attempts,
-                status,
-                error_code=selection.error_code,
-                source_sha256=response.sha256,
-                source_byte_size=response.byte_size,
-            ),
-            resolution,
-            _utc(clock),
+        return _unresolved_source_outcome(
+            row=row,
+            state=state,
+            run_id=run_id,
+            run_root=run_root,
+            response=response,
+            first_attempt=first_attempt,
+            index_attempt=index_attempt,
+            index_response=index_result,
+            index_result="not_filed" if status == "not_filed" else status,
+            number=number,
+            started=started,
+            finished=finished,
+            source_path=source_path,
+            selected_path=fallback_selected_path,
+            selected_filename=fallback_selected_filename,
+            retain_evidence=retain_evidence,
+            screen_context=screen_context,
+            clock=clock,
         )
 
     entry = selection.entry
@@ -523,29 +435,83 @@ def acquire_target(
             selected_path=None,
             run_root=run_root,
         )
-        attempts = (*attempts, body_attempt)
-        resolution = _resolution(
-            row | {"run_id": run_id},
-            response,
-            index_attempt,
-            index_result,
-            selection,
-            "failed",
-            **screen_context,
+        return _unresolved_source_outcome(
+            row=row,
+            state=state,
+            run_id=run_id,
+            run_root=run_root,
+            response=response,
+            first_attempt=first_attempt,
+            index_attempt=index_attempt,
+            index_response=index_result,
+            index_result="failed",
+            number=number,
+            started=started,
+            finished=finished,
+            source_path=source_path,
+            selected_path=fallback_selected_path,
+            selected_filename=fallback_selected_filename,
+            retain_evidence=retain_evidence,
+            screen_context=screen_context,
+            clock=clock,
+            extra_attempts=(body_attempt,),
+            fallback_number=number + 3,
         )
-        return (
-            attempts,
-            _outcome(
-                state.target_id,
-                attempts,
-                "failed",
-                error_code=body_result.code,
-                source_sha256=response.sha256,
-                source_byte_size=response.byte_size,
+    if selection.retrieval_mode == "direct_url" and _has_lazy_index_trigger(row):
+        recovered_screen = _apply_structure_screen(
+            screen_candidate_document(
+                str(row["form"]),
+                filename=entry.filename,
+                raw_content=_read_screen_head(body_result.path),
             ),
-            resolution,
-            _utc(clock),
+            str(row["form"]),
+            str(row["target_role"]),
+            _read_screen_head(body_result.path),
         )
+        if recovered_screen.is_inversion:
+            if not retain_evidence:
+                body_result.path.unlink(missing_ok=True)
+            body_attempt = _attempt(
+                target_id=state.target_id,
+                number=number + 2,
+                kind="document_body",
+                requested_url=selection.selected_url,
+                result=body_result,
+                started_at_utc=body_started,
+                finished_at_utc=body_finished,
+                source_path=body_result.path if retain_evidence else None,
+                selected_path=None,
+                run_root=run_root,
+                outcome="failed",
+                error_code="recovered_document_identity_mismatch",
+            )
+            attempts = (*attempts, body_attempt)
+            return _unresolved_source_outcome(
+                row=row,
+                state=state,
+                run_id=run_id,
+                run_root=run_root,
+                response=response,
+                first_attempt=first_attempt,
+                index_attempt=index_attempt,
+                index_response=index_result,
+                index_result="failed",
+                number=number,
+                started=started,
+                finished=finished,
+                source_path=source_path,
+                selected_path=fallback_selected_path,
+                selected_filename=fallback_selected_filename,
+                retain_evidence=retain_evidence,
+                screen_context={
+                    "screen_kind": _resolution_screen_kind(recovered_screen),
+                    "screen_result": recovered_screen.screen_result,
+                    "observed_body_type": recovered_screen.observed_body_type,
+                },
+                clock=clock,
+                extra_attempts=(body_attempt,),
+                fallback_number=number + 3,
+            )
     if selection.retrieval_mode == "bundle_sequence":
         if entry.sequence is None:
             raise ValueError("selected bundle entry has no sequence")
@@ -578,22 +544,37 @@ def acquire_target(
                 error_code=extracted.code if status == "failed" else None,
             )
             attempts = (*attempts, body_attempt)
-            resolution = _resolution(
-                row | {"run_id": run_id},
-                response,
-                index_attempt,
-                index_result,
-                selection,
-                "failed",
-                **screen_context,
+            return _unresolved_source_outcome(
+                row=row,
+                state=state,
+                run_id=run_id,
+                run_root=run_root,
+                response=response,
+                first_attempt=first_attempt,
+                index_attempt=index_attempt,
+                index_response=index_result,
+                index_result="failed",
+                number=number,
+                started=started,
+                finished=finished,
+                source_path=source_path,
+                selected_path=fallback_selected_path,
+                selected_filename=fallback_selected_filename,
+                retain_evidence=retain_evidence,
+                screen_context=screen_context,
+                clock=clock,
+                extra_attempts=(body_attempt,),
+                fallback_number=number + 3,
             )
-            err = extracted.code if status == "failed" else None
-            outcome = _outcome(state.target_id, attempts, status, error_code=err)
-            return attempts, outcome, resolution, _utc(clock)
         if _has_lazy_index_trigger(row):
-            screen = screen_candidate_document(
+            screen = _apply_structure_screen(
+                screen_candidate_document(
+                    str(row["form"]),
+                    observed_sgml_type=extracted.selected.document_type,
+                ),
                 str(row["form"]),
-                observed_sgml_type=extracted.selected.document_type,
+                str(row["target_role"]),
+                _read_screen_head(selected_path),
             )
             if screen.screen_result != "form_match":
                 selected_path.unlink(missing_ok=True)
@@ -616,25 +597,31 @@ def acquire_target(
                     ),
                 )
                 attempts = (*attempts, body_attempt)
-                resolution = _resolution(
-                    row | {"run_id": run_id},
-                    response,
-                    index_attempt,
-                    index_result,
-                    selection,
-                    "failed",
-                    **screen_context,
-                )
-                return (
-                    attempts,
-                    _outcome(
-                        state.target_id,
-                        attempts,
-                        "failed",
-                        error_code=body_attempt.error_code,
-                    ),
-                    resolution,
-                    _utc(clock),
+                return _unresolved_source_outcome(
+                    row=row,
+                    state=state,
+                    run_id=run_id,
+                    run_root=run_root,
+                    response=response,
+                    first_attempt=first_attempt,
+                    index_attempt=index_attempt,
+                    index_response=index_result,
+                    index_result="failed",
+                    number=number,
+                    started=started,
+                    finished=finished,
+                    source_path=source_path,
+                    selected_path=fallback_selected_path,
+                    selected_filename=fallback_selected_filename,
+                    retain_evidence=retain_evidence,
+                    screen_context={
+                        "screen_kind": _resolution_screen_kind(screen),
+                        "screen_result": screen.screen_result,
+                        "observed_body_type": screen.observed_body_type,
+                    },
+                    clock=clock,
+                    extra_attempts=(body_attempt,),
+                    fallback_number=number + 3,
                 )
         body_attempt = _attempt(
             target_id=state.target_id,
@@ -669,23 +656,31 @@ def acquire_target(
                 error_code="source_mismatch",
             )
             attempts = (*attempts, body_attempt)
-            resolution = _resolution(
-                row | {"run_id": run_id},
-                response,
-                index_attempt,
-                index_result,
-                selection,
-                "failed",
-                **screen_context,
+            return _unresolved_source_outcome(
+                row=row,
+                state=state,
+                run_id=run_id,
+                run_root=run_root,
+                response=response,
+                first_attempt=first_attempt,
+                index_attempt=index_attempt,
+                index_response=index_result,
+                index_result="failed",
+                number=number,
+                started=started,
+                finished=finished,
+                source_path=source_path,
+                selected_path=fallback_selected_path,
+                selected_filename=fallback_selected_filename,
+                retain_evidence=retain_evidence,
+                screen_context=screen_context,
+                clock=clock,
+                extra_attempts=(body_attempt,),
+                fallback_number=number + 3,
             )
-            return (
-                attempts,
-                _outcome(
-                    state.target_id, attempts, "failed", error_code="source_mismatch"
-                ),
-                resolution,
-                _utc(clock),
-            )
+        if not retain_evidence:
+            source_path.unlink(missing_ok=True)
+            fallback_selected_path.unlink(missing_ok=True)
         attempts = (*attempts, body_attempt)
         resolution = _resolution(
             row | {"run_id": run_id},
@@ -750,21 +745,31 @@ def acquire_target(
             error_code="source_mismatch",
         )
         attempts = (*attempts[:-1], body_attempt)
-        resolution = _resolution(
-            row | {"run_id": run_id},
-            response,
-            index_attempt,
-            index_result,
-            selection,
-            "failed",
-            **screen_context,
+        return _unresolved_source_outcome(
+            row=row,
+            state=state,
+            run_id=run_id,
+            run_root=run_root,
+            response=response,
+            first_attempt=first_attempt,
+            index_attempt=index_attempt,
+            index_response=index_result,
+            index_result="failed",
+            number=number,
+            started=started,
+            finished=finished,
+            source_path=source_path,
+            selected_path=fallback_selected_path,
+            selected_filename=fallback_selected_filename,
+            retain_evidence=retain_evidence,
+            screen_context=screen_context,
+            clock=clock,
+            extra_attempts=(body_attempt,),
+            fallback_number=number + 3,
         )
-        return (
-            attempts,
-            _outcome(state.target_id, attempts, "failed", error_code="source_mismatch"),
-            resolution,
-            _utc(clock),
-        )
+    if not retain_evidence:
+        source_path.unlink(missing_ok=True)
+        fallback_selected_path.unlink(missing_ok=True)
     resolution = _resolution(
         row | {"run_id": run_id},
         response,

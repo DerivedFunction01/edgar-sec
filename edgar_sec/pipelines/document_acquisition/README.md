@@ -25,17 +25,19 @@ the pinned plan and does not require an acquisition run.
   without those facts remain unresolved. Accession-qualifying a catalog child URL is
   not retrieval authorization; acquisition executes only the mode pinned by planning.
 - **Distinct evidence**: Processing role, requested type, expected statutory type, index designation, physical sequence, and observed body type remain separate facts.
+- **Role-sensitive operations**: Form-specific XML renderers are primary-only; exhibits may use generic text where their route supports it. Unsupported rendered operations do not replace the independent raw result.
 - **Finite response limit**: Acquisition runs and fixture body capture resolve `acquisition.max_response_bytes` through the shared settings registry; no unbounded sentinel is accepted.
 - **Plan-driven fixture capture**: Fixture fill validates the pinned bundle and fetches its selected parser inputs directly; the interactive console requires explicit live-network consent.
 - **Lazy-index evidence**: Exact-form lazy selection fetches and caches the accession index in the fixture only when no inventory entry pins the selected document. Repeated targets for that accession reuse the cached page.
-- **Catalog-direct and bundle identity**: Candidate primary document screening is owned by `engine.document.screening.screen_candidate_document`. With the exact-form selector, candidate bodies are screened across SGML `<TYPE>`, filename, exhibit headers, and normalized cover text; mismatch or unverifiable type triggers lazy-index recovery.
+- **Catalog-direct and bundle identity**: Candidate primary document screening is owned by `engine.document.screening`. With the exact-form selector, candidate bodies are screened across SGML `<TYPE>`, filename, exhibit headers, and registered family structure markers; mismatch or unverifiable identity triggers lazy-index recovery.
+- **Unresolved primary recovery**: If exact-form recovery cannot select or verify a primary, the candidate remains available for raw and supported generic text operations, while specialized XML is suppressed.
 - **Processing boundary**: Engine owns candidate screening and resolves operation capability/handler pins from path facts; pipeline code owns source selection, the pinned operation contract, and staged outputs. SGML child filenames use content routes even when their names contain slashes.
 - **Transient ownership**: Acquired bodies remain under the shared transient root; receipts do not authorize cleanup, and receipt-based cleanup is not implemented.
 - **Payload boundary**: Snapshot payloads use separate binary and text Parquet relations; this package does not introduce an external CAS or durable payload directory.
 
 ## Deliberate gaps
 
-- **Evidence-gated family activation**: While candidate document screening and catalog-direct lazy-index recovery are development-ready for registered families (`10-K`, `10-Q`, `8-K`, `20-F`), activating new form families requires representative holdout cases and acceptance decisions.
+- **Family screening evidence**: Lazy-index recovery is enabled for report forms, ownership forms (3/4/5), Form 144, and Schedules 13D/13G. Structural markers are conservative gates, not a representative issuer/time holdout; broader confidence and false-positive assessment remain deferred.
 - **Parser-body fixtures**: Schema v3 stores selected parser inputs and any lazy-index page used to resolve them. Failed targets are reported but their failed request history is not retained.
 - **Bounded production processing**: Derived operations require finite route/handler input, output, and working-set admission. The default registry is empty, so derived operations fail closed until a route envelope is validated and registered; raw identity remains available without materializing the body.
 - **Fixture review boundary**: `review generate` verifies each body digest and runs the current raw/text/XML handlers offline. It writes versioned diagnostic records and handler outputs, not results.

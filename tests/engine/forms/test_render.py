@@ -80,3 +80,31 @@ def test_render_filing_dispatch() -> None:
     rendered = render_filing(filing)
     assert isinstance(rendered, str)
     assert "FORM 10-K" in rendered
+
+
+def test_render_filing_returns_raw_for_unsupported_operation() -> None:
+    filing = FilingAggregate(
+        accession=AccessionNumber.from_any("0000320193-25-000079"),
+        primary_cik=Cik.from_raw("0000320193"),
+        ciks=(Cik.from_raw("0000320193"),),
+        form="4",
+        filing_date="2025-10-31",
+        fetcher=lambda _f: SAMPLE_XML_FORM4,
+    )
+
+    assert render_filing(filing, operation="render_to_txt") == SAMPLE_XML_FORM4
+
+
+def test_render_filing_suppresses_xml_for_prose_exhibit() -> None:
+    exhibit = b"<html><body><h1>Exhibit 99.1</h1><p>Press release</p></body></html>"
+    filing = FilingAggregate(
+        accession=AccessionNumber.from_any("0000320193-25-000079"),
+        primary_cik=Cik.from_raw("0000320193"),
+        ciks=(Cik.from_raw("0000320193"),),
+        form="4",
+        filing_date="2025-10-31",
+        primary_document_path="ex99.htm",
+        fetcher=lambda _f: exhibit,
+    )
+
+    assert render_filing(filing, operation="render_to_xml") == exhibit

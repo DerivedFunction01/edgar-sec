@@ -7,7 +7,10 @@ from __future__ import annotations
 
 import pytest
 
-from edgar_sec.engine.document.screening import screen_candidate_document
+from edgar_sec.engine.document.screening import (
+    screen_candidate_document,
+    screen_specialized_xml_source,
+)
 
 
 def test_screen_observed_sgml_type_match() -> None:
@@ -100,3 +103,53 @@ def test_screen_normalized_text_competing_form_title() -> None:
     assert res.screen_result == "type_mismatch"
     assert res.is_inversion
     assert res.screen_kind == "html_cover"
+
+
+def test_specialized_xml_screen_rejects_prose_as_form_4() -> None:
+    prose = b"<html><body><h1>Exhibit 99.1</h1><p>Acme announced a new partnership.</p></body></html>"
+    screen = screen_specialized_xml_source("4", prose)
+    assert screen.is_inversion
+    assert screen.reason == "form_structure_markers_missing"
+
+
+def test_specialized_xml_screen_requires_ownership_identity_marker() -> None:
+    prose = (
+        b"<html><body>Issuer Acme. See Table I in the attached release.</body></html>"
+    )
+    assert screen_specialized_xml_source("4", prose).is_inversion
+
+
+def test_specialized_xml_screen_accepts_ownership_without_derivative_table() -> None:
+    ownership = b"""<html><body>
+    <h1>FORM 4</h1><p>Issuer Acme Corporation</p>
+    <p>Reporting Owner: Jane Smith</p>
+    <p>Relationship of Reporting Person: Director</p>
+    <p>Table I - Non-Derivative Securities</p>
+    </body></html>"""
+    screen = screen_specialized_xml_source("4", ownership)
+    assert screen.screen_result == "form_match"
+    assert not screen.is_inversion
+
+
+@pytest.mark.parametrize(
+    ("form", "body"),
+    [
+        (
+            "144",
+            b"Form 144 Notice of Proposed Sale. Issuer Acme. Securities to be sold.",
+        ),
+        (
+            "13D",
+            b"Schedule 13D. Reporting Person Jane Smith. Issuer Acme. Item 1.",
+        ),
+        (
+            "13G",
+            b"Schedule 13G. Reporting Person Jane Smith. Issuer Acme. Item 1.",
+        ),
+    ],
+)
+def test_specialized_xml_screen_accepts_registered_family_signals(
+    form: str, body: bytes
+) -> None:
+    screen = screen_specialized_xml_source(form, body)
+    assert screen.screen_result == "form_match"

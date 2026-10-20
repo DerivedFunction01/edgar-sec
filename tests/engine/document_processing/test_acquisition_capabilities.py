@@ -69,3 +69,23 @@ def test_form_4_does_not_resolve_render_to_txt() -> None:
     entry = resolve_acquisition_capability("4", "primary", "render_to_txt", facts)
     assert entry.status is CapabilityStatus.UNSUPPORTED
     assert entry.pins is None
+
+
+def test_form_4_exhibit_uses_generic_text_but_not_form_xml() -> None:
+    facts = DocumentPathFacts.from_archive_path("form4-ex99.htm")
+
+    text = resolve_acquisition_capability("4", "exhibit", "render_to_txt", facts)
+    xml = resolve_acquisition_capability("4", "exhibit", "render_to_xml", facts)
+
+    assert text.status is CapabilityStatus.SUPPORTED
+    assert text.pins == ("text.markup", "v1", "normalize_document", "1", "text")
+    assert xml.status is CapabilityStatus.UNSUPPORTED
+    assert xml.pins is None
+
+
+def test_10k_exhibit_keeps_text_capability() -> None:
+    facts = DocumentPathFacts.from_archive_path("ex-21.htm")
+    entry = resolve_acquisition_capability("10-K", "exhibit", "render_to_txt", facts)
+    xml = resolve_acquisition_capability("10-K", "exhibit", "render_to_xml", facts)
+    assert entry.status is CapabilityStatus.SUPPORTED
+    assert xml.status is CapabilityStatus.UNSUPPORTED

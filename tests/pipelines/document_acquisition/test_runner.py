@@ -21,7 +21,7 @@ from edgar_sec.pipelines.document_acquisition.run_state.store import (
 )
 from edgar_sec.pipelines.document_acquisition import runner as acquisition_runner
 from edgar_sec.pipelines.document_acquisition.runner import execute_acquisition_run
-from edgar_sec.pipelines.document_acquisition.target_runner import _validate_redirect
+from edgar_sec.pipelines.document_acquisition.runner_support import validate_redirect
 from tests.acquisition_run_fixture import make_acquisition_run as _make_run
 
 _ACCESSION = "0000320193-20-000096"
@@ -53,9 +53,9 @@ _UNLINKED_INDEX = (
 def test_redirect_validator_binds_to_requested_archive_cik() -> None:
     url = _BUNDLE_URL.replace("/320193/", "/320194/")
 
-    _validate_redirect(url, AccessionNumber(_ACCESSION), "320194")
+    validate_redirect(url, AccessionNumber(_ACCESSION), "320194")
     with pytest.raises(ValueError):
-        _validate_redirect(url, AccessionNumber(_ACCESSION), "320193")
+        validate_redirect(url, AccessionNumber(_ACCESSION), "320193")
 
 
 class _MemoryTransport:
@@ -191,6 +191,67 @@ def test_runner_uses_exact_lazy_index_and_atomically_records_all_attempts(
     assert resolution == ("unverifiable", "recovered", attempts[1][0])
 
 
+def test_form_4_exhibit_primary_candidate_recovers_form_document(
+    tmp_path, monkeypatch
+) -> None:
+    paths, run_id, row = _make_run(tmp_path, form="4", filename="ex99.htm", lazy=True)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
+        lambda: SimpleNamespace(workers=1, worker_ceiling=1),
+    )
+    index = (
+        b"<table summary='Document Format Files'><tr><th>Seq</th><th>Description</th>"
+        b"<th>Document</th><th>Type</th><th>Size</th></tr>"
+        b"<tr><td>1</td><td>Ownership</td><td><a href='form4.htm'>form4.htm</a>"
+        b"</td><td>4</td><td>100</td></tr></table>"
+        b"<table summary='Data Files'><tr><th>Seq</th><th>Description</th>"
+        b"<th>Document</th><th>Type</th><th>Size</th></tr>"
+        b"<tr><td>2</td><td>Press release</td><td><a href='ex99.htm'>ex99.htm</a>"
+        b"</td><td>EX-99.1</td><td>200</td></tr></table>"
+    )
+    selected_url = _INDEX_URL.rsplit("/", 1)[0] + "/form4.htm"
+    ownership = (
+        b"<html><body><h1>FORM 4</h1><p>Issuer Acme</p>"
+        b"<p>Reporting Owner</p><p>Relationship of Reporting Person</p>"
+        b"<p>Table I - Non-Derivative</p></body></html>"
+    )
+    transport = _MemoryTransport(
+        {
+            row[
+                "target_url"
+            ]: b"<html><h1>Exhibit 99.1</h1><p>Acme press release</p></html>",
+            _INDEX_URL: index,
+            selected_url: ownership,
+        }
+    )
+
+    report = execute_acquisition_run(
+        run_id,
+        retry_failures=False,
+        paths=paths,
+        policy=AcquisitionPolicy(max_response_bytes=4096),
+        transport=transport,
+        clock=lambda: datetime(2025, 1, 1, tzinfo=UTC),
+    )
+
+    assert report.target_counts["acquired"] == 1
+    assert [url for url, _ in transport.calls] == [
+        row["target_url"],
+        _INDEX_URL,
+        selected_url,
+    ]
+    state = get_target_state(paths.run_state_path(run_id), "target-1")
+    assert state is not None and state.selected_body_relative_path is not None
+    assert (
+        paths.run_dir(run_id) / state.selected_body_relative_path
+    ).read_bytes() == ownership
+    with sqlite3.connect(paths.run_state_path(run_id)) as connection:
+        resolution = connection.execute(
+            "SELECT expected_statutory_type, result FROM target_slot_resolutions"
+        ).fetchone()
+    assert resolution == ("4", "recovered")
+
+
 def test_runner_recovers_unlinked_index_row_from_exact_bundle_sequence(
     tmp_path, monkeypatch
 ) -> None:
@@ -287,9 +348,13 @@ def test_lazy_index_bytes_must_match_streamed_response_digest(
         clock=lambda: datetime(2025, 1, 1, tzinfo=UTC),
     )
 
-    assert report.target_counts["failed"] == 1
+    assert report.target_counts["acquired"] == 1
     assert [url for url, _ in transport.calls] == [row["target_url"], _INDEX_URL]
-    assert not list(paths.run_staging_root(run_id).iterdir())
+    state = get_target_state(paths.run_state_path(run_id), "target-1")
+    assert state is not None and state.selected_body_relative_path is not None
+    assert (
+        paths.run_dir(run_id) / state.selected_body_relative_path
+    ).read_bytes() == b"<html>unverifiable cover</html>"
     with sqlite3.connect(paths.run_state_path(run_id)) as connection:
         assert connection.execute(
             "SELECT outcome, error_code FROM attempts ORDER BY attempt_number DESC LIMIT 1"
@@ -431,7 +496,9 @@ def test_runner_retains_each_lazy_response_as_attempt_evidence_when_enabled(
 def test_runner_retains_lazy_response_evidence_after_index_parse_failure(
     tmp_path, monkeypatch
 ) -> None:
-    paths, run_id, row = _make_run(tmp_path)
+    paths, run_id, row = _make_run(
+        tmp_path, form="4", filename="ex99.htm", default_candidates=True
+    )
     monkeypatch.setattr(
         "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
         lambda: SimpleNamespace(workers=1, worker_ceiling=1),
@@ -453,18 +520,39 @@ def test_runner_retains_lazy_response_evidence_after_index_parse_failure(
         clock=lambda: datetime(2025, 1, 1, tzinfo=UTC),
     )
 
-    assert report.target_counts["failed"] == 1
+    assert report.target_counts["acquired"] == 1
+    raw_state = get_operation_state(
+        paths.run_state_path(run_id), canonical_hash(["target-1", "raw"])
+    )
+    xml_state = get_operation_state(
+        paths.run_state_path(run_id), canonical_hash(["target-1", "render_to_xml"])
+    )
+    assert raw_state is not None and raw_state.status == "succeeded"
+    assert (
+        xml_state is not None
+        and xml_state.status == "failed"
+        and xml_state.error_code == "unsupported:primary_document_identity_mismatch"
+    )
     with sqlite3.connect(paths.run_state_path(run_id)) as connection:
         attempts = connection.execute(
             "SELECT requested_url, source_sha256, source_byte_size, "
             "source_body_relative_path FROM attempts ORDER BY attempt_number"
         ).fetchall()
-    assert [attempt[0] for attempt in attempts] == [row["target_url"], _INDEX_URL]
-    for attempt in attempts:
+    assert [attempt[0] for attempt in attempts] == [
+        row["target_url"],
+        _INDEX_URL,
+        row["target_url"],
+    ]
+    for attempt in attempts[:2]:
         source_path = paths.run_dir(run_id) / attempt[3]
         assert source_path.read_bytes() == responses[attempt[0]]
         assert file_sha256(source_path) == attempt[1]
         assert source_path.stat().st_size == attempt[2]
+    state = get_target_state(paths.run_state_path(run_id), "target-1")
+    assert state is not None and state.selected_body_relative_path is not None
+    assert (
+        paths.run_dir(run_id) / state.selected_body_relative_path
+    ).read_bytes() == responses[row["target_url"]]
 
 
 @pytest.mark.parametrize(

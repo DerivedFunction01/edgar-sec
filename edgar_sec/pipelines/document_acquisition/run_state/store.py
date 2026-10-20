@@ -414,6 +414,13 @@ def commit_attempts_and_update_target(
             "ambiguous": "ambiguous",
             "failed": "failed",
         }[resolution.result]
+        if (
+            outcome.status == "acquired"
+            and resolution.selected_url is None
+            and resolution.result
+            in {"not_filed", "required_missing", "ambiguous", "failed"}
+        ):
+            expected_status = "acquired"
         if outcome.status != expected_status:
             raise ValueError("resolution result and target outcome differ")
 

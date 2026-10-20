@@ -605,3 +605,23 @@ def test_load_work_order_numeric_form_hive_partition_safety(
     table = pq.read_table(out.parquet_path)
     assert table.column("form").to_pylist() == ["4"]
     assert table.column("lazy_index_trigger_id").to_pylist() == [None]
+
+
+def test_form_4_exact_form_selection_projects_lazy_index_trigger(
+    target_plan_factory, tmp_path
+) -> None:
+    base = _rows("test_plan")[0]
+    custom = dict(
+        base,
+        form="4",
+        source_origin="catalog_direct",
+        target_role="primary",
+        target_type="primary",
+        catalog_direct_selection="exact_form_with_lazy_index",
+        inventory_entry_id=None,
+    )
+    plan_root, _ = target_plan_factory([custom], has_inventory_snapshot=False)
+    out = load_acquisition_work_order(plan_root, tmp_path / "work_order.parquet")
+    table = pq.read_table(out.parquet_path)
+    assert table.column("lazy_index_trigger_id").to_pylist() == ["4.exact_form"]
+    assert table.column("lazy_index_trigger_version").to_pylist() == ["1"]

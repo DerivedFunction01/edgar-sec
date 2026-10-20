@@ -10,6 +10,10 @@ from typing import TYPE_CHECKING
 
 from edgar_sec.domain.forms.common.processing import AcquisitionOperation
 from edgar_sec.domain.forms.families.processing_profiles import get_family_profile
+from edgar_sec.engine.document.screening import (
+    screen_candidate_document,
+    screen_specialized_xml_source,
+)
 
 if TYPE_CHECKING:
     from edgar_sec.domain.document.aggregate import FilingAggregate
@@ -112,12 +116,33 @@ def render_filing(
     raw_data = filing.raw()
     if raw_data is None:
         raise ValueError(f"Filing {filing.accession.raw} has no primary document bytes")
-    return render_document(
-        raw_data,
-        form=filing.form,
-        filename=filing.primary_document_path,
-        operation=operation,
+    profile = get_family_profile(filing.form)
+    requested_operation = _normalize_operation(operation)
+    if operation is not None and requested_operation is None:
+        return raw_data
+    resolved_operation = requested_operation or (
+        profile.preferred_operation if profile else AcquisitionOperation.RAW
     )
+    if resolved_operation is AcquisitionOperation.RAW:
+        return raw_data
+    if resolved_operation is AcquisitionOperation.RENDER_TO_XML:
+        identity = screen_candidate_document(
+            filing.form,
+            filename=filing.primary_document_path,
+            raw_content=raw_data,
+        )
+        structure = screen_specialized_xml_source(filing.form, raw_data)
+        if identity.is_inversion or structure.is_inversion:
+            return raw_data
+    try:
+        return render_document(
+            raw_data,
+            form=filing.form,
+            filename=filing.primary_document_path,
+            operation=resolved_operation,
+        )
+    except UnsupportedRenderOperation:
+        return raw_data
 
 
 __all__ = [

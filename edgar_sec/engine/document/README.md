@@ -21,6 +21,9 @@ cleaned, projected, and had its page furniture resolved.
 - **Nothing raises on malformed input.** Public functions return `""`, `[]`,
   `None`, or a wrapper. `unpack_sgml_submission("")` returns `[]`;
   `extract_ascii_pre("<pre>a</pre><pre>b</pre>")` returns `None`.
+- **Specialized XML requires source identity signals.** Primary candidates with
+  missing family structure markers are screened before emission; optional empty
+  sections alone do not establish a mismatch.
 - **`<TABLE>` bytes survive HTML projection byte-for-byte** — tables are masked
   before entity unescaping. See
   [`engine/tables/protection/`](../tables/protection/README.md).

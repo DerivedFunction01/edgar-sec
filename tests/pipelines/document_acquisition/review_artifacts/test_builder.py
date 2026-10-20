@@ -32,7 +32,9 @@ from tests.pipelines.document_acquisition.fixture_store.fixture_helpers import (
 
 _FIXTURE_ID = "fixture-form4"
 _BODY = (
-    b"<html><body><table><tr><td>Form 4 parser fixture</td></tr></table></body></html>"
+    b"<html><body><h1>FORM 4</h1><p>Issuer Acme</p>"
+    b"<p>Reporting Owner</p><p>Relationship of Reporting Person</p>"
+    b"<p>Table I - Non-Derivative</p></body></html>"
 )
 
 

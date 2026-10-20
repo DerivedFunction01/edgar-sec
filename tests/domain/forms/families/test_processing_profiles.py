@@ -9,6 +9,7 @@ from edgar_sec.domain.forms.families.current.checkmarks import (
     SIX_K_CHECKBOX_SCHEMA,
 )
 from edgar_sec.domain.forms.families.processing_profiles import (
+    get_lazy_index_trigger,
     get_family_entry,
     get_family_profile,
 )
@@ -66,3 +67,13 @@ def test_ownership_forms_have_catalog_entries() -> None:
         profile = get_family_profile(form)
         assert profile is not None
         assert profile.family == form.removesuffix("/A")
+
+
+@pytest.mark.parametrize("form", ["10-K", "4", "144", "13D", "13G"])
+def test_primary_recovery_families_have_lazy_index_triggers(form: str) -> None:
+    trigger = get_lazy_index_trigger(form)
+    assert trigger == (f"{form}.exact_form", "1")
+
+
+def test_unconfigured_family_has_no_lazy_index_trigger() -> None:
+    assert get_lazy_index_trigger("6-K") is None

@@ -24,6 +24,46 @@ ScreenKind = Literal["sgml_type", "filename", "exhibit_header", "html_cover"]
 
 _FORM_TITLE_RE = re.compile(r"(?i)\bFORM\s+([0-9A-Za-z\-]+(?:/A)?)")
 _SGML_TYPE_BYTES_RE = re.compile(rb"(?i)<TYPE>\s*([^\r\n<]+)")
+_HTML_TAG_BYTES_RE = re.compile(rb"<[^>]{1,256}>")
+
+_SPECIALIZED_XML_MARKERS: dict[str, tuple[tuple[str, ...], ...]] = {
+    "3": (
+        (b"reporting owner", b"reportingowner"),
+        (b"issuer",),
+        (b"relationship of reporting person", b"is director", b"is officer"),
+        (b"non-derivative", b"derivative securities", b"table i"),
+    ),
+    "4": (
+        (b"reporting owner", b"reportingowner"),
+        (b"issuer",),
+        (b"relationship of reporting person", b"is director", b"is officer"),
+        (b"non-derivative", b"derivative securities", b"table i"),
+    ),
+    "5": (
+        (b"reporting owner", b"reportingowner"),
+        (b"issuer",),
+        (b"relationship of reporting person", b"is director", b"is officer"),
+        (b"non-derivative", b"derivative securities", b"table i"),
+    ),
+    "144": (
+        (b"form 144", b"notice of proposed sale"),
+        (b"issuer",),
+        (b"securities to be sold", b"proposed sale"),
+        (b"signature", b"sign here"),
+    ),
+    "13D": (
+        (b"schedule 13d", b"sc 13d"),
+        (b"reporting person", b"reporting persons"),
+        (b"issuer", b"name of issuer"),
+        (b"item 1", b"source of funds", b"percent of class"),
+    ),
+    "13G": (
+        (b"schedule 13g", b"sc 13g"),
+        (b"reporting person", b"reporting persons"),
+        (b"issuer", b"name of issuer"),
+        (b"item 1", b"source of funds", b"percent of class"),
+    ),
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -133,9 +173,57 @@ def screen_candidate_document(
     )
 
 
+def screen_specialized_xml_source(
+    expected_form: str,
+    raw_content: bytes,
+    *,
+    scan_limit_bytes: int = DEFAULT_IO_CHUNK_SIZE,
+) -> CandidateScreen:
+    expected_family = resolve_alias(expected_form) or expected_form.strip().upper()
+    markers = _SPECIALIZED_XML_MARKERS.get(expected_family)
+    if markers is None:
+        return CandidateScreen(
+            "unverifiable", False, "html_cover", None, "no_form_structure_policy"
+        )
+
+    source = raw_content[:scan_limit_bytes].lower()
+    if expected_family in {"3", "4", "5"} and b"ownershipdocument" in source:
+        return CandidateScreen(
+            "form_match", False, "html_cover", expected_family, "native_ownership_xml"
+        )
+    if expected_family in {"144", "13D", "13G"} and b"edgarsubmission" in source:
+        form_marker = expected_family.encode("ascii").lower()
+        if form_marker in source:
+            return CandidateScreen(
+                "form_match", False, "html_cover", expected_family, "native_form_xml"
+            )
+
+    text = _HTML_TAG_BYTES_RE.sub(b" ", source)
+    text = b" ".join(text.split())
+    matched = tuple(any(marker in text for marker in group) for group in markers)
+    if expected_family in {"3", "4", "5"}:
+        matches_form = matched[0] and sum(matched) >= 2
+    elif expected_family == "144":
+        matches_form = matched[0] and sum(matched[1:]) >= 1
+    else:
+        matches_form = matched[0] and matched[1] and sum(matched[2:]) >= 1
+    if matches_form:
+        return CandidateScreen(
+            "form_match", False, "html_cover", expected_family, "form_structure_match"
+        )
+    return CandidateScreen(
+        "type_mismatch",
+        True,
+        "html_cover",
+        None,
+        "form_structure_markers_missing",
+    )
+
+
 __all__ = [
     "CandidateScreen",
     "ScreenKind",
     "ScreenResult",
     "screen_candidate_document",
+    "screen_specialized_xml_source",
 ]

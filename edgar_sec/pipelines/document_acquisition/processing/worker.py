@@ -500,10 +500,19 @@ def _validate_family_operations(request: ProcessingRequest) -> None:
     profile = get_family_profile(request.form)
     allowed = profile.allowed_operations if profile is not None else DEFAULT_OPERATIONS
     for operation in request.operations:
+        operation_kind = AcquisitionOperation(operation.operation)
+        role_allowed = request.target_role == "exhibit" and operation_kind is (
+            AcquisitionOperation.RENDER_TO_TXT
+        )
+        if request.target_role == "exhibit" and operation_kind is (
+            AcquisitionOperation.RENDER_TO_XML
+        ):
+            role_allowed = False
         if (
             operation.requested
             and operation.support_status == "supported"
-            and AcquisitionOperation(operation.operation) not in allowed
+            and operation_kind not in allowed
+            and not role_allowed
         ):
             raise ProcessingError(
                 "requested operation is not allowed by the form-family profile"

@@ -635,6 +635,17 @@ def test_form4_xml_with_registered_handler_succeeds(
 
     paths, request = _minimal_request(tmp_path)
     raw, _, _ = request.operations
+    body = (
+        b"<html><body><h1>FORM 4</h1><p>Issuer Acme</p>"
+        b"<p>Reporting Owner</p><p>Relationship of Reporting Person</p>"
+        b"<p>Table I - Non-Derivative</p></body></html>"
+    )
+    request.body.path.write_bytes(body)
+    body_ref = replace(
+        request.body,
+        sha256=hashlib.sha256(body).hexdigest(),
+        byte_size=len(body),
+    )
     xml = replace(
         request.operations[2],
         operation_id="form4-xml",
@@ -647,7 +658,7 @@ def test_form4_xml_with_registered_handler_succeeds(
         handler_version="2",
         output_kind="xml",
     )
-    request = replace(request, form="4", operations=(raw, xml))
+    request = replace(request, form="4", operations=(raw, xml), body=body_ref)
     effective_path = "report.htm"
     body = request.body.path.read_bytes()
     processing_id = "proc_form4_xml_test"

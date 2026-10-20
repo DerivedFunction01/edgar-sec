@@ -58,12 +58,13 @@ def _request(
     role: str = "primary",
     facts: DocumentPathFacts | None = None,
     include_analysis_artifacts: bool = False,
+    family: str = "10-K",
 ) -> AcquisitionProcessRequest:
     return AcquisitionProcessRequest(
         target_id="target",
-        family="10-K",
+        family=family,
         role=role,
-        target_type="primary",
+        target_type="exhibit" if role == "exhibit" else "primary",
         path_facts=facts or _path_facts(path),
         operations=operations,
         inputs=inputs,
@@ -108,6 +109,40 @@ def test_render_to_txt_uses_generic_normalizer_fallback() -> None:
         "normalize_document",
         "1",
     )
+
+
+def test_form_4_exhibit_can_use_generic_text_processing() -> None:
+    operation = OperationRecord("v1", "text", ("source",), operation="render_to_txt")
+    request = _request(
+        (operation,),
+        (_input(path="form4-ex99.htm"),),
+        path="form4-ex99.htm",
+        role="exhibit",
+        family="4",
+    )
+
+    outcome = AcquisitionProcessor().process(request).outcomes[0]
+
+    assert outcome.status == "ok"
+    assert outcome.output_text is not None
+    assert "Filed text." in outcome.output_text
+
+
+def test_form_4_primary_with_exhibit_input_does_not_emit_xml() -> None:
+    operation = OperationRecord("v1", "xml", ("source",), operation="render_to_xml")
+    body = b"<html><body><h1>Exhibit 99.1</h1><p>Acme press release.</p></body></html>"
+    request = _request(
+        (operation,),
+        (_input(path="ex99.htm", body=body),),
+        path="ex99.htm",
+        family="4",
+    )
+
+    outcome = AcquisitionProcessor().process(request).outcomes[0]
+
+    assert outcome.status == "unsupported"
+    assert outcome.error == "primary_document_identity_mismatch"
+    assert outcome.output_bytes is None
 
 
 def test_render_to_txt_normalizes_plain_text_route() -> None:

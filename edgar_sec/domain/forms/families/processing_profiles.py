@@ -187,7 +187,22 @@ def get_family_profile(family: str) -> DocumentProcessingProfile | None:
 
 
 LAZY_INDEX_FORM_FAMILIES: frozenset[str] = frozenset(
-    {"10-K", "10-Q", "8-K", "20-F", "S-1", "S-3", "S-4", "S-8"}
+    {
+        "10-K",
+        "10-Q",
+        "8-K",
+        "20-F",
+        "S-1",
+        "S-3",
+        "S-4",
+        "S-8",
+        "3",
+        "4",
+        "5",
+        "144",
+        "13D",
+        "13G",
+    }
 )
 
 

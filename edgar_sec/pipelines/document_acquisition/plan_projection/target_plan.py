@@ -16,6 +16,7 @@ import pyarrow.parquet as pq
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import accession_hyphenated, validate_archive_url
 from edgar_sec.domain.forms.families.processing_profiles import (
+    get_lazy_index_trigger,
     LAZY_INDEX_FORM_FAMILIES,
 )
 from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
@@ -564,8 +565,29 @@ def _iter_projected_batches(parts: tuple[Path, ...]):
         "WHEN retrieval_mode NOT IN ('direct_url', 'bundle_sequence') "
         "THEN 'unsupported_retrieval_mode' ELSE NULL END"
     )
+    lazy_index_triggers = {
+        family: trigger
+        for family in sorted(LAZY_INDEX_FORM_FAMILIES)
+        if (trigger := get_lazy_index_trigger(family)) is not None
+    }
     eligible_forms_sql = ", ".join(
-        sql_literal(family) for family in sorted(LAZY_INDEX_FORM_FAMILIES)
+        sql_literal(family) for family in lazy_index_triggers
+    )
+    trigger_id_sql = (
+        "CASE form "
+        + " ".join(
+            f"WHEN {sql_literal(family)} THEN {sql_literal(trigger_id)}"
+            for family, (trigger_id, _) in lazy_index_triggers.items()
+        )
+        + " ELSE NULL END"
+    )
+    trigger_version_sql = (
+        "CASE form "
+        + " ".join(
+            f"WHEN {sql_literal(family)} THEN {sql_literal(version)}"
+            for family, (_, version) in lazy_index_triggers.items()
+        )
+        + " ELSE NULL END"
     )
     trigger_predicate = (
         "catalog_direct_selection = 'exact_form_with_lazy_index' "
@@ -576,9 +598,9 @@ def _iter_projected_batches(parts: tuple[Path, ...]):
     query = (
         "SELECT target.*, ("
         f"{reason} IS NULL) AS executable, {reason} AS skip_reason "
-        f", CASE WHEN {trigger_predicate} THEN form || '.exact_form' "
+        f", CASE WHEN {trigger_predicate} THEN ({trigger_id_sql}) "
         "ELSE NULL END AS lazy_index_trigger_id, "
-        f"CASE WHEN {trigger_predicate} THEN '1' "
+        f"CASE WHEN {trigger_predicate} THEN ({trigger_version_sql}) "
         "ELSE NULL END AS lazy_index_trigger_version "
         f"FROM read_parquet({sql_path_list([str(path) for path in parts])}, hive_partitioning=false) AS target "
         "ORDER BY form, accession, request_id, "

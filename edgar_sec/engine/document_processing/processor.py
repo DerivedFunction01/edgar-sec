@@ -12,6 +12,10 @@ from edgar_sec.domain.document.route import (
     content_route,
     document_route,
 )
+from edgar_sec.engine.document.screening import (
+    screen_candidate_document,
+    screen_specialized_xml_source,
+)
 from edgar_sec.engine.document_processing.acquisition_capabilities import (
     resolve_acquisition_capability,
 )
@@ -154,6 +158,19 @@ class AcquisitionProcessor:
         pins = capability.pins
         if registration is None or pins is None:
             return self._outcome(operation, "unsupported", "handler_not_registered")
+        if operation == "render_to_xml" and request.role == "primary":
+            identity = screen_candidate_document(
+                request.family,
+                filename=input_record.path_facts.path_context,
+                raw_content=input_record.raw_bytes,
+            )
+            structure = screen_specialized_xml_source(
+                request.family, input_record.raw_bytes
+            )
+            if identity.is_inversion or structure.is_inversion:
+                return self._outcome(
+                    operation, "unsupported", "primary_document_identity_mismatch"
+                )
         if (
             (
                 operation_record.capability_version is not None

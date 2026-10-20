@@ -89,13 +89,22 @@ def resolve_acquisition_capability(
     else:
         profile = get_family_profile(family)
         try:
-            permitted = profile is not None and (
-                AcquisitionOperation(operation) in profile.allowed_operations
+            operation_kind = AcquisitionOperation(operation)
+            permitted = (
+                profile is not None and operation_kind in profile.allowed_operations
+            ) or (
+                role == "exhibit"
+                and operation_kind is AcquisitionOperation.RENDER_TO_TXT
             )
+            if (
+                role == "exhibit"
+                and operation_kind is AcquisitionOperation.RENDER_TO_XML
+            ):
+                permitted = False
         except ValueError:
             permitted = False
         if permitted:
-            capability_version = profile.version
+            capability_version = profile.version if profile is not None else "1"
             if operation == "render_to_txt":
                 if facts.suffix_class is DocumentSuffixClass.TEXT:
                     capability_id = "text.plain"

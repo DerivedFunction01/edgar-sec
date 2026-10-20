@@ -16,7 +16,10 @@ from edgar_sec.domain.sec_urls import (
     full_submission_url_for,
     index_url_for,
 )
-from edgar_sec.engine.document.screening import screen_candidate_document
+from edgar_sec.engine.document.screening import (
+    screen_candidate_document,
+    screen_specialized_xml_source,
+)
 from edgar_sec.engine.index_pages.parser import parse_html_index
 from edgar_sec.infra.sec_http.client import SecHttpClient
 from edgar_sec.pipelines.document_acquisition.index_selection import select_index_entry
@@ -90,6 +93,8 @@ def recover_inverted_primary(
 
     cached_rec = cache.get(filing.accession.raw, recovered_name)
     if cached_rec is not None:
+        if not _is_expected_primary(filing.form, recovered_name, cached_rec):
+            return None
         object.__setattr__(filing, "primary_document_path", recovered_name)
         if selection.entry.archive_url:
             object.__setattr__(
@@ -106,6 +111,8 @@ def recover_inverted_primary(
         return None
     rec_bytes = fetch_fn(fetch_url)
     if rec_bytes is not None:
+        if not _is_expected_primary(filing.form, recovered_name, rec_bytes):
+            return None
         cache.put(
             accession=filing.accession.raw,
             cik=str(filing.primary_cik.value),
@@ -118,6 +125,14 @@ def recover_inverted_primary(
         object.__setattr__(filing, "primary_document_url", fetch_url)
         return rec_bytes
     return None
+
+
+def _is_expected_primary(form: str, filename: str, content: bytes) -> bool:
+    candidate = screen_candidate_document(form, filename=filename, raw_content=content)
+    if candidate.is_inversion:
+        return False
+    structure = screen_specialized_xml_source(form, content)
+    return not structure.is_inversion
 
 
 def make_document_fetcher(
