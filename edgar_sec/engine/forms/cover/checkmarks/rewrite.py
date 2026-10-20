@@ -11,6 +11,7 @@ from edgar_sec.domain.forms.common.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
     CHECKMARK_MARK_RE,
+    RE_FILLED_CHECKED,
     CheckmarkDecision,
     CheckmarkScope,
 )
@@ -34,7 +35,6 @@ from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.patterns import RE_SEPARATOR_LINE
 
 _RE_DIVIDER_LINE = re.compile(r"\s*[+|:\-=_]+\s*\n?")
-_RE_FILER_CHECKED = re.compile(r"_{1,8}\s*[Xx]\s*_{1,8}")
 _RE_FILER_BLANK = re.compile(r"_{2,}")
 _RE_FILER_LABEL = re.compile(
     rf"(?:{build_alternation(FILER_STATUS_TERMS, auto_escape=True)})",
@@ -51,7 +51,7 @@ def _normalize_filer_line(line: str) -> str:
     labels = tuple(_RE_FILER_LABEL.finditer(line))
     if not labels:
         return line
-    checked_matches = tuple(_RE_FILER_CHECKED.finditer(line))
+    checked_matches = tuple(RE_FILLED_CHECKED.finditer(line))
     spans = list(checked_matches)
     spans.extend(
         match
@@ -70,7 +70,7 @@ def _normalize_filer_line(line: str) -> str:
         token = match.group(0)
         replacement = (
             CANONICAL_CHECKED
-            if _RE_FILER_CHECKED.fullmatch(token)
+            if RE_FILLED_CHECKED.fullmatch(token)
             else CANONICAL_UNCHECKED
         )
         line = line[: match.start()] + replacement + line[match.end() :]

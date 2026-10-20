@@ -315,6 +315,50 @@ IN""",
     assert person.first_item("aggregateAmountOwned").value == "900,000"
 
 
+def test_cover_parser_reads_the_shared_checkbox_vocabulary() -> None:
+    person = parse_reporting_person_matrix(
+        """1. Name of Reporting Person
+Beacon Capital LLC
+2. Check the appropriate box if a member of a group
+(a) ☒ (b) ☐
+5. Check box if disclosure of legal proceedings is required
+✓
+12. Check if the aggregate amount in row (11) excludes certain shares
+___X___
+13. Percent of class
+5%
+14. Type of reporting person
+IN""",
+        family="13D",
+    )
+
+    assert person.first_item("memberOfGroup").value == "(a) [X] (b) [ ]"
+    assert person.first_item("legalProceedings").state is EvidenceState.CHECKED
+    assert person.first_item("isAggregateExcludeShares").state is EvidenceState.CHECKED
+
+
+def test_cover_parser_leaves_an_unfilled_slot_blank() -> None:
+    person = parse_reporting_person_matrix(
+        """1. Name of Reporting Person
+Beacon Capital LLC
+2. Check the appropriate box if a member of a group
+(a) ______ (b) ______
+5. Check box if disclosure of legal proceedings is required
+_______
+12. Check if the aggregate amount in row (11) excludes certain shares
+_______
+13. Percent of class
+5%
+14. Type of reporting person
+IN""",
+        family="13D",
+    )
+
+    assert person.first_item("memberOfGroup").value == "(a) (b)"
+    assert person.first_item("legalProceedings").state is EvidenceState.BLANK
+    assert person.first_item("isAggregateExcludeShares").state is EvidenceState.BLANK
+
+
 def test_cover_parser_removes_cross_column_power_text_from_citizenship() -> None:
     person = parse_reporting_person_matrix(
         """1. Name of Reporting Person

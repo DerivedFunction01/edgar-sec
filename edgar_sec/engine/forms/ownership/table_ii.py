@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from edgar_sec.engine.forms.common.alignment import align_row_to_schema
-from edgar_sec.engine.forms.common.numbers import extract_schema_number
 from edgar_sec.engine.forms.common.row_extraction import (
     normalize_row_record,
     split_row_cells,
@@ -19,11 +18,17 @@ from edgar_sec.engine.forms.ownership.table_common import (
     clean_title,
     extract_footnote_ids,
     extract_ownership_form,
+    extract_ownership_number,
     find_ad_code,
     find_remaining_numbers,
     find_trans_code,
+    is_footnote_marker,
     is_valid_row_security_title,
     iter_clean_table_rows,
+    split_composite_underlying_cell,
+    split_ownership_row_cells,
+    strip_footnote_refs,
+    trailing_ownership_form,
 )
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
 from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE
@@ -37,9 +42,15 @@ def parse_table_ii_rows(
     """Parse Derivative transaction and holding rows from Table II."""
     results: list[DerivativeTransaction] = []
     for row, row_str, footnotes in iter_clean_table_rows(section, "table ii"):
-        split_cells = split_row_cells(row)
+        split_cells = split_composite_underlying_cell(
+            split_ownership_row_cells(row, frozenset(footnotes))
+        )
         if split_cells:
-            has_tx = any(TRANSACTION_CODE_RE.search(c) for c in split_cells[1:])
+            form_index, _ = trailing_ownership_form(split_cells)
+            code_cells = [
+                cell for index, cell in enumerate(split_cells) if index != form_index
+            ]
+            has_tx = any(TRANSACTION_CODE_RE.search(c) for c in code_cells[1:])
             schema = TABLE_II_TX_SCHEMA if has_tx else TABLE_II_HOLDING_SCHEMA
             aligned = align_row_to_schema(split_cells, schema)
             if aligned is not None and (
@@ -93,7 +104,13 @@ def parse_table_ii_rows(
                     )
                     continue
 
-        indexed_cells = [(i, c.strip()) for i, c in enumerate(row) if c.strip()]
+        footnote_set = frozenset(footnotes)
+        indexed_cells = [
+            (i, stripped)
+            for i, cell in enumerate(row)
+            if not is_footnote_marker(cell.strip(), footnote_set)
+            and (stripped := strip_footnote_refs(cell))
+        ]
         if not indexed_cells:
             continue
 
@@ -108,7 +125,7 @@ def parse_table_ii_rows(
         price_col_idx = -1
         for idx, (_, cell) in enumerate(indexed_cells[1:5], start=1):
             if "$" in cell or is_numeric_cell(cell):
-                exercise_price = extract_schema_number(cell)
+                exercise_price = extract_ownership_number(cell)
                 price_col_idx = idx
                 break
 
@@ -186,7 +203,7 @@ def parse_table_ii_rows(
                     cand_title = clean_title(parts[0])
                     if cand_title and is_valid_row_security_title(cand_title):
                         underlying_title = cand_title
-                        underlying_shares = extract_schema_number(parts[1])
+                        underlying_shares = extract_ownership_number(parts[1])
                         underlying_col_indices.add(idx)
                         break
             elif any(
@@ -198,7 +215,9 @@ def parse_table_ii_rows(
                 if idx + 1 < len(indexed_cells) and is_numeric_cell(
                     indexed_cells[idx + 1][1]
                 ):
-                    underlying_shares = extract_schema_number(indexed_cells[idx + 1][1])
+                    underlying_shares = extract_ownership_number(
+                        indexed_cells[idx + 1][1]
+                    )
                     underlying_col_indices.add(idx + 1)
                 break
 

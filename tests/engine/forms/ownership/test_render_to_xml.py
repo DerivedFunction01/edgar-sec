@@ -33,9 +33,12 @@ def test_render_ownership_to_xml_generates_valid_envelope() -> None:
     assert root.find("schemaVersion") is None
     assert root.findtext("documentType") == "4"
     assert root.findtext("periodOfReport") == "2001-06-01"
-    assert root.find("issuer/issuerName") is None
+    assert root.findtext("issuer/issuerName") == "ACME CORP"
     assert root.findtext("issuer/issuerTradingSymbol") == "ACM"
-    assert root.find("reportingOwner/reportingOwnerId/rptOwnerName") is None
+    assert (
+        root.findtext("reportingOwner/reportingOwnerId/rptOwnerName")
+        == "Hooks, Stephen V."
+    )
     assert root.findtext("reportingOwner/reportingOwnerRelationship/isOfficer") == "1"
     assert (
         root.findtext("reportingOwner/reportingOwnerAddress/rptOwnerNonUSAddressFlag")
@@ -286,4 +289,32 @@ def test_full_year_source_date_anchors_two_digit_period() -> None:
             "nonDerivativeTable/nonDerivativeTransaction/transactionDate/value"
         )
         == "2001-06-01"
+    )
+
+
+def test_a_derivative_transaction_keeps_its_ownership_nature() -> None:
+    html = b"""
+<html><body>
+<table><tr><td>Table II - Derivative Securities Acquired, Disposed of, or Beneficially Owned</td></tr></table>
+<table>
+  <tr><td>1. Title of Derivative Security</td><td>2. Conversion or Exercise Price</td>
+      <td>3. Transaction Date</td><td>4. Code</td><td>5. Amount</td>
+      <td>6. Date Exercisable and Exp Date</td><td>7. Title and Amount Underlying</td>
+      <td>8. Price</td><td>9. Following</td><td>10. Form</td><td>11. Nature</td></tr>
+  <tr><td>Deferred Compensation Units</td><td>$0.0000</td><td>05/09/2002</td><td>A</td>
+      <td>117.8600</td><td></td><td>Common Stock</td><td></td><td></td><td>I</td>
+      <td>Deferred Compensation Stock Program</td></tr>
+</table>
+</body></html>
+"""
+    result = render_ownership_to_xml(html)
+    xml_bytes = result.content if isinstance(result, HandlerOutput) else result
+    root = ET.fromstring(xml_bytes)
+
+    nature = root.find("derivativeTable/derivativeTransaction/ownershipNature")
+    assert nature is not None
+    assert nature.findtext("directOrIndirectOwnership/value") == "I"
+    assert (
+        nature.findtext("natureOfOwnership/value")
+        == "Deferred Compensation Stock Program"
     )

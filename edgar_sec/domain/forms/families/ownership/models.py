@@ -18,6 +18,7 @@ class ReportingOwner:
     is_ten_percent_owner: bool = False
     is_other: bool = False
     officer_title: str | None = None
+    other_text: str | None = None
     irs_number: str | None = None
 
 

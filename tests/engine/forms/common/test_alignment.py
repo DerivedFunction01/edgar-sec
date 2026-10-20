@@ -91,3 +91,56 @@ def test_find_strict_anchors_monotonicity(sample_schema: TableSchema) -> None:
     assert len(anchors) == 3
     assert [a.col_index for a in anchors] == [1, 3, 5]
     assert [a.cell_index for a in anchors] == [1, 2, 4]
+
+
+def test_value_contract_eliminates_an_assignment() -> None:
+    """A value that breaks its column contract cannot fill that column."""
+    schema = TableSchema(
+        name="nonnegative_schema",
+        columns=(
+            CanonicalColumn(index=0, name="title", is_required=True),
+            CanonicalColumn(
+                index=1,
+                name="shares",
+                is_required=False,
+                data_extractor=lambda s: s,
+                value_validator=lambda s: not s.startswith("-"),
+            ),
+            CanonicalColumn(
+                index=2,
+                name="price",
+                is_required=False,
+                data_extractor=lambda s: s,
+                value_validator=lambda s: not s.startswith("-"),
+            ),
+        ),
+    )
+
+    res = align_row_to_schema(("Common Stock", "-500", "12.00"), schema)
+
+    assert res is not None
+    assert res["title"] == "Common Stock"
+    assert res["price"] == "12.00"
+    assert res["shares"] == "-500"
+
+
+def test_value_contract_keeps_the_only_reading_when_no_other_column_fits() -> None:
+    """A rejected value stays put when no later column can hold it."""
+    schema = TableSchema(
+        name="single_amount_schema",
+        columns=(
+            CanonicalColumn(index=0, name="title", is_required=True),
+            CanonicalColumn(
+                index=1,
+                name="shares",
+                is_required=False,
+                data_extractor=lambda s: s,
+                value_validator=lambda s: not s.startswith("-"),
+            ),
+        ),
+    )
+
+    res = align_row_to_schema(("Common Stock", "-500"), schema)
+
+    assert res is not None
+    assert res["shares"] == "-500"

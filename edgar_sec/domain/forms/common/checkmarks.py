@@ -262,6 +262,32 @@ RE_RAW_UNCHECKED = re.compile(
     re.IGNORECASE,
 )
 
+# A checked fill writes the symbol inside an underscore slot, so the symbol
+# decides the state and the underscores only delimit it. The one-sided form that
+# trails a word is excluded, so a word ending in "x" is not read as a fill.
+FILLED_CHECKED_PATTERN = build_alternation(
+    [
+        rf"{UNDERSCORE_RUN}\s*{CHECKED_SYMBOL}\s*{UNDERSCORE_RUN}",
+        rf"{UNDERSCORE_RUN}\s*{CHECKED_SYMBOL}",
+        rf"(?<![A-Za-z0-9]){CHECKED_SYMBOL}\s*{UNDERSCORE_RUN}",
+    ],
+    sort_longest_first=False,
+)
+RE_FILLED_CHECKED = re.compile(FILLED_CHECKED_PATTERN, re.IGNORECASE)
+
+BARE_CHECKED_TOKENS = ("x", "X")
+
+# Every character the mark finder can consume, so a prefilter built from it
+# cannot drop a line that holds a valid mark.
+MARK_CHARACTERS = frozenset(
+    "".join(CHECKMARK_MARK_TOKENS)
+    + "".join(CHECKED_INNER)
+    + "".join(UNCHECKED_INNER)
+    + "".join(left + right for left, right in BRACKET_PAIRS)
+    + "".join(CHECKED_SYMBOL)
+    + " \t\r\n_-"
+)
+
 
 def is_unchecked_mark_token(value: str) -> bool:
     """Return whether a token is a variable-width blank mark candidate."""
@@ -277,7 +303,32 @@ def is_fill_in_mark_token(value: str) -> bool:
     return bool(token) and set(token) <= {"_", "-"}
 
 
+def mark_token_state(value: str, *, allow_bare: bool = False) -> str | None:
+    """Classify one mark token as ``checked``, ``unchecked``, or unknown.
+
+    A bare mark is a contextual reading and needs ``allow_bare``. An underscore-only
+    run is unfilled data, so it is never a mark.
+    """
+    token = value.strip()
+    if not token:
+        return None
+    if token in CHECKED_TOKENS:
+        return "checked"
+    if token in UNCHECKED_TOKENS:
+        return "unchecked"
+    if is_fill_in_mark_token(token):
+        return None
+    if RE_VARIABLE_CHECKED.fullmatch(token):
+        return "checked"
+    if RE_VARIABLE_UNCHECKED.fullmatch(token):
+        return "unchecked"
+    if allow_bare and token in BARE_CHECKED_TOKENS:
+        return "checked"
+    return None
+
+
 __all__ = [
+    "BARE_CHECKED_TOKENS",
     "BARE_MARK_TOKENS",
     "BRACKET_PAIRS",
     "CANONICAL_CHECKED",
@@ -290,10 +341,13 @@ __all__ = [
     "CHECKMARK_MARK_TOKENS",
     "CONTEXT_CHECKED_SYMBOLS",
     "CONTEXT_UNCHECKED_SYMBOLS",
+    "FILLED_CHECKED_PATTERN",
     "FONT_BULLET_GLYPH_MAPPINGS",
     "FONT_GLYPH_MAPPINGS",
+    "MARK_CHARACTERS",
     "RAW_CHECKED_TOKENS",
     "RAW_UNCHECKED_TOKENS",
+    "RE_FILLED_CHECKED",
     "RE_RAW_CHECKED",
     "RE_RAW_UNCHECKED",
     "UNCHECKED_HTML_ENTITIES",
@@ -306,4 +360,5 @@ __all__ = [
     "font_glyph_state",
     "is_fill_in_mark_token",
     "is_unchecked_mark_token",
+    "mark_token_state",
 ]

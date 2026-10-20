@@ -37,6 +37,8 @@ def append_test_case(
     selection_source: str = "planned_source",
     index_sha256: str | None = None,
     source_origin: str = "inventory_index",
+    filing_date: str | None = "2024-01-31",
+    report_date: str | None = None,
 ):
     capture = {
         "capture_id": capture_id,
@@ -63,6 +65,8 @@ def append_test_case(
         "selected_filename": "form4.htm",
         "body_sha256": hashlib.sha256(body).hexdigest(),
         "byte_size": len(body),
+        "filing_date": filing_date,
+        "report_date": report_date,
     }
     return append_fixture_case(
         paths,

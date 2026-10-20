@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from edgar_sec.engine.forms.common.alignment import align_row_to_schema
-from edgar_sec.engine.forms.common.numbers import extract_schema_number
 from edgar_sec.engine.forms.common.row_extraction import (
     normalize_row_record,
     split_row_cells,
@@ -18,8 +17,12 @@ from edgar_sec.engine.forms.ownership.table_common import (
     clean_title,
     extract_footnote_ids,
     extract_ownership_form,
+    extract_ownership_number,
+    is_footnote_marker,
     is_valid_row_security_title,
     iter_clean_table_rows,
+    split_ownership_row_cells,
+    strip_footnote_refs,
 )
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
 from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE
@@ -33,7 +36,7 @@ def parse_table_i_rows(
     """Parse Non-Derivative transaction and holding rows from Table I."""
     results: list[NonDerivativeTransaction] = []
     for row, row_str, footnotes in iter_clean_table_rows(section, "table i"):
-        split_cells = split_row_cells(row)
+        split_cells = split_ownership_row_cells(row, frozenset(footnotes))
         aligned = align_row_to_schema(split_cells, TABLE_I_SCHEMA)
         if aligned is not None and (
             aligned.get("transaction_date")
@@ -62,7 +65,13 @@ def parse_table_i_rows(
                 )
                 continue
 
-        indexed_cells = [(i, c.strip()) for i, c in enumerate(row) if c.strip()]
+        footnote_set = frozenset(footnotes)
+        indexed_cells = [
+            (i, stripped)
+            for i, cell in enumerate(row)
+            if not is_footnote_marker(cell.strip(), footnote_set)
+            and (stripped := strip_footnote_refs(cell))
+        ]
         if not indexed_cells:
             continue
 
@@ -91,13 +100,13 @@ def parse_table_i_rows(
             if "|" in cell:
                 parts = [p.strip() for p in cell.split("|")]
                 if len(parts) >= 1 and parts[0]:
-                    shares_amount = extract_schema_number(parts[0])
+                    shares_amount = extract_ownership_number(parts[0])
                 if len(parts) >= 2 and parts[1]:
                     ad_m = ACQUIRED_DISPOSED_RE.search(parts[1])
                     if ad_m:
                         ad_code = ad_m.group(1).upper()
                 if len(parts) >= 3 and parts[2]:
-                    price_per_share = extract_schema_number(parts[2])
+                    price_per_share = extract_ownership_number(parts[2])
                 continue
 
             if trans_date is None and (m := NUMERIC_DATE_RE.search(cell)):
@@ -122,7 +131,7 @@ def parse_table_i_rows(
                 continue
 
             if price_per_share is None and ("$" in cell or "/sh" in cell.lower()):
-                price_per_share = extract_schema_number(cell)
+                price_per_share = extract_ownership_number(cell)
                 continue
 
             if (
@@ -131,7 +140,7 @@ def parse_table_i_rows(
                 and "/sh" not in cell.lower()
                 and is_numeric_cell(cell)
             ):
-                if (val := extract_schema_number(cell)) is not None:
+                if (val := extract_ownership_number(cell)) is not None:
                     remaining_nums.append(val)
 
         shares_owned_following: str | None = None

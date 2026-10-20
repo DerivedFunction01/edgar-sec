@@ -9,6 +9,7 @@ import re
 from collections.abc import Sequence
 
 from edgar_sec.domain.forms.common.checkmarks import (
+    BARE_CHECKED_TOKENS,
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
     CONTEXT_CHECKED_SYMBOLS,
@@ -16,6 +17,7 @@ from edgar_sec.domain.forms.common.checkmarks import (
     RE_RAW_CHECKED,
     RE_RAW_UNCHECKED,
     CheckmarkScope,
+    mark_token_state,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.patterns import RE_SEPARATOR_LINE
@@ -27,9 +29,8 @@ _RE_BRACKET_UNCHECKED_AFTER = re.compile(r"([A-Za-z0-9])(\[ \])")
 _RE_PAREN_CHECKED = re.compile(r"(\([Xx]\))(?=[A-Za-z0-9])")
 _RE_PAREN_CHECKED_AFTER = re.compile(r"([A-Za-z0-9])(\([Xx]\))")
 
-_BARE_CHECKED = ("x", "X")
 _RE_BARE_CHECKED = re.compile(
-    rf"(?<!\S)(?:{build_alternation(_BARE_CHECKED, auto_escape=True)})(?!\S)",
+    rf"(?<!\S)(?:{build_alternation(BARE_CHECKED_TOKENS, auto_escape=True)})(?!\S)",
     re.IGNORECASE,
 )
 
@@ -86,12 +87,9 @@ def classify_mark_line(
     stripped = line.strip()
     if not stripped:
         return "unknown"
-    if RE_RAW_CHECKED.fullmatch(stripped):
-        return "checked"
-    if RE_RAW_UNCHECKED.fullmatch(stripped):
-        return "unchecked"
-    if _RE_BARE_CHECKED.fullmatch(stripped):
-        return "checked"
+    state = mark_token_state(stripped, allow_bare=True)
+    if state is not None:
+        return state
     if scope in (CheckmarkScope.COVER_CONTEXT, CheckmarkScope.ALL):
         if _RE_CONTEXT_CHECKED.fullmatch(stripped):
             return "checked"

@@ -71,6 +71,14 @@ class _TargetSkipped(RuntimeError):
     pass
 
 
+def _optional_text(value: object) -> str | None:
+    """Return a trimmed plan field, or None when the plan leaves it unset."""
+    if value is None:
+        return None
+    text = str(value).strip()
+    return text or None
+
+
 @contextmanager
 def _fixture_fill_lock(paths: AcquisitionPaths, fixture_id: str) -> Iterator[None]:
     lock_path = paths.fixture_database_path(fixture_id)
@@ -505,6 +513,8 @@ def _capture_fixture_plan_locked(
                     "selected_filename": filename,
                     "body_sha256": body_sha256,
                     "byte_size": body_byte_size,
+                    "filing_date": _optional_text(target_row.get("filing_date")),
+                    "report_date": _optional_text(target_row.get("report_date")),
                 }
                 with body_path.open("rb") as source:
                     append_fixture_case(

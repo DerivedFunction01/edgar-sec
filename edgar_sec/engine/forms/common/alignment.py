@@ -17,6 +17,7 @@ class CanonicalColumn:
     is_anchor: bool = False
     anchor_validator: Callable[[str], bool] | None = None
     data_extractor: Callable[[str], Any] | None = None
+    value_validator: Callable[[str], bool] | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -81,12 +82,33 @@ def find_strict_anchors(
     return matches
 
 
+def _accepts(col: CanonicalColumn, cell: str) -> bool:
+    """Report whether a cell may fill a canonical column."""
+    if col.anchor_validator is not None and not col.anchor_validator(cell):
+        return False
+    if col.value_validator is not None and not col.value_validator(cell):
+        return False
+    return True
+
+
+def _later_acceptor(cols: list[CanonicalColumn], index: int, cell: str) -> bool:
+    """Report whether a later column's contract can hold a rejected value."""
+    return any(
+        later.value_validator is not None and later.value_validator(cell)
+        for later in cols[index + 1 :]
+    )
+
+
 def _project_interval(
     interval_cells: list[tuple[int, str]],
     interval_cols: list[CanonicalColumn],
     result: dict[str, Any],
 ) -> bool:
-    """Project intermediate cells to canonical columns using deficit logic."""
+    """Project intermediate cells to canonical columns using deficit logic.
+
+    A value that breaks its column contract eliminates that reading; the value
+    is still carried when no other column can hold it, so it stays as evidence.
+    """
     if not interval_cols:
         return True
 
@@ -98,10 +120,15 @@ def _project_interval(
         return True
 
     if len(interval_cells) == len(interval_cols):
-        for (_, cell), col in zip(interval_cells, interval_cols, strict=True):
-            val = col.data_extractor(cell) if col.data_extractor else cell
-            result[col.name] = val
-        return True
+        paired = [
+            (col, col.data_extractor(cell) if col.data_extractor else cell)
+            for (_, cell), col in zip(interval_cells, interval_cols, strict=True)
+            if col.value_validator is None or col.value_validator(cell)
+        ]
+        if len(paired) == len(interval_cols):
+            for col, val in paired:
+                result[col.name] = val
+            return True
 
     req_cols = [c for c in interval_cols if c.is_required]
     opt_cols = [c for c in interval_cols if not c.is_required]
@@ -110,14 +137,20 @@ def _project_interval(
         return False
 
     cell_idx = 0
-    for col in interval_cols:
+    for col_index, col in enumerate(interval_cols):
         if cell_idx < len(interval_cells):
             _, cell = interval_cells[cell_idx]
-            if col.anchor_validator and not col.anchor_validator(cell):
+            if col.anchor_validator is not None and not col.anchor_validator(cell):
                 if col.is_required:
                     return False
                 result[col.name] = None
                 continue
+            if col.value_validator is not None and not col.value_validator(cell):
+                if _later_acceptor(interval_cols, col_index, cell):
+                    if col.is_required:
+                        return False
+                    result[col.name] = None
+                    continue
             val = col.data_extractor(cell) if col.data_extractor else cell
             if col.is_required or len(interval_cells) - cell_idx > len(req_cols):
                 result[col.name] = val

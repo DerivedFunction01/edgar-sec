@@ -51,12 +51,13 @@ _INSERT_CASE_SQL = """INSERT INTO cases (
     capture_id, target_id, inventory_entry_id, selection_source, index_sha256,
     accession, form, request_id, target_role,
     target_type, source_origin, retrieval_mode, target_url, sequence,
-    selected_filename, body_sha256, byte_size
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+    selected_filename, body_sha256, byte_size, filing_date, report_date
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
 _SELECT_CASE_SQL = """SELECT capture_id, target_id, inventory_entry_id,
     selection_source, index_sha256, accession, form,
     request_id, target_role, target_type, source_origin, retrieval_mode,
-    target_url, sequence, selected_filename, body_sha256, byte_size
+    target_url, sequence, selected_filename, body_sha256, byte_size,
+    filing_date, report_date
 FROM cases WHERE capture_id = ? AND target_id = ?"""
 
 

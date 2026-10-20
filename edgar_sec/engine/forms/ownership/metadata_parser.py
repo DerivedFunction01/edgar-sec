@@ -14,6 +14,7 @@ from edgar_sec.engine.forms.common.entities import (
     RELATIONSHIP_TO_ISSUER_RE,
 )
 from edgar_sec.engine.forms.common.extraction import FieldSpec, normalize_value
+from edgar_sec.engine.forms.common.marks import canonicalize_filled_marks
 from edgar_sec.engine.forms.common.signatures import (
     SIG_BOILERPLATE_TERMS,
     extract_clean_signatory_name,
@@ -31,6 +32,7 @@ from edgar_sec.engine.forms.ownership.period_parser import parse_period
 from edgar_sec.engine.forms.ownership.reporting_owner_parser import (
     parse_reporting_owner,
 )
+from edgar_sec.engine.forms.ownership.relationship_box import parse_relationship_box
 from edgar_sec.engine.forms.ownership.sections import ClassifiedSection
 from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE, RE_FULL_DATE
 
@@ -197,6 +199,8 @@ def parse_metadata(
         for cell_index, (cell, lower) in enumerate(zip(row, lowered_row, strict=True)):
             if not cell:
                 continue
+            canonical_cell = canonicalize_filled_marks(cell)
+            canonical_lower = canonical_cell.lower()
             if cell_index < 2:
                 value = cell.strip()
                 if (
@@ -306,11 +310,11 @@ def parse_metadata(
 
             if (
                 "relationship" in lower
-                or RELATIONSHIP_TO_ISSUER_RE.search(lower)
+                or RELATIONSHIP_TO_ISSUER_RE.search(canonical_lower)
                 or "10%" in lower
             ):
                 role_text = " ".join(
-                    value.strip()
+                    canonicalize_filled_marks(value.strip())
                     for value in row[max(0, cell_index - 1) : cell_index + 2]
                     if value.strip()
                 )
@@ -330,6 +334,7 @@ def parse_metadata(
         "\n".join(role_lines),
         owner_template_fields,
         reference_year,
+        relationship=parse_relationship_box(rows),
     )
     issuer = parse_issuer(issuer_cell)
     if issuer_template_fields:

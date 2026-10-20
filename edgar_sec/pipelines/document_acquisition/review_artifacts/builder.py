@@ -211,6 +211,8 @@ def _process_fixture_body(
             ),
         ),
         include_analysis_artifacts=True,
+        filing_date=case.filing_date,
+        report_date=case.report_date,
     )
     engine_result = AcquisitionProcessor().process(engine_request)
     result_by_operation = {item.operation: item for item in engine_result.outcomes}

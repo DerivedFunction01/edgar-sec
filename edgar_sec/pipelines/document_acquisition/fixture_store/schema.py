@@ -16,7 +16,7 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 FIXTURE_KIND = "document_acquisition.parser_bodies"
 _FIXTURE_DETAIL_KEYS = {
     "store_schema_version",
@@ -51,6 +51,8 @@ _CASE_COLUMNS = (
     "selected_filename",
     "body_sha256",
     "byte_size",
+    "filing_date",
+    "report_date",
 )
 _EXPECTED_COLUMNS = {
     "fixture_meta": ("key", "value"),
@@ -131,6 +133,8 @@ _SCHEMA = (
         selected_filename TEXT NOT NULL CHECK (length(selected_filename) > 0),
         body_sha256 TEXT NOT NULL,
         byte_size INTEGER NOT NULL CHECK (byte_size >= 0),
+        filing_date TEXT,
+        report_date TEXT,
         PRIMARY KEY (capture_id, target_id),
         FOREIGN KEY (capture_id) REFERENCES captures(capture_id),
         FOREIGN KEY (body_sha256, byte_size) REFERENCES body_blobs(body_sha256, byte_size),

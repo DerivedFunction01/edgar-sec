@@ -7,6 +7,7 @@ import re
 from edgar_sec.domain.forms.common.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
+    FILLED_CHECKED_PATTERN,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
 
@@ -19,10 +20,10 @@ YES_NO_LINE_RE = re.compile(
     re.IGNORECASE,
 )
 
+# The shared vocabulary owns the fill and wrapped forms; the short forms below
+# apply only to this adjacency rule.
 _CHECKED_PATTERNS: tuple[str, ...] = (
-    r"_{1,8}\s*[Xx]\s*_{1,8}",
-    r"_{1,8}\s*[Xx]",
-    r"[Xx]\s*_{1,8}",
+    FILLED_CHECKED_PATTERN,
     r"_{1,8}\s*[Cc][Kk]\s*_{1,8}",
     r"/\s*[Xx]\s*/",
     r"\|\s*[Xx]\s*\|",
@@ -34,6 +35,7 @@ _CHECKED_PATTERNS: tuple[str, ...] = (
     r"\bCK\b",
 )
 
+# A blank run is a mark only here, where the pair itself declares the checkbox.
 _UNCHECKED_PATTERNS: tuple[str, ...] = (
     r"_{1,8}(?:\s+_{1,8})+",
     r"\[\s{1,8}\]",

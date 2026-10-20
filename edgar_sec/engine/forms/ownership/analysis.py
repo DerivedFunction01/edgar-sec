@@ -43,6 +43,7 @@ _FIELD_PATHS: dict[str, tuple[str, ...]] = {
     ),
     "isOther": ("reportingOwner/reportingOwnerRelationship/isOther",),
     "officerTitle": ("reportingOwner/reportingOwnerRelationship/officerTitle",),
+    "otherText": ("reportingOwner/reportingOwnerRelationship/otherText",),
     "signatureName": ("ownerSignature/signatureName",),
     "signatureDate": ("ownerSignature/signatureDate",),
     "securityTitle": (
@@ -108,17 +109,22 @@ _DOCUMENT_FIELDS = frozenset(
         "isTenPercentOwner",
         "isOther",
         "officerTitle",
+        "otherText",
         "signatureName",
         "signatureDate",
     }
 )
 _REQUIRED_DOCUMENT_FIELDS = (
     "periodOfReport",
-    "issuerCik",
+    "issuerName",
     "issuerTradingSymbol",
-    "rptOwnerCik",
+    "rptOwnerName",
     "signatureName",
     "signatureDate",
+)
+UNAVAILABLE_DOCUMENT_FIELDS = (
+    "issuerCik",
+    "rptOwnerCik",
 )
 _FIELD_VALUE_TAGS = {
     "securityTitle": "securityTitle",
@@ -432,6 +438,21 @@ def analyze_ownership_xml(
                 "kind": "missing_required_fields",
                 "value": ", ".join(missing_required_fields),
                 "detail": "required ownership document fields are missing or blank",
+            }
+        )
+    unavailable_fields = [
+        field for field in UNAVAILABLE_DOCUMENT_FIELDS if not core_fields.get(field)
+    ]
+    if unavailable_fields:
+        anomalies.append(
+            {
+                "accession": accession,
+                "kind": "fields_absent_from_document_body",
+                "value": ", ".join(unavailable_fields),
+                "detail": (
+                    "these fields come from the EDGAR submission header, "
+                    "not the ownership document body"
+                ),
             }
         )
 

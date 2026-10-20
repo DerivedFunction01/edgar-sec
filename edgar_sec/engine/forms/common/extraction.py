@@ -40,6 +40,7 @@ class FieldSpec:
     required: bool = False
     max_length: int | None = None
     max_occurs: int | None = None
+    unbounded: bool = False
     allowed_values: frozenset[str] = frozenset()
     minimum: str | None = None
     maximum: str | None = None
@@ -553,6 +554,7 @@ def validate_xml_cardinality(
     max_occurs = {
         spec.tag: spec.max_occurs for spec in specs if spec.max_occurs is not None
     }
+    unbounded = {spec.tag for spec in specs if spec.unbounded}
     anomalies: list[dict[str, str]] = []
     for parent in root.iter():
         counts: dict[str, int] = {}
@@ -560,6 +562,8 @@ def validate_xml_cardinality(
             tag = child.tag.rsplit("}", 1)[-1]
             counts[tag] = counts.get(tag, 0) + 1
         for tag, count in counts.items():
+            if tag in unbounded:
+                continue
             maximum = max_occurs.get(tag, default_max)
             if count > maximum:
                 anomalies.append(

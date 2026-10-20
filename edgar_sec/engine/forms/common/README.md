@@ -16,6 +16,7 @@ jurisdiction resolution, tabular row extraction, and unresolved-content evidence
 - **Total functions**: Parsers never throw on malformed or partial input.
 - **One field contract**: Families declare fields and table columns as specs; this module owns normalization, constraint checking, and XML emission.
 - **One evidence record**: Unresolved scalar values and unparsed regions share a single sidecar record shape.
+- **One mark writer**: `marks.py` owns how a recognized mark is written back into parser input; the token vocabulary stays in the domain layer.
 
 ## Deliberate gaps
 

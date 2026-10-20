@@ -56,6 +56,31 @@ def test_parse_metadata_associates_font_checkbox_with_adjacent_role_cell() -> No
     assert meta.reporting_owner.is_ten_percent_owner is False
 
 
+def test_parse_metadata_reads_a_filled_mark_glued_to_the_role() -> None:
+    html = """<html><body><table><tr>
+      <td>1. Name and Address of Reporting Person Jane Doe</td>
+      <td>6. Relationship of Reporting Person(s) to Issuer</td>
+    </tr><tr>
+      <td>___X____Director</td>
+    </tr></table></body></html>"""
+    sections = partition_ownership_tables(html)
+    meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
+    assert meta.reporting_owner.is_director is True
+    assert meta.reporting_owner.is_officer is False
+
+
+def test_parse_metadata_ignores_an_unfilled_role_slot() -> None:
+    html = """<html><body><table><tr>
+      <td>1. Name and Address of Reporting Person Jane Doe</td>
+      <td>6. Relationship of Reporting Person(s) to Issuer</td>
+    </tr><tr>
+      <td>________ Director</td>
+    </tr></table></body></html>"""
+    sections = partition_ownership_tables(html)
+    meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
+    assert meta.reporting_owner.is_director is False
+
+
 def test_parse_metadata_joins_fragmented_box_fields() -> None:
     html = """<html><body>
     <table><tr><td>FORM 4</td></tr></table>

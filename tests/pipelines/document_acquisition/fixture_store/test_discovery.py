@@ -77,3 +77,31 @@ def test_discovery_ignores_old_schema_fixture_without_migration(tmp_path) -> Non
     manifest_path.write_text(canonical_json(manifest), encoding="utf-8")
 
     assert list_fixture_summaries(paths) == ()
+
+
+def test_fixture_case_metadata_carries_the_plan_dates(tmp_path) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    initialize_test_fixture(paths, "fixture-dates")
+    append_test_case(
+        paths,
+        "fixture-dates",
+        "target-a",
+        b"body",
+        filing_date="2002-11-29",
+        report_date="2002-11-28",
+    )
+    append_test_case(
+        paths,
+        "fixture-dates",
+        "target-b",
+        b"body",
+        filing_date=None,
+        report_date=None,
+    )
+
+    cases = {case.target_id: case for case in iter_fixture_cases(paths)}
+
+    assert cases["target-a"].filing_date == "2002-11-29"
+    assert cases["target-a"].report_date == "2002-11-28"
+    assert cases["target-b"].filing_date is None
+    assert cases["target-b"].report_date is None

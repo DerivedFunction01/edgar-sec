@@ -264,3 +264,28 @@ def test_parse_table_ii_holding_row() -> None:
     assert rows[0].underlying_security_title == "Common Stock"
     assert rows[0].underlying_shares_amount == "5000"
     assert rows[0].direct_or_indirect == "D"
+
+
+def test_a_composite_underlying_cell_keeps_its_amount() -> None:
+    """The underlying title and share count share one cell in the source."""
+    html = """<html><body><table>
+    <tr><td>Table II - Derivative Securities Acquired, Disposed of, or Beneficially Owned</td></tr>
+    <tr>
+      <td>1. Title of Derivative Security</td><td>2. Conversion or Exercise Price</td>
+      <td>3. Transaction Date</td><td>4. Code</td><td>5. Amount</td>
+      <td>6. Date Exercisable and Exp Date</td><td>7. Title and Amount Underlying</td>
+      <td>8. Price</td><td>9. Following</td><td>10. Form</td><td>11. Nature</td>
+    </tr>
+    <tr>
+      <td>Stock Options (Rights to Buy)</td><td>$11.5625</td><td>10/18/2002</td><td>M</td>
+      <td>(D) 60,000.00</td><td>10/30/1993 | 10/30/2002</td>
+      <td>Common Stock - 60,000.00</td><td></td><td></td><td>D</td><td></td>
+    </tr>
+    </table></body></html>"""
+
+    sections = partition_ownership_tables(html)
+    rows = parse_table_ii_rows(sections.table_ii, reference_year=2002)
+
+    assert len(rows) == 1
+    assert rows[0].underlying_security_title == "Common Stock"
+    assert rows[0].underlying_shares_amount == "60000"

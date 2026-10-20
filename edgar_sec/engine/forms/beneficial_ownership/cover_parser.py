@@ -13,11 +13,13 @@ from edgar_sec.domain.forms.common.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
 )
+from edgar_sec.engine.forms.common.marks import (
+    canonicalize_mark_tokens,
+    mark_state_in,
+)
 from edgar_sec.engine.forms.common.statutory import HEADER_LEAK_RE
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
-    MATRIX_CHECKED_MARK_RE,
-    MATRIX_UNCHECKED_MARK_RE,
     REPORTING_PERSON_SLOT_NUMBERS_13D,
     REPORTING_PERSON_SLOT_NUMBERS_13G,
 )
@@ -231,8 +233,7 @@ def parse_reporting_person_matrix(
 
         val = val.lstrip(" \t\r\n:.-|")
         if tag == "memberOfGroup":
-            val = MATRIX_CHECKED_MARK_RE.sub(CANONICAL_CHECKED, val)
-            val = MATRIX_UNCHECKED_MARK_RE.sub(CANONICAL_UNCHECKED, val)
+            val = canonicalize_mark_tokens(val)
         if tag in (
             "soleVotingPower",
             "sharedVotingPower",
@@ -270,10 +271,11 @@ def parse_reporting_person_matrix(
                 val = row_parts[1]
 
         if tag in ("legalProceedings", "isAggregateExcludeShares"):
-            if MATRIX_CHECKED_MARK_RE.search(val):
+            mark_state = mark_state_in(val)
+            if mark_state == "checked":
                 state = EvidenceState.CHECKED
                 c_val: str | None = CANONICAL_CHECKED
-            elif MATRIX_UNCHECKED_MARK_RE.search(val):
+            elif mark_state == "unchecked":
                 state = EvidenceState.UNCHECKED
                 c_val = CANONICAL_UNCHECKED
             else:

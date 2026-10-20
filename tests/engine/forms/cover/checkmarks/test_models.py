@@ -30,6 +30,18 @@ def test_candidate_known_state_reads_the_source_token() -> None:
     assert CheckboxCandidate("annual", "G0", "report_period").known_state is None
 
 
+def test_candidate_known_state_reads_a_filled_mark() -> None:
+    assert (
+        CheckboxCandidate("annual", "___X____", "report_period").known_state
+        == "checked"
+    )
+    assert CheckboxCandidate("annual", "X", "report_period").known_state == "checked"
+
+
+def test_candidate_known_state_leaves_an_unfilled_slot_unknown() -> None:
+    assert CheckboxCandidate("annual", "______", "report_period").known_state is None
+
+
 def test_candidate_glyph_falls_back_to_the_source_token() -> None:
     assert CheckboxCandidate("annual", "G0", "report_period").glyph == "G0"
     assert (

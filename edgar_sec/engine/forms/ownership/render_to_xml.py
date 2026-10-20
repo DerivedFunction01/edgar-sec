@@ -95,6 +95,13 @@ def _build_issuer_xml(
     issuer_el = ET.SubElement(root, "issuer")
     _add_metadata_field(
         issuer_el,
+        "issuerName",
+        metadata.issuer.name,
+        reference_year,
+        unresolved,
+    )
+    _add_metadata_field(
+        issuer_el,
         "issuerTradingSymbol",
         metadata.issuer.trading_symbol,
         reference_year,
@@ -110,7 +117,14 @@ def _build_owner_xml(
 ) -> None:
     owner = metadata.reporting_owner
     owner_el = ET.SubElement(root, "reportingOwner")
-    ET.SubElement(owner_el, "reportingOwnerId")
+    owner_id_el = ET.SubElement(owner_el, "reportingOwnerId")
+    _add_metadata_field(
+        owner_id_el,
+        "rptOwnerName",
+        owner.name,
+        reference_year,
+        unresolved,
+    )
 
     if any(
         (
@@ -149,6 +163,10 @@ def _build_owner_xml(
     if owner.officer_title:
         _add_metadata_field(
             rel_el, "officerTitle", owner.officer_title, reference_year, unresolved
+        )
+    if owner.other_text:
+        _add_metadata_field(
+            rel_el, "otherText", owner.other_text, reference_year, unresolved
         )
 
 
@@ -318,6 +336,8 @@ def _build_derivative_xml(
         if values["direct_or_indirect"] is not None:
             own_el = ET.SubElement(tx_el, "ownershipNature")
             _emit(own_el, spec, "direct_or_indirect", values)
+            if values["nature_of_ownership"] is not None:
+                _emit(own_el, spec, "nature_of_ownership", values)
 
 
 def _unparsed_section_records(sections: OwnershipSections) -> list[dict[str, object]]:

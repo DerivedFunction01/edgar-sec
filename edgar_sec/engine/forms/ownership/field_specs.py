@@ -29,8 +29,11 @@ OWNERSHIP_METADATA_FIELDS: dict[str, FieldSpec] = {
     ),
     "signatureName": FieldSpec("signatureName", FieldKind.TEXT),
     "signatureDate": FieldSpec("signatureDate", FieldKind.DATE),
+    "issuerName": FieldSpec("issuerName", FieldKind.TEXT),
     "issuerTradingSymbol": FieldSpec("issuerTradingSymbol", FieldKind.TEXT),
+    "rptOwnerName": FieldSpec("rptOwnerName", FieldKind.TEXT),
     "officerTitle": FieldSpec("officerTitle", FieldKind.TEXT),
+    "otherText": FieldSpec("otherText", FieldKind.TEXT),
     "rptOwnerStreet1": FieldSpec("rptOwnerStreet1", FieldKind.TEXT),
     "rptOwnerCity": FieldSpec("rptOwnerCity", FieldKind.TEXT),
     "rptOwnerZipCode": FieldSpec("rptOwnerZipCode", FieldKind.TEXT),
@@ -187,6 +190,16 @@ OWNERSHIP_SCHEMA_FIELDS = (
             "valueOwnedFollowingTransaction",
             "underlyingSecurityShares",
             "underlyingSecurityValue",
+        )
+    ),
+    *(
+        FieldSpec(field, FieldKind.TEXT, unbounded=True)
+        for field in (
+            "nonDerivativeTransaction",
+            "derivativeTransaction",
+            "nonDerivativeHolding",
+            "derivativeHolding",
+            "footnote",
         )
     ),
 )

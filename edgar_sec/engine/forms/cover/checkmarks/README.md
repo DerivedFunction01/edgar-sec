@@ -21,6 +21,7 @@ full hypothesis table rather than resolved arbitrarily.
 - **A tie between hypotheses is reported, not broken**: A `direct_state` violation (an observed mark contradicting the constraint solution) also reports `UNRESOLVED` rather than overwriting the observed state.
 - **`apply_cover_checkmark_decisions` returns geometry table indices physically unwrapped**: The caller must evict exactly those from its `table_geometries` before any positional-pairing pass, or the first surviving `<TABLE>` block will be paired with the wrong geometry.
 - **Candidates carry offsets in the original frame**: even though extraction runs over a masked frame; `frames.py` translates every offset back before a candidate is emitted.
+- **A mark's state comes from the shared vocabulary**: `known_state` reads `mark_token_state()`, so a filled slot is checked, a bare mark needs the contextual opt-in, and an underscore-only run is never a state.
 
 ## Command surface
 

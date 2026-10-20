@@ -62,6 +62,7 @@ from edgar_sec.engine.forms.cover.reflow import (
 from edgar_sec.engine.forms.cover.tables.cleaner import clean_cover_tables
 from edgar_sec.engine.forms.cover.toc.finder import find_toc_span
 from edgar_sec.engine.forms.cover.toc.models import TocSpan
+from edgar_sec.engine.forms.common.marks import canonicalize_filled_marks_in_span
 from edgar_sec.engine.forms.sections.models import NotesSequence, SectionSequence
 from edgar_sec.engine.reflow.engine.mapper import build_line_mapper
 from edgar_sec.engine.reflow.engine.rewrapper import reflow_ascii
@@ -214,6 +215,11 @@ def normalize_document(
     detected_cover_end = boundary.end_line
     detected_cover_start = boundary.start_line
 
+    text, _ = canonicalize_filled_marks_in_span(
+        text,
+        start_line=boundary.start_line or 0,
+        end_line=boundary.end_line,
+    )
     text, pair_changed = normalize_yes_no_pairs(
         text,
         start_line=boundary.start_line or 0,

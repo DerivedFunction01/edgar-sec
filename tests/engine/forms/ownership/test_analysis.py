@@ -15,11 +15,13 @@ SAMPLE_CLEAN_XML = b"""<?xml version="1.0" encoding="utf-8"?>
     <periodOfReport>2003-03-01</periodOfReport>
     <issuer>
         <issuerCik>0000000001</issuerCik>
+        <issuerName>Acme Inc</issuerName>
         <issuerTradingSymbol>ACM</issuerTradingSymbol>
     </issuer>
     <reportingOwner>
         <reportingOwnerId>
             <rptOwnerCik>0000000002</rptOwnerCik>
+            <rptOwnerName>Jane Smith</rptOwnerName>
         </reportingOwnerId>
     </reportingOwner>
     <derivativeTable>
@@ -108,11 +110,11 @@ def test_summarize_ownership_cases_aggregates_metrics() -> None:
     rep2 = analyze_ownership_xml(SAMPLE_ANOMALOUS_XML, accession="0001-01-000002")
     summary = summarize_ownership_cases([rep1, rep2])
     assert summary["case_count"] == 2
-    assert summary["anomaly_count"] == 4
+    assert summary["anomaly_count"] == 5
     assert summary["unparsed_section_count"] == 1
     assert len(summary["unparsed_samples"]) == 1
     assert "field_completeness" in summary
-    assert summary["field_completeness"]["issuerName"] == "0/2 (0%)"
+    assert summary["field_completeness"]["issuerName"] == "1/2 (50%)"
 
 
 def test_mask_normalized_pattern() -> None:
@@ -155,8 +157,8 @@ def test_detects_header_leaks_and_signature_boilerplate() -> None:
 def test_analysis_reports_blank_canonical_fields_and_invalid_dates() -> None:
     xml = b"""<ownershipDocument>
     <periodOfReport>2003-03-01</periodOfReport>
-    <issuer><issuerCik>0000000001</issuerCik><issuerTradingSymbol>ACM</issuerTradingSymbol></issuer>
-    <reportingOwner><reportingOwnerId><rptOwnerCik>0000000002</rptOwnerCik></reportingOwnerId></reportingOwner>
+    <issuer><issuerCik>0000000001</issuerCik><issuerName>Acme Inc</issuerName><issuerTradingSymbol>ACM</issuerTradingSymbol></issuer>
+    <reportingOwner><reportingOwnerId><rptOwnerCik>0000000002</rptOwnerCik><rptOwnerName>Jane Doe</rptOwnerName></reportingOwnerId></reportingOwner>
     <nonDerivativeTable><nonDerivativeTransaction>
       <securityTitle><value>Common Stock 03/01/2003</value></securityTitle>
       <transactionDate><value>02/30/2003</value></transactionDate>
@@ -220,17 +222,22 @@ def test_analysis_reports_missing_ciks_and_not_applicable_fields() -> None:
     )
     assert set(missing["value"].split(", ")) == {
         "periodOfReport",
-        "issuerCik",
         "issuerTradingSymbol",
-        "rptOwnerCik",
         "signatureName",
         "signatureDate",
     }
-    assert {
-        "not_applicable_schemaVersion",
-        "not_applicable_issuerName",
-        "not_applicable_rptOwnerName",
-    }.issubset({anomaly["kind"] for anomaly in report["anomalies"]})
+    unavailable = next(
+        anomaly
+        for anomaly in report["anomalies"]
+        if anomaly["kind"] == "fields_absent_from_document_body"
+    )
+    assert set(unavailable["value"].split(", ")) == {"issuerCik", "rptOwnerCik"}
+    assert "not_applicable_schemaVersion" in {
+        anomaly["kind"] for anomaly in report["anomalies"]
+    }
+    assert "not_applicable_issuerName" not in {
+        anomaly["kind"] for anomaly in report["anomalies"]
+    }
 
 
 def test_summary_counts_categorical_and_title_values() -> None:
@@ -284,8 +291,8 @@ def test_summary_counts_categorical_and_title_values() -> None:
 def test_option_title_date_is_reported_as_review_signal() -> None:
     xml = b"""<ownershipDocument>
     <periodOfReport>2003-04-02</periodOfReport>
-    <issuer><issuerCik>0000000001</issuerCik><issuerTradingSymbol>ACM</issuerTradingSymbol></issuer>
-    <reportingOwner><reportingOwnerId><rptOwnerCik>0000000002</rptOwnerCik></reportingOwnerId></reportingOwner>
+    <issuer><issuerCik>0000000001</issuerCik><issuerName>Acme Inc</issuerName><issuerTradingSymbol>ACM</issuerTradingSymbol></issuer>
+    <reportingOwner><reportingOwnerId><rptOwnerCik>0000000002</rptOwnerCik><rptOwnerName>Jane Doe</rptOwnerName></reportingOwnerId></reportingOwner>
     <derivativeTable><derivativeTransaction>
       <securityTitle><value>BOD 4/1/03 Stock Options (Rights to Buy)</value></securityTitle>
     </derivativeTransaction></derivativeTable>

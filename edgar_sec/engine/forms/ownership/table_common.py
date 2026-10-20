@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Callable
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass, replace
 import re
 from typing import Any
@@ -79,6 +79,61 @@ def clean_title(text: str) -> str:
     return " ".join(cleaned.split())
 
 
+def extract_ownership_number(text: str) -> str | None:
+    """Extract a schema number, ignoring a footnote reference beside the value."""
+    stripped = _FOOTNOTE_REF_RE.sub("", text).strip()
+    if not stripped:
+        return None
+    if stripped.startswith(".") and stripped[1:2].isdigit():
+        stripped = f"0{stripped}"
+    return extract_schema_number_or_token(stripped)
+
+
+def is_nonnegative_number(text: str) -> bool:
+    """Report whether a cell can hold a nonnegative ownership amount."""
+    value = extract_ownership_number(text)
+    return value is None or not value.startswith("-")
+
+
+def is_footnote_marker(cell: str, footnote_ids: frozenset[str] = frozenset()) -> bool:
+    """Report whether a cell holds only a footnote reference.
+
+    A reference listed among the row footnotes is certain; the low single-digit
+    range is treated as an obvious marker because filers write it that way.
+    """
+    match = _FOOTNOTE_REF_RE.fullmatch(cell.strip())
+    if not match:
+        return False
+    identifier = match.group(1)
+    if identifier in footnote_ids:
+        return True
+    return identifier.isdigit() and 1 <= int(identifier) <= 99
+
+
+def strip_footnote_refs(text: str) -> str:
+    """Remove the footnote references a filer writes beside a value."""
+    stripped = _FOOTNOTE_REF_RE.sub("", text).strip()
+    return stripped or text.strip()
+
+
+def split_ownership_row_cells(
+    row: Sequence[str], footnote_ids: frozenset[str] = frozenset()
+) -> tuple[str, ...]:
+    """Split a row into cells, dropping cells that hold only a footnote marker.
+
+    A footnote reference beside a value is metadata, so it is stripped from the
+    cell that carries the value; the reference itself stays on the row.
+    """
+    parts: list[str] = []
+    for cell in row:
+        for part in cell.split("|"):
+            text = part.strip()
+            if not text or is_footnote_marker(text, footnote_ids):
+                continue
+            parts.append(strip_footnote_refs(text))
+    return tuple(parts)
+
+
 def is_valid_row_security_title(title: str) -> bool:
     if not title or is_numeric_cell(title) or _FOOTNOTE_REF_RE.fullmatch(title):
         return False
@@ -100,12 +155,41 @@ def is_valid_row_security_title(title: str) -> bool:
     return True
 
 
+def is_nature_like(cell: str) -> bool:
+    """Report whether a cell reads as a nature-of-ownership description."""
+    text = cell.strip()
+    if not text:
+        return False
+    if is_numeric_cell(text) or "$" in text or "/sh" in text.lower():
+        return False
+    if NUMERIC_DATE_RE.search(text):
+        return False
+    if TRANSACTION_CODE_RE.search(text):
+        return False
+    if ACQUIRED_DISPOSED_RE.fullmatch(text.strip("() ")):
+        return False
+    return text.strip("() ").upper() not in _OWNERSHIP_FORM_VALUES
+
+
+def trailing_ownership_form(cells: Sequence[str]) -> tuple[int, str | None]:
+    """Locate the ownership form that closes an ownership table row."""
+    for index in range(len(cells) - 1, -1, -1):
+        value = cells[index].strip("() ").upper()
+        if value not in _OWNERSHIP_FORM_VALUES:
+            continue
+        if all(is_nature_like(cell) for cell in cells[index + 1 :]):
+            return index, value
+    return -1, None
+
+
 def extract_ownership_form(
     indexed_cells: list[tuple[int, str]],
 ) -> tuple[str | None, str | None, int]:
     for idx in range(len(indexed_cells) - 1, -1, -1):
         clean = indexed_cells[idx][1].strip("() ").upper()
         if clean in _OWNERSHIP_FORM_VALUES:
+            if not all(is_nature_like(cell) for _, cell in indexed_cells[idx + 1 :]):
+                continue
             nature = indexed_cells[idx + 1][1] if idx + 1 < len(indexed_cells) else None
             return clean, nature, idx
     return None, None, -1
@@ -150,7 +234,7 @@ def find_remaining_numbers(
     ):
         if end_idx != -1 and idx >= end_idx - 1:
             break
-        if (val := extract_schema_number(cell)) is not None:
+        if (val := extract_ownership_number(cell)) is not None:
             nums.append(val)
     return nums
 
@@ -234,6 +318,7 @@ def _col(
     is_anchor: bool = False,
     anchor_validator: Callable[[str], bool] | None = None,
     data_extractor: Callable[[str], Any] | None = None,
+    value_validator: Callable[[str], bool] | None = None,
 ) -> CanonicalColumn:
     return CanonicalColumn(
         index=index,
@@ -242,6 +327,7 @@ def _col(
         is_anchor=is_anchor,
         anchor_validator=anchor_validator,
         data_extractor=data_extractor,
+        value_validator=value_validator,
     )
 
 
@@ -280,10 +366,42 @@ def _is_underlying(s: str) -> bool:
     )
 
 
+_COMPOSITE_UNDERLYING_RE = re.compile(
+    r"^(?P<title>[^-]+?)\s+-\s+(?P<amount>[\d,]+(?:\.\d+)?)$"
+)
+
+
+def split_composite_underlying_cell(cells: Sequence[str]) -> tuple[str, ...]:
+    """Split a ``TITLE - AMOUNT`` cell so the amount reaches the amount column.
+
+    A filer writes the underlying security and its share count in one cell; read
+    as a title alone, the amount is lost.
+    """
+    out: list[str] = []
+    for index, cell in enumerate(cells):
+        match = _COMPOSITE_UNDERLYING_RE.match(cell) if index else None
+        if match is not None and _is_underlying(match.group("title")):
+            out.append(match.group("title"))
+            out.append(match.group("amount"))
+            continue
+        out.append(cell)
+    return tuple(out)
+
+
+def _is_present(s: str) -> bool:
+    return bool(s.strip())
+
+
 TABLE_I_SCHEMA = TableSchema(
     name="ownership_table_i",
     columns=(
-        _col(0, "security_title", is_required=True),
+        _col(
+            0,
+            "security_title",
+            is_required=True,
+            is_anchor=True,
+            anchor_validator=_is_present,
+        ),
         _col(1, "transaction_date", False, True, _is_date, _extract_date),
         _col(2, "deemed_execution_date"),
         _col(3, "transaction_code", False, True, _is_code, _extract_code),
@@ -295,10 +413,24 @@ TABLE_I_SCHEMA = TableSchema(
             lambda s: s.strip().upper() == "V",
             lambda s: True,
         ),
-        _col(5, "shares_amount", False, False, None, extract_schema_number_or_token),
+        _col(
+            5,
+            "shares_amount",
+            False,
+            False,
+            None,
+            extract_ownership_number,
+            is_nonnegative_number,
+        ),
         _col(6, "acquired_disposed_code", False, True, _is_ad, _extract_ad),
         _col(
-            7, "price_per_share", False, True, _is_price, extract_schema_number_or_token
+            7,
+            "price_per_share",
+            False,
+            True,
+            _is_price,
+            extract_ownership_number,
+            is_nonnegative_number,
         ),
         _col(
             8,
@@ -306,7 +438,8 @@ TABLE_I_SCHEMA = TableSchema(
             False,
             False,
             None,
-            extract_schema_number_or_token,
+            extract_ownership_number,
+            is_nonnegative_number,
         ),
         _col(9, "direct_or_indirect", True, True, _is_di, _extract_di),
         _col(10, "nature_of_ownership"),
@@ -323,10 +456,17 @@ _COMMON_TABLE_II_TAIL = (
         False,
         False,
         None,
-        extract_schema_number_or_token,
+        extract_ownership_number,
+        is_nonnegative_number,
     ),
     _col(
-        4, "price_of_derivative", False, True, _is_price, extract_schema_number_or_token
+        4,
+        "price_of_derivative",
+        False,
+        True,
+        _is_price,
+        extract_ownership_number,
+        is_nonnegative_number,
     ),
     _col(
         5,
@@ -334,39 +474,62 @@ _COMMON_TABLE_II_TAIL = (
         False,
         False,
         None,
-        extract_schema_number_or_token,
+        extract_ownership_number,
+        is_nonnegative_number,
     ),
     _col(6, "direct_or_indirect", True, True, _is_di, _extract_di),
     _col(7, "nature_of_ownership"),
 )
 
 _TX_TABLE_II_PREFIX = (
-    _col(0, "security_title", is_required=True),
+    _col(
+        0,
+        "security_title",
+        is_required=True,
+        is_anchor=True,
+        anchor_validator=_is_present,
+    ),
     _col(
         1,
         "conversion_or_exercise_price",
         False,
         False,
         None,
-        extract_schema_number_or_token,
+        extract_ownership_number,
+        is_nonnegative_number,
     ),
     _col(2, "transaction_date", False, True, _is_date, _extract_date),
     _col(3, "deemed_execution_date"),
     _col(4, "transaction_code", False, True, _is_code, _extract_code),
     _col(5, "equity_swap", False, False, lambda s: s.strip().upper() == "V"),
-    _col(6, "shares_amount", False, False, None, extract_schema_number_or_token),
+    _col(
+        6,
+        "shares_amount",
+        False,
+        False,
+        None,
+        extract_ownership_number,
+        is_nonnegative_number,
+    ),
     _col(7, "acquired_disposed_code", False, False, _is_ad, _extract_ad),
 )
 
 _HOLDING_TABLE_II_PREFIX = (
-    _col(0, "security_title", is_required=True),
+    _col(
+        0,
+        "security_title",
+        is_required=True,
+        is_anchor=True,
+        anchor_validator=_is_present,
+    ),
     _col(
         1,
         "conversion_or_exercise_price",
         False,
         False,
         None,
-        extract_schema_number_or_token,
+        extract_ownership_number,
+        is_nonnegative_number,
     ),
 )
 

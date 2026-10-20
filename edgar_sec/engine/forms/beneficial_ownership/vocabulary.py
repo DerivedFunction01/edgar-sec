@@ -2,15 +2,6 @@
 
 from __future__ import annotations
 
-import re
-
-from edgar_sec.domain.forms.common.checkmarks import (
-    CHECKED_INNER,
-    CHECKED_SYMBOLS,
-    UNCHECKED_SYMBOLS,
-)
-from edgar_sec.foundation.regex.builder import build_alternation
-
 FIELD_TAGS: dict[str, tuple[str, ...]] = {
     "issuerName": ("issuerName",),
     "issuerCusip": ("issuerCusipNumber", "issuerCUSIP"),
@@ -177,30 +168,6 @@ REPORTING_PERSON_SLOT_NUMBERS_13G = (
     ("typeOfReportingPerson", 12),
 )
 
-_MATRIX_CHECKED_INNER = "".join(
-    inner.strip() for inner in CHECKED_INNER if inner.strip() in ("x", "✓")
-)
-_MATRIX_CHECKED_SYMBOLS = tuple(
-    symbol for symbol in CHECKED_SYMBOLS if symbol in ("☒", "✓")
-)
-MATRIX_CHECKED_MARK_RE = re.compile(
-    build_alternation(
-        (
-            rf"\[\s*[{_MATRIX_CHECKED_INNER}]\s*\]",
-            *_MATRIX_CHECKED_SYMBOLS,
-            r"(?<!\w)X(?!\w)",
-        ),
-        compact=False,
-    ),
-    re.IGNORECASE,
-)
-_MATRIX_UNCHECKED_SYMBOLS = tuple(
-    symbol for symbol in UNCHECKED_SYMBOLS if symbol == "☐"
-)
-MATRIX_UNCHECKED_MARK_RE = re.compile(
-    build_alternation((r"\[\s*\]", *_MATRIX_UNCHECKED_SYMBOLS), compact=False)
-)
-
 __all__ = [
     "CATEGORICAL_FIELDS",
     "CHECKBOX_FIELDS",
@@ -208,8 +175,6 @@ __all__ = [
     "COVER_LABEL_PHRASES",
     "FIELD_TAGS",
     "ITEM_SUBSECTION_FIELDS",
-    "MATRIX_CHECKED_MARK_RE",
-    "MATRIX_UNCHECKED_MARK_RE",
     "NARRATIVE_FIELDS",
     "REPORTING_PERSON_FIELDS",
     "REPORTING_PERSON_XML_SLOTS",

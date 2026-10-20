@@ -120,6 +120,42 @@ def test_normalize_empty_payload() -> None:
     assert res.cover_boundary.end_line is None
 
 
+def test_cover_fill_mark_is_canonicalized_and_resolved() -> None:
+    text = (
+        "UNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\n\nFORM 10-K\n\n"
+        "ACME INDUSTRIAL WIDGETS, INC.\nDelaware\n"
+        "Commission File Number: 001-14103\n\n"
+        "___X____ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) "
+        "OF THE SECURITIES EXCHANGE ACT OF 1934\n\nPART I\n"
+    )
+
+    res = normalize_document(text.encode("utf-8"), form="10-K")
+
+    assert "[X] ANNUAL REPORT" in res.text
+    assert "___X____" not in res.text
+    assert res.cover_checkmarks is not None
+    assert {
+        (candidate.semantic_key, candidate.known_state)
+        for candidate in res.cover_checkmarks.candidates
+    } == {("annual", "checked")}
+
+
+def test_cover_unfilled_slot_is_not_a_checkbox() -> None:
+    text = (
+        "UNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\n\nFORM 10-K\n\n"
+        "ACME INDUSTRIAL WIDGETS, INC.\nDelaware\n"
+        "Commission File Number: 001-14103\n\n"
+        "________ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) "
+        "OF THE SECURITIES EXCHANGE ACT OF 1934\n\nPART I\n"
+    )
+
+    res = normalize_document(text.encode("utf-8"), form="10-K")
+
+    assert "________ANNUAL REPORT" in res.text
+    assert res.cover_checkmarks is not None
+    assert res.cover_checkmarks.candidates == ()
+
+
 def test_toc_offsets_match_trimmed_normalized_text() -> None:
     text = "\ncover\nTABLE OF CONTENTS\nITEM 1. BUSINESS\nITEM 2. PROPERTIES\nbody\n"
     span = TocSpan(

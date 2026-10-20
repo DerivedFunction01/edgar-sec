@@ -22,7 +22,7 @@ _CASE_SELECT = """SELECT cases.capture_id, cases.target_id,
     cases.accession, cases.form, cases.request_id, cases.target_role,
     cases.target_type, cases.source_origin, cases.retrieval_mode,
     cases.target_url, cases.sequence, cases.selected_filename,
-    cases.body_sha256, cases.byte_size,
+    cases.body_sha256, cases.byte_size, cases.filing_date, cases.report_date,
     captures.target_plan_id, captures.target_plan_digest,
     captures.target_plan_schema_version, captures.captured_at_utc
 FROM cases JOIN captures USING (capture_id)"""
@@ -48,6 +48,8 @@ class FixtureCaseMetadata:
     selected_filename: str
     body_sha256: str
     byte_size: int
+    filing_date: str | None
+    report_date: str | None
     target_plan_id: str
     target_plan_digest: str
     target_plan_schema_version: int
@@ -122,10 +124,12 @@ def _case_from_row(fixture_id: str, row: tuple[object, ...]) -> FixtureCaseMetad
         selected_filename=row[14],
         body_sha256=row[15],
         byte_size=row[16],
-        target_plan_id=row[17],
-        target_plan_digest=row[18],
-        target_plan_schema_version=int(row[19]),
-        captured_at_utc=row[20],
+        filing_date=row[17],
+        report_date=row[18],
+        target_plan_id=row[19],
+        target_plan_digest=row[20],
+        target_plan_schema_version=int(row[21]),
+        captured_at_utc=row[22],
     )
 
 

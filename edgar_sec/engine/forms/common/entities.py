@@ -28,6 +28,12 @@ _STATE_ZIP_ALT = build_alternation(
 STATE_ZIP_RE = re.compile(
     rf"\b({_STATE_ZIP_ALT})\s+(\d{{5}}(?:-\d{{4}})?)\b", re.IGNORECASE
 )
+_INTL_POSTAL_RE = r"[A-Z0-9][A-Z0-9\-]{0,9}(?:\s[A-Z0-9]{1,6})?"
+INTERNATIONAL_ADDRESS_RE = re.compile(
+    rf"^(?P<city>[^,]+?),\s*(?P<country>[A-Za-z][A-Za-z .'\-]*?)\s+"
+    rf"(?P<postal>{_INTL_POSTAL_RE})$",
+    re.IGNORECASE,
+)
 IRS_RE = re.compile(r"\b(\d{2}-\d{7}|\d{9})\b")
 
 EXCHANGE_ALT = build_alternation((*CANONICAL_EXCHANGE_NAMES, *EXCHANGE_ALIASES))
@@ -69,7 +75,7 @@ NAME_MATCH_RE = re.compile(r"Reporting Person(?:\(s\))?\*?\s*(.+?)(?:\(Last\)|\n
 STREET_MATCH_RE = re.compile(r"(?:\(Middle\)\s*|\n)(.+?)(?:\(Street\)|\n)")
 TITLE_LABEL_TERMS = (
     r"Description\s*",
-    r"(?:(?:give\s+)?title\s+below|specify\s+below)\)?(?:[^\n]*\n\s*){1,2}",
+    r"(?:(?:give\s+)?title\s+below|specify\s+below)\)?\s*(?:[^\n]*\n\s*){0,2}",
 )
 TITLE_LABEL_ALT = build_alternation(TITLE_LABEL_TERMS, auto_escape=False)
 TITLE_MATCH_RE = re.compile(rf"(?:{TITLE_LABEL_ALT})([A-Za-z][^\n]+)", re.IGNORECASE)

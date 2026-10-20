@@ -67,7 +67,7 @@ def ownership_schema_anomalies(
             "dateOfOriginalSubmission applies only to ownership amendments",
         )
 
-    for tag in ("schemaVersion", "issuerName", "rptOwnerName", "issuerIrsNumber"):
+    for tag in ("schemaVersion", "issuerIrsNumber"):
         if root.find(f".//{tag}") is not None:
             anomalies.append(
                 {

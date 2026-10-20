@@ -47,6 +47,7 @@ PROSE_BOILERPLATE_TERMS: tuple[str, ...] = (
     "table i - non-derivative",
     "table ii - derivative",
     "reminder: report on a separate line",
+    "report on a separate line for each class",
     "potential persons who are to respond",
     "*intentional misstatements",
     "**signature of reporting person",

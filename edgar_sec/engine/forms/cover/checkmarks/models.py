@@ -6,9 +6,8 @@ from dataclasses import dataclass
 from enum import StrEnum
 
 from edgar_sec.domain.forms.common.checkmarks import (
-    RE_RAW_CHECKED,
-    RE_RAW_UNCHECKED,
     CheckmarkDecision,
+    mark_token_state,
 )
 
 
@@ -49,14 +48,7 @@ class CheckboxCandidate:
     def known_state(self) -> str | None:
         if self.state in {"checked", "unchecked"}:
             return self.state
-        if (
-            RE_RAW_CHECKED.fullmatch(self.source_token)
-            or self.source_token.strip().lower() == "x"
-        ):
-            return "checked"
-        if RE_RAW_UNCHECKED.fullmatch(self.source_token):
-            return "unchecked"
-        return None
+        return mark_token_state(self.source_token, allow_bare=True)
 
 
 @dataclass(frozen=True, slots=True)

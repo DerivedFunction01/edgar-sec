@@ -2,7 +2,11 @@ from __future__ import annotations
 
 import re
 
-from edgar_sec.domain.forms.common.checkmarks import CHECKED_TOKENS, CHECKMARK_MARK_RE
+from edgar_sec.domain.forms.common.checkmarks import (
+    CHECKMARK_MARK_RE,
+    MARK_CHARACTERS,
+    mark_token_state,
+)
 from edgar_sec.domain.forms.families.ownership.models import ReportingOwner
 from edgar_sec.domain.forms.families.ownership.taxonomy import OWNERSHIP_STATE_CODES
 from edgar_sec.domain.taxonomy.jurisdictions import (
@@ -12,6 +16,7 @@ from edgar_sec.domain.taxonomy.jurisdictions import (
 from edgar_sec.engine.forms.common.entities import (
     BARE_BOX_NUM_RE,
     CLEAN_TEMPLATE_RE,
+    INTERNATIONAL_ADDRESS_RE,
     IRS_RE,
     NAME_MATCH_RE,
     NON_OWNER_JURISDICTION_RE,
@@ -24,6 +29,7 @@ from edgar_sec.engine.forms.common.entities import (
 from edgar_sec.engine.forms.common.signatures import extract_clean_signatory_name
 from edgar_sec.engine.forms.common.tables import parse_address_parts
 from edgar_sec.engine.forms.ownership.patterns import PROSE_BOILERPLATE_RE
+from edgar_sec.engine.forms.ownership.relationship_box import RelationshipBox
 from edgar_sec.foundation.text.dates import parse_date
 
 _REPORTING_PERSON_PLURAL_RE = re.compile(r"^\(s\)\s*", re.IGNORECASE)
@@ -34,7 +40,6 @@ _FORM_MASTHEAD_RE = re.compile(r"(?i)^f\s*o\s*r\s*m\s*[345]\b")
 _TRAILING_FOOTNOTE_NUM_RE = re.compile(r"(?<=[a-zA-Z\.])\d{1,2}$")
 _STARTS_DIGITS_RE = re.compile(r"^\d+\b")
 _WHITESPACE_COLLAPSE_RE = re.compile(r"\s+")
-_CHECKMARK_CHARS = frozenset("xX[]()_✓✔☑☒■●*þý")
 _ROLE_TARGETS = (
     ("director", "director"),
     ("officer", "officer"),
@@ -53,13 +58,13 @@ def _resolve_checked_roles(role_cell_text: str) -> dict[str, bool]:
     if not any(phrase in role_lower for _, phrase in _ROLE_TARGETS):
         return solved
     for line in role_cell_text.splitlines():
-        if not any(char in _CHECKMARK_CHARS for char in line):
+        if not any(char in MARK_CHARACTERS for char in line):
             continue
         line_lower = line.lower()
         marks: list[re.Match[str]] = []
         for match in CHECKMARK_MARK_RE.finditer(line):
             token = match.group(0).strip()
-            if token.upper() == "X" or token in CHECKED_TOKENS:
+            if mark_token_state(token, allow_bare=True) == "checked":
                 marks.append(match)
         if not marks:
             continue
@@ -90,6 +95,7 @@ def parse_reporting_owner(
     role_cell_text: str,
     template_fields: dict[str, str] | None = None,
     reference_year: int | None = None,
+    relationship: RelationshipBox | None = None,
 ) -> ReportingOwner:
     name: str | None = None
     street: str | None = None
@@ -186,6 +192,13 @@ def parse_reporting_owner(
                 city = city_candidate
             csz_idx = index
             continue
+        if csz_idx == -1 and (intl := INTERNATIONAL_ADDRESS_RE.match(line)):
+            country = edgar_jurisdiction_code(intl.group("country"))
+            if country:
+                city = intl.group("city")
+                zip_code = intl.group("postal")
+                csz_idx = index
+                continue
         if (
             "$" in line
             or parse_date(line, reference_year=reference_year)
@@ -260,22 +273,20 @@ def parse_reporting_owner(
             state = None
 
     roles = _resolve_checked_roles(role_cell_text)
-    title_match = TITLE_MATCH_RE.search(role_cell_text)
-    officer_title = title_match.group(1).strip() if title_match else None
+    officer_title: str | None = None
+    other_text: str | None = None
+    if relationship is not None:
+        roles = relationship.roles
+        officer_title = relationship.officer_title
+        other_text = relationship.other_text
+    else:
+        title_match = TITLE_MATCH_RE.search(role_cell_text)
+        officer_title = title_match.group(1).strip() if title_match else None
     if officer_title:
         officer_title = _OFFICER_TITLE_BOUNDARY_RE.split(officer_title)[0].strip()
-        if (
-            not officer_title
-            or any(
-                token in officer_title.lower()
-                for token in (
-                    "individual or joint",
-                    "check applicable",
-                    "joint/group",
-                    "7.",
-                )
-            )
-            or len(officer_title.split()) > 7
+        if not officer_title or any(
+            token in officer_title.lower()
+            for token in ("individual or joint", "check applicable", "joint/group")
         ):
             officer_title = None
 
@@ -291,6 +302,7 @@ def parse_reporting_owner(
         is_ten_percent_owner=roles["ten_percent"],
         is_other=roles["other"],
         officer_title=officer_title,
+        other_text=other_text,
         irs_number=irs_number,
     )
 
