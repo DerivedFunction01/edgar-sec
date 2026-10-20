@@ -34,7 +34,10 @@ def cmd_run(options: RunOptions, *, client: SubmissionsClient | None = None) -> 
         "fetch", outstanding, desc=f"plan {plan.plan_id[:8]}"
     )
     try:
-        with RunLock(run_paths.lock_path(), stale_lock_confirmed=False):
+        with RunLock(
+            run_paths.lock_path(),
+            stale_lock_confirmed=options.stale_lock_confirmed,
+        ):
             results = run_chunk_ids(
                 client or build_client(),
                 plan,

@@ -100,6 +100,15 @@ def _add_chunk_selection(sub: argparse.ArgumentParser) -> None:
     )
 
 
+def _add_stale_lock_option(sub: argparse.ArgumentParser) -> None:
+    """Attach the operator attestation a stale run lock recovery needs."""
+    sub.add_argument(
+        "--confirm-stale-lock",
+        action="store_true",
+        help="attest the previous lock owner has stopped",
+    )
+
+
 def _plan_options(args: argparse.Namespace) -> PlanOptions:
     return plan_options(
         cohort=args.cohort,
@@ -122,6 +131,7 @@ def _run_options(args: argparse.Namespace) -> RunOptions:
         workers=args.workers,
         branch_name=getattr(args, "branch", "main") or "main",
         expected_branch_tip=getattr(args, "expected_branch_tip", None),
+        stale_lock_confirmed=getattr(args, "confirm_stale_lock", False),
     )
 
 
@@ -165,12 +175,14 @@ def build_parser() -> argparse.ArgumentParser:
     _add_plan_reference(run_parser)
     _add_common(run_parser)
     _add_chunk_selection(run_parser)
+    _add_stale_lock_option(run_parser)
     run_parser.set_defaults(func=lambda args: cmd_run(_run_options(args)))
 
     merge_parser = subparsers.add_parser("merge", help="publish a snapshot")
     _add_plan_reference(merge_parser)
     _add_common(merge_parser)
     _add_branch_guard(merge_parser)
+    _add_stale_lock_option(merge_parser)
     merge_parser.set_defaults(func=lambda args: cmd_merge(_run_options(args)))
 
     attach_distrib_subparser(
@@ -188,6 +200,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_cohort_source(augment_parser, with_limit=False)
     _add_common(augment_parser)
     _add_branch_guard(augment_parser)
+    _add_stale_lock_option(augment_parser)
     augment_parser.add_argument("--base-snapshot-id", required=True)
     augment_parser.add_argument(
         "--new-snapshot-id",
@@ -229,6 +242,7 @@ def _augment_from_args(args: argparse.Namespace) -> int:
         workers=args.workers,
         branch_name=getattr(args, "branch", "main") or "main",
         expected_branch_tip=getattr(args, "expected_branch_tip", None),
+        stale_lock_confirmed=getattr(args, "confirm_stale_lock", False),
     )
 
 

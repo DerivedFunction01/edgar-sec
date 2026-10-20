@@ -165,7 +165,7 @@ ways a network dependency creeps in.
 | `dag` | Snapshot DAG operations | `[--root]`, `[--json]` |
 | `expand` | scale a policy plan while retaining every parent locator | `--parent-plan`, `--target-units`, `[--artifacts]` |
 | `materialize` | build a catalog snapshot from a Phase 1 snapshot | `[--source]`, `[--source-snapshot]`, `[--source-artifacts]`, `[--artifacts]`, `[--branch]` |
-| `plan` | publish a deterministic or policy-driven target plan | `--catalog`, `[--scope]`, `[--policy]`, `[--auto-policy]`, `[--cohort]`, `[--seed-cohort]`, `[--artifacts]`, `[--forms]`, `[--suffixes]`, `[--dates]`, `[--limit]`, `[--accession-limit]`, `[--min-exhibit-like]` |
+| `plan` | publish a deterministic or policy-driven target plan | `--catalog`, `[--scope]`, `[--policy]`, `[--auto-policy]`, `[--cohort]`, `[--seed-cohort]`, `[--artifacts]`, `[--forms]`, `[--suffixes]`, `[--dates]`, `[--limit]`, `[--accession-limit]`, `[--min-exhibit-like]`, `[--xbrl-only]` |
 | `status` | report published catalogs and plans from the DAG catalog | `[--artifacts]` |
 <!-- AUTOGEN:COMMANDS:END -->
 

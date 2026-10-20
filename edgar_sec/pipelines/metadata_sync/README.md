@@ -30,18 +30,23 @@ official SEC source management are owned by the cohort pipeline and Layer 2 stor
   augmentation; it is not the target branch and never rewinds `main`.
 - Plan identity, chunk coverage, checkpoint validation, merge publication, worker
   distribution, and snapshot verification remain owned by their existing modules.
+- A run lock is never taken from a live local owner. `--confirm-stale-lock` attests
+  that the recorded holder has stopped, and refuses a lock naming a live process on
+  this host even when attested; a lock naming another host cannot be checked locally,
+  so the attestation is the only evidence. A lock that cannot be read is not evidence
+  of staleness and is refused.
 
 ## Command Surface
 
 <!-- AUTOGEN:COMMANDS:START -->
 | Subcommand | Description | Arguments |
 | :--- | :--- | :--- |
-| `augment` | add new CIKs to a published snapshot | `--cohort`, `--base-snapshot-id`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--new-snapshot-id]` |
+| `augment` | add new CIKs to a published snapshot | `--cohort`, `--base-snapshot-id`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--confirm-stale-lock]`, `[--new-snapshot-id]` |
 | `dag` | Snapshot DAG operations | `[--root]`, `[--json]` |
 | `distrib` | Distributed worker bundle lifecycle | — |
-| `merge` | publish a snapshot | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]` |
+| `merge` | publish a snapshot | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--branch]`, `[--expected-branch-tip]`, `[--confirm-stale-lock]` |
 | `plan` | generate a deterministic plan | `--cohort`, `[--limit]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]` |
-| `run` | execute resumable chunks | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--chunks]`, `[--chunk]` |
+| `run` | execute resumable chunks | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]`, `[--chunks]`, `[--chunk]`, `[--confirm-stale-lock]` |
 | `status` | report plan progress | `[--plan-id]`, `[--bundle]`, `[--cohort]`, `[--artifacts]`, `[--chunk-size]`, `[--workers]` |
 <!-- AUTOGEN:COMMANDS:END -->
 
@@ -56,6 +61,9 @@ python run.py metadata status --plan-id 2024-01-15T120000Z
 
 # Run the plan with parallel workers
 python run.py metadata run --plan-id 2024-01-15T120000Z --chunks 0-9
+
+# Resume a run whose previous owner stopped, attesting the stale lock
+python run.py metadata run --plan-id 2024-01-15T120000Z --confirm-stale-lock
 
 # Export plan work, execute bundles on separate machines, then import them
 python run.py metadata distrib commands --work-id 2024-01-15T120000Z --workers 2

@@ -16,6 +16,7 @@ from edgar_sec.foundation.runtime.interactive import (
     build_menu,
     menu_action,
     operator_entrypoint,
+    prompt_confirm,
     prompt_paginated_choice,
     prompt_text,
 )
@@ -44,11 +45,14 @@ from .options import (
     run_options,
 )
 from .paths import resolve_metadata_paths
+from .run_lock import RunLockError, read_lock_owner
 
 __all__ = [
+    "StaleLockDecision",
     "WizardState",
     "build_operator_menu",
     "confirm_network",
+    "confirm_stale_lock",
     "main",
     "render_plan_header",
     "render_session_header",
@@ -113,6 +117,34 @@ def _ask_int(label: str, default: int | None = None) -> int | None:
 def confirm_network(prompt: str = NETWORK_PROMPT) -> bool:
     """Ask before a live SEC request. Defaults to no."""
     return prompt_text(prompt.strip(), "n").strip().lower() in ("y", "yes")
+
+
+@dataclass(frozen=True, slots=True)
+class StaleLockDecision:
+    """Whether an action may proceed, and whether a stale lock was attested."""
+
+    proceed: bool
+    confirmed: bool
+
+
+def confirm_stale_lock(lock_path: Path) -> StaleLockDecision:
+    """Ask the operator to attest that a recorded lock holder has stopped.
+
+    A lock that cannot be read is refused here rather than attested to, so the
+    operator never confirms a recovery they cannot see.
+    """
+    try:
+        owner = read_lock_owner(lock_path)
+    except RunLockError as exc:
+        print(f"cannot read the run lock: {exc}")
+        return StaleLockDecision(proceed=False, confirmed=False)
+    if owner is None:
+        return StaleLockDecision(proceed=True, confirmed=False)
+    print(f"A run lock exists for pid={owner.pid} host={owner.host}")
+    if not prompt_confirm("Confirm the prior owner has stopped?", default=False):
+        print("cancelled; stale-lock recovery was not confirmed.")
+        return StaleLockDecision(proceed=False, confirmed=False)
+    return StaleLockDecision(proceed=True, confirmed=True)
 
 
 def render_session_header(state: WizardState) -> str:
@@ -319,16 +351,25 @@ def run(state: WizardState) -> None:
         options.chunk_ids = tuple(
             int(value) for value in chunks.replace(" ", "").split(",") if value
         )
+    decision = confirm_stale_lock(options.run_paths().lock_path())
+    if not decision.proceed:
+        return
     if not confirm_network():
         print("cancelled; nothing was fetched")
         return
+    options.stale_lock_confirmed = decision.confirmed
     cmd_run(options)
 
 
 def merge(state: WizardState) -> None:
     options = _ask_run_options(state)
-    if options is not None:
-        cmd_merge(options)
+    if options is None:
+        return
+    decision = confirm_stale_lock(options.run_paths().lock_path())
+    if not decision.proceed:
+        return
+    options.stale_lock_confirmed = decision.confirmed
+    cmd_merge(options)
 
 
 def augment(state: WizardState) -> None:

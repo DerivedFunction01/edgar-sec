@@ -10,7 +10,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
+from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME, RUN_LOCK_FILE
 from edgar_sec.foundation.runtime.partitions import parse_id_selection
 from edgar_sec.foundation.runtime.settings import resolve_runtime_settings
 from edgar_sec.foundation.runtime.settings.runtime import DEFAULT_CHUNK_SIZE
@@ -87,6 +87,10 @@ class BundleRunPaths:
     def receipt_file(self) -> Path:
         """At the bundle root, so the returned directory reads as one thing."""
         return self.bundle_root / RECEIPT_FILE
+
+    def lock_path(self) -> Path:
+        """Exclusive run lock for this bundle copy."""
+        return self.bundle_root / RUN_LOCK_FILE
 
 
 def resolve_chunk_size(value: int | None) -> int:
@@ -172,6 +176,7 @@ class RunOptions:
     snapshot_id: str = ""
     branch_name: str = "main"
     expected_branch_tip: str | None = None
+    stale_lock_confirmed: bool = False
 
     def run_paths(self) -> Any:
         """Plan-scoped paths; with ``bundle_root`` they point at a copied bundle."""
@@ -227,6 +232,7 @@ def run_options(
     snapshot_id: str = "",
     branch_name: str = "main",
     expected_branch_tip: str | None = None,
+    stale_lock_confirmed: bool = False,
 ) -> RunOptions:
     """A plan reference arrives directly, from the cohort, or from a bundle
     naming itself.
@@ -258,6 +264,7 @@ def run_options(
         snapshot_id=snapshot_id,
         branch_name=branch_name,
         expected_branch_tip=expected_branch_tip,
+        stale_lock_confirmed=stale_lock_confirmed,
     )
 
 

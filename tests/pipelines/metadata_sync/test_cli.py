@@ -5,6 +5,7 @@ parser ignores would still reach the plan id.
 from __future__ import annotations
 
 import json
+import socket
 from pathlib import Path
 
 import pytest
@@ -99,6 +100,19 @@ def _cohort_id(artifacts: Path) -> str:
         fixture_path("cik_sec_mini.csv"), artifacts
     )
     return record.cohort_id
+
+
+def _write_stale_lock(path: Path) -> None:
+    path.write_text(
+        json.dumps(
+            {
+                "token": "prior-token",
+                "pid": 2_000_000_000,
+                "host": socket.gethostname(),
+            }
+        ),
+        encoding="utf-8",
+    )
 
 
 def _plan_argv(artifacts: Path, *extra: str) -> list[str]:
@@ -215,6 +229,22 @@ def test_no_command_exposes_a_partition_count() -> None:
     """Assignment carries the split, so worker config cannot move the plan directory."""
     for command in ("plan", "status", "run", "merge", "augment"):
         assert "--partition-count" not in _flags(command), command
+
+
+def test_execution_commands_expose_the_stale_lock_attestation() -> None:
+    """Recovery used to mean editing the artifact tree by hand."""
+    for command in ("run", "merge", "augment"):
+        assert "--confirm-stale-lock" in _flags(command), command
+    assert "--confirm-stale-lock" not in _flags("status")
+
+
+def test_the_stale_lock_attestation_defaults_to_off() -> None:
+    args = build_parser().parse_args(["run", "--plan-id", "p"])
+    assert args.confirm_stale_lock is False
+    confirmed = build_parser().parse_args(
+        ["run", "--plan-id", "p", "--confirm-stale-lock"]
+    )
+    assert confirmed.confirm_stale_lock is True
 
 
 # ------------------------------------------------------------------- settings
@@ -438,6 +468,49 @@ def test_run_rejects_a_chunk_outside_the_plan(
         == 1
     )
     assert "not present in plan" in capsys.readouterr().err
+
+
+def test_a_stale_lock_is_refused_without_the_attestation(
+    tmp_path: Path, capsys, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.metadata_sync.commands.run.build_client", lambda: None
+    )
+    assert main(_plan_argv(tmp_path, "--chunk-size", "2")) == 0
+    plan_id = _parse_output(capsys)["plan_id"]
+    lock_path = tmp_path / "metadata" / "plans" / plan_id / "run.lock"
+    _write_stale_lock(lock_path)
+
+    assert main(["run", "--plan-id", plan_id, "--artifacts", str(tmp_path)]) == 1
+    assert "explicit operator confirmation" in capsys.readouterr().err
+    assert lock_path.is_file()
+
+
+def test_the_attestation_recovers_a_stale_lock(
+    tmp_path: Path, capsys, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _seed_session_for(monkeypatch)
+    assert main(_plan_argv(tmp_path, "--chunk-size", "2")) == 0
+    plan_id = _parse_output(capsys)["plan_id"]
+    lock_path = tmp_path / "metadata" / "plans" / plan_id / "run.lock"
+    _write_stale_lock(lock_path)
+
+    assert (
+        main(
+            [
+                "run",
+                "--plan-id",
+                plan_id,
+                "--artifacts",
+                str(tmp_path),
+                "--chunks",
+                "0",
+                "--confirm-stale-lock",
+            ]
+        )
+        == 0
+    )
+    assert not lock_path.exists()
 
 
 def _seed_session_for(monkeypatch: pytest.MonkeyPatch) -> None:

@@ -19,7 +19,7 @@ from .discovery import (
     resolve_snapshot_choice,
 )
 from .merger import MergeError
-from .operator import WizardState, confirm_network
+from .operator import WizardState, confirm_network, confirm_stale_lock
 from .options import PlanOptions, plan_options, resolve_cohort
 
 __all__ = [
@@ -43,6 +43,10 @@ def run_augment(state: WizardState) -> None:
     base = ask_base_snapshot(metadata)
     if not base:
         print("cancelled; an augment needs a base snapshot")
+        return
+
+    decision = confirm_stale_lock(metadata.snapshot_lock_path(base))
+    if not decision.proceed:
         return
 
     try:
@@ -73,6 +77,7 @@ def run_augment(state: WizardState) -> None:
             "New snapshot id (blank = the derived delta plan id)", ""
         ).strip(),
         workers=_ask_workers(),
+        stale_lock_confirmed=decision.confirmed,
     )
     published = current_snapshot_id(metadata)
     if published:

@@ -33,6 +33,7 @@ def cmd_augment(
     client: SubmissionsClient | None = None,
     branch_name: str = "main",
     expected_branch_tip: str | None = None,
+    stale_lock_confirmed: bool = False,
 ) -> int:
     """Add only newly requested CIKs to a published snapshot."""
     metadata = resolve_metadata_paths(options.artifacts_root)
@@ -66,7 +67,7 @@ def cmd_augment(
     try:
         with RunLock(
             metadata.snapshot_lock_path(base_snapshot_id),
-            stale_lock_confirmed=False,
+            stale_lock_confirmed=stale_lock_confirmed,
         ):
             result = augment(
                 http_client,

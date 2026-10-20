@@ -4,6 +4,7 @@ drifts from the command surface fails only in an interactive session.
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pytest
@@ -334,6 +335,76 @@ def test_a_declined_run_fetches_nothing(
     operator_module.run(state)
     assert seen == []
     assert "nothing was fetched" in capsys.readouterr().out
+
+
+# ------------------------------------------------------------- stale lock consent
+
+
+def _stale_lock_for(state: WizardState, plan_id: str) -> Path:
+    path = resolve_run_paths(plan_id, Path(state.artifacts_root)).lock_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps({"token": "prior", "pid": 2_000_000_000, "host": "worker-01"}),
+        encoding="utf-8",
+    )
+    return path
+
+
+def test_a_declined_stale_lock_cancels_the_run(
+    state: WizardState, monkeypatch: pytest.MonkeyPatch, capsys
+) -> None:
+    state.plan_id = "0123456789abcdef"
+    _stale_lock_for(state, state.plan_id)
+    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
+    monkeypatch.setattr(operator_module, "prompt_confirm", lambda *a, **k: False)
+    monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: True)
+    seen: list[object] = []
+    monkeypatch.setattr(operator_module, "cmd_run", seen.append)
+    operator_module.run(state)
+    assert seen == []
+    assert "stale-lock recovery was not confirmed" in capsys.readouterr().out
+
+
+def test_the_recorded_holder_is_reported_before_the_prompt(
+    state: WizardState, monkeypatch: pytest.MonkeyPatch, capsys
+) -> None:
+    state.plan_id = "0123456789abcdef"
+    _stale_lock_for(state, state.plan_id)
+    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
+    monkeypatch.setattr(operator_module, "prompt_confirm", lambda *a, **k: False)
+    monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: True)
+    monkeypatch.setattr(operator_module, "cmd_run", lambda options: None)
+    operator_module.run(state)
+    out = capsys.readouterr().out
+    assert "pid=2000000000" in out
+    assert "host=worker-01" in out
+
+
+def test_a_confirmed_stale_lock_attests_the_recovery(
+    state: WizardState, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    state.plan_id = "0123456789abcdef"
+    _stale_lock_for(state, state.plan_id)
+    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
+    monkeypatch.setattr(operator_module, "prompt_confirm", lambda *a, **k: True)
+    monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: True)
+    seen: list[object] = []
+    monkeypatch.setattr(operator_module, "cmd_run", seen.append)
+    operator_module.run(state)
+    assert seen[0].stale_lock_confirmed is True
+
+
+def test_an_unlocked_run_carries_no_attestation(
+    state: WizardState, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    state.plan_id = "0123456789abcdef"
+    monkeypatch.setattr(operator_module, "prompt_text", lambda label, default: default)
+    monkeypatch.setattr(operator_module, "prompt_confirm", lambda *a, **k: True)
+    monkeypatch.setattr(operator_module, "confirm_network", lambda *a, **k: True)
+    seen: list[object] = []
+    monkeypatch.setattr(operator_module, "cmd_run", seen.append)
+    operator_module.run(state)
+    assert seen[0].stale_lock_confirmed is False
 
 
 # ------------------------------------------------------------------- delegation

@@ -24,7 +24,10 @@ def cmd_merge(options: RunOptions, *, lineage: dict[str, str] | None = None) -> 
         "merge", MERGE_PROGRESS_STAGES, desc=f"merge {plan.plan_id[:8]}"
     )
     try:
-        with RunLock(run_paths.lock_path(), stale_lock_confirmed=False):
+        with RunLock(
+            run_paths.lock_path(),
+            stale_lock_confirmed=options.stale_lock_confirmed,
+        ):
             report = merge_chunks(
                 plan,
                 run_paths,

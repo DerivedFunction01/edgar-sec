@@ -91,7 +91,7 @@ python run.py inventory query --accession 0000320193-23-000004 --limit 10
 │   │       ├── fixture.sqlite
 │   │       └── manifest.json
 │   ├── review-runs/
-│   └── snapshots/  # Published snapshot root, owned by the publication layer.
+│   └── snapshots/  # Published snapshot root.
 │       ├── {snapshot_id}/
 │       ├── .publication.lock
 │       └── catalog.sqlite  # SQLite DAG catalog database for published inventory snapshots.
@@ -109,7 +109,7 @@ python run.py inventory query --accession 0000320193-23-000004 --limit 10
             │       │   ├── current.json
             │       │   └── progress-{attempt_id}.duckdb
             │       └── current.json
-            ├── publication/  # Publication-owned staging directory inside this run.
+            ├── publication/  # Staging directory inside this run.
             ├── cancelled.json
             ├── cohort_accessions.parquet
             ├── cohort_sources.parquet
