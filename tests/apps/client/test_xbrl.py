@@ -1,10 +1,26 @@
 """Tests proving ergonomic Layer 5 XBRL client facade, statements, and YoY math."""
 
+import pytest
+
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
-from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle
+from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
+from edgar_sec.engine.xbrl.schema.models import ConceptLabel, FilingXbrl, LinkbaseBundle
+from edgar_sec.engine.xbrl.solve.query import (
+    FinancialQuery,
+    FinancialQueryEngine,
+    FinancialQueryResult,
+    QueryMode,
+    QueryStatus,
+)
+from edgar_sec.engine.xbrl.solve.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from tests.engine.xbrl.solve.conftest import load_seed_calculation_arcs, load_seed_facts
+
+_MSFT_ACCESSION = "0000950170-24-087843"
+_STANDARD_LABEL_ROLE = "http://www.xbrl.org/2003/role/label"
+_TERSE_LABEL_ROLE = "http://www.xbrl.org/2003/role/terseLabel"
 
 
 def _create_xbrl_facade(firm: str) -> Xbrl:
@@ -17,6 +33,57 @@ def _create_xbrl_facade(firm: str) -> Xbrl:
         linkbases=LinkbaseBundle(calculation_arcs=arcs),
     )
     return Xbrl(bundle, load_domain_taxonomy())
+
+
+def _create_labelled_xbrl_facade() -> Xbrl:
+    facts = load_seed_facts("msft_2024_10k")
+    arcs = load_seed_calculation_arcs("msft_2024_10k")
+    labels = (
+        ConceptLabel(
+            concept_qname="us-gaap:Assets",
+            role_uri=_STANDARD_LABEL_ROLE,
+            label="Total Assets (Standard)",
+            lang="en-US",
+        ),
+        ConceptLabel(
+            concept_qname="us-gaap:Assets",
+            role_uri=_TERSE_LABEL_ROLE,
+            label="Terse Assets",
+            lang="en-US",
+        ),
+        ConceptLabel(
+            concept_qname="us-gaap:Assets",
+            role_uri=_STANDARD_LABEL_ROLE,
+            label="Actifs Totaux",
+            lang="fr-FR",
+        ),
+        ConceptLabel(
+            concept_qname="us-gaap:AssetsCurrent",
+            role_uri=_TERSE_LABEL_ROLE,
+            label="Current Assets (Terse)",
+            lang="en-US",
+        ),
+    )
+    bundle = FilingXbrl(
+        accession=AccessionNumber("0000000000-24-000000"),
+        cik=Cik(0),
+        facts=facts,
+        linkbases=LinkbaseBundle(calculation_arcs=arcs, labels=labels),
+    )
+    return Xbrl(bundle, load_domain_taxonomy())
+
+
+def _oracle_query(
+    term: str, scope: FactScope, mode: QueryMode = QueryMode.REPORTED_ONLY
+) -> FinancialQueryResult:
+    engine = FinancialQueryEngine(
+        XbrlConstraintSolver(EvidenceKnowledgeBase(load_domain_taxonomy()))
+    )
+    return engine.execute(
+        FinancialQuery(term, scope, mode=mode),
+        load_seed_facts("msft_2024_10k"),
+        load_seed_calculation_arcs("msft_2024_10k"),
+    )
 
 
 def test_xbrl_facade_facts_query() -> None:
@@ -160,3 +227,105 @@ def test_xbrl_macro_commitments_and_cash_flow() -> None:
     assert aapl.financials.rpo is None
     assert aapl.financials.capex == 9_447_000_000.0
     assert aapl.financials.free_cash_flow == 108_807_000_000.0
+
+
+def test_xbrl_facade_with_labels_uses_standard_en_us_label() -> None:
+    """Verify labelled bundles construct and standard en-US labels win."""
+    xbrl = _create_labelled_xbrl_facade()
+
+    view = xbrl.graph("us-gaap:Assets")
+    assert view.root is not None
+    assert view.root.label == "Total Assets (Standard)"
+    assert view.nodes["us-gaap:AssetsCurrent"].label == "Current Assets (Terse)"
+
+    balance_sheet = xbrl.statements.balance_sheet()
+    assert balance_sheet.root is not None
+    assert balance_sheet.root.label == "Total Assets (Standard)"
+
+
+def test_xbrl_query_reported_duration_with_fiscal_year() -> None:
+    """Verify fiscal-year duration queries match the engine oracle."""
+    xbrl = _create_xbrl_facade("msft")
+    oracle = _oracle_query(
+        "Net Income",
+        FactScope(
+            accession=_MSFT_ACCESSION,
+            start_date="2023-07-01",
+            end_date="2024-06-30",
+            unit="USD",
+        ),
+    )
+
+    for term in ("Net Income", "us-gaap:NetIncomeLoss"):
+        result = xbrl.query(term, fiscal_year=2024)
+        assert result.status == QueryStatus.REPORTED
+        assert result.value == oracle.value == 88136000000.0
+
+
+def test_xbrl_query_reported_instant_with_fiscal_year() -> None:
+    """Verify fiscal-year instant queries match the engine oracle."""
+    xbrl = _create_xbrl_facade("msft")
+    oracle = _oracle_query(
+        "us-gaap:Assets",
+        FactScope(accession=_MSFT_ACCESSION, instant_date="2024-06-30", unit="USD"),
+    )
+
+    result = xbrl.query("us-gaap:Assets", fiscal_year=2024)
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == oracle.value == 512163000000.0
+
+
+def test_xbrl_query_without_fiscal_year_is_ambiguous() -> None:
+    """Verify a multi-context concept without a year stays ambiguous."""
+    xbrl = _create_xbrl_facade("msft")
+
+    result = xbrl.query("us-gaap:Assets")
+    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.value is None
+
+
+def test_xbrl_query_verify_derivation_matches_oracle() -> None:
+    """Verify VERIFY_DERIVATION reconciles against the engine oracle."""
+    xbrl = _create_xbrl_facade("msft")
+    scope = FactScope(
+        accession=_MSFT_ACCESSION,
+        start_date="2023-07-01",
+        end_date="2024-06-30",
+        unit="USD",
+    )
+    oracle = _oracle_query("Net Income", scope, mode=QueryMode.VERIFY_DERIVATION)
+
+    for mode in ("VERIFY_DERIVATION", QueryMode.VERIFY_DERIVATION):
+        result = xbrl.query("Net Income", mode=mode, fiscal_year=2024)
+        assert result.status == oracle.status == QueryStatus.VERIFIED
+        assert result.value == oracle.value
+        assert result.discrepancy == oracle.discrepancy == 0.0
+
+
+def test_xbrl_query_invalid_mode_raises() -> None:
+    """Verify unknown query modes raise instead of silently coercing."""
+    xbrl = _create_xbrl_facade("msft")
+
+    for bad_mode in ("SOLVED_FALLBACK", "bogus"):
+        with pytest.raises(ValueError):
+            xbrl.query("Net Income", mode=bad_mode, fiscal_year=2024)
+
+
+def test_xbrl_query_explicit_scope_passthrough() -> None:
+    """Verify an explicit scope is executed verbatim."""
+    xbrl = _create_xbrl_facade("msft")
+    scope = FactScope(accession=_MSFT_ACCESSION, instant_date="2024-06-30", unit="USD")
+    oracle = _oracle_query("us-gaap:Assets", scope)
+
+    result = xbrl.query("us-gaap:Assets", scope=scope)
+    assert result.status == oracle.status == QueryStatus.REPORTED
+    assert result.value == oracle.value
+
+
+def test_xbrl_query_unknown_term_with_fiscal_year() -> None:
+    """Verify unknown terms return UNAVAILABLE instead of raising."""
+    xbrl = _create_xbrl_facade("msft")
+
+    result = xbrl.query("UnrecognizedFinancialMeasure", fiscal_year=2024)
+    assert result.status == QueryStatus.UNAVAILABLE
+    assert result.value is None
