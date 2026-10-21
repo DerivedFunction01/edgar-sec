@@ -11,6 +11,7 @@ from typing import Any
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
 from edgar_sec.engine.xbrl.schema.relations import AtomRelationGraph
+from edgar_sec.engine.xbrl.taxonomy.defaults import DefaultCoordinate, load_defaults
 
 
 @dataclass(frozen=True, slots=True)
@@ -88,6 +89,7 @@ class SubatomicModifier:
     description: str
     valuation_basis: str | None = None
     realization_state: str | None = None
+    sibling_group: str | None = None
 
     @property
     def pattern_keywords(self) -> tuple[str, ...]:
@@ -111,6 +113,7 @@ class SubatomicModifier:
             description=str(data["description"]),
             valuation_basis=data.get("valuation_basis"),
             realization_state=data.get("realization_state"),
+            sibling_group=data.get("sibling_group"),
         )
 
     def to_tuple(self) -> tuple[str, str, tuple[str, ...], str]:
@@ -369,6 +372,7 @@ class DomainTaxonomy:
     instruments_dag: tuple[InstrumentEdge, ...] = ()
     valuation_rules: tuple[ValuationRule, ...] = ()
     subspace_invariants: tuple[SubspaceInvariant, ...] = ()
+    default_coordinates: tuple[DefaultCoordinate, ...] = ()
 
     def prime_head(self, head_id: str) -> PrimeHead | None:
         """Lookup a prime head by unique identifier."""
@@ -761,6 +765,7 @@ def load_domain_taxonomy(
     inst_p = base_dir / x_paths.default_instruments_dag_path.name
     val_p = base_dir / x_paths.default_valuation_rules_path.name
     sub_p = base_dir / x_paths.default_subspace_invariants_path.name
+    defaults_p = base_dir / x_paths.default_default_coordinates_path.name
 
     if not heads_p.is_file():
         raise FileNotFoundError(f"missing prime_heads in {base_dir}")
@@ -771,7 +776,7 @@ def load_domain_taxonomy(
     atom_relations = (
         AtomRelationGraph.load_json(rels_p, types_p) if rels_p.is_file() else None
     )
-
+    default_coordinates = load_defaults(defaults_p, heads_p, mods_p, token_lexicon)
     return DomainTaxonomy(
         prime_heads=load_prime_heads(heads_p),
         subatomic_modifiers=load_subatomic_modifiers(mods_p),
@@ -788,4 +793,5 @@ def load_domain_taxonomy(
         instruments_dag=load_instruments_dag(inst_p) if inst_p.is_file() else (),
         valuation_rules=load_valuation_rules(val_p) if val_p.is_file() else (),
         subspace_invariants=load_subspace_invariants(sub_p) if sub_p.is_file() else (),
+        default_coordinates=default_coordinates,
     )
