@@ -11,20 +11,14 @@ from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 
 QNAME = re.compile(r"^[a-z][a-z0-9-]*:[A-Z][A-Za-z0-9]+$")
 
-# Sanctioned qname-shaped values in taxonomy data (Phase 0 sweep S5/S6):
-# geography member identifiers are the member ontology itself, and each
-# axis family's default axis is declared per family pattern.
+# Sanctioned qname-shaped values in taxonomy data (Phase 0 sweep S5/S6).
 JSON_FIELD_ALLOWLIST = {
     "geography_dag.json": None,  # None: every field is member ontology data.
     "axis_families.json": {"default_axis_qname"},
 }
 
-# Verified non-semantic qname uses in engine code (Phase 0 sweep R-e):
-# instance_parser reconstructs namespace prefixes by string formatting,
-# review/benchmark builds synthetic fixture facts, and solve/candidates
-# tests namespace-class prefixes by comparison. None keys a dict by qname,
-# so the permitted-key sets are empty: a future qname-keyed dict anywhere
-# fails until its exact keys are named here.
+# Verified non-semantic qname uses (R-e) key no dict by qname today, so
+# every permitted-key set is empty: future exceptions must name exact keys.
 DICT_KEY_ALLOWLIST: dict[str, set[str]] = {
     "engine/xbrl/parsing/instance_parser.py": set(),
     "engine/xbrl/review/benchmark.py": set(),

@@ -9,8 +9,8 @@ from edgar_sec.engine.xbrl.discovery.fixture_miner import (
     build_modelledness_report,
     evaluate_taxonomy_fact_coverage,
     mine_fact_token_ngrams,
-    tokenize_fact_concept,
 )
+from edgar_sec.engine.xbrl.discovery.placement_slices import tokenize_fact_concept
 from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
