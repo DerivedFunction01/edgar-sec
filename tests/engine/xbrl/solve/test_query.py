@@ -500,6 +500,12 @@ def test_common_fundamentals_resolve_instant_duration_units_and_citations() -> N
         end_date="2024-06-30",
         unit="shares",
     )
+    per_share_duration = FactScope(
+        accession="0000950170-24-087843",
+        start_date="2023-07-01",
+        end_date="2024-06-30",
+        unit="USD/shares",
+    )
     queries = (
         ("us-gaap:Assets", instant, "Total assets", 1683, 1_000_000, 0, 1),
         ("CFO", duration, "Net cash from operations", 1757, 1_000_000, 0, 1),
@@ -514,7 +520,7 @@ def test_common_fundamentals_resolve_instant_duration_units_and_citations() -> N
         ),
         (
             "us-gaap:EarningsPerShareDiluted",
-            duration,
+            per_share_duration,
             "Diluted",
             1617,
             1,
