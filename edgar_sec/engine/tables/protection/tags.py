@@ -15,6 +15,8 @@ _RE_RESTORE_SENTINEL = re.compile(
 )
 TAGGED_TABLE_OPEN_RE = re.compile(r"<TABLE\b", re.IGNORECASE)
 TAGGED_TABLE_CLOSE_RE = re.compile(r"</TABLE\s*>", re.IGNORECASE)
+_RE_TABLE_OPEN_CI = re.compile(r"<table", re.IGNORECASE)
+_RE_TABLE_CLOSE_CI = re.compile(r"</table", re.IGNORECASE)
 _RE_TABLE_OPEN_WITH_SPACE = re.compile(r"[ \t]*<TABLE\b", re.IGNORECASE)
 _RE_TABLE_CLOSE_WITH_SPACE = re.compile(r"</TABLE\s*>[ \t]*", re.IGNORECASE)
 _RE_TABLE_OPEN_TAG = re.compile(r"<TABLE\b[^>]*>", re.IGNORECASE)
@@ -146,20 +148,23 @@ def find_table_spans(text: str) -> tuple[TableSpan, ...]:
     """Find every complete or unterminated tagged table span, in source order.
     Also returns ``()`` when the text already carries the sentinel prefix: re-masking would nest sentinels and corrupt it.
     """
-    if not text or SENTINEL_PREFIX in text or "<table" not in text.lower():
+    if not text or SENTINEL_PREFIX in text or _RE_TABLE_OPEN_CI.search(text) is None:
         return ()
 
+    # Search the original text, never a lowered copy: str.lower() is not
+    # length-preserving (U+0130 expands), so offsets from a lowered copy
+    # drift out of alignment with the text they are used to slice.
     spans: list[TableSpan] = []
-    lowered = text.lower()
-    index = lowered.find("<table")
-    while index != -1:
-        close_index = lowered.find("</table", index)
-        if close_index == -1:
+    open_match = _RE_TABLE_OPEN_CI.search(text)
+    while open_match is not None:
+        index = open_match.start()
+        close_match = _RE_TABLE_CLOSE_CI.search(text, index)
+        if close_match is None:
             end = len(text)
             complete = False
         else:
-            end = lowered.find(">", close_index)
-            end = len(text) if end == -1 else end + 1
+            gt = text.find(">", close_match.start())
+            end = len(text) if gt == -1 else gt + 1
             complete = True
         spans.append(
             TableSpan(
@@ -172,7 +177,7 @@ def find_table_spans(text: str) -> tuple[TableSpan, ...]:
         )
         if not complete:
             break
-        index = lowered.find("<table", end)
+        open_match = _RE_TABLE_OPEN_CI.search(text, end)
 
     return tuple(spans)
 

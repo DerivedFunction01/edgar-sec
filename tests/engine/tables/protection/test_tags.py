@@ -262,3 +262,22 @@ def test_sentinel_constants_compose_into_the_mask_token() -> None:
     token = f"{SENTINEL_PREFIX}{0}{SENTINEL_SUFFIX}"
     assert token in masked
     assert restore_tagged_tables(masked, spans) == text
+
+
+def test_find_table_spans_offsets_survive_length_changing_lowercase() -> None:
+    # U+0130 (İ) lowercases to two code points, so offsets taken from a
+    # lowered copy drift out of alignment with the original text.
+    text = f"İstanbul bottler\n\n{TAGGED}\n\nİ again\n\n{TAGGED}"
+    spans = find_table_spans(text)
+    assert len(spans) == 2
+    assert all(span.text == TAGGED for span in spans)
+    assert spans[0].start == text.find("<TABLE>")
+    assert spans[1].start == text.find("<TABLE>", spans[0].end)
+
+
+def test_mask_restore_round_trip_with_length_changing_lowercase() -> None:
+    text = f"İstanbul\n\n{TAGGED}\n\nİstanbul\n\n{TAGGED}\n\ntrailing prose"
+    masked, spans = mask_tagged_tables(text)
+    assert len(spans) == 2
+    assert TAGGED not in masked
+    assert restore_tagged_tables(masked, spans) == text
