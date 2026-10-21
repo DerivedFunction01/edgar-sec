@@ -19,6 +19,7 @@ class LexiconEntry:
     direction: float | None = None
     indexical: str | None = None
     followed_by_any: tuple[str, ...] = ()
+    derivation: str | None = None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> LexiconEntry:
@@ -44,6 +45,7 @@ class LexiconEntry:
             followed_by_any=tuple(
                 str(token).lower() for token in data.get("followed_by_any", ())
             ),
+            derivation=data.get("derivation"),
         )
 
 

@@ -267,3 +267,66 @@ def test_fair_value_level_rides_the_number_grammar() -> None:
     assert "M_FAIR_VALUE" in expr.atom.modifiers
     assert "M_PENSION_DEFINED_BENEFIT" in expr.atom.modifiers
     assert expr.indexicals == ("num=3",)
+
+
+def test_fused_longterm_spelling_keeps_the_stated_override() -> None:
+    """The fused Longterm spelling states the same override as Long Term."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    fused, _, _, _ = decompose_concept(
+        "us-gaap:AccountsPayableLongterm", tax.token_lexicon
+    )
+    spelled, _, _, _ = decompose_concept(
+        "us-gaap:AccountsPayableLongTerm", tax.token_lexicon
+    )
+    assert fused == spelled
+    assert fused.modifiers == frozenset({"M_ACCOUNTS_PAYABLE", "M_NONCURRENT"})
+
+
+def test_due_windows_derive_bucket_horizons() -> None:
+    """Due-in and due-within windows derive the bucket horizon arithmetically."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    cases = {
+        "us-gaap:LongTermDebtMaturitiesDueInFiveYears": "M_NONCURRENT",
+        "us-gaap:ContractualObligationDueInSecondYear": "M_NONCURRENT",
+        "us-gaap:AccrualForEnvironmentalLossContingenciesUndiscountedDueWithinOneYear": "M_CURRENT",
+    }
+    for qname, expected in cases.items():
+        expression = decompose_concept_expression(qname, tax.token_lexicon)
+        assert expression.derived_horizon == expected, qname
+
+
+def test_schedule_pair_shares_atom_but_derives_opposite_horizons() -> None:
+    """NextTwelveMonths vs AfterYearFive: one atom, opposite derivations."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    soon = decompose_concept_expression(
+        "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths",
+        tax.token_lexicon,
+    )
+    later = decompose_concept_expression(
+        "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalAfterYearFive",
+        tax.token_lexicon,
+    )
+    assert soon.atom == later.atom
+    assert soon.derived_horizon == "M_CURRENT"
+    assert later.derived_horizon == "M_NONCURRENT"
+
+
+def test_tenor_and_classification_compose_without_derivation() -> None:
+    """Tenor alone derives nothing; an explicit classification word stands."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    composed = decompose_concept_expression(
+        "us-gaap:FiveYearLoanCurrent", tax.token_lexicon
+    )
+    assert composed.derived_horizon is None
+    assert composed.atom.modifiers == frozenset({"M_CURRENT", "M_MATURITY"})
+    tenor_only = decompose_concept_expression("us-gaap:FiveYearLoan", tax.token_lexicon)
+    assert tenor_only.derived_horizon is None
+    borrowings = decompose_concept_expression(
+        "us-gaap:ShortTermBorrowings", tax.token_lexicon
+    )
+    assert borrowings.derived_horizon is None
+    assert "M_CURRENT" in borrowings.atom.modifiers

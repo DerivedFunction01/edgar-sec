@@ -13,6 +13,7 @@ from edgar_sec.engine.xbrl.discovery.fixture_miner import (
 )
 from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
+from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from tests.support import fixture_path
 
 
@@ -98,6 +99,28 @@ def test_build_modelledness_report_buckets_and_ranking() -> None:
     }
     assert [r.qname for r in report.candidates] == [cash.qname]
     assert report.long_and_bare_us_gaap == 1
+
+
+def test_report_records_derived_and_presumed_coordinates() -> None:
+    """Derived and presumed coordinates are reported beside faithful atoms."""
+    lexicon = TokenLexicon.load_json(resolve_xbrl_paths().default_token_lexicon_path)
+    defaults = load_domain_taxonomy().default_coordinates
+    qnames = [
+        "acme:AccountsPayable",
+        "us-gaap:AccountsPayableCurrent",
+        "us-gaap:LongTermDebtMaturitiesDueInFiveYears",
+    ]
+    bundles = [BundleFacts(firm="AAA", sic_code="1000", facts=_facts_table(qnames))]
+
+    report = build_modelledness_report(bundles, lexicon, defaults=defaults)
+
+    by_qname = {r.qname: r for r in report.concepts}
+    bare = by_qname["acme:AccountsPayable"]
+    assert bare.presumed_modifier == "M_CURRENT"
+    assert "M_CURRENT" not in bare.modifiers
+    assert by_qname["us-gaap:AccountsPayableCurrent"].presumed_modifier == ""
+    due = by_qname["us-gaap:LongTermDebtMaturitiesDueInFiveYears"]
+    assert due.derived_horizon == "M_NONCURRENT"
 
 
 def test_report_mines_residual_collocations() -> None:

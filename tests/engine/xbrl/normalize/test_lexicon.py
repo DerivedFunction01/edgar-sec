@@ -20,6 +20,21 @@ def test_lexicon_longest_phrase_matching() -> None:
     assert residuals == []
 
 
+def test_lexicon_entry_carries_derivation_declaration() -> None:
+    """A derivation declared in data loads onto the entry, defaulting to None."""
+    entry = LexiconEntry.from_dict(
+        {
+            "phrase": ["Due", "In"],
+            "role": "MODIFIER",
+            "atom": "M_MATURITY",
+            "derivation": "due_in_window",
+        }
+    )
+    assert entry.derivation == "due_in_window"
+    plain = LexiconEntry.from_dict({"phrase": ["Due"], "role": "MODIFIER"})
+    assert plain.derivation is None
+
+
 def test_lexicon_residuals_extraction() -> None:
     """Verify unmatched tokens are returned as residuals."""
     entries = (

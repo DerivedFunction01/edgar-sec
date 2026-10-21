@@ -6,7 +6,7 @@ from dataclasses import dataclass
 
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, SemanticConceptFrame
-from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
+from edgar_sec.engine.xbrl.normalize.lexicon import LexiconMatch, TokenLexicon
 from edgar_sec.engine.xbrl.normalize.numbers import (
     collapse_number_phrases,
     number_indexicals,
@@ -62,6 +62,7 @@ class ConceptExpression:
     residuals: tuple[str, ...]
     direction: float = 1.0
     indexicals: tuple[str, ...] = ()
+    derived_horizon: str | None = None
 
 
 def decompose_concept_expression(
@@ -87,13 +88,23 @@ def decompose_concept_expression(
         left_tokens = tokens[: operator.start]
         left_values = {i: v for i, v in number_values.items() if i < operator.start}
         left_ordinals = {i: v for i, v in ordinal_values.items() if i < operator.start}
-        left, left_residuals, direction, indexicals = _decompose_flat_tokens(
-            left_tokens,
-            lexicon,
-            number_indexicals(left_tokens, left_values, left_ordinals),
+        left, left_residuals, direction, indexicals, left_derived = (
+            _decompose_flat_tokens(
+                left_tokens,
+                lexicon,
+                number_indexicals(left_tokens, left_values, left_ordinals),
+                left_values,
+                left_ordinals,
+            )
         )
-        right, right_residuals, _, _ = _decompose_flat_tokens(
-            tokens[operator.end :], lexicon
+        right_values = {
+            i - operator.end: v for i, v in number_values.items() if i >= operator.end
+        }
+        right_ordinals = {
+            i - operator.end: v for i, v in ordinal_values.items() if i >= operator.end
+        }
+        right, right_residuals, _, _, right_derived = _decompose_flat_tokens(
+            tokens[operator.end :], lexicon, (), right_values, right_ordinals
         )
         operator_atom = operator.entry.atom or "V_NET"
         return ConceptExpression(
@@ -104,10 +115,17 @@ def decompose_concept_expression(
             residuals=left_residuals + right_residuals,
             direction=direction,
             indexicals=indexicals,
+            derived_horizon=(
+                left_derived if left_derived is not None else right_derived
+            ),
         )
 
-    atom, residuals, direction, indexicals = _decompose_flat_tokens(
-        tokens, lexicon, number_indexicals(tokens, number_values, ordinal_values)
+    atom, residuals, direction, indexicals, derived = _decompose_flat_tokens(
+        tokens,
+        lexicon,
+        number_indexicals(tokens, number_values, ordinal_values),
+        number_values,
+        ordinal_values,
     )
     return ConceptExpression(
         atom=atom,
@@ -117,15 +135,73 @@ def decompose_concept_expression(
         residuals=residuals,
         direction=direction,
         indexicals=indexicals,
+        derived_horizon=derived,
     )
+
+
+def _window_months(
+    tokens: tuple[str, ...],
+    start: int,
+    end: int,
+    number_values: dict[int, int],
+    ordinal_values: dict[int, int],
+) -> int | None:
+    """Read a due window in months from the single number near a due phrase."""
+    found: list[tuple[int, int]] = []
+    for idx in range(max(0, start - 2), min(len(tokens), end + 4)):
+        if idx in number_values:
+            found.append((idx, number_values[idx]))
+        elif idx in ordinal_values:
+            found.append((idx, ordinal_values[idx]))
+    if len(found) != 1:
+        return None
+    idx, value = found[0]
+    for near in tokens[max(0, idx - 2) : idx + 3]:
+        lowered = near.lower()
+        if lowered in ("month", "months"):
+            return value
+        if lowered in ("year", "years"):
+            return value * 12
+    return None
+
+
+def _derived_horizon(
+    tokens: tuple[str, ...],
+    matches: list[LexiconMatch],
+    number_values: dict[int, int],
+    ordinal_values: dict[int, int],
+) -> str | None:
+    """Derive a bucket horizon from a due-window phrase plus its number.
+
+    Due-in and due-within windows bucket at the one-year line; a due-after
+    window derives only the noncurrent side, never the short side.
+    """
+    for match in matches:
+        kind = match.entry.derivation
+        if kind is None:
+            continue
+        months = _window_months(
+            tokens, match.start, match.end, number_values, ordinal_values
+        )
+        if months is None:
+            return None
+        if kind == "due_after_window":
+            return "M_NONCURRENT" if months >= 12 else None
+        return "M_CURRENT" if months <= 12 else "M_NONCURRENT"
+    return None
 
 
 def _decompose_flat_tokens(
     tokens: tuple[str, ...],
     lexicon: TokenLexicon,
     num_indexicals: tuple[str, ...] = (),
-) -> tuple[Atom, tuple[str, ...], float, tuple[str, ...]]:
+    number_values: dict[int, int] | None = None,
+    ordinal_values: dict[int, int] | None = None,
+) -> tuple[Atom, tuple[str, ...], float, tuple[str, ...], str | None]:
     matches, residuals = lexicon.scan_tokens(tokens)
+    derived = _derived_horizon(
+        tokens, matches, number_values or {}, ordinal_values or {}
+    )
 
     sub_idx: int | None = None
     for idx, match in enumerate(matches):
@@ -180,7 +256,7 @@ def _decompose_flat_tokens(
             indexicals.append(m.entry.indexical)
 
     atom = Atom(head=head, modifiers=frozenset(mods))
-    return atom, tuple(residuals), direction, tuple(indexicals)
+    return atom, tuple(residuals), direction, tuple(indexicals), derived
 
 
 def infer_semantic_frame(

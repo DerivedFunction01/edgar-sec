@@ -1,7 +1,7 @@
 """Mining fact concept token sequences and n-grams across grounded fixtures."""
 
 from collections import Counter, defaultdict
-from collections.abc import Sequence
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 import json
 import math
@@ -11,11 +11,13 @@ import pyarrow as pa
 
 from edgar_sec.engine.xbrl.evidence.mining import CollocationMiner, SupportCounter
 from edgar_sec.engine.xbrl.normalize.decomposer import (
-    decompose_concept,
+    decompose_concept_expression,
     split_camel_case,
 )
 from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
+from edgar_sec.engine.xbrl.solve.equivalence import presumed_atom
+from edgar_sec.engine.xbrl.taxonomy.defaults import DefaultCoordinate
 
 
 @dataclass(frozen=True, slots=True)
@@ -181,6 +183,8 @@ class ConceptModelledness:
     explained_share: float = 0.0
     adequacy: str = "unmodelled"
     has_identity: bool = False
+    derived_horizon: str = ""
+    presumed_modifier: str = ""
 
 
 @dataclass(frozen=True, slots=True)
@@ -493,6 +497,7 @@ def build_modelledness_report(
     *,
     min_firms: int = 3,
     min_sics: int = 2,
+    defaults: Iterable[DefaultCoordinate] = (),
 ) -> ModellednessReport:
     """Audit every distinct concept's modelled-ness across the bundles."""
     firms_by_concept: dict[str, set[str]] = defaultdict(set)
@@ -528,13 +533,21 @@ def build_modelledness_report(
         calc_degrees.update(_arc_degrees(bundle.calculation_arcs))
         pre_degrees.update(_arc_degrees(bundle.presentation_arcs))
 
+    defaults = tuple(defaults)
     statement_types = _statement_types()
     atom_members: dict[str, list[str]] = defaultdict(list)
     decomposed: dict[str, tuple] = {}
+    derived_by_concept: dict[str, str] = {}
+    presumed_by_concept: dict[str, str] = {}
     for qname in rows_by_concept:
-        atom, residuals, _direction, _indexicals = decompose_concept(qname, lexicon)
+        expression = decompose_concept_expression(qname, lexicon)
+        atom, residuals = expression.atom, expression.residuals
         decomposed[qname] = (atom, residuals)
         atom_members[str(atom)].append(qname)
+        derived_by_concept[qname] = expression.derived_horizon or ""
+        presumed = presumed_atom(atom, defaults)
+        added = presumed.modifiers - atom.modifiers
+        presumed_by_concept[qname] = next(iter(added)) if len(added) == 1 else ""
 
     records: list[ConceptModelledness] = []
     for qname in sorted(rows_by_concept):
@@ -588,6 +601,8 @@ def build_modelledness_report(
                 explained_share=share,
                 adequacy=adequacy,
                 has_identity=has_identity,
+                derived_horizon=derived_by_concept[qname],
+                presumed_modifier=presumed_by_concept[qname],
             )
         )
 
