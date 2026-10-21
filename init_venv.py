@@ -334,6 +334,24 @@ def install_packages(package_list: list[str], description: str):
         print(f"❌ Failed to install some {description}.")
 
 
+def install_duckdb_extensions():
+    """Install the DuckDB extensions the codebase relies on.
+
+    Extensions are not pip packages: DuckDB stores them per user under
+    ~/.duckdb, keyed by DuckDB version. The document-acquisition run
+    validation uses sqlite_scanner to compare run-state seeds in SQL;
+    without it, validation falls back to a slower Python re-read.
+    """
+    print("📦 Installing DuckDB extensions...")
+    code = "import duckdb; duckdb.connect().execute('INSTALL sqlite_scanner')"
+    result = subprocess.run([_python_executable(), "-c", code])
+
+    if result.returncode == 0:
+        print("✅ DuckDB extensions installed successfully.")
+    else:
+        print("❌ Failed to install DuckDB extensions.")
+
+
 def install_pytorch():
     """Install PyTorch with appropriate GPU support."""
     print("📦 Installing PyTorch...")
@@ -551,6 +569,7 @@ def main():
         if choice == "0":
             print("\nInstalling all standard package bundles...")
             install_packages(all_group_packages(), "all standard package bundles")
+            install_duckdb_extensions()
             print("\n✅ Setup complete!")
             sys.exit(0)
 
@@ -571,6 +590,7 @@ def main():
                 install_pytorch()
             install_packages(ML_PACKAGES, "ML packages")
             install_packages(all_group_packages(), "all standard package bundles")
+            install_duckdb_extensions()
             print("\n✅ Full ML Environment setup complete!")
             sys.exit(0)
 

@@ -14,7 +14,9 @@ from edgar_sec.pipelines.document_acquisition.plan_projection.project import (
     AcquisitionProjectError,
     project_acquisition_run,
 )
+from edgar_sec.infra.storage.duckdb import connect
 from edgar_sec.pipelines.document_acquisition.run_validation import (
+    _sqlite_scanner_installed,
     iter_resolved_work_order_operations,
     load_validated_work_order,
 )
@@ -179,12 +181,21 @@ def test_state_seed_is_a_bounded_batch_generator(project_fixture, monkeypatch):
     monkeypatch.setattr(project.pq, "ParquetFile", TrackingParquetFile)
     monkeypatch.setattr(project, "initialize_run_state", inspect_seed)
 
+    with connect() as con:
+        scanner_installed = _sqlite_scanner_installed(con)
+
     project_acquisition_run(plan_root.name, paths=paths)
 
     assert len(seen) == 1
     assert iter(seen[0]) is seen[0]
     assert not isinstance(seen[0], (list, tuple))
-    assert work_order_batch_sizes == [2, 1]
+    # Seeding streams the work order once. Post-seed validation compares
+    # in SQL when sqlite_scanner is installed; without it, the Python
+    # fallback re-reads the work order, doubling the tracked batches.
+    if scanner_installed:
+        assert work_order_batch_sizes == [2, 1]
+    else:
+        assert work_order_batch_sizes == [2, 1, 2, 1]
 
 
 def test_identical_projection_reuses_valid_run(project_fixture):
