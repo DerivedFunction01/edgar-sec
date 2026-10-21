@@ -1,0 +1,86 @@
+{
+  "firm": "NEM",
+  "accession": "0001164727-25-000011",
+  "cik": "0001164727",
+  "sic_code": 1040,
+  "sector": "Materials",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      5555,
+      5622
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "Sales (Note 5)",
+        "reported_value": 18682000000.0,
+        "table_value": 18682,
+        "line_number": 5561,
+        "snippet": "Sales (Note 5)                                                                      $ 18,682    $ 11,812    $ 11,915"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServiceExcludingDepreciationDepletionAndAmortization",
+        "label": "Costs applicable to sales (1)",
+        "reported_value": 8963000000.0,
+        "table_value": 8963,
+        "line_number": 5564,
+        "snippet": "Costs applicable to sales (1)                                                          8,963       6,699       6,468"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+        "label": "Income (loss) before income and mining tax and other items",
+        "reported_value": 4577000000.0,
+        "table_value": 4577,
+        "line_number": 5582,
+        "snippet": "Income (loss) before income and mining tax and other items                             4,577     (2,031)        (51)"
+      },
+      {
+        "concept_qname": "us-gaap:ProfitLoss",
+        "label": "Net income (loss)",
+        "reported_value": 3381000000.0,
+        "table_value": 3381,
+        "line_number": 5589,
+        "snippet": "Net income (loss)                                                                      3,381     (2,467)       (369)"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income (loss) attributable to Newmont stockholders",
+        "reported_value": 3348000000.0,
+        "table_value": 3348,
+        "line_number": 5592,
+        "snippet": "Net income (loss) attributable to Newmont stockholders                               $ 3,348   $ (2,494)     $ (429)"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "IncomeBeforeIncomeTaxes = Revenues + NonoperatingIncomeExpense - CostsAndExpenses",
+      "left_concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+      "components": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": 18682000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:NonoperatingIncomeExpense",
+          "value": 50000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostsAndExpenses",
+          "value": 14155000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 4577000000.0,
+      "target_value": 4577000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

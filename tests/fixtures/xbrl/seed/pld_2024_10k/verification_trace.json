@@ -1,0 +1,81 @@
+{
+  "firm": "PLD",
+  "accession": "0000950170-25-021272",
+  "cik": "0001045609",
+  "sic_code": 6798,
+  "sector": "Real_Estate",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF INCOME",
+    "unit": "USD in thousands",
+    "scale": 1000,
+    "period_column_index": 0,
+    "line_range": [
+      2317,
+      2402
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total revenues",
+        "reported_value": 8201610000.0,
+        "table_value": 8201610,
+        "line_number": 2330,
+        "snippet": "Total revenues                                                                               8,201,610        8,023,469        5,973,692"
+      },
+      {
+        "concept_qname": "pld:OperatingExpensesBeforeGainsOnRealEstateTransactionsNet",
+        "label": "Total expenses",
+        "reported_value": 5103569000.0,
+        "table_value": 5103569,
+        "line_number": 2345,
+        "snippet": "Total expenses                                                                               5,103,569        4,938,986        3,693,290"
+      },
+      {
+        "concept_qname": "pld:OperatingIncomeLossBeforeGainsLossOnRealEstateTransactionsNet",
+        "label": "Operating income before gains on real estate transactions, net",
+        "reported_value": 3098041000.0,
+        "table_value": 3098041,
+        "line_number": 2349,
+        "snippet": "Operating income before gains on real estate transactions, net                               3,098,041        3,084,483        2,280,402"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating income",
+        "reported_value": 4415920000.0,
+        "table_value": 4415920,
+        "line_number": 2356,
+        "snippet": "Operating income                                                                             4,415,920        3,707,792        3,467,538"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLossAvailableToCommonStockholdersBasic",
+        "label": "Net earnings attributable to common stockholders",
+        "reported_value": 3725754000.0,
+        "table_value": 3725754,
+        "line_number": 2386,
+        "snippet": "Net earnings attributable to common stockholders                                           $ 3,725,754      $ 3,053,373      $ 3,358,796"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncomeBeforeGains = Revenues - OperatingExpensesBeforeGainsOnRealEstateTransactionsNet",
+      "left_concept": "pld:OperatingIncomeLossBeforeGainsLossOnRealEstateTransactionsNet",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 8201610000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "pld:OperatingExpensesBeforeGainsOnRealEstateTransactionsNet",
+          "value": 5103569000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 3098041000.0,
+      "target_value": 3098041000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}
