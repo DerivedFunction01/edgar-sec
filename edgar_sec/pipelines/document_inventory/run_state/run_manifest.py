@@ -201,7 +201,7 @@ def validate_work_order(
         raise ValueError("batch_rows must be positive")
     try:
         parquet = pq.ParquetFile(work_order)
-    except (OSError, pa.ArrowException, pq.ParquetException) as exc:
+    except (OSError, pa.ArrowException) as exc:
         raise ManifestMismatchError(
             f"work order is not readable Parquet: {work_order}"
         ) from exc

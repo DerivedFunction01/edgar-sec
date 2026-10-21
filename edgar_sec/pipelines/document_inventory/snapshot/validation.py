@@ -101,7 +101,7 @@ def _validate_parquet(
         raise ValidationFailedError("snapshot artifact metadata is invalid")
     try:
         parquet = pq.ParquetFile(path)
-    except (OSError, pa.ArrowException, pq.ParquetException) as exc:
+    except (OSError, pa.ArrowException) as exc:
         raise ValidationFailedError(f"snapshot Parquet is unreadable: {path}") from exc
     actual = parquet.schema_arrow
     if actual.names != schema.names or any(

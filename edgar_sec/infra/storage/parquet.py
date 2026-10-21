@@ -155,7 +155,7 @@ class StagedParquetWriter:
             self._preloaded_table = table
             ids = set(table.column(self.id_column).to_pylist())
             return {str(x) for x in ids if x is not None}
-        except (OSError, pa.ArrowInvalid, pq.ParquetException):
+        except (OSError, pa.ArrowInvalid):
             self.reset()
             return set()
 
@@ -164,7 +164,7 @@ class StagedParquetWriter:
         if self._writer is not None:
             try:
                 self._writer.close()
-            except (OSError, pa.ArrowInvalid, pq.ParquetException):
+            except (OSError, pa.ArrowInvalid):
                 pass
             self._writer = None
         if self.tmp_path.is_file():
@@ -267,7 +267,7 @@ class StagedParquetWriter:
                 if self._writer is not None:
                     try:
                         self._writer.close()
-                    except (OSError, pa.ArrowInvalid, pq.ParquetException):
+                    except (OSError, pa.ArrowInvalid):
                         pass
                     self._writer = None
             else:

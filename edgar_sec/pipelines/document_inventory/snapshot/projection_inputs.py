@@ -158,7 +158,7 @@ def catalog_plan_parts(
     locator_sha256 = file_sha256(locator_path)
     try:
         locator_parquet = pq.ParquetFile(locator_path)
-    except (OSError, pa.ArrowException, pq.ParquetException) as exc:
+    except (OSError, pa.ArrowException) as exc:
         raise CohortInputError(
             "invalid_bundle", detail="locator groups are unreadable"
         ) from exc
@@ -229,7 +229,7 @@ def catalog_plan_parts(
             ) from exc
         try:
             parquet = pq.ParquetFile(path)
-        except (OSError, pa.ArrowException, pq.ParquetException) as exc:
+        except (OSError, pa.ArrowException) as exc:
             raise CohortInputError(
                 "invalid_bundle", detail=f"target part unreadable: {path.name}"
             ) from exc
@@ -374,7 +374,7 @@ def base_snapshot_parts(
             )
         try:
             parquet = pq.ParquetFile(path)
-        except (OSError, pa.ArrowException, pq.ParquetException) as exc:
+        except (OSError, pa.ArrowException) as exc:
             raise BaseSnapshotError(
                 f"base snapshot accession part unreadable: {path.name}"
             ) from exc

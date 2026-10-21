@@ -117,7 +117,7 @@ _RELATION_KEYS = {
 def _validate_input(path: Path, schema: pa.Schema, label: str) -> int:
     try:
         parquet = pq.ParquetFile(path)
-    except (OSError, pa.ArrowException, pq.ParquetException) as exc:
+    except (OSError, pa.ArrowException) as exc:
         raise ValidationFailedError(f"{label} is unreadable Parquet") from exc
     actual = parquet.schema_arrow
     if actual.names != schema.names or any(

@@ -69,7 +69,7 @@ def inspect_snapshot(
                 )
             try:
                 parquet = pq.ParquetFile(path)
-            except (OSError, pa.ArrowException, pq.ParquetException) as error:
+            except (OSError, pa.ArrowException) as error:
                 raise ValueError(
                     f"inventory part is unreadable: {descriptor.path}"
                 ) from error

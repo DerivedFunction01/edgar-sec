@@ -168,6 +168,21 @@ def test_staged_parquet_writer_intra_chunk_resumption(tmp_path: Path) -> None:
     assert table.column("val").to_pylist() == [10, 20, 30]
 
 
+def test_staged_parquet_writer_unreadable_stage_resets(tmp_path: Path) -> None:
+    """A corrupt staging file resets instead of raising out of get_existing_ids."""
+    path = tmp_path / "chunk_corrupt.parquet"
+    stage = tmp_path / "chunk_corrupt.parquet.tmp"
+    stage.write_bytes(b"not a parquet file" * 16)
+
+    with StagedParquetWriter(path, schema=SCHEMA, id_column="cik") as writer:
+        assert writer.get_existing_ids() == set()
+        assert not stage.exists()
+        writer.write_batch({"cik": ["0000000001"], "val": [1]})
+        writer.commit(expected_count=1)
+
+    assert read_parquet_table(path).column("cik").to_pylist() == ["0000000001"]
+
+
 def test_staged_parquet_writer_resets_on_exception(tmp_path: Path) -> None:
     path = tmp_path / "chunk_error.parquet"
     with (
