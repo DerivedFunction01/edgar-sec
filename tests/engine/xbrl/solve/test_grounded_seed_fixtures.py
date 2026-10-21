@@ -231,10 +231,10 @@ def test_dis_grounded_seed_fixture_verification() -> None:
 
 
 def test_seed_cohort_composition() -> None:
-    """Prove seed_cohort.json contains 40 companies across diverse industry sectors."""
+    """Prove seed_cohort.json contains 41 companies across diverse industry sectors."""
     cohort_path = fixture_path("xbrl/seed_cohort.json")
     cohort = json.loads(cohort_path.read_text(encoding="utf-8"))
-    assert len(cohort) == 40
+    assert len(cohort) == 41
 
     firms = {item["firm"] for item in cohort}
     assert "JPM" in firms
@@ -253,7 +253,7 @@ def test_seed_cohort_composition() -> None:
 
     sic_counts = Counter(item["sic_code"] for item in cohort)
     duplicated = {sic for sic, count in sic_counts.items() if count > 1}
-    assert duplicated == {2080, 2834, 3711, 4512, 6021}
+    assert duplicated == {2040, 2080, 2834, 3711, 4512, 6021}
     assert len(sic_counts) == 35
 
 
@@ -405,3 +405,8 @@ def test_alb_grounded_seed_fixture_verification() -> None:
 def test_asml_grounded_seed_fixture_verification() -> None:
     """Prove ASML FY2024 seed fixture relationships and traces."""
     _verify_fixture("asml_2024_10k", "ASML", "0000937966-25-000009")
+
+
+def test_gis_grounded_seed_fixture_verification() -> None:
+    """Prove GIS FY2024 seed fixture relationships and traces."""
+    _verify_fixture("gis_2024_10k", "GIS", "0001193125-24-168943")
