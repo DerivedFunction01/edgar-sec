@@ -28,6 +28,7 @@ class HandlerContext:
     include_analysis_artifacts: bool = False
     filing_date: str | None = None
     report_date: str | None = None
+    form_type: str | None = None
 
 
 Handler = Callable[[bytes, HandlerContext], bytes | str | HandlerOutput]

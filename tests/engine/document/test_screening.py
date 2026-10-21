@@ -53,6 +53,37 @@ def test_screen_raw_content_sgml_tags() -> None:
     assert screen_comp.is_inversion
 
 
+@pytest.mark.parametrize(
+    ("expected_form", "observed_type"),
+    [("4", "4/A"), ("4/A", "4")],
+)
+def test_screen_sgml_identity_uses_form_family(
+    expected_form: str, observed_type: str
+) -> None:
+    """Amendment aliases match at family level on both SGML entry paths."""
+    observed = screen_candidate_document(
+        expected_form, observed_sgml_type=observed_type
+    )
+    raw = screen_candidate_document(
+        expected_form,
+        raw_content=f"<DOCUMENT>\n<TYPE>{observed_type}\n<TEXT>\n".encode(),
+    )
+
+    assert observed.screen_result == raw.screen_result == "form_match"
+    assert not observed.is_inversion and not raw.is_inversion
+    assert observed.observed_body_type == raw.observed_body_type == observed_type
+
+
+def test_screen_raw_content_sgml_competing_family() -> None:
+    screen = screen_candidate_document(
+        "4", raw_content=b"<DOCUMENT>\n<TYPE>8-K\n<TEXT>\n"
+    )
+
+    assert screen.screen_result == "type_mismatch"
+    assert screen.is_inversion
+    assert screen.observed_body_type == "8-K"
+
+
 def test_screen_filename_exhibit() -> None:
     """Exhibit filenames produce inversion type_mismatch."""
     assert screen_candidate_document("10-K", filename="ex-101.htm").is_inversion
@@ -105,18 +136,56 @@ def test_screen_normalized_text_competing_form_title() -> None:
     assert res.screen_kind == "html_cover"
 
 
-def test_specialized_xml_screen_rejects_prose_as_form_4() -> None:
+def test_specialized_xml_screen_marks_prose_unverifiable_not_inversion() -> None:
+    """Marker-missing prose has no type evidence either way: unverifiable."""
     prose = b"<html><body><h1>Exhibit 99.1</h1><p>Acme announced a new partnership.</p></body></html>"
     screen = screen_specialized_xml_source("4", prose)
-    assert screen.is_inversion
+    assert not screen.is_inversion
+    assert screen.screen_result == "unverifiable"
     assert screen.reason == "form_structure_markers_missing"
 
 
-def test_specialized_xml_screen_requires_ownership_identity_marker() -> None:
+def test_specialized_xml_screen_unverifiable_without_identity_marker() -> None:
     prose = (
         b"<html><body>Issuer Acme. See Table I in the attached release.</body></html>"
     )
-    assert screen_specialized_xml_source("4", prose).is_inversion
+    screen = screen_specialized_xml_source("4", prose)
+    assert not screen.is_inversion
+    assert screen.screen_result == "unverifiable"
+
+
+def test_specialized_xml_screen_accepts_reporting_person_vocabulary() -> None:
+    """Paper forms name the Reporting Person, not Reporting Owner."""
+    paper_txt = (
+        b"<DOCUMENT>\n<TYPE>4\n<SEQUENCE>1\n<FILENAME>0001.txt\n<TEXT>\n"
+        b"FORM 4\n1. Name and Address of Reporting Person\n"
+        b"2. Issuer Name and Ticker or Trading Symbol\n"
+        b"6. Relationship of Reporting Person(s) to Issuer\n"
+        b"TABLE I -- Non-Derivative Securities Acquired, Disposed of\n"
+        b"</TEXT>\n</DOCUMENT>\n"
+    )
+    screen = screen_specialized_xml_source("4", paper_txt)
+    assert screen.screen_result == "form_match"
+    assert not screen.is_inversion
+
+    paper_html = (
+        b"<html><body><h1>FORM 3</h1>"
+        b"<p>1. Name and Address of Reporting Person: Smith, Jane</p>"
+        b"<p>2. Issuer Name: Acme Corporation</p>"
+        b"<p>Relationship of Reporting Person to Issuer: Director</p>"
+        b"<p>Table I - Non-Derivative Securities</p></body></html>"
+    )
+    screen = screen_specialized_xml_source("3", paper_html)
+    assert screen.screen_result == "form_match"
+    assert not screen.is_inversion
+
+
+def test_screen_exhibit_in_primary_slot_is_inversion() -> None:
+    """An exhibit type in the primary slot is a type-identity mismatch."""
+    body = b"<DOCUMENT>\n<TYPE>EX-99.1\n<TEXT>\nPress release.\n"
+    screen = screen_candidate_document("4", filename="0001.txt", raw_content=body)
+    assert screen.is_inversion
+    assert screen.screen_result == "type_mismatch"
 
 
 def test_specialized_xml_screen_accepts_ownership_without_derivative_table() -> None:

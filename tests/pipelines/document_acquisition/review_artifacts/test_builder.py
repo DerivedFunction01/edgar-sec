@@ -69,7 +69,7 @@ def test_review_generator_parses_verified_form4_fixture_bytes_offline(
     index_verifications = []
 
     def traced_process(self, request):
-        calls.append(request.inputs[0].raw_bytes)
+        calls.append(request)
         return process(self, request)
 
     def traced_index(paths, fixture_id, accession, expected_sha256):
@@ -85,7 +85,8 @@ def test_review_generator_parses_verified_form4_fixture_bytes_offline(
     )
 
     assert result.summary.total == result.summary.completed == 1
-    assert calls == [_BODY]
+    assert [request.inputs[0].raw_bytes for request in calls] == [_BODY]
+    assert [(request.family, request.form_type) for request in calls] == [("4", "4")]
     assert len(index_verifications) == 1
     review_paths = ReviewPaths(output, PIPELINE_REVIEW_MANIFEST_FILE)
     record = json.loads(review_paths.manifest_path.read_text(encoding="utf-8"))

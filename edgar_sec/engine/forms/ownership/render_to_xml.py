@@ -6,6 +6,7 @@ from dataclasses import replace
 from typing import TYPE_CHECKING
 import xml.etree.ElementTree as ET
 
+from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.forms.families.ownership.models import OwnershipMetadata
 from edgar_sec.domain.forms.families.ownership.taxonomy import OWNERSHIP_STATE_CODES
 from edgar_sec.domain.taxonomy.jurisdictions import EDGAR_JURISDICTION_CODES
@@ -385,14 +386,23 @@ def render_ownership_to_xml(
     report_date = getattr(context, "report_date", None) if context is not None else None
     filing_date = getattr(context, "filing_date", None) if context is not None else None
     external_year = external_reference_year(report_date, filing_date)
+    context_family = getattr(context, "family", None) if context is not None else None
+    context_form_type = (
+        getattr(context, "form_type", None) if context is not None else None
+    )
+    form_type = context_form_type or context_family or "4"
+    has_exact_form_type = bool(context_form_type)
+    family = resolve_alias(form_type) or form_type.strip().upper()
     if (
         sections.boxes_1_to_7 is None
         and sections.table_i is None
         and sections.table_ii is None
     ):
-        from edgar_sec.engine.forms.ownership.ascii_parser import parse_ascii_form4
+        from edgar_sec.engine.forms.ownership.ascii_parser import (
+            parse_ascii_ownership,
+        )
 
-        ascii_secs = parse_ascii_form4(text, reference_year=external_year)
+        ascii_secs = parse_ascii_ownership(text, family, reference_year=external_year)
         if ascii_secs is not None:
             sections = ascii_secs
 
@@ -401,10 +411,14 @@ def render_ownership_to_xml(
         sections.signatures,
         reference_year=external_year,
     )
-    doc_type = (context.family if context and context.family else "4").upper()
+    doc_type = form_type.strip().upper()
     if doc_type not in {"3", "3/A", "4", "4/A", "5", "5/A"}:
         doc_type = "4"
-    if metadata.period.is_amendment and not doc_type.endswith("/A"):
+    if (
+        metadata.period.is_amendment
+        and not has_exact_form_type
+        and not doc_type.endswith("/A")
+    ):
         doc_type = f"{doc_type}/A"
     source_period = metadata.period.period_of_report or metadata.period.date_of_original
     parser_year = resolve_reference_year(report_date, filing_date, (source_period,))

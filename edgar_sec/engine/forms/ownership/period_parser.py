@@ -9,6 +9,7 @@ from edgar_sec.engine.forms.common.periods import (
     BOX5_SPLIT_RE,
     PERIOD_PREFIX_RE,
 )
+from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE, RE_FULL_DATE
 
 _DIGIT_CHAR_RE = re.compile(r"\d")
 
@@ -18,15 +19,21 @@ def parse_period(cell_text: str) -> FilingPeriod:
     box4_text = cell_text[: match.start()] if match else cell_text
     box5_text = cell_text[match.start() :] if match else ""
 
+    cleaned_lines = [
+        PERIOD_PREFIX_RE.sub("", raw_line.strip()).strip()
+        for raw_line in box4_text.splitlines()
+        if raw_line.strip()
+    ]
     period: str | None = None
-    for raw_line in box4_text.splitlines():
-        line = raw_line.strip()
-        if not line:
-            continue
-        cleaned = PERIOD_PREFIX_RE.sub("", line).strip()
-        if cleaned and len(_DIGIT_CHAR_RE.findall(cleaned)) >= 2:
+    for cleaned in cleaned_lines:
+        if NUMERIC_DATE_RE.search(cleaned) or RE_FULL_DATE.search(cleaned):
             period = cleaned
             break
+    if period is None:
+        for cleaned in cleaned_lines:
+            if cleaned and len(_DIGIT_CHAR_RE.findall(cleaned)) >= 2:
+                period = cleaned
+                break
 
     amend_date: str | None = None
     if box5_text:

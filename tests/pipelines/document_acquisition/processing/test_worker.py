@@ -626,9 +626,10 @@ def test_form_xml_without_registered_handler_is_unsupported(
 
 
 def test_form4_xml_with_registered_handler_succeeds(
-    tmp_path: Path,
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     from edgar_sec.domain.document.path_facts import DocumentPathFacts
+    import edgar_sec.pipelines.document_acquisition.processing.worker as processing
     from edgar_sec.pipelines.document_acquisition.processing.worker import (
         _operation_results,
     )
@@ -662,6 +663,14 @@ def test_form4_xml_with_registered_handler_succeeds(
     effective_path = "report.htm"
     body = request.body.path.read_bytes()
     processing_id = "proc_form4_xml_test"
+    engine_requests = []
+    engine_process = processing.AcquisitionProcessor.process
+
+    def traced_process(self, engine_request):
+        engine_requests.append(engine_request)
+        return engine_process(self, engine_request)
+
+    monkeypatch.setattr(processing.AcquisitionProcessor, "process", traced_process)
     results = _operation_results(
         request,
         paths,
@@ -680,6 +689,9 @@ def test_form4_xml_with_registered_handler_succeeds(
     assert results[1].staged_output is not None
     assert results[1].staged_output.representation == "xml"
     assert b"<ownershipDocument>" in results[1].staged_output.path.read_bytes()
+    assert [(request.family, request.form_type) for request in engine_requests] == [
+        ("4", "4")
+    ]
 
 
 def test_process_target_rejects_selected_filename_for_direct_target(

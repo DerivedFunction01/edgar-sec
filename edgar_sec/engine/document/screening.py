@@ -28,19 +28,19 @@ _HTML_TAG_BYTES_RE = re.compile(rb"<[^>]{1,256}>")
 
 _SPECIALIZED_XML_MARKERS: dict[str, tuple[tuple[str, ...], ...]] = {
     "3": (
-        (b"reporting owner", b"reportingowner"),
+        (b"reporting owner", b"reportingowner", b"reporting person"),
         (b"issuer",),
         (b"relationship of reporting person", b"is director", b"is officer"),
         (b"non-derivative", b"derivative securities", b"table i"),
     ),
     "4": (
-        (b"reporting owner", b"reportingowner"),
+        (b"reporting owner", b"reportingowner", b"reporting person"),
         (b"issuer",),
         (b"relationship of reporting person", b"is director", b"is officer"),
         (b"non-derivative", b"derivative securities", b"table i"),
     ),
     "5": (
-        (b"reporting owner", b"reportingowner"),
+        (b"reporting owner", b"reportingowner", b"reporting person"),
         (b"issuer",),
         (b"relationship of reporting person", b"is director", b"is officer"),
         (b"non-derivative", b"derivative securities", b"table i"),
@@ -80,6 +80,26 @@ class CandidateScreen:
 _UNSET: object = object()
 
 
+def _screen_sgml_type(observed: str | None, expected_family: str) -> CandidateScreen:
+    if observed is None:
+        return CandidateScreen(
+            "unverifiable", False, "sgml_type", None, "sgml_type_unverifiable"
+        )
+    observed_family = resolve_alias(observed) or observed.strip().upper()
+    sgml_result = screen_sgml_document_type(observed_family, expected_family)
+    if sgml_result == "form_match":
+        return CandidateScreen(
+            "form_match", False, "sgml_type", observed, "sgml_type_match"
+        )
+    if sgml_result == "type_mismatch":
+        return CandidateScreen(
+            "type_mismatch", True, "sgml_type", observed, "sgml_type_mismatch"
+        )
+    return CandidateScreen(
+        "unverifiable", False, "sgml_type", observed, "sgml_type_unverifiable"
+    )
+
+
 def screen_candidate_document(
     expected_form: str,
     *,
@@ -94,22 +114,7 @@ def screen_candidate_document(
 
     if observed_sgml_type is not _UNSET:
         str_val = observed_sgml_type if isinstance(observed_sgml_type, str) else None
-        sgml_res = screen_sgml_document_type(str_val, expected_form)
-        if sgml_res == "form_match":
-            return CandidateScreen(
-                "form_match", False, "sgml_type", str_val, "sgml_type_match"
-            )
-        if sgml_res == "type_mismatch":
-            return CandidateScreen(
-                "type_mismatch",
-                True,
-                "sgml_type",
-                str_val,
-                "sgml_type_mismatch",
-            )
-        return CandidateScreen(
-            "unverifiable", False, "sgml_type", str_val, "sgml_type_unverifiable"
-        )
+        return _screen_sgml_type(str_val, expected_family)
 
     if raw_content:
         head = raw_content[:scan_limit_bytes]
@@ -120,15 +125,9 @@ def screen_candidate_document(
         sgml_match = _SGML_TYPE_BYTES_RE.search(head[:2000])
         if sgml_match is not None:
             found_raw = sgml_match.group(1).decode("ascii", errors="ignore").strip()
-            sgml_res = screen_sgml_document_type(found_raw, expected_form)
-            if sgml_res == "form_match":
-                return CandidateScreen(
-                    "form_match", False, "sgml_type", found_raw, "sgml_type_match"
-                )
-            if sgml_res == "type_mismatch":
-                return CandidateScreen(
-                    "type_mismatch", True, "sgml_type", found_raw, "sgml_type_mismatch"
-                )
+            sgml_screen = _screen_sgml_type(found_raw, expected_family)
+            if sgml_screen.screen_result in {"form_match", "type_mismatch"}:
+                return sgml_screen
 
     if filename is not None:
         leaf = Path(filename).name.lower()
@@ -212,8 +211,8 @@ def screen_specialized_xml_source(
             "form_match", False, "html_cover", expected_family, "form_structure_match"
         )
     return CandidateScreen(
-        "type_mismatch",
-        True,
+        "unverifiable",
+        False,
         "html_cover",
         None,
         "form_structure_markers_missing",

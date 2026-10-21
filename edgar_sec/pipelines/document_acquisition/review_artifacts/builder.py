@@ -185,6 +185,7 @@ def _process_fixture_body(
     engine_request = AcquisitionProcessRequest(
         target_id=case.target_id,
         family=resolve_alias(case.form) or case.form.strip().upper(),
+        form_type=case.form,
         role=case.target_role,
         target_type=case.target_type,
         path_facts=facts,

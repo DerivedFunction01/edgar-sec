@@ -1,6 +1,17 @@
 from edgar_sec.engine.forms.ownership.period_parser import parse_period
 
 
+def test_period_parser_prefers_date_line_over_numbered_label() -> None:
+    combined = (
+        "1. 1. Name and Address of Reporting Person\n"
+        "Fogleman, Ronald R.\n"
+        "2. Date of Event Requiring Statement (Month/Day/Year)\n"
+        "07/11/2001"
+    )
+    result = parse_period(combined)
+    assert result.period_of_report == "07/11/2001"
+
+
 def test_period_parser_recognizes_period_and_amendment_dates() -> None:
     original = parse_period(
         "4. Statement for\nMonth/Day/Year\n12/31/02\n5. If Amendment,\nDate of Original\n(Month/Day/Year)"

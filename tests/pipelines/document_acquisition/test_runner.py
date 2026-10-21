@@ -607,6 +607,36 @@ def test_runner_uses_lazy_index_when_bundle_type_mismatches_or_is_missing(
     )
 
 
+def test_runner_bundle_amendment_matches_base_sgml_type(tmp_path, monkeypatch) -> None:
+    paths, run_id, row = _make_run(tmp_path, form="4/A", lazy=True, bundle=True)
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_acquisition.runner.derive_resources",
+        lambda: SimpleNamespace(workers=1, worker_ceiling=1),
+    )
+    body = (
+        b"FORM 4 Reporting Person Issuer Relationship of Reporting Person "
+        b"Table I - Non-Derivative Securities"
+    )
+    bundle = b"<DOCUMENT><SEQUENCE>2<TYPE>4<TEXT>" + body + b"</TEXT></DOCUMENT>"
+    transport = _MemoryTransport({row["target_url"]: bundle})
+
+    report = execute_acquisition_run(
+        run_id,
+        retry_failures=False,
+        paths=paths,
+        policy=AcquisitionPolicy(max_response_bytes=4096),
+        transport=transport,
+        clock=lambda: datetime(2025, 1, 1, tzinfo=UTC),
+    )
+
+    assert report.target_counts["acquired"] == 1
+    assert [url for url, _ in transport.calls] == [row["target_url"]]
+    state = get_target_state(paths.run_state_path(run_id), "target-1")
+    assert state is not None and state.selected_body_relative_path is not None
+    selected_path = paths.run_dir(run_id) / state.selected_body_relative_path
+    assert selected_path.read_bytes() == body
+
+
 def test_runner_does_not_screen_bundle_type_without_lazy_selector(
     tmp_path, monkeypatch
 ) -> None:

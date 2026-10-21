@@ -386,6 +386,7 @@ def _operation_results(
                     AcquisitionProcessRequest(
                         target_id=request.target_id,
                         family=resolve_alias(request.form) or request.form,
+                        form_type=request.form,
                         role=request.target_role,
                         target_type=request.target_type,
                         filing_date=request.filing_date,

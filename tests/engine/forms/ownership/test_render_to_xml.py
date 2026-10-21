@@ -145,6 +145,36 @@ def test_form5_uses_form5_document_and_transaction_types() -> None:
     )
 
 
+def test_exact_form_type_controls_document_type() -> None:
+    result = render_ownership_to_xml(
+        SAMPLE_DOC_HTML, SimpleNamespace(family="4", form_type="4/A")
+    )
+    xml_bytes = result.content if isinstance(result, HandlerOutput) else result
+    root = ET.fromstring(xml_bytes)
+
+    assert root.findtext("documentType") == "4/A"
+
+
+def test_exact_form_type_wins_over_amendment_metadata() -> None:
+    source = SAMPLE_DOC_HTML.replace(
+        b"4. Statement for June 2001",
+        b"4. Statement for June 2001\n5. If Amendment, Date of Original "
+        b"(Month/Day/Year)\n05/01/2001",
+    )
+
+    exact = render_ownership_to_xml(source, SimpleNamespace(family="4", form_type="4"))
+    fallback = render_ownership_to_xml(source, SimpleNamespace(family="4"))
+
+    exact_root = ET.fromstring(
+        exact.content if isinstance(exact, HandlerOutput) else exact
+    )
+    fallback_root = ET.fromstring(
+        fallback.content if isinstance(fallback, HandlerOutput) else fallback
+    )
+    assert exact_root.findtext("documentType") == "4"
+    assert fallback_root.findtext("documentType") == "4/A"
+
+
 def test_form3_does_not_mislabel_form4_transaction_rows() -> None:
     result = render_ownership_to_xml(SAMPLE_DOC_HTML, SimpleNamespace(family="3"))
     assert isinstance(result, HandlerOutput)

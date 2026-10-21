@@ -59,10 +59,12 @@ def _request(
     facts: DocumentPathFacts | None = None,
     include_analysis_artifacts: bool = False,
     family: str = "10-K",
+    form_type: str | None = None,
 ) -> AcquisitionProcessRequest:
     return AcquisitionProcessRequest(
         target_id="target",
         family=family,
+        form_type=form_type or family,
         role=role,
         target_type="exhibit" if role == "exhibit" else "primary",
         path_facts=facts or _path_facts(path),
@@ -143,6 +145,95 @@ def test_form_4_primary_with_exhibit_input_does_not_emit_xml() -> None:
     assert outcome.status == "unsupported"
     assert outcome.error == "primary_document_identity_mismatch"
     assert outcome.output_bytes is None
+
+
+def test_form_4_primary_paper_txt_is_not_identity_blocked() -> None:
+    """A type-verified paper Form 4 reaches the handler, screen included."""
+    operation = OperationRecord("v1", "xml", ("source",), operation="render_to_xml")
+    body = (
+        b"<DOCUMENT>\n<TYPE>4\n<SEQUENCE>1\n<FILENAME>0001.txt\n<TEXT>\n"
+        b"FORM 4\n1. Name and Address of Reporting Person\n"
+        b"2. Issuer Name and Ticker or Trading Symbol\n"
+        b"6. Relationship of Reporting Person(s) to Issuer\n"
+        b"TABLE I -- Non-Derivative Securities Acquired, Disposed of\n"
+        b"</TEXT>\n</DOCUMENT>\n"
+    )
+    request = _request(
+        (operation,),
+        (_input(path="0001.txt", body=body),),
+        path="0001.txt",
+        family="4",
+    )
+
+    outcome = AcquisitionProcessor().process(request).outcomes[0]
+
+    assert outcome.error != "primary_document_identity_mismatch"
+    assert outcome.status != "unsupported"
+
+
+def test_form_4_primary_without_structure_markers_is_not_identity_blocked() -> None:
+    """Marker absence is unverifiable, not an inversion: the gate passes."""
+    operation = OperationRecord("v1", "xml", ("source",), operation="render_to_xml")
+    body = b"<html><body><table><tr><td>42</td></tr></table></body></html>"
+    request = _request(
+        (operation,),
+        (_input(path="form4.htm", body=body),),
+        path="form4.htm",
+        family="4",
+    )
+
+    outcome = AcquisitionProcessor().process(request).outcomes[0]
+
+    assert outcome.error != "primary_document_identity_mismatch"
+    assert outcome.status != "unsupported"
+
+
+def test_form_4a_primary_matches_sgml_amendment_type() -> None:
+    operation = OperationRecord("v1", "xml", ("source",), operation="render_to_xml")
+    body = (
+        b"<DOCUMENT>\n<TYPE>4/A\n<SEQUENCE>1\n<FILENAME>0001.txt\n<TEXT>\n"
+        b"FORM 4\n1. Name and Address of Reporting Person\n"
+        b"2. Issuer Name and Ticker or Trading Symbol\n"
+        b"6. Relationship of Reporting Person(s) to Issuer\n"
+        b"TABLE I -- Non-Derivative Securities Acquired, Disposed of\n"
+        b"</TEXT>\n</DOCUMENT>\n"
+    )
+    request = _request(
+        (operation,),
+        (_input(path="0001.txt", body=body),),
+        path="0001.txt",
+        family="4",
+        form_type="4/A",
+    )
+
+    outcome = AcquisitionProcessor().process(request).outcomes[0]
+
+    assert outcome.error != "primary_document_identity_mismatch"
+    assert outcome.status != "unsupported"
+
+
+def test_form_4a_primary_rejects_competing_sgml_family() -> None:
+    operation = OperationRecord("v1", "xml", ("source",), operation="render_to_xml")
+    body = (
+        b"<DOCUMENT>\n<TYPE>8-K\n<SEQUENCE>1\n<FILENAME>0001.txt\n<TEXT>\n"
+        b"FORM 4\n1. Name and Address of Reporting Person\n"
+        b"2. Issuer Name and Ticker or Trading Symbol\n"
+        b"6. Relationship of Reporting Person(s) to Issuer\n"
+        b"TABLE I -- Non-Derivative Securities Acquired, Disposed of\n"
+        b"</TEXT>\n</DOCUMENT>\n"
+    )
+    request = _request(
+        (operation,),
+        (_input(path="0001.txt", body=body),),
+        path="0001.txt",
+        family="4",
+        form_type="4/A",
+    )
+
+    outcome = AcquisitionProcessor().process(request).outcomes[0]
+
+    assert outcome.status == "unsupported"
+    assert outcome.error == "primary_document_identity_mismatch"
 
 
 def test_render_to_txt_normalizes_plain_text_route() -> None:
@@ -425,6 +516,7 @@ def test_path_facts_type_is_validated() -> None:
     request = AcquisitionProcessRequest(
         request.target_id,
         request.family,
+        request.form_type,
         request.role,
         request.target_type,
         None,

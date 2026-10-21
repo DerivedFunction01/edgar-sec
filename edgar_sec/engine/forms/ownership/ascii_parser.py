@@ -1,4 +1,4 @@
-"""Main ASCII state machine parser for historical Form 4 filings."""
+"""Main ASCII state machine parser for historical ownership filings."""
 
 from __future__ import annotations
 
@@ -17,20 +17,35 @@ from edgar_sec.engine.forms.ownership.ascii_tables import (
 from edgar_sec.engine.forms.ownership.sections import OwnershipSections
 from edgar_sec.foundation.regex.builder import build_alternation
 
-_FORM4_MARKER_TERMS = (
-    r"\bFORM\s*4\b",
-    r"STATEMENT OF CHANGES IN BENEFICIAL OWNERSHIP",
-    r"<TYPE>4",
-)
-_FORM4_MARKER_ALT = build_alternation(_FORM4_MARKER_TERMS, auto_escape=False)
-_FORM4_MARKER_RE = re.compile(_FORM4_MARKER_ALT, re.IGNORECASE)
+_MARKER_TERMS: dict[str, tuple[str, ...]] = {
+    "3": (
+        r"\bFORM\s*3\b",
+        r"INITIAL STATEMENT OF BENEFICIAL OWNERSHIP",
+        r"<TYPE>3",
+    ),
+    "4": (
+        r"\bFORM\s*4\b",
+        r"STATEMENT OF CHANGES IN BENEFICIAL OWNERSHIP",
+        r"<TYPE>4",
+    ),
+    "5": (
+        r"\bFORM\s*5\b",
+        r"ANNUAL STATEMENT OF CHANGES IN BENEFICIAL OWNERSHIP",
+        r"<TYPE>5",
+    ),
+}
+_MARKER_RES: dict[str, re.Pattern[str]] = {
+    family: re.compile(build_alternation(terms, auto_escape=False), re.IGNORECASE)
+    for family, terms in _MARKER_TERMS.items()
+}
 
 
-def parse_ascii_form4(
-    raw_text: str, reference_year: int | None = None
+def parse_ascii_ownership(
+    raw_text: str, family: str, reference_year: int | None = None
 ) -> OwnershipSections | None:
-    """Parse Form 4 ASCII text into typed OwnershipSections."""
-    if not _FORM4_MARKER_RE.search(raw_text):
+    """Parse an ASCII ownership filing of the given family into sections."""
+    marker_re = _MARKER_RES.get(family)
+    if marker_re is None or not marker_re.search(raw_text):
         return None
 
     shape = detect_ascii_shape(raw_text)
@@ -53,4 +68,4 @@ def parse_ascii_form4(
     )
 
 
-__all__ = ["parse_ascii_form4"]
+__all__ = ["parse_ascii_ownership"]

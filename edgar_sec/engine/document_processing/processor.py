@@ -63,6 +63,7 @@ class OperationRecord:
 class AcquisitionProcessRequest:
     target_id: str
     family: str
+    form_type: str
     role: str
     target_type: str
     path_facts: DocumentPathFacts
@@ -160,7 +161,7 @@ class AcquisitionProcessor:
             return self._outcome(operation, "unsupported", "handler_not_registered")
         if operation == "render_to_xml" and request.role == "primary":
             identity = screen_candidate_document(
-                request.family,
+                request.form_type,
                 filename=input_record.path_facts.path_context,
                 raw_content=input_record.raw_bytes,
             )
@@ -189,6 +190,7 @@ class AcquisitionProcessor:
 
         context = HandlerContext(
             family=request.family,
+            form_type=request.form_type,
             role=request.role,
             target_type=request.target_type,
             selected_path=input_record.selected_path,
@@ -258,6 +260,7 @@ class AcquisitionProcessor:
             isinstance(value, str)
             for value in (
                 request.family,
+                request.form_type,
                 request.role,
                 request.target_type,
                 input_record.selected_path,
