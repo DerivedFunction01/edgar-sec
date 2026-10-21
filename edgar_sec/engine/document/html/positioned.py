@@ -83,6 +83,27 @@ def _fragment_coordinates(node: FastHtmlNode) -> tuple[float, float] | None:
     return (top, left)
 
 
+def _page_coordinates(node: FastHtmlNode) -> tuple[float, float] | None:
+    """Own coordinates plus every positioned ancestor's offset.
+    A fragment inside a positioned wrapper is placed relative to that
+    wrapper, so its page position is the sum over the ancestor chain.
+    """
+    coordinates = _fragment_coordinates(node)
+    if coordinates is None:
+        return None
+    top, left = coordinates
+    ancestor = node.parent
+    while ancestor is not None:
+        style = ancestor.attributes.get("style")
+        if style:
+            properties = _style_properties(style)
+            if properties.get("position") in ("absolute", "relative"):
+                top += _coordinate(properties.get("top")) or 0.0
+                left += _coordinate(properties.get("left")) or 0.0
+        ancestor = ancestor.parent
+    return (top, left)
+
+
 def _is_page_container(node: FastHtmlNode) -> bool:
     style = node.attributes.get("style")
     if not style:
@@ -147,7 +168,7 @@ def _collect_fragments(
     """Eligible fragments with non-empty residual text, in document order."""
     collected: list[tuple[FastHtmlNode, PositionedFragment]] = []
     for node in tree_nodes:
-        coordinates = _fragment_coordinates(node)
+        coordinates = _page_coordinates(node)
         if coordinates is None:
             continue
         text = _residual_text(node)

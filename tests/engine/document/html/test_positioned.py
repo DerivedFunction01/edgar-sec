@@ -118,7 +118,7 @@ def test_extract_splits_wrapper_from_nested_fragments() -> None:
     pages = extract_positioned_pages(html)
     assert [(f.top, f.left, f.text) for f in pages[0].fragments] == [
         (10.0, 10.0, "outer"),
-        (1.0, 1.0, "inner"),
+        (11.0, 11.0, "inner"),
     ]
 
 
@@ -352,3 +352,16 @@ def test_layout_keeps_word_fragmented_prose_line_out_of_bands() -> None:
     page = PositionedPage(fragments=tuple(fragments))
     blocks = layout_page(page)
     assert not any(isinstance(block, TableBand) for block in blocks)
+
+
+def test_extract_accumulates_positioned_ancestor_offsets() -> None:
+    html = (
+        '<div style="position:absolute;top:200px;left:40px;">'
+        '<div style="position:absolute;top:0px;left:100px;">inner</div>'
+        "</div>"
+        '<div style="position:absolute;top:10px;left:10px;">outer</div>'
+    )
+    pages = extract_positioned_pages(html)
+    fragments = [fragment for page in pages for fragment in page.fragments]
+    assert PositionedFragment(200.0, 140.0, "inner") in fragments
+    assert PositionedFragment(10.0, 10.0, "outer") in fragments
