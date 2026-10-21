@@ -7,16 +7,15 @@
       "head": "H_REVENUE",
       "mods": []
     },
-    "source_concept": "Revenues",
     "target": {
       "head": "H_INCOME",
       "mods": [
         "M_GROSS_MARGIN"
       ]
     },
-    "target_concept": "GrossProfit",
     "formula_id": "FORMULA_GROSS_PROFIT",
-    "description": "Revenues contribute +1.0 to Gross Profit"
+    "description": "Revenues contribute +1.0 to Gross Profit",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_GP_COGS",
@@ -26,16 +25,15 @@
       "head": "H_COST",
       "mods": []
     },
-    "source_concept": "CostOfGoodsAndServicesSold",
     "target": {
       "head": "H_INCOME",
       "mods": [
         "M_GROSS_MARGIN"
       ]
     },
-    "target_concept": "GrossProfit",
     "formula_id": "FORMULA_GROSS_PROFIT",
-    "description": "Cost of Goods Sold subtracts -1.0 from Gross Profit"
+    "description": "Cost of Goods Sold subtracts -1.0 from Gross Profit",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_OPINC_GP",
@@ -47,16 +45,15 @@
         "M_GROSS_MARGIN"
       ]
     },
-    "source_concept": "GrossProfit",
     "target": {
       "head": "H_INCOME",
       "mods": [
         "M_OPERATING"
       ]
     },
-    "target_concept": "OperatingIncomeLoss",
     "formula_id": "FORMULA_OPERATING_INCOME",
-    "description": "Gross Profit contributes +1.0 to Operating Income"
+    "description": "Gross Profit contributes +1.0 to Operating Income",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_OPINC_OPEX",
@@ -68,16 +65,15 @@
         "M_OPERATING"
       ]
     },
-    "source_concept": "OperatingExpenses",
     "target": {
       "head": "H_INCOME",
       "mods": [
         "M_OPERATING"
       ]
     },
-    "target_concept": "OperatingIncomeLoss",
     "formula_id": "FORMULA_OPERATING_INCOME",
-    "description": "Operating Expenses subtracts -1.0 from Operating Income"
+    "description": "Operating Expenses subtracts -1.0 from Operating Income",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_ASSET_CURR",
@@ -89,14 +85,13 @@
         "M_CURRENT"
       ]
     },
-    "source_concept": "AssetsCurrent",
     "target": {
       "head": "H_ASSET",
       "mods": []
     },
-    "target_concept": "Assets",
     "formula_id": "FORMULA_ASSETS",
-    "description": "Current Assets contribute +1.0 to Total Assets"
+    "description": "Current Assets contribute +1.0 to Total Assets",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_ASSET_NONCURR",
@@ -108,14 +103,13 @@
         "M_NONCURRENT"
       ]
     },
-    "source_concept": "AssetsNoncurrent",
     "target": {
       "head": "H_ASSET",
       "mods": []
     },
-    "target_concept": "Assets",
     "formula_id": "FORMULA_ASSETS",
-    "description": "Noncurrent Assets contribute +1.0 to Total Assets"
+    "description": "Noncurrent Assets contribute +1.0 to Total Assets",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_LIAB_CURR",
@@ -127,14 +121,13 @@
         "M_CURRENT"
       ]
     },
-    "source_concept": "LiabilitiesCurrent",
     "target": {
       "head": "H_LIABILITY",
       "mods": []
     },
-    "target_concept": "Liabilities",
     "formula_id": "FORMULA_LIABILITIES",
-    "description": "Current Liabilities contribute +1.0 to Total Liabilities"
+    "description": "Current Liabilities contribute +1.0 to Total Liabilities",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_LIAB_NONCURR",
@@ -146,14 +139,13 @@
         "M_NONCURRENT"
       ]
     },
-    "source_concept": "LiabilitiesNoncurrent",
     "target": {
       "head": "H_LIABILITY",
       "mods": []
     },
-    "target_concept": "Liabilities",
     "formula_id": "FORMULA_LIABILITIES",
-    "description": "Noncurrent Liabilities contribute +1.0 to Total Liabilities"
+    "description": "Noncurrent Liabilities contribute +1.0 to Total Liabilities",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_LE_LIAB",
@@ -163,16 +155,15 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "Liabilities",
     "target": {
       "head": "H_LIABILITY",
       "mods": [
         "M_EQUITY_TOTAL"
       ]
     },
-    "target_concept": "LiabilitiesAndStockholdersEquity",
     "formula_id": "FORMULA_LIABILITIES_AND_EQUITY",
-    "description": "Total Liabilities contribute +1.0 to Liabilities and Stockholders Equity"
+    "description": "Total Liabilities contribute +1.0 to Liabilities and Stockholders Equity",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_LE_EQ",
@@ -182,16 +173,15 @@
       "head": "H_EQUITY",
       "mods": []
     },
-    "source_concept": "StockholdersEquity",
     "target": {
       "head": "H_LIABILITY",
       "mods": [
         "M_EQUITY_TOTAL"
       ]
     },
-    "target_concept": "LiabilitiesAndStockholdersEquity",
     "formula_id": "FORMULA_LIABILITIES_AND_EQUITY",
-    "description": "Stockholders Equity contributes +1.0 to Liabilities and Stockholders Equity"
+    "description": "Stockholders Equity contributes +1.0 to Liabilities and Stockholders Equity",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_FCF_OPCASH",
@@ -203,16 +193,15 @@
         "M_OPERATING"
       ]
     },
-    "source_concept": "NetCashProvidedByUsedInOperatingActivities",
     "target": {
       "head": "H_CASH",
       "mods": [
         "M_FREE_CASH_FLOW"
       ]
     },
-    "target_concept": "FreeCashFlow",
     "formula_id": "FORMULA_FREE_CASH_FLOW",
-    "description": "Operating Cash Flow contributes +1.0 to Free Cash Flow"
+    "description": "Operating Cash Flow contributes +1.0 to Free Cash Flow",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_FCF_CAPEX",
@@ -224,16 +213,15 @@
         "M_PPE_CAPEX"
       ]
     },
-    "source_concept": "PaymentsToAcquirePropertyPlantAndEquipment",
     "target": {
       "head": "H_CASH",
       "mods": [
         "M_FREE_CASH_FLOW"
       ]
     },
-    "target_concept": "FreeCashFlow",
     "formula_id": "FORMULA_FREE_CASH_FLOW",
-    "description": "CapEx subtracts -1.0 from Free Cash Flow"
+    "description": "CapEx subtracts -1.0 from Free Cash Flow",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_COMPINC_NETINC",
@@ -245,16 +233,15 @@
         "M_NET_BOTTOMLINE"
       ]
     },
-    "source_concept": "NetIncomeLoss",
     "target": {
       "head": "H_INCOME",
       "mods": [
         "M_COMPREHENSIVE"
       ]
     },
-    "target_concept": "ComprehensiveIncomeNetOfTax",
     "formula_id": "FORMULA_COMPREHENSIVE_INCOME",
-    "description": "Net Income contributes +1.0 to Comprehensive Income"
+    "description": "Net Income contributes +1.0 to Comprehensive Income",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_COMPINC_OCI",
@@ -266,16 +253,15 @@
         "M_OCI"
       ]
     },
-    "source_concept": "OtherComprehensiveIncomeLossNetOfTax",
     "target": {
       "head": "H_INCOME",
       "mods": [
         "M_COMPREHENSIVE"
       ]
     },
-    "target_concept": "ComprehensiveIncomeNetOfTax",
     "formula_id": "FORMULA_COMPREHENSIVE_INCOME",
-    "description": "Other Comprehensive Income contributes +1.0 to Comprehensive Income"
+    "description": "Other Comprehensive Income contributes +1.0 to Comprehensive Income",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_OPEX_RD",
@@ -284,7 +270,6 @@
     "source": {
       "head": "H_EXPENSE",
       "mods": [
-        "M_OPERATING",
         "M_RD"
       ]
     },
@@ -295,7 +280,8 @@
       ]
     },
     "formula_id": "FORMULA_OPERATING_EXPENSES",
-    "description": "R&D Expense is an additive component of Operating Expenses"
+    "description": "R&D Expense is an additive component of Operating Expenses",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_OPEX_SGA",
@@ -304,7 +290,6 @@
     "source": {
       "head": "H_EXPENSE",
       "mods": [
-        "M_OPERATING",
         "M_SGA"
       ]
     },
@@ -314,7 +299,8 @@
         "M_OPERATING"
       ]
     },
-    "description": "SG&A Expense is an additive component of Operating Expenses"
+    "description": "SG&A Expense is an additive component of Operating Expenses",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_OPEX_DA",
@@ -333,7 +319,8 @@
         "M_OPERATING"
       ]
     },
-    "description": "Depreciation and Amortization is an additive component of Operating Expenses"
+    "description": "Depreciation and Amortization is an additive component of Operating Expenses",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_NETINC_OPINC",
@@ -351,7 +338,8 @@
         "M_NET_BOTTOMLINE"
       ]
     },
-    "description": "Operating Income contributes to Net Income"
+    "description": "Operating Income contributes to Net Income",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_NETINC_TAX",
@@ -369,7 +357,8 @@
         "M_NET_BOTTOMLINE"
       ]
     },
-    "description": "Income Tax Expense is deducted in calculating Net Income"
+    "description": "Income Tax Expense is deducted in calculating Net Income",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_SHARES_BASIC",
@@ -389,7 +378,8 @@
         "V_DILUTED"
       ]
     },
-    "description": "Basic common shares sum into diluted common shares"
+    "description": "Basic common shares sum into diluted common shares",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_SHARES_INCREMENTAL",
@@ -410,7 +400,8 @@
         "V_DILUTED"
       ]
     },
-    "description": "Dilutive incremental common shares sum into diluted common shares"
+    "description": "Dilutive incremental common shares sum into diluted common shares",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_CONTRA_REV_INCENTIVE",
@@ -426,7 +417,8 @@
       "head": "H_REVENUE",
       "mods": []
     },
-    "description": "Client incentives contra-offset gross revenue to yield net revenue"
+    "description": "Client incentives contra-offset gross revenue to yield net revenue",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_CONTRA_ALLOWANCE",
@@ -444,7 +436,8 @@
         "M_RECEIVABLE"
       ]
     },
-    "description": "Allowance for doubtful accounts nets against accounts receivable"
+    "description": "Allowance for doubtful accounts nets against accounts receivable",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_CONTRA_DEBT_DISCOUNT",
@@ -462,7 +455,8 @@
         "M_DEBT"
       ]
     },
-    "description": "Unamortized debt discount nets against debt principal"
+    "description": "Unamortized debt discount nets against debt principal",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_CONTRA_TREASURY_STOCK",
@@ -478,7 +472,8 @@
       "head": "H_EQUITY",
       "mods": []
     },
-    "description": "Treasury stock contra-offsets stockholders equity"
+    "description": "Treasury stock contra-offsets stockholders equity",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_DUAL_REV_RPO",
@@ -494,7 +489,8 @@
         "M_RPO_BACKLOG"
       ]
     },
-    "description": "Conservation bridge between revenue flow and remaining performance obligation backlog"
+    "description": "Conservation bridge between revenue flow and remaining performance obligation backlog",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_DUAL_REV_DEFERRED",
@@ -510,7 +506,8 @@
         "M_DEFERRED_REVENUE"
       ]
     },
-    "description": "Conservation bridge between recognized revenue and unearned/deferred customer revenue"
+    "description": "Conservation bridge between recognized revenue and unearned/deferred customer revenue",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_DUAL_EXP_CONTENT",
@@ -529,7 +526,8 @@
         "M_CONTENT_FILM"
       ]
     },
-    "description": "Conservation bridge between film/content amortization and capitalized content assets"
+    "description": "Conservation bridge between film/content amortization and capitalized content assets",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_DUAL_EXP_MEDICAL",
@@ -547,7 +545,8 @@
         "M_CLAIM_RESERVE"
       ]
     },
-    "description": "Conservation bridge between medical claims expense and unpaid claims loss reserves"
+    "description": "Conservation bridge between medical claims expense and unpaid claims loss reserves",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_DERIVED_GROSS_MARGIN",
@@ -564,7 +563,8 @@
       "mods": []
     },
     "operator": "DIV",
-    "description": "Gross margin derived as Gross Profit / Revenues"
+    "description": "Gross margin derived as Gross Profit / Revenues",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_DERIVED_RD_INTENSITY",
@@ -581,7 +581,8 @@
       "mods": []
     },
     "operator": "DIV",
-    "description": "R&D intensity derived as R&D Expense / Revenues"
+    "description": "R&D intensity derived as R&D Expense / Revenues",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_DERIV_NET_ASSET_GROSS",
@@ -590,19 +591,20 @@
     "source": {
       "head": "H_ASSET",
       "mods": [
-        "M_DERIVATIVE_HEDGE"
+        "M_DERIVATIVE",
+        "V_GROSS"
       ]
     },
-    "source_concept": "DerivativeAssetsGross",
     "target": {
       "head": "H_ASSET",
       "mods": [
-        "M_DERIVATIVE_HEDGE"
+        "M_DERIVATIVE",
+        "V_NET"
       ]
     },
-    "target_concept": "DerivativeAssetsNet",
     "formula_id": "FORMULA_DERIVATIVE_NET_ASSET",
-    "description": "Gross derivative assets contribute +1.0 to Net Derivative Assets"
+    "description": "Gross derivative assets contribute +1.0 to Net Derivative Assets",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_DERIV_NET_ASSET_NETTING",
@@ -614,16 +616,16 @@
         "M_COUNTERPARTY_NETTING"
       ]
     },
-    "source_concept": "DerivativeAssetFairValueOffsetAgainstNetting",
     "target": {
       "head": "H_ASSET",
       "mods": [
-        "M_DERIVATIVE_HEDGE"
+        "M_DERIVATIVE",
+        "V_NET"
       ]
     },
-    "target_concept": "DerivativeAssetsNet",
     "formula_id": "FORMULA_DERIVATIVE_NET_ASSET",
-    "description": "Master netting offsets subtract -1.0 from Net Derivative Assets"
+    "description": "Master netting offsets subtract -1.0 from Net Derivative Assets",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_DERIV_NET_ASSET_COLLATERAL",
@@ -635,16 +637,16 @@
         "M_CASH_COLLATERAL_OFFSET"
       ]
     },
-    "source_concept": "DerivativeAssetFairValueOffsetAgainstCollateral",
     "target": {
       "head": "H_ASSET",
       "mods": [
-        "M_DERIVATIVE_HEDGE"
+        "M_DERIVATIVE",
+        "V_NET"
       ]
     },
-    "target_concept": "DerivativeAssetsNet",
     "formula_id": "FORMULA_DERIVATIVE_NET_ASSET",
-    "description": "Cash collateral offsets subtract -1.0 from Net Derivative Assets"
+    "description": "Cash collateral offsets subtract -1.0 from Net Derivative Assets",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_DERIV_NET_LIAB_GROSS",
@@ -653,19 +655,20 @@
     "source": {
       "head": "H_LIABILITY",
       "mods": [
-        "M_DERIVATIVE_HEDGE"
+        "M_DERIVATIVE",
+        "V_GROSS"
       ]
     },
-    "source_concept": "DerivativeLiabilitiesGross",
     "target": {
       "head": "H_LIABILITY",
       "mods": [
-        "M_DERIVATIVE_HEDGE"
+        "M_DERIVATIVE",
+        "V_NET"
       ]
     },
-    "target_concept": "DerivativeLiabilitiesNet",
     "formula_id": "FORMULA_DERIVATIVE_NET_LIABILITY",
-    "description": "Gross derivative liabilities contribute +1.0 to Net Derivative Liabilities"
+    "description": "Gross derivative liabilities contribute +1.0 to Net Derivative Liabilities",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_DERIV_NET_LIAB_NETTING",
@@ -677,16 +680,16 @@
         "M_COUNTERPARTY_NETTING"
       ]
     },
-    "source_concept": "DerivativeLiabilityFairValueOffsetAgainstNetting",
     "target": {
       "head": "H_LIABILITY",
       "mods": [
-        "M_DERIVATIVE_HEDGE"
+        "M_DERIVATIVE",
+        "V_NET"
       ]
     },
-    "target_concept": "DerivativeLiabilitiesNet",
     "formula_id": "FORMULA_DERIVATIVE_NET_LIABILITY",
-    "description": "Master netting offsets subtract -1.0 from Net Derivative Liabilities"
+    "description": "Master netting offsets subtract -1.0 from Net Derivative Liabilities",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_DERIV_NET_LIAB_COLLATERAL",
@@ -698,16 +701,16 @@
         "M_CASH_COLLATERAL_OFFSET"
       ]
     },
-    "source_concept": "DerivativeLiabilityFairValueOffsetAgainstCollateral",
     "target": {
       "head": "H_LIABILITY",
       "mods": [
-        "M_DERIVATIVE_HEDGE"
+        "M_DERIVATIVE",
+        "V_NET"
       ]
     },
-    "target_concept": "DerivativeLiabilitiesNet",
     "formula_id": "FORMULA_DERIVATIVE_NET_LIABILITY",
-    "description": "Cash collateral offsets subtract -1.0 from Net Derivative Liabilities"
+    "description": "Cash collateral offsets subtract -1.0 from Net Derivative Liabilities",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_PRE_PROVISION_REVENUE",
@@ -719,16 +722,15 @@
         "V_NET"
       ]
     },
-    "source_concept": "RevenuesNetOfInterestExpense",
     "target": {
       "head": "H_INCOME",
       "mods": [
         "M_PRE_PROVISION"
       ]
     },
-    "target_concept": "PreProvisionProfit",
     "formula_id": "FORMULA_PRE_PROVISION_PROFIT",
-    "description": "Net interest and noninterest revenue contribute to pre-provision profit"
+    "description": "Net interest and noninterest revenue contribute to pre-provision profit",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_PRE_PROVISION_EXPENSE",
@@ -740,16 +742,15 @@
         "M_BANKING_NONINTEREST"
       ]
     },
-    "source_concept": "NoninterestExpense",
     "target": {
       "head": "H_INCOME",
       "mods": [
         "M_PRE_PROVISION"
       ]
     },
-    "target_concept": "PreProvisionProfit",
     "formula_id": "FORMULA_PRE_PROVISION_PROFIT",
-    "description": "Noninterest expense reduces pre-provision profit"
+    "description": "Noninterest expense reduces pre-provision profit",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_RETAIL_OPINC_REVENUE",
@@ -759,16 +760,15 @@
       "head": "H_REVENUE",
       "mods": []
     },
-    "source_concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
     "target": {
       "head": "H_INCOME",
       "mods": [
         "M_OPERATING"
       ]
     },
-    "target_concept": "OperatingIncome",
     "formula_id": "FORMULA_RETAIL_OPERATING_INCOME",
-    "description": "Revenue contributes to operating income before operating costs"
+    "description": "Revenue contributes to operating income before operating costs",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_RETAIL_OPINC_COSTS",
@@ -780,16 +780,15 @@
         "M_COSTS_AND_EXPENSES"
       ]
     },
-    "source_concept": "CostsAndExpenses",
     "target": {
       "head": "H_INCOME",
       "mods": [
         "M_OPERATING"
       ]
     },
-    "target_concept": "OperatingIncome",
     "formula_id": "FORMULA_RETAIL_OPERATING_INCOME",
-    "description": "Operating costs and expenses reduce operating income"
+    "description": "Operating costs and expenses reduce operating income",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_COSTS_FULFILLMENT",
@@ -801,16 +800,15 @@
         "M_FULFILLMENT"
       ]
     },
-    "source_concept": "Fulfillment",
     "target": {
       "head": "H_COST",
       "mods": [
         "M_COSTS_AND_EXPENSES"
       ]
     },
-    "target_concept": "CostsAndExpenses",
     "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
-    "description": "Fulfillment costs are included in costs and expenses"
+    "description": "Fulfillment costs are included in costs and expenses",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_COSTS_TECH_INFRA",
@@ -822,16 +820,15 @@
         "M_TECH_INFRA"
       ]
     },
-    "source_concept": "TechnologyAndInfrastructure",
     "target": {
       "head": "H_COST",
       "mods": [
         "M_COSTS_AND_EXPENSES"
       ]
     },
-    "target_concept": "CostsAndExpenses",
     "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
-    "description": "Technology and infrastructure costs are included in costs and expenses"
+    "description": "Technology and infrastructure costs are included in costs and expenses",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_COSTS_SALES_MARKETING",
@@ -843,16 +840,15 @@
         "M_SGA"
       ]
     },
-    "source_concept": "SalesAndMarketingExpense",
     "target": {
       "head": "H_COST",
       "mods": [
         "M_COSTS_AND_EXPENSES"
       ]
     },
-    "target_concept": "CostsAndExpenses",
     "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
-    "description": "Sales and marketing costs are included in costs and expenses"
+    "description": "Sales and marketing costs are included in costs and expenses",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_COSTS_GENERAL_ADMIN",
@@ -864,16 +860,15 @@
         "M_SGA"
       ]
     },
-    "source_concept": "GeneralAndAdministrativeExpense",
     "target": {
       "head": "H_COST",
       "mods": [
         "M_COSTS_AND_EXPENSES"
       ]
     },
-    "target_concept": "CostsAndExpenses",
     "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
-    "description": "General and administrative costs are included in costs and expenses"
+    "description": "General and administrative costs are included in costs and expenses",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_COSTS_COST_OF_SALES",
@@ -883,16 +878,15 @@
       "head": "H_COST",
       "mods": []
     },
-    "source_concept": "CostOfSales",
     "target": {
       "head": "H_COST",
       "mods": [
         "M_COSTS_AND_EXPENSES"
       ]
     },
-    "target_concept": "CostsAndExpenses",
     "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
-    "description": "Cost of sales is included in costs and expenses"
+    "description": "Cost of sales is included in costs and expenses",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_MATERIALS_GROSS_MARGIN_REVENUE",
@@ -902,16 +896,15 @@
       "head": "H_REVENUE",
       "mods": []
     },
-    "source_concept": "Revenues",
     "target": {
       "head": "H_INCOME",
       "mods": [
         "M_GROSS_MARGIN"
       ]
     },
-    "target_concept": "GrossMarginDerived",
     "formula_id": "FORMULA_MATERIALS_GROSS_MARGIN",
-    "description": "Revenue contributes to derived gross margin"
+    "description": "Revenue contributes to derived gross margin",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_MATERIALS_GROSS_MARGIN_COGS",
@@ -921,16 +914,15 @@
       "head": "H_COST",
       "mods": []
     },
-    "source_concept": "CostOfGoodsAndServicesSold",
     "target": {
       "head": "H_INCOME",
       "mods": [
         "M_GROSS_MARGIN"
       ]
     },
-    "target_concept": "GrossMarginDerived",
     "formula_id": "FORMULA_MATERIALS_GROSS_MARGIN",
-    "description": "Cost of goods and services sold reduces derived gross margin"
+    "description": "Cost of goods and services sold reduces derived gross margin",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_HOSPITALITY_MARGIN_REVENUE",
@@ -940,16 +932,15 @@
       "head": "H_REVENUE",
       "mods": []
     },
-    "source_concept": "Revenues",
     "target": {
       "head": "H_INCOME",
       "mods": [
         "M_PRETAX_OPERATING_MARGIN"
       ]
     },
-    "target_concept": "PreTaxOperatingMargin",
     "formula_id": "FORMULA_PRETAX_OPERATING_MARGIN",
-    "description": "Revenue contributes to pretax operating margin"
+    "description": "Revenue contributes to pretax operating margin",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_HOSPITALITY_MARGIN_COSTS",
@@ -961,16 +952,15 @@
         "M_OPERATING"
       ]
     },
-    "source_concept": "CostsAndExpenses",
     "target": {
       "head": "H_INCOME",
       "mods": [
         "M_PRETAX_OPERATING_MARGIN"
       ]
     },
-    "target_concept": "PreTaxOperatingMargin",
     "formula_id": "FORMULA_PRETAX_OPERATING_MARGIN",
-    "description": "Costs and expenses reduce pretax operating margin"
+    "description": "Costs and expenses reduce pretax operating margin",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_DUAL_NOTIONAL_DERIV_ASSET",
@@ -982,16 +972,15 @@
         "M_NOTIONAL_AMOUNT"
       ]
     },
-    "source_concept": "NotionalAmount",
     "target": {
       "head": "H_ASSET",
       "mods": [
-        "M_FAIR_VALUE",
-        "M_DERIVATIVE_HEDGE"
+        "M_DERIVATIVE",
+        "M_FAIR_VALUE"
       ]
     },
-    "target_concept": "DerivativeAssetsGross",
-    "description": "Contract notional is distinct from derivative asset fair value"
+    "description": "Contract notional is distinct from derivative asset fair value",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_DUAL_NOTIONAL_DERIV_LIABILITY",
@@ -1003,16 +992,15 @@
         "M_NOTIONAL_AMOUNT"
       ]
     },
-    "source_concept": "NotionalAmount",
     "target": {
       "head": "H_LIABILITY",
       "mods": [
-        "M_FAIR_VALUE",
-        "M_DERIVATIVE_HEDGE"
+        "M_DERIVATIVE",
+        "M_FAIR_VALUE"
       ]
     },
-    "target_concept": "DerivativeLiabilitiesGross",
-    "description": "Contract notional is distinct from derivative liability fair value"
+    "description": "Contract notional is distinct from derivative liability fair value",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_NET_DERIVATIVE_ASSET_GROSS",
@@ -1022,21 +1010,18 @@
       "head": "H_ASSET",
       "mods": [
         "M_DERIVATIVE",
-        "M_FAIR_VALUE",
-        "V_GROSS",
-        "M_NOT_SUBJECT_TO_NETTING"
+        "V_GROSS"
       ]
     },
-    "source_concept": "DerivativeAssetFairValueGrossAssetIncludingNotSubjectToMasterNettingArrangement",
     "target": {
       "head": "H_ASSET",
       "mods": [
         "M_DERIVATIVE"
       ]
     },
-    "target_concept": "DerivativeAssets",
     "formula_id": "FORMULA_DERIVATIVE_ASSETS_NET",
-    "description": "Gross derivative asset fair value contributes to the net balance"
+    "description": "Gross derivative asset fair value contributes to the net balance",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_NET_DERIVATIVE_ASSET_OFFSET",
@@ -1050,16 +1035,15 @@
         "V_GROSS"
       ]
     },
-    "source_concept": "DerivativeAssetFairValueGrossLiability",
     "target": {
       "head": "H_ASSET",
       "mods": [
         "M_DERIVATIVE"
       ]
     },
-    "target_concept": "DerivativeAssets",
     "formula_id": "FORMULA_DERIVATIVE_ASSETS_NET",
-    "description": "Recognized asset-side netting offsets reduce derivative assets"
+    "description": "Recognized asset-side netting offsets reduce derivative assets",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_NET_DERIVATIVE_ASSET_COLLATERAL",
@@ -1073,16 +1057,15 @@
         "M_COLLATERAL_RECLAIM"
       ]
     },
-    "source_concept": "DerivativeCollateralRightToReclaimCash",
     "target": {
       "head": "H_ASSET",
       "mods": [
         "M_DERIVATIVE"
       ]
     },
-    "target_concept": "DerivativeAssets",
     "formula_id": "FORMULA_DERIVATIVE_ASSETS_NET",
-    "description": "Cash collateral pledged reduces derivative assets"
+    "description": "Cash collateral pledged reduces derivative assets",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_NET_DERIVATIVE_LIABILITY_GROSS",
@@ -1092,21 +1075,18 @@
       "head": "H_LIABILITY",
       "mods": [
         "M_DERIVATIVE",
-        "M_FAIR_VALUE",
-        "V_GROSS",
-        "M_NOT_SUBJECT_TO_NETTING"
+        "V_GROSS"
       ]
     },
-    "source_concept": "DerivativeLiabilityFairValueGrossLiabilityIncludingNotSubjectToMasterNettingArrangement",
     "target": {
       "head": "H_LIABILITY",
       "mods": [
         "M_DERIVATIVE"
       ]
     },
-    "target_concept": "DerivativeLiabilities",
     "formula_id": "FORMULA_DERIVATIVE_LIABILITIES_NET",
-    "description": "Gross derivative liability fair value contributes to the net balance"
+    "description": "Gross derivative liability fair value contributes to the net balance",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_NET_DERIVATIVE_LIABILITY_OFFSET",
@@ -1120,16 +1100,15 @@
         "V_GROSS"
       ]
     },
-    "source_concept": "DerivativeLiabilityFairValueGrossAsset",
     "target": {
       "head": "H_LIABILITY",
       "mods": [
         "M_DERIVATIVE"
       ]
     },
-    "target_concept": "DerivativeLiabilities",
     "formula_id": "FORMULA_DERIVATIVE_LIABILITIES_NET",
-    "description": "Liability-side netting offsets reduce derivative liabilities"
+    "description": "Liability-side netting offsets reduce derivative liabilities",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_NET_DERIVATIVE_LIABILITY_COLLATERAL",
@@ -1143,16 +1122,15 @@
         "M_COLLATERAL_RETURN"
       ]
     },
-    "source_concept": "DerivativeCollateralObligationToReturnCash",
     "target": {
       "head": "H_LIABILITY",
       "mods": [
         "M_DERIVATIVE"
       ]
     },
-    "target_concept": "DerivativeLiabilities",
     "formula_id": "FORMULA_DERIVATIVE_LIABILITIES_NET",
-    "description": "Cash collateral return obligations increase net derivative liabilities"
+    "description": "Cash collateral return obligations increase net derivative liabilities",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_NET_OF_REVENUES_GROSS",
@@ -1162,16 +1140,15 @@
       "head": "H_REVENUE",
       "mods": []
     },
-    "source_concept": "Revenues",
     "target": {
       "head": "H_REVENUE",
       "mods": [
         "V_NET"
       ]
     },
-    "target_concept": "RevenuesNetOfInterestExpense",
     "formula_id": "FORMULA_REVENUES_NET_OF_INTEREST_EXPENSE",
-    "description": "Gross revenue is the positive operand of a net-of expression"
+    "description": "Gross revenue is the positive operand of a net-of expression",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_NET_OF_REVENUES_INTEREST_EXPENSE",
@@ -1183,16 +1160,15 @@
         "M_INTEREST"
       ]
     },
-    "source_concept": "InterestExpense",
     "target": {
       "head": "H_REVENUE",
       "mods": [
         "V_NET"
       ]
     },
-    "target_concept": "RevenuesNetOfInterestExpense",
     "formula_id": "FORMULA_REVENUES_NET_OF_INTEREST_EXPENSE",
-    "description": "Interest expense is subtracted by the NET_OF operator"
+    "description": "Interest expense is subtracted by the NET_OF operator",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_CASH_OPERATING",
@@ -1204,16 +1180,15 @@
         "M_OPERATING"
       ]
     },
-    "source_concept": "NetCashProvidedByUsedInOperatingActivities",
     "target": {
       "head": "H_CASH",
       "mods": [
         "M_CHANGE"
       ]
     },
-    "target_concept": "CashPeriodIncreaseDecrease",
     "formula_id": "FORMULA_CASH_FLOW",
-    "description": "Operating cash flow contributes +1.0 to Net Cash Flow"
+    "description": "Operating cash flow contributes +1.0 to Net Cash Flow",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_CASH_INVESTING",
@@ -1225,16 +1200,15 @@
         "M_INVESTING"
       ]
     },
-    "source_concept": "NetCashProvidedByUsedInInvestingActivities",
     "target": {
       "head": "H_CASH",
       "mods": [
         "M_CHANGE"
       ]
     },
-    "target_concept": "CashPeriodIncreaseDecrease",
     "formula_id": "FORMULA_CASH_FLOW",
-    "description": "Investing cash flow contributes +1.0 to Net Cash Flow"
+    "description": "Investing cash flow contributes +1.0 to Net Cash Flow",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_CASH_FINANCING",
@@ -1246,16 +1220,15 @@
         "M_FINANCING"
       ]
     },
-    "source_concept": "NetCashProvidedByUsedInFinancingActivities",
     "target": {
       "head": "H_CASH",
       "mods": [
         "M_CHANGE"
       ]
     },
-    "target_concept": "CashPeriodIncreaseDecrease",
     "formula_id": "FORMULA_CASH_FLOW",
-    "description": "Financing cash flow contributes +1.0 to Net Cash Flow"
+    "description": "Financing cash flow contributes +1.0 to Net Cash Flow",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_CASH_FX",
@@ -1267,16 +1240,15 @@
         "M_FX_CURRENCY"
       ]
     },
-    "source_concept": "EffectOfExchangeRateOnCash",
     "target": {
       "head": "H_CASH",
       "mods": [
         "M_CHANGE"
       ]
     },
-    "target_concept": "CashPeriodIncreaseDecrease",
     "formula_id": "FORMULA_CASH_FLOW",
-    "description": "FX effect contributes +1.0 to Net Cash Flow"
+    "description": "FX effect contributes +1.0 to Net Cash Flow",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_CONTRA_PPE_ACCUM_DEPR",
@@ -1288,16 +1260,15 @@
         "M_DA_DEPLETION"
       ]
     },
-    "source_concept": "AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment",
     "target": {
       "head": "H_ASSET",
       "mods": [
         "M_PPE_TANGIBLE"
       ]
     },
-    "target_concept": "PropertyPlantAndEquipmentNet",
     "formula_id": "FORMULA_PPE_NET",
-    "description": "Accumulated depreciation subtracts from gross PP&E to yield net PP&E"
+    "description": "Accumulated depreciation subtracts from gross PP&E to yield net PP&E",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_PART_EQUITY_APIC",
@@ -1309,14 +1280,13 @@
         "M_APIC"
       ]
     },
-    "source_concept": "AdditionalPaidInCapital",
     "target": {
       "head": "H_EQUITY",
       "mods": []
     },
-    "target_concept": "StockholdersEquity",
     "formula_id": "FORMULA_STOCKHOLDERS_EQUITY",
-    "description": "Additional paid in capital contributes +1.0 to Stockholders Equity"
+    "description": "Additional paid in capital contributes +1.0 to Stockholders Equity",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_CONTRA_EQUITY_TREASURY",
@@ -1328,14 +1298,13 @@
         "M_TREASURY_REPURCHASE"
       ]
     },
-    "source_concept": "TreasuryStock",
     "target": {
       "head": "H_EQUITY",
       "mods": []
     },
-    "target_concept": "StockholdersEquity",
     "formula_id": "FORMULA_STOCKHOLDERS_EQUITY",
-    "description": "Treasury stock subtracts from Stockholders Equity"
+    "description": "Treasury stock subtracts from Stockholders Equity",
+    "evidence": "declared"
   },
   {
     "edge_id": "R_DUAL_OCI_BRIDGE",
@@ -1353,8 +1322,6 @@
         "M_OCI"
       ]
     },
-    "source_concept": "AccumulatedOtherComprehensiveIncomeLossNetOfTax",
-    "target_concept": "OtherComprehensiveIncomeLossNetOfTax",
     "description": "AOCI stock is the accumulated bridge of the OCI flow (Step 5 S4 adjudication).",
     "evidence": "declared"
   },
@@ -1370,8 +1337,6 @@
       "head": "H_ASSET",
       "mods": []
     },
-    "source_concept": "AssetsCurrent",
-    "target_concept": "Assets",
     "description": "Mined from calculation arcs attested at 40 firms.",
     "evidence": "calculation"
   },
@@ -1387,8 +1352,6 @@
       "head": "H_CASH",
       "mods": []
     },
-    "source_concept": "IncreaseDecreaseInInventories",
-    "target_concept": "NetCashProvidedByUsedInOperatingActivities",
     "description": "Mined from calculation arcs attested at 40 firms.",
     "evidence": "calculation"
   },
@@ -1404,8 +1367,6 @@
       "head": "H_ASSET",
       "mods": []
     },
-    "source_concept": "CashAndCashEquivalentsAtCarryingValue",
-    "target_concept": "AssetsCurrent",
     "description": "Mined from calculation arcs attested at 40 firms.",
     "evidence": "calculation"
   },
@@ -1421,8 +1382,6 @@
       "head": "H_CASH",
       "mods": []
     },
-    "source_concept": "NetCashProvidedByUsedInOperatingActivities",
-    "target_concept": "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect",
     "description": "Mined from calculation arcs attested at 40 firms.",
     "evidence": "calculation"
   },
@@ -1438,8 +1397,6 @@
       "head": "H_EQUITY",
       "mods": []
     },
-    "source_concept": "RetainedEarningsAccumulatedDeficit",
-    "target_concept": "StockholdersEquity",
     "description": "Mined from calculation arcs attested at 40 firms.",
     "evidence": "calculation"
   },
@@ -1455,8 +1412,6 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
-    "target_concept": "LiabilitiesAndStockholdersEquity",
     "description": "Mined from calculation arcs attested at 40 firms.",
     "evidence": "calculation"
   },
@@ -1472,8 +1427,6 @@
       "head": "H_CASH",
       "mods": []
     },
-    "source_concept": "ShareBasedCompensation",
-    "target_concept": "NetCashProvidedByUsedInOperatingActivities",
     "description": "Mined from calculation arcs attested at 40 firms.",
     "evidence": "calculation"
   },
@@ -1489,8 +1442,6 @@
       "head": "H_EXPENSE",
       "mods": []
     },
-    "source_concept": "CurrentIncomeTaxExpenseBenefit",
-    "target_concept": "IncomeTaxExpenseBenefit",
     "description": "Mined from calculation arcs attested at 40 firms.",
     "evidence": "calculation"
   },
@@ -1506,8 +1457,6 @@
       "head": "H_INCOME",
       "mods": []
     },
-    "source_concept": "IncomeTaxExpenseBenefit",
-    "target_concept": "ProfitLoss",
     "description": "Mined from calculation arcs attested at 40 firms.",
     "evidence": "calculation"
   },
@@ -1523,8 +1472,6 @@
       "head": "H_CASH",
       "mods": []
     },
-    "source_concept": "ProfitLoss",
-    "target_concept": "NetCashProvidedByUsedInOperatingActivities",
     "description": "Mined from calculation arcs attested at 40 firms.",
     "evidence": "calculation"
   },
@@ -1540,8 +1487,6 @@
       "head": "H_INCOME",
       "mods": []
     },
-    "source_concept": "OperatingIncomeLoss",
-    "target_concept": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
     "description": "Mined from calculation arcs attested at 40 firms.",
     "evidence": "calculation"
   },
@@ -1557,8 +1502,6 @@
       "head": "H_CASH",
       "mods": []
     },
-    "source_concept": "LesseeOperatingLeaseLiabilityUndiscountedExcessAmount",
-    "target_concept": "LesseeOperatingLeaseLiabilityPaymentsDue",
     "description": "Mined from calculation arcs attested at 40 firms.",
     "evidence": "calculation"
   },
@@ -1574,8 +1517,6 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "Liabilities",
-    "target_concept": "LiabilitiesAndStockholdersEquity",
     "description": "Mined from calculation arcs attested at 40 firms.",
     "evidence": "calculation"
   },
@@ -1591,8 +1532,6 @@
       "head": "H_INCOME",
       "mods": []
     },
-    "source_concept": "Revenues",
-    "target_concept": "OperatingIncomeLoss",
     "description": "Mined from calculation arcs attested at 40 firms.",
     "evidence": "calculation"
   },
@@ -1608,8 +1547,6 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "DeferredTaxAssetsNet",
-    "target_concept": "DeferredTaxAssetsLiabilitiesNet",
     "description": "Mined from calculation arcs attested at 39 firms.",
     "evidence": "calculation"
   },
@@ -1625,8 +1562,6 @@
       "head": "H_EQUITY",
       "mods": []
     },
-    "source_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber",
-    "target_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedRollForward",
     "description": "Mined from presentation arcs attested at 39 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -1642,8 +1577,6 @@
       "head": "H_ASSET",
       "mods": []
     },
-    "source_concept": "DeferredTaxAssetsOperatingLossCarryforwards",
-    "target_concept": "DeferredTaxAssetsGross",
     "description": "Mined from calculation arcs attested at 37 firms.",
     "evidence": "calculation"
   },
@@ -1659,8 +1592,6 @@
       "head": "H_COST",
       "mods": []
     },
-    "source_concept": "DefinedBenefitPlanServiceCost",
-    "target_concept": "DefinedBenefitPlanNetPeriodicBenefitCost",
     "description": "Mined from calculation arcs attested at 36 firms.",
     "evidence": "calculation"
   },
@@ -1676,8 +1607,6 @@
       "head": "H_INCOME",
       "mods": []
     },
-    "source_concept": "CostsAndExpenses",
-    "target_concept": "OperatingIncomeLoss",
     "description": "Mined from calculation arcs attested at 36 firms.",
     "evidence": "calculation"
   },
@@ -1693,8 +1622,6 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "UnrecognizedTaxBenefits",
-    "target_concept": "ReconciliationOfUnrecognizedTaxBenefitsExcludingAmountsPertainingToExaminedTaxReturnsRollForward",
     "description": "Mined from presentation arcs attested at 36 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -1710,8 +1637,6 @@
       "head": "H_ASSET",
       "mods": []
     },
-    "source_concept": "FiniteLivedIntangibleAssetsAmortizationExpenseNextTwelveMonths",
-    "target_concept": "FiniteLivedIntangibleAssetsNet",
     "description": "Mined from calculation arcs attested at 34 firms.",
     "evidence": "calculation"
   },
@@ -1727,8 +1652,6 @@
       "head": "H_ASSET",
       "mods": []
     },
-    "source_concept": "DeferredTaxAssetsTaxDeferredExpenseReservesAndAccruals",
-    "target_concept": "DeferredTaxAssetsGross",
     "description": "Mined from calculation arcs attested at 34 firms.",
     "evidence": "calculation"
   },
@@ -1744,8 +1667,6 @@
       "head": "H_EQUITY",
       "mods": []
     },
-    "source_concept": "OtherComprehensiveIncomeLossNetOfTax",
-    "target_concept": "IncreaseDecreaseInStockholdersEquityRollForward",
     "description": "Mined from presentation arcs attested at 34 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -1761,8 +1682,6 @@
       "head": "H_COST",
       "mods": []
     },
-    "source_concept": "DefinedBenefitPlanExpectedReturnOnPlanAssets",
-    "target_concept": "DefinedBenefitPlanNetPeriodicBenefitCost",
     "description": "Mined from calculation arcs attested at 33 firms.",
     "evidence": "calculation"
   },
@@ -1778,8 +1697,6 @@
       "head": "H_EXPENSE",
       "mods": []
     },
-    "source_concept": "IncomeTaxReconciliationStateAndLocalIncomeTaxes",
-    "target_concept": "IncomeTaxExpenseBenefit",
     "description": "Mined from calculation arcs attested at 32 firms.",
     "evidence": "calculation"
   },
@@ -1795,8 +1712,6 @@
       "head": "H_SHARE",
       "mods": []
     },
-    "source_concept": "WeightedAverageNumberOfSharesOutstandingBasic",
-    "target_concept": "WeightedAverageNumberOfDilutedSharesOutstanding",
     "description": "Mined from calculation arcs attested at 32 firms.",
     "evidence": "calculation"
   },
@@ -1812,8 +1727,6 @@
       "head": "H_ASSET",
       "mods": []
     },
-    "source_concept": "Goodwill",
-    "target_concept": "GoodwillRollForward",
     "description": "Mined from presentation arcs attested at 32 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -1832,8 +1745,6 @@
         "M_FORWARD"
       ]
     },
-    "source_concept": "CommonStockSharesOutstanding",
-    "target_concept": "IncreaseDecreaseInStockholdersEquityRollForward",
     "description": "Mined from presentation arcs attested at 32 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -1849,8 +1760,6 @@
       "head": "H_UNIT_RATE",
       "mods": []
     },
-    "source_concept": "EffectiveIncomeTaxRateReconciliationStateAndLocalIncomeTaxes",
-    "target_concept": "EffectiveIncomeTaxRateContinuingOperations",
     "description": "Mined from calculation arcs attested at 31 firms.",
     "evidence": "calculation"
   },
@@ -1870,8 +1779,6 @@
         "M_TAX_INCOME"
       ]
     },
-    "source_concept": "EffectiveIncomeTaxRateReconciliationAtFederalStatutoryIncomeTaxRate",
-    "target_concept": "EffectiveIncomeTaxRateContinuingOperations",
     "description": "Mined from calculation arcs attested at 31 firms.",
     "evidence": "calculation"
   },
@@ -1892,8 +1799,6 @@
         "M_FORWARD"
       ]
     },
-    "source_concept": "StockIssuedDuringPeriodValueShareBasedCompensation",
-    "target_concept": "IncreaseDecreaseInStockholdersEquityRollForward",
     "description": "Mined from presentation arcs attested at 31 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -1909,8 +1814,6 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "DefinedBenefitPlanActuarialGainLoss",
-    "target_concept": "DefinedBenefitPlanChangeInBenefitObligationRollForward",
     "description": "Mined from presentation arcs attested at 28 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -1926,8 +1829,6 @@
       "head": "H_COST",
       "mods": []
     },
-    "source_concept": "DefinedBenefitPlanAmortizationOfPriorServiceCostCredit",
-    "target_concept": "DefinedBenefitPlanNetPeriodicBenefitCost",
     "description": "Mined from calculation arcs attested at 26 firms.",
     "evidence": "calculation"
   },
@@ -1943,8 +1844,6 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "DefinedBenefitPlanInterestCost",
-    "target_concept": "DefinedBenefitPlanChangeInBenefitObligationRollForward",
     "description": "Mined from presentation arcs attested at 26 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -1960,8 +1859,6 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "CommitmentsAndContingencies",
-    "target_concept": "LiabilitiesAndStockholdersEquity",
     "description": "Mined from calculation arcs attested at 25 firms.",
     "evidence": "calculation"
   },
@@ -1977,8 +1874,6 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "DefinedBenefitPlanActualReturnOnPlanAssets",
-    "target_concept": "DefinedBenefitPlanChangeInFairValueOfPlanAssetsRollForward",
     "description": "Mined from presentation arcs attested at 25 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -1994,8 +1889,6 @@
       "head": "H_EXPENSE",
       "mods": []
     },
-    "source_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsOutstandingNumber",
-    "target_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsOutstandingRollForward",
     "description": "Mined from presentation arcs attested at 25 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -2011,8 +1904,6 @@
       "head": "H_ASSET",
       "mods": []
     },
-    "source_concept": "DeferredTaxAssetsTaxDeferredExpenseCompensationAndBenefitsShareBasedCompensationCost",
-    "target_concept": "DeferredTaxAssetsGross",
     "description": "Mined from calculation arcs attested at 24 firms.",
     "evidence": "calculation"
   },
@@ -2028,8 +1919,6 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths",
-    "target_concept": "DebtInstrumentCarryingAmount",
     "description": "Mined from calculation arcs attested at 23 firms.",
     "evidence": "calculation"
   },
@@ -2045,8 +1934,6 @@
       "head": "H_EQUITY",
       "mods": []
     },
-    "source_concept": "DividendsCommonStockCash",
-    "target_concept": "IncreaseDecreaseInStockholdersEquityRollForward",
     "description": "Mined from presentation arcs attested at 23 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -2070,8 +1957,6 @@
         "M_SBC_AWARD"
       ]
     },
-    "source_concept": "StockIssuedDuringPeriodSharesStockOptionsExercised",
-    "target_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsOutstandingRollForward",
     "description": "Mined from presentation arcs attested at 23 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -2087,8 +1972,6 @@
       "head": "H_COST",
       "mods": []
     },
-    "source_concept": "SellingGeneralAndAdministrativeExpense",
-    "target_concept": "CostsAndExpenses",
     "description": "Mined from calculation arcs attested at 22 firms.",
     "evidence": "calculation"
   },
@@ -2109,8 +1992,6 @@
         "M_TAX"
       ]
     },
-    "source_concept": "IncomeTaxReconciliationForeignIncomeTaxRateDifferential",
-    "target_concept": "IncomeTaxExpenseBenefit",
     "description": "Mined from calculation arcs attested at 22 firms.",
     "evidence": "calculation"
   },
@@ -2126,8 +2007,6 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "ValuationAllowancesAndReservesChargedToCostAndExpense",
-    "target_concept": "MovementInValuationAllowancesAndReservesRollForward",
     "description": "Mined from presentation arcs attested at 22 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -2149,8 +2028,6 @@
         "M_TAX_INCOME"
       ]
     },
-    "source_concept": "EffectiveIncomeTaxRateReconciliationNondeductibleExpense",
-    "target_concept": "EffectiveIncomeTaxRateContinuingOperations",
     "description": "Mined from calculation arcs attested at 21 firms.",
     "evidence": "calculation"
   },
@@ -2168,8 +2045,6 @@
         "M_OCI"
       ]
     },
-    "source_concept": "DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetGainsLossesBeforeTax",
-    "target_concept": "DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeBeforeTax",
     "description": "Mined from calculation arcs attested at 21 firms.",
     "evidence": "calculation"
   },
@@ -2185,8 +2060,6 @@
       "head": "H_COST",
       "mods": []
     },
-    "source_concept": "DefinedBenefitPlanRecognizedNetGainLossDueToSettlementsAndCurtailments1",
-    "target_concept": "DefinedBenefitPlanNetPeriodicBenefitCost",
     "description": "Mined from calculation arcs attested at 20 firms.",
     "evidence": "calculation"
   },
@@ -2202,8 +2075,6 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "DebtInstrumentUnamortizedDiscountPremiumAndDebtIssuanceCostsNet",
-    "target_concept": "LongTermDebt",
     "description": "Mined from calculation arcs attested at 19 firms.",
     "evidence": "calculation"
   },
@@ -2219,8 +2090,6 @@
       "head": "H_INCOME",
       "mods": []
     },
-    "source_concept": "OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationReclassificationAdjustmentFromAOCIRealizedUponSaleOrLiquidationNetOfTax",
-    "target_concept": "OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationAdjustmentNetOfTaxPortionAttributableToParent",
     "description": "Mined from calculation arcs attested at 19 firms.",
     "evidence": "calculation"
   },
@@ -2245,8 +2114,6 @@
         "M_WEIGHTED_AVERAGE"
       ]
     },
-    "source_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsOutstandingWeightedAverageExercisePrice",
-    "target_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsOutstandingWeightedAverageExercisePriceRollforward",
     "description": "Mined from presentation arcs attested at 19 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -2262,8 +2129,6 @@
       "head": "H_EQUITY",
       "mods": []
     },
-    "source_concept": "DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetPriorServiceCostCreditBeforeTax",
-    "target_concept": "DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeBeforeTax",
     "description": "Mined from calculation arcs attested at 18 firms.",
     "evidence": "calculation"
   },
@@ -2279,8 +2144,6 @@
       "head": "H_EXPENSE",
       "mods": []
     },
-    "source_concept": "IncomeTaxReconciliationNondeductibleExpenseShareBasedCompensationCost",
-    "target_concept": "IncomeTaxExpenseBenefit",
     "description": "Mined from calculation arcs attested at 18 firms.",
     "evidence": "calculation"
   },
@@ -2298,8 +2161,6 @@
         "M_FORWARD"
       ]
     },
-    "source_concept": "TreasuryStockValueAcquiredCostMethod",
-    "target_concept": "IncreaseDecreaseInStockholdersEquityRollForward",
     "description": "Mined from presentation arcs attested at 17 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -2315,8 +2176,6 @@
       "head": "H_ASSET",
       "mods": []
     },
-    "source_concept": "GoodwillForeignCurrencyTranslationGainLoss",
-    "target_concept": "GoodwillRollForward",
     "description": "Mined from presentation arcs attested at 17 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -2332,8 +2191,6 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "DeferredTaxLiabilitiesOtherComprehensiveIncome",
-    "target_concept": "DeferredIncomeTaxLiabilities",
     "description": "Mined from calculation arcs attested at 15 firms.",
     "evidence": "calculation"
   },
@@ -2349,8 +2206,6 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "PaymentsForRestructuring",
-    "target_concept": "RestructuringReserveRollForward",
     "description": "Mined from presentation arcs attested at 15 firms; grouping only, not algebra.",
     "evidence": "presentation"
   },
@@ -2372,8 +2227,6 @@
         "M_TAX_INCOME"
       ]
     },
-    "source_concept": "EffectiveIncomeTaxRateReconciliationChangeInDeferredTaxAssetsValuationAllowance",
-    "target_concept": "EffectiveIncomeTaxRateContinuingOperations",
     "description": "Mined from calculation arcs attested at 14 firms.",
     "evidence": "calculation"
   },
@@ -2384,7 +2237,7 @@
     "source": {
       "head": "H_EQUITY",
       "mods": [
-        "M_TAX",
+        "M_PRETAX",
         "V_GROSS"
       ]
     },
@@ -2392,8 +2245,6 @@
       "head": "H_COST",
       "mods": []
     },
-    "source_concept": "AvailableForSaleDebtSecuritiesAccumulatedGrossUnrealizedGainBeforeTax",
-    "target_concept": "AvailableForSaleDebtSecuritiesAmortizedCostBasis",
     "description": "Mined from calculation arcs attested at 14 firms.",
     "evidence": "calculation"
   },
@@ -2409,8 +2260,6 @@
       "head": "H_EXPENSE",
       "mods": []
     },
-    "source_concept": "IncomeTaxReconciliationChangeInDeferredTaxAssetsValuationAllowance",
-    "target_concept": "IncomeTaxExpenseBenefit",
     "description": "Mined from calculation arcs attested at 13 firms.",
     "evidence": "calculation"
   },
@@ -2426,8 +2275,6 @@
       "head": "H_LIABILITY",
       "mods": []
     },
-    "source_concept": "DeferredTaxLiabilitiesPrepaidExpenses",
-    "target_concept": "DeferredIncomeTaxLiabilities",
     "description": "Mined from calculation arcs attested at 12 firms.",
     "evidence": "calculation"
   },
@@ -2443,8 +2290,6 @@
       "head": "H_REVENUE",
       "mods": []
     },
-    "source_concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
-    "target_concept": "Revenues",
     "description": "Mined from calculation arcs attested at 12 firms.",
     "evidence": "calculation"
   },
@@ -2460,8 +2305,6 @@
       "head": "H_INCOME",
       "mods": []
     },
-    "source_concept": "AssetManagementFees",
-    "target_concept": "NoninterestIncome",
     "description": "Mined from calculation arcs attested at 10 firms.",
     "evidence": "calculation"
   },
@@ -2477,8 +2320,6 @@
       "head": "H_CASH",
       "mods": []
     },
-    "source_concept": "AmortizationOfFinancingCosts",
-    "target_concept": "NetCashProvidedByUsedInOperatingActivities",
     "description": "Mined from calculation arcs attested at 10 firms.",
     "evidence": "calculation"
   }

@@ -1,5 +1,8 @@
 """Unit tests for AtomRelationGraph and lattice edge inheritance."""
 
+import json
+
+from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.relations import AtomRelation, AtomRelationGraph
 
@@ -54,3 +57,14 @@ def test_relation_graph_part_of_and_contra_targets() -> None:
     incentive = Atom("H_REVENUE", frozenset(["M_CONTRA_INCENTIVE"]))
     contra_target = graph.find_contra_target(incentive)
     assert contra_target == (Atom("H_REVENUE"), -1.0)
+
+
+def test_relations_data_carries_no_concept_strings() -> None:
+    """Taxonomy relations are coordinate patterns: no exemplar concept fields."""
+    path = resolve_xbrl_paths().default_atom_relations_path
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    assert raw
+    for edge in raw:
+        assert "source_concept" not in edge
+        assert "target_concept" not in edge
+        assert "evidence" in edge

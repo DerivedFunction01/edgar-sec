@@ -43,8 +43,6 @@ class AtomRelation:
     algebraic_weight: float = 1.0
     formula_id: str | None = None
     operator: str | None = None
-    source_concept: str | None = None
-    target_concept: str | None = None
     description: str = ""
     evidence: str = "declared"
 
@@ -59,8 +57,6 @@ class AtomRelation:
             algebraic_weight=float(data.get("algebraic_weight", 1.0)),
             formula_id=data.get("formula_id"),
             operator=data.get("operator"),
-            source_concept=data.get("source_concept"),
-            target_concept=data.get("target_concept"),
             description=str(data.get("description", "")),
             evidence=str(data.get("evidence", "declared")),
         )

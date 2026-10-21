@@ -14,6 +14,35 @@ from edgar_sec.engine.xbrl.schema.models import CalculationArc, XbrlFact
 from edgar_sec.engine.xbrl.solve.gold import PlacementPrediction
 
 
+def _concept_for_atom(
+    kb: EvidenceKnowledgeBase,
+    atom: Atom,
+    facts: Sequence[XbrlFact],
+    calculation_arcs: Sequence[CalculationArc],
+) -> str | None:
+    lexicon = kb.taxonomy.token_lexicon
+    if lexicon is None:
+        return None
+    candidates = {fact.concept_qname for fact in facts}
+    for arc in calculation_arcs:
+        candidates.add(arc.parent_qname)
+        candidates.add(arc.child_qname)
+    exact: list[str] = []
+    broader: list[tuple[int, str]] = []
+    for qname in candidates:
+        candidate_atom = decompose_concept(qname, lexicon)[0]
+        if candidate_atom == atom:
+            exact.append(qname)
+        elif candidate_atom.is_a(atom):
+            broader.append((len(candidate_atom.modifiers), qname))
+    if exact:
+        return sorted(exact)[0]
+    if broader:
+        broader.sort(key=lambda item: (-item[0], item[1]))
+        return broader[0][1]
+    return None
+
+
 def solve_placements(
     kb: EvidenceKnowledgeBase,
     facts: Sequence[XbrlFact],
@@ -78,17 +107,23 @@ def solve_placements(
             edges = kb.taxonomy.atom_relations.find_inherited_edges(atom, "PART_OF")
             if edges:
                 best_edge = edges[0]
-                head_def = kb.taxonomy.prime_head(best_edge.target.head)
-                target_concept = best_edge.target_concept or (
-                    head_def.canonical_concept
-                    if head_def and head_def.canonical_concept
-                    else best_edge.target.head
+                filing_name = _concept_for_atom(
+                    kb, best_edge.target, facts, calculation_arcs
                 )
-                pred_parent = (
-                    f"us-gaap:{target_concept}"
-                    if ":" not in target_concept
-                    else target_concept
-                )
+                if filing_name is not None:
+                    pred_parent = filing_name
+                else:
+                    head_def = kb.taxonomy.prime_head(best_edge.target.head)
+                    target_concept = (
+                        head_def.canonical_concept
+                        if head_def and head_def.canonical_concept
+                        else best_edge.target.head
+                    )
+                    pred_parent = (
+                        f"us-gaap:{target_concept}"
+                        if ":" not in target_concept
+                        else target_concept
+                    )
                 predictions.append(
                     PlacementPrediction(
                         concept_qname=qname,

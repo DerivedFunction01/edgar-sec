@@ -25,8 +25,7 @@ def _atom(qname: str) -> Atom:
 def test_renamed_revenue_concepts_are_near_equivalents() -> None:
     """Post-ASC-606 revenue decomposes compositionally: subsumption NEAR.
 
-    Re-adjudicated in Phase 0 (2026-10-21): the former EXACT was an artifact
-    of the retired 8-token whole-phrase entry yielding a bare atom.
+    Re-adjudicated in Phase 0: the former EXACT was a whole-phrase artifact.
     """
     pre_asc606 = _atom("us-gaap:Revenues")
     post_asc606 = _atom("us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax")

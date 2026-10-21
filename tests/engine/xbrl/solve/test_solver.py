@@ -399,7 +399,7 @@ def test_retail_costs_and_operating_income_relations_compose() -> None:
             100.0,
         ),
         XbrlFact(acc, "retail:CostOfSales", 10.0),
-        XbrlFact(acc, "retail:Fulfillment", 2.0),
+        XbrlFact(acc, "retail:FulfillmentExpenses", 2.0),
         XbrlFact(acc, "retail:TechnologyAndInfrastructure", 1.0),
         XbrlFact(acc, "retail:SalesAndMarketingExpense", 3.0),
         XbrlFact(acc, "retail:GeneralAndAdministrativeExpense", 4.0),

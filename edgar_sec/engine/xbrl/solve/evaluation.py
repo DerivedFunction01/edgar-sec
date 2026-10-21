@@ -46,70 +46,157 @@ class AggregateEvaluator:
         calculation_arcs: Sequence[CalculationArc],
         *,
         visited: set[str] | None = None,
-    ) -> float | None:
+        excluded: frozenset[str] = frozenset(),
+    ) -> tuple[float | None, str | None]:
         lexicon = self.kb.taxonomy.token_lexicon
-        source_concept = getattr(edge, "source_concept", None)
         visited_concepts = visited if visited is not None else set()
-        if lexicon is not None:
-            matching: list[tuple[float, int, Any]] = []
-            source_local = (
-                source_concept.split(":")[-1] if source_concept is not None else None
-            )
-            for fact in facts:
-                if fact.dimensions:
-                    continue
-                try:
-                    value = float(fact.value)
-                except (TypeError, ValueError):
-                    continue
-                fact_atom, _, _, _ = decompose_concept(fact.concept_qname, lexicon)
-                if fact_atom.is_a(edge.source):
-                    exact_name = int(fact.concept_qname.split(":")[-1] == source_local)
-                    matching.append((value, exact_name, fact_atom))
-
-            if matching:
-                matching.sort(
-                    key=lambda item: (len(item[2].modifiers), item[1]), reverse=True
-                )
-                return matching[0][0]
-
-        if source_concept:
-            source_local = source_concept.split(":")[-1]
-            for fact in facts:
-                if fact.dimensions or fact.concept_qname.split(":")[-1] != source_local:
-                    continue
-                try:
-                    return float(fact.value)
-                except (TypeError, ValueError):
-                    continue
-
-            if source_concept not in visited_concepts:
-                visited_concepts.add(source_concept)
-                aggregate = self.evaluate_goal(
-                    source_concept,
-                    facts,
-                    calculation_arcs,
-                    _visited=visited_concepts,
-                )
-                if aggregate.value is not None:
-                    return aggregate.value
-
         if lexicon is None:
-            return None
+            return None, None
 
-        head_def = self.kb.taxonomy.prime_head(edge.source.head)
-        canonical_concept = head_def.canonical_concept if head_def else None
-        if canonical_concept and canonical_concept not in visited_concepts:
-            visited_concepts.add(canonical_concept)
-            sub_aggregate = self.evaluate_goal(
-                canonical_concept,
+        matching: list[tuple[float, int, str]] = []
+        for fact in facts:
+            if fact.dimensions or fact.concept_qname in excluded:
+                continue
+            try:
+                value = float(fact.value)
+            except (TypeError, ValueError):
+                continue
+            fact_atom, _, _, _ = decompose_concept(fact.concept_qname, lexicon)
+            if fact_atom.is_a(edge.source):
+                matching.append((value, len(fact_atom.modifiers), fact.concept_qname))
+
+        if matching:
+            matching.sort(key=lambda item: item[1], reverse=True)
+            value, _, qname = matching[0]
+            return value, qname
+
+        key = str(edge.source)
+        if key not in visited_concepts:
+            visited_concepts.add(key)
+            sub_aggregate = self._derive_atom(
+                edge.source,
                 facts,
                 calculation_arcs,
-                _visited=visited_concepts,
+                visited_concepts,
+                measure_id=key,
+                entity="",
+                period="",
+                unit="USD",
             )
-            if sub_aggregate.value is not None:
-                return sub_aggregate.value
+            if sub_aggregate is not None and sub_aggregate.value is not None:
+                return sub_aggregate.value, key
 
+        return None, None
+
+    def _derive_atom(
+        self,
+        target_atom: Any,
+        facts: Sequence[XbrlFact],
+        calculation_arcs: Sequence[CalculationArc],
+        visited: set[str] | None,
+        *,
+        measure_id: str,
+        entity: str,
+        period: str,
+        unit: str,
+    ) -> AggregateFact | None:
+        atom_graph = self.kb.taxonomy.atom_relations
+        lexicon = self.kb.taxonomy.token_lexicon
+        if atom_graph is None or lexicon is None:
+            return None
+        target_concept = measure_id
+        _visited = visited
+        atom_edges = [
+            edge
+            for edge in atom_graph.relations
+            if edge.relation_type in ("PART_OF", "CONTRA_OF", "DERIVED_FROM")
+            and target_atom.is_a(edge.target)
+        ]
+        specificity = max(
+            (len(edge.target.modifiers) for edge in atom_edges), default=-1
+        )
+        incoming_edges = [
+            edge for edge in atom_edges if len(edge.target.modifiers) == specificity
+        ]
+
+        edge_groups: dict[str, list[Any]] = {}
+        for edge in incoming_edges:
+            key = getattr(edge, "formula_id", None) or edge.edge_id
+            edge_groups.setdefault(key, []).append(edge)
+
+        fact_qnames = {fact.concept_qname for fact in facts}
+        attempts: list[tuple[int, Any, tuple, Any]] = []
+        for group_edges in edge_groups.values():
+            resolved_vals: list[tuple[float, Any, str]] = []
+            consumed: set[str] = set()
+            for edge in group_edges:
+                value, identifier = self._resolve_atom_value(
+                    edge,
+                    facts,
+                    calculation_arcs,
+                    visited=_visited,
+                    excluded=frozenset(consumed),
+                )
+                if value is None or identifier is None:
+                    break
+                resolved_vals.append((value, edge, identifier))
+                if identifier in fact_qnames:
+                    consumed.add(identifier)
+
+            if len(resolved_vals) != len(group_edges) or not resolved_vals:
+                continue
+            outcome = self._verify_non_double_counting(
+                [identifier for _, _, identifier in resolved_vals],
+                calculation_arcs,
+            )
+            components = tuple(
+                GranularComponent(
+                    identifier=identifier,
+                    value=value,
+                    weight=edge.algebraic_weight,
+                )
+                for value, edge, identifier in resolved_vals
+            )
+            canonical_hops = sum(
+                1 for _, _, identifier in resolved_vals if identifier not in fact_qnames
+            )
+            attempts.append((canonical_hops, outcome, components, resolved_vals))
+
+        attempts.sort(key=lambda attempt: attempt[0])
+        for _, outcome, components, resolved_vals in attempts:
+            if outcome.violations:
+                continue
+            total = sum(
+                value * edge.algebraic_weight for value, edge, _ in resolved_vals
+            )
+            path = tuple(
+                f"{edge.source}({value}) * {edge.algebraic_weight}"
+                for value, edge, _ in resolved_vals
+            )
+            return AggregateFact(
+                measure_id=target_concept,
+                entity=entity,
+                period=period,
+                unit=unit,
+                value=round(total, 4),
+                basis="DERIVED_EXACT",
+                components=components,
+                derivation_path=path,
+                resolution_tier="SUBATOMIC_ALGEBRAIC_IDENTITY",
+            )
+        if attempts:
+            _, outcome, components, _ = attempts[0]
+            return AggregateFact(
+                measure_id=target_concept,
+                entity=entity,
+                period=period,
+                unit=unit,
+                value=None,
+                basis="CONFLICT_DOUBLE_COUNTING",
+                components=components,
+                derivation_path=outcome.violations,
+                resolution_tier="ANTICHAIN_CONFLICT",
+            )
         return None
 
     def evaluate_goal(
@@ -285,96 +372,20 @@ class AggregateEvaluator:
                     resolution_tier="DERIVED_MULTI_HOP",
                 )
 
-        atom_graph = self.kb.taxonomy.atom_relations
-        if atom_graph is not None and lexicon is not None:
+        if lexicon is not None:
             target_atom, _, _, _ = decompose_concept(target_concept, lexicon)
-            concept_edges = [
-                edge
-                for edge in atom_graph.relations
-                if edge.relation_type in ("PART_OF", "CONTRA_OF", "DERIVED_FROM")
-                and edge.target_concept
-                and edge.target_concept.split(":")[-1] == target_local
-            ]
-            if concept_edges:
-                incoming_edges = concept_edges
-            else:
-                atom_edges = [
-                    edge
-                    for edge in atom_graph.relations
-                    if edge.relation_type in ("PART_OF", "CONTRA_OF", "DERIVED_FROM")
-                    and target_atom.is_a(edge.target)
-                ]
-                specificity = max(
-                    (len(edge.target.modifiers) for edge in atom_edges), default=-1
-                )
-                incoming_edges = [
-                    edge
-                    for edge in atom_edges
-                    if len(edge.target.modifiers) == specificity
-                ]
-
-            edge_groups: dict[str, list[Any]] = {}
-            for edge in incoming_edges:
-                key = getattr(edge, "formula_id", None) or edge.edge_id
-                edge_groups.setdefault(key, []).append(edge)
-
-            for group_edges in edge_groups.values():
-                resolved_vals: list[tuple[float, Any]] = []
-                for edge in group_edges:
-                    value = self._resolve_atom_value(
-                        edge, facts, calculation_arcs, visited=_visited
-                    )
-                    if value is None:
-                        break
-                    resolved_vals.append((value, edge))
-
-                if len(resolved_vals) != len(group_edges) or not resolved_vals:
-                    continue
-                outcome = self._verify_non_double_counting(
-                    [
-                        edge.source_concept or str(edge.source)
-                        for _, edge in resolved_vals
-                    ],
-                    calculation_arcs,
-                )
-                components = tuple(
-                    GranularComponent(
-                        identifier=edge.source_concept or str(edge.source),
-                        value=value,
-                        weight=edge.algebraic_weight,
-                    )
-                    for value, edge in resolved_vals
-                )
-                if outcome.violations:
-                    return AggregateFact(
-                        measure_id=target_concept,
-                        entity=entity,
-                        period=period,
-                        unit=unit,
-                        value=None,
-                        basis="CONFLICT_DOUBLE_COUNTING",
-                        components=components,
-                        derivation_path=outcome.violations,
-                        resolution_tier="ANTICHAIN_CONFLICT",
-                    )
-                total = sum(
-                    value * edge.algebraic_weight for value, edge in resolved_vals
-                )
-                path = tuple(
-                    f"{edge.source}({value}) * {edge.algebraic_weight}"
-                    for value, edge in resolved_vals
-                )
-                return AggregateFact(
-                    measure_id=target_concept,
-                    entity=entity,
-                    period=period,
-                    unit=unit,
-                    value=round(total, 4),
-                    basis="DERIVED_EXACT",
-                    components=components,
-                    derivation_path=path,
-                    resolution_tier="SUBATOMIC_ALGEBRAIC_IDENTITY",
-                )
+            derived = self._derive_atom(
+                target_atom,
+                facts,
+                calculation_arcs,
+                _visited,
+                measure_id=target_concept,
+                entity=entity,
+                period=period,
+                unit=unit,
+            )
+            if derived is not None:
+                return derived
 
         return AggregateFact(
             measure_id=target_concept,
