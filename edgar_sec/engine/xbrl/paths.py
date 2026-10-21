@@ -14,6 +14,7 @@ DEFAULT_PRIME_HEADS_FILE = "prime_heads.json"
 DEFAULT_SUBATOMIC_MODIFIERS_FILE = "subatomic_modifiers.json"
 DEFAULT_TOKEN_LEXICON_FILE = "token_lexicon.json"
 DEFAULT_ATOM_RELATIONS_FILE = "atom_relations.json"
+DEFAULT_STATEMENT_ROOTS_FILE = "statement_roots.json"
 DEFAULT_COMMODITY_GRAPH_FILE = "commodity_graph.json"
 DEFAULT_HUMAN_CAPITAL_GRAPH_FILE = "human_capital_graph.json"
 DEFAULT_RELATION_TYPES_FILE = "relation_types.json"
@@ -84,6 +85,11 @@ class XbrlPaths:
     def default_atom_relations_path(self) -> Path:
         """Default path to atom relations taxonomy file."""
         return self.default_taxonomy_dir / DEFAULT_ATOM_RELATIONS_FILE
+
+    @property
+    def default_statement_roots_path(self) -> Path:
+        """Default path to statement root patterns taxonomy file."""
+        return self.default_taxonomy_dir / DEFAULT_STATEMENT_ROOTS_FILE
 
     @property
     def default_commodity_graph_path(self) -> Path:

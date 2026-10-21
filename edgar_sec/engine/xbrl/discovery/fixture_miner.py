@@ -368,29 +368,55 @@ def _adequacy(
     return "under_modded", has_identity, share
 
 
-_PRIMARY_STATEMENT_ROOTS = {
-    "us-gaap:StatementOfFinancialPositionAbstract": "BalanceSheet",
-    "us-gaap:StatementOfIncomeAndComprehensiveIncomeAbstract": "IncomeStatement",
-    "us-gaap:IncomeStatementAbstract": "IncomeStatement",
-    "us-gaap:StatementOfCashFlowsAbstract": "CashFlow",
-    "us-gaap:StatementOfStockholdersEquityAbstract": "Equity",
-    "dei:CoverAbstract": "Cover",
-}
+def _statement_root_patterns() -> tuple[dict, ...]:
+    """Load statement-root coordinate patterns from the taxonomy data."""
+    path = resolve_xbrl_paths().default_statement_roots_path
+    return tuple(json.loads(path.read_text(encoding="utf-8")))
 
 
-def _placement_slices(arcs: pa.Table | None) -> dict[str, set[str]]:
-    """Propagate primary-statement root slices down presentation arcs."""
+def _root_slice(
+    qname: str, lexicon: TokenLexicon, patterns: tuple[dict, ...]
+) -> str | None:
+    """Classify one presentation root by the declared coordinate patterns."""
+    namespace = qname.split(":", 1)[0] if ":" in qname else ""
+    tokens = set(tokenize_fact_concept(qname))
+    head = decompose_concept_expression(qname, lexicon).atom.head
+    for pattern in patterns:
+        if pattern.get("namespace") and pattern["namespace"] != namespace:
+            continue
+        if pattern.get("head") and pattern["head"] != head:
+            continue
+        if not set(pattern.get("tokens_all", ())) <= tokens:
+            continue
+        return str(pattern["slice"])
+    return None
+
+
+def _placement_slices(
+    arcs: pa.Table | None, lexicon: TokenLexicon
+) -> dict[str, set[str]]:
+    """Propagate statement slices from derived presentation roots down arcs."""
     if arcs is None or "parent_qname" not in arcs.column_names:
         return {}
-    slices: dict[str, set[str]] = {
-        qname: {slice_} for qname, slice_ in _PRIMARY_STATEMENT_ROOTS.items()
-    }
     edges = list(
         zip(
             arcs.column("parent_qname").to_pylist(),
             arcs.column("child_qname").to_pylist(),
         )
     )
+    children = {child for _, child in edges}
+    patterns = _statement_root_patterns()
+    slices: dict[str, set[str]] = {}
+    seeded: set[str] = set()
+    seen_roots: set[str] = set()
+    for parent, _ in edges:
+        if parent in children or parent in seen_roots:
+            continue
+        seen_roots.add(parent)
+        slice_ = _root_slice(parent, lexicon, patterns)
+        if slice_ is not None:
+            slices[parent] = {slice_}
+            seeded.add(parent)
     changed = True
     while changed:
         changed = False
@@ -402,7 +428,7 @@ def _placement_slices(arcs: pa.Table | None) -> dict[str, set[str]]:
             if not source <= target:
                 target |= source
                 changed = True
-    return {q: s for q, s in slices.items() if q not in _PRIMARY_STATEMENT_ROOTS}
+    return {q: s for q, s in slices.items() if q not in seeded}
 
 
 def _contains_phrase(stream: tuple[str, ...], phrase: tuple[str, ...]) -> bool:
@@ -528,7 +554,7 @@ def build_modelledness_report(
                 qnames, bundle.facts.column("period_type").to_pylist()
             ):
                 period_counts[qname][period_type] += 1
-        for qname, slices in _placement_slices(bundle.presentation_arcs).items():
+        for qname, slices in _placement_slices(bundle.presentation_arcs, lexicon).items():
             placement_by_concept[qname] |= slices
         calc_degrees.update(_arc_degrees(bundle.calculation_arcs))
         pre_degrees.update(_arc_degrees(bundle.presentation_arcs))
