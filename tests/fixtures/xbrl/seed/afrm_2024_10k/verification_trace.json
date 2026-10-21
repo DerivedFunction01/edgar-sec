@@ -1,0 +1,81 @@
+{
+  "firm": "AFRM",
+  "accession": "0001820953-24-000035",
+  "cik": "0001820953",
+  "sic_code": 6141,
+  "sector": "Consumer_Finance",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statements of Operations",
+    "unit": "USD in thousands",
+    "scale": 1000,
+    "period_column_index": 0,
+    "line_range": [
+      1760,
+      1799
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total revenue, net",
+        "reported_value": 2322999000.0,
+        "table_value": 2322999,
+        "line_number": 1776,
+        "snippet": "Total revenue, net                                                               $ 2,322,999     $ 1,587,985   $ 1,349,292"
+      },
+      {
+        "concept_qname": "us-gaap:CostsAndExpenses",
+        "label": "Total operating expenses",
+        "reported_value": 2938846000.0,
+        "table_value": 2938846,
+        "line_number": 1788,
+        "snippet": "Total operating expenses                                                           2,938,846       2,788,847     2,215,340"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating loss",
+        "reported_value": -615847000.0,
+        "table_value": -615847,
+        "line_number": 1790,
+        "snippet": "Operating loss                                                                   $ (615,847)   $ (1,200,862)   $ (866,048)"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Income tax expense (benefit)",
+        "reported_value": 2230000.0,
+        "table_value": 2230,
+        "line_number": 1796,
+        "snippet": "Income tax expense (benefit)                                                           2,230         (3,900)      (17,414)"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net loss",
+        "reported_value": -517757000.0,
+        "table_value": -517757,
+        "line_number": 1798,
+        "snippet": "Net loss                                                                         $ (517,757)     $ (985,345)   $ (707,417)"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncomeLoss = Revenues - CostsAndExpenses",
+      "left_concept": "us-gaap:OperatingIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 2322999000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostsAndExpenses",
+          "value": 2938846000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": -615847000.0,
+      "target_value": -615847000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

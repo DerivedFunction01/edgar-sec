@@ -1,0 +1,81 @@
+{
+  "firm": "MSTR",
+  "accession": "0000950170-25-021814",
+  "cik": "0001050446",
+  "sic_code": 7374,
+  "sector": "Crypto",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statements of Operations",
+    "unit": "USD in thousands",
+    "scale": 1000,
+    "period_column_index": 0,
+    "line_range": [
+      2300,
+      2417
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "Total revenues",
+        "reported_value": 463456000.0,
+        "table_value": 463456,
+        "line_number": 2367,
+        "snippet": "Total revenues                                                                                    463,456         496,261           499,264"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
+        "label": "Total cost of revenues",
+        "reported_value": 129468000.0,
+        "table_value": 129468,
+        "line_number": 2383,
+        "snippet": "Total cost of revenues                                                                            129,468         109,944           102,989"
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross profit",
+        "reported_value": 333988000.0,
+        "table_value": 333988,
+        "line_number": 2386,
+        "snippet": "Gross profit                                                                                      333,988         386,317           396,275"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Loss from operations",
+        "reported_value": -1852978000.0,
+        "table_value": -1852978,
+        "line_number": 2402,
+        "snippet": "Loss from operations                                                                          (1,852,978)       (115,047)       (1,275,742)"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net (loss) income",
+        "reported_value": -1166661000.0,
+        "table_value": -1166661,
+        "line_number": 2416,
+        "snippet": "Net (loss) income                                                                             (1,166,661)         429,121       (1,469,797)"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossProfit = RevenueFromContractWithCustomerExcludingAssessedTax - CostOfGoodsAndServicesSold",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": 463456000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "value": 129468000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 333988000.0,
+      "target_value": 333988000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

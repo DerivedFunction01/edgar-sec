@@ -1,0 +1,81 @@
+{
+  "firm": "BMY",
+  "accession": "0000014272-25-000039",
+  "cik": "0000014272",
+  "sic_code": 2834,
+  "sector": "Healthcare",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF EARNINGS",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      2361,
+      2392
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total Revenues",
+        "reported_value": 48300000000.0,
+        "table_value": 48300,
+        "line_number": 2373,
+        "snippet": "Total Revenues                                  48,300      45,006      46,159"
+      },
+      {
+        "concept_qname": "us-gaap:CostsAndExpenses",
+        "label": "Total Expenses",
+        "reported_value": 56679000000.0,
+        "table_value": 56679,
+        "line_number": 2382,
+        "snippet": "Total Expenses                                  56,679      36,566      38,446"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "label": "(Loss)/earnings before income taxes",
+        "reported_value": -8379000000.0,
+        "table_value": -8379,
+        "line_number": 2385,
+        "snippet": "(Loss)/earnings before income taxes            (8,379)       8,440       7,713"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Income tax provision",
+        "reported_value": 554000000.0,
+        "table_value": 554,
+        "line_number": 2386,
+        "snippet": "Income tax provision                               554         400       1,368"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net (loss)/earnings attributable to BMS",
+        "reported_value": -8948000000.0,
+        "table_value": -8948,
+        "line_number": 2391,
+        "snippet": "Net (loss)/earnings attributable to BMS      $ (8,948)     $ 8,025     $ 6,327"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "IncomeLossFromContinuingOperationsBeforeIncomeTaxes = Revenues - CostsAndExpenses",
+      "left_concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 48300000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostsAndExpenses",
+          "value": 56679000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": -8379000000.0,
+      "target_value": -8379000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

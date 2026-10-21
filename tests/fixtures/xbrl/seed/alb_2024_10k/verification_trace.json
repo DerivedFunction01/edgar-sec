@@ -1,0 +1,81 @@
+{
+  "firm": "ALB",
+  "accession": "0000915913-25-000026",
+  "cik": "0000915913",
+  "sic_code": 2821,
+  "sector": "Materials",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF (LOSS) INCOME",
+    "unit": "USD in thousands",
+    "scale": 1000,
+    "period_column_index": 0,
+    "line_range": [
+      2551,
+      2580
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Net sales",
+        "reported_value": 5377526000.0,
+        "table_value": 5377526,
+        "line_number": 2557,
+        "snippet": "Net sales                                                                                    $ 5,377,526   $ 9,617,203   $ 7,320,104"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfRevenue",
+        "label": "Cost of goods sold",
+        "reported_value": 5314987000.0,
+        "table_value": 5314987,
+        "line_number": 2558,
+        "snippet": "Cost of goods sold(a)                                                                          5,314,987     8,431,294     4,245,517"
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross profit",
+        "reported_value": 62539000.0,
+        "table_value": 62539,
+        "line_number": 2560,
+        "snippet": "Gross profit                                                                                      62,539     1,185,909     3,074,587"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating (loss) profit",
+        "reported_value": -1776545000.0,
+        "table_value": -1776545,
+        "line_number": 2566,
+        "snippet": "Operating (loss) profit                                                                      (1,776,545)       251,881     2,470,061"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net (loss) income attributable to Albemarle Corporation",
+        "reported_value": -1179449000.0,
+        "table_value": -1179449,
+        "line_number": 2579,
+        "snippet": "Net (loss) income attributable to Albemarle Corporation                                      (1,179,449)     1,573,476     2,689,816"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossProfit = Revenues - CostOfRevenue",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 5377526000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostOfRevenue",
+          "value": 5314987000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 62539000.0,
+      "target_value": 62539000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

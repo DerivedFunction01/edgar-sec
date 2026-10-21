@@ -1,0 +1,81 @@
+{
+  "firm": "COIN",
+  "accession": "0001679788-25-000022",
+  "cik": "0001679788",
+  "sic_code": 6199,
+  "sector": "Crypto",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statements of Operations",
+    "unit": "USD in thousands",
+    "scale": 1000,
+    "period_column_index": 0,
+    "line_range": [
+      2714,
+      2752
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total revenue",
+        "reported_value": 6564028000.0,
+        "table_value": 6564028,
+        "line_number": 2727,
+        "snippet": "Total revenue                                                                            6,564,028     3,108,383       3,194,208"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingExpenses",
+        "label": "Total operating expenses",
+        "reported_value": 4256868000.0,
+        "table_value": 4256868,
+        "line_number": 2739,
+        "snippet": "Total operating expenses                                                                 4,256,868     3,270,045       5,904,416"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating income (loss)",
+        "reported_value": 2307160000.0,
+        "table_value": 2307160,
+        "line_number": 2741,
+        "snippet": "Operating income (loss)                                                                  2,307,160     (161,662)     (2,710,208)"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Provision for (benefit from) income taxes",
+        "reported_value": 363578000.0,
+        "table_value": 363578,
+        "line_number": 2749,
+        "snippet": "Provision for (benefit from) income taxes                                                  363,578     (171,716)       (439,633)"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income (loss)",
+        "reported_value": 2579066000.0,
+        "table_value": 2579066,
+        "line_number": 2751,
+        "snippet": "Net income (loss)                                                                      $ 2,579,066      $ 94,871   $ (2,624,949)"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncomeLoss = Revenues - OperatingExpenses",
+      "left_concept": "us-gaap:OperatingIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 6564028000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:OperatingExpenses",
+          "value": 4256868000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 2307160000.0,
+      "target_value": 2307160000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

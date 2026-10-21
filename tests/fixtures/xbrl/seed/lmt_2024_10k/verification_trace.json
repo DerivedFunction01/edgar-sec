@@ -1,0 +1,82 @@
+{
+  "firm": "LMT",
+  "accession": "0000936468-25-000009",
+  "cik": "0000936468",
+  "sic_code": 3760,
+  "sector": "Industrials",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statements of Earnings",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1360,
+      1395
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total net sales",
+        "reported_value": 71043000000.0,
+        "table_value": 71043,
+        "line_number": 1373,
+        "snippet": "Total net sales                                71,043      67,571      65,984"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfRevenue",
+        "label": "Total cost of sales",
+        "reported_value": 64113000000.0,
+        "table_value": -64113,
+        "line_number": 1381,
+        "snippet": "Total cost of sales                          (64,113)    (59,092)    (57,697)",
+        "display_sign": -1
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross profit",
+        "reported_value": 6930000000.0,
+        "table_value": 6930,
+        "line_number": 1383,
+        "snippet": "Gross profit                                    6,930       8,479       8,287"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating profit",
+        "reported_value": 7013000000.0,
+        "table_value": 7013,
+        "line_number": 1386,
+        "snippet": "Operating profit                                7,013       8,507       8,348"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net earnings",
+        "reported_value": 5336000000.0,
+        "table_value": 5336,
+        "line_number": 1394,
+        "snippet": "Net earnings                                  $ 5,336     $ 6,920     $ 5,732"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossProfit = Revenues - CostOfRevenue",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 71043000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostOfRevenue",
+          "value": 64113000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 6930000000.0,
+      "target_value": 6930000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

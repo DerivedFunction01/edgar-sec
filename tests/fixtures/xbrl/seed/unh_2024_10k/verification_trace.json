@@ -1,0 +1,82 @@
+{
+  "firm": "UNH",
+  "accession": "0000731766-25-000063",
+  "cik": "0000731766",
+  "sic_code": 6324,
+  "sector": "Healthcare",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statements of Operations",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1231,
+      1264
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total revenues",
+        "reported_value": 400278000000.0,
+        "table_value": 400278,
+        "line_number": 1243,
+        "snippet": "Total revenues                                                                                        400,278     371,622     324,162"
+      },
+      {
+        "concept_qname": "us-gaap:CostsAndExpenses",
+        "label": "Total operating costs",
+        "reported_value": 367991000000.0,
+        "table_value": 367991,
+        "line_number": 1251,
+        "snippet": "Total operating costs                                                                                 367,991     339,264     295,727"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Earnings from operations",
+        "reported_value": 32287000000.0,
+        "table_value": 32287,
+        "line_number": 1253,
+        "snippet": "Earnings from operations                                                                               32,287      32,358      28,435"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Provision for income taxes",
+        "reported_value": 4829000000.0,
+        "table_value": -4829,
+        "line_number": 1258,
+        "snippet": "Provision for income taxes                                                                            (4,829)     (5,968)     (5,704)",
+        "display_sign": -1
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net earnings attributable to UnitedHealth Group common shareholders",
+        "reported_value": 14405000000.0,
+        "table_value": 14405,
+        "line_number": 1263,
+        "snippet": "Net earnings attributable to UnitedHealth Group common shareholders                                  $ 14,405    $ 22,381    $ 20,120"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncomeLoss = Revenues - CostsAndExpenses",
+      "left_concept": "us-gaap:OperatingIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 400278000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostsAndExpenses",
+          "value": 367991000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 32287000000.0,
+      "target_value": 32287000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}
