@@ -89,7 +89,7 @@ def _children(node: FastHtmlNode, parts: list[str]) -> None:
         tag = child.tag or ""
         if tag == "-text":
             parts.append(html.escape(child.text(deep=False), quote=True))
-        elif tag not in {"-comment", "-doctype"}:
+        elif tag not in {"-comment", "_comment", "-doctype", "!doctype"}:
             _render_node(FastHtmlNode(child), parts)
         child = child.next
 

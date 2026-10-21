@@ -109,6 +109,13 @@ def test_node_siblings_skip_text_nodes() -> None:
     assert first.find_previous_sibling() is None
 
 
+def test_node_sibling_blocks_skip_comments() -> None:
+    tree = parse_html("<div><p>first</p><!-- note --><p>second</p></div>")
+    second = tree.find_all("p")[1]
+    previous = second.previous_sibling_blocks()
+    assert [node.text() for node in previous] == ["first"]
+
+
 def test_node_sibling_blocks_climb_ancestors() -> None:
     html = "<div><p>label</p></div><div><hr></div><div><p>after</p></div>"
     tree = parse_html(html)
@@ -151,6 +158,16 @@ def test_node_replace_with_html() -> None:
     span.replace_with_html("<b>new</b>")
     assert "new" in tree.html
     assert "old" not in tree.html
+
+
+def test_node_replace_with_html_inserts_elements_and_text() -> None:
+    tree = parse_html("<p><span>old</span></p>")
+    span = tree.css_first("span")
+    assert span is not None
+    span.replace_with_html("a <b>new</b> c")
+    assert "<b>new</b>" in tree.html
+    assert ">old<" not in tree.html
+    assert "a new c" in tree.text()
 
 
 def test_tree_strip_tags() -> None:

@@ -374,7 +374,7 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
     _has_elem_child = False
     while _c is not None:
         _t = _c.tag
-        if _t and _t not in ("-text", "-comment"):
+        if _t and _t not in ("-text", "-comment", "_comment"):
             _has_elem_child = True
             break
         _c = _c.next

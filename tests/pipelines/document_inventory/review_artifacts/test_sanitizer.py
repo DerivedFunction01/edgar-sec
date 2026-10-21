@@ -47,6 +47,15 @@ def test_preview_preserves_tables_and_removes_active_content() -> None:
     assert not tags & {"script", "style", "iframe", "svg", "form", "img", "input"}
 
 
+def test_doctype_and_comments_are_dropped() -> None:
+    rendered = render_inert(
+        b"<!DOCTYPE html><html><body><!-- note --><p>Visible</p></body></html>"
+    )
+    assert "Visible" in rendered
+    assert "note" not in rendered
+    assert rendered.lower().count("<!doctype") == 1
+
+
 def test_anchor_href_is_escaped_in_output() -> None:
     rendered = render_inert(b'<a href="/doc?a=1&amp;b=&quot;quoted&quot;">document</a>')
     assert '<a href="/doc?a=1&amp;b=&quot;quoted&quot;">document</a>' in rendered

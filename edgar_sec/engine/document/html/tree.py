@@ -7,7 +7,11 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Iterator
 
-from selectolax.parser import HTMLParser, Node
+try:
+    from selectolax.parser import HTMLParser, Node
+except ImportError:  # selectolax >= 1.0 removed the modest backend
+    from selectolax.lexbor import LexborHTMLParser as HTMLParser
+    from selectolax.lexbor import LexborNode as Node
 
 from edgar_sec.engine.document.html.tags import BLOCK_TAGS
 
@@ -100,6 +104,7 @@ class FastHtmlNode:
                 if (sibling.tag or "") not in {
                     "-text",
                     "-comment",
+                    "_comment",
                     "head",
                     "html",
                 }:
@@ -289,20 +294,21 @@ class FastHtmlNode:
 
     def insert_before_html(self, html: str) -> str:
         """Insert HTML immediately before this node.
-        Never `replace_with` here: it segfaults on large real-world filing trees.
+        The fragment is parsed and its nodes moved in: a raw string means HTML to one selectolax backend and text to the other, and `replace_with` segfaults on large real-world filing trees.
         """
-        self._node.insert_before(html)
+        fragment = HTMLParser(html)
+        body = fragment.body
+        if body is not None:
+            for child in list(body.iter(include_text=True)):
+                self._node.insert_before(child)
         return html
 
     def replace_with_html(self, html: str) -> None:
         """Replace this node with new HTML content.
-        Prefer :meth:`insert_before_html` then :meth:`decompose`: that pair is verified stable on large filing trees.
+        Implemented as :meth:`insert_before_html` then decompose: that pair is verified stable on large filing trees.
         """
-        if hasattr(self._node, "replace_with"):
-            self._node.replace_with(html)
-        else:
-            self.insert_before_html(html)
-            self._node.decompose()
+        self.insert_before_html(html)
+        self._node.decompose()
 
     def replace_with(self, content: str | FastHtmlNode) -> None:
         """Replace this node with a string or another node."""
@@ -393,7 +399,7 @@ class FastHtmlTree:
             for node in self._tree.css(", ".join(css_tags)):
                 node.decompose()
         if custom_tags:
-            for node in self.traverse():
+            for node in list(self.traverse()):
                 if node.tag in custom_tags:
                     node.decompose()
 
