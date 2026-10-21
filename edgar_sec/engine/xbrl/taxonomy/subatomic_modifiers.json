@@ -219,15 +219,25 @@
     "description": "Merchandise, materials, or WIP inventory"
   },
   {
-    "modifier_id": "M_PAYABLE_ACCRUED",
+    "modifier_id": "M_ACCOUNTS_PAYABLE",
     "category": "WORKING_CAPITAL",
     "keywords": [
-      "Payable",
-      "Payables",
-      "Accrued",
-      "Compensation"
+      "AccountsPayable",
+      "TradePayable",
+      "AccountsPayables"
     ],
-    "description": "Accounts payable or accrued liabilities"
+    "description": "Trade/accounts payable obligations to suppliers",
+    "sibling_group": "OPERATING_LIABILITY_IDENTITY"
+  },
+  {
+    "modifier_id": "M_ACCRUED_LIABILITY",
+    "category": "WORKING_CAPITAL",
+    "keywords": [
+      "AccruedLiabilities",
+      "AccruedExpenses"
+    ],
+    "description": "Accrued liabilities and expenses incurred but not yet paid",
+    "sibling_group": "OPERATING_LIABILITY_IDENTITY"
   },
   {
     "modifier_id": "M_CONTRACT_UNEARNED",
@@ -370,7 +380,6 @@
     ],
     "description": "Noncurrent (> 12 months) temporal maturity horizon"
   },
-
   {
     "modifier_id": "M_FAIR_VALUE",
     "category": "VALUATION_BASIS",
@@ -616,19 +625,32 @@
   {
     "modifier_id": "M_RISK_FX",
     "category": "DERIVATIVE_UNDERLYING_RISK",
-    "keywords": ["FX", "ForeignExchange", "Currency", "CrossCurrency"],
+    "keywords": [
+      "FX",
+      "ForeignExchange",
+      "Currency",
+      "CrossCurrency"
+    ],
     "description": "Foreign-exchange and currency underlying risk"
   },
   {
     "modifier_id": "M_RISK_IR",
     "category": "DERIVATIVE_UNDERLYING_RISK",
-    "keywords": ["InterestRate", "Treasury", "SOFR"],
+    "keywords": [
+      "InterestRate",
+      "Treasury",
+      "SOFR"
+    ],
     "description": "Interest-rate underlying risk"
   },
   {
     "modifier_id": "M_RISK_CREDIT",
     "category": "DERIVATIVE_UNDERLYING_RISK",
-    "keywords": ["Credit", "CDS", "CreditDefault"],
+    "keywords": [
+      "Credit",
+      "CDS",
+      "CreditDefault"
+    ],
     "description": "Credit-spread and credit-default underlying risk"
   },
   {
@@ -711,19 +733,27 @@
   {
     "modifier_id": "M_NOT_SUBJECT_TO_NETTING",
     "category": "NETTING_OFFSET",
-    "keywords": ["NotSubjectToMasterNettingArrangement"],
+    "keywords": [
+      "NotSubjectToMasterNettingArrangement"
+    ],
     "description": "Derivative amounts presented before master-netting offsets"
   },
   {
     "modifier_id": "M_COLLATERAL_RETURN",
     "category": "NETTING_OFFSET",
-    "keywords": ["ObligationToReturnCash", "CollateralReturnObligation"],
+    "keywords": [
+      "ObligationToReturnCash",
+      "CollateralReturnObligation"
+    ],
     "description": "Cash collateral obligation to return amounts received"
   },
   {
     "modifier_id": "M_COLLATERAL_RECLAIM",
     "category": "NETTING_OFFSET",
-    "keywords": ["RightToReclaimCash", "CollateralReclaimRight"],
+    "keywords": [
+      "RightToReclaimCash",
+      "CollateralReclaimRight"
+    ],
     "description": "Cash collateral right to reclaim amounts pledged"
   },
   {
@@ -847,6 +877,877 @@
       "ContinuingOperations"
     ],
     "description": "Continuing operations"
+  },
+  {
+    "modifier_id": "M_WEIGHTED_AVERAGE",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "WeightedAverage"
+    ],
+    "description": "Weighted average measurement basis"
+  },
+  {
+    "modifier_id": "M_VALUATION_ALLOWANCE",
+    "category": "NETTING_OFFSET",
+    "keywords": [
+      "ValuationAllowance",
+      "Allowance"
+    ],
+    "description": "Valuation allowance contra amount against a gross carrying amount"
+  },
+  {
+    "modifier_id": "M_NONCASH",
+    "category": "CASH_FLOW_ACTIVITY",
+    "keywords": [
+      "Noncash"
+    ],
+    "description": "Noncash investing or financing activity"
+  },
+  {
+    "modifier_id": "M_BUSINESS_COMBINATION",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "BusinessCombination",
+      "BusinessCombinations"
+    ],
+    "description": "Business combination or acquisition accounting"
+  },
+  {
+    "modifier_id": "M_APIC",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "AdditionalPaidInCapital",
+      "PaidInCapital"
+    ],
+    "description": "Additional paid in capital component of equity"
+  },
+  {
+    "modifier_id": "M_EQUITY_METHOD",
+    "category": "DOMAIN_VERTICAL",
+    "keywords": [
+      "EquityMethod"
+    ],
+    "description": "Equity method investment accounting"
+  },
+  {
+    "modifier_id": "M_NONCONTROLLING_INTEREST",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "NoncontrollingInterest",
+      "NoncontrollingInterests"
+    ],
+    "description": "Noncontrolling interest component of equity"
+  },
+  {
+    "modifier_id": "M_AWARD_GRANT",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "Grants"
+    ],
+    "description": "Share based awards granted in period"
+  },
+  {
+    "modifier_id": "M_AWARD_VESTED",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "Vested"
+    ],
+    "description": "Share based awards vested in period"
+  },
+  {
+    "modifier_id": "M_AWARD_NONVESTED",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "Nonvested"
+    ],
+    "description": "Share based awards not yet vested"
+  },
+  {
+    "modifier_id": "M_AWARD_FORFEITED",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "Forfeited",
+      "Forfeitures"
+    ],
+    "description": "Share based awards forfeited in period"
+  },
+  {
+    "modifier_id": "M_PAR_VALUE",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "ParValue"
+    ],
+    "description": "Par or stated value of issued shares"
+  },
+  {
+    "modifier_id": "M_LIQUIDATION_PREFERENCE",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "LiquidationPreference"
+    ],
+    "description": "Liquidation preference of preferred shares"
+  },
+  {
+    "modifier_id": "M_FINANCIAL_INSTRUMENT",
+    "category": "INSTRUMENT_TYPE",
+    "keywords": [
+      "Instruments",
+      "Instrument"
+    ],
+    "description": "Financial instrument scope qualifier"
+  },
+  {
+    "modifier_id": "M_RECONCILIATION",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "Reconciliation"
+    ],
+    "description": "Reconciliation bridge between two measures"
+  },
+  {
+    "modifier_id": "M_ARRANGEMENT",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "Arrangement"
+    ],
+    "description": "Arrangement or plan structure qualifier"
+  },
+  {
+    "modifier_id": "M_PERCENT",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "Percent",
+      "Percentage"
+    ],
+    "description": "Percentage or rate measure qualifier"
+  },
+  {
+    "modifier_id": "M_PENSION_DEFINED_CONTRIBUTION",
+    "category": "EMPLOYEE_BENEFIT",
+    "keywords": [
+      "DefinedContributionPlan",
+      "DefinedContribution"
+    ],
+    "description": "Defined contribution retirement plan"
+  },
+  {
+    "modifier_id": "M_CAPITALIZED",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "Capitalized"
+    ],
+    "description": "Capitalized cost carried as an asset"
+  },
+  {
+    "modifier_id": "M_FILM",
+    "category": "DOMAIN_VERTICAL",
+    "keywords": [
+      "Film"
+    ],
+    "description": "Film and episodic content production vertical"
+  },
+  {
+    "modifier_id": "M_THIRD_PARTY",
+    "category": "COUNTERPARTY",
+    "keywords": [
+      "ThirdParty"
+    ],
+    "description": "External counterparty: neither the reporting entity nor a related party"
+  },
+  {
+    "modifier_id": "M_RELATED_PARTY",
+    "category": "COUNTERPARTY",
+    "keywords": [
+      "RelatedParty"
+    ],
+    "description": "Counterparty related to the reporting entity (affiliate, officer, principal owner)"
+  },
+  {
+    "modifier_id": "M_PAST_DUE",
+    "category": "CREDIT_QUALITY",
+    "keywords": [
+      "PastDue"
+    ],
+    "description": "Delinquency state: amount past its contractual due date"
+  },
+  {
+    "modifier_id": "M_DISPOSAL_GROUP",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "DisposalGroup"
+    ],
+    "description": "Assets and liabilities of a disposal group, including discontinued operations"
+  },
+  {
+    "modifier_id": "M_OFF_BALANCE_SHEET",
+    "category": "FINANCING_CLAIM",
+    "keywords": [
+      "OffBalanceSheet"
+    ],
+    "description": "Off-balance-sheet arrangement exposure: guarantees, conduits, retained interests"
+  },
+  {
+    "modifier_id": "M_AVAILABLE_FOR_SALE",
+    "category": "VALUATION_BASIS",
+    "keywords": [
+      "AvailableForSale"
+    ],
+    "description": "Securities classified available-for-sale (fair value through OCI)",
+    "sibling_group": "SECURITIES_CLASSIFICATION"
+  },
+  {
+    "modifier_id": "M_HELD_TO_MATURITY",
+    "category": "VALUATION_BASIS",
+    "keywords": [
+      "HeldToMaturity"
+    ],
+    "description": "Securities classified held-to-maturity (amortized cost)",
+    "sibling_group": "SECURITIES_CLASSIFICATION"
+  },
+  {
+    "modifier_id": "M_COMMODITY_CRUDE_OIL",
+    "category": "COMMODITY",
+    "keywords": [
+      "CrudeOil"
+    ],
+    "description": "Exposure to crude oil as a commodity instrument"
+  },
+  {
+    "modifier_id": "M_COMMODITY_NATURAL_GAS",
+    "category": "COMMODITY",
+    "keywords": [
+      "NaturalGas"
+    ],
+    "description": "Exposure to natural gas as a commodity instrument"
+  },
+  {
+    "modifier_id": "M_COMMODITY_GOLD",
+    "category": "COMMODITY",
+    "keywords": [
+      "Gold"
+    ],
+    "description": "Exposure to gold as a commodity instrument"
+  },
+  {
+    "modifier_id": "M_COMMODITY_COPPER",
+    "category": "COMMODITY",
+    "keywords": [
+      "Copper"
+    ],
+    "description": "Exposure to copper as a commodity instrument"
+  },
+  {
+    "modifier_id": "M_COMMODITY_CORN",
+    "category": "COMMODITY",
+    "keywords": [
+      "Corn"
+    ],
+    "description": "Exposure to corn as a commodity instrument"
+  },
+  {
+    "modifier_id": "M_SUPPLIER_FINANCE",
+    "category": "WORKING_CAPITAL",
+    "keywords": [
+      "SupplierFinance",
+      "SupplierFinanceProgram"
+    ],
+    "description": "Supplier finance (reverse factoring) program obligations"
+  },
+  {
+    "modifier_id": "M_EMPLOYEE_LIABILITY",
+    "category": "EMPLOYEE_BENEFIT",
+    "keywords": [
+      "EmployeeRelatedLiabilities",
+      "EmployeeRelated"
+    ],
+    "description": "Employee-related accrued liabilities (compensation and benefits payable)"
+  },
+  {
+    "modifier_id": "M_DEFERRED_COMPENSATION",
+    "category": "EMPLOYEE_BENEFIT",
+    "keywords": [
+      "DeferredCompensation"
+    ],
+    "description": "Deferred compensation plan obligations and assets"
+  },
+  {
+    "modifier_id": "M_LOSS_CONTINGENCY",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "LossContingency",
+      "LossContingencies"
+    ],
+    "description": "Accrued loss contingencies (litigation, environmental, guarantees of loss)"
+  },
+  {
+    "modifier_id": "M_GUARANTEE_OBLIGATION",
+    "category": "FINANCING_CLAIM",
+    "keywords": [
+      "GuaranteeObligations",
+      "Guarantee"
+    ],
+    "description": "Guarantee obligations issued on behalf of others"
+  },
+  {
+    "modifier_id": "M_DEPOSIT_LIABILITY",
+    "category": "FINANCING_CLAIM",
+    "keywords": [
+      "CustomerDeposits",
+      "Deposits"
+    ],
+    "description": "Deposit liabilities held for customers or depositors"
+  },
+  {
+    "modifier_id": "M_RESTRICTED",
+    "category": "REALIZATION_STATE",
+    "keywords": [
+      "Restricted"
+    ],
+    "description": "Assets or shares whose use, availability, or transfer is restricted"
+  },
+  {
+    "modifier_id": "M_SHARES_ISSUED",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "SharesIssued"
+    ],
+    "description": "Share count in issued state"
+  },
+  {
+    "modifier_id": "M_SHARES_OUTSTANDING",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "SharesOutstanding"
+    ],
+    "description": "Share count in outstanding state"
+  },
+  {
+    "modifier_id": "M_SHARES_AUTHORIZED",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "SharesAuthorized"
+    ],
+    "description": "Share count in authorized state"
+  },
+  {
+    "modifier_id": "M_PREPAID",
+    "category": "WORKING_CAPITAL",
+    "keywords": [
+      "Prepaid",
+      "PrepaidExpense",
+      "PrepaidExpenses"
+    ],
+    "description": "Prepaid expenses and prepayments made for future periods"
+  },
+  {
+    "modifier_id": "M_GOODWILL",
+    "category": "LONG_LIVED_ASSET",
+    "keywords": [
+      "Goodwill"
+    ],
+    "description": "Goodwill arising from business combinations"
+  },
+  {
+    "modifier_id": "M_INVESTMENT",
+    "category": "INSTRUMENT_TYPE",
+    "keywords": [
+      "Investment",
+      "Investments",
+      "MarketableSecurities",
+      "TradingSecurities"
+    ],
+    "description": "Investment securities and investment positions held"
+  },
+  {
+    "modifier_id": "M_VARIABLE_INTEREST_ENTITY",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "VariableInterestEntity",
+      "VIE"
+    ],
+    "description": "Variable interest entity (VIE) consolidation involvement"
+  },
+  {
+    "modifier_id": "M_CLAIM_RESERVE",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "ClaimReserve",
+      "ClaimsReserve"
+    ],
+    "description": "Insurance claim and loss reserves and related benefits"
+  },
+  {
+    "modifier_id": "M_AGGREGATE",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "Aggregate"
+    ],
+    "description": "Amount aggregated across a group (plans, awards, positions), not a single item"
+  },
+  {
+    "modifier_id": "M_ANTIDILUTIVE",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "Antidilutive"
+    ],
+    "description": "Antidilutive securities excluded from diluted EPS computation"
+  },
+  {
+    "modifier_id": "M_BENEFIT_OBLIGATION",
+    "category": "EMPLOYEE_BENEFIT",
+    "keywords": [
+      "BenefitObligation",
+      "ProjectedBenefitObligation"
+    ],
+    "description": "Defined benefit obligation measure (projected benefit obligation)"
+  },
+  {
+    "modifier_id": "M_ACCUMULATED_BENEFIT_OBLIGATION",
+    "category": "EMPLOYEE_BENEFIT",
+    "keywords": [
+      "AccumulatedBenefitObligation"
+    ],
+    "description": "Accumulated benefit obligation (no future salary projection)"
+  },
+  {
+    "modifier_id": "M_FUNDED_STATUS",
+    "category": "EMPLOYEE_BENEFIT",
+    "keywords": [
+      "FundedStatus"
+    ],
+    "description": "Funded status of a defined benefit plan (plan assets versus obligation)"
+  },
+  {
+    "modifier_id": "M_PLAN_ASSETS",
+    "category": "EMPLOYEE_BENEFIT",
+    "keywords": [
+      "PlanAssets"
+    ],
+    "description": "Defined benefit plan assets and measures over them"
+  },
+  {
+    "modifier_id": "M_FACE_AMOUNT",
+    "category": "VALUATION_BASIS",
+    "keywords": [
+      "FaceAmount"
+    ],
+    "description": "Face (principal) amount of a debt instrument"
+  },
+  {
+    "modifier_id": "M_CARRYING_AMOUNT",
+    "category": "VALUATION_BASIS",
+    "keywords": [
+      "CarryingAmount",
+      "CarryingValue"
+    ],
+    "description": "Carrying (book) amount of an instrument or position"
+  },
+  {
+    "modifier_id": "M_MORTGAGE_BANKING",
+    "category": "DOMAIN_VERTICAL",
+    "keywords": [
+      "MortgageBanking"
+    ],
+    "description": "Mortgage banking and servicing activities"
+  },
+  {
+    "modifier_id": "M_AFFORDABLE_HOUSING",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "AffordableHousing"
+    ],
+    "description": "Affordable housing (LIHTC) project investments and credits"
+  },
+  {
+    "modifier_id": "M_COMMON",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "CommonStock",
+      "Common"
+    ],
+    "description": "Common stock class",
+    "sibling_group": "STOCK_CLASS"
+  },
+  {
+    "modifier_id": "M_PREFERRED",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "PreferredStock",
+      "Preferred"
+    ],
+    "description": "Preferred stock class",
+    "sibling_group": "STOCK_CLASS"
+  },
+  {
+    "modifier_id": "V_NET",
+    "category": "VALUATION_PRESENTATION",
+    "keywords": [
+      "Net"
+    ],
+    "description": "Amount presented net of a contra, allowance, or offsetting item",
+    "sibling_group": "VALUATION_PRESENTATION"
+  },
+  {
+    "modifier_id": "V_GROSS",
+    "category": "VALUATION_PRESENTATION",
+    "keywords": [
+      "Gross"
+    ],
+    "description": "Amount presented gross, before any contra, allowance, or offset",
+    "sibling_group": "VALUATION_PRESENTATION"
+  },
+  {
+    "modifier_id": "V_BASIC",
+    "category": "EPS_BASIS",
+    "keywords": [
+      "Basic"
+    ],
+    "description": "Per-share amount on the basic (undiluted) share basis",
+    "sibling_group": "EPS_BASIS"
+  },
+  {
+    "modifier_id": "V_DILUTED",
+    "category": "EPS_BASIS",
+    "keywords": [
+      "Diluted"
+    ],
+    "description": "Per-share amount on the diluted share basis",
+    "sibling_group": "EPS_BASIS"
+  },
+  {
+    "modifier_id": "M_CURRENT",
+    "category": "MATURITY_HORIZON",
+    "keywords": [
+      "Current"
+    ],
+    "description": "Current portion (due or realizable within 12 months); structural horizon tag",
+    "sibling_group": "MATURITY_HORIZON"
+  },
+  {
+    "modifier_id": "M_NONCURRENT",
+    "category": "MATURITY_HORIZON",
+    "keywords": [
+      "Noncurrent"
+    ],
+    "description": "Noncurrent portion (beyond 12 months); structural horizon tag",
+    "sibling_group": "MATURITY_HORIZON"
+  },
+  {
+    "modifier_id": "M_TAX",
+    "category": "EXPENSE_NATURE",
+    "keywords": [
+      "Tax",
+      "Taxes"
+    ],
+    "description": "Tax scope: income, payroll, property, or other taxes and tax effects"
+  },
+  {
+    "modifier_id": "M_OCI",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "OtherComprehensiveIncome",
+      "OCI"
+    ],
+    "description": "Other comprehensive income component of equity"
+  },
+  {
+    "modifier_id": "M_AOCI",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "AccumulatedOtherComprehensiveIncome",
+      "AOCI"
+    ],
+    "description": "Accumulated other comprehensive income balance"
+  },
+  {
+    "modifier_id": "M_COMPREHENSIVE",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "Comprehensive"
+    ],
+    "description": "Comprehensive income scope (net income plus OCI)"
+  },
+  {
+    "modifier_id": "M_FX_CTA",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "CumulativeTranslationAdjustment",
+      "CTA"
+    ],
+    "description": "Cumulative foreign currency translation adjustment in AOCI"
+  },
+  {
+    "modifier_id": "M_LEASE",
+    "category": "LONG_LIVED_ASSET",
+    "keywords": [
+      "Lease",
+      "Leases"
+    ],
+    "description": "Lease scope: lessee or lessor arrangements under ASC 842"
+  },
+  {
+    "modifier_id": "M_PPE_CAPEX",
+    "category": "LONG_LIVED_ASSET",
+    "keywords": [
+      "PropertyPlantAndEquipment",
+      "CapitalExpenditures"
+    ],
+    "description": "Property, plant and equipment and capital expenditure scope"
+  },
+  {
+    "modifier_id": "M_INTEREST",
+    "category": "DOMAIN_VERTICAL",
+    "keywords": [
+      "Interest"
+    ],
+    "description": "Interest income, expense, receivable, or payable scope"
+  },
+  {
+    "modifier_id": "M_NONINTEREST",
+    "category": "DOMAIN_VERTICAL",
+    "keywords": [
+      "Noninterest"
+    ],
+    "description": "Noninterest income or expense (banking presentation)"
+  },
+  {
+    "modifier_id": "M_DERIVATIVE",
+    "category": "INSTRUMENT_TYPE",
+    "keywords": [
+      "Derivative",
+      "Derivatives"
+    ],
+    "description": "Derivative instrument scope (ASC 815)"
+  },
+  {
+    "modifier_id": "M_DEPR_AMORT",
+    "category": "EXPENSE_NATURE",
+    "keywords": [
+      "Depreciation",
+      "Amortization"
+    ],
+    "description": "Depreciation and amortization scope"
+  },
+  {
+    "modifier_id": "M_CONTRA_ALLOWANCE",
+    "category": "NETTING_OFFSET",
+    "keywords": [
+      "Allowance"
+    ],
+    "description": "Allowance contra amount netted against a gross carrying amount"
+  },
+  {
+    "modifier_id": "M_CONTRA_INCENTIVE",
+    "category": "NETTING_OFFSET",
+    "keywords": [
+      "Incentive"
+    ],
+    "description": "Contra incentive or consideration payable netted against revenue or an asset"
+  },
+  {
+    "modifier_id": "M_CONTRA_DISCOUNT",
+    "category": "NETTING_OFFSET",
+    "keywords": [
+      "Discount"
+    ],
+    "description": "Unamortized discount contra amount on a debt or receivable carrying amount"
+  },
+  {
+    "modifier_id": "M_CONTRA_TREASURY",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "Treasury"
+    ],
+    "description": "Treasury stock contra-equity scope"
+  },
+  {
+    "modifier_id": "M_CRYPTO_DIGITAL",
+    "category": "INSTRUMENT_TYPE",
+    "keywords": [
+      "Crypto",
+      "CryptoAsset",
+      "DigitalAsset"
+    ],
+    "description": "Crypto and digital asset holdings and activity"
+  },
+  {
+    "modifier_id": "M_DEFERRED_REVENUE",
+    "category": "WORKING_CAPITAL",
+    "keywords": [
+      "DeferredRevenue"
+    ],
+    "description": "Deferred (unearned) revenue liability"
+  },
+  {
+    "modifier_id": "M_DISPOSAL_GAIN",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "GainOnDisposal",
+      "DisposalGain"
+    ],
+    "description": "Gain or loss on disposal, sale, or extinguishment"
+  },
+  {
+    "modifier_id": "M_EQUITY_TOTAL",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "TotalEquity",
+      "StockholdersEquity"
+    ],
+    "description": "Total equity aggregate (identity carried by the head)"
+  },
+  {
+    "modifier_id": "M_GROSS_MARGIN",
+    "category": "VALUATION_BASIS",
+    "keywords": [
+      "GrossProfit",
+      "GrossMargin"
+    ],
+    "description": "Gross margin measure (revenue less cost of revenue)"
+  },
+  {
+    "modifier_id": "M_LICENSE",
+    "category": "DOMAIN_VERTICAL",
+    "keywords": [
+      "License",
+      "Licensing"
+    ],
+    "description": "Licensing arrangements, license revenue, or licensed rights"
+  },
+  {
+    "modifier_id": "M_MATURITY_LONG",
+    "category": "MATURITY_HORIZON",
+    "keywords": [
+      "LongTermMaturity"
+    ],
+    "description": "Long-dated maturity bucket in a maturity schedule"
+  },
+  {
+    "modifier_id": "M_MATURITY_SHORT",
+    "category": "MATURITY_HORIZON",
+    "keywords": [
+      "ShortTermMaturity"
+    ],
+    "description": "Short-dated maturity bucket in a maturity schedule"
+  },
+  {
+    "modifier_id": "M_NET_BOTTOMLINE",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "NetIncome",
+      "NetLoss"
+    ],
+    "description": "Bottom-line net income or loss measure"
+  },
+  {
+    "modifier_id": "M_PURPOSE_SALE",
+    "category": "VALUATION_BASIS",
+    "keywords": [
+      "ForSale"
+    ],
+    "description": "Held-for-sale or available-for-sale purpose classification"
+  },
+  {
+    "modifier_id": "M_REGULATORY_ASC980",
+    "category": "DOMAIN_VERTICAL",
+    "keywords": [
+      "Regulated",
+      "Regulatory"
+    ],
+    "description": "Regulated operations accounting under ASC 980 (utilities)"
+  },
+  {
+    "modifier_id": "M_RPO_BACKLOG",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "RemainingPerformanceObligation",
+      "Backlog"
+    ],
+    "description": "Remaining performance obligations and order backlog"
+  },
+  {
+    "modifier_id": "M_SERVICE",
+    "category": "REVENUE_TYPE",
+    "keywords": [
+      "Service",
+      "Services"
+    ],
+    "description": "Service activity or service revenue scope"
+  },
+  {
+    "modifier_id": "M_TEMPORARY_MEZZANINE",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "TemporaryEquity",
+      "Mezzanine"
+    ],
+    "description": "Temporary (mezzanine) equity: redeemable instruments outside permanent equity"
+  },
+  {
+    "modifier_id": "M_UNION_CBA",
+    "category": "EMPLOYEE_BENEFIT",
+    "keywords": [
+      "CollectiveBargaining"
+    ],
+    "description": "Collective bargaining agreement and union workforce scope"
+  },
+  {
+    "modifier_id": "M_WORKING_CAPITAL",
+    "category": "WORKING_CAPITAL",
+    "keywords": [
+      "WorkingCapital"
+    ],
+    "description": "Working capital scope (current assets less current liabilities)"
+  },
+  {
+    "modifier_id": "M_EXERCISE_PRICE",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "ExercisePrice",
+      "StrikePrice"
+    ],
+    "description": "Exercise or strike price attribute of an option or warrant"
+  },
+  {
+    "modifier_id": "M_FREE_CASH_FLOW",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "FreeCashFlow"
+    ],
+    "description": "Free cash flow (operating cash flow less capital expenditures)"
+  },
+  {
+    "modifier_id": "M_HELD_FOR_SALE",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "HeldForSale"
+    ],
+    "description": "Held-for-sale classification of assets or disposal groups"
+  },
+  {
+    "modifier_id": "M_MEDICAL_CLAIM",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "MedicalClaim",
+      "MedicalClaims"
+    ],
+    "description": "Medical or health claim reserves and costs"
+  },
+  {
+    "modifier_id": "M_UNCOMMENCED",
+    "category": "LONG_LIVED_ASSET",
+    "keywords": [
+      "NotYetCommenced"
+    ],
+    "description": "Lease or contract not yet commenced at the reporting date"
+  },
+  {
+    "modifier_id": "M_WARRANT",
+    "category": "INSTRUMENT_TYPE",
+    "keywords": [
+      "Warrant",
+      "Warrants"
+    ],
+    "description": "Warrant instrument scope"
   }
 ]
-

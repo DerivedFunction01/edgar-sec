@@ -35,5 +35,12 @@
     "directionality": "DIRECTED",
     "is_computed": false,
     "description": "Intensity, coverage multiple, or margin metric derived via arithmetic expression over atom coordinates"
+  },
+  {
+    "relation_type": "PLACEMENT",
+    "algebraic_class": "GROUPING",
+    "directionality": "DIRECTED_ACYCLIC",
+    "is_computed": false,
+    "description": "Presentation grouping: source is presented under target in a statement tree; asserts co-presentation, not algebra. Evidence tier below calculation arcs; never derivation proof."
   }
 ]

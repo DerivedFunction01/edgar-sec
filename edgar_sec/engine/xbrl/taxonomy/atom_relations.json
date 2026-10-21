@@ -1277,5 +1277,1209 @@
     "target_concept": "CashPeriodIncreaseDecrease",
     "formula_id": "FORMULA_CASH_FLOW",
     "description": "FX effect contributes +1.0 to Net Cash Flow"
+  },
+  {
+    "edge_id": "R_CONTRA_PPE_ACCUM_DEPR",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DA_DEPLETION"
+      ]
+    },
+    "source_concept": "AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment",
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_PPE_TANGIBLE"
+      ]
+    },
+    "target_concept": "PropertyPlantAndEquipmentNet",
+    "formula_id": "FORMULA_PPE_NET",
+    "description": "Accumulated depreciation subtracts from gross PP&E to yield net PP&E"
+  },
+  {
+    "edge_id": "R_PART_EQUITY_APIC",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_APIC"
+      ]
+    },
+    "source_concept": "AdditionalPaidInCapital",
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "target_concept": "StockholdersEquity",
+    "formula_id": "FORMULA_STOCKHOLDERS_EQUITY",
+    "description": "Additional paid in capital contributes +1.0 to Stockholders Equity"
+  },
+  {
+    "edge_id": "R_CONTRA_EQUITY_TREASURY",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_TREASURY_REPURCHASE"
+      ]
+    },
+    "source_concept": "TreasuryStock",
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "target_concept": "StockholdersEquity",
+    "formula_id": "FORMULA_STOCKHOLDERS_EQUITY",
+    "description": "Treasury stock subtracts from Stockholders Equity"
+  },
+  {
+    "edge_id": "R_DUAL_OCI_BRIDGE",
+    "relation_type": "DUAL_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_OCI"
+      ]
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_OCI"
+      ]
+    },
+    "source_concept": "AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+    "target_concept": "OtherComprehensiveIncomeLossNetOfTax",
+    "description": "AOCI stock is the accumulated bridge of the OCI flow (Step 5 S4 adjudication).",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_MCALC_001",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "source_concept": "AssetsCurrent",
+    "target_concept": "Assets",
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_002",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "source_concept": "IncreaseDecreaseInInventories",
+    "target_concept": "NetCashProvidedByUsedInOperatingActivities",
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_003",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "source_concept": "CashAndCashEquivalentsAtCarryingValue",
+    "target_concept": "AssetsCurrent",
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_004",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "source_concept": "NetCashProvidedByUsedInOperatingActivities",
+    "target_concept": "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect",
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_005",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "source_concept": "RetainedEarningsAccumulatedDeficit",
+    "target_concept": "StockholdersEquity",
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_006",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "source_concept": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+    "target_concept": "LiabilitiesAndStockholdersEquity",
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_007",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "source_concept": "ShareBasedCompensation",
+    "target_concept": "NetCashProvidedByUsedInOperatingActivities",
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_008",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "source_concept": "CurrentIncomeTaxExpenseBenefit",
+    "target_concept": "IncomeTaxExpenseBenefit",
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_009",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "source_concept": "IncomeTaxExpenseBenefit",
+    "target_concept": "ProfitLoss",
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_010",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "source_concept": "ProfitLoss",
+    "target_concept": "NetCashProvidedByUsedInOperatingActivities",
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_011",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "source_concept": "OperatingIncomeLoss",
+    "target_concept": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_012",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "source_concept": "LesseeOperatingLeaseLiabilityUndiscountedExcessAmount",
+    "target_concept": "LesseeOperatingLeaseLiabilityPaymentsDue",
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_013",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "source_concept": "Liabilities",
+    "target_concept": "LiabilitiesAndStockholdersEquity",
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_014",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "source_concept": "Revenues",
+    "target_concept": "OperatingIncomeLoss",
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_015",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "source_concept": "DeferredTaxAssetsNet",
+    "target_concept": "DeferredTaxAssetsLiabilitiesNet",
+    "description": "Mined from calculation arcs attested at 39 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_001",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "source_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber",
+    "target_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedRollForward",
+    "description": "Mined from presentation arcs attested at 39 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_016",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "source_concept": "DeferredTaxAssetsOperatingLossCarryforwards",
+    "target_concept": "DeferredTaxAssetsGross",
+    "description": "Mined from calculation arcs attested at 37 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_017",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "source_concept": "DefinedBenefitPlanServiceCost",
+    "target_concept": "DefinedBenefitPlanNetPeriodicBenefitCost",
+    "description": "Mined from calculation arcs attested at 36 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_018",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "source_concept": "CostsAndExpenses",
+    "target_concept": "OperatingIncomeLoss",
+    "description": "Mined from calculation arcs attested at 36 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_002",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "source_concept": "UnrecognizedTaxBenefits",
+    "target_concept": "ReconciliationOfUnrecognizedTaxBenefitsExcludingAmountsPertainingToExaminedTaxReturnsRollForward",
+    "description": "Mined from presentation arcs attested at 36 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_019",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "source_concept": "FiniteLivedIntangibleAssetsAmortizationExpenseNextTwelveMonths",
+    "target_concept": "FiniteLivedIntangibleAssetsNet",
+    "description": "Mined from calculation arcs attested at 34 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_020",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "source_concept": "DeferredTaxAssetsTaxDeferredExpenseReservesAndAccruals",
+    "target_concept": "DeferredTaxAssetsGross",
+    "description": "Mined from calculation arcs attested at 34 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_003",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "source_concept": "OtherComprehensiveIncomeLossNetOfTax",
+    "target_concept": "IncreaseDecreaseInStockholdersEquityRollForward",
+    "description": "Mined from presentation arcs attested at 34 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_021",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "source_concept": "DefinedBenefitPlanExpectedReturnOnPlanAssets",
+    "target_concept": "DefinedBenefitPlanNetPeriodicBenefitCost",
+    "description": "Mined from calculation arcs attested at 33 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_022",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "source_concept": "IncomeTaxReconciliationStateAndLocalIncomeTaxes",
+    "target_concept": "IncomeTaxExpenseBenefit",
+    "description": "Mined from calculation arcs attested at 32 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_023",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_SHARE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_SHARE",
+      "mods": []
+    },
+    "source_concept": "WeightedAverageNumberOfSharesOutstandingBasic",
+    "target_concept": "WeightedAverageNumberOfDilutedSharesOutstanding",
+    "description": "Mined from calculation arcs attested at 32 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_004",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "source_concept": "Goodwill",
+    "target_concept": "GoodwillRollForward",
+    "description": "Mined from presentation arcs attested at 32 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_005",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_SHARE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_CHANGE",
+        "M_FORWARD"
+      ]
+    },
+    "source_concept": "CommonStockSharesOutstanding",
+    "target_concept": "IncreaseDecreaseInStockholdersEquityRollForward",
+    "description": "Mined from presentation arcs attested at 32 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_024",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_UNIT_RATE",
+      "mods": []
+    },
+    "source_concept": "EffectiveIncomeTaxRateReconciliationStateAndLocalIncomeTaxes",
+    "target_concept": "EffectiveIncomeTaxRateContinuingOperations",
+    "description": "Mined from calculation arcs attested at 31 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_025",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_UNIT_RATE",
+      "mods": [
+        "M_TAX_INCOME"
+      ]
+    },
+    "target": {
+      "head": "H_UNIT_RATE",
+      "mods": [
+        "M_TAX_INCOME"
+      ]
+    },
+    "source_concept": "EffectiveIncomeTaxRateReconciliationAtFederalStatutoryIncomeTaxRate",
+    "target_concept": "EffectiveIncomeTaxRateContinuingOperations",
+    "description": "Mined from calculation arcs attested at 31 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_006",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_SBC"
+      ]
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_CHANGE",
+        "M_FORWARD"
+      ]
+    },
+    "source_concept": "StockIssuedDuringPeriodValueShareBasedCompensation",
+    "target_concept": "IncreaseDecreaseInStockholdersEquityRollForward",
+    "description": "Mined from presentation arcs attested at 31 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_007",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "source_concept": "DefinedBenefitPlanActuarialGainLoss",
+    "target_concept": "DefinedBenefitPlanChangeInBenefitObligationRollForward",
+    "description": "Mined from presentation arcs attested at 28 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_026",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "source_concept": "DefinedBenefitPlanAmortizationOfPriorServiceCostCredit",
+    "target_concept": "DefinedBenefitPlanNetPeriodicBenefitCost",
+    "description": "Mined from calculation arcs attested at 26 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_008",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "source_concept": "DefinedBenefitPlanInterestCost",
+    "target_concept": "DefinedBenefitPlanChangeInBenefitObligationRollForward",
+    "description": "Mined from presentation arcs attested at 26 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_027",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COMMITMENT",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "source_concept": "CommitmentsAndContingencies",
+    "target_concept": "LiabilitiesAndStockholdersEquity",
+    "description": "Mined from calculation arcs attested at 25 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_009",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "source_concept": "DefinedBenefitPlanActualReturnOnPlanAssets",
+    "target_concept": "DefinedBenefitPlanChangeInFairValueOfPlanAssetsRollForward",
+    "description": "Mined from presentation arcs attested at 25 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_010",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "source_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsOutstandingNumber",
+    "target_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsOutstandingRollForward",
+    "description": "Mined from presentation arcs attested at 25 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_028",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "source_concept": "DeferredTaxAssetsTaxDeferredExpenseCompensationAndBenefitsShareBasedCompensationCost",
+    "target_concept": "DeferredTaxAssetsGross",
+    "description": "Mined from calculation arcs attested at 24 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_029",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "source_concept": "LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths",
+    "target_concept": "DebtInstrumentCarryingAmount",
+    "description": "Mined from calculation arcs attested at 23 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_011",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "source_concept": "DividendsCommonStockCash",
+    "target_concept": "IncreaseDecreaseInStockholdersEquityRollForward",
+    "description": "Mined from presentation arcs attested at 23 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_012",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_SHARE",
+      "mods": [
+        "M_OPTION"
+      ]
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_ARRANGEMENT",
+        "M_FORWARD",
+        "M_OPTION",
+        "M_SBC",
+        "M_SBC_AWARD"
+      ]
+    },
+    "source_concept": "StockIssuedDuringPeriodSharesStockOptionsExercised",
+    "target_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsOutstandingRollForward",
+    "description": "Mined from presentation arcs attested at 23 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_030",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "source_concept": "SellingGeneralAndAdministrativeExpense",
+    "target_concept": "CostsAndExpenses",
+    "description": "Mined from calculation arcs attested at 22 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_031",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_UNIT_RATE",
+      "mods": [
+        "M_RECONCILIATION",
+        "M_TAX_INCOME"
+      ]
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_TAX"
+      ]
+    },
+    "source_concept": "IncomeTaxReconciliationForeignIncomeTaxRateDifferential",
+    "target_concept": "IncomeTaxExpenseBenefit",
+    "description": "Mined from calculation arcs attested at 22 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_013",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "source_concept": "ValuationAllowancesAndReservesChargedToCostAndExpense",
+    "target_concept": "MovementInValuationAllowancesAndReservesRollForward",
+    "description": "Mined from presentation arcs attested at 22 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_032",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_RECONCILIATION",
+        "M_TAX_INCOME"
+      ]
+    },
+    "target": {
+      "head": "H_UNIT_RATE",
+      "mods": [
+        "M_CONTINUING",
+        "M_TAX_INCOME"
+      ]
+    },
+    "source_concept": "EffectiveIncomeTaxRateReconciliationNondeductibleExpense",
+    "target_concept": "EffectiveIncomeTaxRateContinuingOperations",
+    "description": "Mined from calculation arcs attested at 21 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_033",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_OCI"
+      ]
+    },
+    "source_concept": "DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetGainsLossesBeforeTax",
+    "target_concept": "DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeBeforeTax",
+    "description": "Mined from calculation arcs attested at 21 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_034",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "source_concept": "DefinedBenefitPlanRecognizedNetGainLossDueToSettlementsAndCurtailments1",
+    "target_concept": "DefinedBenefitPlanNetPeriodicBenefitCost",
+    "description": "Mined from calculation arcs attested at 20 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_035",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "source_concept": "DebtInstrumentUnamortizedDiscountPremiumAndDebtIssuanceCostsNet",
+    "target_concept": "LongTermDebt",
+    "description": "Mined from calculation arcs attested at 19 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_036",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "source_concept": "OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationReclassificationAdjustmentFromAOCIRealizedUponSaleOrLiquidationNetOfTax",
+    "target_concept": "OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationAdjustmentNetOfTaxPortionAttributableToParent",
+    "description": "Mined from calculation arcs attested at 19 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_014",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_UNIT_RATE",
+      "mods": [
+        "M_OPTION",
+        "M_SBC",
+        "M_SBC_AWARD",
+        "M_WEIGHTED_AVERAGE"
+      ]
+    },
+    "target": {
+      "head": "H_UNIT_RATE",
+      "mods": [
+        "M_OPTION",
+        "M_SBC",
+        "M_WEIGHTED_AVERAGE"
+      ]
+    },
+    "source_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsOutstandingWeightedAverageExercisePrice",
+    "target_concept": "ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsOutstandingWeightedAverageExercisePriceRollforward",
+    "description": "Mined from presentation arcs attested at 19 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_037",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "source_concept": "DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeNetPriorServiceCostCreditBeforeTax",
+    "target_concept": "DefinedBenefitPlanAccumulatedOtherComprehensiveIncomeBeforeTax",
+    "description": "Mined from calculation arcs attested at 18 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_038",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "source_concept": "IncomeTaxReconciliationNondeductibleExpenseShareBasedCompensationCost",
+    "target_concept": "IncomeTaxExpenseBenefit",
+    "description": "Mined from calculation arcs attested at 18 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_015",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_FORWARD"
+      ]
+    },
+    "source_concept": "TreasuryStockValueAcquiredCostMethod",
+    "target_concept": "IncreaseDecreaseInStockholdersEquityRollForward",
+    "description": "Mined from presentation arcs attested at 17 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_016",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "source_concept": "GoodwillForeignCurrencyTranslationGainLoss",
+    "target_concept": "GoodwillRollForward",
+    "description": "Mined from presentation arcs attested at 17 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_039",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "source_concept": "DeferredTaxLiabilitiesOtherComprehensiveIncome",
+    "target_concept": "DeferredIncomeTaxLiabilities",
+    "description": "Mined from calculation arcs attested at 15 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_017",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "source_concept": "PaymentsForRestructuring",
+    "target_concept": "RestructuringReserveRollForward",
+    "description": "Mined from presentation arcs attested at 15 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_040",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_RECONCILIATION",
+        "M_TAX_INCOME"
+      ]
+    },
+    "target": {
+      "head": "H_UNIT_RATE",
+      "mods": [
+        "M_CONTINUING",
+        "M_TAX_INCOME"
+      ]
+    },
+    "source_concept": "EffectiveIncomeTaxRateReconciliationChangeInDeferredTaxAssetsValuationAllowance",
+    "target_concept": "EffectiveIncomeTaxRateContinuingOperations",
+    "description": "Mined from calculation arcs attested at 14 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_041",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_TAX",
+        "V_GROSS"
+      ]
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "source_concept": "AvailableForSaleDebtSecuritiesAccumulatedGrossUnrealizedGainBeforeTax",
+    "target_concept": "AvailableForSaleDebtSecuritiesAmortizedCostBasis",
+    "description": "Mined from calculation arcs attested at 14 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_042",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "source_concept": "IncomeTaxReconciliationChangeInDeferredTaxAssetsValuationAllowance",
+    "target_concept": "IncomeTaxExpenseBenefit",
+    "description": "Mined from calculation arcs attested at 13 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_043",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "source_concept": "DeferredTaxLiabilitiesPrepaidExpenses",
+    "target_concept": "DeferredIncomeTaxLiabilities",
+    "description": "Mined from calculation arcs attested at 12 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_044",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "source_concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "target_concept": "Revenues",
+    "description": "Mined from calculation arcs attested at 12 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_045",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "source_concept": "AssetManagementFees",
+    "target_concept": "NoninterestIncome",
+    "description": "Mined from calculation arcs attested at 10 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_046",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "source_concept": "AmortizationOfFinancingCosts",
+    "target_concept": "NetCashProvidedByUsedInOperatingActivities",
+    "description": "Mined from calculation arcs attested at 10 firms.",
+    "evidence": "calculation"
   }
 ]

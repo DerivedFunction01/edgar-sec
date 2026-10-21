@@ -156,7 +156,10 @@
       "Goodwill"
     ],
     "role": "HEAD",
-    "atom": "H_ASSET"
+    "atom": "H_ASSET",
+    "mods": [
+      "M_GOODWILL"
+    ]
   },
   {
     "phrase": [
@@ -859,6 +862,18 @@
       "Based",
       "Compensation"
     ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_SBC"
+    ]
+  },
+  {
+    "phrase": [
+      "Share",
+      "Based",
+      "Compensation"
+    ],
     "role": "MODIFIER",
     "atom": "M_SBC"
   },
@@ -868,8 +883,30 @@
       "And",
       "Amortization"
     ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_DA_DEPLETION"
+    ]
+  },
+  {
+    "phrase": [
+      "Depreciation",
+      "And",
+      "Amortization"
+    ],
     "role": "MODIFIER",
     "atom": "M_DEPR_AMORT"
+  },
+  {
+    "phrase": [
+      "Depreciation"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_DA_DEPLETION"
+    ]
   },
   {
     "phrase": [
@@ -921,6 +958,17 @@
     ],
     "role": "MODIFIER",
     "atom": "M_MEDICAL_CLAIM"
+  },
+  {
+    "phrase": [
+      "Accounts",
+      "Receivable"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_RECEIVABLE"
+    ]
   },
   {
     "phrase": [
@@ -989,8 +1037,22 @@
       "Deferred",
       "Revenue"
     ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEFERRED_REVENUE"
+    ]
+  },
+  {
+    "phrase": [
+      "Deferred",
+      "Revenue"
+    ],
     "role": "MODIFIER",
-    "atom": "M_DEFERRED_REVENUE"
+    "atom": "M_DEFERRED_REVENUE",
+    "mods": [
+      "M_DEFERRED_REVENUE"
+    ]
   },
   {
     "phrase": [
@@ -1037,8 +1099,48 @@
       "Temporary",
       "Equity"
     ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_TEMPORARY_MEZZANINE"
+    ]
+  },
+  {
+    "phrase": [
+      "Temporary",
+      "Equity"
+    ],
     "role": "MODIFIER",
-    "atom": "M_TEMPORARY_MEZZANINE"
+    "atom": "M_TEMPORARY_MEZZANINE",
+    "mods": [
+      "M_TEMPORARY_MEZZANINE"
+    ]
+  },
+  {
+    "phrase": [
+      "Accumulated",
+      "Other",
+      "Comprehensive",
+      "Income"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_OCI"
+    ]
+  },
+  {
+    "phrase": [
+      "Accumulated",
+      "Other",
+      "Comprehensive",
+      "Income"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_OCI"
+    ]
   },
   {
     "phrase": [
@@ -1048,7 +1150,10 @@
       "Income"
     ],
     "role": "MODIFIER",
-    "atom": "M_AOCI"
+    "atom": "M_AOCI",
+    "mods": [
+      "M_OCI"
+    ]
   },
   {
     "phrase": [
@@ -1115,6 +1220,17 @@
     ],
     "role": "MODIFIER",
     "atom": "M_CONTRA_DISCOUNT"
+  },
+  {
+    "phrase": [
+      "Treasury",
+      "Stock"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_TREASURY_REPURCHASE"
+    ]
   },
   {
     "phrase": [
@@ -1635,6 +1751,15 @@
   },
   {
     "phrase": [
+      "Defined",
+      "Benefit",
+      "Plan"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PENSION_DEFINED_BENEFIT"
+  },
+  {
+    "phrase": [
       "Share",
       "Based",
       "Payment",
@@ -2093,5 +2218,4370 @@
     ],
     "role": "MODIFIER",
     "atom": "M_FINANCING"
+  },
+  {
+    "phrase": [
+      "Notes",
+      "Receivable"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_RECEIVABLE"
+    ]
+  },
+  {
+    "phrase": [
+      "Accumulated",
+      "Depreciation"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_DA_DEPLETION"
+    ]
+  },
+  {
+    "phrase": [
+      "Additional",
+      "Paid",
+      "In",
+      "Capital"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_APIC"
+    ]
+  },
+  {
+    "phrase": [
+      "Unrecognized",
+      "Tax",
+      "Benefits"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_TAX_INCOME"
+    ]
+  },
+  {
+    "phrase": [
+      "Time",
+      "Deposits"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEBT_BORROWING"
+    ]
+  },
+  {
+    "phrase": [
+      "Time",
+      "Deposit"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEBT_BORROWING"
+    ]
+  },
+  {
+    "phrase": [
+      "Debt",
+      "Securities"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Equity",
+      "Securities"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_RISK_EQUITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Intangible",
+      "Assets"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INTANGIBLE_GOODWILL"
+    ]
+  },
+  {
+    "phrase": [
+      "Line",
+      "Of",
+      "Credit"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEBT_BORROWING"
+    ]
+  },
+  {
+    "phrase": [
+      "Partners",
+      "Capital"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Aoci"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_OCI"
+    ]
+  },
+  {
+    "phrase": [
+      "Tax",
+      "Rate",
+      "Reconciliation"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_TAX_INCOME"
+    ]
+  },
+  {
+    "phrase": [
+      "Income",
+      "Tax",
+      "Rate",
+      "Reconciliation"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_TAX_INCOME"
+    ]
+  },
+  {
+    "phrase": [
+      "Effective",
+      "Income",
+      "Tax",
+      "Rate"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_TAX_INCOME"
+    ]
+  },
+  {
+    "phrase": [
+      "Common",
+      "Stock"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_COMMON"
+    ]
+  },
+  {
+    "phrase": [
+      "Preferred",
+      "Stock"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_PREFERRED"
+    ]
+  },
+  {
+    "phrase": [
+      "Gain"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Gains"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Weighted",
+      "Average"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_WEIGHTED_AVERAGE"
+  },
+  {
+    "phrase": [
+      "Valuation",
+      "Allowance"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_VALUATION_ALLOWANCE"
+  },
+  {
+    "phrase": [
+      "Allowance"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_VALUATION_ALLOWANCE"
+  },
+  {
+    "phrase": [
+      "Deferred",
+      "Tax"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_TAX_INCOME"
+  },
+  {
+    "phrase": [
+      "Increase",
+      "Decrease"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CHANGE"
+  },
+  {
+    "phrase": [
+      "Noncash"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_NONCASH"
+  },
+  {
+    "phrase": [
+      "Business",
+      "Combination"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_BUSINESS_COMBINATION"
+  },
+  {
+    "phrase": [
+      "Business",
+      "Combinations"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_BUSINESS_COMBINATION"
+  },
+  {
+    "phrase": [
+      "Finance",
+      "Lease"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_ROU_LEASE"
+  },
+  {
+    "phrase": [
+      "Paid",
+      "In",
+      "Capital"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_APIC"
+  },
+  {
+    "phrase": [
+      "Noncontrolling",
+      "Interests"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_NONCONTROLLING_INTEREST"
+  },
+  {
+    "phrase": [
+      "Dividends"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DIVIDEND"
+  },
+  {
+    "phrase": [
+      "Dividend"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DIVIDEND"
+  },
+  {
+    "phrase": [
+      "Distributions"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DIVIDEND"
+  },
+  {
+    "phrase": [
+      "Grants"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_AWARD_GRANT"
+  },
+  {
+    "phrase": [
+      "Vested"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_AWARD_VESTED"
+  },
+  {
+    "phrase": [
+      "Nonvested"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_AWARD_NONVESTED"
+  },
+  {
+    "phrase": [
+      "Forfeited"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_AWARD_FORFEITED"
+  },
+  {
+    "phrase": [
+      "Forfeitures"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_AWARD_FORFEITED"
+  },
+  {
+    "phrase": [
+      "Par",
+      "Value"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PAR_VALUE"
+  },
+  {
+    "phrase": [
+      "Liquidation",
+      "Preference"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_LIQUIDATION_PREFERENCE"
+  },
+  {
+    "phrase": [
+      "Instruments"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FINANCIAL_INSTRUMENT"
+  },
+  {
+    "phrase": [
+      "Instrument"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FINANCIAL_INSTRUMENT"
+  },
+  {
+    "phrase": [
+      "Reconciliation"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RECONCILIATION"
+  },
+  {
+    "phrase": [
+      "Arrangement"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_ARRANGEMENT"
+  },
+  {
+    "phrase": [
+      "Percent"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PERCENT"
+  },
+  {
+    "phrase": [
+      "Percentage"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PERCENT"
+  },
+  {
+    "phrase": [
+      "Intangible"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_INTANGIBLE_GOODWILL"
+  },
+  {
+    "phrase": [
+      "Equity",
+      "Method",
+      "Investments"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_EQUITY_METHOD",
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Equity",
+      "Method",
+      "Investment"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_EQUITY_METHOD",
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Income",
+      "Loss",
+      "From",
+      "Equity",
+      "Method",
+      "Investments"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_EQUITY_METHOD"
+    ]
+  },
+  {
+    "phrase": [
+      "Depreciation",
+      "Depletion",
+      "And",
+      "Amortization"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_DA_DEPLETION"
+    ]
+  },
+  {
+    "phrase": [
+      "Sharebased",
+      "Compensation"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_SBC"
+    ]
+  },
+  {
+    "phrase": [
+      "Interest",
+      "Paid"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": []
+  },
+  {
+    "phrase": [
+      "Defined",
+      "Contribution",
+      "Plan"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_PENSION_DEFINED_CONTRIBUTION"
+    ]
+  },
+  {
+    "phrase": [
+      "Minority",
+      "Interest"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_NONCONTROLLING_INTEREST"
+    ]
+  },
+  {
+    "phrase": [
+      "Restructuring",
+      "Charges"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_RESTRUCTURING"
+    ]
+  },
+  {
+    "phrase": [
+      "Long",
+      "Term",
+      "Investments"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT",
+      "M_MATURITY_LONG"
+    ]
+  },
+  {
+    "phrase": [
+      "Short",
+      "Term",
+      "Investments"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT",
+      "M_MATURITY_SHORT"
+    ]
+  },
+  {
+    "phrase": [
+      "Provision",
+      "For",
+      "Doubtful",
+      "Accounts"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": []
+  },
+  {
+    "phrase": [
+      "Provision",
+      "For",
+      "Loan",
+      "Losses"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": []
+  },
+  {
+    "phrase": [
+      "Letters",
+      "Of",
+      "Credit"
+    ],
+    "role": "HEAD",
+    "atom": "H_COMMITMENT",
+    "mods": []
+  },
+  {
+    "phrase": [
+      "Discount",
+      "Rate"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": []
+  },
+  {
+    "phrase": [
+      "Remaining",
+      "Lease",
+      "Term"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": []
+  },
+  {
+    "phrase": [
+      "Stock",
+      "Issued",
+      "During",
+      "Period"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": []
+  },
+  {
+    "phrase": [
+      "Income",
+      "Tax",
+      "Reconciliation"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_TAX_INCOME",
+      "M_RECONCILIATION"
+    ]
+  },
+  {
+    "phrase": [
+      "Expected",
+      "Term"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": []
+  },
+  {
+    "phrase": [
+      "Expiration",
+      "Period"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": []
+  },
+  {
+    "phrase": [
+      "Defined",
+      "Contribution"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PENSION_DEFINED_CONTRIBUTION"
+  },
+  {
+    "phrase": [
+      "Capitalized"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CAPITALIZED"
+  },
+  {
+    "phrase": [
+      "Film"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FILM"
+  },
+  {
+    "phrase": [
+      "Property",
+      "Plant",
+      "And",
+      "Equipment",
+      "Net"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_TANGIBLE",
+      "V_NET"
+    ]
+  },
+  {
+    "phrase": [
+      "Property",
+      "Plant",
+      "And",
+      "Equipment",
+      "Gross"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_TANGIBLE",
+      "V_GROSS"
+    ]
+  },
+  {
+    "phrase": [
+      "Num",
+      "Year"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_MATURITY"
+  },
+  {
+    "phrase": [
+      "Num",
+      "Years"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_MATURITY"
+  },
+  {
+    "phrase": [
+      "Num",
+      "Month"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_MATURITY"
+  },
+  {
+    "phrase": [
+      "Num",
+      "Months"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_MATURITY"
+  },
+  {
+    "phrase": [
+      "Num",
+      "Percent"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_MATURITY"
+  },
+  {
+    "phrase": [
+      "Due",
+      "In"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_MATURITY"
+  },
+  {
+    "phrase": [
+      "Due",
+      "After"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_MATURITY"
+  },
+  {
+    "phrase": [
+      "Third",
+      "Party"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_THIRD_PARTY"
+  },
+  {
+    "phrase": [
+      "Related",
+      "Party"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RELATED_PARTY"
+  },
+  {
+    "phrase": [
+      "Past",
+      "Due"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PAST_DUE"
+  },
+  {
+    "phrase": [
+      "Disposal",
+      "Group"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DISPOSAL_GROUP"
+  },
+  {
+    "phrase": [
+      "Off",
+      "Balance",
+      "Sheet"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_OFF_BALANCE_SHEET"
+  },
+  {
+    "phrase": [
+      "Other",
+      "Postretirement"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PENSION_DEFINED_BENEFIT"
+  },
+  {
+    "phrase": [
+      "Benefit",
+      "Plans"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PENSION_DEFINED_BENEFIT"
+  },
+  {
+    "phrase": [
+      "Unobservable",
+      "Inputs"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FAIR_VALUE"
+  },
+  {
+    "phrase": [
+      "Recurring",
+      "Basis"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FAIR_VALUE"
+  },
+  {
+    "phrase": [
+      "Available",
+      "For",
+      "Sale"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_AVAILABLE_FOR_SALE"
+  },
+  {
+    "phrase": [
+      "Year",
+      "Num"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_MATURITY"
+  },
+  {
+    "phrase": [
+      "Years",
+      "Num"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_MATURITY"
+  },
+  {
+    "phrase": [
+      "Month",
+      "Num"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_MATURITY"
+  },
+  {
+    "phrase": [
+      "Months",
+      "Num"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_MATURITY"
+  },
+  {
+    "phrase": [
+      "Fiscal",
+      "Year"
+    ],
+    "role": "INDEXICAL",
+    "indexical": "FISCAL_YEAR"
+  },
+  {
+    "phrase": [
+      "Level",
+      "Num"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FAIR_VALUE"
+  },
+  {
+    "phrase": [
+      "Amortization",
+      "Of",
+      "Intangible",
+      "Assets"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_DEPR_AMORT",
+      "M_INTANGIBLE_GOODWILL"
+    ]
+  },
+  {
+    "phrase": [
+      "Right",
+      "Of",
+      "Use",
+      "Asset",
+      "Amortization"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_DEPR_AMORT",
+      "M_ROU_LEASE"
+    ]
+  },
+  {
+    "phrase": [
+      "Impairment",
+      "Of",
+      "Intangible",
+      "Assets"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_INTANGIBLE_GOODWILL"
+    ]
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Income",
+      "Taxes"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "Loss",
+      "Contingency"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_LOSS_CONTINGENCY"
+    ]
+  },
+  {
+    "phrase": [
+      "Environmental",
+      "Loss",
+      "Contingencies"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_LOSS_CONTINGENCY"
+    ]
+  },
+  {
+    "phrase": [
+      "Asset",
+      "Impairment",
+      "Charges"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Impairment",
+      "Charges"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Asset",
+      "Impairment"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Intangible",
+      "Asset",
+      "Impairment"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_INTANGIBLE_GOODWILL"
+    ]
+  },
+  {
+    "phrase": [
+      "Intangible",
+      "Assets",
+      "Impairment"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_INTANGIBLE_GOODWILL"
+    ]
+  },
+  {
+    "phrase": [
+      "Impairment",
+      "Of",
+      "Long",
+      "Lived",
+      "Assets"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Impairment",
+      "Of",
+      "Oil",
+      "And",
+      "Gas",
+      "Properties"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Impairment",
+      "Of",
+      "Equity",
+      "Investments"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Other",
+      "Than",
+      "Temporary",
+      "Impairment"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Property",
+      "Plant",
+      "And",
+      "Equipment",
+      "Impairment"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Contingent",
+      "Receivable",
+      "Impairment"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Impairment",
+      "And",
+      "Other",
+      "Charges"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Impairment",
+      "Provisions"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Acquire",
+      "Productive",
+      "Assets"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PPE_CAPEX"
+  },
+  {
+    "phrase": [
+      "Acquire",
+      "Other",
+      "Productive",
+      "Assets"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PPE_CAPEX"
+  },
+  {
+    "phrase": [
+      "Acquire",
+      "Short",
+      "Term",
+      "Investments"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_INVESTMENT",
+    "mods": [
+      "M_MATURITY_SHORT"
+    ]
+  },
+  {
+    "phrase": [
+      "Acquire",
+      "Equity",
+      "Method",
+      "Investments"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_EQUITY_METHOD",
+    "mods": [
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Acquire",
+      "Intangible",
+      "Assets"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_INTANGIBLE_GOODWILL"
+  },
+  {
+    "phrase": [
+      "Acquire",
+      "Finance",
+      "Receivables"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FINANCING_RECEIVABLE"
+  },
+  {
+    "phrase": [
+      "Acquire",
+      "Equipment",
+      "On",
+      "Lease"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_LEASE_ROU"
+  },
+  {
+    "phrase": [
+      "Develop",
+      "Real",
+      "Estate",
+      "Assets"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_REAL_ESTATE"
+  },
+  {
+    "phrase": [
+      "Proceeds",
+      "From",
+      "Short",
+      "Term",
+      "Investments"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_INVESTMENT",
+    "mods": [
+      "M_MATURITY_SHORT"
+    ]
+  },
+  {
+    "phrase": [
+      "Proceeds",
+      "From",
+      "Debt"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Proceeds",
+      "From",
+      "Short",
+      "Term",
+      "Debt"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_CURRENT",
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Proceeds",
+      "From",
+      "Other",
+      "Short",
+      "Term",
+      "Debt"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_CURRENT",
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Proceeds",
+      "From",
+      "Convertible",
+      "Debt"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_CONVERTIBLE",
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Proceeds",
+      "From",
+      "Related",
+      "Party",
+      "Debt"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_RELATED_PARTY",
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Acquire",
+      "Available",
+      "For",
+      "Sale",
+      "Securities",
+      "Debt"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DEBT",
+    "mods": [
+      "M_AVAILABLE_FOR_SALE"
+    ]
+  },
+  {
+    "phrase": [
+      "Payments",
+      "For",
+      "Flight",
+      "Equipment"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Marketable",
+      "Securities"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Trading",
+      "Securities"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Held",
+      "To",
+      "Maturity",
+      "Securities"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_MATURITY",
+      "M_HELD_TO_MATURITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Securities",
+      "Debt",
+      "Maturities"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Securities",
+      "Sold",
+      "Under",
+      "Agreements",
+      "To",
+      "Repurchase"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Securities",
+      "Purchased",
+      "Under",
+      "Agreements",
+      "To",
+      "Resell"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Securities",
+      "Loaned"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Obligation",
+      "To",
+      "Return",
+      "Securities"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_COLLATERAL_RETURN"
+    ]
+  },
+  {
+    "phrase": [
+      "Right",
+      "To",
+      "Reclaim",
+      "Securities"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_COLLATERAL_RECLAIM"
+    ]
+  },
+  {
+    "phrase": [
+      "Stock",
+      "Repurchased"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_TREASURY_REPURCHASE"
+    ]
+  },
+  {
+    "phrase": [
+      "Stock",
+      "Repurchase",
+      "Program"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_TREASURY_REPURCHASE"
+    ]
+  },
+  {
+    "phrase": [
+      "Cash",
+      "Cash",
+      "Equivalents",
+      "And",
+      "Marketable",
+      "Securities"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH"
+  },
+  {
+    "phrase": [
+      "Acquire",
+      "Marketable",
+      "Securities"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_INVESTMENT"
+  },
+  {
+    "phrase": [
+      "Acquire",
+      "Held",
+      "To",
+      "Maturity",
+      "Securities"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_INVESTMENT",
+    "mods": [
+      "M_MATURITY",
+      "M_HELD_TO_MATURITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Proceeds",
+      "From",
+      "Payments",
+      "For",
+      "Federal",
+      "Funds",
+      "Sold",
+      "And",
+      "Securities",
+      "Purchased",
+      "Under",
+      "Agreements",
+      "To",
+      "Resell"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH"
+  },
+  {
+    "phrase": [
+      "In",
+      "Marketable",
+      "Securities"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_INVESTMENT"
+  },
+  {
+    "phrase": [
+      "Interest",
+      "Expense",
+      "Federal",
+      "Funds",
+      "Purchased",
+      "And",
+      "Securities",
+      "Sold",
+      "Under",
+      "Agreements",
+      "To",
+      "Repurchase"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_INTEREST"
+    ]
+  },
+  {
+    "phrase": [
+      "Interest",
+      "Income",
+      "Federal",
+      "Funds",
+      "Sold",
+      "And",
+      "Securities",
+      "Purchased",
+      "Under",
+      "Agreements",
+      "To",
+      "Resell"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_INTEREST"
+    ]
+  },
+  {
+    "phrase": [
+      "Securities",
+      "Loaned",
+      "Or",
+      "Sold",
+      "Under",
+      "Agreements",
+      "To",
+      "Repurchase"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Subject",
+      "To",
+      "Master",
+      "Netting",
+      "Arrangement",
+      "Right",
+      "To",
+      "Reclaim",
+      "Securities"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ARRANGEMENT",
+      "M_CASH_COLLATERAL_OFFSET",
+      "M_COLLATERAL_RECLAIM",
+      "M_MASTER_NETTING_OFFSET"
+    ]
+  },
+  {
+    "phrase": [
+      "Number",
+      "Of",
+      "Shares",
+      "Authorized",
+      "To",
+      "Be",
+      "Repurchased"
+    ],
+    "role": "HEAD",
+    "atom": "H_SHARE"
+  },
+  {
+    "phrase": [
+      "Trading",
+      "Securities",
+      "Debt"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Cash",
+      "And",
+      "Marketable",
+      "Securities"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH"
+  },
+  {
+    "phrase": [
+      "Entity",
+      "Public",
+      "Float"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Land"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Buildings",
+      "And",
+      "Improvements"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Construction",
+      "In",
+      "Progress"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Capitalized",
+      "Computer",
+      "Software"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INTANGIBLE_GOODWILL",
+      "M_CAPITALIZED"
+    ]
+  },
+  {
+    "phrase": [
+      "Capitalized",
+      "Computer",
+      "Software",
+      "Amortization"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_DEPR_AMORT",
+      "M_INTANGIBLE_GOODWILL",
+      "M_CAPITALIZED"
+    ]
+  },
+  {
+    "phrase": [
+      "Tax",
+      "Credit",
+      "Carryforward"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_TAX",
+      "M_RISK_CREDIT"
+    ]
+  },
+  {
+    "phrase": [
+      "Undistributed",
+      "Earnings",
+      "Of",
+      "Foreign",
+      "Subsidiaries"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Capital",
+      "Expenditures",
+      "Incurred",
+      "But",
+      "Not",
+      "Yet",
+      "Paid"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Collateral",
+      "Already",
+      "Posted",
+      "Aggregate",
+      "Fair",
+      "Value"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_FAIR_VALUE",
+      "M_CASH_COLLATERAL_OFFSET"
+    ]
+  },
+  {
+    "phrase": [
+      "Additional",
+      "Collateral",
+      "Aggregate",
+      "Fair",
+      "Value"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_FAIR_VALUE",
+      "M_CASH_COLLATERAL_OFFSET"
+    ]
+  },
+  {
+    "phrase": [
+      "Consideration",
+      "Transferred"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH"
+  },
+  {
+    "phrase": [
+      "Disposal",
+      "Group",
+      "Including",
+      "Discontinued",
+      "Operation",
+      "Consideration"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_DISCONTINUED",
+      "M_DISPOSAL_GROUP"
+    ]
+  },
+  {
+    "phrase": [
+      "Oci"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Professional",
+      "Fees"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE"
+  },
+  {
+    "phrase": [
+      "Income",
+      "Tax",
+      "Examination"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "Adjustment",
+      "For",
+      "Amortization"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_DEPR_AMORT"
+    ]
+  },
+  {
+    "phrase": [
+      "Purchases",
+      "From",
+      "Related",
+      "Party"
+    ],
+    "role": "HEAD",
+    "atom": "H_COST",
+    "mods": [
+      "M_RELATED_PARTY"
+    ]
+  },
+  {
+    "phrase": [
+      "Litigation",
+      "Settlement",
+      "Amount",
+      "Awarded",
+      "To",
+      "Other",
+      "Party"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Operating",
+      "Capital"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_OPERATING"
+    ]
+  },
+  {
+    "phrase": [
+      "Investments",
+      "In",
+      "Affiliates",
+      "Subsidiaries",
+      "Associates",
+      "And",
+      "Joint",
+      "Ventures"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_EQUITY_METHOD",
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Other",
+      "Investments"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Increase",
+      "Decrease",
+      "In",
+      "Deposits"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_CHANGE"
+    ]
+  },
+  {
+    "phrase": [
+      "Deposits",
+      "Domestic"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Deposits",
+      "Foreign"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Contract",
+      "Deposits"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Customer",
+      "Deposits"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEPOSIT_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Acquire",
+      "Other",
+      "Investments"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_INVESTMENT"
+  },
+  {
+    "phrase": [
+      "Product",
+      "Warranty",
+      "Accrual"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_SALES_GOODS"
+    ]
+  },
+  {
+    "phrase": [
+      "Standard",
+      "Product",
+      "Warranty",
+      "Accrual"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_SALES_GOODS"
+    ]
+  },
+  {
+    "phrase": [
+      "Prepaid",
+      "Taxes"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "Stock",
+      "Redeemed",
+      "Or",
+      "Called"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_TREASURY_REPURCHASE"
+    ]
+  },
+  {
+    "phrase": [
+      "Property",
+      "Subject",
+      "To",
+      "Or",
+      "Available",
+      "For",
+      "Operating",
+      "Lease"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_CAPEX",
+      "M_LEASE_ROU",
+      "M_LEASE"
+    ]
+  },
+  {
+    "phrase": [
+      "Property",
+      "Plant",
+      "And",
+      "Equipment",
+      "Additions"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Operation",
+      "Property",
+      "Plant",
+      "And",
+      "Equipment"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Provision",
+      "For",
+      "Loan",
+      "Lease",
+      "And",
+      "Other",
+      "Losses"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_RISK_CREDIT"
+    ]
+  },
+  {
+    "phrase": [
+      "Pension",
+      "And",
+      "Other",
+      "Postretirement",
+      "Benefit",
+      "Contributions"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_PENSION_DEFINED_BENEFIT"
+    ]
+  },
+  {
+    "phrase": [
+      "Restricted",
+      "Investments"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Alternative",
+      "Investment"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Prescription",
+      "Drug",
+      "Subsidy",
+      "Receipts"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Investments",
+      "Fair",
+      "Value",
+      "Disclosure"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT",
+      "M_FAIR_VALUE"
+    ]
+  },
+  {
+    "phrase": [
+      "Tax",
+      "Effect",
+      "Of",
+      "Discontinued",
+      "Operation"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_TAX",
+      "M_DISCONTINUED"
+    ]
+  },
+  {
+    "phrase": [
+      "Noncontrolling",
+      "Interest",
+      "Decrease"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_NONCONTROLLING_INTEREST",
+      "M_CHANGE"
+    ]
+  },
+  {
+    "phrase": [
+      "Noncontrolling",
+      "Interest",
+      "Increase"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_NONCONTROLLING_INTEREST",
+      "M_CHANGE"
+    ]
+  },
+  {
+    "phrase": [
+      "Acquire",
+      "Restricted",
+      "Investments"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_INVESTMENT"
+  },
+  {
+    "phrase": [
+      "Noncontrolling",
+      "Interest"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_NONCONTROLLING_INTEREST"
+  },
+  {
+    "phrase": [
+      "Discontinued",
+      "Operation",
+      "Property",
+      "Plant",
+      "And",
+      "Equipment"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_CAPEX",
+      "M_DISCONTINUED"
+    ]
+  },
+  {
+    "phrase": [
+      "Fees",
+      "And",
+      "Commissions"
+    ],
+    "role": "HEAD",
+    "atom": "H_REVENUE"
+  },
+  {
+    "phrase": [
+      "Lending",
+      "Related",
+      "Financial",
+      "Instruments"
+    ],
+    "role": "HEAD",
+    "atom": "H_COMMITMENT",
+    "mods": [
+      "M_OFF_BALANCE_SHEET",
+      "M_FINANCIAL_INSTRUMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Structured",
+      "Notes"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Protection",
+      "Sold"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DERIVATIVE",
+      "M_RISK_CREDIT"
+    ]
+  },
+  {
+    "phrase": [
+      "Protection",
+      "Purchased"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_DERIVATIVE",
+      "M_RISK_CREDIT"
+    ]
+  },
+  {
+    "phrase": [
+      "Purchased",
+      "Credit",
+      "Protection"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_DERIVATIVE",
+      "M_RISK_CREDIT"
+    ]
+  },
+  {
+    "phrase": [
+      "To",
+      "Total",
+      "Retained",
+      "Loans"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_RISK_CREDIT",
+      "M_PERCENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Dividends",
+      "From",
+      "Subsidiaries"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_DIVIDEND"
+    ]
+  },
+  {
+    "phrase": [
+      "Advances",
+      "To",
+      "Subsidiaries"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Investments",
+      "In",
+      "Subsidiaries"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Performing",
+      "Loans"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Beneficial",
+      "Interest",
+      "Fair",
+      "Value"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_FAIR_VALUE",
+      "M_INTEREST"
+    ]
+  },
+  {
+    "phrase": [
+      "Long",
+      "Term",
+      "Beneficial",
+      "Interests"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Cash",
+      "Dividends",
+      "From",
+      "Subsidiaries"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_DIVIDEND"
+    ]
+  },
+  {
+    "phrase": [
+      "Loans",
+      "And",
+      "Securities"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Securities",
+      "Held",
+      "As",
+      "Collateral"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_CASH_COLLATERAL_OFFSET"
+    ]
+  },
+  {
+    "phrase": [
+      "Capital",
+      "Expenditures"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Nuclear",
+      "Fuel",
+      "And",
+      "Other",
+      "Amortization"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_DEPR_AMORT"
+    ]
+  },
+  {
+    "phrase": [
+      "Special",
+      "Use",
+      "Funds"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Reinsurance",
+      "Ceded"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME"
+  },
+  {
+    "phrase": [
+      "Reinsurance",
+      "And",
+      "Indemnification",
+      "Recoverables"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Obligation",
+      "To",
+      "Return",
+      "Collateral"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_CASH_COLLATERAL_OFFSET",
+      "M_COLLATERAL_RETURN"
+    ]
+  },
+  {
+    "phrase": [
+      "Contractholder",
+      "Funds"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Accident",
+      "And",
+      "Health",
+      "Insurance",
+      "Contract",
+      "Benefits"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_INSURANCE_PREMIUM"
+    ]
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Capital",
+      "Expenditures"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Commitments",
+      "Included",
+      "In",
+      "Planned",
+      "Capital",
+      "Expenditures"
+    ],
+    "role": "HEAD",
+    "atom": "H_COMMITMENT"
+  },
+  {
+    "phrase": [
+      "Held",
+      "To",
+      "Maturity"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_HELD_TO_MATURITY"
+  },
+  {
+    "phrase": [
+      "Continuous",
+      "Unrealized",
+      "Loss",
+      "Position"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Unrealized",
+      "Loss",
+      "Position"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Accumulated",
+      "Impairment",
+      "Loss"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Reclassification",
+      "From",
+      "Aoci"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_OCI"
+    ]
+  },
+  {
+    "phrase": [
+      "Reclassification",
+      "From",
+      "Accumulated",
+      "Other",
+      "Comprehensive",
+      "Income"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_OCI"
+    ]
+  },
+  {
+    "phrase": [
+      "Aoci",
+      "Loss"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Accumulated",
+      "Other",
+      "Comprehensive",
+      "Income",
+      "Loss"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "M_OCI"
+    ]
+  },
+  {
+    "phrase": [
+      "Accumulated",
+      "Gross",
+      "Unrealized",
+      "Gain"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "V_GROSS"
+    ]
+  },
+  {
+    "phrase": [
+      "Accumulated",
+      "Gross",
+      "Unrealized",
+      "Loss"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "V_GROSS"
+    ]
+  },
+  {
+    "phrase": [
+      "Accumulated",
+      "Gross",
+      "Unrealized",
+      "Gain",
+      "Loss"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY",
+    "mods": [
+      "V_GROSS"
+    ]
+  },
+  {
+    "phrase": [
+      "Crude",
+      "Oil"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_COMMODITY_CRUDE_OIL"
+  },
+  {
+    "phrase": [
+      "Natural",
+      "Gas"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_COMMODITY_NATURAL_GAS"
+  },
+  {
+    "phrase": [
+      "Gold"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_COMMODITY_GOLD"
+  },
+  {
+    "phrase": [
+      "Copper"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_COMMODITY_COPPER"
+  },
+  {
+    "phrase": [
+      "Corn"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_COMMODITY_CORN"
+  },
+  {
+    "phrase": [
+      "Accounts",
+      "Payable"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCOUNTS_PAYABLE"
+    ]
+  },
+  {
+    "phrase": [
+      "Accounts",
+      "Payable"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_ACCOUNTS_PAYABLE"
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Liabilities"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCRUED_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Liabilities"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_ACCRUED_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Notes",
+      "Payable"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Notes",
+      "Payable"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DEBT"
+  },
+  {
+    "phrase": [
+      "Lease",
+      "Liability"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_LEASE_ROU"
+    ]
+  },
+  {
+    "phrase": [
+      "Lease",
+      "Liability"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_LEASE_ROU"
+  },
+  {
+    "phrase": [
+      "Lease",
+      "Liabilities"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_LEASE_ROU"
+    ]
+  },
+  {
+    "phrase": [
+      "Lease",
+      "Liabilities"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_LEASE_ROU"
+  },
+  {
+    "phrase": [
+      "Defined",
+      "Benefit",
+      "Pension",
+      "Plan"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_PENSION_DEFINED_BENEFIT"
+    ]
+  },
+  {
+    "phrase": [
+      "Defined",
+      "Benefit",
+      "Pension",
+      "Plan"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PENSION_DEFINED_BENEFIT"
+  },
+  {
+    "phrase": [
+      "Postemployment",
+      "Benefits"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PENSION_DEFINED_BENEFIT"
+  },
+  {
+    "phrase": [
+      "Employee",
+      "Related",
+      "Liabilities"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_EMPLOYEE_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Employee",
+      "Related",
+      "Liabilities"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_EMPLOYEE_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Deferred",
+      "Compensation"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DEFERRED_COMPENSATION"
+  },
+  {
+    "phrase": [
+      "Supplier",
+      "Finance",
+      "Program"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SUPPLIER_FINANCE"
+  },
+  {
+    "phrase": [
+      "Loss",
+      "Contingencies"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_LOSS_CONTINGENCY"
+    ]
+  },
+  {
+    "phrase": [
+      "Loss",
+      "Contingencies"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_LOSS_CONTINGENCY"
+  },
+  {
+    "phrase": [
+      "Restructuring",
+      "Reserve"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_RESTRUCTURING"
+    ]
+  },
+  {
+    "phrase": [
+      "Restructuring",
+      "Reserve"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RESTRUCTURING"
+  },
+  {
+    "phrase": [
+      "Guarantee",
+      "Obligations"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_GUARANTEE_OBLIGATION"
+    ]
+  },
+  {
+    "phrase": [
+      "Guarantee",
+      "Obligations"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_GUARANTEE_OBLIGATION"
+  },
+  {
+    "phrase": [
+      "Construction",
+      "Payable"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCOUNTS_PAYABLE"
+    ]
+  },
+  {
+    "phrase": [
+      "Construction",
+      "Payable"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_ACCOUNTS_PAYABLE"
+  },
+  {
+    "phrase": [
+      "Hedging",
+      "Liabilities"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DERIVATIVE_HEDGE"
+    ]
+  },
+  {
+    "phrase": [
+      "Hedging",
+      "Liabilities"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DERIVATIVE_HEDGE"
+  },
+  {
+    "phrase": [
+      "Restricted"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RESTRICTED"
+  },
+  {
+    "phrase": [
+      "Shares",
+      "Issued"
+    ],
+    "role": "HEAD",
+    "atom": "H_SHARE",
+    "mods": [
+      "M_SHARES_ISSUED"
+    ]
+  },
+  {
+    "phrase": [
+      "Shares",
+      "Issued"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SHARES_ISSUED"
+  },
+  {
+    "phrase": [
+      "Shares",
+      "Outstanding"
+    ],
+    "role": "HEAD",
+    "atom": "H_SHARE",
+    "mods": [
+      "M_SHARES_OUTSTANDING"
+    ]
+  },
+  {
+    "phrase": [
+      "Shares",
+      "Outstanding"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SHARES_OUTSTANDING"
+  },
+  {
+    "phrase": [
+      "Shares",
+      "Authorized"
+    ],
+    "role": "HEAD",
+    "atom": "H_SHARE",
+    "mods": [
+      "M_SHARES_AUTHORIZED"
+    ]
+  },
+  {
+    "phrase": [
+      "Shares",
+      "Authorized"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_SHARES_AUTHORIZED"
+  },
+  {
+    "phrase": [
+      "Prepaid"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PREPAID"
+  },
+  {
+    "phrase": [
+      "Divestiture"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DISPOSAL_GROUP"
+  },
+  {
+    "phrase": [
+      "Payments",
+      "For",
+      "Repurchase"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_TREASURY_REPURCHASE"
+    ]
+  },
+  {
+    "phrase": [
+      "Refund",
+      "Liability"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_CONTRACT_CUSTOMER"
+    ]
+  },
+  {
+    "phrase": [
+      "Refund",
+      "Liability"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CONTRACT_CUSTOMER"
+  },
+  {
+    "phrase": [
+      "Litigation",
+      "Reserve"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_LOSS_CONTINGENCY"
+    ]
+  },
+  {
+    "phrase": [
+      "Litigation",
+      "Reserve"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_LOSS_CONTINGENCY"
+  },
+  {
+    "phrase": [
+      "Gas",
+      "Purchase",
+      "Payable"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCOUNTS_PAYABLE"
+    ]
+  },
+  {
+    "phrase": [
+      "Gas",
+      "Purchase",
+      "Payable"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_ACCOUNTS_PAYABLE"
+  },
+  {
+    "phrase": [
+      "Loans",
+      "Payable"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Loans",
+      "Payable"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DEBT"
+  },
+  {
+    "phrase": [
+      "Share",
+      "Repurchase"
+    ],
+    "role": "HEAD",
+    "atom": "H_SHARE",
+    "mods": [
+      "M_TREASURY_REPURCHASE"
+    ]
+  },
+  {
+    "phrase": [
+      "Share",
+      "Repurchase"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_TREASURY_REPURCHASE"
+  },
+  {
+    "phrase": [
+      "Nontrade"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RECEIVABLE"
+  },
+  {
+    "phrase": [
+      "Non",
+      "Trade"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_RECEIVABLE"
+  },
+  {
+    "phrase": [
+      "Number",
+      "Of",
+      "Reportable",
+      "Segments"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE"
+  },
+  {
+    "phrase": [
+      "Number",
+      "Of",
+      "Operating",
+      "Segments"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_OPERATING"
+    ]
+  },
+  {
+    "phrase": [
+      "Number",
+      "Of",
+      "Reporting",
+      "Units"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE"
+  },
+  {
+    "phrase": [
+      "Number",
+      "Of",
+      "Countries"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE"
+  },
+  {
+    "phrase": [
+      "Concentration",
+      "Risk",
+      "Percentage"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_PERCENT",
+      "M_RISK_CREDIT"
+    ]
+  },
+  {
+    "phrase": [
+      "Business",
+      "Acquisition",
+      "Percentage",
+      "Of",
+      "Voting",
+      "Interests",
+      "Acquired"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_PERCENT",
+      "M_BUSINESS_COMBINATION"
+    ]
+  },
+  {
+    "phrase": [
+      "Variable",
+      "Interest",
+      "Entity"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_VARIABLE_INTEREST_ENTITY"
+  },
+  {
+    "phrase": [
+      "Variable",
+      "Interest",
+      "Entity",
+      "Ownership",
+      "Percentage"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_PERCENT",
+      "M_VARIABLE_INTEREST_ENTITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Crypto",
+      "Asset",
+      "Number",
+      "Of",
+      "Units"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_CRYPTO_DIGITAL"
+    ]
+  },
+  {
+    "phrase": [
+      "Senior",
+      "Notes"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_SENIOR",
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Senior",
+      "Long",
+      "Term",
+      "Notes"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_SENIOR",
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Mediumterm",
+      "Notes"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Interest",
+      "Bearing",
+      "Deposits",
+      "In",
+      "Banks"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INTEREST"
+    ]
+  },
+  {
+    "phrase": [
+      "Demand",
+      "Deposit",
+      "Accounts"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEPOSIT_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Federal",
+      "Funds",
+      "Sold"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Securities",
+      "Borrowed"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Deposits",
+      "Fair",
+      "Value",
+      "Disclosure"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEPOSIT_LIABILITY",
+      "M_FAIR_VALUE"
+    ]
+  },
+  {
+    "phrase": [
+      "Interest",
+      "Income",
+      "Securities",
+      "Borrowed"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_INTEREST"
+    ]
+  },
+  {
+    "phrase": [
+      "Repayment",
+      "Of",
+      "Interest",
+      "Bearing",
+      "Deposits",
+      "In",
+      "Banks"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_INTEREST"
+    ]
+  },
+  {
+    "phrase": [
+      "Reinsurance",
+      "Recoverables"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_CLAIM_RESERVE"
+    ]
+  },
+  {
+    "phrase": [
+      "Reinsurance",
+      "Recoverable"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_CLAIM_RESERVE"
+    ]
+  },
+  {
+    "phrase": [
+      "Communications",
+      "And",
+      "Information",
+      "Technology"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE"
+  },
+  {
+    "phrase": [
+      "Information",
+      "Technology",
+      "And",
+      "Data",
+      "Processing"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE"
+  },
+  {
+    "phrase": [
+      "Legal",
+      "Fees"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE"
+  },
+  {
+    "phrase": [
+      "Occupancy"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE"
+  },
+  {
+    "phrase": [
+      "Policyholder",
+      "Benefits",
+      "And",
+      "Claims"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_CLAIM_RESERVE"
+    ]
+  },
+  {
+    "phrase": [
+      "Insurance",
+      "Commissions",
+      "And",
+      "Fees"
+    ],
+    "role": "HEAD",
+    "atom": "H_REVENUE",
+    "mods": [
+      "M_INSURANCE_PREMIUM"
+    ]
+  },
+  {
+    "phrase": [
+      "Undistributed",
+      "Earnings"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Money",
+      "Market",
+      "Funds"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH"
+  },
+  {
+    "phrase": [
+      "Indefinite",
+      "Lived",
+      "Trademarks"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Dilutive",
+      "Securities"
+    ],
+    "role": "HEAD",
+    "atom": "H_SHARE"
+  },
+  {
+    "phrase": [
+      "Beneficial",
+      "Interest"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Sale",
+      "Of",
+      "Stock"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Conversion",
+      "Of",
+      "Stock"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Stock",
+      "Issued"
+    ],
+    "role": "HEAD",
+    "atom": "H_SHARE",
+    "mods": [
+      "M_SHARES_ISSUED"
+    ]
+  },
+  {
+    "phrase": [
+      "Notes",
+      "Issued"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Furniture",
+      "And",
+      "Fixtures"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Leasehold",
+      "Improvements"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Employee",
+      "Benefits"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_EMPLOYEE_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Royalties"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCRUED_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Advances",
+      "To",
+      "Affiliate"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_RELATED_PARTY"
+    ]
+  },
+  {
+    "phrase": [
+      "Amortization",
+      "Of",
+      "Debt",
+      "Discount"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_DEPR_AMORT",
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Property",
+      "Plant",
+      "And",
+      "Equipment",
+      "Transfers"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Property",
+      "Plant",
+      "And",
+      "Equipment",
+      "Disposals"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_CAPEX",
+      "M_DISPOSAL_GROUP"
+    ]
+  },
+  {
+    "phrase": [
+      "Property",
+      "Plant",
+      "And",
+      "Equipment",
+      "Salvage",
+      "Value",
+      "Percentage"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_PPE_CAPEX",
+      "M_PERCENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Real",
+      "Estate",
+      "Gross"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_REAL_ESTATE",
+      "V_GROSS"
+    ]
+  },
+  {
+    "phrase": [
+      "Real",
+      "Estate",
+      "Acquired",
+      "Through",
+      "Foreclosure"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_REAL_ESTATE"
+    ]
+  },
+  {
+    "phrase": [
+      "Real",
+      "Estate",
+      "Investments"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_REAL_ESTATE",
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Real",
+      "Estate",
+      "Investment",
+      "Property"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_REAL_ESTATE",
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Loans",
+      "Held",
+      "For",
+      "Sale"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PURPOSE_SALE",
+      "M_FINANCING_RECEIVABLE"
+    ]
+  },
+  {
+    "phrase": [
+      "Gains",
+      "Losses",
+      "On",
+      "Loans",
+      "Held",
+      "For",
+      "Sale"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_PURPOSE_SALE"
+    ]
+  },
+  {
+    "phrase": [
+      "Beneficial",
+      "Interest",
+      "Of",
+      "Outstanding",
+      "Shares"
+    ],
+    "role": "HEAD",
+    "atom": "H_SHARE"
+  },
+  {
+    "phrase": [
+      "Maximum",
+      "Percentage",
+      "Of",
+      "Beneficial",
+      "Interest"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_PERCENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Percentage",
+      "Of",
+      "Occupancy"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_PERCENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Conversion",
+      "Of",
+      "Stock",
+      "Conversion",
+      "Rate"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE"
+  },
+  {
+    "phrase": [
+      "Sale",
+      "Of",
+      "Stock",
+      "Percentage"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_PERCENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Undistributed",
+      "Earnings",
+      "Losses",
+      "Ratio"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE"
+  },
+  {
+    "phrase": [
+      "Aggregate"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_AGGREGATE"
+  },
+  {
+    "phrase": [
+      "Equity",
+      "Investments"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Termination",
+      "Loans"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Decommissioning",
+      "Fund"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_ARO_DECOMMISSIONING",
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Jointly",
+      "Owned",
+      "Utility",
+      "Plant"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Area",
+      "Of",
+      "Real",
+      "Estate",
+      "Property"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_REAL_ESTATE"
+    ]
+  },
+  {
+    "phrase": [
+      "Investment",
+      "Owned",
+      "At",
+      "Fair",
+      "Value"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT",
+      "M_FAIR_VALUE"
+    ]
+  },
+  {
+    "phrase": [
+      "Conversion",
+      "Of",
+      "Stock",
+      "Shares",
+      "Converted"
+    ],
+    "role": "HEAD",
+    "atom": "H_SHARE"
+  },
+  {
+    "phrase": [
+      "Ratio",
+      "Of",
+      "Indebtedness"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE"
+  },
+  {
+    "phrase": [
+      "Statutory",
+      "Capital",
+      "And",
+      "Surplus"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Supplementary",
+      "Leverage",
+      "Ratio"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE"
+  },
+  {
+    "phrase": [
+      "Tier",
+      "Num",
+      "Risk",
+      "Based",
+      "Capital"
+    ],
+    "role": "HEAD",
+    "atom": "H_EQUITY"
+  },
+  {
+    "phrase": [
+      "Income",
+      "Tax",
+      "Paid"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "Pension",
+      "Contributions"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_PENSION_DEFINED_BENEFIT"
+    ]
+  },
+  {
+    "phrase": [
+      "Payments",
+      "To",
+      "Invest",
+      "In",
+      "Decommissioning",
+      "Fund"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "mods": [
+      "M_ARO_DECOMMISSIONING"
+    ]
+  },
+  {
+    "phrase": [
+      "Valuation",
+      "Allowances",
+      "And",
+      "Reserves"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_VALUATION_ALLOWANCE"
+    ]
+  },
+  {
+    "phrase": [
+      "Antidilutive"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_ANTIDILUTIVE"
+  },
+  {
+    "phrase": [
+      "Trading",
+      "Gains",
+      "Losses"
+    ],
+    "role": "HEAD",
+    "atom": "H_INCOME",
+    "mods": [
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Long",
+      "Lived",
+      "Assets"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_CAPEX"
+    ]
+  },
+  {
+    "phrase": [
+      "Benefit",
+      "Obligation"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_BENEFIT_OBLIGATION"
+    ]
+  },
+  {
+    "phrase": [
+      "Benefit",
+      "Obligation"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_BENEFIT_OBLIGATION"
+  },
+  {
+    "phrase": [
+      "Accumulated",
+      "Benefit",
+      "Obligation"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCUMULATED_BENEFIT_OBLIGATION"
+    ]
+  },
+  {
+    "phrase": [
+      "Accumulated",
+      "Benefit",
+      "Obligation"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_ACCUMULATED_BENEFIT_OBLIGATION"
+  },
+  {
+    "phrase": [
+      "Projected",
+      "Benefit",
+      "Obligation"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_BENEFIT_OBLIGATION"
+    ]
+  },
+  {
+    "phrase": [
+      "Projected",
+      "Benefit",
+      "Obligation"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_BENEFIT_OBLIGATION"
+  },
+  {
+    "phrase": [
+      "Funded",
+      "Status"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FUNDED_STATUS"
+  },
+  {
+    "phrase": [
+      "Plan",
+      "Assets"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PLAN_ASSETS"
+    ]
+  },
+  {
+    "phrase": [
+      "Plan",
+      "Assets"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PLAN_ASSETS"
+  },
+  {
+    "phrase": [
+      "Face",
+      "Amount"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_FACE_AMOUNT"
+  },
+  {
+    "phrase": [
+      "Carrying",
+      "Amount"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CARRYING_AMOUNT"
+  },
+  {
+    "phrase": [
+      "Carrying",
+      "Value"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_CARRYING_AMOUNT"
+  },
+  {
+    "phrase": [
+      "Aircraft",
+      "Maintenance",
+      "Materials",
+      "And",
+      "Repairs"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE"
+  },
+  {
+    "phrase": [
+      "Aircraft",
+      "Rental"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_LEASE"
+    ]
+  },
+  {
+    "phrase": [
+      "Landing",
+      "Fees",
+      "And",
+      "Other",
+      "Rentals"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE"
+  },
+  {
+    "phrase": [
+      "Materials",
+      "Supplies",
+      "And",
+      "Other"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE"
+  },
+  {
+    "phrase": [
+      "Aircraft",
+      "Maintenance",
+      "Deposits"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET"
+  },
+  {
+    "phrase": [
+      "Shortduration",
+      "Insurance",
+      "Contracts"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_INSURANCE_PREMIUM"
+    ]
+  },
+  {
+    "phrase": [
+      "Shortduration",
+      "Insurance",
+      "Contracts",
+      "Historical",
+      "Claims",
+      "Duration"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_INSURANCE_PREMIUM",
+      "M_MATURITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Mortgage",
+      "Banking"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_MORTGAGE_BANKING"
+  },
+  {
+    "phrase": [
+      "Affordable",
+      "Housing"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_AFFORDABLE_HOUSING"
+  },
+  {
+    "phrase": [
+      "Custodial",
+      "Cash",
+      "Liabilities"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEPOSIT_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Margin",
+      "Deposits",
+      "And",
+      "Guaranty",
+      "Funds"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEPOSIT_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Insurance"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCRUED_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Payroll",
+      "Taxes"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCRUED_LIABILITY",
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Bonuses"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCRUED_LIABILITY",
+      "M_EMPLOYEE_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Salaries"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCRUED_LIABILITY",
+      "M_EMPLOYEE_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Vacation"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCRUED_LIABILITY",
+      "M_EMPLOYEE_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Rent"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCRUED_LIABILITY",
+      "M_LEASE"
+    ]
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Utilities"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCRUED_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Advertising"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCRUED_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Accrued",
+      "Sales",
+      "Commission"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_ACCRUED_LIABILITY"
+    ]
+  },
+  {
+    "phrase": [
+      "Crypto",
+      "Asset",
+      "Fair",
+      "Value"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_CRYPTO_DIGITAL",
+      "M_FAIR_VALUE"
+    ]
+  },
+  {
+    "phrase": [
+      "Federal",
+      "Home",
+      "Loan",
+      "Bank",
+      "Advances"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Federal",
+      "Funds",
+      "Purchased"
+    ],
+    "role": "HEAD",
+    "atom": "H_LIABILITY",
+    "mods": [
+      "M_DEBT"
+    ]
   }
 ]
