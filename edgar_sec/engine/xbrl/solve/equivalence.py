@@ -21,6 +21,8 @@ SIBLING_GROUPS: tuple[frozenset[str], ...] = (
     frozenset({"V_NET", "V_GROSS"}),
     frozenset({"V_BASIC", "V_DILUTED"}),
     frozenset({"M_CURRENT", "M_NONCURRENT"}),
+    frozenset({"M_PRETAX", "M_POST_TAX"}),
+    frozenset({"M_INCLUDING", "M_EXCLUDING"}),
 )
 
 _AGGREGATE_MODIFIER = "M_AGGREGATE"

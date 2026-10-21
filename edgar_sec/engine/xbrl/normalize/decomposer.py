@@ -205,16 +205,18 @@ def _decompose_flat_tokens(
 
     sub_idx: int | None = None
     for idx, match in enumerate(matches):
-        if match.entry.role == "SUBORDINATOR":
+        if match.entry.role in ("SUBORDINATOR", "SCOPED_MODIFIER"):
             sub_idx = idx
             break
 
     if sub_idx is not None:
         primary_matches = matches[:sub_idx]
         subord_matches = matches[sub_idx + 1 :]
+        boundary_match = matches[sub_idx]
     else:
         primary_matches = matches
         subord_matches = []
+        boundary_match = None
 
     head = "UNKNOWN"
     head_match_idx: int | None = None
@@ -243,6 +245,12 @@ def _decompose_flat_tokens(
             mods.add(m.entry.atom)
         if m.entry.mods:
             mods.update(m.entry.mods)
+
+    if boundary_match is not None:
+        if boundary_match.entry.atom and boundary_match.entry.role != "HEAD":
+            mods.add(boundary_match.entry.atom)
+        if boundary_match.entry.mods:
+            mods.update(boundary_match.entry.mods)
 
     direction = 1.0
     for m in matches:

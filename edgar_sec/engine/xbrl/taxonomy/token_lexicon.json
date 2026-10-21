@@ -5,24 +5,13 @@
       "From",
       "Contract",
       "With",
-      "Customer",
-      "Excluding",
-      "Assessed",
-      "Tax"
-    ],
-    "role": "HEAD",
-    "atom": "H_REVENUE"
-  },
-  {
-    "phrase": [
-      "Revenue",
-      "From",
-      "Contract",
-      "With",
       "Customer"
     ],
     "role": "HEAD",
-    "atom": "H_REVENUE"
+    "atom": "H_REVENUE",
+    "mods": [
+      "M_CONTRACT_CUSTOMER"
+    ]
   },
   {
     "phrase": [
@@ -6814,6 +6803,250 @@
     "mods": [
       "M_ACCOUNTS_PAYABLE",
       "M_NONCURRENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Number",
+      "Of",
+      "Employees"
+    ],
+    "role": "HEAD",
+    "atom": "H_WORKFORCE",
+    "mods": [
+      "M_EMPLOYEE_COUNT"
+    ]
+  },
+  {
+    "phrase": [
+      "Number",
+      "Of",
+      "Payroll",
+      "Employees"
+    ],
+    "role": "HEAD",
+    "atom": "H_WORKFORCE",
+    "mods": [
+      "M_EMPLOYEE_COUNT"
+    ]
+  },
+  {
+    "phrase": [
+      "Prepaid",
+      "Expense"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PREPAID"
+    ]
+  },
+  {
+    "phrase": [
+      "Prepaid",
+      "Expenses"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PREPAID"
+    ]
+  },
+  {
+    "phrase": [
+      "Before",
+      "Tax"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PRETAX",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "Before",
+      "Taxes"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PRETAX",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "Before",
+      "Income",
+      "Tax"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PRETAX",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "Before",
+      "Income",
+      "Taxes"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PRETAX",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "After",
+      "Tax"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_POST_TAX",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "After",
+      "Taxes"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_POST_TAX",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "After",
+      "Income",
+      "Tax"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_POST_TAX",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "After",
+      "Income",
+      "Taxes"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_POST_TAX",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "Pre",
+      "Tax"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PRETAX",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "Pretax"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_PRETAX",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "Excluding",
+      "Assessed",
+      "Tax"
+    ],
+    "role": "SCOPED_MODIFIER",
+    "atom": "M_PRETAX",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "Including",
+      "Assessed",
+      "Tax"
+    ],
+    "role": "SCOPED_MODIFIER",
+    "atom": "M_POST_TAX",
+    "mods": [
+      "M_TAX"
+    ]
+  },
+  {
+    "phrase": [
+      "Excluding",
+      "Accrued",
+      "Interest"
+    ],
+    "role": "SCOPED_MODIFIER",
+    "atom": "M_EXCLUDING",
+    "mods": [
+      "M_INTEREST"
+    ]
+  },
+  {
+    "phrase": [
+      "Excluding",
+      "Goodwill"
+    ],
+    "role": "SCOPED_MODIFIER",
+    "atom": "M_EXCLUDING",
+    "mods": [
+      "M_GOODWILL"
+    ]
+  },
+  {
+    "phrase": [
+      "Including",
+      "Goodwill"
+    ],
+    "role": "SCOPED_MODIFIER",
+    "atom": "M_INCLUDING",
+    "mods": [
+      "M_GOODWILL"
+    ]
+  },
+  {
+    "phrase": [
+      "Excluding",
+      "Exchange",
+      "Rate",
+      "Effect"
+    ],
+    "role": "SCOPED_MODIFIER",
+    "atom": "M_EXCLUDING",
+    "mods": [
+      "M_FX_CURRENCY"
+    ]
+  },
+  {
+    "phrase": [
+      "Including",
+      "Exchange",
+      "Rate",
+      "Effect"
+    ],
+    "role": "SCOPED_MODIFIER",
+    "atom": "M_INCLUDING",
+    "mods": [
+      "M_FX_CURRENCY"
     ]
   }
 ]

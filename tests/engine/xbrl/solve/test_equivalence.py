@@ -22,11 +22,15 @@ def _atom(qname: str) -> Atom:
     return atom
 
 
-def test_renamed_revenue_concepts_are_exact_equivalents() -> None:
-    """The pre- and post-ASC-606 revenue names decompose to one atom."""
+def test_renamed_revenue_concepts_are_near_equivalents() -> None:
+    """Post-ASC-606 revenue decomposes compositionally: subsumption NEAR.
+
+    Re-adjudicated in Phase 0 (2026-10-21): the former EXACT was an artifact
+    of the retired 8-token whole-phrase entry yielding a bare atom.
+    """
     pre_asc606 = _atom("us-gaap:Revenues")
     post_asc606 = _atom("us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax")
-    assert classify_pair(pre_asc606, post_asc606) == EXACT
+    assert classify_pair(pre_asc606, post_asc606) == NEAR
 
 
 def test_extension_reconciliation_item_matches_us_gaap_atom() -> None:

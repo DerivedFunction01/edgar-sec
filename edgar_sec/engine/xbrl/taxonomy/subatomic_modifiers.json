@@ -1163,6 +1163,15 @@
     "description": "Employee-related accrued liabilities (compensation and benefits payable)"
   },
   {
+    "modifier_id": "M_EMPLOYEE_COUNT",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "NumberOfEmployees",
+      "NumberOfPayrollEmployees"
+    ],
+    "description": "Employee headcount measure (number of employees)"
+  },
+  {
     "modifier_id": "M_DEFERRED_COMPENSATION",
     "category": "EMPLOYEE_BENEFIT",
     "keywords": [
@@ -1440,6 +1449,50 @@
       "Taxes"
     ],
     "description": "Tax scope: income, payroll, property, or other taxes and tax effects"
+  },
+  {
+    "modifier_id": "M_PRETAX",
+    "category": "VALUATION_BASIS",
+    "keywords": [
+      "BeforeTax",
+      "BeforeTaxes",
+      "BeforeIncomeTax",
+      "BeforeIncomeTaxes",
+      "Pretax",
+      "PreTax"
+    ],
+    "description": "Amount stated before (pre) the income-tax line; tax-basis coordinate",
+    "sibling_group": "TAX_BASIS"
+  },
+  {
+    "modifier_id": "M_POST_TAX",
+    "category": "VALUATION_BASIS",
+    "keywords": [
+      "AfterTax",
+      "AfterTaxes",
+      "AfterIncomeTax",
+      "AfterIncomeTaxes"
+    ],
+    "description": "Amount stated after (post) the income-tax line; tax-basis coordinate",
+    "sibling_group": "TAX_BASIS"
+  },
+  {
+    "modifier_id": "M_INCLUDING",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "Including"
+    ],
+    "description": "Amount scope includes the component named by the accompanying modifier",
+    "sibling_group": "SCOPE_POLARITY"
+  },
+  {
+    "modifier_id": "M_EXCLUDING",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "Excluding"
+    ],
+    "description": "Amount scope excludes the component named by the accompanying modifier",
+    "sibling_group": "SCOPE_POLARITY"
   },
   {
     "modifier_id": "M_OCI",

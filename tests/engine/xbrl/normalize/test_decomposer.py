@@ -53,6 +53,35 @@ def test_subordinator_clause_boundary_splitting() -> None:
     assert "M_SALES_GOODS" in cost_atom.modifiers
 
 
+def test_scoped_modifier_claims_and_bounds_head_region() -> None:
+    """A scope-marker phrase claims its coordinate yet bounds the head region."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+
+    atom, _, _, _ = decompose_concept(
+        "afrm:FinancingReceivableExcludingAccruedInterestCreditLossExpense"
+        "ReversalExcludingCertainProvisions",
+        tax.token_lexicon,
+    )
+    assert atom.head == "H_ASSET"
+    assert "M_EXCLUDING" in atom.modifiers
+    assert "M_INTEREST" in atom.modifiers
+
+
+def test_archetype_decomposes_compositionally() -> None:
+    """The ASC-606 name decomposes token-by-token, with no whole-phrase entry."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+
+    atom, residuals, _, _ = decompose_concept(
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        tax.token_lexicon,
+    )
+    assert atom.head == "H_REVENUE"
+    assert atom.modifiers == frozenset({"M_CONTRACT_CUSTOMER", "M_PRETAX", "M_TAX"})
+    assert residuals == ()
+
+
 def test_net_of_expression_preserves_both_operand_atoms() -> None:
     tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None

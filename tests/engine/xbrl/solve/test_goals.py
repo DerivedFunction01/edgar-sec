@@ -21,7 +21,7 @@ def test_goal_pack_evaluate_revenue() -> None:
     fixture = GoalFixture(
         entity="0000320193",
         accession="0000320193-24-000106",
-        expected_basis="REPORTED",
+        expected_basis="DERIVED_EXACT",
         expected_value=391035.0,
     )
     pack = GoalPack(spec=spec, fixtures=(fixture,))
@@ -40,6 +40,8 @@ def test_goal_pack_evaluate_revenue() -> None:
     ]
 
     aggregate = pack.evaluate(solver, facts, entity="AAPL", period="FY2024")
-    assert aggregate.basis == "REPORTED"
+    # Phase 0 re-adjudication: the ASC-606 atom now subsumes the bare revenue
+    # atom, so the reported fact resolves by exact derivation, not identity.
+    assert aggregate.basis == "DERIVED_EXACT"
     assert aggregate.value == 391035.0
     assert aggregate.entity == "AAPL"
