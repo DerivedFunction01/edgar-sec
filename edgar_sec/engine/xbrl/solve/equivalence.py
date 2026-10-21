@@ -6,6 +6,7 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 
 from edgar_sec.engine.xbrl.schema.atoms import Atom
+from edgar_sec.engine.xbrl.taxonomy.defaults import DefaultCoordinate
 
 EXACT = "exact"
 NEAR = "near"
@@ -55,6 +56,26 @@ def classify_pair(left: Atom, right: Atom) -> str:
     return UNRELATED
 
 
+def presumed_atom(atom: Atom, defaults: Iterable[DefaultCoordinate]) -> Atom:
+    """Apply a presumed coordinate when the atom is silent on the entry's axis.
+
+    The presumed copy exists only for classification and ranking; an atom
+    stating any axis value, or matching no entry, is returned unchanged.
+    """
+    for entry in defaults:
+        if entry.head != atom.head:
+            continue
+        group = next(
+            (g for g in SIBLING_GROUPS if entry.presumed_modifier in g),
+            frozenset(),
+        )
+        if atom.modifiers & group:
+            continue
+        if frozenset(atom.modifiers) == frozenset(entry.identity_modifiers):
+            return Atom(atom.head, atom.modifiers | {entry.presumed_modifier})
+    return atom
+
+
 @dataclass(frozen=True, slots=True)
 class RankedEquivalent:
     """A candidate concept ranked against a target atom."""
@@ -63,26 +84,43 @@ class RankedEquivalent:
     atom: Atom
     tier: str
     modifier_distance: int
+    via_default: bool = False
 
 
 def rank_equivalents(
     target_qname: str,
     target: Atom,
     candidates: Iterable[tuple[str, Atom]],
+    defaults: Iterable[DefaultCoordinate] = (),
 ) -> tuple[RankedEquivalent, ...]:
-    """Rank candidate concepts by equivalence tier to the target atom."""
+    """Rank candidate concepts by equivalence tier to the target atom.
+
+    With defaults supplied, distances use presumed atoms and a pair near
+    only under presumption is flagged via_default, after evidenced nears.
+    """
+    defaults = tuple(defaults)
+    presumed_target = presumed_atom(target, defaults)
     ranked = []
     for qname, atom in candidates:
         if qname == target_qname:
             continue
         tier = classify_pair(target, atom)
+        via_default = False
+        presumed = presumed_atom(atom, defaults)
+        if tier == UNRELATED and defaults:
+            if classify_pair(presumed_target, presumed) == NEAR:
+                tier, via_default = NEAR, True
         if tier == UNRELATED:
             continue
-        distance = len(target.modifiers ^ atom.modifiers)
-        ranked.append(RankedEquivalent(qname, atom, tier, distance))
+        if defaults:
+            distance = len(presumed_target.modifiers ^ presumed.modifiers)
+        else:
+            distance = len(target.modifiers ^ atom.modifiers)
+        ranked.append(RankedEquivalent(qname, atom, tier, distance, via_default))
     ranked.sort(
         key=lambda item: (
             0 if item.tier == EXACT else 1,
+            1 if item.via_default else 0,
             item.modifier_distance,
             item.qname,
         )
