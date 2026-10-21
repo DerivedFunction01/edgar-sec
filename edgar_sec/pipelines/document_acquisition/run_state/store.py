@@ -33,7 +33,7 @@ from edgar_sec.pipelines.document_acquisition.run_state.operations import (
     validate_operation_state,
 )
 
-SCHEMA_VERSION = 5
+SCHEMA_VERSION = 6
 _OUTCOMES = (
     "pending",
     "skipped",
@@ -96,9 +96,9 @@ _SCHEMA = (
         resolution_id TEXT PRIMARY KEY,
         resolution_schema_version TEXT NOT NULL,
         target_id TEXT NOT NULL REFERENCES target_state(target_id),
-        selector TEXT NOT NULL CHECK (selector IN ('submitted_primary', 'exact_form_with_lazy_index')),
+        selector TEXT NOT NULL CHECK (selector IN ('submitted_primary', 'exact_form_with_lazy_index', 'sgml_bundle_scan')),
         expected_statutory_type TEXT NOT NULL,
-        initial_sequence INTEGER NOT NULL CHECK (initial_sequence = 1),
+        initial_sequence INTEGER CHECK (initial_sequence IS NULL OR initial_sequence = 1),
         screen_kind TEXT NOT NULL CHECK (screen_kind IN ('none', 'sgml_type', 'html_cover')),
         screen_result TEXT NOT NULL CHECK (screen_result IN ('not_run', 'form_match', 'type_mismatch', 'unverifiable')),
         evaluator_version TEXT,
@@ -108,9 +108,9 @@ _SCHEMA = (
         index_parser_version TEXT,
         matching_entry_ids_json TEXT NOT NULL,
         selected_sequence INTEGER CHECK (selected_sequence IS NULL OR selected_sequence > 0),
-        selected_retrieval_mode TEXT CHECK (selected_retrieval_mode IS NULL OR selected_retrieval_mode IN ('direct_url', 'bundle_sequence')),
+        selected_retrieval_mode TEXT CHECK (selected_retrieval_mode IS NULL OR selected_retrieval_mode IN ('direct_url', 'bundle_sequence', 'bundle_scan')),
         selected_url TEXT,
-        result TEXT NOT NULL CHECK (result IN ('accepted_sequence_1', 'recovered', 'not_filed', 'required_missing', 'ambiguous', 'failed')),
+        result TEXT NOT NULL CHECK (result IN ('accepted_sequence_1', 'recovered', 'selected_in_bundle', 'not_filed', 'required_missing', 'ambiguous', 'failed')),
         recorded_at_utc TEXT NOT NULL
     )""",
     "CREATE INDEX attempts_target_number ON attempts(target_id, attempt_number)",
@@ -402,13 +402,19 @@ def commit_attempts_and_update_target(
     if resolution is not None:
         if resolution.target_id != outcome.target_id:
             raise ValueError("resolution and outcome target IDs differ")
-        if resolution.index_attempt_id is None:
+        if resolution.selector == "sgml_bundle_scan":
+            if resolution.index_attempt_id is not None:
+                raise ValueError(
+                    "bundle-scan resolution must not reference an index attempt"
+                )
+        elif resolution.index_attempt_id is None:
             raise ValueError("resolution must reference its lazy-index attempt")
         if not recorded_at_utc:
             raise ValueError("recorded_at_utc is required with a resolution")
         expected_status = {
             "accepted_sequence_1": "acquired",
             "recovered": "acquired",
+            "selected_in_bundle": "acquired",
             "not_filed": "not_filed",
             "required_missing": "required_missing",
             "ambiguous": "ambiguous",
@@ -454,13 +460,16 @@ def commit_attempts_and_update_target(
             raise ValueError("outcome source/retry state differs from final attempt")
         for attempt_values in values:
             connection.execute(_INSERT_ATTEMPT, attempt_values)
-        if resolution is not None and resolution.index_attempt_id is not None:
-            index_attempt = connection.execute(
-                "SELECT target_id, attempt_kind FROM attempts WHERE attempt_id = ?",
-                (resolution.index_attempt_id,),
-            ).fetchone()
-            if index_attempt != (outcome.target_id, "lazy_index"):
-                raise ValueError("resolution index attempt is missing or mismatched")
+        if resolution is not None:
+            if resolution.index_attempt_id is not None:
+                index_attempt = connection.execute(
+                    "SELECT target_id, attempt_kind FROM attempts WHERE attempt_id = ?",
+                    (resolution.index_attempt_id,),
+                ).fetchone()
+                if index_attempt != (outcome.target_id, "lazy_index"):
+                    raise ValueError(
+                        "resolution index attempt is missing or mismatched"
+                    )
             selected_url = _url_value(
                 resolution.selected_url, "selected_url", required=False
             )

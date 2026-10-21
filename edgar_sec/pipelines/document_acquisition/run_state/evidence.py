@@ -20,6 +20,7 @@ from edgar_sec.pipelines.document_acquisition.run_state.store import (
 )
 
 _RESOLUTION_SCHEMA_VERSION = "1"
+_SCAN_RESOLUTION_SCHEMA_VERSION = "2"
 
 _ATTEMPT_COLUMNS = """attempt_id, target_id, attempt_number, attempt_kind, source,
     requested_url, outcome, retryable, error_code, http_status, final_url,
@@ -80,7 +81,7 @@ def _resolution_from_row(row: tuple[object, ...]) -> TargetSlotResolution:
     screen_kind = text(row[6], "screen_kind")
     screen_result = text(row[7], "screen_result")
     initial_hash = digest(row[9], "initial_body_sha256")
-    index_attempt_id = text(row[10], "index_attempt_id")
+    index_attempt_id = text(row[10], "index_attempt_id", optional=True)
     result = text(row[17], "result")
     text(row[18], "recorded_at_utc")
     evaluator_version = text(row[8], "evaluator_version", optional=True)
@@ -90,12 +91,18 @@ def _resolution_from_row(row: tuple[object, ...]) -> TargetSlotResolution:
     selected_sequence = row[14]
     selected_mode = row[15]
 
-    if schema_version != _RESOLUTION_SCHEMA_VERSION:
+    if schema_version == _RESOLUTION_SCHEMA_VERSION:
+        if selector != "exact_form_with_lazy_index":
+            raise ValueError("invalid persisted resolution field: selector")
+        if row[5] != 1 or index_attempt_id is None:
+            raise ValueError("invalid persisted resolution field: initial_sequence")
+    elif schema_version == _SCAN_RESOLUTION_SCHEMA_VERSION:
+        if selector != "sgml_bundle_scan":
+            raise ValueError("invalid persisted resolution field: selector")
+        if row[5] is not None or index_attempt_id is not None:
+            raise ValueError("invalid persisted resolution field: initial_sequence")
+    else:
         raise ValueError("unsupported target-slot resolution schema version")
-    if selector != "exact_form_with_lazy_index":
-        raise ValueError("invalid persisted resolution field: selector")
-    if row[5] != 1:
-        raise ValueError("invalid persisted resolution field: initial_sequence")
     if screen_kind not in {"none", "sgml_type", "html_cover"}:
         raise ValueError("invalid persisted resolution field: screen_kind")
     if screen_result not in {"not_run", "form_match", "type_mismatch", "unverifiable"}:
@@ -106,11 +113,12 @@ def _resolution_from_row(row: tuple[object, ...]) -> TargetSlotResolution:
         or selected_sequence < 1
     ):
         raise ValueError("invalid persisted resolution field: selected_sequence")
-    if selected_mode not in {None, "direct_url", "bundle_sequence"}:
+    if selected_mode not in {None, "direct_url", "bundle_sequence", "bundle_scan"}:
         raise ValueError("invalid persisted resolution field: selected_retrieval_mode")
     if result not in {
         "accepted_sequence_1",
         "recovered",
+        "selected_in_bundle",
         "not_filed",
         "required_missing",
         "ambiguous",

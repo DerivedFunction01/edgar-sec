@@ -213,9 +213,9 @@ def test_projects_targets_and_preserves_v4_operation_relations(
         "target_not_matched",
     ]
     assert target_plan_bundle_schema_version() == 5
-    assert target_plan_matcher_version() == "target-matcher-v5"
+    assert target_plan_matcher_version() == "target-matcher-v6"
     assert result.bundle_schema_version == 5
-    assert result.matcher_version == "target-matcher-v5"
+    assert result.matcher_version == "target-matcher-v6"
     assert result.target_schema_version == TARGET_SCHEMA_VERSION
     assert sum(
         part["row_count"] for part in result.relation_parts["target_operations"]
@@ -469,7 +469,7 @@ def test_matcher_version_mismatch_is_rejected_before_output(
     _seal_manifest(manifest, plan_root)
     output = tmp_path / "work-order.parquet"
 
-    with pytest.raises(TargetPlanError, match="requires target-matcher-v5"):
+    with pytest.raises(TargetPlanError, match="requires target-matcher-v6"):
         load_acquisition_work_order(plan_root, output)
 
     assert not output.exists()
@@ -625,3 +625,85 @@ def test_form_4_exact_form_selection_projects_lazy_index_trigger(
     table = pq.read_table(out.parquet_path)
     assert table.column("lazy_index_trigger_id").to_pylist() == ["4.exact_form"]
     assert table.column("lazy_index_trigger_version").to_pylist() == ["1"]
+
+
+def _scan_row(**overrides):
+    base = _rows("test_plan")[0]
+    custom = dict(
+        base,
+        form="4",
+        source_origin="catalog_direct",
+        target_role="primary",
+        target_type="primary",
+        catalog_direct_selection="exact_form_with_lazy_index",
+        inventory_entry_id=None,
+        retrieval_mode="bundle_scan",
+        sequence=None,
+        target_url=(
+            "https://www.sec.gov/Archives/edgar/data/1/"
+            "000000000124000001/0000000001-24-000001.txt"
+        ),
+    )
+    custom.update(overrides)
+    return custom
+
+
+def test_bundle_scan_row_projects_executable_without_trigger(
+    target_plan_factory, tmp_path
+) -> None:
+    plan_root, _ = target_plan_factory([_scan_row()], has_inventory_snapshot=False)
+    out = load_acquisition_work_order(plan_root, tmp_path / "work_order.parquet")
+    table = pq.read_table(out.parquet_path)
+    assert table.column("executable").to_pylist() == [True]
+    assert table.column("skip_reason").to_pylist() == [None]
+    assert table.column("retrieval_mode").to_pylist() == ["bundle_scan"]
+    assert table.column("lazy_index_trigger_id").to_pylist() == [None]
+
+
+def test_bundle_scan_row_with_sequence_is_rejected(
+    target_plan_factory, tmp_path
+) -> None:
+    plan_root, _ = target_plan_factory(
+        [_scan_row(sequence=2)], has_inventory_snapshot=False
+    )
+    with pytest.raises(TargetPlanError, match="must not carry a sequence"):
+        load_acquisition_work_order(plan_root, tmp_path / "work_order.parquet")
+
+
+def test_bundle_scan_row_with_document_url_is_rejected(
+    target_plan_factory, tmp_path
+) -> None:
+    plan_root, _ = target_plan_factory(
+        [
+            _scan_row(
+                target_url=(
+                    "https://www.sec.gov/Archives/edgar/data/1/"
+                    "000000000124000001/report.htm"
+                )
+            )
+        ],
+        has_inventory_snapshot=False,
+    )
+    with pytest.raises(TargetPlanError, match="canonical submission file"):
+        load_acquisition_work_order(plan_root, tmp_path / "work_order.parquet")
+
+
+def test_amended_form_alias_projects_lazy_index_trigger(
+    target_plan_factory, tmp_path
+) -> None:
+    plan_root, _ = target_plan_factory(
+        [
+            _scan_row(
+                retrieval_mode="direct_url",
+                target_url=(
+                    "https://www.sec.gov/Archives/edgar/data/1/"
+                    "000000000124000001/report.htm"
+                ),
+                form="4/A",
+            )
+        ],
+        has_inventory_snapshot=False,
+    )
+    out = load_acquisition_work_order(plan_root, tmp_path / "work_order.parquet")
+    table = pq.read_table(out.parquet_path)
+    assert table.column("lazy_index_trigger_id").to_pylist() == ["4.exact_form"]

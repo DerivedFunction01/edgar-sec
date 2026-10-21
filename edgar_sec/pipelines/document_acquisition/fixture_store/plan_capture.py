@@ -24,6 +24,7 @@ from edgar_sec.domain.sec_urls import (
 )
 from edgar_sec.engine.document.unpacking.streaming import (
     BundleExtractionFailure,
+    extract_bundle_document_by_type,
     extract_bundle_sequence,
 )
 from edgar_sec.engine.index_pages.parser import parse_html_index
@@ -299,7 +300,7 @@ def _capture_document(
                 filename = root_cand
         except ValueError:
             pass
-    if retrieval_mode not in {"direct_url", "bundle_sequence"}:
+    if retrieval_mode not in {"direct_url", "bundle_sequence", "bundle_scan"}:
         raise _TargetCaptureError("retrieval_mode_unsupported")
     if retrieval_mode == "direct_url" and not filename:
         raise _TargetCaptureError("selected_filename_missing")
@@ -331,6 +332,22 @@ def _capture_document(
             raise _TargetCaptureError("selected_filename_missing")
         body_sha256 = extracted.body_sha256
         selected_bytes = extracted.body_size
+    elif retrieval_mode == "bundle_scan":
+        selected_path = staging / f"selected-{uuid.uuid4().hex}.bin"
+        scanned = extract_bundle_document_by_type(
+            response.path,
+            str(row["form"]),
+            selected_path,
+            expected_source_sha256=response.sha256,
+        )
+        if isinstance(scanned, BundleExtractionFailure):
+            raise _TargetCaptureError(scanned.code)
+        filename = scanned.selected.filename
+        if not filename:
+            raise _TargetCaptureError("selected_filename_missing")
+        sequence = scanned.selected.sequence
+        body_sha256 = scanned.body_sha256
+        selected_bytes = scanned.body_size
     else:
         selected_path = response.path
         body_sha256 = response.sha256

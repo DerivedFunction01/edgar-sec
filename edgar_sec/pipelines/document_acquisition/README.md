@@ -21,8 +21,12 @@ the pinned plan and does not require an acquisition run.
   planning treats only the exact observed primary filenames `0000.txt`, `0000.htm`,
   `0001.txt`, and `0001.htm` as placeholder signals, independent of form/date;
   nested paths and arbitrary suffix matches are excluded. It selects the bundle route
-  only with an observed positive sequence and pinned bundle URL. Catalog-only targets
-  without those facts remain unresolved. Accession-qualifying a catalog child URL is
+  only with an observed positive sequence and pinned bundle URL. Two catalog-only
+  exceptions are pinned by planning, not decided here: a `0001.*` placeholder primary
+  is a constructed accession-numbered `direct_url`, and a primary target with no
+  usable primary is a constructed `bundle_sequence` at sequence 1 (filing year 2000
+  or later, exact-form lazy families only) or a `bundle_scan` (before 2000).
+  Accession-qualifying a catalog child URL is
   not retrieval authorization; acquisition executes only the mode pinned by planning.
 - **Distinct evidence**: Processing role, requested type, expected statutory type, index designation, physical sequence, and observed body type remain separate facts.
 - **Role-sensitive operations**: Form-specific XML renderers are primary-only; exhibits may use generic text where their route supports it. Unsupported rendered operations do not replace the independent raw result.
@@ -30,6 +34,7 @@ the pinned plan and does not require an acquisition run.
 - **Plan-driven fixture capture**: Fixture fill validates the pinned bundle and fetches its selected parser inputs directly; the interactive console requires explicit live-network consent.
 - **Lazy-index evidence**: Exact-form lazy selection fetches and caches the accession index in the fixture only when no inventory entry pins the selected document. Repeated targets for that accession reuse the cached page.
 - **Catalog-direct and bundle identity**: Candidate primary document screening is owned by `engine.document.screening`. With the exact-form selector, candidate bodies are screened across SGML `<TYPE>`, filename, exhibit headers, and registered family structure markers; mismatch or unverifiable identity triggers lazy-index recovery.
+- **Bundle scan (pre-2000)**: A `bundle_scan` target fetches its pinned complete-submission bundle once and selects the one sub-document whose SGML `<TYPE>` matches the filing form (alias-normalized, non-text documents excluded) via streaming extraction; no index page is fetched, because pre-2000 indexes carry no further selection evidence. Exactly one match is acquired, multiple matches are `ambiguous`, and no match is `required_missing` (or `not_filed` when the target is optional). The outcome is recorded as a `sgml_bundle_scan` target-slot resolution (schema version 2, no initial sequence, no index attempt) with result `selected_in_bundle` on success.
 - **Unresolved primary recovery**: If exact-form recovery cannot select or verify a primary, the candidate remains available for raw and supported generic text operations, while specialized XML is suppressed.
 - **Processing boundary**: Engine owns candidate screening and resolves operation capability/handler pins from path facts; pipeline code owns source selection, the pinned operation contract, and staged outputs. SGML child filenames use content routes even when their names contain slashes.
 - **Transient ownership**: Acquired bodies remain under the shared transient root; receipts do not authorize cleanup, and receipt-based cleanup is not implemented.

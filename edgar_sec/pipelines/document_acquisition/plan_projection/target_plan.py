@@ -15,6 +15,7 @@ import pyarrow.parquet as pq
 
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import accession_hyphenated, validate_archive_url
+from edgar_sec.domain.forms.common.aliases import FORM_FAMILY_ALIASES
 from edgar_sec.domain.forms.families.processing_profiles import (
     get_lazy_index_trigger,
     LAZY_INDEX_FORM_FAMILIES,
@@ -72,7 +73,7 @@ _STATUSES = frozenset(
     }
 )
 _RETRIEVAL_MODES = frozenset(
-    {"direct_url", "bundle_sequence", "constructed_package", "none"}
+    {"direct_url", "bundle_sequence", "bundle_scan", "constructed_package", "none"}
 )
 _SELECTORS = frozenset({"submitted_primary", "exact_form_with_lazy_index"})
 
@@ -335,12 +336,12 @@ def _validate_row(
         isinstance(size, bool) or not isinstance(size, int) or size < 0
     ):
         raise TargetPlanError("target byte_size must be a non-negative integer")
-    if row["retrieval_mode"] in {"direct_url", "bundle_sequence"}:
+    if row["retrieval_mode"] in {"direct_url", "bundle_sequence", "bundle_scan"}:
         if row["target_url"] is not None:
             _validate_url(
                 row["target_url"],
                 str(accession),
-                bundle=row["retrieval_mode"] == "bundle_sequence",
+                bundle=row["retrieval_mode"] != "direct_url",
             )
         if row["status"] == "matched" and row["target_url"] is None:
             raise TargetPlanError("matched target is missing its SEC URL")
@@ -352,6 +353,8 @@ def _validate_row(
             raise TargetPlanError(
                 "bundle_sequence target is missing its positive sequence"
             )
+        if row["retrieval_mode"] == "bundle_scan" and sequence is not None:
+            raise TargetPlanError("bundle_scan target must not carry a sequence")
 
 
 def _validate_parts(
@@ -562,30 +565,30 @@ def _iter_projected_batches(parts: tuple[Path, ...]):
         "OR retrieval_mode = 'constructed_package' "
         "THEN 'candidate_not_authorized' "
         "WHEN status <> 'matched' THEN 'target_not_matched' "
-        "WHEN retrieval_mode NOT IN ('direct_url', 'bundle_sequence') "
+        "WHEN retrieval_mode NOT IN ('direct_url', 'bundle_sequence', 'bundle_scan') "
         "THEN 'unsupported_retrieval_mode' ELSE NULL END"
     )
-    lazy_index_triggers = {
-        family: trigger
-        for family in sorted(LAZY_INDEX_FORM_FAMILIES)
-        if (trigger := get_lazy_index_trigger(family)) is not None
-    }
-    eligible_forms_sql = ", ".join(
-        sql_literal(family) for family in lazy_index_triggers
-    )
+    form_triggers: dict[str, tuple[str, str]] = {}
+    for family in sorted(LAZY_INDEX_FORM_FAMILIES):
+        trigger = get_lazy_index_trigger(family)
+        if trigger is None:
+            continue
+        for form in (family, *FORM_FAMILY_ALIASES.get(family, ())):
+            form_triggers.setdefault(form, trigger)
+    eligible_forms_sql = ", ".join(sql_literal(form) for form in sorted(form_triggers))
     trigger_id_sql = (
         "CASE form "
         + " ".join(
-            f"WHEN {sql_literal(family)} THEN {sql_literal(trigger_id)}"
-            for family, (trigger_id, _) in lazy_index_triggers.items()
+            f"WHEN {sql_literal(form)} THEN {sql_literal(trigger_id)}"
+            for form, (trigger_id, _) in sorted(form_triggers.items())
         )
         + " ELSE NULL END"
     )
     trigger_version_sql = (
         "CASE form "
         + " ".join(
-            f"WHEN {sql_literal(family)} THEN {sql_literal(version)}"
-            for family, (_, version) in lazy_index_triggers.items()
+            f"WHEN {sql_literal(form)} THEN {sql_literal(version)}"
+            for form, (_, version) in sorted(form_triggers.items())
         )
         + " ELSE NULL END"
     )
@@ -593,6 +596,7 @@ def _iter_projected_batches(parts: tuple[Path, ...]):
         "catalog_direct_selection = 'exact_form_with_lazy_index' "
         "AND source_origin = 'catalog_direct' "
         "AND target_role = 'primary' "
+        "AND retrieval_mode <> 'bundle_scan' "
         f"AND form IN ({eligible_forms_sql})"
     )
     query = (

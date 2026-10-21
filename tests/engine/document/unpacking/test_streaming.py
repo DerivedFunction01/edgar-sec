@@ -10,6 +10,7 @@ import pytest
 from edgar_sec.engine.document.unpacking.streaming import (
     BundleExtraction,
     BundleExtractionFailure,
+    extract_bundle_document_by_type,
     extract_bundle_sequence,
     screen_sgml_document_type,
 )
@@ -242,3 +243,60 @@ def test_large_unselected_body_uses_bounded_source_reads(
     assert destination.read_bytes() == b"selected"
     assert read_sizes and max(read_sizes) == chunk_size
     assert result.source_size > chunk_size * 256
+
+
+def _extract_by_type(tmp_path: Path, source_bytes: bytes, expected: str, **kwargs):
+    source = tmp_path / "submission.txt"
+    destination = tmp_path / "selected.bin"
+    source.write_bytes(source_bytes)
+    result = extract_bundle_document_by_type(source, expected, destination, **kwargs)
+    return result, destination
+
+
+def test_extract_by_type_selects_matching_document_at_any_sequence(
+    tmp_path: Path,
+) -> None:
+    bundle = _document("1", b"exhibit", document_type="EX-99") + _document(
+        "3", b"the form body", filename="form4.txt", document_type="4"
+    )
+    result, destination = _extract_by_type(tmp_path, bundle, "4")
+    assert isinstance(result, BundleExtraction)
+    assert destination.read_bytes() == b"the form body"
+    assert result.selected.sequence == 3
+    assert result.selected.document_type == "4"
+
+
+def test_extract_by_type_normalizes_amendment_alias(tmp_path: Path) -> None:
+    bundle = _document("2", b"amended", document_type="4")
+    result, destination = _extract_by_type(tmp_path, bundle, "4/A")
+    assert isinstance(result, BundleExtraction)
+    assert destination.read_bytes() == b"amended"
+
+
+def test_extract_by_type_missing_type_is_typed_failure(tmp_path: Path) -> None:
+    bundle = _document("1", b"other", document_type="EX-99")
+    result, destination = _extract_by_type(tmp_path, bundle, "4")
+    assert isinstance(result, BundleExtractionFailure)
+    assert result.code == "document_type_not_found"
+    assert not destination.exists()
+
+
+def test_extract_by_type_duplicate_type_is_typed_failure(tmp_path: Path) -> None:
+    bundle = _document("1", b"one", document_type="4") + _document(
+        "2", b"two", document_type="4"
+    )
+    result, destination = _extract_by_type(tmp_path, bundle, "4")
+    assert isinstance(result, BundleExtractionFailure)
+    assert result.code == "duplicate_document_type"
+    assert result.matching_sequences == 2
+    assert not destination.exists()
+
+
+def test_extract_by_type_skips_non_text_documents(tmp_path: Path) -> None:
+    bundle = _document(
+        "1", b"image", filename="chart.jpg", document_type="4"
+    ) + _document("2", b"text body", filename="form4.txt", document_type="4")
+    result, destination = _extract_by_type(tmp_path, bundle, "4")
+    assert isinstance(result, BundleExtraction)
+    assert destination.read_bytes() == b"text body"
+    assert result.selected.sequence == 2

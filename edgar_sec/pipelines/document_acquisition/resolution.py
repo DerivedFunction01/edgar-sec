@@ -12,6 +12,7 @@ from edgar_sec.pipelines.document_acquisition.models import (
 from edgar_sec.infra.sec_http.streaming import StreamedResponse
 
 _RESOLUTION_SCHEMA_VERSION = "1"
+_SCAN_RESOLUTION_SCHEMA_VERSION = "2"
 
 
 def build_resolution(
@@ -53,5 +54,46 @@ def build_resolution(
         selected_sequence=entry.sequence if entry else None,
         selected_retrieval_mode=selection.retrieval_mode if selection else None,
         selected_url=selection.selected_url if selection else None,
+        result=result,
+    )
+
+
+def build_scan_resolution(
+    row: dict[str, object],
+    initial: StreamedResponse,
+    *,
+    result: str,
+    selected_sequence: int | None = None,
+    selected_url: str | None = None,
+    screen_result: Literal[
+        "not_run", "form_match", "type_mismatch", "unverifiable"
+    ] = "unverifiable",
+    observed_body_type: str | None = None,
+) -> TargetSlotResolution:
+    selected = selected_sequence is not None
+    return TargetSlotResolution(
+        resolution_schema_version=_SCAN_RESOLUTION_SCHEMA_VERSION,
+        resolution_id=uuid.uuid4().hex,
+        run_id=str(row["run_id"]),
+        target_id=str(row["target_id"]),
+        target_role=row["target_role"],
+        target_type=row["target_type"],
+        selector="sgml_bundle_scan",
+        expected_statutory_type=str(row["form"]),
+        initial_sequence=None,
+        index_document_type=None,
+        index_primary_designation=None,
+        initial_observed_body_type=observed_body_type,
+        screen_kind="sgml_type",
+        screen_result=screen_result,
+        evaluator_version=None,
+        initial_body_sha256=initial.sha256,
+        index_attempt_id=None,
+        index_response_sha256=None,
+        index_parser_version=None,
+        matching_entry_ids=(),
+        selected_sequence=selected_sequence,
+        selected_retrieval_mode="bundle_scan" if selected else None,
+        selected_url=selected_url if selected else None,
         result=result,
     )

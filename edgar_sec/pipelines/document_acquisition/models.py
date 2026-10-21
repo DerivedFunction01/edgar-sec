@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from typing import Literal
 
 SourceOrigin = Literal["inventory_index", "catalog_direct"]
-RetrievalMode = Literal["direct_url", "bundle_sequence"]
+RetrievalMode = Literal["direct_url", "bundle_sequence", "bundle_scan"]
 AcquisitionSource = Literal["live_sec", "fixture_replay"]
 AttemptKind = Literal["document_body", "lazy_index"]
 AcquisitionStatus = Literal[
@@ -86,9 +86,11 @@ class TargetSlotResolution:
     target_id: str
     target_role: Literal["primary", "exhibit", "data_file", "graphic", "package"]
     target_type: str
-    selector: Literal["submitted_primary", "exact_form_with_lazy_index"]
+    selector: Literal[
+        "submitted_primary", "exact_form_with_lazy_index", "sgml_bundle_scan"
+    ]
     expected_statutory_type: str
-    initial_sequence: int
+    initial_sequence: int | None
     index_document_type: str | None
     index_primary_designation: bool | None
     initial_observed_body_type: str | None
@@ -106,6 +108,7 @@ class TargetSlotResolution:
     result: Literal[
         "accepted_sequence_1",
         "recovered",
+        "selected_in_bundle",
         "not_filed",
         "required_missing",
         "ambiguous",

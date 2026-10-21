@@ -29,10 +29,21 @@ into an immutable accession-document target plan for later acquisition.
   The exact names are `0000.txt`, `0000.htm`, `0001.txt`, and `0001.htm`, independent
   of form/date; nested paths and arbitrary suffix matches are excluded. Planning selects
   `bundle_sequence` only when inventory supplies the exact observed primary filename,
-  a positive sequence, and the pinned accession bundle URL. Catalog-only placeholder
-  targets remain unresolved without that sequence evidence. Filing-catalog URL
-  construction may accession-qualify a placeholder child href while retaining its
-  stub reason; this locator construction does not authorize retrieval. Secondary
+  a positive sequence, and the pinned accession bundle URL. In catalog-only mode a
+  `0001.*` placeholder primary instead constructs its accession-numbered direct link
+  (`<accession>-0001.<ext>`) and is matched as `direct_url`; a `0000.*` primary is
+  ignored (sequence 0 does not exist) and treated as no primary evidence.
+  A catalog-only primary target with no usable primary falls back to the constructed
+  complete-submission bundle URL, split by the accession's filing year (from
+  `filing_date`): filed in 2000 or later, it publishes a constructed `bundle_sequence`
+  at sequence 1 only under the `exact_form_with_lazy_index` selection with a
+  lazy-index form family, leaving verification to acquisition's screen-and-recover;
+  filed before 2000, it publishes `bundle_scan` regardless of selection, and
+  acquisition selects the document inside the bundle by SGML type, since the filing
+  index carries no further selection evidence for that era. A missing or unparseable
+  filing year keeps the target unresolved. Filing-catalog URL
+  construction may accession-qualify a placeholder child href; this locator
+  construction does not authorize retrieval. Secondary
   links continue to use their observed index hrefs without rewriting.
 
 ## Command surface

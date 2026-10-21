@@ -9,7 +9,21 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
 
+from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.foundation.io import DEFAULT_IO_CHUNK_SIZE
+
+_NON_TEXT_TYPES = frozenset({"GRAPHIC", "COVER", "XML", "ZIP"})
+_NON_TEXT_EXTENSIONS = (
+    ".jpg",
+    ".jpeg",
+    ".gif",
+    ".png",
+    ".pdf",
+    ".zip",
+    ".xlsx",
+    ".xls",
+    ".fil",
+)
 
 # A document header is metadata, so it is bounded independently of the read buffer.
 _MAX_HEADER_SIZE = 64 * 1024
@@ -30,6 +44,8 @@ FailureCode = Literal[
     "invalid_sequence",
     "sequence_not_found",
     "duplicate_sequence",
+    "document_type_not_found",
+    "duplicate_document_type",
     "invalid_length",
     "length_mismatch",
     "length_out_of_bounds",
@@ -79,19 +95,17 @@ class BundleExtractionFailure:
     source_sha256: str
 
 
-def extract_bundle_sequence(
+def _extract_bundle_selection(
     source: Path,
-    sequence: int,
     destination: Path,
     *,
+    is_selected: Callable[[BundleDocumentHeader], bool],
+    duplicate_code: FailureCode,
+    not_found_code: FailureCode,
     expected_filename: str | None = None,
     expected_document_type: str | None = None,
     expected_source_sha256: str | None = None,
 ) -> BundleExtraction | BundleExtractionFailure:
-    """Write the exact body for one sequence, or return a typed failure."""
-    if isinstance(sequence, bool) or not isinstance(sequence, int) or sequence <= 0:
-        return BundleExtractionFailure("invalid_sequence", 0, "")
-
     source_hash = hashlib.sha256()
     body_hash = hashlib.sha256()
     source_size = 0
@@ -179,7 +193,7 @@ def extract_bundle_sequence(
         )
         if len(filenames) > 1 or len(types) > 1 or len(descriptions) > 1:
             fail("malformed_delimiters")
-        current_is_selected = parsed_sequence == sequence
+        current_is_selected = is_selected(current)
         current_body_size = 0
         if current_is_selected:
             matching_sequences += 1
@@ -192,7 +206,7 @@ def extract_bundle_sequence(
                 except OSError:
                     fail("io_error")
             else:
-                fail("duplicate_sequence")
+                fail(duplicate_code)
         header.clear()
 
     def handle(token: bytes) -> None:
@@ -285,9 +299,9 @@ def extract_bundle_sequence(
     if document_count == 0:
         fail("not_sgml")
     if matching_sequences == 0 and failure is None:
-        fail("sequence_not_found")
+        fail(not_found_code)
     if matching_sequences > 1:
-        failure = "duplicate_sequence"
+        failure = duplicate_code
     if selected is not None and failure is None:
         if expected_filename is not None and (
             selected.filename is None
@@ -306,7 +320,7 @@ def extract_bundle_sequence(
     if failure is not None or selected is None:
         _remove_destination(destination)
         return BundleExtractionFailure(
-            failure or "sequence_not_found", matching_sequences, source_sha256
+            failure or not_found_code, matching_sequences, source_sha256
         )
 
     return BundleExtraction(
@@ -317,6 +331,66 @@ def extract_bundle_sequence(
         source_sha256=source_sha256,
         body_size=body_size,
         body_sha256=body_hash.hexdigest(),
+    )
+
+
+def extract_bundle_sequence(
+    source: Path,
+    sequence: int,
+    destination: Path,
+    *,
+    expected_filename: str | None = None,
+    expected_document_type: str | None = None,
+    expected_source_sha256: str | None = None,
+) -> BundleExtraction | BundleExtractionFailure:
+    """Write the exact body for one sequence, or return a typed failure."""
+    if isinstance(sequence, bool) or not isinstance(sequence, int) or sequence <= 0:
+        return BundleExtractionFailure("invalid_sequence", 0, "")
+    return _extract_bundle_selection(
+        source,
+        destination,
+        is_selected=lambda header: header.sequence == sequence,
+        duplicate_code="duplicate_sequence",
+        not_found_code="sequence_not_found",
+        expected_filename=expected_filename,
+        expected_document_type=expected_document_type,
+        expected_source_sha256=expected_source_sha256,
+    )
+
+
+def _normalize_bundle_type(value: str) -> str:
+    normalized = " ".join(value.split()).upper()
+    return resolve_alias(normalized) or normalized
+
+
+def _type_is_selected(header: BundleDocumentHeader, wanted: str) -> bool:
+    if header.document_type is None:
+        return False
+    observed = _normalize_bundle_type(header.document_type)
+    if observed != wanted or observed in _NON_TEXT_TYPES:
+        return False
+    filename = (header.filename or "").casefold()
+    return not filename.endswith(_NON_TEXT_EXTENSIONS)
+
+
+def extract_bundle_document_by_type(
+    source: Path,
+    expected_type: str,
+    destination: Path,
+    *,
+    expected_source_sha256: str | None = None,
+) -> BundleExtraction | BundleExtractionFailure:
+    """Write the body of the one sub-document matching a form type, or fail."""
+    if not expected_type or not expected_type.strip():
+        return BundleExtractionFailure("document_type_not_found", 0, "")
+    wanted = _normalize_bundle_type(expected_type)
+    return _extract_bundle_selection(
+        source,
+        destination,
+        is_selected=lambda header: _type_is_selected(header, wanted),
+        duplicate_code="duplicate_document_type",
+        not_found_code="document_type_not_found",
+        expected_source_sha256=expected_source_sha256,
     )
 
 

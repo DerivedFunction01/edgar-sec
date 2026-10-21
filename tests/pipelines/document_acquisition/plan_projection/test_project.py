@@ -117,7 +117,7 @@ def test_creates_pinned_run_and_canonical_manifest(project_fixture):
         {key: value for key, value in manifest.items() if key != "run_digest"}
     )
     assert manifest["bundle_schema_version"] == 5
-    assert manifest["matcher_version"] == "target-matcher-v5"
+    assert manifest["matcher_version"] == "target-matcher-v6"
     assert manifest["work_order_schema_version"] == "4"
     assert set(manifest["work_order_relations"]) == {
         "targets",

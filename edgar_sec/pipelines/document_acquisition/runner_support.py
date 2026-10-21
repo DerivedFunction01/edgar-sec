@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import uuid
 from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
@@ -43,6 +44,17 @@ class AcquisitionTransport(Protocol):
         max_response_bytes: int,
         validate_redirect: Callable[[str], None],
     ) -> StreamResult: ...
+
+
+def utc_now(clock: Callable[[], datetime]) -> str:
+    value = clock()
+    if value.tzinfo is None or value.utcoffset() is None:
+        raise ValueError("acquisition clock must return timezone-aware datetimes")
+    return value.astimezone(UTC).isoformat(timespec="seconds")
+
+
+def new_staging_path(staging_root: Path, prefix: str) -> Path:
+    return staging_root / f"{prefix}-{uuid.uuid4().hex}.bin"
 
 
 def validate_redirect(

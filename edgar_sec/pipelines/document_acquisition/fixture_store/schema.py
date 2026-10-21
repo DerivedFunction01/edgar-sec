@@ -16,7 +16,7 @@ from edgar_sec.pipelines.document_acquisition.fixture_store.models import (
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 
-SCHEMA_VERSION = 4
+SCHEMA_VERSION = 5
 FIXTURE_KIND = "document_acquisition.parser_bodies"
 _FIXTURE_DETAIL_KEYS = {
     "store_schema_version",
@@ -127,7 +127,7 @@ _SCHEMA = (
         target_role TEXT NOT NULL,
         target_type TEXT NOT NULL,
         source_origin TEXT NOT NULL CHECK (source_origin IN ('inventory_index', 'catalog_direct')),
-        retrieval_mode TEXT NOT NULL CHECK (retrieval_mode IN ('direct_url', 'bundle_sequence')),
+        retrieval_mode TEXT NOT NULL CHECK (retrieval_mode IN ('direct_url', 'bundle_sequence', 'bundle_scan')),
         target_url TEXT,
         sequence INTEGER,
         selected_filename TEXT NOT NULL CHECK (length(selected_filename) > 0),
@@ -142,7 +142,7 @@ _SCHEMA = (
         CHECK ((selection_source = 'fixture_lazy_index' AND index_sha256 IS NOT NULL) OR
             (selection_source != 'fixture_lazy_index' AND index_sha256 IS NULL)),
         CHECK ((retrieval_mode = 'direct_url' AND sequence IS NULL) OR
-            (retrieval_mode = 'bundle_sequence' AND sequence IS NOT NULL AND sequence > 0)),
+            (retrieval_mode IN ('bundle_sequence', 'bundle_scan') AND sequence IS NOT NULL AND sequence > 0)),
         CHECK (length(body_sha256) = 64 AND body_sha256 NOT GLOB '*[^0-9a-f]*')
     )""",
     """CREATE TRIGGER immutable_fixture_meta_update BEFORE UPDATE ON fixture_meta

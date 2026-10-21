@@ -127,7 +127,7 @@ def _target_row(
         or row["status"] != "matched"
     ):
         raise ProcessingError("processing request identity differs from work order")
-    if row["retrieval_mode"] not in {"direct_url", "bundle_sequence"}:
+    if row["retrieval_mode"] not in {"direct_url", "bundle_sequence", "bundle_scan"}:
         raise ProcessingError("work-order retrieval mode is not processable")
     try:
         source_parts = validate_archive_url(str(row["target_url"]), accession)
@@ -146,7 +146,10 @@ def _effective_route(
     row: dict[str, object],
     body: StagedBodyRef,
 ) -> tuple[DocumentRoute, str]:
-    if row["retrieval_mode"] == "bundle_sequence" and request.selected_filename is None:
+    if (
+        row["retrieval_mode"] in {"bundle_sequence", "bundle_scan"}
+        and request.selected_filename is None
+    ):
         raise ProcessingError("bundle child filename is absent from handoff")
     try:
         requested_filename = validate_selected_filename(request.selected_filename)
@@ -205,10 +208,15 @@ def _effective_route(
 
     retrieval_mode = str(row["retrieval_mode"])
     if resolution is not None and resolution.selected_url is not None:
-        if resolution.result not in {"accepted_sequence_1", "recovered"}:
+        if resolution.result not in {
+            "accepted_sequence_1",
+            "recovered",
+            "selected_in_bundle",
+        }:
             raise ProcessingError("selected target resolution is not successful")
         if (
-            resolution.selected_retrieval_mode not in {"direct_url", "bundle_sequence"}
+            resolution.selected_retrieval_mode
+            not in {"direct_url", "bundle_sequence", "bundle_scan"}
             or selected_attempt.requested_url != resolution.selected_url
         ):
             raise ProcessingError("selected target route is unresolved")
@@ -228,7 +236,10 @@ def _effective_route(
             validate_archive_url(selected_attempt.final_url, request.accession)
     except ValueError as error:
         raise ProcessingError("selected route URL is invalid") from error
-    if retrieval_mode == "bundle_sequence" or committed_filename is not None:
+    if (
+        retrieval_mode in {"bundle_sequence", "bundle_scan"}
+        or committed_filename is not None
+    ):
         if committed_filename is None:
             raise ProcessingError("bundle child filename is absent from handoff")
         return content_route(committed_filename), committed_filename

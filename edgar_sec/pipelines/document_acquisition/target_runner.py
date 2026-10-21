@@ -12,18 +12,13 @@ from urllib.parse import urlsplit
 from edgar_sec.domain.document_inventory.models import IndexPageInput
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import full_submission_url_for, validate_archive_url
-from edgar_sec.engine.document.screening import (
-    screen_candidate_document,
-)
+from edgar_sec.engine.document.screening import screen_candidate_document
 from edgar_sec.engine.document.unpacking.streaming import (
     BundleExtraction,
     extract_bundle_sequence,
 )
 from edgar_sec.engine.index_pages.parser import parse_html_index
-from edgar_sec.infra.sec_http.streaming import (
-    StreamFailure,
-    StreamedResponse,
-)
+from edgar_sec.infra.sec_http.streaming import StreamFailure, StreamedResponse
 from edgar_sec.pipelines.document_acquisition.attempts import (
     build_attempt as _attempt,
     relative_path as _relative,
@@ -43,28 +38,22 @@ from edgar_sec.pipelines.document_acquisition.runner_support import (
     AcquisitionTransport,
     apply_structure_screen as _apply_structure_screen,
     has_lazy_index_trigger as _has_lazy_index_trigger,
+    new_staging_path as _new_path,
     outcome as _outcome,
     read_screen_head as _read_screen_head,
     resolution_screen_kind as _resolution_screen_kind,
     stream as _stream,
     unresolved_source_outcome as _unresolved_source_outcome,
+    utc_now as _utc,
 )
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 from edgar_sec.pipelines.document_acquisition.resolution import (
     build_resolution as _resolution,
 )
 from edgar_sec.pipelines.document_acquisition.run_state.models import TargetState
-
-
-def _utc(clock: Callable[[], datetime]) -> str:
-    value = clock()
-    if value.tzinfo is None or value.utcoffset() is None:
-        raise ValueError("acquisition clock must return timezone-aware datetimes")
-    return value.astimezone(UTC).isoformat(timespec="seconds")
-
-
-def _new_path(staging_root: Path, prefix: str) -> Path:
-    return staging_root / f"{prefix}-{uuid.uuid4().hex}.bin"
+from edgar_sec.pipelines.document_acquisition.scan_runner import (
+    acquire_scan_target as _acquire_scan_target,
+)
 
 
 def acquire_target(
@@ -93,6 +82,17 @@ def acquire_target(
     requested_url = row["target_url"]
     if not isinstance(requested_url, str):
         raise ValueError("executable work-order row has no target URL")
+    if row["retrieval_mode"] == "bundle_scan":
+        return _acquire_scan_target(
+            row,
+            state,
+            run_id=run_id,
+            run_root=run_root,
+            staging_root=staging_root,
+            policy=policy,
+            transport=transport,
+            clock=clock,
+        )
     retain_evidence = (
         policy.retain_response_evidence
         and row["target_role"] == "primary"

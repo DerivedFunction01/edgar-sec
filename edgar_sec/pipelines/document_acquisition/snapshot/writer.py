@@ -331,6 +331,8 @@ def _assemble_snapshot_tables(
         source_key = (
             f"bundle:{target.get('target_url') or ''}#seq={target.get('sequence') or 0}"
             if target.get("retrieval_mode") == "bundle_sequence"
+            else f"bundle:{target.get('target_url') or ''}#scan"
+            if target.get("retrieval_mode") == "bundle_scan"
             else f"direct:{target.get('target_url') or ''}"
         )
         source_asset_id = "asset_" + canonical_hash([accession, source_key])[:32]

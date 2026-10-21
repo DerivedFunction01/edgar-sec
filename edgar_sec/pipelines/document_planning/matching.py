@@ -10,10 +10,14 @@ from urllib.parse import urlsplit, urlunsplit
 
 from edgar_sec.domain.document.path_facts import PLACEHOLDER_PRIMARY_FILENAMES
 from edgar_sec.domain.forms.common.aliases import resolve_alias
+from edgar_sec.domain.forms.families.processing_profiles import (
+    get_lazy_index_trigger,
+)
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.domain.sec_urls import (
     SEC_ARCHIVE_BASE,
     archives_url,
+    full_submission_url_for,
     parse_archive_url,
     resolve_archive_href,
     validate_archive_url,
@@ -33,6 +37,7 @@ _TARGET_STATUSES = {
 }
 _COMPLETE_SUBMISSION_NAME = re.compile(r"\d{10}-\d{2}-\d{6}\.txt$")
 _NUMBERED_DOCUMENT_NAME = re.compile(r"\d{4}\.[A-Za-z0-9]+\Z", re.ASCII)
+_FILING_YEAR = re.compile(r"\d{4}")
 
 
 def _is_placeholder_primary_path(document_path: str | None) -> bool:
@@ -76,24 +81,12 @@ def catalog_only_rows(
             catalog_urls = _catalog_primary_urls(accession, identity)
             catalog_urls_loaded = True
         url = next(iter(catalog_urls)) if catalog_urls else None
-        placeholder_primary = (
-            target.role == "primary"
-            and not url
-            and _catalog_has_placeholder_primary(accession)
-        )
-        if placeholder_primary:
-            candidate = _Candidate(
-                None,
-                None,
-                "none",
-                None,
-                None,
-                "placeholder_primary_requires_bundle_sequence",
-            )
+        if url:
+            candidate = _Candidate(None, url, "direct_url", None, None)
+        elif target.role == "primary":
+            candidate = _no_primary_candidate(accession, identity, target)
         else:
-            candidate = _Candidate(
-                None, url, "direct_url" if url else "none", None, None
-            )
+            candidate = _Candidate(None, None, "none", None, None)
         rows.append(
             _target_row(
                 plan_id,
@@ -115,17 +108,103 @@ def catalog_only_rows(
     return rows
 
 
-def _catalog_has_placeholder_primary(accession: CatalogScopeAccession) -> bool:
+def _no_primary_candidate(
+    accession: CatalogScopeAccession,
+    identity: str,
+    target: ProfileTarget,
+) -> _Candidate:
+    numbered_url = _catalog_numbered_placeholder_url(accession, identity)
+    if numbered_url is not None:
+        return _Candidate(None, numbered_url, "direct_url", None, None)
+    filing_year = _filing_year(accession.filing_date)
+    if filing_year is None or not accession.occurrences:
+        return _Candidate(None, None, "none", None, None)
+    if filing_year < 2000:
+        return _Candidate(
+            None,
+            _constructed_bundle_url(accession, identity),
+            "bundle_scan",
+            None,
+            None,
+            "sgml_bundle_scan_pre2000",
+        )
+    if (
+        target.catalog_direct_selection == "exact_form_with_lazy_index"
+        and get_lazy_index_trigger(accession.form) is not None
+    ):
+        return _Candidate(
+            None,
+            _constructed_bundle_url(accession, identity),
+            "bundle_sequence",
+            1,
+            None,
+            "sgml_bundle_sequence1_ge2000",
+        )
+    return _Candidate(None, None, "none", None, None)
+
+
+def _filing_year(filing_date: str | None) -> int | None:
+    if not filing_date:
+        return None
+    match = _FILING_YEAR.match(filing_date.strip())
+    return int(match.group()) if match else None
+
+
+def _constructed_bundle_url(accession: CatalogScopeAccession, identity: str) -> str:
+    for occurrence in accession.occurrences:
+        cik = (occurrence.source_cik or "").strip()
+        if not cik:
+            continue
+        try:
+            url = full_submission_url_for(cik, identity)
+        except ValueError as error:
+            raise TargetMatchingError(
+                f"catalog source CIK cannot build a bundle URL for {identity}"
+            ) from error
+        return _validated_bundle_url(url, identity)
+    raise TargetMatchingError(
+        f"catalog accession has no source CIK for bundle construction: {identity}"
+    )
+
+
+def _catalog_numbered_placeholder_url(
+    accession: CatalogScopeAccession, identity: str
+) -> str | None:
+    candidates_by_path: dict[str, set[str]] = {}
     for occurrence in accession.occurrences:
         primary = (occurrence.primary_document or "").strip()
         path = (occurrence.document_path or "").strip()
-        if (
-            primary
-            and (not path or path == primary)
-            and _is_placeholder_primary_path(path or primary)
-        ):
-            return True
-    return False
+        if not primary or (path and path.casefold() != primary.casefold()):
+            continue
+        numbered = _numbered_document_path(primary)
+        if numbered is None or not _is_placeholder_primary_path(primary):
+            continue
+        expected_path = _accession_numbered_document_path(identity, numbered)
+        if occurrence.archive_url:
+            safe = _validated_archive_url(occurrence.archive_url, identity)
+            parsed = parse_archive_url(safe)
+            if (
+                parsed is None
+                or parsed.document_path.casefold() != expected_path.casefold()
+            ):
+                raise TargetMatchingError(
+                    f"catalog primary URL disagrees with its path for {identity}"
+                )
+            url = safe
+        else:
+            url = _validated_archive_url(
+                archives_url(occurrence.source_cik, identity, expected_path),
+                identity,
+                expected_archive_cik=occurrence.source_cik,
+            )
+        candidates_by_path.setdefault(expected_path.casefold(), set()).add(url)
+    if len(candidates_by_path) > 1:
+        raise TargetMatchingError(
+            f"conflicting catalog placeholder paths for {identity}"
+        )
+    if not candidates_by_path:
+        return None
+    return sorted(next(iter(candidates_by_path.values())))[0]
 
 
 def _catalog_primary_urls(
