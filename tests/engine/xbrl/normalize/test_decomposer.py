@@ -133,3 +133,137 @@ def test_infer_semantic_frame_canonical_and_unseen() -> None:
     unseen_frame = infer_semantic_frame("msft:FooBarRevenueNet", tax)
     assert unseen_frame.prime_head == "H_REVENUE"
     assert unseen_frame.residual_tokens == ("Foo", "Bar")
+
+
+def test_number_words_become_indexicals_not_residuals() -> None:
+    """Maturity siblings share one atom and differ only in num indexical."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+
+    five_atom, five_res, _, five_idx = decompose_concept(
+        "us-gaap:LongTermDebtMaturitiesDueInFiveYears", tax.token_lexicon
+    )
+    three_atom, three_res, _, three_idx = decompose_concept(
+        "us-gaap:LongTermDebtMaturitiesDueInThreeYears", tax.token_lexicon
+    )
+    assert five_atom == three_atom
+    assert five_idx == ("num=5",)
+    assert three_idx == ("num=3",)
+    assert "Five" not in five_res
+    assert "Three" not in three_res
+
+
+def test_number_range_merges_into_one_indexical() -> None:
+    """After Five Through Ten Years yields a single num=5..10 indexical."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+
+    _, _, _, indexicals = decompose_concept(
+        "us-gaap:AvailableForSaleSecuritiesDebtMaturitiesAfterFiveThroughTenYearsAmortizedCost",
+        tax.token_lexicon,
+    )
+    assert indexicals == ("num=5..10",)
+
+
+def test_net_of_keeps_left_side_number_indexical() -> None:
+    """A number left of a NET_OF operator survives in the indexicals."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+
+    expression = decompose_concept_expression(
+        "us-gaap:RevenueFromFiveYearContractNetOfInterestExpense", tax.token_lexicon
+    )
+    assert expression.operator == "NET_OF"
+    assert expression.indexicals == ("num=5",)
+
+
+def test_ordinals_share_atom_and_differ_as_indexicals() -> None:
+    """Ordinal maturity siblings: same atom, ord= indexicals carry the slot."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    second = decompose_concept_expression(
+        "us-gaap:ContractualObligationDueInSecondYear", tax.token_lexicon
+    )
+    fifth = decompose_concept_expression(
+        "us-gaap:ContractualObligationDueInFifthYear", tax.token_lexicon
+    )
+    assert second.atom == fifth.atom
+    assert second.indexicals == ("ord=2",)
+    assert fifth.indexicals == ("ord=5",)
+    assert "NUM" not in second.residuals
+
+
+def test_counterparty_and_past_due_phrase_merges() -> None:
+    """Third/Related Party and Past Due decompose as single modifiers."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    third, _, _, _ = decompose_concept(
+        "f:CreditFacilityGuaranteeByThirdPartyAmount", tax.token_lexicon
+    )
+    assert "M_THIRD_PARTY" in third.modifiers
+    related, _, _, _ = decompose_concept(
+        "f:RelatedPartyTransactionFinanceReceivablesNet", tax.token_lexicon
+    )
+    assert "M_RELATED_PARTY" in related.modifiers
+    past_due, _, _, _ = decompose_concept(
+        "jpm:FinancingReceivableNonaccrualPercentThirtyOrMoreDaysPastDue",
+        tax.token_lexicon,
+    )
+    assert "M_PAST_DUE" in past_due.modifiers
+    assert "M_MATURITY" not in past_due.modifiers
+    maturity = decompose_concept_expression(
+        "amzn:FinancingObligationsFutureMinimumPaymentsDueInFiveYears",
+        tax.token_lexicon,
+    )
+    assert "M_MATURITY" in maturity.atom.modifiers
+    assert "M_PAST_DUE" not in maturity.atom.modifiers
+    assert maturity.indexicals == ("num=5",)
+
+
+def test_mined_phrase_merges() -> None:
+    """Disposal group, off-balance-sheet, AFS/HTM phrases claim as units."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    disposal, _, _, _ = decompose_concept(
+        "apd:DisposalGroupIncludingDiscontinuedOperationApproximateAnnualSales",
+        tax.token_lexicon,
+    )
+    assert "M_DISPOSAL_GROUP" in disposal.modifiers
+    off_bs, _, _, _ = decompose_concept(
+        "jpm:FinancingReceivableAndDebtSecuritiesAllowanceForCreditLoss"
+        "AndOffBalanceSheetCreditLossLiability",
+        tax.token_lexicon,
+    )
+    assert "M_OFF_BALANCE_SHEET" in off_bs.modifiers
+    afs_htm, _, _, _ = decompose_concept(
+        "jpm:DebtSecuritiesAvailableForSaleAndHeldToMaturityAccruedInterest"
+        "AfterAllowanceForCreditLoss",
+        tax.token_lexicon,
+    )
+    assert "M_AVAILABLE_FOR_SALE" in afs_htm.modifiers
+    assert "M_HELD_TO_MATURITY" in afs_htm.modifiers
+
+
+def test_fiscal_year_is_an_indexical_not_a_modifier() -> None:
+    """Fiscal Year scopes a concept (indexical) instead of qualifying it."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    expr = decompose_concept_expression(
+        "cat:DefinedBenefitPlanHealthCareCostTrendRateAssumedForCurrentFiscalYear",
+        tax.token_lexicon,
+    )
+    assert "FISCAL_YEAR" in expr.indexicals
+    assert "M_MATURITY" not in expr.atom.modifiers
+
+
+def test_fair_value_level_rides_the_number_grammar() -> None:
+    """Level 3 decomposes as M_FAIR_VALUE with the level as num= indexical."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    expr = decompose_concept_expression(
+        "us-gaap:DefinedBenefitPlanPlanAssetsLevel3ReconciliationDecreaseForSale",
+        tax.token_lexicon,
+    )
+    assert "M_FAIR_VALUE" in expr.atom.modifiers
+    assert "M_PENSION_DEFINED_BENEFIT" in expr.atom.modifiers
+    assert expr.indexicals == ("num=3",)

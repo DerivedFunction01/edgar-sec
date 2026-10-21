@@ -7,6 +7,10 @@ from dataclasses import dataclass
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, SemanticConceptFrame
 from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
+from edgar_sec.engine.xbrl.normalize.numbers import (
+    collapse_number_phrases,
+    number_indexicals,
+)
 
 
 def split_camel_case(name: str) -> tuple[str, ...]:
@@ -66,7 +70,8 @@ def decompose_concept_expression(
 ) -> ConceptExpression:
     """Preserve binary NET_OF operand atoms while deriving the query coordinate."""
     local_name = concept_qname.split(":")[-1] if ":" in concept_qname else concept_qname
-    tokens = split_camel_case(local_name)
+    raw_tokens = split_camel_case(local_name)
+    tokens, number_values, ordinal_values = collapse_number_phrases(raw_tokens)
     matches, _ = lexicon.scan_tokens(tokens)
     operators = [match for match in matches if match.entry.role == "NET_OF"]
     if len(operators) > 1:
@@ -75,12 +80,17 @@ def decompose_concept_expression(
             operator=None,
             operands=(),
             weights=(),
-            residuals=tokens,
+            residuals=raw_tokens,
         )
     if operators:
         operator = operators[0]
+        left_tokens = tokens[: operator.start]
+        left_values = {i: v for i, v in number_values.items() if i < operator.start}
+        left_ordinals = {i: v for i, v in ordinal_values.items() if i < operator.start}
         left, left_residuals, direction, indexicals = _decompose_flat_tokens(
-            tokens[: operator.start], lexicon
+            left_tokens,
+            lexicon,
+            number_indexicals(left_tokens, left_values, left_ordinals),
         )
         right, right_residuals, _, _ = _decompose_flat_tokens(
             tokens[operator.end :], lexicon
@@ -96,7 +106,9 @@ def decompose_concept_expression(
             indexicals=indexicals,
         )
 
-    atom, residuals, direction, indexicals = _decompose_flat_tokens(tokens, lexicon)
+    atom, residuals, direction, indexicals = _decompose_flat_tokens(
+        tokens, lexicon, number_indexicals(tokens, number_values, ordinal_values)
+    )
     return ConceptExpression(
         atom=atom,
         operator=None,
@@ -109,7 +121,9 @@ def decompose_concept_expression(
 
 
 def _decompose_flat_tokens(
-    tokens: tuple[str, ...], lexicon: TokenLexicon
+    tokens: tuple[str, ...],
+    lexicon: TokenLexicon,
+    num_indexicals: tuple[str, ...] = (),
 ) -> tuple[Atom, tuple[str, ...], float, tuple[str, ...]]:
     matches, residuals = lexicon.scan_tokens(tokens)
 
@@ -160,7 +174,7 @@ def _decompose_flat_tokens(
             direction = m.entry.direction
             break
 
-    indexicals: list[str] = []
+    indexicals: list[str] = list(num_indexicals)
     for m in matches:
         if m.entry.role == "INDEXICAL" and m.entry.indexical:
             indexicals.append(m.entry.indexical)

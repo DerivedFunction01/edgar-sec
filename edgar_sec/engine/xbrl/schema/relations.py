@@ -46,6 +46,7 @@ class AtomRelation:
     source_concept: str | None = None
     target_concept: str | None = None
     description: str = ""
+    evidence: str = "declared"
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> AtomRelation:
@@ -61,6 +62,7 @@ class AtomRelation:
             source_concept=data.get("source_concept"),
             target_concept=data.get("target_concept"),
             description=str(data.get("description", "")),
+            evidence=str(data.get("evidence", "declared")),
         )
 
 
