@@ -41,7 +41,7 @@ PERSISTENT_MIN_PRESENCE = 0.05
 PERSISTENT_MIN_CLUSTERS = 3
 
 #: Recovered-furniture table size bound: repeating furniture is a compact table, a content table is not.
-MAX_FURNITURE_TABLE_LINES = 12
+MAX_FURNITURE_TABLE_LINES = 5
 
 #: Alphabetic words a banner needs to mark a recovered table as furniture, not a page number.
 MIN_BANNER_WORDS = 3
@@ -86,13 +86,13 @@ def eligible_line(
     allow_table: bool,
 ) -> bool:
     """Return whether a candidate line may become a furniture observation.
-    In-table and contents lines repeat because their container does, so they are refused unless the caller admits table furniture.
+    In-table and contents lines repeat because their container does, so they are refused unless the caller admits table furniture. A bare table tag is structure, never furniture text: a table is considered only as a whole block.
     """
     stripped = line.strip()
     if not stripped or line_index in toc_lines:
         return False
     if is_table_tag(stripped):
-        return allow_table
+        return False
     if _STANDALONE_TAG_RE.match(stripped):
         return False
     if unit_kind == "table" and not allow_table:
@@ -481,7 +481,7 @@ def analyze_repeating_headers(
             if stripped != "</table>" or not table_starts:
                 continue
             table_start = table_starts.pop()
-            if line_index - table_start > MAX_FURNITURE_TABLE_LINES:
+            if line_index - table_start + 1 > MAX_FURNITURE_TABLE_LINES:
                 continue
             content_templates = [
                 clean_template(content_line)

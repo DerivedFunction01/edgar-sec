@@ -418,3 +418,61 @@ def test_pipe_header_sequence_is_stripped_completely() -> None:
     assert "Company | Form 10-K" not in result
     for index in range(1, 6):
         assert f"Body {index}" in result
+
+
+def _paged_tables(pages: int, rows: list[str]) -> str:
+    lines: list[str] = []
+    for index in range(1, pages + 1):
+        lines.append("<PAGE>")
+        lines.append(f"Body {index}")
+        lines.append("<TABLE>")
+        lines.extend(row.format(index=index) for row in rows)
+        lines.append("</TABLE>")
+    return "\n".join(lines)
+
+
+def test_distinct_tables_ending_pages_are_not_furniture() -> None:
+    # Every page ends with a different seven-line financial table, so only the
+    # closing tag repeats at the footer slot: the tables must survive whole.
+    text = _paged_tables(
+        6,
+        [
+            "Category {index}          100",
+            "Other {index}               50",
+            "Another {index}             25",
+            "Subtotal {index}           175",
+            "Total {index}              175",
+        ],
+    )
+    analysis = analyze_page_markers(text, {"allow_table_furniture": True})
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert result.count("<TABLE>") == 6
+    assert all(f"Total {index}" in result for index in range(1, 7))
+
+
+def test_a_small_repeated_banner_table_is_removed_as_a_whole_block() -> None:
+    text = _paged_tables(6, ["ACME CORP", "Annual Report"])
+    analysis = analyze_page_markers(text, {"allow_table_furniture": True})
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert "<TABLE>" not in result
+    assert "ACME CORP" not in result
+    assert "Body 6" in result
+
+
+def test_a_repeated_row_inside_a_large_table_is_not_removed() -> None:
+    # The identical first row repeats across pages, but its table exceeds the
+    # furniture size cap, so the catch is rejected rather than fragmented.
+    text = _paged_tables(
+        6,
+        [
+            "ACME CORP",
+            "Category {index}          100",
+            "Other {index}               50",
+            "Another {index}             25",
+            "Total {index}              175",
+        ],
+    )
+    analysis = analyze_page_markers(text, {"allow_table_furniture": True})
+    result, _artifacts, _templates, _next_id = apply_page_markers(text, analysis)
+    assert result.count("ACME CORP") == 6
+    assert result.count("<TABLE>") == 6

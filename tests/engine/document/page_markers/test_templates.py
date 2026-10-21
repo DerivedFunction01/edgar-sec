@@ -85,9 +85,10 @@ def test_an_empty_line_and_a_contents_line_are_ineligible() -> None:
     assert eligible_line("PART I ....... 1", {3}, 3, None, allow_table=False) is False
 
 
-def test_a_bare_table_tag_is_eligible_only_when_table_furniture_is_admitted() -> None:
+def test_a_bare_table_tag_is_never_a_furniture_candidate() -> None:
     assert eligible_line("<TABLE>", set(), 0, None, allow_table=False) is False
-    assert eligible_line("<TABLE>", set(), 0, None, allow_table=True) is True
+    assert eligible_line("<TABLE>", set(), 0, None, allow_table=True) is False
+    assert eligible_line("</TABLE>", set(), 0, None, allow_table=True) is False
 
 
 def test_a_line_inside_a_table_is_refused_unless_admitted() -> None:

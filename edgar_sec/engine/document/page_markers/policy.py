@@ -28,21 +28,29 @@ from .models import (
 _TAGGED_TABLE = re.compile(r"<TABLE\b.*?</TABLE\s*>", re.IGNORECASE | re.DOTALL)
 
 #: Widening onto a data table would delete document content; repeating furniture is a few lines tall.
-_MAX_COMPACT_TABLE_LINES = 12
+_MAX_COMPACT_TABLE_LINES = 5
 
 #: How far either side of a removal is read to decide whether it landed inside a sentence.
 _BOUNDARY_WINDOW = 2000
 
 
-def _find_compact_table_ranges(document: str) -> list[tuple[int, int]]:
-    """Scan document once for compact rendered tables that can be atomic page furniture."""
+def _find_table_ranges(document: str) -> list[tuple[int, int, int]]:
+    """Scan document once for rendered tables, with their start, end and line count."""
     if "<table" not in document.lower():
         return []
-    ranges: list[tuple[int, int]] = []
-    for match in _TAGGED_TABLE.finditer(document):
-        if match.group(0).count("\n") <= _MAX_COMPACT_TABLE_LINES:
-            ranges.append((match.start(), match.end()))
-    return ranges
+    return [
+        (match.start(), match.end(), match.group(0).count("\n") + 1)
+        for match in _TAGGED_TABLE.finditer(document)
+    ]
+
+
+def _find_compact_table_ranges(document: str) -> list[tuple[int, int]]:
+    """The rendered tables small enough to be atomic page furniture."""
+    return [
+        (start, end)
+        for start, end, lines in _find_table_ranges(document)
+        if lines <= _MAX_COMPACT_TABLE_LINES
+    ]
 
 
 def _expand_table_range(
@@ -162,7 +170,17 @@ def apply_page_markers(
 
     # Overlapping decisions merge into one range so artifact ids stay sequential.
     ranges: list[list] = []  # [start, end, [artifact, ...]]
-    table_ranges = _find_compact_table_ranges(document)
+    all_tables = _find_table_ranges(document)
+    table_ranges = [
+        (start, end)
+        for start, end, lines in all_tables
+        if lines <= _MAX_COMPACT_TABLE_LINES
+    ]
+    oversized_tables = [
+        (start, end)
+        for start, end, lines in all_tables
+        if lines > _MAX_COMPACT_TABLE_LINES
+    ]
     for decision in analysis.decisions:
         if decision.action not in {
             PageMarkerAction.REMOVE,
@@ -171,6 +189,16 @@ def apply_page_markers(
             continue
         marker = decision.marker
         if marker.coordinate_frame != "text":
+            continue
+        if marker.kind in {
+            PageMarkerKind.REPEATING_HEADER,
+            PageMarkerKind.REPEATING_FOOTER,
+        } and any(
+            t_start < marker.end and t_end > marker.start
+            for t_start, t_end in oversized_tables
+        ):
+            # A table is furniture only as a whole block, and this block is too
+            # large to be furniture: the catch is rejected, not fragmented.
             continue
         start, end = _removal_range(document, marker.start, marker.end, table_ranges)
         artifact = _note(marker, _artifact_for_marker(marker, source_identity))
