@@ -554,7 +554,9 @@ def build_modelledness_report(
                 qnames, bundle.facts.column("period_type").to_pylist()
             ):
                 period_counts[qname][period_type] += 1
-        for qname, slices in _placement_slices(bundle.presentation_arcs, lexicon).items():
+        for qname, slices in _placement_slices(
+            bundle.presentation_arcs, lexicon
+        ).items():
             placement_by_concept[qname] |= slices
         calc_degrees.update(_arc_degrees(bundle.calculation_arcs))
         pre_degrees.update(_arc_degrees(bundle.presentation_arcs))
