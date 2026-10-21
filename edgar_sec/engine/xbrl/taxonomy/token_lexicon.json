@@ -4587,20 +4587,6 @@
   },
   {
     "phrase": [
-      "Nuclear",
-      "Fuel",
-      "And",
-      "Other",
-      "Amortization"
-    ],
-    "role": "HEAD",
-    "atom": "H_EXPENSE",
-    "mods": [
-      "M_DEPR_AMORT"
-    ]
-  },
-  {
-    "phrase": [
       "Special",
       "Use",
       "Funds"
@@ -4647,21 +4633,6 @@
     ],
     "role": "HEAD",
     "atom": "H_LIABILITY"
-  },
-  {
-    "phrase": [
-      "Accident",
-      "And",
-      "Health",
-      "Insurance",
-      "Contract",
-      "Benefits"
-    ],
-    "role": "HEAD",
-    "atom": "H_EXPENSE",
-    "mods": [
-      "M_INSURANCE_PREMIUM"
-    ]
   },
   {
     "phrase": [
@@ -5813,21 +5784,6 @@
       "Plant",
       "And",
       "Equipment",
-      "Disposals"
-    ],
-    "role": "HEAD",
-    "atom": "H_ASSET",
-    "mods": [
-      "M_PPE_CAPEX",
-      "M_DISPOSAL_GROUP"
-    ]
-  },
-  {
-    "phrase": [
-      "Property",
-      "Plant",
-      "And",
-      "Equipment",
       "Salvage",
       "Value",
       "Percentage"
@@ -5936,20 +5892,6 @@
   },
   {
     "phrase": [
-      "Maximum",
-      "Percentage",
-      "Of",
-      "Beneficial",
-      "Interest"
-    ],
-    "role": "HEAD",
-    "atom": "H_UNIT_RATE",
-    "mods": [
-      "M_PERCENT"
-    ]
-  },
-  {
-    "phrase": [
       "Percentage",
       "Of",
       "Occupancy"
@@ -6046,35 +5988,6 @@
     "atom": "H_ASSET",
     "mods": [
       "M_PPE_CAPEX"
-    ]
-  },
-  {
-    "phrase": [
-      "Area",
-      "Of",
-      "Real",
-      "Estate",
-      "Property"
-    ],
-    "role": "HEAD",
-    "atom": "H_UNIT_RATE",
-    "mods": [
-      "M_REAL_ESTATE"
-    ]
-  },
-  {
-    "phrase": [
-      "Investment",
-      "Owned",
-      "At",
-      "Fair",
-      "Value"
-    ],
-    "role": "HEAD",
-    "atom": "H_ASSET",
-    "mods": [
-      "M_INVESTMENT",
-      "M_FAIR_VALUE"
     ]
   },
   {
@@ -6422,20 +6335,6 @@
       "Custodial",
       "Cash",
       "Liabilities"
-    ],
-    "role": "HEAD",
-    "atom": "H_LIABILITY",
-    "mods": [
-      "M_DEPOSIT_LIABILITY"
-    ]
-  },
-  {
-    "phrase": [
-      "Margin",
-      "Deposits",
-      "And",
-      "Guaranty",
-      "Funds"
     ],
     "role": "HEAD",
     "atom": "H_LIABILITY",
@@ -7087,5 +6986,97 @@
     ],
     "role": "MODIFIER",
     "atom": "M_COMMODITY_OIL_AND_GAS"
+  },
+  {
+    "phrase": [
+      "Investment",
+      "Owned"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_INVESTMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Deposits",
+      "And",
+      "Guaranty"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_DEPOSIT_LIABILITY"
+  },
+  {
+    "phrase": [
+      "Maximum",
+      "Percentage",
+      "Of",
+      "Beneficial",
+      "Interest"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_PERCENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Nuclear",
+      "Fuel",
+      "And",
+      "Other",
+      "Amortization"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_DEPR_AMORT"
+    ]
+  },
+  {
+    "phrase": [
+      "Accident",
+      "And",
+      "Health",
+      "Insurance",
+      "Contract",
+      "Benefits"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_INSURANCE_PREMIUM"
+    ]
+  },
+  {
+    "phrase": [
+      "Area",
+      "Of",
+      "Real",
+      "Estate",
+      "Property"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_REAL_ESTATE"
+    ]
+  },
+  {
+    "phrase": [
+      "Property",
+      "Plant",
+      "And",
+      "Equipment",
+      "Disposals"
+    ],
+    "role": "HEAD",
+    "atom": "H_ASSET",
+    "mods": [
+      "M_PPE_CAPEX",
+      "M_DISPOSAL_GROUP"
+    ]
   }
 ]

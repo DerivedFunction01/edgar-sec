@@ -11,6 +11,7 @@ import pyarrow as pa
 
 from edgar_sec.engine.xbrl.evidence.mining import CollocationMiner, SupportCounter
 from edgar_sec.engine.xbrl.normalize.decomposer import (
+    collapse_number_phrases,
     decompose_concept_expression,
     split_camel_case,
 )
@@ -224,6 +225,16 @@ class IdentityCollision:
 
 
 @dataclass(frozen=True, slots=True)
+class SingleFirmLongPhrase:
+    """A lexicon phrase of 5+ tokens whose corpus reach is a single firm."""
+
+    phrase: str
+    role: str
+    firm: str
+    concept_count: int
+
+
+@dataclass(frozen=True, slots=True)
 class PatternGroup:
     """One decomposed signature recurring across firms and namespaces."""
 
@@ -260,6 +271,7 @@ class ModellednessReport:
     adequacy_counts: tuple[tuple[str, int], ...] = ()
     identity_collisions: tuple[IdentityCollision, ...] = ()
     pattern_groups: tuple[PatternGroup, ...] = ()
+    single_firm_long_phrases: tuple[SingleFirmLongPhrase, ...] = ()
 
 
 def _arc_degrees(table: pa.Table | None) -> Counter:
@@ -733,6 +745,28 @@ def build_modelledness_report(
             )
         )
     pattern_groups.sort(key=lambda g: (-len(g.firms), -g.fact_rows, g.head))
+    phrase_firms: dict[tuple[str, str], set[str]] = defaultdict(set)
+    phrase_concepts: dict[tuple[str, str], set[str]] = defaultdict(set)
+    for qname in rows_by_concept:
+        local = qname.split(":")[-1]
+        tokens, _, _ = collapse_number_phrases(split_camel_case(local))
+        matches, _ = lexicon.scan_tokens(tokens)
+        for match in matches:
+            if len(match.entry.phrase) < 5:
+                continue
+            key = (" ".join(match.entry.phrase), match.entry.role)
+            phrase_firms[key] |= firms_by_concept[qname]
+            phrase_concepts[key].add(qname)
+    single_firm_long_phrases = tuple(
+        SingleFirmLongPhrase(
+            phrase=phrase,
+            role=role,
+            firm=next(iter(firms)),
+            concept_count=len(phrase_concepts[(phrase, role)]),
+        )
+        for (phrase, role), firms in sorted(phrase_firms.items())
+        if len(firms) == 1
+    )
     return ModellednessReport(
         total_concepts=len(records),
         total_fact_rows=sum(rows_by_concept.values()),
@@ -794,4 +828,5 @@ def build_modelledness_report(
         adequacy_counts=tuple(sorted(Counter(r.adequacy for r in records).items())),
         identity_collisions=identity_collisions,
         pattern_groups=tuple(pattern_groups[:120]),
+        single_firm_long_phrases=single_firm_long_phrases,
     )
