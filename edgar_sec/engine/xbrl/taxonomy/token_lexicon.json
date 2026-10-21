@@ -5246,7 +5246,8 @@
     "role": "HEAD",
     "atom": "H_LIABILITY",
     "mods": [
-      "M_ACCOUNTS_PAYABLE"
+      "M_ACCOUNTS_PAYABLE",
+      "M_COMMODITY_NATURAL_GAS"
     ]
   },
   {
@@ -7069,5 +7070,22 @@
     ],
     "role": "MODIFIER",
     "atom": "M_COUNTERPARTY_NETTING"
+  },
+  {
+    "phrase": [
+      "Nitrogen",
+      "Fertilizer"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_COMMODITY_NITROGEN_FERTILIZER"
+  },
+  {
+    "phrase": [
+      "Oil",
+      "And",
+      "Gas"
+    ],
+    "role": "MODIFIER",
+    "atom": "M_COMMODITY_OIL_AND_GAS"
   }
 ]
