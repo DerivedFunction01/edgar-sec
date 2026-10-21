@@ -12,6 +12,7 @@ without losing a table byte or inventing a page boundary that was not there.
 - **Cleaner pass order is fixed**: inline XBRL first (wrapper removed before glyph normalization), Unicode whitespace sanitization last.
 - **Glyph expansion is scoped to symbolic-font text nodes**: Tags, attributes, comments, scripts, and styles are untouched; nested font declaration replaces inherited.
 - **Break markup inside a table is never converted**: Decorative `<hr>` row rules would become ASCII table renderer sentinels.
+- **Positioned layout is reconstructed before projection**: A table-free document whose text sits in fragments with inline `position:absolute` plus numeric `left`/`top` is rebuilt as synthetic tables and flow lines from the fragments' coordinates (`positioned.py`); detection is structural only, and a reconstruction that loses material text against the naive projection is discarded for it.
 - **`<br><br>` behavior is context-aware**: Inside `<p>` it collapses to space; between block tags it survives as paragraph break.
 - **No barrel re-exports**: `__init__.py` is a docstring.
 

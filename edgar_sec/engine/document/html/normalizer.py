@@ -11,6 +11,10 @@ from collections.abc import Callable
 from typing import Self
 
 from edgar_sec.engine.document.html.cleaner import clean_html_for_parsing
+from edgar_sec.engine.document.html.positioned import (
+    detect_positioned_layout,
+    reconstruct_positioned_html,
+)
 from edgar_sec.engine.document.html.tags import (
     CONTAINER_BLOCK_TAGS,
     INLINE_TAGS,
@@ -142,6 +146,42 @@ def _clean_p_content(match: re.Match[str]) -> str:
     return "\n\n".join(result_pieces)
 
 
+def _pair_inline_divs(html: str) -> str:
+    """Rewrite inline divs as spans, the opening tag and its matching close together.
+    An orphaned ``</div>`` would otherwise reach the container pass as a line break.
+    """
+    inline_opens = {m.start(): m for m in _RE_INLINE_DIV.finditer(html)}
+    if not inline_opens:
+        return html
+    edits: list[tuple[int, int, str]] = []
+    stack: list[tuple[int, int, str] | None] = []
+    for tag in _RE_DIV_TAG.finditer(html):
+        text = tag.group(0)
+        if text.startswith("</"):
+            if stack:
+                open_edit = stack.pop()
+                if open_edit is not None:
+                    edits.append(open_edit)
+                    edits.append((tag.start(), tag.end(), "</span>"))
+        elif not text.endswith("/>"):
+            match = inline_opens.get(tag.start())
+            if match is None:
+                stack.append(None)
+            else:
+                stack.append((tag.start(), tag.end(), f"<span{match.group(1)}>"))
+    edits.extend(edit for edit in stack if edit is not None)
+    if not edits:
+        return html
+    pieces: list[str] = []
+    cursor = 0
+    for start, end, replacement in sorted(edits):
+        pieces.append(html[cursor:start])
+        pieces.append(replacement)
+        cursor = end
+    pieces.append(html[cursor:])
+    return "".join(pieces)
+
+
 def decompose_html_structures(html: str) -> str:
     """Decompose block and inline HTML markup into normalized plain text.
     Paragraphs stay cohesive on one line; masked ``<TABLE>`` blocks are restored byte-for-byte.
@@ -156,7 +196,7 @@ def decompose_html_structures(html: str) -> str:
     masked = _RE_DECLARATIONS.sub("", masked)
     masked = _RE_COMMENTS.sub("", masked)
 
-    masked = _RE_INLINE_DIV.sub(r"<span\1>", masked)
+    masked = _pair_inline_divs(masked)
 
     masked = _RE_TRAILING_BR_DD.sub("", masked)
     masked = _RE_CONSECUTIVE_BR.sub("\n\n", masked)
@@ -227,21 +267,35 @@ def normalize_html_document(
 
     metadata_cleanup = cleanup_tables is None and unwrap_false_tables
 
+    def render(cleaned: str) -> NormalizedHtmlText:
+        hybrid = normalize_hybrid_pre_text(cleaned)
+        rendered, geometries = convert_html_tables_to_ascii_with_metadata(
+            hybrid.text,
+            convert_to_text=False,
+            early_unwrap_false_tables=metadata_cleanup,
+        )
+        if metadata_cleanup:
+            rendered, geometries = cleanup_false_tables_with_metadata(
+                rendered, geometries
+            )
+        elif cleanup_tables is not None:
+            rendered = cleanup_tables(rendered)
+        normalized = decompose_html_structures(rendered)
+        if hybrid.protected:
+            normalized = restore_hybrid_pre_text(normalized, hybrid.protected)
+        return NormalizedHtmlText(normalized, geometries)
+
     cleaned = clean_html_for_parsing(html)
-    hybrid = normalize_hybrid_pre_text(cleaned)
-    rendered, geometries = convert_html_tables_to_ascii_with_metadata(
-        hybrid.text,
-        convert_to_text=False,
-        early_unwrap_false_tables=metadata_cleanup,
-    )
-    if metadata_cleanup:
-        rendered, geometries = cleanup_false_tables_with_metadata(rendered, geometries)
-    elif cleanup_tables is not None:
-        rendered = cleanup_tables(rendered)
-    normalized = decompose_html_structures(rendered)
-    if hybrid.protected:
-        normalized = restore_hybrid_pre_text(normalized, hybrid.protected)
-    return NormalizedHtmlText(normalized, geometries)
+    if detect_positioned_layout(cleaned):
+        reconstructed = reconstruct_positioned_html(cleaned)
+        if reconstructed != cleaned:
+            candidate = render(reconstructed)
+            naive = render(cleaned)
+            # A materially shorter reconstruction loses to the naive projection.
+            if len(candidate) >= 0.9 * len(naive):
+                return candidate
+            return naive
+    return render(cleaned)
 
 
 __all__ = [

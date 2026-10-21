@@ -8,6 +8,7 @@ from edgar_sec.engine.document.html.normalizer import (
     decompose_html_structures,
     normalize_html_document,
 )
+from tests.support import fixture_path
 
 TAGGED_TABLE = (
     "<TABLE><TR><TD>  A  </TD><TD>\tB\t</TD></TR>\n"
@@ -36,6 +37,43 @@ def test_headings_and_containers_become_lines() -> None:
 def test_inline_tags_do_not_introduce_breaks() -> None:
     html = "<p>a <b>bold</b> and <i>italic</i> word</p>"
     assert decompose_html_structures(html) == "a bold and italic word"
+
+
+SPACER_DIV = '<div style="display:inline-block;width:6px">&#160;</div>'
+
+
+def test_inline_block_spacer_divs_join_words() -> None:
+    html = f"<div>The{SPACER_DIV}willingness{SPACER_DIV}of{SPACER_DIV}consumers</div>"
+    assert decompose_html_structures(html) == "The willingness of consumers"
+
+
+def test_inline_div_inside_block_joins_surrounding_text() -> None:
+    html = '<div>alpha <div style="display:inline">beta</div> gamma</div>'
+    assert decompose_html_structures(html) == "alpha beta gamma"
+
+
+def test_nested_inline_divs_join() -> None:
+    html = '<div style="display:inline">a <div style="display:inline">b</div> c</div>'
+    assert decompose_html_structures(html) == "a b c"
+
+
+def test_block_divs_still_break() -> None:
+    assert decompose_html_structures("<div>one</div><div>two</div>") == "one\n\ntwo"
+
+
+def test_inline_div_at_paragraph_boundary_unchanged() -> None:
+    html = '<p>first</p><div style="display:inline">loose</div><p>second</p>'
+    assert decompose_html_structures(html) == "first\n\nloose\n\nsecond"
+
+
+def test_unclosed_inline_div_unchanged() -> None:
+    html = '<p>x</p><div style="display:inline">dangling'
+    assert decompose_html_structures(html) == "x\n\ndangling"
+
+
+def test_inline_div_wrapping_block_keeps_block_breaks() -> None:
+    html = '<div style="display:inline">a <div>block</div> b</div>'
+    assert decompose_html_structures(html) == "a\nblock\nb"
 
 
 def test_double_br_inside_a_paragraph_collapses_to_a_space() -> None:
@@ -243,3 +281,30 @@ def test_normalized_html_text_repr_names_its_geometry() -> None:
     result = normalize_html_document(_table_html())
     assert "NormalizedHtmlText" in repr(result)
     assert "table_geometries" in repr(result)
+
+
+def test_positioned_fixture_renders_statement_rows_as_single_lines() -> None:
+    html = fixture_path("document/positioned_sample.html").read_text(encoding="utf-8")
+    result = normalize_html_document(html)
+    net_sales = next(line for line in result.split("\n") if "Net sales" in line)
+    assert "$ 19,857.2" in net_sales
+    assert "$ 20,094.2" in net_sales
+    assert result.table_geometries
+
+
+def test_positioned_fixture_survives_unwrap_disabled_profile() -> None:
+    html = fixture_path("document/positioned_sample.html").read_text(encoding="utf-8")
+    result = normalize_html_document(html, unwrap_false_tables=False)
+    net_sales = next(line for line in result.split("\n") if "Net sales" in line)
+    assert "19,857.2" in net_sales
+
+
+def test_table_document_with_decorative_absolutes_is_unchanged() -> None:
+    html = (
+        "<div><p>intro</p>"
+        '<div style="position:absolute;right:0;top:0;">decoration</div>'
+        "<table><tr><td>cell</td></tr></table></div>"
+    )
+    result = normalize_html_document(html)
+    assert "cell" in result
+    assert "decoration" in result
