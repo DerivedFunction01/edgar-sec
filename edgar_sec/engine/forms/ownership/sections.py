@@ -26,7 +26,12 @@ from edgar_sec.engine.forms.ownership.patterns import (
     OWNERSHIP_PAGE_MARKER_RE,
 )
 from edgar_sec.engine.tables.ascii_html.converter import resolve_html_table_grid
-from edgar_sec.engine.tables.ascii_html.model import HorizontalAlign, ResolvedGrid
+from edgar_sec.engine.tables.ascii_html.model import (
+    NON_ALNUM_RE,
+    HorizontalAlign,
+    ResolvedGrid,
+    merge_resolved_grids,
+)
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.automaton import tokenize
 from edgar_sec.foundation.text.dates import MONTH_RE, NUMERIC_DATE_RE
@@ -47,7 +52,6 @@ _FOOTNOTE_VETO_RE = re.compile(
     build_alternation(FOOTNOTE_VETO_PHRASES, auto_escape=True, compact=True)
 )
 _SIGNATURE_CONTINUATION_PHRASES = ("/s/", "by:", "for:", "date")
-_NON_ALNUM_RE = re.compile(r"[^a-z0-9]")
 _PRE_COLUMN_SPLIT_RE = re.compile(r"\s{2,}")
 
 
@@ -156,7 +160,7 @@ def _classify_table_text(
     text: str, num_cols: int = 0, past_tables: bool = False
 ) -> SectionRole:
     lower = " ".join(text.lower().split())
-    if not lower or not _NON_ALNUM_RE.sub("", lower):
+    if not lower or not NON_ALNUM_RE.sub("", lower):
         return SectionRole.PAGE_ARTIFACT
 
     if (num_cols < 6 or past_tables) and (
@@ -230,12 +234,8 @@ def _merge_sections(
         role=existing.role,
         table_index=existing.table_index,
         raw_node=existing.raw_node,
-        resolved_grid=ResolvedGrid(
-            rows=tuple(
-                list(existing.resolved_grid.rows) + list(incoming.resolved_grid.rows)
-            ),
-            column_alignments=existing.resolved_grid.column_alignments,
-            column_widths=existing.resolved_grid.column_widths,
+        resolved_grid=merge_resolved_grids(
+            existing.resolved_grid, incoming.resolved_grid
         ),
     )
 

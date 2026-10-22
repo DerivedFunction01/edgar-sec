@@ -7,6 +7,7 @@ import pytest
 from edgar_sec.engine.tables.ascii_html.converter import convert_html_table
 from edgar_sec.engine.tables.ascii_html.model import (
     DEFAULT_RENDER_BUDGET,
+    NON_ALNUM_RE,
     BorderSegment,
     BorderStyle,
     CellBox,
@@ -20,6 +21,7 @@ from edgar_sec.engine.tables.ascii_html.model import (
     TableGeometry,
     TableRenderResult,
     TextLayoutDiagnostic,
+    merge_resolved_grids,
     VerticalAlign,
 )
 
@@ -115,3 +117,24 @@ def test_table_render_result_is_immutable() -> None:
     )
     with pytest.raises(AttributeError):
         result.ascii_text = "x"  # type: ignore[misc]
+
+
+def test_merge_resolved_grids_concatenates_under_existing_geometry() -> None:
+    existing = ResolvedGrid(
+        rows=(("a", "b"),),
+        column_alignments=(HorizontalAlign.LEFT, HorizontalAlign.RIGHT),
+        column_widths=(3, 4),
+        confidence=0.7,
+    )
+    incoming = ResolvedGrid(
+        rows=(("c", "d"),),
+        column_alignments=(HorizontalAlign.CENTER, HorizontalAlign.CENTER),
+        column_widths=(9, 9),
+        confidence=0.2,
+    )
+    merged = merge_resolved_grids(existing, incoming)
+    assert merged.rows == (("a", "b"), ("c", "d"))
+    assert merged.column_alignments == existing.column_alignments
+    assert merged.column_widths == (3, 4)
+    assert merged.confidence == 0.7
+    assert NON_ALNUM_RE.sub("", "a-b_c 1!") == "abc1"
