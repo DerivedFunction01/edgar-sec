@@ -44,7 +44,7 @@ from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
 
 # Bump when feature derivation changes in a way that requires rebuilding
 FEATURE_SCHEMA_VERSION = "2.1"
-DERIVATION_VERSION = "2.1"
+DERIVATION_VERSION = "2.2"
 
 UNMATCHED_ERA = "unknown"
 
@@ -527,7 +527,7 @@ class FeatureSnapshotBuilder:
         staging_dir: Path,
     ) -> int:
         """Write row-local occurrence features without population-dependent columns."""
-        era_expr = self._era_sql("f.report_date")
+        era_expr = self._era_sql("COALESCE(NULLIF(f.report_date, ''), f.filing_date)")
         family_expr = form_family_sql("f.form")
         query = f"""
             WITH source_filings AS ({union_sql}),

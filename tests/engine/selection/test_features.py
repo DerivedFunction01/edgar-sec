@@ -269,6 +269,48 @@ def test_primary_exhibit_feature_flows_into_policy_snapshot(
     assert count > 0
 
 
+def test_era_falls_back_to_filing_date_when_report_date_is_empty(
+    tmp_path: Path,
+) -> None:
+    source = era_submission_metadata(tmp_path / "era-source.parquet")
+    artifacts_root = tmp_path / "artifacts"
+    manifest = materialize(source, artifacts_root)
+    paths = resolve_filing_catalog_paths(artifacts_root)
+    policy = SelectionPolicy(
+        corpus_id="test_corpus",
+        forms=["10-K", "8-K"],
+        era_bands=[
+            EraBand(name="y2000_2002", start_year=2000, end_year=2003),
+            EraBand(name="y2003_2005", start_year=2003, end_year=2006),
+        ],
+        base_content_units=2,
+    )
+    builder = FeatureSnapshotBuilder(
+        target_root=paths.snapshot_targets_dir(str(manifest["catalog_id"])),
+        profile_path=paths.snapshot_profiles_file(str(manifest["catalog_id"])),
+        output_root=artifacts_root,
+        policy=policy,
+    )
+
+    snapshot = builder.build()
+    with connect() as con:
+        rows = con.execute(
+            f"SELECT accession, era FROM {snapshot.occurrence_relation} "
+            "WHERE accession IN ('000032019302000123', '000132680104000077', "
+            "'000165204401000011', '000001961705000045')"
+        ).fetchall()
+
+    # The appended fixture rows carry report_date="" (the Form 144 shape);
+    # their eras must come from filing_date.
+    assert rows
+    assert {era for _, era in rows} <= {"y2000_2002", "y2003_2005"}
+    by_accession = dict(rows)
+    assert by_accession["000032019302000123"] == "y2000_2002"
+    assert by_accession["000132680104000077"] == "y2003_2005"
+    assert by_accession["000165204401000011"] == "y2000_2002"
+    assert by_accession["000001961705000045"] == "y2003_2005"
+
+
 def test_rebuilding_the_same_snapshot_reuses_the_published_one(
     tmp_path: Path, sample_source: Path
 ) -> None:
