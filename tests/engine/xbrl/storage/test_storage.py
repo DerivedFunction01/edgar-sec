@@ -6,11 +6,15 @@ import pyarrow.parquet as pq
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.xbrl.schema.models import (
     CalculationArc,
+    ConceptDeclaration,
     PresentationArc,
     XbrlFact,
 )
 from edgar_sec.engine.xbrl.storage.storage import (
+    declarations_from_arrow_table,
+    read_declarations_parquet,
     write_calculation_arcs_parquet,
+    write_declarations_parquet,
     write_facts_parquet,
     write_presentation_arcs_parquet,
 )
@@ -73,3 +77,21 @@ def test_write_facts_parquet(tmp_path: Path) -> None:
     assert table.num_rows == 1
     assert table.column("numeric_value")[0].as_py() == 245122000000.0
     assert "CloudMember" in table.column("dimensions_json")[0].as_py()
+
+
+def test_write_declarations_parquet_roundtrip(tmp_path: Path) -> None:
+    """Declarations survive the Parquet roundtrip, item type included."""
+    declarations = [
+        ConceptDeclaration(
+            concept_qname="msft:CloudMember",
+            name="CloudMember",
+            period_type="duration",
+            substitution_group="xbrli:item",
+            item_type="xbrli:stringItemType",
+        ),
+        ConceptDeclaration(concept_qname="us-gaap:Revenues", name="Revenues"),
+    ]
+    path = tmp_path / "declarations.parquet"
+    assert write_declarations_parquet(declarations, path) == 2
+    loaded = declarations_from_arrow_table(read_declarations_parquet(path))
+    assert loaded == tuple(declarations)

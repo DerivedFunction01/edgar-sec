@@ -12,6 +12,7 @@ import pyarrow.parquet as pq
 from edgar_sec.engine.xbrl.discovery.discovery import DiscoveredLinkbase
 from edgar_sec.engine.xbrl.schema.models import (
     CalculationArc,
+    ConceptDeclaration,
     PresentationArc,
     XbrlFact,
 )
@@ -48,6 +49,17 @@ PRESENTATION_ARC_SCHEMA = pa.schema(
         pa.field("child_qname", pa.string(), nullable=False),
         pa.field("order", pa.float64(), nullable=True),
         pa.field("role_uri", pa.string(), nullable=True),
+    ]
+)
+
+DECLARATION_SCHEMA = pa.schema(
+    [
+        pa.field("concept_qname", pa.string(), nullable=False),
+        pa.field("name", pa.string(), nullable=False),
+        pa.field("period_type", pa.string(), nullable=True),
+        pa.field("balance", pa.string(), nullable=True),
+        pa.field("substitution_group", pa.string(), nullable=True),
+        pa.field("item_type", pa.string(), nullable=True),
     ]
 )
 
@@ -185,3 +197,48 @@ def write_facts_parquet(
     """Write XBRL facts into an atomic Parquet file."""
     table = facts_to_arrow_table(facts)
     return write_parquet_table(table, destination)
+
+
+def declarations_to_arrow_table(
+    declarations: Sequence[ConceptDeclaration],
+) -> pa.Table:
+    """Convert concept declarations into a typed PyArrow table."""
+    arrays = [
+        pa.array([d.concept_qname for d in declarations], type=pa.string()),
+        pa.array([d.name for d in declarations], type=pa.string()),
+        pa.array([d.period_type for d in declarations], type=pa.string()),
+        pa.array([d.balance for d in declarations], type=pa.string()),
+        pa.array([d.substitution_group for d in declarations], type=pa.string()),
+        pa.array([d.item_type for d in declarations], type=pa.string()),
+    ]
+    return pa.Table.from_arrays(arrays, schema=DECLARATION_SCHEMA)
+
+
+def write_declarations_parquet(
+    declarations: Sequence[ConceptDeclaration],
+    destination: Path | str,
+) -> int:
+    """Write concept declarations into an atomic Parquet file."""
+    table = declarations_to_arrow_table(declarations)
+    return write_parquet_table(table, destination)
+
+
+def read_declarations_parquet(source: Path | str) -> pa.Table:
+    """Read declarations Parquet file into an Arrow Table."""
+    return pq.read_table(os.fspath(source))
+
+
+def declarations_from_arrow_table(table: pa.Table) -> tuple[ConceptDeclaration, ...]:
+    """Rebuild concept declarations from a declarations Arrow table."""
+    rows = table.to_pylist()
+    return tuple(
+        ConceptDeclaration(
+            concept_qname=row["concept_qname"],
+            name=row["name"],
+            period_type=row["period_type"],
+            balance=row["balance"],
+            substitution_group=row["substitution_group"],
+            item_type=row["item_type"],
+        )
+        for row in rows
+    )
