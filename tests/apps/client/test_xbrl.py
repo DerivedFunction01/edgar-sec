@@ -480,6 +480,31 @@ def test_xbrl_query_aapl_assets_verify_resolves_at_fye_instant() -> None:
     assert result.value == 364980000000.0
 
 
+def test_xbrl_query_aapl_derivative_assets_supertype_not_promoted() -> None:
+    """Verify AAPL Derivative Assets is AMBIGUOUS: total Assets must not answer it."""
+    xbrl = _create_xbrl_facade("aapl")
+
+    for mode in (QueryMode.REPORTED_ONLY, QueryMode.VERIFY_DERIVATION):
+        result = xbrl.query("Derivative Assets", mode=mode, fiscal_year=2024)
+        assert result.status == QueryStatus.AMBIGUOUS
+        assert result.value is None
+        assert result.candidate_qnames == ("us-gaap:Assets",)
+        assert result.tier == "near"
+        assert len(result.equivalents) == 1
+        assert result.equivalents[0].direction == "generalization"
+
+
+def test_xbrl_query_aapl_derivative_liabilities_stays_ambiguous() -> None:
+    """Verify AAPL Derivative Liabilities stays AMBIGUOUS over its equivalents."""
+    xbrl = _create_xbrl_facade("aapl")
+
+    result = xbrl.query("Derivative Liabilities", fiscal_year=2024)
+    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.value is None
+    assert len(result.candidate_qnames) == 7
+    assert len(result.equivalents) == 7
+
+
 def test_xbrl_query_gis_cash_verify_carries_fye_ambiguity() -> None:
     """Verify GIS Cash VERIFY returns the FYE AMBIGUOUS carrying the reported value."""
     xbrl = _create_xbrl_facade("gis")

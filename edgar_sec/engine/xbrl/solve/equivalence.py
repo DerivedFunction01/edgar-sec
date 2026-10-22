@@ -12,6 +12,9 @@ EXACT = "exact"
 NEAR = "near"
 UNRELATED = "unrelated"
 
+GENERALIZATION = "generalization"
+SPECIALIZATION = "specialization"
+
 # Modifier sets that classify the same position mutually exclusively;
 # swapping one sibling for another keeps two atoms near, never exact.
 SIBLING_GROUPS: tuple[frozenset[str], ...] = (
@@ -80,6 +83,19 @@ def classify_pair(left: Atom, right: Atom) -> str:
     return _classify_detail(left, right)[0]
 
 
+def _subsumption_direction(target: Atom, candidate: Atom) -> str:
+    """Name a pair's subsumption direction; empty when neither subsumes.
+
+    Generalization means the candidate strictly subsumes the target;
+    specialization means the target strictly subsumes the candidate.
+    """
+    if target.is_a(candidate) and not candidate.is_a(target):
+        return GENERALIZATION
+    if candidate.is_a(target) and not target.is_a(candidate):
+        return SPECIALIZATION
+    return ""
+
+
 def presumed_atom(
     atom: Atom,
     defaults: Iterable[DefaultCoordinate],
@@ -117,6 +133,7 @@ class RankedEquivalent:
     rule: str = ""
     residual_intent_count: int = 0
     residual_total_count: int = 0
+    direction: str = ""
 
 
 def rank_equivalents(
@@ -143,9 +160,11 @@ def rank_equivalents(
         tier, rule = _classify_detail(target, atom, groups)
         via_default = False
         presumed = presumed_atom(atom, defaults, groups)
+        direction_target, direction_atom = target, atom
         if tier == UNRELATED and defaults:
             if _classify_detail(presumed_target, presumed, groups)[0] == NEAR:
                 tier, via_default, rule = NEAR, True, "via_default"
+                direction_target, direction_atom = presumed_target, presumed
         if tier == UNRELATED:
             continue
         if defaults:
@@ -163,6 +182,7 @@ def rank_equivalents(
                 rule=rule,
                 residual_intent_count=intent,
                 residual_total_count=total,
+                direction=_subsumption_direction(direction_target, direction_atom),
             )
         )
     ranked.sort(

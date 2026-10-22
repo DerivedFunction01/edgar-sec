@@ -844,6 +844,24 @@ _DURATION_SCOPE = FactScope(
 )
 
 
+def _instant_fact(qname: str, value: float) -> XbrlFact:
+    return XbrlFact(
+        AccessionNumber("0000950170-24-087843"),
+        qname,
+        value,
+        unit="USD",
+        period_type="instant",
+        instant_date="2024-06-30",
+    )
+
+
+_INSTANT_SCOPE = FactScope(
+    accession="0000950170-24-087843",
+    instant_date="2024-06-30",
+    unit="USD",
+)
+
+
 def _duration_usd_fact(qname: str, value: float, unit: str = "USD") -> XbrlFact:
     return XbrlFact(
         AccessionNumber("0000950170-24-087843"),
@@ -971,6 +989,7 @@ def test_near_fallback_resolves_subsumption_equivalent() -> None:
     assert result.tier == "near"
     assert len(result.equivalents) == 1
     assert result.equivalents[0].rule == "subsumption"
+    assert result.equivalents[0].direction == "specialization"
     assert result.equivalents[0].via_default is False
 
 
@@ -1028,6 +1047,65 @@ def test_near_fallback_agreeing_tier_resolves_to_the_best_ranked() -> None:
     assert result.value == 100.0
     assert result.tier == "near"
     assert len(result.equivalents) == 2
+
+
+def test_near_fallback_supertype_sole_candidate_is_not_promoted() -> None:
+    """N-1: a sole NEAR supertype never supplies the target's value."""
+    facts = (_instant_fact("us-gaap:Assets", 364_980.0),)
+    result = _query_engine().execute(
+        FinancialQuery("Derivative Assets", _INSTANT_SCOPE), facts
+    )
+    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.value is None
+    assert result.reported_fact is None
+    assert result.candidate_qnames == ("us-gaap:Assets",)
+    assert result.tier == "near"
+    assert len(result.equivalents) == 1
+    assert result.equivalents[0].rule == "single_modifier_difference"
+    assert result.equivalents[0].direction == "generalization"
+
+
+def test_near_fallback_supertype_best_blocks_an_agreeing_tier() -> None:
+    """Agreeing tier, supertype best: no promotion, no substitution."""
+    facts = (
+        _instant_fact("us-gaap:Assets", 100.0),
+        _instant_fact("us-gaap:DerivativeAssetsCurrent", 100.0),
+    )
+    result = _query_engine().execute(
+        FinancialQuery("Derivative Assets", _INSTANT_SCOPE), facts
+    )
+    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.value is None
+    assert result.reported_fact is None
+    assert set(result.candidate_qnames) == {
+        "us-gaap:Assets",
+        "us-gaap:DerivativeAssetsCurrent",
+    }
+    directions = {item.qname: item.direction for item in result.equivalents}
+    assert directions == {
+        "us-gaap:Assets": "generalization",
+        "us-gaap:DerivativeAssetsCurrent": "specialization",
+    }
+
+
+def test_near_fallback_specialization_best_still_resolves_over_supertype() -> None:
+    """Agreeing tier, specialization best: it resolves as before."""
+    facts = (
+        _instant_fact("us-gaap:Liabilities", 100.0),
+        _instant_fact("us-gaap:AccountsPayableCurrent", 100.0),
+    )
+    result = _query_engine().execute(
+        FinancialQuery("Accounts Payable", _INSTANT_SCOPE), facts
+    )
+    assert result.status == QueryStatus.REPORTED
+    assert result.candidate_qnames == ("us-gaap:AccountsPayableCurrent",)
+    assert result.value == 100.0
+    assert result.tier == "near"
+    directions = {item.qname: item.direction for item in result.equivalents}
+    assert directions == {
+        "us-gaap:AccountsPayableCurrent": "specialization",
+        "us-gaap:Liabilities": "generalization",
+    }
 
 
 def test_near_fallback_candidate_without_a_single_value_blocks_resolution() -> None:

@@ -173,6 +173,37 @@ def test_ranked_equivalents_name_the_deciding_rule() -> None:
     assert wide[0].tier == NEAR and wide[0].rule == "aggregate_widening"
 
 
+def test_ranked_equivalents_name_the_subsumption_direction() -> None:
+    """Direction provenance: generalization, specialization, or neither."""
+    target = Atom("H_ASSET", frozenset({"M_DERIVATIVE"}))
+    ranked = rank_equivalents(
+        "firm-x:DerivativeAssets", target, (("firm-a:Assets", Atom("H_ASSET")),)
+    )
+    assert ranked[0].rule == "single_modifier_difference"
+    assert ranked[0].direction == "generalization"
+
+    bare = Atom("H_REVENUE")
+    asc606 = _atom("us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax")
+    ranked = rank_equivalents("firm-x:Revenues", bare, (("firm-a:Asc606", asc606),))
+    assert ranked[0].rule == "subsumption"
+    assert ranked[0].direction == "specialization"
+
+    ranked = rank_equivalents("firm-x:Asc606", asc606, (("firm-a:Revenues", bare),))
+    assert ranked[0].rule == "subsumption"
+    assert ranked[0].direction == "generalization"
+
+    afs = Atom("H_ASSET", frozenset({"M_AVAILABLE_FOR_SALE"}))
+    htm = Atom("H_ASSET", frozenset({"M_HELD_TO_MATURITY"}))
+    ranked = rank_equivalents("firm-x:Afs", afs, (("firm-a:Htm", htm),))
+    assert ranked[0].rule == "sibling_swap"
+    assert ranked[0].direction == ""
+
+    ranked = rank_equivalents(
+        "firm-x:Revenues", bare, (("firm-a:Revenues", Atom("H_REVENUE")),)
+    )
+    assert ranked[0].tier == EXACT and ranked[0].direction == ""
+
+
 def test_rank_equivalents_breaks_ties_on_residual_counts() -> None:
     """Equal ranks order by intent count, then total count, then qname."""
     target = Atom("H_REVENUE")

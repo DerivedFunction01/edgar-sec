@@ -8,7 +8,11 @@ from typing import Mapping
 
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import AggregateFact, CalculationArc, XbrlFact
-from edgar_sec.engine.xbrl.solve.equivalence import EXACT, RankedEquivalent
+from edgar_sec.engine.xbrl.solve.equivalence import (
+    EXACT,
+    GENERALIZATION,
+    RankedEquivalent,
+)
 from edgar_sec.engine.xbrl.solve.scoping import FactScope
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
 from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
@@ -111,7 +115,7 @@ class FinancialQueryEngine:
         scoped_facts: tuple[XbrlFact, ...],
         facts: tuple[XbrlFact, ...],
         calculation_arcs: tuple[CalculationArc, ...],
-    ) -> tuple[tuple[str, ...], Atom | None, tuple[RankedEquivalent, ...]]:
+    ) -> tuple[tuple[str, ...], Atom | None, tuple[RankedEquivalent, ...], str | None]:
         qnames = {fact.concept_qname for fact in facts}
         qnames.update(arc.parent_qname for arc in calculation_arcs)
         available = {fact.concept_qname for fact in scoped_facts}
@@ -121,18 +125,19 @@ class FinancialQueryEngine:
         if alias_names is not None:
             known = set(alias_names) & qnames
             if not known:
-                return (), None, ()
-            scoped = known & available
-            return tuple(sorted(scoped or known)), None, ()
+                return (), None, (), None
+            scoped = tuple(sorted((known & available) or known))
+            return scoped, None, (), scoped[0] if len(scoped) == 1 else None
         if ":" in term:
-            return ((term,) if term in qnames else ()), None, ()
+            known = term in qnames
+            return ((term,) if known else ()), None, (), term if known else None
 
         lexicon = self.taxonomy.token_lexicon
         if lexicon is None:
-            return (), None, ()
+            return (), None, (), None
         target_atom, residuals, _, _ = decompose_concept(term, lexicon)
         if target_atom.head == "H_UNKNOWN" or residuals:
-            return (), target_atom, ()
+            return (), target_atom, (), None
 
         numeric = self._numeric_qnames(scoped_facts)
         decomposed = {
@@ -143,24 +148,21 @@ class FinancialQueryEngine:
         atoms = {qname: result[0] for qname, result in decomposed.items()}
         matches = {qname for qname, atom in atoms.items() if atom == target_atom}
         if matches:
-            return (
-                tuple(
-                    sorted(
-                        matches,
-                        key=lambda qname: (
-                            *residual_counts(decomposed[qname][1]),
-                            qname,
-                        ),
-                    )
-                ),
-                target_atom,
-                (),
+            ordered = tuple(
+                sorted(
+                    matches,
+                    key=lambda qname: (
+                        *residual_counts(decomposed[qname][1]),
+                        qname,
+                    ),
+                )
             )
+            return ordered, target_atom, (), ordered[0] if len(ordered) == 1 else None
         ranked = ConceptTokenizer(self.taxonomy).equivalents(
             target_atom, tuple(sorted(atoms.items()))
         )
         if not ranked:
-            return (), target_atom, ()
+            return (), target_atom, (), None
         best = ranked[0]
         if best.tier == EXACT:
             tied = tuple(
@@ -169,15 +171,22 @@ class FinancialQueryEngine:
                 if (item.tier, item.via_default, item.modifier_distance)
                 == (best.tier, best.via_default, best.modifier_distance)
             )
-            return tied, target_atom, ranked
+            return tied, target_atom, ranked, tied[0] if len(tied) == 1 else None
         tier_group = tuple(
             item
             for item in ranked
             if (item.tier, item.via_default) == (best.tier, best.via_default)
         )
-        if len(tier_group) == 1 or self._tier_values_agree(tier_group, scoped_facts):
-            return (best.qname,), target_atom, ranked
-        return tuple(item.qname for item in tier_group), target_atom, ranked
+        # Promotion supplies the best-ranked candidate's value, and only
+        # when the tier group is a sole candidate or agrees on a value.
+        # A best candidate that generalizes the target (a strict
+        # supertype) never supplies the value: the group stays ambiguous
+        # rather than substituting a lower-ranked member.
+        if best.direction != GENERALIZATION and (
+            len(tier_group) == 1 or self._tier_values_agree(tier_group, scoped_facts)
+        ):
+            return (best.qname,), target_atom, ranked, best.qname
+        return tuple(item.qname for item in tier_group), target_atom, ranked, None
 
     @staticmethod
     def _numeric_qnames(scoped_facts: tuple[XbrlFact, ...]) -> set[str]:
@@ -325,7 +334,7 @@ class FinancialQueryEngine:
                 candidate_facts=scoped_facts,
                 message="A filing accession is required to prevent cross-entity matches.",
             )
-        candidates, atom, ranked = self._resolve_candidates(
+        candidates, atom, ranked, resolved = self._resolve_candidates(
             query.term, scoped_facts, all_facts, arcs
         )
         tier = ranked[0].tier if ranked else ""
@@ -336,7 +345,7 @@ class FinancialQueryEngine:
                 target_atom=atom,
                 message="No concept in this filing matches the query term.",
             )
-        if len(candidates) > 1:
+        if resolved is None:
             return FinancialQueryResult(
                 query,
                 QueryStatus.AMBIGUOUS,
@@ -347,7 +356,7 @@ class FinancialQueryEngine:
                 equivalents=ranked,
             )
 
-        target = candidates[0]
+        target = resolved
         target_facts = tuple(
             fact for fact in scoped_facts if fact.concept_qname == target
         )
