@@ -21,8 +21,10 @@ from edgar_sec.engine.xbrl.normalize.decomposer import (
 )
 from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
+from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.solve.equivalence import presumed_atom
 from edgar_sec.engine.xbrl.taxonomy.defaults import DefaultCoordinate
+from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import SiblingGroup
 
 
 @dataclass(frozen=True, slots=True)
@@ -159,6 +161,8 @@ class ConceptModelledness:
     has_identity: bool = False
     derived_horizon: str = ""
     presumed_modifier: str = ""
+    temporal: str = ""
+    relations: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -245,6 +249,7 @@ class ModellednessReport:
     identity_collisions: tuple[IdentityCollision, ...] = ()
     pattern_groups: tuple[PatternGroup, ...] = ()
     single_firm_long_phrases: tuple[SingleFirmLongPhrase, ...] = ()
+    cardinality_violations: tuple[tuple[str, str, tuple[str, ...]], ...] = ()
 
 
 def _arc_degrees(table: pa.Table | None) -> Counter:
@@ -327,8 +332,16 @@ def _residual_class(residuals: tuple[str, ...]) -> str:
     return "intent_bearing"
 
 
-#: Structural tags say where a thing sits, never what it is; they cannot carry identity.
-_STRUCTURAL_MODIFIERS = frozenset({"M_CURRENT", "M_NONCURRENT"})
+#: Fallback when a bare lexicon carries no kinds: the horizon pair.
+_FALLBACK_STRUCTURAL_MODIFIERS = frozenset({"M_CURRENT", "M_NONCURRENT"})
+
+
+def _structural_modifiers(lexicon: TokenLexicon) -> frozenset[str]:
+    """Structural-kind modifier ids from the defs; structural tags cannot carry identity."""
+    derived = frozenset(
+        mod for mod, kinds in lexicon.modifier_kinds.items() if "STRUCTURAL" in kinds
+    )
+    return derived or _FALLBACK_STRUCTURAL_MODIFIERS
 
 
 def _adequacy(
@@ -336,12 +349,13 @@ def _adequacy(
     modifiers: tuple[str, ...],
     residuals: tuple[str, ...],
     token_count: int,
+    structural: frozenset[str] = _FALLBACK_STRUCTURAL_MODIFIERS,
 ) -> tuple[str, bool, float]:
     """Return (adequacy tier, has_identity, explained share) for one concept."""
     share = 1.0 - (len(residuals) / token_count if token_count else 0.0)
     intent = [t for t in residuals if not _is_noise_token(t)]
     # A name fully consumed by its head phrase carries identity in the head itself.
-    has_identity = any(m not in _STRUCTURAL_MODIFIERS for m in modifiers) or not intent
+    has_identity = any(m not in structural for m in modifiers) or not intent
     if head == "H_UNKNOWN":
         return "unmodelled", has_identity, share
     if not has_identity:
@@ -446,6 +460,7 @@ def build_modelledness_report(
     min_firms: int = 3,
     min_sics: int = 2,
     defaults: Iterable[DefaultCoordinate] = (),
+    sibling_groups: Iterable[SiblingGroup] = (),
 ) -> ModellednessReport:
     """Audit every distinct concept's modelled-ness across the bundles."""
     firms_by_concept: dict[str, set[str]] = defaultdict(set)
@@ -485,16 +500,30 @@ def build_modelledness_report(
 
     defaults = tuple(defaults)
     statement_types = _statement_types()
+    structural = _structural_modifiers(lexicon)
     atom_members: dict[str, list[str]] = defaultdict(list)
+    atom_by_concept: dict[str, Atom] = {}
     decomposed: dict[str, tuple] = {}
     derived_by_concept: dict[str, str] = {}
     presumed_by_concept: dict[str, str] = {}
+    temporal_by_concept: dict[str, str] = {}
+    relations_by_concept: dict[str, tuple[str, ...]] = {}
     for qname in rows_by_concept:
         expression = decompose_concept_expression(qname, lexicon)
         atom, residuals = expression.atom, expression.residuals
         decomposed[qname] = (atom, residuals)
+        atom_by_concept[qname] = atom
         atom_members[str(atom)].append(qname)
         derived_by_concept[qname] = expression.derived_horizon or ""
+        temporal = expression.temporal
+        temporal_by_concept[qname] = (
+            f"{temporal.lo_months}-{temporal.hi_months or 'inf'}:{temporal.shape}"
+            if temporal is not None
+            else ""
+        )
+        relations_by_concept[qname] = tuple(
+            sorted({kind for kind, _operand in expression.relations})
+        )
         presumed = presumed_atom(atom, defaults)
         added = presumed.modifiers - atom.modifiers
         presumed_by_concept[qname] = next(iter(added)) if len(added) == 1 else ""
@@ -528,7 +557,11 @@ def build_modelledness_report(
         else:
             bucket = "modelled"
         adequacy, has_identity, share = _adequacy(
-            atom.head, tuple(sorted(atom.modifiers)), tuple(residuals), token_count
+            atom.head,
+            tuple(sorted(atom.modifiers)),
+            tuple(residuals),
+            token_count,
+            structural,
         )
         records.append(
             ConceptModelledness(
@@ -553,6 +586,8 @@ def build_modelledness_report(
                 has_identity=has_identity,
                 derived_horizon=derived_by_concept[qname],
                 presumed_modifier=presumed_by_concept[qname],
+                temporal=temporal_by_concept[qname],
+                relations=relations_by_concept[qname],
             )
         )
 
@@ -677,6 +712,22 @@ def build_modelledness_report(
         for (phrase, role), firms in sorted(phrase_firms.items())
         if len(firms) == 1
     )
+    # Exclusive axes admit one value per atom; an all-TextBlock dual is a
+    # combined presentation (the adjudicated EPS family), not a violation.
+    cardinality_violations: list[tuple[str, str, tuple[str, ...]]] = []
+    for group in sibling_groups:
+        if group.cardinality != "exclusive":
+            continue
+        members = frozenset(group.members)
+        for atom_text, concepts in sorted(atom_members.items()):
+            atom = atom_by_concept[concepts[0]]
+            if len(atom.modifiers & members) < 2:
+                continue
+            if all(c.split(":")[-1].endswith("TextBlock") for c in concepts):
+                continue
+            cardinality_violations.append(
+                (group.group, atom_text, tuple(sorted(concepts)))
+            )
     return ModellednessReport(
         total_concepts=len(records),
         total_fact_rows=sum(rows_by_concept.values()),
@@ -739,4 +790,5 @@ def build_modelledness_report(
         identity_collisions=identity_collisions,
         pattern_groups=tuple(pattern_groups[:120]),
         single_firm_long_phrases=single_firm_long_phrases,
+        cardinality_violations=tuple(cardinality_violations),
     )

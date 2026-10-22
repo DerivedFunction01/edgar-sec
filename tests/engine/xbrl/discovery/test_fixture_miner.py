@@ -14,6 +14,7 @@ from edgar_sec.engine.xbrl.discovery.placement_slices import tokenize_fact_conce
 from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
+from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import SiblingGroup
 from tests.support import fixture_path
 
 
@@ -307,3 +308,36 @@ def test_pattern_groups_merge_namespaces_by_signature() -> None:
     assert group.firms == ("AAA", "BBB")
     assert group.sics == ("1000", "2000")
     assert group.concept_count == 2
+
+
+def test_report_records_temporal_relations_and_cardinality() -> None:
+    """Temporal/relations ride the record; exclusive duals warn, textblocks exempt."""
+    taxonomy = load_domain_taxonomy()
+    assert taxonomy.token_lexicon is not None
+    qnames = [
+        "us-gaap:LongTermDebtMaturitiesDueInFiveYears",
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "us-gaap:ScheduleOfEarningsPerShareBasicAndDilutedTableTextBlock",
+    ]
+    bundles = [BundleFacts(firm="AAA", sic_code="1000", facts=_facts_table(qnames))]
+
+    report = build_modelledness_report(
+        bundles, taxonomy.token_lexicon, sibling_groups=taxonomy.sibling_groups
+    )
+    by_qname = {r.qname: r for r in report.concepts}
+    assert by_qname[qnames[0]].temporal == "48-60:BUCKET"
+    assert by_qname[qnames[1]].relations == ("EXCLUDING",)
+    # The EPS combined-presentation textblock is exempt; nothing else duals.
+    assert report.cardinality_violations == ()
+
+    synthetic = (
+        SiblingGroup(
+            group="SYNTHETIC", members=("M_PRETAX", "M_TAX"), cardinality="exclusive"
+        ),
+    )
+    flagged = build_modelledness_report(
+        bundles, taxonomy.token_lexicon, sibling_groups=synthetic
+    )
+    assert [(g, a) for g, a, _ in flagged.cardinality_violations] == [
+        ("SYNTHETIC", str(by_qname[qnames[1]].atom))
+    ]

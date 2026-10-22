@@ -269,12 +269,10 @@ def _fallback_head(matches: list[LexiconMatch]) -> str:
 def _split_regions(
     resolved: list[LexiconMatch],
 ) -> tuple[list[LexiconMatch], list[LexiconMatch], LexiconMatch | None]:
-    """Split at the first boundary/relation claim, with orphan protection.
+    """Split at the first boundary/relation claim.
 
-    A protect_far_head boundary does not split when the far side's
-    best head claim outranks the near side's: the stronger far claim
-    is not orphaned into the subordinate region but wins the head
-    under the global class pick over the merged region (B4, opt-in).
+    A protect_far_head boundary does not split when the far side's best head
+    outranks the near side's; the far claim then wins under the global pick.
     """
     sub_idx: int | None = None
     for idx, match in enumerate(resolved):

@@ -15,8 +15,8 @@ from edgar_sec.engine.xbrl.discovery.fixture_miner import (
     BundleFacts,
     build_modelledness_report,
 )
-from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
+from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.pipelines.xbrl_review.paths import default_seed_cohort_path
 
@@ -108,12 +108,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         sys.stderr.write(f"No seed bundles found under: {fixtures_dir}\n")
         return 1
 
-    lexicon = TokenLexicon.load_json(paths.default_token_lexicon_path)
+    taxonomy = load_domain_taxonomy()
+    assert taxonomy.token_lexicon is not None
     report = build_modelledness_report(
         bundles,
-        lexicon,
+        taxonomy.token_lexicon,
         min_firms=args.min_firms,
         min_sics=args.min_sics,
+        defaults=taxonomy.default_coordinates,
+        sibling_groups=taxonomy.sibling_groups,
     )
 
     out_path = args.output or (
