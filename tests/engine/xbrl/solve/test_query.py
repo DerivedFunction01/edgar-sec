@@ -1150,6 +1150,18 @@ def test_residual_bearing_term_gets_no_fallback() -> None:
     assert result.equivalents == ()
 
 
+def test_unrelated_only_candidate_gives_no_result_and_no_fallback() -> None:
+    """Negative pair: Revenues vs CostOfRevenue is UNRELATED end to end."""
+    facts = (_duration_fact("us-gaap:CostOfRevenue", 50.0),)
+    result = _query_engine().execute(FinancialQuery("Revenues", _DURATION_SCOPE), facts)
+    assert result.status == QueryStatus.UNAVAILABLE
+    assert result.value is None
+    assert result.reported_fact is None
+    assert result.candidate_qnames == ()
+    assert result.tier == ""
+    assert result.equivalents == ()
+
+
 def test_exact_resolution_carries_equivalents() -> None:
     """Q-B: an exact resolution surfaces its ranked neighbourhood, tiered exact."""
     facts = (_duration_fact("us-gaap:NetIncomeLoss", 42.0),)
