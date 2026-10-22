@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
 
+from edgar_sec.apps.client.facts import DisplayRecord, build_display_records
 from edgar_sec.apps.client.views import DebtStructureView, DerivativePortfolioView
-from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
 from edgar_sec.engine.xbrl.schema.models import CalculationArc, XbrlFact
 from edgar_sec.engine.xbrl.solve.composer import StatementComposer
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
@@ -20,11 +20,18 @@ class XbrlFinancials:
         calculation_arcs: Sequence[CalculationArc],
         taxonomy: DomainTaxonomy,
         labels: Mapping[str, str] | None = None,
+        *,
+        display_records: Mapping[str, DisplayRecord] | None = None,
     ) -> None:
         self._facts = tuple(facts)
         self._arcs = tuple(calculation_arcs)
         self._taxonomy = taxonomy
         self._labels = dict(labels or {})
+        self._records = (
+            dict(display_records)
+            if display_records is not None
+            else build_display_records(self._facts, self._taxonomy)
+        )
         self._composer = StatementComposer(
             self._facts, self._arcs, self._taxonomy, self._labels
         )
@@ -74,7 +81,10 @@ class XbrlFinancials:
                 continue
             if is_monetary and f.unit in ("pure", "shares", "item", "ratio"):
                 continue
-            atom, val_type, _, _ = decompose_concept(f.concept_qname, lex)
+            record = self._records.get(f.concept_qname)
+            if record is None:
+                continue
+            atom, val_type = record.atom, record.residuals
             if atom.head == target_head and target_mods.issubset(atom.modifiers):
                 if excluded_mods and any(m in atom.modifiers for m in excluded_mods):
                     continue

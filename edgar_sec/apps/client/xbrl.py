@@ -90,19 +90,24 @@ class Xbrl:
         raw_labels = self._filing.linkbases.labels if self._filing.linkbases else ()
         self._labels = _labels_by_concept(raw_labels)
 
-        self.facts = XbrlFactSet(self._filing.facts, self._taxonomy)
+        declarations = self._merged_declarations(arcs)
+        self.facts = XbrlFactSet(
+            self._filing.facts, self._taxonomy, declarations=declarations
+        )
         self.statements = XbrlStatements(
             self._filing.facts, arcs, self._taxonomy, self._labels
         )
         self.financials = XbrlFinancials(
-            self._filing.facts, arcs, self._taxonomy, self._labels
+            self._filing.facts,
+            arcs,
+            self._taxonomy,
+            self._labels,
+            display_records=self.facts.records,
         )
 
         kb = EvidenceKnowledgeBase(self._taxonomy)
         solver = XbrlConstraintSolver(kb)
-        self._query_engine = FinancialQueryEngine(
-            solver, declarations=self._merged_declarations(arcs)
-        )
+        self._query_engine = FinancialQueryEngine(solver, declarations=declarations)
 
     def _merged_declarations(
         self, arcs: tuple[CalculationArc, ...]

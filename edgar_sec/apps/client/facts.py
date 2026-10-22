@@ -2,22 +2,97 @@
 
 from __future__ import annotations
 
-from collections.abc import Callable, Iterator, Sequence
+from collections.abc import Callable, Iterator, Mapping, Sequence
+from dataclasses import dataclass
 from typing import Any
 
 import pyarrow as pa
 
-from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
-from edgar_sec.engine.xbrl.schema.models import XbrlFact
+from edgar_sec.engine.xbrl.normalize.decomposer import residual_counts
+from edgar_sec.engine.xbrl.schema.atoms import Atom
+from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration, XbrlFact
+from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer, TokenizedFact
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
+from edgar_sec.foundation.serialization import canonical_json
+
+
+@dataclass(frozen=True, slots=True)
+class DisplayRecord:
+    """One concept's tokenized record as carried by a display fact set.
+
+    Lookup-sourced records also carry the equivalence tier and rule
+    that produced the set; directly loaded records leave them empty.
+    """
+
+    qname: str
+    atom: Atom
+    presumed_atom: Atom
+    residuals: tuple[str, ...] = ()
+    derived_horizon: str | None = None
+    item_type: str | None = None
+    tier: str = ""
+    rule: str = ""
+
+    @property
+    def presumed_signature(self) -> str:
+        """Canonical signature of the presumed atom."""
+        return canonical_json(self.presumed_atom.to_dict())
+
+    @property
+    def residual_mass(self) -> tuple[int, int]:
+        """(intent, total) residual mass of the stated decomposition."""
+        return residual_counts(self.residuals)
+
+    @classmethod
+    def from_tokenized(
+        cls, record: TokenizedFact, item_type: str | None = None
+    ) -> DisplayRecord:
+        """Carry a tokenizer record, plus the declared item type when known."""
+        return cls(
+            qname=record.qname,
+            atom=record.atom,
+            presumed_atom=record.presumed_atom,
+            residuals=record.residuals,
+            derived_horizon=record.derived_horizon,
+            item_type=item_type,
+        )
+
+
+def build_display_records(
+    facts: Sequence[XbrlFact],
+    taxonomy: DomainTaxonomy,
+    declarations: Mapping[str, ConceptDeclaration] | None = None,
+) -> dict[str, DisplayRecord]:
+    """Tokenize each distinct concept once through the tokenizer service."""
+    if taxonomy.token_lexicon is None:
+        return {}
+    tokenizer = ConceptTokenizer(taxonomy)
+    records: dict[str, DisplayRecord] = {}
+    for qname in sorted({fact.concept_qname for fact in facts}):
+        declaration = declarations.get(qname) if declarations else None
+        tokenized = tokenizer.tokenize(qname, declaration)
+        item_type = declaration.item_type if declaration is not None else None
+        records[qname] = DisplayRecord.from_tokenized(tokenized, item_type)
+    return records
 
 
 class XbrlFactQueryBuilder:
     """Fluent query builder for filtering and resolving XBRL facts."""
 
-    def __init__(self, facts: Sequence[XbrlFact], taxonomy: DomainTaxonomy) -> None:
+    def __init__(
+        self,
+        facts: Sequence[XbrlFact],
+        taxonomy: DomainTaxonomy,
+        records: Mapping[str, DisplayRecord] | None = None,
+    ) -> None:
         self._facts = list(facts)
         self._taxonomy = taxonomy
+        self._records = records
+
+    def _display_records(self) -> Mapping[str, DisplayRecord]:
+        if self._records is None:
+            self._records = build_display_records(self._facts, self._taxonomy)
+        return self._records
 
     def concept(self, pattern: str) -> XbrlFactQueryBuilder:
         """Filter facts whose concept QName contains the given substring."""
@@ -31,14 +106,17 @@ class XbrlFactQueryBuilder:
         excluded_modifiers: Sequence[str] = (),
     ) -> XbrlFactQueryBuilder:
         """Filter facts matching specific subatomic head and modifier coordinates."""
-        lex = self._taxonomy.token_lexicon
-        if lex is None:
+        if self._taxonomy.token_lexicon is None:
             return self
+        records = self._display_records()
         required_mods = set(modifiers)
         banned_mods = set(excluded_modifiers)
         filtered: list[XbrlFact] = []
         for f in self._facts:
-            a, _, _, _ = decompose_concept(f.concept_qname, lex)
+            record = records.get(f.concept_qname)
+            if record is None:
+                continue
+            a = record.atom
             if a.head == head and required_mods.issubset(a.modifiers):
                 if not banned_mods or not (banned_mods & a.modifiers):
                     filtered.append(f)
@@ -99,15 +177,36 @@ class XbrlFactQueryBuilder:
 
     def execute(self) -> XbrlFactSet:
         """Materialize filtered facts into an immutable XbrlFactSet."""
-        return XbrlFactSet(self._facts, self._taxonomy)
+        return XbrlFactSet(self._facts, self._taxonomy, records=self._records)
 
 
 class XbrlFactSet:
     """Immutable sequence of facts with tabular serialization and query chaining."""
 
-    def __init__(self, facts: Sequence[XbrlFact], taxonomy: DomainTaxonomy) -> None:
+    def __init__(
+        self,
+        facts: Sequence[XbrlFact],
+        taxonomy: DomainTaxonomy,
+        *,
+        declarations: Mapping[str, ConceptDeclaration] | None = None,
+        records: Mapping[str, DisplayRecord] | None = None,
+    ) -> None:
         self._facts = tuple(facts)
         self._taxonomy = taxonomy
+        self._records = (
+            dict(records)
+            if records is not None
+            else build_display_records(self._facts, taxonomy, declarations)
+        )
+
+    @property
+    def records(self) -> Mapping[str, DisplayRecord]:
+        """Tokenized display records by concept qname, computed once."""
+        return self._records
+
+    def record_for(self, qname: str) -> DisplayRecord | None:
+        """Return a concept's display record, or None when untokenized."""
+        return self._records.get(qname)
 
     def __len__(self) -> int:
         return len(self._facts)
@@ -124,7 +223,7 @@ class XbrlFactSet:
 
     def query(self, concept: str | None = None, **kwargs: Any) -> XbrlFactQueryBuilder:
         """Spawn a fluent query builder seeded with current facts."""
-        builder = XbrlFactQueryBuilder(self._facts, self._taxonomy)
+        builder = XbrlFactQueryBuilder(self._facts, self._taxonomy, self._records)
         if concept:
             builder.concept(concept)
         if "unit" in kwargs:
