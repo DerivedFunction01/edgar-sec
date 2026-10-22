@@ -109,6 +109,70 @@ def test_net_of_expression_preserves_both_operand_atoms() -> None:
         assert expression.operator is None
 
 
+def test_expression_matches_name_the_entries_that_fired() -> None:
+    """Provenance: the archetype's matches are its head and relation entries."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+
+    expression = decompose_concept_expression(
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        tax.token_lexicon,
+    )
+    assert [(m.start, m.end) for m in expression.matches] == [(0, 5), (5, 8)]
+    head_match, relation_match = expression.matches
+    assert head_match.entry.phrase == (
+        "revenue",
+        "from",
+        "contract",
+        "with",
+        "customer",
+    )
+    assert head_match.entry.claim == "head"
+    assert head_match.entry.head == "H_REVENUE"
+    assert relation_match.entry.phrase == ("excluding", "assessed", "tax")
+    assert relation_match.entry.claim == "relation"
+    assert relation_match.entry.relation == "EXCLUDING"
+
+
+def test_net_of_expression_matches_carry_both_operands() -> None:
+    """NET_OF provenance spans both sides, in full-token coordinates."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+
+    expression = decompose_concept_expression(
+        "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+        tax.token_lexicon,
+    )
+    assert expression.operator == "NET_OF"
+    phrases = [m.entry.phrase for m in expression.matches]
+    assert phrases[0] == (
+        "accumulated",
+        "other",
+        "comprehensive",
+        "income",
+        "loss",
+    )
+    assert ("net", "of") in phrases
+    tax_matches = [m for m in expression.matches if m.entry.phrase == ("tax",)]
+    assert [(m.start, m.end) for m in tax_matches] == [(7, 8)]
+    assert all(
+        expression.matches[i].start <= expression.matches[i + 1].start
+        for i in range(len(expression.matches) - 1)
+    )
+
+
+def test_multi_operator_rejection_has_empty_provenance() -> None:
+    """A rejected multi-operator name carries no matches."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+
+    expression = decompose_concept_expression(
+        "us-gaap:RevenuesNetOfInterestExpenseNetOfTax", tax.token_lexicon
+    )
+    assert expression.atom.head == "H_UNKNOWN"
+    assert expression.matches == ()
+
+
 def test_long_derivative_qnames_keep_instrument_and_offset_factors() -> None:
     tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None

@@ -72,6 +72,7 @@ class ConceptExpression:
     derived_horizon: str | None = None
     relations: tuple[tuple[str, Atom], ...] = ()
     temporal: TemporalInterval | None = None
+    matches: tuple[LexiconMatch, ...] = ()
 
 
 def decompose_concept_expression(
@@ -109,6 +110,7 @@ def decompose_concept_expression(
             left_derived,
             left_relations,
             left_temporal,
+            left_matches,
         ) = _decompose_flat_tokens(
             left_tokens,
             lexicon,
@@ -130,6 +132,7 @@ def decompose_concept_expression(
             right_derived,
             right_relations,
             right_temporal,
+            right_matches,
         ) = _decompose_flat_tokens(
             tokens[operator.end :], lexicon, (), right_values, right_ordinals
         )
@@ -149,9 +152,15 @@ def decompose_concept_expression(
             ),
             relations=left_relations + (("NET_OF", right),) + right_relations,
             temporal=left_temporal if left_temporal is not None else right_temporal,
+            matches=left_matches
+            + (operator,)
+            + tuple(
+                LexiconMatch(m.start + operator.end, m.end + operator.end, m.entry)
+                for m in right_matches
+            ),
         )
 
-    atom, residuals, direction, indexicals, derived, relations, temporal = (
+    atom, residuals, direction, indexicals, derived, relations, temporal, matches = (
         _decompose_flat_tokens(
             tokens,
             lexicon,
@@ -171,6 +180,7 @@ def decompose_concept_expression(
         derived_horizon=derived,
         relations=relations,
         temporal=temporal,
+        matches=matches,
     )
 
 
@@ -310,6 +320,7 @@ def _decompose_flat_tokens(
     str | None,
     tuple[tuple[str, Atom], ...],
     TemporalInterval | None,
+    tuple[LexiconMatch, ...],
 ]:
     matches, residuals = _resolve_matches(tokens, lexicon)
     temporal = extract_temporal(tokens, number_values or {}, ordinal_values or {})
@@ -385,6 +396,7 @@ def _decompose_flat_tokens(
         derived,
         tuple(relations),
         temporal,
+        tuple(matches),
     )
 
 
