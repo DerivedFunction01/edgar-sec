@@ -5,9 +5,31 @@ from __future__ import annotations
 import dataclasses
 import json
 from pathlib import Path
-from typing import Iterable, Mapping
+from typing import TYPE_CHECKING, Iterable, Mapping
 
 from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration
+
+if TYPE_CHECKING:
+    from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
+
+
+@dataclasses.dataclass(frozen=True, slots=True)
+class TextCoordinateRule:
+    """The modifier a declared item type asserts, and the types that assert it."""
+
+    modifier_id: str
+    item_types: frozenset[str]
+
+
+def text_coordinate_rule(taxonomy: DomainTaxonomy) -> TextCoordinateRule | None:
+    """Resolve the text-coordinate rule from the def declaring asserted types."""
+    for modifier in taxonomy.subatomic_modifiers:
+        if modifier.asserted_item_types:
+            return TextCoordinateRule(
+                modifier_id=modifier.modifier_id,
+                item_types=frozenset(modifier.asserted_item_types),
+            )
+    return None
 
 
 def load_standard_item_types(path: Path | str) -> dict[str, str]:

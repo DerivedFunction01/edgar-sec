@@ -8,6 +8,7 @@ from edgar_sec.engine.xbrl.normalize.decomposer import (
     residual_counts,
     split_camel_case,
 )
+from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 
 
@@ -867,3 +868,82 @@ def test_revenue_components_carry_identity_off_the_bare_atom() -> None:
     xva = atom_of("bac:DerivativeFundingRiskValuationAdjustmentDerivativeAssets")
     assert xva.head == "H_ASSET"
     assert xva.modifiers == frozenset({"M_DERIVATIVE"})
+
+
+def _text_rule():
+    from edgar_sec.engine.xbrl.taxonomy.item_types import text_coordinate_rule
+
+    return text_coordinate_rule(load_domain_taxonomy())
+
+
+def _declaration(qname: str, item_type: str) -> ConceptDeclaration:
+    return ConceptDeclaration(
+        concept_qname=qname, name=qname.partition(":")[2], item_type=item_type
+    )
+
+
+def test_text_coordinate_asserted_from_declared_string_type() -> None:
+    """A string-typed narrative gains the coordinate its name never claims."""
+    tax = load_domain_taxonomy()
+    lex = tax.token_lexicon
+    assert lex is not None
+    qname = "us-gaap:RelatedPartyTransactionDescriptionOfTransaction"
+    plain = decompose_concept_expression(qname, lex).atom
+    assert "M_TEXT_NODE" not in plain.modifiers
+    typed = decompose_concept_expression(
+        qname, lex, _declaration(qname, "xbrli:stringItemType"), _text_rule()
+    ).atom
+    assert "M_TEXT_NODE" in typed.modifiers
+    assert typed.head == plain.head
+    assert typed.modifiers == plain.modifiers | {"M_TEXT_NODE"}
+
+
+def test_text_coordinate_follows_type_not_name() -> None:
+    """A TextBlock name with a numeric declared type gets no coordinate."""
+    tax = load_domain_taxonomy()
+    lex = tax.token_lexicon
+    assert lex is not None
+    qname = "us-gaap:SignificantAccountingPoliciesTextBlock"
+    typed = decompose_concept_expression(
+        qname, lex, _declaration(qname, "xbrli:monetaryItemType"), _text_rule()
+    ).atom
+    assert "M_TEXT_NODE" not in typed.modifiers
+    block = decompose_concept_expression(
+        qname, lex, _declaration(qname, "dtr-types:textBlockItemType"), _text_rule()
+    ).atom
+    assert "M_TEXT_NODE" in block.modifiers
+
+
+def test_text_coordinate_absent_declaration_is_byte_identical() -> None:
+    """No declaration (or no rule) reproduces today's atoms exactly."""
+    tax = load_domain_taxonomy()
+    lex = tax.token_lexicon
+    assert lex is not None
+    specimens = (
+        "us-gaap:SignificantAccountingPoliciesTextBlock",
+        "us-gaap:RelatedPartyTransactionDescriptionOfTransaction",
+        "us-gaap:Revenues",
+        "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax",
+    )
+    for qname in specimens:
+        baseline = decompose_concept_expression(qname, lex)
+        assert decompose_concept_expression(qname, lex, None, _text_rule()) == baseline
+        assert (
+            decompose_concept_expression(
+                qname, lex, _declaration(qname, "dtr-types:textBlockItemType"), None
+            )
+            == baseline
+        )
+
+
+def test_text_coordinate_net_of_headline_only() -> None:
+    """NET_OF: the headline atom gains the coordinate; operands stay name-derived."""
+    tax = load_domain_taxonomy()
+    lex = tax.token_lexicon
+    assert lex is not None
+    qname = "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax"
+    typed = decompose_concept_expression(
+        qname, lex, _declaration(qname, "dtr-types:textBlockItemType"), _text_rule()
+    )
+    assert "M_TEXT_NODE" in typed.atom.modifiers
+    assert all("M_TEXT_NODE" not in operand.modifiers for operand in typed.operands)

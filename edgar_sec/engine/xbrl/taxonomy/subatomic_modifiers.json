@@ -2469,6 +2469,19 @@
     ]
   },
   {
+    "modifier_id": "M_TEXT_NODE",
+    "category": "TEXT_NODE",
+    "keywords": [],
+    "description": "Declared text-typed concept (text block or string item type); value-form coordinate asserted from the declared item type, never from name tokens",
+    "kinds": [
+      "CONTEXT"
+    ],
+    "asserted_item_types": [
+      "textBlockItemType",
+      "stringItemType"
+    ]
+  },
+  {
     "modifier_id": "M_ACCUMULATED",
     "category": "DESCRIPTIVE_TAG",
     "keywords": [

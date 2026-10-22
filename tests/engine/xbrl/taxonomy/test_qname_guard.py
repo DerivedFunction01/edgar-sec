@@ -15,6 +15,8 @@ QNAME = re.compile(r"^[a-z][a-z0-9-]*:[A-Z][A-Za-z0-9]+$")
 JSON_FIELD_ALLOWLIST = {
     "geography_dag.json": None,  # None: every field is member ontology data.
     "axis_families.json": {"default_axis_qname"},
+    # None: the derived item-type table is reference data keyed by qname.
+    "standard_item_types.json": None,
 }
 
 # Verified non-semantic qname uses (R-e) key no dict by qname today, so

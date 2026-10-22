@@ -88,6 +88,7 @@ class SubatomicModifier:
     realization_state: str | None = None
     sibling_groups: tuple[str, ...] = ()
     kinds: tuple[str, ...] = ()
+    asserted_item_types: tuple[str, ...] = ()
 
     @property
     def pattern_keywords(self) -> tuple[str, ...]:
@@ -105,6 +106,7 @@ class SubatomicModifier:
             realization_state=data.get("realization_state"),
             sibling_groups=_string_tuple(data.get("sibling_groups", ())),
             kinds=tuple(str(k) for k in data.get("kinds", ())),
+            asserted_item_types=_string_tuple(data.get("asserted_item_types", ())),
         )
 
     def to_tuple(self) -> tuple[str, str, tuple[str, ...], str]:

@@ -155,3 +155,20 @@ def test_tokenizer_equivalents_accept_atom_targets_and_pairs() -> None:
     assert len(ranked) == 1
     assert ranked[0].qname == "firm-a:Revenues"
     assert ranked[0].tier == EXACT and ranked[0].rule == "equality"
+
+
+def test_tokenizer_threads_declaration_to_text_coordinate() -> None:
+    """tokenize(qname, declaration) asserts the coordinate from the type."""
+    from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration
+
+    qname = "us-gaap:RelatedPartyTransactionDescriptionOfTransaction"
+    declaration = ConceptDeclaration(
+        concept_qname=qname,
+        name="RelatedPartyTransactionDescriptionOfTransaction",
+        item_type="xbrli:stringItemType",
+    )
+    plain = _tokenizer().tokenize(qname)
+    typed = _tokenizer().tokenize(qname, declaration)
+    assert "M_TEXT_NODE" not in plain.atom.modifiers
+    assert "M_TEXT_NODE" in typed.atom.modifiers
+    assert typed.atom.head == plain.atom.head

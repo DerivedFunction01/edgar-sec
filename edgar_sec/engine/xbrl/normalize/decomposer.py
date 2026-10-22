@@ -5,7 +5,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from edgar_sec.engine.xbrl.schema.atoms import Atom
+from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, SemanticConceptFrame
+from edgar_sec.engine.xbrl.taxonomy.item_types import (
+    TextCoordinateRule,
+    item_type_local,
+)
 from edgar_sec.engine.xbrl.normalize.lexicon import LexiconMatch, TokenLexicon
 from edgar_sec.engine.xbrl.normalize.numbers import (
     collapse_number_phrases,
@@ -49,15 +54,32 @@ def split_camel_case(name: str) -> tuple[str, ...]:
 def decompose_concept(
     concept_qname: str,
     lexicon: TokenLexicon,
+    declaration: ConceptDeclaration | None = None,
+    text_rule: TextCoordinateRule | None = None,
 ) -> tuple[Atom, tuple[str, ...], float, tuple[str, ...]]:
     """Decompose an XBRL concept QName into an Atom coordinate, residuals, and frame."""
-    expression = decompose_concept_expression(concept_qname, lexicon)
+    expression = decompose_concept_expression(
+        concept_qname, lexicon, declaration, text_rule
+    )
     return (
         expression.atom,
         expression.residuals,
         expression.direction,
         expression.indexicals,
     )
+
+
+def _with_text_coordinate(
+    atom: Atom,
+    declaration: ConceptDeclaration | None,
+    text_rule: TextCoordinateRule | None,
+) -> Atom:
+    """Assert the text coordinate on a headline atom from the declared type."""
+    if declaration is None or text_rule is None:
+        return atom
+    if item_type_local(declaration.item_type) in text_rule.item_types:
+        return Atom(atom.head, atom.modifiers | {text_rule.modifier_id})
+    return atom
 
 
 _STRUCTURAL_RESIDUAL_TOKENS = frozenset(
@@ -141,6 +163,8 @@ class ConceptExpression:
 def decompose_concept_expression(
     concept_qname: str,
     lexicon: TokenLexicon,
+    declaration: ConceptDeclaration | None = None,
+    text_rule: TextCoordinateRule | None = None,
 ) -> ConceptExpression:
     """Preserve binary NET_OF operand atoms while deriving the query coordinate."""
     local_name = concept_qname.split(":")[-1] if ":" in concept_qname else concept_qname
@@ -203,7 +227,11 @@ def decompose_concept_expression(
             operator.entry.projection[0] if operator.entry.projection else "V_NET"
         )
         return ConceptExpression(
-            atom=Atom(left.head, left.modifiers | {operator_atom}),
+            atom=_with_text_coordinate(
+                Atom(left.head, left.modifiers | {operator_atom}),
+                declaration,
+                text_rule,
+            ),
             operator="NET_OF",
             operands=(left, right),
             weights=(1.0, -1.0),
@@ -232,6 +260,7 @@ def decompose_concept_expression(
             ordinal_values,
         )
     )
+    atom = _with_text_coordinate(atom, declaration, text_rule)
     return ConceptExpression(
         atom=atom,
         operator=None,
