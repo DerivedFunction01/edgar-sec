@@ -46,6 +46,32 @@ DEFAULT_METRICS: tuple[SubspaceMetric, ...] = (
     SubspaceMetric("total_equity", "Total Equity", "H_EQUITY", is_instant=True),
 )
 
+# Metrics whose cohort values are produced by statement-graph roots,
+# computed rollups, or the debt topic accumulation — mechanisms a bare
+# coordinate subspace over display records cannot reproduce (measured
+# over the 41-firm cohort in Phase 4 Step 4: gross_profit is a computed
+# rollup for 19/41 firms; operating_income/net_income mix graph roots
+# with rollups and the subspace picks incl.-NCI totals for several
+# firms; total_assets/total_equity are finder-chosen graph roots, and
+# the equity subspace also traps dei:EntityPublicFloat; total_debt is
+# the debt topic view's per-instrument accumulation). Each keeps its
+# accessor path as a documented delegate inside the one resolve entry.
+METRIC_DELEGATES: dict[str, str] = {
+    "gross_profit": "accessor",
+    "operating_income": "accessor",
+    "net_income": "accessor",
+    "total_assets": "accessor",
+    "total_equity": "accessor",
+    "total_debt": "debt_view",
+}
+
+# Derived presets: (key, label, numerator key, denominator key).
+DERIVED_MARGINS: tuple[tuple[str, str, str, str], ...] = (
+    ("operating_margin", "Operating Margin", "operating_income", "revenue"),
+    ("net_margin", "Net Margin", "net_income", "revenue"),
+    ("return_on_assets", "Return on Assets (ROA)", "net_income", "total_assets"),
+)
+
 
 class ComparisonView:
     """Tabular and visual comparison presentation across a firm cohort."""
@@ -89,6 +115,20 @@ class ComparisonView:
         return f"<ComparisonView entities={list(self.cohort_data.keys())} metrics={len(self.metric_labels)}>"
 
 
+def _resolve_metric(
+    fin: Any, spec: SubspaceMetric, year: int | str | None
+) -> float | None:
+    """Resolve one metric for one company through its adjudicated path."""
+    delegate = METRIC_DELEGATES.get(spec.key)
+    if delegate == "accessor":
+        return getattr(fin, spec.key)
+    if delegate == "debt_view":
+        return fin.debt.total_debt
+    return fin._scalar(
+        spec.head, set(spec.modifiers), is_instant=spec.is_instant, year=year
+    )
+
+
 def compare_companies(
     companies: Sequence[Any],
     metrics: Sequence[str | SubspaceMetric] | None = None,
@@ -108,6 +148,7 @@ def compare_companies(
             else:
                 specs.append(SubspaceMetric(m, m.replace("_", " ").title(), "H_INCOME"))
 
+    standard = {m.key: m for m in DEFAULT_METRICS}
     cohort_data: dict[str, dict[str, float | None]] = {}
     for comp in companies:
         entity_name = getattr(comp, "ticker", None) or getattr(
@@ -117,45 +158,23 @@ def compare_companies(
             acc = str(getattr(comp, "accession", ""))
             entity_name = acc[:10] if acc else f"Firm_{len(cohort_data) + 1}"
 
-        c_data: dict[str, float | None] = {}
         fin = comp.financials
-        c_data["revenue"] = fin.revenue
-        c_data["gross_profit"] = fin.gross_profit
-        c_data["operating_income"] = fin.operating_income
-        c_data["net_income"] = fin.net_income
-        c_data["operating_cash_flow"] = fin.operating_cash_flow
-        c_data["total_assets"] = fin.total_assets
-        c_data["total_debt"] = fin.debt.total_debt
-        c_data["total_equity"] = fin.total_equity
-
+        c_data: dict[str, float | None] = {}
+        for key, spec in standard.items():
+            c_data[key] = _resolve_metric(fin, spec, year)
         for s in specs:
             if s.key not in c_data:
-                c_data[s.key] = fin._scalar(
-                    s.head, set(s.modifiers), is_instant=s.is_instant, year=year
-                )
+                c_data[s.key] = _resolve_metric(fin, s, year)
 
-        rev = c_data.get("revenue")
-        op_inc = c_data.get("operating_income")
-        net_inc = c_data.get("net_income")
-        assets = c_data.get("total_assets")
-
-        if rev and rev != 0:
-            if op_inc is not None:
-                c_data["operating_margin"] = op_inc / rev
-            if net_inc is not None:
-                c_data["net_margin"] = net_inc / rev
-        if assets and assets != 0 and net_inc is not None:
-            c_data["return_on_assets"] = net_inc / assets
+        for key, _label, numerator, denominator in DERIVED_MARGINS:
+            num = c_data.get(numerator)
+            den = c_data.get(denominator)
+            if num is not None and den and den != 0:
+                c_data[key] = num / den
 
         cohort_data[entity_name] = c_data
 
     display_labels = [(s.key, s.label) for s in specs]
-    display_labels.extend(
-        [
-            ("operating_margin", "Operating Margin"),
-            ("net_margin", "Net Margin"),
-            ("return_on_assets", "Return on Assets (ROA)"),
-        ]
-    )
+    display_labels.extend((key, label) for key, label, _n, _d in DERIVED_MARGINS)
 
     return ComparisonView(cohort_data, display_labels)
