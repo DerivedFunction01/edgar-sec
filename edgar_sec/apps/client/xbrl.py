@@ -154,13 +154,8 @@ class Xbrl:
     ) -> Xbrl:
         """Build a facade for one cohort filing from the Phase 3 scan.
 
-        Facts are read full-fidelity from the bundle the scan
-        enumerates; their display records come from the concept
-        table, never re-tokenized per filing. The table is built
-        per process from the loaded taxonomy, so nothing persisted
-        can go stale; for record agreement with loaded facades it
-        must carry the cohort's declarations (extension item types
-        assert the text coordinate).
+        Facts are full-fidelity from the scanned bundle; records come
+        from the concept table (with the cohort's declarations).
         """
         import pyarrow.parquet as pq
 
@@ -217,9 +212,8 @@ class Xbrl:
     ) -> Xbrl:
         """Build a display facade from equivalence-lookup matches.
 
-        Lookup facts are a display projection: they carry no
-        dimensions, decimals, or context, and the facade has no
-        calculation arcs; records carry the matches' tier and rule.
+        Lookup facts are a projection (no dimensions, decimals, or
+        arcs); records carry the matches' tier and rule.
         """
         selected = tuple(m for m in matches if m.accession == accession)
         fact_set = build_fact_set_from_lookup(selected, table)
@@ -581,9 +575,8 @@ class Xbrl:
     ) -> FinancialQueryResult:
         """Operand ladder: name/reported, tokenizer equivalence, derived.
 
-        The filing-local rung of the ladder is present and empty in
-        this phase; the global-default rung is the engine's alias
-        table, also consulted for tokenizer-equivalence targets.
+        The filing-local rung is present and empty in this phase;
+        global defaults are the engine's alias table.
         """
         result = self.query(term, mode=mode, fiscal_year=fiscal_year)
         if result.value is not None or mode is not QueryMode.REPORTED_ONLY:

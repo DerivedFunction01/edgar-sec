@@ -46,16 +46,9 @@ DEFAULT_METRICS: tuple[SubspaceMetric, ...] = (
     SubspaceMetric("total_equity", "Total Equity", "H_EQUITY", is_instant=True),
 )
 
-# Metrics whose cohort values are produced by statement-graph roots,
-# computed rollups, or the debt topic accumulation — mechanisms a bare
-# coordinate subspace over display records cannot reproduce (measured
-# over the 41-firm cohort in Phase 4 Step 4: gross_profit is a computed
-# rollup for 19/41 firms; operating_income/net_income mix graph roots
-# with rollups and the subspace picks incl.-NCI totals for several
-# firms; total_assets/total_equity are finder-chosen graph roots, and
-# the equity subspace also traps dei:EntityPublicFloat; total_debt is
-# the debt topic view's per-instrument accumulation). Each keeps its
-# accessor path as a documented delegate inside the one resolve entry.
+# Metrics produced by statement-graph roots, computed rollups, or the
+# debt topic accumulation keep their accessor path as a documented
+# delegate (measured per metric over the cohort, Phase 4 Step 4).
 METRIC_DELEGATES: dict[str, str] = {
     "gross_profit": "accessor",
     "operating_income": "accessor",

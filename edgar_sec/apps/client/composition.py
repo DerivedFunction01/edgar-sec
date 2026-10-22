@@ -1,10 +1,8 @@
 """User-composed chains: add/subtract expressions over named operands.
 
-Each operand is a term or example fact resolved per firm through the
-query facade. Composition status is the worst operand status under
-the facade precedence ladder; a value is returned only when every
-operand carries one, units and periods are compatible, and the
-antichain veto over the operands' derivation chains passes.
+Status is the worst operand status under the facade precedence
+ladder; a value requires every operand valued, unit/period
+compatibility, and a clean antichain veto over derivation chains.
 """
 
 from __future__ import annotations
