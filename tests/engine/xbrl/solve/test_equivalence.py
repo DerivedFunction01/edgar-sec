@@ -894,3 +894,67 @@ def test_presumed_atom_axis_resolution_is_name_aware() -> None:
     atom = Atom("H_EXPENSE", frozenset({"M_DEFERRED"}))
     presumed = presumed_atom(atom, (entry,), sibling_groups=groups)
     assert presumed.modifiers == frozenset({"M_DEFERRED", "M_CURRENT"})
+
+
+def _typed_atom(qname: str, item_type: str) -> Atom:
+    from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration
+    from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
+
+    declaration = ConceptDeclaration(
+        concept_qname=qname, name=qname.partition(":")[2], item_type=item_type
+    )
+    return ConceptTokenizer(load_domain_taxonomy()).tokenize(qname, declaration).atom
+
+
+def test_text_barrier_kills_a_false_exact() -> None:
+    """Typed text vs a bare numeric atom: UNRELATED where untyped was EXACT."""
+    text = _typed_atom(
+        "all:CapitalStructureDisclosureTextBlock", "dtr-types:textBlockItemType"
+    )
+    numeric = _atom("adm:Biodieseltaxcredit")
+    assert text == Atom("H_UNKNOWN", frozenset({"M_TEXT_NODE"}))
+    assert numeric == Atom("H_UNKNOWN")
+    assert classify_pair(_atom("all:CapitalStructureDisclosureTextBlock"), numeric) == EXACT
+    assert classify_pair(text, numeric) == UNRELATED
+    assert classify_pair(numeric, text) == UNRELATED
+
+
+def test_text_barrier_rule_shapes() -> None:
+    """One-modifier difference and subsumption shapes both hit the barrier."""
+    text = Atom("H_DISCLOSURE", frozenset({"M_TEXT_NODE"}))
+    bare = Atom("H_DISCLOSURE")
+    assert classify_pair(text, bare) == UNRELATED
+    wider_text = Atom("H_DISCLOSURE", frozenset({"M_TEXT_NODE", "M_SEGMENT"}))
+    assert wider_text.is_a(bare)
+    assert classify_pair(wider_text, bare) == UNRELATED
+
+
+def test_text_pairs_classify_by_the_ordinary_rules() -> None:
+    """Text↔text: the coordinate cancels; renamed policy notes still match."""
+    pld = _typed_atom(
+        "pld:NoncontrollingInterestsPolicyTextBlock", "dtr-types:textBlockItemType"
+    )
+    tsla = _typed_atom(
+        "tsla:NoncontrollingInterestsPolicyTextBlock", "dtr-types1:textBlockItemType"
+    )
+    assert "M_TEXT_NODE" in pld.modifiers and "M_TEXT_NODE" in tsla.modifiers
+    assert classify_pair(pld, tsla) == EXACT
+    cycle = _typed_atom("ba:OperatingCyclePolicyTextBlock", "dtr-types1:textBlockItemType")
+    structure = _typed_atom(
+        "all:CapitalStructureDisclosureTextBlock", "dtr-types:textBlockItemType"
+    )
+    assert classify_pair(cycle, structure) == NEAR
+
+
+def test_text_coordinate_never_enters_presumption() -> None:
+    """No default signature names the coordinate; presumption leaves it alone."""
+    tax = load_domain_taxonomy()
+    for entry in tax.default_coordinates:
+        assert "M_TEXT_NODE" not in entry.identity_modifiers
+        assert entry.presumed_modifier != "M_TEXT_NODE"
+    groups = tuple(tax.sibling_groups) or None
+    for entry in tax.default_coordinates:
+        text_atom = Atom(
+            entry.head, frozenset(entry.identity_modifiers) | {"M_TEXT_NODE"}
+        )
+        assert presumed_atom(text_atom, tax.default_coordinates, groups) == text_atom

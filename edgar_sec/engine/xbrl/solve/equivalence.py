@@ -55,6 +55,7 @@ SIBLING_GROUPS: tuple[SiblingGroup, ...] = (
 )
 
 _AGGREGATE_MODIFIER = "M_AGGREGATE"
+_TEXT_MODIFIER = "M_TEXT_NODE"
 
 
 def _resolve_groups(
@@ -98,6 +99,11 @@ def _aggregate_scope_widening(left: Atom, right: Atom) -> bool:
     return left.modifiers ^ right.modifiers == {_AGGREGATE_MODIFIER}
 
 
+def _text_barrier(left: Atom, right: Atom) -> bool:
+    """True when exactly one atom carries the text coordinate."""
+    return (_TEXT_MODIFIER in left.modifiers) != (_TEXT_MODIFIER in right.modifiers)
+
+
 def _classify_detail(
     left: Atom,
     right: Atom,
@@ -112,6 +118,8 @@ def _classify_detail(
         return EXACT, "equality"
     if left.head != right.head:
         return UNRELATED, ""
+    if _text_barrier(left, right):
+        return UNRELATED, "text_barrier"
     if _aggregate_scope_widening(left, right):
         return NEAR, "aggregate_widening"
     if len(left.modifiers ^ right.modifiers) == 1:
