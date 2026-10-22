@@ -1019,6 +1019,53 @@ def test_exact_resolution_carries_no_tier_metadata() -> None:
     assert result.equivalents == ()
 
 
+def _text_fact(qname: str, text: str) -> XbrlFact:
+    return XbrlFact(
+        AccessionNumber("0000950170-24-087843"),
+        qname,
+        text,
+        period_type="duration",
+        start_date="2023-07-01",
+        end_date="2024-06-30",
+    )
+
+
+def test_text_only_atom_matches_leave_a_numeric_term_unavailable() -> None:
+    """Only textblocks sit on the bare atom: no numeric candidate exists."""
+    facts = (
+        _text_fact("us-gaap:DisaggregationOfRevenueTableTextBlock", "<div>rev</div>"),
+        _text_fact("us-gaap:RevenueRecognitionPolicyTextBlock", "<div>pol</div>"),
+    )
+    result = _query_engine().execute(FinancialQuery("Revenue", _DURATION_SCOPE), facts)
+    assert result.status == QueryStatus.UNAVAILABLE
+    assert result.candidate_qnames == ()
+    assert result.value is None
+
+
+def test_text_only_candidate_does_not_crowd_a_numeric_match() -> None:
+    """A textblock sharing the atom drops out; the numeric match reports."""
+    facts = (
+        _duration_fact("us-gaap:Revenues", 100.0),
+        _text_fact("us-gaap:DisaggregationOfRevenueTableTextBlock", "<div>rev</div>"),
+    )
+    result = _query_engine().execute(FinancialQuery("Revenue", _DURATION_SCOPE), facts)
+    assert result.status == QueryStatus.REPORTED
+    assert result.candidate_qnames == ("us-gaap:Revenues",)
+    assert result.value == 100.0
+    assert result.tier == ""
+
+
+def test_literal_textblock_qname_route_is_not_guarded() -> None:
+    """An explicitly named textblock stays resolvable as a candidate."""
+    facts = (_text_fact("us-gaap:RevenueRecognitionPolicyTextBlock", "<div>pol</div>"),)
+    result = _query_engine().execute(
+        FinancialQuery("us-gaap:RevenueRecognitionPolicyTextBlock", _DURATION_SCOPE),
+        facts,
+    )
+    assert result.status == QueryStatus.UNAVAILABLE
+    assert result.candidate_qnames == ("us-gaap:RevenueRecognitionPolicyTextBlock",)
+
+
 def test_concept_query_keeps_free_text_parsing_out_of_scope() -> None:
     engine = _query_engine()
     assert engine.parse_terms("NetIncome") == ("Net", "Income")

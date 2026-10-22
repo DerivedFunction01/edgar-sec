@@ -133,10 +133,11 @@ class FinancialQueryEngine:
         if target_atom.head == "H_UNKNOWN" or residuals:
             return (), target_atom, ()
 
+        numeric = self._numeric_qnames(scoped_facts)
         atoms = {
             qname: decompose_concept(qname, lexicon)[0]
             for qname in qnames
-            if qname in available
+            if qname in available and qname in numeric
         }
         matches = {qname for qname, atom in atoms.items() if atom == target_atom}
         if matches:
@@ -156,6 +157,19 @@ class FinancialQueryEngine:
             )
         )
         return tied, target_atom, ranked
+
+    @staticmethod
+    def _numeric_qnames(scoped_facts: tuple[XbrlFact, ...]) -> set[str]:
+        """Qnames carrying at least one numeric fact in the scoped pool.
+
+        Interim substance guard: text-only concepts cannot satisfy a
+        numeric query; the Phase 1 type coordinate replaces this.
+        """
+        return {
+            fact.concept_qname
+            for fact in scoped_facts
+            if isinstance(fact.value, (int, float))
+        }
 
     @staticmethod
     def _deduplicate_context_facts(
