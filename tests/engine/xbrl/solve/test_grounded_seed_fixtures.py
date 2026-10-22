@@ -435,9 +435,11 @@ def test_bac_derivative_assets_precision_duplicate_reports_presented_value() -> 
 
     assert result.status == QueryStatus.REPORTED
     assert result.value == 40_948_000_000.0
-    lines = fixture_path(
-        "xbrl/seed/bac_2024_10k/normalized_text.txt"
-    ).read_text(encoding="utf-8").splitlines()
+    lines = (
+        fixture_path("xbrl/seed/bac_2024_10k/normalized_text.txt")
+        .read_text(encoding="utf-8")
+        .splitlines()
+    )
     assert "Derivative assets" in lines[4571]
     assert "40,948" in lines[4571]
 
@@ -481,9 +483,11 @@ def test_bac_net_income_canonical_scope_conflict_is_reported_value() -> None:
     assert result.status == QueryStatus.CONFLICT
     assert result.reported_fact is not None
     assert result.reported_fact.value == 27_132_000_000.0
-    lines = fixture_path(
-        "xbrl/seed/bac_2024_10k/normalized_text.txt"
-    ).read_text(encoding="utf-8").splitlines()
+    lines = (
+        fixture_path("xbrl/seed/bac_2024_10k/normalized_text.txt")
+        .read_text(encoding="utf-8")
+        .splitlines()
+    )
     assert "Net income" in lines[942]
     assert "27,132" in lines[942]
 
@@ -526,9 +530,11 @@ def test_msft_cash_canonical_instant_conflict_is_reported_value() -> None:
     assert result.status == QueryStatus.CONFLICT
     assert result.reported_fact is not None
     assert result.reported_fact.value == 18_315_000_000.0
-    lines = fixture_path(
-        "xbrl/seed/msft_2024_10k/normalized_text.txt"
-    ).read_text(encoding="utf-8").splitlines()
+    lines = (
+        fixture_path("xbrl/seed/msft_2024_10k/normalized_text.txt")
+        .read_text(encoding="utf-8")
+        .splitlines()
+    )
     assert "Cash and cash equivalents" in lines[1660]
     assert "18,315" in lines[1660]
 
@@ -549,8 +555,10 @@ def test_pld_cash_precision_duplicate_reports_presented_value() -> None:
 
     assert result.status == QueryStatus.REPORTED
     assert result.value == 1_318_591_000.0
-    lines = fixture_path(
-        "xbrl/seed/pld_2024_10k/normalized_text.txt"
-    ).read_text(encoding="utf-8").splitlines()
+    lines = (
+        fixture_path("xbrl/seed/pld_2024_10k/normalized_text.txt")
+        .read_text(encoding="utf-8")
+        .splitlines()
+    )
     assert "Cash and cash equivalents" in lines[2259]
     assert "1,318,591" in lines[2259]

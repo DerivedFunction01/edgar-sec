@@ -656,9 +656,7 @@ def _instant_usd_fact(qname: str, value: float, decimals: int | None) -> XbrlFac
     )
 
 
-def _reported_result(
-    facts: tuple[XbrlFact, ...], qname: str
-) -> FinancialQueryResult:
+def _reported_result(facts: tuple[XbrlFact, ...], qname: str) -> FinancialQueryResult:
     return _query_engine().execute(
         FinancialQuery(
             qname,
@@ -846,9 +844,7 @@ _DURATION_SCOPE = FactScope(
 )
 
 
-def _duration_usd_fact(
-    qname: str, value: float, unit: str = "USD"
-) -> XbrlFact:
+def _duration_usd_fact(qname: str, value: float, unit: str = "USD") -> XbrlFact:
     return XbrlFact(
         AccessionNumber("0000950170-24-087843"),
         qname,
