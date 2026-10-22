@@ -284,7 +284,9 @@
       "AccountsPayables"
     ],
     "description": "Trade/accounts payable obligations to suppliers",
-    "sibling_group": "OPERATING_LIABILITY_IDENTITY",
+    "sibling_groups": [
+      "OPERATING_LIABILITY_IDENTITY"
+    ],
     "kinds": [
       "AXIS"
     ]
@@ -297,7 +299,9 @@
       "AccruedExpenses"
     ],
     "description": "Accrued liabilities and expenses incurred but not yet paid",
-    "sibling_group": "OPERATING_LIABILITY_IDENTITY",
+    "sibling_groups": [
+      "OPERATING_LIABILITY_IDENTITY"
+    ],
     "kinds": [
       "AXIS"
     ]
@@ -1423,7 +1427,9 @@
       "AvailableForSale"
     ],
     "description": "Securities classified available-for-sale (fair value through OCI)",
-    "sibling_group": "SECURITIES_CLASSIFICATION",
+    "sibling_groups": [
+      "SECURITIES_CLASSIFICATION"
+    ],
     "kinds": [
       "AXIS"
     ]
@@ -1435,7 +1441,9 @@
       "HeldToMaturity"
     ],
     "description": "Securities classified held-to-maturity (amortized cost)",
-    "sibling_group": "SECURITIES_CLASSIFICATION",
+    "sibling_groups": [
+      "SECURITIES_CLASSIFICATION"
+    ],
     "kinds": [
       "AXIS"
     ]
@@ -1837,7 +1845,9 @@
       "Common"
     ],
     "description": "Common stock class",
-    "sibling_group": "STOCK_CLASS",
+    "sibling_groups": [
+      "STOCK_CLASS"
+    ],
     "kinds": [
       "AXIS"
     ]
@@ -1850,7 +1860,9 @@
       "Preferred"
     ],
     "description": "Preferred stock class",
-    "sibling_group": "STOCK_CLASS",
+    "sibling_groups": [
+      "STOCK_CLASS"
+    ],
     "kinds": [
       "AXIS"
     ]
@@ -1862,7 +1874,9 @@
       "Net"
     ],
     "description": "Amount presented net of a contra, allowance, or offsetting item",
-    "sibling_group": "VALUATION_PRESENTATION",
+    "sibling_groups": [
+      "VALUATION_PRESENTATION"
+    ],
     "kinds": [
       "AXIS",
       "VALUATION"
@@ -1875,7 +1889,9 @@
       "Gross"
     ],
     "description": "Amount presented gross, before any contra, allowance, or offset",
-    "sibling_group": "VALUATION_PRESENTATION",
+    "sibling_groups": [
+      "VALUATION_PRESENTATION"
+    ],
     "kinds": [
       "AXIS",
       "VALUATION"
@@ -1888,7 +1904,9 @@
       "Basic"
     ],
     "description": "Per-share amount on the basic (undiluted) share basis",
-    "sibling_group": "EPS_BASIS",
+    "sibling_groups": [
+      "EPS_BASIS"
+    ],
     "kinds": [
       "AXIS",
       "VALUATION"
@@ -1901,7 +1919,9 @@
       "Diluted"
     ],
     "description": "Per-share amount on the diluted share basis",
-    "sibling_group": "EPS_BASIS",
+    "sibling_groups": [
+      "EPS_BASIS"
+    ],
     "kinds": [
       "AXIS",
       "VALUATION"
@@ -1914,7 +1934,9 @@
       "Current"
     ],
     "description": "Current portion (due or realizable within 12 months); structural horizon tag",
-    "sibling_group": "MATURITY_HORIZON",
+    "sibling_groups": [
+      "MATURITY_HORIZON"
+    ],
     "kinds": [
       "AXIS",
       "STRUCTURAL"
@@ -1927,7 +1949,9 @@
       "Noncurrent"
     ],
     "description": "Noncurrent portion (beyond 12 months); structural horizon tag",
-    "sibling_group": "MATURITY_HORIZON",
+    "sibling_groups": [
+      "MATURITY_HORIZON"
+    ],
     "kinds": [
       "AXIS",
       "STRUCTURAL"
@@ -1957,7 +1981,9 @@
       "PreTax"
     ],
     "description": "Amount stated before (pre) the income-tax line; tax-basis coordinate",
-    "sibling_group": "TAX_BASIS",
+    "sibling_groups": [
+      "TAX_BASIS"
+    ],
     "kinds": [
       "AXIS"
     ]
@@ -1972,7 +1998,9 @@
       "AfterIncomeTaxes"
     ],
     "description": "Amount stated after (post) the income-tax line; tax-basis coordinate",
-    "sibling_group": "TAX_BASIS",
+    "sibling_groups": [
+      "TAX_BASIS"
+    ],
     "kinds": [
       "AXIS"
     ]
@@ -1984,7 +2012,9 @@
       "Including"
     ],
     "description": "Amount scope includes the component named by the accompanying modifier",
-    "sibling_group": "SCOPE_POLARITY",
+    "sibling_groups": [
+      "SCOPE_POLARITY"
+    ],
     "kinds": [
       "AXIS",
       "SCOPE"
@@ -1997,7 +2027,9 @@
       "Excluding"
     ],
     "description": "Amount scope excludes the component named by the accompanying modifier",
-    "sibling_group": "SCOPE_POLARITY",
+    "sibling_groups": [
+      "SCOPE_POLARITY"
+    ],
     "kinds": [
       "AXIS",
       "SCOPE"

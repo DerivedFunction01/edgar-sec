@@ -110,7 +110,7 @@ def validate_default_coordinates(
             raise ValueError(
                 f"default coordinate names unknown modifier {entry.presumed_modifier}"
             )
-        if defs[entry.presumed_modifier].sibling_group != entry.axis:
+        if entry.axis not in defs[entry.presumed_modifier].sibling_groups:
             raise ValueError(
                 f"presumed modifier {entry.presumed_modifier} is not in axis "
                 f"{entry.axis}"
@@ -120,7 +120,7 @@ def validate_default_coordinates(
                 raise ValueError(
                     f"default coordinate names unknown modifier {modifier_id}"
                 )
-            if defs[modifier_id].sibling_group == entry.axis:
+            if entry.axis in defs[modifier_id].sibling_groups:
                 raise ValueError(
                     f"identity modifier {modifier_id} belongs to axis {entry.axis}"
                 )

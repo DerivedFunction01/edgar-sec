@@ -242,7 +242,7 @@ def test_real_taxonomy_declares_kinds_and_consistent_groups() -> None:
         mod.modifier_id
         for group in taxonomy.sibling_groups
         for mod in taxonomy.subatomic_modifiers
-        if mod.sibling_group == group.group
+        if group.group in mod.sibling_groups
     }
     tabled = {m for group in taxonomy.sibling_groups for m in group.members}
     assert declared == tabled
@@ -250,6 +250,57 @@ def test_real_taxonomy_declares_kinds_and_consistent_groups() -> None:
     assert cardinalities["TAX_BASIS"] == "exclusive"
     assert cardinalities["SCOPE_POLARITY"] == "exclusive"
     assert cardinalities["EPS_BASIS"] == "exclusive"
+
+
+def test_csv_modifier_scalar_group_maps_to_one_tuple(tmp_path: Path) -> None:
+    """A scalar sibling_groups cell loads as a one-element membership tuple."""
+    csv_mods = tmp_path / "subatomic_modifiers.csv"
+    csv_mods.write_text(
+        "modifier_id,category,keywords,description,sibling_groups\n"
+        "M_CURRENT,MATURITY_HORIZON,Current,Current portion,MATURITY_HORIZON\n",
+        encoding="utf-8",
+    )
+    mods = load_subatomic_modifiers(csv_mods)
+    assert mods[0].sibling_groups == ("MATURITY_HORIZON",)
+
+
+def test_two_group_membership_validates_against_the_table() -> None:
+    """A def in two groups loads when the table declares both memberships."""
+    from edgar_sec.engine.xbrl.taxonomy.domain import validate_domain_taxonomy
+    from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import SiblingGroup
+
+    def _mod(mid: str, groups: tuple[str, ...]) -> SubatomicModifier:
+        return SubatomicModifier(
+            modifier_id=mid,
+            category="TEST",
+            keywords=(),
+            description=mid,
+            sibling_groups=groups,
+            kinds=("AXIS",),
+        )
+
+    mods = (
+        _mod("M_A", ("G_ONE", "G_TWO")),
+        _mod("M_B", ("G_ONE",)),
+        _mod("M_C", ("G_TWO",)),
+    )
+    groups = (
+        SiblingGroup("G_ONE", ("M_A", "M_B"), "exclusive"),
+        SiblingGroup("G_TWO", ("M_A", "M_C"), "exclusive"),
+    )
+    validate_domain_taxonomy(
+        DomainTaxonomy(prime_heads=(), subatomic_modifiers=mods, sibling_groups=groups)
+    )
+    broken = (
+        SiblingGroup("G_ONE", ("M_A", "M_B"), "exclusive"),
+        SiblingGroup("G_TWO", ("M_C",), "exclusive"),
+    )
+    with pytest.raises(ValueError):
+        validate_domain_taxonomy(
+            DomainTaxonomy(
+                prime_heads=(), subatomic_modifiers=mods, sibling_groups=broken
+            )
+        )
 
 
 def test_prime_head_record_missing_classification_is_refused(tmp_path: Path) -> None:

@@ -8,7 +8,9 @@ from edgar_sec.engine.xbrl.taxonomy.defaults import load_default_coordinates
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 
 
-def _write_defaults_taxonomy(tmp_path: Path, defaults: list[dict]) -> Path:
+def _write_defaults_taxonomy(
+    tmp_path: Path, defaults: list[dict], payable_groups: list[str] | None = None
+) -> Path:
     """Write a minimal taxonomy dir whose only variable file is the defaults."""
     heads = [
         {
@@ -30,7 +32,7 @@ def _write_defaults_taxonomy(tmp_path: Path, defaults: list[dict]) -> Path:
             "category": "MATURITY_HORIZON",
             "keywords": [],
             "description": mid,
-            "sibling_group": group,
+            "sibling_groups": [group],
         }
         for mid, group in (
             ("M_CURRENT", "MATURITY_HORIZON"),
@@ -46,6 +48,10 @@ def _write_defaults_taxonomy(tmp_path: Path, defaults: list[dict]) -> Path:
         }
         for mid in ("M_ACCOUNTS_PAYABLE", "M_REALIZED")
     ]
+    if payable_groups is not None:
+        for mod in mods:
+            if mod["modifier_id"] == "M_ACCOUNTS_PAYABLE":
+                mod["sibling_groups"] = payable_groups
     lexicon = [
         {
             "phrase": ["Accounts", "Payable"],
@@ -118,5 +124,14 @@ def test_default_coordinate_validation_rejects_bad_records(tmp_path: Path) -> No
 def test_default_coordinate_validation_accepts_valid_record(tmp_path: Path) -> None:
     """A well-formed record survives taxonomy loading unchanged."""
     folder = _write_defaults_taxonomy(tmp_path, [_default_entry()])
+    taxonomy = load_domain_taxonomy(folder)
+    assert len(taxonomy.default_coordinates) == 1
+
+
+def test_identity_declaring_a_different_axis_is_legal(tmp_path: Path) -> None:
+    """Multi-membership: an identity in another axis does not block a default."""
+    folder = _write_defaults_taxonomy(
+        tmp_path, [_default_entry()], payable_groups=["STOCK_CLASS"]
+    )
     taxonomy = load_domain_taxonomy(folder)
     assert len(taxonomy.default_coordinates) == 1

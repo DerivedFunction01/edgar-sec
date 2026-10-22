@@ -66,6 +66,16 @@ class PrimeHead:
         )
 
 
+def _string_tuple(raw: Any) -> tuple[str, ...]:
+    """Normalize a list or delimited scalar cell into a string tuple."""
+    if isinstance(raw, (list, tuple)):
+        return tuple(str(v) for v in raw)
+    if isinstance(raw, str):
+        clean = raw.replace("|", ";").replace(",", ";")
+        return tuple(v.strip() for v in clean.split(";") if v.strip())
+    return ()
+
+
 @dataclass(frozen=True, slots=True)
 class SubatomicModifier:
     """Sub-atomic domain or valuation modifier representation."""
@@ -76,7 +86,7 @@ class SubatomicModifier:
     description: str
     valuation_basis: str | None = None
     realization_state: str | None = None
-    sibling_group: str | None = None
+    sibling_groups: tuple[str, ...] = ()
     kinds: tuple[str, ...] = ()
 
     @property
@@ -86,22 +96,14 @@ class SubatomicModifier:
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> SubatomicModifier:
         """Create a SubatomicModifier from raw dictionary mapping."""
-        raw_kw = data.get("keywords", ())
-        if isinstance(raw_kw, (list, tuple)):
-            keywords = tuple(str(k) for k in raw_kw)
-        elif isinstance(raw_kw, str):
-            clean = raw_kw.replace("|", ";").replace(",", ";")
-            keywords = tuple(k.strip() for k in clean.split(";") if k.strip())
-        else:
-            keywords = ()
         return cls(
             modifier_id=str(data["modifier_id"]),
             category=str(data["category"]),
-            keywords=keywords,
+            keywords=_string_tuple(data.get("keywords", ())),
             description=str(data["description"]),
             valuation_basis=data.get("valuation_basis"),
             realization_state=data.get("realization_state"),
-            sibling_group=data.get("sibling_group"),
+            sibling_groups=_string_tuple(data.get("sibling_groups", ())),
             kinds=tuple(str(k) for k in data.get("kinds", ())),
         )
 
@@ -116,6 +118,37 @@ class SubatomicModifier:
 
 
 @dataclass(frozen=True, slots=True)
+class ScopeContext:
+    """One coordinate context a scoped sibling group's swap is confined to.
+
+    Admission is by head and the pair's shared modifiers; an exact
+    context admits only pairs whose shared set is the named set itself.
+    """
+
+    heads: tuple[str, ...] = ()
+    shared_modifiers: tuple[str, ...] = ()
+    shared_exact: bool = False
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> ScopeContext:
+        """Create a ScopeContext from raw dictionary mapping."""
+        return cls(
+            heads=tuple(str(h) for h in data.get("heads", ())),
+            shared_modifiers=tuple(str(m) for m in data.get("shared_modifiers", ())),
+            shared_exact=bool(data.get("shared_exact", False)),
+        )
+
+    def admits(self, head: str, shared: frozenset[str]) -> bool:
+        """True when a swap on this head with these shared modifiers is in scope."""
+        if self.heads and head not in self.heads:
+            return False
+        required = frozenset(self.shared_modifiers)
+        if self.shared_exact:
+            return shared == required
+        return required <= shared
+
+
+@dataclass(frozen=True, slots=True)
 class SiblingGroup:
     """A declared sibling axis: its member modifiers and value cardinality."""
 
@@ -123,6 +156,7 @@ class SiblingGroup:
     members: tuple[str, ...]
     cardinality: str
     exceptions: str = ""
+    scope: tuple[ScopeContext, ...] = ()
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> SiblingGroup:
@@ -138,7 +172,18 @@ class SiblingGroup:
             members=tuple(str(m) for m in data.get("members", ())),
             cardinality=cardinality,
             exceptions=str(data.get("exceptions", "")),
+            scope=tuple(ScopeContext.from_dict(s) for s in data.get("scope", ())),
         )
+
+    def swap_admitted(self, head: str, shared: frozenset[str]) -> bool:
+        """True when this group's scope admits a swap on these coordinates.
+
+        An unscoped group admits every coordinate; a scoped group only
+        the contexts its declaration names.
+        """
+        if not self.scope:
+            return True
+        return any(context.admits(head, shared) for context in self.scope)
 
 
 def load_prime_heads(source: Path) -> tuple[PrimeHead, ...]:

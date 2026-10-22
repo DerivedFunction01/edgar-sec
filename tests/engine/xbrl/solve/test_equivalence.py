@@ -342,20 +342,26 @@ def test_declared_sibling_groups_reproduce_default_outcomes() -> None:
 
 
 def test_sibling_group_matches_subatomic_data() -> None:
-    """The solver's sibling group mirrors the taxonomy data declaration."""
+    """Def memberships, the groups table, and the solver mirror agree."""
     import json
 
     from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
     from edgar_sec.engine.xbrl.solve.equivalence import SIBLING_GROUPS
 
-    defs = json.loads(resolve_xbrl_paths().default_subatomic_modifiers_path.read_text())
-    declared = {d["modifier_id"] for d in defs if d.get("sibling_group")}
+    paths = resolve_xbrl_paths()
+    defs = json.loads(paths.default_subatomic_modifiers_path.read_text())
+    table = json.loads(paths.default_sibling_groups_path.read_text())
+    declared = {
+        (d["modifier_id"], group) for d in defs for group in d.get("sibling_groups", ())
+    }
+    tabled = {(member, g["group"]) for g in table for member in g["members"]}
+    assert declared == tabled
     grouped = set().union(*SIBLING_GROUPS) if SIBLING_GROUPS else set()
-    assert declared == grouped
+    assert grouped == {member for member, _group in tabled}
 
 
 def test_default_coordinates_match_subatomic_data() -> None:
-    """Default entries mirror the data: axis is a declared sibling group."""
+    """Default entries mirror the data: the axis is among the def's groups."""
     import json
 
     from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
@@ -366,9 +372,9 @@ def test_default_coordinates_match_subatomic_data() -> None:
     signatures = set()
     axes = set()
     for entry in tax.default_coordinates:
-        assert by_id[entry.presumed_modifier].get("sibling_group") == entry.axis
+        assert entry.axis in by_id[entry.presumed_modifier].get("sibling_groups", [])
         group_members = {
-            d["modifier_id"] for d in defs if d.get("sibling_group") == entry.axis
+            d["modifier_id"] for d in defs if entry.axis in d.get("sibling_groups", [])
         }
         assert len(group_members) >= 2
         assert entry.signature not in signatures

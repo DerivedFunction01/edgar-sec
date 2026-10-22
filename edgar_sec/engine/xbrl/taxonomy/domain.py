@@ -376,8 +376,8 @@ def validate_domain_taxonomy(taxonomy: DomainTaxonomy) -> None:
                 raise ValueError(f"modifier {mod.modifier_id} has unknown kind {kind}")
     declared: dict[str, set[str]] = {}
     for mod in taxonomy.subatomic_modifiers:
-        if mod.sibling_group:
-            declared.setdefault(mod.sibling_group, set()).add(mod.modifier_id)
+        for group in mod.sibling_groups:
+            declared.setdefault(group, set()).add(mod.modifier_id)
     table = {g.group: set(g.members) for g in taxonomy.sibling_groups}
     if declared != table:
         raise ValueError(
