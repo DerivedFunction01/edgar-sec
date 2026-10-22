@@ -6,6 +6,11 @@ from collections.abc import Sequence
 from datetime import date
 
 from edgar_sec.apps.client.comparison import ComparisonView, compare_companies
+from edgar_sec.apps.client.composition import (
+    ChainTerms,
+    CompositionResult,
+    evaluate_chain,
+)
 from edgar_sec.apps.client.facts import XbrlFactSet
 from edgar_sec.apps.client.financials import XbrlFinancials
 from edgar_sec.apps.client.statements import XbrlStatements
@@ -19,6 +24,7 @@ from edgar_sec.engine.xbrl.schema.models import (
     LinkbaseBundle,
 )
 from edgar_sec.engine.xbrl.solve.query import (
+    DEFAULT_ALIASES,
     FinancialQuery,
     FinancialQueryEngine,
     FinancialQueryResult,
@@ -33,6 +39,7 @@ from edgar_sec.engine.xbrl.solve.statement import (
     build_statement_graph,
 )
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
+from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.engine.xbrl.taxonomy.item_types import (
     declaration_for,
@@ -108,6 +115,7 @@ class Xbrl:
             self._taxonomy,
             self._labels,
             display_records=self.facts.records,
+            composition_resolver=self._resolve_composition,
         )
 
         kb = EvidenceKnowledgeBase(self._taxonomy)
@@ -434,6 +442,102 @@ class Xbrl:
     ) -> ComparisonView:
         """Compare this filing against other filings across coordinate subspaces."""
         return compare_companies([self, *others], metrics=metrics, year=year)
+
+    def _resolve_composition(
+        self, terms: ChainTerms, fiscal_year: int | None
+    ) -> CompositionResult:
+        """Composition entry point injected into the financials delegates."""
+        return self.compose(terms, fiscal_year=fiscal_year)
+
+    def compose(
+        self,
+        terms: ChainTerms,
+        *,
+        fiscal_year: int | None = None,
+        mode: QueryMode | str = QueryMode.REPORTED_ONLY,
+    ) -> CompositionResult:
+        """Evaluate a user-composed add/subtract chain over named operands."""
+        query_mode = self._parse_query_mode(mode)
+        arcs = self._filing.linkbases.calculation_arcs if self._filing.linkbases else ()
+        return evaluate_chain(
+            lambda term: self._resolve_operand(term, query_mode, fiscal_year),
+            terms,
+            arcs,
+        )
+
+    def _resolve_operand(
+        self, term: str, mode: QueryMode, fiscal_year: int | None
+    ) -> FinancialQueryResult:
+        """Operand ladder: name/reported, tokenizer equivalence, derived.
+
+        The filing-local rung of the ladder is present and empty in
+        this phase; the global-default rung is the engine's alias
+        table, also consulted for tokenizer-equivalence targets.
+        """
+        result = self.query(term, mode=mode, fiscal_year=fiscal_year)
+        if result.value is not None or mode is not QueryMode.REPORTED_ONLY:
+            return result
+        equivalent = self._tokenizer_equivalent(term, fiscal_year)
+        if equivalent is not None:
+            return equivalent
+        derived = self.query(
+            term, mode=QueryMode.VERIFY_DERIVATION, fiscal_year=fiscal_year
+        )
+        return derived if derived.value is not None else result
+
+    def _tokenizer_equivalent(
+        self, term: str, fiscal_year: int | None
+    ) -> FinancialQueryResult | None:
+        """Resolve an example fact (or alias target) by atom equivalence."""
+        if self._taxonomy.token_lexicon is None or not self.facts.records:
+            return None
+        targets = (term,) if ":" in term else DEFAULT_ALIASES.get(term, ())
+        if not targets:
+            return None
+        tokenizer = ConceptTokenizer(self._taxonomy)
+        for target in targets:
+            atom = tokenizer.tokenize(target).atom
+            required = {m for m in atom.modifiers if not m.startswith("V_")}
+            by_year: dict[str, list] = {}
+            for fact in self.facts:
+                if fact.dimensions or not isinstance(fact.value, (int, float)):
+                    continue
+                if fact.unit in ("pure", "shares", "item", "ratio"):
+                    continue
+                record = self.facts.records.get(fact.concept_qname)
+                if record is None or record.atom.head != atom.head:
+                    continue
+                if not required.issubset(record.atom.modifiers):
+                    continue
+                date = (
+                    fact.instant_date
+                    if fact.period_type == "instant"
+                    else fact.end_date
+                )
+                if date and len(date[:4]) == 4 and date[:4].isdigit():
+                    by_year.setdefault(date[:4], []).append((fact, record))
+            if not by_year:
+                continue
+            year = str(fiscal_year) if fiscal_year is not None else max(by_year)
+            pool = by_year.get(year)
+            if not pool:
+                continue
+            fact, record = max(pool, key=lambda pair: abs(float(pair[0].value)))
+            exact = record.atom.head == atom.head and set(record.atom.modifiers) == set(
+                atom.modifiers
+            )
+            return FinancialQueryResult(
+                query=FinancialQuery(
+                    term=term,
+                    scope=FactScope(accession=self._scope_accession()),
+                ),
+                status=QueryStatus.REPORTED if exact else QueryStatus.DERIVED,
+                candidate_qnames=(fact.concept_qname,),
+                candidate_facts=(fact,),
+                target_atom=atom,
+                reported_fact=fact,
+            )
+        return None
 
     def __repr__(self) -> str:
         return f"<Xbrl accession={self._filing.accession} facts={len(self.facts)}>"

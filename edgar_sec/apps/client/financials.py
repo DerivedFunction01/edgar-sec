@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from collections.abc import Mapping, Sequence
+from collections.abc import Callable, Mapping, Sequence
 
+from edgar_sec.apps.client.composition import ChainTerms, CompositionResult
 from edgar_sec.apps.client.facts import DisplayRecord, build_display_records
 from edgar_sec.apps.client.topics import (
     build_debt_structure,
@@ -26,6 +27,8 @@ class XbrlFinancials:
         labels: Mapping[str, str] | None = None,
         *,
         display_records: Mapping[str, DisplayRecord] | None = None,
+        composition_resolver: Callable[[ChainTerms, int | None], CompositionResult]
+        | None = None,
     ) -> None:
         self._facts = tuple(facts)
         self._arcs = tuple(calculation_arcs)
@@ -36,6 +39,7 @@ class XbrlFinancials:
             if display_records is not None
             else build_display_records(self._facts, self._taxonomy)
         )
+        self._composition_resolver = composition_resolver
         self._composer = StatementComposer(
             self._facts, self._arcs, self._taxonomy, self._labels
         )
@@ -303,7 +307,18 @@ class XbrlFinancials:
 
     @property
     def free_cash_flow(self) -> float | None:
-        """Free cash flow derived algebraically from operating cash flow minus capex."""
+        """Free cash flow as the composed chain cfo - capex (Step 7 preset)."""
+        if self._composition_resolver is not None:
+            series = self.operating_cash_flow_series
+            fiscal_year = int(max(series)) if series else None
+            result = self._composition_resolver(
+                (
+                    ("+", "cfo"),
+                    ("-", "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"),
+                ),
+                fiscal_year,
+            )
+            return result.value
         cfo = self.operating_cash_flow
         cx = self.capex
         if cfo is not None and cx is not None:

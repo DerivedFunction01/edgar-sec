@@ -115,6 +115,15 @@ class ComparisonView:
         return f"<ComparisonView entities={list(self.cohort_data.keys())} metrics={len(self.metric_labels)}>"
 
 
+def _entity_name(comp: Any, taken: int) -> str:
+    """Cohort key for a company: ticker, name, accession prefix, ordinal."""
+    entity_name = getattr(comp, "ticker", None) or getattr(comp, "company_name", None)
+    if not entity_name:
+        acc = str(getattr(comp, "accession", ""))
+        entity_name = acc[:10] if acc else f"Firm_{taken + 1}"
+    return entity_name
+
+
 def _resolve_metric(
     fin: Any, spec: SubspaceMetric, year: int | str | None
 ) -> float | None:
@@ -151,12 +160,7 @@ def compare_companies(
     standard = {m.key: m for m in DEFAULT_METRICS}
     cohort_data: dict[str, dict[str, float | None]] = {}
     for comp in companies:
-        entity_name = getattr(comp, "ticker", None) or getattr(
-            comp, "company_name", None
-        )
-        if not entity_name:
-            acc = str(getattr(comp, "accession", ""))
-            entity_name = acc[:10] if acc else f"Firm_{len(cohort_data) + 1}"
+        entity_name = _entity_name(comp, len(cohort_data))
 
         fin = comp.financials
         c_data: dict[str, float | None] = {}
@@ -178,3 +182,19 @@ def compare_companies(
     display_labels.extend((key, label) for key, label, _n, _d in DERIVED_MARGINS)
 
     return ComparisonView(cohort_data, display_labels)
+
+
+def compare_compositions(
+    companies: Sequence[Any],
+    terms: Sequence[tuple[str, str]],
+    *,
+    fiscal_year: int | None = None,
+    label: str = "Composition",
+) -> ComparisonView:
+    """Cohort form of Xbrl.compose: one composed value per company."""
+    cohort_data: dict[str, dict[str, float | None]] = {}
+    for comp in companies:
+        entity_name = _entity_name(comp, len(cohort_data))
+        result = comp.compose(terms, fiscal_year=fiscal_year)
+        cohort_data[entity_name] = {"composition": result.value}
+    return ComparisonView(cohort_data, [("composition", label)])
