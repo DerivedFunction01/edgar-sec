@@ -5509,22 +5509,6 @@
   },
   {
     "phrase": [
-      "Repayment",
-      "Of",
-      "Interest",
-      "Bearing",
-      "Deposits",
-      "In",
-      "Banks"
-    ],
-    "role": "HEAD",
-    "atom": "H_CASH",
-    "mods": [
-      "M_INTEREST"
-    ]
-  },
-  {
-    "phrase": [
       "Reinsurance",
       "Recoverables"
     ],
@@ -5640,6 +5624,16 @@
     ],
     "role": "HEAD",
     "atom": "H_SHARE"
+  },
+  {
+    "phrase": [
+      "Beneficial",
+      "Interest"
+    ],
+    "role": "SCOPED_MODIFIER",
+    "followed_by_any": [
+      "Of"
+    ]
   },
   {
     "phrase": [
@@ -5865,33 +5859,6 @@
   },
   {
     "phrase": [
-      "Gains",
-      "Losses",
-      "On",
-      "Loans",
-      "Held",
-      "For",
-      "Sale"
-    ],
-    "role": "HEAD",
-    "atom": "H_INCOME",
-    "mods": [
-      "M_PURPOSE_SALE"
-    ]
-  },
-  {
-    "phrase": [
-      "Beneficial",
-      "Interest",
-      "Of",
-      "Outstanding",
-      "Shares"
-    ],
-    "role": "HEAD",
-    "atom": "H_SHARE"
-  },
-  {
-    "phrase": [
       "Percentage",
       "Of",
       "Occupancy"
@@ -5901,17 +5868,6 @@
     "mods": [
       "M_PERCENT"
     ]
-  },
-  {
-    "phrase": [
-      "Conversion",
-      "Of",
-      "Stock",
-      "Conversion",
-      "Rate"
-    ],
-    "role": "HEAD",
-    "atom": "H_UNIT_RATE"
   },
   {
     "phrase": [
@@ -6061,21 +6017,6 @@
     "atom": "H_CASH",
     "mods": [
       "M_PENSION_DEFINED_BENEFIT"
-    ]
-  },
-  {
-    "phrase": [
-      "Payments",
-      "To",
-      "Invest",
-      "In",
-      "Decommissioning",
-      "Fund"
-    ],
-    "role": "HEAD",
-    "atom": "H_CASH",
-    "mods": [
-      "M_ARO_DECOMMISSIONING"
     ]
   },
   {
@@ -7009,63 +6950,6 @@
   },
   {
     "phrase": [
-      "Maximum",
-      "Percentage",
-      "Of",
-      "Beneficial",
-      "Interest"
-    ],
-    "role": "HEAD",
-    "atom": "H_UNIT_RATE",
-    "mods": [
-      "M_PERCENT"
-    ]
-  },
-  {
-    "phrase": [
-      "Nuclear",
-      "Fuel",
-      "And",
-      "Other",
-      "Amortization"
-    ],
-    "role": "HEAD",
-    "atom": "H_EXPENSE",
-    "mods": [
-      "M_DEPR_AMORT"
-    ]
-  },
-  {
-    "phrase": [
-      "Accident",
-      "And",
-      "Health",
-      "Insurance",
-      "Contract",
-      "Benefits"
-    ],
-    "role": "HEAD",
-    "atom": "H_EXPENSE",
-    "mods": [
-      "M_INSURANCE_PREMIUM"
-    ]
-  },
-  {
-    "phrase": [
-      "Area",
-      "Of",
-      "Real",
-      "Estate",
-      "Property"
-    ],
-    "role": "HEAD",
-    "atom": "H_UNIT_RATE",
-    "mods": [
-      "M_REAL_ESTATE"
-    ]
-  },
-  {
-    "phrase": [
       "Property",
       "Plant",
       "And",
@@ -7078,5 +6962,95 @@
       "M_PPE_CAPEX",
       "M_DISPOSAL_GROUP"
     ]
+  },
+  {
+    "phrase": [
+      "Repayment"
+    ],
+    "role": "HEAD",
+    "atom": "H_CASH",
+    "direction": -1.0,
+    "followed_by_any": [
+      "Of"
+    ]
+  },
+  {
+    "phrase": [
+      "Maximum",
+      "Percentage"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "mods": [
+      "M_PERCENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Conversion",
+      "Rate"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE"
+  },
+  {
+    "phrase": [
+      "Conversion",
+      "Rate"
+    ],
+    "role": "MODIFIER",
+    "followed_by_any": [
+      "Adjustment"
+    ]
+  },
+  {
+    "phrase": [
+      "Invest",
+      "In",
+      "Decommissioning",
+      "Fund"
+    ],
+    "role": "SCOPED_MODIFIER",
+    "atom": "M_ARO_DECOMMISSIONING"
+  },
+  {
+    "phrase": [
+      "Insurance",
+      "Contract",
+      "Benefits"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_INSURANCE_PREMIUM"
+    ]
+  },
+  {
+    "phrase": [
+      "Area"
+    ],
+    "role": "HEAD",
+    "atom": "H_UNIT_RATE",
+    "followed_by_any": [
+      "Of"
+    ]
+  },
+  {
+    "phrase": [
+      "Other",
+      "Amortization"
+    ],
+    "role": "HEAD",
+    "atom": "H_EXPENSE",
+    "mods": [
+      "M_DEPR_AMORT"
+    ]
+  },
+  {
+    "phrase": [
+      "Losses",
+      "On"
+    ],
+    "role": "SUBORDINATOR"
   }
 ]

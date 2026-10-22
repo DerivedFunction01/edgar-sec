@@ -266,6 +266,30 @@ def test_explicit_horizon_swap_is_never_default_mediated() -> None:
     assert ranked[0].tier == NEAR and ranked[0].via_default is False
 
 
+def test_anticipated_noncurrent_payable_is_exact_and_default_proof() -> None:
+    """The unattested LiabilitiesLongTerm name: exact kin, default-proof."""
+    defaults = _defaults()
+    anticipated = _atom("us-gaap:AccountsPayableLiabilitiesLongTerm")
+    assert (
+        classify_pair(anticipated, _atom("us-gaap:AccountsPayableNoncurrent")) == EXACT
+    )
+    assert classify_pair(anticipated, _atom("us-gaap:AccountsPayableLongTerm")) == EXACT
+    assert presumed_atom(anticipated, defaults) == anticipated
+    bare = _atom("us-gaap:AccountsPayable")
+    assert classify_pair(anticipated, bare) == NEAR
+    ranked = rank_equivalents(
+        "us-gaap:AccountsPayableLiabilitiesLongTerm",
+        anticipated,
+        (
+            ("firm-a:AccountsPayable", bare),
+            ("firm-b:AccountsPayableCurrent", _atom("firm-b:AccountsPayableCurrent")),
+        ),
+        defaults,
+    )
+    assert [item.tier for item in ranked] == [NEAR, NEAR]
+    assert not any(item.via_default for item in ranked)
+
+
 def test_identity_without_default_stays_equidistant() -> None:
     """Bare debt has no default: both horizon portions rank at distance one."""
     defaults = _defaults()

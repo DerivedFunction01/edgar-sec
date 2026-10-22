@@ -312,6 +312,220 @@ def test_fused_longterm_spelling_keeps_the_stated_override() -> None:
     assert fused.modifiers == frozenset({"M_ACCOUNTS_PAYABLE", "M_NONCURRENT"})
 
 
+def test_anticipated_liabilities_infix_variants_share_attested_atoms() -> None:
+    """Unattested Liabilities-infix payable names land on attested atoms."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    infix, res, _, _ = decompose_concept(
+        "us-gaap:AccountsPayableLiabilitiesLongTerm", tax.token_lexicon
+    )
+    assert res == ()
+    for attested in (
+        "us-gaap:AccountsPayableNoncurrent",
+        "us-gaap:AccountsPayableLongTerm",
+        "us-gaap:AccountsPayableLiabilitiesLongterm",
+    ):
+        atom, attested_res, _, _ = decompose_concept(attested, tax.token_lexicon)
+        assert atom == infix and attested_res == ()
+    current, _, _, _ = decompose_concept(
+        "us-gaap:AccountsPayableLiabilitiesCurrent", tax.token_lexicon
+    )
+    plain_current, _, _, _ = decompose_concept(
+        "us-gaap:AccountsPayableCurrent", tax.token_lexicon
+    )
+    assert current == plain_current
+    bare_infix, _, _, _ = decompose_concept(
+        "us-gaap:AccountsPayableLiabilities", tax.token_lexicon
+    )
+    bare, _, _, _ = decompose_concept("us-gaap:AccountsPayable", tax.token_lexicon)
+    assert bare_infix == bare
+
+
+def test_leading_long_term_on_payable_liabilities_is_tenor_not_horizon() -> None:
+    """A leading Long Term is tenor (D8/B2): it states no horizon bucket."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    atom, res, _, _ = decompose_concept(
+        "us-gaap:LongTermAccountsPayableLiabilities", tax.token_lexicon
+    )
+    assert res == ()
+    assert "M_MATURITY" in atom.modifiers
+    assert "M_NONCURRENT" not in atom.modifiers
+    assert "M_CURRENT" not in atom.modifiers
+
+
+def test_repayment_of_deposits_decomposes_from_pieces() -> None:
+    """Repayment + Of + the deposit phrase compose the cash-flow atom."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    atom, res, _, _ = decompose_concept(
+        "jpm:RepaymentOfInterestBearingDepositsInBanks", tax.token_lexicon
+    )
+    assert res == ()
+    assert atom.head == "H_CASH"
+    assert atom.modifiers == frozenset({"M_INTEREST"})
+    reordered, _, _, _ = decompose_concept(
+        "x:RepaymentOfDepositsInBanksInterestBearing", tax.token_lexicon
+    )
+    assert reordered == atom
+
+
+def test_beneficial_interest_share_datum_decomposes_from_pieces() -> None:
+    """Scoped Beneficial Interest + Shares compose the share datum."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    atom, _, _, _ = decompose_concept(
+        "pld:BeneficialInterestOfOutstandingSharesBySinglePersonOrPersonsActingAsGroup",
+        tax.token_lexicon,
+    )
+    assert atom.head == "H_SHARE"
+    assert atom.modifiers == frozenset()
+    reordered, _, _, _ = decompose_concept(
+        "pld:BeneficialInterestOfOutstandingSharesByPersonsActingAsGroupOrSinglePerson",
+        tax.token_lexicon,
+    )
+    assert reordered == atom
+
+
+def test_maximum_percentage_of_beneficial_interest_decomposes() -> None:
+    """Maximum Percentage claims the rate head over the scoped subject."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    atom, res, _, _ = decompose_concept(
+        "pld:MaximumPercentageOfBeneficialInterestOfOutstandingShares",
+        tax.token_lexicon,
+    )
+    assert res == ("Outstanding",)
+    assert atom.head == "H_UNIT_RATE"
+    assert atom.modifiers == frozenset({"M_PERCENT"})
+
+
+def test_stock_conversion_rate_decomposes_from_pieces() -> None:
+    """Conversion Of Stock + Conversion Rate compose the rate datum."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    atom, res, _, _ = decompose_concept(
+        "jpm:ConversionOfStockConversionRate", tax.token_lexicon
+    )
+    assert res == ()
+    assert atom.head == "H_UNIT_RATE"
+    assert atom.modifiers == frozenset()
+    reordered, _, _, _ = decompose_concept("x:ConversionRateOfStock", tax.token_lexicon)
+    assert reordered == atom
+
+
+def test_conversion_rate_adjustment_amounts_keep_their_heads() -> None:
+    """A Conversion Rate Adjustment names an amount, not the rate."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    adjustment, _, _, _ = decompose_concept(
+        "bmy:BusinessCombinationConsiderationTransferredConversionRateAdjustment",
+        tax.token_lexicon,
+    )
+    assert adjustment.head == "H_CASH"
+
+
+def test_decommissioning_fund_payments_decompose_from_pieces() -> None:
+    """Payments To + the scoped ARO-purpose clause compose the atom."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    atom, res, _, _ = decompose_concept(
+        "us-gaap:PaymentsToInvestInDecommissioningFund", tax.token_lexicon
+    )
+    assert res == ()
+    assert atom.head == "H_CASH"
+    assert atom.modifiers == frozenset({"M_ARO_DECOMMISSIONING"})
+    fronted, _, _, _ = decompose_concept(
+        "x:InvestInDecommissioningFundPaymentsTo", tax.token_lexicon
+    )
+    assert fronted == atom
+
+
+def test_insurance_contract_benefits_decompose_from_pieces() -> None:
+    """The insurance-benefits head composes under the NET_OF tail."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    atom, _, _, _ = decompose_concept(
+        "all:AccidentAndHealthInsuranceContractBenefitsNetOfReinsuranceRecoveries",
+        tax.token_lexicon,
+    )
+    assert atom.head == "H_EXPENSE"
+    assert atom.modifiers == frozenset({"M_INSURANCE_PREMIUM", "V_NET"})
+    swapped, _, _, _ = decompose_concept(
+        "x:HealthAndAccidentInsuranceContractBenefitsNetOfReinsuranceRecoveries",
+        tax.token_lexicon,
+    )
+    assert swapped == atom
+
+
+def test_area_of_real_estate_property_decomposes_from_pieces() -> None:
+    """Area before Of claims the measure head; Real Estate the domain."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    atom, _, _, _ = decompose_concept(
+        "us-gaap:AreaOfRealEstateProperty", tax.token_lexicon
+    )
+    assert atom.head == "H_UNIT_RATE"
+    assert atom.modifiers == frozenset({"M_REAL_ESTATE"})
+    reordered, _, _, _ = decompose_concept(
+        "x:PropertyAreaOfRealEstate", tax.token_lexicon
+    )
+    assert reordered == atom
+
+
+def test_area_head_claim_is_scoped_to_of_phrasings() -> None:
+    """A bare Area token without Of stays unclaimed (no head capture)."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    code, _, _, _ = decompose_concept("dei:CityAreaCode", tax.token_lexicon)
+    assert code.head == "H_UNKNOWN"
+
+
+def test_nuclear_fuel_amortization_decomposes_from_pieces() -> None:
+    """Other Amortization claims the expense head over the subject."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    atom, _, _, _ = decompose_concept(
+        "nee:NuclearFuelAndOtherAmortization", tax.token_lexicon
+    )
+    assert atom.head == "H_EXPENSE"
+    assert atom.modifiers == frozenset({"M_DEPR_AMORT"})
+    fronted, _, _, _ = decompose_concept(
+        "x:OtherAmortizationAndNuclearFuel", tax.token_lexicon
+    )
+    assert fronted == atom
+
+
+def test_gains_losses_on_loans_held_for_sale_decomposes() -> None:
+    """Gains + Losses On boundary + the loan phrase compose the atom."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    atom, res, _, _ = decompose_concept(
+        "bac:GainsLossesOnLoansHeldForSale", tax.token_lexicon
+    )
+    assert res == ()
+    assert atom.head == "H_INCOME"
+    assert atom.modifiers == frozenset({"M_FINANCING_RECEIVABLE", "M_PURPOSE_SALE"})
+    fronted, _, _, _ = decompose_concept(
+        "x:OnLoansHeldForSaleGainsLosses", tax.token_lexicon
+    )
+    assert fronted == atom
+
+
+def test_repayment_head_claim_is_scoped_to_of_captions() -> None:
+    """Schedule nouns named Repayment keep their balance-sheet heads."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    installments, _, _, _ = decompose_concept(
+        "alb:DebtInstrumentRepaymentInstallments", tax.token_lexicon
+    )
+    assert installments.head == "H_LIABILITY"
+    early, _, _, _ = decompose_concept(
+        "us-gaap:EarlyRepaymentOfSeniorDebt", tax.token_lexicon
+    )
+    assert early.head == "H_CASH"
+
+
 def test_due_windows_derive_bucket_horizons() -> None:
     """Due-in and due-within windows derive the bucket horizon arithmetically."""
     tax = load_domain_taxonomy()
