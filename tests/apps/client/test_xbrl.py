@@ -460,13 +460,20 @@ def test_xbrl_query_msft_revenue_fiscal_year_ignores_rpo_instants() -> None:
         assert result.value is None
 
 
-def test_xbrl_query_nvda_revenue_verify_ignores_rpo_percentage() -> None:
-    """Verify NVDA loose revenue VERIFY is the annual AMBIGUOUS, not the RPO percentage."""
+def test_xbrl_query_nvda_revenue_verify_surfaces_annual_conflict() -> None:
+    """Verify NVDA revenue VERIFY surfaces the annual tier's CONFLICT (G-pin).
+
+    The RPO percentage never answers; the derivation does not reconcile.
+    """
     xbrl = _create_xbrl_facade("nvda")
 
     result = xbrl.query("revenue", mode=QueryMode.VERIFY_DERIVATION, fiscal_year=2024)
-    assert result.status == QueryStatus.AMBIGUOUS
-    assert result.value == 60922000000.0
+    assert result.status == QueryStatus.CONFLICT
+    assert result.reported_fact is not None
+    assert result.reported_fact.value == 60922000000.0
+    assert result.aggregate is not None
+    assert result.aggregate.value == 44301000000.0
+    assert result.value == 44301000000.0
 
 
 def test_xbrl_query_aapl_assets_verify_resolves_at_fye_instant() -> None:
@@ -505,8 +512,11 @@ def test_xbrl_query_aapl_derivative_liabilities_stays_ambiguous() -> None:
     assert len(result.equivalents) == 7
 
 
-def test_xbrl_query_gis_cash_verify_carries_fye_ambiguity() -> None:
-    """Verify GIS Cash VERIFY returns the FYE AMBIGUOUS carrying the reported value."""
+def test_xbrl_query_gis_cash_verify_surfaces_fye_conflict() -> None:
+    """Verify GIS Cash VERIFY surfaces the FYE tier's CONFLICT (G-pin).
+
+    The unitless scope's AMBIGUOUS no longer shadows the USD derivation.
+    """
     xbrl = _create_xbrl_facade("gis")
 
     result = xbrl.query(
@@ -514,8 +524,12 @@ def test_xbrl_query_gis_cash_verify_carries_fye_ambiguity() -> None:
         mode=QueryMode.VERIFY_DERIVATION,
         fiscal_year=2024,
     )
-    assert result.status == QueryStatus.AMBIGUOUS
-    assert result.value == 418000000.0
+    assert result.status == QueryStatus.CONFLICT
+    assert result.reported_fact is not None
+    assert result.reported_fact.value == 418000000.0
+    assert result.aggregate is not None
+    assert result.aggregate.value == -6979900000.0
+    assert result.value == -6979900000.0
 
 
 def test_xbrl_query_gis_gross_profit_fiscal_year_unavailable() -> None:
@@ -553,3 +567,138 @@ def test_xbrl_query_msft_eps_diluted_resolves_at_annual_scope() -> None:
     result = xbrl.query("us-gaap:EarningsPerShareDiluted", fiscal_year=2024)
     assert result.status == QueryStatus.REPORTED
     assert result.value == annual.value == 11.8
+
+
+def _canned_result(status: QueryStatus, scope: FactScope) -> FinancialQueryResult:
+    return FinancialQueryResult(FinancialQuery("term", scope), status)
+
+
+@pytest.mark.parametrize(
+    ("first_status", "second_status", "winner"),
+    [
+        (QueryStatus.CONFLICT, QueryStatus.VERIFIED, QueryStatus.VERIFIED),
+        (QueryStatus.VERIFIED, QueryStatus.CONFLICT, QueryStatus.VERIFIED),
+        (QueryStatus.CONFLICT, QueryStatus.REPORTED, QueryStatus.REPORTED),
+        (QueryStatus.REPORTED, QueryStatus.CONFLICT, QueryStatus.REPORTED),
+        (QueryStatus.DERIVED, QueryStatus.CONFLICT, QueryStatus.CONFLICT),
+        (QueryStatus.CONFLICT, QueryStatus.DERIVED, QueryStatus.CONFLICT),
+        (QueryStatus.AMBIGUOUS, QueryStatus.DERIVED, QueryStatus.DERIVED),
+        (QueryStatus.DERIVED, QueryStatus.AMBIGUOUS, QueryStatus.DERIVED),
+        (QueryStatus.AMBIGUOUS, QueryStatus.CONFLICT, QueryStatus.CONFLICT),
+        (QueryStatus.CONFLICT, QueryStatus.AMBIGUOUS, QueryStatus.CONFLICT),
+        (QueryStatus.UNAVAILABLE, QueryStatus.AMBIGUOUS, QueryStatus.AMBIGUOUS),
+        (QueryStatus.AMBIGUOUS, QueryStatus.UNAVAILABLE, QueryStatus.AMBIGUOUS),
+    ],
+)
+def test_tier_outcome_split_precedence_orders_statuses(
+    monkeypatch: pytest.MonkeyPatch,
+    first_status: QueryStatus,
+    second_status: QueryStatus,
+    winner: QueryStatus,
+) -> None:
+    """Verify the split precedence picks the higher status in either scope order."""
+    xbrl = _create_synthetic_xbrl(
+        (_synthetic_fact("us-gaap:Assets", 1.0, instant="2023-12-31"),)
+    )
+    scopes = (
+        FactScope(accession=_SYNTHETIC_ACCESSION, instant_date="2023-12-31"),
+        FactScope(
+            accession=_SYNTHETIC_ACCESSION, instant_date="2023-12-31", unit="USD"
+        ),
+    )
+    canned = {None: first_status, "USD": second_status}
+    monkeypatch.setattr(
+        xbrl,
+        "_execute_query",
+        lambda term, mode, scope, arcs: _canned_result(canned[scope.unit], scope),
+    )
+
+    outcome, _, _ = xbrl._tier_outcome("term", QueryMode.REPORTED_ONLY, scopes, ())
+    assert outcome is not None
+    assert outcome.status == winner
+
+
+def test_tier_outcome_all_unavailable_returns_first(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Verify a silent tier returns its first scope's result, not a later one."""
+    xbrl = _create_synthetic_xbrl(
+        (_synthetic_fact("us-gaap:Assets", 1.0, instant="2023-12-31"),)
+    )
+    scopes = (
+        FactScope(accession=_SYNTHETIC_ACCESSION, instant_date="2023-12-31"),
+        FactScope(
+            accession=_SYNTHETIC_ACCESSION, instant_date="2023-12-31", unit="USD"
+        ),
+    )
+    canned = [_canned_result(QueryStatus.UNAVAILABLE, scope) for scope in scopes]
+    by_unit = {scope.unit: result for scope, result in zip(scopes, canned)}
+    monkeypatch.setattr(
+        xbrl,
+        "_execute_query",
+        lambda term, mode, scope, arcs: by_unit[scope.unit],
+    )
+
+    outcome, first, _ = xbrl._tier_outcome("term", QueryMode.REPORTED_ONLY, scopes, ())
+    assert outcome is canned[0]
+    assert first is canned[0]
+
+
+def test_xbrl_query_bac_net_income_verify_surfaces_usd_conflict() -> None:
+    """Verify BAC Net Income VERIFY surfaces the USD CONFLICT over the AMBIGUOUS (G-pin)."""
+    xbrl = _create_xbrl_facade("bac")
+
+    result = xbrl.query(
+        "us-gaap:NetIncomeLoss", mode=QueryMode.VERIFY_DERIVATION, fiscal_year=2024
+    )
+    assert result.status == QueryStatus.CONFLICT
+    assert result.reported_fact is not None
+    assert result.reported_fact.value == 27132000000.0
+    assert result.aggregate is not None
+    assert result.aggregate.value == 146607000000.0
+
+
+def test_xbrl_query_gis_revenue_exact_carries_asc606_neighbour() -> None:
+    """Verify GIS loose revenue is REPORTED exact with the ASC-606 neighbour visible (Q-B)."""
+    xbrl = _create_xbrl_facade("gis")
+
+    result = xbrl.query("revenue", fiscal_year=2024)
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == 2037800000.0
+    assert result.candidate_qnames == ("us-gaap:Revenues",)
+    assert result.tier == "exact"
+    by_qname = {item.qname: item for item in result.equivalents}
+    assert by_qname["us-gaap:Revenues"].rule == "equality"
+    neighbour = by_qname["us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"]
+    assert neighbour.tier == "near"
+    assert neighbour.rule == "subsumption"
+    assert neighbour.direction == "specialization"
+
+
+def test_xbrl_query_msft_revenue_rank_alone_never_promotes() -> None:
+    """Verify MSFT revenue stays AMBIGUOUS: the dist-1 rollforward is not REPORTED (Q3(a))."""
+    xbrl = _create_xbrl_facade("msft")
+
+    for mode in (QueryMode.REPORTED_ONLY, QueryMode.VERIFY_DERIVATION):
+        result = xbrl.query("revenue", mode=mode, fiscal_year=2024)
+        assert result.status == QueryStatus.AMBIGUOUS
+        assert result.value is None
+        assert result.tier == "near"
+        best = result.equivalents[0]
+        assert best.qname == "msft:ContractWithCustomerLiabilityRevenueDeferred"
+        assert best.rule == "single_modifier_difference"
+        assert best.direction == "specialization"
+
+
+def test_xbrl_query_jnj_revenue_guard_promotion_surfaces_at_near_tier() -> None:
+    """Verify JNJ revenue's guard promotion returns the headline, marked NEAR tier."""
+    xbrl = _create_xbrl_facade("jnj")
+
+    result = xbrl.query("revenue", fiscal_year=2024)
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == 88821000000.0
+    assert result.candidate_qnames == (
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+    )
+    assert result.tier == "near"
+    assert result.equivalents[0].direction == "specialization"

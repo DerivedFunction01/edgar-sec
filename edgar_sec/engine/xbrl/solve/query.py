@@ -157,7 +157,15 @@ class FinancialQueryEngine:
                     ),
                 )
             )
-            return ordered, target_atom, (), ordered[0] if len(ordered) == 1 else None
+            ranked = ConceptTokenizer(self.taxonomy).equivalents(
+                target_atom, tuple(sorted(atoms.items()))
+            )
+            return (
+                ordered,
+                target_atom,
+                ranked,
+                ordered[0] if len(ordered) == 1 else None,
+            )
         ranked = ConceptTokenizer(self.taxonomy).equivalents(
             target_atom, tuple(sorted(atoms.items()))
         )

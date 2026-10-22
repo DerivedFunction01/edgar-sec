@@ -37,6 +37,14 @@ _STANDARD_LABEL_ROLE = "http://www.xbrl.org/2003/role/label"
 _SUCCESS_STATUSES = frozenset(
     {QueryStatus.REPORTED, QueryStatus.DERIVED, QueryStatus.VERIFIED}
 )
+_PRECEDENCE_RANK = {
+    QueryStatus.VERIFIED: 0,
+    QueryStatus.REPORTED: 1,
+    QueryStatus.CONFLICT: 2,
+    QueryStatus.DERIVED: 3,
+    QueryStatus.AMBIGUOUS: 4,
+    QueryStatus.UNAVAILABLE: 5,
+}
 
 
 def _labels_by_concept(labels: Sequence[ConceptLabel]) -> dict[str, str]:
@@ -254,20 +262,23 @@ class Xbrl:
         FinancialQueryResult | None,
         tuple[FinancialQueryResult, ...],
     ]:
-        """First success in the tier, else its first non-UNAVAILABLE, else its first."""
+        """Best outcome in the tier under the split precedence; ties keep scope order.
+
+        VERIFIED > REPORTED > CONFLICT > DERIVED > AMBIGUOUS > UNAVAILABLE.
+        """
         first: FinancialQueryResult | None = None
-        fallback: FinancialQueryResult | None = None
+        outcome: FinancialQueryResult | None = None
         results: list[FinancialQueryResult] = []
         for scope in scopes:
             result = self._execute_query(term, mode, scope, arcs)
             if first is None:
                 first = result
             results.append(result)
-            if result.status in _SUCCESS_STATUSES:
-                return result, first, tuple(results)
-            if fallback is None and result.status != QueryStatus.UNAVAILABLE:
-                fallback = result
-        return (fallback if fallback is not None else first), first, tuple(results)
+            if outcome is None or (
+                _PRECEDENCE_RANK[result.status] < _PRECEDENCE_RANK[outcome.status]
+            ):
+                outcome = result
+        return outcome, first, tuple(results)
 
     def _tier_is_duration_opinion(
         self, results: tuple[FinancialQueryResult, ...]

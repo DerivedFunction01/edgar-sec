@@ -1150,16 +1150,41 @@ def test_residual_bearing_term_gets_no_fallback() -> None:
     assert result.equivalents == ()
 
 
-def test_exact_resolution_carries_no_tier_metadata() -> None:
-    """The equality route is unchanged: tier and equivalents stay empty."""
+def test_exact_resolution_carries_equivalents() -> None:
+    """Q-B: an exact resolution surfaces its ranked neighbourhood, tiered exact."""
     facts = (_duration_fact("us-gaap:NetIncomeLoss", 42.0),)
     result = _query_engine().execute(
         FinancialQuery("NetIncomeLoss", _DURATION_SCOPE), facts
     )
     assert result.status == QueryStatus.REPORTED
     assert result.value == 42.0
-    assert result.tier == ""
-    assert result.equivalents == ()
+    assert result.tier == "exact"
+    assert len(result.equivalents) == 1
+    assert result.equivalents[0].qname == "us-gaap:NetIncomeLoss"
+    assert result.equivalents[0].tier == "exact"
+    assert result.equivalents[0].rule == "equality"
+    assert result.equivalents[0].direction == ""
+
+
+def test_exact_resolution_surfaces_near_neighbourhood() -> None:
+    """Q-B: the ASC-606 neighbour rides beside the exact Revenues answer."""
+    facts = (
+        _duration_fact("us-gaap:Revenues", 100.0),
+        _duration_fact(
+            "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", 100.0
+        ),
+    )
+    result = _query_engine().execute(FinancialQuery("Revenue", _DURATION_SCOPE), facts)
+    assert result.status == QueryStatus.REPORTED
+    assert result.candidate_qnames == ("us-gaap:Revenues",)
+    assert result.value == 100.0
+    assert result.tier == "exact"
+    by_qname = {item.qname: item for item in result.equivalents}
+    assert by_qname["us-gaap:Revenues"].tier == "exact"
+    neighbour = by_qname["us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"]
+    assert neighbour.tier == "near"
+    assert neighbour.rule == "subsumption"
+    assert neighbour.direction == "specialization"
 
 
 def _text_fact(qname: str, text: str) -> XbrlFact:
@@ -1195,7 +1220,8 @@ def test_text_only_candidate_does_not_crowd_a_numeric_match() -> None:
     assert result.status == QueryStatus.REPORTED
     assert result.candidate_qnames == ("us-gaap:Revenues",)
     assert result.value == 100.0
-    assert result.tier == ""
+    assert result.tier == "exact"
+    assert [item.qname for item in result.equivalents] == ["us-gaap:Revenues"]
 
 
 def test_literal_textblock_qname_route_is_not_guarded() -> None:
@@ -1224,8 +1250,14 @@ def test_exact_pool_presents_the_headline_before_residual_heavy_names() -> None:
     result = _query_engine().execute(FinancialQuery("DerivativeAssets", scope), facts)
     assert result.status == QueryStatus.AMBIGUOUS
     assert result.candidate_qnames == ("us-gaap:DerivativeAssets", xva)
-    assert result.tier == ""
-    assert result.equivalents == ()
+    assert result.tier == "exact"
+    assert {item.qname for item in result.equivalents} == {
+        "us-gaap:DerivativeAssets",
+        xva,
+    }
+    assert all(
+        item.tier == "exact" and item.rule == "equality" for item in result.equivalents
+    )
 
 
 def test_concept_query_keeps_free_text_parsing_out_of_scope() -> None:
