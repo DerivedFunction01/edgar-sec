@@ -11,10 +11,14 @@ from edgar_sec.domain.forms.families.ownership.models import (
 from edgar_sec.engine.forms.common.dates import reported_year
 from edgar_sec.engine.forms.common.entities import (
     BARE_BOX_NUM_RE,
+    PAREN_BOX_NUM_RE,
     RELATIONSHIP_TO_ISSUER_RE,
 )
 from edgar_sec.engine.forms.common.extraction import FieldSpec, normalize_value
 from edgar_sec.engine.forms.common.marks import canonicalize_filled_marks
+from edgar_sec.engine.forms.common.columnar_signatures import (
+    extract_columnar_signature_and_date,
+)
 from edgar_sec.engine.forms.common.signatures import (
     SIG_BOILERPLATE_TERMS,
     extract_clean_signatory_name,
@@ -35,7 +39,7 @@ from edgar_sec.engine.forms.ownership.reporting_owner_parser import (
 )
 from edgar_sec.engine.forms.ownership.relationship_box import parse_relationship_box
 from edgar_sec.engine.forms.ownership.sections import ClassifiedSection
-from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE, RE_FULL_DATE
+from edgar_sec.foundation.text.dates import MONTH_RE, NUMERIC_DATE_RE, RE_FULL_DATE
 
 _METADATA_TABLE_MARKERS = ("table i", "table ii", "non-derivative")
 _OWNER_TEMPLATE_FIELDS = frozenset(
@@ -52,6 +56,7 @@ _OWNER_LABEL_MARKERS = (
     "statement for",
     "4. statement",
 )
+_PERIOD_LABEL_LINE_TERMS = ("date of event", "requiring statement")
 _ISSUER_LOOKAHEAD_EXCLUSIONS = (
     "statement for",
     "relationship",
@@ -153,6 +158,8 @@ def parse_metadata(
     boxes_section: ClassifiedSection | None,
     signatures_section: ClassifiedSection | None,
     reference_year: int | None = None,
+    fallback_sections: tuple[ClassifiedSection, ...] = (),
+    text_lines: tuple[str, ...] = (),
 ) -> OwnershipMetadata:
     if boxes_section is None:
         return OwnershipMetadata(
@@ -186,7 +193,7 @@ def parse_metadata(
     role_lines: list[str] = []
     role_seen: set[str] = set()
     issuer_cell = ""
-    period_cell = ""
+    period_candidates: list[tuple[int, str]] = []
 
     for row_index, (row, lowered_row) in enumerate(
         zip(rows, lowered_rows, strict=True)
@@ -203,10 +210,18 @@ def parse_metadata(
             canonical_cell = canonicalize_filled_marks(cell)
             canonical_lower = canonical_cell.lower()
             if cell_index < 2:
-                value = cell.strip()
+                value = "\n".join(
+                    line
+                    for line in cell.strip().splitlines()
+                    if not any(
+                        term in line.lower() for term in _PERIOD_LABEL_LINE_TERMS
+                    )
+                ).strip()
                 if (
                     not any(term in lower for term in _OWNER_LABEL_MARKERS)
                     and not is_instruction_row(value)
+                    and BARE_BOX_NUM_RE.match(value) is None
+                    and PAREN_BOX_NUM_RE.match(value) is None
                     and STATUTORY_PAGE_ARTIFACT_RE.search(value) is None
                     and HEADER_LEAK_RE.search(value) is None
                     and value
@@ -215,7 +230,10 @@ def parse_metadata(
                     owner_seen.add(value)
                     owner_lines.append(value)
 
-            if "issuer name" in lower and not issuer_cell:
+            if (
+                "issuer name" in lower
+                or ("trading symbol" in lower and "name:" in lower)
+            ) and not issuer_cell:
                 candidate = cell
                 right = next(
                     (value.strip() for value in row[cell_index + 1 :] if value.strip()),
@@ -257,7 +275,18 @@ def parse_metadata(
                 or ("4." in lower and "month" in lower)
                 or "date of event" in lower
                 or "requiring statement" in lower
-            ) and not period_cell:
+                or "date of original" in lower
+                or "if amendment" in lower
+            ):
+                priority = (
+                    0
+                    if (
+                        "statement for" in lower
+                        or "date of event" in lower
+                        or "requiring statement" in lower
+                    )
+                    else 1
+                )
                 candidate = cell
                 right = next(
                     (value.strip() for value in row[cell_index + 1 :] if value.strip()),
@@ -266,7 +295,11 @@ def parse_metadata(
                 if (
                     right
                     and not BARE_BOX_NUM_RE.match(right)
-                    and any(char.isdigit() for char in right)
+                    and (
+                        NUMERIC_DATE_RE.search(right)
+                        or RE_FULL_DATE.search(right)
+                        or (MONTH_RE.search(right) and any(c.isdigit() for c in right))
+                    )
                     and not any(
                         marker in right.lower()
                         for marker in _PERIOD_LOOKAHEAD_EXCLUSIONS
@@ -307,7 +340,7 @@ def parse_metadata(
                         ):
                             candidate = f"{cell}\n{below}"
                             break
-                period_cell = candidate
+                period_candidates.append((priority, candidate))
 
             if (
                 "relationship" in lower
@@ -323,6 +356,14 @@ def parse_metadata(
                     role_seen.add(role_text)
                     role_lines.append(role_text)
 
+    period_cell = ""
+    if period_candidates:
+        period_cell = period_candidates[0][1]
+        for _priority, cand in sorted(period_candidates, key=lambda pc: pc[0]):
+            parsed_cand = parse_period(cand)
+            if parsed_cand.period_of_report or parsed_cand.date_of_original:
+                period_cell = cand
+                break
     if not period_cell and period_template_fields.get("month/day"):
         period_date = period_template_fields["month/day"]
         year = period_template_fields.get("year")
@@ -393,6 +434,48 @@ def parse_metadata(
                 )
             if not signature_date:
                 signature_date = candidate_date
+
+        if not (signature_name and signature_date):
+            grid_name, grid_date = scan_signature_grid(grid.rows)
+            if not signature_name and grid_name:
+                signature_name = grid_name
+            if not signature_date and grid_date:
+                signature_date = grid_date
+
+    if not (signature_name and signature_date):
+        for fallback in fallback_sections:
+            grid_name, grid_date = scan_signature_grid(
+                fallback.resolved_grid.rows, strict_dates=True
+            )
+            if not signature_name and grid_name:
+                signature_name = grid_name
+            if not signature_date and grid_date:
+                signature_date = grid_date
+            if signature_name and signature_date:
+                break
+
+    if not (signature_name and signature_date) and text_lines:
+        start = max(0, int(len(text_lines) * 0.4))
+        date_before_text = signature_date
+        col_name, col_date = extract_columnar_signature_and_date(
+            list(text_lines), start_idx=start, reference_year=reference_year
+        )
+        if not signature_name and col_name:
+            signature_name = col_name
+        if not signature_date and col_date:
+            signature_date = col_date
+        if not (signature_name and signature_date):
+            cand_name, cand_date = extract_signature_candidate(
+                "\n".join(text_lines[start:])
+            )
+            if not signature_name and cand_name:
+                signature_name = extract_clean_signatory_name(cand_name) or (
+                    cand_name if is_valid_signature_name(cand_name) else None
+                )
+            if not signature_date and cand_date and signature_name:
+                signature_date = cand_date
+        if not signature_name:
+            signature_date = date_before_text
 
     year = reference_year
     if year is None:

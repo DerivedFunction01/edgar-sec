@@ -207,3 +207,43 @@ def test_parse_date_extended_formats() -> None:
     assert parse_date("20260922").iso == "2026-09-22"
     assert parse_date("June 2001").iso == "2001-06-01"
     assert parse_date("November, 2000").iso == "2000-11-01"
+
+
+def test_parse_date_numeric_month_year() -> None:
+    from edgar_sec.foundation.text.dates import parse_date
+
+    parsed = parse_date("02/2003")
+    assert parsed is not None
+    assert parsed.iso == "2003-02-01"
+    assert "month_year" in parsed.format_id
+    assert parse_date("6-2000").iso == "2000-06-01"
+    parsed_2d = parse_date("02/03", reference_year=2003)
+    assert parsed_2d is not None
+    assert parsed_2d.iso == "2003-02-01"
+    assert parse_date("13/2003") is None
+
+
+def test_parse_date_numeric_month_year_does_not_shadow_full_dates() -> None:
+    from edgar_sec.foundation.text.dates import parse_date
+
+    assert parse_date("02/19/2003").iso == "2003-02-19"
+    assert parse_date("02-19-2003").iso == "2003-02-19"
+
+
+def test_parse_date_day_month_dash_2digit() -> None:
+    from edgar_sec.foundation.text.dates import parse_date
+
+    parsed = parse_date("28-1-03", reference_year=2003)
+    assert parsed is not None
+    assert parsed.iso == "2003-01-28"
+    # US month-first reading keeps priority where both readings are valid.
+    assert parse_date("05-07-99", reference_year=1999).iso == "1999-05-07"
+
+
+def test_month_year_slash_format_parses() -> None:
+    from edgar_sec.foundation.text.dates import parse_date
+
+    parsed = parse_date("FEBRUARY/2003")
+    assert parsed is not None
+    assert parsed.iso == "2003-02-01"
+    assert "month_year" in parsed.format_id

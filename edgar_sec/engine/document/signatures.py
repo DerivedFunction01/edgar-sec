@@ -40,6 +40,7 @@ _TERMINATION_ALT = build_alternation(
         r"\s+[_=]{3,}",
         r"[_=]{3,}",
         r"\s+\d{1,2}[-/]",
+        r"\s+\d{1,2},",
         r"\s+\d{4}",
         r"$",
     ],

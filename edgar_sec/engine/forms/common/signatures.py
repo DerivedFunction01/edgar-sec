@@ -22,6 +22,9 @@ from edgar_sec.engine.document.signatures import (
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.automaton import tokenize
 from edgar_sec.foundation.text.dates import (
+    ISO_DATE_RE,
+    MONTH_NAME_RE,
+    MONTH_PATTERN,
     MONTH_RE,
     NUMERIC_DATE_RE,
     RE_FULL_DATE,
@@ -133,7 +136,14 @@ SIG_DELEGATED_SPLIT_RE = re.compile(rf"(?i)\b(?:{SIG_DELEGATED_NAME_SUFFIX_ALT})
 SIG_BY_PREFIX_RE = re.compile(r"(?i)^(?:by\s*:?\s*)+")
 SIG_TRAILING_PAREN_NUM_RE = re.compile(r"\s*\(\d+\)$")
 SIG_CONFORMED_PREFIX_RE = re.compile(rf"(?i)^(?:{CONFORMED_SIGNATURE_ALT})\s*")
-SIG_LEADING_RULE_RE = re.compile(r"^[\*_= \-\t]+")
+SIG_LEADING_RULE_RE = re.compile(r"^[\*_= \-\t_]+")
+SIG_RULE_RUN_RE = re.compile(r"[_=]+")
+_TRAILING_DATE_WORD_RE = re.compile(r"\s+date\s*$", flags=re.IGNORECASE)
+_TRAILING_OFFICER_WORD_RE = re.compile(r"\s+officers?$", flags=re.IGNORECASE)
+_TRAILING_MONTH_WORD_RE = re.compile(
+    rf"\s+(?:{MONTH_PATTERN})\s*$", flags=re.IGNORECASE
+)
+REVERSED_CONFORMED_CELL_RE = re.compile(r"^\s*(?:\*\s*)?s/\s*[A-Za-z]")
 SIG_DELEGATED_NAME_RE = re.compile(
     r"(?:^|\n)\s*([A-Za-z][A-Za-z.,’‘\-']*(?:\s+[A-Za-z][A-Za-z.,’‘\-']*){1,5}?)"
     rf"\s*,?\s+(?:{SIG_DELEGATED_NAME_SUFFIX_ALT})\b",
@@ -212,10 +222,22 @@ def is_valid_signature_name(cand: str) -> bool:
         return False
     if any(term in lower for term in SIG_BOILERPLATE_TERMS):
         return False
+    if MONTH_NAME_RE.fullmatch(cand.strip(" .,")):
+        return False
+    if lower.rstrip(" .") in (
+        "attorney-in-fact",
+        "attorney in fact",
+        "attorney-in-fact for",
+        "attorney in fact for",
+    ):
+        return False
     words = cand.split()
     if not (1 <= len(words) <= 6):
         return False
     return len(words) > 1 or len(cand) >= 4
+
+
+_NAME_INITIAL_END_RE = re.compile(r"(?:^|\s)[A-Z]\.$")
 
 
 def clean_signature_name(raw_text: str) -> str:
@@ -226,7 +248,10 @@ def clean_signature_name(raw_text: str) -> str:
     cleaned = PREFIX_STRIP_RE.sub("", cleaned.strip())
     cleaned = SIG_TRAILING_PAREN_NUM_RE.sub("", cleaned.strip())
     cleaned = WHITESPACE_RE.sub(" ", cleaned).strip()
-    return cleaned.strip(" ,.-/")
+    cleaned = cleaned.strip(" ,-/")
+    if cleaned.endswith(".") and not _NAME_INITIAL_END_RE.search(cleaned):
+        cleaned = cleaned[:-1].strip(" ,-/")
+    return cleaned
 
 
 def parse_conformed_signature(text: str) -> tuple[str, bool]:
@@ -248,15 +273,87 @@ def resolve_delegated_signer(
     return cleaned, DelegationKind.DIRECT, None
 
 
+_SURNAME_FIRST_RE = re.compile(
+    r"(?i)(?:/\s*s\s*/|(?<![a-z])s/)\s*(?:by\s*:?\s*)?"
+    r"([A-Z][A-Za-z\-']+,\s*[A-Z][A-Za-z\.\-']+(?:\s+[A-Z]\.)?)"
+)
+_LABEL_NEXT_LINE_RE = re.compile(
+    r"(?im)^\s*\*{0,2}\s*signature of reporting person\s*\n\s*([^\n]{2,60}?)\s*$"
+)
+
+
 def extract_signature_candidate(sig_text: str) -> tuple[str | None, str | None]:
     """Extract signature name and signature date from cleaned signature block text."""
     sig_name: str | None = None
     sig_date: str | None = None
-    m_date = RE_FULL_DATE.search(sig_text) or NUMERIC_DATE_RE.search(sig_text)
-    if m_date:
-        sig_date = m_date.group(0).strip()
     lower = sig_text.lower()
     has_sig_rep_person = "signature of reporting person" in lower
+    lines = sig_text.splitlines()
+
+    def _first_date(text: str) -> str | None:
+        unruled = SIG_RULE_RUN_RE.sub(" ", text)
+        found = (
+            RE_FULL_DATE.search(unruled)
+            or NUMERIC_DATE_RE.search(unruled)
+            or ISO_DATE_RE.search(unruled)
+        )
+        return found.group(0).strip() if found else None
+
+    for line in lines:
+        if CONFORMED_SIGNATURE_RE.search(line) or (
+            "date" in line.lower() and len(line) < 60 and "as of" not in line.lower()
+        ):
+            sig_date = _first_date(line)
+            if sig_date:
+                break
+    label_idx: int | None = None
+    if has_sig_rep_person:
+        label_idx = max(
+            i
+            for i, line in enumerate(lines)
+            if "signature of reporting person" in line.lower()
+        )
+    if not sig_date:
+        for index, line in enumerate(lines[:-1]):
+            if label_idx is not None and not label_idx - 15 <= index <= label_idx + 9:
+                continue
+            if label_idx is None and index < len(lines) - 25:
+                continue
+            if not CONFORMED_SIGNATURE_RE.search(line) or _first_date(line):
+                continue
+            following = lines[index + 1]
+            paired = _first_date(following)
+            if not paired or CONFORMED_SIGNATURE_RE.search(following):
+                continue
+            rest = SIG_RULE_RUN_RE.sub(" ", following.replace(paired, " ")).strip(
+                " ,.-\t"
+            )
+            if len(rest) <= 48 and not any(char.isdigit() for char in rest):
+                sig_date = paired
+                break
+    if not sig_date and label_idx is not None:
+        for line in lines[label_idx : label_idx + 9]:
+            if "as of" in line.lower():
+                continue
+            sig_date = _first_date(line)
+            if sig_date:
+                break
+        if not sig_date:
+            for back in range(max(0, label_idx - 2), label_idx):
+                found = _first_date(lines[back])
+                if not found:
+                    continue
+                rest = lines[back].replace(found, " ").strip(" ,.-\t")
+                if not rest or extract_clean_signatory_name(rest):
+                    sig_date = found
+                    break
+    if not sig_date and not has_sig_rep_person:
+        for line in lines:
+            if "as of" in line.lower():
+                continue
+            sig_date = _first_date(line)
+            if sig_date:
+                break
     for pattern in SIGNATURE_NAME_PATTERNS:
         if (
             pattern is SIG_PERSON_PREFIX_RE or pattern is SIG_NAME_RE
@@ -265,9 +362,36 @@ def extract_signature_candidate(sig_text: str) -> tuple[str | None, str | None]:
         match = pattern.search(sig_text)
         if match:
             candidate = match.group(1).strip(" ,.-")
+            candidate = _TRAILING_MONTH_WORD_RE.sub("", candidate).strip(" ,.-")
+            candidate = WHITESPACE_RE.sub(" ", candidate)
             if is_valid_signature_name(candidate):
                 sig_name = candidate
                 break
+    if sig_name is None or len(sig_name.split()) == 1:
+        m_sf = _SURNAME_FIRST_RE.search(sig_text)
+        if m_sf:
+            cand_sf = m_sf.group(1).strip(" ,-")
+            if is_valid_signature_name(cand_sf) and (
+                sig_name is None or cand_sf.startswith(sig_name)
+            ):
+                sig_name = cand_sf
+    if not sig_name and has_sig_rep_person:
+        m_lbl = _LABEL_NEXT_LINE_RE.search(sig_text)
+        if m_lbl:
+            sig_name = extract_clean_signatory_name(m_lbl.group(1))
+    if not sig_name and has_sig_rep_person:
+        label_line = max(
+            i
+            for i, line in enumerate(lines)
+            if "signature of reporting person" in line.lower()
+        )
+        for back in range(max(0, label_line - 3), label_line):
+            prev = _TRAILING_DATE_WORD_RE.sub("", lines[back]).strip()
+            if prev and SIG_RULE_RUN_RE.sub("", prev).strip():
+                cleaned_prev = extract_clean_signatory_name(prev)
+                if cleaned_prev:
+                    sig_name = cleaned_prev
+                    break
     return sig_name, sig_date
 
 
@@ -402,11 +526,19 @@ SIG_LABEL_TERMS = (
 )
 SIG_LABEL_ALT = build_alternation(SIG_LABEL_TERMS, auto_escape=False)
 SIG_LABEL_RE = re.compile(rf"(?i){SIG_LABEL_ALT}")
-TITLE_CASE_WORD_RE = re.compile(r"^[A-Z][a-zA-Z’‘'\.\-]*$")
-ALL_CAPS_WORD_RE = re.compile(r"^[A-Z][A-Z\.\-]*$")
+TITLE_CASE_WORD_RE = re.compile(r"^[A-ZÀ-ÖØ-Þ][a-zA-ZÀ-ÖØ-öø-ÿ’‘'\.\-]*$")
+ALL_CAPS_WORD_RE = re.compile(r"^[A-ZÀ-ÖØ-Þ][A-ZÀ-ÖØ-Þ\.\-]*$")
 SIG_TRAILING_PAREN_RE = re.compile(r"\s*\([^\)]+\)$")
 SIG_SEGMENT_SPLIT_RE = re.compile(r"\s+(?:&|and)\s+")
 SIG_NAME_TRIM_CHARS = " ,.-*()_\u2013\u2014/"
+SIG_NAME_TRIM_CHARS_NO_DOT = " ,-*()_\u2013\u2014/"
+
+
+def _comma_delimited(text: str, head_word: str) -> bool:
+    pos = text.find(head_word)
+    if pos < 0:
+        return False
+    return text[pos + len(head_word) :].lstrip(" \t").startswith(",")
 
 
 def extract_clean_signatory_name(raw_text: str) -> str | None:
@@ -419,6 +551,13 @@ def extract_clean_signatory_name(raw_text: str) -> str | None:
         cleaned_segs = [extract_clean_signatory_name(seg) for seg in segments]
         if all(seg is not None for seg in cleaned_segs):
             return " & ".join(cleaned_segs)
+        if (
+            cleaned_segs
+            and cleaned_segs[0] is not None
+            and all(seg is None for seg in cleaned_segs[1:])
+        ):
+            return cleaned_segs[0]
+    s = SIG_LEADING_RULE_RE.sub("", s.strip())
     s = SIG_BY_PREFIX_RE.sub("", s.strip())
     s = SIG_CONFORMED_PREFIX_RE.sub("", s.strip())
     s = SIG_LEADING_RULE_RE.sub("", s.strip())
@@ -442,10 +581,28 @@ def extract_clean_signatory_name(raw_text: str) -> str | None:
         "iv",
         "v",
     ):
-        cand = f"{cand}, {parts[1].strip(SIG_NAME_TRIM_CHARS)}"
-    cand = SIG_TRAILING_PAREN_NUM_RE.sub("", cand).strip(SIG_NAME_TRIM_CHARS)
-    cand = NUMERIC_DATE_RE.sub("", cand).strip(SIG_NAME_TRIM_CHARS)
-    cand = RE_FULL_DATE.sub("", cand).strip(SIG_NAME_TRIM_CHARS)
+        cand = f"{cand}, {parts[1].strip(SIG_NAME_TRIM_CHARS_NO_DOT)}"
+    elif len(parts) > 1 and len(cand.split()) == 1 and _comma_delimited(s, cand):
+        rest = parts[1].strip(SIG_NAME_TRIM_CHARS_NO_DOT)
+        rest_words = rest.split()
+        if (
+            1 <= len(rest_words) <= 3
+            and all(
+                TITLE_CASE_WORD_RE.match(w) or ALL_CAPS_WORD_RE.match(w)
+                for w in rest_words
+            )
+            and not any(
+                w.lower().strip(".,()'-*\u2013\u2014/")
+                in DISALLOWED_SIGNATURE_NAME_WORDS
+                for w in rest_words
+            )
+            and not OFFICER_TITLE_RE.search(rest)
+            and not SIGNATORY_ROLE_RE.search(rest)
+        ):
+            cand = f"{cand}, {rest}"
+    cand = SIG_TRAILING_PAREN_NUM_RE.sub("", cand).strip(SIG_NAME_TRIM_CHARS_NO_DOT)
+    cand = NUMERIC_DATE_RE.sub("", cand).strip(SIG_NAME_TRIM_CHARS_NO_DOT)
+    cand = RE_FULL_DATE.sub("", cand).strip(SIG_NAME_TRIM_CHARS_NO_DOT)
     words = cand.split()
     if not (2 <= len(words) <= 6):
         return None
@@ -454,140 +611,89 @@ def extract_clean_signatory_name(raw_text: str) -> str | None:
         return None
     if any(MONTH_RE.fullmatch(w) for w in lower_words):
         return None
+    title_probe = _TRAILING_OFFICER_WORD_RE.sub("", cand)
+    if OFFICER_TITLE_RE.fullmatch(title_probe) or SIGNATORY_ROLE_RE.fullmatch(
+        title_probe
+    ):
+        return None
     is_title_or_caps = all(
-        TITLE_CASE_WORD_RE.match(w) or ALL_CAPS_WORD_RE.match(w) for w in words
+        TITLE_CASE_WORD_RE.match(w.strip(",")) or ALL_CAPS_WORD_RE.match(w.strip(","))
+        for w in words
     )
     return cand if is_title_or_caps else None
 
 
+def _name_from_cell(cell: str) -> str | None:
+    cand = extract_clean_signatory_name(cell)
+    if cand is None and "\n" in cell:
+        cand = extract_clean_signatory_name(" ".join(cell.split()))
+    if cand is None:
+        matches = list(CONFORMED_SIGNATURE_RE.finditer(cell))
+        if matches:
+            cand = extract_clean_signatory_name(cell[matches[-1].start() :])
+    return cand
+
+
 def scan_signature_grid(
     rows: tuple[tuple[str, ...], ...] | list[tuple[str, ...]],
+    *,
+    strict_dates: bool = False,
 ) -> tuple[str | None, str | None]:
     """Scan 2D grid rows to extract clean signatory name and date."""
     sig_name: str | None = None
     sig_date: str | None = None
     for r_idx, row in enumerate(rows):
         r_str = " ".join(row).lower()
-        if not sig_name and any(
+        row_is_signature = any(
             marker in r_str for marker in ("signature", "/s/", "-s-")
-        ):
+        ) or any(REVERSED_CONFORMED_CELL_RE.match(cell) for cell in row)
+        if not sig_name and row_is_signature:
             for cell in row:
-                cand = extract_clean_signatory_name(cell)
+                cand = _name_from_cell(cell)
                 if cand:
                     sig_name = cand
                     break
             if not sig_name and r_idx + 1 < len(rows):
                 for cell in rows[r_idx + 1]:
-                    cand = extract_clean_signatory_name(cell)
+                    cand = _name_from_cell(cell)
                     if cand:
                         sig_name = cand
                         break
             if not sig_name and r_idx > 0:
                 for cell in rows[r_idx - 1]:
-                    cand = extract_clean_signatory_name(cell)
+                    cand = _name_from_cell(cell)
                     if cand:
                         sig_name = cand
                         break
 
-        if not sig_date and any(marker in r_str for marker in ("date", "notice")):
+        date_marker = any(marker in r_str for marker in ("date", "notice"))
+        if not sig_date and (row_is_signature or (date_marker and not strict_dates)):
             for cell in row:
-                m_date = RE_FULL_DATE.search(cell) or NUMERIC_DATE_RE.search(cell)
+                if not date_marker and len(cell.strip()) > 40:
+                    continue
+                m_date = (
+                    RE_FULL_DATE.search(cell)
+                    or NUMERIC_DATE_RE.search(cell)
+                    or ISO_DATE_RE.search(cell)
+                )
                 if m_date and "as of" not in cell.lower():
                     sig_date = m_date.group(0).strip()
                     break
+            if not sig_date and row_is_signature:
+                for cell in row:
+                    if "/s/" not in cell.lower() and "-s-" not in cell.lower():
+                        continue
+                    unruled = SIG_RULE_RUN_RE.sub(" ", cell)
+                    m_date = (
+                        RE_FULL_DATE.search(unruled)
+                        or NUMERIC_DATE_RE.search(unruled)
+                        or ISO_DATE_RE.search(unruled)
+                    )
+                    if m_date and "as of" not in cell.lower():
+                        sig_date = m_date.group(0).strip()
+                        break
         if sig_name and sig_date:
             break
-    return sig_name, sig_date
-
-
-_SIGNATURE_LINE_RE = re.compile(
-    r"(?:/s/|signature:)\s*(?:/s/\s*)?([A-Za-z\.\,\s\-]+)", re.IGNORECASE
-)
-_STRIP_SLASH_S_RE = re.compile(r"^.*?/s/\s*")
-_WHITESPACE_SPLIT_RE = re.compile(r"\t+|\s{2,}")
-
-
-def extract_columnar_signature_and_date(
-    lines: Sequence[str],
-    *,
-    start_idx: int = 0,
-    reference_year: int | None = None,
-) -> tuple[str | None, str | None]:
-    """Scan trailing lines backward for conformed signature and notice date."""
-    from edgar_sec.engine.forms.common.tables import (
-        is_horizontal_rule_line,
-        strip_markup_tags,
-    )
-    from edgar_sec.foundation.text.dates import parse_date
-
-    sig_name: str | None = None
-    sig_date: str | None = None
-    total_lines = len(lines)
-
-    for idx in range(total_lines - 1, start_idx - 1, -1):
-        line = strip_markup_tags(lines[idx])
-        if not line or is_horizontal_rule_line(line):
-            continue
-        lower = line.lower()
-        if (
-            "intentional misstatements" in lower
-            or "criminal violations" in lower
-            or "sec 1147" in lower
-        ):
-            continue
-
-        if not sig_name and ("/s/" in line or "signature:" in lower):
-            m = _SIGNATURE_LINE_RE.search(line)
-            if m:
-                cand = extract_clean_signatory_name(m.group(1))
-                if cand:
-                    sig_name = cand
-
-        if not sig_name and ("(signature)" in lower or lower == "signature"):
-            for d in range(1, 5):
-                if idx - d >= 0:
-                    above_l = strip_markup_tags(lines[idx - d])
-                    if (
-                        above_l
-                        and not is_horizontal_rule_line(above_l)
-                        and not above_l.lower().startswith("date")
-                    ):
-                        cols = [
-                            c.strip()
-                            for c in _WHITESPACE_SPLIT_RE.split(above_l)
-                            if c.strip()
-                        ]
-                        for c in reversed(cols):
-                            clean_c = _STRIP_SLASH_S_RE.sub("", c) if "/s/" in c else c
-                            cand = extract_clean_signatory_name(clean_c)
-                            if cand and not any(
-                                k in cand.lower()
-                                for k in ("attention:", "signature", "notice", "date")
-                            ):
-                                sig_name = cand
-                                break
-                        if sig_name:
-                            if not sig_date and len(cols) > 1:
-                                parsed = parse_date(
-                                    cols[0], reference_year=reference_year
-                                )
-                                if parsed:
-                                    sig_date = parsed.display
-                            break
-
-        if not sig_date and ("date of notice" in lower or lower.startswith("date:")):
-            p_d = parse_date(line, reference_year=reference_year)
-            if p_d and "as of" not in lower:
-                sig_date = p_d.display
-            else:
-                for d in (-2, -1, 1, 2):
-                    if 0 <= idx + d < total_lines:
-                        adj_l = strip_markup_tags(lines[idx + d])
-                        p_adj = parse_date(adj_l, reference_year=reference_year)
-                        if p_adj and "as of" not in adj_l.lower():
-                            sig_date = p_adj.display
-                            break
-
     return sig_name, sig_date
 
 
@@ -621,7 +727,6 @@ __all__ = [
     "WHITESPACE_RE",
     "clean_signature_name",
     "extract_clean_signatory_name",
-    "extract_columnar_signature_and_date",
     "extract_signature_block",
     "extract_signature_candidate",
     "is_signature_table",

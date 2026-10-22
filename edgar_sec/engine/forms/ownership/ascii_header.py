@@ -8,9 +8,11 @@ from edgar_sec.domain.forms.common.checkmarks import (
     CANONICAL_UNCHECKED,
 )
 from edgar_sec.engine.forms.common.marks import canonicalize_filled_marks
+from edgar_sec.engine.forms.common.columnar_signatures import (
+    extract_columnar_signature_and_date,
+)
 from edgar_sec.engine.forms.common.signatures import (
     extract_clean_signatory_name,
-    extract_columnar_signature_and_date,
     extract_signature_candidate,
 )
 from edgar_sec.engine.forms.ownership.sections import (
@@ -61,7 +63,7 @@ _ITEM_HEADER_SPECS = (
     ("filing", re.compile(r"(?:7\.\s+)?individual or joint", re.IGNORECASE)),
 )
 _DATE_LABEL_RE = re.compile(
-    r"\bDATE\b\s*\n\s*([0-9]{1,2}[/-][0-9]{1,2}[/-][0-9]{2,4})", re.IGNORECASE
+    r"\bDATE\b[ \t]*\n?[ \t]*([0-9]{1,2}[/-][0-9]{1,2}[/-][0-9]{2,4})", re.IGNORECASE
 )
 _RE_FILL_BLANK = re.compile(r"_{2,}")
 

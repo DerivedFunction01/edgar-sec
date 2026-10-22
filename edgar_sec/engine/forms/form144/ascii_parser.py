@@ -10,7 +10,7 @@ from edgar_sec.engine.forms.common.entities import (
     normalize_exchange_name,
 )
 from edgar_sec.engine.forms.common.numbers import format_scaled_number_string
-from edgar_sec.engine.forms.common.signatures import (
+from edgar_sec.engine.forms.common.columnar_signatures import (
     extract_columnar_signature_and_date,
 )
 from edgar_sec.engine.forms.common.tables import (

@@ -40,6 +40,7 @@ _FORM_MASTHEAD_RE = re.compile(r"(?i)^f\s*o\s*r\s*m\s*[345]\b")
 _TRAILING_FOOTNOTE_NUM_RE = re.compile(r"(?<=[a-zA-Z\.])\d{1,2}$")
 _STARTS_DIGITS_RE = re.compile(r"^\d+\b")
 _WHITESPACE_COLLAPSE_RE = re.compile(r"\s+")
+_NAME_THEN_ADDRESS_RE = re.compile(r"^name:\s*(.+?)\s+address\s*:", re.IGNORECASE)
 _ROLE_TARGETS = (
     ("director", "director"),
     ("officer", "officer"),
@@ -128,6 +129,13 @@ def parse_reporting_owner(
         lower = line.lower()
         if irs_number is None and (irs_match := IRS_RE.search(line)):
             irs_number = irs_match.group(1)
+            continue
+        if not name and (name_addr := _NAME_THEN_ADDRESS_RE.match(line)):
+            candidate = _WHITESPACE_COLLAPSE_RE.sub(" ", name_addr.group(1)).strip(
+                ", \n\r*:\xa0"
+            )
+            if candidate and not is_ownership_boilerplate(candidate):
+                name = candidate
             continue
         if (
             not name

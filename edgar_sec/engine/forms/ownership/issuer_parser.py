@@ -15,10 +15,23 @@ from edgar_sec.engine.forms.common.entities import (
 )
 
 _TRAILING_AND_OR_RE = re.compile(r"\s+(?:and|or)\s*$", flags=re.IGNORECASE)
+_NAME_SYMBOL_LINE_RE = re.compile(
+    r"name:\s*(.+?)\s+trading symbol:?\s*([A-Za-z0-9][A-Za-z0-9.\-]*)",
+    flags=re.IGNORECASE,
+)
 
 
 def parse_issuer(cell_text: str) -> Issuer:
     lines = [line.strip() for line in cell_text.splitlines() if line.strip()]
+    for line in lines:
+        combined = _NAME_SYMBOL_LINE_RE.search(line)
+        if combined:
+            irs_match = IRS_RE.search(cell_text)
+            return Issuer(
+                name=combined.group(1).strip(" ,-") or None,
+                trading_symbol=combined.group(2),
+                irs_number=irs_match.group(1) if irs_match else None,
+            )
     candidate = ""
     last_label_index = -1
     for index, line in enumerate(lines):

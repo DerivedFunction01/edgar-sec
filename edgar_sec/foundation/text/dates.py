@@ -63,6 +63,7 @@ YEAR_TOKEN_RE = re.compile(rf"^\b({YEAR_TOKEN_PATTERN})\b$")
 YEAR_IN_TEXT_RE = re.compile(r"\b(\d{4})\b")
 NUMERIC_YEAR_RE = re.compile(r"\b(\d{2,4})\b")
 NUMERIC_DATE_RE = re.compile(r"\b\d{1,2}[-/]\d{1,2}[-/]\d{2,4}\b")
+ISO_DATE_RE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
 _WHITESPACE_RE = re.compile(r"\s+")
 
 TABLE_YEAR_RE = re.compile(
@@ -275,6 +276,24 @@ def _build_formats() -> tuple[DateFormat, ...]:
             80,
         ),
         (
+            "month_year_slash",
+            ("MM_name", "YYYY"),
+            ("/",),
+            78,
+        ),
+        (
+            "month_year_numeric",
+            ("MM", "YYYY"),
+            ("/",),
+            65,
+        ),
+        (
+            "month_year_numeric_dash",
+            ("MM", "YYYY"),
+            ("-",),
+            54,
+        ),
+        (
             "month_day_year_numeric",
             ("MM", "DD", "YYYY"),
             ("/", "/"),
@@ -352,6 +371,24 @@ def _build_2digit_formats() -> tuple[DateFormat, ...]:
             ("MM_name", "YY"),
             (" ",),
             30,
+        ),
+        (
+            "day_month_year_numeric_dash_2digit",
+            ("DD_num", "MM", "YY"),
+            ("-", "-"),
+            36,
+        ),
+        (
+            "month_year_numeric_2digit",
+            ("MM", "YY"),
+            ("/",),
+            25,
+        ),
+        (
+            "month_year_numeric_dash_2digit",
+            ("MM", "YY"),
+            ("-",),
+            22,
         ),
     ]
     return tuple(
@@ -645,6 +682,7 @@ __all__ = [
     "MONTH_PATTERN",
     "MONTH_RE",
     "MONTH_SUFFIX_RE",
+    "ISO_DATE_RE",
     "NUMERIC_DATE_RE",
     "NUMERIC_YEAR_RE",
     "ORDINAL_SUFFIX_PATTERN",

@@ -115,6 +115,7 @@ NON_OWNER_JURISDICTION_RE = re.compile(
 
 STRIP_BOX_NUM_RE = re.compile(r"^\s*(?:\[\d{1,2}\]|\d{1,2}\.)\s*")
 BARE_BOX_NUM_RE = re.compile(r"^\s*\d{1,2}\.?\s*$")
+PAREN_BOX_NUM_RE = re.compile(r"^\s*\(\d{1,2}\)\.?\s*$")
 
 RELATIONSHIP_TO_ISSUER_ALT = build_alternation(
     RELATIONSHIP_TO_ISSUER_TERMS, auto_escape=True

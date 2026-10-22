@@ -406,10 +406,30 @@ def render_ownership_to_xml(
         if ascii_secs is not None:
             sections = ascii_secs
 
+    from html import unescape
+
+    from edgar_sec.engine.forms.common.tables import strip_markup_tags
+
+    text_lines = tuple(
+        line
+        for line in (
+            unescape(strip_markup_tags(part)).strip()
+            for part in text.replace(">", ">\n").splitlines()
+        )
+        if line
+    )
     metadata = parse_metadata(
         sections.boxes_1_to_7,
         sections.signatures,
         reference_year=external_year,
+        text_lines=text_lines,
+        fallback_sections=tuple(sections.footnotes)
+        + tuple(sections.unparsed)
+        + tuple(
+            s
+            for s in (sections.boxes_1_to_7, sections.table_i, sections.table_ii)
+            if s is not None
+        ),
     )
     doc_type = form_type.strip().upper()
     if doc_type not in {"3", "3/A", "4", "4/A", "5", "5/A"}:

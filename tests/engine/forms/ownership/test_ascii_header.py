@@ -30,6 +30,49 @@ def test_extract_ascii_header_columns() -> None:
     assert meta.period.period_of_report == "2002-05-15"
 
 
+def test_extract_ascii_header_same_line_date_label() -> None:
+    """'SIGNATURE ... /S/ name DATE <date>' on one line yields name and date."""
+    text = (
+        "1. Name and Address of Reporting Person*\n"
+        "Hernquist, Thomas K.\n"
+        "2. Issuer Name and Ticker or Trading Symbol\n"
+        "HERSHEY FOODS CORP (HSY)\n"
+        "TABLE I - NON-DERIVATIVE SECURITIES\n"
+        "shares 04/28/2003\n"
+        "SIGNATURE OF REPORTING PERSON\n"
+        "/S/ Hernquist, Thomas K. DATE 04/29/03\n"
+    )
+    boxes, sigs = extract_ascii_header_and_signatures(text, reference_year=2003)
+    assert boxes is not None
+    meta = parse_metadata(boxes, sigs, reference_year=2003)
+    assert meta.signature_name == "Hernquist, Thomas K."
+    assert meta.signature_date == "2003-04-29"
+
+
+def test_extract_ascii_header_label_then_name_line() -> None:
+    """A name printed on the line after the signature label is the signer."""
+    text = (
+        "1. Name and Address of Reporting Person*\n"
+        "Jordan, Vernon E.\n"
+        "2. Issuer Name and Ticker or Trading Symbol\n"
+        "AMERICAN EXPRESS CO (AXP)\n"
+        "TABLE I - NON-DERIVATIVE SECURITIES\n"
+        "shares 02/20/2003\n"
+        "shares 100 D\n"
+        "shares 200 D\n"
+        "shares 300 D\n"
+        "shares 400 D\n"
+        "Explanation of Responses:\n"
+        "SIGNATURE OF REPORTING PERSON\n"
+        "Vernon E. Jordan, Jr.\n"
+    )
+    boxes, sigs = extract_ascii_header_and_signatures(text, reference_year=2003)
+    assert boxes is not None
+    meta = parse_metadata(boxes, sigs, reference_year=2003)
+    assert meta.signature_name == "Vernon E. Jordan, Jr."
+    assert meta.signature_date is None
+
+
 def test_extract_ascii_header_pipe_table() -> None:
     text = (
         "|1. Name and Address of Report-  |2. Issuer Name and Ticker or Trading Symbol  |\n"

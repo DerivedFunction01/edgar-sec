@@ -119,6 +119,23 @@ def test_parse_metadata_joins_fragmented_box_fields() -> None:
     assert sections.unparsed == []
 
 
+def test_parse_metadata_uses_amendment_candidate_when_statement_blank() -> None:
+    """A blank box 4 with a dated box 5 yields period via the amendment date."""
+    html = """<html><body><table>
+      <tr><td>1. Name and Address of Reporting Person<br>Jane Doe</td>
+      <td>4. Statement for Month/Day/Year</td><td></td>
+      <td>5. If Amendment, Date of Original (Month/Day/Year)</td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td>9/11/02</td></tr>
+    </table></body></html>"""
+    sections = partition_ownership_tables(html)
+    meta = parse_metadata(
+        sections.boxes_1_to_7, sections.signatures, reference_year=2002
+    )
+    assert meta.period.is_amendment is True
+    assert meta.period.date_of_original == "2002-09-11"
+    assert meta.period.period_of_report == "2002-09-11"
+
+
 def test_parse_metadata_does_not_use_amendment_date_as_period() -> None:
     html = """<html><body>
     <table><tr><td>(Month/Day)</td><td></td></tr>
@@ -379,3 +396,94 @@ def test_parse_metadata_vertical_lookahead_skips_intervening_address() -> None:
     sections = partition_ownership_tables(html)
     meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
     assert meta.period.period_of_report == "2002-07-17"
+
+
+def test_parse_metadata_falls_back_to_loose_text_lines() -> None:
+    """Signature living in loose body text (no table) is a last-resort fill."""
+    html = """<html><body>
+    <table><tr><td>1. Name and Address of Reporting Person<br>Jane Doe</td></tr></table>
+    </body></html>"""
+    sections = partition_ownership_tables(html)
+    lines = tuple(
+        ["filler line"] * 6
+        + [
+            "Explanation of Responses:",
+            "/S/ Lynn A. Leitzel 11/01/2002",
+            "**Signature of Reporting Person Date",
+            "Note: File three copies of this Form.",
+        ]
+    )
+    meta = parse_metadata(
+        sections.boxes_1_to_7,
+        sections.signatures,
+        reference_year=2002,
+        text_lines=lines,
+    )
+    assert meta.signature_name == "Lynn A. Leitzel"
+    assert meta.signature_date == "2002-11-01"
+
+
+def test_parse_metadata_finds_signature_row_inside_footnote_table() -> None:
+    """A /s/ row sharing a footnote-classified table still yields name and date."""
+    html = """<html><body>
+    <table><tr><td>1. Name and Address of Reporting Person<br>Jane Doe</td></tr></table>
+    <table>
+      <tr><td>Explanation of Responses: (1) Shares held directly.</td></tr>
+      <tr><td></td><td>/s/ Ronald G. Heller</td><td>February 27, 2003</td></tr>
+    </table>
+    </body></html>"""
+    sections = partition_ownership_tables(html)
+    assert sections.signatures is None
+    meta = parse_metadata(
+        sections.boxes_1_to_7,
+        sections.signatures,
+        fallback_sections=tuple(sections.footnotes) + tuple(sections.unparsed),
+    )
+    assert meta.signature_name == "Ronald G. Heller"
+    assert meta.signature_date == "2003-02-27"
+
+
+def test_parse_metadata_issuer_information_dialect() -> None:
+    """Issuer-agent layout: label rows and glued Name/Address cells."""
+    from edgar_sec.engine.forms.ownership.sections import (
+        ClassifiedSection,
+        SectionRole,
+    )
+    from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
+
+    boxes = ClassifiedSection(
+        role=SectionRole.BOXES_1_TO_7,
+        table_index=0,
+        raw_node=None,
+        resolved_grid=ResolvedGrid(
+            rows=(
+                ("Date of Event Requiring Statement (year/month/day):\n2003-04-21",),
+                ("Name:   Example International Corp Trading Symbol:   EXMP",),
+                (
+                    "(1)",
+                    "Name:   Jane Q Roe Address:\n"
+                    "100 Main Street   Springfield   , OH  44136 "
+                    "Relationship to Issuer\n[x] Director",
+                ),
+            ),
+            column_alignments=(),
+            column_widths=(),
+        ),
+    )
+    signatures = ClassifiedSection(
+        role=SectionRole.SIGNATURES,
+        table_index=1,
+        raw_node=None,
+        resolved_grid=ResolvedGrid(
+            rows=(("/s/ Jane Q Roe", "2003-04-24"),),
+            column_alignments=(),
+            column_widths=(),
+        ),
+    )
+    meta = parse_metadata(boxes, signatures)
+    assert meta.issuer.name == "Example International Corp"
+    assert meta.issuer.trading_symbol == "EXMP"
+    assert meta.reporting_owner.name == "Jane Q Roe"
+    assert meta.signature_name == "Jane Q Roe"
+    assert meta.signature_date == "2003-04-24"
+    assert meta.period.period_of_report == "2003-04-21"

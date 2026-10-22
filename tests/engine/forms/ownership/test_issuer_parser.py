@@ -51,3 +51,9 @@ def test_issuer_parser_fallback_splits_common_delimiters() -> None:
         issuer = parse_issuer(source)
         assert issuer.name == name
         assert issuer.trading_symbol == ticker
+
+
+def test_parse_issuer_combined_name_and_trading_symbol_line() -> None:
+    issuer = parse_issuer("Name:   Example International Corp Trading Symbol:   EXMP")
+    assert issuer.name == "Example International Corp"
+    assert issuer.trading_symbol == "EXMP"

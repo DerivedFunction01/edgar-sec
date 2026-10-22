@@ -12,6 +12,13 @@ def test_period_parser_prefers_date_line_over_numbered_label() -> None:
     assert result.period_of_report == "07/11/2001"
 
 
+def test_period_parser_reads_date_glued_to_amendment_label() -> None:
+    result = parse_period("5. If Amendment, Date of Original (Month/Year) 2/27/03")
+    assert result.is_amendment is True
+    assert result.date_of_original == "2/27/03"
+    assert result.period_of_report == "2/27/03"
+
+
 def test_period_parser_recognizes_period_and_amendment_dates() -> None:
     original = parse_period(
         "4. Statement for\nMonth/Day/Year\n12/31/02\n5. If Amendment,\nDate of Original\n(Month/Day/Year)"

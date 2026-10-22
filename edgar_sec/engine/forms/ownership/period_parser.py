@@ -39,7 +39,13 @@ def parse_period(cell_text: str) -> FilingPeriod:
     if box5_text:
         for raw_line in box5_text.splitlines():
             line = raw_line.strip()
-            if not line or AMEND_LABEL_RE.match(line):
+            if not line:
+                continue
+            if AMEND_LABEL_RE.match(line):
+                m_label_date = NUMERIC_DATE_RE.search(line) or RE_FULL_DATE.search(line)
+                if m_label_date:
+                    amend_date = m_label_date.group(0).strip()
+                    break
                 continue
             cleaned = AMEND_DATE_CLEAN_RE.sub("", line).strip()
             if cleaned and any(char.isdigit() for char in cleaned):
