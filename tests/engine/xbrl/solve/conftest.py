@@ -8,7 +8,32 @@ import pyarrow.parquet as pq
 
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.xbrl.schema.models import CalculationArc, XbrlFact
-from tests.support import fixture_path
+from edgar_sec.engine.xbrl.solve.concept_table import CohortEntry
+from tests.support import fixture_path, load_fixture
+
+
+def load_seed_cohort() -> tuple[CohortEntry, ...]:
+    registry = load_fixture("xbrl/seed_cohort.json")
+    seed_root = fixture_path("xbrl/seed")
+    entries = []
+    for item in registry:
+        matches = sorted(seed_root.glob(f"{item['firm'].lower()}_*_10k"))
+        if len(matches) != 1:
+            raise ValueError(f"seed bundle for {item['firm']}: {matches}")
+        facts_path = matches[0] / "facts.parquet"
+        accessions = set(
+            pq.read_table(facts_path, columns=["accession"]).column(0).to_pylist()
+        )
+        if len(accessions) != 1:
+            raise ValueError(f"seed bundle for {item['firm']}: {accessions}")
+        entries.append(
+            CohortEntry(
+                accession=accessions.pop(),
+                facts_path=facts_path,
+                firm=item["firm"],
+            )
+        )
+    return tuple(entries)
 
 
 def load_seed_facts(folder: str) -> tuple[XbrlFact, ...]:
