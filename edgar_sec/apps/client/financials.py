@@ -5,6 +5,10 @@ from __future__ import annotations
 from collections.abc import Mapping, Sequence
 
 from edgar_sec.apps.client.facts import DisplayRecord, build_display_records
+from edgar_sec.apps.client.topics import (
+    build_debt_structure,
+    build_derivative_portfolio,
+)
 from edgar_sec.apps.client.views import DebtStructureView, DerivativePortfolioView
 from edgar_sec.engine.xbrl.schema.models import CalculationArc, XbrlFact
 from edgar_sec.engine.xbrl.solve.composer import StatementComposer
@@ -316,11 +320,15 @@ class XbrlFinancials:
     @property
     def derivatives(self) -> DerivativePortfolioView:
         """Dynamically resolve derivative exposures, risk categories, and netting."""
-        graph = self._composer.compose_derivative_portfolio()
+        graph = build_derivative_portfolio(
+            self._facts, self._records, self._taxonomy, self._labels
+        )
         return DerivativePortfolioView(graph)
 
     @property
     def debt(self) -> DebtStructureView:
         """Dynamically resolve capital structure, debt tranches, and maturities."""
-        graph = self._composer.compose_debt_structure()
+        graph = build_debt_structure(
+            self._facts, self._records, self._taxonomy, self._labels
+        )
         return DebtStructureView(graph)
