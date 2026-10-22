@@ -6,6 +6,7 @@ from edgar_sec.engine.xbrl.schema.models import XbrlFact
 from edgar_sec.engine.xbrl.solve.query import (
     FinancialQuery,
     FinancialQueryEngine,
+    FinancialQueryResult,
     QueryMode,
     QueryStatus,
 )
@@ -641,6 +642,85 @@ def test_conflicting_values_in_one_context_return_conflict() -> None:
     assert result.candidate_qnames == ("us-gaap:NetIncomeLoss",)
     assert {fact.value for fact in result.candidate_facts} == {10.0, 12.0}
     assert "Conflicting values" in result.message
+
+
+def _instant_usd_fact(qname: str, value: float, decimals: int | None) -> XbrlFact:
+    return XbrlFact(
+        AccessionNumber("0000950170-24-087843"),
+        qname,
+        value,
+        unit="USD",
+        decimals=decimals,
+        period_type="instant",
+        instant_date="2024-06-30",
+    )
+
+
+def _reported_result(
+    facts: tuple[XbrlFact, ...], qname: str
+) -> FinancialQueryResult:
+    return _query_engine().execute(
+        FinancialQuery(
+            qname,
+            FactScope(
+                accession="0000950170-24-087843",
+                instant_date="2024-06-30",
+                unit="USD",
+            ),
+        ),
+        facts,
+    )
+
+
+def test_precision_duplicates_within_tolerance_report_the_precise_value() -> None:
+    qname = "us-gaap:DerivativeAssets"
+    precise = _instant_usd_fact(qname, 40_948_000_000.0, -6)
+    coarse = _instant_usd_fact(qname, 40_900_000_000.0, -8)
+
+    for facts in ((precise, coarse), (coarse, precise)):
+        result = _reported_result(facts, qname)
+        assert result.status == QueryStatus.REPORTED
+        assert result.value == 40_948_000_000.0
+        assert result.reported_fact is not None
+        assert result.reported_fact.decimals == -6
+
+
+def test_precision_duplicate_cash_pair_reports_the_precise_value() -> None:
+    qname = "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+    facts = (
+        _instant_usd_fact(qname, 1_319_000_000.0, -6),
+        _instant_usd_fact(qname, 1_318_591_000.0, -3),
+    )
+
+    result = _reported_result(facts, qname)
+
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == 1_318_591_000.0
+
+
+def test_same_decimals_disjoint_values_still_conflict() -> None:
+    qname = "us-gaap:DerivativeAssets"
+    facts = (
+        _instant_usd_fact(qname, 40_948_000_000.0, -6),
+        _instant_usd_fact(qname, 41_948_000_000.0, -6),
+    )
+
+    result = _reported_result(facts, qname)
+
+    assert result.status == QueryStatus.CONFLICT
+
+
+def test_values_at_exactly_the_tolerance_sum_cluster() -> None:
+    qname = "us-gaap:Assets"
+    facts = (
+        _instant_usd_fact(qname, 100.0, 0),
+        _instant_usd_fact(qname, 101.0, 0),
+    )
+
+    result = _reported_result(facts, qname)
+
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == 100.0
 
 
 def test_requested_period_selects_its_value_independent_of_fact_order() -> None:

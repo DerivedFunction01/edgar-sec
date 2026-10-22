@@ -410,3 +410,55 @@ def test_asml_grounded_seed_fixture_verification() -> None:
 def test_gis_grounded_seed_fixture_verification() -> None:
     """Prove GIS FY2024 seed fixture relationships and traces."""
     _verify_fixture("gis_2024_10k", "GIS", "0001193125-24-168943")
+
+
+def _grounded_engine() -> FinancialQueryEngine:
+    return FinancialQueryEngine(
+        XbrlConstraintSolver(EvidenceKnowledgeBase(taxonomy=load_domain_taxonomy()))
+    )
+
+
+def test_bac_derivative_assets_precision_duplicate_reports_presented_value() -> None:
+    result = _grounded_engine().execute(
+        FinancialQuery(
+            "us-gaap:DerivativeAssets",
+            FactScope(
+                accession="0000070858-25-000139",
+                instant_date="2024-12-31",
+                unit="USD",
+            ),
+        ),
+        load_seed_facts("bac_2024_10k"),
+        load_seed_calculation_arcs("bac_2024_10k"),
+    )
+
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == 40_948_000_000.0
+    lines = fixture_path(
+        "xbrl/seed/bac_2024_10k/normalized_text.txt"
+    ).read_text(encoding="utf-8").splitlines()
+    assert "Derivative assets" in lines[4571]
+    assert "40,948" in lines[4571]
+
+
+def test_pld_cash_precision_duplicate_reports_presented_value() -> None:
+    result = _grounded_engine().execute(
+        FinancialQuery(
+            "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+            FactScope(
+                accession="0000950170-25-021272",
+                instant_date="2024-12-31",
+                unit="USD",
+            ),
+        ),
+        load_seed_facts("pld_2024_10k"),
+        load_seed_calculation_arcs("pld_2024_10k"),
+    )
+
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == 1_318_591_000.0
+    lines = fixture_path(
+        "xbrl/seed/pld_2024_10k/normalized_text.txt"
+    ).read_text(encoding="utf-8").splitlines()
+    assert "Cash and cash equivalents" in lines[2259]
+    assert "1,318,591" in lines[2259]

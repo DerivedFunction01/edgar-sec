@@ -161,16 +161,51 @@ class FinancialQueryEngine:
     def _deduplicate_context_facts(
         facts: tuple[XbrlFact, ...],
     ) -> tuple[XbrlFact, ...] | None:
-        by_context: dict[tuple[object, ...], dict[float, XbrlFact]] = {}
+        by_context: dict[tuple[object, ...], list[XbrlFact]] = {}
         for fact in facts:
             if not isinstance(fact.value, (int, float)):
                 continue
-            by_context.setdefault(FinancialQueryEngine._context_key(fact), {})[
-                float(fact.value)
-            ] = fact
-        if any(len(values) > 1 for values in by_context.values()):
+            by_context.setdefault(FinancialQueryEngine._context_key(fact), []).append(
+                fact
+            )
+        deduplicated: list[XbrlFact] = []
+        for group in by_context.values():
+            representative = FinancialQueryEngine._collapse_context_group(group)
+            if representative is None:
+                return None
+            deduplicated.append(representative)
+        return tuple(deduplicated)
+
+    @staticmethod
+    def _collapse_context_group(group: list[XbrlFact]) -> XbrlFact | None:
+        """Collapse one context group to its most precise fact.
+
+        Facts cluster when their rounding intervals share a common
+        intersection; disjoint clusters are a genuine conflict (None).
+        """
+        ordered = sorted(enumerate(group), key=lambda item: float(item[1].value))
+        clusters: list[list[tuple[int, XbrlFact]]] = []
+        low = high = 0.0
+        for item in ordered:
+            fact = item[1]
+            tolerance = FinancialQueryEngine._precision_tolerance(fact)
+            lo = float(fact.value) - tolerance
+            hi = float(fact.value) + tolerance
+            if clusters and lo <= high and hi >= low:
+                clusters[-1].append(item)
+                low, high = max(low, lo), min(high, hi)
+            else:
+                clusters.append([item])
+                low, high = lo, hi
+        if len(clusters) > 1:
             return None
-        return tuple(next(iter(values.values())) for values in by_context.values())
+        return min(
+            clusters[0],
+            key=lambda item: (
+                FinancialQueryEngine._precision_tolerance(item[1]),
+                item[0],
+            ),
+        )[1]
 
     @staticmethod
     def _precision_tolerance(fact: XbrlFact) -> float:
