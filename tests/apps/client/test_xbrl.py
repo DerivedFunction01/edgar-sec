@@ -5,7 +5,12 @@ import pytest
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
-from edgar_sec.engine.xbrl.schema.models import ConceptLabel, FilingXbrl, LinkbaseBundle
+from edgar_sec.engine.xbrl.schema.models import (
+    ConceptLabel,
+    FilingXbrl,
+    LinkbaseBundle,
+    XbrlFact,
+)
 from edgar_sec.engine.xbrl.solve.query import (
     FinancialQuery,
     FinancialQueryEngine,
@@ -329,3 +334,197 @@ def test_xbrl_query_unknown_term_with_fiscal_year() -> None:
     result = xbrl.query("UnrecognizedFinancialMeasure", fiscal_year=2024)
     assert result.status == QueryStatus.UNAVAILABLE
     assert result.value is None
+
+
+_SYNTHETIC_ACCESSION = "0000000001-23-000001"
+_ANNUAL = ("2023-01-01", "2023-12-31")
+
+
+def _synthetic_fact(
+    qname: str,
+    value: float,
+    start: str | None = None,
+    end: str | None = None,
+    instant: str | None = None,
+) -> XbrlFact:
+    return XbrlFact(
+        accession=AccessionNumber(_SYNTHETIC_ACCESSION),
+        concept_qname=qname,
+        value=value,
+        unit="USD",
+        period_type="instant" if instant is not None else "duration",
+        start_date=start,
+        end_date=end,
+        instant_date=instant,
+    )
+
+
+def _create_synthetic_xbrl(facts: tuple[XbrlFact, ...]) -> Xbrl:
+    bundle = FilingXbrl(
+        accession=AccessionNumber("0000000000-24-000000"),
+        cik=Cik(0),
+        facts=facts,
+        linkbases=LinkbaseBundle(),
+    )
+    return Xbrl(bundle, load_domain_taxonomy())
+
+
+def test_xbrl_query_fiscal_year_annual_ambiguity_beats_quarterly_reported() -> None:
+    """Verify a quarterly REPORTED never outranks the annual tier's AMBIGUOUS."""
+    xbrl = _create_synthetic_xbrl(
+        (
+            _synthetic_fact(
+                "us-gaap:Revenues", 100.0, start=_ANNUAL[0], end=_ANNUAL[1]
+            ),
+            _synthetic_fact(
+                "us-gaap:BusinessAcquisitionsProFormaRevenue",
+                200.0,
+                start=_ANNUAL[0],
+                end=_ANNUAL[1],
+            ),
+            _synthetic_fact(
+                "us-gaap:Revenues", 30.0, start="2023-07-01", end="2023-09-30"
+            ),
+        )
+    )
+
+    result = xbrl.query("revenue", fiscal_year=2023)
+    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.value is None
+
+
+def test_xbrl_query_fiscal_year_quarterly_only_concept_is_unavailable() -> None:
+    """Verify a non-annual-only concept is UNAVAILABLE for a fiscal-year query."""
+    xbrl = _create_synthetic_xbrl(
+        (
+            _synthetic_fact(
+                "us-gaap:Revenues", 100.0, start=_ANNUAL[0], end=_ANNUAL[1]
+            ),
+            _synthetic_fact("us-gaap:Assets", 500.0, instant="2023-12-31"),
+            _synthetic_fact(
+                "us-gaap:GrossProfit", 40.0, start="2023-07-01", end="2023-09-30"
+            ),
+            _synthetic_fact(
+                "us-gaap:GrossProfit", 35.0, start="2023-04-01", end="2023-06-30"
+            ),
+        )
+    )
+
+    result = xbrl.query("us-gaap:GrossProfit", fiscal_year=2023)
+    assert result.status == QueryStatus.UNAVAILABLE
+    assert result.value is None
+
+
+def test_xbrl_query_fiscal_year_instant_fact_cannot_answer_duration_term() -> None:
+    """Verify an instant-scope REPORTED (RPO) does not override the annual tier."""
+    xbrl = _create_synthetic_xbrl(
+        (
+            _synthetic_fact(
+                "us-gaap:Revenues", 100.0, start=_ANNUAL[0], end=_ANNUAL[1]
+            ),
+            _synthetic_fact(
+                "us-gaap:BusinessAcquisitionsProFormaRevenue",
+                200.0,
+                start=_ANNUAL[0],
+                end=_ANNUAL[1],
+            ),
+            _synthetic_fact(
+                "us-gaap:RevenueRemainingPerformanceObligation",
+                999.0,
+                instant="2023-12-31",
+            ),
+        )
+    )
+
+    result = xbrl.query("revenue", fiscal_year=2023)
+    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.value is None
+
+
+def test_xbrl_query_pld_revenue_fiscal_year_is_annual_ambiguous() -> None:
+    """Verify PLD loose revenue returns the annual AMBIGUOUS, not the Q3 REPORTED."""
+    xbrl = _create_xbrl_facade("pld")
+
+    result = xbrl.query("revenue", fiscal_year=2024)
+    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.value is None
+
+
+def test_xbrl_query_msft_revenue_fiscal_year_ignores_rpo_instants() -> None:
+    """Verify MSFT loose revenue is AMBIGUOUS in both modes, never the RPO facts."""
+    xbrl = _create_xbrl_facade("msft")
+
+    for mode in (QueryMode.REPORTED_ONLY, QueryMode.VERIFY_DERIVATION):
+        result = xbrl.query("revenue", mode=mode, fiscal_year=2024)
+        assert result.status == QueryStatus.AMBIGUOUS
+        assert result.value is None
+
+
+def test_xbrl_query_nvda_revenue_verify_ignores_rpo_percentage() -> None:
+    """Verify NVDA loose revenue VERIFY is the annual AMBIGUOUS, not the RPO percentage."""
+    xbrl = _create_xbrl_facade("nvda")
+
+    result = xbrl.query("revenue", mode=QueryMode.VERIFY_DERIVATION, fiscal_year=2024)
+    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.value == 60922000000.0
+
+
+def test_xbrl_query_aapl_assets_verify_resolves_at_fye_instant() -> None:
+    """Verify AAPL Assets VERIFY returns the FYE VERIFIED, not a note-date DERIVED."""
+    xbrl = _create_xbrl_facade("aapl")
+
+    result = xbrl.query(
+        "us-gaap:Assets", mode=QueryMode.VERIFY_DERIVATION, fiscal_year=2024
+    )
+    assert result.status == QueryStatus.VERIFIED
+    assert result.value == 364980000000.0
+
+
+def test_xbrl_query_gis_cash_verify_carries_fye_ambiguity() -> None:
+    """Verify GIS Cash VERIFY returns the FYE AMBIGUOUS carrying the reported value."""
+    xbrl = _create_xbrl_facade("gis")
+
+    result = xbrl.query(
+        "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+        mode=QueryMode.VERIFY_DERIVATION,
+        fiscal_year=2024,
+    )
+    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.value == 418000000.0
+
+
+def test_xbrl_query_gis_gross_profit_fiscal_year_unavailable() -> None:
+    """Verify GIS's quarterly-only GrossProfit is UNAVAILABLE for a fiscal-year query."""
+    xbrl = _create_xbrl_facade("gis")
+
+    result = xbrl.query("us-gaap:GrossProfit", fiscal_year=2024)
+    assert result.status == QueryStatus.UNAVAILABLE
+    assert result.value is None
+
+
+def test_xbrl_query_bac_cash_verify_resolves_at_fye_instant() -> None:
+    """Verify BAC Cash VERIFY selects the FYE instant; its DERIVED there is a known solver limit."""
+    xbrl = _create_xbrl_facade("bac")
+
+    result = xbrl.query(
+        "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+        mode=QueryMode.VERIFY_DERIVATION,
+        fiscal_year=2024,
+    )
+    assert result.status == QueryStatus.DERIVED
+    assert result.value == -558677000000.0
+
+
+def test_xbrl_query_msft_eps_diluted_resolves_at_annual_scope() -> None:
+    """Verify diluted EPS still resolves REPORTED at the annual unitless scope."""
+    xbrl = _create_xbrl_facade("msft")
+    annual = xbrl.query(
+        "us-gaap:EarningsPerShareDiluted",
+        scope=FactScope(
+            accession=_MSFT_ACCESSION, start_date="2023-07-01", end_date="2024-06-30"
+        ),
+    )
+
+    result = xbrl.query("us-gaap:EarningsPerShareDiluted", fiscal_year=2024)
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == annual.value == 11.8

@@ -128,20 +128,9 @@ class Xbrl:
             return self._execute_query(
                 term, query_mode, FactScope(accession=accession), arcs
             )
-        first_result: FinancialQueryResult | None = None
-        fallback: FinancialQueryResult | None = None
-        for candidate in candidates:
-            result = self._execute_query(term, query_mode, candidate, arcs)
-            if result.status in _SUCCESS_STATUSES:
-                return result
-            if first_result is None:
-                first_result = result
-            if fallback is None and result.status != QueryStatus.UNAVAILABLE:
-                fallback = result
-        if fallback is not None:
-            return fallback
-        assert first_result is not None
-        return first_result
+        return self._execute_fiscal_year_query(
+            term, query_mode, fiscal_year, candidates, arcs
+        )
 
     @staticmethod
     def _parse_query_mode(mode: QueryMode | str) -> QueryMode:
@@ -218,6 +207,122 @@ class Xbrl:
                     )
                 )
         return tuple(scopes)
+
+    def _execute_fiscal_year_query(
+        self,
+        term: str,
+        mode: QueryMode,
+        fiscal_year: int,
+        candidates: tuple[FactScope, ...],
+        arcs: Sequence[CalculationArc],
+    ) -> FinancialQueryResult:
+        """Answer from the faithful tiers: longest-span durations, then FYE instants.
+
+        Non-annual scopes never answer a fiscal-year query; if both tiers are
+        silent, the first candidate scope's result (UNAVAILABLE) stands.
+        """
+        duration_tier, instant_tier = self._fiscal_year_tiers(fiscal_year, candidates)
+        outcome, first, results = self._tier_outcome(term, mode, duration_tier, arcs)
+        if outcome is not None and outcome.status in _SUCCESS_STATUSES:
+            return outcome
+        if (
+            outcome is not None
+            and outcome.status != QueryStatus.UNAVAILABLE
+            and self._tier_is_duration_opinion(results)
+        ):
+            return outcome
+        instant_outcome, _, _ = self._tier_outcome(term, mode, instant_tier, arcs)
+        if outcome is not None and outcome.status != QueryStatus.UNAVAILABLE:
+            return instant_outcome if instant_outcome is not None else outcome
+        if (
+            instant_outcome is not None
+            and instant_outcome.status != QueryStatus.UNAVAILABLE
+        ):
+            return instant_outcome
+        if first is not None:
+            return first
+        return self._execute_query(term, mode, candidates[0], arcs)
+
+    def _tier_outcome(
+        self,
+        term: str,
+        mode: QueryMode,
+        scopes: tuple[FactScope, ...],
+        arcs: Sequence[CalculationArc],
+    ) -> tuple[
+        FinancialQueryResult | None,
+        FinancialQueryResult | None,
+        tuple[FinancialQueryResult, ...],
+    ]:
+        """First success in the tier, else its first non-UNAVAILABLE, else its first."""
+        first: FinancialQueryResult | None = None
+        fallback: FinancialQueryResult | None = None
+        results: list[FinancialQueryResult] = []
+        for scope in scopes:
+            result = self._execute_query(term, mode, scope, arcs)
+            if first is None:
+                first = result
+            results.append(result)
+            if result.status in _SUCCESS_STATUSES:
+                return result, first, tuple(results)
+            if fallback is None and result.status != QueryStatus.UNAVAILABLE:
+                fallback = result
+        return (fallback if fallback is not None else first), first, tuple(results)
+
+    def _tier_is_duration_opinion(
+        self, results: tuple[FinancialQueryResult, ...]
+    ) -> bool:
+        """Whether any candidate on the tier's results carries a duration fact here."""
+        qnames = {qname for result in results for qname in result.candidate_qnames}
+        return any(
+            fact.concept_qname in qnames and fact.period_type == "duration"
+            for fact in self._filing.facts
+        )
+
+    def _fiscal_year_tiers(
+        self, fiscal_year: int, candidates: tuple[FactScope, ...]
+    ) -> tuple[tuple[FactScope, ...], tuple[FactScope, ...]]:
+        """Split candidates into the longest-span duration group and the FYE instant group."""
+        groups: dict[tuple[str | None, str | None, str | None], list[FactScope]] = {}
+        for scope in candidates:
+            key = (scope.start_date, scope.end_date, scope.instant_date)
+            groups.setdefault(key, []).append(scope)
+        spans: dict[tuple[str | None, str | None, str | None], int] = {}
+        for key in groups:
+            start, end, instant = key
+            if instant is None and start is not None and end is not None:
+                spans[key] = -_duration_span_key((start, end))[0]
+        max_span = max(spans.values(), default=None)
+        modal = self._modal_instant(fiscal_year)
+        duration_tier = tuple(
+            scope
+            for key, group in groups.items()
+            if spans.get(key) is not None and spans.get(key) == max_span
+            for scope in group
+        )
+        instant_tier = tuple(
+            scope
+            for key, group in groups.items()
+            if key[2] is not None and key[2] == modal
+            for scope in group
+        )
+        return duration_tier, instant_tier
+
+    def _modal_instant(self, fiscal_year: int) -> str | None:
+        """Instant carrying the most undimensioned instant facts ending in fiscal_year."""
+        counts: dict[str, int] = {}
+        year = str(fiscal_year)
+        for fact in self._filing.facts:
+            if (
+                not fact.dimensions
+                and fact.period_type == "instant"
+                and fact.instant_date
+                and fact.instant_date[:4] == year
+            ):
+                counts[fact.instant_date] = counts.get(fact.instant_date, 0) + 1
+        if not counts:
+            return None
+        return max(counts.items(), key=lambda item: (item[1], item[0]))[0]
 
     def _period_units(
         self, start: str | None, end: str | None, instant: str | None
