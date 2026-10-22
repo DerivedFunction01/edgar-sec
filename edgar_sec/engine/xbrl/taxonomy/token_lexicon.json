@@ -290,7 +290,8 @@
     "head": "H_EQUITY",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_RETAINED_EARNINGS"
+      "M_RETAINED_EARNINGS",
+      "M_ACCUMULATED"
     ]
   },
   {
@@ -1201,7 +1202,8 @@
     "head": "H_EQUITY",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_OCI"
+      "M_OCI",
+      "M_ACCUMULATED"
     ]
   },
   {
@@ -1215,7 +1217,8 @@
     "head": "H_EQUITY",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_OCI"
+      "M_OCI",
+      "M_ACCUMULATED"
     ]
   },
   {
@@ -1228,7 +1231,8 @@
     "claim": "modifier",
     "atom": "M_AOCI",
     "also_asserts": [
-      "M_OCI"
+      "M_OCI",
+      "M_ACCUMULATED"
     ]
   },
   {
@@ -2361,7 +2365,8 @@
     "head": "H_ASSET",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_DA_DEPLETION"
+      "M_DA_DEPLETION",
+      "M_ACCUMULATED"
     ]
   },
   {
@@ -3295,7 +3300,8 @@
     "head": "H_INCOME",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_INTANGIBLE_GOODWILL"
+      "M_INTANGIBLE_GOODWILL",
+      "M_IMPAIRMENT"
     ]
   },
   {
@@ -3333,8 +3339,23 @@
     "head": "H_LIABILITY",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_LOSS_CONTINGENCY"
+      "M_LOSS_CONTINGENCY",
+      "M_ENVIRONMENTAL"
     ]
+  },
+  {
+    "phrase": [
+      "Environmental"
+    ],
+    "claim": "modifier",
+    "atom": "M_ENVIRONMENTAL"
+  },
+  {
+    "phrase": [
+      "Remediation"
+    ],
+    "claim": "modifier",
+    "atom": "M_ENVIRONMENTAL"
   },
   {
     "phrase": [
@@ -3344,7 +3365,10 @@
     ],
     "claim": "head",
     "head": "H_INCOME",
-    "claim_class": "PRIMARY"
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_IMPAIRMENT"
+    ]
   },
   {
     "phrase": [
@@ -3353,7 +3377,10 @@
     ],
     "claim": "head",
     "head": "H_INCOME",
-    "claim_class": "PRIMARY"
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_IMPAIRMENT"
+    ]
   },
   {
     "phrase": [
@@ -3362,7 +3389,10 @@
     ],
     "claim": "head",
     "head": "H_INCOME",
-    "claim_class": "PRIMARY"
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_IMPAIRMENT"
+    ]
   },
   {
     "phrase": [
@@ -3374,7 +3404,8 @@
     "head": "H_INCOME",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_INTANGIBLE_GOODWILL"
+      "M_INTANGIBLE_GOODWILL",
+      "M_IMPAIRMENT"
     ]
   },
   {
@@ -3387,7 +3418,8 @@
     "head": "H_INCOME",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_INTANGIBLE_GOODWILL"
+      "M_INTANGIBLE_GOODWILL",
+      "M_IMPAIRMENT"
     ]
   },
   {
@@ -3400,7 +3432,10 @@
     ],
     "claim": "head",
     "head": "H_INCOME",
-    "claim_class": "PRIMARY"
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_IMPAIRMENT"
+    ]
   },
   {
     "phrase": [
@@ -3413,7 +3448,10 @@
     ],
     "claim": "head",
     "head": "H_INCOME",
-    "claim_class": "PRIMARY"
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_IMPAIRMENT"
+    ]
   },
   {
     "phrase": [
@@ -3424,7 +3462,10 @@
     ],
     "claim": "head",
     "head": "H_INCOME",
-    "claim_class": "PRIMARY"
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_IMPAIRMENT"
+    ]
   },
   {
     "phrase": [
@@ -3435,7 +3476,10 @@
     ],
     "claim": "head",
     "head": "H_INCOME",
-    "claim_class": "PRIMARY"
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_IMPAIRMENT"
+    ]
   },
   {
     "phrase": [
@@ -3449,7 +3493,8 @@
     "head": "H_INCOME",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_PPE_CAPEX"
+      "M_PPE_CAPEX",
+      "M_IMPAIRMENT"
     ]
   },
   {
@@ -3460,7 +3505,10 @@
     ],
     "claim": "head",
     "head": "H_INCOME",
-    "claim_class": "PRIMARY"
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_IMPAIRMENT"
+    ]
   },
   {
     "phrase": [
@@ -3471,7 +3519,10 @@
     ],
     "claim": "head",
     "head": "H_INCOME",
-    "claim_class": "PRIMARY"
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_IMPAIRMENT"
+    ]
   },
   {
     "phrase": [
@@ -3480,7 +3531,31 @@
     ],
     "claim": "head",
     "head": "H_INCOME",
-    "claim_class": "PRIMARY"
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_IMPAIRMENT"
+    ]
+  },
+  {
+    "phrase": [
+      "Impairment"
+    ],
+    "claim": "modifier",
+    "atom": "M_IMPAIRMENT"
+  },
+  {
+    "phrase": [
+      "Impairments"
+    ],
+    "claim": "modifier",
+    "atom": "M_IMPAIRMENT"
+  },
+  {
+    "phrase": [
+      "Cumulative"
+    ],
+    "claim": "modifier",
+    "atom": "M_CUMULATIVE"
   },
   {
     "phrase": [
@@ -4189,7 +4264,10 @@
     ],
     "claim": "head",
     "head": "H_INCOME",
-    "claim_class": "PRIMARY"
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_LITIGATION"
+    ]
   },
   {
     "phrase": [
@@ -4878,7 +4956,11 @@
     ],
     "claim": "head",
     "head": "H_ASSET",
-    "claim_class": "PRIMARY"
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_IMPAIRMENT",
+      "M_ACCUMULATED"
+    ]
   },
   {
     "phrase": [
@@ -4906,7 +4988,8 @@
     "head": "H_INCOME",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_OCI"
+      "M_OCI",
+      "M_ACCUMULATED"
     ]
   },
   {
@@ -4930,7 +5013,8 @@
     "head": "H_EQUITY",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_OCI"
+      "M_OCI",
+      "M_ACCUMULATED"
     ]
   },
   {
@@ -4944,7 +5028,8 @@
     "head": "H_EQUITY",
     "claim_class": "PRIMARY",
     "carriage": [
-      "V_GROSS"
+      "V_GROSS",
+      "M_ACCUMULATED"
     ]
   },
   {
@@ -4958,7 +5043,8 @@
     "head": "H_EQUITY",
     "claim_class": "PRIMARY",
     "carriage": [
-      "V_GROSS"
+      "V_GROSS",
+      "M_ACCUMULATED"
     ]
   },
   {
@@ -4973,8 +5059,16 @@
     "head": "H_EQUITY",
     "claim_class": "PRIMARY",
     "carriage": [
-      "V_GROSS"
+      "V_GROSS",
+      "M_ACCUMULATED"
     ]
+  },
+  {
+    "phrase": [
+      "Accumulated"
+    ],
+    "claim": "modifier",
+    "atom": "M_ACCUMULATED"
   },
   {
     "phrase": [
@@ -5407,7 +5501,8 @@
     "head": "H_LIABILITY",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_LOSS_CONTINGENCY"
+      "M_LOSS_CONTINGENCY",
+      "M_LITIGATION"
     ]
   },
   {
@@ -5416,7 +5511,17 @@
       "Reserve"
     ],
     "claim": "modifier",
-    "atom": "M_LOSS_CONTINGENCY"
+    "atom": "M_LOSS_CONTINGENCY",
+    "also_asserts": [
+      "M_LITIGATION"
+    ]
+  },
+  {
+    "phrase": [
+      "Litigation"
+    ],
+    "claim": "modifier",
+    "atom": "M_LITIGATION"
   },
   {
     "phrase": [
@@ -6370,7 +6475,8 @@
     "head": "H_LIABILITY",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_ACCUMULATED_BENEFIT_OBLIGATION"
+      "M_ACCUMULATED_BENEFIT_OBLIGATION",
+      "M_ACCUMULATED"
     ]
   },
   {
@@ -6380,7 +6486,10 @@
       "Obligation"
     ],
     "claim": "modifier",
-    "atom": "M_ACCUMULATED_BENEFIT_OBLIGATION"
+    "atom": "M_ACCUMULATED_BENEFIT_OBLIGATION",
+    "also_asserts": [
+      "M_ACCUMULATED"
+    ]
   },
   {
     "phrase": [

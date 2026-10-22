@@ -669,3 +669,66 @@ def test_requires_evidence_claim_never_fires() -> None:
     lex = TokenLexicon((gated,))
     atom, _, _, _ = decompose_concept("x:Impairment", lex)
     assert atom.head == "H_UNKNOWN"
+
+
+def test_impairment_descriptive_tag_spans_heads_without_moving_them() -> None:
+    """The impairment tag filters across heads; heads and family EXACT hold."""
+    from edgar_sec.engine.xbrl.solve.equivalence import EXACT, UNRELATED, classify_pair
+
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    lex = tax.token_lexicon
+    loss, _, _, _ = decompose_concept("us-gaap:ImpairmentOfOilAndGasProperties", lex)
+    held, _, _, _ = decompose_concept(
+        "us-gaap:ImpairmentOfLongLivedAssetsHeldForUse", lex
+    )
+    disposed, _, _, _ = decompose_concept(
+        "us-gaap:ImpairmentOfLongLivedAssetsToBeDisposedOf", lex
+    )
+    population, _, _, _ = decompose_concept(
+        "us-gaap:FinancingReceivableCollectivelyEvaluatedForImpairment", lex
+    )
+    balance, _, _, _ = decompose_concept(
+        "asml:AccumulatedDepreciationDepletionAmortizationAndImpairment"
+        "PropertyPlantAndEquipment",
+        lex,
+    )
+    textblock, _, _, _ = decompose_concept(
+        "nee:ImpairmentOfEquityMethodInvestmentsPolicyPolicyTextBlock", lex
+    )
+    for atom in (loss, held, disposed, population, balance, textblock):
+        assert "M_IMPAIRMENT" in atom.modifiers
+    assert loss.head == "H_INCOME"
+    assert population.head == "H_ASSET"
+    assert balance.head == "H_ASSET"
+    assert textblock.head == "H_ASSET"
+    assert classify_pair(held, disposed) == EXACT
+    assert classify_pair(loss, population) == UNRELATED
+
+
+def test_descriptive_tags_ride_across_heads_part2() -> None:
+    """Accumulated/cumulative/litigation/environmental tags cross heads."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    lex = tax.token_lexicon
+    contra, _, _, _ = decompose_concept(
+        "us-gaap:AccumulatedDepreciationDepletionAndAmortization", lex
+    )
+    aoci, _, _, _ = decompose_concept(
+        "us-gaap:AccumulatedOtherComprehensiveIncomeLossNetOfTax", lex
+    )
+    hedge, _, _, _ = decompose_concept(
+        "us-gaap:FairValueHedgeCumulativeIncreaseDecreaseInFairValueOfHedgedItem",
+        lex,
+    )
+    settlement, _, _, _ = decompose_concept("us-gaap:LitigationSettlementExpense", lex)
+    remediation, _, _, _ = decompose_concept(
+        "us-gaap:EnvironmentalRemediationExpense", lex
+    )
+    assert "M_ACCUMULATED" in contra.modifiers and contra.head == "H_ASSET"
+    assert "M_ACCUMULATED" in aoci.modifiers and aoci.head == "H_EQUITY"
+    assert "M_CUMULATIVE" in hedge.modifiers
+    assert settlement.head == "H_EXPENSE"
+    assert settlement.modifiers == frozenset({"M_LITIGATION"})
+    assert remediation.modifiers == frozenset({"M_ENVIRONMENTAL"})
+    assert remediation.head == "H_EXPENSE"
