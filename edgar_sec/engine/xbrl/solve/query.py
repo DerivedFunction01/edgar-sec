@@ -7,12 +7,18 @@ from enum import StrEnum
 from typing import Mapping
 
 from edgar_sec.engine.xbrl.schema.atoms import Atom
-from edgar_sec.engine.xbrl.schema.models import AggregateFact, CalculationArc, XbrlFact
+from edgar_sec.engine.xbrl.schema.models import (
+    AggregateFact,
+    CalculationArc,
+    ConceptDeclaration,
+    XbrlFact,
+)
 from edgar_sec.engine.xbrl.solve.equivalence import (
     EXACT,
     GENERALIZATION,
     RankedEquivalent,
 )
+from edgar_sec.engine.xbrl.taxonomy.item_types import text_coordinate_rule
 from edgar_sec.engine.xbrl.solve.scoping import FactScope
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
 from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
@@ -86,10 +92,13 @@ class FinancialQueryEngine:
         self,
         solver: XbrlConstraintSolver,
         aliases: Mapping[str, tuple[str, ...]] | None = None,
+        declarations: Mapping[str, ConceptDeclaration] | None = None,
     ) -> None:
         self.solver = solver
         self.taxonomy = solver.kb.taxonomy
         self.aliases = aliases or DEFAULT_ALIASES
+        self.declarations = declarations or {}
+        self._text_rule = text_coordinate_rule(self.taxonomy)
 
     @staticmethod
     def _normalize_term(term: str) -> str:
@@ -139,12 +148,21 @@ class FinancialQueryEngine:
         if target_atom.head == "H_UNKNOWN" or residuals:
             return (), target_atom, (), None
 
-        numeric = self._numeric_qnames(scoped_facts)
-        decomposed = {
-            qname: decompose_concept(qname, lexicon)
-            for qname in qnames
-            if qname in available and qname in numeric
+        numeric = {
+            fact.concept_qname
+            for fact in scoped_facts
+            if isinstance(fact.value, (int, float))
         }
+        decomposed = {}
+        for qname in sorted(qnames & available):
+            result = decompose_concept(
+                qname,
+                lexicon,
+                self.declarations.get(qname),
+                self._text_rule,
+            )
+            if self._candidate_eligible(qname, result[0], numeric):
+                decomposed[qname] = result
         atoms = {qname: result[0] for qname, result in decomposed.items()}
         matches = {qname for qname, atom in atoms.items() if atom == target_atom}
         if matches:
@@ -196,18 +214,24 @@ class FinancialQueryEngine:
             return (best.qname,), target_atom, ranked, best.qname
         return tuple(item.qname for item in tier_group), target_atom, ranked, None
 
-    @staticmethod
-    def _numeric_qnames(scoped_facts: tuple[XbrlFact, ...]) -> set[str]:
-        """Qnames carrying at least one numeric fact in the scoped pool.
+    def _candidate_eligible(
+        self, qname: str, atom: Atom, numeric: set[str]
+    ) -> bool:
+        """Numeric floor for every candidate; coordinate excludes text above it.
 
-        Interim substance guard: text-only concepts cannot satisfy a
-        numeric query; the Phase 1 type coordinate replaces this.
+        A candidate needs a numeric fact in scope to answer a numeric
+        query. A declared text type then excludes it even when numeric
+        facts exist; a type-unresolved qname gets no exclusion, so the
+        floor is its only text protection (the narrowed residue).
         """
-        return {
-            fact.concept_qname
-            for fact in scoped_facts
-            if isinstance(fact.value, (int, float))
-        }
+        if qname not in numeric:
+            return False
+        declaration = self.declarations.get(qname)
+        if declaration is None or declaration.item_type is None:
+            return True
+        if self._text_rule is None:
+            return True
+        return self._text_rule.modifier_id not in atom.modifiers
 
     @staticmethod
     def _deduplicate_context_facts(

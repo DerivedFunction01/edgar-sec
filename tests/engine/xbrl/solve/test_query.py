@@ -18,10 +18,29 @@ from tests.support import fixture_path
 from .conftest import load_seed_calculation_arcs, load_seed_facts
 
 
-def _query_engine() -> FinancialQueryEngine:
+def _query_engine(declarations=None) -> FinancialQueryEngine:
     return FinancialQueryEngine(
-        XbrlConstraintSolver(EvidenceKnowledgeBase(taxonomy=load_domain_taxonomy()))
+        XbrlConstraintSolver(EvidenceKnowledgeBase(taxonomy=load_domain_taxonomy())),
+        declarations=declarations,
     )
+
+
+def _table_declarations(*qnames: str) -> dict:
+    """Declarations for standard qnames from the shipped item-type table."""
+    from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
+    from edgar_sec.engine.xbrl.taxonomy.item_types import (
+        declaration_for,
+        load_standard_item_types,
+    )
+
+    table = load_standard_item_types(
+        resolve_xbrl_paths().default_standard_item_types_path
+    )
+    return {
+        qname: declaration
+        for qname in qnames
+        if (declaration := declaration_for(qname, table)) is not None
+    }
 
 
 def test_camel_case_and_spaced_concept_terms_resolve_equivalently() -> None:
@@ -1211,15 +1230,33 @@ def _text_fact(qname: str, text: str) -> XbrlFact:
 
 
 def test_text_only_atom_matches_leave_a_numeric_term_unavailable() -> None:
-    """Only textblocks sit on the bare atom: no numeric candidate exists."""
-    facts = (
-        _text_fact("us-gaap:DisaggregationOfRevenueTableTextBlock", "<div>rev</div>"),
-        _text_fact("us-gaap:RevenueRecognitionPolicyTextBlock", "<div>pol</div>"),
+    """Only textblocks sit on the bare atom: the coordinate excludes them."""
+    qnames = (
+        "us-gaap:DisaggregationOfRevenueTableTextBlock",
+        "us-gaap:RevenueRecognitionPolicyTextBlock",
     )
-    result = _query_engine().execute(FinancialQuery("Revenue", _DURATION_SCOPE), facts)
+    facts = (
+        _text_fact(qnames[0], "<div>rev</div>"),
+        _text_fact(qnames[1], "<div>pol</div>"),
+    )
+    engine = _query_engine(_table_declarations(*qnames))
+    result = engine.execute(FinancialQuery("Revenue", _DURATION_SCOPE), facts)
     assert result.status == QueryStatus.UNAVAILABLE
     assert result.candidate_qnames == ()
     assert result.value is None
+
+
+def test_text_coordinate_excludes_a_textblock_with_numeric_facts() -> None:
+    """Declared text type excludes even when numeric facts exist (not substance)."""
+    qname = "us-gaap:DisaggregationOfRevenueTableTextBlock"
+    facts = (_duration_fact(qname, 5.0),)
+    declared = _query_engine(_table_declarations(qname))
+    result = declared.execute(FinancialQuery("Revenue", _DURATION_SCOPE), facts)
+    assert result.status == QueryStatus.UNAVAILABLE
+    assert result.candidate_qnames == ()
+    undeclared = _query_engine().execute(FinancialQuery("Revenue", _DURATION_SCOPE), facts)
+    assert undeclared.status == QueryStatus.REPORTED
+    assert undeclared.candidate_qnames == (qname,)
 
 
 def test_text_only_candidate_does_not_crowd_a_numeric_match() -> None:
@@ -1228,7 +1265,10 @@ def test_text_only_candidate_does_not_crowd_a_numeric_match() -> None:
         _duration_fact("us-gaap:Revenues", 100.0),
         _text_fact("us-gaap:DisaggregationOfRevenueTableTextBlock", "<div>rev</div>"),
     )
-    result = _query_engine().execute(FinancialQuery("Revenue", _DURATION_SCOPE), facts)
+    declarations = _table_declarations("us-gaap:DisaggregationOfRevenueTableTextBlock")
+    result = _query_engine(declarations).execute(
+        FinancialQuery("Revenue", _DURATION_SCOPE), facts
+    )
     assert result.status == QueryStatus.REPORTED
     assert result.candidate_qnames == ("us-gaap:Revenues",)
     assert result.value == 100.0

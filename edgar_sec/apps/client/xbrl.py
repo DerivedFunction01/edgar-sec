@@ -13,6 +13,7 @@ from edgar_sec.apps.client.views import StatementView
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
 from edgar_sec.engine.xbrl.schema.models import (
     CalculationArc,
+    ConceptDeclaration,
     ConceptLabel,
     FilingXbrl,
     LinkbaseBundle,
@@ -31,7 +32,12 @@ from edgar_sec.engine.xbrl.solve.statement import (
     StatementNode,
     build_statement_graph,
 )
+from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
+from edgar_sec.engine.xbrl.taxonomy.item_types import (
+    declaration_for,
+    load_standard_item_types,
+)
 
 _STANDARD_LABEL_ROLE = "http://www.xbrl.org/2003/role/label"
 _SUCCESS_STATUSES = frozenset(
@@ -94,7 +100,32 @@ class Xbrl:
 
         kb = EvidenceKnowledgeBase(self._taxonomy)
         solver = XbrlConstraintSolver(kb)
-        self._query_engine = FinancialQueryEngine(solver)
+        self._query_engine = FinancialQueryEngine(
+            solver, declarations=self._merged_declarations(arcs)
+        )
+
+    def _merged_declarations(
+        self, arcs: tuple[CalculationArc, ...]
+    ) -> dict[str, ConceptDeclaration]:
+        """Bundle declarations merged over the standard item-type table."""
+        extension = {}
+        if self._filing.linkbases is not None:
+            extension = {
+                item.concept_qname: item
+                for item in self._filing.linkbases.declarations
+            }
+        table = load_standard_item_types(
+            resolve_xbrl_paths().default_standard_item_types_path
+        )
+        qnames = {fact.concept_qname for fact in self._filing.facts}
+        for arc in arcs:
+            qnames.update((arc.parent_qname, arc.child_qname))
+        merged = {}
+        for qname in sorted(qnames):
+            declaration = declaration_for(qname, table, extension)
+            if declaration is not None:
+                merged[qname] = declaration
+        return merged
 
     @property
     def accession(self) -> str:

@@ -63,9 +63,13 @@ def merge_declarations(
 def declaration_for(
     qname: str,
     table: Mapping[str, str],
-    declarations: Iterable[ConceptDeclaration] = (),
+    declarations: Iterable[ConceptDeclaration]
+    | Mapping[str, ConceptDeclaration] = (),
 ) -> ConceptDeclaration | None:
     """Effective declaration for a qname: extension first, table underneath."""
+    if isinstance(declarations, Mapping):
+        found = declarations.get(qname)
+        declarations = (found,) if found is not None else ()
     for declaration in declarations:
         if declaration.concept_qname == qname:
             if declaration.item_type is None and qname in table:
