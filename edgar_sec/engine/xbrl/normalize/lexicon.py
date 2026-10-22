@@ -1,4 +1,4 @@
-"""Declarative token lexicon and longest-match phrase scanner."""
+"""Declarative token lexicon: typed phrase claims and phrase scanning."""
 
 from __future__ import annotations
 
@@ -7,46 +7,116 @@ import json
 from pathlib import Path
 from typing import Any
 
+CLAIM_KINDS = ("head", "modifier", "boundary", "relation", "indexical")
+HEAD_CLAIM_CLASSES = ("PRIMARY", "INSTRUMENT", "TAIL", "COMPOUND_QUALIFIER")
+RELATION_KINDS = ("NET_OF", "EXCLUDING", "INCLUDING")
+
 
 @dataclass(frozen=True, slots=True)
 class LexiconEntry:
-    """A lexical entry binding a token phrase to its grammatical or semantic role."""
+    """A lexical claim binding a token phrase to a typed coordinate payload."""
 
     phrase: tuple[str, ...]
-    role: str
+    claim: str
+    head: str | None = None
+    claim_class: str | None = None
+    carriage: tuple[str, ...] = ()
     atom: str | None = None
-    mods: tuple[str, ...] = ()
+    also_asserts: tuple[str, ...] = ()
+    relation: str | None = None
+    operand_mods: tuple[str, ...] = ()
+    projection: tuple[str, ...] = ()
     direction: float | None = None
     indexical: str | None = None
-    followed_by_any: tuple[str, ...] = ()
-    derivation: str | None = None
+    scope_next: tuple[str, ...] = ()
+    temporal_pattern: str | None = None
+    coexists_with: tuple[str, ...] = ()
+    requires_evidence: bool = False
+    sub_identity: bool = True
+    protect_far_head: bool = False
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> LexiconEntry:
-        """Construct a LexiconEntry from dictionary format."""
+        """Construct a LexiconEntry from its v2 dictionary format."""
         raw_phrase = data.get("phrase", [])
         if isinstance(raw_phrase, str):
             phrase = tuple(p.lower() for p in raw_phrase.split())
         else:
             phrase = tuple(str(p).lower() for p in raw_phrase)
-        raw_mods = data.get("mods", ())
-        mods = (
-            tuple(str(m) for m in raw_mods)
-            if isinstance(raw_mods, (list, tuple))
-            else ()
-        )
+        claim = str(data.get("claim", "")).lower()
+        if claim not in CLAIM_KINDS:
+            raise ValueError(f"lexicon entry {phrase} has unknown claim {claim!r}")
+        claim_class = data.get("claim_class")
+        if claim == "head":
+            if not data.get("head"):
+                raise ValueError(f"head claim {phrase} names no head")
+            if claim_class not in HEAD_CLAIM_CLASSES:
+                raise ValueError(
+                    f"head claim {phrase} must declare a claim class"
+                    f" (one of {HEAD_CLAIM_CLASSES})"
+                )
+        relation = data.get("relation")
+        if claim == "relation" and relation not in RELATION_KINDS:
+            raise ValueError(f"relation claim {phrase} has unknown kind {relation!r}")
+
+        def _ids(key: str) -> tuple[str, ...]:
+            raw = data.get(key, ())
+            return tuple(str(m) for m in raw) if isinstance(raw, (list, tuple)) else ()
+
         return cls(
             phrase=phrase,
-            role=str(data.get("role", "")).upper(),
+            claim=claim,
+            head=data.get("head"),
+            claim_class=claim_class,
+            carriage=_ids("carriage"),
             atom=data.get("atom"),
-            mods=mods,
+            also_asserts=_ids("also_asserts"),
+            relation=relation,
+            operand_mods=_ids("operand_mods"),
+            projection=_ids("projection"),
             direction=float(data["direction"]) if "direction" in data else None,
             indexical=data.get("indexical"),
-            followed_by_any=tuple(
-                str(token).lower() for token in data.get("followed_by_any", ())
-            ),
-            derivation=data.get("derivation"),
+            scope_next=tuple(str(t).lower() for t in data.get("scope_next", ())),
+            temporal_pattern=data.get("temporal_pattern"),
+            coexists_with=tuple(str(p).lower() for p in data.get("coexists_with", ())),
+            requires_evidence=bool(data.get("requires_evidence", False)),
+            sub_identity=bool(data.get("sub_identity", True)),
+            protect_far_head=bool(data.get("protect_far_head", False)),
         )
+
+    @property
+    def phrase_key(self) -> str:
+        """The space-joined lowercased phrase other entries declare against."""
+        return " ".join(self.phrase)
+
+    def claim_atom(self) -> str | None:
+        """The principal coordinate id this claim contributes, if any."""
+        if self.claim == "head":
+            return self.head
+        if self.claim in ("modifier", "boundary"):
+            return self.atom
+        return None
+
+    def payload_mods(self) -> tuple[str, ...]:
+        """Modifier ids this claim asserts into the flat atom on attribution."""
+        if self.claim == "head":
+            return self.carriage
+        if self.claim == "modifier":
+            return self.also_asserts
+        if self.claim == "relation":
+            return self.projection
+        if self.claim == "boundary":
+            return self.carriage
+        return ()
+
+    def asserted_modifier_ids(self) -> frozenset[str]:
+        """Every modifier id this claim can place in an atom."""
+        ids = set(self.payload_mods())
+        principal = self.claim_atom()
+        if principal and principal.startswith("M_"):
+            ids.add(principal)
+        ids.update(m for m in self.operand_mods if m.startswith("M_"))
+        return frozenset(ids)
 
 
 @dataclass(frozen=True, slots=True)
@@ -59,7 +129,7 @@ class LexiconMatch:
 
 
 class TokenLexicon:
-    """Declarative vocabulary managing phrase matching and grammatical roles."""
+    """Declarative vocabulary managing phrase matching and claim resolution."""
 
     def __init__(self, entries: tuple[LexiconEntry, ...]) -> None:
         """Initialize lexicon with entries indexed by phrase length."""
@@ -68,11 +138,22 @@ class TokenLexicon:
         self._phrase_map: dict[tuple[str, ...], list[LexiconEntry]] = {}
         for entry in sorted(entries, key=lambda e: len(e.phrase), reverse=True):
             self._phrase_map.setdefault(entry.phrase, []).append(entry)
+        self._file_order = {id(entry): i for i, entry in enumerate(entries)}
+        self._modifier_kinds: dict[str, tuple[str, ...]] = {}
 
     @property
     def entries(self) -> tuple[LexiconEntry, ...]:
         """All configured lexical entries."""
         return self._entries
+
+    @property
+    def modifier_kinds(self) -> dict[str, tuple[str, ...]]:
+        """Functional kinds per modifier id, attached by the taxonomy loader."""
+        return self._modifier_kinds
+
+    def attach_modifier_kinds(self, kinds: dict[str, tuple[str, ...]]) -> None:
+        """Attach def kinds so attribution policies can read claim identity."""
+        self._modifier_kinds = dict(kinds)
 
     @classmethod
     def load_json(cls, path: Path | str) -> TokenLexicon:
@@ -82,48 +163,76 @@ class TokenLexicon:
         entries = tuple(LexiconEntry.from_dict(item) for item in data)
         return cls(entries)
 
+    def candidates(self, tokens: tuple[str, ...]) -> list[LexiconMatch]:
+        """Every claim whose phrase matches, overlaps preserved (RR1 pool).
+
+        Scope conditions must be met by the following token.
+        Evidence-gated claims are never candidates (Q6 slot).
+        """
+        lower_tokens = tuple(t.lower() for t in tokens)
+        found: list[tuple[int, LexiconMatch]] = []
+        n = len(tokens)
+        for start in range(n):
+            for length in range(1, min(self._max_len, n - start) + 1):
+                alternatives = self._phrase_map.get(
+                    lower_tokens[start : start + length]
+                )
+                if not alternatives:
+                    continue
+                for entry in alternatives:
+                    if entry.requires_evidence:
+                        continue
+                    if entry.scope_next:
+                        following = (
+                            lower_tokens[start + length] if start + length < n else None
+                        )
+                        if following not in entry.scope_next:
+                            continue
+                    found.append(
+                        (
+                            self._file_order[id(entry)],
+                            LexiconMatch(start=start, end=start + length, entry=entry),
+                        )
+                    )
+        found.sort(
+            key=lambda pair: (pair[1].start, -(pair[1].end - pair[1].start), pair[0])
+        )
+        return [match for _, match in found]
+
+    def select_cover(
+        self,
+        tokens: tuple[str, ...],
+        candidates: list[LexiconMatch] | None = None,
+    ) -> tuple[list[LexiconMatch], list[str]]:
+        """Select the non-crossing cover: v1's greedy longest-at-position (RR1).
+
+        Same-span ties go to the scope-conditioned claimant, then
+        file order — the cover is the parity floor for v2 deltas.
+        """
+        pool = self.candidates(tokens) if candidates is None else candidates
+        by_start: dict[int, list[LexiconMatch]] = {}
+        for match in pool:
+            by_start.setdefault(match.start, []).append(match)
+        cover: list[LexiconMatch] = []
+        residuals: list[str] = []
+        i = 0
+        n = len(tokens)
+        while i < n:
+            options = by_start.get(i)
+            if not options:
+                residuals.append(tokens[i])
+                i += 1
+                continue
+            best_len = max(m.end for m in options) - i
+            span = [m for m in options if m.end - m.start == best_len]
+            scoped = [m for m in span if m.entry.scope_next]
+            chosen = scoped[0] if scoped else span[0]
+            cover.append(chosen)
+            i = chosen.end
+        return cover, residuals
+
     def scan_tokens(
         self, tokens: tuple[str, ...]
     ) -> tuple[list[LexiconMatch], list[str]]:
-        """Greedily match longest phrases from left to right, returning matches and residuals."""
-        lower_tokens = tuple(t.lower() for t in tokens)
-        matches: list[LexiconMatch] = []
-        residuals: list[str] = []
-        i = 0
-        n = len(lower_tokens)
-        while i < n:
-            matched = False
-            for length in range(min(self._max_len, n - i), 0, -1):
-                candidate = lower_tokens[i : i + length]
-                alternatives = self._phrase_map.get(candidate)
-                if alternatives:
-                    following = lower_tokens[i + length :]
-                    entry = next(
-                        (
-                            option
-                            for option in alternatives
-                            if option.followed_by_any
-                            and any(
-                                following and following[0] == expected
-                                for expected in option.followed_by_any
-                            )
-                        ),
-                        next(
-                            (
-                                option
-                                for option in alternatives
-                                if not option.followed_by_any
-                            ),
-                            None,
-                        ),
-                    )
-                    if entry is None:
-                        continue
-                    matches.append(LexiconMatch(start=i, end=i + length, entry=entry))
-                    i += length
-                    matched = True
-                    break
-            if not matched:
-                residuals.append(tokens[i])
-                i += 1
-        return matches, residuals
+        """The selected cover and the tokens it leaves uncovered."""
+        return self.select_cover(tokens)

@@ -11,6 +11,13 @@ from edgar_sec.engine.xbrl.normalize.numbers import (
     collapse_number_phrases,
     number_indexicals,
 )
+from edgar_sec.engine.xbrl.normalize.temporal import (
+    TemporalInterval,
+    derive_horizon,
+    extract_temporal,
+)
+
+_CLASS_RANK = {"PRIMARY": 3, "TAIL": 2, "INSTRUMENT": 1, "COMPOUND_QUALIFIER": 0}
 
 
 def split_camel_case(name: str) -> tuple[str, ...]:
@@ -63,6 +70,8 @@ class ConceptExpression:
     direction: float = 1.0
     indexicals: tuple[str, ...] = ()
     derived_horizon: str | None = None
+    relations: tuple[tuple[str, Atom], ...] = ()
+    temporal: TemporalInterval | None = None
 
 
 def decompose_concept_expression(
@@ -73,8 +82,12 @@ def decompose_concept_expression(
     local_name = concept_qname.split(":")[-1] if ":" in concept_qname else concept_qname
     raw_tokens = split_camel_case(local_name)
     tokens, number_values, ordinal_values = collapse_number_phrases(raw_tokens)
-    matches, _ = lexicon.scan_tokens(tokens)
-    operators = [match for match in matches if match.entry.role == "NET_OF"]
+    cover, _ = lexicon.select_cover(tokens)
+    operators = [
+        match
+        for match in cover
+        if match.entry.claim == "relation" and match.entry.relation == "NET_OF"
+    ]
     if len(operators) > 1:
         return ConceptExpression(
             atom=Atom("H_UNKNOWN"),
@@ -88,14 +101,20 @@ def decompose_concept_expression(
         left_tokens = tokens[: operator.start]
         left_values = {i: v for i, v in number_values.items() if i < operator.start}
         left_ordinals = {i: v for i, v in ordinal_values.items() if i < operator.start}
-        left, left_residuals, direction, indexicals, left_derived = (
-            _decompose_flat_tokens(
-                left_tokens,
-                lexicon,
-                number_indexicals(left_tokens, left_values, left_ordinals),
-                left_values,
-                left_ordinals,
-            )
+        (
+            left,
+            left_residuals,
+            direction,
+            indexicals,
+            left_derived,
+            left_relations,
+            left_temporal,
+        ) = _decompose_flat_tokens(
+            left_tokens,
+            lexicon,
+            number_indexicals(left_tokens, left_values, left_ordinals),
+            left_values,
+            left_ordinals,
         )
         right_values = {
             i - operator.end: v for i, v in number_values.items() if i >= operator.end
@@ -103,10 +122,20 @@ def decompose_concept_expression(
         right_ordinals = {
             i - operator.end: v for i, v in ordinal_values.items() if i >= operator.end
         }
-        right, right_residuals, _, _, right_derived = _decompose_flat_tokens(
+        (
+            right,
+            right_residuals,
+            _,
+            _,
+            right_derived,
+            right_relations,
+            right_temporal,
+        ) = _decompose_flat_tokens(
             tokens[operator.end :], lexicon, (), right_values, right_ordinals
         )
-        operator_atom = operator.entry.atom or "V_NET"
+        operator_atom = (
+            operator.entry.projection[0] if operator.entry.projection else "V_NET"
+        )
         return ConceptExpression(
             atom=Atom(left.head, left.modifiers | {operator_atom}),
             operator="NET_OF",
@@ -118,14 +147,18 @@ def decompose_concept_expression(
             derived_horizon=(
                 left_derived if left_derived is not None else right_derived
             ),
+            relations=left_relations + (("NET_OF", right),) + right_relations,
+            temporal=left_temporal if left_temporal is not None else right_temporal,
         )
 
-    atom, residuals, direction, indexicals, derived = _decompose_flat_tokens(
-        tokens,
-        lexicon,
-        number_indexicals(tokens, number_values, ordinal_values),
-        number_values,
-        ordinal_values,
+    atom, residuals, direction, indexicals, derived, relations, temporal = (
+        _decompose_flat_tokens(
+            tokens,
+            lexicon,
+            number_indexicals(tokens, number_values, ordinal_values),
+            number_values,
+            ordinal_values,
+        )
     )
     return ConceptExpression(
         atom=atom,
@@ -136,59 +169,131 @@ def decompose_concept_expression(
         direction=direction,
         indexicals=indexicals,
         derived_horizon=derived,
+        relations=relations,
+        temporal=temporal,
     )
 
 
-def _window_months(
-    tokens: tuple[str, ...],
-    start: int,
-    end: int,
-    number_values: dict[int, int],
-    ordinal_values: dict[int, int],
-) -> int | None:
-    """Read a due window in months from the single number near a due phrase."""
-    found: list[tuple[int, int]] = []
-    for idx in range(max(0, start - 2), min(len(tokens), end + 4)):
-        if idx in number_values:
-            found.append((idx, number_values[idx]))
-        elif idx in ordinal_values:
-            found.append((idx, ordinal_values[idx]))
-    if len(found) != 1:
-        return None
-    idx, value = found[0]
-    for near in tokens[max(0, idx - 2) : idx + 3]:
-        lowered = near.lower()
-        if lowered in ("month", "months"):
-            return value
-        if lowered in ("year", "years"):
-            return value * 12
-    return None
+def _admit_coexisting(
+    candidates: list[LexiconMatch], cover: list[LexiconMatch]
+) -> list[LexiconMatch]:
+    """Admit suppressed candidates a cover entry declares coexistence with.
 
-
-def _derived_horizon(
-    tokens: tuple[str, ...],
-    matches: list[LexiconMatch],
-    number_values: dict[int, int],
-    ordinal_values: dict[int, int],
-) -> str | None:
-    """Derive a bucket horizon from a due-window phrase plus its number.
-
-    Due-in and due-within windows bucket at the one-year line; a due-after
-    window derives only the noncurrent side, never the short side.
+    RR2: coexistence is a declared pair property, never global; an
+    admitted claim may overlap only the named cover entries.
     """
-    for match in matches:
-        kind = match.entry.derivation
-        if kind is None:
+    admitted: list[LexiconMatch] = []
+    cover_ids = {id(m) for m in cover}
+    for cand in candidates:
+        if id(cand) in cover_ids:
             continue
-        months = _window_months(
-            tokens, match.start, match.end, number_values, ordinal_values
-        )
-        if months is None:
-            return None
-        if kind == "due_after_window":
-            return "M_NONCURRENT" if months >= 12 else None
-        return "M_CURRENT" if months <= 12 else "M_NONCURRENT"
-    return None
+        partners = [
+            m
+            for m in cover
+            if m.start < cand.end
+            and cand.start < m.end
+            and (
+                m.entry.phrase_key in cand.entry.coexists_with
+                or cand.entry.phrase_key in m.entry.coexists_with
+            )
+        ]
+        if not partners:
+            continue
+        blockers = [
+            m
+            for m in cover
+            if m.start < cand.end and cand.start < m.end and m not in partners
+        ]
+        if not blockers:
+            admitted.append(cand)
+    return admitted
+
+
+def _resolve_matches(
+    tokens: tuple[str, ...], lexicon: TokenLexicon
+) -> tuple[list[LexiconMatch], list[str]]:
+    """Resolve candidates to the attributing match list, in span order.
+
+    The cover comes first at any shared start; admitted coexistence
+    claims follow their cover partners.
+    """
+    candidates = lexicon.candidates(tokens)
+    cover, residuals = lexicon.select_cover(tokens, candidates)
+    admitted = _admit_coexisting(candidates, cover)
+    if not admitted:
+        return cover, residuals
+    spans = [(m.start, m.end) for m in cover + admitted]
+    remaining = [
+        token
+        for i, token in enumerate(tokens)
+        if not any(start <= i < end for start, end in spans)
+    ]
+    resolved = sorted(cover + admitted, key=lambda m: (m.start, -(m.end - m.start)))
+    return resolved, remaining
+
+
+def _head_rank(match: LexiconMatch) -> int:
+    return _CLASS_RANK.get(match.entry.claim_class or "", 0)
+
+
+def _pick_head(matches: list[LexiconMatch]) -> tuple[str, int | None]:
+    """Pick the primary-region head: class priority, then v1's last position.
+
+    COMPOUND_QUALIFIER claims never win a head (modifier-only class).
+    """
+    heads = [
+        (idx, m)
+        for idx, m in enumerate(matches)
+        if m.entry.claim == "head" and m.entry.head and _head_rank(m) > 0
+    ]
+    if not heads:
+        return "UNKNOWN", None
+    best = max(_head_rank(m) for _, m in heads)
+    top = [(idx, m) for idx, m in heads if _head_rank(m) == best]
+    idx, match = top[-1]
+    return match.entry.head or "UNKNOWN", idx
+
+
+def _fallback_head(matches: list[LexiconMatch]) -> str:
+    """Subordinate-region fallback head: v1's first positional head claim.
+
+    The subordinate region is a specifier chain; its first head claim
+    is the primary specifier, so position dominates class there.
+    """
+    for m in matches:
+        if m.entry.claim == "head" and m.entry.head and _head_rank(m) > 0:
+            return m.entry.head
+    return "UNKNOWN"
+
+
+def _split_regions(
+    resolved: list[LexiconMatch],
+) -> tuple[list[LexiconMatch], list[LexiconMatch], LexiconMatch | None]:
+    """Split at the first boundary/relation claim, with orphan protection.
+
+    A protect_far_head boundary does not split when the far side's
+    best head is at least as strong as the near side's (B4, opt-in).
+    """
+    sub_idx: int | None = None
+    for idx, match in enumerate(resolved):
+        if match.entry.claim in ("boundary", "relation"):
+            sub_idx = idx
+            break
+    if sub_idx is None:
+        return resolved, [], None
+    boundary = resolved[sub_idx]
+    if not boundary.entry.protect_far_head:
+        return resolved[:sub_idx], resolved[sub_idx + 1 :], boundary
+    near = resolved[:sub_idx]
+    far = resolved[sub_idx + 1 :]
+    near_heads = [m for m in near if m.entry.claim == "head" and _head_rank(m) > 0]
+    far_heads = [m for m in far if m.entry.claim == "head" and _head_rank(m) > 0]
+    if near_heads and far_heads:
+        if max(_head_rank(m) for m in far_heads) >= max(
+            _head_rank(m) for m in near_heads
+        ):
+            return resolved, [], None
+    return near, far, boundary
 
 
 def _decompose_flat_tokens(
@@ -197,60 +302,48 @@ def _decompose_flat_tokens(
     num_indexicals: tuple[str, ...] = (),
     number_values: dict[int, int] | None = None,
     ordinal_values: dict[int, int] | None = None,
-) -> tuple[Atom, tuple[str, ...], float, tuple[str, ...], str | None]:
-    matches, residuals = lexicon.scan_tokens(tokens)
-    derived = _derived_horizon(
-        tokens, matches, number_values or {}, ordinal_values or {}
-    )
+) -> tuple[
+    Atom,
+    tuple[str, ...],
+    float,
+    tuple[str, ...],
+    str | None,
+    tuple[tuple[str, Atom], ...],
+    TemporalInterval | None,
+]:
+    matches, residuals = _resolve_matches(tokens, lexicon)
+    temporal = extract_temporal(tokens, number_values or {}, ordinal_values or {})
+    derived = derive_horizon(temporal)
 
-    sub_idx: int | None = None
-    for idx, match in enumerate(matches):
-        if match.entry.role in ("SUBORDINATOR", "SCOPED_MODIFIER"):
-            sub_idx = idx
-            break
+    primary_matches, subord_matches, boundary_match = _split_regions(matches)
 
-    if sub_idx is not None:
-        primary_matches = matches[:sub_idx]
-        subord_matches = matches[sub_idx + 1 :]
-        boundary_match = matches[sub_idx]
-    else:
-        primary_matches = matches
-        subord_matches = []
-        boundary_match = None
-
-    head = "UNKNOWN"
-    head_match_idx: int | None = None
-    for idx in range(len(primary_matches) - 1, -1, -1):
-        m = primary_matches[idx]
-        if m.entry.role == "HEAD" and m.entry.atom:
-            head = m.entry.atom
-            head_match_idx = idx
-            break
-
+    head, head_match_idx = _pick_head(primary_matches)
     if head_match_idx is None:
-        for m in subord_matches:
-            if m.entry.role == "HEAD" and m.entry.atom:
-                head = m.entry.atom
-                break
+        head = _fallback_head(subord_matches)
+
+    sub_identity = boundary_match.entry.sub_identity if boundary_match else True
+    kinds = lexicon.modifier_kinds
 
     mods: set[str] = set()
     for idx, m in enumerate(primary_matches):
-        if idx != head_match_idx and m.entry.atom and m.entry.role != "HEAD":
-            mods.add(m.entry.atom)
-        if m.entry.mods:
-            mods.update(m.entry.mods)
+        principal = m.entry.claim_atom()
+        if idx != head_match_idx and principal and m.entry.claim != "head":
+            mods.add(principal)
+        mods.update(m.entry.payload_mods())
 
     for m in subord_matches:
-        if m.entry.atom and m.entry.role != "HEAD":
-            mods.add(m.entry.atom)
-        if m.entry.mods:
-            mods.update(m.entry.mods)
+        principal = m.entry.claim_atom()
+        if principal and m.entry.claim != "head":
+            if not sub_identity and "IDENTITY" in kinds.get(principal, ()):
+                continue
+            mods.add(principal)
+        mods.update(m.entry.payload_mods())
 
     if boundary_match is not None:
-        if boundary_match.entry.atom and boundary_match.entry.role != "HEAD":
-            mods.add(boundary_match.entry.atom)
-        if boundary_match.entry.mods:
-            mods.update(boundary_match.entry.mods)
+        principal = boundary_match.entry.claim_atom()
+        if principal and boundary_match.entry.claim != "head":
+            mods.add(principal)
+        mods.update(boundary_match.entry.payload_mods())
 
     direction = 1.0
     for m in matches:
@@ -260,11 +353,29 @@ def _decompose_flat_tokens(
 
     indexicals: list[str] = list(num_indexicals)
     for m in matches:
-        if m.entry.role == "INDEXICAL" and m.entry.indexical:
+        if m.entry.claim == "indexical" and m.entry.indexical:
             indexicals.append(m.entry.indexical)
 
+    relations: list[tuple[str, Atom]] = []
+    for m in matches:
+        if m.entry.claim == "relation" and m.entry.relation in (
+            "EXCLUDING",
+            "INCLUDING",
+        ):
+            relations.append(
+                (m.entry.relation, Atom("H_UNKNOWN", frozenset(m.entry.operand_mods)))
+            )
+
     atom = Atom(head=head, modifiers=frozenset(mods))
-    return atom, tuple(residuals), direction, tuple(indexicals), derived
+    return (
+        atom,
+        tuple(residuals),
+        direction,
+        tuple(indexicals),
+        derived,
+        tuple(relations),
+        temporal,
+    )
 
 
 def infer_semantic_frame(
@@ -284,7 +395,8 @@ def infer_semantic_frame(
     else:
         lexicon = taxonomy.token_lexicon
 
-    atom, residuals, direction, _ = decompose_concept(concept_qname, lexicon)
+    expression = decompose_concept_expression(concept_qname, lexicon)
+    atom = expression.atom
 
     head_def = taxonomy.prime_head(atom.head)
     book = head_def.recognition_book if head_def else "UNKNOWN"
@@ -301,21 +413,19 @@ def infer_semantic_frame(
                 valuation = mod_def.valuation_basis
             if mod_def.realization_state:
                 realization = mod_def.realization_state
-        elif mod_id == "M_FAIR_VALUE":
-            valuation = "FAIR_VALUE"
-        elif mod_id == "M_UNREALIZED":
-            realization = "UNREALIZED_M2M"
 
     return SemanticConceptFrame(
         qname=concept_qname,
         prime_head=atom.head,
         modifiers=tuple(sorted(atom.modifiers)),
         atom=atom,
-        residual_tokens=residuals,
+        residual_tokens=expression.residuals,
         recognition_book=book,
         flow_stock=flow_stock,
         timing_horizon=horizon,
         valuation_basis=valuation,
         realization_state=realization,
-        expected_weight=int(direction),
+        expected_weight=int(expression.direction),
+        indexicals=expression.indexicals,
+        temporal=expression.temporal,
     )

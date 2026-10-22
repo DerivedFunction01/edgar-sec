@@ -573,3 +573,99 @@ def test_tenor_and_classification_compose_without_derivation() -> None:
     )
     assert borrowings.derived_horizon is None
     assert "M_CURRENT" in borrowings.atom.modifiers
+
+
+def test_head_class_arbitration_prefers_primary_over_instrument() -> None:
+    """A PRIMARY flow head beats an INSTRUMENT head in the same region (B2)."""
+    taxonomy = load_domain_taxonomy()
+    assert taxonomy.token_lexicon is not None
+    atom, _, _, _ = decompose_concept(
+        "us-gaap:InterestExpenseFederalFundsPurchased", taxonomy.token_lexicon
+    )
+    assert atom.head == "H_EXPENSE"
+    assert atom.modifiers == frozenset({"M_DEBT", "M_INTEREST"})
+
+
+def test_expression_records_relation_claims() -> None:
+    """EXCLUDING joins the expression's relations with its operand atom."""
+    taxonomy = load_domain_taxonomy()
+    assert taxonomy.token_lexicon is not None
+    expr = decompose_concept_expression(
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        taxonomy.token_lexicon,
+    )
+    assert [kind for kind, _ in expr.relations] == ["EXCLUDING"]
+    assert expr.relations[0][1].modifiers == frozenset({"M_TAX"})
+
+
+def test_expression_carries_temporal_facet_and_derived_horizon() -> None:
+    """The interval lives on the expression; the horizon derives from it."""
+    taxonomy = load_domain_taxonomy()
+    assert taxonomy.token_lexicon is not None
+    expr = decompose_concept_expression(
+        "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths",
+        taxonomy.token_lexicon,
+    )
+    assert expr.temporal is not None
+    assert (expr.temporal.lo_months, expr.temporal.hi_months) == (0, 12)
+    assert expr.derived_horizon == "M_CURRENT"
+
+
+def test_frame_carries_indexicals_and_temporal() -> None:
+    """The semantic frame no longer discards indexicals or the interval."""
+    taxonomy = load_domain_taxonomy()
+    frame = infer_semantic_frame(
+        "us-gaap:LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths",
+        taxonomy,
+    )
+    assert frame.temporal is not None
+    assert frame.indexicals
+
+
+def test_coexistence_admission_requires_a_declared_pair() -> None:
+    """RR2: a suppressed candidate attributes only via a declared pair."""
+    from edgar_sec.engine.xbrl.normalize.lexicon import LexiconEntry, TokenLexicon
+
+    compound = LexiconEntry(
+        ("property", "plant", "and", "equipment"),
+        "modifier",
+        atom="M_PPE_CAPEX",
+    )
+    tail = LexiconEntry(
+        ("equipment", "disposals"),
+        "head",
+        head="H_CASH",
+        claim_class="TAIL",
+    )
+    plain = TokenLexicon((compound, tail))
+    atom, _, _, _ = decompose_concept("x:PropertyPlantAndEquipmentDisposals", plain)
+    assert atom.head == "H_UNKNOWN"
+    assert atom.modifiers == frozenset({"M_PPE_CAPEX"})
+    declared = LexiconEntry(
+        ("equipment", "disposals"),
+        "head",
+        head="H_CASH",
+        claim_class="TAIL",
+        coexists_with=("property plant and equipment",),
+    )
+    with_pair = TokenLexicon((compound, declared))
+    atom2, _, _, _ = decompose_concept(
+        "x:PropertyPlantAndEquipmentDisposals", with_pair
+    )
+    assert atom2.head == "H_CASH"
+
+
+def test_requires_evidence_claim_never_fires() -> None:
+    """Q6: an evidence-gated claim is inert while no evidence channel exists."""
+    from edgar_sec.engine.xbrl.normalize.lexicon import LexiconEntry, TokenLexicon
+
+    gated = LexiconEntry(
+        ("impairment",),
+        "head",
+        head="H_EXPENSE",
+        claim_class="PRIMARY",
+        requires_evidence=True,
+    )
+    lex = TokenLexicon((gated,))
+    atom, _, _, _ = decompose_concept("x:Impairment", lex)
+    assert atom.head == "H_UNKNOWN"

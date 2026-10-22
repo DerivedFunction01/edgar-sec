@@ -12,6 +12,7 @@ XML_CACHE_DIR = "xml"
 TAXONOMY_DIR = "taxonomy"
 DEFAULT_PRIME_HEADS_FILE = "prime_heads.json"
 DEFAULT_SUBATOMIC_MODIFIERS_FILE = "subatomic_modifiers.json"
+DEFAULT_SIBLING_GROUPS_FILE = "sibling_groups.json"
 DEFAULT_TOKEN_LEXICON_FILE = "token_lexicon.json"
 DEFAULT_ATOM_RELATIONS_FILE = "atom_relations.json"
 DEFAULT_STATEMENT_ROOTS_FILE = "statement_roots.json"
@@ -75,6 +76,11 @@ class XbrlPaths:
     def default_subatomic_modifiers_path(self) -> Path:
         """Default path to subatomic modifiers taxonomy file."""
         return self.default_taxonomy_dir / DEFAULT_SUBATOMIC_MODIFIERS_FILE
+
+    @property
+    def default_sibling_groups_path(self) -> Path:
+        """Default path to sibling-axis groups taxonomy file."""
+        return self.default_taxonomy_dir / DEFAULT_SIBLING_GROUPS_FILE
 
     @property
     def default_token_lexicon_path(self) -> Path:

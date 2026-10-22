@@ -11,7 +11,10 @@
       "Automotive",
       "Auto"
     ],
-    "description": "Physical goods or product sales"
+    "description": "Physical goods or product sales",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_SERVICE_CLOUD",
@@ -24,7 +27,10 @@
       "SaaS",
       "Server"
     ],
-    "description": "Cloud, subscription, or service revenue"
+    "description": "Cloud, subscription, or service revenue",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_REAL_ESTATE",
@@ -36,7 +42,10 @@
       "Property",
       "Homebuilding"
     ],
-    "description": "Real estate rental or property revenue/assets"
+    "description": "Real estate rental or property revenue/assets",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_INSURANCE_PREMIUM",
@@ -47,7 +56,10 @@
       "Policyholder",
       "Underwriting"
     ],
-    "description": "Insurance earned premiums or underwriting"
+    "description": "Insurance earned premiums or underwriting",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_BANKING_INTEREST",
@@ -58,7 +70,10 @@
       "Interest",
       "NetInterest"
     ],
-    "description": "Interest income, expense, or net interest margin"
+    "description": "Interest income, expense, or net interest margin",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_BANKING_NONINTEREST",
@@ -68,7 +83,10 @@
       "Fee",
       "Commission"
     ],
-    "description": "Banking noninterest income or expense"
+    "description": "Banking noninterest income or expense",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_RD",
@@ -77,7 +95,10 @@
       "Research",
       "Development"
     ],
-    "description": "Research and development activities"
+    "description": "Research and development activities",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_SGA",
@@ -88,7 +109,10 @@
       "Administrative",
       "Marketing"
     ],
-    "description": "Selling, general, and administrative activities"
+    "description": "Selling, general, and administrative activities",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_DA_DEPLETION",
@@ -99,7 +123,10 @@
       "Amortization",
       "Amortisation"
     ],
-    "description": "Depreciation, depletion, and amortization"
+    "description": "Depreciation, depletion, and amortization",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_SBC",
@@ -109,7 +136,10 @@
       "StockBased",
       "EmployeeBenefits"
     ],
-    "description": "Share-based compensation or employee benefits"
+    "description": "Share-based compensation or employee benefits",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_TAX_INCOME",
@@ -121,7 +151,10 @@
       "Taxes",
       "DeferredIncomeTax"
     ],
-    "description": "Current or deferred income taxes"
+    "description": "Current or deferred income taxes",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_REALIZED",
@@ -134,7 +167,10 @@
       "Paid",
       "Received"
     ],
-    "description": "Realized in cash or recognized in P&L"
+    "description": "Realized in cash or recognized in P&L",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_UNREALIZED",
@@ -148,7 +184,10 @@
       "MarkToMarketGainLoss"
     ],
     "realization_state": "UNREALIZED_M2M",
-    "description": "Unrealized fair-value or OCI mark-to-market"
+    "description": "Unrealized fair-value or OCI mark-to-market",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_RECLASSIFIED_OCI",
@@ -159,7 +198,10 @@
       "FromAOCI",
       "FromAccumulatedOCI"
     ],
-    "description": "Recycled from AOCI into Net Income"
+    "description": "Recycled from AOCI into Net Income",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_DERIVATIVE_HEDGE",
@@ -173,7 +215,10 @@
       "Swap",
       "Option"
     ],
-    "description": "Derivative or hedging instrument"
+    "description": "Derivative or hedging instrument",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_AFS_SECURITY",
@@ -184,7 +229,10 @@
       "DebtSecurities",
       "Investments"
     ],
-    "description": "Available-for-sale or marketable securities"
+    "description": "Available-for-sale or marketable securities",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_FX_CURRENCY",
@@ -195,7 +243,10 @@
       "ForeignExchange",
       "Translation"
     ],
-    "description": "Foreign exchange transaction or translation"
+    "description": "Foreign exchange transaction or translation",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_RECEIVABLE",
@@ -205,7 +256,10 @@
       "Receivables",
       "VendorNonTrade"
     ],
-    "description": "Trade, financing, or vendor non-trade receivables"
+    "description": "Trade, financing, or vendor non-trade receivables",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_INVENTORY",
@@ -216,7 +270,10 @@
       "RawMaterials",
       "Consumables"
     ],
-    "description": "Merchandise, materials, or WIP inventory"
+    "description": "Merchandise, materials, or WIP inventory",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_ACCOUNTS_PAYABLE",
@@ -227,7 +284,10 @@
       "AccountsPayables"
     ],
     "description": "Trade/accounts payable obligations to suppliers",
-    "sibling_group": "OPERATING_LIABILITY_IDENTITY"
+    "sibling_group": "OPERATING_LIABILITY_IDENTITY",
+    "kinds": [
+      "AXIS"
+    ]
   },
   {
     "modifier_id": "M_ACCRUED_LIABILITY",
@@ -237,7 +297,10 @@
       "AccruedExpenses"
     ],
     "description": "Accrued liabilities and expenses incurred but not yet paid",
-    "sibling_group": "OPERATING_LIABILITY_IDENTITY"
+    "sibling_group": "OPERATING_LIABILITY_IDENTITY",
+    "kinds": [
+      "AXIS"
+    ]
   },
   {
     "modifier_id": "M_CONTRACT_UNEARNED",
@@ -247,7 +310,10 @@
       "Unearned",
       "DeferredRevenue"
     ],
-    "description": "Unearned / deferred contract revenue"
+    "description": "Unearned / deferred contract revenue",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_PPE_TANGIBLE",
@@ -257,7 +323,10 @@
       "Property",
       "ProductiveAssets"
     ],
-    "description": "Tangible property, plant, and equipment"
+    "description": "Tangible property, plant, and equipment",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_INTANGIBLE_GOODWILL",
@@ -268,7 +337,10 @@
       "Intangibles",
       "FiniteLived"
     ],
-    "description": "Goodwill and intangible assets"
+    "description": "Goodwill and intangible assets",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CONTENT_FILM",
@@ -280,7 +352,10 @@
       "ContentAssets",
       "ProducedAndLicensed"
     ],
-    "description": "ASC 926 film and streaming content"
+    "description": "ASC 926 film and streaming content",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_LEASE_ROU",
@@ -291,7 +366,10 @@
       "RightOfUse",
       "Lease"
     ],
-    "description": "ASC 842 right-of-use assets and lease liabilities"
+    "description": "ASC 842 right-of-use assets and lease liabilities",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_DEBT_BORROWING",
@@ -303,7 +381,10 @@
       "CommercialPaper",
       "Notes"
     ],
-    "description": "Short-term or long-term debt borrowings"
+    "description": "Short-term or long-term debt borrowings",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_ARO_DECOMMISSIONING",
@@ -313,7 +394,10 @@
       "AssetRetirementObligations",
       "Decommissioning"
     ],
-    "description": "ASC 410 asset retirement obligation"
+    "description": "ASC 410 asset retirement obligation",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_TREASURY_REPURCHASE",
@@ -323,7 +407,10 @@
       "RepurchaseOfCommonStock",
       "Repurchase"
     ],
-    "description": "Share repurchase or treasury stock contra-equity"
+    "description": "Share repurchase or treasury stock contra-equity",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_RETAINED_EARNINGS",
@@ -332,7 +419,10 @@
       "RetainedEarnings",
       "AccumulatedDeficit"
     ],
-    "description": "Cumulative retained earnings"
+    "description": "Cumulative retained earnings",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_DIVIDEND",
@@ -341,7 +431,10 @@
       "Dividend",
       "Dividends"
     ],
-    "description": "Common or preferred dividends"
+    "description": "Common or preferred dividends",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_COMMON_DILUTION",
@@ -353,7 +446,10 @@
       "Diluted",
       "Basic"
     ],
-    "description": "Common equity and share dilution"
+    "description": "Common equity and share dilution",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CURRENT_HORIZON",
@@ -365,7 +461,10 @@
       "ThreeMonths",
       "YearOne"
     ],
-    "description": "Current (<= 12 months) liquidity/maturity"
+    "description": "Current (<= 12 months) liquidity/maturity",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_NONCURRENT_HORIZON",
@@ -378,7 +477,10 @@
       "YearsTwoThroughFive",
       "AfterFiveYears"
     ],
-    "description": "Noncurrent (> 12 months) temporal maturity horizon"
+    "description": "Noncurrent (> 12 months) temporal maturity horizon",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_FAIR_VALUE",
@@ -388,7 +490,10 @@
       "MarkToMarket"
     ],
     "valuation_basis": "FAIR_VALUE",
-    "description": "Fair value measurement basis (ASC 820)"
+    "description": "Fair value measurement basis (ASC 820)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_SWAP",
@@ -397,7 +502,10 @@
       "Swap",
       "Swaps"
     ],
-    "description": "Derivative swap contracts"
+    "description": "Derivative swap contracts",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_OPTION",
@@ -411,7 +519,10 @@
       "Floor",
       "Collar"
     ],
-    "description": "Derivative option contracts"
+    "description": "Derivative option contracts",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_FORWARD",
@@ -421,7 +532,10 @@
       "Forwards",
       "ForwardContract"
     ],
-    "description": "Derivative forward contracts"
+    "description": "Derivative forward contracts",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_FUTURES",
@@ -430,7 +544,10 @@
       "Futures",
       "FuturesContract"
     ],
-    "description": "Exchange-traded derivative futures contracts"
+    "description": "Exchange-traded derivative futures contracts",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_FAIR_VALUE_HEDGE",
@@ -439,7 +556,10 @@
       "FairValueHedge",
       "FairValueHedging"
     ],
-    "description": "Fair value hedge accounting designation (ASC 815-20)"
+    "description": "Fair value hedge accounting designation (ASC 815-20)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CASH_FLOW_HEDGE",
@@ -448,7 +568,10 @@
       "CashFlowHedge",
       "CashFlowHedging"
     ],
-    "description": "Cash flow hedge accounting designation (ASC 815-30)"
+    "description": "Cash flow hedge accounting designation (ASC 815-30)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_NET_INVESTMENT_HEDGE",
@@ -457,7 +580,10 @@
       "NetInvestmentHedge",
       "NetInvestmentHedging"
     ],
-    "description": "Net investment hedge accounting designation (ASC 815-35)"
+    "description": "Net investment hedge accounting designation (ASC 815-35)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_UNDESIGNATED_ECONOMIC",
@@ -467,7 +593,10 @@
       "EconomicHedge",
       "NotDesignatedAsHedging"
     ],
-    "description": "Undesignated or economic hedging derivatives"
+    "description": "Undesignated or economic hedging derivatives",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_COLLATERAL_OFFSET",
@@ -478,7 +607,10 @@
       "CashCollateralPosted",
       "MarginOffset"
     ],
-    "description": "Cash collateral offset against derivative positions (ASC 210-20)"
+    "description": "Cash collateral offset against derivative positions (ASC 210-20)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_MASTER_NETTING_OFFSET",
@@ -489,7 +621,10 @@
       "ISDANetting",
       "CounterpartyNetting"
     ],
-    "description": "Master netting agreement offsets under ISDA"
+    "description": "Master netting agreement offsets under ISDA",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_PRE_PROVISION",
@@ -499,7 +634,10 @@
       "PreProvisionNetRevenue",
       "PreProvisionProfit"
     ],
-    "description": "Banking operating income before credit-loss provision"
+    "description": "Banking operating income before credit-loss provision",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_FINANCING_RECEIVABLE",
@@ -509,7 +647,10 @@
       "FinancingReceivables",
       "Loans"
     ],
-    "description": "Loans and other financing receivables"
+    "description": "Loans and other financing receivables",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CREDIT_LOSS_PROVISION",
@@ -519,7 +660,10 @@
       "ProvisionForCreditLosses",
       "AllowanceForCreditLosses"
     ],
-    "description": "Provision and allowance for credit losses"
+    "description": "Provision and allowance for credit losses",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_FULFILLMENT",
@@ -530,7 +674,10 @@
       "Warehousing",
       "Shipping"
     ],
-    "description": "Order fulfillment, warehousing, and shipping costs"
+    "description": "Order fulfillment, warehousing, and shipping costs",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_TECH_INFRA",
@@ -541,7 +688,10 @@
       "CloudInfrastructure",
       "Datacenter"
     ],
-    "description": "Technology, computing, and cloud infrastructure costs"
+    "description": "Technology, computing, and cloud infrastructure costs",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_RESTRUCTURING",
@@ -551,7 +701,10 @@
       "Severance",
       "Reorganization"
     ],
-    "description": "Organizational restructuring, severance, and impairment costs"
+    "description": "Organizational restructuring, severance, and impairment costs",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_ACTIVISM_COSTS",
@@ -561,7 +714,10 @@
       "ProxyDefense",
       "GovernanceDefense"
     ],
-    "description": "Shareholder activism advisory and proxy defense costs"
+    "description": "Shareholder activism advisory and proxy defense costs",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_PENSION_DEFINED_BENEFIT",
@@ -571,7 +727,10 @@
       "Pension",
       "Postretirement"
     ],
-    "description": "Defined benefit pension and post-retirement obligations"
+    "description": "Defined benefit pension and post-retirement obligations",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_SBC_AWARD",
@@ -581,7 +740,10 @@
       "EquityBasedAward",
       "StockBasedAward"
     ],
-    "description": "Share-based compensation payment awards"
+    "description": "Share-based compensation payment awards",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_ROU_LEASE",
@@ -590,7 +752,10 @@
       "RightOfUseAsset",
       "OperatingLeaseRightOfUseAsset"
     ],
-    "description": "Operating lease right-of-use assets"
+    "description": "Operating lease right-of-use assets",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CONTRACT_CUSTOMER",
@@ -599,7 +764,10 @@
       "ContractWithCustomer",
       "ContractsWithCustomers"
     ],
-    "description": "Revenue contract scope under ASC 606"
+    "description": "Revenue contract scope under ASC 606",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_RISK_COMMODITY",
@@ -610,7 +778,10 @@
       "Metals",
       "Agriculture"
     ],
-    "description": "Commodity-price underlying risk"
+    "description": "Commodity-price underlying risk",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_RISK_EQUITY",
@@ -620,7 +791,10 @@
       "Index",
       "Stock"
     ],
-    "description": "Equity and equity-index underlying risk"
+    "description": "Equity and equity-index underlying risk",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_RISK_FX",
@@ -631,7 +805,10 @@
       "Currency",
       "CrossCurrency"
     ],
-    "description": "Foreign-exchange and currency underlying risk"
+    "description": "Foreign-exchange and currency underlying risk",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_RISK_IR",
@@ -641,7 +818,10 @@
       "Treasury",
       "SOFR"
     ],
-    "description": "Interest-rate underlying risk"
+    "description": "Interest-rate underlying risk",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_RISK_CREDIT",
@@ -651,7 +831,10 @@
       "CDS",
       "CreditDefault"
     ],
-    "description": "Credit-spread and credit-default underlying risk"
+    "description": "Credit-spread and credit-default underlying risk",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_CAP_FLOOR_COLLAR",
@@ -662,7 +845,10 @@
       "InterestRateCollar",
       "CapFloor"
     ],
-    "description": "Nonlinear interest-rate option contracts"
+    "description": "Nonlinear interest-rate option contracts",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_SWAPTION",
@@ -671,7 +857,10 @@
       "Swaption",
       "Swaptions"
     ],
-    "description": "Option to enter an underlying swap agreement"
+    "description": "Option to enter an underlying swap agreement",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CROSS_CURRENCY_SWAP",
@@ -680,7 +869,10 @@
       "CrossCurrencySwap",
       "CrossCurrencyBasisSwap"
     ],
-    "description": "Cross-currency and multi-currency basis swaps"
+    "description": "Cross-currency and multi-currency basis swaps",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_NOTIONAL_AMOUNT",
@@ -690,7 +882,10 @@
       "NotionalPrincipal",
       "NotionalValue"
     ],
-    "description": "Off-balance-sheet derivative contract notional"
+    "description": "Off-balance-sheet derivative contract notional",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_COUNTERPARTY_NETTING",
@@ -700,7 +895,10 @@
       "CounterpartyNetting",
       "BilateralNetting"
     ],
-    "description": "ASC 210-20 counterparty master-netting offset"
+    "description": "ASC 210-20 counterparty master-netting offset",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CASH_COLLATERAL_OFFSET",
@@ -710,7 +908,10 @@
       "CashCollateralPledged",
       "VariationMargin"
     ],
-    "description": "Cash collateral held or pledged against derivative positions"
+    "description": "Cash collateral held or pledged against derivative positions",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_PRETAX_OPERATING_MARGIN",
@@ -719,7 +920,10 @@
       "PreTaxOperatingMargin",
       "PretaxOperatingMargin"
     ],
-    "description": "Operating margin measured before income taxes"
+    "description": "Operating margin measured before income taxes",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_COSTS_AND_EXPENSES",
@@ -728,7 +932,10 @@
       "CostsAndExpenses",
       "OperatingCostsAndExpenses"
     ],
-    "description": "Aggregate operating cost and expense grouping"
+    "description": "Aggregate operating cost and expense grouping",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_NOT_SUBJECT_TO_NETTING",
@@ -736,7 +943,10 @@
     "keywords": [
       "NotSubjectToMasterNettingArrangement"
     ],
-    "description": "Derivative amounts presented before master-netting offsets"
+    "description": "Derivative amounts presented before master-netting offsets",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_COLLATERAL_RETURN",
@@ -745,7 +955,10 @@
       "ObligationToReturnCash",
       "CollateralReturnObligation"
     ],
-    "description": "Cash collateral obligation to return amounts received"
+    "description": "Cash collateral obligation to return amounts received",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_COLLATERAL_RECLAIM",
@@ -754,7 +967,10 @@
       "RightToReclaimCash",
       "CollateralReclaimRight"
     ],
-    "description": "Cash collateral right to reclaim amounts pledged"
+    "description": "Cash collateral right to reclaim amounts pledged",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CHANGE",
@@ -766,7 +982,10 @@
       "Change",
       "Delta"
     ],
-    "description": "Period increase, decrease, or net change flow"
+    "description": "Period increase, decrease, or net change flow",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_INVESTING",
@@ -776,7 +995,10 @@
       "InvestingActivities",
       "InvestmentActivities"
     ],
-    "description": "Cash flows provided by or used in investing activities"
+    "description": "Cash flows provided by or used in investing activities",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_FINANCING",
@@ -785,7 +1007,10 @@
       "Financing",
       "FinancingActivities"
     ],
-    "description": "Cash flows provided by or used in financing activities"
+    "description": "Cash flows provided by or used in financing activities",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_DEBT",
@@ -797,7 +1022,10 @@
       "Notes",
       "Borrowings"
     ],
-    "description": "Debt borrowing obligation"
+    "description": "Debt borrowing obligation",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_COMMERCIAL_PAPER",
@@ -805,7 +1033,10 @@
     "keywords": [
       "CommercialPaper"
     ],
-    "description": "Commercial paper short-term debt obligation"
+    "description": "Commercial paper short-term debt obligation",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CONVERTIBLE",
@@ -813,7 +1044,10 @@
     "keywords": [
       "Convertible"
     ],
-    "description": "Convertible debt or preferred claim"
+    "description": "Convertible debt or preferred claim",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_ZERO_COUPON",
@@ -821,7 +1055,10 @@
     "keywords": [
       "ZeroCoupon"
     ],
-    "description": "Zero coupon discount debt obligation"
+    "description": "Zero coupon discount debt obligation",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_SENIOR",
@@ -829,7 +1066,10 @@
     "keywords": [
       "Senior"
     ],
-    "description": "Senior ranking debt priority"
+    "description": "Senior ranking debt priority",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_SUBORDINATED",
@@ -837,7 +1077,10 @@
     "keywords": [
       "Subordinated"
     ],
-    "description": "Subordinated junior ranking debt claim"
+    "description": "Subordinated junior ranking debt claim",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_MATURITY",
@@ -847,7 +1090,10 @@
       "Maturities",
       "ContractualMaturity"
     ],
-    "description": "Contractual debt or lease maturity schedule"
+    "description": "Contractual debt or lease maturity schedule",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_OPERATING",
@@ -857,7 +1103,10 @@
       "OperatingActivities",
       "OperatingActivity"
     ],
-    "description": "Operating activities or operations scope"
+    "description": "Operating activities or operations scope",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_DISCONTINUED",
@@ -867,7 +1116,10 @@
       "DiscontinuedOperations",
       "DisposalGroup"
     ],
-    "description": "Discontinued operations or disposal groups"
+    "description": "Discontinued operations or disposal groups",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CONTINUING",
@@ -876,7 +1128,10 @@
       "Continuing",
       "ContinuingOperations"
     ],
-    "description": "Continuing operations"
+    "description": "Continuing operations",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_WEIGHTED_AVERAGE",
@@ -884,7 +1139,10 @@
     "keywords": [
       "WeightedAverage"
     ],
-    "description": "Weighted average measurement basis"
+    "description": "Weighted average measurement basis",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_VALUATION_ALLOWANCE",
@@ -893,7 +1151,10 @@
       "ValuationAllowance",
       "Allowance"
     ],
-    "description": "Valuation allowance contra amount against a gross carrying amount"
+    "description": "Valuation allowance contra amount against a gross carrying amount",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_NONCASH",
@@ -901,7 +1162,10 @@
     "keywords": [
       "Noncash"
     ],
-    "description": "Noncash investing or financing activity"
+    "description": "Noncash investing or financing activity",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_BUSINESS_COMBINATION",
@@ -910,7 +1174,10 @@
       "BusinessCombination",
       "BusinessCombinations"
     ],
-    "description": "Business combination or acquisition accounting"
+    "description": "Business combination or acquisition accounting",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_APIC",
@@ -919,7 +1186,10 @@
       "AdditionalPaidInCapital",
       "PaidInCapital"
     ],
-    "description": "Additional paid in capital component of equity"
+    "description": "Additional paid in capital component of equity",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_EQUITY_METHOD",
@@ -927,7 +1197,10 @@
     "keywords": [
       "EquityMethod"
     ],
-    "description": "Equity method investment accounting"
+    "description": "Equity method investment accounting",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_NONCONTROLLING_INTEREST",
@@ -936,7 +1209,10 @@
       "NoncontrollingInterest",
       "NoncontrollingInterests"
     ],
-    "description": "Noncontrolling interest component of equity"
+    "description": "Noncontrolling interest component of equity",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_AWARD_GRANT",
@@ -944,7 +1220,10 @@
     "keywords": [
       "Grants"
     ],
-    "description": "Share based awards granted in period"
+    "description": "Share based awards granted in period",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_AWARD_VESTED",
@@ -952,7 +1231,10 @@
     "keywords": [
       "Vested"
     ],
-    "description": "Share based awards vested in period"
+    "description": "Share based awards vested in period",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_AWARD_NONVESTED",
@@ -960,7 +1242,10 @@
     "keywords": [
       "Nonvested"
     ],
-    "description": "Share based awards not yet vested"
+    "description": "Share based awards not yet vested",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_AWARD_FORFEITED",
@@ -969,7 +1254,10 @@
       "Forfeited",
       "Forfeitures"
     ],
-    "description": "Share based awards forfeited in period"
+    "description": "Share based awards forfeited in period",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_PAR_VALUE",
@@ -977,7 +1265,10 @@
     "keywords": [
       "ParValue"
     ],
-    "description": "Par or stated value of issued shares"
+    "description": "Par or stated value of issued shares",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_LIQUIDATION_PREFERENCE",
@@ -985,7 +1276,10 @@
     "keywords": [
       "LiquidationPreference"
     ],
-    "description": "Liquidation preference of preferred shares"
+    "description": "Liquidation preference of preferred shares",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_FINANCIAL_INSTRUMENT",
@@ -994,7 +1288,10 @@
       "Instruments",
       "Instrument"
     ],
-    "description": "Financial instrument scope qualifier"
+    "description": "Financial instrument scope qualifier",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_RECONCILIATION",
@@ -1002,7 +1299,10 @@
     "keywords": [
       "Reconciliation"
     ],
-    "description": "Reconciliation bridge between two measures"
+    "description": "Reconciliation bridge between two measures",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_ARRANGEMENT",
@@ -1010,7 +1310,10 @@
     "keywords": [
       "Arrangement"
     ],
-    "description": "Arrangement or plan structure qualifier"
+    "description": "Arrangement or plan structure qualifier",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_PERCENT",
@@ -1019,7 +1322,10 @@
       "Percent",
       "Percentage"
     ],
-    "description": "Percentage or rate measure qualifier"
+    "description": "Percentage or rate measure qualifier",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_PENSION_DEFINED_CONTRIBUTION",
@@ -1028,7 +1334,10 @@
       "DefinedContributionPlan",
       "DefinedContribution"
     ],
-    "description": "Defined contribution retirement plan"
+    "description": "Defined contribution retirement plan",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CAPITALIZED",
@@ -1036,7 +1345,10 @@
     "keywords": [
       "Capitalized"
     ],
-    "description": "Capitalized cost carried as an asset"
+    "description": "Capitalized cost carried as an asset",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_FILM",
@@ -1044,7 +1356,10 @@
     "keywords": [
       "Film"
     ],
-    "description": "Film and episodic content production vertical"
+    "description": "Film and episodic content production vertical",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_THIRD_PARTY",
@@ -1052,7 +1367,10 @@
     "keywords": [
       "ThirdParty"
     ],
-    "description": "External counterparty: neither the reporting entity nor a related party"
+    "description": "External counterparty: neither the reporting entity nor a related party",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_RELATED_PARTY",
@@ -1060,7 +1378,10 @@
     "keywords": [
       "RelatedParty"
     ],
-    "description": "Counterparty related to the reporting entity (affiliate, officer, principal owner)"
+    "description": "Counterparty related to the reporting entity (affiliate, officer, principal owner)",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_PAST_DUE",
@@ -1068,7 +1389,10 @@
     "keywords": [
       "PastDue"
     ],
-    "description": "Delinquency state: amount past its contractual due date"
+    "description": "Delinquency state: amount past its contractual due date",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_DISPOSAL_GROUP",
@@ -1076,7 +1400,10 @@
     "keywords": [
       "DisposalGroup"
     ],
-    "description": "Assets and liabilities of a disposal group, including discontinued operations"
+    "description": "Assets and liabilities of a disposal group, including discontinued operations",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_OFF_BALANCE_SHEET",
@@ -1084,7 +1411,10 @@
     "keywords": [
       "OffBalanceSheet"
     ],
-    "description": "Off-balance-sheet arrangement exposure: guarantees, conduits, retained interests"
+    "description": "Off-balance-sheet arrangement exposure: guarantees, conduits, retained interests",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_AVAILABLE_FOR_SALE",
@@ -1093,7 +1423,10 @@
       "AvailableForSale"
     ],
     "description": "Securities classified available-for-sale (fair value through OCI)",
-    "sibling_group": "SECURITIES_CLASSIFICATION"
+    "sibling_group": "SECURITIES_CLASSIFICATION",
+    "kinds": [
+      "AXIS"
+    ]
   },
   {
     "modifier_id": "M_HELD_TO_MATURITY",
@@ -1102,7 +1435,10 @@
       "HeldToMaturity"
     ],
     "description": "Securities classified held-to-maturity (amortized cost)",
-    "sibling_group": "SECURITIES_CLASSIFICATION"
+    "sibling_group": "SECURITIES_CLASSIFICATION",
+    "kinds": [
+      "AXIS"
+    ]
   },
   {
     "modifier_id": "M_COMMODITY_CRUDE_OIL",
@@ -1110,7 +1446,10 @@
     "keywords": [
       "CrudeOil"
     ],
-    "description": "Exposure to crude oil as a commodity instrument"
+    "description": "Exposure to crude oil as a commodity instrument",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_COMMODITY_NATURAL_GAS",
@@ -1118,7 +1457,10 @@
     "keywords": [
       "NaturalGas"
     ],
-    "description": "Exposure to natural gas as a commodity instrument"
+    "description": "Exposure to natural gas as a commodity instrument",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_COMMODITY_GOLD",
@@ -1126,7 +1468,10 @@
     "keywords": [
       "Gold"
     ],
-    "description": "Exposure to gold as a commodity instrument"
+    "description": "Exposure to gold as a commodity instrument",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_COMMODITY_COPPER",
@@ -1134,7 +1479,10 @@
     "keywords": [
       "Copper"
     ],
-    "description": "Exposure to copper as a commodity instrument"
+    "description": "Exposure to copper as a commodity instrument",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_COMMODITY_CORN",
@@ -1142,7 +1490,10 @@
     "keywords": [
       "Corn"
     ],
-    "description": "Exposure to corn as a commodity instrument"
+    "description": "Exposure to corn as a commodity instrument",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_COMMODITY_NITROGEN_FERTILIZER",
@@ -1150,7 +1501,10 @@
     "keywords": [
       "NitrogenFertilizer"
     ],
-    "description": "Exposure to nitrogen fertilizer as a commodity instrument"
+    "description": "Exposure to nitrogen fertilizer as a commodity instrument",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_COMMODITY_OIL_AND_GAS",
@@ -1158,7 +1512,10 @@
     "keywords": [
       "OilAndGas"
     ],
-    "description": "Exposure to the oil and gas complex as a commodity coordinate"
+    "description": "Exposure to the oil and gas complex as a commodity coordinate",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_SUPPLIER_FINANCE",
@@ -1167,7 +1524,10 @@
       "SupplierFinance",
       "SupplierFinanceProgram"
     ],
-    "description": "Supplier finance (reverse factoring) program obligations"
+    "description": "Supplier finance (reverse factoring) program obligations",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_EMPLOYEE_LIABILITY",
@@ -1176,7 +1536,10 @@
       "EmployeeRelatedLiabilities",
       "EmployeeRelated"
     ],
-    "description": "Employee-related accrued liabilities (compensation and benefits payable)"
+    "description": "Employee-related accrued liabilities (compensation and benefits payable)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_EMPLOYEE_COUNT",
@@ -1185,7 +1548,10 @@
       "NumberOfEmployees",
       "NumberOfPayrollEmployees"
     ],
-    "description": "Employee headcount measure (number of employees)"
+    "description": "Employee headcount measure (number of employees)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_DEFERRED_COMPENSATION",
@@ -1193,7 +1559,10 @@
     "keywords": [
       "DeferredCompensation"
     ],
-    "description": "Deferred compensation plan obligations and assets"
+    "description": "Deferred compensation plan obligations and assets",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_LOSS_CONTINGENCY",
@@ -1202,7 +1571,10 @@
       "LossContingency",
       "LossContingencies"
     ],
-    "description": "Accrued loss contingencies (litigation, environmental, guarantees of loss)"
+    "description": "Accrued loss contingencies (litigation, environmental, guarantees of loss)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_GUARANTEE_OBLIGATION",
@@ -1211,7 +1583,10 @@
       "GuaranteeObligations",
       "Guarantee"
     ],
-    "description": "Guarantee obligations issued on behalf of others"
+    "description": "Guarantee obligations issued on behalf of others",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_DEPOSIT_LIABILITY",
@@ -1220,7 +1595,10 @@
       "CustomerDeposits",
       "Deposits"
     ],
-    "description": "Deposit liabilities held for customers or depositors"
+    "description": "Deposit liabilities held for customers or depositors",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_RESTRICTED",
@@ -1228,7 +1606,10 @@
     "keywords": [
       "Restricted"
     ],
-    "description": "Assets or shares whose use, availability, or transfer is restricted"
+    "description": "Assets or shares whose use, availability, or transfer is restricted",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_SHARES_ISSUED",
@@ -1236,7 +1617,10 @@
     "keywords": [
       "SharesIssued"
     ],
-    "description": "Share count in issued state"
+    "description": "Share count in issued state",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_SHARES_OUTSTANDING",
@@ -1244,7 +1628,10 @@
     "keywords": [
       "SharesOutstanding"
     ],
-    "description": "Share count in outstanding state"
+    "description": "Share count in outstanding state",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_SHARES_AUTHORIZED",
@@ -1252,7 +1639,10 @@
     "keywords": [
       "SharesAuthorized"
     ],
-    "description": "Share count in authorized state"
+    "description": "Share count in authorized state",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_PREPAID",
@@ -1262,7 +1652,10 @@
       "PrepaidExpense",
       "PrepaidExpenses"
     ],
-    "description": "Prepaid expenses and prepayments made for future periods"
+    "description": "Prepaid expenses and prepayments made for future periods",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_GOODWILL",
@@ -1270,7 +1663,10 @@
     "keywords": [
       "Goodwill"
     ],
-    "description": "Goodwill arising from business combinations"
+    "description": "Goodwill arising from business combinations",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_INVESTMENT",
@@ -1281,7 +1677,10 @@
       "MarketableSecurities",
       "TradingSecurities"
     ],
-    "description": "Investment securities and investment positions held"
+    "description": "Investment securities and investment positions held",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_VARIABLE_INTEREST_ENTITY",
@@ -1290,7 +1689,10 @@
       "VariableInterestEntity",
       "VIE"
     ],
-    "description": "Variable interest entity (VIE) consolidation involvement"
+    "description": "Variable interest entity (VIE) consolidation involvement",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CLAIM_RESERVE",
@@ -1299,7 +1701,10 @@
       "ClaimReserve",
       "ClaimsReserve"
     ],
-    "description": "Insurance claim and loss reserves and related benefits"
+    "description": "Insurance claim and loss reserves and related benefits",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_AGGREGATE",
@@ -1307,7 +1712,10 @@
     "keywords": [
       "Aggregate"
     ],
-    "description": "Amount aggregated across a group (plans, awards, positions), not a single item"
+    "description": "Amount aggregated across a group (plans, awards, positions), not a single item",
+    "kinds": [
+      "SCOPE"
+    ]
   },
   {
     "modifier_id": "M_ANTIDILUTIVE",
@@ -1315,7 +1723,10 @@
     "keywords": [
       "Antidilutive"
     ],
-    "description": "Antidilutive securities excluded from diluted EPS computation"
+    "description": "Antidilutive securities excluded from diluted EPS computation",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_BENEFIT_OBLIGATION",
@@ -1324,7 +1735,10 @@
       "BenefitObligation",
       "ProjectedBenefitObligation"
     ],
-    "description": "Defined benefit obligation measure (projected benefit obligation)"
+    "description": "Defined benefit obligation measure (projected benefit obligation)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_ACCUMULATED_BENEFIT_OBLIGATION",
@@ -1332,7 +1746,10 @@
     "keywords": [
       "AccumulatedBenefitObligation"
     ],
-    "description": "Accumulated benefit obligation (no future salary projection)"
+    "description": "Accumulated benefit obligation (no future salary projection)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_FUNDED_STATUS",
@@ -1340,7 +1757,10 @@
     "keywords": [
       "FundedStatus"
     ],
-    "description": "Funded status of a defined benefit plan (plan assets versus obligation)"
+    "description": "Funded status of a defined benefit plan (plan assets versus obligation)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_PLAN_ASSETS",
@@ -1348,7 +1768,10 @@
     "keywords": [
       "PlanAssets"
     ],
-    "description": "Defined benefit plan assets and measures over them"
+    "description": "Defined benefit plan assets and measures over them",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_FACE_AMOUNT",
@@ -1356,7 +1779,10 @@
     "keywords": [
       "FaceAmount"
     ],
-    "description": "Face (principal) amount of a debt instrument"
+    "description": "Face (principal) amount of a debt instrument",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CARRYING_AMOUNT",
@@ -1365,7 +1791,10 @@
       "CarryingAmount",
       "CarryingValue"
     ],
-    "description": "Carrying (book) amount of an instrument or position"
+    "description": "Carrying (book) amount of an instrument or position",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_MORTGAGE_BANKING",
@@ -1373,7 +1802,10 @@
     "keywords": [
       "MortgageBanking"
     ],
-    "description": "Mortgage banking and servicing activities"
+    "description": "Mortgage banking and servicing activities",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_AFFORDABLE_HOUSING",
@@ -1381,7 +1813,10 @@
     "keywords": [
       "AffordableHousing"
     ],
-    "description": "Affordable housing (LIHTC) project investments and credits"
+    "description": "Affordable housing (LIHTC) project investments and credits",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_COMMON",
@@ -1391,7 +1826,10 @@
       "Common"
     ],
     "description": "Common stock class",
-    "sibling_group": "STOCK_CLASS"
+    "sibling_group": "STOCK_CLASS",
+    "kinds": [
+      "AXIS"
+    ]
   },
   {
     "modifier_id": "M_PREFERRED",
@@ -1401,7 +1839,10 @@
       "Preferred"
     ],
     "description": "Preferred stock class",
-    "sibling_group": "STOCK_CLASS"
+    "sibling_group": "STOCK_CLASS",
+    "kinds": [
+      "AXIS"
+    ]
   },
   {
     "modifier_id": "V_NET",
@@ -1410,7 +1851,11 @@
       "Net"
     ],
     "description": "Amount presented net of a contra, allowance, or offsetting item",
-    "sibling_group": "VALUATION_PRESENTATION"
+    "sibling_group": "VALUATION_PRESENTATION",
+    "kinds": [
+      "AXIS",
+      "VALUATION"
+    ]
   },
   {
     "modifier_id": "V_GROSS",
@@ -1419,7 +1864,11 @@
       "Gross"
     ],
     "description": "Amount presented gross, before any contra, allowance, or offset",
-    "sibling_group": "VALUATION_PRESENTATION"
+    "sibling_group": "VALUATION_PRESENTATION",
+    "kinds": [
+      "AXIS",
+      "VALUATION"
+    ]
   },
   {
     "modifier_id": "V_BASIC",
@@ -1428,7 +1877,11 @@
       "Basic"
     ],
     "description": "Per-share amount on the basic (undiluted) share basis",
-    "sibling_group": "EPS_BASIS"
+    "sibling_group": "EPS_BASIS",
+    "kinds": [
+      "AXIS",
+      "VALUATION"
+    ]
   },
   {
     "modifier_id": "V_DILUTED",
@@ -1437,7 +1890,11 @@
       "Diluted"
     ],
     "description": "Per-share amount on the diluted share basis",
-    "sibling_group": "EPS_BASIS"
+    "sibling_group": "EPS_BASIS",
+    "kinds": [
+      "AXIS",
+      "VALUATION"
+    ]
   },
   {
     "modifier_id": "M_CURRENT",
@@ -1446,7 +1903,11 @@
       "Current"
     ],
     "description": "Current portion (due or realizable within 12 months); structural horizon tag",
-    "sibling_group": "MATURITY_HORIZON"
+    "sibling_group": "MATURITY_HORIZON",
+    "kinds": [
+      "AXIS",
+      "STRUCTURAL"
+    ]
   },
   {
     "modifier_id": "M_NONCURRENT",
@@ -1455,7 +1916,11 @@
       "Noncurrent"
     ],
     "description": "Noncurrent portion (beyond 12 months); structural horizon tag",
-    "sibling_group": "MATURITY_HORIZON"
+    "sibling_group": "MATURITY_HORIZON",
+    "kinds": [
+      "AXIS",
+      "STRUCTURAL"
+    ]
   },
   {
     "modifier_id": "M_TAX",
@@ -1464,7 +1929,10 @@
       "Tax",
       "Taxes"
     ],
-    "description": "Tax scope: income, payroll, property, or other taxes and tax effects"
+    "description": "Tax scope: income, payroll, property, or other taxes and tax effects",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_PRETAX",
@@ -1478,7 +1946,10 @@
       "PreTax"
     ],
     "description": "Amount stated before (pre) the income-tax line; tax-basis coordinate",
-    "sibling_group": "TAX_BASIS"
+    "sibling_group": "TAX_BASIS",
+    "kinds": [
+      "AXIS"
+    ]
   },
   {
     "modifier_id": "M_POST_TAX",
@@ -1490,7 +1961,10 @@
       "AfterIncomeTaxes"
     ],
     "description": "Amount stated after (post) the income-tax line; tax-basis coordinate",
-    "sibling_group": "TAX_BASIS"
+    "sibling_group": "TAX_BASIS",
+    "kinds": [
+      "AXIS"
+    ]
   },
   {
     "modifier_id": "M_INCLUDING",
@@ -1499,7 +1973,11 @@
       "Including"
     ],
     "description": "Amount scope includes the component named by the accompanying modifier",
-    "sibling_group": "SCOPE_POLARITY"
+    "sibling_group": "SCOPE_POLARITY",
+    "kinds": [
+      "AXIS",
+      "SCOPE"
+    ]
   },
   {
     "modifier_id": "M_EXCLUDING",
@@ -1508,7 +1986,11 @@
       "Excluding"
     ],
     "description": "Amount scope excludes the component named by the accompanying modifier",
-    "sibling_group": "SCOPE_POLARITY"
+    "sibling_group": "SCOPE_POLARITY",
+    "kinds": [
+      "AXIS",
+      "SCOPE"
+    ]
   },
   {
     "modifier_id": "M_OCI",
@@ -1517,7 +1999,10 @@
       "OtherComprehensiveIncome",
       "OCI"
     ],
-    "description": "Other comprehensive income component of equity"
+    "description": "Other comprehensive income component of equity",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_AOCI",
@@ -1526,7 +2011,10 @@
       "AccumulatedOtherComprehensiveIncome",
       "AOCI"
     ],
-    "description": "Accumulated other comprehensive income balance"
+    "description": "Accumulated other comprehensive income balance",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_COMPREHENSIVE",
@@ -1534,7 +2022,10 @@
     "keywords": [
       "Comprehensive"
     ],
-    "description": "Comprehensive income scope (net income plus OCI)"
+    "description": "Comprehensive income scope (net income plus OCI)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_FX_CTA",
@@ -1543,7 +2034,10 @@
       "CumulativeTranslationAdjustment",
       "CTA"
     ],
-    "description": "Cumulative foreign currency translation adjustment in AOCI"
+    "description": "Cumulative foreign currency translation adjustment in AOCI",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_LEASE",
@@ -1552,7 +2046,10 @@
       "Lease",
       "Leases"
     ],
-    "description": "Lease scope: lessee or lessor arrangements under ASC 842"
+    "description": "Lease scope: lessee or lessor arrangements under ASC 842",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_PPE_CAPEX",
@@ -1561,7 +2058,10 @@
       "PropertyPlantAndEquipment",
       "CapitalExpenditures"
     ],
-    "description": "Property, plant and equipment and capital expenditure scope"
+    "description": "Property, plant and equipment and capital expenditure scope",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_INTEREST",
@@ -1569,7 +2069,10 @@
     "keywords": [
       "Interest"
     ],
-    "description": "Interest income, expense, receivable, or payable scope"
+    "description": "Interest income, expense, receivable, or payable scope",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_NONINTEREST",
@@ -1577,7 +2080,10 @@
     "keywords": [
       "Noninterest"
     ],
-    "description": "Noninterest income or expense (banking presentation)"
+    "description": "Noninterest income or expense (banking presentation)",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_DERIVATIVE",
@@ -1586,7 +2092,10 @@
       "Derivative",
       "Derivatives"
     ],
-    "description": "Derivative instrument scope (ASC 815)"
+    "description": "Derivative instrument scope (ASC 815)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_DEPR_AMORT",
@@ -1595,7 +2104,10 @@
       "Depreciation",
       "Amortization"
     ],
-    "description": "Depreciation and amortization scope"
+    "description": "Depreciation and amortization scope",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CONTRA_ALLOWANCE",
@@ -1603,7 +2115,10 @@
     "keywords": [
       "Allowance"
     ],
-    "description": "Allowance contra amount netted against a gross carrying amount"
+    "description": "Allowance contra amount netted against a gross carrying amount",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CONTRA_INCENTIVE",
@@ -1611,7 +2126,10 @@
     "keywords": [
       "Incentive"
     ],
-    "description": "Contra incentive or consideration payable netted against revenue or an asset"
+    "description": "Contra incentive or consideration payable netted against revenue or an asset",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CONTRA_DISCOUNT",
@@ -1619,7 +2137,10 @@
     "keywords": [
       "Discount"
     ],
-    "description": "Unamortized discount contra amount on a debt or receivable carrying amount"
+    "description": "Unamortized discount contra amount on a debt or receivable carrying amount",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CONTRA_TREASURY",
@@ -1627,7 +2148,10 @@
     "keywords": [
       "Treasury"
     ],
-    "description": "Treasury stock contra-equity scope"
+    "description": "Treasury stock contra-equity scope",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_CRYPTO_DIGITAL",
@@ -1637,7 +2161,10 @@
       "CryptoAsset",
       "DigitalAsset"
     ],
-    "description": "Crypto and digital asset holdings and activity"
+    "description": "Crypto and digital asset holdings and activity",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_DEFERRED_REVENUE",
@@ -1645,7 +2172,10 @@
     "keywords": [
       "DeferredRevenue"
     ],
-    "description": "Deferred (unearned) revenue liability"
+    "description": "Deferred (unearned) revenue liability",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_DISPOSAL_GAIN",
@@ -1654,7 +2184,10 @@
       "GainOnDisposal",
       "DisposalGain"
     ],
-    "description": "Gain or loss on disposal, sale, or extinguishment"
+    "description": "Gain or loss on disposal, sale, or extinguishment",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_EQUITY_TOTAL",
@@ -1663,7 +2196,10 @@
       "TotalEquity",
       "StockholdersEquity"
     ],
-    "description": "Total equity aggregate (identity carried by the head)"
+    "description": "Total equity aggregate (identity carried by the head)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_GROSS_MARGIN",
@@ -1672,7 +2208,10 @@
       "GrossProfit",
       "GrossMargin"
     ],
-    "description": "Gross margin measure (revenue less cost of revenue)"
+    "description": "Gross margin measure (revenue less cost of revenue)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_LICENSE",
@@ -1681,7 +2220,10 @@
       "License",
       "Licensing"
     ],
-    "description": "Licensing arrangements, license revenue, or licensed rights"
+    "description": "Licensing arrangements, license revenue, or licensed rights",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_MATURITY_LONG",
@@ -1689,7 +2231,10 @@
     "keywords": [
       "LongTermMaturity"
     ],
-    "description": "Long-dated maturity bucket in a maturity schedule"
+    "description": "Long-dated maturity bucket in a maturity schedule",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_MATURITY_SHORT",
@@ -1697,7 +2242,10 @@
     "keywords": [
       "ShortTermMaturity"
     ],
-    "description": "Short-dated maturity bucket in a maturity schedule"
+    "description": "Short-dated maturity bucket in a maturity schedule",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_NET_BOTTOMLINE",
@@ -1706,7 +2254,10 @@
       "NetIncome",
       "NetLoss"
     ],
-    "description": "Bottom-line net income or loss measure"
+    "description": "Bottom-line net income or loss measure",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_PURPOSE_SALE",
@@ -1714,7 +2265,10 @@
     "keywords": [
       "ForSale"
     ],
-    "description": "Held-for-sale or available-for-sale purpose classification"
+    "description": "Held-for-sale or available-for-sale purpose classification",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_REGULATORY_ASC980",
@@ -1723,7 +2277,10 @@
       "Regulated",
       "Regulatory"
     ],
-    "description": "Regulated operations accounting under ASC 980 (utilities)"
+    "description": "Regulated operations accounting under ASC 980 (utilities)",
+    "kinds": [
+      "CONTEXT"
+    ]
   },
   {
     "modifier_id": "M_RPO_BACKLOG",
@@ -1732,7 +2289,10 @@
       "RemainingPerformanceObligation",
       "Backlog"
     ],
-    "description": "Remaining performance obligations and order backlog"
+    "description": "Remaining performance obligations and order backlog",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_SERVICE",
@@ -1741,7 +2301,10 @@
       "Service",
       "Services"
     ],
-    "description": "Service activity or service revenue scope"
+    "description": "Service activity or service revenue scope",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_TEMPORARY_MEZZANINE",
@@ -1750,7 +2313,10 @@
       "TemporaryEquity",
       "Mezzanine"
     ],
-    "description": "Temporary (mezzanine) equity: redeemable instruments outside permanent equity"
+    "description": "Temporary (mezzanine) equity: redeemable instruments outside permanent equity",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_UNION_CBA",
@@ -1758,7 +2324,10 @@
     "keywords": [
       "CollectiveBargaining"
     ],
-    "description": "Collective bargaining agreement and union workforce scope"
+    "description": "Collective bargaining agreement and union workforce scope",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_WORKING_CAPITAL",
@@ -1766,7 +2335,10 @@
     "keywords": [
       "WorkingCapital"
     ],
-    "description": "Working capital scope (current assets less current liabilities)"
+    "description": "Working capital scope (current assets less current liabilities)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_EXERCISE_PRICE",
@@ -1775,7 +2347,10 @@
       "ExercisePrice",
       "StrikePrice"
     ],
-    "description": "Exercise or strike price attribute of an option or warrant"
+    "description": "Exercise or strike price attribute of an option or warrant",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_FREE_CASH_FLOW",
@@ -1783,7 +2358,10 @@
     "keywords": [
       "FreeCashFlow"
     ],
-    "description": "Free cash flow (operating cash flow less capital expenditures)"
+    "description": "Free cash flow (operating cash flow less capital expenditures)",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_HELD_FOR_SALE",
@@ -1791,7 +2369,10 @@
     "keywords": [
       "HeldForSale"
     ],
-    "description": "Held-for-sale classification of assets or disposal groups"
+    "description": "Held-for-sale classification of assets or disposal groups",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_MEDICAL_CLAIM",
@@ -1800,7 +2381,10 @@
       "MedicalClaim",
       "MedicalClaims"
     ],
-    "description": "Medical or health claim reserves and costs"
+    "description": "Medical or health claim reserves and costs",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_UNCOMMENCED",
@@ -1808,7 +2392,10 @@
     "keywords": [
       "NotYetCommenced"
     ],
-    "description": "Lease or contract not yet commenced at the reporting date"
+    "description": "Lease or contract not yet commenced at the reporting date",
+    "kinds": [
+      "IDENTITY"
+    ]
   },
   {
     "modifier_id": "M_WARRANT",
@@ -1817,6 +2404,9 @@
       "Warrant",
       "Warrants"
     ],
-    "description": "Warrant instrument scope"
+    "description": "Warrant instrument scope",
+    "kinds": [
+      "IDENTITY"
+    ]
   }
 ]

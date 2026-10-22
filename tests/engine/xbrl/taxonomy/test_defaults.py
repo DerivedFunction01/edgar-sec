@@ -19,6 +19,9 @@ def _write_defaults_taxonomy(tmp_path: Path, defaults: list[dict]) -> Path:
             "normal_balance": "CREDIT",
             "is_dual_role_primitive": 0,
             "description": "Liabilities",
+            "recognition_book": "B_BALANCE_SHEET",
+            "flow_stock": "STOCK",
+            "timing_horizon": "INSTANT",
         }
     ]
     mods = [
@@ -46,9 +49,10 @@ def _write_defaults_taxonomy(tmp_path: Path, defaults: list[dict]) -> Path:
     lexicon = [
         {
             "phrase": ["Accounts", "Payable"],
-            "role": "HEAD",
-            "atom": "H_LIABILITY",
-            "mods": ["M_ACCOUNTS_PAYABLE"],
+            "claim": "head",
+            "head": "H_LIABILITY",
+            "claim_class": "PRIMARY",
+            "carriage": ["M_ACCOUNTS_PAYABLE"],
         }
     ]
     (tmp_path / "prime_heads.json").write_text(json.dumps(heads))

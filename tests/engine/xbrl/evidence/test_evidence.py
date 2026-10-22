@@ -1,10 +1,8 @@
 """Unit tests for scoped evidence knowledge base and cryptographic freeze."""
 
 import pytest
-from edgar_sec.engine.xbrl.taxonomy.domain import (
-    DomainTaxonomy,
-    GeoHierarchyEdge,
-)
+from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
+from edgar_sec.engine.xbrl.taxonomy.records import GeoHierarchyEdge
 from edgar_sec.engine.xbrl.evidence.evidence import (
     EvidenceKnowledgeBase,
     UnificationRule,

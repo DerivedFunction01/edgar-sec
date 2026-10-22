@@ -6,10 +6,12 @@ import pytest
 
 from edgar_sec.engine.xbrl.taxonomy.domain import (
     DomainTaxonomy,
-    PrimeHead,
     SemanticConceptFrame,
-    SubatomicModifier,
     load_domain_taxonomy,
+)
+from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import (
+    PrimeHead,
+    SubatomicModifier,
     load_prime_heads,
     load_subatomic_modifiers,
 )
@@ -112,8 +114,8 @@ def test_load_from_csv(tmp_path: Path) -> None:
     """Verify loading prime heads and modifiers from CSV format."""
     csv_heads = tmp_path / "prime_heads.csv"
     csv_heads.write_text(
-        "head_id,head_symbol,economic_class,statement_type,normal_balance,is_dual_role_primitive,description\n"
-        "H_REVENUE,REVENUE,FLOW_INFLOW,IncomeStatement,CREDIT,0,Top line\n",
+        "head_id,head_symbol,economic_class,statement_type,normal_balance,is_dual_role_primitive,description,recognition_book,flow_stock,timing_horizon\n"
+        "H_REVENUE,REVENUE,FLOW_INFLOW,IncomeStatement,CREDIT,0,Top line,B_INCOME_STATEMENT,FLOW,DURATION_PERIOD\n",
         encoding="utf-8",
     )
     heads = load_prime_heads(csv_heads)
@@ -229,3 +231,34 @@ def test_multidimensional_instrument_and_subspace_invariants() -> None:
     assert rule_oci is not None
     assert rule_oci.target_node == "OtherComprehensiveIncomeNet"
     assert rule_oci.algebraic_weight == 1.0
+
+
+def test_real_taxonomy_declares_kinds_and_consistent_groups() -> None:
+    """The shipped taxonomy validates: kinds on every def, groups match defs."""
+    taxonomy = load_domain_taxonomy()
+    assert taxonomy.sibling_groups
+    assert all(mod.kinds for mod in taxonomy.subatomic_modifiers)
+    declared = {
+        mod.modifier_id
+        for group in taxonomy.sibling_groups
+        for mod in taxonomy.subatomic_modifiers
+        if mod.sibling_group == group.group
+    }
+    tabled = {m for group in taxonomy.sibling_groups for m in group.members}
+    assert declared == tabled
+    cardinalities = {g.group: g.cardinality for g in taxonomy.sibling_groups}
+    assert cardinalities["TAX_BASIS"] == "exclusive"
+    assert cardinalities["SCOPE_POLARITY"] == "exclusive"
+    assert cardinalities["EPS_BASIS"] == "exclusive"
+
+
+def test_prime_head_record_missing_classification_is_refused(tmp_path: Path) -> None:
+    """D3: a prime-head record omitting its classification fields is refused."""
+    csv_heads = tmp_path / "prime_heads.csv"
+    csv_heads.write_text(
+        "head_id,head_symbol,economic_class,statement_type,normal_balance,is_dual_role_primitive,description\n"
+        "H_REVENUE,REVENUE,FLOW_INFLOW,IncomeStatement,CREDIT,0,Top line\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError):
+        load_prime_heads(csv_heads)

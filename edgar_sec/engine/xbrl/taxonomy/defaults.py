@@ -10,7 +10,10 @@ from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
     from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
-    from edgar_sec.engine.xbrl.taxonomy.domain import PrimeHead, SubatomicModifier
+    from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import (
+        PrimeHead,
+        SubatomicModifier,
+    )
 
 
 @dataclass(frozen=True, slots=True)
@@ -71,7 +74,7 @@ def load_defaults(
     """Load the taxonomy's defaults file when present, validating every record."""
     if not source.is_file():
         return ()
-    from edgar_sec.engine.xbrl.taxonomy.domain import (
+    from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import (
         load_prime_heads,
         load_subatomic_modifiers,
     )
@@ -98,9 +101,7 @@ def validate_default_coordinates(
     claimed: set[str] = set()
     if lexicon is not None:
         for entry in lexicon.entries:
-            if entry.atom:
-                claimed.add(entry.atom)
-            claimed.update(entry.mods)
+            claimed.update(entry.asserted_modifier_ids())
     seen: set[tuple[str, frozenset[str]]] = set()
     for entry in defaults:
         if entry.head not in head_ids:

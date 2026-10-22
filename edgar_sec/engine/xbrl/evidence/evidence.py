@@ -8,7 +8,8 @@ import hashlib
 import json
 from typing import Any
 
-from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, GeoHierarchyEdge
+from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
+from edgar_sec.engine.xbrl.taxonomy.records import GeoHierarchyEdge
 from edgar_sec.foundation.hashing import sha256_text
 
 

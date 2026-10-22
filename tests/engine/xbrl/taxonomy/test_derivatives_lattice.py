@@ -165,5 +165,5 @@ def test_generic_taxonomy_has_no_product_names_in_service_modifier() -> None:
     assert taxonomy.token_lexicon is not None
     entries = {entry.phrase: entry for entry in taxonomy.token_lexicon.entries}
     assert entries[("pre", "provision")].atom == "M_PRE_PROVISION"
-    assert entries[("financing", "receivable")].atom == "H_ASSET"
-    assert "M_FINANCING_RECEIVABLE" in entries[("financing", "receivable")].mods
+    assert entries[("financing", "receivable")].head == "H_ASSET"
+    assert "M_FINANCING_RECEIVABLE" in entries[("financing", "receivable")].carriage

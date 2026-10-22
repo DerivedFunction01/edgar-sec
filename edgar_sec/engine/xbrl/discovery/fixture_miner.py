@@ -664,7 +664,7 @@ def build_modelledness_report(
         for match in matches:
             if len(match.entry.phrase) < 5:
                 continue
-            key = (" ".join(match.entry.phrase), match.entry.role)
+            key = (" ".join(match.entry.phrase), match.entry.claim)
             phrase_firms[key] |= firms_by_concept[qname]
             phrase_concepts[key].add(qname)
     single_firm_long_phrases = tuple(

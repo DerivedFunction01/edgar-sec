@@ -4,9 +4,13 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 from dataclasses import dataclass
+from functools import lru_cache
 
+from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
+from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
 from edgar_sec.engine.xbrl.solve.scoping import FactScope
+from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 
 
 @dataclass(frozen=True, slots=True)
@@ -22,21 +26,46 @@ class IdentityVerification:
     tolerance: float = 0.15
 
 
-def _find_fact_value(
-    facts: Sequence[XbrlFact],
-    concept_qname: str,
-    *,
-    period_type: str | None = None,
-    require_unsegmented: bool = True,
-) -> float | None:
-    matches = [
-        f
-        for f in facts
-        if f.concept_qname == concept_qname
-        and (period_type is None or f.period_type == period_type)
-        and (not require_unsegmented or not f.dimensions)
-        and isinstance(f.value, (int, float))
-    ]
+@dataclass(frozen=True, slots=True)
+class _Slot:
+    """An identity term defined by a canonical concept's atom coordinate.
+
+    The canonical fact is the witness; absent it, facts fill by atom
+    (exact, or subsumed for the revenue / cost-of-revenue slots).
+    """
+
+    canonical: str
+    accept_subsumed: bool = False
+
+
+_ASSETS = _Slot("us-gaap:Assets")
+_LIABILITIES = _Slot("us-gaap:Liabilities")
+_EQUITY = _Slot("us-gaap:StockholdersEquity")
+_GROSS_PROFIT = _Slot("us-gaap:GrossProfit")
+_REVENUE = _Slot("us-gaap:Revenues", accept_subsumed=True)
+_COST_OF_REVENUE = _Slot("us-gaap:CostOfRevenue", accept_subsumed=True)
+_OPERATING_INCOME = _Slot("us-gaap:OperatingIncomeLoss")
+_OPERATING_EXPENSES = _Slot("us-gaap:OperatingExpenses")
+_RD_EXPENSE = _Slot("us-gaap:ResearchAndDevelopmentExpense")
+_SM_EXPENSE = _Slot("us-gaap:SellingAndMarketingExpense")
+_GA_EXPENSE = _Slot("us-gaap:GeneralAndAdministrativeExpense")
+
+
+@lru_cache(maxsize=1)
+def _taxonomy() -> DomainTaxonomy:
+    return load_domain_taxonomy()
+
+
+@lru_cache(maxsize=None)
+def _atom_of(concept_qname: str) -> Atom:
+    lexicon = _taxonomy().token_lexicon
+    assert lexicon is not None
+    atom, _, _, _ = decompose_concept(concept_qname, lexicon)
+    return atom
+
+
+def _unique_value(matches: list[XbrlFact]) -> float | None:
+    """The single value across matches, or None when contexts/values disagree."""
     contexts = {
         (
             f.unit,
@@ -54,6 +83,52 @@ def _find_fact_value(
     return next(iter(values))
 
 
+def _find_slot_value(
+    facts: Sequence[XbrlFact],
+    slot: _Slot,
+    *,
+    period_type: str | None = None,
+    require_unsegmented: bool = True,
+) -> float | None:
+    """Find a fact filling an identity slot: witness first, then atom fill."""
+    slot_atom = _atom_of(slot.canonical)
+    eligible = [
+        f
+        for f in facts
+        if (period_type is None or f.period_type == period_type)
+        and (not require_unsegmented or not f.dimensions)
+        and isinstance(f.value, (int, float))
+    ]
+    witness = _unique_value([f for f in eligible if f.concept_qname == slot.canonical])
+    if witness is not None:
+        return witness
+    matches = [
+        f
+        for f in eligible
+        if _atom_of(f.concept_qname) == slot_atom
+        or (slot.accept_subsumed and _atom_of(f.concept_qname).is_a(slot_atom))
+    ]
+    return _unique_value(matches)
+
+
+def _find_fact_value(
+    facts: Sequence[XbrlFact],
+    concept_qname: str,
+    *,
+    period_type: str | None = None,
+    require_unsegmented: bool = True,
+) -> float | None:
+    matches = [
+        f
+        for f in facts
+        if f.concept_qname == concept_qname
+        and (period_type is None or f.period_type == period_type)
+        and (not require_unsegmented or not f.dimensions)
+        and isinstance(f.value, (int, float))
+    ]
+    return _unique_value(matches)
+
+
 def verify_balance_sheet_identity(
     facts: Sequence[XbrlFact],
     tolerance: float = 0.15,
@@ -62,11 +137,9 @@ def verify_balance_sheet_identity(
 ) -> IdentityVerification | None:
     """Verify standard fundamental balance sheet equation Assets == Liabilities + Equity."""
     selected = scope.select(list(facts)) if scope else facts
-    assets = _find_fact_value(selected, "us-gaap:Assets", period_type="instant")
-    liab = _find_fact_value(selected, "us-gaap:Liabilities", period_type="instant")
-    equity = _find_fact_value(
-        selected, "us-gaap:StockholdersEquity", period_type="instant"
-    )
+    assets = _find_slot_value(selected, _ASSETS, period_type="instant")
+    liab = _find_slot_value(selected, _LIABILITIES, period_type="instant")
+    equity = _find_slot_value(selected, _EQUITY, period_type="instant")
 
     if assets is None or liab is None or equity is None:
         return None
@@ -92,15 +165,9 @@ def verify_gross_profit_identity(
 ) -> IdentityVerification | None:
     """Verify Income Statement GrossProfit == Revenues - CostOfGoodsSold."""
     selected = scope.select(list(facts)) if scope else facts
-    gp = _find_fact_value(selected, "us-gaap:GrossProfit", period_type="duration")
-    rev = _find_fact_value(
-        selected,
-        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
-        period_type="duration",
-    ) or _find_fact_value(selected, "us-gaap:Revenues", period_type="duration")
-    cogs = _find_fact_value(
-        selected, "us-gaap:CostOfGoodsAndServicesSold", period_type="duration"
-    ) or _find_fact_value(selected, "us-gaap:CostOfRevenue", period_type="duration")
+    gp = _find_slot_value(selected, _GROSS_PROFIT, period_type="duration")
+    rev = _find_slot_value(selected, _REVENUE, period_type="duration")
+    cogs = _find_slot_value(selected, _COST_OF_REVENUE, period_type="duration")
 
     if gp is None or rev is None or cogs is None:
         return None
@@ -126,37 +193,16 @@ def verify_operating_income_identity(
 ) -> IdentityVerification | None:
     """Verify OperatingIncomeLoss == GrossProfit - OperatingExpenses."""
     selected = scope.select(list(facts)) if scope else facts
-    opinc = _find_fact_value(
-        selected, "us-gaap:OperatingIncomeLoss", period_type="duration"
-    )
-    gp = _find_fact_value(selected, "us-gaap:GrossProfit", period_type="duration")
+    opinc = _find_slot_value(selected, _OPERATING_INCOME, period_type="duration")
+    gp = _find_slot_value(selected, _GROSS_PROFIT, period_type="duration")
     if opinc is None or gp is None:
         return None
 
-    rnd = (
-        _find_fact_value(
-            selected,
-            "us-gaap:ResearchAndDevelopmentExpense",
-            period_type="duration",
-        )
-        or 0.0
-    )
-    sm = (
-        _find_fact_value(
-            selected, "us-gaap:SellingAndMarketingExpense", period_type="duration"
-        )
-        or 0.0
-    )
-    ga = (
-        _find_fact_value(
-            selected,
-            "us-gaap:GeneralAndAdministrativeExpense",
-            period_type="duration",
-        )
-        or 0.0
-    )
+    rnd = _find_slot_value(selected, _RD_EXPENSE, period_type="duration") or 0.0
+    sm = _find_slot_value(selected, _SM_EXPENSE, period_type="duration") or 0.0
+    ga = _find_slot_value(selected, _GA_EXPENSE, period_type="duration") or 0.0
     opex_total = (
-        _find_fact_value(selected, "us-gaap:OperatingExpenses", period_type="duration")
+        _find_slot_value(selected, _OPERATING_EXPENSES, period_type="duration")
         if (rnd == 0.0 and sm == 0.0 and ga == 0.0)
         else (rnd + sm + ga)
     )
