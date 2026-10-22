@@ -991,6 +991,75 @@ def test_near_fallback_tie_is_ambiguous_with_equivalents() -> None:
     assert all(item.rule == "subsumption" for item in result.equivalents)
 
 
+def test_near_fallback_divergent_tier_never_resolves_on_distance() -> None:
+    """MSFT shape: dist-1 rollforward vs dist-3 headline, divergent values."""
+    facts = (
+        _duration_fact(
+            "msft:ContractWithCustomerLiabilityRevenueDeferred", 148_701.0
+        ),
+        _duration_fact(
+            "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            245_122.0,
+        ),
+    )
+    result = _query_engine().execute(FinancialQuery("Revenues", _DURATION_SCOPE), facts)
+    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.value is None
+    assert result.reported_fact is None
+    assert result.candidate_qnames == (
+        "msft:ContractWithCustomerLiabilityRevenueDeferred",
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+    )
+    assert result.tier == "near"
+    assert {item.qname for item in result.equivalents} == set(result.candidate_qnames)
+
+
+def test_near_fallback_agreeing_tier_resolves_to_the_best_ranked() -> None:
+    """Same MSFT shape with agreeing values: the best-ranked resolves."""
+    facts = (
+        _duration_fact(
+            "msft:ContractWithCustomerLiabilityRevenueDeferred", 100.0
+        ),
+        _duration_fact(
+            "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", 100.0
+        ),
+    )
+    result = _query_engine().execute(FinancialQuery("Revenues", _DURATION_SCOPE), facts)
+    assert result.status == QueryStatus.REPORTED
+    assert result.candidate_qnames == (
+        "msft:ContractWithCustomerLiabilityRevenueDeferred",
+    )
+    assert result.value == 100.0
+    assert result.tier == "near"
+    assert len(result.equivalents) == 2
+
+
+def test_near_fallback_candidate_without_a_single_value_blocks_resolution() -> None:
+    """A tier candidate with two in-scope contexts has no single value."""
+    accession = AccessionNumber("0000950170-24-087843")
+    facts = (
+        _duration_fact("us-gaap:SalesRevenueGoodsNet", 100.0),
+        _duration_fact("us-gaap:SalesRevenueNet", 100.0),
+        XbrlFact(
+            accession,
+            "us-gaap:SalesRevenueNet",
+            100.0,
+            unit="USD",
+            period_type="duration",
+            start_date="2022-07-01",
+            end_date="2023-06-30",
+        ),
+    )
+    scope = FactScope(accession="0000950170-24-087843", unit="USD")
+    result = _query_engine().execute(FinancialQuery("Revenues", scope), facts)
+    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.value is None
+    assert set(result.candidate_qnames) == {
+        "us-gaap:SalesRevenueGoodsNet",
+        "us-gaap:SalesRevenueNet",
+    }
+
+
 def test_residual_bearing_term_gets_no_fallback() -> None:
     """A term with residuals stays UNAVAILABLE; the fallback never fires."""
     facts = (

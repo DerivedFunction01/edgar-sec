@@ -8,7 +8,7 @@ from typing import Mapping
 
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import AggregateFact, CalculationArc, XbrlFact
-from edgar_sec.engine.xbrl.solve.equivalence import RankedEquivalent
+from edgar_sec.engine.xbrl.solve.equivalence import EXACT, RankedEquivalent
 from edgar_sec.engine.xbrl.solve.scoping import FactScope
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
 from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
@@ -148,15 +148,24 @@ class FinancialQueryEngine:
         if not ranked:
             return (), target_atom, ()
         best = ranked[0]
-        tied = tuple(
-            sorted(
+        if best.tier == EXACT:
+            tied = tuple(
                 item.qname
                 for item in ranked
                 if (item.tier, item.via_default, item.modifier_distance)
                 == (best.tier, best.via_default, best.modifier_distance)
             )
+            return tied, target_atom, ranked
+        tier_group = tuple(
+            item
+            for item in ranked
+            if (item.tier, item.via_default) == (best.tier, best.via_default)
         )
-        return tied, target_atom, ranked
+        if len(tier_group) == 1 or self._tier_values_agree(
+            tier_group, scoped_facts
+        ):
+            return (best.qname,), target_atom, ranked
+        return tuple(item.qname for item in tier_group), target_atom, ranked
 
     @staticmethod
     def _numeric_qnames(scoped_facts: tuple[XbrlFact, ...]) -> set[str]:
@@ -226,6 +235,34 @@ class FinancialQueryEngine:
         if fact.decimals is None:
             return 0.0001
         return 0.5 * (10.0 ** (-fact.decimals))
+
+    def _tier_values_agree(
+        self,
+        group: tuple[RankedEquivalent, ...],
+        scoped_facts: tuple[XbrlFact, ...],
+    ) -> bool:
+        """True when each candidate has one in-scope value and all agree.
+
+        Agreement is a common intersection of precision intervals.
+        """
+        low: float | None = None
+        high: float | None = None
+        for item in group:
+            facts = tuple(
+                fact for fact in scoped_facts if fact.concept_qname == item.qname
+            )
+            deduped = self._deduplicate_context_facts(facts)
+            if deduped is None or len(deduped) != 1:
+                return False
+            fact = deduped[0]
+            tolerance = self._precision_tolerance(fact)
+            lo = float(fact.value) - tolerance
+            hi = float(fact.value) + tolerance
+            low = lo if low is None else max(low, lo)
+            high = hi if high is None else min(high, hi)
+            if low > high:
+                return False
+        return True
 
     def _derivation_is_scope_faithful(
         self,
