@@ -144,6 +144,68 @@ def test_sibling_swap_with_extra_difference_is_unrelated() -> None:
     assert classify_pair(afs, htm) == UNRELATED
 
 
+def test_ranked_equivalents_name_the_deciding_rule() -> None:
+    """Rule provenance: equality, subsumption, and widening name themselves."""
+    target = Atom("H_REVENUE")
+    ranked = rank_equivalents(
+        "firm-x:Revenues",
+        target,
+        (
+            ("firm-a:Revenues", Atom("H_REVENUE")),
+            (
+                "firm-b:RevenueFromContractWithCustomerExcludingAssessedTax",
+                _atom("us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"),
+            ),
+        ),
+    )
+    rules = {item.qname: item.rule for item in ranked}
+    assert rules == {
+        "firm-a:Revenues": "equality",
+        "firm-b:RevenueFromContractWithCustomerExcludingAssessedTax": "subsumption",
+    }
+
+    base = Atom("H_ASSET", frozenset({"M_FAIR_VALUE"}))
+    wide = rank_equivalents(
+        "firm-x:Base",
+        base,
+        (("firm-a:Wide", Atom("H_ASSET", frozenset({"M_FAIR_VALUE", "M_AGGREGATE"}))),),
+    )
+    assert wide[0].tier == NEAR and wide[0].rule == "aggregate_widening"
+
+
+def test_sibling_swap_rule_is_named() -> None:
+    """The AFS/HTM pair ranks NEAR under the sibling_swap rule."""
+    afs = _atom(
+        "us-gaap:DebtSecuritiesAvailableForSaleMaturityAfter10YearsWeightedAverageYield"
+    )
+    htm = _atom(
+        "us-gaap:DebtSecuritiesHeldToMaturityMaturityAfter10YearsWeightedAverageYield"
+    )
+    ranked = rank_equivalents("firm-x:Afs", afs, (("firm-a:Htm", htm),))
+    assert ranked[0].tier == NEAR and ranked[0].rule == "sibling_swap"
+
+
+def test_via_default_rule_overrides_the_presumed_classification() -> None:
+    """A default-mediated NEAR reports via_default, not its presumed rule."""
+    defaults = _defaults()
+    target = _atom("us-gaap:AccountsPayable")
+    ranked = rank_equivalents(
+        "firm-x:AccountsPayable",
+        target,
+        (
+            ("firm-a:AccountsPayableCurrent", _atom("us-gaap:AccountsPayableCurrent")),
+            ("firm-b:AccruedLiabilitiesCurrent", _atom("us-gaap:AccruedLiabilitiesCurrent")),
+        ),
+        defaults,
+    )
+    rules = {item.qname: item.rule for item in ranked}
+    assert rules == {
+        "firm-a:AccountsPayableCurrent": "single_modifier_difference",
+        "firm-b:AccruedLiabilitiesCurrent": "via_default",
+    }
+    assert ranked[-1].via_default is True
+
+
 def test_sibling_group_matches_subatomic_data() -> None:
     """The solver's sibling group mirrors the taxonomy data declaration."""
     import json

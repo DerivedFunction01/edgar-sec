@@ -41,21 +41,32 @@ def _aggregate_scope_widening(left: Atom, right: Atom) -> bool:
     return left.modifiers ^ right.modifiers == {_AGGREGATE_MODIFIER}
 
 
+def _classify_detail(left: Atom, right: Atom) -> tuple[str, str]:
+    """Classify a pair and name the rule that decided the tier.
+
+    Specific rules precede subsumption: widening and single-difference
+    pairs are subsumption pairs too, and the specific name is the
+    provenance. Every reordered branch yields NEAR, so tiers are
+    exactly classify_pair's historical outcomes.
+    """
+    if left == right:
+        return EXACT, "equality"
+    if left.head != right.head:
+        return UNRELATED, ""
+    if _aggregate_scope_widening(left, right):
+        return NEAR, "aggregate_widening"
+    if len(left.modifiers ^ right.modifiers) == 1:
+        return NEAR, "single_modifier_difference"
+    if left.is_a(right) or right.is_a(left):
+        return NEAR, "subsumption"
+    if _sibling_swap(left, right):
+        return NEAR, "sibling_swap"
+    return UNRELATED, ""
+
+
 def classify_pair(left: Atom, right: Atom) -> str:
     """Classify two atoms as exact, near (lattice neighbours), or unrelated."""
-    if left == right:
-        return EXACT
-    if left.head != right.head:
-        return UNRELATED
-    if left.is_a(right) or right.is_a(left):
-        return NEAR
-    if _aggregate_scope_widening(left, right):
-        return NEAR
-    if len(left.modifiers ^ right.modifiers) == 1:
-        return NEAR
-    if _sibling_swap(left, right):
-        return NEAR
-    return UNRELATED
+    return _classify_detail(left, right)[0]
 
 
 def presumed_atom(atom: Atom, defaults: Iterable[DefaultCoordinate]) -> Atom:
@@ -87,6 +98,7 @@ class RankedEquivalent:
     tier: str
     modifier_distance: int
     via_default: bool = False
+    rule: str = ""
 
 
 def rank_equivalents(
@@ -106,19 +118,21 @@ def rank_equivalents(
     for qname, atom in candidates:
         if qname == target_qname:
             continue
-        tier = classify_pair(target, atom)
+        tier, rule = _classify_detail(target, atom)
         via_default = False
         presumed = presumed_atom(atom, defaults)
         if tier == UNRELATED and defaults:
             if classify_pair(presumed_target, presumed) == NEAR:
-                tier, via_default = NEAR, True
+                tier, via_default, rule = NEAR, True, "via_default"
         if tier == UNRELATED:
             continue
         if defaults:
             distance = len(presumed_target.modifiers ^ presumed.modifiers)
         else:
             distance = len(target.modifiers ^ atom.modifiers)
-        ranked.append(RankedEquivalent(qname, atom, tier, distance, via_default))
+        ranked.append(
+            RankedEquivalent(qname, atom, tier, distance, via_default, rule=rule)
+        )
     ranked.sort(
         key=lambda item: (
             0 if item.tier == EXACT else 1,
