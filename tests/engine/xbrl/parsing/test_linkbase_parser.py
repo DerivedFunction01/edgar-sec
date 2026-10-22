@@ -61,6 +61,20 @@ def test_parse_schema_declarations() -> None:
     assert len(decls) == 2
     assert decls[0].concept_qname == "msft:ServerProductsAndCloudServicesMember"
     assert decls[0].period_type == "duration"
+    assert decls[0].item_type == "xbrli:stringItemType"
+
+
+def test_parse_schema_declarations_without_type() -> None:
+    """An element with no type attribute declares item_type None."""
+    xsd = (
+        '<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" '
+        'targetNamespace="http://example.com/20240101">'
+        '<xs:element name="UntypedMember" substitutionGroup="xbrli:item"/>'
+        "</xs:schema>"
+    )
+    decls = parse_schema_declarations(xsd, target_prefix="ex")
+    assert len(decls) == 1
+    assert decls[0].item_type is None
 
 
 def test_parse_linkbase_bundle() -> None:

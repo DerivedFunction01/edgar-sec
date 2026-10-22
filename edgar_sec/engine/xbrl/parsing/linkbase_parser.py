@@ -204,6 +204,7 @@ def parse_schema_declarations(
         )
         balance = elem.attrib.get(f"{_XBRLI_NS}balance") or elem.attrib.get("balance")
         substitution_group = elem.attrib.get("substitutionGroup")
+        item_type = elem.attrib.get("type")
         qname = f"{prefix}:{name}"
 
         declarations.append(
@@ -213,6 +214,7 @@ def parse_schema_declarations(
                 period_type=period_type,
                 balance=balance,
                 substitution_group=substitution_group,
+                item_type=item_type,
             )
         )
 

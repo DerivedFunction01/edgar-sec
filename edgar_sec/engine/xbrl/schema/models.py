@@ -48,6 +48,7 @@ class ConceptDeclaration:
     period_type: str | None = None
     balance: str | None = None
     substitution_group: str | None = None
+    item_type: str | None = None
 
 
 @dataclass(frozen=True, slots=True)

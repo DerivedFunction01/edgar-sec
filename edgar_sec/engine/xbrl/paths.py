@@ -29,6 +29,7 @@ DEFAULT_INSTRUMENTS_DAG_FILE = "instruments_dag.json"
 DEFAULT_VALUATION_RULES_FILE = "valuation_rules.json"
 DEFAULT_SUBSPACE_INVARIANTS_FILE = "subspace_invariants.json"
 DEFAULT_DEFAULT_COORDINATES_FILE = "default_coordinates.json"
+DEFAULT_STANDARD_ITEM_TYPES_FILE = "standard_item_types.json"
 
 
 @dataclass(frozen=True, slots=True)
@@ -161,6 +162,11 @@ class XbrlPaths:
     def default_default_coordinates_path(self) -> Path:
         """Default path to presumed-coordinate defaults taxonomy file."""
         return self.default_taxonomy_dir / DEFAULT_DEFAULT_COORDINATES_FILE
+
+    @property
+    def default_standard_item_types_path(self) -> Path:
+        """Default path to derived standard-namespace item-type table."""
+        return self.default_taxonomy_dir / DEFAULT_STANDARD_ITEM_TYPES_FILE
 
     def ensure_directories(self) -> None:
         """Create artifact directories if they do not exist."""
