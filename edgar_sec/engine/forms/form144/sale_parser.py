@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import re
-from functools import partial
 
 from edgar_sec.domain.forms.families.form144.models import (
     BrokerDetails,
@@ -22,24 +21,16 @@ from edgar_sec.engine.forms.common.entities import (
 )
 from edgar_sec.engine.forms.common.tables import is_instruction_row
 from edgar_sec.engine.forms.common.numbers import (
-    normalize_schema_integer_value,
-    normalize_schema_number,
+    NUMERIC_TOKEN_RE,
+    normalize_decimal_stripping_currency,
+    normalize_integer_stripping_units,
 )
-from edgar_sec.engine.forms.form144.patterns import NUMERIC_TOKEN_RE
+from edgar_sec.engine.forms.form144.patterns import SEC_FILE_BARE_RE
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.tables.currencies import ALL_CURRENCY_SYMBOLS
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import parse_date
 
-_SEC_FILE_RE = re.compile(r"^\d{1,3}-\d{4,7}$")
-_FORM144_INTEGER = partial(normalize_schema_integer_value, strip_units=True)
-_FORM144_DECIMAL = partial(
-    normalize_schema_number,
-    integer=False,
-    strip_currency=True,
-    allow_accounting_negative=True,
-    allow_negative=True,
-)
 _SPLIT_EXPLANATION_RE = re.compile(
     r"\s+(?:as of|based on|\(based|\(as of)\b", flags=re.IGNORECASE
 )
@@ -143,7 +134,11 @@ def _extract_leading_number(text: str) -> tuple[int | str | None, bool]:
     has_curr = any(s in cleaned for s in ALL_CURRENCY_SYMBOLS)
     primary = _SPLIT_EXPLANATION_RE.split(cleaned)[0].strip()
     primary = _QUANTITY_PREFIX_RE.sub("", primary)
-    num = _FORM144_DECIMAL(primary) if has_curr else _FORM144_INTEGER(primary)
+    num = (
+        normalize_decimal_stripping_currency(primary)
+        if has_curr
+        else normalize_integer_stripping_units(primary)
+    )
     return (num, has_curr) if num is not None else (None, False)
 
 
@@ -190,7 +185,7 @@ def _box3_schema(reference_year: int | None) -> TableSchema:
                 is_required=False,
                 is_anchor=True,
                 anchor_validator=_is_currency_cell,
-                data_extractor=_FORM144_DECIMAL,
+                data_extractor=normalize_decimal_stripping_currency,
             ),
             CanonicalColumn(
                 index=4,
@@ -278,11 +273,11 @@ def parse_proposed_sale_box_3(
             if r_broker and not broker_parts:
                 broker_parts.append(r_broker)
             if r_units and units is None:
-                units = _FORM144_INTEGER(r_units)
+                units = normalize_integer_stripping_units(r_units)
             if r_val and val is None:
-                val = _FORM144_DECIMAL(r_val)
+                val = normalize_decimal_stripping_currency(r_val)
             if r_out and out is None:
-                out = _FORM144_INTEGER(r_out)
+                out = normalize_integer_stripping_units(r_out)
             if r_dt and dt is None:
                 parsed_dt = parse_date(r_dt, reference_year=reference_year)
                 dt = parsed_dt.display if parsed_dt else None
@@ -309,7 +304,7 @@ def parse_proposed_sale_box_3(
             else:
                 cells.append(c)
 
-        rem_cells = [c for c in cells if not _SEC_FILE_RE.match(c)]
+        rem_cells = [c for c in cells if not SEC_FILE_BARE_RE.fullmatch(c)]
 
         has_curr = any(_is_currency_cell(c) for c in rem_cells)
         has_dt_or_exch = any(
@@ -379,26 +374,42 @@ def parse_proposed_sale_box_3(
             proceeds = next((item for item in numeric_items if item[1]), None)
             if proceeds is None:
                 proceeds = numeric_items[1]
-            val = val if val is not None else _FORM144_DECIMAL(proceeds[2])
+            val = (
+                val
+                if val is not None
+                else normalize_decimal_stripping_currency(proceeds[2])
+            )
         elif len(numeric_items) == 2:
             n1, is_curr1, _ = numeric_items[0]
             n2, is_curr2, _ = numeric_items[1]
             units = units if units is not None else (int(n1) if not is_curr1 else None)
             if is_curr2:
-                val = val if val is not None else _FORM144_DECIMAL(numeric_items[1][2])
+                val = (
+                    val
+                    if val is not None
+                    else normalize_decimal_stripping_currency(numeric_items[1][2])
+                )
             elif is_curr1:
-                val = val if val is not None else _FORM144_DECIMAL(numeric_items[0][2])
+                val = (
+                    val
+                    if val is not None
+                    else normalize_decimal_stripping_currency(numeric_items[0][2])
+                )
                 if units is None:
                     units = int(n2)
             elif not is_curr2 and not is_curr1 and int(n2) > int(n1) * 5:
                 out = out if out is not None else int(n2)
             else:
-                val = val if val is not None else _FORM144_DECIMAL(numeric_items[1][2])
+                val = (
+                    val
+                    if val is not None
+                    else normalize_decimal_stripping_currency(numeric_items[1][2])
+                )
         elif len(numeric_items) == 1:
             if units is None and not numeric_items[0][1]:
                 units = int(numeric_items[0][0])
             elif val is None and numeric_items[0][1]:
-                val = _FORM144_DECIMAL(numeric_items[0][2])
+                val = normalize_decimal_stripping_currency(numeric_items[0][2])
             elif out is None and not numeric_items[0][1]:
                 out = int(numeric_items[0][0])
 

@@ -52,3 +52,40 @@ def test_parse_table_i_missing_optional_columns():
     assert items[0].nature_of_acquisition == "Direct Purchase"
     assert items[0].amount_acquired == 10000
     assert items[0].payment_date == "2021-02-20"
+
+
+VARIOUS_DATE_HTML = """
+<html><body>
+<table>
+<tr><td>TABLE I - SECURITIES TO BE SOLD</td></tr>
+<tr><td>Title of the Class</td><td>Date You Acquired</td><td>Nature of Acquisition Transaction</td><td>Name of Person from Whom Acquired</td><td>Amount of Securities Acquired</td><td>Date of Payment</td><td>Nature of Payment</td></tr>
+<tr><td>Common $1 Par Value</td><td>Various</td><td>Acquired as a result of awards granted under benefit plans.</td><td>Acquired as a result of awards granted under benefit plans.</td><td>6,025</td><td>Various</td><td>Cash</td></tr>
+</table>
+</body></html>
+"""
+
+WRAPPED_HEADER_HTML = """
+<html><body>
+<table>
+<tr><td>TABLE I - SECURITIES TO BE SOLD</td></tr>
+<tr><td>Title of</td><td>Date You</td><td>Name of Acquisition</td><td>Whom Acquired (If gift,</td><td>Amount of</td><td>Date of</td><td>Nature</td></tr>
+<tr><td>the Class</td><td>Acquired</td><td>Transaction</td><td>also give date donor acquired)</td><td>Securities Acquired</td><td>Payment</td><td>of Payment</td></tr>
+<tr><td>Common Stock</td><td>12/04/2017</td><td>Equity Compensation</td><td>Issuer</td><td>30,000</td><td>12/04/2017</td><td>Cash</td></tr>
+</table>
+</body></html>
+"""
+
+
+def test_table_i_various_date_row_is_data_not_header():
+    sections = partition_form144_tables(VARIOUS_DATE_HTML)
+    rows = parse_table_i_rows(sections.table_i)
+    assert len(rows) == 1
+    assert rows[0].amount_acquired == 6025
+
+
+def test_table_i_wrapped_header_rows_are_not_data():
+    sections = partition_form144_tables(WRAPPED_HEADER_HTML)
+    rows = parse_table_i_rows(sections.table_i)
+    assert len(rows) == 1
+    assert rows[0].class_title == "Common Stock"
+    assert rows[0].amount_acquired == 30000

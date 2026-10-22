@@ -7,6 +7,8 @@ from edgar_sec.engine.forms.common.numbers import (
     extract_schema_number,
     extract_schema_number_or_token,
     format_scaled_number_string,
+    normalize_decimal_stripping_currency,
+    normalize_integer_stripping_units,
     normalize_schema_decimal,
     normalize_schema_integer,
     parse_scaled_number,
@@ -95,3 +97,13 @@ def test_schema_extraction_accepts_whitespace_in_thousands_grouping() -> None:
     assert extract_schema_number("13,\t875") == "13875"
     assert extract_schema_number_or_token("13, 875") == "13875"
     assert extract_schema_number("13, 87") is None
+
+
+def test_policy_partials_strip_units_and_currency() -> None:
+    assert normalize_integer_stripping_units("6,025 shares") == 6025
+    assert normalize_integer_stripping_units("6,025") == 6025
+    assert normalize_integer_stripping_units("abc") is None
+    assert normalize_decimal_stripping_currency("$276,487.25") == "276487.25"
+    assert normalize_decimal_stripping_currency("(1,234.50)") == "-1234.50"
+    assert normalize_decimal_stripping_currency("-42.5") == "-42.5"
+    assert normalize_decimal_stripping_currency("abc") is None

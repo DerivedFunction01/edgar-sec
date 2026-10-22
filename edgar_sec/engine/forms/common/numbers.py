@@ -3,14 +3,14 @@
 from __future__ import annotations
 
 from decimal import Decimal, InvalidOperation
-from functools import lru_cache
+from functools import lru_cache, partial
 import re
 
 from edgar_sec.domain.forms.common.missing_values import COMMON_NUMERIC_NULL_POLICY
 from edgar_sec.engine.tables.numeric_cells import CURRENCY_TOKEN_RE
 from edgar_sec.foundation.regex.builder import build_alternation
 
-_NUMERIC_TOKEN_RE = re.compile(
+NUMERIC_TOKEN_RE = re.compile(
     rf"^\s*\(?\s*(?:{CURRENCY_TOKEN_RE.pattern})?\s*([0-9][0-9,]*(?:\.[0-9]+)?)\s*(?:{CURRENCY_TOKEN_RE.pattern})?\s*\)?\b"
 )
 _PUNCT_STRIP_RE = re.compile(rf"[,\s]|(?:{CURRENCY_TOKEN_RE.pattern})")
@@ -126,7 +126,7 @@ def clean_numeric(text: str | None) -> float | int | None:
             lower = cleaned.lower()
             break
 
-    match = _NUMERIC_TOKEN_RE.search(cleaned)
+    match = NUMERIC_TOKEN_RE.search(cleaned)
     if not match:
         return None
 
@@ -299,6 +299,18 @@ def normalize_schema_integer_value(text: str | None, **policy: bool) -> int | No
     return int(normalized) if normalized is not None else None
 
 
+normalize_integer_stripping_units = partial(
+    normalize_schema_integer_value, strip_units=True
+)
+normalize_decimal_stripping_currency = partial(
+    normalize_schema_number,
+    integer=False,
+    strip_currency=True,
+    allow_accounting_negative=True,
+    allow_negative=True,
+)
+
+
 def extract_schema_number(text: str) -> str | None:
     normalized_text = _SPACED_THOUSANDS_SEPARATOR_RE.sub(",", text)
     match = _SCHEMA_NUMERIC_TOKEN_RE.search(normalized_text)
@@ -321,6 +333,7 @@ def extract_schema_number_or_token(text: str) -> str | None:
 
 
 __all__ = [
+    "NUMERIC_TOKEN_RE",
     "clean_numeric",
     "extract_schema_number",
     "extract_schema_number_or_token",

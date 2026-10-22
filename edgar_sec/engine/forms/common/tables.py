@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 import re
 from dataclasses import dataclass
 
@@ -282,6 +283,7 @@ def address_from_inline_cells(
 _EMPTY_CONTINUATION_WORDS: frozenset[str] = frozenset(
     {"none", "n/a", "no reported", "not applicable", "nil", "0"}
 )
+_EMPTY_CONTINUATION_CELLS: frozenset[str] = _EMPTY_CONTINUATION_WORDS | {""}
 
 
 def is_trailing_signature_table(text: str, row_count: int) -> bool:
@@ -302,6 +304,11 @@ def is_single_cell_empty_table(
     return bool(clean_cells) and all(
         c in _EMPTY_CONTINUATION_WORDS for c in clean_cells
     )
+
+
+def is_empty_continuation_row(cells: Iterable[str]) -> bool:
+    """Detect whether every cell is empty or a negative placeholder word."""
+    return all(cell.strip().lower() in _EMPTY_CONTINUATION_CELLS for cell in cells)
 
 
 HORIZONTAL_RULE_RE = re.compile(r"^[\s\-=_*]{4,}$")
@@ -337,6 +344,7 @@ __all__ = [
     "address_from_inline_cells",
     "clean_field_candidate",
     "extract_labeled_field",
+    "is_empty_continuation_row",
     "is_horizontal_rule_line",
     "is_instruction_row",
     "is_single_cell_empty_table",

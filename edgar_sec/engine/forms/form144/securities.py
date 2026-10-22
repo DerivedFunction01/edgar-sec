@@ -2,10 +2,15 @@
 
 from __future__ import annotations
 
-from functools import partial
 import re
 from dataclasses import replace
 
+from edgar_sec.domain.forms.families.form144.evidence import (
+    FORM144_TABLE_I_DECISIVE_PHRASES,
+    FORM144_TABLE_I_SUPPORT_TERMS,
+    FORM144_TABLE_II_DECISIVE_PHRASES,
+    FORM144_TABLE_II_SUPPORT_TERMS,
+)
 from edgar_sec.domain.forms.families.form144.models import (
     TableISecurityItem,
     TableIISecuritySoldItem,
@@ -19,8 +24,8 @@ from edgar_sec.engine.forms.common.statutory import STATUTORY_PAGE_ARTIFACT_RE
 from edgar_sec.engine.forms.common.tables import is_instruction_row
 from edgar_sec.engine.forms.common.numbers import (
     extract_schema_number_or_token,
-    normalize_schema_integer_value,
-    normalize_schema_number,
+    normalize_decimal_stripping_currency,
+    normalize_integer_stripping_units,
 )
 from edgar_sec.engine.forms.common.row_extraction import (
     as_integer,
@@ -28,6 +33,7 @@ from edgar_sec.engine.forms.common.row_extraction import (
     scan_date_cells,
     split_row_cells,
 )
+from edgar_sec.engine.forms.form144.patterns import form144_instruction_matches
 from edgar_sec.engine.forms.form144.row_specs import (
     FORM144_TABLE_I_ROW_SPEC,
     FORM144_TABLE_II_ROW_SPEC,
@@ -35,27 +41,16 @@ from edgar_sec.engine.forms.form144.row_specs import (
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.tables.numeric_cells import is_numeric_cell
 from edgar_sec.engine.tables.currencies import ALL_CURRENCY_SYMBOLS
-from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE
-
-_FORM144_TOKEN_RE = re.compile(r"[a-z0-9\(\)]+")
-_FORM144_INTEGER = partial(normalize_schema_integer_value, strip_units=True)
+from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE, RE_FULL_DATE
 
 
 def _integer_or_token(text: str) -> int | str | None:
     """Return the policy-conformant integer, or the raw token it rejects."""
-    value = _FORM144_INTEGER(text)
+    value = normalize_integer_stripping_units(text)
     if value is not None:
         return value
     return extract_schema_number_or_token(text)
 
-
-_FORM144_DECIMAL = partial(
-    normalize_schema_number,
-    integer=False,
-    strip_currency=True,
-    allow_accounting_negative=True,
-    allow_negative=True,
-)
 
 _TABLE_TERMINATORS = (
     "/s/",
@@ -65,22 +60,6 @@ _TABLE_TERMINATORS = (
     "remarks:",
 )
 
-_FORM144_INSTRUCTION_TOKEN_SETS = (
-    frozenset({"notice", "proposed", "sale", "securities"}),
-    frozenset({"pursuant", "rule", "144"}),
-    frozenset({"electronic", "format", "edgar"}),
-    frozenset({"regulation", "s-t", "hardship"}),
-    frozenset({"filer", "contact", "issuer", "obtain", "file", "number"}),
-    frozenset({"purchased", "full", "payment", "cash", "consideration"}),
-    frozenset({"material", "adverse", "information", "prospective"}),
-    frozenset({"intentional", "misstatements", "criminal"}),
-    frozenset({"18", "u.s.c", "1001"}),
-    frozenset({"omb", "approval"}),
-    frozenset({"3235-0101"}),
-    frozenset({"burden", "hours"}),
-    frozenset({"please", "type", "print"}),
-)
-
 
 def _is_form144_instruction(row_str: str) -> bool:
     low = row_str.lower().strip()
@@ -88,64 +67,51 @@ def _is_form144_instruction(row_str: str) -> bool:
         return True
     if is_instruction_row(low) or STATUTORY_PAGE_ARTIFACT_RE.search(low) is not None:
         return True
-    tokens = frozenset(_FORM144_TOKEN_RE.findall(low))
-    return any(sig.issubset(tokens) for sig in _FORM144_INSTRUCTION_TOKEN_SETS)
+    return form144_instruction_matches(low)
 
 
 def _is_table_i_header(row: tuple[str, ...]) -> bool:
-    lower_cells = [c.lower().strip() for c in row if c.strip()]
+    lower_cells = [" ".join(c.lower().split()) for c in row if c.strip()]
     if not lower_cells:
         return True
-    if any(NUMERIC_DATE_RE.search(c) for c in lower_cells):
+    if any(NUMERIC_DATE_RE.search(c) or RE_FULL_DATE.search(c) for c in lower_cells):
         return False
     row_str = " ".join(lower_cells)
     if "table i" in row_str or "securities to be sold" in row_str:
         return True
-    header_hits = sum(
-        1
-        for c in lower_cells
-        if any(
-            k in c
-            for k in (
-                "title",
-                "class",
-                "acquired",
-                "nature of acquisition",
-                "whom acquired",
-                "amount acquired",
-                "date of payment",
-                "nature of payment",
-            )
-        )
+    decisive_hits = sum(
+        1 for c in lower_cells if any(k in c for k in FORM144_TABLE_I_DECISIVE_PHRASES)
     )
-    return header_hits >= 2
+    if decisive_hits >= 2:
+        return True
+    if not all(len(c) <= 40 for c in lower_cells):
+        return False
+    support_hits = sum(
+        1 for c in lower_cells if any(k in c for k in FORM144_TABLE_I_SUPPORT_TERMS)
+    )
+    return support_hits >= 2 or (decisive_hits >= 1 and support_hits >= 1)
 
 
 def _is_table_ii_header(row: tuple[str, ...]) -> bool:
-    lower_cells = [c.lower().strip() for c in row if c.strip()]
+    lower_cells = [" ".join(c.lower().split()) for c in row if c.strip()]
     if not lower_cells:
         return True
-    if any(NUMERIC_DATE_RE.search(c) for c in lower_cells):
+    if any(NUMERIC_DATE_RE.search(c) or RE_FULL_DATE.search(c) for c in lower_cells):
         return False
     row_str = " ".join(lower_cells)
     if "table ii" in row_str or "sold during the past" in row_str:
         return True
-    header_hits = sum(
-        1
-        for c in lower_cells
-        if any(
-            k in c
-            for k in (
-                "name and address",
-                "seller",
-                "title of securities",
-                "date of sale",
-                "amount of securities",
-                "gross proceeds",
-            )
-        )
+    decisive_hits = sum(
+        1 for c in lower_cells if any(k in c for k in FORM144_TABLE_II_DECISIVE_PHRASES)
     )
-    return header_hits >= 2
+    if decisive_hits >= 2:
+        return True
+    if not all(len(c) <= 40 for c in lower_cells):
+        return False
+    support_hits = sum(
+        1 for c in lower_cells if any(k in c for k in FORM144_TABLE_II_SUPPORT_TERMS)
+    )
+    return support_hits >= 2 or (decisive_hits >= 1 and support_hits >= 1)
 
 
 _TABLE_I_SCHEMA = TableSchema(
@@ -210,8 +176,10 @@ _TABLE_II_SCHEMA = TableSchema(
             name="gross_proceeds",
             is_required=False,
             is_anchor=True,
-            anchor_validator=lambda s: _FORM144_DECIMAL(s) is not None,
-            data_extractor=_FORM144_DECIMAL,
+            anchor_validator=lambda s: (
+                normalize_decimal_stripping_currency(s) is not None
+            ),
+            data_extractor=normalize_decimal_stripping_currency,
         ),
     ),
 )
@@ -273,7 +241,7 @@ def parse_table_i_rows(
             if idx in date_indices:
                 continue
             if is_numeric_cell(cell):
-                amount_val = _FORM144_INTEGER(cell)
+                amount_val = normalize_integer_stripping_units(cell)
                 if amount_val is not None:
                     amount_idx = idx
                     break
@@ -370,14 +338,16 @@ def parse_table_ii_rows(
                 continue
             has_currency = any(symbol in cell for symbol in ALL_CURRENCY_SYMBOLS)
             if has_currency:
-                number = _FORM144_DECIMAL(cell)
+                number = normalize_decimal_stripping_currency(cell)
                 if number is not None:
                     numeric_items.append((idx, number, cell, True))
                 continue
-            integer = _FORM144_INTEGER(cell)
+            integer = normalize_integer_stripping_units(cell)
             if integer is not None:
                 numeric_items.append((idx, integer, cell, False))
-            elif is_numeric_cell(cell) and (decimal := _FORM144_DECIMAL(cell)):
+            elif is_numeric_cell(cell) and (
+                decimal := normalize_decimal_stripping_currency(cell)
+            ):
                 numeric_items.append((idx, decimal, cell, True))
 
         num_indices = {n[0] for n in numeric_items}
@@ -395,7 +365,7 @@ def parse_table_ii_rows(
                 (item for item in numeric_items if item is not amount_item), None
             )
             if next_item is not None:
-                gross_proceeds = _FORM144_DECIMAL(next_item[2])
+                gross_proceeds = normalize_decimal_stripping_currency(next_item[2])
 
         text_cells = [
             cell

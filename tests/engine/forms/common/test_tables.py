@@ -3,6 +3,7 @@
 from edgar_sec.engine.forms.common.tables import (
     address_from_column_headers,
     extract_labeled_field,
+    is_empty_continuation_row,
     is_instruction_row,
     parse_address_parts,
     partition_grid_rows,
@@ -98,3 +99,10 @@ def test_extract_labeled_field_proportional_column_mapping():
     grid = ResolvedGrid(rows=rows, column_alignments=(), column_widths=())
     issuer = extract_labeled_field(grid, ("issuer name", "name of issuer"))
     assert issuer == "Farmers National Banc Corp./FMNB.OB"
+
+
+def test_is_empty_continuation_row() -> None:
+    assert is_empty_continuation_row(("None", "", "N/A"))
+    assert is_empty_continuation_row(("no reported", "nil", "0"))
+    assert is_empty_continuation_row(())
+    assert not is_empty_continuation_row(("None", "1,000"))

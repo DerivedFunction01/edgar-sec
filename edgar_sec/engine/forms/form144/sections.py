@@ -15,6 +15,7 @@ from edgar_sec.engine.forms.common.entities import (
 )
 from edgar_sec.engine.forms.common.signatures import is_signature_table
 from edgar_sec.engine.forms.common.tables import (
+    is_empty_continuation_row,
     is_instruction_row,
     is_single_cell_empty_table,
     is_trailing_signature_table,
@@ -27,14 +28,18 @@ from edgar_sec.domain.forms.families.form144.evidence import (
     FORM144_TABLE_II_LEXICAL_PACK,
 )
 from edgar_sec.engine.document.html.tree import FastHtmlNode, parse_html
+from edgar_sec.engine.forms.common.numbers import NUMERIC_TOKEN_RE
 from edgar_sec.engine.forms.form144.patterns import (
-    NUMERIC_TOKEN_RE,
     PHONE_RE,
     SEC_FILE_LABEL_RE,
     form144_instruction_matches,
 )
 from edgar_sec.engine.tables.ascii_html.converter import resolve_html_table_grid
-from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
+from edgar_sec.engine.tables.ascii_html.model import (
+    NON_ALNUM_RE,
+    ResolvedGrid,
+    merge_resolved_grids,
+)
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.automaton import tokenize
 from edgar_sec.foundation.text.dates import (
@@ -56,7 +61,6 @@ _COMPILED_TABLE_II_PACK = compile_evidence_pack(FORM144_TABLE_II_LEXICAL_PACK)
 _COMPILED_STATUTORY_PACK = compile_evidence_pack(COMMON_STATUTORY_LEXICAL_PACK)
 _EVIDENCE_CTX = EvidenceContext(min_words=1)
 
-_NON_ALNUM_RE = re.compile(r"[^a-z0-9]")
 _NUMBERED_NOTE_RE = re.compile(r"^\d+[.)]?\s+[a-z]")
 
 
@@ -172,7 +176,7 @@ def _has_box_3_values(lower: str) -> bool:
 
 
 def _classify_table(lower: str, past_tables: bool = False) -> SectionRole:
-    if not lower or not _NON_ALNUM_RE.sub("", lower):
+    if not lower or not NON_ALNUM_RE.sub("", lower):
         return SectionRole.PAGE_ARTIFACT
     if _has_table_i_evidence(lower):
         return SectionRole.TABLE_I
@@ -263,11 +267,8 @@ def _merge_sections(
         role=existing.role,
         table_index=existing.table_index,
         raw_node=existing.raw_node,
-        resolved_grid=ResolvedGrid(
-            rows=existing.resolved_grid.rows + incoming.resolved_grid.rows,
-            column_alignments=existing.resolved_grid.column_alignments,
-            column_widths=existing.resolved_grid.column_widths,
-            confidence=existing.resolved_grid.confidence,
+        resolved_grid=merge_resolved_grids(
+            existing.resolved_grid, incoming.resolved_grid
         ),
     )
 
@@ -334,11 +335,7 @@ def _is_table_ii_continuation(
     width = len(header)
     if width < 5:
         return False
-    if any(
-        all(c.strip().lower() in {"none", "n/a", ""} for c in row[1:])
-        for row in rows
-        if len(row) >= 4
-    ):
+    if any(is_empty_continuation_row(row[1:]) for row in rows if len(row) >= 4):
         return True
     rows = [row for row in rows if len(row) >= width]
     matching_rows = sum(

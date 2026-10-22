@@ -15,6 +15,7 @@ from edgar_sec.engine.forms.common.phrases import (
 )
 from edgar_sec.engine.forms.common.tables import IGNORE_SUBBOX_MARKERS
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.dates import NUMERIC_DATE_RE, RE_FULL_DATE
 
 SEC_FILE_LABEL_RE = re.compile(
     r"(?:s\.?e\.?c\.?\s*file\s*(?:no\.?|number)?|file\s*no\.?)\s*[:\s]*([0-9]{1,3}-[0-9]{4,7})",
@@ -22,7 +23,7 @@ SEC_FILE_LABEL_RE = re.compile(
 )
 SEC_FILE_BARE_RE = re.compile(r"\b([0-9]{1,3}-[0-9]{4,7})\b")
 PHONE_RE = re.compile(r"\(?\b\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}\b")
-_NOTICE_DATE_PAT = r"([A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4}|\d{1,2}[-/]\d{1,2}[-/]\d{2,4})"
+_NOTICE_DATE_PAT = rf"({RE_FULL_DATE.pattern}|{NUMERIC_DATE_RE.pattern})"
 NOTICE_DATE_LABEL_RE = re.compile(
     rf"(?:(?:date of notice|date\s*:?)\s*[:\s]*{_NOTICE_DATE_PAT}|{_NOTICE_DATE_PAT}\s*date of notice)",
     re.IGNORECASE,
@@ -31,11 +32,10 @@ NOTICE_DATE_LABEL_RE = re.compile(
 PLAN_ADOPTION_TERMS: tuple[str, ...] = ("plan adoption", "instruction", "rule 10b5-1")
 PLAN_ADOPTION_ALT = build_alternation(PLAN_ADOPTION_TERMS)
 PLAN_ADOPTION_RE = re.compile(
-    rf"(?:{PLAN_ADOPTION_ALT})[^\d]{{1,50}}(\d{{1,2}}[-/]\d{{1,2}}[-/]\d{{2,4}}|[A-Za-z]{{3,9}}\s+\d{{1,2}},?\s+\d{{4}})",
+    rf"(?:{PLAN_ADOPTION_ALT})[^\d]{{1,50}}{_NOTICE_DATE_PAT}",
     re.IGNORECASE,
 )
 
-NUMERIC_TOKEN_RE = re.compile(r"^\s*[\$]?\s*([0-9][0-9,]*(?:\.[0-9]+)?)\b")
 
 _COMPILED_FORM144_INSTRUCTION_RULE = compile_phrase_rules(
     (FORM144_INSTRUCTION_PHRASE_RULE,)
@@ -108,6 +108,7 @@ BOX_3A_TITLE_RE = re.compile(
     r"(?:3\.?\s*\(\s*a\s*\)|Title\s+of\s+(?:the\s+)?Class)", re.IGNORECASE
 )
 BOX_3A_TAIL_RE = re.compile(r"3\.?\s*\(\s*a\s*\)[^:]*:\s*(.+)$", re.IGNORECASE)
+TABLE_I_MARKER_RE = re.compile(r"\btable\s+(?:ii?|1)\b", re.IGNORECASE)
 
 _UNITS_TERMS = (
     "number of shares",
@@ -185,7 +186,6 @@ __all__ = [
     "COVER_HEADER_OR_SUBBOX_TERMS",
     "FORM144_NUMBERED_INSTRUCTION_RE",
     "NOTICE_DATE_LABEL_RE",
-    "NUMERIC_TOKEN_RE",
     "PHONE_RE",
     "PLAN_ADOPTION_ALT",
     "PLAN_ADOPTION_RE",

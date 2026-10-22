@@ -9,7 +9,10 @@ from edgar_sec.engine.forms.common.entities import (
     is_street_or_address_line,
     normalize_exchange_name,
 )
-from edgar_sec.engine.forms.common.numbers import format_scaled_number_string
+from edgar_sec.engine.forms.common.numbers import (
+    NUMERIC_TOKEN_RE,
+    format_scaled_number_string,
+)
 from edgar_sec.engine.forms.common.columnar_signatures import (
     extract_columnar_signature_and_date,
 )
@@ -36,12 +39,12 @@ from edgar_sec.engine.forms.form144.patterns import (
     BOX_3D_MARKET_VALUE_RE,
     BOX_3D_TAIL_RE,
     BOX_3G_EXCHANGE_RE,
-    NUMERIC_TOKEN_RE,
     RELATIONSHIP_LABEL_RE,
     RELATIONSHIP_TAIL_RE,
     SEC_FILE_BARE_RE,
     SEC_FILE_LABEL_RE,
     SECURITY_CLASS_RE,
+    TABLE_I_MARKER_RE,
     is_cover_header_or_subbox_line,
     is_form144_instruction_line,
 )
@@ -240,9 +243,9 @@ def _extract_proposed_sales(
         if not line or is_form144_instruction_line(line):
             continue
         lower = line.lower()
-        if "table i" in lower or "table 1" in lower:
+        if TABLE_I_MARKER_RE.search(line):
             break
-        if "3(a)" in lower or "3 (a)" in lower or "3. (a)" in lower:
+        if BOX_3A_TITLE_RE.search(line):
             in_b3 = True
         if in_b3 and is_horizontal_rule_line(line):
             divider_seen = True
@@ -310,7 +313,7 @@ def _extract_proposed_sales(
         if not line or is_form144_instruction_line(line):
             continue
         lower = line.lower()
-        if "table i" in lower or "table 1" in lower or "instructions:" in lower:
+        if TABLE_I_MARKER_RE.search(line) or "instructions:" in lower:
             break
         if "see instr" in lower or "broker-dealer" in lower:
             continue
@@ -394,7 +397,7 @@ def _extract_proposed_sales(
             if not line or is_form144_instruction_line(line):
                 continue
             lower = line.lower()
-            if "table i" in lower or "table 1" in lower:
+            if TABLE_I_MARKER_RE.search(line):
                 break
             if SECURITY_CLASS_RE.search(line) and len(line) < 50:
                 rec = ProposedSaleRecord(class_of_sec=line)
@@ -411,8 +414,7 @@ def _extract_proposed_sales(
                     v_low = v_l.lower()
                     if (
                         "instructions:" in v_low
-                        or "table i" in v_low
-                        or "table 1" in v_low
+                        or TABLE_I_MARKER_RE.search(v_l)
                         or "potential persons" in v_low
                     ):
                         break

@@ -6,9 +6,11 @@ from collections.abc import Sequence
 import re
 
 from edgar_sec.domain.forms.families.form144.rules import FORM144_PHRASE_RULES
+from edgar_sec.engine.forms.common.tables import HORIZONTAL_RULE_RE
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import heal_date_fragments
 from edgar_sec.foundation.text.healing import heal_split_lines
+from edgar_sec.foundation.text.patterns import RE_SENTENCE_TERMINAL
 
 _INSTRUCTION_PREFIX_WORDS = (
     "instructions",
@@ -25,8 +27,6 @@ _INSTRUCTION_START_PREFIXES = (
 )
 _INSTRUCTION_START_ALT = build_alternation(_INSTRUCTION_START_PREFIXES)
 _INSTRUCTION_START_RE = re.compile(rf"^\s*(?:{_INSTRUCTION_START_ALT})", re.IGNORECASE)
-_DELIMITER_RE = re.compile(r"^[\s\-=_]{4,}$")
-_SENTENCE_END_RE = re.compile(r"[\.\!\?]\s*$")
 _BOX_START_RE = re.compile(r"^\s*[123]\s*\(")
 
 
@@ -45,13 +45,13 @@ def heal_instruction_sentences(lines: Sequence[str]) -> list[str]:
                 next_l = lines[i].strip()
                 if (
                     not next_l
-                    or _DELIMITER_RE.match(next_l)
+                    or HORIZONTAL_RULE_RE.match(next_l)
                     or _INSTRUCTION_START_RE.match(next_l)
                 ):
                     break
                 if _BOX_START_RE.match(next_l):
                     break
-                if _SENTENCE_END_RE.search(sent_parts[-1]):
+                if RE_SENTENCE_TERMINAL.search(sent_parts[-1]):
                     if not next_l.startswith(
                         ("(", "and ", "or ", "to ", "for ", "the ")
                     ):

@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
+import re
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -203,6 +204,21 @@ class ResolvedGrid:
     veto_reasons: tuple[str, ...] = ()
 
 
+NON_ALNUM_RE = re.compile(r"[^a-z0-9]")
+
+
+def merge_resolved_grids(
+    existing: ResolvedGrid, incoming: ResolvedGrid
+) -> ResolvedGrid:
+    """Concatenate rows under the existing grid's geometry and confidence."""
+    return ResolvedGrid(
+        rows=existing.rows + incoming.rows,
+        column_alignments=existing.column_alignments,
+        column_widths=existing.column_widths,
+        confidence=existing.confidence,
+    )
+
+
 @dataclass(frozen=True, slots=True)
 class TableRenderResult:
     """Final output of the ASCII table renderer."""
@@ -263,6 +279,7 @@ class TableGeometry:
 
 __all__ = [
     "DEFAULT_RENDER_BUDGET",
+    "NON_ALNUM_RE",
     "BorderSegment",
     "BorderStyle",
     "CellBox",
@@ -277,4 +294,5 @@ __all__ = [
     "TableRenderResult",
     "TextLayoutDiagnostic",
     "VerticalAlign",
+    "merge_resolved_grids",
 ]
