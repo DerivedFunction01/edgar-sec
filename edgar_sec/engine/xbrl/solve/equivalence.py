@@ -55,12 +55,10 @@ def _classify_detail(
     right: Atom,
     groups: tuple[frozenset[str], ...] = SIBLING_GROUPS,
 ) -> tuple[str, str]:
-    """Classify a pair and name the rule that decided the tier.
+    """Classify a pair, naming the deciding rule; specific rules first.
 
-    Specific rules precede subsumption: widening and single-difference
-    pairs are subsumption pairs too, and the specific name is the
-    provenance. Every reordered branch yields NEAR, so tiers are
-    exactly classify_pair's historical outcomes.
+    Widening and single-difference pairs are subsumption pairs too, so
+    they precede it; every such branch yields NEAR, preserving tiers.
     """
     if left == right:
         return EXACT, "equality"
