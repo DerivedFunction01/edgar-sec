@@ -272,7 +272,9 @@ def _split_regions(
     """Split at the first boundary/relation claim, with orphan protection.
 
     A protect_far_head boundary does not split when the far side's
-    best head is at least as strong as the near side's (B4, opt-in).
+    best head claim outranks the near side's: the stronger far claim
+    is not orphaned into the subordinate region but wins the head
+    under the global class pick over the merged region (B4, opt-in).
     """
     sub_idx: int | None = None
     for idx, match in enumerate(resolved):
@@ -289,7 +291,7 @@ def _split_regions(
     near_heads = [m for m in near if m.entry.claim == "head" and _head_rank(m) > 0]
     far_heads = [m for m in far if m.entry.claim == "head" and _head_rank(m) > 0]
     if near_heads and far_heads:
-        if max(_head_rank(m) for m in far_heads) >= max(
+        if max(_head_rank(m) for m in far_heads) > max(
             _head_rank(m) for m in near_heads
         ):
             return resolved, [], None
@@ -322,7 +324,15 @@ def _decompose_flat_tokens(
         head = _fallback_head(subord_matches)
 
     sub_identity = boundary_match.entry.sub_identity if boundary_match else True
+    sub_suppress = (
+        frozenset(boundary_match.entry.sub_suppress) if boundary_match else frozenset()
+    )
     kinds = lexicon.modifier_kinds
+
+    def _subordinate_suppressed(mod: str) -> bool:
+        return mod in sub_suppress or (
+            not sub_identity and "IDENTITY" in kinds.get(mod, ())
+        )
 
     mods: set[str] = set()
     for idx, m in enumerate(primary_matches):
@@ -334,10 +344,12 @@ def _decompose_flat_tokens(
     for m in subord_matches:
         principal = m.entry.claim_atom()
         if principal and m.entry.claim != "head":
-            if not sub_identity and "IDENTITY" in kinds.get(principal, ()):
+            if not _subordinate_suppressed(principal):
+                mods.add(principal)
+        for mod in m.entry.payload_mods():
+            if _subordinate_suppressed(mod):
                 continue
-            mods.add(principal)
-        mods.update(m.entry.payload_mods())
+            mods.add(mod)
 
     if boundary_match is not None:
         principal = boundary_match.entry.claim_atom()
@@ -388,10 +400,11 @@ def infer_semantic_frame(
 ) -> SemanticConceptFrame:
     """Decompose an XBRL concept into a structured semantic concept frame."""
     if taxonomy.token_lexicon is None:
-        from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
+        from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 
-        x_paths = resolve_xbrl_paths()
-        lexicon = TokenLexicon.load_json(x_paths.default_token_lexicon_path)
+        loaded = load_domain_taxonomy().token_lexicon
+        assert loaded is not None
+        lexicon = loaded
     else:
         lexicon = taxonomy.token_lexicon
 

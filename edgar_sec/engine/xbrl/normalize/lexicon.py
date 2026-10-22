@@ -34,6 +34,7 @@ class LexiconEntry:
     requires_evidence: bool = False
     sub_identity: bool = True
     protect_far_head: bool = False
+    sub_suppress: tuple[str, ...] = ()
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> LexiconEntry:
@@ -82,6 +83,7 @@ class LexiconEntry:
             requires_evidence=bool(data.get("requires_evidence", False)),
             sub_identity=bool(data.get("sub_identity", True)),
             protect_far_head=bool(data.get("protect_far_head", False)),
+            sub_suppress=_ids("sub_suppress"),
         )
 
     @property
