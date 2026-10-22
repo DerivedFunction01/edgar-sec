@@ -175,9 +175,7 @@ class FinancialQueryEngine:
             for item in ranked
             if (item.tier, item.via_default) == (best.tier, best.via_default)
         )
-        if len(tier_group) == 1 or self._tier_values_agree(
-            tier_group, scoped_facts
-        ):
+        if len(tier_group) == 1 or self._tier_values_agree(tier_group, scoped_facts):
             return (best.qname,), target_atom, ranked
         return tuple(item.qname for item in tier_group), target_atom, ranked
 

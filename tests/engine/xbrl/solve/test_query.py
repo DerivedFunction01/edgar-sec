@@ -994,9 +994,7 @@ def test_near_fallback_tie_is_ambiguous_with_equivalents() -> None:
 def test_near_fallback_divergent_tier_never_resolves_on_distance() -> None:
     """MSFT shape: dist-1 rollforward vs dist-3 headline, divergent values."""
     facts = (
-        _duration_fact(
-            "msft:ContractWithCustomerLiabilityRevenueDeferred", 148_701.0
-        ),
+        _duration_fact("msft:ContractWithCustomerLiabilityRevenueDeferred", 148_701.0),
         _duration_fact(
             "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
             245_122.0,
@@ -1017,9 +1015,7 @@ def test_near_fallback_divergent_tier_never_resolves_on_distance() -> None:
 def test_near_fallback_agreeing_tier_resolves_to_the_best_ranked() -> None:
     """Same MSFT shape with agreeing values: the best-ranked resolves."""
     facts = (
-        _duration_fact(
-            "msft:ContractWithCustomerLiabilityRevenueDeferred", 100.0
-        ),
+        _duration_fact("msft:ContractWithCustomerLiabilityRevenueDeferred", 100.0),
         _duration_fact(
             "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", 100.0
         ),

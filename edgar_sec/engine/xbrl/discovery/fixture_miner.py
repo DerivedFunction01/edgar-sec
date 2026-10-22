@@ -271,6 +271,7 @@ _STRUCTURAL_TOKENS = frozenset(
     {"text", "block", "table", "policy", "disclosure", "extensible", "enumeration"}
 )
 
+
 def _residual_class(residuals: tuple[str, ...]) -> str:
     """Classify residuals as none, noise-only, or intent-bearing."""
     if not residuals:
@@ -725,7 +726,10 @@ def build_modelledness_report(
             and r.residual_class == "noise_only"
         ),
         residual_noise_token_total=sum(
-            1 for r in records for token in r.residual_tokens if is_noise_residual(token)
+            1
+            for r in records
+            for token in r.residual_tokens
+            if is_noise_residual(token)
         ),
         residual_intent_token_total=sum(
             1
