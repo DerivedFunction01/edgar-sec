@@ -135,7 +135,9 @@ def test_link_pattern_textblock_reads_the_coordinate() -> None:
     from edgar_sec.engine.xbrl.schema.commodities import LinkPattern
 
     narrative = LinkPattern(
-        instrument="X", relation="NARRATIVE", tokens_all=("unions",),
+        instrument="X",
+        relation="NARRATIVE",
+        tokens_all=("unions",),
         textblock="require",
     )
     typed = Atom("H_UNKNOWN", frozenset({"M_TEXT_NODE"}))

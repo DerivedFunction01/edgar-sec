@@ -63,8 +63,7 @@ def merge_declarations(
 def declaration_for(
     qname: str,
     table: Mapping[str, str],
-    declarations: Iterable[ConceptDeclaration]
-    | Mapping[str, ConceptDeclaration] = (),
+    declarations: Iterable[ConceptDeclaration] | Mapping[str, ConceptDeclaration] = (),
 ) -> ConceptDeclaration | None:
     """Effective declaration for a qname: extension first, table underneath."""
     if isinstance(declarations, Mapping):

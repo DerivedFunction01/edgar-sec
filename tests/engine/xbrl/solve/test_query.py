@@ -1254,7 +1254,9 @@ def test_text_coordinate_excludes_a_textblock_with_numeric_facts() -> None:
     result = declared.execute(FinancialQuery("Revenue", _DURATION_SCOPE), facts)
     assert result.status == QueryStatus.UNAVAILABLE
     assert result.candidate_qnames == ()
-    undeclared = _query_engine().execute(FinancialQuery("Revenue", _DURATION_SCOPE), facts)
+    undeclared = _query_engine().execute(
+        FinancialQuery("Revenue", _DURATION_SCOPE), facts
+    )
     assert undeclared.status == QueryStatus.REPORTED
     assert undeclared.candidate_qnames == (qname,)
 

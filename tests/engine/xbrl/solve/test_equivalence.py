@@ -914,7 +914,10 @@ def test_text_barrier_kills_a_false_exact() -> None:
     numeric = _atom("adm:Biodieseltaxcredit")
     assert text == Atom("H_UNKNOWN", frozenset({"M_TEXT_NODE"}))
     assert numeric == Atom("H_UNKNOWN")
-    assert classify_pair(_atom("all:CapitalStructureDisclosureTextBlock"), numeric) == EXACT
+    assert (
+        classify_pair(_atom("all:CapitalStructureDisclosureTextBlock"), numeric)
+        == EXACT
+    )
     assert classify_pair(text, numeric) == UNRELATED
     assert classify_pair(numeric, text) == UNRELATED
 
@@ -939,7 +942,9 @@ def test_text_pairs_classify_by_the_ordinary_rules() -> None:
     )
     assert "M_TEXT_NODE" in pld.modifiers and "M_TEXT_NODE" in tsla.modifiers
     assert classify_pair(pld, tsla) == EXACT
-    cycle = _typed_atom("ba:OperatingCyclePolicyTextBlock", "dtr-types1:textBlockItemType")
+    cycle = _typed_atom(
+        "ba:OperatingCyclePolicyTextBlock", "dtr-types1:textBlockItemType"
+    )
     structure = _typed_atom(
         "all:CapitalStructureDisclosureTextBlock", "dtr-types:textBlockItemType"
     )

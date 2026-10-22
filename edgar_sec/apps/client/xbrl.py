@@ -111,8 +111,7 @@ class Xbrl:
         extension = {}
         if self._filing.linkbases is not None:
             extension = {
-                item.concept_qname: item
-                for item in self._filing.linkbases.declarations
+                item.concept_qname: item for item in self._filing.linkbases.declarations
             }
         table = load_standard_item_types(
             resolve_xbrl_paths().default_standard_item_types_path

@@ -384,7 +384,7 @@ def test_modelledness_buckets_follow_declared_type() -> None:
     assert buckets[qnames[0]] != "textblock"
     assert buckets[qnames[1]] == "textblock"
     assert buckets[qnames[2]] == "textblock"
-    legacy = build_modelledness_report([bundle], lexicon)
-    legacy_buckets = {record.qname: record.bucket for record in legacy.concepts}
-    assert legacy_buckets[qnames[0]] == "textblock"
-    assert legacy_buckets[qnames[1]] != "textblock"
+    untyped = build_modelledness_report([bundle], lexicon)
+    untyped_buckets = {record.qname: record.bucket for record in untyped.concepts}
+    assert untyped_buckets[qnames[0]] == "textblock"
+    assert untyped_buckets[qnames[1]] != "textblock"

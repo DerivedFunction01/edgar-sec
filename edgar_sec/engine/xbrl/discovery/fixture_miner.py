@@ -480,9 +480,7 @@ def build_modelledness_report(
             and declaration.item_type is not None
             and text_rule is not None
         ):
-            typed = decompose_concept_expression(
-                qname, lexicon, declaration, text_rule
-            )
+            typed = decompose_concept_expression(qname, lexicon, declaration, text_rule)
             text_by_concept[qname] = text_rule.modifier_id in typed.atom.modifiers
         else:
             text_by_concept[qname] = qname.split(":")[-1].endswith("TextBlock") or (

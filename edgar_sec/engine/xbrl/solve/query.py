@@ -214,15 +214,11 @@ class FinancialQueryEngine:
             return (best.qname,), target_atom, ranked, best.qname
         return tuple(item.qname for item in tier_group), target_atom, ranked, None
 
-    def _candidate_eligible(
-        self, qname: str, atom: Atom, numeric: set[str]
-    ) -> bool:
-        """Numeric floor for every candidate; coordinate excludes text above it.
+    def _candidate_eligible(self, qname: str, atom: Atom, numeric: set[str]) -> bool:
+        """Numeric floor for every candidate; the coordinate excludes text above it.
 
-        A candidate needs a numeric fact in scope to answer a numeric
-        query. A declared text type then excludes it even when numeric
-        facts exist; a type-unresolved qname gets no exclusion, so the
-        floor is its only text protection (the narrowed residue).
+        A candidate needs a numeric fact in scope; a declared text type
+        then excludes it, while a type-unresolved qname gets no exclusion.
         """
         if qname not in numeric:
             return False
