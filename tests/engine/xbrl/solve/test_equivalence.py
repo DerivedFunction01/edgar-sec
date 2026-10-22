@@ -619,3 +619,68 @@ def test_common_and_preferred_shares_are_sibling_classes() -> None:
     assert "M_PREFERRED" in preferred.modifiers
     assert classify_pair(common, preferred) == NEAR
     assert classify_pair(common, common) == EXACT
+
+
+def test_deferred_income_tax_expense_separates_from_the_total() -> None:
+    """The deferred portion is a specialization of total income tax expense."""
+    deferred = _atom("us-gaap:DeferredIncomeTaxExpenseBenefit")
+    total = _atom("us-gaap:IncomeTaxExpenseBenefit")
+    current = _atom("us-gaap:CurrentIncomeTaxExpenseBenefit")
+    assert deferred.modifiers == frozenset({"M_DEFERRED", "M_TAX"})
+    assert total.modifiers == frozenset({"M_TAX"})
+    assert current.modifiers == frozenset({"M_CURRENT", "M_TAX"})
+    ranked = rank_equivalents(
+        "us-gaap:IncomeTaxExpenseBenefit", total, (("us-gaap:X", deferred),)
+    )
+    assert ranked[0].tier == NEAR and ranked[0].rule == "single_modifier_difference"
+    assert ranked[0].modifier_distance == 1
+    assert ranked[0].direction == "specialization"
+
+
+def test_deferred_income_tax_liabilities_leave_the_payable_atom() -> None:
+    """Deferred tax liabilities no longer share the accrued-tax coordinate."""
+    deferred = _atom("us-gaap:DeferredIncomeTaxLiabilities")
+    accrued = _atom("us-gaap:AccruedIncomeTaxes")
+    assert deferred.modifiers == frozenset({"M_DEFERRED", "M_TAX"})
+    assert accrued.modifiers == frozenset({"M_TAX"})
+    assert classify_pair(deferred, accrued) == NEAR
+
+
+def test_deferred_rollforward_twin_separates_from_recognized_twin() -> None:
+    """The MSFT deferred rollforward and its recognized twin are not exact."""
+    deferred = _atom("msft:ContractWithCustomerLiabilityRevenueDeferred")
+    recognized = _atom("us-gaap:ContractWithCustomerLiabilityRevenueRecognized")
+    assert "M_DEFERRED" in deferred.modifiers
+    assert "M_DEFERRED" not in recognized.modifiers
+    assert classify_pair(deferred, recognized) == NEAR
+
+
+def test_deferred_rollforward_ranks_behind_the_asc606_headline() -> None:
+    """Claiming Deferred moves the rollforward to distance 2, headline 3."""
+    target = _atom("us-gaap:Revenues")
+    candidates = (
+        (
+            "msft:ContractWithCustomerLiabilityRevenueDeferred",
+            _atom("msft:ContractWithCustomerLiabilityRevenueDeferred"),
+        ),
+        (
+            "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            _atom("us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"),
+        ),
+    )
+    ranked = rank_equivalents("us-gaap:Revenues", target, candidates)
+    by_qname = {item.qname: item for item in ranked}
+    rollforward = by_qname["msft:ContractWithCustomerLiabilityRevenueDeferred"]
+    headline = by_qname["us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"]
+    assert rollforward.modifier_distance == 2 and rollforward.rule == "subsumption"
+    assert headline.modifier_distance == 3
+
+
+def test_deferred_is_not_a_maturity_sibling() -> None:
+    """A Deferred/Noncurrent-only difference never classifies by sibling swap."""
+    deferred = Atom("H_LIABILITY", frozenset({"M_DEFERRED"}))
+    noncurrent = Atom("H_LIABILITY", frozenset({"M_NONCURRENT"}))
+    assert classify_pair(deferred, noncurrent) == UNRELATED
+    deferred_tax = Atom("H_EXPENSE", frozenset({"M_DEFERRED", "M_TAX"}))
+    noncurrent_tax = Atom("H_EXPENSE", frozenset({"M_NONCURRENT", "M_TAX"}))
+    assert classify_pair(deferred_tax, noncurrent_tax) == UNRELATED

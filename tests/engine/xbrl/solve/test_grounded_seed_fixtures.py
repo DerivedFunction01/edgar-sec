@@ -604,8 +604,8 @@ def test_msft_loose_revenue_candidate_set_excludes_textblock() -> None:
 
     assert result.status == QueryStatus.AMBIGUOUS
     assert result.candidate_qnames == (
-        "msft:ContractWithCustomerLiabilityRevenueDeferred",
         "msft:ContractWithCustomerLiabilityRevenueRecognizedIncludingAdditions",
+        "msft:ContractWithCustomerLiabilityRevenueDeferred",
         "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
     )
 

@@ -676,7 +676,7 @@ def test_xbrl_query_gis_revenue_exact_carries_asc606_neighbour() -> None:
 
 
 def test_xbrl_query_msft_revenue_rank_alone_never_promotes() -> None:
-    """Verify MSFT revenue stays AMBIGUOUS: the dist-1 rollforward is not REPORTED (Q3(a))."""
+    """Verify MSFT revenue stays AMBIGUOUS: rank alone never promotes it (Q3(a))."""
     xbrl = _create_xbrl_facade("msft")
 
     for mode in (QueryMode.REPORTED_ONLY, QueryMode.VERIFY_DERIVATION):
@@ -685,7 +685,9 @@ def test_xbrl_query_msft_revenue_rank_alone_never_promotes() -> None:
         assert result.value is None
         assert result.tier == "near"
         best = result.equivalents[0]
-        assert best.qname == "msft:ContractWithCustomerLiabilityRevenueDeferred"
+        assert best.qname == (
+            "msft:ContractWithCustomerLiabilityRevenueRecognizedIncludingAdditions"
+        )
         assert best.rule == "single_modifier_difference"
         assert best.direction == "specialization"
 
