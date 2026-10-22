@@ -95,7 +95,12 @@ class Xbrl:
             self._filing.facts, self._taxonomy, declarations=declarations
         )
         self.statements = XbrlStatements(
-            self._filing.facts, arcs, self._taxonomy, self._labels
+            self._filing.facts,
+            arcs,
+            self._taxonomy,
+            self._labels,
+            records=self.facts.records,
+            declarations=declarations,
         )
         self.financials = XbrlFinancials(
             self._filing.facts,
