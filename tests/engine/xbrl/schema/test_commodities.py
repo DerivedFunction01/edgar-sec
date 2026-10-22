@@ -127,3 +127,25 @@ def test_two_firms_producing_gold_unify() -> None:
         if link.instrument == "natural_gas" and link.relation == "CONSUMES"
     }
     assert consumers == {"CF"}
+
+
+def test_link_pattern_textblock_reads_the_coordinate() -> None:
+    """Typed atoms: the coordinate decides; declaration-less keeps the token test."""
+    from edgar_sec.engine.xbrl.schema.atoms import Atom
+    from edgar_sec.engine.xbrl.schema.commodities import LinkPattern
+
+    narrative = LinkPattern(
+        instrument="X", relation="NARRATIVE", tokens_all=("unions",),
+        textblock="require",
+    )
+    typed = Atom("H_UNKNOWN", frozenset({"M_TEXT_NODE"}))
+    plain = Atom("H_UNKNOWN")
+    narrative_tokens = ("unions", "represented")
+    assert narrative.matches(typed, narrative_tokens) is True
+    assert narrative.matches(plain, narrative_tokens) is False
+    assert narrative.matches(plain, ("unions", "text", "block")) is True
+
+    excluding = LinkPattern(instrument="X", relation="MEASURES")
+    assert excluding.matches(typed, narrative_tokens) is False
+    assert excluding.matches(plain, narrative_tokens) is True
+    assert excluding.matches(plain, ("text", "block")) is False

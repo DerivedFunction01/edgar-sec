@@ -66,7 +66,9 @@ class LinkPattern:
             return False
         if set(self.tokens_none) & token_set:
             return False
-        is_textblock = {"text", "block"} <= token_set
+        # The atom's text coordinate decides when it carries one; a
+        # declaration-less atom falls back to the name-token test.
+        is_textblock = "M_TEXT_NODE" in mods or {"text", "block"} <= token_set
         if self.textblock == "exclude" and is_textblock:
             return False
         return self.textblock != "require" or is_textblock
