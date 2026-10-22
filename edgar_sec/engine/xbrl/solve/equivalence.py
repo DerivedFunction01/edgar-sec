@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Iterable
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 
 from edgar_sec.engine.xbrl.schema.atoms import Atom
@@ -115,6 +115,8 @@ class RankedEquivalent:
     modifier_distance: int
     via_default: bool = False
     rule: str = ""
+    residual_intent_count: int = 0
+    residual_total_count: int = 0
 
 
 def rank_equivalents(
@@ -123,6 +125,7 @@ def rank_equivalents(
     candidates: Iterable[tuple[str, Atom]],
     defaults: Iterable[DefaultCoordinate] = (),
     sibling_groups: Iterable[frozenset[str]] | None = None,
+    residual_counts: Mapping[str, tuple[int, int]] | None = None,
 ) -> tuple[RankedEquivalent, ...]:
     """Rank candidate concepts by equivalence tier to the target atom.
 
@@ -131,6 +134,7 @@ def rank_equivalents(
     """
     groups = _resolve_groups(sibling_groups)
     defaults = tuple(defaults)
+    counts = residual_counts or {}
     presumed_target = presumed_atom(target, defaults, groups)
     ranked = []
     for qname, atom in candidates:
@@ -148,14 +152,26 @@ def rank_equivalents(
             distance = len(presumed_target.modifiers ^ presumed.modifiers)
         else:
             distance = len(target.modifiers ^ atom.modifiers)
+        intent, total = counts.get(qname, (0, 0))
         ranked.append(
-            RankedEquivalent(qname, atom, tier, distance, via_default, rule=rule)
+            RankedEquivalent(
+                qname,
+                atom,
+                tier,
+                distance,
+                via_default,
+                rule=rule,
+                residual_intent_count=intent,
+                residual_total_count=total,
+            )
         )
     ranked.sort(
         key=lambda item: (
             0 if item.tier == EXACT else 1,
             1 if item.via_default else 0,
             item.modifier_distance,
+            item.residual_intent_count,
+            item.residual_total_count,
             item.qname,
         )
     )

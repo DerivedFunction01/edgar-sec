@@ -4,9 +4,22 @@ from edgar_sec.engine.xbrl.normalize.decomposer import (
     decompose_concept,
     decompose_concept_expression,
     infer_semantic_frame,
+    is_noise_residual,
+    residual_counts,
     split_camel_case,
 )
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
+
+
+def test_residual_counts_split_intent_from_noise() -> None:
+    """Digits, stopwords, and structural tokens are noise; the rest intent."""
+    assert residual_counts(()) == (0, 0)
+    assert residual_counts(("1",)) == (0, 1)
+    assert residual_counts(("Schedule", "Of")) == (0, 2)
+    assert residual_counts(("Deferred",)) == (1, 1)
+    assert residual_counts(("Funding", "Risk", "Valuation", "Adjustment")) == (4, 4)
+    assert is_noise_residual("Table") is True
+    assert is_noise_residual("Adjustment") is False
 
 
 def test_split_camel_case() -> None:

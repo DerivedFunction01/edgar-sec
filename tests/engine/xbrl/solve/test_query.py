@@ -1135,6 +1135,25 @@ def test_literal_textblock_qname_route_is_not_guarded() -> None:
     assert result.candidate_qnames == ("us-gaap:RevenueRecognitionPolicyTextBlock",)
 
 
+def test_exact_pool_presents_the_headline_before_residual_heavy_names() -> None:
+    """BAC shape: the XVA name shares the derivative-assets atom exactly."""
+    xva = "bac:DerivativeFundingRiskValuationAdjustmentDerivativeAssets"
+    facts = (
+        _instant_usd_fact(xva, 66_000_000.0, None),
+        _instant_usd_fact("us-gaap:DerivativeAssets", 180_000_000.0, None),
+    )
+    scope = FactScope(
+        accession="0000950170-24-087843",
+        instant_date="2024-06-30",
+        unit="USD",
+    )
+    result = _query_engine().execute(FinancialQuery("DerivativeAssets", scope), facts)
+    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.candidate_qnames == ("us-gaap:DerivativeAssets", xva)
+    assert result.tier == ""
+    assert result.equivalents == ()
+
+
 def test_concept_query_keeps_free_text_parsing_out_of_scope() -> None:
     engine = _query_engine()
     assert engine.parse_terms("NetIncome") == ("Net", "Income")

@@ -94,6 +94,54 @@ def test_tokenizer_record_presumed_atom_applies_defaults() -> None:
     )
 
 
+def test_tokenizer_equivalents_order_bac_pool_by_residual_counts() -> None:
+    """The XVA name's residuals (4, 4) rank it behind the headline (0, 0)."""
+    tokenizer = _tokenizer()
+    xva = "bac:DerivativeFundingRiskValuationAdjustmentDerivativeAssets"
+    ranked = tokenizer.equivalents(
+        Atom("H_ASSET", frozenset({"M_DERIVATIVE"})),
+        (xva, "us-gaap:DerivativeAssets"),
+    )
+    assert [item.qname for item in ranked] == ["us-gaap:DerivativeAssets", xva]
+    assert (ranked[0].residual_intent_count, ranked[0].residual_total_count) == (0, 0)
+    assert (ranked[1].residual_intent_count, ranked[1].residual_total_count) == (4, 4)
+
+
+def test_tokenizer_equivalents_order_jpm_pool_on_total_count() -> None:
+    """The fee name's digit residual is noise: intent ties, total decides."""
+    tokenizer = _tokenizer()
+    ranked = tokenizer.equivalents(
+        Atom("H_REVENUE"),
+        ("jpm:FeesAndCommissions1", "us-gaap:Revenues"),
+    )
+    assert [item.qname for item in ranked] == [
+        "us-gaap:Revenues",
+        "jpm:FeesAndCommissions1",
+    ]
+    assert (ranked[0].residual_intent_count, ranked[0].residual_total_count) == (0, 0)
+    assert (ranked[1].residual_intent_count, ranked[1].residual_total_count) == (0, 1)
+
+
+def test_tokenizer_equivalents_distance_dominates_residual_counts() -> None:
+    """MSFT pool: the dist-1 rollforward stays first despite its residual."""
+    tokenizer = _tokenizer()
+    ranked = tokenizer.equivalents(
+        Atom("H_REVENUE"),
+        (
+            "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            "msft:ContractWithCustomerLiabilityRevenueDeferred",
+        ),
+    )
+    assert [item.qname for item in ranked] == [
+        "msft:ContractWithCustomerLiabilityRevenueDeferred",
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+    ]
+    assert ranked[0].modifier_distance == 1
+    assert (ranked[0].residual_intent_count, ranked[0].residual_total_count) == (1, 1)
+    assert ranked[1].modifier_distance == 3
+    assert (ranked[1].residual_intent_count, ranked[1].residual_total_count) == (0, 0)
+
+
 def test_tokenizer_equivalents_accept_atom_targets_and_pairs() -> None:
     """Atom targets and (qname, atom) candidate pairs rank directly."""
     tokenizer = _tokenizer()

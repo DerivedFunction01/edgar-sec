@@ -17,6 +17,7 @@ from edgar_sec.engine.xbrl.evidence.mining import CollocationMiner, SupportCount
 from edgar_sec.engine.xbrl.normalize.decomposer import (
     collapse_number_phrases,
     decompose_concept_expression,
+    is_noise_residual,
     split_camel_case,
 )
 from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
@@ -270,64 +271,11 @@ _STRUCTURAL_TOKENS = frozenset(
     {"text", "block", "table", "policy", "disclosure", "extensible", "enumeration"}
 )
 
-_NOISE_RESIDUAL_TOKENS = _STRUCTURAL_TOKENS | frozenset(
-    {
-        "schedule",
-        "statement",
-        "and",
-        "or",
-        "the",
-        "a",
-        "an",
-        "of",
-        "in",
-        "on",
-        "to",
-        "for",
-        "by",
-        "from",
-        "at",
-        "as",
-        "with",
-        "under",
-        "over",
-        "before",
-        "after",
-        "than",
-        "not",
-        "be",
-        "is",
-        "per",
-        "vs",
-        "versus",
-        "upon",
-        "into",
-        "between",
-        "during",
-        "within",
-        "without",
-        "through",
-        "against",
-        "about",
-    }
-)
-
-
-def _is_noise_token(token: str) -> bool:
-    """True for stopword, structural, digit, or collapsed-number residuals."""
-    lowered = token.lower()
-    return (
-        lowered in _NOISE_RESIDUAL_TOKENS
-        or token.isdigit()
-        or lowered in ("num", "ord")
-    )
-
-
 def _residual_class(residuals: tuple[str, ...]) -> str:
     """Classify residuals as none, noise-only, or intent-bearing."""
     if not residuals:
         return "none"
-    if all(_is_noise_token(token) for token in residuals):
+    if all(is_noise_residual(token) for token in residuals):
         return "noise_only"
     return "intent_bearing"
 
@@ -353,7 +301,7 @@ def _adequacy(
 ) -> tuple[str, bool, float]:
     """Return (adequacy tier, has_identity, explained share) for one concept."""
     share = 1.0 - (len(residuals) / token_count if token_count else 0.0)
-    intent = [t for t in residuals if not _is_noise_token(t)]
+    intent = [t for t in residuals if not is_noise_residual(t)]
     # A name fully consumed by its head phrase carries identity in the head itself.
     has_identity = any(m not in structural for m in modifiers) or not intent
     if head == "H_UNKNOWN":
@@ -666,7 +614,7 @@ def build_modelledness_report(
             continue
         intent = tuple(
             sorted(
-                {t.lower() for t in record.residual_tokens if not _is_noise_token(t)}
+                {t.lower() for t in record.residual_tokens if not is_noise_residual(t)}
             )
         )
         by_signature[(record.head, record.modifiers, intent)].append(record)
@@ -777,13 +725,13 @@ def build_modelledness_report(
             and r.residual_class == "noise_only"
         ),
         residual_noise_token_total=sum(
-            1 for r in records for token in r.residual_tokens if _is_noise_token(token)
+            1 for r in records for token in r.residual_tokens if is_noise_residual(token)
         ),
         residual_intent_token_total=sum(
             1
             for r in records
             for token in r.residual_tokens
-            if not _is_noise_token(token)
+            if not is_noise_residual(token)
         ),
         frame_conflicts=tuple(frame_conflicts[:120]),
         adequacy_counts=tuple(sorted(Counter(r.adequacy for r in records).items())),

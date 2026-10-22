@@ -5,7 +5,10 @@ from __future__ import annotations
 from collections.abc import Iterable
 from dataclasses import dataclass
 
-from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept_expression
+from edgar_sec.engine.xbrl.normalize.decomposer import (
+    decompose_concept_expression,
+    residual_counts,
+)
 from edgar_sec.engine.xbrl.normalize.lexicon import LexiconMatch
 from edgar_sec.engine.xbrl.normalize.temporal import TemporalInterval
 from edgar_sec.engine.xbrl.schema.atoms import Atom
@@ -88,14 +91,22 @@ class ConceptTokenizer:
         else:
             target_qname = ""
             target_atom = target
-        pool = tuple(
-            (item, self.tokenize(item).atom) if isinstance(item, str) else item
-            for item in candidates
-        )
+        pool = []
+        counts = {}
+        for item in candidates:
+            if isinstance(item, str):
+                record = self.tokenize(item)
+                pool.append((item, record.atom))
+                counts[item] = residual_counts(record.residuals)
+            else:
+                qname, atom = item
+                pool.append((qname, atom))
+                counts[qname] = residual_counts(self.tokenize(qname).residuals)
         return rank_equivalents(
             target_qname,
             target_atom,
-            pool,
+            tuple(pool),
             self._taxonomy.default_coordinates,
             sibling_groups=self._sibling_groups,
+            residual_counts=counts,
         )

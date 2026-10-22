@@ -173,6 +173,66 @@ def test_ranked_equivalents_name_the_deciding_rule() -> None:
     assert wide[0].tier == NEAR and wide[0].rule == "aggregate_widening"
 
 
+def test_rank_equivalents_breaks_ties_on_residual_counts() -> None:
+    """Equal ranks order by intent count, then total count, then qname."""
+    target = Atom("H_REVENUE")
+    atom = Atom("H_REVENUE", frozenset({"M_SALES_GOODS"}))
+    candidates = (
+        ("firm-a:Noisy", atom),
+        ("firm-b:Intentful", atom),
+        ("firm-c:Clean", atom),
+    )
+    counts = {
+        "firm-a:Noisy": (0, 3),
+        "firm-b:Intentful": (1, 1),
+        "firm-c:Clean": (0, 0),
+    }
+    ranked = rank_equivalents(
+        "firm-x:Revenues", target, candidates, residual_counts=counts
+    )
+    assert [item.qname for item in ranked] == [
+        "firm-c:Clean",
+        "firm-a:Noisy",
+        "firm-b:Intentful",
+    ]
+    assert (ranked[0].residual_intent_count, ranked[0].residual_total_count) == (0, 0)
+    assert (ranked[1].residual_intent_count, ranked[1].residual_total_count) == (0, 3)
+    assert (ranked[2].residual_intent_count, ranked[2].residual_total_count) == (1, 1)
+
+
+def test_rank_equivalents_orders_bac_derivative_pool_by_residuals() -> None:
+    """The XVA name's four intent residuals rank it behind the headline."""
+    target = _atom("us-gaap:DerivativeAssets")
+    xva = "bac:DerivativeFundingRiskValuationAdjustmentDerivativeAssets"
+    candidates = (
+        (xva, _atom(xva)),
+        ("us-gaap:DerivativeAssets", target),
+    )
+    counts = {"us-gaap:DerivativeAssets": (0, 0), xva: (4, 4)}
+    ranked = rank_equivalents(
+        "firm-x:DerivativeAssets", target, candidates, residual_counts=counts
+    )
+    assert [item.qname for item in ranked] == ["us-gaap:DerivativeAssets", xva]
+    assert [item.tier for item in ranked] == [EXACT, EXACT]
+
+
+def test_rank_equivalents_orders_jpm_revenue_pool_on_total_count() -> None:
+    """Intent ties at zero; the digit residual's total count discriminates."""
+    target = Atom("H_REVENUE")
+    candidates = (
+        ("jpm:FeesAndCommissions1", Atom("H_REVENUE")),
+        ("us-gaap:Revenues", Atom("H_REVENUE")),
+    )
+    counts = {"us-gaap:Revenues": (0, 0), "jpm:FeesAndCommissions1": (0, 1)}
+    ranked = rank_equivalents(
+        "firm-x:Revenue", target, candidates, residual_counts=counts
+    )
+    assert [item.qname for item in ranked] == [
+        "us-gaap:Revenues",
+        "jpm:FeesAndCommissions1",
+    ]
+
+
 def test_sibling_swap_rule_is_named() -> None:
     """The AFS/HTM pair ranks NEAR under the sibling_swap rule."""
     afs = _atom(

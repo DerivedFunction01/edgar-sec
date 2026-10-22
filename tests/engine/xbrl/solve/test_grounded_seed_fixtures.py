@@ -626,8 +626,8 @@ def test_bac_loose_revenue_candidate_set_excludes_textblock() -> None:
 
     assert result.status == QueryStatus.AMBIGUOUS
     assert result.candidate_qnames == (
-        "bac:FeesAndCommissions1",
         "us-gaap:Revenues",
+        "bac:FeesAndCommissions1",
     )
 
 
@@ -647,8 +647,8 @@ def test_pld_loose_revenue_candidate_set_excludes_textblock() -> None:
 
     assert result.status == QueryStatus.AMBIGUOUS
     assert result.candidate_qnames == (
-        "pld:ManagementFeesRevenue1",
         "us-gaap:Revenues",
+        "pld:ManagementFeesRevenue1",
     )
 
 

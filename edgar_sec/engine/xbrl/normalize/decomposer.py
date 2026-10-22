@@ -60,6 +60,69 @@ def decompose_concept(
     )
 
 
+_STRUCTURAL_RESIDUAL_TOKENS = frozenset(
+    {"text", "block", "table", "policy", "disclosure", "extensible", "enumeration"}
+)
+
+_NOISE_RESIDUAL_TOKENS = _STRUCTURAL_RESIDUAL_TOKENS | frozenset(
+    {
+        "schedule",
+        "statement",
+        "and",
+        "or",
+        "the",
+        "a",
+        "an",
+        "of",
+        "in",
+        "on",
+        "to",
+        "for",
+        "by",
+        "from",
+        "at",
+        "as",
+        "with",
+        "under",
+        "over",
+        "before",
+        "after",
+        "than",
+        "not",
+        "be",
+        "is",
+        "per",
+        "vs",
+        "versus",
+        "upon",
+        "into",
+        "between",
+        "during",
+        "within",
+        "without",
+        "through",
+        "against",
+        "about",
+    }
+)
+
+
+def is_noise_residual(token: str) -> bool:
+    """True for stopword, structural, digit, or collapsed-number residuals."""
+    lowered = token.lower()
+    return (
+        lowered in _NOISE_RESIDUAL_TOKENS
+        or token.isdigit()
+        or lowered in ("num", "ord")
+    )
+
+
+def residual_counts(residuals: tuple[str, ...]) -> tuple[int, int]:
+    """(Intent-bearing, total) residual counts: a concept's residual mass."""
+    intent = sum(1 for token in residuals if not is_noise_residual(token))
+    return intent, len(residuals)
+
+
 @dataclass(frozen=True, slots=True)
 class ConceptExpression:
     atom: Atom

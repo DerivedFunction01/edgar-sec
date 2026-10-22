@@ -13,6 +13,7 @@ from edgar_sec.engine.xbrl.solve.scoping import FactScope
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
 from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
 from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
+from edgar_sec.engine.xbrl.normalize.decomposer import residual_counts
 from edgar_sec.engine.xbrl.normalize.decomposer import split_camel_case
 
 
@@ -134,14 +135,27 @@ class FinancialQueryEngine:
             return (), target_atom, ()
 
         numeric = self._numeric_qnames(scoped_facts)
-        atoms = {
-            qname: decompose_concept(qname, lexicon)[0]
+        decomposed = {
+            qname: decompose_concept(qname, lexicon)
             for qname in qnames
             if qname in available and qname in numeric
         }
+        atoms = {qname: result[0] for qname, result in decomposed.items()}
         matches = {qname for qname, atom in atoms.items() if atom == target_atom}
         if matches:
-            return tuple(sorted(matches)), target_atom, ()
+            return (
+                tuple(
+                    sorted(
+                        matches,
+                        key=lambda qname: (
+                            *residual_counts(decomposed[qname][1]),
+                            qname,
+                        ),
+                    )
+                ),
+                target_atom,
+                (),
+            )
         ranked = ConceptTokenizer(self.taxonomy).equivalents(
             target_atom, tuple(sorted(atoms.items()))
         )
