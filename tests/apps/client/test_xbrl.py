@@ -441,13 +441,13 @@ def test_xbrl_query_fiscal_year_instant_fact_cannot_answer_duration_term() -> No
     assert result.value is None
 
 
-def test_xbrl_query_pld_revenue_fiscal_year_is_annual_ambiguous() -> None:
-    """Verify PLD loose revenue returns the annual AMBIGUOUS, not the Q3 REPORTED."""
+def test_xbrl_query_pld_revenue_fiscal_year_reports_annual_headline() -> None:
+    """Verify PLD loose revenue returns the annual headline, not the Q3 REPORTED."""
     xbrl = _create_xbrl_facade("pld")
 
     result = xbrl.query("revenue", fiscal_year=2024)
-    assert result.status == QueryStatus.AMBIGUOUS
-    assert result.value is None
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == 8201610000.0
 
 
 def test_xbrl_query_msft_revenue_fiscal_year_ignores_rpo_instants() -> None:

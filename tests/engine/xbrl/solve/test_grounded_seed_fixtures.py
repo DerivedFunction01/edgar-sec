@@ -624,11 +624,9 @@ def test_bac_loose_revenue_candidate_set_excludes_textblock() -> None:
         load_seed_calculation_arcs("bac_2024_10k"),
     )
 
-    assert result.status == QueryStatus.AMBIGUOUS
-    assert result.candidate_qnames == (
-        "us-gaap:Revenues",
-        "bac:FeesAndCommissions1",
-    )
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == 101887000000.0
+    assert result.candidate_qnames == ("us-gaap:Revenues",)
 
 
 def test_pld_loose_revenue_candidate_set_excludes_textblock() -> None:
@@ -645,11 +643,9 @@ def test_pld_loose_revenue_candidate_set_excludes_textblock() -> None:
         load_seed_calculation_arcs("pld_2024_10k"),
     )
 
-    assert result.status == QueryStatus.AMBIGUOUS
-    assert result.candidate_qnames == (
-        "us-gaap:Revenues",
-        "pld:ManagementFeesRevenue1",
-    )
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == 8201610000.0
+    assert result.candidate_qnames == ("us-gaap:Revenues",)
 
 
 def test_bac_loose_derivative_liabilities_exclude_textblock() -> None:

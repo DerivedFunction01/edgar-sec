@@ -2465,5 +2465,94 @@
     "kinds": [
       "CONTEXT"
     ]
+  },
+  {
+    "modifier_id": "M_FEES_COMMISSIONS",
+    "category": "REVENUE_TYPE",
+    "keywords": [
+      "FeesAndCommissions"
+    ],
+    "description": "Fees and commissions revenue component",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_DEPOSITOR_ACCOUNTS",
+    "category": "REVENUE_TYPE",
+    "keywords": [
+      "DepositorAccounts"
+    ],
+    "description": "Fees from depositor accounts (deposit account service charges)",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_LENDING_ACTIVITIES",
+    "category": "REVENUE_TYPE",
+    "keywords": [
+      "LendingActivities"
+    ],
+    "description": "Fees from lending activities",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_BROKERAGE_COMMISSIONS",
+    "category": "REVENUE_TYPE",
+    "keywords": [
+      "BrokerageCommissions"
+    ],
+    "description": "Brokerage commissions revenue component",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_PRINCIPAL_TRANSACTIONS",
+    "category": "REVENUE_TYPE",
+    "keywords": [
+      "PrincipalTransactions"
+    ],
+    "description": "Principal transactions revenue component",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_MORTGAGE_PRODUCTION",
+    "category": "REVENUE_TYPE",
+    "keywords": [
+      "MortgageProduction"
+    ],
+    "description": "Mortgage production (loan origination) revenue component",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_MANAGEMENT_FEES",
+    "category": "REVENUE_TYPE",
+    "keywords": [
+      "ManagementFees",
+      "ManagementFeeRevenue"
+    ],
+    "description": "Management fees revenue component",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_OTHER",
+    "category": "OPERATIONAL_SCOPE",
+    "keywords": [
+      "Other"
+    ],
+    "description": "Named residual ('other') category within its stem",
+    "kinds": [
+      "IDENTITY"
+    ]
   }
 ]

@@ -4642,11 +4642,95 @@
     "phrase": [
       "Fees",
       "And",
+      "Commissions",
+      "Other"
+    ],
+    "claim": "head",
+    "head": "H_REVENUE",
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_FEES_COMMISSIONS",
+      "M_OTHER"
+    ]
+  },
+  {
+    "phrase": [
+      "Fees",
+      "And",
       "Commissions"
     ],
     "claim": "head",
     "head": "H_REVENUE",
-    "claim_class": "PRIMARY"
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_FEES_COMMISSIONS"
+    ]
+  },
+  {
+    "phrase": [
+      "Depositor",
+      "Accounts"
+    ],
+    "claim": "modifier",
+    "atom": "M_DEPOSITOR_ACCOUNTS"
+  },
+  {
+    "phrase": [
+      "Lending",
+      "Activities"
+    ],
+    "claim": "modifier",
+    "atom": "M_LENDING_ACTIVITIES"
+  },
+  {
+    "phrase": [
+      "Brokerage",
+      "Commissions"
+    ],
+    "claim": "modifier",
+    "atom": "M_BROKERAGE_COMMISSIONS"
+  },
+  {
+    "phrase": [
+      "Principal",
+      "Transactions"
+    ],
+    "claim": "modifier",
+    "atom": "M_PRINCIPAL_TRANSACTIONS"
+  },
+  {
+    "phrase": [
+      "Mortgage",
+      "Production"
+    ],
+    "claim": "modifier",
+    "atom": "M_MORTGAGE_PRODUCTION"
+  },
+  {
+    "phrase": [
+      "Management",
+      "Fees",
+      "Revenue"
+    ],
+    "claim": "head",
+    "head": "H_REVENUE",
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_MANAGEMENT_FEES"
+    ]
+  },
+  {
+    "phrase": [
+      "Management",
+      "Fee",
+      "Revenue"
+    ],
+    "claim": "head",
+    "head": "H_REVENUE",
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_MANAGEMENT_FEES"
+    ]
   },
   {
     "phrase": [

@@ -809,3 +809,61 @@ def test_descriptive_tags_ride_across_heads_part2() -> None:
     assert settlement.modifiers == frozenset({"M_LITIGATION"})
     assert remediation.modifiers == frozenset({"M_ENVIRONMENTAL"})
     assert remediation.head == "H_EXPENSE"
+
+
+def test_revenue_components_carry_identity_off_the_bare_atom() -> None:
+    """Fee/commission components decompose distinctly from headline Revenues."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    lex = tax.token_lexicon
+
+    def atom_of(qname: str):
+        atom, _, _, _ = decompose_concept(qname, lex)
+        return atom
+
+    headline = atom_of("us-gaap:Revenues")
+    assert headline.head == "H_REVENUE"
+    assert headline.modifiers == frozenset()
+
+    expected = {
+        "bac:FeesAndCommissions1": {"M_FEES_COMMISSIONS"},
+        "jpm:FeesAndCommissions1": {"M_FEES_COMMISSIONS"},
+        "jpm:FeesAndCommissionsDepositorAccounts1": {
+            "M_FEES_COMMISSIONS",
+            "M_DEPOSITOR_ACCOUNTS",
+        },
+        "jpm:FeesAndCommissionsLendingActivities": {
+            "M_FEES_COMMISSIONS",
+            "M_LENDING_ACTIVITIES",
+        },
+        "jpm:FeesAndCommissionsOther1": {"M_FEES_COMMISSIONS", "M_OTHER"},
+        "jpm:MortgageProductionRevenue": {"M_MORTGAGE_PRODUCTION"},
+        "us-gaap:BrokerageCommissionsRevenue": {"M_BROKERAGE_COMMISSIONS"},
+        "us-gaap:PrincipalTransactionsRevenue": {"M_PRINCIPAL_TRANSACTIONS"},
+        "pld:ManagementFeesRevenue1": {"M_MANAGEMENT_FEES"},
+        "us-gaap:PropertyManagementFeeRevenue": {"M_MANAGEMENT_FEES"},
+    }
+    atoms = {}
+    for qname, mods in expected.items():
+        atom = atom_of(qname)
+        assert atom.head == "H_REVENUE", qname
+        assert atom.modifiers == frozenset(mods), qname
+        assert atom != headline, qname
+        atoms[qname] = atom
+
+    # JPM's enumerated components are pairwise distinct atoms.
+    jpm_atoms = [a for q, a in atoms.items() if q.startswith("jpm:")]
+    jpm_atoms.append(atom_of("us-gaap:BrokerageCommissionsRevenue"))
+    jpm_atoms.append(atom_of("us-gaap:PrincipalTransactionsRevenue"))
+    assert len(set(jpm_atoms)) == len(jpm_atoms)
+
+    # The fees stem carries onto already-identified component lines.
+    servicing = atom_of("us-gaap:FeesAndCommissionsMortgageBankingAndServicing")
+    assert servicing.modifiers == frozenset(
+        {"M_FEES_COMMISSIONS", "M_MORTGAGE_BANKING"}
+    )
+
+    # Named exclusion: the XVA name keeps its pre-batch atom untouched.
+    xva = atom_of("bac:DerivativeFundingRiskValuationAdjustmentDerivativeAssets")
+    assert xva.head == "H_ASSET"
+    assert xva.modifiers == frozenset({"M_DERIVATIVE"})
