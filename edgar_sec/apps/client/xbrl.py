@@ -11,7 +11,13 @@ from edgar_sec.apps.client.composition import (
     CompositionResult,
     evaluate_chain,
 )
-from edgar_sec.apps.client.facts import XbrlFactSet
+from edgar_sec.apps.client.facts import (
+    XbrlFactSet,
+    build_fact_set_from_lookup,
+    build_fact_set_from_table,
+    facts_from_arrow_table,
+)
+from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.apps.client.financials import XbrlFinancials
 from edgar_sec.apps.client.statements import XbrlStatements
 from edgar_sec.apps.client.views import StatementView
@@ -39,7 +45,14 @@ from edgar_sec.engine.xbrl.solve.statement import (
     build_statement_graph,
 )
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
+from edgar_sec.engine.xbrl.solve.cohort_lookup import CohortFactMatch
+from edgar_sec.engine.xbrl.solve.cohort_scan import iter_cohort_batches
+from edgar_sec.engine.xbrl.solve.concept_table import CohortEntry, ConceptTable
 from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
+from edgar_sec.engine.xbrl.storage.storage import (
+    declarations_from_arrow_table,
+    read_declarations_parquet,
+)
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.engine.xbrl.taxonomy.item_types import (
     declaration_for,
@@ -90,6 +103,16 @@ class Xbrl:
         filing_xbrl: FilingXbrl,
         taxonomy: DomainTaxonomy | None = None,
     ) -> None:
+        self._populate(filing_xbrl, taxonomy)
+
+    def _populate(
+        self,
+        filing_xbrl: FilingXbrl,
+        taxonomy: DomainTaxonomy | None = None,
+        *,
+        fact_set: XbrlFactSet | None = None,
+    ) -> None:
+        """Shared construction path for loaded and cohort-sourced facades."""
         self._filing = filing_xbrl
         self._taxonomy = taxonomy or load_domain_taxonomy()
 
@@ -98,7 +121,7 @@ class Xbrl:
         self._labels = _labels_by_concept(raw_labels)
 
         declarations = self._merged_declarations(arcs)
-        self.facts = XbrlFactSet(
+        self.facts = fact_set or XbrlFactSet(
             self._filing.facts, self._taxonomy, declarations=declarations
         )
         self.statements = XbrlStatements(
@@ -121,6 +144,94 @@ class Xbrl:
         kb = EvidenceKnowledgeBase(self._taxonomy)
         solver = XbrlConstraintSolver(kb)
         self._query_engine = FinancialQueryEngine(solver, declarations=declarations)
+
+    @classmethod
+    def from_cohort(
+        cls,
+        table: ConceptTable,
+        entries: Sequence[CohortEntry],
+        accession: str,
+    ) -> Xbrl:
+        """Build a facade for one cohort filing from the Phase 3 scan.
+
+        Facts are read full-fidelity from the bundle the scan
+        enumerates; their display records come from the concept
+        table, never re-tokenized per filing. The table is built
+        per process from the loaded taxonomy, so nothing persisted
+        can go stale; for record agreement with loaded facades it
+        must carry the cohort's declarations (extension item types
+        assert the text coordinate).
+        """
+        import pyarrow.parquet as pq
+
+        for batch, tables in iter_cohort_batches(entries):
+            for entry, arrow in zip(batch, tables, strict=True):
+                if entry.accession != accession:
+                    continue
+                facts = facts_from_arrow_table(arrow)
+                bundle_dir = entry.facts_path.parent
+                arcs_path = bundle_dir / "calculation_arcs.parquet"
+                arcs = (
+                    tuple(
+                        CalculationArc(
+                            parent_qname=row["parent_qname"],
+                            child_qname=row["child_qname"],
+                            weight=row["weight"],
+                            order=row["order"],
+                            role_uri=row["role_uri"],
+                        )
+                        for row in pq.read_table(arcs_path).to_pylist()
+                    )
+                    if arcs_path.exists()
+                    else ()
+                )
+                decl_path = bundle_dir / "declarations.parquet"
+                declarations = (
+                    declarations_from_arrow_table(read_declarations_parquet(decl_path))
+                    if decl_path.exists()
+                    else ()
+                )
+                bundle = FilingXbrl(
+                    accession=AccessionNumber.from_any(accession),
+                    cik=Cik(0),
+                    facts=facts,
+                    linkbases=LinkbaseBundle(
+                        calculation_arcs=arcs, declarations=declarations
+                    ),
+                )
+                instance = object.__new__(cls)
+                instance._populate(
+                    bundle,
+                    table.taxonomy,
+                    fact_set=build_fact_set_from_table(facts, table),
+                )
+                return instance
+        raise ValueError(f"accession {accession} not among cohort entries")
+
+    @classmethod
+    def from_lookup(
+        cls,
+        table: ConceptTable,
+        matches: Sequence[CohortFactMatch],
+        accession: str,
+    ) -> Xbrl:
+        """Build a display facade from equivalence-lookup matches.
+
+        Lookup facts are a display projection: they carry no
+        dimensions, decimals, or context, and the facade has no
+        calculation arcs; records carry the matches' tier and rule.
+        """
+        selected = tuple(m for m in matches if m.accession == accession)
+        fact_set = build_fact_set_from_lookup(selected, table)
+        bundle = FilingXbrl(
+            accession=AccessionNumber.from_any(accession),
+            cik=Cik(0),
+            facts=tuple(fact_set),
+            linkbases=None,
+        )
+        instance = object.__new__(cls)
+        instance._populate(bundle, table.taxonomy, fact_set=fact_set)
+        return instance
 
     def _merged_declarations(
         self, arcs: tuple[CalculationArc, ...]

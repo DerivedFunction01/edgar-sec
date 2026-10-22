@@ -8,9 +8,12 @@ from typing import Any
 
 import pyarrow as pa
 
+from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.xbrl.normalize.decomposer import residual_counts
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration, XbrlFact
+from edgar_sec.engine.xbrl.solve.concept_table import ConceptRecord, ConceptTable
+from edgar_sec.engine.xbrl.solve.cohort_lookup import CohortFact, CohortFactMatch
 from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer, TokenizedFact
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 from edgar_sec.foundation.serialization import canonical_json
@@ -56,6 +59,103 @@ class DisplayRecord:
             derived_horizon=record.derived_horizon,
             item_type=item_type,
         )
+
+
+def display_record_from_table(
+    record: ConceptRecord, *, tier: str = "", rule: str = ""
+) -> DisplayRecord:
+    """Carry a concept-table record as a display record."""
+    return DisplayRecord(
+        qname=record.qname,
+        atom=record.atom,
+        presumed_atom=record.presumed_atom,
+        residuals=record.residuals,
+        derived_horizon=record.derived_horizon,
+        item_type=record.item_type,
+        tier=tier,
+        rule=rule,
+    )
+
+
+def _table_records(
+    qnames: Sequence[str],
+    table: ConceptTable,
+    tiers: Mapping[str, tuple[str, str]] | None = None,
+) -> dict[str, DisplayRecord]:
+    records: dict[str, DisplayRecord] = {}
+    for qname in qnames:
+        tier, rule = (tiers or {}).get(qname, ("", ""))
+        if qname in table:
+            records[qname] = display_record_from_table(
+                table.record(qname), tier=tier, rule=rule
+            )
+        else:
+            declaration = table.declaration(qname)
+            records[qname] = DisplayRecord.from_tokenized(
+                table.tokenize(qname),
+                declaration.item_type if declaration is not None else None,
+            )
+    return records
+
+
+def facts_from_arrow_table(table: pa.Table) -> tuple[XbrlFact, ...]:
+    """Full-fidelity XbrlFact tuples from a bundle facts.parquet table."""
+    import json
+
+    return tuple(
+        XbrlFact(
+            accession=AccessionNumber.from_any(row["accession"]),
+            concept_qname=row["concept_qname"],
+            value=(
+                row["numeric_value"]
+                if row["numeric_value"] is not None
+                else row["text_value"]
+            ),
+            unit=row["unit"],
+            decimals=row["decimals"],
+            period_type=row["period_type"],
+            start_date=row["start_date"],
+            end_date=row["end_date"],
+            instant_date=row["instant_date"],
+            dimensions=json.loads(row["dimensions_json"]),
+            context_id=row["context_id"],
+        )
+        for row in table.to_pylist()
+    )
+
+
+def build_fact_set_from_table(
+    facts: Sequence[XbrlFact], table: ConceptTable
+) -> XbrlFactSet:
+    """Fact set whose records come from the Phase 3 concept table."""
+    records = _table_records(sorted({f.concept_qname for f in facts}), table)
+    return XbrlFactSet(facts, table.taxonomy, records=records)
+
+
+def fact_from_cohort_fact(fact: CohortFact) -> XbrlFact:
+    """Project a lookup payload fact to a display fact (no dimensions)."""
+    return XbrlFact(
+        accession=AccessionNumber.from_any(fact.accession),
+        concept_qname=fact.qname,
+        value=fact.value,
+        unit=fact.unit,
+        period_type=fact.period_type,
+        start_date=fact.start_date,
+        end_date=fact.end_date,
+        instant_date=fact.instant_date,
+    )
+
+
+def build_fact_set_from_lookup(
+    matches: Sequence[CohortFactMatch], table: ConceptTable
+) -> XbrlFactSet:
+    """Fact set from equivalence-lookup matches; records carry tier/rule."""
+    facts = tuple(fact_from_cohort_fact(match.fact) for match in matches)
+    tiers: dict[str, tuple[str, str]] = {}
+    for match in matches:
+        tiers.setdefault(match.qname, (match.tier, match.rule))
+    records = _table_records(sorted({f.concept_qname for f in facts}), table, tiers)
+    return XbrlFactSet(facts, table.taxonomy, records=records)
 
 
 def build_display_records(
