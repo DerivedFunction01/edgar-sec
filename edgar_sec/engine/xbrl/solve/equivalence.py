@@ -7,6 +7,7 @@ from dataclasses import dataclass
 
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.taxonomy.defaults import DefaultCoordinate
+from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import SiblingGroup
 
 EXACT = "exact"
 NEAR = "near"
@@ -17,35 +18,63 @@ SPECIALIZATION = "specialization"
 
 # Modifier sets that classify the same position mutually exclusively;
 # swapping one sibling for another keeps two atoms near, never exact.
-SIBLING_GROUPS: tuple[frozenset[str], ...] = (
-    frozenset({"M_AVAILABLE_FOR_SALE", "M_HELD_TO_MATURITY"}),
-    frozenset({"M_ACCOUNTS_PAYABLE", "M_ACCRUED_LIABILITY"}),
-    frozenset({"M_COMMON", "M_PREFERRED"}),
-    frozenset({"V_NET", "V_GROSS"}),
-    frozenset({"V_BASIC", "V_DILUTED"}),
-    frozenset({"M_CURRENT", "M_NONCURRENT"}),
-    frozenset({"M_PRETAX", "M_POST_TAX"}),
-    frozenset({"M_INCLUDING", "M_EXCLUDING"}),
+# Mirrors the sibling_groups.json declaration (names, members, scopes).
+SIBLING_GROUPS: tuple[SiblingGroup, ...] = (
+    SiblingGroup(
+        "SECURITIES_CLASSIFICATION",
+        ("M_AVAILABLE_FOR_SALE", "M_HELD_TO_MATURITY"),
+        "compoundable",
+    ),
+    SiblingGroup(
+        "OPERATING_LIABILITY_IDENTITY",
+        ("M_ACCOUNTS_PAYABLE", "M_ACCRUED_LIABILITY"),
+        "compoundable",
+    ),
+    SiblingGroup("STOCK_CLASS", ("M_COMMON", "M_PREFERRED"), "compoundable"),
+    SiblingGroup("VALUATION_PRESENTATION", ("V_NET", "V_GROSS"), "compoundable"),
+    SiblingGroup("EPS_BASIS", ("V_BASIC", "V_DILUTED"), "exclusive"),
+    SiblingGroup("MATURITY_HORIZON", ("M_CURRENT", "M_NONCURRENT"), "compoundable"),
+    SiblingGroup("TAX_BASIS", ("M_PRETAX", "M_POST_TAX"), "exclusive"),
+    SiblingGroup("SCOPE_POLARITY", ("M_INCLUDING", "M_EXCLUDING"), "exclusive"),
 )
 
 _AGGREGATE_MODIFIER = "M_AGGREGATE"
 
 
 def _resolve_groups(
-    sibling_groups: Iterable[frozenset[str]] | None,
-) -> tuple[frozenset[str], ...]:
-    """The caller's member sets, or the module-level declared mirror."""
+    sibling_groups: Iterable[SiblingGroup | Iterable[str]] | None,
+) -> tuple[SiblingGroup, ...]:
+    """The caller's groups, or the module-level declared mirror.
+
+    Bare member sets normalize to anonymous unscoped groups, preserving
+    the behaviour bare callers have always had.
+    """
     if sibling_groups is None:
         return SIBLING_GROUPS
-    return tuple(frozenset(group) for group in sibling_groups)
+    return tuple(
+        group
+        if isinstance(group, SiblingGroup)
+        else SiblingGroup("", tuple(group), "compoundable")
+        for group in sibling_groups
+    )
 
 
-def _sibling_swap(left: Atom, right: Atom, groups: tuple[frozenset[str], ...]) -> bool:
-    """True when each atom holds exactly one side of a sibling pair."""
+def _sibling_swap(left: Atom, right: Atom, groups: tuple[SiblingGroup, ...]) -> bool:
+    """True when each atom holds exactly one side of an admitted sibling pair.
+
+    The difference must sit inside one single group and that group's
+    scope must admit the pair's head and shared modifiers.
+    """
     diff = left.modifiers ^ right.modifiers
-    if len(diff) != 2 or not any(diff <= group for group in groups):
+    if len(diff) != 2:
         return False
-    return len(left.modifiers & diff) == 1 and len(right.modifiers & diff) == 1
+    if len(left.modifiers & diff) != 1 or len(right.modifiers & diff) != 1:
+        return False
+    shared = left.modifiers & right.modifiers
+    return any(
+        diff <= frozenset(group.members) and group.swap_admitted(left.head, shared)
+        for group in groups
+    )
 
 
 def _aggregate_scope_widening(left: Atom, right: Atom) -> bool:
@@ -56,7 +85,7 @@ def _aggregate_scope_widening(left: Atom, right: Atom) -> bool:
 def _classify_detail(
     left: Atom,
     right: Atom,
-    groups: tuple[frozenset[str], ...] = SIBLING_GROUPS,
+    groups: tuple[SiblingGroup, ...] = SIBLING_GROUPS,
 ) -> tuple[str, str]:
     """Classify a pair, naming the deciding rule; specific rules first.
 
@@ -96,10 +125,28 @@ def _subsumption_direction(target: Atom, candidate: Atom) -> str:
     return ""
 
 
+def _axis_members(
+    groups: tuple[SiblingGroup, ...], entry: DefaultCoordinate
+) -> frozenset[str]:
+    """The member set of the axis a default names.
+
+    Named groups resolve by name: a modifier holding several memberships
+    cannot make the silence test depend on group order. Anonymous
+    groups fall back to first membership.
+    """
+    for group in groups:
+        if group.group == entry.axis:
+            return frozenset(group.members)
+    for group in groups:
+        if entry.presumed_modifier in group.members:
+            return frozenset(group.members)
+    return frozenset()
+
+
 def presumed_atom(
     atom: Atom,
     defaults: Iterable[DefaultCoordinate],
-    sibling_groups: Iterable[frozenset[str]] | None = None,
+    sibling_groups: Iterable[SiblingGroup | Iterable[str]] | None = None,
 ) -> Atom:
     """Apply a presumed coordinate when the atom is silent on the entry's axis.
 
@@ -110,11 +157,7 @@ def presumed_atom(
     for entry in defaults:
         if entry.head != atom.head:
             continue
-        group = next(
-            (g for g in groups if entry.presumed_modifier in g),
-            frozenset(),
-        )
-        if atom.modifiers & group:
+        if atom.modifiers & _axis_members(groups, entry):
             continue
         if frozenset(atom.modifiers) == frozenset(entry.identity_modifiers):
             return Atom(atom.head, atom.modifiers | {entry.presumed_modifier})
@@ -141,7 +184,7 @@ def rank_equivalents(
     target: Atom,
     candidates: Iterable[tuple[str, Atom]],
     defaults: Iterable[DefaultCoordinate] = (),
-    sibling_groups: Iterable[frozenset[str]] | None = None,
+    sibling_groups: Iterable[SiblingGroup | Iterable[str]] | None = None,
     residual_counts: Mapping[str, tuple[int, int]] | None = None,
 ) -> tuple[RankedEquivalent, ...]:
     """Rank candidate concepts by equivalence tier to the target atom.

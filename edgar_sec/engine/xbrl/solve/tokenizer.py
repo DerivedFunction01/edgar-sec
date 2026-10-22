@@ -46,9 +46,7 @@ class ConceptTokenizer:
         if taxonomy.token_lexicon is None:
             raise ValueError("ConceptTokenizer requires a token lexicon.")
         self._taxonomy = taxonomy
-        self._sibling_groups = (
-            tuple(frozenset(group.members) for group in taxonomy.sibling_groups) or None
-        )
+        self._sibling_groups = tuple(taxonomy.sibling_groups) or None
 
     def tokenize(self, qname: str) -> TokenizedFact:
         """Decompose a concept qname into its full tokenized record.

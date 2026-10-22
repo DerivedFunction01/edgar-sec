@@ -305,8 +305,10 @@ def test_declared_sibling_groups_reproduce_default_outcomes() -> None:
     from edgar_sec.engine.xbrl.solve.equivalence import SIBLING_GROUPS
 
     tax = load_domain_taxonomy()
-    declared = tuple(frozenset(group.members) for group in tax.sibling_groups)
-    assert set(declared) == set(SIBLING_GROUPS)
+    declared = tax.sibling_groups
+    assert {(g.group, frozenset(g.members)) for g in declared} == {
+        (g.group, frozenset(g.members)) for g in SIBLING_GROUPS
+    }
 
     defaults = _defaults()
     target = _atom("us-gaap:AccountsPayable")
@@ -341,6 +343,24 @@ def test_declared_sibling_groups_reproduce_default_outcomes() -> None:
     assert swapped[0].tier == NEAR and swapped[0].rule == "sibling_swap"
 
 
+def _scope_key(scope) -> tuple:
+    """Hashable scope shape: (heads, shared modifiers, exact) per context."""
+    return tuple(
+        (
+            tuple(c.get("heads", ())) if isinstance(c, dict) else tuple(c.heads),
+            tuple(
+                c.get("shared_modifiers", ())
+                if isinstance(c, dict)
+                else c.shared_modifiers
+            ),
+            bool(c.get("shared_exact", False))
+            if isinstance(c, dict)
+            else c.shared_exact,
+        )
+        for c in scope
+    )
+
+
 def test_sibling_group_matches_subatomic_data() -> None:
     """Def memberships, the groups table, and the solver mirror agree."""
     import json
@@ -356,8 +376,11 @@ def test_sibling_group_matches_subatomic_data() -> None:
     }
     tabled = {(member, g["group"]) for g in table for member in g["members"]}
     assert declared == tabled
-    grouped = set().union(*SIBLING_GROUPS) if SIBLING_GROUPS else set()
-    assert grouped == {member for member, _group in tabled}
+    mirror = {(member, g.group) for g in SIBLING_GROUPS for member in g.members}
+    assert mirror == tabled
+    table_scopes = {g["group"]: _scope_key(g.get("scope", ())) for g in table}
+    mirror_scopes = {g.group: _scope_key(g.scope) for g in SIBLING_GROUPS}
+    assert mirror_scopes == table_scopes
 
 
 def test_default_coordinates_match_subatomic_data() -> None:
@@ -690,3 +713,137 @@ def test_deferred_is_not_a_maturity_sibling() -> None:
     deferred_tax = Atom("H_EXPENSE", frozenset({"M_DEFERRED", "M_TAX"}))
     noncurrent_tax = Atom("H_EXPENSE", frozenset({"M_NONCURRENT", "M_TAX"}))
     assert classify_pair(deferred_tax, noncurrent_tax) == UNRELATED
+
+
+def _scoped_portion_group():
+    """A synthetic TAX_PORTION-shaped group: scoped to the tax-expense frame."""
+    from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import (
+        ScopeContext,
+        SiblingGroup,
+    )
+
+    return SiblingGroup(
+        "TAX_PORTION",
+        ("M_CURRENT", "M_DEFERRED"),
+        "compoundable",
+        scope=(
+            ScopeContext(
+                heads=("H_EXPENSE",),
+                shared_modifiers=("M_TAX",),
+                shared_exact=True,
+            ),
+            ScopeContext(
+                heads=("H_INCOME",),
+                shared_modifiers=("M_RECONCILIATION", "M_TAX_INCOME"),
+            ),
+        ),
+    )
+
+
+def test_scoped_sibling_swap_fires_only_inside_its_scope() -> None:
+    """A scoped group swaps on its named coordinates and nowhere else."""
+    groups = (_scoped_portion_group(),)
+    current = Atom("H_EXPENSE", frozenset({"M_CURRENT", "M_TAX"}))
+    deferred = Atom("H_EXPENSE", frozenset({"M_DEFERRED", "M_TAX"}))
+    ranked = rank_equivalents(
+        "firm-x:Current",
+        current,
+        (("firm-a:Deferred", deferred),),
+        sibling_groups=groups,
+    )
+    assert ranked[0].tier == NEAR and ranked[0].rule == "sibling_swap"
+
+    off_head = Atom("H_LIABILITY", frozenset({"M_DEFERRED", "M_TAX"}))
+    assert (
+        rank_equivalents(
+            "firm-x:Current",
+            current,
+            (("firm-a:Off", off_head),),
+            sibling_groups=groups,
+        )
+        == ()
+    )
+    current_tax = Atom("H_LIABILITY", frozenset({"M_CURRENT", "M_TAX"}))
+    assert (
+        rank_equivalents(
+            "firm-x:Current",
+            current_tax,
+            (("firm-a:Off", off_head),),
+            sibling_groups=groups,
+        )
+        == ()
+    )
+    wide = Atom("H_EXPENSE", frozenset({"M_CURRENT", "M_TAX", "M_OCI"}))
+    wide_deferred = Atom("H_EXPENSE", frozenset({"M_DEFERRED", "M_TAX", "M_OCI"}))
+    assert (
+        rank_equivalents(
+            "firm-x:Wide",
+            wide,
+            (("firm-a:Wide", wide_deferred),),
+            sibling_groups=groups,
+        )
+        == ()
+    )
+    recon_current = Atom(
+        "H_INCOME",
+        frozenset({"M_CURRENT", "M_RECONCILIATION", "M_TAX", "M_TAX_INCOME"}),
+    )
+    recon_deferred = Atom(
+        "H_INCOME",
+        frozenset({"M_DEFERRED", "M_RECONCILIATION", "M_TAX", "M_TAX_INCOME"}),
+    )
+    ranked = rank_equivalents(
+        "firm-x:Recon",
+        recon_current,
+        (("firm-a:Recon", recon_deferred),),
+        sibling_groups=groups,
+    )
+    assert ranked[0].tier == NEAR and ranked[0].rule == "sibling_swap"
+
+
+def test_scoped_membership_cannot_leak_across_groups() -> None:
+    """Deferred vs Noncurrent stays unrelated with both groups in play."""
+    from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import SiblingGroup
+
+    groups = (
+        _scoped_portion_group(),
+        SiblingGroup("MATURITY_HORIZON", ("M_CURRENT", "M_NONCURRENT"), "compoundable"),
+    )
+    deferred_tax = Atom("H_EXPENSE", frozenset({"M_DEFERRED", "M_TAX"}))
+    noncurrent_tax = Atom("H_EXPENSE", frozenset({"M_NONCURRENT", "M_TAX"}))
+    assert (
+        rank_equivalents(
+            "firm-x:Deferred",
+            deferred_tax,
+            (("firm-a:Noncurrent", noncurrent_tax),),
+            sibling_groups=groups,
+        )
+        == ()
+    )
+
+
+def test_presumed_atom_axis_resolution_is_name_aware() -> None:
+    """The silence test consults the named axis, not the first group found.
+
+    The identity states a TAX_PORTION value; the default names
+    MATURITY_HORIZON, on which the atom is silent, so presumption fires
+    even with the portion group listed first.
+    """
+    from edgar_sec.engine.xbrl.taxonomy.defaults import DefaultCoordinate
+    from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import SiblingGroup
+
+    entry = DefaultCoordinate(
+        head="H_EXPENSE",
+        identity_modifiers=("M_DEFERRED",),
+        axis="MATURITY_HORIZON",
+        presumed_modifier="M_CURRENT",
+        rationale="Synthetic: portion identity, horizon default.",
+        attestation_class="anticipated",
+    )
+    groups = (
+        _scoped_portion_group(),
+        SiblingGroup("MATURITY_HORIZON", ("M_CURRENT", "M_NONCURRENT"), "compoundable"),
+    )
+    atom = Atom("H_EXPENSE", frozenset({"M_DEFERRED"}))
+    presumed = presumed_atom(atom, (entry,), sibling_groups=groups)
+    assert presumed.modifiers == frozenset({"M_DEFERRED", "M_CURRENT"})
