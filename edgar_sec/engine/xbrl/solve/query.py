@@ -213,6 +213,38 @@ class FinancialQueryEngine:
             return 0.0001
         return 0.5 * (10.0 ** (-fact.decimals))
 
+    def _derivation_is_scope_faithful(
+        self,
+        query: FinancialQuery,
+        target: str,
+        facts: tuple[XbrlFact, ...],
+        reported_fact: XbrlFact | None,
+    ) -> bool:
+        """Check a derivation scope against the target concept's own facts.
+
+        The scope's period kind must be among the target's period
+        types, and its unit must share the target's unit class.
+        """
+        target_facts = [fact for fact in facts if fact.concept_qname == target]
+        scope_kind = "instant" if query.scope.instant_date else "duration"
+        period_types = {fact.period_type for fact in target_facts}
+        if period_types and scope_kind not in period_types:
+            return False
+        scope_unit = query.scope.unit or (
+            reported_fact.unit if reported_fact is not None else None
+        )
+        if scope_unit is None:
+            return True
+        target_classes = {
+            self.taxonomy.normalize_unit(fact.unit)
+            for fact in target_facts
+            if fact.unit is not None
+        }
+        return (
+            not target_classes
+            or self.taxonomy.normalize_unit(scope_unit) in target_classes
+        )
+
     def execute(
         self,
         query: FinancialQuery,
@@ -348,15 +380,22 @@ class FinancialQueryEngine:
         )
         period = query.scope.instant_date or query.scope.end_date or ""
         unit = query.scope.unit or (reported_fact.unit if reported_fact else "USD")
-        aggregate = self.solver.evaluate_goal(
-            target,
-            derive_facts,
-            arcs,
-            entity=query.scope.accession or "",
-            period=period,
-            unit=unit,
+        faithful = self._derivation_is_scope_faithful(
+            query, target, all_facts, reported_fact
         )
-        if aggregate.value is None:
+        aggregate = (
+            self.solver.evaluate_goal(
+                target,
+                derive_facts,
+                arcs,
+                entity=query.scope.accession or "",
+                period=period,
+                unit=unit,
+            )
+            if faithful
+            else None
+        )
+        if aggregate is None or aggregate.value is None:
             if query.mode == QueryMode.VERIFY_DERIVATION and reported_fact is not None:
                 return FinancialQueryResult(
                     query,

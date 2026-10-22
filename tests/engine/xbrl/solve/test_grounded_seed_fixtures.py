@@ -9,6 +9,7 @@ from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
 from edgar_sec.engine.xbrl.solve.query import (
     FinancialQuery,
     FinancialQueryEngine,
+    QueryMode,
     QueryStatus,
 )
 from edgar_sec.engine.xbrl.solve.scoping import FactScope
@@ -439,6 +440,97 @@ def test_bac_derivative_assets_precision_duplicate_reports_presented_value() -> 
     ).read_text(encoding="utf-8").splitlines()
     assert "Derivative assets" in lines[4571]
     assert "40,948" in lines[4571]
+
+
+def test_bac_net_income_pure_unit_scope_refuses_derivation() -> None:
+    result = _grounded_engine().execute(
+        FinancialQuery(
+            "us-gaap:NetIncomeLoss",
+            FactScope(
+                accession="0000070858-25-000139",
+                start_date="2024-01-01",
+                end_date="2024-12-31",
+                unit="pure",
+            ),
+            mode=QueryMode.VERIFY_DERIVATION,
+        ),
+        load_seed_facts("bac_2024_10k"),
+        load_seed_calculation_arcs("bac_2024_10k"),
+    )
+
+    assert result.status == QueryStatus.UNAVAILABLE
+    assert result.value is None
+
+
+def test_bac_net_income_canonical_scope_conflict_is_reported_value() -> None:
+    result = _grounded_engine().execute(
+        FinancialQuery(
+            "us-gaap:NetIncomeLoss",
+            FactScope(
+                accession="0000070858-25-000139",
+                start_date="2024-01-01",
+                end_date="2024-12-31",
+                unit="USD",
+            ),
+            mode=QueryMode.VERIFY_DERIVATION,
+        ),
+        load_seed_facts("bac_2024_10k"),
+        load_seed_calculation_arcs("bac_2024_10k"),
+    )
+
+    assert result.status == QueryStatus.CONFLICT
+    assert result.reported_fact is not None
+    assert result.reported_fact.value == 27_132_000_000.0
+    lines = fixture_path(
+        "xbrl/seed/bac_2024_10k/normalized_text.txt"
+    ).read_text(encoding="utf-8").splitlines()
+    assert "Net income" in lines[942]
+    assert "27,132" in lines[942]
+
+
+def test_msft_cash_duration_scope_refuses_derivation() -> None:
+    result = _grounded_engine().execute(
+        FinancialQuery(
+            "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+            FactScope(
+                accession="0000950170-24-087843",
+                start_date="2024-04-01",
+                end_date="2024-06-30",
+                unit="USD",
+            ),
+            mode=QueryMode.VERIFY_DERIVATION,
+        ),
+        load_seed_facts("msft_2024_10k"),
+        load_seed_calculation_arcs("msft_2024_10k"),
+    )
+
+    assert result.status == QueryStatus.UNAVAILABLE
+    assert result.value is None
+
+
+def test_msft_cash_canonical_instant_conflict_is_reported_value() -> None:
+    result = _grounded_engine().execute(
+        FinancialQuery(
+            "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+            FactScope(
+                accession="0000950170-24-087843",
+                instant_date="2024-06-30",
+                unit="USD",
+            ),
+            mode=QueryMode.VERIFY_DERIVATION,
+        ),
+        load_seed_facts("msft_2024_10k"),
+        load_seed_calculation_arcs("msft_2024_10k"),
+    )
+
+    assert result.status == QueryStatus.CONFLICT
+    assert result.reported_fact is not None
+    assert result.reported_fact.value == 18_315_000_000.0
+    lines = fixture_path(
+        "xbrl/seed/msft_2024_10k/normalized_text.txt"
+    ).read_text(encoding="utf-8").splitlines()
+    assert "Cash and cash equivalents" in lines[1660]
+    assert "18,315" in lines[1660]
 
 
 def test_pld_cash_precision_duplicate_reports_presented_value() -> None:

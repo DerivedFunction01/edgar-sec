@@ -2,7 +2,7 @@
 
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
-from edgar_sec.engine.xbrl.schema.models import XbrlFact
+from edgar_sec.engine.xbrl.schema.models import CalculationArc, XbrlFact
 from edgar_sec.engine.xbrl.solve.query import (
     FinancialQuery,
     FinancialQueryEngine,
@@ -844,6 +844,119 @@ _DURATION_SCOPE = FactScope(
     end_date="2024-06-30",
     unit="USD",
 )
+
+
+def _duration_usd_fact(
+    qname: str, value: float, unit: str = "USD"
+) -> XbrlFact:
+    return XbrlFact(
+        AccessionNumber("0000950170-24-087843"),
+        qname,
+        value,
+        unit=unit,
+        period_type="duration",
+        start_date="2023-07-01",
+        end_date="2024-06-30",
+    )
+
+
+def test_pure_unit_scope_never_derives_a_monetary_target() -> None:
+    facts = (
+        _duration_usd_fact("us-gaap:GrossProfit", 60.0),
+        _duration_usd_fact("us-gaap:Revenues", 100.0),
+        _duration_usd_fact("us-gaap:CostOfRevenue", 40.0),
+        _duration_usd_fact("us-gaap:Revenues", 0.005, unit="pure"),
+        _duration_usd_fact("us-gaap:CostOfRevenue", 0.002, unit="pure"),
+    )
+    arcs = (
+        CalculationArc("us-gaap:GrossProfit", "us-gaap:Revenues", 1.0),
+        CalculationArc("us-gaap:GrossProfit", "us-gaap:CostOfRevenue", -1.0),
+    )
+    engine = _query_engine()
+    base = {
+        "accession": "0000950170-24-087843",
+        "start_date": "2023-07-01",
+        "end_date": "2024-06-30",
+    }
+
+    refused = engine.execute(
+        FinancialQuery(
+            "us-gaap:GrossProfit",
+            FactScope(unit="pure", **base),
+            mode=QueryMode.DERIVE_ONLY,
+        ),
+        facts,
+        arcs,
+    )
+    faithful = engine.execute(
+        FinancialQuery(
+            "us-gaap:GrossProfit",
+            FactScope(unit="USD", **base),
+            mode=QueryMode.DERIVE_ONLY,
+        ),
+        facts,
+        arcs,
+    )
+
+    assert refused.status == QueryStatus.UNAVAILABLE
+    assert refused.value is None
+    assert refused.aggregate is None
+    assert faithful.status == QueryStatus.DERIVED
+    assert faithful.value == 60.0
+
+
+def test_duration_scope_never_derives_an_instant_target() -> None:
+    accession = AccessionNumber("0000950170-24-087843")
+    facts = (
+        XbrlFact(
+            accession,
+            "us-gaap:Assets",
+            500.0,
+            unit="USD",
+            period_type="instant",
+            instant_date="2024-06-30",
+        ),
+        _duration_usd_fact("us-gaap:AssetsCurrent", 300.0),
+        _duration_usd_fact("us-gaap:AssetsNoncurrent", 200.0),
+    )
+    arcs = (
+        CalculationArc("us-gaap:Assets", "us-gaap:AssetsCurrent", 1.0),
+        CalculationArc("us-gaap:Assets", "us-gaap:AssetsNoncurrent", 1.0),
+    )
+    engine = _query_engine()
+
+    refused = engine.execute(
+        FinancialQuery(
+            "us-gaap:Assets",
+            FactScope(
+                accession="0000950170-24-087843",
+                start_date="2023-07-01",
+                end_date="2024-06-30",
+                unit="USD",
+            ),
+            mode=QueryMode.DERIVE_ONLY,
+        ),
+        facts,
+        arcs,
+    )
+    canonical = engine.execute(
+        FinancialQuery(
+            "us-gaap:Assets",
+            FactScope(
+                accession="0000950170-24-087843",
+                instant_date="2024-06-30",
+                unit="USD",
+            ),
+            mode=QueryMode.VERIFY_DERIVATION,
+        ),
+        facts,
+        arcs,
+    )
+
+    assert refused.status == QueryStatus.UNAVAILABLE
+    assert refused.value is None
+    assert canonical.status == QueryStatus.REPORTED
+    assert canonical.value == 500.0
 
 
 def test_near_fallback_resolves_subsumption_equivalent() -> None:
