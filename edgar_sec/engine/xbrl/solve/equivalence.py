@@ -146,9 +146,8 @@ def _axis_members(
 ) -> frozenset[str]:
     """The member set of the axis a default names.
 
-    Named groups resolve by name: a modifier holding several memberships
-    cannot make the silence test depend on group order. Anonymous
-    groups fall back to first membership.
+    Named groups resolve by name, never by order; anonymous groups
+    fall back to first membership.
     """
     for group in groups:
         if group.group == entry.axis:

@@ -875,12 +875,7 @@ def test_corpus_deferred_noncurrent_shapes_stay_unrelated() -> None:
 
 
 def test_presumed_atom_axis_resolution_is_name_aware() -> None:
-    """The silence test consults the named axis, not the first group found.
-
-    The identity states a TAX_PORTION value; the default names
-    MATURITY_HORIZON, on which the atom is silent, so presumption fires
-    even with the portion group listed first.
-    """
+    """The silence test consults the named axis, not the first group found."""
     from edgar_sec.engine.xbrl.taxonomy.defaults import DefaultCoordinate
     from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import SiblingGroup
 
