@@ -878,6 +878,67 @@ def test_tax_bearing_swap_shapes_outside_the_portion_scope_stay_unrelated() -> N
     assert classify_pair(*revenue_shape) == UNRELATED
 
 
+def test_operations_scope_portion_pairs_are_sibling_swaps() -> None:
+    """Continuing/discontinued portions swap on a fixed measurement basis."""
+    for continuing_q, discontinued_q in (
+        (
+            "us-gaap:NetCashProvidedByUsedInContinuingOperations",
+            "us-gaap:NetCashProvidedByUsedInDiscontinuedOperations",
+        ),
+        (
+            "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic",
+            "us-gaap:DiscontinuedOperationIncomeLossFromDiscontinuedOperationBeforeIncomeTax",
+        ),
+        (
+            "bac:IncomeLossFromContinuingOperationsAfterIncomeLossFromSubsidiariesNetOfTax",
+            "us-gaap:IncomeLossFromDiscontinuedOperationsNetOfTax",
+        ),
+    ):
+        continuing = _atom(continuing_q)
+        discontinued = _atom(discontinued_q)
+        assert classify_pair(continuing, discontinued) == NEAR
+        ranked = rank_equivalents(
+            continuing_q, continuing, ((discontinued_q, discontinued),)
+        )
+        assert ranked[0].tier == NEAR and ranked[0].rule == "sibling_swap"
+
+
+def test_operations_scope_refuses_involvement_and_component_shapes() -> None:
+    """Involvement senses and whole-vs-component shapes never swap."""
+    for continuing_q, discontinued_q in (
+        (
+            "us-gaap:ContinuingInvolvementWithTransferredFinancialAssetsPrincipalAmountOutstanding",
+            "fcx:DiscontinuedOperationContingentReceivable",
+        ),
+        (
+            "bac:TransfersContinuingInvolvementServicingFeeAdvances",
+            "jnj:DiscontinuedOperationTransitionManufacturingAgreementTerm",
+        ),
+    ):
+        assert classify_pair(_atom(continuing_q), _atom(discontinued_q)) == UNRELATED
+
+
+def test_operations_scope_refuses_the_tax_effect_shape() -> None:
+    """Shared M_TAX alone fixes no basis: a whole never swaps its component."""
+    continuing = _atom(
+        "bac:IncomeLossfromContinuingOperationsbeforeIncomeLossFromSubsidiariesNetofTax"
+    )
+    tax_effect = _atom("us-gaap:DiscontinuedOperationTaxEffectOfDiscontinuedOperation")
+    assert classify_pair(continuing, tax_effect) == UNRELATED
+
+
+def test_operations_scope_anticipates_the_eps_basis_pairs() -> None:
+    """Per-share continuing/discontinued pairs swap on the EPS contexts."""
+    for basis in ("Basic", "Diluted"):
+        continuing = _atom(
+            f"us-gaap:NetIncomeLossFromContinuingOperationsAvailableToCommonShareholders{basis}"
+        )
+        discontinued = _atom(
+            f"us-gaap:NetIncomeLossFromDiscontinuedOperationsAvailableToCommonShareholders{basis}"
+        )
+        assert classify_pair(continuing, discontinued) == NEAR
+
+
 def test_corpus_deferred_noncurrent_shapes_stay_unrelated() -> None:
     """A corpus Deferred/Noncurrent pair is not a swap on any declared axis."""
     deferred = _atom("us-gaap:DeferredIncomeTaxLiabilities")

@@ -25,6 +25,51 @@
     "cardinality": "compoundable"
   },
   {
+    "group": "OPERATIONS_SCOPE",
+    "members": [
+      "M_CONTINUING",
+      "M_DISCONTINUED"
+    ],
+    "cardinality": "compoundable",
+    "exceptions": "Combined presentations state both values in one name (continuing-and-discontinued totals and abstracts); those atoms state the whole beside its portions' names, not two portion values.",
+    "scope": [
+      {
+        "heads": [
+          "H_CASH",
+          "H_INCOME"
+        ],
+        "shared_modifiers": [
+          "V_NET"
+        ]
+      },
+      {
+        "heads": [
+          "H_INCOME"
+        ],
+        "shared_modifiers": [
+          "M_PRETAX",
+          "M_TAX"
+        ]
+      },
+      {
+        "heads": [
+          "H_INCOME"
+        ],
+        "shared_modifiers": [
+          "V_BASIC"
+        ]
+      },
+      {
+        "heads": [
+          "H_INCOME"
+        ],
+        "shared_modifiers": [
+          "V_DILUTED"
+        ]
+      }
+    ]
+  },
+  {
     "group": "SCOPE_POLARITY",
     "members": [
       "M_INCLUDING",

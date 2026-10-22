@@ -52,6 +52,17 @@ SIBLING_GROUPS: tuple[SiblingGroup, ...] = (
             ),
         ),
     ),
+    SiblingGroup(
+        "OPERATIONS_SCOPE",
+        ("M_CONTINUING", "M_DISCONTINUED"),
+        "compoundable",
+        scope=(
+            ScopeContext(heads=("H_CASH", "H_INCOME"), shared_modifiers=("V_NET",)),
+            ScopeContext(heads=("H_INCOME",), shared_modifiers=("M_PRETAX", "M_TAX")),
+            ScopeContext(heads=("H_INCOME",), shared_modifiers=("V_BASIC",)),
+            ScopeContext(heads=("H_INCOME",), shared_modifiers=("V_DILUTED",)),
+        ),
+    ),
 )
 
 _AGGREGATE_MODIFIER = "M_AGGREGATE"
