@@ -7,7 +7,7 @@ from dataclasses import dataclass
 
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.taxonomy.defaults import DefaultCoordinate
-from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import SiblingGroup
+from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import ScopeContext, SiblingGroup
 
 EXACT = "exact"
 NEAR = "near"
@@ -36,6 +36,22 @@ SIBLING_GROUPS: tuple[SiblingGroup, ...] = (
     SiblingGroup("MATURITY_HORIZON", ("M_CURRENT", "M_NONCURRENT"), "compoundable"),
     SiblingGroup("TAX_BASIS", ("M_PRETAX", "M_POST_TAX"), "exclusive"),
     SiblingGroup("SCOPE_POLARITY", ("M_INCLUDING", "M_EXCLUDING"), "exclusive"),
+    SiblingGroup(
+        "TAX_PORTION",
+        ("M_CURRENT", "M_DEFERRED"),
+        "compoundable",
+        scope=(
+            ScopeContext(
+                heads=("H_EXPENSE",),
+                shared_modifiers=("M_TAX",),
+                shared_exact=True,
+            ),
+            ScopeContext(
+                heads=("H_INCOME",),
+                shared_modifiers=("M_RECONCILIATION", "M_TAX_INCOME"),
+            ),
+        ),
+    ),
 )
 
 _AGGREGATE_MODIFIER = "M_AGGREGATE"

@@ -57,6 +57,35 @@
     "cardinality": "exclusive"
   },
   {
+    "group": "TAX_PORTION",
+    "members": [
+      "M_CURRENT",
+      "M_DEFERRED"
+    ],
+    "cardinality": "compoundable",
+    "exceptions": "The two values co-occur in atoms stacking the maturity horizon (M_CURRENT) with recognition timing (M_DEFERRED); those atoms state one portion value beside a horizon value, not two portion values of one whole.",
+    "scope": [
+      {
+        "heads": [
+          "H_EXPENSE"
+        ],
+        "shared_modifiers": [
+          "M_TAX"
+        ],
+        "shared_exact": true
+      },
+      {
+        "heads": [
+          "H_INCOME"
+        ],
+        "shared_modifiers": [
+          "M_RECONCILIATION",
+          "M_TAX_INCOME"
+        ]
+      }
+    ]
+  },
+  {
     "group": "VALUATION_PRESENTATION",
     "members": [
       "V_NET",

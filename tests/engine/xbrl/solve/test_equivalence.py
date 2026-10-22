@@ -822,6 +822,58 @@ def test_scoped_membership_cannot_leak_across_groups() -> None:
     )
 
 
+def test_tax_portion_pairs_are_sibling_swaps() -> None:
+    """Current and deferred portions of income tax expense are near kin."""
+    current = _atom("us-gaap:CurrentIncomeTaxExpenseBenefit")
+    deferred = _atom("us-gaap:DeferredIncomeTaxExpenseBenefit")
+    assert classify_pair(current, deferred) == NEAR
+    ranked = rank_equivalents(
+        "us-gaap:CurrentIncomeTaxExpenseBenefit",
+        current,
+        (("us-gaap:DeferredIncomeTaxExpenseBenefit", deferred),),
+    )
+    assert ranked[0].tier == NEAR and ranked[0].rule == "sibling_swap"
+    for current_q, deferred_q in (
+        (
+            "asml:EffectiveIncomeTaxRateReconciliationPriorYearCurrentIncomeTaxesAmount",
+            "asml:EffectiveIncomeTaxRateReconciliationPriorYearDeferredIncomeTaxesAmount",
+        ),
+        (
+            "asml:EffectiveIncomeTaxRateReconciliationPriorYearCurrentIncomeTaxesPercent",
+            "asml:EffectiveIncomeTaxRateReconciliationPriorYearDeferredIncomeTaxesPercent",
+        ),
+    ):
+        assert classify_pair(_atom(current_q), _atom(deferred_q)) == NEAR
+
+
+def test_tax_bearing_swap_shapes_outside_the_portion_scope_stay_unrelated() -> None:
+    """Same swap shape, wrong coordinates: the scope refuses these pairs."""
+    near_miss = (
+        _atom("us-gaap:AccrualForTaxesOtherThanIncomeTaxesCurrent"),
+        _atom("us-gaap:DeferredIncomeTaxesAndTaxCredits"),
+    )
+    assert classify_pair(*near_miss) == UNRELATED
+    asset_acquisition = (
+        _atom("bmy:AssetAcquisitionDeferredIncomeTaxLiability"),
+        _atom("us-gaap:AccruedIncomeTaxesCurrent"),
+    )
+    assert classify_pair(*asset_acquisition) == UNRELATED
+    revenue_shape = (
+        _atom("asml:ContractWithCustomerAssetRevenueRecognizedDuringTheCurrentYear"),
+        _atom("msft:ContractWithCustomerLiabilityRevenueDeferred"),
+    )
+    assert classify_pair(*revenue_shape) == UNRELATED
+
+
+def test_corpus_deferred_noncurrent_shapes_stay_unrelated() -> None:
+    """A corpus Deferred/Noncurrent pair is not a swap on any declared axis."""
+    deferred = _atom("us-gaap:DeferredIncomeTaxLiabilities")
+    noncurrent = _atom("alb:TaxIndemnificationLiabilityNoncurrent")
+    assert deferred.modifiers == frozenset({"M_DEFERRED", "M_TAX"})
+    assert noncurrent.modifiers == frozenset({"M_NONCURRENT", "M_TAX"})
+    assert classify_pair(deferred, noncurrent) == UNRELATED
+
+
 def test_presumed_atom_axis_resolution_is_name_aware() -> None:
     """The silence test consults the named axis, not the first group found.
 

@@ -1568,6 +1568,9 @@
       "Deferred"
     ],
     "description": "Amounts whose recognition is deferred to a later period",
+    "sibling_groups": [
+      "TAX_PORTION"
+    ],
     "kinds": [
       "IDENTITY"
     ]
@@ -1935,7 +1938,8 @@
     ],
     "description": "Current portion (due or realizable within 12 months); structural horizon tag",
     "sibling_groups": [
-      "MATURITY_HORIZON"
+      "MATURITY_HORIZON",
+      "TAX_PORTION"
     ],
     "kinds": [
       "AXIS",
