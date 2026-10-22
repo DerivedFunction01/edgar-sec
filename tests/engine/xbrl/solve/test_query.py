@@ -1289,8 +1289,10 @@ def test_literal_textblock_qname_route_is_not_guarded() -> None:
     assert result.candidate_qnames == ("us-gaap:RevenueRecognitionPolicyTextBlock",)
 
 
-def test_exact_pool_presents_the_headline_before_residual_heavy_names() -> None:
-    """BAC shape: the XVA name shares the derivative-assets atom exactly."""
+def test_xva_fact_no_longer_ambiguates_the_derivative_assets_query() -> None:
+    """BAC shape: the XVA name is a NEAR neighbour, not an exact-pool rival.
+    Re-adjudicated pin: the dissolved false EXACT used to force AMBIGUOUS.
+    """
     xva = "bac:DerivativeFundingRiskValuationAdjustmentDerivativeAssets"
     facts = (
         _instant_usd_fact(xva, 66_000_000.0, None),
@@ -1302,16 +1304,16 @@ def test_exact_pool_presents_the_headline_before_residual_heavy_names() -> None:
         unit="USD",
     )
     result = _query_engine().execute(FinancialQuery("DerivativeAssets", scope), facts)
-    assert result.status == QueryStatus.AMBIGUOUS
-    assert result.candidate_qnames == ("us-gaap:DerivativeAssets", xva)
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == 180_000_000.0
+    assert result.candidate_qnames == ("us-gaap:DerivativeAssets",)
     assert result.tier == "exact"
-    assert {item.qname for item in result.equivalents} == {
-        "us-gaap:DerivativeAssets",
-        xva,
-    }
-    assert all(
-        item.tier == "exact" and item.rule == "equality" for item in result.equivalents
-    )
+    by_qname = {item.qname: item for item in result.equivalents}
+    assert by_qname["us-gaap:DerivativeAssets"].tier == "exact"
+    assert by_qname["us-gaap:DerivativeAssets"].rule == "equality"
+    assert by_qname[xva].tier == "near"
+    assert by_qname[xva].rule == "single_modifier_difference"
+    assert by_qname[xva].direction == "specialization"
 
 
 def test_concept_query_keeps_free_text_parsing_out_of_scope() -> None:

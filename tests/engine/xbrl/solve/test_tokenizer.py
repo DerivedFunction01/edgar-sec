@@ -95,7 +95,9 @@ def test_tokenizer_record_presumed_atom_applies_defaults() -> None:
 
 
 def test_tokenizer_equivalents_order_bac_pool_by_residual_counts() -> None:
-    """The XVA name's residuals (4, 4) rank it behind the headline (0, 0)."""
+    """The XVA name ranks NEAR behind the headline; its residuals are (2, 2).
+    Re-adjudicated pin: the valuation-adjustment claim dissolved the EXACT tie.
+    """
     tokenizer = _tokenizer()
     xva = "bac:DerivativeFundingRiskValuationAdjustmentDerivativeAssets"
     ranked = tokenizer.equivalents(
@@ -103,8 +105,9 @@ def test_tokenizer_equivalents_order_bac_pool_by_residual_counts() -> None:
         (xva, "us-gaap:DerivativeAssets"),
     )
     assert [item.qname for item in ranked] == ["us-gaap:DerivativeAssets", xva]
+    assert [item.tier for item in ranked] == [EXACT, NEAR]
     assert (ranked[0].residual_intent_count, ranked[0].residual_total_count) == (0, 0)
-    assert (ranked[1].residual_intent_count, ranked[1].residual_total_count) == (4, 4)
+    assert (ranked[1].residual_intent_count, ranked[1].residual_total_count) == (2, 2)
 
 
 def test_tokenizer_equivalents_order_jpm_pool_on_total_count() -> None:

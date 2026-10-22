@@ -2614,5 +2614,28 @@
     "kinds": [
       "IDENTITY"
     ]
+  },
+  {
+    "modifier_id": "M_VALUATION_ADJUSTMENT",
+    "category": "VALUATION_BASIS",
+    "keywords": [
+      "ValuationAdjustment"
+    ],
+    "description": "Valuation adjustment (credit/debit/funding — the XVA family) embedded in a fair-value carrying amount under ASC 820",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_RECLASS_ADJUSTMENT",
+    "category": "EQUITY_COMPONENT",
+    "keywords": [
+      "ReclassificationAdjustment",
+      "ReclassificationAdjustments"
+    ],
+    "description": "Amount reclassified out of AOCI into net income (ASC 220 reclassification adjustment)",
+    "kinds": [
+      "IDENTITY"
+    ]
   }
 ]

@@ -864,10 +864,51 @@ def test_revenue_components_carry_identity_off_the_bare_atom() -> None:
         {"M_FEES_COMMISSIONS", "M_MORTGAGE_BANKING"}
     )
 
-    # Named exclusion: the XVA name keeps its pre-batch atom untouched.
+    # The XVA name carries the valuation-adjustment coordinate.
     xva = atom_of("bac:DerivativeFundingRiskValuationAdjustmentDerivativeAssets")
     assert xva.head == "H_ASSET"
-    assert xva.modifiers == frozenset({"M_DERIVATIVE"})
+    assert xva.modifiers == frozenset({"M_DERIVATIVE", "M_VALUATION_ADJUSTMENT"})
+
+
+def test_adjustment_coordinates_claim_only_their_terms() -> None:
+    """Valuation/reclassification adjustments claim; other senses stay residual."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    lex = tax.token_lexicon
+
+    def atom_of(qname: str):
+        atom, _, _, _ = decompose_concept(qname, lex)
+        return atom
+
+    cva_assets = atom_of(
+        "us-gaap:DerivativeCreditRiskValuationAdjustmentDerivativeAssets"
+    )
+    assert cva_assets.head == "H_ASSET"
+    assert cva_assets.modifiers == frozenset(
+        {"M_DERIVATIVE", "M_RISK_CREDIT", "M_VALUATION_ADJUSTMENT"}
+    )
+    cva_liabs = atom_of(
+        "us-gaap:DerivativeCreditRiskValuationAdjustmentDerivativeLiabilities"
+    )
+    assert cva_liabs.head == "H_LIABILITY"
+    assert "M_VALUATION_ADJUSTMENT" in cva_liabs.modifiers
+
+    singular = atom_of(
+        "amzn:OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCINetOfTax"
+    )
+    assert singular.modifiers == frozenset({"M_OCI", "M_RECLASS_ADJUSTMENT", "V_NET"})
+    plural = atom_of(
+        "us-gaap:OtherComprehensiveIncomeLossAvailableForSaleSecurities"
+        "AdjustmentBeforeReclassificationAdjustmentsAndTax"
+    )
+    assert "M_RECLASS_ADJUSTMENT" in plural.modifiers
+
+    # The plural valuation phrase names other relations and never claims.
+    for qname in (
+        "us-gaap:FederalHomeLoanBankAdvancesValuationAdjustmentsForHedgingActivities",
+        "us-gaap:OtherRealEstateValuationAdjustments",
+    ):
+        assert "M_VALUATION_ADJUSTMENT" not in atom_of(qname).modifiers
 
 
 def _text_rule():

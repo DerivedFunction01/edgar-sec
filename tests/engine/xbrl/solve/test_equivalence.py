@@ -231,20 +231,33 @@ def test_rank_equivalents_breaks_ties_on_residual_counts() -> None:
     assert (ranked[2].residual_intent_count, ranked[2].residual_total_count) == (1, 1)
 
 
-def test_rank_equivalents_orders_bac_derivative_pool_by_residuals() -> None:
-    """The XVA name's four intent residuals rank it behind the headline."""
+def test_bac_xva_dissolves_to_near_against_plain_derivative_assets() -> None:
+    """The valuation-adjustment coordinate ends the XVA false EXACT.
+    Re-adjudicated pin: the residual-ordered EXACT pool no longer exists.
+    """
     target = _atom("us-gaap:DerivativeAssets")
     xva = "bac:DerivativeFundingRiskValuationAdjustmentDerivativeAssets"
+    cva = "us-gaap:DerivativeCreditRiskValuationAdjustmentDerivativeAssets"
+    assert classify_pair(target, _atom(xva)) == NEAR
+    assert classify_pair(_atom(xva), _atom(cva)) == NEAR
     candidates = (
         (xva, _atom(xva)),
+        (cva, _atom(cva)),
         ("us-gaap:DerivativeAssets", target),
     )
-    counts = {"us-gaap:DerivativeAssets": (0, 0), xva: (4, 4)}
-    ranked = rank_equivalents(
-        "firm-x:DerivativeAssets", target, candidates, residual_counts=counts
-    )
-    assert [item.qname for item in ranked] == ["us-gaap:DerivativeAssets", xva]
-    assert [item.tier for item in ranked] == [EXACT, EXACT]
+    ranked = rank_equivalents("firm-x:DerivativeAssets", target, candidates)
+    assert [item.qname for item in ranked] == ["us-gaap:DerivativeAssets", xva, cva]
+    assert [item.tier for item in ranked] == [EXACT, NEAR, NEAR]
+    assert [item.rule for item in ranked] == [
+        "equality",
+        "single_modifier_difference",
+        "subsumption",
+    ]
+    assert [item.direction for item in ranked] == [
+        "",
+        "specialization",
+        "specialization",
+    ]
 
 
 def test_rank_equivalents_orders_jpm_revenue_pool_on_total_count() -> None:
