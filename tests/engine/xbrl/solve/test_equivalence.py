@@ -194,7 +194,10 @@ def test_via_default_rule_overrides_the_presumed_classification() -> None:
         target,
         (
             ("firm-a:AccountsPayableCurrent", _atom("us-gaap:AccountsPayableCurrent")),
-            ("firm-b:AccruedLiabilitiesCurrent", _atom("us-gaap:AccruedLiabilitiesCurrent")),
+            (
+                "firm-b:AccruedLiabilitiesCurrent",
+                _atom("us-gaap:AccruedLiabilitiesCurrent"),
+            ),
         ),
         defaults,
     )
@@ -204,6 +207,47 @@ def test_via_default_rule_overrides_the_presumed_classification() -> None:
         "firm-b:AccruedLiabilitiesCurrent": "via_default",
     }
     assert ranked[-1].via_default is True
+
+
+def test_declared_sibling_groups_reproduce_default_outcomes() -> None:
+    """Declared JSON groups drive identical rankings and presumptions."""
+    from edgar_sec.engine.xbrl.solve.equivalence import SIBLING_GROUPS
+
+    tax = load_domain_taxonomy()
+    declared = tuple(frozenset(group.members) for group in tax.sibling_groups)
+    assert set(declared) == set(SIBLING_GROUPS)
+
+    defaults = _defaults()
+    target = _atom("us-gaap:AccountsPayable")
+    candidates = (
+        ("firm-a:AccountsPayableCurrent", _atom("us-gaap:AccountsPayableCurrent")),
+        (
+            "firm-b:AccruedLiabilitiesCurrent",
+            _atom("us-gaap:AccruedLiabilitiesCurrent"),
+        ),
+        ("firm-c:AccountsPayableLongTerm", _atom("us-gaap:AccountsPayableLongTerm")),
+    )
+    by_default = rank_equivalents(
+        "firm-x:AccountsPayable", target, candidates, defaults
+    )
+    by_declared = rank_equivalents(
+        "firm-x:AccountsPayable", target, candidates, defaults, sibling_groups=declared
+    )
+    assert by_declared == by_default
+    assert presumed_atom(target, defaults, sibling_groups=declared) == presumed_atom(
+        target, defaults
+    )
+
+    afs = _atom(
+        "us-gaap:DebtSecuritiesAvailableForSaleMaturityAfter10YearsWeightedAverageYield"
+    )
+    htm = _atom(
+        "us-gaap:DebtSecuritiesHeldToMaturityMaturityAfter10YearsWeightedAverageYield"
+    )
+    swapped = rank_equivalents(
+        "firm-x:Afs", afs, (("firm-a:Htm", htm),), sibling_groups=declared
+    )
+    assert swapped[0].tier == NEAR and swapped[0].rule == "sibling_swap"
 
 
 def test_sibling_group_matches_subatomic_data() -> None:

@@ -28,10 +28,19 @@ SIBLING_GROUPS: tuple[frozenset[str], ...] = (
 _AGGREGATE_MODIFIER = "M_AGGREGATE"
 
 
-def _sibling_swap(left: Atom, right: Atom) -> bool:
+def _resolve_groups(
+    sibling_groups: Iterable[frozenset[str]] | None,
+) -> tuple[frozenset[str], ...]:
+    """The caller's member sets, or the module-level declared mirror."""
+    if sibling_groups is None:
+        return SIBLING_GROUPS
+    return tuple(frozenset(group) for group in sibling_groups)
+
+
+def _sibling_swap(left: Atom, right: Atom, groups: tuple[frozenset[str], ...]) -> bool:
     """True when each atom holds exactly one side of a sibling pair."""
     diff = left.modifiers ^ right.modifiers
-    if len(diff) != 2 or not any(diff <= group for group in SIBLING_GROUPS):
+    if len(diff) != 2 or not any(diff <= group for group in groups):
         return False
     return len(left.modifiers & diff) == 1 and len(right.modifiers & diff) == 1
 
@@ -41,7 +50,11 @@ def _aggregate_scope_widening(left: Atom, right: Atom) -> bool:
     return left.modifiers ^ right.modifiers == {_AGGREGATE_MODIFIER}
 
 
-def _classify_detail(left: Atom, right: Atom) -> tuple[str, str]:
+def _classify_detail(
+    left: Atom,
+    right: Atom,
+    groups: tuple[frozenset[str], ...] = SIBLING_GROUPS,
+) -> tuple[str, str]:
     """Classify a pair and name the rule that decided the tier.
 
     Specific rules precede subsumption: widening and single-difference
@@ -59,7 +72,7 @@ def _classify_detail(left: Atom, right: Atom) -> tuple[str, str]:
         return NEAR, "single_modifier_difference"
     if left.is_a(right) or right.is_a(left):
         return NEAR, "subsumption"
-    if _sibling_swap(left, right):
+    if _sibling_swap(left, right, groups):
         return NEAR, "sibling_swap"
     return UNRELATED, ""
 
@@ -69,17 +82,22 @@ def classify_pair(left: Atom, right: Atom) -> str:
     return _classify_detail(left, right)[0]
 
 
-def presumed_atom(atom: Atom, defaults: Iterable[DefaultCoordinate]) -> Atom:
+def presumed_atom(
+    atom: Atom,
+    defaults: Iterable[DefaultCoordinate],
+    sibling_groups: Iterable[frozenset[str]] | None = None,
+) -> Atom:
     """Apply a presumed coordinate when the atom is silent on the entry's axis.
 
     The presumed copy exists only for classification and ranking; an atom
     stating any axis value, or matching no entry, is returned unchanged.
     """
+    groups = _resolve_groups(sibling_groups)
     for entry in defaults:
         if entry.head != atom.head:
             continue
         group = next(
-            (g for g in SIBLING_GROUPS if entry.presumed_modifier in g),
+            (g for g in groups if entry.presumed_modifier in g),
             frozenset(),
         )
         if atom.modifiers & group:
@@ -106,23 +124,25 @@ def rank_equivalents(
     target: Atom,
     candidates: Iterable[tuple[str, Atom]],
     defaults: Iterable[DefaultCoordinate] = (),
+    sibling_groups: Iterable[frozenset[str]] | None = None,
 ) -> tuple[RankedEquivalent, ...]:
     """Rank candidate concepts by equivalence tier to the target atom.
 
     With defaults supplied, distances use presumed atoms and a pair near
     only under presumption is flagged via_default, after evidenced nears.
     """
+    groups = _resolve_groups(sibling_groups)
     defaults = tuple(defaults)
-    presumed_target = presumed_atom(target, defaults)
+    presumed_target = presumed_atom(target, defaults, groups)
     ranked = []
     for qname, atom in candidates:
         if qname == target_qname:
             continue
-        tier, rule = _classify_detail(target, atom)
+        tier, rule = _classify_detail(target, atom, groups)
         via_default = False
-        presumed = presumed_atom(atom, defaults)
+        presumed = presumed_atom(atom, defaults, groups)
         if tier == UNRELATED and defaults:
-            if classify_pair(presumed_target, presumed) == NEAR:
+            if _classify_detail(presumed_target, presumed, groups)[0] == NEAR:
                 tier, via_default, rule = NEAR, True, "via_default"
         if tier == UNRELATED:
             continue
