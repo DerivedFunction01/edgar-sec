@@ -23,9 +23,12 @@ from edgar_sec.engine.xbrl.normalize.decomposer import (
 from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.engine.xbrl.schema.atoms import Atom
+from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration
 from edgar_sec.engine.xbrl.solve.equivalence import presumed_atom
+from edgar_sec.engine.xbrl.storage.storage import declarations_from_arrow_table
 from edgar_sec.engine.xbrl.taxonomy.defaults import DefaultCoordinate
 from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import SiblingGroup
+from edgar_sec.engine.xbrl.taxonomy.item_types import TextCoordinateRule
 
 
 @dataclass(frozen=True, slots=True)
@@ -135,6 +138,7 @@ class BundleFacts:
     facts: pa.Table
     calculation_arcs: pa.Table | None = None
     presentation_arcs: pa.Table | None = None
+    declarations: pa.Table | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -410,6 +414,7 @@ def build_modelledness_report(
     min_sics: int = 2,
     defaults: Iterable[DefaultCoordinate] = (),
     sibling_groups: Iterable[SiblingGroup] = (),
+    text_rule: TextCoordinateRule | None = None,
 ) -> ModellednessReport:
     """Audit every distinct concept's modelled-ness across the bundles."""
     firms_by_concept: dict[str, set[str]] = defaultdict(set)
@@ -421,6 +426,7 @@ def build_modelledness_report(
     placement_by_concept: dict[str, set[str]] = defaultdict(set)
     numeric_concepts: set[str] = set()
     has_numeric_column = False
+    declarations_by_qname: dict[str, ConceptDeclaration] = {}
 
     for bundle in bundles:
         qnames = bundle.facts.column("concept_qname").to_pylist()
@@ -446,6 +452,13 @@ def build_modelledness_report(
             placement_by_concept[qname] |= slices
         calc_degrees.update(_arc_degrees(bundle.calculation_arcs))
         pre_degrees.update(_arc_degrees(bundle.presentation_arcs))
+        if bundle.declarations is not None:
+            for declaration in declarations_from_arrow_table(bundle.declarations):
+                prior = declarations_by_qname.get(declaration.concept_qname)
+                if prior is None or (
+                    prior.item_type is None and declaration.item_type is not None
+                ):
+                    declarations_by_qname[declaration.concept_qname] = declaration
 
     defaults = tuple(defaults)
     statement_types = _statement_types()
@@ -457,9 +470,24 @@ def build_modelledness_report(
     presumed_by_concept: dict[str, str] = {}
     temporal_by_concept: dict[str, str] = {}
     relations_by_concept: dict[str, tuple[str, ...]] = {}
+    text_by_concept: dict[str, bool] = {}
     for qname in rows_by_concept:
         expression = decompose_concept_expression(qname, lexicon)
         atom, residuals = expression.atom, expression.residuals
+        declaration = declarations_by_qname.get(qname)
+        if (
+            declaration is not None
+            and declaration.item_type is not None
+            and text_rule is not None
+        ):
+            typed = decompose_concept_expression(
+                qname, lexicon, declaration, text_rule
+            )
+            text_by_concept[qname] = text_rule.modifier_id in typed.atom.modifiers
+        else:
+            text_by_concept[qname] = qname.split(":")[-1].endswith("TextBlock") or (
+                has_numeric_column and qname not in numeric_concepts
+            )
         decomposed[qname] = (atom, residuals)
         atom_by_concept[qname] = atom
         atom_members[str(atom)].append(qname)
@@ -484,9 +512,7 @@ def build_modelledness_report(
         token_count = len(split_camel_case(local))
         firm_count = len(firms_by_concept[qname])
         sic_count = len(sics_by_concept[qname])
-        is_textblock = local.endswith("TextBlock") or (
-            has_numeric_column and qname not in numeric_concepts
-        )
+        is_textblock = text_by_concept[qname]
         if namespace == "dei" and atom.head == "H_UNKNOWN":
             bucket = "excluded"
         elif namespace != "us-gaap":
@@ -661,7 +687,7 @@ def build_modelledness_report(
         for (phrase, role), firms in sorted(phrase_firms.items())
         if len(firms) == 1
     )
-    # Exclusive axes admit one value per atom; an all-TextBlock dual is a
+    # Exclusive axes admit one value per atom; an all-text dual is a
     # combined presentation (the adjudicated EPS family), not a violation.
     cardinality_violations: list[tuple[str, str, tuple[str, ...]]] = []
     for group in sibling_groups:
@@ -672,7 +698,7 @@ def build_modelledness_report(
             atom = atom_by_concept[concepts[0]]
             if len(atom.modifiers & members) < 2:
                 continue
-            if all(c.split(":")[-1].endswith("TextBlock") for c in concepts):
+            if all(text_by_concept[c] for c in concepts):
                 continue
             cardinality_violations.append(
                 (group.group, atom_text, tuple(sorted(concepts)))

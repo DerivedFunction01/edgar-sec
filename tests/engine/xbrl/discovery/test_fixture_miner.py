@@ -341,3 +341,50 @@ def test_report_records_temporal_relations_and_cardinality() -> None:
     assert [(g, a) for g, a, _ in flagged.cardinality_violations] == [
         ("SYNTHETIC", str(by_qname[qnames[1]].atom))
     ]
+
+
+def test_modelledness_buckets_follow_declared_type() -> None:
+    """Declared type, not the name, decides the textblock bucket."""
+    from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration
+    from edgar_sec.engine.xbrl.storage.storage import declarations_to_arrow_table
+    from edgar_sec.engine.xbrl.taxonomy.item_types import TextCoordinateRule
+
+    lexicon = TokenLexicon.load_json(resolve_xbrl_paths().default_token_lexicon_path)
+    qnames = [
+        "us-gaap:SomeDisclosureTableTextBlock",
+        "us-gaap:SomeNarrativeDisclosure",
+        "us-gaap:UnresolvedThingTextBlock",
+    ]
+    declarations = declarations_to_arrow_table(
+        (
+            ConceptDeclaration(
+                concept_qname=qnames[0],
+                name="SomeDisclosureTableTextBlock",
+                item_type="xbrli:monetaryItemType",
+            ),
+            ConceptDeclaration(
+                concept_qname=qnames[1],
+                name="SomeNarrativeDisclosure",
+                item_type="xbrli:stringItemType",
+            ),
+        )
+    )
+    bundle = BundleFacts(
+        firm="AAA",
+        sic_code="1000",
+        facts=_facts_table(qnames),
+        declarations=declarations,
+    )
+    rule = TextCoordinateRule(
+        modifier_id="M_TEXT_NODE",
+        item_types=frozenset({"textBlockItemType", "stringItemType"}),
+    )
+    typed = build_modelledness_report([bundle], lexicon, text_rule=rule)
+    buckets = {record.qname: record.bucket for record in typed.concepts}
+    assert buckets[qnames[0]] != "textblock"
+    assert buckets[qnames[1]] == "textblock"
+    assert buckets[qnames[2]] == "textblock"
+    legacy = build_modelledness_report([bundle], lexicon)
+    legacy_buckets = {record.qname: record.bucket for record in legacy.concepts}
+    assert legacy_buckets[qnames[0]] == "textblock"
+    assert legacy_buckets[qnames[1]] != "textblock"
