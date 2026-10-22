@@ -8,8 +8,10 @@ from typing import Mapping
 
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import AggregateFact, CalculationArc, XbrlFact
+from edgar_sec.engine.xbrl.solve.equivalence import RankedEquivalent
 from edgar_sec.engine.xbrl.solve.scoping import FactScope
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
+from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
 from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
 from edgar_sec.engine.xbrl.normalize.decomposer import split_camel_case
 
@@ -47,6 +49,8 @@ class FinancialQueryResult:
     aggregate: AggregateFact | None = None
     discrepancy: float | None = None
     message: str = ""
+    tier: str = ""
+    equivalents: tuple[RankedEquivalent, ...] = ()
 
     @property
     def value(self) -> float | None:
@@ -106,7 +110,7 @@ class FinancialQueryEngine:
         scoped_facts: tuple[XbrlFact, ...],
         facts: tuple[XbrlFact, ...],
         calculation_arcs: tuple[CalculationArc, ...],
-    ) -> tuple[tuple[str, ...], Atom | None]:
+    ) -> tuple[tuple[str, ...], Atom | None, tuple[RankedEquivalent, ...]]:
         qnames = {fact.concept_qname for fact in facts}
         qnames.update(arc.parent_qname for arc in calculation_arcs)
         available = {fact.concept_qname for fact in scoped_facts}
@@ -116,26 +120,42 @@ class FinancialQueryEngine:
         if alias_names is not None:
             known = set(alias_names) & qnames
             if not known:
-                return (), None
+                return (), None, ()
             scoped = known & available
-            return tuple(sorted(scoped or known)), None
+            return tuple(sorted(scoped or known)), None, ()
         if ":" in term:
-            return (term,) if term in qnames else (), None
+            return ((term,) if term in qnames else ()), None, ()
 
         lexicon = self.taxonomy.token_lexicon
         if lexicon is None:
-            return (), None
+            return (), None, ()
         target_atom, residuals, _, _ = decompose_concept(term, lexicon)
         if target_atom.head == "H_UNKNOWN" or residuals:
-            return (), target_atom
+            return (), target_atom, ()
 
-        matches = {
-            qname
+        atoms = {
+            qname: decompose_concept(qname, lexicon)[0]
             for qname in qnames
             if qname in available
-            and decompose_concept(qname, lexicon)[0] == target_atom
         }
-        return tuple(sorted(matches)), target_atom
+        matches = {qname for qname, atom in atoms.items() if atom == target_atom}
+        if matches:
+            return tuple(sorted(matches)), target_atom, ()
+        ranked = ConceptTokenizer(self.taxonomy).equivalents(
+            target_atom, tuple(sorted(atoms.items()))
+        )
+        if not ranked:
+            return (), target_atom, ()
+        best = ranked[0]
+        tied = tuple(
+            sorted(
+                item.qname
+                for item in ranked
+                if (item.tier, item.via_default, item.modifier_distance)
+                == (best.tier, best.via_default, best.modifier_distance)
+            )
+        )
+        return tied, target_atom, ranked
 
     @staticmethod
     def _deduplicate_context_facts(
@@ -175,9 +195,10 @@ class FinancialQueryEngine:
                 candidate_facts=scoped_facts,
                 message="A filing accession is required to prevent cross-entity matches.",
             )
-        candidates, atom = self._resolve_candidates(
+        candidates, atom, ranked = self._resolve_candidates(
             query.term, scoped_facts, all_facts, arcs
         )
+        tier = ranked[0].tier if ranked else ""
         if not candidates:
             return FinancialQueryResult(
                 query,
@@ -192,6 +213,8 @@ class FinancialQueryEngine:
                 candidate_qnames=candidates,
                 target_atom=atom,
                 message="The query term resolves to multiple concepts.",
+                tier=tier,
+                equivalents=ranked,
             )
 
         target = candidates[0]
@@ -207,6 +230,8 @@ class FinancialQueryEngine:
                 candidate_facts=target_facts,
                 target_atom=atom,
                 message="Conflicting values exist in the selected XBRL context.",
+                tier=tier,
+                equivalents=ranked,
             )
         if len(numeric_targets) > 1:
             return FinancialQueryResult(
@@ -216,6 +241,8 @@ class FinancialQueryEngine:
                 candidate_facts=numeric_targets,
                 target_atom=atom,
                 message="The query scope matches multiple fact contexts.",
+                tier=tier,
+                equivalents=ranked,
             )
         reported_fact = numeric_targets[0] if numeric_targets else None
 
@@ -226,6 +253,8 @@ class FinancialQueryEngine:
                 candidate_qnames=candidates,
                 target_atom=atom,
                 message="No reported fact exists in the selected XBRL context.",
+                tier=tier,
+                equivalents=ranked,
             )
         if reported_fact is not None and query.mode == QueryMode.REPORTED_ONLY:
             return FinancialQueryResult(
@@ -234,6 +263,8 @@ class FinancialQueryEngine:
                 candidate_qnames=candidates,
                 target_atom=atom,
                 reported_fact=reported_fact,
+                tier=tier,
+                equivalents=ranked,
             )
 
         if query.scope.instant_date is None and query.scope.start_date is None:
@@ -245,6 +276,8 @@ class FinancialQueryEngine:
                 target_atom=atom,
                 reported_fact=reported_fact,
                 message="A query period is required to derive across filing facts.",
+                tier=tier,
+                equivalents=ranked,
             )
 
         if query.scope.unit is None:
@@ -258,6 +291,8 @@ class FinancialQueryEngine:
                     target_atom=atom,
                     reported_fact=reported_fact,
                     message="A query unit is required to prevent mixed-unit derivation.",
+                    tier=tier,
+                    equivalents=ranked,
                 )
 
         derivation_atom = atom
@@ -295,6 +330,8 @@ class FinancialQueryEngine:
                     target_atom=atom,
                     reported_fact=reported_fact,
                     message="The reported fact exists but no graph derivation was available.",
+                    tier=tier,
+                    equivalents=ranked,
                 )
             return FinancialQueryResult(
                 query,
@@ -304,6 +341,8 @@ class FinancialQueryEngine:
                 reported_fact=reported_fact,
                 aggregate=aggregate,
                 message="No derivation is available from the selected context.",
+                tier=tier,
+                equivalents=ranked,
             )
 
         if query.mode == QueryMode.VERIFY_DERIVATION and reported_fact is not None:
@@ -327,6 +366,8 @@ class FinancialQueryEngine:
                     if status == QueryStatus.VERIFIED
                     else "Graph derivation does not reconcile to the reported fact."
                 ),
+                tier=tier,
+                equivalents=ranked,
             )
 
         return FinancialQueryResult(
@@ -336,6 +377,8 @@ class FinancialQueryEngine:
             target_atom=atom,
             reported_fact=reported_fact,
             aggregate=aggregate,
+            tier=tier,
+            equivalents=ranked,
         )
 
     def parse_terms(self, term: str) -> tuple[str, ...]:

@@ -746,6 +746,90 @@ def test_derive_only_excludes_target_and_atom_equivalent_facts() -> None:
     ] == [(100.0, 1.0), (20.0, -1.0)]
 
 
+def _duration_fact(qname: str, value: float) -> XbrlFact:
+    return XbrlFact(
+        AccessionNumber("0000950170-24-087843"),
+        qname,
+        value,
+        unit="USD",
+        period_type="duration",
+        start_date="2023-07-01",
+        end_date="2024-06-30",
+    )
+
+
+_DURATION_SCOPE = FactScope(
+    accession="0000950170-24-087843",
+    start_date="2023-07-01",
+    end_date="2024-06-30",
+    unit="USD",
+)
+
+
+def test_near_fallback_resolves_subsumption_equivalent() -> None:
+    """No exact revenue concept: the subsumption NEAR resolves, tiered."""
+    facts = (
+        _duration_fact(
+            "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", 100.0
+        ),
+    )
+    result = _query_engine().execute(FinancialQuery("Revenues", _DURATION_SCOPE), facts)
+    assert result.status == QueryStatus.REPORTED
+    assert result.candidate_qnames == (
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+    )
+    assert result.value == 100.0
+    assert result.tier == "near"
+    assert len(result.equivalents) == 1
+    assert result.equivalents[0].rule == "subsumption"
+    assert result.equivalents[0].via_default is False
+
+
+def test_near_fallback_tie_is_ambiguous_with_equivalents() -> None:
+    """Two equidistant NEAR candidates tie: AMBIGUOUS, both carried."""
+    facts = (
+        _duration_fact("us-gaap:SalesRevenueGoodsNet", 100.0),
+        _duration_fact("us-gaap:SalesRevenueNet", 200.0),
+    )
+    result = _query_engine().execute(FinancialQuery("Revenues", _DURATION_SCOPE), facts)
+    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.candidate_qnames == (
+        "us-gaap:SalesRevenueGoodsNet",
+        "us-gaap:SalesRevenueNet",
+    )
+    assert {item.qname for item in result.equivalents} == set(result.candidate_qnames)
+    assert result.tier == "near"
+    assert all(item.rule == "subsumption" for item in result.equivalents)
+
+
+def test_residual_bearing_term_gets_no_fallback() -> None:
+    """A term with residuals stays UNAVAILABLE; the fallback never fires."""
+    facts = (
+        _duration_fact(
+            "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", 100.0
+        ),
+    )
+    result = _query_engine().execute(
+        FinancialQuery("ZebraRevenue", _DURATION_SCOPE), facts
+    )
+    assert result.status == QueryStatus.UNAVAILABLE
+    assert result.candidate_qnames == ()
+    assert result.tier == ""
+    assert result.equivalents == ()
+
+
+def test_exact_resolution_carries_no_tier_metadata() -> None:
+    """The equality route is unchanged: tier and equivalents stay empty."""
+    facts = (_duration_fact("us-gaap:NetIncomeLoss", 42.0),)
+    result = _query_engine().execute(
+        FinancialQuery("NetIncomeLoss", _DURATION_SCOPE), facts
+    )
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == 42.0
+    assert result.tier == ""
+    assert result.equivalents == ()
+
+
 def test_concept_query_keeps_free_text_parsing_out_of_scope() -> None:
     engine = _query_engine()
     assert engine.parse_terms("NetIncome") == ("Net", "Income")
