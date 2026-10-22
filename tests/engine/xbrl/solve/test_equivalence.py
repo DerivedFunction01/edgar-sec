@@ -314,14 +314,13 @@ def test_via_default_rule_overrides_the_presumed_classification() -> None:
 
 
 def test_declared_sibling_groups_reproduce_default_outcomes() -> None:
-    """Declared JSON groups drive identical rankings and presumptions."""
-    from edgar_sec.engine.xbrl.solve.equivalence import SIBLING_GROUPS
+    """The solver default is the taxonomy declaration itself, not a copy."""
+    from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
+    from edgar_sec.engine.xbrl.solve.equivalence import _resolve_groups
+    from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import load_sibling_groups
 
-    tax = load_domain_taxonomy()
-    declared = tax.sibling_groups
-    assert {(g.group, frozenset(g.members)) for g in declared} == {
-        (g.group, frozenset(g.members)) for g in SIBLING_GROUPS
-    }
+    declared = load_sibling_groups(resolve_xbrl_paths().default_sibling_groups_path)
+    assert _resolve_groups(None) == declared
 
     defaults = _defaults()
     target = _atom("us-gaap:AccountsPayable")
@@ -356,30 +355,11 @@ def test_declared_sibling_groups_reproduce_default_outcomes() -> None:
     assert swapped[0].tier == NEAR and swapped[0].rule == "sibling_swap"
 
 
-def _scope_key(scope) -> tuple:
-    """Hashable scope shape: (heads, shared modifiers, exact) per context."""
-    return tuple(
-        (
-            tuple(c.get("heads", ())) if isinstance(c, dict) else tuple(c.heads),
-            tuple(
-                c.get("shared_modifiers", ())
-                if isinstance(c, dict)
-                else c.shared_modifiers
-            ),
-            bool(c.get("shared_exact", False))
-            if isinstance(c, dict)
-            else c.shared_exact,
-        )
-        for c in scope
-    )
-
-
 def test_sibling_group_matches_subatomic_data() -> None:
-    """Def memberships, the groups table, and the solver mirror agree."""
+    """Def memberships and the declared groups table agree."""
     import json
 
     from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
-    from edgar_sec.engine.xbrl.solve.equivalence import SIBLING_GROUPS
 
     paths = resolve_xbrl_paths()
     defs = json.loads(paths.default_subatomic_modifiers_path.read_text())
@@ -389,11 +369,6 @@ def test_sibling_group_matches_subatomic_data() -> None:
     }
     tabled = {(member, g["group"]) for g in table for member in g["members"]}
     assert declared == tabled
-    mirror = {(member, g.group) for g in SIBLING_GROUPS for member in g.members}
-    assert mirror == tabled
-    table_scopes = {g["group"]: _scope_key(g.get("scope", ())) for g in table}
-    mirror_scopes = {g.group: _scope_key(g.scope) for g in SIBLING_GROUPS}
-    assert mirror_scopes == table_scopes
 
 
 def test_default_coordinates_match_subatomic_data() -> None:

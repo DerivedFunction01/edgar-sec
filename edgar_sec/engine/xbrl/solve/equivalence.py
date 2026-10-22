@@ -5,9 +5,13 @@ from __future__ import annotations
 from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 
+from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.taxonomy.defaults import DefaultCoordinate
-from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import ScopeContext, SiblingGroup
+from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import (
+    SiblingGroup,
+    load_sibling_groups,
+)
 
 EXACT = "exact"
 NEAR = "near"
@@ -16,69 +20,32 @@ UNRELATED = "unrelated"
 GENERALIZATION = "generalization"
 SPECIALIZATION = "specialization"
 
-# Modifier sets that classify the same position mutually exclusively;
-# swapping one sibling for another keeps two atoms near, never exact.
-# Mirrors the sibling_groups.json declaration (names, members, scopes).
-SIBLING_GROUPS: tuple[SiblingGroup, ...] = (
-    SiblingGroup(
-        "SECURITIES_CLASSIFICATION",
-        ("M_AVAILABLE_FOR_SALE", "M_HELD_TO_MATURITY"),
-        "compoundable",
-    ),
-    SiblingGroup(
-        "OPERATING_LIABILITY_IDENTITY",
-        ("M_ACCOUNTS_PAYABLE", "M_ACCRUED_LIABILITY"),
-        "compoundable",
-    ),
-    SiblingGroup("STOCK_CLASS", ("M_COMMON", "M_PREFERRED"), "compoundable"),
-    SiblingGroup("VALUATION_PRESENTATION", ("V_NET", "V_GROSS"), "compoundable"),
-    SiblingGroup("EPS_BASIS", ("V_BASIC", "V_DILUTED"), "exclusive"),
-    SiblingGroup("MATURITY_HORIZON", ("M_CURRENT", "M_NONCURRENT"), "compoundable"),
-    SiblingGroup("TAX_BASIS", ("M_PRETAX", "M_POST_TAX"), "exclusive"),
-    SiblingGroup("SCOPE_POLARITY", ("M_INCLUDING", "M_EXCLUDING"), "exclusive"),
-    SiblingGroup(
-        "TAX_PORTION",
-        ("M_CURRENT", "M_DEFERRED"),
-        "compoundable",
-        scope=(
-            ScopeContext(
-                heads=("H_EXPENSE",),
-                shared_modifiers=("M_TAX",),
-                shared_exact=True,
-            ),
-            ScopeContext(
-                heads=("H_INCOME",),
-                shared_modifiers=("M_RECONCILIATION", "M_TAX_INCOME"),
-            ),
-        ),
-    ),
-    SiblingGroup(
-        "OPERATIONS_SCOPE",
-        ("M_CONTINUING", "M_DISCONTINUED"),
-        "compoundable",
-        scope=(
-            ScopeContext(heads=("H_CASH", "H_INCOME"), shared_modifiers=("V_NET",)),
-            ScopeContext(heads=("H_INCOME",), shared_modifiers=("M_PRETAX", "M_TAX")),
-            ScopeContext(heads=("H_INCOME",), shared_modifiers=("V_BASIC",)),
-            ScopeContext(heads=("H_INCOME",), shared_modifiers=("V_DILUTED",)),
-        ),
-    ),
-)
-
 _AGGREGATE_MODIFIER = "M_AGGREGATE"
 _TEXT_MODIFIER = "M_TEXT_NODE"
+
+_DEFAULT_GROUPS: tuple[SiblingGroup, ...] | None = None
+
+
+def _default_groups() -> tuple[SiblingGroup, ...]:
+    """The shipped sibling-group declaration, loaded once on first use."""
+    global _DEFAULT_GROUPS
+    if _DEFAULT_GROUPS is None:
+        _DEFAULT_GROUPS = load_sibling_groups(
+            resolve_xbrl_paths().default_sibling_groups_path
+        )
+    return _DEFAULT_GROUPS
 
 
 def _resolve_groups(
     sibling_groups: Iterable[SiblingGroup | Iterable[str]] | None,
 ) -> tuple[SiblingGroup, ...]:
-    """The caller's groups, or the module-level declared mirror.
+    """The caller's groups, or the shipped sibling-group declaration.
 
     Bare member sets normalize to anonymous unscoped groups, preserving
     the behaviour bare callers have always had.
     """
     if sibling_groups is None:
-        return SIBLING_GROUPS
+        return _default_groups()
     return tuple(
         group
         if isinstance(group, SiblingGroup)
@@ -118,13 +85,15 @@ def _text_barrier(left: Atom, right: Atom) -> bool:
 def _classify_detail(
     left: Atom,
     right: Atom,
-    groups: tuple[SiblingGroup, ...] = SIBLING_GROUPS,
+    groups: tuple[SiblingGroup, ...] | None = None,
 ) -> tuple[str, str]:
     """Classify a pair, naming the deciding rule; specific rules first.
 
     Widening and single-difference pairs are subsumption pairs too, so
     they precede it; every such branch yields NEAR, preserving tiers.
     """
+    if groups is None:
+        groups = _default_groups()
     if left == right:
         return EXACT, "equality"
     if left.head != right.head:

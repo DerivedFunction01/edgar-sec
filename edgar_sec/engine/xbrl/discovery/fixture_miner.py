@@ -499,7 +499,7 @@ def build_modelledness_report(
         relations_by_concept[qname] = tuple(
             sorted({kind for kind, _operand in expression.relations})
         )
-        presumed = presumed_atom(atom, defaults)
+        presumed = presumed_atom(atom, defaults, tuple(sibling_groups) or None)
         added = presumed.modifiers - atom.modifiers
         presumed_by_concept[qname] = next(iter(added)) if len(added) == 1 else ""
 
