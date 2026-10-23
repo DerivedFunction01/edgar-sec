@@ -62,6 +62,7 @@ class FinancialQueryResult:
     message: str = ""
     tier: str = ""
     equivalents: tuple[RankedEquivalent, ...] = ()
+    provenance: str = ""
 
     @property
     def value(self) -> float | None:

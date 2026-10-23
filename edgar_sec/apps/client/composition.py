@@ -40,6 +40,7 @@ class OperandResolution:
     period_key: str | None = None
     concept_qname: str | None = None
     chain: tuple[str, ...] = ()
+    provenance: str = "name"
 
 
 @dataclass(frozen=True)
@@ -86,11 +87,34 @@ def _chain(result: FinancialQueryResult) -> tuple[str, ...]:
     return tuple(sorted(concepts))
 
 
+def _provenance(result: FinancialQueryResult, chosen: str | None) -> str:
+    """The ladder rung that supplied the chosen concept's coordinate.
+
+    A resolver-stated rung wins; otherwise the chosen concept's ranked
+    equivalent carries it (filing-local above default).
+    """
+    if result.provenance:
+        return result.provenance
+    for item in result.equivalents:
+        if item.qname == chosen:
+            if item.via_filing_local:
+                return "filing_local"
+            if item.via_default:
+                return "default"
+            break
+    return "name"
+
+
 def resolve_operand(
     resolver: OperandResolver, sign: str, term: str
 ) -> OperandResolution:
     """Resolve one operand term through the query facade."""
     result = resolver(term)
+    chosen = (
+        result.reported_fact.concept_qname
+        if result.reported_fact is not None
+        else (result.aggregate.measure_id if result.aggregate else None)
+    )
     return OperandResolution(
         sign=sign,
         term=term,
@@ -98,12 +122,9 @@ def resolve_operand(
         value=result.value,
         unit=_unit(result),
         period_key=_period_key(result),
-        concept_qname=(
-            result.reported_fact.concept_qname
-            if result.reported_fact is not None
-            else (result.aggregate.measure_id if result.aggregate else None)
-        ),
+        concept_qname=chosen,
         chain=_chain(result),
+        provenance=_provenance(result, chosen),
     )
 
 
