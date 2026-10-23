@@ -176,7 +176,7 @@ def _extract_leading_number(text: str) -> tuple[int | str | None, bool]:
     has_curr = any(s in cleaned for s in ALL_CURRENCY_SYMBOLS)
     primary = _SPLIT_EXPLANATION_RE.split(cleaned)[0].strip()
     primary = _QUANTITY_PREFIX_RE.sub("", _preclean_money(primary))
-    primary = _TRAILING_COMMA_RE.sub("", primary)
+    primary = _TRAILING_COMMA_RE.sub("", _FOOTNOTE_SUFFIX_RE.sub("", primary))
     num = _normalize_number(primary, currency=has_curr)
     if num is None and "\n" in primary:
         first_line = _QUANTITY_PREFIX_RE.sub("", primary.splitlines()[0].strip())

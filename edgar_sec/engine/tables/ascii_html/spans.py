@@ -8,7 +8,10 @@ from __future__ import annotations
 import re
 from typing import TYPE_CHECKING
 
-from edgar_sec.engine.document.html.tree import FastHtmlNode
+from edgar_sec.engine.document.html.tree import (
+    FastHtmlNode,
+    superscript_footnote_label,
+)
 from edgar_sec.engine.document.html.tags import (
     CONTAINER_BLOCK_TAGS,
     PARAGRAPH_TAGS,
@@ -104,7 +107,11 @@ def _extract_cell_text(
                     walk(child, child_preformatted)
                     append_block_break(1, child_preformatted or preserve_whitespace)
                 else:
-                    walk(child, child_preformatted)
+                    label = superscript_footnote_label(child)
+                    if label is not None:
+                        chunks.append(f" ({label})")
+                    else:
+                        walk(child, child_preformatted)
             child = child.next
 
     walk(cell.raw_node, False)

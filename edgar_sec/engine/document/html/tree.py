@@ -5,6 +5,7 @@ equality delegates to the underlying node, so comparing two wrappers is safe.
 
 from __future__ import annotations
 
+import re
 from collections.abc import Iterable, Iterator
 
 try:
@@ -14,6 +15,35 @@ except ImportError:  # selectolax >= 1.0 removed the modest backend
     from selectolax.lexbor import LexborNode as Node
 
 from edgar_sec.engine.document.html.tags import BLOCK_TAGS
+
+_FOOTNOTE_LABEL_RE = re.compile(r"\d{1,2}[a-z]?")
+_RAISED_VERTICAL_ALIGNS: frozenset[str] = frozenset({"text-top", "super"})
+
+
+def superscript_footnote_label(node: Node) -> str | None:
+    """Footnote label when an element is a raised, reduced-size reference."""
+    tag = (node.tag or "").lower()
+    if tag not in ("sup", "font", "span"):
+        return None
+    if tag != "sup":
+        style = (node.attributes or {}).get("style", "")
+        declarations = {
+            prop.strip().lower(): val.strip().lower()
+            for prop, _, val in (part.partition(":") for part in style.split(";"))
+            if prop.strip()
+        }
+        if declarations.get("vertical-align") not in _RAISED_VERTICAL_ALIGNS:
+            return None
+        size = declarations.get("font-size", "")
+        if not size.endswith("%"):
+            return None
+        try:
+            if float(size[:-1]) >= 100:
+                return None
+        except ValueError:
+            return None
+    label = (node.text(deep=True) or "").strip()
+    return label if _FOOTNOTE_LABEL_RE.fullmatch(label) else None
 
 
 class FastHtmlNode:
@@ -154,6 +184,10 @@ class FastHtmlNode:
                     ):
                         chunks.append(separator)
                 else:
+                    label = superscript_footnote_label(child)
+                    if label is not None:
+                        chunks.append(f" ({label})")
+                        continue
                     child_txt = child.text(deep=True)
                     if (
                         child_txt.startswith("(")

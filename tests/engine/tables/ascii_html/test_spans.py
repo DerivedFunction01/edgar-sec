@@ -220,3 +220,20 @@ def test_a_span_that_owns_a_single_row_is_left_alone() -> None:
     lines = [[["x"]]]
     distribute_multi_row_span_lines(blocks, lines)
     assert lines[0][0] == ["x"]
+
+
+def test_superscript_footnote_runs_are_separated_from_cell_values() -> None:
+    html = """
+    <table>
+      <tr>
+        <td>$32,383<font style="FONT-SIZE: 70%; VERTICAL-ALIGN: text-top">3</font></td>
+        <td>$66,273,439<sup>1</sup></td>
+        <td>August 1<sup>st</sup>, 2013</td>
+      </tr>
+    </table>
+    """
+    source, _ = _source(html)
+    texts = [cell.text for cell in source.rows[0]]
+    assert texts[0] == "$32,383 (3)"
+    assert texts[1] == "$66,273,439 (1)"
+    assert texts[2] == "August 1st, 2013"
