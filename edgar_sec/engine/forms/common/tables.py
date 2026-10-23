@@ -11,7 +11,12 @@ from edgar_sec.domain.forms.common.entities import (
     TABULAR_STOPWORDS,
 )
 from edgar_sec.domain.taxonomy.jurisdictions import edgar_jurisdiction_code
-from edgar_sec.engine.forms.common.entities import BARE_BOX_NUM_RE, STATE_ZIP_RE
+from edgar_sec.engine.forms.common.entities import (
+    BARE_BOX_NUM_RE,
+    STATE_ZIP_RE,
+    STREET_SUFFIX_RE,
+)
+from edgar_sec.engine.forms.common.numbers import NUMERIC_TOKEN_RE
 from edgar_sec.engine.tables.ascii_html.converter import ResolvedGrid
 from edgar_sec.foundation.regex.builder import build_alternation
 
@@ -29,6 +34,9 @@ _IGNORE_MARKERS = frozenset(IGNORE_SUBBOX_MARKERS)
 _CONJUNCTIONS = ("and", "or", "&", "/")
 _CONJUNCTION_ALT = build_alternation(_CONJUNCTIONS, auto_escape=True)
 _CONJUNCTION_LABEL_RE = re.compile(rf"^\s*(?:{_CONJUNCTION_ALT})\b", re.IGNORECASE)
+_UNIT_DESIGNATOR_RE = re.compile(
+    r"^(?:suite|ste|apt|apartment|unit|floor|fl)\b", re.IGNORECASE
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -199,6 +207,21 @@ def extract_labeled_field(
     return None
 
 
+def split_street_city(text: str) -> tuple[str | None, str | None]:
+    """Split a number-led street address from a trailing city name."""
+    if not NUMERIC_TOKEN_RE.match(text):
+        return None, None
+    suffixes = list(STREET_SUFFIX_RE.finditer(text))
+    if not suffixes:
+        return None, None
+    suffix = suffixes[-1]
+    street = text[: suffix.end()].strip(" ,")
+    city = text[suffix.end() :].strip(" ,")
+    if not city or city.startswith("#") or _UNIT_DESIGNATOR_RE.match(city):
+        return None, None
+    return street, city
+
+
 def parse_address_parts(
     text: str,
 ) -> tuple[str | None, str | None, str | None, str | None]:
@@ -224,6 +247,10 @@ def parse_address_parts(
     pieces = [piece.strip() for piece in prefix.split(",") if piece.strip()]
     city = pieces.pop() if len(pieces) > 1 else None
     street = ", ".join(pieces) if pieces else prefix or None
+    if city is None and street is not None:
+        split_street, split_city = split_street_city(" ".join(street.split()))
+        if split_street is not None:
+            street, city = split_street, split_city
     return street, city, match.group(1), match.group(2)
 
 

@@ -19,9 +19,8 @@ from edgar_sec.engine.forms.common.entities import (
     STREET_SUFFIX_RE,
     normalize_exchange_name,
 )
-from edgar_sec.engine.forms.common.tables import is_instruction_row
+from edgar_sec.engine.forms.common.tables import is_instruction_row, split_street_city
 from edgar_sec.engine.forms.common.numbers import (
-    NUMERIC_TOKEN_RE,
     normalize_decimal_stripping_currency,
     normalize_integer_stripping_units,
 )
@@ -74,15 +73,7 @@ def _is_box3_header(row: tuple[str, ...]) -> bool:
 
 
 def _split_broker_street_city(address: str) -> tuple[str | None, str | None]:
-    if not NUMERIC_TOKEN_RE.match(address):
-        return None, None
-    suffixes = list(STREET_SUFFIX_RE.finditer(address))
-    if not suffixes:
-        return None, None
-    suffix = suffixes[-1]
-    street = address[: suffix.end()].strip(" ,")
-    city = address[suffix.end() :].strip(" ,")
-    return (street, city) if city else (None, None)
+    return split_street_city(address)
 
 
 def _parse_broker(lines: list[str]) -> BrokerDetails | None:

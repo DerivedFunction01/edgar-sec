@@ -77,6 +77,18 @@ def test_parse_address_helpers():
     assert c_zip == "10012"
 
 
+def test_parse_address_parts_splits_glued_street_and_city():
+    street, city, state, zip_c = parse_address_parts(
+        "270 Park Avenue                    New York, NY 10172"
+    )
+    assert (street, city, state, zip_c) == (
+        "270 Park Avenue",
+        "New York",
+        "NY",
+        "10172",
+    )
+
+
 def test_parse_address_resolves_non_us_jurisdiction_names():
     street, city, country, zip_code = parse_address_parts(
         "123 Main Street, Toronto, Ontario, Canada"
