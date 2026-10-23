@@ -114,34 +114,11 @@ class Form144Sections:
 
 
 def _has_table_i_evidence(lower: str) -> bool:
-    if "table i" in lower and (
-        "securities to be sold" in lower or "date you acquired" in lower
-    ):
-        return True
-    if "date you acquired" in lower and "nature of acquisition" in lower:
-        return True
-    if (
-        "table i" not in lower
-        and "acquired" not in lower
-        and "acquisition" not in lower
-    ):
-        return False
     score = score_tokens(tokenize(lower), _COMPILED_TABLE_I_PACK, _EVIDENCE_CTX)
     return score.score >= 3
 
 
 def _has_table_ii_evidence(lower: str) -> bool:
-    if "table ii" in lower and ("securities sold" in lower or "past 3 months" in lower):
-        return True
-    if (
-        "securities sold during the past" in lower
-        or "securities sold past 3 months" in lower
-    ):
-        return True
-    if "title of securities sold" in lower and "gross proceeds" in lower:
-        return True
-    if "table ii" not in lower and "securities sold" not in lower:
-        return False
     score = score_tokens(tokenize(lower), _COMPILED_TABLE_II_PACK, _EVIDENCE_CTX)
     return score.score >= 3
 

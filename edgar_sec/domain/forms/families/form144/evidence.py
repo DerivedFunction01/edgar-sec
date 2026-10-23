@@ -170,7 +170,6 @@ FORM144_TABLE_II_DECISIVE_PHRASES: tuple[str, ...] = (
     "securities sold past 3 months",
     "name and address of seller",
     "title of securities sold",
-    "date of sale",
     "amount of securities sold",
     "gross proceeds",
 )
