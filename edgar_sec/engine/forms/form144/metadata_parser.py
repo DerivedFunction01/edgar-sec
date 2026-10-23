@@ -4,9 +4,10 @@ from __future__ import annotations
 
 from edgar_sec.domain.forms.families.form144.models import NoticeSignature
 from edgar_sec.engine.document.html.tree import parse_html
+from edgar_sec.engine.forms.common.columnar_signatures import (
+    extract_columnar_signature_and_date,
+)
 from edgar_sec.engine.forms.common.signatures import (
-    clean_signature_name,
-    extract_clean_signatory_name,
     extract_signature_block,
     scan_signature_grid,
 )
@@ -92,18 +93,11 @@ def parse_signatures(
             for line in parse_html(full_text[-4000:]).text().splitlines()
             if line.strip()
         ]
-        for line in reversed(tail_lines):
-            if any(m in line.lower() for m in ("/s/", "-s-", "signature", "by:")):
-                cand = extract_clean_signatory_name(line)
-                if cand:
-                    conformed_name = cand
-                    break
-        if not conformed_name:
-            for line in reversed(tail_lines):
-                cand = extract_clean_signatory_name(line)
-                if cand:
-                    conformed_name = cand
-                    break
+        columnar_name, _columnar_date = extract_columnar_signature_and_date(
+            tail_lines, reference_year=reference_year
+        )
+        if columnar_name:
+            conformed_name = columnar_name
 
     if not notice_date:
         notice_match = NOTICE_DATE_LABEL_RE.search(combined)

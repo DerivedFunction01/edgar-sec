@@ -40,7 +40,6 @@ from edgar_sec.engine.tables.ascii_html.model import (
     ResolvedGrid,
     merge_resolved_grids,
 )
-from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.automaton import tokenize
 from edgar_sec.foundation.text.dates import (
     NUMERIC_DATE_RE,

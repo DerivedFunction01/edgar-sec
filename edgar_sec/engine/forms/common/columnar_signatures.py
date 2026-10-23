@@ -51,36 +51,36 @@ def extract_columnar_signature_and_date(
                     sig_name = cand
 
         if not sig_name and ("(signature)" in lower or lower == "signature"):
-            for d in range(1, 5):
-                if idx - d >= 0:
-                    above_l = strip_markup_tags(lines[idx - d])
-                    if (
-                        above_l
-                        and not is_horizontal_rule_line(above_l)
-                        and not above_l.lower().startswith("date")
-                    ):
-                        cols = [
-                            c.strip()
-                            for c in _WHITESPACE_SPLIT_RE.split(above_l)
-                            if c.strip()
-                        ]
-                        for c in reversed(cols):
-                            clean_c = _STRIP_SLASH_S_RE.sub("", c) if "/s/" in c else c
-                            cand = extract_clean_signatory_name(clean_c)
-                            if cand and not any(
-                                k in cand.lower()
-                                for k in ("attention:", "signature", "notice", "date")
-                            ):
-                                sig_name = cand
-                                break
-                        if sig_name:
-                            if not sig_date and len(cols) > 1:
-                                parsed = parse_date(
-                                    cols[0], reference_year=reference_year
-                                )
-                                if parsed:
-                                    sig_date = parsed.display
+            for off in (-1, -2, -3, -4, 1, 2, 3, 4, 0):
+                j = idx + off
+                if not 0 <= j < total_lines:
+                    continue
+                near_l = strip_markup_tags(lines[j])
+                if (
+                    near_l
+                    and not is_horizontal_rule_line(near_l)
+                    and not near_l.lower().startswith("date")
+                ):
+                    cols = [
+                        c.strip()
+                        for c in _WHITESPACE_SPLIT_RE.split(near_l)
+                        if c.strip()
+                    ]
+                    for c in reversed(cols):
+                        clean_c = _STRIP_SLASH_S_RE.sub("", c) if "/s/" in c else c
+                        cand = extract_clean_signatory_name(clean_c)
+                        if cand and not any(
+                            k in cand.lower()
+                            for k in ("attention:", "signature", "notice", "date")
+                        ):
+                            sig_name = cand
                             break
+                    if sig_name:
+                        if not sig_date and len(cols) > 1:
+                            parsed = parse_date(cols[0], reference_year=reference_year)
+                            if parsed:
+                                sig_date = parsed.display
+                        break
 
         if not sig_date and ("date of notice" in lower or lower.startswith("date:")):
             p_d = parse_date(line, reference_year=reference_year)
