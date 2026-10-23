@@ -118,7 +118,9 @@ def test_parse_cover_form_label_continuation_and_full_state_address():
     assert seller.city == "Dallas"
     assert seller.state_or_country == "Texas"
     assert seller.zip_code == "75019"
-    assert seller.relationships == ("Affiliate",)
+    assert seller.relationships == (
+        "Provide any other relationship not mentioned above",
+    )
 
 
 def test_parse_populated_name_and_address_across_form_box_columns():

@@ -43,6 +43,14 @@ _RELATIONSHIPS = (
     "trustee",
     "other",
 )
+_RELATIONSHIP_CANONICAL = {
+    "officer": "Officer",
+    "director": "Director",
+    "10% stockholder": "10% Stockholder",
+    "affiliate": "Provide any other relationship not mentioned above",
+    "trustee": "Provide any other relationship not mentioned above",
+    "other": "Provide any other relationship not mentioned above",
+}
 
 
 def _labeled_address(
@@ -186,6 +194,7 @@ def parse_cover_box_1_2(
     seller_state: str | None = None
     seller_zip: str | None = None
     relationships: list[str] = []
+    detected_titles: list[str] = []
     seller_relationship_labeled = False
 
     for row_idx, row in enumerate(grid.rows):
@@ -243,12 +252,17 @@ def parse_cover_box_1_2(
             if parts and not seller_street:
                 seller_street, seller_city, seller_state, seller_zip = parts
 
-        for relationship in _RELATIONSHIPS:
-            if relationship in lower_row and relationship.title() not in relationships:
-                relationships.append(relationship.title())
+        for token in _RELATIONSHIPS:
+            if token in lower_row:
+                canonical = _RELATIONSHIP_CANONICAL[token]
+                if canonical not in relationships:
+                    relationships.append(canonical)
+                title = token.title()
+                if title not in detected_titles:
+                    detected_titles.append(title)
 
     if seller_name and seller_relationship_labeled:
-        for relationship in relationships:
+        for relationship in detected_titles:
             suffix = f" {relationship}"
             if seller_name.lower().endswith(suffix.lower()):
                 seller_name = seller_name[: -len(suffix)].rstrip()
