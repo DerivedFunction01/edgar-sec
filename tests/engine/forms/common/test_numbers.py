@@ -11,6 +11,7 @@ from edgar_sec.engine.forms.common.numbers import (
     normalize_integer_stripping_units,
     normalize_schema_decimal,
     normalize_schema_integer,
+    normalize_schema_integral_decimal,
     parse_scaled_number,
 )
 
@@ -97,6 +98,12 @@ def test_schema_extraction_accepts_whitespace_in_thousands_grouping() -> None:
     assert extract_schema_number("13,\t875") == "13875"
     assert extract_schema_number_or_token("13, 875") == "13875"
     assert extract_schema_number("13, 87") is None
+
+
+def test_integral_decimal_normalizer_collapses_integral_values() -> None:
+    assert normalize_schema_integral_decimal("150000.00") == "150000"
+    assert normalize_schema_integral_decimal("150000.50") == "150000.50"
+    assert normalize_schema_integral_decimal("$1,234.00", strip_currency=True) == "1234"
 
 
 def test_policy_partials_strip_units_and_currency() -> None:

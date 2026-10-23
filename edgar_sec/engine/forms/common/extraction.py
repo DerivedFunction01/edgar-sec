@@ -13,7 +13,7 @@ from edgar_sec.engine.forms.common.dates import (
     normalize_iso_date,
 )
 from edgar_sec.engine.forms.common.numbers import (
-    normalize_schema_magnitude,
+    normalize_schema_integral_decimal,
     normalize_schema_number,
 )
 
@@ -193,7 +193,7 @@ def _normalize(value: str, spec: FieldSpec, reference_year: int | None) -> str |
             allow_integral_decimal=spec.allow_integral_decimal,
         )
     if spec.kind is FieldKind.NUMBER:
-        return normalize_schema_magnitude(
+        return normalize_schema_integral_decimal(
             value,
             strip_currency=spec.strip_currency,
             strip_units=spec.strip_units,

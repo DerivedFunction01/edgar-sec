@@ -79,6 +79,32 @@ def test_parse_box_three_values_with_explanation_suffixes():
         assert proposed.aggregate_market_value == expected, cell
 
 
+def test_parse_box_three_magnitude_market_values():
+    def render(amv_cell: str) -> str:
+        return f"""
+        <table>
+          <tr><td>3 (a) Title of the Class</td>
+              <td>(b) Name and Address of Each Broker</td>
+              <td>(c) Number of Shares To Be Sold</td>
+              <td>(d) Aggregate Market Value</td><td>(e) Outstanding</td>
+              <td>(f) Approx Date</td><td>(g) Exchange</td></tr>
+          <tr><td>Common Stock</td>
+              <td>E-Trade 1675 Broadway, Denver, CO 80202</td>
+              <td>6,025</td><td>{amv_cell}</td><td>148,762,548</td>
+              <td>05/10/2013</td><td>NYSE</td></tr>
+        </table>
+        """
+
+    for cell, expected in (
+        ("$270M", "270000000"),
+        ("$32.6mm", "32600000"),
+        ("$25mm", "25000000"),
+    ):
+        sections = partition_form144_tables(render(cell))
+        proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3)
+        assert proposed.aggregate_market_value == expected, cell
+
+
 def test_parse_box_three_data_row_with_quantity_prefix_and_nodate():
     html = """
     <table>

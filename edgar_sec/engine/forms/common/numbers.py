@@ -255,7 +255,7 @@ def normalize_schema_number(
     return normalized
 
 
-def normalize_schema_magnitude(
+def normalize_schema_integral_decimal(
     text: str | None,
     *,
     strip_currency: bool = False,
@@ -341,7 +341,7 @@ __all__ = [
     "normalize_schema_decimal",
     "normalize_schema_integer",
     "normalize_schema_integer_value",
-    "normalize_schema_magnitude",
+    "normalize_schema_integral_decimal",
     "normalize_schema_number",
     "parse_scaled_number",
 ]

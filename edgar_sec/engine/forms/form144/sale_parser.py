@@ -21,6 +21,7 @@ from edgar_sec.engine.forms.common.entities import (
 )
 from edgar_sec.engine.forms.common.tables import is_instruction_row, split_street_city
 from edgar_sec.engine.forms.common.numbers import (
+    format_scaled_number_string,
     normalize_decimal_stripping_currency,
     normalize_integer_stripping_units,
 )
@@ -38,6 +39,38 @@ _QUANTITY_PREFIX_ALT = build_alternation(
     ("up to", "approximately", "approximate", "approx", "about")
 )
 _QUANTITY_PREFIX_RE = re.compile(rf"^(?:{_QUANTITY_PREFIX_ALT})\.?\s+", re.I)
+_MAGNITUDE_ALT = build_alternation(
+    (
+        "mm",
+        "million",
+        "millions",
+        "billion",
+        "billions",
+        "thousand",
+        "thousands",
+        "m",
+        "k",
+        "b",
+    )
+)
+_MAGNITUDE_TOKEN_RE = re.compile(rf"(?:{_MAGNITUDE_ALT})\b", re.IGNORECASE)
+
+
+def _normalize_number(primary: str, *, currency: bool) -> int | str | None:
+    """Strict schema normalization, falling back to magnitude scaling."""
+    strict = (
+        normalize_decimal_stripping_currency(primary)
+        if currency
+        else normalize_integer_stripping_units(primary)
+    )
+    if strict is not None:
+        return strict
+    if _MAGNITUDE_TOKEN_RE.search(primary):
+        scaled = format_scaled_number_string(primary)
+        if scaled is not None and not currency:
+            return int(scaled) if "." not in scaled else None
+        return scaled
+    return None
 
 
 def _is_box3_header(row: tuple[str, ...]) -> bool:
@@ -126,18 +159,10 @@ def _extract_leading_number(text: str) -> tuple[int | str | None, bool]:
     has_curr = any(s in cleaned for s in ALL_CURRENCY_SYMBOLS)
     primary = _SPLIT_EXPLANATION_RE.split(cleaned)[0].strip()
     primary = _QUANTITY_PREFIX_RE.sub("", primary)
-    num = (
-        normalize_decimal_stripping_currency(primary)
-        if has_curr
-        else normalize_integer_stripping_units(primary)
-    )
+    num = _normalize_number(primary, currency=has_curr)
     if num is None and "\n" in primary:
         first_line = _QUANTITY_PREFIX_RE.sub("", primary.splitlines()[0].strip())
-        num = (
-            normalize_decimal_stripping_currency(first_line)
-            if has_curr
-            else normalize_integer_stripping_units(first_line)
-        )
+        num = _normalize_number(first_line, currency=has_curr)
     return (num, has_curr) if num is not None else (None, False)
 
 
@@ -154,13 +179,13 @@ def _extract_market_value(text: str) -> str | None:
         return None
     primary = _SPLIT_EXPLANATION_RE.split(cleaned)[0].strip()
     primary = _QUANTITY_PREFIX_RE.sub("", _FOOTNOTE_SUFFIX_RE.sub("", primary))
-    value = normalize_decimal_stripping_currency(primary.strip())
+    value = _normalize_number(primary.strip(), currency=True)
     if value is None and "\n" in primary:
         first_line = _FOOTNOTE_SUFFIX_RE.sub("", primary.splitlines()[0].strip())
-        value = normalize_decimal_stripping_currency(first_line.strip())
-    if value is None and " " in primary:
-        value = normalize_decimal_stripping_currency(primary.split()[0])
-    return value
+        value = _normalize_number(first_line.strip(), currency=True)
+    if value is None and " " in primary and not _MAGNITUDE_TOKEN_RE.search(primary):
+        value = _normalize_number(primary.split()[0], currency=True)
+    return value if isinstance(value, str) else None
 
 
 def _value_without_trailing_date(cell: str) -> str:
