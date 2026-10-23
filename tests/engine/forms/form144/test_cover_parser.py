@@ -25,6 +25,19 @@ def test_parse_cover_issuer_and_reporting_person():
     assert "Officer" in seller.relationships
 
 
+def test_parse_cover_rejects_boilerplate_names():
+    html = """
+    <table>
+      <tr><td>STREET</td><td>CITY</td><td>STATE</td><td>ZIP CODE</td></tr>
+      <tr><td>2 (a) NAME OF PERSON FOR WHOSE ACCOUNT SOLD</td><td>INSTRUCTIONS</td></tr>
+    </table>
+    """
+    sections = partition_form144_tables(html)
+    issuer, seller = parse_cover_box_1_2(sections.cover_box_1_2)
+    assert issuer.name is None
+    assert seller.name is None
+
+
 def test_parse_split_cover_tables_and_same_cell_values():
     html = """
     <table>

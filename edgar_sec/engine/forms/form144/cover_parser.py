@@ -33,6 +33,51 @@ _SELLER_LABELS = (
     "2 (a)",
     "2(a)",
 )
+_BOILERPLATE_NAMES = frozenset(
+    {
+        "instructions",
+        "street",
+        "city",
+        "state",
+        "zip code",
+        "sec use only",
+        "area code number",
+        "telephone",
+        "name of issuer",
+    }
+)
+_HEADER_WORDS = frozenset(
+    {
+        "address",
+        "area",
+        "city",
+        "code",
+        "instructions",
+        "issuer",
+        "name",
+        "number",
+        "of",
+        "only",
+        "sec",
+        "state",
+        "street",
+        "telephone",
+        "use",
+        "zip",
+    }
+)
+
+
+def _is_boilerplate_name(value: str | None) -> bool:
+    if value is None:
+        return False
+    lowered = value.strip().lower()
+    if lowered in _BOILERPLATE_NAMES or lowered.startswith("("):
+        return True
+    words = [word.strip(".,") for word in lowered.split()]
+    return bool(words) and all(word in _HEADER_WORDS for word in words)
+
+
 _ISSUER_EXCLUDED = ("irs", "sec file", "relationship", "address", "telephone")
 _SELLER_EXCLUDED = ("irs", "relationship", "address", "issuer", "telephone")
 _RELATIONSHIPS = (
@@ -149,6 +194,8 @@ def parse_cover_box_1_2(
 
     grid = section.resolved_grid
     issuer_name = extract_labeled_field(grid, _ISSUER_LABELS, excluded=_ISSUER_EXCLUDED)
+    if _is_boilerplate_name(issuer_name):
+        issuer_name = None
     if not issuer_name and grid.rows:
         for row in grid.rows[:3]:
             for cell in row:
@@ -174,13 +221,20 @@ def parse_cover_box_1_2(
                 ):
                     continue
                 cand = clean_field_candidate(c, _ISSUER_EXCLUDED)
-                if cand and len(cand) >= 3 and not any(char.isdigit() for char in cand):
+                if (
+                    cand
+                    and len(cand) >= 3
+                    and not any(char.isdigit() for char in cand)
+                    and not _is_boilerplate_name(cand)
+                ):
                     issuer_name = cand
                     break
             if issuer_name:
                 break
 
     seller_name = extract_labeled_field(grid, _SELLER_LABELS, excluded=_SELLER_EXCLUDED)
+    if _is_boilerplate_name(seller_name):
+        seller_name = None
 
     irs_num: str | None = None
     sec_file: str | None = None

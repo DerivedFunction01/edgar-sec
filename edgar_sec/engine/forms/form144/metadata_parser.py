@@ -19,6 +19,13 @@ from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 from edgar_sec.engine.forms.common.dates import normalize_iso_date
 
 
+def _is_generator_credit(name: str | None) -> bool:
+    if not name:
+        return False
+    lowered = name.lower()
+    return "generated" in lowered or "workiva" in lowered
+
+
 def parse_remarks(sections: list[ClassifiedSection] | None) -> str | None:
     values: list[str] = []
     for section in sections or []:
@@ -63,7 +70,7 @@ def parse_signatures(
 
     for sec_item in sections_list:
         grid_name, grid_date = scan_signature_grid(sec_item.resolved_grid.rows)
-        if not conformed_name and grid_name:
+        if not conformed_name and grid_name and not _is_generator_credit(grid_name):
             conformed_name = grid_name
         if not notice_date and grid_date:
             notice_date = grid_date
@@ -75,7 +82,7 @@ def parse_signatures(
             grid_name, grid_date = scan_signature_grid(
                 fallback.resolved_grid.rows, strict_dates=True
             )
-            if not conformed_name and grid_name:
+            if not conformed_name and grid_name and not _is_generator_credit(grid_name):
                 conformed_name = grid_name
             if not notice_date and grid_date:
                 notice_date = grid_date
@@ -98,7 +105,9 @@ def parse_signatures(
                 combined = fallback
                 signature_block = fallback_block
         if signature_block and signature_block.signatories:
-            conformed_name = signature_block.signatories[0].name
+            block_name = signature_block.signatories[0].name
+            if not _is_generator_credit(block_name):
+                conformed_name = block_name
             if signature_block.signatories[0].date and not notice_date:
                 notice_date = signature_block.signatories[0].date
 
@@ -113,7 +122,9 @@ def parse_signatures(
         columnar_name, columnar_date = extract_columnar_signature_and_date(
             tail_lines, reference_year=reference_year
         )
-        if not conformed_name and columnar_name:
+        if not conformed_name and columnar_name and not _is_generator_credit(
+            columnar_name
+        ):
             conformed_name = columnar_name
         if not notice_date and columnar_date:
             notice_date = columnar_date
