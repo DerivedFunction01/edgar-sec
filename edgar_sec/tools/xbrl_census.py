@@ -650,12 +650,23 @@ if __name__ == "__main__":
 
 
 def run_pair_gate() -> object:
-    """Evaluate the seeded cross-firm pair set over the grounded cohort."""
-    from edgar_sec.engine.xbrl.review.benchmark import PAIR_SET, evaluate_pairs
+    """Evaluate the seeded pair set and longitudinal relations, grounded."""
+    from edgar_sec.engine.xbrl.review.benchmark import (
+        PAIR_SET,
+        RELATION_SET,
+        PairReport,
+        evaluate_pairs,
+        evaluate_relations,
+    )
+    from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
     from edgar_sec.engine.xbrl.solve.cohort_lookup import CohortLookup
     from edgar_sec.engine.xbrl.solve.concept_table import build_cohort_table
+    from edgar_sec.engine.xbrl.solve.query import FinancialQueryEngine
+    from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
     from edgar_sec.tools.xbrl_census_corpus import (
         latest_undimensioned_fact,
+        load_seed_arcs,
+        load_seed_facts,
         seed_cohort_entries,
     )
 
@@ -670,6 +681,23 @@ def run_pair_gate() -> object:
             for spec in PAIR_SET
             if spec.incompatibility
         }
-        return evaluate_pairs(lookup, PAIR_SET, source_facts)
+        pairs = evaluate_pairs(lookup, PAIR_SET, source_facts)
     finally:
         lookup.close()
+    engine = FinancialQueryEngine(
+        XbrlConstraintSolver(EvidenceKnowledgeBase(taxonomy=taxonomy))
+    )
+    folder_by_accession = {
+        str(entry.accession): entry.facts_path.parent.name for entry in entries
+    }
+    endpoints = {}
+    for spec in RELATION_SET:
+        for accession in (spec.pre_accession, spec.post_accession):
+            folder = folder_by_accession[accession]
+            endpoints[accession] = (load_seed_facts(folder), load_seed_arcs(folder))
+    relations = evaluate_relations(engine, endpoints)
+    return PairReport(
+        total=pairs.total + relations.total,
+        passed=pairs.passed + relations.passed,
+        failures=pairs.failures + relations.failures,
+    )
