@@ -139,12 +139,35 @@ def _extract_leading_number(text: str) -> tuple[int | str | None, bool]:
         if has_curr
         else normalize_integer_stripping_units(primary)
     )
+    if num is None and "\n" in primary:
+        first_line = _QUANTITY_PREFIX_RE.sub("", primary.splitlines()[0].strip())
+        num = (
+            normalize_decimal_stripping_currency(first_line)
+            if has_curr
+            else normalize_integer_stripping_units(first_line)
+        )
     return (num, has_curr) if num is not None else (None, False)
 
 
 def _extract_units(text: str) -> int | None:
     value, is_currency = _extract_leading_number(text)
     return value if isinstance(value, int) and not is_currency else None
+
+
+def _value_without_trailing_date(cell: str) -> str:
+    text = cell.strip()
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    if len(lines) >= 2 and parse_date(lines[-1]) is not None:
+        head = "\n".join(lines[:-1])
+        num, _is_curr = _extract_leading_number(head)
+        if num is not None:
+            return head
+    head, sep, tail = text.rpartition(" ")
+    if sep and parse_date(tail) is not None:
+        num, _is_curr = _extract_leading_number(head)
+        if num is not None:
+            return head
+    return cell
 
 
 def _is_currency_cell(s: str) -> bool:
@@ -294,7 +317,8 @@ def parse_proposed_sale_box_3(
 
         cells: list[str] = []
         skip_next = False
-        for i, c in enumerate(raw_cells):
+        for i, raw_c in enumerate(raw_cells):
+            c = _value_without_trailing_date(raw_c)
             if skip_next:
                 skip_next = False
                 continue

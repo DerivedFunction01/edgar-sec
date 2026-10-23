@@ -28,6 +28,28 @@ def test_parse_box_three_values_and_human_readable_sale_date():
     assert proposed.exchange_name == "NYSE"
 
 
+def test_parse_box_three_values_with_glued_asof_dates():
+    html = """
+    <table>
+      <tr><td>3 (a) Title of the Class</td>
+          <td>(b) Name and Address of Each Broker</td>
+          <td>(c) Number of Shares To Be Sold</td>
+          <td>(d) Aggregate Market Value</td><td>(e) Outstanding</td>
+          <td>(f) Approx Date</td><td>(g) Exchange</td></tr>
+      <tr><td>Common Stock</td>
+          <td>E-Trade 1675 Broadway, Denver, CO 80202</td>
+          <td>Up to 6,025</td><td>$276,487.25<br/>05/09/2013</td>
+          <td>148,762,548<br/>04/30/2013</td>
+          <td>05/10/2013</td><td>NYSE</td></tr>
+    </table>
+    """
+    sections = partition_form144_tables(html)
+    proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3)
+    assert proposed.aggregate_market_value == "276487.25"
+    assert proposed.units_outstanding == 148762548
+    assert proposed.approx_sale_date == "2013-05-10"
+
+
 def test_parse_box_three_columns_with_numbered_marker_cells():
     html = """
     <table>
