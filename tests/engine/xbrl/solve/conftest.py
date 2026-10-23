@@ -14,13 +14,15 @@ from tests.support import fixture_path, load_fixture
 
 def load_seed_cohort() -> tuple[CohortEntry, ...]:
     registry = load_fixture("xbrl/seed_cohort.json")
+    sources = load_fixture("xbrl/seed/fixture_source_registry.json")["bundles"]
+    folder_by_accession = {s["cohort_accession"]: s["folder"] for s in sources}
     seed_root = fixture_path("xbrl/seed")
     entries = []
     for item in registry:
-        matches = sorted(seed_root.glob(f"{item['firm'].lower()}_*_10k"))
-        if len(matches) != 1:
-            raise ValueError(f"seed bundle for {item['firm']}: {matches}")
-        facts_path = matches[0] / "facts.parquet"
+        folder = folder_by_accession.get(item["accession"])
+        if folder is None:
+            raise ValueError(f"seed bundle for accession {item['accession']}")
+        facts_path = seed_root / folder / "facts.parquet"
         accessions = set(
             pq.read_table(facts_path, columns=["accession"]).column(0).to_pylist()
         )

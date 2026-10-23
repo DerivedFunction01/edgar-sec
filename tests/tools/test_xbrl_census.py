@@ -64,6 +64,23 @@ def test_classify_adverse_shapes() -> None:
     assert classify(_rec("REPORTED", value=1.0), honest) == "wrong-span"
 
 
+def test_seed_cohort_entries_resolve_both_bac_filings() -> None:
+    """Cohort entries key by accession: BAC resolves to two distinct bundles."""
+    from edgar_sec.tools.xbrl_census_corpus import seed_cohort_entries
+
+    entries = seed_cohort_entries()
+    assert len(entries) == 42
+    bac = [entry for entry in entries if entry.firm == "BAC"]
+    assert {str(entry.accession) for entry in bac} == {
+        "0000070858-25-000139",
+        "0000070858-12-000155",
+    }
+    assert {entry.facts_path.parent.name for entry in bac} == {
+        "bac_2024_10k",
+        "bac_2011_10k",
+    }
+
+
 def test_probe_population_single_firm_smoke(tmp_path: Path) -> None:
     """MSFT probe battery: 19 correct, 5 honest, one surfaced CONFLICT."""
     taxonomy = load_domain_taxonomy()

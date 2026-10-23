@@ -29,7 +29,7 @@ def test_validate_xbrl_benchmark_cli(tmp_path: Path) -> None:
     assert summary["accuracy_pct"] == 100.0
     assert summary["failed_tests"] == 0
     assert summary["passed_tests"] > 0
-    assert summary["firm_count"] == 41
+    assert summary["firm_count"] == 42
 
 
 def test_validate_xbrl_benchmark_missing_cohort() -> None:

@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 from collections.abc import Sequence
 from dataclasses import asdict
+import json
 from pathlib import Path
 import sys
 
@@ -60,12 +61,19 @@ def _build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def _load_bundle(fixtures_dir: Path, firm: str, sic_code: int) -> BundleFacts | None:
-    """Load one firm's seed bundle tables, or None when absent."""
-    matches = sorted(fixtures_dir.glob(f"{firm.lower()}_*_10k"))
-    if not matches or not (matches[0] / "facts.parquet").exists():
+def _load_bundle(
+    fixtures_dir: Path, firm: str, sic_code: int, folder: str | None = None
+) -> BundleFacts | None:
+    """Load one filing's seed bundle tables, or None when absent."""
+    if folder is not None:
+        root = fixtures_dir / folder
+    else:
+        matches = sorted(fixtures_dir.glob(f"{firm.lower()}_*_10k"))
+        if not matches:
+            return None
+        root = matches[0]
+    if not (root / "facts.parquet").exists():
         return None
-    root = matches[0]
 
     def _optional(name: str) -> pq.Table | None:
         path = root / name
@@ -98,10 +106,24 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 1
 
     cohort = load_seed_cohort(cohort_source)
+    source_registry = fixtures_dir / "fixture_source_registry.json"
+    folder_by_accession: dict[str, str] = {}
+    if source_registry.exists():
+        payload = json.loads(source_registry.read_text(encoding="utf-8"))
+        folder_by_accession = {
+            s["cohort_accession"]: s["folder"] for s in payload["bundles"]
+        }
     bundles = [
         bundle
         for filing in cohort
-        if (bundle := _load_bundle(fixtures_dir, filing.firm, filing.sic_code))
+        if (
+            bundle := _load_bundle(
+                fixtures_dir,
+                filing.firm,
+                filing.sic_code,
+                folder_by_accession.get(str(filing.accession)),
+            )
+        )
         is not None
     ]
     if not bundles:

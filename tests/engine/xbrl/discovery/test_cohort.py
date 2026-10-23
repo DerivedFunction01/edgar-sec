@@ -7,13 +7,21 @@ from tests.support import fixture_path
 def test_load_seed_cohort_from_fixture() -> None:
     """Verify loading from explicit fixture path and field constraints."""
     cohort = load_seed_cohort(fixture_path("xbrl/seed_cohort.json"))
-    assert len(cohort) == 41
+    assert len(cohort) == 42
     assert cohort[0].firm == "MSFT"
     assert cohort[1].firm == "AAPL"
+    bac = [filing for filing in cohort if filing.firm == "BAC"]
+    assert [(filing.fy, str(filing.accession)) for filing in bac] == [
+        (2024, "0000070858-25-000139"),
+        (2011, "0000070858-12-000155"),
+    ]
+    assert len({filing.firm for filing in cohort}) == 41
     for filing in cohort:
         assert len(str(filing.accession)) == 20
         assert int(filing.cik) > 0
         assert filing.form in ("10-K", "20-F")
+        if filing.firm == "BAC" and filing.fy == 2011:
+            continue
         assert filing.fy in (2022, 2023, 2024)
 
 

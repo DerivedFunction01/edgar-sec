@@ -43,7 +43,10 @@ def _verify_fixture(
     cohort = json.loads(
         fixture_path("xbrl/seed_cohort.json").read_text(encoding="utf-8")
     )
-    cohort_entry = next(item for item in cohort if item["firm"] == expected_firm)
+    cohort_entry = next(
+        item for item in cohort if item["accession"] == source["cohort_accession"]
+    )
+    assert cohort_entry["firm"] == expected_firm
     assert cohort_entry["accession"] == source["cohort_accession"]
     assert cohort_entry["fy"] == source["cohort_fiscal_year"]
     assert source["source_matches_cohort"] is (
@@ -232,10 +235,16 @@ def test_dis_grounded_seed_fixture_verification() -> None:
 
 
 def test_seed_cohort_composition() -> None:
-    """Prove seed_cohort.json contains 41 companies across diverse industry sectors."""
+    """Prove seed_cohort.json contains 42 filings across diverse sectors."""
     cohort_path = fixture_path("xbrl/seed_cohort.json")
     cohort = json.loads(cohort_path.read_text(encoding="utf-8"))
-    assert len(cohort) == 41
+    assert len(cohort) == 42
+    bac = [item for item in cohort if item["firm"] == "BAC"]
+    assert [(item["fy"], item["accession"]) for item in bac] == [
+        (2024, "0000070858-25-000139"),
+        (2011, "0000070858-12-000155"),
+    ]
+    assert len({item["firm"] for item in cohort}) == 41
 
     firms = {item["firm"] for item in cohort}
     assert "JPM" in firms
