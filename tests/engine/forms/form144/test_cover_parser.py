@@ -38,6 +38,89 @@ def test_parse_cover_rejects_boilerplate_names():
     assert seller.name is None
 
 
+def test_parse_cover_rejects_instruction_prose_as_seller_name():
+    html = """
+    <table>
+      <tr><td>2 (a) NAME OF PERSON FOR WHOSE ACCOUNT SOLD</td>
+          <td>of Rule 144 to be aggregated with sales for the account of
+              the person filing this notice.</td></tr>
+    </table>
+    """
+    sections = partition_form144_tables(html)
+    _issuer, seller = parse_cover_box_1_2(sections.cover_box_1_2)
+    assert seller.name is None
+
+
+def test_parse_cover_keeps_joint_filer_name_mentioning_rule_144():
+    html = """
+    <table>
+      <tr><td>2 (a) NAME OF PERSON FOR WHOSE ACCOUNT SOLD</td>
+          <td>Mark LeDoux and persons whose sales are required by Rule 144
+              to be aggregated</td></tr>
+    </table>
+    """
+    sections = partition_form144_tables(html)
+    _issuer, seller = parse_cover_box_1_2(sections.cover_box_1_2)
+    assert seller.name is not None
+    assert seller.name.startswith("Mark LeDoux")
+
+
+def test_parse_cover_rejects_truncated_label_fragment_as_issuer():
+    from edgar_sec.engine.forms.form144.sections import (
+        ClassifiedSection,
+        SectionRole,
+    )
+    from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
+
+    rows = (
+        (
+            "UNITED STATES\nSECURITIES AND EXCHANGE COMMISSION",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "OMB APPROVAL",
+            "",
+        ),
+        (
+            "1 (a) NAME OF ISSUER (Please type or print)",
+            "",
+            "",
+            "(b) IRS IDENT. NO.\n00-0000000",
+            "",
+            "(c) S.E.C. FILE NO.\n001-13542",
+            "",
+            "WORK LOCATION",
+            "",
+        ),
+        (
+            "1 (d) ADDRESS OF ISSUER STREET CITY STATE",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "(e) TELEPHONE NO.",
+            "",
+            "",
+        ),
+        ("", "", "", "", "", "", "AREA COD\n54", "", "NUMBER\n11 4323-7400"),
+    )
+    section = ClassifiedSection(
+        role=SectionRole.COVER_BOX_1_2,
+        table_index=0,
+        raw_node=None,
+        resolved_grid=ResolvedGrid(
+            rows=rows, column_alignments=(), column_widths=(), confidence=1.0
+        ),
+    )
+    issuer, _seller = parse_cover_box_1_2(section)
+    assert issuer.name is None
+    assert issuer.sec_file_number == "001-13542"
+
+
 def test_parse_split_cover_tables_and_same_cell_values():
     html = """
     <table>

@@ -24,6 +24,7 @@ from edgar_sec.engine.forms.form144.patterns import (
 from edgar_sec.engine.forms.form144.sections import ClassifiedSection
 
 _STREET_NUM_PAREN_RE = re.compile(r"^\d+\s*\([a-z]\)", re.IGNORECASE)
+_NON_ALNUM_TOKEN_RE = re.compile(r"[^a-z0-9]+")
 
 _ISSUER_LABELS = ("name of issuer", "1 (a)", "1(a)")
 _SELLER_LABELS = (
@@ -54,6 +55,7 @@ _HEADER_WORDS = frozenset(
         "code",
         "instructions",
         "issuer",
+        "location",
         "name",
         "number",
         "of",
@@ -63,9 +65,16 @@ _HEADER_WORDS = frozenset(
         "street",
         "telephone",
         "use",
+        "work",
         "zip",
     }
 )
+
+
+def _is_header_token(token: str) -> bool:
+    return token in _HEADER_WORDS or (
+        len(token) >= 3 and any(word.startswith(token) for word in _HEADER_WORDS)
+    )
 
 
 def _is_boilerplate_name(value: str | None) -> bool:
@@ -74,8 +83,15 @@ def _is_boilerplate_name(value: str | None) -> bool:
     lowered = value.strip().lower()
     if lowered in _BOILERPLATE_NAMES or lowered.startswith("("):
         return True
-    words = [word.strip(".,") for word in lowered.split()]
-    return bool(words) and all(word in _HEADER_WORDS for word in words)
+    if "rule 144" in lowered and value.strip()[:1].islower():
+        return True
+    tokens = [token for token in _NON_ALNUM_TOKEN_RE.split(lowered) if token]
+    words = [token for token in tokens if token.isalpha()]
+    if not words or len(words) + sum(token.isdigit() for token in tokens) != len(
+        tokens
+    ):
+        return False
+    return all(_is_header_token(word) for word in words)
 
 
 _ISSUER_EXCLUDED = ("irs", "sec file", "relationship", "address", "telephone")

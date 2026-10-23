@@ -442,6 +442,10 @@ def partition_form144_tables(
             or proposed_sale_box_3 is not None
         )
         pre_grid = resolve_html_table_grid(tbl)
+        if pre_grid.rows:
+            lower = " ".join(
+                " ".join(" ".join(r) for r in pre_grid.rows).lower().split()
+            )
         if (
             proposed_sale_box_3 is not None
             and pre_grid.rows
