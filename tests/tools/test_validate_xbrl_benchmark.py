@@ -86,3 +86,34 @@ def test_validate_xbrl_benchmark_census_gate(tmp_path: Path, monkeypatch) -> Non
     moved["populations"]["probe"]["classification"]["correct"] -= 1
     monkeypatch.setattr(census_module, "run_census", lambda *a, **k: moved)
     assert main(args) == 1
+
+
+def test_validate_xbrl_benchmark_pairs_gate(tmp_path: Path, monkeypatch) -> None:
+    """Verify --pairs passes on a clean pair report and fails on a regression."""
+    import edgar_sec.tools.xbrl_census as census_module
+    from edgar_sec.engine.xbrl.review.benchmark import PairReport
+
+    out_json = tmp_path / "benchmark.json"
+    args = [
+        "--output",
+        str(out_json),
+        "--cohort-file",
+        str(fixture_path("xbrl/seed_cohort.json")),
+        "--taxonomy-dir",
+        str(fixture_path("xbrl/taxonomy")),
+        "--pairs",
+    ]
+    monkeypatch.setattr(
+        census_module,
+        "run_pair_gate",
+        lambda: PairReport(total=14, passed=14, failures=()),
+    )
+    assert main(args) == 0
+    monkeypatch.setattr(
+        census_module,
+        "run_pair_gate",
+        lambda: PairReport(
+            total=14, passed=13, failures=("pair: expected tier=exact",)
+        ),
+    )
+    assert main(args) == 1

@@ -647,3 +647,29 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+def run_pair_gate() -> object:
+    """Evaluate the seeded cross-firm pair set over the grounded cohort."""
+    from edgar_sec.engine.xbrl.review.benchmark import PAIR_SET, evaluate_pairs
+    from edgar_sec.engine.xbrl.solve.cohort_lookup import CohortLookup
+    from edgar_sec.engine.xbrl.solve.concept_table import build_cohort_table
+    from edgar_sec.tools.xbrl_census_corpus import (
+        latest_undimensioned_fact,
+        seed_cohort_entries,
+    )
+
+    taxonomy = load_domain_taxonomy()
+    entries = seed_cohort_entries()
+    lookup = CohortLookup(build_cohort_table(taxonomy, entries), entries)
+    try:
+        source_facts = {
+            (spec.source_firm, spec.target): latest_undimensioned_fact(
+                f"{spec.source_firm.lower()}_2024_10k", spec.target
+            )
+            for spec in PAIR_SET
+            if spec.incompatibility
+        }
+        return evaluate_pairs(lookup, PAIR_SET, source_facts)
+    finally:
+        lookup.close()

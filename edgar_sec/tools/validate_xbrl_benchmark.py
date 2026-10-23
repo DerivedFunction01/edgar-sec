@@ -64,6 +64,11 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Also run the scored census regression (probe and span populations).",
     )
     parser.add_argument(
+        "--pairs",
+        action="store_true",
+        help="Also evaluate the seeded cross-firm pair set (tier regression gate).",
+    )
+    parser.add_argument(
         "--census-out",
         type=Path,
         default=None,
@@ -148,6 +153,19 @@ def main(argv: list[str] | None = None) -> int:
             verdict = 1
             sys.stdout.write("Census gate: FAIL\n")
             for failure in score.failures:
+                sys.stdout.write(f"  {failure}\n")
+    if args.pairs:
+        from edgar_sec.tools.xbrl_census import run_pair_gate
+
+        pair_report = run_pair_gate()
+        sys.stdout.write(f"{'-' * 60}\nSeeded Cross-Firm Pair Set:\n")
+        sys.stdout.write(f"  Pairs passed: {pair_report.passed}/{pair_report.total}\n")
+        if pair_report.passed_all:
+            sys.stdout.write("Pair gate: PASS\n")
+        else:
+            verdict = 1
+            sys.stdout.write("Pair gate: FAIL\n")
+            for failure in pair_report.failures:
                 sys.stdout.write(f"  {failure}\n")
     return verdict
 

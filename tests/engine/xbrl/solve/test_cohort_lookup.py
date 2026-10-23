@@ -213,3 +213,13 @@ def test_per_accession_fact_specimen(seed_lookup: CohortLookup) -> None:
     assert matches
     assert {item.accession for item in matches} == {entries["ASML"].accession}
     assert all(item.firm == "ASML" for item in matches)
+
+
+def test_pair_set_holds_over_the_seed_cohort(seed_lookup: CohortLookup) -> None:
+    """Every seeded cross-firm pair holds at its expected tier, live."""
+    from edgar_sec.engine.xbrl.review.benchmark import PAIR_SET, evaluate_pairs
+
+    source_facts = {("MSFT", "us-gaap:AccountsPayableCurrent"): _msft_source()}
+    report = evaluate_pairs(seed_lookup, PAIR_SET, source_facts)
+    assert report.failures == ()
+    assert report.passed == report.total == len(PAIR_SET)

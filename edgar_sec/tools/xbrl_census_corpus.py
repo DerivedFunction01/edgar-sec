@@ -292,3 +292,44 @@ def textblock_qnames(facts: tuple[XbrlFact, ...]) -> set[str]:
         if isinstance(f.value, (int, float)):
             numeric.add(f.concept_qname)
     return all_q - numeric
+
+
+def seed_cohort_entries() -> tuple:
+    """Cohort entries over the grounded seed bundles, bundle accessions authoritative."""
+    from edgar_sec.engine.xbrl.solve.concept_table import CohortEntry
+
+    registry = json.loads(
+        (REPO / "tests" / "fixtures" / "xbrl" / "seed_cohort.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    seed_root = REPO / "tests" / "fixtures" / "xbrl" / "seed"
+    entries = []
+    for item in registry:
+        matches = sorted(seed_root.glob(f"{item['firm'].lower()}_*_10k"))
+        if len(matches) != 1:
+            raise ValueError(f"seed bundle for {item['firm']}: {matches}")
+        facts_path = matches[0] / "facts.parquet"
+        accessions = set(
+            pq.read_table(facts_path, columns=["accession"]).column(0).to_pylist()
+        )
+        if len(accessions) != 1:
+            raise ValueError(f"seed bundle for {item['firm']}: {accessions}")
+        entries.append(
+            CohortEntry(
+                accession=accessions.pop(),
+                facts_path=facts_path,
+                firm=item["firm"],
+            )
+        )
+    return tuple(entries)
+
+
+def latest_undimensioned_fact(folder: str, qname: str) -> XbrlFact:
+    """The latest-instant undimensioned fact for a qname in one seed bundle."""
+    own = [
+        fact
+        for fact in load_seed_facts(folder)
+        if fact.concept_qname == qname and not fact.dimensions
+    ]
+    return max(own, key=lambda fact: fact.instant_date or "")
