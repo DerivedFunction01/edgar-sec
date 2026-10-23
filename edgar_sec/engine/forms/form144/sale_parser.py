@@ -323,6 +323,19 @@ def _box3_part2_schema(reference_year: int | None) -> TableSchema:
     )
 
 
+_TAB_GLUE_RE = re.compile(r"&#9;|\t")
+
+
+def _split_tab_glued(cell: str) -> tuple[str, ...]:
+    """Split a cell whose fields are glued together with tab characters."""
+    if "&#9;" not in cell and "\t" not in cell:
+        return (cell,)
+    parts = tuple(_TAB_GLUE_RE.split(cell))
+    if sum(1 for part in parts if part.strip()) < 2:
+        return (cell,)
+    return parts
+
+
 def parse_proposed_sale_box_3(
     section: ClassifiedSection | None,
     reference_year: int | None = None,
@@ -331,7 +344,10 @@ def parse_proposed_sale_box_3(
     if section is None:
         return ProposedSaleItem()
 
-    rows = section.resolved_grid.rows
+    rows = tuple(
+        tuple(part for cell in row for part in _split_tab_glued(cell))
+        for row in section.resolved_grid.rows
+    )
     if not rows:
         return ProposedSaleItem()
 

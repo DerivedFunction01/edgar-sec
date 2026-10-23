@@ -131,6 +131,26 @@ def test_parse_box_three_prefix_comma_and_glued_explanation_values():
         assert proposed.aggregate_market_value == expected, cell
 
 
+def test_parse_box_three_tab_glued_row():
+    html = """
+    <table>
+      <tr><td>3(a) Title of Class</td><td>3(b) Broker</td>
+          <td>3(c) Number of Shares</td><td>3(d) Aggregate Market Value</td>
+          <td>3(e) Outstanding</td><td>3(f) Date of Sale</td>
+          <td>3(g) Exchange</td></tr>
+      <tr><td>Common&amp;#9;Ameritrade&amp;#9;10,000&amp;#9;116,000&amp;#9;4,231,113&amp;#9; July 27,&amp;#9;Nasdaq&amp;#9;</td>
+          <td>P.O. Box 2270 &amp;#9;&amp;#9;&amp;#9;&amp;#9;&amp;#9;</td><td>2005</td>
+          <td></td><td></td><td></td><td></td></tr>
+    </table>
+    """
+    sections = partition_form144_tables(html)
+    proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3)
+    assert proposed.units_to_be_sold == 10000
+    assert proposed.aggregate_market_value == "116000"
+    assert proposed.units_outstanding == 4231113
+    assert proposed.exchange_name == "NASDAQ"
+
+
 def test_extract_market_value_after_prose_single_amount_only():
     """Prose-first cells yield only a lone currency amount."""
     from edgar_sec.engine.forms.form144.sale_parser import _extract_market_value
