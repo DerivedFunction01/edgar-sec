@@ -749,19 +749,50 @@ def test_requires_evidence_claim_never_fires() -> None:
     assert atom.head == "H_UNKNOWN"
 
 
+def test_requires_evidence_claim_fires_when_satisfied() -> None:
+    """Q6 twin: a satisfied evidence context lets the gated claim fire."""
+    from edgar_sec.engine.xbrl.normalize.lexicon import (
+        EvidenceContext,
+        LexiconEntry,
+        TokenLexicon,
+    )
+
+    gated = LexiconEntry(
+        ("impairment",),
+        "head",
+        head="H_EXPENSE",
+        claim_class="PRIMARY",
+        requires_evidence=True,
+    )
+    lex = TokenLexicon((gated,))
+    satisfied = EvidenceContext("0000000001-24-000001", "x:Impairment", True)
+    atom, _, _, _ = decompose_concept("x:Impairment", lex, evidence=satisfied)
+    assert atom.head == "H_EXPENSE"
+    unsatisfied = EvidenceContext("0000000001-24-000001", "x:Impairment", False)
+    atom, _, _, _ = decompose_concept("x:Impairment", lex, evidence=unsatisfied)
+    assert atom.head == "H_UNKNOWN"
+
+
 def test_impairment_descriptive_tag_spans_heads_without_moving_them() -> None:
     """The impairment tag filters across heads; heads and family EXACT hold."""
     from edgar_sec.engine.xbrl.solve.equivalence import EXACT, UNRELATED, classify_pair
 
+    from edgar_sec.engine.xbrl.normalize.lexicon import EvidenceContext
+
     tax = load_domain_taxonomy()
     assert tax.token_lexicon is not None
     lex = tax.token_lexicon
-    loss, _, _, _ = decompose_concept("us-gaap:ImpairmentOfOilAndGasProperties", lex)
-    held, _, _, _ = decompose_concept(
-        "us-gaap:ImpairmentOfLongLivedAssetsHeldForUse", lex
-    )
+
+    def attested(qname: str) -> EvidenceContext:
+        return EvidenceContext("0000000001-24-000001", qname, True)
+
+    loss_qname = "us-gaap:ImpairmentOfOilAndGasProperties"
+    loss, _, _, _ = decompose_concept(loss_qname, lex, evidence=attested(loss_qname))
+    held_qname = "us-gaap:ImpairmentOfLongLivedAssetsHeldForUse"
+    held, _, _, _ = decompose_concept(held_qname, lex, evidence=attested(held_qname))
+    disposed_qname = "us-gaap:ImpairmentOfLongLivedAssetsToBeDisposedOf"
     disposed, _, _, _ = decompose_concept(
-        "us-gaap:ImpairmentOfLongLivedAssetsToBeDisposedOf", lex
+        disposed_qname, lex, evidence=attested(disposed_qname)
     )
     population, _, _, _ = decompose_concept(
         "us-gaap:FinancingReceivableCollectivelyEvaluatedForImpairment", lex

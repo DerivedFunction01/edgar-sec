@@ -3,11 +3,14 @@
 from __future__ import annotations
 
 from pathlib import Path
+from types import MappingProxyType
 
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 
+from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
+from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.solve.concept_table import (
     CohortEntry,
     ConceptTable,
@@ -15,7 +18,9 @@ from edgar_sec.engine.xbrl.solve.concept_table import (
     build_concept_table,
 )
 from edgar_sec.engine.xbrl.solve.evidence_index import (
+    ConceptEvidence,
     EvidenceIndex,
+    FilingEvidenceRecord,
     build_evidence_index,
     build_filing_evidence,
 )
@@ -490,3 +495,122 @@ def test_arc_only_concept_keeps_raw_blocks_with_silent_derivations(
     assert child.placement_horizon is None and not child.placement_conflict
     assert len(record.bundle_fingerprint) == 64
     assert record.firm == "TST" and record.accession == _ACC
+
+
+_IMPAIRMENT_ATOMS = {
+    "us-gaap:ImpairmentOfIntangibleAssets": Atom(
+        "H_INCOME", frozenset({"M_IMPAIRMENT", "M_INTANGIBLE_GOODWILL"})
+    ),
+    "us-gaap:ImpairmentOfLongLivedAssets": Atom(
+        "H_INCOME", frozenset({"M_IMPAIRMENT"})
+    ),
+    "us-gaap:ImpairmentOfOilAndGasProperties": Atom(
+        "H_INCOME", frozenset({"M_IMPAIRMENT"})
+    ),
+    "msft:ImpairmentOfEquityInvestments": Atom("H_INCOME", frozenset({"M_IMPAIRMENT"})),
+}
+
+
+def _synthetic_record(qname: str, evidence: ConceptEvidence) -> FilingEvidenceRecord:
+    return FilingEvidenceRecord(
+        accession="0000000002-24-000002",
+        firm="SYN",
+        bundle_fingerprint="0" * 64,
+        concepts=MappingProxyType({qname: evidence}),
+    )
+
+
+def test_fcx_impairment_fires_under_its_own_evidence(
+    seed_index: EvidenceIndex,
+    seed_entries: dict[str, CohortEntry],
+    seed_table: ConceptTable,
+) -> None:
+    """FCX's gated claim fires under FCX's record, reproducing today's atom."""
+    qname = "us-gaap:ImpairmentOfOilAndGasProperties"
+    accession = seed_entries["FCX"].accession
+    context = seed_index.evidence_context(accession, qname)
+    assert context.satisfied
+    assert seed_table.tokenize(qname, evidence=context).atom == _IMPAIRMENT_ATOMS[qname]
+    assert seed_table.tokenize(qname).atom != _IMPAIRMENT_ATOMS[qname]
+
+
+def test_msft_impairment_fires_under_its_own_evidence(
+    seed_index: EvidenceIndex,
+    seed_entries: dict[str, CohortEntry],
+    seed_table: ConceptTable,
+) -> None:
+    """MSFT's gated claim fires under MSFT's record, reproducing today's atom."""
+    qname = "msft:ImpairmentOfEquityInvestments"
+    accession = seed_entries["MSFT"].accession
+    context = seed_index.evidence_context(accession, qname)
+    assert context.satisfied
+    assert seed_table.tokenize(qname, evidence=context).atom == _IMPAIRMENT_ATOMS[qname]
+    assert seed_table.tokenize(qname).atom != _IMPAIRMENT_ATOMS[qname]
+
+
+def test_unattested_impairment_pair_fires_under_synthetic_records(
+    taxonomy: DomainTaxonomy, seed_index: EvidenceIndex
+) -> None:
+    """The two cohort-absent concepts fire only under synthetic attestation."""
+    assert taxonomy.token_lexicon is not None
+    lex = taxonomy.token_lexicon
+    for qname in (
+        "us-gaap:ImpairmentOfIntangibleAssets",
+        "us-gaap:ImpairmentOfLongLivedAssets",
+    ):
+        # Absent from the seed cohort: no filing's record carries either name.
+        assert all(
+            qname not in record.concepts for record in seed_index.records.values()
+        )
+        record = _synthetic_record(
+            qname,
+            ConceptEvidence(
+                qname=qname, reported=True, placed=True, attested_placed=True
+            ),
+        )
+        atom, _, _, _ = decompose_concept(
+            qname, lex, evidence=record.evidence_context(qname)
+        )
+        assert atom == _IMPAIRMENT_ATOMS[qname]
+        atom, _, _, _ = decompose_concept(qname, lex)
+        assert atom != _IMPAIRMENT_ATOMS[qname]
+
+
+def test_gated_claim_does_not_fire_when_record_is_unattested(
+    taxonomy: DomainTaxonomy,
+) -> None:
+    """A record present with attested_placed false does not satisfy the gate."""
+    assert taxonomy.token_lexicon is not None
+    lex = taxonomy.token_lexicon
+    qname = "us-gaap:ImpairmentOfOilAndGasProperties"
+    record = _synthetic_record(
+        qname,
+        ConceptEvidence(
+            qname=qname,
+            declaration=("xbrli:monetaryItemType", None, "duration", "xbrli:item"),
+        ),
+    )
+    context = record.evidence_context(qname)
+    assert not context.satisfied
+    atom, _, _, _ = decompose_concept(qname, lex, evidence=context)
+    assert atom != _IMPAIRMENT_ATOMS[qname]
+
+
+def test_gated_claim_does_not_fire_under_another_filings_record(
+    seed_index: EvidenceIndex,
+    seed_entries: dict[str, CohortEntry],
+    taxonomy: DomainTaxonomy,
+) -> None:
+    """Satisfaction is keyed by (accession, qname): another filing cannot fire it."""
+    assert taxonomy.token_lexicon is not None
+    lex = taxonomy.token_lexicon
+    fcx_qname = "us-gaap:ImpairmentOfOilAndGasProperties"
+    msft_qname = "msft:ImpairmentOfEquityInvestments"
+    cross = seed_index.evidence_context(seed_entries["FCX"].accession, msft_qname)
+    assert not cross.satisfied
+    atom, _, _, _ = decompose_concept(msft_qname, lex, evidence=cross)
+    assert atom != _IMPAIRMENT_ATOMS[msft_qname]
+    cross = seed_index.evidence_context(seed_entries["MSFT"].accession, fcx_qname)
+    assert not cross.satisfied
+    atom, _, _, _ = decompose_concept(fcx_qname, lex, evidence=cross)
+    assert atom != _IMPAIRMENT_ATOMS[fcx_qname]
