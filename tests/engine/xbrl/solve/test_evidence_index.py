@@ -231,6 +231,230 @@ def test_refuses_malformed_arc_endpoint(
         build_filing_evidence(entry, _small_table(taxonomy))
 
 
+@pytest.fixture(scope="module")
+def seed_table(taxonomy: DomainTaxonomy) -> ConceptTable:
+    """The seed cohort's concept table, for atom-side specimen assertions."""
+    return build_cohort_table(taxonomy, load_seed_cohort())
+
+
+def test_aapl_payables_calc_horizon_specimen(
+    seed_index: EvidenceIndex, seed_entries: dict[str, CohortEntry]
+) -> None:
+    """AAPL payables: calc ancestor LiabilitiesCurrent states M_CURRENT."""
+    entry = seed_index.entry(
+        seed_entries["AAPL"].accession, "us-gaap:AccountsPayableCurrent"
+    )
+    assert entry is not None
+    assert entry.calc_horizon == "M_CURRENT"
+    assert entry.calc_horizon_ancestors == ("us-gaap:LiabilitiesCurrent",)
+    assert entry.pres_horizon is None
+    assert entry.placement_horizon == "M_CURRENT"
+    assert entry.placement_horizon_source == "calculation"
+    assert not entry.placement_conflict
+
+
+def test_msft_cash_placement_speaks_for_silent_atom(
+    seed_index: EvidenceIndex,
+    seed_entries: dict[str, CohortEntry],
+    seed_table: ConceptTable,
+) -> None:
+    """MSFT cash: the name is horizon-silent; calc placement states current."""
+    qname = "us-gaap:CashAndCashEquivalentsAtCarryingValue"
+    record = seed_table.record(qname)
+    assert not record.atom.modifiers & {"M_CURRENT", "M_NONCURRENT"}
+    assert record.derived_horizon is None
+    entry = seed_index.entry(seed_entries["MSFT"].accession, qname)
+    assert entry is not None
+    assert entry.placement_horizon == "M_CURRENT"
+    assert entry.placement_horizon_source == "calculation"
+    assert entry.calc_horizon_ancestors == ("us-gaap:AssetsCurrent",)
+
+
+def test_aapl_lease_extensible_list_presentation_horizon(
+    seed_index: EvidenceIndex, seed_entries: dict[str, CohortEntry]
+) -> None:
+    """AAPL lease extensible list: presentation ancestor states the horizon."""
+    qname = (
+        "us-gaap:FinanceLeaseLiabilityCurrentStatementOfFinancialPositionExtensibleList"
+    )
+    entry = seed_index.entry(seed_entries["AAPL"].accession, qname)
+    assert entry is not None
+    assert entry.pres_horizon == "M_CURRENT"
+    assert entry.pres_horizon_ancestors == ("us-gaap:FinanceLeaseLiabilityCurrent",)
+    assert entry.placement_horizon == "M_CURRENT"
+    assert entry.placement_horizon_source == "presentation"
+
+
+def test_long_term_debt_current_real_conflict_is_silence_plus_flag(
+    seed_index: EvidenceIndex, seed_entries: dict[str, CohortEntry]
+) -> None:
+    """LongTermDebtCurrent placement disagrees in real filings: no winner."""
+    for firm in ("AAPL", "MSFT", "FCX"):
+        entry = seed_index.entry(
+            seed_entries[firm].accession, "us-gaap:LongTermDebtCurrent"
+        )
+        assert entry is not None
+        assert entry.placement_conflict
+        assert entry.placement_horizon is None
+        assert entry.placement_horizon_source is None
+
+
+_ROLE_B = "http://example.com/role/OTHER"
+
+
+def _horizon_table(taxonomy: DomainTaxonomy) -> ConceptTable:
+    return build_concept_table(
+        taxonomy,
+        [
+            "us-gaap:AccountsPayableCurrent",
+            "us-gaap:LiabilitiesCurrent",
+            "us-gaap:LiabilitiesNoncurrent",
+            "us-gaap:Liabilities",
+            "ext:LiabilitiesCurrentAndNoncurrent",
+        ],
+    )
+
+
+def _pres_arc(parent: str, child: str, role: str = _ROLE) -> dict:
+    return {
+        "parent_qname": parent,
+        "child_qname": child,
+        "order": 1.0,
+        "role_uri": role,
+    }
+
+
+def _calc_arc(parent: str, child: str, role: str = _ROLE) -> dict:
+    return {
+        "parent_qname": parent,
+        "child_qname": child,
+        "weight": 1.0,
+        "order": 1.0,
+        "role_uri": role,
+    }
+
+
+def test_horizon_depth_two_through_silent_intermediate(
+    taxonomy: DomainTaxonomy, tmp_path: Path
+) -> None:
+    """A silent intermediate passes the walk through to its stating parent."""
+    entry = _bundle(
+        tmp_path,
+        pres=[
+            _pres_arc("us-gaap:Liabilities", "ext:PlacedChild"),
+            _pres_arc("us-gaap:LiabilitiesCurrent", "us-gaap:Liabilities"),
+        ],
+    )
+    record = build_filing_evidence(entry, _horizon_table(taxonomy))
+    child = record.entry("ext:PlacedChild")
+    assert child is not None
+    assert child.pres_horizon == "M_CURRENT"
+    assert child.pres_horizon_ancestors == ("us-gaap:LiabilitiesCurrent",)
+    assert child.placement_horizon == "M_CURRENT"
+    assert child.placement_horizon_source == "presentation"
+
+
+def test_horizon_same_depth_disagreement_is_conflict(
+    taxonomy: DomainTaxonomy, tmp_path: Path
+) -> None:
+    """Current and noncurrent ancestors at one depth: silence plus flag."""
+    entry = _bundle(
+        tmp_path,
+        pres=[
+            _pres_arc("us-gaap:LiabilitiesCurrent", "ext:PlacedChild"),
+            _pres_arc("us-gaap:LiabilitiesNoncurrent", "ext:PlacedChild"),
+        ],
+    )
+    record = build_filing_evidence(entry, _horizon_table(taxonomy))
+    child = record.entry("ext:PlacedChild")
+    assert child is not None
+    assert child.pres_horizon is None and child.pres_horizon_ancestors == ()
+    assert child.placement_horizon is None and child.placement_conflict
+
+
+def test_horizon_cross_graph_disagreement_is_conflict(
+    taxonomy: DomainTaxonomy, tmp_path: Path
+) -> None:
+    """Presentation says current, calculation says noncurrent: conflict."""
+    entry = _bundle(
+        tmp_path,
+        pres=[_pres_arc("us-gaap:LiabilitiesCurrent", "ext:PlacedChild")],
+        calc=[_calc_arc("us-gaap:LiabilitiesNoncurrent", "ext:PlacedChild")],
+    )
+    record = build_filing_evidence(entry, _horizon_table(taxonomy))
+    child = record.entry("ext:PlacedChild")
+    assert child is not None
+    assert child.pres_horizon == "M_CURRENT"
+    assert child.calc_horizon == "M_NONCURRENT"
+    assert child.placement_horizon is None
+    assert child.placement_horizon_source is None
+    assert child.placement_conflict
+
+
+def test_horizon_dual_horizon_ancestor_is_skipped(
+    taxonomy: DomainTaxonomy, tmp_path: Path
+) -> None:
+    """A dual-horizon ancestor states the whole: the walk continues past it."""
+    table = _horizon_table(taxonomy)
+    dual = table.record("ext:LiabilitiesCurrentAndNoncurrent")
+    assert {"M_CURRENT", "M_NONCURRENT"} <= set(dual.atom.modifiers)
+    entry = _bundle(
+        tmp_path,
+        pres=[
+            _pres_arc("ext:LiabilitiesCurrentAndNoncurrent", "ext:PlacedChild"),
+            _pres_arc(
+                "us-gaap:LiabilitiesNoncurrent",
+                "ext:LiabilitiesCurrentAndNoncurrent",
+            ),
+        ],
+    )
+    record = build_filing_evidence(entry, table)
+    child = record.entry("ext:PlacedChild")
+    assert child is not None
+    assert child.pres_horizon == "M_NONCURRENT"
+    assert child.pres_horizon_ancestors == ("us-gaap:LiabilitiesNoncurrent",)
+    assert not child.placement_conflict
+
+
+def test_horizon_walk_follows_same_role_edges_only(
+    taxonomy: DomainTaxonomy, tmp_path: Path
+) -> None:
+    """An ancestor reached in one role does not continue into another role."""
+    entry = _bundle(
+        tmp_path,
+        pres=[
+            _pres_arc("us-gaap:Liabilities", "ext:PlacedChild"),
+            _pres_arc(
+                "us-gaap:LiabilitiesCurrent",
+                "us-gaap:Liabilities",
+                role=_ROLE_B,
+            ),
+        ],
+    )
+    record = build_filing_evidence(entry, _horizon_table(taxonomy))
+    child = record.entry("ext:PlacedChild")
+    assert child is not None
+    assert child.pres_horizon is None and not child.placement_conflict
+
+
+def test_horizon_walk_is_cycle_guarded(
+    taxonomy: DomainTaxonomy, tmp_path: Path
+) -> None:
+    """A parent cycle with no stating ancestor terminates in silence."""
+    entry = _bundle(
+        tmp_path,
+        pres=[
+            _pres_arc("ext:CycleB", "ext:CycleA"),
+            _pres_arc("ext:CycleA", "ext:CycleB"),
+        ],
+    )
+    record = build_filing_evidence(entry, _horizon_table(taxonomy))
+    for qname in ("ext:CycleA", "ext:CycleB"):
+        child = record.entry(qname)
+        assert child is not None
+        assert child.placement_horizon is None and not child.placement_conflict
+
+
 def test_arc_only_concept_keeps_raw_blocks_with_silent_derivations(
     taxonomy: DomainTaxonomy, tmp_path: Path
 ) -> None:

@@ -10,7 +10,7 @@ from __future__ import annotations
 import json
 import re
 from collections.abc import Mapping, Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 from types import MappingProxyType
 
@@ -23,6 +23,9 @@ from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.serialization import canonical_json
 
 _QNAME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_-]*:[A-Za-z_][A-Za-z0-9_.\-]*$")
+
+_HORIZON_GROUP = "MATURITY_HORIZON"
+_HORIZON_FALLBACK = frozenset({"M_CURRENT", "M_NONCURRENT"})
 
 _BUNDLE_ARTEFACTS = (
     "facts.parquet",
@@ -174,6 +177,99 @@ def _read_rows(path: Path, columns: list[str]) -> list[dict]:
     return pq.read_table(path, columns=columns).to_pylist()
 
 
+def _horizon_members(table: ConceptTable) -> frozenset[str]:
+    """The MATURITY_HORIZON axis members declared by the taxonomy."""
+    for group in table.taxonomy.sibling_groups:
+        if group.group == _HORIZON_GROUP:
+            return frozenset(group.members)
+    return _HORIZON_FALLBACK
+
+
+def _walk_horizon(
+    start: str,
+    parents: Mapping[str, tuple[tuple[str, str | None], ...]],
+    table: ConceptTable,
+    members: frozenset[str],
+) -> tuple[str | None, tuple[str, ...], bool]:
+    """Nearest-depth horizon over same-role ancestor edges, cycle-guarded.
+
+    Returns (modifier, deciding ancestors, conflict). Dual-horizon
+    ancestors state the whole, not a portion: no signal, walk past them.
+    """
+    frontier = [(parent, role) for parent, role in parents.get(start, ())]
+    visited = {(start, None)}
+    while frontier:
+        stating: dict[str, str] = {}
+        following: list[tuple[str, str | None]] = []
+        for qname, role in frontier:
+            if qname == start or (qname, role) in visited:
+                continue
+            visited.add((qname, role))
+            following.extend(
+                (parent, role)
+                for parent, parent_role in parents.get(qname, ())
+                if parent_role == role
+            )
+            if qname not in table:
+                continue
+            stated = table.record(qname).atom.modifiers & members
+            if len(stated) == 1:
+                stating[qname] = next(iter(stated))
+        if stating:
+            values = set(stating.values())
+            if len(values) > 1:
+                return None, (), True
+            return next(iter(values)), tuple(sorted(stating)), False
+        frontier = following
+    return None, (), False
+
+
+def _derive_horizons(
+    concepts: dict[str, ConceptEvidence], table: ConceptTable
+) -> dict[str, ConceptEvidence]:
+    """Fill the §2.3 horizon fields from the raw blocks plus table atoms."""
+    members = _horizon_members(table)
+    pres_up = {
+        qname: tuple((arc[0], arc[1]) for arc in entry.pres_parents)
+        for qname, entry in concepts.items()
+    }
+    calc_up = {
+        qname: tuple((arc[0], arc[2]) for arc in entry.calc_parents)
+        for qname, entry in concepts.items()
+    }
+    derived: dict[str, ConceptEvidence] = {}
+    for qname, entry in concepts.items():
+        pres, pres_ancestors, pres_conflict = _walk_horizon(
+            qname, pres_up, table, members
+        )
+        calc, calc_ancestors, calc_conflict = _walk_horizon(
+            qname, calc_up, table, members
+        )
+        conflict = pres_conflict or calc_conflict
+        horizon: str | None = None
+        source: str | None = None
+        if pres is not None and calc is not None:
+            if pres == calc:
+                horizon, source = pres, "both"
+            else:
+                conflict = True
+        elif pres is not None:
+            horizon, source = pres, "presentation"
+        elif calc is not None:
+            horizon, source = calc, "calculation"
+        derived[qname] = replace(
+            entry,
+            pres_horizon=pres,
+            pres_horizon_ancestors=pres_ancestors,
+            calc_horizon=calc,
+            calc_horizon_ancestors=calc_ancestors,
+            placement_horizon=horizon,
+            placement_horizon_source=source,
+            placement_conflict=conflict,
+        )
+    return derived
+
+
 def _bundle_fingerprint(bundle_dir: Path) -> str:
     """Digest over the sorted (filename, digest) pairs of the source parquets."""
     pairs = []
@@ -297,7 +393,7 @@ def build_filing_evidence(
         accession=entry.accession,
         firm=entry.firm,
         bundle_fingerprint=_bundle_fingerprint(bundle_dir),
-        concepts=MappingProxyType(concepts),
+        concepts=MappingProxyType(_derive_horizons(concepts, table)),
     )
 
 
