@@ -134,6 +134,22 @@ def test_from_cohort_query_battery_matches_loaded(cohort) -> None:
             assert (got.status, got.value) == (want.status, want.value)
 
 
+def test_from_cohort_carries_the_filings_evidence_record(cohort) -> None:
+    """Verify a cohort facade carries its own filing's evidence record."""
+    taxonomy, entries, table = cohort
+    entry = next(e for e in entries if e.firm == "AAPL")
+    indexed = Xbrl.from_cohort(table, entries, entry.accession)
+    record = indexed.evidence
+    assert record is not None
+    assert record.accession == entry.accession and record.firm == "AAPL"
+    payables = record.entry("us-gaap:AccountsPayableCurrent")
+    assert payables is not None
+    assert payables.placement_horizon == "M_CURRENT"
+    assert payables.attested_placed
+    loaded = Xbrl(_load_bundle("aapl_2024_10k"), taxonomy)
+    assert loaded.evidence is None
+
+
 def test_from_cohort_unknown_accession_raises(cohort) -> None:
     """Verify an accession outside the cohort entries is refused."""
     _taxonomy, entries, table = cohort

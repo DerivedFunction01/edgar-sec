@@ -48,6 +48,10 @@ from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.engine.xbrl.solve.cohort_lookup import CohortFactMatch
 from edgar_sec.engine.xbrl.solve.cohort_scan import iter_cohort_batches
 from edgar_sec.engine.xbrl.solve.concept_table import CohortEntry, ConceptTable
+from edgar_sec.engine.xbrl.solve.evidence_index import (
+    FilingEvidenceRecord,
+    build_filing_evidence,
+)
 from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
 from edgar_sec.engine.xbrl.storage.storage import (
     declarations_from_arrow_table,
@@ -111,10 +115,12 @@ class Xbrl:
         taxonomy: DomainTaxonomy | None = None,
         *,
         fact_set: XbrlFactSet | None = None,
+        evidence_record: FilingEvidenceRecord | None = None,
     ) -> None:
         """Shared construction path for loaded and cohort-sourced facades."""
         self._filing = filing_xbrl
         self._taxonomy = taxonomy or load_domain_taxonomy()
+        self._evidence_record = evidence_record
 
         arcs = self._filing.linkbases.calculation_arcs if self._filing.linkbases else ()
         raw_labels = self._filing.linkbases.labels if self._filing.linkbases else ()
@@ -199,6 +205,7 @@ class Xbrl:
                     bundle,
                     table.taxonomy,
                     fact_set=build_fact_set_from_table(facts, table),
+                    evidence_record=build_filing_evidence(entry, table),
                 )
                 return instance
         raise ValueError(f"accession {accession} not among cohort entries")
@@ -263,6 +270,11 @@ class Xbrl:
     def linkbases(self) -> LinkbaseBundle | None:
         """Return raw linkbase bundle attached to this filing."""
         return self._filing.linkbases
+
+    @property
+    def evidence(self) -> FilingEvidenceRecord | None:
+        """This filing's evidence record; only cohort facades carry one."""
+        return self._evidence_record
 
     def query(
         self,
@@ -575,8 +587,8 @@ class Xbrl:
     ) -> FinancialQueryResult:
         """Operand ladder: name/reported, tokenizer equivalence, derived.
 
-        The filing-local rung is present and empty in this phase;
-        global defaults are the engine's alias table.
+        Presumption below the name is the engine's ladder: derived,
+        filing-local placement, then presumed_atom's global defaults.
         """
         result = self.query(term, mode=mode, fiscal_year=fiscal_year)
         if result.value is not None or mode is not QueryMode.REPORTED_ONLY:
