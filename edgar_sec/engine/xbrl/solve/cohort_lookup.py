@@ -15,12 +15,14 @@ from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
 from edgar_sec.engine.xbrl.solve.concept_table import CohortEntry, ConceptTable
 from edgar_sec.engine.xbrl.solve.equivalence import (
-    NEAR,
+    EXACT,
     UNRELATED,
-    RankedEquivalent,
-    classify_pair,
-    presumed_atom,
-    rank_equivalents,
+    LadderClassification,
+    classify_ladder_pair,
+)
+from edgar_sec.engine.xbrl.solve.evidence_index import (
+    EvidenceIndex,
+    build_evidence_index,
 )
 from edgar_sec.infra.storage.duckdb import connect, sql_path_list
 
@@ -47,6 +49,7 @@ class CohortCandidate:
     modifier_distance: int
     residual_intent: int
     residual_total: int
+    via_filing_local: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -82,6 +85,7 @@ class CohortFactMatch:
     fact: CohortFact
     compatible: bool
     incompatibility: str = ""
+    via_filing_local: bool = False
 
 
 def _row_to_fact(row: Sequence[object]) -> CohortFact:
@@ -123,13 +127,19 @@ class CohortLookup:
         table: ConceptTable,
         entries: Sequence[CohortEntry],
     ) -> None:
-        """Bind the concept table and the cohort's bundle entries."""
+        """Bind the concept table, the cohort entries, and their evidence index."""
         self._table = table
         self._entries = tuple(entries)
         self._firms = {entry.accession: entry.firm for entry in self._entries}
         self._paths = sql_path_list([str(entry.facts_path) for entry in self._entries])
+        self._evidence = build_evidence_index(self._entries, table)
         self._con = None
         self._unit_classes: dict[str | None, str] = {}
+
+    @property
+    def evidence(self) -> EvidenceIndex:
+        """The filing-local evidence index built for this lookup's cohort."""
+        return self._evidence
 
     def close(self) -> None:
         """Close the lookup's DuckDB connection, if opened."""
@@ -143,37 +153,115 @@ class CohortLookup:
             self._con = connect()
         return self._con
 
-    def _ranked(self, target: str | Atom) -> tuple[RankedEquivalent, ...]:
-        """Rank the table's concepts against a qname or atom target.
-
-        A classify pass over the distinct atoms selects the pool; the
-        target qname stays empty so the concept itself can rank exact.
-        """
+    def _target(self, target: str | Atom) -> tuple[str, Atom]:
+        """Resolve a query target to its qname (empty for atom targets) and atom."""
         if isinstance(target, str):
-            target_atom = self._table.tokenize(target).atom
-        else:
-            target_atom = target
-        target_qname = ""
+            return target, self._table.tokenize(target).atom
+        return "", target
+
+    def _derived(self, qname: str) -> str | None:
+        """A qname's derived horizon from the concept table, if it has one."""
+        if qname and qname in self._table:
+            return self._table.record(qname).derived_horizon
+        return None
+
+    def _placement(self, accession: str | None, qname: str) -> str | None:
+        """A qname's placement horizon under one filing's record, if it speaks."""
+        if accession is None or not qname:
+            return None
+        entry = self._evidence.entry(accession, qname)
+        return entry.placement_horizon if entry is not None else None
+
+    def _classify(
+        self,
+        target_qname: str,
+        target_atom: Atom,
+        candidate_qname: str,
+        *,
+        accession: str | None = None,
+        target_accession: str | None = None,
+    ) -> LadderClassification:
+        """Classify one (accession, candidate) row under the full ladder.
+
+        The candidate is presumed under its own filing's record; the
+        target only under the query's accession, never a candidate's.
+        """
+        taxonomy = self._table.taxonomy
+        return classify_ladder_pair(
+            target_atom,
+            self._table.record(candidate_qname).atom,
+            taxonomy.default_coordinates,
+            tuple(taxonomy.sibling_groups) or None,
+            target_derived_horizon=self._derived(target_qname),
+            candidate_derived_horizon=self._derived(candidate_qname),
+            target_placement_horizon=self._placement(target_accession, target_qname),
+            candidate_placement_horizon=self._placement(accession, candidate_qname),
+        )
+
+    def _pool(self, target_qname: str, target_atom: Atom) -> tuple[str, ...]:
+        """Qnames any row of which could classify non-UNRELATED to the target.
+
+        Checked over stated, derived, default, and both placement
+        variants, so a filing-local NEAR survives the pool cut.
+        """
         taxonomy = self._table.taxonomy
         groups = tuple(taxonomy.sibling_groups) or None
         defaults = taxonomy.default_coordinates
-        presumed_target = presumed_atom(target_atom, defaults, groups)
-        pool: list[tuple[str, Atom]] = []
-        for atom, qnames in self._table.qnames_by_atom.items():
-            if classify_pair(target_atom, atom) != UNRELATED:
-                pool.extend((qname, atom) for qname in qnames)
-            elif defaults and (
-                classify_pair(presumed_target, presumed_atom(atom, defaults, groups))
-                == NEAR
+        target_derived = self._derived(target_qname)
+        members = ("M_CURRENT", "M_NONCURRENT")
+        pool = []
+        for qname, record in self._table.records.items():
+            variants: list[LadderClassification] = [
+                classify_ladder_pair(
+                    target_atom,
+                    record.atom,
+                    defaults,
+                    groups,
+                    target_derived_horizon=target_derived,
+                    candidate_derived_horizon=record.derived_horizon,
+                )
+            ]
+            if record.derived_horizon is None and not (
+                record.atom.modifiers & frozenset(members)
             ):
-                pool.extend((qname, atom) for qname in qnames)
-        return rank_equivalents(
-            target_qname,
-            target_atom,
-            pool,
-            defaults,
-            sibling_groups=groups,
-            residual_counts=self._table.residual_counts,
+                variants += [
+                    classify_ladder_pair(
+                        target_atom,
+                        record.atom,
+                        defaults,
+                        groups,
+                        target_derived_horizon=target_derived,
+                        candidate_placement_horizon=horizon,
+                    )
+                    for horizon in members
+                ]
+                variants += [
+                    classify_ladder_pair(
+                        target_atom,
+                        record.atom,
+                        defaults,
+                        groups,
+                        target_placement_horizon=horizon,
+                        candidate_derived_horizon=record.derived_horizon,
+                    )
+                    for horizon in members
+                ]
+            if any(item.tier != UNRELATED for item in variants):
+                pool.append(qname)
+        return tuple(sorted(pool))
+
+    @staticmethod
+    def _rank_key(
+        result: LadderClassification, qname: str, residual: tuple[int, int]
+    ) -> tuple:
+        """Sort key mirroring the ladder order: tier, rung, distance, residuals."""
+        return (
+            0 if result.tier == EXACT else 1,
+            2 if result.via_default else 1 if result.via_filing_local else 0,
+            result.modifier_distance,
+            residual[0],
+            residual[1],
+            qname,
         )
 
     def equivalents(
@@ -187,38 +275,54 @@ class CohortLookup:
         A per-accession filter on the same query serves per-filing
         classification consumers.
         """
-        ranked = self._ranked(target)
-        if not ranked or not self._entries:
+        target_qname, target_atom = self._target(target)
+        pool = self._pool(target_qname, target_atom)
+        if not pool or not self._entries:
             return ()
-        by_qname = {item.qname: item for item in ranked}
         query = (
             "SELECT DISTINCT accession, concept_qname FROM read_parquet("
             f"{self._paths}) WHERE concept_qname = ANY(?)"
         )
-        params: list[object] = [list(by_qname)]
+        params: list[object] = [list(pool)]
         if accession is not None:
             query += " AND accession = ?"
             params.append(accession)
         rows = self._connection().execute(query, params).fetchall()
-        order = {item.qname: index for index, item in enumerate(ranked)}
-        candidates = [
-            CohortCandidate(
-                accession=str(row[0]),
-                firm=self._firms.get(str(row[0]), ""),
-                qname=str(row[1]),
-                atom=by_qname[str(row[1])].atom,
-                tier=by_qname[str(row[1])].tier,
-                rule=by_qname[str(row[1])].rule,
-                direction=by_qname[str(row[1])].direction,
-                via_default=by_qname[str(row[1])].via_default,
-                modifier_distance=by_qname[str(row[1])].modifier_distance,
-                residual_intent=by_qname[str(row[1])].residual_intent_count,
-                residual_total=by_qname[str(row[1])].residual_total_count,
+        candidates = []
+        for row in rows:
+            row_accession, qname = str(row[0]), str(row[1])
+            result = self._classify(
+                target_qname,
+                target_atom,
+                qname,
+                accession=row_accession,
+                target_accession=accession,
             )
-            for row in rows
-        ]
-        candidates.sort(key=lambda item: (order[item.qname], item.accession))
-        return tuple(candidates)
+            if result.tier == UNRELATED:
+                continue
+            intent, total = self._table.residual_counts[qname]
+            candidates.append(
+                (
+                    self._rank_key(result, qname, (intent, total)),
+                    row_accession,
+                    CohortCandidate(
+                        accession=row_accession,
+                        firm=self._firms.get(row_accession, ""),
+                        qname=qname,
+                        atom=self._table.record(qname).atom,
+                        tier=result.tier,
+                        rule=result.rule,
+                        direction=result.direction,
+                        via_default=result.via_default,
+                        modifier_distance=result.modifier_distance,
+                        residual_intent=intent,
+                        residual_total=total,
+                        via_filing_local=result.via_filing_local,
+                    ),
+                )
+            )
+        candidates.sort(key=lambda item: (item[0], item[1]))
+        return tuple(item[2] for item in candidates)
 
     def _unit_class(self, unit: str | None) -> str:
         """Memoized taxonomy unit class for a raw unit token."""
@@ -252,31 +356,42 @@ class CohortLookup:
         Compatible matches present first in rank order; incompatible
         facts follow, flagged, in the same rank order.
         """
-        ranked = self._ranked(source.concept_qname)
-        if not ranked or not self._entries:
+        target_qname, target_atom = self._target(source.concept_qname)
+        pool = self._pool(target_qname, target_atom)
+        if not pool or not self._entries:
             return ()
-        by_qname = {item.qname: item for item in ranked}
-        order = {item.qname: index for index, item in enumerate(ranked)}
         query = (
             f"SELECT {_FACT_COLUMNS} FROM read_parquet({self._paths}) "
             "WHERE concept_qname = ANY(?)"
         )
-        params: list[object] = [list(by_qname)]
+        params: list[object] = [list(pool)]
         if accession is not None:
             query += " AND accession = ?"
             params.append(accession)
         rows = self._connection().execute(query, params).fetchall()
+        classified: dict[tuple[str, str], LadderClassification] = {}
         matches = []
         for row in rows:
             fact = _row_to_fact(row)
             reason = self._incompatibility(source, fact)
-            item = by_qname[fact.qname]
+            key = (fact.accession, fact.qname)
+            if key not in classified:
+                classified[key] = self._classify(
+                    target_qname,
+                    target_atom,
+                    fact.qname,
+                    accession=fact.accession,
+                    target_accession=accession,
+                )
+            item = classified[key]
+            if item.tier == UNRELATED:
+                continue
             matches.append(
                 CohortFactMatch(
                     accession=fact.accession,
                     firm=self._firms.get(fact.accession, ""),
                     qname=fact.qname,
-                    atom=item.atom,
+                    atom=self._table.record(fact.qname).atom,
                     tier=item.tier,
                     rule=item.rule,
                     direction=item.direction,
@@ -284,8 +399,15 @@ class CohortLookup:
                     fact=fact,
                     compatible=not reason,
                     incompatibility=reason,
+                    via_filing_local=item.via_filing_local,
                 )
             )
+
+        def rank_key(item: CohortFactMatch) -> tuple:
+            result = classified[(item.accession, item.qname)]
+            residual = self._table.residual_counts[item.qname]
+            return self._rank_key(result, item.qname, residual)
+
         matches.sort(
             key=lambda item: item.fact.instant_date or item.fact.end_date or "",
             reverse=True,
@@ -293,7 +415,7 @@ class CohortLookup:
         matches.sort(
             key=lambda item: (
                 0 if item.compatible else 1,
-                order[item.qname],
+                rank_key(item),
                 item.accession,
             )
         )
