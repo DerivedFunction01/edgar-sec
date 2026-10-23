@@ -41,6 +41,7 @@ _CURRENCY_CODE_ALT = build_alternation(
 _CURRENCY_CODE_PREFIX_RE = re.compile(rf"^(?:{_CURRENCY_CODE_ALT})\s*", re.I)
 _APPROX_TILDE_RE = re.compile(r"^~+\s*")
 _TRAILING_COMMA_RE = re.compile(r",\s*$")
+_CURRENCY_AMOUNT_RE = re.compile(r"\$\s*\d[\d,]*(?:\.\d+)?")
 
 
 def _preclean_money(primary: str) -> str:
@@ -203,6 +204,10 @@ def _extract_market_value(text: str) -> str | None:
         value = _normalize_number(first_line.strip(), currency=True)
     if value is None and " " in primary and not _MAGNITUDE_TOKEN_RE.search(primary):
         value = _normalize_number(primary.split()[0], currency=True)
+    if value is None and not cleaned[0].isdigit() and cleaned[0] != "$":
+        amounts = _CURRENCY_AMOUNT_RE.findall(cleaned)
+        if len(amounts) == 1:
+            value = _normalize_number(amounts[0], currency=True)
     return value if isinstance(value, str) else None
 
 

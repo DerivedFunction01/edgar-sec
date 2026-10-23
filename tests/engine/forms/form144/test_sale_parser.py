@@ -131,6 +131,14 @@ def test_parse_box_three_prefix_comma_and_glued_explanation_values():
         assert proposed.aggregate_market_value == expected, cell
 
 
+def test_extract_market_value_after_prose_single_amount_only():
+    """Prose-first cells yield only a lone currency amount."""
+    from edgar_sec.engine.forms.form144.sale_parser import _extract_market_value
+
+    assert _extract_market_value("As of close on 8/29/13 - $258,000") == "258000"
+    assert _extract_market_value("As of 1/2/13: $5,000 and $6,000") is None
+
+
 def test_extract_market_value_glued_paren_explanation():
     """A $-less glued cell cannot anchor a synthetic grid row."""
     from edgar_sec.engine.forms.form144.sale_parser import _extract_market_value
