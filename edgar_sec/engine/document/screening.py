@@ -80,7 +80,13 @@ class CandidateScreen:
 _UNSET: object = object()
 
 
-def _screen_sgml_type(observed: str | None, expected_family: str) -> CandidateScreen:
+def _is_amendment_form(form: str) -> bool:
+    return form.strip().upper().endswith("/A")
+
+
+def _screen_sgml_type(
+    observed: str | None, expected_family: str, expected_form: str
+) -> CandidateScreen:
     if observed is None:
         return CandidateScreen(
             "unverifiable", False, "sgml_type", None, "sgml_type_unverifiable"
@@ -88,6 +94,14 @@ def _screen_sgml_type(observed: str | None, expected_family: str) -> CandidateSc
     observed_family = resolve_alias(observed) or observed.strip().upper()
     sgml_result = screen_sgml_document_type(observed_family, expected_family)
     if sgml_result == "form_match":
+        if _is_amendment_form(observed) != _is_amendment_form(expected_form):
+            return CandidateScreen(
+                "form_match",
+                False,
+                "sgml_type",
+                observed,
+                "sgml_type_amendment_flag_mismatch",
+            )
         return CandidateScreen(
             "form_match", False, "sgml_type", observed, "sgml_type_match"
         )
@@ -114,7 +128,7 @@ def screen_candidate_document(
 
     if observed_sgml_type is not _UNSET:
         str_val = observed_sgml_type if isinstance(observed_sgml_type, str) else None
-        return _screen_sgml_type(str_val, expected_family)
+        return _screen_sgml_type(str_val, expected_family, expected_form)
 
     if raw_content:
         head = raw_content[:scan_limit_bytes]
@@ -125,7 +139,7 @@ def screen_candidate_document(
         sgml_match = _SGML_TYPE_BYTES_RE.search(head[:2000])
         if sgml_match is not None:
             found_raw = sgml_match.group(1).decode("ascii", errors="ignore").strip()
-            sgml_screen = _screen_sgml_type(found_raw, expected_family)
+            sgml_screen = _screen_sgml_type(found_raw, expected_family, expected_form)
             if sgml_screen.screen_result in {"form_match", "type_mismatch"}:
                 return sgml_screen
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from dataclasses import replace
 
 from edgar_sec.domain.forms.families.ownership.models import (
@@ -8,7 +9,7 @@ from edgar_sec.domain.forms.families.ownership.models import (
     OwnershipMetadata,
     ReportingOwner,
 )
-from edgar_sec.engine.forms.common.dates import reported_year
+from edgar_sec.engine.forms.common.dates import parse_schema_date, reported_year
 from edgar_sec.engine.forms.common.entities import (
     BARE_BOX_NUM_RE,
     PAREN_BOX_NUM_RE,
@@ -39,7 +40,12 @@ from edgar_sec.engine.forms.ownership.reporting_owner_parser import (
 )
 from edgar_sec.engine.forms.ownership.relationship_box import parse_relationship_box
 from edgar_sec.engine.forms.ownership.sections import ClassifiedSection
-from edgar_sec.foundation.text.dates import MONTH_RE, NUMERIC_DATE_RE, RE_FULL_DATE
+from edgar_sec.foundation.text.dates import (
+    MONTH_RE,
+    NUMERIC_DATE_RE,
+    RE_FULL_DATE,
+    ParsedDate,
+)
 
 _METADATA_TABLE_MARKERS = ("table i", "table ii", "non-derivative")
 _OWNER_TEMPLATE_FIELDS = frozenset(
@@ -134,6 +140,43 @@ def _canonical_date(
     return normalized if normalized is not None else value
 
 
+_WORD_TOKEN_RE = re.compile(r"[A-Za-z]+")
+_LABEL_FURNITURE_WORDS = frozenset(
+    {"month", "day", "year", "date", "original", "amendment", "if"}
+)
+
+
+def _prose_residue_words(raw: str, parsed: ParsedDate) -> int:
+    residue = MONTH_RE.sub(" ", raw.replace(parsed.source, " ", 1))
+    return sum(
+        1
+        for token in _WORD_TOKEN_RE.findall(residue)
+        if any(char.islower() for char in token)
+        and token.lower() not in _LABEL_FURNITURE_WORDS
+    )
+
+
+def _is_prose_dated_line(raw: str | None, reference_year: int | None) -> bool:
+    """A date found inside a prose sentence is not a box value."""
+    if not raw:
+        return False
+    parsed = parse_schema_date(raw, reference_year, allow_month_year=True)
+    return parsed is not None and _prose_residue_words(raw, parsed) >= 3
+
+
+def _canonical_original_date(
+    value: str | None,
+    reference_year: int | None,
+) -> str | None:
+    if _is_prose_dated_line(value, reference_year):
+        return None
+    return _canonical_date(
+        value,
+        OWNERSHIP_METADATA_FIELDS["dateOfOriginalSubmission"],
+        reference_year,
+    )
+
+
 def _canonical_period(
     period: FilingPeriod,
     year: int | None,
@@ -146,11 +189,7 @@ def _canonical_period(
             OWNERSHIP_METADATA_FIELDS["periodOfReport"],
             year,
         ),
-        date_of_original=_canonical_date(
-            period.date_of_original,
-            OWNERSHIP_METADATA_FIELDS["dateOfOriginalSubmission"],
-            year,
-        ),
+        date_of_original=_canonical_original_date(period.date_of_original, year),
     )
 
 
@@ -357,10 +396,12 @@ def parse_metadata(
                     role_lines.append(role_text)
 
     period_cell = ""
+    parsed_candidates: list[tuple[str, FilingPeriod]] = []
     if period_candidates:
         period_cell = period_candidates[0][1]
         for _priority, cand in sorted(period_candidates, key=lambda pc: pc[0]):
-            parsed_cand = parse_period(cand)
+            parsed_candidates.append((cand, parse_period(cand)))
+        for cand, parsed_cand in parsed_candidates:
             if parsed_cand.period_of_report or parsed_cand.date_of_original:
                 period_cell = cand
                 break
@@ -387,7 +428,21 @@ def parse_metadata(
             ),
             irs_number=issuer.irs_number,
         )
-    period = parse_period(period_cell)
+    period = next(
+        (parsed for cand, parsed in parsed_candidates if cand == period_cell),
+        parse_period(period_cell),
+    )
+    if not period.is_amendment:
+        amendment = next(
+            (parsed for _cand, parsed in parsed_candidates if parsed.is_amendment),
+            None,
+        )
+        if amendment is not None:
+            period = FilingPeriod(
+                period_of_report=period.period_of_report or amendment.date_of_original,
+                is_amendment=True,
+                date_of_original=amendment.date_of_original,
+            )
 
     signature_name: str | None = None
     signature_date: str | None = None

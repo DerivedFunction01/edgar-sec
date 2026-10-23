@@ -74,6 +74,42 @@ def test_screen_sgml_identity_uses_form_family(
     assert observed.observed_body_type == raw.observed_body_type == observed_type
 
 
+@pytest.mark.parametrize(
+    ("expected_form", "observed_type"),
+    [("4", "4/A"), ("4/A", "4")],
+)
+def test_screen_sgml_amendment_flag_mismatch_reason(
+    expected_form: str, observed_type: str
+) -> None:
+    """A flag-only difference stays a match but surfaces its own reason."""
+    observed = screen_candidate_document(
+        expected_form, observed_sgml_type=observed_type
+    )
+    raw = screen_candidate_document(
+        expected_form,
+        raw_content=f"<DOCUMENT>\n<TYPE>{observed_type}\n<TEXT>\n".encode(),
+    )
+
+    for screen in (observed, raw):
+        assert screen.screen_result == "form_match"
+        assert not screen.is_inversion
+        assert screen.reason == "sgml_type_amendment_flag_mismatch"
+        assert screen.observed_body_type == observed_type
+
+
+@pytest.mark.parametrize(
+    ("expected_form", "observed_type"),
+    [("4", "4"), ("4/A", "4/A"), ("10-K", "10-K")],
+)
+def test_screen_sgml_same_flag_keeps_match_reason(
+    expected_form: str, observed_type: str
+) -> None:
+    screen = screen_candidate_document(expected_form, observed_sgml_type=observed_type)
+
+    assert screen.screen_result == "form_match"
+    assert screen.reason == "sgml_type_match"
+
+
 def test_screen_raw_content_sgml_competing_family() -> None:
     screen = screen_candidate_document(
         "4", raw_content=b"<DOCUMENT>\n<TYPE>8-K\n<TEXT>\n"

@@ -26,6 +26,7 @@ OWNERSHIP_METADATA_FIELDS: dict[str, FieldSpec] = {
     "dateOfOriginalSubmission": FieldSpec(
         "dateOfOriginalSubmission",
         FieldKind.DATE,
+        allow_month_year=True,
     ),
     "signatureName": FieldSpec("signatureName", FieldKind.TEXT),
     "signatureDate": FieldSpec("signatureDate", FieldKind.DATE),

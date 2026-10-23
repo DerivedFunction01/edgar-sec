@@ -42,6 +42,80 @@ def test_parse_metadata_extracts_owner_and_issuer() -> None:
     assert meta.signature_date == "2001-07-03"
 
 
+def test_parse_metadata_merges_amendment_from_a_separate_cell() -> None:
+    html = """<html><body><table><tr>
+      <td>1. Name and Address of Reporting Person Jane Doe</td>
+      <td>2. Issuer Name and Ticker or Trading Symbol\nAcme Corp ACM</td>
+      <td>4. Statement for (Month/Day/Year)\nOctober 10, 2002</td>
+      <td>5. If Amendment, Date of Original (Month/Day/Year)\nOctober 17, 2002</td>
+    </tr></table></body></html>"""
+    sections = partition_ownership_tables(html)
+    meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
+
+    assert meta.period.period_of_report == "2002-10-10"
+    assert meta.period.is_amendment is True
+    assert meta.period.date_of_original == "2002-10-17"
+
+
+def test_parse_metadata_normalizes_a_month_year_amendment_date() -> None:
+    html = """<html><body><table><tr>
+      <td>1. Name and Address of Reporting Person Jane Doe</td>
+      <td>2. Issuer Name and Ticker or Trading Symbol\nAcme Corp ACM</td>
+      <td>4. Statement for (Month/Year)\nJune 2001</td>
+      <td>5. If Amendment, Date of Original (Month/Year)\nDecember 2000</td>
+    </tr></table></body></html>"""
+    sections = partition_ownership_tables(html)
+    meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
+
+    assert meta.period.period_of_report == "2001-06-01"
+    assert meta.period.is_amendment is True
+    assert meta.period.date_of_original == "2000-12-01"
+
+
+def test_parse_metadata_rejects_a_prose_line_as_an_amendment_date() -> None:
+    footnote = (
+        "The option vests and becomes exercisable at the rate of 20% per year; "
+        "the first increment became exercisable on 3/24/98."
+    )
+    html = f"""<html><body><table><tr>
+      <td>1. Name and Address of Reporting Person Jane Doe</td>
+      <td>2. Issuer Name and Ticker or Trading Symbol\nAcme Corp ACM</td>
+      <td>4. Statement for (Month/Day/Year)\nFebruary 27, 2001</td>
+      <td>5. If Amendment, Date of Original (Month/Day/Year)\n{footnote}</td>
+    </tr></table></body></html>"""
+    sections = partition_ownership_tables(html)
+    meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
+
+    assert meta.period.period_of_report == "2001-02-27"
+    assert meta.period.date_of_original is None
+
+
+def test_parse_metadata_keeps_an_amendment_date_with_a_glued_format_hint() -> None:
+    html = """<html><body><table><tr>
+      <td>1. Name and Address of Reporting Person Jane Doe</td>
+      <td>2. Issuer Name and Ticker or Trading Symbol\nAcme Corp ACM</td>
+      <td>4. Statement for (Month/Day/Year)\nOctober 9, 2002</td>
+      <td>5. If Amendment, Date of Original (Month/Day/Year) 10/02/2002</td>
+    </tr></table></body></html>"""
+    sections = partition_ownership_tables(html)
+    meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
+
+    assert meta.period.is_amendment is True
+    assert meta.period.date_of_original == "2002-10-02"
+
+
+def test_parse_metadata_rejects_a_prose_month_year_amendment_date() -> None:
+    html = """<html><body><table><tr>
+      <td>1. Name and Address of Reporting Person Jane Doe</td>
+      <td>2. Issuer Name and Ticker or Trading Symbol\nAcme Corp ACM</td>
+      <td>4. Statement for (Month/Year)\nJune 2001\n5. If Amendment, Date of Original (Month/Year)\nThis amendment covers filings from June 2002 through January 2003</td>
+    </tr></table></body></html>"""
+    sections = partition_ownership_tables(html)
+    meta = parse_metadata(sections.boxes_1_to_7, sections.signatures)
+
+    assert meta.period.date_of_original is None
+
+
 def test_parse_metadata_associates_font_checkbox_with_adjacent_role_cell() -> None:
     html = """<html><body><table><tr>
       <td>1. Name and Address of Reporting Person Jane Doe</td>
