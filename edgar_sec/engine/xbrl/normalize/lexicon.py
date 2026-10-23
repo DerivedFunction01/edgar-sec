@@ -122,6 +122,19 @@ class LexiconEntry:
 
 
 @dataclass(frozen=True, slots=True)
+class EvidenceContext:
+    """Per-decomposition evidence satisfaction for one (accession, qname)."""
+
+    accession: str
+    qname: str
+    satisfied: bool = False
+
+    def allows(self, entry: LexiconEntry) -> bool:
+        """True when this context satisfies the entry's evidence gate."""
+        return self.satisfied
+
+
+@dataclass(frozen=True, slots=True)
 class LexiconMatch:
     """A contiguous matched segment within a sequence of tokens."""
 
@@ -165,11 +178,13 @@ class TokenLexicon:
         entries = tuple(LexiconEntry.from_dict(item) for item in data)
         return cls(entries)
 
-    def candidates(self, tokens: tuple[str, ...]) -> list[LexiconMatch]:
+    def candidates(
+        self, tokens: tuple[str, ...], evidence: EvidenceContext | None = None
+    ) -> list[LexiconMatch]:
         """Every claim whose phrase matches, overlaps preserved (RR1 pool).
 
         Scope conditions must be met by the following token.
-        Evidence-gated claims are never candidates (Q6 slot).
+        Evidence-gated claims fire only under a satisfied context.
         """
         lower_tokens = tuple(t.lower() for t in tokens)
         found: list[tuple[int, LexiconMatch]] = []
@@ -182,7 +197,9 @@ class TokenLexicon:
                 if not alternatives:
                     continue
                 for entry in alternatives:
-                    if entry.requires_evidence:
+                    if entry.requires_evidence and not (
+                        evidence is not None and evidence.allows(entry)
+                    ):
                         continue
                     if entry.scope_next:
                         following = (
@@ -205,13 +222,14 @@ class TokenLexicon:
         self,
         tokens: tuple[str, ...],
         candidates: list[LexiconMatch] | None = None,
+        evidence: EvidenceContext | None = None,
     ) -> tuple[list[LexiconMatch], list[str]]:
         """Select the non-crossing cover: v1's greedy longest-at-position (RR1).
 
         Same-span ties go to the scope-conditioned claimant, then
         file order — the cover is the parity floor for v2 deltas.
         """
-        pool = self.candidates(tokens) if candidates is None else candidates
+        pool = self.candidates(tokens, evidence) if candidates is None else candidates
         by_start: dict[int, list[LexiconMatch]] = {}
         for match in pool:
             by_start.setdefault(match.start, []).append(match)
@@ -234,7 +252,7 @@ class TokenLexicon:
         return cover, residuals
 
     def scan_tokens(
-        self, tokens: tuple[str, ...]
+        self, tokens: tuple[str, ...], evidence: EvidenceContext | None = None
     ) -> tuple[list[LexiconMatch], list[str]]:
         """The selected cover and the tokens it leaves uncovered."""
-        return self.select_cover(tokens)
+        return self.select_cover(tokens, evidence=evidence)

@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from edgar_sec.engine.xbrl.normalize.decomposer import residual_counts
+from edgar_sec.engine.xbrl.normalize.lexicon import EvidenceContext
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration
@@ -118,9 +119,11 @@ class ConceptTable:
         """Effective declaration for a qname: extension first, table underneath."""
         return declaration_for(qname, self._item_types, self._declarations)
 
-    def tokenize(self, qname: str) -> TokenizedFact:
+    def tokenize(
+        self, qname: str, evidence: EvidenceContext | None = None
+    ) -> TokenizedFact:
         """Tokenize a qname with the table's effective declaration for it."""
-        return self._tokenizer.tokenize(qname, self.declaration(qname))
+        return self._tokenizer.tokenize(qname, self.declaration(qname), evidence)
 
 
 def build_concept_table(

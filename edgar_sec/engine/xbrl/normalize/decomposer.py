@@ -11,7 +11,11 @@ from edgar_sec.engine.xbrl.taxonomy.item_types import (
     TextCoordinateRule,
     item_type_local,
 )
-from edgar_sec.engine.xbrl.normalize.lexicon import LexiconMatch, TokenLexicon
+from edgar_sec.engine.xbrl.normalize.lexicon import (
+    EvidenceContext,
+    LexiconMatch,
+    TokenLexicon,
+)
 from edgar_sec.engine.xbrl.normalize.numbers import (
     collapse_number_phrases,
     number_indexicals,
@@ -56,10 +60,11 @@ def decompose_concept(
     lexicon: TokenLexicon,
     declaration: ConceptDeclaration | None = None,
     text_rule: TextCoordinateRule | None = None,
+    evidence: EvidenceContext | None = None,
 ) -> tuple[Atom, tuple[str, ...], float, tuple[str, ...]]:
     """Decompose an XBRL concept QName into an Atom coordinate, residuals, and frame."""
     expression = decompose_concept_expression(
-        concept_qname, lexicon, declaration, text_rule
+        concept_qname, lexicon, declaration, text_rule, evidence
     )
     return (
         expression.atom,
@@ -165,12 +170,13 @@ def decompose_concept_expression(
     lexicon: TokenLexicon,
     declaration: ConceptDeclaration | None = None,
     text_rule: TextCoordinateRule | None = None,
+    evidence: EvidenceContext | None = None,
 ) -> ConceptExpression:
     """Preserve binary NET_OF operand atoms while deriving the query coordinate."""
     local_name = concept_qname.split(":")[-1] if ":" in concept_qname else concept_qname
     raw_tokens = split_camel_case(local_name)
     tokens, number_values, ordinal_values = collapse_number_phrases(raw_tokens)
-    cover, _ = lexicon.select_cover(tokens)
+    cover, _ = lexicon.select_cover(tokens, evidence=evidence)
     operators = [
         match
         for match in cover
@@ -204,6 +210,7 @@ def decompose_concept_expression(
             number_indexicals(left_tokens, left_values, left_ordinals),
             left_values,
             left_ordinals,
+            evidence,
         )
         right_values = {
             i - operator.end: v for i, v in number_values.items() if i >= operator.end
@@ -221,7 +228,7 @@ def decompose_concept_expression(
             right_temporal,
             right_matches,
         ) = _decompose_flat_tokens(
-            tokens[operator.end :], lexicon, (), right_values, right_ordinals
+            tokens[operator.end :], lexicon, (), right_values, right_ordinals, evidence
         )
         operator_atom = (
             operator.entry.projection[0] if operator.entry.projection else "V_NET"
@@ -258,6 +265,7 @@ def decompose_concept_expression(
             number_indexicals(tokens, number_values, ordinal_values),
             number_values,
             ordinal_values,
+            evidence,
         )
     )
     atom = _with_text_coordinate(atom, declaration, text_rule)
@@ -312,14 +320,16 @@ def _admit_coexisting(
 
 
 def _resolve_matches(
-    tokens: tuple[str, ...], lexicon: TokenLexicon
+    tokens: tuple[str, ...],
+    lexicon: TokenLexicon,
+    evidence: EvidenceContext | None = None,
 ) -> tuple[list[LexiconMatch], list[str]]:
     """Resolve candidates to the attributing match list, in span order.
 
     The cover comes first at any shared start; admitted coexistence
     claims follow their cover partners.
     """
-    candidates = lexicon.candidates(tokens)
+    candidates = lexicon.candidates(tokens, evidence)
     cover, residuals = lexicon.select_cover(tokens, candidates)
     admitted = _admit_coexisting(candidates, cover)
     if not admitted:
@@ -404,6 +414,7 @@ def _decompose_flat_tokens(
     num_indexicals: tuple[str, ...] = (),
     number_values: dict[int, int] | None = None,
     ordinal_values: dict[int, int] | None = None,
+    evidence: EvidenceContext | None = None,
 ) -> tuple[
     Atom,
     tuple[str, ...],
@@ -414,7 +425,7 @@ def _decompose_flat_tokens(
     TemporalInterval | None,
     tuple[LexiconMatch, ...],
 ]:
-    matches, residuals = _resolve_matches(tokens, lexicon)
+    matches, residuals = _resolve_matches(tokens, lexicon, evidence)
     temporal = extract_temporal(tokens, number_values or {}, ordinal_values or {})
     derived = derive_horizon(temporal)
 

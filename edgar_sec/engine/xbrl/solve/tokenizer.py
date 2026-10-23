@@ -9,7 +9,7 @@ from edgar_sec.engine.xbrl.normalize.decomposer import (
     decompose_concept_expression,
     residual_counts,
 )
-from edgar_sec.engine.xbrl.normalize.lexicon import LexiconMatch
+from edgar_sec.engine.xbrl.normalize.lexicon import EvidenceContext, LexiconMatch
 from edgar_sec.engine.xbrl.normalize.temporal import TemporalInterval
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration
@@ -52,7 +52,10 @@ class ConceptTokenizer:
         self._text_rule = text_coordinate_rule(taxonomy)
 
     def tokenize(
-        self, qname: str, declaration: ConceptDeclaration | None = None
+        self,
+        qname: str,
+        declaration: ConceptDeclaration | None = None,
+        evidence: EvidenceContext | None = None,
     ) -> TokenizedFact:
         """Decompose a concept qname into its full tokenized record.
 
@@ -62,7 +65,7 @@ class ConceptTokenizer:
         lexicon = self._taxonomy.token_lexicon
         assert lexicon is not None
         expression = decompose_concept_expression(
-            qname, lexicon, declaration, self._text_rule
+            qname, lexicon, declaration, self._text_rule, evidence
         )
         presumed = presumed_atom(
             expression.atom,

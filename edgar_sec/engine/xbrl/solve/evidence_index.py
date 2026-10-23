@@ -16,6 +16,7 @@ from types import MappingProxyType
 
 import pyarrow.parquet as pq
 
+from edgar_sec.engine.xbrl.normalize.lexicon import EvidenceContext
 from edgar_sec.engine.xbrl.solve.cohort_scan import plan_cohort_scan
 from edgar_sec.engine.xbrl.solve.concept_table import CohortEntry, ConceptTable
 from edgar_sec.foundation.hashing import file_sha256, sha256_text
@@ -125,6 +126,12 @@ class FilingEvidenceRecord:
         """One concept's evidence, or None when the filing is silent on it."""
         return self.concepts.get(qname)
 
+    def evidence_context(self, qname: str) -> EvidenceContext:
+        """The decomposition context for one qname under this filing."""
+        entry = self.concepts.get(qname)
+        satisfied = entry is not None and entry.attested_placed
+        return EvidenceContext(self.accession, qname, satisfied)
+
     def to_dict(self) -> dict:
         """Serialize header plus entries, qname-ordered, for canonical JSON."""
         return {
@@ -168,6 +175,13 @@ class EvidenceIndex:
         """One (accession, qname) evidence entry, or None when silent."""
         record = self._records.get(accession)
         return record.entry(qname) if record is not None else None
+
+    def evidence_context(self, accession: str, qname: str) -> EvidenceContext:
+        """The decomposition context keyed by exactly (accession, qname)."""
+        record = self._records.get(accession)
+        if record is None:
+            return EvidenceContext(accession, qname, False)
+        return record.evidence_context(qname)
 
 
 def _read_rows(path: Path, columns: list[str]) -> list[dict]:
