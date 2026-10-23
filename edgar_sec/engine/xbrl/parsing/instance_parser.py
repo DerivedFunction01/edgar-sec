@@ -55,9 +55,15 @@ def _extract_contexts(root: ET.Element) -> dict[str, _ParsedContext]:
                 for e_child in child:
                     if strip_namespace(e_child.tag) in ("segment", "scenario"):
                         for m in e_child:
-                            if strip_namespace(m.tag) == "explicitMember":
+                            mtag = strip_namespace(m.tag)
+                            if mtag == "explicitMember":
                                 dim = m.attrib.get("dimension", "")
                                 val = (m.text or "").strip()
+                                if dim and val:
+                                    dims[dim] = val
+                            elif mtag == "typedMember":
+                                dim = m.attrib.get("dimension", "")
+                                val = "".join(m.itertext()).strip()
                                 if dim and val:
                                     dims[dim] = val
 
