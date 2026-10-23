@@ -15,6 +15,7 @@ from edgar_sec.engine.xbrl.review.benchmark import (
     score_census,
     summarize_census,
 )
+from edgar_sec.engine.xbrl.review.chains import CHAIN_SET
 from edgar_sec.engine.xbrl.discovery.cohort import load_seed_cohort
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
@@ -110,6 +111,29 @@ def test_pair_set_entries_carry_provenance() -> None:
             assert spec.source_firm and spec.candidate_firm
         else:
             assert spec.tier in {"exact", "near", "unrelated"}
+
+
+def test_chain_set_entries_carry_provenance() -> None:
+    """Every seeded chain names its specimen; expectations are well-formed."""
+    labels = [spec.label for spec in CHAIN_SET]
+    assert len(labels) == len(set(labels))
+    statuses = {
+        "VERIFIED",
+        "REPORTED",
+        "CONFLICT",
+        "DERIVED",
+        "AMBIGUOUS",
+        "UNAVAILABLE",
+    }
+    rungs = {"name", "derived", "filing_local", "default", "gated_claim"}
+    for spec in CHAIN_SET:
+        assert spec.provenance
+        assert spec.mediated_term in {term for _, term in spec.terms}
+        assert spec.on_status in statuses and spec.off_status in statuses
+        assert spec.on_provenance in rungs and spec.off_provenance in rungs
+        if spec.on_provenance in ("filing_local", "gated_claim"):
+            assert spec.on_provenance != spec.off_provenance
+            assert spec.on_status == spec.off_status
 
 
 @pytest.fixture()

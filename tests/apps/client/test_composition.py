@@ -1,20 +1,59 @@
 """Tests pinning composed-chain semantics: status, veto, compatibility."""
 
+from datetime import date
+from pathlib import Path
+
+import pyarrow as pa
+import pyarrow.parquet as pq
+import pytest
+
 from edgar_sec.apps.client.comparison import compare_compositions
-from edgar_sec.apps.client.composition import resolve_operand
+from edgar_sec.apps.client.composition import (
+    STATUS_ORDER,
+    evaluate_chain,
+    resolve_operand,
+)
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
+from edgar_sec.engine.xbrl.review.chains import CHAIN_SET, ChainSpec
 from edgar_sec.engine.xbrl.schema.atoms import Atom
-from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle, XbrlFact
-from edgar_sec.engine.xbrl.solve.equivalence import RankedEquivalent
+from edgar_sec.engine.xbrl.schema.models import (
+    CalculationArc,
+    FilingXbrl,
+    LinkbaseBundle,
+    XbrlFact,
+)
+from edgar_sec.engine.xbrl.solve.concept_table import (
+    CohortEntry,
+    ConceptTable,
+    build_cohort_table,
+    build_concept_table,
+)
+from edgar_sec.engine.xbrl.solve.equivalence import (
+    UNRELATED,
+    RankedEquivalent,
+    classify_ladder_pair,
+    classify_pair,
+)
+from edgar_sec.engine.xbrl.solve.evidence_index import (
+    ConceptEvidence,
+    FilingEvidenceRecord,
+    build_evidence_index,
+    build_filing_evidence,
+)
 from edgar_sec.engine.xbrl.solve.query import (
     FinancialQuery,
     FinancialQueryResult,
     QueryStatus,
 )
 from edgar_sec.engine.xbrl.solve.scoping import FactScope
+from edgar_sec.engine.xbrl.storage.storage import write_facts_parquet
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
-from tests.engine.xbrl.solve.conftest import load_seed_calculation_arcs, load_seed_facts
+from tests.engine.xbrl.solve.conftest import (
+    load_seed_calculation_arcs,
+    load_seed_cohort,
+    load_seed_facts,
+)
 
 _FCF_TERMS = (
     ("+", "cfo"),
@@ -174,6 +213,326 @@ def test_resolve_operand_stated_provenance_wins_over_markers() -> None:
     operand = resolve_operand(lambda term: result, "+", "x")
     assert operand.provenance == "gated_claim"
     assert operand.status == QueryStatus.REPORTED
+
+
+def _pick_fact(facts: tuple[XbrlFact, ...], qname: str) -> XbrlFact | None:
+    """The qname's deduped headline fact: latest period, longest span."""
+    seen: dict[tuple, XbrlFact] = {}
+    for fact in facts:
+        if fact.concept_qname != qname or fact.dimensions:
+            continue
+        if not isinstance(fact.value, (int, float)):
+            continue
+        key = (
+            fact.value,
+            fact.unit,
+            fact.period_type,
+            fact.start_date,
+            fact.end_date,
+            fact.instant_date,
+        )
+        seen[key] = fact
+    if not seen:
+        return None
+
+    def rank(fact: XbrlFact) -> tuple[str, int]:
+        end = fact.end_date or fact.instant_date or ""
+        span = 0
+        if fact.start_date and fact.end_date:
+            span = (
+                date.fromisoformat(fact.end_date) - date.fromisoformat(fact.start_date)
+            ).days
+        return end, span
+
+    return max(seen.values(), key=rank)
+
+
+def _ladder_resolver(
+    facts: tuple[XbrlFact, ...],
+    table: ConceptTable,
+    record: FilingEvidenceRecord | None,
+    evidence_on: bool,
+):
+    """Resolve terms over one filing's facts through the presumption ladder."""
+    taxonomy = table.taxonomy
+    groups = tuple(taxonomy.sibling_groups) or None
+    qnames = sorted({f.concept_qname for f in facts if f.concept_qname in table})
+
+    def resolve(term: str) -> FinancialQueryResult:
+        target = table.tokenize(term)
+        ranked = []
+        for qname in qnames:
+            candidate = table.record(qname)
+            target_place = candidate_place = None
+            if evidence_on and record is not None:
+                entry = record.entry(term)
+                target_place = entry.placement_horizon if entry else None
+                entry = record.entry(qname)
+                candidate_place = entry.placement_horizon if entry else None
+            result = classify_ladder_pair(
+                target.atom,
+                candidate.atom,
+                taxonomy.default_coordinates,
+                groups,
+                target_derived_horizon=target.derived_horizon,
+                candidate_derived_horizon=candidate.derived_horizon,
+                target_placement_horizon=target_place,
+                candidate_placement_horizon=candidate_place,
+            )
+            if result.tier == UNRELATED:
+                continue
+            if result.via_filing_local:
+                rung = "filing_local"
+            elif result.via_default:
+                rung = "default"
+            elif classify_pair(target.atom, candidate.atom) == UNRELATED:
+                rung = "derived"
+            else:
+                rung = "name"
+            key = (
+                0 if result.tier == "exact" else 1,
+                2 if result.via_default else 1 if result.via_filing_local else 0,
+                result.modifier_distance,
+                qname,
+            )
+            ranked.append((key, qname, rung))
+        query = FinancialQuery(
+            term=term,
+            scope=FactScope(accession=record.accession if record else ""),
+        )
+        if not ranked:
+            return FinancialQueryResult(
+                query, QueryStatus.UNAVAILABLE, target_atom=target.atom
+            )
+        ranked.sort(key=lambda item: item[0])
+        best = ranked[0][0]
+        self_hit = [
+            item
+            for item in ranked
+            if item[1] == term and item[0][0] == best[0] and item[0][2] == best[2]
+        ]
+        _, chosen, rung = self_hit[0] if self_hit else ranked[0]
+        fact = _pick_fact(facts, chosen)
+        if fact is None:
+            return FinancialQueryResult(
+                query, QueryStatus.UNAVAILABLE, target_atom=target.atom
+            )
+        return FinancialQueryResult(
+            query,
+            QueryStatus.REPORTED,
+            candidate_qnames=(chosen,),
+            reported_fact=fact,
+            target_atom=target.atom,
+            provenance=rung,
+        )
+
+    return resolve
+
+
+def _gated_resolver(
+    facts: tuple[XbrlFact, ...],
+    table: ConceptTable,
+    record: FilingEvidenceRecord | None,
+    evidence_on: bool,
+):
+    """Resolve terms over one filing's facts through per-filing tokenization."""
+    qnames = sorted({f.concept_qname for f in facts})
+
+    def tokenized(qname: str):
+        if evidence_on and record is not None:
+            return table.tokenize(qname, evidence=record.evidence_context(qname))
+        return table.tokenize(qname)
+
+    def resolve(term: str) -> FinancialQueryResult:
+        target = tokenized(term)
+        ranked = []
+        for qname in qnames:
+            candidate = tokenized(qname)
+            tier = classify_pair(target.atom, candidate.atom)
+            if tier == UNRELATED:
+                continue
+            gated = any(match.entry.requires_evidence for match in candidate.matches)
+            key = (
+                0 if tier == "exact" else 1,
+                len(target.atom.modifiers ^ candidate.atom.modifiers),
+                qname,
+            )
+            ranked.append((key, qname, gated))
+        query = FinancialQuery(
+            term=term,
+            scope=FactScope(accession=record.accession if record else ""),
+        )
+        if not ranked:
+            return FinancialQueryResult(
+                query, QueryStatus.UNAVAILABLE, target_atom=target.atom
+            )
+        ranked.sort(key=lambda item: item[0])
+        best = ranked[0][0]
+        self_hit = [
+            item
+            for item in ranked
+            if item[1] == term and item[0][0] == best[0] and item[0][1] == best[1]
+        ]
+        _, chosen, gated = self_hit[0] if self_hit else ranked[0]
+        fact = _pick_fact(facts, chosen)
+        if fact is None:
+            return FinancialQueryResult(
+                query, QueryStatus.UNAVAILABLE, target_atom=target.atom
+            )
+        return FinancialQueryResult(
+            query,
+            QueryStatus.REPORTED,
+            candidate_qnames=(chosen,),
+            reported_fact=fact,
+            target_atom=target.atom,
+            provenance="gated_claim" if (evidence_on and gated) else "name",
+        )
+
+    return resolve
+
+
+_FIXTURE_TOTALS = {
+    "BBB": "us-gaap:LiabilitiesCurrent",
+    "CCC": "us-gaap:LiabilitiesNoncurrent",
+}
+_FIXTURE_ROLE = "http://example.com/role/BALANCESHEET"
+
+
+def _fixture_chain_inputs(tmp_path: Path, firm: str):
+    """The WS3a ladder fixture filing: bare payables under one horizon total."""
+    total = _FIXTURE_TOTALS[firm]
+    accession = "0000000002-24-000002" if firm == "BBB" else "0000000003-24-000003"
+    facts = (
+        XbrlFact(
+            accession=AccessionNumber.from_any(accession),
+            concept_qname="us-gaap:AccountsPayable",
+            value=100.0,
+            unit="USD",
+            period_type="instant",
+            instant_date="2024-12-31",
+        ),
+        XbrlFact(
+            accession=AccessionNumber.from_any(accession),
+            concept_qname="us-gaap:CashAndCashEquivalentsAtCarryingValue",
+            value=500.0,
+            unit="USD",
+            period_type="instant",
+            instant_date="2024-12-31",
+        ),
+    )
+    facts_path = tmp_path / firm.lower() / "facts.parquet"
+    write_facts_parquet(list(facts), facts_path)
+    pq.write_table(
+        pa.Table.from_pylist(
+            [
+                {
+                    "parent_qname": total,
+                    "child_qname": "us-gaap:AccountsPayable",
+                    "weight": 1.0,
+                    "order": 1.0,
+                    "role_uri": _FIXTURE_ROLE,
+                }
+            ]
+        ),
+        facts_path.parent / "calculation_arcs.parquet",
+    )
+    entry = CohortEntry(accession=accession, facts_path=facts_path, firm=firm)
+    taxonomy = load_domain_taxonomy()
+    table = build_concept_table(
+        taxonomy, sorted({fact.concept_qname for fact in facts} | {total})
+    )
+    record = build_filing_evidence(entry, table)
+    arcs = (CalculationArc(total, "us-gaap:AccountsPayable", 1.0, 1.0, _FIXTURE_ROLE),)
+    return facts, table, record, arcs
+
+
+@pytest.fixture(scope="module")
+def seed_chain_context():
+    """Seed cohort table plus evidence index, built once for chain pins."""
+    entries = load_seed_cohort()
+    table = build_cohort_table(load_domain_taxonomy(), entries)
+    index = build_evidence_index(entries, table)
+    yield entries, table, index
+
+
+def _run_spec(spec: ChainSpec, seed_chain_context, tmp_path: Path, evidence_on: bool):
+    """Evaluate one benchmark chain in one evidence mode."""
+    if spec.cohort == "seed":
+        entries, table, index = seed_chain_context
+        entry = next(item for item in entries if item.firm == spec.firm)
+        folder = entry.facts_path.parent.name
+        facts = load_seed_facts(folder)
+        arcs = load_seed_calculation_arcs(folder)
+        record = index.record(entry.accession)
+    else:
+        facts, table, record, arcs = _fixture_chain_inputs(tmp_path, spec.firm)
+    resolver_factory = _gated_resolver if spec.resolver == "gated" else _ladder_resolver
+    resolver = resolver_factory(facts, table, record, evidence_on)
+    return evaluate_chain(resolver, spec.terms, arcs), record
+
+
+def _mediated(result, spec: ChainSpec):
+    """The operand resolution for the spec's mediated term."""
+    return next(op for op in result.operands if op.term == spec.mediated_term)
+
+
+def test_benchmark_chains_hold_with_evidence_on_and_off(
+    seed_chain_context, tmp_path: Path
+) -> None:
+    """Verify every benchmark chain: propagation, fact inputs, no upgrade."""
+    for spec in CHAIN_SET:
+        on, record = _run_spec(spec, seed_chain_context, tmp_path, True)
+        off, _ = _run_spec(spec, seed_chain_context, tmp_path, False)
+        for result, concept, rung, status, unit, period_key, value in (
+            (
+                on,
+                spec.on_concept,
+                spec.on_provenance,
+                spec.on_status,
+                spec.on_unit,
+                spec.on_period_key,
+                spec.on_value,
+            ),
+            (
+                off,
+                spec.off_concept,
+                spec.off_provenance,
+                spec.off_status,
+                spec.off_unit,
+                spec.off_period_key,
+                spec.off_value,
+            ),
+        ):
+            operand = _mediated(result, spec)
+            assert operand.concept_qname == concept, spec.label
+            assert operand.provenance == rung, spec.label
+            assert operand.status == QueryStatus[status], spec.label
+            assert operand.unit == unit, spec.label
+            assert operand.period_key == period_key, spec.label
+            assert result.value == value, spec.label
+            worst = max((op.status for op in result.operands), key=STATUS_ORDER.index)
+            assert result.status == worst, spec.label
+        on_operand = _mediated(on, spec)
+        off_operand = _mediated(off, spec)
+        for on_op, off_op in zip(on.operands, off.operands, strict=True):
+            assert STATUS_ORDER.index(on_op.status) >= STATUS_ORDER.index(
+                off_op.status
+            ), spec.label
+        if spec.on_provenance in ("filing_local", "gated_claim"):
+            assert on_operand.status == off_operand.status, spec.label
+            assert on_operand.provenance != off_operand.provenance, spec.label
+        if spec.cohort == "seed" and record is not None:
+            assert record.entry(spec.mediated_term) is not None, spec.label
+
+
+def test_evidence_records_carry_no_values_or_units() -> None:
+    """Verify evidence records cannot supply unit/period/value inputs."""
+    fields = set(ConceptEvidence.__dataclass_fields__)
+    assert "value" not in fields
+    assert "unit" not in fields
+    assert "instant_date" not in fields
+    assert "start_date" not in fields
+    assert "end_date" not in fields
 
 
 def test_compare_compositions_cohort_form() -> None:
