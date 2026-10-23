@@ -32,8 +32,24 @@ from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import parse_date
 
 _SPLIT_EXPLANATION_RE = re.compile(
-    r"\s+(?:as of|based on|\(based|\(as of)\b", flags=re.IGNORECASE
+    r"(?:\s+(?:as of|based on)\b|(?:\s+|(?<=\d))\((?:based on|as of)\b)",
+    flags=re.IGNORECASE,
 )
+_CURRENCY_CODE_ALT = build_alternation(
+    tuple(re.escape(code) for code in ("U.S.$", "US $", "US$", "USD"))
+)
+_CURRENCY_CODE_PREFIX_RE = re.compile(rf"^(?:{_CURRENCY_CODE_ALT})\s*", re.I)
+_APPROX_TILDE_RE = re.compile(r"^~+\s*")
+_TRAILING_COMMA_RE = re.compile(r",\s*$")
+
+
+def _preclean_money(primary: str) -> str:
+    """Strip approximation tildes and currency-code prefixes."""
+    text = _APPROX_TILDE_RE.sub("", primary.strip())
+    text = _CURRENCY_CODE_PREFIX_RE.sub("", text)
+    return _APPROX_TILDE_RE.sub("", text).strip()
+
+
 _FOOTNOTE_SUFFIX_RE = re.compile(r"\s*\(\d{1,2}\)\s*$")
 _QUANTITY_PREFIX_ALT = build_alternation(
     ("up to", "approximately", "approximate", "approx", "about")
@@ -158,7 +174,8 @@ def _extract_leading_number(text: str) -> tuple[int | str | None, bool]:
         return None, False
     has_curr = any(s in cleaned for s in ALL_CURRENCY_SYMBOLS)
     primary = _SPLIT_EXPLANATION_RE.split(cleaned)[0].strip()
-    primary = _QUANTITY_PREFIX_RE.sub("", primary)
+    primary = _QUANTITY_PREFIX_RE.sub("", _preclean_money(primary))
+    primary = _TRAILING_COMMA_RE.sub("", primary)
     num = _normalize_number(primary, currency=has_curr)
     if num is None and "\n" in primary:
         first_line = _QUANTITY_PREFIX_RE.sub("", primary.splitlines()[0].strip())
@@ -179,6 +196,7 @@ def _extract_market_value(text: str) -> str | None:
         return None
     primary = _SPLIT_EXPLANATION_RE.split(cleaned)[0].strip()
     primary = _QUANTITY_PREFIX_RE.sub("", _FOOTNOTE_SUFFIX_RE.sub("", primary))
+    primary = _TRAILING_COMMA_RE.sub("", _preclean_money(primary))
     value = _normalize_number(primary.strip(), currency=True)
     if value is None and "\n" in primary:
         first_line = _FOOTNOTE_SUFFIX_RE.sub("", primary.splitlines()[0].strip())

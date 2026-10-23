@@ -105,6 +105,40 @@ def test_parse_box_three_magnitude_market_values():
         assert proposed.aggregate_market_value == expected, cell
 
 
+def test_parse_box_three_prefix_comma_and_glued_explanation_values():
+    def render(amv_cell: str) -> str:
+        return f"""
+        <table>
+          <tr><td>3 (a) Title of the Class</td>
+              <td>(b) Name and Address of Each Broker</td>
+              <td>(c) Number of Shares To Be Sold</td>
+              <td>(d) Aggregate Market Value</td><td>(e) Outstanding</td>
+              <td>(f) Approx Date</td><td>(g) Exchange</td></tr>
+          <tr><td>Common Stock</td>
+              <td>E-Trade 1675 Broadway, Denver, CO 80202</td>
+              <td>6,025</td><td>{amv_cell}</td><td>148,762,548</td>
+              <td>05/10/2013</td><td>NYSE</td></tr>
+        </table>
+        """
+
+    for cell, expected in (
+        ("US$647,274.30", "647274.30"),
+        ("~$2,800,000", "2800000"),
+        ("$1,882,276, based on closing price on 1/28/09", "1882276"),
+    ):
+        sections = partition_form144_tables(render(cell))
+        proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3)
+        assert proposed.aggregate_market_value == expected, cell
+
+
+def test_extract_market_value_glued_paren_explanation():
+    """A $-less glued cell cannot anchor a synthetic grid row."""
+    from edgar_sec.engine.forms.form144.sale_parser import _extract_market_value
+
+    cell = "723,000(based on 7/12/06\nmarket close)"
+    assert _extract_market_value(cell) == "723000"
+
+
 def test_parse_box_three_data_row_with_quantity_prefix_and_nodate():
     html = """
     <table>
