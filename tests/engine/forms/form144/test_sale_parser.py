@@ -50,6 +50,35 @@ def test_parse_box_three_values_with_glued_asof_dates():
     assert proposed.approx_sale_date == "2013-05-10"
 
 
+def test_parse_box_three_values_with_explanation_suffixes():
+    def render(amv_cell: str) -> str:
+        return f"""
+        <table>
+          <tr><td>3 (a) Title of the Class</td>
+              <td>(b) Name and Address of Each Broker</td>
+              <td>(c) Number of Shares To Be Sold</td>
+              <td>(d) Aggregate Market Value</td><td>(e) Outstanding</td>
+              <td>(f) Approx Date</td><td>(g) Exchange</td></tr>
+          <tr><td>Common Stock</td>
+              <td>E-Trade 1675 Broadway, Denver, CO 80202</td>
+              <td>6,025</td><td>{amv_cell}</td><td>148,762,548</td>
+              <td>05/10/2013</td><td>NYSE</td></tr>
+        </table>
+        """
+
+    for cell, expected in (
+        ("$680,000 (as of 11/6/14)", "680000"),
+        ("$896,670 (based on closing price on 12/02/2007)", "896670"),
+        ("$47,650 as of 06/19/2019 based on the closing price", "47650"),
+        ("$2,873,600 (2)", "2873600"),
+        ("*$875,408.10", "875408.10"),
+        ("$7,800,103.20 $466,732.80", "7800103.20"),
+    ):
+        sections = partition_form144_tables(render(cell))
+        proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3)
+        assert proposed.aggregate_market_value == expected, cell
+
+
 def test_parse_box_three_columns_with_numbered_marker_cells():
     html = """
     <table>

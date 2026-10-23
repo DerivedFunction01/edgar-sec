@@ -33,6 +33,7 @@ from edgar_sec.foundation.text.dates import parse_date
 _SPLIT_EXPLANATION_RE = re.compile(
     r"\s+(?:as of|based on|\(based|\(as of)\b", flags=re.IGNORECASE
 )
+_FOOTNOTE_SUFFIX_RE = re.compile(r"\s*\(\d{1,2}\)\s*$")
 _QUANTITY_PREFIX_ALT = build_alternation(
     ("up to", "approximately", "approximate", "approx", "about")
 )
@@ -145,6 +146,23 @@ def _extract_units(text: str) -> int | None:
     return value if isinstance(value, int) and not is_currency else None
 
 
+def _extract_market_value(text: str) -> str | None:
+    cleaned = text.strip().lstrip("*").strip()
+    if not cleaned:
+        return None
+    if STREET_SUFFIX_RE.search(cleaned) or STATE_ZIP_RE.search(cleaned):
+        return None
+    primary = _SPLIT_EXPLANATION_RE.split(cleaned)[0].strip()
+    primary = _QUANTITY_PREFIX_RE.sub("", _FOOTNOTE_SUFFIX_RE.sub("", primary))
+    value = normalize_decimal_stripping_currency(primary.strip())
+    if value is None and "\n" in primary:
+        first_line = _FOOTNOTE_SUFFIX_RE.sub("", primary.splitlines()[0].strip())
+        value = normalize_decimal_stripping_currency(first_line.strip())
+    if value is None and " " in primary:
+        value = normalize_decimal_stripping_currency(primary.split()[0])
+    return value
+
+
 def _value_without_trailing_date(cell: str) -> str:
     text = cell.strip()
     lines = [line.strip() for line in text.splitlines() if line.strip()]
@@ -199,7 +217,7 @@ def _box3_schema(reference_year: int | None) -> TableSchema:
                 is_required=False,
                 is_anchor=True,
                 anchor_validator=_is_currency_cell,
-                data_extractor=normalize_decimal_stripping_currency,
+                data_extractor=_extract_market_value,
             ),
             CanonicalColumn(
                 index=4,
@@ -289,7 +307,7 @@ def parse_proposed_sale_box_3(
             if r_units and units is None:
                 units = normalize_integer_stripping_units(r_units)
             if r_val and val is None:
-                val = normalize_decimal_stripping_currency(r_val)
+                val = _extract_market_value(r_val)
             if r_out and out is None:
                 out = normalize_integer_stripping_units(r_out)
             if r_dt and dt is None:
@@ -389,11 +407,7 @@ def parse_proposed_sale_box_3(
             proceeds = next((item for item in numeric_items if item[1]), None)
             if proceeds is None:
                 proceeds = numeric_items[1]
-            val = (
-                val
-                if val is not None
-                else normalize_decimal_stripping_currency(proceeds[2])
-            )
+            val = val if val is not None else _extract_market_value(proceeds[2])
         elif len(numeric_items) == 2:
             n1, is_curr1, _ = numeric_items[0]
             n2, is_curr2, _ = numeric_items[1]
@@ -402,13 +416,13 @@ def parse_proposed_sale_box_3(
                 val = (
                     val
                     if val is not None
-                    else normalize_decimal_stripping_currency(numeric_items[1][2])
+                    else _extract_market_value(numeric_items[1][2])
                 )
             elif is_curr1:
                 val = (
                     val
                     if val is not None
-                    else normalize_decimal_stripping_currency(numeric_items[0][2])
+                    else _extract_market_value(numeric_items[0][2])
                 )
                 if units is None:
                     units = int(n2)
@@ -418,13 +432,13 @@ def parse_proposed_sale_box_3(
                 val = (
                     val
                     if val is not None
-                    else normalize_decimal_stripping_currency(numeric_items[1][2])
+                    else _extract_market_value(numeric_items[1][2])
                 )
         elif len(numeric_items) == 1:
             if units is None and not numeric_items[0][1]:
                 units = int(numeric_items[0][0])
             elif val is None and numeric_items[0][1]:
-                val = normalize_decimal_stripping_currency(numeric_items[0][2])
+                val = _extract_market_value(numeric_items[0][2])
             elif out is None and not numeric_items[0][1]:
                 out = int(numeric_items[0][0])
 
