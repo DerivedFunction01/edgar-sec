@@ -34,9 +34,9 @@ _IGNORE_MARKERS = frozenset(IGNORE_SUBBOX_MARKERS)
 _CONJUNCTIONS = ("and", "or", "&", "/")
 _CONJUNCTION_ALT = build_alternation(_CONJUNCTIONS, auto_escape=True)
 _CONJUNCTION_LABEL_RE = re.compile(rf"^\s*(?:{_CONJUNCTION_ALT})\b", re.IGNORECASE)
-_UNIT_DESIGNATOR_RE = re.compile(
-    r"^(?:suite|ste|apt|apartment|unit|floor|fl)\b", re.IGNORECASE
-)
+_UNIT_DESIGNATORS = ("suite", "ste", "apt", "apartment", "unit", "floor", "fl")
+_UNIT_DESIGNATOR_ALT = build_alternation(_UNIT_DESIGNATORS, auto_escape=True)
+_UNIT_DESIGNATOR_RE = re.compile(rf"^(?:{_UNIT_DESIGNATOR_ALT})\b", re.IGNORECASE)
 
 
 @dataclass(frozen=True, slots=True)

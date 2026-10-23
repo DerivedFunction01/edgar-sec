@@ -122,8 +122,10 @@ def parse_signatures(
         columnar_name, columnar_date = extract_columnar_signature_and_date(
             tail_lines, reference_year=reference_year
         )
-        if not conformed_name and columnar_name and not _is_generator_credit(
-            columnar_name
+        if (
+            not conformed_name
+            and columnar_name
+            and not _is_generator_credit(columnar_name)
         ):
             conformed_name = columnar_name
         if not notice_date and columnar_date:
