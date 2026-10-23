@@ -23,6 +23,7 @@ from edgar_sec.engine.forms.common.alignment import (
 from edgar_sec.engine.forms.common.statutory import STATUTORY_PAGE_ARTIFACT_RE
 from edgar_sec.engine.forms.common.tables import is_instruction_row
 from edgar_sec.engine.forms.common.numbers import (
+    NUMERIC_TOKEN_RE,
     extract_schema_number_or_token,
     normalize_decimal_stripping_currency,
     normalize_integer_stripping_units,
@@ -286,6 +287,18 @@ def parse_table_i_rows(
     ]
 
 
+def _split_seller_name_address(
+    item: TableIISecuritySoldItem,
+) -> TableIISecuritySoldItem:
+    name = item.seller_name
+    if not name or "\n" not in name:
+        return item
+    lines = [line.strip() for line in name.splitlines() if line.strip()]
+    if len(lines) < 2 or NUMERIC_TOKEN_RE.match(lines[0]):
+        return item
+    return replace(item, seller_name=lines[0], seller_address=", ".join(lines[1:]))
+
+
 def parse_table_ii_rows(
     section: ClassifiedSection | None,
     reference_year: int | None = None,
@@ -392,7 +405,7 @@ def parse_table_ii_rows(
     nothing_to_report = len(items) == 0
     normalized_items = [
         normalize_row_record(
-            item,
+            _split_seller_name_address(item),
             FORM144_TABLE_II_ROW_SPEC,
             reference_year=reference_year,
         )[0]

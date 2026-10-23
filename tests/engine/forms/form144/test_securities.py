@@ -1,10 +1,15 @@
 """Tests for Form 144 Table I and Table II extraction in securities.py."""
 
-from edgar_sec.engine.forms.form144.sections import partition_form144_tables
+from edgar_sec.engine.forms.form144.sections import (
+    ClassifiedSection,
+    SectionRole,
+    partition_form144_tables,
+)
 from edgar_sec.engine.forms.form144.securities import (
     parse_table_i_rows,
     parse_table_ii_rows,
 )
+from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
 
 SAMPLE_HTML = """
 <html><body>
@@ -34,6 +39,39 @@ def test_parse_tables():
     assert len(table_ii) == 1
     assert table_ii[0].amount_sold == 1000
     assert table_ii[0].gross_proceeds == "30000.00"
+
+
+def test_parse_table_ii_splits_seller_name_and_address():
+    grid = ResolvedGrid(
+        rows=(
+            (
+                "Name and Address of Seller",
+                "Title of Securities Sold",
+                "Date of Sale",
+                "Amount of Securities Sold",
+                "Gross Proceeds",
+            ),
+            (
+                "J.P. Morgan Securities Inc.\n345 Park Avenue\nNew York, NY 10154",
+                "Common Stock",
+                "2/13/08",
+                "10,000",
+                "$438,901",
+            ),
+        ),
+        column_alignments=(),
+        column_widths=(),
+    )
+    section = ClassifiedSection(
+        role=SectionRole.TABLE_II,
+        table_index=0,
+        raw_node=None,
+        resolved_grid=grid,
+    )
+    _nothing, table_ii = parse_table_ii_rows(section)
+    assert len(table_ii) == 1
+    assert table_ii[0].seller_name == "J.P. Morgan Securities Inc."
+    assert table_ii[0].seller_address == "345 Park Avenue, New York, NY 10154"
 
 
 def test_parse_table_i_missing_optional_columns():
