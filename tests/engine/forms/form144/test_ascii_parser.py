@@ -5,6 +5,43 @@ from pathlib import Path
 from edgar_sec.engine.forms.form144.ascii_parser import parse_ascii_form144
 
 
+def test_parse_ascii_form144_cover_addresses_phone_and_table_i() -> None:
+    sample_text = """
+1    (a) NAME OF ISSUER: Adams Diversified Equity Fund, Inc.
+     (b) IRS IDENT. NO.: 13-4912740
+     (c) S.E.C. FILE NO.: 0000002230
+     (d) ADDRESS OF ISSUER STREET CITY STATE ZIP CODE:
+     500 East Pratt Street, Suite 1300, Baltimore, MD  21202
+     (e) TELEPHONE NO. AREA CODE NUMBER:  (410) 752-5900
+2    (a) NAME OF PERSON FOR WHOSE ACCOUNT THE SECURITIES ARE
+TO BE SOLD:  Mark E. Stoeckle
+     (b) RELATIONSHIP TO ISSUER:  CEO
+     (c) ADDRESS STREET CITY STATE ZIP CODE:
+     500 East Pratt Street, Baltimore, MD  21202
+3    (a) Common Stock
+     (c) Number of Shares or Other Units To Be Sold:  21,110
+
+TABLE I: SECURITIES TO BE SOLD
+Title of the Class:  Common
+Date you Acquired:  2/11/2013
+Nature of Acquisition Transaction:  Grant
+Name of Person from Whom Acquired: Adams Diversified Equity Fund, Inc.
+Amount of Securities Acquired:  41,884
+Date of Payment:  2/11/2013
+Nature of Payment:  Grant
+"""
+    sections = parse_ascii_form144(sample_text)
+    assert sections is not None
+    cover_rows = sections.cover_box_1_2.resolved_grid.rows
+    assert cover_rows[3][0] == "500 East Pratt Street, Suite 1300, Baltimore, MD  21202"
+    assert cover_rows[4][1] == "(410) 752-5900"
+    assert cover_rows[8][0] == "500 East Pratt Street, Baltimore, MD  21202"
+    assert sections.table_i is not None
+    table_i_rows = sections.table_i.resolved_grid.rows
+    assert table_i_rows[1][1] == "2/11/2013"
+    assert table_i_rows[1][4] == "41,884"
+
+
 def test_parse_ascii_form144_key_value() -> None:
     sample_text = """
 1    (a) NAME OF ISSUER: Adams Natural Resources Fund, Inc.
@@ -25,7 +62,7 @@ SIGNATURE: /s/ Mark E. Stoeckle
     assert sections.cover_box_1_2 is not None
     cover_rows = sections.cover_box_1_2.resolved_grid.rows
     assert cover_rows[0][1] == "Adams Natural Resources Fund, Inc."
-    assert cover_rows[2][1] == "Mark E. Stoeckle"
+    assert cover_rows[5][1] == "Mark E. Stoeckle"
 
     assert sections.proposed_sale_box_3 is not None
     b3_rows = sections.proposed_sale_box_3.resolved_grid.rows
@@ -64,7 +101,7 @@ SIGNATURE: /s/ Brandon Lombardi
         sections.cover_box_1_2.resolved_grid.rows[0][1]
         == "SPROUTS FARMERS MARKET, INC."
     )
-    assert sections.cover_box_1_2.resolved_grid.rows[2][1] == "BRANDON LOMBARDI"
+    assert sections.cover_box_1_2.resolved_grid.rows[5][1] == "BRANDON LOMBARDI"
     assert sections.proposed_sale_box_3.resolved_grid.rows[1][2] == "25834"
 
 
@@ -84,6 +121,6 @@ June 5, 2000                                 By:  /s/ Stephen A. Osborn
     sections = parse_ascii_form144(sample_text)
     assert sections is not None
     assert sections.cover_box_1_2.resolved_grid.rows[0][1] == "TREX Company, Inc."
-    assert sections.cover_box_1_2.resolved_grid.rows[2][1] == "Connecticut General Life"
+    assert sections.cover_box_1_2.resolved_grid.rows[5][1] == "Connecticut General Life"
     assert sections.proposed_sale_box_3.resolved_grid.rows[1][2] == "27409"
     assert "Stephen A. Osborn" in sections.signatures[0].resolved_grid.rows[0][1]

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+import re
 
 from edgar_sec.engine.forms.common.entities import (
     IRS_RE,
@@ -39,6 +40,7 @@ from edgar_sec.engine.forms.form144.patterns import (
     BOX_3D_MARKET_VALUE_RE,
     BOX_3D_TAIL_RE,
     BOX_3G_EXCHANGE_RE,
+    PHONE_RE,
     RELATIONSHIP_LABEL_RE,
     RELATIONSHIP_TAIL_RE,
     SEC_FILE_BARE_RE,
@@ -50,6 +52,32 @@ from edgar_sec.engine.forms.form144.patterns import (
 )
 from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
 from edgar_sec.foundation.text.dates import parse_date
+
+_SUBBOX_LINE_RE = re.compile(r"^\s*(?:\d\s*)?\([a-e]\)")
+_TABLE_I_HEADING_RE = re.compile(r"^\s*table\s+i\b(?!i)", re.IGNORECASE)
+_TABLE_II_HEADING_RE = re.compile(r"^\s*table\s+ii\b", re.IGNORECASE)
+_REMARKS_HEADING_RE = re.compile(r"^\s*remarks\b", re.IGNORECASE)
+
+_TABLE_I_LABELS = (
+    ("title of the class", "class_title", "Title of the Class"),
+    ("date you acquired", "acquired_date", "Date You Acquired"),
+    ("nature of acquisition", "nature_of_acquisition", "Nature of Acquisition"),
+    (
+        "name of person from whom acquired",
+        "donor_or_seller_name",
+        "Name of Person from Whom Acquired",
+    ),
+    ("amount of securities acquired", "amount_acquired", "Amount Acquired"),
+    ("date of payment", "payment_date", "Date of Payment"),
+    ("nature of payment", "nature_of_payment", "Nature of Payment"),
+)
+_TABLE_II_LABELS = (
+    ("name and address of seller", "seller_name", "Name and Address of Seller"),
+    ("title of securities sold", "class_title", "Title of Securities Sold"),
+    ("date of sale", "sale_date", "Date of Sale"),
+    ("amount of securities sold", "amount_sold", "Amount of Securities Sold"),
+    ("gross proceeds", "gross_proceeds", "Gross Proceeds"),
+)
 
 
 @dataclass(slots=True)
@@ -77,6 +105,8 @@ class Form144AsciiSlots:
     reporting_person: str | None = None
     relationship: str | None = None
     filer_address: str | None = None
+    table_i_values: dict[str, str] = field(default_factory=dict)
+    table_ii_values: dict[str, str] = field(default_factory=dict)
     proposed_sales: list[ProposedSaleRecord] = field(default_factory=list)
     sig_name: str | None = None
     sig_date: str | None = None
@@ -223,6 +253,132 @@ def _extract_cover_fields(lines: list[str], slots: Form144AsciiSlots) -> None:
                 cand = clean_field_candidate(next_l)
                 if cand and len(cand) > 1 and not cand.startswith("2("):
                     slots.relationship = cand
+
+        # 1(d) ADDRESS OF ISSUER
+        if not slots.issuer_address and "address of issuer" in lower:
+            slots.issuer_address = _following_value(lines, idx, line)
+
+        # 1(e) TELEPHONE NO.
+        if not slots.issuer_phone and "telephone" in lower:
+            m_phone = PHONE_RE.search(line)
+            if m_phone:
+                slots.issuer_phone = m_phone.group(0)
+
+        # 2(c) ADDRESS OF PERSON
+        if (
+            not slots.filer_address
+            and "(c)" in lower
+            and "address" in lower
+            and "issuer" not in lower
+        ):
+            slots.filer_address = _following_value(lines, idx, line)
+
+
+def _following_value(lines: list[str], idx: int, line: str) -> str | None:
+    tail = line.partition(":")[2].strip()
+    if tail and len(tail) > 3:
+        return clean_field_candidate(tail)
+    parts: list[str] = []
+    for d in range(1, 5):
+        if idx + d >= len(lines):
+            break
+        cand = strip_markup_tags(lines[idx + d])
+        if (
+            not cand
+            or is_horizontal_rule_line(cand)
+            or is_form144_instruction_line(cand)
+            or _SUBBOX_LINE_RE.match(cand.lower())
+        ):
+            if parts:
+                break
+            continue
+        parts.append(cand.strip())
+        if len(parts) >= 3:
+            break
+    return clean_field_candidate(" ".join(parts)) if parts else None
+
+
+def _labelled_region_values(
+    lines: list[str],
+    start: int,
+    stop_res: tuple[re.Pattern[str], ...],
+    labels: tuple[tuple[str, str, str], ...],
+) -> dict[str, str]:
+    values: dict[str, str] = {}
+    pending: str | None = None
+    idx = start
+    while idx < len(lines):
+        line = strip_markup_tags(lines[idx])
+        idx += 1
+        if any(rx.search(line) for rx in stop_res):
+            break
+        if not line.strip() or is_form144_instruction_line(line):
+            continue
+        lower = line.lower()
+        matched = next((key for label, key, _h in labels if label in lower), None)
+        if matched is not None:
+            pending = None
+            if matched not in values:
+                tail = line.partition(":")[2].strip() if ":" in line else ""
+                if tail:
+                    values[matched] = tail
+                else:
+                    pending = matched
+            continue
+        if pending is not None:
+            tail = line.partition(":")[2].strip() if ":" in line else line.strip()
+            if tail:
+                values[pending] = tail
+            pending = None
+            continue
+        if "seller_name" in values and "class_title" not in values:
+            values["seller_name"] += "\n" + line.strip()
+    return values
+
+
+def _extract_ascii_tables(lines: list[str], slots: Form144AsciiSlots) -> None:
+    table_i_start = next(
+        (i for i, raw in enumerate(lines) if _TABLE_I_HEADING_RE.search(raw)),
+        None,
+    )
+    if table_i_start is not None:
+        slots.table_i_values = _labelled_region_values(
+            lines,
+            table_i_start + 1,
+            (_TABLE_II_HEADING_RE, _REMARKS_HEADING_RE),
+            _TABLE_I_LABELS,
+        )
+    table_ii_start = next(
+        (i for i, raw in enumerate(lines) if _TABLE_II_HEADING_RE.search(raw)),
+        None,
+    )
+    if table_ii_start is not None:
+        slots.table_ii_values = _labelled_region_values(
+            lines,
+            table_ii_start + 1,
+            (_REMARKS_HEADING_RE,),
+            _TABLE_II_LABELS,
+        )
+
+
+def _table_grid(
+    labels: tuple[tuple[str, str, str], ...],
+    values: dict[str, str],
+    *,
+    date_key: str,
+    amount_key: str,
+) -> ResolvedGrid | None:
+    if not values.get("class_title"):
+        return None
+    date_ok = parse_date(values.get(date_key, ""), reference_year=None) is not None
+    amount_ok = NUMERIC_TOKEN_RE.match(values.get(amount_key, "")) is not None
+    if not (date_ok or amount_ok):
+        return None
+    headers = tuple(header for _l, _k, header in labels)
+    row = tuple(values.get(key, "") for _l, key, _h in labels)
+    return ResolvedGrid(
+        rows=(headers, row), column_alignments=(), column_widths=(), confidence=1.0
+    )
 
 
 def _extract_proposed_sales(
@@ -471,11 +627,16 @@ def _build_grids(
             "(c) S.E.C. FILE NO.",
             slots.issuer_sec_no or "",
         ),
+        ("1(d) ADDRESS OF ISSUER",),
+        (slots.issuer_address or "",),
+        ("(e) TELEPHONE NO.", slots.issuer_phone or ""),
         (
             "2(a) NAME OF PERSON FOR WHOSE ACCOUNT THE SECURITIES ARE TO BE SOLD",
             slots.reporting_person or "",
         ),
         ("(c) RELATIONSHIP TO ISSUER", slots.relationship or ""),
+        ("2(c) ADDRESS STREET CITY STATE ZIP CODE",),
+        (slots.filer_address or "",),
     )
     cover_grid = ResolvedGrid(
         rows=cover_rows, column_alignments=(), column_widths=(), confidence=1.0
@@ -553,12 +714,25 @@ def parse_ascii_form144(
 
     _extract_cover_fields(lines, slots)
     _extract_proposed_sales(lines, slots, raw_text, reference_year)
+    _extract_ascii_tables(lines, slots)
 
     # Require at least issuer_name or reporting_person to consider it a Form 144
     if not slots.issuer_name and not slots.reporting_person:
         return None
 
     cover_grid, b3_grid, sig_grid = _build_grids(slots)
+    table_i_grid = _table_grid(
+        _TABLE_I_LABELS,
+        slots.table_i_values,
+        date_key="acquired_date",
+        amount_key="amount_acquired",
+    )
+    table_ii_grid = _table_grid(
+        _TABLE_II_LABELS,
+        slots.table_ii_values,
+        date_key="sale_date",
+        amount_key="amount_sold",
+    )
 
     cover_sec = ClassifiedSection(
         role=SectionRole.COVER_BOX_1_2,
@@ -578,12 +752,32 @@ def parse_ascii_form144(
         raw_node=None,
         resolved_grid=sig_grid,
     )
+    table_i_sec = (
+        ClassifiedSection(
+            role=SectionRole.TABLE_I,
+            table_index=3,
+            raw_node=None,
+            resolved_grid=table_i_grid,
+        )
+        if table_i_grid is not None
+        else None
+    )
+    table_ii_sec = (
+        ClassifiedSection(
+            role=SectionRole.TABLE_II,
+            table_index=4,
+            raw_node=None,
+            resolved_grid=table_ii_grid,
+        )
+        if table_ii_grid is not None
+        else None
+    )
 
     return Form144Sections(
         cover_box_1_2=cover_sec,
         proposed_sale_box_3=b3_sec,
-        table_i=None,
-        table_ii=None,
+        table_i=table_i_sec,
+        table_ii=table_ii_sec,
         signatures=[sig_sec],
         remarks=[],
         unparsed=[],
