@@ -661,6 +661,40 @@ PAIR_SET: tuple[PairSpec, ...] = (
         direction=SPECIALIZATION,
     ),
     PairSpec(
+        "us-gaap:CashAndCashEquivalentsAtCarryingValue",
+        "us-gaap:Cash",
+        NEAR,
+        "WS4 step 3 (Edgartools round 1) AAPL/MSFT/GOOGL: Cash facts "
+        "are the cash-only slice (AAPL CashMember 27,199M; MSFT "
+        "11,571M) against balance-sheet cash and equivalents 29,943M "
+        "(text AAPL L1006) / 18,315M (text MSFT L1661); GOOGL cash "
+        "column 12,407M vs 23,466M (text L1643)",
+        rule="single_modifier_difference",
+        direction=GENERALIZATION,
+    ),
+    PairSpec(
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax",
+        NEAR,
+        "WS4 step 3 (Edgartools round 1) DUK: contract revenue filed "
+        "gross of assessed tax under the Including sibling (30,050M; "
+        "excise taxes recognized on a gross basis, text L6149; "
+        "segment total text L10679)",
+        rule="sibling_swap",
+    ),
+    PairSpec(
+        "us-gaap:StockholdersEquity",
+        "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
+        NEAR,
+        "WS4 step 3 (Edgartools round 1) DUK/GIS: candidate is total "
+        "equity including noncontrolling interests (DUK 51,256M, "
+        "text L3695, with NCI 1,129M at L3693) against the "
+        "parent-only target (GIS parent total 9,396.7M, text L3250, "
+        "vs 9,648.5M including NCI)",
+        rule="single_modifier_difference",
+        direction=SPECIALIZATION,
+    ),
+    PairSpec(
         "us-gaap:AccountsPayableCurrent",
         "",
         "",
