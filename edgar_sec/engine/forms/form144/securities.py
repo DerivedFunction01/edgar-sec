@@ -115,6 +115,15 @@ def _is_table_ii_header(row: tuple[str, ...]) -> bool:
     return support_hits >= 2 or (decisive_hits >= 1 and support_hits >= 1)
 
 
+def _date_cell_match(text: str) -> re.Match[str] | None:
+    return NUMERIC_DATE_RE.search(text) or RE_FULL_DATE.search(text)
+
+
+def _extract_date_text(text: str) -> str | None:
+    match = _date_cell_match(text)
+    return match.group(0) if match else None
+
+
 _TABLE_I_SCHEMA = TableSchema(
     name="form144_table_i",
     columns=(
@@ -124,10 +133,8 @@ _TABLE_I_SCHEMA = TableSchema(
             name="acquired_date",
             is_required=True,
             is_anchor=True,
-            anchor_validator=lambda s: bool(NUMERIC_DATE_RE.search(s)),
-            data_extractor=lambda s: (
-                m.group(0) if (m := NUMERIC_DATE_RE.search(s)) else None
-            ),
+            anchor_validator=lambda s: bool(_date_cell_match(s)),
+            data_extractor=_extract_date_text,
         ),
         CanonicalColumn(index=2, name="nature_of_acquisition", is_required=True),
         CanonicalColumn(index=3, name="donor_or_seller_name", is_required=False),
@@ -142,10 +149,8 @@ _TABLE_I_SCHEMA = TableSchema(
             name="payment_date",
             is_required=False,
             is_anchor=True,
-            anchor_validator=lambda s: bool(NUMERIC_DATE_RE.search(s)),
-            data_extractor=lambda s: (
-                m.group(0) if (m := NUMERIC_DATE_RE.search(s)) else None
-            ),
+            anchor_validator=lambda s: bool(_date_cell_match(s)),
+            data_extractor=_extract_date_text,
         ),
         CanonicalColumn(index=6, name="nature_of_payment", is_required=False),
     ),
@@ -161,10 +166,8 @@ _TABLE_II_SCHEMA = TableSchema(
             name="sale_date",
             is_required=True,
             is_anchor=True,
-            anchor_validator=lambda s: bool(NUMERIC_DATE_RE.search(s)),
-            data_extractor=lambda s: (
-                m.group(0) if (m := NUMERIC_DATE_RE.search(s)) else None
-            ),
+            anchor_validator=lambda s: bool(_date_cell_match(s)),
+            data_extractor=_extract_date_text,
         ),
         CanonicalColumn(
             index=3,

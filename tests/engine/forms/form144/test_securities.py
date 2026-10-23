@@ -74,6 +74,44 @@ def test_parse_table_ii_splits_seller_name_and_address():
     assert table_ii[0].seller_address == "345 Park Avenue, New York, NY 10154"
 
 
+def test_parse_table_i_accepts_full_text_dates():
+    grid = ResolvedGrid(
+        rows=(
+            (
+                "Title of the Class",
+                "Date You Acquired",
+                "Nature of Acquisition Transaction",
+                "Name of Person from Whom Acquired",
+                "Amount of Securities Acquired",
+                "Date of Payment",
+                "Nature of Payment",
+            ),
+            (
+                "Common Stock",
+                "January 22, 2004",
+                "Open market purchase",
+                "Issuer",
+                "27,859",
+                "January 22, 2004",
+                "Cash",
+            ),
+        ),
+        column_alignments=(),
+        column_widths=(),
+    )
+    section = ClassifiedSection(
+        role=SectionRole.TABLE_I,
+        table_index=0,
+        raw_node=None,
+        resolved_grid=grid,
+    )
+    items = parse_table_i_rows(section)
+    assert len(items) == 1
+    assert items[0].acquired_date == "2004-01-22"
+    assert items[0].payment_date == "2004-01-22"
+    assert items[0].amount_acquired == 27859
+
+
 def test_parse_table_i_missing_optional_columns():
     """Verify deficit resolution when payment date and donor columns are omitted."""
     html = """<html><body>
