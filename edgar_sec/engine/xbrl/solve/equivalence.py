@@ -22,6 +22,8 @@ SPECIALIZATION = "specialization"
 
 _AGGREGATE_MODIFIER = "M_AGGREGATE"
 _TEXT_MODIFIER = "M_TEXT_NODE"
+_HORIZON_AXIS = "MATURITY_HORIZON"
+_HORIZON_FALLBACK = frozenset({"M_CURRENT", "M_NONCURRENT"})
 
 _DEFAULT_GROUPS: tuple[SiblingGroup, ...] | None = None
 
@@ -167,6 +169,149 @@ def presumed_atom(
     return atom
 
 
+def _horizon_members(groups: tuple[SiblingGroup, ...]) -> frozenset[str]:
+    """The MATURITY_HORIZON axis members declared among the groups."""
+    for group in groups:
+        if group.group == _HORIZON_AXIS:
+            return frozenset(group.members)
+    return _HORIZON_FALLBACK
+
+
+def _filing_local(
+    atom: Atom,
+    derived_horizon: str | None,
+    placement_horizon: str | None,
+    groups: tuple[SiblingGroup, ...],
+) -> Atom:
+    """Apply the filing-local rung; higher rungs' silence is its entry condition."""
+    if placement_horizon is None:
+        return atom
+    members = _horizon_members(groups)
+    if atom.modifiers & members:
+        return atom
+    if derived_horizon is not None:
+        return atom
+    if placement_horizon not in members:
+        return atom
+    return Atom(atom.head, atom.modifiers | {placement_horizon})
+
+
+def presumed_atom_filing_local(
+    atom: Atom,
+    derived_horizon: str | None,
+    placement_horizon: str | None,
+    sibling_groups: Iterable[SiblingGroup | Iterable[str]] | None = None,
+) -> Atom:
+    """Presume a placement-derived horizon when name and derived are silent.
+
+    An atom stating any horizon member, or a set derived horizon, is
+    returned unchanged: evidence never outranks a higher rung.
+    """
+    return _filing_local(
+        atom, derived_horizon, placement_horizon, _resolve_groups(sibling_groups)
+    )
+
+
+def _ladder_atom(
+    atom: Atom,
+    defaults: tuple[DefaultCoordinate, ...],
+    groups: tuple[SiblingGroup, ...],
+    derived_horizon: str | None,
+    placement_horizon: str | None,
+) -> tuple[Atom, str]:
+    """One side's fully presumed atom and the rung that supplied it."""
+    members = _horizon_members(groups)
+    if not atom.modifiers & members:
+        if derived_horizon is not None and derived_horizon in members:
+            return Atom(atom.head, atom.modifiers | {derived_horizon}), "derived"
+        placed = _filing_local(atom, derived_horizon, placement_horizon, groups)
+        if placed != atom:
+            return placed, "filing_local"
+    presumed = presumed_atom(atom, defaults, groups)
+    if presumed != atom:
+        return presumed, "default"
+    return atom, ""
+
+
+@dataclass(frozen=True, slots=True)
+class LadderClassification:
+    """One pair's classification under the full presumption ladder."""
+
+    tier: str
+    rule: str
+    via_default: bool
+    via_filing_local: bool
+    modifier_distance: int
+    direction: str
+
+
+def classify_ladder_pair(
+    target: Atom,
+    candidate: Atom,
+    defaults: Iterable[DefaultCoordinate] = (),
+    sibling_groups: Iterable[SiblingGroup | Iterable[str]] | None = None,
+    *,
+    target_derived_horizon: str | None = None,
+    candidate_derived_horizon: str | None = None,
+    target_placement_horizon: str | None = None,
+    candidate_placement_horizon: str | None = None,
+) -> LadderClassification:
+    """Classify a pair on stated atoms, then on fully presumed atoms.
+
+    A pair NEAR only under presumption names its weakest mediating
+    rung: via_filing_local above via_default, derived by its own rule.
+    """
+    groups = _resolve_groups(sibling_groups)
+    defaults = tuple(defaults)
+    tier, rule = _classify_detail(target, candidate, groups)
+    target_atom, target_rung = _ladder_atom(
+        target, defaults, groups, target_derived_horizon, target_placement_horizon
+    )
+    candidate_atom, candidate_rung = _ladder_atom(
+        candidate,
+        defaults,
+        groups,
+        candidate_derived_horizon,
+        candidate_placement_horizon,
+    )
+    via_default = False
+    via_filing_local = False
+    direction_target, direction_atom = target, candidate
+    if tier == UNRELATED:
+        ladder_tier, ladder_rule = _classify_detail(target_atom, candidate_atom, groups)
+        if ladder_tier == NEAR:
+            tier = NEAR
+            via_filing_local = "filing_local" in (target_rung, candidate_rung)
+            via_default = "default" in (target_rung, candidate_rung)
+            if via_default:
+                rule = "via_default"
+            elif via_filing_local:
+                rule = "via_filing_local"
+            else:
+                rule = ladder_rule
+            direction_target, direction_atom = target_atom, candidate_atom
+    if defaults or any(
+        value is not None
+        for value in (
+            target_derived_horizon,
+            candidate_derived_horizon,
+            target_placement_horizon,
+            candidate_placement_horizon,
+        )
+    ):
+        distance = len(target_atom.modifiers ^ candidate_atom.modifiers)
+    else:
+        distance = len(target.modifiers ^ candidate.modifiers)
+    return LadderClassification(
+        tier=tier,
+        rule=rule,
+        via_default=via_default,
+        via_filing_local=via_filing_local,
+        modifier_distance=distance,
+        direction=_subsumption_direction(direction_target, direction_atom),
+    )
+
+
 @dataclass(frozen=True, slots=True)
 class RankedEquivalent:
     """A candidate concept ranked against a target atom."""
@@ -176,6 +321,7 @@ class RankedEquivalent:
     tier: str
     modifier_distance: int
     via_default: bool = False
+    via_filing_local: bool = False
     rule: str = ""
     residual_intent_count: int = 0
     residual_total_count: int = 0
@@ -189,52 +335,57 @@ def rank_equivalents(
     defaults: Iterable[DefaultCoordinate] = (),
     sibling_groups: Iterable[SiblingGroup | Iterable[str]] | None = None,
     residual_counts: Mapping[str, tuple[int, int]] | None = None,
+    *,
+    target_derived_horizon: str | None = None,
+    target_placement_horizon: str | None = None,
+    derived_horizons: Mapping[str, str | None] | None = None,
+    placement_horizons: Mapping[str, str | None] | None = None,
 ) -> tuple[RankedEquivalent, ...]:
     """Rank candidate concepts by equivalence tier to the target atom.
 
-    With defaults supplied, distances use presumed atoms and a pair near
-    only under presumption is flagged via_default, after evidenced nears.
+    Distances use fully presumed atoms; a pair near only under a weaker
+    rung sorts after stronger rungs: evidenced, filing-local, default.
     """
     groups = _resolve_groups(sibling_groups)
     defaults = tuple(defaults)
     counts = residual_counts or {}
-    presumed_target = presumed_atom(target, defaults, groups)
+    derived = derived_horizons or {}
+    placements = placement_horizons or {}
     ranked = []
     for qname, atom in candidates:
         if qname == target_qname:
             continue
-        tier, rule = _classify_detail(target, atom, groups)
-        via_default = False
-        presumed = presumed_atom(atom, defaults, groups)
-        direction_target, direction_atom = target, atom
-        if tier == UNRELATED and defaults:
-            if _classify_detail(presumed_target, presumed, groups)[0] == NEAR:
-                tier, via_default, rule = NEAR, True, "via_default"
-                direction_target, direction_atom = presumed_target, presumed
-        if tier == UNRELATED:
+        result = classify_ladder_pair(
+            target,
+            atom,
+            defaults,
+            groups,
+            target_derived_horizon=target_derived_horizon,
+            candidate_derived_horizon=derived.get(qname),
+            target_placement_horizon=target_placement_horizon,
+            candidate_placement_horizon=placements.get(qname),
+        )
+        if result.tier == UNRELATED:
             continue
-        if defaults:
-            distance = len(presumed_target.modifiers ^ presumed.modifiers)
-        else:
-            distance = len(target.modifiers ^ atom.modifiers)
         intent, total = counts.get(qname, (0, 0))
         ranked.append(
             RankedEquivalent(
                 qname,
                 atom,
-                tier,
-                distance,
-                via_default,
-                rule=rule,
+                result.tier,
+                result.modifier_distance,
+                result.via_default,
+                result.via_filing_local,
+                rule=result.rule,
                 residual_intent_count=intent,
                 residual_total_count=total,
-                direction=_subsumption_direction(direction_target, direction_atom),
+                direction=result.direction,
             )
         )
     ranked.sort(
         key=lambda item: (
             0 if item.tier == EXACT else 1,
-            1 if item.via_default else 0,
+            2 if item.via_default else 1 if item.via_filing_local else 0,
             item.modifier_distance,
             item.residual_intent_count,
             item.residual_total_count,
@@ -242,3 +393,19 @@ def rank_equivalents(
         )
     )
     return tuple(ranked)
+
+
+__all__ = [
+    "EXACT",
+    "GENERALIZATION",
+    "NEAR",
+    "SPECIALIZATION",
+    "UNRELATED",
+    "LadderClassification",
+    "RankedEquivalent",
+    "classify_ladder_pair",
+    "classify_pair",
+    "presumed_atom",
+    "presumed_atom_filing_local",
+    "rank_equivalents",
+]

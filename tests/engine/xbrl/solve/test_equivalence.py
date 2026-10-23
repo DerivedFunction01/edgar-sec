@@ -1012,3 +1012,163 @@ def test_text_coordinate_never_enters_presumption() -> None:
             entry.head, frozenset(entry.identity_modifiers) | {"M_TEXT_NODE"}
         )
         assert presumed_atom(text_atom, tax.default_coordinates, groups) == text_atom
+
+
+def _presumed_ladder(atom: Atom, derived: str | None, placement: str | None) -> Atom:
+    """Full ladder composition: filing-local rung, then the global default."""
+    from edgar_sec.engine.xbrl.solve.equivalence import presumed_atom_filing_local
+
+    return presumed_atom(
+        presumed_atom_filing_local(atom, derived, placement), _defaults()
+    )
+
+
+def test_filing_local_silent_placement_keeps_default() -> None:
+    """AP regression, silent placement: presumption is exactly today's."""
+    bare = _atom("us-gaap:AccountsPayable")
+    assert _presumed_ladder(bare, None, None) == presumed_atom(bare, _defaults())
+    assert _presumed_ladder(bare, None, None).modifiers == {
+        "M_ACCOUNTS_PAYABLE",
+        "M_CURRENT",
+    }
+    target = _atom("us-gaap:AccruedLiabilitiesCurrent")
+    ranked = rank_equivalents(
+        "firm-x:AccruedLiabilitiesCurrent",
+        target,
+        (("firm-a:AccountsPayable", bare),),
+        _defaults(),
+        placement_horizons={"firm-a:AccountsPayable": None},
+    )
+    assert len(ranked) == 1
+    assert ranked[0].tier == NEAR and ranked[0].rule == "via_default"
+    assert ranked[0].via_default and not ranked[0].via_filing_local
+    assert ranked[0].modifier_distance == 2
+
+
+def test_filing_local_speaks_current_flags_provenance() -> None:
+    """AP regression, placement current: same verdict, via_filing_local."""
+    bare = _atom("us-gaap:AccountsPayable")
+    target = _atom("us-gaap:AccruedLiabilitiesCurrent")
+    ranked = rank_equivalents(
+        "firm-x:AccruedLiabilitiesCurrent",
+        target,
+        (("firm-a:AccountsPayable", bare),),
+        _defaults(),
+        placement_horizons={"firm-a:AccountsPayable": "M_CURRENT"},
+    )
+    assert len(ranked) == 1
+    assert ranked[0].tier == NEAR and ranked[0].rule == "via_filing_local"
+    assert ranked[0].via_filing_local and not ranked[0].via_default
+    assert ranked[0].modifier_distance == 2
+
+
+def test_filing_local_speaks_noncurrent_outranks_default() -> None:
+    """AP regression, placement noncurrent: the default is outranked."""
+    bare = _atom("us-gaap:AccountsPayable")
+    assert _presumed_ladder(bare, None, "M_NONCURRENT").modifiers == {
+        "M_ACCOUNTS_PAYABLE",
+        "M_NONCURRENT",
+    }
+    accrued = _atom("us-gaap:AccruedLiabilitiesCurrent")
+    ranked = rank_equivalents(
+        "firm-x:AccruedLiabilitiesCurrent",
+        accrued,
+        (("firm-a:AccountsPayable", bare),),
+        _defaults(),
+        placement_horizons={"firm-a:AccountsPayable": "M_NONCURRENT"},
+    )
+    assert ranked == ()
+    noncurrent = _atom("us-gaap:AccountsPayableNoncurrent")
+    ranked = rank_equivalents(
+        "firm-x:AccountsPayableNoncurrent",
+        noncurrent,
+        (
+            ("firm-a:AccountsPayable", bare),
+            ("firm-b:AccountsPayable", bare),
+        ),
+        _defaults(),
+        placement_horizons={
+            "firm-a:AccountsPayable": "M_NONCURRENT",
+            "firm-b:AccountsPayable": None,
+        },
+    )
+    assert [item.qname for item in ranked] == [
+        "firm-a:AccountsPayable",
+        "firm-b:AccountsPayable",
+    ]
+    assert [item.modifier_distance for item in ranked] == [0, 2]
+    assert all(item.tier == NEAR for item in ranked)
+
+
+def test_filing_local_name_speaks_evidence_not_consulted() -> None:
+    """AP regression, name speaks: contradictory placement changes nothing."""
+    from edgar_sec.engine.xbrl.solve.equivalence import presumed_atom_filing_local
+
+    for stated, contradictory in (
+        ("us-gaap:AccountsPayableCurrent", "M_NONCURRENT"),
+        ("us-gaap:AccountsPayableNoncurrent", "M_CURRENT"),
+        ("us-gaap:AccountsPayableCurrentAndNoncurrent", "M_CURRENT"),
+    ):
+        atom = _atom(stated)
+        assert presumed_atom_filing_local(atom, None, contradictory) == atom
+    current = _atom("us-gaap:AccountsPayableCurrent")
+    accrued = _atom("us-gaap:AccruedLiabilitiesCurrent")
+    ranked = rank_equivalents(
+        "firm-x:AccruedLiabilitiesCurrent",
+        accrued,
+        (("firm-a:AccountsPayableCurrent", current),),
+        _defaults(),
+        placement_horizons={"firm-a:AccountsPayableCurrent": "M_NONCURRENT"},
+    )
+    assert len(ranked) == 1
+    assert ranked[0].tier == NEAR and ranked[0].rule == "sibling_swap"
+    assert not ranked[0].via_default and not ranked[0].via_filing_local
+
+
+def test_filing_local_derived_horizon_outranks_placement() -> None:
+    """Derived rung stands: placement neither overrides nor mediates."""
+    from edgar_sec.engine.xbrl.solve.equivalence import presumed_atom_filing_local
+
+    bare = _atom("us-gaap:AccountsPayable")
+    assert presumed_atom_filing_local(bare, "M_CURRENT", "M_NONCURRENT") == bare
+    accrued = _atom("us-gaap:AccruedLiabilitiesCurrent")
+    ranked = rank_equivalents(
+        "firm-x:AccruedLiabilitiesCurrent",
+        accrued,
+        (("firm-a:AccountsPayable", bare),),
+        _defaults(),
+        derived_horizons={"firm-a:AccountsPayable": "M_CURRENT"},
+        placement_horizons={"firm-a:AccountsPayable": "M_NONCURRENT"},
+    )
+    assert len(ranked) == 1
+    assert ranked[0].tier == NEAR and ranked[0].rule == "sibling_swap"
+    assert not ranked[0].via_default and not ranked[0].via_filing_local
+    assert ranked[0].modifier_distance == 2
+
+
+def test_filing_local_sort_order_is_ladder_order() -> None:
+    """Evidenced NEAR, then filing-local NEAR, then default-mediated NEAR."""
+    target = _atom("us-gaap:AccruedLiabilitiesCurrent")
+    bare = _atom("us-gaap:AccountsPayable")
+    current = _atom("us-gaap:AccountsPayableCurrent")
+    ranked = rank_equivalents(
+        "firm-x:AccruedLiabilitiesCurrent",
+        target,
+        (
+            ("firm-c:AccountsPayable", bare),
+            ("firm-a:AccountsPayableCurrent", current),
+            ("firm-b:AccountsPayable", bare),
+        ),
+        _defaults(),
+        placement_horizons={"firm-b:AccountsPayable": "M_CURRENT"},
+    )
+    assert [item.qname for item in ranked] == [
+        "firm-a:AccountsPayableCurrent",
+        "firm-b:AccountsPayable",
+        "firm-c:AccountsPayable",
+    ]
+    assert [item.rule for item in ranked] == [
+        "sibling_swap",
+        "via_filing_local",
+        "via_default",
+    ]
