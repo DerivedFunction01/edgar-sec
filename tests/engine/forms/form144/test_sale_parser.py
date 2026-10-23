@@ -79,6 +79,55 @@ def test_parse_box_three_values_with_explanation_suffixes():
         assert proposed.aggregate_market_value == expected, cell
 
 
+def test_parse_box_three_data_row_with_quantity_prefix_and_nodate():
+    html = """
+    <table>
+      <tr><td>3 (a) Title of the Class</td>
+          <td>(b) Name and Address of Each Broker</td>
+          <td>(c) Number of Shares To Be Sold</td>
+          <td>(d) Aggregate Market Value</td><td>(e) Outstanding</td>
+          <td>(f) Approx Date</td><td>(g) Exchange</td></tr>
+      <tr><td>Common Stock</td>
+          <td>Merrill Lynch, 181 Bay Street, Suite 300, Toronto, ON</td>
+          <td>2,406</td><td>$199,649.88</td>
+          <td>Approximately 187 million</td>
+          <td>ASAP</td><td>NYSE</td></tr>
+    </table>
+    """
+    sections = partition_form144_tables(html)
+    proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3)
+    assert proposed.units_to_be_sold == 2406
+    assert proposed.aggregate_market_value == "199649.88"
+    assert proposed.approx_sale_date is None
+    assert proposed.exchange_name == "NYSE"
+
+
+def test_parse_box_three_header_label_with_embedded_date_is_not_data():
+    html = """
+    <table>
+      <tr><td>3 (a) Title of the Class of Securities To Be Sold</td>
+          <td>(b) Name and Address of Each Broker Through Whom the
+              Securities are to be Offered</td>
+          <td>(c) Number of Shares or Other Units To Be Sold</td>
+          <td>(d) Aggregate Market Value (See Instr. 3(d))</td>
+          <td>(e) Number of Shares or Other Units Outstanding</td>
+          <td>(f) Approximate Date of Sale (See Instr. 3(f)) (1/12/2010)</td>
+          <td>(g) Name of Each Securities Exchange</td></tr>
+      <tr><td>Common Stock</td>
+          <td>UBS Securities LLC 677 Washington Boulevard, Stamford, CT</td>
+          <td>200,000</td><td>$1,352,000</td><td>57,410,000</td>
+          <td>1/12/2010</td><td>NASDAQ</td></tr>
+    </table>
+    """
+    sections = partition_form144_tables(html)
+    proposed = parse_proposed_sale_box_3(sections.proposed_sale_box_3)
+    assert proposed.class_title == "Common Stock"
+    assert proposed.broker is not None
+    assert proposed.broker.name.startswith("UBS Securities LLC")
+    assert proposed.aggregate_market_value == "1352000"
+    assert proposed.approx_sale_date == "2010-01-12"
+
+
 def test_parse_box_three_columns_with_numbered_marker_cells():
     html = """
     <table>

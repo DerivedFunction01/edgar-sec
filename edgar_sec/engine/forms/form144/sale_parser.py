@@ -322,7 +322,17 @@ def parse_proposed_sale_box_3(
             continue
         row_str = " ".join(raw_cells)
         if _is_box3_header(row) or is_instruction_row(row_str):
-            continue
+            has_anchor = any(
+                (
+                    _is_currency_cell(c)
+                    or _is_date_cell(c, reference_year)
+                    or _is_exchange_cell(c)
+                )
+                for c in raw_cells
+                if "see instr" not in c.lower()
+            )
+            if not has_anchor:
+                continue
 
         cells: list[str] = []
         skip_next = False
