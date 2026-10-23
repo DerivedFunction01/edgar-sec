@@ -653,9 +653,11 @@ def run_pair_gate() -> object:
     """Evaluate the seeded pair set and longitudinal relations, grounded."""
     from edgar_sec.engine.xbrl.review.benchmark import (
         PAIR_SET,
-        RELATION_SET,
         PairReport,
         evaluate_pairs,
+    )
+    from edgar_sec.engine.xbrl.review.relations import (
+        RELATION_SET,
         evaluate_relations,
     )
     from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase

@@ -697,9 +697,7 @@ def test_bac_loose_derivative_liabilities_exclude_textblock() -> None:
 
 
 _BAC_CASH_2011 = "us-gaap:CashAndCashEquivalentsAtCarryingValue"
-_BAC_CASH_2024 = (
-    "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents"
-)
+_BAC_CASH_2024 = "us-gaap:CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents"
 _BAC_ACC_2011 = "0000070858-12-000155"
 _BAC_ACC_2024 = "0000070858-25-000139"
 
@@ -798,8 +796,7 @@ def test_bac_parent_slice_era_difference() -> None:
     ]
     assert len(carrying_2024) == 2
     assert all(
-        fact.dimensions
-        == {"srt:ConsolidatedEntitiesAxis": "srt:ParentCompanyMember"}
+        fact.dimensions == {"srt:ConsolidatedEntitiesAxis": "srt:ParentCompanyMember"}
         for fact in carrying_2024
     )
     parent_2024 = next(
