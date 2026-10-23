@@ -75,6 +75,49 @@ SIGNATURE: /s/ Mark E. Stoeckle
     assert "/s/ Mark E. Stoeckle" in sig_rows[0][1]
 
 
+def test_parse_ascii_form144_labelled_list_box3() -> None:
+    sample_text = """
+1    (a) NAME OF ISSUER: South State Corporation
+     (b) IRS IDENT. NO.: 57-0799315
+2    (a) NAME OF PERSON FOR WHOSE ACCOUNT THE SECURITIES ARE TO BE SOLD:  Alton C. Phillips
+     (b) RELATIONSHIP TO ISSUER:  Director
+3(a) Title of Class of securities to be sold
+Common Stock
+
+3(b) Name and address of each broker through
+whom the sec are to be offered/each market maker who is acquiring the securities
+Wells Fargo Advisors, 200 Meeting St. Suite 302, Charleston, SC 29401
+
+3(c) Number of share or other units to be sold
+2,000
+
+3(d)Aggregate Market Value
+$160,000
+
+3(e) Number of shares or other units outstanding
+24,218,820
+
+3(f) Approximate Date of Sale
+11/10/2016
+
+3(g) Name of each securities exchange
+NASDAQ
+"""
+    sections = parse_ascii_form144(sample_text)
+    assert sections is not None
+    assert sections.proposed_sale_box_3 is not None
+    b3_rows = sections.proposed_sale_box_3.resolved_grid.rows
+    assert len(b3_rows) >= 2
+    assert b3_rows[1][1] == (
+        "Wells Fargo Advisors, 200 Meeting St. Suite 302, Charleston, SC 29401"
+    )
+    assert b3_rows[1][2] == "2000"
+    assert b3_rows[1][3] == "160000"
+    assert b3_rows[1][4] == "24218820"
+    assert b3_rows[1][5] == "11/10/2016"
+    assert b3_rows[1][6] == "NASDAQ"
+
+
 def test_parse_ascii_form144_scaled_units() -> None:
     sample_text = """
 1 (a) Name of issuer:

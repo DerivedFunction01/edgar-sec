@@ -138,6 +138,19 @@ BOX_3D_TAIL_RE = re.compile(
     r"market\s+value[^:]*:?\s*([\$€£]?\s*[0-9][0-9,]*(?:\.[0-9]+)?\s*[A-Za-z]*)",
     re.IGNORECASE,
 )
+BOX_3B_BROKER_RE = re.compile(
+    r"(?:3\.?\s*\(\s*b\s*\)|\(\s*b\s*\))\s*Name\s+and\s+Address", re.IGNORECASE
+)
+BOX_3B_TAIL_RE = re.compile(r"\(\s*b\s*\)[^:]*:\s*(.+)$", re.IGNORECASE)
+BOX_3E_OUTSTANDING_RE = re.compile(
+    r"(?:3\.?\s*\(\s*e\s*\)|\(\s*e\s*\))\s*Number\s+of\s+(?:Shares|Units)",
+    re.IGNORECASE,
+)
+BOX_3F_DATE_RE = re.compile(
+    r"(?:3\.?\s*\(\s*f\s*\)|\(\s*f\s*\))\s*Approximate\s+Date", re.IGNORECASE
+)
+BOX_LABEL_LINE_RE = re.compile(r"^\s*3\.?\s*\(\s*[a-g]\s*\)", re.IGNORECASE)
+
 BOX_3G_EXCHANGE_RE = re.compile(
     r"(?:3\.?\s*\(\s*g\s*\)|\(\s*g\s*\))\s*Name\s+of\s+Each\s+Securities\s+Exchange",
     re.IGNORECASE,
@@ -177,12 +190,17 @@ __all__ = [
     "BOX_2A_TAIL_RE",
     "BOX_3A_TAIL_RE",
     "BOX_3A_TITLE_RE",
+    "BOX_3B_BROKER_RE",
+    "BOX_3B_TAIL_RE",
     "BOX_3C_NEXT_LINE_RE",
     "BOX_3C_TAIL_RE",
     "BOX_3C_UNITS_RE",
     "BOX_3D_MARKET_VALUE_RE",
     "BOX_3D_TAIL_RE",
+    "BOX_3E_OUTSTANDING_RE",
+    "BOX_3F_DATE_RE",
     "BOX_3G_EXCHANGE_RE",
+    "BOX_LABEL_LINE_RE",
     "COVER_HEADER_OR_SUBBOX_TERMS",
     "FORM144_NUMBERED_INSTRUCTION_RE",
     "NOTICE_DATE_LABEL_RE",

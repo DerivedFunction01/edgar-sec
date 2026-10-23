@@ -24,6 +24,10 @@ from edgar_sec.engine.forms.common.tables import (
     strip_footnote_references,
     strip_markup_tags,
 )
+from edgar_sec.engine.forms.form144.ascii_scan import (
+    ProposedSaleRecord,
+    apply_box3_label,
+)
 from edgar_sec.engine.forms.form144.healing import heal_form144_lines
 from edgar_sec.engine.forms.form144.patterns import (
     BOX_1A_LABEL_RE,
@@ -78,19 +82,6 @@ _TABLE_II_LABELS = (
     ("amount of securities sold", "amount_sold", "Amount of Securities Sold"),
     ("gross proceeds", "gross_proceeds", "Gross Proceeds"),
 )
-
-
-@dataclass(slots=True)
-class ProposedSaleRecord:
-    """Parsed proposed sale record."""
-
-    class_of_sec: str | None = None
-    broker_name: str | None = None
-    units_sold: str | None = None
-    market_value: str | None = None
-    shares_outstanding: str | None = None
-    approx_sale_date: str | None = None
-    exchange: str | None = None
 
 
 @dataclass(slots=True)
@@ -500,48 +491,7 @@ def _extract_proposed_sales(
                     if cand and not cand.startswith("3("):
                         current_rec.class_of_sec = cand
 
-        # Check for 3(c) Units to be sold
-        if BOX_3C_UNITS_RE.search(line):
-            if current_rec is None:
-                current_rec = ProposedSaleRecord()
-            m_tail = BOX_3C_TAIL_RE.search(line)
-            val = format_scaled_number_string(m_tail.group(1)) if m_tail else None
-            if val:
-                current_rec.units_sold = val
-            else:
-                for d in (1, 2, 3, 4):
-                    if idx + d < len(lines):
-                        cand_l = strip_markup_tags(lines[idx + d])
-                        if "see instr" in cand_l.lower():
-                            continue
-                        m_n = BOX_3C_NEXT_LINE_RE.search(cand_l)
-                        val2 = (
-                            format_scaled_number_string(m_n.group(1)) if m_n else None
-                        )
-                        if val2:
-                            current_rec.units_sold = val2
-                            break
-
-        # Check for 3(d) Market Value
-        if BOX_3D_MARKET_VALUE_RE.search(line):
-            if current_rec is None:
-                current_rec = ProposedSaleRecord()
-            m_mv = BOX_3D_TAIL_RE.search(line)
-            val = format_scaled_number_string(m_mv.group(1)) if m_mv else None
-            if val:
-                current_rec.market_value = val
-
-        # Check for 3(g) Exchange
-        if BOX_3G_EXCHANGE_RE.search(line):
-            if current_rec is None:
-                current_rec = ProposedSaleRecord()
-            ex = normalize_exchange_name(line)
-            if ex:
-                current_rec.exchange = ex
-            elif idx + 1 < len(lines):
-                ex2 = normalize_exchange_name(strip_markup_tags(lines[idx + 1]))
-                if ex2:
-                    current_rec.exchange = ex2
+        current_rec = apply_box3_label(line, lines, idx, current_rec, reference_year)
 
     if current_rec and current_rec.units_sold:
         slots.proposed_sales.append(current_rec)
