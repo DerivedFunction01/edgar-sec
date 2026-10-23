@@ -7,9 +7,11 @@ from pathlib import Path
 import sys
 
 from edgar_sec.engine.xbrl.review.benchmark import (
+    CENSUS_EXPECTATIONS,
     BenchmarkReport,
     BenchmarkTestResult,
     run_benchmark,
+    score_census,
 )
 from edgar_sec.engine.xbrl.discovery.cohort import load_seed_cohort
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
@@ -55,6 +57,17 @@ def _build_parser() -> argparse.ArgumentParser:
         "-v",
         action="store_true",
         help="Print per-test execution details.",
+    )
+    parser.add_argument(
+        "--census",
+        action="store_true",
+        help="Also run the scored census regression (probe and span populations).",
+    )
+    parser.add_argument(
+        "--census-out",
+        type=Path,
+        default=None,
+        help="Directory for census recordings and summary JSON.",
     )
     return parser
 
@@ -115,7 +128,28 @@ def main(argv: list[str] | None = None) -> int:
     atomic_write_json(out_path, report.to_dict(), indent=2)
     sys.stdout.write(f"Report written to: {out_path}\n")
 
-    return 0 if report.failed_tests == 0 else 1
+    verdict = 0 if report.failed_tests == 0 else 1
+    if args.census:
+        from edgar_sec.tools.xbrl_census import run_census
+
+        census_out = args.census_out or (xbrl_paths().transient_root / "census")
+        summary = run_census(["probe", "span"], [], census_out)
+        atomic_write_json(census_out / "summary.json", summary, indent=2)
+        expected = {name: CENSUS_EXPECTATIONS[name] for name in summary["populations"]}
+        score = score_census(summary, expected)
+        sys.stdout.write(f"{'-' * 60}\nScored Census Regression:\n")
+        for name, pop in sorted(summary["populations"].items()):
+            sys.stdout.write(
+                f"  [{name}] n={pop['n']} classification={pop['classification']}\n"
+            )
+        if score.passed:
+            sys.stdout.write("Census gate: PASS\n")
+        else:
+            verdict = 1
+            sys.stdout.write("Census gate: FAIL\n")
+            for failure in score.failures:
+                sys.stdout.write(f"  {failure}\n")
+    return verdict
 
 
 if __name__ == "__main__":

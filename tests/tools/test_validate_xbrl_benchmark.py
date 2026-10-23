@@ -36,3 +36,53 @@ def test_validate_xbrl_benchmark_missing_cohort() -> None:
     """Verify non-zero return code when cohort file is missing."""
     ret = main(["--cohort-file", "/nonexistent/cohort.json"])
     assert ret == 1
+
+
+def _passing_census_summary() -> dict:
+    """A census summary matching the scored expectations exactly."""
+    from edgar_sec.engine.xbrl.review.benchmark import CENSUS_EXPECTATIONS
+
+    populations = {}
+    for name, exp in CENSUS_EXPECTATIONS.items():
+        populations[name] = {
+            "n": exp.n,
+            "classification": {
+                "correct": exp.correct,
+                "honest-faithful": exp.honest,
+            },
+            "replay_mismatches": 0,
+            "surfaced_conflicts": [{}] * exp.surfaced_conflicts,
+            "derived_artefacts": [],
+            "near_guard_violations": [],
+            "textblock_answer_evaluations": 0,
+        }
+    return {"populations": populations}
+
+
+def test_validate_xbrl_benchmark_census_gate(tmp_path: Path, monkeypatch) -> None:
+    """Verify --census passes on scored counts and fails on a moved count."""
+    import edgar_sec.tools.xbrl_census as census_module
+
+    out_json = tmp_path / "benchmark.json"
+    census_out = tmp_path / "census"
+    args = [
+        "--output",
+        str(out_json),
+        "--cohort-file",
+        str(fixture_path("xbrl/seed_cohort.json")),
+        "--taxonomy-dir",
+        str(fixture_path("xbrl/taxonomy")),
+        "--census",
+        "--census-out",
+        str(census_out),
+    ]
+    monkeypatch.setattr(
+        census_module, "run_census", lambda *a, **k: _passing_census_summary()
+    )
+    assert main(args) == 0
+    assert (census_out / "summary.json").exists()
+
+    moved = _passing_census_summary()
+    moved["populations"]["probe"]["classification"]["correct"] -= 1
+    monkeypatch.setattr(census_module, "run_census", lambda *a, **k: moved)
+    assert main(args) == 1
