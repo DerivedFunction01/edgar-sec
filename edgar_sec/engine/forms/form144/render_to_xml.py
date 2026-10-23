@@ -24,6 +24,7 @@ from edgar_sec.engine.forms.form144.metadata_parser import (
     parse_signatures,
 )
 from edgar_sec.engine.forms.form144.sale_parser import parse_proposed_sale_box_3
+from edgar_sec.engine.document.html.tree import parse_html
 from edgar_sec.engine.document_processing.outputs import HandlerOutput, HandlerSidecar
 from edgar_sec.engine.forms.common.dates import (
     external_reference_year,
@@ -476,6 +477,8 @@ def render_form144_to_xml(
         sections.signatures,
         full_text=text,
         reference_year=external_year,
+        fallback_sections=tuple(sections.unparsed),
+        text_lines=tuple(parse_html(text).text().splitlines()),
     )
 
     doc = Form144Document(

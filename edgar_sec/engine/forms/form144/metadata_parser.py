@@ -40,6 +40,9 @@ def parse_signatures(
     | None,
     full_text: str = "",
     reference_year: int | None = None,
+    *,
+    fallback_sections: tuple[ClassifiedSection, ...] = (),
+    text_lines: tuple[str, ...] = (),
 ) -> NoticeSignature:
     sections_list = (
         [section]
@@ -67,6 +70,18 @@ def parse_signatures(
         if conformed_name and notice_date:
             break
 
+    if not (conformed_name and notice_date):
+        for fallback in fallback_sections:
+            grid_name, grid_date = scan_signature_grid(
+                fallback.resolved_grid.rows, strict_dates=True
+            )
+            if not conformed_name and grid_name:
+                conformed_name = grid_name
+            if not notice_date and grid_date:
+                notice_date = grid_date
+            if conformed_name and notice_date:
+                break
+
     if not conformed_name:
         signature_block = extract_signature_block(combined)
         if (not signature_block or not signature_block.signatories) and full_text:
@@ -87,17 +102,21 @@ def parse_signatures(
             if signature_block.signatories[0].date and not notice_date:
                 notice_date = signature_block.signatories[0].date
 
-    if not conformed_name and full_text:
+    if (not conformed_name or not notice_date) and (full_text or text_lines):
         tail_lines = [
             line.strip()
-            for line in parse_html(full_text[-4000:]).text().splitlines()
+            for line in (
+                text_lines or parse_html(full_text[-4000:]).text().splitlines()
+            )
             if line.strip()
         ]
-        columnar_name, _columnar_date = extract_columnar_signature_and_date(
+        columnar_name, columnar_date = extract_columnar_signature_and_date(
             tail_lines, reference_year=reference_year
         )
-        if columnar_name:
+        if not conformed_name and columnar_name:
             conformed_name = columnar_name
+        if not notice_date and columnar_date:
+            notice_date = columnar_date
 
     if not notice_date:
         notice_match = NOTICE_DATE_LABEL_RE.search(combined)

@@ -42,6 +42,28 @@ def test_parse_signer_from_full_text_when_signature_table_is_empty():
     assert signature.signature == "/s/ Moritz Sell"
 
 
+def test_parse_signatures_recovers_from_fallback_section():
+    from edgar_sec.engine.forms.form144.sections import (
+        ClassifiedSection,
+        SectionRole,
+    )
+    from edgar_sec.engine.tables.ascii_html.model import ResolvedGrid
+
+    fallback = ClassifiedSection(
+        role=SectionRole.UNPARSED,
+        table_index=0,
+        raw_node=None,
+        resolved_grid=ResolvedGrid(
+            rows=(("/s/ Dana Roe", "DATE OF NOTICE", "March 3, 2021"),),
+            column_alignments=(),
+            column_widths=(),
+        ),
+    )
+    signature = parse_signatures(None, fallback_sections=(fallback,))
+    assert signature.signature == "/s/ Dana Roe"
+    assert signature.notice_date == "2021-03-03"
+
+
 def test_parse_remarks():
     html = """
     <table><tr><td>Remarks: Delivery under an equity compensation plan.</td></tr></table>
