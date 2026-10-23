@@ -20,7 +20,7 @@ def parse_schema_date(
     if (
         parsed is None
         or parsed.ambiguous
-        or ("month_year" in parsed.format_id and not allow_month_year)
+        or (parsed.format_id.startswith("month_year") and not allow_month_year)
         or (reference_year is None and "2digit" in parsed.format_id)
     ):
         return None
