@@ -455,10 +455,10 @@ CENSUS_EXPECTATIONS: dict[str, CensusExpectation] = {
     "span-supplement": CensusExpectation(
         n=5, correct=0, honest=5, surfaced_conflicts=0
     ),
-    # Followup moved 1402/706/696/184 -> 1438/721/717/192 when the BAC
-    # FY2011 bundle joined the corpus; adjudicated in the WS1 batch log.
+    # Followup moved 1438/721/717/192 -> 1706/853/853/221 when Wave D
+    # added 8 firms; adjudicated in the WS2 batch log.
     "followup": CensusExpectation(
-        n=1438, correct=721, honest=717, surfaced_conflicts=192
+        n=1706, correct=853, honest=853, surfaced_conflicts=221
     ),
 }
 

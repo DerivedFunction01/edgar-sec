@@ -69,7 +69,7 @@ def test_seed_cohort_entries_resolve_both_bac_filings() -> None:
     from edgar_sec.tools.xbrl_census_corpus import seed_cohort_entries
 
     entries = seed_cohort_entries()
-    assert len(entries) == 42
+    assert len(entries) == 50
     bac = [entry for entry in entries if entry.firm == "BAC"]
     assert {str(entry.accession) for entry in bac} == {
         "0000070858-25-000139",

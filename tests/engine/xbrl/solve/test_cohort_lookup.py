@@ -302,7 +302,17 @@ def test_bare_payables_near_forms(seed_lookup: CohortLookup) -> None:
     assert current.tier == "near"
     assert current.rule == "single_modifier_difference"
     assert current.direction == "specialization"
-    assert candidates[0].qname == "us-gaap:AccountsPayableCurrent"
+    # Wave D adjudication (WS2 batch log): DUK's two payables textblocks
+    # decompose onto the bare atom exactly, so they head the pool.
+    assert {candidates[0].qname, candidates[1].qname} == {
+        "duk:AccountsPayablePolicyPolicyTextBlock",
+        "duk:ScheduleOfAccountsPayableAndSupplierInvoicesSoldTableTextBlock",
+    }
+    assert all(
+        item.tier == "exact" and item.rule == "equality" for item in candidates[:2]
+    )
+    first_near = next(item for item in candidates if item.tier == "near")
+    assert first_near.qname == "us-gaap:AccountsPayableCurrent"
     accrued = by_qname["us-gaap:AccruedLiabilitiesCurrent"][0]
     assert accrued.tier == "near" and accrued.via_default
     total = by_qname["us-gaap:LiabilitiesCurrent"][0]

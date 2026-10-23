@@ -235,16 +235,16 @@ def test_dis_grounded_seed_fixture_verification() -> None:
 
 
 def test_seed_cohort_composition() -> None:
-    """Prove seed_cohort.json contains 42 filings across diverse sectors."""
+    """Prove seed_cohort.json contains 50 filings across diverse sectors."""
     cohort_path = fixture_path("xbrl/seed_cohort.json")
     cohort = json.loads(cohort_path.read_text(encoding="utf-8"))
-    assert len(cohort) == 42
+    assert len(cohort) == 50
     bac = [item for item in cohort if item["firm"] == "BAC"]
     assert [(item["fy"], item["accession"]) for item in bac] == [
         (2024, "0000070858-25-000139"),
         (2011, "0000070858-12-000155"),
     ]
-    assert len({item["firm"] for item in cohort}) == 41
+    assert len({item["firm"] for item in cohort}) == 49
 
     firms = {item["firm"] for item in cohort}
     assert "JPM" in firms
@@ -260,11 +260,15 @@ def test_seed_cohort_composition() -> None:
     assert "ALL_2022" in firms
     assert "BAC" in firms
     assert "ADM" in firms
+    assert "GOOGL" in firms
+    assert "DUK" in firms
+    assert "MET" in firms
+    assert "EOG" in firms
 
     sic_counts = Counter(item["sic_code"] for item in cohort)
     duplicated = {sic for sic, count in sic_counts.items() if count > 1}
     assert duplicated == {2040, 2080, 2834, 3711, 4512, 6021}
-    assert len(sic_counts) == 35
+    assert len(sic_counts) == 43
 
 
 def test_render_ascii_inspection(capsys) -> None:
