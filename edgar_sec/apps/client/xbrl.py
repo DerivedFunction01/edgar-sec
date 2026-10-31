@@ -23,7 +23,18 @@ from edgar_sec.apps.client.facts import (
     snapshot_rows,
 )
 from edgar_sec.domain.identity import AccessionNumber, Cik
+from edgar_sec.apps.client.display import filing_header
 from edgar_sec.apps.client.financials import XbrlFinancials
+from edgar_sec.apps.client.kernel import FilingKernel
+from edgar_sec.apps.client.location import (
+    FIDELITY_BUNDLE,
+    FIDELITY_INSTANCE,
+    FIDELITY_LOOKUP,
+    FIDELITY_SNAPSHOT,
+    FactLocation,
+    build_location,
+)
+from edgar_sec.apps.client.search import FactSearch, search_facts
 from edgar_sec.apps.client.fiscal import FiscalYearQueries, duration_length_class
 from edgar_sec.apps.client.statements import XbrlStatements
 from edgar_sec.apps.client.views import StatementView
@@ -112,10 +123,14 @@ class Xbrl:
         self._filing = filing_xbrl
         self._taxonomy = taxonomy or load_domain_taxonomy()
         self._evidence_record = evidence_record
+        self._axes_cache: tuple[AxisCoordinate, ...] | None = None
 
         arcs = self._filing.linkbases.calculation_arcs if self._filing.linkbases else ()
         def_arcs = (
             self._filing.linkbases.definition_arcs if self._filing.linkbases else ()
+        )
+        pres_arcs = (
+            self._filing.linkbases.presentation_arcs if self._filing.linkbases else ()
         )
         raw_labels = self._filing.linkbases.labels if self._filing.linkbases else ()
         self._labels = _labels_by_concept(raw_labels)
@@ -124,7 +139,7 @@ class Xbrl:
         self.facts = fact_set or XbrlFactSet(
             self._filing.facts, self._taxonomy, declarations=declarations
         )
-        self.statements = XbrlStatements(
+        self._kernel = FilingKernel(
             self._filing.facts,
             arcs,
             self._taxonomy,
@@ -132,15 +147,17 @@ class Xbrl:
             records=self.facts.records,
             declarations=declarations,
             definition_arcs=def_arcs,
+            presentation_arcs=pres_arcs,
+            cik=(self._filing.cik.to_10digit() if int(self._filing.cik) else None),
+            accession=str(self._filing.accession),
         )
+        self._provenance = (
+            FIDELITY_INSTANCE if filing_xbrl.instance_document else FIDELITY_BUNDLE
+        )
+        self.statements = XbrlStatements(self._kernel)
         self.financials = XbrlFinancials(
-            self._filing.facts,
-            arcs,
-            self._taxonomy,
-            self._labels,
-            display_records=self.facts.records,
+            self._kernel,
             composition_resolver=self._resolve_composition,
-            definition_arcs=def_arcs,
         )
 
         kb = EvidenceKnowledgeBase(self._taxonomy)
@@ -237,6 +254,7 @@ class Xbrl:
         )
         instance = object.__new__(cls)
         instance._populate(bundle, table.taxonomy, fact_set=fact_set)
+        instance._provenance = FIDELITY_LOOKUP
         return instance
 
     @classmethod
@@ -270,6 +288,7 @@ class Xbrl:
         )
         instance = object.__new__(cls)
         instance._populate(bundle, taxonomy, fact_set=fact_set)
+        instance._provenance = FIDELITY_SNAPSHOT
         return instance
 
     def _merged_declarations(
@@ -318,7 +337,9 @@ class Xbrl:
     @property
     def axes(self) -> tuple[AxisCoordinate, ...]:
         """Dimensional coordinates used by this filing's facts."""
-        return self.facts.dimensions()
+        if self._axes_cache is None:
+            self._axes_cache = self.facts.dimensions()
+        return self._axes_cache
 
     def query(
         self,
@@ -358,6 +379,31 @@ class Xbrl:
             arcs,
             length_class=length_class,
             dimension_policy=policy,
+        )
+
+    def search(self, term: str, *, limit: int | None = None) -> FactSearch:
+        """Rank this filing's facts by coordinate closeness to a term.
+
+        Retrieval only: a hit confers no equivalence status and
+        never feeds query() or solver results.
+        """
+        return search_facts(
+            term, tuple(self.facts), self.facts.records, self._taxonomy, limit=limit
+        )
+
+    def locate(self, qname: str, *, period: str | None = None) -> FactLocation:
+        """Locate a concept: document, role paths, calc parents, context.
+
+        Descriptive only. Period (an ISO instant or duration end
+        date) selects the fact whose context block is carried.
+        """
+        return build_location(
+            self._kernel,
+            self._filing,
+            self.statements._catalog(),
+            qname,
+            period=period,
+            fidelity=self._provenance,
         )
 
     @staticmethod
@@ -412,7 +458,10 @@ class Xbrl:
             year=year,
             graph_cls=StatementGraph,
         )
-        return StatementView(graph)
+        header = filing_header(
+            self._kernel.registrant_name, self._kernel.cik, self._kernel.accession
+        )
+        return StatementView(graph, header=header)
 
     def chain(
         self,

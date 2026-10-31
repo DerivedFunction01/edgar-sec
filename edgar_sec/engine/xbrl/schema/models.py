@@ -122,6 +122,7 @@ class FilingXbrl:
     facts: tuple[XbrlFact, ...]
     linkbases: LinkbaseBundle
     namespaces: tuple[tuple[str, str], ...] = ()
+    instance_document: str | None = None
 
 
 @dataclass(frozen=True, slots=True)

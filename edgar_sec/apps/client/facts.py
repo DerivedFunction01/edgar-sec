@@ -12,13 +12,17 @@ from typing import Any
 import pyarrow as pa
 
 from edgar_sec.domain.identity import AccessionNumber
-from edgar_sec.engine.xbrl.normalize.decomposer import residual_counts
+from edgar_sec.engine.xbrl.normalize.decomposer import (
+    residual_counts,
+    split_camel_case,
+)
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import (
     CalculationArc,
     ConceptDeclaration,
     PresentationArc,
     XbrlFact,
+    qname_local,
 )
 from edgar_sec.engine.xbrl.solve.concept_table import ConceptRecord, ConceptTable
 from edgar_sec.engine.xbrl.solve.cohort_lookup import CohortFact, CohortFactMatch
@@ -74,6 +78,61 @@ class DisplayRecord:
             derived_horizon=record.derived_horizon,
             item_type=item_type,
         )
+
+
+def _rejoin_decimal_tokens(tokens: list[str]) -> list[str]:
+    """Rejoin decimal amounts the camel split breaks at the point."""
+    out: list[str] = []
+    i = 0
+    while i < len(tokens):
+        token = tokens[i]
+        nxt = tokens[i + 1] if i + 1 < len(tokens) else ""
+        if token[-1:] == "." and nxt[:1].isdigit():
+            digits = 0
+            while digits < len(nxt) and nxt[digits].isdigit():
+                digits += 1
+            out.append(f"{token}{nxt[:digits]}")
+            if nxt[digits:]:
+                out.append(nxt[digits:])
+            i += 2
+        else:
+            out.append(token)
+            i += 1
+    return out
+
+
+def _local_tokens(qname: str) -> list[str]:
+    """Local name split into words, decimal amounts rejoined."""
+    return _rejoin_decimal_tokens(list(split_camel_case(qname_local(qname))))
+
+
+def member_display_name(
+    member_qname: str, labels: Mapping[str, str] | None = None
+) -> str:
+    """Display name for a dimension member: its filed label, else a split name.
+
+    Members are never tokenized into atoms, so the fallback splits the
+    local name into words and drops the trailing Member token.
+    """
+    if labels:
+        label = labels.get(member_qname)
+        if label:
+            return label
+    tokens = _local_tokens(member_qname)
+    if tokens and tokens[-1] == "Member":
+        tokens.pop()
+    return " ".join(tokens) or member_qname
+
+
+def concept_display_name(
+    concept_qname: str, labels: Mapping[str, str] | None = None
+) -> str:
+    """Display name for a concept: its filed label, else a split name."""
+    if labels:
+        label = labels.get(concept_qname)
+        if label:
+            return label
+    return " ".join(_local_tokens(concept_qname)) or concept_qname
 
 
 def display_record_from_table(
@@ -383,6 +442,20 @@ class XbrlFactQueryBuilder:
         self._facts = filtered
         return self
 
+    def close_to(self, term: str) -> XbrlFactQueryBuilder:
+        """Filter to facts whose concepts rank EXACT or NEAR to the term.
+
+        Ranking is the tokenizer search over atom coordinates; the
+        builder's current fact order is preserved.
+        """
+        from edgar_sec.apps.client.search import close_match_qnames
+
+        keep = close_match_qnames(
+            term, self._facts, self._display_records(), self._taxonomy
+        )
+        self._facts = [f for f in self._facts if f.concept_qname in keep]
+        return self
+
     def period(
         self,
         period_type: str | None = None,
@@ -596,25 +669,28 @@ class XbrlFactSet:
             except ImportError:
                 return table.to_pylist()
 
+    def _arrow_row(self, fact: XbrlFact) -> dict[str, Any]:
+        """One fact's export row, with its record's residual mass appended."""
+        record = self._records.get(fact.concept_qname)
+        intent, total = record.residual_mass if record is not None else (None, None)
+        return {
+            "accession": str(fact.accession),
+            "concept_qname": fact.concept_qname,
+            "value": str(fact.value) if fact.value is not None else None,
+            "numeric_value": (
+                float(fact.value) if isinstance(fact.value, (int, float)) else None
+            ),
+            "unit": fact.unit,
+            "decimals": fact.decimals,
+            "period_type": fact.period_type,
+            "start_date": fact.start_date,
+            "end_date": fact.end_date,
+            "instant_date": fact.instant_date,
+            "dimensions": dict(fact.dimensions),
+            "residual_intent": intent,
+            "residual_total": total,
+        }
+
     def to_arrow(self) -> pa.Table:
         """Export facts to an Apache Arrow columnar Table."""
-        return pa.Table.from_pylist(
-            [
-                {
-                    "accession": str(f.accession),
-                    "concept_qname": f.concept_qname,
-                    "value": str(f.value) if f.value is not None else None,
-                    "numeric_value": (
-                        float(f.value) if isinstance(f.value, (int, float)) else None
-                    ),
-                    "unit": f.unit,
-                    "decimals": f.decimals,
-                    "period_type": f.period_type,
-                    "start_date": f.start_date,
-                    "end_date": f.end_date,
-                    "instant_date": f.instant_date,
-                    "dimensions": dict(f.dimensions),
-                }
-                for f in self._facts
-            ]
-        )
+        return pa.Table.from_pylist([self._arrow_row(f) for f in self._facts])

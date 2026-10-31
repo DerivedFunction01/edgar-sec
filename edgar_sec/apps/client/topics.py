@@ -10,7 +10,7 @@ from __future__ import annotations
 from collections.abc import Mapping, Sequence
 from datetime import date, timedelta
 
-from edgar_sec.apps.client.facts import DisplayRecord
+from edgar_sec.apps.client.facts import DisplayRecord, member_display_name
 from edgar_sec.engine.xbrl.evidence.subsumption import MemberSubsumption
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import CalculationArc, DefinitionArc, XbrlFact
@@ -489,7 +489,7 @@ def build_segment_breakdown(
     Single-axis members form the antichain; with definition arcs a member
     subsumed by another is excluded declaratively, otherwise all stay.
     """
-    del records, taxonomy, labels
+    del records, taxonomy
     subsumption = MemberSubsumption(definition_arcs) if definition_arcs else None
     target_year = str(year) if year is not None else None
     totals: dict[tuple[str, str | None, _PeriodKey], XbrlFact] = {}
@@ -541,7 +541,7 @@ def build_segment_breakdown(
                 members=tuple(
                     SegmentMember(
                         member_qname=member,
-                        label=member.split(":")[-1],
+                        label=member_display_name(member, labels),
                         value=float(fact.value),  # type: ignore[arg-type]
                     )
                     for member, fact in ordered

@@ -22,6 +22,7 @@ def parse_filing_xbrl(filing: FilingAggregate) -> FilingXbrl:
     def_bytes: bytes | None = None
     xsd_bytes: bytes | None = None
     ins_bytes: bytes | None = None
+    ins_filename: str | None = None
 
     for att in filing.linkbases:
         lb_type = classify_linkbase(
@@ -43,6 +44,7 @@ def parse_filing_xbrl(filing: FilingAggregate) -> FilingXbrl:
             xsd_bytes = att.raw()
         elif lb_type == LinkbaseType.INSTANCE:
             ins_bytes = att.raw()
+            ins_filename = att.filename
 
     bundle = parse_linkbase_bundle(
         cal_xml=cal_bytes,
@@ -70,4 +72,5 @@ def parse_filing_xbrl(filing: FilingAggregate) -> FilingXbrl:
         facts=facts,
         linkbases=bundle,
         namespaces=namespaces,
+        instance_document=ins_filename,
     )

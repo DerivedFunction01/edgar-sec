@@ -7,6 +7,7 @@ from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from typing import Any
 
+from edgar_sec.apps.client.markdown import comparison_to_markdown
 from edgar_sec.apps.client.rendering import render_comparison_table
 from edgar_sec.engine.xbrl.solve.query import QueryStatus
 
@@ -82,6 +83,10 @@ class ComparisonView:
     def render_table(self) -> str:
         """Render cross-company comparison table with side-by-side entities and margins."""
         return render_comparison_table(self.cohort_data, self.metric_labels)
+
+    def to_markdown(self) -> str:
+        """Render the comparison matrix as a markdown pipe table."""
+        return comparison_to_markdown(self.cohort_data, self.metric_labels)
 
     def to_dataframe(self) -> Any:
         """Export comparison matrix to a DataFrame or records."""
@@ -218,17 +223,21 @@ def compare_companies(
                 specs.append(SubspaceMetric(m, m.replace("_", " ").title(), "H_INCOME"))
 
     standard = {m.key: m for m in DEFAULT_METRICS}
+    needed: dict[str, SubspaceMetric] = {}
+    for s in specs:
+        needed.setdefault(s.key, standard.get(s.key, s))
+    for _key, _label, numerator, denominator in DERIVED_MARGINS:
+        for dep in (numerator, denominator):
+            needed.setdefault(dep, standard[dep])
+
     cohort_data: dict[str, dict[str, float | None]] = {}
     for comp in companies:
         entity_name = _entity_name(comp, len(cohort_data))
 
         fin = comp.financials
         c_data: dict[str, float | None] = {}
-        for key, spec in standard.items():
+        for key, spec in needed.items():
             c_data[key] = _resolve_metric(fin, spec, year)
-        for s in specs:
-            if s.key not in c_data:
-                c_data[s.key] = _resolve_metric(fin, s, year)
 
         for key, _label, numerator, denominator in DERIVED_MARGINS:
             num = c_data.get(numerator)

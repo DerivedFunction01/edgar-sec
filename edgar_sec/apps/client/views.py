@@ -4,17 +4,20 @@ from __future__ import annotations
 
 from typing import Any
 
+from edgar_sec.apps.client.markdown import statement_to_markdown
 from edgar_sec.apps.client.rendering import (
     cash_rollforward_to_dataframe,
     debt_to_dataframe,
     derivatives_to_dataframe,
     equity_rollforward_to_dataframe,
+    fair_value_hierarchy_to_dataframe,
     level3_rollforward_to_dataframe,
     pension_funded_status_to_dataframe,
     render_cash_rollforward_ascii,
     render_debt_ascii,
     render_derivatives_ascii,
     render_equity_rollforward_ascii,
+    render_fair_value_hierarchy_ascii,
     render_level3_rollforward_ascii,
     render_pension_funded_status_ascii,
     render_segment_breakdown_ascii,
@@ -28,6 +31,8 @@ from edgar_sec.engine.xbrl.solve.rollforward_graphs import (
     CashRollforwardGraph,
     EquityComponentRollforward,
     EquityRollforwardGraph,
+    FairValueHierarchyGraph,
+    FairValueHierarchyRow,
     Level3RollforwardGraph,
     PensionFundedStatusGraph,
     PensionRollforwardSide,
@@ -44,8 +49,9 @@ from edgar_sec.engine.xbrl.solve.statement import (
 class StatementView:
     """Client wrapper providing tabular export and visual rendering over a graph."""
 
-    def __init__(self, graph: StatementGraph) -> None:
+    def __init__(self, graph: StatementGraph, header: str | None = None) -> None:
         self.graph = graph
+        self.header = header
 
     @property
     def root(self) -> StatementNode | None:
@@ -76,7 +82,7 @@ class StatementView:
 
     def filter_year(self, year: int | str) -> StatementView:
         """Return a statement view filtered to a specific fiscal year."""
-        return StatementView(self.graph.filter_year(year))
+        return StatementView(self.graph.filter_year(year), header=self.header)
 
     def verify_antichain(self) -> AntiChainOutcome:
         """Verify non-double-counting and exact summation balance."""
@@ -86,9 +92,17 @@ class StatementView:
         """Export statement nodes and multi-year series to a DataFrame."""
         return statement_to_dataframe(self.graph, include_yoy=include_yoy)
 
-    def render_table(self, view: str = "standard") -> str:
+    def render_table(self, view: str = "standard", *, scaled: bool = True) -> str:
         """Render clean multi-column accounting statement table."""
-        return render_statement_table(self.graph, view=view)
+        return render_statement_table(
+            self.graph, view=view, scaled=scaled, header=self.header
+        )
+
+    def to_markdown(self, view: str = "standard", *, scaled: bool = True) -> str:
+        """Render the statement as a markdown pipe table."""
+        return statement_to_markdown(
+            self.graph, view=view, scaled=scaled, header=self.header
+        )
 
     def render_ascii(self, show_yoy: bool = True) -> str:
         """Render hierarchical ASCII tree with multi-year and YoY values."""
@@ -613,4 +627,45 @@ class EquityRollforwardView:
     def __repr__(self) -> str:
         return (
             f"<EquityRollforwardView closing={self.closing} verified={self.verified}>"
+        )
+
+
+class FairValueHierarchyView:
+    """Presentation wrapper for the ASC 820 fair-value hierarchy split."""
+
+    def __init__(self, graph: FairValueHierarchyGraph) -> None:
+        self.graph = graph
+
+    @property
+    def axis_qname(self) -> str | None:
+        return self.graph.axis_qname
+
+    @property
+    def rows(self) -> tuple[FairValueHierarchyRow, ...]:
+        return self.graph.rows
+
+    @property
+    def verified_rows(self) -> tuple[FairValueHierarchyRow, ...]:
+        return self.graph.verified_rows
+
+    def row(self, concept_qname: str) -> FairValueHierarchyRow | None:
+        """Return the latest row for one concept, or None."""
+        matches = [r for r in self.graph.rows if r.concept_qname == concept_qname]
+        return matches[-1] if matches else None
+
+    def to_dataframe(self) -> Any:
+        """Export hierarchy rows and their checks to a DataFrame."""
+        return fair_value_hierarchy_to_dataframe(self.graph)
+
+    def render_ascii(self) -> str:
+        """Render ASCII summary of the hierarchy rows and their checks."""
+        return render_fair_value_hierarchy_ascii(self.graph)
+
+    def __str__(self) -> str:
+        return self.render_ascii()
+
+    def __repr__(self) -> str:
+        return (
+            f"<FairValueHierarchyView rows={len(self.rows)} "
+            f"verified={len(self.verified_rows)}>"
         )

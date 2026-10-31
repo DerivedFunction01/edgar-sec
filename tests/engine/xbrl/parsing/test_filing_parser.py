@@ -78,6 +78,62 @@ def test_parse_filing_xbrl_from_attachments() -> None:
     assert len(xbrl.facts) == 8
 
 
+def test_parse_filing_xbrl_carries_instance_document() -> None:
+    """Verify the instance attachment's filename lands on the parsed bundle."""
+    htm_bytes = fixture_path("xbrl/msft-20240630_htm.xml").read_bytes()
+    acc = AccessionNumber("0000950170-24-087843")
+    cik = Cik.from_raw(789019)
+    attachments = (
+        FilingAttachment(
+            attachment_id=f"{acc}-ins",
+            document_type="XML",
+            filename="msft-20240630_htm.xml",
+            url="https://sec.gov/ins.xml",
+            fetcher=lambda _: htm_bytes,
+        ),
+    )
+    filing = FilingAggregate(
+        accession=acc,
+        primary_cik=cik,
+        ciks=(cik,),
+        form="10-K",
+        filing_date="2024-07-30",
+        attachments=attachments,
+    )
+
+    xbrl = parse_filing_xbrl(filing)
+    assert xbrl.instance_document == "msft-20240630_htm.xml"
+    assert len(xbrl.facts) == 8
+
+
+def test_parse_filing_xbrl_without_instance_has_no_document() -> None:
+    """Verify a filing with no instance attachment carries no document."""
+    cal_bytes = fixture_path("xbrl/msft-20240630_cal.xml").read_bytes()
+    acc = AccessionNumber("0000950170-24-087843")
+    cik = Cik.from_raw(789019)
+    attachments = (
+        FilingAttachment(
+            attachment_id=f"{acc}-cal",
+            document_type="EX-101.CAL",
+            filename="msft-20240630_cal.xml",
+            url="https://sec.gov/cal.xml",
+            fetcher=lambda _: cal_bytes,
+        ),
+    )
+    filing = FilingAggregate(
+        accession=acc,
+        primary_cik=cik,
+        ciks=(cik,),
+        form="10-K",
+        filing_date="2024-07-30",
+        attachments=attachments,
+    )
+
+    xbrl = parse_filing_xbrl(filing)
+    assert xbrl.instance_document is None
+    assert xbrl.facts == ()
+
+
 def test_parse_filing_xbrl_with_definition_linkbase() -> None:
     """Verify an EX-101.DEF attachment populates bundle definition arcs."""
     def_bytes = fixture_path("xbrl/msft-20240630_def.xml").read_bytes()

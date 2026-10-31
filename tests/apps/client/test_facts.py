@@ -1,6 +1,11 @@
 """Display-fact records: tokenized once at set construction, consumed by filters."""
 
-from edgar_sec.apps.client.facts import XbrlFactSet, build_display_records
+from edgar_sec.apps.client.facts import (
+    XbrlFactSet,
+    build_display_records,
+    member_display_name,
+)
+from edgar_sec.apps.client.search import search_facts
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
@@ -208,3 +213,46 @@ def test_facade_fact_set_and_financials_share_records() -> None:
         is xbrl.facts.records["us-gaap:Assets"]
     )
     assert xbrl.financials.revenue_series == xbrl.financials._series("H_REVENUE")
+
+
+def test_member_display_name_prefers_label_then_split() -> None:
+    """A filed label wins; else the local name splits and drops Member."""
+    labels = {"x:AlphaMember": "Alpha Segment"}
+    assert member_display_name("x:AlphaMember", labels) == "Alpha Segment"
+    assert member_display_name("x:BetaMember", labels) == "Beta"
+    assert (
+        member_display_name("us-gaap:FairValueInputsLevel1Member")
+        == "Fair Value Inputs Level 1"
+    )
+    debt_member = (
+        "cme:A750.0millionFixedRateNotesDueSeptember2043InterestEqualTo5.3Member"
+    )
+    assert member_display_name(debt_member) == (
+        "A 750.0 million Fixed Rate Notes Due September 2043 Interest Equal To 5.3"
+    )
+
+
+def test_fact_set_export_carries_residual_mass() -> None:
+    """The tabular export appends each concept's residual mass columns."""
+    taxonomy = load_domain_taxonomy()
+    fact_set = XbrlFactSet(load_seed_facts(_FOLDER), taxonomy)
+    table = fact_set.to_arrow()
+    assert table.column_names[-2:] == ["residual_intent", "residual_total"]
+    rows = table.to_pylist()
+    assert any(row["residual_total"] for row in rows)
+    for row in rows:
+        record = fact_set.record_for(row["concept_qname"])
+        assert record is not None
+        assert (row["residual_intent"], row["residual_total"]) == (record.residual_mass)
+
+
+def test_close_to_narrows_builder_to_search_hits() -> None:
+    """close_to keeps exactly the concepts the search ranking returns."""
+    taxonomy = load_domain_taxonomy()
+    facts = load_seed_facts(_FOLDER)
+    fact_set = XbrlFactSet(facts, taxonomy)
+    expected = search_facts("revenue", facts, fact_set.records, taxonomy)
+    narrowed = fact_set.query().close_to("revenue").execute()
+    assert narrowed
+    assert {f.concept_qname for f in narrowed} == {hit.qname for hit in expected.hits}
+    assert len(fact_set.query().close_to("zanzibar").execute()) == 0

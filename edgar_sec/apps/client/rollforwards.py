@@ -12,9 +12,11 @@ from datetime import date, timedelta
 from edgar_sec.apps.client.facts import DisplayRecord
 from edgar_sec.apps.client.topics import _NON_MONETARY, _AtomSource, accumulate_movement
 from edgar_sec.engine.xbrl.schema.atoms import Atom
-from edgar_sec.engine.xbrl.schema.models import XbrlFact
-from edgar_sec.engine.xbrl.solve.identities import negative_roles
+from edgar_sec.engine.xbrl.schema.models import XbrlFact, qname_local
+from edgar_sec.engine.xbrl.solve.identities import identity_verified, negative_roles
 from edgar_sec.engine.xbrl.solve.rollforward_graphs import (
+    FairValueHierarchyGraph,
+    FairValueHierarchyRow,
     Level3RollforwardGraph,
     PensionFundedStatusGraph,
     PensionRollforwardSide,
@@ -476,3 +478,198 @@ def build_pension_funded_status(
         if current is None or (graph.end_date or "") > (current.end_date or ""):
             latest[key] = graph
     return max(latest.values(), key=quality)
+
+
+_FV_TOKEN = "fair value"
+_FV_DEFAULT_AXIS = "us-gaap:FairValueByFairValueHierarchyLevelAxis"
+_FREQUENCY_AXIS = "us-gaap:FairValueByMeasurementFrequencyAxis"
+_RECURRING_LOCAL = "FairValueMeasurementsRecurringMember"
+_LEVEL_LOCALS = frozenset(
+    {
+        "FairValueInputsLevel1Member",
+        "FairValueInputsLevel2Member",
+        "FairValueInputsLevel3Member",
+        "FairValueMeasuredAtNetAssetValuePerShareMember",
+    }
+)
+
+
+def _fair_value_axes(
+    facts: Sequence[XbrlFact], taxonomy: DomainTaxonomy
+) -> tuple[str, ...]:
+    """Hierarchy axes in use: the declared default plus family extensions.
+
+    An extension axis qualifies only when this filing actually files
+    level members on it, so sibling timing axes stay out.
+    """
+    found = taxonomy.find_token_axis(_FV_TOKEN)
+    default_axis = found[1] if found else _FV_DEFAULT_AXIS
+    family = found[0] if found else None
+    present = {axis for fact in facts for axis in fact.dimensions}
+    axes: list[str] = []
+    for axis in sorted(present):
+        if axis == default_axis:
+            axes.append(axis)
+        elif family is not None and taxonomy.classify_axis(axis) == family:
+            members = {
+                qname_local(fact.dimensions[axis])
+                for fact in facts
+                if axis in fact.dimensions
+            }
+            if members & _LEVEL_LOCALS:
+                axes.append(axis)
+    return tuple(axes)
+
+
+def build_fair_value_hierarchy(
+    facts: Sequence[XbrlFact],
+    records: Mapping[str, DisplayRecord],
+    taxonomy: DomainTaxonomy,
+    labels: Mapping[str, str] | None = None,
+    year: int | str | None = None,
+) -> FairValueHierarchyGraph:
+    """Resolve every concept's level split against its filed total.
+
+    A class is a dimension tuple minus the hierarchy, frequency, and
+    constant qualifier axes; only the classless row carries the total.
+    """
+    lbl_map = dict(labels or {})
+    target_year = str(year) if year is not None else None
+    axes = _fair_value_axes(facts, taxonomy)
+    if not axes:
+        return FairValueHierarchyGraph()
+    axis_set = set(axes)
+
+    def in_year(fact: XbrlFact) -> bool:
+        return target_year is None or (fact.instant_date or "")[:4] == target_year
+
+    candidates: list[tuple[XbrlFact, str, str]] = []
+    totals: dict[tuple[str, str | None, str], XbrlFact] = {}
+    for f in facts:
+        if not isinstance(f.value, (int, float)) or f.unit in _NON_MONETARY:
+            continue
+        if f.period_type != "instant" or not f.instant_date or not in_year(f):
+            continue
+        hier_axis = next((ax for ax in axes if ax in f.dimensions), None)
+        if hier_axis is None:
+            if not f.dimensions:
+                key = (f.concept_qname, f.unit, f.instant_date)
+                current = totals.get(key)
+                if current is None or period_rank(f) > period_rank(current):
+                    totals[key] = f
+            continue
+        candidates.append((f, hier_axis, f.dimensions[hier_axis]))
+
+    members_by_axis: dict[str, set[str]] = {}
+    for f, _axis, _member in candidates:
+        for axis, member in f.dimensions.items():
+            if axis not in axis_set and axis != _FREQUENCY_AXIS:
+                members_by_axis.setdefault(axis, set()).add(member)
+    qualifiers = {
+        axis for axis, members in members_by_axis.items() if len(members) == 1
+    }
+
+    grouped: dict[tuple[object, ...], dict[str, XbrlFact]] = {}
+    for f, hier_axis, member in candidates:
+        class_key = tuple(
+            sorted(
+                (ax, mem)
+                for ax, mem in f.dimensions.items()
+                if ax not in axis_set and ax != _FREQUENCY_AXIS and ax not in qualifiers
+            )
+        )
+        row_key = (
+            hier_axis,
+            f.concept_qname,
+            f.unit,
+            f.instant_date,
+            f.dimensions.get(_FREQUENCY_AXIS),
+            class_key,
+        )
+        slot = grouped.setdefault(row_key, {})
+        current = slot.get(member)
+        if current is None or period_rank(f) > period_rank(current):
+            slot[member] = f
+
+    rollforward_cache: dict[tuple[str, str] | None, Level3RollforwardGraph] = {}
+
+    def rollforward_for(
+        class_key: _ClassKey,
+    ) -> Level3RollforwardGraph:
+        selector = class_key[0] if class_key else None
+        if selector not in rollforward_cache:
+            if selector is None:
+                rollforward_cache[selector] = build_level3_rollforward(
+                    facts, records, taxonomy, lbl_map, year
+                )
+            else:
+                rollforward_cache[selector] = build_level3_rollforward(
+                    facts,
+                    records,
+                    taxonomy,
+                    lbl_map,
+                    year,
+                    axis_qname=selector[0],
+                    member_qname=selector[1],
+                )
+        return rollforward_cache[selector]
+
+    def l3_tied(
+        levels: Mapping[str, float],
+        frequency: str | None,
+        class_key: _ClassKey,
+        instant: str,
+    ) -> bool | None:
+        level3 = [
+            value
+            for member, value in levels.items()
+            if qname_local(member) == "FairValueInputsLevel3Member"
+        ]
+        # A tie-out needs an identified class: a classless row names no
+        # single rollforward class, so it stays unjudged (None).
+        if not level3 or not class_key:
+            return None
+        if frequency is not None and qname_local(frequency) != _RECURRING_LOCAL:
+            return None
+        graph = rollforward_for(class_key)
+        if graph.closing is None or graph.end_date != instant:
+            return None
+        graph_dims = dict(graph.dimensions)
+        if any(graph_dims.get(ax) != mem for ax, mem in class_key):
+            return None
+        return identity_verified(sum(level3), graph.closing)
+
+    rows: list[FairValueHierarchyRow] = []
+    for row_key, slot in grouped.items():
+        hier_axis, concept, unit, instant, frequency, class_key = row_key
+        total_fact = totals.get((concept, unit, instant)) if not class_key else None  # type: ignore[arg-type]
+        levels = {
+            member: float(fact.value)  # type: ignore[arg-type]
+            for member, fact in sorted(slot.items())
+        }
+        rows.append(
+            FairValueHierarchyRow(
+                concept_qname=concept,  # type: ignore[arg-type]
+                label=lbl_map.get(concept, qname_local(concept)),  # type: ignore[arg-type]
+                instant_date=instant,  # type: ignore[arg-type]
+                unit=unit,  # type: ignore[arg-type]
+                frequency_member=frequency,  # type: ignore[arg-type]
+                dimensions=class_key,  # type: ignore[arg-type]
+                levels=levels,
+                total=float(total_fact.value) if total_fact is not None else None,  # type: ignore[arg-type]
+                l3_tied=l3_tied(levels, frequency, class_key, instant),  # type: ignore[arg-type]
+            )
+        )
+    rows.sort(
+        key=lambda r: (
+            r.instant_date or "",
+            r.concept_qname,
+            r.frequency_member or "",
+            r.dimensions,
+        )
+    )
+    used_axes = {row_key[0] for row_key in grouped}
+    return FairValueHierarchyGraph(
+        axis_qname=axes[0] if len(used_axes) == 1 else None,
+        rows=tuple(rows),
+    )

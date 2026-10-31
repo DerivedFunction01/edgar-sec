@@ -219,8 +219,10 @@ def test_future_2032_taxonomy_zero_knowledge_solving() -> None:
     assert "[INCOME STATEMENT]" in table_str
     assert "FY 2032" in table_str
     assert "FY 2031" in table_str
-    assert "$520,000,000,000" in table_str
-    assert "$160,000,000,000" in table_str
+    assert "(in millions)" in table_str
+    assert "$520,000" in table_str
+    assert "$160,000" in table_str
+    assert "$520,000,000,000" in inc.render_table(scaled=False)
 
     # 4. Dynamic Financials via Subatomic Coordinates
     fin = qd32.financials

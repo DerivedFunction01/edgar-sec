@@ -12,6 +12,7 @@ from edgar_sec.engine.xbrl.schema.models import (
     LinkbaseBundle,
     XbrlFact,
 )
+from edgar_sec.engine.xbrl.solve.composer import StatementComposer
 from edgar_sec.engine.xbrl.solve.query import (
     FinancialQuery,
     FinancialQueryEngine,
@@ -21,6 +22,7 @@ from edgar_sec.engine.xbrl.solve.query import (
 )
 from edgar_sec.engine.xbrl.solve.scoping import FactScope
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
+from edgar_sec.engine.xbrl.solve.statement import StatementGraph
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from tests.engine.xbrl.solve.conftest import (
     load_seed_calculation_arcs,
@@ -208,8 +210,10 @@ def test_xbrl_statement_table_and_comparison() -> None:
     assert "FY 2024" in table_str
     assert "FY 2023" in table_str
     assert "YoY (%)" in table_str
-    assert "$391,035,000,000" in table_str
-    assert "$93,736,000,000" in table_str
+    assert "(in millions)" in table_str
+    assert "$391,035" in table_str
+    assert "$93,736" in table_str
+    assert "$391,035,000,000" in inc.render_table(scaled=False)
     assert "(+)" not in table_str
     assert str(inc) == table_str
 
@@ -222,6 +226,85 @@ def test_xbrl_statement_table_and_comparison() -> None:
 
     c_df = comp_view.to_dataframe()
     assert len(c_df) > 0
+
+
+def test_financials_metrics_match_declared_ratios() -> None:
+    """metrics() returns the declared ratios computed from served scalars."""
+    xbrl = _create_xbrl_facade("msft")
+    metrics = xbrl.financials.metrics()
+    assert round(metrics["operating_margin"], 4) == 0.4464
+    assert round(metrics["net_margin"], 4) == 0.3596
+    assert round(metrics["return_on_assets"], 4) == 0.1721
+    assert metrics["operating_margin"] == (
+        xbrl.financials.operating_income / xbrl.financials.revenue
+    )
+    data = next(iter(xbrl.compare([]).cohort_data.values()))
+    assert metrics["operating_margin"] == data["operating_margin"]
+    assert metrics["net_margin"] == data["net_margin"]
+    assert metrics["return_on_assets"] == data["return_on_assets"]
+
+
+def test_financials_value_period_offset_reads_served_series() -> None:
+    """value() walks the served series by offset and stops at its edge."""
+    fin = _create_xbrl_facade("msft").financials
+    assert fin.value("revenue") == 245_122_000_000.0
+    assert fin.value("revenue", period_offset=1) == 211_915_000_000.0
+    assert fin.value("revenue", period_offset=2) == 198_270_000_000.0
+    assert fin.value("revenue", period_offset=3) is None
+    assert fin.value("total_assets", period_offset=1) == 411_976_000_000.0
+    assert fin.value("free_cash_flow") == fin.free_cash_flow
+    assert fin.value("free_cash_flow", period_offset=1) is None
+    with pytest.raises(ValueError, match="unknown metric"):
+        fin.value("zanzibar")
+    with pytest.raises(ValueError, match="period_offset"):
+        fin.value("revenue", period_offset=-1)
+
+
+def test_statement_render_scales_wraps_and_heads() -> None:
+    """Scaled table: units note, filing header, wrapped humanized labels."""
+    income = _create_xbrl_facade("msft").statements.income_statement()
+    table = income.render_table()
+    assert table.startswith("MICROSOFT CORPORATION")
+    assert "(in millions)" in table
+    assert "$245,122" in table
+    assert "Revenue From Contract With" in table
+    assert "Customer Excluding Assessed Tax" in table
+    assert "RevenueFromContractWithCustomer" not in table
+    full = income.render_table(scaled=False)
+    assert "$245,122,000,000" in full
+    assert "(in millions)" not in full
+
+
+def test_jpm_long_labels_wrap_instead_of_truncating() -> None:
+    """A label longer than the column wraps whole; nothing is truncated."""
+    table = _create_xbrl_facade("jpm").statements.balance_sheet().render_table()
+    assert "Federal Funds Sold And Securities" in table
+    assert "Purchased Under Agreements To Resell" in table
+    assert "FederalFundsSoldAndSecuritiesPurchasedUn" not in table
+
+
+def test_statement_markdown_pipe_table_matches_scaled_totals() -> None:
+    """Markdown export parses as a pipe table with the scaled totals."""
+    income = _create_xbrl_facade("msft").statements.income_statement()
+    md = income.to_markdown()
+    assert md.startswith("MICROSOFT CORPORATION")
+    assert "(in millions)" in md
+    pipe_lines = [line for line in md.splitlines() if line.startswith("|")]
+    assert pipe_lines[0].startswith("| Financial Concept |")
+    assert set(pipe_lines[1].replace("|", " ").split()) == {"---"}
+    revenue = next(line for line in pipe_lines if "Revenue From Contract" in line)
+    cells = [cell.strip() for cell in revenue.strip().strip("|").split("|")]
+    assert cells[-2] == "$245,122"
+    assert cells[-1] == "+15.7%"
+
+
+def test_comparison_markdown_carries_labels_and_ratios() -> None:
+    """Comparison markdown heads with the metric column and ratio rows."""
+    msft = _create_xbrl_facade("msft")
+    md = msft.compare([_create_xbrl_facade("aapl")]).to_markdown()
+    assert md.splitlines()[0].startswith("| Metric |")
+    assert "Operating Margin" in md
+    assert "Return on Assets (ROA)" in md
 
 
 def test_xbrl_macro_commitments_and_cash_flow() -> None:
@@ -909,3 +992,231 @@ def test_xbrl_query_jnj_revenue_guard_promotion_surfaces_at_near_tier() -> None:
     )
     assert result.tier == "near"
     assert result.equivalents[0].direction == "specialization"
+
+
+def test_statements_topic_views_match_financials() -> None:
+    """Verify the statements surface serves the topic views identically."""
+    xbrl = _create_xbrl_facade("msft")
+
+    derivatives = xbrl.statements.derivatives()
+    assert derivatives.gross_assets == xbrl.financials.derivatives.gross_assets
+    assert derivatives.gross_assets is not None
+    debt = xbrl.statements.debt()
+    assert debt.total_debt == xbrl.financials.debt.total_debt
+    assert debt.total_debt is not None
+    cash = xbrl.statements.cash_rollforward()
+    assert cash.end == xbrl.financials.cash_rollforward.end
+    assert cash.end is not None
+
+
+def test_statements_comprehensive_income_and_cover() -> None:
+    """Verify the comprehensive-income root and the dei cover facts."""
+    xbrl = _create_xbrl_facade("msft")
+
+    comp = xbrl.statements.comprehensive_income_statement()
+    assert comp.root is not None
+    assert comp.root.concept_qname == "us-gaap:ComprehensiveIncomeNetOfTax"
+    assert comp.root.value is not None
+
+    cover = xbrl.statements.cover()
+    assert len(cover) > 30
+    assert all(fact.concept_qname.split(":")[0] == "dei" for fact in cover)
+    assert [fact.concept_qname for fact in cover] == sorted(
+        fact.concept_qname for fact in cover
+    )
+
+
+def test_fair_value_hierarchy_verifies_alb_levels() -> None:
+    """Verify ALB's AFS split reproduces its filed total on both surfaces."""
+    xbrl = _create_xbrl_facade("alb")
+
+    view = xbrl.financials.fair_value_hierarchy(year=2024)
+    row = view.row("us-gaap:AvailableForSaleSecuritiesDebtSecurities")
+    assert row is not None
+    assert row.level1 == 0.0
+    assert row.level3 == 313_991_000.0
+    assert row.levels_sum == row.total == 313_991_000.0
+    assert row.verified is True
+    assert xbrl.statements.fair_value_hierarchy(year=2024).rows == view.rows
+
+
+def test_fair_value_hierarchy_asml_splits_by_frequency() -> None:
+    """Verify ASML's recurring derivative split reproduces its filed total."""
+    xbrl = _create_xbrl_facade("asml")
+
+    view = xbrl.statements.fair_value_hierarchy(year=2024)
+    row = view.row("us-gaap:DerivativeAssets")
+    assert row is not None
+    assert row.frequency_member == "us-gaap:FairValueMeasurementsRecurringMember"
+    assert row.level2 == 96_500_000.0
+    assert row.total == 96_500_000.0
+    assert row.verified is True
+
+
+def test_fair_value_hierarchy_aapl_files_no_level3() -> None:
+    """Verify AAPL's hierarchy rows carry Levels 1/2 only, as filed."""
+    xbrl = _create_xbrl_facade("aapl")
+
+    view = xbrl.financials.fair_value_hierarchy(year=2024)
+    assert view.rows
+    assert all(row.level3 is None for row in view.rows)
+    assert any(row.level2 for row in view.rows)
+
+
+def test_fair_value_hierarchy_keeps_combined_member_whole() -> None:
+    """Verify ALB's combined Level 1/2/3 member stays its own column."""
+    xbrl = _create_xbrl_facade("alb")
+
+    view = xbrl.financials.fair_value_hierarchy(year=2024)
+    combined = "us-gaap:FairValueInputsLevel12And3Member"
+    rows = [row for row in view.rows if combined in row.levels]
+    assert rows
+    assert any(row.levels[combined] == 78_124_000.0 for row in rows)
+
+
+def test_fair_value_hierarchy_jpm_level3_ties_to_rollforward() -> None:
+    """Verify JPM's Other Assets Level-3 column ties to its rollforward."""
+    xbrl = _create_xbrl_facade("jpm")
+
+    view = xbrl.financials.fair_value_hierarchy(year=2024)
+    tied = [row for row in view.rows if row.l3_tied is True]
+    assert tied
+    assert any(row.level3 == 1_344_000_000.0 for row in tied)
+
+
+def _sub_root(graph: StatementGraph | None) -> str | None:
+    """Root qname of a sub-graph, None when the sub-graph is absent."""
+    if graph is None or graph.root is None:
+        return None
+    return graph.root.concept_qname
+
+
+def test_facade_surfaces_share_one_kernel_and_composer() -> None:
+    """Verify statements and financials share the kernel and its composer."""
+    xbrl = _create_xbrl_facade("msft")
+
+    assert xbrl.statements._kernel is xbrl.financials._kernel
+    assert xbrl.financials._composer is xbrl.statements._kernel.composer
+
+
+def test_statements_roots_match_composer_across_seed_fixtures() -> None:
+    """Verify statements view roots equal the composer compose roots."""
+    taxonomy = load_domain_taxonomy()
+    firms = (
+        "msft",
+        "aapl",
+        "jnj",
+        "f",
+        "jpm",
+        "apd",
+        "amzn",
+        "dis",
+        "bmy",
+        "xom",
+        "nem",
+        "all_2022",
+    )
+    for firm in firms:
+        xbrl = _create_xbrl_facade(firm)
+        folder = seed_folder(firm)
+        composer = StatementComposer(
+            load_seed_facts(folder), load_seed_calculation_arcs(folder), taxonomy
+        )
+
+        inc = xbrl.statements.income_statement().graph
+        comp_inc = composer.compose_income_statement()
+        assert inc.root_qname == comp_inc.root_qname
+        assert _sub_root(inc.gross_profit_graph) == _sub_root(
+            comp_inc.gross_profit_graph
+        )
+        assert _sub_root(inc.operating_income_graph) == _sub_root(
+            comp_inc.operating_income_graph
+        )
+
+        bs = xbrl.statements.balance_sheet().graph
+        comp_bs = composer.compose_balance_sheet()
+        assert bs.root_qname == comp_bs.root_qname
+        assert _sub_root(bs.assets_graph) == _sub_root(comp_bs.assets_graph)
+        assert _sub_root(bs.liabilities_graph) == _sub_root(comp_bs.liabilities_graph)
+        assert _sub_root(bs.equity_graph) == _sub_root(comp_bs.equity_graph)
+
+        cf = xbrl.statements.cash_flow_statement().graph
+        comp_cf = composer.compose_cash_flow()
+        assert cf.root_qname == comp_cf.root_qname
+        assert _sub_root(cf.operating) == _sub_root(comp_cf.operating)
+        assert _sub_root(cf.investing) == _sub_root(comp_cf.investing)
+        assert _sub_root(cf.financing) == _sub_root(comp_cf.financing)
+
+
+def test_statements_all_income_abstains_on_gross_and_operating() -> None:
+    """Verify ALL's income view carries no discontinued-ops/tax sub-graphs."""
+    xbrl = _create_xbrl_facade("all_2022")
+
+    graph = xbrl.statements.income_statement().graph
+    assert graph.gross_profit_graph is None
+    assert graph.operating_income_graph is None
+    assert xbrl.financials.gross_profit is None
+
+
+def test_statements_bmy_operating_pick_abstains() -> None:
+    """Verify BMY's income view carries no operating sub-graph."""
+    xbrl = _create_xbrl_facade("bmy")
+
+    graph = xbrl.statements.income_statement().graph
+    assert graph.operating_income_graph is None
+
+
+def test_xbrl_search_revenue_specimens() -> None:
+    """Search ranks the F5 pair by the ladder, residuals and diffs visible."""
+    xbrl = _create_xbrl_facade("msft")
+    result = xbrl.search("revenue")
+    assert result.partial is False
+    assert result.target_atom is not None
+    assert result.target_atom.head == "H_REVENUE"
+    by_qname = {hit.qname: hit for hit in result.hits}
+    filed = by_qname["us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"]
+    assert (filed.tier, filed.rule, filed.modifier_distance) == (
+        "near",
+        "subsumption",
+        3,
+    )
+    assert filed.hit_only == ("M_CONTRACT_CUSTOMER", "M_PRETAX", "M_TAX")
+    assert filed.facts
+    recognized = by_qname[
+        "msft:ContractWithCustomerLiabilityRevenueRecognizedIncludingAdditions"
+    ]
+    assert (recognized.tier, recognized.rule) == (
+        "near",
+        "single_modifier_difference",
+    )
+    assert recognized.hit_only == ("M_CONTRACT_CUSTOMER",)
+    assert recognized.residual_mass == (1, 2)
+
+
+def test_xbrl_search_cross_filer_qname_term() -> None:
+    """One filer's concept name finds the atom-identical concept in another."""
+    term = "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    for firm in ("msft", "aapl"):
+        result = _create_xbrl_facade(firm).search(term)
+        assert result.hits[0].qname == term
+        assert (result.hits[0].tier, result.hits[0].rule) == ("exact", "equality")
+    cross = _create_xbrl_facade("msft").search(
+        "us-gaap:ContractWithCustomerLiabilityRevenueRecognized"
+    )
+    top = cross.hits[0]
+    assert top.qname == (
+        "msft:ContractWithCustomerLiabilityRevenueRecognizedIncludingAdditions"
+    )
+    assert (top.tier, top.rule, top.modifier_distance) == ("exact", "equality", 0)
+
+
+def test_compare_subset_resolves_only_requested_metrics() -> None:
+    """A subset compare skips unrequested standard metrics entirely."""
+    msft = _create_xbrl_facade("msft")
+    view = msft.compare([_create_xbrl_facade("aapl")], metrics=["revenue"])
+    assert view.metric_labels[0][0] == "revenue"
+    for data in view.cohort_data.values():
+        assert data["revenue"] is not None
+        assert "total_debt" not in data
+        assert "gross_profit" not in data
+        assert "operating_margin" in data

@@ -1365,3 +1365,52 @@ def test_string_lookup_step3_other_change_and_post_tax_phrases() -> None:
     )
     assert "M_POST_TAX" in atom.modifiers
     assert "M_OCI" in atom.modifiers
+
+
+def test_facade_view_specimens_decompose_to_gate_coordinates() -> None:
+    """Facade Step 3: long names the views gate on decompose as pinned,
+    with residuals pinned exactly as the vocabulary-gap record.
+    """
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    lex = tax.token_lexicon
+    expected = {
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax": (
+            "H_REVENUE",
+            {"M_CONTRACT_CUSTOMER", "M_PRETAX", "M_TAX"},
+            (),
+        ),
+        "us-gaap:ContractWithCustomerLiabilityRevenueRecognized": (
+            "H_REVENUE",
+            {"M_CONTRACT_CUSTOMER"},
+            ("Recognized",),
+        ),
+        "us-gaap:DeferredTaxAssetsOperatingLossCarryforwards": (
+            "H_INCOME",
+            {"M_OPERATING", "M_TAX_INCOME"},
+            ("Carryforwards",),
+        ),
+        "us-gaap:DiscontinuedOperationIncomeLossFromDiscontinued"
+        "OperationBeforeIncomeTax": (
+            "H_INCOME",
+            {"M_DISCONTINUED", "M_PRETAX", "M_TAX"},
+            ("From",),
+        ),
+        "us-gaap:FairValueMeasurementWithUnobservableInputsReconciliation"
+        "RecurringBasisAssetValue": (
+            "H_ASSET",
+            {"M_FAIR_VALUE", "M_RECONCILIATION"},
+            ("Measurement", "With", "Value"),
+        ),
+        "us-gaap:FairValueMeasurementWithUnobservableInputsReconciliation"
+        "RecurringBasisAssetPurchases": (
+            "H_ASSET",
+            {"M_FAIR_VALUE", "M_PURCHASE", "M_RECONCILIATION"},
+            ("Measurement", "With"),
+        ),
+    }
+    for qname, (head, mods, residuals) in expected.items():
+        atom, res, _, _ = decompose_concept(qname, lex)
+        assert atom.head == head, qname
+        assert mods <= atom.modifiers, qname
+        assert res == residuals, qname

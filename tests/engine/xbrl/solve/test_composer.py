@@ -88,3 +88,27 @@ def test_composer_operating_income_requires_a_duration_fact() -> None:
         arcs = load_seed_calculation_arcs(seed_folder(firm))
         composer = StatementComposer(facts, arcs, taxonomy)
         assert composer.compose_income_statement().operating_income is None
+
+
+def test_composer_gross_profit_parent_guards_abstain_on_all() -> None:
+    """Verify the rev/cost-parent heuristic rejects non-face parents."""
+    facts = load_seed_facts("all_2022_2022_10k")
+    arcs = load_seed_calculation_arcs("all_2022_2022_10k")
+    taxonomy = load_domain_taxonomy()
+
+    composer = StatementComposer(facts, arcs, taxonomy)
+    assert composer._find_gross_profit_concept() is None
+    assert composer.compose_income_statement().gross_profit_graph is None
+
+
+def test_composer_atom_resolver_supplies_the_atoms() -> None:
+    """Verify an injected atom resolver replaces lexicon decomposition."""
+    facts = load_seed_facts("msft_2024_10k")
+    arcs = load_seed_calculation_arcs("msft_2024_10k")
+    taxonomy = load_domain_taxonomy()
+
+    composer = StatementComposer(
+        facts, arcs, taxonomy, atom_resolver=lambda qname: None
+    )
+    assert composer.find_income_statement_root() == ""
+    assert composer.find_concept_by_atom("H_ASSET") is None

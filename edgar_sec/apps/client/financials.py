@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
-from collections.abc import Callable, Mapping, Sequence
+from collections.abc import Callable
 
+from edgar_sec.apps.client.comparison import DERIVED_MARGINS
 from edgar_sec.apps.client.composition import ChainTerms, CompositionResult
-from edgar_sec.apps.client.facts import DisplayRecord, build_display_records
-from edgar_sec.apps.client.equity_rollforward import build_equity_rollforward
+from edgar_sec.apps.client.kernel import FilingKernel
 from edgar_sec.apps.client.rollforwards import (
+    build_fair_value_hierarchy,
     build_level3_rollforward,
     build_pension_funded_status,
 )
@@ -22,24 +23,26 @@ from edgar_sec.apps.client.views import (
     DebtStructureView,
     DerivativePortfolioView,
     EquityRollforwardView,
+    FairValueHierarchyView,
     Level3RollforwardView,
     PensionFundedStatusView,
     SegmentBreakdownView,
 )
-from edgar_sec.engine.xbrl.normalize.normalization import normalize_time_coordinate
-from edgar_sec.engine.xbrl.schema.models import CalculationArc, DefinitionArc, XbrlFact
-from edgar_sec.engine.xbrl.solve.composer import StatementComposer
-from edgar_sec.engine.xbrl.solve.statement import period_rank
-from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 
 
-def _span_length_class(fact: XbrlFact) -> str | None:
-    """Length class of a fact's span; None when the fact carries no span."""
-    if not fact.start_date or not fact.end_date:
-        return None
-    return normalize_time_coordinate(
-        fact.period_type, fact.instant_date, fact.start_date, fact.end_date
-    ).length_class
+_SERIES_ATTRIBUTES: dict[str, str] = {
+    "revenue": "revenue_series",
+    "gross_profit": "gross_profit_series",
+    "operating_income": "operating_income_series",
+    "net_income": "net_income_series",
+    "total_assets": "total_assets_series",
+    "total_liabilities": "total_liabilities_series",
+    "total_equity": "total_equity_series",
+    "operating_cash_flow": "operating_cash_flow_series",
+    "rpo": "rpo_series",
+    "capex": "capex_series",
+}
+_SCALAR_ONLY_METRICS = ("free_cash_flow", "uncommenced_leases")
 
 
 class XbrlFinancials:
@@ -47,30 +50,20 @@ class XbrlFinancials:
 
     def __init__(
         self,
-        facts: Sequence[XbrlFact],
-        calculation_arcs: Sequence[CalculationArc],
-        taxonomy: DomainTaxonomy,
-        labels: Mapping[str, str] | None = None,
+        kernel: FilingKernel,
         *,
-        display_records: Mapping[str, DisplayRecord] | None = None,
         composition_resolver: Callable[[ChainTerms, int | None], CompositionResult]
         | None = None,
-        definition_arcs: Sequence[DefinitionArc] = (),
     ) -> None:
-        self._facts = tuple(facts)
-        self._arcs = tuple(calculation_arcs)
-        self._definition_arcs = tuple(definition_arcs)
-        self._taxonomy = taxonomy
-        self._labels = dict(labels or {})
-        self._records = (
-            dict(display_records)
-            if display_records is not None
-            else build_display_records(self._facts, self._taxonomy)
-        )
+        self._kernel = kernel
+        self._facts = kernel.facts
+        self._arcs = kernel.calculation_arcs
+        self._definition_arcs = kernel.definition_arcs
+        self._taxonomy = kernel.taxonomy
+        self._labels = kernel.labels
+        self._records = kernel.records
         self._composition_resolver = composition_resolver
-        self._composer = StatementComposer(
-            self._facts, self._arcs, self._taxonomy, self._labels
-        )
+        self._composer = kernel.composer
 
     def _scalar(
         self,
@@ -114,40 +107,67 @@ class XbrlFinancials:
         prefer_bare: bool = False,
         length_class: str = "ANNUAL",
     ) -> dict[str, float]:
+        key = (
+            "series",
+            target_head,
+            frozenset(target_mods),
+            frozenset(excluded_mods),
+            is_instant,
+            valence,
+            is_monetary,
+            prefer_bare,
+            length_class,
+        )
+        computed = self._kernel.series(
+            key,
+            lambda: self._compute_series(
+                target_head,
+                target_mods,
+                excluded_mods,
+                is_instant=is_instant,
+                valence=valence,
+                is_monetary=is_monetary,
+                prefer_bare=prefer_bare,
+                length_class=length_class,
+            ),
+        )
+        return dict(computed)
+
+    def _compute_series(
+        self,
+        target_head: str,
+        target_mods: set[str] | frozenset[str] = frozenset(),
+        excluded_mods: set[str] | frozenset[str] = frozenset(),
+        *,
+        is_instant: bool = False,
+        valence: str | None = None,
+        is_monetary: bool = True,
+        prefer_bare: bool = False,
+        length_class: str = "ANNUAL",
+    ) -> dict[str, float]:
         lex = self._taxonomy.token_lexicon
         if lex is None:
             return {}
-        best: dict[tuple[str, str], tuple[tuple[int, int], float, int]] = {}
-        for f in self._facts:
-            if f.dimensions or not isinstance(f.value, (int, float)):
+        best = self._kernel.best_ranked(
+            instant=is_instant,
+            length_class=length_class,
+            monetary_only=is_monetary,
+        )
+        by_year: dict[str, tuple[int, float, float]] = {}
+        for (qname, yr), (_rank, val) in best.items():
+            if len(yr) != 4 or not yr.isdigit():
                 continue
-            span_class = _span_length_class(f)
-            if span_class is not None and span_class != length_class:
-                continue
-            if is_monetary and f.unit in ("pure", "shares", "item", "ratio"):
-                continue
-            record = self._records.get(f.concept_qname)
+            record = self._records.get(qname)
             if record is None:
                 continue
             atom = record.atom
-            if atom.head == target_head and target_mods.issubset(atom.modifiers):
-                if excluded_mods and any(m in atom.modifiers for m in excluded_mods):
-                    continue
-                if valence and valence not in atom.modifiers:
-                    continue
-                dt = f.instant_date if is_instant else f.end_date
-                if not dt:
-                    continue
-                yr = dt[:4]
-                if len(yr) == 4 and yr.isdigit():
-                    key = (f.concept_qname, yr)
-                    rank = period_rank(f)
-                    if key not in best or rank > best[key][0]:
-                        best[key] = (rank, float(f.value), len(atom.modifiers))
-
-        by_year: dict[str, tuple[int, float, float]] = {}
-        for (_qname, yr), (_rank, val, nmods) in best.items():
-            cand = (nmods, -abs(val), val)
+            if atom.head != target_head or not target_mods.issubset(atom.modifiers):
+                continue
+            if excluded_mods and any(m in atom.modifiers for m in excluded_mods):
+                continue
+            if valence and valence not in atom.modifiers:
+                continue
+            cand = (len(atom.modifiers), -abs(val), val)
             if yr not in by_year:
                 by_year[yr] = cand
             elif prefer_bare and cand < by_year[yr]:
@@ -186,7 +206,7 @@ class XbrlFinancials:
 
     @property
     def revenue(self) -> float | None:
-        inc = self._composer.compose_income_statement()
+        inc = self._kernel.compose_income_statement()
         if inc.gross_profit_graph and inc.gross_profit_graph.root:
             for child in inc.gross_profit_graph.children(
                 inc.gross_profit_graph.root.concept_qname
@@ -205,7 +225,7 @@ class XbrlFinancials:
 
     @property
     def gross_profit(self) -> float | None:
-        inc = self._composer.compose_income_statement()
+        inc = self._kernel.compose_income_statement()
         if inc.gross_profit is not None:
             return inc.gross_profit
         return (
@@ -232,7 +252,7 @@ class XbrlFinancials:
 
     @property
     def operating_income(self) -> float | None:
-        inc = self._composer.compose_income_statement()
+        inc = self._kernel.compose_income_statement()
         if inc.operating_income is not None:
             return inc.operating_income
         return self._scalar("H_INCOME", {"M_OPERATING"})
@@ -247,7 +267,7 @@ class XbrlFinancials:
 
     @property
     def net_income(self) -> float | None:
-        inc = self._composer.compose_income_statement()
+        inc = self._kernel.compose_income_statement()
         if inc.net_income is not None:
             return inc.net_income
         return self._scalar(
@@ -260,29 +280,25 @@ class XbrlFinancials:
         self, qname: str, length_class: str = "ANNUAL"
     ) -> dict[str, float]:
         """One concept's values by year, longest span then finest decimals."""
-        best: dict[str, tuple[tuple[int, int], float]] = {}
-        for f in self._facts:
-            if f.concept_qname != qname or f.dimensions:
-                continue
-            if not isinstance(f.value, (int, float)):
-                continue
-            span_class = _span_length_class(f)
-            if span_class is not None and span_class != length_class:
-                continue
-            if f.unit in ("pure", "shares", "item", "ratio"):
-                continue
-            dt = f.instant_date or f.end_date
-            if not dt:
-                continue
-            yr = dt[:4]
-            rank = period_rank(f)
-            if yr not in best or rank > best[yr][0]:
-                best[yr] = (rank, float(f.value))
-        return {yr: val for yr, (_rank, val) in best.items()}
+        computed = self._kernel.series(
+            ("concept_series", qname, length_class),
+            lambda: self._compute_concept_series(qname, length_class),
+        )
+        return dict(computed)
+
+    def _compute_concept_series(
+        self, qname: str, length_class: str
+    ) -> dict[str, float]:
+        best = self._kernel.best_ranked(
+            instant=None, length_class=length_class, monetary_only=True
+        )
+        return {
+            yr: val for (concept, yr), (_rank, val) in best.items() if concept == qname
+        }
 
     @property
     def net_income_series(self) -> dict[str, float]:
-        root = self._composer.compose_income_statement().root_qname
+        root = self._kernel.compose_income_statement().root_qname
         rooted = self._concept_series(root) if root else {}
         return (
             rooted
@@ -300,7 +316,7 @@ class XbrlFinancials:
 
     @property
     def total_assets(self) -> float | None:
-        bs = self._composer.compose_balance_sheet()
+        bs = self._kernel.compose_balance_sheet()
         if bs.total_assets is not None:
             return bs.total_assets
         return self._scalar("H_ASSET", is_instant=True, prefer_bare=True)
@@ -315,7 +331,7 @@ class XbrlFinancials:
 
     @property
     def total_liabilities(self) -> float | None:
-        bs = self._composer.compose_balance_sheet()
+        bs = self._kernel.compose_balance_sheet()
         if bs.total_liabilities is not None:
             return bs.total_liabilities
         return self._scalar("H_LIABILITY", is_instant=True, prefer_bare=True)
@@ -330,7 +346,7 @@ class XbrlFinancials:
 
     @property
     def total_equity(self) -> float | None:
-        bs = self._composer.compose_balance_sheet()
+        bs = self._kernel.compose_balance_sheet()
         if bs.total_equity is not None:
             return bs.total_equity
         return self._scalar("H_EQUITY", is_instant=True) or self._scalar(
@@ -351,7 +367,7 @@ class XbrlFinancials:
 
     @property
     def operating_cash_flow(self) -> float | None:
-        cf = self._composer.compose_cash_flow()
+        cf = self._kernel.compose_cash_flow()
         if cf.cfo is not None:
             return cf.cfo
         return self._scalar("H_CASH", {"M_OPERATING"})
@@ -417,33 +433,93 @@ class XbrlFinancials:
             "H_COMMITMENT", {"M_UNCOMMENCED"}, is_instant=True
         ) or self._scalar("H_LIABILITY", {"M_UNCOMMENCED"}, is_instant=True)
 
+    def value(self, metric: str, *, period_offset: int = 0) -> float | None:
+        """A served metric's value, period_offset periods before its latest.
+
+        Reads only the metric's already-served series (or, for metrics
+        with no series, its scalar at offset 0); nothing is re-derived.
+        """
+        if period_offset < 0:
+            raise ValueError(f"period_offset must be >= 0, got {period_offset}")
+        series_attr = _SERIES_ATTRIBUTES.get(metric)
+        if series_attr is not None:
+            series = getattr(self, series_attr)
+            years = sorted(series, reverse=True)
+            if period_offset >= len(years):
+                return None
+            return series[years[period_offset]]
+        if metric in _SCALAR_ONLY_METRICS:
+            return getattr(self, metric) if period_offset == 0 else None
+        known = sorted(_SERIES_ATTRIBUTES) + sorted(_SCALAR_ONLY_METRICS)
+        raise ValueError(f"unknown metric {metric!r}; expected one of {known}")
+
+    def metrics(self) -> dict[str, float]:
+        """Derived ratios declared in comparison.DERIVED_MARGINS, from served scalars.
+
+        A ratio whose numerator or denominator is unserved (or whose
+        denominator is zero) is absent, matching compare_companies.
+        """
+        out: dict[str, float] = {}
+        for key, _label, numerator, denominator in DERIVED_MARGINS:
+            num = getattr(self, numerator)
+            den = getattr(self, denominator)
+            if num is not None and den:
+                out[key] = num / den
+        return out
+
     @property
     def derivatives(self) -> DerivativePortfolioView:
         """Dynamically resolve derivative exposures, risk categories, and netting."""
-        graph = build_derivative_portfolio(
-            self._facts, self._records, self._taxonomy, self._labels
+        graph = self._kernel.graph_once(
+            ("derivatives",),
+            lambda: build_derivative_portfolio(
+                self._facts, self._records, self._taxonomy, self._labels
+            ),
         )
         return DerivativePortfolioView(graph)
 
     @property
     def debt(self) -> DebtStructureView:
         """Dynamically resolve capital structure, debt tranches, and maturities."""
-        graph = build_debt_structure(
-            self._facts, self._records, self._taxonomy, self._labels
+        graph = self._kernel.graph_once(
+            ("debt",),
+            lambda: build_debt_structure(
+                self._facts, self._records, self._taxonomy, self._labels
+            ),
         )
         return DebtStructureView(graph)
 
     @property
     def cash_rollforward(self) -> CashRollforwardView:
         """Dynamically resolve the ASU 2016-18 cash and restricted-cash rollforward."""
-        graph = build_cash_rollforward(
-            self._facts,
-            self._records,
-            self._taxonomy,
-            self._labels,
-            calculation_arcs=self._arcs,
+        graph = self._kernel.graph_once(
+            ("cash_rollforward",),
+            lambda: build_cash_rollforward(
+                self._facts,
+                self._records,
+                self._taxonomy,
+                self._labels,
+                calculation_arcs=self._arcs,
+            ),
         )
         return CashRollforwardView(graph)
+
+    def fair_value_hierarchy(
+        self,
+        year: int | str | None = None,
+    ) -> FairValueHierarchyView:
+        """Dynamically resolve each concept's fair-value level split."""
+        graph = self._kernel.graph_once(
+            ("fair_value_hierarchy", year),
+            lambda: build_fair_value_hierarchy(
+                self._facts,
+                self._records,
+                self._taxonomy,
+                self._labels,
+                year,
+            ),
+        )
+        return FairValueHierarchyView(graph)
 
     def level3_rollforward(
         self,
@@ -452,14 +528,17 @@ class XbrlFinancials:
         year: int | str | None = None,
     ) -> Level3RollforwardView:
         """Dynamically resolve one class's ASC 820 Level-3 rollforward."""
-        graph = build_level3_rollforward(
-            self._facts,
-            self._records,
-            self._taxonomy,
-            self._labels,
-            year,
-            axis_qname=axis_qname,
-            member_qname=member_qname,
+        graph = self._kernel.graph_once(
+            ("level3_rollforward", axis_qname, member_qname, year),
+            lambda: build_level3_rollforward(
+                self._facts,
+                self._records,
+                self._taxonomy,
+                self._labels,
+                year,
+                axis_qname=axis_qname,
+                member_qname=member_qname,
+            ),
         )
         return Level3RollforwardView(graph)
 
@@ -470,14 +549,17 @@ class XbrlFinancials:
         year: int | str | None = None,
     ) -> PensionFundedStatusView:
         """Dynamically resolve one plan class's defined-benefit funded status."""
-        graph = build_pension_funded_status(
-            self._facts,
-            self._records,
-            self._taxonomy,
-            self._labels,
-            year,
-            axis_qname=axis_qname,
-            member_qname=member_qname,
+        graph = self._kernel.graph_once(
+            ("pension_funded_status", axis_qname, member_qname, year),
+            lambda: build_pension_funded_status(
+                self._facts,
+                self._records,
+                self._taxonomy,
+                self._labels,
+                year,
+                axis_qname=axis_qname,
+                member_qname=member_qname,
+            ),
         )
         return PensionFundedStatusView(graph)
 
@@ -487,16 +569,7 @@ class XbrlFinancials:
         year: int | str | None = None,
     ) -> EquityRollforwardView:
         """Dynamically resolve the statement of changes in equity."""
-        graph = build_equity_rollforward(
-            self._facts,
-            self._records,
-            self._taxonomy,
-            self._labels,
-            year,
-            member_qname=member_qname,
-            definition_arcs=self._definition_arcs,
-        )
-        return EquityRollforwardView(graph)
+        return self._kernel.equity_rollforward(member_qname=member_qname, year=year)
 
     def segment_breakdown(
         self,
@@ -505,14 +578,17 @@ class XbrlFinancials:
         year: int | str | None = None,
     ) -> SegmentBreakdownView:
         """Dynamically resolve one axis's members against the reported total."""
-        graph = build_segment_breakdown(
-            self._facts,
-            self._records,
-            self._taxonomy,
-            self._labels,
-            year,
-            concept_qname=concept_qname,
-            axis_qname=axis_qname,
-            definition_arcs=self._definition_arcs,
+        graph = self._kernel.graph_once(
+            ("segment_breakdown", concept_qname, axis_qname, year),
+            lambda: build_segment_breakdown(
+                self._facts,
+                self._records,
+                self._taxonomy,
+                self._labels,
+                year,
+                concept_qname=concept_qname,
+                axis_qname=axis_qname,
+                definition_arcs=self._definition_arcs,
+            ),
         )
         return SegmentBreakdownView(graph)

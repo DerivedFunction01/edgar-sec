@@ -10,6 +10,7 @@ from edgar_sec.engine.xbrl.solve.equivalence import (
     UNRELATED,
     classify_ladder_pair,
     classify_pair,
+    coordinate_diff,
     presumed_atom,
     rank_equivalents,
 )
@@ -1187,3 +1188,24 @@ def test_filing_local_sort_order_is_ladder_order() -> None:
         "via_filing_local",
         "via_default",
     ]
+
+
+def test_coordinate_diff_reports_modifier_sides() -> None:
+    """Diff lists each side's own modifiers, sorted, with no swap named."""
+    target = Atom("H_REVENUE")
+    candidate = Atom("H_REVENUE", frozenset({"M_TAX", "M_CONTRACT_CUSTOMER"}))
+    diff = coordinate_diff(target, candidate, "subsumption")
+    assert diff.target_only == ()
+    assert diff.candidate_only == ("M_CONTRACT_CUSTOMER", "M_TAX")
+    assert diff.swapped is None
+
+
+def test_coordinate_diff_names_sibling_swap_pair() -> None:
+    """Only the sibling_swap rule names a swapped (target, candidate) pair."""
+    target = Atom("H_ASSET", frozenset({"M_CURRENT"}))
+    candidate = Atom("H_ASSET", frozenset({"M_NONCURRENT"}))
+    diff = coordinate_diff(target, candidate, "sibling_swap")
+    assert diff.target_only == ("M_CURRENT",)
+    assert diff.candidate_only == ("M_NONCURRENT",)
+    assert diff.swapped == ("M_CURRENT", "M_NONCURRENT")
+    assert coordinate_diff(target, candidate, "subsumption").swapped is None

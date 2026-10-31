@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 
+from edgar_sec.engine.xbrl.schema.models import qname_local
 from edgar_sec.engine.xbrl.solve.identities import (
     identity_discrepancy,
     identity_verified,
@@ -180,6 +181,89 @@ class SegmentBreakdownGraph:
     def verified(self) -> bool | None:
         """Whether the members reproduce the reported total."""
         return identity_verified(self.total, self.member_sum)
+
+
+_LEVEL_1_LOCAL = "FairValueInputsLevel1Member"
+_LEVEL_2_LOCAL = "FairValueInputsLevel2Member"
+_LEVEL_3_LOCAL = "FairValueInputsLevel3Member"
+_NAV_LOCAL = "FairValueMeasuredAtNetAssetValuePerShareMember"
+
+
+@dataclass(frozen=True, slots=True)
+class FairValueHierarchyRow:
+    """One concept's fair-value split across hierarchy levels at an instant.
+
+    Levels are keyed by member as filed: a combined member (levels 1
+    and 2 filed jointly) keeps its own column and is never split.
+    """
+
+    concept_qname: str
+    label: str
+    instant_date: str | None = None
+    unit: str | None = None
+    frequency_member: str | None = None
+    dimensions: tuple[tuple[str, str], ...] = ()
+    levels: Mapping[str, float] = field(default_factory=dict)
+    total: float | None = None
+    l3_tied: bool | None = None
+
+    def _level(self, local: str) -> float | None:
+        values = [
+            value
+            for member, value in self.levels.items()
+            if qname_local(member) == local
+        ]
+        return sum(values) if values else None
+
+    @property
+    def level1(self) -> float | None:
+        """Amount filed under the Level 1 member, when present."""
+        return self._level(_LEVEL_1_LOCAL)
+
+    @property
+    def level2(self) -> float | None:
+        """Amount filed under the Level 2 member, when present."""
+        return self._level(_LEVEL_2_LOCAL)
+
+    @property
+    def level3(self) -> float | None:
+        """Amount filed under the Level 3 member, when present."""
+        return self._level(_LEVEL_3_LOCAL)
+
+    @property
+    def nav(self) -> float | None:
+        """Amount filed under the NAV-practical-expedient member, when present."""
+        return self._level(_NAV_LOCAL)
+
+    @property
+    def levels_sum(self) -> float | None:
+        """Sum of every filed level column, or None when the row is empty."""
+        if not self.levels:
+            return None
+        return sum(self.levels.values())
+
+    @property
+    def discrepancy(self) -> float | None:
+        """Filed total minus the level sum, or None when either is missing."""
+        return identity_discrepancy(self.total, self.levels_sum)
+
+    @property
+    def verified(self) -> bool | None:
+        """Whether the filed level columns reproduce the filed total."""
+        return identity_verified(self.total, self.levels_sum)
+
+
+@dataclass(frozen=True, slots=True)
+class FairValueHierarchyGraph:
+    """Fair-value hierarchy rows for one filing, each checked by identity."""
+
+    axis_qname: str | None = None
+    rows: tuple[FairValueHierarchyRow, ...] = ()
+
+    @property
+    def verified_rows(self) -> tuple[FairValueHierarchyRow, ...]:
+        """Rows whose level columns reproduce their filed total."""
+        return tuple(row for row in self.rows if row.verified is True)
 
 
 @dataclass(frozen=True, slots=True)

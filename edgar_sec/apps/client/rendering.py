@@ -5,9 +5,21 @@ from __future__ import annotations
 from collections.abc import Mapping, Sequence
 from typing import Any
 
+from edgar_sec.apps.client.display import (
+    choose_scale,
+    class_display,
+    display_label,
+    format_cell,
+    format_pct,
+    format_scaled,
+    wrap_label,
+)
+from edgar_sec.apps.client.facts import member_display_name
+from edgar_sec.apps.client.presentation import PresentationView
 from edgar_sec.engine.xbrl.solve.rollforward_graphs import (
     CashRollforwardGraph,
     EquityRollforwardGraph,
+    FairValueHierarchyGraph,
     Level3RollforwardGraph,
     PensionFundedStatusGraph,
     SegmentBreakdownGraph,
@@ -20,78 +32,93 @@ from edgar_sec.engine.xbrl.solve.statement import (
 )
 
 
-def _format_cell(val: float | None) -> str:
-    if val is None:
-        return "-"
-    if val < 0:
-        return f"$({abs(val):,.0f})"
-    return f"${val:,.0f}"
+def ordered_statement_nodes(
+    graph: StatementGraph, view: str = "standard"
+) -> list[tuple[StatementNode, int]]:
+    """Statement nodes in table order: post-order, summary-filtered on request."""
+    if not graph.root:
+        return []
+    visited: set[str] = set()
+    ordered: list[tuple[StatementNode, int]] = []
 
+    def _traverse(node: StatementNode, depth: int) -> None:
+        if node.concept_qname in visited:
+            return
+        visited.add(node.concept_qname)
+        for child in graph.children(node.concept_qname):
+            _traverse(child, depth + 1)
+        ordered.append((node, depth))
 
-def _format_pct(pct: float | None) -> str:
-    if pct is None:
-        return "-"
-    return f"{pct * 100:+.1f}%"
+    _traverse(graph.root, 0)
+    if view == "summary":
+        ordered = [
+            (n, d) for n, d in ordered if d <= 1 or n.concept_qname == graph.root_qname
+        ]
+    return ordered
 
 
 def render_statement_table(
     graph: StatementGraph,
     view: str = "standard",
+    *,
+    scaled: bool = True,
+    header: str | None = None,
 ) -> str:
     """Render statement as a multi-column accounting table with side-by-side years."""
     if not graph.root:
         return f"[{graph.statement_type.upper()}: (empty)]"
 
     years = sorted(graph.years)
-    visited: set[str] = set()
-    ordered_nodes: list[tuple[StatementNode, int]] = []
-
-    def _traverse(node: StatementNode, depth: int) -> None:
-        if node.concept_qname in visited:
-            return
-        visited.add(node.concept_qname)
-        children = graph.children(node.concept_qname)
-        for child in children:
-            _traverse(child, depth + 1)
-        ordered_nodes.append((node, depth))
-
-    _traverse(graph.root, 0)
-
-    if view == "summary":
-        ordered_nodes = [
-            (n, d)
-            for n, d in ordered_nodes
-            if d <= 1 or n.concept_qname == graph.root_qname
-        ]
+    ordered_nodes = ordered_statement_nodes(graph, view)
+    divisor, scale_label = (
+        choose_scale(node.values.get(y) for node, _ in ordered_nodes for y in years)
+        if scaled
+        else (1.0, None)
+    )
 
     col_widths = [42] + [18] * len(years) + [12]
     headers = ["Financial Concept"] + [f"FY {y}" for y in years] + ["YoY (%)"]
     sep = "=" * (sum(col_widths) + len(col_widths) * 2)
     sub_sep = "-" * (sum(col_widths) + len(col_widths) * 2)
 
-    lines: list[str] = [
-        f"[{graph.statement_type.upper()}]",
-        sep,
-        "  ".join(
-            h.ljust(col_widths[i]) if i == 0 else h.rjust(col_widths[i])
-            for i, h in enumerate(headers)
-        ),
-        sub_sep,
-    ]
+    lines: list[str] = []
+    if header:
+        lines.append(header)
+    lines.append(f"[{graph.statement_type.upper()}]")
+    if scale_label:
+        lines.append(f"(in {scale_label})")
+    lines.extend(
+        [
+            sep,
+            "  ".join(
+                h.ljust(col_widths[i]) if i == 0 else h.rjust(col_widths[i])
+                for i, h in enumerate(headers)
+            ),
+            sub_sep,
+        ]
+    )
 
+    blank_cells = [" " * w for w in col_widths[1:]]
     for node, depth in ordered_nodes:
         indent = "  " * depth
-        label = (
-            node.label if view != "detailed" else f"{node.label} [{node.concept_qname}]"
-        )
-        name_cell = (indent + label)[: col_widths[0]].ljust(col_widths[0])
+        label = display_label(node.label, node.concept_qname)
+        if view == "detailed":
+            label = f"{label} [{node.concept_qname}]"
+        segments = wrap_label(label, col_widths[0] - len(indent))
         val_cells = [
-            _format_cell(node.values.get(y)).rjust(col_widths[i + 1])
+            format_scaled(node.values.get(y), divisor).rjust(col_widths[i + 1])
             for i, y in enumerate(years)
         ]
-        pct_cell = _format_pct(node.yoy_pct).rjust(col_widths[-1])
-        row_str = "  ".join([name_cell] + val_cells + [pct_cell])
-        lines.append(row_str)
+        pct_cell = format_pct(node.yoy_pct).rjust(col_widths[-1])
+        lines.append(
+            "  ".join(
+                [(indent + segments[0]).ljust(col_widths[0])] + val_cells + [pct_cell]
+            )
+        )
+        for segment in segments[1:]:
+            lines.append(
+                "  ".join([(indent + segment).ljust(col_widths[0])] + blank_cells)
+            )
 
     lines.append(sep)
     return "\n".join(lines)
@@ -133,7 +160,7 @@ def render_comparison_table(
                     else "-".rjust(col_w_data)
                 )
             else:
-                cell = _format_cell(val).rjust(col_w_data)
+                cell = format_cell(val).rjust(col_w_data)
             row.append(cell)
         lines.append("  ".join(row))
 
@@ -154,7 +181,8 @@ def render_statement_ascii(graph: StatementGraph, show_yoy: bool = True) -> str:
         if show_yoy and node.yoy_change is not None and node.yoy_pct is not None:
             yoy_info = f" | YoY: {node.yoy_change:+,.0f} ({node.yoy_pct * 100:+.1f}%)"
         lines.append(
-            f"{indent}{sign} {node.label} [{node.concept_qname}]: {val_str}{yoy_info}"
+            f"{indent}{sign} {display_label(node.label, node.concept_qname)} "
+            f"[{node.concept_qname}]: {val_str}{yoy_info}"
         )
         for child in graph.children(node.concept_qname):
             _traverse(child, indent + "  ")
@@ -224,7 +252,8 @@ def render_cash_rollforward_ascii(graph: CashRollforwardGraph) -> str:
         lines.append("  Components:")
         for node in graph.components:
             val = f"${node.value:,.0f}" if node.value is not None else "None"
-            lines.append(f"    - {node.label}: {val}")
+            label = display_label(node.label, node.concept_qname)
+            lines.append(f"    - {label}: {val}")
     return "\n".join(lines)
 
 
@@ -319,7 +348,7 @@ def statement_to_dataframe(graph: StatementGraph, include_yoy: bool = True) -> A
     for node in graph.nodes.values():
         rec: dict[str, Any] = {
             "concept": node.concept_qname,
-            "label": node.label,
+            "label": display_label(node.label, node.concept_qname),
             "weight": node.weight,
             "depth": node.depth,
             "value": node.value,
@@ -348,10 +377,10 @@ def derivatives_to_dataframe(graph: DerivativePortfolioGraph) -> Any:
     records = [
         {
             "concept": pos.concept_qname,
-            "label": pos.label,
+            "label": display_label(pos.label, pos.concept_qname),
             "value": pos.value,
             "head": pos.atom.head,
-            "modifiers": list(pos.atom.modifiers),
+            "modifiers": sorted(pos.atom.modifiers),
         }
         for pos in graph.positions
     ]
@@ -373,10 +402,10 @@ def debt_to_dataframe(graph: DebtStructureGraph) -> Any:
     records = [
         {
             "concept": pos.concept_qname,
-            "label": pos.label,
+            "label": display_label(pos.label, pos.concept_qname),
             "value": pos.value,
             "head": pos.atom.head,
-            "modifiers": list(pos.atom.modifiers),
+            "modifiers": sorted(pos.atom.modifiers),
         }
         for pos in graph.positions
     ]
@@ -397,7 +426,7 @@ def render_level3_rollforward_ascii(graph: Level3RollforwardGraph) -> str:
     """Render ASCII summary of a Level-3 rollforward and its checks."""
     lines = [
         "[LEVEL-3 ROLLFORWARD (ASC 820)]",
-        f"  Class:    {graph.dimensions or 'None'}",
+        f"  Class:    {class_display(graph.dimensions)}",
         f"  Opening ({graph.start_date or '-'}):  {f'${graph.opening:,.0f}' if graph.opening is not None else 'None'}",
         f"  Closing ({graph.end_date or '-'}):  {f'${graph.closing:,.0f}' if graph.closing is not None else 'None'}",
         f"  Total Gains: {f'${graph.total_gains:,.0f}' if graph.total_gains is not None else 'None'}",
@@ -456,7 +485,7 @@ def render_pension_funded_status_ascii(graph: PensionFundedStatusGraph) -> str:
     assets, obligation = graph.plan_assets, graph.obligation
     lines = [
         "[PENSION FUNDED STATUS (ASC 715)]",
-        f"  Class:    {graph.dimensions or 'None'}",
+        f"  Class:    {class_display(graph.dimensions)}",
         f"  Plan Assets: {f'${assets.opening:,.0f}' if assets.opening is not None else 'None'}"
         f" -> {f'${assets.closing:,.0f}' if assets.closing is not None else 'None'}"
         f"  Verified: {assets.verified}",
@@ -484,7 +513,7 @@ def render_equity_rollforward_ascii(graph: EquityRollforwardGraph) -> str:
     ]
     for comp in graph.components:
         lines.append(
-            f"  {comp.member_qname.split(':')[-1]}: "
+            f"  {member_display_name(comp.member_qname)}: "
             f"{f'${comp.opening:,.0f}' if comp.opening is not None else 'None'}"
             f" -> {f'${comp.closing:,.0f}' if comp.closing is not None else 'None'}"
             f"  Verified: {comp.verified}"
@@ -544,6 +573,160 @@ def pension_funded_status_to_dataframe(graph: PensionFundedStatusGraph) -> Any:
             "value": graph.funded_status_filed,
         }
     )
+    try:
+        import polars as pl
+
+        return pl.DataFrame(records)
+    except ImportError:
+        try:
+            import pandas as pd
+
+            return pd.DataFrame(records)
+        except ImportError:
+            return records
+
+
+def render_fair_value_hierarchy_ascii(graph: FairValueHierarchyGraph) -> str:
+    """Render ASCII summary of the hierarchy rows and their checks."""
+    lines = [
+        "[FAIR VALUE HIERARCHY (ASC 820)]",
+        f"  Axis:     {graph.axis_qname or 'None'}",
+        f"  Rows:     {len(graph.rows)}",
+        f"  Verified: {len(graph.verified_rows)}",
+    ]
+    for row in graph.rows:
+        label = display_label(row.label, row.concept_qname)
+        lines.append(f"  - {label} ({row.instant_date or '-'}):")
+        for member, value in row.levels.items():
+            lines.append(f"      {member_display_name(member)}: {format_cell(value)}")
+        lines.append(
+            f"      Sum: {format_cell(row.levels_sum)}  "
+            f"Total: {format_cell(row.total)}  Verified: {row.verified}  "
+            f"L3 Tied: {row.l3_tied}"
+        )
+    return "\n".join(lines)
+
+
+def presentation_to_dataframe(view: PresentationView) -> Any:
+    """Export presentation rows with period, dimension, and parent columns."""
+    axes = sorted({axis for row in view.rows for axis, _ in row.dimensions})
+    records: list[dict[str, Any]] = []
+    for row in view.rows:
+        rec: dict[str, Any] = {"label": row.label, "concept": row.concept}
+        for period in view.periods:
+            rec[period] = row.values.get(period)
+        members = dict(row.dimensions)
+        for axis in axes:
+            member = members.get(axis)
+            rec[axis] = (
+                member_display_name(member, view.labels) if member is not None else None
+            )
+        rec["presentation_parent"] = row.presentation_parent
+        rec["calculation_parent"] = row.calculation_parent
+        records.append(rec)
+    columns = [
+        "label",
+        "concept",
+        *view.periods,
+        *axes,
+        "presentation_parent",
+        "calculation_parent",
+    ]
+    if records:
+        try:
+            import polars as pl
+
+            return pl.DataFrame(records)
+        except ImportError:
+            pass
+    try:
+        import pandas as pd
+
+        return pd.DataFrame(records, columns=columns)
+    except ImportError:
+        return records
+
+
+def render_presentation_ascii(view: PresentationView, *, scaled: bool = True) -> str:
+    """Render presentation rows as an ASCII statement table."""
+    if not view.rows:
+        return f"[{view.title.upper()} ({view.mode.upper()}): (empty)]"
+    periods = list(view.periods)
+    divisor, scale_label = (
+        choose_scale(
+            value
+            for row in view.rows
+            for value in row.values.values()
+            if isinstance(value, (int, float))
+        )
+        if scaled
+        else (1.0, None)
+    )
+    col_widths = [42] + [18] * len(periods)
+    sep = "=" * (sum(col_widths) + len(col_widths) * 2)
+    sub_sep = "-" * (sum(col_widths) + len(col_widths) * 2)
+    headers = ["Financial Concept"] + periods
+    lines: list[str] = []
+    if view.header:
+        lines.append(view.header)
+    lines.append(f"[{view.title.upper()} — {view.mode.upper()}]")
+    if scale_label:
+        lines.append(f"(in {scale_label})")
+    lines.extend(
+        [
+            sep,
+            "  ".join(
+                h.ljust(col_widths[i]) if i == 0 else h.rjust(col_widths[i])
+                for i, h in enumerate(headers)
+            ),
+            sub_sep,
+        ]
+    )
+    blank_cells = [" " * w for w in col_widths[1:]]
+    for row in view.rows:
+        indent = "  " * row.depth
+        segments = wrap_label(row.label, col_widths[0] - len(indent))
+        cells = []
+        for i, period in enumerate(periods):
+            value = row.values.get(period)
+            if isinstance(value, (int, float)):
+                cell = format_scaled(value, divisor)
+            else:
+                cell = str(value) if value is not None else "-"
+            cells.append(cell.rjust(col_widths[i + 1]))
+        line = "  ".join([(indent + segments[0]).ljust(col_widths[0]), *cells])
+        if row.dimensions:
+            line = f"{line}  [{class_display(row.dimensions)}]"
+        lines.append(line)
+        for segment in segments[1:]:
+            lines.append(
+                "  ".join([(indent + segment).ljust(col_widths[0]), *blank_cells])
+            )
+    lines.append(sep)
+    return "\n".join(lines)
+
+
+def fair_value_hierarchy_to_dataframe(graph: FairValueHierarchyGraph) -> Any:
+    """Export hierarchy rows and their checks to a DataFrame."""
+    records: list[dict[str, Any]] = [
+        {
+            "concept": row.concept_qname,
+            "label": display_label(row.label, row.concept_qname),
+            "instant_date": row.instant_date,
+            "unit": row.unit,
+            "frequency_member": row.frequency_member,
+            "dimensions": row.dimensions,
+            "level1": row.level1,
+            "level2": row.level2,
+            "level3": row.level3,
+            "nav": row.nav,
+            "levels_sum": row.levels_sum,
+            "total": row.total,
+            "verified": row.verified,
+            "l3_tied": row.l3_tied,
+        }
+        for row in graph.rows
+    ]
     try:
         import polars as pl
 

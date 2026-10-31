@@ -322,6 +322,29 @@ def classify_ladder_pair(
 
 
 @dataclass(frozen=True, slots=True)
+class CoordinateDiff:
+    """Modifier coordinates separating a candidate atom from a target."""
+
+    target_only: tuple[str, ...]
+    candidate_only: tuple[str, ...]
+    swapped: tuple[str, str] | None = None
+
+
+def coordinate_diff(target: Atom, candidate: Atom, rule: str = "") -> CoordinateDiff:
+    """Diff a classified pair's modifier coordinates, sorted for display.
+
+    The swapped pair is named only for the sibling_swap rule, where
+    each side holds exactly one member of an admitted sibling pair.
+    """
+    target_only = tuple(sorted(target.modifiers - candidate.modifiers))
+    candidate_only = tuple(sorted(candidate.modifiers - target.modifiers))
+    swapped = None
+    if rule == "sibling_swap" and len(target_only) == 1 and len(candidate_only) == 1:
+        swapped = (target_only[0], candidate_only[0])
+    return CoordinateDiff(target_only, candidate_only, swapped)
+
+
+@dataclass(frozen=True, slots=True)
 class RankedEquivalent:
     """A candidate concept ranked against a target atom."""
 
@@ -411,10 +434,12 @@ __all__ = [
     "NEAR",
     "SPECIALIZATION",
     "UNRELATED",
+    "CoordinateDiff",
     "LadderClassification",
     "RankedEquivalent",
     "classify_ladder_pair",
     "classify_pair",
+    "coordinate_diff",
     "presumed_atom",
     "presumed_atom_filing_local",
     "rank_equivalents",
