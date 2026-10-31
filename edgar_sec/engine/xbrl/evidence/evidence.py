@@ -9,6 +9,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
+from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 from edgar_sec.engine.xbrl.taxonomy.records import GeoHierarchyEdge
 from edgar_sec.foundation.hashing import sha256_text
@@ -65,6 +67,22 @@ class EvidenceKnowledgeBase:
     is_frozen: bool = False
     frozen_sha256: str | None = None
     _geo_parents: dict[str, set[str]] = field(default_factory=dict)
+    _decompositions: dict[str, tuple[Atom, tuple[str, ...], float, tuple[str, ...]]] = (
+        field(default_factory=dict)
+    )
+
+    def decomposition(
+        self, qname: str
+    ) -> tuple[Atom, tuple[str, ...], float, tuple[str, ...]]:
+        """Bare decomposition of a qname under the taxonomy lexicon, cached."""
+        cached = self._decompositions.get(qname)
+        if cached is None:
+            lexicon = self.taxonomy.token_lexicon
+            if lexicon is None:
+                raise ValueError("taxonomy carries no token lexicon")
+            cached = decompose_concept(qname, lexicon)
+            self._decompositions[qname] = cached
+        return cached
 
     def __post_init__(self) -> None:
         if not self._geo_parents and self.taxonomy.geography_edges:

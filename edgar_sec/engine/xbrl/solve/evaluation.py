@@ -6,7 +6,6 @@ from collections.abc import Sequence
 from typing import Any
 
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
-from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
 from edgar_sec.engine.xbrl.schema.models import (
     AggregateFact,
     CalculationArc,
@@ -62,7 +61,7 @@ class AggregateEvaluator:
                 value = float(fact.value)
             except (TypeError, ValueError):
                 continue
-            fact_atom, _, _, _ = decompose_concept(fact.concept_qname, lexicon)
+            fact_atom, _, _, _ = self.kb.decomposition(fact.concept_qname)
             if fact_atom.is_a(edge.source):
                 matching.append((value, len(fact_atom.modifiers), fact.concept_qname))
 
@@ -266,11 +265,11 @@ class AggregateEvaluator:
 
         lexicon = self.kb.taxonomy.token_lexicon
         if direct_val is None and lexicon is not None:
-            target_atom, _, _, _ = decompose_concept(target_concept, lexicon)
+            target_atom, _, _, _ = self.kb.decomposition(target_concept)
             for fact in facts:
                 if fact.dimensions or not isinstance(fact.value, (int, float)):
                     continue
-                fact_atom, _, _, _ = decompose_concept(fact.concept_qname, lexicon)
+                fact_atom, _, _, _ = self.kb.decomposition(fact.concept_qname)
                 if fact_atom == target_atom:
                     direct_val = float(fact.value)
                     resolved_concept = fact.concept_qname
@@ -387,7 +386,7 @@ class AggregateEvaluator:
                 )
 
         if lexicon is not None:
-            target_atom, _, _, _ = decompose_concept(target_concept, lexicon)
+            target_atom, _, _, _ = self.kb.decomposition(target_concept)
             derived = self._derive_atom(
                 target_atom,
                 facts,

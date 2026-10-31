@@ -3,7 +3,7 @@
 from pathlib import Path
 
 import pytest
-from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
+from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.engine.xbrl.taxonomy.records import GeoHierarchyEdge
 from edgar_sec.engine.xbrl.evidence.evidence import (
     EvidenceKnowledgeBase,
@@ -81,6 +81,14 @@ def test_evidence_geography_subsumption() -> None:
     assert kb.is_geo_subsumed("country:MX", "srt:LatinAmericaMember")
     assert kb.is_geo_subsumed("country:MX", "srt:AmericasMember")
     assert not kb.is_geo_subsumed("srt:AmericasMember", "country:MX")
+
+
+def test_evidence_decomposition_is_cached() -> None:
+    """Verify bare decompositions are computed once per knowledge base."""
+    kb = EvidenceKnowledgeBase(taxonomy=load_domain_taxonomy())
+    first = kb.decomposition("us-gaap:Revenues")
+    assert kb.decomposition("us-gaap:Revenues") is first
+    assert first[0].head == "H_REVENUE"
 
 
 def _write_rules_db(path: Path) -> None:

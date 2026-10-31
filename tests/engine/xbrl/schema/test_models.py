@@ -30,6 +30,15 @@ def test_qname_local():
     assert qname_local("Revenues") == "Revenues"
 
 
+def test_split_concept_qname_is_cached():
+    first = split_concept_qname("us-gaap:Assets")
+    assert split_concept_qname("us-gaap:Assets") is first
+
+
+def test_qname_local_is_cached():
+    assert qname_local("us-gaap:Assets") is qname_local("us-gaap:Assets")
+
+
 def test_prefix_vocabulary():
     assert CORE_PREFIXES <= STANDARD_PREFIXES
     assert "us-gaap" in CORE_PREFIXES and "dei" in CORE_PREFIXES

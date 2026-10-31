@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from functools import lru_cache
 from typing import Mapping
 
 from edgar_sec.domain.identity import AccessionNumber, Cik
@@ -11,12 +12,14 @@ STANDARD_PREFIXES = frozenset({"us-gaap", "dei", "srt", "country", "currency", "
 CORE_PREFIXES = frozenset({"us-gaap", "dei"})
 
 
+@lru_cache(maxsize=65536)
 def split_concept_qname(qname: str) -> tuple[str, str]:
     """(prefix, local) of a concept qname; prefix is empty when unqualified."""
     prefix, sep, local = qname.partition(":")
     return (prefix, local) if sep else ("", qname)
 
 
+@lru_cache(maxsize=65536)
 def qname_local(qname: str) -> str:
     """Local name of a concept qname."""
     return split_concept_qname(qname)[1]

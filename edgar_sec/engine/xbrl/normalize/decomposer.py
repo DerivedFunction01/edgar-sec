@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import (
@@ -199,6 +200,7 @@ class ConceptExpression:
     matches: tuple[LexiconMatch, ...] = ()
 
 
+@lru_cache(maxsize=65536)
 def decompose_concept_expression(
     concept_qname: str,
     lexicon: TokenLexicon,

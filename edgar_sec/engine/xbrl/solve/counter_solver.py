@@ -29,7 +29,7 @@ from edgar_sec.engine.xbrl.taxonomy.item_types import declaration_for, item_type
 _ContextKey = tuple[object, ...]
 _SemanticKey = tuple[str, _ContextKey, float]
 _Resolution = tuple[float, frozenset[_SemanticKey], bool, float]
-_FinerEntry = tuple[str, _ContextKey, float]
+_FinerEntry = tuple[str, _ContextKey, float, frozenset]
 _FinerIndex = dict[_ContextKey, list[_FinerEntry]]
 
 
@@ -168,11 +168,7 @@ class CounterSolver:
         """
         coordinate = context[:6]
         base = set(context[-1])
-        entries = [
-            entry
-            for entry in finer.get(coordinate, ())
-            if set(entry[1][-1]) > base and set(entry[1][-1]) >= base
-        ]
+        entries = [entry for entry in finer.get(coordinate, ()) if entry[3] > base]
         qname = concept if any(entry[0] == concept for entry in entries) else None
         if qname is None:
             local = {
@@ -349,20 +345,27 @@ class CounterSolver:
             if len(found) != 1:
                 ambiguous.add((qname, coordinate, axes))
                 continue
-            finer.setdefault(coordinate, []).append((qname, context, next(iter(found))))
+            finer.setdefault(coordinate, []).append(
+                (qname, context, next(iter(found)), frozenset(context[-1]))
+            )
         finer_ambiguous = frozenset(ambiguous)
+
+        contexts_by_qname: dict[str, set[_ContextKey]] = {}
+        contexts_by_local: dict[str, set[_ContextKey]] = {}
+        for (qname, context), value in values.items():
+            if not context[-1] or value is None:
+                continue
+            contexts_by_qname.setdefault(qname, set()).add(context)
+            contexts_by_local.setdefault(_local_name(qname), set()).add(context)
 
         consumed: set[_SemanticKey] = set()
         for target in targets:
-            if target not in grouped and _local_name(target) not in arcs_by_local:
+            target_local = _local_name(target)
+            if target not in grouped and target_local not in arcs_by_local:
                 continue
-            contexts = {
-                context
-                for (qname, context), value in values.items()
-                if (qname == target or _local_name(qname) == _local_name(target))
-                and context[-1]
-                and value is not None
-            }
+            contexts = contexts_by_qname.get(target, set()) | contexts_by_local.get(
+                target_local, set()
+            )
             for context in contexts:
                 resolved = self._resolve_dimensional(
                     target,
@@ -542,6 +545,10 @@ class CounterSolver:
                 fact.concept_qname, []
             ).append(fact)
 
+        facts_by_period: dict[PeriodKey, list[XbrlFact]] = {}
+        for fact in facts:
+            facts_by_period.setdefault(period_key_of(fact), []).append(fact)
+
         closers: list[tuple[str, PeriodKey, str, float, float]] = []
         for goal in target_goals:
             if not is_monetary(goal):
@@ -551,9 +558,7 @@ class CounterSolver:
             ):
                 if len({float(fact.value) for fact in target_facts}) != 1:
                     continue
-                period_facts = [
-                    fact for fact in facts if period_key_of(fact) == period_key
-                ]
+                period_facts = facts_by_period.get(period_key, [])
                 breakdown = breakdown_concept(
                     kb, goal, period_facts, calculation_arcs, period_key=period_key
                 )
@@ -706,6 +711,7 @@ class CounterSolver:
         solved: list[XbrlFact] = []
         rejected: list[XbrlFact] = []
         unconsumed: list[XbrlFact] = []
+        containment: dict[str, bool] = {}
 
         for f in facts:
             q_loc = qname_local(f.concept_qname)
@@ -717,7 +723,7 @@ class CounterSolver:
             elif (
                 f.concept_qname in solved_qnames
                 or q_loc in solved_qnames
-                or any(q_loc in s for s in solved_qnames)
+                or containment.setdefault(q_loc, any(q_loc in s for s in solved_qnames))
             ):
                 solved.append(f)
             elif f.value is None or not isinstance(f.value, (int, float)):

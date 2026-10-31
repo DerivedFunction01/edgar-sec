@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
 from edgar_sec.engine.xbrl.normalize.decomposer import (
@@ -31,21 +31,26 @@ class _CandidateAtomIndex:
         lexicon: TokenLexicon,
         facts: Sequence[XbrlFact],
         calculation_arcs: Sequence[CalculationArc],
+        *,
+        atom_source: Callable[[str], Atom] | None = None,
     ) -> None:
         self._lexicon = lexicon
+        self._atom_source = atom_source or (
+            lambda qname: decompose_concept(qname, lexicon)[0]
+        )
         candidates = {fact.concept_qname for fact in facts}
         for arc in calculation_arcs:
             candidates.add(arc.parent_qname)
             candidates.add(arc.child_qname)
         self._atoms: dict[str, Atom] = {
-            qname: decompose_concept(qname, lexicon)[0] for qname in candidates
+            qname: self._atom_source(qname) for qname in candidates
         }
         self._concepts: dict[Atom, str | None] = {}
 
     def atom_for(self, qname: str) -> Atom:
         atom = self._atoms.get(qname)
         if atom is None:
-            atom = decompose_concept(qname, self._lexicon)[0]
+            atom = self._atom_source(qname)
             self._atoms[qname] = atom
         return atom
 
@@ -78,7 +83,12 @@ def _concept_for_atom(
     lexicon = kb.taxonomy.token_lexicon
     if lexicon is None:
         return None
-    return _CandidateAtomIndex(lexicon, facts, calculation_arcs).concept_for_atom(atom)
+    return _CandidateAtomIndex(
+        lexicon,
+        facts,
+        calculation_arcs,
+        atom_source=lambda qname: kb.decomposition(qname)[0],
+    ).concept_for_atom(atom)
 
 
 def solve_placements(
@@ -136,7 +146,10 @@ def solve_placements(
             if lexicon is not None:
                 if candidate_index is None:
                     candidate_index = _CandidateAtomIndex(
-                        lexicon, facts, calculation_arcs
+                        lexicon,
+                        facts,
+                        calculation_arcs,
+                        atom_source=lambda qname: kb.decomposition(qname)[0],
                     )
                 atom = candidate_index.atom_for(qname)
             else:

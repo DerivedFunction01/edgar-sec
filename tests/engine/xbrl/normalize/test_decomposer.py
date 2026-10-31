@@ -44,6 +44,14 @@ def test_split_camel_case() -> None:
     assert split_camel_case("GrossProfit") == ("Gross", "Profit")
 
 
+def test_decompose_concept_expression_is_cached() -> None:
+    """Verify identical decomposition inputs return the cached expression."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    first = decompose_concept_expression("us-gaap:Revenues", tax.token_lexicon)
+    assert decompose_concept_expression("us-gaap:Revenues", tax.token_lexicon) is first
+
+
 def test_subordinator_clause_boundary_splitting() -> None:
     """Verify subordinate clause heads are demoted to modifiers."""
     tax = load_domain_taxonomy()
