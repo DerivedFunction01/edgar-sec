@@ -1,0 +1,81 @@
+{
+  "firm": "TSLA",
+  "accession": "0001628280-25-003063",
+  "cik": "0001318605",
+  "sic_code": 3711,
+  "sector": "Consumer_Discretionary",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1295,
+      1340
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "Total revenues",
+        "reported_value": 97690000000.0,
+        "table_value": 97690,
+        "line_number": 1309,
+        "snippet": "Total revenues                                                                                                          97,690      96,773      81,462"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfRevenue",
+        "label": "Total cost of revenues",
+        "reported_value": 80240000000.0,
+        "table_value": 80240,
+        "line_number": 1318,
+        "snippet": "Total cost of revenues                                                                                                  80,240      79,113      60,609"
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross profit",
+        "reported_value": 17450000000.0,
+        "table_value": 17450,
+        "line_number": 1320,
+        "snippet": "Gross profit                                                                                                            17,450      17,660      20,853"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Income from operations",
+        "reported_value": 7076000000.0,
+        "table_value": 7076,
+        "line_number": 1328,
+        "snippet": "Income from operations                                                                                                   7,076       8,891      13,656"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income attributable to common stockholders",
+        "reported_value": 7091000000.0,
+        "table_value": 7091,
+        "line_number": 1339,
+        "snippet": "Net income attributable to common stockholders                                                                         $ 7,091    $ 14,997    $ 12,556"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossProfit = RevenueFromContractWithCustomerExcludingAssessedTax - CostOfRevenue",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": 97690000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostOfRevenue",
+          "value": 80240000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 17450000000.0,
+      "target_value": 17450000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

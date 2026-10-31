@@ -1,0 +1,105 @@
+{
+  "firm": "SHEL",
+  "accession": "0001306965-25-000007",
+  "cik": "0001306965",
+  "sic_code": 1311,
+  "sector": "Energy",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statement of Income",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      12445,
+      12473
+    ],
+    "concepts": [
+      {
+        "concept_qname": "ifrs-full:Revenue",
+        "label": "Revenue",
+        "reported_value": 284312000000.0,
+        "table_value": 284312,
+        "line_number": 12445,
+        "snippet": "Revenue                                                  8  284,312  316,620  381,314"
+      },
+      {
+        "concept_qname": "ifrs-full:ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethod",
+        "label": "Share of profit of joint ventures and associates",
+        "reported_value": 2993000000.0,
+        "table_value": 2993,
+        "line_number": 12447,
+        "snippet": "Share of profit of joint ventures and associates        14    2,993    3,725    3,972"
+      },
+      {
+        "concept_qname": "ifrs-full:RevenueAndOperatingIncome",
+        "label": "Total revenue and other income",
+        "reported_value": 289029000000.0,
+        "table_value": 289029,
+        "line_number": 12451,
+        "snippet": "Total revenue and other income                              289,029  323,183  386,201"
+      },
+      {
+        "concept_qname": "ifrs-full:RawMaterialsAndConsumablesUsed",
+        "label": "Purchases",
+        "reported_value": 188120000000.0,
+        "table_value": 188120,
+        "line_number": 12453,
+        "snippet": "Purchases                                                   188,120  212,883  258,488"
+      },
+      {
+        "concept_qname": "ifrs-full:OperatingExpense",
+        "label": "Total expenditure",
+        "reported_value": 259107000000.0,
+        "table_value": 259107,
+        "line_number": 12467,
+        "snippet": "Total expenditure                                           259,107  290,556  321,386"
+      },
+      {
+        "concept_qname": "ifrs-full:ProfitLossBeforeTax",
+        "label": "Income before taxation",
+        "reported_value": 29922000000.0,
+        "table_value": 29922,
+        "line_number": 12469,
+        "snippet": "Income before taxation                                       29,922   32,627   64,815"
+      },
+      {
+        "concept_qname": "ifrs-full:IncomeTaxExpenseContinuingOperations",
+        "label": "Taxation charge",
+        "reported_value": 13401000000.0,
+        "table_value": 13401,
+        "line_number": 12471,
+        "snippet": "Taxation charge                                         23   13,401   12,991   21,941"
+      },
+      {
+        "concept_qname": "ifrs-full:ProfitLoss",
+        "label": "Income for the period",
+        "reported_value": 16521000000.0,
+        "table_value": 16521,
+        "line_number": 12473,
+        "snippet": "Income for the period                                    7   16,521   19,636   42,874"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "Total revenue and other income - Total expenditure = Income before taxation",
+      "left_concept": "ifrs-full:ProfitLossBeforeTax",
+      "components": [
+        {
+          "concept": "ifrs-full:RevenueAndOperatingIncome",
+          "value": 289029000000.0,
+          "weight": 1
+        },
+        {
+          "concept": "ifrs-full:OperatingExpense",
+          "value": 259107000000.0,
+          "weight": -1
+        }
+      ],
+      "computed_sum": 29922000000.0,
+      "target_value": 29922000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

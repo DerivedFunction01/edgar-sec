@@ -1,0 +1,127 @@
+{
+  "firm": "DIS",
+  "accession": "0001744489-24-000276",
+  "cik": "0001744489",
+  "sic_code": 4888,
+  "sector": "Communication_Services",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF INCOME",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      2968,
+      2987
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total revenues",
+        "reported_value": 91361000000.0,
+        "table_value": 91361,
+        "line_number": 2968,
+        "snippet": "Total revenues                                                                                                    91,361      88,898      82,722"
+      },
+      {
+        "concept_qname": "us-gaap:CostsAndExpenses",
+        "label": "Total costs and expenses",
+        "reported_value": 79447000000.0,
+        "table_value": -79447,
+        "line_number": 2975,
+        "snippet": "Total costs and expenses                                                                                        (79,447)    (79,906)    (75,952)",
+        "display_sign": -1
+      },
+      {
+        "concept_qname": "us-gaap:RestructuringCostsAndAssetImpairmentCharges",
+        "label": "Restructuring and impairment charges",
+        "reported_value": 3595000000.0,
+        "table_value": -3595,
+        "line_number": 2976,
+        "snippet": "Restructuring and impairment charges                                                                             (3,595)     (3,892)       (237)",
+        "display_sign": -1
+      },
+      {
+        "concept_qname": "us-gaap:NonoperatingIncomeExpense",
+        "label": "Other income (expense), net",
+        "reported_value": -65000000.0,
+        "table_value": -65,
+        "line_number": 2977,
+        "snippet": "Other income (expense), net                                                                                         (65)          96       (667)"
+      },
+      {
+        "concept_qname": "us-gaap:InterestIncomeExpenseNonoperatingNet",
+        "label": "Interest expense, net",
+        "reported_value": -1260000000.0,
+        "table_value": -1260,
+        "line_number": 2978,
+        "snippet": "Interest expense, net                                                                                            (1,260)     (1,209)     (1,397)"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromEquityMethodInvestments",
+        "label": "Equity in the income of investees",
+        "reported_value": 575000000.0,
+        "table_value": 575,
+        "line_number": 2979,
+        "snippet": "Equity in the income of investees                                                                                    575         782         816"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "label": "Income from continuing operations before income taxes",
+        "reported_value": 7569000000.0,
+        "table_value": 7569,
+        "line_number": 2981,
+        "snippet": "Income from continuing operations before income taxes                                                              7,569       4,769       5,285"
+      },
+      {
+        "concept_qname": "us-gaap:ProfitLoss",
+        "label": "Net income",
+        "reported_value": 5773000000.0,
+        "table_value": 5773,
+        "line_number": 2987,
+        "snippet": "Net income                                                                                                         5,773       3,390       3,505"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "IncomeBeforeTaxes = TotalRevenues - TotalCostsAndExpenses - RestructuringAndImpairmentCharges + OtherIncomeExpenseNet + InterestExpenseNet + EquityInIncomeOfInvestees",
+      "left_concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 91361000000.0,
+          "weight": 1
+        },
+        {
+          "concept": "us-gaap:CostsAndExpenses",
+          "value": 79447000000.0,
+          "weight": -1
+        },
+        {
+          "concept": "us-gaap:RestructuringCostsAndAssetImpairmentCharges",
+          "value": 3595000000.0,
+          "weight": -1
+        },
+        {
+          "concept": "us-gaap:NonoperatingIncomeExpense",
+          "value": -65000000.0,
+          "weight": 1
+        },
+        {
+          "concept": "us-gaap:InterestIncomeExpenseNonoperatingNet",
+          "value": -1260000000.0,
+          "weight": 1
+        },
+        {
+          "concept": "us-gaap:IncomeLossFromEquityMethodInvestments",
+          "value": 575000000.0,
+          "weight": 1
+        }
+      ],
+      "computed_sum": 7569000000.0,
+      "target_value": 7569000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

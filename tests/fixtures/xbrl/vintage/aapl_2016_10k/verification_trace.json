@@ -1,0 +1,105 @@
+{
+  "firm": "AAPL",
+  "accession": "0001628280-16-020309",
+  "cik": "0000320193",
+  "sic_code": 3571,
+  "sector": "Technology",
+  "fiscal_year": 2016,
+  "source_filing_fiscal_year": 2016,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1090,
+      1118
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:SalesRevenueNet",
+        "label": "Net sales",
+        "reported_value": 215639000000.0,
+        "table_value": 215639,
+        "line_number": 1099,
+        "snippet": "Net sales                                              $ 215,639           $ 233,715           $ 182,795"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
+        "label": "Cost of sales",
+        "reported_value": 131376000000.0,
+        "table_value": 131376,
+        "line_number": 1100,
+        "snippet": "Cost of sales                                            131,376             140,089             112,258"
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross margin",
+        "reported_value": 84263000000.0,
+        "table_value": 84263,
+        "line_number": 1102,
+        "snippet": "Gross margin                                              84,263              93,626              70,537"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating income",
+        "reported_value": 60024000000.0,
+        "table_value": 60024,
+        "line_number": 1112,
+        "snippet": "Operating income                                          60,024              71,230              52,503"
+      },
+      {
+        "concept_qname": "us-gaap:NonoperatingIncomeExpense",
+        "label": "Other income/(expense), net",
+        "reported_value": 1348000000.0,
+        "table_value": 1348,
+        "line_number": 1113,
+        "snippet": "Other income/(expense), net                                1,348               1,285                 980"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "label": "Income before provision for income taxes",
+        "reported_value": 61372000000.0,
+        "table_value": 61372,
+        "line_number": 1115,
+        "snippet": "Income before provision for income taxes                  61,372              72,515              53,483"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Provision for income taxes",
+        "reported_value": 15685000000.0,
+        "table_value": 15685,
+        "line_number": 1116,
+        "snippet": "Provision for income taxes                                15,685              19,121              13,973"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income",
+        "reported_value": 45687000000.0,
+        "table_value": 45687,
+        "line_number": 1118,
+        "snippet": "Net income                                              $ 45,687            $ 53,394            $ 39,510"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "Income before provision for income taxes = Operating income + Other income/(expense), net",
+      "left_concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "components": [
+        {
+          "concept": "us-gaap:OperatingIncomeLoss",
+          "weight": 1,
+          "value": 60024000000.0
+        },
+        {
+          "concept": "us-gaap:NonoperatingIncomeExpense",
+          "weight": 1,
+          "value": 1348000000.0
+        }
+      ],
+      "computed_sum": 61372000000.0,
+      "target_value": 61372000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

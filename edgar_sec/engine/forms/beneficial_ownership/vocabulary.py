@@ -1,0 +1,161 @@
+"""Shared field and slot vocabulary for beneficial-ownership forms."""
+
+from __future__ import annotations
+
+FIELD_TAGS: dict[str, tuple[str, ...]] = {
+    "issuerName": ("issuerName",),
+    "issuerCusip": ("issuerCusipNumber", "issuerCUSIP"),
+    "noticeContact": ("personName",),
+    "securitiesClassTitle": ("securitiesClassTitle",),
+    "dateOfEvent": ("dateOfEvent", "eventDateRequiresFilingThisStatement"),
+    "reportingPersonName": ("reportingPersonName",),
+    "memberOfGroup": ("memberOfGroup", "memberGroup"),
+    "fundType": ("fundType",),
+    "legalProceedings": ("legalProceedings",),
+    "citizenshipOrOrganization": ("citizenshipOrOrganization",),
+    "soleVotingPower": ("soleVotingPower", "solePowerOrDirectToVote"),
+    "sharedVotingPower": ("sharedVotingPower", "sharedPowerOrDirectToVote"),
+    "soleDispositivePower": ("soleDispositivePower", "solePowerOrDirectToDispose"),
+    "sharedDispositivePower": (
+        "sharedDispositivePower",
+        "sharedPowerOrDirectToDispose",
+    ),
+    "aggregateAmountOwned": (
+        "aggregateAmountOwned",
+        "reportingPersonBeneficiallyOwnedAggregateNumberOfShares",
+        "amountBeneficiallyOwned",
+    ),
+    "isAggregateExcludeShares": ("isAggregateExcludeShares",),
+    "percentOfClass": ("percentOfClass", "classPercent"),
+    "typeOfReportingPerson": ("typeOfReportingPerson",),
+    "item1": ("item1",),
+    "item2": ("item2",),
+    "item3": ("item3",),
+    "item4": ("item4",),
+    "item5": ("item5",),
+    "item6": ("item6",),
+    "item7": ("item7",),
+    "item8": ("item8",),
+    "item9": ("item9",),
+    "item10": ("item10",),
+    "commentContent": ("commentContent", "comments", "commentText"),
+    "signature": ("signature",),
+}
+
+CATEGORICAL_FIELDS = (
+    "memberOfGroup",
+    "fundType",
+    "legalProceedings",
+    "citizenshipOrOrganization",
+    "typeOfReportingPerson",
+    "isAggregateExcludeShares",
+)
+CHECKBOX_FIELDS = ("legalProceedings", "isAggregateExcludeShares")
+COVER_VALUE_FIELDS = (
+    "issuerName",
+    "issuerCusip",
+    "noticeContact",
+    "reportingPersonName",
+    "securitiesClassTitle",
+    "dateOfEvent",
+    "memberOfGroup",
+    "citizenshipOrOrganization",
+    "soleVotingPower",
+    "sharedVotingPower",
+    "soleDispositivePower",
+    "sharedDispositivePower",
+    "aggregateAmountOwned",
+    "percentOfClass",
+    "commentContent",
+)
+REPORTING_PERSON_FIELDS = (
+    "reportingPersonName",
+    "memberOfGroup",
+    "fundType",
+    "legalProceedings",
+    "citizenshipOrOrganization",
+    "soleVotingPower",
+    "sharedVotingPower",
+    "soleDispositivePower",
+    "sharedDispositivePower",
+    "aggregateAmountOwned",
+    "isAggregateExcludeShares",
+    "percentOfClass",
+    "typeOfReportingPerson",
+)
+REPORTING_PERSON_XML_SLOTS = (
+    ("soleVotingPower", 7),
+    ("sharedVotingPower", 8),
+    ("soleDispositivePower", 9),
+    ("sharedDispositivePower", 10),
+    ("aggregateAmountOwned", 11),
+)
+
+NARRATIVE_FIELDS = {
+    1: "commentText",
+    2: "filingPersonName",
+    3: "fundsSource",
+    4: "transactionPurpose",
+    5: "percentageOfClassSecurities",
+    6: "contractDescription",
+    7: "filedExhibits",
+}
+ITEM_SUBSECTION_FIELDS = {
+    2: {
+        "a": "filingPersonName",
+        "b": "principalBusinessAddress",
+        "c": "principalBusiness",
+        "f": "citizenshipOrOrganization",
+    },
+    5: {
+        "a": "percentageOfClassSecurities",
+        "b": "numberOfShares",
+        "c": "transactionDesc",
+        "d": "listOfShareholders",
+        "e": "date5PercentOwnership",
+    },
+}
+
+REPORTING_PERSON_SLOT_NUMBERS_13D = (
+    ("reportingPersonName", 1),
+    ("memberOfGroup", 2),
+    ("secUseOnly", 3),
+    ("fundType", 4),
+    ("legalProceedings", 5),
+    ("citizenshipOrOrganization", 6),
+    ("soleVotingPower", 7),
+    ("sharedVotingPower", 8),
+    ("soleDispositivePower", 9),
+    ("sharedDispositivePower", 10),
+    ("aggregateAmountOwned", 11),
+    ("isAggregateExcludeShares", 12),
+    ("percentOfClass", 13),
+    ("typeOfReportingPerson", 14),
+)
+REPORTING_PERSON_SLOT_NUMBERS_13G = (
+    ("reportingPersonName", 1),
+    ("memberOfGroup", 2),
+    ("secUseOnly", 3),
+    ("citizenshipOrOrganization", 4),
+    ("soleVotingPower", 5),
+    ("sharedVotingPower", 6),
+    ("soleDispositivePower", 7),
+    ("sharedDispositivePower", 8),
+    ("aggregateAmountOwned", 9),
+    ("isAggregateExcludeShares", 10),
+    ("percentOfClass", 11),
+    ("typeOfReportingPerson", 12),
+)
+
+__all__ = [
+    "CATEGORICAL_FIELDS",
+    "CHECKBOX_FIELDS",
+    "COVER_VALUE_FIELDS",
+    "FIELD_TAGS",
+    "ITEM_SUBSECTION_FIELDS",
+    "NARRATIVE_FIELDS",
+    "REPORTING_PERSON_FIELDS",
+    "REPORTING_PERSON_XML_SLOTS",
+    "REPORTING_PERSON_SLOT_NUMBERS_13D",
+    "REPORTING_PERSON_SLOT_NUMBERS_13G",
+]

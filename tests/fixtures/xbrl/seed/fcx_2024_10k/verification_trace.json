@@ -1,0 +1,82 @@
+{
+  "firm": "FCX",
+  "accession": "0000831259-25-000006",
+  "cik": "0000831259",
+  "sic_code": 1000,
+  "sector": "Materials",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF INCOME",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      3735,
+      3769
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Revenues",
+        "reported_value": 25455000000.0,
+        "table_value": 25455,
+        "line_number": 3743,
+        "snippet": "Revenues                                                                         $ 25,455      $ 22,855      $ 22,780"
+      },
+      {
+        "concept_qname": "us-gaap:CostsAndExpenses",
+        "label": "Total costs and expenses",
+        "reported_value": 18591000000.0,
+        "table_value": 18591,
+        "line_number": 3754,
+        "snippet": "Total costs and expenses                                                           18,591        16,630        15,743"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating income",
+        "reported_value": 6864000000.0,
+        "table_value": 6864,
+        "line_number": 3756,
+        "snippet": "Operating income                                                                    6,864         6,225         7,037"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Provision for income taxes",
+        "reported_value": 2523000000.0,
+        "table_value": -2523,
+        "line_number": 3762,
+        "snippet": "Provision for income taxes                                                        (2,523)       (2,270)       (2,267)",
+        "display_sign": -1
+      },
+      {
+        "concept_qname": "us-gaap:ProfitLoss",
+        "label": "Net income",
+        "reported_value": 4399000000.0,
+        "table_value": 4399,
+        "line_number": 3765,
+        "snippet": "Net income                                                                          4,399         3,751         4,479"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncomeLoss = Revenues - CostsAndExpenses",
+      "left_concept": "us-gaap:OperatingIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 25455000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostsAndExpenses",
+          "value": 18591000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 6864000000.0,
+      "target_value": 6864000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

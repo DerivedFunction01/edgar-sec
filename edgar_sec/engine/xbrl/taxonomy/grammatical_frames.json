@@ -1,0 +1,122 @@
+[
+  {
+    "frame_id": "FRAME_OUTFLOW_PAYMENTS_TO",
+    "prefix_tokens": [
+      "payments",
+      "to"
+    ],
+    "direction": -1.0,
+    "polarity": "OUTFLOW",
+    "strip_tokens": [
+      "payments",
+      "to",
+      "for"
+    ],
+    "description": "Cash outflow payments to parties"
+  },
+  {
+    "frame_id": "FRAME_OUTFLOW_PAYMENTS_FOR",
+    "prefix_tokens": [
+      "payments",
+      "for"
+    ],
+    "direction": -1.0,
+    "polarity": "OUTFLOW",
+    "strip_tokens": [
+      "payments",
+      "for",
+      "to"
+    ],
+    "description": "Cash outflow payments for assets/services"
+  },
+  {
+    "frame_id": "FRAME_OUTFLOW_COSTS",
+    "prefix_tokens": [
+      "costs"
+    ],
+    "direction": -1.0,
+    "polarity": "OUTFLOW",
+    "strip_tokens": [
+      "to",
+      "for",
+      "of",
+      "and"
+    ],
+    "description": "Costs outflow prefix"
+  },
+  {
+    "frame_id": "FRAME_OUTFLOW_COST",
+    "prefix_tokens": [
+      "cost"
+    ],
+    "direction": -1.0,
+    "polarity": "OUTFLOW",
+    "strip_tokens": [
+      "to",
+      "for",
+      "of",
+      "and"
+    ],
+    "description": "Cost outflow prefix"
+  },
+  {
+    "frame_id": "FRAME_OUTFLOW_PURCHASE",
+    "prefix_tokens": [
+      "purchase"
+    ],
+    "direction": -1.0,
+    "polarity": "OUTFLOW",
+    "strip_tokens": [
+      "to",
+      "for",
+      "of",
+      "and"
+    ],
+    "description": "Purchase outflow prefix"
+  },
+  {
+    "frame_id": "FRAME_OUTFLOW_REPAYMENTS",
+    "prefix_tokens": [
+      "repayments"
+    ],
+    "direction": -1.0,
+    "polarity": "OUTFLOW",
+    "strip_tokens": [
+      "to",
+      "for",
+      "of",
+      "and"
+    ],
+    "description": "Repayments outflow prefix"
+  },
+  {
+    "frame_id": "FRAME_INFLOW_PROCEEDS_FROM",
+    "prefix_tokens": [
+      "proceeds",
+      "from"
+    ],
+    "direction": 1.0,
+    "polarity": "INFLOW",
+    "strip_tokens": [
+      "proceeds",
+      "from",
+      "of"
+    ],
+    "description": "Cash inflow proceeds from financing/investing"
+  },
+  {
+    "frame_id": "FRAME_INFLOW_RECEIPTS_FROM",
+    "prefix_tokens": [
+      "receipts",
+      "from"
+    ],
+    "direction": 1.0,
+    "polarity": "INFLOW",
+    "strip_tokens": [
+      "receipts",
+      "from",
+      "of"
+    ],
+    "description": "Cash inflow receipts from customers"
+  }
+]

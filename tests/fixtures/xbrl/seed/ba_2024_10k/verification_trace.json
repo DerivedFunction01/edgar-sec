@@ -1,0 +1,82 @@
+{
+  "firm": "BA",
+  "accession": "0000012927-25-000015",
+  "cik": "0000012927",
+  "sic_code": 3721,
+  "sector": "Industrials",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statements of Operations",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1328,
+      1369
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total revenues",
+        "reported_value": 66517000000.0,
+        "table_value": 66517,
+        "line_number": 1335,
+        "snippet": "Total revenues                                                                          66,517    77,794    66,608"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfRevenue",
+        "label": "Total costs and expenses",
+        "reported_value": 68508000000.0,
+        "table_value": -68508,
+        "line_number": 1340,
+        "snippet": "Total costs and expenses                                                              (68,508)  (70,070)  (63,078)",
+        "display_sign": -1
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Loss from operations",
+        "reported_value": -10707000000.0,
+        "table_value": -10707,
+        "line_number": 1348,
+        "snippet": "Loss from operations                                                                  (10,707)     (773)   (3,519)"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "label": "Loss before income taxes",
+        "reported_value": -12210000000.0,
+        "table_value": -12210,
+        "line_number": 1352,
+        "snippet": "Loss before income taxes                                                              (12,210)   (2,005)   (5,022)"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net loss attributable to Boeing shareholders",
+        "reported_value": -11817000000.0,
+        "table_value": -11817,
+        "line_number": 1358,
+        "snippet": "Net loss attributable to Boeing shareholders                                          (11,817)   (2,222)   (4,935)"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossProfit = Revenues - CostOfRevenue",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 66517000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostOfRevenue",
+          "value": 68508000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": -1991000000.0,
+      "target_value": -1991000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

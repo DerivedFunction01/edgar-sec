@@ -1,0 +1,133 @@
+# `edgar_sec.pipelines.document_inventory`
+
+## Purpose
+
+Project filing-cohort observations into accession-level index-page work, capture
+and replay `-index.html` responses, and build offline parser-review artifacts.
+Layer 4 consumes published `filing_catalog` plans and imports downward only.
+
+## Contracts
+
+- Fixture capture reuses successful pages and records additional source membership; failed pages remain retryable. Replay validates the response digest and returns exact decompressed bytes. Inventory fixtures live at `{artifacts_root}/document_inventory/fixtures/<fixture_id>/`; their `manifest.json` uses the shared `foundation.runtime.fixtures` envelope, while `details` and the SQLite schema remain inventory-owned.
+- Plan and fixture discovery reads manifests only; the operator selects discovered artifacts instead of accepting arbitrary plan JSON paths.
+- Plan discovery and the stable sorted-key fingerprint contract live in `domain.plan`; this pipeline owns its Parquet reads and supplies the ordered locator-key stream.
+- `engine.index_pages.parser.parse_html_index` transforms explicit bytes to typed domain
+  records without network or artifact access; unknown structure never becomes an empty
+  successful parse.
+- Work orders are sorted Parquet relations with validated identity; only one bounded chunk is read into worker memory at a time.
+- The coordinator holds an exclusive run lock; completed accession results are journaled atomically and incomplete chunks resume from validated progress.
+- SIGINT/SIGTERM stop new submissions, drain in-flight work, and leave incomplete chunk pointers unchanged.
+- `run_missing_accessions` returns aggregate run counters and a bounded prefix of per-chunk details, rather than retaining one result object per work-order chunk.
+- Snapshot candidate staging writes outcomes, entries, and source-CIK edges incrementally. The anti-join runs in resource-configured DuckDB and emits Parquet relations without collecting full accession keys in Python.
+- The projection validates a published catalog plan, writes normalized cohort relations, and pins a sorted pre-fetch work order before any SEC request.
+- Worker distribution selects only validated, projected inventory runs. The shared work picker never projects catalog plans; receipts bind the run's work order and imported committed attempts are revalidated.
+- Durable publication pins the branch tip. `base_snapshot_id` selects the delta's lineage base and the identity; when omitted, the tip of the selected branch (default `main`) is used. An explicit base must match the branch tip, so historical bases require a branch created at that tip. `--expected-branch-tip` pins the branch pointer expected at commit; a concurrent move refuses publication without moving the pointer, and a retry re-anti-joins against the new parent.
+- Persisted Run cancellation is recorded before the command returns; incomplete chunks,
+  retryable outcomes, parser refusals, and cancellation block independent publication.
+- **Progress output**: Fixture capture and parser review report per-item TTY progress; JSON and non-TTY output remain clean.
+
+## Command surface
+
+<!-- AUTOGEN:COMMANDS:START -->
+| Subcommand | Description | Arguments |
+| :--- | :--- | :--- |
+| `dag` | Snapshot DAG operations | `[--root]`, `[--json]` |
+| `distrib` | Distributed worker bundle lifecycle | — |
+| `fixture` | create, fill, and list dataset fixtures | — |
+| `inspect` | validate and inspect a pinned inventory snapshot | `[--snapshot]`, `[--branch]`, `[--artifacts]`, `[--json]` |
+| `project` | project a published catalog plan into a resumable run | `--catalog-plan`, `[--base-snapshot-id]`, `[--branch]`, `[--explicit-refresh]`, `[--chunk-size]`, `[--artifacts]`, `[--json]` |
+| `publish` | publish a completed inventory run to a DAG branch | `--run-id`, `[--branch]`, `[--expected-branch-tip]`, `[--artifacts]`, `[--json]` |
+| `query` | query active document inventory snapshots | `[--accession]`, `[--form]`, `[--filing-cik]`, `[--source-cik]`, `[--limit]`, `[--artifacts]`, `[--json]` |
+| `review` | generate and compare review runs with pipeline-specific commands | — |
+| `run` | fetch and parse pending index pages | `--run-id`, `[--retry-failures]`, `[--workers]`, `[--confirm-stale-lock]`, `[--no-progress]`, `[--artifacts]`, `[--json]` |
+| `status` | inspect projected inventory runs | `[--run-id]`, `[--artifacts]`, `[--json]` |
+<!-- AUTOGEN:COMMANDS:END -->
+
+### Usage examples
+
+```bash
+# Project a catalog plan into a resumable run
+python run.py inventory project --catalog-plan plan-2024-01-15 --chunk-size 100
+
+# Check run status
+python run.py inventory status --run-id 2024-01-15T120000Z
+
+# Verify a pinned inventory snapshot
+python run.py inventory inspect --snapshot current --json
+
+# Run fetch and parse with multiple workers
+python run.py inventory run --run-id 2024-01-15T120000Z --workers 8
+
+# Create a fixture without the interactive progress bar
+python run.py inventory fixture create --fixture my-fixture --catalog-plan published-plan --no-progress
+
+# Generate parser review artifacts without the interactive progress bar
+python run.py inventory review generate --fixture my-fixture --output ./review-run --no-progress
+
+# Analyze existing parsed review runs without replaying or fetching pages
+python run.py inventory review analyze --run-id run-before --run-id run-after --json
+
+# Export a projected run, execute the assigned bundle on another machine, then import it
+python run.py inventory distrib commands --work-id run-2024-01-15
+python run.py inventory distrib export --work-id run-2024-01-15 --workers 2
+python run.py inventory distrib worker --bundle /path/to/worker-00 --threads 4
+python run.py inventory distrib import --work-id run-2024-01-15 --source /path/to/worker-00
+
+# Publish completed run to snapshot
+python run.py inventory publish --run-id 2024-01-15T120000Z --branch main
+
+# Query inventory snapshots
+python run.py inventory query --accession 0000320193-23-000004 --limit 10
+```
+
+## Artifact layout
+
+<!-- AUTOGEN:PATHS:START -->
+```text
+{artifacts_root}/
+├── document_inventory/
+│   ├── fixtures/
+│   │   └── {fixture_id}/
+│   │       ├── fixture.sqlite
+│   │       └── manifest.json
+│   ├── review-runs/
+│   └── snapshots/  # Published snapshot root.
+│       ├── {snapshot_id}/
+│       ├── .publication.lock
+│       └── catalog.sqlite  # SQLite DAG catalog database for published inventory snapshots.
+└── transient/
+    └── document_inventory/
+        ├── projection-staging/
+        └── {run_id}/
+            ├── chunks/
+            │   └── {chunk_id}/
+            │       ├── attempt-{attempt_id}/
+            │       │   ├── entries.parquet
+            │       │   ├── manifest.json
+            │       │   └── outcomes.parquet
+            │       ├── progress/
+            │       │   ├── current.json
+            │       │   └── progress-{attempt_id}.duckdb
+            │       └── current.json
+            ├── publication/  # Staging directory inside this run.
+            ├── cancelled.json
+            ├── cohort_accessions.parquet
+            ├── cohort_sources.parquet
+            ├── projection_manifest.json
+            ├── run.lock
+            ├── run_manifest.json
+            └── work_order.parquet
+```
+<!-- AUTOGEN:PATHS:END -->
+
+The same-host broker socket uses a short, user-scoped temporary path so worker bundle
+depth does not exceed the Unix-domain socket path limit.
+
+## Deliberate gaps
+
+- The parser has not completed the historical SEC layout audit; final acceptance still
+  depends on catalog evidence.
+- `cohort.py` remains an in-memory projection for small fixture and review inputs; the
+  production build uses the streamed catalog-plan projection in `snapshot/`.
+- Refreshes hide prior entry rows from active snapshot queries through DAG scoped masking,
+  but do not publish a direct mapping of superseded entry IDs.

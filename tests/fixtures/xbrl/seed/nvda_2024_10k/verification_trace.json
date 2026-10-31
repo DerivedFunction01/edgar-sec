@@ -1,0 +1,89 @@
+{
+  "firm": "NVDA",
+  "accession": "0001045810-24-000029",
+  "cik": "0001045810",
+  "sic_code": 3674,
+  "sector": "Technology",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statements of Income",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1474,
+      1505
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Revenue",
+        "reported_value": 60922000000.0,
+        "table_value": 60922,
+        "line_number": 1483,
+        "snippet": "Revenue                                                     $ 60,922      $ 26,974      $ 26,914"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfRevenue",
+        "label": "Cost of revenue",
+        "reported_value": 16621000000.0,
+        "table_value": 16621,
+        "line_number": 1484,
+        "snippet": "Cost of revenue                                               16,621        11,618         9,439"
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross profit",
+        "reported_value": 44301000000.0,
+        "table_value": 44301,
+        "line_number": 1486,
+        "snippet": "Gross profit                                                  44,301        15,356        17,475"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating income",
+        "reported_value": 32972000000.0,
+        "table_value": 32972,
+        "line_number": 1494,
+        "snippet": "Operating income                                              32,972         4,224        10,041"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Income tax expense",
+        "reported_value": 4058000000.0,
+        "table_value": 4058,
+        "line_number": 1502,
+        "snippet": "Income tax expense (benefit)                                   4,058         (187)           189"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income",
+        "reported_value": 29760000000.0,
+        "table_value": 29760,
+        "line_number": 1504,
+        "snippet": "Net income                                                  $ 29,760       $ 4,368       $ 9,752"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossProfit = Revenues - CostOfRevenue",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 60922000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostOfRevenue",
+          "value": 16621000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 44301000000.0,
+      "target_value": 44301000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

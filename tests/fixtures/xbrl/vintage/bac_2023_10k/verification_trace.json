@@ -1,0 +1,110 @@
+{
+  "firm": "BAC",
+  "accession": "0000070858-24-000122",
+  "cik": "0000070858",
+  "sic_code": 6021,
+  "sector": "Financials",
+  "fiscal_year": 2023,
+  "source_filing_fiscal_year": 2023,
+  "statement_of_operations": {
+    "title": "Consolidated Statement of Income",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      4504,
+      4539
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:InterestIncomeExpenseNet",
+        "label": "Net interest income",
+        "reported_value": 56931000000.0,
+        "table_value": 56931,
+        "line_number": 4512,
+        "snippet": "Net interest income                                       56,931      52,462      42,934"
+      },
+      {
+        "concept_qname": "us-gaap:NoninterestIncome",
+        "label": "Total noninterest income",
+        "reported_value": 41650000000.0,
+        "table_value": 41650,
+        "line_number": 4519,
+        "snippet": "Total noninterest income                                  41,650      42,488      46,179"
+      },
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total revenue, net of interest expense",
+        "reported_value": 98581000000.0,
+        "table_value": 98581,
+        "line_number": 4521,
+        "snippet": "Total revenue, net of interest expense                    98,581      94,950      89,113"
+      },
+      {
+        "concept_qname": "bac:FinancingReceivableExcludingAccruedInterestAndOffBalanceSheetLiabilityCreditLossProvisionReversal",
+        "label": "Provision for credit losses",
+        "reported_value": 4394000000.0,
+        "table_value": 4394,
+        "line_number": 4523,
+        "snippet": "Provision for credit losses                                4,394       2,543     (4,594)"
+      },
+      {
+        "concept_qname": "us-gaap:NoninterestExpense",
+        "label": "Total noninterest expense",
+        "reported_value": 65845000000.0,
+        "table_value": 65845,
+        "line_number": 4534,
+        "snippet": "Total noninterest expense                                 65,845      61,438      59,731"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "label": "Income before income taxes",
+        "reported_value": 28342000000.0,
+        "table_value": 28342,
+        "line_number": 4536,
+        "snippet": "Income before income taxes                                28,342      30,969      33,976"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Income tax expense",
+        "reported_value": 1827000000.0,
+        "table_value": 1827,
+        "line_number": 4537,
+        "snippet": "Income tax expense                                         1,827       3,441       1,998"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income",
+        "reported_value": 26515000000.0,
+        "table_value": 26515,
+        "line_number": 4539,
+        "snippet": "Net income                                              $ 26,515    $ 27,528    $ 31,978"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "Total revenue, net of interest expense - Provision for credit losses - Total noninterest expense = Income before income taxes",
+      "left_concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "weight": 1,
+          "value": 98581000000.0
+        },
+        {
+          "concept": "bac:FinancingReceivableExcludingAccruedInterestAndOffBalanceSheetLiabilityCreditLossProvisionReversal",
+          "weight": -1,
+          "value": 4394000000.0
+        },
+        {
+          "concept": "us-gaap:NoninterestExpense",
+          "weight": -1,
+          "value": 65845000000.0
+        }
+      ],
+      "computed_sum": 28342000000.0,
+      "target_value": 28342000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

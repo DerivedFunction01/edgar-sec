@@ -1,0 +1,152 @@
+"""Multi-modal document and filing rendering dispatcher.
+
+Routes payloads to text normalization, XML rendering, or raw byte pass-through
+based on declared form-family processing profiles.
+"""
+
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+from edgar_sec.domain.forms.common.processing import AcquisitionOperation
+from edgar_sec.domain.forms.families.processing_profiles import get_family_profile
+from edgar_sec.engine.document.screening import (
+    screen_candidate_document,
+    screen_specialized_xml_source,
+)
+
+if TYPE_CHECKING:
+    from edgar_sec.domain.document.aggregate import FilingAggregate
+
+
+class UnsupportedRenderOperation(ValueError):
+    """Raised when an unsupported render operation is requested for a form."""
+
+
+def _normalize_operation(
+    operation: str | AcquisitionOperation | None,
+) -> AcquisitionOperation | None:
+    if operation is None:
+        return None
+    if isinstance(operation, AcquisitionOperation):
+        return operation
+    val = str(operation).strip().lower()
+    if val in ("render_to_xml", "xml"):
+        return AcquisitionOperation.RENDER_TO_XML
+    if val in ("render_to_txt", "txt"):
+        return AcquisitionOperation.RENDER_TO_TXT
+    if val == "raw":
+        return AcquisitionOperation.RAW
+    try:
+        return AcquisitionOperation(val)
+    except ValueError:
+        return None
+
+
+def render_document(
+    raw_bytes: bytes,
+    *,
+    form: str | None = None,
+    filename: str | None = None,
+    operation: str | AcquisitionOperation | None = None,
+) -> str | bytes:
+    """Render raw document bytes according to form family profile or target operation."""
+    profile = get_family_profile(form) if form else None
+    target_op = _normalize_operation(operation) or (
+        profile.preferred_operation if profile else AcquisitionOperation.RAW
+    )
+
+    if target_op == AcquisitionOperation.RAW:
+        return raw_bytes
+
+    if target_op == AcquisitionOperation.RENDER_TO_TXT:
+        if profile and not profile.has_operation(AcquisitionOperation.RENDER_TO_TXT):
+            raise UnsupportedRenderOperation(
+                f"Form {form!r} does not support text rendering; use .render() or .raw()"
+            )
+        from edgar_sec.engine.forms.normalize import normalize_document
+
+        return normalize_document(
+            raw_bytes,
+            form=form,
+            document_path=filename,
+        ).text
+
+    if target_op == AcquisitionOperation.RENDER_TO_XML:
+        if profile and not profile.has_operation(AcquisitionOperation.RENDER_TO_XML):
+            raise UnsupportedRenderOperation(
+                f"Form {form!r} does not support XML rendering; use .render() or .raw()"
+            )
+        family = profile.family if profile else form
+        from edgar_sec.engine.document_processing.registry import (
+            DEFAULT_HANDLER_REGISTRY,
+        )
+        from edgar_sec.engine.document_processing.outputs import HandlerOutput
+
+        reg = (
+            DEFAULT_HANDLER_REGISTRY.resolve("render_to_xml", family, None)
+            if family
+            else None
+        )
+        if reg is None:
+            raise UnsupportedRenderOperation(
+                f"Form {form!r} has no registered XML renderer"
+            )
+        handler_output = reg.handler(raw_bytes, None)  # type: ignore[arg-type]
+        xml_bytes = (
+            handler_output.content
+            if isinstance(handler_output, HandlerOutput)
+            else handler_output
+        )
+        return (
+            xml_bytes
+            if isinstance(xml_bytes, str)
+            else xml_bytes.decode("utf-8", errors="replace")
+        )
+
+    return raw_bytes
+
+
+def render_filing(
+    filing: FilingAggregate,
+    *,
+    operation: str | AcquisitionOperation | None = None,
+) -> str | bytes:
+    """Render the primary document of a filing aggregate."""
+    raw_data = filing.raw()
+    if raw_data is None:
+        raise ValueError(f"Filing {filing.accession.raw} has no primary document bytes")
+    profile = get_family_profile(filing.form)
+    requested_operation = _normalize_operation(operation)
+    if operation is not None and requested_operation is None:
+        return raw_data
+    resolved_operation = requested_operation or (
+        profile.preferred_operation if profile else AcquisitionOperation.RAW
+    )
+    if resolved_operation is AcquisitionOperation.RAW:
+        return raw_data
+    if resolved_operation is AcquisitionOperation.RENDER_TO_XML:
+        identity = screen_candidate_document(
+            filing.form,
+            filename=filing.primary_document_path,
+            raw_content=raw_data,
+        )
+        structure = screen_specialized_xml_source(filing.form, raw_data)
+        if identity.is_inversion or structure.is_inversion:
+            return raw_data
+    try:
+        return render_document(
+            raw_data,
+            form=filing.form,
+            filename=filing.primary_document_path,
+            operation=resolved_operation,
+        )
+    except UnsupportedRenderOperation:
+        return raw_data
+
+
+__all__ = [
+    "UnsupportedRenderOperation",
+    "render_document",
+    "render_filing",
+]

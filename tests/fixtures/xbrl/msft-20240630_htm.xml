@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xbrli:xbrl xmlns:xbrli="http://www.xbrl.org/2003/instance"
+            xmlns:link="http://www.xbrl.org/2003/linkbase"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+            xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+            xmlns:us-gaap="http://fasb.org/us-gaap/2024"
+            xmlns:srt="http://fasb.org/srt/2024"
+            xmlns:msft="http://www.microsoft.com/20240630">
+  <link:schemaRef xlink:type="simple" xlink:href="msft-20240630.xsd"/>
+  
+  <xbrli:context id="c-2024-annual">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://www.sec.gov/CIK">0000789019</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:startDate>2023-07-01</xbrli:startDate>
+      <xbrli:endDate>2024-06-30</xbrli:endDate>
+    </xbrli:period>
+  </xbrli:context>
+
+  <xbrli:context id="c-2024-server-cloud">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://www.sec.gov/CIK">0000789019</xbrli:identifier>
+      <xbrli:segment>
+        <xbrldi:explicitMember dimension="srt:ProductOrServiceAxis">msft:ServerProductsAndCloudServicesMember</xbrldi:explicitMember>
+      </xbrli:segment>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:startDate>2023-07-01</xbrli:startDate>
+      <xbrli:endDate>2024-06-30</xbrli:endDate>
+    </xbrli:period>
+  </xbrli:context>
+
+  <xbrli:context id="c-2024-instant">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://www.sec.gov/CIK">0000789019</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2024-06-30</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>
+
+  <xbrli:unit id="u-usd">
+    <xbrli:measure>iso4217:USD</xbrli:measure>
+  </xbrli:unit>
+
+  <us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax contextRef="c-2024-annual" unitRef="u-usd" decimals="-6">245122000000</us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax>
+  <us-gaap:CostOfGoodsAndServicesSold contextRef="c-2024-annual" unitRef="u-usd" decimals="-6">75827000000</us-gaap:CostOfGoodsAndServicesSold>
+  <us-gaap:GrossProfit contextRef="c-2024-annual" unitRef="u-usd" decimals="-6">169295000000</us-gaap:GrossProfit>
+  <us-gaap:OperatingIncomeLoss contextRef="c-2024-annual" unitRef="u-usd" decimals="-6">109433000000</us-gaap:OperatingIncomeLoss>
+  <us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax contextRef="c-2024-server-cloud" unitRef="u-usd" decimals="-6">97726000000</us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax>
+  <us-gaap:Assets contextRef="c-2024-instant" unitRef="u-usd" decimals="-6">512163000000</us-gaap:Assets>
+  <us-gaap:Liabilities contextRef="c-2024-instant" unitRef="u-usd" decimals="-6">243686000000</us-gaap:Liabilities>
+  <us-gaap:StockholdersEquity contextRef="c-2024-instant" unitRef="u-usd" decimals="-6">268477000000</us-gaap:StockholdersEquity>
+</xbrli:xbrl>

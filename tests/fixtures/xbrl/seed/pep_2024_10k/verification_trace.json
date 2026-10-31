@@ -1,0 +1,81 @@
+{
+  "firm": "PEP",
+  "accession": "0000077476-25-000007",
+  "cik": "0000077476",
+  "sic_code": 2080,
+  "sector": "Consumer_Staples",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statement of Income",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1450,
+      1476
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Net Revenue",
+        "reported_value": 91854000000.0,
+        "table_value": 91854,
+        "line_number": 1457,
+        "snippet": "Net Revenue                                                    $ 91,854    $ 91,471    $ 86,392"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
+        "label": "Cost of sales",
+        "reported_value": 41744000000.0,
+        "table_value": 41744,
+        "line_number": 1458,
+        "snippet": "Cost of sales                                                    41,744      41,881      40,576"
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross profit",
+        "reported_value": 50110000000.0,
+        "table_value": 50110,
+        "line_number": 1460,
+        "snippet": "Gross profit                                                     50,110      49,590      45,816"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating Profit",
+        "reported_value": 12887000000.0,
+        "table_value": 12887,
+        "line_number": 1465,
+        "snippet": "Operating Profit                                                 12,887      11,986      11,512"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net Income Attributable to PepsiCo",
+        "reported_value": 9578000000.0,
+        "table_value": 9578,
+        "line_number": 1475,
+        "snippet": "Net Income Attributable to PepsiCo                              $ 9,578     $ 9,074     $ 8,910"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossProfit = Revenues - CostOfGoodsAndServicesSold",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 91854000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "value": 41744000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 50110000000.0,
+      "target_value": 50110000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

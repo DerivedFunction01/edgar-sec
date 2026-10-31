@@ -1,0 +1,521 @@
+"""Coordinator merge: validate every chunk, then publish one snapshot.
+
+The coordinator is the only component that writes published artifacts, and it
+publishes only once every chunk has validated.
+"""
+
+from __future__ import annotations
+
+import os
+import shutil
+from collections.abc import Callable, Sequence
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any
+
+from edgar_sec.domain.submissions.schemas import SCHEMA_VERSION
+from edgar_sec.foundation.hashing import file_sha256
+from edgar_sec.foundation.runtime.paths import part_file_name
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.manifest import (
+    DAGNodeManifest,
+    ParentRef,
+    PartDescriptor,
+    ordered_parts_fingerprint,
+)
+from edgar_sec.infra.storage.dag.publication import publish_node
+from edgar_sec.infra.storage.duckdb import (
+    connect,
+    copy_query_to_parquet,
+    find_duplicate_keys,
+    find_null_keys,
+)
+from edgar_sec.infra.storage.parquet import count_parquet_rows, read_parquet_schema
+
+from .paths import PARTS_DIR, MetadataPaths, RunPaths
+from .planner import Plan, utc_now_iso
+from .roster import SNAPSHOT_CIK_INDEX_SCHEMA
+from .validation import find_duplicate_accessions
+
+__all__ = [
+    "MergeError",
+    "MergeReport",
+    "merge_chunks",
+    "publish_current_snapshot",
+    "publish_parts",
+    "publish_snapshot",
+]
+
+
+class MergeError(RuntimeError):
+    """Merge rejected; the snapshot was not published."""
+
+
+@dataclass(slots=True)
+class MergeReport:
+    """Result of one merge attempt."""
+
+    snapshot_id: str
+    output_path: str = ""
+    cik_index_path: str = ""
+    row_count: int = 0
+    chunk_count: int = 0
+    artifact_sha256: str = ""
+    cik_index_sha256: str = ""
+    cik_count: int = 0
+    plan_id: str = ""
+    input_fingerprint: str = ""
+    kind: str = "full"
+    parent_snapshot_id: str = ""
+    roster_id: str = ""
+    delta_roster_id: str = ""
+    schema_version: str = SCHEMA_VERSION
+    sort_order: str = "chunk_order"
+    parts: list[dict[str, Any]] = field(default_factory=list)
+    parts_digest: str = ""
+    merged_at: str = ""
+    duplicate_accessions: list[str] = field(default_factory=list)
+    warnings: list[str] = field(default_factory=list)
+
+    @property
+    def part_count(self) -> int:
+        """Number of Parquet parts carrying this snapshot's rows."""
+        return len(self.parts) or 1
+
+    def to_dict(self) -> dict[str, Any]:
+        """Return snapshot summary values for command output.
+        Single-file fields stay empty when the DAG relation contains parts.
+        """
+        report = {
+            "snapshot_id": self.snapshot_id,
+            "output_path": self.output_path,
+            "cik_index_path": self.cik_index_path,
+            "cik_index_sha256": self.cik_index_sha256,
+            "cik_count": self.cik_count,
+            "row_count": self.row_count,
+            "chunk_count": self.chunk_count,
+            "artifact_sha256": self.artifact_sha256,
+            "plan_id": self.plan_id,
+            "input_fingerprint": self.input_fingerprint,
+            "kind": self.kind,
+            "parent_snapshot_id": self.parent_snapshot_id,
+            "roster_id": self.roster_id,
+            "delta_roster_id": self.delta_roster_id,
+            "schema_version": self.schema_version,
+            "merged_at": self.merged_at,
+            "duplicate_accessions": self.duplicate_accessions,
+            "warnings": self.warnings,
+        }
+        if self.parts:
+            report["part_count"] = len(self.parts)
+            report["parts_digest"] = self.parts_digest
+            report["sort_order"] = self.sort_order
+            report["parts"] = self.parts
+        return report
+
+
+def _safe_progress(
+    progress: Callable[[dict[str, Any]], None] | None,
+) -> Callable[[dict[str, Any]], None]:
+    """Wrap a progress callback so presentation failure cannot fail a merge."""
+
+    def emit(event: dict[str, Any]) -> None:
+        if progress is None:
+            return
+        try:
+            progress(event)
+        except Exception:
+            pass
+
+    return emit
+
+
+def validate_chunks(plan: Plan, run_paths: RunPaths) -> list[Path]:
+    """Validate every planned chunk and return the ordered checkpoint paths."""
+    chunk_ids = plan.chunk_ids()
+    if sum(plan.chunk_length(chunk_id) for chunk_id in chunk_ids) != int(
+        plan.row_count
+    ):
+        raise MergeError("plan chunks do not cover the planned CIK count")
+
+    found: dict[int, Path] = {}
+    for path in sorted(run_paths.chunk_dir.glob("chunk_*.parquet")):
+        try:
+            chunk_id = int(path.stem.split("_", 1)[1])
+        except (IndexError, ValueError):
+            continue
+        found[chunk_id] = path
+
+    foreign = set(found) - set(chunk_ids)
+    if foreign:
+        raise MergeError(
+            f"merge rejected: chunk files outside the plan: {sorted(foreign)}"
+        )
+    missing = sorted(set(chunk_ids) - set(found))
+    if missing:
+        raise MergeError(f"merge rejected: missing chunk checkpoints: {missing}")
+
+    fingerprint = plan.input_fingerprint
+    for chunk_id in sorted(chunk_ids):
+        path = found[chunk_id]
+        if not read_parquet_schema(path).equals(plan_schema(), check_metadata=False):
+            raise MergeError(
+                f"merge rejected: chunk {chunk_id} schema drifted from the dataset contract"
+            )
+        rows = count_parquet_rows(path)
+        if rows != plan.chunk_length(chunk_id):
+            raise MergeError(
+                f"merge rejected: chunk {chunk_id} row count {rows} "
+                f"!= planned {plan.chunk_length(chunk_id)}"
+            )
+
+    roster_path = plan.roster.dataset
+    if roster_path is None:
+        raise MergeError("merge rejected: planned roster dataset is missing")
+
+    con = connect()
+    try:
+        for chunk_id in sorted(chunk_ids):
+            start = plan.chunk_start(chunk_id)
+            stop = start + plan.chunk_length(chunk_id)
+            coverage_errors, foreign_fingerprints, bad_statuses = con.execute(
+                """
+                WITH expected AS (
+                    SELECT cik_padded AS cik
+                    FROM read_parquet(?)
+                    WHERE ordinal >= ? AND ordinal < ?
+                ), actual AS (
+                    SELECT cik, input_fingerprint, status
+                    FROM read_parquet(?)
+                )
+                SELECT
+                    (SELECT count(*) FROM (
+                        SELECT cik FROM expected EXCEPT SELECT cik FROM actual
+                    )) +
+                    (SELECT count(*) FROM (
+                        SELECT cik FROM actual EXCEPT SELECT cik FROM expected
+                    )),
+                    count(*) FILTER (
+                        WHERE input_fingerprint IS NOT NULL
+                          AND input_fingerprint <> ''
+                          AND input_fingerprint <> ?
+                    ),
+                    count(*) FILTER (
+                        WHERE status IS NULL
+                           OR status NOT IN ('ok', 'partial', 'failed')
+                    )
+                FROM actual
+                """,
+                [
+                    str(roster_path),
+                    start,
+                    stop,
+                    str(found[chunk_id]),
+                    fingerprint,
+                ],
+            ).fetchone()
+            if coverage_errors:
+                raise MergeError(
+                    f"merge rejected: chunk {chunk_id} CIK coverage differs from the plan"
+                )
+            if fingerprint and foreign_fingerprints:
+                raise MergeError(
+                    f"merge rejected: chunk {chunk_id} carries a foreign input fingerprint"
+                )
+            if bad_statuses:
+                raise MergeError(
+                    f"merge rejected: chunk {chunk_id} contains non-terminal statuses"
+                )
+    finally:
+        con.close()
+
+    return [found[chunk_id] for chunk_id in sorted(found)]
+
+
+def plan_schema():
+    """Canonical dataset schema for chunk comparison."""
+    from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
+
+    return SUBMISSION_METADATA_SCHEMA
+
+
+def publish_cik_index(
+    report: MergeReport,
+    metadata_paths: MetadataPaths,
+    part_paths: Sequence[Path],
+) -> MergeReport:
+    """Write a sorted distinct CIK index from published parts out of core."""
+    if not part_paths:
+        raise MergeError("published snapshot has no submissions parts")
+    path = metadata_paths.snapshot_cik_index(report.snapshot_id)
+    con = connect()
+    try:
+        row_count = copy_query_to_parquet(
+            con,
+            "SELECT DISTINCT cik FROM read_parquet(?) ORDER BY cik",
+            path,
+            params=[[str(part) for part in part_paths]],
+        )
+    finally:
+        con.close()
+    if row_count == 0:
+        path.unlink(missing_ok=True)
+        raise MergeError("a published CIK index must not be empty")
+    if not read_parquet_schema(path).equals(
+        SNAPSHOT_CIK_INDEX_SCHEMA, check_metadata=False
+    ):
+        path.unlink(missing_ok=True)
+        raise MergeError(f"CIK index schema drifted: {path}")
+    report.cik_index_path = str(path)
+    report.cik_index_sha256 = file_sha256(path)
+    report.cik_count = row_count
+    return report
+
+
+def publish_parts(
+    report: MergeReport,
+    metadata_paths: MetadataPaths,
+    sources: Sequence[tuple[str, Path]],
+) -> tuple[Path, ...]:
+    """Publish validated source files as a snapshot's ordered Parquet parts."""
+    parts_dir = metadata_paths.snapshot_parts_dir(report.snapshot_id)
+    parts_dir.mkdir(parents=True, exist_ok=True)
+    snapshot_dir = metadata_paths.snapshot_dir(report.snapshot_id)
+    published: list[Path] = []
+    chunk_index = 0
+    for index, (label, source) in enumerate(sources):
+        if label.startswith("base:"):
+            if not source.is_file():
+                raise MergeError(f"ancestor part missing: {source}")
+            rel_path = os.path.relpath(source, snapshot_dir)
+            report.parts.append(
+                {
+                    "path": rel_path,
+                    "part_index": index,
+                    "source": label,
+                    "row_count": count_parquet_rows(source),
+                    "byte_count": source.stat().st_size,
+                    "sha256": file_sha256(source),
+                    "schema_version": report.schema_version,
+                }
+            )
+            published.append(source)
+            continue
+
+        name = part_file_name(chunk_index)
+        chunk_index += 1
+        destination = parts_dir / name
+        shutil.copy2(source, destination)
+        if not read_parquet_schema(destination).equals(
+            plan_schema(), check_metadata=False
+        ):
+            destination.unlink(missing_ok=True)
+            raise MergeError(
+                f"merge rejected: published part {name} (from {label}) schema drifted "
+                "from the dataset contract"
+            )
+        report.parts.append(
+            {
+                "path": f"{PARTS_DIR}/{name}",
+                "part_index": index,
+                "source": label,
+                "row_count": count_parquet_rows(destination),
+                "byte_count": destination.stat().st_size,
+                "sha256": file_sha256(destination),
+                "schema_version": report.schema_version,
+            }
+        )
+        published.append(destination)
+    return tuple(published)
+
+
+def _publish_chunk_parts(
+    report: MergeReport,
+    metadata_paths: MetadataPaths,
+    chunk_paths: list[Path],
+) -> tuple[Path, ...]:
+    return publish_parts(
+        report,
+        metadata_paths,
+        [(f"chunk:{path.stem}", path) for path in chunk_paths],
+    )
+
+
+def merge_chunks(
+    plan: Plan,
+    run_paths: RunPaths,
+    snapshot_id: str,
+    *,
+    lineage: dict[str, str] | None = None,
+    progress: Callable[[dict[str, Any]], None] | None = None,
+) -> MergeReport:
+    """Validate all chunks and publish a sorted snapshot dataset.
+    A delta plan is refused; a failing progress callback never aborts publication.
+    """
+    if plan.kind == "delta":
+        raise MergeError(
+            f"plan {plan.plan_id} is a delta plan over base {plan.parent_id or '?'}"
+            " and cannot be merged on its own: a plain merge would publish only the"
+            " delta and drop the base rows. Publish it with"
+            " 'metadata augment --base-snapshot-id <base>'"
+        )
+    emit = _safe_progress(progress)
+    emit({"type": "merge_start", "plan_id": plan.plan_id})
+    chunk_paths = validate_chunks(plan, run_paths)
+    str_paths = [str(path) for path in chunk_paths]
+    recorded = {**plan.lineage(), **(lineage or {})}
+    report = MergeReport(
+        snapshot_id=snapshot_id,
+        chunk_count=len(chunk_paths),
+        plan_id=plan.plan_id,
+        input_fingerprint=plan.input_fingerprint,
+        kind=plan.kind,
+        parent_snapshot_id=plan.parent_id or recorded.get("parent_snapshot_id", ""),
+        roster_id=plan.roster.roster_id,
+        delta_roster_id=recorded.get("delta_roster_id", ""),
+        merged_at=utc_now_iso(),
+    )
+    emit({"type": "chunks_validated", "chunks": len(chunk_paths)})
+
+    con = connect()
+    try:
+        null_keys = find_null_keys(con, str_paths, "cik")
+        if null_keys:
+            raise MergeError(f"merge rejected: {null_keys} rows have a null CIK")
+        duplicates = find_duplicate_keys(con, str_paths, "cik")
+        if duplicates:
+            raise MergeError(
+                f"merge rejected: duplicate CIK rows across chunks: {duplicates}"
+            )
+        report.duplicate_accessions = find_duplicate_accessions(con, str_paths)
+        if report.duplicate_accessions:
+            report.warnings.append(
+                f"{len(report.duplicate_accessions)} duplicate accession(s) observed; "
+                "accession is not globally unique"
+            )
+    finally:
+        con.close()
+
+    emit({"type": "merge_stage", "stage": "publishing_parts"})
+    part_paths = _publish_chunk_parts(report, run_paths.metadata, chunk_paths)
+
+    row_count = sum(int(part["row_count"]) for part in report.parts)
+    if row_count != plan.row_count:
+        raise MergeError(
+            f"merge rejected: published row count {row_count} != planned {plan.row_count}"
+        )
+
+    report.row_count = row_count
+    report.parts_digest = ordered_parts_fingerprint(
+        [str(part["sha256"]) for part in report.parts]
+    )
+    emit({"type": "cik_index", "stage": "publishing"})
+    publish_cik_index(report, run_paths.metadata, part_paths)
+    emit({"type": "readback_done", "rows": row_count})
+    return report
+
+
+def publish_snapshot(
+    report: MergeReport,
+    metadata_paths: MetadataPaths,
+    *,
+    branch_name: str = "main",
+    expected_branch_tip: str | None = None,
+) -> dict[str, Any]:
+    """Record the snapshot in SQLite and advance the branch pointer atomically.
+    The pointer update is guarded by a shared publication lock; the branch tip
+    guard ``expected_branch_tip`` is distinct from the lineage parent.
+    """
+    report_data = report.to_dict()
+    parent_refs: list[ParentRef] = []
+    catalog = DAGCatalog(metadata_paths.snapshots_root)
+    if report.parent_snapshot_id:
+        parent_sha = catalog.get_manifest_sha256(report.parent_snapshot_id) or ""
+        parent_refs.append(
+            ParentRef(
+                snapshot_id=report.parent_snapshot_id,
+                manifest_sha256=parent_sha,
+            )
+        )
+    snapshot_dir = metadata_paths.snapshot_dir(report.snapshot_id)
+    part_descriptors = tuple(
+        PartDescriptor(
+            path=str(p["path"]),
+            sha256=str(p["sha256"]),
+            row_count=int(p["row_count"]),
+            byte_size=int(p.get("byte_count", 0)),
+        )
+        for p in report.parts
+    )
+    cik_index = Path(report.cik_index_path)
+    try:
+        cik_index_path = cik_index.relative_to(snapshot_dir).as_posix()
+    except ValueError as exc:
+        raise MergeError("CIK index must be inside its snapshot directory") from exc
+    cik_index_descriptor = PartDescriptor(
+        path=cik_index_path,
+        sha256=report.cik_index_sha256,
+        row_count=report.cik_count,
+        byte_size=cik_index.stat().st_size,
+    )
+    metadata = {
+        "kind": report.kind,
+        "plan_id": report.plan_id,
+        "input_fingerprint": report.input_fingerprint,
+        "chunk_count": report.chunk_count,
+        "roster_id": report.roster_id,
+        "delta_roster_id": report.delta_roster_id,
+        "merged_at": report.merged_at,
+        "duplicate_accessions": report.duplicate_accessions,
+        "warnings": report.warnings,
+        "sort_order": report.sort_order,
+    }
+    dag_manifest = DAGNodeManifest(
+        snapshot_id=report.snapshot_id,
+        kind="delta" if report.parent_snapshot_id else "checkpoint",
+        parents=tuple(parent_refs),
+        checkpoint_anchor_id=(
+            report.snapshot_id
+            if not report.parent_snapshot_id
+            else report.parent_snapshot_id
+        ),
+        lineage_depth=1 if report.parent_snapshot_id else 0,
+        created_at=report.merged_at or utc_now_iso(),
+        relations={
+            "submissions": part_descriptors,
+            "cik_index": (cik_index_descriptor,),
+        },
+        logical_fingerprint=report.parts_digest or "",
+        schema_versions={"submissions": report.schema_version},
+        metadata=metadata,
+    )
+    if expected_branch_tip is None:
+        current = catalog.read_pointer(branch_name)
+        expected_branch_tip = str(current["snapshot_id"]) if current else None
+    publish_node(
+        metadata_paths.snapshots_root,
+        dag_manifest,
+        expected_parent_id=expected_branch_tip,
+        branch_name=branch_name,
+    )
+    return report_data
+
+
+def publish_current_snapshot(
+    metadata_paths: MetadataPaths,
+    snapshot_id: str,
+    *,
+    branch_name: str = "main",
+) -> Path:
+    """Point a branch at an already-published snapshot.
+
+    A pointer move and nothing else, validated first: a pointer to a nonexistent
+    dataset is worse than a stale one.
+    """
+    catalog = DAGCatalog(metadata_paths.snapshots_root)
+    if not catalog.has_snapshot(snapshot_id):
+        raise MergeError(
+            f"cannot point {branch_name!r} at {snapshot_id!r}: snapshot is missing"
+        )
+    catalog.write_pointer(branch_name, snapshot_id)
+    return catalog.catalog_file

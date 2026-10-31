@@ -1,0 +1,86 @@
+{
+  "firm": "WMT",
+  "accession": "0000104169-24-000056",
+  "cik": "0000104169",
+  "sic_code": 5331,
+  "sector": "Consumer_Staples",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statements of Income",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1505,
+      1538
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total revenues",
+        "reported_value": 648125000000.0,
+        "table_value": 648125,
+        "line_number": 1516,
+        "snippet": "Total revenues                                                             648,125     611,289     572,754"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfRevenue",
+        "label": "Cost of sales",
+        "reported_value": 490142000000.0,
+        "table_value": 490142,
+        "line_number": 1518,
+        "snippet": "Cost of sales                                                              490,142     463,721     429,000"
+      },
+      {
+        "concept_qname": "us-gaap:SellingGeneralAndAdministrativeExpense",
+        "label": "Operating, selling, general and administrative expenses",
+        "reported_value": 130971000000.0,
+        "table_value": 130971,
+        "line_number": 1519,
+        "snippet": "Operating, selling, general and administrative expenses                    130,971     127,140     117,812"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating income",
+        "reported_value": 27012000000.0,
+        "table_value": 27012,
+        "line_number": 1521,
+        "snippet": "Operating income                                                            27,012      20,428      25,942"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Consolidated net income attributable to Walmart",
+        "reported_value": 15511000000.0,
+        "table_value": 15511,
+        "line_number": 1537,
+        "snippet": "Consolidated net income attributable to Walmart                           $ 15,511    $ 11,680    $ 13,673"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncomeLoss = Revenues - CostOfRevenue - SellingGeneralAndAdministrativeExpense",
+      "left_concept": "us-gaap:OperatingIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 648125000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostOfRevenue",
+          "value": 490142000000.0,
+          "weight": -1.0
+        },
+        {
+          "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+          "value": 130971000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 27012000000.0,
+      "target_value": 27012000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "firm": "MSFT",
+  "accession": "0001564590-21-039151",
+  "cik": "0000789019",
+  "sic_code": 7372,
+  "sector": "Technology",
+  "fiscal_year": 2021,
+  "source_filing_fiscal_year": 2021,
+  "statement_of_operations": {
+    "title": "INCOME STATEMENTS",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1575,
+      1621
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "Total revenue",
+        "reported_value": 168088000000.0,
+        "table_value": 168088,
+        "line_number": 1590,
+        "snippet": "Total revenue                               168,088     143,015     125,843"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
+        "label": "Total cost of revenue",
+        "reported_value": 52232000000.0,
+        "table_value": 52232,
+        "line_number": 1600,
+        "snippet": "Total cost of revenue                        52,232      46,078      42,910"
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross margin",
+        "reported_value": 115856000000.0,
+        "table_value": 115856,
+        "line_number": 1604,
+        "snippet": "Gross margin                                115,856      96,937      82,933"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating income",
+        "reported_value": 69916000000.0,
+        "table_value": 69916,
+        "line_number": 1611,
+        "snippet": "Operating income                             69,916      52,959      42,959"
+      },
+      {
+        "concept_qname": "us-gaap:NonoperatingIncomeExpense",
+        "label": "Other income, net",
+        "reported_value": 1186000000.0,
+        "table_value": 1186,
+        "line_number": 1612,
+        "snippet": "Other income, net                             1,186          77         729"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+        "label": "Income before income taxes",
+        "reported_value": 71102000000.0,
+        "table_value": 71102,
+        "line_number": 1616,
+        "snippet": "Income before income taxes                   71,102      53,036      43,688"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Provision for income taxes",
+        "reported_value": 9831000000.0,
+        "table_value": 9831,
+        "line_number": 1617,
+        "snippet": "Provision for income taxes                    9,831       8,755       4,448"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income",
+        "reported_value": 61271000000.0,
+        "table_value": 61271,
+        "line_number": 1621,
+        "snippet": "Net income                                 $ 61,271    $ 44,281    $ 39,240"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "Income before income taxes = Operating income + Other income, net",
+      "left_concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+      "components": [
+        {
+          "concept": "us-gaap:OperatingIncomeLoss",
+          "weight": 1,
+          "value": 69916000000.0
+        },
+        {
+          "concept": "us-gaap:NonoperatingIncomeExpense",
+          "weight": 1,
+          "value": 1186000000.0
+        }
+      ],
+      "computed_sum": 71102000000.0,
+      "target_value": 71102000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

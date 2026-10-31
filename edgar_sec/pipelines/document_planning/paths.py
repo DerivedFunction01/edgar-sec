@@ -1,0 +1,179 @@
+"""Repository and artifact paths owned by document planning."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Protocol
+
+from edgar_sec.foundation.runtime.paths import (
+    PLAN_FILE_NAME,
+    ProjectPaths,
+    PLANS_DIR,
+    resolve_paths,
+    validate_safe_id,
+)
+from edgar_sec.pipelines.filing_catalog.paths import (
+    FORM_PARTITION_GLOB,
+    PLAN_TARGETS_DIR,
+    form_partition_directory,
+    form_partition_name,
+    plan_target_file_path,
+    plan_target_part_path,
+    resolve_filing_catalog_paths,
+)
+from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
+from edgar_sec.infra.storage.review.paths import (
+    ReviewPaths,
+    review_run_paths,
+    review_runs_root,
+)
+
+PIPELINE_DIR = "document_planning"
+PROFILES_DIR = "profiles"
+
+
+class CatalogPaths(Protocol):
+    @property
+    def plans_root(self) -> Path: ...
+
+    def plan_dir(self, plan_id: str) -> Path: ...
+
+
+@dataclass(frozen=True, slots=True)
+class PublishedDocumentPlan:
+    plan_id: str
+    root: Path
+    manifest: dict[str, Any]
+
+
+@dataclass(frozen=True, slots=True)
+class DiscoveredDocumentPlan:
+    plan_id: str
+    plan: PublishedDocumentPlan | None
+    error: str | None
+
+
+def resolve_catalog_paths(
+    artifacts_root: str | Path | None = None,
+) -> CatalogPaths:
+    return resolve_filing_catalog_paths(artifacts_root=artifacts_root)
+
+
+def catalog_form_partition_name(form: str) -> str:
+    return form_partition_name(form)
+
+
+def validate_catalog_plan_id(plan_id: str) -> str:
+    return validate_safe_id(plan_id)
+
+
+def resolve_inventory_paths(
+    artifacts_root: str | Path | None = None,
+) -> InventoryPaths:
+    root = (
+        Path(artifacts_root).resolve()
+        if artifacts_root is not None
+        else resolve_paths().artifacts_root
+    )
+    return InventoryPaths(root)
+
+
+def validate_profile_id(profile_id: str) -> str:
+    return validate_safe_id(profile_id, "profile_id")
+
+
+@dataclass(frozen=True, slots=True)
+class DocumentPlanningPaths:
+    """Resolved policy and plan locations for one workspace."""
+
+    project: ProjectPaths
+
+    @property
+    def repo_root(self) -> Path:
+        return self.project.repo_root
+
+    @property
+    def artifacts_root(self) -> Path:
+        return self.project.artifacts_root
+
+    @property
+    def profiles_root(self) -> Path:
+        return self.artifacts_root / PIPELINE_DIR / PROFILES_DIR
+
+    @property
+    def plans_root(self) -> Path:
+        return self.artifacts_root / PIPELINE_DIR / PLANS_DIR
+
+    @property
+    def review_runs_root(self) -> Path:
+        return review_runs_root(self.artifacts_root, PIPELINE_DIR)
+
+    def review_paths(self, review_id: str) -> ReviewPaths:
+        return review_run_paths(self.artifacts_root, PIPELINE_DIR, review_id)
+
+    def profile_path(self, profile_id: str) -> Path:
+        return self.profiles_root / f"{validate_profile_id(profile_id)}.json"
+
+    def plan_dir(self, plan_id: str) -> Path:
+        return self.plans_root / _validate_plan_id(plan_id)
+
+    def plan_manifest_path(self, plan_id: str) -> Path:
+        return self.plan_dir(plan_id) / PLAN_FILE_NAME
+
+
+def _validate_plan_id(plan_id: str) -> str:
+    return validate_safe_id(plan_id, "plan_id")
+
+
+def resolve_document_planning_paths(
+    repo_root: str | Path | None = None,
+    artifacts_root: str | Path | None = None,
+) -> DocumentPlanningPaths:
+    """Resolve policy paths from the repository and artifacts from settings."""
+    root = Path(repo_root).resolve() if repo_root is not None else None
+    project = resolve_paths(root)
+    if artifacts_root is not None:
+        project = ProjectPaths(
+            repo_root=project.repo_root,
+            artifacts_root=Path(artifacts_root).resolve(),
+            uploads_root=project.uploads_root,
+        )
+    return DocumentPlanningPaths(project)
+
+
+def discover_document_plans(paths: DocumentPlanningPaths):
+    from .discovery import discover_document_plans as discover
+
+    return discover(paths)
+
+
+def read_published_plan(plan_id: str, paths: DocumentPlanningPaths | None = None):
+    from .discovery import read_published_plan as read
+
+    return read(plan_id, paths)
+
+
+__all__ = [
+    "PROFILES_DIR",
+    "CatalogPaths",
+    "DiscoveredDocumentPlan",
+    "DocumentPlanningPaths",
+    "FORM_PARTITION_GLOB",
+    "PIPELINE_DIR",
+    "PLAN_TARGETS_DIR",
+    "PLANS_DIR",
+    "POLICY_DIR",
+    "resolve_document_planning_paths",
+    "resolve_inventory_paths",
+    "resolve_catalog_paths",
+    "catalog_form_partition_name",
+    "form_partition_directory",
+    "plan_target_file_path",
+    "plan_target_part_path",
+    "validate_catalog_plan_id",
+    "validate_profile_id",
+    "PublishedDocumentPlan",
+    "discover_document_plans",
+    "read_published_plan",
+]

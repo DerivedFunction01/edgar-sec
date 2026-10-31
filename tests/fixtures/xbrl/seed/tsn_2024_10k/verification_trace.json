@@ -1,0 +1,81 @@
+{
+  "firm": "TSN",
+  "accession": "0000100493-24-000119",
+  "cik": "0000100493",
+  "sic_code": 2011,
+  "sector": "Consumer_Staples",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF INCOME",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1600,
+      1635
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Sales",
+        "reported_value": 53309000000.0,
+        "table_value": 53309,
+        "line_number": 1612,
+        "snippet": "Sales                                                                      $ 53,309           $ 52,881           $ 53,282"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
+        "label": "Cost of Sales",
+        "reported_value": 49682000000.0,
+        "table_value": 49682,
+        "line_number": 1613,
+        "snippet": "Cost of Sales                                                                49,682             50,250             46,614"
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross Profit",
+        "reported_value": 3627000000.0,
+        "table_value": 3627,
+        "line_number": 1615,
+        "snippet": "Gross Profit                                                                  3,627              2,631              6,668"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating Income (Loss)",
+        "reported_value": 1409000000.0,
+        "table_value": 1409,
+        "line_number": 1619,
+        "snippet": "Operating Income (Loss)                                                       1,409              (395)              4,410"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net Income (Loss) Attributable to Tyson",
+        "reported_value": 800000000.0,
+        "table_value": 800,
+        "line_number": 1634,
+        "snippet": "Net Income (Loss) Attributable to Tyson                                       $ 800            $ (648)            $ 3,238"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossProfit = Revenues - CostOfGoodsAndServicesSold",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 53309000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "value": 49682000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 3627000000.0,
+      "target_value": 3627000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

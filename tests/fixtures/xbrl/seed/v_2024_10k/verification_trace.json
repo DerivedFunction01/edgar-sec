@@ -1,0 +1,81 @@
+{
+  "firm": "V",
+  "accession": "0001403161-24-000058",
+  "cik": "0001403161",
+  "sic_code": 7389,
+  "sector": "Financials",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1427,
+      1461
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "Net revenue",
+        "reported_value": 35926000000.0,
+        "table_value": 35926,
+        "line_number": 1435,
+        "snippet": "Net revenue                                     $ 35,926     $ 32,653     $ 29,310"
+      },
+      {
+        "concept_qname": "us-gaap:CostsAndExpenses",
+        "label": "Total operating expenses",
+        "reported_value": 12331000000.0,
+        "table_value": 12331,
+        "line_number": 1446,
+        "snippet": "Total operating expenses                          12,331       11,653       10,497"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating income",
+        "reported_value": 23595000000.0,
+        "table_value": 23595,
+        "line_number": 1448,
+        "snippet": "Operating income                                  23,595       21,000       18,813"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Income tax provision",
+        "reported_value": 4173000000.0,
+        "table_value": 4173,
+        "line_number": 1458,
+        "snippet": "Income tax provision                               4,173        3,764        3,179"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income",
+        "reported_value": 19743000000.0,
+        "table_value": 19743,
+        "line_number": 1460,
+        "snippet": "Net income                                      $ 19,743     $ 17,273     $ 14,957"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncomeLoss = RevenueFromContractWithCustomerExcludingAssessedTax - CostsAndExpenses",
+      "left_concept": "us-gaap:OperatingIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": 35926000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostsAndExpenses",
+          "value": 12331000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 23595000000.0,
+      "target_value": 23595000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

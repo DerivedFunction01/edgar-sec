@@ -1,0 +1,2326 @@
+[
+  {
+    "edge_id": "R_PART_GP_REV",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_GROSS_MARGIN"
+      ]
+    },
+    "formula_id": "FORMULA_GROSS_PROFIT",
+    "description": "Revenues contribute +1.0 to Gross Profit",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_GP_COGS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_GROSS_MARGIN"
+      ]
+    },
+    "formula_id": "FORMULA_GROSS_PROFIT",
+    "description": "Cost of Goods Sold subtracts -1.0 from Gross Profit",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_OPINC_GP",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_GROSS_MARGIN"
+      ]
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "formula_id": "FORMULA_OPERATING_INCOME",
+    "description": "Gross Profit contributes +1.0 to Operating Income",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_OPINC_OPEX",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "formula_id": "FORMULA_OPERATING_INCOME",
+    "description": "Operating Expenses subtracts -1.0 from Operating Income",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_ASSET_CURR",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_CURRENT"
+      ]
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "formula_id": "FORMULA_ASSETS",
+    "description": "Current Assets contribute +1.0 to Total Assets",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_ASSET_NONCURR",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_NONCURRENT"
+      ]
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "formula_id": "FORMULA_ASSETS",
+    "description": "Noncurrent Assets contribute +1.0 to Total Assets",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_LIAB_CURR",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_CURRENT"
+      ]
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "formula_id": "FORMULA_LIABILITIES",
+    "description": "Current Liabilities contribute +1.0 to Total Liabilities",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_LIAB_NONCURR",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_NONCURRENT"
+      ]
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "formula_id": "FORMULA_LIABILITIES",
+    "description": "Noncurrent Liabilities contribute +1.0 to Total Liabilities",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_LE_LIAB",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_EQUITY_TOTAL"
+      ]
+    },
+    "formula_id": "FORMULA_LIABILITIES_AND_EQUITY",
+    "description": "Total Liabilities contribute +1.0 to Liabilities and Stockholders Equity",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_LE_EQ",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_EQUITY_TOTAL"
+      ]
+    },
+    "formula_id": "FORMULA_LIABILITIES_AND_EQUITY",
+    "description": "Stockholders Equity contributes +1.0 to Liabilities and Stockholders Equity",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_FCF_OPCASH",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": [
+        "M_FREE_CASH_FLOW"
+      ]
+    },
+    "formula_id": "FORMULA_FREE_CASH_FLOW",
+    "description": "Operating Cash Flow contributes +1.0 to Free Cash Flow",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_FCF_CAPEX",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_PPE_CAPEX"
+      ]
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": [
+        "M_FREE_CASH_FLOW"
+      ]
+    },
+    "formula_id": "FORMULA_FREE_CASH_FLOW",
+    "description": "CapEx subtracts -1.0 from Free Cash Flow",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_COMPINC_NETINC",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_NET_BOTTOMLINE"
+      ]
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_COMPREHENSIVE"
+      ]
+    },
+    "formula_id": "FORMULA_COMPREHENSIVE_INCOME",
+    "description": "Net Income contributes +1.0 to Comprehensive Income",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_COMPINC_OCI",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_OCI"
+      ]
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_COMPREHENSIVE"
+      ]
+    },
+    "formula_id": "FORMULA_COMPREHENSIVE_INCOME",
+    "description": "Other Comprehensive Income contributes +1.0 to Comprehensive Income",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_OPEX_RD",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_RD"
+      ]
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "formula_id": "FORMULA_OPERATING_EXPENSES",
+    "description": "R&D Expense is an additive component of Operating Expenses",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_OPEX_SGA",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_SGA"
+      ]
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "description": "SG&A Expense is an additive component of Operating Expenses",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_OPEX_DA",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_OPERATING",
+        "M_DEPR_AMORT"
+      ]
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "description": "Depreciation and Amortization is an additive component of Operating Expenses",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_NETINC_OPINC",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_NET_BOTTOMLINE"
+      ]
+    },
+    "description": "Operating Income contributes to Net Income",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_NETINC_TAX",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_TAX"
+      ]
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_NET_BOTTOMLINE"
+      ]
+    },
+    "description": "Income Tax Expense is deducted in calculating Net Income",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_SHARES_BASIC",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_SHARE",
+      "mods": [
+        "M_COMMON",
+        "V_BASIC"
+      ]
+    },
+    "target": {
+      "head": "H_SHARE",
+      "mods": [
+        "M_COMMON",
+        "V_DILUTED"
+      ]
+    },
+    "description": "Basic common shares sum into diluted common shares",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_SHARES_INCREMENTAL",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_SHARE",
+      "mods": [
+        "M_COMMON",
+        "M_SBC",
+        "V_DILUTIVE_INCREMENT"
+      ]
+    },
+    "target": {
+      "head": "H_SHARE",
+      "mods": [
+        "M_COMMON",
+        "V_DILUTED"
+      ]
+    },
+    "description": "Dilutive incremental common shares sum into diluted common shares",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_CONTRA_REV_INCENTIVE",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": [
+        "M_CONTRA_INCENTIVE"
+      ]
+    },
+    "target": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "description": "Client incentives contra-offset gross revenue to yield net revenue",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_CONTRA_ALLOWANCE",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_CONTRA_ALLOWANCE"
+      ]
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_RECEIVABLE"
+      ]
+    },
+    "description": "Allowance for doubtful accounts nets against accounts receivable",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_CONTRA_DEBT_DISCOUNT",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_CONTRA_DISCOUNT"
+      ]
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DEBT"
+      ]
+    },
+    "description": "Unamortized debt discount nets against debt principal",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_CONTRA_TREASURY_STOCK",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_CONTRA_TREASURY"
+      ]
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "description": "Treasury stock contra-offsets stockholders equity",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_DUAL_REV_RPO",
+    "relation_type": "DUAL_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_COMMITMENT",
+      "mods": [
+        "M_RPO_BACKLOG"
+      ]
+    },
+    "description": "Conservation bridge between revenue flow and remaining performance obligation backlog",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_DUAL_REV_DEFERRED",
+    "relation_type": "DUAL_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DEFERRED_REVENUE"
+      ]
+    },
+    "description": "Conservation bridge between recognized revenue and unearned/deferred customer revenue",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_DUAL_EXP_CONTENT",
+    "relation_type": "DUAL_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_DEPR_AMORT",
+        "M_CONTENT_FILM"
+      ]
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_CONTENT_FILM"
+      ]
+    },
+    "description": "Conservation bridge between film/content amortization and capitalized content assets",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_DUAL_EXP_MEDICAL",
+    "relation_type": "DUAL_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_MEDICAL_CLAIM"
+      ]
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_CLAIM_RESERVE"
+      ]
+    },
+    "description": "Conservation bridge between medical claims expense and unpaid claims loss reserves",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_DERIVED_GROSS_MARGIN",
+    "relation_type": "DERIVED_FROM",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_GROSS_MARGIN"
+      ]
+    },
+    "target": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "operator": "DIV",
+    "description": "Gross margin derived as Gross Profit / Revenues",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_DERIVED_RD_INTENSITY",
+    "relation_type": "DERIVED_FROM",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_RD"
+      ]
+    },
+    "target": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "operator": "DIV",
+    "description": "R&D intensity derived as R&D Expense / Revenues",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_DERIV_NET_ASSET_GROSS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE",
+        "V_GROSS"
+      ]
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE",
+        "V_NET"
+      ]
+    },
+    "formula_id": "FORMULA_DERIVATIVE_NET_ASSET",
+    "description": "Gross derivative assets contribute +1.0 to Net Derivative Assets",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_DERIV_NET_ASSET_NETTING",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_COUNTERPARTY_NETTING"
+      ]
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE",
+        "V_NET"
+      ]
+    },
+    "formula_id": "FORMULA_DERIVATIVE_NET_ASSET",
+    "description": "Master netting offsets subtract -1.0 from Net Derivative Assets",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_DERIV_NET_ASSET_COLLATERAL",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_CASH_COLLATERAL_OFFSET"
+      ]
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE",
+        "V_NET"
+      ]
+    },
+    "formula_id": "FORMULA_DERIVATIVE_NET_ASSET",
+    "description": "Cash collateral offsets subtract -1.0 from Net Derivative Assets",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_DERIV_NET_LIAB_GROSS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE",
+        "V_GROSS"
+      ]
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE",
+        "V_NET"
+      ]
+    },
+    "formula_id": "FORMULA_DERIVATIVE_NET_LIABILITY",
+    "description": "Gross derivative liabilities contribute +1.0 to Net Derivative Liabilities",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_DERIV_NET_LIAB_NETTING",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_COUNTERPARTY_NETTING"
+      ]
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE",
+        "V_NET"
+      ]
+    },
+    "formula_id": "FORMULA_DERIVATIVE_NET_LIABILITY",
+    "description": "Master netting offsets subtract -1.0 from Net Derivative Liabilities",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_DERIV_NET_LIAB_COLLATERAL",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_CASH_COLLATERAL_OFFSET"
+      ]
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE",
+        "V_NET"
+      ]
+    },
+    "formula_id": "FORMULA_DERIVATIVE_NET_LIABILITY",
+    "description": "Cash collateral offsets subtract -1.0 from Net Derivative Liabilities",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_PRE_PROVISION_REVENUE",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": [
+        "V_NET"
+      ]
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_PRE_PROVISION"
+      ]
+    },
+    "formula_id": "FORMULA_PRE_PROVISION_PROFIT",
+    "description": "Net interest and noninterest revenue contribute to pre-provision profit",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_PRE_PROVISION_EXPENSE",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_BANKING_NONINTEREST"
+      ]
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_PRE_PROVISION"
+      ]
+    },
+    "formula_id": "FORMULA_PRE_PROVISION_PROFIT",
+    "description": "Noninterest expense reduces pre-provision profit",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_RETAIL_OPINC_REVENUE",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "formula_id": "FORMULA_RETAIL_OPERATING_INCOME",
+    "description": "Revenue contributes to operating income before operating costs",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_RETAIL_OPINC_COSTS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": [
+        "M_COSTS_AND_EXPENSES"
+      ]
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "formula_id": "FORMULA_RETAIL_OPERATING_INCOME",
+    "description": "Operating costs and expenses reduce operating income",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_COSTS_FULFILLMENT",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_FULFILLMENT"
+      ]
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": [
+        "M_COSTS_AND_EXPENSES"
+      ]
+    },
+    "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
+    "description": "Fulfillment costs are included in costs and expenses",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_COSTS_TECH_INFRA",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_TECH_INFRA"
+      ]
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": [
+        "M_COSTS_AND_EXPENSES"
+      ]
+    },
+    "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
+    "description": "Technology and infrastructure costs are included in costs and expenses",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_COSTS_SALES_MARKETING",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_SGA"
+      ]
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": [
+        "M_COSTS_AND_EXPENSES"
+      ]
+    },
+    "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
+    "description": "Sales and marketing costs are included in costs and expenses",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_COSTS_GENERAL_ADMIN",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_SGA"
+      ]
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": [
+        "M_COSTS_AND_EXPENSES"
+      ]
+    },
+    "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
+    "description": "General and administrative costs are included in costs and expenses",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_COSTS_COST_OF_SALES",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": [
+        "M_COSTS_AND_EXPENSES"
+      ]
+    },
+    "formula_id": "FORMULA_RETAIL_COSTS_EXPENSES",
+    "description": "Cost of sales is included in costs and expenses",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_MATERIALS_GROSS_MARGIN_REVENUE",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_GROSS_MARGIN"
+      ]
+    },
+    "formula_id": "FORMULA_MATERIALS_GROSS_MARGIN",
+    "description": "Revenue contributes to derived gross margin",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_MATERIALS_GROSS_MARGIN_COGS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_GROSS_MARGIN"
+      ]
+    },
+    "formula_id": "FORMULA_MATERIALS_GROSS_MARGIN",
+    "description": "Cost of goods and services sold reduces derived gross margin",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_HOSPITALITY_MARGIN_REVENUE",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_PRETAX_OPERATING_MARGIN"
+      ]
+    },
+    "formula_id": "FORMULA_PRETAX_OPERATING_MARGIN",
+    "description": "Revenue contributes to pretax operating margin",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_HOSPITALITY_MARGIN_COSTS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_PRETAX_OPERATING_MARGIN"
+      ]
+    },
+    "formula_id": "FORMULA_PRETAX_OPERATING_MARGIN",
+    "description": "Costs and expenses reduce pretax operating margin",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_DUAL_NOTIONAL_DERIV_ASSET",
+    "relation_type": "DUAL_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COMMITMENT",
+      "mods": [
+        "M_NOTIONAL_AMOUNT"
+      ]
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE",
+        "M_FAIR_VALUE"
+      ]
+    },
+    "description": "Contract notional is distinct from derivative asset fair value",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_DUAL_NOTIONAL_DERIV_LIABILITY",
+    "relation_type": "DUAL_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COMMITMENT",
+      "mods": [
+        "M_NOTIONAL_AMOUNT"
+      ]
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE",
+        "M_FAIR_VALUE"
+      ]
+    },
+    "description": "Contract notional is distinct from derivative liability fair value",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_NET_DERIVATIVE_ASSET_GROSS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE",
+        "V_GROSS"
+      ]
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE"
+      ]
+    },
+    "formula_id": "FORMULA_DERIVATIVE_ASSETS_NET",
+    "description": "Gross derivative asset fair value contributes to the net balance",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_NET_DERIVATIVE_ASSET_OFFSET",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE",
+        "M_FAIR_VALUE",
+        "V_GROSS"
+      ]
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE"
+      ]
+    },
+    "formula_id": "FORMULA_DERIVATIVE_ASSETS_NET",
+    "description": "Recognized asset-side netting offsets reduce derivative assets",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_NET_DERIVATIVE_ASSET_COLLATERAL",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_DERIVATIVE",
+        "M_CASH_COLLATERAL_OFFSET",
+        "M_COLLATERAL_RECLAIM"
+      ]
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE"
+      ]
+    },
+    "formula_id": "FORMULA_DERIVATIVE_ASSETS_NET",
+    "description": "Cash collateral pledged reduces derivative assets",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_NET_DERIVATIVE_LIABILITY_GROSS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE",
+        "V_GROSS"
+      ]
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE"
+      ]
+    },
+    "formula_id": "FORMULA_DERIVATIVE_LIABILITIES_NET",
+    "description": "Gross derivative liability fair value contributes to the net balance",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_NET_DERIVATIVE_LIABILITY_OFFSET",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DERIVATIVE",
+        "M_FAIR_VALUE",
+        "V_GROSS"
+      ]
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE"
+      ]
+    },
+    "formula_id": "FORMULA_DERIVATIVE_LIABILITIES_NET",
+    "description": "Liability-side netting offsets reduce derivative liabilities",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_NET_DERIVATIVE_LIABILITY_COLLATERAL",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_DERIVATIVE",
+        "M_CASH_COLLATERAL_OFFSET",
+        "M_COLLATERAL_RETURN"
+      ]
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": [
+        "M_DERIVATIVE"
+      ]
+    },
+    "formula_id": "FORMULA_DERIVATIVE_LIABILITIES_NET",
+    "description": "Cash collateral return obligations increase net derivative liabilities",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_NET_OF_REVENUES_GROSS",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_REVENUE",
+      "mods": [
+        "V_NET"
+      ]
+    },
+    "formula_id": "FORMULA_REVENUES_NET_OF_INTEREST_EXPENSE",
+    "description": "Gross revenue is the positive operand of a net-of expression",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_NET_OF_REVENUES_INTEREST_EXPENSE",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_INTEREST"
+      ]
+    },
+    "target": {
+      "head": "H_REVENUE",
+      "mods": [
+        "V_NET"
+      ]
+    },
+    "formula_id": "FORMULA_REVENUES_NET_OF_INTEREST_EXPENSE",
+    "description": "Interest expense is subtracted by the NET_OF operator",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_CASH_OPERATING",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_OPERATING"
+      ]
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": [
+        "M_CHANGE"
+      ]
+    },
+    "formula_id": "FORMULA_CASH_FLOW",
+    "description": "Operating cash flow contributes +1.0 to Net Cash Flow",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_CASH_INVESTING",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_INVESTING"
+      ]
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": [
+        "M_CHANGE"
+      ]
+    },
+    "formula_id": "FORMULA_CASH_FLOW",
+    "description": "Investing cash flow contributes +1.0 to Net Cash Flow",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_CASH_FINANCING",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_FINANCING"
+      ]
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": [
+        "M_CHANGE"
+      ]
+    },
+    "formula_id": "FORMULA_CASH_FLOW",
+    "description": "Financing cash flow contributes +1.0 to Net Cash Flow",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_CASH_FX",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_FX_CURRENCY"
+      ]
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": [
+        "M_CHANGE"
+      ]
+    },
+    "formula_id": "FORMULA_CASH_FLOW",
+    "description": "FX effect contributes +1.0 to Net Cash Flow",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_CONTRA_PPE_ACCUM_DEPR",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_DA_DEPLETION"
+      ]
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_PPE_TANGIBLE"
+      ]
+    },
+    "formula_id": "FORMULA_PPE_NET",
+    "description": "Accumulated depreciation subtracts from gross PP&E to yield net PP&E",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_PART_EQUITY_APIC",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_APIC"
+      ]
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "formula_id": "FORMULA_STOCKHOLDERS_EQUITY",
+    "description": "Additional paid in capital contributes +1.0 to Stockholders Equity",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_CONTRA_EQUITY_TREASURY",
+    "relation_type": "CONTRA_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_TREASURY_REPURCHASE"
+      ]
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "formula_id": "FORMULA_STOCKHOLDERS_EQUITY",
+    "description": "Treasury stock subtracts from Stockholders Equity",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_DUAL_OCI_BRIDGE",
+    "relation_type": "DUAL_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_OCI"
+      ]
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": [
+        "M_OCI"
+      ]
+    },
+    "description": "AOCI stock is the accumulated bridge of the OCI flow (Step 5 S4 adjudication).",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_MCALC_001",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_002",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_003",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_004",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_005",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_006",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_007",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_008",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_009",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_010",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_011",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_012",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_013",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_014",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 40 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_015",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 39 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_001",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "description": "Mined from presentation arcs attested at 39 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_016",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 37 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_017",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 36 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_018",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 36 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_002",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "description": "Mined from presentation arcs attested at 36 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_019",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 34 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_020",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 34 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_003",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "description": "Mined from presentation arcs attested at 34 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_021",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 33 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_022",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 32 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_023",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_SHARE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_SHARE",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 32 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_004",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "description": "Mined from presentation arcs attested at 32 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_005",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_SHARE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_CHANGE",
+        "M_FORWARD"
+      ]
+    },
+    "description": "Mined from presentation arcs attested at 32 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_024",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_UNIT_RATE",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 31 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_025",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_UNIT_RATE",
+      "mods": [
+        "M_TAX_INCOME"
+      ]
+    },
+    "target": {
+      "head": "H_UNIT_RATE",
+      "mods": [
+        "M_TAX_INCOME"
+      ]
+    },
+    "description": "Mined from calculation arcs attested at 31 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_006",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_SBC"
+      ]
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_CHANGE",
+        "M_FORWARD"
+      ]
+    },
+    "description": "Mined from presentation arcs attested at 31 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_007",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "description": "Mined from presentation arcs attested at 28 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_026",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 26 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_008",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "description": "Mined from presentation arcs attested at 26 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_027",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COMMITMENT",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 25 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_009",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "description": "Mined from presentation arcs attested at 25 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_010",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "description": "Mined from presentation arcs attested at 25 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_028",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 24 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_029",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 23 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_011",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "description": "Mined from presentation arcs attested at 23 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_012",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_SHARE",
+      "mods": [
+        "M_OPTION"
+      ]
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_ARRANGEMENT",
+        "M_FORWARD",
+        "M_OPTION",
+        "M_SBC",
+        "M_SBC_AWARD"
+      ]
+    },
+    "description": "Mined from presentation arcs attested at 23 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_030",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 22 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_031",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_UNIT_RATE",
+      "mods": [
+        "M_RECONCILIATION",
+        "M_TAX_INCOME"
+      ]
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_TAX"
+      ]
+    },
+    "description": "Mined from calculation arcs attested at 22 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_013",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "description": "Mined from presentation arcs attested at 22 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_032",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": [
+        "M_RECONCILIATION",
+        "M_TAX_INCOME"
+      ]
+    },
+    "target": {
+      "head": "H_UNIT_RATE",
+      "mods": [
+        "M_CONTINUING",
+        "M_TAX_INCOME"
+      ]
+    },
+    "description": "Mined from calculation arcs attested at 21 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_033",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_OCI"
+      ]
+    },
+    "description": "Mined from calculation arcs attested at 21 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_034",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 20 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_035",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 19 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_036",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 19 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_014",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_UNIT_RATE",
+      "mods": [
+        "M_OPTION",
+        "M_SBC",
+        "M_SBC_AWARD",
+        "M_WEIGHTED_AVERAGE"
+      ]
+    },
+    "target": {
+      "head": "H_UNIT_RATE",
+      "mods": [
+        "M_OPTION",
+        "M_SBC",
+        "M_WEIGHTED_AVERAGE"
+      ]
+    },
+    "description": "Mined from presentation arcs attested at 19 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_037",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 18 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_038",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 18 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_015",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_FORWARD"
+      ]
+    },
+    "description": "Mined from presentation arcs attested at 17 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_016",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "description": "Mined from presentation arcs attested at 17 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_039",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 15 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MPLACEMENT_017",
+    "relation_type": "PLACEMENT",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "description": "Mined from presentation arcs attested at 15 firms; grouping only, not algebra.",
+    "evidence": "presentation"
+  },
+  {
+    "edge_id": "R_MCALC_040",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_RECONCILIATION",
+        "M_TAX_INCOME"
+      ]
+    },
+    "target": {
+      "head": "H_UNIT_RATE",
+      "mods": [
+        "M_CONTINUING",
+        "M_TAX_INCOME"
+      ]
+    },
+    "description": "Mined from calculation arcs attested at 14 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_041",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_EQUITY",
+      "mods": [
+        "M_PRETAX",
+        "V_GROSS"
+      ]
+    },
+    "target": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 14 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_042",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 13 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_043",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_EXPENSE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_LIABILITY",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 12 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_044",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "target": {
+      "head": "H_REVENUE",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 12 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_045",
+    "relation_type": "PART_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_ASSET",
+      "mods": []
+    },
+    "target": {
+      "head": "H_INCOME",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 10 firms.",
+    "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_MCALC_046",
+    "relation_type": "PART_OF",
+    "algebraic_weight": -1.0,
+    "source": {
+      "head": "H_COST",
+      "mods": []
+    },
+    "target": {
+      "head": "H_CASH",
+      "mods": []
+    },
+    "description": "Mined from calculation arcs attested at 10 firms.",
+    "evidence": "calculation"
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "firm": "MSFT",
+  "accession": "0000950170-24-087843",
+  "cik": "0000789019",
+  "sic_code": 7372,
+  "sector": "Technology",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "INCOME STATEMENTS",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1570,
+      1615
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "Total revenue",
+        "reported_value": 245122000000.0,
+        "table_value": 245122,
+        "line_number": 1580,
+        "snippet": "Total revenue                                  245,122     211,915     198,270"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
+        "label": "Total cost of revenue",
+        "reported_value": 74114000000.0,
+        "table_value": 74114,
+        "line_number": 1590,
+        "snippet": "Total cost of revenue                           74,114      65,863      62,650"
+      },
+      {
+        "concept_qname": "us-gaap:GrossProfit",
+        "label": "Gross margin",
+        "reported_value": 171008000000.0,
+        "table_value": 171008,
+        "line_number": 1594,
+        "snippet": "Gross margin                                   171,008     146,052     135,620"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating income",
+        "reported_value": 109433000000.0,
+        "table_value": 109433,
+        "line_number": 1601,
+        "snippet": "Operating income                               109,433      88,523      83,383"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income",
+        "reported_value": 88136000000.0,
+        "table_value": 88136,
+        "line_number": 1611,
+        "snippet": "Net income                                    $ 88,136    $ 72,361    $ 72,738"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "GrossProfit = Revenue - CostOfRevenue",
+      "left_concept": "us-gaap:GrossProfit",
+      "components": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "weight": 1.0,
+          "value": 245122000000.0
+        },
+        {
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "weight": -1.0,
+          "value": 74114000000.0
+        }
+      ],
+      "computed_sum": 171008000000.0,
+      "target_value": 171008000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

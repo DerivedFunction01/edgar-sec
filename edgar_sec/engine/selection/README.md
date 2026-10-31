@@ -1,0 +1,74 @@
+# `edgar_sec/engine/selection` — quota-driven, family-capped target selection
+
+Answers the question deterministic planning cannot: not "which rows match these filters"
+but "which rows best fill a declared quota profile, without letting one corporate family or one
+form crowd out the rest".
+
+## Purpose
+
+Planning can define quotas and a company-family cap, then select a deterministic subset that
+respects them where possible. `features.py` builds the input snapshot; `selector.py` returns the
+selection and coverage report. The family signature vocabulary is `CLASSIFICATION_DIMENSIONS`,
+and `max_per_company_classification` controls its cap.
+
+## Contracts
+
+- **Selection is network-free and deterministic.** The same snapshot, policy, and seed
+  produce the same result.
+- **Parent selections and mandatory seeds participate in quota coverage.** Duplicate
+  parent keys are rejected, and mandatory seeds are retained.
+- **`company_family` derives from the published universe assignment.** A seed set is a
+  mandatory-filer list and does not define corporate identity. Without an assignment
+  artifact the column falls back to the stored registrant name rather than merging
+  unmatched registrants into one null bucket.
+- **Candidate SQL binds values and validates dimensions.** Policy construction rejects
+  unknown dimensions and retired fields, and result mapping raises on schema drift rather
+  than truncating rows.
+- **`primary_exhibit_like` is an accession-level floor dimension.** Its availability
+  and realized coverage count distinct accessions; the total policy budget remains
+  unique locators, and underfilled floors are reported rather than blocking publication.
+- **Feature snapshots are content-addressed and reused** when their inputs match.
+- **Feature snapshot metadata is stored as a DAG node in the shared SQLite catalog.**
+  Its Parquet relations and parent lineage use the DAG catalog contract; no feature
+  manifest JSON file is published.
+- **Feature snapshot branches are policy-scoped.** DAG retention keeps the active feature
+  node and its ancestors without special handling for selection artifacts.
+- **Append deltas reuse inherited occurrence-independent parts.** Size bands, lifecycle
+  rows, and locator rows are overlaid by document or registrant key.
+- **Inherited profile features require equal normalized profile values.** A changed value
+  for an inherited CIK forces a full feature rebuild.
+- **Selection is bounded and scoped.** Candidate access takes explicit limits and uses a
+  scoped in-memory session.
+- **Layer discipline** follows `AGENTS.md`; this package does not import pipelines.
+
+## Command surface
+
+<!-- AUTOGEN:COMMANDS:START -->
+<!-- AUTOGEN:COMMANDS:END -->
+
+## Deliberate gaps
+
+- **Size banding is anchored by unique document locator within `form_family`,** not by
+  occurrence or era. A new unique document can change every locator band in its family.
+- **`foreign_status` is a domestic/foreign classification,** not a country-grade value.
+- **`state_of_incorporation` cannot be stratified on.** It is carried by the snapshot as
+  the input to both foreign classifications, but is not a selectable dimension.
+- **This package does not own the corpus.** It reads published catalog artifacts and cannot
+  fetch data or locate its own inputs without caller-supplied paths.
+- **Share caps are a fill-time constraint, not an invariant of `SelectionResult`.**
+  `_violates_cap` runs during weighted pool fill. Seed, composite, floor, and
+  form-era allocation stages accept candidates through `_record`, which consults
+  the signature cap but not `policy.caps`; mandatory seeds explicitly bypass the
+  signature cap. Read `report["underfilled_floors"]` alongside the realised
+  `coverage_distributions`, which is what `_build_report` publishes.
+- **No rebalancing pass.** Underfilled floors are recorded rather than resolved by
+  exchanging an already-selected candidate.
+- **Feasibility is advisory, never a gate.** Published feasibility statistics do not block a
+  plan, and they do not account for competition between floors, caps, and seeds.
+- **No form-name validation against a vocabulary.** An unrecognized form name is accepted and
+  yields an empty snapshot rather than an error.
+- **No form-name-like filename classifier.** Only statutory exhibit-like primary filenames
+  are exposed as a policy dimension.
+- **No plan writer, provenance, or work order.** This package returns selection values;
+  publication belongs to the pipeline layer.
+- **The selection report is an untyped mapping** with no schema or version field.

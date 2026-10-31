@@ -1,0 +1,205 @@
+"""Immutable snapshot metadata and publication results."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Literal
+
+__all__ = [
+    "AccessionRow",
+    "EntryRow",
+    "PartitionPart",
+    "SnapshotMetadata",
+    "SnapshotPublication",
+    "SourceEdgeRow",
+]
+
+
+@dataclass(frozen=True, slots=True)
+class PartitionPart:
+    """One Parquet part in a snapshot relation."""
+
+    path: str
+    row_count: int
+    key_min: str | None = None
+    key_max: str | None = None
+    byte_size: int = 0
+    sha256: str = ""
+    row_group_count: int = 1
+
+
+@dataclass(frozen=True, slots=True)
+class SnapshotMetadata:
+    """Immutable metadata of one published snapshot; mirrors manifest.json.
+
+    Fields are read-only after publication; queries resolve the parent and the
+    active mapping rather than following mutable state.
+    """
+
+    snapshot_id: str
+    parent_snapshot_id: str
+    run_intent_id: str
+    base_snapshot_id: str | None
+    schema_version: str
+    entry_schema_version: int
+    lookup_layout_version: str
+    created_at: str
+    accessions_partitions: tuple[PartitionPart, ...]
+    entries_partitions: tuple[PartitionPart, ...]
+    accession_sources_partitions: tuple[PartitionPart, ...]
+    accessions_digest: str
+
+    @classmethod
+    def from_manifest(cls, payload: dict) -> "SnapshotMetadata":
+        relations = payload.get("relations", {})
+        accessions = relations.get("accessions") or payload.get("accessions", [])
+        entries = relations.get("entries") or payload.get("entries", [])
+        sources = relations.get("accession_sources") or payload.get(
+            "accession_sources", []
+        )
+        return cls(
+            snapshot_id=str(payload["snapshot_id"]),
+            parent_snapshot_id=str(payload.get("parent_snapshot_id", "")),
+            run_intent_id=str(payload.get("run_intent_id", "")),
+            base_snapshot_id=payload.get("base_snapshot_id"),
+            schema_version=str(payload.get("schema_version", "1")),
+            entry_schema_version=int(payload.get("entry_schema_version", 1)),
+            lookup_layout_version=str(payload.get("lookup_layout_version", "1")),
+            created_at=str(payload.get("created_at", "")),
+            accessions_partitions=tuple(
+                PartitionPart(**p)
+                if isinstance(p, dict)
+                else PartitionPart(
+                    p.path,
+                    p.row_count,
+                    p.key_min,
+                    p.key_max,
+                    p.byte_size,
+                    p.sha256,
+                )
+                for p in accessions
+            ),
+            entries_partitions=tuple(
+                PartitionPart(**p)
+                if isinstance(p, dict)
+                else PartitionPart(
+                    p.path,
+                    p.row_count,
+                    p.key_min,
+                    p.key_max,
+                    p.byte_size,
+                    p.sha256,
+                )
+                for p in entries
+            ),
+            accession_sources_partitions=tuple(
+                PartitionPart(**p)
+                if isinstance(p, dict)
+                else PartitionPart(
+                    p.path,
+                    p.row_count,
+                    p.key_min,
+                    p.key_max,
+                    p.byte_size,
+                    p.sha256,
+                )
+                for p in sources
+            ),
+            accessions_digest=str(
+                payload.get("accessions_digest")
+                or payload.get("logical_fingerprint", "")
+            ),
+        )
+
+    @property
+    def accession_count(self) -> int:
+        return sum(p.row_count for p in self.accessions_partitions)
+
+    @property
+    def source_cik_count(self) -> int:
+        return sum(p.row_count for p in self.accession_sources_partitions)
+
+    @property
+    def entry_count(self) -> int:
+        return sum(p.row_count for p in self.entries_partitions)
+
+
+@dataclass(frozen=True, slots=True)
+class AccessionRow:
+    """One accession row as returned by a query; all values are text."""
+
+    accession: str
+    filing_cik: str
+    form: str
+    filing_date: str
+    report_date: str | None
+    bundle_url: str | None
+    bundle_size: int | None
+    index_url: str
+    index_sha256: str
+    first_indexed_by: str
+
+
+@dataclass(frozen=True, slots=True)
+class EntryRow:
+    """One child-file row as returned by a query; matches ENTRY_SCHEMA."""
+
+    entry_id: str
+    accession: str
+    table_kind: str
+    row_ordinal: int
+    sequence: int | None
+    document_type: str | None
+    document_label: str | None
+    description: str | None
+    filename: str | None
+    href: str | None
+    archive_url: str | None
+    byte_size: int | None
+
+
+@dataclass(frozen=True, slots=True)
+class SourceEdgeRow:
+    """One (accession, source_cik) relationship as returned by a query."""
+
+    accession: str
+    source_cik: str
+    first_seen_by: str
+
+
+@dataclass(frozen=True, slots=True)
+class SnapshotPublication:
+    """Result of one committed-chunk publication.
+
+    Exactly one of ``published``/``no_op``/``failed`` is populated; callers
+    inspect ``status`` first.
+    """
+
+    status: Literal["published", "no_op", "failed"]
+    snapshot: SnapshotMetadata | None = None
+    parent: SnapshotMetadata | None = None
+    reason: str | None = None
+
+    @classmethod
+    def published(cls, snapshot: SnapshotMetadata) -> "SnapshotPublication":
+        return cls(status="published", snapshot=snapshot)
+
+    @classmethod
+    def no_op(cls, parent: SnapshotMetadata) -> "SnapshotPublication":
+        return cls(status="no_op", parent=parent)
+
+    @classmethod
+    def failed(cls, reason: str) -> "SnapshotPublication":
+        return cls(status="failed", reason=reason)
+
+    @property
+    def was_published(self) -> bool:
+        return self.status == "published"
+
+    @property
+    def was_no_op(self) -> bool:
+        return self.status == "no_op"
+
+    @property
+    def was_failed(self) -> bool:
+        return self.status == "failed"

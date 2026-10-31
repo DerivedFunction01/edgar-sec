@@ -1,0 +1,660 @@
+[
+  {
+    "child_geo_node": "country:EG",
+    "parent_geo_node": "srt:AfricaMember",
+    "decomposition_scheme": "D_GEO_AFRICA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Egypt is a sub-region of Africa (often grouped in MENA)"
+  },
+  {
+    "child_geo_node": "country:NG",
+    "parent_geo_node": "srt:AfricaMember",
+    "decomposition_scheme": "D_GEO_AFRICA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Nigeria is a sub-region of Africa"
+  },
+  {
+    "child_geo_node": "country:ZA",
+    "parent_geo_node": "srt:AfricaMember",
+    "decomposition_scheme": "D_GEO_AFRICA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "South Africa is a sub-region of Africa"
+  },
+  {
+    "child_geo_node": "srt:LatinAmericaMember",
+    "parent_geo_node": "srt:AmericasMember",
+    "decomposition_scheme": "D_GEO_AMER",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Latin America is a sub-region of the Americas"
+  },
+  {
+    "child_geo_node": "srt:NorthAmericaMember",
+    "parent_geo_node": "srt:AmericasMember",
+    "decomposition_scheme": "D_GEO_AMER",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "North America is a sub-region of the Americas"
+  },
+  {
+    "child_geo_node": "country:AU",
+    "parent_geo_node": "corp:ANZMember",
+    "decomposition_scheme": "D_GEO_ANZ",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Australia is a constituent of the ANZ commercial cluster"
+  },
+  {
+    "child_geo_node": "country:NZ",
+    "parent_geo_node": "corp:ANZMember",
+    "decomposition_scheme": "D_GEO_ANZ",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "New Zealand is a constituent of the ANZ commercial cluster"
+  },
+  {
+    "child_geo_node": "corp:ANZMember",
+    "parent_geo_node": "srt:AsiaPacificMember",
+    "decomposition_scheme": "D_GEO_APAC",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "ANZ commercial cluster rolls up into Asia-Pacific"
+  },
+  {
+    "child_geo_node": "corp:ASEANMember",
+    "parent_geo_node": "srt:AsiaPacificMember",
+    "decomposition_scheme": "D_GEO_APAC",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "ASEAN trading bloc is a sub-region of Asia-Pacific"
+  },
+  {
+    "child_geo_node": "country:AU",
+    "parent_geo_node": "srt:AsiaPacificMember",
+    "decomposition_scheme": "D_GEO_APAC",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Australia is a sub-region of Asia-Pacific / Australasia"
+  },
+  {
+    "child_geo_node": "country:CN",
+    "parent_geo_node": "srt:AsiaPacificMember",
+    "decomposition_scheme": "D_GEO_APAC",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Greater China is a sub-region of Asia-Pacific"
+  },
+  {
+    "child_geo_node": "country:ID",
+    "parent_geo_node": "srt:AsiaPacificMember",
+    "decomposition_scheme": "D_GEO_APAC",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Indonesia is a sub-region of Asia-Pacific / ASEAN"
+  },
+  {
+    "child_geo_node": "country:IN",
+    "parent_geo_node": "srt:AsiaPacificMember",
+    "decomposition_scheme": "D_GEO_APAC",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "India is a sub-region of Asia-Pacific"
+  },
+  {
+    "child_geo_node": "country:JP",
+    "parent_geo_node": "srt:AsiaPacificMember",
+    "decomposition_scheme": "D_GEO_APAC",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Japan is a sub-region of Asia-Pacific (KO)"
+  },
+  {
+    "child_geo_node": "country:KR",
+    "parent_geo_node": "srt:AsiaPacificMember",
+    "decomposition_scheme": "D_GEO_APAC",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "South Korea is a sub-region of Asia-Pacific"
+  },
+  {
+    "child_geo_node": "country:NZ",
+    "parent_geo_node": "srt:AsiaPacificMember",
+    "decomposition_scheme": "D_GEO_APAC",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "New Zealand is a sub-region of Asia-Pacific / Australasia"
+  },
+  {
+    "child_geo_node": "country:SG",
+    "parent_geo_node": "srt:AsiaPacificMember",
+    "decomposition_scheme": "D_GEO_APAC",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Singapore is a sub-region of Asia-Pacific / ASEAN"
+  },
+  {
+    "child_geo_node": "country:VN",
+    "parent_geo_node": "srt:AsiaPacificMember",
+    "decomposition_scheme": "D_GEO_APAC",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Vietnam is a sub-region of Asia-Pacific / ASEAN"
+  },
+  {
+    "child_geo_node": "country:ID",
+    "parent_geo_node": "corp:ASEANMember",
+    "decomposition_scheme": "D_GEO_ASEAN",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Indonesia is a member state of ASEAN"
+  },
+  {
+    "child_geo_node": "country:MY",
+    "parent_geo_node": "corp:ASEANMember",
+    "decomposition_scheme": "D_GEO_ASEAN",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Malaysia is a member state of ASEAN"
+  },
+  {
+    "child_geo_node": "country:PH",
+    "parent_geo_node": "corp:ASEANMember",
+    "decomposition_scheme": "D_GEO_ASEAN",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Philippines is a member state of ASEAN"
+  },
+  {
+    "child_geo_node": "country:SG",
+    "parent_geo_node": "corp:ASEANMember",
+    "decomposition_scheme": "D_GEO_ASEAN",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Singapore is a member state of ASEAN"
+  },
+  {
+    "child_geo_node": "country:TH",
+    "parent_geo_node": "corp:ASEANMember",
+    "decomposition_scheme": "D_GEO_ASEAN",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Thailand is a member state of ASEAN"
+  },
+  {
+    "child_geo_node": "country:VN",
+    "parent_geo_node": "corp:ASEANMember",
+    "decomposition_scheme": "D_GEO_ASEAN",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Vietnam is a member state of ASEAN"
+  },
+  {
+    "child_geo_node": "country:BE",
+    "parent_geo_node": "corp:BeneluxMember",
+    "decomposition_scheme": "D_GEO_BENELUX",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Belgium is a constituent member of Benelux"
+  },
+  {
+    "child_geo_node": "country:LU",
+    "parent_geo_node": "corp:BeneluxMember",
+    "decomposition_scheme": "D_GEO_BENELUX",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Luxembourg is a constituent member of Benelux"
+  },
+  {
+    "child_geo_node": "country:NL",
+    "parent_geo_node": "corp:BeneluxMember",
+    "decomposition_scheme": "D_GEO_BENELUX",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Netherlands is a constituent member of Benelux"
+  },
+  {
+    "child_geo_node": "country:BG",
+    "parent_geo_node": "corp:CEEMember",
+    "decomposition_scheme": "D_GEO_CEE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Bulgaria is a core CEE market"
+  },
+  {
+    "child_geo_node": "country:CZ",
+    "parent_geo_node": "corp:CEEMember",
+    "decomposition_scheme": "D_GEO_CEE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Czech Republic is a core CEE market"
+  },
+  {
+    "child_geo_node": "country:HU",
+    "parent_geo_node": "corp:CEEMember",
+    "decomposition_scheme": "D_GEO_CEE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Hungary is a core CEE market"
+  },
+  {
+    "child_geo_node": "country:PL",
+    "parent_geo_node": "corp:CEEMember",
+    "decomposition_scheme": "D_GEO_CEE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Poland is a core CEE market"
+  },
+  {
+    "child_geo_node": "country:RO",
+    "parent_geo_node": "corp:CEEMember",
+    "decomposition_scheme": "D_GEO_CEE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Romania is a core CEE market"
+  },
+  {
+    "child_geo_node": "country:SK",
+    "parent_geo_node": "corp:CEEMember",
+    "decomposition_scheme": "D_GEO_CEE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Slovakia is a core CEE market"
+  },
+  {
+    "child_geo_node": "country:AR",
+    "parent_geo_node": "srt:LatinAmericaMember",
+    "decomposition_scheme": "D_GEO_CORP_LATAM",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Argentina is a sub-region of Latin America"
+  },
+  {
+    "child_geo_node": "country:BR",
+    "parent_geo_node": "srt:LatinAmericaMember",
+    "decomposition_scheme": "D_GEO_CORP_LATAM",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Brazil is a sub-region of Latin America (PEP)"
+  },
+  {
+    "child_geo_node": "country:CL",
+    "parent_geo_node": "srt:LatinAmericaMember",
+    "decomposition_scheme": "D_GEO_CORP_LATAM",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Chile is a sub-region of Latin America"
+  },
+  {
+    "child_geo_node": "country:CO",
+    "parent_geo_node": "srt:LatinAmericaMember",
+    "decomposition_scheme": "D_GEO_CORP_LATAM",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Colombia is a sub-region of Latin America"
+  },
+  {
+    "child_geo_node": "country:MX",
+    "parent_geo_node": "srt:LatinAmericaMember",
+    "decomposition_scheme": "D_GEO_CORP_LATAM",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Mexico is a sub-region of Latin America in corporate LatAm reporting (KO, PEP)"
+  },
+  {
+    "child_geo_node": "country:PE",
+    "parent_geo_node": "srt:LatinAmericaMember",
+    "decomposition_scheme": "D_GEO_CORP_LATAM",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Peru is a sub-region of Latin America"
+  },
+  {
+    "child_geo_node": "srt:CaribbeanMember",
+    "parent_geo_node": "srt:LatinAmericaMember",
+    "decomposition_scheme": "D_GEO_CORP_LATAM",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Caribbean is a sub-region of Latin America/Americas"
+  },
+  {
+    "child_geo_node": "srt:CentralAmericaMember",
+    "parent_geo_node": "srt:LatinAmericaMember",
+    "decomposition_scheme": "D_GEO_CORP_LATAM",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Central America is a sub-region of Latin America"
+  },
+  {
+    "child_geo_node": "country:AT",
+    "parent_geo_node": "corp:DACHMember",
+    "decomposition_scheme": "D_GEO_DACH",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Austria (A) is a constituent of the DACH corporate cluster"
+  },
+  {
+    "child_geo_node": "country:CH",
+    "parent_geo_node": "corp:DACHMember",
+    "decomposition_scheme": "D_GEO_DACH",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Switzerland (CH) is a constituent of the DACH corporate cluster"
+  },
+  {
+    "child_geo_node": "country:DE",
+    "parent_geo_node": "corp:DACHMember",
+    "decomposition_scheme": "D_GEO_DACH",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Germany (D) is a constituent of the DACH corporate cluster"
+  },
+  {
+    "child_geo_node": "corp:MENAMember",
+    "parent_geo_node": "srt:EMEAMember",
+    "decomposition_scheme": "D_GEO_EMEA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "MENA corporate reporting unit rolls up into EMEA"
+  },
+  {
+    "child_geo_node": "srt:AfricaMember",
+    "parent_geo_node": "srt:EMEAMember",
+    "decomposition_scheme": "D_GEO_EMEA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Africa is a sub-region of EMEA"
+  },
+  {
+    "child_geo_node": "srt:EuropeMember",
+    "parent_geo_node": "srt:EMEAMember",
+    "decomposition_scheme": "D_GEO_EMEA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Europe is a sub-region of EMEA"
+  },
+  {
+    "child_geo_node": "srt:EuropeanUnionMember",
+    "parent_geo_node": "srt:EMEAMember",
+    "decomposition_scheme": "D_GEO_EMEA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "EU is a sub-region of EMEA (KO)"
+  },
+  {
+    "child_geo_node": "srt:MiddleEastMember",
+    "parent_geo_node": "srt:EMEAMember",
+    "decomposition_scheme": "D_GEO_EMEA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Middle East is a sub-region of EMEA"
+  },
+  {
+    "child_geo_node": "corp:BeneluxMember",
+    "parent_geo_node": "srt:EuropeMember",
+    "decomposition_scheme": "D_GEO_EUROPE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Benelux economic union is a sub-region of Europe"
+  },
+  {
+    "child_geo_node": "corp:CEEMember",
+    "parent_geo_node": "srt:EuropeMember",
+    "decomposition_scheme": "D_GEO_EUROPE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Central & Eastern Europe cluster rolls up into Europe"
+  },
+  {
+    "child_geo_node": "corp:DACHMember",
+    "parent_geo_node": "srt:EuropeMember",
+    "decomposition_scheme": "D_GEO_EUROPE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "DACH commercial cluster is a sub-region of Europe"
+  },
+  {
+    "child_geo_node": "corp:NordicsMember",
+    "parent_geo_node": "srt:EuropeMember",
+    "decomposition_scheme": "D_GEO_EUROPE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Nordics commercial cluster rolls up into Europe"
+  },
+  {
+    "child_geo_node": "country:CH",
+    "parent_geo_node": "srt:EuropeMember",
+    "decomposition_scheme": "D_GEO_EUROPE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Switzerland is a non-EU European market"
+  },
+  {
+    "child_geo_node": "country:GB",
+    "parent_geo_node": "srt:EuropeMember",
+    "decomposition_scheme": "D_GEO_EUROPE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "United Kingdom is a sub-region of Europe"
+  },
+  {
+    "child_geo_node": "srt:EuropeanUnionMember",
+    "parent_geo_node": "srt:EuropeMember",
+    "decomposition_scheme": "D_GEO_EUROPE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "EU is a proper subset of geographic Europe"
+  },
+  {
+    "child_geo_node": "country:DE",
+    "parent_geo_node": "srt:EuropeanUnionMember",
+    "decomposition_scheme": "D_GEO_EUROPE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Germany is a member state of the European Union"
+  },
+  {
+    "child_geo_node": "country:ES",
+    "parent_geo_node": "srt:EuropeanUnionMember",
+    "decomposition_scheme": "D_GEO_EUROPE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Spain is a member state of the European Union"
+  },
+  {
+    "child_geo_node": "country:FR",
+    "parent_geo_node": "srt:EuropeanUnionMember",
+    "decomposition_scheme": "D_GEO_EUROPE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "France is a member state of the European Union"
+  },
+  {
+    "child_geo_node": "country:IT",
+    "parent_geo_node": "srt:EuropeanUnionMember",
+    "decomposition_scheme": "D_GEO_EUROPE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Italy is a member state of the European Union"
+  },
+  {
+    "child_geo_node": "country:NL",
+    "parent_geo_node": "srt:EuropeanUnionMember",
+    "decomposition_scheme": "D_GEO_EUROPE",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Netherlands is a member state of the European Union"
+  },
+  {
+    "child_geo_node": "srt:AmericasMember",
+    "parent_geo_node": "srt:SegmentGeographicalDomain",
+    "decomposition_scheme": "D_GEO_GLOBAL",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Americas roll up into global corporate reporting"
+  },
+  {
+    "child_geo_node": "srt:AsiaPacificMember",
+    "parent_geo_node": "srt:SegmentGeographicalDomain",
+    "decomposition_scheme": "D_GEO_GLOBAL",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "APAC rolls up into global corporate reporting"
+  },
+  {
+    "child_geo_node": "srt:EMEAMember",
+    "parent_geo_node": "srt:SegmentGeographicalDomain",
+    "decomposition_scheme": "D_GEO_GLOBAL",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "EMEA rolls up into global corporate reporting"
+  },
+  {
+    "child_geo_node": "country:AE",
+    "parent_geo_node": "corp:MENAMember",
+    "decomposition_scheme": "D_GEO_MENA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "United Arab Emirates is a core market in MENA"
+  },
+  {
+    "child_geo_node": "country:EG",
+    "parent_geo_node": "corp:MENAMember",
+    "decomposition_scheme": "D_GEO_MENA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Egypt connects North Africa into MENA corporate reporting"
+  },
+  {
+    "child_geo_node": "country:IL",
+    "parent_geo_node": "corp:MENAMember",
+    "decomposition_scheme": "D_GEO_MENA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Israel is frequently grouped in MENA/EMEA"
+  },
+  {
+    "child_geo_node": "country:MA",
+    "parent_geo_node": "corp:MENAMember",
+    "decomposition_scheme": "D_GEO_MENA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Morocco is part of the North African component of MENA"
+  },
+  {
+    "child_geo_node": "country:QA",
+    "parent_geo_node": "corp:MENAMember",
+    "decomposition_scheme": "D_GEO_MENA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Qatar is part of the Middle East component of MENA"
+  },
+  {
+    "child_geo_node": "country:SA",
+    "parent_geo_node": "corp:MENAMember",
+    "decomposition_scheme": "D_GEO_MENA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Saudi Arabia is a core market in MENA"
+  },
+  {
+    "child_geo_node": "srt:MiddleEastMember",
+    "parent_geo_node": "corp:MENAMember",
+    "decomposition_scheme": "D_GEO_MENA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Middle East region rolls up into corporate MENA"
+  },
+  {
+    "child_geo_node": "country:AE",
+    "parent_geo_node": "srt:MiddleEastMember",
+    "decomposition_scheme": "D_GEO_MIDDLE_EAST",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "United Arab Emirates is a sub-region of the Middle East"
+  },
+  {
+    "child_geo_node": "country:IL",
+    "parent_geo_node": "srt:MiddleEastMember",
+    "decomposition_scheme": "D_GEO_MIDDLE_EAST",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Israel is a sub-region of the Middle East"
+  },
+  {
+    "child_geo_node": "country:SA",
+    "parent_geo_node": "srt:MiddleEastMember",
+    "decomposition_scheme": "D_GEO_MIDDLE_EAST",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Saudi Arabia is a sub-region of the Middle East"
+  },
+  {
+    "child_geo_node": "country:DK",
+    "parent_geo_node": "corp:NordicsMember",
+    "decomposition_scheme": "D_GEO_NORDICS",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Denmark is a constituent market of the Nordic region"
+  },
+  {
+    "child_geo_node": "country:FI",
+    "parent_geo_node": "corp:NordicsMember",
+    "decomposition_scheme": "D_GEO_NORDICS",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Finland is a constituent market of the Nordic region"
+  },
+  {
+    "child_geo_node": "country:IS",
+    "parent_geo_node": "corp:NordicsMember",
+    "decomposition_scheme": "D_GEO_NORDICS",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Iceland is a constituent market of the Nordic region"
+  },
+  {
+    "child_geo_node": "country:NO",
+    "parent_geo_node": "corp:NordicsMember",
+    "decomposition_scheme": "D_GEO_NORDICS",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Norway is a constituent market of the Nordic region"
+  },
+  {
+    "child_geo_node": "country:SE",
+    "parent_geo_node": "corp:NordicsMember",
+    "decomposition_scheme": "D_GEO_NORDICS",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Sweden is a constituent market of the Nordic region"
+  },
+  {
+    "child_geo_node": "country:CA",
+    "parent_geo_node": "srt:NorthAmericaMember",
+    "decomposition_scheme": "D_GEO_NORTH_AMER",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Canada is a sub-region of North America"
+  },
+  {
+    "child_geo_node": "country:US",
+    "parent_geo_node": "srt:NorthAmericaMember",
+    "decomposition_scheme": "D_GEO_NORTH_AMER",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "United States is a sub-region of North America"
+  },
+  {
+    "child_geo_node": "country:MX",
+    "parent_geo_node": "srt:NorthAmericaMember",
+    "decomposition_scheme": "D_GEO_USMCA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Mexico is part of North America under USMCA / NAFTA trade bloc"
+  },
+  {
+    "child_geo_node": "country:US",
+    "parent_geo_node": "srt:NorthAmericaMember",
+    "decomposition_scheme": "D_GEO_USMCA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "United States is part of North America under USMCA"
+  },
+  {
+    "child_geo_node": "country:CA",
+    "parent_geo_node": "srt:NorthAmericaMember",
+    "decomposition_scheme": "D_GEO_USMCA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Canada is part of North America under USMCA"
+  },
+  {
+    "child_geo_node": "country:CN",
+    "parent_geo_node": "corp:GreaterChinaMember",
+    "decomposition_scheme": "D_GEO_GREATER_CHINA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Mainland China is a constituent of Greater China"
+  },
+  {
+    "child_geo_node": "country:HK",
+    "parent_geo_node": "corp:GreaterChinaMember",
+    "decomposition_scheme": "D_GEO_GREATER_CHINA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Hong Kong SAR is a constituent of Greater China"
+  },
+  {
+    "child_geo_node": "country:TW",
+    "parent_geo_node": "corp:GreaterChinaMember",
+    "decomposition_scheme": "D_GEO_GREATER_CHINA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Taiwan is a constituent of Greater China"
+  },
+  {
+    "child_geo_node": "country:MO",
+    "parent_geo_node": "corp:GreaterChinaMember",
+    "decomposition_scheme": "D_GEO_GREATER_CHINA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Macau SAR is a constituent of Greater China"
+  },
+  {
+    "child_geo_node": "corp:GreaterChinaMember",
+    "parent_geo_node": "srt:AsiaPacificMember",
+    "decomposition_scheme": "D_GEO_APAC",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Greater China rolls up into Asia-Pacific"
+  },
+  {
+    "child_geo_node": "srt:EuropeMember",
+    "parent_geo_node": "srt:EMEAMember",
+    "decomposition_scheme": "D_GEO_EMEA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Europe is a constituent of EMEA"
+  },
+  {
+    "child_geo_node": "srt:MiddleEastMember",
+    "parent_geo_node": "srt:EMEAMember",
+    "decomposition_scheme": "D_GEO_EMEA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Middle East is a constituent of EMEA"
+  },
+  {
+    "child_geo_node": "srt:AfricaMember",
+    "parent_geo_node": "srt:EMEAMember",
+    "decomposition_scheme": "D_GEO_EMEA",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Africa is a constituent of EMEA"
+  },
+  {
+    "child_geo_node": "srt:CentralAmericaMember",
+    "parent_geo_node": "srt:LatinAmericaMember",
+    "decomposition_scheme": "D_GEO_CORP_LATAM",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "Central America rolls up into Latin America"
+  },
+  {
+    "child_geo_node": "srt:SouthAmericaMember",
+    "parent_geo_node": "srt:LatinAmericaMember",
+    "decomposition_scheme": "D_GEO_CORP_LATAM",
+    "relation_type": "MERONYMY_PART_OF",
+    "notes": "South America rolls up into Latin America"
+  }
+]

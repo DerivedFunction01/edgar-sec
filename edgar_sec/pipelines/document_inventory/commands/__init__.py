@@ -1,0 +1,1 @@
+"""Document inventory subcommands package."""

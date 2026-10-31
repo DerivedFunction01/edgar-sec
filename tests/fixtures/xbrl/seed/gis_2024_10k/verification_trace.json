@@ -1,0 +1,96 @@
+{
+  "firm": "GIS",
+  "accession": "0001193125-24-168943",
+  "cik": "0000040704",
+  "sic_code": 2040,
+  "sector": "Consumer_Staples",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statements of Earnings",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      3147,
+      3169
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "Net sales",
+        "reported_value": 19857200000.0,
+        "table_value": 19857.2,
+        "line_number": 3153,
+        "snippet": "Net sales                                                                                 $ 19,857.2  $ 20,094.2  $ 18,992.8"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
+        "label": "Cost of sales",
+        "reported_value": 12925100000.0,
+        "table_value": 12925.1,
+        "line_number": 3154,
+        "snippet": "Cost of sales                                                                               12,925.1    13,548.4    12,590.6"
+      },
+      {
+        "concept_qname": "us-gaap:SellingGeneralAndAdministrativeExpense",
+        "label": "Selling, general, and administrative expenses",
+        "reported_value": 3259000000.0,
+        "table_value": 3259.0,
+        "line_number": 3155,
+        "snippet": "Selling, general, and administrative expenses                                                3,259.0     3,500.4     3,147.0"
+      },
+      {
+        "concept_qname": "us-gaap:RestructuringSettlementAndImpairmentProvisions",
+        "label": "Restructuring, impairment, and other exit costs (recoveries)",
+        "reported_value": 241400000.0,
+        "table_value": 241.4,
+        "line_number": 3157,
+        "snippet": "Restructuring, impairment, and other exit costs (recoveries)                                   241.4        56.2      (26.5)"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating profit",
+        "reported_value": 3431700000.0,
+        "table_value": 3431.7,
+        "line_number": 3158,
+        "snippet": "Operating profit                                                                             3,431.7     3,433.8     3,475.8"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncomeLoss = RevenueFromContractWithCustomerExcludingAssessedTax - CostOfGoodsAndServicesSold - SellingGeneralAndAdministrativeExpense - RestructuringSettlementAndImpairmentProvisions + GainLossOnSaleOfBusiness",
+      "left_concept": "us-gaap:OperatingIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": 19857200000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostOfGoodsAndServicesSold",
+          "value": 12925100000.0,
+          "weight": -1.0
+        },
+        {
+          "concept": "us-gaap:SellingGeneralAndAdministrativeExpense",
+          "value": 3259000000.0,
+          "weight": -1.0
+        },
+        {
+          "concept": "us-gaap:RestructuringSettlementAndImpairmentProvisions",
+          "value": 241400000.0,
+          "weight": -1.0
+        },
+        {
+          "concept": "us-gaap:GainLossOnSaleOfBusiness",
+          "value": 0.0,
+          "weight": 1.0
+        }
+      ],
+      "computed_sum": 3431700000.0,
+      "target_value": 3431700000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

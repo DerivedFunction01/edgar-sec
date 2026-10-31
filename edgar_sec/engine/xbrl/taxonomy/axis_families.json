@@ -1,0 +1,23 @@
+[
+  {"axis_pattern": "geograph", "axis_family": "GEOGRAPHY", "default_axis_qname": "us-gaap:StatementGeographicalAxis", "scope_tokens": ["geographic", "geographical"], "description": "Geographical reporting axes"},
+  {"axis_pattern": "country", "axis_family": "GEOGRAPHY", "default_axis_qname": "us-gaap:StatementGeographicalAxis", "scope_tokens": ["country"], "description": "Country level disaggregation axes"},
+  {"axis_pattern": "region", "axis_family": "GEOGRAPHY", "default_axis_qname": "us-gaap:StatementGeographicalAxis", "scope_tokens": [], "description": "Regional disaggregation axes"},
+  {"axis_pattern": "location", "axis_family": "GEOGRAPHY", "default_axis_qname": "us-gaap:StatementGeographicalAxis", "scope_tokens": ["allocation", "location"], "description": "Location reporting axes"},
+  {"axis_pattern": "foreign", "axis_family": "GEOGRAPHY", "default_axis_qname": "us-gaap:StatementGeographicalAxis", "scope_tokens": ["foreign", "foreignexchangecontracts"], "description": "Foreign vs domestic reporting axes"},
+  {"axis_pattern": "jurisdiction", "axis_family": "GEOGRAPHY", "default_axis_qname": "us-gaap:StatementGeographicalAxis", "scope_tokens": ["jurisdiction"], "description": "Tax and legal jurisdiction axes"},
+  {"axis_pattern": "segment", "axis_family": "SEGMENT", "default_axis_qname": "us-gaap:StatementOperatingSegmentsAxis", "scope_tokens": ["segment", "segments", "subsegments"], "description": "Operating and business segment axes"},
+  {"axis_pattern": "consolidationitem", "axis_family": "SEGMENT", "default_axis_qname": "us-gaap:StatementOperatingSegmentsAxis", "scope_tokens": ["consolidation items"], "description": "Consolidation and intersegment items axes"},
+  {"axis_pattern": "product", "axis_family": "PRODUCT_SERVICE", "default_axis_qname": "us-gaap:ProductOrServiceAxis", "scope_tokens": ["product", "production", "products"], "description": "Product line disaggregation axes"},
+  {"axis_pattern": "service", "axis_family": "PRODUCT_SERVICE", "default_axis_qname": "us-gaap:ProductOrServiceAxis", "scope_tokens": ["service", "services"], "description": "Service line disaggregation axes"},
+  {"axis_pattern": "performanceobligation", "axis_family": "PRODUCT_SERVICE", "default_axis_qname": "us-gaap:ProductOrServiceAxis", "scope_tokens": ["performance obligation", "performance obligations"], "description": "Revenue contract obligation axes"},
+  {"axis_pattern": "customer", "axis_family": "CUSTOMER", "default_axis_qname": "us-gaap:MajorCustomersAxis", "scope_tokens": ["commercial", "consumer", "customer", "customers", "enterprise", "government", "institutional", "retail", "wholesale"], "description": "Major customer and concentration risk axes"},
+  {"axis_pattern": "concentrationrisk", "axis_family": "CUSTOMER", "default_axis_qname": "us-gaap:MajorCustomersAxis", "scope_tokens": ["concentration risk"], "description": "Credit and revenue concentration risk axes"},
+  {"axis_pattern": "debtinstrument", "axis_family": "INSTRUMENT", "default_axis_qname": "us-gaap:FinancialInstrumentAxis", "scope_tokens": ["debt instrument"], "description": "Debt borrowing and credit facility axes"},
+  {"axis_pattern": "instrument", "axis_family": "INSTRUMENT", "default_axis_qname": "us-gaap:FinancialInstrumentAxis", "scope_tokens": ["instrument", "instruments"], "description": "Financial and equity instrument axes"},
+  {"axis_pattern": "equitymethod", "axis_family": "INSTRUMENT", "default_axis_qname": "us-gaap:FinancialInstrumentAxis", "scope_tokens": ["componentsofearningsfromequitymethodinvestments", "equity method"], "description": "Investments in affiliates and joint ventures axes"},
+  {"axis_pattern": "borrowing", "axis_family": "INSTRUMENT", "default_axis_qname": "us-gaap:FinancialInstrumentAxis", "scope_tokens": ["borrowing", "borrowings"], "description": "Credit borrowing and loan facility axes"},
+  {"axis_pattern": "horizon", "axis_family": "HORIZON", "default_axis_qname": "us-gaap:MaturityAxis", "scope_tokens": ["current", "noncurrent", "shortterm", "longterm"], "description": "Temporal horizon and maturity duration axes"},
+  {"axis_pattern": "timing", "axis_family": "HORIZON", "default_axis_qname": "us-gaap:TimingOfTransferOfGoodOrServiceAxis", "scope_tokens": ["timing of satisfaction"], "description": "Contract timing of satisfaction axes"},
+  {"axis_pattern": "maturity", "axis_family": "HORIZON", "default_axis_qname": "us-gaap:MaturityAxis", "scope_tokens": ["maturity"], "description": "Maturity schedule and tenure axes"},
+  {"axis_pattern": "fairvalue", "axis_family": "HORIZON", "default_axis_qname": "us-gaap:FairValueByFairValueHierarchyLevelAxis", "scope_tokens": ["fair value"], "description": "Fair value measurement hierarchy axes"}
+]

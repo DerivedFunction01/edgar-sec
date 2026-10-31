@@ -1,0 +1,110 @@
+{
+  "firm": "JPM",
+  "accession": "0000019617-25-000270",
+  "cik": "0000019617",
+  "sic_code": 6021,
+  "sector": "Financials",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated statements of income",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      7896,
+      7920
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:NoninterestIncome",
+        "label": "Noninterest revenue",
+        "reported_value": 84973000000.0,
+        "table_value": 84973,
+        "line_number": 7896,
+        "snippet": "Noninterest revenue                                               84,973      68,837      61,985"
+      },
+      {
+        "concept_qname": "us-gaap:InterestIncomeExpenseNet",
+        "label": "Net interest income",
+        "reported_value": 92583000000.0,
+        "table_value": 92583,
+        "line_number": 7901,
+        "snippet": "Net interest income                                               92,583      89,267      66,710"
+      },
+      {
+        "concept_qname": "us-gaap:RevenuesNetOfInterestExpense",
+        "label": "Total net revenue",
+        "reported_value": 177556000000.0,
+        "table_value": 177556,
+        "line_number": 7903,
+        "snippet": "Total net revenue                                                177,556     158,104     128,695"
+      },
+      {
+        "concept_qname": "us-gaap:ProvisionForLoanLeaseAndOtherLosses",
+        "label": "Provision for credit losses",
+        "reported_value": 10678000000.0,
+        "table_value": 10678,
+        "line_number": 7905,
+        "snippet": "Provision for credit losses                                       10,678       9,320       6,389"
+      },
+      {
+        "concept_qname": "us-gaap:NoninterestExpense",
+        "label": "Total noninterest expense",
+        "reported_value": 91797000000.0,
+        "table_value": 91797,
+        "line_number": 7915,
+        "snippet": "Total noninterest expense                                         91,797      87,172      76,140"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "label": "Income before income tax expense",
+        "reported_value": 75081000000.0,
+        "table_value": 75081,
+        "line_number": 7917,
+        "snippet": "Income before income tax expense                                  75,081      61,612      46,166"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Income tax expense",
+        "reported_value": 16610000000.0,
+        "table_value": 16610,
+        "line_number": 7918,
+        "snippet": "Income tax expense                                                16,610      12,060       8,490"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income",
+        "reported_value": 58471000000.0,
+        "table_value": 58471,
+        "line_number": 7920,
+        "snippet": "Net income                                                      $ 58,471    $ 49,552    $ 37,676"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "Total net revenue - Provision for credit losses - Total noninterest expense = Income before income tax expense",
+      "left_concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "components": [
+        {
+          "concept": "us-gaap:RevenuesNetOfInterestExpense",
+          "weight": 1,
+          "value": 177556000000.0
+        },
+        {
+          "concept": "us-gaap:ProvisionForLoanLeaseAndOtherLosses",
+          "weight": -1,
+          "value": 10678000000.0
+        },
+        {
+          "concept": "us-gaap:NoninterestExpense",
+          "weight": -1,
+          "value": 91797000000.0
+        }
+      ],
+      "computed_sum": 75081000000.0,
+      "target_value": 75081000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

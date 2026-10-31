@@ -1,0 +1,218 @@
+[
+  {
+    "child_instrument": "InterestRateSwapMember",
+    "parent_instrument": "SwapMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "IR",
+    "contract_structure": "SWAP",
+    "description": "Interest rate swap is a subtype of Swap"
+  },
+  {
+    "child_instrument": "CreditDefaultSwapMember",
+    "parent_instrument": "SwapMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "CP",
+    "contract_structure": "SWAP",
+    "description": "Credit default swap is a subtype of Swap"
+  },
+  {
+    "child_instrument": "ForeignExchangeContractMember",
+    "parent_instrument": "DerivativeMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "FX",
+    "contract_structure": "ALL_STRUCT",
+    "description": "FX forward/swap contract is a subtype of Derivative"
+  },
+  {
+    "child_instrument": "ForeignExchangeForwardMember",
+    "parent_instrument": "ForwardContractMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "FX",
+    "contract_structure": "FORWARD",
+    "description": "FX forward contract is a subtype of Forward"
+  },
+  {
+    "child_instrument": "SwapMember",
+    "parent_instrument": "DerivativeMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "ALL_RISK",
+    "contract_structure": "SWAP",
+    "description": "Swap contracts roll up into Derivative"
+  },
+  {
+    "child_instrument": "OptionMember",
+    "parent_instrument": "DerivativeMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "ALL_RISK",
+    "contract_structure": "OPTION",
+    "description": "Options contracts roll up into Derivative"
+  },
+  {
+    "child_instrument": "ForwardContractMember",
+    "parent_instrument": "DerivativeMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "ALL_RISK",
+    "contract_structure": "FORWARD",
+    "description": "Forward contracts roll up into Derivative"
+  },
+  {
+    "child_instrument": "FuturesContractMember",
+    "parent_instrument": "DerivativeMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "ALL_RISK",
+    "contract_structure": "FUTURES",
+    "description": "Futures contracts roll up into Derivative"
+  },
+  {
+    "child_instrument": "DerivativeMember",
+    "parent_instrument": "FinancialInstrumentMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "ALL_RISK",
+    "contract_structure": "ALL_STRUCT",
+    "description": "All derivative contracts roll up into FinancialInstrument"
+  },
+  {
+    "child_instrument": "EquitySecuritiesMember",
+    "parent_instrument": "EquityInvestmentMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Public/private equity securities roll into EquityInvestment"
+  },
+  {
+    "child_instrument": "EquityInvestmentMember",
+    "parent_instrument": "InvestmentMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Equity investments roll up into Investment"
+  },
+  {
+    "child_instrument": "DebtSecurityAFSMember",
+    "parent_instrument": "DebtSecurityMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Available-for-sale debt securities roll up into DebtSecurity"
+  },
+  {
+    "child_instrument": "DebtSecurityHTMMember",
+    "parent_instrument": "DebtSecurityMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Held-to-maturity debt securities roll up into DebtSecurity"
+  },
+  {
+    "child_instrument": "DebtSecurityTradingMember",
+    "parent_instrument": "DebtSecurityMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Trading debt securities roll up into DebtSecurity"
+  },
+  {
+    "child_instrument": "DebtSecurityMember",
+    "parent_instrument": "InvestmentMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Debt securities roll up into Investment"
+  },
+  {
+    "child_instrument": "InvestmentMember",
+    "parent_instrument": "FinancialInstrumentMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Investments roll up into FinancialInstrument"
+  },
+  {
+    "child_instrument": "CommodityContractMember",
+    "parent_instrument": "DerivativeMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "CM",
+    "contract_structure": "ALL_STRUCT",
+    "hedge_designation": "ALL_DESIGNATION",
+    "description": "Commodity derivatives across eligible contract structures"
+  },
+  {
+    "child_instrument": "CommodityOptionMember",
+    "parent_instrument": "OptionMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "CM",
+    "contract_structure": "OPTION",
+    "hedge_designation": "ALL_DESIGNATION",
+    "description": "Commodity derivative with option contract structure"
+  },
+  {
+    "child_instrument": "InterestRateCapFloorMember",
+    "parent_instrument": "OptionMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "IR",
+    "contract_structure": "OPTION",
+    "hedge_designation": "ALL_DESIGNATION",
+    "description": "Interest-rate caps, floors, and collars"
+  },
+  {
+    "child_instrument": "SwaptionMember",
+    "parent_instrument": "OptionMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "IR",
+    "contract_structure": "OPTION",
+    "hedge_designation": "ALL_DESIGNATION",
+    "description": "Option to enter an interest-rate swap"
+  },
+  {
+    "child_instrument": "CrossCurrencySwapMember",
+    "parent_instrument": "SwapMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "FX",
+    "contract_structure": "SWAP",
+    "hedge_designation": "ALL_DESIGNATION",
+    "description": "Cross-currency and basis swaps"
+  },
+  {
+    "child_instrument": "EquityDerivativeMember",
+    "parent_instrument": "DerivativeMember",
+    "relation_type": "SUBTYPE_OF",
+    "underlying_risk": "EQ",
+    "contract_structure": "ALL_STRUCT",
+    "hedge_designation": "ALL_DESIGNATION",
+    "description": "Equity and equity-index derivatives"
+  },
+  {
+    "child_instrument": "FORWARD",
+    "parent_instrument": "FUTURES",
+    "relation_type": "MUTUALLY_EXCLUSIVE",
+    "description": "A contract cannot simultaneously be a forward and a future"
+  },
+  {
+    "child_instrument": "FORWARD",
+    "parent_instrument": "SWAP",
+    "relation_type": "MUTUALLY_EXCLUSIVE",
+    "description": "A contract cannot simultaneously be a forward and a swap"
+  },
+  {
+    "child_instrument": "FORWARD",
+    "parent_instrument": "OPTION",
+    "relation_type": "MUTUALLY_EXCLUSIVE",
+    "description": "A contract cannot simultaneously be a forward and an option"
+  },
+  {
+    "child_instrument": "FUTURES",
+    "parent_instrument": "SWAP",
+    "relation_type": "MUTUALLY_EXCLUSIVE",
+    "description": "A contract cannot simultaneously be a future and a swap"
+  },
+  {
+    "child_instrument": "FUTURES",
+    "parent_instrument": "OPTION",
+    "relation_type": "MUTUALLY_EXCLUSIVE",
+    "description": "A contract cannot simultaneously be a future and an option"
+  },
+  {
+    "child_instrument": "SWAP",
+    "parent_instrument": "OPTION",
+    "relation_type": "MUTUALLY_EXCLUSIVE",
+    "description": "A contract cannot simultaneously be a swap and an option"
+  },
+  {
+    "child_instrument": "CommercialPaperMember",
+    "parent_instrument": "DebtSecurityMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Commercial paper rolls up into DebtSecurity"
+  },
+  {
+    "child_instrument": "DebenturesMember",
+    "parent_instrument": "DebtSecurityMember",
+    "relation_type": "SUBTYPE_OF",
+    "description": "Debentures roll up into DebtSecurity"
+  }
+]

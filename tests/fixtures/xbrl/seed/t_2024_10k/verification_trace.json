@@ -1,0 +1,81 @@
+{
+  "firm": "T",
+  "accession": "0000732717-25-000013",
+  "cik": "0000732717",
+  "sic_code": 4813,
+  "sector": "Communication_Services",
+  "fiscal_year": 2024,
+  "source_filing_fiscal_year": 2024,
+  "statement_of_operations": {
+    "title": "Consolidated Statements of Income",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      1548,
+      1589
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total operating revenues",
+        "reported_value": 122336000000.0,
+        "table_value": 122336,
+        "line_number": 1556,
+        "snippet": "Total operating revenues                                                                       122,336     122,428     120,741"
+      },
+      {
+        "concept_qname": "us-gaap:CostsAndExpenses",
+        "label": "Total operating expenses",
+        "reported_value": 103287000000.0,
+        "table_value": 103287,
+        "line_number": 1567,
+        "snippet": "Total operating expenses                                                                       103,287      98,967     125,328"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating Income (Loss)",
+        "reported_value": 19049000000.0,
+        "table_value": 19049,
+        "line_number": 1569,
+        "snippet": "Operating Income (Loss)                                                                         19,049      23,461     (4,587)"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Income tax expense on continuing operations",
+        "reported_value": 4445000000.0,
+        "table_value": 4445,
+        "line_number": 1580,
+        "snippet": "Income tax expense on continuing operations                                                      4,445       4,225       3,780"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net Income (Loss) Attributable to AT&T",
+        "reported_value": 10948000000.0,
+        "table_value": 10948,
+        "line_number": 1588,
+        "snippet": "Net Income (Loss) Attributable to AT&T                                                        $ 10,948    $ 14,400   $ (8,524)"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncomeLoss = Revenues - CostsAndExpenses",
+      "left_concept": "us-gaap:OperatingIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "value": 122336000000.0,
+          "weight": 1.0
+        },
+        {
+          "concept": "us-gaap:CostsAndExpenses",
+          "value": 103287000000.0,
+          "weight": -1.0
+        }
+      ],
+      "computed_sum": 19049000000.0,
+      "target_value": 19049000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

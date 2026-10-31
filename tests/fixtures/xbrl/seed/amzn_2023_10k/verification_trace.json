@@ -1,0 +1,105 @@
+{
+  "firm": "AMZN",
+  "accession": "0001018724-24-000008",
+  "cik": "0001018724",
+  "sic_code": 5961,
+  "sector": "Consumer_Tech",
+  "fiscal_year": 2023,
+  "source_filing_fiscal_year": 2023,
+  "statement_of_operations": {
+    "title": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 2,
+    "line_range": [
+      1170,
+      1181
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+        "label": "Total net sales",
+        "reported_value": 574785000000,
+        "table_value": 574785,
+        "line_number": 1170,
+        "snippet": "Total net sales                                                        469,822     513,983     574,785"
+      },
+      {
+        "concept_qname": "us-gaap:CostOfGoodsAndServicesSold",
+        "label": "Cost of sales",
+        "reported_value": 304739000000,
+        "table_value": 304739,
+        "line_number": 1172,
+        "snippet": "Cost of sales                                                          272,344     288,831     304,739"
+      },
+      {
+        "concept_qname": "amzn:FulfillmentExpense",
+        "label": "Fulfillment",
+        "reported_value": 90619000000,
+        "table_value": 90619,
+        "line_number": 1173,
+        "snippet": "Fulfillment                                                             75,111      84,299      90,619"
+      },
+      {
+        "concept_qname": "amzn:TechnologyAndInfrastructureExpense",
+        "label": "Technology and infrastructure",
+        "reported_value": 85622000000,
+        "table_value": 85622,
+        "line_number": 1174,
+        "snippet": "Technology and infrastructure                                           56,052      73,213      85,622"
+      },
+      {
+        "concept_qname": "us-gaap:MarketingExpense",
+        "label": "Sales and marketing",
+        "reported_value": 44370000000,
+        "table_value": 44370,
+        "line_number": 1175,
+        "snippet": "Sales and marketing                                                     32,551      42,238      44,370"
+      },
+      {
+        "concept_qname": "us-gaap:GeneralAndAdministrativeExpense",
+        "label": "General and administrative",
+        "reported_value": 11816000000,
+        "table_value": 11816,
+        "line_number": 1176,
+        "snippet": "General and administrative                                               8,823      11,891      11,816"
+      },
+      {
+        "concept_qname": "us-gaap:CostsAndExpenses",
+        "label": "Total operating expenses",
+        "reported_value": 537933000000,
+        "table_value": 537933,
+        "line_number": 1179,
+        "snippet": "Total operating expenses                                               444,943     501,735     537,933"
+      },
+      {
+        "concept_qname": "us-gaap:OperatingIncomeLoss",
+        "label": "Operating income",
+        "reported_value": 36852000000,
+        "table_value": 36852,
+        "line_number": 1181,
+        "snippet": "Operating income                                                        24,879      12,248      36,852"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "OperatingIncome = TotalNetSales - TotalOperatingExpenses",
+      "left_concept": "us-gaap:OperatingIncomeLoss",
+      "components": [
+        {
+          "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+          "value": 574785000000,
+          "weight": 1
+        },
+        {
+          "concept": "us-gaap:CostsAndExpenses",
+          "value": 537933000000,
+          "weight": -1
+        }
+      ],
+      "computed_sum": 36852000000,
+      "target_value": 36852000000,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "firm": "BAC",
+  "accession": "0000070858-16-000137",
+  "cik": "0000070858",
+  "sic_code": 6021,
+  "sector": "Financials",
+  "fiscal_year": 2015,
+  "source_filing_fiscal_year": 2015,
+  "statement_of_operations": {
+    "title": "Consolidated Statement of Income",
+    "unit": "USD in millions",
+    "scale": 1000000,
+    "period_column_index": 0,
+    "line_range": [
+      6586,
+      6643
+    ],
+    "concepts": [
+      {
+        "concept_qname": "us-gaap:InterestIncomeExpenseNet",
+        "label": "Net interest income",
+        "reported_value": 39251000000.0,
+        "table_value": 39251,
+        "line_number": 6608,
+        "snippet": "Net interest income                                                                     39,251      39,952         42,265"
+      },
+      {
+        "concept_qname": "us-gaap:NoninterestIncome",
+        "label": "Total noninterest income",
+        "reported_value": 43256000000.0,
+        "table_value": 43256,
+        "line_number": 6621,
+        "snippet": "Total noninterest income                                                                43,256      44,295         46,677"
+      },
+      {
+        "concept_qname": "us-gaap:Revenues",
+        "label": "Total revenue, net of interest expense",
+        "reported_value": 82507000000.0,
+        "table_value": 82507,
+        "line_number": 6623,
+        "snippet": "Total revenue, net of interest expense                                                  82,507      84,247         88,942"
+      },
+      {
+        "concept_qname": "us-gaap:ProvisionForLoanLeaseAndOtherLosses",
+        "label": "Provision for credit losses",
+        "reported_value": 3161000000.0,
+        "table_value": 3161,
+        "line_number": 6625,
+        "snippet": "Provision for credit losses                                                              3,161       2,275          3,556"
+      },
+      {
+        "concept_qname": "us-gaap:NoninterestExpense",
+        "label": "Total noninterest expense",
+        "reported_value": 57192000000.0,
+        "table_value": 57192,
+        "line_number": 6638,
+        "snippet": "Total noninterest expense                                                               57,192      75,117         69,214"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "label": "Income before income taxes",
+        "reported_value": 22154000000.0,
+        "table_value": 22154,
+        "line_number": 6640,
+        "snippet": "Income before income taxes                                                              22,154       6,855         16,172"
+      },
+      {
+        "concept_qname": "us-gaap:IncomeTaxExpenseBenefit",
+        "label": "Income tax expense",
+        "reported_value": 6266000000.0,
+        "table_value": 6266,
+        "line_number": 6641,
+        "snippet": "Income tax expense                                                                       6,266       2,022          4,741"
+      },
+      {
+        "concept_qname": "us-gaap:NetIncomeLoss",
+        "label": "Net income",
+        "reported_value": 15888000000.0,
+        "table_value": 15888,
+        "line_number": 6643,
+        "snippet": "Net income                                                                            $ 15,888     $ 4,833       $ 11,431"
+      }
+    ],
+    "anti_chain_proof": {
+      "equation": "Total revenue, net of interest expense - Provision for credit losses - Total noninterest expense = Income before income taxes",
+      "left_concept": "us-gaap:IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "components": [
+        {
+          "concept": "us-gaap:Revenues",
+          "weight": 1,
+          "value": 82507000000.0
+        },
+        {
+          "concept": "us-gaap:ProvisionForLoanLeaseAndOtherLosses",
+          "weight": -1,
+          "value": 3161000000.0
+        },
+        {
+          "concept": "us-gaap:NoninterestExpense",
+          "weight": -1,
+          "value": 57192000000.0
+        }
+      ],
+      "computed_sum": 22154000000.0,
+      "target_value": 22154000000.0,
+      "discrepancy": 0.0,
+      "is_valid_antichain": true
+    }
+  }
+}

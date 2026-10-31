@@ -1,0 +1,46 @@
+[
+  {
+    "relation_type": "IS_A",
+    "algebraic_class": "SUBSET_LATTICE",
+    "directionality": "DIRECTED_ACYCLIC",
+    "is_computed": true,
+    "description": "Taxonomic subsumption lattice: (h, M1) <= (h, M2) iff M1 superset of M2"
+  },
+  {
+    "relation_type": "PART_OF",
+    "algebraic_class": "ADDITIVE_MERONYMY",
+    "directionality": "DIRECTED_ACYCLIC",
+    "is_computed": false,
+    "description": "Additive component of parent total with weight +1.0 or -1.0; supports bottom-up synthesis"
+  },
+  {
+    "relation_type": "CONTRA_OF",
+    "algebraic_class": "VALUATION_NETTING",
+    "directionality": "DIRECTED_ACYCLIC",
+    "is_computed": false,
+    "algebraic_weight": -1.0,
+    "formula": "net = gross + algebraic_weight * contra",
+    "description": "Contra offset against gross account with weight -1.0; nets into target with V_NET modifier"
+  },
+  {
+    "relation_type": "DUAL_OF",
+    "algebraic_class": "ACCRUAL_BRIDGE",
+    "directionality": "BIDIRECTIONAL",
+    "is_computed": false,
+    "description": "Conservation bridge linking flow atom to corresponding balance sheet stock or backlog atom"
+  },
+  {
+    "relation_type": "DERIVED_FROM",
+    "algebraic_class": "FUNCTIONAL_DEPENDENCY",
+    "directionality": "DIRECTED",
+    "is_computed": false,
+    "description": "Intensity, coverage multiple, or margin metric derived via arithmetic expression over atom coordinates"
+  },
+  {
+    "relation_type": "PLACEMENT",
+    "algebraic_class": "GROUPING",
+    "directionality": "DIRECTED_ACYCLIC",
+    "is_computed": false,
+    "description": "Presentation grouping: source is presented under target in a statement tree; asserts co-presentation, not algebra. Evidence tier below calculation arcs; never derivation proof."
+  }
+]
