@@ -91,3 +91,28 @@ def test_reindexing_a_bundle_replaces_its_rows(taxonomy: DomainTaxonomy) -> None
     assert index_bundle(index, bundle, taxonomy, cik=cik) == first
     assert index.row_count() == first
     index.close()
+
+
+def test_index_bundles_records_a_malformed_bundle_and_continues(
+    taxonomy: DomainTaxonomy, tmp_path: Path
+) -> None:
+    """One malformed bundle fails its own filing; the batch completes."""
+    broken = tmp_path / "broken_2024_10k"
+    broken.mkdir()
+    bundles = (
+        (bundle_dir(_FOLDERS[0]), _identity(_FOLDERS[0])[0]),
+        (broken, "0000000000"),
+        (bundle_dir(_FOLDERS[1]), _identity(_FOLDERS[1])[0]),
+    )
+    index = CorpusIndex()
+    result = index_bundles(index, bundles, workers=2)
+    assert [failure.bundle for failure in result.failures] == ["broken_2024_10k"]
+    assert result.failures[0].error.startswith("FileNotFoundError")
+    assert result.rows_written > 0
+    for folder in _FOLDERS[:2]:
+        cik, accession = _identity(folder)
+        expected = rows_from_records(
+            cik, accession, load_facade(bundle_dir(folder), taxonomy).facts.records
+        )
+        assert index.rows_for_filing(cik, accession) == expected
+    index.close()
