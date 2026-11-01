@@ -13,6 +13,7 @@ lazy row-level polymorphic report projection (`as_report()`).
 
 - **Relational by default**: Filings cohorts are queried and exported as DataFrames rather than eager object graphs.
 - **Bounded facade cache**: `Edgar.xbrl()` revisits return the identical live facade from an LRU cache whose capacity derives from `derive_resources()`; eviction drops the whole kernel and the next miss re-parses the filing.
+- **Corpus coordinate index**: Ingest projects each facade's display records into the DuckDB corpus index verbatim; corpus search and comparison screening filter the index and materialize only surviving filings, ranking with the same ladder as per-facade search.
 - **Lazy row projection**: `FilingAggregate` models are hydrated on demand when indexing specific rows.
 - **Zero-copy analytical query**: DuckDB queries run directly over Parquet partitions in the artifact store.
 

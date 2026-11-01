@@ -23,6 +23,7 @@ from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 
 if TYPE_CHECKING:
     from edgar_sec.apps.client.facts import DisplayRecord
+    from edgar_sec.infra.storage.corpus_index import CorpusIndex
 
 _UNKNOWN_HEAD = "H_UNKNOWN"
 
@@ -196,11 +197,149 @@ def close_match_qnames(
     return frozenset(hit.qname for hit in result.hits)
 
 
+@dataclass(frozen=True, slots=True)
+class CorpusSearchHit:
+    """One concept ranked against a search target, with its filing.
+
+    The index counterpart of FactSearchHit: identical ranking fields,
+    no fact payload — a hit names a filing to materialize, not a fact.
+    """
+
+    cik: str
+    accession: str
+    qname: str
+    atom: Atom
+    tier: str
+    rule: str
+    modifier_distance: int
+    target_only: tuple[str, ...]
+    hit_only: tuple[str, ...]
+    swapped: tuple[str, str] | None
+    residual_mass: tuple[int, int]
+
+
+@dataclass(frozen=True, slots=True)
+class CorpusSearch:
+    """A corpus search's outcome: the resolved target and its ranked hits.
+
+    Hits are grouped by filing in (cik, accession) order, each filing's
+    hits in the same ladder order a per-facade search would return.
+    """
+
+    term: str
+    target_atom: Atom | None
+    term_residuals: tuple[str, ...] = ()
+    partial: bool = False
+    hits: tuple[CorpusSearchHit, ...] = ()
+
+
+def _corpus_rank_key(hit: CorpusSearchHit) -> tuple:
+    """Ladder order within one filing: tier, distance, residual mass, qname."""
+    intent, total = hit.residual_mass
+    return (
+        0 if hit.tier == EXACT else 1,
+        hit.modifier_distance,
+        intent,
+        total,
+        hit.qname,
+    )
+
+
+def _rank_index_hits(
+    index: CorpusIndex,
+    targets: Sequence[Atom],
+    taxonomy: DomainTaxonomy,
+    *,
+    limit: int | None,
+) -> tuple[CorpusSearchHit, ...]:
+    """Rank index rows against target atoms, filing by filing.
+
+    Only same-head rows can classify as related, so the index read is
+    the screening step; ranking reuses the live ladder verbatim.
+    """
+    heads = tuple(sorted({target.head for target in targets}))
+    by_filing: dict[tuple[str, str], list] = {}
+    for row in index.rows_for_heads(heads):
+        by_filing.setdefault((row.cik, row.accession), []).append(row)
+    groups = tuple(taxonomy.sibling_groups) or None
+    hits: list[CorpusSearchHit] = []
+    for (cik, accession), filing_rows in sorted(by_filing.items()):
+        candidates = tuple(
+            sorted(
+                (row.concept_qname, Atom(row.head, frozenset(row.modifiers)))
+                for row in filing_rows
+            )
+        )
+        counts = {
+            row.concept_qname: (row.residual_intent, row.residual_total)
+            for row in filing_rows
+        }
+        best: dict[str, CorpusSearchHit] = {}
+        for target in targets:
+            ranked = rank_equivalents(
+                "",
+                target,
+                candidates,
+                (),
+                sibling_groups=groups,
+                residual_counts=counts,
+            )
+            for item in ranked:
+                diff = coordinate_diff(target, item.atom, item.rule)
+                hit = CorpusSearchHit(
+                    cik=cik,
+                    accession=accession,
+                    qname=item.qname,
+                    atom=item.atom,
+                    tier=item.tier,
+                    rule=item.rule,
+                    modifier_distance=item.modifier_distance,
+                    target_only=diff.target_only,
+                    hit_only=diff.candidate_only,
+                    swapped=diff.swapped,
+                    residual_mass=counts[item.qname],
+                )
+                current = best.get(item.qname)
+                if current is None or _corpus_rank_key(hit) < _corpus_rank_key(current):
+                    best[item.qname] = hit
+        ranked_hits = sorted(best.values(), key=_corpus_rank_key)
+        hits.extend(ranked_hits if limit is None else ranked_hits[:limit])
+    return tuple(hits)
+
+
+def search_index(
+    index: CorpusIndex,
+    term: str,
+    taxonomy: DomainTaxonomy,
+    *,
+    limit: int | None = None,
+) -> CorpusSearch:
+    """Search the corpus index for close matches to a term.
+
+    Screening only: hits rank by the per-facade ladder and name the
+    filings worth materializing; no facade is constructed.
+    """
+    targets, residuals = resolve_search_targets(term, taxonomy)
+    usable = tuple(atom for atom in targets if atom.head != _UNKNOWN_HEAD)
+    partial = bool(residuals) or len(usable) != len(targets)
+    hits = _rank_index_hits(index, usable, taxonomy, limit=limit) if usable else ()
+    return CorpusSearch(
+        term=term,
+        target_atom=targets[0] if len(targets) == 1 else None,
+        term_residuals=residuals,
+        partial=partial,
+        hits=hits,
+    )
+
+
 __all__ = [
+    "CorpusSearch",
+    "CorpusSearchHit",
     "FactSearch",
     "FactSearchHit",
     "close_match_qnames",
     "rank_search_hits",
     "resolve_search_targets",
     "search_facts",
+    "search_index",
 ]

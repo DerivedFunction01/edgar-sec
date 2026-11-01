@@ -57,6 +57,11 @@ system and no table registry.
   `validate_part_paths` is the boundary check that runs first, because a
   recorded path is interpolated into SQL and a manifest is a file on disk that
   anyone can edit.
+- **The corpus index stores coordinates, not semantics.** `corpus_index.py`
+  owns the `concept_coordinates` DuckDB schema and its screening filters;
+  rows arrive as caller-derived plain data (cik, accession, concept, head,
+  modifiers, residual mass, item type), are replaced per filing on
+  re-ingest, and gain no equivalence meaning in this package.
 - **A document has one identity.** The catalog materialization SQL mints
   `document_locator_key` and `occurrence_id` as digests of accession, document
   path, and source CIK, and the document-storage chunk writer derives the same

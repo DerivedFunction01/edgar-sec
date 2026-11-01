@@ -5,11 +5,14 @@ from __future__ import annotations
 from collections import Counter
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from edgar_sec.apps.client.markdown import comparison_to_markdown
 from edgar_sec.apps.client.rendering import render_comparison_table
 from edgar_sec.engine.xbrl.solve.query import QueryStatus
+
+if TYPE_CHECKING:
+    from edgar_sec.infra.storage.corpus_index import CorpusIndex
 
 
 @dataclass(frozen=True, slots=True)
@@ -203,24 +206,54 @@ def panel_query(
     return PanelResult(term=term, rows=tuple(rows))
 
 
+def _metric_specs(
+    metrics: Sequence[str | SubspaceMetric] | None,
+) -> list[SubspaceMetric]:
+    """Resolve metric keys and specs to the canonical metric definitions."""
+    if metrics is None:
+        return list(DEFAULT_METRICS)
+    specs: list[SubspaceMetric] = []
+    metric_map = {m.key: m for m in DEFAULT_METRICS}
+    for m in metrics:
+        if isinstance(m, SubspaceMetric):
+            specs.append(m)
+        elif m in metric_map:
+            specs.append(metric_map[m])
+        else:
+            specs.append(SubspaceMetric(m, m.replace("_", " ").title(), "H_INCOME"))
+    return specs
+
+
+def screen_filings(
+    index: CorpusIndex,
+    metrics: Sequence[str | SubspaceMetric] | None = None,
+) -> dict[str, tuple[tuple[str, str], ...]]:
+    """Candidate filings per metric, screened against the corpus index.
+
+    A filing is listed when an index row sits at the metric's head with
+    modifiers covering the metric's; materializing it decides the value.
+    """
+    screened: dict[str, tuple[tuple[str, str], ...]] = {}
+    for spec in _metric_specs(metrics):
+        rows = index.rows_at_coordinate(spec.head, tuple(sorted(spec.modifiers)))
+        screened[spec.key] = tuple(sorted({(row.cik, row.accession) for row in rows}))
+    return screened
+
+
+def screen_peers(
+    index: CorpusIndex, cik: str, accession: str
+) -> tuple[tuple[str, str], ...]:
+    """Filings sharing at least one exact coordinate with one filing."""
+    return index.peer_filings(cik, accession)
+
+
 def compare_companies(
     companies: Sequence[Any],
     metrics: Sequence[str | SubspaceMetric] | None = None,
     year: int | str | None = None,
 ) -> ComparisonView:
     """Compare multiple XBRL filings across canonical coordinate subspaces and margins."""
-    specs: list[SubspaceMetric] = []
-    if metrics is None:
-        specs = list(DEFAULT_METRICS)
-    else:
-        metric_map = {m.key: m for m in DEFAULT_METRICS}
-        for m in metrics:
-            if isinstance(m, SubspaceMetric):
-                specs.append(m)
-            elif m in metric_map:
-                specs.append(metric_map[m])
-            else:
-                specs.append(SubspaceMetric(m, m.replace("_", " ").title(), "H_INCOME"))
+    specs = _metric_specs(metrics)
 
     standard = {m.key: m for m in DEFAULT_METRICS}
     needed: dict[str, SubspaceMetric] = {}
