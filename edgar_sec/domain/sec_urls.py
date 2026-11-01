@@ -18,6 +18,10 @@ SEC_ARCHIVE_BASE = "https://www.sec.gov/Archives/edgar/data"
 
 CIK_PADDED_WIDTH = 10
 
+# EDGAR generates this document in every interactive-data filing
+# directory; its InputFiles section names the filing's XBRL members.
+FILING_SUMMARY_DOCUMENT = "FilingSummary.xml"
+
 
 def normalize_cik(cik: str | int) -> str:
     """Return ``cik`` as the zero-padded ten-digit string EDGAR expects."""
@@ -317,11 +321,24 @@ def full_submission_url_for(archive_cik: str, accession: str) -> str:
     return archives_url(int(archive_cik), canonical, f"{dashed}.txt")
 
 
+def xbrl_package_url_for(archive_cik: str, accession: str) -> str:
+    """Build the EDGAR-generated XBRL package ``-xbrl.zip`` URL for an accession.
+
+    Example: ``.../data/320193/000032019320000096/0000320193-20-000096-xbrl.zip``
+    """
+    canonical = normalize_accession(accession)
+    if canonical is None:
+        raise ValueError(f"accession must be canonicalizable: {accession!r}")
+    dashed = accession_hyphenated(canonical)
+    return archives_url(int(archive_cik), canonical, f"{dashed}-xbrl.zip")
+
+
 __all__ = [
     "CIK_PADDED_WIDTH",
     "SEC_ARCHIVE_BASE",
     "SEC_SUBMISSIONS_BASE",
     "DEFAULT_ARCHIVE_URL_POLICY",
+    "FILING_SUMMARY_DOCUMENT",
     "ArchiveUrlPolicy",
     "ArchiveUrlParts",
     "accession_hyphenated",
@@ -336,4 +353,5 @@ __all__ = [
     "resolve_sec_href",
     "submissions_url",
     "validate_archive_url",
+    "xbrl_package_url_for",
 ]

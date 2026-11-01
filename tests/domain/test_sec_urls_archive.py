@@ -5,6 +5,7 @@ from __future__ import annotations
 import pytest
 
 from edgar_sec.domain.sec_urls import (
+    FILING_SUMMARY_DOCUMENT,
     ArchiveUrlPolicy,
     accession_hyphenated,
     archives_url,
@@ -14,6 +15,7 @@ from edgar_sec.domain.sec_urls import (
     resolve_archive_href,
     resolve_sec_href,
     validate_archive_url,
+    xbrl_package_url_for,
 )
 
 ARCHIVE_URL = (
@@ -218,3 +220,25 @@ def test_full_submission_url_for() -> None:
 def test_full_submission_url_rejects_a_bad_accession() -> None:
     with pytest.raises(ValueError):
         full_submission_url_for("320193", "nope")
+
+
+def test_xbrl_package_url_for() -> None:
+    expected = (
+        "https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/"
+        "0000320193-20-000096-xbrl.zip"
+    )
+    assert xbrl_package_url_for("320193", "0000320193-20-000096") == expected
+    assert xbrl_package_url_for("0000320193", "000032019320000096") == expected
+
+
+def test_xbrl_package_url_rejects_a_bad_accession() -> None:
+    with pytest.raises(ValueError):
+        xbrl_package_url_for("320193", "nope")
+
+
+def test_filing_summary_document_builds_the_probed_url() -> None:
+    assert FILING_SUMMARY_DOCUMENT == "FilingSummary.xml"
+    assert archives_url(320193, "0000320193-20-000096", FILING_SUMMARY_DOCUMENT) == (
+        "https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/"
+        "FilingSummary.xml"
+    )
