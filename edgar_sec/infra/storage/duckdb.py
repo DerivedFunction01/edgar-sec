@@ -176,9 +176,32 @@ def copy_query_to_parquet(
     return count_parquet_rows(path)
 
 
+def _drain_open_result(con: object) -> None:
+    """Close an unfinished ``execute()`` result on ``con``, if one is open.
+
+    DuckDB 2.0's relation entry points refuse such a connection;
+    ``complete()`` exists only on 2.0, so the guard is a no-op on 1.5.6.
+    """
+    complete = getattr(con, "complete", None)
+    if complete is not None:
+        complete()
+
+
+def _drain_relation(relation: Relation) -> None:
+    """Drain the open ``execute()`` result on ``relation``'s connection.
+
+    The connection is reachable as ``_con`` only on 2.0 — the version whose
+    materialization checks for an open result — so the guard suffices.
+    """
+    con = getattr(relation, "_con", None)
+    if con is not None:
+        _drain_open_result(con)
+
+
 def relation_table(relation: Relation, *, schema: pa.Schema | None = None) -> pa.Table:
     """Return a relation's Arrow table; with ``schema``, cast to the declared
     schema, absorbing the export's nullability drop on DuckDB 2.0."""
+    _drain_relation(relation)
     table = relation.to_arrow_table()
     return cast_table(table, schema) if schema is not None else table
 
@@ -191,6 +214,7 @@ def relation_reader(
 ) -> pa.RecordBatchReader:
     """Return a relation's streaming Arrow reader; the batch size defaults
     from the runtime settings seam, and ``schema`` casts each batch."""
+    _drain_relation(relation)
     reader = relation.to_arrow_reader(batch_size=resolve_read_batch_size(batch_size))
     if schema is None:
         return reader
@@ -207,6 +231,7 @@ def arrow_table(
     """Return ``query``'s Arrow table through the relation form, the portable
     export on both DuckDB versions (the ``execute()`` form copies and warns on
     2.0); with ``schema``, cast to it, absorbing the export's nullability drop."""
+    _drain_open_result(con)
     relation = con.sql(query, params=params) if params is not None else con.sql(query)
     return relation_table(relation, schema=schema)
 
@@ -222,6 +247,7 @@ def arrow_reader(
     """Return ``query``'s streaming Arrow reader through the relation form; the
     batch size defaults from the runtime settings seam. The reader holds an open
     result on ``con`` — drain it before executing on ``con`` again (2.0 enforces)."""
+    _drain_open_result(con)
     relation = con.sql(query, params=params) if params is not None else con.sql(query)
     return relation_reader(relation, batch_size, schema=schema)
 

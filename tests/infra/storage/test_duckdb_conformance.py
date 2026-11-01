@@ -19,6 +19,7 @@ from edgar_sec.infra.storage.duckdb import (
     arrow_table,
     connect,
     copy_query_to_parquet,
+    relation_table,
 )
 
 _PACKAGE_ROOT = Path(edgar_sec.__file__).parent
@@ -112,6 +113,32 @@ def test_helper_export_carries_no_copy_warning(tmp_path: Path) -> None:
             assert [batch.num_rows for batch in reader] == [1]
     assert table.to_pylist() == [{"value": 1}]
     assert not [warning for warning in recorded if "extra copy" in str(warning.message)]
+
+
+def test_helpers_after_bare_execute_with_unfinished_result() -> None:
+    """Bare execute() DDL plus a fetchone() aggregate leaves an unfinished
+    result; the helpers drain it and still see the temp objects (2.0)."""
+    with connect() as con:
+        con.execute("CREATE TEMP TABLE staged (value INTEGER)")
+        con.execute("INSERT INTO staged VALUES (1), (2)")
+        con.execute("CREATE OR REPLACE TEMP VIEW staged_view AS SELECT * FROM staged")
+        assert con.execute("SELECT count(*) FROM staged").fetchone()[0] == 2
+        table = arrow_table(con, "SELECT value FROM staged_view ORDER BY value")
+        assert table.to_pylist() == [{"value": 1}, {"value": 2}]
+        assert con.execute("SELECT count(*) FROM staged").fetchone()[0] == 2
+        reader = arrow_reader(con, "SELECT value FROM staged ORDER BY value")
+        assert reader.read_all().to_pylist() == [{"value": 1}, {"value": 2}]
+
+
+def test_relation_table_after_bare_execute_with_unfinished_result() -> None:
+    """A relation built before a bare execute() left its result unfinished
+    still materializes through relation_table (the check fires at execution)."""
+    with connect() as con:
+        con.execute("CREATE TEMP TABLE staged (value INTEGER)")
+        con.execute("INSERT INTO staged VALUES (3)")
+        relation = con.sql("SELECT value FROM staged")
+        assert con.execute("SELECT count(*) FROM staged").fetchone()[0] == 1
+        assert relation_table(relation).to_pylist() == [{"value": 3}]
 
 
 def test_python_lambda_form_executes() -> None:

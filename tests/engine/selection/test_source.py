@@ -55,7 +55,7 @@ def test_query_results_are_consumed_one_arrow_batch_at_a_time(
             return batches()
 
     class Connection:
-        def execute(self, query: str, params: list[Any]) -> Result:
+        def sql(self, query: str, params: list[Any] | None = None) -> Result:
             return Result()
 
     source = _source(snapshot_dir)
