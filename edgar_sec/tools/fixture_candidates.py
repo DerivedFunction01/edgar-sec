@@ -1,7 +1,7 @@
 """Gather fixture candidates by scoring catalog filings for tagged content.
 
-Plans shards from the filing catalog, scores each candidate's EX-101
-payload by taxonomy, and writes a ranked candidate registry.
+A JSON config names the screens, sample size, and content floor; the
+plan is generated from the filing catalog wherever the run executes.
 """
 
 from __future__ import annotations
@@ -59,8 +59,8 @@ _INSTANCE_SUFFIXES = ("_lab.xml", "_pre.xml", "_cal.xml", "_def.xml")
 class Screen:
     """One gathering screen: a catalog filter plus phrasing evidence.
 
-    The form set is resolved from the catalog, never named here: the
-    amendment forms of whichever families carry the required item.
+    A null form set is resolved from the catalog: the amendment forms
+    of whichever families carry the required item.
     """
 
     name: str
@@ -68,6 +68,7 @@ class Screen:
     phrasings: tuple[str, ...]
     year_start: int
     year_end: int
+    forms: tuple[str, ...] | None = None
 
 
 SCREENS = {
@@ -85,8 +86,21 @@ SCREENS = {
 }
 
 
-def _catalog_parts() -> list[Path]:
-    """Parquet parts of the current metadata snapshot (the filing catalog)."""
+def _catalog_parts(catalog_dir: Path | None = None) -> list[Path]:
+    """Parquet parts of the filing catalog, defaulting to the local snapshot.
+
+    An explicit directory may hold parts directly, under parts/, or
+    in the snapshot layout (*/parts/*.parquet).
+    """
+    if catalog_dir is not None:
+        parts = (
+            sorted(catalog_dir.glob("*.parquet"))
+            or sorted(catalog_dir.glob("parts/*.parquet"))
+            or sorted(catalog_dir.glob("*/parts/*.parquet"))
+        )
+        if not parts:
+            raise FileNotFoundError(f"no catalog parquet parts under {catalog_dir}")
+        return parts
     snapshots = resolve_paths().artifacts_root / "metadata" / "snapshots"
     parts = sorted(snapshots.glob("*/parts/*.parquet"))
     if not parts:
@@ -107,12 +121,15 @@ def _band_label(year: int) -> str:
     return "out-of-range"
 
 
-def _population(screen: Screen) -> list[dict[str, Any]]:
+def _population(
+    screen: Screen, catalog_dir: Path | None = None
+) -> list[dict[str, Any]]:
     """Screen candidates from the catalog, ordered for deterministic shards.
 
-    The form set is resolved from the item's carriers, never named here.
+    A screen naming forms keeps exactly those; otherwise the form set
+    is the amendment forms of the item's carrier families.
     """
-    parts = [str(p) for p in _catalog_parts()]
+    parts = [str(p) for p in _catalog_parts(catalog_dir)]
     seeds = _seed_ciks()
     sql = f"""
         SELECT cik, identity.name AS filer, f.accession_number AS accession,
@@ -131,8 +148,11 @@ def _population(screen: Screen) -> list[dict[str, Any]]:
         rows = con.execute(sql).fetchall()
         cols = [d[0] for d in con.description]
     records = [dict(zip(cols, row, strict=True)) for row in rows]
-    families = {form_family(record["form"]) for record in records}
-    amendments = {f"{family}/A" for family in families}
+    if screen.forms is not None:
+        amendments = set(screen.forms)
+    else:
+        families = {form_family(record["form"]) for record in records}
+        amendments = {f"{family}/A" for family in families}
     out = []
     for record in records:
         if record["form"] not in amendments:
@@ -144,9 +164,9 @@ def _population(screen: Screen) -> list[dict[str, Any]]:
     return out
 
 
-def _catalog_context() -> dict[str, Any]:
+def _catalog_context(catalog_dir: Path | None = None) -> dict[str, Any]:
     """Whole-catalog totals, so a screen's cost is visible against all of it."""
-    parts = [str(p) for p in _catalog_parts()]
+    parts = [str(p) for p in _catalog_parts(catalog_dir)]
     flat = f"(SELECT unnest(filings) AS f FROM read_parquet({sql_path_list(parts)}))"
     with connect() as con:
         ciks = con.execute(
@@ -208,10 +228,35 @@ def _shards(screen: Screen, population: list[dict[str, Any]]) -> list[dict[str, 
     return shards
 
 
-def build_plan(screen: Screen) -> dict[str, Any]:
+def _sample(
+    population: list[dict[str, Any]], sample_size: int | None
+) -> tuple[list[dict[str, Any]], dict[str, Any] | None]:
+    """A deterministic even-stride sample spanning the ordered population."""
+    if sample_size is None or sample_size >= len(population):
+        return population, None
+    if sample_size < 1:
+        raise ValueError("sample_size must be a positive integer or null")
+    stride = len(population) / sample_size
+    taken = [population[int(i * stride)] for i in range(sample_size)]
+    return taken, {
+        "requested": sample_size,
+        "population": len(population),
+        "taken": len(taken),
+    }
+
+
+def build_plan(
+    screen: Screen,
+    *,
+    sample_size: int | None = None,
+    floor: int = SUBSTANTIAL_US_GAAP_FLOOR,
+    prefer_seed: bool = True,
+    catalog_dir: Path | None = None,
+) -> dict[str, Any]:
     """The execution plan for one screen, generated from the catalog."""
-    population = _population(screen)
-    shards = _shards(screen, population)
+    population = _population(screen, catalog_dir)
+    planned, sample = _sample(population, sample_size)
+    shards = _shards(screen, planned)
     return {
         "screen": {
             "name": screen.name,
@@ -220,11 +265,14 @@ def build_plan(screen: Screen) -> dict[str, Any]:
             "phrasings": list(screen.phrasings),
             "years": [screen.year_start, screen.year_end],
         },
-        "floor_us_gaap_facts": SUBSTANTIAL_US_GAAP_FLOOR,
+        "floor_us_gaap_facts": floor,
+        "seed_filer_preference": prefer_seed,
+        "sample": sample,
         "rate_cap_rps": DEFAULT_RATE_LIMIT_RPS,
-        "catalog": _catalog_context(),
+        "catalog": _catalog_context(catalog_dir),
         "totals": {
-            "candidates": len(population),
+            "population": len(population),
+            "candidates": len(planned),
             "shards": len(shards),
             "estimated_requests": sum(s["estimated_requests"] for s in shards),
             "estimated_seconds_at_cap": round(
@@ -331,9 +379,11 @@ def _instance_name(names: list[str], primary: str, *, inline: bool) -> str | Non
     return None
 
 
-def _score_candidate(task: tuple[dict[str, Any], tuple[str, ...]]) -> dict[str, Any]:
+def _score_candidate(
+    task: tuple[dict[str, Any], tuple[str, ...], int],
+) -> dict[str, Any]:
     """Score one candidate: index fetch, instance fetch, fact counts."""
-    record, phrasings = task
+    record, phrasings, floor = task
     row = {
         key: record[key]
         for key in (
@@ -387,7 +437,7 @@ def _score_candidate(task: tuple[dict[str, Any], tuple[str, ...]]) -> dict[str, 
             text = _CLIENT.get_text(record["archive_url"])
         elif record["is_inline_xbrl"]:
             text = payload.decode("utf-8", "ignore")
-        elif (row["us_gaap_facts"] or 0) >= SUBSTANTIAL_US_GAAP_FLOOR:
+        elif (row["us_gaap_facts"] or 0) >= floor:
             text = _CLIENT.get_text(record["archive_url"])
         if text is not None:
             row["phrasing_checked"] = True
@@ -411,6 +461,18 @@ def _scored_accessions(path: Path) -> set[str]:
     return done
 
 
+def _screen_from_plan(plan: dict[str, Any]) -> Screen:
+    """The screen a plan was generated for, rebuilt from the plan itself."""
+    block = plan["screen"]
+    return Screen(
+        name=block["name"],
+        required_item=block["required_item"],
+        phrasings=tuple(block["phrasings"]),
+        year_start=block["years"][0],
+        year_end=block["years"][1],
+    )
+
+
 def run_shards(
     plan: dict[str, Any],
     *,
@@ -421,7 +483,9 @@ def run_shards(
     accessions: set[str] | None = None,
 ) -> dict[str, Any]:
     """Score the plan's shards, checkpointing each shard as it completes."""
-    screen = SCREENS[plan["screen"]["name"]]
+    screen = _screen_from_plan(plan)
+    floor = plan.get("floor_us_gaap_facts", SUBSTANTIAL_US_GAAP_FLOOR)
+    prefer_seed = plan.get("seed_filer_preference", True)
     summary = {"shards_completed": 0, "candidates_scored": 0}
     for shard in plan["shards"]:
         if shard_ids is not None and shard["shard_id"] not in shard_ids:
@@ -436,7 +500,7 @@ def run_shards(
             and (accessions is None or record["accession"] in accessions)
         ]
         if todo:
-            tasks = [(record, screen.phrasings) for record in todo]
+            tasks = [(record, screen.phrasings, floor) for record in todo]
             with (
                 path.open("a", encoding="utf-8") as sink,
                 ProcessPoolExecutor(
@@ -448,7 +512,13 @@ def run_shards(
                     sink.flush()
                     summary["candidates_scored"] += 1
         summary["shards_completed"] += 1
-        build_registry(work_dir, registry_path, screen_name=screen.name)
+        build_registry(
+            work_dir,
+            registry_path,
+            screen_name=screen.name,
+            floor=floor,
+            prefer_seed=prefer_seed,
+        )
     return summary
 
 
@@ -458,11 +528,12 @@ def build_registry(
     *,
     screen_name: str,
     floor: int = SUBSTANTIAL_US_GAAP_FLOOR,
+    prefer_seed: bool = True,
 ) -> dict[str, Any]:
     """Merge checkpoints into the ranked registry of substantial candidates.
 
-    Seed-filer candidates rank first; within a tier, higher us-gaap
-    substance ranks first. Counts ride on every row for re-thresholding.
+    With seed preference, seed-filer candidates rank first; within a
+    tier, higher us-gaap substance ranks first. Counts ride on rows.
     """
     rows: dict[str, dict[str, Any]] = {}
     checkpoint_dir = work_dir / "checkpoints"
@@ -479,12 +550,16 @@ def build_registry(
         and row["us_gaap_facts"] >= floor
         and row["screen"] == screen_name
     ]
-    substantial.sort(
-        key=lambda r: (not r["seed_filer"], -r["us_gaap_facts"], r["filing_date"])
-    )
+    if prefer_seed:
+        substantial.sort(
+            key=lambda r: (not r["seed_filer"], -r["us_gaap_facts"], r["filing_date"])
+        )
+    else:
+        substantial.sort(key=lambda r: (-r["us_gaap_facts"], r["filing_date"]))
     registry = {
         "screen": screen_name,
         "floor_us_gaap_facts": floor,
+        "seed_filer_preference": prefer_seed,
         "scored_candidates": len(rows),
         "candidates": [
             {
@@ -512,6 +587,85 @@ def build_registry(
     return registry
 
 
+def screen_from_config(entry: dict[str, Any]) -> Screen:
+    """One config screen entry as a Screen; years default to 2011-2026."""
+    if "name" not in entry or "required_item" not in entry:
+        raise ValueError("each config screen needs a name and a required_item")
+    years = entry.get("years") or [2011, 2026]
+    forms = entry.get("forms")
+    return Screen(
+        name=entry["name"],
+        required_item=entry["required_item"],
+        phrasings=tuple(entry.get("phrasings") or ()),
+        year_start=int(years[0]),
+        year_end=int(years[1]),
+        forms=tuple(forms) if forms else None,
+    )
+
+
+def load_config(path: Path) -> dict[str, Any]:
+    """Load and normalize the gathering config JSON, filling defaults."""
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    screens = raw.get("screens")
+    if not screens:
+        raise ValueError("config needs a non-empty screens list")
+    for entry in screens:
+        screen_from_config(entry)
+    outputs = {
+        "plan": "gathering-plan-{screen}.json",
+        "registry": "fixture-candidates-{screen}.json",
+    }
+    outputs.update(raw.get("outputs") or {})
+    return {
+        "screens": screens,
+        "sample_size": raw.get("sample_size"),
+        "floor_us_gaap_facts": raw.get(
+            "floor_us_gaap_facts", SUBSTANTIAL_US_GAAP_FLOOR
+        ),
+        "seed_filer_preference": raw.get("seed_filer_preference", True),
+        "outputs": outputs,
+    }
+
+
+def gather(
+    config: dict[str, Any],
+    *,
+    work_dir: Path,
+    out_dir: Path,
+    catalog_dir: Path | None = None,
+    workers: int,
+) -> dict[str, Any]:
+    """Run a whole config: plan each screen on the local catalog, then score.
+
+    The plan is generated here, where the run executes, from the
+    catalog beside it; only the config travels to the run.
+    """
+    out_dir.mkdir(parents=True, exist_ok=True)
+    results: dict[str, Any] = {}
+    for entry in config["screens"]:
+        screen = screen_from_config(entry)
+        plan = build_plan(
+            screen,
+            sample_size=config["sample_size"],
+            floor=config["floor_us_gaap_facts"],
+            prefer_seed=config["seed_filer_preference"],
+            catalog_dir=catalog_dir,
+        )
+        plan_path = out_dir / config["outputs"]["plan"].replace("{screen}", screen.name)
+        atomic_write_json(plan_path, plan)
+        registry_path = out_dir / config["outputs"]["registry"].replace(
+            "{screen}", screen.name
+        )
+        summary = run_shards(
+            plan,
+            work_dir=work_dir,
+            registry_path=registry_path,
+            workers=workers,
+        )
+        results[screen.name] = {**summary, "totals": plan["totals"]}
+    return results
+
+
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="fixture_candidates")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -530,11 +684,17 @@ def _build_parser() -> argparse.ArgumentParser:
     reg.add_argument("--work-dir", type=Path, required=True)
     reg.add_argument("--out", type=Path, required=True)
     reg.add_argument("--floor", type=int, default=SUBSTANTIAL_US_GAAP_FLOOR)
+    gat = sub.add_parser("gather", help="Plan and score every screen in a config JSON.")
+    gat.add_argument("--config", type=Path, required=True)
+    gat.add_argument("--work-dir", type=Path, required=True)
+    gat.add_argument("--out-dir", type=Path, required=True)
+    gat.add_argument("--catalog-dir", type=Path, default=None)
+    gat.add_argument("--workers", type=int, default=derive_resources().workers)
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
-    """CLI entrypoint: plan from the catalog, run shards, rebuild registry."""
+    """CLI entrypoint: plan, run, registry, and the config-driven gather."""
     args = _build_parser().parse_args(argv)
     started = time.time()
     if args.command == "plan":
@@ -566,6 +726,18 @@ def main(argv: list[str] | None = None) -> int:
             accessions=set(args.accessions) if args.accessions else None,
         )
         print(json.dumps({**summary, "seconds": round(time.time() - started, 1)}))
+        return 0
+    if args.command == "gather":
+        results = gather(
+            load_config(args.config),
+            work_dir=args.work_dir,
+            out_dir=args.out_dir,
+            catalog_dir=args.catalog_dir,
+            workers=max(1, args.workers),
+        )
+        print(
+            json.dumps({"screens": results, "seconds": round(time.time() - started, 1)})
+        )
         return 0
     registry = build_registry(
         args.work_dir, args.out, screen_name=args.screen, floor=args.floor
