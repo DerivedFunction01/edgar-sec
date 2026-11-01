@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 
+from edgar_sec.domain.forms.common.entities import PHONE_LABEL_TERMS
 from edgar_sec.domain.forms.families.beneficial_ownership.identifiers import (
     CUSIP_UNAVAILABLE_POLICY,
 )
@@ -92,9 +93,7 @@ _WHITESPACE_RE = re.compile(r"\s+")
 _TABLE_MARKUP_RE = re.compile(r"(?i)^\s*</?TABLE>\s*$")
 _ATTENTION_RE = re.compile(r"(?i)^\s*ATTENTION\s*:\s*(?P<name>.+?)\s*$")
 _COPY_TO_RE = re.compile(r"(?i)^\s*(?:WITH\s+)?COPY\s+TO\s*:?\s*$")
-_PHONE_LABEL_ALT = build_alternation(
-    ("TEL", "TELEPHONE", "PHONE"), auto_escape=True, compact=True
-)
+_PHONE_LABEL_ALT = build_alternation(PHONE_LABEL_TERMS, auto_escape=True, compact=True)
 _RE_PHONE_LABEL = re.compile(rf"(?i)\b(?:{_PHONE_LABEL_ALT})\.?\s*(?:NO\.?)?:?\s*$")
 _ADDRESS_START_ALT = build_alternation(
     (r"\d{1,5}\s+[A-Z]", r"P\.?\s*O\.?\s+BOX\b", r"LEVEL\s+\d+\b"),

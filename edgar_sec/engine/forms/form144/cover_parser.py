@@ -30,7 +30,6 @@ from edgar_sec.engine.forms.common.tables import (
     parse_address_parts,
 )
 from edgar_sec.engine.forms.form144.patterns import (
-    PHONE_RE,
     SEC_FILE_BARE_RE,
     SEC_FILE_LABEL_RE,
 )
@@ -443,7 +442,7 @@ def parse_cover_box_1_2(
         phone_text = " ".join(
             lower_row.replace("area code", "").replace("number", "").split()
         )
-        phone_match = PHONE_RE.search(phone_text)
+        phone_match = PHONE_NUMBER_RE.search(phone_text)
         if phone_match and not phone:
             phone = phone_match.group(0)
 

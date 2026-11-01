@@ -22,7 +22,6 @@ SEC_FILE_LABEL_RE = re.compile(
     re.IGNORECASE,
 )
 SEC_FILE_BARE_RE = re.compile(r"\b([0-9]{1,3}-[0-9]{4,7})\b")
-PHONE_RE = re.compile(r"\(?\b\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}\b")
 _NOTICE_DATE_PAT = rf"({RE_FULL_DATE.pattern}|{NUMERIC_DATE_RE.pattern})"
 NOTICE_DATE_LABEL_RE = re.compile(
     rf"(?:(?:date of notice|date\s*:?)\s*[:\s]*{_NOTICE_DATE_PAT}|{_NOTICE_DATE_PAT}\s*date of notice)",
@@ -219,7 +218,6 @@ __all__ = [
     "COVER_HEADER_OR_SUBBOX_TERMS",
     "FORM144_NUMBERED_INSTRUCTION_RE",
     "NOTICE_DATE_LABEL_RE",
-    "PHONE_RE",
     "PLAN_ADOPTION_ALT",
     "PLAN_ADOPTION_RE",
     "PLAN_ADOPTION_TERMS",

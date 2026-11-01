@@ -8,6 +8,7 @@ import re
 from edgar_sec.domain.taxonomy.legal_forms import has_legal_form
 from edgar_sec.engine.forms.common.entities import (
     IRS_RE,
+    PHONE_NUMBER_RE,
     is_street_or_address_line,
     normalize_exchange_name,
 )
@@ -45,7 +46,6 @@ from edgar_sec.engine.forms.form144.patterns import (
     BOX_3D_MARKET_VALUE_RE,
     BOX_3D_TAIL_RE,
     BOX_3G_EXCHANGE_RE,
-    PHONE_RE,
     RELATIONSHIP_LABEL_RE,
     RELATIONSHIP_TAIL_RE,
     SEC_FILE_BARE_RE,
@@ -358,7 +358,7 @@ def _extract_cover_fields(lines: list[str], slots: Form144AsciiSlots) -> None:
 
         # 1(e) TELEPHONE NO.
         if not slots.issuer_phone and "telephone" in lower:
-            m_phone = PHONE_RE.search(line)
+            m_phone = PHONE_NUMBER_RE.search(line)
             if m_phone:
                 slots.issuer_phone = m_phone.group(0)
 
