@@ -174,12 +174,14 @@ class _StubClient:
         *,
         package: bytes | None = None,
         package_error: Exception | None = None,
+        extracted_error: Exception | None = None,
         index_names: list[str] | None = None,
         instance: bytes = b"",
         text: str = "",
     ):
         self.package = package
         self.package_error = package_error
+        self.extracted_error = extracted_error
         self.index_names = index_names or []
         self.instance = instance
         self.text = text
@@ -192,6 +194,8 @@ class _StubClient:
                 raise self.package_error
             assert self.package is not None
             return self.package
+        if url.endswith("_htm.xml") and self.extracted_error is not None:
+            raise self.extracted_error
         return self.instance
 
     def get_json(self, url: str) -> dict:
@@ -216,7 +220,7 @@ def _score(monkeypatch, client: _StubClient, record: dict, acquisition: str) -> 
     return _score_candidate((record, ("Item 9.01(a)",), 200, acquisition))
 
 
-def test_score_via_package_counts_the_instance_member(monkeypatch):
+def test_score_index_free_classic_counts_the_package_instance(monkeypatch):
     package = _package(
         {
             "a_ref.xml": b"<linkbase/>",
@@ -228,7 +232,7 @@ def test_score_via_package_counts_the_instance_member(monkeypatch):
     client = _StubClient(package=package, text="see Item 9.01(a) here")
     record = _record("0000000001-23-000001", 2023)
     record["is_inline_xbrl"] = False
-    row = _score(monkeypatch, client, record, "package")
+    row = _score(monkeypatch, client, record, "index-free")
     assert row["error"] is None
     assert row["source_path"] == "package"
     assert row["ex101_present"] is True
@@ -237,34 +241,54 @@ def test_score_via_package_counts_the_instance_member(monkeypatch):
     assert row["phrasing_matches"] == ["Item 9.01(a)"]
 
 
-def test_score_via_package_prefers_the_extracted_instance(monkeypatch):
-    package = _package({"doc_htm.xml": _INSTANCE, "a.xsd": b"<schema/>"})
-    client = _StubClient(package=package, text="plain text")
-    row = _score(monkeypatch, client, _record("0000000001-23-000001", 2023), "package")
-    assert row["source_path"] == "package"
-    assert row["total_facts"] == 3
-
-
-def test_score_package_absent_scores_no_instance_without_an_index_fetch(monkeypatch):
-    error = PermanentHttpError("u", "HTTP 404", 404)
-    client = _StubClient(package_error=error)
-    row = _score(monkeypatch, client, _record("0000000001-23-000001", 2023), "package")
+def test_score_index_free_inline_counts_the_extracted_instance(monkeypatch):
+    client = _StubClient(instance=_INSTANCE, text="see Item 9.01(a) here")
+    row = _score(
+        monkeypatch, client, _record("0000000001-23-000001", 2023), "index-free"
+    )
     assert row["error"] is None
-    assert row["source_path"] == "package-absent"
+    assert row["source_path"] == "extracted"
+    assert row["ex101_present"] is True
+    assert row["total_facts"] == 3
+    assert row["phrasing_matches"] == ["Item 9.01(a)"]
+    assert not any(url.endswith("-xbrl.zip") for url in client.urls)
+
+
+def test_score_absent_scores_no_instance_without_an_index_fetch(monkeypatch):
+    error = PermanentHttpError("u", "HTTP 404", 404)
+    classic = _record("0000000001-23-000001", 2023)
+    classic["is_inline_xbrl"] = False
+    package_client = _StubClient(package_error=error)
+    row = _score(monkeypatch, package_client, classic, "index-free")
+    assert row["error"] is None
+    assert row["source_path"] == "absent"
     assert row["total_facts"] is None
     assert row["ex101_present"] is False
-    assert not any("index.json" in url for url in client.urls)
+    extracted_client = _StubClient(extracted_error=error)
+    row = _score(
+        monkeypatch,
+        extracted_client,
+        _record("0000000001-23-000001", 2023),
+        "index-free",
+    )
+    assert row["error"] is None
+    assert row["source_path"] == "absent"
+    assert row["total_facts"] is None
+    for client in (package_client, extracted_client):
+        assert not any("index.json" in url for url in client.urls)
 
 
-def test_score_package_throttle_is_an_error_never_absence(monkeypatch):
+def test_score_throttle_is_an_error_never_absence(monkeypatch):
     error = RetryExhausted("u", "server error 503", 503)
+    record = _record("0000000001-23-000001", 2023)
+    record["is_inline_xbrl"] = False
     client = _StubClient(package_error=error)
-    row = _score(monkeypatch, client, _record("0000000001-23-000001", 2023), "package")
+    row = _score(monkeypatch, client, record, "index-free")
     assert row["error"] is not None
     assert row["source_path"] is None
 
 
-def test_score_index_mode_agrees_with_package_mode(monkeypatch):
+def test_score_index_mode_agrees_with_index_free_mode(monkeypatch):
     names = ["a.xsd", "a_lab.xml", "a_ref.xml", "a.xml"]
     record = _record("0000000001-23-000001", 2023)
     record["is_inline_xbrl"] = False
@@ -278,11 +302,27 @@ def test_score_index_mode_agrees_with_package_mode(monkeypatch):
         ),
         text="see Item 9.01(a) here",
     )
-    package_row = _score(monkeypatch, package_client, record, "package")
+    package_row = _score(monkeypatch, package_client, record, "index-free")
     assert index_row["source_path"] == "index"
     assert package_row["source_path"] == "package"
     for key in ("ex101_present", "total_facts", "us_gaap_facts", "phrasing_matches"):
         assert index_row[key] == package_row[key]
+
+
+def test_score_index_mode_agrees_on_an_inline_specimen(monkeypatch):
+    record = _record("0000000001-23-000001", 2023)
+    index_client = _StubClient(
+        index_names=["doc.htm", "doc_htm.xml", "a.xsd"],
+        instance=_INSTANCE,
+        text="see Item 9.01(a) here",
+    )
+    index_row = _score(monkeypatch, index_client, record, "index")
+    free_client = _StubClient(instance=_INSTANCE, text="see Item 9.01(a) here")
+    free_row = _score(monkeypatch, free_client, record, "index-free")
+    assert index_row["source_path"] == "index"
+    assert free_row["source_path"] == "extracted"
+    for key in ("ex101_present", "total_facts", "us_gaap_facts", "phrasing_matches"):
+        assert index_row[key] == free_row[key]
 
 
 def test_load_config_acquisition_modes(tmp_path: Path):
@@ -292,7 +332,7 @@ def test_load_config_acquisition_modes(tmp_path: Path):
         return path
 
     screens = [{"name": "x", "required_item": "9.01"}]
-    assert load_config(write({"screens": screens}))["acquisition"] == "package"
+    assert load_config(write({"screens": screens}))["acquisition"] == "index-free"
     explicit = load_config(write({"screens": screens, "acquisition": "index"}))
     assert explicit["acquisition"] == "index"
     with pytest.raises(ValueError, match="acquisition"):

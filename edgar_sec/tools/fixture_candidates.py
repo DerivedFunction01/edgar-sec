@@ -17,7 +17,7 @@ from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.domain.sec_urls import xbrl_package_url_for
+from edgar_sec.domain.sec_urls import archives_url, xbrl_package_url_for
 from edgar_sec.foundation.runtime.env import get_env
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.foundation.runtime.settings.sec import DEFAULT_RATE_LIMIT_RPS
@@ -184,17 +184,28 @@ def _score_via_index(
         row["phrasing_matches"] = [p for p in phrasings if p in text]
 
 
-def _score_via_package(
-    client: SecHttpClient,
-    record: dict[str, Any],
-    row: dict[str, Any],
-    phrasings: tuple[str, ...],
-) -> None:
-    """Score from the generated XBRL package: one fetch serves the candidate.
+def _extracted_instance(
+    client: SecHttpClient, record: dict[str, Any], row: dict[str, Any]
+) -> bytes | None:
+    """The filing's extracted instance, fetched by its constructed URL."""
+    stem = record["primary_document"].rsplit(".", 1)[0]
+    url = archives_url(int(record["cik"]), record["accession"], f"{stem}_htm.xml")
+    try:
+        payload = client.get_bytes(url)
+    except PermanentHttpError as exc:
+        if exc.status_code != 404:
+            raise
+        row["source_path"] = "absent"
+        return None
+    row["source_path"] = "extracted"
+    row["ex101_present"] = True
+    return payload
 
-    A 404 package means the filing carries no instance to score, so
-    the row keeps its no-instance defaults, marked package-absent.
-    """
+
+def _package_instance(
+    client: SecHttpClient, record: dict[str, Any], row: dict[str, Any]
+) -> bytes | None:
+    """The filing's standalone instance, read from its generated package."""
     try:
         payload = client.get_bytes(
             xbrl_package_url_for(record["cik"], record["accession"])
@@ -202,8 +213,8 @@ def _score_via_package(
     except PermanentHttpError as exc:
         if exc.status_code != 404:
             raise
-        row["source_path"] = "package-absent"
-        return
+        row["source_path"] = "absent"
+        return None
     row["source_path"] = "package"
     with zipfile.ZipFile(io.BytesIO(payload)) as package:
         members = {
@@ -216,18 +227,29 @@ def _score_via_package(
             name.lower().endswith(".xsd") or "_lab.xml" in name.lower()
             for name in names
         )
-        instance = _instance_name(
-            names, record["primary_document"], inline=bool(record["is_inline_xbrl"])
-        )
+        instance = _instance_name(names, record["primary_document"], inline=False)
         if instance is None:
-            return
-        instance_bytes = package.read(members[instance])
-    extracted = instance != record["primary_document"]
-    row.update(
-        count_facts(
-            instance_bytes, inline=bool(record["is_inline_xbrl"]) and not extracted
-        )
-    )
+            return None
+        return package.read(members[instance])
+
+
+def _score_index_free(
+    client: SecHttpClient,
+    record: dict[str, Any],
+    row: dict[str, Any],
+    phrasings: tuple[str, ...],
+) -> None:
+    """Score index-free: the constructed extraction for inline filings,
+    the generated package for classic ones; a 404 on either vehicle
+    scores the candidate as no-instance, marked absent.
+    """
+    if record["is_inline_xbrl"]:
+        payload = _extracted_instance(client, record, row)
+    else:
+        payload = _package_instance(client, record, row)
+    if payload is None:
+        return
+    row.update(count_facts(payload, inline=False))
     text = client.get_text(record["archive_url"])
     row["phrasing_checked"] = True
     row["phrasing_matches"] = [p for p in phrasings if p in text]
@@ -270,7 +292,7 @@ def _score_candidate(
         if acquisition == "index":
             _score_via_index(_CLIENT, record, row, phrasings, floor)
         else:
-            _score_via_package(_CLIENT, record, row, phrasings)
+            _score_index_free(_CLIENT, record, row, phrasings)
     except Exception as exc:  # noqa: BLE001 - a failed candidate is a row, not a stop
         row["error"] = f"{type(exc).__name__}: {exc}"
     return row
@@ -298,7 +320,7 @@ def run_shards(
     workers: int,
     shard_ids: set[str] | None = None,
     accessions: set[str] | None = None,
-    acquisition: str = "package",
+    acquisition: str = "index-free",
 ) -> dict[str, Any]:
     """Score the plan's shards, checkpointing each shard as it completes."""
     screen = _screen_from_plan(plan)
@@ -418,8 +440,8 @@ def load_config(path: Path) -> dict[str, Any]:
         "registry": "fixture-candidates-{screen}.json",
     }
     outputs.update(raw.get("outputs") or {})
-    acquisition = raw.get("acquisition", "package")
-    if acquisition not in ("package", "index"):
+    acquisition = raw.get("acquisition", "index-free")
+    if acquisition not in ("index-free", "index"):
         raise ValueError(f"acquisition must be package or index: {acquisition!r}")
     return {
         "screens": screens,
@@ -487,7 +509,7 @@ def _build_parser() -> argparse.ArgumentParser:
     run.add_argument("--workers", type=int, default=derive_resources().workers)
     run.add_argument("--shards", nargs="*", default=None)
     run.add_argument("--accessions", nargs="*", default=None)
-    run.add_argument("--acquisition", choices=("package", "index"), default=None)
+    run.add_argument("--acquisition", choices=("index-free", "index"), default=None)
     reg = sub.add_parser("registry", help="Rebuild the registry from checkpoints.")
     reg.add_argument("--screen", choices=sorted(SCREENS), default="8ka-901a")
     reg.add_argument("--work-dir", type=Path, required=True)
@@ -534,7 +556,7 @@ def main(argv: list[str] | None = None) -> int:
             shard_ids=set(args.shards) if args.shards else None,
             accessions=set(args.accessions) if args.accessions else None,
             acquisition=args.acquisition
-            or plan.get("screen", {}).get("acquisition", "package"),
+            or plan.get("screen", {}).get("acquisition", "index-free"),
         )
         print(json.dumps({**summary, "seconds": round(time.time() - started, 1)}))
         return 0

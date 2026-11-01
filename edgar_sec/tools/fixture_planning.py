@@ -239,7 +239,7 @@ def build_plan(
     floor: int = SUBSTANTIAL_US_GAAP_FLOOR,
     prefer_seed: bool = True,
     catalog_dir: Path | None = None,
-    acquisition: str = "package",
+    acquisition: str = "index-free",
 ) -> dict[str, Any]:
     """The execution plan for one screen, generated from the catalog."""
     population = _population(screen, catalog_dir)
