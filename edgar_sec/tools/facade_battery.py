@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.apps.client.catalog import CatalogEntry
-from edgar_sec.apps.client.presentation import PresentationView
+from edgar_sec.apps.client.presentation import PresentationView, period_key_class
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.foundation.runtime.resources import derive_resources
@@ -128,7 +128,7 @@ def _face_value_check(view: PresentationView, expected: float) -> dict[str, Any]
     """Whether the expected value appears as a face value at the latest annual period."""
     if not view.periods:
         return {"found": False, "period": None, "nearest": None}
-    annual = [p for p in view.periods if " (" not in p]
+    annual = [p for p in view.periods if period_key_class(p) is None]
     period = annual[-1] if annual else view.periods[-1]
     nearest: dict[str, Any] | None = None
     for row in view.rows:

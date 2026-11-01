@@ -284,6 +284,14 @@ def _period_key(fact: XbrlFact) -> str | None:
     return fact.end_date
 
 
+def period_key_class(period_key: str) -> str | None:
+    """Span class a period key's suffix names, or None when unsuffixed."""
+    _head, sep, tail = period_key.rpartition(" (")
+    if sep and tail[-1:] == ")":
+        return tail[:-1]
+    return None
+
+
 def _values(facts: Iterable[XbrlFact]) -> dict[str, Any]:
     """Period values from facts as filed; the best-ranked fact wins a cell."""
     best: dict[str, tuple[tuple[int, int], int, Any]] = {}

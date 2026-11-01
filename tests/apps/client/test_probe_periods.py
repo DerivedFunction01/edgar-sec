@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import pytest
 
+from edgar_sec.apps.client.presentation import period_key_class
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.engine.xbrl.discovery.cohort import canonical_probe_cohort_path
@@ -195,3 +196,6 @@ def test_probe_presentation_periods_split_quarter_from_ytd() -> None:
     assert revenue is not None
     assert revenue.values["2026-06-27 (QUARTER)"] == 109_417_000_000
     assert revenue.values["2026-06-27 (YTD_3Q)"] == 364_357_000_000
+    assert period_key_class("2026-06-27 (QUARTER)") == "QUARTER"
+    assert period_key_class("2026-06-27 (YTD_3Q)") == "YTD_3Q"
+    assert period_key_class("2026-06-27") is None
