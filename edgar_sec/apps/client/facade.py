@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import threading
+from collections import OrderedDict
+from collections.abc import Callable
 from pathlib import Path
 from typing import TYPE_CHECKING, Literal, Sequence
 
@@ -11,10 +14,15 @@ from edgar_sec.apps.client.models import FilingsResult
 from edgar_sec.apps.runner.config import DateFilterInput, FilingQuery, PipelineConfig
 from edgar_sec.apps.runner.coordinator import PipelineRunner
 from edgar_sec.domain.identity import Cik
+from edgar_sec.foundation.runtime.resources import (
+    RuntimeResourceProfile,
+    derive_resources,
+)
 from edgar_sec.infra.sec_http.client import SecHttpClient
 
 if TYPE_CHECKING:
     from edgar_sec.apps.client.entity import Company
+    from edgar_sec.apps.client.xbrl import Xbrl
     from edgar_sec.domain.document.aggregate import FilingAggregate
     from edgar_sec.engine.forms.cover.toc.models import TocSpan
     from edgar_sec.engine.forms.sections.models import (
@@ -23,6 +31,62 @@ if TYPE_CHECKING:
     )
     from edgar_sec.apps.client.snapshots import SnapshotConsole
     from edgar_sec.engine.xbrl.schema.models import FilingXbrl
+
+
+_MEBIBYTE = 1024 * 1024
+# Mean retained bytes per live facade, from the facade memory profile.
+_RETAINED_BYTES_PER_FACADE = int(8.9 * _MEBIBYTE)
+
+
+def derive_facade_capacity(resources: RuntimeResourceProfile | None = None) -> int:
+    """Facade count one worker memory share holds at the measured per-facade cost."""
+    profile = resources if resources is not None else derive_resources()
+    budget_bytes = profile.worker_memory_mib * _MEBIBYTE
+    return max(1, budget_bytes // _RETAINED_BYTES_PER_FACADE)
+
+
+class FacadeCache:
+    """Bounded LRU of live facades; eviction drops the whole kernel.
+
+    A hit returns the identical facade object. Builds run under the
+    lock, so a key is constructed at most once.
+    """
+
+    def __init__(self, capacity: int | None = None) -> None:
+        self._capacity = capacity if capacity is not None else derive_facade_capacity()
+        if self._capacity < 1:
+            raise ValueError("facade cache capacity must be at least 1")
+        self._entries: OrderedDict[tuple[str, str], Xbrl] = OrderedDict()
+        self._lock = threading.Lock()
+
+    @property
+    def capacity(self) -> int:
+        """Maximum number of facades retained."""
+        return self._capacity
+
+    def __len__(self) -> int:
+        return len(self._entries)
+
+    def __contains__(self, key: tuple[str, str]) -> bool:
+        return key in self._entries
+
+    def get_or_build(self, key: tuple[str, str], builder: Callable[[], Xbrl]) -> Xbrl:
+        """Return the cached facade for key, building and caching it on a miss."""
+        with self._lock:
+            facade = self._entries.get(key)
+            if facade is not None:
+                self._entries.move_to_end(key)
+                return facade
+            facade = builder()
+            self._entries[key] = facade
+            while len(self._entries) > self._capacity:
+                self._entries.popitem(last=False)
+            return facade
+
+    def clear(self) -> None:
+        """Drop every cached facade."""
+        with self._lock:
+            self._entries.clear()
 
 
 class Edgar:
@@ -35,6 +99,7 @@ class Edgar:
         sec_client: SecHttpClient | None = None,
         workers: int | None = None,
         cache: DocumentCache | None = None,
+        facade_capacity: int | None = None,
     ) -> None:
         self.artifacts_root = (
             Path(artifacts_root) if artifacts_root is not None else None
@@ -42,6 +107,8 @@ class Edgar:
         self.workers = workers
         self._sec_client = sec_client
         self._cache = cache
+        self._facade_capacity = facade_capacity
+        self._facade_cache: FacadeCache | None = None
         self._sections_cache: dict[str, SectionSequence] = {}
         self._text_cache: dict[str, str] = {}
         self._notes_cache: dict[str, NotesSequence] = {}
@@ -70,6 +137,13 @@ class Edgar:
         if self._cache is None:
             self._cache = get_default_cache(self.artifacts_root)
         return self._cache
+
+    @property
+    def facade_cache(self) -> FacadeCache:
+        """Return the bounded LRU cache of live XBRL facades."""
+        if self._facade_cache is None:
+            self._facade_cache = FacadeCache(self._facade_capacity)
+        return self._facade_cache
 
     def pipeline(self, config: PipelineConfig | FilingQuery) -> FilingsResult:
         """Execute end-to-end acquisition via the high-throughput pipeline runner."""
@@ -345,6 +419,8 @@ class Edgar:
         self._sections_cache.clear()
         self._text_cache.clear()
         self._notes_cache.clear()
+        if self._facade_cache is not None:
+            self._facade_cache.clear()
         cleared: dict[str, int] = {"documents": 0, "responses": 0}
         if scope in ("all", "documents"):
             cleared["documents"] = self.cache.clear(accession=accession, cik=cik)
@@ -377,8 +453,10 @@ class Edgar:
         from edgar_sec.apps.client.xbrl import Xbrl
         from edgar_sec.engine.xbrl.parsing.filing_parser import parse_filing_xbrl
 
-        bundle = parse_filing_xbrl(filing)
-        return Xbrl(bundle)
+        key = (filing.primary_cik.to_10digit(), filing.accession.value)
+        return self.facade_cache.get_or_build(
+            key, lambda: Xbrl(parse_filing_xbrl(filing))
+        )
 
     def sections(
         self, filing: FilingAggregate, text: str | None = None
@@ -517,4 +595,4 @@ class Edgar:
         return ""
 
 
-__all__ = ["Edgar"]
+__all__ = ["Edgar", "FacadeCache", "derive_facade_capacity"]
