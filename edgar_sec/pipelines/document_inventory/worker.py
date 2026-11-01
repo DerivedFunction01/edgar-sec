@@ -1,20 +1,33 @@
 """Per-accession process task for the broker-backed worker pool.
 
-Module-level so the spawn context can pickle it as the process task; the
-response envelope and parser-only structures are released before returning.
+Module-level so the spawn context can pickle it; envelopes and parser-only
+structures are released before returning. Summary-routed accessions try
+FilingSummary, the XBRL package, then the index page, in one task.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Literal
 
 from edgar_sec.domain.document_inventory.models import (
+    EnumeratedDocuments,
+    EnumerationInput,
+    EnumerationOutcome,
     IndexPageInput,
     IndexParseOutcome,
     IndexWorkItem,
 )
 from edgar_sec.domain.identity import AccessionNumber
+from edgar_sec.domain.sec_urls import (
+    FILING_SUMMARY_DOCUMENT,
+    archives_url,
+    xbrl_package_url_for,
+)
+from edgar_sec.engine.filing_summary.parser import (
+    parse_filing_summary,
+    parse_xbrl_package,
+)
 from edgar_sec.engine.index_pages.parser import parse_html_index
 from edgar_sec.foundation.runtime.memory import reclaim
 
@@ -28,9 +41,12 @@ class IndexWorkerFailure:
     accession: AccessionNumber
     code: Literal["worker_error"]
     detail: str
+    vehicle: Literal["index", "summary", "package"] = "index"
 
 
-_TypedResult = IndexParseOutcome | IndexFetchFailure | IndexWorkerFailure
+_TypedResult = (
+    IndexParseOutcome | EnumerationOutcome | IndexFetchFailure | IndexWorkerFailure
+)
 
 __all__ = ["IndexWorkerFailure", "RECLAIM_INTERVAL", "process_accession", "_run_task"]
 
@@ -50,20 +66,91 @@ def process_accession(
     response envelope and parser-only structures are released before returning.
     """
     try:
-        page = broker.fetch_index(
-            item.accession, item.index_url, force_refresh=force_refresh
-        )
-        if isinstance(page, IndexFetchFailure):
-            return page
-        return parse_html_index(
-            IndexPageInput(item.accession, item.index_url, page.html_bytes)
-        )
+        if item.vehicle == "summary" and _can_enumerate(item):
+            return _process_via_summary(item, broker, force_refresh=force_refresh)
+        return _process_via_index(item, broker, force_refresh=force_refresh)
     except Exception as exc:  # noqa: BLE001
         return IndexWorkerFailure(
-            item.accession, "worker_error", str(exc) or type(exc).__name__
+            item.accession,
+            "worker_error",
+            str(exc) or type(exc).__name__,
+            vehicle=item.vehicle,
         )
     finally:
         reclaim()
+
+
+def _can_enumerate(item: IndexWorkItem) -> bool:
+    return bool(item.archive_cik and item.primary_document and item.form)
+
+
+def _process_via_index(
+    item: IndexWorkItem,
+    broker: IndexPageBrokerClient,
+    *,
+    force_refresh: bool,
+) -> IndexParseOutcome | IndexFetchFailure:
+    page = broker.fetch_index(
+        item.accession, item.index_url, force_refresh=force_refresh
+    )
+    if isinstance(page, IndexFetchFailure):
+        return page
+    return parse_html_index(
+        IndexPageInput(item.accession, item.index_url, page.html_bytes)
+    )
+
+
+def _enumeration_input(
+    item: IndexWorkItem, url: str, payload: bytes
+) -> EnumerationInput:
+    return EnumerationInput(
+        accession=item.accession,
+        source_url=url,
+        response_bytes=payload,
+        archive_cik=item.archive_cik or "",
+        form=item.form or "",
+        primary_document=item.primary_document or "",
+        is_inline_xbrl=item.is_inline_xbrl,
+    )
+
+
+def _process_via_summary(
+    item: IndexWorkItem,
+    broker: IndexPageBrokerClient,
+    *,
+    force_refresh: bool,
+) -> _TypedResult:
+    summary_url = archives_url(
+        item.archive_cik, item.accession, FILING_SUMMARY_DOCUMENT
+    )
+    fetched = broker.fetch_document(
+        item.accession, summary_url, force_refresh=force_refresh
+    )
+    if isinstance(fetched, IndexFetchFailure):
+        if fetched.status_code != 404:
+            return replace(fetched, vehicle="summary")
+    else:
+        outcome = parse_filing_summary(
+            _enumeration_input(item, summary_url, fetched.payload_bytes)
+        )
+        if isinstance(outcome, EnumeratedDocuments):
+            return outcome
+
+    package_url = xbrl_package_url_for(item.archive_cik, item.accession)
+    fetched = broker.fetch_document(
+        item.accession, package_url, force_refresh=force_refresh
+    )
+    if isinstance(fetched, IndexFetchFailure):
+        if fetched.status_code != 404:
+            return replace(fetched, vehicle="package")
+    else:
+        outcome = parse_xbrl_package(
+            _enumeration_input(item, package_url, fetched.payload_bytes)
+        )
+        if isinstance(outcome, EnumeratedDocuments):
+            return outcome
+
+    return _process_via_index(item, broker, force_refresh=force_refresh)
 
 
 def _run_task(

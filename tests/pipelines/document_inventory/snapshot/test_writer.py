@@ -11,6 +11,7 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.domain.document_inventory.models import (
+    EnumeratedDocuments,
     IndexWorkItem,
     InventoryEntry,
     ParsedIndexPage,
@@ -51,6 +52,7 @@ from edgar_sec.pipelines.document_inventory.snapshot.reader import (
 from edgar_sec.pipelines.document_inventory.snapshot.schema import (
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
     SNAPSHOT_ACCESSIONS_SCHEMA,
+    SNAPSHOT_ENUMERATION_SCHEMA,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.validation import validate_snapshot
 from edgar_sec.pipelines.document_inventory.snapshot.writer import (
@@ -103,6 +105,44 @@ def _parsed(item: IndexWorkItem, revision: str = "") -> ParsedIndexPage:
     )
 
 
+def _enumerated(item: IndexWorkItem, vehicle: str) -> EnumeratedDocuments:
+    accession = str(item.accession)
+    digest = hashlib.sha256(f"{accession}:{vehicle}".encode()).hexdigest()
+    archive_dir = (
+        f"https://www.sec.gov/Archives/edgar/data/{accession[:10]}/"
+        f"{accession.replace('-', '')}"
+    )
+    source_url = (
+        f"{archive_dir}/FilingSummary.xml"
+        if vehicle == "summary"
+        else f"{archive_dir}/{accession}-xbrl.zip"
+    )
+    return EnumeratedDocuments(
+        accession=item.accession,
+        source_url=source_url,
+        vehicle=vehicle,
+        page_sha256=digest,
+        entries=(
+            InventoryEntry(
+                entry_id=f"entry-{accession}-{digest[:8]}",
+                accession=item.accession,
+                table_kind="data_file",
+                row_ordinal=0,
+                sequence=None,
+                document_type="EX-101.INS",
+                document_label="XBRL INSTANCE DOCUMENT",
+                description="XBRL INSTANCE DOCUMENT",
+                filename="instance.xml",
+                href="instance.xml",
+                archive_url=f"{archive_dir}/instance.xml",
+                byte_size=23,
+            ),
+        ),
+        bundle_url=None if vehicle == "summary" else source_url,
+        diagnostics=ParserDiagnostics((), 0),
+    )
+
+
 def _prepare_run(
     root: Path,
     run_id: str,
@@ -114,6 +154,7 @@ def _prepare_run(
     status: str = "parsed",
     refresh_mode: str = "normal",
     page_revision: str = "",
+    enumerated: dict[str, str] | None = None,
 ):
     paths = inventory_run_paths(root, run_id)
     work_order = paths.work_order_path()
@@ -138,7 +179,11 @@ def _prepare_run(
         writers = AttemptWriters(paths, chunk.chunk_id, attempt_id)
         for member in members:
             if status == "parsed":
-                result = _parsed(member, page_revision)
+                vehicle = (enumerated or {}).get(str(member.accession))
+                if vehicle is not None:
+                    result = _enumerated(member, vehicle)
+                else:
+                    result = _parsed(member, page_revision)
                 outcome = outcome_row(result, index_url=member.index_url)
                 entries = entry_rows(result)
             else:
@@ -460,6 +505,121 @@ def test_refresh_replaces_active_entries_only_when_page_digest_changes(
     refreshed_entries = get_active_entries(tmp_path, accession)
     assert len(refreshed_entries) == 1
     assert refreshed_entries[0]["document_label"] == "Annual report"
+
+
+def _enumeration_rows(root: Path, snapshot_id: str) -> list[dict]:
+    catalog = DAGCatalog(InventoryPaths(root).snapshots_root)
+    manifest = catalog.get_manifest(snapshot_id)
+    assert manifest is not None
+    parts = manifest.relations.get("accession_enumeration", ())
+    rows: list[dict] = []
+    for part in parts:
+        table = pq.read_table(
+            InventoryPaths(root).snapshot_root(snapshot_id) / part.path
+        )
+        rows.extend(table.to_pylist())
+    return sorted(rows, key=lambda row: row["accession"])
+
+
+def test_mixed_vehicle_run_publishes_enumeration_provenance(tmp_path: Path) -> None:
+    index_accession = "0000000001-25-000001"
+    summary_accession = "0000000002-26-000002"
+    package_accession = "0000000003-26-000003"
+    accessions = [index_accession, summary_accession, package_accession]
+    items = [IndexWorkItem(AccessionNumber(value), _url(value)) for value in accessions]
+    paths, run = _prepare_run(
+        tmp_path,
+        "mixed-run",
+        items,
+        [_fact(value) for value in accessions],
+        [_source(value, "0000000099") for value in accessions],
+        enumerated={summary_accession: "summary", package_accession: "package"},
+    )
+    result = publish_committed_chunks(
+        paths,
+        run,
+        cohort_accessions_path=paths.cohort_accessions_path(),
+        cohort_sources_path=paths.cohort_sources_path(),
+        expected_parent_snapshot_id=None,
+    )
+    assert result.status == "published"
+    assert result.snapshot is not None
+    snapshot_id = result.snapshot.snapshot_id
+    checked = validate_snapshot(InventoryPaths(tmp_path), snapshot_id)
+    assert checked.accession_count == 3
+
+    rows = _enumeration_rows(tmp_path, snapshot_id)
+    assert [row["accession"] for row in rows] == [summary_accession, package_accession]
+    by_accession = {row["accession"]: row for row in rows}
+    summary_row = by_accession[summary_accession]
+    assert summary_row["vehicle"] == "summary"
+    assert summary_row["source_url"].endswith("/FilingSummary.xml")
+    assert (
+        summary_row["payload_sha256"]
+        == hashlib.sha256(f"{summary_accession}:summary".encode()).hexdigest()
+    )
+    package_row = by_accession[package_accession]
+    assert package_row["vehicle"] == "package"
+    assert package_row["source_url"].endswith(f"/{package_accession}-xbrl.zip")
+    assert (
+        package_row["payload_sha256"]
+        == hashlib.sha256(f"{package_accession}:package".encode()).hexdigest()
+    )
+    part_path = (
+        InventoryPaths(tmp_path).snapshot_root(snapshot_id)
+        / "accession_enumeration/part-00000.parquet"
+    )
+    assert pq.read_schema(part_path).equals(
+        SNAPSHOT_ENUMERATION_SCHEMA, check_metadata=False
+    )
+
+
+def test_snapshot_without_enumeration_relation_remains_a_lineage_parent(
+    tmp_path: Path,
+) -> None:
+    base_accession = "0000000001-25-000001"
+    child_accession = "0000000002-26-000002"
+    _paths, _run, base = _publish(
+        tmp_path,
+        "index-only-run",
+        [base_accession],
+        [_source(base_accession, "0000000099")],
+    )
+    assert base.snapshot is not None
+    base_id = base.snapshot.snapshot_id
+    catalog = DAGCatalog(InventoryPaths(tmp_path).snapshots_root)
+    base_manifest = catalog.get_manifest(base_id)
+    assert base_manifest is not None
+    assert base_manifest.relations.get("accession_enumeration", ()) == ()
+    assert _enumeration_rows(tmp_path, base_id) == []
+
+    items = [IndexWorkItem(AccessionNumber(child_accession), _url(child_accession))]
+    child_paths, child_run = _prepare_run(
+        tmp_path,
+        "enumerated-child-run",
+        items,
+        [_fact(base_accession), _fact(child_accession, date="2026-02-05")],
+        [
+            _source(base_accession, "0000000099"),
+            _source(child_accession, "0000000099"),
+        ],
+        parent_id=base_id,
+        enumerated={child_accession: "summary"},
+    )
+    child = publish_committed_chunks(
+        child_paths,
+        child_run,
+        cohort_accessions_path=child_paths.cohort_accessions_path(),
+        cohort_sources_path=child_paths.cohort_sources_path(),
+        expected_parent_snapshot_id=base_id,
+    )
+    assert child.status == "published"
+    assert child.snapshot is not None
+    checked = validate_snapshot(InventoryPaths(tmp_path), child.snapshot.snapshot_id)
+    assert checked.snapshot_id == child.snapshot.snapshot_id
+    rows = _enumeration_rows(tmp_path, child.snapshot.snapshot_id)
+    assert [row["accession"] for row in rows] == [child_accession]
+    assert rows[0]["vehicle"] == "summary"
 
 
 def test_complete_artifact_validation_detects_part_tampering(tmp_path: Path) -> None:

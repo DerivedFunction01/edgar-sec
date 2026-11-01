@@ -173,15 +173,28 @@ class SecBroker:
                 else:
                     payload = self._client.get_bytes(archive_url)
             except (PermanentHttpError, ResponseTooLargeError, RetryExhausted) as exc:
+                status_code = getattr(exc, "status_code", None)
+                if isinstance(exc, ResponseTooLargeError):
+                    error_code = "response_too_large"
+                elif isinstance(exc, PermanentHttpError):
+                    error_code = (
+                        "http_not_found" if status_code == 404 else "http_error"
+                    )
+                else:
+                    error_code = "http_error"
                 return {
                     "status": "failed",
                     "error": str(exc) or type(exc).__name__,
+                    "error_code": error_code,
+                    "status_code": status_code,
                     "payload_length": 0,
                 }
             except Exception as exc:  # noqa: BLE001
                 return {
                     "status": "failed",
                     "error": str(exc) or type(exc).__name__,
+                    "error_code": None,
+                    "status_code": None,
                     "payload_length": 0,
                 }
             finally:
@@ -430,6 +443,8 @@ class SecBroker:
                         "request_id": request_id,
                         "status": result["status"],
                         "error": result.get("error"),
+                        "error_code": result.get("error_code"),
+                        "status_code": result.get("status_code"),
                         "payload_length": result["payload_length"],
                         "cache_source": result.get("cache_source"),
                     }
@@ -582,6 +597,8 @@ class SecBrokerClient:
             return {
                 "status": "failed",
                 "error": header.get("error") or "broker reported failure",
+                "error_code": header.get("error_code"),
+                "status_code": header.get("status_code"),
                 "payload": None,
             }
         return {

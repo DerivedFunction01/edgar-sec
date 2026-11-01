@@ -6,7 +6,7 @@ import pyarrow as pa
 
 from edgar_sec.domain.document_inventory.schemas import ENTRY_SCHEMA
 
-SNAPSHOT_RELATION_VERSION = "1"
+SNAPSHOT_RELATION_VERSION = "2"
 LOOKUP_LAYOUT_VERSION = "1"
 
 #: One row per canonical accession in the snapshot. Sorted on write by
@@ -34,6 +34,18 @@ SNAPSHOT_ACCESSION_SOURCES_SCHEMA = pa.schema(
         ("accession", pa.string()),
         ("source_cik", pa.string()),
         ("first_seen_by", pa.string()),
+    ]
+)
+
+#: One row per accession a vehicle enumerated in the publishing run
+#: (vehicle, fetched-from URL, parsed-payload hash), sorted by accession.
+#: Absent from snapshots published before enumeration provenance existed.
+SNAPSHOT_ENUMERATION_SCHEMA = pa.schema(
+    [
+        ("accession", pa.string()),
+        ("vehicle", pa.string()),
+        ("source_url", pa.string()),
+        ("payload_sha256", pa.string()),
     ]
 )
 

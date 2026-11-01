@@ -96,3 +96,37 @@ def test_broker_client_close_releases_local_socket() -> None:
 
     assert connection.closed
     assert client._client._local.sock is None
+
+
+def test_fetch_document_surfaces_http_status_on_failure(tmp_path: Path) -> None:
+    from edgar_sec.infra.sec_http.errors import PermanentHttpError
+
+    item = _item()
+
+    class _NotFoundHttp(_FakeHttp):
+        def get_bytes(self, url: str, *, force_refresh: bool = False) -> bytes:
+            raise PermanentHttpError(url, "not found", status_code=404)
+
+    with managed_broker(tmp_path / "b.sock", http_client=_NotFoundHttp()):
+        failure = IndexPageBrokerClient(tmp_path / "b.sock").fetch_document(
+            item.accession, item.index_url
+        )
+
+    assert isinstance(failure, IndexFetchFailure)
+    assert failure.status_code == 404
+
+
+def test_fetch_document_returns_envelope_bytes(tmp_path: Path) -> None:
+    from edgar_sec.pipelines.document_inventory.broker import DocumentEnvelope
+
+    item = _item()
+    fake = _FakeHttp({item.index_url: INDEX_HTML})
+
+    with managed_broker(tmp_path / "b.sock", http_client=fake):
+        envelope = IndexPageBrokerClient(tmp_path / "b.sock").fetch_document(
+            item.accession, item.index_url
+        )
+
+    assert isinstance(envelope, DocumentEnvelope)
+    assert envelope.payload_bytes == INDEX_HTML
+    assert envelope.response_size == len(INDEX_HTML)

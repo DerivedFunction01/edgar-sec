@@ -647,3 +647,33 @@ def test_scale_projection_236k_accessions(
     record_property("peak_rss_kib", resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
     assert projection.work_order_rows == 236_000
     assert pq.read_table(projection.paths.cohort_accessions_path()).num_rows == 236_000
+
+
+def test_projection_routes_flagged_accessions_to_summary(
+    tmp_path: Path, resource_profile
+) -> None:
+    table = pq.read_table(_OBSERVATIONS)
+    rows = table.to_pylist()
+    rows[0]["is_xbrl"] = True
+    rows[0]["is_inline_xbrl"] = True
+    rows[0]["primary_document"] = "aapl-20230930.htm"
+    flagged_accession = "0000320193-23-000106"
+    assert rows[0]["accession"].replace("-", "") == flagged_accession.replace("-", "")
+    table = pa.Table.from_pylist(rows, schema=TARGET_SCHEMA)
+    _build_plan(tmp_path, "routing-plan", table)
+
+    projection = project_catalog_plan(
+        "routing-plan", artifacts_root=tmp_path, profile=resource_profile
+    )
+
+    work = {
+        row["accession"]: row
+        for row in pq.read_table(projection.paths.work_order_path()).to_pylist()
+    }
+    routed = work[flagged_accession]
+    assert routed["vehicle"] == "summary"
+    assert routed["archive_cik"] == "0000320193"
+    assert routed["primary_document"] == "aapl-20230930.htm"
+    assert routed["is_inline_xbrl"] is True
+    others = [row for acc, row in work.items() if acc != flagged_accession]
+    assert others and all(row["vehicle"] == "index" for row in others)

@@ -740,3 +740,40 @@ def test_no_pipeline_dependency_import() -> None:
         if m and ("document_storage" in m or m.startswith("pipelines."))
     ]
     assert not forbidden, f"cohort.py imports forbidden modules: {forbidden}"
+
+
+def test_project_cohort_routes_flagged_accessions_to_summary() -> None:
+    flagged = CohortObservation(
+        "src-1",
+        AccessionNumber("0000320193-23-000106"),
+        Cik.from_raw("320193"),
+        "10-K",
+        date(2023, 11, 3),
+        date(2023, 9, 30),
+        is_xbrl=True,
+        is_inline_xbrl=True,
+        primary_document="aapl-20230930.htm",
+    )
+    plain = CohortObservation(
+        "src-1",
+        AccessionNumber("0000320193-24-000123"),
+        Cik.from_raw("320193"),
+        "8-K",
+        date(2024, 2, 1),
+        None,
+    )
+
+    cohort = project_cohort(
+        [plain, flagged],
+        archive_base_url="https://www.sec.gov/Archives/edgar/data",
+    )
+    items = {item.accession: item for item in cohort.work_items}
+
+    routed = items[flagged.accession]
+    assert routed.vehicle == "summary"
+    assert routed.archive_cik == "0000320193"
+    assert routed.primary_document == "aapl-20230930.htm"
+    assert routed.is_inline_xbrl is True
+    unrouted = items[plain.accession]
+    assert unrouted.vehicle == "index"
+    assert unrouted.is_inline_xbrl is False

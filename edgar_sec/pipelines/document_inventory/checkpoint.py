@@ -19,10 +19,13 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.domain.document_inventory.models import (
+    EnumeratedDocuments,
+    EnumerationFailure,
     IndexParseFailure,
     InventoryEntry,
     ParsedIndexPage,
     ParserDiagnostics,
+    UnrecognizedEnumeration,
     UnrecognizedIndexPage,
 )
 from edgar_sec.domain.document_inventory.schemas import (
@@ -91,6 +94,8 @@ OUTCOME_SCHEMA = pa.schema(
         ("diagnostics_json", pa.string()),
         ("error_code", pa.string()),
         ("error_detail", pa.string()),
+        ("vehicle", pa.string()),
+        ("source_url", pa.string()),
     ]
 )
 
@@ -239,6 +244,8 @@ def _empty_outcome(accession: str, index_url: str, status: str) -> dict[str, Any
         "diagnostics_json": "",
         "error_code": None,
         "error_detail": None,
+        "vehicle": None,
+        "source_url": None,
     }
 
 
@@ -261,6 +268,21 @@ def outcome_row(
             bundle_url=result.bundle_url,
             bundle_size=result.bundle_size,
             diagnostics_json=_diagnostics_json(result.diagnostics),
+            vehicle="index",
+            source_url=result.source_url,
+        )
+        return row
+    if isinstance(result, EnumeratedDocuments):
+        status = STATUS_PARSED if result.entries else STATUS_PARSED_EMPTY
+        row = _empty_outcome(accession, index_url, status)
+        row.update(
+            page_sha256=result.page_sha256,
+            response_size=response_size,
+            entry_count=len(result.entries),
+            bundle_url=result.bundle_url,
+            diagnostics_json=_diagnostics_json(result.diagnostics),
+            vehicle=result.vehicle,
+            source_url=result.source_url,
         )
         return row
     if isinstance(result, UnrecognizedIndexPage):
@@ -269,6 +291,18 @@ def outcome_row(
             page_sha256=result.page_sha256,
             response_size=response_size,
             diagnostics_json=_diagnostics_json(result.diagnostics),
+            vehicle="index",
+            source_url=result.source_url,
+        )
+        return row
+    if isinstance(result, UnrecognizedEnumeration):
+        row = _empty_outcome(accession, index_url, STATUS_UNRECOGNIZED)
+        row.update(
+            page_sha256=result.page_sha256,
+            response_size=response_size,
+            diagnostics_json=_diagnostics_json(result.diagnostics),
+            vehicle=result.vehicle,
+            source_url=result.source_url,
         )
         return row
     if isinstance(result, IndexParseFailure):
@@ -281,15 +315,41 @@ def outcome_row(
             ),
             error_code=result.diagnostic.code,
             error_detail=result.diagnostic.detail,
+            vehicle="index",
+            source_url=result.source_url,
+        )
+        return row
+    if isinstance(result, EnumerationFailure):
+        row = _empty_outcome(accession, index_url, STATUS_PARSE_FAILURE)
+        row.update(
+            page_sha256=result.page_sha256,
+            response_size=response_size,
+            diagnostics_json=_diagnostics_json(
+                ParserDiagnostics((result.diagnostic,), 0)
+            ),
+            error_code=result.diagnostic.code,
+            error_detail=result.diagnostic.detail,
+            vehicle=result.vehicle,
+            source_url=result.source_url,
         )
         return row
     if isinstance(result, IndexFetchFailure):
         row = _empty_outcome(accession, index_url, STATUS_FETCH_FAILED)
-        row.update(error_code=result.code, error_detail=result.detail)
+        row.update(
+            error_code=result.code,
+            error_detail=result.detail,
+            vehicle=result.vehicle,
+            source_url=None,
+        )
         return row
     if isinstance(result, IndexWorkerFailure):
         row = _empty_outcome(accession, index_url, result.code)
-        row.update(error_code=result.code, error_detail=result.detail)
+        row.update(
+            error_code=result.code,
+            error_detail=result.detail,
+            vehicle=result.vehicle,
+            source_url=None,
+        )
         return row
     raise TypeError(f"unsupported worker result type: {type(result).__name__}")
 
@@ -313,7 +373,7 @@ def _entry_row(entry: InventoryEntry) -> dict[str, Any]:
 
 def entry_rows(result: Any) -> list[dict[str, Any]]:
     """Project one typed worker result into zero-or-more entries.parquet rows."""
-    if isinstance(result, ParsedIndexPage):
+    if isinstance(result, (ParsedIndexPage, EnumeratedDocuments)):
         return [_entry_row(entry) for entry in result.entries]
     return []
 

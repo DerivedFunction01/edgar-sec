@@ -74,6 +74,7 @@ from edgar_sec.pipelines.document_inventory.snapshot.specs import (
     INVENTORY_ACCESSIONS_SPEC,
     INVENTORY_ACCESSION_SOURCES_SPEC,
     INVENTORY_ENTRIES_SPEC,
+    INVENTORY_ENUMERATION_SPEC,
     INVENTORY_RELATIONS,
 )
 from edgar_sec.infra.storage.dag.doctor import _resolve_part_path
@@ -86,6 +87,7 @@ from edgar_sec.infra.storage.dag.traversal import walk_lineage
 from edgar_sec.pipelines.document_inventory.snapshot.schema import (
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
     SNAPSHOT_ACCESSIONS_SCHEMA,
+    SNAPSHOT_ENUMERATION_SCHEMA,
     SNAPSHOT_RELATION_VERSION,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.validation import validate_snapshot
@@ -106,11 +108,13 @@ _RELATION_SCHEMAS = {
     "accessions": SNAPSHOT_ACCESSIONS_SCHEMA,
     "entries": ENTRY_SCHEMA,
     "accession_sources": SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
+    "accession_enumeration": SNAPSHOT_ENUMERATION_SCHEMA,
 }
 _RELATION_KEYS = {
     "accessions": "accession",
     "entries": "accession",
     "accession_sources": "source_cik",
+    "accession_enumeration": "accession",
 }
 
 
@@ -379,6 +383,12 @@ def _create_merge_relations(
         "FROM new_sources"
     )
     con.execute(
+        "CREATE TEMP TABLE delta_enumeration AS SELECT d.accession, o.vehicle, "
+        "o.source_url, o.page_sha256 AS payload_sha256 FROM delta_accessions d "
+        "JOIN staged_outcomes o USING(accession) WHERE o.vehicle IN (?, ?)",
+        ["summary", "package"],
+    )
+    con.execute(
         "CREATE TEMP VIEW all_accessions AS SELECT accession, filing_cik, form, filing_date, "
         "report_date, bundle_url, bundle_size, index_url, index_sha256, first_indexed_by "
         "FROM parent_accessions p "
@@ -625,10 +635,15 @@ def publish_committed_chunks(
                 "SELECT accession, source_cik, first_seen_by FROM delta_sources "
                 "ORDER BY source_cik, accession"
             )
+            enumeration_query = (
+                "SELECT accession, vehicle, source_url, payload_sha256 "
+                "FROM delta_enumeration ORDER BY accession"
+            )
             relation_queries = {
                 INVENTORY_ACCESSIONS_SPEC.name: accession_query,
                 INVENTORY_ENTRIES_SPEC.name: entry_query,
                 INVENTORY_ACCESSION_SOURCES_SPEC.name: source_query,
+                INVENTORY_ENUMERATION_SPEC.name: enumeration_query,
             }
             relation_records: dict[str, list[dict[str, Any]]] = {}
             for spec in INVENTORY_RELATIONS:
@@ -641,6 +656,12 @@ def publish_committed_chunks(
                 relation_records[rel] = [part] if part else []
         finally:
             connection.close()
+
+        # The catalog reconstructs relations from part rows, so a part-less
+        # relation vanishes on read-back; omitting it here keeps the manifest
+        # digest identical to its reconstruction.
+        if not relation_records[INVENTORY_ENUMERATION_SPEC.name]:
+            del relation_records[INVENTORY_ENUMERATION_SPEC.name]
 
         parent_refs: list[ParentRef] = []
         catalog = DAGCatalog(inventory_paths.snapshots_root)
@@ -692,6 +713,7 @@ def publish_committed_chunks(
             schema_versions={
                 "accessions": SNAPSHOT_RELATION_VERSION,
                 "entries": str(ENTRY_SCHEMA_VERSION),
+                "accession_enumeration": SNAPSHOT_RELATION_VERSION,
             },
             metadata={
                 "run_intent_id": run.run_id,

@@ -314,3 +314,59 @@ def test_advance_pointer_writes_canonical_payload(tmp_path: Path) -> None:
     data = json.loads(paths.chunk_pointer_path("chunk-000000-abcd1234").read_text())
     assert data["attempt_id"] == "cafebabe"
     assert data["chunk_id"] == "chunk-000000-abcd1234"
+
+
+def test_outcome_row_for_enumerated_documents_records_vehicle() -> None:
+    from edgar_sec.domain.document_inventory.models import (
+        EnumeratedDocuments,
+        EnumerationInput,
+    )
+    from edgar_sec.engine.filing_summary.parser import parse_filing_summary
+    from tests.support import fixture_path
+
+    source_url = (
+        "https://www.sec.gov/Archives/edgar/data/123456/000012345626000016/"
+        "FilingSummary.xml"
+    )
+    page = parse_filing_summary(
+        EnumerationInput(
+            accession=ACCESSION,
+            source_url=source_url,
+            response_bytes=fixture_path("filing_summary_classic.xml").read_bytes(),
+            archive_cik="123456",
+            form="10-K",
+            primary_document="acme10k.htm",
+            is_inline_xbrl=False,
+        )
+    )
+    assert isinstance(page, EnumeratedDocuments)
+
+    row = outcome_row(page, index_url=INDEX_URL)
+    assert row["status"] == "parsed"
+    assert row["vehicle"] == "summary"
+    assert row["source_url"] == source_url
+    assert row["entry_count"] == len(page.entries)
+    assert row["bundle_url"] == page.bundle_url
+    rows = entry_rows(page)
+    assert len(rows) == len(page.entries)
+    assert {r["filename"] for r in rows} == {e.filename for e in page.entries}
+
+
+def test_outcome_row_for_summary_leg_failure_records_vehicle() -> None:
+    failure = IndexFetchFailure(
+        ACCESSION,
+        "fetch_failed",
+        "throttled",
+        status_code=503,
+        vehicle="summary",
+    )
+    row = outcome_row(failure, index_url=INDEX_URL)
+    assert row["status"] == "fetch_failed"
+    assert row["vehicle"] == "summary"
+    assert row["source_url"] is None
+
+
+def test_outcome_row_for_index_page_records_index_vehicle() -> None:
+    row = outcome_row(_parsed(), index_url=INDEX_URL, response_size=4321)
+    assert row["vehicle"] == "index"
+    assert row["source_url"] == INDEX_URL

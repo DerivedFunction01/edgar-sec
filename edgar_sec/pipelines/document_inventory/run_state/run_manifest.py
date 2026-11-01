@@ -26,14 +26,19 @@ from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.parquet import StagedParquetWriter
 from edgar_sec.pipelines.document_inventory.paths import InventoryRunPaths
 
-WORK_ORDER_VERSION = "3"
+WORK_ORDER_VERSION = "4"
 PROJECTION_VERSION = "1"
-OUTCOME_SCHEMA_VERSION = 1
-PROGRESS_SCHEMA_VERSION = 1
+OUTCOME_SCHEMA_VERSION = 2
+PROGRESS_SCHEMA_VERSION = 2
 WORK_ORDER_SCHEMA = pa.schema(
     [
         pa.field("accession", pa.string(), nullable=False),
         pa.field("index_url", pa.string(), nullable=False),
+        pa.field("vehicle", pa.string(), nullable=False),
+        pa.field("archive_cik", pa.string(), nullable=True),
+        pa.field("primary_document", pa.string(), nullable=True),
+        pa.field("is_inline_xbrl", pa.bool_(), nullable=False),
+        pa.field("form", pa.string(), nullable=True),
     ]
 )
 _REFRESH_MODES = frozenset({"normal", "force"})
@@ -185,8 +190,17 @@ def partition_into_chunks(
     return tuple(chunks)
 
 
-def _row_digest_update(hasher, accession: str, index_url: str) -> None:
-    for value in (accession, index_url):
+def _row_digest_update(hasher, row: dict) -> None:
+    values = (
+        row["accession"],
+        row["index_url"],
+        row["vehicle"],
+        row["archive_cik"] or "",
+        row["primary_document"] or "",
+        "1" if row["is_inline_xbrl"] else "0",
+        row["form"] or "",
+    )
+    for value in values:
         encoded = value.encode("utf-8")
         hasher.update(len(encoded).to_bytes(8, "big"))
         hasher.update(encoded)
@@ -207,7 +221,8 @@ def validate_work_order(
         ) from exc
     schema = parquet.schema_arrow
     if schema.names != WORK_ORDER_SCHEMA.names or any(
-        field.type != pa.string() for field in schema
+        actual.type != field.type
+        for actual, field in zip(schema, WORK_ORDER_SCHEMA, strict=True)
     ):
         raise ManifestMismatchError(f"work-order schema mismatch: {work_order}")
     digest = hashlib.sha256()
@@ -227,12 +242,14 @@ def validate_work_order(
                 raise ManifestMismatchError("work-order accessions must be normalized")
             if not index_url:
                 raise ManifestMismatchError("work order contains an empty index URL")
+            if row["vehicle"] not in {"index", "summary"}:
+                raise ManifestMismatchError("work order contains an unknown vehicle")
             if previous is not None and accession <= previous:
                 raise ManifestMismatchError(
                     "work-order accessions must be sorted and unique"
                 )
             previous = accession
-            _row_digest_update(digest, accession, index_url)
+            _row_digest_update(digest, row)
             row_count += 1
     if row_count != parquet.metadata.num_rows:
         raise ManifestMismatchError(
@@ -251,10 +268,16 @@ def write_work_order(
     if batch_rows < 1:
         raise ValueError("batch_rows must be positive")
     writer = StagedParquetWriter(path, WORK_ORDER_SCHEMA)
-    buffered_accessions: list[str] = []
-    buffered_urls: list[str] = []
+    buffered: dict[str, list] = {name: [] for name in WORK_ORDER_SCHEMA.names}
     previous = None
     count = 0
+
+    def flush() -> None:
+        if buffered["accession"]:
+            writer.write_batch(buffered)
+            for values in buffered.values():
+                values.clear()
+
     try:
         for item in work_items:
             accession = str(item.accession)
@@ -263,19 +286,17 @@ def write_work_order(
             if not item.index_url:
                 raise ValueError("work item has an empty index URL")
             previous = accession
-            buffered_accessions.append(accession)
-            buffered_urls.append(item.index_url)
+            buffered["accession"].append(accession)
+            buffered["index_url"].append(item.index_url)
+            buffered["vehicle"].append(item.vehicle)
+            buffered["archive_cik"].append(item.archive_cik)
+            buffered["primary_document"].append(item.primary_document)
+            buffered["is_inline_xbrl"].append(bool(item.is_inline_xbrl))
+            buffered["form"].append(item.form)
             count += 1
-            if len(buffered_accessions) >= batch_rows:
-                writer.write_batch(
-                    {"accession": buffered_accessions, "index_url": buffered_urls}
-                )
-                buffered_accessions = []
-                buffered_urls = []
-        if buffered_accessions:
-            writer.write_batch(
-                {"accession": buffered_accessions, "index_url": buffered_urls}
-            )
+            if len(buffered["accession"]) >= batch_rows:
+                flush()
+        flush()
         writer.commit(expected_count=count)
     except BaseException:
         writer.reset()
@@ -292,10 +313,20 @@ def iter_work_order_chunks(
     if chunk_size < 1:
         raise ValueError(f"chunk_size must be >= 1, got {chunk_size}")
     parquet = pq.ParquetFile(path)
+    if parquet.schema_arrow.names != WORK_ORDER_SCHEMA.names:
+        raise ManifestMismatchError(f"work-order schema mismatch: {path}")
     for ordinal, batch in enumerate(parquet.iter_batches(batch_size=chunk_size)):
         rows = batch.to_pylist()
         members = tuple(
-            IndexWorkItem(AccessionNumber(row["accession"]), row["index_url"])
+            IndexWorkItem(
+                AccessionNumber(row["accession"]),
+                row["index_url"],
+                vehicle=row["vehicle"],
+                archive_cik=row["archive_cik"],
+                primary_document=row["primary_document"],
+                is_inline_xbrl=bool(row["is_inline_xbrl"]),
+                form=row["form"],
+            )
             for row in rows
         )
         digest = membership_digest(tuple(str(item.accession) for item in members))

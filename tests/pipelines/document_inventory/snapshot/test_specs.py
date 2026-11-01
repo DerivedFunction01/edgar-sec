@@ -19,17 +19,19 @@ from edgar_sec.infra.storage.parquet import (
 from edgar_sec.pipelines.document_inventory.snapshot.schema import (
     SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
+    SNAPSHOT_ENUMERATION_SCHEMA,
 )
 from edgar_sec.pipelines.document_inventory.snapshot.specs import (
     INVENTORY_ACCESSION_SOURCES_SPEC,
     INVENTORY_ACCESSIONS_SPEC,
     INVENTORY_ENTRIES_SPEC,
+    INVENTORY_ENUMERATION_SPEC,
     INVENTORY_RELATIONS,
 )
 
 
 def test_inventory_relation_specs_are_valid() -> None:
-    assert len(INVENTORY_RELATIONS) == 3
+    assert len(INVENTORY_RELATIONS) == 4
 
     assert INVENTORY_ACCESSIONS_SPEC.name == "accessions"
     assert INVENTORY_ACCESSIONS_SPEC.primary_key == ("accession",)
@@ -53,6 +55,15 @@ def test_inventory_relation_specs_are_valid() -> None:
     assert INVENTORY_ACCESSION_SOURCES_SPEC.entity_key == "source_cik"
     assert INVENTORY_ACCESSION_SOURCES_SPEC.merge_strategy == "upsert"
     assert INVENTORY_ACCESSION_SOURCES_SPEC.max_rows_per_part == DEFAULT_ROW_GROUP_SIZE
+
+    assert INVENTORY_ENUMERATION_SPEC.name == "accession_enumeration"
+    assert INVENTORY_ENUMERATION_SPEC.schema == SNAPSHOT_ENUMERATION_SCHEMA
+    assert INVENTORY_ENUMERATION_SPEC.primary_key == ("accession",)
+    assert INVENTORY_ENUMERATION_SPEC.entity_key == "accession"
+    assert INVENTORY_ENUMERATION_SPEC.merge_strategy == "upsert"
+    assert INVENTORY_ENUMERATION_SPEC.sort_order == ("accession",)
+    assert INVENTORY_ENUMERATION_SPEC.max_rows_per_part == DEFAULT_ROW_GROUP_SIZE
+    assert INVENTORY_RELATIONS[-1] is INVENTORY_ENUMERATION_SPEC
 
 
 def test_inventory_relations_compaction_parity(tmp_path: Path) -> None:

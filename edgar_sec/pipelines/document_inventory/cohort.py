@@ -140,8 +140,25 @@ def _row_to_observation(
     filing_date = _parse_date(batch.column("filing_date")[index].as_py(), "filing")
     report_date = _parse_date(batch.column("report_date")[index].as_py(), "report")
     return CohortObservation(
-        cohort_source_id, accession, source_cik, form, filing_date, report_date
+        cohort_source_id,
+        accession,
+        source_cik,
+        form,
+        filing_date,
+        report_date,
+        is_xbrl=bool(batch.column("is_xbrl")[index].as_py()),
+        is_inline_xbrl=bool(batch.column("is_inline_xbrl")[index].as_py()),
+        primary_document=_optional_text(
+            batch.column("primary_document")[index].as_py()
+        ),
+        archive_url=_optional_text(batch.column("archive_url")[index].as_py()),
     )
+
+
+def _optional_text(raw: object) -> str | None:
+    if raw is None or not isinstance(raw, str) or not raw.strip():
+        return None
+    return raw
 
 
 def _stream_part(part_path: Path, cohort_source_id: str) -> Iterator[CohortObservation]:
@@ -348,6 +365,17 @@ def project_cohort(
                 cohort_sources=cohort_sources,
             )
         )
+        ordered_observations = [dedup[key] for key in sorted(dedup)]
+        flagged = [obs for obs in ordered_observations if obs.is_xbrl]
+        routing = flagged[0] if flagged else ordered_observations[0]
+        primary_document = routing.primary_document or next(
+            (
+                obs.primary_document
+                for obs in ordered_observations
+                if obs.primary_document
+            ),
+            None,
+        )
         work_items.append(
             IndexWorkItem(
                 accession,
@@ -356,6 +384,11 @@ def project_cohort(
                     source_ciks[0],
                     archive_base_url=archive_base_url,
                 ),
+                vehicle="summary" if flagged else "index",
+                archive_cik=str(source_ciks[0]),
+                primary_document=primary_document,
+                is_inline_xbrl=routing.is_inline_xbrl if flagged else False,
+                form=ordered_observations[0].form,
             )
         )
 

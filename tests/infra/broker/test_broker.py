@@ -370,3 +370,19 @@ def test_streamed_broker_rejects_ipc_destination_outside_staging_root(
     assert response["error_code"] == "invalid_request"
     assert not (tmp_path / "escaped-body").exists()
     assert fake_http.stream_calls == []
+
+
+def test_fetch_surfaces_http_error_code_and_status(tmp_path: Path) -> None:
+    from edgar_sec.infra.sec_http.errors import PermanentHttpError
+
+    class _HttpStatusFake(_FakeHttpClient):
+        def get_bytes(self, url: str, *, force_refresh: bool = False) -> bytes:
+            raise PermanentHttpError(url, "not found", status_code=404)
+
+    socket_path = tmp_path / "broker.sock"
+    with managed_broker(socket_path, http_client=_HttpStatusFake({})) as client:
+        result = client.fetch("https://www.sec.gov/Archives/missing.htm")
+
+    assert result["status"] == "failed"
+    assert result["error_code"] == "http_not_found"
+    assert result["status_code"] == 404

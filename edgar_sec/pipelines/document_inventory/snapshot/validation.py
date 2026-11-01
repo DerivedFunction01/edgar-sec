@@ -350,7 +350,7 @@ def validate_snapshot(
         name: _part_files(
             paths,
             snapshot_id,
-            payload.get(name) or payload.get("relations", {}).get(name),
+            payload.get(name) or payload.get("relations", {}).get(name) or [],
             name,
             schema,
             staged_root=staged_root,

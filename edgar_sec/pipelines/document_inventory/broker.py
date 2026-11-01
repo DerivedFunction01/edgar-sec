@@ -13,16 +13,27 @@ from typing import Literal
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.infra.broker.sec_broker import SecBrokerClient
 
-__all__ = ["IndexFetchFailure", "IndexPageEnvelope", "IndexPageBrokerClient"]
+__all__ = [
+    "DocumentEnvelope",
+    "IndexFetchFailure",
+    "IndexPageEnvelope",
+    "IndexPageBrokerClient",
+]
 
 
 @dataclass(frozen=True, slots=True)
 class IndexFetchFailure:
-    """Broker reported a terminal failure for one index-page fetch."""
+    """Broker reported a terminal failure for one document fetch.
+
+    ``status_code`` is the HTTP status when the broker saw one (404 = vehicle
+    absence; a throttle is not); ``vehicle`` names the producing leg.
+    """
 
     accession: AccessionNumber
     code: Literal["fetch_failed"]
     detail: str
+    status_code: int | None = None
+    vehicle: Literal["index", "summary", "package"] = "index"
 
 
 @dataclass(frozen=True, slots=True)
@@ -33,6 +44,16 @@ class IndexPageEnvelope:
     index_url: str
     response_size: int
     html_bytes: bytes
+
+
+@dataclass(frozen=True, slots=True)
+class DocumentEnvelope:
+    """One fetched document: identity, URL, size, and exact response bytes."""
+
+    accession: AccessionNumber
+    url: str
+    response_size: int
+    payload_bytes: bytes
 
 
 class IndexPageBrokerClient:
@@ -70,11 +91,32 @@ class IndexPageBrokerClient:
         force_refresh: bool = False,
     ) -> IndexPageEnvelope | IndexFetchFailure:
         """Fetch one index page, returning a typed envelope or typed failure."""
-        result = self._client.fetch(index_url, force_refresh=force_refresh)
+        fetched = self.fetch_document(accession, index_url, force_refresh=force_refresh)
+        if isinstance(fetched, IndexFetchFailure):
+            return fetched
+        return IndexPageEnvelope(
+            accession, index_url, fetched.response_size, fetched.payload_bytes
+        )
+
+    def fetch_document(
+        self,
+        accession: AccessionNumber,
+        url: str,
+        *,
+        force_refresh: bool = False,
+    ) -> DocumentEnvelope | IndexFetchFailure:
+        """Fetch one document by URL, returning an envelope or typed failure."""
+        result = self._client.fetch(url, force_refresh=force_refresh)
         if result.get("status") != "ok":
             detail = str(result.get("error") or "broker reported failure")
-            return IndexFetchFailure(accession, "fetch_failed", detail)
+            status_code = result.get("status_code")
+            return IndexFetchFailure(
+                accession,
+                "fetch_failed",
+                detail,
+                status_code=int(status_code) if status_code is not None else None,
+            )
         payload = result.get("payload") or b""
         if not isinstance(payload, bytes):
             payload = bytes(payload)
-        return IndexPageEnvelope(accession, index_url, len(payload), payload)
+        return DocumentEnvelope(accession, url, len(payload), payload)

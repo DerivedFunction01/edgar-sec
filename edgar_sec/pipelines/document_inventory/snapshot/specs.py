@@ -8,6 +8,7 @@ from edgar_sec.infra.storage.dag.spec import RelationSpec
 from .schema import (
     SNAPSHOT_ACCESSIONS_SCHEMA,
     SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
+    SNAPSHOT_ENUMERATION_SCHEMA,
 )
 
 INVENTORY_ACCESSIONS_SPEC = RelationSpec(
@@ -39,15 +40,26 @@ INVENTORY_ACCESSION_SOURCES_SPEC = RelationSpec(
     entity_key="source_cik",
 )
 
+INVENTORY_ENUMERATION_SPEC = RelationSpec(
+    name="accession_enumeration",
+    schema=SNAPSHOT_ENUMERATION_SCHEMA,
+    primary_key=("accession",),
+    merge_strategy="upsert",
+    sort_order=("accession",),
+    entity_key="accession",
+)
+
 INVENTORY_RELATIONS = (
     INVENTORY_ACCESSIONS_SPEC,
     INVENTORY_ENTRIES_SPEC,
     INVENTORY_ACCESSION_SOURCES_SPEC,
+    INVENTORY_ENUMERATION_SPEC,
 )
 
 __all__ = [
     "INVENTORY_ACCESSIONS_SPEC",
     "INVENTORY_ACCESSION_SOURCES_SPEC",
     "INVENTORY_ENTRIES_SPEC",
+    "INVENTORY_ENUMERATION_SPEC",
     "INVENTORY_RELATIONS",
 ]

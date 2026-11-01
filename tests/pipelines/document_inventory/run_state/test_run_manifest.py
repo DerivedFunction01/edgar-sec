@@ -212,3 +212,60 @@ def test_write_rejects_unknown_fetch_mode(tmp_path: Path) -> None:
             fixture_id=None,
             **{**IDENTITY, "fetch_mode": "ftp"},
         )
+
+
+def test_work_order_round_trips_routing_fields(tmp_path: Path) -> None:
+    paths = inventory_run_paths(tmp_path, "run-1")
+    items = [
+        IndexWorkItem(
+            AccessionNumber.from_any("000000000126000001"),
+            "https://example.test/1-index.htm",
+            vehicle="summary",
+            archive_cik="0000000001",
+            primary_document="acme-10k.htm",
+            is_inline_xbrl=True,
+            form="10-K",
+        ),
+        IndexWorkItem(
+            AccessionNumber.from_any("000000000226000001"),
+            "https://example.test/2-index.htm",
+        ),
+    ]
+    output = _write_order(paths, items)
+
+    chunks = list(iter_work_order_chunks(output, chunk_size=4))
+    members = [member for _chunk_id, group in chunks for member in group]
+    assert members[0].vehicle == "summary"
+    assert members[0].archive_cik == "0000000001"
+    assert members[0].primary_document == "acme-10k.htm"
+    assert members[0].is_inline_xbrl is True
+    assert members[0].form == "10-K"
+    assert members[1].vehicle == "index"
+    assert members[1].archive_cik is None
+
+
+def test_prior_version_work_order_is_refused_not_misread(tmp_path: Path) -> None:
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+
+    from edgar_sec.pipelines.document_inventory.run_state.run_manifest import (
+        validate_work_order,
+    )
+
+    prior = tmp_path / "work_order.parquet"
+    pq.write_table(
+        pa.table(
+            {
+                "accession": pa.array(["0000000001-26-000001"], type=pa.string()),
+                "index_url": pa.array(
+                    ["https://example.test/1-index.htm"], type=pa.string()
+                ),
+            }
+        ),
+        prior,
+    )
+
+    with pytest.raises(ManifestMismatchError, match="schema mismatch"):
+        validate_work_order(prior)
+    with pytest.raises(ManifestMismatchError, match="schema mismatch"):
+        list(iter_work_order_chunks(prior, chunk_size=2))

@@ -102,3 +102,172 @@ def test_response_bytes_are_not_capped(tmp_path: Path, monkeypatch) -> None:
 
     assert captured == [payload]
     assert isinstance(result, UnrecognizedIndexPage)
+
+
+SUMMARY_URL = (
+    "https://www.sec.gov/Archives/edgar/data/1/000000000126000001/FilingSummary.xml"
+)
+PACKAGE_URL = (
+    "https://www.sec.gov/Archives/edgar/data/1/000000000126000001/"
+    "0000000001-26-000001-xbrl.zip"
+)
+
+
+def _summary_item(**overrides) -> IndexWorkItem:
+    accession = AccessionNumber("0000000001-26-000001")
+    fields = {
+        "vehicle": "summary",
+        "archive_cik": "1",
+        "primary_document": "acme10k.htm",
+        "is_inline_xbrl": False,
+        "form": "10-K",
+    }
+    fields.update(overrides)
+    return IndexWorkItem(
+        accession,
+        f"https://www.sec.gov/Archives/edgar/data/1/{accession.normalized}/index.htm",
+        **fields,
+    )
+
+
+def _package_bytes(members: dict[str, bytes]) -> bytes:
+    import io
+    import zipfile
+
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        for name, payload in members.items():
+            archive.writestr(name, payload)
+    return buffer.getvalue()
+
+
+class _StubBroker:
+    """In-memory broker double recording the exact fetch order."""
+
+    def __init__(self, documents=None, failures=None) -> None:
+        self.documents = documents or {}
+        self.failures = failures or {}
+        self.calls: list[str] = []
+
+    def fetch_document(self, accession, url, *, force_refresh=False):
+        from edgar_sec.pipelines.document_inventory.broker import DocumentEnvelope
+
+        self.calls.append(url)
+        if url in self.failures:
+            status_code, detail = self.failures[url]
+            return IndexFetchFailure(
+                accession, "fetch_failed", detail, status_code=status_code
+            )
+        payload = self.documents[url]
+        return DocumentEnvelope(accession, url, len(payload), payload)
+
+    def fetch_index(self, accession, index_url, *, force_refresh=False):
+        from edgar_sec.pipelines.document_inventory.broker import IndexPageEnvelope
+
+        self.calls.append(index_url)
+        return IndexPageEnvelope(accession, index_url, len(INDEX_HTML), INDEX_HTML)
+
+
+def test_summary_vehicle_serves_enumerated_documents() -> None:
+    from edgar_sec.domain.document_inventory.models import EnumeratedDocuments
+
+    broker = _StubBroker(
+        documents={SUMMARY_URL: fixture_path("filing_summary_classic.xml").read_bytes()}
+    )
+    result = process_accession(_summary_item(), broker)
+
+    assert isinstance(result, EnumeratedDocuments)
+    assert result.vehicle == "summary"
+    assert result.source_url == SUMMARY_URL
+    assert broker.calls == [SUMMARY_URL]
+
+
+def test_package_fallback_on_summary_404() -> None:
+    from edgar_sec.domain.document_inventory.models import EnumeratedDocuments
+
+    broker = _StubBroker(
+        documents={PACKAGE_URL: _package_bytes({"acme-20121231.xml": b"instance"})},
+        failures={SUMMARY_URL: (404, "http_not_found")},
+    )
+    result = process_accession(_summary_item(), broker)
+
+    assert isinstance(result, EnumeratedDocuments)
+    assert result.vehicle == "package"
+    assert broker.calls == [SUMMARY_URL, PACKAGE_URL]
+
+
+def test_package_fallback_on_unrecognized_summary() -> None:
+    from edgar_sec.domain.document_inventory.models import EnumeratedDocuments
+
+    broker = _StubBroker(
+        documents={
+            SUMMARY_URL: fixture_path(
+                "filing_summary_classic_no_input_files.xml"
+            ).read_bytes(),
+            PACKAGE_URL: _package_bytes({"acme-20121231.xsd": b"schema"}),
+        }
+    )
+    result = process_accession(_summary_item(), broker)
+
+    assert isinstance(result, EnumeratedDocuments)
+    assert result.vehicle == "package"
+    assert broker.calls == [SUMMARY_URL, PACKAGE_URL]
+
+
+def test_index_fallback_when_both_vehicles_absent() -> None:
+    item = _summary_item()
+    broker = _StubBroker(
+        failures={SUMMARY_URL: (404, "http_not_found"), PACKAGE_URL: (404, "missing")}
+    )
+    result = process_accession(item, broker)
+
+    assert isinstance(result, ParsedIndexPage)
+    assert broker.calls == [SUMMARY_URL, PACKAGE_URL, item.index_url]
+
+
+def test_throttled_summary_stops_the_chain() -> None:
+    broker = _StubBroker(failures={SUMMARY_URL: (503, "throttled")})
+    result = process_accession(_summary_item(), broker)
+
+    assert isinstance(result, IndexFetchFailure)
+    assert result.status_code == 503
+    assert result.vehicle == "summary"
+    assert broker.calls == [SUMMARY_URL]
+
+
+def test_inline_summary_synthesizes_extracted_instance() -> None:
+    from edgar_sec.domain.document_inventory.models import EnumeratedDocuments
+
+    item = _summary_item(primary_document="acme-10k_20241231.htm", is_inline_xbrl=True)
+    broker = _StubBroker(
+        documents={SUMMARY_URL: fixture_path("filing_summary_inline.xml").read_bytes()}
+    )
+    result = process_accession(item, broker)
+
+    assert isinstance(result, EnumeratedDocuments)
+    filenames = {entry.filename for entry in result.entries}
+    assert "acme-10k_20241231_htm.xml" in filenames
+
+
+def test_inline_package_fallback_synthesizes_extracted_instance() -> None:
+    from edgar_sec.domain.document_inventory.models import EnumeratedDocuments
+
+    item = _summary_item(primary_document="acme-10k_20241231.htm", is_inline_xbrl=True)
+    broker = _StubBroker(
+        documents={
+            PACKAGE_URL: _package_bytes(
+                {
+                    "acme-10k_20241231.htm": b"primary",
+                    "acme-20241231.xsd": b"schema",
+                }
+            )
+        },
+        failures={SUMMARY_URL: (404, "http_not_found")},
+    )
+    result = process_accession(item, broker)
+
+    assert isinstance(result, EnumeratedDocuments)
+    assert result.vehicle == "package"
+    filenames = {entry.filename for entry in result.entries}
+    assert "acme-10k_20241231_htm.xml" in filenames
+    assert not any(e.document_type == "EX-101.INS" for e in result.entries)

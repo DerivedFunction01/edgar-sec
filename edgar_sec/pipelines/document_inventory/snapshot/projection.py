@@ -18,6 +18,7 @@ import pyarrow.parquet as pq
 from edgar_sec.domain.document_inventory.models import IndexWorkItem
 from edgar_sec.domain.document_inventory.schemas import ENTRY_SCHEMA_VERSION
 from edgar_sec.domain.identity import AccessionNumber
+from edgar_sec.engine.filing_summary.parser import ENUMERATOR_FINGERPRINT
 from edgar_sec.engine.index_pages.parser import PARSER_FINGERPRINT
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME
@@ -122,16 +123,18 @@ def _read_projection_manifest(path: Path) -> dict[str, Any]:
 def _projection_sql(parts: list[tuple[str, Path, int, str]]) -> str:
     selects = [
         f"SELECT document_locator_key, source_cik, accession, form, filing_date, "
-        f"report_date, {sql_literal(form)} AS _expected_form "
+        f"report_date, is_xbrl, is_inline_xbrl, primary_document, archive_url, "
+        f"{sql_literal(form)} AS _expected_form "
         f"FROM read_parquet({sql_literal(str(path))}, hive_partitioning=false)"
         for form, path, _count, _digest in parts
     ]
     if not selects:
         return """CREATE TEMP TABLE raw_targets AS
-            SELECT NULL::VARCHAR AS document_locator_key,
-                   NULL::VARCHAR AS accession, NULL::VARCHAR AS source_cik,
-                   NULL::VARCHAR AS form, NULL::VARCHAR AS filing_date,
-                   NULL::VARCHAR AS report_date, NULL::VARCHAR AS _expected_form
+            SELECT NULL::VARCHAR AS document_locator_key, NULL::VARCHAR AS accession,
+                   NULL::VARCHAR AS source_cik, NULL::VARCHAR AS form, NULL::BOOLEAN AS is_xbrl,
+                   NULL::VARCHAR AS filing_date, NULL::VARCHAR AS report_date,
+                   NULL::BOOLEAN AS is_inline_xbrl, NULL::VARCHAR AS primary_document,
+                   NULL::VARCHAR AS archive_url, NULL::VARCHAR AS _expected_form
             WHERE FALSE"""
     return "CREATE TEMP TABLE raw_targets AS " + " UNION ALL BY NAME ".join(selects)
 
@@ -169,13 +172,22 @@ def _validate_output_schema(path: Path, schema: pa.Schema) -> None:
 
 def _work_items(connection: Any):
     reader = connection.execute(
-        "SELECT accession, index_url FROM work_candidates ORDER BY accession"
+        "SELECT accession, index_url, vehicle, archive_cik, primary_document, "
+        "is_inline_xbrl, form FROM work_candidates ORDER BY accession"
     ).to_arrow_reader(batch_size=resolve_read_batch_size())
     for batch_index, batch in enumerate(reader, start=1):
-        rows = batch.to_pylist()
-        for row in rows:
-            yield IndexWorkItem(AccessionNumber(row["accession"]), row["index_url"])
-        del rows
+        yield from (
+            IndexWorkItem(
+                AccessionNumber(row["accession"]),
+                row["index_url"],
+                vehicle=row["vehicle"],
+                archive_cik=row["archive_cik"],
+                primary_document=row["primary_document"],
+                is_inline_xbrl=bool(row["is_inline_xbrl"]),
+                form=row["form"],
+            )
+            for row in batch.to_pylist()
+        )
         if batch_index % 16 == 0:
             reclaim()
 
@@ -201,6 +213,7 @@ def _intent_id(
                 "base_manifest_sha256": base_manifest_sha256,
                 "cohort_fingerprint": cohort_fingerprint,
                 "parser_version": PARSER_FINGERPRINT,
+                "enumerator_version": ENUMERATOR_FINGERPRINT,
                 "snapshot_relation_version": SNAPSHOT_RELATION_VERSION,
                 "entry_schema_version": ENTRY_SCHEMA_VERSION,
                 "lookup_layout_version": LOOKUP_LAYOUT_VERSION,
@@ -455,7 +468,10 @@ def project_catalog_plan(
                 CASE
                     WHEN report_date IS NULL OR trim(report_date) = '' THEN NULL
                     ELSE cast(try_cast(trim(report_date) AS DATE) AS VARCHAR)
-                END AS report_date
+                END AS report_date,
+                coalesce(is_xbrl, false) AS is_xbrl, coalesce(is_inline_xbrl, false) AS is_inline_xbrl,
+                nullif(trim(coalesce(primary_document, '')), '') AS primary_document,
+                nullif(trim(coalesce(archive_url, '')), '') AS archive_url
             FROM raw_targets
             """
         )
@@ -620,8 +636,13 @@ def project_catalog_plan(
         connection.execute(
             """
             CREATE TEMP TABLE work_candidates AS
-            SELECT c.accession, c.index_url
+            SELECT c.accession, c.index_url, c.form, CASE WHEN r.flagged THEN 'summary' ELSE 'index' END AS vehicle,
+                   route.archive_cik, r.primary_document, r.is_inline_xbrl
             FROM cohort_accessions_with_url c
+            JOIN cohort_archive_ciks route USING (accession)
+            JOIN (SELECT accession, bool_or(is_xbrl) AS flagged, bool_or(is_inline_xbrl) AS is_inline_xbrl,
+                         min(primary_document) AS primary_document
+                  FROM normalized_observations GROUP BY accession) r USING (accession)
             LEFT JOIN base_accessions b USING (accession)
             WHERE ? OR b.accession IS NULL
             """,
@@ -703,6 +724,7 @@ def project_catalog_plan(
                 for path, row_count, digest in base_parts
             ],
             "parser_version": PARSER_FINGERPRINT,
+            "enumerator_version": ENUMERATOR_FINGERPRINT,
             "snapshot_relation_version": SNAPSHOT_RELATION_VERSION,
             "entry_schema_version": ENTRY_SCHEMA_VERSION,
             "lookup_layout_version": LOOKUP_LAYOUT_VERSION,

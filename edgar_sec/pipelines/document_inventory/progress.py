@@ -7,7 +7,10 @@ from collections.abc import Iterable, Mapping, Sequence
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.domain.document_inventory.models import ParsedIndexPage
+from edgar_sec.domain.document_inventory.models import (
+    EnumeratedDocuments,
+    ParsedIndexPage,
+)
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import connect, sql_path_list
@@ -21,7 +24,9 @@ from .run_state.run_manifest import (
     PROGRESS_SCHEMA_VERSION,
 )
 
-_OUTCOME_INSERT = "INSERT INTO outcomes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+_OUTCOME_INSERT = (
+    "INSERT INTO outcomes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+)
 _ENTRY_INSERT = "INSERT INTO entries VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 _METADATA_INSERT = "INSERT INTO progress_metadata VALUES (?)"
 
@@ -92,7 +97,7 @@ class ProgressStore:
             "index_url VARCHAR, page_sha256 VARCHAR, response_size BIGINT, "
             "entry_count INTEGER, xbrl_candidate_url VARCHAR, bundle_url VARCHAR, "
             "bundle_size BIGINT, diagnostics_json VARCHAR, error_code VARCHAR, "
-            "error_detail VARCHAR)"
+            "error_detail VARCHAR, vehicle VARCHAR, source_url VARCHAR)"
         )
         self._con.execute(
             "CREATE TABLE entries (entry_id VARCHAR, accession VARCHAR, "
@@ -174,7 +179,7 @@ class ProgressStore:
         self._con.execute("BEGIN TRANSACTION")
         try:
             self._con.execute(_OUTCOME_INSERT, values)
-            if isinstance(result, ParsedIndexPage):
+            if isinstance(result, (ParsedIndexPage, EnumeratedDocuments)):
                 for entry in result.entries:
                     self._con.execute(_ENTRY_INSERT, _entry_values(entry))
             self._con.execute(
