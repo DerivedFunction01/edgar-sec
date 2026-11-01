@@ -118,54 +118,76 @@ class Xbrl:
         *,
         fact_set: XbrlFactSet | None = None,
         evidence_record: FilingEvidenceRecord | None = None,
+        arc_suppliers: dict[str, Any] | None = None,
     ) -> None:
         """Shared construction path for loaded and cohort-sourced facades."""
         self._filing = filing_xbrl
         self._taxonomy = taxonomy or load_domain_taxonomy()
         self._evidence_record = evidence_record
         self._axes_cache: tuple[AxisCoordinate, ...] | None = None
+        self._financials: XbrlFinancials | None = None
+        self._arcs_deferred = arc_suppliers is not None
 
-        arcs = self._filing.linkbases.calculation_arcs if self._filing.linkbases else ()
-        def_arcs = (
-            self._filing.linkbases.definition_arcs if self._filing.linkbases else ()
-        )
-        pres_arcs = (
-            self._filing.linkbases.presentation_arcs if self._filing.linkbases else ()
-        )
-        raw_labels = self._filing.linkbases.labels if self._filing.linkbases else ()
+        linkbases = self._filing.linkbases
+        if arc_suppliers is not None:
+            calc_source: Any = arc_suppliers["calculation"]
+            def_source: Any = arc_suppliers["definition"]
+            pres_source: Any = arc_suppliers["presentation"]
+        else:
+            calc_source = linkbases.calculation_arcs if linkbases else ()
+            def_source = linkbases.definition_arcs if linkbases else ()
+            pres_source = linkbases.presentation_arcs if linkbases else ()
+        raw_labels = linkbases.labels if linkbases else ()
         self._labels = _labels_by_concept(raw_labels)
 
-        declarations = self._merged_declarations(arcs)
-        self.facts = fact_set or XbrlFactSet(
-            self._filing.facts, self._taxonomy, declarations=declarations
-        )
-        self._kernel = FilingKernel(
+        if fact_set is not None:
+            self.facts = fact_set
+            merged: Any = None
+        else:
+            merged = self._merged_declarations(tuple(calc_source))
+            self.facts = XbrlFactSet(
+                self._filing.facts, self._taxonomy, declarations=merged
+            )
+        kernel = FilingKernel(
             self._filing.facts,
-            arcs,
+            calc_source,
             self._taxonomy,
             self._labels,
             records=self.facts.records,
-            declarations=declarations,
-            definition_arcs=def_arcs,
-            presentation_arcs=pres_arcs,
+            declarations=(
+                merged
+                if merged is not None
+                else lambda: self._merged_declarations(kernel.calculation_arcs)
+            ),
+            definition_arcs=def_source,
+            presentation_arcs=pres_source,
             cik=(self._filing.cik.to_10digit() if int(self._filing.cik) else None),
             accession=str(self._filing.accession),
         )
+        self._kernel = kernel
         self._provenance = (
             FIDELITY_INSTANCE if filing_xbrl.instance_document else FIDELITY_BUNDLE
         )
         self.statements = XbrlStatements(self._kernel)
-        self.financials = XbrlFinancials(
-            self._kernel,
-            composition_resolver=self._resolve_composition,
-        )
 
         kb = EvidenceKnowledgeBase(self._taxonomy)
         solver = XbrlConstraintSolver(kb)
-        self._query_engine = FinancialQueryEngine(solver, declarations=declarations)
+        self._query_engine = FinancialQueryEngine(
+            solver, declarations=self._kernel.declarations
+        )
         self._fiscal = FiscalYearQueries(
             self._filing.facts, self._taxonomy, self._query_engine
         )
+
+    @property
+    def financials(self) -> XbrlFinancials:
+        """The algebraic financials surface, built on first access."""
+        if self._financials is None:
+            self._financials = XbrlFinancials(
+                self._kernel,
+                composition_resolver=self._resolve_composition,
+            )
+        return self._financials
 
     @classmethod
     def from_cohort(
@@ -180,46 +202,31 @@ class Xbrl:
         """
         import pyarrow.parquet as pq
 
+        def arc_supplier(path: Path, reader: Any) -> Any:
+            """Zero-arg loader reading one arc parquet on first use."""
+
+            def load() -> tuple:
+                return reader(pq.read_table(path)) if path.exists() else ()
+
+            return load
+
         for batch, tables in iter_cohort_batches(entries):
             for entry, arrow in zip(batch, tables, strict=True):
                 if entry.accession != accession:
                     continue
                 facts = facts_from_arrow_table(arrow)
                 bundle_dir = entry.facts_path.parent
-                arcs_path = bundle_dir / "calculation_arcs.parquet"
-                arcs = (
-                    calculation_arcs_from_arrow_table(pq.read_table(arcs_path))
-                    if arcs_path.exists()
-                    else ()
-                )
-                pres_path = bundle_dir / "presentation_arcs.parquet"
-                pres_arcs = (
-                    presentation_arcs_from_arrow_table(pq.read_table(pres_path))
-                    if pres_path.exists()
-                    else ()
-                )
                 decl_path = bundle_dir / "declarations.parquet"
                 declarations = (
                     declarations_from_arrow_table(read_declarations_parquet(decl_path))
                     if decl_path.exists()
                     else ()
                 )
-                def_path = bundle_dir / "definition_arcs.parquet"
-                def_arcs = (
-                    definition_arcs_from_arrow_table(pq.read_table(def_path))
-                    if def_path.exists()
-                    else ()
-                )
                 bundle = FilingXbrl(
                     accession=AccessionNumber.from_any(accession),
                     cik=Cik(0),
                     facts=facts,
-                    linkbases=LinkbaseBundle(
-                        calculation_arcs=arcs,
-                        presentation_arcs=pres_arcs,
-                        declarations=declarations,
-                        definition_arcs=def_arcs,
-                    ),
+                    linkbases=LinkbaseBundle(declarations=declarations),
                     namespaces=tuple(sorted(bundle_namespaces(bundle_dir).items())),
                 )
                 instance = object.__new__(cls)
@@ -228,6 +235,20 @@ class Xbrl:
                     table.taxonomy,
                     fact_set=build_fact_set_from_table(facts, table),
                     evidence_record=build_filing_evidence(entry, table),
+                    arc_suppliers={
+                        "calculation": arc_supplier(
+                            bundle_dir / "calculation_arcs.parquet",
+                            calculation_arcs_from_arrow_table,
+                        ),
+                        "presentation": arc_supplier(
+                            bundle_dir / "presentation_arcs.parquet",
+                            presentation_arcs_from_arrow_table,
+                        ),
+                        "definition": arc_supplier(
+                            bundle_dir / "definition_arcs.parquet",
+                            definition_arcs_from_arrow_table,
+                        ),
+                    },
                 )
                 return instance
         raise ValueError(f"accession {accession} not among cohort entries")
@@ -326,8 +347,21 @@ class Xbrl:
 
     @property
     def linkbases(self) -> LinkbaseBundle | None:
-        """Return raw linkbase bundle attached to this filing."""
-        return self._filing.linkbases
+        """Return raw linkbase bundle attached to this filing.
+
+        A deferred facade materializes its arc sets for this call, so
+        the returned bundle always carries the filing's full arcs.
+        """
+        base = self._filing.linkbases
+        if base is None or not self._arcs_deferred:
+            return base
+        return LinkbaseBundle(
+            calculation_arcs=self._kernel.calculation_arcs,
+            presentation_arcs=self._kernel.presentation_arcs,
+            labels=base.labels,
+            declarations=base.declarations,
+            definition_arcs=self._kernel.definition_arcs,
+        )
 
     @property
     def evidence(self) -> FilingEvidenceRecord | None:
@@ -356,7 +390,7 @@ class Xbrl:
         """
         query_mode = self._parse_query_mode(mode)
         policy = self._parse_dimension_policy(dimension_policy)
-        arcs = self._filing.linkbases.calculation_arcs if self._filing.linkbases else ()
+        arcs = self._kernel.calculation_arcs
         if scope is not None:
             return self._execute_query(term, query_mode, scope, arcs)
         accession = self._scope_accession()
@@ -446,7 +480,7 @@ class Xbrl:
         year: int | str | None = None,
     ) -> StatementView:
         """Construct an algebraic StatementView for any arbitrary concept in the filing."""
-        arcs = self._filing.linkbases.calculation_arcs if self._filing.linkbases else ()
+        arcs = self._kernel.calculation_arcs
         graph = build_statement_graph(
             root_concept=root_concept,
             statement_type=f"Custom: {root_concept}",
@@ -500,7 +534,7 @@ class Xbrl:
         """Evaluate a user-composed add/subtract chain over named operands."""
         query_mode = self._parse_query_mode(mode)
         policy = self._parse_dimension_policy(dimension_policy)
-        arcs = self._filing.linkbases.calculation_arcs if self._filing.linkbases else ()
+        arcs = self._kernel.calculation_arcs
         return evaluate_chain(
             lambda term: self._resolve_operand(term, query_mode, fiscal_year, policy),
             terms,

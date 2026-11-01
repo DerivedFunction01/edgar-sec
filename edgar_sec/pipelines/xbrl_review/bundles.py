@@ -13,7 +13,6 @@ from typing import Any
 
 import pyarrow.parquet as pq
 
-from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.xbrl.discovery.cohort import (
     SeedFiling,
     canonical_probe_cohort_path,
@@ -32,6 +31,7 @@ from edgar_sec.engine.xbrl.solve.concept_table import CohortEntry
 from edgar_sec.engine.xbrl.storage.storage import (
     calculation_arcs_from_arrow_table,
     declarations_from_arrow_table,
+    facts_from_arrow_table,
     presentation_arcs_from_arrow_table,
     read_declarations_parquet,
 )
@@ -171,27 +171,7 @@ def missing_bundles(
 def load_filing(seed: SeedFiling, registry_path: Path | None = None) -> LoadedFiling:
     """Load one filing's facts, calculation and presentation arcs, declarations."""
     bundle_dir = bundle_dir_for(str(seed.accession), registry_path)
-    fact_rows = pq.read_table(bundle_dir / _FACTS_FILE).to_pylist()
-    facts = tuple(
-        XbrlFact(
-            accession=AccessionNumber.from_any(row["accession"]),
-            concept_qname=row["concept_qname"],
-            value=(
-                row["numeric_value"]
-                if row["numeric_value"] is not None
-                else row["text_value"]
-            ),
-            unit=row["unit"],
-            decimals=row["decimals"],
-            period_type=row["period_type"],
-            start_date=row["start_date"],
-            end_date=row["end_date"],
-            instant_date=row["instant_date"],
-            dimensions=json.loads(row["dimensions_json"]),
-            context_id=row["context_id"],
-        )
-        for row in fact_rows
-    )
+    facts = facts_from_arrow_table(pq.read_table(bundle_dir / _FACTS_FILE))
     calc_arcs = calculation_arcs_from_arrow_table(
         pq.read_table(bundle_dir / _CALC_FILE)
     )

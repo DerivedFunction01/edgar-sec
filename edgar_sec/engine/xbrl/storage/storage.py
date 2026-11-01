@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 from pathlib import Path
 from typing import Sequence
@@ -9,6 +10,7 @@ from typing import Sequence
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.xbrl.discovery.discovery import DiscoveredLinkbase
 from edgar_sec.engine.xbrl.schema.models import (
     CalculationArc,
@@ -19,6 +21,24 @@ from edgar_sec.engine.xbrl.schema.models import (
 )
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.parquet import write_parquet_table
+
+
+class _StringInterner:
+    """Per-load string cache: repeated row strings share one object."""
+
+    def __init__(self) -> None:
+        self._cache: dict[str, str] = {}
+
+    def __call__(self, value: str | None) -> str | None:
+        """The cached object for a string, or None passed through."""
+        if value is None:
+            return None
+        cached = self._cache.get(value)
+        if cached is None:
+            self._cache[value] = value
+            return value
+        return cached
+
 
 LINKBASE_INVENTORY_SCHEMA = pa.schema(
     [
@@ -147,13 +167,14 @@ def calculation_arcs_from_arrow_table(
     table: pa.Table,
 ) -> tuple[CalculationArc, ...]:
     """Rebuild calculation arcs from a calculation-arcs Arrow table."""
+    intern = _StringInterner()
     return tuple(
         CalculationArc(
-            parent_qname=row["parent_qname"],
-            child_qname=row["child_qname"],
+            parent_qname=intern(row["parent_qname"]),
+            child_qname=intern(row["child_qname"]),
             weight=row["weight"],
             order=row["order"],
-            role_uri=row["role_uri"],
+            role_uri=intern(row["role_uri"]),
         )
         for row in table.to_pylist()
     )
@@ -185,12 +206,13 @@ def presentation_arcs_from_arrow_table(
     table: pa.Table,
 ) -> tuple[PresentationArc, ...]:
     """Rebuild presentation arcs from a presentation-arcs Arrow table."""
+    intern = _StringInterner()
     return tuple(
         PresentationArc(
-            parent_qname=row["parent_qname"],
-            child_qname=row["child_qname"],
+            parent_qname=intern(row["parent_qname"]),
+            child_qname=intern(row["child_qname"]),
             order=row["order"],
-            role_uri=row["role_uri"],
+            role_uri=intern(row["role_uri"]),
         )
         for row in table.to_pylist()
     )
@@ -227,17 +249,18 @@ def definition_arcs_from_arrow_table(
     table: pa.Table,
 ) -> tuple[DefinitionArc, ...]:
     """Rebuild definition arcs from a definition-arcs Arrow table."""
+    intern = _StringInterner()
     return tuple(
         DefinitionArc(
-            parent_qname=row["parent_qname"],
-            child_qname=row["child_qname"],
-            arcrole=row["arcrole"],
+            parent_qname=intern(row["parent_qname"]),
+            child_qname=intern(row["child_qname"]),
+            arcrole=intern(row["arcrole"]),
             order=row["order"],
-            role_uri=row["role_uri"],
+            role_uri=intern(row["role_uri"]),
             usable=row["usable"],
             closed=row["closed"],
-            context_element=row["context_element"],
-            target_role=row["target_role"],
+            context_element=intern(row["context_element"]),
+            target_role=intern(row["target_role"]),
         )
         for row in table.to_pylist()
     )
@@ -291,6 +314,51 @@ def write_facts_parquet(
     """Write XBRL facts into an atomic Parquet file."""
     table = facts_to_arrow_table(facts)
     return write_parquet_table(table, destination)
+
+
+def facts_from_arrow_table(table: pa.Table) -> tuple[XbrlFact, ...]:
+    """Rebuild facts from a facts Arrow table, sharing repeated objects.
+
+    One interned object serves each repeated string and accession, and
+    one parsed dict serves each distinct dimensions payload.
+    """
+    intern = _StringInterner()
+    accessions: dict[str, AccessionNumber] = {}
+    dimensions_by_payload: dict[str, dict[str, str]] = {}
+    facts: list[XbrlFact] = []
+    for row in table.to_pylist():
+        accession_raw = row["accession"]
+        accession = accessions.get(accession_raw)
+        if accession is None:
+            accession = accessions[accession_raw] = AccessionNumber.from_any(
+                accession_raw
+            )
+        payload = row["dimensions_json"]
+        dimensions = dimensions_by_payload.get(payload)
+        if dimensions is None:
+            # Shared dicts are read-only after load: no consumer mutates
+            # a fact's dimensions (copies are made where one is needed).
+            dimensions = dimensions_by_payload[payload] = json.loads(payload)
+        facts.append(
+            XbrlFact(
+                accession=accession,
+                concept_qname=intern(row["concept_qname"]),
+                value=(
+                    row["numeric_value"]
+                    if row["numeric_value"] is not None
+                    else row["text_value"]
+                ),
+                unit=intern(row["unit"]),
+                decimals=row["decimals"],
+                period_type=intern(row["period_type"]),
+                start_date=intern(row["start_date"]),
+                end_date=intern(row["end_date"]),
+                instant_date=intern(row["instant_date"]),
+                dimensions=dimensions,
+                context_id=intern(row["context_id"]),
+            )
+        )
+    return tuple(facts)
 
 
 def declarations_to_arrow_table(

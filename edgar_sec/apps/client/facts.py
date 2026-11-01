@@ -27,6 +27,9 @@ from edgar_sec.engine.xbrl.schema.models import (
 from edgar_sec.engine.xbrl.solve.concept_table import ConceptRecord, ConceptTable
 from edgar_sec.engine.xbrl.solve.cohort_lookup import CohortFact, CohortFactMatch
 from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer, TokenizedFact
+from edgar_sec.engine.xbrl.storage.storage import (
+    facts_from_arrow_table as _facts_from_arrow_table,
+)
 from edgar_sec.engine.xbrl.taxonomy.archive import CURRENT_SLICES, load_slice
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 from edgar_sec.foundation.serialization import canonical_json
@@ -174,26 +177,7 @@ def _table_records(
 
 def facts_from_arrow_table(table: pa.Table) -> tuple[XbrlFact, ...]:
     """Full-fidelity XbrlFact tuples from a bundle facts.parquet table."""
-    return tuple(
-        XbrlFact(
-            accession=AccessionNumber.from_any(row["accession"]),
-            concept_qname=row["concept_qname"],
-            value=(
-                row["numeric_value"]
-                if row["numeric_value"] is not None
-                else row["text_value"]
-            ),
-            unit=row["unit"],
-            decimals=row["decimals"],
-            period_type=row["period_type"],
-            start_date=row["start_date"],
-            end_date=row["end_date"],
-            instant_date=row["instant_date"],
-            dimensions=json.loads(row["dimensions_json"]),
-            context_id=row["context_id"],
-        )
-        for row in table.to_pylist()
-    )
+    return _facts_from_arrow_table(table)
 
 
 def build_fact_set_from_table(

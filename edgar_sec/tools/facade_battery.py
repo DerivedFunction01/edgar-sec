@@ -25,6 +25,7 @@ from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle, XbrlFact
 from edgar_sec.engine.xbrl.storage.storage import (
     calculation_arcs_from_arrow_table,
+    facts_from_arrow_table,
     presentation_arcs_from_arrow_table,
 )
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
@@ -134,28 +135,10 @@ def cohort_folders(cohort: str, subset: Sequence[str] | None = None) -> list[str
 
 def load_bundle_facts(bundle: Path) -> tuple[tuple[XbrlFact, ...], str]:
     """One bundle's facts plus its single accession, from the parquet rows."""
-    rows = pq.read_table(bundle / "facts.parquet").to_pylist()
-    accessions = {row["accession"] for row in rows}
+    facts = facts_from_arrow_table(pq.read_table(bundle / "facts.parquet"))
+    accessions = {str(fact.accession) for fact in facts}
     if len(accessions) != 1:
         raise ValueError(f"bundle {bundle.name} accessions: {sorted(accessions)}")
-    facts = tuple(
-        XbrlFact(
-            accession=AccessionNumber.from_any(row["accession"]),
-            concept_qname=row["concept_qname"],
-            value=row["numeric_value"]
-            if row["numeric_value"] is not None
-            else row["text_value"],
-            unit=row["unit"],
-            decimals=row["decimals"],
-            period_type=row["period_type"],
-            start_date=row["start_date"],
-            end_date=row["end_date"],
-            instant_date=row["instant_date"],
-            dimensions=json.loads(row["dimensions_json"]),
-            context_id=row["context_id"],
-        )
-        for row in rows
-    )
     return facts, accessions.pop()
 
 

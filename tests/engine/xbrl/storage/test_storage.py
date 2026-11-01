@@ -15,6 +15,7 @@ from edgar_sec.engine.xbrl.storage.storage import (
     calculation_arcs_from_arrow_table,
     declarations_from_arrow_table,
     definition_arcs_from_arrow_table,
+    facts_from_arrow_table,
     presentation_arcs_from_arrow_table,
     read_declarations_parquet,
     write_calculation_arcs_parquet,
@@ -125,6 +126,39 @@ def test_write_facts_parquet(tmp_path: Path) -> None:
     assert table.num_rows == 1
     assert table.column("numeric_value")[0].as_py() == 245122000000.0
     assert "CloudMember" in table.column("dimensions_json")[0].as_py()
+
+
+def test_facts_from_arrow_table_shares_repeated_objects(tmp_path: Path) -> None:
+    """Verify repeated strings, accessions, and dimension payloads share."""
+    dims = {"srt:ProductOrServiceAxis": "msft:CloudMember"}
+    facts = [
+        XbrlFact(
+            accession=AccessionNumber("0000950170-24-087843"),
+            concept_qname="us-gaap:Revenues",
+            value=float(100 + i),
+            unit="USD",
+            decimals=-6,
+            period_type="duration",
+            start_date="2023-07-01",
+            end_date="2024-06-30",
+            dimensions=dims if i % 2 == 0 else {},
+            context_id=f"c-{i % 2}",
+        )
+        for i in range(6)
+    ]
+    facts_path = tmp_path / "facts.parquet"
+    write_facts_parquet(facts, facts_path)
+
+    loaded = facts_from_arrow_table(pq.read_table(facts_path))
+    assert [f.value for f in loaded] == [f.value for f in facts]
+    assert [dict(f.dimensions) for f in loaded] == [dict(f.dimensions) for f in facts]
+    assert loaded[0].concept_qname is loaded[1].concept_qname
+    assert loaded[0].accession is loaded[1].accession
+    assert loaded[0].unit is loaded[1].unit
+    assert loaded[0].end_date is loaded[1].end_date
+    assert loaded[0].dimensions is loaded[2].dimensions
+    assert loaded[1].dimensions is loaded[3].dimensions
+    assert loaded[0].dimensions is not loaded[1].dimensions
 
 
 def test_write_declarations_parquet_roundtrip(tmp_path: Path) -> None:
