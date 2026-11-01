@@ -7,18 +7,22 @@ plan is generated from the filing catalog wherever the run executes.
 from __future__ import annotations
 
 import argparse
+import io
 import json
 import re
 import sys
 import time
+import zipfile
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.domain.sec_urls import xbrl_package_url_for
 from edgar_sec.foundation.runtime.env import get_env
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.foundation.runtime.settings.sec import DEFAULT_RATE_LIMIT_RPS
 from edgar_sec.infra.sec_http.client import SecHttpClient
+from edgar_sec.infra.sec_http.errors import PermanentHttpError
 from edgar_sec.infra.sec_http.rate_limit import RateLimiter
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.tools.fixture_planning import (
@@ -46,7 +50,7 @@ _XML_NIL = re.compile(rb"<([A-Za-z][A-Za-z0-9_.-]*:[A-Za-z][A-Za-z0-9_.-]*)\b([^
 _CONTEXT_REF = re.compile(rb'\bcontextRef="([^"]+)"')
 _UNIT_REF = re.compile(rb'\bunitRef="([^"]+)"')
 _DECIMALS = re.compile(rb'\bdecimals="([^"]+)"')
-_INSTANCE_SUFFIXES = ("_lab.xml", "_pre.xml", "_cal.xml", "_def.xml")
+_INSTANCE_SUFFIXES = ("_lab.xml", "_pre.xml", "_cal.xml", "_def.xml", "_ref.xml")
 
 
 def _fact_key(attrs: bytes, value: bytes) -> tuple[bytes, ...]:
@@ -144,11 +148,96 @@ def _instance_name(names: list[str], primary: str, *, inline: bool) -> str | Non
     return None
 
 
+def _score_via_index(
+    client: SecHttpClient,
+    record: dict[str, Any],
+    row: dict[str, Any],
+    phrasings: tuple[str, ...],
+    floor: int,
+) -> None:
+    """Score via the filing index: index fetch, instance fetch, counts."""
+    names = _index_items(client, record["cik"], record["accession"])
+    row["source_path"] = "index"
+    row["ex101_present"] = any(
+        name.lower().endswith(".xsd") or "_lab.xml" in name.lower() for name in names
+    )
+    instance = _instance_name(
+        names, record["primary_document"], inline=bool(record["is_inline_xbrl"])
+    )
+    if instance is None:
+        return
+    nodash = record["accession"].replace("-", "")
+    payload = client.get_bytes(f"{ARCHIVES}/{int(record['cik'])}/{nodash}/{instance}")
+    extracted = instance != record["primary_document"]
+    row.update(
+        count_facts(payload, inline=bool(record["is_inline_xbrl"]) and not extracted)
+    )
+    text = None
+    if extracted:
+        text = client.get_text(record["archive_url"])
+    elif record["is_inline_xbrl"]:
+        text = payload.decode("utf-8", "ignore")
+    elif (row["us_gaap_facts"] or 0) >= floor:
+        text = client.get_text(record["archive_url"])
+    if text is not None:
+        row["phrasing_checked"] = True
+        row["phrasing_matches"] = [p for p in phrasings if p in text]
+
+
+def _score_via_package(
+    client: SecHttpClient,
+    record: dict[str, Any],
+    row: dict[str, Any],
+    phrasings: tuple[str, ...],
+) -> None:
+    """Score from the generated XBRL package: one fetch serves the candidate.
+
+    A 404 package means the filing carries no instance to score, so
+    the row keeps its no-instance defaults, marked package-absent.
+    """
+    try:
+        payload = client.get_bytes(
+            xbrl_package_url_for(record["cik"], record["accession"])
+        )
+    except PermanentHttpError as exc:
+        if exc.status_code != 404:
+            raise
+        row["source_path"] = "package-absent"
+        return
+    row["source_path"] = "package"
+    with zipfile.ZipFile(io.BytesIO(payload)) as package:
+        members = {
+            name.rsplit("/", 1)[-1]: name
+            for name in package.namelist()
+            if not name.endswith("/")
+        }
+        names = list(members)
+        row["ex101_present"] = any(
+            name.lower().endswith(".xsd") or "_lab.xml" in name.lower()
+            for name in names
+        )
+        instance = _instance_name(
+            names, record["primary_document"], inline=bool(record["is_inline_xbrl"])
+        )
+        if instance is None:
+            return
+        instance_bytes = package.read(members[instance])
+    extracted = instance != record["primary_document"]
+    row.update(
+        count_facts(
+            instance_bytes, inline=bool(record["is_inline_xbrl"]) and not extracted
+        )
+    )
+    text = client.get_text(record["archive_url"])
+    row["phrasing_checked"] = True
+    row["phrasing_matches"] = [p for p in phrasings if p in text]
+
+
 def _score_candidate(
-    task: tuple[dict[str, Any], tuple[str, ...], int],
+    task: tuple[dict[str, Any], tuple[str, ...], int, str],
 ) -> dict[str, Any]:
-    """Score one candidate: index fetch, instance fetch, fact counts."""
-    record, phrasings, floor = task
+    """Score one candidate via the run's acquisition path."""
+    record, phrasings, floor, acquisition = task
     row = {
         key: record[key]
         for key in (
@@ -170,6 +259,7 @@ def _score_candidate(
             "dei_facts": None,
             "phrasing_matches": [],
             "phrasing_checked": False,
+            "source_path": None,
             "error": None,
         }
     )
@@ -177,36 +267,10 @@ def _score_candidate(
         row["error"] = "worker client not initialised"
         return row
     try:
-        names = _index_items(_CLIENT, record["cik"], record["accession"])
-        row["ex101_present"] = any(
-            name.lower().endswith(".xsd") or "_lab.xml" in name.lower()
-            for name in names
-        )
-        instance = _instance_name(
-            names, record["primary_document"], inline=bool(record["is_inline_xbrl"])
-        )
-        if instance is None:
-            return row
-        nodash = record["accession"].replace("-", "")
-        payload = _CLIENT.get_bytes(
-            f"{ARCHIVES}/{int(record['cik'])}/{nodash}/{instance}"
-        )
-        extracted = instance != record["primary_document"]
-        row.update(
-            count_facts(
-                payload, inline=bool(record["is_inline_xbrl"]) and not extracted
-            )
-        )
-        text = None
-        if extracted:
-            text = _CLIENT.get_text(record["archive_url"])
-        elif record["is_inline_xbrl"]:
-            text = payload.decode("utf-8", "ignore")
-        elif (row["us_gaap_facts"] or 0) >= floor:
-            text = _CLIENT.get_text(record["archive_url"])
-        if text is not None:
-            row["phrasing_checked"] = True
-            row["phrasing_matches"] = [p for p in phrasings if p in text]
+        if acquisition == "index":
+            _score_via_index(_CLIENT, record, row, phrasings, floor)
+        else:
+            _score_via_package(_CLIENT, record, row, phrasings)
     except Exception as exc:  # noqa: BLE001 - a failed candidate is a row, not a stop
         row["error"] = f"{type(exc).__name__}: {exc}"
     return row
@@ -234,6 +298,7 @@ def run_shards(
     workers: int,
     shard_ids: set[str] | None = None,
     accessions: set[str] | None = None,
+    acquisition: str = "package",
 ) -> dict[str, Any]:
     """Score the plan's shards, checkpointing each shard as it completes."""
     screen = _screen_from_plan(plan)
@@ -253,7 +318,7 @@ def run_shards(
             and (accessions is None or record["accession"] in accessions)
         ]
         if todo:
-            tasks = [(record, screen.phrasings, floor) for record in todo]
+            tasks = [(record, screen.phrasings, floor, acquisition) for record in todo]
             with (
                 path.open("a", encoding="utf-8") as sink,
                 ProcessPoolExecutor(
@@ -353,6 +418,9 @@ def load_config(path: Path) -> dict[str, Any]:
         "registry": "fixture-candidates-{screen}.json",
     }
     outputs.update(raw.get("outputs") or {})
+    acquisition = raw.get("acquisition", "package")
+    if acquisition not in ("package", "index"):
+        raise ValueError(f"acquisition must be package or index: {acquisition!r}")
     return {
         "screens": screens,
         "sample_size": raw.get("sample_size"),
@@ -360,6 +428,7 @@ def load_config(path: Path) -> dict[str, Any]:
             "floor_us_gaap_facts", SUBSTANTIAL_US_GAAP_FLOOR
         ),
         "seed_filer_preference": raw.get("seed_filer_preference", True),
+        "acquisition": acquisition,
         "outputs": outputs,
     }
 
@@ -398,6 +467,7 @@ def gather(
             work_dir=work_dir,
             registry_path=registry_path,
             workers=workers,
+            acquisition=config["acquisition"],
         )
         results[screen.name] = {**summary, "totals": plan["totals"]}
     return results
@@ -416,6 +486,7 @@ def _build_parser() -> argparse.ArgumentParser:
     run.add_argument("--workers", type=int, default=derive_resources().workers)
     run.add_argument("--shards", nargs="*", default=None)
     run.add_argument("--accessions", nargs="*", default=None)
+    run.add_argument("--acquisition", choices=("package", "index"), default="package")
     reg = sub.add_parser("registry", help="Rebuild the registry from checkpoints.")
     reg.add_argument("--screen", choices=sorted(SCREENS), default="8ka-901a")
     reg.add_argument("--work-dir", type=Path, required=True)
@@ -461,6 +532,7 @@ def main(argv: list[str] | None = None) -> int:
             workers=max(1, args.workers),
             shard_ids=set(args.shards) if args.shards else None,
             accessions=set(args.accessions) if args.accessions else None,
+            acquisition=args.acquisition,
         )
         print(json.dumps({**summary, "seconds": round(time.time() - started, 1)}))
         return 0
