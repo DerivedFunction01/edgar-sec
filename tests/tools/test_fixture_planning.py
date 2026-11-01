@@ -2,8 +2,15 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
+import pyarrow as pa
+import pyarrow.parquet as pq
+
 from edgar_sec.tools.fixture_planning import (
     SCREENS,
+    Screen,
+    _population,
     _sample,
     _shards,
     screen_from_config,
@@ -51,6 +58,74 @@ def test_screen_from_config_defaults_and_pinned_forms():
     )
     assert pinned.forms == ("8-K/A",)
     assert (pinned.year_start, pinned.year_end) == (2020, 2021)
+    assert screen.require_xbrl is False
+    flagged = screen_from_config(
+        {"name": "x", "required_item": "9.01", "require_xbrl": True}
+    )
+    assert flagged.require_xbrl is True
+
+
+def _filing(accession: str, date: str, *, xbrl: bool) -> dict:
+    return {
+        "accession_number": accession,
+        "form": "8-K/A",
+        "filing_date": date,
+        "report_date": date,
+        "is_xbrl": xbrl,
+        "is_inline_xbrl": xbrl,
+        "primary_document": "doc.htm",
+        "archive_url": "https://example.invalid/doc.htm",
+        "items": ["9.01"],
+    }
+
+
+def _write_catalog(tmp_path: Path, filings: list[dict]) -> None:
+    filing_type = pa.struct(
+        [
+            ("accession_number", pa.string()),
+            ("form", pa.string()),
+            ("filing_date", pa.string()),
+            ("report_date", pa.string()),
+            ("is_xbrl", pa.bool_()),
+            ("is_inline_xbrl", pa.bool_()),
+            ("primary_document", pa.string()),
+            ("archive_url", pa.string()),
+            ("items", pa.list_(pa.string())),
+        ]
+    )
+    schema = pa.schema(
+        [
+            ("cik", pa.string()),
+            ("identity", pa.struct([("name", pa.string())])),
+            ("filings", pa.list_(filing_type)),
+        ]
+    )
+    table = pa.Table.from_pylist(
+        [{"cik": "0000000001", "identity": {"name": "Example"}, "filings": filings}],
+        schema=schema,
+    )
+    pq.write_table(table, tmp_path / "catalog.parquet")
+
+
+def test_population_require_xbrl_keeps_only_flagged(tmp_path: Path):
+    _write_catalog(
+        tmp_path,
+        [
+            _filing("acc-xbrl", "2020-01-15", xbrl=True),
+            _filing("acc-plain", "2021-01-15", xbrl=False),
+        ],
+    )
+    base = {
+        "name": "t",
+        "required_item": "9.01",
+        "phrasings": (),
+        "year_start": 2011,
+        "year_end": 2026,
+    }
+    open_rows = _population(Screen(**base), tmp_path)
+    assert [r["accession"] for r in open_rows] == ["acc-xbrl", "acc-plain"]
+    flagged_rows = _population(Screen(**base, require_xbrl=True), tmp_path)
+    assert [r["accession"] for r in flagged_rows] == ["acc-xbrl"]
 
 
 def test_sample_strides_the_population_deterministically():

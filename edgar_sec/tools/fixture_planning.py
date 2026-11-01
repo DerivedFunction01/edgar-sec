@@ -31,8 +31,8 @@ YEAR_BANDS = ((2011, 2014), (2015, 2018), (2019, 2022), (2023, 2026))
 class Screen:
     """One gathering screen: a catalog filter plus phrasing evidence.
 
-    A null form set is resolved from the catalog: the amendment forms
-    of whichever families carry the required item.
+    A null form set resolves to the amendment forms of the item's
+    carrier families; require_xbrl keeps only XBRL-flagged filings.
     """
 
     name: str
@@ -41,6 +41,7 @@ class Screen:
     year_start: int
     year_end: int
     forms: tuple[str, ...] | None = None
+    require_xbrl: bool = False
 
 
 SCREENS = {
@@ -103,6 +104,7 @@ def _population(
     """
     parts = [str(p) for p in _catalog_parts(catalog_dir)]
     seeds = _seed_ciks()
+    xbrl_clause = "AND f.is_xbrl" if screen.require_xbrl else ""
     sql = f"""
         SELECT cik, identity.name AS filer, f.accession_number AS accession,
                f.form AS form, f.filing_date AS filing_date,
@@ -115,6 +117,7 @@ def _population(
         WHERE list_contains(f.items, {sql_literal(screen.required_item)})
           AND year(f.filing_date::DATE) BETWEEN {screen.year_start}
               AND {screen.year_end}
+          {xbrl_clause}
     """
     with connect() as con:
         rows = con.execute(sql).fetchall()
@@ -236,6 +239,7 @@ def build_plan(
             "required_item": screen.required_item,
             "phrasings": list(screen.phrasings),
             "years": [screen.year_start, screen.year_end],
+            "require_xbrl": screen.require_xbrl,
         },
         "floor_us_gaap_facts": floor,
         "seed_filer_preference": prefer_seed,
@@ -265,6 +269,7 @@ def _screen_from_plan(plan: dict[str, Any]) -> Screen:
         phrasings=tuple(block["phrasings"]),
         year_start=block["years"][0],
         year_end=block["years"][1],
+        require_xbrl=bool(block.get("require_xbrl", False)),
     )
 
 
@@ -281,6 +286,7 @@ def screen_from_config(entry: dict[str, Any]) -> Screen:
         year_start=int(years[0]),
         year_end=int(years[1]),
         forms=tuple(forms) if forms else None,
+        require_xbrl=bool(entry.get("require_xbrl", False)),
     )
 
 
