@@ -50,9 +50,10 @@ def test_canonical_probe_cohort_is_the_registry() -> None:
     """Verify the probe resolver names the form-probe corpus registry."""
     assert canonical_probe_cohort_path() == fixture_path("xbrl/probe_cohort.json")
     cohort = load_canonical_probe_cohort()
-    assert len(cohort) == 7
-    assert [f.form for f in cohort].count("10-Q") == 4
-    assert [f.form for f in cohort].count("8-K") == 3
+    assert len(cohort) == 13
+    assert [f.form for f in cohort].count("10-Q") == 7
+    assert [f.form for f in cohort].count("8-K") == 5
+    assert [f.form for f in cohort].count("8-K/A") == 1
     for filing in cohort:
         assert len(str(filing.accession)) == 20
         assert int(filing.cik) > 0

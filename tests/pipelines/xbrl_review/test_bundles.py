@@ -124,12 +124,21 @@ def test_load_filing_reads_vintage_bundle() -> None:
 def test_registry_filings_with_probe_registry_path() -> None:
     """Verify a registry path loads the 10-Q/8-K probe corpus instead."""
     filings = registry_filings(registry_path=canonical_probe_cohort_path())
-    assert len(filings) == 7
-    assert len({str(f.accession) for f in filings}) == 7
+    assert len(filings) == 13
+    assert len({str(f.accession) for f in filings}) == 13
     forms = [f.form for f in filings]
-    assert forms.count("10-Q") == 4
-    assert forms.count("8-K") == 3
-    assert {f.firm for f in filings} == {"MSFT", "AAPL", "JPM", "CAT", "AMZN"}
+    assert forms.count("10-Q") == 7
+    assert forms.count("8-K") == 5
+    assert forms.count("8-K/A") == 1
+    assert {f.firm for f in filings} == {
+        "MSFT",
+        "AAPL",
+        "JPM",
+        "CAT",
+        "AMZN",
+        "ALK",
+        "YYAI",
+    }
 
 
 def test_probe_registry_source_folder_bijection() -> None:
