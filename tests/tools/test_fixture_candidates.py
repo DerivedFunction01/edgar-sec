@@ -273,7 +273,9 @@ def test_score_index_mode_agrees_with_package_mode(monkeypatch):
     )
     index_row = _score(monkeypatch, index_client, record, "index")
     package_client = _StubClient(
-        package=_package({name: _INSTANCE if name == "a.xml" else b"<x/>" for name in names}),
+        package=_package(
+            {name: _INSTANCE if name == "a.xml" else b"<x/>" for name in names}
+        ),
         text="see Item 9.01(a) here",
     )
     package_row = _score(monkeypatch, package_client, record, "package")

@@ -94,6 +94,17 @@ def _band_label(year: int) -> str:
     return "out-of-range"
 
 
+# XBRL-package presence measured 2026-11-01 per band on a mixed seed
+# and non-seed sample of the flagged pool (17/17, 7/60, 60/60, 60/60);
+# the record is .artifacts/run-logs/2026-11-01-xbrl-package-presence.md.
+PACKAGE_PRESENCE_BY_BAND = {
+    "2011-2014": 1.0,
+    "2015-2018": 7 / 60,
+    "2019-2022": 1.0,
+    "2023-2026": 1.0,
+}
+
+
 def _population(
     screen: Screen, catalog_dir: Path | None = None
 ) -> list[dict[str, Any]]:
@@ -184,7 +195,7 @@ def _shards(screen: Screen, population: list[dict[str, Any]]) -> list[dict[str, 
             block = rows[index : index + SHARD_MAX_CANDIDATES]
             xbrl = sum(1 for r in block if r["is_xbrl"])
             inline = sum(1 for r in block if r["is_inline_xbrl"])
-            requests = len(block) + xbrl + inline
+            requests = len(block) + xbrl
             shards.append(
                 {
                     "shard_id": f"{screen.name}/{band}/{index // SHARD_MAX_CANDIDATES:02d}",
@@ -192,6 +203,7 @@ def _shards(screen: Screen, population: list[dict[str, Any]]) -> list[dict[str, 
                     "candidates": len(block),
                     "xbrl_flagged": xbrl,
                     "inline_flagged": inline,
+                    "package_presence": PACKAGE_PRESENCE_BY_BAND[band],
                     "seed_candidates": sum(1 for r in block if r["seed_filer"]),
                     "estimated_requests": requests,
                     "estimated_seconds_at_cap": round(
@@ -227,6 +239,7 @@ def build_plan(
     floor: int = SUBSTANTIAL_US_GAAP_FLOOR,
     prefer_seed: bool = True,
     catalog_dir: Path | None = None,
+    acquisition: str = "package",
 ) -> dict[str, Any]:
     """The execution plan for one screen, generated from the catalog."""
     population = _population(screen, catalog_dir)
@@ -240,6 +253,7 @@ def build_plan(
             "phrasings": list(screen.phrasings),
             "years": [screen.year_start, screen.year_end],
             "require_xbrl": screen.require_xbrl,
+            "acquisition": acquisition,
         },
         "floor_us_gaap_facts": floor,
         "seed_filer_preference": prefer_seed,

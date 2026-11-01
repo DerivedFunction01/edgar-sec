@@ -456,6 +456,7 @@ def gather(
             floor=config["floor_us_gaap_facts"],
             prefer_seed=config["seed_filer_preference"],
             catalog_dir=catalog_dir,
+            acquisition=config["acquisition"],
         )
         plan_path = out_dir / config["outputs"]["plan"].replace("{screen}", screen.name)
         atomic_write_json(plan_path, plan)
@@ -486,7 +487,7 @@ def _build_parser() -> argparse.ArgumentParser:
     run.add_argument("--workers", type=int, default=derive_resources().workers)
     run.add_argument("--shards", nargs="*", default=None)
     run.add_argument("--accessions", nargs="*", default=None)
-    run.add_argument("--acquisition", choices=("package", "index"), default="package")
+    run.add_argument("--acquisition", choices=("package", "index"), default=None)
     reg = sub.add_parser("registry", help="Rebuild the registry from checkpoints.")
     reg.add_argument("--screen", choices=sorted(SCREENS), default="8ka-901a")
     reg.add_argument("--work-dir", type=Path, required=True)
@@ -532,7 +533,8 @@ def main(argv: list[str] | None = None) -> int:
             workers=max(1, args.workers),
             shard_ids=set(args.shards) if args.shards else None,
             accessions=set(args.accessions) if args.accessions else None,
-            acquisition=args.acquisition,
+            acquisition=args.acquisition
+            or plan.get("screen", {}).get("acquisition", "package"),
         )
         print(json.dumps({**summary, "seconds": round(time.time() - started, 1)}))
         return 0

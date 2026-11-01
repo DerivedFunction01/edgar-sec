@@ -41,7 +41,14 @@ def test_shards_band_and_block_the_population():
     assert [s["candidates"] for s in shards] == [400, 1, 1]
     assert shards[0]["band"] == "2011-2014"
     assert shards[-1]["seed_candidates"] == 1
-    assert shards[0]["estimated_requests"] == 1200
+    assert shards[0]["estimated_requests"] == 800
+    assert shards[0]["package_presence"] == 1.0
+
+
+def test_shards_record_the_measured_presence_of_their_band():
+    shards = _shards(SCREENS["8ka-901a"], [_record("acc-mid", 2016)])
+    assert shards[0]["band"] == "2015-2018"
+    assert shards[0]["package_presence"] == 7 / 60
 
 
 def test_screen_from_config_defaults_and_pinned_forms():
