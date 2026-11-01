@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 import re
 
+from edgar_sec.domain.taxonomy.legal_forms import has_legal_form
 from edgar_sec.engine.forms.common.entities import (
     IRS_RE,
     is_street_or_address_line,
@@ -302,19 +303,10 @@ def _extract_cover_fields(lines: list[str], slots: Form144AsciiSlots) -> None:
                                         lines[idx + d + 1]
                                     ).strip()
                                     nxt_cols = _split_line_columns(nxt_l)
-                                    suffixes = (
-                                        "company",
-                                        "corp",
-                                        "inc",
-                                        "fund",
-                                        "trust",
-                                    )
                                     if (
                                         nxt_cols
                                         and len(nxt_cols[0]) < 30
-                                        and any(
-                                            w in nxt_cols[0].lower() for w in suffixes
-                                        )
+                                        and has_legal_form(nxt_cols[0])
                                     ):
                                         slots.reporting_person = (
                                             f"{slots.reporting_person} {nxt_cols[0]}"

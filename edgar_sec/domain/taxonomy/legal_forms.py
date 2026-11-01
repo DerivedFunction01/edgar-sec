@@ -8,53 +8,28 @@ from __future__ import annotations
 
 import re
 
+from edgar_sec.domain.taxonomy.family_vocab import (
+    CORPORATE_DESIGNATORS,
+    IDENTITY_NOUNS,
+)
 from edgar_sec.domain.taxonomy.jurisdictions import strip_jurisdiction
 
 # Entity-type words that do not distinguish one registrant family from another; non-US
 # forms included because EDGAR carries foreign private issuers.
 LEGAL_FORMS = frozenset(
     {
-        "inc",
-        "incorporated",
-        "corp",
-        "corporation",
-        "co",
+        *CORPORATE_DESIGNATORS,
+        *IDENTITY_NOUNS,
         "company",
-        "ltd",
-        "limited",
-        "llc",
-        "l.l.c.",
-        "lp",
-        "l.p.",
-        "llp",
-        "l.l.p.",
-        "plc",
-        "p.l.c.",
-        "ag",
-        "sa",
-        "s.a.",
-        "nv",
-        "bv",
-        "gmbh",
-        "kgaa",
-        "se",
-        "srl",
-        "pty",
-        "pvt",
         "cia",
-        "spa",
-        "sl",
-        "lda",
-        "sociedad",
-        "anonima",
-        "holding",
-        "holdings",
-        "group",
+        "etf",
         "grp",
-        "trust",
-        "fund",
-        "bancorp",
-        "bankshares",
+        "holdings",
+        "l.l.c.",
+        "l.l.p.",
+        "l.p.",
+        "p.l.c.",
+        "s.a.",
     }
 )
 
@@ -97,4 +72,10 @@ def entity_name_tokens(name: str) -> list[str]:
     ]
 
 
-__all__ = ["LEGAL_FORMS", "NAME_STOPWORDS", "entity_name_tokens"]
+def has_legal_form(name: str) -> bool:
+    """Return whether name contains any legal-form token."""
+    cleaned = strip_jurisdiction(name).lower()
+    return any(token in LEGAL_FORMS for token in _TOKEN_RE.findall(cleaned))
+
+
+__all__ = ["LEGAL_FORMS", "NAME_STOPWORDS", "entity_name_tokens", "has_legal_form"]

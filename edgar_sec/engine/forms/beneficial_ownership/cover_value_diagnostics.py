@@ -2,13 +2,20 @@ from __future__ import annotations
 
 import re
 
+from edgar_sec.domain.forms.common.checkmarks import (
+    CHECKMARK_MARK_RE,
+)
 from edgar_sec.domain.forms.families.beneficial_ownership.phrases import (
     BENEFICIAL_OWNERSHIP_PHRASE_RULES,
+)
+from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
+    RE_PERSON_WITH_NOISE,
 )
 from edgar_sec.engine.forms.common.statutory import (
     HEADER_LEAK_RE,
     annotate_common_form_phrases,
 )
+from edgar_sec.engine.forms.common.entities import is_valid_cusip
 from edgar_sec.engine.forms.common.phrases import (
     PhraseMatch,
     compile_phrase_rules,
@@ -16,7 +23,6 @@ from edgar_sec.engine.forms.common.phrases import (
 )
 from edgar_sec.foundation.regex.builder import build_alternation
 
-_CUSIP_SHORT_RE = re.compile(r"(?i)^[0-9A-Z*@#]{8}$")
 _CUSIP_PAGE_RESIDUE_RE = re.compile(r"(?i)\bSCHEDULE\s*13[DG]\b|\bPAGE\s*\d+\b")
 _ANY_NUMBER_RE = re.compile(r"\d")
 _FUND_CODE_SPLIT_RE = re.compile(r"[^A-Za-z0-9]+")
@@ -40,7 +46,6 @@ _QUALIFIED_NUMERIC_PHRASES = (
     "including",
 )
 _SEPARATOR_RUN_RE = re.compile(r"[-_]{2,}|(?:\s*[:|]\s*){2,}")
-_PERSON_WITH_LABEL_RE = re.compile(r"(?i)\bPERSON\s*[:|]\s*WITH\b")
 _COVER_ITEM_HEADING_RE = re.compile(r"(?i)\bITEM\s+\d+[A-Z]?\s*[.:]\s+[A-Z]")
 _ROW_PREFIX_RE = {
     field: re.compile(rf"(?i)^\s*{row}\s+(?=\d|PERSON\b|SHARES\b)")
@@ -64,7 +69,6 @@ _POWER_LAYOUT_LEAK_ALT = build_alternation(
 _POWER_LAYOUT_LEAK_RE = re.compile(rf"(?i)^\s*(?:{_POWER_LAYOUT_LEAK_ALT})")
 _POWER_LAYOUT_TRAILING_WITH_RE = re.compile(r"(?i)\bWITH\s*$")
 _PAGE_MARKER_RE = re.compile(r"(?i)\bPAGE\s+\d+\s+OF\s+\d+(?:\s+PAGES?)?\b")
-_RAW_CHECKBOX_RE = re.compile(r"\[\s*[xX ]\s*\]|\(\s*[a-zA-Z]\s*\)\s*\[")
 _ITEM_LEAK_ALT = build_alternation(
     (
         r"ITEM\s+\d+[A-Z]?",
@@ -87,7 +91,11 @@ def _bo_phrase_matches(value: str) -> tuple[PhraseMatch, ...]:
 
 
 def is_eight_character_cusip(value: str) -> bool:
-    return bool(_CUSIP_SHORT_RE.fullmatch(value))
+    return is_valid_cusip(value, length=8)
+
+
+def is_nine_character_cusip(value: str) -> bool:
+    return is_valid_cusip(value, length=9)
 
 
 def cusip_page_residue_match(value: str) -> re.Match[str] | None:
@@ -128,13 +136,13 @@ def cover_field_has_layout_residue(field: str, value: str) -> bool:
             for match in _bo_phrase_matches(value)
         )
         or _SEPARATOR_RUN_RE.search(value)
-        or _PERSON_WITH_LABEL_RE.search(value)
+        or RE_PERSON_WITH_NOISE.search(value)
         or _COVER_ITEM_HEADING_RE.search(value)
         or _POWER_LAYOUT_LEAK_RE.search(value)
         or _POWER_LAYOUT_TRAILING_WITH_RE.search(value)
         or row_prefix.search(value)
         or _PAGE_MARKER_RE.search(value)
-        or _RAW_CHECKBOX_RE.search(value)
+        or CHECKMARK_MARK_RE.search(value)
         or (
             field in {"reportingPersonName", "memberOfGroup", "commentContent"}
             and _ITEM_LEAK_RE.search(value)
@@ -167,6 +175,7 @@ __all__ = [
     "cusip_page_residue_match",
     "has_descriptive_numeric_qualifier",
     "is_eight_character_cusip",
+    "is_nine_character_cusip",
     "parsed_field_boilerplate_match",
     "two_character_codes",
 ]

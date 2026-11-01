@@ -33,8 +33,8 @@ from edgar_sec.foundation.text.tokens import is_bullet_line
 from ..features.context import BlockContext
 from ..features.geometry import (
     _Features,
-    _numeric_cell_starts,
     fast_detect_prose_measure,
+    numeric_cell_starts,
 )
 from ..rules.cascades import _decide, decide_block
 from ..types import (
@@ -214,7 +214,7 @@ def _segment(
     for index, line in enumerate(lines):
         if line.strip():
             if current and RE_SEPARATOR_LINE.fullmatch(current[-1].strip()):
-                has_numeric_tail = bool(_numeric_cell_starts(line))
+                has_numeric_tail = bool(numeric_cell_starts(line))
                 if not has_numeric_tail and line.lstrip()[:1].isalpha():
                     blocks.append((start, index, tuple(current)))
                     current = []

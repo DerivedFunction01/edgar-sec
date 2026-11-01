@@ -8,6 +8,7 @@ from edgar_sec.domain.forms.common.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
     FILLED_CHECKED_PATTERN,
+    VARIABLE_CHECKED_SAFE_PATTERN,
 )
 from edgar_sec.foundation.regex.builder import build_alternation
 
@@ -24,13 +25,8 @@ YES_NO_LINE_RE = re.compile(
 # apply only to this adjacency rule.
 _CHECKED_PATTERNS: tuple[str, ...] = (
     FILLED_CHECKED_PATTERN,
+    VARIABLE_CHECKED_SAFE_PATTERN,
     r"_{1,8}\s*[Cc][Kk]\s*_{1,8}",
-    r"/\s*[Xx]\s*/",
-    r"\|\s*[Xx]\s*\|",
-    r"\\\s*[Xx]\s*\\",
-    r"\[\s*[Xx]\s*\]",
-    r"\(\s*[Xx]\s*\)",
-    r"\{\s*[Xx]\s*\}",
     r"\bX{1,2}\b",
     r"\bCK\b",
 )

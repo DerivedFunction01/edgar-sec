@@ -176,8 +176,35 @@ SEC_FILE_PREFIX_ALT = build_alternation(SEC_FILE_NUMBER_PREFIXES, auto_escape=Tr
 SEC_FILE_NUMBER_RE = re.compile(
     rf"\b(?:{SEC_FILE_PREFIX_ALT})-\d{{4,8}}\b", re.IGNORECASE
 )
-CUSIP_RE = re.compile(r"\b[0-9A-Z]{9}\b")
+CUSIP_RE = re.compile(r"(?i)(?<![0-9A-Z])[0-9A-Z*@#]{9}(?![0-9A-Z])")
+_CUSIP_CLEAN_RE = re.compile(r"(?i)^[0-9A-Z*@#]{8,9}$")
 CRD_RE = re.compile(r"\b\d{1,9}\b")
+
+
+def parse_cusip(value: str | None) -> str | None:
+    """Extract and normalize a single CUSIP token from text if present."""
+    if not value:
+        return None
+    compact = value.replace(" ", "")
+    if _CUSIP_CLEAN_RE.fullmatch(compact):
+        return compact.upper()
+    tokens = list(CUSIP_RE.finditer(value))
+    if tokens:
+        return tokens[-1].group(0).upper()
+    compact_tokens = list(CUSIP_RE.finditer(compact))
+    if compact_tokens:
+        return compact_tokens[-1].group(0).upper()
+    return None
+
+
+def is_valid_cusip(value: str | None, *, length: int | None = None) -> bool:
+    """Return whether value matches CUSIP character structure."""
+    if not value:
+        return False
+    compact = value.replace(" ", "")
+    if length is not None:
+        return len(compact) == length and bool(_CUSIP_CLEAN_RE.fullmatch(compact))
+    return bool(_CUSIP_CLEAN_RE.fullmatch(compact))
 
 
 def is_street_address_value(text: str) -> bool:
@@ -286,8 +313,10 @@ __all__ = [
     "TRAILING_FOOTNOTE_RE",
     "is_street_address_value",
     "is_street_or_address_line",
+    "is_valid_cusip",
     "is_valid_entity_name",
     "normalize_exchange_name",
+    "parse_cusip",
     "sanitize_document_noise",
     "strip_footnote_markers",
 ]

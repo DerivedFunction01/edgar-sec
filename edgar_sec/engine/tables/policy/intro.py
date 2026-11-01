@@ -12,7 +12,7 @@ from ...reflow.types import ACTION_TAG_AND_PRESERVE, SpanDecision
 from ..patterns import _RE_TABLE_INTRO_CUE
 from ..protection.constants import SENTINEL_PREFIX
 from ..structural import _RE_WIDE_COLUMN_GAP
-from ..tokens import numeric_cell_starts as _numeric_cell_starts
+from ..tokens import numeric_cell_starts
 
 _MAX_PROSE_UNIFY_LINES = 3
 
@@ -45,7 +45,7 @@ def split_structural_table_intro(
             continue
         gap_count = len(_RE_WIDE_COLUMN_GAP.findall(line))
         has_columns = "\t" in line or gap_count >= 2
-        has_numeric = bool(_numeric_cell_starts(line))
+        has_numeric = bool(numeric_cell_starts(line))
         has_dash_rule = line.strip().startswith(("-", "=")) and " " in line.strip()
 
         if (
@@ -84,7 +84,7 @@ def split_structural_table_intro(
         if prefix_nonblank >= 1:
             gap_count = len(_RE_WIDE_COLUMN_GAP.findall(line))
             has_columns = "\t" in line or gap_count >= 2
-            has_numeric = bool(_numeric_cell_starts(line))
+            has_numeric = bool(numeric_cell_starts(line))
             if has_columns and (has_numeric or gap_count >= 2):
                 return lines[:index], lines[index:]
             if "\t" in line and any(char.isalpha() for char in line):

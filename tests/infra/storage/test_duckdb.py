@@ -98,11 +98,9 @@ def test_duplicate_and_null_keys_are_reported(tmp_path: Path) -> None:
 
 def test_every_connection_carries_the_resource_budget() -> None:
     """`duckdb.connect` is reachable from one place, so no connection is unconfigured."""
-    from pathlib import Path as _Path
-
     import edgar_sec
 
-    package_root = _Path(edgar_sec.__file__).parent
+    package_root = Path(edgar_sec.__file__).parent
     offenders = sorted(
         f"edgar_sec/{p.relative_to(package_root)}"
         for p in package_root.rglob("*.py")

@@ -11,7 +11,12 @@ from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     AddressDetails,
     IssuerMetadata,
 )
-from edgar_sec.engine.forms.common.entities import ORGANIZATION_SUFFIX_RE
+from edgar_sec.domain.taxonomy.legal_forms import has_legal_form
+from edgar_sec.engine.forms.common.entities import (
+    CUSIP_RE,
+    ORGANIZATION_SUFFIX_RE,
+    is_valid_cusip,
+)
 from edgar_sec.engine.forms.common.tables import parse_address_parts
 from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
     cusip_page_residue_match,
@@ -87,7 +92,6 @@ _WHITESPACE_RE = re.compile(r"\s+")
 _TABLE_MARKUP_RE = re.compile(r"(?i)^\s*</?TABLE>\s*$")
 _ATTENTION_RE = re.compile(r"(?i)^\s*ATTENTION\s*:\s*(?P<name>.+?)\s*$")
 _COPY_TO_RE = re.compile(r"(?i)^\s*(?:WITH\s+)?COPY\s+TO\s*:?\s*$")
-_CUSIP_TOKEN_RE = re.compile(r"(?i)(?<![0-9A-Z])[0-9A-Z*@#]{9}(?![0-9A-Z])")
 _PHONE_LABEL_ALT = build_alternation(
     ("TEL", "TELEPHONE", "PHONE"), auto_escape=True, compact=True
 )
@@ -221,13 +225,11 @@ def _is_plausible_value(field: str, val: str) -> bool:
             not _RE_INVALID_ISSUER_NAME.search(v)
             and not _RE_SEC_HEADER.search(v)
             and parse_date(v.strip("() ")) is None
-            and not bool(_CUSIP_TOKEN_RE.fullmatch(v.replace(" ", "")))
+            and not is_valid_cusip(v, length=9)
             and len(v) >= 3
         )
     if field == "cusip":
-        return bool(
-            _CUSIP_TOKEN_RE.search(v) or _CUSIP_TOKEN_RE.search(v.replace(" ", ""))
-        )
+        return bool(CUSIP_RE.search(v) or is_valid_cusip(v))
     if field == "event_date":
         return parse_date(v) is not None
     if field == "security_class":
@@ -529,8 +531,8 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
             if value:
                 if field == "cusip" and parse_date(value) is not None:
                     values["event_date"].append(value)
-                elif field == "security_class" and _CUSIP_TOKEN_RE.fullmatch(
-                    value.strip()
+                elif field == "security_class" and is_valid_cusip(
+                    value.strip(), length=9
                 ):
                     values["cusip"].append(value)
                 elif field == "issuer_name" and any(
@@ -572,7 +574,7 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
     if not values["cusip"]:
         for line in lines[:50]:
             stripped = line.strip()
-            if _CUSIP_TOKEN_RE.fullmatch(stripped):
+            if is_valid_cusip(stripped, length=9):
                 values["cusip"].append(stripped)
                 break
 
@@ -637,24 +639,7 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
             }
             value = next(iter(unique.values())) if len(unique) == 1 else None
             if value is None and valid_candidates:
-                paren_cands = [
-                    c
-                    for c in valid_candidates
-                    if any(
-                        f in c.lower()
-                        for f in (
-                            "inc",
-                            "corp",
-                            "l.p.",
-                            "llc",
-                            "ltd",
-                            "fund",
-                            "etf",
-                            "company",
-                            "trust",
-                        )
-                    )
-                ]
+                paren_cands = [c for c in valid_candidates if has_legal_form(c)]
                 value = paren_cands[0] if paren_cands else valid_candidates[0]
         else:
             unique = {
@@ -663,14 +648,14 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
             }
             value = next(iter(unique.values())) if len(unique) == 1 else None
         if field == "cusip" and value:
-            tokens = list(_CUSIP_TOKEN_RE.finditer(value))
+            tokens = list(CUSIP_RE.finditer(value))
             if tokens:
                 value = tokens[-1].group(0)
             elif CUSIP_UNAVAILABLE_POLICY.is_missing(value):
                 value = None
             elif page_marker := cusip_page_residue_match(value):
                 prefix = value[: page_marker.start()]
-                tokens = list(_CUSIP_TOKEN_RE.finditer(prefix))
+                tokens = list(CUSIP_RE.finditer(prefix))
                 value = tokens[-1].group(0) if tokens else None
         selected[field] = value
     issuer_address = _address(selected["issuer_address"])

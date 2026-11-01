@@ -26,7 +26,6 @@ from edgar_sec.engine.forms.common.entities import is_valid_entity_name
 from edgar_sec.engine.forms.common.signatures import (
     OFFICER_TITLE_RE,
     clean_signature_name,
-    extract_signature_block as parse_signature_block,
     extract_signature_candidate,
     is_valid_signature_name,
 )
@@ -45,7 +44,10 @@ from .cover_parser import extract_reporting_person_covers
 from .issuer import extract_issuer_metadata
 from .item_subsections import extract_subsections
 from .provenance import build_field_extractions, build_unparsed_sections
-from .signatures import extract_beneficial_ownership_signature_block as _signature_block
+from .signatures import (
+    extract_beneficial_ownership_signature_block,
+    locate_signature_region,
+)
 from edgar_sec.engine.forms.common.numbers import normalize_schema_number
 from .vocabulary import (
     REPORTING_PERSON_SLOT_NUMBERS_13D,
@@ -55,10 +57,6 @@ from .vocabulary import (
 _RE_ITEM_NUM = re.compile(r"\d+")
 _RE_REPORTING_PERSON_CORE = r"(?:(?:\(?\s*(?:ITEM\s+[1lI]\b|[1lI]\b)\s*\)?\s*[:.]?\s*(?:\([a-z0-9]+\)\s*)?)\s*(?:NAMES?\s+OF\s+REPORTING\s+PERSONS?|REPORTING\s+PERSONS?)|(?:(?<=[\n\r])|^\s*)\s*NAMES?\s+OF\s+REPORTING\s+PERSONS?)"
 _RE_FIRST_PERSON = re.compile(rf"(?im)(?:^\s*|\b){_RE_REPORTING_PERSON_CORE}")
-_RE_SIGNATURE_HEADER = re.compile(
-    r"(?im)^\s*(?:SIGNATURES?|AFTER\s+REASONABLE\s+INQUIRY)\b"
-)
-_RE_SIGNATURE_DATE_LINE = re.compile(r"(?i)^\s*(?:DATED|DATE)\b")
 _EVENT_DATE_CUE_ALT = build_alternation(
     ("date of event", "as of", "dated", "a/o"),
     auto_escape=True,
@@ -496,85 +494,15 @@ def parse_beneficial_ownership_document(
         for region in find_signature_regions(lines)
         if region.start_line >= cover_end and region.signer_count > 0
     )
-    signature_start_line = (
-        min(region.start_line for region in signature_regions)
-        if signature_regions
-        else None
+    approx = not result.cover_boundary or result.cover_boundary.approximate
+    signature_start_line, signature_start_offset, sig_suffix = locate_signature_region(
+        result.text,
+        line_offsets,
+        lines,
+        cover_end,
+        signature_regions,
+        approx,
     )
-    signature_start_offset: int | None = None
-    sig_suffix: str | None = None
-    if signature_regions and signature_start_line is not None:
-        lookback_line = signature_start_line
-        for b in range(
-            signature_start_line - 1,
-            max(cover_end, signature_start_line - 8),
-            -1,
-        ):
-            if (
-                _RE_SIGNATURE_HEADER.search(lines[b])
-                or _RE_SIGNATURE_DATE_LINE.search(lines[b])
-                or parse_date(lines[b].strip()) is not None
-            ):
-                lookback_line = b
-        signature_start_offset = line_offsets[lookback_line]
-        sig_suffix = result.text[signature_start_offset:]
-    else:
-        for match in RE_CONFORMED_SIGNER_NAME.finditer(result.text):
-            line_start = result.text.rfind("\n", 0, match.start()) + 1
-            line_end = result.text.find("\n", match.start())
-            if line_end < 0:
-                line_end = len(result.text)
-            signature_headers = list(
-                _RE_SIGNATURE_HEADER.finditer(result.text, 0, line_start)
-            )
-            header_offset = (
-                signature_headers[-1].start()
-                if signature_headers
-                and line_start - signature_headers[-1].start() < 2000
-                else None
-            )
-            if header_offset is None and not RE_CONFORMED_SIGNATURE.match(
-                result.text[line_start:line_end]
-            ):
-                continue
-            if header_offset is None:
-                lookback_offset = line_start
-                pre_lines = result.text[:line_start].splitlines(keepends=True)
-                for b in range(len(pre_lines) - 1, max(0, len(pre_lines) - 8), -1):
-                    bl = pre_lines[b].strip()
-                    if _RE_SIGNATURE_DATE_LINE.search(bl) or parse_date(bl) is not None:
-                        lookback_offset = sum(len(l) for l in pre_lines[:b])
-                signature_start_offset = lookback_offset
-            else:
-                signature_start_offset = header_offset
-            signature_start_line = result.text.count("\n", 0, signature_start_offset)
-            sig_suffix = result.text[signature_start_offset:]
-            break
-    if sig_suffix is None:
-        cover_offset = line_offsets[min(cover_end, len(line_offsets) - 1)]
-        signature_headers = [
-            match
-            for match in _RE_SIGNATURE_HEADER.finditer(result.text)
-            if match.start() >= cover_offset
-        ]
-        if not signature_headers and (
-            not result.cover_boundary or result.cover_boundary.approximate
-        ):
-            signature_headers = list(_RE_SIGNATURE_HEADER.finditer(result.text))
-        best_cand = None
-        for heading in reversed(signature_headers):
-            candidate = result.text[heading.start() :]
-            sb = _signature_block(candidate)
-            if sb is None:
-                continue
-            if best_cand is None:
-                best_cand = (heading, candidate)
-            if any(s.date for s in sb.signatories):
-                best_cand = (heading, candidate)
-        if best_cand is not None:
-            heading, sig_suffix = best_cand
-            signature_start_offset = heading.start()
-            signature_start_line = result.text.count("\n", 0, heading.start())
 
     narrative_items: list[NarrativeItem] = []
     if sections and sections.sections:
@@ -633,10 +561,10 @@ def parse_beneficial_ownership_document(
     )
     if sig_suffix is None:
         sig_suffix = "\n".join(lines[last_item_end:])
-    signature_block = _signature_block(sig_suffix)
+    signature_block = extract_beneficial_ownership_signature_block(sig_suffix)
     if signature_block is None and narrative_items:
         tail_candidate = narrative_items[-1].text[-500:]
-        tail_sig = _signature_block(tail_candidate)
+        tail_sig = extract_beneficial_ownership_signature_block(tail_candidate)
         if tail_sig is not None and tail_sig.signatories:
             signature_block = tail_sig
     signature_text = signature_block.raw_text if signature_block is not None else None

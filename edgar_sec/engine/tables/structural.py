@@ -17,7 +17,7 @@ from edgar_sec.foundation.text.tokens import (
 )
 
 from .patterns import COLUMN_DASH_RULE_RE, UNITS_LABEL_RE, _RE_TABLE_INTRO_CUE
-from .tokens import numeric_cell_starts as _numeric_cell_starts
+from .tokens import numeric_cell_starts
 
 _RE_WIDE_COLUMN_GAP = re.compile(r"\s{3,}")
 _HEADING_STOP_WORDS = frozenset(
@@ -183,7 +183,7 @@ def is_structural_table_bridge(
             return False
         if _RE_TABLE_INTRO_CUE.search(stripped):
             return False
-        if len(_numeric_cell_starts(stripped)) >= 2:
+        if len(numeric_cell_starts(stripped)) >= 2:
             return False
         if RE_SEPARATOR_LINE.fullmatch(stripped):
             continue
@@ -222,7 +222,7 @@ def is_structural_table_tail(
         ):
             has_total_keyword = True
 
-        numeric_count = len(_numeric_cell_starts(stripped))
+        numeric_count = len(numeric_cell_starts(stripped))
         if numeric_count >= 1:
             has_numeric = True
             if numeric_count >= 2:

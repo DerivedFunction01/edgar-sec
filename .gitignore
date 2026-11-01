@@ -382,6 +382,7 @@ vite.config.ts.timestamp-*
 # Others
 scripts/*
 uploads/*
+*.bundle
 # --- Committable exceptions -------------------------------------------------
 # tests/fixtures/ holds committed golden fixtures. These must stay tracked: a
 # fresh clone lacking them fails the gate, because the engine parity tests and

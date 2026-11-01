@@ -1,28 +1,43 @@
+"""XML audit and validation rules for beneficial ownership submissions."""
+
 from __future__ import annotations
 
-from collections import Counter
-from pathlib import Path
 import re
 from typing import Any
 import xml.etree.ElementTree as ET
 
+from edgar_sec.domain.forms.common.missing_values import COMMON_NUMERIC_NULL_POLICY
 from edgar_sec.domain.forms.families.beneficial_ownership.identifiers import (
     CUSIP_UNAVAILABLE_POLICY,
 )
+from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
+    BENEFICIAL_OWNERSHIP_XML_NAMESPACES,
+    SCHEDULE_13G_ITEMS,
+    SCHEDULE_13G_XML_NAMESPACE,
+)
 from edgar_sec.engine.forms.common.extraction import local_name
-from edgar_sec.engine.forms.common.statutory import (
-    HEADER_LEAK_RE,
-    STATUTORY_PAGE_ARTIFACT_RE,
+from edgar_sec.engine.forms.common.numbers import normalize_schema_number
+from edgar_sec.engine.forms.common.statutory import STATUTORY_PAGE_ARTIFACT_RE
+from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
+    cover_field_has_layout_residue,
+    cusip_page_residue_match,
+    has_descriptive_numeric_qualifier,
+    is_eight_character_cusip,
+    is_nine_character_cusip,
+    parsed_field_boilerplate_match,
+)
+from edgar_sec.engine.forms.beneficial_ownership.field_observations import (
+    empty_field_observations,
+    field_observations,
+)
+from edgar_sec.engine.forms.beneficial_ownership.item_subsections import (
+    RE_SUBSECTION_SPLIT,
 )
 from edgar_sec.engine.forms.beneficial_ownership.provenance_analysis import (
     analyze_extraction_provenance,
 )
-from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
-    cover_field_has_layout_residue,
-    has_descriptive_numeric_qualifier,
-    is_eight_character_cusip,
-    cusip_page_residue_match,
-    parsed_field_boilerplate_match,
+from edgar_sec.engine.forms.beneficial_ownership.schema_analysis import (
+    analyze_schema_xml,
 )
 from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
     CATEGORICAL_FIELDS,
@@ -30,50 +45,37 @@ from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
     COVER_VALUE_FIELDS,
     FIELD_TAGS,
 )
-from edgar_sec.engine.forms.beneficial_ownership.field_observations import (
-    empty_field_observations,
-    field_observations,
-)
 from edgar_sec.engine.forms.common.signatures import (
     clean_signature_name,
     is_valid_signature_name,
-)
-from edgar_sec.engine.forms.common.unparsed import load_unparsed_sections
-from edgar_sec.engine.forms.beneficial_ownership.schema_analysis import (
-    analyze_schema_xml,
 )
 from edgar_sec.engine.document.signatures import (
     CONFORMED_SIGNATURE_RE,
     RE_SIGNATURE_DATE_LINE,
     RE_SIGNATURE_HEADING,
 )
-from edgar_sec.foundation.regex.builder import build_alternation
 
-_SCHEDULE_13D_NS = "http://www.sec.gov/edgar/schedule13D"
-_SCHEDULE_13G_NS = "http://www.sec.gov/edgar/schedule13G"
-_ALLOWED_NAMESPACES = {_SCHEDULE_13D_NS, _SCHEDULE_13G_NS}
-
-_NUMERIC_COVER_RE = re.compile(
-    r"(?i)^\s*[-_:]*\s*(?:(?:approximately|approx\.?)\s*)?\$?(?:\d[\d,\s]*(?:\.\d+)?|--?0--?|--?|NONE|NIL|N/?A|NOT\s+APPLICABLE)\s*(?:\(\s*(?:SEE\s+)?ITEM\s+\d+[A-Z]?\s*\)\s*)*(?:\(\s*[A-Z0-9]+\s*\)\s*)*[*†‡]*[-_:.,\s]*$"
+_NARRATIVE_FIELD_NAMES = frozenset(
+    item.item.lower().replace(" ", "") for item in SCHEDULE_13G_ITEMS
 )
-_QUALIFIED_NUMERIC_SUFFIX_ALT = build_alternation(
-    (
-        r"shares?\s+of\s+(?:common\s+)?stock",
-        r"of\s+common\s+stock",
-        r"based\s+on\b",
-    ),
-    compact=False,
-)
-_QUALIFIED_NUMERIC_COVER_RE = re.compile(
-    rf"(?i)^\s*[-_:]*\s*\d[\d,\s]*(?:\.\d+)?\s*%?\s+(?:{_QUALIFIED_NUMERIC_SUFFIX_ALT}).*$"
-)
-_PERCENT_COVER_RE = re.compile(
-    r"(?i)^\s*[-_:]*\s*(?:(?:approximately|approx\.?)\s*)?\$?\d[\d,\s]*(?:\.\d+)?\s*%?\d{0,2}[A-Z]?\s*(?:\(\s*(?:SEE\s+)?ITEM\s+\d+[A-Z]?\s*\)\s*)*(?:\(\s*[A-Z0-9]+\s*\)\s*)*[*†‡]*[-_:.,\s]*$"
-)
-_CUSIP_RE = re.compile(r"(?i)^[0-9A-Z*@#]{9}$")
 _MULTI_CLASS_VALUE_RE = re.compile(r"(?i)\bSERIES\s+[A-Z]\b.{0,180}?\d[\d,]*(?:\.\d+)?")
-_ITEM_SUBSECTION_RE = re.compile(r"(?im)^\s*\([a-f]\)\s")
-_NARRATIVE_FIELD_NAMES = {f"item{number}" for number in range(1, 11)}
+
+
+def _is_clean_numeric_cover(field: str, value: str) -> bool:
+    clean = value.strip(" \t\r\n:.-_")
+    if not clean or clean == "0" or COMMON_NUMERIC_NULL_POLICY.is_missing(value):
+        return True
+    strip_pct = field == "percentOfClass"
+    return (
+        normalize_schema_number(
+            value,
+            integer=False,
+            strip_percent=strip_pct,
+            strip_currency=True,
+            strip_footnotes=True,
+        )
+        is not None
+    )
 
 
 def _text(element: ET.Element) -> str:
@@ -118,7 +120,7 @@ def _is_narrative_element(
     return False
 
 
-def _analyze_xml(
+def analyze_xml(
     xml_text: str,
     accession: str,
     expected_family: str = "",
@@ -126,6 +128,7 @@ def _analyze_xml(
     unparsed_records: tuple[dict[str, object], ...] = (),
     unparsed_error: str | None = None,
 ) -> dict[str, Any]:
+    """Audit parsed SEC XML tree for conformance, completeness, and anomalies."""
     try:
         root = ET.fromstring(xml_text)
     except ET.ParseError as error:
@@ -158,12 +161,15 @@ def _analyze_xml(
     root_name = local_name(root.tag)
     family = (
         "13G"
-        if ns_uri == _SCHEDULE_13G_NS
+        if ns_uri == SCHEDULE_13G_XML_NAMESPACE
         or (not ns_uri and "13G" in expected_family.upper())
         else "13D"
     )
     expected = "13G" if "13G" in expected_family.upper() else "13D"
-    if root_name != "edgarSubmission" or ns_uri not in _ALLOWED_NAMESPACES:
+    if (
+        root_name != "edgarSubmission"
+        or ns_uri not in BENEFICIAL_OWNERSHIP_XML_NAMESPACES
+    ):
         anomalies.append(
             {
                 "accession": accession,
@@ -241,7 +247,7 @@ def _analyze_xml(
                     if (
                         local_name(element.tag) == "filingPersonName"
                         and len(_text(element)) > 240
-                        and len(_ITEM_SUBSECTION_RE.findall(_text(element))) >= 2
+                        and len(RE_SUBSECTION_SPLIT.findall(_text(element))) >= 2
                     ):
                         value = _text(element)
                         anomalies.append(
@@ -259,7 +265,7 @@ def _analyze_xml(
                     if (
                         local_name(element.tag) == "percentageOfClassSecurities"
                         and len(_text(element)) > 240
-                        and len(_ITEM_SUBSECTION_RE.findall(_text(element))) >= 2
+                        and len(RE_SUBSECTION_SPLIT.findall(_text(element))) >= 2
                     ):
                         value = _text(element)
                         anomalies.append(
@@ -332,17 +338,10 @@ def _analyze_xml(
             ):
                 continue
             contamination = cover_field_has_layout_residue(field, value)
-            value_pattern = (
-                _PERCENT_COVER_RE if field == "percentOfClass" else _NUMERIC_COVER_RE
-            )
-            if not value or contamination or value_pattern.fullmatch(value):
+            if not value or contamination:
                 continue
             multi_class = len(_MULTI_CLASS_VALUE_RE.findall(value)) >= 2
-            if (
-                multi_class
-                or _QUALIFIED_NUMERIC_COVER_RE.fullmatch(value)
-                or has_descriptive_numeric_qualifier(value)
-            ):
+            if multi_class or has_descriptive_numeric_qualifier(value):
                 review_signals.append(
                     {
                         "accession": accession,
@@ -356,7 +355,7 @@ def _analyze_xml(
                         "snippet": value[:240],
                     }
                 )
-            else:
+            elif not _is_clean_numeric_cover(field, value):
                 anomalies.append(
                     {
                         "accession": accession,
@@ -400,7 +399,7 @@ def _analyze_xml(
                     "detail": "source provides an eight-character CUSIP without a check digit",
                 }
             )
-        elif value and not _CUSIP_RE.fullmatch(normalized):
+        elif value and not is_nine_character_cusip(normalized):
             anomalies.append(
                 {
                     "accession": accession,
@@ -512,270 +511,3 @@ def _analyze_xml(
         "date_normalization_evidence": date_normalization_evidence,
         "extraction_coverage": extraction_coverage,
     }
-
-
-def _empty_observations() -> dict[str, dict[str, int]]:
-    return {
-        field: {"occurrences": 0, "populated_occurrences": 0, "blank_occurrences": 0}
-        for field in FIELD_TAGS
-    }
-
-
-def analyze_case(case_dir: Path, record: dict[str, Any]) -> dict[str, Any] | None:
-    xml_path = case_dir / "operations" / "render_to_xml.xml"
-    if (
-        not xml_path.is_file()
-        and not (case_dir / "operations" / "render_to_txt.txt").is_file()
-    ):
-        return None
-    accession = str(record.get("accession", case_dir.name))
-    expected_family = str(record.get("form", record.get("family", "")))
-    if not xml_path.is_file():
-        return {
-            "accession": accession,
-            "form": "13G" if "13G" in expected_family.upper() else "13D",
-            "family": "13G" if "13G" in expected_family.upper() else "13D",
-            "error": "missing_rendered_xml",
-            "field_observations": empty_field_observations(FIELD_TAGS),
-            "anomalies": [
-                {
-                    "accession": accession,
-                    "kind": "missing_rendered_xml",
-                    "detail": "text rendering exists but render_to_xml.xml is absent",
-                }
-            ],
-            "review_signals": [],
-            "value_frequencies": {},
-            "unparsed_sections": [],
-            "date_normalization_evidence": [],
-            "extraction_coverage": None,
-        }
-    source_text: str | None = None
-    text_path = case_dir / "operations" / "render_to_txt.txt"
-    if text_path.is_file():
-        try:
-            source_text = text_path.read_text(encoding="utf-8")
-        except (OSError, UnicodeError):
-            source_text = None
-    try:
-        xml_text = xml_path.read_text(encoding="utf-8")
-    except (OSError, UnicodeError) as error:
-        return {
-            "accession": accession,
-            "form": "13G" if "13G" in expected_family.upper() else "13D",
-            "family": "13G" if "13G" in expected_family.upper() else "13D",
-            "error": "unreadable_xml",
-            "field_observations": empty_field_observations(FIELD_TAGS),
-            "anomalies": [
-                {
-                    "accession": accession,
-                    "kind": "unreadable_xml",
-                    "detail": str(error),
-                }
-            ],
-            "review_signals": [],
-            "value_frequencies": {},
-            "unparsed_sections": [],
-            "date_normalization_evidence": [],
-            "extraction_coverage": None,
-        }
-    operations_dir = case_dir / "operations"
-    unparsed_records: tuple[dict[str, object], ...] = ()
-    unparsed_error: str | None = None
-    try:
-        root = ET.fromstring(xml_text)
-        unparsed_records = load_unparsed_sections(case_dir, root)
-    except ET.ParseError:
-        pass
-    except ValueError as error:
-        unparsed_error = str(error)
-    except OSError as error:
-        unparsed_error = str(error)
-    return _analyze_xml(
-        xml_text,
-        accession,
-        expected_family,
-        source_text,
-        unparsed_records=unparsed_records,
-        unparsed_error=unparsed_error,
-    )
-
-
-def summarize_cases(case_reports: list[dict[str, Any]]) -> dict[str, Any]:
-    case_count = len(case_reports)
-    observations: dict[str, Counter[str]] = {field: Counter() for field in FIELD_TAGS}
-    anomalies: list[dict[str, Any]] = []
-    anomaly_counts: Counter[str] = Counter()
-    anomaly_case_accessions: dict[str, set[str]] = {}
-    anomaly_field_counts: Counter[str] = Counter()
-    anomaly_field_accessions: dict[str, set[str]] = {}
-    review_signals: list[dict[str, Any]] = []
-    review_signal_counts: Counter[str] = Counter()
-    review_signal_accessions: dict[str, set[str]] = {}
-    extraction_coverage: list[dict[str, Any]] = []
-    unparsed_sections: list[dict[str, Any]] = []
-    boilerplate_unparsed_count = 0
-    value_counts: dict[str, Counter[str]] = {
-        name: Counter() for name in CATEGORICAL_FIELDS
-    }
-    value_cases: dict[str, dict[str, set[str]]] = {
-        name: {} for name in CATEGORICAL_FIELDS
-    }
-
-    for report in case_reports:
-        accession = str(report.get("accession", ""))
-        for field, fields in report.get("field_observations", {}).items():
-            for key in ("occurrences", "populated_occurrences", "blank_occurrences"):
-                observations.setdefault(field, Counter())[key] += fields.get(key, 0)
-            if fields.get("populated_occurrences", 0):
-                observations[field]["cases_with_value"] += 1
-        for anomaly in report.get("anomalies", []):
-            kind = anomaly["kind"]
-            anomaly_counts[kind] += 1
-            anomaly_case_accessions.setdefault(kind, set()).add(accession)
-            if field := anomaly.get("field"):
-                field_key = f"{kind}:{field}"
-                anomaly_field_counts[field_key] += 1
-                anomaly_field_accessions.setdefault(field_key, set()).add(accession)
-            anomalies.append(anomaly)
-        for signal in report.get("review_signals", []):
-            kind = signal["kind"]
-            review_signal_counts[kind] += 1
-            review_signal_accessions.setdefault(kind, set()).add(accession)
-            review_signals.append(signal)
-        if coverage := report.get("extraction_coverage"):
-            extraction_coverage.append(coverage)
-        case_unparsed = report.get("unparsed_sections", [])
-        unparsed_sections.extend(case_unparsed)
-        boilerplate_unparsed_count += sum(
-            bool(section.get("is_boilerplate")) for section in case_unparsed
-        )
-        for field, values in report.get("value_frequencies", {}).items():
-            for value in values:
-                value_counts.setdefault(field, Counter())[value] += 1
-                value_cases.setdefault(field, {}).setdefault(value, set()).add(
-                    accession
-                )
-
-    field_scorecard = {
-        field: {
-            **dict(counts),
-            "cases_without_value": max(0, case_count - counts["cases_with_value"]),
-            "case_missing_percent": round(
-                max(0, case_count - counts["cases_with_value"])
-                * 100
-                / max(1, case_count),
-                2,
-            ),
-        }
-        for field, counts in sorted(observations.items())
-    }
-    value_summary = {
-        field: {
-            "distinct_values": len(counts),
-            "top_values": [
-                {
-                    "value": value,
-                    "count": count,
-                    "case_count": len(value_cases[field][value]),
-                    "sample_accession": min(value_cases[field][value]),
-                }
-                for value, count in counts.most_common(10)
-            ],
-        }
-        for field, counts in sorted(value_counts.items())
-    }
-    substantive_unparsed = [
-        section for section in unparsed_sections if not section.get("is_boilerplate")
-    ]
-    sample_pool = substantive_unparsed if substantive_unparsed else unparsed_sections
-    unparsed_samples: list[dict[str, Any]] = []
-    seen_snippets: set[str] = set()
-    for section in sample_pool:
-        snippet = section.get("snippet", "")
-        if snippet not in seen_snippets:
-            seen_snippets.add(snippet)
-            unparsed_samples.append(section)
-            if len(unparsed_samples) == 10:
-                break
-
-    families = sorted({str(report.get("family", "13D")) for report in case_reports})
-    coverage_summary = {
-        "case_count": len(extraction_coverage),
-        "source_length": sum(
-            int(report.get("source_length", 0)) for report in extraction_coverage
-        ),
-        "source_nonwhitespace_characters": sum(
-            int(report.get("source_nonwhitespace_characters", 0))
-            for report in extraction_coverage
-        ),
-        "mapped_nonwhitespace_characters": sum(
-            int(report.get("mapped_nonwhitespace_characters", 0))
-            for report in extraction_coverage
-        ),
-        "unparsed_nonwhitespace_characters": sum(
-            int(report.get("unparsed_nonwhitespace_characters", 0))
-            for report in extraction_coverage
-        ),
-        "uncovered_nonwhitespace_characters": sum(
-            int(report.get("uncovered_nonwhitespace_characters", 0))
-            for report in extraction_coverage
-        ),
-        "field_extraction_count": sum(
-            int(report.get("field_extraction_count", 0))
-            for report in extraction_coverage
-        ),
-    }
-    coverage_summary["mapped_percent"] = round(
-        coverage_summary["mapped_nonwhitespace_characters"]
-        * 100
-        / max(1, coverage_summary["source_nonwhitespace_characters"]),
-        2,
-    )
-    coverage_summary["unparsed_percent"] = round(
-        coverage_summary["unparsed_nonwhitespace_characters"]
-        * 100
-        / max(1, coverage_summary["source_nonwhitespace_characters"]),
-        2,
-    )
-    return {
-        "family": families[0] if len(families) == 1 else "mixed" if families else "13D",
-        "case_count": case_count,
-        "field_scorecard": field_scorecard,
-        "anomalies": anomalies,
-        "anomaly_count": len(anomalies),
-        "anomaly_summary": {
-            "kind_counts": dict(sorted(anomaly_counts.items())),
-            "kind_case_counts": {
-                kind: len(accessions)
-                for kind, accessions in sorted(anomaly_case_accessions.items())
-            },
-            "field_counts": dict(sorted(anomaly_field_counts.items())),
-            "field_case_counts": {
-                field: len(accessions)
-                for field, accessions in sorted(anomaly_field_accessions.items())
-            },
-            "sample_anomalies": anomalies[:10],
-        },
-        "review_signals": review_signals,
-        "review_signal_count": len(review_signals),
-        "review_signal_summary": {
-            "kind_counts": dict(sorted(review_signal_counts.items())),
-            "kind_case_counts": {
-                kind: len(accessions)
-                for kind, accessions in sorted(review_signal_accessions.items())
-            },
-        },
-        "unparsed_section_count": len(unparsed_sections),
-        "unparsed_character_count": sum(
-            int(section.get("char_length", 0)) for section in unparsed_sections
-        ),
-        "boilerplate_unparsed_count": boilerplate_unparsed_count,
-        "substantive_unparsed_count": len(substantive_unparsed),
-        "unparsed_samples": unparsed_samples,
-        "extraction_coverage": coverage_summary,
-        "value_frequencies": value_summary,
-    }
-
-
-__all__ = ["analyze_case", "summarize_cases"]

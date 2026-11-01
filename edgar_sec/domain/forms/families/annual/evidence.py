@@ -10,6 +10,7 @@ from edgar_sec.domain.forms.common.forward_looking import (
     FORWARD_LOOKING_TERMS,
     FORWARD_LOOKING_VERBS,
 )
+from edgar_sec.domain.forms.common.vocabulary import COMMON_COVER_EXCLUSION_TERMS
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.automaton import CaseMode
 from edgar_sec.foundation.text.evidence import EvidenceTier, LexicalEvidencePack
@@ -197,11 +198,9 @@ ANNUAL_BODY_GENERAL_TERMS: tuple[str, ...] = (
 )
 
 ANNUAL_COVER_EXCLUSION_TERMS: tuple[str, ...] = (
-    "pursuant",
-    "herein",
+    *COMMON_COVER_EXCLUSION_TERMS,
     "hereof",
     "hereunder",
-    "thereof",
     "therein",
     "thereto",
     "whereby",
@@ -213,15 +212,11 @@ ANNUAL_COVER_EXCLUSION_TERMS: tuple[str, ...] = (
     "is",
     "was",
     "been",
-    "such",
     "all",
     "will",
     "whether",
     "preceding",
-    "commission",
-    "registrant",
     "filer",
-    "form",
 )
 
 # Annual body prose tiers, from decisive phrases down to corroborating soft ones. The

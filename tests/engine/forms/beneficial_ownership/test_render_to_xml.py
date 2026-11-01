@@ -12,8 +12,11 @@ from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     NarrativeItem,
     ReportingPersonCover,
 )
+from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
+    SCHEDULE_13D_XML_NAMESPACE,
+    SCHEDULE_13G_XML_NAMESPACE,
+)
 from edgar_sec.engine.forms.beneficial_ownership.render_to_xml import (
-    SCHEDULE_13D_NS,
     build_schedule13d_xml,
 )
 
@@ -71,7 +74,7 @@ def test_generated_xml_uses_sec_namespaces_and_repeated_standard_fields() -> Non
 
     output = build_schedule13d_xml(document)
     root = ET.fromstring(output.content)
-    ns = {"s": SCHEDULE_13D_NS, "com": "http://www.sec.gov/edgar/common"}
+    ns = {"s": SCHEDULE_13D_XML_NAMESPACE, "com": "http://www.sec.gov/edgar/common"}
 
     assert root.findtext("s:schemaVersion", namespaces=ns) == "X0202"
     assert (
@@ -113,7 +116,7 @@ def test_generated_xml_uses_sec_namespaces_and_repeated_standard_fields() -> Non
     assert len(root.findall(".//s:commentContent", ns)) == 2
     assert root.findtext(".//s:legalProceedings", namespaces=ns) == "Y"
     assert (
-        root.findtext(".//s:Item4/s:transactionPurpose", namespaces=ns) == "Buy & hold."
+        root.findtext(".//s:item4/s:transactionPurpose", namespaces=ns) == "Buy & hold."
     )
     assert (
         root.findtext(".//s:signatureDetails/s:signature", namespaces=ns)
@@ -231,7 +234,7 @@ def test_schedule13g_uses_its_cover_person_and_items_schema_tags() -> None:
 
     output = build_schedule13d_xml(document)
     root = ET.fromstring(output.content)
-    namespace = {"s": "http://www.sec.gov/edgar/schedule13G"}
+    namespace = {"s": SCHEDULE_13G_XML_NAMESPACE}
 
     assert (
         root.findtext(".//s:eventDateRequiresFilingThisStatement", namespaces=namespace)
@@ -280,7 +283,7 @@ def test_percent_of_class_quantization_and_zero_trimming() -> None:
     )
     output = build_schedule13d_xml(doc)
     root = ET.fromstring(output.content)
-    ns = {"s": "http://www.sec.gov/edgar/schedule13G"}
+    ns = {"s": SCHEDULE_13G_XML_NAMESPACE}
     assert root.findtext(".//s:classPercent", namespaces=ns) == "13"
 
 
@@ -314,14 +317,14 @@ def test_schedule13g_item4_xml_rendering() -> None:
     )
     output = build_schedule13d_xml(doc)
     root = ET.fromstring(output.content)
-    ns = {"s": "http://www.sec.gov/edgar/schedule13G"}
+    ns = {"s": SCHEDULE_13G_XML_NAMESPACE}
     assert (
-        root.findtext(".//s:Item4/s:amountBeneficiallyOwned", namespaces=ns) == "500000"
+        root.findtext(".//s:item4/s:amountBeneficiallyOwned", namespaces=ns) == "500000"
     )
-    assert root.findtext(".//s:Item4/s:classPercent", namespaces=ns) == "5.5"
+    assert root.findtext(".//s:item4/s:classPercent", namespaces=ns) == "5.5"
     assert (
         root.findtext(
-            ".//s:Item4/s:numberOfSharesPersonHas/s:solePowerOrDirectToVote",
+            ".//s:item4/s:numberOfSharesPersonHas/s:solePowerOrDirectToVote",
             namespaces=ns,
         )
         == "500000"
@@ -362,8 +365,311 @@ def test_schedule13g_item10_certifications_xml_rendering() -> None:
     )
     output = build_schedule13d_xml(doc)
     root = ET.fromstring(output.content)
-    ns = {"s": "http://www.sec.gov/edgar/schedule13G"}
+    ns = {"s": SCHEDULE_13G_XML_NAMESPACE}
     assert (
-        root.findtext(".//s:Item10/s:certifications", namespaces=ns)
+        root.findtext(".//s:item10/s:certifications", namespaces=ns)
         == "Securities not acquired for control purposes."
     )
+
+
+def test_schedule13g_items_3_to_9_xml_rendering() -> None:
+    """Verify 13G Items 3, 5, 6, 7, 8, 9 render to conforming XML."""
+    person = ReportingPersonCover(
+        (
+            CoverItemEvidence(
+                1, "Name", "Fund LP", EvidenceState.VALUE, tag="reportingPersonName"
+            ),
+        )
+    )
+    doc = BeneficialOwnershipDocument(
+        issuer=IssuerMetadata(event_date="2024-01-02"),
+        reporting_persons=(person,),
+        narrative_items=(
+            NarrativeItem(
+                3,
+                "Item 3",
+                "N/A",
+                0,
+                10,
+                parsed_fields=(NarrativeField("notApplicableFlag", "Y", 0, 3, "N/A"),),
+            ),
+            NarrativeItem(
+                5,
+                "Item 5",
+                "Ceased",
+                11,
+                20,
+                parsed_fields=(
+                    NarrativeField("is5PercentCessation", "Y", 11, 15, "Y"),
+                ),
+            ),
+            NarrativeItem(
+                6,
+                "Item 6",
+                "Clients",
+                21,
+                30,
+                parsed_fields=(
+                    NarrativeField(
+                        "ownershipMoreThan5PercentOnBehalfOfAnotherPerson",
+                        "Clients",
+                        21,
+                        28,
+                        "Clients",
+                    ),
+                ),
+            ),
+            NarrativeItem(
+                7,
+                "Item 7",
+                "Exhibit A",
+                31,
+                40,
+                parsed_fields=(
+                    NarrativeField(
+                        "subsidiaryIdentificationAndClassification",
+                        "Exhibit A",
+                        31,
+                        40,
+                        "Exhibit A",
+                    ),
+                ),
+            ),
+            NarrativeItem(
+                8,
+                "Item 8",
+                "Exhibit B",
+                41,
+                50,
+                parsed_fields=(
+                    NarrativeField(
+                        "identificationAndClassificationOfGroupMembers",
+                        "Exhibit B",
+                        41,
+                        50,
+                        "Exhibit B",
+                    ),
+                ),
+            ),
+            NarrativeItem(
+                9,
+                "Item 9",
+                "Dissolution",
+                51,
+                60,
+                parsed_fields=(
+                    NarrativeField(
+                        "groupDissolutionNotice", "Dissolution", 51, 60, "Dissolution"
+                    ),
+                ),
+            ),
+        ),
+        submission_type="SCHEDULE 13G",
+        form_family="13G",
+    )
+    output = build_schedule13d_xml(doc)
+    root = ET.fromstring(output.content)
+    ns = {"s": SCHEDULE_13G_XML_NAMESPACE}
+    assert root.findtext(".//s:item3/s:notApplicableFlag", namespaces=ns) == "Y"
+    assert (
+        root.findtext(".//s:item5/s:classOwnership5PercentOrLess", namespaces=ns) == "Y"
+    )
+    assert (
+        root.findtext(
+            ".//s:item6/s:ownershipMoreThan5PercentOnBehalfOfAnotherPerson",
+            namespaces=ns,
+        )
+        == "Clients"
+    )
+    assert (
+        root.findtext(
+            ".//s:item7/s:subsidiaryIdentificationAndClassification", namespaces=ns
+        )
+        == "Exhibit A"
+    )
+    assert (
+        root.findtext(
+            ".//s:item8/s:identificationAndClassificationOfGroupMembers", namespaces=ns
+        )
+        == "Exhibit B"
+    )
+    assert (
+        root.findtext(".//s:item9/s:groupDissolutionNotice", namespaces=ns)
+        == "Dissolution"
+    )
+
+
+def test_signature_reporting_person_resolution_fallback() -> None:
+    """Verify single filer and 1:1 index fallback for corporate signatories."""
+    person = ReportingPersonCover(
+        (
+            CoverItemEvidence(
+                1,
+                "Name",
+                "AVI MANAGEMENT LLC",
+                EvidenceState.VALUE,
+                tag="reportingPersonName",
+            ),
+        )
+    )
+    doc_13d = BeneficialOwnershipDocument(
+        issuer=IssuerMetadata(event_date="2024-01-02"),
+        reporting_persons=(person,),
+        signature_block=SignatureBlock(
+            (Signatory(name="Darren C. Wallis", title="Manager", date="2024-01-02"),)
+        ),
+        submission_type="SCHEDULE 13D",
+        form_family="13D",
+    )
+    out_13d = build_schedule13d_xml(doc_13d)
+    root_13d = ET.fromstring(out_13d.content)
+    ns_13d = {"s": SCHEDULE_13D_XML_NAMESPACE}
+    assert (
+        root_13d.findtext(
+            ".//s:signatureInfo/s:signaturePerson/s:signatureReportingPerson",
+            namespaces=ns_13d,
+        )
+        == "AVI MANAGEMENT LLC"
+    )
+
+    doc_13g = BeneficialOwnershipDocument(
+        issuer=IssuerMetadata(event_date="2024-01-02"),
+        reporting_persons=(person,),
+        signature_block=SignatureBlock(
+            (Signatory(name="Darren C. Wallis", title="Manager", date="2024-01-02"),)
+        ),
+        submission_type="SCHEDULE 13G",
+        form_family="13G",
+    )
+    out_13g = build_schedule13d_xml(doc_13g)
+    root_13g = ET.fromstring(out_13g.content)
+    ns_13g = {"s": SCHEDULE_13G_XML_NAMESPACE}
+    assert (
+        root_13g.findtext(
+            ".//s:signatureInformation/s:reportingPersonName",
+            namespaces=ns_13g,
+        )
+        == "AVI MANAGEMENT LLC"
+    )
+
+
+def test_schedule13g_item1_and_item2_fallback_to_document_metadata() -> None:
+    """Verify Item 1 and Item 2 fallback to document issuer and person metadata."""
+    person = ReportingPersonCover(
+        (
+            CoverItemEvidence(
+                1,
+                "Name",
+                "Alpha Fund LP",
+                EvidenceState.VALUE,
+                tag="reportingPersonName",
+            ),
+            CoverItemEvidence(
+                4,
+                "Citizenship",
+                "DE",
+                EvidenceState.VALUE,
+                tag="citizenshipOrOrganization",
+            ),
+        )
+    )
+    doc = BeneficialOwnershipDocument(
+        issuer=IssuerMetadata(
+            issuer_name="Target Corp",
+            event_date="2024-01-02",
+            issuer_address=AddressDetails("100 Main St, City, ST 12345"),
+        ),
+        reporting_persons=(person,),
+        narrative_items=(
+            NarrativeItem(1, "Item 1", "", 0, 10),
+            NarrativeItem(2, "Item 2", "", 11, 20),
+        ),
+        submission_type="SCHEDULE 13G",
+        form_family="13G",
+    )
+    output = build_schedule13d_xml(doc)
+    root = ET.fromstring(output.content)
+    ns = {"s": SCHEDULE_13G_XML_NAMESPACE}
+    assert root.findtext(".//s:item1/s:issuerName", namespaces=ns) == "Target Corp"
+    assert (
+        root.findtext(
+            ".//s:item1/s:issuerPrincipalExecutiveOfficeAddress", namespaces=ns
+        )
+        == "100 Main St, City, ST 12345"
+    )
+    assert (
+        root.findtext(".//s:item2/s:filingPersonName", namespaces=ns) == "Alpha Fund LP"
+    )
+    assert root.findtext(".//s:item2/s:citizenship", namespaces=ns) == "DE"
+
+
+def test_schedule13g_items_substantive_not_applicable_flag_is_no() -> None:
+    """Verify items 3, 5-10 with substantive content emit notApplicableFlag N."""
+    person = ReportingPersonCover(
+        (
+            CoverItemEvidence(
+                1, "Name", "Fund LP", EvidenceState.VALUE, tag="reportingPersonName"
+            ),
+        )
+    )
+    doc = BeneficialOwnershipDocument(
+        issuer=IssuerMetadata(event_date="2024-01-02"),
+        reporting_persons=(person,),
+        narrative_items=(
+            NarrativeItem(
+                3,
+                "Item 3",
+                "IA",
+                0,
+                10,
+                parsed_fields=(
+                    NarrativeField("typeOfReportingPerson", "IA, HC", 0, 6, "IA, HC"),
+                ),
+            ),
+            NarrativeItem(
+                5,
+                "Item 5",
+                "Ceased",
+                11,
+                20,
+                parsed_fields=(
+                    NarrativeField("is5PercentCessation", "Y", 11, 15, "Y"),
+                ),
+            ),
+            NarrativeItem(
+                10,
+                "Item 10",
+                "Cert",
+                21,
+                30,
+                parsed_fields=(
+                    NarrativeField(
+                        "certifications", "Standard cert", 21, 30, "Standard cert"
+                    ),
+                ),
+            ),
+        ),
+        signature_block=SignatureBlock((Signatory(name="Jane Doe"),)),
+        submission_type="SCHEDULE 13G",
+        form_family="13G",
+    )
+    output = build_schedule13d_xml(doc)
+    root = ET.fromstring(output.content)
+    ns = {"s": SCHEDULE_13G_XML_NAMESPACE}
+    assert root.findtext(".//s:item3/s:notApplicableFlag", namespaces=ns) == "N"
+    assert [
+        e.text for e in root.findall(".//s:item3/s:typeOfPersonFiling", namespaces=ns)
+    ] == ["IA", "HC"]
+    assert root.findtext(".//s:item5/s:notApplicableFlag", namespaces=ns) == "N"
+    assert (
+        root.findtext(".//s:item5/s:classOwnership5PercentOrLess", namespaces=ns) == "Y"
+    )
+    assert root.findtext(".//s:item10/s:notApplicableFlag", namespaces=ns) == "N"
+    assert (
+        root.findtext(".//s:item10/s:certifications", namespaces=ns) == "Standard cert"
+    )
+    assert (
+        root.findtext(".//s:signatureDetails/s:title", namespaces=ns)
+        == "Authorized Signatory"
+    )
+    assert root.findtext(".//s:signatureDetails/s:date", namespaces=ns) == "01-02-2024"

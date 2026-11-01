@@ -19,6 +19,17 @@ SCHEDULE_13G_BUSINESS_ENGAGED_TYPES = frozenset(
     {"BD", "BK", "CP", "EP", "FI", "HC", "IA", "IC", "IV", "SA", "OO"}
 )
 
+COMMON_XML_NAMESPACE = "http://www.sec.gov/edgar/common"
+SCHEDULE_13D_XML_NAMESPACE = "http://www.sec.gov/edgar/schedule13D"
+SCHEDULE_13G_XML_NAMESPACE = "http://www.sec.gov/edgar/schedule13g"
+
+BENEFICIAL_OWNERSHIP_XML_NAMESPACES = frozenset(
+    {SCHEDULE_13D_XML_NAMESPACE, SCHEDULE_13G_XML_NAMESPACE}
+)
+BENEFICIAL_OWNERSHIP_ROOT_TAGS = frozenset(
+    f"{{{ns}}}edgarSubmission" for ns in BENEFICIAL_OWNERSHIP_XML_NAMESPACES
+)
+
 SCHEDULE_13D_ITEMS: tuple[ItemDefinition, ...] = (
     ItemDefinition("ITEM 1", 1, ("security and issuer", "security", "issuer")),
     ItemDefinition("ITEM 2", 1, ("identity and background", "identity", "background")),
@@ -107,16 +118,21 @@ SCHEDULE_13G_ITEMS: tuple[ItemDefinition, ...] = (
 )
 
 __all__ = [
+    "BENEFICIAL_OWNERSHIP_ROOT_TAGS",
+    "BENEFICIAL_OWNERSHIP_XML_NAMESPACES",
+    "COMMON_XML_NAMESPACE",
     "SCHEDULE_13D_FUND_TYPES",
     "SCHEDULE_13D_ITEMS",
     "SCHEDULE_13D_MEMBER_TYPES",
     "SCHEDULE_13D_REPORTING_PERSON_TYPES",
     "SCHEDULE_13D_SUBMISSION_TYPES",
+    "SCHEDULE_13D_XML_NAMESPACE",
     "SCHEDULE_13G_BUSINESS_ENGAGED_TYPES",
     "SCHEDULE_13G_GROUP_TYPES",
     "SCHEDULE_13G_ITEMS",
     "SCHEDULE_13G_REPORTING_PERSON_TYPES",
     "SCHEDULE_13G_RULE_TYPES",
     "SCHEDULE_13G_SUBMISSION_TYPES",
+    "SCHEDULE_13G_XML_NAMESPACE",
     "SCHEDULE_LIVE_TEST_TYPES",
 ]

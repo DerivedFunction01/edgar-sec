@@ -67,6 +67,34 @@ def test_flags_bare_class_alias(synthetic_repo: Path) -> None:
     assert "SystemResources" in findings[0].message
 
 
+def test_flags_underscore_alias_reexport(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/domain/thing.py": (
+                "VARIABLE_CHECKED_PATTERN = _VARIABLE_CHECKED_PATTERN\n"
+            )
+        },
+    )
+    findings = legacy_shims.scan_legacy_shims()
+    assert findings
+    assert "VARIABLE_CHECKED_PATTERN" in findings[0].message
+
+
+def test_flags_underscore_alias_import(synthetic_repo: Path) -> None:
+    _build_repo(
+        synthetic_repo,
+        {
+            "edgar_sec/engine/thing.py": (
+                "from .tokens import numeric_cell_starts as _numeric_cell_starts\n"
+            )
+        },
+    )
+    findings = legacy_shims.scan_legacy_shims()
+    assert findings
+    assert "numeric_cell_starts" in findings[0].message
+
+
 def test_alias_to_itself_is_not_a_shim(synthetic_repo: Path) -> None:
     _build_repo(
         synthetic_repo,

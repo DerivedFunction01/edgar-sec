@@ -204,14 +204,16 @@ def test_parser_maps_known_item_subparts_and_preserves_unmapped_text() -> None:
     output = build_beneficial_ownership_xml(document)
     xml = ET.fromstring(output.content)
     namespace = {"s": "http://www.sec.gov/edgar/schedule13D"}
-    item2 = xml.find(".//s:Item2", namespace)
-    item5 = xml.find(".//s:Item5", namespace)
+    item2 = xml.find(".//s:item2", namespace)
+    item5 = xml.find(".//s:item5", namespace)
     assert item2 is not None and item5 is not None
     assert [child.tag.rsplit("}", 1)[-1] for child in item2] == [
         "filingPersonName",
         "principalBusinessAddress",
-        "principalBusiness",
-        "citizenshipOrOrganization",
+        "principalJob",
+        "hasBeenConvicted",
+        "convictionDescription",
+        "citizenship",
     ]
     assert [child.tag.rsplit("}", 1)[-1] for child in item5] == [
         "percentageOfClassSecurities",

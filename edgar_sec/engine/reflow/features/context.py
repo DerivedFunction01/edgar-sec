@@ -43,8 +43,8 @@ from ..rules.thresholds import FEATURE_REGISTRY
 from ..types import ReflowPolicy
 from .geometry import (
     _line_gap_starts,
-    _numeric_cell_starts,
     _shared_columns,
+    numeric_cell_starts,
 )
 from edgar_sec.engine.document.signatures import is_signature_label_line
 
@@ -215,7 +215,7 @@ class BlockContext:
     def numeric_cell_rows(self) -> tuple[tuple[int, ...], ...]:
         rows: list[tuple[int, ...]] = []
         for line in self.non_blank_lines:
-            cells = _numeric_cell_starts(line)
+            cells = numeric_cell_starts(line)
             if cells:
                 rows.append(cells)
         return tuple(rows)

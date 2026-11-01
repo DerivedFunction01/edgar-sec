@@ -20,7 +20,7 @@ from edgar_sec.engine.document.html.tags import (
 from edgar_sec.foundation.text.dates import is_year_token
 
 from ..tokens import PREFIX_SYMBOLS, is_numeric_cell
-from .cell import normalize_cell_whitespace as _normalize_whitespace
+from .cell import normalize_cell_whitespace
 from .cell import parse_style_and_attributes
 from .model import (
     HorizontalAlign,
@@ -45,7 +45,7 @@ def _extract_cell_text(
 ) -> str:
     if not browser_whitespace:
         text = cell.text(separator="\n", strip=True)
-        return _normalize_whitespace(text, preserve_newlines=preserve_whitespace)
+        return normalize_cell_whitespace(text, preserve_newlines=preserve_whitespace)
 
     chunks: list[str] = []
     raw_text = cell.raw_node.text(deep=True) or ""
@@ -119,9 +119,9 @@ def _extract_cell_text(
     if not preserve_whitespace:
         text = text.strip()
     if preserve_whitespace:
-        return _normalize_whitespace(text, preserve_newlines=True)
+        return normalize_cell_whitespace(text, preserve_newlines=True)
     text = text.replace("\n\n", paragraph_marker)
-    text = _normalize_whitespace(text)
+    text = normalize_cell_whitespace(text)
     return text.replace(paragraph_marker, "\n\n").replace(pre_newline_marker, "\n")
 
 

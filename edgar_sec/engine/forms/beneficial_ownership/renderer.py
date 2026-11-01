@@ -7,6 +7,9 @@ from typing import TYPE_CHECKING
 
 from edgar_sec.domain.document.path_facts import DocumentSuffixClass
 from edgar_sec.domain.document.route import DocumentRoute
+from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
+    BENEFICIAL_OWNERSHIP_ROOT_TAGS,
+)
 from edgar_sec.engine.document_processing.outputs import HandlerOutput, HandlerSidecar
 from edgar_sec.engine.forms.normalize import normalize_document
 from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
@@ -17,20 +20,13 @@ from .render_to_xml import build_beneficial_ownership_xml
 if TYPE_CHECKING:
     from edgar_sec.engine.document_processing.registry import HandlerContext
 
-_NATIVE_ROOTS = {
-    "{http://www.sec.gov/edgar/schedule13d}edgarSubmission",
-    "{http://www.sec.gov/edgar/schedule13D}edgarSubmission",
-    "{http://www.sec.gov/edgar/schedule13g}edgarSubmission",
-    "{http://www.sec.gov/edgar/schedule13G}edgarSubmission",
-}
-
 
 def _is_native_xml(raw_bytes: bytes) -> bool:
     try:
         root = ET.fromstring(raw_bytes)
     except ET.ParseError:
         return False
-    return root.tag in _NATIVE_ROOTS
+    return root.tag in BENEFICIAL_OWNERSHIP_ROOT_TAGS
 
 
 def render_beneficial_ownership_to_xml(

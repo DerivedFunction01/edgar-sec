@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from edgar_sec.domain.forms.common.forward_looking import FORWARD_LOOKING_TERMS
+from edgar_sec.domain.forms.common.vocabulary import COMMON_COVER_EXCLUSION_TERMS
 from edgar_sec.foundation.text.automaton import CaseMode
 from edgar_sec.foundation.text.evidence import EvidenceTier, LexicalEvidencePack
 
@@ -76,18 +77,10 @@ CURRENT_BODY_WEAK_TERMS: tuple[str, ...] = (
 )
 
 CURRENT_COVER_EXCLUSION_TERMS: tuple[str, ...] = (
+    *COMMON_COVER_EXCLUSION_TERMS,
     "current",
-    "report",
-    "pursuant",
-    "section",
-    "form",
-    "registrant",
-    "commission",
     "earliest",
     "event",
-    "herein",
-    "thereof",
-    "such",
     "securities",
     "exchange",
     "act",

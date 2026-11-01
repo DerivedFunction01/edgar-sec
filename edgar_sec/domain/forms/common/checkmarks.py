@@ -197,11 +197,10 @@ _BRACKETED_MARK_TOKENS = tuple(
     for left, right in BRACKET_PAIRS
     for inner in CHECKED_INNER + UNCHECKED_INNER
 )
-_BARE_MARK_TOKENS = BARE_MARK_TOKENS
 _OTHER_MARK_TOKENS = tuple(
     t
     for t in CHECKMARK_MARK_TOKENS
-    if t not in _BRACKETED_MARK_TOKENS and t not in _BARE_MARK_TOKENS
+    if t not in _BRACKETED_MARK_TOKENS and t not in BARE_MARK_TOKENS
 )
 
 MARK_OPEN = r"[\[\(\{]"
@@ -219,20 +218,20 @@ def _wrapped_mark_pattern(symbol: str) -> str:
     )
 
 
-_VARIABLE_CHECKED_SAFE_PATTERN = _wrapped_mark_pattern(CHECKED_SYMBOL)
-_VARIABLE_CHECKED_PATTERN = (
-    rf"(?:{_VARIABLE_CHECKED_SAFE_PATTERN}|"
+VARIABLE_CHECKED_SAFE_PATTERN = _wrapped_mark_pattern(CHECKED_SYMBOL)
+VARIABLE_CHECKED_PATTERN = (
+    rf"(?:{VARIABLE_CHECKED_SAFE_PATTERN}|"
     rf"{UNDERSCORE_RUN}\s*{CHECKED_SYMBOL}\s*{UNDERSCORE_RUN}|"
     rf"{UNDERSCORE_RUN}\s*{CHECKED_SYMBOL}|"
     rf"{CHECKED_SYMBOL}\s*{UNDERSCORE_RUN})"
 )
-_VARIABLE_UNCHECKED_SAFE_PATTERN = (
+VARIABLE_UNCHECKED_SAFE_PATTERN = (
     rf"(?:{MARK_OPEN}{SPACED_BLANK}{MARK_CLOSE}|"
     rf"{MARK_OPEN}\s*[_-]{{1,8}}\s*{MARK_CLOSE}|"
     rf"/\s{{1,8}}/|\|\s{{1,8}}\||\\\s{{1,8}}\\)"
 )
-_VARIABLE_UNCHECKED_PATTERN = (
-    rf"(?:{_VARIABLE_UNCHECKED_SAFE_PATTERN}|"
+VARIABLE_UNCHECKED_PATTERN = (
+    rf"(?:{VARIABLE_UNCHECKED_SAFE_PATTERN}|"
     rf"_\s{{1,8}}_|{UNDERSCORE_RUN})"
 )
 
@@ -241,23 +240,23 @@ CHECKMARK_MARK_RE = re.compile(
     + build_alternation(_OTHER_MARK_TOKENS, auto_escape=True)
     + ")(?![\\w])"
     "|(?<![\\w[({])(?:"
-    + build_alternation(_BARE_MARK_TOKENS, auto_escape=True)
+    + build_alternation(BARE_MARK_TOKENS, auto_escape=True)
     + ")(?![\\w])"
-    + f"|{_VARIABLE_CHECKED_PATTERN}"
-    + f"|{_VARIABLE_UNCHECKED_PATTERN}"
+    + f"|{VARIABLE_CHECKED_PATTERN}"
+    + f"|{VARIABLE_UNCHECKED_PATTERN}"
     "|" + build_alternation(_BRACKETED_MARK_TOKENS, auto_escape=True)
 )
 
-RE_VARIABLE_CHECKED = re.compile(rf"^{_VARIABLE_CHECKED_PATTERN}$")
-RE_VARIABLE_UNCHECKED = re.compile(rf"^{_VARIABLE_UNCHECKED_PATTERN}$")
+RE_VARIABLE_CHECKED = re.compile(rf"^{VARIABLE_CHECKED_PATTERN}$")
+RE_VARIABLE_UNCHECKED = re.compile(rf"^{VARIABLE_UNCHECKED_PATTERN}$")
 
 RE_RAW_CHECKED = re.compile(
-    rf"(?<![A-Za-z0-9_])(?:{_VARIABLE_CHECKED_SAFE_PATTERN}|"
+    rf"(?<![A-Za-z0-9_])(?:{VARIABLE_CHECKED_SAFE_PATTERN}|"
     rf"(?:{build_alternation(RAW_CHECKED_TOKENS, auto_escape=True)})(?![A-Za-z0-9_]))",
     re.IGNORECASE,
 )
 RE_RAW_UNCHECKED = re.compile(
-    rf"(?<![A-Za-z0-9_])(?:{_VARIABLE_UNCHECKED_SAFE_PATTERN}|"
+    rf"(?<![A-Za-z0-9_])(?:{VARIABLE_UNCHECKED_SAFE_PATTERN}|"
     rf"(?:{build_alternation(RAW_UNCHECKED_TOKENS, auto_escape=True)})(?![A-Za-z0-9_]))",
     re.IGNORECASE,
 )
@@ -354,6 +353,10 @@ __all__ = [
     "UNCHECKED_INNER",
     "UNCHECKED_SYMBOLS",
     "UNCHECKED_TOKENS",
+    "VARIABLE_CHECKED_PATTERN",
+    "VARIABLE_CHECKED_SAFE_PATTERN",
+    "VARIABLE_UNCHECKED_PATTERN",
+    "VARIABLE_UNCHECKED_SAFE_PATTERN",
     "CheckmarkDecision",
     "CheckmarkScope",
     "font_bullet_glyph_state",

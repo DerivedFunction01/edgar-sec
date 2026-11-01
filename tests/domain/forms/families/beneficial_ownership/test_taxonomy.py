@@ -1,16 +1,21 @@
 from __future__ import annotations
 
 from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
+    BENEFICIAL_OWNERSHIP_ROOT_TAGS,
+    BENEFICIAL_OWNERSHIP_XML_NAMESPACES,
+    COMMON_XML_NAMESPACE,
     SCHEDULE_13D_FUND_TYPES,
     SCHEDULE_13D_ITEMS,
     SCHEDULE_13D_REPORTING_PERSON_TYPES,
     SCHEDULE_13D_SUBMISSION_TYPES,
+    SCHEDULE_13D_XML_NAMESPACE,
     SCHEDULE_13G_BUSINESS_ENGAGED_TYPES,
     SCHEDULE_13G_GROUP_TYPES,
     SCHEDULE_13G_ITEMS,
     SCHEDULE_13G_REPORTING_PERSON_TYPES,
     SCHEDULE_13G_RULE_TYPES,
     SCHEDULE_13G_SUBMISSION_TYPES,
+    SCHEDULE_13G_XML_NAMESPACE,
     SCHEDULE_LIVE_TEST_TYPES,
 )
 from edgar_sec.domain.taxonomy.jurisdictions import EDGAR_JURISDICTION_CODES
@@ -70,3 +75,7 @@ def test_schedule_xml_code_sets_match_the_documented_choices() -> None:
         "OO",
     }
     assert EDGAR_JURISDICTION_CODES
+    assert COMMON_XML_NAMESPACE == "http://www.sec.gov/edgar/common"
+    assert SCHEDULE_13D_XML_NAMESPACE == "http://www.sec.gov/edgar/schedule13D"
+    assert SCHEDULE_13G_XML_NAMESPACE == "http://www.sec.gov/edgar/schedule13g"
+    assert len(BENEFICIAL_OWNERSHIP_ROOT_TAGS) == 2

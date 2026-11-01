@@ -2,6 +2,11 @@
 
 from __future__ import annotations
 
+import re
+
+RE_GROUP_OPTION = re.compile(r"(?i)(?:\(\s*([ab])\s*\)|(?<!\w)([ab])[.)])")
+RE_PERSON_WITH_NOISE = re.compile(r"(?i)\bPERSON\s*[:|]\s*WITH\b")
+
 FIELD_TAGS: dict[str, tuple[str, ...]] = {
     "issuerName": ("issuerName",),
     "issuerCusip": ("issuerCusipNumber", "issuerCUSIP"),
@@ -154,6 +159,8 @@ __all__ = [
     "FIELD_TAGS",
     "ITEM_SUBSECTION_FIELDS",
     "NARRATIVE_FIELDS",
+    "RE_GROUP_OPTION",
+    "RE_PERSON_WITH_NOISE",
     "REPORTING_PERSON_FIELDS",
     "REPORTING_PERSON_XML_SLOTS",
     "REPORTING_PERSON_SLOT_NUMBERS_13D",

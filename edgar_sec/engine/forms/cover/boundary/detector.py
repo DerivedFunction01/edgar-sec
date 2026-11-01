@@ -5,7 +5,7 @@ which is why a profile that disables cover parsing never yields a boundary.
 
 from __future__ import annotations
 
-import re as _re
+import re
 
 from edgar_sec.engine.document.page_markers.detector import (
     PageMarkerKind,
@@ -43,9 +43,9 @@ _AMENDMENT_TRANSITION_PATTERNS = [
     r"signatures?",
 ]
 
-_RE_AMENDMENT_TRANSITION = _re.compile(
+_RE_AMENDMENT_TRANSITION = re.compile(
     rf"^\s*{build_alternation(_AMENDMENT_TRANSITION_PATTERNS)}\s*$",
-    _re.IGNORECASE,
+    re.IGNORECASE,
 )
 
 _COVER_MATRIX_TERMS = (
@@ -63,7 +63,7 @@ _COVER_MATRIX_TERMS = (
     "type of reporting",
     "member of group",
 )
-_RE_COVER_MATRIX_LINE = _re.compile(
+_RE_COVER_MATRIX_LINE = re.compile(
     rf"(?i)\b(?:{build_alternation(_COVER_MATRIX_TERMS)})\b"
 )
 

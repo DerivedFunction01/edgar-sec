@@ -74,9 +74,26 @@ def canonicalize_filled_marks_in_span(
     return "".join(lines), changed
 
 
+def resolve_checked_labeled_option(
+    text: str | None,
+    option_regex: re.Pattern[str],
+) -> str | None:
+    """Resolve which labeled option is checked in text."""
+    if not text:
+        return None
+    matches = list(option_regex.finditer(text))
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+        segment = text[match.end() : end]
+        if mark_state_in(segment) == "checked":
+            return (match.group(1) or match.group(2)).lower()
+    return None
+
+
 __all__ = [
     "canonicalize_filled_marks",
     "canonicalize_filled_marks_in_span",
     "canonicalize_mark_tokens",
     "mark_state_in",
+    "resolve_checked_labeled_option",
 ]

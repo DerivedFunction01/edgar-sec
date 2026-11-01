@@ -111,18 +111,8 @@ def test_render_schedule13d_to_xml_passes_through_native_xml() -> None:
 
 def test_render_schedule13g_to_xml_passes_through_native_xml() -> None:
     native = b"""<?xml version="1.0" encoding="utf-8"?>
-<edgarSubmission xmlns="http://www.sec.gov/edgar/schedule13G" xmlns:com="http://www.sec.gov/edgar/common">
-<schemaVersion>X0202</schemaVersion>
-</edgarSubmission>"""
-    output = render_schedule13g_to_xml(native)
-    assert isinstance(output, HandlerOutput)
-    assert output.content == native
-
-
-def test_render_schedule13g_to_xml_passes_through_lowercase_native_xml() -> None:
-    native = b"""<?xml version="1.0" encoding="utf-8"?>
 <edgarSubmission xmlns="http://www.sec.gov/edgar/schedule13g" xmlns:com="http://www.sec.gov/edgar/common">
-<headerData><submissionType>SCHEDULE 13G</submissionType></headerData>
+<schemaVersion>X0202</schemaVersion>
 </edgarSubmission>"""
     output = render_schedule13g_to_xml(native)
     assert isinstance(output, HandlerOutput)

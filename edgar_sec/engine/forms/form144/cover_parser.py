@@ -8,6 +8,7 @@ from edgar_sec.domain.forms.families.form144.models import (
     IssuerInformation,
     ReportingPerson,
 )
+from edgar_sec.domain.taxonomy.legal_forms import has_legal_form
 from edgar_sec.engine.forms.common.entities import (
     FILLER_RUN_RE,
     IRS_RE,
@@ -139,9 +140,8 @@ def _is_boilerplate_name(value: str | None) -> bool:
         return True
     if "rule 144" in lowered and cleaned[:1].islower():
         return True
-    if sum(c.isdigit() for c in cleaned) >= 4 and not any(
-        term in lowered
-        for term in ("trust", "lp", "l.p.", "llc", "fund", "plan", "401")
+    if sum(c.isdigit() for c in cleaned) >= 4 and not (
+        has_legal_form(lowered) or any(term in lowered for term in ("plan", "401"))
     ):
         return True
     tokens = [token for token in _NON_ALNUM_TOKEN_RE.split(lowered) if token]

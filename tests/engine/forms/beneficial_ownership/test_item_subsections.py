@@ -37,7 +37,7 @@ One Michael Owens Way, Perrysburg, OH 43551"""
     assert len(fields) == 2
     assert fields[0].tag == "issuerName"
     assert fields[0].value == "Owens Illinois Incorporated"
-    assert fields[1].tag == "issuerAddress"
+    assert fields[1].tag == "issuerPrincipalExecutiveOfficeAddress"
     assert fields[1].value == "One Michael Owens Way, Perrysburg, OH 43551"
 
 
@@ -53,9 +53,9 @@ North Carolina"""
     assert len(fields) == 3
     assert fields[0].tag == "filingPersonName"
     assert fields[0].value == "Truist Financial Corporation"
-    assert fields[1].tag == "principalBusinessAddress"
+    assert fields[1].tag == "principalBusinessOfficeOrResidenceAddress"
     assert fields[1].value == "214 North Tryon Street, Charlotte, NC 28202"
-    assert fields[2].tag == "citizenshipOrOrganization"
+    assert fields[2].tag == "citizenship"
     assert fields[2].value == "North Carolina"
 
 
@@ -70,12 +70,16 @@ def test_extract_subsections_parses_13d_item_2_and_5() -> None:
     assert [f.tag for f in fields2] == [
         "filingPersonName",
         "principalBusinessAddress",
-        "principalBusiness",
-        "citizenshipOrOrganization",
+        "principalJob",
+        "hasBeenConvicted",
+        "convictionDescription",
+        "citizenship",
     ]
     assert fields2[0].value == "Alpha Fund"
     assert fields2[2].value == "Private investment fund"
-    assert fields2[3].value == "Delaware."
+    assert fields2[3].value == "No criminal conviction during the past five years"
+    assert fields2[4].value == "No civil proceeding during the past five years"
+    assert fields2[5].value == "Delaware."
 
     item5_text = """(a) 50,000 shares, representing 5.0 percent.
 (b) The person has sole voting and dispositive power over the shares.
@@ -153,3 +157,47 @@ If this statement is being filed to report..."""
     tags = {f.tag: f.value for f in fields}
     assert tags.get("aggregateAmountOwned") == "1500000"
     assert "sharedDispositivePower" not in tags
+
+
+def test_extract_subsections_13g_not_applicable() -> None:
+    """Verify 13G narrative items return notApplicableFlag for N/A disclosures."""
+    for item_num in (3, 5, 6, 7, 8, 9, 10):
+        fields = extract_subsections(item_num, "Not Applicable", family="13G")
+        assert len(fields) == 1
+        assert fields[0].tag == "notApplicableFlag"
+        assert fields[0].value == "Y"
+
+
+def test_extract_subsections_13g_items_5_to_9_substantive() -> None:
+    """Verify 13G Items 5-9 extract substantive narrative and flags."""
+    it5_text = (
+        "Item 5. Ownership of 5 Percent or Less of a Class.\n"
+        "The reporting person ceased to be the beneficial owner: [X]"
+    )
+    f5 = extract_subsections(5, it5_text, family="13G")
+    assert any(f.tag == "is5PercentCessation" and f.value == "Y" for f in f5)
+
+    it6 = extract_subsections(
+        6, "Item 6.\nDividends received by client accounts.", family="13G"
+    )
+    assert (
+        len(it6) == 1
+        and it6[0].tag == "ownershipMoreThan5PercentOnBehalfOfAnotherPerson"
+    )
+
+    it7 = extract_subsections(
+        7, "Item 7.\nSee Exhibit A for subsidiaries.", family="13G"
+    )
+    assert len(it7) == 1 and it7[0].tag == "subsidiaryIdentificationAndClassification"
+
+    it8 = extract_subsections(
+        8, "Item 8.\nExhibit B lists group members.", family="13G"
+    )
+    assert (
+        len(it8) == 1 and it8[0].tag == "identificationAndClassificationOfGroupMembers"
+    )
+
+    it9 = extract_subsections(
+        9, "Item 9.\nNotice of dissolution dated Jan 1.", family="13G"
+    )
+    assert len(it9) == 1 and it9[0].tag == "groupDissolutionNotice"

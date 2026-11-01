@@ -4,14 +4,38 @@ from __future__ import annotations
 
 import re
 
+from edgar_sec.domain.forms.common.checkmarks import VARIABLE_CHECKED_PATTERN
 from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     NarrativeField,
 )
+from edgar_sec.domain.forms.families.beneficial_ownership.phrases import (
+    ITEM5_13G_INSTRUCTION_PATTERNS,
+    ITEM6_13G_INSTRUCTION_PATTERNS,
+    ITEM7_13G_INSTRUCTION_PATTERNS,
+    ITEM8_13G_INSTRUCTION_PATTERNS,
+    ITEM9_13G_INSTRUCTION_PATTERNS,
+    STATUTORY_AMOUNT_OWNED_LABELS,
+    STATUTORY_BUSINESS_LABELS,
+    STATUTORY_CITIZENSHIP_LABELS,
+    STATUTORY_CUSIP_LABELS,
+    STATUTORY_ISSUER_ADDRESS_LABELS,
+    STATUTORY_ISSUER_NAME_LABELS,
+    STATUTORY_ITEM6_LABELS,
+    STATUTORY_PERCENT_CLASS_LABELS,
+    STATUTORY_PERSON_ADDRESS_LABELS,
+    STATUTORY_PERSON_NAME_LABELS,
+    STATUTORY_POWER_GROUP_LABELS,
+    STATUTORY_SECURITY_CLASS_LABELS,
+    STATUTORY_SHARED_DISPOSITIVE_LABELS,
+    STATUTORY_SHARED_VOTING_LABELS,
+    STATUTORY_SOLE_DISPOSITIVE_LABELS,
+    STATUTORY_SOLE_VOTING_LABELS,
+)
 from edgar_sec.engine.forms.common.numbers import normalize_schema_number
+from edgar_sec.engine.forms.common.tables import strip_markup_tags
 from edgar_sec.foundation.regex.builder import build_alternation
 
-_RE_HTML_TAG = re.compile(r"</?[a-zA-Z][^>]*>")
-_RE_SUBSECTION_SPLIT = re.compile(
+RE_SUBSECTION_SPLIT = re.compile(
     r"(?im)(?:^[ \t]*|[;.]\s+)(?:\(?\bITEM\s+\d+\b\s*)?(?:\(([a-f])\)|([a-f])[.:]|\b([a-f])\))[ \t]*(?:[:.-][ \t]*)?"
 )
 _RE_ROMAN_SPLIT = re.compile(
@@ -29,153 +53,126 @@ _SUBSECTION_BOUNDARY_ALT = build_alternation(
 _RE_SUBSECTION_BOUNDARY = re.compile(rf"(?im)^\s*(?:{_SUBSECTION_BOUNDARY_ALT})")
 
 _ISSUER_NAME_LABELS = build_alternation(
-    ("NAME OF ISSUER", "ISSUER NAME", "NAME OF THE ISSUER"),
-    auto_escape=True,
-    compact=True,
+    STATUTORY_ISSUER_NAME_LABELS, auto_escape=True, compact=True
 )
 _ISSUER_ADDRESS_LABELS = build_alternation(
-    (
-        "ADDRESS OF ISSUER'S PRINCIPAL EXECUTIVE OFFICES",
-        "ADDRESS OF ISSUERS PRINCIPAL EXECUTIVE OFFICES",
-        "NAME OF ISSUER'S PRINCIPAL EXECUTIVE OFFICES",
-        "NAME OF ISSUERS PRINCIPAL EXECUTIVE OFFICES",
-        "ADDRESS OF PRINCIPAL EXECUTIVE OFFICES",
-        "PRINCIPAL EXECUTIVE OFFICES",
-    ),
-    auto_escape=True,
-    compact=True,
+    STATUTORY_ISSUER_ADDRESS_LABELS, auto_escape=True, compact=True
 )
 _PERSON_NAME_LABELS = build_alternation(
-    (
-        "NAME OF PERSON FILING",
-        "NAMES OF PERSONS FILING",
-        "NAME OF REPORTING PERSON",
-        "NAMES OF REPORTING PERSONS",
-        "PERSON FILING",
-        "NAME OF PERSON",
-    ),
-    auto_escape=True,
-    compact=True,
+    STATUTORY_PERSON_NAME_LABELS, auto_escape=True, compact=True
 )
 _PERSON_ADDRESS_LABELS = build_alternation(
-    (
-        "ADDRESS OF PRINCIPAL BUSINESS OFFICE OR, IF NONE, RESIDENCE",
-        "ADDRESS OF PRINCIPAL BUSINESS OFFICE OR IF NONE RESIDENCE",
-        "ADDRESS OF PRINCIPAL BUSINESS OFFICE",
-        "PRINCIPAL BUSINESS OFFICE",
-        "RESIDENCE ADDRESS",
-    ),
-    auto_escape=True,
-    compact=True,
+    STATUTORY_PERSON_ADDRESS_LABELS, auto_escape=True, compact=True
 )
 _BUSINESS_LABELS = build_alternation(
-    (
-        "PRESENT PRINCIPAL OCCUPATION OR EMPLOYMENT",
-        "PRINCIPAL OCCUPATION OR EMPLOYMENT",
-        "PRINCIPAL OCCUPATION",
-        "PRINCIPAL BUSINESS",
-    ),
-    auto_escape=True,
-    compact=True,
+    STATUTORY_BUSINESS_LABELS, auto_escape=True, compact=True
 )
 _CITIZENSHIP_LABELS = build_alternation(
-    (
-        "CITIZENSHIP OR PLACE OF ORGANIZATION",
-        "PLACE OF ORGANIZATION",
-        "CITIZENSHIP",
-    ),
-    auto_escape=True,
-    compact=True,
+    STATUTORY_CITIZENSHIP_LABELS, auto_escape=True, compact=True
 )
 _SECURITY_CLASS_LABELS = build_alternation(
-    ("TITLE OF CLASS OF SECURITIES", "CLASS OF SECURITIES"),
-    auto_escape=True,
-    compact=True,
+    STATUTORY_SECURITY_CLASS_LABELS, auto_escape=True, compact=True
 )
 _CUSIP_LABELS = build_alternation(
-    ("CUSIP NUMBER", "CUSIP NO", "CUSIP"),
-    auto_escape=True,
-    compact=True,
+    STATUTORY_CUSIP_LABELS, auto_escape=True, compact=True
 )
 _AMOUNT_OWNED_LABELS = build_alternation(
-    (
-        "AGGREGATE AMOUNT BENEFICIALLY OWNED BY EACH REPORTING PERSON",
-        "AMOUNT BENEFICIALLY OWNED BY EACH REPORTING PERSON",
-        "AGGREGATE AMOUNT BENEFICIALLY OWNED",
-        "AMOUNT BENEFICIALLY OWNED",
-    ),
-    auto_escape=True,
-    compact=True,
+    STATUTORY_AMOUNT_OWNED_LABELS, auto_escape=True, compact=True
 )
 _PERCENT_CLASS_LABELS = build_alternation(
-    (
-        "PERCENT OF CLASS REPRESENTED BY AMOUNT IN ROW",
-        "PERCENT OF CLASS REPRESENTED BY AMOUNT",
-        "PERCENT OF CLASS",
-    ),
-    auto_escape=True,
-    compact=True,
+    STATUTORY_PERCENT_CLASS_LABELS, auto_escape=True, compact=True
 )
 _POWER_GROUP_LABELS = build_alternation(
-    (
-        "NUMBER OF SHARES AS TO WHICH SUCH PERSON HAS",
-        "NUMBER OF SHARES AS TO WHICH THE PERSON HAS",
-        "NUMBER OF SHARES BENEFICIALLY OWNED BY EACH",
-        "NUMBER OF SHARES BENEFICIALLY OWNED",
-        "DEEMED VOTING POWER AND DISPOSITION POWER",
-        "NUMBER OF SHARES",
-    ),
-    auto_escape=True,
-    compact=True,
+    STATUTORY_POWER_GROUP_LABELS, auto_escape=True, compact=True
 )
 _SOLE_VOTING_LABELS = build_alternation(
-    (
-        "SOLE POWER TO VOTE OR TO DIRECT THE VOTE",
-        "SOLE POWER TO VOTE OR DIRECT THE VOTE",
-        "SOLE POWER TO VOTE",
-    ),
-    auto_escape=True,
-    compact=True,
+    STATUTORY_SOLE_VOTING_LABELS, auto_escape=True, compact=True
 )
 _SHARED_VOTING_LABELS = build_alternation(
-    (
-        "SHARED POWER TO VOTE OR TO DIRECT THE VOTE",
-        "SHARED POWER TO VOTE OR DIRECT THE VOTE",
-        "SHARED POWER TO VOTE",
-    ),
-    auto_escape=True,
-    compact=True,
+    STATUTORY_SHARED_VOTING_LABELS, auto_escape=True, compact=True
 )
 _SOLE_DISPOSITIVE_LABELS = build_alternation(
+    STATUTORY_SOLE_DISPOSITIVE_LABELS, auto_escape=True, compact=True
+)
+_SHARED_DISPOSITIVE_LABELS = build_alternation(
+    STATUTORY_SHARED_DISPOSITIVE_LABELS, auto_escape=True, compact=True
+)
+_ITEM6_LABELS = build_alternation(
+    STATUTORY_ITEM6_LABELS, auto_escape=True, compact=True
+)
+_ITEM7_LABELS = build_alternation(
     (
-        "SOLE POWER TO DISPOSE OR TO DIRECT THE DISPOSITION OF",
-        "SOLE POWER TO DISPOSE OR DIRECT THE DISPOSITION OF",
-        "SOLE POWER TO DISPOSE",
+        "IDENTIFICATION AND CLASSIFICATION OF THE SUBSIDIARY WHICH ACQUIRED THE SECURITY BEING REPORTED ON BY THE PARENT HOLDING COMPANY OR CONTROL PERSON",
+        "IDENTIFICATION AND CLASSIFICATION OF THE SUBSIDIARY",
+        "IDENTIFICATION OF SUBSIDIARY",
     ),
     auto_escape=True,
     compact=True,
 )
-_SHARED_DISPOSITIVE_LABELS = build_alternation(
+_ITEM8_LABELS = build_alternation(
     (
-        "SHARED POWER TO DISPOSE OR TO DIRECT THE DISPOSITION OF",
-        "SHARED POWER TO DISPOSE OR DIRECT THE DISPOSITION OF",
-        "SHARED POWER TO DISPOSE",
+        "IDENTIFICATION AND CLASSIFICATION OF MEMBERS OF THE GROUP",
+        "IDENTIFICATION AND CLASSIFICATION OF GROUP MEMBERS",
+        "MEMBERS OF THE GROUP",
     ),
     auto_escape=True,
     compact=True,
+)
+_ITEM9_LABELS = build_alternation(
+    ("NOTICE OF DISSOLUTION OF GROUP", "DISSOLUTION OF GROUP"),
+    auto_escape=True,
+    compact=True,
+)
+_NOT_APPLICABLE_TERMS = (
+    "not applicable",
+    "not-applicable",
+    "item not applicable",
+    "n/a",
+    "none",
+)
+_NOT_APPLICABLE_ALT = build_alternation(
+    _NOT_APPLICABLE_TERMS, auto_escape=True, compact=True
+)
+_RE_NOT_APPLICABLE = re.compile(rf"(?i)^\s*(?:{_NOT_APPLICABLE_ALT})[.\s]*$")
+_RE_ITEM5_INSTRUCTION = re.compile(
+    rf"(?is)^\s*(?:item\s+5[.:]?\s*)?(?:{build_alternation(ITEM5_13G_INSTRUCTION_PATTERNS, auto_escape=False, compact=False)})\s*[:.-]?"
+)
+_RE_ITEM6_INSTRUCTION = re.compile(
+    rf"(?is)^\s*(?:item\s+6[.:]?\s*)?(?:{build_alternation(ITEM6_13G_INSTRUCTION_PATTERNS, auto_escape=False, compact=False)})\s*[:.-]?"
+)
+_RE_ITEM7_INSTRUCTION = re.compile(
+    rf"(?is)^\s*(?:item\s+7[.:]?\s*)?(?:{build_alternation(ITEM7_13G_INSTRUCTION_PATTERNS, auto_escape=False, compact=False)})\s*[:.-]?"
+)
+_RE_ITEM8_INSTRUCTION = re.compile(
+    rf"(?is)^\s*(?:item\s+8[.:]?\s*)?(?:{build_alternation(ITEM8_13G_INSTRUCTION_PATTERNS, auto_escape=False, compact=False)})\s*[:.-]?"
+)
+_RE_ITEM9_INSTRUCTION = re.compile(
+    rf"(?is)^\s*(?:item\s+9[.:]?\s*)?(?:{build_alternation(ITEM9_13G_INSTRUCTION_PATTERNS, auto_escape=False, compact=False)})\s*[:.-]?"
 )
 
 _LABEL_PATTERNS: dict[str, re.Pattern[str]] = {
     "issuerName": re.compile(rf"(?i)^\s*(?:{_ISSUER_NAME_LABELS})\s*[:.-]?\s*"),
     "issuerAddress": re.compile(rf"(?i)^\s*(?:{_ISSUER_ADDRESS_LABELS})\s*[:.-]?\s*"),
+    "issuerPrincipalAddress": re.compile(
+        rf"(?i)^\s*(?:{_ISSUER_ADDRESS_LABELS})\s*[:.-]?\s*"
+    ),
+    "issuerPrincipalExecutiveOfficeAddress": re.compile(
+        rf"(?i)^\s*(?:{_ISSUER_ADDRESS_LABELS})\s*[:.-]?\s*"
+    ),
     "filingPersonName": re.compile(rf"(?i)^\s*(?:{_PERSON_NAME_LABELS})\s*[:.-]?\s*"),
     "principalBusinessAddress": re.compile(
         rf"(?i)^\s*(?:{_PERSON_ADDRESS_LABELS})\s*[:.-]?\s*"
     ),
+    "principalBusinessOfficeOrResidenceAddress": re.compile(
+        rf"(?i)^\s*(?:{_PERSON_ADDRESS_LABELS})\s*[:.-]?\s*"
+    ),
     "principalBusiness": re.compile(rf"(?i)^\s*(?:{_BUSINESS_LABELS})\s*[:.-]?\s*"),
+    "principalJob": re.compile(rf"(?i)^\s*(?:{_BUSINESS_LABELS})\s*[:.-]?\s*"),
     "citizenshipOrOrganization": re.compile(
         rf"(?i)^\s*(?:{_CITIZENSHIP_LABELS})\s*[:.-]?\s*"
     ),
+    "citizenship": re.compile(rf"(?i)^\s*(?:{_CITIZENSHIP_LABELS})\s*[:.-]?\s*"),
+    "securityTitle": re.compile(rf"(?i)^\s*(?:{_SECURITY_CLASS_LABELS})\s*[:.-]?\s*"),
     "securitiesClassTitle": re.compile(
         rf"(?i)^\s*(?:{_SECURITY_CLASS_LABELS})\s*[:.-]?\s*"
     ),
@@ -197,17 +194,27 @@ _LABEL_PATTERNS: dict[str, re.Pattern[str]] = {
     "sharedDispositivePower": re.compile(
         rf"(?i)^\s*(?:{_SHARED_DISPOSITIVE_LABELS})\s*[:.-]?\s*"
     ),
+    "ownershipMoreThan5PercentOnBehalfOfAnotherPerson": re.compile(
+        rf"(?i)^\s*(?:{_ITEM6_LABELS})\s*[:.-]?\s*"
+    ),
+    "subsidiaryIdentificationAndClassification": re.compile(
+        rf"(?i)^\s*(?:{_ITEM7_LABELS})\s*[:.-]?\s*"
+    ),
+    "identificationAndClassificationOfGroupMembers": re.compile(
+        rf"(?i)^\s*(?:{_ITEM8_LABELS})\s*[:.-]?\s*"
+    ),
+    "groupDissolutionNotice": re.compile(rf"(?i)^\s*(?:{_ITEM9_LABELS})\s*[:.-]?\s*"),
 }
 
 _SUBSECTION_FIELD_MAP_13G: dict[int, dict[str, str]] = {
     1: {
         "a": "issuerName",
-        "b": "issuerAddress",
+        "b": "issuerPrincipalExecutiveOfficeAddress",
     },
     2: {
         "a": "filingPersonName",
-        "b": "principalBusinessAddress",
-        "c": "citizenshipOrOrganization",
+        "b": "principalBusinessOfficeOrResidenceAddress",
+        "c": "citizenship",
         "d": "securitiesClassTitle",
         "e": "cusip",
     },
@@ -231,14 +238,17 @@ _ROMAN_FIELD_MAP: dict[str, str] = {
 
 _SUBSECTION_FIELD_MAP_13D: dict[int, dict[str, str]] = {
     1: {
-        "a": "securitiesClassTitle",
+        "a": "securityTitle",
         "b": "issuerName",
+        "c": "issuerPrincipalAddress",
     },
     2: {
         "a": "filingPersonName",
         "b": "principalBusinessAddress",
-        "c": "principalBusiness",
-        "f": "citizenshipOrOrganization",
+        "c": "principalJob",
+        "d": "hasBeenConvicted",
+        "e": "convictionDescription",
+        "f": "citizenship",
     },
     5: {
         "a": "percentageOfClassSecurities",
@@ -321,23 +331,14 @@ _RE_PERCENT_OF_CLASS = re.compile(
     rf"(?i)(?:(?:{_PERCENT_PREFIX_ALT})\s*|^|\b)([0-9]+(?:\.[0-9]+)?)\s*(?:{_PERCENT_SIGN_ALT})"
 )
 
-_CHECKED_BOX_ALT = build_alternation(
-    (
-        r"\[\s*[xX✓*]\s*\]",
-        r"_\s*[xX✓*]\s*_",
-        r"\(\s*[xX✓*]\s*\)",
-    ),
-    auto_escape=False,
-)
-_CHECKED_BOX = rf"(?:{_CHECKED_BOX_ALT})"
 _RE_CHECKED_SUBPART_POST = re.compile(
-    rf"(?i)(?:\(?\s*([a-k])\s*\)|([a-k])\.)\s*{_CHECKED_BOX}"
+    rf"(?i)(?:\(?\s*([a-k])\s*\)|([a-k])\.)\s*{VARIABLE_CHECKED_PATTERN}"
 )
 _RE_CHECKED_SUBPART_PRE = re.compile(
-    rf"(?i){_CHECKED_BOX}\s*(?:\(?\s*([a-k])\s*\)|([a-k])\.)"
+    rf"(?i){VARIABLE_CHECKED_PATTERN}\s*(?:\(?\s*([a-k])\s*\)|([a-k])\.)"
 )
 _RE_ITEM5_13G_CESSATION = re.compile(
-    rf"(?is)ceased\s+to\s+be.*{_CHECKED_BOX}|{_CHECKED_BOX}.*ceased\s+to\s+be"
+    rf"(?is)ceased\s+to\s+be.*{VARIABLE_CHECKED_PATTERN}|{VARIABLE_CHECKED_PATTERN}.*ceased\s+to\s+be"
 )
 _ITEM3_CLASSIFICATION_MAP: dict[str, str] = {
     "a": "BD",
@@ -374,7 +375,7 @@ _RE_CERTIFICATION_HEADER = re.compile(
 
 def extract_prose_ownership(text: str) -> tuple[str | None, str | None]:
     """Extracts aggregate share count and class percent from prose text."""
-    clean_text = _RE_HTML_TAG.sub(" ", text).strip()
+    clean_text = strip_markup_tags(text)
     if _RE_ZERO_OWNERSHIP.search(clean_text[:500]):
         return "0", "0"
     shares: str | None = None
@@ -421,46 +422,34 @@ def extract_item3_classification_codes(text: str) -> str | None:
 
 def extract_item3_fund_codes(text: str) -> str | None:
     """Extracts SEC 2-character source-of-funds codes from Schedule 13D Item 3."""
-    codes: list[str] = []
-    if _RE_WC.search(text):
-        codes.append("WC")
-    if _RE_PF.search(text):
-        codes.append("PF")
-    if _RE_BK.search(text):
-        codes.append("BK")
-    if _RE_AF.search(text):
-        codes.append("AF")
-    if _RE_OO.search(text):
-        codes.append("OO")
+    checks = (
+        ("WC", _RE_WC),
+        ("PF", _RE_PF),
+        ("BK", _RE_BK),
+        ("AF", _RE_AF),
+        ("OO", _RE_OO),
+    )
+    codes = [code for code, regex in checks if regex.search(text)]
     return ", ".join(codes) if codes else None
 
 
 def clean_subsection_value(tag: str, raw_value: str) -> str:
     """Strips leading statutory labels, HTML tags, and padding from a subsection value."""
-    text = _RE_HTML_TAG.sub(" ", raw_value).strip()
+    text = strip_markup_tags(raw_value)
     label_pattern = _LABEL_PATTERNS.get(tag)
     if label_pattern is not None:
         text = label_pattern.sub("", text).strip()
     if tag in {"issuerName", "filingPersonName"} and _RE_INVALID_NAME.match(text):
         return ""
-    if tag in _NUMERIC_FIELD_TAGS:
+    if tag in _NUMERIC_FIELD_TAGS or tag == "percentOfClass":
         if text.strip().lower() in {"-", "none", "nil", "n/a", "not applicable", "-0-"}:
             return "0"
+        is_int = tag != "percentOfClass"
         norm = normalize_schema_number(
             text,
-            integer=True,
-            strip_units=True,
-            strip_footnotes=True,
-            extract_leading_number=True,
-        )
-        return norm if norm is not None else ""
-    elif tag == "percentOfClass":
-        if text.strip().lower() in {"-", "none", "nil", "n/a", "not applicable", "-0-"}:
-            return "0"
-        norm = normalize_schema_number(
-            text,
-            integer=False,
-            strip_percent=True,
+            integer=is_int,
+            strip_units=is_int,
+            strip_percent=not is_int,
             strip_footnotes=True,
             extract_leading_number=True,
         )
@@ -479,31 +468,32 @@ def extract_subsections(
     if not item_text.strip():
         return ()
 
+    end_off = base_offset + len(item_text)
+
+    def _field(tag: str, value: str) -> NarrativeField:
+        return NarrativeField(
+            tag=tag,
+            value=value,
+            start_offset=base_offset,
+            end_offset=end_off,
+            source_text=item_text,
+        )
+
+    if family == "13G" and item_number in {3, 5, 6, 7, 8, 9, 10}:
+        clean_text = strip_markup_tags(item_text)
+        if _RE_NOT_APPLICABLE.match(clean_text):
+            return (_field("notApplicableFlag", "Y"),)
+
     if item_number == 3:
         if family == "13G":
             type_code = extract_item3_classification_codes(item_text)
             if type_code:
-                return (
-                    NarrativeField(
-                        tag="typeOfReportingPerson",
-                        value=type_code,
-                        start_offset=base_offset,
-                        end_offset=base_offset + len(item_text),
-                        source_text=item_text,
-                    ),
-                )
+                return (_field("typeOfReportingPerson", type_code),)
+            return (_field("notApplicableFlag", "Y"),)
         else:
             fund_code = extract_item3_fund_codes(item_text)
             if fund_code:
-                return (
-                    NarrativeField(
-                        tag="fundType",
-                        value=fund_code,
-                        start_offset=base_offset,
-                        end_offset=base_offset + len(item_text),
-                        source_text=item_text,
-                    ),
-                )
+                return (_field("fundType", fund_code),)
 
     if item_number == 5:
         if family == "13G":
@@ -511,66 +501,61 @@ def extract_subsections(
                 item_text
             ):
                 return (
-                    NarrativeField(
-                        tag="is5PercentCessation",
-                        value="Y",
-                        start_offset=base_offset,
-                        end_offset=base_offset + len(item_text),
-                        source_text=item_text,
-                    ),
-                    NarrativeField(
-                        tag="aggregateAmountOwned",
-                        value="0",
-                        start_offset=base_offset,
-                        end_offset=base_offset + len(item_text),
-                        source_text=item_text,
-                    ),
-                    NarrativeField(
-                        tag="percentOfClass",
-                        value="0",
-                        start_offset=base_offset,
-                        end_offset=base_offset + len(item_text),
-                        source_text=item_text,
-                    ),
+                    _field("is5PercentCessation", "Y"),
+                    _field("aggregateAmountOwned", "0"),
+                    _field("percentOfClass", "0"),
                 )
+            clean_it5 = _RE_ITEM5_INSTRUCTION.sub(
+                "", strip_markup_tags(item_text)
+            ).strip()
+            if (
+                not clean_it5
+                or _RE_NOT_APPLICABLE.match(clean_it5)
+                or clean_it5 in {"[ ]", "()", "( )"}
+            ):
+                return (_field("notApplicableFlag", "Y"),)
+            return (_field("notApplicableFlag", "Y"),)
         elif family == "13D" and _RE_ZERO_OWNERSHIP.search(item_text):
             return (
-                NarrativeField(
-                    tag="aggregateAmountOwned",
-                    value="0",
-                    start_offset=base_offset,
-                    end_offset=base_offset + len(item_text),
-                    source_text=item_text,
-                ),
-                NarrativeField(
-                    tag="percentOfClass",
-                    value="0",
-                    start_offset=base_offset,
-                    end_offset=base_offset + len(item_text),
-                    source_text=item_text,
-                ),
+                _field("aggregateAmountOwned", "0"),
+                _field("percentOfClass", "0"),
             )
 
     if item_number == 10 and family == "13G":
-        clean_cert = _RE_HTML_TAG.sub(" ", item_text).strip()
+        clean_cert = strip_markup_tags(item_text)
         clean_cert = _RE_CERTIFICATION_HEADER.sub("", clean_cert).strip()
-        if clean_cert:
-            return (
-                NarrativeField(
-                    tag="certifications",
-                    value=clean_cert,
-                    start_offset=base_offset,
-                    end_offset=base_offset + len(item_text),
-                    source_text=item_text,
-                ),
-            )
+        if not clean_cert or _RE_NOT_APPLICABLE.match(clean_cert):
+            return (_field("notApplicableFlag", "Y"),)
+        return (_field("certifications", clean_cert),)
+
+    if family == "13G" and item_number in {6, 7, 8, 9}:
+        tag_map_13g = {
+            6: "ownershipMoreThan5PercentOnBehalfOfAnotherPerson",
+            7: "subsidiaryIdentificationAndClassification",
+            8: "identificationAndClassificationOfGroupMembers",
+            9: "groupDissolutionNotice",
+        }
+        inst_patterns = {
+            6: _RE_ITEM6_INSTRUCTION,
+            7: _RE_ITEM7_INSTRUCTION,
+            8: _RE_ITEM8_INSTRUCTION,
+            9: _RE_ITEM9_INSTRUCTION,
+        }
+        tag = tag_map_13g[item_number]
+        clean_val = (
+            inst_patterns[item_number].sub("", strip_markup_tags(item_text)).strip()
+        )
+        clean_val = clean_subsection_value(tag, clean_val)
+        if not clean_val or _RE_NOT_APPLICABLE.match(clean_val):
+            return (_field("notApplicableFlag", "Y"),)
+        return (_field(tag, clean_val),)
 
     field_map_registry = (
         _SUBSECTION_FIELD_MAP_13G if family == "13G" else _SUBSECTION_FIELD_MAP_13D
     )
     field_map = field_map_registry.get(item_number)
 
-    matches = list(_RE_SUBSECTION_SPLIT.finditer(item_text))
+    matches = list(RE_SUBSECTION_SPLIT.finditer(item_text))
     if not matches:
         if (family == "13D" and item_number == 5) or (
             family == "13G" and item_number == 4
@@ -719,6 +704,7 @@ def extract_subsections(
 
 
 __all__ = [
+    "RE_SUBSECTION_SPLIT",
     "clean_subsection_value",
     "extract_item3_classification_codes",
     "extract_item3_fund_codes",

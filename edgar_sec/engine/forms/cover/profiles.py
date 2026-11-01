@@ -5,8 +5,7 @@ leak into quarterly or current-report processing.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from dataclasses import replace as _dataclass_replace
+from dataclasses import dataclass, replace
 from typing import TYPE_CHECKING
 
 from edgar_sec.domain.forms.common.aliases import resolve_alias
@@ -461,13 +460,13 @@ def build_beneficial_ownership_profile(family: str = "13D") -> CoverProfile:
 
 
 def _build_profiles() -> dict[str, CoverProfile]:
-    annual_common = _dataclass_replace(
+    annual_common = replace(
         build_annual_profile("10-K"), derived_taxonomy=FORM_10K_DERIVED
     )
-    annual_foreign = _dataclass_replace(
+    annual_foreign = replace(
         annual_common, family="20-F", derived_taxonomy=FORM_20F_DERIVED
     )
-    quarterly = _dataclass_replace(
+    quarterly = replace(
         build_quarterly_profile("10-Q"), derived_taxonomy=FORM_10Q_DERIVED
     )
     registration_s1 = build_registration_profile("S-1")
@@ -476,7 +475,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
     registration_s8 = build_registration_profile("S-8")
     generic_8k = build_current_profile("8-K")
     current = CurrentReportEvidence()
-    generic_6k = _dataclass_replace(
+    generic_6k = replace(
         build_current_profile("6-K"),
         body_evidence=BodyEvidencePack(
             structural_headings=(),

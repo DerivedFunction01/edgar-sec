@@ -38,6 +38,7 @@ from edgar_sec.domain.taxonomy.legal_forms import (
     LEGAL_FORMS,
     NAME_STOPWORDS,
     entity_name_tokens,
+    has_legal_form,
 )
 
 # --- jurisdictions --------------------------------------------------------
@@ -137,6 +138,14 @@ def test_entity_name_tokens(raw: str, expected: list[str]) -> None:
 
 def test_entity_name_tokens_drops_the_jurisdiction_first() -> None:
     assert entity_name_tokens("Apple Inc/CA") == ["apple"]
+
+
+def test_has_legal_form_detects_common_corporate_forms() -> None:
+    assert has_legal_form("Acme LLC")
+    assert has_legal_form("Omega Holdings, Inc.")
+    assert has_legal_form("Encore Energy Partners LP")
+    assert has_legal_form("Vanguard Growth ETF")
+    assert not has_legal_form("John Doe")
 
 
 # --- family vocabulary ----------------------------------------------------

@@ -15,6 +15,7 @@ from edgar_sec.domain.forms.common.signatures import (
     Signatory,
     SignatureBlock,
 )
+from edgar_sec.domain.taxonomy.legal_forms import LEGAL_FORMS
 from edgar_sec.engine.document.signatures import (
     CONFORMED_SIGNATURE_ALT,
     CONFORMED_SIGNATURE_RE,
@@ -500,11 +501,6 @@ DISALLOWED_SIGNATURE_NAME_WORDS: frozenset[str] = frozenset(
         "criminal",
         "violations",
         "note",
-        "inc",
-        "corp",
-        "corporation",
-        "company",
-        "llc",
         "gross",
         "proceeds",
         "market",
@@ -513,7 +509,7 @@ DISALLOWED_SIGNATURE_NAME_WORDS: frozenset[str] = frozenset(
         "approximate",
         "approx",
     )
-)
+).union(LEGAL_FORMS)
 
 SIG_DELIMITER_TERMS = (
     r",\s*",

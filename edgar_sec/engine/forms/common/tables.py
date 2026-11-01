@@ -17,7 +17,10 @@ from edgar_sec.engine.forms.common.entities import (
     STREET_SUFFIX_RE,
 )
 from edgar_sec.engine.forms.common.numbers import NUMERIC_TOKEN_RE
-from edgar_sec.engine.tables.ascii_html.converter import ResolvedGrid
+from edgar_sec.engine.tables.ascii_html.converter import (
+    ResolvedGrid,
+    convert_html_tables_to_ascii,
+)
 from edgar_sec.foundation.regex.builder import build_alternation
 
 IGNORE_SUBBOX_MARKERS: tuple[str, ...] = (

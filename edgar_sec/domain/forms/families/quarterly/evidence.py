@@ -6,7 +6,10 @@ from dataclasses import dataclass, field
 
 from edgar_sec.domain.forms.common.forward_looking import FORWARD_LOOKING_TERMS
 from edgar_sec.domain.forms.common.rules import COMMON_SHARES_RULES
-from edgar_sec.domain.forms.common.vocabulary import COMMON_SHARES_PHRASES
+from edgar_sec.domain.forms.common.vocabulary import (
+    COMMON_COVER_EXCLUSION_TERMS,
+    COMMON_SHARES_PHRASES,
+)
 from edgar_sec.foundation.text.automaton import CaseMode
 from edgar_sec.foundation.text.evidence import EvidenceTier, LexicalEvidencePack
 from edgar_sec.foundation.text.healing import PhraseSequenceRule
@@ -53,20 +56,12 @@ QUARTERLY_BODY_WEAK_TERMS: tuple[str, ...] = (
 )
 
 QUARTERLY_COVER_EXCLUSION_TERMS: tuple[str, ...] = (
+    *COMMON_COVER_EXCLUSION_TERMS,
     "quarter",
     "quarterly",
-    "pursuant",
     "period",
     "ended",
-    "section",
-    "form",
-    "registrant",
-    "commission",
-    "report",
     "issuer",
-    "herein",
-    "thereof",
-    "such",
 )
 
 QUARTERLY_BODY_LEXICAL_PACK = LexicalEvidencePack(

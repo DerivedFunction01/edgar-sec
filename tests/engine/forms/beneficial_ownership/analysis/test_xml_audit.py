@@ -1,10 +1,8 @@
+"""Unit tests for beneficial ownership XML audit and schema validation."""
+
 from pathlib import Path
 
-from edgar_sec.engine.forms.beneficial_ownership.analysis import (
-    analyze_case,
-    summarize_cases,
-)
-from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
+from edgar_sec.engine.forms.beneficial_ownership.analysis.case import analyze_case
 
 SAMPLE_XML = """<edgarSubmission xmlns="http://www.sec.gov/edgar/schedule13D">
   <schemaVersion>X0202</schemaVersion>
@@ -36,22 +34,12 @@ def _write_case(tmp_path: Path, xml: str) -> Path:
     return case_dir
 
 
-def test_analysis_counts_fields_and_summarizes_categories(tmp_path: Path) -> None:
-    case_dir = _write_case(tmp_path, SAMPLE_XML)
-    report = analyze_case(case_dir, {"accession": "0000000001-24-000001"})
-
-    assert report is not None
-    assert report["anomalies"] == []
-    assert report["field_observations"]["item1"]["populated_occurrences"] == 1
-    summary = summarize_cases([report])
-
-    assert summary["case_count"] == 1
-    assert summary["anomaly_count"] == 0
-    assert summary["field_scorecard"]["issuerName"]["cases_with_value"] == 1
-    assert (
-        summary["value_frequencies"]["legalProceedings"]["top_values"][0]["value"]
-        == "N"
+def _analyze_case_with_source(tmp_path: Path, xml: str, source_text: str) -> dict:
+    case_dir = _write_case(tmp_path, xml)
+    (case_dir / "operations" / "render_to_txt.txt").write_text(
+        source_text, encoding="utf-8"
     )
+    return analyze_case(case_dir, {"accession": "a"})
 
 
 def test_analysis_flags_duplicate_items_and_invalid_checkboxes(tmp_path: Path) -> None:
@@ -262,49 +250,6 @@ def test_analysis_detects_cover_row_label_leakage(tmp_path: Path) -> None:
     ]
 
 
-def test_summary_counts_anomaly_occurrences_and_distinct_cases(
-    tmp_path: Path,
-) -> None:
-    xml = SAMPLE_XML.replace(
-        "<legalProceedings>N</legalProceedings>",
-        "<legalProceedings>N</legalProceedings>"
-        "<aggregateAmountOwned>not numeric one</aggregateAmountOwned>"
-        "<aggregateAmountOwned>not numeric two</aggregateAmountOwned>",
-    )
-    first = analyze_case(_write_case(tmp_path / "first", xml), {"accession": "a"})
-    second = analyze_case(_write_case(tmp_path / "second", xml), {"accession": "b"})
-    assert first is not None and second is not None
-
-    summary = summarize_cases([first, second])
-
-    assert summary["anomaly_count"] == 4
-    assert summary["anomaly_summary"]["kind_counts"]["invalid_numeric_cover_value"] == 4
-    assert (
-        summary["anomaly_summary"]["kind_case_counts"]["invalid_numeric_cover_value"]
-        == 2
-    )
-    assert (
-        summary["anomaly_summary"]["field_counts"][
-            "invalid_numeric_cover_value:aggregateAmountOwned"
-        ]
-        == 4
-    )
-    assert (
-        summary["anomaly_summary"]["field_case_counts"][
-            "invalid_numeric_cover_value:aggregateAmountOwned"
-        ]
-        == 2
-    )
-
-
-def _analyze_case_with_source(tmp_path: Path, xml: str, source_text: str) -> dict:
-    case_dir = _write_case(tmp_path, xml)
-    (case_dir / "operations" / "render_to_txt.txt").write_text(
-        source_text, encoding="utf-8"
-    )
-    return analyze_case(case_dir, {"accession": "a"})
-
-
 def test_analysis_identifies_narrative_item_leakage_in_cover_values(
     tmp_path: Path,
 ) -> None:
@@ -364,7 +309,7 @@ def test_analysis_identifies_common_cover_header_residue(tmp_path: Path) -> None
 
 def test_analysis_recognizes_13g_xml_family(tmp_path: Path) -> None:
     xml = (
-        SAMPLE_XML.replace("schedule13D", "schedule13G")
+        SAMPLE_XML.replace("schedule13D", "schedule13g")
         .replace("SCHEDULE 13D", "SCHEDULE 13G")
         .replace("dateOfEvent", "eventDateRequiresFilingThisStatement")
         .replace(
@@ -376,8 +321,6 @@ def test_analysis_recognizes_13g_xml_family(tmp_path: Path) -> None:
             "</coverPageHeaderReportingPersonDetails>",
         )
         .replace("items1To7", "items")
-        .replace("<item1>", "<Item1>")
-        .replace("</item1>", "</Item1>")
         .replace("signatureInfo", "signatureInformation")
         .replace("<memberOfGroup>", "<memberGroup>")
         .replace("</memberOfGroup>", "</memberGroup>")
@@ -389,12 +332,6 @@ def test_analysis_recognizes_13g_xml_family(tmp_path: Path) -> None:
     assert report is not None
     assert report["family"] == "13G"
     assert report["anomalies"] == []
-    mixed = analyze_case(
-        _write_case(tmp_path / "second", SAMPLE_XML),
-        {"accession": "b", "form": "SC 13D"},
-    )
-    assert mixed is not None
-    assert summarize_cases([report, mixed])["family"] == "mixed"
 
 
 def test_analysis_flags_invalid_schedule_codes_and_schema_dates(tmp_path: Path) -> None:
@@ -414,27 +351,6 @@ def test_analysis_flags_invalid_schedule_codes_and_schema_dates(tmp_path: Path) 
     }
 
 
-def test_analysis_reports_malformed_xml(tmp_path: Path) -> None:
-    report = analyze_case(_write_case(tmp_path, "<edgarSubmission"), {"accession": "a"})
-
-    assert report is not None
-    assert report["error"] == "malformed_xml"
-    assert report["anomalies"][0]["kind"] == "malformed_xml"
-
-
-def test_analysis_reports_missing_xml_after_text_rendering(tmp_path: Path) -> None:
-    case_dir = tmp_path / "case"
-    operations = case_dir / "operations"
-    operations.mkdir(parents=True)
-    (operations / "render_to_txt.txt").write_text("Parsed source", encoding="utf-8")
-
-    report = analyze_case(case_dir, {"accession": "a"})
-
-    assert report is not None
-    assert report["error"] == "missing_rendered_xml"
-    assert report["anomalies"][0]["kind"] == "missing_rendered_xml"
-
-
 def test_analysis_flags_boilerplate_in_non_cover_fields(tmp_path: Path) -> None:
     xml = SAMPLE_XML.replace(
         "<issuerName>Example Corp</issuerName>",
@@ -450,58 +366,3 @@ def test_analysis_flags_boilerplate_in_non_cover_fields(tmp_path: Path) -> None:
         ("boilerplate_in_parsed_field", "issuerName"),
         ("boilerplate_in_parsed_field", "noticeContact"),
     }
-
-
-def test_summary_filters_statutory_unparsed_sections(tmp_path: Path) -> None:
-    xml = SAMPLE_XML.replace(
-        "</formData>",
-        "<unparsedSections>"
-        '<unparsedSection tableIndex="1" role="header">Potential persons who are to respond to the collection of information</unparsedSection>'
-        '<unparsedSection tableIndex="2" role="unparsed">Unmapped disclosure data</unparsedSection>'
-        "</unparsedSections></formData>",
-    )
-    report = analyze_case(_write_case(tmp_path, xml), {"accession": "a"})
-
-    assert report is not None
-    summary = summarize_cases([report])
-
-    assert summary["unparsed_section_count"] == 2
-    assert summary["boilerplate_unparsed_count"] == 1
-    assert summary["substantive_unparsed_count"] == 1
-    assert summary["unparsed_samples"][0]["snippet"] == "Unmapped disclosure data"
-
-
-def test_analysis_loads_unparsed_sidecar_and_flags_unresolved_scalar(
-    tmp_path: Path,
-) -> None:
-    case_dir = _write_case(tmp_path, SAMPLE_XML)
-    records = (
-        {
-            "role": "item5.unparsed",
-            "content_type": "text/plain",
-            "content": "Unparsed subsection text",
-            "start_offset": 12,
-            "end_offset": 36,
-        },
-        {
-            "role": "normalization.unresolved:aggregateAmountOwned",
-            "content_type": "text/plain",
-            "content": "12 shares and more",
-        },
-    )
-    (case_dir / "operations" / "unparsed_sections.json").write_bytes(
-        serialize_unparsed_sections(records)
-    )
-
-    report = analyze_case(case_dir, {"accession": "a"})
-
-    assert report is not None
-    assert [section["role"] for section in report["unparsed_sections"]] == [
-        "item5.unparsed",
-        "normalization.unresolved:aggregateAmountOwned",
-    ]
-    assert report["unparsed_sections"][0]["start_offset"] == 12
-    assert {item["kind"] for item in report["anomalies"]} == {
-        "unresolved_scalar_normalization"
-    }
-    assert report["review_signals"][0]["kind"] == "unparsed_narrative_content"

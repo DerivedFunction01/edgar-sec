@@ -7,6 +7,7 @@ from edgar_sec.engine.forms.common.marks import (
     canonicalize_filled_marks_in_span,
     canonicalize_mark_tokens,
     mark_state_in,
+    resolve_checked_labeled_option,
 )
 
 
@@ -59,3 +60,14 @@ def test_mark_state_in_reports_the_first_known_state() -> None:
     assert mark_state_in("☐") == "unchecked"
     assert mark_state_in("______") is None
     assert mark_state_in("no mark here") is None
+
+
+def test_resolve_checked_labeled_option_identifies_checked_branch() -> None:
+    import re
+
+    regex = re.compile(r"(?i)(?:\(\s*([ab])\s*\)|(?<!\w)([ab])[.)])")
+    assert resolve_checked_labeled_option("(a) [X] (b) [ ]", regex) == "a"
+    assert resolve_checked_labeled_option("(a) [ ] (b) [X]", regex) == "b"
+    assert resolve_checked_labeled_option("a. [ ] b. [X]", regex) == "b"
+    assert resolve_checked_labeled_option("(a) [ ] (b) [ ]", regex) is None
+    assert resolve_checked_labeled_option(None, regex) is None

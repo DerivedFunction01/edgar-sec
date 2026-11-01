@@ -243,12 +243,24 @@ FOOTNOTE_NARRATIVE_TERMS: tuple[str, ...] = (
     "deferred compensation",
     "dividend reinvestment",
 )
+COMMON_COVER_EXCLUSION_TERMS: tuple[str, ...] = (
+    "pursuant",
+    "section",
+    "form",
+    "registrant",
+    "commission",
+    "report",
+    "herein",
+    "thereof",
+    "such",
+)
 
 __all__ = [
     "ACCELERATED_FILER",
     "ADDRESS_RE",
     "AUDITOR_ATTESTATION_TERM",
     "COMMISSION_FILE_RE",
+    "COMMON_COVER_EXCLUSION_TERMS",
     "COVER_EVIDENCE_TERMS",
     "COVER_LABELS",
     "COVER_LABELS_FLAT",

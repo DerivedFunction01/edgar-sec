@@ -54,3 +54,45 @@ def test_field_extractions_and_unparsed_sections_cover_normalized_text() -> None
         for item in extractions
     )
     assert any("Loose residue." in item.text for item in unparsed)
+
+
+def test_unparsed_sections_tags_narrative_item_roles() -> None:
+    source = "Item 6. Contracts\nSome unparsed contract detail here."
+    doc = BeneficialOwnershipDocument(
+        issuer=IssuerMetadata(),
+        reporting_persons=(),
+        narrative_items=(
+            NarrativeItem(
+                number=6,
+                heading="Item 6.",
+                text="Some unparsed contract detail here.",
+                start_offset=0,
+                end_offset=len(source),
+            ),
+        ),
+    )
+    unparsed = build_unparsed_sections(source, (), doc.narrative_items)
+    assert len(unparsed) == 1
+    assert unparsed[0].role == "item6.unparsed"
+    assert "Some unparsed contract detail here." in unparsed[0].text
+
+
+def test_unparsed_sections_tags_narrative_item_roles() -> None:
+    source = "Item 6. Contracts\nSome unparsed contract detail here."
+    doc = BeneficialOwnershipDocument(
+        issuer=IssuerMetadata(),
+        reporting_persons=(),
+        narrative_items=(
+            NarrativeItem(
+                number=6,
+                heading="Item 6.",
+                text="Some unparsed contract detail here.",
+                start_offset=0,
+                end_offset=len(source),
+            ),
+        ),
+    )
+    unparsed = build_unparsed_sections(source, (), doc.narrative_items)
+    assert len(unparsed) == 1
+    assert unparsed[0].role == "item6.unparsed"
+    assert "Some unparsed contract detail here." in unparsed[0].text

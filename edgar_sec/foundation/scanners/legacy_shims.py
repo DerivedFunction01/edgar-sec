@@ -51,7 +51,13 @@ _COMPAT_IDENTIFIER_RE = re.compile(
 # Both sides must be single identifiers, so ``Foo = bar.Foo`` (a re-export) and
 # ``Vector = list[float]`` (a structural type alias) are out of scope.
 _BARE_ALIAS_RE = re.compile(
-    r"^\s*([A-Z][A-Za-z0-9_]*)\s*=\s*([A-Z][A-Za-z0-9_]*)\s*(?:#.*)?$"
+    r"^([A-Z][A-Za-z0-9_]*)\s*=\s*([A-Z][A-Za-z0-9_]*)\s*(?:#.*)?$"
+)
+_IDENTIFIER_ALIAS_RE = re.compile(
+    r"^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*([A-Za-z_][A-Za-z0-9_]*)\s*(?:#.*)?$"
+)
+_IMPORT_ALIAS_RE = re.compile(
+    r"\bimport\s+.*?\b([A-Za-z_][A-Za-z0-9_]*)\s+as\s+([A-Za-z_][A-Za-z0-9_]*)\b"
 )
 
 _HINT = (
@@ -79,6 +85,28 @@ def _rule(path: str, number: int, line: str) -> ScannerFinding | None:
             f"alias binding {alias.group(1)} to {alias.group(2)}: one public name for one class",
             _HINT + "; rename the call sites instead",
         )
+    ident_alias = _IDENTIFIER_ALIAS_RE.match(line)
+    if ident_alias:
+        left, right = ident_alias.group(1), ident_alias.group(2)
+        if left != right and left.strip("_") == right.strip("_"):
+            return finding(
+                "legacy-shims",
+                path,
+                number,
+                f"alias re-export binding {left} to {right}: define symbol under canonical name",
+                _HINT + "; update all call sites instead of keeping an alias",
+            )
+    import_alias = _IMPORT_ALIAS_RE.search(line)
+    if import_alias:
+        left, right = import_alias.group(1), import_alias.group(2)
+        if left != right and left.strip("_") == right.strip("_"):
+            return finding(
+                "legacy-shims",
+                path,
+                number,
+                f"alias import binding {left} to {right}: use canonical symbol directly",
+                _HINT + "; update all call sites instead of keeping an alias",
+            )
     return None
 
 

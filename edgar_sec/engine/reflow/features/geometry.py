@@ -48,9 +48,6 @@ def _line_gap_starts(line: str) -> tuple[int, ...]:
     return tuple(starts)
 
 
-_numeric_cell_starts = numeric_cell_starts
-
-
 def _shared_columns(
     cell_rows: tuple[tuple[int, ...], ...],
     *,
@@ -111,7 +108,7 @@ def _compute_features(lines: tuple[str, ...]) -> _Features:
         gaps = _line_gap_starts(line)
         if gaps:
             gap_start_rows.append(gaps)
-        cells = _numeric_cell_starts(line)
+        cells = numeric_cell_starts(line)
         if cells:
             numeric_cell_rows.append(cells)
 
@@ -189,7 +186,7 @@ __all__ = [
     "_Features",
     "_compute_features",
     "_line_gap_starts",
-    "_numeric_cell_starts",
     "_shared_columns",
     "fast_detect_prose_measure",
+    "numeric_cell_starts",
 ]

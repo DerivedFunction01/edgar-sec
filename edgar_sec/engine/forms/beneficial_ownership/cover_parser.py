@@ -4,6 +4,9 @@ from __future__ import annotations
 
 import re
 
+from edgar_sec.domain.forms.common.checkmarks import (
+    CHECKMARK_MARK_RE,
+)
 from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     CoverItemEvidence,
     EvidenceState,
@@ -16,11 +19,15 @@ from edgar_sec.domain.forms.common.checkmarks import (
 from edgar_sec.engine.forms.common.marks import (
     canonicalize_mark_tokens,
     mark_state_in,
+    resolve_checked_labeled_option,
 )
 from edgar_sec.engine.forms.common.numbers import normalize_schema_number
 from edgar_sec.engine.forms.common.statutory import HEADER_LEAK_RE
+from edgar_sec.engine.forms.common.tables import strip_markup_tags
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
+    RE_GROUP_OPTION,
+    RE_PERSON_WITH_NOISE,
     REPORTING_PERSON_SLOT_NUMBERS_13D,
     REPORTING_PERSON_SLOT_NUMBERS_13G,
 )
@@ -46,7 +53,6 @@ _POWER_TERMS = build_alternation(
 )
 _RE_POWER_WORDS = re.compile(rf"(?i)\b(?:{_POWER_TERMS})\b")
 _RE_TABLE_NOISE = re.compile(r"(?i)</?TABLE>|[_=\-‐‑‒–—]{2,}")
-_RE_HTML_TAG = re.compile(r"</?[a-zA-Z][^>]*>")
 _NARRATIVE_TAIL_ALT = build_alternation(
     (
         r"ITEM\s+\d+(?:\([A-Z0-9]+\))?\s*[.:]?\s",
@@ -58,25 +64,10 @@ _NARRATIVE_TAIL_ALT = build_alternation(
 )
 _RE_NARRATIVE_TAIL = re.compile(rf"(?i)\b(?:{_NARRATIVE_TAIL_ALT})")
 _RE_HEADER_OR_PAGE = re.compile(r"(?i)\bSCHEDULE\s+13[DG]\b|\bCUSIP\b")
-_RE_GROUP_OPTION = re.compile(r"(?i)(?:\(\s*([ab])\s*\)|(?<!\w)([ab])[.)])")
-_RE_PERSON_WITH_NOISE = re.compile(r"(?i)\bPERSON\s*[:|]\s*WITH\b")
 _RE_ROW_NUMBER_PREFIX = re.compile(r"^\s*(\d{1,2})\s+")
 _RE_POWER_LEADING_WITH = re.compile(r"(?i)^\s*WITH\b")
 _RE_POWER_TRAILING_WITH = re.compile(r"(?i)\bWITH\s*[:|]?\s*$")
 _RE_SEE_ROW = re.compile(r"(?i)\bsee\s+(?:item|row)\s+(\d+)")
-
-
-def _checked_group_option(value: str | None) -> str | None:
-    if not value:
-        return None
-    options = list(_RE_GROUP_OPTION.finditer(value))
-    for index, option in enumerate(options):
-        end = options[index + 1].start() if index + 1 < len(options) else len(value)
-        segment = value[option.end() : end]
-        if CANONICAL_CHECKED in segment or "[x]" in segment.lower():
-            return (option.group(1) or option.group(2)).lower()
-    return None
-
 
 _ENTITIES_ALT = build_alternation(("&#9;", "&nbsp;", "&#160;"), auto_escape=True)
 _WS = rf"(?:[\s]|{_ENTITIES_ALT})"
@@ -250,7 +241,6 @@ _CHECK_BOX_GROUP_ALT = build_alternation(
     compact=False,
 )
 _RE_CHECK_BOX_GROUP_HEAD = re.compile(rf"(?i){_CHECK_BOX_GROUP_ALT}")
-_RAW_CHECKBOX_RE = re.compile(r"\[\s*[xX ]\s*\]|\(\s*[a-zA-Z]\s*\)\s*\[")
 _RE_HYPHEN_WORD_BREAK = re.compile(r"(\b[A-Za-z]+)-\s+([A-Za-z]+\b)")
 _RE_TYPE_CODES_WITH_REST = re.compile(
     r"(?i)^\s*((?:[A-Z]{2}(?:\s*,\s*|\s+))*[A-Z]{2})(?:\s+(.*))?$"
@@ -308,7 +298,7 @@ def parse_reporting_person_matrix(
             val_end = repeated_label.start()
         val = person_text[s_end:val_end]
         val = _RE_TABLE_NOISE.sub(" ", val)
-        val = _RE_HTML_TAG.sub(" ", val)
+        val = strip_markup_tags(val)
         val = _RE_HTML_ENTITIES.sub(" ", val)
         narrative_start = _RE_NARRATIVE_TAIL.search(val)
         if narrative_start is not None:
@@ -350,7 +340,7 @@ def parse_reporting_person_matrix(
             "sharedDispositivePower",
         ):
             val = _RE_POWER_LEADING_WITH.sub("", val)
-            val = _RE_PERSON_WITH_NOISE.sub(" ", val)
+            val = RE_PERSON_WITH_NOISE.sub(" ", val)
             val = _RE_POWER_WORDS.sub(" ", val)
             val = _RE_POWER_TRAILING_WITH.sub(" ", val)
             val = val.replace(":", " ").replace("|", " ")
@@ -364,7 +354,9 @@ def parse_reporting_person_matrix(
                 group_tail_text = val[group_head.start() :]
                 val = val[: group_head.start()]
                 if not any(it.tag == "memberOfGroup" and it.value for it in items):
-                    opt = _checked_group_option(group_tail_text)
+                    opt = resolve_checked_labeled_option(
+                        group_tail_text, RE_GROUP_OPTION
+                    )
                     if opt:
                         items.append(
                             CoverItemEvidence(
@@ -393,7 +385,7 @@ def parse_reporting_person_matrix(
                 else:
                     val = before
             val = _RE_HYPHEN_WORD_BREAK.sub(r"\1\2", val)
-            raw_cb = _RAW_CHECKBOX_RE.search(val)
+            raw_cb = CHECKMARK_MARK_RE.search(val)
             if raw_cb is not None:
                 val = val[: raw_cb.start()]
             val = val.lstrip(" \t:.-|")

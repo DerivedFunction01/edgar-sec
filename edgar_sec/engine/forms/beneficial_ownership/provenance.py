@@ -376,9 +376,7 @@ def build_unparsed_sections(
                 (
                     item.number
                     for item in narrative_items
-                    if item.number in {2, 5}
-                    and item.start_offset <= start
-                    and end <= item.end_offset
+                    if item.start_offset <= start and end <= item.end_offset
                 ),
                 None,
             )

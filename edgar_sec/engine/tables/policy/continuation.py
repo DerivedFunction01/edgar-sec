@@ -9,7 +9,7 @@ from edgar_sec.foundation.text.patterns import RE_SENTENCE_TERMINAL, RE_SEPARATO
 
 from ...reflow.types import ReflowPolicy
 from ..numeric_cells import is_numeric_cell
-from ..tokens import numeric_cell_starts as _numeric_cell_starts
+from ..tokens import numeric_cell_starts
 
 _TOTAL_KEYWORDS = ("total", "net", "less", "subtotal")
 
@@ -34,10 +34,10 @@ def is_table_row_continuation(
     if all(RE_SEPARATOR_LINE.fullmatch(line) for line in nonblank):
         return True
     prior_positions = tuple(
-        position for line in previous for position in _numeric_cell_starts(line)
+        position for line in previous for position in numeric_cell_starts(line)
     )
     next_positions = tuple(
-        position for line in continuation for position in _numeric_cell_starts(line)
+        position for line in continuation for position in numeric_cell_starts(line)
     )
     if not prior_positions or not next_positions:
         return False
@@ -59,7 +59,7 @@ def is_table_row_continuation(
             if RE_SEPARATOR_LINE.fullmatch(line.strip()):
                 continue
             content_start = len(line) - len(line.lstrip())
-            line_positions = _numeric_cell_starts(line)
+            line_positions = numeric_cell_starts(line)
             if not (
                 any(
                     abs(position - prior_position) <= 3
