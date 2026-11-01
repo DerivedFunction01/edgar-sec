@@ -508,7 +508,7 @@ def test_bac_net_income_pure_unit_scope_refuses_derivation() -> None:
     assert result.value is None
 
 
-def test_bac_net_income_canonical_scope_conflict_is_reported_value() -> None:
+def test_bac_net_income_canonical_scope_verifies_by_comprehensive_income() -> None:
     result = _grounded_engine().execute(
         FinancialQuery(
             "us-gaap:NetIncomeLoss",
@@ -524,9 +524,11 @@ def test_bac_net_income_canonical_scope_conflict_is_reported_value() -> None:
         load_seed_calculation_arcs("bac_2024_10k"),
     )
 
-    assert result.status == QueryStatus.CONFLICT
+    assert result.status == QueryStatus.VERIFIED
     assert result.reported_fact is not None
     assert result.reported_fact.value == 27_132_000_000.0
+    assert result.aggregate is not None
+    assert result.aggregate.value == 27_132_000_000.0
     lines = bundle_text("bac_2024_10k").splitlines()
     assert "Net income" in lines[942]
     assert "27,132" in lines[942]
@@ -552,7 +554,7 @@ def test_msft_cash_duration_scope_refuses_derivation() -> None:
     assert result.value is None
 
 
-def test_msft_cash_canonical_instant_conflict_is_reported_value() -> None:
+def test_msft_cash_canonical_instant_reports_without_derivation() -> None:
     result = _grounded_engine().execute(
         FinancialQuery(
             "us-gaap:CashAndCashEquivalentsAtCarryingValue",
@@ -567,7 +569,7 @@ def test_msft_cash_canonical_instant_conflict_is_reported_value() -> None:
         load_seed_calculation_arcs("msft_2024_10k"),
     )
 
-    assert result.status == QueryStatus.CONFLICT
+    assert result.status == QueryStatus.REPORTED
     assert result.reported_fact is not None
     assert result.reported_fact.value == 18_315_000_000.0
     lines = bundle_text("msft_2024_10k").splitlines()

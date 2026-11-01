@@ -40,10 +40,11 @@ def test_goal_pack_evaluate_revenue() -> None:
     ]
 
     aggregate = pack.evaluate(solver, facts, entity="AAPL", period="FY2024")
-    # Phase 0 re-adjudication: the ASC-606 atom now subsumes the bare revenue
-    # atom, so the reported fact resolves by exact derivation, not identity.
-    assert aggregate.basis == "DERIVED_EXACT"
-    assert aggregate.value == 391035.0
+    # Re-adjudicated with the derivation fix: the lone headline fact is not
+    # a derivation of the bare revenue goal (the mined tautology edge that
+    # once answered it asserted participation, not identity).
+    assert aggregate.basis == "NOT_AVAILABLE"
+    assert aggregate.value is None
     assert aggregate.entity == "AAPL"
 
 

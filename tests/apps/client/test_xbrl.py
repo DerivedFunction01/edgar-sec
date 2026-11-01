@@ -755,7 +755,7 @@ def test_xbrl_query_msft_revenue_fiscal_year_ignores_rpo_instants() -> None:
     )
 
     verified = xbrl.query("revenue", mode=QueryMode.VERIFY_DERIVATION, fiscal_year=2024)
-    assert verified.status == QueryStatus.CONFLICT
+    assert verified.status == QueryStatus.VERIFIED
     assert verified.reported_fact is not None
     assert verified.reported_fact.concept_qname == (
         "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
@@ -764,19 +764,19 @@ def test_xbrl_query_msft_revenue_fiscal_year_ignores_rpo_instants() -> None:
 
 
 def test_xbrl_query_nvda_revenue_verify_surfaces_annual_conflict() -> None:
-    """Verify NVDA revenue VERIFY surfaces the annual tier's CONFLICT (G-pin).
+    """Verify NVDA revenue VERIFY reconciles via the gross-profit formula.
 
-    The RPO percentage never answers; the derivation does not reconcile.
+    The RPO percentage never answers; margin + cost solves to the headline.
     """
     xbrl = _create_xbrl_facade("nvda")
 
     result = xbrl.query("revenue", mode=QueryMode.VERIFY_DERIVATION, fiscal_year=2024)
-    assert result.status == QueryStatus.CONFLICT
+    assert result.status == QueryStatus.VERIFIED
     assert result.reported_fact is not None
     assert result.reported_fact.value == 60922000000.0
     assert result.aggregate is not None
-    assert result.aggregate.value == 44301000000.0
-    assert result.value == 44301000000.0
+    assert result.aggregate.value == 60922000000.0
+    assert result.value == 60922000000.0
 
 
 def test_xbrl_query_aapl_assets_verify_resolves_at_fye_instant() -> None:
@@ -816,9 +816,9 @@ def test_xbrl_query_aapl_derivative_liabilities_stays_ambiguous() -> None:
 
 
 def test_xbrl_query_gis_cash_verify_surfaces_fye_conflict() -> None:
-    """Verify GIS Cash VERIFY surfaces the FYE tier's CONFLICT (G-pin).
+    """Verify GIS Cash VERIFY reports the FYE fact; no derivation is claimed.
 
-    The unitless scope's AMBIGUOUS no longer shadows the USD derivation.
+    The old -6,980M aggregate was a fabricated atom sum, not a derivation.
     """
     xbrl = _create_xbrl_facade("gis")
 
@@ -827,12 +827,11 @@ def test_xbrl_query_gis_cash_verify_surfaces_fye_conflict() -> None:
         mode=QueryMode.VERIFY_DERIVATION,
         fiscal_year=2024,
     )
-    assert result.status == QueryStatus.CONFLICT
+    assert result.status == QueryStatus.REPORTED
     assert result.reported_fact is not None
     assert result.reported_fact.value == 418000000.0
-    assert result.aggregate is not None
-    assert result.aggregate.value == -6979900000.0
-    assert result.value == -6979900000.0
+    assert result.aggregate is None
+    assert result.value == 418000000.0
 
 
 def test_xbrl_query_gis_gross_profit_fiscal_year_unavailable() -> None:
@@ -845,7 +844,7 @@ def test_xbrl_query_gis_gross_profit_fiscal_year_unavailable() -> None:
 
 
 def test_xbrl_query_bac_cash_verify_resolves_at_fye_instant() -> None:
-    """Verify BAC Cash VERIFY selects the FYE instant; its DERIVED there is a known solver limit."""
+    """Verify BAC Cash VERIFY abstains: the old -558,677M DERIVED was fabricated."""
     xbrl = _create_xbrl_facade("bac")
 
     result = xbrl.query(
@@ -853,8 +852,8 @@ def test_xbrl_query_bac_cash_verify_resolves_at_fye_instant() -> None:
         mode=QueryMode.VERIFY_DERIVATION,
         fiscal_year=2024,
     )
-    assert result.status == QueryStatus.DERIVED
-    assert result.value == -558677000000.0
+    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.value is None
 
 
 def test_xbrl_query_msft_eps_diluted_resolves_at_annual_scope() -> None:
@@ -952,17 +951,17 @@ def test_tier_outcome_all_unavailable_returns_first(
 
 
 def test_xbrl_query_bac_net_income_verify_surfaces_usd_conflict() -> None:
-    """Verify BAC Net Income VERIFY surfaces the USD CONFLICT over the AMBIGUOUS (G-pin)."""
+    """Verify BAC Net Income VERIFY reconciles via comprehensive income (G-pin)."""
     xbrl = _create_xbrl_facade("bac")
 
     result = xbrl.query(
         "us-gaap:NetIncomeLoss", mode=QueryMode.VERIFY_DERIVATION, fiscal_year=2024
     )
-    assert result.status == QueryStatus.CONFLICT
+    assert result.status == QueryStatus.VERIFIED
     assert result.reported_fact is not None
     assert result.reported_fact.value == 27132000000.0
     assert result.aggregate is not None
-    assert result.aggregate.value == 146607000000.0
+    assert result.aggregate.value == 27132000000.0
 
 
 def test_xbrl_query_gis_revenue_exact_carries_asc606_neighbour() -> None:
@@ -982,9 +981,9 @@ def test_xbrl_query_gis_revenue_exact_carries_asc606_neighbour() -> None:
     assert neighbour.direction == "specialization"
 
 
-def test_xbrl_query_msft_revenue_guard_promotes_and_verify_conflicts() -> None:
+def test_xbrl_query_msft_revenue_guard_promotes_and_verify_reconciles() -> None:
     """Verify MSFT revenue guard-promotes the headline at NEAR tier; VERIFY
-    G-pins the derivation conflict (Q3(a)'s divergent pool dissolved in F5).
+    reconciles it by solving Gross Profit's formula for the revenue term.
     """
     xbrl = _create_xbrl_facade("msft")
 
@@ -998,12 +997,12 @@ def test_xbrl_query_msft_revenue_guard_promotes_and_verify_conflicts() -> None:
     assert best.direction == "specialization"
 
     verified = xbrl.query("revenue", mode=QueryMode.VERIFY_DERIVATION, fiscal_year=2024)
-    assert verified.status == QueryStatus.CONFLICT
+    assert verified.status == QueryStatus.VERIFIED
     assert verified.reported_fact is not None
     assert verified.reported_fact.value == 245122000000.0
     assert verified.aggregate is not None
-    assert verified.aggregate.value == 171008000000.0
-    assert verified.value == 171008000000.0
+    assert verified.aggregate.value == 245122000000.0
+    assert verified.value == 245122000000.0
 
 
 def test_xbrl_query_jnj_revenue_guard_promotion_surfaces_at_near_tier() -> None:

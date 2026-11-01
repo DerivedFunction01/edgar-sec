@@ -549,42 +549,6 @@
     "evidence": "declared"
   },
   {
-    "edge_id": "R_DERIVED_GROSS_MARGIN",
-    "relation_type": "DERIVED_FROM",
-    "algebraic_weight": 1.0,
-    "source": {
-      "head": "H_INCOME",
-      "mods": [
-        "M_GROSS_MARGIN"
-      ]
-    },
-    "target": {
-      "head": "H_REVENUE",
-      "mods": []
-    },
-    "operator": "DIV",
-    "description": "Gross margin derived as Gross Profit / Revenues",
-    "evidence": "declared"
-  },
-  {
-    "edge_id": "R_DERIVED_RD_INTENSITY",
-    "relation_type": "DERIVED_FROM",
-    "algebraic_weight": 1.0,
-    "source": {
-      "head": "H_EXPENSE",
-      "mods": [
-        "M_RD"
-      ]
-    },
-    "target": {
-      "head": "H_REVENUE",
-      "mods": []
-    },
-    "operator": "DIV",
-    "description": "R&D intensity derived as R&D Expense / Revenues",
-    "evidence": "declared"
-  },
-  {
     "edge_id": "R_PART_DERIV_NET_ASSET_GROSS",
     "relation_type": "PART_OF",
     "algebraic_weight": 1.0,

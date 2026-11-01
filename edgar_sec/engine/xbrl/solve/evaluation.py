@@ -41,40 +41,54 @@ class AggregateEvaluator:
 
     def _resolve_atom_value(
         self,
-        edge: Any,
+        source_atom: Any,
         facts: Sequence[XbrlFact],
         calculation_arcs: Sequence[CalculationArc],
         *,
         visited: set[str] | None = None,
         excluded: frozenset[str] = frozenset(),
+        preferred: frozenset[str] = frozenset(),
     ) -> tuple[float | None, str | None]:
         lexicon = self.kb.taxonomy.token_lexicon
         visited_concepts = visited if visited is not None else set()
         if lexicon is None:
             return None, None
 
-        matching: list[tuple[float, int, str]] = []
-        for fact in facts:
-            if fact.dimensions or fact.concept_qname in excluded:
-                continue
-            try:
-                value = float(fact.value)
-            except (TypeError, ValueError):
-                continue
-            fact_atom, _, _, _ = self.kb.decomposition(fact.concept_qname)
-            if fact_atom.is_a(edge.source):
-                matching.append((value, len(fact_atom.modifiers), fact.concept_qname))
+        def _matching(pool: Sequence[XbrlFact]) -> list[tuple[float, int, str]]:
+            found: list[tuple[float, int, str]] = []
+            for fact in pool:
+                if fact.dimensions or fact.concept_qname in excluded:
+                    continue
+                try:
+                    value = float(fact.value)
+                except (TypeError, ValueError):
+                    continue
+                fact_atom, _, _, _ = self.kb.decomposition(fact.concept_qname)
+                if fact_atom.is_a(source_atom):
+                    found.append((value, len(fact_atom.modifiers), fact.concept_qname))
+            return found
+
+        matching = (
+            _matching([f for f in facts if f.concept_qname in preferred])
+            if preferred
+            else []
+        )
+        if not matching:
+            matching = _matching(facts)
 
         if matching:
-            matching.sort(key=lambda item: item[1], reverse=True)
+            # The fact denoting the term most nearly wins: candidates are
+            # ranked by atom distance from the term (fewest extra
+            # modifiers), never by how elaborated the candidate is.
+            matching.sort(key=lambda item: item[1])
             value, _, qname = matching[0]
             return value, qname
 
-        key = str(edge.source)
+        key = str(source_atom)
         if key not in visited_concepts:
             visited_concepts.add(key)
             sub_aggregate = self._derive_atom(
-                edge.source,
+                source_atom,
                 facts,
                 calculation_arcs,
                 visited_concepts,
@@ -106,36 +120,55 @@ class AggregateEvaluator:
             return None
         target_concept = measure_id
         _visited = visited
-        atom_edges = [
-            edge
-            for edge in atom_graph.relations
-            if edge.relation_type in ("PART_OF", "CONTRA_OF", "DERIVED_FROM")
-            and target_atom.is_a(edge.target)
-        ]
-        specificity = max(
-            (len(edge.target.modifiers) for edge in atom_edges), default=-1
-        )
-        incoming_edges = [
-            edge for edge in atom_edges if len(edge.target.modifiers) == specificity
-        ]
 
+        # Only complete identities derive: a formula of at least two
+        # PART_OF/CONTRA_OF edges. A lone edge asserts that a term
+        # participates in a total, never what the total is.
         edge_groups: dict[str, list[Any]] = {}
-        for edge in incoming_edges:
+        for edge in atom_graph.relations:
+            if edge.relation_type not in ("PART_OF", "CONTRA_OF"):
+                continue
             key = getattr(edge, "formula_id", None) or edge.edge_id
             edge_groups.setdefault(key, []).append(edge)
+        complete_groups = [
+            (key, group_edges)
+            for key, group_edges in edge_groups.items()
+            if len(group_edges) >= 2
+        ]
 
         fact_qnames = {fact.concept_qname for fact in facts}
-        attempts: list[tuple[int, Any, tuple, Any]] = []
-        for group_edges in edge_groups.values():
+        attempts: list[tuple[int, Any, tuple, float, tuple[str, ...]]] = []
+        forward = [
+            (key, group_edges)
+            for key, group_edges in complete_groups
+            if target_atom.is_a(group_edges[0].target)
+        ]
+        specificity = max(
+            (len(group_edges[0].target.modifiers) for _, group_edges in forward),
+            default=-1,
+        )
+        # As filed by this filer, a formula's terms are the total
+        # concept's own calculation children; term resolution prefers
+        # facts carried by those children over atom look-alikes filed
+        # in unrelated schedules.
+        child_qnames = frozenset(
+            arc.child_qname
+            for arc in calculation_arcs
+            if arc.parent_qname == target_concept
+        )
+        for key, group_edges in forward:
+            if len(group_edges[0].target.modifiers) != specificity:
+                continue
             resolved_vals: list[tuple[float, Any, str]] = []
             consumed: set[str] = set()
             for edge in group_edges:
                 value, identifier = self._resolve_atom_value(
-                    edge,
+                    edge.source,
                     facts,
                     calculation_arcs,
                     visited=_visited,
                     excluded=frozenset(consumed),
+                    preferred=child_qnames,
                 )
                 if value is None or identifier is None:
                     break
@@ -160,12 +193,6 @@ class AggregateEvaluator:
             canonical_hops = sum(
                 1 for _, _, identifier in resolved_vals if identifier not in fact_qnames
             )
-            attempts.append((canonical_hops, outcome, components, resolved_vals))
-
-        attempts.sort(key=lambda attempt: attempt[0])
-        for _, outcome, components, resolved_vals in attempts:
-            if outcome.violations:
-                continue
             total = sum(
                 value * edge.algebraic_weight for value, edge, _ in resolved_vals
             )
@@ -173,6 +200,23 @@ class AggregateEvaluator:
                 f"{edge.source}({value}) * {edge.algebraic_weight}"
                 for value, edge, _ in resolved_vals
             )
+            attempts.append((canonical_hops, outcome, components, total, path))
+
+        attempts.extend(
+            self._inverse_attempts(
+                target_atom,
+                target_concept,
+                complete_groups,
+                facts,
+                calculation_arcs,
+                _visited,
+                fact_qnames,
+            )
+        )
+        attempts.sort(key=lambda attempt: attempt[0])
+        for _, outcome, components, total, path in attempts:
+            if outcome.violations:
+                continue
             return AggregateFact(
                 measure_id=target_concept,
                 entity=entity,
@@ -185,7 +229,7 @@ class AggregateEvaluator:
                 resolution_tier="SUBATOMIC_ALGEBRAIC_IDENTITY",
             )
         if attempts:
-            _, outcome, components, _ = attempts[0]
+            _, outcome, components, _, _ = attempts[0]
             return AggregateFact(
                 measure_id=target_concept,
                 entity=entity,
@@ -198,6 +242,130 @@ class AggregateEvaluator:
                 resolution_tier="ANTICHAIN_CONFLICT",
             )
         return None
+
+    def _inverse_attempts(
+        self,
+        target_atom: Any,
+        target_concept: str,
+        complete_groups: list[tuple[str, list[Any]]],
+        facts: Sequence[XbrlFact],
+        calculation_arcs: Sequence[CalculationArc],
+        visited: set[str] | None,
+        fact_qnames: set[str],
+    ) -> list[tuple[int, Any, tuple, float, tuple[str, ...]]]:
+        """Solve complete formulas for the target term: the term is
+        (total - the other terms' weighted sum) / its weight, with the
+        total and the other terms resolved from filed facts.
+        """
+        candidates: list[tuple[int, str, list[Any], Any]] = []
+        for key, group_edges in complete_groups:
+            if target_atom.is_a(group_edges[0].target):
+                continue
+            matched = [edge for edge in group_edges if target_atom.is_a(edge.source)]
+            if len(matched) == 1 and matched[0].algebraic_weight != 0:
+                candidates.append(
+                    (len(matched[0].source.modifiers), key, group_edges, matched[0])
+                )
+        specificity = max((row[0] for row in candidates), default=-1)
+        attempts: list[tuple[int, Any, tuple, float, tuple[str, ...]]] = []
+        for _, key, group_edges, target_edge in candidates:
+            if len(target_edge.source.modifiers) != specificity:
+                continue
+            total_atom = group_edges[0].target
+            total_value, total_id = self._resolve_atom_value(
+                total_atom,
+                facts,
+                calculation_arcs,
+                visited=visited,
+            )
+            if total_value is None or total_id is None:
+                continue
+            if total_id not in fact_qnames:
+                # The total must be a filed fact, not a sub-derivation:
+                # solving from a derived total is circular.
+                continue
+            # A total carried by a fact with the target's own atom is
+            # the target quantity itself (or a sibling of it): solving
+            # the formula "for the target" from it is circular.
+            total_fact_atom, _, _, _ = self.kb.decomposition(total_id)
+            if total_fact_atom == target_atom:
+                continue
+            if not any(
+                arc.parent_qname == total_id and arc.child_qname == target_concept
+                for arc in calculation_arcs
+            ):
+                # The filer's own calculation structure must place the
+                # target concept as a term of the total concept; an atom
+                # resemblance alone does not make it the formula's term.
+                continue
+            consumed = {total_id} if total_id in fact_qnames else set()
+            total_children = frozenset(
+                arc.child_qname
+                for arc in calculation_arcs
+                if arc.parent_qname == total_id
+            )
+            resolved_others: list[tuple[float, Any, str]] = []
+            for edge in group_edges:
+                if edge is target_edge:
+                    continue
+                value, identifier = self._resolve_atom_value(
+                    edge.source,
+                    facts,
+                    calculation_arcs,
+                    visited=visited,
+                    excluded=frozenset(consumed),
+                    preferred=total_children,
+                )
+                if value is None or identifier is None:
+                    resolved_others = []
+                    break
+                resolved_others.append((value, edge, identifier))
+                if identifier in fact_qnames:
+                    consumed.add(identifier)
+            if len(resolved_others) != len(group_edges) - 1:
+                continue
+            identifiers = [total_id] + [
+                identifier for _, _, identifier in resolved_others
+            ]
+            # Only the summed terms are double-counting-checked: the
+            # total stands in the formula's own relation to them (its
+            # calc expression contains them), which is the equation
+            # being solved, not an overlap.
+            outcome = self._verify_non_double_counting(
+                [identifier for _, _, identifier in resolved_others],
+                calculation_arcs,
+            )
+            components = (
+                GranularComponent(identifier=total_id, value=total_value, weight=1.0),
+            ) + tuple(
+                GranularComponent(
+                    identifier=identifier,
+                    value=value,
+                    weight=edge.algebraic_weight,
+                )
+                for value, edge, identifier in resolved_others
+            )
+            canonical_hops = sum(
+                1 for identifier in identifiers if identifier not in fact_qnames
+            )
+            solved = (
+                total_value
+                - sum(
+                    value * edge.algebraic_weight for value, edge, _ in resolved_others
+                )
+            ) / target_edge.algebraic_weight
+            path = (f"solved:{key} for {target_edge.source}",) + tuple(
+                f"{atom}({value}) * {weight}"
+                for atom, value, weight in [
+                    (total_atom, total_value, 1.0),
+                    *[
+                        (edge.source, value, edge.algebraic_weight)
+                        for value, edge, _ in resolved_others
+                    ],
+                ]
+            )
+            attempts.append((canonical_hops, outcome, components, solved, path))
+        return attempts
 
     def evaluate_goal(
         self,

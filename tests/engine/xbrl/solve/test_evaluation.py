@@ -60,3 +60,49 @@ def test_calc_derivation_absent_child_still_blocks() -> None:
 
     assert result.value == 300.0
     assert result.resolution_tier == "SUBATOMIC_ALGEBRAIC_IDENTITY"
+
+
+_HEADLINE = "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+_GROSS_PROFIT_ARCS = (
+    CalculationArc("us-gaap:GrossProfit", _HEADLINE, weight=1.0),
+    CalculationArc(
+        "us-gaap:GrossProfit", "us-gaap:CostOfGoodsAndServicesSold", weight=-1.0
+    ),
+)
+
+
+def test_inverse_solve_recovers_revenue_from_the_gross_profit_formula() -> None:
+    """Gross Profit's formula solved for its revenue term: margin + cost."""
+    acc = AccessionNumber("0000000000-25-000001")
+    facts = [
+        XbrlFact(acc, "us-gaap:GrossProfit", 100.0),
+        XbrlFact(acc, "us-gaap:CostOfGoodsAndServicesSold", 30.0),
+    ]
+
+    result = _evaluator().evaluate_goal(_HEADLINE, facts, _GROSS_PROFIT_ARCS)
+
+    assert result.value == 130.0
+    assert result.basis == "DERIVED_EXACT"
+    assert result.resolution_tier == "SUBATOMIC_ALGEBRAIC_IDENTITY"
+
+
+def test_lone_margin_fact_never_derives_revenue() -> None:
+    """A single participation edge is not an identity: no derivation."""
+    acc = AccessionNumber("0000000000-25-000001")
+    facts = [XbrlFact(acc, "us-gaap:GrossProfit", 100.0)]
+
+    result = _evaluator().evaluate_goal("us-gaap:Revenues", facts)
+
+    assert result.value is None
+    assert result.basis == "NOT_AVAILABLE"
+
+
+def test_inverse_solve_blocked_without_the_filed_total() -> None:
+    """Solving for a term needs the formula's total filed as a fact."""
+    acc = AccessionNumber("0000000000-25-000001")
+    facts = [XbrlFact(acc, "us-gaap:CostOfGoodsAndServicesSold", 30.0)]
+
+    result = _evaluator().evaluate_goal(_HEADLINE, facts, _GROSS_PROFIT_ARCS)
+
+    assert result.value is None
+    assert result.basis == "NOT_AVAILABLE"
