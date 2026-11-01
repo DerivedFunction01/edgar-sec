@@ -137,15 +137,15 @@ def test_corpus_bundles_have_no_semantic_duplicate_facts() -> None:
 
 
 def test_probe_population_single_firm_smoke(tmp_path: Path) -> None:
-    """MSFT probe battery: 19 correct, 5 honest, one surfaced CONFLICT."""
+    """MSFT probe battery: 22 correct, 2 honest, zero surfaced conflicts."""
     taxonomy = load_domain_taxonomy()
     tokenizer = ConceptTokenizer(taxonomy)
     evaluations = run_population("probe", ["msft"], taxonomy, tokenizer, tmp_path)
     assert len(evaluations) == 24
     summary = summarize_census(evaluations)["populations"]["probe"]
-    assert summary["classification"] == {"correct": 19, "honest-faithful": 5}
+    assert summary["classification"] == {"correct": 22, "honest-faithful": 2}
     assert summary["replay_mismatches"] == 0
-    assert len(summary["surfaced_conflicts"]) == 1
+    assert len(summary["surfaced_conflicts"]) == 0
     assert summary["derived_artefacts"] == []
     assert summary["near_guard_violations"] == []
 
