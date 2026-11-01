@@ -97,6 +97,60 @@ def test_specific_customer_revenue_query_skips_the_contract_liability_burn_down(
     )
 
 
+def test_percent_typed_extension_never_answers_a_monetary_query() -> None:
+    """HON shape: a percent-typed extension is barred from the revenue pool;
+    its own exact-qname query still answers it.
+    """
+    from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration
+
+    qname = "hon:RevenueFromContractWithCustomerPercentage"
+    declarations = {
+        qname: ConceptDeclaration(
+            concept_qname=qname,
+            name="RevenueFromContractWithCustomerPercentage",
+            item_type="dtr-types1:percentItemType",
+        )
+    }
+    engine = _query_engine(declarations=declarations)
+    facts = (
+        _duration_usd_fact(qname, 0.42, unit="pure"),
+        _duration_usd_fact(
+            "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", 245_122.0
+        ),
+    )
+    scope = FactScope(
+        accession="0000950170-24-087843",
+        start_date="2023-07-01",
+        end_date="2024-06-30",
+    )
+
+    specific = engine.execute(
+        FinancialQuery("revenue from contract with customer", scope), facts
+    )
+    assert specific.status == QueryStatus.REPORTED
+    assert specific.candidate_qnames == (
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+    )
+    assert specific.value == 245_122.0
+    assert all(item.qname != qname for item in specific.equivalents)
+
+    exact = engine.execute(
+        FinancialQuery(
+            qname,
+            FactScope(
+                accession="0000950170-24-087843",
+                start_date="2023-07-01",
+                end_date="2024-06-30",
+                unit="pure",
+            ),
+        ),
+        facts,
+    )
+    assert exact.status == QueryStatus.REPORTED
+    assert exact.candidate_qnames == (qname,)
+    assert exact.value == 0.42
+
+
 def test_unscoped_repeated_concept_is_ambiguous_not_iteration_ordered() -> None:
     facts = load_seed_facts("msft_2024_10k")
     engine = _query_engine()

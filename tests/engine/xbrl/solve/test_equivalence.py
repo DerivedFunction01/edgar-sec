@@ -996,6 +996,43 @@ def test_text_barrier_rule_shapes() -> None:
     assert classify_pair(wider_text, bare) == UNRELATED
 
 
+def test_percent_barrier_rule_shapes() -> None:
+    """One-modifier difference and subsumption shapes both hit the barrier."""
+    typed = Atom("H_REVENUE", frozenset({"M_CONTRACT_CUSTOMER", "M_PERCENT_TYPED"}))
+    bare = Atom("H_REVENUE", frozenset({"M_CONTRACT_CUSTOMER"}))
+    assert classify_pair(typed, bare) == UNRELATED
+    assert classify_pair(bare, typed) == UNRELATED
+    wider_typed = Atom(
+        "H_REVENUE",
+        frozenset({"M_CONTRACT_CUSTOMER", "M_PERCENT_TYPED", "M_TAX"}),
+    )
+    assert wider_typed.is_a(bare)
+    assert classify_pair(wider_typed, bare) == UNRELATED
+    result = classify_ladder_pair(bare, typed)
+    assert result.tier == UNRELATED and result.rule == "percent_barrier"
+
+
+def test_percent_pairs_classify_by_the_ordinary_rules() -> None:
+    """Percent↔percent: the coordinate cancels; the lattice still applies."""
+    hon = _typed_atom(
+        "hon:RevenueFromContractWithCustomerPercentage", "dtr-types1:percentItemType"
+    )
+    assert "M_PERCENT_TYPED" in hon.modifiers
+    base = Atom("H_REVENUE", frozenset({"M_CONTRACT_CUSTOMER", "M_PERCENT_TYPED"}))
+    wider = Atom(
+        "H_REVENUE",
+        frozenset({"M_CONTRACT_CUSTOMER", "M_PERCENT_TYPED", "M_TAX"}),
+    )
+    assert classify_pair(base, wider) == NEAR
+
+
+def test_name_claimed_percent_alone_raises_no_barrier() -> None:
+    """The barrier reads the typed coordinate, never the name-claimed one."""
+    monetary = Atom("H_REVENUE", frozenset({"M_CONTRACT_CUSTOMER"}))
+    named = Atom("H_REVENUE", frozenset({"M_CONTRACT_CUSTOMER", "M_PERCENT"}))
+    assert classify_pair(monetary, named) == NEAR
+
+
 def test_text_pairs_classify_by_the_ordinary_rules() -> None:
     """Text↔text: the coordinate cancels; renamed policy notes still match."""
     pld = _typed_atom(

@@ -29,7 +29,9 @@ def test_resolve_alias_term_uses_declared_targets() -> None:
 
 
 def test_search_revenue_ranks_filed_concepts_by_the_ladder() -> None:
-    """Bare revenue ranks the filed total NEAR by subsumption, diff shown."""
+    """Bare revenue ranks the filed total NEAR by subsumption, diff shown.
+    The liability-family burn-down variant is absent since the F5 claim.
+    """
     facts, records, taxonomy = _pool()
     result = search_facts("revenue", facts, records, taxonomy)
     assert result.partial is False
@@ -42,12 +44,7 @@ def test_search_revenue_ranks_filed_concepts_by_the_ladder() -> None:
     assert filed.target_only == ()
     assert filed.hit_only == ("M_CONTRACT_CUSTOMER", "M_PRETAX", "M_TAX")
     assert filed.facts
-    recognized = by_qname[_RECOGNIZED_QNAME]
-    assert recognized.tier == NEAR
-    assert recognized.rule == "single_modifier_difference"
-    assert recognized.modifier_distance == 1
-    assert recognized.hit_only == ("M_CONTRACT_CUSTOMER",)
-    assert recognized.residual_mass == (1, 2)
+    assert _RECOGNIZED_QNAME not in by_qname
 
 
 def test_search_partial_term_marks_partial_and_still_ranks() -> None:

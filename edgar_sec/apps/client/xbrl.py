@@ -328,6 +328,12 @@ class Xbrl:
             raise ValueError(
                 f"bundle {bundle_dir.name} accessions: {sorted(accessions)}"
             )
+        decl_path = bundle_dir / "declarations.parquet"
+        declarations = (
+            declarations_from_arrow_table(read_declarations_parquet(decl_path))
+            if decl_path.exists()
+            else ()
+        )
         filing = FilingXbrl(
             accession=AccessionNumber.from_any(accessions.pop()),
             cik=Cik(0),
@@ -339,6 +345,7 @@ class Xbrl:
                 presentation_arcs=presentation_arcs_from_arrow_table(
                     pq.read_table(bundle_dir / "presentation_arcs.parquet")
                 ),
+                declarations=declarations,
             ),
         )
         return cls(filing, taxonomy)

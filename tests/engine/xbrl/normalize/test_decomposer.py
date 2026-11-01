@@ -1016,6 +1016,73 @@ def test_text_coordinate_absent_declaration_is_byte_identical() -> None:
         )
 
 
+def _percent_rule():
+    from edgar_sec.engine.xbrl.taxonomy.item_types import percent_coordinate_rule
+
+    return percent_coordinate_rule(load_domain_taxonomy())
+
+
+def test_percent_coordinate_asserted_from_declared_percent_type() -> None:
+    """A percent-typed extension gains the coordinate from its declared type."""
+    tax = load_domain_taxonomy()
+    lex = tax.token_lexicon
+    assert lex is not None
+    qname = "hon:RevenueFromContractWithCustomerPercentage"
+    plain = decompose_concept_expression(qname, lex).atom
+    assert "M_PERCENT_TYPED" not in plain.modifiers
+    typed = decompose_concept_expression(
+        qname,
+        lex,
+        _declaration(qname, "dtr-types1:percentItemType"),
+        percent_rule=_percent_rule(),
+    ).atom
+    assert "M_PERCENT_TYPED" in typed.modifiers
+    assert typed.head == plain.head
+    assert typed.modifiers == plain.modifiers | {"M_PERCENT_TYPED"}
+
+
+def test_percent_coordinate_follows_type_not_name() -> None:
+    """A Percentage name with a monetary declared type gets no coordinate."""
+    tax = load_domain_taxonomy()
+    lex = tax.token_lexicon
+    assert lex is not None
+    qname = "hon:RevenueFromContractWithCustomerPercentage"
+    typed = decompose_concept_expression(
+        qname,
+        lex,
+        _declaration(qname, "xbrli:monetaryItemType"),
+        percent_rule=_percent_rule(),
+    ).atom
+    assert "M_PERCENT_TYPED" not in typed.modifiers
+    rate = "us-gaap:OperatingLeaseWeightedAverageDiscountRate"
+    rated = decompose_concept_expression(
+        rate,
+        lex,
+        _declaration(rate, "dtr-types:percentItemType"),
+        percent_rule=_percent_rule(),
+    ).atom
+    assert "M_PERCENT_TYPED" in rated.modifiers
+
+
+def test_percent_coordinate_absent_declaration_is_byte_identical() -> None:
+    """No declaration (or no rule) reproduces today's atoms exactly."""
+    tax = load_domain_taxonomy()
+    lex = tax.token_lexicon
+    assert lex is not None
+    qname = "hon:RevenueFromContractWithCustomerPercentage"
+    baseline = decompose_concept_expression(qname, lex)
+    assert (
+        decompose_concept_expression(qname, lex, None, percent_rule=_percent_rule())
+        == baseline
+    )
+    assert (
+        decompose_concept_expression(
+            qname, lex, _declaration(qname, "dtr-types:percentItemType"), None
+        )
+        == baseline
+    )
+
+
 def test_text_coordinate_net_of_headline_only() -> None:
     """NET_OF: the headline atom gains the coordinate; operands stay name-derived."""
     tax = load_domain_taxonomy()

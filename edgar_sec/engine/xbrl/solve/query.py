@@ -18,7 +18,10 @@ from edgar_sec.engine.xbrl.solve.equivalence import (
     GENERALIZATION,
     RankedEquivalent,
 )
-from edgar_sec.engine.xbrl.taxonomy.item_types import text_coordinate_rule
+from edgar_sec.engine.xbrl.taxonomy.item_types import (
+    percent_coordinate_rule,
+    text_coordinate_rule,
+)
 from edgar_sec.engine.xbrl.solve.scoping import FactScope
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
 from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
@@ -90,6 +93,7 @@ class FinancialQueryEngine:
         }
         self.declarations = declarations or {}
         self._text_rule = text_coordinate_rule(self.taxonomy)
+        self._percent_rule = percent_coordinate_rule(self.taxonomy)
 
     @staticmethod
     def _normalize_term(term: str) -> str:
@@ -188,6 +192,7 @@ class FinancialQueryEngine:
                 lexicon,
                 self.declarations.get(qname),
                 self._text_rule,
+                percent_rule=self._percent_rule,
             )
             if self._candidate_eligible(qname, result[0], numeric):
                 decomposed[qname] = result

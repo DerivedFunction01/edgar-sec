@@ -19,15 +19,27 @@ class TextCoordinateRule:
     item_types: frozenset[str]
 
 
-def text_coordinate_rule(taxonomy: DomainTaxonomy) -> TextCoordinateRule | None:
-    """Resolve the text-coordinate rule from the def declaring asserted types."""
+def coordinate_rule(
+    taxonomy: DomainTaxonomy, item_type: str
+) -> TextCoordinateRule | None:
+    """Resolve the coordinate rule whose def asserts the given item type."""
     for modifier in taxonomy.subatomic_modifiers:
-        if modifier.asserted_item_types:
+        if item_type in modifier.asserted_item_types:
             return TextCoordinateRule(
                 modifier_id=modifier.modifier_id,
                 item_types=frozenset(modifier.asserted_item_types),
             )
     return None
+
+
+def text_coordinate_rule(taxonomy: DomainTaxonomy) -> TextCoordinateRule | None:
+    """Resolve the text-coordinate rule from the def declaring asserted types."""
+    return coordinate_rule(taxonomy, "textBlockItemType")
+
+
+def percent_coordinate_rule(taxonomy: DomainTaxonomy) -> TextCoordinateRule | None:
+    """Resolve the percent-coordinate rule from the def asserting percent types."""
+    return coordinate_rule(taxonomy, "percentItemType")
 
 
 def item_type_local(item_type: str | None) -> str | None:

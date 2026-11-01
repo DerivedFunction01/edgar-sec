@@ -19,7 +19,10 @@ from edgar_sec.engine.xbrl.solve.equivalence import (
     rank_equivalents,
 )
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
-from edgar_sec.engine.xbrl.taxonomy.item_types import text_coordinate_rule
+from edgar_sec.engine.xbrl.taxonomy.item_types import (
+    percent_coordinate_rule,
+    text_coordinate_rule,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -50,6 +53,7 @@ class ConceptTokenizer:
         self._taxonomy = taxonomy
         self._sibling_groups = tuple(taxonomy.sibling_groups) or None
         self._text_rule = text_coordinate_rule(taxonomy)
+        self._percent_rule = percent_coordinate_rule(taxonomy)
 
     def tokenize(
         self,
@@ -65,7 +69,7 @@ class ConceptTokenizer:
         lexicon = self._taxonomy.token_lexicon
         assert lexicon is not None
         expression = decompose_concept_expression(
-            qname, lexicon, declaration, self._text_rule, evidence
+            qname, lexicon, declaration, self._text_rule, evidence, self._percent_rule
         )
         presumed = presumed_atom(
             expression.atom,

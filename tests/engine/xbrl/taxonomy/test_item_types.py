@@ -2,11 +2,14 @@
 
 from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration
 from edgar_sec.engine.xbrl.taxonomy.archive import current_table
+from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.engine.xbrl.taxonomy.item_types import (
     declaration_for,
     is_numeric_item_type,
     item_type_local,
     merge_declarations,
+    percent_coordinate_rule,
+    text_coordinate_rule,
 )
 
 _TABLE = {"us-gaap:Revenues": "xbrli:monetaryItemType"}
@@ -84,3 +87,16 @@ def test_shipped_table_covers_the_text_population() -> None:
     assert item_type_local(table["dei:EntityCommonStockSharesOutstanding"]) == (
         "sharesItemType"
     )
+
+
+def test_coordinate_rules_resolve_from_asserted_item_types() -> None:
+    """Each value-form coordinate resolves to the def asserting its type."""
+    taxonomy = load_domain_taxonomy()
+    text = text_coordinate_rule(taxonomy)
+    assert text is not None
+    assert text.modifier_id == "M_TEXT_NODE"
+    assert text.item_types == frozenset({"textBlockItemType", "stringItemType"})
+    percent = percent_coordinate_rule(taxonomy)
+    assert percent is not None
+    assert percent.modifier_id == "M_PERCENT_TYPED"
+    assert percent.item_types == frozenset({"percentItemType"})

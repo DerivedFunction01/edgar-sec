@@ -22,6 +22,7 @@ SPECIALIZATION = "specialization"
 
 _AGGREGATE_MODIFIER = "M_AGGREGATE"
 _TEXT_MODIFIER = "M_TEXT_NODE"
+_PERCENT_MODIFIER = "M_PERCENT_TYPED"
 _HORIZON_AXIS = "MATURITY_HORIZON"
 _HORIZON_FALLBACK = frozenset({"M_CURRENT", "M_NONCURRENT"})
 
@@ -84,6 +85,13 @@ def _text_barrier(left: Atom, right: Atom) -> bool:
     return (_TEXT_MODIFIER in left.modifiers) != (_TEXT_MODIFIER in right.modifiers)
 
 
+def _percent_barrier(left: Atom, right: Atom) -> bool:
+    """True when exactly one atom carries the percent coordinate."""
+    return (_PERCENT_MODIFIER in left.modifiers) != (
+        _PERCENT_MODIFIER in right.modifiers
+    )
+
+
 def _classify_detail(
     left: Atom,
     right: Atom,
@@ -107,6 +115,8 @@ def _classify_detail(
         return UNRELATED, ""
     if _text_barrier(left, right):
         return UNRELATED, "text_barrier"
+    if _percent_barrier(left, right):
+        return UNRELATED, "percent_barrier"
     if _aggregate_scope_widening(left, right):
         return NEAR, "aggregate_widening"
     if len(left.modifiers ^ right.modifiers) == 1:

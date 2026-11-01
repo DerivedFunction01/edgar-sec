@@ -744,13 +744,23 @@ def test_xbrl_query_pld_revenue_fiscal_year_reports_annual_headline() -> None:
 
 
 def test_xbrl_query_msft_revenue_fiscal_year_ignores_rpo_instants() -> None:
-    """Verify MSFT loose revenue is AMBIGUOUS in both modes, never the RPO facts."""
+    """Verify MSFT loose revenue answers the headline, never the RPO facts."""
     xbrl = _create_xbrl_facade("msft")
 
-    for mode in (QueryMode.REPORTED_ONLY, QueryMode.VERIFY_DERIVATION):
-        result = xbrl.query("revenue", mode=mode, fiscal_year=2024)
-        assert result.status == QueryStatus.AMBIGUOUS
-        assert result.value is None
+    result = xbrl.query("revenue", mode=QueryMode.REPORTED_ONLY, fiscal_year=2024)
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == 245122000000.0
+    assert result.candidate_qnames == (
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+    )
+
+    verified = xbrl.query("revenue", mode=QueryMode.VERIFY_DERIVATION, fiscal_year=2024)
+    assert verified.status == QueryStatus.CONFLICT
+    assert verified.reported_fact is not None
+    assert verified.reported_fact.concept_qname == (
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+    )
+    assert verified.reported_fact.value == 245122000000.0
 
 
 def test_xbrl_query_nvda_revenue_verify_surfaces_annual_conflict() -> None:
@@ -972,21 +982,28 @@ def test_xbrl_query_gis_revenue_exact_carries_asc606_neighbour() -> None:
     assert neighbour.direction == "specialization"
 
 
-def test_xbrl_query_msft_revenue_rank_alone_never_promotes() -> None:
-    """Verify MSFT revenue stays AMBIGUOUS: rank alone never promotes it (Q3(a))."""
+def test_xbrl_query_msft_revenue_guard_promotes_and_verify_conflicts() -> None:
+    """Verify MSFT revenue guard-promotes the headline at NEAR tier; VERIFY
+    G-pins the derivation conflict (Q3(a)'s divergent pool dissolved in F5).
+    """
     xbrl = _create_xbrl_facade("msft")
 
-    for mode in (QueryMode.REPORTED_ONLY, QueryMode.VERIFY_DERIVATION):
-        result = xbrl.query("revenue", mode=mode, fiscal_year=2024)
-        assert result.status == QueryStatus.AMBIGUOUS
-        assert result.value is None
-        assert result.tier == "near"
-        best = result.equivalents[0]
-        assert best.qname == (
-            "msft:ContractWithCustomerLiabilityRevenueRecognizedIncludingAdditions"
-        )
-        assert best.rule == "single_modifier_difference"
-        assert best.direction == "specialization"
+    result = xbrl.query("revenue", mode=QueryMode.REPORTED_ONLY, fiscal_year=2024)
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == 245122000000.0
+    assert result.tier == "near"
+    best = result.equivalents[0]
+    assert best.qname == ("us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax")
+    assert best.rule == "subsumption"
+    assert best.direction == "specialization"
+
+    verified = xbrl.query("revenue", mode=QueryMode.VERIFY_DERIVATION, fiscal_year=2024)
+    assert verified.status == QueryStatus.CONFLICT
+    assert verified.reported_fact is not None
+    assert verified.reported_fact.value == 245122000000.0
+    assert verified.aggregate is not None
+    assert verified.aggregate.value == 171008000000.0
+    assert verified.value == 171008000000.0
 
 
 def test_xbrl_query_jnj_revenue_guard_promotion_surfaces_at_near_tier() -> None:
@@ -1176,7 +1193,7 @@ def test_statements_bmy_operating_pick_abstains() -> None:
 
 
 def test_xbrl_search_revenue_specimens() -> None:
-    """Search ranks the F5 pair by the ladder, residuals and diffs visible."""
+    """Search ranks the filed total by the ladder; the F5 burn-down is absent."""
     xbrl = _create_xbrl_facade("msft")
     result = xbrl.search("revenue")
     assert result.partial is False
@@ -1191,15 +1208,10 @@ def test_xbrl_search_revenue_specimens() -> None:
     )
     assert filed.hit_only == ("M_CONTRACT_CUSTOMER", "M_PRETAX", "M_TAX")
     assert filed.facts
-    recognized = by_qname[
+    assert (
         "msft:ContractWithCustomerLiabilityRevenueRecognizedIncludingAdditions"
-    ]
-    assert (recognized.tier, recognized.rule) == (
-        "near",
-        "single_modifier_difference",
+        not in by_qname
     )
-    assert recognized.hit_only == ("M_CONTRACT_CUSTOMER",)
-    assert recognized.residual_mass == (1, 2)
 
 
 def test_xbrl_search_cross_filer_qname_term() -> None:
@@ -1213,10 +1225,16 @@ def test_xbrl_search_cross_filer_qname_term() -> None:
         "us-gaap:ContractWithCustomerLiabilityRevenueRecognized"
     )
     top = cross.hits[0]
-    assert top.qname == (
-        "msft:ContractWithCustomerLiabilityRevenueRecognizedIncludingAdditions"
-    )
+    assert top.qname == "us-gaap:ContractWithCustomerLiability"
     assert (top.tier, top.rule, top.modifier_distance) == ("exact", "equality", 0)
+    variant = {hit.qname: hit for hit in cross.hits}[
+        "msft:ContractWithCustomerLiabilityRevenueRecognizedIncludingAdditions"
+    ]
+    assert (variant.tier, variant.rule, variant.modifier_distance) == (
+        "exact",
+        "equality",
+        0,
+    )
 
 
 def test_compare_subset_resolves_only_requested_metrics() -> None:

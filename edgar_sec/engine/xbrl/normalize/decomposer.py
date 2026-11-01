@@ -65,10 +65,11 @@ def decompose_concept(
     declaration: ConceptDeclaration | None = None,
     text_rule: TextCoordinateRule | None = None,
     evidence: EvidenceContext | None = None,
+    percent_rule: TextCoordinateRule | None = None,
 ) -> tuple[Atom, tuple[str, ...], float, tuple[str, ...]]:
     """Decompose an XBRL concept QName into an Atom coordinate, residuals, and frame."""
     expression = decompose_concept_expression(
-        concept_qname, lexicon, declaration, text_rule, evidence
+        concept_qname, lexicon, declaration, text_rule, evidence, percent_rule
     )
     return (
         expression.atom,
@@ -78,16 +79,16 @@ def decompose_concept(
     )
 
 
-def _with_text_coordinate(
+def _with_type_coordinate(
     atom: Atom,
     declaration: ConceptDeclaration | None,
-    text_rule: TextCoordinateRule | None,
+    rule: TextCoordinateRule | None,
 ) -> Atom:
-    """Assert the text coordinate on a headline atom from the declared type."""
-    if declaration is None or text_rule is None:
+    """Assert a value-form coordinate on a headline atom from the declared type."""
+    if declaration is None or rule is None:
         return atom
-    if item_type_local(declaration.item_type) in text_rule.item_types:
-        return Atom(atom.head, atom.modifiers | {text_rule.modifier_id})
+    if item_type_local(declaration.item_type) in rule.item_types:
+        return Atom(atom.head, atom.modifiers | {rule.modifier_id})
     return atom
 
 
@@ -207,6 +208,7 @@ def decompose_concept_expression(
     declaration: ConceptDeclaration | None = None,
     text_rule: TextCoordinateRule | None = None,
     evidence: EvidenceContext | None = None,
+    percent_rule: TextCoordinateRule | None = None,
 ) -> ConceptExpression:
     """Preserve binary NET_OF operand atoms while deriving the query coordinate."""
     local_name = qname_local(concept_qname)
@@ -270,10 +272,14 @@ def decompose_concept_expression(
             operator.entry.projection[0] if operator.entry.projection else "V_NET"
         )
         return ConceptExpression(
-            atom=_with_text_coordinate(
-                Atom(left.head, left.modifiers | {operator_atom}),
+            atom=_with_type_coordinate(
+                _with_type_coordinate(
+                    Atom(left.head, left.modifiers | {operator_atom}),
+                    declaration,
+                    text_rule,
+                ),
                 declaration,
-                text_rule,
+                percent_rule,
             ),
             operator="NET_OF",
             operands=(left, right),
@@ -304,7 +310,8 @@ def decompose_concept_expression(
             evidence,
         )
     )
-    atom = _with_text_coordinate(atom, declaration, text_rule)
+    atom = _with_type_coordinate(atom, declaration, text_rule)
+    atom = _with_type_coordinate(atom, declaration, percent_rule)
     return ConceptExpression(
         atom=atom,
         operator=None,
