@@ -344,6 +344,8 @@ def test_diagnostic_codes_and_union_remain_explicit() -> None:
         "invalid_size",
         "unsafe_href",
         "malformed_html",
+        "malformed_xml",
+        "malformed_package",
         "unsupported_encoding",
     }
     assert set(typing.get_args(IndexParseOutcome)) == {
