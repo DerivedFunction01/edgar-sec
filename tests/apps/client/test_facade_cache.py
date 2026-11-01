@@ -108,6 +108,32 @@ def test_concurrent_miss_builds_once() -> None:
     assert all(result is builds[0] for result in results)
 
 
+def test_unrelated_key_builds_do_not_convoy() -> None:
+    """Verify one key's slow build does not block another key's build."""
+    cache = FacadeCache(capacity=4)
+    started = threading.Event()
+    release = threading.Event()
+
+    def slow_builder() -> object:
+        started.set()
+        release.wait(timeout=5)
+        return object()
+
+    results: list[object] = []
+    thread = threading.Thread(
+        target=lambda: results.append(cache.get_or_build(("1", "a"), slow_builder))
+    )
+    thread.start()
+    assert started.wait(timeout=5)
+    before = time.monotonic()
+    other = cache.get_or_build(("1", "b"), object)
+    assert time.monotonic() - before < 2
+    assert other is not None
+    release.set()
+    thread.join(timeout=5)
+    assert len(results) == 1
+
+
 def _aggregate(accession: str, cik: int = 320193) -> FilingAggregate:
     return FilingAggregate(
         accession=AccessionNumber.from_any(accession),

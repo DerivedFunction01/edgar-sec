@@ -48,8 +48,8 @@ def derive_facade_capacity(resources: RuntimeResourceProfile | None = None) -> i
 class FacadeCache:
     """Bounded LRU of live facades; eviction drops the whole kernel.
 
-    A hit returns the identical facade object. Builds run under the
-    lock, so a key is constructed at most once.
+    A hit returns the identical facade object; builds run under a
+    per-key lock, so a key is constructed at most once, never convoyed.
     """
 
     def __init__(self, capacity: int | None = None) -> None:
@@ -58,6 +58,7 @@ class FacadeCache:
             raise ValueError("facade cache capacity must be at least 1")
         self._entries: OrderedDict[tuple[str, str], Xbrl] = OrderedDict()
         self._lock = threading.Lock()
+        self._build_locks: dict[tuple[str, str], threading.Lock] = {}
 
     @property
     def capacity(self) -> int:
@@ -77,16 +78,27 @@ class FacadeCache:
             if facade is not None:
                 self._entries.move_to_end(key)
                 return facade
+            build_lock = self._build_locks.setdefault(key, threading.Lock())
+        with build_lock:
+            with self._lock:
+                facade = self._entries.get(key)
+                if facade is not None:
+                    self._entries.move_to_end(key)
+                    return facade
             facade = builder()
-            self._entries[key] = facade
-            while len(self._entries) > self._capacity:
-                self._entries.popitem(last=False)
+            with self._lock:
+                self._entries[key] = facade
+                while len(self._entries) > self._capacity:
+                    self._entries.popitem(last=False)
+                if self._build_locks.get(key) is build_lock:
+                    del self._build_locks[key]
             return facade
 
     def clear(self) -> None:
         """Drop every cached facade."""
         with self._lock:
             self._entries.clear()
+            self._build_locks.clear()
 
 
 class Edgar:
