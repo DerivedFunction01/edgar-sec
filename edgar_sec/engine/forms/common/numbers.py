@@ -44,6 +44,17 @@ _SCHEMA_UNIT_SUFFIX_ALT = build_alternation(
     (
         "shares of common stock",
         "shares of common",
+        "class a ordinary shares",
+        "class b ordinary shares",
+        "class c ordinary shares",
+        "class a common stock",
+        "class b common stock",
+        "class c common stock",
+        "class a shares",
+        "class b shares",
+        "class c shares",
+        "ordinary shares",
+        "ordinary share",
         "common shares",
         "common stock",
         "shares",
@@ -55,6 +66,13 @@ _SCHEMA_UNIT_SUFFIX_ALT = build_alternation(
     )
 )
 _SCHEMA_UNIT_SUFFIX_RE = re.compile(rf"(?i)\s*(?:{_SCHEMA_UNIT_SUFFIX_ALT})\.?$")
+
+
+def strip_unit_suffix(text: str) -> str:
+    """Strip common share and unit suffixes from text."""
+    return _SCHEMA_UNIT_SUFFIX_RE.sub("", text).strip()
+
+
 _SCHEMA_CURRENCY_RE = re.compile(CURRENCY_TOKEN_RE.pattern)
 _PERCENT_TAIL_ALT = build_alternation(
     (
@@ -500,4 +518,5 @@ __all__ = [
     "normalize_schema_integral_decimal",
     "normalize_schema_number",
     "parse_scaled_number",
+    "strip_unit_suffix",
 ]

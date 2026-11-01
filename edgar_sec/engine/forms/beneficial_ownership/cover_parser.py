@@ -16,13 +16,25 @@ from edgar_sec.domain.forms.common.checkmarks import (
     CANONICAL_CHECKED,
     CANONICAL_UNCHECKED,
 )
+from edgar_sec.engine.forms.common.entities import (
+    IRS_RE,
+    is_boilerplate_entity_name,
+    is_street_address_value,
+)
 from edgar_sec.engine.forms.common.marks import (
     canonicalize_mark_tokens,
     mark_state_in,
     resolve_checked_labeled_option,
 )
-from edgar_sec.engine.forms.common.numbers import normalize_schema_number
-from edgar_sec.engine.forms.common.statutory import HEADER_LEAK_RE
+from edgar_sec.engine.forms.common.numbers import (
+    normalize_integer_stripping_units,
+    normalize_schema_number,
+    strip_unit_suffix,
+)
+from edgar_sec.engine.forms.common.statutory import (
+    HEADER_LEAK_RE,
+    strip_form_prompt_prefix,
+)
 from edgar_sec.engine.forms.common.tables import strip_markup_tags
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
@@ -52,7 +64,7 @@ _POWER_TERMS = build_alternation(
     auto_escape=True,
 )
 _RE_POWER_WORDS = re.compile(rf"(?i)\b(?:{_POWER_TERMS})\b")
-_RE_TABLE_NOISE = re.compile(r"(?i)</?TABLE>|[_=\-‐‑‒–—]{2,}")
+_RE_TABLE_NOISE = re.compile(r"[_=\-‐‑‒–—]{2,}")
 _NARRATIVE_TAIL_ALT = build_alternation(
     (
         r"ITEM\s+\d+(?:\([A-Z0-9]+\))?\s*[.:]?\s",
@@ -345,6 +357,7 @@ def parse_reporting_person_matrix(
             val = _RE_POWER_TRAILING_WITH.sub(" ", val)
             val = val.replace(":", " ").replace("|", " ")
             val = val.strip(" \t\r\n:.-|")
+            val = strip_unit_suffix(val)
         elif tag == "citizenshipOrOrganization":
             val = _RE_NUMBER_OF.sub("", val)
             val = _RE_CITIZENSHIP_TAIL.sub(" ", val)
@@ -388,8 +401,12 @@ def parse_reporting_person_matrix(
             raw_cb = CHECKMARK_MARK_RE.search(val)
             if raw_cb is not None:
                 val = val[: raw_cb.start()]
-            val = val.lstrip(" \t:.-|")
+            val = strip_form_prompt_prefix(val).strip(" \t\r\n:;,-|")
             val = _RE_PERSON_ID_TRAILER.sub("", val)
+            if IRS_RE.search(val) and not any(w.isalpha() for w in IRS_RE.sub("", val)):
+                val = ""
+            if is_boilerplate_entity_name(val) or is_street_address_value(val):
+                val = ""
 
         val = " ".join(val.split()).strip()
         if tag != "reportingPersonName":

@@ -90,9 +90,32 @@ def format_iso_date(value: str | None, *, month_first: bool) -> str | None:
     return parsed.iso
 
 
+def is_valid_schema_date_lexeme(
+    iso_value: str | None,
+    raw_value: str | None,
+    *,
+    month_first: bool,
+) -> bool:
+    """Validate raw date matches ISO date under MDY or YMD order."""
+    if not iso_value or not raw_value:
+        return False
+    formatted = format_iso_date(iso_value, month_first=month_first)
+    if formatted is None:
+        return False
+    normalized_raw = raw_value.strip().replace("/", "-")
+    if normalized_raw == formatted:
+        return True
+    if month_first and (parsed := parse_schema_date(raw_value)):
+        if parsed.iso == iso_value:
+            expected = f"{parsed.components.month}-{parsed.components.day}-{parsed.components.year:04d}"
+            return normalized_raw == expected
+    return False
+
+
 __all__ = [
     "external_reference_year",
     "format_iso_date",
+    "is_valid_schema_date_lexeme",
     "normalize_iso_date",
     "parse_schema_date",
     "reported_year",

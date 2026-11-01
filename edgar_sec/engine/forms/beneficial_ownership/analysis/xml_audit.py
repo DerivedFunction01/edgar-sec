@@ -15,15 +15,16 @@ from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
     SCHEDULE_13G_ITEMS,
     SCHEDULE_13G_XML_NAMESPACE,
 )
+from edgar_sec.engine.forms.common.entities import is_valid_cusip
 from edgar_sec.engine.forms.common.extraction import local_name
 from edgar_sec.engine.forms.common.numbers import normalize_schema_number
 from edgar_sec.engine.forms.common.statutory import STATUTORY_PAGE_ARTIFACT_RE
+from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
+    _SEPARATOR_RUN_RE,
     cover_field_has_layout_residue,
     cusip_page_residue_match,
     has_descriptive_numeric_qualifier,
-    is_eight_character_cusip,
-    is_nine_character_cusip,
     parsed_field_boilerplate_match,
 )
 from edgar_sec.engine.forms.beneficial_ownership.field_observations import (
@@ -59,6 +60,56 @@ _NARRATIVE_FIELD_NAMES = frozenset(
     item.item.lower().replace(" ", "") for item in SCHEDULE_13G_ITEMS
 )
 _MULTI_CLASS_VALUE_RE = re.compile(r"(?i)\bSERIES\s+[A-Z]\b.{0,180}?\d[\d,]*(?:\.\d+)?")
+_NUMERIC_COVER_FIELDS = frozenset(
+    {
+        "soleVotingPower",
+        "sharedVotingPower",
+        "soleDispositivePower",
+        "sharedDispositivePower",
+        "aggregateAmountOwned",
+        "percentOfClass",
+    }
+)
+_NARRATIVE_NUMERIC_ALT = build_alternation(
+    (
+        r"see\s+(?:the\s+)?responses?(?:\(s\))?\s+to",
+        r"see\s+items?",
+        r"see\s+rows?",
+        r"see\s+cover\s+pages?(?:\(s\))?",
+        r"see\s+each\s+cover",
+        r"responses?(?:\(s\))?\s+to\s+items?",
+        r"responses?(?:\(s\))?\s+to\s+rows?",
+        r"set\s+forth\s+(?:in|on)\s+rows?",
+        r"incorporated\s+(?:herein\s+)?by\s+reference",
+        r"required\s+by\s+(?:this\s+)?items?",
+        r"cover\s+pages?(?:\(s\))?",
+        r"rows?\s+(?:\(\d+\)|\d+)\s+of\s+(?:each\s+)?(?:the\s+)?(?:reporting\s+person|cover)",
+        r"calculated\s+(?:assuming|based)",
+        r"based\s+on\s+a\s+total",
+        r"based\s+on\s+the\s+percentages",
+        r"based\s+on\s+\d",
+        r"as\s+of\s+[A-Za-z]+\s+\d{1,2},\s+\d{4}",
+        r"beneficially\s+owned\s+(?:by|are)",
+        r"held\s+of\s+record",
+        r"investment\s+manager",
+        r"shares?\s+of\s+(?:common\s+)?stock",
+        r"class\s+[a-z]\s+(?:ordinary\s+)?shares?",
+        r"ordinary\s+shares?",
+    ),
+    compact=False,
+)
+_RE_NARRATIVE_NUMERIC = re.compile(rf"(?i)\b(?:{_NARRATIVE_NUMERIC_ALT})\b")
+_RE_MULTI_ENTITY_ALLOCATION = re.compile(
+    r"(?i)(?:(?:\(\d+\)|\b\d+\.|\([a-zivx]+\)|[A-Z0-9,\.\s]{2,40}\s+[-:]\s*\d[\d,]*))"
+)
+
+
+def _is_narrative_numeric_cover(value: str) -> bool:
+    if _RE_NARRATIVE_NUMERIC.search(value):
+        return True
+    if len(_RE_MULTI_ENTITY_ALLOCATION.findall(value)) >= 1 or "\n" in value:
+        return True
+    return False
 
 
 def _is_clean_numeric_cover(field: str, value: str) -> bool:
@@ -72,6 +123,7 @@ def _is_clean_numeric_cover(field: str, value: str) -> bool:
             integer=False,
             strip_percent=strip_pct,
             strip_currency=True,
+            strip_units=True,
             strip_footnotes=True,
         )
         is not None
@@ -104,7 +156,7 @@ def _source_has_signature(source_text: str) -> bool:
 
 
 def _boilerplate_match(field: str, value: str) -> str | None:
-    if field in _NARRATIVE_FIELD_NAMES or field == "signature":
+    if field in _NARRATIVE_FIELD_NAMES or field in {"signature", "commentContent"}:
         return None
     return parsed_field_boilerplate_match(value)
 
@@ -311,7 +363,18 @@ def analyze_xml(
                         "detail": f"parsed field {name!r} contains filing boilerplate",
                     }
                 )
-            elif value and cover_field_has_layout_residue(name, value):
+            elif (
+                value
+                and name != "commentContent"
+                and (
+                    not (
+                        name in _NUMERIC_COVER_FIELDS
+                        and _is_narrative_numeric_cover(value)
+                    )
+                    or _SEPARATOR_RUN_RE.search(value) is not None
+                )
+                and cover_field_has_layout_residue(name, value)
+            ):
                 anomalies.append(
                     {
                         "accession": accession,
@@ -337,11 +400,19 @@ def analyze_xml(
                 and _boilerplate_match(field, value) is not None
             ):
                 continue
-            contamination = cover_field_has_layout_residue(field, value)
+            contamination = (
+                not _is_narrative_numeric_cover(value)
+                or _SEPARATOR_RUN_RE.search(value) is not None
+            ) and cover_field_has_layout_residue(field, value)
             if not value or contamination:
                 continue
             multi_class = len(_MULTI_CLASS_VALUE_RE.findall(value)) >= 2
-            if multi_class or has_descriptive_numeric_qualifier(value):
+            is_narrative_numeric = _is_narrative_numeric_cover(value)
+            if (
+                multi_class
+                or has_descriptive_numeric_qualifier(value)
+                or is_narrative_numeric
+            ):
                 review_signals.append(
                     {
                         "accession": accession,
@@ -389,7 +460,7 @@ def analyze_xml(
                     "detail": "issuer CUSIP contains page or filing-header residue",
                 }
             )
-        elif value and is_eight_character_cusip(normalized):
+        elif value and is_valid_cusip(normalized, length=8):
             review_signals.append(
                 {
                     "accession": accession,
@@ -399,7 +470,7 @@ def analyze_xml(
                     "detail": "source provides an eight-character CUSIP without a check digit",
                 }
             )
-        elif value and not is_nine_character_cusip(normalized):
+        elif value and not is_valid_cusip(normalized, length=9):
             anomalies.append(
                 {
                     "accession": accession,

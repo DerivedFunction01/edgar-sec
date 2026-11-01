@@ -3,7 +3,8 @@ from __future__ import annotations
 import re
 
 from edgar_sec.domain.forms.common.checkmarks import (
-    CHECKMARK_MARK_RE,
+    RE_RAW_CHECKED,
+    RE_RAW_UNCHECKED,
 )
 from edgar_sec.domain.forms.families.beneficial_ownership.phrases import (
     BENEFICIAL_OWNERSHIP_PHRASE_RULES,
@@ -15,7 +16,6 @@ from edgar_sec.engine.forms.common.statutory import (
     HEADER_LEAK_RE,
     annotate_common_form_phrases,
 )
-from edgar_sec.engine.forms.common.entities import is_valid_cusip
 from edgar_sec.engine.forms.common.phrases import (
     PhraseMatch,
     compile_phrase_rules,
@@ -90,14 +90,6 @@ def _bo_phrase_matches(value: str) -> tuple[PhraseMatch, ...]:
     )
 
 
-def is_eight_character_cusip(value: str) -> bool:
-    return is_valid_cusip(value, length=8)
-
-
-def is_nine_character_cusip(value: str) -> bool:
-    return is_valid_cusip(value, length=9)
-
-
 def cusip_page_residue_match(value: str) -> re.Match[str] | None:
     return _CUSIP_PAGE_RESIDUE_RE.search(value)
 
@@ -142,9 +134,10 @@ def cover_field_has_layout_residue(field: str, value: str) -> bool:
         or _POWER_LAYOUT_TRAILING_WITH_RE.search(value)
         or row_prefix.search(value)
         or _PAGE_MARKER_RE.search(value)
-        or CHECKMARK_MARK_RE.search(value)
+        or RE_RAW_CHECKED.search(value)
+        or RE_RAW_UNCHECKED.search(value)
         or (
-            field in {"reportingPersonName", "memberOfGroup", "commentContent"}
+            field in {"reportingPersonName", "memberOfGroup"}
             and _ITEM_LEAK_RE.search(value)
         )
     )
@@ -174,8 +167,6 @@ __all__ = [
     "cover_field_has_layout_residue",
     "cusip_page_residue_match",
     "has_descriptive_numeric_qualifier",
-    "is_eight_character_cusip",
-    "is_nine_character_cusip",
     "parsed_field_boilerplate_match",
     "two_character_codes",
 ]

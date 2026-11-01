@@ -10,6 +10,7 @@ import xml.etree.ElementTree as ET
 from edgar_sec.domain.taxonomy.jurisdictions import edgar_jurisdiction_code
 from edgar_sec.engine.forms.common.dates import (
     format_iso_date,
+    is_valid_schema_date_lexeme,
     normalize_iso_date,
 )
 from edgar_sec.engine.forms.common.numbers import (
@@ -493,9 +494,9 @@ def validate_values(
             result = extract_value(value, spec)
             valid_date_lexeme = (
                 spec.kind is FieldKind.DATE
-                and result.value is not None
-                and format_iso_date(result.value, month_first=spec.date_lexeme == "MDY")
-                == value.strip()
+                and is_valid_schema_date_lexeme(
+                    result.value, value, month_first=spec.date_lexeme == "MDY"
+                )
             )
             if (
                 result.value is not None
@@ -595,7 +596,7 @@ def xml_date_is_valid(value: str, *, month_first: bool) -> bool:
     canonical = normalize_iso_date(value)
     if canonical is None:
         return False
-    return format_iso_date(canonical, month_first=month_first) == value
+    return is_valid_schema_date_lexeme(canonical, value, month_first=month_first)
 
 
 __all__ = [

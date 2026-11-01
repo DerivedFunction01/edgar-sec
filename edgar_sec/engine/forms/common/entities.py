@@ -31,7 +31,8 @@ from edgar_sec.domain.taxonomy.jurisdictions import (
     STATE_POSTAL_CODES,
     strip_jurisdiction,
 )
-from edgar_sec.domain.taxonomy.legal_forms import LEGAL_FORMS
+from edgar_sec.domain.taxonomy.legal_forms import LEGAL_FORMS, has_legal_form
+from edgar_sec.engine.forms.common.statutory import is_pure_statutory_boilerplate
 from edgar_sec.foundation.regex.builder import build_alternation
 
 STATE_ALT = build_alternation(sorted(STATE_POSTAL_CODES))
@@ -252,6 +253,126 @@ def is_valid_entity_name(name: str) -> bool:
     return True
 
 
+_BOILERPLATE_NAMES = frozenset(
+    {
+        "instructions",
+        "street",
+        "city",
+        "state",
+        "zip code",
+        "sec use only",
+        "area code number",
+        "telephone",
+        "name of issuer",
+        "address of issuer",
+        "relationship to issuer",
+        "name of person for whose account the securities are to be sold",
+        "names of reporting persons",
+        "name of reporting person",
+        "reporting persons",
+        "reporting person",
+        "irs identification nos. of above persons",
+        "irs identification no. of above person",
+    }
+)
+_HEADER_WORDS = frozenset(
+    {
+        "address",
+        "account",
+        "area",
+        "city",
+        "code",
+        "entities",
+        "identification",
+        "instructions",
+        "issuer",
+        "location",
+        "name",
+        "names",
+        "number",
+        "of",
+        "only",
+        "person",
+        "persons",
+        "reporting",
+        "sec",
+        "securities",
+        "sold",
+        "state",
+        "street",
+        "telephone",
+        "the",
+        "use",
+        "whose",
+        "work",
+        "zip",
+    }
+)
+
+
+def _is_header_token(token: str) -> bool:
+    return token in _HEADER_WORDS or (
+        len(token) >= 3 and any(word.startswith(token) for word in _HEADER_WORDS)
+    )
+
+
+_PHONE_EXACT_RE = re.compile(r"^\+?[\d\s\-.()]{7,}$")
+_INSTRUCTION_PHRASE_ALT = build_alternation(
+    (
+        "identification number",
+        "sec use only",
+        "file number",
+        "market maker who is",
+        "instructions",
+        "any of the foregoing",
+        "for whose account",
+        "entities only",
+        "irs identification",
+    )
+)
+_INSTRUCTION_PHRASE_RE = re.compile(rf"(?:{_INSTRUCTION_PHRASE_ALT})", re.I)
+_NON_ALNUM_TOKEN_RE = re.compile(r"[^a-zA-Z0-9]+")
+
+
+def is_boilerplate_entity_name(value: str | None) -> bool:
+    """Return whether a value is form instruction boilerplate rather than an entity name."""
+    if value is None:
+        return False
+    if not any(c.isalnum() for c in value):
+        return True
+    cleaned = FILLER_RUN_RE.sub("", value).strip(" _-\t\r\n")
+    if (
+        len(cleaned) < 2
+        or SSN_REDACTION_MASK_RE.fullmatch(cleaned)
+        or _PHONE_EXACT_RE.fullmatch(cleaned)
+    ):
+        return True
+    lowered = cleaned.lower()
+    if (
+        lowered in _BOILERPLATE_NAMES
+        or lowered.startswith("(")
+        or lowered.startswith(("p.o. box", "po box", "p o box"))
+    ):
+        return True
+    if _INSTRUCTION_PHRASE_RE.search(lowered):
+        return True
+    if is_pure_statutory_boilerplate(lowered):
+        return True
+    if ("rule 144" in lowered or "schedule 13" in lowered) and cleaned[:1].islower():
+        return True
+    if sum(c.isdigit() for c in cleaned) >= 4 and not (
+        has_legal_form(lowered) or any(term in lowered for term in ("plan", "401"))
+    ):
+        return True
+    tokens = [token for token in _NON_ALNUM_TOKEN_RE.split(lowered) if token]
+    words = [token for token in tokens if token.isalpha()]
+    if not words or len(words) + sum(token.isdigit() for token in tokens) != len(
+        tokens
+    ):
+        return False
+    return all(_is_header_token(word) for word in words)
+
+
 def sanitize_document_noise(text: str) -> str:
     """Strip border pipes, filler character runs, and collapse extra whitespace."""
     no_pipes = TABLE_BORDER_PIPE_RE.sub("", text)
@@ -311,6 +432,7 @@ __all__ = [
     "TICKER_PAREN_RE",
     "TITLE_MATCH_RE",
     "TRAILING_FOOTNOTE_RE",
+    "is_boilerplate_entity_name",
     "is_street_address_value",
     "is_street_or_address_line",
     "is_valid_cusip",

@@ -31,7 +31,10 @@ from edgar_sec.domain.forms.families.beneficial_ownership.phrases import (
     STATUTORY_SOLE_DISPOSITIVE_LABELS,
     STATUTORY_SOLE_VOTING_LABELS,
 )
-from edgar_sec.engine.forms.common.numbers import normalize_schema_number
+from edgar_sec.engine.forms.common.numbers import (
+    _SCHEMA_UNIT_SUFFIX_ALT,
+    normalize_schema_number,
+)
 from edgar_sec.engine.forms.common.tables import strip_markup_tags
 from edgar_sec.foundation.regex.builder import build_alternation
 
@@ -294,24 +297,13 @@ _SHARE_PREFIX_ALT = build_alternation(
     ),
     auto_escape=False,
 )
-_SHARE_UNIT_ALT = build_alternation(
-    (
-        "shares of common stock",
-        "common shares",
-        "ordinary shares",
-        "shares",
-        "units",
-        "common stock",
-    ),
-    auto_escape=True,
-)
 _CONNECTOR_ALT = build_alternation(
     (r"an\s+aggregate\s+of\s+", r"of\s+", r"[:.-]\s*"),
     auto_escape=False,
 )
 _RE_SHARE_COUNT = re.compile(
     rf"(?i)(?:(?:{_SHARE_PREFIX_ALT})\s*(?:{_CONNECTOR_ALT})?|^|\b)"
-    rf"([0-9][0-9,]*(?:\.[0-9]+)?)\s*(?:{_SHARE_UNIT_ALT})\b"
+    rf"([0-9][0-9,]*(?:\.[0-9]+)?)\s*(?:{_SCHEMA_UNIT_SUFFIX_ALT})\b"
 )
 
 _PERCENT_PREFIX_ALT = build_alternation(

@@ -18,7 +18,10 @@ from edgar_sec.engine.forms.common.entities import (
     ORGANIZATION_SUFFIX_RE,
     is_valid_cusip,
 )
-from edgar_sec.engine.forms.common.tables import parse_address_parts
+from edgar_sec.engine.forms.common.tables import (
+    parse_address_parts,
+    strip_markup_tags,
+)
 from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
     cusip_page_residue_match,
 )
@@ -90,7 +93,6 @@ _PHONE_ALT = build_alternation(
 )
 _PHONE_RE = re.compile(rf"(?<!\d)(?:{_PHONE_ALT})(?!\d)")
 _WHITESPACE_RE = re.compile(r"\s+")
-_TABLE_MARKUP_RE = re.compile(r"(?i)^\s*</?TABLE>\s*$")
 _ATTENTION_RE = re.compile(r"(?i)^\s*ATTENTION\s*:\s*(?P<name>.+?)\s*$")
 _COPY_TO_RE = re.compile(r"(?i)^\s*(?:WITH\s+)?COPY\s+TO\s*:?\s*$")
 _PHONE_LABEL_ALT = build_alternation(PHONE_LABEL_TERMS, auto_escape=True, compact=True)
@@ -144,7 +146,7 @@ _SEC_HEADER_TERMS = build_alternation(
 )
 _RE_SEC_HEADER = re.compile(rf"(?i)\b(?:{_SEC_HEADER_TERMS})\b")
 _RE_FMR_HEADER = re.compile(
-    r"(?i)amendment\s+no\.?\s*\d+\s+(?P<issuer>.+?)\s+(?P<class>common\s+stock|ordinary\s+shares|preferred\s+stock|class\s+[a-z0-9]+)\s+cusip\s*#?\s*(?P<cusip>[0-9a-z]{8,9})"
+    r"(?i)amendment\s+no\.?\s*\d+\s+(?P<issuer>.+?)\s+(?P<class>common\s+stock|ordinary\s+shares|preferred\s+stock|class\s+[a-z0-9]+)\s+cusip\s*#?\s*(?P<cusip>\S+)"
 )
 _INLINE_ISSUER_DELIM_ALT = build_alternation(
     (r"_{2,}", r"\s{2,}", r"\bitem\b", r"\n", r"$"),
@@ -325,7 +327,7 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
             block = [
                 _clean_scalar(line)
                 for line in lines[prior_label + 1 : index]
-                if _clean_scalar(line) and not _TABLE_MARKUP_RE.fullmatch(line)
+                if _clean_scalar(line)
             ]
             if block:
                 value = block[0]
@@ -392,9 +394,7 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
             if not labels_below:
                 previous_index = index - 1
                 while previous_index >= 0 and (
-                    not lines[previous_index].strip()
-                    or set(lines[previous_index].strip()) <= {"-", "_", "=", " "}
-                    or _TABLE_MARKUP_RE.fullmatch(lines[previous_index].strip())
+                    not _clean_scalar(lines[previous_index])
                     or (
                         field == "issuer_name"
                         and _RE_AMENDMENT.search(lines[previous_index])
@@ -411,9 +411,7 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
             if not value:
                 for candidate_index in range(label_end, min(label_end + 3, len(lines))):
                     next_line = lines[candidate_index]
-                    if not next_line.strip() or _TABLE_MARKUP_RE.fullmatch(
-                        next_line.strip()
-                    ):
+                    if not _clean_scalar(next_line):
                         continue
                     if _label_sequence(lines, candidate_index) is not None:
                         break
@@ -487,7 +485,6 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
                     _clean_scalar(candidate)
                     for candidate in lines[prior_label + 1 : index]
                     if _clean_scalar(candidate)
-                    and not _TABLE_MARKUP_RE.fullmatch(candidate)
                 ]
                 attention = next(
                     (
@@ -593,8 +590,9 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
         m_fmr = _RE_FMR_HEADER.search(text)
         if m_fmr:
             values["issuer_name"].append(m_fmr.group("issuer").strip())
-            if not values["cusip"]:
-                values["cusip"].append(m_fmr.group("cusip").strip())
+            cand_cusip = m_fmr.group("cusip").strip()
+            if not values["cusip"] and is_valid_cusip(cand_cusip):
+                values["cusip"].append(cand_cusip)
             if not values["security_class"] and "class" in m_fmr.groupdict():
                 values["security_class"].append(m_fmr.group("class").strip())
     if not values["issuer_name"] and values["cusip"]:
@@ -711,7 +709,7 @@ def _address(value: str | None) -> AddressDetails | None:
 
 
 def _clean_scalar(value: str) -> str:
-    return _WHITESPACE_RE.sub(" ", value.strip(" \t\r\n_-=|:"))
+    return _WHITESPACE_RE.sub(" ", strip_markup_tags(value).strip(" \t\r\n_-=|:"))
 
 
 def _phone_match(value: str) -> re.Match[str] | None:

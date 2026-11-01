@@ -1,6 +1,7 @@
 from edgar_sec.engine.forms.common.dates import (
     external_reference_year,
     format_iso_date,
+    is_valid_schema_date_lexeme,
     normalize_iso_date,
     reported_year,
     resolve_reference_year,
@@ -34,3 +35,12 @@ def test_external_report_date_precedes_filing_date_as_year_anchor() -> None:
 def test_xml_date_format_requires_canonical_internal_iso() -> None:
     assert format_iso_date("2026-10-19", month_first=True) == "10-19-2026"
     assert format_iso_date("10/19/26", month_first=True) is None
+
+
+def test_schema_date_lexeme_accepts_hyphen_and_slash_delimiters() -> None:
+    assert is_valid_schema_date_lexeme("2024-09-30", "09/30/2024", month_first=True)
+    assert is_valid_schema_date_lexeme("2024-09-30", "09-30-2024", month_first=True)
+    assert is_valid_schema_date_lexeme("2026-05-15", "5/15/2026", month_first=True)
+    assert not is_valid_schema_date_lexeme("2024-09-30", "2024-09-30", month_first=True)
+    assert not is_valid_schema_date_lexeme("2024-09-30", "30/09/2024", month_first=True)
+    assert is_valid_schema_date_lexeme("2024-09-30", "2024-09-30", month_first=False)

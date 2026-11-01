@@ -171,6 +171,9 @@ Scanners are defined modularly in `edgar_sec/foundation/scanners/` and collected
   ordering, discovery mining, `facts.py` carriage). Equivalence is computed from
   atom coordinates; residuals are a vocabulary-gap report, never a decision
   input. The Atom constructor's own symbol-prefix normalization is exempt.
+- `form-vocabulary`: Bans private CUSIP regexes outside `engine/forms/common/entities.py`,
+  DOM table markup regexes outside legacy ASCII table unwrappers, and duplicate unit
+  suffix literals outside `engine/forms/common/numbers.py`.
 
 > [!NOTE]
 > `regex-alternations`, `legacy-shims`, `json-io`, and `date-patterns` exist to

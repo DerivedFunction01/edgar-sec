@@ -95,3 +95,27 @@ def test_shared_entity_regexes_and_morphology():
     assert sanitize_document_noise("|  John Doe  ____ |") == "John Doe"
     assert strip_footnote_markers("John Doe [1]") == "John Doe"
     assert strip_footnote_markers("Acme Corp.*") == "Acme Corp."
+
+
+def test_is_boilerplate_entity_name() -> None:
+    """Verify rejection of statutory boilerplate and validation of genuine names."""
+    from edgar_sec.engine.forms.common.entities import is_boilerplate_entity_name
+
+    assert is_boilerplate_entity_name(None) is False
+    assert is_boilerplate_entity_name("") is True
+    assert is_boilerplate_entity_name("---") is True
+    assert is_boilerplate_entity_name("NAME OF REPORTING PERSON") is True
+    assert (
+        is_boilerplate_entity_name(
+            "I.R.S. IDENTIFICATION NOS. OF ABOVE PERSONS (ENTITIES ONLY)"
+        )
+        is True
+    )
+    assert is_boilerplate_entity_name("SEC USE ONLY") is True
+    assert is_boilerplate_entity_name("INSTRUCTIONS") is True
+    assert is_boilerplate_entity_name("(a)") is True
+    assert is_boilerplate_entity_name("123-45-6789") is True
+    assert is_boilerplate_entity_name("P.O. Box 100") is True
+    assert is_boilerplate_entity_name("Stephen L. Way") is False
+    assert is_boilerplate_entity_name("Starboard Value R LP") is False
+    assert is_boilerplate_entity_name("Acme Holdings Inc.") is False

@@ -8,18 +8,15 @@ from edgar_sec.domain.forms.families.form144.models import (
     IssuerInformation,
     ReportingPerson,
 )
-from edgar_sec.domain.taxonomy.legal_forms import has_legal_form
 from edgar_sec.engine.forms.common.entities import (
-    FILLER_RUN_RE,
     IRS_RE,
     PHONE_NUMBER_RE,
-    SSN_REDACTION_MASK_RE,
     STATE_ZIP_RE,
+    is_boilerplate_entity_name,
     is_street_address_value,
     is_street_or_address_line,
 )
 from edgar_sec.engine.forms.common.statutory import (
-    is_pure_statutory_boilerplate,
     strip_form_prompt_prefix,
 )
 from edgar_sec.engine.forms.common.tables import (
@@ -47,110 +44,6 @@ _SELLER_LABELS = (
     "2 (a)",
     "2(a)",
 )
-_BOILERPLATE_NAMES = frozenset(
-    {
-        "instructions",
-        "street",
-        "city",
-        "state",
-        "zip code",
-        "sec use only",
-        "area code number",
-        "telephone",
-        "name of issuer",
-        "address of issuer",
-        "relationship to issuer",
-        "name of person for whose account the securities are to be sold",
-    }
-)
-_HEADER_WORDS = frozenset(
-    {
-        "address",
-        "account",
-        "area",
-        "city",
-        "code",
-        "instructions",
-        "issuer",
-        "location",
-        "name",
-        "number",
-        "of",
-        "only",
-        "person",
-        "sec",
-        "securities",
-        "sold",
-        "state",
-        "street",
-        "telephone",
-        "the",
-        "use",
-        "whose",
-        "work",
-        "zip",
-    }
-)
-
-
-def _is_header_token(token: str) -> bool:
-    return token in _HEADER_WORDS or (
-        len(token) >= 3 and any(word.startswith(token) for word in _HEADER_WORDS)
-    )
-
-
-_PHONE_EXACT_RE = re.compile(r"^\+?[\d\s\-.()]{7,}$")
-_INSTRUCTION_PHRASE_ALT = build_alternation(
-    (
-        "identification number",
-        "sec use only",
-        "file number",
-        "market maker who is",
-        "instructions",
-        "any of the foregoing",
-        "for whose account",
-    )
-)
-_INSTRUCTION_PHRASE_RE = re.compile(rf"(?:{_INSTRUCTION_PHRASE_ALT})", re.I)
-
-
-def _is_boilerplate_name(value: str | None) -> bool:
-    if value is None:
-        return False
-    if not any(c.isalnum() for c in value):
-        return True
-    cleaned = FILLER_RUN_RE.sub("", value).strip(" _-\t\r\n")
-    if (
-        len(cleaned) < 2
-        or SSN_REDACTION_MASK_RE.fullmatch(cleaned)
-        or _PHONE_EXACT_RE.fullmatch(cleaned)
-    ):
-        return True
-    lowered = cleaned.lower()
-    if (
-        lowered in _BOILERPLATE_NAMES
-        or lowered.startswith("(")
-        or lowered.startswith(("p.o. box", "po box", "p o box"))
-    ):
-        return True
-    if _INSTRUCTION_PHRASE_RE.search(lowered):
-        return True
-    if is_pure_statutory_boilerplate(lowered):
-        return True
-    if "rule 144" in lowered and cleaned[:1].islower():
-        return True
-    if sum(c.isdigit() for c in cleaned) >= 4 and not (
-        has_legal_form(lowered) or any(term in lowered for term in ("plan", "401"))
-    ):
-        return True
-    tokens = [token for token in _NON_ALNUM_TOKEN_RE.split(lowered) if token]
-    words = [token for token in tokens if token.isalpha()]
-    if not words or len(words) + sum(token.isdigit() for token in tokens) != len(
-        tokens
-    ):
-        return False
-    return all(_is_header_token(word) for word in words)
-
 
 _ISSUER_EXCLUDED = ("irs", "sec file", "relationship", "address", "telephone")
 _SELLER_EXCLUDED = ("irs", "relationship", "address", "issuer", "telephone")
@@ -332,7 +225,7 @@ def parse_cover_box_1_2(
 
     grid = section.resolved_grid
     issuer_name = extract_labeled_field(grid, _ISSUER_LABELS, excluded=_ISSUER_EXCLUDED)
-    if _is_boilerplate_name(issuer_name):
+    if is_boilerplate_entity_name(issuer_name):
         issuer_name = None
     if not issuer_name and grid.rows:
         for row in grid.rows[:3]:
@@ -363,7 +256,7 @@ def parse_cover_box_1_2(
                     cand
                     and len(cand) >= 3
                     and not any(char.isdigit() for char in cand)
-                    and not _is_boilerplate_name(cand)
+                    and not is_boilerplate_entity_name(cand)
                 ):
                     issuer_name = cand
                     break
@@ -373,7 +266,7 @@ def parse_cover_box_1_2(
     seller_name = extract_labeled_field(grid, _SELLER_LABELS, excluded=_SELLER_EXCLUDED)
     if seller_name:
         seller_name = strip_form_prompt_prefix(seller_name).strip(" \t\r\n:;,-|")
-    if _is_boilerplate_name(seller_name):
+    if is_boilerplate_entity_name(seller_name):
         seller_name = None
     if not seller_name:
         for row_idx, row in enumerate(grid.rows):
@@ -387,7 +280,7 @@ def parse_cover_box_1_2(
                                 sub = clean_field_candidate(part, _SELLER_EXCLUDED)
                                 if (
                                     sub
-                                    and not _is_boilerplate_name(sub)
+                                    and not is_boilerplate_entity_name(sub)
                                     and not any(c.isdigit() for c in sub)
                                     and not is_street_or_address_line(sub)
                                 ):
@@ -395,7 +288,7 @@ def parse_cover_box_1_2(
                                     break
                         elif (
                             cand
-                            and not _is_boilerplate_name(cand)
+                            and not is_boilerplate_entity_name(cand)
                             and not any(c.isdigit() for c in cand)
                         ):
                             seller_name = cand
@@ -510,7 +403,7 @@ def parse_cover_box_1_2(
                 matched_str = m.group(0)
                 if m.start() >= 3:
                     prefix = seller_name[: m.start()].rstrip(" ,-_|\t")
-                    if len(prefix) >= 2 and not _is_boilerplate_name(prefix):
+                    if len(prefix) >= 2 and not is_boilerplate_entity_name(prefix):
                         seller_name = prefix
                         if canonical not in relationships:
                             relationships.append(canonical)
@@ -521,7 +414,8 @@ def parse_cover_box_1_2(
                         relationships.append(canonical)
                     break
         if seller_name and (
-            _is_boilerplate_name(seller_name) or is_street_address_value(seller_name)
+            is_boilerplate_entity_name(seller_name)
+            or is_street_address_value(seller_name)
         ):
             seller_name = None
 

@@ -109,6 +109,11 @@ def test_integral_decimal_normalizer_collapses_integral_values() -> None:
 def test_policy_partials_strip_units_and_currency() -> None:
     assert normalize_integer_stripping_units("6,025 shares") == 6025
     assert normalize_integer_stripping_units("6,025") == 6025
+    assert (
+        normalize_integer_stripping_units("6,000,000 Class A Ordinary Shares")
+        == 6000000
+    )
+    assert normalize_integer_stripping_units("298,299 shares") == 298299
     assert normalize_integer_stripping_units("abc") is None
     assert normalize_decimal_stripping_currency("$276,487.25") == "276487.25"
     assert normalize_decimal_stripping_currency("(1,234.50)") == "-1234.50"

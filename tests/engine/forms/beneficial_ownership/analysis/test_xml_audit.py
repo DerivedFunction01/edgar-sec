@@ -366,3 +366,51 @@ def test_analysis_flags_boilerplate_in_non_cover_fields(tmp_path: Path) -> None:
         ("boilerplate_in_parsed_field", "issuerName"),
         ("boilerplate_in_parsed_field", "noticeContact"),
     }
+
+
+def test_analysis_accepts_slashed_dates_and_comment_content_boilerplate(
+    tmp_path: Path,
+) -> None:
+    xml = SAMPLE_XML.replace(
+        "<dateOfEvent>01-02-2024</dateOfEvent>",
+        "<dateOfEvent>01/02/2024</dateOfEvent>",
+    ).replace(
+        "<legalProceedings>N</legalProceedings>",
+        "<legalProceedings>N</legalProceedings>"
+        "<commentContent>Based on Securities and Exchange Commission filings.</commentContent>",
+    )
+    report = analyze_case(_write_case(tmp_path, xml), {"accession": "a"})
+
+    assert report is not None
+    assert report["anomalies"] == []
+
+
+def test_analysis_treats_numeric_cross_references_as_review_signals(
+    tmp_path: Path,
+) -> None:
+    xml = SAMPLE_XML.replace(
+        "<legalProceedings>N</legalProceedings>",
+        "<legalProceedings>N</legalProceedings>"
+        "<soleVotingPower>Please see the responses to Items 5 and 6 on the cover page.</soleVotingPower>",
+    )
+    report = analyze_case(_write_case(tmp_path, xml), {"accession": "a"})
+
+    assert report is not None
+    assert report["anomalies"] == []
+    assert any(
+        s["kind"] == "qualified_numeric_cover_value" and s["field"] == "soleVotingPower"
+        for s in report.get("review_signals", [])
+    )
+
+
+def test_analysis_accepts_names_with_middle_initials_and_corporate_suffixes(
+    tmp_path: Path,
+) -> None:
+    xml = SAMPLE_XML.replace(
+        "<reportingPersonName>Jane Doe</reportingPersonName>",
+        "<reportingPersonName>Starboard Value R LP</reportingPersonName>",
+    )
+    report = analyze_case(_write_case(tmp_path, xml), {"accession": "a"})
+
+    assert report is not None
+    assert report["anomalies"] == []

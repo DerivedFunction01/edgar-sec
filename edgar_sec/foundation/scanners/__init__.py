@@ -9,6 +9,7 @@ from .clean_exit import SCANNER as CLEAN_EXIT_SCANNER
 from .date_patterns import SCANNER as DATE_PATTERNS_SCANNER
 from .environment import SCANNER as ENV_SCANNER
 from .form_isolation import SCANNER as FORM_ISOLATION_SCANNER
+from .form_vocabulary import SCANNER as FORM_VOCABULARY_SCANNER
 from .json_io import SCANNER as JSON_IO_SCANNER
 from .layers import SCANNER as LAYERS_SCANNER
 from .legacy_shims import SCANNER as LEGACY_SHIMS_SCANNER
@@ -43,6 +44,7 @@ ALL_SCANNERS: tuple[Scanner, ...] = (
     STRING_LOOKUP_SCANNER,
     PROSE_LENGTH_SCANNER,
     FORM_ISOLATION_SCANNER,
+    FORM_VOCABULARY_SCANNER,
 )
 
 __all__ = [
@@ -52,6 +54,7 @@ __all__ = [
     "DATE_PATTERNS_SCANNER",
     "ENV_SCANNER",
     "FORM_ISOLATION_SCANNER",
+    "FORM_VOCABULARY_SCANNER",
     "JSON_IO_SCANNER",
     "LAYERS_SCANNER",
     "LEGACY_SHIMS_SCANNER",

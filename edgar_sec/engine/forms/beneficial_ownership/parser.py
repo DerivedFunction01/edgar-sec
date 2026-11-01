@@ -23,6 +23,7 @@ from edgar_sec.engine.document.page_markers.signatures import (
     find_signature_regions,
 )
 from edgar_sec.engine.forms.common.entities import is_valid_entity_name
+from edgar_sec.engine.forms.common.tables import strip_markup_tags
 from edgar_sec.engine.forms.common.signatures import (
     OFFICER_TITLE_RE,
     clean_signature_name,
@@ -583,7 +584,9 @@ def parse_beneficial_ownership_document(
                     None,
                 )
             if not item1_name and item1.text:
-                first_line = item1.text.splitlines()[0].strip(" \t-_=</TABLE>")
+                first_line = strip_markup_tags(item1.text.splitlines()[0]).strip(
+                    " \t-_="
+                )
                 if first_line and is_valid_entity_name(first_line):
                     item1_name = first_line
             if item1_name:

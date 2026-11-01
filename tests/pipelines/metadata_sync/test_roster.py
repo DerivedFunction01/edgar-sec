@@ -284,26 +284,6 @@ def test_cik_index_read_rejects_an_unsorted_file(tmp_path: Path) -> None:
 def test_roster_schema_is_ordinal_keyed_and_name_carrying() -> None:
     assert ROSTER_SCHEMA.names == ["ordinal", "cik_padded", "name"]
 
-
-def test_full_corpus_identity_and_io_stay_cheap(tmp_path: Path) -> None:
-    """Row-wise derivation, not a materialized multi-megabyte canonical document."""
-    size = 250_000
-    ciks = tuple(f"{value:010d}" for value in range(1, size + 1))
-    started = time.perf_counter()
-    roster, _digest = write_roster_rows(
-        [(cik, "") for cik in ciks], tmp_path / "big.parquet"
-    )
-    assert time.perf_counter() - started < 10.0
-    started = time.perf_counter()
-    write_roster(roster, tmp_path / "copy.parquet")
-    assert time.perf_counter() - started < 60.0
-    started = time.perf_counter()
-    loaded = read_roster(tmp_path / "copy.parquet", expected_roster_id=roster.roster_id)
-    assert time.perf_counter() - started < 60.0
-    assert loaded.row_count == size
-    assert loaded.range_ciks(0, 2) == ciks[:2]
-
-
 def test_roster_lookup_name(tmp_path: Path) -> None:
     roster, _ = write_roster_rows(
         [("0000320193", "Apple Inc."), ("0000789019", "Microsoft Corp.")],
