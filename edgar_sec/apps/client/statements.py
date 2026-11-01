@@ -9,6 +9,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from edgar_sec.apps.client.catalog import (
+    STATEMENT,
     CatalogEntry,
     build_catalog,
     catalog_by_category,
@@ -63,6 +64,23 @@ class XbrlStatements:
         kernel = self._kernel
         return filing_header(kernel.registrant_name, kernel.cik, kernel.accession)
 
+    def _wrap(self, graph: StatementGraph) -> StatementView:
+        """Wrap a composed graph, replacing an absent statement's shell.
+
+        Absence requires both signals: the catalog holds no statement
+        roles and composition found no root concept to serve.
+        """
+        if graph.root_qname == "" and not catalog_by_category(
+            self._catalog(), STATEMENT
+        ):
+            graph = StatementGraph(
+                statement_type=graph.statement_type,
+                root_qname="",
+                nodes={},
+                edges=(),
+            )
+        return StatementView(graph, header=self._header())
+
     def list_available(self) -> pd.DataFrame:
         """Catalog of this filing's presentation roles as a DataFrame."""
         return catalog_frame(self._catalog())
@@ -92,8 +110,7 @@ class XbrlStatements:
         year: int | str | None = None,
     ) -> StatementView:
         """Construct the algebraic Statement of Operations rollup view."""
-        graph = self._kernel.compose_income_statement(period, year)
-        return StatementView(graph, header=self._header())
+        return self._wrap(self._kernel.compose_income_statement(period, year))
 
     def balance_sheet(
         self,
@@ -101,8 +118,7 @@ class XbrlStatements:
         year: int | str | None = None,
     ) -> StatementView:
         """Construct the algebraic Balance Sheet rollup view."""
-        graph = self._kernel.compose_balance_sheet(period, year)
-        return StatementView(graph, header=self._header())
+        return self._wrap(self._kernel.compose_balance_sheet(period, year))
 
     def cash_flow_statement(
         self,
@@ -110,8 +126,7 @@ class XbrlStatements:
         year: int | str | None = None,
     ) -> StatementView:
         """Construct the algebraic Statement of Cash Flows rollup view."""
-        graph = self._kernel.compose_cash_flow(period, year)
-        return StatementView(graph, header=self._header())
+        return self._wrap(self._kernel.compose_cash_flow(period, year))
 
     def equity_rollforward(
         self,
@@ -131,7 +146,7 @@ class XbrlStatements:
             ("comprehensive_income", period, year),
             lambda: self._build_comprehensive(period, year),
         )
-        return StatementView(graph, header=self._header())
+        return self._wrap(graph)
 
     def _build_comprehensive(
         self, period: str | None, year: int | str | None

@@ -28,6 +28,7 @@ from edgar_sec.apps.client.rendering import (
     statement_to_dataframe,
 )
 from edgar_sec.engine.xbrl.solve.antichain import AntiChainOutcome
+from edgar_sec.engine.xbrl.solve.query import QueryStatus
 from edgar_sec.engine.xbrl.solve.rollforward_graphs import (
     CashRollforwardGraph,
     EquityComponentRollforward,
@@ -58,6 +59,21 @@ class StatementView:
     def root(self) -> StatementNode | None:
         """Return the root statement node."""
         return self.graph.root
+
+    @property
+    def status(self) -> QueryStatus:
+        """Query-vocabulary status: UNAVAILABLE when no root was composed."""
+        root = self.root
+        if root is None or root.concept_qname == "":
+            return QueryStatus.UNAVAILABLE
+        return QueryStatus.REPORTED
+
+    @property
+    def message(self) -> str:
+        """Absence explanation when UNAVAILABLE, else an empty string."""
+        if self.status is QueryStatus.UNAVAILABLE:
+            return "No statement of this type is reported in this filing."
+        return ""
 
     @property
     def nodes(self) -> dict[str, StatementNode]:
