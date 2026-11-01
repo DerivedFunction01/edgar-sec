@@ -14,7 +14,13 @@ from edgar_sec.engine.xbrl.solve.query import (
     QueryMode,
     QueryStatus,
 )
+from edgar_sec.apps.client.composition import CompositionResult
 from edgar_sec.engine.xbrl.solve.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.statement import (
+    StatementGraph,
+    StatementNode,
+    period_rank,
+)
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 
 _SUCCESS_STATUSES = frozenset(
@@ -32,6 +38,82 @@ _PRECEDENCE_RANK = {
 
 def duration_length_class(start: str, end: str) -> str:
     return normalize_time_coordinate("duration", None, start, end).length_class
+
+
+def fact_length_class(fact: XbrlFact) -> str | None:
+    """Length class of one fact's span; INSTANT for an instant fact."""
+    if fact.period_type == "instant":
+        return "INSTANT"
+    if fact.start_date and fact.end_date:
+        return duration_length_class(fact.start_date, fact.end_date)
+    return None
+
+
+def node_length_class(node: StatementNode, year: str | None = None) -> str | None:
+    """Length class of the fact a node serves, at a year or its latest.
+
+    The served fact is the node's best-ranked numeric fact of the year,
+    the same winner the graph builder picked for the node's value.
+    """
+    if year is None:
+        if node.value is None or not node.values:
+            return None
+        year = max(node.values)
+    best: tuple[tuple[int, int], XbrlFact] | None = None
+    for fact in node.facts:
+        if not isinstance(fact.value, (int, float)):
+            continue
+        if (fact.instant_date or fact.end_date or "")[:4] != year:
+            continue
+        rank = period_rank(fact)
+        if best is None or rank > best[0]:
+            best = (rank, fact)
+    return fact_length_class(best[1]) if best is not None else None
+
+
+def graph_span_class(graph: StatementGraph | None) -> str | None:
+    """Length class a statement graph's root serves at its latest year."""
+    if graph is None or graph.root is None:
+        return None
+    return node_length_class(graph.root)
+
+
+def chain_span_class(*attempts: tuple[float | None, str | None]) -> str | None:
+    """Served class of an `or` chain: first truthy, else the last served."""
+    last: str | None = None
+    for value, cls in attempts:
+        if value:
+            return cls
+        if value is not None:
+            last = cls
+    return last
+
+
+def composition_span_class(result: CompositionResult) -> str | None:
+    """Length class of a composed chain's shared operand period."""
+    for operand in result.operands:
+        key = operand.period_key
+        if not key:
+            continue
+        if key.startswith("duration:"):
+            _, start, end = key.split(":", 2)
+            return duration_length_class(start, end)
+        if key.startswith("instant:"):
+            return "INSTANT"
+    return None
+
+
+def statement_year_classes(graph: StatementGraph) -> dict[str, str]:
+    """Served length class per graph year, from the root node's winners."""
+    root = graph.root
+    if root is None:
+        return {}
+    classes: dict[str, str] = {}
+    for year in graph.years:
+        served = node_length_class(root, year)
+        if served is not None:
+            classes[year] = served
+    return classes
 
 
 def duration_span_key(period: tuple[str, str]) -> tuple[int, str, str]:

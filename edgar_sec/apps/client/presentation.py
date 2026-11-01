@@ -14,6 +14,7 @@ from typing import TYPE_CHECKING, Any
 from edgar_sec.apps.client.catalog import CatalogEntry
 from edgar_sec.apps.client.display import filing_header
 from edgar_sec.apps.client.facts import concept_display_name
+from edgar_sec.apps.client.fiscal import duration_length_class
 from edgar_sec.engine.xbrl.schema.models import PresentationArc, XbrlFact
 from edgar_sec.engine.xbrl.solve.statement import period_rank
 
@@ -267,8 +268,19 @@ def _is_abstract(kernel: FilingKernel, concept: str, facts: list[XbrlFact]) -> b
 
 
 def _period_key(fact: XbrlFact) -> str | None:
+    """Period column key; a non-annual duration names its span class.
+
+    Annual spans and instants keep the bare end/instant date, so a
+    quarter and a year-to-date span ending the same day stay distinct.
+    """
     if fact.period_type == "instant":
         return fact.instant_date
+    if fact.end_date is None:
+        return None
+    if fact.start_date:
+        cls = duration_length_class(fact.start_date, fact.end_date)
+        if cls != "ANNUAL":
+            return f"{fact.end_date} ({cls})"
     return fact.end_date
 
 

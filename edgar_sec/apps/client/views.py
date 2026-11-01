@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from edgar_sec.apps.client.fiscal import statement_year_classes
 from edgar_sec.apps.client.markdown import statement_to_markdown
 from edgar_sec.apps.client.rendering import (
     cash_rollforward_to_dataframe,
@@ -67,6 +68,11 @@ class StatementView:
     def years(self) -> tuple[str, ...]:
         """Return distinct reported fiscal years in the statement."""
         return self.graph.years
+
+    @property
+    def span_classes(self) -> dict[str, str]:
+        """Served length class per fiscal year of the statement's periods."""
+        return statement_year_classes(self.graph)
 
     def children(self, concept_qname: str) -> tuple[StatementNode, ...]:
         """Return immediate children nodes rolling into this concept."""

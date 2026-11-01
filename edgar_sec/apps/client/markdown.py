@@ -17,7 +17,10 @@ from edgar_sec.apps.client.display import (
 )
 from edgar_sec.apps.client.facts import member_display_name
 from edgar_sec.apps.client.presentation import PresentationView
-from edgar_sec.apps.client.rendering import ordered_statement_nodes
+from edgar_sec.apps.client.rendering import (
+    ordered_statement_nodes,
+    statement_year_headers,
+)
 from edgar_sec.engine.xbrl.normalize.decomposer import split_camel_case
 from edgar_sec.engine.xbrl.schema.models import qname_local
 from edgar_sec.engine.xbrl.solve.statement import StatementGraph
@@ -72,7 +75,10 @@ def statement_to_markdown(
             + [format_pct(node.yoy_pct)]
         )
     lines.extend(
-        _table(["Financial Concept"] + [f"FY {y}" for y in years] + ["YoY (%)"], rows)
+        _table(
+            ["Financial Concept"] + statement_year_headers(graph, years) + ["YoY (%)"],
+            rows,
+        )
     )
     return "\n".join(lines)
 

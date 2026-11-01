@@ -6,6 +6,12 @@ from collections.abc import Callable
 
 from edgar_sec.apps.client.comparison import DERIVED_MARGINS
 from edgar_sec.apps.client.composition import ChainTerms, CompositionResult
+from edgar_sec.apps.client.fiscal import (
+    chain_span_class,
+    composition_span_class,
+    graph_span_class,
+    node_length_class,
+)
 from edgar_sec.apps.client.kernel import FilingKernel
 from edgar_sec.apps.client.rollforwards import (
     build_fair_value_hierarchy,
@@ -43,6 +49,8 @@ _SERIES_ATTRIBUTES: dict[str, str] = {
     "capex": "capex_series",
 }
 _SCALAR_ONLY_METRICS = ("free_cash_flow", "uncommenced_leases")
+_FALLBACK_LENGTH_CLASSES = ("YTD_3Q", "YTD_2Q", "QUARTER")
+_FCF_CHAIN: ChainTerms = (("+", "cfo"), ("-", "capex"))
 
 
 class XbrlFinancials:
@@ -78,7 +86,34 @@ class XbrlFinancials:
         prefer_bare: bool = False,
         length_class: str = "ANNUAL",
     ) -> float | None:
-        series = self._series(
+        value, _cls = self._scalar_served(
+            target_head,
+            target_mods,
+            excluded_mods,
+            is_instant=is_instant,
+            year=year,
+            valence=valence,
+            is_monetary=is_monetary,
+            prefer_bare=prefer_bare,
+            length_class=length_class,
+        )
+        return value
+
+    def _scalar_served(
+        self,
+        target_head: str,
+        target_mods: set[str] | frozenset[str] = frozenset(),
+        excluded_mods: set[str] | frozenset[str] = frozenset(),
+        *,
+        is_instant: bool = False,
+        year: int | str | None = None,
+        valence: str | None = None,
+        is_monetary: bool = True,
+        prefer_bare: bool = False,
+        length_class: str = "ANNUAL",
+    ) -> tuple[float | None, str | None]:
+        """A scalar plus the length class of the span it was served from."""
+        series, cls = self._series_served(
             target_head,
             target_mods,
             excluded_mods,
@@ -89,11 +124,11 @@ class XbrlFinancials:
             length_class=length_class,
         )
         if year:
-            return series.get(str(year))
+            return series.get(str(year)), cls if str(year) in series else None
         if not series:
-            return None
+            return None, None
         sorted_years = sorted(series.keys())
-        return series[sorted_years[-1]]
+        return series[sorted_years[-1]], cls
 
     def _series(
         self,
@@ -107,31 +142,73 @@ class XbrlFinancials:
         prefer_bare: bool = False,
         length_class: str = "ANNUAL",
     ) -> dict[str, float]:
-        key = (
-            "series",
+        series, _cls = self._series_served(
             target_head,
-            frozenset(target_mods),
-            frozenset(excluded_mods),
-            is_instant,
-            valence,
-            is_monetary,
-            prefer_bare,
-            length_class,
+            target_mods,
+            excluded_mods,
+            is_instant=is_instant,
+            valence=valence,
+            is_monetary=is_monetary,
+            prefer_bare=prefer_bare,
+            length_class=length_class,
         )
-        computed = self._kernel.series(
-            key,
-            lambda: self._compute_series(
+        return series
+
+    def _series_served(
+        self,
+        target_head: str,
+        target_mods: set[str] | frozenset[str] = frozenset(),
+        excluded_mods: set[str] | frozenset[str] = frozenset(),
+        *,
+        is_instant: bool = False,
+        valence: str | None = None,
+        is_monetary: bool = True,
+        prefer_bare: bool = False,
+        length_class: str = "ANNUAL",
+    ) -> tuple[dict[str, float], str | None]:
+        """A series plus the length class it was served from.
+
+        An ANNUAL request the filing carries nothing for falls back to
+        the classes actually filed, latest YTD first, then quarter.
+        """
+
+        def attempt(cls: str) -> dict[str, float]:
+            key = (
+                "series",
                 target_head,
-                target_mods,
-                excluded_mods,
-                is_instant=is_instant,
-                valence=valence,
-                is_monetary=is_monetary,
-                prefer_bare=prefer_bare,
-                length_class=length_class,
-            ),
-        )
-        return dict(computed)
+                frozenset(target_mods),
+                frozenset(excluded_mods),
+                is_instant,
+                valence,
+                is_monetary,
+                prefer_bare,
+                cls,
+            )
+            computed = self._kernel.series(
+                key,
+                lambda: self._compute_series(
+                    target_head,
+                    target_mods,
+                    excluded_mods,
+                    is_instant=is_instant,
+                    valence=valence,
+                    is_monetary=is_monetary,
+                    prefer_bare=prefer_bare,
+                    length_class=cls,
+                ),
+            )
+            return dict(computed)
+
+        series = attempt(length_class)
+        if series:
+            return series, "INSTANT" if is_instant else length_class
+        if is_instant or length_class != "ANNUAL":
+            return {}, None
+        for fallback in _FALLBACK_LENGTH_CLASSES:
+            series = attempt(fallback)
+            if series:
+                return series, fallback
+        return {}, None
 
     def _compute_series(
         self,
@@ -280,11 +357,31 @@ class XbrlFinancials:
         self, qname: str, length_class: str = "ANNUAL"
     ) -> dict[str, float]:
         """One concept's values by year, longest span then finest decimals."""
-        computed = self._kernel.series(
-            ("concept_series", qname, length_class),
-            lambda: self._compute_concept_series(qname, length_class),
-        )
-        return dict(computed)
+        series, _cls = self._concept_series_served(qname, length_class)
+        return series
+
+    def _concept_series_served(
+        self, qname: str, length_class: str = "ANNUAL"
+    ) -> tuple[dict[str, float], str | None]:
+        """A concept series plus its class, with the _series fallback rule."""
+
+        def attempt(cls: str) -> dict[str, float]:
+            computed = self._kernel.series(
+                ("concept_series", qname, cls),
+                lambda: self._compute_concept_series(qname, cls),
+            )
+            return dict(computed)
+
+        series = attempt(length_class)
+        if series:
+            return series, length_class
+        if length_class != "ANNUAL":
+            return {}, None
+        for fallback in _FALLBACK_LENGTH_CLASSES:
+            series = attempt(fallback)
+            if series:
+                return series, fallback
+        return {}, None
 
     def _compute_concept_series(
         self, qname: str, length_class: str
@@ -367,10 +464,15 @@ class XbrlFinancials:
 
     @property
     def operating_cash_flow(self) -> float | None:
+        return self._operating_cash_flow_served()[0]
+
+    def _operating_cash_flow_served(self) -> tuple[float | None, str | None]:
+        """Operating cash flow plus the length class it was served from."""
         cf = self._kernel.compose_cash_flow()
         if cf.cfo is not None:
-            return cf.cfo
-        return self._scalar("H_CASH", {"M_OPERATING"})
+            root = cf.operating.root if cf.operating is not None else None
+            return cf.cfo, node_length_class(root) if root is not None else None
+        return self._scalar_served("H_CASH", {"M_OPERATING"})
 
     @property
     def operating_cash_flow_series(self) -> dict[str, float]:
@@ -413,18 +515,35 @@ class XbrlFinancials:
     @property
     def free_cash_flow(self) -> float | None:
         """Free cash flow as the composed chain cfo - capex (Step 7 preset)."""
+        return self._free_cash_flow_served()[0]
+
+    def _free_cash_flow_served(self) -> tuple[float | None, str | None]:
+        """Free cash flow plus the length class it was served from.
+
+        The composed chain answers first; when it cannot, the served
+        operands answer only if both share one non-annual span class.
+        """
         if self._composition_resolver is not None:
             series = self.operating_cash_flow_series
             fiscal_year = int(max(series)) if series else None
-            result = self._composition_resolver(
-                (
-                    ("+", "cfo"),
-                    ("-", "capex"),
-                ),
-                fiscal_year,
-            )
-            return result.value
-        return self._scalar("H_CASH", {"M_FREE_CASH_FLOW"})
+            result = self._composition_resolver(_FCF_CHAIN, fiscal_year)
+            if result.value is not None:
+                return result.value, composition_span_class(result)
+        else:
+            value, cls = self._scalar_served("H_CASH", {"M_FREE_CASH_FLOW"})
+            if value is not None:
+                return value, cls
+        return self._span_consistent_difference()
+
+    def _span_consistent_difference(self) -> tuple[float | None, str | None]:
+        """cfo - capex when both operands serve one non-annual span class."""
+        cfo, cfo_class = self._operating_cash_flow_served()
+        capex, capex_class = self._scalar_served("H_CASH", {"M_PPE_CAPEX"})
+        if cfo is None or capex is None:
+            return None, None
+        if capex_class in (None, "ANNUAL") or cfo_class != capex_class:
+            return None, None
+        return cfo - abs(capex), capex_class
 
     @property
     def uncommenced_leases(self) -> float | None:
@@ -450,6 +569,85 @@ class XbrlFinancials:
             return series[years[period_offset]]
         if metric in _SCALAR_ONLY_METRICS:
             return getattr(self, metric) if period_offset == 0 else None
+        known = sorted(_SERIES_ATTRIBUTES) + sorted(_SCALAR_ONLY_METRICS)
+        raise ValueError(f"unknown metric {metric!r}; expected one of {known}")
+
+    def span_class(self, metric: str) -> str | None:
+        """Length class of the span a metric's latest value was served from.
+
+        The metric's series is served under the same selection, so the
+        class names scalar and series alike; None when unserved.
+        """
+        if metric == "revenue":
+            inc = self._kernel.compose_income_statement()
+            graph = inc.gross_profit_graph
+            if graph is not None and graph.root is not None:
+                for child in graph.children(graph.root.concept_qname):
+                    if child.atom.head == "H_REVENUE" and child.value is not None:
+                        return node_length_class(child)
+            return self._scalar_served("H_REVENUE")[1]
+        if metric == "gross_profit":
+            inc = self._kernel.compose_income_statement()
+            if inc.gross_profit is not None:
+                return graph_span_class(inc.gross_profit_graph)
+            return chain_span_class(
+                self._scalar_served("H_INCOME", {"M_GROSS"}),
+                self._scalar_served("H_INCOME", {"M_GROSS_MARGIN"}),
+                self._scalar_served("H_INCOME", valence="V_GROSS"),
+            )
+        if metric == "operating_income":
+            inc = self._kernel.compose_income_statement()
+            if inc.operating_income is not None:
+                return graph_span_class(inc.operating_income_graph)
+            return self._scalar_served("H_INCOME", {"M_OPERATING"})[1]
+        if metric == "net_income":
+            inc = self._kernel.compose_income_statement()
+            if inc.net_income is not None and inc.root is not None:
+                return node_length_class(inc.root)
+            return chain_span_class(
+                self._scalar_served(
+                    "H_INCOME",
+                    {"M_NET_BOTTOMLINE"},
+                    {"M_NONCONTROLLING_INTEREST", "M_COMMON", "V_BASIC", "V_DILUTED"},
+                ),
+                self._scalar_served("H_INCOME", {"V_NET"}),
+            )
+        if metric == "total_assets":
+            bs = self._kernel.compose_balance_sheet()
+            if bs.total_assets is not None:
+                return graph_span_class(bs.assets_graph)
+            return self._scalar_served("H_ASSET", is_instant=True, prefer_bare=True)[1]
+        if metric == "total_liabilities":
+            bs = self._kernel.compose_balance_sheet()
+            if bs.total_liabilities is not None:
+                return graph_span_class(bs.liabilities_graph)
+            return self._scalar_served(
+                "H_LIABILITY", is_instant=True, prefer_bare=True
+            )[1]
+        if metric == "total_equity":
+            bs = self._kernel.compose_balance_sheet()
+            if bs.total_equity is not None:
+                return graph_span_class(bs.equity_graph)
+            return chain_span_class(
+                self._scalar_served("H_EQUITY", is_instant=True),
+                self._scalar_served("H_LIABILITY", {"M_EQUITY_TOTAL"}, is_instant=True),
+            )
+        if metric == "operating_cash_flow":
+            return self._operating_cash_flow_served()[1]
+        if metric == "rpo":
+            return chain_span_class(
+                self._scalar_served("H_REVENUE", {"M_RPO_BACKLOG"}, is_instant=True),
+                self._scalar_served("H_COMMITMENT", {"M_RPO_BACKLOG"}, is_instant=True),
+            )
+        if metric == "capex":
+            return self._scalar_served("H_CASH", {"M_PPE_CAPEX"})[1]
+        if metric == "free_cash_flow":
+            return self._free_cash_flow_served()[1]
+        if metric == "uncommenced_leases":
+            return chain_span_class(
+                self._scalar_served("H_COMMITMENT", {"M_UNCOMMENCED"}, is_instant=True),
+                self._scalar_served("H_LIABILITY", {"M_UNCOMMENCED"}, is_instant=True),
+            )
         known = sorted(_SERIES_ATTRIBUTES) + sorted(_SCALAR_ONLY_METRICS)
         raise ValueError(f"unknown metric {metric!r}; expected one of {known}")
 

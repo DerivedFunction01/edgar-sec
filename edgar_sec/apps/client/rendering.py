@@ -15,6 +15,7 @@ from edgar_sec.apps.client.display import (
     wrap_label,
 )
 from edgar_sec.apps.client.facts import member_display_name
+from edgar_sec.apps.client.fiscal import statement_year_classes
 from edgar_sec.apps.client.presentation import PresentationView
 from edgar_sec.engine.xbrl.solve.rollforward_graphs import (
     CashRollforwardGraph,
@@ -57,6 +58,23 @@ def ordered_statement_nodes(
     return ordered
 
 
+def statement_year_headers(graph: StatementGraph, years: list[str]) -> list[str]:
+    """Year column headers, naming the span class when it is not annual.
+
+    A year served from a non-annual span reads "FY <year> (<class>)";
+    annual and instant years keep the bare "FY <year>" form.
+    """
+    classes = statement_year_classes(graph)
+    headers: list[str] = []
+    for year in years:
+        cls = classes.get(year)
+        if cls is not None and cls not in ("ANNUAL", "INSTANT"):
+            headers.append(f"FY {year} ({cls})")
+        else:
+            headers.append(f"FY {year}")
+    return headers
+
+
 def render_statement_table(
     graph: StatementGraph,
     view: str = "standard",
@@ -77,7 +95,7 @@ def render_statement_table(
     )
 
     col_widths = [42] + [18] * len(years) + [12]
-    headers = ["Financial Concept"] + [f"FY {y}" for y in years] + ["YoY (%)"]
+    headers = ["Financial Concept"] + statement_year_headers(graph, years) + ["YoY (%)"]
     sep = "=" * (sum(col_widths) + len(col_widths) * 2)
     sub_sep = "-" * (sum(col_widths) + len(col_widths) * 2)
 

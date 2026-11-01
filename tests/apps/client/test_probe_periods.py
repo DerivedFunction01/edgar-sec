@@ -17,6 +17,8 @@ _FACADES: dict[str, Xbrl] = {}
 # Specimen values are the filings' undimensioned facts in facts.parquet
 # (Step 16 corroborates them against rendered filing text).
 _AAPL = "0000320193-26-000020"
+_AAPL_Q1 = "0000320193-26-000006"
+_AAPL_Q2 = "0000320193-26-000013"
 _CAT = "0000018230-26-000046"
 _JPM = "0001628280-26-054343"
 _MSFT = "0001193125-26-436133"
@@ -108,10 +110,16 @@ def test_probe_msft_quarter_only_answers_quarter_class() -> None:
 
 
 def test_probe_financials_series_are_length_class_keyed_by_span() -> None:
-    """Verify AAPL series separate QTD from YTD and serve no annual series."""
+    """Verify AAPL series serve the filed YTD_3Q class, QTD on request."""
     fin = _facade(_AAPL).financials
-    assert fin.revenue_series == {}
-    assert fin.net_income_series == {}
+    assert fin.revenue_series == {
+        "2026": 364_357_000_000.0,
+        "2025": 313_695_000_000.0,
+    }
+    assert fin.net_income_series == {
+        "2026": 101_464_000_000.0,
+        "2025": 84_544_000_000.0,
+    }
     assert fin._series("H_REVENUE", length_class="QUARTER") == {
         "2026": 109_417_000_000.0,
         "2025": 94_036_000_000.0,
@@ -120,3 +128,70 @@ def test_probe_financials_series_are_length_class_keyed_by_span() -> None:
         "2026": 364_357_000_000.0,
         "2025": 313_695_000_000.0,
     }
+    served, served_class = fin._series_served("H_REVENUE")
+    assert served == fin.revenue_series
+    assert served_class == "YTD_3Q"
+
+
+@pytest.mark.parametrize(
+    ("accession", "cls", "revenue", "net_income", "capex"),
+    [
+        (_AAPL_Q1, "QUARTER", 143_756_000_000.0, 42_097_000_000.0, 2_373_000_000.0),
+        (_AAPL_Q2, "YTD_2Q", 254_940_000_000.0, 71_675_000_000.0, 4_344_000_000.0),
+        (_AAPL, "YTD_3Q", 364_357_000_000.0, 101_464_000_000.0, 6_799_000_000.0),
+    ],
+)
+def test_probe_span_class_names_each_aapl_ladder_rung(
+    accession: str, cls: str, revenue: float, net_income: float, capex: float
+) -> None:
+    """Verify each AAPL rung serves its filed span class, named as served."""
+    fin = _facade(accession).financials
+    assert fin.revenue == revenue
+    assert fin.span_class("revenue") == cls
+    assert fin.net_income == net_income
+    assert fin.span_class("net_income") == cls
+    assert fin.capex == capex
+    assert fin.span_class("capex") == cls
+
+
+def test_probe_span_class_capex_and_fcf_resolve_on_msft_quarter() -> None:
+    """Verify MSFT's quarter-span capex resolves and FCF inherits the class."""
+    fin = _facade(_MSFT).financials
+    assert fin.capex == 39_367_000_000.0
+    assert fin.span_class("capex") == "QUARTER"
+    assert fin.free_cash_flow == 18_633_000_000.0
+    assert fin.span_class("free_cash_flow") == "QUARTER"
+    assert fin.span_class("rpo") == "INSTANT"
+
+
+def test_probe_span_class_fcf_resolves_on_aapl_q3_ytd() -> None:
+    """Verify AAPL Q3 FCF composes on the shared YTD_3Q span, named as such."""
+    fin = _facade(_AAPL).financials
+    assert fin.free_cash_flow == 110_197_000_000.0
+    assert fin.span_class("free_cash_flow") == "YTD_3Q"
+    assert fin.span_class("operating_cash_flow") == "YTD_3Q"
+
+
+def test_probe_span_class_jpm_capex_is_absent_not_mislabelled() -> None:
+    """Verify JPM files no PPE-capex concept: capex stays honestly None."""
+    fin = _facade(_JPM).financials
+    assert fin.revenue == 107_183_000_000.0
+    assert fin.span_class("revenue") == "YTD_2Q"
+    assert fin.capex is None
+    assert fin.span_class("capex") is None
+    assert fin.free_cash_flow is None
+    assert fin.span_class("free_cash_flow") is None
+
+
+def test_probe_presentation_periods_split_quarter_from_ytd() -> None:
+    """Verify one end date carries both a QUARTER and a YTD_3Q column."""
+    role = (
+        "http://www.apple.com/role/CONDENSEDCONSOLIDATEDSTATEMENTSOFOPERATIONSUnaudited"
+    )
+    view = _facade(_AAPL).statements.view(role)
+    assert "2026-06-27 (QUARTER)" in view.periods
+    assert "2026-06-27 (YTD_3Q)" in view.periods
+    revenue = view.row("us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax")
+    assert revenue is not None
+    assert revenue.values["2026-06-27 (QUARTER)"] == 109_417_000_000
+    assert revenue.values["2026-06-27 (YTD_3Q)"] == 364_357_000_000

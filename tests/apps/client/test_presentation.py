@@ -67,6 +67,20 @@ def test_msft_income_standard_rows_carry_filed_face_values() -> None:
     assert net_income.values["2024-06-30"] == 88_136_000_000
 
 
+def test_msft_10k_span_classes_read_annual_with_bare_periods() -> None:
+    """A 10-K names ANNUAL spans; its rendered headers stay bare."""
+    facade = _facade(_MSFT)
+    assert facade.financials.span_class("revenue") == "ANNUAL"
+    view = facade.statements.income_statement()
+    assert view.span_classes == {
+        "2022": "ANNUAL",
+        "2023": "ANNUAL",
+        "2024": "ANNUAL",
+    }
+    assert "FY 2024 (ANNUAL)" not in view.render_table()
+    assert "FY 2024 (ANNUAL)" not in view.to_markdown()
+
+
 def test_msft_income_face_totals_equal_the_calc_view() -> None:
     """Every face value matches the algebraic view's node values."""
     statements = _facade(_MSFT).statements
