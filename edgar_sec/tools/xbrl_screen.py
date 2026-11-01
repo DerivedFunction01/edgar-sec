@@ -15,12 +15,20 @@ from edgar_sec.apps.client.facts import facts_from_arrow_table
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle
-from edgar_sec.engine.xbrl.storage.storage import calculation_arcs_from_arrow_table
+from edgar_sec.engine.xbrl.storage.storage import (
+    calculation_arcs_from_arrow_table,
+    declarations_from_arrow_table,
+    read_declarations_parquet,
+)
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.infra.storage.atomic import atomic_write_json
 
 _RPO = "us-gaap:RevenueRemainingPerformanceObligation"
-_TERMS = {"rpo": _RPO, "revenue": "revenue"}
+_TERMS = {
+    "rpo": _RPO,
+    "revenue": "revenue",
+    "customer_revenue": "revenue from contract with customer",
+}
 _SPECIMEN_FIRMS = ("HON", "ORCL")
 
 
@@ -58,11 +66,17 @@ def _facade(bundle_dir: Path, taxonomy: DomainTaxonomy) -> Xbrl:
     arcs = calculation_arcs_from_arrow_table(
         pq.read_table(bundle_dir / "calculation_arcs.parquet")
     )
+    decl_path = bundle_dir / "declarations.parquet"
+    declarations = (
+        declarations_from_arrow_table(read_declarations_parquet(decl_path))
+        if decl_path.exists()
+        else ()
+    )
     bundle = FilingXbrl(
         accession=AccessionNumber.from_any(facts[0].accession),
         cik=Cik(0),
         facts=facts,
-        linkbases=LinkbaseBundle(calculation_arcs=arcs),
+        linkbases=LinkbaseBundle(calculation_arcs=arcs, declarations=declarations),
     )
     return Xbrl(bundle, taxonomy)
 
