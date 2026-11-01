@@ -13,6 +13,7 @@ from edgar_sec.domain.forms.families.form144.models import (
     TableISecurityItem,
     TableIISecuritySoldItem,
 )
+from edgar_sec.domain.forms.families.form144.taxonomy import FORM144_XML_SPEC
 from edgar_sec.domain.taxonomy.jurisdictions import EDGAR_JURISDICTION_CODES
 from edgar_sec.engine.forms.form144.securities import (
     parse_table_i_rows,
@@ -38,6 +39,7 @@ from edgar_sec.engine.forms.common.extraction import (
     extract_value,
     format_field_value,
 )
+from edgar_sec.engine.forms.common.native_xml import passthrough_sec_xml
 from edgar_sec.engine.forms.common.row_extraction import normalize_row_record
 from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
 from edgar_sec.engine.forms.form144.row_specs import (
@@ -52,11 +54,6 @@ from edgar_sec.engine.forms.form144.sections import (
 
 if TYPE_CHECKING:
     from edgar_sec.engine.document_processing.registry import HandlerContext
-
-_XML_DECL_RE = re.compile(r"^\s*<\?xml", re.IGNORECASE)
-_EDGAR_SUBMISSION_RE = re.compile(
-    r"<\s*(?:edgarSubmission|noticeOfProposedSaleOfSecurities)", re.IGNORECASE
-)
 
 
 def _add_text_elem(
@@ -451,13 +448,8 @@ def render_form144_to_xml(
     raw_bytes: bytes, context: HandlerContext | None = None
 ) -> bytes | HandlerOutput:
     """Render Form 144 document bytes to canonical XML."""
-    prefix = raw_bytes[:1000].decode("utf-8", errors="ignore")
-    if _XML_DECL_RE.search(prefix) or _EDGAR_SUBMISSION_RE.search(prefix):
-        try:
-            ET.fromstring(raw_bytes)
-            return raw_bytes
-        except ET.ParseError:
-            pass
+    if passthrough := passthrough_sec_xml(raw_bytes, FORM144_XML_SPEC):
+        return passthrough
 
     text = raw_bytes.decode("utf-8", errors="ignore")
     report_date = getattr(context, "report_date", None) if context is not None else None

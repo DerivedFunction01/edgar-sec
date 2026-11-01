@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from edgar_sec.domain.forms.common.models import ItemDefinition
+from edgar_sec.domain.forms.common.native_xml import SecXmlSchemaSpec
 
 SCHEDULE_13D_SUBMISSION_TYPES = frozenset({"SCHEDULE 13D", "SCHEDULE 13D/A"})
 SCHEDULE_13G_SUBMISSION_TYPES = frozenset({"SCHEDULE 13G", "SCHEDULE 13G/A"})
@@ -28,6 +29,10 @@ BENEFICIAL_OWNERSHIP_XML_NAMESPACES = frozenset(
 )
 BENEFICIAL_OWNERSHIP_ROOT_TAGS = frozenset(
     f"{{{ns}}}edgarSubmission" for ns in BENEFICIAL_OWNERSHIP_XML_NAMESPACES
+)
+BENEFICIAL_OWNERSHIP_XML_SPEC = SecXmlSchemaSpec(
+    namespaces=BENEFICIAL_OWNERSHIP_XML_NAMESPACES,
+    root_tags=frozenset({"edgarSubmission"}),
 )
 
 SCHEDULE_13D_ITEMS: tuple[ItemDefinition, ...] = (
@@ -120,6 +125,7 @@ SCHEDULE_13G_ITEMS: tuple[ItemDefinition, ...] = (
 __all__ = [
     "BENEFICIAL_OWNERSHIP_ROOT_TAGS",
     "BENEFICIAL_OWNERSHIP_XML_NAMESPACES",
+    "BENEFICIAL_OWNERSHIP_XML_SPEC",
     "COMMON_XML_NAMESPACE",
     "SCHEDULE_13D_FUND_TYPES",
     "SCHEDULE_13D_ITEMS",

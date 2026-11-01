@@ -48,7 +48,8 @@ SAMPLE_HTML = """
 
 
 def test_native_xml_pass_through():
-    xml_bytes = render_form144_to_xml(SAMPLE_XML)
+    result = render_form144_to_xml(SAMPLE_XML)
+    xml_bytes = result.content if isinstance(result, HandlerOutput) else result
     root = ET.fromstring(xml_bytes)
     assert "edgarSubmission" in root.tag
     submission_type = root.find(".//{*}submissionType")

@@ -67,7 +67,8 @@ def test_render_ownership_to_xml_passthrough_for_xml_input() -> None:
         b'<?xml version="1.0"?><ownershipDocument><test>true</test></ownershipDocument>'
     )
     result = render_ownership_to_xml(raw_xml)
-    assert result == raw_xml
+    assert isinstance(result, HandlerOutput)
+    assert result.content == raw_xml
 
 
 def test_renderer_moves_unparsed_html_to_sidecar() -> None:

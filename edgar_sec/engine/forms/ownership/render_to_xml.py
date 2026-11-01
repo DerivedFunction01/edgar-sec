@@ -8,7 +8,10 @@ import xml.etree.ElementTree as ET
 
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.forms.families.ownership.models import OwnershipMetadata
-from edgar_sec.domain.forms.families.ownership.taxonomy import OWNERSHIP_STATE_CODES
+from edgar_sec.domain.forms.families.ownership.taxonomy import (
+    OWNERSHIP_STATE_CODES,
+    OWNERSHIP_XML_SPEC,
+)
 from edgar_sec.domain.taxonomy.jurisdictions import EDGAR_JURISDICTION_CODES
 from edgar_sec.engine.document_processing.outputs import HandlerOutput, HandlerSidecar
 from edgar_sec.engine.forms.common.dates import (
@@ -26,6 +29,7 @@ from edgar_sec.engine.forms.common.extraction import (
     extract_value,
     normalize_value,
 )
+from edgar_sec.engine.forms.common.native_xml import passthrough_sec_xml
 from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
 from edgar_sec.engine.forms.common.row_extraction import RowSpec, normalize_row_record
 from edgar_sec.engine.forms.ownership.field_specs import OWNERSHIP_METADATA_FIELDS
@@ -377,9 +381,8 @@ def render_ownership_to_xml(
     context: HandlerContext | None = None,
 ) -> bytes | HandlerOutput:
     """Transform ownership filing text into SEC ownership XML."""
-    stripped = raw_bytes.strip()
-    if stripped.startswith(b"<?xml") or stripped.startswith(b"<ownershipDocument"):
-        return raw_bytes
+    if passthrough := passthrough_sec_xml(raw_bytes, OWNERSHIP_XML_SPEC):
+        return passthrough
 
     text = raw_bytes.decode("utf-8", errors="replace")
     sections = partition_ownership_tables(text)
