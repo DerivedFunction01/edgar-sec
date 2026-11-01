@@ -610,12 +610,11 @@ def test_aapl_loose_revenue_candidate_set_excludes_textblocks() -> None:
         load_seed_calculation_arcs("aapl_2024_10k"),
     )
 
-    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.status == QueryStatus.REPORTED
     assert result.candidate_qnames == (
-        "us-gaap:ContractWithCustomerLiabilityRevenueRecognized",
         "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
     )
-    assert result.value is None
+    assert result.value == 391035000000.0
     assert result.tier == "near"
     assert not any("TextBlock" in qname for qname in result.candidate_qnames)
 
@@ -634,12 +633,11 @@ def test_msft_loose_revenue_candidate_set_excludes_textblock() -> None:
         load_seed_calculation_arcs("msft_2024_10k"),
     )
 
-    assert result.status == QueryStatus.AMBIGUOUS
+    assert result.status == QueryStatus.REPORTED
     assert result.candidate_qnames == (
-        "msft:ContractWithCustomerLiabilityRevenueRecognizedIncludingAdditions",
-        "msft:ContractWithCustomerLiabilityRevenueDeferred",
         "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
     )
+    assert result.value == 245122000000.0
 
 
 def test_bac_loose_revenue_candidate_set_excludes_textblock() -> None:

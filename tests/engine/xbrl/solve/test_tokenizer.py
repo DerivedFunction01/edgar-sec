@@ -126,17 +126,17 @@ def test_tokenizer_equivalents_order_jpm_pool_on_total_count() -> None:
 
 
 def test_tokenizer_equivalents_distance_dominates_residual_counts() -> None:
-    """MSFT pool: the rollforward stays first, dist 2 under the Deferred claim."""
+    """Sales pool: the dist-2 sales line stays first over the dist-3 headline."""
     tokenizer = _tokenizer()
     ranked = tokenizer.equivalents(
         Atom("H_REVENUE"),
         (
             "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
-            "msft:ContractWithCustomerLiabilityRevenueDeferred",
+            "us-gaap:SalesRevenueNet",
         ),
     )
     assert [item.qname for item in ranked] == [
-        "msft:ContractWithCustomerLiabilityRevenueDeferred",
+        "us-gaap:SalesRevenueNet",
         "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
     ]
     assert ranked[0].modifier_distance == 2

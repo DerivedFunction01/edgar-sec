@@ -1381,9 +1381,14 @@ def test_facade_view_specimens_decompose_to_gate_coordinates() -> None:
             (),
         ),
         "us-gaap:ContractWithCustomerLiabilityRevenueRecognized": (
-            "H_REVENUE",
+            "H_LIABILITY",
             {"M_CONTRACT_CUSTOMER"},
             ("Recognized",),
+        ),
+        "us-gaap:ContractWithCustomerLiability": (
+            "H_LIABILITY",
+            {"M_CONTRACT_CUSTOMER"},
+            (),
         ),
         "us-gaap:DeferredTaxAssetsOperatingLossCarryforwards": (
             "H_INCOME",

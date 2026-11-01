@@ -59,6 +59,44 @@ def test_camel_case_and_spaced_concept_terms_resolve_equivalently() -> None:
     assert camel.target_atom == spaced.target_atom
 
 
+def test_specific_customer_revenue_query_skips_the_contract_liability_burn_down() -> (
+    None
+):
+    """F5: the specific query answers the filed customer-revenue total;
+    the burn-down concept answers only its own exact-qname query.
+    """
+    facts = load_seed_facts("aapl_2024_10k")
+    engine = _query_engine()
+    scope = FactScope(
+        accession="0000320193-24-000123",
+        start_date="2023-10-01",
+        end_date="2024-09-28",
+        unit="USD",
+    )
+
+    specific = engine.execute(
+        FinancialQuery("revenue from contract with customer", scope), facts
+    )
+    assert specific.status == QueryStatus.REPORTED
+    assert specific.candidate_qnames == (
+        "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+    )
+    assert specific.value == 391_035_000_000.0
+
+    exact = engine.execute(
+        FinancialQuery("us-gaap:ContractWithCustomerLiabilityRevenueRecognized", scope),
+        facts,
+    )
+    assert exact.status == QueryStatus.REPORTED
+    assert exact.value == 7_700_000_000.0
+
+    bare = engine.execute(FinancialQuery("revenue", scope), facts)
+    assert (
+        "us-gaap:ContractWithCustomerLiabilityRevenueRecognized"
+        not in bare.candidate_qnames
+    )
+
+
 def test_unscoped_repeated_concept_is_ambiguous_not_iteration_ordered() -> None:
     facts = load_seed_facts("msft_2024_10k")
     engine = _query_engine()
@@ -1042,9 +1080,9 @@ def test_near_fallback_tie_is_ambiguous_with_equivalents() -> None:
 
 
 def test_near_fallback_divergent_tier_never_resolves_on_distance() -> None:
-    """MSFT shape: dist-1 rollforward vs dist-3 headline, divergent values."""
+    """Dist-2 sales line vs dist-3 headline, divergent values: no resolution."""
     facts = (
-        _duration_fact("msft:ContractWithCustomerLiabilityRevenueDeferred", 148_701.0),
+        _duration_fact("us-gaap:SalesRevenueNet", 148_701.0),
         _duration_fact(
             "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
             245_122.0,
@@ -1055,7 +1093,7 @@ def test_near_fallback_divergent_tier_never_resolves_on_distance() -> None:
     assert result.value is None
     assert result.reported_fact is None
     assert result.candidate_qnames == (
-        "msft:ContractWithCustomerLiabilityRevenueDeferred",
+        "us-gaap:SalesRevenueNet",
         "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
     )
     assert result.tier == "near"
@@ -1063,18 +1101,16 @@ def test_near_fallback_divergent_tier_never_resolves_on_distance() -> None:
 
 
 def test_near_fallback_agreeing_tier_resolves_to_the_best_ranked() -> None:
-    """Same MSFT shape with agreeing values: the best-ranked resolves."""
+    """Same shape with agreeing values: the best-ranked resolves."""
     facts = (
-        _duration_fact("msft:ContractWithCustomerLiabilityRevenueDeferred", 100.0),
+        _duration_fact("us-gaap:SalesRevenueNet", 100.0),
         _duration_fact(
             "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", 100.0
         ),
     )
     result = _query_engine().execute(FinancialQuery("Revenues", _DURATION_SCOPE), facts)
     assert result.status == QueryStatus.REPORTED
-    assert result.candidate_qnames == (
-        "msft:ContractWithCustomerLiabilityRevenueDeferred",
-    )
+    assert result.candidate_qnames == ("us-gaap:SalesRevenueNet",)
     assert result.value == 100.0
     assert result.tier == "near"
     assert len(result.equivalents) == 2

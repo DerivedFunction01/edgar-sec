@@ -689,8 +689,8 @@ def test_deferred_rollforward_twin_separates_from_recognized_twin() -> None:
     assert classify_pair(deferred, recognized) == NEAR
 
 
-def test_deferred_rollforward_ranks_behind_the_asc606_headline() -> None:
-    """Claiming Deferred moves the rollforward to distance 2, headline 3."""
+def test_deferred_rollforward_leaves_the_revenue_ranking() -> None:
+    """F5: the liability-family rollforward is absent from Revenues ranking."""
     target = _atom("us-gaap:Revenues")
     candidates = (
         (
@@ -704,9 +704,8 @@ def test_deferred_rollforward_ranks_behind_the_asc606_headline() -> None:
     )
     ranked = rank_equivalents("us-gaap:Revenues", target, candidates)
     by_qname = {item.qname: item for item in ranked}
-    rollforward = by_qname["msft:ContractWithCustomerLiabilityRevenueDeferred"]
+    assert "msft:ContractWithCustomerLiabilityRevenueDeferred" not in by_qname
     headline = by_qname["us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"]
-    assert rollforward.modifier_distance == 2 and rollforward.rule == "subsumption"
     assert headline.modifier_distance == 3
 
 

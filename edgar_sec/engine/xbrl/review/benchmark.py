@@ -599,24 +599,6 @@ PAIR_SET: tuple[PairSpec, ...] = (
     ),
     PairSpec(
         "us-gaap:Revenues",
-        "us-gaap:ContractWithCustomerLiabilityRevenueRecognized",
-        NEAR,
-        "Followup evidence S4 AAPL: 7,700M deferred-revenue recognition "
-        "line (text L1246) against the 391,035M headline (text L667)",
-        rule="single_modifier_difference",
-        direction=SPECIALIZATION,
-    ),
-    PairSpec(
-        "us-gaap:Revenues",
-        "msft:ContractWithCustomerLiabilityRevenueDeferred",
-        NEAR,
-        "Followup evidence S4 MSFT: 148,701M deferral rollforward (text "
-        "L3072) against the 245,122M headline (text L1580)",
-        rule="subsumption",
-        direction=SPECIALIZATION,
-    ),
-    PairSpec(
-        "us-gaap:Revenues",
         "us-gaap:RevenueRemainingPerformanceObligation",
         NEAR,
         "Followup evidence S4 V: 4,100M performance-obligation backlog "
