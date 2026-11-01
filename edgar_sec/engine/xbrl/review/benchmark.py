@@ -450,8 +450,13 @@ class CensusScore:
 
 
 CENSUS_EXPECTATIONS: dict[str, CensusExpectation] = {
-    "probe": CensusExpectation(n=168, correct=92, honest=76, surfaced_conflicts=23),
-    "span": CensusExpectation(n=189, correct=127, honest=62, surfaced_conflicts=33),
+    # F5 moved probe 92/76/23 -> 94/74/25 and span 127/62/33 -> 130/59/36:
+    # AAPL/MSFT/AMZN revenue REPORTED_ONLY graduated honest -> correct as
+    # the burn-down left the pool; the VERIFY rows surface the latent
+    # derivation-direction conflict (facade == faithful), adjudicated in
+    # .artifacts/run-logs/2026-11-01-f5-fix-audit.md.
+    "probe": CensusExpectation(n=168, correct=94, honest=74, surfaced_conflicts=25),
+    "span": CensusExpectation(n=189, correct=130, honest=59, surfaced_conflicts=36),
     "span-supplement": CensusExpectation(
         n=5, correct=0, honest=5, surfaced_conflicts=0
     ),
