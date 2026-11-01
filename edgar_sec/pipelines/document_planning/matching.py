@@ -308,7 +308,7 @@ def inventory_rows(
                     status="not_filed" if target.optional else "required_missing",
                     status_reason="no_matching_entry",
                     source_origin="inventory_index",
-                    availability="index_html",
+                    availability=first.vehicle,
                 )
             )
             continue
@@ -336,7 +336,7 @@ def inventory_rows(
                     status=status,
                     status_reason=reason,
                     source_origin="inventory_index",
-                    availability="index_html",
+                    availability=first.vehicle,
                 )
             )
     return rows

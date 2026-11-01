@@ -20,6 +20,12 @@ from edgar_sec.infra.storage.dag.traversal import LineageChain
 from edgar_sec.infra.storage.duckdb import connect, sql_identifier
 
 _BATCH_SIZE = 512
+_ENUMERATION_RELATION = "accession_enumeration"
+_VEHICLE_LABELS = {
+    "index": "index_html",
+    "summary": "filing_summary",
+    "package": "xbrl_package",
+}
 
 
 class InventoryPathsContract(Protocol):
@@ -48,6 +54,7 @@ class InventoryEvidenceRow:
     accession_row: Mapping[str, Any] | None
     entry_row: Mapping[str, Any] | None
     catalog_report_date: str | None = None
+    vehicle: str = "index_html"
 
 
 @dataclass(frozen=True, slots=True)
@@ -56,9 +63,10 @@ class InventoryEvidenceSource:
     snapshot_id: str
     snapshot_digest: str
     lineage: LineageChain
-    _specs: tuple[RelationSpec, RelationSpec]
+    _specs: tuple[RelationSpec, ...]
     _accession_columns: tuple[str, ...]
     _entry_columns: tuple[str, ...]
+    _enumeration_spec: RelationSpec | None = None
 
     def stream(
         self,
@@ -121,12 +129,21 @@ class InventoryEvidenceSource:
             f"e.{sql_identifier(name)} AS {sql_identifier('_e_' + name)}"
             for name in self._entry_columns
         )
+        if self._enumeration_spec is not None:
+            enumeration_join = (
+                "LEFT JOIN active_accession_enumeration en USING (accession) "
+            )
+            vehicle_select = "en.vehicle"
+        else:
+            enumeration_join = ""
+            vehicle_select = "NULL"
         query = (
             "SELECT s.accession, s.form, s.filing_date, s.report_date, "
-            f"{accession_select}, {entry_select} "
+            f"{accession_select}, {entry_select}, {vehicle_select} "
             "FROM requested_scope s "
             "LEFT JOIN active_accessions a USING (accession) "
             "LEFT JOIN active_entries e USING (accession) "
+            f"{enumeration_join}"
             "ORDER BY s.accession, e.row_ordinal, e.table_kind, e.entry_id"
         )
         cursor = con.execute(query)
@@ -164,6 +181,7 @@ class InventoryEvidenceSource:
                     accession_row=accession_row,
                     entry_row=entry_row,
                     catalog_report_date=report_date,
+                    vehicle=_vehicle_label(values[-1]),
                 )
 
 
@@ -194,22 +212,33 @@ def _part_path(root: Path, owner_id: str, descriptor: PartDescriptor) -> Path:
     return path
 
 
+def _vehicle_label(raw_vehicle: object) -> str:
+    if raw_vehicle is None:
+        return "index_html"
+    label = _VEHICLE_LABELS.get(str(raw_vehicle))
+    if label is None:
+        raise InventoryEvidenceError(f"unknown enumeration vehicle: {raw_vehicle!r}")
+    return label
+
+
 def _evidence_specs(
     relation_specs: Sequence[RelationSpec],
-) -> tuple[RelationSpec, RelationSpec]:
+) -> tuple[RelationSpec, RelationSpec, RelationSpec | None]:
     by_name = {spec.name: spec for spec in relation_specs}
     try:
-        return by_name["accessions"], by_name["entries"]
+        accessions = by_name["accessions"]
+        entries = by_name["entries"]
     except KeyError as exc:
         raise InventoryEvidenceError(
             "inventory relation contracts are incomplete"
         ) from exc
+    return accessions, entries, by_name.get(_ENUMERATION_RELATION)
 
 
 def _validate_snapshot(
     paths: InventoryPathsContract,
     snapshot_id: str,
-    evidence_specs: tuple[RelationSpec, RelationSpec],
+    evidence_specs: tuple[RelationSpec, RelationSpec, RelationSpec | None],
 ) -> tuple[LineageChain, str]:
     catalog = DAGCatalog(paths.snapshots_root, read_only=True)
     if not catalog.has_snapshot(snapshot_id):
@@ -242,7 +271,9 @@ def _validate_snapshot(
 
     digest = hashlib.sha256()
     digest.update(canonical_json({"snapshot_id": snapshot_id}).encode("utf-8"))
-    relation_schemas = {spec.name: spec.schema for spec in evidence_specs}
+    relation_schemas = {
+        spec.name: spec.schema for spec in evidence_specs if spec is not None
+    }
     for node in lineage.nodes:
         catalog_digest = catalog.get_manifest_sha256(node.snapshot_id)
         calculated_digest = sha256_text(canonical_json(node.to_dict()))
@@ -303,16 +334,22 @@ def open_inventory_evidence(
     """Pass ``InventoryPaths`` and ``INVENTORY_RELATIONS`` to pin a named snapshot."""
     if not snapshot_id or snapshot_id == "current":
         raise InventoryEvidenceError("inventory evidence requires a named snapshot ID")
-    evidence_specs = _evidence_specs(relation_specs)
-    lineage, snapshot_digest = _validate_snapshot(paths, snapshot_id, evidence_specs)
+    accessions_spec, entries_spec, enumeration_spec = _evidence_specs(relation_specs)
+    lineage, snapshot_digest = _validate_snapshot(
+        paths, snapshot_id, (accessions_spec, entries_spec, enumeration_spec)
+    )
+    view_specs = (accessions_spec, entries_spec)
+    if enumeration_spec is not None:
+        view_specs = (*view_specs, enumeration_spec)
     return InventoryEvidenceSource(
         paths=paths,
         snapshot_id=snapshot_id,
         snapshot_digest=snapshot_digest,
         lineage=lineage,
-        _specs=evidence_specs,
-        _accession_columns=tuple(evidence_specs[0].schema.names),
-        _entry_columns=tuple(evidence_specs[1].schema.names),
+        _specs=view_specs,
+        _accession_columns=tuple(accessions_spec.schema.names),
+        _entry_columns=tuple(entries_spec.schema.names),
+        _enumeration_spec=enumeration_spec,
     )
 
 

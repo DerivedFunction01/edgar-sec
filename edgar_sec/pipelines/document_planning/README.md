@@ -19,6 +19,11 @@ into an immutable accession-document target plan for later acquisition.
   `unresolved / accession_not_indexed`.
 - Published manifests pin both sources, profile and matcher versions, coverage,
   status totals, and every output part. Reuse requires byte-identical plan content.
+- **Enumeration provenance**: Inventory-backed target rows carry the vehicle that
+  enumerated their accession in `availability_evidence`: `index_html`,
+  `filing_summary`, or `xbrl_package`. The label is read from the pinned snapshot's
+  optional `accession_enumeration` relation; a snapshot or accession without that
+  relation reads as `index_html`. `source_origin` does not change with the vehicle.
 - New bundle version 2 identities include the bundle schema and matcher versions,
   and each target part declares and verifies its byte size. Discovery accepts only
   bundle version 2 with matcher v2.

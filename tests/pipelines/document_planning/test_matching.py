@@ -399,7 +399,10 @@ def test_catalog_stub_link_is_not_selected() -> None:
 
 
 def _inventory_row(
-    entry: dict[str, object], *, bundle_url: str | None = None
+    entry: dict[str, object],
+    *,
+    bundle_url: str | None = None,
+    vehicle: str = "index_html",
 ) -> InventoryEvidenceRow:
     return InventoryEvidenceRow(
         accession=_ACCESSION,
@@ -413,6 +416,7 @@ def _inventory_row(
             "index_url": _INDEX_URL,
         },
         entry_row=entry,
+        vehicle=vehicle,
     )
 
 
@@ -812,3 +816,59 @@ def test_inventory_locator_cik_can_differ_from_index_and_accession_prefix() -> N
     )
 
     assert candidate.target_url == target_url
+
+
+def _data_file_entry(document_type: str, filename: str) -> dict[str, object]:
+    return {
+        "entry_id": f"entry-{filename}",
+        "table_kind": "data_file",
+        "document_type": document_type,
+        "filename": filename,
+        "archive_url": f"{_ARCHIVE_ROOT}/{filename}",
+        "sequence": None,
+        "byte_size": 100,
+    }
+
+
+@pytest.mark.parametrize("vehicle", ["index_html", "filing_summary", "xbrl_package"])
+def test_matched_data_file_carries_the_enumeration_vehicle(vehicle: str) -> None:
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(_data_file_entry("EX-101.INS", "inst.xml"), vehicle=vehicle)],
+        (ProfileTarget("data_file", "EX-101.INS", False, "data_file:instance"),),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["source_origin"] == "inventory_index"
+    assert rows[0]["availability_evidence"] == vehicle
+
+
+def test_missing_data_file_carries_the_enumeration_vehicle() -> None:
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(_placeholder_entry(), vehicle="filing_summary")],
+        (ProfileTarget("data_file", "EX-101.INS", False, "data_file:instance"),),
+    )
+
+    assert rows[0]["status"] == "required_missing"
+    assert rows[0]["availability_evidence"] == "filing_summary"
+
+
+def test_synthesized_extracted_instance_matches_and_carries_vehicle() -> None:
+    entry = _data_file_entry("XML", "inst_htm.xml")
+    entry["description"] = "EXTRACTED XBRL INSTANCE DOCUMENT"
+    rows = inventory_rows(
+        "plan-1",
+        [_inventory_row(entry, vehicle="xbrl_package")],
+        (
+            ProfileTarget(
+                "data_file",
+                "extracted_xbrl_instance",
+                False,
+                "data_file:extracted_xbrl_instance",
+            ),
+        ),
+    )
+
+    assert rows[0]["status"] == "matched"
+    assert rows[0]["availability_evidence"] == "xbrl_package"

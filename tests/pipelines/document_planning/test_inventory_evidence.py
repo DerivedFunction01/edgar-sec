@@ -11,6 +11,7 @@ from edgar_sec.infra.storage.dag.manifest import DAGNodeManifest, PartDescriptor
 from edgar_sec.pipelines.document_inventory.paths import InventoryPaths
 from edgar_sec.pipelines.document_inventory.schemas import (
     INVENTORY_ACCESSIONS_SCHEMA,
+    INVENTORY_ENUMERATION_SCHEMA,
     INVENTORY_RELATIONS,
 )
 from edgar_sec.pipelines.document_planning.inventory_evidence import (
@@ -182,3 +183,186 @@ def test_scope_stream_must_be_unique_and_sorted(tmp_path: Path) -> None:
 
     with pytest.raises(InventoryEvidenceError, match="unique and sorted"):
         list(source.stream(scope))
+
+
+def _write_snapshot_with_enumeration(
+    root: Path, vehicles: dict[str, str]
+) -> tuple[InventoryPaths, Path]:
+    paths = InventoryPaths(root)
+    snapshot_id = "inventory-1"
+    snapshot_root = paths.snapshot_root(snapshot_id)
+    accessions_path = snapshot_root / "accessions" / "part-00000.parquet"
+    entries_path = snapshot_root / "entries" / "part-00000.parquet"
+    enumeration_path = snapshot_root / "accession_enumeration" / "part-00000.parquet"
+    for part_path in (accessions_path, entries_path, enumeration_path):
+        part_path.parent.mkdir(parents=True)
+    accessions = [
+        {
+            "accession": accession,
+            "filing_cik": accession[:10],
+            "form": "10-K",
+            "filing_date": "2024-01-15",
+            "report_date": "2023-12-31",
+            "bundle_url": f"https://www.sec.gov/Archives/edgar/data/320193/{accession.replace('-', '')}/{accession}.txt",
+            "bundle_size": 120,
+            "index_url": "https://www.sec.gov/index.html",
+            "index_sha256": "a" * 64,
+            "first_indexed_by": "run-1",
+        }
+        for accession in _ACCESSIONS[:2]
+    ]
+    pq.write_table(
+        pa.Table.from_pylist(accessions, schema=INVENTORY_ACCESSIONS_SCHEMA),
+        accessions_path,
+    )
+    pq.write_table(
+        pa.Table.from_pylist(
+            [
+                {
+                    "entry_id": "entry-1",
+                    "accession": _ACCESSIONS[0],
+                    "table_kind": "document_format",
+                    "row_ordinal": 0,
+                    "sequence": 1,
+                    "document_type": "10-K",
+                    "document_label": "Annual report",
+                    "description": "Annual report",
+                    "filename": "annual.htm",
+                    "href": "annual.htm",
+                    "archive_url": "https://www.sec.gov/annual.htm",
+                    "byte_size": 500,
+                }
+            ],
+            schema=ENTRY_SCHEMA,
+        ),
+        entries_path,
+    )
+    ordered = sorted(vehicles)
+    pq.write_table(
+        pa.Table.from_pylist(
+            [
+                {
+                    "accession": accession,
+                    "vehicle": vehicles[accession],
+                    "source_url": "https://www.sec.gov/vehicle",
+                    "payload_sha256": "b" * 64,
+                }
+                for accession in ordered
+            ],
+            schema=INVENTORY_ENUMERATION_SCHEMA,
+        ),
+        enumeration_path,
+    )
+    catalog = DAGCatalog(paths.snapshots_root)
+    catalog.record_node(
+        DAGNodeManifest(
+            snapshot_id=snapshot_id,
+            kind="checkpoint",
+            parents=(),
+            checkpoint_anchor_id=snapshot_id,
+            lineage_depth=0,
+            created_at="2026-01-01T00:00:00Z",
+            relations={
+                "accessions": (
+                    PartDescriptor(
+                        "accessions/part-00000.parquet",
+                        file_sha256(accessions_path),
+                        2,
+                        accessions_path.stat().st_size,
+                        _ACCESSIONS[0],
+                        _ACCESSIONS[1],
+                    ),
+                ),
+                "entries": (
+                    PartDescriptor(
+                        "entries/part-00000.parquet",
+                        file_sha256(entries_path),
+                        1,
+                        entries_path.stat().st_size,
+                        _ACCESSIONS[0],
+                        _ACCESSIONS[0],
+                    ),
+                ),
+                "accession_enumeration": (
+                    PartDescriptor(
+                        "accession_enumeration/part-00000.parquet",
+                        file_sha256(enumeration_path),
+                        len(ordered),
+                        enumeration_path.stat().st_size,
+                        ordered[0],
+                        ordered[-1],
+                    ),
+                ),
+            },
+            logical_fingerprint="inventory-fingerprint",
+            schema_versions={
+                "accessions": "1",
+                "entries": "1",
+                "accession_enumeration": "1",
+            },
+        )
+    )
+    catalog.write_pointer("main", snapshot_id)
+    return paths, enumeration_path
+
+
+def test_enumeration_relation_labels_each_accession(tmp_path: Path) -> None:
+    paths, _ = _write_snapshot_with_enumeration(
+        tmp_path, {_ACCESSIONS[0]: "summary", _ACCESSIONS[1]: "package"}
+    )
+    source = open_inventory_evidence(paths, "inventory-1", INVENTORY_RELATIONS)
+
+    evidence = list(source.stream(_scope_rows(), batch_size=1))
+
+    assert [(row.accession, row.vehicle) for row in evidence] == [
+        (_ACCESSIONS[0], "filing_summary"),
+        (_ACCESSIONS[1], "xbrl_package"),
+        (_ACCESSIONS[2], "index_html"),
+    ]
+
+
+def test_accession_missing_from_enumeration_defaults_to_index(tmp_path: Path) -> None:
+    paths, _ = _write_snapshot_with_enumeration(tmp_path, {_ACCESSIONS[0]: "summary"})
+    source = open_inventory_evidence(paths, "inventory-1", INVENTORY_RELATIONS)
+
+    evidence = list(source.stream(_scope_rows(), batch_size=1))
+
+    assert [row.vehicle for row in evidence] == [
+        "filing_summary",
+        "index_html",
+        "index_html",
+    ]
+
+
+def test_snapshot_without_the_relation_reads_as_index_enumerated(
+    tmp_path: Path,
+) -> None:
+    paths, _ = _write_snapshot(tmp_path)
+    source = open_inventory_evidence(paths, "inventory-1", INVENTORY_RELATIONS)
+
+    evidence = list(source.stream(_scope_rows(), batch_size=1))
+
+    assert [row.vehicle for row in evidence] == ["index_html"] * 3
+
+
+def test_enumeration_part_digest_is_verified_before_streaming(
+    tmp_path: Path,
+) -> None:
+    paths, enumeration_path = _write_snapshot_with_enumeration(
+        tmp_path, {_ACCESSIONS[0]: "summary"}
+    )
+    with enumeration_path.open("ab") as stream:
+        stream.write(b"corrupt")
+
+    with pytest.raises(InventoryEvidenceError, match="part validation failed"):
+        open_inventory_evidence(paths, "inventory-1", INVENTORY_RELATIONS)
+
+
+def test_unknown_enumeration_vehicle_is_refused(tmp_path: Path) -> None:
+    paths, _ = _write_snapshot_with_enumeration(
+        tmp_path, {_ACCESSIONS[0]: "carrier_pigeon"}
+    )
+    source = open_inventory_evidence(paths, "inventory-1", INVENTORY_RELATIONS)
+
+    with pytest.raises(InventoryEvidenceError, match="unknown enumeration vehicle"):
+        list(source.stream(_scope_rows(), batch_size=1))
