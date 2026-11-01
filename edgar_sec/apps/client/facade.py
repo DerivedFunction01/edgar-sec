@@ -35,7 +35,7 @@ if TYPE_CHECKING:
 
 _MEBIBYTE = 1024 * 1024
 # Mean retained bytes per live facade, from the facade memory profile.
-_RETAINED_BYTES_PER_FACADE = int(8.9 * _MEBIBYTE)
+_RETAINED_BYTES_PER_FACADE = int(6.9 * _MEBIBYTE)
 
 
 def derive_facade_capacity(resources: RuntimeResourceProfile | None = None) -> int:

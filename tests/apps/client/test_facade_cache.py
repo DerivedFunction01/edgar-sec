@@ -39,7 +39,7 @@ def _profile(worker_memory_mib: int) -> RuntimeResourceProfile:
 
 def test_capacity_derives_from_the_worker_memory_share() -> None:
     """Verify capacity is the worker share divided by per-facade retained bytes."""
-    assert derive_facade_capacity(_profile(512)) == 57
+    assert derive_facade_capacity(_profile(512)) == 74
     assert derive_facade_capacity(_profile(1024)) > derive_facade_capacity(
         _profile(512)
     )
