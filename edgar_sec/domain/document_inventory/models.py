@@ -19,12 +19,17 @@ __all__ = [
     "AccessionInventory",
     "AccessionSource",
     "CohortObservation",
+    "EnumeratedDocuments",
+    "EnumerationFailure",
+    "EnumerationInput",
+    "EnumerationOutcome",
     "InventoryCohort",
     "InventoryEntry",
     "IndexPageInput",
     "ParserDiagnostic",
     "ParserDiagnostics",
     "ParsedIndexPage",
+    "UnrecognizedEnumeration",
     "UnrecognizedIndexPage",
     "IndexParseFailure",
     "IndexParseOutcome",
@@ -47,6 +52,10 @@ class CohortObservation:
     form: str
     filing_date: date
     report_date: date | None
+    is_xbrl: bool = False
+    is_inline_xbrl: bool = False
+    primary_document: str | None = None
+    archive_url: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -73,10 +82,19 @@ class AccessionSource:
 
 @dataclass(frozen=True, slots=True)
 class IndexWorkItem:
-    """One unit of physical work: observe one index page for one accession."""
+    """One unit of physical work: observe one accession by its routed vehicle.
+
+    ``vehicle`` is ``summary`` for catalog-flagged XBRL filings and ``index``
+    otherwise; the routing fields carry the catalog facts enumeration needs.
+    """
 
     accession: AccessionNumber
     index_url: str
+    vehicle: Literal["index", "summary"] = "index"
+    archive_cik: str | None = None
+    primary_document: str | None = None
+    is_inline_xbrl: bool = False
+    form: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -134,6 +152,8 @@ class ParserDiagnostic:
         "invalid_size",
         "unsafe_href",
         "malformed_html",
+        "malformed_xml",
+        "malformed_package",
         "unsupported_encoding",
     ]
     row_key: tuple[Literal["document_format", "data_file"], int] | None
@@ -190,6 +210,69 @@ class IndexParseFailure:
 
 
 IndexParseOutcome = ParsedIndexPage | UnrecognizedIndexPage | IndexParseFailure
+
+
+@dataclass(frozen=True, slots=True)
+class EnumerationInput:
+    """One fetched enumeration vehicle: identity, catalog facts, exact bytes.
+
+    The catalog facts are inputs because the vehicles do not all carry them;
+    the primary entry and inline extracted instance are synthesized from them.
+    """
+
+    accession: AccessionNumber
+    source_url: str
+    response_bytes: bytes
+    archive_cik: str
+    form: str
+    primary_document: str
+    is_inline_xbrl: bool
+
+
+@dataclass(frozen=True, slots=True)
+class EnumeratedDocuments:
+    """A recognized vehicle listing synthesized into inventory entries.
+
+    ``bundle_url`` is constructed, not observed: it is a candidate like the
+    index parser's constructed package row, never proof of existence.
+    """
+
+    accession: AccessionNumber
+    source_url: str
+    vehicle: Literal["summary", "package"]
+    page_sha256: str
+    entries: tuple[InventoryEntry, ...]
+    bundle_url: str | None
+    diagnostics: ParserDiagnostics
+
+
+@dataclass(frozen=True, slots=True)
+class UnrecognizedEnumeration:
+    """The summary parsed but carries no InputFiles section.
+
+    This is an intentional refusal state, distinct from an enumerated listing
+    with zero entries.
+    """
+
+    accession: AccessionNumber
+    source_url: str
+    vehicle: Literal["summary", "package"]
+    page_sha256: str
+    diagnostics: ParserDiagnostics
+
+
+@dataclass(frozen=True, slots=True)
+class EnumerationFailure:
+    """The vehicle payload could not be decoded or read structurally."""
+
+    accession: AccessionNumber
+    source_url: str
+    vehicle: Literal["summary", "package"]
+    page_sha256: str
+    diagnostic: ParserDiagnostic
+
+
+EnumerationOutcome = EnumeratedDocuments | UnrecognizedEnumeration | EnumerationFailure
 
 
 def inventory_entry_id(

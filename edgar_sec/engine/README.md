@@ -27,6 +27,7 @@ own the domain vocabulary or schemas it consumes (that is `edgar_sec/domain`).
 - **company_family/**: name normalization, universe-scale family assignment, and bounded cohort sampling
 - **submissions/**: submission unrolling, profiling, building
 - **index_pages/**: pure SEC filing index-page HTML parser
+- **filing_summary/**: pure SEC FilingSummary and XBRL-package enumerator
 - **xbrl/**: taxonomy linkbase discovery, classification, and Parquet storage
 
 Each package's README carries its deliberate gaps.
@@ -39,7 +40,7 @@ Each package's README carries its deliberate gaps.
   gate failure, not a lint warning. Within the layer, sibling sub-packages may import each
   freely — `forms/` imports from `document/`, `reflow/`, and `tables/`.
 - **Purity, with named exceptions.** The transformation packages (`document/`, `tables/`,
-  `reflow/`, `forms/`, `submissions/`, `index_pages/`) do not fetch, do not write artifacts, and do
+  `reflow/`, `forms/`, `submissions/`, `index_pages/`, `filing_summary/`) do not fetch, do not write artifacts, and do
   not read ambient configuration. Two sub-packages are deliberate exceptions, and both
   go through `infra/storage` rather than owning a write path of their own —
   `selection/features.py` materialises a feature snapshot and `selection/policy.py`
