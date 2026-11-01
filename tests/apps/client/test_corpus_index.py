@@ -7,7 +7,6 @@ from pathlib import Path
 import pytest
 
 from edgar_sec.apps.client.corpus_index import (
-    index_bundle,
     index_bundles,
     index_facade,
     rows_from_records,
@@ -34,7 +33,7 @@ def _identity(folder: str) -> tuple[str, str]:
     return cik, accession
 
 
-def test_index_bundle_rows_match_facade_records(taxonomy: DomainTaxonomy) -> None:
+def test_index_bundles_rows_match_facade_records(taxonomy: DomainTaxonomy) -> None:
     """Every bundle row equals the live facade's record projection."""
     index = CorpusIndex()
     for folder in _FOLDERS[:2]:
@@ -43,12 +42,14 @@ def test_index_bundle_rows_match_facade_records(taxonomy: DomainTaxonomy) -> Non
         expected = rows_from_records(
             cik, accession, Xbrl.from_bundle(bundle, taxonomy).facts.records
         )
-        assert index_bundle(index, bundle, taxonomy, cik=cik) == len(expected)
+        result = index_bundles(index, [(bundle, cik)], workers=1)
+        assert result.failures == ()
+        assert result.rows_written == len(expected)
         assert index.rows_for_filing(cik, accession) == expected
     index.close()
 
 
-def test_index_facade_matches_index_bundle(taxonomy: DomainTaxonomy) -> None:
+def test_index_facade_matches_index_bundles(taxonomy: DomainTaxonomy) -> None:
     """Indexing a built facade writes the same rows as indexing its bundle."""
     folder = _FOLDERS[0]
     cik, accession = _identity(folder)
@@ -56,7 +57,7 @@ def test_index_facade_matches_index_bundle(taxonomy: DomainTaxonomy) -> None:
     via_facade = CorpusIndex()
     index_facade(via_facade, Xbrl.from_bundle(bundle, taxonomy), cik=cik)
     via_bundle = CorpusIndex()
-    index_bundle(via_bundle, bundle, taxonomy, cik=cik)
+    index_bundles(via_bundle, [(bundle, cik)], workers=1)
     assert via_facade.rows_for_filing(cik, accession) == via_bundle.rows_for_filing(
         cik, accession
     )
@@ -87,8 +88,8 @@ def test_reindexing_a_bundle_replaces_its_rows(taxonomy: DomainTaxonomy) -> None
     cik, _accession = _identity(folder)
     bundle = bundle_dir(folder)
     index = CorpusIndex()
-    first = index_bundle(index, bundle, taxonomy, cik=cik)
-    assert index_bundle(index, bundle, taxonomy, cik=cik) == first
+    first = index_bundles(index, [(bundle, cik)], workers=1).rows_written
+    assert index_bundles(index, [(bundle, cik)], workers=1).rows_written == first
     assert index.row_count() == first
     index.close()
 

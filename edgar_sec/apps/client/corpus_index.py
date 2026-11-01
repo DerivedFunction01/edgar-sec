@@ -65,13 +65,6 @@ def index_facade(index: CorpusIndex, facade: Xbrl, *, cik: str) -> int:
     return index.replace_filing(rows)
 
 
-def index_bundle(
-    index: CorpusIndex, bundle_dir: Path, taxonomy: DomainTaxonomy, *, cik: str
-) -> int:
-    """Build one bundle's facade and write its records; return the row count."""
-    return index_facade(index, Xbrl.from_bundle(bundle_dir, taxonomy), cik=cik)
-
-
 _WORKER_TAXONOMY: DomainTaxonomy | None = None
 
 
@@ -122,7 +115,6 @@ def index_bundles(
 __all__ = [
     "IndexBatchResult",
     "IndexFailure",
-    "index_bundle",
     "index_bundles",
     "index_facade",
     "rows_from_records",
