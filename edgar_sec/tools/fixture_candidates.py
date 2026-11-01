@@ -143,7 +143,11 @@ def _instance_name(names: list[str], primary: str, *, inline: bool) -> str | Non
         return primary
     for name in names:
         lowered = name.lower()
-        if lowered.endswith(".xml") and not lowered.endswith(_INSTANCE_SUFFIXES):
+        if (
+            lowered.endswith(".xml")
+            and lowered != "filingsummary.xml"
+            and not lowered.endswith(_INSTANCE_SUFFIXES)
+        ):
             return name
     return None
 

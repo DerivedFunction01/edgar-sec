@@ -69,6 +69,12 @@ def test_instance_name_skips_linkbases():
     assert _instance_name(["a.xsd"], "doc.htm", inline=False) is None
 
 
+def test_instance_name_skips_the_filing_summary():
+    names = ["FilingSummary.xml", "a.xml"]
+    assert _instance_name(names, "doc.htm", inline=False) == "a.xml"
+    assert _instance_name(["FilingSummary.xml"], "doc.htm", inline=False) is None
+
+
 def test_instance_name_prefers_extracted_instance_for_inline():
     names = ["doc.htm", "doc_htm.xml", "a.xsd"]
     assert _instance_name(names, "doc.htm", inline=True) == "doc_htm.xml"
