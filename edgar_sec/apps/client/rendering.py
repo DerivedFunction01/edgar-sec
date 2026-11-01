@@ -362,8 +362,16 @@ def segment_breakdown_to_dataframe(graph: SegmentBreakdownGraph) -> Any:
 
 def statement_to_dataframe(graph: StatementGraph, include_yoy: bool = True) -> Any:
     """Export statement nodes and multi-year series to a DataFrame."""
+    # Table order, not graph.nodes order: node insertion follows set
+    # iteration in the graph builder, which varies across processes.
+    ordered = ordered_statement_nodes(graph)
+    seen = {node.concept_qname for node, _ in ordered}
+    nodes = [node for node, _ in ordered]
+    nodes.extend(
+        graph.nodes[qname] for qname in sorted(graph.nodes) if qname not in seen
+    )
     records: list[dict[str, Any]] = []
-    for node in graph.nodes.values():
+    for node in nodes:
         rec: dict[str, Any] = {
             "concept": node.concept_qname,
             "label": display_label(node.label, node.concept_qname),
