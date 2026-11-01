@@ -12,10 +12,12 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.domain.identity import AccessionNumber
+from edgar_sec.domain.sec_urls import xbrl_package_url_for
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.foundation.serialization import canonical_hash
+from edgar_sec.infra.sec_http.errors import PermanentHttpError
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.compaction import compact_lineage
@@ -185,21 +187,34 @@ class _SyntheticTransport:
 
 
 class _FixtureIndexHttp:
+    """Index page served; the flagged filing's constructed vehicles 404.
+
+    The worker tries FilingSummary, then the package, then the index.
+    """
+
     def __init__(self, expected_url: str, body: bytes) -> None:
         self.expected_url = expected_url
         self.body = body
         self.calls: list[str] = []
         self.metrics = HttpMetrics()
+        directory, _, _ = expected_url.rpartition("/")
+        accession_dir = directory.rpartition("/")[2]
+        cik = directory.rpartition("/")[0].rpartition("/")[2]
+        self.summary_url = f"{directory}/FilingSummary.xml"
+        self.package_url = xbrl_package_url_for(cik, accession_dir)
+        self.vehicle_urls = (self.summary_url, self.package_url)
 
     def peek_cache(self, url: str) -> bytes | None:
-        if url != self.expected_url:
+        if url != self.expected_url and url not in self.vehicle_urls:
             raise AssertionError(f"unexpected SEC URL: {url}")
         return None
 
     def get_bytes(self, url: str, *, force_refresh: bool = False) -> bytes:
-        if url != self.expected_url:
+        if url != self.expected_url and url not in self.vehicle_urls:
             raise AssertionError(f"unexpected SEC URL: {url}")
         self.calls.append(url)
+        if url in self.vehicle_urls:
+            raise PermanentHttpError(url, "fixture has no such document", 404)
         return self.body
 
 
@@ -339,7 +354,11 @@ def test_prepublication_vertical_acceptance_stays_offline_and_raw_only(
     assert inventory_run_summary.status == "completed"
     assert inventory_run_summary.refusal_count == 0
     assert inventory_run_summary.committed_count == 1
-    assert index_http.calls == [index_url]
+    assert index_http.calls == [
+        index_http.summary_url,
+        index_http.package_url,
+        index_url,
+    ]
     publication = publish_committed_chunks(
         loaded_projection.paths,
         inventory_run,
