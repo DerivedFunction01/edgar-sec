@@ -178,10 +178,11 @@ def load_facade(bundle: Path, taxonomy: DomainTaxonomy) -> Xbrl:
 
 
 def _face_value_check(view: PresentationView, expected: float) -> dict[str, Any]:
-    """Whether the expected value appears as a face value at the latest period."""
+    """Whether the expected value appears as a face value at the latest annual period."""
     if not view.periods:
         return {"found": False, "period": None, "nearest": None}
-    period = view.periods[-1]
+    annual = [p for p in view.periods if " (" not in p]
+    period = annual[-1] if annual else view.periods[-1]
     nearest: dict[str, Any] | None = None
     for row in view.rows:
         if row.dimensions:
