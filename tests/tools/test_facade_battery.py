@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.tools.facade_battery import (
     XBRL_FIXTURES,
@@ -11,7 +12,6 @@ from edgar_sec.tools.facade_battery import (
     _face_value_check,
     _mode_violation,
     cohort_folders,
-    load_facade,
     run_battery,
 )
 
@@ -24,17 +24,9 @@ def test_cohort_folders_subset_and_order() -> None:
     assert "bac_2011_10k" in cohort_folders("vintage")
 
 
-def test_load_facade_msft_bundle() -> None:
-    """The loader builds the tests' facade, accessioned from the facts."""
-    xbrl = load_facade(XBRL_FIXTURES / "seed" / _MSFT, load_domain_taxonomy())
-    assert xbrl.accession == "0000950170-24-087843"
-    assert len(xbrl.facts) == 1731
-    assert len(xbrl.statements.list_available()) == 119
-
-
 def test_face_value_check_msft_revenue() -> None:
     """MSFT revenue is a face value at the latest period; a wrong sum is not."""
-    xbrl = load_facade(XBRL_FIXTURES / "seed" / _MSFT, load_domain_taxonomy())
+    xbrl = Xbrl.from_bundle(XBRL_FIXTURES / "seed" / _MSFT, load_domain_taxonomy())
     entry = next(
         entry
         for entry in _catalog_entries(xbrl)

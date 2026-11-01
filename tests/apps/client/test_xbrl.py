@@ -29,6 +29,7 @@ from tests.engine.xbrl.solve.conftest import (
     load_seed_facts,
     seed_folder,
 )
+from tests.support import bundle_dir
 
 _MSFT_ACCESSION = "0000950170-24-087843"
 _STANDARD_LABEL_ROLE = "http://www.xbrl.org/2003/role/label"
@@ -45,6 +46,14 @@ def _create_xbrl_facade(firm: str) -> Xbrl:
         linkbases=LinkbaseBundle(calculation_arcs=arcs),
     )
     return Xbrl(bundle, load_domain_taxonomy())
+
+
+def test_from_bundle_msft() -> None:
+    """The bundle constructor builds the full facade, accessioned from its facts."""
+    xbrl = Xbrl.from_bundle(bundle_dir("msft_2024_10k"), load_domain_taxonomy())
+    assert xbrl.accession == _MSFT_ACCESSION
+    assert len(xbrl.facts) == 1731
+    assert len(xbrl.statements.list_available()) == 119
 
 
 def _create_labelled_xbrl_facade() -> Xbrl:

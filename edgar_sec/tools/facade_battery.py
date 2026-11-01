@@ -16,18 +16,9 @@ from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import Any
 
-import pyarrow.parquet as pq
-
 from edgar_sec.apps.client.catalog import CatalogEntry
 from edgar_sec.apps.client.presentation import PresentationView
 from edgar_sec.apps.client.xbrl import Xbrl
-from edgar_sec.domain.identity import AccessionNumber, Cik
-from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle, XbrlFact
-from edgar_sec.engine.xbrl.storage.storage import (
-    calculation_arcs_from_arrow_table,
-    facts_from_arrow_table,
-    presentation_arcs_from_arrow_table,
-)
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.infra.storage.atomic import atomic_write_json
@@ -131,33 +122,6 @@ def cohort_folders(cohort: str, subset: Sequence[str] | None = None) -> list[str
         wanted = set(subset)
         folders = [folder for folder in folders if folder in wanted]
     return folders
-
-
-def load_bundle_facts(bundle: Path) -> tuple[tuple[XbrlFact, ...], str]:
-    """One bundle's facts plus its single accession, from the parquet rows."""
-    facts = facts_from_arrow_table(pq.read_table(bundle / "facts.parquet"))
-    accessions = {str(fact.accession) for fact in facts}
-    if len(accessions) != 1:
-        raise ValueError(f"bundle {bundle.name} accessions: {sorted(accessions)}")
-    return facts, accessions.pop()
-
-
-def load_facade(bundle: Path, taxonomy: DomainTaxonomy) -> Xbrl:
-    """Build the facade over one full-fidelity bundle, as the tests do."""
-    facts, accession = load_bundle_facts(bundle)
-    calc = calculation_arcs_from_arrow_table(
-        pq.read_table(bundle / "calculation_arcs.parquet")
-    )
-    pres = presentation_arcs_from_arrow_table(
-        pq.read_table(bundle / "presentation_arcs.parquet")
-    )
-    filing = FilingXbrl(
-        accession=AccessionNumber.from_any(accession),
-        cik=Cik(0),
-        facts=facts,
-        linkbases=LinkbaseBundle(calculation_arcs=calc, presentation_arcs=pres),
-    )
-    return Xbrl(filing, taxonomy)
 
 
 def _face_value_check(view: PresentationView, expected: float) -> dict[str, Any]:
@@ -439,7 +403,7 @@ def _filing_work(item: tuple[str, str, str | None]) -> tuple[str, str, dict[str,
     record: dict[str, Any] = {}
     peer_seconds = 0.0
     xbrl, error = _guard(
-        lambda: load_facade(XBRL_FIXTURES / cohort / folder, _worker_taxonomy())
+        lambda: Xbrl.from_bundle(XBRL_FIXTURES / cohort / folder, _worker_taxonomy())
     )
     if error is not None:
         record["load_error"] = error
@@ -455,7 +419,7 @@ def _filing_work(item: tuple[str, str, str | None]) -> tuple[str, str, dict[str,
                 peer_record.update({"status": "skipped", "reason": "single filing"})
             else:
                 peer, peer_error = _guard(
-                    lambda target=peer_folder: load_facade(
+                    lambda target=peer_folder: Xbrl.from_bundle(
                         XBRL_FIXTURES / "seed" / str(target), _worker_taxonomy()
                     )
                 )

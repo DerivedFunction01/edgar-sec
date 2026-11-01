@@ -11,18 +11,9 @@ from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
 
-import pyarrow.parquet as pq
-
 from edgar_sec.apps.client.batch import stream_filing_outcomes
 from edgar_sec.apps.client.facts import DisplayRecord
 from edgar_sec.apps.client.xbrl import Xbrl
-from edgar_sec.domain.identity import AccessionNumber, Cik
-from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle
-from edgar_sec.engine.xbrl.storage.storage import (
-    calculation_arcs_from_arrow_table,
-    facts_from_arrow_table,
-    presentation_arcs_from_arrow_table,
-)
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.infra.storage.corpus_index import ConceptCoordinateRow, CorpusIndex
 
@@ -74,32 +65,11 @@ def index_facade(index: CorpusIndex, facade: Xbrl, *, cik: str) -> int:
     return index.replace_filing(rows)
 
 
-def _facade_from_bundle(bundle_dir: Path, taxonomy: DomainTaxonomy) -> Xbrl:
-    """Build the full-fidelity facade over one bundle folder."""
-    facts = facts_from_arrow_table(pq.read_table(bundle_dir / "facts.parquet"))
-    accessions = {str(fact.accession) for fact in facts}
-    if len(accessions) != 1:
-        raise ValueError(f"bundle {bundle_dir.name} accessions: {sorted(accessions)}")
-    calc = calculation_arcs_from_arrow_table(
-        pq.read_table(bundle_dir / "calculation_arcs.parquet")
-    )
-    pres = presentation_arcs_from_arrow_table(
-        pq.read_table(bundle_dir / "presentation_arcs.parquet")
-    )
-    filing = FilingXbrl(
-        accession=AccessionNumber.from_any(accessions.pop()),
-        cik=Cik(0),
-        facts=facts,
-        linkbases=LinkbaseBundle(calculation_arcs=calc, presentation_arcs=pres),
-    )
-    return Xbrl(filing, taxonomy)
-
-
 def index_bundle(
     index: CorpusIndex, bundle_dir: Path, taxonomy: DomainTaxonomy, *, cik: str
 ) -> int:
     """Build one bundle's facade and write its records; return the row count."""
-    return index_facade(index, _facade_from_bundle(bundle_dir, taxonomy), cik=cik)
+    return index_facade(index, Xbrl.from_bundle(bundle_dir, taxonomy), cik=cik)
 
 
 _WORKER_TAXONOMY: DomainTaxonomy | None = None
@@ -116,7 +86,7 @@ def _worker_taxonomy() -> DomainTaxonomy:
 def _bundle_rows(task: tuple[str, str]) -> tuple[ConceptCoordinateRow, ...]:
     """One bundle's index rows, computed in a pool worker."""
     bundle_dir, cik = task
-    facade = _facade_from_bundle(Path(bundle_dir), _worker_taxonomy())
+    facade = Xbrl.from_bundle(Path(bundle_dir), _worker_taxonomy())
     return rows_from_records(cik, str(facade.accession), facade.facts.records)
 
 

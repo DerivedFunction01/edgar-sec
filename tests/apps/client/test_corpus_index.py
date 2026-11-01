@@ -12,9 +12,9 @@ from edgar_sec.apps.client.corpus_index import (
     index_facade,
     rows_from_records,
 )
+from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.infra.storage.corpus_index import CorpusIndex
-from edgar_sec.tools.facade_battery import load_facade
 from tests.support import bundle_dir, load_fixture
 
 _FOLDERS = ("msft_2024_10k", "aapl_2024_10k", "jpm_2024_10k")
@@ -41,7 +41,7 @@ def test_index_bundle_rows_match_facade_records(taxonomy: DomainTaxonomy) -> Non
         cik, accession = _identity(folder)
         bundle = bundle_dir(folder)
         expected = rows_from_records(
-            cik, accession, load_facade(bundle, taxonomy).facts.records
+            cik, accession, Xbrl.from_bundle(bundle, taxonomy).facts.records
         )
         assert index_bundle(index, bundle, taxonomy, cik=cik) == len(expected)
         assert index.rows_for_filing(cik, accession) == expected
@@ -54,7 +54,7 @@ def test_index_facade_matches_index_bundle(taxonomy: DomainTaxonomy) -> None:
     cik, accession = _identity(folder)
     bundle = bundle_dir(folder)
     via_facade = CorpusIndex()
-    index_facade(via_facade, load_facade(bundle, taxonomy), cik=cik)
+    index_facade(via_facade, Xbrl.from_bundle(bundle, taxonomy), cik=cik)
     via_bundle = CorpusIndex()
     index_bundle(via_bundle, bundle, taxonomy, cik=cik)
     assert via_facade.rows_for_filing(cik, accession) == via_bundle.rows_for_filing(
@@ -112,7 +112,7 @@ def test_index_bundles_records_a_malformed_bundle_and_continues(
     for folder in _FOLDERS[:2]:
         cik, accession = _identity(folder)
         expected = rows_from_records(
-            cik, accession, load_facade(bundle_dir(folder), taxonomy).facts.records
+            cik, accession, Xbrl.from_bundle(bundle_dir(folder), taxonomy).facts.records
         )
         assert index.rows_for_filing(cik, accession) == expected
     index.close()

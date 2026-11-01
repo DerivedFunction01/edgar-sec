@@ -7,6 +7,8 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
+import pyarrow.parquet as pq
+
 from edgar_sec.apps.client.comparison import ComparisonView, compare_companies
 from edgar_sec.apps.client.composition import (
     ChainTerms,
@@ -74,6 +76,7 @@ from edgar_sec.engine.xbrl.storage.storage import (
     calculation_arcs_from_arrow_table,
     declarations_from_arrow_table,
     definition_arcs_from_arrow_table,
+    facts_from_arrow_table,
     presentation_arcs_from_arrow_table,
     read_declarations_parquet,
 )
@@ -311,6 +314,34 @@ class Xbrl:
         instance._populate(bundle, taxonomy, fact_set=fact_set)
         instance._provenance = FIDELITY_SNAPSHOT
         return instance
+
+    @classmethod
+    def from_bundle(cls, bundle_dir: Path, taxonomy: DomainTaxonomy) -> Xbrl:
+        """Build the full-fidelity facade over one fixture bundle folder.
+
+        The bundle's facts must carry exactly one accession, which the
+        facade adopts; both arc sets load eagerly.
+        """
+        facts = facts_from_arrow_table(pq.read_table(bundle_dir / "facts.parquet"))
+        accessions = {str(fact.accession) for fact in facts}
+        if len(accessions) != 1:
+            raise ValueError(
+                f"bundle {bundle_dir.name} accessions: {sorted(accessions)}"
+            )
+        filing = FilingXbrl(
+            accession=AccessionNumber.from_any(accessions.pop()),
+            cik=Cik(0),
+            facts=facts,
+            linkbases=LinkbaseBundle(
+                calculation_arcs=calculation_arcs_from_arrow_table(
+                    pq.read_table(bundle_dir / "calculation_arcs.parquet")
+                ),
+                presentation_arcs=presentation_arcs_from_arrow_table(
+                    pq.read_table(bundle_dir / "presentation_arcs.parquet")
+                ),
+            ),
+        )
+        return cls(filing, taxonomy)
 
     def _merged_declarations(
         self, arcs: tuple[CalculationArc, ...]

@@ -20,7 +20,6 @@ from edgar_sec.apps.client.search import (
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.infra.storage.corpus_index import CorpusIndex
-from edgar_sec.tools.facade_battery import load_facade
 from tests.support import fixture_path, load_fixture
 
 _TERMS = (
@@ -68,7 +67,7 @@ def seed_index(tmp_path_factory: pytest.TempPathFactory) -> CorpusIndex:
 def seed_facades(taxonomy: DomainTaxonomy) -> dict[str, Xbrl]:
     """Live facades over the seed bundles, keyed by accession."""
     return {
-        accession: load_facade(bundle, taxonomy)
+        accession: Xbrl.from_bundle(bundle, taxonomy)
         for bundle, _cik, accession in _seed_bundles()
     }
 

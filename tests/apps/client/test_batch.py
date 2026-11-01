@@ -14,7 +14,6 @@ import psutil
 from edgar_sec.apps.client.batch import FilingOutcome, stream_filing_outcomes
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
-from edgar_sec.tools.facade_battery import load_facade
 from tests.support import bundle_dir, load_fixture
 
 
@@ -85,7 +84,7 @@ def _taxonomy() -> DomainTaxonomy:
 
 def _probe_filing(unit: str) -> tuple[int, int]:
     """Build one bundle's facade and report its size, holding nothing."""
-    facade = load_facade(Path(unit), _taxonomy())
+    facade = Xbrl.from_bundle(Path(unit), _taxonomy())
     _LIVE_FACADES.add(facade)
     _PROBE["built"] += 1
     _PROBE["peak"] = max(_PROBE["peak"], len(_LIVE_FACADES))
