@@ -15,6 +15,7 @@ from edgar_sec.apps.runner.config import DateFilterInput, FilingQuery, PipelineC
 from edgar_sec.apps.runner.coordinator import PipelineRunner
 from edgar_sec.domain.identity import Cik
 from edgar_sec.foundation.runtime.resources import (
+    MEBIBYTE,
     RuntimeResourceProfile,
     derive_resources,
 )
@@ -33,15 +34,14 @@ if TYPE_CHECKING:
     from edgar_sec.engine.xbrl.schema.models import FilingXbrl
 
 
-_MEBIBYTE = 1024 * 1024
 # Mean retained bytes per live facade, from the facade memory profile.
-_RETAINED_BYTES_PER_FACADE = int(6.9 * _MEBIBYTE)
+_RETAINED_BYTES_PER_FACADE = int(6.9 * MEBIBYTE)
 
 
 def derive_facade_capacity(resources: RuntimeResourceProfile | None = None) -> int:
     """Facade count one worker memory share holds at the measured per-facade cost."""
     profile = resources if resources is not None else derive_resources()
-    budget_bytes = profile.worker_memory_mib * _MEBIBYTE
+    budget_bytes = profile.worker_memory_mib * MEBIBYTE
     return max(1, budget_bytes // _RETAINED_BYTES_PER_FACADE)
 
 

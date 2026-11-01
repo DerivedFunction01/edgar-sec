@@ -17,7 +17,7 @@ try:
 except ImportError:  # pragma: no cover
     psutil = None
 
-_MEBIBYTE = 1024 * 1024
+MEBIBYTE = 1024 * 1024
 DEFAULT_MEMORY_FRACTION = 0.6
 MIN_MEMORY_MIB = 256
 DEFAULT_WORKER_MEMORY_MIB = 512
@@ -46,7 +46,7 @@ def _physical_memory_bytes() -> int:
         page_size = os.sysconf("SC_PAGE_SIZE")
         return int(pages * page_size)
     except (ValueError, OSError, AttributeError):
-        return 8 * 1024 * _MEBIBYTE
+        return 8 * 1024 * MEBIBYTE
 
 
 def read_cgroup_v2_available_bytes() -> int | None:
@@ -132,7 +132,7 @@ def default_memory_limit(fraction: float = DEFAULT_MEMORY_FRACTION) -> str:
         raise ValueError("memory fraction must be between 0 and 1")
     memory_mib = max(
         MIN_MEMORY_MIB,
-        int(_physical_memory_bytes() * fraction / _MEBIBYTE),
+        int(_physical_memory_bytes() * fraction / MEBIBYTE),
     )
     return f"{memory_mib}MiB"
 
@@ -165,7 +165,7 @@ def auto_worker_count(
     budget = usable_memory_bytes(
         available, safety_fraction=safety_fraction, reserve_bytes=reserve_bytes
     )
-    mem_workers = max(1, budget // (worker_memory_mib * _MEBIBYTE))
+    mem_workers = max(1, budget // (worker_memory_mib * MEBIBYTE))
     cores = (
         cpu_cores if cpu_cores is not None and cpu_cores >= 1 else default_cpu_cores()
     )
@@ -264,6 +264,7 @@ __all__ = [
     "DEFAULT_MEMORY_FRACTION",
     "DEFAULT_WORKER_MEMORY_MIB",
     "DEFAULT_WORKER_MEMORY_SAFETY",
+    "MEBIBYTE",
     "MIN_MEMORY_MIB",
     "RuntimeResourceProfile",
     "auto_worker_count",

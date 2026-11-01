@@ -16,13 +16,12 @@ from edgar_sec.engine.xbrl.solve.concept_table import CohortEntry
 from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.resources import (
     DEFAULT_WORKER_MEMORY_SAFETY,
+    MEBIBYTE,
     RuntimeResourceProfile,
     auto_worker_count,
     derive_resources,
     usable_memory_bytes,
 )
-
-_MEBIBYTE = 1024 * 1024
 
 
 @dataclass(frozen=True, slots=True)
@@ -79,7 +78,7 @@ def plan_cohort_scan(
     cardinality = min(len(entries), derive_batch_cardinality(available, footprint))
     workers = auto_worker_count(
         available,
-        worker_memory_mib=max(1, footprint // _MEBIBYTE),
+        worker_memory_mib=max(1, footprint // MEBIBYTE),
         safety_fraction=profile.worker_memory_safety,
         cpu_cores=profile.cpu_cores,
     )
