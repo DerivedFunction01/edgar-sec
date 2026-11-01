@@ -40,7 +40,7 @@ PACKAGE_GROUPS: dict[str, list[str]] = {
     "Storage & Serialization": [
         "pyarrow",
         "fastparquet",
-        "duckdb",
+        "duckdb>=1.5.6,<2.1",
         "zstandard",
     ],
     "Text, NLP & Scraping": [

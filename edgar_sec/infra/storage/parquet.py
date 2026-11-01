@@ -11,6 +11,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from edgar_sec.foundation.runtime.settings.parquet import (
+    resolve_parquet_read_batch_size,
     resolve_row_group_size,
 )
 
@@ -47,6 +48,38 @@ def write_parquet_table(
                 os.remove(tmp_path)
             except OSError:
                 pass
+
+
+def cast_table(table: pa.Table, schema: pa.Schema) -> pa.Table:
+    """Return ``table`` cast to the declared ``schema``, by field name; a null
+    in a ``NOT NULL`` field raises rather than passing through."""
+    return table.select(schema.names).cast(schema)
+
+
+def rewrite_parquet_schema(
+    source: str | os.PathLike[str],
+    destination: str | os.PathLike[str],
+    schema: pa.Schema,
+    *,
+    compression: str = DEFAULT_COMPRESSION,
+    row_group_size: int | None = None,
+) -> int:
+    """Stream ``source`` into ``destination`` under the declared ``schema``,
+    in read-batch-size batches, so the footer carries the declared nullability
+    a DuckDB ``COPY`` does not preserve and the file is never held whole."""
+    effective_row_group_size = resolve_row_group_size(row_group_size)
+    count = 0
+    with pq.ParquetWriter(
+        os.fspath(destination), schema, compression=compression
+    ) as writer:
+        for batch in pq.ParquetFile(source).iter_batches(
+            batch_size=resolve_parquet_read_batch_size()
+        ):
+            writer.write_batch(
+                batch.cast(schema), row_group_size=effective_row_group_size
+            )
+            count += batch.num_rows
+    return count
 
 
 def read_parquet_schema(path: str | os.PathLike[str]) -> pa.Schema:
@@ -280,9 +313,11 @@ class StagedParquetWriter:
 __all__ = [
     "DEFAULT_COMPRESSION",
     "StagedParquetWriter",
+    "cast_table",
     "count_parquet_rows",
     "read_parquet_key_bounds",
     "read_parquet_schema",
     "read_parquet_table",
+    "rewrite_parquet_schema",
     "write_parquet_table",
 ]

@@ -3,9 +3,21 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Literal
 
-import duckdb
+import pyarrow as pa
 
-from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet
+from edgar_sec.infra.storage.duckdb import (
+    DuckDBError,
+    connect,
+    copy_query_to_parquet,
+)
+
+_ROSTER_SCHEMA = pa.schema(
+    [
+        ("ordinal", pa.int64()),
+        ("cik_padded", pa.string()),
+        ("name", pa.string()),
+    ]
+)
 
 
 class FamilyIndexNotFoundError(FileNotFoundError):
@@ -45,6 +57,7 @@ def execute_delta_roster(
             _DELTA_QUERY,
             output_dataset,
             params=[_dataset(requested_dataset), _dataset(base_cik_map_dataset)],
+            schema=_ROSTER_SCHEMA,
         )
 
 
@@ -87,7 +100,7 @@ def sample_cohort(
                 }
             if not {"cik", "company_family", "family_kind"}.issubset(schema):
                 raise ValueError("family index schema is incomplete")
-        except (duckdb.Error, OSError, TypeError, ValueError) as exc:
+        except (DuckDBError, OSError, TypeError, ValueError) as exc:
             raise FamilyIndexNotFoundError("family index is unreadable") from exc
         params.append(str(family_path))
         family_cte = """
@@ -150,7 +163,9 @@ def sample_cohort(
         ORDER BY try_cast(cik_padded AS BIGINT)
     """
     with connect() as con:
-        return copy_query_to_parquet(con, query, output_dataset, params=params)
+        return copy_query_to_parquet(
+            con, query, output_dataset, params=params, schema=_ROSTER_SCHEMA
+        )
 
 
 __all__ = [

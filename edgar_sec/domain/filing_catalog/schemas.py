@@ -226,11 +226,26 @@ OCCURRENCE_INDEPENDENT_COLUMNS = tuple(
     column for column in OCCURRENCE_FEATURE_COLUMNS if column not in _OCCURRENCE_DYNAMIC
 )
 
+#: Every base locator column is a string: the representative pair renames the
+#: string `source_cik` / `accession` columns it is projected from.
+LOCATOR_BASE_SCHEMA = pa.schema(
+    [pa.field(column, pa.string()) for column in LOCATOR_BASE_COLUMNS]
+)
+
+LOCATOR_POLICY_SCHEMA = pa.schema(
+    [
+        pa.field(column, _POLICY_TARGET_TYPES.get(column, pa.string()))
+        for column in LOCATOR_POLICY_COLUMNS
+    ]
+)
+
 __all__ = [
     "DATASET_NAME",
     "LOCATOR_BASE_COLUMNS",
+    "LOCATOR_BASE_SCHEMA",
     "LOCATOR_FEATURE_COLUMNS",
     "LOCATOR_POLICY_COLUMNS",
+    "LOCATOR_POLICY_SCHEMA",
     "LOCATOR_POLICY_FEATURES",
     "OCCURRENCE_FEATURE_COLUMNS",
     "OCCURRENCE_INDEPENDENT_COLUMNS",

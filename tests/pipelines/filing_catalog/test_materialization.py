@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import duckdb
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
@@ -10,6 +9,7 @@ import pytest
 from edgar_sec.domain.filing_catalog.schemas import TARGET_COLUMNS
 from edgar_sec.domain.submissions.schemas import SUBMISSION_METADATA_SCHEMA
 from edgar_sec.infra.storage.duckdb import copy_query_to_parquet
+from tests.support import duckdb_connection
 from edgar_sec.pipelines.filing_catalog.materialization import (
     build_delta_unnest_query,
     build_part_unnest_query,
@@ -115,7 +115,7 @@ def test_materialization_constructs_qualified_placeholder_links(tmp_path) -> Non
         source_path,
     )
 
-    con = duckdb.connect()
+    con = duckdb_connection()
     try:
         rows = con.execute(build_part_unnest_query(str(source_path))).to_arrow_table()
     finally:
@@ -144,7 +144,7 @@ def test_unnest_query_normalizes_whitespace_primary_documents() -> None:
 
 def test_unnest_query_executes_without_a_delim_join(tmp_path, sample_source) -> None:
     """Only a real plan proves DuckDB stopped inserting the delim scan itself."""
-    con = duckdb.connect()
+    con = duckdb_connection()
     try:
         query = build_part_unnest_query(str(sample_source))
         plan = "\n".join(

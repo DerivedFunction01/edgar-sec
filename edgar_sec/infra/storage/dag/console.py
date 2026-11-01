@@ -9,8 +9,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-import duckdb
-
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.runtime.paths import validate_path_component
 from edgar_sec.foundation.sql.guard import SqlGuardError, validate_read_only
@@ -21,6 +19,7 @@ from edgar_sec.infra.storage.dag.resolution import compile_virtual_views
 from edgar_sec.infra.storage.dag.spec import RelationSpec
 from edgar_sec.infra.storage.dag.traversal import walk_lineage
 from edgar_sec.infra.storage.duckdb import (
+    Connection,
     connect,
     copy_query_to_parquet,
     sql_identifier,
@@ -156,7 +155,7 @@ class SnapshotQuerySession:
         specs: Sequence[RelationSpec],
         *,
         page_size: int,
-        connection_factory: Callable[[], duckdb.DuckDBPyConnection] = connect,
+        connection_factory: Callable[[], Connection] = connect,
     ) -> None:
         if not specs:
             raise ValueError("snapshot queries require relation specs")
@@ -182,7 +181,7 @@ class SnapshotQuerySession:
         except Exception:
             self.connection.close()
             raise
-        self._cursor: duckdb.DuckDBPyConnection | None = None
+        self._cursor: Connection | None = None
         self._pending_row: tuple[Any, ...] | None = None
         self._columns: tuple[str, ...] = ()
         self._last_select: str | None = None

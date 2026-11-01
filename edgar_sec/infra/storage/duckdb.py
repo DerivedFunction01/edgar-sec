@@ -7,11 +7,12 @@ from __future__ import annotations
 
 import os
 import re
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import TYPE_CHECKING
 
 import duckdb
+import pyarrow as pa
 
 if TYPE_CHECKING:
     from edgar_sec.foundation.runtime.resources import RuntimeResourceProfile
@@ -19,9 +20,23 @@ if TYPE_CHECKING:
 from .atomic import _fsync_dir
 from .parquet import (
     DEFAULT_COMPRESSION,
+    cast_table,
     count_parquet_rows,
+    rewrite_parquet_schema,
 )
 from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
+from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
+
+# The only DuckDB names other modules may use, served from this leaf module so
+# no other file imports duckdb: a version rename lands here alone.
+Connection = duckdb.DuckDBPyConnection
+Relation = duckdb.DuckDBPyRelation
+DuckDBError = duckdb.Error
+InvalidInputError = duckdb.InvalidInputException
+
+#: File databases are written at the 1.5 storage line while both supported
+#: DuckDB versions must read each other's files.
+STORAGE_COMPATIBILITY_VERSION = "v1.5.0"
 
 _IDENTIFIER_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
 
@@ -102,7 +117,12 @@ def connect(
     database_path = os.fspath(database)
     if database_path != ":memory:":
         Path(database_path).resolve().parent.mkdir(parents=True, exist_ok=True)
-    con = duckdb.connect(database=database_path)
+        con = duckdb.connect(
+            database=database_path,
+            config={"storage_compatibility_version": STORAGE_COMPATIBILITY_VERSION},
+        )
+    else:
+        con = duckdb.connect(database=database_path)
     con.execute("SET threads = ?", [max(1, int(actual_threads))])
     con.execute("SET memory_limit = ?", [str(actual_memory_limit)])
     con.execute("SET temp_directory = ?", [str(actual_temp_dir)])
@@ -118,16 +138,18 @@ def copy_query_to_parquet(
     *,
     compression: str = DEFAULT_COMPRESSION,
     params: Sequence[str] | None = None,
+    schema: pa.Schema | None = None,
 ) -> int:
     """Write one query result to Parquet out-of-core and atomically; return the row count.
 
     Staged beside the destination and renamed, so a failed write leaves no half-written
-    shard. ``params`` binds source paths, keeping the caller's ``query`` a constant.
+    shard. With ``schema``, the stage is stream-rewritten under it before the rename.
     """
     effective_row_group_size = resolve_row_group_size(row_group_size)
     path = Path(destination)
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_name(f".{path.name}.tmp.{os.getpid()}")
+    rewritten = path.with_name(f".{path.name}.schema.{os.getpid()}")
     try:
         con.execute(
             f"COPY ({query}) TO {sql_literal(str(tmp))} "
@@ -135,12 +157,83 @@ def copy_query_to_parquet(
             f"ROW_GROUP_SIZE {effective_row_group_size})",
             list(params) if params is not None else None,
         )
+        if schema is not None:
+            rewrite_parquet_schema(
+                tmp,
+                rewritten,
+                schema,
+                compression=compression,
+                row_group_size=effective_row_group_size,
+            )
+            os.replace(rewritten, tmp)
         os.replace(tmp, path)
         _fsync_dir(str(path.parent))
     finally:
         if tmp.exists():
             tmp.unlink()
+        if rewritten.exists():
+            rewritten.unlink()
     return count_parquet_rows(path)
+
+
+def relation_table(relation: Relation, *, schema: pa.Schema | None = None) -> pa.Table:
+    """Return a relation's Arrow table; with ``schema``, cast to the declared
+    schema, absorbing the export's nullability drop on DuckDB 2.0."""
+    table = relation.to_arrow_table()
+    return cast_table(table, schema) if schema is not None else table
+
+
+def relation_reader(
+    relation: Relation,
+    batch_size: int | None = None,
+    *,
+    schema: pa.Schema | None = None,
+) -> pa.RecordBatchReader:
+    """Return a relation's streaming Arrow reader; the batch size defaults
+    from the runtime settings seam, and ``schema`` casts each batch."""
+    reader = relation.to_arrow_reader(batch_size=resolve_read_batch_size(batch_size))
+    if schema is None:
+        return reader
+    return _cast_reader(reader, schema)
+
+
+def arrow_table(
+    con: Connection,
+    query: str,
+    params: Sequence[object] | Mapping[str, object] | None = None,
+    *,
+    schema: pa.Schema | None = None,
+) -> pa.Table:
+    """Return ``query``'s Arrow table through the relation form, the portable
+    export on both DuckDB versions (the ``execute()`` form copies and warns on
+    2.0); with ``schema``, cast to it, absorbing the export's nullability drop."""
+    relation = con.sql(query, params=params) if params is not None else con.sql(query)
+    return relation_table(relation, schema=schema)
+
+
+def arrow_reader(
+    con: Connection,
+    query: str,
+    params: Sequence[object] | Mapping[str, object] | None = None,
+    batch_size: int | None = None,
+    *,
+    schema: pa.Schema | None = None,
+) -> pa.RecordBatchReader:
+    """Return ``query``'s streaming Arrow reader through the relation form; the
+    batch size defaults from the runtime settings seam. The reader holds an open
+    result on ``con`` — drain it before executing on ``con`` again (2.0 enforces)."""
+    relation = con.sql(query, params=params) if params is not None else con.sql(query)
+    return relation_reader(relation, batch_size, schema=schema)
+
+
+def _cast_reader(
+    reader: pa.RecordBatchReader, schema: pa.Schema
+) -> pa.RecordBatchReader:
+    def batches() -> object:
+        for batch in reader:
+            yield batch.cast(schema)
+
+    return pa.RecordBatchReader.from_batches(schema, batches())
 
 
 def find_duplicate_keys(
@@ -192,10 +285,19 @@ def find_null_keys(
 
 
 __all__ = [
+    "Connection",
+    "DuckDBError",
+    "InvalidInputError",
+    "Relation",
+    "STORAGE_COMPATIBILITY_VERSION",
+    "arrow_reader",
+    "arrow_table",
     "connect",
     "copy_query_to_parquet",
     "find_duplicate_keys",
     "find_null_keys",
+    "relation_reader",
+    "relation_table",
     "sql_identifier",
     "sql_literal",
     "sql_path_list",

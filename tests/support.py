@@ -18,6 +18,7 @@ from edgar_sec.domain.document.route import DocumentRoute
 from edgar_sec.domain.sec_urls import historical_submissions_url, submissions_url
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.duckdb import Connection, connect
 from edgar_sec.pipelines.cohort.ingestion import ingest_file_to_cohort
 from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
 from edgar_sec.pipelines.cohort.sources import SOURCE_URLS, refresh_official_source
@@ -786,6 +787,11 @@ def processing_body_receipt(paths: Any, body: Any):
     return read_body_consumption_receipt(paths, body.run_id, body.target_id)
 
 
+def duckdb_connection(database: str | Path | None = None) -> Connection:
+    """A test connection through the infra factory, the only test-side seam."""
+    return connect() if database is None else connect(database=database)
+
+
 __all__ = [
     "CATALOG_FIXTURES",
     "FIXTURES",
@@ -802,6 +808,7 @@ __all__ = [
     "compiled_cohort",
     "corpus_cohort_rows",
     "corpus_source_bundles",
+    "duckdb_connection",
     "fixture_ciks",
     "fixture_cohort",
     "fixture_path",

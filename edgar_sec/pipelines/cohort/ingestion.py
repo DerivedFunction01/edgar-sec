@@ -21,7 +21,12 @@ from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
     resolve_row_group_size,
 )
-from edgar_sec.infra.storage.duckdb import connect, sql_identifier, sql_literal
+from edgar_sec.infra.storage.duckdb import (
+    arrow_reader,
+    connect,
+    sql_identifier,
+    sql_literal,
+)
 from edgar_sec.infra.storage.parquet import DEFAULT_COMPRESSION
 
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
@@ -218,8 +223,12 @@ def _write_canonical_parquet(
         compression_level=3,
         use_dictionary=False,
     ) as writer:
-        reader = connection.execute(query, list(params)).to_arrow_reader(
-            batch_size=read_batch_size
+        reader = arrow_reader(
+            connection,
+            query,
+            list(params),
+            batch_size=read_batch_size,
+            schema=_CANONICAL_SCHEMA,
         )
         for batch in reader:
             writer.write_batch(batch, row_group_size=row_group_size)

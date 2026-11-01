@@ -5,13 +5,12 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-import duckdb
 import pyarrow as pa
 
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.dag.resolution import compile_virtual_views
 from edgar_sec.infra.storage.dag.traversal import walk_lineage
-from edgar_sec.infra.storage.duckdb import connect, sql_identifier
+from edgar_sec.infra.storage.duckdb import arrow_table, connect, sql_identifier
 from edgar_sec.pipelines.document_acquisition.paths import AcquisitionPaths
 
 from .schema import SNAPSHOT_RELATION_SCHEMAS
@@ -94,7 +93,7 @@ def query_snapshot_relation(
         query = f"SELECT {selected_cols} FROM {active_view}"
         if limit is not None and limit > 0:
             query += f" LIMIT {limit}"
-        return con.execute(query).to_arrow_table()
+        return arrow_table(con, query)
     finally:
         con.close()
 

@@ -19,8 +19,10 @@ from edgar_sec.domain.filing_catalog.filters import (
 )
 from edgar_sec.domain.filing_catalog.options import PlanFilterOptions
 from edgar_sec.domain.filing_catalog.schemas import (
+    LOCATOR_BASE_SCHEMA,
     SCOPE_DETERMINISTIC,
     TARGET_COLUMNS,
+    TARGET_SCHEMA,
 )
 from edgar_sec.engine.selection.predicates import (
     date_projection_sql,
@@ -30,8 +32,8 @@ from edgar_sec.engine.selection.predicates import (
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
 from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
-from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.storage.duckdb import (
+    arrow_table,
     connect,
     copy_query_to_parquet,
     sql_literal,
@@ -251,9 +253,10 @@ def plan(
             )
             discovery = " AND ".join(shared_where) if shared_where else "TRUE"
 
-        available = con.execute(
-            f"SELECT DISTINCT form FROM {source} WHERE {discovery} ORDER BY form"
-        ).to_arrow_reader(batch_size=resolve_read_batch_size())
+        available = arrow_table(
+            con, f"SELECT DISTINCT form FROM {source} WHERE {discovery} ORDER BY form"
+        )
+        form_names = [str(value) for value in available.column(0).to_pylist()]
 
         target_columns = ", ".join(TARGET_COLUMNS)
 
@@ -263,36 +266,31 @@ def plan(
             targets_root = staging / PLAN_TARGETS_DIR
             targets_root.mkdir(parents=True, exist_ok=True)
             written: list[Path] = []
-            for form_batch in available:
-                form_values = form_batch.column(0)
-                for row_index in range(form_batch.num_rows):
-                    form_name = str(form_values[row_index].as_py())
-                    destination = (
-                        targets_root
-                        / form_partition_directory(form_name)
-                        / DATA_FILE_NAME
-                    )
-                    where = [*shared_where, f"form = {sql_literal(form_name)}"]
-                    query = (
-                        f"SELECT {target_columns} FROM {source} "
-                        f"WHERE {' AND '.join(where)} "
-                        f"ORDER BY document_locator_key, occurrence_id"
-                    )
-                    if effective_filters.limit is not None:
-                        query = f"SELECT {target_columns} FROM ({query}) LIMIT {int(effective_filters.limit)}"
-                    written.append(destination)
-                    counts[form_name] = copy_query_to_parquet(
-                        con, query, destination, row_group_size
-                    )
-                    total_rows += counts[form_name]
-                    emit_progress(
-                        progress,
-                        {
-                            "type": "merge_stage",
-                            "stage": f"targets:{form_name}",
-                            "rows": counts[form_name],
-                        },
-                    )
+            for form_name in form_names:
+                destination = (
+                    targets_root / form_partition_directory(form_name) / DATA_FILE_NAME
+                )
+                where = [*shared_where, f"form = {sql_literal(form_name)}"]
+                query = (
+                    f"SELECT {target_columns} FROM {source} "
+                    f"WHERE {' AND '.join(where)} "
+                    f"ORDER BY document_locator_key, occurrence_id"
+                )
+                if effective_filters.limit is not None:
+                    query = f"SELECT {target_columns} FROM ({query}) LIMIT {int(effective_filters.limit)}"
+                written.append(destination)
+                counts[form_name] = copy_query_to_parquet(
+                    con, query, destination, row_group_size, schema=TARGET_SCHEMA
+                )
+                total_rows += counts[form_name]
+                emit_progress(
+                    progress,
+                    {
+                        "type": "merge_stage",
+                        "stage": f"targets:{form_name}",
+                        "rows": counts[form_name],
+                    },
+                )
 
             if written:
                 file_list = ", ".join(sql_literal(str(path)) for path in written)
@@ -308,6 +306,7 @@ def plan(
                 _locator_groups_query(locator_source),
                 staging / LOCATOR_GROUPS_FILE,
                 row_group_size,
+                schema=LOCATOR_BASE_SCHEMA,
             )
             selection_report = {
                 "scope": SCOPE_DETERMINISTIC,

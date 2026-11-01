@@ -9,9 +9,8 @@ from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
 
-import duckdb
-
 from edgar_sec.infra.storage.duckdb import (
+    Connection,
     copy_query_to_parquet,
     sql_identifier,
     sql_quoted_identifier,
@@ -30,7 +29,7 @@ class FilteredDelta:
 
 
 def filter_candidate_delta(
-    con: duckdb.DuckDBPyConnection,
+    con: Connection,
     specs: Sequence[RelationSpec],
     candidate_tables: Mapping[str, str],
     active_views: Mapping[str, str],
@@ -75,7 +74,7 @@ def filter_candidate_delta(
             """
 
         dest_file = out_dir / f"{spec.name}.parquet"
-        count = copy_query_to_parquet(con, filter_query, dest_file)
+        count = copy_query_to_parquet(con, filter_query, dest_file, schema=spec.schema)
         if count > 0:
             filtered_parts[spec.name] = dest_file
             row_counts[spec.name] = count

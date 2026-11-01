@@ -19,7 +19,7 @@ from edgar_sec.foundation.hashing import file_sha256, sha256_text
 from edgar_sec.foundation.runtime.paths import part_file_name
 from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.duckdb import connect
+from edgar_sec.infra.storage.duckdb import arrow_reader, connect
 from edgar_sec.pipelines.document_planning.catalog_scope import (
     CatalogOccurrence,
     CatalogScope,
@@ -583,10 +583,9 @@ def _sort_and_write_relation_parts(
         buffered_rows = 0
 
     with connect() as con:
-        reader = con.execute(
-            _RELATION_QUERY[relation],
-            [str(spool_path)],
-        ).to_arrow_reader(read_batch_size)
+        reader = arrow_reader(
+            con, _RELATION_QUERY[relation], [str(spool_path)], read_batch_size
+        )
         for batch in reader:
             forms = batch.column(
                 batch.schema.get_field_index("partition_form")

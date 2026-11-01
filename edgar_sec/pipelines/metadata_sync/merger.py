@@ -255,6 +255,7 @@ def publish_cik_index(
             "SELECT DISTINCT cik FROM read_parquet(?) ORDER BY cik",
             path,
             params=[[str(part) for part in part_paths]],
+            schema=SNAPSHOT_CIK_INDEX_SCHEMA,
         )
     finally:
         con.close()

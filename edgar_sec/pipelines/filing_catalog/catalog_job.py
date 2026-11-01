@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any, NamedTuple
 
 from edgar_sec.domain.filing_catalog.schemas import (
+    PROFILE_SCHEMA,
     PROFILE_SCHEMA_VERSION,
     SCHEMA_VERSION,
     TARGET_SCHEMA,
@@ -320,7 +321,9 @@ def materialize(
         else:
             profile_query = build_profile_query("source")
         profiles_path = staging_dir / SNAPSHOT_FILE
-        profile_count = copy_query_to_parquet(con, profile_query, profiles_path, groups)
+        profile_count = copy_query_to_parquet(
+            con, profile_query, profiles_path, groups, schema=PROFILE_SCHEMA
+        )
         emit_progress(
             progress,
             {
@@ -348,7 +351,9 @@ def materialize(
                 query = build_delta_unnest_query(str(source_path), base_target_paths)
             else:
                 query = build_part_unnest_query(str(source_path))
-            rows = copy_query_to_parquet(con, query, shard_path, groups)
+            rows = copy_query_to_parquet(
+                con, query, shard_path, groups, schema=TARGET_SCHEMA
+            )
             total_target_rows += rows
             part_metadata.append(
                 {

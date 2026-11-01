@@ -13,7 +13,7 @@ from edgar_sec.domain.document_inventory.models import (
 )
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
-from edgar_sec.infra.storage.duckdb import connect, sql_path_list
+from edgar_sec.infra.storage.duckdb import arrow_reader, connect, sql_path_list
 from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 
 from .checkpoint import OUTCOME_SCHEMA, RETRYABLE_STATUSES, outcome_row
@@ -140,10 +140,11 @@ class ProgressStore:
         ).fetchone()[0]
         if invalid:
             raise ValueError("progress rows fall outside chunk membership")
-        reader = self._con.execute(
+        reader = arrow_reader(
+            self._con,
             "SELECT accession FROM expected ANTI JOIN completed USING(accession) "
-            "ORDER BY accession"
-        ).to_arrow_reader(batch_size=resolve_read_batch_size())
+            "ORDER BY accession",
+        )
         missing: list[str] = []
         for batch in reader:
             missing.extend(
@@ -218,9 +219,7 @@ class ProgressStore:
                 writers.write_entry_batch,
             ),
         ):
-            reader = self._con.execute(query).to_arrow_reader(
-                batch_size=resolve_read_batch_size()
-            )
+            reader = arrow_reader(self._con, query)
             for batch in reader:
                 writer(batch)
 
@@ -231,9 +230,11 @@ class ProgressStore:
         entry_files = sql_path_list([str(entries_path)])
         batch_size = resolve_read_batch_size()
         try:
-            reader = source.execute(
-                f"SELECT * FROM read_parquet({outcome_files}) ORDER BY accession"
-            ).to_arrow_reader(batch_size=batch_size)
+            reader = arrow_reader(
+                source,
+                f"SELECT * FROM read_parquet({outcome_files}) ORDER BY accession",
+                batch_size=batch_size,
+            )
             for batch in reader:
                 for index in range(batch.num_rows):
                     outcome = {
@@ -245,11 +246,13 @@ class ProgressStore:
                     accession = outcome["accession"]
                     if self.has_completed(accession):
                         continue
-                    entries = entry_source.execute(
+                    entries = arrow_reader(
+                        entry_source,
                         f"SELECT * FROM read_parquet({entry_files}) "
                         "WHERE accession = ? ORDER BY entry_id",
                         [accession],
-                    ).to_arrow_reader(batch_size=batch_size)
+                        batch_size=batch_size,
+                    )
 
                     def values():
                         for entry_batch in entries:

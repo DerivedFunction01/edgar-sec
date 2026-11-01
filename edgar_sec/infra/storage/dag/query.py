@@ -8,10 +8,11 @@ from __future__ import annotations
 from collections.abc import Mapping, Sequence
 from pathlib import Path
 
-import duckdb
 import pyarrow as pa
 
 from edgar_sec.infra.storage.duckdb import (
+    Connection,
+    arrow_table,
     sql_identifier,
     sql_path_list,
     sql_quoted_identifier,
@@ -69,7 +70,7 @@ def prune_parts_for_range(
 
 
 def compile_pruned_views(
-    con: duckdb.DuckDBPyConnection,
+    con: Connection,
     specs: Sequence[RelationSpec],
     lineage: LineageChain,
     snapshots_root: Path | str,
@@ -176,7 +177,7 @@ def compile_pruned_views(
 
 
 def query_point(
-    con: duckdb.DuckDBPyConnection,
+    con: Connection,
     spec: RelationSpec,
     lineage: LineageChain,
     snapshots_root: Path | str,
@@ -197,7 +198,7 @@ def query_point(
     }
     compile_pruned_views(con, target_specs, lineage, snapshots_root, ranges)
     stmt = f"SELECT * FROM active_{sql_identifier(spec.name)} WHERE {sql_identifier(col)} = ?"
-    return con.execute(stmt, [key_value]).to_arrow_table()
+    return arrow_table(con, stmt, [key_value], schema=spec.schema)
 
 
 __all__ = [

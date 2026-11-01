@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import duckdb
 import pytest
 
 from edgar_sec.domain.filing_catalog.filters import (
@@ -16,6 +15,7 @@ from edgar_sec.engine.selection.predicates import (
     date_selection_sql,
     suffix_sql,
 )
+from tests.support import duckdb_connection
 
 
 def test_suffix_sql_is_true_when_unconstrained() -> None:
@@ -118,7 +118,7 @@ def _select_report_dates(selection_text: str, rows: list[str]) -> list[str]:
     """Both wirings are executed so the tests pin that they select the same rows;
     the projection exists for speed, not for a different answer.
     """
-    con = duckdb.connect()
+    con = duckdb_connection()
     try:
         con.execute("CREATE TABLE src(report_date VARCHAR)")
         con.executemany("INSERT INTO src VALUES (?)", [(value,) for value in rows])

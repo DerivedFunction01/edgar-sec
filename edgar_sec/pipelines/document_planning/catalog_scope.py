@@ -16,7 +16,7 @@ from edgar_sec.domain.plan.discovery import read_plan_envelope
 from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
 from edgar_sec.foundation.serialization import canonical_hash
-from edgar_sec.infra.storage.duckdb import connect
+from edgar_sec.infra.storage.duckdb import arrow_reader, connect
 from edgar_sec.infra.storage.parquet import count_parquet_rows, read_parquet_schema
 from .paths import (
     CatalogPaths,
@@ -385,9 +385,9 @@ def _iter_accessions(
     occurrences: dict[str, CatalogOccurrence] = {}
     try:
         with connect() as con:
-            reader = con.execute(
-                query, [[str(part.path) for part in scope.parts]]
-            ).to_arrow_reader(batch_size)
+            reader = arrow_reader(
+                con, query, [[str(part.path) for part in scope.parts]], batch_size
+            )
             for batch in reader:
                 for row in batch.select(("filename", *_SCOPE_COLUMNS)).to_pylist():
                     if part_forms.get(row.get("filename")) != row.get("form"):

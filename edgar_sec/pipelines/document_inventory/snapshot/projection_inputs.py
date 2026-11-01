@@ -18,9 +18,8 @@ from edgar_sec.domain.plan import fingerprint
 from edgar_sec.domain.plan.discovery import discover_plans
 from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
-from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.duckdb import connect
+from edgar_sec.infra.storage.duckdb import arrow_reader, connect
 from edgar_sec.pipelines.document_inventory.cohort import CohortInputError
 from edgar_sec.pipelines.document_inventory.paths import (
     FORM_PARTITION_GLOB,
@@ -58,11 +57,12 @@ def _read_json(path: Path, *, label: str) -> dict[str, Any]:
 def _plan_fingerprint(root: Path, plan_meta: dict[str, Any]) -> str:
     locator_path = root / LOCATOR_GROUPS_FILE
     with connect() as con:
-        reader = con.execute(
+        reader = arrow_reader(
+            con,
             "SELECT document_locator_key FROM read_parquet(?) "
             "ORDER BY document_locator_key",
             [str(locator_path)],
-        ).to_arrow_reader(batch_size=resolve_read_batch_size())
+        )
 
         def sorted_keys() -> Iterator[str]:
             for batch in reader:

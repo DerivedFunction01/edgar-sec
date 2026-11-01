@@ -26,7 +26,6 @@ from edgar_sec.foundation.runtime.memory import reclaim
 from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
 )
-from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.foundation.runtime.resources import (
     RuntimeResourceProfile,
     derive_resources,
@@ -35,6 +34,7 @@ from edgar_sec.foundation.runtime.settings import resolve_settings
 from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.infra.storage.atomic import atomic_write_json
 from edgar_sec.infra.storage.duckdb import (
+    arrow_reader,
     connect,
     copy_query_to_parquet,
     sql_literal,
@@ -171,10 +171,10 @@ def _validate_output_schema(path: Path, schema: pa.Schema) -> None:
 
 
 def _work_items(connection: Any):
-    reader = connection.execute(
-        "SELECT accession, index_url, vehicle, archive_cik, primary_document, "
-        "is_inline_xbrl, form FROM work_candidates ORDER BY accession"
-    ).to_arrow_reader(batch_size=resolve_read_batch_size())
+    reader = arrow_reader(
+        connection,
+        "SELECT accession, index_url, vehicle, archive_cik, primary_document, is_inline_xbrl, form FROM work_candidates ORDER BY accession",
+    )
     for batch_index, batch in enumerate(reader, start=1):
         yield from (
             IndexWorkItem(
@@ -657,12 +657,13 @@ def project_catalog_plan(
             "SELECT accession, filing_cik, form, filing_date, report_date, index_url "
             "FROM cohort_accessions_with_url ORDER BY accession",
             accessions_stage,
+            schema=_COHORT_ACCESSIONS_SCHEMA,
         )
         source_count = copy_query_to_parquet(
             connection,
-            f"SELECT accession, source_cik, {sql_literal(source_id)} AS first_seen_by "
-            "FROM cohort_sources ORDER BY source_cik, accession",
+            f"SELECT accession, source_cik, {sql_literal(source_id)} AS first_seen_by FROM cohort_sources ORDER BY source_cik, accession",
             sources_stage,
+            schema=_COHORT_SOURCES_SCHEMA,
         )
         work_identity = write_work_order(work_order_stage, _work_items(connection))
         _validate_output_schema(accessions_stage, _COHORT_ACCESSIONS_SCHEMA)

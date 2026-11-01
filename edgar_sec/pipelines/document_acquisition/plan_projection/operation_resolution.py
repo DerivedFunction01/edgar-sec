@@ -14,7 +14,7 @@ from edgar_sec.engine.document_processing.acquisition_capabilities import (
 from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
 )
-from edgar_sec.infra.storage.duckdb import connect, sql_path_list
+from edgar_sec.infra.storage.duckdb import arrow_reader, connect, sql_path_list
 from edgar_sec.pipelines.document_acquisition.arrow_schemas import (
     RESOLVED_OPERATION_SCHEMA,
 )
@@ -141,8 +141,8 @@ def iter_resolved_operation_batches(
     LEFT JOIN {source_scan} s ON s.source_request_id = i.source_request_id
     ORDER BY t.target_id, o.operation"""
     with connect() as connection:
-        reader = connection.execute(query).to_arrow_reader(
-            resolve_parquet_read_batch_size()
+        reader = arrow_reader(
+            connection, query, batch_size=resolve_parquet_read_batch_size()
         )
         group_target: dict[str, Any] | None = None
         group_operations: list[dict[str, Any]] = []
@@ -251,8 +251,8 @@ def iter_resolved_operation_rows(
         ON source.source_request_id = operation.source_request_id
     ORDER BY operation.target_id, operation.operation"""
     with connect() as connection:
-        reader = connection.execute(query).to_arrow_reader(
-            resolve_parquet_read_batch_size()
+        reader = arrow_reader(
+            connection, query, batch_size=resolve_parquet_read_batch_size()
         )
         for batch in reader:
             yield from batch.to_pylist()

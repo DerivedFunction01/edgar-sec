@@ -7,6 +7,9 @@ import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.infra.storage.duckdb import (
+    STORAGE_COMPATIBILITY_VERSION,
+    arrow_reader,
+    arrow_table,
     connect,
     copy_query_to_parquet,
     find_duplicate_keys,
@@ -168,3 +171,88 @@ def test_connect_persists_to_a_configured_database(tmp_path: Path) -> None:
         con.execute("INSERT INTO progress VALUES ('saved')")
     with connect(database=database) as con:
         assert con.execute("SELECT value FROM progress").fetchone() == ("saved",)
+
+
+_NOT_NULL_SCHEMA = pa.schema(
+    [
+        pa.field("cik", pa.string(), nullable=False),
+        pa.field("val", pa.int64(), nullable=False),
+    ]
+)
+
+
+def test_copy_with_declared_schema_round_trips_nullability(tmp_path: Path) -> None:
+    source = tmp_path / "source.parquet"
+    table = pa.table({"cik": ["0000000001"], "val": [7]}, schema=_NOT_NULL_SCHEMA)
+    pq.write_table(table, source)
+    destination = tmp_path / "out.parquet"
+    with connect() as con:
+        rows = copy_query_to_parquet(
+            con,
+            "SELECT cik, val FROM read_parquet(?)",
+            destination,
+            params=[str(source)],
+            schema=_NOT_NULL_SCHEMA,
+        )
+    assert rows == 1
+    assert pq.read_schema(destination).equals(_NOT_NULL_SCHEMA, check_metadata=False)
+
+
+def test_copy_with_declared_schema_streams_past_one_read_batch(
+    tmp_path: Path,
+) -> None:
+    """A row count above the Parquet read-batch size proves the rewrite streams."""
+    destination = tmp_path / "big.parquet"
+    total = 70_000
+    with connect() as con:
+        rows = copy_query_to_parquet(
+            con,
+            f"SELECT printf('%010d', i) AS cik, i AS val FROM range({total}) AS t(i)",
+            destination,
+            schema=_NOT_NULL_SCHEMA,
+        )
+    assert rows == total
+    assert pq.read_schema(destination).equals(_NOT_NULL_SCHEMA, check_metadata=False)
+
+
+def test_arrow_table_binds_positional_and_named_params() -> None:
+    with connect() as con:
+        positional = arrow_table(con, "SELECT ?::VARCHAR AS cik", ["0000000001"])
+        named = arrow_table(con, "SELECT $cik AS cik", {"cik": "0000000002"})
+    assert positional.column("cik")[0].as_py() == "0000000001"
+    assert named.column("cik")[0].as_py() == "0000000002"
+
+
+def test_arrow_table_casts_to_the_declared_schema() -> None:
+    with connect() as con:
+        con.register(
+            "registered",
+            pa.table({"cik": ["0000000001"], "val": [7]}, schema=_NOT_NULL_SCHEMA),
+        )
+        table = arrow_table(con, "SELECT * FROM registered", schema=_NOT_NULL_SCHEMA)
+    assert table.schema.equals(_NOT_NULL_SCHEMA, check_metadata=False)
+
+
+def test_arrow_reader_batches_and_casts() -> None:
+    with connect() as con:
+        reader = arrow_reader(
+            con,
+            "SELECT printf('%010d', i) AS cik, i AS val FROM range(5) AS t(i)",
+            batch_size=2,
+            schema=_NOT_NULL_SCHEMA,
+        )
+        batches = list(reader)
+    assert [batch.num_rows for batch in batches] == [2, 2, 1]
+    assert all(
+        batch.schema.equals(_NOT_NULL_SCHEMA, check_metadata=False) for batch in batches
+    )
+
+
+def test_file_database_carries_the_storage_compatibility_version(
+    tmp_path: Path,
+) -> None:
+    with connect(database=tmp_path / "state.duckdb") as con:
+        version = con.execute(
+            "SELECT current_setting('storage_compatibility_version')"
+        ).fetchone()[0]
+    assert str(version) == STORAGE_COMPATIBILITY_VERSION

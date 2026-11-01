@@ -26,7 +26,12 @@ from edgar_sec.foundation.runtime.paths import PLAN_FILE_NAME, part_file_name
 from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
 )
-from edgar_sec.infra.storage.duckdb import connect, sql_literal, sql_path_list
+from edgar_sec.infra.storage.duckdb import (
+    arrow_reader,
+    connect,
+    sql_literal,
+    sql_path_list,
+)
 from edgar_sec.infra.storage.parquet import StagedParquetWriter
 from edgar_sec.pipelines.document_acquisition.arrow_schemas import (
     RESOLVED_OPERATION_SCHEMA,
@@ -611,9 +616,10 @@ def _iter_projected_batches(parts: tuple[Path, ...]):
         "COALESCE(inventory_entry_id, ''), status"
     )
     with connect() as con:
-        reader = con.execute(query).to_arrow_reader(batch_size)
-        for batch in reader:
-            yield batch.cast(WORK_ORDER_SCHEMA)
+        reader = arrow_reader(
+            con, query, batch_size=batch_size, schema=WORK_ORDER_SCHEMA
+        )
+        yield from reader
 
 
 def load_acquisition_work_order(

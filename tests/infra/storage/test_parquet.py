@@ -9,10 +9,12 @@ import pytest
 from edgar_sec.foundation.runtime.settings.parquet import DEFAULT_ROW_GROUP_SIZE
 from edgar_sec.infra.storage.parquet import (
     StagedParquetWriter,
+    cast_table,
     count_parquet_rows,
     read_parquet_key_bounds,
     read_parquet_schema,
     read_parquet_table,
+    rewrite_parquet_schema,
     write_parquet_table,
 )
 
@@ -280,3 +282,33 @@ def test_read_parquet_key_bounds_single_row(tmp_path: Path) -> None:
     key_min, key_max = read_parquet_key_bounds(path, "cik")
     assert key_min == "only"
     assert key_max == "only"
+
+
+_NOT_NULL_SCHEMA = pa.schema(
+    [
+        pa.field("cik", pa.string(), nullable=False),
+        pa.field("val", pa.int64(), nullable=False),
+    ]
+)
+
+
+def test_cast_table_enforces_the_declared_nullability() -> None:
+    table = _table(["0000000001"], [7])
+    casted = cast_table(table, _NOT_NULL_SCHEMA)
+    assert casted.schema.equals(_NOT_NULL_SCHEMA, check_metadata=False)
+    with pytest.raises(ValueError, match="null values to non-nullable"):
+        cast_table(_table([None], [7]), _NOT_NULL_SCHEMA)
+
+
+def test_rewrite_parquet_schema_replaces_the_footer_schema(
+    tmp_path: Path,
+) -> None:
+    source = tmp_path / "source.parquet"
+    write_parquet_table(_table(["b", "a"], [2, 1]), source)
+    destination = tmp_path / "rewritten.parquet"
+    rows = rewrite_parquet_schema(source, destination, _NOT_NULL_SCHEMA)
+    assert rows == 2
+    assert read_parquet_schema(destination).equals(
+        _NOT_NULL_SCHEMA, check_metadata=False
+    )
+    assert read_parquet_table(destination).column("cik").to_pylist() == ["b", "a"]

@@ -155,3 +155,30 @@ def test_index_persists_across_reopen(tmp_path: Path) -> None:
     assert reopened.row_count() == 1
     assert reopened.rows_for_filing(_CIK_A, _ACC_A)[0].head == "H_ASSET"
     reopened.close()
+
+
+def test_failed_replace_rolls_back_to_the_prior_rows(tmp_path: Path) -> None:
+    """A statement failure mid-transaction leaves the filing's old rows intact
+    and the connection usable — the DuckDB 2.0 transaction-discipline pin."""
+    index = _index(tmp_path)
+    original = (_row(_CIK_A, _ACC_A, "us-gaap:Assets", "H_ASSET"),)
+    index.replace_filing(original)
+    connection = index._con
+
+    class _FailOnInsert:
+        def execute(self, query, *args):  # noqa: ANN001, ANN202
+            return connection.execute(query, *args)
+
+        def executemany(self, query, *args):  # noqa: ANN001, ANN202
+            raise RuntimeError("injected insert failure")
+
+        def __getattr__(self, name):  # noqa: ANN001, ANN204
+            return getattr(connection, name)
+
+    index._con = _FailOnInsert()
+    with pytest.raises(RuntimeError, match="injected insert failure"):
+        index.replace_filing((_row(_CIK_A, _ACC_A, "us-gaap:New", "H_NEW"),))
+    index._con = connection
+    assert index.rows_for_filing(_CIK_A, _ACC_A) == original
+    assert index.replace_filing((_row(_CIK_A, _ACC_A, "us-gaap:New", "H_NEW"),)) == 1
+    index.close()

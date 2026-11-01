@@ -8,13 +8,18 @@ from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Iterator
 
-import duckdb
 import pyarrow as pa
 
 from edgar_sec.domain.document.aggregate import FilingAggregate, FilingAttachment
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.domain.filing_catalog.filters import DateSelection
-from edgar_sec.infra.storage.duckdb import connect
+from edgar_sec.infra.storage.duckdb import (
+    Connection,
+    Relation,
+    arrow_table,
+    connect,
+    relation_table,
+)
 from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.pipelines.document_acquisition.paths import resolve_acquisition_paths
 
@@ -59,7 +64,7 @@ class FilingsResult:
     query_tables: dict[str, Any] | None = None
     query_factories: dict[str, Any] | None = None
 
-    def _prepare_query_con(self, con: duckdb.DuckDBPyConnection) -> None:
+    def _prepare_query_con(self, con: Connection) -> None:
         if self.query_tables:
             for tbl_name, tbl in self.query_tables.items():
                 con.register(tbl_name, tbl)
@@ -98,9 +103,7 @@ class FilingsResult:
     def _catalog_table(self) -> pa.Table:
         if self.query_backed and self.query_sql:
             with connect() as con:
-                return con.execute(
-                    self.query_sql, list(self.query_params)
-                ).to_arrow_table()
+                return arrow_table(con, self.query_sql, list(self.query_params))
         if self.items is None and not self.snapshot_backed and self.target_parquet_glob:
             with connect() as con:
                 q = (
@@ -110,7 +113,7 @@ class FilingsResult:
                     "target_url AS primary_doc_url "
                     "FROM read_parquet(?) ORDER BY accession"
                 )
-                return con.execute(q, [self.target_parquet_glob]).to_arrow_table()
+                return arrow_table(con, q, [self.target_parquet_glob])
         return build_catalog_table(self._all_filings())
 
     def _index_table(self) -> pa.Table:
@@ -148,7 +151,7 @@ class FilingsResult:
         """Return Arrow table of financial statement footnotes for covered filings."""
         return self._notes_table()
 
-    def sql(self, query: str, **params: Any) -> duckdb.DuckDBPyRelation:
+    def sql(self, query: str, **params: Any) -> Relation:
         """Run arbitrary SQL across catalog, index, exhibits, linkbases, and payload."""
         if self.snapshot_backed:
             return self._snapshot_relation(query, params)
@@ -200,7 +203,7 @@ class FilingsResult:
 
     def _snapshot_relation(
         self, query: str, params: dict[str, Any] | None = None
-    ) -> duckdb.DuckDBPyRelation:
+    ) -> Relation:
         from edgar_sec.apps.client.snapshots import register_snapshot_views
 
         con = connect()
@@ -222,13 +225,11 @@ class FilingsResult:
     def to_arrow(self) -> pa.Table:
         """Export core catalog filings table as a PyArrow Table."""
         if self.snapshot_backed:
-            return self._snapshot_relation("SELECT * FROM catalog").to_arrow_table()
+            return relation_table(self._snapshot_relation("SELECT * FROM catalog"))
         if self.query_backed and self.query_sql:
             with connect() as con:
                 self._prepare_query_con(con)
-                return con.execute(
-                    self.query_sql, list(self.query_params)
-                ).to_arrow_table()
+                return arrow_table(con, self.query_sql, list(self.query_params))
         return self._catalog_table()
 
     def to_df(self) -> pd.DataFrame:

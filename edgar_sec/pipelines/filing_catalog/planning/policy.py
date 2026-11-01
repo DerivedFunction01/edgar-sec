@@ -11,7 +11,9 @@ from typing import Any
 
 from edgar_sec.domain.filing_catalog.schemas import (
     LOCATOR_POLICY_COLUMNS,
+    LOCATOR_POLICY_SCHEMA,
     OCCURRENCE_FEATURE_COLUMNS,
+    POLICY_TARGET_SCHEMA,
     SCOPE_POLICY,
 )
 from edgar_sec.engine.selection.features import FeatureSnapshotBuilder
@@ -31,9 +33,9 @@ from edgar_sec.engine.selection.selector import DeficitSelector
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME
 from edgar_sec.foundation.runtime.progress import ProgressCallback, emit_progress
 from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
-from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
 from edgar_sec.infra.storage.duckdb import (
+    arrow_table,
     connect,
     copy_query_to_parquet,
     sql_literal,
@@ -308,46 +310,43 @@ def plan_policy(
                 "ON o.document_locator_key = s.document_locator_key"
             )
 
-            selected_forms = con.execute(
-                f"SELECT DISTINCT form FROM ({occurrence_source}) ORDER BY form"
-            ).to_arrow_reader(batch_size=resolve_read_batch_size())
+            selected_forms = arrow_table(
+                con, f"SELECT DISTINCT form FROM ({occurrence_source}) ORDER BY form"
+            )
+            form_names = [str(value) for value in selected_forms.column(0).to_pylist()]
             target_columns = ", ".join(
                 f"o.{name}" for name in OCCURRENCE_FEATURE_COLUMNS
             )
             counts: dict[str, int] = {}
             total_rows = 0
-            for form_batch in selected_forms:
-                form_values = form_batch.column(0)
-                for row_index in range(form_batch.num_rows):
-                    form_name = str(form_values[row_index].as_py())
-                    destination = (
-                        targets_root
-                        / form_partition_directory(form_name)
-                        / DATA_FILE_NAME
-                    )
-                    query = (
-                        f"SELECT {target_columns} FROM ({occurrence_source}) "
-                        f"WHERE form = {sql_literal(form_name)} "
-                        "ORDER BY o.document_locator_key, o.occurrence_id"
-                    )
-                    counts[form_name] = copy_query_to_parquet(
-                        con, query, destination, row_group_size
-                    )
-                    total_rows += counts[form_name]
-                    emit_progress(
-                        progress,
-                        {
-                            "type": "merge_stage",
-                            "stage": f"targets:{form_name}",
-                            "rows": counts[form_name],
-                        },
-                    )
+            for form_name in form_names:
+                destination = (
+                    targets_root / form_partition_directory(form_name) / DATA_FILE_NAME
+                )
+                query = (
+                    f"SELECT {target_columns} FROM ({occurrence_source}) "
+                    f"WHERE form = {sql_literal(form_name)} "
+                    "ORDER BY o.document_locator_key, o.occurrence_id"
+                )
+                counts[form_name] = copy_query_to_parquet(
+                    con, query, destination, row_group_size, schema=POLICY_TARGET_SCHEMA
+                )
+                total_rows += counts[form_name]
+                emit_progress(
+                    progress,
+                    {
+                        "type": "merge_stage",
+                        "stage": f"targets:{form_name}",
+                        "rows": counts[form_name],
+                    },
+                )
 
             locator_count = copy_query_to_parquet(
                 con,
                 _policy_locator_groups_query(locator_source),
                 staging / LOCATOR_GROUPS_FILE,
                 row_group_size,
+                schema=LOCATOR_POLICY_SCHEMA,
             )
 
             if selection.reserve_count:

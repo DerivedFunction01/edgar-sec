@@ -52,7 +52,7 @@ def _resolve_ticker_to_cik(
         try:
             row = con.execute(
                 "SELECT cik FROM read_parquet(?) "
-                "WHERE list_contains(list_transform(listings, x -> upper(x.ticker)), ?) "
+                "WHERE list_contains(list_transform(listings, lambda x: upper(x.ticker)), ?) "
                 "LIMIT 1",
                 [profile_pattern, ticker],
             ).fetchone()

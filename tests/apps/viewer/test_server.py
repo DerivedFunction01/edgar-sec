@@ -5,13 +5,13 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import duckdb
 import pytest
 from fastapi.testclient import TestClient
 
 from edgar_sec.apps.viewer.model import artifact_id
 from edgar_sec.apps.viewer.server import create_app
 from tests.apps.viewer.conftest import build_metadata_snapshot
+from tests.support import duckdb_connection
 
 
 @pytest.fixture
@@ -75,7 +75,7 @@ def test_native_duckdb_tables_browse_read_only_and_console_is_disabled(
     root = tmp_path / "artifacts"
     root.mkdir()
     db_path = root / "source.duckdb"
-    conn = duckdb.connect(str(db_path))
+    conn = duckdb_connection(db_path)
     try:
         conn.execute("CREATE TABLE visible (value INTEGER)")
         conn.execute("INSERT INTO visible VALUES (7)")

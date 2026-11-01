@@ -33,7 +33,7 @@ from .merger import (
 )
 from .paths import MetadataPaths, resolve_run_paths
 from .planner import Plan, build_plan, utc_now_iso, write_plan
-from .roster import Roster, RosterError, read_roster
+from .roster import SNAPSHOT_CIK_INDEX_SCHEMA, Roster, RosterError, read_roster
 from .sec_client import SubmissionsClient
 from .snapshot import SnapshotCatalogError, resolve_snapshot_parts
 from .validation import find_duplicate_accessions
@@ -187,6 +187,7 @@ def derive_delta_roster(
                 "SELECT DISTINCT cik FROM read_parquet(?)",
                 base_dataset,
                 params=[sources],
+                schema=SNAPSHOT_CIK_INDEX_SCHEMA,
             )
         finally:
             con.close()

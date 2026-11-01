@@ -136,7 +136,7 @@ class PipelineRunner:
                     "WITH source_tickers AS (" + tickers + "), mapped AS ("
                     "SELECT s.ticker, min(try_cast(p.cik AS BIGINT)) AS cik "
                     "FROM source_tickers s LEFT JOIN read_parquet(?) p "
-                    "ON list_contains(list_transform(p.listings, x -> upper(x.ticker)), s.ticker) "
+                    "ON list_contains(list_transform(p.listings, lambda x: upper(x.ticker)), s.ticker) "
                     "GROUP BY s.ticker) SELECT ticker, cik FROM mapped ORDER BY ticker",
                     [str(input_path), profile_pattern],
                 )

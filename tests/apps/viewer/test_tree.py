@@ -5,11 +5,11 @@ from __future__ import annotations
 import hashlib
 from pathlib import Path
 
-import duckdb
 import pytest
 
 from edgar_sec.apps.viewer.model import DatasetError, artifact_id
 from edgar_sec.apps.viewer.tree import read_text_file, tree_children
+from tests.support import duckdb_connection
 
 
 def _children(root: Path, relative: str) -> list[dict]:
@@ -50,7 +50,7 @@ def test_database_is_one_tree_node_with_lazy_table_children(tmp_path: Path) -> N
     root = tmp_path / "artifacts"
     root.mkdir()
     path = root / "sample.duckdb"
-    conn = duckdb.connect(str(path))
+    conn = duckdb_connection(path)
     try:
         conn.execute("CREATE TABLE alpha (id INTEGER)")
         conn.execute("CREATE TABLE beta (id INTEGER)")

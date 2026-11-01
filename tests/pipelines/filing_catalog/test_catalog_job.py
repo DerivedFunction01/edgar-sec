@@ -7,7 +7,6 @@ import shutil
 from pathlib import Path
 from typing import Any
 
-import duckdb
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
@@ -37,7 +36,7 @@ from edgar_sec.pipelines.filing_catalog.paths import (
     resolve_filing_catalog_paths,
 )
 from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
-from tests.support import catalog_fixture_path
+from tests.support import catalog_fixture_path, duckdb_connection
 
 _BOOL_COLUMNS = {
     "is_xbrl",
@@ -403,7 +402,7 @@ def test_form_counts_sum_across_shards(tmp_path: Path, sample_source: Path) -> N
     catalog_paths = resolve_filing_catalog_paths(tmp_path / "out")
     snapshot_dir = catalog_paths.snapshot_dir(str(manifest["catalog_id"]))
     for part in manifest["parts"]:
-        with duckdb.connect() as con:
+        with duckdb_connection() as con:
             rows = con.execute(
                 f"SELECT form, count(*) FROM read_parquet("
                 f"'{snapshot_dir / part['path']}') WHERE form IS NOT NULL "

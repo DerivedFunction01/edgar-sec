@@ -426,7 +426,9 @@ def _write_relation_part(
 ) -> dict[str, Any] | None:
     staged = stage_root / relation / part_file_name(0)
     staged.parent.mkdir(parents=True, exist_ok=True)
-    count = copy_query_to_parquet(con, query, staged)
+    count = copy_query_to_parquet(
+        con, query, staged, schema=_RELATION_SCHEMAS[relation]
+    )
     if count == 0:
         if staged.exists():
             staged.unlink()

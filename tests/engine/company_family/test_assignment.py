@@ -6,7 +6,6 @@ from __future__ import annotations
 
 from typing import Any
 
-import duckdb
 import pytest
 
 from edgar_sec.engine.company_family.assignment import (
@@ -14,6 +13,7 @@ from edgar_sec.engine.company_family.assignment import (
     build_assignment,
     register_udfs,
 )
+from tests.support import duckdb_connection
 
 CORPUS: list[tuple[str, str]] = [
     ("0000019617", "JPMorgan Chase & Co"),
@@ -51,7 +51,7 @@ CORPUS: list[tuple[str, str]] = [
 
 def _rows(corpus: list[tuple[str, str]] = CORPUS) -> dict[str, str]:
     """Assign a corpus and return `cik -> company_family`."""
-    con = duckdb.connect()
+    con = duckdb_connection()
     values = ", ".join("('%s', '%s')" % (c, n.replace("'", "''")) for c, n in corpus)
     build_assignment(con, f"SELECT * FROM (VALUES {values}) t(cik, name)")
     return dict(
@@ -129,7 +129,7 @@ def test_every_family_key_is_namespaced() -> None:
 
 
 def test_stats_cover_every_registrant_exactly_once() -> None:
-    con = duckdb.connect()
+    con = duckdb_connection()
     values = ", ".join("('%s', '%s')" % (c, n) for c, n in CORPUS)
     stats = build_assignment(con, f"SELECT * FROM (VALUES {values}) t(cik, name)")
     assert stats.registrants == len(CORPUS)
@@ -143,7 +143,7 @@ def test_assignment_is_deterministic_for_the_same_corpus() -> None:
 
 
 def test_a_resolver_is_registered_once_and_is_reusable() -> None:
-    con = duckdb.connect()
+    con = duckdb_connection()
     register_udfs(con)
     register_udfs(con)
     assert con.execute("SELECT fam_stem('FT 199')").fetchone()[0] == "ft"
@@ -156,7 +156,7 @@ def test_the_published_relation_normalizes_cik_padding() -> None:
 
 def test_a_build_never_touches_the_network(tmp_path: Any) -> None:
     """The roster is the only input, so the engine has no source to fetch."""
-    con = duckdb.connect()
+    con = duckdb_connection()
     values = ", ".join("('%s', '%s')" % (c, n) for c, n in CORPUS[:3])
     build_assignment(con, f"SELECT * FROM (VALUES {values}) t(cik, name)")
     assert con.execute("SELECT count(*) FROM family_assignment").fetchone()[0] == 3

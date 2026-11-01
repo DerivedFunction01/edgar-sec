@@ -8,7 +8,6 @@ import contextlib
 import threading
 from typing import Any
 
-import duckdb
 import pytest
 
 from edgar_sec.apps.viewer.session import (
@@ -16,6 +15,7 @@ from edgar_sec.apps.viewer.session import (
     execute_bounded,
     open_connection,
 )
+from edgar_sec.infra.storage.duckdb import DuckDBError
 
 
 def test_open_connection_produces_a_usable_budgeted_connection() -> None:
@@ -51,7 +51,7 @@ def test_execute_bounded_cancels_its_timer_on_failure() -> None:
     conn = open_connection()
     before = threading.active_count()
     try:
-        with contextlib.suppress(duckdb.Error):
+        with contextlib.suppress(DuckDBError):
             execute_bounded(conn, "SELECT * FROM does_not_exist", [], 30.0)
     finally:
         conn.close()
@@ -62,7 +62,7 @@ def test_execute_bounded_interrupts_a_query_that_overruns() -> None:
     """A runaway query is cut off by conn.interrupt, not left to finish."""
     conn = open_connection()
     try:
-        with pytest.raises(duckdb.Error, match="(?i)interrupt"):
+        with pytest.raises(DuckDBError, match="(?i)interrupt"):
             execute_bounded(conn, "SELECT count(*) FROM range(100000000000)", [], 0.5)
     finally:
         conn.close()
@@ -80,4 +80,18 @@ def test_no_module_level_state_to_leak_between_requests() -> Any:
         assert first is not second
     finally:
         first.close()
+        second.close()
+
+
+def test_per_query_connections_are_independent() -> None:
+    """Each viewer query opens its own connection: closing one leaves the
+    next fully usable (the per-query pattern DuckDB 2.0 must preserve)."""
+    first = open_connection()
+    first.execute("CREATE TABLE probe (value INTEGER)")
+    first.execute("INSERT INTO probe VALUES (1)")
+    first.close()
+    second = open_connection()
+    try:
+        assert execute_bounded(second, "SELECT 42", [], 5.0).fetchone()[0] == 42
+    finally:
         second.close()

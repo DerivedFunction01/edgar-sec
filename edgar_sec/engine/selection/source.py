@@ -26,8 +26,7 @@ from edgar_sec.engine.selection.predicates import (
     suffix_sql,
 )
 from edgar_sec.engine.selection.snapshot import load_snapshot_paths
-from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
-from edgar_sec.infra.storage.duckdb import connect
+from edgar_sec.infra.storage.duckdb import arrow_reader, connect
 
 # A tuple, not a comma-joined string, so the SELECT list and the row-to-dict zip
 # are generated from one source. Which names each grain selects is curated; their
@@ -265,8 +264,7 @@ class CandidateSource:
         params: Sequence[Any] = (),
         columns: Sequence[str] = POOL_COLUMNS,
     ) -> Iterator[dict[str, Any]]:
-        result = self._require().execute(query, list(params))
-        reader = result.to_arrow_reader(batch_size=resolve_read_batch_size())
+        reader = arrow_reader(self._require(), query, list(params))
 
         def iterate() -> Iterator[dict[str, Any]]:
             for batch in reader:
@@ -423,16 +421,16 @@ class CandidateSource:
         """Every nonempty `(form, era)` cell with its eligible count, excluding the selected
         set: a cell with nothing left is not capacity.
         """
-        result = self._require().execute(
+        reader = arrow_reader(
+            self._require(),
             f"""
             SELECT l.form, l.era, COUNT(*) AS available
             FROM {self._locator_source()}
             WHERE {self._exclusion_predicate()} AND {self.filters.predicate()}
             GROUP BY l.form, l.era
             ORDER BY l.form, l.era
-            """
+            """,
         )
-        reader = result.to_arrow_reader(batch_size=resolve_read_batch_size())
 
         def iterate() -> Iterator[tuple[str, str, int]]:
             for batch in reader:
@@ -734,7 +732,8 @@ class CandidateSource:
             return iter(())
         con = self._require()
         self._fill_locator_keys(locator_keys)
-        result = con.execute(
+        reader = arrow_reader(
+            con,
             f"""
             SELECT {_QUALIFIED_OCCURRENCE_SELECT}
             FROM {self.occurrence_relation} o
@@ -742,9 +741,7 @@ class CandidateSource:
               ON o.document_locator_key = r.document_locator_key
             ORDER BY o.document_locator_key, o.occurrence_id
             """,
-            [],
         )
-        reader = result.to_arrow_reader(batch_size=resolve_read_batch_size())
 
         def iterate() -> Iterator[dict[str, Any]]:
             for batch in reader:

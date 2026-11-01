@@ -23,9 +23,8 @@ from edgar_sec.domain.filing_catalog.schemas import (
 from edgar_sec.domain.plan import fingerprint
 from edgar_sec.foundation.hashing import file_sha256, is_sha256_hex_digest
 from edgar_sec.foundation.runtime.paths import DATA_FILE_NAME, PLAN_FILE_NAME
-from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.storage.atomic import atomic_write_json
-from edgar_sec.infra.storage.duckdb import connect, sql_literal
+from edgar_sec.infra.storage.duckdb import arrow_reader, connect, sql_literal
 from edgar_sec.pipelines.filing_catalog.paths import (
     FORM_PARTITION_GLOB,
     LOCATOR_GROUPS_FILE,
@@ -117,11 +116,12 @@ def plan_fingerprint_from_plan(plan_dir: str | Path, plan_meta: dict[str, Any]) 
     if not locator_path.is_file():
         raise FileNotFoundError(f"plan locator groups not found: {locator_path}")
     with connect() as con:
-        reader = con.execute(
+        reader = arrow_reader(
+            con,
             "SELECT document_locator_key FROM read_parquet("
             + sql_literal(str(locator_path))
-            + ") ORDER BY document_locator_key"
-        ).to_arrow_reader(batch_size=resolve_read_batch_size())
+            + ") ORDER BY document_locator_key",
+        )
 
         def sorted_keys() -> Iterator[str]:
             for batch in reader:

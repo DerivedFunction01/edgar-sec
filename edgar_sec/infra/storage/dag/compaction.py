@@ -92,6 +92,7 @@ def _compact_relation(
             part_path,
             compression=DEFAULT_COMPRESSION,
             params=params,
+            schema=spec.schema,
         )
 
         k_min, k_max = read_parquet_key_bounds(part_path, key_col)

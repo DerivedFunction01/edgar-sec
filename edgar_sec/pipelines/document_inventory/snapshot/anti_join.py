@@ -131,8 +131,8 @@ def _register_relation(
     relation.create_view(name, replace=True)
 
 
-def _copy(con, query: str, path: Path) -> int:
-    return copy_query_to_parquet(con, query, path)
+def _copy(con, query: str, path: Path, schema: pa.Schema) -> int:
+    return copy_query_to_parquet(con, query, path, schema=schema)
 
 
 def anti_join(
@@ -198,8 +198,8 @@ def anti_join(
             "WHERE EXISTS (SELECT 1 FROM current_accessions AS current "
             "WHERE current.accession = candidate.accession)"
         )
-        new_count = _copy(con, new_query, output_paths["new"])
-        known_count = _copy(con, known_query, output_paths["known"])
+        new_count = _copy(con, new_query, output_paths["new"], OUTCOME_SCHEMA)
+        known_count = _copy(con, known_query, output_paths["known"], OUTCOME_SCHEMA)
         if explicit_refresh:
             entry_query = (
                 "SELECT entry.* FROM staged_entries AS entry "
@@ -214,7 +214,7 @@ def anti_join(
                 "WHERE NOT EXISTS (SELECT 1 FROM current_accessions AS current "
                 "WHERE current.accession = candidates.accession)"
             )
-        entry_count = _copy(con, entry_query, output_paths["entries"])
+        entry_count = _copy(con, entry_query, output_paths["entries"], ENTRY_SCHEMA)
         source_query = (
             "SELECT candidate.accession, candidate.source_cik, "
             "min(candidate.first_seen_by) AS first_seen_by "
@@ -224,7 +224,12 @@ def anti_join(
             "AND current.source_cik = candidate.source_cik) "
             "GROUP BY candidate.accession, candidate.source_cik"
         )
-        source_count = _copy(con, source_query, output_paths["sources"])
+        source_count = _copy(
+            con,
+            source_query,
+            output_paths["sources"],
+            SNAPSHOT_ACCESSION_SOURCES_SCHEMA,
+        )
     finally:
         con.close()
 

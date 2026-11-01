@@ -9,11 +9,10 @@ import hashlib
 from collections.abc import Sequence
 from pathlib import Path
 
-import duckdb
-
 from edgar_sec.foundation.serialization import canonical_json
 from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
 from edgar_sec.infra.storage.duckdb import (
+    Connection,
     sql_identifier,
     sql_path_list,
     sql_quoted_identifier,
@@ -59,7 +58,7 @@ def _ordered_specs(specs: Sequence[RelationSpec]) -> tuple[RelationSpec, ...]:
 
 
 def compile_virtual_views(
-    con: duckdb.DuckDBPyConnection,
+    con: Connection,
     specs: Sequence[RelationSpec],
     lineage: LineageChain,
     snapshots_root: Path | str,
@@ -174,7 +173,7 @@ def compile_virtual_views(
 
 
 def compute_logical_fingerprint(
-    con: duckdb.DuckDBPyConnection,
+    con: Connection,
     specs: Sequence[RelationSpec],
 ) -> str:
     """Streamed deterministic SHA-256 digest over active views."""

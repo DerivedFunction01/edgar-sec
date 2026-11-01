@@ -11,7 +11,6 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
 
-import duckdb
 
 from edgar_sec.domain.taxonomy.family_vocab import (
     CIK_PREFIX,
@@ -30,6 +29,8 @@ from edgar_sec.engine.company_family.tokens import (
     sponsor_candidate,
     umbrella_parent,
 )
+
+from edgar_sec.infra.storage.duckdb import Connection, InvalidInputError
 
 # Output columns of the published assignment, in write order.
 ASSIGNMENT_COLUMNS = (
@@ -76,7 +77,7 @@ def _alias_relation(alias: str, aliases: dict[str, str]) -> str:
     return f"(VALUES {rows}) AS {alias}(squashed, canonical)"
 
 
-def register_udfs(con: duckdb.DuckDBPyConnection) -> None:
+def register_udfs(con: Connection) -> None:
     """Register the per-name Python step; everything after it is a relation.
 
     Idempotent: DuckDB refuses to redefine a function, so a connection that builds
@@ -92,7 +93,7 @@ def register_udfs(con: duckdb.DuckDBPyConnection) -> None:
         kind = "BOOLEAN" if name in {"fam_is_spv", "fam_has_umbrella"} else "VARCHAR"
         try:
             con.remove_function(name)
-        except duckdb.InvalidInputException:
+        except InvalidInputError:
             pass
         con.create_function(name, fn, ["VARCHAR"], kind, null_handling="special")
 
@@ -295,9 +296,7 @@ def _assign_sql() -> str:
     """.format(max_depth=MAX_SPONSOR_PREFIX_TOKENS)
 
 
-def build_assignment(
-    con: duckdb.DuckDBPyConnection, roster_source: str
-) -> FamilyAssignmentStats:
+def build_assignment(con: Connection, roster_source: str) -> FamilyAssignmentStats:
     """Assign a family to every registrant in ``roster_source``.
 
     ``roster_source`` is any relation yielding ``cik`` and ``name``, normally the
