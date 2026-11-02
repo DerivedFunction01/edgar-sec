@@ -51,7 +51,6 @@ from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
 from edgar_sec.engine.document_processing.outputs import HandlerOutput, HandlerSidecar
 from edgar_sec.engine.forms.common.numbers import (
     is_narrative_numeric_reference,
-    normalize_schema_decimal,
     normalize_schema_number,
 )
 from edgar_sec.engine.forms.common.dates import (
@@ -143,6 +142,12 @@ def _add_schema_jurisdiction(
         _add_text(parent, name, res.value, common=common)
     elif code := edgar_jurisdiction_code_in_text(value or ""):
         _add_text(parent, name, code, common=common)
+    elif (" & " in (value or "") or " and " in (value or "")) and (
+        first_code := edgar_jurisdiction_code_in_text(
+            (value or "").split("&")[0].split(" and ")[0].strip()
+        )
+    ):
+        _add_text(parent, name, first_code, common=common)
     elif rec := res.unresolved_record():
         unresolved.append(rec)
 
@@ -263,7 +268,13 @@ def _add_schema_number(
         allow_integral_decimal=integer,
     )
     if normalized is None and integer and value:
-        dec = normalize_schema_decimal(value)
+        dec = normalize_schema_number(
+            value,
+            integer=False,
+            strip_units=True,
+            strip_footnotes=True,
+            extract_leading_number=True,
+        )
         if dec is not None:
             try:
                 normalized = str(int(Decimal(dec)))
@@ -289,6 +300,13 @@ def _add_schema_number(
     elif value and value.strip() and any(c.isdigit() for c in value):
         if not (
             is_narrative_numeric_reference(value)
+            or (
+                not integer
+                and (
+                    len(value.strip()) >= 8
+                    and not ("%" in value or "percent" in value.lower())
+                )
+            )
             or (
                 integer
                 and (
@@ -448,6 +466,7 @@ def _cover_xml(
     doc: BeneficialOwnershipDocument,
     unresolved: list[dict[str, object]],
     reference_year: int | None = None,
+    filing_date: str | None = None,
 ) -> None:
     cover = ET.SubElement(parent, _tag("coverPageHeader"))
     _add_text(cover, "securitiesClassTitle", doc.issuer.security_class)
@@ -456,6 +475,10 @@ def _cover_xml(
         event_date = next(
             (s.date for s in doc.signature_block.signatories if s.date), None
         )
+    if not event_date and filing_date:
+        event_date = filing_date
+    if not event_date and reference_year and doc.form_family == "13G":
+        event_date = f"{reference_year}-12-31"
     _add_schema_date(
         cover,
         (
@@ -687,7 +710,7 @@ def build_beneficial_ownership_xml(
         if doc.signature_block:
             source_dates.extend(s.date for s in doc.signature_block.signatories)
         reference_year = resolve_reference_year(None, None, source_dates)
-    _cover_xml(form_data, doc, unresolved, reference_year)
+    _cover_xml(form_data, doc, unresolved, reference_year, filing_date)
     if doc.reporting_persons:
         is_13g = doc.form_family == "13G"
         people = (
@@ -733,18 +756,10 @@ def build_beneficial_ownership_xml(
                 render_narrative_13d_xml(items, item, doc=doc)
     if len(items) == 0:
         if doc.form_family == "13G":
-            render_narrative_13g_xml(
-                items,
-                NarrativeItem(1, "Item 1", "", 0, 0),
-                unresolved,
-                doc=doc,
-            )
-            render_narrative_13g_xml(
-                items,
-                NarrativeItem(2, "Item 2", "", 0, 0),
-                unresolved,
-                doc=doc,
-            )
+            for n in (1, 2):
+                render_narrative_13g_xml(
+                    items, NarrativeItem(n, f"Item {n}", "", 0, 0), unresolved, doc=doc
+                )
             if len(items) == 0:
                 elem1 = ET.SubElement(items, _tag("item1"))
                 _add_text(elem1, "issuerName", doc.issuer.issuer_name or "Issuer")

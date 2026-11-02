@@ -562,6 +562,12 @@ _EDGAR_JURISDICTION_ALIASES = MappingProxyType(
         "bermuda": "D0",
         "bermudian": "D0",
         "marshall islands": "1B",
+        "anguilla": "1A",
+        "british west indies": "1A",
+        "australia": "C3",
+        "australian": "C3",
+        "new south wales": "C3",
+        "delware": "DE",
     }
 )
 _SORTED_JURISDICTION_NAMES = tuple(
@@ -577,6 +583,10 @@ JURISDICTION_RE = re.compile(
     rf"\s*/\s*{_STATE_ALTERNATION}(?:\s*/|\s*$)",
     re.IGNORECASE,
 )
+_TRAILING_STATE_ZIP_RE = re.compile(
+    rf",\s*({_STATE_ALTERNATION})\s*(?:\d{{5}}(?:-\d{{4}})?)?\s*$"
+)
+_CORPORATION_STATE_RE = re.compile(r"\b([a-z]+)\s+corporation\b")
 
 
 def strip_jurisdiction(raw: str) -> str:
@@ -613,11 +623,23 @@ def edgar_jurisdiction_code_in_text(value: str) -> str | None:
         if len(name) > 3 and f" {name} " in padded
         for code in EDGAR_JURISDICTION_CODES_BY_NAME[name]
     }
-    for alias_name, alias_code in _EDGAR_JURISDICTION_ALIASES.items():
+    matched_aliases: list[str] = []
+    for alias_name in sorted(_EDGAR_JURISDICTION_ALIASES, key=lambda s: -len(s)):
         if len(alias_name) > 3 and f" {alias_name} " in padded:
-            codes.add(alias_code)
+            if not any(
+                f" {alias_name} " in f" {longer} " for longer in matched_aliases
+            ):
+                matched_aliases.append(alias_name)
+                codes.add(_EDGAR_JURISDICTION_ALIASES[alias_name])
     if "X1" in codes and any(c in STATE_POSTAL_CODES for c in codes):
         codes.remove("X1")
+    if len(codes) > 1:
+        for m_corp in _CORPORATION_STATE_RE.finditer(key):
+            corp_state = edgar_jurisdiction_code(m_corp.group(1))
+            if corp_state and corp_state in codes:
+                return corp_state
+    if not codes and (m_st := _TRAILING_STATE_ZIP_RE.search(value.strip())):
+        return m_st.group(1).upper()
     return next(iter(codes)) if len(codes) == 1 else None
 
 

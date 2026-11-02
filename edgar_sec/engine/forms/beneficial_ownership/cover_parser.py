@@ -80,6 +80,7 @@ _RE_ROW_NUMBER_PREFIX = re.compile(r"^\s*(\d{1,2})\s+")
 _RE_POWER_LEADING_WITH = re.compile(r"(?i)^\s*WITH\b")
 _RE_POWER_TRAILING_WITH = re.compile(r"(?i)\bWITH\s*[:|]?\s*$")
 _RE_SEE_ROW = re.compile(r"(?i)\bsee\s+(?:item|row)\s+(\d+)")
+_RE_PAGE_BREAK = re.compile(r"(?i)\n\s*<PAGE>")
 
 _ENTITIES_ALT = build_alternation(("&#9;", "&nbsp;", "&#160;"), auto_escape=True)
 _WS = rf"(?:[\s]|{_ENTITIES_ALT})"
@@ -230,7 +231,14 @@ _IRS_LABEL_ALT = build_alternation(
     compact=False,
 )
 _RE_IRS_ID = re.compile(rf"(?i)\s*(?:[/|:,]|(?<!\w)-)*\s*(?:{_IRS_LABEL_ALT})[:\s]*")
-_RE_PERSON_ID_TRAILER = re.compile(r"(?i)\s+(?:I\.\s*D\.|ID)\s+NO\.?\s*:?\s*[\d-]+\s*$")
+_PERSON_ID_VAL_ALT = build_alternation(
+    (r"[\d-]+", r"foreign\s+corporation", r"none\.?", r"n/?a"),
+    auto_escape=False,
+    compact=True,
+)
+_RE_PERSON_ID_TRAILER = re.compile(
+    rf"(?i)\s+(?:I\.\s*D\.|ID)\s+NO\.?\s*:?\s*(?:{_PERSON_ID_VAL_ALT})\s*$"
+)
 _RE_ENTITIES_TRAILER = re.compile(
     r"(?is)\s*(?:(?:NO\.?\s+OF\s+ABOVE\s+PERSONS?|\(?ENTITIES\s+ONLY\)?)\s*)+$"
 )
@@ -310,6 +318,8 @@ def parse_reporting_person_matrix(
         if repeated_label is not None:
             val_end = repeated_label.start()
         val = person_text[s_end:val_end]
+        if m_page := _RE_PAGE_BREAK.search(val):
+            val = val[: m_page.start()]
         val = _RE_TABLE_NOISE.sub(" ", val)
         val = strip_markup_tags(val)
         val = _RE_HTML_ENTITIES.sub(" ", val)
@@ -357,7 +367,10 @@ def parse_reporting_person_matrix(
             val = _RE_POWER_WORDS.sub(" ", val)
             val = _RE_POWER_TRAILING_WITH.sub(" ", val)
             val = val.replace(":", " ").replace("|", " ")
-            val = val.strip(" \t\r\n:.-|")
+            if val.strip() in {"-", "--", "—", "–", "-0-"}:
+                val = "0"
+            else:
+                val = val.strip(" \t\r\n:.-|")
             val = strip_unit_suffix(val)
         elif tag == "citizenshipOrOrganization":
             val = _RE_NUMBER_OF.sub("", val)

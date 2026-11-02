@@ -123,6 +123,10 @@ class BeneficialOwnershipDocument:
     field_extractions: tuple[FieldExtraction, ...] = ()
     unparsed_sections: tuple[UnparsedSection, ...] = ()
 
+    def __post_init__(self) -> None:
+        if self.form_family == "13D" and "13G" in self.submission_type.upper():
+            object.__setattr__(self, "form_family", "13G")
+
     @property
     def items1_to_7(self) -> tuple[NarrativeItem, ...]:
         return tuple(item for item in self.narrative_items if item.number <= 7)

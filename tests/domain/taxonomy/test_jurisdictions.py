@@ -66,6 +66,15 @@ def test_edgar_jurisdiction_name_normalization(
         ("State of Delaware, United States of America", "DE"),
         ("U.S. Citizen", "X1"),
         ("A Canadian Citizen", "Z4"),
+        ("Sydney, New South Wales Australia", "C3"),
+        ("Anguilla, British West Indies", "1A"),
+        ("225 South Lake Ave., #400, Pasadena, CA 91101", "CA"),
+        ("Spokane, WA", "WA"),
+        (
+            "Northern Trust Corporation- a Delaware corporation with principal offices in Chicago, Illinois",
+            "DE",
+        ),
+        ("A DELWARE CORPORATION SADDLE BROOK, NJ 07663", "DE"),
         ("United Kingdom & United States", None),
     ],
 )

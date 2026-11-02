@@ -380,7 +380,7 @@ def strip_footnote_references(text: str) -> str:
     return " ".join(FOOTNOTE_REF_RE.sub("", text).split())
 
 
-_SEPARATOR_RUN_STRIP_RE = re.compile(r"^\s*[-=—_]{2,}\s*|\s*[-=—_]{2,}\s*$")
+_SEPARATOR_RUN_STRIP_RE = re.compile(r"^\s*(?:[-=—_]{2,}\s*)+|\s*(?:[-=—_]{2,}\s*)+$")
 
 
 def strip_separator_runs(text: str) -> str:

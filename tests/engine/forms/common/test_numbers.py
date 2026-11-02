@@ -371,3 +371,37 @@ def test_row_prefixes_and_inlined_names_normalize() -> None:
         )
         == "52.0"
     )
+    assert (
+        normalize_schema_number(
+            "177,250,7851,2", integer=True, extract_leading_number=True
+        )
+        == "177250785"
+    )
+    assert (
+        normalize_schema_number(
+            "1,661,1041(1)", integer=True, extract_leading_number=True
+        )
+        == "1661104"
+    )
+    assert extract_schema_number("(See Item 5)") is None
+    assert (
+        normalize_schema_number(
+            "Of the 50,129,326 shares... held 5.10%",
+            integer=False,
+            strip_percent=True,
+            extract_leading_number=True,
+        )
+        == "5.10"
+    )
+    assert (
+        normalize_schema_number(
+            "9,953(1))",
+            integer=True,
+            strip_footnotes=True,
+            extract_leading_number=True,
+        )
+        == "9953"
+    )
+    assert normalize_schema_number("-", integer=True) == "0"
+    assert normalize_schema_number("--", integer=True) == "0"
+    assert normalize_schema_number("—", integer=True) == "0"

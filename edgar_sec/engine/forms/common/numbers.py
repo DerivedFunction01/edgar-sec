@@ -96,7 +96,10 @@ _SCHEMA_SUB_BULLET_RE = re.compile(
 _SCHEMA_LEADING_PUNCT_RE = re.compile(r"^[\s;:,\u2013]+|^\s*-(?!\d)")
 _SCHEMA_ENTITY_PREFIX_RE = re.compile(r"^[^\d\n]{2,80}\s*[:\-–]\s*(?=[+-]?\d)")
 _EUROPEAN_COMMA_DECIMAL_RE = re.compile(r"\d+,\d{1,2}$")
-_SCHEMA_ZERO_DASHES_RE = re.compile(r"^-0-$")
+_ZERO_DASHES_ALT = build_alternation(
+    ("-0-", r"-+", r"[—–]"), auto_escape=False, compact=False
+)
+_SCHEMA_ZERO_DASHES_RE = re.compile(rf"^(?:{_ZERO_DASHES_ALT})$")
 _SCHEMA_FOOTNOTE_LABEL_ALT = build_alternation(
     (r"ITEM\s+\d+[A-Z]?", r"\d+", r"[A-Z]"),
     auto_escape=False,
@@ -175,7 +178,7 @@ _SCHEMA_APPROX_ALT = build_alternation(
 )
 _SCHEMA_APPROX_RE = re.compile(rf"(?is)^\s*(?:{_SCHEMA_APPROX_ALT})\s*")
 _SCHEMA_LEADING_PERCENT_RE = re.compile(
-    r"(?is)^\s*([+-]?[0-9][0-9,]*(?:\.[0-9]+)?)\s*%(?:(?:[.,;]|\s*\(.*?\))?(?:\s+.*)?)$"
+    r"(?is)^\s*([+-]?[0-9][0-9,]*(?:\.[0-9]+)?)\s*%(?:(?:[*†‡.,;]|\s*\(.*?\))*(?:\s+.*)?)$"
 )
 _CLOSING_PERCENT_ALT = build_alternation(
     (
@@ -235,9 +238,16 @@ _ROW_PREFIX_ALT = build_alternation(
 )
 _SCHEMA_ROW_PREFIX_RE = re.compile(rf"(?i)^\s*(?:{_ROW_PREFIX_ALT})\s*")
 _SCHEMA_NUMBER_IN_TEXT_RE = re.compile(r"(?<!\S)([+-]?[0-9][0-9,]*(?:\.[0-9]+)?)(?!\S)")
+_SCHEMA_PERCENT_IN_TEXT_RE = re.compile(
+    r"(?<!\S)([+-]?[0-9][0-9,]*(?:\.[0-9]+)?)\s*(?:%|percent\b)"
+)
+_GLUED_COMMA_FOOTNOTE_RE = re.compile(
+    r"^([+-]?\d{1,3}(?:,\d{3})+)(\d{1,2}(?:,\d+|\(\d+\)|\[\d+\])?)\s*$"
+)
 
 
 _HYPHENATED_ALPHA_RE = re.compile(r"[a-z0-9]-[a-z0-9]", re.IGNORECASE)
+_ALPHA_RE = re.compile(r"[a-zA-Z]")
 _SUB_BOX_LABEL_RE = re.compile(
     r"\(?[123]?\s*\([a-z]\)|^([123][a-z]|[a-z]\))\b", re.IGNORECASE
 )
@@ -365,12 +375,16 @@ def _strip_schema_policy(
     strip_footnotes: bool,
 ) -> str:
     value = text.strip()
+    while value.endswith(")") and value.count(")") > value.count("("):
+        value = value[:-1].rstrip()
     value = _SCHEMA_LEADING_PUNCT_RE.sub("", value).strip()
     value = _SCHEMA_LEADING_MARKS_RE.sub("", value).strip()
     value = _SCHEMA_SUB_BULLET_RE.sub("", value).strip()
     value = _SCHEMA_TRAILING_MARKS_RE.sub("", value).strip()
     value = _SCHEMA_APPROX_RE.sub("", value).strip()
     if strip_footnotes:
+        if m_foot := _GLUED_COMMA_FOOTNOTE_RE.match(value):
+            value = m_foot.group(1)
         value = _SCHEMA_DISCLAIMER_RE.sub("", value).strip()
         value = _SCHEMA_FOOTNOTES_RE.sub("", value).strip()
     if strip_units:
@@ -384,8 +398,12 @@ def _strip_schema_policy(
     if strip_currency:
         value = _SCHEMA_CURRENCY_RE.sub("", value).strip()
     value = _SCHEMA_TRAILING_MARKS_RE.sub("", value).strip()
+    while value.endswith(")") and value.count(")") > value.count("("):
+        value = value[:-1].rstrip()
     if value.endswith(")") and "(" not in value:
         value = value.rstrip(")").strip()
+    if m_foot := _GLUED_COMMA_FOOTNOTE_RE.match(value):
+        value = m_foot.group(1)
     return value
 
 
@@ -476,7 +494,9 @@ def normalize_schema_number(
             if normalized is None:
                 value = v_val
         if normalized is None and strip_percent:
-            m_pct = _SCHEMA_LEADING_PERCENT_RE.match(value)
+            m_pct = _SCHEMA_LEADING_PERCENT_RE.match(
+                value
+            ) or _SCHEMA_PERCENT_IN_TEXT_RE.search(text)
             if m_pct:
                 token = m_pct.group(1).rstrip(",")
                 normalized = (
@@ -497,6 +517,15 @@ def normalize_schema_number(
             clean_val = _SCHEMA_ROW_PREFIX_RE.sub("", value).strip()
             if _is_zero_marker(clean_val):
                 normalized = "0"
+            elif strip_percent and (
+                m_pct_in := _SCHEMA_PERCENT_IN_TEXT_RE.search(clean_val)
+            ):
+                token = m_pct_in.group(1).rstrip(",")
+                normalized = (
+                    normalize_schema_integer(token)
+                    if integer
+                    else normalize_schema_decimal(token)
+                )
             elif m_tok := _SCHEMA_NUMBER_IN_TEXT_RE.search(clean_val):
                 token = m_tok.group(1).rstrip(",")
                 normalized = (
@@ -504,6 +533,12 @@ def normalize_schema_number(
                     if integer
                     else normalize_schema_decimal(token)
                 )
+    if normalized is not None and strip_percent and not integer and "." in normalized:
+        try:
+            if Decimal(normalized) > 100:
+                return None
+        except InvalidOperation:
+            pass
     if normalized is None:
         return None
     if negative and normalized != "0":
@@ -572,12 +607,19 @@ normalize_decimal_stripping_currency = partial(
 
 
 def extract_schema_number(text: str) -> str | None:
+    if is_narrative_numeric_reference(text):
+        return None
     normalized_text = _SPACED_THOUSANDS_SEPARATOR_RE.sub(",", text)
     match = _SCHEMA_NUMERIC_TOKEN_RE.search(normalized_text)
     if match is None:
         return None
     number = match.group(1)
-    negative = text.strip().startswith("(") and text.strip().endswith(")")
+    stripped = text.strip()
+    negative = (
+        stripped.startswith("(")
+        and stripped.endswith(")")
+        and not bool(_ALPHA_RE.search(stripped[1:-1]))
+    )
     if negative:
         number = f"-{number.lstrip('+-')}"
     return normalize_schema_number(number, integer=False, allow_negative=negative)

@@ -24,6 +24,7 @@ from edgar_sec.engine.forms.common.extraction import (
     extract_value,
 )
 from edgar_sec.engine.forms.common.numbers import normalize_schema_number
+from edgar_sec.engine.forms.common.tables import strip_separator_runs
 
 
 def _first_value(person: ReportingPersonCover, key: str | int) -> str | None:
@@ -78,11 +79,12 @@ def _add_schema_number(
     path: str,
     unresolved: list[dict[str, object]],
 ) -> None:
+    is_percent = name in {"classPercent", "percentOfClass"}
     normalized = normalize_schema_number(
         value,
         integer=integer,
-        strip_units=integer,
-        strip_percent=not integer,
+        strip_units=not is_percent,
+        strip_percent=is_percent,
         strip_footnotes=True,
         extract_leading_number=True,
         allow_integral_decimal=integer,
@@ -139,6 +141,8 @@ def render_narrative_13d_xml(
         iss_name = parsed_dict.get("issuerName") or (
             doc.issuer.issuer_name if doc else None
         )
+        if iss_name:
+            iss_name = strip_separator_runs(iss_name)
         _add_text(elem, "issuerName", iss_name)
         if doc and doc.issuer.issuer_address:
             addr_elem = ET.SubElement(elem, _tag("issuerPrincipalAddress"))
@@ -247,7 +251,12 @@ def render_narrative_13g_xml(
                 if mapped_name := field_names_1.get(field.tag):
                     if item_element is None:
                         item_element = ET.SubElement(parent, _tag("item1"))
-                    _add_text(item_element, mapped_name, field.value)
+                    val = (
+                        strip_separator_runs(field.value)
+                        if mapped_name == "issuerName"
+                        else field.value
+                    )
+                    _add_text(item_element, mapped_name, val)
         elif doc and (doc.issuer.issuer_name or doc.issuer.issuer_address):
             item_element = ET.SubElement(parent, _tag("item1"))
             _add_text(item_element, "issuerName", doc.issuer.issuer_name)

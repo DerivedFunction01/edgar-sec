@@ -99,7 +99,7 @@ _PHONE_ALT = build_alternation(
 _PHONE_RE = re.compile(rf"(?<!\d)(?:{_PHONE_ALT})(?!\d)")
 _WHITESPACE_RE = re.compile(r"\s+")
 _ATTENTION_RE = re.compile(r"(?i)^\s*ATTENTION\s*:\s*(?P<name>.+?)\s*$")
-_COPY_TO_RE = re.compile(r"(?i)^\s*(?:WITH\s+)?COPY\s+TO\s*:?\s*$")
+_COPY_TO_RE = re.compile(r"(?i)^\s*(?:WITH\s+(?:A\s+)?)?COPY\s+TO\s*:?\s*$")
 _PHONE_LABEL_ALT = build_alternation(PHONE_LABEL_TERMS, auto_escape=True, compact=True)
 _RE_PHONE_LABEL = re.compile(rf"(?i)\b(?:{_PHONE_LABEL_ALT})\.?\s*(?:NO\.?)?:?\s*$")
 _ADDRESS_START_ALT = build_alternation(
@@ -241,6 +241,8 @@ def _is_plausible_value(field: str, val: str) -> bool:
             not _RE_SEC_HEADER.search(v)
             and not is_boilerplate_entity_name(v)
             and not looks_like_prose(v)
+            and not _COPY_TO_RE.search(v)
+            and v.strip().lower() not in {"with a copy to", "copy to"}
             and len(v) >= 2
         )
     if field == "cusip":
@@ -517,11 +519,13 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
                     None,
                 )
                 if block:
-                    values["notice_contact"].append(
+                    cand = (
                         attention[1].group("name").strip()
                         if attention is not None and attention[1] is not None
                         else block[0]
                     )
+                    if _is_plausible_value("notice_contact", cand):
+                        values["notice_contact"].append(cand)
                     address_end = min(
                         (
                             position

@@ -733,3 +733,21 @@ def test_13g_jurisdiction_ignores_noise_tokens() -> None:
     output = build_beneficial_ownership_xml(document)
     unparsed = json.loads(output.sidecars[0].content)["unparsed_sections"]
     assert not any(rec.get("status") == "unresolved" for rec in unparsed)
+
+
+def test_13g_event_date_fallback_to_reference_year() -> None:
+    document = BeneficialOwnershipDocument(
+        submission_type="SCHEDULE 13G",
+        issuer=IssuerMetadata(),
+        reporting_persons=(
+            ReportingPersonCover(
+                (CoverItemEvidence(1, "Name", "Entity", EvidenceState.VALUE),)
+            ),
+        ),
+    )
+    output = build_beneficial_ownership_xml(document, reference_year=2001)
+    root = ET.fromstring(output.content)
+    date_el = root.find(
+        ".//{http://www.sec.gov/edgar/schedule13g}eventDateRequiresFilingThisStatement"
+    )
+    assert date_el is not None and date_el.text == "12-31-2001"
