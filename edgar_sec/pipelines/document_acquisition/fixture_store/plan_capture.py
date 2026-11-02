@@ -342,7 +342,9 @@ def _capture_document(
         )
         if isinstance(scanned, BundleExtractionFailure):
             raise _TargetCaptureError(scanned.code)
-        filename = scanned.selected.filename
+        filename = scanned.selected.filename or filename
+        if not filename:
+            filename = urlsplit(target_url).path.rsplit("/", 1)[-1]
         if not filename:
             raise _TargetCaptureError("selected_filename_missing")
         sequence = scanned.selected.sequence
