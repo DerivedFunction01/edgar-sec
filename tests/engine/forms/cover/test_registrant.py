@@ -54,7 +54,9 @@ def test_registrant_fallback_splits_common_delimiters() -> None:
 
 
 def test_parse_registrant_combined_name_and_trading_symbol_line() -> None:
-    identity = parse_registrant_identity("Name:   Example International Corp Trading Symbol:   EXMP")
+    identity = parse_registrant_identity(
+        "Name:   Example International Corp Trading Symbol:   EXMP"
+    )
     assert identity.name == "Example International Corp"
     assert identity.trading_symbol == "EXMP"
 
@@ -140,7 +142,9 @@ def test_registrant_splits_glued_and_lowercase_symbols() -> None:
 
 
 def test_registrant_symbol_only_and_label_only_cells() -> None:
-    identity = parse_registrant_identity("2. Issuer Name and Ticker or Trading Symbol\nLPTH")
+    identity = parse_registrant_identity(
+        "2. Issuer Name and Ticker or Trading Symbol\nLPTH"
+    )
     assert identity.name is None
     assert identity.trading_symbol == "LPTH"
 
@@ -166,7 +170,8 @@ def test_registrant_symbol_only_and_label_only_cells() -> None:
         "First Interstate BancSystem, Inc. (no ticker or trading symbol)"
     )
     assert (
-        identity.name == "First Interstate BancSystem, Inc. (no ticker or trading symbol)"
+        identity.name
+        == "First Interstate BancSystem, Inc. (no ticker or trading symbol)"
     )
     assert identity.trading_symbol is None
 
