@@ -1,20 +1,37 @@
+"""Shared registrant identity reading from cover-page text."""
+
 from __future__ import annotations
 
+from dataclasses import dataclass
 import re
 
-from edgar_sec.domain.forms.common.entities import CANONICAL_EXCHANGE_NAMES
-from edgar_sec.foundation.regex.builder import build_alternation
-from edgar_sec.domain.forms.families.ownership.models import Issuer
+from edgar_sec.domain.forms.common.entities import (
+    CANONICAL_EXCHANGE_NAMES,
+    ISSUER_LABEL_TERMS,
+)
 from edgar_sec.domain.taxonomy.legal_forms import LEGAL_FORMS, NAME_STOPWORDS
 from edgar_sec.engine.forms.common.entities import (
     IRS_RE,
-    ISSUER_LABEL_TERMS,
     ISSUER_TAIL_RE,
     STRIP_BOX_NUM_RE,
     SYMBOL_TAIL_RE,
     TICKER_DASH_RE,
     TICKER_PAREN_RE,
 )
+from edgar_sec.foundation.regex.builder import build_alternation
+
+
+@dataclass(frozen=True, slots=True)
+class RegistrantIdentity:
+    name: str | None = None
+    trading_symbol: str | None = None
+    irs_number: str | None = None
+
+
+def extract_irs_number(text: str) -> str | None:
+    match = IRS_RE.search(text)
+    return match.group(1) if match else None
+
 
 _TRAILING_AND_OR_RE = re.compile(r"\s+(?:and|or)\s*$", flags=re.IGNORECASE)
 _NAME_SYMBOL_LINE_RE = re.compile(
@@ -111,7 +128,7 @@ def _is_label_only(line: str) -> bool:
     return sum(len(word) for word in words) < 3
 
 
-def parse_issuer(cell_text: str) -> Issuer:
+def parse_registrant_identity(cell_text: str) -> RegistrantIdentity:
     lines = [
         collapsed
         for line in cell_text.splitlines()
@@ -120,11 +137,10 @@ def parse_issuer(cell_text: str) -> Issuer:
     for line in lines:
         combined = _NAME_SYMBOL_LINE_RE.search(line)
         if combined:
-            irs_match = IRS_RE.search(cell_text)
-            return Issuer(
+            return RegistrantIdentity(
                 name=combined.group(1).strip(" ,-") or None,
                 trading_symbol=combined.group(2).upper(),
-                irs_number=irs_match.group(1) if irs_match else None,
+                irs_number=extract_irs_number(cell_text),
             )
     candidate = ""
     last_label_index = -1
@@ -311,12 +327,11 @@ def parse_issuer(cell_text: str) -> Issuer:
 
     if name:
         name = STRIP_BOX_NUM_RE.sub("", name).strip()
-    irs_match = IRS_RE.search(cell_text)
-    return Issuer(
+    return RegistrantIdentity(
         name=name or None,
         trading_symbol=ticker.upper() if ticker else None,
-        irs_number=irs_match.group(1) if irs_match else None,
+        irs_number=extract_irs_number(cell_text),
     )
 
 
-__all__ = ["parse_issuer"]
+__all__ = ["RegistrantIdentity", "extract_irs_number", "parse_registrant_identity"]

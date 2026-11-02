@@ -37,6 +37,7 @@ from edgar_sec.engine.forms.common.statutory import (
     strip_form_prompt_prefix,
 )
 from edgar_sec.engine.forms.common.tables import strip_markup_tags
+from edgar_sec.engine.forms.cover.registrant import extract_irs_number
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
     RE_GROUP_OPTION,
@@ -436,7 +437,9 @@ def parse_reporting_person_matrix(
                 val = val[: raw_cb.start()]
             val = strip_form_prompt_prefix(val).strip(" \t\r\n:;,-|")
             val = _RE_PERSON_ID_TRAILER.sub("", val)
-            if IRS_RE.search(val) and not any(w.isalpha() for w in IRS_RE.sub("", val)):
+            if extract_irs_number(val) and not any(
+                w.isalpha() for w in IRS_RE.sub("", val)
+            ):
                 val = ""
             if is_boilerplate_entity_name(val) or is_street_address_value(val):
                 val = ""

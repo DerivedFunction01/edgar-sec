@@ -7,7 +7,6 @@ import re
 
 from edgar_sec.domain.taxonomy.legal_forms import has_legal_form
 from edgar_sec.engine.forms.common.entities import (
-    IRS_RE,
     PHONE_NUMBER_RE,
     is_street_or_address_line,
     normalize_exchange_name,
@@ -26,6 +25,7 @@ from edgar_sec.engine.forms.common.tables import (
     strip_footnote_references,
     strip_markup_tags,
 )
+from edgar_sec.engine.forms.cover.registrant import extract_irs_number
 from edgar_sec.engine.forms.form144.ascii_scan import (
     ProposedSaleRecord,
     extract_ascii_proposed_sales,
@@ -160,22 +160,24 @@ def _extract_cover_fields(lines: list[str], slots: Form144AsciiSlots) -> None:
                                 first_col
                                 and len(first_col) > 2
                                 and not is_cover_header_or_subbox_line(first_col)
-                                and not IRS_RE.search(first_col)
+                                and not extract_irs_number(first_col)
                                 and not SEC_FILE_BARE_RE.search(first_col)
                             ):
                                 first_col = first_col.partition("(")[0].strip(
                                     " \t|,:;-"
                                 )
                                 slots.issuer_name = first_col
-                                if len(cols) > 1 and IRS_RE.search(cols[1]):
-                                    slots.issuer_irs = IRS_RE.search(cols[1]).group(0)
+                                if len(cols) > 1 and (
+                                    irs_number := extract_irs_number(cols[1])
+                                ):
+                                    slots.issuer_irs = irs_number
                                 if len(cols) > 2 and SEC_FILE_BARE_RE.search(cols[2]):
                                     slots.issuer_sec_no = SEC_FILE_BARE_RE.search(
                                         cols[2]
                                     ).group(0)
                                 break
                             elif first_col and (
-                                IRS_RE.search(first_col)
+                                extract_irs_number(first_col)
                                 or SEC_FILE_BARE_RE.search(first_col)
                             ):
                                 break
@@ -191,13 +193,13 @@ def _extract_cover_fields(lines: list[str], slots: Form144AsciiSlots) -> None:
 
         # 1(b) IRS ID
         if not slots.issuer_irs and BOX_1B_IRS_LABEL_RE.search(line):
-            m_irs = IRS_RE.search(line)
-            if m_irs:
-                slots.issuer_irs = m_irs.group(0)
+            irs_number = extract_irs_number(line)
+            if irs_number:
+                slots.issuer_irs = irs_number
             elif idx + 1 < len(lines):
-                m_irs = IRS_RE.search(lines[idx + 1])
-                if m_irs:
-                    slots.issuer_irs = m_irs.group(0)
+                irs_number = extract_irs_number(lines[idx + 1])
+                if irs_number:
+                    slots.issuer_irs = irs_number
 
         # 1(c) SEC FILE NO
         if not slots.issuer_sec_no and BOX_1C_SEC_LABEL_RE.search(line):

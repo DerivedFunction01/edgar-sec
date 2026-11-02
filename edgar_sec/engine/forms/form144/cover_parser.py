@@ -9,7 +9,6 @@ from edgar_sec.domain.forms.families.form144.models import (
     ReportingPerson,
 )
 from edgar_sec.engine.forms.common.entities import (
-    IRS_RE,
     PHONE_NUMBER_RE,
     STATE_ZIP_RE,
     is_boilerplate_entity_name,
@@ -26,6 +25,7 @@ from edgar_sec.engine.forms.common.tables import (
     extract_labeled_field,
     parse_address_parts,
 )
+from edgar_sec.engine.forms.cover.registrant import extract_irs_number
 from edgar_sec.engine.forms.form144.patterns import (
     SEC_FILE_BARE_RE,
     SEC_FILE_LABEL_RE,
@@ -320,9 +320,8 @@ def parse_cover_box_1_2(
         if "relationship to issuer" in lower_row:
             seller_relationship_labeled = True
 
-        irs_match = IRS_RE.search(row_text)
-        if irs_match and not irs_num:
-            irs_num = irs_match.group(1)
+        if not irs_num:
+            irs_num = extract_irs_number(row_text)
         sec_label_match = SEC_FILE_LABEL_RE.search(row_text)
         if sec_label_match and not sec_file:
             sec_file = sec_label_match.group(1)
