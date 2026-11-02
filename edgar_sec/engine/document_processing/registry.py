@@ -191,6 +191,12 @@ def _schedule13g_to_xml(
     return render_schedule13g_to_xml(raw_bytes, context)
 
 
+def _form_d_to_xml(raw_bytes: bytes, context: HandlerContext) -> bytes | HandlerOutput:
+    from edgar_sec.engine.forms.form_d.renderer import render_form_d_to_xml
+
+    return render_form_d_to_xml(raw_bytes, context)
+
+
 def default_handler_registry() -> HandlerRegistry:
     registry = HandlerRegistry()
     registry.register(
@@ -254,6 +260,14 @@ def default_handler_registry() -> HandlerRegistry:
         HandlerOutputKind.XML,
         _schedule13g_to_xml,
         family="13G",
+    )
+    registry.register(
+        "form_d_to_xml",
+        "1",
+        "render_to_xml",
+        HandlerOutputKind.XML,
+        _form_d_to_xml,
+        family="D",
     )
     return registry
 

@@ -308,10 +308,10 @@ def test_checkmark_schema_cases_cover_registered_profile_scope() -> None:
     }
 
     assert schema_families == {family for family, _, _ in _SCHEMA_FAMILY_CASES}
-    assert schema_less_families == {"3", "4", "5", "144", "13D", "13G"}
+    assert schema_less_families == {"3", "4", "5", "144", "13D", "13G", "D"}
 
 
-@pytest.mark.parametrize("family", ("3", "4", "5", "144", "13D", "13G"))
+@pytest.mark.parametrize("family", ("3", "4", "5", "144", "13D", "13G", "D"))
 def test_registered_profiles_without_checkmark_schemas_are_not_applicable(
     family: str,
 ) -> None:
