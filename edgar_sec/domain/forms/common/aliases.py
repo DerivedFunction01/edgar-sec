@@ -220,6 +220,12 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "15F-15D",
         "15F-15D/A",
     ),
+    "11-K": (
+        "11-K",
+        "11-K/A",
+        "11-KT",
+        "11-KT/A",
+    ),
 }
 
 # Suffixes stripped when collapsing a raw form string to its base family.
