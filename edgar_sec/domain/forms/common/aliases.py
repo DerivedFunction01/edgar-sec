@@ -87,6 +87,8 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "13F-HR/A",
         "13F-NT",
         "13F-NT/A",
+        "13F-CTR",
+        "13F-CTR/A",
         "13F-E",
         "13F-E/A",
         "13FCONP",
