@@ -76,7 +76,7 @@ def strip_unit_suffix(text: str) -> str:
 _SCHEMA_CURRENCY_RE = re.compile(CURRENCY_TOKEN_RE.pattern)
 _PERCENT_TAIL_ALT = build_alternation(
     (
-        r"\d+",
+        r"[\d,\s\-]+",
         r"refer\s+to.*",
         r"\([^)]*\)",
         r"\[[^\]]*\]",
@@ -130,6 +130,10 @@ _SEE_TARGETS_ALT = build_alternation(
         "response",
         "rows",
         "row",
+        "lines",
+        "line",
+        "boxes",
+        "box",
         "cover",
         "table",
     ),
@@ -198,6 +202,7 @@ _UNRESOLVED_QUALIFIER_ALT = build_alternation(
         r"or\s+additional",
         r"and\s+others",
         r"plus\s+additional",
+        r"none\s+of\b",
     ),
     auto_escape=False,
     compact=True,
@@ -218,6 +223,18 @@ _NARRATIVE_NUMERIC_ALT = build_alternation(
     compact=False,
 )
 _RE_NARRATIVE_NUMERIC_REF = re.compile(rf"(?i)\b(?:{_NARRATIVE_NUMERIC_ALT})")
+_ROW_PREFIX_ALT = build_alternation(
+    (
+        r"\(?\s*(?:item\s+)?\d{1,2}\s*[.):\]]",
+        r"\[\s*(?:item\s+)?\d{1,2}\s*\]",
+        r"(?:item\s+)?\d{1,2}\s+",
+        r"[\[(_\]\s\-\)]+",
+    ),
+    auto_escape=False,
+    compact=False,
+)
+_SCHEMA_ROW_PREFIX_RE = re.compile(rf"(?i)^\s*(?:{_ROW_PREFIX_ALT})\s*")
+_SCHEMA_NUMBER_IN_TEXT_RE = re.compile(r"(?<!\S)([+-]?[0-9][0-9,]*(?:\.[0-9]+)?)(?!\S)")
 
 
 _HYPHENATED_ALPHA_RE = re.compile(r"[a-z0-9]-[a-z0-9]", re.IGNORECASE)
@@ -367,6 +384,8 @@ def _strip_schema_policy(
     if strip_currency:
         value = _SCHEMA_CURRENCY_RE.sub("", value).strip()
     value = _SCHEMA_TRAILING_MARKS_RE.sub("", value).strip()
+    if value.endswith(")") and "(" not in value:
+        value = value.rstrip(")").strip()
     return value
 
 
@@ -374,7 +393,7 @@ _ZERO_TOKEN_ALT = build_alternation(
     ("none", "nil", r"ben[ef]+icially\s+0"), auto_escape=False, compact=False
 )
 _ZERO_MARKER_RE = re.compile(
-    rf"(?i)^(?:[)\]]\s*)*(?:{_ZERO_TOKEN_ALT})(?:\s+beneficial(?:ly|l\s*y)?(?:\s+owned)?)?\.?(?:\s*[)\]])*$"
+    rf"(?i)^(?:[)\]]\s*)*(?:{_ZERO_TOKEN_ALT})(?:\s+beneficial(?:ly|l\s*y)?(?:\s+owned)?)?\.?(?:\s+\d{{1,2}})?(?:\s*[)\]:])*$"
 )
 
 
@@ -469,6 +488,17 @@ def normalize_schema_number(
             m = _SCHEMA_LEADING_NUMERIC_RE.match(value)
             if m:
                 token = m.group(1).rstrip(",")
+                normalized = (
+                    normalize_schema_integer(token)
+                    if integer
+                    else normalize_schema_decimal(token)
+                )
+        if normalized is None:
+            clean_val = _SCHEMA_ROW_PREFIX_RE.sub("", value).strip()
+            if _is_zero_marker(clean_val):
+                normalized = "0"
+            elif m_tok := _SCHEMA_NUMBER_IN_TEXT_RE.search(clean_val):
+                token = m_tok.group(1).rstrip(",")
                 normalized = (
                     normalize_schema_integer(token)
                     if integer

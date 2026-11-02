@@ -248,7 +248,7 @@ def parse_address_parts(
     match = STATE_ZIP_RE.search(text)
     if not match:
         parts = [part.strip() for part in text.split(",") if part.strip()]
-        for suffix_size in (1, 2):
+        for suffix_size in (2, 1):
             if len(parts) <= suffix_size:
                 continue
             jurisdiction = edgar_jurisdiction_code(", ".join(parts[-suffix_size:]))

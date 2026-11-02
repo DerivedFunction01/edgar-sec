@@ -715,3 +715,21 @@ def test_signature_details_inherits_block_date_and_ordinal_date() -> None:
         e.text for e in root.findall(".//{http://www.sec.gov/edgar/schedule13D}date")
     ]
     assert dates == ["01-27-2003", "01-27-2003"]
+
+
+def test_13g_jurisdiction_ignores_noise_tokens() -> None:
+    document = BeneficialOwnershipDocument(
+        submission_type="SCHEDULE 13G",
+        issuer=IssuerMetadata(),
+        reporting_persons=(
+            ReportingPersonCover(
+                (
+                    CoverItemEvidence(1, "Name", "Entity", EvidenceState.VALUE),
+                    CoverItemEvidence(4, "Citizenship", "OF", EvidenceState.VALUE),
+                )
+            ),
+        ),
+    )
+    output = build_beneficial_ownership_xml(document)
+    unparsed = json.loads(output.sidecars[0].content)["unparsed_sections"]
+    assert not any(rec.get("status") == "unresolved" for rec in unparsed)

@@ -327,5 +327,47 @@ def test_is_narrative_numeric_reference() -> None:
     assert is_narrative_numeric_reference("See response to Item 4")
     assert is_narrative_numeric_reference("See rows 5 and 6")
     assert is_narrative_numeric_reference("See cover page")
+    assert is_narrative_numeric_reference("See line 9 above.")
     assert is_narrative_numeric_reference("Responses to items")
     assert not is_narrative_numeric_reference("123,456")
+
+
+def test_row_prefixes_and_inlined_names_normalize() -> None:
+    assert (
+        normalize_schema_number(
+            "7. 4,420,895", integer=True, extract_leading_number=True
+        )
+        == "4420895"
+    )
+    assert (
+        normalize_schema_number(
+            "Daniel B. O'Brien 4,420,895", integer=True, extract_leading_number=True
+        )
+        == "4420895"
+    )
+    assert (
+        normalize_schema_number(
+            "Gregg J. Powers 1.18%",
+            integer=False,
+            strip_percent=True,
+            extract_leading_number=True,
+        )
+        == "1.18"
+    )
+    assert (
+        normalize_schema_number("None 8", integer=True, extract_leading_number=True)
+        == "0"
+    )
+    assert (
+        normalize_schema_number("6. 0", integer=True, extract_leading_number=True)
+        == "0"
+    )
+    assert (
+        normalize_schema_number(
+            "52.0%1,2,3 -",
+            integer=False,
+            strip_percent=True,
+            extract_leading_number=True,
+        )
+        == "52.0"
+    )

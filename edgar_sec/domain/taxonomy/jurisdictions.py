@@ -476,9 +476,17 @@ def _jurisdiction_name_key(value: str) -> str:
     unaccented = "".join(char for char in decomposed if not unicodedata.combining(char))
     key = _JURISDICTION_NAME_SEPARATOR_RE.sub(" ", unaccented).strip()
     if key.startswith("state of "):
-        return key[9:].strip()
-    if key.startswith("commonwealth of "):
-        return key[16:].strip()
+        key = key[9:].strip()
+    elif key.startswith("commonwealth of "):
+        key = key[16:].strip()
+    if key.startswith("a "):
+        key = key[2:].strip()
+    elif key.startswith("an "):
+        key = key[3:].strip()
+    if key.endswith(" citizen"):
+        key = key[:-8].strip()
+    elif key.endswith(" citizenship"):
+        key = key[:-12].strip()
     return key
 
 
@@ -491,15 +499,69 @@ EDGAR_JURISDICTION_CODES_BY_NAME = MappingProxyType(
 )
 _EDGAR_JURISDICTION_ALIASES = MappingProxyType(
     {
-        "alberta": "A0",
-        "england": "X0",
         "united states of america": "X1",
+        "united states": "X1",
         "u s a": "X1",
         "usa": "X1",
+        "u s": "X1",
         "us": "X1",
-        "united states": "X1",
+        "american": "X1",
+        "united kingdom": "X0",
+        "great britain": "X0",
+        "u k": "X0",
+        "uk": "X0",
+        "england": "X0",
+        "england and wales": "X0",
+        "scotland": "X0",
+        "scotland uk": "X0",
+        "wales": "X0",
+        "northern ireland": "X0",
+        "british": "X0",
+        "english": "X0",
+        "scottish": "X0",
+        "canada": "Z4",
+        "canadian": "Z4",
+        "alberta": "A0",
+        "british columbia": "A1",
+        "manitoba": "A2",
+        "new brunswick": "A3",
+        "newfoundland": "A4",
+        "nova scotia": "A5",
+        "ontario": "A6",
+        "prince edward island": "A7",
+        "quebec": "A8",
+        "saskatchewan": "A9",
+        "yukon": "B0",
         "british virgin islands": "D8",
         "bvi": "D8",
+        "cayman islands": "E9",
+        "caymanian": "E9",
+        "norway": "Q8",
+        "norwegian": "Q8",
+        "panama": "R1",
+        "panamanian": "R1",
+        "liberia": "L0",
+        "liberian": "L0",
+        "switzerland": "V7",
+        "swiss": "V7",
+        "germany": "2M",
+        "german": "2M",
+        "france": "I0",
+        "french": "I0",
+        "ireland": "L2",
+        "irish": "L2",
+        "israel": "L6",
+        "israeli": "L6",
+        "netherlands": "P7",
+        "dutch": "P7",
+        "japan": "M0",
+        "japanese": "M0",
+        "singapore": "U0",
+        "singaporean": "U0",
+        "hong kong": "K3",
+        "bermuda": "D0",
+        "bermudian": "D0",
+        "marshall islands": "1B",
     }
 )
 _SORTED_JURISDICTION_NAMES = tuple(
@@ -542,6 +604,8 @@ def edgar_jurisdiction_code_in_text(value: str) -> str | None:
     if exact := edgar_jurisdiction_code(value):
         return exact
     key = _jurisdiction_name_key(value)
+    if alias := _EDGAR_JURISDICTION_ALIASES.get(key):
+        return alias
     padded = f" {key} "
     codes = {
         code
@@ -549,6 +613,11 @@ def edgar_jurisdiction_code_in_text(value: str) -> str | None:
         if len(name) > 3 and f" {name} " in padded
         for code in EDGAR_JURISDICTION_CODES_BY_NAME[name]
     }
+    for alias_name, alias_code in _EDGAR_JURISDICTION_ALIASES.items():
+        if len(alias_name) > 3 and f" {alias_name} " in padded:
+            codes.add(alias_code)
+    if "X1" in codes and any(c in STATE_POSTAL_CODES for c in codes):
+        codes.remove("X1")
     return next(iter(codes)) if len(codes) == 1 else None
 
 

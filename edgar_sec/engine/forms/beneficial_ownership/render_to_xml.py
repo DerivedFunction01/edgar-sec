@@ -8,6 +8,10 @@ import xml.etree.ElementTree as ET
 from collections.abc import Mapping
 
 from edgar_sec.domain.forms.common.checkmarks import CANONICAL_CHECKED
+from edgar_sec.domain.forms.common.missing_values import (
+    COMMON_NUMERIC_NULL_POLICY,
+    classify_missing_value_token,
+)
 from edgar_sec.domain.forms.common.signatures import Signatory
 from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     AddressDetails,
@@ -120,6 +124,13 @@ def _add_schema_jurisdiction(
     *,
     common: bool = False,
 ) -> None:
+    if (
+        not value
+        or COMMON_NUMERIC_NULL_POLICY.is_missing(value)
+        or classify_missing_value_token(value) is not None
+        or value.strip().lower() in {"of", "of each"}
+    ):
+        return
     res = extract_value(
         value,
         FieldSpec(
