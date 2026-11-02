@@ -10,6 +10,7 @@ from edgar_sec.engine.forms.common.signatures import (
     clean_signature_name,
     extract_signature_block,
     extract_signature_candidate,
+    find_preceding_signature_date,
     is_valid_signature_name,
     parse_conformed_signature,
     resolve_delegated_signer,
@@ -306,3 +307,19 @@ def test_candidate_ignores_plan_statement_as_of_date() -> None:
         "dated as of December 31, 2002.\n"
     )
     assert date is None
+
+
+def test_find_preceding_signature_date_reads_nearest_date_line():
+    lines = ["SIGNATURE", "November 2, 2026", "By:"]
+    assert find_preceding_signature_date(lines) == "November 2, 2026"
+
+
+def test_find_preceding_signature_date_skips_undated_lines():
+    lines = ["Dated: November 2, 2026", "Some other text", ""]
+    assert find_preceding_signature_date(lines) == "November 2, 2026"
+
+
+def test_find_preceding_signature_date_respects_lookback_window():
+    lines = ["November 2, 2026"] + ["filler"] * 10
+    assert find_preceding_signature_date(lines) is None
+    assert find_preceding_signature_date(["filler", "text only"]) is None

@@ -27,6 +27,7 @@ from edgar_sec.engine.forms.common.signatures import (
     clean_signature_name,
     extract_signature_block,
     extract_signature_candidate,
+    find_preceding_signature_date,
     is_valid_signature_name,
 )
 from edgar_sec.foundation.text.dates import parse_date
@@ -49,21 +50,7 @@ def extract_beneficial_ownership_signature_block(
             extract_signature_candidate(suffix[line_start : match.start()])[1] or date
         )
         if date is None:
-            preceding_text = suffix[:line_start].splitlines()
-            for prev_line in reversed(
-                preceding_text[max(0, len(preceding_text) - 10) :]
-            ):
-                prev_s = prev_line.strip(" \t*_=-")
-                if not prev_s:
-                    continue
-                cand_d = extract_signature_candidate(prev_s)[1]
-                if cand_d:
-                    date = cand_d
-                    break
-                p = parse_date(prev_s)
-                if p and not p.ambiguous:
-                    date = prev_s
-                    break
+            date = find_preceding_signature_date(suffix[:line_start].splitlines())
         if candidate:
             if marker is not None:
                 matched_markers.add(marker.start())
@@ -102,19 +89,7 @@ def extract_beneficial_ownership_signature_block(
                 if (p := parse_date(cand_d)) and not p.ambiguous:
                     date = cand_d
         if date is None:
-            preceding = suffix[:line_start].splitlines()
-            for prev_line in reversed(preceding[max(0, len(preceding) - 10) :]):
-                prev_cand = prev_line.strip(" \t*_=-")
-                if not prev_cand:
-                    continue
-                cand_d = extract_signature_candidate(prev_cand)[1]
-                if cand_d:
-                    date = cand_d
-                    break
-                p = parse_date(prev_cand)
-                if p and not p.ambiguous:
-                    date = prev_cand
-                    break
+            date = find_preceding_signature_date(suffix[:line_start].splitlines())
         signatories.append(Signatory(name=name, date=date))
     if not signatories:
         regions = find_signature_regions(suffix.splitlines())

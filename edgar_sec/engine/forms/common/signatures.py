@@ -31,6 +31,7 @@ from edgar_sec.foundation.text.dates import (
     MONTH_RE,
     NUMERIC_DATE_RE,
     RE_FULL_DATE,
+    parse_date,
 )
 from edgar_sec.foundation.text.evidence import (
     EvidenceContext,
@@ -425,6 +426,23 @@ def extract_signature_block(text: str) -> SignatureBlock | None:
     )
 
 
+def find_preceding_signature_date(
+    lines: Sequence[str], max_lookback: int = 10
+) -> str | None:
+    """Recover a signature date from the lines preceding a conformed marker."""
+    for prev_line in reversed(lines[max(0, len(lines) - max_lookback) :]):
+        prev_s = prev_line.strip(" \t*_=-")
+        if not prev_s:
+            continue
+        candidate_date = extract_signature_candidate(prev_s)[1]
+        if candidate_date:
+            return candidate_date
+        parsed = parse_date(prev_s)
+        if parsed and not parsed.ambiguous:
+            return prev_s
+    return None
+
+
 _COMPILED_SIGNATURE_PACK = compile_evidence_pack(COMMON_SIGNATURE_LEXICAL_PACK)
 _EVIDENCE_CTX = EvidenceContext(min_words=1)
 
@@ -739,6 +757,7 @@ __all__ = [
     "extract_clean_signatory_name",
     "extract_signature_block",
     "extract_signature_candidate",
+    "find_preceding_signature_date",
     "is_signature_table",
     "is_valid_signature_name",
     "parse_conformed_signature",
