@@ -8,6 +8,17 @@ from edgar_sec.domain.forms.families.current.checkmarks import (
     EIGHT_K_CHECKBOX_SCHEMA,
     SIX_K_CHECKBOX_SCHEMA,
 )
+from edgar_sec.domain.forms.families.form_12b25.checkmarks import (
+    FORM_12B25_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_12b25.processing import (
+    PROFILE_FORM_12B25,
+)
+from edgar_sec.domain.forms.families.form_12b25.taxonomy import FORM_12B25_ITEMS
+from edgar_sec.domain.forms.families.form_15.checkmarks import (
+    FORM_15_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_15.processing import PROFILE_FORM_15
 from edgar_sec.domain.forms.families.processing_profiles import (
     get_lazy_index_trigger,
     get_family_entry,
@@ -77,3 +88,21 @@ def test_primary_recovery_families_have_lazy_index_triggers(form: str) -> None:
 
 def test_unconfigured_family_has_no_lazy_index_trigger() -> None:
     assert get_lazy_index_trigger("6-K") is None
+
+
+def test_form_15_entry_registered_with_schema_and_no_items() -> None:
+    entry = get_family_entry("15-12B")
+    assert entry is not None
+    assert entry.family == "15"
+    assert entry.profile is PROFILE_FORM_15
+    assert entry.cover_checkbox_schema is FORM_15_CHECKBOX_SCHEMA
+    assert entry.taxonomy_items == ()
+
+
+def test_form_12b25_entry_registered_with_schema_and_part_items() -> None:
+    entry = get_family_entry("NT 10-K")
+    assert entry is not None
+    assert entry.family == "12B-25"
+    assert entry.profile is PROFILE_FORM_12B25
+    assert entry.cover_checkbox_schema is FORM_12B25_CHECKBOX_SCHEMA
+    assert entry.taxonomy_items == FORM_12B25_ITEMS
