@@ -118,6 +118,9 @@ def cmd_review_analyze(args: argparse.Namespace) -> int:
                 anom_count = fam_rep.get("anomaly_count", 0)
                 print(f"  Anomalies: {anom_count}")
                 for anom in fam_rep.get("anomalies", [])[:5]:
+                    if isinstance(anom, str):
+                        print(f"    {anom}")
+                        continue
                     val = anom.get("value")
                     val_str = f" (value: {val})" if val is not None else ""
                     print(
