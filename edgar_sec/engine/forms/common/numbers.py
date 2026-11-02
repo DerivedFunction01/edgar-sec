@@ -415,7 +415,7 @@ _ZERO_MARKER_RE = re.compile(
 )
 
 
-def _is_zero_marker(value: str) -> bool:
+def is_zero_marker(value: str) -> bool:
     """Only a bare none/nil marker means zero, never prose that starts with it."""
     collapsed = " ".join(value.split())
     return bool(
@@ -438,7 +438,7 @@ def normalize_schema_number(
 ) -> str | None:
     if not text:
         return None
-    if _is_zero_marker(text.strip()):
+    if is_zero_marker(text.strip()):
         return "0"
     value = _strip_schema_policy(
         text,
@@ -453,7 +453,7 @@ def normalize_schema_number(
         if not allow_accounting_negative:
             return None
         value = value[1:-1].strip()
-    if _is_zero_marker(value):
+    if is_zero_marker(value):
         return "0"
 
     if integer and allow_integral_decimal:
@@ -515,7 +515,7 @@ def normalize_schema_number(
                 )
         if normalized is None:
             clean_val = _SCHEMA_ROW_PREFIX_RE.sub("", value).strip()
-            if _is_zero_marker(clean_val):
+            if is_zero_marker(clean_val):
                 normalized = "0"
             elif strip_percent and (
                 m_pct_in := _SCHEMA_PERCENT_IN_TEXT_RE.search(clean_val)
@@ -561,7 +561,7 @@ def normalize_schema_integral_decimal(
     """Normalize a schema decimal that may be written as an integral decimal."""
     if not text:
         return None
-    if _is_zero_marker(text.strip()):
+    if is_zero_marker(text.strip()):
         return "0"
     value = _strip_schema_policy(
         text,
@@ -575,7 +575,7 @@ def normalize_schema_integral_decimal(
         if not allow_accounting_negative:
             return None
         value = value[1:-1].strip()
-    if _is_zero_marker(value):
+    if is_zero_marker(value):
         return "0"
     decimal = normalize_schema_decimal(value)
     if decimal is None:
@@ -648,6 +648,7 @@ __all__ = [
     "extract_schema_number_or_token",
     "format_scaled_number_string",
     "is_narrative_numeric_reference",
+    "is_zero_marker",
     "normalize_schema_decimal",
     "normalize_schema_integer",
     "normalize_schema_integer_value",

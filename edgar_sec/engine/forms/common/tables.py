@@ -380,12 +380,14 @@ def strip_footnote_references(text: str) -> str:
     return " ".join(FOOTNOTE_REF_RE.sub("", text).split())
 
 
-_SEPARATOR_RUN_STRIP_RE = re.compile(r"^\s*(?:[-=—_]{2,}\s*)+|\s*(?:[-=—_]{2,}\s*)+$")
+_LEADING_SEPARATOR_RUN_RE = re.compile(r"^[\s\-=—_]*[-=—_]{2,}\s*")
+_TRAILING_SEPARATOR_RUN_RE = re.compile(r"\s*[-=—_]{2,}[\s\-=—_]*$")
 
 
 def strip_separator_runs(text: str) -> str:
     """Strip leading and trailing border separator runs from text."""
-    return _SEPARATOR_RUN_STRIP_RE.sub("", text).strip()
+    t = _LEADING_SEPARATOR_RUN_RE.sub("", text)
+    return _TRAILING_SEPARATOR_RUN_RE.sub("", t).strip()
 
 
 __all__ = [

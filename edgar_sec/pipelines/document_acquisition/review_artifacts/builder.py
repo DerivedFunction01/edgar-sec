@@ -515,6 +515,18 @@ def _process_review_case_worker(
     artifact = None
     error = None
     raw_bytes = b""
+    info_path = staging_root / ".case_info.json"
+    atomic_write_json(
+        info_path,
+        {
+            "accession": case.accession,
+            "case_id": _case_id(case),
+            "fixture_id": case.fixture_id,
+            "form": case.form,
+            "target_id": case.target_id,
+            "selected_filename": case.selected_filename,
+        },
+    )
     with tempfile.TemporaryDirectory(prefix="fixture-body-") as temporary:
         body_path = Path(temporary) / "selected-body.bin"
         try:
@@ -531,6 +543,7 @@ def _process_review_case_worker(
                     case, processing, staging_root / OBSERVATIONS_FILE
                 )
                 case_root.parent.mkdir(parents=True, exist_ok=True)
+                info_path.unlink(missing_ok=True)
                 os.replace(staging_root, case_root)
                 artifact = ProcessingReviewArtifact(
                     artifact.artifact_sha256, case_root / OBSERVATIONS_FILE

@@ -27,6 +27,7 @@ from edgar_sec.engine.forms.common.marks import (
     resolve_checked_labeled_option,
 )
 from edgar_sec.engine.forms.common.numbers import (
+    is_zero_marker,
     normalize_integer_stripping_units,
     normalize_schema_number,
     strip_unit_suffix,
@@ -320,6 +321,16 @@ def parse_reporting_person_matrix(
         val = person_text[s_end:val_end]
         if m_page := _RE_PAGE_BREAK.search(val):
             val = val[: m_page.start()]
+        if tag in (
+            "soleVotingPower",
+            "sharedVotingPower",
+            "soleDispositivePower",
+            "sharedDispositivePower",
+        ):
+            if m_noise := _RE_TABLE_NOISE.search(val):
+                before = val[: m_noise.start()].strip()
+                if before:
+                    val = before
         val = _RE_TABLE_NOISE.sub(" ", val)
         val = strip_markup_tags(val)
         val = _RE_HTML_ENTITIES.sub(" ", val)
@@ -329,7 +340,10 @@ def parse_reporting_person_matrix(
         header_leak = HEADER_LEAK_RE.search(val)
         if header_leak is not None:
             val = val[: header_leak.start()]
-        val = val.lstrip(" \t\r\n:.-|")
+        if not is_zero_marker(val.strip()):
+            val = val.lstrip(" \t\r\n:.-|")
+        else:
+            val = val.strip()
         if embedded:
             val = " ".join((*embedded, val))
 
@@ -353,7 +367,10 @@ def parse_reporting_person_matrix(
         elif tag == "typeOfReportingPerson":
             val = _RE_LABEL_INSTRUCTIONS.sub("", val.strip())
 
-        val = val.lstrip(" \t\r\n:.-|")
+        if not is_zero_marker(val.strip()):
+            val = val.lstrip(" \t\r\n:.-|")
+        else:
+            val = val.strip()
         if tag == "memberOfGroup":
             val = canonicalize_mark_tokens(val)
         if tag in (
@@ -367,10 +384,10 @@ def parse_reporting_person_matrix(
             val = _RE_POWER_WORDS.sub(" ", val)
             val = _RE_POWER_TRAILING_WITH.sub(" ", val)
             val = val.replace(":", " ").replace("|", " ")
-            if val.strip() in {"-", "--", "—", "–", "-0-"}:
-                val = "0"
-            else:
+            if not is_zero_marker(val.strip()):
                 val = val.strip(" \t\r\n:.-|")
+            else:
+                val = val.strip()
             val = strip_unit_suffix(val)
         elif tag == "citizenshipOrOrganization":
             val = _RE_NUMBER_OF.sub("", val)
