@@ -258,3 +258,12 @@ def test_specialized_xml_screen_accepts_registered_family_signals(
 ) -> None:
     screen = screen_specialized_xml_source(form, body)
     assert screen.screen_result == "form_match"
+
+
+def test_screen_joint_tender_offer_matches_13d() -> None:
+    """Joint Schedule TO and Schedule 13D filings are recognized as matching 13D without inversion."""
+    body = b"<DOCUMENT>\n<TYPE>SC TO-T/A\n<TEXT>\nSchedule TO tender offer with Rule 13d-2 amendment."
+    screen = screen_candidate_document("SC 13D/A", raw_content=body)
+    assert screen.screen_result == "form_match"
+    assert not screen.is_inversion
+    assert screen.reason == "joint_tender_offer_13d_match"

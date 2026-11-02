@@ -119,3 +119,37 @@ def test_is_boilerplate_entity_name() -> None:
     assert is_boilerplate_entity_name("Stephen L. Way") is False
     assert is_boilerplate_entity_name("Starboard Value R LP") is False
     assert is_boilerplate_entity_name("Acme Holdings Inc.") is False
+
+
+def test_parse_cusip_normalization_and_rejection() -> None:
+    """Verify CUSIP extraction, segmentation normalization, and false candidate rejection."""
+    from edgar_sec.engine.forms.common.entities import parse_cusip
+
+    assert parse_cusip("45765Y-10-5 13G/A") == "45765Y105"
+    assert parse_cusip("G8742C 10 2*") == "G8742C102"
+    assert parse_cusip("58936H 109(1)") == "58936H109"
+    assert parse_cusip("90354D 104 **") == "90354D104"
+    assert parse_cusip("63886 Q109 – Common Stock") == "63886Q109"
+    assert parse_cusip("64125S1042") == "64125S104"
+    assert parse_cusip("155118V207") == "155118V20"
+    assert parse_cusip("22906C1027") == "22906C102"
+    assert (
+        parse_cusip(
+            "Class A Common Stock: 369385 10 9 Class B Common Stock: 369385 20 8"
+        )
+        == "369385109"
+    )
+    assert parse_cusip("Nos. 257701 20 1 and 257701 30 0") == "257701201"
+    assert parse_cusip("037833100") == "037833100"
+    assert parse_cusip("January 30, 2009") is None
+    assert parse_cusip("OCTOBER 12, 2007") is None
+    assert parse_cusip("268157") is None
+    assert parse_cusip("670980") is None
+    assert parse_cusip("5949368") is None
+    assert (
+        parse_cusip(
+            "DPAC Technologies Corp. 5675 Hudson Industrial Parkway Hudson, Ohio 44236 (800) 553-1170"
+        )
+        is None
+    )
+    assert parse_cusip(None) is None

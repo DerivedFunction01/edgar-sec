@@ -34,6 +34,7 @@ from edgar_sec.domain.taxonomy.jurisdictions import (
 from edgar_sec.domain.taxonomy.legal_forms import LEGAL_FORMS, has_legal_form
 from edgar_sec.engine.forms.common.statutory import is_pure_statutory_boilerplate
 from edgar_sec.foundation.regex.builder import build_alternation
+from edgar_sec.foundation.text.dates import parse_date
 
 STATE_ALT = build_alternation(sorted(STATE_POSTAL_CODES))
 _STATE_ZIP_ALT = build_alternation(
@@ -180,21 +181,59 @@ SEC_FILE_NUMBER_RE = re.compile(
 CUSIP_RE = re.compile(r"(?i)(?<![0-9A-Z])[0-9A-Z*@#]{9}(?![0-9A-Z])")
 _CUSIP_CLEAN_RE = re.compile(r"(?i)^[0-9A-Z*@#]{8,9}$")
 CRD_RE = re.compile(r"\b\d{1,9}\b")
+_SPACED_CUSIP_RE = re.compile(
+    r"\b([0-9A-Z]{5,7}[\s\-]+[0-9A-Z]{1,4}(?:[\s\-]+[0-9A-Z]{1,2})?)\b",
+    re.IGNORECASE,
+)
+_CUSIP_FORM_TAIL_RE = re.compile(r"(?i)\s+(?:SC\s+)?13[DG](?:/[A-Z0-9]+)?\s*$")
+_CUSIP_SECURITY_CLASSES = (r"Common\s+Stock", r"Class\s+[A-Z]", r"Ordinary\s+Shares")
+_CUSIP_SECURITY_ALT = build_alternation(_CUSIP_SECURITY_CLASSES, auto_escape=False)
+_CUSIP_SECURITY_TAIL_RE = re.compile(rf"(?i)\s*[-—–]\s*(?:{_CUSIP_SECURITY_ALT}).*$")
+_CUSIP_FOOTNOTE_TAIL_RE = re.compile(r"\s*(?:\*{1,3}|(?:\(\d{1,2}\)|\[\d{1,2}\]))\s*$")
+_STREET_WORD_RE = re.compile(
+    rf"\b(?:{_NON_COLLIDING_ALT}|{_COLLIDING_ALT})\b", re.IGNORECASE
+)
 
 
 def parse_cusip(value: str | None) -> str | None:
     """Extract and normalize a single CUSIP token from text if present."""
-    if not value:
+    if not value or len(value.strip()) < 8:
         return None
-    compact = value.replace(" ", "")
-    if _CUSIP_CLEAN_RE.fullmatch(compact):
+    val = value.strip()
+    if is_street_address_value(val) or is_street_or_address_line(val):
+        return None
+    if parse_date(val) is not None:
+        return None
+    val = _CUSIP_FORM_TAIL_RE.sub("", val)
+    val = _CUSIP_SECURITY_TAIL_RE.sub("", val)
+    val = _CUSIP_FOOTNOTE_TAIL_RE.sub("", val).strip()
+
+    compact = val.replace(" ", "").replace("-", "")
+    if _CUSIP_CLEAN_RE.fullmatch(compact) and any(c.isdigit() for c in compact):
         return compact.upper()
-    tokens = list(CUSIP_RE.finditer(value))
+
+    for m in _SPACED_CUSIP_RE.finditer(val):
+        clean = m.group(1).replace(" ", "").replace("-", "").upper()
+        if (
+            len(clean) in (8, 9)
+            and any(c.isdigit() for c in clean)
+            and is_valid_cusip(clean)
+        ):
+            return clean
+
+    tokens = list(CUSIP_RE.finditer(val))
     if tokens:
-        return tokens[-1].group(0).upper()
-    compact_tokens = list(CUSIP_RE.finditer(compact))
-    if compact_tokens:
-        return compact_tokens[-1].group(0).upper()
+        cand = tokens[0].group(0).upper()
+        if any(c.isdigit() for c in cand):
+            return cand
+
+    if (
+        len(compact) == 10
+        and is_valid_cusip(compact[:9], length=9)
+        and any(c.isdigit() for c in compact[:9])
+    ):
+        return compact[:9].upper()
+
     return None
 
 
@@ -202,7 +241,7 @@ def is_valid_cusip(value: str | None, *, length: int | None = None) -> bool:
     """Return whether value matches CUSIP character structure."""
     if not value:
         return False
-    compact = value.replace(" ", "")
+    compact = value.replace(" ", "").replace("-", "")
     if length is not None:
         return len(compact) == length and bool(_CUSIP_CLEAN_RE.fullmatch(compact))
     return bool(_CUSIP_CLEAN_RE.fullmatch(compact))
@@ -215,26 +254,7 @@ def is_street_address_value(text: str) -> bool:
         return True
     if STATE_ZIP_RE.search(text):
         return True
-    if STREET_NUM_LEAD_RE.match(text) and any(
-        term in low
-        for term in (
-            "street",
-            "st",
-            "st.",
-            "avenue",
-            "ave",
-            "ave.",
-            "road",
-            "rd",
-            "blvd",
-            "boulevard",
-            "lane",
-            "ln",
-            "way",
-            "drive",
-            "dr",
-        )
-    ):
+    if STREET_NUM_LEAD_RE.match(text) and bool(_STREET_WORD_RE.search(low)):
         return True
     if bool(SUITE_OR_PO_BOX_RE.search(text)):
         return True

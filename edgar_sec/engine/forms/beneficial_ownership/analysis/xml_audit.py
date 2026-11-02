@@ -295,41 +295,45 @@ def analyze_xml(
                     }
                 )
             if name == "item2":
-                for element in child:
-                    if (
-                        local_name(element.tag) == "filingPersonName"
-                        and len(_text(element)) > 240
-                        and len(RE_SUBSECTION_SPLIT.findall(_text(element))) >= 2
-                    ):
-                        value = _text(element)
-                        anomalies.append(
-                            {
-                                "accession": accession,
-                                "kind": "flattened_narrative_field",
-                                "field": "item2.filingPersonName",
-                                "char_length": len(value),
-                                "snippet": value[:240],
-                                "detail": "Item 2 subparts are collapsed into the filing-person name field",
-                            }
-                        )
+                subpart_tags = {local_name(e.tag) for e in child}
+                if len(subpart_tags) <= 1:
+                    for element in child:
+                        if (
+                            local_name(element.tag) == "filingPersonName"
+                            and len(_text(element)) > 240
+                            and len(RE_SUBSECTION_SPLIT.findall(_text(element))) >= 2
+                        ):
+                            value = _text(element)
+                            anomalies.append(
+                                {
+                                    "accession": accession,
+                                    "kind": "flattened_narrative_field",
+                                    "field": "item2.filingPersonName",
+                                    "char_length": len(value),
+                                    "snippet": value[:240],
+                                    "detail": "Item 2 subparts are collapsed into the filing-person name field",
+                                }
+                            )
             elif name == "item5":
-                for element in child:
-                    if (
-                        local_name(element.tag) == "percentageOfClassSecurities"
-                        and len(_text(element)) > 240
-                        and len(RE_SUBSECTION_SPLIT.findall(_text(element))) >= 2
-                    ):
-                        value = _text(element)
-                        anomalies.append(
-                            {
-                                "accession": accession,
-                                "kind": "flattened_narrative_field",
-                                "field": "item5.percentageOfClassSecurities",
-                                "char_length": len(value),
-                                "snippet": value[:240],
-                                "detail": "Item 5 subsections are collapsed into the percentage field",
-                            }
-                        )
+                subpart_tags = {local_name(e.tag) for e in child}
+                if len(subpart_tags) <= 1:
+                    for element in child:
+                        if (
+                            local_name(element.tag) == "percentageOfClassSecurities"
+                            and len(_text(element)) > 240
+                            and len(RE_SUBSECTION_SPLIT.findall(_text(element))) >= 2
+                        ):
+                            value = _text(element)
+                            anomalies.append(
+                                {
+                                    "accession": accession,
+                                    "kind": "flattened_narrative_field",
+                                    "field": "item5.percentageOfClassSecurities",
+                                    "char_length": len(value),
+                                    "snippet": value[:240],
+                                    "detail": "Item 5 subsections are collapsed into the percentage field",
+                                }
+                            )
 
     source_has_signature = bool(source_text and _source_has_signature(source_text))
     xml_has_signature = any(
@@ -468,6 +472,30 @@ def analyze_xml(
                     "field": "issuerCusip",
                     "value": value,
                     "detail": "source provides an eight-character CUSIP without a check digit",
+                }
+            )
+        elif (
+            value and len(normalized) == 10 and is_valid_cusip(normalized[:9], length=9)
+        ):
+            review_signals.append(
+                {
+                    "accession": accession,
+                    "kind": "extended_cusip_value",
+                    "field": "issuerCusip",
+                    "value": value,
+                    "detail": "source provides a ten-character CUSIP with an extra check or class digit",
+                }
+            )
+        elif (
+            value and len(normalized) == 10 and is_valid_cusip(normalized[:9], length=9)
+        ):
+            review_signals.append(
+                {
+                    "accession": accession,
+                    "kind": "extended_cusip_value",
+                    "field": "issuerCusip",
+                    "value": value,
+                    "detail": "source provides a ten-character CUSIP with an extra check or class digit",
                 }
             )
         elif value and not is_valid_cusip(normalized, length=9):

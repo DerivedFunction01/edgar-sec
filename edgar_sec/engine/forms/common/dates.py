@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable
 
+from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import (
     DateComponents,
     ParsedDate,
@@ -11,6 +12,12 @@ from edgar_sec.foundation.text.dates import (
 
 _RE_CALENDAR_YEAR = re.compile(
     r"(?i)^\s*(?:calendar\s+year|year\s+ended(?:\s+december\s+31,?)?)\s*(\d{4})\s*$"
+)
+_ORDINAL_SUFFIX_ALT = build_alternation(
+    ("st", "nd", "rd", "th"), auto_escape=True, compact=True
+)
+_RE_DAY_OF_MONTH = re.compile(
+    rf"(?i)\b(\d{{1,2}})(?:{_ORDINAL_SUFFIX_ALT})?\s+day\s+of\s+([A-Za-z]+),?\s+(\d{{4}})\b"
 )
 
 
@@ -30,6 +37,14 @@ def parse_schema_date(
             components=DateComponents(year=year, month=12, day=31),
         )
     parsed = parse_date(value, reference_year=reference_year)
+    if parsed is None or (
+        parsed.format_id.startswith("month_year") and not allow_month_year
+    ):
+        if m := _RE_DAY_OF_MONTH.search(value):
+            parsed = parse_date(
+                f"{m.group(2)} {m.group(1)}, {m.group(3)}",
+                reference_year=reference_year,
+            )
     if (
         parsed is None
         or parsed.ambiguous

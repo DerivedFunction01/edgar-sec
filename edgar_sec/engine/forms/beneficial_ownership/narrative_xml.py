@@ -3,20 +3,50 @@
 from __future__ import annotations
 
 from decimal import Decimal
+import re
 import xml.etree.ElementTree as ET
 
 from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     BeneficialOwnershipDocument,
     EvidenceState,
     NarrativeItem,
+    ReportingPersonCover,
 )
-from edgar_sec.domain.taxonomy.jurisdictions import EDGAR_JURISDICTION_CODES
+from edgar_sec.domain.taxonomy.jurisdictions import (
+    EDGAR_JURISDICTION_CODES,
+    EDGAR_JURISDICTION_CODES_BY_NAME,
+    edgar_jurisdiction_code,
+)
 from edgar_sec.engine.forms.common.extraction import (
     FieldKind,
     FieldSpec,
     extract_value,
 )
 from edgar_sec.engine.forms.common.numbers import normalize_schema_number
+
+_JURISDICTION_SPLIT_RE = re.compile(r"[\n,;:]+")
+_SORTED_JURISDICTION_NAMES = tuple(
+    sorted(EDGAR_JURISDICTION_CODES_BY_NAME.keys(), key=len, reverse=True)
+)
+
+
+def _find_jurisdiction_in_text(text: str) -> str | None:
+    cf = text.casefold()
+    for name in _SORTED_JURISDICTION_NAMES:
+        if len(name) > 3 and name in cf:
+            return EDGAR_JURISDICTION_CODES_BY_NAME[name][0]
+    for token in _JURISDICTION_SPLIT_RE.split(text):
+        clean_t = token.strip()
+        if clean_t:
+            candidate_code = edgar_jurisdiction_code(clean_t)
+            if candidate_code and candidate_code in EDGAR_JURISDICTION_CODES:
+                return candidate_code
+    return None
+
+
+def _first_value(person: ReportingPersonCover, key: str | int) -> str | None:
+    item = person.first_item(key)
+    return item.value if item and item.state is EvidenceState.VALUE else None
 
 
 def _tag(name: str) -> str:
@@ -48,8 +78,12 @@ def _add_schema_jurisdiction(
     )
     if res.value is not None:
         _add_text(parent, name, res.value)
-    elif rec := res.unresolved_record():
-        unresolved.append(rec)
+    else:
+        code = _find_jurisdiction_in_text(value) if value else None
+        if code:
+            _add_text(parent, name, code)
+        elif rec := res.unresolved_record():
+            unresolved.append(rec)
 
 
 def _add_schema_number(
@@ -105,8 +139,6 @@ def render_narrative_13d_xml(
     doc: BeneficialOwnershipDocument | None = None,
 ) -> None:
     """Render Schedule 13D narrative item XML conforming to X0202."""
-    if item.number in {2, 5} and not item.parsed_fields:
-        return
     elem = ET.SubElement(parent, _tag(f"item{item.number}"))
     if item.number == 1:
         parsed_dict = (
@@ -141,13 +173,13 @@ def render_narrative_13d_xml(
             _add_text(elem, "commentText", comment_val.strip())
         return
 
+    tag_rename_13d = {
+        "securitiesClassTitle": "securityTitle",
+        "principalBusiness": "principalJob",
+        "citizenshipOrOrganization": "citizenship",
+        "fundType": "fundsSource",
+    }
     if item.parsed_fields:
-        tag_rename_13d = {
-            "securitiesClassTitle": "securityTitle",
-            "principalBusiness": "principalJob",
-            "citizenshipOrOrganization": "citizenship",
-            "fundType": "fundsSource",
-        }
         for f in item.parsed_fields:
             if item.number != 5 or f.tag not in {
                 "aggregateAmountOwned",
@@ -156,18 +188,49 @@ def render_narrative_13d_xml(
                 actual_tag = tag_rename_13d.get(f.tag, f.tag)
                 _add_text(elem, actual_tag, f.value)
         return
+
+    if item.number == 2:
+        if doc and doc.reporting_persons:
+            rp = doc.reporting_persons[0]
+            _add_text(
+                elem,
+                "filingPersonName",
+                _first_value(rp, "reportingPersonName") or _first_value(rp, 1),
+            )
+            _add_text(
+                elem,
+                "citizenship",
+                _first_value(rp, "citizenshipOrOrganization") or _first_value(rp, 6),
+            )
+        elif item.text and len(item.text.strip()) <= 240:
+            _add_text(elem, "filingPersonName", item.text.strip())
+        return
+
+    if item.number == 5:
+        if doc and doc.reporting_persons:
+            rp = doc.reporting_persons[0]
+            pct = _first_value(rp, "percentOfClass") or _first_value(rp, 13)
+            _add_text(elem, "percentageOfClassSecurities", pct or "0.0")
+            shs = _first_value(rp, "aggregateAmountOwned") or _first_value(rp, 9)
+            if shs:
+                _add_text(elem, "numberOfShares", shs)
+        elif item.text and len(item.text.strip()) <= 240:
+            _add_text(elem, "percentageOfClassSecurities", item.text.strip())
+        return
+
     f_map = {
-        1: "commentText",
-        2: "filingPersonName",
         3: "fundsSource",
         4: "transactionPurpose",
-        5: "percentageOfClassSecurities",
         6: "contractDescription",
         7: "filedExhibits",
     }
     text_val = item.text
-    if item.number == 1 and not text_val and doc:
-        text_val = f"Security: {doc.issuer.security_class or ''}; Issuer: {doc.issuer.issuer_name or ''}".strip()
+    if not text_val and doc and doc.reporting_persons and item.number == 3:
+        text_val = _first_value(doc.reporting_persons[0], "fundType") or _first_value(
+            doc.reporting_persons[0], 4
+        )
+    if not text_val:
+        text_val = "Not applicable" if item.number == 4 else "None"
     _add_text(elem, f_map.get(item.number, "commentText"), text_val)
 
 
@@ -251,52 +314,10 @@ def render_narrative_13g_xml(
                         "items.item2.citizenshipOrOrganization",
                         unresolved,
                     )
-    elif item.number == 4 and item.parsed_fields:
-        item_element = ET.SubElement(parent, _tag("item4"))
-        shares_elem: ET.Element | None = None
-        shares_map = {
-            "soleVotingPower": "solePowerOrDirectToVote",
-            "sharedVotingPower": "sharedPowerOrDirectToVote",
-            "soleDispositivePower": "solePowerOrDirectToDispose",
-            "sharedDispositivePower": "sharedPowerOrDirectToDispose",
-        }
-        for field in item.parsed_fields:
-            if field.tag in {"aggregateAmountOwned", "percentOfClass"}:
-                is_agg = field.tag == "aggregateAmountOwned"
-                tname = "amountBeneficiallyOwned" if is_agg else "classPercent"
-                _add_schema_number(
-                    item_element,
-                    tname,
-                    field.value,
-                    integer=is_agg,
-                    max_length=16 if is_agg else 5,
-                    path=f"items.item4.{tname}",
-                    unresolved=unresolved,
-                )
-            elif field.tag in shares_map:
-                if shares_elem is None:
-                    shares_elem = ET.SubElement(
-                        item_element, _tag("numberOfSharesPersonHas")
-                    )
-                s_name = shares_map[field.tag]
-                _add_schema_number(
-                    shares_elem,
-                    s_name,
-                    field.value,
-                    integer=True,
-                    max_length=16,
-                    path=f"items.item4.{s_name}",
-                    unresolved=unresolved,
-                )
-        if shares_elem is not None and len(shares_elem) == 0:
-            item_element.remove(shares_elem)
-        if len(item_element) == 0:
-            parent.remove(item_element)
-            item_element = None
-    elif item.number in {3, 5, 6, 7, 8, 9, 10} and item.parsed_fields:
-        item_element = ET.SubElement(parent, _tag(f"item{item.number}"))
-        field_tags = {f.tag: f.value for f in item.parsed_fields}
-        if item.number == 3:
+    elif item.number == 3:
+        item_element = ET.SubElement(parent, _tag("item3"))
+        if item.parsed_fields:
+            field_tags = {f.tag: f.value for f in item.parsed_fields}
             if field_tags.get("notApplicableFlag") == "Y":
                 _add_text(item_element, "notApplicableFlag", "Y")
             else:
@@ -309,8 +330,115 @@ def render_narrative_13g_xml(
                                 _add_text(
                                     item_element, "typeOfPersonFiling", clean_code
                                 )
-        elif item.number == 5:
-            if field_tags.get("notApplicableFlag") == "Y":
+        elif doc and doc.reporting_persons:
+            rp = doc.reporting_persons[0]
+            codes = _first_value(rp, "typeOfReportingPerson") or _first_value(rp, 12)
+            if codes:
+                _add_text(item_element, "notApplicableFlag", "N")
+                for code in codes.split(","):
+                    clean_code = code.strip()
+                    if clean_code:
+                        _add_text(item_element, "typeOfPersonFiling", clean_code)
+            else:
+                _add_text(item_element, "notApplicableFlag", "Y")
+        else:
+            _add_text(item_element, "notApplicableFlag", "Y")
+    elif item.number == 4:
+        item_element = ET.SubElement(parent, _tag("item4"))
+        shares_elem: ET.Element | None = None
+        shares_map = {
+            "soleVotingPower": "solePowerOrDirectToVote",
+            "sharedVotingPower": "sharedPowerOrDirectToVote",
+            "soleDispositivePower": "solePowerOrDirectToDispose",
+            "sharedDispositivePower": "sharedPowerOrDirectToDispose",
+        }
+        if item.parsed_fields:
+            for field in item.parsed_fields:
+                if field.tag in {"aggregateAmountOwned", "percentOfClass"}:
+                    is_agg = field.tag == "aggregateAmountOwned"
+                    tname = "amountBeneficiallyOwned" if is_agg else "classPercent"
+                    _add_schema_number(
+                        item_element,
+                        tname,
+                        field.value,
+                        integer=is_agg,
+                        max_length=16 if is_agg else 5,
+                        path=f"items.item4.{tname}",
+                        unresolved=unresolved,
+                    )
+                elif field.tag in shares_map:
+                    if shares_elem is None:
+                        shares_elem = ET.SubElement(
+                            item_element, _tag("numberOfSharesPersonHas")
+                        )
+                    s_name = shares_map[field.tag]
+                    _add_schema_number(
+                        shares_elem,
+                        s_name,
+                        field.value,
+                        integer=True,
+                        max_length=16,
+                        path=f"items.item4.{s_name}",
+                        unresolved=unresolved,
+                    )
+        elif doc and doc.reporting_persons:
+            rp = doc.reporting_persons[0]
+            amt = _first_value(rp, "aggregateAmountOwned") or _first_value(rp, 9)
+            pct = _first_value(rp, "percentOfClass") or _first_value(rp, 11)
+            if amt:
+                _add_schema_number(
+                    item_element,
+                    "amountBeneficiallyOwned",
+                    amt,
+                    integer=True,
+                    max_length=16,
+                    path="items.item4.amountBeneficiallyOwned",
+                    unresolved=unresolved,
+                )
+            if pct:
+                _add_schema_number(
+                    item_element,
+                    "classPercent",
+                    pct,
+                    integer=False,
+                    max_length=5,
+                    path="items.item4.classPercent",
+                    unresolved=unresolved,
+                )
+            for f_name, fallback_num in (
+                ("soleVotingPower", 5),
+                ("sharedVotingPower", 6),
+                ("soleDispositivePower", 7),
+                ("sharedDispositivePower", 8),
+            ):
+                val = _first_value(rp, f_name) or _first_value(rp, fallback_num)
+                if val:
+                    if shares_elem is None:
+                        shares_elem = ET.SubElement(
+                            item_element, _tag("numberOfSharesPersonHas")
+                        )
+                    s_name = shares_map[f_name]
+                    _add_schema_number(
+                        shares_elem,
+                        s_name,
+                        val,
+                        integer=True,
+                        max_length=16,
+                        path=f"items.item4.{s_name}",
+                        unresolved=unresolved,
+                    )
+        if shares_elem is not None and len(shares_elem) == 0:
+            item_element.remove(shares_elem)
+        if len(item_element) == 0:
+            parent.remove(item_element)
+            item_element = None
+    elif item.number in {5, 6, 7, 8, 9, 10}:
+        item_element = ET.SubElement(parent, _tag(f"item{item.number}"))
+        field_tags = (
+            {f.tag: f.value for f in item.parsed_fields} if item.parsed_fields else {}
+        )
+        if item.number == 5:
+            if field_tags.get("notApplicableFlag") == "Y" or not field_tags:
                 _add_text(item_element, "notApplicableFlag", "Y")
             else:
                 _add_text(item_element, "notApplicableFlag", "N")
@@ -324,14 +452,14 @@ def render_narrative_13g_xml(
                 9: "groupDissolutionNotice",
             }
             target_tag = tag_map[item.number]
-            if field_tags.get("notApplicableFlag") == "Y":
+            if field_tags.get("notApplicableFlag") == "Y" or not field_tags:
                 _add_text(item_element, "notApplicableFlag", "Y")
             else:
                 _add_text(item_element, "notApplicableFlag", "N")
                 if target_tag in field_tags:
                     _add_text(item_element, target_tag, field_tags[target_tag])
         elif item.number == 10:
-            if field_tags.get("notApplicableFlag") == "Y":
+            if field_tags.get("notApplicableFlag") == "Y" or not field_tags:
                 _add_text(item_element, "notApplicableFlag", "Y")
             else:
                 _add_text(item_element, "notApplicableFlag", "N")

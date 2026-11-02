@@ -284,6 +284,7 @@ def test_cik_index_read_rejects_an_unsorted_file(tmp_path: Path) -> None:
 def test_roster_schema_is_ordinal_keyed_and_name_carrying() -> None:
     assert ROSTER_SCHEMA.names == ["ordinal", "cik_padded", "name"]
 
+
 def test_roster_lookup_name(tmp_path: Path) -> None:
     roster, _ = write_roster_rows(
         [("0000320193", "Apple Inc."), ("0000789019", "Microsoft Corp.")],

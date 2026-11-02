@@ -135,3 +135,75 @@ def test_render_narrative_13g_xml_item1_and_item2_doc_fallback() -> None:
     )
     assert parent.findtext("item2/filingPersonName") == "Fund LP"
     assert parent.findtext("item2/citizenship") == "DE"
+
+
+def test_render_narrative_13d_xml_item2_and_item5_doc_fallback() -> None:
+    """Verify 13D Item 2 and Item 5 fallback to reporting person cover values."""
+    parent = ET.Element("items1To7")
+    person = ReportingPersonCover(
+        items=(
+            CoverItemEvidence(
+                1, "Name", "Alpha Buyer", EvidenceState.VALUE, tag="reportingPersonName"
+            ),
+            CoverItemEvidence(
+                6,
+                "Cit",
+                "Delaware",
+                EvidenceState.VALUE,
+                tag="citizenshipOrOrganization",
+            ),
+            CoverItemEvidence(
+                9, "Shares", "500000", EvidenceState.VALUE, tag="aggregateAmountOwned"
+            ),
+            CoverItemEvidence(
+                13, "Pct", "7.5", EvidenceState.VALUE, tag="percentOfClass"
+            ),
+        )
+    )
+    doc = BeneficialOwnershipDocument(
+        issuer=IssuerMetadata(), reporting_persons=(person,)
+    )
+    render_narrative_13d_xml(parent, NarrativeItem(2, "Item 2", "", 0, 0), doc=doc)
+    render_narrative_13d_xml(parent, NarrativeItem(5, "Item 5", "", 0, 0), doc=doc)
+    assert parent.findtext("item2/filingPersonName") == "Alpha Buyer"
+    assert parent.findtext("item2/citizenship") == "Delaware"
+    assert parent.findtext("item5/percentageOfClassSecurities") == "7.5"
+    assert parent.findtext("item5/numberOfShares") == "500000"
+
+
+def test_render_narrative_13g_xml_item4_doc_fallback() -> None:
+    """Verify 13G Item 4 falls back to reporting person cover numbers."""
+    parent = ET.Element("items")
+    unresolved: list[dict[str, object]] = []
+    person = ReportingPersonCover(
+        items=(
+            CoverItemEvidence(
+                9,
+                "Aggregate",
+                "250000",
+                EvidenceState.VALUE,
+                tag="aggregateAmountOwned",
+            ),
+            CoverItemEvidence(
+                11, "Percent", "6.2", EvidenceState.VALUE, tag="percentOfClass"
+            ),
+            CoverItemEvidence(
+                5, "SoleVote", "200000", EvidenceState.VALUE, tag="soleVotingPower"
+            ),
+        )
+    )
+    doc = BeneficialOwnershipDocument(
+        issuer=IssuerMetadata(), reporting_persons=(person,)
+    )
+    assert (
+        render_narrative_13g_xml(
+            parent, NarrativeItem(4, "Item 4", "", 0, 0), unresolved, doc=doc
+        )
+        is True
+    )
+    assert parent.findtext("item4/amountBeneficiallyOwned") == "250000"
+    assert parent.findtext("item4/classPercent") == "6.2"
+    assert (
+        parent.findtext("item4/numberOfSharesPersonHas/solePowerOrDirectToVote")
+        == "200000"
+    )

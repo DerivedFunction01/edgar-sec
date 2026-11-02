@@ -17,6 +17,7 @@ from edgar_sec.engine.forms.common.entities import (
     CUSIP_RE,
     ORGANIZATION_SUFFIX_RE,
     is_valid_cusip,
+    parse_cusip,
 )
 from edgar_sec.engine.forms.common.tables import (
     parse_address_parts,
@@ -645,15 +646,12 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
             }
             value = next(iter(unique.values())) if len(unique) == 1 else None
         if field == "cusip" and value:
-            tokens = list(CUSIP_RE.finditer(value))
-            if tokens:
-                value = tokens[-1].group(0)
-            elif CUSIP_UNAVAILABLE_POLICY.is_missing(value):
+            if CUSIP_UNAVAILABLE_POLICY.is_missing(value):
                 value = None
             elif page_marker := cusip_page_residue_match(value):
-                prefix = value[: page_marker.start()]
-                tokens = list(CUSIP_RE.finditer(prefix))
-                value = tokens[-1].group(0) if tokens else None
+                value = parse_cusip(value[: page_marker.start()])
+            else:
+                value = parse_cusip(value)
         selected[field] = value
     issuer_address = _address(selected["issuer_address"])
     notice_address = _address(selected["notice_address"])

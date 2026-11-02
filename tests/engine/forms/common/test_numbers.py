@@ -12,6 +12,7 @@ from edgar_sec.engine.forms.common.numbers import (
     normalize_schema_decimal,
     normalize_schema_integer,
     normalize_schema_integral_decimal,
+    normalize_schema_number,
     parse_scaled_number,
 )
 
@@ -234,3 +235,14 @@ def test_normalize_schema_number_disclaimers_and_leading_numbers() -> None:
         )
         == "6.89"
     )
+
+
+@pytest.mark.parametrize(
+    "text", ["NONE", "nil.", "None Beneficially Owned", "NONE BENEFICIALL Y"]
+)
+def test_zero_markers_normalize_to_zero(text: str) -> None:
+    assert normalize_schema_number(text, integer=True) == "0"
+
+
+def test_prose_starting_with_none_is_not_zero() -> None:
+    assert normalize_schema_number("None of the 500 shares", integer=True) is None

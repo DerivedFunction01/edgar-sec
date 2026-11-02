@@ -249,7 +249,11 @@ def test_schedule13g_uses_its_cover_person_and_items_schema_tags() -> None:
         == "1000"
     )
     assert root.findtext(".//s:classPercent", namespaces=namespace) == "5.25"
-    assert root.find(".//s:items", namespace) is None
+    assert root.find(".//s:items", namespace) is not None
+    assert (
+        root.findtext(".//s:items/s:item3/s:typeOfPersonFiling", namespaces=namespace)
+        == "IN"
+    )
     sections = json.loads(output.sidecars[0].content)["unparsed_sections"]
     assert any(section["role"] == "item3.unparsed" for section in sections)
 
@@ -673,3 +677,27 @@ def test_schedule13g_items_substantive_not_applicable_flag_is_no() -> None:
         == "Authorized Signatory"
     )
     assert root.findtext(".//s:signatureDetails/s:date", namespaces=ns) == "01-02-2024"
+
+
+def test_signature_details_inherits_block_date_and_ordinal_date() -> None:
+    """Verify signatories without dates inherit block date and ordinal clauses normalize."""
+    document = BeneficialOwnershipDocument(
+        issuer=IssuerMetadata(event_date="9/8/08"),
+        reporting_persons=(),
+        signature_block=SignatureBlock(
+            (
+                Signatory(
+                    "Signer One",
+                    date="executed on their behalf this 27th day of January, 2003.",
+                ),
+                Signatory("Signer Two", date=None),
+            )
+        ),
+    )
+
+    output = build_schedule13d_xml(document)
+    root = ET.fromstring(output.content)
+    dates = [
+        e.text for e in root.findall(".//{http://www.sec.gov/edgar/schedule13D}date")
+    ]
+    assert dates == ["01-27-2003", "01-27-2003"]

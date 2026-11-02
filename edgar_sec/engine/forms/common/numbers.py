@@ -334,6 +334,19 @@ def _strip_schema_policy(
     return value
 
 
+_ZERO_MARKER_RE = re.compile(
+    r"(?i)^(?:none|nil)(?:\s+beneficial(?:ly|l\s*y)?(?:\s+owned)?)?\.?$"
+)
+
+
+def _is_zero_marker(value: str) -> bool:
+    """Only a bare none/nil marker means zero, never prose that starts with it."""
+    collapsed = " ".join(value.split())
+    return bool(
+        _SCHEMA_ZERO_DASHES_RE.fullmatch(collapsed) or _ZERO_MARKER_RE.match(collapsed)
+    )
+
+
 def normalize_schema_number(
     text: str | None,
     *,
@@ -362,7 +375,7 @@ def normalize_schema_number(
         if not allow_accounting_negative:
             return None
         value = value[1:-1].strip()
-    if _SCHEMA_ZERO_DASHES_RE.fullmatch(value):
+    if _is_zero_marker(value):
         return "0"
 
     if integer and allow_integral_decimal:
@@ -454,7 +467,7 @@ def normalize_schema_integral_decimal(
         if not allow_accounting_negative:
             return None
         value = value[1:-1].strip()
-    if _SCHEMA_ZERO_DASHES_RE.fullmatch(value):
+    if _is_zero_marker(value):
         return "0"
     decimal = normalize_schema_decimal(value)
     if decimal is None:

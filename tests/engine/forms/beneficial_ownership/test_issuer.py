@@ -31,7 +31,7 @@ def test_extract_issuer_metadata_handles_values_before_parenthesized_labels() ->
 
     assert meta.issuer_name == "ENCORE ENERGY PARTNERS LP"
     assert meta.security_class == "COMMON UNITS"
-    assert meta.cusip == "29257A 106"
+    assert meta.cusip == "29257A106"
     assert meta.event_date == "December 1, 2011"
 
 
@@ -237,4 +237,4 @@ def test_issuer_extracts_inline_formerly_known_as_label() -> None:
         "917271 108 (CUSIP NUMBER)\n"
     )
     assert meta.issuer_name == "Genstar Therapeutics Corp."
-    assert meta.cusip == "917271 108"
+    assert meta.cusip == "917271108"

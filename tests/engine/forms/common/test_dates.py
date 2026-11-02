@@ -44,3 +44,12 @@ def test_schema_date_lexeme_accepts_hyphen_and_slash_delimiters() -> None:
     assert not is_valid_schema_date_lexeme("2024-09-30", "2024-09-30", month_first=True)
     assert not is_valid_schema_date_lexeme("2024-09-30", "30/09/2024", month_first=True)
     assert is_valid_schema_date_lexeme("2024-09-30", "2024-09-30", month_first=False)
+
+
+def test_schema_date_accepts_ordinal_day_of_month_phrases() -> None:
+    """Verify ordinal day-of-month clauses normalize to canonical ISO dates."""
+    clause = (
+        "IN WITNESS WHEREOF, the undersigned has executed this as of this "
+        "30th day of November, 2011."
+    )
+    assert normalize_iso_date(clause) == "2011-11-30"

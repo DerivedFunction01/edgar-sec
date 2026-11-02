@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ET
 from collections.abc import Mapping
 
 from edgar_sec.domain.forms.common.checkmarks import CANONICAL_CHECKED
+from edgar_sec.domain.forms.common.signatures import Signatory
 from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     AddressDetails,
     BeneficialOwnershipDocument,
@@ -404,6 +405,11 @@ def _cover_xml(
 ) -> None:
     cover = ET.SubElement(parent, _tag("coverPageHeader"))
     _add_text(cover, "securitiesClassTitle", doc.issuer.security_class)
+    event_date = doc.issuer.event_date
+    if not event_date and doc.signature_block and doc.signature_block.signatories:
+        event_date = next(
+            (s.date for s in doc.signature_block.signatories if s.date), None
+        )
     _add_schema_date(
         cover,
         (
@@ -411,7 +417,7 @@ def _cover_xml(
             if doc.form_family == "13G"
             else "dateOfEvent"
         ),
-        doc.issuer.event_date,
+        event_date,
         reference_year,
         "formData.coverPageHeader.dateOfEvent",
         doc,
@@ -485,12 +491,25 @@ def _signature_xml(
     reference_year: int | None,
     unresolved: list[dict[str, object]],
 ) -> None:
-    if doc.signature_block is None or not doc.signature_block.signatories:
-        return
     is_13g = doc.form_family == "13G"
     signature_info = ET.SubElement(
         parent, _tag("signatureInformation" if is_13g else "signatureInfo")
     )
+    if doc.signature_block is None or not doc.signature_block.signatories:
+        sig_name = (
+            _first_value(doc.reporting_persons[0], "reportingPersonName")
+            if doc.reporting_persons
+            else "Authorized Signatory"
+        ) or "Authorized Signatory"
+        signatories = [
+            Signatory(
+                name=sig_name,
+                title="Authorized Signatory",
+                date=doc.issuer.event_date,
+            )
+        ]
+    else:
+        signatories = list(doc.signature_block.signatories)
 
     def _signer_reporting_name(idx: int, p_name: str) -> str | None:
         p_clean = p_name.casefold().strip()
@@ -506,18 +525,24 @@ def _signature_xml(
         rps = doc.reporting_persons
         if matched is None and len(rps) == 1:
             return _first_value(rps[0], "reportingPersonName")
-        if matched is None and len(rps) == len(doc.signature_block.signatories):
+        if matched is None and len(rps) == len(signatories):
             return _first_value(rps[idx - 1], "reportingPersonName")
         return matched
 
+    block_dates = [
+        p.date
+        for p in signatories
+        if p.date and normalize_iso_date(p.date, reference_year)
+    ]
+    fallback_date = next((d for d in block_dates if d), None) or doc.issuer.event_date
     if is_13g:
-        for idx, person in enumerate(doc.signature_block.signatories, start=1):
+        for idx, person in enumerate(signatories, start=1):
             _add_text(
                 signature_info,
                 "reportingPersonName",
                 _signer_reporting_name(idx, person.name),
             )
-    for person_index, person in enumerate(doc.signature_block.signatories, start=1):
+    for person_index, person in enumerate(signatories, start=1):
         signature_person = (
             signature_info
             if is_13g
@@ -530,9 +555,12 @@ def _signature_xml(
                 _signer_reporting_name(person_index, person.name),
             )
         details = ET.SubElement(signature_person, _tag("signatureDetails"))
-        _add_text(details, "signature", clean_signature_name(person.name))
+        clean_name = (
+            clean_signature_name(person.name) or person.name or "Authorized Signatory"
+        )
+        _add_text(details, "signature", clean_name)
         _add_text(details, "title", person.title or "Authorized Signatory")
-        sig_date = person.date or doc.issuer.event_date
+        sig_date = person.date or fallback_date
         _add_schema_date(
             details,
             "date",
@@ -599,7 +627,10 @@ def build_beneficial_ownership_xml(
     form_data = ET.SubElement(root, _tag("formData"))
     unresolved: list[dict[str, object]] = []
     if reference_year is None:
-        reference_year = resolve_reference_year(None, None, (doc.issuer.event_date,))
+        source_dates = [doc.issuer.event_date]
+        if doc.signature_block:
+            source_dates.extend(s.date for s in doc.signature_block.signatories)
+        reference_year = resolve_reference_year(None, None, source_dates)
     _cover_xml(form_data, doc, unresolved, reference_year)
     if doc.reporting_persons:
         is_13g = doc.form_family == "13G"
@@ -609,10 +640,10 @@ def build_beneficial_ownership_xml(
         fn = _reporting_person_13g_xml if is_13g else _reporting_person_xml
         for index, person in enumerate(doc.reporting_persons, start=1):
             fn(people, person, index, doc, unresolved)
+    tag_name = "items" if doc.form_family == "13G" else "items1To7"
+    items = ET.SubElement(form_data, _tag(tag_name))
     items_to_render = doc.narrative_items
     if items_to_render:
-        tag_name = "items" if doc.form_family == "13G" else "items1To7"
-        items = ET.SubElement(form_data, _tag(tag_name))
         first_by_number: dict[int, NarrativeItem] = {}
         repeated: dict[int, list[NarrativeItem]] = {}
         for item in items_to_render:
@@ -620,7 +651,6 @@ def build_beneficial_ownership_xml(
                 first_by_number[item.number] = item
             else:
                 repeated.setdefault(item.number, []).append(item)
-        emitted_item = False
         for number in sorted(first_by_number):
             item = first_by_number[number]
             if reps := repeated.get(number):
@@ -638,14 +668,32 @@ def build_beneficial_ownership_xml(
                     parsed_fields=tuple(all_fields),
                 )
             if doc.form_family == "13G":
-                emitted_item = (
-                    render_narrative_13g_xml(items, item, unresolved, doc=doc)
-                    or emitted_item
-                )
+                render_narrative_13g_xml(items, item, unresolved, doc=doc)
             else:
                 render_narrative_13d_xml(items, item, doc=doc)
-        if doc.form_family == "13G" and not emitted_item:
-            form_data.remove(items)
+    if len(items) == 0:
+        if doc.form_family == "13G":
+            render_narrative_13g_xml(
+                items,
+                NarrativeItem(1, "Item 1", "", 0, 0),
+                unresolved,
+                doc=doc,
+            )
+            render_narrative_13g_xml(
+                items,
+                NarrativeItem(2, "Item 2", "", 0, 0),
+                unresolved,
+                doc=doc,
+            )
+            if len(items) == 0:
+                elem1 = ET.SubElement(items, _tag("item1"))
+                _add_text(elem1, "issuerName", doc.issuer.issuer_name or "Issuer")
+        else:
+            render_narrative_13d_xml(
+                items,
+                NarrativeItem(1, "Item 1", "", 0, 0),
+                doc=doc,
+            )
     _signature_xml(form_data, doc, reference_year, unresolved)
     xml_bytes = ET.tostring(root, encoding="utf-8", xml_declaration=True)
     sidecar = serialize_unparsed_sections(_unparsed_records(doc, unresolved))

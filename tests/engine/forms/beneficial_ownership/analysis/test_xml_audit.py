@@ -414,3 +414,42 @@ def test_analysis_accepts_names_with_middle_initials_and_corporate_suffixes(
 
     assert report is not None
     assert report["anomalies"] == []
+
+
+def test_analysis_accepts_ten_digit_cusips_as_review_signals(
+    tmp_path: Path,
+) -> None:
+    """Verify 10-character CUSIPs with valid 9-char roots emit review signals without anomalies."""
+    xml = SAMPLE_XML.replace(
+        "<issuerCusipNumber>123456789</issuerCusipNumber>",
+        "<issuerCusipNumber>64125S1042</issuerCusipNumber>",
+    )
+    report = analyze_case(_write_case(tmp_path, xml), {"accession": "a"})
+
+    assert report is not None
+    assert report["anomalies"] == []
+    assert any(
+        s["kind"] == "extended_cusip_value" and s["value"] == "64125S1042"
+        for s in report.get("review_signals", [])
+    )
+
+
+def test_analysis_does_not_flag_flattened_field_when_siblings_exist(
+    tmp_path: Path,
+) -> None:
+    """Verify item5 with multi-person subsections and sibling tags is not flagged as flattened."""
+    multi_person_text = (
+        "A. Reporting Person One owns 500,000 shares. "
+        "B. Reporting Person Two owns 300,000 shares." * 5
+    )
+    xml = SAMPLE_XML.replace(
+        "<item5>",
+        f"<item5><percentageOfClassSecurities>{multi_person_text}</percentageOfClassSecurities>"
+        "<numberOfShares>800,000</numberOfShares>",
+    )
+    report = analyze_case(_write_case(tmp_path, xml), {"accession": "a"})
+
+    assert report is not None
+    assert not any(
+        a["kind"] == "flattened_narrative_field" for a in report["anomalies"]
+    )
