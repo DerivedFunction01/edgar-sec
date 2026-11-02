@@ -157,6 +157,7 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "PRE 14A",
         "PRE 14C",
         "PREA14A",
+        "PREA14C",
         "PREC14A",
         "PREC14C",
         "PREM14A",
@@ -183,6 +184,9 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "NT 20-F/A",
         "NT 11-K",
         "NT 11-K/A",
+        "NT 10-D",
+        "NT 10-D/A",
+        "NT 15D2",
         "NT 15D2/A",
         "NT N-CEN",
         "NT NPORT-EX",
@@ -195,10 +199,12 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "NTFNCEN",
         "NTFNCSR",
         "NTFNSAR",
+        "NTN 10D",
         "NTN 10K",
         "NTN 10Q",
         "NTN 11K",
         "NTN 20F",
+        "NTN15D2",
     ),
     "15": (
         "15",
@@ -214,6 +220,12 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "15F-12G/A",
         "15F-15D",
         "15F-15D/A",
+    ),
+    "11-K": (
+        "11-K",
+        "11-K/A",
+        "11-KT",
+        "11-KT/A",
     ),
 }
 
