@@ -1,4 +1,9 @@
-from edgar_sec.engine.forms.cover.registrant import parse_registrant_identity
+from edgar_sec.engine.forms.cover.registrant import (
+    is_separator_line,
+    next_content_line,
+    parse_registrant_identity,
+    previous_content_line,
+)
 
 
 def test_registrant_extracts_conformed_tickers() -> None:
@@ -212,3 +217,14 @@ def test_parse_registrant_rejects_na_as_a_symbol() -> None:
     )
     assert identity.name == "Croff Enterprises, Inc."
     assert identity.trading_symbol is None
+
+
+def test_content_line_walks_skip_blanks_and_separators() -> None:
+    lines = ["ACME INC.", "", "-----------", "(Exact name of registrant)"]
+    assert is_separator_line("-----------") is True
+    assert is_separator_line("") is True
+    assert is_separator_line("ACME INC.") is False
+    assert previous_content_line(lines, 3) == (0, "ACME INC.")
+    assert next_content_line(lines, 0) == (3, "(Exact name of registrant)")
+    assert previous_content_line(lines, 0) is None
+    assert next_content_line(lines, 3) is None

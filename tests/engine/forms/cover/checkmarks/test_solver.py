@@ -40,6 +40,8 @@ _SCHEMA_FAMILY_CASES = (
     ("S-3", "Rule 462(e)", "rule_462e"),
     ("S-4", "General instruction G", "instruction_g"),
     ("S-8", "Well-known seasoned issuer", "well_known_seasoned_issuer"),
+    ("15", "Rule 12h-3(b)(1)(i)", "rule_12h3_b1_i"),
+    ("12B-25", "Form 10-K", "subject_10k"),
 )
 
 

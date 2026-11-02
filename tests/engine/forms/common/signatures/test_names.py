@@ -65,3 +65,12 @@ def test_clean_name_drops_title_segment_after_ampersand() -> None:
     )
     assert extract_clean_signatory_name("Chief Financial Officer") is None
     assert not is_valid_signature_name("Attorney-in-Fact for")
+
+
+def test_extract_clean_signatory_name_strips_surrounding_quotes() -> None:
+    from edgar_sec.engine.forms.common.signatures.names import (
+        extract_clean_signatory_name,
+    )
+
+    assert extract_clean_signatory_name("“Peter Evensen”") == "Peter Evensen"
+    assert extract_clean_signatory_name('"Peter Evensen"') == "Peter Evensen"

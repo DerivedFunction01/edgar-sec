@@ -153,3 +153,14 @@ def test_parse_cusip_normalization_and_rejection() -> None:
         is None
     )
     assert parse_cusip(None) is None
+
+
+def test_commission_file_token_re_matches_bare_file_numbers() -> None:
+    from edgar_sec.engine.forms.common.entities import COMMISSION_FILE_TOKEN_RE
+
+    assert COMMISSION_FILE_TOKEN_RE.fullmatch("1-11288")
+    assert COMMISSION_FILE_TOKEN_RE.fullmatch("333-152242")
+    assert COMMISSION_FILE_TOKEN_RE.fullmatch("0-22636")
+    assert COMMISSION_FILE_TOKEN_RE.fullmatch("20549")
+    assert not COMMISSION_FILE_TOKEN_RE.fullmatch("FORM 12b-25")
+    assert not COMMISSION_FILE_TOKEN_RE.fullmatch("registrant")

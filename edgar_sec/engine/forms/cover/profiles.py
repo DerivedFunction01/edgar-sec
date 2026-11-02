@@ -54,6 +54,7 @@ from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
     SCHEDULE_13D_ITEMS,
     SCHEDULE_13G_ITEMS,
 )
+from edgar_sec.domain.forms.families.form_12b25.taxonomy import FORM_12B25_ITEMS
 from edgar_sec.engine.forms.cover.models import (
     BoundarySignal,
     CoverBoundaryPolicy,
@@ -403,6 +404,95 @@ def build_no_cover_profile(family: str) -> CoverProfile:
     return build_generic_cover_profile(family)
 
 
+_FORM_15_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "certification and notice of termination of registration",
+    "title of each class of securities covered by this form",
+    "titles of all other classes of securities",
+    "rule 12g-4",
+    "rule 12h-3",
+    "rule 15d-6",
+    "approximate number of holders of record",
+)
+
+
+def build_form_15_profile(family: str = "15") -> CoverProfile:
+    """Cover profile for Form 15 notices: a single-page cover carrying the
+    rule-provision checkboxes; the body is footnotes plus the signature block.
+    """
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_15_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=_FORM_15_COVER_LABELS,
+            labels=_FORM_15_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            semantic_headings=(
+                "signature",
+                "signatures",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+    )
+
+
+_FORM_12B25_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "notification of late filing",
+    "sec file number",
+    "cusip number",
+    "for period ended",
+    "transition report",
+    "full name of registrant",
+    "registrant information",
+)
+
+
+def build_form_12b25_profile(family: str = "12B-25") -> CoverProfile:
+    """Cover profile for Form 12b-25 notifications: the filing selections and
+    Part I registrant block form the cover; Parts II–IV are the body.
+    """
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.PART_FALLBACK,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_12B25_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=_FORM_12B25_COVER_LABELS,
+            labels=_FORM_12B25_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=tuple(d.item for d in FORM_12B25_ITEMS),
+            semantic_headings=(
+                "narrative",
+                "other information",
+                "signature",
+                "signatures",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+    )
+
+
 _BENEFICIAL_OWNERSHIP_COVER_LABELS: tuple[str, ...] = (
     "names of reporting persons",
     "name of reporting person",
@@ -494,6 +584,8 @@ def _build_profiles() -> dict[str, CoverProfile]:
     )
     schedule13d = build_beneficial_ownership_profile("13D")
     schedule13g = build_beneficial_ownership_profile("13G")
+    form_15 = build_form_15_profile("15")
+    form_12b25 = build_form_12b25_profile("12B-25")
     generic = build_generic_cover_profile("GENERIC")
     return {
         "10-K": annual_common,
@@ -507,6 +599,8 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "6-K": generic_6k,
         "13D": schedule13d,
         "13G": schedule13g,
+        "15": form_15,
+        "12B-25": form_12b25,
         "GENERIC": generic,
     }
 
@@ -542,6 +636,8 @@ __all__ = [
     "CoverProfile",
     "build_annual_profile",
     "build_current_profile",
+    "build_form_12b25_profile",
+    "build_form_15_profile",
     "build_generic_cover_profile",
     "build_no_cover_profile",
     "build_quarterly_profile",

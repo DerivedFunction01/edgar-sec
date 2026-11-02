@@ -159,3 +159,18 @@ def test_find_preceding_signature_date_respects_lookback_window():
     lines = ["November 2, 2026"] + ["filler"] * 10
     assert find_preceding_signature_date(lines) is None
     assert find_preceding_signature_date(["filler", "text only"]) is None
+
+
+def test_extract_signature_block_accepts_quoted_conformed_name():
+    from edgar_sec.engine.forms.common.signatures.blocks import (
+        extract_signature_block,
+    )
+
+    block = extract_signature_block(
+        "has caused this certification/notice to be signed on its behalf\n"
+        "Date: December 4, 2024  By:  /s/ “Peter Evensen”\n"
+        "President and Chief Executive Officer\n"
+    )
+    assert block is not None
+    assert [s.name for s in block.signatories] == ["Peter Evensen"]
+    assert block.is_conformed is True

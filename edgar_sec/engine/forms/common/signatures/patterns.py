@@ -120,9 +120,9 @@ SIG_BY_NAME_TERMINATOR_ALT = build_alternation(
 )
 
 SIG_BY_NAME_RE = re.compile(
-    rf"\bBy\s*:\s*(?:By\s+)?(?:{CONFORMED_SIGNATURE_ALT})?\s*"
+    rf"\bBy\s*:\s*(?:By\s+)?(?:{CONFORMED_SIGNATURE_ALT})?\s*[\"'“”‘’]?"
     r"([A-Za-z][A-Za-z.,’‘\-']*(?:\s+[A-Za-z][A-Za-z.,’‘\-']*){0,5}?)"
-    rf"(?=\s*(?:{SIG_BY_NAME_TERMINATOR_ALT}))",
+    rf"[\"'“”‘’]?(?=\s*(?:{SIG_BY_NAME_TERMINATOR_ALT}))",
     re.IGNORECASE,
 )
 
@@ -283,9 +283,9 @@ SIG_TRAILING_PAREN_RE = re.compile(r"\s*\([^\)]+\)$")
 
 SIG_SEGMENT_SPLIT_RE = re.compile(r"\s+(?:&|and)\s+")
 
-SIG_NAME_TRIM_CHARS = " ,.-*()_\u2013\u2014/"
+SIG_NAME_TRIM_CHARS = " ,.-*()_\u2013\u2014/\"'\u201c\u201d\u2018\u2019"
 
-SIG_NAME_TRIM_CHARS_NO_DOT = " ,-*()_\u2013\u2014/"
+SIG_NAME_TRIM_CHARS_NO_DOT = " ,-*()_\u2013\u2014/\"'\u201c\u201d\u2018\u2019"
 
 
 __all__ = [

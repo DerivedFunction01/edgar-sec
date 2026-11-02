@@ -334,4 +334,38 @@ def parse_registrant_identity(cell_text: str) -> RegistrantIdentity:
     )
 
 
-__all__ = ["RegistrantIdentity", "extract_irs_number", "parse_registrant_identity"]
+_SEPARATOR_CHARS = frozenset("-_=~*")
+
+
+def is_separator_line(line: str) -> bool:
+    """Return whether a line is a blank or rule/separator-only line."""
+    stripped = line.strip().strip("|").strip()
+    return not stripped or all(
+        char in _SEPARATOR_CHARS or char.isspace() for char in stripped
+    )
+
+
+def previous_content_line(lines: list[str], index: int) -> tuple[int, str] | None:
+    """Return the nearest content line above index, skipping separators."""
+    for back in range(index - 1, -1, -1):
+        if not is_separator_line(lines[back]):
+            return back, lines[back].strip()
+    return None
+
+
+def next_content_line(lines: list[str], index: int) -> tuple[int, str] | None:
+    """Return the nearest content line below index, skipping separators."""
+    for ahead in range(index + 1, len(lines)):
+        if not is_separator_line(lines[ahead]):
+            return ahead, lines[ahead].strip()
+    return None
+
+
+__all__ = [
+    "RegistrantIdentity",
+    "extract_irs_number",
+    "is_separator_line",
+    "next_content_line",
+    "parse_registrant_identity",
+    "previous_content_line",
+]
