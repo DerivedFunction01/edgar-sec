@@ -5,7 +5,9 @@ from __future__ import annotations
 import re
 from collections.abc import Sequence
 
-from edgar_sec.engine.forms.common.signatures import extract_clean_signatory_name
+from edgar_sec.engine.forms.common.signatures.names import (
+    extract_clean_signatory_name,
+)
 
 _SIGNATURE_LINE_RE = re.compile(
     r"(?:/s/|signature:)\s*(?:/s/\s*)?([A-Za-z\.\,\s\-]+)", re.IGNORECASE

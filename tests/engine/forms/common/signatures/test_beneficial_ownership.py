@@ -1,6 +1,6 @@
 """Tests for beneficial ownership signature block extraction."""
 
-from edgar_sec.engine.forms.beneficial_ownership.signatures import (
+from edgar_sec.engine.forms.common.signatures.beneficial_ownership import (
     extract_beneficial_ownership_signature_block,
 )
 

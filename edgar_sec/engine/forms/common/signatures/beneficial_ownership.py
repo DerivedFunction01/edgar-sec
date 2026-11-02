@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from collections.abc import Sequence
 import re
+from collections.abc import Sequence
 
 from edgar_sec.domain.forms.common.signatures import Signatory, SignatureBlock
 from edgar_sec.engine.document.page_markers.signatures import (
@@ -22,14 +22,16 @@ from edgar_sec.engine.document.signatures import (
     RE_SIGNATURE_LABEL,
     RE_SIGNATURE_TABLE_TAIL,
 )
-from edgar_sec.engine.forms.common.signatures import (
-    OFFICER_TITLE_RE,
-    clean_signature_name,
+from edgar_sec.engine.forms.common.signatures.blocks import (
     extract_signature_block,
     extract_signature_candidate,
     find_preceding_signature_date,
+)
+from edgar_sec.engine.forms.common.signatures.names import (
+    clean_signature_name,
     is_valid_signature_name,
 )
+from edgar_sec.engine.forms.common.signatures.patterns import OFFICER_TITLE_RE
 from edgar_sec.foundation.text.dates import parse_date
 
 

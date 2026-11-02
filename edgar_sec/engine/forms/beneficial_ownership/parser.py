@@ -28,12 +28,14 @@ from edgar_sec.engine.forms.common.entities import (
     is_valid_entity_name,
 )
 from edgar_sec.engine.forms.common.tables import strip_markup_tags
-from edgar_sec.engine.forms.common.signatures import (
-    OFFICER_TITLE_RE,
-    clean_signature_name,
+from edgar_sec.engine.forms.common.signatures.blocks import (
     extract_signature_candidate,
+)
+from edgar_sec.engine.forms.common.signatures.names import (
+    clean_signature_name,
     is_valid_signature_name,
 )
+from edgar_sec.engine.forms.common.signatures.patterns import OFFICER_TITLE_RE
 from edgar_sec.engine.forms.common.dates import normalize_iso_date, reported_year
 from edgar_sec.engine.forms.normalize import NormalizationResult
 from edgar_sec.engine.forms.sections.items.candidates import extract_section_candidates
@@ -49,7 +51,7 @@ from .cover_parser import extract_reporting_person_covers
 from .issuer import extract_issuer_metadata
 from .item_subsections import extract_subsections
 from .provenance import build_field_extractions, build_unparsed_sections
-from .signatures import (
+from edgar_sec.engine.forms.common.signatures.beneficial_ownership import (
     extract_beneficial_ownership_signature_block,
     locate_signature_region,
 )

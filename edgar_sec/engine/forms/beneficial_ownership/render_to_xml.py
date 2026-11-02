@@ -69,7 +69,7 @@ from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
 )
 from edgar_sec.engine.forms.common.marks import resolve_checked_labeled_option
 from edgar_sec.engine.forms.common.unparsed import serialize_unparsed_sections
-from edgar_sec.engine.forms.common.signatures import clean_signature_name
+from edgar_sec.engine.forms.common.signatures.names import clean_signature_name
 
 
 def _tag(name: str) -> str:

@@ -7,10 +7,8 @@ from edgar_sec.engine.document.html.tree import parse_html
 from edgar_sec.engine.forms.common.columnar_signatures import (
     extract_columnar_signature_and_date,
 )
-from edgar_sec.engine.forms.common.signatures import (
-    extract_signature_block,
-    scan_signature_grid,
-)
+from edgar_sec.engine.forms.common.signatures.blocks import extract_signature_block
+from edgar_sec.engine.forms.common.signatures.grid import scan_signature_grid
 from edgar_sec.engine.forms.form144.patterns import (
     NOTICE_DATE_LABEL_RE,
     PLAN_ADOPTION_RE,

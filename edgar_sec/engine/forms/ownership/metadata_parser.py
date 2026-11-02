@@ -20,13 +20,15 @@ from edgar_sec.engine.forms.common.marks import canonicalize_filled_marks
 from edgar_sec.engine.forms.common.columnar_signatures import (
     extract_columnar_signature_and_date,
 )
-from edgar_sec.engine.forms.common.signatures import (
-    SIG_BOILERPLATE_TERMS,
-    extract_clean_signatory_name,
+from edgar_sec.engine.forms.common.signatures.blocks import (
     extract_signature_candidate,
-    is_valid_signature_name,
-    scan_signature_grid,
 )
+from edgar_sec.engine.forms.common.signatures.grid import scan_signature_grid
+from edgar_sec.engine.forms.common.signatures.names import (
+    extract_clean_signatory_name,
+    is_valid_signature_name,
+)
+from edgar_sec.engine.forms.common.signatures.patterns import SIG_BOILERPLATE_TERMS
 from edgar_sec.engine.forms.common.statutory import (
     HEADER_LEAK_RE,
     STATUTORY_PAGE_ARTIFACT_RE,

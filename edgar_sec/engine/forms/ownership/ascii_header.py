@@ -11,9 +11,11 @@ from edgar_sec.engine.forms.common.marks import canonicalize_filled_marks
 from edgar_sec.engine.forms.common.columnar_signatures import (
     extract_columnar_signature_and_date,
 )
-from edgar_sec.engine.forms.common.signatures import (
-    extract_clean_signatory_name,
+from edgar_sec.engine.forms.common.signatures.blocks import (
     extract_signature_candidate,
+)
+from edgar_sec.engine.forms.common.signatures.names import (
+    extract_clean_signatory_name,
 )
 from edgar_sec.engine.forms.ownership.sections import (
     ClassifiedSection,

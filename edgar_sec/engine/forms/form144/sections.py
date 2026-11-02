@@ -15,7 +15,7 @@ from edgar_sec.engine.forms.common.entities import (
     STATE_ZIP_RE,
     normalize_exchange_name,
 )
-from edgar_sec.engine.forms.common.signatures import is_signature_table
+from edgar_sec.engine.forms.common.signatures.grid import is_signature_table
 from edgar_sec.engine.forms.common.tables import (
     is_empty_continuation_row,
     is_instruction_row,
