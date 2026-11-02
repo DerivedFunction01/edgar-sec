@@ -34,12 +34,14 @@ def get_calibrated_workers(
     Falls back to CPU count if calibration is missing or failed.
     """
     try:
-        from edgar_sec.tools.fast_pytest_worker_calibrator import (
+        from edgar_sec.tools.workers.fast_pytest_worker_calibrator import (
             compute_optimal_workers,
             load_cache,
             run_calibration,
         )
-        from edgar_sec.tools.fast_pytest_worker_calibrator import default_cache_path
+        from edgar_sec.tools.workers.fast_pytest_worker_calibrator import (
+            default_cache_path,
+        )
         from edgar_sec.foundation.runtime.resources import (
             auto_worker_count,
             available_memory_bytes,
@@ -199,7 +201,7 @@ def run_tests(
             )
 
     if workers is None and (calibrate or recalculate):
-        from edgar_sec.tools.pytest_worker_profiles import select_workers
+        from edgar_sec.tools.workers.pytest_worker_profiles import select_workers
 
         try:
             target_workers = select_workers(test_paths, recalculate=recalculate)
@@ -221,15 +223,15 @@ def run_tests(
             worker_reason = "calibration unavailable; using resource default"
     elif workers is None:
         try:
-            from edgar_sec.tools.fast_pytest_worker_calibrator import (
+            from edgar_sec.tools.workers.fast_pytest_worker_calibrator import (
                 default_cache_path,
             )
-            from edgar_sec.tools.profile_storage import load_profiles
-            from edgar_sec.tools.worker_profile_inventory import (
+            from edgar_sec.tools.workers.profile_storage import load_profiles
+            from edgar_sec.tools.workers.worker_profile_inventory import (
                 scope_inventory,
                 scope_key,
             )
-            from edgar_sec.tools.pytest_worker_profiles import (
+            from edgar_sec.tools.workers.pytest_worker_profiles import (
                 _resource_ceiling,
                 choose_fast_workers_for_scope,
             )
@@ -268,7 +270,7 @@ def run_tests(
 
     print(f"==> pytest workers: n={target_workers} ({worker_source}; {worker_reason})")
 
-    from edgar_sec.tools.pytest_worker_profiles import record_normal_run
+    from edgar_sec.tools.workers.pytest_worker_profiles import record_normal_run
 
     with tempfile.TemporaryDirectory(prefix="pytest-worker-profile-") as tmpdir:
         profile_output = Path(tmpdir) / "profile.json"
@@ -278,7 +280,7 @@ def run_tests(
             "pytest",
             *worker_args(target_workers),
             "-p",
-            "edgar_sec.tools.pytest_worker_profiles",
+            "edgar_sec.tools.workers.pytest_worker_profiles",
             "--worker-profile-output",
             str(profile_output),
             *test_paths,

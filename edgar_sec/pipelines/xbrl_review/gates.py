@@ -114,7 +114,7 @@ def _census_evidence(census_summary: dict[str, Any] | None) -> dict[str, Any]:
         "status": "scored",
         "populations": census_summary.get("populations", {}),
         "failures": list(score.failures),
-        "source": "tools/xbrl_census.py summary scored by engine benchmark",
+        "source": "tools/xbrl_eval/xbrl_census.py summary scored by engine benchmark",
     }
 
 

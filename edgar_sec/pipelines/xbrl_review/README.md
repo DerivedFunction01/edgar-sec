@@ -26,7 +26,7 @@ The package provides both an interactive terminal console (`operator.py`) with p
 - **No Direct SEC API Scraping**: Remote filing discovery belongs to `pipelines.filing_catalog` and `pipelines.metadata_sync`.
 - **No Catalog-Plan Projection**: Filing-catalog plans carry locator-group aggregates for acquisition planning, not per-filing XBRL work orders, so they are not a projection input; the dataset path is the only one.
 - **No Fixture Lifecycle**: Fixture create/fill/list belong to `pipelines.document_acquisition`'s fixture store. XBRL review generation consumes seed bundles resolved from the canonical cohort registry directly, so this package offers no fixture commands.
-- **Census Populations Live in the Tools Layer**: The scored census populations are produced by `edgar_sec.tools.xbrl_census` through the client facade; this pipeline scores that tool's summary with the engine's census expectations for gate evidence rather than re-implementing the populations.
+- **Census Populations Live in the Tools Layer**: The scored census populations are produced by `edgar_sec.tools.xbrl_eval.xbrl_census` through the client facade; this pipeline scores that tool's summary with the engine's census expectations for gate evidence rather than re-implementing the populations.
 
 ## Command surface
 

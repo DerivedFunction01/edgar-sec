@@ -1,12 +1,22 @@
 # `edgar_sec.tools` — generation and verification tooling
 
 Layer 6. Code generation, CLI reflection, documentation sentinel synchronization,
-and pytest worker calibration.
+pytest worker calibration, fixture gathering, and XBRL seeding and evaluation.
 
 ## Purpose
 
-Keep generated documentation aligned with CLI and artifact-path contracts, and
-select pytest worker counts from measurements scoped to the requested tests.
+Keep generated documentation aligned with CLI and artifact-path contracts,
+select pytest worker counts from measurements scoped to the requested tests,
+plan and score fixture candidates from the filing catalog, and seed and
+evaluate grounded XBRL populations.
+
+## Packages
+
+- **docgen**: CLI reflection and Markdown sentinel synchronization.
+- **workers**: Pytest worker calibration and timing-profile storage.
+- **fixtures**: Fixture-gathering planning and candidate scoring.
+- **xbrl_discovery**: XBRL linkbase seeding and taxonomy archive construction.
+- **xbrl_eval**: XBRL census, screening, and benchmark verification.
 
 ## Contracts
 

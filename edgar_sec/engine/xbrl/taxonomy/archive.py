@@ -1,7 +1,7 @@
 """Per-vintage taxonomy archive: official-release declarations in parquet slices.
 
 One slice per (taxonomy, version), derived from the published releases
-by tools/build_taxonomy_archive.py. The resolver answers for a namespace
+by tools/xbrl_discovery/build_taxonomy_archive.py. The resolver answers for a namespace
 URI's own vintage: no slice or no row merges nothing.
 """
 
