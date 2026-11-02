@@ -205,6 +205,7 @@ LAZY_INDEX_FORM_FAMILIES: frozenset[str] = frozenset(
         "4",
         "5",
         "144",
+        "D",
         "13D",
         "13G",
     }

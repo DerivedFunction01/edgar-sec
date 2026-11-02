@@ -69,7 +69,7 @@ def test_ownership_forms_have_catalog_entries() -> None:
         assert profile.family == form.removesuffix("/A")
 
 
-@pytest.mark.parametrize("form", ["10-K", "4", "144", "13D", "13G"])
+@pytest.mark.parametrize("form", ["10-K", "4", "144", "D", "13D", "13G"])
 def test_primary_recovery_families_have_lazy_index_triggers(form: str) -> None:
     trigger = get_lazy_index_trigger(form)
     assert trigger == (f"{form}.exact_form", "1")
