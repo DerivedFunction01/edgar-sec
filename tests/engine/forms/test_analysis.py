@@ -7,6 +7,7 @@ from pathlib import Path
 from edgar_sec.engine.forms.analysis import (
     analyze_form_case,
     locate_text_artifact,
+    reinfer_unmasked_checkmarks,
     summarize_form_cases,
 )
 
@@ -31,6 +32,28 @@ The financial statements have been prepared in accordance with GAAP.
 Note 2. Revenues
 Revenues are recognized when control transfers.
 """
+
+
+def test_reinfer_unmasked_checkmarks_merges_without_downgrade() -> None:
+    text = (
+        "UNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\n"
+        "SCHEDULE 14A\n"
+        "Check the appropriate box:\n"
+        "<TABLE>\n[X] Definitive Proxy Statement\n</TABLE>\n"
+        "<TABLE>\n[ ] Preliminary Proxy Statement\n</TABLE>\n"
+        "Notice of Annual Meeting\nThe board of directors recommends a vote.\n"
+    )
+    rep: dict = {
+        "checkmarks": {
+            "candidate_states": {"classification_preliminary": "checked"},
+            "checked_keys": ("classification_preliminary",),
+        }
+    }
+    reinfer_unmasked_checkmarks(text, rep, family="14A")
+    states = rep["checkmarks"]["candidate_states"]
+    assert states["classification_definitive"] == "checked"
+    assert states["classification_preliminary"] == "checked"
+    assert "classification_definitive" in rep["checkmarks"]["checked_keys"]
 
 
 def test_locate_text_artifact_finds_preferred(tmp_path: Path) -> None:
