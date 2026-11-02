@@ -86,6 +86,7 @@ _ALL_LABELS = tuple(
         reverse=True,
     )
 )
+_ALL_LABELS_SET = frozenset(_ALL_LABELS)
 _LABEL_ALT = build_alternation(_ALL_LABELS, auto_escape=True)
 _PAREN_LABEL_RE = re.compile(rf"(?i)\(\s*(?P<label>{_LABEL_ALT})\s*\.?\s*\)")
 _PHONE_ALT = build_alternation(
@@ -194,16 +195,16 @@ def _label_and_value(line: str) -> tuple[str, str] | None:
     if original.startswith("(") and original.endswith(")"):
         inner = original[1:-1].strip()
         norm_inner = " ".join(inner.lower().split())
-        if norm_inner in _ALL_LABELS:
+        if norm_inner in _ALL_LABELS_SET:
             return norm_inner, ""
         clean_inner = " ".join(_RE_PAREN_QUALIFIER.sub("", inner).lower().split())
-        if clean_inner in _ALL_LABELS:
+        if clean_inner in _ALL_LABELS_SET:
             return clean_inner, ""
         return None
     normalized = " ".join(original.lower().split())
+    if normalized in _ALL_LABELS_SET:
+        return normalized, ""
     for label in _ALL_LABELS:
-        if normalized == label:
-            return label, ""
         if normalized.startswith(label) and len(normalized) > len(label):
             boundary = normalized[len(label)]
             tail = normalized[len(label) :].lstrip()
@@ -217,7 +218,7 @@ def _label_and_value(line: str) -> tuple[str, str] | None:
     if original.startswith("(") and ")" in original:
         close_paren = original.find(")")
         label_part = " ".join(original[1:close_paren].lower().split())
-        if label_part in _ALL_LABELS:
+        if label_part in _ALL_LABELS_SET:
             return label_part, original[close_paren + 1 :].strip(" \t:.-|")
     return None
 

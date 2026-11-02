@@ -38,9 +38,9 @@ def _is_table_row(line: str) -> bool:
     stripped = line.strip()
     if not stripped:
         return False
-    if RE_SEPARATOR_LINE.fullmatch(stripped):
+    if "  " in line and _RE_GUTTER.search(line):
         return True
-    return bool(_RE_GUTTER.search(line))
+    return bool(RE_SEPARATOR_LINE.fullmatch(stripped))
 
 
 def _positions_overlap(
@@ -58,7 +58,9 @@ def _rows_are_aligned(lines: list[str]) -> bool:
     """Return whether adjacent table-like lines share column gutter positions."""
     gutter_positions: list[set[int]] = []
     for line in lines:
-        positions = {m.start() for m in _RE_GUTTER.finditer(line)}
+        positions = (
+            {m.start() for m in _RE_GUTTER.finditer(line)} if "  " in line else set()
+        )
         if positions:
             gutter_positions.append(positions)
     if len(gutter_positions) < 2:
@@ -86,7 +88,7 @@ def _heal_paragraph(lines: list[str]) -> str:
         stripped = line.strip()
         if not stripped:
             continue
-        if joined and not _RE_TRAILING_PUNCT.search(joined[-1]):
+        if joined and not joined[-1].endswith(("-", ",", ";", ":")):
             joined[-1] = f"{joined[-1]} {stripped}"
         else:
             joined.append(stripped)

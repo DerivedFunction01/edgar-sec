@@ -177,7 +177,8 @@ def render_narrative_13d_xml(
             }:
                 actual_tag = tag_rename_13d.get(f.tag, f.tag)
                 _add_text(elem, actual_tag, f.value)
-        return
+        if item.number != 5 and len(elem) > 0:
+            return
 
     if item.number == 2:
         if doc and doc.reporting_persons:
@@ -197,15 +198,21 @@ def render_narrative_13d_xml(
         return
 
     if item.number == 5:
-        if doc and doc.reporting_persons:
-            rp = doc.reporting_persons[0]
-            pct = _first_value(rp, "percentOfClass") or _first_value(rp, 13)
+        if elem.find("percentageOfClassSecurities") is None:
+            pct = None
+            if doc and doc.reporting_persons:
+                rp = doc.reporting_persons[0]
+                pct = _first_value(rp, "percentOfClass") or _first_value(rp, 13)
+            if not pct and item.text and len(item.text.strip()) <= 240:
+                pct = item.text.strip()
             _add_text(elem, "percentageOfClassSecurities", pct or "0.0")
+        if elem.find("numberOfShares") is None and doc and doc.reporting_persons:
+            rp = doc.reporting_persons[0]
             shs = _first_value(rp, "aggregateAmountOwned") or _first_value(rp, 9)
             if shs:
                 _add_text(elem, "numberOfShares", shs)
-        elif item.text and len(item.text.strip()) <= 240:
-            _add_text(elem, "percentageOfClassSecurities", item.text.strip())
+        if item.text and elem.find("transactionDesc") is None:
+            _add_text(elem, "transactionDesc", item.text.strip()[:20000])
         return
 
     f_map = {

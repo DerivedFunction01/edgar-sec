@@ -136,10 +136,10 @@ def _find_first_substantive_prose(
             continue
         if is_form_placeholder(unit.text):
             continue
-        if len(unit.text.split()) < 8:
+        if len(unit.text.split(maxsplit=8)) < 8:
             merged.append(unit)
             merged_text = f"{merged_text} {unit.text}".strip()
-            if len(merged_text.split()) >= 8:
+            if len(merged_text.split(maxsplit=8)) >= 8:
                 head = merged[0]
                 candidate = LogicalUnit(
                     kind="paragraph",

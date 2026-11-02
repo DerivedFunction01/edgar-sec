@@ -134,7 +134,13 @@ def _text(element: ET.Element) -> str:
     return " ".join(part.strip() for part in element.itertext() if part.strip())
 
 
-def _elements(root: ET.Element, names: tuple[str, ...]) -> list[ET.Element]:
+def _elements(
+    root: ET.Element,
+    names: tuple[str, ...],
+    elements_by_tag: dict[str, list[ET.Element]] | None = None,
+) -> list[ET.Element]:
+    if elements_by_tag is not None:
+        return [el for name in names for el in elements_by_tag.get(name, ())]
     wanted = set(names)
     return [element for element in root.iter() if local_name(element.tag) in wanted]
 
@@ -207,7 +213,12 @@ def analyze_xml(
 
     anomalies: list[dict[str, Any]] = []
     review_signals: list[dict[str, Any]] = []
-    parents = {child: parent for parent in root.iter() for child in parent}
+    parents: dict[ET.Element, ET.Element] = {}
+    elements_by_tag: dict[str, list[ET.Element]] = {}
+    for parent in root.iter():
+        for child in parent:
+            parents[child] = parent
+        elements_by_tag.setdefault(local_name(parent.tag), []).append(parent)
     namespace, _, _ = root.tag.rpartition("}")
     ns_uri = namespace.removeprefix("{")
     root_name = local_name(root.tag)
@@ -252,7 +263,9 @@ def analyze_xml(
                 }
             )
 
-    item_containers = _elements(root, ("items1To7", "narrativeItems", "items"))
+    item_containers = _elements(
+        root, ("items1To7", "narrativeItems", "items"), elements_by_tag
+    )
     for container in item_containers:
         seen_items: set[str] = set()
         for child in container:
@@ -281,7 +294,8 @@ def analyze_xml(
                 RE_SIGNATURE_HEADING.search(item_text)
                 and CONFORMED_SIGNATURE_RE.search(item_text)
                 and not any(
-                    _text(element) for element in _elements(root, ("signature",))
+                    _text(element)
+                    for element in _elements(root, ("signature",), elements_by_tag)
                 )
             ):
                 anomalies.append(
@@ -337,7 +351,7 @@ def analyze_xml(
 
     source_has_signature = bool(source_text and _source_has_signature(source_text))
     xml_has_signature = any(
-        _text(element) for element in _elements(root, ("signature",))
+        _text(element) for element in _elements(root, ("signature",), elements_by_tag)
     )
     if source_has_signature and not xml_has_signature:
         anomalies.append(
@@ -349,7 +363,7 @@ def analyze_xml(
         )
 
     for name in COVER_VALUE_FIELDS:
-        for element in _elements(root, FIELD_TAGS[name]):
+        for element in _elements(root, FIELD_TAGS[name], elements_by_tag):
             value = _text(element)
             boilerplate = (
                 None
@@ -397,7 +411,7 @@ def analyze_xml(
         "aggregateAmountOwned",
         "percentOfClass",
     ):
-        for element in _elements(root, FIELD_TAGS[field]):
+        for element in _elements(root, FIELD_TAGS[field], elements_by_tag):
             if _is_narrative_element(element, parents):
                 continue
             value = _text(element)
@@ -440,7 +454,7 @@ def analyze_xml(
                     }
                 )
 
-    for element in _elements(root, FIELD_TAGS["issuerCusip"]):
+    for element in _elements(root, FIELD_TAGS["issuerCusip"], elements_by_tag):
         value = _text(element)
         normalized = value.replace(" ", "").replace("-", "")
         if CUSIP_UNAVAILABLE_POLICY.is_missing(value):
@@ -509,7 +523,7 @@ def analyze_xml(
             )
 
     for name in CHECKBOX_FIELDS:
-        for element in _elements(root, (name,)):
+        for element in _elements(root, (name,), elements_by_tag):
             value = _text(element).upper()
             if value and value not in {"Y", "N"}:
                 anomalies.append(
@@ -522,15 +536,21 @@ def analyze_xml(
                     }
                 )
 
-    observations = field_observations(root, FIELD_TAGS)
+    observations = field_observations(root, FIELD_TAGS, elements_by_tag)
     field_values = {
         field: [
-            value for element in _elements(root, names) if (value := _text(element))
+            value
+            for element in _elements(root, names, elements_by_tag)
+            if (value := _text(element))
         ]
         for field, names in FIELD_TAGS.items()
     }
     value_frequencies = {
-        name: [_text(element) for element in _elements(root, (name,)) if _text(element)]
+        name: [
+            _text(element)
+            for element in _elements(root, (name,), elements_by_tag)
+            if _text(element)
+        ]
         for name in CATEGORICAL_FIELDS
     }
     unparsed_sections = []

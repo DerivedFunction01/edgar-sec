@@ -42,6 +42,8 @@ _MAX_HEADING_ROW_GAP = 10
 
 
 def _table_delta(line: str) -> int:
+    if "<" not in line:
+        return 0
     return len(TAGGED_TABLE_OPEN_RE.findall(line)) - len(
         TAGGED_TABLE_CLOSE_RE.findall(line)
     )
@@ -226,9 +228,17 @@ def find_toc_span(
 
     depths: list[int] | None = None
     for index in range(start_line, limit):
-        heading = RE_TOC_HEADING.match(lines[index]) or _RE_WEAK_HEADING.match(
-            lines[index]
-        )
+        line = lines[index]
+        if not line or not line.strip():
+            continue
+        line_lower = line.lower()
+        if (
+            "content" not in line_lower
+            and "index" not in line_lower
+            and "reference" not in line_lower
+        ):
+            continue
+        heading = RE_TOC_HEADING.match(line) or _RE_WEAK_HEADING.match(line)
         if not heading:
             continue
         rows = _row_lines(lines, index + 1, limit, page_marker_lines)
@@ -298,13 +308,15 @@ def find_toc_span(
         )
 
     for index in range(start_line, limit):
-        if not TAGGED_TABLE_OPEN_RE.search(lines[index]):
+        line = lines[index]
+        if "<" not in line or not TAGGED_TABLE_OPEN_RE.search(line):
             continue
         end = next(
             (
                 candidate
                 for candidate in range(index + 1, limit)
-                if TAGGED_TABLE_CLOSE_RE.search(lines[candidate])
+                if "<" in lines[candidate]
+                and TAGGED_TABLE_CLOSE_RE.search(lines[candidate])
             ),
             None,
         )

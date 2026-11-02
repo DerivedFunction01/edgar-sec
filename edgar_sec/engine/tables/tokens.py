@@ -44,11 +44,14 @@ def numeric_cell_starts(line: str) -> tuple[int, ...]:
     stripped_end = len(line.rstrip())
     content_start = len(line) - len(line.lstrip())
     starts: list[int] = []
+    gap_iters = RE_COLUMN_GAP.finditer(line[:stripped_end]) if "  " in line else ()
+    dot_iters = (
+        RE_DOT_LEADER.finditer(line, content_start, stripped_end)
+        if ".." in line
+        else ()
+    )
     separators = sorted(
-        (
-            *RE_COLUMN_GAP.finditer(line[:stripped_end]),
-            *RE_DOT_LEADER.finditer(line, content_start, stripped_end),
-        ),
+        (*gap_iters, *dot_iters),
         key=lambda match: match.start(),
     )
     for match in separators:

@@ -350,46 +350,62 @@ def build_unparsed_sections(
     extractions: tuple[FieldExtraction, ...],
     narrative_items: tuple[object, ...] = (),
 ) -> tuple[UnparsedSection, ...]:
-    covered = bytearray(len(source_text))
-    for extraction in extractions:
-        if 0 <= extraction.start_offset <= extraction.end_offset <= len(source_text):
-            length = extraction.end_offset - extraction.start_offset
-            if length > 0:
-                covered[extraction.start_offset : extraction.end_offset] = (
-                    b"\x01" * length
-                )
+    if not source_text:
+        return ()
+    total_len = len(source_text)
+    intervals: list[list[int]] = []
+    for ext in extractions:
+        s = max(0, min(ext.start_offset, total_len))
+        e = max(0, min(ext.end_offset, total_len))
+        if s < e:
+            intervals.append([s, e])
+    intervals.sort()
+
+    merged: list[list[int]] = []
+    for s, e in intervals:
+        if not merged:
+            merged.append([s, e])
+        elif s <= merged[-1][1]:
+            merged[-1][1] = max(merged[-1][1], e)
+        else:
+            merged.append([s, e])
+
+    gaps: list[tuple[int, int]] = []
+    curr = 0
+    for s, e in merged:
+        if s > curr:
+            gaps.append((curr, s))
+        curr = max(curr, e)
+    if curr < total_len:
+        gaps.append((curr, total_len))
 
     sections: list[UnparsedSection] = []
-    index = 0
-    while index < len(source_text):
-        if covered[index] or source_text[index].isspace():
-            index += 1
+    for s, e in gaps:
+        sub = source_text[s:e]
+        if not sub.strip():
             continue
-        start = index
-        while index < len(source_text) and not covered[index]:
-            index += 1
-        end = index
-        while end > start and source_text[end - 1].isspace():
-            end -= 1
-        if end > start:
-            item_number = next(
-                (
-                    item.number
-                    for item in narrative_items
-                    if item.start_offset <= start and end <= item.end_offset
-                ),
-                None,
+        lead = len(sub) - len(sub.lstrip())
+        trail = len(sub) - len(sub.rstrip())
+        start = s + lead
+        end = e - trail
+        item_number = next(
+            (
+                item.number
+                for item in narrative_items
+                if item.start_offset <= start and end <= item.end_offset
+            ),
+            None,
+        )
+        sections.append(
+            UnparsedSection(
+                start,
+                end,
+                source_text[start:end],
+                role=f"item{item_number}.unparsed"
+                if item_number is not None
+                else "unparsed",
             )
-            sections.append(
-                UnparsedSection(
-                    start,
-                    end,
-                    source_text[start:end],
-                    role=f"item{item_number}.unparsed"
-                    if item_number is not None
-                    else "unparsed",
-                )
-            )
+        )
     return tuple(sections)
 
 

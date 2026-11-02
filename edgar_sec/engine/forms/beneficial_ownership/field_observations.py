@@ -4,15 +4,19 @@ import xml.etree.ElementTree as ET
 
 
 def field_observations(
-    root: ET.Element, fields: dict[str, tuple[str, ...]]
+    root: ET.Element,
+    fields: dict[str, tuple[str, ...]],
+    elements_by_tag: dict[str, list[ET.Element]] | None = None,
 ) -> dict[str, dict[str, int]]:
     observations: dict[str, dict[str, int]] = {}
+    if elements_by_tag is None:
+        elements_by_tag = {}
+        for element in root.iter():
+            tag = element.tag.rsplit("}", 1)[-1]
+            elements_by_tag.setdefault(tag, []).append(element)
     for field, names in fields.items():
-        wanted = set(names)
         elements = [
-            element
-            for element in root.iter()
-            if element.tag.rsplit("}", 1)[-1] in wanted
+            element for name in names for element in elements_by_tag.get(name, ())
         ]
         populated = sum(
             any(part.strip() for part in element.itertext()) for element in elements

@@ -371,8 +371,10 @@ def is_horizontal_rule_line(line: str) -> bool:
 
 def strip_markup_tags(text: str) -> str:
     """Strip SGML/HTML tags and line-number prefixes from text."""
-    cleaned = _LINE_NUMBER_PREFIX_RE.sub("", text).strip()
-    return _SGML_TAG_RE.sub(" ", cleaned).strip()
+    cleaned = (
+        _LINE_NUMBER_PREFIX_RE.sub("", text).strip() if ":" in text else text.strip()
+    )
+    return _SGML_TAG_RE.sub(" ", cleaned).strip() if "<" in cleaned else cleaned
 
 
 def strip_footnote_references(text: str) -> str:

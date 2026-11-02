@@ -331,9 +331,11 @@ def parse_reporting_person_matrix(
                 before = val[: m_noise.start()].strip()
                 if before:
                     val = before
-        val = _RE_TABLE_NOISE.sub(" ", val)
+        if any(c in val for c in "_=-‐‑‒–—"):
+            val = _RE_TABLE_NOISE.sub(" ", val)
         val = strip_markup_tags(val)
-        val = _RE_HTML_ENTITIES.sub(" ", val)
+        if "&" in val:
+            val = _RE_HTML_ENTITIES.sub(" ", val)
         narrative_start = _RE_NARRATIVE_TAIL.search(val)
         if narrative_start is not None:
             val = val[: narrative_start.start()]
