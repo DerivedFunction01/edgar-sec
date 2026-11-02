@@ -380,6 +380,14 @@ def strip_footnote_references(text: str) -> str:
     return " ".join(FOOTNOTE_REF_RE.sub("", text).split())
 
 
+_SEPARATOR_RUN_STRIP_RE = re.compile(r"^\s*[-=—_]{2,}\s*|\s*[-=—_]{2,}\s*$")
+
+
+def strip_separator_runs(text: str) -> str:
+    """Strip leading and trailing border separator runs from text."""
+    return _SEPARATOR_RUN_STRIP_RE.sub("", text).strip()
+
+
 __all__ = [
     "FOOTNOTE_REF_RE",
     "GridPartition",
@@ -399,4 +407,5 @@ __all__ = [
     "partition_grid_rows",
     "strip_footnote_references",
     "strip_markup_tags",
+    "strip_separator_runs",
 ]

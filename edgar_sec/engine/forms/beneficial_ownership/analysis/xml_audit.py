@@ -398,11 +398,10 @@ def analyze_xml(
         "percentOfClass",
     ):
         for element in _elements(root, FIELD_TAGS[field]):
+            if _is_narrative_element(element, parents):
+                continue
             value = _text(element)
-            if (
-                not _is_narrative_element(element, parents)
-                and _boilerplate_match(field, value) is not None
-            ):
+            if _boilerplate_match(field, value) is not None:
                 continue
             contamination = (
                 not _is_narrative_numeric_cover(value)

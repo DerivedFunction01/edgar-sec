@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import re
 from types import MappingProxyType
+import unicodedata
 
 from edgar_sec.foundation.regex.builder import build_alternation
 
@@ -468,12 +469,41 @@ EDGAR_JURISDICTION_NAMES = MappingProxyType(
 )
 EDGAR_JURISDICTION_CODES = frozenset(EDGAR_JURISDICTION_NAMES)
 _JURISDICTION_NAME_SEPARATOR_RE = re.compile(r"[^a-z0-9]+")
+
+
+def _jurisdiction_name_key(value: str) -> str:
+    decomposed = unicodedata.normalize("NFKD", value.casefold())
+    unaccented = "".join(char for char in decomposed if not unicodedata.combining(char))
+    key = _JURISDICTION_NAME_SEPARATOR_RE.sub(" ", unaccented).strip()
+    if key.startswith("state of "):
+        return key[9:].strip()
+    if key.startswith("commonwealth of "):
+        return key[16:].strip()
+    return key
+
+
 _jurisdiction_codes_by_name: dict[str, list[str]] = {}
 for _code, _name in EDGAR_JURISDICTION_NAMES.items():
-    _key = _JURISDICTION_NAME_SEPARATOR_RE.sub(" ", _name.casefold()).strip()
+    _key = _jurisdiction_name_key(_name)
     _jurisdiction_codes_by_name.setdefault(_key, []).append(_code)
 EDGAR_JURISDICTION_CODES_BY_NAME = MappingProxyType(
     {name: tuple(sorted(codes)) for name, codes in _jurisdiction_codes_by_name.items()}
+)
+_EDGAR_JURISDICTION_ALIASES = MappingProxyType(
+    {
+        "alberta": "A0",
+        "england": "X0",
+        "united states of america": "X1",
+        "u s a": "X1",
+        "usa": "X1",
+        "us": "X1",
+        "united states": "X1",
+        "british virgin islands": "D8",
+        "bvi": "D8",
+    }
+)
+_SORTED_JURISDICTION_NAMES = tuple(
+    sorted(EDGAR_JURISDICTION_CODES_BY_NAME, key=len, reverse=True)
 )
 
 # Alternation built in sorted order so the compiled pattern is byte-identical everywhere.
@@ -501,9 +531,25 @@ def edgar_jurisdiction_code(value: str) -> str | None:
     candidate = value.strip().upper()
     if candidate in EDGAR_JURISDICTION_CODES:
         return candidate
-    key = _JURISDICTION_NAME_SEPARATOR_RE.sub(" ", value.casefold()).strip()
+    key = _jurisdiction_name_key(value)
+    if alias := _EDGAR_JURISDICTION_ALIASES.get(key):
+        return alias
     codes = EDGAR_JURISDICTION_CODES_BY_NAME.get(key, ())
     return codes[0] if len(codes) == 1 else None
+
+
+def edgar_jurisdiction_code_in_text(value: str) -> str | None:
+    if exact := edgar_jurisdiction_code(value):
+        return exact
+    key = _jurisdiction_name_key(value)
+    padded = f" {key} "
+    codes = {
+        code
+        for name in _SORTED_JURISDICTION_NAMES
+        if len(name) > 3 and f" {name} " in padded
+        for code in EDGAR_JURISDICTION_CODES_BY_NAME[name]
+    }
+    return next(iter(codes)) if len(codes) == 1 else None
 
 
 __all__ = [
@@ -515,5 +561,6 @@ __all__ = [
     "STATE_POSTAL_CODES",
     "clean_entity_name",
     "edgar_jurisdiction_code",
+    "edgar_jurisdiction_code_in_text",
     "strip_jurisdiction",
 ]

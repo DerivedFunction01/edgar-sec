@@ -201,3 +201,12 @@ def test_extract_subsections_13g_items_5_to_9_substantive() -> None:
         9, "Item 9.\nNotice of dissolution dated Jan 1.", family="13G"
     )
     assert len(it9) == 1 and it9[0].tag == "groupDissolutionNotice"
+
+
+def test_clean_subsection_value_extracts_issuer_from_narrative_boilerplate() -> None:
+    text = (
+        "This Schedule 13D relates to shares of Common Stock, $0.0001 par value "
+        "(the “Common Stock”) of InfuSystem Holdings, Inc., a Delaware corporation (the “Issuer”). "
+        "The principal executive office of the Issuer is 31700 Research Park Drive."
+    )
+    assert clean_subsection_value("issuerName", text) == "InfuSystem Holdings, Inc."

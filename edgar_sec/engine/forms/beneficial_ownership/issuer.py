@@ -12,16 +12,20 @@ from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     AddressDetails,
     IssuerMetadata,
 )
+from edgar_sec.domain.taxonomy.jurisdictions import clean_entity_name
 from edgar_sec.domain.taxonomy.legal_forms import has_legal_form
+from edgar_sec.engine.document.page_markers.candidates import looks_like_prose
 from edgar_sec.engine.forms.common.entities import (
     CUSIP_RE,
     ORGANIZATION_SUFFIX_RE,
+    is_boilerplate_entity_name,
     is_valid_cusip,
     parse_cusip,
 )
 from edgar_sec.engine.forms.common.tables import (
     parse_address_parts,
     strip_markup_tags,
+    strip_separator_runs,
 )
 from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
     cusip_page_residue_match,
@@ -226,9 +230,18 @@ def _is_plausible_value(field: str, val: str) -> bool:
         return (
             not _RE_INVALID_ISSUER_NAME.search(v)
             and not _RE_SEC_HEADER.search(v)
+            and not is_boilerplate_entity_name(v)
+            and not looks_like_prose(v)
             and parse_date(v.strip("() ")) is None
             and not is_valid_cusip(v, length=9)
-            and len(v) >= 3
+            and 3 <= len(v) <= 120
+        )
+    if field == "notice_contact":
+        return (
+            not _RE_SEC_HEADER.search(v)
+            and not is_boilerplate_entity_name(v)
+            and not looks_like_prose(v)
+            and len(v) >= 2
         )
     if field == "cusip":
         return bool(CUSIP_RE.search(v) or is_valid_cusip(v))
@@ -624,12 +637,12 @@ def extract_issuer_metadata(text: str) -> IssuerMetadata:
                 key = p.iso if p is not None else candidate.lower()
                 date_map[key] = candidate
             value = next(iter(date_map.values())) if len(date_map) == 1 else None
-        elif field == "issuer_name":
+        elif field in {"issuer_name", "notice_contact"}:
+            cleaned_cands = [
+                clean_entity_name(strip_separator_runs(c)) for c in candidates
+            ]
             valid_candidates = [
-                c
-                for c in candidates
-                if not _RE_INVALID_ISSUER_NAME.search(c)
-                and parse_date(c.strip("() ")) is None
+                c for c in cleaned_cands if _is_plausible_value(field, c)
             ]
             unique = {
                 " ".join(candidate.lower().split()): candidate

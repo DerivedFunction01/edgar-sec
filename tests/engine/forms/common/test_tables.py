@@ -118,3 +118,12 @@ def test_is_empty_continuation_row() -> None:
     assert is_empty_continuation_row(("no reported", "nil", "0"))
     assert is_empty_continuation_row(())
     assert not is_empty_continuation_row(("None", "1,000"))
+
+
+def test_strip_separator_runs() -> None:
+    from edgar_sec.engine.forms.common.tables import strip_separator_runs
+
+    assert strip_separator_runs("--- Acme Corp. ---") == "Acme Corp."
+    assert strip_separator_runs("=== Widget Inc. ===") == "Widget Inc."
+    assert strip_separator_runs("___ Clean LLC ___") == "Clean LLC"
+    assert strip_separator_runs("No separators") == "No separators"

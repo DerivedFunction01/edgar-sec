@@ -262,6 +262,7 @@ _CITIZENSHIP_TAIL_ALT = build_alternation(
     (
         r"ITEMS?\s+\d+(?:[–-]\d+)?",
         "NUMBER OF SHARES",
+        "NUMBER OF",
         "SHARES",
         "VOTING POWER",
         "DISPOSITIVE POWER",
@@ -273,7 +274,7 @@ _CITIZENSHIP_TAIL_ALT = build_alternation(
     auto_escape=False,
     compact=True,
 )
-_RE_CITIZENSHIP_TAIL = re.compile(rf"(?i)\b(?:{_CITIZENSHIP_TAIL_ALT})\b.*$")
+_RE_CITIZENSHIP_TAIL = re.compile(rf"(?is)\b(?:{_CITIZENSHIP_TAIL_ALT})\b.*$")
 
 
 def parse_reporting_person_matrix(

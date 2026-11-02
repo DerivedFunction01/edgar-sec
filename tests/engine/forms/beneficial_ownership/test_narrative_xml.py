@@ -92,6 +92,52 @@ def test_render_narrative_13g_xml_substantive_splits_codes() -> None:
     assert codes == ["IA", "HC"]
 
 
+def test_render_narrative_13g_xml_drops_invalid_item3_codes() -> None:
+    parent = ET.Element("items")
+    item = NarrativeItem(
+        number=3,
+        heading="Item 3",
+        text="",
+        start_offset=0,
+        end_offset=0,
+        parsed_fields=(NarrativeField("typeOfReportingPerson", "IN, PN", 0, 0, ""),),
+    )
+
+    assert render_narrative_13g_xml(parent, item, []) is True
+    item3 = parent.find("item3")
+    assert item3 is not None
+    assert item3.findtext("notApplicableFlag") == "Y"
+    assert item3.findall("typeOfPersonFiling") == []
+
+
+def test_render_narrative_13g_xml_keeps_item2_citizenship_text() -> None:
+    parent = ET.Element("items")
+    unresolved: list[dict[str, object]] = []
+    item = NarrativeItem(
+        number=2,
+        heading="Item 2",
+        text="",
+        start_offset=0,
+        end_offset=0,
+        parsed_fields=(
+            NarrativeField(
+                "citizenshipOrOrganization",
+                "Please refer to Item 4 on each cover sheet",
+                0,
+                0,
+                "",
+            ),
+        ),
+    )
+
+    assert render_narrative_13g_xml(parent, item, unresolved) is True
+    assert (
+        parent.findtext("item2/citizenship")
+        == "Please refer to Item 4 on each cover sheet"
+    )
+    assert unresolved == []
+
+
 def test_render_narrative_13g_xml_item1_and_item2_doc_fallback() -> None:
     """Verify 13G Item 1 and Item 2 fallback to document metadata."""
     parent = ET.Element("items")
@@ -207,3 +253,46 @@ def test_render_narrative_13g_xml_item4_doc_fallback() -> None:
         parent.findtext("item4/numberOfSharesPersonHas/solePowerOrDirectToVote")
         == "200000"
     )
+
+
+def test_render_narrative_13g_xml_item4_preserves_fractional_shares() -> None:
+    parent = ET.Element("items")
+    unresolved: list[dict[str, object]] = []
+    item = NarrativeItem(
+        number=4,
+        heading="Item 4",
+        text="",
+        start_offset=0,
+        end_offset=0,
+        parsed_fields=(
+            NarrativeField("aggregateAmountOwned", "14,195,929.7501", 0, 0, ""),
+            NarrativeField("soleVotingPower", "14,195,929.7501", 0, 0, ""),
+        ),
+    )
+
+    assert render_narrative_13g_xml(parent, item, unresolved) is True
+    assert parent.findtext("item4/amountBeneficiallyOwned") == "14195929.7501"
+    assert (
+        parent.findtext("item4/numberOfSharesPersonHas/solePowerOrDirectToVote")
+        == "14195929.7501"
+    )
+    assert unresolved == []
+
+
+def test_render_narrative_13g_xml_item4_keeps_unresolved_text() -> None:
+    parent = ET.Element("items")
+    unresolved: list[dict[str, object]] = []
+    item = NarrativeItem(
+        number=4,
+        heading="Item 4",
+        text="",
+        start_offset=0,
+        end_offset=0,
+        parsed_fields=(
+            NarrativeField("aggregateAmountOwned", "None of the 500 shares", 0, 0, ""),
+        ),
+    )
+
+    assert render_narrative_13g_xml(parent, item, unresolved) is True
+    assert parent.findtext("item4/amountBeneficiallyOwned") == "None of the 500 shares"
+    assert unresolved == []

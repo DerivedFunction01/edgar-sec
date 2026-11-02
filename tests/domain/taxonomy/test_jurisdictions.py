@@ -10,6 +10,7 @@ from edgar_sec.domain.taxonomy.jurisdictions import (
     EDGAR_JURISDICTION_NAMES,
     STATE_POSTAL_CODES,
     edgar_jurisdiction_code,
+    edgar_jurisdiction_code_in_text,
 )
 
 
@@ -40,3 +41,22 @@ def test_edgar_jurisdiction_name_normalization(
     source: str, expected: str | None
 ) -> None:
     assert edgar_jurisdiction_code(source) == expected
+
+
+@pytest.mark.parametrize(
+    ("source", "expected"),
+    [
+        ("A Delaware Limited Liability Company", "DE"),
+        ("State of New York", "NY"),
+        ("State of New Jersey", "NJ"),
+        ("Commonwealth of Pennsylvania", "PA"),
+        ("British Virgin Islands", "D8"),
+        ("United States of America", "X1"),
+        ("USA", "X1"),
+        ("U.S.A.", "X1"),
+        ("México", "O5"),
+        ("United Kingdom & United States", None),
+    ],
+)
+def test_edgar_jurisdiction_code_in_text(source: str, expected: str | None) -> None:
+    assert edgar_jurisdiction_code_in_text(source) == expected

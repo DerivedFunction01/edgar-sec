@@ -31,12 +31,29 @@ from edgar_sec.domain.forms.families.beneficial_ownership.phrases import (
     STATUTORY_SOLE_DISPOSITIVE_LABELS,
     STATUTORY_SOLE_VOTING_LABELS,
 )
+from edgar_sec.domain.taxonomy.jurisdictions import clean_entity_name
+from edgar_sec.engine.document.page_markers.candidates import looks_like_prose
+from edgar_sec.engine.forms.common.entities import (
+    ORGANIZATION_SUFFIX_ALT,
+    is_boilerplate_entity_name,
+)
 from edgar_sec.engine.forms.common.numbers import (
     _SCHEMA_UNIT_SUFFIX_ALT,
     normalize_schema_number,
 )
-from edgar_sec.engine.forms.common.tables import strip_markup_tags
+from edgar_sec.engine.forms.common.tables import (
+    strip_markup_tags,
+    strip_separator_runs,
+)
 from edgar_sec.foundation.regex.builder import build_alternation
+
+_ISSUER_ALIAS_ALT = build_alternation(
+    ("Issuer", "Company", r"[A-Z][a-z]+"), auto_escape=False, compact=False
+)
+_RE_NARRATIVE_ISSUER_ANCHOR = re.compile(
+    rf"(?i)\b(?:of)\s+([A-Z][^,\n]{{2,60}}?(?:,\s*(?:{ORGANIZATION_SUFFIX_ALT})\.?)?)"
+    rf"(?:,\s*a\s+[A-Za-z\s]+corporation|\s*\((?:the\s+)?[\"“]?(?:{_ISSUER_ALIAS_ALT})[\"”]?\))"
+)
 
 RE_SUBSECTION_SPLIT = re.compile(
     r"(?im)(?:^[ \t]*|[;.]\s+)(?:\(?\bITEM\s+\d+\b\s*)?(?:\(([a-f])\)|([a-f])[.:]|\b([a-f])\))[ \t]*(?:[:.-][ \t]*)?"
@@ -431,11 +448,17 @@ def clean_subsection_value(tag: str, raw_value: str) -> str:
     label_pattern = _LABEL_PATTERNS.get(tag)
     if label_pattern is not None:
         text = label_pattern.sub("", text).strip()
-    if tag in {"issuerName", "filingPersonName"} and _RE_INVALID_NAME.match(text):
-        return ""
+    text = strip_separator_runs(text)
+    if tag in {"issuerName", "filingPersonName"}:
+        if _RE_INVALID_NAME.match(text):
+            return ""
+        if looks_like_prose(text) or is_boilerplate_entity_name(text):
+            if tag == "issuerName" and (m := _RE_NARRATIVE_ISSUER_ANCHOR.search(text)):
+                cand = clean_entity_name(m.group(1))
+                return cand if not is_boilerplate_entity_name(cand) else ""
+            return ""
+        return clean_entity_name(text)
     if tag in _NUMERIC_FIELD_TAGS or tag == "percentOfClass":
-        if text.strip().lower() in {"-", "none", "nil", "n/a", "not applicable", "-0-"}:
-            return "0"
         is_int = tag != "percentOfClass"
         norm = normalize_schema_number(
             text,

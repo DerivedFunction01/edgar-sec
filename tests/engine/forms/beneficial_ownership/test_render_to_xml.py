@@ -17,6 +17,7 @@ from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
     SCHEDULE_13G_XML_NAMESPACE,
 )
 from edgar_sec.engine.forms.beneficial_ownership.render_to_xml import (
+    build_beneficial_ownership_xml,
     build_schedule13d_xml,
 )
 
@@ -97,20 +98,16 @@ def test_generated_xml_uses_sec_namespaces_and_repeated_standard_fields() -> Non
         "5.25",
     ]
     assert [node.text for node in root.findall(".//s:fundType", ns)] == [
-        "00",
         "WC",
         "PF",
-        "00",
         "WC",
         "PF",
     ]
     assert [node.text for node in root.findall(".//s:typeOfReportingPerson", ns)] == [
         "IN",
         "OO",
-        "00",
         "IN",
         "OO",
-        "00",
     ]
     assert len(root.findall(".//s:reportingPersonInfo", ns)) == 2
     assert len(root.findall(".//s:commentContent", ns)) == 2
@@ -151,6 +148,22 @@ def test_signature_date_uses_explicit_event_year_for_two_digit_year() -> None:
     )
     assert date_evidence["content"] == "January 2, 20"
     assert date_evidence["reported_year_anchor"] == 2020
+
+
+def test_signature_date_falls_back_to_filing_date() -> None:
+    document = BeneficialOwnershipDocument(
+        issuer=IssuerMetadata(),
+        reporting_persons=(),
+        signature_block=SignatureBlock((Signatory("Ada Signer"),)),
+    )
+
+    output = build_beneficial_ownership_xml(document, filing_date="2001-01-19")
+    root = ET.fromstring(output.content)
+
+    signature_date = root.findtext(
+        ".//s:date", namespaces={"s": SCHEDULE_13D_XML_NAMESPACE}
+    )
+    assert signature_date == "01-19-2001"
 
 
 def test_schedule13g_uses_its_cover_person_and_items_schema_tags() -> None:
@@ -250,10 +263,11 @@ def test_schedule13g_uses_its_cover_person_and_items_schema_tags() -> None:
     )
     assert root.findtext(".//s:classPercent", namespaces=namespace) == "5.25"
     assert root.find(".//s:items", namespace) is not None
-    assert (
-        root.findtext(".//s:items/s:item3/s:typeOfPersonFiling", namespaces=namespace)
-        == "IN"
+    not_applicable = root.findtext(
+        ".//s:items/s:item3/s:notApplicableFlag", namespaces=namespace
     )
+    assert not_applicable == "Y"
+    assert root.find(".//s:items/s:item3/s:typeOfPersonFiling", namespace) is None
     sections = json.loads(output.sidecars[0].content)["unparsed_sections"]
     assert any(section["role"] == "item3.unparsed" for section in sections)
 

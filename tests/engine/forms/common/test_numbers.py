@@ -172,6 +172,54 @@ def test_normalize_schema_number_disclaimers_and_leading_numbers() -> None:
         )
         == "9670510"
     )
+    assert (
+        normalize_schema_number(
+            "; 13.0%(1)",
+            integer=False,
+            strip_percent=True,
+            strip_footnotes=True,
+            extract_leading_number=True,
+        )
+        == "13.0"
+    )
+    assert (
+        normalize_schema_number(
+            "4.0%* (See Items 3, 4, 5 and 6)",
+            integer=False,
+            strip_percent=True,
+            strip_footnotes=True,
+            extract_leading_number=True,
+        )
+        == "4.0"
+    )
+    assert (
+        normalize_schema_number(
+            "85.3%/2/",
+            integer=False,
+            strip_percent=True,
+            strip_footnotes=True,
+            extract_leading_number=True,
+        )
+        == "85.3"
+    )
+    assert (
+        normalize_schema_number(
+            "Less than 1%",
+            integer=False,
+            strip_percent=True,
+            strip_footnotes=True,
+        )
+        == "0"
+    )
+    assert (
+        normalize_schema_number(
+            ".3",
+            integer=False,
+            strip_percent=True,
+        )
+        == "0.3"
+    )
+    assert normalize_schema_number("BENFICIALLY 0", integer=True) == "0"
 
     val10 = "Approx. 11.6%"
     assert (
@@ -238,7 +286,15 @@ def test_normalize_schema_number_disclaimers_and_leading_numbers() -> None:
 
 
 @pytest.mark.parametrize(
-    "text", ["NONE", "nil.", "None Beneficially Owned", "NONE BENEFICIALL Y"]
+    "text",
+    [
+        "NONE",
+        "nil.",
+        "None Beneficially Owned",
+        "NONE BENEFICIALL Y",
+        "NONE ) )",
+        ") ) NONE ) )",
+    ],
 )
 def test_zero_markers_normalize_to_zero(text: str) -> None:
     assert normalize_schema_number(text, integer=True) == "0"
@@ -246,3 +302,30 @@ def test_zero_markers_normalize_to_zero(text: str) -> None:
 
 def test_prose_starting_with_none_is_not_zero() -> None:
     assert normalize_schema_number("None of the 500 shares", integer=True) is None
+
+
+def test_closing_percent_and_glued_footnote_normalization() -> None:
+    assert normalize_schema_number("<0.1%", integer=False, strip_percent=True) == "0"
+    assert (
+        normalize_schema_number("less than 5%", integer=False, strip_percent=True)
+        == "0"
+    )
+    assert (
+        normalize_schema_number(
+            "Approximately 5.3%(4) as of the date of this filing",
+            integer=False,
+            strip_percent=True,
+            extract_leading_number=True,
+        )
+        == "5.3"
+    )
+
+
+def test_is_narrative_numeric_reference() -> None:
+    from edgar_sec.engine.forms.common.numbers import is_narrative_numeric_reference
+
+    assert is_narrative_numeric_reference("See response to Item 4")
+    assert is_narrative_numeric_reference("See rows 5 and 6")
+    assert is_narrative_numeric_reference("See cover page")
+    assert is_narrative_numeric_reference("Responses to items")
+    assert not is_narrative_numeric_reference("123,456")

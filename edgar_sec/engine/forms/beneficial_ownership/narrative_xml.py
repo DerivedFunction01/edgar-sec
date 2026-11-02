@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from decimal import Decimal
-import re
 import xml.etree.ElementTree as ET
 
 from edgar_sec.domain.forms.families.beneficial_ownership.models import (
@@ -12,10 +11,12 @@ from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     NarrativeItem,
     ReportingPersonCover,
 )
+from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
+    SCHEDULE_13G_BUSINESS_ENGAGED_TYPES,
+)
 from edgar_sec.domain.taxonomy.jurisdictions import (
     EDGAR_JURISDICTION_CODES,
-    EDGAR_JURISDICTION_CODES_BY_NAME,
-    edgar_jurisdiction_code,
+    edgar_jurisdiction_code_in_text,
 )
 from edgar_sec.engine.forms.common.extraction import (
     FieldKind,
@@ -23,25 +24,6 @@ from edgar_sec.engine.forms.common.extraction import (
     extract_value,
 )
 from edgar_sec.engine.forms.common.numbers import normalize_schema_number
-
-_JURISDICTION_SPLIT_RE = re.compile(r"[\n,;:]+")
-_SORTED_JURISDICTION_NAMES = tuple(
-    sorted(EDGAR_JURISDICTION_CODES_BY_NAME.keys(), key=len, reverse=True)
-)
-
-
-def _find_jurisdiction_in_text(text: str) -> str | None:
-    cf = text.casefold()
-    for name in _SORTED_JURISDICTION_NAMES:
-        if len(name) > 3 and name in cf:
-            return EDGAR_JURISDICTION_CODES_BY_NAME[name][0]
-    for token in _JURISDICTION_SPLIT_RE.split(text):
-        clean_t = token.strip()
-        if clean_t:
-            candidate_code = edgar_jurisdiction_code(clean_t)
-            if candidate_code and candidate_code in EDGAR_JURISDICTION_CODES:
-                return candidate_code
-    return None
 
 
 def _first_value(person: ReportingPersonCover, key: str | int) -> str | None:
@@ -79,7 +61,7 @@ def _add_schema_jurisdiction(
     if res.value is not None:
         _add_text(parent, name, res.value)
     else:
-        code = _find_jurisdiction_in_text(value) if value else None
+        code = edgar_jurisdiction_code_in_text(value) if value else None
         if code:
             _add_text(parent, name, code)
         elif rec := res.unresolved_record():
@@ -123,14 +105,18 @@ def _add_schema_number(
     if normalized is not None and len(normalized) <= max_length:
         _add_text(parent, name, normalized)
     elif value and value.strip():
-        unresolved.append(
-            {
-                "role": f"normalization.unresolved:{path}",
-                "content_type": "text/plain",
-                "content": value,
-                "status": "invalid_number",
-            }
-        )
+        raw_value = value.strip()
+        if len(raw_value) <= 20000:
+            _add_text(parent, name, raw_value)
+        else:
+            unresolved.append(
+                {
+                    "role": f"normalization.unresolved:{path}",
+                    "content_type": "text/plain",
+                    "content": value,
+                    "status": "invalid_number",
+                }
+            )
 
 
 def render_narrative_13d_xml(
@@ -278,13 +264,7 @@ def render_narrative_13g_xml(
                     if item_element is None:
                         item_element = ET.SubElement(parent, _tag("item2"))
                     if mapped_name == "citizenship":
-                        _add_schema_jurisdiction(
-                            item_element,
-                            mapped_name,
-                            field.value,
-                            f"items.item{item.number}.{field.tag}",
-                            unresolved,
-                        )
+                        _add_text(item_element, mapped_name, field.value)
                     else:
                         _add_text(item_element, mapped_name, field.value)
         elif doc and doc.reporting_persons:
@@ -307,40 +287,38 @@ def render_narrative_13g_xml(
                 item_element = ET.SubElement(parent, _tag("item2"))
                 _add_text(item_element, "filingPersonName", p_name)
                 if p_cit:
-                    _add_schema_jurisdiction(
-                        item_element,
-                        "citizenship",
-                        p_cit,
-                        "items.item2.citizenshipOrOrganization",
-                        unresolved,
-                    )
+                    _add_text(item_element, "citizenship", p_cit)
     elif item.number == 3:
         item_element = ET.SubElement(parent, _tag("item3"))
         if item.parsed_fields:
             field_tags = {f.tag: f.value for f in item.parsed_fields}
-            if field_tags.get("notApplicableFlag") == "Y":
-                _add_text(item_element, "notApplicableFlag", "Y")
-            else:
-                _add_text(item_element, "notApplicableFlag", "N")
-                for f in item.parsed_fields:
-                    if f.tag in {"typeOfReportingPerson", "typeOfPersonFiling"}:
-                        for code in f.value.split(","):
-                            clean_code = code.strip()
-                            if clean_code:
-                                _add_text(
-                                    item_element, "typeOfPersonFiling", clean_code
-                                )
+            codes = tuple(
+                dict.fromkeys(
+                    clean_code
+                    for field in item.parsed_fields
+                    if field.tag in {"typeOfReportingPerson", "typeOfPersonFiling"}
+                    for code in field.value.split(",")
+                    if (clean_code := code.strip())
+                    and clean_code in SCHEDULE_13G_BUSINESS_ENGAGED_TYPES
+                )
+            )
+            not_applicable = field_tags.get("notApplicableFlag") == "Y" or not codes
+            _add_text(item_element, "notApplicableFlag", "Y" if not_applicable else "N")
+            for code in codes:
+                _add_text(item_element, "typeOfPersonFiling", code)
         elif doc and doc.reporting_persons:
             rp = doc.reporting_persons[0]
             codes = _first_value(rp, "typeOfReportingPerson") or _first_value(rp, 12)
-            if codes:
-                _add_text(item_element, "notApplicableFlag", "N")
-                for code in codes.split(","):
-                    clean_code = code.strip()
-                    if clean_code:
-                        _add_text(item_element, "typeOfPersonFiling", clean_code)
-            else:
-                _add_text(item_element, "notApplicableFlag", "Y")
+            valid_codes = tuple(
+                dict.fromkeys(
+                    code.strip()
+                    for code in (codes or "").split(",")
+                    if code.strip() in SCHEDULE_13G_BUSINESS_ENGAGED_TYPES
+                )
+            )
+            _add_text(item_element, "notApplicableFlag", "N" if valid_codes else "Y")
+            for code in valid_codes:
+                _add_text(item_element, "typeOfPersonFiling", code)
         else:
             _add_text(item_element, "notApplicableFlag", "Y")
     elif item.number == 4:
@@ -355,14 +333,17 @@ def render_narrative_13g_xml(
         if item.parsed_fields:
             for field in item.parsed_fields:
                 if field.tag in {"aggregateAmountOwned", "percentOfClass"}:
-                    is_agg = field.tag == "aggregateAmountOwned"
-                    tname = "amountBeneficiallyOwned" if is_agg else "classPercent"
+                    tname = (
+                        "amountBeneficiallyOwned"
+                        if field.tag == "aggregateAmountOwned"
+                        else "classPercent"
+                    )
                     _add_schema_number(
                         item_element,
                         tname,
                         field.value,
-                        integer=is_agg,
-                        max_length=16 if is_agg else 5,
+                        integer=False,
+                        max_length=16 if field.tag == "aggregateAmountOwned" else 5,
                         path=f"items.item4.{tname}",
                         unresolved=unresolved,
                     )
@@ -376,7 +357,7 @@ def render_narrative_13g_xml(
                         shares_elem,
                         s_name,
                         field.value,
-                        integer=True,
+                        integer=False,
                         max_length=16,
                         path=f"items.item4.{s_name}",
                         unresolved=unresolved,
@@ -390,7 +371,7 @@ def render_narrative_13g_xml(
                     item_element,
                     "amountBeneficiallyOwned",
                     amt,
-                    integer=True,
+                    integer=False,
                     max_length=16,
                     path="items.item4.amountBeneficiallyOwned",
                     unresolved=unresolved,
@@ -422,7 +403,7 @@ def render_narrative_13g_xml(
                         shares_elem,
                         s_name,
                         val,
-                        integer=True,
+                        integer=False,
                         max_length=16,
                         path=f"items.item4.{s_name}",
                         unresolved=unresolved,

@@ -67,7 +67,9 @@ def render_beneficial_ownership_to_xml(
     doc = parse_beneficial_ownership_document(
         normalized, form=form, reference_year=reference_year
     )
-    return build_beneficial_ownership_xml(doc, reference_year)
+    return build_beneficial_ownership_xml(
+        doc, reference_year, filing_date=context.filing_date if context else None
+    )
 
 
 def render_schedule13d_to_xml(

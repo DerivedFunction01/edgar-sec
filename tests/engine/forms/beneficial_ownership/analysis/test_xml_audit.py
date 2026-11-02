@@ -91,6 +91,19 @@ def test_analysis_flags_invalid_numeric_fields_and_cusips(tmp_path: Path) -> Non
     }
 
 
+def test_analysis_does_not_treat_narrative_item4_text_as_cover_number(
+    tmp_path: Path,
+) -> None:
+    xml = SAMPLE_XML.replace(
+        "<items1To7><item1><commentText>Source-faithful text</commentText></item1></items1To7>",
+        "<items1To7><item4><amountBeneficiallyOwned>shares</amountBeneficiallyOwned></item4></items1To7>",
+    )
+    report = analyze_case(_write_case(tmp_path, xml), {"accession": "a"})
+
+    assert report is not None
+    assert report["anomalies"] == []
+
+
 def test_analysis_accepts_cover_numbers_with_footnotes_and_zero_dashes(
     tmp_path: Path,
 ) -> None:

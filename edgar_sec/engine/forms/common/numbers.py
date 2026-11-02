@@ -35,7 +35,7 @@ _SCALED_NUMERIC_RE = re.compile(
     re.IGNORECASE,
 )
 _SCHEMA_DECIMAL_RE = re.compile(
-    r"^[+-]?(?:[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$"
+    r"^[+-]?(?:(?:[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)(?:\.[0-9]+)?|\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
 )
 _SCHEMA_INTEGER_RE = re.compile(r"^(?:[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)$")
 _SCHEMA_NUMERIC_TOKEN_RE = re.compile(r"(?<![\w.])([+-]?[0-9][0-9,]*(?:\.[0-9]+)?)")
@@ -93,6 +93,7 @@ _SCHEMA_LEADING_MARKS_RE = re.compile(r"^(?:\[[*†‡\s]+\]|[*†‡\s]+)\s*")
 _SCHEMA_SUB_BULLET_RE = re.compile(
     r"^(?:\[[*†‡\s]+\]|[*†‡\s]+)*(?:\([A-Za-z0-9]+\)|\[[A-Za-z0-9]+\])\s*"
 )
+_SCHEMA_LEADING_PUNCT_RE = re.compile(r"^[\s;:,\u2013]+|^\s*-(?!\d)")
 _SCHEMA_ENTITY_PREFIX_RE = re.compile(r"^[^\d\n]{2,80}\s*[:\-–]\s*(?=[+-]?\d)")
 _EUROPEAN_COMMA_DECIMAL_RE = re.compile(r"\d+,\d{1,2}$")
 _SCHEMA_ZERO_DASHES_RE = re.compile(r"^-0-$")
@@ -105,6 +106,7 @@ _SCHEMA_FOOTNOTE_REF_ALT = build_alternation(
     (
         rf"\(\s*(?:{_SCHEMA_FOOTNOTE_LABEL_ALT})\s*\)",
         r"\[\s*(?:\d+|[A-Z])\s*\]",
+        r"/\s*\d+\s*/",
     ),
     auto_escape=False,
     compact=False,
@@ -112,8 +114,11 @@ _SCHEMA_FOOTNOTE_REF_ALT = build_alternation(
 _SCHEMA_FOOTNOTES_RE = re.compile(rf"(?i)(?:\s*(?:{_SCHEMA_FOOTNOTE_REF_ALT}))+\s*$")
 _SEE_TARGETS_ALT = build_alternation(
     (
+        "items",
         "item",
+        "footnotes",
         "footnote",
+        "notes",
         "note",
         "exhibit",
         "instructions",
@@ -121,6 +126,12 @@ _SEE_TARGETS_ALT = build_alternation(
         "remarks",
         "remark",
         "attached",
+        "responses",
+        "response",
+        "rows",
+        "row",
+        "cover",
+        "table",
     ),
     auto_escape=True,
     compact=True,
@@ -153,26 +164,29 @@ _SCHEMA_APPROX_ALT = build_alternation(
         r"approx(?:imately|\.)?",
         r"about",
         r"c\.",
+        r"represented(?:\s+by)?",
     ),
     auto_escape=False,
     compact=True,
 )
 _SCHEMA_APPROX_RE = re.compile(rf"(?is)^\s*(?:{_SCHEMA_APPROX_ALT})\s*")
 _SCHEMA_LEADING_PERCENT_RE = re.compile(
-    r"(?is)^\s*([+-]?[0-9][0-9,]*(?:\.[0-9]+)?)\s*%(?:[,;]?(?:\s+.*)?)$"
+    r"(?is)^\s*([+-]?[0-9][0-9,]*(?:\.[0-9]+)?)\s*%(?:(?:[.,;]|\s*\(.*?\))?(?:\s+.*)?)$"
 )
 _CLOSING_PERCENT_ALT = build_alternation(
     (
-        r"less\s+than\s+5%",
-        r"less\s+than\s+5\s+percent",
-        r"<\s*5%",
-        r"<\s*5\s*percent",
-        r"less\s+than\s+5",
+        r"less\s+than\s+\d+(?:\.\d+)?%",
+        r"less\s+than\s+\d+(?:\.\d+)?\s+percent",
+        r"<\s*\d+(?:\.\d+)?%",
+        r"<\s*\d+(?:\.\d+)?\s*percent",
+        r"less\s+than\s+\d+(?:\.\d+)?",
     ),
     auto_escape=False,
     compact=True,
 )
-_SCHEMA_CLOSING_PERCENT_RE = re.compile(rf"(?i)^\s*(?:{_CLOSING_PERCENT_ALT})\b")
+_SCHEMA_CLOSING_PERCENT_RE = re.compile(
+    rf"(?i)^\s*(?:{_CLOSING_PERCENT_ALT})(?:\b|(?<=%))"
+)
 _SCHEMA_LEADING_NUMERIC_RE = re.compile(
     r"(?s)^\s*([+-]?[0-9][0-9,]*(?:\.[0-9]+)?)(?:\s+.*)?$"
 )
@@ -189,6 +203,21 @@ _UNRESOLVED_QUALIFIER_ALT = build_alternation(
     compact=True,
 )
 _UNRESOLVED_QUALIFIER_RE = re.compile(rf"(?i)\b(?:{_UNRESOLVED_QUALIFIER_ALT})\b")
+_NARRATIVE_NUMERIC_ALT = build_alternation(
+    (
+        rf"see\s+(?:the\s+)?responses?(?:\(s\))?\s+to\b",
+        rf"see\s+(?:{_SEE_TARGETS_ALT})\b",
+        r"responses?(?:\(s\))?\s+to\s+(?:items?|rows?)\b",
+        r"set\s+forth\s+(?:in|on)\s+rows?\b",
+        r"incorporated\s+(?:herein\s+)?by\s+reference\b",
+        r"required\s+by\s+(?:this\s+)?items?\b",
+        r"rows?\s+(?:\(\d+\)|\d+)\s+of\b",
+        r"calculated\s+(?:assuming|based)\b",
+    ),
+    auto_escape=False,
+    compact=False,
+)
+_RE_NARRATIVE_NUMERIC_REF = re.compile(rf"(?i)\b(?:{_NARRATIVE_NUMERIC_ALT})")
 
 
 _HYPHENATED_ALPHA_RE = re.compile(r"[a-z0-9]-[a-z0-9]", re.IGNORECASE)
@@ -286,6 +315,12 @@ def normalize_schema_decimal(text: str | None) -> str | None:
     value = text.strip()
     if not _SCHEMA_DECIMAL_RE.fullmatch(value):
         return None
+    if value.startswith("."):
+        value = f"0{value}"
+    elif value.startswith("-."):
+        value = f"-0{value[1:]}"
+    elif value.startswith("+."):
+        value = f"+0{value[1:]}"
     try:
         number = Decimal(value.replace(",", ""))
     except InvalidOperation:
@@ -313,6 +348,7 @@ def _strip_schema_policy(
     strip_footnotes: bool,
 ) -> str:
     value = text.strip()
+    value = _SCHEMA_LEADING_PUNCT_RE.sub("", value).strip()
     value = _SCHEMA_LEADING_MARKS_RE.sub("", value).strip()
     value = _SCHEMA_SUB_BULLET_RE.sub("", value).strip()
     value = _SCHEMA_TRAILING_MARKS_RE.sub("", value).strip()
@@ -334,8 +370,11 @@ def _strip_schema_policy(
     return value
 
 
+_ZERO_TOKEN_ALT = build_alternation(
+    ("none", "nil", r"ben[ef]+icially\s+0"), auto_escape=False, compact=False
+)
 _ZERO_MARKER_RE = re.compile(
-    r"(?i)^(?:none|nil)(?:\s+beneficial(?:ly|l\s*y)?(?:\s+owned)?)?\.?$"
+    rf"(?i)^(?:[)\]]\s*)*(?:{_ZERO_TOKEN_ALT})(?:\s+beneficial(?:ly|l\s*y)?(?:\s+owned)?)?\.?(?:\s*[)\]])*$"
 )
 
 
@@ -362,6 +401,8 @@ def normalize_schema_number(
 ) -> str | None:
     if not text:
         return None
+    if _is_zero_marker(text.strip()):
+        return "0"
     value = _strip_schema_policy(
         text,
         strip_currency=strip_currency,
@@ -455,6 +496,8 @@ def normalize_schema_integral_decimal(
     """Normalize a schema decimal that may be written as an integral decimal."""
     if not text:
         return None
+    if _is_zero_marker(text.strip()):
+        return "0"
     value = _strip_schema_policy(
         text,
         strip_currency=strip_currency,
@@ -519,12 +562,20 @@ def extract_schema_number_or_token(text: str) -> str | None:
     return match.group(1) if match is not None else None
 
 
+def is_narrative_numeric_reference(text: str | None) -> bool:
+    """Returns True if cell text represents a narrative disclaimer cross-reference."""
+    if not text:
+        return False
+    return bool(_RE_NARRATIVE_NUMERIC_REF.search(text))
+
+
 __all__ = [
     "NUMERIC_TOKEN_RE",
     "clean_numeric",
     "extract_schema_number",
     "extract_schema_number_or_token",
     "format_scaled_number_string",
+    "is_narrative_numeric_reference",
     "normalize_schema_decimal",
     "normalize_schema_integer",
     "normalize_schema_integer_value",

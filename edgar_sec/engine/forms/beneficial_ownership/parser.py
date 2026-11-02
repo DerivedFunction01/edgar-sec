@@ -19,10 +19,14 @@ from edgar_sec.engine.document.signatures import (
     RE_CONFORMED_SIGNATURE,
     RE_CONFORMED_SIGNER_NAME,
 )
+from edgar_sec.engine.document.page_markers.candidates import looks_like_prose
 from edgar_sec.engine.document.page_markers.signatures import (
     find_signature_regions,
 )
-from edgar_sec.engine.forms.common.entities import is_valid_entity_name
+from edgar_sec.engine.forms.common.entities import (
+    is_boilerplate_entity_name,
+    is_valid_entity_name,
+)
 from edgar_sec.engine.forms.common.tables import strip_markup_tags
 from edgar_sec.engine.forms.common.signatures import (
     OFFICER_TITLE_RE,
@@ -589,7 +593,11 @@ def parse_beneficial_ownership_document(
                 )
                 if first_line and is_valid_entity_name(first_line):
                     item1_name = first_line
-            if item1_name:
+            if (
+                item1_name
+                and not is_boilerplate_entity_name(item1_name)
+                and not looks_like_prose(item1_name)
+            ):
                 issuer = replace(issuer, issuer_name=item1_name)
 
     if not issuer.event_date and signature_block and signature_block.signatories:
@@ -602,6 +610,7 @@ def parse_beneficial_ownership_document(
 
     if not reporting_persons:
         item2 = next((item for item in narrative_items if item.number == 2), None)
+        item2_name = None
         if item2 is not None and item2.parsed_fields:
             item2_name = next(
                 (
@@ -611,27 +620,28 @@ def parse_beneficial_ownership_document(
                 ),
                 None,
             )
-            if item2_name:
-                evidence = CoverItemEvidence(
-                    number=1,
-                    source_text=item2_name,
-                    value=item2_name,
-                    state=EvidenceState.VALUE,
-                    tag="reportingPersonName",
-                )
-                reporting_persons = (
-                    ReportingPersonCover(
-                        items=(evidence,),
-                        source_text=item2.text,
-                    ),
-                )
+        if item2_name:
+            evidence = CoverItemEvidence(
+                number=1,
+                source_text=item2_name,
+                value=item2_name,
+                state=EvidenceState.VALUE,
+                tag="reportingPersonName",
+            )
+            reporting_persons = (
+                ReportingPersonCover(
+                    items=(evidence,),
+                    source_text=item2.text if item2 else item2_name,
+                ),
+            )
         elif signature_block and signature_block.signatories:
             first_sig = signature_block.signatories[0]
             if first_sig.name:
+                name = clean_signature_name(first_sig.name) or first_sig.name
                 evidence = CoverItemEvidence(
                     number=1,
                     source_text=first_sig.name,
-                    value=first_sig.name,
+                    value=name,
                     state=EvidenceState.VALUE,
                     tag="reportingPersonName",
                 )
@@ -652,10 +662,11 @@ def parse_beneficial_ownership_document(
         ):
             first_sig = signature_block.signatories[0]
             if first_sig.name:
+                name = clean_signature_name(first_sig.name) or first_sig.name
                 evidence = CoverItemEvidence(
                     number=1,
                     source_text=first_sig.name,
-                    value=first_sig.name,
+                    value=name,
                     state=EvidenceState.VALUE,
                     tag="reportingPersonName",
                 )

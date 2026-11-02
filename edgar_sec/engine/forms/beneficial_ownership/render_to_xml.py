@@ -17,7 +17,10 @@ from edgar_sec.domain.forms.families.beneficial_ownership.models import (
     NarrativeItem,
     ReportingPersonCover,
 )
-from edgar_sec.domain.taxonomy.jurisdictions import EDGAR_JURISDICTION_CODES
+from edgar_sec.domain.taxonomy.jurisdictions import (
+    EDGAR_JURISDICTION_CODES,
+    edgar_jurisdiction_code_in_text,
+)
 from edgar_sec.engine.forms.common.extraction import (
     FieldKind,
     FieldSpec,
@@ -25,9 +28,13 @@ from edgar_sec.engine.forms.common.extraction import (
     extract_value,
 )
 from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
+    SCHEDULE_13D_FUND_TYPES,
+    SCHEDULE_13D_REPORTING_PERSON_TYPES,
+    SCHEDULE_13G_REPORTING_PERSON_TYPES,
     SCHEDULE_13G_RULE_TYPES,
 )
 from edgar_sec.engine.forms.beneficial_ownership.cover_value_diagnostics import (
+    has_descriptive_numeric_qualifier,
     two_character_codes,
 )
 from edgar_sec.engine.forms.beneficial_ownership.narrative_xml import (
@@ -39,6 +46,8 @@ from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
 )
 from edgar_sec.engine.document_processing.outputs import HandlerOutput, HandlerSidecar
 from edgar_sec.engine.forms.common.numbers import (
+    is_narrative_numeric_reference,
+    normalize_schema_decimal,
     normalize_schema_number,
 )
 from edgar_sec.engine.forms.common.dates import (
@@ -121,6 +130,8 @@ def _add_schema_jurisdiction(
     )
     if res.value is not None:
         _add_text(parent, name, res.value, common=common)
+    elif code := edgar_jurisdiction_code_in_text(value or ""):
+        _add_text(parent, name, code, common=common)
     elif rec := res.unresolved_record():
         unresolved.append(rec)
 
@@ -195,7 +206,7 @@ def _add_schema_date(
     doc: BeneficialOwnershipDocument,
     unresolved: list[dict[str, object]],
 ) -> None:
-    canonical = normalize_iso_date(value, reference_year)
+    canonical = normalize_iso_date(value, reference_year, allow_month_year=True)
     normalized = format_iso_date(canonical, month_first=True)
     if normalized is not None:
         _add_text(parent, name, normalized)
@@ -240,6 +251,13 @@ def _add_schema_number(
         extract_leading_number=True,
         allow_integral_decimal=integer,
     )
+    if normalized is None and integer and value:
+        dec = normalize_schema_decimal(value)
+        if dec is not None:
+            try:
+                normalized = str(int(Decimal(dec)))
+            except Exception:
+                pass
     if normalized is not None and not integer and "." in normalized:
         trimmed = normalized.rstrip("0").rstrip(".")
         if trimmed:
@@ -257,8 +275,21 @@ def _add_schema_number(
                 pass
     if normalized is not None and len(normalized) <= max_length:
         _add_text(parent, name, normalized)
-    elif value and value.strip():
-        unresolved.append(_unresolved_record(doc, path, value, status="invalid_number"))
+    elif value and value.strip() and any(c.isdigit() for c in value):
+        if not (
+            is_narrative_numeric_reference(value)
+            or (
+                integer
+                and (
+                    "%" in value
+                    or "percent" in value.lower()
+                    or has_descriptive_numeric_qualifier(value)
+                )
+            )
+        ):
+            unresolved.append(
+                _unresolved_record(doc, path, value, status="invalid_number")
+            )
 
 
 def _reporting_person_xml(
@@ -284,18 +315,20 @@ def _reporting_person_xml(
     for fund_type in two_character_codes(
         _first_value(person, "fundType") or _first_value(person, 4)
     ):
-        _add_text(info, "fundType", fund_type)
+        if fund_type in SCHEDULE_13D_FUND_TYPES:
+            _add_text(info, "fundType", fund_type)
     _add_checkbox_value(
         info,
         person.first_item("legalProceedings") or person.first_item(5),
         "legalProceedings",
     )
-    _add_text(
-        info,
-        "citizenshipOrOrganization",
-        _first_value(person, "citizenshipOrOrganization") or _first_value(person, 6),
-    )
     p_path = f"formData.reportingPersons.reportingPersonInfo[{person_index}]"
+    cit_val = _first_value(person, "citizenshipOrOrganization") or _first_value(
+        person, 6
+    )
+    if cit_val:
+        code = edgar_jurisdiction_code_in_text(cit_val)
+        _add_text(info, "citizenshipOrOrganization", code or cit_val)
     for tag_name, fallback_num in REPORTING_PERSON_XML_SLOTS:
         _add_schema_number(
             info,
@@ -325,7 +358,8 @@ def _reporting_person_xml(
     for type_code in two_character_codes(
         _first_value(person, "typeOfReportingPerson") or _first_value(person, 14)
     ):
-        _add_text(info, "typeOfReportingPerson", type_code)
+        if type_code in SCHEDULE_13D_REPORTING_PERSON_TYPES:
+            _add_text(info, "typeOfReportingPerson", type_code)
     _add_text(info, "commentContent", person.comment_content)
 
 
@@ -393,7 +427,8 @@ def _reporting_person_13g_xml(
     for type_code in two_character_codes(
         _first_value(person, "typeOfReportingPerson") or _first_value(person, 12)
     ):
-        _add_text(info, "typeOfReportingPerson", type_code)
+        if type_code in SCHEDULE_13G_REPORTING_PERSON_TYPES:
+            _add_text(info, "typeOfReportingPerson", type_code)
     _add_text(info, "comments", person.comment_content)
 
 
@@ -489,6 +524,7 @@ def _signature_xml(
     parent: ET.Element,
     doc: BeneficialOwnershipDocument,
     reference_year: int | None,
+    filing_date: str | None,
     unresolved: list[dict[str, object]],
 ) -> None:
     is_13g = doc.form_family == "13G"
@@ -534,7 +570,11 @@ def _signature_xml(
         for p in signatories
         if p.date and normalize_iso_date(p.date, reference_year)
     ]
-    fallback_date = next((d for d in block_dates if d), None) or doc.issuer.event_date
+    fallback_date = (
+        next((d for d in block_dates if d), None)
+        or doc.issuer.event_date
+        or filing_date
+    )
     if is_13g:
         for idx, person in enumerate(signatories, start=1):
             _add_text(
@@ -561,6 +601,10 @@ def _signature_xml(
         _add_text(details, "signature", clean_name)
         _add_text(details, "title", person.title or "Authorized Signatory")
         sig_date = person.date or fallback_date
+        if sig_date and not normalize_iso_date(
+            sig_date, reference_year, allow_month_year=True
+        ):
+            sig_date = fallback_date
         _add_schema_date(
             details,
             "date",
@@ -609,6 +653,7 @@ def _unparsed_records(
 def build_beneficial_ownership_xml(
     doc: BeneficialOwnershipDocument,
     reference_year: int | None = None,
+    filing_date: str | None = None,
 ) -> HandlerOutput:
     """Builds conforming SEC XML document for Schedule 13D or 13G."""
     ns_uri = (
@@ -640,6 +685,10 @@ def build_beneficial_ownership_xml(
         fn = _reporting_person_13g_xml if is_13g else _reporting_person_xml
         for index, person in enumerate(doc.reporting_persons, start=1):
             fn(people, person, index, doc, unresolved)
+    elif doc.form_family != "13G":
+        people = ET.SubElement(form_data, _tag("reportingPersons"))
+        info = ET.SubElement(people, _tag("reportingPersonInfo"))
+        _add_text(info, "reportingPersonName", "Reporting Person")
     tag_name = "items" if doc.form_family == "13G" else "items1To7"
     items = ET.SubElement(form_data, _tag(tag_name))
     items_to_render = doc.narrative_items
@@ -694,7 +743,7 @@ def build_beneficial_ownership_xml(
                 NarrativeItem(1, "Item 1", "", 0, 0),
                 doc=doc,
             )
-    _signature_xml(form_data, doc, reference_year, unresolved)
+    _signature_xml(form_data, doc, reference_year, filing_date, unresolved)
     xml_bytes = ET.tostring(root, encoding="utf-8", xml_declaration=True)
     sidecar = serialize_unparsed_sections(_unparsed_records(doc, unresolved))
     return HandlerOutput(

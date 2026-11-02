@@ -593,3 +593,31 @@ Farallon Capital Partners, L.P.
     assert (
         p5.first_item("reportingPersonName").value == "Farallon Capital Partners, L.P."
     )
+
+
+def test_cover_parser_truncates_vertical_column_headers_from_citizenship() -> None:
+    text = """1. Name of Reporting Person
+Gabelli Funds, LLC
+6. Citizenship or Place of Organization
+New York
+
+NUMBER OF
+
+SHARES
+
+BENEFICIALLY
+
+OWNED
+
+BY EACH
+
+REPORTING
+
+PERSON
+
+WITH
+7. Sole Voting Power
+839,600
+"""
+    p = parse_reporting_person_matrix(text, family="13D")
+    assert p.first_item("citizenshipOrOrganization").value == "New York"
