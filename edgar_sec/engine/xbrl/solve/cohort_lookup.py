@@ -53,6 +53,7 @@ class CohortCandidate:
     residual_intent: int
     residual_total: int
     via_filing_local: bool = False
+    via_bridge: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -91,6 +92,7 @@ class CohortFactMatch:
     incompatibility: str = ""
     via_filing_local: bool = False
     superseded_by: str = ""
+    via_bridge: bool = False
 
 
 def _row_dimensions(row: Sequence[object]) -> dict[str, str]:
@@ -229,6 +231,7 @@ class CohortLookup:
             target_placement_horizon=self._placement(target_accession, target_qname),
             candidate_placement_horizon=self._placement(accession, candidate_qname),
             same_qname=bool(target_qname) and target_qname == candidate_qname,
+            relations=taxonomy.atom_relations,
         )
 
     def _pool(self, target_qname: str, target_atom: Atom) -> tuple[str, ...]:
@@ -253,6 +256,7 @@ class CohortLookup:
                     target_derived_horizon=target_derived,
                     candidate_derived_horizon=record.derived_horizon,
                     same_qname=bool(target_qname) and target_qname == qname,
+                    relations=taxonomy.atom_relations,
                 )
             ]
             if record.derived_horizon is None and not (
@@ -266,6 +270,7 @@ class CohortLookup:
                         groups,
                         target_derived_horizon=target_derived,
                         candidate_placement_horizon=horizon,
+                        relations=taxonomy.atom_relations,
                     )
                     for horizon in members
                 ]
@@ -277,6 +282,7 @@ class CohortLookup:
                         groups,
                         target_placement_horizon=horizon,
                         candidate_derived_horizon=record.derived_horizon,
+                        relations=taxonomy.atom_relations,
                     )
                     for horizon in members
                 ]
@@ -352,6 +358,7 @@ class CohortLookup:
                         residual_intent=intent,
                         residual_total=total,
                         via_filing_local=result.via_filing_local,
+                        via_bridge=result.via_bridge,
                     ),
                 )
             )
@@ -455,6 +462,7 @@ class CohortLookup:
                     compatible=not reason,
                     incompatibility=reason,
                     via_filing_local=item.via_filing_local,
+                    via_bridge=item.via_bridge,
                     superseded_by=(
                         winner if winner and winner != fact.accession else ""
                     ),

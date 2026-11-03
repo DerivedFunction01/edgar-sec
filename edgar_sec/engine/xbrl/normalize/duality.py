@@ -45,9 +45,13 @@ def unflatten_concept_name(
     tax = taxonomy or load_domain_taxonomy()
     if tax.token_lexicon is None:
         from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
+        from edgar_sec.engine.xbrl.taxonomy.records import load_grammatical_frames
 
         x_paths = resolve_xbrl_paths()
         lexicon = TokenLexicon.load_json(x_paths.default_token_lexicon_path)
+        lexicon.attach_grammatical_frames(
+            load_grammatical_frames(x_paths.default_grammatical_frames_path)
+        )
     else:
         lexicon = tax.token_lexicon
 
