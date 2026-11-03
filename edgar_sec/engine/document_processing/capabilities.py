@@ -71,7 +71,7 @@ class ProcessingCapabilityRegistry:
         return tuple(self._capabilities.values())
 
 
-CATALOG_VERSION = "v2"
+CATALOG_VERSION = "v3"
 DEFAULT_CAPABILITIES = ProcessingCapabilityRegistry(
     (
         ProcessingCapability(
@@ -86,6 +86,13 @@ DEFAULT_CAPABILITIES = ProcessingCapabilityRegistry(
             handler_version="1",
             operation="render_to_txt",
             input_facts="text, markup, or rendered markup route",
+            output_kind=HandlerOutputKind.TEXT,
+        ),
+        ProcessingCapability(
+            handler_id="normalize_pdf_document",
+            handler_version="1",
+            operation="render_to_txt",
+            input_facts="pdf route bytes",
             output_kind=HandlerOutputKind.TEXT,
         ),
         ProcessingCapability(

@@ -8,8 +8,9 @@ Resolves acquisition operations against family policy, document path facts, and 
 
 - **One operation resolver**: Planning pins and Engine execution use the same family, capability, and handler resolution rules.
 - **Route source is explicit**: `DocumentPathFacts` distinguish published archive paths from SGML child filenames; child route classification uses content suffixes, not path separators.
+- **PDF rendering is suffix-gated**: The binary route renders only the PDF suffix class; other binary suffixes stay refused, and a PDF with no text layer yields an explicitly empty render, never a fabricated one.
 - **No acquisition orchestration**: This package does not select sources, persist operation pins, or write pipeline artifacts.
 
 ## Deliberate gaps
 
-- **Limited built-in transforms**: The default registry supports raw identity and text normalization; XML conversion requires a registered capability and handler.
+- **Limited built-in transforms**: The default registry supports raw identity, text normalization, and PDF text extraction; XML conversion requires a registered capability and handler.

@@ -125,6 +125,21 @@ def test_form4_html_to_xml_handler_wraps_html_and_preserves_xml() -> None:
     assert reg5.handler_id == "form5_html_to_xml"
 
 
+def test_pdf_handler_is_registered_for_the_binary_route_only() -> None:
+    from edgar_sec.domain.document.route import DocumentRoute
+    from edgar_sec.engine.document_processing.registry import DEFAULT_HANDLER_REGISTRY
+
+    binary = DEFAULT_HANDLER_REGISTRY.resolve(
+        "render_to_txt", "10-K", DocumentRoute.BINARY
+    )
+    markup = DEFAULT_HANDLER_REGISTRY.resolve(
+        "render_to_txt", "10-K", DocumentRoute.MARKUP
+    )
+
+    assert binary is not None and binary.handler_id == "normalize_pdf_document"
+    assert markup is not None and markup.handler_id == "normalize_document"
+
+
 def test_schedule13d_renderer_is_registered_for_markup_and_text_routes() -> None:
     from edgar_sec.domain.document.route import DocumentRoute
     from edgar_sec.engine.document_processing.registry import DEFAULT_HANDLER_REGISTRY

@@ -8,7 +8,7 @@ from edgar_sec.engine.document_processing.capabilities import get_catalog_versio
 
 
 def test_catalog_version_is_stable() -> None:
-    assert get_catalog_version() == "v2"
+    assert get_catalog_version() == "v3"
 
 
 def test_raw_operation_resolves_stable_handler_pins() -> None:
@@ -23,6 +23,27 @@ def test_capability_resolution_uses_family_policy_and_path_facts() -> None:
     entry = resolve_acquisition_capability("10-K", "primary", "render_to_txt", facts)
     assert entry.status is CapabilityStatus.SUPPORTED
     assert entry.pins == ("text.markup", "v1", "normalize_document", "1", "text")
+
+
+def test_pdf_primary_resolves_the_text_pdf_capability() -> None:
+    facts = DocumentPathFacts.from_archive_path("filing.pdf")
+    entry = resolve_acquisition_capability("10-K", "primary", "render_to_txt", facts)
+    assert entry.status is CapabilityStatus.SUPPORTED
+    assert entry.pins == ("text.pdf", "v1", "normalize_pdf_document", "1", "text")
+
+
+def test_unmodelled_family_pdf_resolves_generic_render() -> None:
+    facts = DocumentPathFacts.from_archive_path("filing.pdf")
+    entry = resolve_acquisition_capability("40-17G", "primary", "render_to_txt", facts)
+    assert entry.status is CapabilityStatus.SUPPORTED
+    assert entry.pins == ("text.pdf", "1", "normalize_pdf_document", "1", "text")
+
+
+def test_image_suffix_on_the_binary_route_stays_unsupported() -> None:
+    facts = DocumentPathFacts.from_archive_path("filing.gif")
+    entry = resolve_acquisition_capability("10-K", "primary", "render_to_txt", facts)
+    assert entry.status is CapabilityStatus.UNSUPPORTED
+    assert entry.pins is None
 
 
 def test_flat_xml_does_not_resolve_text_processing() -> None:

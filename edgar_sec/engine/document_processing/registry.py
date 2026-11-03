@@ -155,6 +155,12 @@ def _normalize_document(raw_bytes: bytes, context: HandlerContext) -> str:
     return result.text
 
 
+def _normalize_pdf_document(raw_bytes: bytes, _context: HandlerContext) -> str:
+    from edgar_sec.engine.document_processing.pdf import convert_pdf_to_text
+
+    return convert_pdf_to_text(raw_bytes).text
+
+
 def _ownership_html_to_xml(
     raw_bytes: bytes, context: HandlerContext
 ) -> bytes | HandlerOutput:
@@ -252,6 +258,14 @@ def default_handler_registry() -> HandlerRegistry:
         "render_to_txt",
         HandlerOutputKind.TEXT,
         _normalize_document,
+    )
+    registry.register(
+        "normalize_pdf_document",
+        "1",
+        "render_to_txt",
+        HandlerOutputKind.TEXT,
+        _normalize_pdf_document,
+        route=DocumentRoute.BINARY,
     )
     registry.register(
         "form3_html_to_xml",
