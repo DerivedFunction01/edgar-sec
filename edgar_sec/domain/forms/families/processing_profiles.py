@@ -53,6 +53,18 @@ from edgar_sec.domain.forms.families.form_425.processing import PROFILE_FORM_425
 from edgar_sec.domain.forms.families.form_fwp.processing import PROFILE_FORM_FWP
 from edgar_sec.domain.forms.families.form_fwp.taxonomy import FORM_FWP_ITEMS
 from edgar_sec.domain.forms.families.form_d.processing import PROFILE_FORM_D
+from edgar_sec.domain.forms.families.form_ncen.processing import PROFILE_N_CEN
+from edgar_sec.domain.forms.families.form_nmfp.processing import PROFILE_N_MFP
+from edgar_sec.domain.forms.families.form_nport.processing import PROFILE_NPORT
+from edgar_sec.domain.forms.families.form_npx.processing import PROFILE_N_PX
+from edgar_sec.domain.forms.families.form_497.processing import PROFILE_FORM_497
+from edgar_sec.domain.forms.families.form_497.taxonomy import FORM_497_ITEMS
+from edgar_sec.domain.forms.families.form_ncsr.processing import PROFILE_FORM_NCSR
+from edgar_sec.domain.forms.families.form_ncsr.taxonomy import FORM_NCSR_ITEMS
+from edgar_sec.domain.forms.families.form_nq.processing import PROFILE_FORM_NQ
+from edgar_sec.domain.forms.families.form_nq.taxonomy import FORM_NQ_ITEMS
+from edgar_sec.domain.forms.families.form_nsar.processing import PROFILE_FORM_NSAR
+from edgar_sec.domain.forms.families.form_nsar.taxonomy import FORM_NSAR_ITEMS
 from edgar_sec.domain.forms.families.form144.processing import PROFILE_FORM_144
 from edgar_sec.domain.forms.families.ownership.processing import (
     PROFILE_FORM_3,
@@ -214,6 +226,42 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
     ProcessingCatalogEntry(
         family="13F",
         profile=PROFILE_FORM_13F,
+    ),
+    ProcessingCatalogEntry(
+        family="N-PORT",
+        profile=PROFILE_NPORT,
+    ),
+    ProcessingCatalogEntry(
+        family="N-CEN",
+        profile=PROFILE_N_CEN,
+    ),
+    ProcessingCatalogEntry(
+        family="N-PX",
+        profile=PROFILE_N_PX,
+    ),
+    ProcessingCatalogEntry(
+        family="N-MFP",
+        profile=PROFILE_N_MFP,
+    ),
+    ProcessingCatalogEntry(
+        family="N-CSR",
+        profile=PROFILE_FORM_NCSR,
+        taxonomy_items=FORM_NCSR_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="N-Q",
+        profile=PROFILE_FORM_NQ,
+        taxonomy_items=FORM_NQ_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="NSAR",
+        profile=PROFILE_FORM_NSAR,
+        taxonomy_items=FORM_NSAR_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="497",
+        profile=PROFILE_FORM_497,
+        taxonomy_items=FORM_497_ITEMS,
     ),
     ProcessingCatalogEntry(
         family="14A",

@@ -205,6 +205,38 @@ def _form_13f_to_xml(
     return render_form_13f_to_xml(raw_bytes, context)
 
 
+def _form_nport_to_xml(
+    raw_bytes: bytes, context: HandlerContext
+) -> bytes | HandlerOutput:
+    from edgar_sec.engine.forms.form_nport.renderer import render_nport_to_xml
+
+    return render_nport_to_xml(raw_bytes, context)
+
+
+def _form_ncen_to_xml(
+    raw_bytes: bytes, context: HandlerContext
+) -> bytes | HandlerOutput:
+    from edgar_sec.engine.forms.form_ncen.renderer import render_ncen_to_xml
+
+    return render_ncen_to_xml(raw_bytes, context)
+
+
+def _form_npx_to_xml(
+    raw_bytes: bytes, context: HandlerContext
+) -> bytes | HandlerOutput:
+    from edgar_sec.engine.forms.form_npx.renderer import render_npx_to_xml
+
+    return render_npx_to_xml(raw_bytes, context)
+
+
+def _form_nmfp_to_xml(
+    raw_bytes: bytes, context: HandlerContext
+) -> bytes | HandlerOutput:
+    from edgar_sec.engine.forms.form_nmfp.renderer import render_nmfp_to_xml
+
+    return render_nmfp_to_xml(raw_bytes, context)
+
+
 def default_handler_registry() -> HandlerRegistry:
     registry = HandlerRegistry()
     registry.register(
@@ -284,6 +316,38 @@ def default_handler_registry() -> HandlerRegistry:
         HandlerOutputKind.XML,
         _form_13f_to_xml,
         family="13F",
+    )
+    registry.register(
+        "form_nport_to_xml",
+        "1",
+        "render_to_xml",
+        HandlerOutputKind.XML,
+        _form_nport_to_xml,
+        family="N-PORT",
+    )
+    registry.register(
+        "form_ncen_to_xml",
+        "1",
+        "render_to_xml",
+        HandlerOutputKind.XML,
+        _form_ncen_to_xml,
+        family="N-CEN",
+    )
+    registry.register(
+        "form_npx_to_xml",
+        "1",
+        "render_to_xml",
+        HandlerOutputKind.XML,
+        _form_npx_to_xml,
+        family="N-PX",
+    )
+    registry.register(
+        "form_nmfp_to_xml",
+        "1",
+        "render_to_xml",
+        HandlerOutputKind.XML,
+        _form_nmfp_to_xml,
+        family="N-MFP",
     )
     return registry
 

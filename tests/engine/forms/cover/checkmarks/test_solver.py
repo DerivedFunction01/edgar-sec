@@ -324,6 +324,14 @@ def test_checkmark_schema_cases_cover_registered_profile_scope() -> None:
         "424B",
         "FWP",
         "425",
+        "N-PORT",
+        "N-CEN",
+        "N-PX",
+        "N-MFP",
+        "N-CSR",
+        "N-Q",
+        "NSAR",
+        "497",
     }
 
 

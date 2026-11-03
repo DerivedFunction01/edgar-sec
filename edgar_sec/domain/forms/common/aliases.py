@@ -255,7 +255,14 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "N-PX/A",
         "N-PX CTR",
     ),
-    "N-MFP": ("N-MFP",),
+    "N-MFP": (
+        "N-MFP",
+        "N-MFP/A",
+        "N-MFP2",
+        "N-MFP2/A",
+        "N-MFP3",
+        "N-MFP3/A",
+    ),
     "N-CSR": (
         "N-CSR",
         "N-CSR/A",

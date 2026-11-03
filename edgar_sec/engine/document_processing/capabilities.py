@@ -144,6 +144,34 @@ DEFAULT_CAPABILITIES = ProcessingCapabilityRegistry(
             input_facts="native SEC Form 13F XML, or pre-2013 text submission",
             output_kind=HandlerOutputKind.XML,
         ),
+        ProcessingCapability(
+            handler_id="form_nport_to_xml",
+            handler_version="1",
+            operation="render_to_xml",
+            input_facts="native SEC Form N-PORT XML submission",
+            output_kind=HandlerOutputKind.XML,
+        ),
+        ProcessingCapability(
+            handler_id="form_ncen_to_xml",
+            handler_version="1",
+            operation="render_to_xml",
+            input_facts="native SEC Form N-CEN XML submission",
+            output_kind=HandlerOutputKind.XML,
+        ),
+        ProcessingCapability(
+            handler_id="form_npx_to_xml",
+            handler_version="1",
+            operation="render_to_xml",
+            input_facts="native SEC Form N-PX XML, or text-era proxy voting report",
+            output_kind=HandlerOutputKind.XML,
+        ),
+        ProcessingCapability(
+            handler_id="form_nmfp_to_xml",
+            handler_version="1",
+            operation="render_to_xml",
+            input_facts="native SEC Form N-MFP XML submission, any generation",
+            output_kind=HandlerOutputKind.XML,
+        ),
     )
 )
 

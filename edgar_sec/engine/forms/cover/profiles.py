@@ -467,7 +467,11 @@ def _build_profiles() -> dict[str, CoverProfile]:
         build_form_15_profile,
         build_form_424b_profile,
         build_form_425_profile,
+        build_form_497_profile,
         build_form_fwp_profile,
+        build_form_ncsr_profile,
+        build_form_nq_profile,
+        build_form_nsar_profile,
     )
 
     annual_common = replace(
@@ -511,6 +515,10 @@ def _build_profiles() -> dict[str, CoverProfile]:
     form_12b25 = build_form_12b25_profile("12B-25")
     form_14a = build_form_14a_profile("14A")
     form_11k = build_form_11k_profile("11-K")
+    form_ncsr = build_form_ncsr_profile("N-CSR")
+    form_nq = build_form_nq_profile("N-Q")
+    form_nsar = build_form_nsar_profile("NSAR")
+    form_497 = build_form_497_profile("497")
     generic = build_generic_cover_profile("GENERIC")
     return {
         "10-K": annual_common,
@@ -531,6 +539,10 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "12B-25": form_12b25,
         "14A": form_14a,
         "11-K": form_11k,
+        "N-CSR": form_ncsr,
+        "N-Q": form_nq,
+        "NSAR": form_nsar,
+        "497": form_497,
         "GENERIC": generic,
     }
 
