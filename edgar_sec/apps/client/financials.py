@@ -48,6 +48,10 @@ _SERIES_ATTRIBUTES: dict[str, str] = {
     "operating_cash_flow": "operating_cash_flow_series",
     "rpo": "rpo_series",
     "capex": "capex_series",
+    "eps_basic": "eps_basic_series",
+    "eps_diluted": "eps_diluted_series",
+    "weighted_shares_basic": "weighted_shares_basic_series",
+    "weighted_shares_diluted": "weighted_shares_diluted_series",
 }
 _SCALAR_ONLY_METRICS = ("free_cash_flow", "uncommenced_leases")
 _FCF_CHAIN: ChainTerms = (("+", "cfo"), ("-", "capex"))
@@ -287,6 +291,98 @@ class XbrlFinancials(FinancialsCore):
             "H_COMMITMENT", {"M_UNCOMMENCED"}, is_instant=True
         ) or self._scalar("H_LIABILITY", {"M_UNCOMMENCED"}, is_instant=True)
 
+    @property
+    def eps_basic(self) -> float | None:
+        """Earnings per share, basic: filed, else derived by the EPS identity."""
+        return self._eps_basic_served()[0]
+
+    def _eps_basic_served(self) -> tuple[float | None, str | None]:
+        """Basic EPS plus provenance: filed, or the identity it derived from."""
+        value, provenance, _cls = self._eps_scalar_served(diluted=False)
+        return value, provenance
+
+    @property
+    def eps_basic_series(self) -> dict[str, float]:
+        return self._eps_series(diluted=False)
+
+    @property
+    def eps_basic_yoy(self) -> tuple[float, float] | None:
+        return self._eps_yoy(diluted=False)
+
+    @property
+    def eps_diluted(self) -> float | None:
+        """Earnings per share, diluted: filed, else derived by the EPS identity."""
+        return self._eps_diluted_served()[0]
+
+    def _eps_diluted_served(self) -> tuple[float | None, str | None]:
+        """Diluted EPS plus provenance: filed, or the identity it derived from."""
+        value, provenance, _cls = self._eps_scalar_served(diluted=True)
+        return value, provenance
+
+    @property
+    def eps_diluted_series(self) -> dict[str, float]:
+        return self._eps_series(diluted=True)
+
+    @property
+    def eps_diluted_yoy(self) -> tuple[float, float] | None:
+        return self._eps_yoy(diluted=True)
+
+    @property
+    def weighted_shares_basic(self) -> float | None:
+        """Weighted-average shares outstanding, basic, as filed."""
+        return self._weighted_shares_basic_served()[0]
+
+    def _weighted_shares_basic_served(self) -> tuple[float | None, str | None]:
+        """Basic weighted shares plus the length class they served from."""
+        return self._shares_scalar_served(diluted=False)
+
+    @property
+    def weighted_shares_basic_series(self) -> dict[str, float]:
+        return self._shares_series(diluted=False)
+
+    @property
+    def weighted_shares_basic_yoy(self) -> tuple[float, float] | None:
+        return self._shares_yoy(diluted=False)
+
+    @property
+    def weighted_shares_diluted(self) -> float | None:
+        """Weighted-average shares outstanding, diluted, as filed."""
+        return self._weighted_shares_diluted_served()[0]
+
+    def _weighted_shares_diluted_served(self) -> tuple[float | None, str | None]:
+        """Diluted weighted shares plus the length class they served from."""
+        return self._shares_scalar_served(diluted=True)
+
+    @property
+    def weighted_shares_diluted_series(self) -> dict[str, float]:
+        return self._shares_series(diluted=True)
+
+    @property
+    def weighted_shares_diluted_yoy(self) -> tuple[float, float] | None:
+        return self._shares_yoy(diluted=True)
+
+    def provenance(self, metric: str) -> str | None:
+        """How a per-share metric's scalar was served: filed or derived.
+
+        Only the per-share catalogue carries derivation provenance; a
+        derived value names the identity and both of its filed legs.
+        """
+        if metric == "eps_basic":
+            return self._eps_basic_served()[1]
+        if metric == "eps_diluted":
+            return self._eps_diluted_served()[1]
+        if metric in ("weighted_shares_basic", "weighted_shares_diluted"):
+            return "filed" if getattr(self, metric) is not None else None
+        known = [
+            "eps_basic",
+            "eps_diluted",
+            "weighted_shares_basic",
+            "weighted_shares_diluted",
+        ]
+        raise ValueError(
+            f"provenance is not tracked for metric {metric!r}; expected one of {known}"
+        )
+
     def value(self, metric: str, *, period_offset: int = 0) -> float | None:
         """A served metric's value, period_offset periods before its latest.
 
@@ -383,6 +479,14 @@ class XbrlFinancials(FinancialsCore):
                 self._scalar_served("H_COMMITMENT", {"M_UNCOMMENCED"}, is_instant=True),
                 self._scalar_served("H_LIABILITY", {"M_UNCOMMENCED"}, is_instant=True),
             )
+        if metric == "eps_basic":
+            return self._eps_scalar_served(diluted=False)[2]
+        if metric == "eps_diluted":
+            return self._eps_scalar_served(diluted=True)[2]
+        if metric == "weighted_shares_basic":
+            return self._weighted_shares_basic_served()[1]
+        if metric == "weighted_shares_diluted":
+            return self._weighted_shares_diluted_served()[1]
         known = sorted(_SERIES_ATTRIBUTES) + sorted(_SCALAR_ONLY_METRICS)
         raise ValueError(f"unknown metric {metric!r}; expected one of {known}")
 
