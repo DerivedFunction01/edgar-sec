@@ -473,6 +473,16 @@ def _build_profiles() -> dict[str, CoverProfile]:
         build_form_nq_profile,
         build_form_nsar_profile,
     )
+    from edgar_sec.engine.forms.cover.family_profiles_f import (
+        build_form_40f_profile,
+        build_form_f1_profile,
+        build_form_f3_profile,
+        build_form_f4_profile,
+        build_form_f6_profile,
+        build_form_fn_profile,
+        build_form_mjds_profile,
+        build_form_suppl_profile,
+    )
 
     annual_common = replace(
         build_annual_profile("10-K"), derived_taxonomy=FORM_10K_DERIVED
@@ -519,6 +529,19 @@ def _build_profiles() -> dict[str, CoverProfile]:
     form_nq = build_form_nq_profile("N-Q")
     form_nsar = build_form_nsar_profile("NSAR")
     form_497 = build_form_497_profile("497")
+    form_f1 = build_form_f1_profile("F-1")
+    form_f2 = build_form_f1_profile("F-2")
+    form_f3 = build_form_f3_profile("F-3")
+    form_f4 = build_form_f4_profile("F-4")
+    form_f7 = build_form_mjds_profile("F-7")
+    form_f8 = build_form_mjds_profile("F-8")
+    form_f9 = build_form_mjds_profile("F-9")
+    form_f10 = build_form_mjds_profile("F-10")
+    form_f80 = build_form_mjds_profile("F-80")
+    form_40f = build_form_40f_profile("40-F")
+    form_f6 = build_form_f6_profile("F-6")
+    form_suppl = build_form_suppl_profile("SUPPL")
+    form_fn = build_form_fn_profile("F-N")
     generic = build_generic_cover_profile("GENERIC")
     return {
         "10-K": annual_common,
@@ -543,6 +566,19 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "N-Q": form_nq,
         "NSAR": form_nsar,
         "497": form_497,
+        "F-1": form_f1,
+        "F-2": form_f2,
+        "F-3": form_f3,
+        "F-4": form_f4,
+        "F-7": form_f7,
+        "F-8": form_f8,
+        "F-9": form_f9,
+        "F-10": form_f10,
+        "F-80": form_f80,
+        "40-F": form_40f,
+        "F-6": form_f6,
+        "SUPPL": form_suppl,
+        "F-N": form_fn,
         "GENERIC": generic,
     }
 

@@ -370,6 +370,11 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "F-N",
         "F-N/A",
     ),
+    "40-F": (
+        "40-F",
+        "40-F/A",
+    ),
+    "SUPPL": ("SUPPL",),
     "SC TO": (
         "SC TO",
         "SC TO-T",

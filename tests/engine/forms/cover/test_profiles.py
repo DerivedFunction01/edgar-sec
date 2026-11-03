@@ -473,3 +473,42 @@ def test_s8_profile_contracts() -> None:
     assert s8.boundary is not None
     assert "ITEM 1" in s8.body_evidence.structural_headings
     assert "ITEM 8" in s8.body_evidence.structural_headings
+
+
+def test_f_series_profiles_resolve_with_schemas() -> None:
+    from edgar_sec.domain.forms.families.form_f1.checkmarks import (
+        FORM_F1_CHECKBOX_SCHEMA,
+        FORM_F2_CHECKBOX_SCHEMA,
+    )
+    from edgar_sec.domain.forms.families.form_f3.checkmarks import (
+        FORM_F3_CHECKBOX_SCHEMA,
+    )
+    from edgar_sec.domain.forms.families.form_f4.checkmarks import (
+        FORM_F4_CHECKBOX_SCHEMA,
+    )
+
+    f1 = get_profile("F-1/A")
+    assert f1.family == "F-1"
+    assert f1.boundary is not None
+    assert f1.checkbox_schema is FORM_F1_CHECKBOX_SCHEMA
+    assert f1.body_evidence is not None
+    assert "PART II" in f1.body_evidence.structural_headings
+    assert "ITEM 9" in f1.body_evidence.structural_headings
+
+    f2 = get_profile("F-2")
+    assert f2.family == "F-2"
+    assert f2.checkbox_schema is FORM_F2_CHECKBOX_SCHEMA
+    assert f2.body_evidence is not None
+    assert "ITEM 17" in f2.body_evidence.structural_headings
+
+    f3 = get_profile("F-3ASR")
+    assert f3.family == "F-3"
+    assert f3.checkbox_schema is FORM_F3_CHECKBOX_SCHEMA
+    assert f3.body_evidence is not None
+    assert "ITEM 10" in f3.body_evidence.structural_headings
+
+    f4 = get_profile("F-4 POS")
+    assert f4.family == "F-4"
+    assert f4.checkbox_schema is FORM_F4_CHECKBOX_SCHEMA
+    assert f4.body_evidence is not None
+    assert "ITEM 22" in f4.body_evidence.structural_headings

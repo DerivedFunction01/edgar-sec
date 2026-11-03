@@ -31,6 +31,63 @@ from edgar_sec.domain.forms.families.form_14a.taxonomy import FORM_14A_ITEMS
 from edgar_sec.domain.forms.families.form_15.processing import PROFILE_FORM_15
 from edgar_sec.domain.forms.families.form_424b.processing import PROFILE_FORM_424B
 from edgar_sec.domain.forms.families.form_424b.taxonomy import FORM_424B_ITEMS
+from edgar_sec.domain.forms.families.form_f1.checkmarks import (
+    FORM_F1_CHECKBOX_SCHEMA,
+    FORM_F2_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_f1.processing import (
+    PROFILE_FORM_F1,
+    PROFILE_FORM_F2,
+)
+from edgar_sec.domain.forms.families.form_f1.taxonomy import (
+    FORM_F1_ITEMS,
+    FORM_F2_ITEMS,
+)
+from edgar_sec.domain.forms.families.form_f3.checkmarks import (
+    FORM_F3_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_f3.processing import PROFILE_FORM_F3
+from edgar_sec.domain.forms.families.form_f3.taxonomy import FORM_F3_ITEMS
+from edgar_sec.domain.forms.families.form_f4.checkmarks import (
+    FORM_F4_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_f4.processing import PROFILE_FORM_F4
+from edgar_sec.domain.forms.families.form_f4.taxonomy import FORM_F4_ITEMS
+from edgar_sec.domain.forms.families.form_40f.checkmarks import (
+    FORM_40F_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_40f.processing import PROFILE_FORM_40F
+from edgar_sec.domain.forms.families.form_f6.checkmarks import (
+    FORM_F6_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_f6.processing import PROFILE_FORM_F6
+from edgar_sec.domain.forms.families.form_f6.taxonomy import FORM_F6_ITEMS
+from edgar_sec.domain.forms.families.form_fn.checkmarks import (
+    FORM_FN_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_fn.processing import PROFILE_FORM_FN
+from edgar_sec.domain.forms.families.form_mjds.checkmarks import (
+    FORM_F7_CHECKBOX_SCHEMA,
+    FORM_F8_CHECKBOX_SCHEMA,
+    FORM_F9_CHECKBOX_SCHEMA,
+    FORM_F10_CHECKBOX_SCHEMA,
+    FORM_F80_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_mjds.processing import (
+    PROFILE_FORM_F7,
+    PROFILE_FORM_F8,
+    PROFILE_FORM_F9,
+    PROFILE_FORM_F10,
+    PROFILE_FORM_F80,
+)
+from edgar_sec.domain.forms.families.form_mjds.taxonomy import (
+    FORM_F7_ITEMS,
+    FORM_F8_ITEMS,
+    FORM_F9_ITEMS,
+    FORM_F10_ITEMS,
+    FORM_F80_ITEMS,
+)
+from edgar_sec.domain.forms.families.form_suppl.processing import PROFILE_FORM_SUPPL
 from edgar_sec.domain.forms.families.form_425.processing import PROFILE_FORM_425
 from edgar_sec.domain.forms.families.form_fwp.processing import PROFILE_FORM_FWP
 from edgar_sec.domain.forms.families.form_fwp.taxonomy import FORM_FWP_ITEMS
@@ -160,6 +217,115 @@ def test_form_425_entry_registered_without_schema_or_items() -> None:
     assert entry.profile is PROFILE_FORM_425
     assert entry.cover_checkbox_schema is None
     assert not entry.taxonomy_items
+
+
+def test_form_f1_entry_registered_with_schema_and_items() -> None:
+    entry = get_family_entry("F-1")
+    assert entry is not None
+    assert entry.family == "F-1"
+    assert entry.profile is PROFILE_FORM_F1
+    assert entry.cover_checkbox_schema is FORM_F1_CHECKBOX_SCHEMA
+    assert entry.taxonomy_items == FORM_F1_ITEMS
+    assert get_family_entry("F-1/A") is entry
+    assert get_family_entry("F-1MEF") is entry
+
+
+def test_form_f2_entry_registered_as_variant_of_f1_package() -> None:
+    entry = get_family_entry("F-2/A")
+    assert entry is not None
+    assert entry.family == "F-2"
+    assert entry.profile is PROFILE_FORM_F2
+    assert entry.cover_checkbox_schema is FORM_F2_CHECKBOX_SCHEMA
+    assert entry.taxonomy_items == FORM_F2_ITEMS
+
+
+def test_form_f3_entry_registered_with_schema_and_items() -> None:
+    entry = get_family_entry("F-3ASR")
+    assert entry is not None
+    assert entry.family == "F-3"
+    assert entry.profile is PROFILE_FORM_F3
+    assert entry.cover_checkbox_schema is FORM_F3_CHECKBOX_SCHEMA
+    assert entry.taxonomy_items == FORM_F3_ITEMS
+    assert get_family_entry("F-3D") is entry
+    assert get_family_entry("F-3DPOS") is entry
+
+
+def test_form_f4_entry_registered_with_schema_and_items() -> None:
+    entry = get_family_entry("F-4 POS")
+    assert entry is not None
+    assert entry.family == "F-4"
+    assert entry.profile is PROFILE_FORM_F4
+    assert entry.cover_checkbox_schema is FORM_F4_CHECKBOX_SCHEMA
+    assert entry.taxonomy_items == FORM_F4_ITEMS
+    assert get_family_entry("F-4MEF") is entry
+
+
+def test_40f_and_suppl_aliases_resolve_to_step_10a_profiles() -> None:
+    # Step 10 registered the aliases; Step 10A landed the profiles.
+    from edgar_sec.domain.forms.common.aliases import resolve_alias
+
+    assert resolve_alias("40-F") == "40-F"
+    assert resolve_alias("40-F/A") == "40-F"
+    assert resolve_alias("SUPPL") == "SUPPL"
+    assert get_family_entry("40-F") is not None
+    assert get_family_entry("SUPPL") is not None
+
+
+def test_mjds_entries_registered_with_shared_package() -> None:
+    cases = (
+        ("F-7", PROFILE_FORM_F7, FORM_F7_CHECKBOX_SCHEMA, FORM_F7_ITEMS),
+        ("F-8", PROFILE_FORM_F8, FORM_F8_CHECKBOX_SCHEMA, FORM_F8_ITEMS),
+        ("F-9", PROFILE_FORM_F9, FORM_F9_CHECKBOX_SCHEMA, FORM_F9_ITEMS),
+        ("F-10", PROFILE_FORM_F10, FORM_F10_CHECKBOX_SCHEMA, FORM_F10_ITEMS),
+        ("F-80", PROFILE_FORM_F80, FORM_F80_CHECKBOX_SCHEMA, FORM_F80_ITEMS),
+    )
+    for family, profile, schema, items in cases:
+        entry = get_family_entry(family)
+        assert entry is not None
+        assert entry.family == family
+        assert entry.profile is profile
+        assert entry.cover_checkbox_schema is schema
+        assert entry.taxonomy_items == items
+    assert get_family_entry("F-8/A") is get_family_entry("F-8")
+    assert get_family_entry("F-9 POS") is get_family_entry("F-9")
+    assert get_family_entry("F-10EF") is get_family_entry("F-10")
+
+
+def test_form_40f_entry_registered_with_schema_and_no_items() -> None:
+    entry = get_family_entry("40-F/A")
+    assert entry is not None
+    assert entry.family == "40-F"
+    assert entry.profile is PROFILE_FORM_40F
+    assert entry.cover_checkbox_schema is FORM_40F_CHECKBOX_SCHEMA
+    assert entry.taxonomy_items == ()
+
+
+def test_form_suppl_entry_registered_without_schema_or_items() -> None:
+    entry = get_family_entry("SUPPL")
+    assert entry is not None
+    assert entry.family == "SUPPL"
+    assert entry.profile is PROFILE_FORM_SUPPL
+    assert entry.cover_checkbox_schema is None
+    assert entry.taxonomy_items == ()
+
+
+def test_form_f6_entry_registered_with_schema_and_items() -> None:
+    entry = get_family_entry("F-6EF")
+    assert entry is not None
+    assert entry.family == "F-6"
+    assert entry.profile is PROFILE_FORM_F6
+    assert entry.cover_checkbox_schema is FORM_F6_CHECKBOX_SCHEMA
+    assert entry.taxonomy_items == FORM_F6_ITEMS
+    assert get_family_entry("F-6 POS") is entry
+
+
+def test_form_fn_entry_registered_with_schema_and_no_items() -> None:
+    entry = get_family_entry("F-N/A")
+    assert entry is not None
+    assert entry.family == "F-N"
+    assert entry.profile is PROFILE_FORM_FN
+    assert entry.cover_checkbox_schema is FORM_FN_CHECKBOX_SCHEMA
+    assert entry.taxonomy_items == ()
 
 
 def test_form_11k_entry_registered_with_schema_and_items() -> None:

@@ -191,6 +191,10 @@ NAME_FORM_TOKENS: tuple[str, ...] = (
     " trust",
     " plc",
     " ltd",
+    " limited",
+    " ag",
+    " s.a.",
+    " n.v.",
     " partners",
     " holdings",
     " group",
@@ -269,6 +273,30 @@ def extract_cusip_near_caption(text: str, *, window: int = 96) -> str | None:
                 return candidate.upper()
         position = lowered.find("cusip", position + 1)
     return None
+
+
+_REGISTRATION_NO_ALT = build_alternation((r"no\.?", r"nos\.?", "number"))
+_REGISTRATION_CAPTION_ALT = build_alternation(
+    (
+        r"registration\s+(?:statement\s+)?" + _REGISTRATION_NO_ALT,
+        r"files?\s+" + _REGISTRATION_NO_ALT,
+    )
+)
+_REGISTRATION_NUMBER_RE = re.compile(
+    r"(?:"
+    + _REGISTRATION_CAPTION_ALT
+    + r")\s*:?\s*\(?\s*((?:333|33)\s*-\s*\d{3,}(?:-\d{2})?)",
+    re.IGNORECASE,
+)
+
+
+def extract_registration_number(text: str) -> str | None:
+    """First caption-anchored registration number in ``text``: the filed
+    caption variants ("Registration No.", "File No.", "Files Nos.") with
+    a 333/33 prefix, which keeps commission file numbers (1-, 001-) out.
+    """
+    match = _REGISTRATION_NUMBER_RE.search(text)
+    return match.group(1).replace(" ", "") if match else None
 
 
 def is_valid_cusip(value: str | None, *, length: int | None = None) -> bool:
@@ -489,6 +517,7 @@ __all__ = [
     "TITLE_MATCH_RE",
     "TRAILING_FOOTNOTE_RE",
     "extract_cusip_near_caption",
+    "extract_registration_number",
     "is_boilerplate_entity_name",
     "is_street_address_value",
     "is_street_or_address_line",

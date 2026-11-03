@@ -44,6 +44,42 @@ _SCHEMA_FAMILY_CASES = (
     ("12B-25", "Form 10-K", "subject_10k"),
     ("14A", "Definitive Proxy Statement", "classification_definitive"),
     ("11-K", "Annual report pursuant to Section 15(d)", "report_annual"),
+    ("F-1", "Rule 415", "rule_415"),
+    ("F-2", "Rule 434", "rule_434"),
+    ("F-3", "Rule 462(e)", "rule_462e"),
+    ("F-4", "Rule 462(b)", "rule_462b"),
+    (
+        "F-7",
+        "upon filing with the Commission, pursuant to Rule 467(a)",
+        "rule_467a_upon_filing",
+    ),
+    (
+        "F-8",
+        "upon filing with the Commission, pursuant to Rule 467(a)",
+        "rule_467a_upon_filing",
+    ),
+    (
+        "F-9",
+        "upon filing with the Commission, pursuant to Rule 467(a)",
+        "rule_467a_upon_filing",
+    ),
+    (
+        "F-10",
+        "upon filing with the Commission, pursuant to Rule 467(a)",
+        "rule_467a_upon_filing",
+    ),
+    (
+        "F-80",
+        "upon filing with the Commission, pursuant to Rule 467(a)",
+        "rule_467a_upon_filing",
+    ),
+    (
+        "40-F",
+        "Annual report pursuant to Section 13(a) or 15(d)",
+        "section_13a_15d_annual_report",
+    ),
+    ("F-6", "immediately upon filing", "rule_466_immediate"),
+    ("F-N", "an original filing for the Filer", "original_filing"),
 )
 
 
@@ -332,11 +368,13 @@ def test_checkmark_schema_cases_cover_registered_profile_scope() -> None:
         "N-Q",
         "NSAR",
         "497",
+        "SUPPL",
     }
 
 
 @pytest.mark.parametrize(
-    "family", ("3", "4", "5", "144", "13D", "13G", "D", "13F", "424B", "FWP", "425")
+    "family",
+    ("3", "4", "5", "144", "13D", "13G", "D", "13F", "424B", "FWP", "425", "SUPPL"),
 )
 def test_registered_profiles_without_checkmark_schemas_are_not_applicable(
     family: str,

@@ -8,6 +8,7 @@ from edgar_sec.domain.forms.common.forward_looking import FORWARD_LOOKING_PHRASE
 from edgar_sec.domain.forms.common.models import (
     BodyEvidencePack,
     CoverEvidencePack,
+    ItemDefinition,
 )
 from edgar_sec.domain.forms.common.vocabulary import (
     COVER_EVIDENCE_TERMS,

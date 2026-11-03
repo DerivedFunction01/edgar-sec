@@ -164,3 +164,36 @@ def test_commission_file_token_re_matches_bare_file_numbers() -> None:
     assert COMMISSION_FILE_TOKEN_RE.fullmatch("20549")
     assert not COMMISSION_FILE_TOKEN_RE.fullmatch("FORM 12b-25")
     assert not COMMISSION_FILE_TOKEN_RE.fullmatch("registrant")
+
+
+def test_extract_registration_number_caption_variants() -> None:
+    from edgar_sec.engine.forms.common.entities import (
+        extract_registration_number,
+    )
+
+    assert extract_registration_number("Registration No. 333-287547") == "333-287547"
+    assert (
+        extract_registration_number("Registration Statement No. 333-91744")
+        == "333-91744"
+    )
+    assert extract_registration_number("File No. 333-211718") == "333-211718"
+    assert (
+        extract_registration_number("Files Nos. 333-123456, 333-123457") == "333-123456"
+    )
+    assert extract_registration_number("Registration No. 33-123456") == "33-123456"
+    assert extract_registration_number("File Number 333-242483") == "333-242483"
+    assert extract_registration_number("REGISTRATION NO. (333-65522)") == "333-65522"
+    assert (
+        extract_registration_number("Registration Statement No. 333 - 160709")
+        == "333-160709"
+    )
+
+
+def test_extract_registration_number_rejects_commission_file_numbers() -> None:
+    from edgar_sec.engine.forms.common.entities import (
+        extract_registration_number,
+    )
+
+    assert extract_registration_number("Commission File Number: 1-31402") is None
+    assert extract_registration_number("Commission file number: 001-40851") is None
+    assert extract_registration_number("no caption here 333-287547") is None

@@ -105,6 +105,9 @@ from edgar_sec.domain.forms.common.aliases import (
         ("F-10/A", "F-10"),
         ("F-80", "F-80"),
         ("F-N", "F-N"),
+        ("40-F", "40-F"),
+        ("40-F/A", "40-F"),
+        ("SUPPL", "SUPPL"),
         ("SC TO-T", "SC TO"),
         ("SC TO-I/A", "SC TO"),
         ("SC TO-C", "SC TO"),
@@ -177,8 +180,6 @@ def test_every_alias_resolves_to_its_own_family() -> None:
         # Disposition-only families (plan II Step 14 records, no alias).
         "ATS-N",
         "MA-I",
-        # 40-F ride-vs-own is Step 10's specimen decision, not an alias yet.
-        "40-F",
         "F-X",
     ],
 )

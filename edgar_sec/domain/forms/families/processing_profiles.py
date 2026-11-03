@@ -49,6 +49,63 @@ from edgar_sec.domain.forms.families.form_14a.taxonomy import FORM_14A_ITEMS
 from edgar_sec.domain.forms.families.form_15.processing import PROFILE_FORM_15
 from edgar_sec.domain.forms.families.form_424b.processing import PROFILE_FORM_424B
 from edgar_sec.domain.forms.families.form_424b.taxonomy import FORM_424B_ITEMS
+from edgar_sec.domain.forms.families.form_f1.checkmarks import (
+    FORM_F1_CHECKBOX_SCHEMA,
+    FORM_F2_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_f1.processing import (
+    PROFILE_FORM_F1,
+    PROFILE_FORM_F2,
+)
+from edgar_sec.domain.forms.families.form_f1.taxonomy import (
+    FORM_F1_ITEMS,
+    FORM_F2_ITEMS,
+)
+from edgar_sec.domain.forms.families.form_f3.checkmarks import (
+    FORM_F3_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_f3.processing import PROFILE_FORM_F3
+from edgar_sec.domain.forms.families.form_f3.taxonomy import FORM_F3_ITEMS
+from edgar_sec.domain.forms.families.form_f4.checkmarks import (
+    FORM_F4_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_f4.processing import PROFILE_FORM_F4
+from edgar_sec.domain.forms.families.form_f4.taxonomy import FORM_F4_ITEMS
+from edgar_sec.domain.forms.families.form_40f.checkmarks import (
+    FORM_40F_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_40f.processing import PROFILE_FORM_40F
+from edgar_sec.domain.forms.families.form_f6.checkmarks import (
+    FORM_F6_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_f6.processing import PROFILE_FORM_F6
+from edgar_sec.domain.forms.families.form_f6.taxonomy import FORM_F6_ITEMS
+from edgar_sec.domain.forms.families.form_fn.checkmarks import (
+    FORM_FN_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_fn.processing import PROFILE_FORM_FN
+from edgar_sec.domain.forms.families.form_mjds.checkmarks import (
+    FORM_F7_CHECKBOX_SCHEMA,
+    FORM_F8_CHECKBOX_SCHEMA,
+    FORM_F9_CHECKBOX_SCHEMA,
+    FORM_F10_CHECKBOX_SCHEMA,
+    FORM_F80_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_mjds.processing import (
+    PROFILE_FORM_F7,
+    PROFILE_FORM_F8,
+    PROFILE_FORM_F9,
+    PROFILE_FORM_F10,
+    PROFILE_FORM_F80,
+)
+from edgar_sec.domain.forms.families.form_mjds.taxonomy import (
+    FORM_F7_ITEMS,
+    FORM_F8_ITEMS,
+    FORM_F9_ITEMS,
+    FORM_F10_ITEMS,
+    FORM_F80_ITEMS,
+)
+from edgar_sec.domain.forms.families.form_suppl.processing import PROFILE_FORM_SUPPL
 from edgar_sec.domain.forms.families.form_425.processing import PROFILE_FORM_425
 from edgar_sec.domain.forms.families.form_fwp.processing import PROFILE_FORM_FWP
 from edgar_sec.domain.forms.families.form_fwp.taxonomy import FORM_FWP_ITEMS
@@ -177,6 +234,80 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         profile=PROFILE_S8,
         cover_checkbox_schema=S8_CHECKBOX_SCHEMA,
         taxonomy_items=FORM_S8_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="F-1",
+        profile=PROFILE_FORM_F1,
+        cover_checkbox_schema=FORM_F1_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_F1_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="F-2",
+        profile=PROFILE_FORM_F2,
+        cover_checkbox_schema=FORM_F2_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_F2_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="F-3",
+        profile=PROFILE_FORM_F3,
+        cover_checkbox_schema=FORM_F3_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_F3_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="F-4",
+        profile=PROFILE_FORM_F4,
+        cover_checkbox_schema=FORM_F4_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_F4_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="F-7",
+        profile=PROFILE_FORM_F7,
+        cover_checkbox_schema=FORM_F7_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_F7_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="F-8",
+        profile=PROFILE_FORM_F8,
+        cover_checkbox_schema=FORM_F8_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_F8_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="F-9",
+        profile=PROFILE_FORM_F9,
+        cover_checkbox_schema=FORM_F9_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_F9_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="F-10",
+        profile=PROFILE_FORM_F10,
+        cover_checkbox_schema=FORM_F10_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_F10_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="F-80",
+        profile=PROFILE_FORM_F80,
+        cover_checkbox_schema=FORM_F80_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_F80_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="40-F",
+        profile=PROFILE_FORM_40F,
+        cover_checkbox_schema=FORM_40F_CHECKBOX_SCHEMA,
+    ),
+    ProcessingCatalogEntry(
+        family="SUPPL",
+        profile=PROFILE_FORM_SUPPL,
+    ),
+    ProcessingCatalogEntry(
+        family="F-6",
+        profile=PROFILE_FORM_F6,
+        cover_checkbox_schema=FORM_F6_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_F6_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="F-N",
+        profile=PROFILE_FORM_FN,
+        cover_checkbox_schema=FORM_FN_CHECKBOX_SCHEMA,
     ),
     ProcessingCatalogEntry(
         family="424B",
