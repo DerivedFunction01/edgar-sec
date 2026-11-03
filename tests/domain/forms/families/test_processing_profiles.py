@@ -29,6 +29,8 @@ from edgar_sec.domain.forms.families.form_14a.checkmarks import (
 from edgar_sec.domain.forms.families.form_14a.processing import PROFILE_FORM_14A
 from edgar_sec.domain.forms.families.form_14a.taxonomy import FORM_14A_ITEMS
 from edgar_sec.domain.forms.families.form_15.processing import PROFILE_FORM_15
+from edgar_sec.domain.forms.families.form_424b.processing import PROFILE_FORM_424B
+from edgar_sec.domain.forms.families.form_424b.taxonomy import FORM_424B_ITEMS
 from edgar_sec.domain.forms.families.processing_profiles import (
     get_lazy_index_trigger,
     get_family_entry,
@@ -126,6 +128,17 @@ def test_form_14a_entry_registered_with_schema_and_items() -> None:
     assert entry.cover_checkbox_schema is FORM_14A_CHECKBOX_SCHEMA
     assert entry.taxonomy_items == FORM_14A_ITEMS
     assert get_family_entry("PRE 14A") is entry
+
+
+def test_form_424b_entry_registered_without_schema_with_items() -> None:
+    entry = get_family_entry("424B2")
+    assert entry is not None
+    assert entry.family == "424B"
+    assert entry.profile is PROFILE_FORM_424B
+    assert entry.cover_checkbox_schema is None
+    assert entry.taxonomy_items == FORM_424B_ITEMS
+    assert get_family_entry("424A") is entry
+    assert get_family_entry("424B5") is entry
 
 
 def test_form_11k_entry_registered_with_schema_and_items() -> None:
