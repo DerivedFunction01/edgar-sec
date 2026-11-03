@@ -50,8 +50,27 @@ DEFAULT_OPERATIONS = frozenset(
     {AcquisitionOperation.RAW, AcquisitionOperation.RENDER_TO_TXT}
 )
 
+
+def allowed_operations_of(
+    profile: DocumentProcessingProfile | None,
+) -> frozenset[AcquisitionOperation]:
+    """Allowed operations for a profile, or the default set when unmodelled."""
+    if profile is not None:
+        return profile.allowed_operations
+    return DEFAULT_OPERATIONS
+
+
+def profile_version_of(profile: DocumentProcessingProfile | None) -> str:
+    """Profile version, or the default version stamp when unmodelled."""
+    if profile is not None:
+        return profile.version
+    return "1"
+
+
 __all__ = [
     "AcquisitionOperation",
     "DocumentProcessingProfile",
     "DEFAULT_OPERATIONS",
+    "allowed_operations_of",
+    "profile_version_of",
 ]

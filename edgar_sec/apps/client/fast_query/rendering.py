@@ -8,7 +8,10 @@ from typing import Any
 from edgar_sec.apps.client.cache import DocumentCache
 from edgar_sec.apps.client.fast_query.loaders import recover_inverted_primary
 from edgar_sec.domain.document.aggregate import FilingAggregate
-from edgar_sec.domain.forms.common.processing import AcquisitionOperation
+from edgar_sec.domain.forms.common.processing import (
+    AcquisitionOperation,
+    allowed_operations_of,
+)
 from edgar_sec.domain.forms.families.processing_profiles import (
     get_family_profile,
     get_lazy_index_trigger,
@@ -66,7 +69,7 @@ def make_filing_renderer(
             operation_kind = AcquisitionOperation(resolved_op)
         except ValueError:
             return source
-        if profile is None or operation_kind not in profile.allowed_operations:
+        if operation_kind not in allowed_operations_of(profile):
             return source
 
         trigger_enabled = get_lazy_index_trigger(filing.form) is not None

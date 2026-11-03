@@ -105,6 +105,40 @@ def test_generic_text_render_remains_best_effort_after_recovery_miss(
     assert "Acme announced a deal" in result
 
 
+def test_unmodelled_form_text_operation_renders_generically(tmp_path) -> None:
+    content = (
+        b"<html><body><h1>Annual Report</h1>"
+        b"<p>Acme Corp reported results for the fiscal year.</p></body></html>"
+    )
+    filing = _filing("40-17G", "form4017g.htm", content)
+    cache = DocumentCache(db_path=tmp_path / "cache.sqlite")
+
+    result = make_filing_renderer(cache, operation="render_to_txt")(filing)
+
+    assert isinstance(result, str)
+    assert "Acme Corp reported results" in result
+
+
+def test_unmodelled_form_xml_operation_returns_raw(tmp_path) -> None:
+    content = b"<html><body><h1>Annual Report</h1></body></html>"
+    filing = _filing("40-17G", "form4017g.htm", content)
+    cache = DocumentCache(db_path=tmp_path / "cache.sqlite")
+
+    result = make_filing_renderer(cache, operation="render_to_xml")(filing)
+
+    assert result == content
+
+
+def test_unmodelled_form_default_operation_returns_raw(tmp_path) -> None:
+    content = b"<html><body><h1>Annual Report</h1></body></html>"
+    filing = _filing("40-17G", "form4017g.htm", content)
+    cache = DocumentCache(db_path=tmp_path / "cache.sqlite")
+
+    result = make_filing_renderer(cache)(filing)
+
+    assert result == content
+
+
 def test_form_4_xml_renders_recovered_primary(tmp_path, monkeypatch) -> None:
     original = b"<html><h1>Exhibit 99.1</h1><p>Acme press release.</p></html>"
     recovered = (

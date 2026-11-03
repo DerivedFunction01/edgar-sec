@@ -13,8 +13,9 @@ from edgar_sec.domain.document.path_facts import (
 from edgar_sec.domain.document.route import DocumentRoute, content_route, document_route
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.forms.common.processing import (
-    DEFAULT_OPERATIONS,
     AcquisitionOperation,
+    allowed_operations_of,
+    profile_version_of,
 )
 from edgar_sec.domain.forms.families.processing_profiles import get_family_profile
 from edgar_sec.engine.document_processing.capabilities import (
@@ -93,11 +94,7 @@ def resolve_acquisition_capability(
         profile = get_family_profile(family)
         try:
             operation_kind = AcquisitionOperation(operation)
-            allowed_operations = (
-                profile.allowed_operations
-                if profile is not None
-                else DEFAULT_OPERATIONS
-            )
+            allowed_operations = allowed_operations_of(profile)
             permitted = operation_kind in allowed_operations or (
                 role == "exhibit"
                 and operation_kind is AcquisitionOperation.RENDER_TO_TXT
@@ -110,7 +107,7 @@ def resolve_acquisition_capability(
         except ValueError:
             permitted = False
         if permitted:
-            capability_version = profile.version if profile is not None else "1"
+            capability_version = profile_version_of(profile)
             if operation == "render_to_txt":
                 if facts.suffix_class is DocumentSuffixClass.TEXT:
                     capability_id = "text.plain"

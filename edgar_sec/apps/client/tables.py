@@ -374,6 +374,7 @@ def build_joined_table(filings: Iterable[FilingAggregate]) -> pa.Table:
 def build_sections_table(filings: Iterable[FilingAggregate]) -> pa.Table:
     """Build Arrow sections table from filing aggregates for covered forms."""
     from edgar_sec.domain.forms.common.aliases import resolve_alias
+    from edgar_sec.domain.forms.common.processing import profile_version_of
     from edgar_sec.domain.forms.families.processing_profiles import (
         get_family_entry,
     )
@@ -414,7 +415,9 @@ def build_sections_table(filings: Iterable[FilingAggregate]) -> pa.Table:
             family=family,
             taxonomy_items=taxonomy,
             toc_span=toc_span,
-            renderer_version=entry.profile.version if entry else "1",
+            renderer_version=profile_version_of(
+                entry.profile if entry is not None else None
+            ),
         )
         for s in seq.sections:
             chunk.append(
@@ -447,6 +450,7 @@ def build_sections_table(filings: Iterable[FilingAggregate]) -> pa.Table:
 
 def build_notes_table(filings: Iterable[FilingAggregate]) -> pa.Table:
     """Build Arrow notes table from filing aggregates for covered forms."""
+    from edgar_sec.domain.forms.common.processing import profile_version_of
     from edgar_sec.domain.forms.families.processing_profiles import (
         get_family_profile,
     )
@@ -468,10 +472,9 @@ def build_notes_table(filings: Iterable[FilingAggregate]) -> pa.Table:
         if not body:
             continue
 
-        prof = get_family_profile(f.form)
         seq = detect_notes_sequence(
             body,
-            renderer_version=prof.version if prof else "1",
+            renderer_version=profile_version_of(get_family_profile(f.form)),
         )
         for n in seq.notes:
             chunk.append(

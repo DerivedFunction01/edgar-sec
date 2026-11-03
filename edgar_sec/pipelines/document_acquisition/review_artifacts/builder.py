@@ -17,7 +17,10 @@ from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.domain.document.path_facts import DocumentPathFacts
 from edgar_sec.domain.document.route import DocumentRoute, content_route, document_route
 from edgar_sec.domain.forms.common.aliases import resolve_alias
-from edgar_sec.domain.forms.common.processing import DEFAULT_OPERATIONS
+from edgar_sec.domain.forms.common.processing import (
+    allowed_operations_of,
+    profile_version_of,
+)
 from edgar_sec.domain.forms.families.processing_profiles import get_family_profile
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.document_processing.acquisition_capabilities import (
@@ -377,7 +380,7 @@ def _process_fixture_body(
         selected_path,
     )
     profile = get_family_profile(case.form)
-    allowed = profile.allowed_operations if profile is not None else DEFAULT_OPERATIONS
+    allowed = allowed_operations_of(profile)
     processing = {
         "processing_id": canonical_hash(
             {
@@ -399,7 +402,7 @@ def _process_fixture_body(
         "exhibit_assessment_fingerprint": assessment_fingerprint,
         "family_profile": {
             "family": profile.family if profile is not None else "default",
-            "version": profile.version if profile is not None else "1",
+            "version": profile_version_of(profile),
             "has_toc": profile.has_toc if profile is not None else False,
             "has_sections": profile.has_sections if profile is not None else False,
             "has_notes": profile.has_notes if profile is not None else False,

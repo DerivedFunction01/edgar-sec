@@ -15,7 +15,7 @@ from edgar_sec.domain.document.route import (
 from edgar_sec.domain.forms.common.aliases import resolve_alias
 from edgar_sec.domain.forms.common.processing import (
     AcquisitionOperation,
-    DEFAULT_OPERATIONS,
+    allowed_operations_of,
 )
 from edgar_sec.engine.document_processing.acquisition_capabilities import (
     resolve_acquisition_capability,
@@ -510,7 +510,7 @@ def _validate_operations(operations: tuple[OperationRequest, ...]) -> None:
 
 def _validate_family_operations(request: ProcessingRequest) -> None:
     profile = get_family_profile(request.form)
-    allowed = profile.allowed_operations if profile is not None else DEFAULT_OPERATIONS
+    allowed = allowed_operations_of(profile)
     for operation in request.operations:
         operation_kind = AcquisitionOperation(operation.operation)
         role_allowed = request.target_role == "exhibit" and operation_kind is (

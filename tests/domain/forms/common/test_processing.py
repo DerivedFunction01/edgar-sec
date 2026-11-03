@@ -6,6 +6,8 @@ from edgar_sec.domain.forms.common.processing import (
     DEFAULT_OPERATIONS,
     AcquisitionOperation,
     DocumentProcessingProfile,
+    allowed_operations_of,
+    profile_version_of,
 )
 
 
@@ -61,3 +63,35 @@ class TestDocumentProcessingProfile:
             allowed_operations=frozenset({AcquisitionOperation.RAW}),
         )
         assert isinstance(profile.allowed_operations, frozenset)
+
+
+class TestProfileFallbacks:
+    """Tests for the shared profile-or-default resolution helpers."""
+
+    def test_allowed_operations_of_profile(self) -> None:
+        """A modelled profile resolves its own allowed operations."""
+        profile = DocumentProcessingProfile(
+            family="4",
+            version="v9",
+            allowed_operations=frozenset({AcquisitionOperation.RAW}),
+        )
+        assert allowed_operations_of(profile) == frozenset({AcquisitionOperation.RAW})
+
+    def test_allowed_operations_of_unmodelled(self) -> None:
+        """An unmodelled family resolves the default operations."""
+        assert allowed_operations_of(None) == DEFAULT_OPERATIONS
+        assert AcquisitionOperation.RENDER_TO_TXT in allowed_operations_of(None)
+        assert AcquisitionOperation.RENDER_TO_XML not in allowed_operations_of(None)
+
+    def test_profile_version_of_profile(self) -> None:
+        """A modelled profile resolves its own version."""
+        profile = DocumentProcessingProfile(
+            family="4",
+            version="v9",
+            allowed_operations=frozenset({AcquisitionOperation.RAW}),
+        )
+        assert profile_version_of(profile) == "v9"
+
+    def test_profile_version_of_unmodelled(self) -> None:
+        """An unmodelled family resolves the default version stamp."""
+        assert profile_version_of(None) == "1"

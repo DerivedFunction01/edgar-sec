@@ -488,6 +488,7 @@ class Edgar:
             return SectionSequence(sections=(), family=filing.form)
 
         from edgar_sec.domain.forms.common.aliases import resolve_alias
+        from edgar_sec.domain.forms.common.processing import profile_version_of
         from edgar_sec.domain.forms.families.processing_profiles import (
             get_family_entry,
         )
@@ -509,7 +510,9 @@ class Edgar:
             family=family,
             taxonomy_items=taxonomy,
             toc_span=toc_span,
-            renderer_version=entry.profile.version if entry else "1",
+            renderer_version=profile_version_of(
+                entry.profile if entry is not None else None
+            ),
         )
         if text is None:
             self._sections_cache[acc] = seq
@@ -529,6 +532,7 @@ class Edgar:
 
     def notes(self, filing: FilingAggregate, text: str | None = None) -> NotesSequence:
         """Detect and return financial statement footnotes."""
+        from edgar_sec.domain.forms.common.processing import profile_version_of
         from edgar_sec.domain.forms.families.processing_profiles import (
             get_family_profile,
         )
@@ -548,10 +552,9 @@ class Edgar:
         if not body:
             return NotesSequence(notes=())
 
-        prof = get_family_profile(filing.form)
         seq = detect_notes_sequence(
             body,
-            renderer_version=prof.version if prof else "1",
+            renderer_version=profile_version_of(get_family_profile(filing.form)),
         )
         if text is None:
             self._notes_cache[acc] = seq
