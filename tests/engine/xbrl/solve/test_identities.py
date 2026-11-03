@@ -2,8 +2,11 @@
 
 from tests.support import fixture_path
 from edgar_sec.domain.identity import AccessionNumber
+from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
 from edgar_sec.engine.xbrl.solve.identities import (
     balance_sign,
+    eps_diluted,
+    eps_identity_legs,
     evaluate_composition,
     identity_discrepancy,
     identity_verified,
@@ -14,7 +17,9 @@ from edgar_sec.engine.xbrl.solve.identities import (
     verify_dimensional_rollup,
     verify_eps_identity,
     verify_gross_profit_identity,
+    verified_eps_facts,
 )
+from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.engine.xbrl.solve.scoping import FactScope
 from edgar_sec.engine.xbrl.parsing.instance_parser import parse_instance_facts
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
@@ -194,6 +199,88 @@ def test_eps_identity_returns_none_without_a_diluted_share_fact() -> None:
     assert verify_eps_identity(facts, diluted=True) is None
     outcome = verify_eps_identity(facts)
     assert outcome is None  # no basic EPS fact filed either
+
+
+def test_eps_identity_legs_return_values_and_facts() -> None:
+    """The legs carry both the resolved values and their filed facts."""
+    facts = [
+        _duration_fact("us-gaap:EarningsPerShareBasic", 2.5, decimals=2),
+        _duration_fact("us-gaap:WeightedAverageNumberOfSharesOutstandingBasic", 400.0),
+        _duration_fact("us-gaap:NetIncomeLoss", 1000.0),
+    ]
+
+    legs = eps_identity_legs(facts)
+    assert legs is not None
+    assert legs.numerator_value == 1000.0
+    assert legs.shares_value == 400.0
+    assert [f.concept_qname for f in legs.numerator_facts] == ["us-gaap:NetIncomeLoss"]
+    assert [f.concept_qname for f in legs.shares_facts] == [
+        "us-gaap:WeightedAverageNumberOfSharesOutstandingBasic"
+    ]
+
+
+def test_eps_identity_legs_none_without_a_share_fact() -> None:
+    """A missing denominator leg abstains; nothing is substituted."""
+    facts = [
+        _duration_fact("us-gaap:EarningsPerShareBasic", 2.5, decimals=2),
+        _duration_fact("us-gaap:NetIncomeLoss", 1000.0),
+    ]
+
+    assert eps_identity_legs(facts) is None
+
+
+def test_eps_diluted_names_the_variant_of_an_atom() -> None:
+    """Basic and diluted EPS atoms classify; other atoms abstain."""
+    lexicon = load_domain_taxonomy().token_lexicon
+    assert lexicon is not None
+    basic = decompose_concept("us-gaap:EarningsPerShareBasic", lexicon)[0]
+    diluted = decompose_concept("us-gaap:EarningsPerShareDiluted", lexicon)[0]
+    revenue = decompose_concept("us-gaap:Revenues", lexicon)[0]
+    assert eps_diluted(basic) is False
+    assert eps_diluted(diluted) is True
+    assert eps_diluted(revenue) is None
+
+
+def test_verified_eps_facts_consumes_only_passing_periods() -> None:
+    """A multi-period filing consumes the periods whose identity passes."""
+    acc = AccessionNumber("0000950170-24-087843")
+
+    def period(year: int, eps: float) -> list[XbrlFact]:
+        return [
+            XbrlFact(
+                acc,
+                "us-gaap:EarningsPerShareBasic",
+                eps,
+                unit="USD/shares",
+                period_type="duration",
+                start_date=f"{year}-01-01",
+                end_date=f"{year}-12-31",
+                decimals=2,
+            ),
+            XbrlFact(
+                acc,
+                "us-gaap:WeightedAverageNumberOfSharesOutstandingBasic",
+                400.0,
+                unit="shares",
+                period_type="duration",
+                start_date=f"{year}-01-01",
+                end_date=f"{year}-12-31",
+            ),
+            XbrlFact(
+                acc,
+                "us-gaap:NetIncomeLoss",
+                1000.0,
+                unit="USD",
+                period_type="duration",
+                start_date=f"{year}-01-01",
+                end_date=f"{year}-12-31",
+            ),
+        ]
+
+    facts = period(2023, 2.5) + period(2024, 9.99)
+    consumed = verified_eps_facts(facts)
+    assert {f.start_date for f in consumed} == {"2023-01-01"}
+    assert len(consumed) == 3
 
 
 def test_verify_all_includes_eps_identities() -> None:

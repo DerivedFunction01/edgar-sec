@@ -21,6 +21,7 @@ from edgar_sec.engine.xbrl.solve.breakdown import (
     period_key_of,
 )
 from edgar_sec.engine.xbrl.solve.equivalence import UNRELATED, classify_ladder_pair
+from edgar_sec.engine.xbrl.solve.identities import verified_eps_facts
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
 from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
 from edgar_sec.engine.xbrl.taxonomy.archive import current_table
@@ -48,6 +49,7 @@ REASON_DIMENSIONED_ONLY_IN_CALC_ARCS_PARTIALLY_CONSUMED = (
     "DIMENSIONED_ONLY_IN_CALC_ARCS_PARTIALLY_CONSUMED"
 )
 REASON_UNDIMENSIONED_NO_CALC_ROLE = "UNDIMENSIONED_NO_CALC_ROLE"
+REASON_UNDIMENSIONED_CALC_ISOLATED = "UNDIMENSIONED_CALC_ISOLATED"
 REASON_UNDIMENSIONED_IN_CALC_ARCS_NOT_CONSUMED = (
     "UNDIMENSIONED_IN_CALC_ARCS_NOT_CONSUMED"
 )
@@ -59,6 +61,7 @@ QUARANTINE_REASONS = (
     REASON_DIMENSIONED_ONLY_IN_CALC_ARCS,
     REASON_DIMENSIONED_ONLY_IN_CALC_ARCS_PARTIALLY_CONSUMED,
     REASON_UNDIMENSIONED_NO_CALC_ROLE,
+    REASON_UNDIMENSIONED_CALC_ISOLATED,
     REASON_UNDIMENSIONED_IN_CALC_ARCS_NOT_CONSUMED,
     REASON_UNDIMENSIONED_IN_CALC_ARCS_PARENT_NOT_AUDITED,
 )
@@ -633,14 +636,32 @@ class CounterSolver:
         unconsumed: Sequence[XbrlFact],
         calculation_arcs: Sequence[CalculationArc],
         audited: frozenset[str],
+        declarations: Mapping[str, ConceptDeclaration] | None = None,
     ) -> dict[str, str]:
-        """Pair reason per quarantined concept from arcs and fact shape."""
+        """Pair reason per quarantined concept from arcs and fact shape.
+
+        A declared per-share concept with no calc role is calc-isolated
+        by construction: its verdict names the class, not a mapping gap.
+        """
         in_arcs: set[str] = set()
         parents: dict[str, set[str]] = {}
         for arc in calculation_arcs:
             in_arcs.add(arc.parent_qname)
             in_arcs.add(arc.child_qname)
             parents.setdefault(arc.child_qname, set()).add(arc.parent_qname)
+        supplied = declarations or {}
+        table: dict[str, str] | None = None
+
+        def is_per_share(concept: str) -> bool:
+            nonlocal table
+            if table is None:
+                table = current_table()
+            declaration = declaration_for(concept, table, supplied)
+            return (
+                declaration is not None
+                and item_type_local(declaration.item_type) == "perShareItemType"
+            )
+
         consumed = Counter(
             fact.concept_qname
             for fact in solved
@@ -662,7 +683,11 @@ class CounterSolver:
                     reasons[concept] = REASON_DIMENSIONED_ONLY_IN_CALC_ARCS
                 continue
             if concept not in in_arcs:
-                reasons[concept] = REASON_UNDIMENSIONED_NO_CALC_ROLE
+                reasons[concept] = (
+                    REASON_UNDIMENSIONED_CALC_ISOLATED
+                    if is_per_share(concept)
+                    else REASON_UNDIMENSIONED_NO_CALC_ROLE
+                )
             elif (
                 parents.get(concept)
                 and not parents[concept] & audited
@@ -692,6 +717,8 @@ class CounterSolver:
             facts, anchored_target_goals, calculation_arcs
         )
         dimensional_consumed |= self._slice_consumed_keys(facts, anchored_target_goals)
+        identity_consumed = {_semantic_key(fact) for fact in verified_eps_facts(facts)}
+        consumed_keys = dimensional_consumed | identity_consumed
 
         # 1. Execute primary solver over target goals
         for goal in target_goals:
@@ -715,10 +742,7 @@ class CounterSolver:
 
         for f in facts:
             q_loc = qname_local(f.concept_qname)
-            if (
-                isinstance(f.value, (int, float))
-                and _semantic_key(f) in dimensional_consumed
-            ):
+            if isinstance(f.value, (int, float)) and _semantic_key(f) in consumed_keys:
                 solved.append(f)
             elif (
                 f.concept_qname in solved_qnames
@@ -736,7 +760,9 @@ class CounterSolver:
             | frozenset(dimensional_target_goals)
             | frozenset(anchored_target_goals)
         )
-        reasons = self._pair_reasons(solved, unconsumed, calculation_arcs, audited)
+        reasons = self._pair_reasons(
+            solved, unconsumed, calculation_arcs, audited, declarations
+        )
         quarantined = [
             QuarantinedFact(fact=f, reason=reasons[f.concept_qname]) for f in unconsumed
         ]

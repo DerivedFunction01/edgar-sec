@@ -214,15 +214,19 @@ def _slot_matches(
     ]
 
 
-def _cleanest_value(matches: list[XbrlFact]) -> float | None:
-    """Unique value among the fewest-residual matches, or None."""
+def _cleanest_facts(matches: list[XbrlFact]) -> list[XbrlFact]:
+    """The fewest-residual subset of slot matches."""
     if not matches:
-        return None
+        return []
     min_residuals = min(_intent_residuals_of(f.concept_qname) for f in matches)
-    cleanest = [
+    return [
         f for f in matches if _intent_residuals_of(f.concept_qname) == min_residuals
     ]
-    return _unique_value(cleanest)
+
+
+def _cleanest_value(matches: list[XbrlFact]) -> float | None:
+    """Unique value among the fewest-residual matches, or None."""
+    return _unique_value(_cleanest_facts(matches))
 
 
 def _slot_cleanest(
@@ -236,12 +240,7 @@ def _slot_cleanest(
     matches = _slot_matches(
         facts, slot, period_type=period_type, require_unsegmented=require_unsegmented
     )
-    if not matches:
-        return []
-    min_residuals = min(_intent_residuals_of(f.concept_qname) for f in matches)
-    return [
-        f for f in matches if _intent_residuals_of(f.concept_qname) == min_residuals
-    ]
+    return _cleanest_facts(matches)
 
 
 def _find_slot_value(
@@ -370,6 +369,76 @@ def verify_operating_income_identity(
     )
 
 
+@dataclass(frozen=True, slots=True)
+class EpsLegs:
+    """The filed numerator and share legs of one EPS variant."""
+
+    numerator_value: float
+    numerator_facts: tuple[XbrlFact, ...]
+    shares_value: float
+    shares_facts: tuple[XbrlFact, ...]
+
+
+def eps_diluted(atom: Atom) -> bool | None:
+    """The EPS variant an atom names: True diluted, False basic, else None."""
+    if atom == _EPS_DILUTED.atom:
+        return True
+    if atom == _EPS_BASIC.atom:
+        return False
+    return None
+
+
+def eps_identity_legs(
+    facts: Sequence[XbrlFact], *, diluted: bool = False
+) -> EpsLegs | None:
+    """Filed numerator and share legs for one EPS variant, or None.
+
+    The numerator walks its tiers most specific first, preferring the
+    variant's own modifier; an unfiled, ambiguous, or zero leg is None.
+    """
+    shares_facts = _slot_cleanest(
+        list(facts),
+        _SHARES_DILUTED if diluted else _SHARES_BASIC,
+        period_type="duration",
+    )
+    shares = _unique_value(shares_facts) if shares_facts else None
+    if shares is None or shares == 0.0:
+        return None
+    variant = "V_DILUTED" if diluted else "V_BASIC"
+    for tier in _NUMERATOR_TIERS:
+        matches = _slot_matches(facts, tier, period_type="duration")
+        same_variant = [
+            f for f in matches if variant in _atom_of(f.concept_qname).modifiers
+        ]
+        numerator_facts = _cleanest_facts(same_variant or matches)
+        numerator = _unique_value(numerator_facts)
+        if numerator is not None:
+            return EpsLegs(
+                numerator_value=numerator,
+                numerator_facts=tuple(numerator_facts),
+                shares_value=shares,
+                shares_facts=tuple(shares_facts),
+            )
+    return None
+
+
+def _eps_parts(
+    facts: Sequence[XbrlFact], *, diluted: bool
+) -> tuple[list[XbrlFact], list[XbrlFact], list[XbrlFact]] | None:
+    """EPS, numerator, and share facts for one variant, or None."""
+    eps_facts = _slot_cleanest(
+        list(facts),
+        _EPS_DILUTED if diluted else _EPS_BASIC,
+        period_type="duration",
+    )
+    if not eps_facts or _unique_value(eps_facts) is None:
+        return None
+    legs = eps_identity_legs(facts, diluted=diluted)
+    if legs is None:
+        return None
+    return eps_facts, list(legs.numerator_facts), list(legs.shares_facts)
+
+
 def verify_eps_identity(
     facts: Sequence[XbrlFact],
     tolerance: float | None = None,
@@ -387,25 +456,11 @@ def verify_eps_identity(
         selected, _EPS_DILUTED if diluted else _EPS_BASIC, period_type="duration"
     )
     eps = _unique_value(eps_matches) if eps_matches else None
-    shares = _find_slot_value(
-        selected,
-        _SHARES_DILUTED if diluted else _SHARES_BASIC,
-        period_type="duration",
-    )
-    if eps is None or shares is None or shares == 0.0:
+    legs = eps_identity_legs(selected, diluted=diluted)
+    if eps is None or legs is None:
         return None
-    numerator = None
-    variant = "V_DILUTED" if diluted else "V_BASIC"
-    for tier in _NUMERATOR_TIERS:
-        matches = _slot_matches(selected, tier, period_type="duration")
-        same_variant = [
-            f for f in matches if variant in _atom_of(f.concept_qname).modifiers
-        ]
-        numerator = _cleanest_value(same_variant or matches)
-        if numerator is not None:
-            break
-    if numerator is None:
-        return None
+    numerator = legs.numerator_value
+    shares = legs.shares_value
 
     if tolerance is None:
         printed = {
@@ -427,6 +482,35 @@ def verify_eps_identity(
         passed=abs(diff) <= tolerance,
         tolerance=tolerance,
     )
+
+
+def verified_eps_facts(facts: Sequence[XbrlFact]) -> tuple[XbrlFact, ...]:
+    """Facts consumed by passing EPS identities, verified per period.
+
+    Undimensioned duration facts are grouped by filed period; only a
+    passing identity consumes its EPS, numerator, and share facts.
+    """
+    groups: dict[tuple[object, ...], list[XbrlFact]] = {}
+    for fact in facts:
+        if fact.dimensions or fact.period_type != "duration":
+            continue
+        key = (str(fact.accession), fact.start_date, fact.end_date)
+        groups.setdefault(key, []).append(fact)
+    consumed: list[XbrlFact] = []
+    seen: set[int] = set()
+    for group in groups.values():
+        for diluted in (False, True):
+            outcome = verify_eps_identity(group, diluted=diluted)
+            if outcome is None or not outcome.passed:
+                continue
+            parts = _eps_parts(group, diluted=diluted)
+            if parts is None:
+                continue
+            for fact in (*parts[0], *parts[1], *parts[2]):
+                if id(fact) not in seen:
+                    seen.add(id(fact))
+                    consumed.append(fact)
+    return tuple(consumed)
 
 
 def verify_dimensional_rollup(

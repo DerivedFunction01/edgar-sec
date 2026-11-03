@@ -16,6 +16,7 @@ from edgar_sec.engine.xbrl.schema.models import (
 from edgar_sec.engine.xbrl.solve.antichain import AntiChainValidator
 from edgar_sec.engine.xbrl.solve.breakdown import breakdown_concept
 from edgar_sec.engine.xbrl.solve.frontier import verify_non_double_counting
+from edgar_sec.engine.xbrl.solve.identities import eps_diluted, eps_identity_legs
 
 
 class AggregateEvaluator:
@@ -367,6 +368,50 @@ class AggregateEvaluator:
             attempts.append((canonical_hops, outcome, components, solved, path))
         return attempts
 
+    def _derive_eps(
+        self,
+        target_atom: Any,
+        facts: Sequence[XbrlFact],
+        *,
+        measure_id: str,
+        entity: str,
+        period: str,
+        unit: str,
+    ) -> AggregateFact | None:
+        """Derive an EPS value from its filed legs via the EPS identity.
+
+        Both legs must be filed with a single value in scope; the
+        route abstains otherwise rather than substituting a leg.
+        """
+        diluted = eps_diluted(target_atom)
+        if diluted is None:
+            return None
+        legs = eps_identity_legs(facts, diluted=diluted)
+        if legs is None:
+            return None
+        numerator_qname = legs.numerator_facts[0].concept_qname
+        shares_qname = legs.shares_facts[0].concept_qname
+        return AggregateFact(
+            measure_id=measure_id,
+            entity=entity,
+            period=period,
+            unit=unit,
+            value=round(legs.numerator_value / legs.shares_value, 4),
+            basis="DERIVED_EXACT",
+            components=(
+                GranularComponent(
+                    identifier=numerator_qname,
+                    value=legs.numerator_value,
+                    weight=1.0,
+                ),
+            ),
+            derivation_path=(
+                f"{numerator_qname}({legs.numerator_value}) / "
+                f"{shares_qname}({legs.shares_value})",
+            ),
+            resolution_tier="ACCOUNTING_IDENTITY",
+        )
+
     def evaluate_goal(
         self,
         target_concept: str,
@@ -567,6 +612,16 @@ class AggregateEvaluator:
             )
             if derived is not None:
                 return derived
+            eps = self._derive_eps(
+                target_atom,
+                facts,
+                measure_id=target_concept,
+                entity=entity,
+                period=period,
+                unit=unit,
+            )
+            if eps is not None:
+                return eps
 
         return AggregateFact(
             measure_id=target_concept,

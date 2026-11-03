@@ -97,6 +97,61 @@ def test_lone_margin_fact_never_derives_revenue() -> None:
     assert result.basis == "NOT_AVAILABLE"
 
 
+def _eps_leg(qname: str, value: float, unit: str) -> XbrlFact:
+    return XbrlFact(
+        AccessionNumber("0000000000-25-000001"),
+        qname,
+        value,
+        unit=unit,
+        period_type="duration",
+        start_date="2024-01-01",
+        end_date="2024-12-31",
+    )
+
+
+def test_eps_derived_from_filed_legs_via_the_identity() -> None:
+    """An unfiled EPS resolves as numerator over weighted-average shares."""
+    facts = [
+        _eps_leg("us-gaap:NetIncomeLoss", 1000.0, "USD"),
+        _eps_leg(
+            "us-gaap:WeightedAverageNumberOfSharesOutstandingBasic", 400.0, "shares"
+        ),
+    ]
+
+    result = _evaluator().evaluate_goal("us-gaap:EarningsPerShareBasic", facts)
+
+    assert result.value == 2.5
+    assert result.basis == "DERIVED_EXACT"
+    assert result.resolution_tier == "ACCOUNTING_IDENTITY"
+
+
+def test_eps_derivation_abstains_without_a_leg() -> None:
+    """A missing share leg leaves EPS unresolved, never substituted."""
+    facts = [_eps_leg("us-gaap:NetIncomeLoss", 1000.0, "USD")]
+
+    result = _evaluator().evaluate_goal("us-gaap:EarningsPerShareBasic", facts)
+
+    assert result.value is None
+    assert result.basis == "NOT_AVAILABLE"
+
+
+def test_filed_eps_stays_the_direct_anchor_over_the_identity() -> None:
+    """A filed EPS answers as the reported fact, not the derived quotient."""
+    facts = [
+        _eps_leg("us-gaap:EarningsPerShareBasic", 2.5, "USD/shares"),
+        _eps_leg("us-gaap:NetIncomeLoss", 1000.0, "USD"),
+        _eps_leg(
+            "us-gaap:WeightedAverageNumberOfSharesOutstandingBasic", 400.0, "shares"
+        ),
+    ]
+
+    result = _evaluator().evaluate_goal("us-gaap:EarningsPerShareBasic", facts)
+
+    assert result.value == 2.5
+    assert result.basis == "REPORTED"
+    assert result.resolution_tier == "DIRECT_ANCHOR"
+
+
 def test_inverse_solve_blocked_without_the_filed_total() -> None:
     """Solving for a term needs the formula's total filed as a fact."""
     acc = AccessionNumber("0000000000-25-000001")
