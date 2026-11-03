@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+import json
 from collections import Counter
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any
 
 from edgar_sec.engine.xbrl.review.benchmark import CensusScore, _ADVERSE_CLASSES
@@ -30,230 +32,17 @@ class CrossFormExpectation:
     replay_mismatches: int = 0
 
 
-CROSS_FORM_EXPECTATIONS: dict[str, CrossFormExpectation] = {
-    "10-K|us-gaap|annual": CrossFormExpectation(
-        form="10-K",
-        taxonomy="us-gaap",
-        period_shape="annual",
-        posture="measured",
-        n=1,
-        correct=1,
-        honest=0,
-        surfaced_conflicts=0,
-    ),
-    "10-K/A|us-gaap|annual": CrossFormExpectation(
-        form="10-K/A",
-        taxonomy="us-gaap",
-        period_shape="annual",
-        posture="measured",
-        n=1,
-        correct=1,
-        honest=0,
-        surfaced_conflicts=0,
-    ),
-    "10-Q|us-gaap|quarterly": CrossFormExpectation(
-        form="10-Q",
-        taxonomy="us-gaap",
-        period_shape="quarterly",
-        posture="measured",
-        n=3,
-        correct=0,
-        honest=0,
-        surfaced_conflicts=0,
-        adverse={"refused": 2, "wrong-value": 1},
-        replay_mismatches=3,
-    ),
-    "10-Q|us-gaap|ytd": CrossFormExpectation(
-        form="10-Q",
-        taxonomy="us-gaap",
-        period_shape="ytd",
-        posture="measured",
-        n=8,
-        correct=1,
-        honest=0,
-        surfaced_conflicts=0,
-        adverse={"refused": 4, "unfaithful non-answer": 2, "wrong-value": 1},
-        replay_mismatches=7,
-    ),
-    "10-Q/A|us-gaap|ytd": CrossFormExpectation(
-        form="10-Q/A",
-        taxonomy="us-gaap",
-        period_shape="ytd",
-        posture="measured",
-        n=1,
-        correct=0,
-        honest=0,
-        surfaced_conflicts=0,
-        adverse={"refused": 1},
-        replay_mismatches=1,
-    ),
-    "11-K|us-gaap-ebp|annual": CrossFormExpectation(
-        form="11-K",
-        taxonomy="us-gaap-ebp",
-        period_shape="annual",
-        posture="absence",
-        n=2,
-        correct=0,
-        honest=2,
-        surfaced_conflicts=0,
-    ),
-    "424B2|ffd|quarterly": CrossFormExpectation(
-        form="424B2",
-        taxonomy="ffd",
-        period_shape="quarterly",
-        posture="absence",
-        n=1,
-        correct=0,
-        honest=1,
-        surfaced_conflicts=0,
-    ),
-    "6-K|ifrs-full|ytd": CrossFormExpectation(
-        form="6-K",
-        taxonomy="ifrs-full",
-        period_shape="ytd",
-        posture="measured",
-        n=1,
-        correct=0,
-        honest=0,
-        surfaced_conflicts=0,
-        adverse={"unfaithful non-answer": 1},
-        replay_mismatches=1,
-    ),
-    "6-K|us-gaap|ytd": CrossFormExpectation(
-        form="6-K",
-        taxonomy="us-gaap",
-        period_shape="ytd",
-        posture="measured",
-        n=1,
-        correct=0,
-        honest=0,
-        surfaced_conflicts=0,
-        adverse={"refused": 1},
-        replay_mismatches=1,
-    ),
-    "8-K|dei|quarterly": CrossFormExpectation(
-        form="8-K",
-        taxonomy="dei",
-        period_shape="quarterly",
-        posture="absence",
-        n=6,
-        correct=0,
-        honest=6,
-        surfaced_conflicts=0,
-    ),
-    "8-K|us-gaap|annual": CrossFormExpectation(
-        form="8-K",
-        taxonomy="us-gaap",
-        period_shape="annual",
-        posture="measured",
-        n=1,
-        correct=1,
-        honest=0,
-        surfaced_conflicts=0,
-    ),
-    "8-K/A|us-gaap|annual": CrossFormExpectation(
-        form="8-K/A",
-        taxonomy="us-gaap",
-        period_shape="annual",
-        posture="measured",
-        n=2,
-        correct=1,
-        honest=0,
-        surfaced_conflicts=1,
-        adverse={"wrong-value": 1},
-        replay_mismatches=1,
-    ),
-    "DEF 14A|ecd|annual": CrossFormExpectation(
-        form="DEF 14A",
-        taxonomy="ecd",
-        period_shape="annual",
-        posture="absence",
-        n=2,
-        correct=0,
-        honest=2,
-        surfaced_conflicts=0,
-    ),
-    "F-1|us-gaap|annual": CrossFormExpectation(
-        form="F-1",
-        taxonomy="us-gaap",
-        period_shape="annual",
-        posture="measured",
-        n=1,
-        correct=1,
-        honest=0,
-        surfaced_conflicts=0,
-    ),
-    "N-CSR|cef|annual": CrossFormExpectation(
-        form="N-CSR",
-        taxonomy="cef",
-        period_shape="annual",
-        posture="absence",
-        n=1,
-        correct=0,
-        honest=1,
-        surfaced_conflicts=0,
-    ),
-    "N-CSR|oef|quarterly": CrossFormExpectation(
-        form="N-CSR",
-        taxonomy="oef",
-        period_shape="quarterly",
-        posture="absence",
-        n=1,
-        correct=0,
-        honest=1,
-        surfaced_conflicts=0,
-    ),
-    "N-CSRS|cef|ytd": CrossFormExpectation(
-        form="N-CSRS",
-        taxonomy="cef",
-        period_shape="ytd",
-        posture="absence",
-        n=1,
-        correct=0,
-        honest=1,
-        surfaced_conflicts=0,
-    ),
-    "N-CSRS|oef|ytd": CrossFormExpectation(
-        form="N-CSRS",
-        taxonomy="oef",
-        period_shape="ytd",
-        posture="absence",
-        n=1,
-        correct=0,
-        honest=1,
-        surfaced_conflicts=0,
-    ),
-    "S-1|us-gaap|annual": CrossFormExpectation(
-        form="S-1",
-        taxonomy="us-gaap",
-        period_shape="annual",
-        posture="measured",
-        n=1,
-        correct=1,
-        honest=0,
-        surfaced_conflicts=0,
-    ),
-    "S-4|us-gaap|annual": CrossFormExpectation(
-        form="S-4",
-        taxonomy="us-gaap",
-        period_shape="annual",
-        posture="measured",
-        n=1,
-        correct=1,
-        honest=0,
-        surfaced_conflicts=0,
-    ),
-    "SD|rxp|annual": CrossFormExpectation(
-        form="SD",
-        taxonomy="rxp",
-        period_shape="annual",
-        posture="absence",
-        n=1,
-        correct=0,
-        honest=1,
-        surfaced_conflicts=0,
-    ),
-}
+def _load_expectations() -> dict[str, CrossFormExpectation]:
+    """Load the pinned cross-form expectation blocks from their data file."""
+    raw = json.loads(
+        Path(__file__)
+        .with_name("cross_form_expectations.json")
+        .read_text(encoding="utf-8")
+    )
+    return {key: CrossFormExpectation(**row) for key, row in sorted(raw.items())}
+
+
+CROSS_FORM_EXPECTATIONS: dict[str, CrossFormExpectation] = _load_expectations()
 
 
 def summarize_cross_form(evaluations: list[dict]) -> dict:
