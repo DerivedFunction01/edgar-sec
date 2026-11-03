@@ -2,8 +2,12 @@
 
 from __future__ import annotations
 
+from edgar_sec.apps.client.fiscal import filed_length_class, transition_length_class
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
+from edgar_sec.engine.xbrl.normalize.filed_metadata import (
+    filed_metadata as read_filed_metadata,
+)
 from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle, XbrlFact
 from edgar_sec.engine.xbrl.solve.query import QueryStatus
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
@@ -174,3 +178,39 @@ def test_transition_fallback_skips_off_focus_class_requests() -> None:
     )
     assert result.status == QueryStatus.UNAVAILABLE
     assert result.value is None
+
+
+def test_filed_length_class_names_the_corroborated_focus() -> None:
+    """Verify the module derivation names a Q1 focus its spans support."""
+    facts = _dei("2026-09-30", 2027, "Q1", "--06-30") + (
+        _fact("us-gaap:Revenues", 92.0, start="2026-07-01", end="2026-09-30"),
+    )
+    metadata = read_filed_metadata(facts)
+    assert filed_length_class(facts, metadata) == "QUARTER"
+    facade = _facade(facts)
+    assert facade.financials.filed_length_class() == "QUARTER"
+    assert facade.financials.transition_length_class() is None
+
+
+def test_filed_length_class_refuses_an_uncorroborated_focus() -> None:
+    """Verify a longer cumulative span at period end vetoes the derivation."""
+    facts = _dei("2024-06-29", 2024, "Q3", "--09-28") + (
+        _fact("us-gaap:Revenues", 39.0, start="2023-10-01", end="2024-06-29"),
+        _fact(
+            "us-gaap:CommonStockDividendsPerShareDeclared",
+            1.0,
+            start="2022-07-01",
+            end="2024-06-29",
+            unit="USD/shares",
+        ),
+    )
+    assert filed_length_class(facts, read_filed_metadata(facts)) is None
+
+
+def test_transition_length_class_names_the_stub_only_on_transition_forms() -> None:
+    """Verify the stub class is named on a 10-KT and refused on its twin."""
+    facts = _transition_facts("10-KT")
+    assert transition_length_class(facts, read_filed_metadata(facts)) == "YTD_2Q"
+    assert _facade(facts).financials.transition_length_class() == "YTD_2Q"
+    twin = _transition_facts("10-K")
+    assert transition_length_class(twin, read_filed_metadata(twin)) is None
