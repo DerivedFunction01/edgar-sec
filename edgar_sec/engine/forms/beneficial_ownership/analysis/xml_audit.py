@@ -46,7 +46,7 @@ from edgar_sec.engine.forms.beneficial_ownership.vocabulary import (
     COVER_VALUE_FIELDS,
     FIELD_TAGS,
 )
-from edgar_sec.engine.forms.common.signatures import (
+from edgar_sec.engine.forms.common.signatures.names import (
     clean_signature_name,
     is_valid_signature_name,
 )

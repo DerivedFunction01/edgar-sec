@@ -8,7 +8,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from edgar_sec.engine.forms.common.signatures import SIG_BOILERPLATE_TERMS
+from edgar_sec.engine.forms.common.signatures.patterns import SIG_BOILERPLATE_TERMS
 from edgar_sec.engine.forms.common.statutory import (
     HEADER_LEAK_RE,
     STATUTORY_PAGE_ARTIFACT_RE,

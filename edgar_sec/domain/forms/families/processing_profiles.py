@@ -25,6 +25,28 @@ from edgar_sec.domain.forms.families.current.checkmarks import (
 from edgar_sec.domain.forms.families.current.processing import (
     PROFILE as CURRENT_PROFILE,
 )
+from edgar_sec.domain.forms.families.form_12b25.checkmarks import (
+    FORM_12B25_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_12b25.processing import (
+    PROFILE_FORM_12B25,
+)
+from edgar_sec.domain.forms.families.form_12b25.taxonomy import FORM_12B25_ITEMS
+from edgar_sec.domain.forms.families.form_15.checkmarks import (
+    FORM_15_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_13f.processing import PROFILE_FORM_13F
+from edgar_sec.domain.forms.families.form_11k.checkmarks import (
+    FORM_11K_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_11k.processing import PROFILE_FORM_11K
+from edgar_sec.domain.forms.families.form_11k.taxonomy import FORM_11K_ITEMS
+from edgar_sec.domain.forms.families.form_14a.checkmarks import (
+    FORM_14A_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_14a.processing import PROFILE_FORM_14A
+from edgar_sec.domain.forms.families.form_14a.taxonomy import FORM_14A_ITEMS
+from edgar_sec.domain.forms.families.form_15.processing import PROFILE_FORM_15
 from edgar_sec.domain.forms.families.form_d.processing import PROFILE_FORM_D
 from edgar_sec.domain.forms.families.form144.processing import PROFILE_FORM_144
 from edgar_sec.domain.forms.families.ownership.processing import (
@@ -160,6 +182,33 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         profile=PROFILE_FORM_D,
     ),
     ProcessingCatalogEntry(
+        family="15",
+        profile=PROFILE_FORM_15,
+        cover_checkbox_schema=FORM_15_CHECKBOX_SCHEMA,
+    ),
+    ProcessingCatalogEntry(
+        family="12B-25",
+        profile=PROFILE_FORM_12B25,
+        cover_checkbox_schema=FORM_12B25_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_12B25_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="13F",
+        profile=PROFILE_FORM_13F,
+    ),
+    ProcessingCatalogEntry(
+        family="14A",
+        profile=PROFILE_FORM_14A,
+        cover_checkbox_schema=FORM_14A_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_14A_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="11-K",
+        profile=PROFILE_FORM_11K,
+        cover_checkbox_schema=FORM_11K_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_11K_ITEMS,
+    ),
+    ProcessingCatalogEntry(
         family="13D",
         profile=PROFILE_SCHEDULE_13D,
         taxonomy_items=SCHEDULE_13D_ITEMS,
@@ -205,6 +254,7 @@ LAZY_INDEX_FORM_FAMILIES: frozenset[str] = frozenset(
         "4",
         "5",
         "144",
+        "D",
         "13D",
         "13G",
     }

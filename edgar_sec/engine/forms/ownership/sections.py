@@ -10,7 +10,7 @@ from enum import StrEnum
 from edgar_sec.domain.forms.common.statutory import (
     COMMON_STATUTORY_LEXICAL_PACK,
 )
-from edgar_sec.engine.forms.common.signatures import is_signature_table
+from edgar_sec.engine.forms.common.signatures.grid import is_signature_table
 from edgar_sec.domain.forms.families.ownership.evidence import (
     FOOTNOTE_VETO_PHRASES,
     OWNERSHIP_BOXES_LEXICAL_PACK,

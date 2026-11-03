@@ -20,20 +20,22 @@ from edgar_sec.engine.forms.common.marks import canonicalize_filled_marks
 from edgar_sec.engine.forms.common.columnar_signatures import (
     extract_columnar_signature_and_date,
 )
-from edgar_sec.engine.forms.common.signatures import (
-    SIG_BOILERPLATE_TERMS,
-    extract_clean_signatory_name,
+from edgar_sec.engine.forms.common.signatures.blocks import (
     extract_signature_candidate,
-    is_valid_signature_name,
-    scan_signature_grid,
 )
+from edgar_sec.engine.forms.common.signatures.grid import scan_signature_grid
+from edgar_sec.engine.forms.common.signatures.names import (
+    extract_clean_signatory_name,
+    is_valid_signature_name,
+)
+from edgar_sec.engine.forms.common.signatures.patterns import SIG_BOILERPLATE_TERMS
 from edgar_sec.engine.forms.common.statutory import (
     HEADER_LEAK_RE,
     STATUTORY_PAGE_ARTIFACT_RE,
 )
 from edgar_sec.engine.forms.common.tables import is_instruction_row
+from edgar_sec.engine.forms.cover.registrant import parse_registrant_identity
 from edgar_sec.engine.forms.ownership.field_specs import OWNERSHIP_METADATA_FIELDS
-from edgar_sec.engine.forms.ownership.issuer_parser import parse_issuer
 from edgar_sec.engine.forms.ownership.period_parser import parse_period
 from edgar_sec.engine.forms.ownership.reporting_owner_parser import (
     parse_reporting_owner,
@@ -419,7 +421,12 @@ def parse_metadata(
         reference_year,
         relationship=parse_relationship_box(rows),
     )
-    issuer = parse_issuer(issuer_cell)
+    identity = parse_registrant_identity(issuer_cell)
+    issuer = Issuer(
+        name=identity.name,
+        trading_symbol=identity.trading_symbol,
+        irs_number=identity.irs_number,
+    )
     if issuer_template_fields:
         issuer = Issuer(
             name=issuer_template_fields.get("issuer name", issuer.name),

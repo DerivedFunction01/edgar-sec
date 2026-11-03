@@ -40,6 +40,10 @@ _SCHEMA_FAMILY_CASES = (
     ("S-3", "Rule 462(e)", "rule_462e"),
     ("S-4", "General instruction G", "instruction_g"),
     ("S-8", "Well-known seasoned issuer", "well_known_seasoned_issuer"),
+    ("15", "Rule 12h-3(b)(1)(i)", "rule_12h3_b1_i"),
+    ("12B-25", "Form 10-K", "subject_10k"),
+    ("14A", "Definitive Proxy Statement", "classification_definitive"),
+    ("11-K", "Annual report pursuant to Section 15(d)", "report_annual"),
 )
 
 
@@ -308,10 +312,10 @@ def test_checkmark_schema_cases_cover_registered_profile_scope() -> None:
     }
 
     assert schema_families == {family for family, _, _ in _SCHEMA_FAMILY_CASES}
-    assert schema_less_families == {"3", "4", "5", "144", "13D", "13G", "D"}
+    assert schema_less_families == {"3", "4", "5", "144", "13D", "13G", "D", "13F"}
 
 
-@pytest.mark.parametrize("family", ("3", "4", "5", "144", "13D", "13G", "D"))
+@pytest.mark.parametrize("family", ("3", "4", "5", "144", "13D", "13G", "D", "13F"))
 def test_registered_profiles_without_checkmark_schemas_are_not_applicable(
     family: str,
 ) -> None:

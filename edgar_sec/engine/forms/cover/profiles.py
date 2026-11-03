@@ -54,6 +54,11 @@ from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
     SCHEDULE_13D_ITEMS,
     SCHEDULE_13G_ITEMS,
 )
+from edgar_sec.domain.forms.families.form_12b25.taxonomy import FORM_12B25_ITEMS
+from edgar_sec.domain.forms.families.form_11k.taxonomy import FORM_11K_ITEMS
+from edgar_sec.domain.forms.families.form_11k.evidence import Form11KEvidence
+from edgar_sec.domain.forms.families.form_14a.evidence import Form14AEvidence
+from edgar_sec.domain.forms.families.form_14a.taxonomy import FORM_14A_ITEMS
 from edgar_sec.engine.forms.cover.models import (
     BoundarySignal,
     CoverBoundaryPolicy,
@@ -403,6 +408,206 @@ def build_no_cover_profile(family: str) -> CoverProfile:
     return build_generic_cover_profile(family)
 
 
+_FORM_15_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "certification and notice of termination of registration",
+    "title of each class of securities covered by this form",
+    "titles of all other classes of securities",
+    "rule 12g-4",
+    "rule 12h-3",
+    "rule 15d-6",
+    "approximate number of holders of record",
+)
+
+
+def build_form_15_profile(family: str = "15") -> CoverProfile:
+    """Cover profile for Form 15 notices: a single-page cover carrying the
+    rule-provision checkboxes; the body is footnotes plus the signature block.
+    """
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_15_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=_FORM_15_COVER_LABELS,
+            labels=_FORM_15_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            semantic_headings=(
+                "signature",
+                "signatures",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+    )
+
+
+_FORM_12B25_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "notification of late filing",
+    "sec file number",
+    "cusip number",
+    "for period ended",
+    "transition report",
+    "full name of registrant",
+    "registrant information",
+)
+
+
+def build_form_12b25_profile(family: str = "12B-25") -> CoverProfile:
+    """Cover profile for Form 12b-25 notifications: the filing selections and
+    Part I registrant block form the cover; Parts II–IV are the body.
+    """
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.PART_FALLBACK,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_12B25_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=_FORM_12B25_COVER_LABELS,
+            labels=_FORM_12B25_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=tuple(d.item for d in FORM_12B25_ITEMS),
+            semantic_headings=(
+                "narrative",
+                "other information",
+                "signature",
+                "signatures",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+    )
+
+
+_FORM_14A_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "schedule 14a information",
+    "schedule 14c information",
+    "proxy statement pursuant to section 14(a)",
+    "information statement pursuant to section 14(c)",
+    "preliminary proxy statement",
+    "definitive proxy statement",
+    "name of registrant as specified in its charter",
+    "name of person(s) filing proxy statement",
+    "payment of filing fee",
+)
+
+
+def build_form_14a_profile(family: str = "14A") -> CoverProfile:
+    """Cover profile for Schedule 14A/14C statements: the classification and
+    fee boxes form the cover; the letter, contents, and Items 1–25 are the body.
+    """
+    proxy = Form14AEvidence()
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.TOC_TRANSITION,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_14A_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=_FORM_14A_COVER_LABELS,
+            labels=_FORM_14A_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=tuple(d.item for d in FORM_14A_ITEMS),
+            semantic_headings=(
+                "notice of annual meeting",
+                "notice of special meeting",
+                "table of contents",
+                "proxy statement",
+                "signature",
+                "signatures",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+            body_ngrams=proxy.body_ngrams,
+            body_verbs=proxy.body_verbs,
+            body_terms=proxy.body_terms,
+            cover_terms=proxy.cover_terms,
+            lexical=proxy.body_lexical,
+        ),
+    )
+
+
+_FORM_11K_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "form 11-k",
+    "annual reports of employee stock purchase, savings and similar plans",
+    "commission file number",
+    "full title of the plan",
+    "name of issuer of the securities held pursuant to the plan",
+    "for the fiscal year ended",
+    "for the transition period from",
+)
+
+
+def build_form_11k_profile(family: str = "11-K") -> CoverProfile:
+    """Cover profile for Form 11-K plan annual reports: the (Mark One) boxes,
+    commission file number, and the plan/issuer captions form the cover; the
+    financial statements and schedules are the body.
+    """
+    plan = Form11KEvidence()
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.TOC_TRANSITION,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_11K_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=_FORM_11K_COVER_LABELS,
+            labels=_FORM_11K_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=tuple(d.item for d in FORM_11K_ITEMS),
+            semantic_headings=(
+                "financial statements and supplemental schedules",
+                "report of independent registered public accounting firm",
+                "signatures",
+                "signature",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+            body_ngrams=plan.body_ngrams,
+            body_verbs=plan.body_verbs,
+            body_terms=plan.body_terms,
+            cover_terms=plan.cover_terms,
+            lexical=plan.body_lexical,
+        ),
+    )
+
+
 _BENEFICIAL_OWNERSHIP_COVER_LABELS: tuple[str, ...] = (
     "names of reporting persons",
     "name of reporting person",
@@ -494,6 +699,10 @@ def _build_profiles() -> dict[str, CoverProfile]:
     )
     schedule13d = build_beneficial_ownership_profile("13D")
     schedule13g = build_beneficial_ownership_profile("13G")
+    form_15 = build_form_15_profile("15")
+    form_12b25 = build_form_12b25_profile("12B-25")
+    form_14a = build_form_14a_profile("14A")
+    form_11k = build_form_11k_profile("11-K")
     generic = build_generic_cover_profile("GENERIC")
     return {
         "10-K": annual_common,
@@ -507,6 +716,10 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "6-K": generic_6k,
         "13D": schedule13d,
         "13G": schedule13g,
+        "15": form_15,
+        "12B-25": form_12b25,
+        "14A": form_14a,
+        "11-K": form_11k,
         "GENERIC": generic,
     }
 
@@ -542,6 +755,10 @@ __all__ = [
     "CoverProfile",
     "build_annual_profile",
     "build_current_profile",
+    "build_form_12b25_profile",
+    "build_form_11k_profile",
+    "build_form_14a_profile",
+    "build_form_15_profile",
     "build_generic_cover_profile",
     "build_no_cover_profile",
     "build_quarterly_profile",

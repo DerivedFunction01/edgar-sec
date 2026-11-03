@@ -78,6 +78,56 @@ def test_review_analyze_delegates_selected_runs_and_emits_json(
     assert json.loads(capsys.readouterr().out) == report
 
 
+def test_review_analyze_renders_string_and_mapping_anomalies(
+    tmp_path: Path, monkeypatch, capsys
+) -> None:
+    report = {
+        "schema_version": 1,
+        "runs": [
+            {
+                "review_id": "run-a",
+                "total_cases": 2,
+                "case_status_counts": {"complete": 2},
+                "operation_status_counts": {"available": 2},
+                "family_reports": [
+                    {
+                        "family": "D",
+                        "case_count": 1,
+                        "anomaly_count": 1,
+                        "anomalies": ["missing_issuer_cik"],
+                    },
+                    {
+                        "family": "15",
+                        "case_count": 1,
+                        "anomaly_count": 1,
+                        "anomalies": [
+                            {
+                                "kind": "no_items_detected",
+                                "accession": "0000000000-00-000001",
+                                "detail": "no statutory items matched",
+                            }
+                        ],
+                    },
+                ],
+            }
+        ],
+    }
+    monkeypatch.setattr(review, "analyze_review_runs", lambda runs, *, output: report)
+    run_path = tmp_path / "run-a"
+    run_path.mkdir()
+
+    assert (
+        review.cmd_review_analyze(
+            SimpleNamespace(run=[str(run_path)], output="", artifacts="", json=False)
+        )
+        == 0
+    )
+
+    out = capsys.readouterr().out
+    assert "missing_issuer_cik" in out
+    assert "[no_items_detected] 0000000000-00-000001: no statutory items matched" in out
+
+
 def test_review_label_validates_run_before_writing_sidecar(
     tmp_path: Path, monkeypatch, capsys
 ) -> None:

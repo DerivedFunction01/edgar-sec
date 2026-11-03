@@ -35,6 +35,7 @@ _ALLOWED_PATHS = (
     "edgar_sec/domain/forms/families/current/",
     "edgar_sec/domain/forms/families/registration/",
     "edgar_sec/engine/forms/registration/",
+    "edgar_sec/engine/forms/form_12b25/",
     "tests/",
     "edgar_sec/domain/forms/common/aliases.py",
     "edgar_sec/engine/forms/plugins/registry.py",

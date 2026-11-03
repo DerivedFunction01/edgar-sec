@@ -88,6 +88,24 @@ def test_profile_boundary_capability_matrix() -> None:
     assert get_profile("S-1").boundary is not None
 
 
+def test_form_15_and_12b25_profiles_resolve_with_schemas() -> None:
+    form_15 = get_profile("15-12B")
+    assert form_15.family == "15"
+    assert form_15.boundary is not None
+    assert form_15.checkbox_schema is not None
+    assert form_15.checkbox_schema.family == "15"
+    assert form_15.has_sections is False
+
+    form_12b25 = get_profile("NT 10-K")
+    assert form_12b25.family == "12B-25"
+    assert form_12b25.boundary is not None
+    assert form_12b25.checkbox_schema is not None
+    assert form_12b25.checkbox_schema.family == "12B-25"
+    assert form_12b25.has_sections is True
+    assert form_12b25.body_evidence is not None
+    assert "PART I" in form_12b25.body_evidence.structural_headings
+
+
 def test_annual_profiles_enable_incorporated_reference() -> None:
     annual_names = {rule.name for rule in get_profile("10-K").healing_rules}
     quarterly_names = {rule.name for rule in get_profile("10-Q").healing_rules}

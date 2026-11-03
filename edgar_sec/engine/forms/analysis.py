@@ -16,6 +16,7 @@ from edgar_sec.engine.forms.cover.models import BoundaryInput, BoundarySignal
 from edgar_sec.engine.forms.cover.profiles import get_profile
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.engine.forms.sections.notes.detector import detect_notes_sequence
+from edgar_sec.engine.tables.protection.tags import strip_table_wrapper_tags
 
 import re
 
@@ -116,6 +117,36 @@ def analyze_boundary_corridor(
         "leak_hits": leak_hits,
         "swallow_hits": swallow_hits,
     }
+
+
+def reinfer_unmasked_checkmarks(text: str, rep: dict[str, Any], *, family: str) -> None:
+    """Re-run checkmark inference on wrapper-stripped text, merging new states.
+
+    Tagged-table masking hides cover checkboxes inside table wrappers from
+    the line extractor; a state already resolved as checked never changes.
+    """
+    profile = get_profile(family)
+    boundary = find_cover_boundary_for_profile(
+        BoundaryInput(text, representation="text"), profile
+    )
+    if boundary.end_line is None:
+        return
+    result = infer_cover_checkmarks(
+        strip_table_wrapper_tags(text),
+        boundary,
+        family=family,
+        schema=profile.checkbox_schema,
+    )
+    states = rep["checkmarks"].setdefault("candidate_states", {})
+    for candidate in result.candidates:
+        key = candidate.semantic_key
+        if candidate.known_state == "checked" and states.get(key) != "checked":
+            states[key] = "checked"
+        elif key not in states and candidate.known_state is not None:
+            states[key] = candidate.known_state
+    rep["checkmarks"]["checked_keys"] = tuple(
+        sorted(k for k, v in states.items() if v == "checked")
+    )
 
 
 def locate_text_artifact(case_dir: Path) -> Path | None:
@@ -300,6 +331,11 @@ def analyze_form_case(
     }
 
 
+def anomaly_record(kind: str, details: str) -> dict[str, Any]:
+    """Build the anomaly record family analyzers attach to a case report."""
+    return {"kind": kind, "details": details, "detail": details}
+
+
 def summarize_form_cases(
     case_reports: list[dict[str, Any]],
     *,
@@ -422,6 +458,7 @@ __all__ = [
     "analyze_boundary_corridor",
     "analyze_case",
     "analyze_form_case",
+    "anomaly_record",
     "locate_text_artifact",
     "summarize_cases",
     "summarize_form_cases",

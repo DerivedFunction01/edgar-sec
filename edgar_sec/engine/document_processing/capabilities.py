@@ -137,6 +137,13 @@ DEFAULT_CAPABILITIES = ProcessingCapabilityRegistry(
             input_facts="native SEC Form D XML submission",
             output_kind=HandlerOutputKind.XML,
         ),
+        ProcessingCapability(
+            handler_id="form_13f_to_xml",
+            handler_version="1",
+            operation="render_to_xml",
+            input_facts="native SEC Form 13F XML, or pre-2013 text submission",
+            output_kind=HandlerOutputKind.XML,
+        ),
     )
 )
 

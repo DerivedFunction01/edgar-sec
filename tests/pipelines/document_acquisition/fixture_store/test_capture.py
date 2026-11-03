@@ -89,7 +89,12 @@ class _Transport:
 
 
 def _write_fixture_plan(
-    paths, *, lazy: bool, target_count: int = 1, bundle: bool = False
+    paths,
+    *,
+    lazy: bool,
+    target_count: int = 1,
+    bundle: bool = False,
+    scan: bool = False,
 ):
     catalog_only = lazy
     identity = {
@@ -125,10 +130,12 @@ def _write_fixture_plan(
             "status": "matched",
             "status_reason": None,
             "source_origin": "catalog_direct" if catalog_only else "inventory_index",
-            "retrieval_mode": "bundle_sequence" if bundle else "direct_url",
+            "retrieval_mode": (
+                "bundle_scan" if scan else "bundle_sequence" if bundle else "direct_url"
+            ),
             "target_url": (
                 f"{_ROOT_URL}{_ACCESSION}.txt"
-                if lazy or bundle
+                if lazy or bundle or scan
                 else f"{_ROOT_URL}report.htm"
             ),
             "sequence": 1 if lazy or bundle else None,
@@ -195,6 +202,55 @@ def test_fixture_fill_extracts_the_pinned_bundle_sequence(tmp_path) -> None:
     assert case.retrieval_mode == "bundle_sequence"
     assert case.selected_filename == "report.htm"
     assert case.body_sha256 == hashlib.sha256(selected).hexdigest()
+
+
+def test_fixture_fill_bundle_scan_falls_back_to_the_bundle_filename(
+    tmp_path,
+) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    _write_fixture_plan(paths, lazy=False, scan=True)
+    selected = b"<html>scanned child</html>"
+    source = (
+        b"<DOCUMENT>\n<TYPE>10-K\n<SEQUENCE>1\n<TEXT>"
+        + selected
+        + b"</TEXT>\n</DOCUMENT>\n"
+    )
+    url = f"{_ROOT_URL}{_ACCESSION}.txt"
+    transport = _Transport({url: source})
+
+    result = capture_fixture_plan(
+        "fixture-plan", paths=paths, max_body_bytes=1024, transport=transport
+    )
+
+    case = next(list_fixture_cases(paths, fixture_id="fixture-plan"))
+    assert result.captured_cases == 1
+    assert result.failed_targets == 0
+    assert case.retrieval_mode == "bundle_scan"
+    assert case.sequence == 1
+    assert case.selected_filename == f"{_ACCESSION}.txt"
+    assert case.body_sha256 == hashlib.sha256(selected).hexdigest()
+
+
+def test_fixture_fill_bundle_scan_without_a_matching_document_fails(
+    tmp_path,
+) -> None:
+    paths = resolve_acquisition_paths(artifacts_root=tmp_path)
+    _write_fixture_plan(paths, lazy=False, scan=True)
+    source = (
+        b"<DOCUMENT>\n<TYPE>EX-10.1\n<SEQUENCE>1\n<FILENAME>report.htm\n"
+        b"<TEXT>not the planned form</TEXT>\n</DOCUMENT>\n"
+    )
+    url = f"{_ROOT_URL}{_ACCESSION}.txt"
+    transport = _Transport({url: source})
+
+    result = capture_fixture_plan(
+        "fixture-plan", paths=paths, max_body_bytes=1024, transport=transport
+    )
+
+    assert result.captured_cases == 0
+    assert result.failed_targets == 1
+    assert result.failure_counts == {"document_type_not_found": 1}
+    assert list(list_fixture_cases(paths, fixture_id="fixture-plan")) == []
 
 
 def test_concurrent_fixture_fills_are_serialized_before_network_access(

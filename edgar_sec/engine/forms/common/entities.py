@@ -178,6 +178,7 @@ SEC_FILE_PREFIX_ALT = build_alternation(SEC_FILE_NUMBER_PREFIXES, auto_escape=Tr
 SEC_FILE_NUMBER_RE = re.compile(
     rf"\b(?:{SEC_FILE_PREFIX_ALT})-\d{{4,8}}\b", re.IGNORECASE
 )
+COMMISSION_FILE_TOKEN_RE = re.compile(r"[0-9][0-9a-z]*(?:-[0-9a-z]+)+|[0-9]+")
 CUSIP_RE = re.compile(r"(?i)(?<![0-9A-Z])[0-9A-Z*@#]{9}(?![0-9A-Z])")
 _CUSIP_CLEAN_RE = re.compile(r"(?i)^[0-9A-Z*@#]{8,9}$")
 CRD_RE = re.compile(r"\b\d{1,9}\b")
@@ -409,6 +410,7 @@ __all__ = [
     "BARE_BOX_NUM_RE",
     "CITY_MATCH_RE",
     "CLEAN_TEMPLATE_RE",
+    "COMMISSION_FILE_TOKEN_RE",
     "CRD_RE",
     "CUSIP_RE",
     "EXCHANGE_ALT",

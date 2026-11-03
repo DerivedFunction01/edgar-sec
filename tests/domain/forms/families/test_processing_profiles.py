@@ -8,6 +8,27 @@ from edgar_sec.domain.forms.families.current.checkmarks import (
     EIGHT_K_CHECKBOX_SCHEMA,
     SIX_K_CHECKBOX_SCHEMA,
 )
+from edgar_sec.domain.forms.families.form_12b25.checkmarks import (
+    FORM_12B25_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_12b25.processing import (
+    PROFILE_FORM_12B25,
+)
+from edgar_sec.domain.forms.families.form_12b25.taxonomy import FORM_12B25_ITEMS
+from edgar_sec.domain.forms.families.form_15.checkmarks import (
+    FORM_15_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_11k.checkmarks import (
+    FORM_11K_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_11k.processing import PROFILE_FORM_11K
+from edgar_sec.domain.forms.families.form_11k.taxonomy import FORM_11K_ITEMS
+from edgar_sec.domain.forms.families.form_14a.checkmarks import (
+    FORM_14A_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_14a.processing import PROFILE_FORM_14A
+from edgar_sec.domain.forms.families.form_14a.taxonomy import FORM_14A_ITEMS
+from edgar_sec.domain.forms.families.form_15.processing import PROFILE_FORM_15
 from edgar_sec.domain.forms.families.processing_profiles import (
     get_lazy_index_trigger,
     get_family_entry,
@@ -69,7 +90,7 @@ def test_ownership_forms_have_catalog_entries() -> None:
         assert profile.family == form.removesuffix("/A")
 
 
-@pytest.mark.parametrize("form", ["10-K", "4", "144", "13D", "13G"])
+@pytest.mark.parametrize("form", ["10-K", "4", "144", "D", "13D", "13G"])
 def test_primary_recovery_families_have_lazy_index_triggers(form: str) -> None:
     trigger = get_lazy_index_trigger(form)
     assert trigger == (f"{form}.exact_form", "1")
@@ -77,3 +98,41 @@ def test_primary_recovery_families_have_lazy_index_triggers(form: str) -> None:
 
 def test_unconfigured_family_has_no_lazy_index_trigger() -> None:
     assert get_lazy_index_trigger("6-K") is None
+
+
+def test_form_15_entry_registered_with_schema_and_no_items() -> None:
+    entry = get_family_entry("15-12B")
+    assert entry is not None
+    assert entry.family == "15"
+    assert entry.profile is PROFILE_FORM_15
+    assert entry.cover_checkbox_schema is FORM_15_CHECKBOX_SCHEMA
+    assert entry.taxonomy_items == ()
+
+
+def test_form_12b25_entry_registered_with_schema_and_part_items() -> None:
+    entry = get_family_entry("NT 10-K")
+    assert entry is not None
+    assert entry.family == "12B-25"
+    assert entry.profile is PROFILE_FORM_12B25
+    assert entry.cover_checkbox_schema is FORM_12B25_CHECKBOX_SCHEMA
+    assert entry.taxonomy_items == FORM_12B25_ITEMS
+
+
+def test_form_14a_entry_registered_with_schema_and_items() -> None:
+    entry = get_family_entry("DEF 14C")
+    assert entry is not None
+    assert entry.family == "14A"
+    assert entry.profile is PROFILE_FORM_14A
+    assert entry.cover_checkbox_schema is FORM_14A_CHECKBOX_SCHEMA
+    assert entry.taxonomy_items == FORM_14A_ITEMS
+    assert get_family_entry("PRE 14A") is entry
+
+
+def test_form_11k_entry_registered_with_schema_and_items() -> None:
+    entry = get_family_entry("11-KT")
+    assert entry is not None
+    assert entry.family == "11-K"
+    assert entry.profile is PROFILE_FORM_11K
+    assert entry.cover_checkbox_schema is FORM_11K_CHECKBOX_SCHEMA
+    assert entry.taxonomy_items == FORM_11K_ITEMS
+    assert get_family_entry("11-K/A") is entry

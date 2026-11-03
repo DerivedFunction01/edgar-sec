@@ -27,7 +27,9 @@ from edgar_sec.engine.forms.common.entities import (
     TITLE_MATCH_RE,
     strip_footnote_markers,
 )
-from edgar_sec.engine.forms.common.signatures import extract_clean_signatory_name
+from edgar_sec.engine.forms.common.signatures.names import (
+    extract_clean_signatory_name,
+)
 from edgar_sec.engine.forms.common.tables import parse_address_parts
 from edgar_sec.engine.forms.ownership.patterns import is_ownership_boilerplate
 from edgar_sec.engine.forms.ownership.relationship_box import RelationshipBox
