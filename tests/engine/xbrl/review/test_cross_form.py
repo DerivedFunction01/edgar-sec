@@ -151,6 +151,18 @@ def test_score_cross_form_adverse_baseline_is_exact() -> None:
     assert any("adverse" in failure for failure in moved.failures)
 
 
+def test_summarize_cross_form_counts_mixed_population_as_adverse() -> None:
+    """A mixed-population pair answer lands in the block's adverse counts."""
+    evaluations = [
+        _evaluation(form="10-Q+10-Q/A", classification="mixed-population"),
+        _evaluation(form="10-Q+10-Q/A"),
+    ]
+    blocks = summarize_cross_form(evaluations)["blocks"]
+    block = blocks[block_key("10-Q+10-Q/A", "us-gaap", "FY")]
+    assert block["adverse"] == {"mixed-population": 1}
+    assert block["solved"] == 1
+
+
 def test_score_cross_form_missing_block_fails() -> None:
     """An expectation whose block is absent from the summary fails."""
     key = block_key("10-K", "us-gaap", "FY")

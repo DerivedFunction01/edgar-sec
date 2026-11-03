@@ -139,3 +139,38 @@ def test_start_year_named_annual_span_enumerates_in_its_dei_window() -> None:
     result = _facade(facts).query("revenue", fiscal_year=2025)
     assert result.status == QueryStatus.REPORTED
     assert result.value == 100.0
+
+
+def _transition_facts(document_type: str) -> tuple[XbrlFact, ...]:
+    """An FYE-change stub year: FY focus, no ladder-annual span in the year."""
+    cover = {"instant": "2012-06-30", "unit": None}
+    return (
+        _fact("dei:DocumentType", document_type, **cover),
+        *_dei("2012-06-30", 2012, "FY", "--06-30"),
+        _fact("us-gaap:Revenues", 6004.0, start="2011-01-01", end="2011-12-31"),
+        _fact("us-gaap:Revenues", 2726.0, start="2011-01-01", end="2011-06-30"),
+        _fact("us-gaap:Revenues", 2071.0, start="2012-01-01", end="2012-06-30"),
+    )
+
+
+def test_transition_filing_serves_its_stub_year() -> None:
+    """Verify a 10-KT fiscal-year query answers from the transition stub."""
+    result = _facade(_transition_facts("10-KT")).query("revenue", fiscal_year=2012)
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == 2071.0
+
+
+def test_non_transition_twin_keeps_the_empty_tier() -> None:
+    """Verify the stub fallback is gated on the transition document type."""
+    result = _facade(_transition_facts("10-K")).query("revenue", fiscal_year=2012)
+    assert result.status == QueryStatus.UNAVAILABLE
+    assert result.value is None
+
+
+def test_transition_fallback_skips_off_focus_class_requests() -> None:
+    """Verify an explicit QUARTER request on a 10-KT keeps the empty tier."""
+    result = _facade(_transition_facts("10-KT")).query(
+        "revenue", fiscal_year=2012, length_class="QUARTER"
+    )
+    assert result.status == QueryStatus.UNAVAILABLE
+    assert result.value is None

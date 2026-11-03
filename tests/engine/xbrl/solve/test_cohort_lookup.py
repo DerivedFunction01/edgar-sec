@@ -375,6 +375,41 @@ def test_seed_filing_local_specimen(seed_lookup: CohortLookup) -> None:
     assert apd[0].modifier_distance == 1
 
 
+def test_equivalent_facts_flag_superseded_originals(
+    taxonomy: DomainTaxonomy, tmp_path: Path
+) -> None:
+    """A restated original fact is flagged and ranked behind its amendment."""
+    from edgar_sec.engine.xbrl.solve.scoping import FilingRef, build_lineages
+
+    path_a = tmp_path / "orig" / "facts.parquet"
+    path_b = tmp_path / "amend" / "facts.parquet"
+    source = _fact(_ACC_A, "us-gaap:AccountsPayableCurrent", 100.0, "USD")
+    write_facts_parquet([source], path_a)
+    write_facts_parquet(
+        [_fact(_ACC_B, "us-gaap:AccountsPayableCurrent", 200.0, "USD")], path_b
+    )
+    entries = (
+        CohortEntry(accession=_ACC_A, facts_path=path_a, firm="AAA"),
+        CohortEntry(accession=_ACC_B, facts_path=path_b, firm="AAA"),
+    )
+    table = build_cohort_table(taxonomy, entries)
+    lineages = build_lineages(
+        [
+            FilingRef(_ACC_A, "1", "10-K", "2024-12-31", "2025-03-01"),
+            FilingRef(_ACC_B, "1", "10-K/A", "2024-12-31", "2025-06-01"),
+        ]
+    )
+    lookup = CohortLookup(table, entries, lineages)
+    try:
+        matches = lookup.equivalent_facts(source)
+    finally:
+        lookup.close()
+    by_accession = {match.accession: match for match in matches}
+    assert by_accession[_ACC_A].superseded_by == _ACC_B
+    assert by_accession[_ACC_B].superseded_by == ""
+    assert matches[0].accession == _ACC_B
+
+
 def test_pair_set_holds_over_the_seed_cohort(seed_lookup: CohortLookup) -> None:
     """Every seeded cross-firm pair holds at its expected tier, live."""
     from edgar_sec.engine.xbrl.review.benchmark import PAIR_SET, evaluate_pairs

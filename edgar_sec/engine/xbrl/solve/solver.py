@@ -26,6 +26,7 @@ from edgar_sec.engine.xbrl.solve.frontier import (
 )
 from edgar_sec.engine.xbrl.solve.gold import PlacementPrediction
 from edgar_sec.engine.xbrl.solve.placement import solve_placements
+from edgar_sec.engine.xbrl.solve.scoping import AmendmentLineage, supersede_facts
 
 
 SOLVER_FINGERPRINT = "xbrl-solver-v3"
@@ -39,11 +40,19 @@ class XbrlConstraintSolver:
         kb: EvidenceKnowledgeBase,
         *,
         enable_head_induction: bool = True,
+        lineages: Sequence[AmendmentLineage] = (),
     ) -> None:
         self.kb = kb
         self.enable_head_induction = enable_head_induction
+        self.lineages = tuple(lineages)
         self.antichain_validator = AntiChainValidator()
         self._evaluator = AggregateEvaluator(kb, self.antichain_validator)
+
+    def _population(self, facts: Sequence[XbrlFact]) -> Sequence[XbrlFact]:
+        """The fact population with bound-lineage supersession applied."""
+        if not self.lineages:
+            return facts
+        return supersede_facts(facts, self.lineages)
 
     def _verify_non_double_counting(
         self,
@@ -67,7 +76,7 @@ class XbrlConstraintSolver:
             self.antichain_validator,
             self.kb.taxonomy,
             query_concept,
-            facts,
+            self._population(facts),
             calculation_arcs,
         )
 
@@ -82,7 +91,7 @@ class XbrlConstraintSolver:
     ) -> tuple[PlacementPrediction, ...]:
         return solve_placements(
             self.kb,
-            facts,
+            self._population(facts),
             calculation_arcs,
             firm=firm,
             sector=sector,
@@ -102,7 +111,7 @@ class XbrlConstraintSolver:
         return breakdown_concept(
             self.kb,
             target_concept,
-            facts,
+            self._population(facts),
             calculation_arcs,
             axis=axis,
             period_key=period_key,
@@ -114,7 +123,9 @@ class XbrlConstraintSolver:
         facts: Sequence[XbrlFact],
         calculation_arcs: Sequence[CalculationArc] = (),
     ) -> tuple[Verdict, ...]:
-        return classify_candidate_facts(target_concept, facts, calculation_arcs)
+        return classify_candidate_facts(
+            target_concept, self._population(facts), calculation_arcs
+        )
 
     def evaluate_goal(
         self,
@@ -130,7 +141,7 @@ class XbrlConstraintSolver:
     ) -> AggregateFact:
         return self._evaluator.evaluate_goal(
             target_concept,
-            facts,
+            self._population(facts),
             calculation_arcs,
             axis_filter=axis_filter,
             entity=entity,

@@ -12,6 +12,7 @@ from edgar_sec.engine.xbrl.schema.models import (
 )
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
 from edgar_sec.engine.xbrl.solve.antichain import CandidateRelation
+from edgar_sec.engine.xbrl.solve.scoping import FilingRef, build_lineages
 
 
 def test_solve_placements_via_calc_arc_and_kb() -> None:
@@ -411,3 +412,36 @@ def test_retail_costs_and_operating_income_relations_compose() -> None:
     assert costs.resolution_tier == "SUBATOMIC_ALGEBRAIC_IDENTITY"
     assert operating_income.value == 80.0
     assert operating_income.resolution_tier == "SUBATOMIC_ALGEBRAIC_IDENTITY"
+
+
+def test_solver_bound_lineages_classify_the_restated_population_only() -> None:
+    """A lineage-bound solver never sees superseded original facts."""
+    tax = load_domain_taxonomy()
+    lineage = build_lineages(
+        [
+            FilingRef(
+                "0000007084-23-000028", "7084", "10-Q", "2023-06-30", "2023-08-01"
+            ),
+            FilingRef(
+                "0000007084-23-000033", "7084", "10-Q/A", "2023-06-30", "2023-11-01"
+            ),
+        ]
+    )
+
+    def fact(accession: str, value: float) -> XbrlFact:
+        return XbrlFact(
+            accession=AccessionNumber.from_any(accession),
+            concept_qname="us-gaap:NetIncomeLoss",
+            value=value,
+            unit="USD",
+            period_type="duration",
+            start_date="2023-04-01",
+            end_date="2023-06-30",
+        )
+
+    facts = [fact("0000007084-23-000028", 100.0), fact("0000007084-23-000033", 120.0)]
+    unbound = XbrlConstraintSolver(EvidenceKnowledgeBase(taxonomy=tax))
+    assert len(unbound.classify_candidate_facts("us-gaap:NetIncomeLoss", facts)) == 2
+    bound = XbrlConstraintSolver(EvidenceKnowledgeBase(taxonomy=tax), lineages=lineage)
+    verdicts = bound.classify_candidate_facts("us-gaap:NetIncomeLoss", facts)
+    assert len(verdicts) == 1

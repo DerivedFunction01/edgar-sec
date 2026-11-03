@@ -7,6 +7,7 @@ checked before ranking: incompatible facts return flagged, never dropped.
 
 from __future__ import annotations
 
+import json
 from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import date
@@ -14,6 +15,7 @@ from datetime import date
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
 from edgar_sec.engine.xbrl.solve.concept_table import CohortEntry, ConceptTable
+from edgar_sec.engine.xbrl.solve.scoping import AmendmentLineage
 from edgar_sec.engine.xbrl.solve.equivalence import (
     EXACT,
     UNRELATED,
@@ -30,7 +32,7 @@ _ANNUAL_SPAN_DAYS = 300
 
 _FACT_COLUMNS = (
     "accession, concept_qname, numeric_value, unit, period_type, "
-    "start_date, end_date, instant_date"
+    "start_date, end_date, instant_date, dimensions_json"
 )
 
 
@@ -86,6 +88,7 @@ class CohortFactMatch:
     compatible: bool
     incompatibility: str = ""
     via_filing_local: bool = False
+    superseded_by: str = ""
 
 
 def _row_to_fact(row: Sequence[object]) -> CohortFact:
@@ -99,6 +102,22 @@ def _row_to_fact(row: Sequence[object]) -> CohortFact:
         start_date=str(row[5]) if row[5] is not None else None,
         end_date=str(row[6]) if row[6] is not None else None,
         instant_date=str(row[7]) if row[7] is not None else None,
+    )
+
+
+def _row_key(row: Sequence[object]) -> tuple[object, ...]:
+    """A fetched row's supersession key: concept, period, and dimensions."""
+    try:
+        dimensions = json.loads(str(row[8])) if row[8] else {}
+    except ValueError:
+        dimensions = {}
+    return (
+        str(row[1]),
+        str(row[4]),
+        str(row[5]) if row[5] is not None else None,
+        str(row[6]) if row[6] is not None else None,
+        str(row[7]) if row[7] is not None else None,
+        tuple(sorted(dimensions.items())) if isinstance(dimensions, dict) else (),
     )
 
 
@@ -126,6 +145,7 @@ class CohortLookup:
         self,
         table: ConceptTable,
         entries: Sequence[CohortEntry],
+        lineages: Sequence[AmendmentLineage] = (),
     ) -> None:
         """Bind the concept table, the cohort entries, and their evidence index."""
         self._table = table
@@ -135,6 +155,10 @@ class CohortLookup:
         self._evidence = build_evidence_index(self._entries, table)
         self._con = None
         self._unit_classes: dict[str | None, str] = {}
+        self._ranks: dict[str, tuple[int, int]] = {}
+        for group, lineage in enumerate(lineages):
+            for rank, accession in enumerate(lineage.accessions):
+                self._ranks[accession] = (group, rank)
 
     @property
     def evidence(self) -> EvidenceIndex:
@@ -326,6 +350,20 @@ class CohortLookup:
         candidates.sort(key=lambda item: (item[0], item[1]))
         return tuple(item[2] for item in candidates)
 
+    def _supersession_winners(
+        self, rows: Sequence[Sequence[object]]
+    ) -> dict[tuple[object, ...], str]:
+        """Winning accession per fact key among lineage-bound fetched rows."""
+        best: dict[tuple[object, ...], tuple[int, str]] = {}
+        for row in rows:
+            found = self._ranks.get(str(row[0]))
+            if found is None:
+                continue
+            key = (found[0], _row_key(row))
+            if key not in best or found[1] > best[key][0]:
+                best[key] = (found[1], str(row[0]))
+        return {key: accession for key, (_, accession) in best.items()}
+
     def _unit_class(self, unit: str | None) -> str:
         """Memoized taxonomy unit class for a raw unit token."""
         if unit not in self._unit_classes:
@@ -371,6 +409,7 @@ class CohortLookup:
             query += " AND accession = ?"
             params.append(accession)
         rows = self._connection().execute(query, params).fetchall()
+        winners = self._supersession_winners(rows)
         classified: dict[tuple[str, str], LadderClassification] = {}
         matches = []
         for row in rows:
@@ -388,6 +427,10 @@ class CohortLookup:
             item = classified[key]
             if item.tier == UNRELATED:
                 continue
+            found = self._ranks.get(fact.accession)
+            winner = (
+                winners.get((found[0], _row_key(row))) if found is not None else None
+            )
             matches.append(
                 CohortFactMatch(
                     accession=fact.accession,
@@ -402,6 +445,9 @@ class CohortLookup:
                     compatible=not reason,
                     incompatibility=reason,
                     via_filing_local=item.via_filing_local,
+                    superseded_by=(
+                        winner if winner and winner != fact.accession else ""
+                    ),
                 )
             )
 
@@ -417,6 +463,7 @@ class CohortLookup:
         matches.sort(
             key=lambda item: (
                 0 if item.compatible else 1,
+                1 if item.superseded_by else 0,
                 rank_key(item),
                 item.accession,
             )

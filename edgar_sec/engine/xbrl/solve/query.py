@@ -22,7 +22,7 @@ from edgar_sec.engine.xbrl.taxonomy.item_types import (
     percent_coordinate_rule,
     text_coordinate_rule,
 )
-from edgar_sec.engine.xbrl.solve.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.scoping import FactScope, covering_lineage
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
 from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
 from edgar_sec.engine.xbrl.normalize.decomposer import decompose_concept
@@ -402,7 +402,8 @@ class FinancialQueryEngine:
         arcs = tuple(calculation_arcs)
         scoped_facts = query.scope.select(list(all_facts))
         accessions = {str(fact.accession) for fact in scoped_facts}
-        if query.scope.accession is None and len(accessions) > 1:
+        lineage = covering_lineage(query.scope.lineages, accessions)
+        if query.scope.accession is None and len(accessions) > 1 and lineage is None:
             return FinancialQueryResult(
                 query,
                 QueryStatus.AMBIGUOUS,
@@ -459,6 +460,11 @@ class FinancialQueryEngine:
                 equivalents=ranked,
             )
         reported_fact = numeric_targets[0] if numeric_targets else None
+        provenance = (
+            str(reported_fact.accession)
+            if lineage is not None and reported_fact is not None
+            else ""
+        )
 
         if reported_fact is None and query.mode == QueryMode.REPORTED_ONLY:
             return FinancialQueryResult(
@@ -479,6 +485,7 @@ class FinancialQueryEngine:
                 reported_fact=reported_fact,
                 tier=tier,
                 equivalents=ranked,
+                provenance=provenance,
             )
 
         if query.scope.instant_date is None and query.scope.start_date is None:
@@ -553,6 +560,7 @@ class FinancialQueryEngine:
                     message="The reported fact exists but no graph derivation was available.",
                     tier=tier,
                     equivalents=ranked,
+                    provenance=provenance,
                 )
             return FinancialQueryResult(
                 query,
@@ -589,6 +597,7 @@ class FinancialQueryEngine:
                 ),
                 tier=tier,
                 equivalents=ranked,
+                provenance=provenance,
             )
 
         return FinancialQueryResult(
@@ -600,6 +609,7 @@ class FinancialQueryEngine:
             aggregate=aggregate,
             tier=tier,
             equivalents=ranked,
+            provenance=provenance,
         )
 
     def parse_terms(self, term: str) -> tuple[str, ...]:

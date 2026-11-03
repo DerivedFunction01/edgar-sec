@@ -8,6 +8,12 @@ from collections import Counter
 from pathlib import Path
 
 from edgar_sec.apps.client.xbrl import Xbrl
+from edgar_sec.domain.forms.common.aliases import is_transition_form
+from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
+from edgar_sec.engine.xbrl.normalize.filed_metadata import (
+    filed_metadata,
+    focus_length_class,
+)
 from edgar_sec.engine.xbrl.review.benchmark import _ADVERSE_CLASSES
 from edgar_sec.engine.xbrl.review.cross_form import (
     CROSS_FORM_EXPECTATIONS,
@@ -16,17 +22,33 @@ from edgar_sec.engine.xbrl.review.cross_form import (
     summarize_cross_form,
 )
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
-from edgar_sec.engine.xbrl.solve.query import QueryMode
+from edgar_sec.engine.xbrl.solve.query import (
+    FinancialQuery,
+    FinancialQueryEngine,
+    QueryMode,
+)
+from edgar_sec.engine.xbrl.solve.scoping import (
+    AmendmentLineage,
+    FactScope,
+    FilingRef,
+    build_lineages,
+    fact_key,
+    supersede_facts,
+)
+from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.engine.xbrl.solve.tokenizer import ConceptTokenizer
+from edgar_sec.foundation.runtime.paths import resolve_paths
 from edgar_sec.infra.storage.atomic import atomic_write_json
+from edgar_sec.infra.storage.duckdb import connect, sql_path_list
 from edgar_sec.pipelines.xbrl_review.bundles import (
+    LoadedFiling,
     bundle_dir_for,
     load_filing,
     registry_filings,
 )
 from edgar_sec.engine.xbrl.discovery.cohort import canonical_probe_cohort_path
-from edgar_sec.tools.xbrl_eval.xbrl_census import run_evaluation
+from edgar_sec.tools.xbrl_eval.xbrl_census import run_evaluation, values_equal
 from edgar_sec.tools.xbrl_eval.xbrl_census_corpus import (
     ASSETS_Q,
     CASH_Q,
@@ -123,6 +145,239 @@ def analyze_facts(facts: tuple[XbrlFact, ...]) -> dict:
     else:
         primary = "dei"
     return {"blocks": blocks, "primary": primary, "statement": False}
+
+
+_FOCUS_SHAPES = {
+    "ANNUAL": "annual",
+    "QUARTER": "quarterly",
+    "YTD_2Q": "ytd",
+    "YTD_3Q": "ytd",
+}
+
+
+def _transition_shape(facts: tuple[XbrlFact, ...], span_shape: str) -> str:
+    """A transition filing's period shape, classified by its filed dei.
+
+    Dei period focus names the class (Step 5 authority comparison); the
+    span shape is the fallback where the focus names no class.
+    """
+    focus_class = focus_length_class(filed_metadata(facts).period_focus)
+    return _FOCUS_SHAPES.get(focus_class or "", span_shape)
+
+
+def _catalog_part_paths(catalog_dir: Path | None) -> list[Path]:
+    """Catalog parquet parts: an explicit dir, else the local snapshot."""
+    if catalog_dir is not None:
+        return (
+            sorted(catalog_dir.glob("*.parquet"))
+            or sorted(catalog_dir.glob("parts/*.parquet"))
+            or sorted(catalog_dir.glob("*/parts/*.parquet"))
+        )
+    snapshots = resolve_paths().artifacts_root / "metadata" / "snapshots"
+    return sorted(snapshots.glob("*/parts/*.parquet"))
+
+
+def _filing_refs(
+    seeds: list,
+    loaded_by_accession: dict[str, LoadedFiling],
+    catalog_dir: Path | None,
+) -> list[FilingRef]:
+    """Lineage refs for registry filings, from the submissions catalog.
+
+    A filing the snapshot does not carry falls back to its registry
+    form and filed dei period end.
+    """
+    refs: dict[str, FilingRef] = {}
+    parts = _catalog_part_paths(catalog_dir)
+    if parts:
+        con = connect()
+        try:
+            rows = con.execute(
+                "SELECT cik, f.accession_number, f.form, f.filing_date, "
+                "f.report_date FROM (SELECT cik, unnest(filings) AS f "
+                f"FROM read_parquet({sql_path_list([str(p) for p in parts])})) "
+                "WHERE f.accession_number = ANY(?)",
+                [[str(seed.accession) for seed in seeds]],
+            ).fetchall()
+        finally:
+            con.close()
+        for cik, accession, form, filed, period in rows:
+            if period:
+                refs[str(accession)] = FilingRef(
+                    accession=str(accession),
+                    cik=str(cik),
+                    form=str(form),
+                    report_period=str(period),
+                    filed_date=str(filed or ""),
+                )
+    for seed in seeds:
+        accession = str(seed.accession)
+        if accession in refs:
+            continue
+        period_end = filed_metadata(loaded_by_accession[accession].facts).period_end
+        if period_end:
+            refs[accession] = FilingRef(
+                accession=accession,
+                cik=str(seed.cik),
+                form=seed.form,
+                report_period=period_end,
+            )
+    return list(refs.values())
+
+
+def _periods(facts: tuple[XbrlFact, ...]) -> list[tuple]:
+    """Distinct undimensioned periods a filing carries, durations first."""
+    durations = sorted(
+        {
+            (f.start_date, f.end_date)
+            for f in facts
+            if f.period_type == "duration"
+            and not f.dimensions
+            and f.start_date
+            and f.end_date
+        }
+    )
+    instants = sorted(
+        {
+            f.instant_date
+            for f in facts
+            if f.period_type == "instant" and not f.dimensions and f.instant_date
+        }
+    )
+    return [(start, end, None) for start, end in durations] + [
+        (None, None, instant) for instant in instants
+    ]
+
+
+def _pair_evaluation(
+    original: LoadedFiling,
+    amendment: LoadedFiling,
+    lineage: AmendmentLineage,
+    taxonomy,
+) -> dict:
+    """Pooled original+amendment queries must answer from the restatement.
+
+    Legs compare a lineage scope over the pooled facts against the
+    amendment alone, plus original reachability by accession scope.
+    """
+    pooled = original.facts + amendment.facts
+    arcs = amendment.calc_arcs
+    declarations = {**original.declarations, **amendment.declarations}
+    engine = FinancialQueryEngine(
+        XbrlConstraintSolver(EvidenceKnowledgeBase(taxonomy=taxonomy)),
+        declarations=declarations,
+    )
+    analysis = analyze_facts(amendment.facts)
+    primary = analysis["primary"]
+    primary_block = analysis["blocks"][primary]
+    amendment_keys = {fact_key(fact) for fact in amendment.facts}
+    key_mixed = any(
+        fact_key(fact) in amendment_keys and str(fact.accession) != lineage.latest
+        for fact in supersede_facts(pooled, [lineage])
+    )
+    legs = 0
+    served = 0
+    conflicts = 0
+    mixed_legs: list[dict] = []
+
+    def execute(term: str, mode: QueryMode, scope: FactScope, facts):
+        return engine.execute(FinancialQuery(term, scope, mode), facts, arcs)
+
+    for start, end, instant in _periods(amendment.facts):
+        for term in TERMS:
+            for mode in (QueryMode.REPORTED_ONLY, QueryMode.VERIFY_DERIVATION):
+                legs += 1
+                pooled_result = execute(
+                    term,
+                    mode,
+                    FactScope(
+                        start_date=start,
+                        end_date=end,
+                        instant_date=instant,
+                        lineages=(lineage,),
+                    ),
+                    pooled,
+                )
+                reference = execute(
+                    term,
+                    mode,
+                    FactScope(
+                        accession=lineage.latest,
+                        start_date=start,
+                        end_date=end,
+                        instant_date=instant,
+                    ),
+                    pooled,
+                )
+                if str(pooled_result.status) == "CONFLICT":
+                    conflicts += 1
+                if reference.value is not None:
+                    if not values_equal(pooled_result.value, reference.value):
+                        mixed_legs.append(
+                            {"term": term, "mode": str(mode), "leg": "restated"}
+                        )
+                    else:
+                        served += 1
+                elif pooled_result.value is not None:
+                    served += 1
+            legs += 1
+            scoped_original = execute(
+                term,
+                QueryMode.REPORTED_ONLY,
+                FactScope(
+                    accession=lineage.original,
+                    start_date=start,
+                    end_date=end,
+                    instant_date=instant,
+                ),
+                pooled,
+            )
+            alone_original = execute(
+                term,
+                QueryMode.REPORTED_ONLY,
+                FactScope(
+                    accession=lineage.original,
+                    start_date=start,
+                    end_date=end,
+                    instant_date=instant,
+                ),
+                original.facts,
+            )
+            if not values_equal(scoped_original.value, alone_original.value) or (
+                scoped_original.value is None
+            ) != (alone_original.value is None):
+                mixed_legs.append({"term": term, "leg": "original-reachability"})
+    classification = (
+        "mixed-population"
+        if key_mixed or mixed_legs
+        else "correct"
+        if served
+        else "honest-faithful"
+    )
+    return {
+        "population": "cross-form",
+        "firm": amendment.seed.firm,
+        "form": f"{original.seed.form}+{amendment.seed.form}",
+        "taxonomy": primary,
+        "period_shape": primary_block["period_shape"],
+        "classification": classification,
+        "facade": {
+            "status": "CONFLICT" if conflicts else "UNAVAILABLE",
+            "value": None,
+        },
+        "replay_mismatch": False,
+        "quarantined_facts": primary_block["quarantined_facts"],
+        "conflict_evaluations": conflicts,
+        "accession": str(amendment.seed.accession),
+        "pair": {
+            "original": lineage.original,
+            "amendment": lineage.latest,
+            "legs": legs,
+            "served_legs": served,
+            "key_mixed": key_mixed,
+            "mixed_legs": mixed_legs[:6],
+        },
+    }
 
 
 def _absence_evaluation(
@@ -228,7 +483,7 @@ def _statement_evaluation(
     }
 
 
-def run_cross_form(out_dir: Path) -> dict:
+def run_cross_form(out_dir: Path, catalog_dir: Path | None = None) -> dict:
     """Run the cross-form census over the whole probe cohort registry."""
     out_dir.mkdir(parents=True, exist_ok=True)
     registry_path = canonical_probe_cohort_path()
@@ -236,8 +491,11 @@ def run_cross_form(out_dir: Path) -> dict:
     tokenizer = ConceptTokenizer(taxonomy)
     evaluations: list[dict] = []
     fact_rows: list[dict] = []
-    for seed in registry_filings(registry_path=registry_path):
+    seeds = list(registry_filings(registry_path=registry_path))
+    loaded_by_accession: dict[str, LoadedFiling] = {}
+    for seed in seeds:
         loaded = load_filing(seed, registry_path)
+        loaded_by_accession[str(seed.accession)] = loaded
         analysis = analyze_facts(loaded.facts)
         for block in analysis["blocks"].values():
             fact_rows.append({"form": seed.form, "firm": seed.firm, **block})
@@ -247,13 +505,16 @@ def run_cross_form(out_dir: Path) -> dict:
         facade = Xbrl.from_bundle(
             bundle_dir_for(str(seed.accession), registry_path), taxonomy
         )
+        shape = primary_block["period_shape"]
+        if is_transition_form(seed.form):
+            shape = _transition_shape(loaded.facts, shape)
         if analysis["statement"]:
             evaluation = _statement_evaluation(
                 facade,
                 tokenizer,
                 seed,
                 analysis["primary"],
-                primary_block["period_shape"],
+                shape,
                 primary_block["quarantined_facts"],
             )
         else:
@@ -261,7 +522,7 @@ def run_cross_form(out_dir: Path) -> dict:
                 facade,
                 seed,
                 analysis["primary"],
-                primary_block["period_shape"],
+                shape,
                 primary_block["quarantined_facts"],
             )
         evaluations.append(evaluation)
@@ -273,8 +534,32 @@ def run_cross_form(out_dir: Path) -> dict:
         )
         print(
             f"  {seed.firm} {seed.form}: primary={analysis['primary']} "
-            f"shape={primary_block['period_shape']} -> {evaluation['classification']}"
+            f"shape={shape} -> {evaluation['classification']}"
         )
+    refs = _filing_refs(seeds, loaded_by_accession, catalog_dir)
+    for lineage in build_lineages(refs):
+        if len(lineage.accessions) < 2 or not all(
+            accession in loaded_by_accession for accession in lineage.accessions
+        ):
+            continue
+        evaluation = _pair_evaluation(
+            loaded_by_accession[lineage.original],
+            loaded_by_accession[lineage.latest],
+            lineage,
+            taxonomy,
+        )
+        evaluations.append(evaluation)
+        print(
+            f"  pair {evaluation['form']}: -> {evaluation['classification']} "
+            f"(legs={evaluation['pair']['legs']}, "
+            f"mixed={len(evaluation['pair']['mixed_legs'])})"
+        )
+    atomic_write_json(
+        out_dir / "recordings_cross_form.json",
+        evaluations,
+        canonical=False,
+        indent=1,
+    )
     summary = summarize_cross_form(evaluations)
     matrix: dict[str, dict] = {}
     for row in fact_rows:
@@ -312,8 +597,9 @@ def main(argv: list[str] | None = None) -> int:
     """CLI entrypoint: run the cross-form census and score its blocks."""
     parser = argparse.ArgumentParser(description="Run the cross-form XBRL census.")
     parser.add_argument("--out", default="/tmp/xbrl_cross_form_out")
+    parser.add_argument("--catalog-dir", type=Path, default=None)
     args = parser.parse_args(argv)
-    summary = run_cross_form(Path(args.out))
+    summary = run_cross_form(Path(args.out), catalog_dir=args.catalog_dir)
     for key, block in sorted(summary["blocks"].items()):
         print(
             f"[{key}] n={block['n']} solved={block['solved']} "

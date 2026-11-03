@@ -508,10 +508,27 @@ def aliases_for_family(family: str) -> tuple[str, ...]:
     return FORM_FAMILY_ALIASES.get(str(family).upper(), ())
 
 
+def is_transition_form(form: str | None) -> bool:
+    """True for a periodic family's transition (T) variant, per the registry.
+
+    The squashed stem must extend the squashed family with a T: 10-KT and
+    10-QT/A qualify; unrelated T-suffixed forms (13F-NT, SC TO-T) do not.
+    """
+    if not form:
+        return False
+    family = resolve_alias(form)
+    if family is None:
+        return False
+    squash = lambda text: "".join(c for c in text if c.isalnum())  # noqa: E731
+    stem, base = squash(str(form).removesuffix("/A")), squash(family)
+    return stem.startswith(base) and len(stem) > len(base) and stem[len(base)] == "T"
+
+
 __all__ = [
     "FORM_FAMILY_ALIASES",
     "FORM_FAMILY_SUFFIXES",
     "aliases_for_family",
     "form_family",
+    "is_transition_form",
     "resolve_alias",
 ]

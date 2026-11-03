@@ -16,6 +16,11 @@ def block_key(form: str, taxonomy: str, period_shape: str) -> str:
     return f"{form}|{taxonomy}|{period_shape}"
 
 
+# A pooled original+amendment answer drawn from the wrong population is
+# adverse in the cross-form census only; per-filing populations never mix.
+_CROSS_FORM_ADVERSE = _ADVERSE_CLASSES | {"mixed-population"}
+
+
 @dataclass(frozen=True, slots=True)
 class CrossFormExpectation:
     """Scored cross-form counts for one block; movement needs adjudication."""
@@ -67,7 +72,7 @@ def summarize_cross_form(evaluations: list[dict]) -> dict:
             "conflict": sum(1 for e in evs if e["facade"]["status"] == "CONFLICT"),
             "quarantined_facts": sum(e.get("quarantined_facts", 0) for e in evs),
             "adverse": {
-                name: counts[name] for name in counts if name in _ADVERSE_CLASSES
+                name: counts[name] for name in counts if name in _CROSS_FORM_ADVERSE
             },
             "replay_mismatches": sum(1 for e in evs if e["replay_mismatch"]),
         }

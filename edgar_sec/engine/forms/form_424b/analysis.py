@@ -23,14 +23,15 @@ from edgar_sec.engine.forms.cover.registrant import parse_registrant_identity
 from edgar_sec.foundation.regex.builder import build_alternation
 
 _RULE_RE = re.compile(
-    r"rule\s*424\s*\(\s*([ab])\s*\)\s*(?:\(\s*(\d)\s*\))?", re.IGNORECASE
+    r"rule\s*(?:no\.\s*)?424\s*\(\s*([ab])\s*\)\s*(?:\(\s*(\d)\s*\))?",
+    re.IGNORECASE,
 )
 _REGISTRATION_CAPTION_ALT = build_alternation(
     (
         r"registration\s+(?:statement\s+)?"
         + build_alternation(("no", "nos", "number"))
         + r"\.?",
-        r"file\s+no\.",
+        r"file\s+" + build_alternation((r"no\.", "number")),
     )
 )
 _REGISTRATION_RE = re.compile(

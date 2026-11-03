@@ -110,6 +110,24 @@ def test_analyze_case_pricing_supplement_cover(tmp_path: Path) -> None:
     assert fields["cusip"] == "89114QKV9"
 
 
+def test_analyze_case_legacy_caption_variants(tmp_path: Path) -> None:
+    _write_case(
+        tmp_path,
+        "Filed pursuant to Rule No. 424(b)(3)\n"
+        "File Number 333-74464\n\n"
+        "PROSPECTUS SUPPLEMENT NO. 2\n"
+        "REGENERON PHARMACEUTICALS, INC.\n",
+    )
+
+    result = analyze_case(
+        tmp_path, {"accession": "0000950123-02-001029", "form": "424B3"}
+    )
+    assert result is not None
+    fields = result["form_424b"]
+    assert fields["rule_reference"] == "424(b)(3)"
+    assert fields["registration_number"] == "333-74464"
+
+
 def test_analyze_case_bare_text_flags_missing_fields(tmp_path: Path) -> None:
     _write_case(tmp_path, "Some body text without any offering header.\n")
 

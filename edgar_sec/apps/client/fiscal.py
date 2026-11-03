@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections.abc import Sequence
 from datetime import date
 
+from edgar_sec.domain.forms.common.aliases import is_transition_form
 from edgar_sec.engine.xbrl.normalize.filed_metadata import (
     FiledMetadata,
     filed_metadata,
@@ -556,6 +557,8 @@ class FiscalYearQueries:
             ),
             default=None,
         )
+        if annual is None and self._transition_tier_applies(length_class):
+            annual = self._transition_tier_key(groups)
         modal = self._modal_instant(fiscal_year)
         duration_tier = tuple(
             scope for scope in groups.get(annual, []) if annual is not None
@@ -567,6 +570,47 @@ class FiscalYearQueries:
             for scope in group
         )
         return duration_tier, instant_tier
+
+    def _transition_tier_applies(self, length_class: str | None) -> bool:
+        """Whether the empty class tier is a transition filing's stub year.
+
+        Only the dei focus class (or the default) may fall back: an
+        explicit off-focus class request keeps the empty tier.
+        """
+        if not is_transition_form(self._metadata.document_type):
+            return False
+        focus = focus_length_class(self._metadata.period_focus)
+        return length_class is None or length_class == focus
+
+    def _transition_tier_key(
+        self,
+        groups: dict[tuple[str | None, str | None, str | None], list[FactScope]],
+    ) -> tuple[str | None, str | None, str | None] | None:
+        """Most-carried candidate duration period of a transition filing.
+
+        The transition year's own period is a stub the length ladder
+        classes below the focus class; it is the year's duration tier.
+        """
+        counts: dict[tuple[str | None, str | None, str | None], int] = {}
+        for fact in self._facts:
+            if fact.dimensions or fact.period_type != "duration":
+                continue
+            key = (fact.start_date, fact.end_date, None)
+            if key in groups and key[0] and key[1]:
+                counts[key] = counts.get(key, 0) + 1
+        if not counts:
+            return None
+        period_end = self._metadata.period_end
+        at_end = [key for key in counts if key[1] == period_end]
+        pool = at_end or list(counts)
+        return max(
+            pool,
+            key=lambda key: (
+                counts[key],
+                -duration_span_key((key[0] or "", key[1] or ""))[0],
+                key,
+            ),
+        )
 
     def _modal_instant(self, fiscal_year: int) -> str | None:
         """Instant carrying the most undimensioned instant facts in the fiscal year."""
