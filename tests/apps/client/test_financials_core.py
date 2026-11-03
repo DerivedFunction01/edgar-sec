@@ -190,3 +190,109 @@ def test_per_share_metrics_wire_into_value_and_span_class() -> None:
         fin.value("eps")
     with pytest.raises(ValueError, match="not tracked"):
         fin.provenance("revenue")
+
+
+_MSFT_10Q = "0001193125-26-436133"
+_AAPL_Q3 = "0000320193-26-000020"
+_CAT_Q2 = "0000018230-26-000046"
+_TSN_10Q = "0000100493-24-000103"
+_HOMETRUST_KT = "0001538263-24-000029"
+_L3HARRIS_KT = "0000202058-20-000011"
+_INSPIREMD_KT = "0001144204-12-050732"
+_BSRR_10K = "0001558370-25-002056"
+_C_10Q = "0000831001-23-000055"
+_TCBX_S4 = "0001193125-22-161032"
+_NTR_40F = "0001193125-24-055096"
+_WHK_S1 = "0001193125-26-410790"
+
+
+def test_classed_access_serves_interim_classes_exactly() -> None:
+    """Quarterly and YTD classes both serve on 10-Q, at their own spans."""
+    msft = _probe_facade(_MSFT_10Q).financials
+    assert msft.filed_length_class() == "QUARTER"
+    assert msft.value("revenue", length_class="QUARTER") == 92_279_000_000.0
+    aapl = _probe_facade(_AAPL_Q3).financials
+    assert aapl.value("revenue", length_class="YTD_3Q") == 364_357_000_000.0
+    assert aapl.value("revenue", length_class="QUARTER") == 109_417_000_000.0
+    assert aapl.span_class("revenue", length_class="QUARTER") == "QUARTER"
+    cat = _probe_facade(_CAT_Q2).financials
+    assert cat.value("revenue", length_class="YTD_2Q") == 37_958_000_000.0
+    assert cat.value("revenue", length_class="QUARTER") == 20_543_000_000.0
+    tsn = _probe_facade(_TSN_10Q).financials
+    assert tsn.value("revenue", length_class="YTD_3Q") == 39_744_000_000.0
+
+
+def test_classed_access_never_substitutes_another_class() -> None:
+    """An unserved class answers empty/None, not the ladder's data."""
+    aapl = _probe_facade(_AAPL_Q3).financials
+    assert aapl.series("revenue", length_class="YTD_2Q") == {}
+    assert aapl.value("revenue", length_class="YTD_2Q") is None
+    assert aapl.span_class("revenue", length_class="YTD_2Q") is None
+    assert aapl.series("revenue") == aapl.revenue_series
+    assert aapl.value("revenue") == aapl.revenue
+
+
+def test_transition_stub_and_annual_serve_side_by_side() -> None:
+    """A 10-KT's stub class and annual class name different filed spans."""
+    fin = _probe_facade(_HOMETRUST_KT).financials
+    assert fin.transition_length_class() == "YTD_2Q"
+    annual = fin.value("operating_cash_flow", length_class="ANNUAL")
+    stub = fin.value("operating_cash_flow", length_class="YTD_2Q")
+    assert annual == -42_396_000.0
+    assert stub == -11_430_000.0
+
+
+def test_capex_excludes_sale_proceeds() -> None:
+    """Proceeds concepts never serve as capex; the payments concept does."""
+    bsrr = _probe_facade(_BSRR_10K).financials
+    assert bsrr.capex == 1_156_000.0
+    hometrust = _probe_facade(_HOMETRUST_KT).financials
+    assert hometrust.capex == 3_420_000.0
+
+
+def test_free_cash_flow_is_the_served_operands_difference() -> None:
+    """FCF equals served cfo minus served capex on the adjudicated filings."""
+    bsrr = _probe_facade(_BSRR_10K).financials
+    assert bsrr.free_cash_flow == 55_997_000.0
+    assert bsrr.free_cash_flow == bsrr.operating_cash_flow - bsrr.capex
+    ntr = _probe_facade(_NTR_40F).financials
+    assert ntr.capex == 2_671_000_000.0
+    assert ntr.free_cash_flow == 2_395_000_000.0
+    assert ntr.free_cash_flow == ntr.operating_cash_flow - ntr.capex
+
+
+def test_free_cash_flow_is_stub_coherent_on_transition_filings() -> None:
+    """Transition FCF differences the stub year's own filed operands."""
+    l3 = _probe_facade(_L3HARRIS_KT).financials
+    assert l3.transition_length_class() == "YTD_2Q"
+    assert l3.free_cash_flow == 766_000_000.0
+    assert l3.value("free_cash_flow", length_class="YTD_2Q") == 766_000_000.0
+    inspire = _probe_facade(_INSPIREMD_KT).financials
+    assert inspire.free_cash_flow == -4_556_000.0
+
+
+def test_capex_prefers_the_payments_line_over_an_aggregate() -> None:
+    """C's payments-and-proceeds aggregate yields to the payments line."""
+    fin = _probe_facade(_C_10Q).financials
+    assert fin.capex == 1_634_000_000.0
+    assert fin.free_cash_flow == -32_119_000_000.0
+    series = fin.operating_cash_flow_series
+    assert series[max(series)] == -30_485_000_000.0
+
+
+def test_classed_free_cash_flow_is_exact_class_or_honest_none() -> None:
+    """YYAI's annual difference serves at ANNUAL; the stub class refuses."""
+    fin = _probe_facade(_YYAI).financials
+    assert fin.free_cash_flow == 10_418_036.0
+    assert fin.value("free_cash_flow", length_class="ANNUAL") == 10_418_036.0
+    assert fin.value("free_cash_flow", length_class="YTD_3Q") is None
+    assert fin.span_class("free_cash_flow", length_class="YTD_3Q") is None
+
+
+def test_revenue_definition_exclusions() -> None:
+    """Pro-forma revenue yields to the face total; accretion serves None."""
+    whk = _probe_facade(_WHK_S1).financials
+    assert whk.revenue == 67_595_000.0
+    tcbx = _probe_facade(_TCBX_S4).financials
+    assert tcbx.revenue is None
+    assert tcbx.free_cash_flow == -1_442_000.0

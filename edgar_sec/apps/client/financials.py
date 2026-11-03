@@ -6,12 +6,19 @@ from collections.abc import Callable
 
 from edgar_sec.apps.client.comparison import DERIVED_MARGINS
 from edgar_sec.apps.client.composition import ChainTerms, CompositionResult
-from edgar_sec.apps.client.financials_core import FinancialsCore
+from edgar_sec.apps.client.financials_core import (
+    CAPEX_EXCLUDED_MODS,
+    OCF_EXCLUDED_MODS,
+    REVENUE_EXCLUDED_MODS,
+    FinancialsCore,
+)
 from edgar_sec.apps.client.fiscal import (
     chain_span_class,
     composition_span_class,
+    filed_length_class,
     graph_span_class,
     node_length_class,
+    transition_length_class,
 )
 from edgar_sec.apps.client.kernel import FilingKernel
 from edgar_sec.apps.client.rollforwards import (
@@ -69,15 +76,15 @@ class XbrlFinancials(FinancialsCore):
             ):
                 if child.atom.head == "H_REVENUE" and child.value is not None:
                     return child.value
-        return self._scalar("H_REVENUE")
+        return self._scalar("H_REVENUE", excluded_mods=REVENUE_EXCLUDED_MODS)
 
     @property
     def revenue_series(self) -> dict[str, float]:
-        return self._series("H_REVENUE")
+        return self._series("H_REVENUE", excluded_mods=REVENUE_EXCLUDED_MODS)
 
     @property
     def revenue_yoy(self) -> tuple[float, float] | None:
-        return self._yoy("H_REVENUE")
+        return self._yoy("H_REVENUE", excluded_mods=REVENUE_EXCLUDED_MODS)
 
     @property
     def gross_profit(self) -> float | None:
@@ -205,21 +212,29 @@ class XbrlFinancials(FinancialsCore):
     def operating_cash_flow(self) -> float | None:
         return self._operating_cash_flow_served()[0]
 
-    def _operating_cash_flow_served(self) -> tuple[float | None, str | None]:
-        """Operating cash flow plus the length class it was served from."""
+    def _operating_cash_flow_served(
+        self,
+    ) -> tuple[float | None, str | None, str | None]:
+        """Operating cash flow, its span class, and the year it served at."""
         cf = self._kernel.compose_cash_flow()
         if cf.cfo is not None:
             root = cf.operating.root if cf.operating is not None else None
-            return cf.cfo, node_length_class(root) if root is not None else None
-        return self._scalar_served("H_CASH", {"M_OPERATING"})
+            cls = node_length_class(root) if root is not None else None
+            year = max(root.values) if root is not None and root.values else None
+            return cf.cfo, cls, year
+        series, cls = self._series_served("H_CASH", {"M_OPERATING"}, OCF_EXCLUDED_MODS)
+        if not series:
+            return None, None, None
+        year = max(series)
+        return series[year], cls, year
 
     @property
     def operating_cash_flow_series(self) -> dict[str, float]:
-        return self._series("H_CASH", {"M_OPERATING"})
+        return self._series("H_CASH", {"M_OPERATING"}, OCF_EXCLUDED_MODS)
 
     @property
     def operating_cash_flow_yoy(self) -> tuple[float, float] | None:
-        return self._yoy("H_CASH", {"M_OPERATING"})
+        return self._yoy("H_CASH", {"M_OPERATING"}, OCF_EXCLUDED_MODS)
 
     @property
     def rpo(self) -> float | None:
@@ -243,12 +258,16 @@ class XbrlFinancials(FinancialsCore):
     @property
     def capex(self) -> float | None:
         """Capital expenditures (payments to acquire PPE / productive assets)."""
-        val = self._scalar("H_CASH", {"M_PPE_CAPEX"})
+        val = self._scalar(
+            "H_CASH", {"M_PPE_CAPEX"}, CAPEX_EXCLUDED_MODS, prefer_bare=True
+        )
         return abs(val) if val is not None else None
 
     @property
     def capex_series(self) -> dict[str, float]:
-        raw = self._series("H_CASH", {"M_PPE_CAPEX"})
+        raw = self._series(
+            "H_CASH", {"M_PPE_CAPEX"}, CAPEX_EXCLUDED_MODS, prefer_bare=True
+        )
         return {yr: abs(v) for yr, v in raw.items()}
 
     @property
@@ -256,12 +275,28 @@ class XbrlFinancials(FinancialsCore):
         """Free cash flow as the composed chain cfo - capex (Step 7 preset)."""
         return self._free_cash_flow_served()[0]
 
-    def _free_cash_flow_served(self) -> tuple[float | None, str | None]:
+    def _free_cash_flow_served(
+        self, length_class: str | None = None
+    ) -> tuple[float | None, str | None]:
         """Free cash flow plus the length class it was served from.
 
-        The composed chain answers first; when it cannot, the served
-        operands answer only if both share one non-annual span class.
+        The served operands' own difference answers first, at the operating
+        leg's served class and year; the chain and fallbacks follow.
         """
+        if length_class is not None:
+            return self._classed_cash_difference(length_class)
+        ocf, ocf_class, ocf_year = self._operating_cash_flow_served()
+        if ocf is not None and ocf_class is not None and ocf_year is not None:
+            capex, capex_class = self._scalar_served(
+                "H_CASH",
+                {"M_PPE_CAPEX"},
+                CAPEX_EXCLUDED_MODS,
+                prefer_bare=True,
+                length_class=ocf_class,
+                year=ocf_year,
+            )
+            if capex is not None and capex_class == ocf_class:
+                return ocf - abs(capex), ocf_class
         if self._composition_resolver is not None:
             series = self.operating_cash_flow_series
             fiscal_year = int(max(series)) if series else None
@@ -274,10 +309,32 @@ class XbrlFinancials(FinancialsCore):
                 return value, cls
         return self._span_consistent_difference()
 
+    def _classed_cash_difference(
+        self, length_class: str
+    ) -> tuple[float | None, str | None]:
+        """cfo - capex at one exact class, latest year both legs serve."""
+        ocf_series = self._series_at_class(
+            "H_CASH", {"M_OPERATING"}, OCF_EXCLUDED_MODS, length_class=length_class
+        )
+        capex_series = self._series_at_class(
+            "H_CASH",
+            {"M_PPE_CAPEX"},
+            CAPEX_EXCLUDED_MODS,
+            prefer_bare=True,
+            length_class=length_class,
+        )
+        shared = sorted(set(ocf_series) & set(capex_series))
+        if not shared:
+            return None, None
+        year = shared[-1]
+        return ocf_series[year] - abs(capex_series[year]), length_class
+
     def _span_consistent_difference(self) -> tuple[float | None, str | None]:
         """cfo - capex when both operands serve one non-annual span class."""
-        cfo, cfo_class = self._operating_cash_flow_served()
-        capex, capex_class = self._scalar_served("H_CASH", {"M_PPE_CAPEX"})
+        cfo, cfo_class, _year = self._operating_cash_flow_served()
+        capex, capex_class = self._scalar_served(
+            "H_CASH", {"M_PPE_CAPEX"}, CAPEX_EXCLUDED_MODS, prefer_bare=True
+        )
         if cfo is None or capex is None:
             return None, None
         if capex_class in (None, "ANNUAL") or cfo_class != capex_class:
@@ -383,14 +440,57 @@ class XbrlFinancials(FinancialsCore):
             f"provenance is not tracked for metric {metric!r}; expected one of {known}"
         )
 
-    def value(self, metric: str, *, period_offset: int = 0) -> float | None:
+    def series(
+        self, metric: str, *, length_class: str | None = None
+    ) -> dict[str, float]:
+        """A served metric's series, at one exact length class when named.
+
+        A named class serves exactly that class with no fallback ladder;
+        an unserved class is an empty series, never another class's data.
+        """
+        if length_class is None:
+            series_attr = _SERIES_ATTRIBUTES.get(metric)
+            if series_attr is not None:
+                return getattr(self, series_attr)
+            known = sorted(_SERIES_ATTRIBUTES) + sorted(_SCALAR_ONLY_METRICS)
+            if metric in _SCALAR_ONLY_METRICS:
+                raise ValueError(f"metric {metric!r} has no series; use value()")
+            raise ValueError(f"unknown metric {metric!r}; expected one of {known}")
+        if metric in _SERIES_ATTRIBUTES:
+            return self._classed_series(metric, length_class)
+        known = sorted(_SERIES_ATTRIBUTES) + sorted(_SCALAR_ONLY_METRICS)
+        if metric in _SCALAR_ONLY_METRICS:
+            raise ValueError(f"metric {metric!r} has no series; use value()")
+        raise ValueError(f"unknown metric {metric!r}; expected one of {known}")
+
+    def value(
+        self,
+        metric: str,
+        *,
+        period_offset: int = 0,
+        length_class: str | None = None,
+    ) -> float | None:
         """A served metric's value, period_offset periods before its latest.
 
-        Reads only the metric's already-served series (or, for metrics
-        with no series, its scalar at offset 0); nothing is re-derived.
+        Reads only already-served series (or the scalar at offset 0);
+        a named length class reads that class's series exactly.
         """
         if period_offset < 0:
             raise ValueError(f"period_offset must be >= 0, got {period_offset}")
+        if length_class is not None:
+            if metric == "free_cash_flow":
+                if period_offset > 0:
+                    return None
+                return self._free_cash_flow_served(length_class)[0]
+            if metric in _SCALAR_ONLY_METRICS:
+                if period_offset > 0 or length_class != "INSTANT":
+                    return None
+                return getattr(self, metric)
+            series = self.series(metric, length_class=length_class)
+            years = sorted(series, reverse=True)
+            if period_offset >= len(years):
+                return None
+            return series[years[period_offset]]
         series_attr = _SERIES_ATTRIBUTES.get(metric)
         if series_attr is not None:
             series = getattr(self, series_attr)
@@ -403,12 +503,35 @@ class XbrlFinancials(FinancialsCore):
         known = sorted(_SERIES_ATTRIBUTES) + sorted(_SCALAR_ONLY_METRICS)
         raise ValueError(f"unknown metric {metric!r}; expected one of {known}")
 
-    def span_class(self, metric: str) -> str | None:
+    def filed_length_class(self) -> str | None:
+        """The length class this filing's dei focus derivation names."""
+        return filed_length_class(self._kernel.facts, self._kernel.filed_metadata)
+
+    def transition_length_class(self) -> str | None:
+        """A transition filing's stub length class; None for other filings."""
+        return transition_length_class(self._kernel.facts, self._kernel.filed_metadata)
+
+    def span_class(self, metric: str, *, length_class: str | None = None) -> str | None:
         """Length class of the span a metric's latest value was served from.
 
-        The metric's series is served under the same selection, so the
-        class names scalar and series alike; None when unserved.
+        The class names scalar and series alike; a named class answers
+        whether that class serves at all. None when unserved.
         """
+        if length_class is not None:
+            if metric == "free_cash_flow":
+                return self._free_cash_flow_served(length_class)[1]
+            if metric in _SCALAR_ONLY_METRICS:
+                if length_class == "INSTANT" and getattr(self, metric) is not None:
+                    return "INSTANT"
+                return None
+            if metric in _SERIES_ATTRIBUTES:
+                return (
+                    length_class
+                    if self.series(metric, length_class=length_class)
+                    else None
+                )
+            known = sorted(_SERIES_ATTRIBUTES) + sorted(_SCALAR_ONLY_METRICS)
+            raise ValueError(f"unknown metric {metric!r}; expected one of {known}")
         if metric == "revenue":
             inc = self._kernel.compose_income_statement()
             graph = inc.gross_profit_graph
@@ -416,7 +539,9 @@ class XbrlFinancials(FinancialsCore):
                 for child in graph.children(graph.root.concept_qname):
                     if child.atom.head == "H_REVENUE" and child.value is not None:
                         return node_length_class(child)
-            return self._scalar_served("H_REVENUE")[1]
+            return self._scalar_served(
+                "H_REVENUE", excluded_mods=REVENUE_EXCLUDED_MODS
+            )[1]
         if metric == "gross_profit":
             inc = self._kernel.compose_income_statement()
             if inc.gross_profit is not None:
@@ -471,7 +596,9 @@ class XbrlFinancials(FinancialsCore):
                 self._scalar_served("H_COMMITMENT", {"M_RPO_BACKLOG"}, is_instant=True),
             )
         if metric == "capex":
-            return self._scalar_served("H_CASH", {"M_PPE_CAPEX"})[1]
+            return self._scalar_served(
+                "H_CASH", {"M_PPE_CAPEX"}, CAPEX_EXCLUDED_MODS, prefer_bare=True
+            )[1]
         if metric == "free_cash_flow":
             return self._free_cash_flow_served()[1]
         if metric == "uncommenced_leases":
