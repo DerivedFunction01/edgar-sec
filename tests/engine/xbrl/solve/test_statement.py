@@ -172,6 +172,212 @@ def test_instant_graph_tolerates_facts_without_instant_date() -> None:
     assert cash.values == {"2024": 60.0}
 
 
+def _fill_specimen():
+    """Facts and arcs whose GrossProfit total is never filed."""
+    accession = AccessionNumber.from_any("0000063908-25-000012")
+
+    def fact(qname: str, value: float, year: int) -> XbrlFact:
+        return XbrlFact(
+            accession=accession,
+            concept_qname=qname,
+            value=value,
+            period_type="duration",
+            start_date=f"{year}-01-01",
+            end_date=f"{year}-12-31",
+            dimensions={},
+        )
+
+    facts = (
+        fact("us-gaap:Revenues", 300.0, 2024),
+        fact("us-gaap:CostOfGoodsAndServicesSold", 120.0, 2024),
+        fact("us-gaap:Revenues", 260.0, 2023),
+        fact("us-gaap:CostOfGoodsAndServicesSold", 100.0, 2023),
+        fact("us-gaap:SellingGeneralAndAdministrativeExpense", 50.0, 2024),
+        fact("us-gaap:SellingGeneralAndAdministrativeExpense", 40.0, 2023),
+    )
+    arcs = (
+        CalculationArc(
+            parent_qname="us-gaap:GrossProfit",
+            child_qname="us-gaap:Revenues",
+            weight=1.0,
+            order=1.0,
+            role_uri="",
+        ),
+        CalculationArc(
+            parent_qname="us-gaap:GrossProfit",
+            child_qname="us-gaap:CostOfGoodsAndServicesSold",
+            weight=-1.0,
+            order=2.0,
+            role_uri="",
+        ),
+        CalculationArc(
+            parent_qname="us-gaap:OperatingIncomeLoss",
+            child_qname="us-gaap:GrossProfit",
+            weight=1.0,
+            order=1.0,
+            role_uri="",
+        ),
+        CalculationArc(
+            parent_qname="us-gaap:OperatingIncomeLoss",
+            child_qname="us-gaap:SellingGeneralAndAdministrativeExpense",
+            weight=-1.0,
+            order=2.0,
+            role_uri="",
+        ),
+    )
+    return facts, arcs
+
+
+def test_gap_filled_nodes_carry_derived_basis() -> None:
+    """Verify unfilled totals are gap-filled and marked as derived."""
+    facts, arcs = _fill_specimen()
+    graph = build_statement_graph(
+        root_concept="us-gaap:OperatingIncomeLoss",
+        statement_type="Income Statement",
+        facts=facts,
+        arcs=arcs,
+        taxonomy=load_domain_taxonomy(),
+        period_type="duration",
+    )
+
+    gross = graph.nodes["us-gaap:GrossProfit"]
+    assert gross.value == 180.0
+    assert gross.values == {"2024": 180.0, "2023": 160.0}
+    assert gross.yoy_change == 20.0
+    assert gross.basis == "DERIVED_EXACT"
+    assert gross.gap_filled is True
+    assert gross.derivation_path == (
+        "us-gaap:Revenues",
+        "us-gaap:CostOfGoodsAndServicesSold",
+    )
+
+    operating = graph.root
+    assert operating is not None
+    assert operating.value == 130.0
+    assert operating.basis == "DERIVED_EXACT"
+    assert operating.derivation_path == (
+        "us-gaap:GrossProfit",
+        "us-gaap:SellingGeneralAndAdministrativeExpense",
+    )
+
+    revenue = graph.nodes["us-gaap:Revenues"]
+    assert revenue.basis == "REPORTED"
+    assert revenue.gap_filled is False
+    assert revenue.derivation_path == ()
+
+
+def test_unvalued_calc_child_blocks_gap_fill() -> None:
+    """Verify a total with an unvalued calc child serves absence."""
+    accession = AccessionNumber.from_any("0000063908-25-000012")
+    facts = (
+        XbrlFact(
+            accession=accession,
+            concept_qname="us-gaap:Revenues",
+            value=300.0,
+            period_type="duration",
+            start_date="2024-01-01",
+            end_date="2024-12-31",
+            dimensions={},
+        ),
+    )
+    arcs = (
+        CalculationArc(
+            parent_qname="us-gaap:GrossProfit",
+            child_qname="us-gaap:Revenues",
+            weight=1.0,
+            order=1.0,
+            role_uri="",
+        ),
+        CalculationArc(
+            parent_qname="us-gaap:GrossProfit",
+            child_qname="us-gaap:CostOfGoodsAndServicesSold",
+            weight=-1.0,
+            order=2.0,
+            role_uri="",
+        ),
+    )
+    graph = build_statement_graph(
+        root_concept="us-gaap:GrossProfit",
+        statement_type="Income Statement",
+        facts=facts,
+        arcs=arcs,
+        taxonomy=load_domain_taxonomy(),
+        period_type="duration",
+    )
+
+    assert graph.root is not None
+    assert graph.root.value is None
+    assert graph.root.basis == "REPORTED"
+    assert graph.root.gap_filled is False
+
+
+def test_duplicate_child_arc_blocks_gap_fill() -> None:
+    """Verify a child counted twice is no partition and blocks the fill."""
+    facts, arcs = _fill_specimen()
+    duplicated = arcs + (
+        CalculationArc(
+            parent_qname="us-gaap:GrossProfit",
+            child_qname="us-gaap:Revenues",
+            weight=1.0,
+            order=3.0,
+            role_uri="http://example.com/role/duplicate",
+        ),
+    )
+    graph = build_statement_graph(
+        root_concept="us-gaap:GrossProfit",
+        statement_type="Income Statement",
+        facts=facts,
+        arcs=duplicated,
+        taxonomy=load_domain_taxonomy(),
+        period_type="duration",
+    )
+
+    assert graph.root is not None
+    assert graph.root.value is None
+    assert graph.root.gap_filled is False
+
+
+def test_filter_year_keeps_gap_fill_basis() -> None:
+    """Verify a year-filtered graph keeps the fill provenance."""
+    facts, arcs = _fill_specimen()
+    graph = build_statement_graph(
+        root_concept="us-gaap:GrossProfit",
+        statement_type="Income Statement",
+        facts=facts,
+        arcs=arcs,
+        taxonomy=load_domain_taxonomy(),
+        period_type="duration",
+    )
+
+    filtered = graph.filter_year(2023)
+    assert filtered.root is not None
+    assert filtered.root.value == 160.0
+    assert filtered.root.basis == "DERIVED_EXACT"
+    assert filtered.root.derivation_path == (
+        "us-gaap:Revenues",
+        "us-gaap:CostOfGoodsAndServicesSold",
+    )
+
+
+def test_filled_root_is_not_verified_against_its_components() -> None:
+    """Verify a gap-filled root is withheld as the antichain target."""
+    facts, arcs = _fill_specimen()
+    graph = build_statement_graph(
+        root_concept="us-gaap:GrossProfit",
+        statement_type="Income Statement",
+        facts=facts,
+        arcs=arcs,
+        taxonomy=load_domain_taxonomy(),
+        period_type="duration",
+    )
+
+    proof = graph.verify_antichain()
+    assert proof.is_valid is True
+    assert proof.target_value == 0.0
+    assert proof.computed_sum == 180.0
+    assert proof.discrepancy == 0.0
+
+
 def test_graph_year_value_prefers_annual_span_and_finest_decimals() -> None:
     """Verify a year value is the annual fact, not a quarterly or rounded one."""
     accession = AccessionNumber.from_any("0000063908-25-000012")

@@ -378,6 +378,7 @@ def statement_to_dataframe(graph: StatementGraph, include_yoy: bool = True) -> A
             "weight": node.weight,
             "depth": node.depth,
             "value": node.value,
+            "basis": node.basis,
         }
         for yr in graph.years:
             rec[f"fy_{yr}"] = node.values.get(yr)
