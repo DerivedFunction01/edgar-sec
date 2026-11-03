@@ -9,8 +9,17 @@ from edgar_sec.apps.client.financials_core import FinancialsCore
 from edgar_sec.apps.client.kernel import FilingKernel
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
-from edgar_sec.engine.xbrl.discovery.cohort import canonical_probe_cohort_path
-from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle, XbrlFact
+from edgar_sec.engine.xbrl.discovery.cohort import (
+    canonical_probe_cohort_path,
+    canonical_seed_cohort_path,
+    canonical_vintage_cohort_path,
+)
+from edgar_sec.engine.xbrl.schema.models import (
+    CalculationArc,
+    FilingXbrl,
+    LinkbaseBundle,
+    XbrlFact,
+)
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.pipelines.xbrl_review.bundles import load_filing, registry_filings
 from tests.support import bundle_dir
@@ -45,6 +54,53 @@ def _probe_facade(accession: str) -> Xbrl:
         )
         _PROBE_FACADES[accession] = Xbrl(bundle, load_domain_taxonomy())
     return _PROBE_FACADES[accession]
+
+
+_COHORT_FACADES: dict[str, Xbrl] = {}
+
+
+def _registry_facade(accession, registry_path) -> Xbrl:
+    if accession not in _COHORT_FACADES:
+        seed = next(
+            s
+            for s in registry_filings(registry_path=registry_path)
+            if str(s.accession) == accession
+        )
+        loaded = load_filing(seed, registry_path=registry_path)
+        bundle = FilingXbrl(
+            accession=AccessionNumber.from_any(accession),
+            cik=Cik(int(seed.cik)),
+            facts=loaded.facts,
+            linkbases=LinkbaseBundle(
+                calculation_arcs=loaded.calc_arcs,
+                presentation_arcs=loaded.pres_arcs,
+                declarations=tuple(loaded.declarations.values()),
+            ),
+        )
+        _COHORT_FACADES[accession] = Xbrl(bundle, load_domain_taxonomy())
+    return _COHORT_FACADES[accession]
+
+
+def _duration_fact(qname: str, value: float) -> XbrlFact:
+    return XbrlFact(
+        accession=AccessionNumber.from_any("0000000000-24-000000"),
+        concept_qname=qname,
+        value=value,
+        unit="USD",
+        period_type="duration",
+        start_date="2024-01-01",
+        end_date="2024-12-31",
+    )
+
+
+def _synthetic_financials(facts, arcs) -> XbrlFinancials:
+    bundle = FilingXbrl(
+        accession=AccessionNumber.from_any("0000000000-24-000000"),
+        cik=Cik(0),
+        facts=facts,
+        linkbases=LinkbaseBundle(calculation_arcs=arcs),
+    )
+    return Xbrl(bundle, load_domain_taxonomy()).financials
 
 
 def _stripped_financials(
@@ -203,6 +259,13 @@ _BSRR_10K = "0001558370-25-002056"
 _C_10Q = "0000831001-23-000055"
 _TCBX_S4 = "0001193125-22-161032"
 _NTR_40F = "0001193125-24-055096"
+_XP_F1 = "0001193125-20-182317"
+_BAC_2013 = "0000070858-14-000012"
+_BAC_2024 = "0000070858-25-000139"
+_ASX_20F = "0001193125-24-085380"
+_DB_6K = "0001193125-18-226042"
+_TAC_40F = "0001144800-22-000004"
+_TRI_40F = "0001193125-22-071339"
 _WHK_S1 = "0001193125-26-410790"
 
 
@@ -248,6 +311,22 @@ def test_capex_excludes_sale_proceeds() -> None:
     assert bsrr.capex == 1_156_000.0
     hometrust = _probe_facade(_HOMETRUST_KT).financials
     assert hometrust.capex == 3_420_000.0
+
+
+def test_free_cash_flow_refuses_a_proceeds_chain_leg() -> None:
+    """A chain difference over a refused proceeds leg serves no FCF."""
+    for accession in (_ASX_20F, _DB_6K, _TAC_40F):
+        fin = _probe_facade(accession).financials
+        assert fin.capex is None
+        assert fin.free_cash_flow is None
+        assert fin.span_class("free_cash_flow") is None
+
+
+def test_free_cash_flow_zero_proceeds_leg_embeds_no_amount() -> None:
+    """TRI's refused leg files 0.0; the served FCF is the filed cfo fact."""
+    fin = _probe_facade(_TRI_40F).financials
+    assert fin.capex is None
+    assert fin.free_cash_flow == 1_841_000_000.0
 
 
 def test_free_cash_flow_is_the_served_operands_difference() -> None:
@@ -296,3 +375,71 @@ def test_revenue_definition_exclusions() -> None:
     tcbx = _probe_facade(_TCBX_S4).financials
     assert tcbx.revenue is None
     assert tcbx.free_cash_flow == -1_442_000.0
+
+
+def test_revenue_pick_inside_a_standard_total_yields_to_it() -> None:
+    """XP's extension gross is a calc component of ifrs-full:Revenue."""
+    fin = _probe_facade(_XP_F1).financials
+    assert fin.revenue == 3_595_772_000.0
+    series = fin.revenue_series
+    assert series[max(series)] == 3_595_772_000.0
+
+
+def test_revenue_parallel_extension_total_stands() -> None:
+    """BAC's FTE total is no component of us-gaap:Revenues; it stands."""
+    bac13 = _registry_facade(_BAC_2013, canonical_vintage_cohort_path()).financials
+    assert bac13.revenue_series["2013"] == 89_801_000_000.0
+    bac24 = _registry_facade(_BAC_2024, canonical_seed_cohort_path()).financials
+    assert bac24.revenue_series["2024"] == 102_506_000_000.0
+
+
+def test_revenue_component_shape_is_regime_independent() -> None:
+    """A us-gaap filing with XP's calc shape serves the standard total."""
+    facts = (
+        _duration_fact("us-gaap:Revenues", 100.0),
+        _duration_fact("acme:RevenueBeforeSalesTaxes", 130.0),
+        _duration_fact("acme:SalesTaxesOnRevenue", 30.0),
+    )
+    arcs = (
+        CalculationArc("us-gaap:Revenues", "acme:RevenueBeforeSalesTaxes", 1.0),
+        CalculationArc("us-gaap:Revenues", "acme:SalesTaxesOnRevenue", -1.0),
+    )
+    fin = _synthetic_financials(facts, arcs)
+    assert fin.revenue_series == {"2024": 100.0}
+    assert fin.revenue == 100.0
+
+
+def test_revenue_parallel_shape_keeps_the_extension_total() -> None:
+    """With no calc relation, the larger extension total stands."""
+    facts = (
+        _duration_fact("us-gaap:Revenues", 100.0),
+        _duration_fact("acme:RevenueBeforeSalesTaxes", 130.0),
+        _duration_fact("acme:SalesTaxesOnRevenue", 30.0),
+    )
+    fin = _synthetic_financials(facts, ())
+    assert fin.revenue_series == {"2024": 130.0}
+
+
+def test_revenue_nearest_standard_ancestor_wins() -> None:
+    """Two standard ancestors compete: the nearer in the calc tree serves."""
+    facts = (
+        _duration_fact("us-gaap:Revenues", 125.0),
+        _duration_fact(
+            "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", 110.0
+        ),
+        _duration_fact("acme:RevenueBeforeSalesTaxes", 130.0),
+    )
+    arcs = (
+        CalculationArc(
+            "us-gaap:Revenues",
+            "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            1.0,
+        ),
+        CalculationArc(
+            "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            "acme:RevenueBeforeSalesTaxes",
+            1.0,
+        ),
+    )
+    fin = _synthetic_financials(facts, arcs)
+    assert fin.revenue_series == {"2024": 110.0}

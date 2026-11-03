@@ -17,8 +17,9 @@ from edgar_sec.engine.xbrl.normalize.decomposer import (
 )
 from edgar_sec.engine.xbrl.normalize.normalization import normalize_time_coordinate
 from edgar_sec.engine.xbrl.schema.atoms import Atom
-from edgar_sec.engine.xbrl.schema.models import XbrlFact
+from edgar_sec.engine.xbrl.schema.models import XbrlFact, split_concept_qname
 from edgar_sec.engine.xbrl.solve.identities import eps_identity_legs
+from edgar_sec.engine.xbrl.taxonomy.archive import standard_prefixes
 
 
 _FALLBACK_LENGTH_CLASSES = ("YTD_3Q", "YTD_2Q", "QUARTER")
@@ -41,6 +42,27 @@ _SHARES_ATOMS: dict[bool, Atom] = {
         frozenset({"M_SHARES_OUTSTANDING", "M_WEIGHTED_AVERAGE", "V_DILUTED"}),
     ),
 }
+
+
+def _calc_distance(
+    children: dict[str, list[str]], ancestor: str, target: str
+) -> int | None:
+    """Shortest calc-arc path from ancestor down to target, if any."""
+    seen = {ancestor}
+    frontier = [ancestor]
+    distance = 0
+    while frontier:
+        distance += 1
+        following: list[str] = []
+        for node in frontier:
+            for child in children.get(node, []):
+                if child == target:
+                    return distance
+                if child not in seen:
+                    seen.add(child)
+                    following.append(child)
+        frontier = following
+    return None
 
 
 class FinancialsCore:
@@ -250,6 +272,8 @@ class FinancialsCore:
             monetary_only=is_monetary,
         )
         by_year: dict[str, tuple[int, float, float]] = {}
+        winners: dict[str, str] = {}
+        pools: dict[str, list[tuple[str, float]]] = {}
         for (qname, yr), (_rank, val) in best.items():
             if len(yr) != 4 or not yr.isdigit():
                 continue
@@ -263,14 +287,64 @@ class FinancialsCore:
                 continue
             if valence and valence not in atom.modifiers:
                 continue
+            pools.setdefault(yr, []).append((qname, val))
             cand = (len(atom.modifiers), -abs(val), val)
             if yr not in by_year:
                 by_year[yr] = cand
+                winners[yr] = qname
             elif prefer_bare and cand < by_year[yr]:
                 by_year[yr] = cand
+                winners[yr] = qname
             elif not prefer_bare and abs(val) > abs(by_year[yr][2]):
                 by_year[yr] = cand
+                winners[yr] = qname
+        if target_head == "H_REVENUE" and not target_mods:
+            self._serve_standard_ancestors(by_year, winners, pools)
         return {yr: cand[2] for yr, cand in by_year.items()}
+
+    def _serve_standard_ancestors(
+        self,
+        by_year: dict[str, tuple[int, float, float]],
+        winners: dict[str, str],
+        pools: dict[str, list[tuple[str, float]]],
+    ) -> None:
+        """A revenue pick inside a standard total's calc tree yields to it.
+
+        The pick is a component of that total, not the whole; the
+        nearest standard calc ancestor in the pool serves instead.
+        """
+        standard = standard_prefixes()
+        children: dict[str, list[str]] | None = None
+        for yr, winner in winners.items():
+            if split_concept_qname(winner)[0] in standard:
+                continue
+            candidates = [
+                (qname, val)
+                for qname, val in pools[yr]
+                if qname != winner and split_concept_qname(qname)[0] in standard
+            ]
+            if not candidates:
+                continue
+            if children is None:
+                children = self._calc_children()
+            ranked = []
+            for qname, val in candidates:
+                distance = _calc_distance(children, qname, winner)
+                if distance is not None:
+                    ranked.append((distance, -abs(val), qname, val))
+            if not ranked:
+                continue
+            _distance, _neg, qname, val = min(ranked)
+            record = self._records.get(qname)
+            mods = len(record.atom.modifiers) if record is not None else 0
+            by_year[yr] = (mods, -abs(val), val)
+
+    def _calc_children(self) -> dict[str, list[str]]:
+        """Calc children by parent over the filer's own linkbase."""
+        children: dict[str, list[str]] = {}
+        for arc in self._arcs:
+            children.setdefault(arc.parent_qname, []).append(arc.child_qname)
+        return children
 
     def _yoy(
         self,

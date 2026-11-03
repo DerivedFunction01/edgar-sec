@@ -301,13 +301,24 @@ class XbrlFinancials(FinancialsCore):
             series = self.operating_cash_flow_series
             fiscal_year = int(max(series)) if series else None
             result = self._composition_resolver(_FCF_CHAIN, fiscal_year)
-            if result.value is not None:
+            if result.value is not None and not self._chain_leg_refused(result):
                 return result.value, composition_span_class(result)
         else:
             value, cls = self._scalar_served("H_CASH", {"M_FREE_CASH_FLOW"})
             if value is not None:
                 return value, cls
         return self._span_consistent_difference()
+
+    def _chain_leg_refused(self, result: CompositionResult) -> bool:
+        """A chain capex leg is refused when its concept is one the capex
+        definition excludes and the leg carries an amount."""
+        for operand in result.operands:
+            if operand.term != "capex" or not operand.value:
+                continue
+            record = self._records.get(operand.concept_qname or "")
+            if record is not None and CAPEX_EXCLUDED_MODS & record.atom.modifiers:
+                return True
+        return False
 
     def _classed_cash_difference(
         self, length_class: str
