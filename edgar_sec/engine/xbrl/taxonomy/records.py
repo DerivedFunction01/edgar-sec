@@ -147,6 +147,7 @@ class GrammaticalFrame:
     polarity: str = "NEUTRAL"
     strip_tokens: tuple[str, ...] = ()
     description: str = ""
+    act_modifier: str | None = None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> GrammaticalFrame:
@@ -160,6 +161,9 @@ class GrammaticalFrame:
             polarity=str(data.get("polarity", "NEUTRAL")),
             strip_tokens=tuple(str(t).lower() for t in raw_strip),
             description=str(data.get("description", "")),
+            act_modifier=str(data["act_modifier"])
+            if data.get("act_modifier")
+            else None,
         )
 
 

@@ -97,6 +97,8 @@ def _provenance(result: FinancialQueryResult, chosen: str | None) -> str:
         return result.provenance
     for item in result.equivalents:
         if item.qname == chosen:
+            if item.via_bridge:
+                return "dialect_bridge"
             if item.via_filing_local:
                 return "filing_local"
             if item.via_default:

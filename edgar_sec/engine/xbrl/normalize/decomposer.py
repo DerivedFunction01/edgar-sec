@@ -32,6 +32,10 @@ from edgar_sec.engine.xbrl.normalize.temporal import (
 
 _CLASS_RANK = {"PRIMARY": 3, "TAIL": 2, "INSTRUMENT": 1, "COMPOUND_QUALIFIER": 0}
 
+_FRAME_STOCK_HEADS = frozenset({"H_COMMITMENT", "H_LIABILITY", "H_SHARE"})
+_FRAME_ACTIVITY_MODIFIER = "M_INVESTING"
+_FRAME_VALUATION_MODIFIER = "M_FAIR_VALUE"
+
 
 def split_camel_case(name: str) -> tuple[str, ...]:
     """Split CamelCase identifier into individual word tokens."""
@@ -300,8 +304,37 @@ def decompose_concept_expression(
             ),
         )
 
-    atom, residuals, direction, indexicals, derived, relations, temporal, matches = (
-        _decompose_flat_tokens(
+    framed = _apply_grammatical_frame(
+        tokens,
+        lexicon,
+        number_values,
+        ordinal_values,
+        evidence,
+        declaration,
+        text_rule,
+    )
+    if framed is not None:
+        (
+            atom,
+            residuals,
+            direction,
+            indexicals,
+            derived,
+            relations,
+            temporal,
+            matches,
+        ) = framed
+    else:
+        (
+            atom,
+            residuals,
+            direction,
+            indexicals,
+            derived,
+            relations,
+            temporal,
+            matches,
+        ) = _decompose_flat_tokens(
             tokens,
             lexicon,
             number_indexicals(tokens, number_values, ordinal_values),
@@ -309,7 +342,6 @@ def decompose_concept_expression(
             ordinal_values,
             evidence,
         )
-    )
     atom = _with_type_coordinate(atom, declaration, text_rule)
     atom = _with_type_coordinate(atom, declaration, percent_rule)
     return ConceptExpression(
@@ -449,6 +481,93 @@ def _split_regions(
         ):
             return resolved, [], None
     return near, far, boundary
+
+
+def _apply_grammatical_frame(
+    tokens: tuple[str, ...],
+    lexicon: TokenLexicon,
+    number_values: dict[int, int],
+    ordinal_values: dict[int, int],
+    evidence: EvidenceContext | None,
+    declaration: ConceptDeclaration | None,
+    text_rule: TextCoordinateRule | None,
+) -> (
+    tuple[
+        Atom,
+        tuple[str, ...],
+        float,
+        tuple[str, ...],
+        str | None,
+        tuple[tuple[str, Atom], ...],
+        TemporalInterval | None,
+        tuple[LexiconMatch, ...],
+    ]
+    | None
+):
+    """Decompose under a leading act frame, or None when it refuses.
+
+    Only act-declaring frames fire, and only on a flow remainder.
+    """
+    frame = lexicon.match_grammatical_frame(tokens)
+    if frame is None or frame.act_modifier is None:
+        return None
+    prefix = len(frame.prefix_tokens)
+    if any(
+        match.start == 0 and match.entry.direction is not None
+        for match in lexicon.candidates(tokens, evidence)
+    ):
+        return None
+    lowered = tuple(t.lower() for t in tokens)
+    if prefix >= len(tokens) or lowered[prefix] not in frame.strip_tokens:
+        return None
+    object_start = prefix
+    while object_start < len(tokens) and lowered[object_start] in frame.strip_tokens:
+        object_start += 1
+    if object_start >= len(tokens):
+        return None
+    remainder = tokens[prefix:]
+    if any(
+        match.entry.direction is not None
+        for match in lexicon.candidates(remainder, evidence)
+    ):
+        return None
+    values = {i - prefix: v for i, v in number_values.items() if i >= prefix}
+    ordinals = {i - prefix: v for i, v in ordinal_values.items() if i >= prefix}
+    atom, residuals, _, indexicals, derived, relations, temporal, matches = (
+        _decompose_flat_tokens(
+            remainder,
+            lexicon,
+            number_indexicals(remainder, values, ordinals),
+            values,
+            ordinals,
+            evidence,
+        )
+    )
+    if atom.head in _FRAME_STOCK_HEADS:
+        return None
+    if (
+        _FRAME_VALUATION_MODIFIER in atom.modifiers
+        and _FRAME_ACTIVITY_MODIFIER not in atom.modifiers
+    ):
+        return None
+    if declaration is not None and declaration.period_type == "instant":
+        return None
+    if (
+        declaration is not None
+        and text_rule is not None
+        and item_type_local(declaration.item_type) in text_rule.item_types
+    ):
+        return None
+    return (
+        Atom(atom.head, atom.modifiers | {frame.act_modifier}),
+        residuals,
+        frame.direction,
+        indexicals,
+        derived,
+        relations,
+        temporal,
+        tuple(LexiconMatch(m.start + prefix, m.end + prefix, m.entry) for m in matches),
+    )
 
 
 def _decompose_flat_tokens(

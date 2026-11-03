@@ -122,4 +122,5 @@ class ConceptTokenizer:
             self._taxonomy.default_coordinates,
             sibling_groups=self._sibling_groups,
             residual_counts=counts,
+            relations=self._taxonomy.atom_relations,
         )

@@ -73,3 +73,54 @@ def test_requires_evidence_claim_loads() -> None:
         }
     )
     assert entry.requires_evidence is True
+
+
+def test_grammatical_frame_record_parses_act_modifier() -> None:
+    """An act-declaring frame record loads its act modifier; others None."""
+    from edgar_sec.engine.xbrl.taxonomy.records import GrammaticalFrame
+
+    frame = GrammaticalFrame.from_dict(
+        {
+            "frame_id": "FRAME_OUTFLOW_PURCHASE",
+            "prefix_tokens": ["purchase"],
+            "direction": -1.0,
+            "strip_tokens": ["to", "for", "of", "and"],
+            "act_modifier": "M_PURCHASE",
+        }
+    )
+    assert frame.act_modifier == "M_PURCHASE"
+    plain = GrammaticalFrame.from_dict(
+        {"frame_id": "FRAME_INFLOW_PROCEEDS_FROM", "prefix_tokens": ["proceeds"]}
+    )
+    assert plain.act_modifier is None
+
+
+def test_lexicon_frame_attachment_and_matching() -> None:
+    """Attached frames match on leading tokens, in declaration order."""
+    from edgar_sec.engine.xbrl.taxonomy.records import GrammaticalFrame
+
+    lex = TokenLexicon(())
+    assert lex.match_grammatical_frame(("Purchase", "Of", "Assets")) is None
+    lex.attach_grammatical_frames(
+        (
+            GrammaticalFrame("FRAME_A", ("payments", "to"), direction=-1.0),
+            GrammaticalFrame(
+                "FRAME_B", ("purchase",), direction=-1.0, act_modifier="M_PURCHASE"
+            ),
+        )
+    )
+    found = lex.match_grammatical_frame(("Purchase", "Of", "Assets"))
+    assert found is not None and found.frame_id == "FRAME_B"
+    assert lex.match_grammatical_frame(("Sale", "Of", "Assets")) is None
+
+
+def test_loaded_taxonomy_attaches_purchase_frames_to_lexicon() -> None:
+    """The shipped purchase frames reach the lexicon with their act."""
+    from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
+
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    frame = tax.token_lexicon.match_grammatical_frame(("Purchases", "Of", "Debt"))
+    assert frame is not None
+    assert frame.act_modifier == "M_PURCHASE"
+    assert frame.direction == -1.0

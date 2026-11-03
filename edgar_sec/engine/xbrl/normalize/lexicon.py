@@ -7,6 +7,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.engine.xbrl.taxonomy.records import GrammaticalFrame
+
 CLAIM_KINDS = ("head", "modifier", "boundary", "relation", "indexical")
 HEAD_CLAIM_CLASSES = ("PRIMARY", "INSTRUMENT", "TAIL", "COMPOUND_QUALIFIER")
 RELATION_KINDS = ("NET_OF", "EXCLUDING", "INCLUDING")
@@ -155,6 +157,7 @@ class TokenLexicon:
             self._phrase_map.setdefault(entry.phrase, []).append(entry)
         self._file_order = {id(entry): i for i, entry in enumerate(entries)}
         self._modifier_kinds: dict[str, tuple[str, ...]] = {}
+        self._grammatical_frames: tuple[GrammaticalFrame, ...] = ()
 
     @property
     def entries(self) -> tuple[LexiconEntry, ...]:
@@ -169,6 +172,26 @@ class TokenLexicon:
     def attach_modifier_kinds(self, kinds: dict[str, tuple[str, ...]]) -> None:
         """Attach def kinds so attribution policies can read claim identity."""
         self._modifier_kinds = dict(kinds)
+
+    @property
+    def grammatical_frames(self) -> tuple[GrammaticalFrame, ...]:
+        """Grammatical frames attached by the taxonomy loader."""
+        return self._grammatical_frames
+
+    def attach_grammatical_frames(self, frames: tuple[GrammaticalFrame, ...]) -> None:
+        """Attach the declared frames so decomposition can consult them."""
+        self._grammatical_frames = tuple(frames)
+
+    def match_grammatical_frame(
+        self, tokens: tuple[str, ...]
+    ) -> GrammaticalFrame | None:
+        """The first declared frame whose prefix matches the leading tokens."""
+        lowered = tuple(t.lower() for t in tokens)
+        for frame in self._grammatical_frames:
+            k = len(frame.prefix_tokens)
+            if len(lowered) >= k and lowered[:k] == frame.prefix_tokens:
+                return frame
+        return None
 
     @classmethod
     def load_json(cls, path: Path | str) -> TokenLexicon:

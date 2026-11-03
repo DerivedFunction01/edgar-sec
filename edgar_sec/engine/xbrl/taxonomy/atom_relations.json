@@ -2286,5 +2286,62 @@
     },
     "description": "Mined from calculation arcs attested at 10 firms.",
     "evidence": "calculation"
+  },
+  {
+    "edge_id": "R_DIALECT_PPE_PURCHASE",
+    "relation_type": "DIALECT_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_PPE_CAPEX"
+      ]
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_PPE_CAPEX"
+      ]
+    },
+    "description": "Payments-dialect and purchase-dialect coordinates for the acquisition of property, plant and equipment.",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_DIALECT_INVESTMENT_INSTRUMENT",
+    "relation_type": "DIALECT_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_INVESTMENT"
+      ]
+    },
+    "target": {
+      "head": "H_UNKNOWN",
+      "mods": [
+        "M_FINANCIAL_INSTRUMENT"
+      ]
+    },
+    "description": "Payments-dialect investment coordinate and the purchase-dialect financial-instrument coordinate on the unclaimed head, for investment purchases.",
+    "evidence": "declared"
+  },
+  {
+    "edge_id": "R_DIALECT_INVESTMENT_INSTRUMENT_ASSET",
+    "relation_type": "DIALECT_OF",
+    "algebraic_weight": 1.0,
+    "source": {
+      "head": "H_CASH",
+      "mods": [
+        "M_INVESTMENT"
+      ]
+    },
+    "target": {
+      "head": "H_ASSET",
+      "mods": [
+        "M_FINANCIAL_INSTRUMENT"
+      ]
+    },
+    "description": "Payments-dialect investment coordinate and the purchase-dialect financial-instrument coordinate on the asset head, for investment purchases.",
+    "evidence": "declared"
   }
 ]
