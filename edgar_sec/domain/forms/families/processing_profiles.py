@@ -53,6 +53,10 @@ from edgar_sec.domain.forms.families.form_425.processing import PROFILE_FORM_425
 from edgar_sec.domain.forms.families.form_fwp.processing import PROFILE_FORM_FWP
 from edgar_sec.domain.forms.families.form_fwp.taxonomy import FORM_FWP_ITEMS
 from edgar_sec.domain.forms.families.form_d.processing import PROFILE_FORM_D
+from edgar_sec.domain.forms.families.form_ncen.processing import PROFILE_N_CEN
+from edgar_sec.domain.forms.families.form_nmfp.processing import PROFILE_N_MFP
+from edgar_sec.domain.forms.families.form_nport.processing import PROFILE_NPORT
+from edgar_sec.domain.forms.families.form_npx.processing import PROFILE_N_PX
 from edgar_sec.domain.forms.families.form144.processing import PROFILE_FORM_144
 from edgar_sec.domain.forms.families.ownership.processing import (
     PROFILE_FORM_3,
@@ -214,6 +218,22 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
     ProcessingCatalogEntry(
         family="13F",
         profile=PROFILE_FORM_13F,
+    ),
+    ProcessingCatalogEntry(
+        family="N-PORT",
+        profile=PROFILE_NPORT,
+    ),
+    ProcessingCatalogEntry(
+        family="N-CEN",
+        profile=PROFILE_N_CEN,
+    ),
+    ProcessingCatalogEntry(
+        family="N-PX",
+        profile=PROFILE_N_PX,
+    ),
+    ProcessingCatalogEntry(
+        family="N-MFP",
+        profile=PROFILE_N_MFP,
     ),
     ProcessingCatalogEntry(
         family="14A",
