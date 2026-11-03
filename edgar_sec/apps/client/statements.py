@@ -170,6 +170,65 @@ class XbrlStatements:
             graph_cls=StatementGraph,
         )
 
+    def fund_assets_liabilities(
+        self,
+        period: str | None = None,
+        year: int | str | None = None,
+    ) -> StatementView:
+        """Construct the fund Statement of Assets and Liabilities view."""
+        graph = self._kernel.graph_once(
+            ("fund_assets_liabilities", period, year),
+            lambda: self._build_fund_assets_liabilities(period, year),
+        )
+        return self._wrap(graph)
+
+    def _build_fund_assets_liabilities(
+        self, period: str | None, year: int | str | None
+    ) -> StatementGraph:
+        root = self._kernel.composer.find_balance_sheet_root()
+        return build_statement_graph(
+            root_concept=root,
+            statement_type="Assets and Liabilities",
+            facts=self._kernel.facts,
+            arcs=self._kernel.calculation_arcs,
+            taxonomy=self._kernel.taxonomy,
+            labels=self._kernel.labels,
+            period_type="instant",
+            instant_date=period,
+            year=year,
+            graph_cls=StatementGraph,
+        )
+
+    def fund_operations(
+        self,
+        period: str | None = None,
+        year: int | str | None = None,
+    ) -> StatementView:
+        """Construct the fund Statement of Operations view."""
+        graph = self._kernel.graph_once(
+            ("fund_operations", period, year),
+            lambda: self._build_fund_operations(period, year),
+        )
+        return self._wrap(graph)
+
+    def _build_fund_operations(
+        self, period: str | None, year: int | str | None
+    ) -> StatementGraph:
+        composer = self._kernel.composer
+        root = composer.find_income_statement_root()
+        return build_statement_graph(
+            root_concept=root,
+            statement_type="Operations",
+            facts=self._kernel.facts,
+            arcs=self._kernel.calculation_arcs,
+            taxonomy=self._kernel.taxonomy,
+            labels=self._kernel.labels,
+            period_type="duration",
+            end_date=period,
+            year=year,
+            graph_cls=StatementGraph,
+        )
+
     def cover(self) -> tuple[XbrlFact, ...]:
         """Return the filing's dei cover facts, sorted by concept."""
         return tuple(
