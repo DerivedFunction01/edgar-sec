@@ -124,8 +124,8 @@ def test_load_filing_reads_vintage_bundle() -> None:
 def test_registry_filings_with_probe_registry_path() -> None:
     """Verify a registry path loads the cross-form probe corpus instead."""
     filings = registry_filings(registry_path=canonical_probe_cohort_path())
-    assert len(filings) == 53
-    assert len({str(f.accession) for f in filings}) == 53
+    assert len(filings) == 61
+    assert len({str(f.accession) for f in filings}) == 61
     forms = [f.form for f in filings]
     assert forms.count("10-Q") == 11
     assert forms.count("10-Q/A") == 1
@@ -133,7 +133,8 @@ def test_registry_filings_with_probe_registry_path() -> None:
     assert forms.count("10-K/A") == 1
     assert forms.count("8-K") == 7
     assert forms.count("8-K/A") == 2
-    assert forms.count("6-K") == 2
+    assert forms.count("6-K") == 9
+    assert forms.count("40-F") == 1
     assert forms.count("DEF 14A") == 2
     assert forms.count("SD") == 1
     assert forms.count("S-1") == 1
@@ -169,6 +170,14 @@ def test_registry_filings_with_probe_registry_path() -> None:
         "ITW",
         "FTS",
         "HSBC",
+        "MFG",
+        "DB",
+        "RY",
+        "DBVT",
+        "CVE",
+        "DSGX",
+        "INTR",
+        "NTR",
         "MCD",
         "PJT",
         "MTX",
