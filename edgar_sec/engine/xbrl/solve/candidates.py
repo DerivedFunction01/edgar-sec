@@ -5,13 +5,15 @@ from __future__ import annotations
 from collections.abc import Sequence
 
 from edgar_sec.engine.xbrl.schema.models import (
-    CORE_PREFIXES,
     CalculationArc,
     Verdict,
     XbrlFact,
     qname_local,
     split_concept_qname,
 )
+from edgar_sec.engine.xbrl.taxonomy.archive import core_prefixes, standard_prefixes
+
+REASON_STANDARD_TAXONOMY = "STANDARD_TAXONOMY"
 
 
 def classify_candidate_facts(
@@ -84,13 +86,18 @@ def classify_candidate_facts(
             continue
 
         prefix = split_concept_qname(qname)[0]
-        if prefix and prefix not in CORE_PREFIXES:
+        if prefix and prefix not in core_prefixes():
+            reason = (
+                REASON_STANDARD_TAXONOMY
+                if prefix in standard_prefixes()
+                else "UNSEEN_SIGNATURE"
+            )
             verdicts.append(
                 Verdict(
                     concept_qname=qname,
                     measure_id=target_concept,
                     decision="UNKNOWN",
-                    unknown_reason="UNSEEN_SIGNATURE",
+                    unknown_reason=reason,
                     priority=priority,
                 )
             )

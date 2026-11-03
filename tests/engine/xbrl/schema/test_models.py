@@ -1,8 +1,6 @@
-"""Qname parse seam and declared prefix vocabulary."""
+"""Qname parse seam."""
 
 from edgar_sec.engine.xbrl.schema.models import (
-    CORE_PREFIXES,
-    STANDARD_PREFIXES,
     DefinitionArc,
     LinkbaseBundle,
     qname_local,
@@ -37,12 +35,6 @@ def test_split_concept_qname_is_cached():
 
 def test_qname_local_is_cached():
     assert qname_local("us-gaap:Assets") is qname_local("us-gaap:Assets")
-
-
-def test_prefix_vocabulary():
-    assert CORE_PREFIXES <= STANDARD_PREFIXES
-    assert "us-gaap" in CORE_PREFIXES and "dei" in CORE_PREFIXES
-    assert "srt" in STANDARD_PREFIXES and "srt" not in CORE_PREFIXES
 
 
 def test_linkbase_bundle_definition_arcs_default_empty():

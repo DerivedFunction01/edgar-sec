@@ -15,3 +15,26 @@ def test_candidate_classification_accepts_target_and_arc_child() -> None:
     result = classify_candidate_facts("us-gaap:Profit", facts, arcs)
 
     assert [verdict.decision for verdict in result] == ["ACCEPT", "ACCEPT", "UNKNOWN"]
+
+
+def test_candidate_classification_names_standard_taxonomy_facts() -> None:
+    accession = AccessionNumber("0000950170-24-087843")
+    facts = [
+        XbrlFact(accession, "srt:ScheduleOfRealEstateProperties", 3.0),
+        XbrlFact(accession, "ecd:InsiderTradingPolicyFlag", 1.0),
+        XbrlFact(accession, "ifrs-full:Revenue", 5.0),
+        XbrlFact(accession, "custom:Unknown", 2.0),
+    ]
+
+    result = classify_candidate_facts("us-gaap:Profit", facts)
+
+    by_qname = {verdict.concept_qname: verdict for verdict in result}
+    srt = by_qname["srt:ScheduleOfRealEstateProperties"]
+    assert srt.decision == "REJECT" and srt.reject_reason == "OTHER_STATEMENT"
+    for qname in ("ecd:InsiderTradingPolicyFlag", "ifrs-full:Revenue"):
+        verdict = by_qname[qname]
+        assert verdict.decision == "UNKNOWN"
+        assert verdict.unknown_reason == "STANDARD_TAXONOMY"
+    custom = by_qname["custom:Unknown"]
+    assert custom.decision == "UNKNOWN"
+    assert custom.unknown_reason == "UNSEEN_SIGNATURE"

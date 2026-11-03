@@ -5,12 +5,15 @@ import json
 
 from edgar_sec.engine.xbrl.taxonomy.archive import (
     CURRENT_SLICES,
+    archived_taxonomies,
     bundle_namespaces,
+    core_prefixes,
     current_table,
     load_slice,
     namespace_key,
     slice_table,
     slice_versions,
+    standard_prefixes,
     table_for_namespaces,
 )
 
@@ -40,11 +43,36 @@ def test_namespace_key_reads_each_host_pattern() -> None:
 
 
 def test_archive_reproduces_the_retired_table_exactly() -> None:
-    """The current-vintage slice union equals the retired JSON entry for entry."""
-    table = current_table()
+    """The retired JSON's own slice union still equals it entry for entry."""
+    table: dict[str, str] = {}
+    for taxonomy, version in CURRENT_SLICES:
+        if taxonomy == "ifrs":
+            continue
+        table.update(slice_table(taxonomy, version))
     assert len(table) == _RETIRED_TABLE_SIZE
     canonical = json.dumps(table, indent=1, sort_keys=True) + "\n"
     assert hashlib.sha256(canonical.encode()).hexdigest() == _RETIRED_TABLE_SHA256
+
+
+def test_current_table_resolves_ifrs_item_types() -> None:
+    """The default table now carries the current IFRS slice's item types."""
+    table = current_table()
+    assert table["ifrs-full:Assets"] == "xbrli:monetaryItemType"
+    assert len(table) > _RETIRED_TABLE_SIZE
+
+
+def test_prefix_sets_derive_from_the_slice_inventory() -> None:
+    """Standard is the archived inventory; core is its candidacy subset."""
+    assert archived_taxonomies() == ("cyd", "dei", "ecd", "ifrs", "srt", "us-gaap")
+    assert standard_prefixes() == frozenset(
+        {"us-gaap", "dei", "srt", "ecd", "cyd", "ifrs-full"}
+    )
+    assert core_prefixes() == frozenset({"us-gaap", "dei", "srt"})
+    assert core_prefixes() <= standard_prefixes()
+    # Member vocabularies carry no slices and are not concept taxonomies.
+    assert not {"country", "currency", "xbrli"} & standard_prefixes()
+    # Slice-less standard taxonomies join only when their slices exist.
+    assert not {"ffd", "invest", "rxp", "oef"} & standard_prefixes()
 
 
 def test_archive_covers_every_published_span() -> None:

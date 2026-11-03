@@ -7,10 +7,10 @@ from dataclasses import dataclass
 from typing import Mapping
 
 from edgar_sec.engine.xbrl.schema.models import (
-    STANDARD_PREFIXES,
     CalculationArc,
     split_concept_qname,
 )
+from edgar_sec.engine.xbrl.taxonomy.archive import standard_prefixes
 
 
 @dataclass(frozen=True, slots=True)
@@ -49,7 +49,7 @@ class PlacementMetrics:
 def is_extension_concept(concept_qname: str) -> bool:
     """Return True if concept QName belongs to a registrant custom taxonomy."""
     prefix = split_concept_qname(concept_qname)[0] or concept_qname
-    return prefix.lower() not in STANDARD_PREFIXES
+    return prefix.lower() not in standard_prefixes()
 
 
 def extract_extension_ground_truth(

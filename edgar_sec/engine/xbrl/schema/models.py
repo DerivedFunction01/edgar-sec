@@ -8,9 +8,6 @@ from typing import Mapping
 
 from edgar_sec.domain.identity import AccessionNumber, Cik
 
-STANDARD_PREFIXES = frozenset({"us-gaap", "dei", "srt", "country", "currency", "xbrli"})
-CORE_PREFIXES = frozenset({"us-gaap", "dei"})
-
 
 @lru_cache(maxsize=65536)
 def split_concept_qname(qname: str) -> tuple[str, str]:
@@ -159,7 +156,7 @@ class Verdict:
     weight: float = 1.0
     reject_reason: str | None = None
     unknown_reason: str | None = (
-        None  # UNSEEN_SIGNATURE | RESIDUAL_ONLY | LOW_SUPPORT | CONFLICT | NO_STRUCTURE
+        None  # UNSEEN_SIGNATURE | STANDARD_TAXONOMY | RESIDUAL_ONLY | LOW_SUPPORT | CONFLICT | NO_STRUCTURE
     )
     priority: float = 0.0
 

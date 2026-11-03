@@ -28,14 +28,16 @@ TAXONOMY_PREFIXES: dict[str, str] = {
     "ifrs": "ifrs-full",
 }
 
-# The slice union the retired standard_item_types.json carried: the
-# reproduction baseline for callers with no filing vintage in hand.
+# The slice union the retired standard_item_types.json carried, plus
+# ifrs at its current release: the reproduction baseline for callers
+# with no filing vintage in hand.
 CURRENT_SLICES: tuple[tuple[str, str], ...] = (
     ("us-gaap", "2026"),
     ("dei", "2024"),
     ("srt", "2024"),
     ("ecd", "2024"),
     ("cyd", "2024"),
+    ("ifrs", "2025-03-27"),
 )
 
 _DATED = re.compile(r"^(\d{4})-\d{2}-\d{2}$")
@@ -78,6 +80,39 @@ def slice_versions(taxonomy: str) -> tuple[str, ...]:
     if not directory.is_dir():
         return ()
     return tuple(sorted(path.stem for path in directory.glob("*.parquet")))
+
+
+# Solver candidacy: the statement, cover, and statement-schedule
+# taxonomies whose facts are solver candidates when archived.
+_CANDIDACY_TAXONOMIES = frozenset({"us-gaap", "dei", "srt"})
+
+
+@lru_cache(maxsize=None)
+def archived_taxonomies() -> tuple[str, ...]:
+    """Taxonomies with at least one slice in the archive, sorted."""
+    return tuple(
+        sorted(taxonomy for taxonomy in TAXONOMY_PREFIXES if slice_versions(taxonomy))
+    )
+
+
+@lru_cache(maxsize=None)
+def standard_prefixes() -> frozenset[str]:
+    """Canonical qname prefixes of the archived taxonomies.
+
+    The standard set is the slice inventory: a taxonomy classifies as
+    standard exactly when the archive carries its slices.
+    """
+    return frozenset(TAXONOMY_PREFIXES[taxonomy] for taxonomy in archived_taxonomies())
+
+
+@lru_cache(maxsize=None)
+def core_prefixes() -> frozenset[str]:
+    """Solver-candidacy prefixes: the candidacy taxonomies, when archived."""
+    return frozenset(
+        TAXONOMY_PREFIXES[taxonomy]
+        for taxonomy in archived_taxonomies()
+        if taxonomy in _CANDIDACY_TAXONOMIES
+    )
 
 
 @lru_cache(maxsize=None)
@@ -128,7 +163,7 @@ def table_for_namespaces(namespaces: Mapping[str, str]) -> dict[str, str]:
 
 
 def current_table() -> dict[str, str]:
-    """The current-vintage union table (the retired JSON's exact content)."""
+    """The current-vintage union table over CURRENT_SLICES."""
     table: dict[str, str] = {}
     for taxonomy, version in CURRENT_SLICES:
         table.update(slice_table(taxonomy, version))
