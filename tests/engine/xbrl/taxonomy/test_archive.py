@@ -35,6 +35,8 @@ def test_namespace_key_reads_each_host_pattern() -> None:
     assert namespace_key("http://xbrl.sec.gov/dei/2021q4") == ("dei", "2021q4")
     assert namespace_key("http://xbrl.sec.gov/ecd/2022q4") == ("ecd", "2022q4")
     assert namespace_key("http://xbrl.sec.gov/cyd/2024") == ("cyd", "2024")
+    assert namespace_key("http://xbrl.sec.gov/ffd/2026") == ("ffd", "2026")
+    assert namespace_key("http://xbrl.sec.gov/ffd/2025q4") == ("ffd", "2025q4")
     assert namespace_key("https://xbrl.ifrs.org/taxonomy/2025-03-27/ifrs-full") == (
         "ifrs",
         "2025-03-27",
@@ -46,7 +48,7 @@ def test_archive_reproduces_the_retired_table_exactly() -> None:
     """The retired JSON's own slice union still equals it entry for entry."""
     table: dict[str, str] = {}
     for taxonomy, version in CURRENT_SLICES:
-        if taxonomy == "ifrs":
+        if taxonomy in ("ifrs", "ffd"):
             continue
         table.update(slice_table(taxonomy, version))
     assert len(table) == _RETIRED_TABLE_SIZE
@@ -61,18 +63,33 @@ def test_current_table_resolves_ifrs_item_types() -> None:
     assert len(table) > _RETIRED_TABLE_SIZE
 
 
+def test_current_table_resolves_ffd_item_types() -> None:
+    """The default table carries the current ffd slice's item types."""
+    table = current_table()
+    assert table["ffd:FormTp"] == "ffd:submissionTypeItemType"
+    assert table["ffd:NrrtvMaxAggtOfferingPric"].endswith("Monetary2ItemType")
+
+
 def test_prefix_sets_derive_from_the_slice_inventory() -> None:
     """Standard is the archived inventory; core is its candidacy subset."""
-    assert archived_taxonomies() == ("cyd", "dei", "ecd", "ifrs", "srt", "us-gaap")
+    assert archived_taxonomies() == (
+        "cyd",
+        "dei",
+        "ecd",
+        "ffd",
+        "ifrs",
+        "srt",
+        "us-gaap",
+    )
     assert standard_prefixes() == frozenset(
-        {"us-gaap", "dei", "srt", "ecd", "cyd", "ifrs-full"}
+        {"us-gaap", "dei", "srt", "ecd", "cyd", "ifrs-full", "ffd"}
     )
     assert core_prefixes() == frozenset({"us-gaap", "dei", "srt"})
     assert core_prefixes() <= standard_prefixes()
     # Member vocabularies carry no slices and are not concept taxonomies.
     assert not {"country", "currency", "xbrli"} & standard_prefixes()
     # Slice-less standard taxonomies join only when their slices exist.
-    assert not {"ffd", "invest", "rxp", "oef"} & standard_prefixes()
+    assert not {"invest", "rxp", "oef"} & standard_prefixes()
 
 
 def test_archive_covers_every_published_span() -> None:
@@ -116,6 +133,7 @@ def test_archive_covers_every_published_span() -> None:
     assert slice_versions("srt")[0] == "2018"
     assert slice_versions("ecd")[0] == "2022"
     assert slice_versions("cyd") == ("2024", "2025", "2026")
+    assert slice_versions("ffd") == ("2024", "2024q2", "2025", "2025q4", "2026")
     assert len(slice_versions("ifrs")) == 12
 
 

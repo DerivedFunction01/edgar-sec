@@ -15,6 +15,7 @@ import re
 
 import pyarrow.parquet as pq
 
+from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.engine.xbrl.schema.models import ConceptDeclaration
 
@@ -25,6 +26,7 @@ TAXONOMY_PREFIXES: dict[str, str] = {
     "srt": "srt",
     "ecd": "ecd",
     "cyd": "cyd",
+    "ffd": "ffd",
     "ifrs": "ifrs-full",
 }
 
@@ -38,11 +40,13 @@ CURRENT_SLICES: tuple[tuple[str, str], ...] = (
     ("ecd", "2024"),
     ("cyd", "2024"),
     ("ifrs", "2025-03-27"),
+    ("ffd", "2026"),
 )
 
 _DATED = re.compile(r"^(\d{4})-\d{2}-\d{2}$")
 _FASB = re.compile(r"^https?://(?:www\.)?fasb\.org/(us-gaap|srt)/([^/]+)$")
-_SEC = re.compile(r"^https?://xbrl\.sec\.gov/(dei|ecd|cyd)/([^/]+)$")
+_SEC_TAXONOMIES = build_alternation(("cyd", "dei", "ecd", "ffd"))
+_SEC = re.compile(rf"^https?://xbrl\.sec\.gov/({_SEC_TAXONOMIES})/([^/]+)$")
 _XBRL_US = re.compile(r"^https?://(?:taxonomies\.)?xbrl\.us/(us-gaap)/([^/]+)$")
 _IFRS = re.compile(r"^https?://xbrl\.ifrs\.org/taxonomy/([^/]+)/ifrs-full$")
 
