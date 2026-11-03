@@ -47,6 +47,7 @@ def test_candidate_classification_names_closed_set_taxonomy_facts() -> None:
         XbrlFact(accession, "cef:AcquiredFundFeesAndExpensesPercent", 0.01),
         XbrlFact(accession, "us-gaap-ebp:EmployeeBenefitPlanAsset", 9.0),
         XbrlFact(accession, "oef:ShareholderReport", 1.0),
+        XbrlFact(accession, "invest:DerivativeNotionalAmount", 7.0),
     ]
 
     result = classify_candidate_facts("us-gaap:Profit", facts)
@@ -56,10 +57,9 @@ def test_candidate_classification_names_closed_set_taxonomy_facts() -> None:
         "rxp:Bonuses",
         "cef:AcquiredFundFeesAndExpensesPercent",
         "us-gaap-ebp:EmployeeBenefitPlanAsset",
+        "oef:ShareholderReport",
+        "invest:DerivativeNotionalAmount",
     ):
         verdict = by_qname[qname]
         assert verdict.decision == "UNKNOWN"
         assert verdict.unknown_reason == "STANDARD_TAXONOMY"
-    oef = by_qname["oef:ShareholderReport"]
-    assert oef.decision == "UNKNOWN"
-    assert oef.unknown_reason == "UNSEEN_SIGNATURE"

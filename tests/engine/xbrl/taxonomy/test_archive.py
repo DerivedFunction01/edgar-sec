@@ -39,6 +39,12 @@ def test_namespace_key_reads_each_host_pattern() -> None:
     assert namespace_key("http://xbrl.sec.gov/ffd/2025q4") == ("ffd", "2025q4")
     assert namespace_key("http://xbrl.sec.gov/rxp/2026") == ("rxp", "2026")
     assert namespace_key("http://xbrl.sec.gov/cef/2022") == ("cef", "2022")
+    assert namespace_key("http://xbrl.sec.gov/invest/2013-01-31") == (
+        "invest",
+        "2013",
+    )
+    assert namespace_key("http://xbrl.sec.gov/oef/2025") == ("oef", "2025")
+    assert namespace_key("http://xbrl.sec.gov/oef/2024q3") == ("oef", "2024q3")
     assert namespace_key("http://fasb.org/us-gaap-ebp/2025") == (
         "us-gaap-ebp",
         "2025",
@@ -54,7 +60,7 @@ def test_archive_reproduces_the_retired_table_exactly() -> None:
     """The retired JSON's own slice union still equals it entry for entry."""
     table: dict[str, str] = {}
     for taxonomy, version in CURRENT_SLICES:
-        if taxonomy in ("ifrs", "ffd", "rxp", "cef", "us-gaap-ebp"):
+        if taxonomy in ("ifrs", "ffd", "rxp", "cef", "us-gaap-ebp", "invest", "oef"):
             continue
         table.update(slice_table(taxonomy, version))
     assert len(table) == _RETIRED_TABLE_SIZE
@@ -86,6 +92,13 @@ def test_current_table_resolves_closed_set_item_types() -> None:
     assert table["us-gaap-ebp:EmployeeBenefitPlanAsset"] == ("xbrli:monetaryItemType")
 
 
+def test_current_table_resolves_fund_item_types() -> None:
+    """The default table carries the current invest and oef slices' types."""
+    table = current_table()
+    assert table["invest:DerivativeNotionalAmount"] == "xbrli:monetaryItemType"
+    assert table["oef:AccmVal"] == "xbrli:monetaryItemType"
+
+
 def test_prefix_sets_derive_from_the_slice_inventory() -> None:
     """Standard is the archived inventory; core is its candidacy subset."""
     assert archived_taxonomies() == (
@@ -95,6 +108,8 @@ def test_prefix_sets_derive_from_the_slice_inventory() -> None:
         "ecd",
         "ffd",
         "ifrs",
+        "invest",
+        "oef",
         "rxp",
         "srt",
         "us-gaap",
@@ -111,6 +126,8 @@ def test_prefix_sets_derive_from_the_slice_inventory() -> None:
             "ffd",
             "rxp",
             "cef",
+            "invest",
+            "oef",
             "us-gaap-ebp",
         }
     )
@@ -118,8 +135,8 @@ def test_prefix_sets_derive_from_the_slice_inventory() -> None:
     assert core_prefixes() <= standard_prefixes()
     # Member vocabularies carry no slices and are not concept taxonomies.
     assert not {"country", "currency", "xbrli"} & standard_prefixes()
-    # Slice-less standard taxonomies join only when their slices exist.
-    assert not {"invest", "oef"} & standard_prefixes()
+    # Slice-less taxonomies (rr has none) stay outside the standard set.
+    assert "rr" not in standard_prefixes()
 
 
 def test_archive_covers_every_published_span() -> None:
@@ -167,6 +184,8 @@ def test_archive_covers_every_published_span() -> None:
     assert slice_versions("rxp") == ("2023", "2024", "2025", "2026")
     assert slice_versions("cef") == ("2022", "2023", "2024", "2025", "2026")
     assert slice_versions("us-gaap-ebp") == ("2024", "2025", "2026")
+    assert slice_versions("invest") == ("2011", "2012", "2013")
+    assert slice_versions("oef") == ("2023", "2024", "2024q3", "2025", "2026")
     assert len(slice_versions("ifrs")) == 12
 
 

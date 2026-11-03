@@ -213,7 +213,7 @@ def _fact_expectation(**overrides) -> FactExpectation:
 def test_fact_expectations_cover_every_closed_set() -> None:
     """The pinned fact rows name each closed-set taxonomy's accounting."""
     taxonomies = {row.taxonomy for row in FACT_EXPECTATIONS.values()}
-    assert {"ecd", "cyd", "rxp", "cef", "us-gaap-ebp"} <= taxonomies
+    assert {"ecd", "cyd", "rxp", "cef", "us-gaap-ebp", "oef"} <= taxonomies
     for key, row in FACT_EXPECTATIONS.items():
         assert key == block_key(row.form, row.taxonomy, row.period_shape)
 
