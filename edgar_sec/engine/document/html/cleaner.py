@@ -13,6 +13,7 @@ from edgar_sec.domain.forms.common.checkmarks import (
     font_bullet_glyph_state,
     font_glyph_state,
 )
+from edgar_sec.engine.document.html.tags import BLOCK_TAGS
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.normalize import sanitize_unicode_whitespace
 
@@ -331,6 +332,115 @@ def strip_font_tag_and_noise_attributes(html: str) -> str:
     return html
 
 
+# The HTML5 active-formatting-elements set: an element on the parser's list
+# is cloned around every later insertion until it is closed, so a document
+# that opens formatting elements without closing them makes the parse
+# allocate quadratically in the unclosed count (see
+# bound_formatting_element_scope).
+_FORMATTING_TAGS: frozenset[str] = frozenset(
+    {
+        "a",
+        "b",
+        "big",
+        "code",
+        "em",
+        "font",
+        "i",
+        "nobr",
+        "s",
+        "small",
+        "strike",
+        "strong",
+        "tt",
+        "u",
+    }
+)
+_FORMATTING_ALT = build_alternation(sorted(_FORMATTING_TAGS), auto_escape=True)
+_RE_FORMATTING_OPEN = re.compile(rf"(?i)<(?:{_FORMATTING_ALT})\b")
+_BOUNDARY_TAGS: frozenset[str] = BLOCK_TAGS | frozenset({"html", "head", "body"})
+
+
+def bound_formatting_element_scope(html: str) -> str:
+    """Close still-open formatting elements at block boundaries.
+
+    A spec HTML parser keeps every unclosed formatting element (``<font>``,
+    ``<b>``, ...) on its active-formatting list and clones the whole list
+    around each later text or element insertion. Positioned-layout
+    converters emit ``<div><font ...>text <font ...>text</div>`` thousands
+    of times without ever closing a font, so the list grows by every tag
+    and the parse allocates quadratically in the tag count — one filed
+    424B2 (26,721 unclosed fonts) OOM-killed review generate after
+    allocating tens of gigabytes. Formatting scope is presentation, not
+    content: emitting the implied close tags where a block boundary ends
+    the scope keeps every text node, its order, and each element's own
+    attributes, and the parse becomes linear. A document whose formatting
+    elements already close inside their block passes through unchanged.
+    Script and style bodies are opaque: tag-shaped text inside them
+    never touches the stack.
+
+    Placement is a contract: the normalizer applies this pass to the
+    cleaned text at the parse seam, never inside
+    :func:`clean_html_for_parsing`. The glyph pass reads every close
+    tag as a font-scope pop, and the cleaner runs more than once over
+    the same text on the normalize path, so closes inserted inside the
+    chain would change glyph-scope decisions on the next pass (measured
+    on fix-14a-htm: 97/400 renders changed). Applied after the final
+    clean, the inserted closes reach only the parser.
+    """
+    if not html or not _RE_FORMATTING_OPEN.search(html):
+        return html
+
+    output: list[str] = []
+    stack: list[str] = []
+    opaque_depth = 0
+    cursor = 0
+    for match in _RE_TAG_OR_TEXT.finditer(html):
+        if match.start() > cursor:
+            # A "<" with no ">" after it matches no token alternative;
+            # carry the gap verbatim so the pass is lossless by construction.
+            output.append(html[cursor : match.start()])
+        cursor = match.end()
+        token = match.group(0)
+        if token[0] != "<" or token.startswith(("<!", "<?")):
+            output.append(token)
+            continue
+        is_closing = len(token) > 1 and token[1] == "/"
+        if is_closing:
+            tag_name = (
+                token[2:].split()[0].rstrip(">").lower() if len(token) > 2 else ""
+            )
+        else:
+            tag_name = token[1:].split(None, 1)[0].rstrip("/>").lower()
+        if tag_name in ("script", "style"):
+            if is_closing:
+                opaque_depth = max(0, opaque_depth - 1)
+            elif not token.endswith("/>"):
+                opaque_depth += 1
+            output.append(token)
+            continue
+        if opaque_depth:
+            output.append(token)
+            continue
+        if tag_name in _BOUNDARY_TAGS:
+            while stack:
+                output.append(f"</{stack.pop()}>")
+            output.append(token)
+            continue
+        if tag_name in _FORMATTING_TAGS:
+            if is_closing:
+                for i in range(len(stack) - 1, -1, -1):
+                    if stack[i] == tag_name:
+                        del stack[i]
+                        break
+            elif not token.endswith("/>"):
+                stack.append(tag_name)
+            output.append(token)
+            continue
+        output.append(token)
+    output.append(html[cursor:])
+    return "".join(output)
+
+
 _TOC_NAV_PHRASES = build_alternation(
     [
         r"table\s+of\s+contents",
@@ -395,6 +505,7 @@ def clean_html_for_parsing(html: str) -> str:
 
 
 __all__ = [
+    "bound_formatting_element_scope",
     "clean_html_for_parsing",
     "normalize_font_qualified_glyphs",
     "strip_benign_font_styles",

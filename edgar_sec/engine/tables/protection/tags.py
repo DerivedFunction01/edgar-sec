@@ -155,6 +155,20 @@ def find_table_spans(text: str) -> tuple[TableSpan, ...]:
     # length-preserving (U+0130 expands), so offsets from a lowered copy
     # drift out of alignment with the text they are used to slice.
     spans: list[TableSpan] = []
+    # Line numbers resolve in one forward pass: span positions are
+    # non-decreasing (each search resumes at the previous span's end), so
+    # counting newlines window-by-window scans the text once instead of
+    # re-counting the whole prefix for every span.
+    counted_upto = 0
+    line_at_counted = 0
+
+    def _line_at(position: int) -> int:
+        nonlocal counted_upto, line_at_counted
+        if position > counted_upto:
+            line_at_counted += text.count("\n", counted_upto, position)
+            counted_upto = position
+        return line_at_counted
+
     open_match = _RE_TABLE_OPEN_CI.search(text)
     while open_match is not None:
         index = open_match.start()
@@ -171,8 +185,8 @@ def find_table_spans(text: str) -> tuple[TableSpan, ...]:
                 start=index,
                 end=end,
                 text=text[index:end],
-                start_line=text.count("\n", 0, index),
-                end_line=text.count("\n", 0, end),
+                start_line=_line_at(index),
+                end_line=_line_at(end),
             )
         )
         if not complete:

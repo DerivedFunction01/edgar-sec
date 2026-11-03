@@ -308,3 +308,21 @@ def test_table_document_with_decorative_absolutes_is_unchanged() -> None:
     result = normalize_html_document(html)
     assert "cell" in result
     assert "decoration" in result
+
+
+def test_normalize_unclosed_font_soup_completes_with_each_run_once() -> None:
+    # The positioned-converter shape that OOM-killed review generate on
+    # a filed 424B2: fonts opened per text run, never closed, wrapping
+    # each block. The normalize path bounds the formatting scope before
+    # parsing, so every run renders exactly once.
+    parts = ["<html><body>"]
+    serial = 0
+    for _ in range(40):
+        parts.append("<div>")
+        for _ in range(4):
+            serial += 1
+            parts.append(f'<font style="left: {serial}.5pt">filing text ')
+        parts.append("</div>")
+    parts.append("</body></html>")
+    normalized = normalize_html_document("".join(parts))
+    assert str(normalized).count("filing text") == serial

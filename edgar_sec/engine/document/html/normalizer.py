@@ -10,7 +10,10 @@ import re
 from collections.abc import Callable
 from typing import Self
 
-from edgar_sec.engine.document.html.cleaner import clean_html_for_parsing
+from edgar_sec.engine.document.html.cleaner import (
+    bound_formatting_element_scope,
+    clean_html_for_parsing,
+)
 from edgar_sec.engine.document.html.positioned import (
     detect_positioned_layout,
     reconstruct_positioned_html,
@@ -286,6 +289,12 @@ def normalize_html_document(
         return NormalizedHtmlText(normalized, geometries)
 
     cleaned = clean_html_for_parsing(html)
+    # Bound formatting scope after the final clean, at the parse seam:
+    # every parse below (positioned detection/reconstruction and the
+    # table converter) is then linear in the tag count. The pass is not
+    # part of the cleaner chain — see its docstring for the glyph-scope
+    # reason.
+    cleaned = bound_formatting_element_scope(cleaned)
     if detect_positioned_layout(cleaned):
         reconstructed = reconstruct_positioned_html(cleaned)
         if reconstructed != cleaned:

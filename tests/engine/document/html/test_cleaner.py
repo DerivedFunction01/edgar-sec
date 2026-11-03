@@ -6,6 +6,7 @@ strip, so preservation cases are pinned alongside the removals.
 from __future__ import annotations
 
 from edgar_sec.engine.document.html.cleaner import (
+    bound_formatting_element_scope,
     clean_html_for_parsing,
     normalize_font_qualified_glyphs,
     strip_benign_font_styles,
@@ -15,6 +16,7 @@ from edgar_sec.engine.document.html.cleaner import (
     strip_office_metadata_attributes,
     strip_toc_navigation_links,
 )
+from edgar_sec.engine.document.html.tree import parse_html
 
 
 def test_strip_ixbrl_inline_tags_keeps_inner_text() -> None:
@@ -229,3 +231,73 @@ def test_clean_html_for_parsing_preserves_text_content() -> None:
 
 def test_clean_html_for_parsing_on_empty_input() -> None:
     assert clean_html_for_parsing("") == ""
+
+
+def test_bound_formatting_element_scope_closes_fonts_at_block_end() -> None:
+    html = (
+        '<div><font style="left: 1pt">one <font style="left: 2pt">two</div>'
+        "<div>three</div>"
+    )
+    assert bound_formatting_element_scope(html) == (
+        '<div><font style="left: 1pt">one <font style="left: 2pt">two</font></font></div>'
+        "<div>three</div>"
+    )
+
+
+def test_bound_formatting_element_scope_closes_at_block_start() -> None:
+    html = "<font>lead<div>body</div>"
+    assert bound_formatting_element_scope(html) == "<font>lead</font><div>body</div>"
+
+
+def test_bound_formatting_element_scope_leaves_balanced_markup_unchanged() -> None:
+    html = (
+        '<div><font face="Arial">one</font> and <b>two</b></div>'
+        '<p><a href="x">three</a></p>'
+    )
+    assert bound_formatting_element_scope(html) == html
+
+
+def test_bound_formatting_element_scope_ignores_script_bodies() -> None:
+    html = '<script>var s = "</div>";</script><div><font>x</div>'
+    assert bound_formatting_element_scope(html) == (
+        '<script>var s = "</div>";</script><div><font>x</font></div>'
+    )
+
+
+def test_bound_formatting_element_scope_tracks_explicit_closes() -> None:
+    # </b> ends the b; the font opened inside it stays scoped to the block end.
+    html = "<div><b><font>bold</b> plain</div>"
+    assert bound_formatting_element_scope(html) == (
+        "<div><b><font>bold</b> plain</font></div>"
+    )
+
+
+def test_bound_formatting_element_scope_is_idempotent() -> None:
+    html = '<div><font style="left: 1pt">one <font style="left: 2pt">two</div>'
+    once = bound_formatting_element_scope(html)
+    assert bound_formatting_element_scope(once) == once
+
+
+def test_bound_formatting_element_scope_keeps_trailing_fragment() -> None:
+    html = "<div><font>x</div>tail <div"
+    assert bound_formatting_element_scope(html) == "<div><font>x</font></div>tail <div"
+
+
+def test_bound_formatting_element_scope_bounds_parser_clones() -> None:
+    # Positioned-converter shape: fonts opened per text run and never
+    # closed. The spec parser clones every still-active formatting
+    # element around each insertion, so the parsed tree's font count
+    # grows quadratically in the unclosed count (600 source fonts ->
+    # 45,300 tree nodes) unless the scope is bounded before the parse.
+    parts = ["<html><body>"]
+    serial = 0
+    for _ in range(150):
+        parts.append("<div>")
+        for _ in range(4):
+            serial += 1
+            parts.append(f'<font style="left: {serial}.5pt">filing text ')
+        parts.append("</div>")
+    parts.append("</body></html>")
+    cleaned = bound_formatting_element_scope(clean_html_for_parsing("".join(parts)))
+    tree = parse_html(cleaned)
+    assert len(tree.css("font")) == serial

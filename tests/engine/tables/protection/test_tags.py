@@ -281,3 +281,46 @@ def test_mask_restore_round_trip_with_length_changing_lowercase() -> None:
     assert len(spans) == 2
     assert TAGGED not in masked
     assert restore_tagged_tables(masked, spans) == text
+
+
+def test_find_table_spans_line_numbers_across_spans() -> None:
+    text = (
+        "head\n"
+        "<TABLE>\na\n</TABLE>\n"
+        "mid\n\n"
+        "<TABLE>\nb\n</TABLE>\n"
+        "tail"
+    )
+    spans = find_table_spans(text)
+    assert [(span.start_line, span.end_line) for span in spans] == [(1, 3), (6, 8)]
+
+
+class _CountingStr(str):
+    """A str that tallies the character volume scanned through ``count``."""
+
+    scanned: int
+
+    def __new__(cls, value: str) -> "_CountingStr":
+        obj = super().__new__(cls, value)
+        obj.scanned = 0
+        return obj
+
+    def count(self, sub: str, start: int = 0, end: int | None = None) -> int:
+        if end is None:
+            end = len(self)
+        self.scanned += max(0, end - start)
+        return super().count(sub, start, end)
+
+
+def test_find_table_spans_counts_newlines_in_one_pass() -> None:
+    # Per-span prefix re-counts scan O(spans x document); line numbers
+    # must resolve from a single forward pass over the text instead.
+    body = (
+        "\n".join(f"line {i} <TABLE><S>x</TABLE>" for i in range(40))
+        + "\n"
+        + ("padding\n" * 40)
+    )
+    text = _CountingStr(body)
+    spans = find_table_spans(text)
+    assert len(spans) == 40
+    assert text.scanned <= len(body)
