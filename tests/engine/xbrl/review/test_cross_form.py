@@ -357,7 +357,7 @@ def _dei_expectation(**overrides) -> DeiPresenceExpectation:
 
 def test_dei_presence_expectations_cover_the_probe_families() -> None:
     """Pinned families total the probe cohort; counts stay within filings."""
-    assert sum(row.filings for row in DEI_PRESENCE_EXPECTATIONS.values()) == 61
+    assert sum(row.filings for row in DEI_PRESENCE_EXPECTATIONS.values()) == 90
     key_sets = {frozenset(row.present) for row in DEI_PRESENCE_EXPECTATIONS.values()}
     assert len(key_sets) == 1
     for row in DEI_PRESENCE_EXPECTATIONS.values():

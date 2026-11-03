@@ -50,24 +50,25 @@ def test_canonical_probe_cohort_is_the_registry() -> None:
     """Verify the probe resolver names the form-probe corpus registry."""
     assert canonical_probe_cohort_path() == fixture_path("xbrl/probe_cohort.json")
     cohort = load_canonical_probe_cohort()
-    assert len(cohort) == 61
+    assert len(cohort) == 90
     forms = [f.form for f in cohort]
     assert forms.count("10-Q") == 11
     assert forms.count("10-Q/A") == 1
-    assert forms.count("10-K") == 1
-    assert forms.count("10-K/A") == 1
+    assert forms.count("10-K") == 2
+    assert forms.count("10-K/A") == 2
     assert forms.count("8-K") == 7
     assert forms.count("8-K/A") == 2
-    assert forms.count("6-K") == 9
-    assert forms.count("40-F") == 1
+    assert forms.count("6-K") == 11
+    assert forms.count("20-F") == 5
+    assert forms.count("40-F") == 4
     assert forms.count("DEF 14A") == 2
     assert forms.count("SD") == 1
-    assert forms.count("S-1") == 1
-    assert forms.count("S-4") == 1
-    assert forms.count("F-1") == 1
-    assert forms.count("11-K") == 2
-    assert forms.count("N-CSR") == 2
-    assert forms.count("N-CSRS") == 2
+    assert forms.count("S-1") == 4
+    assert forms.count("S-4") == 4
+    assert forms.count("F-1") == 4
+    assert forms.count("11-K") == 5
+    assert forms.count("N-CSR") == 4
+    assert forms.count("N-CSRS") == 4
     assert forms.count("424B2") == 1
     assert forms.count("424B3") == 1
     assert forms.count("424B5") == 1
@@ -78,7 +79,7 @@ def test_canonical_probe_cohort_is_the_registry() -> None:
     assert forms.count("F-3") == 1
     assert forms.count("10-KT") == 6
     assert forms.count("10-KT/A") == 1
-    assert forms.count("10-QT") == 1
+    assert forms.count("10-QT") == 2
     for filing in cohort:
         assert len(str(filing.accession)) == 20
         assert int(filing.cik) > 0
