@@ -9,7 +9,9 @@ from edgar_sec.engine.xbrl.schema.models import (
     CalculationArc,
     XbrlFact,
     qname_local,
+    split_concept_qname,
 )
+from edgar_sec.engine.xbrl.taxonomy.archive import standard_prefixes
 
 _BOTTOMLINE_HEADS = frozenset({"H_INCOME", "H_PROFIT", "H_MARGIN", "H_LOSS"})
 _BOTTOMLINE_SLICES = frozenset(
@@ -29,8 +31,14 @@ def is_bottomline(atom: Atom) -> bool:
     return "M_NET_BOTTOMLINE" in mods or (atom.head == "H_INCOME" and mods <= {"V_NET"})
 
 
-def bottomline_rank(atom: Atom | None, qname: str) -> tuple[int, int, int, str] | None:
-    """Rank a bottomline candidate; slice concepts are not candidates."""
+def bottomline_rank(
+    atom: Atom | None, qname: str
+) -> tuple[int, int, int, int, str] | None:
+    """Rank a bottomline candidate; slice concepts are not candidates.
+
+    Standard-taxonomy concepts rank before extension ones: a filer's
+    extension subtotal never displaces the standard bottom line.
+    """
     if atom is None or atom.head not in _BOTTOMLINE_HEADS:
         return None
     mods = set(atom.modifiers)
@@ -39,7 +47,8 @@ def bottomline_rank(atom: Atom | None, qname: str) -> tuple[int, int, int, str] 
     if not is_bottomline(atom) or _BOTTOMLINE_SLICES & mods:
         return None
     group = 0 if "M_NET_BOTTOMLINE" in mods else 1
-    return (group, len(mods), len(qname_local(qname)), qname)
+    extension = 0 if split_concept_qname(qname)[0] in standard_prefixes() else 1
+    return (extension, group, len(mods), len(qname_local(qname)), qname)
 
 
 def bottomline_candidate(
@@ -55,4 +64,4 @@ def bottomline_candidate(
         for concept in concepts & duration
         if (rank := bottomline_rank(atoms.get(concept), concept)) is not None
     ]
-    return min(ranks)[3] if ranks else None
+    return min(ranks)[4] if ranks else None

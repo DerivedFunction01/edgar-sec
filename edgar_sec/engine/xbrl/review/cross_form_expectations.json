@@ -1,10 +1,10 @@
 {
  "10-K+10-K/A|us-gaap|annual": {
   "adverse": {},
-  "correct": 1,
+  "correct": 2,
   "form": "10-K+10-K/A",
   "honest": 0,
-  "n": 1,
+  "n": 2,
   "period_shape": "annual",
   "posture": "measured",
   "replay_mismatches": 0,
@@ -13,10 +13,10 @@
  },
  "10-K/A|us-gaap|annual": {
   "adverse": {},
-  "correct": 1,
+  "correct": 2,
   "form": "10-K/A",
   "honest": 0,
-  "n": 1,
+  "n": 2,
   "period_shape": "annual",
   "posture": "measured",
   "replay_mismatches": 0,
@@ -49,10 +49,10 @@
  },
  "10-K|us-gaap|annual": {
   "adverse": {},
-  "correct": 1,
+  "correct": 2,
   "form": "10-K",
   "honest": 0,
-  "n": 1,
+  "n": 2,
   "period_shape": "annual",
   "posture": "measured",
   "replay_mismatches": 0,
@@ -87,14 +87,14 @@
   "adverse": {
    "wrong-span": 1
   },
-  "correct": 0,
+  "correct": 1,
   "form": "10-QT",
   "honest": 0,
-  "n": 1,
+  "n": 2,
   "period_shape": "quarterly",
   "posture": "measured",
   "replay_mismatches": 1,
-  "surfaced_conflicts": 0,
+  "surfaced_conflicts": 1,
   "taxonomy": "us-gaap"
  },
  "10-Q|us-gaap|quarterly": {
@@ -125,13 +125,51 @@
   "adverse": {},
   "correct": 0,
   "form": "11-K",
-  "honest": 2,
-  "n": 2,
+  "honest": 5,
+  "n": 5,
   "period_shape": "annual",
   "posture": "absence",
   "replay_mismatches": 0,
   "surfaced_conflicts": 0,
   "taxonomy": "us-gaap-ebp"
+ },
+ "20-F|ifrs-full|annual": {
+  "adverse": {},
+  "correct": 1,
+  "form": "20-F",
+  "honest": 1,
+  "n": 2,
+  "period_shape": "annual",
+  "posture": "measured",
+  "replay_mismatches": 0,
+  "surfaced_conflicts": 0,
+  "taxonomy": "ifrs-full"
+ },
+ "20-F|us-gaap|annual": {
+  "adverse": {
+   "wrong-value": 1
+  },
+  "correct": 2,
+  "form": "20-F",
+  "honest": 0,
+  "n": 3,
+  "period_shape": "annual",
+  "posture": "measured",
+  "replay_mismatches": 1,
+  "surfaced_conflicts": 1,
+  "taxonomy": "us-gaap"
+ },
+ "40-F|ifrs-full|annual": {
+  "adverse": {},
+  "correct": 3,
+  "form": "40-F",
+  "honest": 1,
+  "n": 4,
+  "period_shape": "annual",
+  "posture": "measured",
+  "replay_mismatches": 0,
+  "surfaced_conflicts": 1,
+  "taxonomy": "ifrs-full"
  },
  "424B2|ffd|quarterly": {
   "adverse": {},
@@ -193,67 +231,17 @@
   "surfaced_conflicts": 0,
   "taxonomy": "ffd"
  },
- "S-8|ffd|quarterly": {
+ "6-K|dei|quarterly": {
   "adverse": {},
   "correct": 0,
-  "form": "S-8",
-  "honest": 1,
-  "n": 1,
-  "period_shape": "quarterly",
-  "posture": "absence",
-  "replay_mismatches": 0,
-  "surfaced_conflicts": 0,
-  "taxonomy": "ffd"
- },
- "S-3|ffd|quarterly": {
-  "adverse": {},
-  "correct": 0,
-  "form": "S-3",
-  "honest": 1,
-  "n": 1,
-  "period_shape": "quarterly",
-  "posture": "absence",
-  "replay_mismatches": 0,
-  "surfaced_conflicts": 0,
-  "taxonomy": "ffd"
- },
- "F-3|ffd|quarterly": {
-  "adverse": {},
-  "correct": 0,
-  "form": "F-3",
-  "honest": 1,
-  "n": 1,
-  "period_shape": "quarterly",
-  "posture": "absence",
-  "replay_mismatches": 0,
-  "surfaced_conflicts": 0,
-  "taxonomy": "ffd"
- },
- "6-K|ifrs-full|ytd": {
-  "adverse": {},
-  "correct": 1,
   "form": "6-K",
-  "honest": 3,
-  "n": 4,
-  "period_shape": "ytd",
-  "posture": "measured",
+  "honest": 1,
+  "n": 1,
+  "period_shape": "quarterly",
+  "posture": "absence",
   "replay_mismatches": 0,
   "surfaced_conflicts": 0,
-  "taxonomy": "ifrs-full"
- },
- "6-K|us-gaap|ytd": {
-  "adverse": {
-   "wrong-span": 1
-  },
-  "correct": 1,
-  "form": "6-K",
-  "honest": 0,
-  "n": 2,
-  "period_shape": "ytd",
-  "posture": "measured",
-  "replay_mismatches": 1,
-  "surfaced_conflicts": 0,
-  "taxonomy": "us-gaap"
+  "taxonomy": "dei"
  },
  "6-K|ifrs-full|quarterly": {
   "adverse": {},
@@ -267,29 +255,43 @@
   "surfaced_conflicts": 0,
   "taxonomy": "ifrs-full"
  },
- "6-K|dei|quarterly": {
-  "adverse": {},
-  "correct": 0,
-  "form": "6-K",
-  "honest": 1,
-  "n": 1,
-  "period_shape": "quarterly",
-  "posture": "absence",
-  "replay_mismatches": 0,
-  "surfaced_conflicts": 0,
-  "taxonomy": "dei"
- },
- "40-F|ifrs-full|annual": {
+ "6-K|ifrs-full|ytd": {
   "adverse": {},
   "correct": 1,
-  "form": "40-F",
+  "form": "6-K",
+  "honest": 3,
+  "n": 4,
+  "period_shape": "ytd",
+  "posture": "measured",
+  "replay_mismatches": 0,
+  "surfaced_conflicts": 0,
+  "taxonomy": "ifrs-full"
+ },
+ "6-K|us-gaap|quarterly": {
+  "adverse": {},
+  "correct": 1,
+  "form": "6-K",
   "honest": 0,
   "n": 1,
-  "period_shape": "annual",
+  "period_shape": "quarterly",
   "posture": "measured",
   "replay_mismatches": 0,
   "surfaced_conflicts": 1,
-  "taxonomy": "ifrs-full"
+  "taxonomy": "us-gaap"
+ },
+ "6-K|us-gaap|ytd": {
+  "adverse": {
+   "wrong-span": 1
+  },
+  "correct": 2,
+  "form": "6-K",
+  "honest": 0,
+  "n": 3,
+  "period_shape": "ytd",
+  "posture": "measured",
+  "replay_mismatches": 1,
+  "surfaced_conflicts": 0,
+  "taxonomy": "us-gaap"
  },
  "8-K/A|us-gaap|annual": {
   "adverse": {},
@@ -339,6 +341,18 @@
   "surfaced_conflicts": 0,
   "taxonomy": "ecd"
  },
+ "F-1|ifrs-full|annual": {
+  "adverse": {},
+  "correct": 1,
+  "form": "F-1",
+  "honest": 1,
+  "n": 2,
+  "period_shape": "annual",
+  "posture": "measured",
+  "replay_mismatches": 0,
+  "surfaced_conflicts": 0,
+  "taxonomy": "ifrs-full"
+ },
  "F-1|us-gaap|annual": {
   "adverse": {},
   "correct": 1,
@@ -350,6 +364,42 @@
   "replay_mismatches": 0,
   "surfaced_conflicts": 0,
   "taxonomy": "us-gaap"
+ },
+ "F-1|us-gaap|quarterly": {
+  "adverse": {},
+  "correct": 1,
+  "form": "F-1",
+  "honest": 0,
+  "n": 1,
+  "period_shape": "quarterly",
+  "posture": "measured",
+  "replay_mismatches": 0,
+  "surfaced_conflicts": 0,
+  "taxonomy": "us-gaap"
+ },
+ "F-3|ffd|quarterly": {
+  "adverse": {},
+  "correct": 0,
+  "form": "F-3",
+  "honest": 1,
+  "n": 1,
+  "period_shape": "quarterly",
+  "posture": "absence",
+  "replay_mismatches": 0,
+  "surfaced_conflicts": 0,
+  "taxonomy": "ffd"
+ },
+ "N-CSRS|cef|quarterly": {
+  "adverse": {},
+  "correct": 0,
+  "form": "N-CSRS",
+  "honest": 2,
+  "n": 2,
+  "period_shape": "quarterly",
+  "posture": "measured",
+  "replay_mismatches": 0,
+  "surfaced_conflicts": 0,
+  "taxonomy": "cef"
  },
  "N-CSRS|cef|ytd": {
   "adverse": {},
@@ -379,8 +429,8 @@
   "adverse": {},
   "correct": 0,
   "form": "N-CSR",
-  "honest": 1,
-  "n": 1,
+  "honest": 3,
+  "n": 3,
   "period_shape": "annual",
   "posture": "absence",
   "replay_mismatches": 0,
@@ -401,27 +451,75 @@
  },
  "S-1|us-gaap|annual": {
   "adverse": {},
-  "correct": 1,
+  "correct": 2,
   "form": "S-1",
   "honest": 0,
-  "n": 1,
+  "n": 2,
   "period_shape": "annual",
   "posture": "measured",
   "replay_mismatches": 0,
   "surfaced_conflicts": 0,
   "taxonomy": "us-gaap"
  },
+ "S-1|us-gaap|quarterly": {
+  "adverse": {},
+  "correct": 2,
+  "form": "S-1",
+  "honest": 0,
+  "n": 2,
+  "period_shape": "quarterly",
+  "posture": "measured",
+  "replay_mismatches": 0,
+  "surfaced_conflicts": 0,
+  "taxonomy": "us-gaap"
+ },
+ "S-3|ffd|quarterly": {
+  "adverse": {},
+  "correct": 0,
+  "form": "S-3",
+  "honest": 1,
+  "n": 1,
+  "period_shape": "quarterly",
+  "posture": "absence",
+  "replay_mismatches": 0,
+  "surfaced_conflicts": 0,
+  "taxonomy": "ffd"
+ },
  "S-4|us-gaap|annual": {
+  "adverse": {},
+  "correct": 3,
+  "form": "S-4",
+  "honest": 0,
+  "n": 3,
+  "period_shape": "annual",
+  "posture": "measured",
+  "replay_mismatches": 0,
+  "surfaced_conflicts": 1,
+  "taxonomy": "us-gaap"
+ },
+ "S-4|us-gaap|quarterly": {
   "adverse": {},
   "correct": 1,
   "form": "S-4",
   "honest": 0,
   "n": 1,
-  "period_shape": "annual",
+  "period_shape": "quarterly",
   "posture": "measured",
   "replay_mismatches": 0,
   "surfaced_conflicts": 0,
   "taxonomy": "us-gaap"
+ },
+ "S-8|ffd|quarterly": {
+  "adverse": {},
+  "correct": 0,
+  "form": "S-8",
+  "honest": 1,
+  "n": 1,
+  "period_shape": "quarterly",
+  "posture": "absence",
+  "replay_mismatches": 0,
+  "surfaced_conflicts": 0,
+  "taxonomy": "ffd"
  },
  "SD|rxp|annual": {
   "adverse": {},

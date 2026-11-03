@@ -6,6 +6,7 @@ atom source; this surface wraps its graphs in client views.
 
 from __future__ import annotations
 
+from dataclasses import replace
 from typing import TYPE_CHECKING
 
 from edgar_sec.apps.client.catalog import (
@@ -37,11 +38,19 @@ from edgar_sec.apps.client.views import (
     FairValueHierarchyView,
     StatementView,
 )
-from edgar_sec.engine.xbrl.schema.models import XbrlFact, split_concept_qname
+from edgar_sec.engine.xbrl.schema.models import (
+    XbrlFact,
+    qname_local,
+    split_concept_qname,
+)
+from edgar_sec.engine.xbrl.solve.antichain import AntiChainValidator
 from edgar_sec.engine.xbrl.solve.statement import (
     StatementGraph,
     build_statement_graph,
 )
+
+#: The declared dei axis whose sole member scopes a plan's statement face.
+_PLAN_ENTITY_AXIS = "dei:LegalEntityAxis"
 
 if TYPE_CHECKING:
     import pandas as pd
@@ -53,6 +62,7 @@ class XbrlStatements:
     def __init__(self, kernel: FilingKernel) -> None:
         self._kernel = kernel
         self._catalog_entries: tuple[CatalogEntry, ...] | None = None
+        self._plan_root_cache: tuple[str, str] | None = None
 
     def _catalog(self) -> tuple[CatalogEntry, ...]:
         if self._catalog_entries is None:
@@ -160,6 +170,251 @@ class XbrlStatements:
         return build_statement_graph(
             root_concept=root,
             statement_type="Comprehensive Income",
+            facts=self._kernel.facts,
+            arcs=self._kernel.calculation_arcs,
+            taxonomy=self._kernel.taxonomy,
+            labels=self._kernel.labels,
+            period_type="duration",
+            end_date=period,
+            year=year,
+            graph_cls=StatementGraph,
+        )
+
+    def plan_net_assets(
+        self,
+        member_qname: str | None = None,
+        period: str | None = None,
+        year: int | str | None = None,
+    ) -> StatementView:
+        """Construct the Statement of Net Assets Available for Benefits view."""
+        graph = self._kernel.graph_once(
+            ("plan_net_assets", member_qname, period, year),
+            lambda: self._build_plan(False, member_qname, period, year),
+        )
+        return self._wrap(graph)
+
+    def plan_changes(
+        self,
+        member_qname: str | None = None,
+        period: str | None = None,
+        year: int | str | None = None,
+    ) -> StatementView:
+        """Construct the Statement of Changes in Net Assets Available for Benefits."""
+        graph = self._kernel.graph_once(
+            ("plan_changes", member_qname, period, year),
+            lambda: self._build_plan(True, member_qname, period, year),
+        )
+        return self._wrap(graph)
+
+    def _build_plan(
+        self,
+        changes: bool,
+        member_qname: str | None,
+        period: str | None,
+        year: int | str | None,
+    ) -> StatementGraph:
+        """Compose one plan statement inside its legal-entity member context."""
+        net_root, changes_root = self._plan_roots()
+        root = changes_root if changes else net_root
+        period_type = "duration" if changes else "instant"
+        member = self._plan_member(member_qname, root, period_type) if root else None
+        return build_statement_graph(
+            root_concept=root if member is not None else "",
+            statement_type=(
+                "Changes in Net Assets Available for Benefits"
+                if changes
+                else "Net Assets Available for Benefits"
+            ),
+            facts=(
+                self._plan_scoped_facts(member)
+                if member is not None
+                else self._kernel.facts
+            ),
+            arcs=self._kernel.calculation_arcs,
+            taxonomy=self._kernel.taxonomy,
+            labels=self._kernel.labels,
+            period_type=period_type,
+            instant_date=None if changes else period,
+            end_date=period if changes else None,
+            year=year,
+            graph_cls=StatementGraph,
+        )
+
+    def _plan_roots(self) -> tuple[str, str]:
+        """The plan statement root pair, discovered once per filing.
+
+        Plan statements are a regulated pair: unless both roots are
+        discovered, neither is served.
+        """
+        if self._plan_root_cache is None:
+            net = self._discover_plan_root({"V_NET"}, {"M_CHANGE"})
+            changes = self._discover_plan_root({"M_CHANGE", "V_NET"}, set())
+            self._plan_root_cache = (net, changes) if net and changes else ("", "")
+        return self._plan_root_cache
+
+    def _discover_plan_root(self, required: set[str], excluded: set[str]) -> str:
+        """Winning root: role-rooted, wrapper-free, minimal coordinate.
+
+        A wrapper whose subtree holds another root candidate at the
+        identical coordinate is a reconciliation of the root, not it.
+        """
+        kernel = self._kernel
+        arcs = kernel.calculation_arcs
+        role_parents: dict[str | None, set[str]] = {}
+        role_children: dict[str | None, set[str]] = {}
+        for arc in arcs:
+            role_parents.setdefault(arc.role_uri, set()).add(arc.parent_qname)
+            role_children.setdefault(arc.role_uri, set()).add(arc.child_qname)
+        role_roots: set[str] = set()
+        for role, parents in role_parents.items():
+            role_roots |= parents - role_children.get(role, set())
+        parents = {arc.parent_qname for arc in arcs}
+        children = {arc.child_qname for arc in arcs}
+        ranked: list[tuple[int, int, int, str]] = []
+        atoms: dict[str, frozenset[str]] = {}
+        for concept in parents | children:
+            atom = kernel.atom(concept)
+            if atom is None or atom.head != "H_ASSET":
+                continue
+            mods = set(atom.modifiers)
+            if not required <= mods or excluded & mods:
+                continue
+            if concept not in role_roots:
+                continue
+            atoms[concept] = frozenset(mods)
+            ranked.append(
+                (
+                    len(mods - required),
+                    1 if concept not in parents else 0,
+                    len(qname_local(concept)),
+                    concept,
+                )
+            )
+        if not ranked:
+            return ""
+        reach = AntiChainValidator.build_reachability_map(
+            [(arc.parent_qname, arc.child_qname, arc.weight) for arc in arcs]
+        )
+        roots = set(atoms)
+        survivors = [
+            entry
+            for entry in ranked
+            if not any(
+                atoms[other] == atoms[entry[3]]
+                for other in reach.get(entry[3], set()) & roots
+                if other != entry[3]
+            )
+        ]
+        pool = survivors or ranked
+        pool.sort()
+        return pool[0][3]
+
+    def _plan_member(
+        self, member_qname: str | None, root: str, period_type: str
+    ) -> str | None:
+        """The plan entity member carrying the root's filed values.
+
+        The default is the qualifying member whose latest root value
+        is largest; an explicit member carrying no root value refuses.
+        """
+        kernel = self._kernel
+        if member_qname is not None:
+            members = (member_qname,)
+        else:
+            members = tuple(
+                sorted(
+                    {
+                        fact.dimensions[_PLAN_ENTITY_AXIS]
+                        for fact in kernel.facts
+                        if set(fact.dimensions) == {_PLAN_ENTITY_AXIS}
+                    }
+                )
+            )
+        best: tuple[float, str] | None = None
+        for member in members:
+            latest: tuple[str, float] | None = None
+            for fact in kernel.facts:
+                if fact.concept_qname != root:
+                    continue
+                if set(fact.dimensions) != {_PLAN_ENTITY_AXIS}:
+                    continue
+                if fact.dimensions[_PLAN_ENTITY_AXIS] != member:
+                    continue
+                if not isinstance(fact.value, (int, float)):
+                    continue
+                date = fact.instant_date if period_type == "instant" else fact.end_date
+                if date and (latest is None or date > latest[0]):
+                    latest = (date, float(fact.value))
+            if latest is not None and (best is None or (latest[1], member) > best):
+                best = (latest[1], member)
+        return best[1] if best is not None else None
+
+    def _plan_scoped_facts(self, member: str) -> tuple[XbrlFact, ...]:
+        """Filing facts inside one plan entity context, re-based undimensioned.
+
+        Facts dimensioned beyond the entity axis (the schedule mass)
+        stay out; only the statement face is composed.
+        """
+        scoped: list[XbrlFact] = []
+        for fact in self._kernel.facts:
+            if not fact.dimensions:
+                scoped.append(fact)
+            elif (
+                set(fact.dimensions) == {_PLAN_ENTITY_AXIS}
+                and fact.dimensions[_PLAN_ENTITY_AXIS] == member
+            ):
+                scoped.append(replace(fact, dimensions={}))
+        return tuple(scoped)
+
+    def fund_assets_liabilities(
+        self,
+        period: str | None = None,
+        year: int | str | None = None,
+    ) -> StatementView:
+        """Construct the fund Statement of Assets and Liabilities view."""
+        graph = self._kernel.graph_once(
+            ("fund_assets_liabilities", period, year),
+            lambda: self._build_fund_assets_liabilities(period, year),
+        )
+        return self._wrap(graph)
+
+    def _build_fund_assets_liabilities(
+        self, period: str | None, year: int | str | None
+    ) -> StatementGraph:
+        root = self._kernel.composer.find_balance_sheet_root()
+        return build_statement_graph(
+            root_concept=root,
+            statement_type="Assets and Liabilities",
+            facts=self._kernel.facts,
+            arcs=self._kernel.calculation_arcs,
+            taxonomy=self._kernel.taxonomy,
+            labels=self._kernel.labels,
+            period_type="instant",
+            instant_date=period,
+            year=year,
+            graph_cls=StatementGraph,
+        )
+
+    def fund_operations(
+        self,
+        period: str | None = None,
+        year: int | str | None = None,
+    ) -> StatementView:
+        """Construct the fund Statement of Operations view."""
+        graph = self._kernel.graph_once(
+            ("fund_operations", period, year),
+            lambda: self._build_fund_operations(period, year),
+        )
+        return self._wrap(graph)
+
+    def _build_fund_operations(
+        self, period: str | None, year: int | str | None
+    ) -> StatementGraph:
+        composer = self._kernel.composer
+        root = composer.find_income_statement_root()
+        return build_statement_graph(
+            root_concept=root,
+            statement_type="Operations",
             facts=self._kernel.facts,
             arcs=self._kernel.calculation_arcs,
             taxonomy=self._kernel.taxonomy,

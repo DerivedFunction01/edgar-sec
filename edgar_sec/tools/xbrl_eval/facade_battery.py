@@ -17,15 +17,17 @@ from pathlib import Path
 from typing import Any
 
 from edgar_sec.apps.client.catalog import CatalogEntry
+from edgar_sec.apps.client.fiscal import duration_length_class
 from edgar_sec.apps.client.presentation import PresentationView, period_key_class
 from edgar_sec.apps.client.xbrl import Xbrl
+from edgar_sec.engine.xbrl.schema.models import XbrlFact
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.foundation.runtime.resources import derive_resources
 from edgar_sec.infra.storage.atomic import atomic_write_json
 
 REPO = Path(__file__).resolve().parents[3]
 XBRL_FIXTURES = REPO / "tests" / "fixtures" / "xbrl"
-COHORT_NAMES = ("seed", "vintage", "sp100")
+COHORT_NAMES = ("seed", "vintage", "sp100", "probe")
 MODES = ("standard", "detailed", "summary")
 TOLERANCE = 0.5
 
@@ -39,6 +41,10 @@ _STATEMENT_CALLS = (
     "balance_sheet",
     "cash_flow_statement",
     "comprehensive_income_statement",
+    "plan_net_assets",
+    "plan_changes",
+    "fund_assets_liabilities",
+    "fund_operations",
     "equity_rollforward",
     "derivatives",
     "debt",
@@ -124,29 +130,75 @@ def cohort_folders(cohort: str, subset: Sequence[str] | None = None) -> list[str
     return folders
 
 
-def _face_value_check(view: PresentationView, expected: float) -> dict[str, Any]:
-    """Whether the expected value appears as a face value at the latest annual period."""
+def _face_value_check(
+    view: PresentationView,
+    expected: float,
+    periods: Sequence[str] | None = None,
+) -> dict[str, Any]:
+    """Whether the expected value appears as a face value at the served period.
+
+    periods names the scalar's served-span face keys; the check anchors
+    there when given, else at the latest annual period as before.
+    """
     if not view.periods:
         return {"found": False, "period": None, "nearest": None}
-    annual = [p for p in view.periods if period_key_class(p) is None]
-    period = annual[-1] if annual else view.periods[-1]
+    if periods:
+        anchors = [key for key in periods if key in view.periods]
+        if not anchors:
+            return {"found": False, "period": periods[-1], "nearest": None}
+    else:
+        annual = [p for p in view.periods if period_key_class(p) is None]
+        anchors = [annual[-1] if annual else view.periods[-1]]
     nearest: dict[str, Any] | None = None
-    for row in view.rows:
-        if row.dimensions:
-            continue
-        value = row.values.get(period)
-        if not isinstance(value, (int, float)) or isinstance(value, bool):
-            continue
-        if abs(float(value) - expected) <= TOLERANCE:
-            return {"found": True, "period": period, "nearest": None}
-        gap = abs(float(value) - expected)
-        if nearest is None or gap < nearest["difference"]:
-            nearest = {
-                "concept": row.concept,
-                "value": float(value),
-                "difference": gap,
-            }
-    return {"found": False, "period": period, "nearest": nearest}
+    for period in anchors:
+        for row in view.rows:
+            if row.dimensions:
+                continue
+            value = row.values.get(period)
+            if not isinstance(value, (int, float)) or isinstance(value, bool):
+                continue
+            if abs(float(value) - expected) <= TOLERANCE:
+                return {"found": True, "period": period, "nearest": None}
+            gap = abs(float(value) - expected)
+            if nearest is None or gap < nearest["difference"]:
+                nearest = {
+                    "concept": row.concept,
+                    "value": float(value),
+                    "difference": gap,
+                }
+    return {"found": False, "period": anchors[-1], "nearest": nearest}
+
+
+def _fact_period_key(fact: XbrlFact, span: str) -> str | None:
+    """A fact's presentation period key, when the fact is in the span class."""
+    if span == "INSTANT":
+        return fact.instant_date if fact.period_type == "instant" else None
+    if fact.period_type != "duration" or not fact.start_date or not fact.end_date:
+        return None
+    if duration_length_class(fact.start_date, fact.end_date) != span:
+        return None
+    return fact.end_date if span == "ANNUAL" else f"{fact.end_date} ({span})"
+
+
+def _served_period_keys(xbrl: Xbrl, metric: str, expected: float) -> tuple[str, ...]:
+    """Face period keys of the span the metric's scalar was served from.
+
+    Keys come from undimensioned facts carrying the served value in the
+    served span class; empty when the span or a carrying fact is unknown.
+    """
+    span, error = _guard(lambda: xbrl.financials.span_class(metric))
+    if error is not None or span is None:
+        return ()
+    keys = {
+        key
+        for fact in xbrl.facts
+        if not fact.dimensions
+        and isinstance(fact.value, (int, float))
+        and not isinstance(fact.value, bool)
+        and abs(float(fact.value) - expected) <= TOLERANCE
+        and (key := _fact_period_key(fact, span)) is not None
+    }
+    return tuple(sorted(keys))
 
 
 def _mode_violation(rows: dict[str, int]) -> bool:
@@ -233,6 +285,7 @@ def _face_total_check(
     if expected is None:
         return {**record, "status": "skipped", "reason": "scalar is None"}
     record["expected"] = float(expected)
+    anchors = _served_period_keys(xbrl, metric, float(expected))
     nearest: dict[str, Any] | None = None
     period: str | None = None
     for entry in family_entries:
@@ -241,7 +294,7 @@ def _face_total_check(
         )
         if view_error is not None:
             return {**record, "status": "error", "error": view_error}
-        outcome = _face_value_check(view, float(expected))
+        outcome = _face_value_check(view, float(expected), anchors)
         if outcome["found"]:
             return {
                 **record,

@@ -133,6 +133,110 @@ def duration_span_key(period: tuple[str, str]) -> tuple[int, str, str]:
     return (-span, start, end)
 
 
+def filed_length_class(
+    facts: Sequence[XbrlFact], metadata: FiledMetadata
+) -> str | None:
+    """The length class a filing declares for its own focus period.
+
+    The dei period focus names it; where dei is silent, the most-carried
+    duration ending at the period end derives it, if corroborated.
+    """
+    focus = focus_length_class(metadata.period_focus)
+    if focus is not None:
+        return focus if _class_corroborated(facts, metadata, focus) else None
+    derived = _span_derived_class(facts, metadata)
+    if derived is not None and _class_corroborated(facts, metadata, derived):
+        return derived
+    return None
+
+
+def _span_derived_class(
+    facts: Sequence[XbrlFact], metadata: FiledMetadata
+) -> str | None:
+    """Length class of the most-carried duration ending at the period end."""
+    counts: dict[tuple[str, str], int] = {}
+    for fact in facts:
+        if fact.dimensions or fact.period_type != "duration":
+            continue
+        if not fact.start_date or not fact.end_date:
+            continue
+        if metadata.period_end is not None and fact.end_date != metadata.period_end:
+            continue
+        key = (fact.start_date, fact.end_date)
+        counts[key] = counts.get(key, 0) + 1
+    if not counts:
+        return None
+    start, end = max(
+        counts, key=lambda key: (counts[key], -duration_span_key(key)[0], key)
+    )
+    derived = duration_length_class(start, end)
+    return derived if derived in _SERVING_LENGTH_CLASSES else None
+
+
+def _class_corroborated(
+    facts: Sequence[XbrlFact], metadata: FiledMetadata, length_class: str
+) -> bool:
+    """Whether the filing's spans corroborate a declared length class.
+
+    The class's most-carried period at the period end must be a longest
+    span there; a longer span leaves the two in disagreement.
+    """
+    period_end = metadata.period_end
+    if period_end is None:
+        return True
+    counts: dict[tuple[str, str], int] = {}
+    longest = 0
+    for fact in facts:
+        if fact.dimensions or fact.period_type != "duration":
+            continue
+        if not fact.start_date or fact.end_date != period_end:
+            continue
+        span = -duration_span_key((fact.start_date, fact.end_date))[0]
+        longest = max(longest, span)
+        if duration_length_class(fact.start_date, fact.end_date) == length_class:
+            key = (fact.start_date, fact.end_date)
+            counts[key] = counts.get(key, 0) + 1
+    if not counts:
+        return False
+    chosen = max(counts, key=lambda key: (counts[key], -duration_span_key(key)[0], key))
+    return -duration_span_key(chosen)[0] >= longest
+
+
+def transition_period(
+    facts: Sequence[XbrlFact], metadata: FiledMetadata
+) -> tuple[str, str] | None:
+    """A transition filing's stub period; None for other filings.
+
+    The stub is the most-carried undimensioned duration period,
+    preferring one ending at the filed period end.
+    """
+    if not is_transition_form(metadata.document_type):
+        return None
+    counts: dict[tuple[str, str], int] = {}
+    for fact in facts:
+        if fact.dimensions or fact.period_type != "duration":
+            continue
+        if not fact.start_date or not fact.end_date:
+            continue
+        key = (fact.start_date, fact.end_date)
+        counts[key] = counts.get(key, 0) + 1
+    if not counts:
+        return None
+    at_end = [key for key in counts if key[1] == metadata.period_end]
+    pool = at_end or list(counts)
+    return max(pool, key=lambda key: (counts[key], -duration_span_key(key)[0], key))
+
+
+def transition_length_class(
+    facts: Sequence[XbrlFact], metadata: FiledMetadata
+) -> str | None:
+    """Length class of a transition filing's stub period; None otherwise."""
+    period = transition_period(facts, metadata)
+    if period is None:
+        return None
+    return duration_length_class(period[0], period[1])
+
+
 class FiscalYearQueries:
     """Candidate-scope synthesis and tiered answering for one filing."""
 
@@ -355,67 +459,8 @@ class FiscalYearQueries:
         )
 
     def _filed_length_class(self) -> str | None:
-        """The requested length class this filing declares for itself.
-
-        The dei period focus names it; where dei is silent, the most-carried duration ending at the period end derives it. An uncorroborated class is not adopted.
-        """
-        focus = focus_length_class(self._metadata.period_focus)
-        if focus is not None:
-            return focus if self._class_corroborated(focus) else None
-        derived = self._span_derived_class()
-        if derived is not None and self._class_corroborated(derived):
-            return derived
-        return None
-
-    def _span_derived_class(self) -> str | None:
-        """Length class of the most-carried duration ending at the period end."""
-        counts: dict[tuple[str, str], int] = {}
-        for fact in self._facts:
-            if fact.dimensions or fact.period_type != "duration":
-                continue
-            if not fact.start_date or not fact.end_date:
-                continue
-            if (
-                self._metadata.period_end is not None
-                and fact.end_date != self._metadata.period_end
-            ):
-                continue
-            key = (fact.start_date, fact.end_date)
-            counts[key] = counts.get(key, 0) + 1
-        if not counts:
-            return None
-        start, end = max(
-            counts, key=lambda key: (counts[key], -duration_span_key(key)[0], key)
-        )
-        derived = duration_length_class(start, end)
-        return derived if derived in _SERVING_LENGTH_CLASSES else None
-
-    def _class_corroborated(self, length_class: str) -> bool:
-        """Whether the filing's spans corroborate a declared length class.
-
-        The class's most-carried period ending at the period end must be a longest span at that end; a longer span there leaves the two in disagreement.
-        """
-        period_end = self._metadata.period_end
-        if period_end is None:
-            return True
-        counts: dict[tuple[str, str], int] = {}
-        longest = 0
-        for fact in self._facts:
-            if fact.dimensions or fact.period_type != "duration":
-                continue
-            if not fact.start_date or fact.end_date != period_end:
-                continue
-            span = -duration_span_key((fact.start_date, fact.end_date))[0]
-            longest = max(longest, span)
-            if duration_length_class(fact.start_date, fact.end_date) == length_class:
-                key = (fact.start_date, fact.end_date)
-                counts[key] = counts.get(key, 0) + 1
-        if not counts:
-            return False
-        chosen = max(
-            counts, key=lambda key: (counts[key], -duration_span_key(key)[0], key)
-        )
-        return -duration_span_key(chosen)[0] >= longest
+        """The requested length class this filing declares for itself."""
+        return filed_length_class(self._facts, self._metadata)
 
     def _is_instant_substitution(
         self,
@@ -591,6 +636,9 @@ class FiscalYearQueries:
         The transition year's own period is a stub the length ladder
         classes below the focus class; it is the year's duration tier.
         """
+        period = transition_period(self._facts, self._metadata)
+        if period is not None and (period[0], period[1], None) in groups:
+            return (period[0], period[1], None)
         counts: dict[tuple[str | None, str | None, str | None], int] = {}
         for fact in self._facts:
             if fact.dimensions or fact.period_type != "duration":

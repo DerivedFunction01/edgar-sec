@@ -124,25 +124,26 @@ def test_load_filing_reads_vintage_bundle() -> None:
 def test_registry_filings_with_probe_registry_path() -> None:
     """Verify a registry path loads the cross-form probe corpus instead."""
     filings = registry_filings(registry_path=canonical_probe_cohort_path())
-    assert len(filings) == 61
-    assert len({str(f.accession) for f in filings}) == 61
+    assert len(filings) == 90
+    assert len({str(f.accession) for f in filings}) == 90
     forms = [f.form for f in filings]
     assert forms.count("10-Q") == 11
     assert forms.count("10-Q/A") == 1
-    assert forms.count("10-K") == 1
-    assert forms.count("10-K/A") == 1
+    assert forms.count("10-K") == 2
+    assert forms.count("10-K/A") == 2
     assert forms.count("8-K") == 7
     assert forms.count("8-K/A") == 2
-    assert forms.count("6-K") == 9
-    assert forms.count("40-F") == 1
+    assert forms.count("6-K") == 11
+    assert forms.count("20-F") == 5
+    assert forms.count("40-F") == 4
     assert forms.count("DEF 14A") == 2
     assert forms.count("SD") == 1
-    assert forms.count("S-1") == 1
-    assert forms.count("S-4") == 1
-    assert forms.count("F-1") == 1
-    assert forms.count("11-K") == 2
-    assert forms.count("N-CSR") == 2
-    assert forms.count("N-CSRS") == 2
+    assert forms.count("S-1") == 4
+    assert forms.count("S-4") == 4
+    assert forms.count("F-1") == 4
+    assert forms.count("11-K") == 5
+    assert forms.count("N-CSR") == 4
+    assert forms.count("N-CSRS") == 4
     assert forms.count("424B2") == 1
     assert forms.count("424B3") == 1
     assert forms.count("424B5") == 1
@@ -153,7 +154,7 @@ def test_registry_filings_with_probe_registry_path() -> None:
     assert forms.count("F-3") == 1
     assert forms.count("10-KT") == 6
     assert forms.count("10-KT/A") == 1
-    assert forms.count("10-QT") == 1
+    assert forms.count("10-QT") == 2
     assert {f.firm for f in filings} == {
         "MSFT",
         "AAPL",
@@ -200,6 +201,34 @@ def test_registry_filings_with_probe_registry_path() -> None:
         "BAC",
         "COIN",
         "UBS",
+        "ABB",
+        "ASX",
+        "ARCO",
+        "MOGU",
+        "GROY",
+        "TAC",
+        "TRI",
+        "NMG",
+        "DOLE",
+        "NVGS",
+        "GLXY",
+        "CLDI",
+        "MOBQ",
+        "HLT",
+        "TCBX",
+        "UTZ",
+        "XP",
+        "GENI",
+        "PBM",
+        "R",
+        "KEY",
+        "DUK",
+        "PTY",
+        "GDL",
+        "TY",
+        "STK",
+        "UA",
+        "BSRR",
     }
 
 
