@@ -552,3 +552,64 @@ def test_pair_set_holds_over_the_seed_cohort(seed_lookup: CohortLookup) -> None:
     report = evaluate_pairs(seed_lookup, PAIR_SET, source_facts)
     assert report.failures == ()
     assert report.passed == report.total == len(PAIR_SET)
+
+
+@pytest.fixture()
+def dialect_lookup(taxonomy: DomainTaxonomy, tmp_path: Path) -> CohortLookup:
+    """Two filings stating one acquisition in the two naming dialects."""
+    path_a = tmp_path / "aaa" / "facts.parquet"
+    path_b = tmp_path / "bbb" / "facts.parquet"
+    write_facts_parquet(
+        [
+            _fact(
+                _ACC_A,
+                "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+                100.0,
+                "USD",
+                period_type="duration",
+                instant_date=None,
+                start_date="2024-01-01",
+                end_date="2024-12-31",
+            )
+        ],
+        path_a,
+    )
+    write_facts_parquet(
+        [
+            _fact(
+                _ACC_B,
+                "ifrs-full:PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+                90.0,
+                "USD",
+                period_type="duration",
+                instant_date=None,
+                start_date="2024-01-01",
+                end_date="2024-12-31",
+            )
+        ],
+        path_b,
+    )
+    entries = (
+        CohortEntry(accession=_ACC_A, facts_path=path_a, firm="AAA"),
+        CohortEntry(accession=_ACC_B, facts_path=path_b, firm="BBB"),
+    )
+    lookup = CohortLookup(build_cohort_table(taxonomy, entries), entries)
+    yield lookup
+    lookup.close()
+
+
+def test_equivalents_cross_the_dialect_bridge(dialect_lookup: CohortLookup) -> None:
+    """A payments-dialect target reaches the purchase-dialect filing."""
+    candidates = dialect_lookup.equivalents(
+        "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment"
+    )
+    bridged = [
+        item
+        for item in candidates
+        if item.qname.startswith("ifrs-full:PurchaseOfPropertyPlantAndEquipment")
+    ]
+    assert len(bridged) == 1
+    assert bridged[0].accession == _ACC_B
+    assert bridged[0].tier == "near"
+    assert bridged[0].rule == "dialect_bridge"
+    assert bridged[0].via_bridge is True

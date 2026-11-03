@@ -7,6 +7,7 @@ from dataclasses import dataclass
 
 from edgar_sec.engine.xbrl.paths import resolve_xbrl_paths
 from edgar_sec.engine.xbrl.schema.atoms import Atom
+from edgar_sec.engine.xbrl.schema.relations import AtomRelationGraph
 from edgar_sec.engine.xbrl.taxonomy.defaults import DefaultCoordinate
 from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import (
     SiblingGroup,
@@ -25,8 +26,13 @@ _TEXT_MODIFIER = "M_TEXT_NODE"
 _PERCENT_MODIFIER = "M_PERCENT_TYPED"
 _HORIZON_AXIS = "MATURITY_HORIZON"
 _HORIZON_FALLBACK = frozenset({"M_CURRENT", "M_NONCURRENT"})
+_PURCHASE_ACT_MODIFIER = "M_PURCHASE"
+_SALE_MARKERS = frozenset({"M_PURPOSE_SALE", "M_SALES_GOODS"})
+_DIALECT_MARKERS = frozenset({_PURCHASE_ACT_MODIFIER, "M_INVESTING"})
+_DIALECT_RELATION_TYPE = "DIALECT_OF"
 
 _DEFAULT_GROUPS: tuple[SiblingGroup, ...] | None = None
+_DEFAULT_RELATIONS: AtomRelationGraph | None = None
 
 
 def _default_groups() -> tuple[SiblingGroup, ...]:
@@ -37,6 +43,39 @@ def _default_groups() -> tuple[SiblingGroup, ...]:
             resolve_xbrl_paths().default_sibling_groups_path
         )
     return _DEFAULT_GROUPS
+
+
+def _default_relations() -> AtomRelationGraph:
+    """The shipped atom-relation graph, loaded once on first use."""
+    global _DEFAULT_RELATIONS
+    if _DEFAULT_RELATIONS is None:
+        paths = resolve_xbrl_paths()
+        _DEFAULT_RELATIONS = AtomRelationGraph.load_json(
+            paths.default_atom_relations_path, paths.default_relation_types_path
+        )
+    return _DEFAULT_RELATIONS
+
+
+def _dialect_bridge(
+    target: Atom, candidate: Atom, graph: AtomRelationGraph
+) -> int | None:
+    """Object distance when a declared dialect edge bridges the pair.
+
+    Entry is act-governed, per the DIALECT_OF relation semantics.
+    """
+    for payments, purchase in ((target, candidate), (candidate, target)):
+        if _PURCHASE_ACT_MODIFIER not in purchase.modifiers:
+            continue
+        if purchase.modifiers & _SALE_MARKERS:
+            continue
+        if payments.modifiers & (_SALE_MARKERS | {_PURCHASE_ACT_MODIFIER}):
+            continue
+        for edge in graph.relations:
+            if edge.relation_type != _DIALECT_RELATION_TYPE:
+                continue
+            if payments == edge.source and purchase.is_a(edge.target):
+                return len((target.modifiers ^ candidate.modifiers) - _DIALECT_MARKERS)
+    return None
 
 
 def _resolve_groups(
@@ -258,6 +297,7 @@ class LadderClassification:
     via_filing_local: bool
     modifier_distance: int
     direction: str
+    via_bridge: bool = False
 
 
 def classify_ladder_pair(
@@ -272,11 +312,12 @@ def classify_ladder_pair(
     candidate_placement_horizon: str | None = None,
     same_qname: bool = False,
     atom_target: bool = False,
+    relations: AtomRelationGraph | None = None,
 ) -> LadderClassification:
     """Classify a pair on stated atoms, then on fully presumed atoms.
 
     A pair NEAR only under presumption names its weakest mediating
-    rung: via_filing_local above via_default, derived by its own rule.
+    rung; a pair no rung relates is tested against the dialect bridge.
     """
     groups = _resolve_groups(sibling_groups)
     defaults = tuple(defaults)
@@ -295,6 +336,8 @@ def classify_ladder_pair(
     )
     via_default = False
     via_filing_local = False
+    via_bridge = False
+    bridge_distance: int | None = None
     direction_target, direction_atom = target, candidate
     if tier == UNRELATED:
         ladder_tier, ladder_rule = _classify_detail(target_atom, candidate_atom, groups)
@@ -309,7 +352,16 @@ def classify_ladder_pair(
             else:
                 rule = ladder_rule
             direction_target, direction_atom = target_atom, candidate_atom
-    if defaults or any(
+    if tier == UNRELATED:
+        graph = relations if relations is not None else _default_relations()
+        bridge_distance = _dialect_bridge(target, candidate, graph)
+        if bridge_distance is not None:
+            tier = NEAR
+            rule = "dialect_bridge"
+            via_bridge = True
+    if bridge_distance is not None:
+        distance = bridge_distance
+    elif defaults or any(
         value is not None
         for value in (
             target_derived_horizon,
@@ -328,6 +380,7 @@ def classify_ladder_pair(
         via_filing_local=via_filing_local,
         modifier_distance=distance,
         direction=_subsumption_direction(direction_target, direction_atom),
+        via_bridge=via_bridge,
     )
 
 
@@ -368,6 +421,7 @@ class RankedEquivalent:
     residual_intent_count: int = 0
     residual_total_count: int = 0
     direction: str = ""
+    via_bridge: bool = False
 
 
 def ladder_rank_key(
@@ -401,6 +455,7 @@ def rank_equivalents(
     target_placement_horizon: str | None = None,
     derived_horizons: Mapping[str, str | None] | None = None,
     placement_horizons: Mapping[str, str | None] | None = None,
+    relations: AtomRelationGraph | None = None,
 ) -> tuple[RankedEquivalent, ...]:
     """Rank candidate concepts by equivalence tier to the target.
 
@@ -426,6 +481,7 @@ def rank_equivalents(
             target_placement_horizon=target_placement_horizon,
             candidate_placement_horizon=placements.get(qname),
             atom_target=not target_qname,
+            relations=relations,
         )
         if result.tier == UNRELATED:
             continue
@@ -442,6 +498,7 @@ def rank_equivalents(
                 residual_intent_count=intent,
                 residual_total_count=total,
                 direction=result.direction,
+                via_bridge=result.via_bridge,
             )
         )
     ranked.sort(

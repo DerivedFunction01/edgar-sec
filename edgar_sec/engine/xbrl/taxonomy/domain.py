@@ -471,6 +471,12 @@ def validate_domain_taxonomy(taxonomy: DomainTaxonomy) -> None:
         raise ValueError(
             f"sibling groups table {table} contradicts def declarations {declared}"
         )
+    for frame in taxonomy.grammatical_frames:
+        if frame.act_modifier is not None and frame.act_modifier not in defs:
+            raise ValueError(
+                f"frame {frame.frame_id} names undef'd act modifier"
+                f" {frame.act_modifier}"
+            )
     head_ids = {h.head_id for h in taxonomy.prime_heads}
     for alias in taxonomy.query_aliases:
         for target in alias.targets:
@@ -566,6 +572,7 @@ def load_domain_taxonomy(
         taxonomy.token_lexicon.attach_modifier_kinds(
             {m.modifier_id: m.kinds for m in taxonomy.subatomic_modifiers}
         )
+        taxonomy.token_lexicon.attach_grammatical_frames(taxonomy.grammatical_frames)
     if taxonomy.sibling_groups:
         validate_domain_taxonomy(taxonomy)
     return taxonomy

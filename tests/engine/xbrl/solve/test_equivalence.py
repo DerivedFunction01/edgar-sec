@@ -1245,3 +1245,210 @@ def test_coordinate_diff_names_sibling_swap_pair() -> None:
     assert diff.candidate_only == ("M_NONCURRENT",)
     assert diff.swapped == ("M_CURRENT", "M_NONCURRENT")
     assert coordinate_diff(target, candidate, "subsumption").swapped is None
+
+
+def test_dialect_bridge_relates_payments_and_purchase_ppe() -> None:
+    """The PP&E pair classifies NEAR via the bridge in both directions."""
+    tax = load_domain_taxonomy()
+    payments = _atom("us-gaap:PaymentsToAcquirePropertyPlantAndEquipment")
+    purchase = _atom(
+        "ifrs-full:PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities"
+    )
+    for target, candidate in ((payments, purchase), (purchase, payments)):
+        result = classify_ladder_pair(
+            target,
+            candidate,
+            tax.default_coordinates,
+            tuple(tax.sibling_groups),
+            relations=tax.atom_relations,
+        )
+        assert result.tier == NEAR
+        assert result.rule == "dialect_bridge"
+        assert result.via_bridge is True
+        assert result.modifier_distance == 0
+
+
+def test_dialect_bridge_reaches_instrument_coordinate() -> None:
+    """The HSBC instrument line bridges from the payments investment atom."""
+    tax = load_domain_taxonomy()
+    payments = _atom("us-gaap:PaymentsToAcquireOtherInvestments")
+    purchase = _atom(
+        "ifrs-full:PurchaseOfFinancialInstrumentsClassifiedAsInvestingActivities"
+    )
+    for target, candidate in ((payments, purchase), (purchase, payments)):
+        result = classify_ladder_pair(
+            target,
+            candidate,
+            tax.default_coordinates,
+            tuple(tax.sibling_groups),
+            relations=tax.atom_relations,
+        )
+        assert result.tier == NEAR
+        assert result.rule == "dialect_bridge"
+        assert result.via_bridge is True
+
+
+def test_dialect_bridge_constructed_extension_pair() -> None:
+    """A constructed extension purchase line bridges on its object claim."""
+    tax = load_domain_taxonomy()
+    payments = _atom("us-gaap:PaymentsToAcquirePropertyPlantAndEquipment")
+    purchase = _atom("acme:PurchaseOfPropertyPlantAndEquipment")
+    result = classify_ladder_pair(
+        payments,
+        purchase,
+        tax.default_coordinates,
+        tuple(tax.sibling_groups),
+        relations=tax.atom_relations,
+    )
+    assert result.tier == NEAR
+    assert result.rule == "dialect_bridge"
+
+
+def test_dialect_bridge_sale_worded_proceeds_gain_no_bridge() -> None:
+    """Sale-worded proceeds keep their stated class, unbridged.
+
+    Scoped to the sale/sales-worded shape, which carries a sale marker.
+    """
+    tax = load_domain_taxonomy()
+    payments = _atom("us-gaap:PaymentsToAcquirePropertyPlantAndEquipment")
+    proceeds = _atom("us-gaap:ProceedsFromSaleOfPropertyPlantAndEquipment")
+    purchase = _atom(
+        "ifrs-full:PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities"
+    )
+    stated = classify_ladder_pair(
+        payments,
+        proceeds,
+        tax.default_coordinates,
+        tuple(tax.sibling_groups),
+        relations=tax.atom_relations,
+    )
+    assert stated.tier == NEAR
+    assert stated.rule == "single_modifier_difference"
+    assert stated.via_bridge is False
+    for target, candidate in ((purchase, proceeds), (proceeds, purchase)):
+        result = classify_ladder_pair(
+            target,
+            candidate,
+            tax.default_coordinates,
+            tuple(tax.sibling_groups),
+            relations=tax.atom_relations,
+        )
+        assert result.tier == UNRELATED
+        assert result.via_bridge is False
+
+
+def test_dialect_bridge_controls_stay_put() -> None:
+    """Within-dialect EXACT and purchase-object mismatches are unchanged."""
+    tax = load_domain_taxonomy()
+    payments = _atom("us-gaap:PaymentsToAcquirePropertyPlantAndEquipment")
+    productive = _atom("us-gaap:PaymentsToAcquireProductiveAssets")
+    exact = classify_ladder_pair(
+        payments,
+        productive,
+        tax.default_coordinates,
+        tuple(tax.sibling_groups),
+        relations=tax.atom_relations,
+    )
+    assert exact.tier == EXACT
+    assert exact.via_bridge is False
+
+    purchase = _atom(
+        "ifrs-full:PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities"
+    )
+    intangibles = _atom(
+        "ifrs-full:PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities"
+    )
+    for target, candidate in (
+        (purchase, intangibles),
+        (intangibles, purchase),
+        (payments, intangibles),
+    ):
+        result = classify_ladder_pair(
+            target,
+            candidate,
+            tax.default_coordinates,
+            tuple(tax.sibling_groups),
+            relations=tax.atom_relations,
+        )
+        assert result.tier == UNRELATED
+        assert result.via_bridge is False
+
+
+def test_dialect_bridge_ranks_purchase_above_sale_worded_proceeds() -> None:
+    """For the capex target the purchase line outranks the proceeds line."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    target = _atom("us-gaap:PaymentsToAcquirePropertyPlantAndEquipment")
+    names = (
+        "us-gaap:ProceedsFromSaleOfPropertyPlantAndEquipment",
+        "ifrs-full:PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        "us-gaap:PaymentsToAcquireProductiveAssets",
+    )
+    ranked = rank_equivalents(
+        "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        target,
+        tuple((name, _atom(name)) for name in names),
+        tax.default_coordinates,
+        tuple(tax.sibling_groups),
+        relations=tax.atom_relations,
+    )
+    order = [item.qname for item in ranked]
+    assert order.index(names[1]) < order.index(names[0])
+    bridge = next(item for item in ranked if item.qname == names[1])
+    assert bridge.tier == NEAR and bridge.via_bridge is True
+
+
+def test_dialect_bridge_bare_disposal_shape_never_bridges() -> None:
+    """A constructed disposal-worded proceeds atom reaches no bridge.
+
+    Its bare H_CASH atom names no declared object coordinate.
+    """
+    tax = load_domain_taxonomy()
+    disposal = _atom("acme:ProceedsFromDisposalOfWindTurbines")
+    assert disposal == Atom("H_CASH")
+    purchase = _atom(
+        "ifrs-full:PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities"
+    )
+    payments = _atom("us-gaap:PaymentsToAcquirePropertyPlantAndEquipment")
+    for target, candidate in ((disposal, purchase), (purchase, disposal)):
+        result = classify_ladder_pair(
+            target,
+            candidate,
+            tax.default_coordinates,
+            tuple(tax.sibling_groups),
+            relations=tax.atom_relations,
+        )
+        assert result.tier == UNRELATED
+        assert result.via_bridge is False
+    stated = classify_ladder_pair(
+        payments,
+        disposal,
+        tax.default_coordinates,
+        tuple(tax.sibling_groups),
+        relations=tax.atom_relations,
+    )
+    assert stated.tier != EXACT
+    assert stated.via_bridge is False
+
+
+def test_dialect_bridge_requires_the_bare_payments_coordinate() -> None:
+    """Refined or compound payments-side atoms fail bridge entry.
+
+    Entry names the dialect's bare object coordinate alone.
+    """
+    tax = load_domain_taxonomy()
+    purchase = _atom(
+        "ifrs-full:PurchaseOfFinancialInstrumentsClassifiedAsInvestingActivities"
+    )
+    refined = _atom("us-gaap:PaymentsToAcquireHeldToMaturitySecurities")
+    compound = _atom("us-gaap:PaymentsForProceedsFromShortTermInvestments")
+    for payments in (refined, compound):
+        result = classify_ladder_pair(
+            payments,
+            purchase,
+            tax.default_coordinates,
+            tuple(tax.sibling_groups),
+            relations=tax.atom_relations,
+        )
+        assert result.tier == UNRELATED
+        assert result.via_bridge is False

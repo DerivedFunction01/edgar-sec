@@ -72,7 +72,24 @@
       "of",
       "and"
     ],
+    "act_modifier": "M_PURCHASE",
     "description": "Purchase outflow prefix"
+  },
+  {
+    "frame_id": "FRAME_OUTFLOW_PURCHASES",
+    "prefix_tokens": [
+      "purchases"
+    ],
+    "direction": -1.0,
+    "polarity": "OUTFLOW",
+    "strip_tokens": [
+      "to",
+      "for",
+      "of",
+      "and"
+    ],
+    "act_modifier": "M_PURCHASE",
+    "description": "Purchases outflow prefix (plural form of the purchase act)"
   },
   {
     "frame_id": "FRAME_OUTFLOW_REPAYMENTS",
