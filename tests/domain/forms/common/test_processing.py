@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from edgar_sec.domain.forms.common.processing import (
+    DEFAULT_OPERATIONS,
     AcquisitionOperation,
     DocumentProcessingProfile,
 )
@@ -45,6 +46,12 @@ class TestDocumentProcessingProfile:
         assert profile.has_operation(AcquisitionOperation.RAW)
         assert profile.has_operation(AcquisitionOperation.RENDER_TO_TXT)
         assert not profile.has_operation(AcquisitionOperation.RENDER_TO_XML)
+
+    def test_default_operations_grant_raw_and_generic_text(self) -> None:
+        """Unmodelled families default to raw plus generic render-to-text."""
+        assert DEFAULT_OPERATIONS == frozenset(
+            {AcquisitionOperation.RAW, AcquisitionOperation.RENDER_TO_TXT}
+        )
 
     def test_operations_are_frozen(self) -> None:
         """Test that allowed_operations is immutable."""

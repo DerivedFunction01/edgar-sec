@@ -51,6 +51,30 @@ def test_sgml_filename_slashes_use_content_route() -> None:
     assert entry.status is CapabilityStatus.UNSUPPORTED
 
 
+def test_unmodelled_family_resolves_generic_render_to_txt() -> None:
+    facts = DocumentPathFacts.from_archive_path("filing.htm")
+    entry = resolve_acquisition_capability("40-17G", "primary", "render_to_txt", facts)
+    assert entry.status is CapabilityStatus.SUPPORTED
+    assert entry.pins == ("text.markup", "1", "normalize_document", "1", "text")
+
+
+def test_unmodelled_family_resolves_plain_text_render() -> None:
+    facts = DocumentPathFacts.from_archive_path("filing.txt")
+    entry = resolve_acquisition_capability("40-17G", "primary", "render_to_txt", facts)
+    assert entry.status is CapabilityStatus.SUPPORTED
+    assert entry.pins == ("text.plain", "1", "normalize_document", "1", "text")
+
+
+def test_unmodelled_family_keeps_raw_and_denies_render_to_xml() -> None:
+    facts = DocumentPathFacts.from_archive_path("filing.htm")
+    raw = resolve_acquisition_capability("40-17G", "primary", "raw", facts)
+    xml = resolve_acquisition_capability("40-17G", "primary", "render_to_xml", facts)
+    assert raw.status is CapabilityStatus.SUPPORTED
+    assert raw.pins == ("raw.selected_source", "v1", "raw_identity", "1", "raw_bytes")
+    assert xml.status is CapabilityStatus.UNSUPPORTED
+    assert xml.pins is None
+
+
 def test_unknown_operation_is_unsupported() -> None:
     facts = DocumentPathFacts.from_archive_path("filing.xml")
     entry = resolve_acquisition_capability("10-K", "primary", "unknown", facts)

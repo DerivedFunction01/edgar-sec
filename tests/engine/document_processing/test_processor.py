@@ -387,6 +387,25 @@ def test_processor_distinguishes_archive_and_sgml_paths_with_slashes() -> None:
         assert outcome.output_text == expected
 
 
+def test_unmodelled_family_renders_to_txt_through_generic_handler() -> None:
+    body = b"<html><body><p>Filed text.</p></body></html>"
+    operation = OperationRecord("1", "text", ("source",), operation="render_to_txt")
+
+    outcome = (
+        AcquisitionProcessor()
+        .process(_request((operation,), (_input(body=body),), family="40-17G"))
+        .outcomes[0]
+    )
+
+    assert outcome.status == "ok"
+    assert outcome.output_text is not None
+    assert "Filed text." in outcome.output_text
+    assert (outcome.handler_id, outcome.handler_version) == (
+        "normalize_document",
+        "1",
+    )
+
+
 def test_flat_xml_and_unknown_operations_remain_unsupported() -> None:
     operation = OperationRecord("v1", "text", ("source",), operation="render_to_txt")
     unsupported_render = (

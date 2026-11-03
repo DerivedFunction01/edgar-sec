@@ -46,7 +46,9 @@ class DocumentProcessingProfile:
 
 
 # Default operations for families without explicit profiles
-DEFAULT_OPERATIONS = frozenset({AcquisitionOperation.RAW})
+DEFAULT_OPERATIONS = frozenset(
+    {AcquisitionOperation.RAW, AcquisitionOperation.RENDER_TO_TXT}
+)
 
 __all__ = [
     "AcquisitionOperation",
