@@ -50,14 +50,28 @@ def test_canonical_probe_cohort_is_the_registry() -> None:
     """Verify the probe resolver names the form-probe corpus registry."""
     assert canonical_probe_cohort_path() == fixture_path("xbrl/probe_cohort.json")
     cohort = load_canonical_probe_cohort()
-    assert len(cohort) == 13
-    assert [f.form for f in cohort].count("10-Q") == 7
-    assert [f.form for f in cohort].count("8-K") == 5
-    assert [f.form for f in cohort].count("8-K/A") == 1
+    assert len(cohort) == 38
+    forms = [f.form for f in cohort]
+    assert forms.count("10-Q") == 11
+    assert forms.count("10-Q/A") == 1
+    assert forms.count("10-K") == 1
+    assert forms.count("10-K/A") == 1
+    assert forms.count("8-K") == 7
+    assert forms.count("8-K/A") == 2
+    assert forms.count("6-K") == 2
+    assert forms.count("DEF 14A") == 2
+    assert forms.count("SD") == 1
+    assert forms.count("S-1") == 1
+    assert forms.count("S-4") == 1
+    assert forms.count("F-1") == 1
+    assert forms.count("11-K") == 2
+    assert forms.count("N-CSR") == 2
+    assert forms.count("N-CSRS") == 2
+    assert forms.count("424B2") == 1
     for filing in cohort:
         assert len(str(filing.accession)) == 20
         assert int(filing.cik) > 0
-        assert filing.fy == 2026
+        assert 2023 <= filing.fy <= 2026
 
 
 def test_probe_cohort_stays_outside_the_union() -> None:

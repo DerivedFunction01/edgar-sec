@@ -122,14 +122,27 @@ def test_load_filing_reads_vintage_bundle() -> None:
 
 
 def test_registry_filings_with_probe_registry_path() -> None:
-    """Verify a registry path loads the 10-Q/8-K probe corpus instead."""
+    """Verify a registry path loads the cross-form probe corpus instead."""
     filings = registry_filings(registry_path=canonical_probe_cohort_path())
-    assert len(filings) == 13
-    assert len({str(f.accession) for f in filings}) == 13
+    assert len(filings) == 38
+    assert len({str(f.accession) for f in filings}) == 38
     forms = [f.form for f in filings]
-    assert forms.count("10-Q") == 7
-    assert forms.count("8-K") == 5
-    assert forms.count("8-K/A") == 1
+    assert forms.count("10-Q") == 11
+    assert forms.count("10-Q/A") == 1
+    assert forms.count("10-K") == 1
+    assert forms.count("10-K/A") == 1
+    assert forms.count("8-K") == 7
+    assert forms.count("8-K/A") == 2
+    assert forms.count("6-K") == 2
+    assert forms.count("DEF 14A") == 2
+    assert forms.count("SD") == 1
+    assert forms.count("S-1") == 1
+    assert forms.count("S-4") == 1
+    assert forms.count("F-1") == 1
+    assert forms.count("11-K") == 2
+    assert forms.count("N-CSR") == 2
+    assert forms.count("N-CSRS") == 2
+    assert forms.count("424B2") == 1
     assert {f.firm for f in filings} == {
         "MSFT",
         "AAPL",
@@ -138,6 +151,25 @@ def test_registry_filings_with_probe_registry_path() -> None:
         "AMZN",
         "ALK",
         "YYAI",
+        "TSN",
+        "C",
+        "ADM",
+        "KD",
+        "NEE",
+        "ITW",
+        "FTS",
+        "HSBC",
+        "MCD",
+        "PJT",
+        "MTX",
+        "WHK",
+        "VISK",
+        "MRM",
+        "ABT",
+        "GDV",
+        "OXLC",
+        "ISHARES",
+        "STARWOOD",
     }
 
 

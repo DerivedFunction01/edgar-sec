@@ -325,10 +325,13 @@ def run_shards(
     shard_ids: set[str] | None = None,
     accessions: set[str] | None = None,
     acquisition: str = "index-free",
+    floor_prefix: str | None = None,
 ) -> dict[str, Any]:
     """Score the plan's shards, checkpointing each shard as it completes."""
     screen = _screen_from_plan(plan)
     floor = plan.get("floor_us_gaap_facts", SUBSTANTIAL_US_GAAP_FLOOR)
+    if floor_prefix is None:
+        floor_prefix = plan.get("floor_prefix", "us-gaap")
     prefer_seed = plan.get("seed_filer_preference", True)
     summary = {"shards_completed": 0, "candidates_scored": 0}
     for shard in plan["shards"]:
@@ -362,8 +365,21 @@ def run_shards(
             screen_name=screen.name,
             floor=floor,
             prefer_seed=prefer_seed,
+            floor_prefix=floor_prefix,
         )
     return summary
+
+
+def _floor_facts(row: dict[str, Any], floor_prefix: str) -> int | None:
+    """A row's fact count under the floor prefix, with a legacy fallback.
+
+    Checkpoint rows predating per-prefix counts carry no by_prefix;
+    for the us-gaap floor their flat us_gaap_facts count stands in.
+    """
+    count = (row.get("by_prefix") or {}).get(floor_prefix)
+    if count is None and floor_prefix == "us-gaap":
+        count = row.get("us_gaap_facts")
+    return count
 
 
 def build_registry(
@@ -373,11 +389,12 @@ def build_registry(
     screen_name: str,
     floor: int = SUBSTANTIAL_US_GAAP_FLOOR,
     prefer_seed: bool = True,
+    floor_prefix: str = "us-gaap",
 ) -> dict[str, Any]:
     """Merge checkpoints into the ranked registry of substantial candidates.
 
     With seed preference, seed-filer candidates rank first; within a
-    tier, higher us-gaap substance ranks first. Counts ride on rows.
+    tier, higher floor-prefix substance ranks first. Counts ride on rows.
     """
     rows: dict[str, dict[str, Any]] = {}
     checkpoint_dir = work_dir / "checkpoints"
@@ -390,39 +407,49 @@ def build_registry(
     substantial = [
         row
         for row in rows.values()
-        if row.get("us_gaap_facts") is not None
-        and row["us_gaap_facts"] >= floor
+        if (count := _floor_facts(row, floor_prefix)) is not None
+        and count >= floor
         and row["screen"] == screen_name
     ]
     if prefer_seed:
         substantial.sort(
-            key=lambda r: (not r["seed_filer"], -r["us_gaap_facts"], r["filing_date"])
+            key=lambda r: (
+                not r["seed_filer"],
+                -(_floor_facts(r, floor_prefix) or 0),
+                r["filing_date"],
+            )
         )
     else:
-        substantial.sort(key=lambda r: (-r["us_gaap_facts"], r["filing_date"]))
+        substantial.sort(
+            key=lambda r: (-(_floor_facts(r, floor_prefix) or 0), r["filing_date"])
+        )
     registry = {
         "screen": screen_name,
         "floor_us_gaap_facts": floor,
+        "floor_prefix": floor_prefix,
         "seed_filer_preference": prefer_seed,
         "scored_candidates": len(rows),
         "candidates": [
             {
-                key: row[key]
-                for key in (
-                    "cik",
-                    "filer",
-                    "accession",
-                    "form",
-                    "filing_date",
-                    "period",
-                    "seed_filer",
-                    "screen",
-                    "ex101_present",
-                    "total_facts",
-                    "us_gaap_facts",
-                    "dei_facts",
-                    "phrasing_matches",
-                )
+                **{
+                    key: row[key]
+                    for key in (
+                        "cik",
+                        "filer",
+                        "accession",
+                        "form",
+                        "filing_date",
+                        "period",
+                        "seed_filer",
+                        "screen",
+                        "ex101_present",
+                        "total_facts",
+                        "us_gaap_facts",
+                        "dei_facts",
+                        "phrasing_matches",
+                    )
+                },
+                "by_prefix": row.get("by_prefix") or {},
             }
             for row in substantial
         ],
@@ -454,6 +481,7 @@ def load_config(path: Path) -> dict[str, Any]:
             "floor_us_gaap_facts", SUBSTANTIAL_US_GAAP_FLOOR
         ),
         "seed_filer_preference": raw.get("seed_filer_preference", True),
+        "floor_prefix": raw.get("floor_prefix", "us-gaap"),
         "acquisition": acquisition,
         "outputs": outputs,
     }
@@ -476,10 +504,12 @@ def gather(
     results: dict[str, Any] = {}
     for entry in config["screens"]:
         screen = screen_from_config(entry)
+        floor_prefix = entry.get("floor_prefix") or config["floor_prefix"]
         plan = build_plan(
             screen,
             sample_size=config["sample_size"],
             floor=config["floor_us_gaap_facts"],
+            floor_prefix=floor_prefix,
             prefer_seed=config["seed_filer_preference"],
             catalog_dir=catalog_dir,
             acquisition=config["acquisition"],
@@ -495,6 +525,7 @@ def gather(
             registry_path=registry_path,
             workers=workers,
             acquisition=config["acquisition"],
+            floor_prefix=floor_prefix,
         )
         results[screen.name] = {**summary, "totals": plan["totals"]}
     return results
@@ -519,6 +550,7 @@ def _build_parser() -> argparse.ArgumentParser:
     reg.add_argument("--work-dir", type=Path, required=True)
     reg.add_argument("--out", type=Path, required=True)
     reg.add_argument("--floor", type=int, default=SUBSTANTIAL_US_GAAP_FLOOR)
+    reg.add_argument("--floor-prefix", default="us-gaap")
     gat = sub.add_parser("gather", help="Plan and score every screen in a config JSON.")
     gat.add_argument("--config", type=Path, required=True)
     gat.add_argument("--work-dir", type=Path, required=True)
@@ -577,7 +609,11 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 0
     registry = build_registry(
-        args.work_dir, args.out, screen_name=args.screen, floor=args.floor
+        args.work_dir,
+        args.out,
+        screen_name=args.screen,
+        floor=args.floor,
+        floor_prefix=args.floor_prefix,
     )
     print(
         json.dumps(

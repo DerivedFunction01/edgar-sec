@@ -174,6 +174,39 @@ def test_registry_without_seed_preference_ranks_by_substance(tmp_path: Path):
     assert registry["seed_filer_preference"] is False
 
 
+def test_registry_floor_prefix_judges_the_named_prefix(tmp_path: Path):
+    rows = [
+        {
+            **_record("acc-dei-rich", 2024),
+            "ex101_present": True,
+            "total_facts": 350,
+            "us_gaap_facts": 50,
+            "dei_facts": 300,
+            "phrasing_matches": [],
+            "by_prefix": {"us-gaap": 50, "dei": 300},
+        },
+        {
+            **_record("acc-dei-thin", 2024),
+            "ex101_present": True,
+            "total_facts": 910,
+            "us_gaap_facts": 900,
+            "dei_facts": 10,
+            "phrasing_matches": [],
+            "by_prefix": {"us-gaap": 900, "dei": 10},
+        },
+    ]
+    _write_checkpoint(tmp_path, rows)
+    registry = build_registry(
+        tmp_path,
+        tmp_path / "out.json",
+        screen_name="8ka-901a",
+        floor_prefix="dei",
+    )
+    assert [r["accession"] for r in registry["candidates"]] == ["acc-dei-rich"]
+    assert registry["floor_prefix"] == "dei"
+    assert registry["candidates"][0]["by_prefix"] == {"us-gaap": 50, "dei": 300}
+
+
 class _StubClient:
     def __init__(
         self,
@@ -343,6 +376,18 @@ def test_load_config_acquisition_modes(tmp_path: Path):
     assert explicit["acquisition"] == "index"
     with pytest.raises(ValueError, match="acquisition"):
         load_config(write({"screens": screens, "acquisition": "smoke-signals"}))
+
+
+def test_load_config_floor_prefix_default_and_explicit(tmp_path: Path):
+    def write(payload: dict) -> Path:
+        path = tmp_path / "config.json"
+        path.write_text(json.dumps(payload), encoding="utf-8")
+        return path
+
+    screens = [{"name": "x", "required_item": "9.01"}]
+    assert load_config(write({"screens": screens}))["floor_prefix"] == "us-gaap"
+    explicit = load_config(write({"screens": screens, "floor_prefix": "dei"}))
+    assert explicit["floor_prefix"] == "dei"
 
 
 def test_load_config_fills_defaults(tmp_path: Path):

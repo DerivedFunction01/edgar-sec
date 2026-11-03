@@ -70,9 +70,14 @@ def test_screen_from_config_defaults_and_pinned_forms():
         {"name": "x", "required_item": "9.01", "require_xbrl": True}
     )
     assert flagged.require_xbrl is True
+    assert flagged.floor_prefix == "us-gaap"
+    floored = screen_from_config({"name": "x", "floor_prefix": "ecd"})
+    assert floored.floor_prefix == "ecd"
 
 
-def _filing(accession: str, date: str, *, xbrl: bool) -> dict:
+def _filing(
+    accession: str, date: str, *, xbrl: bool, items: tuple[str, ...] = ("9.01",)
+) -> dict:
     return {
         "accession_number": accession,
         "form": "8-K/A",
@@ -82,7 +87,7 @@ def _filing(accession: str, date: str, *, xbrl: bool) -> dict:
         "is_inline_xbrl": xbrl,
         "primary_document": "doc.htm",
         "archive_url": "https://example.invalid/doc.htm",
-        "items": ["9.01"],
+        "items": list(items),
     }
 
 
@@ -133,6 +138,36 @@ def test_population_require_xbrl_keeps_only_flagged(tmp_path: Path):
     assert [r["accession"] for r in open_rows] == ["acc-xbrl", "acc-plain"]
     flagged_rows = _population(Screen(**base, require_xbrl=True), tmp_path)
     assert [r["accession"] for r in flagged_rows] == ["acc-xbrl"]
+
+
+def test_screen_from_config_without_required_item_defaults_to_empty():
+    screen = screen_from_config({"name": "x"})
+    assert screen.required_item == ""
+
+
+def test_population_without_required_item_ignores_items(tmp_path: Path):
+    _write_catalog(
+        tmp_path,
+        [
+            _filing("acc-901", "2020-01-15", xbrl=True),
+            _filing("acc-other", "2021-01-15", xbrl=True, items=("7.01",)),
+            _filing("acc-none", "2022-01-15", xbrl=True, items=()),
+        ],
+    )
+    base = {
+        "name": "t",
+        "phrasings": (),
+        "year_start": 2011,
+        "year_end": 2026,
+    }
+    open_rows = _population(Screen(**base, required_item=""), tmp_path)
+    assert [r["accession"] for r in open_rows] == [
+        "acc-901",
+        "acc-other",
+        "acc-none",
+    ]
+    item_rows = _population(Screen(**base, required_item="9.01"), tmp_path)
+    assert [r["accession"] for r in item_rows] == ["acc-901"]
 
 
 def test_sample_strides_the_population_deterministically():

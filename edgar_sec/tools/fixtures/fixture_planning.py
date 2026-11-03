@@ -32,7 +32,8 @@ class Screen:
     """One gathering screen: a catalog filter plus phrasing evidence.
 
     A null form set resolves to the amendment forms of the item's
-    carrier families; require_xbrl keeps only XBRL-flagged filings.
+    carrier families; an empty item filters on no item, and
+    require_xbrl keeps only XBRL-flagged filings.
     """
 
     name: str
@@ -42,6 +43,7 @@ class Screen:
     year_end: int
     forms: tuple[str, ...] | None = None
     require_xbrl: bool = False
+    floor_prefix: str = "us-gaap"
 
 
 SCREENS = {
@@ -116,6 +118,9 @@ def _population(
     parts = [str(p) for p in _catalog_parts(catalog_dir)]
     seeds = _seed_ciks()
     xbrl_clause = "AND f.is_xbrl" if screen.require_xbrl else ""
+    item_clause = ""
+    if screen.required_item:
+        item_clause = f"AND list_contains(f.items, {sql_literal(screen.required_item)})"
     sql = f"""
         SELECT cik, identity.name AS filer, f.accession_number AS accession,
                f.form AS form, f.filing_date AS filing_date,
@@ -125,9 +130,9 @@ def _population(
                f.archive_url AS archive_url
         FROM (SELECT cik, identity, unnest(filings) AS f
               FROM read_parquet({sql_path_list(parts)}))
-        WHERE list_contains(f.items, {sql_literal(screen.required_item)})
-          AND year(f.filing_date::DATE) BETWEEN {screen.year_start}
+        WHERE year(f.filing_date::DATE) BETWEEN {screen.year_start}
               AND {screen.year_end}
+          {item_clause}
           {xbrl_clause}
     """
     with connect() as con:
@@ -237,6 +242,7 @@ def build_plan(
     *,
     sample_size: int | None = None,
     floor: int = SUBSTANTIAL_US_GAAP_FLOOR,
+    floor_prefix: str = "us-gaap",
     prefer_seed: bool = True,
     catalog_dir: Path | None = None,
     acquisition: str = "index-free",
@@ -256,6 +262,7 @@ def build_plan(
             "acquisition": acquisition,
         },
         "floor_us_gaap_facts": floor,
+        "floor_prefix": floor_prefix,
         "seed_filer_preference": prefer_seed,
         "sample": sample,
         "rate_cap_rps": DEFAULT_RATE_LIMIT_RPS,
@@ -289,18 +296,19 @@ def _screen_from_plan(plan: dict[str, Any]) -> Screen:
 
 def screen_from_config(entry: dict[str, Any]) -> Screen:
     """One config screen entry as a Screen; years default to 2011-2026."""
-    if "name" not in entry or "required_item" not in entry:
-        raise ValueError("each config screen needs a name and a required_item")
+    if "name" not in entry:
+        raise ValueError("each config screen needs a name")
     years = entry.get("years") or [2011, 2026]
     forms = entry.get("forms")
     return Screen(
         name=entry["name"],
-        required_item=entry["required_item"],
+        required_item=entry.get("required_item") or "",
         phrasings=tuple(entry.get("phrasings") or ()),
         year_start=int(years[0]),
         year_end=int(years[1]),
         forms=tuple(forms) if forms else None,
         require_xbrl=bool(entry.get("require_xbrl", False)),
+        floor_prefix=entry.get("floor_prefix") or "us-gaap",
     )
 
 

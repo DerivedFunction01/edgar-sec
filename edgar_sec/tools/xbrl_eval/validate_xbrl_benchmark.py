@@ -67,6 +67,11 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Also run the scored census regression (probe and span populations).",
     )
     parser.add_argument(
+        "--cross-form",
+        action="store_true",
+        help="Also run the cross-form census over the probe cohort registry.",
+    )
+    parser.add_argument(
         "--pairs",
         action="store_true",
         help="Also evaluate the seeded cross-firm pair set (tier regression gate).",
@@ -161,6 +166,36 @@ def main(argv: list[str] | None = None) -> int:
             verdict = 1
             sys.stdout.write("Census gate: FAIL\n")
             for failure in score.failures:
+                sys.stdout.write(f"  {failure}\n")
+    if args.cross_form:
+        from edgar_sec.engine.xbrl.review.cross_form import (
+            CROSS_FORM_EXPECTATIONS,
+            score_cross_form,
+        )
+        from edgar_sec.tools.xbrl_eval.xbrl_cross_form_census import run_cross_form
+
+        cross_out = args.census_out or (xbrl_paths().transient_root / "cross_form")
+        cross_summary = run_cross_form(cross_out)
+        sys.stdout.write(f"{'-' * 60}\nCross-Form Census:\n")
+        for key, block in sorted(cross_summary["blocks"].items()):
+            sys.stdout.write(
+                f"  [{key}] n={block['n']} solved={block['solved']} "
+                f"honest={block['honest']} conflict={block['conflict']} "
+                f"quarantined={block['quarantined_facts']} "
+                f"adverse={block['adverse']}\n"
+            )
+        expected = {
+            name: CROSS_FORM_EXPECTATIONS[name]
+            for name in cross_summary["blocks"]
+            if name in CROSS_FORM_EXPECTATIONS
+        }
+        cross_score = score_cross_form(cross_summary, expected)
+        if cross_score.passed:
+            sys.stdout.write("Cross-form gate: PASS\n")
+        else:
+            verdict = 1
+            sys.stdout.write("Cross-form gate: FAIL\n")
+            for failure in cross_score.failures:
                 sys.stdout.write(f"  {failure}\n")
     if args.pairs:
         from edgar_sec.tools.xbrl_eval.xbrl_census import run_pair_gate
