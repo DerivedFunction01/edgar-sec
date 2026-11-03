@@ -47,6 +47,9 @@ def _is_oci_total(atom: Atom) -> bool:
     )
 
 
+_ATTRIBUTION_SLICES = frozenset({"M_NONCONTROLLING_INTEREST", "M_ATTRIBUTABLE_PARENT"})
+
+
 def _equity_role(
     atom: Atom,
     *,
@@ -59,6 +62,8 @@ def _equity_role(
     """
     mods = atom.modifiers
     if atom.head == "H_INCOME" and ("M_NET_BOTTOMLINE" in mods or not mods):
+        return "net_income"
+    if atom.head == "H_INCOME" and mods and mods <= _ATTRIBUTION_SLICES:
         return "net_income"
     if _is_oci_total(atom):
         return "oci"
@@ -182,11 +187,14 @@ def build_equity_rollforward(
     lbl_map = dict(labels or {})
     target_year = str(year) if year is not None else None
     tiers: dict[str, int] = {}
+    anchored: set[str] = set()
     for f in facts:
         if f.period_type != "instant" or not isinstance(f.value, (int, float)):
             continue
         if f.unit in _NON_MONETARY:
             continue
+        if not f.dimensions:
+            anchored.add(f.concept_qname)
         tier = _equity_balance_tier(source.atom(f.concept_qname))
         if tier is not None:
             tiers[f.concept_qname] = tier
@@ -195,7 +203,7 @@ def build_equity_rollforward(
     for tier in (0, 1):
         scored: list[tuple[int, str, str]] = []
         for qname, q_tier in tiers.items():
-            if q_tier != tier:
+            if q_tier != tier or qname not in anchored:
                 continue
             dim_facts = [
                 f

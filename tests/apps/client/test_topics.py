@@ -531,6 +531,57 @@ def test_equity_rollforward_verifies_components_and_total() -> None:
     assert graph.missing_components == ()
 
 
+_EQ_TOTAL_INCL = (
+    "us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"
+)
+_EQ_NCI = "us-gaap:NoncontrollingInterestMember"
+_EQ_LOCATION = "us-gaap:BalanceSheetLocationAxis"
+_BLK_PROFIT = "blk:ProfitLossExcludingRedeemableNoncontrollingInterests"
+
+
+def test_equity_rollforward_consumes_attribution_slice_bottomline() -> None:
+    """BLK shape: the statement lives on the including-NCI total, and its
+    only axis-dimensioned profit row is an attribution-slice variant."""
+    facts = [
+        _fact(
+            _EQ_TOTAL,
+            25.0,
+            period_type="instant",
+            instant_date="2023-12-31",
+            dimensions={_EQ_LOCATION: "us-gaap:FairValueInputsLevel1Member"},
+        ),
+        _fact(
+            _EQ_TOTAL,
+            30.0,
+            period_type="instant",
+            instant_date="2024-12-31",
+            dimensions={_EQ_LOCATION: "us-gaap:FairValueInputsLevel1Member"},
+        ),
+        _equity_fact(_EQ_TOTAL_INCL, 1000.0, instant="2023-12-31"),
+        _equity_fact(_EQ_TOTAL_INCL, 1600.0, instant="2024-12-31"),
+        _equity_fact(_EQ_TOTAL_INCL, 800.0, member=_EQ_RE, instant="2023-12-31"),
+        _equity_fact(_EQ_TOTAL_INCL, 1300.0, member=_EQ_RE, instant="2024-12-31"),
+        _equity_fact(_EQ_TOTAL_INCL, 200.0, member=_EQ_NCI, instant="2023-12-31"),
+        _equity_fact(_EQ_TOTAL_INCL, 300.0, member=_EQ_NCI, instant="2024-12-31"),
+        _equity_fact(_BLK_PROFIT, 500.0, member=_EQ_RE),
+        _equity_fact(_BLK_PROFIT, 100.0, member=_EQ_NCI),
+    ]
+    graph = _build_equity(facts)
+    assert graph.balance_concept == _EQ_TOTAL_INCL
+    assert graph.opening == 1000.0
+    assert graph.closing == 1600.0
+    assert graph.verified is True
+    assert graph.components_verified is True
+    retained = graph.component(_EQ_RE)
+    assert retained is not None
+    assert retained.movements == {"net_income": 500.0}
+    assert retained.verified is True
+    nci = graph.component(_EQ_NCI)
+    assert nci is not None
+    assert nci.movements == {"net_income": 100.0}
+    assert nci.verified is True
+
+
 def test_equity_rollforward_signs_treasury_acquisitions_on_treasury_only() -> None:
     """Acquired cost subtracts on the treasury member and is ignored elsewhere."""
     facts = [

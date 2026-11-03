@@ -42,11 +42,13 @@ _IX_FACT = re.compile(
 )
 _IX_NAME = re.compile(rb'\bname="([^"]+)"')
 _XML_FACT = re.compile(
-    rb"<([A-Za-z][A-Za-z0-9_.-]*:[A-Za-z][A-Za-z0-9_.-]*)\b([^>]*)>(.*?)</\1>",
+    rb"<([A-Za-z][A-Za-z0-9_.-]*:[A-Za-z][A-Za-z0-9_.-]*)\b([^>]*\bcontextRef=\"[^\"]*\"[^>]*)>(.*?)</\1>",
     re.DOTALL,
 )
 _IX_NIL = re.compile(rb"<ix:non(?:Numeric|Fraction)\b([^>]*)/>")
-_XML_NIL = re.compile(rb"<([A-Za-z][A-Za-z0-9_.-]*:[A-Za-z][A-Za-z0-9_.-]*)\b([^>]*)/>")
+_XML_NIL = re.compile(
+    rb"<([A-Za-z][A-Za-z0-9_.-]*:[A-Za-z][A-Za-z0-9_.-]*)\b([^>]*\bcontextRef=\"[^\"]*\"[^>]*)/>"
+)
 _CONTEXT_REF = re.compile(rb'\bcontextRef="([^"]+)"')
 _UNIT_REF = re.compile(rb'\bunitRef="([^"]+)"')
 _DECIMALS = re.compile(rb'\bdecimals="([^"]+)"')

@@ -8,8 +8,8 @@ checked before ranking: incompatible facts return flagged, never dropped.
 from __future__ import annotations
 
 import json
-from collections.abc import Sequence
-from dataclasses import dataclass
+from collections.abc import Mapping, Sequence
+from dataclasses import dataclass, field
 from datetime import date
 
 from edgar_sec.engine.xbrl.schema.atoms import Atom
@@ -56,10 +56,10 @@ class CohortCandidate:
 
 @dataclass(frozen=True, slots=True)
 class CohortFact:
-    """One candidate fact's lookup payload: value, unit, and period.
+    """One candidate fact's lookup payload: value, unit, period, scope.
 
-    Decimals, dimensions, and context stay in the bundle; the
-    per-filing path serves them for a filing a consumer opens.
+    Decimals and context stay in the bundle; the per-filing path
+    serves them for a filing a consumer opens.
     """
 
     accession: str
@@ -70,6 +70,7 @@ class CohortFact:
     start_date: str | None = None
     end_date: str | None = None
     instant_date: str | None = None
+    dimensions: Mapping[str, str] = field(default_factory=dict)
 
 
 @dataclass(frozen=True, slots=True)
@@ -91,6 +92,15 @@ class CohortFactMatch:
     superseded_by: str = ""
 
 
+def _row_dimensions(row: Sequence[object]) -> dict[str, str]:
+    """One facts.parquet row's dimension scope, decoded from its JSON."""
+    try:
+        dimensions = json.loads(str(row[8])) if row[8] else {}
+    except ValueError:
+        return {}
+    return dict(dimensions) if isinstance(dimensions, dict) else {}
+
+
 def _row_to_fact(row: Sequence[object]) -> CohortFact:
     """One facts.parquet row (in _FACT_COLUMNS order) as a CohortFact."""
     return CohortFact(
@@ -102,22 +112,19 @@ def _row_to_fact(row: Sequence[object]) -> CohortFact:
         start_date=str(row[5]) if row[5] is not None else None,
         end_date=str(row[6]) if row[6] is not None else None,
         instant_date=str(row[7]) if row[7] is not None else None,
+        dimensions=_row_dimensions(row),
     )
 
 
 def _row_key(row: Sequence[object]) -> tuple[object, ...]:
     """A fetched row's supersession key: concept, period, and dimensions."""
-    try:
-        dimensions = json.loads(str(row[8])) if row[8] else {}
-    except ValueError:
-        dimensions = {}
     return (
         str(row[1]),
         str(row[4]),
         str(row[5]) if row[5] is not None else None,
         str(row[6]) if row[6] is not None else None,
         str(row[7]) if row[7] is not None else None,
-        tuple(sorted(dimensions.items())) if isinstance(dimensions, dict) else (),
+        tuple(sorted(_row_dimensions(row).items())),
     )
 
 
@@ -373,8 +380,8 @@ class CohortLookup:
     def _incompatibility(self, source: XbrlFact, fact: CohortFact) -> str:
         """Name the first compatibility failure, or empty when compatible.
 
-        Unit class first, then period kind, then fiscal alignment — the
-        order a reader adjudicates a candidate by.
+        Unit class first, then period kind, fiscal alignment, and
+        dimension scope — the order a reader adjudicates a candidate by.
         """
         if self._unit_class(fact.unit) != self._unit_class(source.unit):
             return "unit"
@@ -383,6 +390,8 @@ class CohortLookup:
         source_key = _fiscal_key(source)
         if source_key is not None and _fiscal_key(fact) != source_key:
             return "fiscal_period"
+        if dict(fact.dimensions) != dict(source.dimensions):
+            return "dimensions"
         return ""
 
     def equivalent_facts(

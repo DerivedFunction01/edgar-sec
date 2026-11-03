@@ -537,6 +537,7 @@ class PairSpec:
     source_firm: str = ""
     candidate_firm: str = ""
     incompatibility: str = ""
+    source_scope: tuple[tuple[str, str], ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -693,6 +694,20 @@ PAIR_SET: tuple[PairSpec, ...] = (
         candidate_firm="ASML",
         incompatibility="unit",
     ),
+    PairSpec(
+        "jpm:NetIncomeLossAttributabletoParentAloneExcludingDividendsand"
+        "IncomefromSubsidiariesandAffiliates",
+        "us-gaap:NetIncomeLoss",
+        EXACT,
+        "Completeness Step 13 specimen: the JPM extension is the "
+        "parent-alone scope's net income (ParentCompanyMember-dimensioned, "
+        "FY2024); BAC files the standard concept under the same scope, "
+        "so the pair is EXACT within the scope and only there",
+        rule="equality",
+        source_firm="JPM",
+        candidate_firm="BAC",
+        source_scope=(("srt:ConsolidatedEntitiesAxis", "srt:ParentCompanyMember"),),
+    ),
 )
 
 
@@ -710,7 +725,7 @@ def evaluate_pairs(
     passed = 0
     for spec in pairs:
         label = f"{spec.target} -> {spec.candidate or spec.candidate_firm}"
-        if spec.incompatibility:
+        if spec.source_firm:
             source = (source_facts or {}).get((spec.source_firm, spec.target))
             if source is None:
                 failures.append(f"{label}: no source fact supplied")
@@ -720,16 +735,34 @@ def evaluate_pairs(
                 for item in lookup.equivalent_facts(source)
                 if item.firm == spec.candidate_firm
             ]
-            ok = bool(matches) and all(
-                not item.compatible and item.incompatibility == spec.incompatibility
+            if spec.incompatibility:
+                ok = bool(matches) and all(
+                    not item.compatible and item.incompatibility == spec.incompatibility
+                    for item in matches
+                )
+                if ok:
+                    passed += 1
+                else:
+                    failures.append(
+                        f"{label}: expected all {spec.candidate_firm} matches "
+                        f"flagged {spec.incompatibility}, got {len(matches)} matches"
+                    )
+                continue
+            scoped = [
+                item
                 for item in matches
-            )
-            if ok:
+                if item.qname == spec.candidate
+                and item.compatible
+                and item.tier == spec.tier
+                and dict(item.fact.dimensions) == dict(source.dimensions)
+            ]
+            if scoped:
                 passed += 1
             else:
                 failures.append(
-                    f"{label}: expected all {spec.candidate_firm} matches "
-                    f"flagged {spec.incompatibility}, got {len(matches)} matches"
+                    f"{label}: expected a compatible {spec.tier} "
+                    f"{spec.candidate_firm} match in the source scope, "
+                    f"got {len(matches)} matches"
                 )
             continue
         hits = [

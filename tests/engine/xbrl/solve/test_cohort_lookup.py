@@ -21,7 +21,11 @@ from edgar_sec.engine.xbrl.taxonomy.domain import (
     DomainTaxonomy,
     load_domain_taxonomy,
 )
-from tests.engine.xbrl.solve.conftest import load_seed_cohort, load_seed_facts
+from tests.engine.xbrl.solve.conftest import (
+    load_seed_cohort,
+    load_seed_facts,
+    seed_folder,
+)
 
 _ACC_A = "0000000001-24-000001"
 _ACC_B = "0000000002-24-000002"
@@ -141,6 +145,74 @@ def test_equivalent_facts_flag_each_incompatibility(
         index for index, item in enumerate(matches) if not item.compatible
     )
     assert all(item.compatible for item in matches[:first_incompatible])
+
+
+_PARENT_SCOPE = {"srt:ConsolidatedEntitiesAxis": "srt:ParentCompanyMember"}
+
+
+def _scoped_fact(accession: str, value: float, dimensions: dict[str, str]) -> XbrlFact:
+    return XbrlFact(
+        accession=AccessionNumber.from_any(accession),
+        concept_qname="us-gaap:AccountsPayableCurrent",
+        value=value,
+        unit="USD",
+        period_type="instant",
+        instant_date="2024-12-31",
+        dimensions=dimensions,
+    )
+
+
+@pytest.fixture()
+def scoped_lookup(taxonomy: DomainTaxonomy, tmp_path: Path) -> CohortLookup:
+    """Two filings carrying payables in consolidated and parent scopes."""
+    path_a = tmp_path / "aaa" / "facts.parquet"
+    path_b = tmp_path / "bbb" / "facts.parquet"
+    write_facts_parquet(
+        [
+            _scoped_fact(_ACC_A, 100.0, {}),
+            _scoped_fact(_ACC_A, 90.0, _PARENT_SCOPE),
+        ],
+        path_a,
+    )
+    write_facts_parquet(
+        [
+            _scoped_fact(_ACC_B, 200.0, {}),
+            _scoped_fact(_ACC_B, 180.0, _PARENT_SCOPE),
+        ],
+        path_b,
+    )
+    entries = (
+        CohortEntry(accession=_ACC_A, facts_path=path_a, firm="AAA"),
+        CohortEntry(accession=_ACC_B, facts_path=path_b, firm="BBB"),
+    )
+    lookup = CohortLookup(build_cohort_table(taxonomy, entries), entries)
+    yield lookup
+    lookup.close()
+
+
+def test_equivalent_facts_flag_scope_mismatch(scoped_lookup: CohortLookup) -> None:
+    """A candidate under another dimension scope is flagged, never dropped."""
+    source = _scoped_fact(_ACC_A, 100.0, {})
+    matches = [
+        item for item in scoped_lookup.equivalent_facts(source) if item.firm == "BBB"
+    ]
+    by_value = {item.fact.value: item for item in matches}
+    assert by_value[200.0].compatible
+    assert not by_value[180.0].compatible
+    assert by_value[180.0].incompatibility == "dimensions"
+    assert by_value[180.0].fact.dimensions == _PARENT_SCOPE
+
+
+def test_equivalent_facts_exact_within_scope(scoped_lookup: CohortLookup) -> None:
+    """Same-scope candidates stay compatible; the consolidated row flips."""
+    source = _scoped_fact(_ACC_A, 90.0, _PARENT_SCOPE)
+    matches = [
+        item for item in scoped_lookup.equivalent_facts(source) if item.firm == "BBB"
+    ]
+    by_value = {item.fact.value: item for item in matches}
+    assert by_value[180.0].compatible and by_value[180.0].tier == "exact"
+    assert not by_value[200.0].compatible
+    assert by_value[200.0].incompatibility == "dimensions"
 
 
 def _calc_arcs(path: Path, parent: str, child: str) -> None:
@@ -350,6 +422,54 @@ def test_incompatible_unit_specimen(seed_lookup: CohortLookup) -> None:
     assert all(item.fact.period_type == "instant" for item in compatible)
 
 
+_JPM_PARENT_ALONE = (
+    "jpm:NetIncomeLossAttributabletoParentAloneExcludingDividendsand"
+    "IncomefromSubsidiariesandAffiliates"
+)
+
+
+def _jpm_fact(qname: str, dimensions: dict[str, str]) -> XbrlFact:
+    own = [
+        fact
+        for fact in load_seed_facts(seed_folder("JPM"))
+        if fact.concept_qname == qname and dict(fact.dimensions) == dimensions
+    ]
+    return max(own, key=lambda fact: fact.end_date or "")
+
+
+def test_parent_alone_slice_flagged_for_consolidated_source(
+    seed_lookup: CohortLookup,
+) -> None:
+    """JPM's parent-alone extension never serves as consolidated net income."""
+    source = _jpm_fact("us-gaap:NetIncomeLoss", {})
+    assert source.value == 58_471_000_000.0
+    matches = seed_lookup.equivalent_facts(source)
+    extension = [item for item in matches if item.qname == _JPM_PARENT_ALONE]
+    assert extension
+    assert all(not item.compatible for item in extension)
+    current = [item for item in extension if item.fact.end_date == "2024-12-31"]
+    assert len(current) == 1
+    assert current[0].incompatibility == "dimensions"
+    assert current[0].fact.value == -14_310_000_000.0
+
+
+def test_parent_alone_pair_exact_within_scope(seed_lookup: CohortLookup) -> None:
+    """Scoped to parent-alone, the JPM extension matches BAC's standard fact."""
+    source = _jpm_fact(_JPM_PARENT_ALONE, _PARENT_SCOPE)
+    matches = seed_lookup.equivalent_facts(source)
+    bac = [
+        item
+        for item in matches
+        if item.firm == "BAC"
+        and item.qname == "us-gaap:NetIncomeLoss"
+        and item.fact.end_date == "2024-12-31"
+        and dict(item.fact.dimensions) == _PARENT_SCOPE
+    ]
+    assert bac
+    assert all(item.compatible and item.tier == "exact" for item in bac)
+    assert all(item.fact.value == 27_132_000_000.0 for item in bac)
+
+
 def test_per_accession_fact_specimen(seed_lookup: CohortLookup) -> None:
     """One filing's slice of the cohort query returns only its own facts."""
     entries = {entry.firm: entry for entry in load_seed_cohort()}
@@ -414,7 +534,21 @@ def test_pair_set_holds_over_the_seed_cohort(seed_lookup: CohortLookup) -> None:
     """Every seeded cross-firm pair holds at its expected tier, live."""
     from edgar_sec.engine.xbrl.review.benchmark import PAIR_SET, evaluate_pairs
 
-    source_facts = {("MSFT", "us-gaap:AccountsPayableCurrent"): _msft_source()}
+    source_facts = {}
+    for spec in PAIR_SET:
+        if not spec.source_firm:
+            continue
+        facts = load_seed_facts(seed_folder(spec.source_firm))
+        scope = dict(spec.source_scope)
+        own = [
+            fact
+            for fact in facts
+            if fact.concept_qname == spec.target and dict(fact.dimensions) == scope
+        ]
+        source_facts[(spec.source_firm, spec.target)] = max(
+            own,
+            key=lambda fact: fact.end_date or fact.instant_date or "",
+        )
     report = evaluate_pairs(seed_lookup, PAIR_SET, source_facts)
     assert report.failures == ()
     assert report.passed == report.total == len(PAIR_SET)

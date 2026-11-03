@@ -361,3 +361,13 @@ def latest_undimensioned_fact(folder: str, qname: str) -> XbrlFact:
         if fact.concept_qname == qname and not fact.dimensions
     ]
     return max(own, key=lambda fact: fact.instant_date or "")
+
+
+def latest_scoped_fact(folder: str, qname: str, dimensions: dict[str, str]) -> XbrlFact:
+    """The latest-period fact for a qname filed under exactly one scope."""
+    own = [
+        fact
+        for fact in load_seed_facts(folder)
+        if fact.concept_qname == qname and dict(fact.dimensions) == dimensions
+    ]
+    return max(own, key=lambda fact: fact.end_date or fact.instant_date or "")

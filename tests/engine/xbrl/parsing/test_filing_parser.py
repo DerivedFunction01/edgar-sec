@@ -134,6 +134,91 @@ def test_parse_filing_xbrl_without_instance_has_no_document() -> None:
     assert xbrl.facts == ()
 
 
+_FEE_INSTANCE = (
+    '<xbrl xmlns="http://www.xbrl.org/2003/instance" '
+    'xmlns:ffd="http://xbrl.sec.gov/ffd/2024">'
+    '<context id="c-1"><entity><identifier scheme="http://www.sec.gov/CIK">1'
+    "</identifier></entity>"
+    "<period><instant>2024-01-01</instant></period></context>"
+    '<unit id="u-1"><measure>iso4217:USD</measure></unit>'
+    '<ffd:FilingFee contextRef="c-1" unitRef="u-1" decimals="0">100'
+    "</ffd:FilingFee></xbrl>"
+).encode()
+
+
+def _multi_instance_filing(fee_last: bool) -> FilingAggregate:
+    """An S-1-shaped aggregate: main instance plus a fee-exhibit instance."""
+    acc = AccessionNumber("0000950170-24-087843")
+    cik = Cik.from_raw(789019)
+    cal_bytes = fixture_path("xbrl/msft-20240630_cal.xml").read_bytes()
+    htm_bytes = fixture_path("xbrl/msft-20240630_htm.xml").read_bytes()
+    main = FilingAttachment(
+        attachment_id=f"{acc}-ins",
+        document_type="XML",
+        filename="msft-20240630_htm.xml",
+        url="https://sec.gov/ins.xml",
+        fetcher=lambda _: htm_bytes,
+    )
+    fee = FilingAttachment(
+        attachment_id=f"{acc}-fee",
+        document_type="EX-101.INS",
+        filename="exhibit107.htm",
+        url="https://sec.gov/fee.htm",
+        fetcher=lambda _: _FEE_INSTANCE,
+    )
+    cal = FilingAttachment(
+        attachment_id=f"{acc}-cal",
+        document_type="EX-101.CAL",
+        filename="msft-20240630_cal.xml",
+        url="https://sec.gov/cal.xml",
+        fetcher=lambda _: cal_bytes,
+    )
+    attachments = (cal, main, fee) if fee_last else (cal, fee, main)
+    return FilingAggregate(
+        accession=acc,
+        primary_cik=cik,
+        ciks=(cik,),
+        form="S-1",
+        filing_date="2024-07-30",
+        attachments=attachments,
+    )
+
+
+def test_parse_filing_xbrl_selects_main_instance_over_fee_exhibit() -> None:
+    """Instance selection is by role: the described instance wins either order."""
+    for fee_last in (True, False):
+        xbrl = parse_filing_xbrl(_multi_instance_filing(fee_last))
+        assert xbrl.instance_document == "msft-20240630_htm.xml"
+        assert len(xbrl.facts) == 8
+        assert all(not fact.concept_qname.startswith("ffd:") for fact in xbrl.facts)
+
+
+def test_parse_filing_xbrl_keeps_a_lone_fee_instance() -> None:
+    """A filing whose only instance is the fee exhibit keeps it."""
+    acc = AccessionNumber("0000950170-24-087843")
+    cik = Cik.from_raw(789019)
+    attachments = (
+        FilingAttachment(
+            attachment_id=f"{acc}-fee",
+            document_type="EX-101.INS",
+            filename="exhibit107.htm",
+            url="https://sec.gov/fee.htm",
+            fetcher=lambda _: _FEE_INSTANCE,
+        ),
+    )
+    filing = FilingAggregate(
+        accession=acc,
+        primary_cik=cik,
+        ciks=(cik,),
+        form="S-1",
+        filing_date="2024-07-30",
+        attachments=attachments,
+    )
+    xbrl = parse_filing_xbrl(filing)
+    assert xbrl.instance_document == "exhibit107.htm"
+    assert [fact.concept_qname for fact in xbrl.facts] == ["ffd:FilingFee"]
+
+
 def test_parse_filing_xbrl_with_definition_linkbase() -> None:
     """Verify an EX-101.DEF attachment populates bundle definition arcs."""
     def_bytes = fixture_path("xbrl/msft-20240630_def.xml").read_bytes()

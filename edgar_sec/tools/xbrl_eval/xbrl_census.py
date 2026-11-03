@@ -666,6 +666,7 @@ def run_pair_gate() -> object:
     from edgar_sec.engine.xbrl.solve.query import FinancialQueryEngine
     from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
     from edgar_sec.tools.xbrl_eval.xbrl_census_corpus import (
+        latest_scoped_fact,
         latest_undimensioned_fact,
         load_seed_arcs,
         load_seed_facts,
@@ -676,13 +677,19 @@ def run_pair_gate() -> object:
     entries = corpus_cohort_entries()
     lookup = CohortLookup(build_cohort_table(taxonomy, entries), entries)
     try:
-        source_facts = {
-            (spec.source_firm, spec.target): latest_undimensioned_fact(
-                f"{spec.source_firm.lower()}_2024_10k", spec.target
-            )
-            for spec in PAIR_SET
-            if spec.incompatibility
-        }
+        source_facts = {}
+        for spec in PAIR_SET:
+            if not spec.source_firm:
+                continue
+            folder = f"{spec.source_firm.lower()}_2024_10k"
+            if spec.source_scope:
+                source_facts[(spec.source_firm, spec.target)] = latest_scoped_fact(
+                    folder, spec.target, dict(spec.source_scope)
+                )
+            else:
+                source_facts[(spec.source_firm, spec.target)] = (
+                    latest_undimensioned_fact(folder, spec.target)
+                )
         pairs = evaluate_pairs(lookup, PAIR_SET, source_facts)
     finally:
         lookup.close()

@@ -27,8 +27,19 @@ _INLINE = (
 )
 _INSTANCE = (
     b'<xbrl xmlns:xbrli="http://www.xbrl.org/2003/instance">'
-    b'<xbrli:context id="c1"/><us-gaap:Revenues>5</us-gaap:Revenues>'
-    b"<us-gaap:Assets>7</us-gaap:Assets><dei:Cover>1</dei:Cover></xbrl>"
+    b'<xbrli:context id="c1"/><us-gaap:Revenues contextRef="c1">5</us-gaap:Revenues>'
+    b'<us-gaap:Assets contextRef="c1">7</us-gaap:Assets>'
+    b'<dei:Cover contextRef="c1">1</dei:Cover></xbrl>'
+)
+_PREFIXED_INSTANCE = (
+    b'<xbrli:xbrl xmlns:xbrli="http://www.xbrl.org/2003/instance">'
+    b'<xbrli:context id="c1"><xbrli:entity><xbrli:identifier>1</xbrli:identifier>'
+    b"</xbrli:entity></xbrli:context>"
+    b'<us-gaap:Revenues contextRef="c1">5</us-gaap:Revenues>'
+    b'<us-gaap:Assets contextRef="c1">7</us-gaap:Assets>'
+    b'<us-gaap:Cash contextRef="c1" xsi:nil="true" '
+    b'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>'
+    b'<dei:Cover contextRef="c1">1</dei:Cover></xbrli:xbrl>'
 )
 
 
@@ -60,6 +71,13 @@ def test_count_facts_instance_skips_structural_prefixes():
     counts = count_facts(_INSTANCE, inline=False)
     assert counts["total_facts"] == 3
     assert counts["us_gaap_facts"] == 2
+    assert counts["dei_facts"] == 1
+
+
+def test_count_facts_prefixed_root_counts_the_whole_instance():
+    counts = count_facts(_PREFIXED_INSTANCE, inline=False)
+    assert counts["total_facts"] == 4
+    assert counts["us_gaap_facts"] == 3
     assert counts["dei_facts"] == 1
 
 
