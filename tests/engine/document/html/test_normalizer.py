@@ -102,6 +102,28 @@ def test_comments_and_declarations_are_removed() -> None:
     assert decompose_html_structures(html) == "body"
 
 
+def test_conditional_comment_wrapping_a_table_keeps_the_table() -> None:
+    # Distilled from accession 0001387131-18-001057: conditional comments
+    # in PDF-converted filings can open before a table and close after it.
+    html = (
+        "<p>before</p>"
+        "<!--[if IE]><TABLE><TR><TD>S-i</TD></TR></TABLE><![endif]-->"
+        "<p>after</p>"
+    )
+    result = decompose_html_structures(html)
+    assert "before" in result
+    assert "after" in result
+    assert "<TABLE><TR><TD>S-i</TD></TR></TABLE>" in result
+    assert "[if IE]" not in result
+
+
+def test_comment_between_tables_drops_only_the_comment() -> None:
+    html = f"{TAGGED_TABLE}<!-- hidden -->{TAGGED_TABLE}"
+    result = decompose_html_structures(html)
+    assert result.count(TAGGED_TABLE) == 2
+    assert "hidden" not in result
+
+
 def test_nested_divs_unroll() -> None:
     html = "<div><div><div><p>deep</p></div></div></div>"
     assert decompose_html_structures(html) == "deep"
