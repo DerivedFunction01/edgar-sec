@@ -284,13 +284,7 @@ def test_mask_restore_round_trip_with_length_changing_lowercase() -> None:
 
 
 def test_find_table_spans_line_numbers_across_spans() -> None:
-    text = (
-        "head\n"
-        "<TABLE>\na\n</TABLE>\n"
-        "mid\n\n"
-        "<TABLE>\nb\n</TABLE>\n"
-        "tail"
-    )
+    text = "head\n<TABLE>\na\n</TABLE>\nmid\n\n<TABLE>\nb\n</TABLE>\ntail"
     spans = find_table_spans(text)
     assert [(span.start_line, span.end_line) for span in spans] == [(1, 3), (6, 8)]
 
