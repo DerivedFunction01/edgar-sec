@@ -26,6 +26,11 @@ from edgar_sec.engine.xbrl.schema.models import (
     XbrlFact,
 )
 from edgar_sec.engine.xbrl.solve.composer import StatementComposer
+from edgar_sec.engine.xbrl.solve.scoping import (
+    AmendmentLineage,
+    covering_lineage,
+    supersede_facts,
+)
 from edgar_sec.engine.xbrl.solve.statement import (
     BalanceSheetGraph,
     CashFlowGraph,
@@ -102,8 +107,16 @@ class FilingKernel:
         | Callable[[], Sequence[PresentationArc]] = (),
         cik: str | None = None,
         accession: str | None = None,
+        lineages: Sequence[AmendmentLineage] = (),
+        fact_pool: Sequence[XbrlFact] | None = None,
     ) -> None:
-        self.facts = tuple(facts)
+        self.fact_pool = tuple(fact_pool) if fact_pool is not None else tuple(facts)
+        self.lineages = tuple(lineages)
+        self.facts = (
+            supersede_facts(self.fact_pool, self.lineages)
+            if self.lineages
+            else self.fact_pool
+        )
         self._calculation_arcs_source: Any = calculation_arcs
         self._calculation_arcs: tuple[CalculationArc, ...] | None = None
         self._definition_arcs_source: Any = definition_arcs
@@ -198,6 +211,22 @@ class FilingKernel:
             if isinstance(fact.value, str) and fact.value:
                 return fact.value
         return None
+
+    @property
+    def lineage(self) -> AmendmentLineage | None:
+        """The amendment lineage covering this filing, when supplied."""
+        if not self.lineages or not self.accession:
+            return None
+        return covering_lineage(self.lineages, (self.accession,))
+
+    def facts_for_accession(self, accession: str) -> tuple[XbrlFact, ...]:
+        """Pool facts filed under one accession, unsuperseded.
+
+        Explicit accession scope: the filing as filed, unrestated.
+        """
+        return tuple(
+            fact for fact in self.fact_pool if str(fact.accession) == accession
+        )
 
     @property
     def filed_metadata(self) -> FiledMetadata:

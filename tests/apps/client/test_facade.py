@@ -4,11 +4,23 @@ from __future__ import annotations
 
 from pathlib import Path
 import pyarrow as pa
+import pyarrow.parquet as pq
 import pytest
 
 from edgar_sec.apps.client.facade import Edgar
 from edgar_sec.apps.client.models import FilingsResult
+from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.apps.runner.config import FilingQuery, PipelineConfig
+from edgar_sec.engine.xbrl.normalize.filed_metadata import filed_metadata
+from edgar_sec.engine.xbrl.solve.scoping import (
+    FilingRef,
+    build_lineages,
+    fact_key,
+    supersede_facts,
+)
+from edgar_sec.engine.xbrl.storage.storage import facts_from_arrow_table
+from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
+from tests.support import fixture_path, load_fixture
 
 
 def test_edgar_facade_builds_specs_and_delegates(monkeypatch, tmp_path) -> None:
@@ -347,3 +359,117 @@ def test_edgar_facade_fetch_operation_forwarding(monkeypatch, tmp_path) -> None:
     )
     assert captured["operation"] == "xml"
     assert captured["family_operations"] == {"4": "render_to_xml"}
+
+
+def _probe_refs(folders: tuple[str, ...]) -> tuple[FilingRef, ...]:
+    """Lineage refs for probe bundles: cohort rows plus filed period ends."""
+    rows = {row["accession"]: row for row in load_fixture("xbrl/probe_cohort.json")}
+    refs = []
+    for folder in folders:
+        facts = facts_from_arrow_table(
+            pq.read_table(fixture_path(f"xbrl/probe/{folder}") / "facts.parquet")
+        )
+        accession = str({str(fact.accession) for fact in facts}.pop())
+        row = rows[accession]
+        refs.append(
+            FilingRef(
+                accession=accession,
+                cik=row["cik"],
+                form=row["form"],
+                report_period=filed_metadata(facts).period_end or "",
+            )
+        )
+    return tuple(refs)
+
+
+def _pair_facade(primary: str, sibling: str, refs: tuple[FilingRef, ...]) -> Xbrl:
+    return Xbrl.from_bundle(
+        fixture_path(f"xbrl/probe/{primary}"),
+        load_domain_taxonomy(),
+        lineage_refs=refs,
+        sibling_bundles=(fixture_path(f"xbrl/probe/{sibling}"),),
+    )
+
+
+def _fact_rows(facts) -> list:
+    return sorted(
+        (fact_key(fact), str(fact.accession), repr(fact.value)) for fact in facts
+    )
+
+
+def test_adm_pair_kernel_serves_the_superseded_set() -> None:
+    """The pooled ADM pair's kernel equals the engine's supersession outcome."""
+    refs = _probe_refs(("adm_2023_10q", "adm_2023_10qa"))
+    kernel = _pair_facade("adm_2023_10qa", "adm_2023_10q", refs)._kernel
+    expected = supersede_facts(kernel.fact_pool, build_lineages(refs))
+    assert _fact_rows(kernel.facts) == _fact_rows(expected)
+    by_qname = kernel.facts_by_qname()
+    assert {fact.value for fact in by_qname["dei:DocumentType"]} == {"10-Q/A"}
+    assert "dei:AmendmentDescription" in by_qname
+    standing = (
+        "us-gaap:IncomeLossFromContinuingOperations"
+        "BeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"
+    )
+    assert standing in by_qname
+    lineage = build_lineages(refs)[0]
+    revenue = [
+        fact
+        for fact in by_qname[
+            "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+        ]
+        if fact.start_date == "2023-04-01"
+        and fact.end_date == "2023-06-30"
+        and not fact.dimensions
+    ]
+    assert [str(fact.accession) for fact in revenue] == [lineage.latest]
+
+
+def test_adm_pair_serving_does_not_depend_on_the_primary_bundle() -> None:
+    """Original-primary and amendment-primary pools serve the same set."""
+    refs = _probe_refs(("adm_2023_10q", "adm_2023_10qa"))
+    from_amendment = _pair_facade("adm_2023_10qa", "adm_2023_10q", refs)._kernel
+    from_original = _pair_facade("adm_2023_10q", "adm_2023_10qa", refs)._kernel
+    assert _fact_rows(from_original.facts) == _fact_rows(from_amendment.facts)
+    assert from_original.lineage == from_amendment.lineage
+
+
+def test_adm_pair_explicit_scope_reproduces_the_original_filing() -> None:
+    """Explicit accession scope returns the original bundle's facts exactly."""
+    refs = _probe_refs(("adm_2023_10q", "adm_2023_10qa"))
+    kernel = _pair_facade("adm_2023_10qa", "adm_2023_10q", refs)._kernel
+    lineage = build_lineages(refs)[0]
+    original_facts = facts_from_arrow_table(
+        pq.read_table(fixture_path("xbrl/probe/adm_2023_10q") / "facts.parquet")
+    )
+    scoped = kernel.facts_for_accession(lineage.original)
+    assert _fact_rows(scoped) == _fact_rows(original_facts)
+
+
+def test_adm_pair_surfaces_read_the_superseded_set() -> None:
+    """Cover and revenue on the pooled pair read the restated population."""
+    refs = _probe_refs(("adm_2023_10q", "adm_2023_10qa"))
+    pooled = _pair_facade("adm_2023_10qa", "adm_2023_10q", refs)
+    cover = {fact.concept_qname: fact.value for fact in pooled.statements.cover()}
+    assert cover["dei:DocumentType"] == "10-Q/A"
+    assert "dei:AmendmentDescription" in cover
+    amendment_only = Xbrl.from_bundle(
+        fixture_path("xbrl/probe/adm_2023_10qa"), load_domain_taxonomy()
+    )
+    assert pooled.financials.revenue is not None
+    assert pooled.financials.revenue == amendment_only.financials.revenue
+
+
+def test_kd_pair_kernel_serves_the_superseded_set() -> None:
+    """The pooled Kyndryl pair's kernel equals the engine's supersession."""
+    refs = _probe_refs(("kd_2025_10k", "kd_2025_10ka"))
+    kernel = _pair_facade("kd_2025_10ka", "kd_2025_10k", refs)._kernel
+    expected = supersede_facts(kernel.fact_pool, build_lineages(refs))
+    assert _fact_rows(kernel.facts) == _fact_rows(expected)
+    by_qname = kernel.facts_by_qname()
+    assert {fact.value for fact in by_qname["dei:DocumentType"]} == {"10-K/A"}
+    lineage = build_lineages(refs)[0]
+    original_facts = facts_from_arrow_table(
+        pq.read_table(fixture_path("xbrl/probe/kd_2025_10k") / "facts.parquet")
+    )
+    scoped = kernel.facts_for_accession(lineage.original)
+    assert _fact_rows(scoped) == _fact_rows(original_facts)

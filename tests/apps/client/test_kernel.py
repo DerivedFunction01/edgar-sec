@@ -1,8 +1,10 @@
 """Memoization and shared-state tests for the per-filing kernel."""
 
+from edgar_sec.apps.client.kernel import FilingKernel
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.domain.identity import AccessionNumber, Cik
-from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle
+from edgar_sec.engine.xbrl.schema.models import FilingXbrl, LinkbaseBundle, XbrlFact
+from edgar_sec.engine.xbrl.solve.scoping import FilingRef, build_lineages
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from tests.engine.xbrl.solve.conftest import (
     load_seed_calculation_arcs,
@@ -140,3 +142,86 @@ def test_kernel_filed_metadata_reads_the_dei_block() -> None:
     assert meta.fiscal_year_end == (6, 30)
     assert meta.annual_report is True
     assert kernel.filed_metadata is meta
+
+
+_ORIGINAL = "0000000001-24-000001"
+_AMENDMENT = "0000000001-24-000002"
+
+
+def _pooled_fact(accession: str, qname: str, value: float) -> XbrlFact:
+    return XbrlFact(
+        accession=AccessionNumber(accession),
+        concept_qname=qname,
+        value=value,
+        unit="USD",
+        period_type="duration",
+        start_date="2024-01-01",
+        end_date="2024-12-31",
+    )
+
+
+def _pooled_kernel() -> FilingKernel:
+    pool = (
+        _pooled_fact(_ORIGINAL, "us-gaap:Revenues", 100.0),
+        _pooled_fact(_ORIGINAL, "us-gaap:IncomeLoss", 40.0),
+        _pooled_fact(_AMENDMENT, "us-gaap:Revenues", 120.0),
+    )
+    refs = (
+        FilingRef(
+            accession=_ORIGINAL,
+            cik="0000000001",
+            form="10-K",
+            report_period="2024-12-31",
+        ),
+        FilingRef(
+            accession=_AMENDMENT,
+            cik="0000000001",
+            form="10-K/A",
+            report_period="2024-12-31",
+        ),
+    )
+    return FilingKernel(
+        pool,
+        (),
+        load_domain_taxonomy(),
+        accession=_AMENDMENT,
+        lineages=build_lineages(refs),
+        fact_pool=pool,
+    )
+
+
+def test_kernel_serves_superseded_pool_by_default() -> None:
+    """Restated keys answer from the amendment; untouched originals stand."""
+    kernel = _pooled_kernel()
+    served = {
+        fact.concept_qname: (fact.value, str(fact.accession)) for fact in kernel.facts
+    }
+    assert served == {
+        "us-gaap:Revenues": (120.0, _AMENDMENT),
+        "us-gaap:IncomeLoss": (40.0, _ORIGINAL),
+    }
+    assert len(kernel.fact_pool) == 3
+    lineage = kernel.lineage
+    assert lineage is not None
+    assert (lineage.original, lineage.latest) == (_ORIGINAL, _AMENDMENT)
+
+
+def test_kernel_explicit_accession_scope_reaches_the_original() -> None:
+    """Explicit accession scope returns the filing as filed, unrestated."""
+    kernel = _pooled_kernel()
+    original = kernel.facts_for_accession(_ORIGINAL)
+    assert {fact.concept_qname: fact.value for fact in original} == {
+        "us-gaap:Revenues": 100.0,
+        "us-gaap:IncomeLoss": 40.0,
+    }
+    amendment = kernel.facts_for_accession(_AMENDMENT)
+    assert [fact.value for fact in amendment] == [120.0]
+
+
+def test_kernel_without_lineages_serves_facts_unchanged() -> None:
+    """A kernel with no lineage supplied is the identity over its facts."""
+    facts = (_pooled_fact(_ORIGINAL, "us-gaap:Revenues", 100.0),)
+    kernel = FilingKernel(facts, (), load_domain_taxonomy(), accession=_ORIGINAL)
+    assert kernel.facts == facts
+    assert kernel.fact_pool == facts
+    assert kernel.lineage is None

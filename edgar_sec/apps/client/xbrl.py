@@ -50,6 +50,7 @@ from edgar_sec.engine.xbrl.schema.models import (
     FilingXbrl,
     LinkbaseBundle,
     PresentationArc,
+    XbrlFact,
 )
 from edgar_sec.engine.xbrl.solve.query import (
     FinancialQuery,
@@ -58,7 +59,12 @@ from edgar_sec.engine.xbrl.solve.query import (
     QueryMode,
     QueryStatus,
 )
-from edgar_sec.engine.xbrl.solve.scoping import FactScope
+from edgar_sec.engine.xbrl.solve.scoping import (
+    AmendmentLineage,
+    FactScope,
+    FilingRef,
+    build_lineages,
+)
 from edgar_sec.engine.xbrl.solve.solver import XbrlConstraintSolver
 from edgar_sec.engine.xbrl.solve.statement import (
     StatementGraph,
@@ -115,8 +121,11 @@ class Xbrl:
         self,
         filing_xbrl: FilingXbrl,
         taxonomy: DomainTaxonomy | None = None,
+        *,
+        lineages: Sequence[AmendmentLineage] = (),
+        fact_pool: Sequence[XbrlFact] | None = None,
     ) -> None:
-        self._populate(filing_xbrl, taxonomy)
+        self._populate(filing_xbrl, taxonomy, lineages=lineages, fact_pool=fact_pool)
 
     def _populate(
         self,
@@ -126,6 +135,8 @@ class Xbrl:
         fact_set: XbrlFactSet | None = None,
         evidence_record: FilingEvidenceRecord | None = None,
         arc_suppliers: dict[str, Any] | None = None,
+        lineages: Sequence[AmendmentLineage] = (),
+        fact_pool: Sequence[XbrlFact] | None = None,
     ) -> None:
         """Shared construction path for loaded and cohort-sourced facades."""
         self._filing = filing_xbrl
@@ -170,6 +181,8 @@ class Xbrl:
             presentation_arcs=pres_source,
             cik=(self._filing.cik.to_10digit() if int(self._filing.cik) else None),
             accession=str(self._filing.accession),
+            lineages=tuple(lineages),
+            fact_pool=fact_pool,
         )
         self._kernel = kernel
         self._provenance = (
@@ -323,11 +336,18 @@ class Xbrl:
         return instance
 
     @classmethod
-    def from_bundle(cls, bundle_dir: Path, taxonomy: DomainTaxonomy) -> Xbrl:
+    def from_bundle(
+        cls,
+        bundle_dir: Path,
+        taxonomy: DomainTaxonomy,
+        *,
+        lineage_refs: Sequence[FilingRef] = (),
+        sibling_bundles: Sequence[Path] = (),
+    ) -> Xbrl:
         """Build the full-fidelity facade over one fixture bundle folder.
 
-        The bundle's facts must carry exactly one accession, which the
-        facade adopts; both arc sets load eagerly.
+        Both arc sets load eagerly; lineage_refs with sibling_bundles
+        pool sibling facts into the kernel's superseded fact source.
         """
         facts = facts_from_arrow_table(pq.read_table(bundle_dir / "facts.parquet"))
         accessions = {str(fact.accession) for fact in facts}
@@ -355,7 +375,19 @@ class Xbrl:
                 declarations=declarations,
             ),
         )
-        return cls(filing, taxonomy)
+        if not lineage_refs:
+            return cls(filing, taxonomy)
+        pool = list(facts)
+        for sibling in sibling_bundles:
+            pool.extend(
+                facts_from_arrow_table(pq.read_table(sibling / "facts.parquet"))
+            )
+        return cls(
+            filing,
+            taxonomy,
+            lineages=build_lineages(lineage_refs),
+            fact_pool=tuple(pool),
+        )
 
     def _merged_declarations(
         self, arcs: tuple[CalculationArc, ...]
