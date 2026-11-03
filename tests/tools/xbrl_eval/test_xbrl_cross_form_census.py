@@ -13,6 +13,7 @@ from edgar_sec.tools.xbrl_eval.xbrl_cross_form_census import (
     _pair_evaluation,
     _transition_shape,
     analyze_facts,
+    dei_metadata_present,
 )
 
 ACC = AccessionNumber("0000000000-26-000001")
@@ -44,6 +45,18 @@ def test_statement_filing_primary_block_and_quarantine():
     assert block["period_shape"] == "quarterly"
     assert block["quarantined_facts"] == 1
     assert block["numeric_facts"] == 31
+
+
+def test_dei_metadata_present_reads_only_the_metadata_family():
+    """Presence covers the period/fiscal concepts, not other dei facts."""
+    facts = (
+        _fact("dei:DocumentPeriodEndDate", "2026-03-31"),
+        _fact("dei:DocumentType", "10-Q"),
+        _fact("dei:EntityRegistrantName", "Example Co"),
+        _fact("us-gaap:Revenues", 5.0),
+    )
+    assert dei_metadata_present(facts) == {"DocumentPeriodEndDate", "DocumentType"}
+    assert dei_metadata_present(()) == set()
 
 
 def test_cover_only_filing_is_dei_absence():

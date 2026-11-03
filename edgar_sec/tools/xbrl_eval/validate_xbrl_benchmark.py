@@ -82,6 +82,16 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Also evaluate the answerability battery (value regression gate).",
     )
     parser.add_argument(
+        "--k1",
+        action="store_true",
+        help="Also run the K1 dimensioned-only census (quarantine mass gate).",
+    )
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Run the complete standing gate stack in this one invocation.",
+    )
+    parser.add_argument(
         "--census-out",
         type=Path,
         default=None,
@@ -94,6 +104,8 @@ def main(argv: list[str] | None = None) -> int:
     """CLI entrypoint for XBRL robustness benchmark runner."""
     parser = _build_parser()
     args = parser.parse_args(argv)
+    if args.all:
+        args.census = args.cross_form = args.pairs = args.battery = args.k1 = True
 
     cohort_source = (
         Path(args.cohort_file) if args.cohort_file else canonical_seed_cohort_path()
@@ -172,6 +184,7 @@ def main(argv: list[str] | None = None) -> int:
             CROSS_FORM_EXPECTATIONS,
             FACT_EXPECTATIONS,
             score_cross_form,
+            score_dei_presence,
             score_fact_matrix,
         )
         from edgar_sec.tools.xbrl_eval.xbrl_cross_form_census import run_cross_form
@@ -212,6 +225,14 @@ def main(argv: list[str] | None = None) -> int:
             sys.stdout.write("Fact-matrix gate: FAIL\n")
             for failure in fact_score.failures:
                 sys.stdout.write(f"  {failure}\n")
+        dei_score = score_dei_presence(cross_summary)
+        if dei_score.passed:
+            sys.stdout.write("Dei-presence gate: PASS\n")
+        else:
+            verdict = 1
+            sys.stdout.write("Dei-presence gate: FAIL\n")
+            for failure in dei_score.failures:
+                sys.stdout.write(f"  {failure}\n")
     if args.pairs:
         from edgar_sec.tools.xbrl_eval.xbrl_census import run_pair_gate
 
@@ -239,6 +260,23 @@ def main(argv: list[str] | None = None) -> int:
             verdict = 1
             sys.stdout.write("Battery gate: FAIL\n")
             for failure in battery_report.failures:
+                sys.stdout.write(f"  {failure}\n")
+    if args.k1:
+        from edgar_sec.engine.xbrl.review.cross_form import score_k1
+        from edgar_sec.tools.xbrl_eval.xbrl_k1_census import run_k1
+
+        k1_out = args.census_out or (xbrl_paths().transient_root / "k1")
+        k1_summary = run_k1(k1_out)
+        k1_total = sum(block["k1_facts"] for block in k1_summary["k1_blocks"].values())
+        sys.stdout.write(f"{'-' * 60}\nK1 Dimensioned-Only Census:\n")
+        sys.stdout.write(f"  Filings: {k1_summary['filings']}  K1 facts: {k1_total}\n")
+        k1_score = score_k1(k1_summary)
+        if k1_score.passed:
+            sys.stdout.write("K1 gate: PASS\n")
+        else:
+            verdict = 1
+            sys.stdout.write("K1 gate: FAIL\n")
+            for failure in k1_score.failures:
                 sys.stdout.write(f"  {failure}\n")
     return verdict
 

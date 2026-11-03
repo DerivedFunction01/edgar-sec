@@ -176,6 +176,53 @@ def score_k1(
     return CensusScore(passed=not failures, failures=tuple(failures))
 
 
+@dataclass(frozen=True, slots=True)
+class DeiPresenceExpectation:
+    """Pinned dei period/fiscal metadata presence for one form family."""
+
+    form: str
+    filings: int
+    present: dict[str, int] = field(default_factory=dict)
+
+
+def _load_dei_presence_expectations() -> dict[str, DeiPresenceExpectation]:
+    """Load the pinned dei presence rows from their data file."""
+    raw = json.loads(
+        Path(__file__)
+        .with_name("dei_presence_expectations.json")
+        .read_text(encoding="utf-8")
+    )
+    return {key: DeiPresenceExpectation(**row) for key, row in sorted(raw.items())}
+
+
+DEI_PRESENCE_EXPECTATIONS: dict[str, DeiPresenceExpectation] = (
+    _load_dei_presence_expectations()
+)
+
+
+def score_dei_presence(
+    summary: dict[str, Any],
+    expectations: dict[str, DeiPresenceExpectation] = DEI_PRESENCE_EXPECTATIONS,
+) -> CensusScore:
+    """Score dei metadata presence per form family; movement fails."""
+    failures: list[str] = []
+    presence = summary.get("dei_presence", {})
+    for form, expected in expectations.items():
+        row = presence.get(form)
+        if row is None:
+            failures.append(f"dei {form}: family missing from census")
+            continue
+        if row["filings"] != expected.filings:
+            failures.append(
+                f"dei {form}: filings {row['filings']} != expected {expected.filings}"
+            )
+        if row["present"] != expected.present:
+            failures.append(
+                f"dei {form}: presence {row['present']} != expected {expected.present}"
+            )
+    return CensusScore(passed=not failures, failures=tuple(failures))
+
+
 def summarize_cross_form(evaluations: list[dict]) -> dict:
     """Aggregate cross-form evaluations into the scored summary shape."""
     grouped: dict[str, list[dict]] = {}

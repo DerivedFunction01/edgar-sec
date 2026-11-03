@@ -74,12 +74,29 @@ STANDARD_TAXONOMIES = (
 STATEMENT_TAXONOMIES = ("us-gaap", "ifrs-full", "us-gaap-ebp")
 TERMS = ["revenue", "Net Income", "cfo", CASH_Q, ASSETS_Q, "eps"]
 STATEMENT_NUMERIC_FLOOR = 25
+DEI_METADATA_CONCEPTS = (
+    "DocumentPeriodEndDate",
+    "DocumentFiscalYearFocus",
+    "DocumentFiscalPeriodFocus",
+    "DocumentType",
+    "CurrentFiscalYearEndDate",
+    "DocumentAnnualReport",
+    "DocumentQuarterlyReport",
+    "DocumentTransitionReport",
+    "AmendmentFlag",
+)
 
 
 def _taxonomy(qname: str) -> str:
     """Standard taxonomy prefix of a qname, or 'extension'."""
     prefix = qname.split(":", 1)[0]
     return prefix if prefix in STANDARD_TAXONOMIES else "extension"
+
+
+def dei_metadata_present(facts: tuple[XbrlFact, ...]) -> set[str]:
+    """Filed dei period/fiscal metadata concepts present in one filing."""
+    seen = {fact.concept_qname for fact in facts}
+    return {name for name in DEI_METADATA_CONCEPTS if f"dei:{name}" in seen}
 
 
 def _shape(facts: list[XbrlFact]) -> str:
@@ -491,11 +508,22 @@ def run_cross_form(out_dir: Path, catalog_dir: Path | None = None) -> dict:
     tokenizer = ConceptTokenizer(taxonomy)
     evaluations: list[dict] = []
     fact_rows: list[dict] = []
+    presence: dict[str, dict] = {}
     seeds = list(registry_filings(registry_path=registry_path))
     loaded_by_accession: dict[str, LoadedFiling] = {}
     for seed in seeds:
         loaded = load_filing(seed, registry_path)
         loaded_by_accession[str(seed.accession)] = loaded
+        family = presence.setdefault(
+            seed.form,
+            {
+                "filings": 0,
+                "present": {name: 0 for name in DEI_METADATA_CONCEPTS},
+            },
+        )
+        family["filings"] += 1
+        for name in dei_metadata_present(loaded.facts):
+            family["present"][name] += 1
         analysis = analyze_facts(loaded.facts)
         for block in analysis["blocks"].values():
             fact_rows.append({"form": seed.form, "firm": seed.firm, **block})
@@ -586,6 +614,7 @@ def run_cross_form(out_dir: Path, catalog_dir: Path | None = None) -> dict:
         ):
             entry[field] += row[field]
     summary["fact_matrix"] = matrix
+    summary["dei_presence"] = presence
     summary["evaluations"] = evaluations
     atomic_write_json(
         out_dir / "summary_cross_form.json", summary, canonical=False, indent=1

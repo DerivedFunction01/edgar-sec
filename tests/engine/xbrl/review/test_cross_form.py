@@ -1,13 +1,16 @@
 """Tests for the cross-form census summary and scoring gate."""
 
 from edgar_sec.engine.xbrl.review.cross_form import (
+    DEI_PRESENCE_EXPECTATIONS,
     FACT_EXPECTATIONS,
     K1_EXPECTATIONS,
     CrossFormExpectation,
+    DeiPresenceExpectation,
     FactExpectation,
     K1Expectation,
     block_key,
     score_cross_form,
+    score_dei_presence,
     score_fact_matrix,
     score_k1,
     summarize_cross_form,
@@ -329,3 +332,57 @@ def test_score_k1_missing_block_fails() -> None:
     score = score_k1({"k1_blocks": {}}, {key: _k1_expectation()})
     assert not score.passed
     assert any("block missing from K1 census" in f for f in score.failures)
+
+
+def _dei_row(**overrides) -> dict:
+    """One synthetic dei presence row in the summary's shape."""
+    fields = {
+        "filings": 2,
+        "present": {"DocumentType": 2, "DocumentPeriodEndDate": 1},
+    }
+    fields.update(overrides)
+    return fields
+
+
+def _dei_expectation(**overrides) -> DeiPresenceExpectation:
+    """The pinned expectation matching the synthetic dei row."""
+    fields = {
+        "form": "8-K",
+        "filings": 2,
+        "present": {"DocumentType": 2, "DocumentPeriodEndDate": 1},
+    }
+    fields.update(overrides)
+    return DeiPresenceExpectation(**fields)
+
+
+def test_dei_presence_expectations_cover_the_probe_families() -> None:
+    """Pinned families total the probe cohort; counts stay within filings."""
+    assert sum(row.filings for row in DEI_PRESENCE_EXPECTATIONS.values()) == 61
+    key_sets = {frozenset(row.present) for row in DEI_PRESENCE_EXPECTATIONS.values()}
+    assert len(key_sets) == 1
+    for row in DEI_PRESENCE_EXPECTATIONS.values():
+        assert all(0 <= count <= row.filings for count in row.present.values())
+
+
+def test_score_dei_presence_passes_exact_rows() -> None:
+    """Dei presence scoring passes when every pinned family matches."""
+    summary = {"dei_presence": {"8-K": _dei_row()}}
+    score = score_dei_presence(summary, {"8-K": _dei_expectation()})
+    assert score.passed
+    assert score.failures == ()
+
+
+def test_score_dei_presence_names_moved_presence() -> None:
+    """A moved presence count fails, naming the family."""
+    moved = {"DocumentType": 2, "DocumentPeriodEndDate": 2}
+    summary = {"dei_presence": {"8-K": _dei_row(present=moved)}}
+    score = score_dei_presence(summary, {"8-K": _dei_expectation()})
+    assert not score.passed
+    assert any(failure.startswith("dei 8-K: presence") for failure in score.failures)
+
+
+def test_score_dei_presence_missing_family_fails() -> None:
+    """A pinned family absent from the census fails the gate."""
+    score = score_dei_presence({"dei_presence": {}}, {"8-K": _dei_expectation()})
+    assert not score.passed
+    assert any("family missing from census" in f for f in score.failures)
