@@ -1,5 +1,7 @@
 """Unit tests verifying GoalSpec and GoalPack evaluation contracts."""
 
+import pytest
+
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
@@ -84,3 +86,9 @@ def test_goal_coordinates_match_by_length_class() -> None:
     assert not quarter_pack._matches_coordinates(ytd)
     assert ytd_pack._matches_coordinates(ytd)
     assert not ytd_pack._matches_coordinates(qtd)
+
+
+def test_goal_spec_requires_a_declared_time_class() -> None:
+    """Verify GoalSpec has no silent default length class."""
+    with pytest.raises(TypeError):
+        GoalSpec(goal_id="GOAL_X", target_measure="Revenues")

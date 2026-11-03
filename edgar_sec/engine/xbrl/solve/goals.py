@@ -16,7 +16,7 @@ class GoalSpec:
 
     goal_id: str
     target_measure: str
-    time_class: str = "ANNUAL"
+    time_class: str = field(kw_only=True)
     unit_class: str = "USD"
     slice_dimension: str | None = None
     decomposition_scheme: str | None = None

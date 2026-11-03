@@ -81,21 +81,21 @@ def test_probe_query_distinguishes_qtd_from_ytd(
 
 
 @pytest.mark.parametrize(
-    ("accession", "term"),
+    ("accession", "term", "expected"),
     [
-        (_AAPL, "us-gaap:NetIncomeLoss"),
-        (_AAPL, "us-gaap:EarningsPerShareDiluted"),
-        (_CAT, "us-gaap:Revenues"),
-        (_JPM, "us-gaap:NetIncomeLoss"),
+        (_AAPL, "us-gaap:NetIncomeLoss", 101_464_000_000.0),
+        (_AAPL, "us-gaap:EarningsPerShareDiluted", 6.88),
+        (_CAT, "us-gaap:Revenues", 37_958_000_000.0),
+        (_JPM, "us-gaap:NetIncomeLoss", 37_649_000_000.0),
     ],
 )
-def test_probe_fiscal_year_query_without_annual_period_is_unavailable(
-    accession: str, term: str
+def test_probe_fiscal_year_query_serves_the_filed_focus_class(
+    accession: str, term: str, expected: float
 ) -> None:
-    """Verify a 10-Q's YTD span never masquerades as the annual tier."""
+    """Verify a classless fiscal query serves the filing's dei focus class."""
     result = _facade(accession).query(term, fiscal_year=2026)
-    assert result.status == QueryStatus.UNAVAILABLE
-    assert result.value is None
+    assert result.status == QueryStatus.REPORTED
+    assert result.value == expected
 
 
 def test_probe_msft_quarter_only_answers_quarter_class() -> None:

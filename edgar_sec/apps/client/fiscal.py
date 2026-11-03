@@ -5,6 +5,12 @@ from __future__ import annotations
 from collections.abc import Sequence
 from datetime import date
 
+from edgar_sec.engine.xbrl.normalize.filed_metadata import (
+    FiledMetadata,
+    filed_metadata,
+    fiscal_year_containing,
+    focus_length_class,
+)
 from edgar_sec.engine.xbrl.normalize.normalization import normalize_time_coordinate
 from edgar_sec.engine.xbrl.schema.models import CalculationArc, XbrlFact
 from edgar_sec.engine.xbrl.solve.query import (
@@ -26,6 +32,7 @@ from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 _SUCCESS_STATUSES = frozenset(
     {QueryStatus.REPORTED, QueryStatus.DERIVED, QueryStatus.VERIFIED}
 )
+_SERVING_LENGTH_CLASSES = frozenset({"ANNUAL", "QUARTER", "YTD_2Q", "YTD_3Q"})
 _PRECEDENCE_RANK = {
     QueryStatus.VERIFIED: 0,
     QueryStatus.REPORTED: 1,
@@ -133,10 +140,51 @@ class FiscalYearQueries:
         facts: tuple[XbrlFact, ...],
         taxonomy: DomainTaxonomy,
         engine: FinancialQueryEngine,
+        *,
+        metadata: FiledMetadata | None = None,
     ) -> None:
         self._facts = facts
         self._taxonomy = taxonomy
         self._engine = engine
+        self._metadata = metadata if metadata is not None else filed_metadata(facts)
+        self._window_year, self._window_offset = self._dei_window()
+
+    def _dei_window(self) -> tuple[int | None, int]:
+        """The filing's own fiscal year in dei terms, and its naming offset.
+
+        The offset is the filed focus minus the FYE-window year of the
+        period end: 0 for ending-year naming, -1 for start-year naming.
+        """
+        md = self._metadata
+        if md.fiscal_year_end is None or md.period_end is None:
+            return None, 0
+        try:
+            containing = fiscal_year_containing(md.period_end, md.fiscal_year_end)
+        except ValueError:
+            return None, 0
+        own = md.fiscal_year if md.fiscal_year is not None else containing
+        return own, own - containing
+
+    def _in_fiscal_year(self, day: str, fiscal_year: int) -> bool:
+        """Whether a period end or instant date belongs to the fiscal year.
+
+        The dei FYE window governs when the request names the filing's own year in dei terms and the calendar rule would miss its periods.
+        """
+        md = self._metadata
+        fye = md.fiscal_year_end
+        if (
+            fye is not None
+            and self._window_year is not None
+            and self._window_year == fiscal_year
+            and md.period_end is not None
+            and md.period_end[:4] != str(fiscal_year)
+        ):
+            try:
+                containing = fiscal_year_containing(day, fye)
+            except ValueError:
+                return day[:4] == str(fiscal_year)
+            return containing + self._window_offset == fiscal_year
+        return day[:4] == str(fiscal_year)
 
     def _execute_query(
         self,
@@ -155,7 +203,6 @@ class FiscalYearQueries:
         *,
         dimension_policy: str | None = None,
     ) -> tuple[FactScope, ...]:
-        year = str(fiscal_year)
         durations: set[tuple[str, str]] = set()
         instants: set[str] = set()
         for fact in self._facts:
@@ -165,13 +212,13 @@ class FiscalYearQueries:
                 fact.period_type == "duration"
                 and fact.start_date
                 and fact.end_date
-                and fact.end_date[:4] == year
+                and self._in_fiscal_year(fact.end_date, fiscal_year)
             ):
                 durations.add((fact.start_date, fact.end_date))
             elif (
                 fact.period_type == "instant"
                 and fact.instant_date
-                and fact.instant_date[:4] == year
+                and self._in_fiscal_year(fact.instant_date, fiscal_year)
             ):
                 instants.add(fact.instant_date)
         periods: list[tuple[str | None, str | None, str | None]] = [
@@ -262,8 +309,9 @@ class FiscalYearQueries:
 
         A scope answers only when its span's length class is the requested one (ANNUAL by default).
         """
+        effective = length_class or self._filed_length_class()
         duration_tier, instant_tier = self._fiscal_year_tiers(
-            fiscal_year, candidates, length_class
+            fiscal_year, candidates, effective
         )
         outcome, first, results = self._tier_outcome(
             term, mode, duration_tier, arcs, dimension_policy=dimension_policy
@@ -282,6 +330,11 @@ class FiscalYearQueries:
             )
         else:
             instant_outcome, instant_first = None, None
+        if instant_outcome is not None and self._is_instant_substitution(
+            term, instant_outcome, candidates, arcs
+        ):
+            instant_outcome = None
+            instant_first = None
         if outcome is not None and outcome.status != QueryStatus.UNAVAILABLE:
             return instant_outcome if instant_outcome is not None else outcome
         if (
@@ -297,7 +350,111 @@ class FiscalYearQueries:
         return FinancialQueryResult(
             query=FinancialQuery(term=term, scope=scope),
             status=QueryStatus.UNAVAILABLE,
-            message=f"no {length_class or 'ANNUAL'} period ending in fiscal year {fiscal_year}",
+            message=f"no {effective or 'ANNUAL'} period ending in fiscal year {fiscal_year}",
+        )
+
+    def _filed_length_class(self) -> str | None:
+        """The requested length class this filing declares for itself.
+
+        The dei period focus names it; where dei is silent, the most-carried duration ending at the period end derives it. An uncorroborated class is not adopted.
+        """
+        focus = focus_length_class(self._metadata.period_focus)
+        if focus is not None:
+            return focus if self._class_corroborated(focus) else None
+        derived = self._span_derived_class()
+        if derived is not None and self._class_corroborated(derived):
+            return derived
+        return None
+
+    def _span_derived_class(self) -> str | None:
+        """Length class of the most-carried duration ending at the period end."""
+        counts: dict[tuple[str, str], int] = {}
+        for fact in self._facts:
+            if fact.dimensions or fact.period_type != "duration":
+                continue
+            if not fact.start_date or not fact.end_date:
+                continue
+            if (
+                self._metadata.period_end is not None
+                and fact.end_date != self._metadata.period_end
+            ):
+                continue
+            key = (fact.start_date, fact.end_date)
+            counts[key] = counts.get(key, 0) + 1
+        if not counts:
+            return None
+        start, end = max(
+            counts, key=lambda key: (counts[key], -duration_span_key(key)[0], key)
+        )
+        derived = duration_length_class(start, end)
+        return derived if derived in _SERVING_LENGTH_CLASSES else None
+
+    def _class_corroborated(self, length_class: str) -> bool:
+        """Whether the filing's spans corroborate a declared length class.
+
+        The class's most-carried period ending at the period end must be a longest span at that end; a longer span there leaves the two in disagreement.
+        """
+        period_end = self._metadata.period_end
+        if period_end is None:
+            return True
+        counts: dict[tuple[str, str], int] = {}
+        longest = 0
+        for fact in self._facts:
+            if fact.dimensions or fact.period_type != "duration":
+                continue
+            if not fact.start_date or fact.end_date != period_end:
+                continue
+            span = -duration_span_key((fact.start_date, fact.end_date))[0]
+            longest = max(longest, span)
+            if duration_length_class(fact.start_date, fact.end_date) == length_class:
+                key = (fact.start_date, fact.end_date)
+                counts[key] = counts.get(key, 0) + 1
+        if not counts:
+            return False
+        chosen = max(
+            counts, key=lambda key: (counts[key], -duration_span_key(key)[0], key)
+        )
+        return -duration_span_key(chosen)[0] >= longest
+
+    def _is_instant_substitution(
+        self,
+        term: str,
+        instant_outcome: FinancialQueryResult,
+        candidates: tuple[FactScope, ...],
+        arcs: Sequence[CalculationArc],
+    ) -> bool:
+        """Whether an instant-tier success substitutes another concept for the term.
+
+        A substitution serves a concept outside the term's filing-wide candidates while a candidate carries the term as a duration.
+        """
+        if instant_outcome.status not in _SUCCESS_STATUSES:
+            return False
+        if instant_outcome.value is None:
+            return False
+        served = instant_outcome.reported_fact
+        served_qname = served.concept_qname if served is not None else None
+        if served_qname is None and instant_outcome.aggregate is not None:
+            served_qname = instant_outcome.aggregate.measure_id
+        if served_qname is None:
+            return False
+        if any(
+            fact.concept_qname == served_qname and fact.period_type == "duration"
+            for fact in self._facts
+        ):
+            return False
+        probe = self._execute_query(
+            term,
+            QueryMode.REPORTED_ONLY,
+            FactScope(accession=candidates[0].accession),
+            arcs,
+        )
+        if served_qname in probe.candidate_qnames:
+            return False
+        return any(
+            fact.concept_qname in probe.candidate_qnames
+            and fact.period_type == "duration"
+            and not fact.dimensions
+            for fact in self._facts
         )
 
     def _tier_outcome(
@@ -412,15 +569,14 @@ class FiscalYearQueries:
         return duration_tier, instant_tier
 
     def _modal_instant(self, fiscal_year: int) -> str | None:
-        """Instant carrying the most undimensioned instant facts ending in fiscal_year."""
+        """Instant carrying the most undimensioned instant facts in the fiscal year."""
         counts: dict[str, int] = {}
-        year = str(fiscal_year)
         for fact in self._facts:
             if (
                 not fact.dimensions
                 and fact.period_type == "instant"
                 and fact.instant_date
-                and fact.instant_date[:4] == year
+                and self._in_fiscal_year(fact.instant_date, fiscal_year)
             ):
                 counts[fact.instant_date] = counts.get(fact.instant_date, 0) + 1
         if not counts:

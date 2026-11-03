@@ -257,9 +257,8 @@ def parse_cusip(value: str | None) -> str | None:
 
 def extract_cusip_near_caption(text: str, *, window: int = 96) -> str | None:
     """First structurally valid, digit-bearing CUSIP token appearing within
-    ``window`` characters after a "cusip" mention in ``text``. The caption
-    anchor is the guard: an unanchored scan false-positives on ordinary
-    nine-letter words whose character structure passes.
+    ``window`` characters after a "cusip" mention in ``text``; the caption
+    anchor guards against ordinary nine-letter words passing structurally.
     """
     lowered = text.lower()
     position = lowered.find("cusip")

@@ -42,6 +42,7 @@ from edgar_sec.apps.client.statements import XbrlStatements
 from edgar_sec.apps.client.views import StatementView
 from edgar_sec.engine.xbrl.evidence.evidence import EvidenceKnowledgeBase
 from edgar_sec.engine.xbrl.normalize.normalization import normalize_time_coordinate
+from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import (
     CalculationArc,
     ConceptDeclaration,
@@ -89,6 +90,9 @@ from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_ta
 from edgar_sec.engine.xbrl.taxonomy.item_types import declaration_for
 
 _STANDARD_LABEL_ROLE = "http://www.xbrl.org/2003/role/label"
+_CLASS_LADDER = ("ANNUAL", "YTD_3Q", "YTD_2Q", "QUARTER")
+_ANNUAL_ONLY = frozenset({"ANNUAL"})
+_INTERIM_CLASSES = frozenset({"YTD_3Q", "YTD_2Q", "QUARTER"})
 
 
 def _labels_by_concept(labels: Sequence[ConceptLabel]) -> dict[str, str]:
@@ -179,7 +183,10 @@ class Xbrl:
             solver, declarations=self._kernel.declarations
         )
         self._fiscal = FiscalYearQueries(
-            self._filing.facts, self._taxonomy, self._query_engine
+            self._filing.facts,
+            self._taxonomy,
+            self._query_engine,
+            metadata=kernel.filed_metadata,
         )
 
     @property
@@ -620,54 +627,76 @@ class Xbrl:
             target_atoms = self._taxonomy.query_alias_atoms(term)
         if not target_atoms:
             return None
-        for atom in target_atoms:
-            required = {m for m in atom.modifiers if not m.startswith("V_")}
-            by_year: dict[str, list] = {}
-            for fact in self.facts:
-                if fact.dimensions or not isinstance(fact.value, (int, float)):
-                    continue
-                if fact.unit in ("pure", "shares", "item", "ratio"):
-                    continue
-                if fact.start_date and fact.end_date:
-                    if (
-                        duration_length_class(fact.start_date, fact.end_date)
-                        != "ANNUAL"
-                    ):
-                        continue
-                record = self.facts.records.get(fact.concept_qname)
-                if record is None or record.atom.head != atom.head:
-                    continue
-                if not required.issubset(record.atom.modifiers):
-                    continue
-                date = (
-                    fact.instant_date
-                    if fact.period_type == "instant"
-                    else fact.end_date
-                )
-                if date and len(date[:4]) == 4 and date[:4].isdigit():
-                    by_year.setdefault(date[:4], []).append((fact, record))
-            if not by_year:
-                continue
-            year = str(fiscal_year) if fiscal_year is not None else max(by_year)
-            pool = by_year.get(year)
-            if not pool:
-                continue
-            fact, record = max(pool, key=lambda pair: abs(float(pair[0].value)))
-            exact = record.atom.head == atom.head and set(record.atom.modifiers) == set(
-                atom.modifiers
-            )
-            return FinancialQueryResult(
-                query=FinancialQuery(
-                    term=term,
-                    scope=FactScope(accession=self._scope_accession()),
-                ),
-                status=QueryStatus.REPORTED if exact else QueryStatus.DERIVED,
-                candidate_qnames=(fact.concept_qname,),
-                candidate_facts=(fact,),
-                target_atom=atom,
-                reported_fact=fact,
-            )
+        for classes in (_ANNUAL_ONLY, _INTERIM_CLASSES):
+            for atom in target_atoms:
+                result = self._equivalent_for_atom(atom, term, fiscal_year, classes)
+                if result is not None:
+                    return result
         return None
+
+    def _equivalent_for_atom(
+        self,
+        atom: Atom,
+        term: str,
+        fiscal_year: int | None,
+        classes: frozenset[str],
+    ) -> FinancialQueryResult | None:
+        """One atom's equivalent fact, pooled per year at a single length class.
+
+        The class is the first of the serving ladder the year carries,
+        so a pooled year never mixes span classes unnamed.
+        """
+        required = {m for m in atom.modifiers if not m.startswith("V_")}
+        by_year: dict[str, dict[str, list]] = {}
+        instants: dict[str, list] = {}
+        for fact in self.facts:
+            if fact.dimensions or not isinstance(fact.value, (int, float)):
+                continue
+            if fact.unit in ("pure", "shares", "item", "ratio"):
+                continue
+            if fact.start_date and fact.end_date:
+                cls = duration_length_class(fact.start_date, fact.end_date)
+                if cls not in classes:
+                    continue
+                date = fact.end_date
+                bucket = by_year.setdefault(date[:4], {}).setdefault(cls, [])
+            else:
+                date = fact.instant_date
+                bucket = instants.setdefault(date[:4], []) if date else []
+            record = self.facts.records.get(fact.concept_qname)
+            if record is None or record.atom.head != atom.head:
+                continue
+            if not required.issubset(record.atom.modifiers):
+                continue
+            if date and len(date[:4]) == 4 and date[:4].isdigit():
+                bucket.append((fact, record))
+        years = set(by_year) | set(instants)
+        if not years:
+            return None
+        year = str(fiscal_year) if fiscal_year is not None else max(years)
+        pool: list = []
+        for cls in _CLASS_LADDER:
+            if cls in classes and by_year.get(year, {}).get(cls):
+                pool = by_year[year][cls]
+                break
+        pool = pool + instants.get(year, [])
+        if not pool:
+            return None
+        fact, record = max(pool, key=lambda pair: abs(float(pair[0].value)))
+        exact = record.atom.head == atom.head and set(record.atom.modifiers) == set(
+            atom.modifiers
+        )
+        return FinancialQueryResult(
+            query=FinancialQuery(
+                term=term,
+                scope=FactScope(accession=self._scope_accession()),
+            ),
+            status=QueryStatus.REPORTED if exact else QueryStatus.DERIVED,
+            candidate_qnames=(fact.concept_qname,),
+            candidate_facts=(fact,),
+            target_atom=atom,
+            reported_fact=fact,
+        )
 
     def __repr__(self) -> str:
         return f"<Xbrl accession={self._filing.accession} facts={len(self.facts)}>"

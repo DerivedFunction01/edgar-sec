@@ -16,7 +16,9 @@ def test_form_425_profile_properties() -> None:
     )
     assert PROFILE_FORM_425.preferred_operation == AcquisitionOperation.RENDER_TO_TXT
     assert PROFILE_FORM_425.report_class is Form425Report
-    assert PROFILE_FORM_425.review_analyzer == "edgar_sec.engine.forms.form_425.analysis"
+    assert (
+        PROFILE_FORM_425.review_analyzer == "edgar_sec.engine.forms.form_425.analysis"
+    )
 
 
 def test_form_425_profile_flags() -> None:

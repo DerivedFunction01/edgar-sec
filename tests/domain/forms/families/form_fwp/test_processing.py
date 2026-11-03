@@ -16,7 +16,9 @@ def test_form_fwp_profile_properties() -> None:
     )
     assert PROFILE_FORM_FWP.preferred_operation == AcquisitionOperation.RENDER_TO_TXT
     assert PROFILE_FORM_FWP.report_class is FormFWPReport
-    assert PROFILE_FORM_FWP.review_analyzer == "edgar_sec.engine.forms.form_fwp.analysis"
+    assert (
+        PROFILE_FORM_FWP.review_analyzer == "edgar_sec.engine.forms.form_fwp.analysis"
+    )
 
 
 def test_form_fwp_profile_flags() -> None:

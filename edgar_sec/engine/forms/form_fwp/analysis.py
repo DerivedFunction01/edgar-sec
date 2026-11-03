@@ -39,6 +39,7 @@ _ISSUER_SKIP_TOKENS: tuple[str, ...] = (
     "preliminary",
 )
 
+
 def _issuer_name(lines: list[str]) -> str | None:
     for line in lines[:12]:
         stripped = line.strip()

@@ -24,47 +24,38 @@
     "taxonomy": "us-gaap"
   },
   "10-Q/A|us-gaap|ytd": {
-    "adverse": {
-      "refused": 1
-    },
-    "correct": 0,
+    "adverse": {},
+    "correct": 1,
     "form": "10-Q/A",
     "honest": 0,
     "n": 1,
     "period_shape": "ytd",
     "posture": "measured",
-    "replay_mismatches": 1,
+    "replay_mismatches": 0,
     "surfaced_conflicts": 0,
     "taxonomy": "us-gaap"
   },
   "10-Q|us-gaap|quarterly": {
-    "adverse": {
-      "refused": 2,
-      "wrong-value": 1
-    },
-    "correct": 0,
+    "adverse": {},
+    "correct": 3,
     "form": "10-Q",
     "honest": 0,
     "n": 3,
     "period_shape": "quarterly",
     "posture": "measured",
-    "replay_mismatches": 3,
+    "replay_mismatches": 0,
     "surfaced_conflicts": 0,
     "taxonomy": "us-gaap"
   },
   "10-Q|us-gaap|ytd": {
-    "adverse": {
-      "refused": 4,
-      "unfaithful non-answer": 2,
-      "wrong-value": 1
-    },
-    "correct": 1,
+    "adverse": {},
+    "correct": 8,
     "form": "10-Q",
     "honest": 0,
     "n": 8,
     "period_shape": "ytd",
     "posture": "measured",
-    "replay_mismatches": 7,
+    "replay_mismatches": 0,
     "surfaced_conflicts": 0,
     "taxonomy": "us-gaap"
   },
@@ -93,44 +84,38 @@
     "taxonomy": "ffd"
   },
   "6-K|ifrs-full|ytd": {
-    "adverse": {
-      "unfaithful non-answer": 1
-    },
+    "adverse": {},
     "correct": 0,
     "form": "6-K",
-    "honest": 0,
+    "honest": 1,
     "n": 1,
     "period_shape": "ytd",
     "posture": "measured",
-    "replay_mismatches": 1,
+    "replay_mismatches": 0,
     "surfaced_conflicts": 0,
     "taxonomy": "ifrs-full"
   },
   "6-K|us-gaap|ytd": {
-    "adverse": {
-      "refused": 1
-    },
-    "correct": 0,
+    "adverse": {},
+    "correct": 1,
     "form": "6-K",
     "honest": 0,
     "n": 1,
     "period_shape": "ytd",
     "posture": "measured",
-    "replay_mismatches": 1,
+    "replay_mismatches": 0,
     "surfaced_conflicts": 0,
     "taxonomy": "us-gaap"
   },
   "8-K/A|us-gaap|annual": {
-    "adverse": {
-      "wrong-value": 1
-    },
-    "correct": 1,
+    "adverse": {},
+    "correct": 2,
     "form": "8-K/A",
     "honest": 0,
     "n": 2,
     "period_shape": "annual",
     "posture": "measured",
-    "replay_mismatches": 1,
+    "replay_mismatches": 0,
     "surfaced_conflicts": 1,
     "taxonomy": "us-gaap"
   },
