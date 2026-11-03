@@ -122,3 +122,23 @@ def test_pool_path_matches_sequential() -> None:
     assert peers["msft_2024_10k"]["peer"] == "jpm_2024_10k"
     assert peers["jpm_2024_10k"]["peer"] == "msft_2024_10k"
     assert all(record["status"] == "ok" for record in peers.values())
+
+
+def test_extended_factories_registered_in_battery_and_driver() -> None:
+    """Plan/fund factories stay wired into both standing surfaces."""
+    from edgar_sec.tools.xbrl_eval.facade_battery import (
+        COHORT_NAMES,
+        _STATEMENT_CALLS,
+    )
+    from edgar_sec.tools.xbrl_eval.statement_view_driver import STATEMENT_FACTORIES
+
+    for name in (
+        "plan_net_assets",
+        "plan_changes",
+        "fund_assets_liabilities",
+        "fund_operations",
+    ):
+        assert name in _STATEMENT_CALLS
+        assert name in STATEMENT_FACTORIES
+    assert "probe" in COHORT_NAMES
+    assert len(cohort_folders("probe")) == 90

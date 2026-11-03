@@ -27,7 +27,7 @@ from edgar_sec.infra.storage.atomic import atomic_write_json
 
 REPO = Path(__file__).resolve().parents[3]
 XBRL_FIXTURES = REPO / "tests" / "fixtures" / "xbrl"
-COHORT_NAMES = ("seed", "vintage", "sp100")
+COHORT_NAMES = ("seed", "vintage", "sp100", "probe")
 MODES = ("standard", "detailed", "summary")
 TOLERANCE = 0.5
 
@@ -41,6 +41,10 @@ _STATEMENT_CALLS = (
     "balance_sheet",
     "cash_flow_statement",
     "comprehensive_income_statement",
+    "plan_net_assets",
+    "plan_changes",
+    "fund_assets_liabilities",
+    "fund_operations",
     "equity_rollforward",
     "derivatives",
     "debt",

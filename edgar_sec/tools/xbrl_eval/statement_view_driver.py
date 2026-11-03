@@ -35,6 +35,10 @@ STATEMENT_FACTORIES = (
     "balance_sheet",
     "cash_flow_statement",
     "comprehensive_income_statement",
+    "plan_net_assets",
+    "plan_changes",
+    "fund_assets_liabilities",
+    "fund_operations",
 )
 SCALARS = (
     "revenue",
@@ -544,7 +548,26 @@ def _build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Merge these shard reports into --out instead of running.",
     )
+    parser.add_argument(
+        "--score",
+        action="store_true",
+        help="Score the report against the pinned statement-view expectations.",
+    )
     return parser
+
+
+def _score_report(report: dict[str, Any]) -> int:
+    """Print the statement-view gate verdict for one report; 0 = pass."""
+    from edgar_sec.engine.xbrl.review.statement_views import score_statement_views
+
+    score = score_statement_views(report)
+    if score.passed:
+        sys.stdout.write("Statement-view gate: PASS\n")
+        return 0
+    sys.stdout.write("Statement-view gate: FAIL\n")
+    for failure in score.failures:
+        sys.stdout.write(f"  {failure}\n")
+    return 1
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -552,9 +575,10 @@ def main(argv: list[str] | None = None) -> int:
     args = _build_parser().parse_args(argv)
     if args.merge is not None:
         reports = [json.loads(path.read_text(encoding="utf-8")) for path in args.merge]
-        atomic_write_json(args.out, merge_reports(reports), indent=2)
+        merged = merge_reports(reports)
+        atomic_write_json(args.out, merged, indent=2)
         sys.stdout.write(f"Merged report written to: {args.out}\n")
-        return 0
+        return _score_report(merged) if args.score else 0
     registry = args.registry or canonical_probe_cohort_path()
     try:
         report = run_driver(
@@ -578,7 +602,7 @@ def main(argv: list[str] | None = None) -> int:
         f"filings={len(report['filings'])} blocked_cells={blocked}\n"
         f"Report written to: {args.out}\n"
     )
-    return 0
+    return _score_report(report) if args.score else 0
 
 
 if __name__ == "__main__":
