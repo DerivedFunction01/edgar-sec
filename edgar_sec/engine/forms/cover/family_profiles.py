@@ -1,5 +1,5 @@
 """Cover profiles for the notice and prospectus families (15, 12B-25,
-14A, 11-K, 424B), composed from the shared kit in ``profiles``.
+14A, 11-K, 424B, FWP, 425), composed from the shared kit in ``profiles``.
 """
 
 from __future__ import annotations
@@ -19,6 +19,7 @@ from edgar_sec.domain.forms.families.form_12b25.taxonomy import FORM_12B25_ITEMS
 from edgar_sec.domain.forms.families.form_14a.evidence import Form14AEvidence
 from edgar_sec.domain.forms.families.form_14a.taxonomy import FORM_14A_ITEMS
 from edgar_sec.domain.forms.families.form_424b.taxonomy import FORM_424B_ITEMS
+from edgar_sec.domain.forms.families.form_fwp.taxonomy import FORM_FWP_ITEMS
 from edgar_sec.domain.forms.families.registration.evidence import (
     RegistrationEvidence,
 )
@@ -297,10 +298,105 @@ def build_form_11k_profile(family: str = "11-K") -> CoverProfile:
     )
 
 
+_FORM_FWP_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "free writing prospectus",
+    "filed pursuant to rule 433",
+    "registration statement nos.",
+    "registration statement no.",
+    "issuer",
+    "guarantor",
+)
+
+
+def build_form_fwp_profile(family: str = "FWP") -> CoverProfile:
+    """Cover profile for free writing prospectuses: the Rule 433 header
+    block (issuer, rule reference, registration numbers) is the cover.
+    """
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_FWP_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(
+                *COMMON_COVER_LABELS,
+                *COVER_EVIDENCE_TERMS,
+                *_FORM_FWP_COVER_LABELS,
+            ),
+            labels=_FORM_FWP_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=tuple(d.item for d in FORM_FWP_ITEMS),
+            semantic_headings=(
+                "summary terms",
+                "key terms",
+                "risk factors",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+    )
+
+
+_FORM_425_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "filed by",
+    "pursuant to rule 425",
+    "rule 14a-12",
+    "subject company",
+    "commission file no.",
+    "commission file number",
+)
+
+
+def build_form_425_profile(family: str = "425") -> CoverProfile:
+    """Cover profile for Rule 425 communications: the filed-by / subject
+    company header block is the cover; the body is the communication.
+    """
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_425_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(
+                *COMMON_COVER_LABELS,
+                *COVER_EVIDENCE_TERMS,
+                *_FORM_425_COVER_LABELS,
+            ),
+            labels=_FORM_425_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=(),
+            semantic_headings=(
+                "press release",
+                "forward-looking statements",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+    )
+
+
 __all__ = [
     "build_form_11k_profile",
     "build_form_12b25_profile",
     "build_form_14a_profile",
     "build_form_15_profile",
     "build_form_424b_profile",
+    "build_form_425_profile",
+    "build_form_fwp_profile",
 ]

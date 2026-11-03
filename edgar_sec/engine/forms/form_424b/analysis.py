@@ -15,7 +15,10 @@ from edgar_sec.engine.forms.analysis import (
     locate_text_artifact,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.entities import CUSIP_RE, is_valid_cusip
+from edgar_sec.engine.forms.common.entities import (
+    NAME_FORM_TOKENS,
+    extract_cusip_near_caption,
+)
 from edgar_sec.engine.forms.cover.registrant import parse_registrant_identity
 from edgar_sec.foundation.regex.builder import build_alternation
 
@@ -101,22 +104,6 @@ def _document_kind(lines: list[str]) -> str | None:
     return None
 
 
-_TITLE_NAME_TOKENS: tuple[str, ...] = (
-    " inc",
-    " corp",
-    " llc",
-    " company",
-    " bank",
-    " trust",
-    " plc",
-    " ltd",
-    " partners",
-    " holdings",
-    " group",
-    " fund",
-)
-
-
 _TITLE_CLASS_SUFFIXES: tuple[str, ...] = (
     " common stock",
     " preferred stock",
@@ -164,7 +151,7 @@ def _registrant_name(lines: list[str]) -> str | None:
             continue
         if "$" in stripped or not stripped[0].isalpha():
             continue
-        if not any(token in lowered for token in _TITLE_NAME_TOKENS):
+        if not any(token in lowered for token in NAME_FORM_TOKENS):
             continue
         identity = parse_registrant_identity(stripped)
         if identity.name:
@@ -178,16 +165,7 @@ def _registrant_name(lines: list[str]) -> str | None:
 
 
 def _cusip(cover_text: str) -> str | None:
-    lowered = cover_text.lower()
-    position = lowered.find("cusip")
-    while position != -1:
-        window = cover_text[position : position + 48]
-        for match in CUSIP_RE.finditer(window):
-            candidate = match.group(0)
-            if any(ch.isdigit() for ch in candidate) and is_valid_cusip(candidate):
-                return candidate.upper()
-        position = lowered.find("cusip", position + 1)
-    return None
+    return extract_cusip_near_caption(cover_text)
 
 
 def _first_group(pattern: re.Pattern[str], text: str) -> str | None:

@@ -466,6 +466,8 @@ def _build_profiles() -> dict[str, CoverProfile]:
         build_form_14a_profile,
         build_form_15_profile,
         build_form_424b_profile,
+        build_form_425_profile,
+        build_form_fwp_profile,
     )
 
     annual_common = replace(
@@ -503,6 +505,8 @@ def _build_profiles() -> dict[str, CoverProfile]:
     schedule13d = build_beneficial_ownership_profile("13D")
     schedule13g = build_beneficial_ownership_profile("13G")
     form_424b = build_form_424b_profile("424B")
+    form_fwp = build_form_fwp_profile("FWP")
+    form_425 = build_form_425_profile("425")
     form_15 = build_form_15_profile("15")
     form_12b25 = build_form_12b25_profile("12B-25")
     form_14a = build_form_14a_profile("14A")
@@ -521,6 +525,8 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "13D": schedule13d,
         "13G": schedule13g,
         "424B": form_424b,
+        "FWP": form_fwp,
+        "425": form_425,
         "15": form_15,
         "12B-25": form_12b25,
         "14A": form_14a,

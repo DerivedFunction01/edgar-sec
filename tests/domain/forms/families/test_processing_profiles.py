@@ -31,6 +31,9 @@ from edgar_sec.domain.forms.families.form_14a.taxonomy import FORM_14A_ITEMS
 from edgar_sec.domain.forms.families.form_15.processing import PROFILE_FORM_15
 from edgar_sec.domain.forms.families.form_424b.processing import PROFILE_FORM_424B
 from edgar_sec.domain.forms.families.form_424b.taxonomy import FORM_424B_ITEMS
+from edgar_sec.domain.forms.families.form_425.processing import PROFILE_FORM_425
+from edgar_sec.domain.forms.families.form_fwp.processing import PROFILE_FORM_FWP
+from edgar_sec.domain.forms.families.form_fwp.taxonomy import FORM_FWP_ITEMS
 from edgar_sec.domain.forms.families.processing_profiles import (
     get_lazy_index_trigger,
     get_family_entry,
@@ -139,6 +142,24 @@ def test_form_424b_entry_registered_without_schema_with_items() -> None:
     assert entry.taxonomy_items == FORM_424B_ITEMS
     assert get_family_entry("424A") is entry
     assert get_family_entry("424B5") is entry
+
+
+def test_form_fwp_entry_registered_without_schema_with_items() -> None:
+    entry = get_family_entry("FWP")
+    assert entry is not None
+    assert entry.family == "FWP"
+    assert entry.profile is PROFILE_FORM_FWP
+    assert entry.cover_checkbox_schema is None
+    assert entry.taxonomy_items == FORM_FWP_ITEMS
+
+
+def test_form_425_entry_registered_without_schema_or_items() -> None:
+    entry = get_family_entry("425")
+    assert entry is not None
+    assert entry.family == "425"
+    assert entry.profile is PROFILE_FORM_425
+    assert entry.cover_checkbox_schema is None
+    assert not entry.taxonomy_items
 
 
 def test_form_11k_entry_registered_with_schema_and_items() -> None:

@@ -322,11 +322,13 @@ def test_checkmark_schema_cases_cover_registered_profile_scope() -> None:
         "D",
         "13F",
         "424B",
+        "FWP",
+        "425",
     }
 
 
 @pytest.mark.parametrize(
-    "family", ("3", "4", "5", "144", "13D", "13G", "D", "13F", "424B")
+    "family", ("3", "4", "5", "144", "13D", "13G", "D", "13F", "424B", "FWP", "425")
 )
 def test_registered_profiles_without_checkmark_schemas_are_not_applicable(
     family: str,

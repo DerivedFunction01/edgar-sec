@@ -49,6 +49,9 @@ from edgar_sec.domain.forms.families.form_14a.taxonomy import FORM_14A_ITEMS
 from edgar_sec.domain.forms.families.form_15.processing import PROFILE_FORM_15
 from edgar_sec.domain.forms.families.form_424b.processing import PROFILE_FORM_424B
 from edgar_sec.domain.forms.families.form_424b.taxonomy import FORM_424B_ITEMS
+from edgar_sec.domain.forms.families.form_425.processing import PROFILE_FORM_425
+from edgar_sec.domain.forms.families.form_fwp.processing import PROFILE_FORM_FWP
+from edgar_sec.domain.forms.families.form_fwp.taxonomy import FORM_FWP_ITEMS
 from edgar_sec.domain.forms.families.form_d.processing import PROFILE_FORM_D
 from edgar_sec.domain.forms.families.form144.processing import PROFILE_FORM_144
 from edgar_sec.domain.forms.families.ownership.processing import (
@@ -167,6 +170,15 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         family="424B",
         profile=PROFILE_FORM_424B,
         taxonomy_items=FORM_424B_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="FWP",
+        profile=PROFILE_FORM_FWP,
+        taxonomy_items=FORM_FWP_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="425",
+        profile=PROFILE_FORM_425,
     ),
     ProcessingCatalogEntry(
         family="3",

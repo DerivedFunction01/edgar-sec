@@ -12,6 +12,10 @@ from typing import Any
 from edgar_sec.apps.client.equity_rollforward import build_equity_rollforward
 from edgar_sec.apps.client.facts import DisplayRecord
 from edgar_sec.apps.client.views import EquityRollforwardView
+from edgar_sec.engine.xbrl.normalize.filed_metadata import (
+    FiledMetadata,
+    filed_metadata as read_filed_metadata,
+)
 from edgar_sec.engine.xbrl.normalize.normalization import normalize_time_coordinate
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import (
@@ -132,6 +136,7 @@ class FilingKernel:
         ] = {}
         self._series_cache: dict[tuple, dict[str, float]] = {}
         self._facts_by_qname: dict[str, tuple[XbrlFact, ...]] | None = None
+        self._filed_metadata: FiledMetadata | None = None
         self._facts_by_head: dict[str | None, tuple[XbrlFact, ...]] | None = None
 
     @property
@@ -193,6 +198,13 @@ class FilingKernel:
             if isinstance(fact.value, str) and fact.value:
                 return fact.value
         return None
+
+    @property
+    def filed_metadata(self) -> FiledMetadata:
+        """The filing's filed dei period/fiscal metadata block."""
+        if self._filed_metadata is None:
+            self._filed_metadata = read_filed_metadata(self.facts)
+        return self._filed_metadata
 
     def facts_by_qname(self) -> dict[str, tuple[XbrlFact, ...]]:
         """Facts indexed by concept qname, built once per filing."""

@@ -127,3 +127,16 @@ def test_axes_are_memoized() -> None:
     """Xbrl.axes computes the fact-set dimensions once."""
     xbrl = _facade("msft")
     assert xbrl.axes is xbrl.axes
+
+
+def test_kernel_filed_metadata_reads_the_dei_block() -> None:
+    """The kernel exposes the seed filing's filed dei period/fiscal block."""
+    kernel = _facade("msft")._kernel
+    meta = kernel.filed_metadata
+    assert meta.period_end == "2024-06-30"
+    assert meta.fiscal_year == 2024
+    assert meta.period_focus == "FY"
+    assert meta.document_type == "10-K"
+    assert meta.fiscal_year_end == (6, 30)
+    assert meta.annual_report is True
+    assert kernel.filed_metadata is meta

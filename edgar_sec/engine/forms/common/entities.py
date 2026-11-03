@@ -179,6 +179,23 @@ SEC_FILE_NUMBER_RE = re.compile(
     rf"\b(?:{SEC_FILE_PREFIX_ALT})-\d{{4,8}}\b", re.IGNORECASE
 )
 COMMISSION_FILE_TOKEN_RE = re.compile(r"[0-9][0-9a-z]*(?:-[0-9a-z]+)+|[0-9]+")
+
+#: Legal-form tokens whose presence marks a cover line as a name line
+#: (title-position registrant / issuer detection in family analyzers).
+NAME_FORM_TOKENS: tuple[str, ...] = (
+    " inc",
+    " corp",
+    " llc",
+    " company",
+    " bank",
+    " trust",
+    " plc",
+    " ltd",
+    " partners",
+    " holdings",
+    " group",
+    " fund",
+)
 CUSIP_RE = re.compile(r"(?i)(?<![0-9A-Z])[0-9A-Z*@#]{9}(?![0-9A-Z])")
 _CUSIP_CLEAN_RE = re.compile(r"(?i)^[0-9A-Z*@#]{8,9}$")
 CRD_RE = re.compile(r"\b\d{1,9}\b")
@@ -235,6 +252,23 @@ def parse_cusip(value: str | None) -> str | None:
     ):
         return compact[:9].upper()
 
+    return None
+
+
+def extract_cusip_near_caption(text: str, *, window: int = 96) -> str | None:
+    """First structurally valid, digit-bearing CUSIP token appearing within
+    ``window`` characters after a "cusip" mention in ``text``. The caption
+    anchor is the guard: an unanchored scan false-positives on ordinary
+    nine-letter words whose character structure passes.
+    """
+    lowered = text.lower()
+    position = lowered.find("cusip")
+    while position != -1:
+        for match in CUSIP_RE.finditer(text[position : position + window]):
+            candidate = match.group(0)
+            if any(ch.isdigit() for ch in candidate) and is_valid_cusip(candidate):
+                return candidate.upper()
+        position = lowered.find("cusip", position + 1)
     return None
 
 
@@ -422,6 +456,7 @@ __all__ = [
     "ISSUER_TAIL_ALT",
     "ISSUER_TAIL_RE",
     "ISSUER_TAIL_TERMS",
+    "NAME_FORM_TOKENS",
     "NAME_MATCH_RE",
     "NON_OWNER_JURISDICTION_ALT",
     "NON_OWNER_JURISDICTION_RE",
@@ -454,6 +489,7 @@ __all__ = [
     "TICKER_PAREN_RE",
     "TITLE_MATCH_RE",
     "TRAILING_FOOTNOTE_RE",
+    "extract_cusip_near_caption",
     "is_boilerplate_entity_name",
     "is_street_address_value",
     "is_street_or_address_line",
