@@ -1,0 +1,181 @@
+{
+ "rows": [
+  {
+   "act": "payment",
+   "direction": -1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_INVESTMENT"
+   ],
+   "name": "ext:PaymentsToAcquireMarketableSecurities",
+   "note": "Payments head claim governs; the object rides as carriage."
+  },
+  {
+   "act": "payment",
+   "direction": -1.0,
+   "head": "H_ASSET",
+   "modifiers": [],
+   "name": "ext:PaymentsToAcquireSolarGenerationEquipment",
+   "note": "Novel object supplies its own head; the act is carried by the direction-bearing payments claim."
+  },
+  {
+   "act": "payment",
+   "direction": -1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_DEBT"
+   ],
+   "name": "ext:PaymentsToAcquireDebtSecurities",
+   "note": "Object head and modifier; direction from the payments claim."
+  },
+  {
+   "act": "proceeds",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_PURPOSE_SALE"
+   ],
+   "name": "ext:ProceedsFromSaleOfSolarGenerationEquipment",
+   "note": "Mainline sale-worded shape; the marker is the held-for-sale purpose sense."
+  },
+  {
+   "act": "proceeds",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [],
+   "name": "ext:ProceedsFromDisposalOfSolarGenerationEquipment",
+   "note": "Head and direction by construction; the disposal source act is unmarked."
+  },
+  {
+   "act": "proceeds",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [],
+   "name": "ext:ProceedsFromCollectionOfFactoringReceivables",
+   "note": "Head and direction by construction; the collection source act is unmarked."
+  },
+  {
+   "act": "proceeds",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [],
+   "name": "ext:ProceedsFromRedemptionOfFundUnits",
+   "note": "Head and direction by construction; the redemption source act is unmarked."
+  },
+  {
+   "act": "borrowing",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_DEBT",
+    "M_FINANCING"
+   ],
+   "name": "ext:BorrowingsUnderSolarFinancingFacility",
+   "note": "Borrowings modeled as the debt stock."
+  },
+  {
+   "act": "borrowing",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_DEBT"
+   ],
+   "name": "ext:BorrowingsFromGreenBondFacility",
+   "note": "Borrowings modeled as the debt stock."
+  },
+  {
+   "act": "maturity",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_DEBT",
+    "M_MATURITY"
+   ],
+   "name": "ext:ProceedsFromMaturitiesOfGreenBonds",
+   "note": "The maturity event is carried by its dedicated modifier on the proceeds head."
+  },
+  {
+   "act": "maturity",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_DEBT",
+    "M_MATURITY"
+   ],
+   "name": "ext:ProceedsFromMaturityOfGreenBonds",
+   "note": "Singular twin lands the identical atom."
+  },
+  {
+   "act": "dividend",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_COMMON",
+    "M_DIVIDEND"
+   ],
+   "name": "ext:CashDividendsPaidToCommonShareholders",
+   "note": "Direction is the decomposer default; no direction-bearing claim fires on this shape."
+  },
+  {
+   "act": "dividend",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_COMMON",
+    "M_DIVIDEND"
+   ],
+   "name": "ext:DividendsPaidToCommonShareholders",
+   "note": "Direction is the decomposer default; no direction-bearing claim fires on this shape."
+  },
+  {
+   "act": "impairment",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_IMPAIRMENT"
+   ],
+   "name": "ext:ImpairmentOfSolarGenerationEquipment",
+   "note": "The impairment claim supplies head and modifier; the novel object is residual."
+  },
+  {
+   "act": "impairment",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_IMPAIRMENT"
+   ],
+   "name": "ext:ImpairmentOfFactoringReceivables",
+   "note": "The impairment claim supplies head and modifier."
+  },
+  {
+   "act": "purchase",
+   "direction": -1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_PURCHASE"
+   ],
+   "name": "ext:PurchaseOfSolarGenerationEquipment",
+   "note": "Frame consultation attaches the act and the outflow direction on the flow remainder."
+  },
+  {
+   "act": "purchase",
+   "direction": -1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_PURCHASE"
+   ],
+   "name": "ext:PurchasesOfSolarGenerationEquipment",
+   "note": "Plural twin: the frame direction replaces the default alongside the act."
+  },
+  {
+   "act": "purchase",
+   "direction": -1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_PURCHASE"
+   ],
+   "name": "ext:PurchaseOfFactoringReceivables",
+   "note": "Frame consultation attaches the act and the outflow direction on the flow remainder."
+  }
+ ]
+}
