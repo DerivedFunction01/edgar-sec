@@ -51,6 +51,7 @@ PACKAGE_GROUPS: dict[str, list[str]] = {
         "selectolax",
         "sentencepiece",
         "lxml",
+        "pymupdf>=2.1,<2.2",
     ],
     "Web & API Services": [
         "fastapi",

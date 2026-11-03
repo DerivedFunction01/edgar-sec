@@ -119,7 +119,13 @@ def resolve_acquisition_capability(
                     and facts.path_context.split("/", 1)[0].casefold().startswith("xsl")
                 ):
                     capability_id = "text.rendered_markup"
-                if capability_id is not None:
+                elif (
+                    facts.suffix_class is DocumentSuffixClass.PDF
+                    and effective_route is DocumentRoute.BINARY
+                ):
+                    capability_id = "text.pdf"
+                    handler_id = "normalize_pdf_document"
+                if capability_id is not None and handler_id is None:
                     handler_id = "normalize_document"
             elif operation == "render_to_xml":
                 candidate_reg = handlers.resolve(
@@ -147,7 +153,7 @@ def resolve_acquisition_capability(
         or registered_capability.operation != operation
         or registered_capability.handler_version != registration.handler_version
         or registered_capability.output_kind is not expected_output_kind
-        or not _route_supports(operation, effective_route)
+        or not _route_supports(operation, effective_route, facts.suffix_class)
     ):
         return CapabilityEntry(
             normalized_family,
@@ -175,8 +181,12 @@ def _route_from_facts(facts: DocumentPathFacts) -> DocumentRoute:
     return content_route(facts.path_context)
 
 
-def _route_supports(operation: str, route: DocumentRoute) -> bool:
+def _route_supports(
+    operation: str, route: DocumentRoute, suffix_class: DocumentSuffixClass
+) -> bool:
     if operation == "render_to_txt":
+        if route is DocumentRoute.BINARY:
+            return suffix_class is DocumentSuffixClass.PDF
         return route in {
             DocumentRoute.MARKUP,
             DocumentRoute.RENDERED,

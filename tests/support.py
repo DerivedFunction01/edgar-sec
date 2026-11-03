@@ -792,6 +792,21 @@ def duckdb_connection(database: str | Path | None = None) -> Connection:
     return connect() if database is None else connect(database=database)
 
 
+def make_pdf_bytes(pages: list[str | None]) -> bytes:
+    """Build a small PDF in memory; a None page carries no text layer."""
+    import pymupdf
+
+    document = pymupdf.open()
+    for text in pages:
+        page = document.new_page()
+        if text is not None:
+            page.insert_text((72, 72), text, fontsize=11)
+    try:
+        return document.tobytes()
+    finally:
+        document.close()
+
+
 __all__ = [
     "CATALOG_FIXTURES",
     "FIXTURES",
@@ -822,6 +837,7 @@ __all__ = [
     "historical_url",
     "load_catalog_fixture",
     "load_fixture",
+    "make_pdf_bytes",
     "roster_of",
     "scratch_root",
     "submissions_document",

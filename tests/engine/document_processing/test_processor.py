@@ -25,6 +25,7 @@ from edgar_sec.engine.document_processing.processor import (
 from edgar_sec.engine.document_processing.outputs import HandlerOutput, HandlerSidecar
 from edgar_sec.engine.document_processing.registry import HandlerRegistry
 from edgar_sec.foundation.hashing import sha256_bytes
+from tests.support import make_pdf_bytes
 
 
 def _path_facts(path: str) -> DocumentPathFacts:
@@ -436,9 +437,7 @@ def test_flat_xml_and_unknown_operations_remain_unsupported() -> None:
     )
 
 
-@pytest.mark.parametrize(
-    "path", ["filing.pdf", "filing.paper", "filing.zip", "filing.bin"]
-)
+@pytest.mark.parametrize("path", ["filing.paper", "filing.zip", "filing.bin"])
 def test_non_text_routes_do_not_use_normalizer_fallback(path: str) -> None:
     operation = OperationRecord("v1", "text", ("source",), operation="render_to_txt")
 
@@ -449,6 +448,70 @@ def test_non_text_routes_do_not_use_normalizer_fallback(path: str) -> None:
     )
 
     assert (outcome.status, outcome.error) == ("unsupported", "handler_not_registered")
+
+
+def test_pdf_render_extracts_text_through_the_pdf_handler() -> None:
+    body = make_pdf_bytes([" ".join(["Filed PDF text."] * 12)])
+    operation = OperationRecord("v1", "text", ("source",), operation="render_to_txt")
+
+    outcome = (
+        AcquisitionProcessor()
+        .process(
+            _request(
+                (operation,),
+                (_input(path="filing.pdf", body=body),),
+                path="filing.pdf",
+            )
+        )
+        .outcomes[0]
+    )
+
+    assert outcome.status == "ok"
+    assert outcome.output_text is not None
+    assert "Filed PDF text." in outcome.output_text
+    assert (outcome.handler_id, outcome.handler_version) == (
+        "normalize_pdf_document",
+        "1",
+    )
+
+
+def test_pdf_without_a_text_layer_renders_an_explicit_empty_output() -> None:
+    body = make_pdf_bytes([None])
+    operation = OperationRecord("v1", "text", ("source",), operation="render_to_txt")
+
+    outcome = (
+        AcquisitionProcessor()
+        .process(
+            _request(
+                (operation,),
+                (_input(path="filing.pdf", body=body),),
+                path="filing.pdf",
+            )
+        )
+        .outcomes[0]
+    )
+
+    assert outcome.status == "ok"
+    assert outcome.output_text == ""
+    assert outcome.output_byte_size == 0
+    assert outcome.handler_id == "normalize_pdf_document"
+
+
+def test_pdf_path_with_non_pdf_bytes_fails_the_conversion() -> None:
+    operation = OperationRecord("v1", "text", ("source",), operation="render_to_txt")
+
+    outcome = (
+        AcquisitionProcessor()
+        .process(
+            _request((operation,), (_input(path="filing.pdf"),), path="filing.pdf")
+        )
+        .outcomes[0]
+    )
+
+    assert (outcome.status, outcome.error) == (
+        "failed",
+        "handler_failed:PdfConversionError",
+    )
 
 
 def test_invalid_source_and_handler_failure_do_not_suppress_sibling_results() -> None:
