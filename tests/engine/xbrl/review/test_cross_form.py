@@ -2,11 +2,14 @@
 
 from edgar_sec.engine.xbrl.review.cross_form import (
     FACT_EXPECTATIONS,
+    K1_EXPECTATIONS,
     CrossFormExpectation,
     FactExpectation,
+    K1Expectation,
     block_key,
     score_cross_form,
     score_fact_matrix,
+    score_k1,
     summarize_cross_form,
 )
 
@@ -245,3 +248,84 @@ def test_score_fact_matrix_missing_row_fails() -> None:
     score = score_fact_matrix({"fact_matrix": {}}, {key: _fact_expectation()})
     assert not score.passed
     assert any("row missing from fact matrix" in f for f in score.failures)
+
+
+def _k1_row(**overrides) -> dict:
+    """One synthetic K1 block row in the summary's shape."""
+    fields = {
+        "form": "10-K",
+        "taxonomy": "us-gaap",
+        "filings": 119,
+        "k1_facts": 10,
+        "no_calc_role": 6,
+        "in_calc_arcs": 4,
+        "per_share": 1,
+        "schedule": 0,
+        "breakdown_served": 5,
+        "calc_component": 3,
+        "orphan": 1,
+    }
+    fields.update(overrides)
+    return fields
+
+
+def _k1_expectation(**overrides) -> K1Expectation:
+    """The pinned expectation matching the synthetic K1 row."""
+    fields = {
+        "form": "10-K",
+        "taxonomy": "us-gaap",
+        "filings": 119,
+        "k1_facts": 10,
+        "no_calc_role": 6,
+        "in_calc_arcs": 4,
+        "per_share": 1,
+        "schedule": 0,
+        "breakdown_served": 5,
+        "calc_component": 3,
+        "orphan": 1,
+    }
+    fields.update(overrides)
+    return K1Expectation(**fields)
+
+
+def test_k1_expectations_partition_the_pinned_mass() -> None:
+    """Every pinned K1 block's dispositions and calc split sum to its mass."""
+    assert len(K1_EXPECTATIONS) >= 50
+    for key, row in K1_EXPECTATIONS.items():
+        assert key == f"{row.form}|{row.taxonomy}"
+        dispositions = (
+            row.per_share
+            + row.schedule
+            + row.breakdown_served
+            + row.calc_component
+            + row.orphan
+        )
+        assert dispositions == row.k1_facts
+        assert row.no_calc_role + row.in_calc_arcs == row.k1_facts
+
+
+def test_score_k1_passes_exact_blocks() -> None:
+    """K1 scoring passes when every pinned block matches exactly."""
+    key = "10-K|us-gaap"
+    score = score_k1({"k1_blocks": {key: _k1_row()}}, {key: _k1_expectation()})
+    assert score.passed
+    assert score.failures == ()
+
+
+def test_score_k1_names_moved_mass() -> None:
+    """A moved K1 count fails, naming the field and both counts."""
+    key = "10-K|us-gaap"
+    summary = {"k1_blocks": {key: _k1_row(orphan=2)}}
+    score = score_k1(summary, {key: _k1_expectation()})
+    assert not score.passed
+    assert any(
+        failure == f"k1 {key}: orphan 2 != expected 1" for failure in score.failures
+    )
+
+
+def test_score_k1_missing_block_fails() -> None:
+    """A pinned K1 block absent from the census fails the gate."""
+    key = "10-K|us-gaap"
+    score = score_k1({"k1_blocks": {}}, {key: _k1_expectation()})
+    assert not score.passed
+    assert any("block missing from K1 census" in f for f in score.failures)

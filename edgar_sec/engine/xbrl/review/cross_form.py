@@ -104,6 +104,78 @@ def score_fact_matrix(
     return CensusScore(passed=not failures, failures=tuple(failures))
 
 
+@dataclass(frozen=True, slots=True)
+class K1Expectation:
+    """Pinned dimensioned-only (K1) mass for one form/taxonomy block."""
+
+    form: str
+    taxonomy: str
+    filings: int
+    k1_facts: int
+    no_calc_role: int
+    in_calc_arcs: int
+    per_share: int
+    schedule: int
+    breakdown_served: int
+    calc_component: int
+    orphan: int
+
+
+def _load_k1_expectations() -> dict[str, K1Expectation]:
+    """Load the pinned K1 blocks from their data file."""
+    raw = json.loads(
+        Path(__file__).with_name("k1_expectations.json").read_text(encoding="utf-8")
+    )
+    return {key: K1Expectation(**row) for key, row in sorted(raw.items())}
+
+
+K1_EXPECTATIONS: dict[str, K1Expectation] = _load_k1_expectations()
+
+_K1_FIELDS = (
+    "filings",
+    "k1_facts",
+    "no_calc_role",
+    "in_calc_arcs",
+    "per_share",
+    "schedule",
+    "breakdown_served",
+    "calc_component",
+    "orphan",
+)
+
+_K1_DISPOSITIONS = (
+    "per_share",
+    "schedule",
+    "breakdown_served",
+    "calc_component",
+    "orphan",
+)
+
+
+def score_k1(
+    summary: dict[str, Any],
+    expectations: dict[str, K1Expectation] = K1_EXPECTATIONS,
+) -> CensusScore:
+    """Score the K1 census; mass moves only by adjudicated reclassification."""
+    failures: list[str] = []
+    blocks = summary.get("k1_blocks", {})
+    for key, expected in expectations.items():
+        row = blocks.get(key)
+        if row is None:
+            failures.append(f"k1 {key}: block missing from K1 census")
+            continue
+        for name in _K1_FIELDS:
+            if row[name] != getattr(expected, name):
+                failures.append(
+                    f"k1 {key}: {name} {row[name]} != expected {getattr(expected, name)}"
+                )
+        if sum(row[name] for name in _K1_DISPOSITIONS) != row["k1_facts"]:
+            failures.append(f"k1 {key}: dispositions do not sum to k1_facts")
+        if row["no_calc_role"] + row["in_calc_arcs"] != row["k1_facts"]:
+            failures.append(f"k1 {key}: calc-role split does not sum to k1_facts")
+    return CensusScore(passed=not failures, failures=tuple(failures))
+
+
 def summarize_cross_form(evaluations: list[dict]) -> dict:
     """Aggregate cross-form evaluations into the scored summary shape."""
     grouped: dict[str, list[dict]] = {}
