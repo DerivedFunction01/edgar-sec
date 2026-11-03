@@ -62,10 +62,12 @@ class StatementView:
 
     @property
     def status(self) -> QueryStatus:
-        """Query-vocabulary status: UNAVAILABLE when no root was composed."""
+        """Query status: UNAVAILABLE without a root, DERIVED if gap-filled."""
         root = self.root
         if root is None or root.concept_qname == "":
             return QueryStatus.UNAVAILABLE
+        if root.gap_filled:
+            return QueryStatus.DERIVED
         return QueryStatus.REPORTED
 
     @property

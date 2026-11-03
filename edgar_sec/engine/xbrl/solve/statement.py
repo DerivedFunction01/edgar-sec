@@ -32,6 +32,13 @@ class StatementNode:
     values: dict[str, float] = field(default_factory=dict)
     yoy_change: float | None = None
     yoy_pct: float | None = None
+    basis: str = "REPORTED"
+    derivation_path: tuple[str, ...] = ()
+
+    @property
+    def gap_filled(self) -> bool:
+        """Whether the served value was gap-filled from calc children."""
+        return self.basis != "REPORTED"
 
 
 @dataclass(frozen=True, slots=True)
@@ -123,6 +130,8 @@ class StatementGraph:
                 values={yr_str: val} if val is not None else {},
                 yoy_change=None,
                 yoy_pct=None,
+                basis=node.basis,
+                derivation_path=node.derivation_path,
             )
         return self.__class__(
             statement_type=self.statement_type,
@@ -149,10 +158,16 @@ class StatementGraph:
         values = {
             k: node.value for k, node in self.nodes.items() if node.value is not None
         }
+        # A gap-filled root is its components' sum by construction, so it
+        # cannot be verified against them; it is withheld as the target.
+        root_node = self.nodes.get(self.root_qname)
+        target = (
+            None if root_node is not None and root_node.gap_filled else self.root_qname
+        )
         return validator.verify_non_double_counting(
             selected_concepts=components,
             calculation_arcs=raw_arcs,
-            target_concept=self.root_qname,
+            target_concept=target,
             concept_values=values,
             concept_weights=weights,
         )
@@ -497,13 +512,19 @@ def build_statement_graph(
         and arc.child_qname in relevant_concepts
     ]
 
+    # A fill is sound only over a fully accounted partition: every calc
+    # child valued (filed, or soundly filled in an earlier pass) and each
+    # child counted once. Anything less serves honest absence instead.
     for _ in range(5):
         updated = False
         for c, node in list(nodes.items()):
             if node.value is None:
                 child_edges = [e for e in edges if e.parent_qname == c]
-                if child_edges and all(
-                    nodes[e.child_qname].value is not None for e in child_edges
+                child_qnames = [e.child_qname for e in child_edges]
+                if (
+                    child_edges
+                    and len(set(child_qnames)) == len(child_qnames)
+                    and all(nodes[e.child_qname].value is not None for e in child_edges)
                 ):
                     comp_val = sum(
                         e.weight * (nodes[e.child_qname].value or 0.0)
@@ -537,6 +558,8 @@ def build_statement_graph(
                         values=comp_years or node.values,
                         yoy_change=c_yoy,
                         yoy_pct=c_pct,
+                        basis="DERIVED_EXACT",
+                        derivation_path=tuple(e.child_qname for e in child_edges),
                     )
                     updated = True
         if not updated:

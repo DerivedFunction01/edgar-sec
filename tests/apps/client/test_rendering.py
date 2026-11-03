@@ -25,7 +25,23 @@ def _graph(insertion_order: tuple[str, ...]) -> StatementGraph:
     return StatementGraph("income", "us-gaap:root", nodes, edges, years=("2026",))
 
 
-def test_statement_dataframe_order_ignores_node_insertion_order() -> None:
+def test_statement_dataframe_carries_node_basis() -> None:
+    """Verify each dataframe row carries its node's provenance basis."""
+    graph = _graph(("root", "child_a", "child_b", "leaf"))
+    graph.nodes["us-gaap:root"] = StatementNode(
+        concept_qname="us-gaap:root",
+        atom=Atom("H_TEST"),
+        label="us-gaap:root",
+        facts=(),
+        value=10.0,
+        basis="DERIVED_EXACT",
+        derivation_path=("us-gaap:child_a", "us-gaap:child_b"),
+    )
+    frame = statement_to_dataframe(graph, include_yoy=False)
+    basis_by_concept = dict(zip(frame["concept"], frame["basis"]))
+    assert basis_by_concept["us-gaap:root"] == "DERIVED_EXACT"
+    assert basis_by_concept["us-gaap:leaf"] == "REPORTED"
+
     """Row order is the table traversal, whatever order nodes were added."""
     forward = statement_to_dataframe(
         _graph(("root", "child_a", "child_b", "leaf")), include_yoy=False
