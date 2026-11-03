@@ -31,9 +31,8 @@ YEAR_BANDS = ((2011, 2014), (2015, 2018), (2019, 2022), (2023, 2026))
 class Screen:
     """One gathering screen: a catalog filter plus phrasing evidence.
 
-    A null form set resolves to the amendment forms of the item's
-    carrier families; an empty item filters on no item, and
-    require_xbrl keeps only XBRL-flagged filings.
+    A null form set resolves to the amendment forms of the item's carrier
+    families; an empty item filters on no item; require_xbrl keeps XBRL only.
     """
 
     name: str

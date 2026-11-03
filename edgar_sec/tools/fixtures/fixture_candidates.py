@@ -371,9 +371,9 @@ def run_shards(
 
 
 def _floor_facts(row: dict[str, Any], floor_prefix: str) -> int | None:
-    """A row's fact count under the floor prefix, with a legacy fallback.
+    """A row's fact count under the floor prefix.
 
-    Checkpoint rows predating per-prefix counts carry no by_prefix;
+    Checkpoint rows written before per-prefix counts carry no by_prefix;
     for the us-gaap floor their flat us_gaap_facts count stands in.
     """
     count = (row.get("by_prefix") or {}).get(floor_prefix)

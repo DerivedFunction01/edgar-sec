@@ -82,8 +82,8 @@ def test_undimensioned_value_wins_over_dimensioned() -> None:
     assert filed_metadata(facts).period_end == "2026-09-30"
 
 
-def test_legacy_fye_name_and_full_date_parse() -> None:
-    """The legacy FYE concept name and a full-date value both parse."""
+def test_earlier_fye_name_and_full_date_parse() -> None:
+    """The earlier FYE concept name and a full-date value both parse."""
     facts = (_fact("dei:EntityFiscalYearEndDate", "2026-09-26"),)
     assert filed_metadata(facts).fiscal_year_end == (9, 26)
 
