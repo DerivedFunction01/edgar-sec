@@ -332,11 +332,9 @@ def strip_font_tag_and_noise_attributes(html: str) -> str:
     return html
 
 
-# The HTML5 active-formatting-elements set: an element on the parser's list
-# is cloned around every later insertion until it is closed, so a document
-# that opens formatting elements without closing them makes the parse
-# allocate quadratically in the unclosed count (see
-# bound_formatting_element_scope).
+# The HTML5 active-formatting-elements set: an element on the parser's
+# list is cloned around every later insertion until closed, so unclosed
+# runs allocate quadratically (see bound_formatting_element_scope).
 _FORMATTING_TAGS: frozenset[str] = frozenset(
     {
         "a",
@@ -363,29 +361,8 @@ _BOUNDARY_TAGS: frozenset[str] = BLOCK_TAGS | frozenset({"html", "head", "body"}
 def bound_formatting_element_scope(html: str) -> str:
     """Close still-open formatting elements at block boundaries.
 
-    A spec HTML parser keeps every unclosed formatting element (``<font>``,
-    ``<b>``, ...) on its active-formatting list and clones the whole list
-    around each later text or element insertion. Positioned-layout
-    converters emit ``<div><font ...>text <font ...>text</div>`` thousands
-    of times without ever closing a font, so the list grows by every tag
-    and the parse allocates quadratically in the tag count — one filed
-    424B2 (26,721 unclosed fonts) OOM-killed review generate after
-    allocating tens of gigabytes. Formatting scope is presentation, not
-    content: emitting the implied close tags where a block boundary ends
-    the scope keeps every text node, its order, and each element's own
-    attributes, and the parse becomes linear. A document whose formatting
-    elements already close inside their block passes through unchanged.
-    Script and style bodies are opaque: tag-shaped text inside them
-    never touches the stack.
-
-    Placement is a contract: the normalizer applies this pass to the
-    cleaned text at the parse seam, never inside
-    :func:`clean_html_for_parsing`. The glyph pass reads every close
-    tag as a font-scope pop, and the cleaner runs more than once over
-    the same text on the normalize path, so closes inserted inside the
-    chain would change glyph-scope decisions on the next pass (measured
-    on fix-14a-htm: 97/400 renders changed). Applied after the final
-    clean, the inserted closes reach only the parser.
+    Placement is a contract: applied by the normalizer at the parse
+    seam, never inside :func:`clean_html_for_parsing` (Step 5A record).
     """
     if not html or not _RE_FORMATTING_OPEN.search(html):
         return html

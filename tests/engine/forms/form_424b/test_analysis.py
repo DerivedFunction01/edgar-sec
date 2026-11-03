@@ -110,7 +110,7 @@ def test_analyze_case_pricing_supplement_cover(tmp_path: Path) -> None:
     assert fields["cusip"] == "89114QKV9"
 
 
-def test_analyze_case_legacy_caption_variants(tmp_path: Path) -> None:
+def test_analyze_case_era_caption_variants(tmp_path: Path) -> None:
     _write_case(
         tmp_path,
         "Filed pursuant to Rule No. 424(b)(3)\n"
