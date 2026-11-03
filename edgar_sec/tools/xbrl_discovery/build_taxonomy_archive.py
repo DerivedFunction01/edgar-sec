@@ -70,6 +70,18 @@ def _releases() -> tuple[tuple[str, str, str], ...]:
         releases.append(("cyd", str(year), f"{_SEC}/cyd/{year}/cyd-{year}.xsd"))
     for version in ("2024", "2024q2", "2025", "2025q4", "2026"):
         releases.append(("ffd", version, f"{_SEC}/ffd/{version}/ffd-{version}.xsd"))
+    for year in range(2023, 2027):
+        releases.append(("rxp", str(year), f"{_SEC}/rxp/{year}/rxp-{year}.xsd"))
+    for year in range(2022, 2027):
+        releases.append(("cef", str(year), f"{_SEC}/cef/{year}/cef-{year}.xsd"))
+    for year in range(2024, 2027):
+        releases.append(
+            (
+                "us-gaap-ebp",
+                str(year),
+                f"{_FASB}/us-gaap/{year}/ebp/elts/us-gaap-ebp-{year}.xsd",
+            )
+        )
     for date in _IFRS_DATES:
         releases.append(
             (

@@ -27,6 +27,9 @@ TAXONOMY_PREFIXES: dict[str, str] = {
     "ecd": "ecd",
     "cyd": "cyd",
     "ffd": "ffd",
+    "rxp": "rxp",
+    "cef": "cef",
+    "us-gaap-ebp": "us-gaap-ebp",
     "ifrs": "ifrs-full",
 }
 
@@ -41,11 +44,15 @@ CURRENT_SLICES: tuple[tuple[str, str], ...] = (
     ("cyd", "2024"),
     ("ifrs", "2025-03-27"),
     ("ffd", "2026"),
+    ("rxp", "2026"),
+    ("cef", "2026"),
+    ("us-gaap-ebp", "2026"),
 )
 
 _DATED = re.compile(r"^(\d{4})-\d{2}-\d{2}$")
-_FASB = re.compile(r"^https?://(?:www\.)?fasb\.org/(us-gaap|srt)/([^/]+)$")
-_SEC_TAXONOMIES = build_alternation(("cyd", "dei", "ecd", "ffd"))
+_FASB_TAXONOMIES = build_alternation(("us-gaap-ebp", "us-gaap", "srt"))
+_FASB = re.compile(rf"^https?://(?:www\.)?fasb\.org/({_FASB_TAXONOMIES})/([^/]+)$")
+_SEC_TAXONOMIES = build_alternation(("cef", "cyd", "dei", "ecd", "ffd", "rxp"))
 _SEC = re.compile(rf"^https?://xbrl\.sec\.gov/({_SEC_TAXONOMIES})/([^/]+)$")
 _XBRL_US = re.compile(r"^https?://(?:taxonomies\.)?xbrl\.us/(us-gaap)/([^/]+)$")
 _IFRS = re.compile(r"^https?://xbrl\.ifrs\.org/taxonomy/([^/]+)/ifrs-full$")

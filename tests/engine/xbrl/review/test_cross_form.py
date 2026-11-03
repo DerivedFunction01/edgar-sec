@@ -1,9 +1,12 @@
 """Tests for the cross-form census summary and scoring gate."""
 
 from edgar_sec.engine.xbrl.review.cross_form import (
+    FACT_EXPECTATIONS,
     CrossFormExpectation,
+    FactExpectation,
     block_key,
     score_cross_form,
+    score_fact_matrix,
     summarize_cross_form,
 )
 
@@ -169,3 +172,76 @@ def test_score_cross_form_missing_block_fails() -> None:
     score = score_cross_form({"blocks": {}}, {key: _expectation()})
     assert not score.passed
     assert any("block missing from summary" in f for f in score.failures)
+
+
+def _fact_row(
+    filings: int = 2,
+    facts: int = 270,
+    numeric_facts: int = 209,
+    dimensioned_numeric: int = 146,
+    quarantined_facts: int = 146,
+) -> dict:
+    """One synthetic fact-matrix row in the summary's shape."""
+    return {
+        "form": "DEF 14A",
+        "taxonomy": "ecd",
+        "period_shape": "annual",
+        "filings": filings,
+        "facts": facts,
+        "numeric_facts": numeric_facts,
+        "dimensioned_numeric": dimensioned_numeric,
+        "quarantined_facts": quarantined_facts,
+    }
+
+
+def _fact_expectation(**overrides) -> FactExpectation:
+    """The pinned expectation matching the synthetic fact row."""
+    fields = {
+        "form": "DEF 14A",
+        "taxonomy": "ecd",
+        "period_shape": "annual",
+        "filings": 2,
+        "facts": 270,
+        "numeric_facts": 209,
+        "dimensioned_numeric": 146,
+        "quarantined_facts": 146,
+    }
+    fields.update(overrides)
+    return FactExpectation(**fields)
+
+
+def test_fact_expectations_cover_every_closed_set() -> None:
+    """The pinned fact rows name each closed-set taxonomy's accounting."""
+    taxonomies = {row.taxonomy for row in FACT_EXPECTATIONS.values()}
+    assert {"ecd", "cyd", "rxp", "cef", "us-gaap-ebp"} <= taxonomies
+    for key, row in FACT_EXPECTATIONS.items():
+        assert key == block_key(row.form, row.taxonomy, row.period_shape)
+
+
+def test_score_fact_matrix_passes_exact_rows() -> None:
+    """Fact scoring passes when every pinned row matches exactly."""
+    key = block_key("DEF 14A", "ecd", "annual")
+    summary = {"fact_matrix": {key: _fact_row()}}
+    score = score_fact_matrix(summary, {key: _fact_expectation()})
+    assert score.passed
+    assert score.failures == ()
+
+
+def test_score_fact_matrix_names_moved_counts() -> None:
+    """A moved fact count fails, naming the field and both counts."""
+    key = block_key("DEF 14A", "ecd", "annual")
+    summary = {"fact_matrix": {key: _fact_row(facts=271)}}
+    score = score_fact_matrix(summary, {key: _fact_expectation()})
+    assert not score.passed
+    assert any(
+        failure == f"fact {key}: facts 271 != expected 270"
+        for failure in score.failures
+    )
+
+
+def test_score_fact_matrix_missing_row_fails() -> None:
+    """A pinned row absent from the fact matrix fails the gate."""
+    key = block_key("DEF 14A", "ecd", "annual")
+    score = score_fact_matrix({"fact_matrix": {}}, {key: _fact_expectation()})
+    assert not score.passed
+    assert any("row missing from fact matrix" in f for f in score.failures)

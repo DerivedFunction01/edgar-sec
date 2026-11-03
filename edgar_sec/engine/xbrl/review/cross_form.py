@@ -50,6 +50,60 @@ def _load_expectations() -> dict[str, CrossFormExpectation]:
 CROSS_FORM_EXPECTATIONS: dict[str, CrossFormExpectation] = _load_expectations()
 
 
+@dataclass(frozen=True, slots=True)
+class FactExpectation:
+    """Pinned fact-matrix counts for one form/taxonomy/shape row."""
+
+    form: str
+    taxonomy: str
+    period_shape: str
+    filings: int
+    facts: int
+    numeric_facts: int
+    dimensioned_numeric: int
+    quarantined_facts: int
+
+
+def _load_fact_expectations() -> dict[str, FactExpectation]:
+    """Load the pinned fact-matrix rows from their data file."""
+    raw = json.loads(
+        Path(__file__)
+        .with_name("cross_form_fact_expectations.json")
+        .read_text(encoding="utf-8")
+    )
+    return {key: FactExpectation(**row) for key, row in sorted(raw.items())}
+
+
+FACT_EXPECTATIONS: dict[str, FactExpectation] = _load_fact_expectations()
+
+
+def score_fact_matrix(
+    summary: dict[str, Any],
+    expectations: dict[str, FactExpectation] = FACT_EXPECTATIONS,
+) -> CensusScore:
+    """Score the fact matrix; any unadjudicated movement fails."""
+    failures: list[str] = []
+    matrix = summary.get("fact_matrix", {})
+    for key, expected in expectations.items():
+        row = matrix.get(key)
+        if row is None:
+            failures.append(f"fact {key}: row missing from fact matrix")
+            continue
+        for field in (
+            "filings",
+            "facts",
+            "numeric_facts",
+            "dimensioned_numeric",
+            "quarantined_facts",
+        ):
+            if row[field] != getattr(expected, field):
+                failures.append(
+                    f"fact {key}: {field} {row[field]} "
+                    f"!= expected {getattr(expected, field)}"
+                )
+    return CensusScore(passed=not failures, failures=tuple(failures))
+
+
 def summarize_cross_form(evaluations: list[dict]) -> dict:
     """Aggregate cross-form evaluations into the scored summary shape."""
     grouped: dict[str, list[dict]] = {}

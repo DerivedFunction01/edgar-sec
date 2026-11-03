@@ -170,7 +170,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.cross_form:
         from edgar_sec.engine.xbrl.review.cross_form import (
             CROSS_FORM_EXPECTATIONS,
+            FACT_EXPECTATIONS,
             score_cross_form,
+            score_fact_matrix,
         )
         from edgar_sec.tools.xbrl_eval.xbrl_cross_form_census import run_cross_form
 
@@ -196,6 +198,19 @@ def main(argv: list[str] | None = None) -> int:
             verdict = 1
             sys.stdout.write("Cross-form gate: FAIL\n")
             for failure in cross_score.failures:
+                sys.stdout.write(f"  {failure}\n")
+        fact_expected = {
+            name: FACT_EXPECTATIONS[name]
+            for name in cross_summary.get("fact_matrix", {})
+            if name in FACT_EXPECTATIONS
+        }
+        fact_score = score_fact_matrix(cross_summary, fact_expected)
+        if fact_score.passed:
+            sys.stdout.write("Fact-matrix gate: PASS\n")
+        else:
+            verdict = 1
+            sys.stdout.write("Fact-matrix gate: FAIL\n")
+            for failure in fact_score.failures:
                 sys.stdout.write(f"  {failure}\n")
     if args.pairs:
         from edgar_sec.tools.xbrl_eval.xbrl_census import run_pair_gate

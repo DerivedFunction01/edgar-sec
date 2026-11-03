@@ -24,9 +24,13 @@ def test_is_extension_concept_follows_the_archive_inventory() -> None:
     assert not is_extension_concept("ecd:PayVsPerformanceDisclosureTextBlock")
     assert not is_extension_concept("cyd:CybersecurityRiskManagementTextBlock")
     assert not is_extension_concept("ifrs-full:Revenue")
+    assert not is_extension_concept("ffd:SubmissionType")
+    assert not is_extension_concept("rxp:Bonuses")
+    assert not is_extension_concept("cef:AcquiredFundFeesAndExpensesPercent")
+    assert not is_extension_concept("us-gaap-ebp:EmployeeBenefitPlanAsset")
     # No archive slices yet: the derivation rule, not a hand list, decides.
-    assert is_extension_concept("ffd:SubmissionType")
     assert is_extension_concept("oef:ShareholderReportTextBlock")
+    assert is_extension_concept("invest:DerivativeNotionalAmount")
 
 
 def test_extract_extension_ground_truth() -> None:
