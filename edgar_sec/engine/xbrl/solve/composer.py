@@ -100,6 +100,26 @@ class StatementComposer:
             return matches[0][2]
         return ""
 
+    def _revenue_tree_pool(self) -> set[str]:
+        """Arc concepts atop a revenue line: ancestors of H_REVENUE concepts.
+
+        Empty when no calculation path reaches a revenue concept.
+        """
+        concepts = {a.parent_qname for a in self._arcs} | {
+            a.child_qname for a in self._arcs
+        }
+        revenue = {
+            c
+            for c in concepts
+            if (atom := self._atom(c)) is not None and atom.head == "H_REVENUE"
+        }
+        if not revenue:
+            return set()
+        reach = AntiChainValidator.build_reachability_map(
+            [(a.parent_qname, a.child_qname, a.weight) for a in self._arcs]
+        )
+        return {c for c in concepts if c in revenue or reach.get(c, set()) & revenue}
+
     def find_income_statement_root(self) -> str:
         """Find the root concept for Statement of Operations via calculation topology."""
         lex = self._taxonomy.token_lexicon
@@ -108,14 +128,37 @@ class StatementComposer:
 
         all_parents = {a.parent_qname for a in self._arcs}
         dag_roots = self._dag_roots()
-        matches: list[tuple[int, int, int, str]] = []
-
         duration_parents = {
             f.concept_qname
             for f in self._facts
             if f.period_type == "duration" and f.concept_qname in all_parents
         }
         candidates = duration_parents if duration_parents else all_parents
+        atoms = {
+            concept: self._atom(concept)
+            for concept in {a.parent_qname for a in self._arcs}
+            | {a.child_qname for a in self._arcs}
+        }
+        root = self._income_root(candidates, self._arcs, atoms, dag_roots)
+        pool = self._revenue_tree_pool()
+        if pool and candidates & pool:
+            confined_arcs = [a for a in self._arcs if a.parent_qname in pool]
+            confined = bottomline_candidate(atoms, self._facts, confined_arcs)
+            if confined is not None and confined in pool:
+                return self._income_root(
+                    candidates & pool, confined_arcs, atoms, dag_roots
+                )
+        return root
+
+    def _income_root(
+        self,
+        candidates: set[str],
+        arcs: list,
+        atoms: dict,
+        dag_roots: set[str],
+    ) -> str:
+        """Root over one candidate universe: matches ladder, bottomline override."""
+        matches: list[tuple[int, int, int, str]] = []
 
         for p in candidates:
             atom = self._atom(p)
@@ -129,7 +172,7 @@ class StatementComposer:
                 a.child_qname == p
                 and (parent_atom := self._atom(a.parent_qname)) is not None
                 and bool({"M_COMPREHENSIVE", "M_OCI"} & parent_atom.modifiers)
-                for a in self._arcs
+                for a in arcs
             )
 
             if is_net and (is_dag_root or has_comprehensive_parent):
@@ -151,15 +194,10 @@ class StatementComposer:
             else:
                 priority = 6
 
-            num_children = len([a for a in self._arcs if a.parent_qname == p])
+            num_children = len([a for a in arcs if a.parent_qname == p])
             matches.append((priority, -num_children, len(qname_local(p)), p))
 
-        atoms = {
-            concept: self._atom(concept)
-            for concept in {a.parent_qname for a in self._arcs}
-            | {a.child_qname for a in self._arcs}
-        }
-        bottomline = bottomline_candidate(atoms, self._facts, self._arcs)
+        bottomline = bottomline_candidate(atoms, self._facts, arcs)
         if not matches:
             return bottomline or ""
         matches.sort()

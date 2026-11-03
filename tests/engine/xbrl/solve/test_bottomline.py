@@ -48,3 +48,46 @@ def test_bottomline_candidate_prefers_net_modifier() -> None:
     ]
     arcs = [CalculationArc("us-gaap:ProfitLoss", "us-gaap:NetIncomeLoss", 1.0)]
     assert bottomline_candidate(atoms, facts, arcs) == "us-gaap:NetIncomeLoss"
+
+
+def _facts(*qnames: str) -> list[XbrlFact]:
+    return [
+        XbrlFact(
+            _ACC,
+            qname,
+            1.0,
+            period_type="duration",
+            start_date="2024-01-01",
+            end_date="2024-12-31",
+        )
+        for qname in qnames
+    ]
+
+
+def test_bottomline_candidate_prefers_standard_over_extension() -> None:
+    """An extension subtotal never displaces the standard bottom line."""
+    atoms = {
+        "ifrs-full:ProfitLoss": Atom("H_INCOME"),
+        "acme:TaxEffectOfNetIncome": Atom(
+            "H_INCOME", frozenset({"M_NET_BOTTOMLINE", "M_TAX"})
+        ),
+    }
+    arcs = [
+        CalculationArc("ifrs-full:ProfitLoss", "acme:TaxEffectOfNetIncome", 1.0),
+        CalculationArc("acme:TaxEffectOfNetIncome", "ifrs-full:ProfitLoss", 1.0),
+    ]
+    assert bottomline_candidate(atoms, _facts(*atoms), arcs) == "ifrs-full:ProfitLoss"
+
+
+def test_bottomline_candidate_keeps_extension_when_no_standard() -> None:
+    """With no standard candidate, the extension bottom line still serves."""
+    atoms = {
+        "acme:NetIncomeFromOperations": Atom(
+            "H_INCOME", frozenset({"M_NET_BOTTOMLINE", "M_FINANCIAL_INSTRUMENT"})
+        ),
+    }
+    arcs = [CalculationArc("acme:NetIncomeFromOperations", "acme:Other", 1.0)]
+    assert (
+        bottomline_candidate(atoms, _facts(*atoms), arcs)
+        == "acme:NetIncomeFromOperations"
+    )

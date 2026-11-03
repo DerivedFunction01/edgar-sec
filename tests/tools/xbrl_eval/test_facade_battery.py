@@ -5,12 +5,18 @@ from __future__ import annotations
 from typing import Any
 
 from edgar_sec.apps.client.xbrl import Xbrl
+from edgar_sec.engine.xbrl.discovery.cohort import (
+    canonical_probe_cohort_path,
+    load_seed_cohort,
+)
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
+from edgar_sec.pipelines.xbrl_review.bundles import bundle_dir_for
 from edgar_sec.tools.xbrl_eval.facade_battery import (
     XBRL_FIXTURES,
     _catalog_entries,
     _face_value_check,
     _mode_violation,
+    check_statement_views,
     cohort_folders,
     run_battery,
 )
@@ -40,6 +46,48 @@ def test_face_value_check_msft_revenue() -> None:
     assert missed["found"] is False
     assert missed["nearest"]["value"] == 245_122_000_000.0
     assert missed["nearest"]["difference"] == 1000.0
+
+
+def _probe_xbrl(folder: str) -> Xbrl:
+    registry = canonical_probe_cohort_path()
+    seed = next(
+        seed
+        for seed in load_seed_cohort(registry)
+        if bundle_dir_for(str(seed.accession), registry).name == folder
+    )
+    return Xbrl.from_bundle(
+        bundle_dir_for(str(seed.accession), registry), load_domain_taxonomy()
+    )
+
+
+def test_face_total_check_anchors_at_served_span_aapl_10q() -> None:
+    """A YTD-served cash-flow total is found on the face at its YTD period."""
+    views = check_statement_views(_probe_xbrl("aapl_2026_10q"))
+    check = next(c for c in views["face_totals"] if c["family"] == "CashFlow")
+    assert check["status"] == "found"
+    assert check["period"] == "2026-06-27 (YTD_3Q)"
+
+
+def test_face_total_check_asx_net_income_ties_to_face() -> None:
+    """ASX net income serves the standard bottom line the face carries."""
+    views = check_statement_views(_probe_xbrl("asx_2023_20f"))
+    check = next(c for c in views["face_totals"] if c["metric"] == "net_income")
+    assert check["status"] == "found"
+
+
+def test_face_total_check_whk_net_income_ties_to_face() -> None:
+    """WHK net income roots on the revenue-summing face, not the O&G schedule."""
+    views = check_statement_views(_probe_xbrl("whk_2026_s1"))
+    check = next(c for c in views["face_totals"] if c["metric"] == "net_income")
+    assert check["status"] == "found"
+
+
+def test_face_total_check_tcbx_net_income_ties_to_face() -> None:
+    """TCBX keeps its attributable bottom line; its revenue head sits in the CF tree."""
+    views = check_statement_views(_probe_xbrl("tcbx_2022_s4"))
+    check = next(c for c in views["face_totals"] if c["metric"] == "net_income")
+    assert check["status"] == "found"
+    assert check["expected"] == 2087000.0
 
 
 def test_mode_violation_relation() -> None:
