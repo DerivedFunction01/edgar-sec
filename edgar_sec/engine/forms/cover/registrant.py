@@ -11,6 +11,7 @@ from edgar_sec.domain.forms.common.entities import (
 )
 from edgar_sec.domain.taxonomy.legal_forms import LEGAL_FORMS, NAME_STOPWORDS
 from edgar_sec.engine.forms.common.entities import (
+    COMMISSION_FILE_TOKEN_RE,
     IRS_RE,
     ISSUER_TAIL_RE,
     STRIP_BOX_NUM_RE,
@@ -361,8 +362,35 @@ def next_content_line(lines: list[str], index: int) -> tuple[int, str] | None:
     return None
 
 
+def extract_commission_file_number(
+    text: str,
+    *,
+    number_pattern: re.Pattern[str],
+    caption_pattern: re.Pattern[str],
+) -> str | None:
+    """Resolve the file number inline, else from a caption's neighbour lines."""
+    match = number_pattern.search(text)
+    if match is not None:
+        return match.group(1)
+    lines = text.splitlines()
+    for index, line in enumerate(lines):
+        if not caption_pattern.search(line):
+            continue
+        for neighbor in (
+            previous_content_line(lines, index),
+            next_content_line(lines, index),
+        ):
+            if neighbor is None:
+                continue
+            for token in neighbor[1].split():
+                if COMMISSION_FILE_TOKEN_RE.fullmatch(token.strip(",;")):
+                    return token.strip(",;")
+    return None
+
+
 __all__ = [
     "RegistrantIdentity",
+    "extract_commission_file_number",
     "extract_irs_number",
     "is_separator_line",
     "next_content_line",

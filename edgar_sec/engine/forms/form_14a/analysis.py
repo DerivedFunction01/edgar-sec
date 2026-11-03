@@ -9,6 +9,7 @@ from typing import Any
 from edgar_sec.domain.forms.families.form_14a.taxonomy import FORM_14A_ITEMS
 from edgar_sec.engine.forms.analysis import (
     analyze_form_case,
+    anomaly_record,
     locate_text_artifact,
     reinfer_unmasked_checkmarks,
     summarize_form_cases,
@@ -113,10 +114,6 @@ def _extract_comp_table(lines: list[str]) -> dict[str, Any]:
     return {"present": False, "row_count": 0}
 
 
-def _anomaly(kind: str, details: str) -> dict[str, Any]:
-    return {"kind": kind, "details": details, "detail": details}
-
-
 def analyze_form_14a_review_case(
     case_dir: Path, record: dict[str, Any]
 ) -> dict[str, Any] | None:
@@ -170,28 +167,28 @@ def analyze_form_14a_review_case(
 
     if not fields["registrant_name"]:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_registrant_name",
                 "no registrant name resolved from the cover caption",
             )
         )
     if not any(rep["checkmarks"][key] for key in _CLASSIFICATION_KEYS):
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "no_classification_checked",
                 "none of the five filing-classification boxes resolved as checked",
             )
         )
     if not any(rep["checkmarks"][key] for key in _FEE_KEYS):
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "no_fee_box_checked",
                 "none of the three fee-payment boxes resolved as checked",
             )
         )
     if item8_span is not None and not fields["comp_table"]["present"]:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "comp_table_missing",
                 "Item 8 section detected but no Summary Compensation Table rows extracted",
             )

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 from collections.abc import Sequence
+from typing import Any
 
 from edgar_sec.domain.forms.common.signatures import Signatory, SignatureBlock
 from edgar_sec.engine.document.signatures import CONFORMED_SIGNATURE_RE
@@ -191,7 +192,25 @@ def find_preceding_signature_date(
     return None
 
 
+def extract_anchored_signature(text: str, anchors: Sequence[str]) -> dict[str, Any]:
+    """Resolve the signature block after the earliest anchor, else the tail."""
+    lowered = text.lower()
+    hits = [lowered.find(anchor) for anchor in anchors]
+    anchor = min((hit for hit in hits if hit >= 0), default=-1)
+    tail = text[anchor:] if anchor >= 0 else "\n".join(text.splitlines()[-25:])
+    block = extract_signature_block(tail)
+    if block is None:
+        return {"present": False, "conformed": False, "name": None}
+    name = block.signatories[0].name if block.signatories else None
+    return {
+        "present": name is not None,
+        "conformed": bool(block.is_conformed),
+        "name": name,
+    }
+
+
 __all__ = [
+    "extract_anchored_signature",
     "extract_signature_block",
     "extract_signature_candidate",
     "find_preceding_signature_date",

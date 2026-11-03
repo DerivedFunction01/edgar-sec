@@ -331,6 +331,11 @@ def analyze_form_case(
     }
 
 
+def anomaly_record(kind: str, details: str) -> dict[str, Any]:
+    """Build the anomaly record family analyzers attach to a case report."""
+    return {"kind": kind, "details": details, "detail": details}
+
+
 def summarize_form_cases(
     case_reports: list[dict[str, Any]],
     *,
@@ -453,6 +458,7 @@ __all__ = [
     "analyze_boundary_corridor",
     "analyze_case",
     "analyze_form_case",
+    "anomaly_record",
     "locate_text_artifact",
     "summarize_cases",
     "summarize_form_cases",

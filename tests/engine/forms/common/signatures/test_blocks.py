@@ -1,6 +1,7 @@
 """Unit tests for signature candidate and block extraction."""
 
 from edgar_sec.engine.forms.common.signatures.blocks import (
+    extract_anchored_signature,
     extract_signature_block,
     extract_signature_candidate,
     find_preceding_signature_date,
@@ -174,3 +175,27 @@ def test_extract_signature_block_accepts_quoted_conformed_name():
     assert block is not None
     assert [s.name for s in block.signatories] == ["Peter Evensen"]
     assert block.is_conformed is True
+
+
+def test_extract_anchored_signature_after_anchor():
+    """Verify the block is read from the earliest anchor, not the preamble."""
+    text = (
+        "/s/ Wrong Name\n"
+        "The registrant has duly caused this report to be signed.\n"
+        "/s/ John Doe\n"
+    )
+    result = extract_anchored_signature(text, ("has duly caused this",))
+    assert result == {"present": True, "conformed": True, "name": "John Doe"}
+
+
+def test_extract_anchored_signature_tail_fallback_and_absence():
+    """Verify the tail fallback and the all-absent record for empty text."""
+    text = "filler line\n" * 30 + "/s/ Jane Smith\n"
+    result = extract_anchored_signature(text, ("has caused this",))
+    assert result["present"] is True
+    assert result["name"] == "Jane Smith"
+    assert extract_anchored_signature("", ("has caused this",)) == {
+        "present": False,
+        "conformed": False,
+        "name": None,
+    }

@@ -8,13 +8,15 @@ from typing import Any
 
 from edgar_sec.engine.forms.analysis import (
     analyze_form_case,
+    anomaly_record,
     locate_text_artifact,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.entities import COMMISSION_FILE_TOKEN_RE
-from edgar_sec.engine.forms.common.signatures.blocks import extract_signature_block
+from edgar_sec.engine.forms.common.signatures.blocks import (
+    extract_anchored_signature,
+)
 from edgar_sec.engine.forms.cover.registrant import (
-    next_content_line,
+    extract_commission_file_number,
     parse_registrant_identity,
     previous_content_line,
 )
@@ -57,26 +59,6 @@ _SIGNATURE_ANCHOR = "has caused this"
 _HOLDER_WINDOW = 220
 
 
-def _extract_file_number(text: str) -> str | None:
-    match = _FILE_NUMBER_RE.search(text)
-    if match is not None:
-        return match.group(1)
-    lines = text.splitlines()
-    for index, line in enumerate(lines):
-        if not _FILE_CAPTION_RE.search(line):
-            continue
-        for neighbor in (
-            previous_content_line(lines, index),
-            next_content_line(lines, index),
-        ):
-            if neighbor is None:
-                continue
-            for token in neighbor[1].split():
-                if COMMISSION_FILE_TOKEN_RE.fullmatch(token.strip(",;")):
-                    return token.strip(",;")
-    return None
-
-
 def _extract_registrant_name(lines: list[str]) -> str | None:
     for index, line in enumerate(lines):
         match = _REGISTRANT_LABEL_RE.search(line)
@@ -113,24 +95,6 @@ def _extract_holder_value(text: str) -> str | None:
     return numbered.group(1) if numbered is not None else None
 
 
-def _extract_signature(text: str) -> dict[str, Any]:
-    anchor = text.lower().find(_SIGNATURE_ANCHOR)
-    tail = text[anchor:] if anchor >= 0 else "\n".join(text.splitlines()[-25:])
-    block = extract_signature_block(tail)
-    if block is None:
-        return {"present": False, "conformed": False, "name": None}
-    name = block.signatories[0].name if block.signatories else None
-    return {
-        "present": name is not None,
-        "conformed": bool(block.is_conformed),
-        "name": name,
-    }
-
-
-def _anomaly(kind: str, details: str) -> dict[str, Any]:
-    return {"kind": kind, "details": details, "detail": details}
-
-
 def analyze_form_15_review_case(
     case_dir: Path, record: dict[str, Any]
 ) -> dict[str, Any] | None:
@@ -151,11 +115,19 @@ def analyze_form_15_review_case(
     cover_text = "\n".join(lines[start:end]) if end > start else ""
 
     fields = {
-        "commission_file_number": _extract_file_number(cover_text)
-        or _extract_file_number(text),
+        "commission_file_number": extract_commission_file_number(
+            cover_text,
+            number_pattern=_FILE_NUMBER_RE,
+            caption_pattern=_FILE_CAPTION_RE,
+        )
+        or extract_commission_file_number(
+            text,
+            number_pattern=_FILE_NUMBER_RE,
+            caption_pattern=_FILE_CAPTION_RE,
+        ),
         "registrant_name": _extract_registrant_name(lines),
         "holder_value": _extract_holder_value(text),
-        "signature": _extract_signature(text),
+        "signature": extract_anchored_signature(text, (_SIGNATURE_ANCHOR,)),
     }
     rep["form_15"] = fields
 
@@ -165,35 +137,35 @@ def analyze_form_15_review_case(
 
     if not fields["commission_file_number"]:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_commission_file_number",
                 "no commission file number matched on the cover",
             )
         )
     if not fields["registrant_name"]:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_registrant_name",
                 "no registrant name resolved from the cover caption",
             )
         )
     if fields["holder_value"] is None:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_holder_count",
                 "no holder-of-record value matched after the caption",
             )
         )
     if not fields["signature"]["present"]:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_signature",
                 "no signatory resolved from the signature block",
             )
         )
     if not any(rep["checkmarks"][key] for key in _RULE_KEYS):
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "no_rule_provision_checked",
                 "none of the five rule provisions resolved as checked",
             )

@@ -1,9 +1,18 @@
+import re
+
 from edgar_sec.engine.forms.cover.registrant import (
+    extract_commission_file_number,
     is_separator_line,
     next_content_line,
     parse_registrant_identity,
     previous_content_line,
 )
+
+_NUMBER_RE = re.compile(
+    r"commission file (?:number|no\.?)[:\s]*([0-9][0-9a-z]*(?:-[0-9a-z]+)+|[0-9]+)",
+    re.IGNORECASE,
+)
+_CAPTION_RE = re.compile(r"commission file (?:number|no\.?)", re.IGNORECASE)
 
 
 def test_registrant_extracts_conformed_tickers() -> None:
@@ -228,3 +237,33 @@ def test_content_line_walks_skip_blanks_and_separators() -> None:
     assert next_content_line(lines, 0) == (3, "(Exact name of registrant)")
     assert previous_content_line(lines, 0) is None
     assert next_content_line(lines, 3) is None
+
+
+def test_commission_file_number_inline_and_caption_walk() -> None:
+    inline = "Commission File Number: 001-12345\nACME INC."
+    assert (
+        extract_commission_file_number(
+            inline, number_pattern=_NUMBER_RE, caption_pattern=_CAPTION_RE
+        )
+        == "001-12345"
+    )
+    above = "001-12345\nCommission File Number:\nACME INC."
+    assert (
+        extract_commission_file_number(
+            above, number_pattern=_NUMBER_RE, caption_pattern=_CAPTION_RE
+        )
+        == "001-12345"
+    )
+    below = "ACME INC.\nCommission File Number: (check one)\n001-12345"
+    assert (
+        extract_commission_file_number(
+            below, number_pattern=_NUMBER_RE, caption_pattern=_CAPTION_RE
+        )
+        == "001-12345"
+    )
+    assert (
+        extract_commission_file_number(
+            "ACME INC.", number_pattern=_NUMBER_RE, caption_pattern=_CAPTION_RE
+        )
+        is None
+    )

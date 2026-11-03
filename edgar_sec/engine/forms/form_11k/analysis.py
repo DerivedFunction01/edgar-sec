@@ -9,13 +9,16 @@ from typing import Any
 from edgar_sec.domain.forms.families.form_11k.taxonomy import FORM_11K_ITEMS
 from edgar_sec.engine.forms.analysis import (
     analyze_form_case,
+    anomaly_record,
     locate_text_artifact,
     reinfer_unmasked_checkmarks,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.entities import COMMISSION_FILE_TOKEN_RE
-from edgar_sec.engine.forms.common.signatures.blocks import extract_signature_block
+from edgar_sec.engine.forms.common.signatures.blocks import (
+    extract_anchored_signature,
+)
 from edgar_sec.engine.forms.cover.registrant import (
+    extract_commission_file_number,
     next_content_line,
     parse_registrant_identity,
     previous_content_line,
@@ -47,26 +50,6 @@ _ADDRESS_HINT_ALT = build_alternation(
     auto_escape=False,
 )
 _ADDRESS_HINT_RE = re.compile(rf"\b(?:{_ADDRESS_HINT_ALT})\b", re.IGNORECASE)
-
-
-def _extract_file_number(text: str) -> str | None:
-    match = _FILE_NUMBER_RE.search(text)
-    if match is not None:
-        return match.group(1)
-    lines = text.splitlines()
-    for index, line in enumerate(lines):
-        if not _FILE_CAPTION_RE.search(line):
-            continue
-        for neighbor in (
-            previous_content_line(lines, index),
-            next_content_line(lines, index),
-        ):
-            if neighbor is None:
-                continue
-            for token in neighbor[1].split():
-                if COMMISSION_FILE_TOKEN_RE.fullmatch(token.strip(",;")):
-                    return token.strip(",;")
-    return None
 
 
 def _value_candidate(raw: str) -> str | None:
@@ -118,26 +101,6 @@ def _extract_issuer_name(lines: list[str]) -> str | None:
     return name if name is not None else raw
 
 
-def _extract_signature(text: str) -> dict[str, Any]:
-    lowered = text.lower()
-    hits = [lowered.find(anchor) for anchor in _SIGNATURE_ANCHORS]
-    anchor = min((hit for hit in hits if hit >= 0), default=-1)
-    tail = text[anchor:] if anchor >= 0 else "\n".join(text.splitlines()[-25:])
-    block = extract_signature_block(tail)
-    if block is None:
-        return {"present": False, "conformed": False, "name": None}
-    name = block.signatories[0].name if block.signatories else None
-    return {
-        "present": name is not None,
-        "conformed": bool(block.is_conformed),
-        "name": name,
-    }
-
-
-def _anomaly(kind: str, details: str) -> dict[str, Any]:
-    return {"kind": kind, "details": details, "detail": details}
-
-
 def analyze_form_11k_review_case(
     case_dir: Path, record: dict[str, Any]
 ) -> dict[str, Any] | None:
@@ -161,13 +124,17 @@ def analyze_form_11k_review_case(
     year_match = _FISCAL_YEAR_END_RE.search(text)
 
     fields = {
-        "commission_file_number": _extract_file_number(text),
+        "commission_file_number": extract_commission_file_number(
+            text,
+            number_pattern=_FILE_NUMBER_RE,
+            caption_pattern=_FILE_CAPTION_RE,
+        ),
         "plan_title": _caption_value(lines, _PLAN_CAPTION_RE),
         "issuer_name": _extract_issuer_name(lines),
         "fiscal_year_end": year_match.group(1) if year_match else None,
         "detected_items": detected_items,
         "statements_present": bool(_STATEMENTS_RE.search(text)),
-        "signature": _extract_signature(text),
+        "signature": extract_anchored_signature(text, _SIGNATURE_ANCHORS),
     }
     rep["form_11k"] = fields
 
@@ -180,35 +147,35 @@ def analyze_form_11k_review_case(
 
     if not fields["commission_file_number"]:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_commission_file_number",
                 "no commission file number matched on the cover",
             )
         )
     if not fields["plan_title"]:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_plan_title",
                 "no plan title resolved from the cover caption",
             )
         )
     if not fields["issuer_name"]:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_issuer_name",
                 "no issuer name resolved from the cover caption",
             )
         )
     if not any(rep["checkmarks"][key] for key in _REPORT_KEYS):
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "no_report_type_checked",
                 "neither the annual nor the transition report box resolved as checked",
             )
         )
     if not fields["signature"]["present"]:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_signature",
                 "no signatory resolved from the signature block",
             )

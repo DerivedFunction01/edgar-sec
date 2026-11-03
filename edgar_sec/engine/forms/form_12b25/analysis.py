@@ -9,6 +9,7 @@ from typing import Any
 from edgar_sec.domain.forms.families.form_12b25.taxonomy import FORM_12B25_ITEMS
 from edgar_sec.engine.forms.analysis import (
     analyze_form_case,
+    anomaly_record,
     locate_text_artifact,
     summarize_form_cases,
 )
@@ -16,7 +17,9 @@ from edgar_sec.engine.forms.common.entities import (
     COMMISSION_FILE_TOKEN_RE,
     parse_cusip,
 )
-from edgar_sec.engine.forms.common.signatures.blocks import extract_signature_block
+from edgar_sec.engine.forms.common.signatures.blocks import (
+    extract_anchored_signature,
+)
 from edgar_sec.engine.forms.cover.registrant import (
     next_content_line,
     parse_registrant_identity,
@@ -275,10 +278,6 @@ def _extract_part4(part_lines: list[str]) -> dict[str, Any]:
     }
 
 
-def _anomaly(kind: str, details: str) -> dict[str, Any]:
-    return {"kind": kind, "details": details, "detail": details}
-
-
 def analyze_form_12b25_review_case(
     case_dir: Path, record: dict[str, Any]
 ) -> dict[str, Any] | None:
@@ -338,18 +337,7 @@ def analyze_form_12b25_review_case(
         None,
     )
 
-    anchor = text.lower().find(_SIGNATURE_ANCHOR)
-    tail = text[anchor:] if anchor >= 0 else "\n".join(lines[-25:])
-    block = extract_signature_block(tail)
-    signature = {
-        "present": bool(block is not None and block.signatories),
-        "conformed": bool(block is not None and block.is_conformed),
-        "name": (
-            block.signatories[0].name
-            if block is not None and block.signatories
-            else None
-        ),
-    }
+    signature = extract_anchored_signature(text, (_SIGNATURE_ANCHOR,))
 
     fields = {
         "sec_file_number": _extract_file_number(lines),
@@ -367,55 +355,55 @@ def analyze_form_12b25_review_case(
 
     if not fields["sec_file_number"]:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_sec_file_number", "no SEC file number matched in the head"
             )
         )
     if subject_form is None and transition_form is None:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "no_subject_report_checked",
                 "no subject-report or transition checkbox resolved as checked",
             )
         )
     if not fields["part1_registrant_name"]:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_part1_registrant",
                 "no registrant name resolved from the Part I caption",
             )
         )
     if narrative_words < _MIN_NARRATIVE_WORDS:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_part3_narrative",
                 f"Part III narrative holds {narrative_words} words",
             )
         )
     if not fields["part4"]["contact_name"]:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_part4_contact",
                 "no contact name resolved after the Part IV (1) caption",
             )
         )
     if fields["part4"]["q2_answer"] is None:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_part4_q2_answer",
                 "no marked Yes/No answer resolved for Part IV (2)",
             )
         )
     if fields["part4"]["q3_answer"] is None:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_part4_q3_answer",
                 "no marked Yes/No answer resolved for Part IV (3)",
             )
         )
     if not signature["present"]:
         rep["anomalies"].append(
-            _anomaly(
+            anomaly_record(
                 "missing_signature", "no signatory resolved from the signature block"
             )
         )

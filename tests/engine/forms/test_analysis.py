@@ -6,6 +6,7 @@ from pathlib import Path
 
 from edgar_sec.engine.forms.analysis import (
     analyze_form_case,
+    anomaly_record,
     locate_text_artifact,
     reinfer_unmasked_checkmarks,
     summarize_form_cases,
@@ -100,3 +101,11 @@ def test_summarize_form_cases(tmp_path: Path) -> None:
         == 1
     )
     assert "ITEM 1" in summary["taxonomy_scorecard"]["item_coverage"]
+
+
+def test_anomaly_record_shape() -> None:
+    assert anomaly_record("missing_field", "no value matched") == {
+        "kind": "missing_field",
+        "details": "no value matched",
+        "detail": "no value matched",
+    }
