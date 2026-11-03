@@ -172,7 +172,7 @@ def _intent_residuals_of(concept_qname: str) -> int:
     return _atom_and_residuals(concept_qname)[1]
 
 
-def _unique_value(matches: list[XbrlFact]) -> float | None:
+def unique_value(matches: list[XbrlFact]) -> float | None:
     """The single value across matches, or None when contexts/values disagree."""
     contexts = {
         (
@@ -214,7 +214,7 @@ def _slot_matches(
     ]
 
 
-def _cleanest_facts(matches: list[XbrlFact]) -> list[XbrlFact]:
+def cleanest_facts(matches: list[XbrlFact]) -> list[XbrlFact]:
     """The fewest-residual subset of slot matches."""
     if not matches:
         return []
@@ -226,7 +226,7 @@ def _cleanest_facts(matches: list[XbrlFact]) -> list[XbrlFact]:
 
 def _cleanest_value(matches: list[XbrlFact]) -> float | None:
     """Unique value among the fewest-residual matches, or None."""
-    return _unique_value(_cleanest_facts(matches))
+    return unique_value(cleanest_facts(matches))
 
 
 def _slot_cleanest(
@@ -240,7 +240,7 @@ def _slot_cleanest(
     matches = _slot_matches(
         facts, slot, period_type=period_type, require_unsegmented=require_unsegmented
     )
-    return _cleanest_facts(matches)
+    return cleanest_facts(matches)
 
 
 def _find_slot_value(
@@ -272,7 +272,7 @@ def _find_fact_value(
         and (not require_unsegmented or not f.dimensions)
         and isinstance(f.value, (int, float))
     ]
-    return _unique_value(matches)
+    return unique_value(matches)
 
 
 def verify_balance_sheet_identity(
@@ -401,7 +401,7 @@ def eps_identity_legs(
         _SHARES_DILUTED if diluted else _SHARES_BASIC,
         period_type="duration",
     )
-    shares = _unique_value(shares_facts) if shares_facts else None
+    shares = unique_value(shares_facts) if shares_facts else None
     if shares is None or shares == 0.0:
         return None
     variant = "V_DILUTED" if diluted else "V_BASIC"
@@ -410,8 +410,8 @@ def eps_identity_legs(
         same_variant = [
             f for f in matches if variant in _atom_of(f.concept_qname).modifiers
         ]
-        numerator_facts = _cleanest_facts(same_variant or matches)
-        numerator = _unique_value(numerator_facts)
+        numerator_facts = cleanest_facts(same_variant or matches)
+        numerator = unique_value(numerator_facts)
         if numerator is not None:
             return EpsLegs(
                 numerator_value=numerator,
@@ -431,7 +431,7 @@ def _eps_parts(
         _EPS_DILUTED if diluted else _EPS_BASIC,
         period_type="duration",
     )
-    if not eps_facts or _unique_value(eps_facts) is None:
+    if not eps_facts or unique_value(eps_facts) is None:
         return None
     legs = eps_identity_legs(facts, diluted=diluted)
     if legs is None:
@@ -455,7 +455,7 @@ def verify_eps_identity(
     eps_matches = _slot_cleanest(
         selected, _EPS_DILUTED if diluted else _EPS_BASIC, period_type="duration"
     )
-    eps = _unique_value(eps_matches) if eps_matches else None
+    eps = unique_value(eps_matches) if eps_matches else None
     legs = eps_identity_legs(selected, diluted=diluted)
     if eps is None or legs is None:
         return None

@@ -17,6 +17,7 @@ from edgar_sec.engine.xbrl.solve.equivalence import (
     EXACT,
     RankedEquivalent,
     coordinate_diff,
+    ladder_rank_key,
     rank_equivalents,
 )
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
@@ -42,6 +43,8 @@ class FactSearchHit:
     swapped: tuple[str, str] | None
     residual_mass: tuple[int, int]
     facts: tuple[XbrlFact, ...]
+    via_default: bool = False
+    via_filing_local: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -81,13 +84,13 @@ def resolve_search_targets(
 
 
 def _rank_key(hit: FactSearchHit) -> tuple:
-    """Ladder order: tier, modifier distance, residual mass, qname."""
-    intent, total = hit.residual_mass
-    return (
-        0 if hit.tier == EXACT else 1,
+    """Ladder order: tier, rung, modifier distance, residual mass, qname."""
+    return ladder_rank_key(
+        hit.tier,
+        hit.via_default,
+        hit.via_filing_local,
         hit.modifier_distance,
-        intent,
-        total,
+        hit.residual_mass,
         hit.qname,
     )
 
@@ -111,6 +114,8 @@ def _to_hit(
         swapped=diff.swapped,
         residual_mass=residual_mass,
         facts=tuple(facts),
+        via_default=item.via_default,
+        via_filing_local=item.via_filing_local,
     )
 
 
@@ -216,6 +221,8 @@ class CorpusSearchHit:
     hit_only: tuple[str, ...]
     swapped: tuple[str, str] | None
     residual_mass: tuple[int, int]
+    via_default: bool = False
+    via_filing_local: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -234,13 +241,13 @@ class CorpusSearch:
 
 
 def _corpus_rank_key(hit: CorpusSearchHit) -> tuple:
-    """Ladder order within one filing: tier, distance, residual mass, qname."""
-    intent, total = hit.residual_mass
-    return (
-        0 if hit.tier == EXACT else 1,
+    """Ladder order within one filing: tier, rung, distance, residuals, qname."""
+    return ladder_rank_key(
+        hit.tier,
+        hit.via_default,
+        hit.via_filing_local,
         hit.modifier_distance,
-        intent,
-        total,
+        hit.residual_mass,
         hit.qname,
     )
 
@@ -298,6 +305,8 @@ def _rank_index_hits(
                     hit_only=diff.candidate_only,
                     swapped=diff.swapped,
                     residual_mass=counts[item.qname],
+                    via_default=item.via_default,
+                    via_filing_local=item.via_filing_local,
                 )
                 current = best.get(item.qname)
                 if current is None or _corpus_rank_key(hit) < _corpus_rank_key(current):

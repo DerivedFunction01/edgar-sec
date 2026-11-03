@@ -21,6 +21,7 @@ from edgar_sec.engine.xbrl.solve.equivalence import (
     UNRELATED,
     LadderClassification,
     classify_ladder_pair,
+    ladder_rank_key,
 )
 from edgar_sec.engine.xbrl.solve.evidence_index import (
     EvidenceIndex,
@@ -288,12 +289,12 @@ class CohortLookup:
         result: LadderClassification, qname: str, residual: tuple[int, int]
     ) -> tuple:
         """Sort key mirroring the ladder order: tier, rung, distance, residuals."""
-        return (
-            0 if result.tier == EXACT else 1,
-            2 if result.via_default else 1 if result.via_filing_local else 0,
+        return ladder_rank_key(
+            result.tier,
+            result.via_default,
+            result.via_filing_local,
             result.modifier_distance,
-            residual[0],
-            residual[1],
+            residual,
             qname,
         )
 

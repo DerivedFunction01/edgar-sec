@@ -370,6 +370,25 @@ class RankedEquivalent:
     direction: str = ""
 
 
+def ladder_rank_key(
+    tier: str,
+    via_default: bool,
+    via_filing_local: bool,
+    modifier_distance: int,
+    residuals: tuple[int, int],
+    qname: str,
+) -> tuple[int, int, int, int, int, str]:
+    """The ladder's candidate order: tier, rung, distance, residuals, qname."""
+    return (
+        0 if tier == EXACT else 1,
+        2 if via_default else 1 if via_filing_local else 0,
+        modifier_distance,
+        residuals[0],
+        residuals[1],
+        qname,
+    )
+
+
 def rank_equivalents(
     target_qname: str,
     target: Atom,
@@ -426,12 +445,12 @@ def rank_equivalents(
             )
         )
     ranked.sort(
-        key=lambda item: (
-            0 if item.tier == EXACT else 1,
-            2 if item.via_default else 1 if item.via_filing_local else 0,
+        key=lambda item: ladder_rank_key(
+            item.tier,
+            item.via_default,
+            item.via_filing_local,
             item.modifier_distance,
-            item.residual_intent_count,
-            item.residual_total_count,
+            (item.residual_intent_count, item.residual_total_count),
             item.qname,
         )
     )
@@ -450,6 +469,7 @@ __all__ = [
     "classify_ladder_pair",
     "classify_pair",
     "coordinate_diff",
+    "ladder_rank_key",
     "presumed_atom",
     "presumed_atom_filing_local",
     "rank_equivalents",
