@@ -122,6 +122,13 @@ def _collapse_source_whitespace(match: re.Match[str]) -> str:
     return " "
 
 
+def _drop_comment(match: re.Match[str]) -> str:
+    """Drop a comment, keeping any masked table sentinels it straddled.
+    PDF-converted filings wrap page furniture in conditional comments, so a comment can open before a masked table and close after it.
+    """
+    return "\n".join(_RE_SENTINEL.findall(match.group(0)))
+
+
 def _clean_p_content(match: re.Match[str]) -> str:
     """Lift masked tables out of a ``<p>`` while keeping the prose above them.
     A table inside the paragraph's replacement gap would land mid-prose, so the sentinels follow the unified ``<p>``.
@@ -197,7 +204,7 @@ def decompose_html_structures(html: str) -> str:
     masked = html_lib.unescape(masked)
     masked = sanitize_unicode_whitespace(masked)
     masked = _RE_DECLARATIONS.sub("", masked)
-    masked = _RE_COMMENTS.sub("", masked)
+    masked = _RE_COMMENTS.sub(_drop_comment, masked)
 
     masked = _pair_inline_divs(masked)
 
