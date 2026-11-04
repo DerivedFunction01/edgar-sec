@@ -97,9 +97,7 @@ def _first_giant_table_line(
         if "<TABLE" not in lines[index].upper():
             continue
         probe_end = min(len(lines), index + _TABLE_BODY_MIN_SPAN_LINES + 1)
-        if not any(
-            "</TABLE" in lines[j].upper() for j in range(index + 1, probe_end)
-        ):
+        if not any("</TABLE" in lines[j].upper() for j in range(index + 1, probe_end)):
             return index
     return None
 

@@ -447,9 +447,7 @@ def test_analyze_abs_15g_banner_caption_fragment(tmp_path: Path) -> None:
 
 
 def test_analyze_abs_15g_banner_on_a_face_stays_a_face(tmp_path: Path) -> None:
-    _write_case(
-        tmp_path, "15GaFile_01_of_42_0107_0201.htm\n" + _SAMPLE_15G_TEXT
-    )
+    _write_case(tmp_path, "15GaFile_01_of_42_0107_0201.htm\n" + _SAMPLE_15G_TEXT)
     result = analyze_case(
         tmp_path, {"accession": "0000310522-12-000003", "form": "ABS-15G"}
     )

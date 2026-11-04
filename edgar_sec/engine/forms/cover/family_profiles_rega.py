@@ -56,7 +56,7 @@ def build_form_rega_profile(family: str) -> CoverProfile:
                 BoundarySignal.PAGE_MARKERS,
                 BoundarySignal.ITEM_FALLBACK,
                 BoundarySignal.BODY_PROSE_FALLBACK,
-            BoundarySignal.TABLE_BODY_FALLBACK,
+                BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=_REGA_COVER_LABELS,
