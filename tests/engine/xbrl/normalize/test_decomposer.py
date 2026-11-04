@@ -2200,6 +2200,25 @@ def test_proceeds_frame_guarantees_the_cash_head() -> None:
     assert direction == 1.0
 
 
+def test_receipts_frame_guarantees_the_cash_head() -> None:
+    """Receipts-led names land H_CASH; only the head moves."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    lex = tax.token_lexicon
+
+    atom, _, direction, _ = decompose_concept(
+        "ifrs-full:ReceiptsFromRoyaltiesFeesCommissionsAndOtherRevenue", lex
+    )
+    assert atom.head == "H_CASH"
+    assert atom.modifiers == set()
+    assert direction == 1.0
+
+    atom, _, direction, _ = decompose_concept("acme:ReceiptsRoyaltiesAndFees", lex)
+    assert atom.head == "H_CASH"
+    assert atom.modifiers == set()
+    assert direction == 1.0
+
+
 def test_proceeds_head_guarantee_leaves_other_names_untouched() -> None:
     """No proceeds prefix, no frame: stocks and NET_OF names stand."""
     tax = load_domain_taxonomy()

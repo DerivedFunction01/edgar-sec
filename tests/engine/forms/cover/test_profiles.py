@@ -196,6 +196,8 @@ def test_false_table_policy_follows_canonical_form_profile(form: str) -> None:
         ("10-q", "10-Q"),
         ("S-1", "S-1"),
         ("S-1/A", "S-1"),
+        ("10-D", "ABS"),
+        ("ABS-15G/A", "ABS"),
         ("S-1MEF", "S-1"),
         ("", "GENERIC"),
     ],
