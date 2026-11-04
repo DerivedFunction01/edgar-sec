@@ -18,10 +18,23 @@ if TYPE_CHECKING:
     from .model import CellBox
 
 
+def _stripped(
+    stripped_matrix: list[list[str]] | None,
+    r_idx: int,
+    c_idx: int,
+    cell: SourceCell,
+) -> str:
+    """The render's hoisted stripped text for one slot, or the strip computed on demand."""
+    if stripped_matrix is not None:
+        return stripped_matrix[r_idx][c_idx]
+    return cell.text.strip()
+
+
 def is_structural_spacer(
     col_idx: int,
     grid_matrix: list[list[SourceCell | None]],
     row_has_content: list[bool] | None = None,
+    stripped_matrix: list[list[str]] | None = None,
 ) -> bool:
     """Determine whether an empty column has structural significance to retain.
     Retained when a row starts a cell origin in it, an origin carries text, or it has distinct border/background styling.
@@ -40,7 +53,7 @@ def is_structural_spacer(
         is_origin = (col_idx == 0) or (col_idx > 0 and cell is not row[col_idx - 1])
         if is_origin:
             has_origin = True
-            if cell.text.strip():
+            if _stripped(stripped_matrix, r_idx, col_idx, cell):
                 has_content = True
                 break
 
@@ -48,7 +61,10 @@ def is_structural_spacer(
             has_content_in_row = (
                 row_has_content[r_idx]
                 if row_has_content is not None and r_idx < len(row_has_content)
-                else any(c is not None and bool(c.text.strip()) for c in row)
+                else any(
+                    c is not None and bool(_stripped(stripped_matrix, r_idx, i, c))
+                    for i, c in enumerate(row)
+                )
             )
             if (
                 s.background_color is not None
@@ -67,6 +83,7 @@ def is_structural_spacer(
 def resolve_columns(
     grid_matrix: list[list[SourceCell | None]],
     box_matrix: list[list[CellBox | None]],
+    stripped_matrix: list[list[str]] | None = None,
 ) -> tuple[list[int], list[HorizontalAlign], list[int]]:
     """Resolve active columns, column alignments, and pruned spacer columns.
     Returns the indices to keep, the alignment per active column, and the discarded spacer indices.
@@ -80,12 +97,21 @@ def resolve_columns(
     active_cols: list[int] = []
     spacer_cols: list[int] = []
 
-    row_has_content = [
-        any(c is not None and bool(c.text.strip()) for c in row) for row in grid_matrix
-    ]
+    if stripped_matrix is not None:
+        row_has_content = [any(bool(txt) for txt in row) for row in stripped_matrix]
+    else:
+        row_has_content = [
+            any(c is not None and bool(c.text.strip()) for c in row)
+            for row in grid_matrix
+        ]
 
     for c_idx in range(num_cols):
-        if is_structural_spacer(c_idx, grid_matrix, row_has_content=row_has_content):
+        if is_structural_spacer(
+            c_idx,
+            grid_matrix,
+            row_has_content=row_has_content,
+            stripped_matrix=stripped_matrix,
+        ):
             active_cols.append(c_idx)
         else:
             spacer_cols.append(c_idx)
@@ -122,7 +148,7 @@ def resolve_columns(
             if cell is None:
                 continue
 
-            txt = cell.text.strip()
+            txt = _stripped(stripped_matrix, r_idx, c_idx, cell)
             if not txt:
                 continue
 
@@ -189,6 +215,7 @@ def is_affix_footnote_token(txt: str) -> bool:
 def identify_affix_columns(
     grid_matrix: list[list[SourceCell | None]],
     active_cols: list[int],
+    stripped_matrix: list[list[str]] | None = None,
 ) -> tuple[set[int], set[int]]:
     """Identify which active column indices are pure prefix or suffix columns.
     Returns the prefix and suffix positions holding only such tokens.
@@ -204,11 +231,11 @@ def identify_affix_columns(
         single_all_prefix = True
         single_all_suffix = True
 
-        for row in grid_matrix:
+        for r_idx, row in enumerate(grid_matrix):
             if c_idx >= len(row) or row[c_idx] is None:
                 continue
             cell = row[c_idx]
-            txt = cell.text.strip()
+            txt = _stripped(stripped_matrix, r_idx, c_idx, cell)
             if not txt:
                 continue
             non_empty_count += 1

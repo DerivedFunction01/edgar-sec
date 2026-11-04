@@ -120,13 +120,20 @@ def render_source_table(
 
     box_matrix = estimate_table_geometry(source_table, grid_matrix, span_groups)
 
-    active_cols, col_alignments, spacer_cols = resolve_columns(grid_matrix, box_matrix)
+    stripped_matrix = [
+        [cell.text.strip() if cell is not None else "" for cell in row]
+        for row in grid_matrix
+    ]
+
+    active_cols, col_alignments, spacer_cols = resolve_columns(
+        grid_matrix, box_matrix, stripped_matrix=stripped_matrix
+    )
     if not active_cols:
         active_cols = list(range(len(grid_matrix[0])))
         col_alignments = [HorizontalAlign.LEFT] * len(active_cols)
 
     prefix_positions, suffix_positions = identify_affix_columns(
-        grid_matrix, active_cols
+        grid_matrix, active_cols, stripped_matrix=stripped_matrix
     )
 
     border_segments = extract_border_segments(grid_matrix, active_cols)
@@ -228,16 +235,11 @@ def render_source_table(
         visible_col_indices = list(range(num_cols))
 
     col_sep = " " * budget.column_spacing
-    table_has_affix_token = False
-    for source_row in grid_matrix:
-        for cell in source_row:
-            if cell is not None and (
-                is_prefix_token(cell.text.strip()) or is_suffix_token(cell.text.strip())
-            ):
-                table_has_affix_token = True
-                break
-        if table_has_affix_token:
-            break
+    table_has_affix_token = any(
+        is_prefix_token(txt) or is_suffix_token(txt)
+        for row in stripped_matrix
+        for txt in row
+    )
 
     lines: list[str] = ["<TABLE>"]
 
