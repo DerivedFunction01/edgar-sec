@@ -66,12 +66,11 @@ def facing_sheet_fields(cover_text: str, lines: list[str], form: str) -> dict[st
     """Extract the cover fields shared by the registration families."""
     head_text = "\n".join(lines[:120])
     primary = cover_text if len(cover_text.splitlines()) >= 4 else head_text
-    full_text = "\n".join(lines)
     return {
         "registrant_name": _registrant_name(lines),
         "registration_number": extract_registration_number(primary)
         or extract_registration_number(head_text)
-        or extract_registration_number(full_text),
+        or extract_registration_number("\n".join(lines)),
         "document_kind": registration_document_kind(form),
         "fee_table_present": FEE_TABLE_PHRASE in primary.lower()
         or FEE_TABLE_PHRASE in head_text.lower(),
