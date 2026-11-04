@@ -5,6 +5,7 @@ which is why a profile that disables cover parsing never yields a boundary.
 
 from __future__ import annotations
 
+from bisect import bisect_right
 import re
 
 from edgar_sec.engine.document.page_markers.detector import (
@@ -66,6 +67,7 @@ _COVER_MATRIX_TERMS = (
 _RE_COVER_MATRIX_LINE = re.compile(
     rf"(?i)\b(?:{build_alternation(_COVER_MATRIX_TERMS)})\b"
 )
+_NEWLINE_RE = re.compile("\n")
 
 from .corridor import (
     _finalize_boundary,
@@ -126,12 +128,16 @@ def find_cover_boundary(
             PageMarkerKind.REPEATING_FOOTER,
         }
     )
-    page_lines = {
-        getattr(marker, "start_line", None)
-        if getattr(marker, "start_line", None) is not None
-        else text.count("\n", 0, marker.start)
-        for marker in page_markers
-    }
+    page_lines: set[int] = set()
+    line_starts: list[int] | None = None
+    for marker in page_markers:
+        start_line = getattr(marker, "start_line", None)
+        if start_line is None:
+            if line_starts is None:
+                line_starts = [0]
+                line_starts.extend(m.end() for m in _NEWLINE_RE.finditer(text))
+            start_line = bisect_right(line_starts, marker.start) - 1
+        page_lines.add(start_line)
     for index, line in enumerate(lines[:search_limit]):
         if (
             enabled(policy, BoundarySignal.PAGE_MARKERS)

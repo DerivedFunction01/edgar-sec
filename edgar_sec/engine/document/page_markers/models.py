@@ -174,6 +174,7 @@ class PageMarkerSpan:
     page_number: int | None = None
     page_count: int | None = None
     coordinate_frame: str = "text"
+    start_line: int | None = None
 
 
 @dataclass(frozen=True, slots=True)
