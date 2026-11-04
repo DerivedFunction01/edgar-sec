@@ -46,7 +46,6 @@ def build_form_sd_profile(family: str = "SD") -> CoverProfile:
                 BoundarySignal.PAGE_MARKERS,
                 BoundarySignal.ITEM_FALLBACK,
                 BoundarySignal.BODY_PROSE_FALLBACK,
-                BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=_FORM_SD_COVER_LABELS,

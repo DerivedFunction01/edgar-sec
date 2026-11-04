@@ -276,7 +276,6 @@ def build_current_profile(family: str) -> CoverProfile:
                 BoundarySignal.PAGE_MARKERS,
                 BoundarySignal.ITEM_FALLBACK,
                 BoundarySignal.BODY_PROSE_FALLBACK,
-                BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=GENERIC_COVER_LABELS,
@@ -313,7 +312,6 @@ def build_generic_cover_profile(family: str) -> CoverProfile:
                 BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
                 BoundarySignal.PAGE_MARKERS,
                 BoundarySignal.BODY_PROSE_FALLBACK,
-                BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=GENERIC_COVER_LABELS,
@@ -443,7 +441,6 @@ def build_beneficial_ownership_profile(family: str = "13D") -> CoverProfile:
                 BoundarySignal.PAGE_MARKERS,
                 BoundarySignal.ITEM_FALLBACK,
                 BoundarySignal.BODY_PROSE_FALLBACK,
-                BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=_BENEFICIAL_OWNERSHIP_COVER_LABELS,
