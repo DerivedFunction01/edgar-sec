@@ -79,25 +79,43 @@ def decode_bytes(raw_bytes: bytes) -> tuple[str, str]:
     return raw_bytes.decode("latin-1", errors="replace"), "latin-1"
 
 
+_RE_DOCUMENT_OPEN = re.compile(r"<DOCUMENT>", re.IGNORECASE)
+_RE_TEXT_OPEN = re.compile(r"<TEXT>", re.IGNORECASE)
+_RE_TEXT_CLOSE = re.compile(r"</TEXT>", re.IGNORECASE)
+_RE_DOCUMENT_CLOSE = re.compile(r"</DOCUMENT>", re.IGNORECASE)
+
+
 def strip_sgml_document_wrapper(raw_text: str) -> str:
-    """Extract the inner ``<TEXT>`` of an SGML ``<DOCUMENT>`` wrapper."""
+    """Extract the inner ``<TEXT>`` of an SGML ``<DOCUMENT>`` wrapper.
+    Marker positions resolve on the original text: an uppercased copy is not
+    length-preserving, so offsets taken from it can drift out of alignment.
+    """
     stripped = raw_text.lstrip()
-    if not stripped.upper().startswith("<DOCUMENT>"):
+    if _RE_DOCUMENT_OPEN.match(stripped) is None:
         return raw_text
-    upper = raw_text.upper()
-    start_pos = upper.find("<TEXT>")
-    end_pos = upper.rfind("</TEXT>")
-    if start_pos != -1 and end_pos != -1 and end_pos > start_pos:
-        doc_end = upper.find("</DOCUMENT>", end_pos)
-        if doc_end != -1:
-            return raw_text[start_pos + 6 : end_pos].strip()
+    start_match = _RE_TEXT_OPEN.search(raw_text)
+    end_matches = list(_RE_TEXT_CLOSE.finditer(raw_text))
+    end_match = end_matches[-1] if end_matches else None
+    if start_match is not None and end_match is not None:
+        start_pos = start_match.start()
+        end_pos = end_match.start()
+        if end_pos > start_pos:
+            doc_end = _RE_DOCUMENT_CLOSE.search(raw_text, end_pos)
+            if doc_end is not None:
+                return raw_text[start_pos + 6 : end_pos].strip()
     return raw_text
+
+
+_PEM_BEGIN_TEXT = "-----BEGIN PRIVACY-ENHANCED MESSAGE-----"
+_RE_SGML_DOCUMENT_PAIR = re.compile(r"(?is)<DOCUMENT>.*?</DOCUMENT>")
 
 
 def strip_envelope_text(text: str) -> str:
     """Strip PEM and SGML transport envelopes from a payload that reached here whole.
     Defense in depth: without it a raw bundle handed straight to the normalizer shows ``<DOCUMENT>`` framing.
     """
+    if _PEM_BEGIN_TEXT not in text and _RE_SGML_DOCUMENT_PAIR.search(text) is None:
+        return strip_sgml_document_wrapper(text)
     raw = text.encode("latin-1", errors="replace")
     stripped = strip_pem_envelope(raw)
     if not has_sgml_documents(stripped):

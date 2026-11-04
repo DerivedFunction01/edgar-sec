@@ -50,18 +50,18 @@ def _extract(document: pymupdf.Document) -> PdfConversion:
     page_count = document.page_count
     if not _has_text_layer(document, page_count):
         return PdfConversion("", page_count, True)
-    if _probe_yield(document, page_count) < _MIN_PROBE_YIELD:
+    probed = {page: document[page].get_text() for page in _probe_indices(page_count)}
+    if sum(len(text) for text in probed.values()) < _MIN_PROBE_YIELD:
         return PdfConversion("", page_count, True)
-    text = _PAGE_SEPARATOR.join(document[page].get_text() for page in range(page_count))
+    text = _PAGE_SEPARATOR.join(
+        probed[page] if page in probed else document[page].get_text()
+        for page in range(page_count)
+    )
     return PdfConversion(text, page_count, False)
 
 
 def _has_text_layer(document: pymupdf.Document, page_count: int) -> bool:
     return any(document[page].get_fonts(full=True) for page in range(page_count))
-
-
-def _probe_yield(document: pymupdf.Document, page_count: int) -> int:
-    return sum(len(document[page].get_text()) for page in _probe_indices(page_count))
 
 
 def _probe_indices(page_count: int) -> tuple[int, ...]:

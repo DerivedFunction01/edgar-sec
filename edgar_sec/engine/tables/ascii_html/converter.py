@@ -14,7 +14,9 @@ from .model import (
     DEFAULT_RENDER_BUDGET,
     RenderBudget,
     ResolvedGrid,
+    SourceCell,
     SourceTable,
+    SpanGroup,
     TableGeometry,
     TableRenderResult,
 )
@@ -163,6 +165,32 @@ def convert_html_tables_to_ascii_with_metadata(
         else:
             source_tables.append(extract_source_table(tbl, table_index=i)[0])
 
+    matrix_cache: dict[
+        int,
+        tuple[
+            list[list[SourceCell | None]],
+            list[SpanGroup],
+            tuple[tuple[str, ...], ...],
+        ],
+    ] = {}
+
+    def _matrix_and_grid(
+        idx: int, source: SourceTable
+    ) -> tuple[
+        list[list[SourceCell | None]],
+        list[SpanGroup],
+        tuple[tuple[str, ...], ...],
+    ]:
+        cached = matrix_cache.get(idx)
+        if cached is None:
+            matrix, span_groups = build_span_matrix(source)
+            grid_rows = tuple(
+                tuple(cell.text if cell else "" for cell in row) for row in matrix
+            )
+            cached = (matrix, span_groups, grid_rows)
+            matrix_cache[idx] = cached
+        return cached
+
     if early_unwrap_false_tables:
         from edgar_sec.engine.tables.false_tables.detector import is_false_grid
         from edgar_sec.engine.tables.false_tables.unwrapper import unwrap_grid
@@ -172,10 +200,7 @@ def convert_html_tables_to_ascii_with_metadata(
                 continue
             if source is None or not source.rows or _is_empty(top_tables[i]):
                 continue
-            matrix, _ = build_span_matrix(source)
-            grid_rows = tuple(
-                tuple(cell.text if cell else "" for cell in row) for row in matrix
-            )
+            _, _, grid_rows = _matrix_and_grid(i, source)
             if is_false_grid(grid_rows):
                 is_false_list[i] = True
                 unwrapped_texts[i] = unwrap_grid(grid_rows)
@@ -191,10 +216,9 @@ def convert_html_tables_to_ascii_with_metadata(
                 and source_tables[i + 1] is not None
                 and source_tables[i + 1].rows
             ):
-                matrix, _ = build_span_matrix(source_tables[i])
-                grid_rows = tuple(
-                    tuple(cell.text if cell else "" for cell in row) for row in matrix
-                )
+                source_i = source_tables[i]
+                assert source_i is not None
+                _, _, grid_rows = _matrix_and_grid(i, source_i)
                 if is_false_grid(grid_rows, allow_footnote_context=True):
                     is_false_list[i] = True
                     unwrapped_texts[i] = unwrap_grid(grid_rows)
@@ -271,10 +295,15 @@ def convert_html_tables_to_ascii_with_metadata(
         primary_tbl = top_tables[primary_idx]
         fused_source = fused_sources[cluster_idx]
 
+        prebuilt = None
+        if fused_source is source_tables[primary_idx] and primary_idx in matrix_cache:
+            cached_matrix, cached_groups, _ = matrix_cache[primary_idx]
+            prebuilt = (cached_matrix, cached_groups)
         res = render_source_table(
             fused_source,
             table_index=len(geometries),
             budget=budget,
+            span_matrix=prebuilt,
         )
 
         for sec_idx in cluster[1:]:

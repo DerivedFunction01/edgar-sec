@@ -37,17 +37,41 @@ _INDENT_STOP_TAGS: frozenset[str] = frozenset({"table", "tr", "td", "th"})
 _HTML_WHITESPACE_RE = re.compile(r"[\t\n\r\f ]+")
 
 
+_INDENT_CHARS = " \t\u00a0"
+
+
 def _extract_cell_text(
     cell: FastHtmlNode,
     *,
     preserve_whitespace: bool,
     browser_whitespace: bool,
-) -> str:
+) -> tuple[str, int]:
+    """Extract the cell text and the leading indent count of its raw text stream.
+    The count is the leading run of space/tab/NBSP over the document-order text
+    nodes, tracked on the raw chunks of the same walk that builds the text.
+    """
     if not browser_whitespace:
+        raw_txt = cell.text(separator=" ", strip=False)
+        indent_count = len(raw_txt) - len(raw_txt.lstrip(_INDENT_CHARS))
         text = cell.text(separator="\n", strip=True)
-        return normalize_cell_whitespace(text, preserve_newlines=preserve_whitespace)
+        return (
+            normalize_cell_whitespace(text, preserve_newlines=preserve_whitespace),
+            indent_count,
+        )
 
     chunks: list[str] = []
+    indent_run = 0
+    indent_open = True
+
+    def feed_indent(raw: str) -> None:
+        nonlocal indent_run, indent_open
+        if not indent_open:
+            return
+        stripped = raw.lstrip(_INDENT_CHARS)
+        indent_run += len(raw) - len(stripped)
+        if stripped:
+            indent_open = False
+
     raw_text = cell.raw_node.text(deep=True) or ""
     pre_newline_marker = "\ue002"
     while pre_newline_marker in raw_text:
@@ -76,11 +100,13 @@ def _extract_cell_text(
         chunks.append("\n")
 
     def walk(parent, in_preformatted: bool) -> None:
+        nonlocal indent_run, indent_open
         child = parent.child
         while child is not None:
             tag = (child.tag or "").lower()
             if tag == "-text":
                 text = child.text(deep=False)
+                feed_indent(text)
                 preserve = in_preformatted or preserve_whitespace
                 if not preserve:
                     text = _HTML_WHITESPACE_RE.sub(" ", text)
@@ -95,6 +121,8 @@ def _extract_cell_text(
                     text = text.replace("\n", pre_newline_marker)
                 chunks.append(text)
             elif tag == "br":
+                if indent_open:
+                    indent_run += 1
                 append_break(in_preformatted or preserve_whitespace)
             else:
                 child_preformatted = in_preformatted or tag == "pre"
@@ -109,6 +137,9 @@ def _extract_cell_text(
                 else:
                     label = superscript_footnote_label(child)
                     if label is not None:
+                        if indent_open:
+                            indent_run += 1
+                            indent_open = False
                         chunks.append(f" ({label})")
                     else:
                         walk(child, child_preformatted)
@@ -119,10 +150,13 @@ def _extract_cell_text(
     if not preserve_whitespace:
         text = text.strip()
     if preserve_whitespace:
-        return normalize_cell_whitespace(text, preserve_newlines=True)
+        return normalize_cell_whitespace(text, preserve_newlines=True), indent_run
     text = text.replace("\n\n", paragraph_marker)
     text = normalize_cell_whitespace(text)
-    return text.replace(paragraph_marker, "\n\n").replace(pre_newline_marker, "\n")
+    return (
+        text.replace(paragraph_marker, "\n\n").replace(pre_newline_marker, "\n"),
+        indent_run,
+    )
 
 
 def _iter_indent_descendants(cell: FastHtmlNode):
@@ -234,18 +268,14 @@ def extract_source_table(
             if indent_px >= 6.0:
                 css_indent = min(8, int((indent_px + 2.0) / 8.0) * 2)
 
-            raw_txt = child.text(separator=" ", strip=False)
-            lstrip_txt = raw_txt.lstrip(" \t\u00a0")
-            nbsp_count = len(raw_txt) - len(lstrip_txt)
-            nbsp_indent = min(8, (nbsp_count // 2) * 2) if nbsp_count >= 2 else 0
-
-            total_indent = max(css_indent, nbsp_indent)
             preserve_nl = cell_style.white_space in ("pre", "pre-wrap")
-            cell_text = _extract_cell_text(
+            cell_text, nbsp_count = _extract_cell_text(
                 child,
                 preserve_whitespace=preserve_nl,
                 browser_whitespace=browser_whitespace,
             )
+            nbsp_indent = min(8, (nbsp_count // 2) * 2) if nbsp_count >= 2 else 0
+            total_indent = max(css_indent, nbsp_indent)
             if is_numeric_cell(cell_text) or cell_style.text_align in (
                 HorizontalAlign.RIGHT,
                 HorizontalAlign.CENTER,
@@ -435,70 +465,76 @@ def distribute_multi_row_span_lines(
     from .cell import wrap_cell_text
     from .model import VerticalAlign
 
-    seen_cells: set[int] = set()
-    for blocks in all_row_blocks:
+    # One pass indexes each spanning cell's rows and first block; the per-cell
+    # distribution below reads only its own blocks and non-spanning lines, so
+    # indexing first and distributing second computes the same result.
+    first_block: dict[int, RenderBlock] = {}
+    cell_rows: dict[int, list[int]] = {}
+    for r, blocks in enumerate(all_row_blocks):
         for b in blocks:
             cell = b.cell
-            if cell is None or cell.rowspan <= 1 or id(cell) in seen_cells:
+            if cell is None or cell.rowspan <= 1:
                 continue
-            seen_cells.add(id(cell))
-            row_indices = [
-                r
-                for r, row_b in enumerate(all_row_blocks)
-                if any(x.cell is cell for x in row_b)
+            key = id(cell)
+            if key not in first_block:
+                first_block[key] = b
+                cell_rows[key] = [r]
+            elif cell_rows[key][-1] != r:
+                cell_rows[key].append(r)
+
+    for key, b in first_block.items():
+        cell = b.cell
+        if cell is None:
+            continue
+        row_indices = cell_rows[key]
+        if len(row_indices) <= 1:
+            continue
+
+        full_lines = wrap_cell_text(cell.text, b.width)
+        total_lines = len(full_lines)
+        k = len(row_indices)
+
+        min_heights: list[int] = []
+        for r in row_indices:
+            row_b = all_row_blocks[r]
+            row_bl = all_block_lines[r]
+            other_lens = [
+                len(row_bl[i])
+                for i, x in enumerate(row_b)
+                if x.cell is not cell
+                and (x.cell is None or x.cell.rowspan <= 1)
+                and bool(x.text.strip())
             ]
-            if len(row_indices) <= 1:
-                continue
+            min_heights.append(max(other_lens, default=1) if other_lens else 1)
 
-            full_lines = wrap_cell_text(cell.text, b.width)
-            total_lines = len(full_lines)
-            k = len(row_indices)
-
-            min_heights: list[int] = []
-            for r in row_indices:
-                row_b = all_row_blocks[r]
-                row_bl = all_block_lines[r]
-                other_lens = [
-                    len(row_bl[i])
-                    for i, x in enumerate(row_b)
-                    if x.cell is not cell
-                    and (x.cell is None or x.cell.rowspan <= 1)
-                    and bool(x.text.strip())
-                ]
-                min_heights.append(max(other_lens, default=1) if other_lens else 1)
-
-            if total_lines <= 1:
-                v_align = cell.style.vertical_align
-                if v_align == VerticalAlign.MIDDLE:
-                    target_r = row_indices[k // 2]
-                elif v_align == VerticalAlign.BOTTOM:
-                    target_r = row_indices[-1]
-                else:
-                    target_r = row_indices[0]
-                for r in row_indices:
-                    b_i = next(
-                        i for i, x in enumerate(all_row_blocks[r]) if x.cell is cell
-                    )
-                    all_block_lines[r][b_i] = full_lines if r == target_r else []
+        if total_lines <= 1:
+            v_align = cell.style.vertical_align
+            if v_align == VerticalAlign.MIDDLE:
+                target_r = row_indices[k // 2]
+            elif v_align == VerticalAlign.BOTTOM:
+                target_r = row_indices[-1]
             else:
-                cur_sum = sum(min_heights)
-                extra = max(0, total_lines - cur_sum)
-                heights = list(min_heights)
-                if extra > 0:
-                    base_add = extra // k
-                    rem = extra % k
-                    for i in range(k):
-                        heights[i] += base_add + (1 if i < rem else 0)
+                target_r = row_indices[0]
+            for r in row_indices:
+                b_i = next(i for i, x in enumerate(all_row_blocks[r]) if x.cell is cell)
+                all_block_lines[r][b_i] = full_lines if r == target_r else []
+        else:
+            cur_sum = sum(min_heights)
+            extra = max(0, total_lines - cur_sum)
+            heights = list(min_heights)
+            if extra > 0:
+                base_add = extra // k
+                rem = extra % k
+                for i in range(k):
+                    heights[i] += base_add + (1 if i < rem else 0)
 
-                offset = 0
-                for i, r in enumerate(row_indices):
-                    h = heights[i]
-                    slice_l = full_lines[offset : offset + h]
-                    offset += h
-                    b_i = next(
-                        j for j, x in enumerate(all_row_blocks[r]) if x.cell is cell
-                    )
-                    all_block_lines[r][b_i] = slice_l
+            offset = 0
+            for i, r in enumerate(row_indices):
+                h = heights[i]
+                slice_l = full_lines[offset : offset + h]
+                offset += h
+                b_i = next(j for j, x in enumerate(all_row_blocks[r]) if x.cell is cell)
+                all_block_lines[r][b_i] = slice_l
 
 
 __all__ = [

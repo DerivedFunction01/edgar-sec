@@ -77,6 +77,11 @@ def insert_page_sentinels(html: str) -> str:
     spans = find_table_spans(html)
     if not spans:
         return _RE_BREAK_TAGS.sub(replacement, html)
+    if not any(
+        not any(span.start <= match.start() < span.end for span in spans)
+        for match in _RE_BREAK_TAGS.finditer(html)
+    ):
+        return html
     pieces: list[str] = []
     cursor = 0
     for span in spans:
