@@ -225,6 +225,30 @@ def _form_c_to_xml(raw_bytes: bytes, context: HandlerContext) -> bytes | Handler
     return render_form_c_to_xml(raw_bytes, context)
 
 
+def _form_rega_offering_to_xml(
+    raw_bytes: bytes, context: HandlerContext
+) -> bytes | HandlerOutput:
+    from edgar_sec.engine.forms.form_rega.renderer import render_rega_offering_to_xml
+
+    return render_rega_offering_to_xml(raw_bytes, context)
+
+
+def _form_rega_annual_to_xml(
+    raw_bytes: bytes, context: HandlerContext
+) -> bytes | HandlerOutput:
+    from edgar_sec.engine.forms.form_rega.renderer import render_rega_annual_to_xml
+
+    return render_rega_annual_to_xml(raw_bytes, context)
+
+
+def _form_rega_exit_to_xml(
+    raw_bytes: bytes, context: HandlerContext
+) -> bytes | HandlerOutput:
+    from edgar_sec.engine.forms.form_rega.renderer import render_rega_exit_to_xml
+
+    return render_rega_exit_to_xml(raw_bytes, context)
+
+
 def _abs_ee_to_xml(raw_bytes: bytes, context: HandlerContext) -> bytes | HandlerOutput:
     from edgar_sec.engine.forms.form_abs_ee.renderer import render_abs_ee_to_xml
 
@@ -366,6 +390,30 @@ def default_handler_registry() -> HandlerRegistry:
         HandlerOutputKind.XML,
         _form_c_to_xml,
         family="C",
+    )
+    registry.register(
+        "form_rega_offering_to_xml",
+        "1",
+        "render_to_xml",
+        HandlerOutputKind.XML,
+        _form_rega_offering_to_xml,
+        family="1-A",
+    )
+    registry.register(
+        "form_rega_annual_to_xml",
+        "1",
+        "render_to_xml",
+        HandlerOutputKind.XML,
+        _form_rega_annual_to_xml,
+        family="1-K",
+    )
+    registry.register(
+        "form_rega_exit_to_xml",
+        "1",
+        "render_to_xml",
+        HandlerOutputKind.XML,
+        _form_rega_exit_to_xml,
+        family="1-Z",
     )
     registry.register(
         "abs_ee_to_xml",

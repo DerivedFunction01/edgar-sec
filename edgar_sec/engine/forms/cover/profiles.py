@@ -476,8 +476,12 @@ def _build_profiles() -> dict[str, CoverProfile]:
         build_form_nsar_profile,
         build_form_tender_profile,
     )
+
     from edgar_sec.engine.forms.cover.family_profiles_sd import (
         build_form_sd_profile,
+    )
+    from edgar_sec.engine.forms.cover.family_profiles_rega import (
+        build_form_rega_profile,
     )
     from edgar_sec.engine.forms.cover.family_profiles_f import (
         build_form_40f_profile,
@@ -554,6 +558,8 @@ def _build_profiles() -> dict[str, CoverProfile]:
     form_f6 = build_form_f6_profile("F-6")
     form_suppl = build_form_suppl_profile("SUPPL")
     form_fn = build_form_fn_profile("F-N")
+    form_1sa = build_form_rega_profile("1-SA")
+    form_1u = build_form_rega_profile("1-U")
     generic = build_generic_cover_profile("GENERIC")
     return {
         "10-K": annual_common,
@@ -597,6 +603,8 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "F-6": form_f6,
         "SUPPL": form_suppl,
         "F-N": form_fn,
+        "1-SA": form_1sa,
+        "1-U": form_1u,
         "GENERIC": generic,
     }
 
