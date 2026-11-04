@@ -308,3 +308,21 @@ def test_extract_units_divide() -> None:
     units = _extract_units(ET.fromstring(xml))
     assert units["USD"] == "USD"
     assert units["usdPerShare"] == "USD/shares"
+
+
+def test_parse_shared_uri_resolves_to_first_declared_prefix() -> None:
+    """One URI under two prefixes resolves facts via the first declaration."""
+    xml_data = (
+        '<xbrl xmlns="http://www.xbrl.org/2003/instance" '
+        'xmlns:us-gaap="http://fasb.org/us-gaap/2024" '
+        'xmlns:gaap="http://fasb.org/us-gaap/2024">'
+        '<context id="c-1"><entity><identifier scheme="http://www.sec.gov/CIK">1'
+        "</identifier></entity><period><instant>2024-09-28</instant></period>"
+        "</context>"
+        '<unit id="u"><measure>USD</measure></unit>'
+        '<gaap:Assets contextRef="c-1" unitRef="u" decimals="0">42</gaap:Assets>'
+        "</xbrl>"
+    ).encode()
+    facts = parse_instance_facts(xml_data, AccessionNumber("0000950170-24-087843"))
+    assert [f.concept_qname for f in facts] == ["us-gaap:Assets"]
+    assert facts[0].value == 42.0
