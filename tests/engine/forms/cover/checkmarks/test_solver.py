@@ -385,6 +385,12 @@ def test_checkmark_schema_cases_cover_registered_profile_scope() -> None:
         "ABS-EE",
         "8-B",
         "25-NSE",
+        "1-A",
+        "1-K",
+        "1-Z",
+        "1-SA",
+        "1-U",
+        "ARS",
     }
 
 
@@ -408,6 +414,12 @@ def test_checkmark_schema_cases_cover_registered_profile_scope() -> None:
         "ABS-EE",
         "8-B",
         "25-NSE",
+        "1-A",
+        "1-K",
+        "1-Z",
+        "1-SA",
+        "1-U",
+        "ARS",
     ),
 )
 def test_registered_profiles_without_checkmark_schemas_are_not_applicable(

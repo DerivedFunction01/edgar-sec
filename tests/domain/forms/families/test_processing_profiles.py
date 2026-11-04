@@ -336,3 +336,50 @@ def test_form_11k_entry_registered_with_schema_and_items() -> None:
     assert entry.cover_checkbox_schema is FORM_11K_CHECKBOX_SCHEMA
     assert entry.taxonomy_items == FORM_11K_ITEMS
     assert get_family_entry("11-K/A") is entry
+
+
+def test_rega_entries_registered_without_schemas() -> None:
+    from edgar_sec.domain.forms.families.form_rega.processing import (
+        PROFILE_REGA_ANNUAL,
+        PROFILE_REGA_CURRENT,
+        PROFILE_REGA_EXIT,
+        PROFILE_REGA_OFFERING,
+        PROFILE_REGA_SEMI_ANNUAL,
+    )
+    from edgar_sec.domain.forms.families.form_rega.taxonomy import (
+        FORM_1SA_ITEMS,
+        FORM_1U_ITEMS,
+    )
+
+    expected = {
+        "1-A": (PROFILE_REGA_OFFERING, ()),
+        "1-K": (PROFILE_REGA_ANNUAL, ()),
+        "1-Z": (PROFILE_REGA_EXIT, ()),
+        "1-SA": (PROFILE_REGA_SEMI_ANNUAL, FORM_1SA_ITEMS),
+        "1-U": (PROFILE_REGA_CURRENT, FORM_1U_ITEMS),
+    }
+    for family, (profile, items) in expected.items():
+        entry = get_family_entry(family)
+        assert entry is not None
+        assert entry.family == family
+        assert entry.profile is profile
+        assert entry.cover_checkbox_schema is None
+        assert entry.taxonomy_items == items
+    assert get_family_entry("1-A POS") is get_family_entry("1-A")
+    assert get_family_entry("1-A-W") is get_family_entry("1-A")
+    assert get_family_entry("1-K/A") is get_family_entry("1-K")
+    assert get_family_entry("1-Z/A") is get_family_entry("1-Z")
+    assert get_family_entry("1-SA/A") is get_family_entry("1-SA")
+    assert get_family_entry("1-U/A") is get_family_entry("1-U")
+
+
+def test_ars_entry_registered_on_generic_segmentation_profile() -> None:
+    from edgar_sec.domain.forms.families.processing_profiles import PROFILE_ARS
+
+    entry = get_family_entry("ARS")
+    assert entry is not None
+    assert entry.family == "ARS"
+    assert entry.profile is PROFILE_ARS
+    assert entry.cover_checkbox_schema is None
+    assert not entry.taxonomy_items
+    assert get_family_entry("ARS/A") is entry

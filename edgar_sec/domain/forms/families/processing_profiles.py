@@ -185,9 +185,32 @@ from edgar_sec.domain.forms.families.form_12reg.processing import (
 from edgar_sec.domain.forms.families.form_12reg.taxonomy import FORM_8A_ITEMS
 from edgar_sec.domain.forms.families.form_abs_ee.processing import PROFILE_ABS_EE
 from edgar_sec.domain.forms.families.form_c.processing import PROFILE_FORM_C
+from edgar_sec.domain.forms.families.form_rega.processing import (
+    PROFILE_REGA_ANNUAL,
+    PROFILE_REGA_CURRENT,
+    PROFILE_REGA_EXIT,
+    PROFILE_REGA_OFFERING,
+    PROFILE_REGA_SEMI_ANNUAL,
+)
+from edgar_sec.domain.forms.families.form_rega.taxonomy import (
+    FORM_1SA_ITEMS,
+    FORM_1U_ITEMS,
+)
 from edgar_sec.domain.forms.families.form_drs.processing import PROFILE_DRS
 from edgar_sec.domain.forms.families.form_tender.processing import PROFILE_TENDER
 from edgar_sec.domain.forms.families.form_tender.taxonomy import SCHEDULE_TO_ITEMS
+
+
+# ARS rides the generic segmentation profile (T4.10 disposition):
+# no family package, no taxonomy, no analyzer of its own.
+PROFILE_ARS = DocumentProcessingProfile(
+    family="ARS",
+    version="v1",
+    allowed_operations=frozenset(
+        {AcquisitionOperation.RAW, AcquisitionOperation.RENDER_TO_TXT}
+    ),
+    preferred_operation=AcquisitionOperation.RENDER_TO_TXT,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -473,6 +496,32 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         profile=PROFILE_FORM_8B,
         taxonomy_items=FORM_8A_ITEMS,
     ),
+    ProcessingCatalogEntry(
+        family="1-A",
+        profile=PROFILE_REGA_OFFERING,
+    ),
+    ProcessingCatalogEntry(
+        family="1-K",
+        profile=PROFILE_REGA_ANNUAL,
+    ),
+    ProcessingCatalogEntry(
+        family="1-Z",
+        profile=PROFILE_REGA_EXIT,
+    ),
+    ProcessingCatalogEntry(
+        family="1-SA",
+        profile=PROFILE_REGA_SEMI_ANNUAL,
+        taxonomy_items=FORM_1SA_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="1-U",
+        profile=PROFILE_REGA_CURRENT,
+        taxonomy_items=FORM_1U_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="ARS",
+        profile=PROFILE_ARS,
+    ),
 )
 
 _FAMILY_ENTRY_BY_FAMILY = {entry.family: entry for entry in FAMILY_PROCESSING_PROFILES}
@@ -527,6 +576,7 @@ def get_lazy_index_trigger(family: str | None) -> tuple[str, str] | None:
 __all__ = [
     "FAMILY_PROCESSING_PROFILES",
     "LAZY_INDEX_FORM_FAMILIES",
+    "PROFILE_ARS",
     "ANNUAL_PROFILE",
     "QUARTERLY_PROFILE",
     "CURRENT_PROFILE",
