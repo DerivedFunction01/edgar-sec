@@ -228,31 +228,17 @@ class FinancialsCore:
         length_class: str,
     ) -> dict[str, float]:
         """One exact length class of a metric series; no fallback ladder."""
-        key = (
-            "series",
+        pair = self._series_pair_at_class(
             target_head,
-            frozenset(target_mods),
-            frozenset(excluded_mods),
-            is_instant,
-            valence,
-            is_monetary,
-            prefer_bare,
-            length_class,
+            target_mods,
+            excluded_mods,
+            is_instant=is_instant,
+            valence=valence,
+            is_monetary=is_monetary,
+            prefer_bare=prefer_bare,
+            length_class=length_class,
         )
-        computed = self._kernel.series(
-            key,
-            lambda: self._compute_series(
-                target_head,
-                target_mods,
-                excluded_mods,
-                is_instant=is_instant,
-                valence=valence,
-                is_monetary=is_monetary,
-                prefer_bare=prefer_bare,
-                length_class=length_class,
-            ),
-        )
-        return dict(computed)
+        return dict(pair[0])
 
     def _series_winners_at_class(
         self,
@@ -267,8 +253,37 @@ class FinancialsCore:
         length_class: str,
     ) -> dict[str, str]:
         """Winning concept per year of one exact length class's series."""
+        pair = self._series_pair_at_class(
+            target_head,
+            target_mods,
+            excluded_mods,
+            is_instant=is_instant,
+            valence=valence,
+            is_monetary=is_monetary,
+            prefer_bare=prefer_bare,
+            length_class=length_class,
+        )
+        return dict(pair[1])
+
+    def _series_pair_at_class(
+        self,
+        target_head: str,
+        target_mods: set[str] | frozenset[str] = frozenset(),
+        excluded_mods: set[str] | frozenset[str] = frozenset(),
+        *,
+        is_instant: bool = False,
+        valence: str | None = None,
+        is_monetary: bool = True,
+        prefer_bare: bool = False,
+        length_class: str,
+    ) -> tuple[dict[str, float], dict[str, str]]:
+        """The (series, winners) pair of one scan, cached per key.
+
+        Both accessors project from this pair: one full scan per
+        (coordinate, class), however many halves are consumed.
+        """
         key = (
-            "series_winners",
+            "series_full",
             target_head,
             frozenset(target_mods),
             frozenset(excluded_mods),
@@ -278,7 +293,7 @@ class FinancialsCore:
             prefer_bare,
             length_class,
         )
-        computed = self._kernel.graph_once(
+        return self._kernel.graph_once(
             key,
             lambda: self._compute_series_full(
                 target_head,
@@ -289,33 +304,8 @@ class FinancialsCore:
                 is_monetary=is_monetary,
                 prefer_bare=prefer_bare,
                 length_class=length_class,
-            )[1],
+            ),
         )
-        return dict(computed)
-
-    def _compute_series(
-        self,
-        target_head: str,
-        target_mods: set[str] | frozenset[str] = frozenset(),
-        excluded_mods: set[str] | frozenset[str] = frozenset(),
-        *,
-        is_instant: bool = False,
-        valence: str | None = None,
-        is_monetary: bool = True,
-        prefer_bare: bool = False,
-        length_class: str = "ANNUAL",
-    ) -> dict[str, float]:
-        series, _winners = self._compute_series_full(
-            target_head,
-            target_mods,
-            excluded_mods,
-            is_instant=is_instant,
-            valence=valence,
-            is_monetary=is_monetary,
-            prefer_bare=prefer_bare,
-            length_class=length_class,
-        )
-        return series
 
     def _compute_series_full(
         self,
@@ -408,7 +398,10 @@ class FinancialsCore:
             winners[yr] = qname
 
     def _calc_children(self) -> dict[str, list[str]]:
-        """Calc children by parent over the filer's own linkbase."""
+        """Calc children by parent over the filer's own linkbase, built once."""
+        return self._kernel.graph_once(("calc_children",), self._build_calc_children)
+
+    def _build_calc_children(self) -> dict[str, list[str]]:
         children: dict[str, list[str]] = {}
         for arc in self._arcs:
             children.setdefault(arc.parent_qname, []).append(arc.child_qname)
@@ -477,12 +470,9 @@ class FinancialsCore:
     def _compute_concept_series(
         self, qname: str, length_class: str
     ) -> dict[str, float]:
-        best = self._kernel.best_ranked(
-            instant=None, length_class=length_class, monetary_only=True
+        return self._kernel.best_ranked_values(
+            qname, instant=None, length_class=length_class, monetary_only=True
         )
-        return {
-            yr: val for (concept, yr), (_rank, val) in best.items() if concept == qname
-        }
 
     def _classed_series(self, metric: str, length_class: str) -> dict[str, float]:
         """One series metric at one exact length class; no fallback ladder.

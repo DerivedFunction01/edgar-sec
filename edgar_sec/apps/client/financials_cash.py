@@ -6,11 +6,14 @@ the composition chain and the span fallbacks, chain-guarded throughout.
 
 from __future__ import annotations
 
-from edgar_sec.apps.client.composition import ChainTerms, CompositionResult
+from edgar_sec.apps.client.composition import (
+    ChainTerms,
+    CompositionResult,
+    antichain_violations,
+)
 from edgar_sec.apps.client.financials_capex import CAPEX_EXCLUDED_MODS, CapexServing
 from edgar_sec.apps.client.financials_core import OCF_EXCLUDED_MODS
 from edgar_sec.apps.client.fiscal import composition_span_class, node_length_class
-from edgar_sec.engine.xbrl.solve.antichain import AntiChainValidator
 
 
 _FCF_CHAIN: ChainTerms = (("+", "cfo"), ("-", "capex"))
@@ -120,11 +123,10 @@ class CashFlowServing(CapexServing):
         cfo_qname = self._operating_leg_qname(span_class, cfo_year)
         if cfo_qname is None:
             return True
-        outcome = AntiChainValidator().verify_non_double_counting(
-            [cfo_qname, capex_qname],
-            [(a.parent_qname, a.child_qname, a.weight) for a in self._arcs],
+        violations = antichain_violations(
+            [cfo_qname, capex_qname], self._kernel.calculation_arc_triples()
         )
-        return bool(outcome.violations)
+        return bool(violations)
 
     def _operating_leg_qname(self, span_class: str, cfo_year: str | None) -> str | None:
         """The concept the operating leg served from: graph root or pool winner."""
