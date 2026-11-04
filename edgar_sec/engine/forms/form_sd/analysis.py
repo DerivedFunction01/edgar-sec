@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from functools import cache
 import re
 from pathlib import Path
 from typing import Any
@@ -94,13 +95,18 @@ _NAME_SKIP_RE = re.compile(
 )
 
 
+@cache
+def _row_pattern(number: str) -> re.Pattern[str]:
+    return re.compile(rf"^\s*{re.escape(number)}\b")
+
+
 def _table_row_companion(
     lines: list[str], number: str, phrase: re.Pattern[str]
 ) -> bool:
     """True when an exhibit-index row names the companion: a row led
     by the exhibit number, under an exhibit header, carrying the
     companion phrase."""
-    row_pattern = re.compile(rf"^\s*{re.escape(number)}\b")
+    row_pattern = _row_pattern(number)
     for index, line in enumerate(lines):
         if not _EXHIBIT_HEADER_RE.search(line):
             continue
