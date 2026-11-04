@@ -13,8 +13,8 @@ from pathlib import PurePosixPath
 #: Flat suffixes carrying markup. Anything with a slash is HTML regardless of this.
 MARKUP_SUFFIXES = frozenset({".htm", ".html", ".xhtml"})
 
-#: Flat suffixes carrying text.
-TEXT_SUFFIXES = frozenset({".txt"})
+#: Flat suffixes carrying text. EDGAR's .fil answer files are plain text.
+TEXT_SUFFIXES = frozenset({".txt", ".fil"})
 
 #: Flat suffixes carrying an XML-native filing's own markup.
 XML_SUFFIXES = frozenset({".xml"})
