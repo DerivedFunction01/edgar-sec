@@ -211,6 +211,31 @@ def test_a_multi_line_span_body_is_sliced_across_the_rows_it_covers() -> None:
     assert lines[0][0] != lines[1][0]
 
 
+def test_a_span_split_into_two_blocks_in_one_row_distributes_once() -> None:
+    from edgar_sec.engine.tables.ascii_html.blocks import RenderBlock
+    from edgar_sec.engine.tables.ascii_html.cell import wrap_cell_text
+    from edgar_sec.engine.tables.ascii_html.model import SourceCell
+
+    spanning = SourceCell(
+        row_index=0,
+        source_col_index=0,
+        tag="td",
+        text="alpha bravo charlie delta echo foxtrot",
+        rowspan=2,
+    )
+    blocks = [
+        [
+            RenderBlock(spanning, [0], 12, HorizontalAlign.LEFT, spanning.text),
+            RenderBlock(spanning, [1], 12, HorizontalAlign.LEFT, spanning.text),
+        ],
+        [RenderBlock(spanning, [0], 12, HorizontalAlign.LEFT, "")],
+    ]
+    lines = [[[], []], [[]]]
+    distribute_multi_row_span_lines(blocks, lines)
+    assert lines[0][1] == []
+    assert lines[0][0] + lines[1][0] == wrap_cell_text(spanning.text, 12)
+
+
 def test_a_span_that_owns_a_single_row_is_left_alone() -> None:
     from edgar_sec.engine.tables.ascii_html.blocks import RenderBlock
     from edgar_sec.engine.tables.ascii_html.model import SourceCell

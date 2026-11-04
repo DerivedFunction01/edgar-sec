@@ -465,70 +465,80 @@ def distribute_multi_row_span_lines(
     from .cell import wrap_cell_text
     from .model import VerticalAlign
 
-    seen_cells: set[int] = set()
-    for blocks in all_row_blocks:
+    # One pass indexes each spanning cell's rows and first block; the per-cell
+    # distribution below reads only its own blocks and non-spanning lines, so
+    # indexing first and distributing second computes the same result.
+    first_block: dict[int, RenderBlock] = {}
+    cell_rows: dict[int, list[int]] = {}
+    for r, blocks in enumerate(all_row_blocks):
         for b in blocks:
             cell = b.cell
-            if cell is None or cell.rowspan <= 1 or id(cell) in seen_cells:
+            if cell is None or cell.rowspan <= 1:
                 continue
-            seen_cells.add(id(cell))
-            row_indices = [
-                r
-                for r, row_b in enumerate(all_row_blocks)
-                if any(x.cell is cell for x in row_b)
+            key = id(cell)
+            if key not in first_block:
+                first_block[key] = b
+                cell_rows[key] = [r]
+            elif cell_rows[key][-1] != r:
+                cell_rows[key].append(r)
+
+    for key, b in first_block.items():
+        cell = b.cell
+        if cell is None:
+            continue
+        row_indices = cell_rows[key]
+        if len(row_indices) <= 1:
+            continue
+
+        full_lines = wrap_cell_text(cell.text, b.width)
+        total_lines = len(full_lines)
+        k = len(row_indices)
+
+        min_heights: list[int] = []
+        for r in row_indices:
+            row_b = all_row_blocks[r]
+            row_bl = all_block_lines[r]
+            other_lens = [
+                len(row_bl[i])
+                for i, x in enumerate(row_b)
+                if x.cell is not cell
+                and (x.cell is None or x.cell.rowspan <= 1)
+                and bool(x.text.strip())
             ]
-            if len(row_indices) <= 1:
-                continue
+            min_heights.append(max(other_lens, default=1) if other_lens else 1)
 
-            full_lines = wrap_cell_text(cell.text, b.width)
-            total_lines = len(full_lines)
-            k = len(row_indices)
-
-            min_heights: list[int] = []
-            for r in row_indices:
-                row_b = all_row_blocks[r]
-                row_bl = all_block_lines[r]
-                other_lens = [
-                    len(row_bl[i])
-                    for i, x in enumerate(row_b)
-                    if x.cell is not cell
-                    and (x.cell is None or x.cell.rowspan <= 1)
-                    and bool(x.text.strip())
-                ]
-                min_heights.append(max(other_lens, default=1) if other_lens else 1)
-
-            if total_lines <= 1:
-                v_align = cell.style.vertical_align
-                if v_align == VerticalAlign.MIDDLE:
-                    target_r = row_indices[k // 2]
-                elif v_align == VerticalAlign.BOTTOM:
-                    target_r = row_indices[-1]
-                else:
-                    target_r = row_indices[0]
-                for r in row_indices:
-                    b_i = next(
-                        i for i, x in enumerate(all_row_blocks[r]) if x.cell is cell
-                    )
-                    all_block_lines[r][b_i] = full_lines if r == target_r else []
+        if total_lines <= 1:
+            v_align = cell.style.vertical_align
+            if v_align == VerticalAlign.MIDDLE:
+                target_r = row_indices[k // 2]
+            elif v_align == VerticalAlign.BOTTOM:
+                target_r = row_indices[-1]
             else:
-                cur_sum = sum(min_heights)
-                extra = max(0, total_lines - cur_sum)
-                heights = list(min_heights)
-                if extra > 0:
-                    base_add = extra // k
-                    rem = extra % k
-                    for i in range(k):
-                        heights[i] += base_add + (1 if i < rem else 0)
+                target_r = row_indices[0]
+            for r in row_indices:
+                b_i = next(
+                    i for i, x in enumerate(all_row_blocks[r]) if x.cell is cell
+                )
+                all_block_lines[r][b_i] = full_lines if r == target_r else []
+        else:
+            cur_sum = sum(min_heights)
+            extra = max(0, total_lines - cur_sum)
+            heights = list(min_heights)
+            if extra > 0:
+                base_add = extra // k
+                rem = extra % k
+                for i in range(k):
+                    heights[i] += base_add + (1 if i < rem else 0)
 
-                offset = 0
-                for i, r in enumerate(row_indices):
-                    h = heights[i]
-                    slice_l = full_lines[offset : offset + h]
-                    offset += h
-                    b_i = next(
-                        j for j, x in enumerate(all_row_blocks[r]) if x.cell is cell
-                    )
-                    all_block_lines[r][b_i] = slice_l
+            offset = 0
+            for i, r in enumerate(row_indices):
+                h = heights[i]
+                slice_l = full_lines[offset : offset + h]
+                offset += h
+                b_i = next(
+                    j for j, x in enumerate(all_row_blocks[r]) if x.cell is cell
+                )
+                all_block_lines[r][b_i] = slice_l
 
 
 __all__ = [
