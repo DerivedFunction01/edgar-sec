@@ -1,5 +1,7 @@
 """Unit tests verifying fact cube coordinate normalization and dimensional categorization."""
 
+import pytest
+
 from edgar_sec.domain.identity import AccessionNumber
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
 from edgar_sec.engine.xbrl.normalize.normalization import (
@@ -101,3 +103,41 @@ def test_normalize_fact_cube_projection() -> None:
     assert norm.dimensions[0].member_role == "DEFAULT"
     assert norm.dimensions[1].axis_family == "GEOGRAPHY"
     assert norm.dimensions[1].member_role == "NORMAL"
+
+
+def test_omitted_taxonomy_loads_once_per_process(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Repeated omitted-taxonomy normalization shares one cached taxonomy load."""
+    from edgar_sec.engine.xbrl.normalize import normalization
+
+    real_load = normalization.load_domain_taxonomy
+    loads = 0
+
+    def counting_load(source=None):
+        nonlocal loads
+        loads += 1
+        return real_load(source)
+
+    monkeypatch.setattr(normalization, "load_domain_taxonomy", counting_load)
+    normalization._default_taxonomy.cache_clear()
+    fact = XbrlFact(
+        accession=AccessionNumber("0000950170-24-087843"),
+        concept_qname="us-gaap:Revenues",
+        value="1250000.5",
+        unit="USD",
+        period_type="duration",
+        start_date="2023-10-01",
+        end_date="2024-09-30",
+        dimensions={
+            "us-gaap:StatementGeographicalAxis": "us-gaap:NorthAmericaMember",
+        },
+    )
+    try:
+        for _ in range(3):
+            norm = normalize_fact(fact)
+        assert loads == 1
+        assert norm.unit_class == "USD"
+        assert norm.atom is None
+    finally:
+        normalization._default_taxonomy.cache_clear()

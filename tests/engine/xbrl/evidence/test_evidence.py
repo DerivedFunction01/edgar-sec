@@ -83,6 +83,27 @@ def test_evidence_geography_subsumption() -> None:
     assert not kb.is_geo_subsumed("srt:AmericasMember", "country:MX")
 
 
+def test_geo_subsumption_memoizes_repeated_queries() -> None:
+    """A repeated (child, ancestor) query is served from the memo."""
+    edges = (
+        GeoHierarchyEdge("country:MX", "srt:LatinAmericaMember"),
+        GeoHierarchyEdge("srt:LatinAmericaMember", "srt:AmericasMember"),
+    )
+    tax = DomainTaxonomy(
+        prime_heads=(),
+        subatomic_modifiers=(),
+        geography_edges=edges,
+    )
+    kb = EvidenceKnowledgeBase(taxonomy=tax)
+    pair = ("country:MX", "srt:AmericasMember")
+    assert kb.is_geo_subsumed(*pair)
+    assert kb._geo_subsumption_memo[pair] is True
+    assert kb.is_geo_subsumed(*pair)
+    miss = ("srt:AmericasMember", "country:MX")
+    assert not kb.is_geo_subsumed(*miss)
+    assert kb._geo_subsumption_memo[miss] is False
+
+
 def test_evidence_decomposition_is_cached() -> None:
     """Verify bare decompositions are computed once per knowledge base."""
     kb = EvidenceKnowledgeBase(taxonomy=load_domain_taxonomy())

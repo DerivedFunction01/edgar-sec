@@ -175,3 +175,16 @@ def test_tokenizer_threads_declaration_to_text_coordinate() -> None:
     assert "M_TEXT_NODE" not in plain.atom.modifiers
     assert "M_TEXT_NODE" in typed.atom.modifiers
     assert typed.atom.head == plain.atom.head
+
+
+def test_tokenizer_caches_the_tokenized_record() -> None:
+    """Repeat tokenize calls return the cached record, not a rebuild."""
+    tokenizer = _tokenizer()
+    first = tokenizer.tokenize("us-gaap:AccountsPayableCurrent")
+    assert tokenizer.tokenize("us-gaap:AccountsPayableCurrent") is first
+    ranked = tokenizer.equivalents(
+        "us-gaap:AccountsPayable",
+        [("us-gaap:AccountsPayableCurrent", first.atom)],
+    )
+    assert [item.qname for item in ranked] == ["us-gaap:AccountsPayableCurrent"]
+    assert tokenizer.tokenize("us-gaap:AccountsPayableCurrent") is first
