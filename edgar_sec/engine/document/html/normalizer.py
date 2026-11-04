@@ -54,7 +54,7 @@ _INLINE_TAGS_ALT = build_alternation(sorted(INLINE_TAGS), auto_escape=True)
 _RE_PARAGRAPH_TAGS = re.compile(rf"</?(?:{_PARAGRAPH_TAGS_ALT})\b[^>]*>", re.IGNORECASE)
 _RE_CONTAINER_TAGS = re.compile(rf"</?(?:{_CONTAINER_TAGS_ALT})\b[^>]*>", re.IGNORECASE)
 _RE_INLINE_TAGS = re.compile(rf"</?(?:{_INLINE_TAGS_ALT})\b[^>]*>", re.IGNORECASE)
-_RE_REMAINING_TAGS = re.compile(r"</?[a-zA-Z][^>]*>")
+_RE_REMAINING_TAGS = re.compile(r"</?[a-zA-Z][a-zA-Z0-9:-]*(?=[\s/>])[^<>]*>")
 _RE_COMMENTS = re.compile(r"<!--.*?-->", re.DOTALL)
 _RE_DECLARATIONS = re.compile(r"<!DOCTYPE[^>]*>|<\?[^>]*\?>", re.IGNORECASE | re.DOTALL)
 _RE_HORIZONTAL_SPACES = re.compile(r"[^\S\n]+")
@@ -125,6 +125,13 @@ def _collapse_source_whitespace(match: re.Match[str]) -> str:
 def _drop_comment(match: re.Match[str]) -> str:
     """Drop a comment, keeping any masked table sentinels it straddled.
     PDF-converted filings wrap page furniture in conditional comments, so a comment can open before a masked table and close after it.
+    """
+    return "\n".join(_RE_SENTINEL.findall(match.group(0)))
+
+
+def _drop_remaining_tag(match: re.Match[str]) -> str:
+    """Drop a leftover tag, keeping any masked table sentinels it straddled.
+    A tag fragment can open before a masked table and close after it, and the pattern above cannot rule that shape out on grammar alone.
     """
     return "\n".join(_RE_SENTINEL.findall(match.group(0)))
 
@@ -225,7 +232,7 @@ def decompose_html_structures(html: str) -> str:
     masked = _RE_CONTAINER_TAGS.sub("\n", masked)
 
     masked = _RE_INLINE_TAGS.sub("", masked)
-    masked = _RE_REMAINING_TAGS.sub("", masked)
+    masked = _RE_REMAINING_TAGS.sub(_drop_remaining_tag, masked)
 
     masked = _RE_HORIZONTAL_SPACES.sub(" ", masked)
     lines = [line.strip() for line in masked.split("\n")]

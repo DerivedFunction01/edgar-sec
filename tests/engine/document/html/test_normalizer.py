@@ -124,6 +124,53 @@ def test_comment_between_tables_drops_only_the_comment() -> None:
     assert "hidden" not in result
 
 
+def test_prose_rating_token_before_a_table_does_not_swallow_it() -> None:
+    # Distilled from accession 0001031235-12-000027: a ratings bucket
+    # written "<BBB." reads as a tag open to an ungrammatical strip, whose
+    # run crossed the masked table and the shareholder letter after it.
+    html = (
+        "<p>rated <BBB. and falling</p>"
+        f"{TAGGED_TABLE}"
+        "<p>Dear Fellow Shareholders: fees > prior year</p>"
+    )
+    result = decompose_html_structures(html)
+    assert TAGGED_TABLE in result
+    assert "Dear Fellow Shareholders" in result
+    assert "<BBB" in result
+
+
+def test_prose_rating_token_without_a_table_keeps_the_text() -> None:
+    # The silent twin of the same shape: with no table in the span, the
+    # strip dropped the prose between "<BBB." and the next ">" quietly.
+    html = "<p>rated <BBB. and the fees > 5% threshold held</p>"
+    result = decompose_html_structures(html)
+    assert result == "rated <BBB. and the fees > 5% threshold held"
+
+
+def test_prose_angle_shapes_are_not_tags() -> None:
+    assert decompose_html_structures("<p>a < b and c > d</p>") == "a < b and c > d"
+    assert decompose_html_structures("<p>i <3 this</p>") == "i <3 this"
+    html = "<p>rated <BBB, outlook negative</p>"
+    assert decompose_html_structures(html) == "rated <BBB, outlook negative"
+
+
+def test_unfamiliar_tags_still_strip() -> None:
+    html = '<p>before</p><frobnicate size="3">inner</frobnicate><p>after</p>'
+    assert decompose_html_structures(html) == "before\n\ninner\n\nafter"
+    html = '<p><ix:nonNumeric name="x">42</ix:nonNumeric></p>'
+    assert decompose_html_structures(html) == "42"
+    assert decompose_html_structures("<p>a<custom-tag/>b</p>") == "ab"
+
+
+def test_tag_fragment_wrapping_a_table_keeps_the_table() -> None:
+    # A tag fragment can open before a masked table and close after it;
+    # the strip keeps the sentinel, so the span restores byte-for-byte.
+    html = f"<p>lead</p><weird {TAGGED_TABLE} tail > prose"
+    result = decompose_html_structures(html)
+    assert TAGGED_TABLE in result
+    assert "prose" in result
+
+
 def test_nested_divs_unroll() -> None:
     html = "<div><div><div><p>deep</p></div></div></div>"
     assert decompose_html_structures(html) == "deep"
