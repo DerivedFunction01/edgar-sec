@@ -166,9 +166,8 @@ def _first_cik(pattern: re.Pattern[str], text: str) -> str | None:
 def _caption_pair_above(lines: list[str]) -> tuple[str | None, str | None]:
     """File number / CIK printed as a value row above their captions.
 
-    A caption block starts at a line holding either phrase fragment and
-    completes over the following lines (joined phrase or securitizer
-    tail); the value row sits above the block's first line.
+    A caption block starts at either phrase fragment and completes over
+    the following lines; the value row sits above the block's first line.
     """
     for index, line in enumerate(lines):
         lowered = line.lower()
