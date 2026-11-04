@@ -39,6 +39,20 @@ def test_unmodelled_family_pdf_resolves_generic_render() -> None:
     assert entry.pins == ("text.pdf", "1", "normalize_pdf_document", "1", "text")
 
 
+def test_nsar_fil_primary_resolves_the_plain_text_capability() -> None:
+    facts = DocumentPathFacts.from_archive_path("answer.fil")
+    entry = resolve_acquisition_capability("NSAR", "primary", "render_to_txt", facts)
+    assert entry.status is CapabilityStatus.SUPPORTED
+    assert entry.pins == ("text.plain", "v1", "normalize_document", "1", "text")
+
+
+def test_opaque_suffix_stays_unsupported_for_render_to_txt() -> None:
+    facts = DocumentPathFacts.from_archive_path("filing.zip")
+    entry = resolve_acquisition_capability("NSAR", "primary", "render_to_txt", facts)
+    assert entry.status is CapabilityStatus.UNSUPPORTED
+    assert entry.pins is None
+
+
 def test_image_suffix_on_the_binary_route_stays_unsupported() -> None:
     facts = DocumentPathFacts.from_archive_path("filing.gif")
     entry = resolve_acquisition_capability("10-K", "primary", "render_to_txt", facts)

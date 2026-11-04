@@ -40,6 +40,15 @@ class TestDocumentPathFacts:
         facts = DocumentPathFacts.from_archive_path("document.zip")
         assert facts.suffix_class == DocumentSuffixClass.OPAQUE
 
+    def test_archive_path_flat_fil_is_text(self) -> None:
+        """Test .fil answer files classify as text, not opaque."""
+        facts = DocumentPathFacts.from_archive_path("answer.fil")
+        assert facts.path_shape == DocumentPathShape.FLAT
+        assert facts.suffix == ".fil"
+        assert facts.suffix_class == DocumentSuffixClass.TEXT
+        sgml = DocumentPathFacts.from_sgml_filename("answer.fil")
+        assert sgml.suffix_class == DocumentSuffixClass.TEXT
+
     def test_sgml_filename_classification(self) -> None:
         """Test SGML filename classification (flat by definition)."""
         facts = DocumentPathFacts.from_sgml_filename("DOC001.XML")
