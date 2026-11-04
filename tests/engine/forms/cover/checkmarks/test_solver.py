@@ -52,6 +52,11 @@ _SCHEMA_FAMILY_CASES = (
         "third-party tender offer subject to Rule 14d-1",
         "third_party_tender_offer",
     ),
+    (
+        "SD",
+        "Rule 13p-1 under the Securities Exchange Act (17 CFR 240.13p-1)",
+        "rule_13p_1",
+    ),
     ("12B-25", "Form 10-K", "subject_10k"),
     ("14A", "Definitive Proxy Statement", "classification_definitive"),
     ("11-K", "Annual report pursuant to Section 15(d)", "report_annual"),

@@ -185,6 +185,9 @@ from edgar_sec.domain.forms.families.form_12reg.processing import (
 from edgar_sec.domain.forms.families.form_12reg.taxonomy import FORM_8A_ITEMS
 from edgar_sec.domain.forms.families.form_abs_ee.processing import PROFILE_ABS_EE
 from edgar_sec.domain.forms.families.form_c.processing import PROFILE_FORM_C
+from edgar_sec.domain.forms.families.form_sd.checkmarks import SD_CHECKBOX_SCHEMA
+from edgar_sec.domain.forms.families.form_sd.processing import PROFILE_SD
+from edgar_sec.domain.forms.families.form_sd.taxonomy import FORM_SD_ITEMS
 from edgar_sec.domain.forms.families.form_drs.processing import PROFILE_DRS
 from edgar_sec.domain.forms.families.form_tender.processing import PROFILE_TENDER
 from edgar_sec.domain.forms.families.form_tender.taxonomy import SCHEDULE_TO_ITEMS
@@ -472,6 +475,12 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         family="8-B",
         profile=PROFILE_FORM_8B,
         taxonomy_items=FORM_8A_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="SD",
+        profile=PROFILE_SD,
+        cover_checkbox_schema=SD_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_SD_ITEMS,
     ),
 )
 
