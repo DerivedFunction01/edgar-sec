@@ -1626,3 +1626,155 @@ def test_gross_unrealized_side_twins_classify_near_by_swap() -> None:
     )
     assert bare.tier == NEAR
     assert bare.rule == "sibling_swap"
+
+
+def test_reversal_bare_pair_is_one_marker_apart() -> None:
+    """The bare impairment pair separates by exactly the reversal marker."""
+    tax = load_domain_taxonomy()
+    plain = _atom("acme:ImpairmentLoss")
+    reversal = _atom("acme:ReversalOfImpairmentLoss")
+    assert plain.modifiers == {"M_IMPAIRMENT"}
+    assert reversal.modifiers == {"M_IMPAIRMENT", "M_REVERSAL"}
+    for target, candidate in ((plain, reversal), (reversal, plain)):
+        result = classify_ladder_pair(
+            target,
+            candidate,
+            tax.default_coordinates,
+            tuple(tax.sibling_groups),
+            relations=tax.atom_relations,
+        )
+        assert result.tier == NEAR
+        assert result.rule == "single_modifier_difference"
+
+
+def test_declared_and_paid_dividends_are_one_marker_apart() -> None:
+    """Declared and paid dividend lines separate by the declaration marker."""
+    tax = load_domain_taxonomy()
+    declared = _atom("acme:CashDividendsDeclared")
+    paid = _atom("acme:CashDividendsPaid")
+    assert declared.modifiers == {"M_DECLARATION", "M_DIVIDEND"}
+    assert paid.modifiers == {"M_DIVIDEND"}
+    result = classify_ladder_pair(
+        declared,
+        paid,
+        tax.default_coordinates,
+        tuple(tax.sibling_groups),
+        relations=tax.atom_relations,
+    )
+    assert result.tier == NEAR
+    assert result.rule == "single_modifier_difference"
+
+
+def test_issuance_and_redemption_no_longer_classify_exact() -> None:
+    """The issuance and redemption acts separate on the same instrument."""
+    tax = load_domain_taxonomy()
+    issuance = _atom("acme:IssuanceOfConvertibleNotes")
+    redemption = _atom("acme:RedemptionOfConvertibleNotes")
+    assert "M_ISSUANCE" in issuance.modifiers
+    assert "M_REDEMPTION" in redemption.modifiers
+    result = classify_ladder_pair(
+        issuance,
+        redemption,
+        tax.default_coordinates,
+        tuple(tax.sibling_groups),
+        relations=tax.atom_relations,
+    )
+    assert result.tier == UNRELATED
+
+
+def test_exercise_and_expiration_outcomes_swap_inside_scope() -> None:
+    """Exercised and expired award counts swap; cash coordinates refuse."""
+    tax = load_domain_taxonomy()
+    exercised = _atom(
+        "ifrs-full:NumberOfShareOptionsExercisedInSharebasedPaymentArrangement"
+    )
+    expired = _atom(
+        "ifrs-full:NumberOfShareOptionsExpiredInSharebasedPaymentArrangement"
+    )
+    assert "M_EXERCISE" in exercised.modifiers
+    assert "M_EXPIRATION" in expired.modifiers
+    result = classify_ladder_pair(
+        exercised,
+        expired,
+        tax.default_coordinates,
+        tuple(tax.sibling_groups),
+        relations=tax.atom_relations,
+    )
+    assert result.tier == NEAR
+    assert result.rule == "sibling_swap"
+
+    cash_exercise = Atom("H_CASH", frozenset({"M_EXERCISE"}))
+    cash_expiration = Atom("H_CASH", frozenset({"M_EXPIRATION"}))
+    refused = classify_ladder_pair(
+        cash_exercise,
+        cash_expiration,
+        tax.default_coordinates,
+        tuple(tax.sibling_groups),
+        relations=tax.atom_relations,
+    )
+    assert refused.tier == UNRELATED
+
+
+def test_favorable_and_unfavorable_sides_swap() -> None:
+    """The off-market outcome pair separates by side, as siblings."""
+    tax = load_domain_taxonomy()
+    favorable = _atom("us-gaap:FavorableRegulatoryActionMember")
+    unfavorable = _atom("us-gaap:UnfavorableRegulatoryActionMember")
+    assert "V_FAVORABLE_SIDE" in favorable.modifiers
+    assert "V_UNFAVORABLE_SIDE" in unfavorable.modifiers
+    result = classify_ladder_pair(
+        favorable,
+        unfavorable,
+        tax.default_coordinates,
+        tuple(tax.sibling_groups),
+        relations=tax.atom_relations,
+    )
+    assert result.tier == NEAR
+    assert result.rule == "sibling_swap"
+
+
+def test_dialect_bridge_refuses_a_purchase_side_collection_marker() -> None:
+    """A purchase-side atom carrying the collection marker fails entry."""
+    tax = load_domain_taxonomy()
+    payments = Atom("H_CASH", frozenset({"M_INVESTMENT"}))
+    clean = Atom("H_ASSET", frozenset({"M_FINANCIAL_INSTRUMENT", "M_PURCHASE"}))
+    marked = Atom(
+        "H_ASSET",
+        frozenset({"M_FINANCIAL_INSTRUMENT", "M_PURCHASE", "M_COLLECTION"}),
+    )
+    control = classify_ladder_pair(
+        payments,
+        clean,
+        tax.default_coordinates,
+        tuple(tax.sibling_groups),
+        relations=tax.atom_relations,
+    )
+    assert control.tier == NEAR and control.via_bridge is True
+    refused = classify_ladder_pair(
+        payments,
+        marked,
+        tax.default_coordinates,
+        tuple(tax.sibling_groups),
+        relations=tax.atom_relations,
+    )
+    assert refused.tier == UNRELATED
+    assert refused.via_bridge is False
+
+
+def test_collection_and_sale_proceeds_carry_their_own_markers() -> None:
+    """Collection and sale proceeds lines state distinct exit acts."""
+    tax = load_domain_taxonomy()
+    collection = _atom("us-gaap:ProceedsFromCollectionOfFinanceReceivables")
+    sale = _atom("us-gaap:PremiumsReceivableProceedsFromSaleOfReceivables")
+    assert collection.modifiers == {"M_COLLECTION"}
+    assert sale.modifiers == {"M_SALE"}
+    for target, candidate in ((collection, sale), (sale, collection)):
+        result = classify_ladder_pair(
+            target,
+            candidate,
+            tax.default_coordinates,
+            tuple(tax.sibling_groups),
+            relations=tax.atom_relations,
+        )
+        assert result.tier == UNRELATED
+        assert result.via_bridge is False

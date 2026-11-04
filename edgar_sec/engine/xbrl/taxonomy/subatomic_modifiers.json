@@ -3112,5 +3112,212 @@
     "kinds": [
       "IDENTITY"
     ]
+  },
+  {
+    "modifier_id": "M_ORIGINATION",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Origination",
+      "Originations"
+    ],
+    "description": "The origination act: loans and receivables created by lending (origination-of, payments-for-origination, proceeds-from-originations), distinct from origination-year vintages and origination fees or costs",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_WRITE_OFF",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Writeoff",
+      "Writeoffs",
+      "Writedown",
+      "Writedowns"
+    ],
+    "description": "The write-off act: carrying amounts written off or written down in value-removed movements (writeoff, writedown, written-off forms); its reversal forms carry M_REVERSAL alongside",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_COLLECTION",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Collection",
+      "Collections"
+    ],
+    "description": "The collection act: cash collected on receivables and loans in proceeds lines, distinct from collections of objects and collection-period attributes",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_REVERSAL",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Reversal",
+      "Reversals"
+    ],
+    "description": "The reversal act: a previously recognized amount reversed, asserted by reversal-of phrases; the reversed family's own carrier rides alongside",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_REMEASUREMENT",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Revaluation",
+      "Remeasurement",
+      "Remeasurements"
+    ],
+    "description": "The remeasurement act: revaluation and remeasurement of assets, liabilities, and benefit obligations (IFRS revaluation model, remeasurement gains and losses)",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_REDEMPTION",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Redemption",
+      "Redemptions",
+      "Redeem",
+      "Redeemed"
+    ],
+    "description": "The redemption act: instruments redeemed by the issuer (redemption-of, payments-for-redemption, shares-redeemed shapes), distinct from redemption price, value, and date attributes",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_ASSUMPTION",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Assumption"
+    ],
+    "description": "The assumption act: obligations taken on from another party (assumption-of in business combinations), distinct from actuarial and measurement assumptions",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_DECLARATION",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Declaration",
+      "Declared"
+    ],
+    "description": "The declaration act: dividends and distributions declared (per-share declared, distributions declared, proposed-or-declared shapes), distinct from declaration dates",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_FORGIVENESS",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Forgiveness"
+    ],
+    "description": "The forgiveness act: principal or debt forgiven by the lender",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_RECOGNITION",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Recognition"
+    ],
+    "description": "The recognition act: amounts brought onto the balance sheet (recognition-of and initial or subsequent recognition-of shapes), distinct from recognition-exemption and designation topics",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "M_EXERCISE",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Exercise",
+      "Exercised",
+      "Exercises"
+    ],
+    "description": "The exercise act: options, warrants, and rights exercised (exercise-of, exercised, and exercises forms), distinct from the exercise-price attribute",
+    "kinds": [
+      "IDENTITY"
+    ],
+    "sibling_groups": [
+      "OPTION_OUTCOME"
+    ]
+  },
+  {
+    "modifier_id": "M_EXPIRATION",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Expiration",
+      "Expirations",
+      "Expired",
+      "Lapse"
+    ],
+    "description": "The expiration act: options, awards, and rights expiring unexercised (expirations, expired, and lapse-of forms), distinct from expiration-date attributes",
+    "kinds": [
+      "IDENTITY"
+    ],
+    "sibling_groups": [
+      "OPTION_OUTCOME"
+    ]
+  },
+  {
+    "modifier_id": "M_ACCRETION",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Accretion"
+    ],
+    "description": "The accretion act: carrying amounts grown by accretion of discount or of asset retirement obligations",
+    "kinds": [
+      "IDENTITY"
+    ]
+  },
+  {
+    "modifier_id": "V_FAVORABLE_SIDE",
+    "category": "POSITION_SIDE",
+    "keywords": [
+      "Favorable"
+    ],
+    "description": "Favorable side of an off-market terms or outcome pair; terms better than market, coexisting with the unfavorable side",
+    "kinds": [
+      "AXIS",
+      "VALUATION"
+    ],
+    "sibling_groups": [
+      "MARKET_SIDE"
+    ]
+  },
+  {
+    "modifier_id": "V_UNFAVORABLE_SIDE",
+    "category": "POSITION_SIDE",
+    "keywords": [
+      "Unfavorable"
+    ],
+    "description": "Unfavorable side of an off-market terms or outcome pair; terms worse than market, coexisting with the favorable side",
+    "kinds": [
+      "AXIS",
+      "VALUATION"
+    ],
+    "sibling_groups": [
+      "MARKET_SIDE"
+    ]
+  },
+  {
+    "modifier_id": "M_AMORTISED_COST",
+    "category": "VALUATION_BASIS",
+    "keywords": [
+      "AmortisedCost"
+    ],
+    "description": "Amortised-cost measurement basis (IFRS spelling family), the basis qualifier on measured-at and at-amortised-cost names",
+    "kinds": [
+      "IDENTITY"
+    ]
   }
 ]

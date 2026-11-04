@@ -52,17 +52,21 @@
    "act": "proceeds",
    "direction": 1.0,
    "head": "H_CASH",
-   "modifiers": [],
+   "modifiers": [
+    "M_COLLECTION"
+   ],
    "name": "ext:ProceedsFromCollectionOfFactoringReceivables",
-   "note": "Head and direction by construction; the collection source act is unmarked."
+   "note": "Head and direction by construction; the collection source act is unmarked. The act carrier lands with the absent-act build."
   },
   {
    "act": "proceeds",
    "direction": 1.0,
    "head": "H_CASH",
-   "modifiers": [],
+   "modifiers": [
+    "M_REDEMPTION"
+   ],
    "name": "ext:ProceedsFromRedemptionOfFundUnits",
-   "note": "Head and direction by construction; the redemption source act is unmarked."
+   "note": "Head and direction by construction; the redemption source act is unmarked. The act carrier lands with the absent-act build."
   },
   {
    "act": "borrowing",
@@ -659,6 +663,453 @@
    ],
    "name": "ext:GreenBondPortfolioGrossUnrealizedGainLoss",
    "note": "The combined bare shape asserts neither side marker."
+  },
+  {
+   "act": "origination",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_ORIGINATION"
+   ],
+   "name": "ext:OriginationOfFactoringReceivables",
+   "note": "The origination-of shape carries the act on a novel object."
+  },
+  {
+   "act": "origination",
+   "direction": -1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_LOAN",
+    "M_ORIGINATION"
+   ],
+   "name": "ext:PaymentsForOriginationOfSolarLoans",
+   "note": "The payments-for-origination anchor carries the act and the outflow direction."
+  },
+  {
+   "act": "origination",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_LOAN",
+    "M_ORIGINATION"
+   ],
+   "name": "ext:ProceedsFromLoanOriginations",
+   "note": "The plural originations form carries the act in a proceeds line."
+  },
+  {
+   "act": "origination",
+   "direction": 1.0,
+   "head": "H_UNKNOWN",
+   "modifiers": [
+    "M_LOAN"
+   ],
+   "name": "ext:LoansByOriginationYear",
+   "note": "The origination-year vintage attribute carries no act."
+  },
+  {
+   "act": "origination",
+   "direction": 1.0,
+   "head": "H_UNKNOWN",
+   "modifiers": [
+    "M_IMPAIRMENT",
+    "M_LOAN",
+    "M_RISK_CREDIT"
+   ],
+   "name": "ext:PurchasedOrOriginatedCreditImpairedLoans",
+   "note": "The originated participial in the credit-impaired classification carries no act."
+  },
+  {
+   "act": "writeoff",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_WRITE_OFF"
+   ],
+   "name": "ext:WriteoffOfDoubtfulReceivables",
+   "note": "The writeoff noun carries the write-off act."
+  },
+  {
+   "act": "writeoff",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_WRITE_OFF"
+   ],
+   "name": "ext:InventoryWritedown",
+   "note": "The writedown form carries the same act as writeoff."
+  },
+  {
+   "act": "writeoff",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [],
+   "name": "ext:WriteUpOfSolarInventory",
+   "note": "Write-up forms carry no carrier; write-ups file as reversals of write-downs."
+  },
+  {
+   "act": "reversal",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_IMPAIRMENT",
+    "M_REVERSAL"
+   ],
+   "name": "ext:ReversalOfImpairmentLoss",
+   "note": "The reversal-of form carries the reversal act beside the impairment tag."
+  },
+  {
+   "act": "reversal",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_REVERSAL",
+    "M_WRITE_OFF"
+   ],
+   "name": "ext:ReversalOfWritedownOnSolarEquipment",
+   "note": "A writedown reversal carries both the family carrier and the reversal act."
+  },
+  {
+   "act": "reversal",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_REVERSAL",
+    "M_WRITE_OFF"
+   ],
+   "name": "ext:WritedownsReversalsOfPerishableInventories",
+   "note": "The fused writedowns-reversals form carries both markers."
+  },
+  {
+   "act": "reversal",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_REVERSAL"
+   ],
+   "name": "ext:ReversalOfSolarPlantProvisions",
+   "note": "The reversal-of shape carries the act on any reversed family."
+  },
+  {
+   "act": "collection",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_COLLECTION"
+   ],
+   "name": "ext:CollectionOfFactoringReceivables",
+   "note": "The collection-of shape carries the act on a novel object."
+  },
+  {
+   "act": "collection",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_COLLECTION"
+   ],
+   "name": "ext:ProceedsFromCollectionOfTradeReceivables",
+   "note": "Collection proceeds carry the act, not the bare payments coordinate."
+  },
+  {
+   "act": "collection",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_COLLECTION",
+    "M_SALE"
+   ],
+   "name": "ext:ProceedsFromSaleAndCollectionOfReceivables",
+   "note": "A combined sale-and-collection line carries both exit-act markers."
+  },
+  {
+   "act": "remeasurement",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_REMEASUREMENT"
+   ],
+   "name": "ext:RevaluationOfSolarGenerationAssets",
+   "note": "The IFRS revaluation word carries the remeasurement act."
+  },
+  {
+   "act": "remeasurement",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_REMEASUREMENT"
+   ],
+   "name": "ext:LossesOnRemeasurementOfSolarAssets",
+   "note": "The remeasurement word carries the same act as revaluation."
+  },
+  {
+   "act": "redemption",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_DEBT",
+    "M_REDEMPTION",
+    "M_SENIOR"
+   ],
+   "name": "ext:RedemptionOfSeniorNotes",
+   "note": "The redemption-of shape carries the act on a novel instrument."
+  },
+  {
+   "act": "redemption",
+   "direction": -1.0,
+   "head": "H_EQUITY",
+   "modifiers": [
+    "M_PREFERRED",
+    "M_REDEMPTION"
+   ],
+   "name": "ext:PaymentsForRedemptionOfPreferredStock",
+   "note": "Payments for redemption carry the act and the outflow direction."
+  },
+  {
+   "act": "redemption",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_DEBT",
+    "M_FINANCIAL_INSTRUMENT",
+    "M_PERCENT"
+   ],
+   "name": "ext:DebtInstrumentRedemptionPricePercentage",
+   "note": "The redemption price attribute carries no act."
+  },
+  {
+   "act": "assumption",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_ASSUMPTION"
+   ],
+   "name": "ext:AssumptionOfRestorationObligations",
+   "note": "Assumption of obligations carries the assumption act."
+  },
+  {
+   "act": "assumption",
+   "direction": 1.0,
+   "head": "H_UNIT_RATE",
+   "modifiers": [],
+   "name": "ext:ActuarialAssumptionOfDiscountRates",
+   "note": "Actuarial assumptions are the object sense and carry no act."
+  },
+  {
+   "act": "declaration",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_DECLARATION",
+    "M_DIVIDEND"
+   ],
+   "name": "ext:CashDividendsDeclared",
+   "note": "Declared dividends carry the declaration act beside the dividend identity."
+  },
+  {
+   "act": "declaration",
+   "direction": 1.0,
+   "head": "H_UNIT_RATE",
+   "modifiers": [
+    "M_DECLARATION",
+    "M_DIVIDEND",
+    "M_PREFERRED"
+   ],
+   "name": "ext:PreferredStockDividendsPerShareDeclared",
+   "note": "The per-share declared anchor carries the act at its own head."
+  },
+  {
+   "act": "declaration",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_DIVIDEND"
+   ],
+   "name": "ext:DividendsPayableDateDeclaredYear",
+   "note": "Declaration dates are attributes and carry no act."
+  },
+  {
+   "act": "forgiveness",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_DEBT",
+    "M_FORGIVENESS",
+    "M_LEASE"
+   ],
+   "name": "ext:ForgivenessOfSolarLeaseDebt",
+   "note": "Debt forgiveness carries the forgiveness act."
+  },
+  {
+   "act": "forgiveness",
+   "direction": 1.0,
+   "head": "H_UNKNOWN",
+   "modifiers": [
+    "M_FORGIVENESS",
+    "M_LOAN"
+   ],
+   "name": "ext:PrincipalForgivenessOnModifiedLoans",
+   "note": "Principal forgiveness members carry the act identity."
+  },
+  {
+   "act": "recognition",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_RECOGNITION"
+   ],
+   "name": "ext:RecognitionOfContractLiabilities",
+   "note": "The recognition-of shape carries the recognition act."
+  },
+  {
+   "act": "recognition",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_FAIR_VALUE",
+    "M_FINANCIAL_INSTRUMENT"
+   ],
+   "name": "ext:FinancialAssetsDesignatedUponInitialRecognitionAtFairValue",
+   "note": "The initial-recognition designation topic carries no act."
+  },
+  {
+   "act": "exercise",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_EXERCISE"
+   ],
+   "name": "ext:ProceedsFromExerciseOfWarrants",
+   "note": "Exercise-of proceeds carry the exercise act."
+  },
+  {
+   "act": "exercise",
+   "direction": 1.0,
+   "head": "H_UNKNOWN",
+   "modifiers": [
+    "M_EXERCISE",
+    "M_OPTION",
+    "M_RISK_EQUITY"
+   ],
+   "name": "ext:StockOptionsExercisedDuringPeriod",
+   "note": "The exercised participial carries the act."
+  },
+  {
+   "act": "exercise",
+   "direction": 1.0,
+   "head": "H_UNIT_RATE",
+   "modifiers": [
+    "M_CHANGE",
+    "M_OPTION"
+   ],
+   "name": "ext:OptionExercisePriceIncrease",
+   "note": "The exercise-price attribute carries no act."
+  },
+  {
+   "act": "expiration",
+   "direction": 1.0,
+   "head": "H_SHARE",
+   "modifiers": [
+    "M_EXPIRATION",
+    "M_OPTION"
+   ],
+   "name": "ext:ShareOptionsExpiredDuringPeriod",
+   "note": "The expired participial carries the expiration act."
+  },
+  {
+   "act": "expiration",
+   "direction": 1.0,
+   "head": "H_UNKNOWN",
+   "modifiers": [
+    "M_OPTION"
+   ],
+   "name": "ext:OptionsExpirationDate",
+   "note": "Expiration dates are attributes and carry no act."
+  },
+  {
+   "act": "favorable",
+   "direction": 1.0,
+   "head": "H_UNKNOWN",
+   "modifiers": [
+    "M_REGULATORY_ASC980",
+    "V_FAVORABLE_SIDE"
+   ],
+   "name": "ext:FavorableRegulatoryActionMember",
+   "note": "The favorable side of an outcome pair carries its side marker."
+  },
+  {
+   "act": "unfavorable",
+   "direction": 1.0,
+   "head": "H_UNKNOWN",
+   "modifiers": [
+    "M_REGULATORY_ASC980",
+    "V_UNFAVORABLE_SIDE"
+   ],
+   "name": "ext:UnfavorableRegulatoryActionMember",
+   "note": "The unfavorable side of an outcome pair carries its side marker."
+  },
+  {
+   "act": "accretion",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_ACCRETION",
+    "M_ARO_DECOMMISSIONING"
+   ],
+   "name": "ext:AccretionOfAssetRetirementObligation",
+   "note": "Accretion of a retirement obligation carries the accretion act."
+  },
+  {
+   "act": "accretion",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_ACCRETION",
+    "M_ENVIRONMENTAL"
+   ],
+   "name": "ext:AccretionExpenseOnEnvironmentalLiabilities",
+   "note": "Accretion expense shapes carry the act."
+  },
+  {
+   "act": "amortised",
+   "direction": 1.0,
+   "head": "H_COST",
+   "modifiers": [
+    "M_AMORTISED_COST",
+    "M_FINANCIAL_INSTRUMENT"
+   ],
+   "name": "ext:FinancialAssetsAtAmortisedCost",
+   "note": "The amortised-cost basis qualifier carries the basis marker."
+  },
+  {
+   "act": "heldtomaturity",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_HELD_TO_MATURITY",
+    "M_IMPAIRMENT",
+    "M_SECURITIES"
+   ],
+   "name": "ext:OtherThanTemporaryImpairmentLossesHeldtomaturitySecurities",
+   "note": "The fused held-to-maturity token carries the classification."
+  },
+  {
+   "act": "bargain",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_BUSINESS_COMBINATION"
+   ],
+   "name": "ext:GainRecognisedInBargainPurchaseTransaction",
+   "note": "The bargain-purchase gain joins the business-combination coordinate."
+  },
+  {
+   "act": "actuarial",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_ACTUARIAL"
+   ],
+   "name": "ext:ActuarialGainsLossesArisingFromExperienceAdjustments",
+   "note": "The fused actuarial gains-losses pair asserts neither gain identity."
   }
  ]
 }
