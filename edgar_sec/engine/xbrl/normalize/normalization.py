@@ -4,11 +4,17 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date
+from functools import lru_cache
 from typing import Mapping
 
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy, load_domain_taxonomy
 from edgar_sec.engine.xbrl.schema.models import XbrlFact
+
+
+@lru_cache(maxsize=1)
+def _default_taxonomy() -> DomainTaxonomy:
+    return load_domain_taxonomy()
 
 
 @dataclass(frozen=True, slots=True)
@@ -120,7 +126,7 @@ def classify_axis_family(
     taxonomy: DomainTaxonomy | None = None,
 ) -> str:
     """Classify an XBRL dimension axis QName using declarative taxonomy."""
-    tax = taxonomy or load_domain_taxonomy()
+    tax = taxonomy or _default_taxonomy()
     return tax.classify_axis(axis_qname)
 
 
@@ -129,7 +135,7 @@ def classify_member_role(
     taxonomy: DomainTaxonomy | None = None,
 ) -> str:
     """Classify a dimension member QName into its accounting aggregation role."""
-    tax = taxonomy or load_domain_taxonomy()
+    tax = taxonomy or _default_taxonomy()
     return tax.classify_member_role(member_qname)
 
 
@@ -138,7 +144,7 @@ def normalize_unit_class(
     taxonomy: DomainTaxonomy | None = None,
 ) -> str:
     """Normalize raw XBRL unit token using declarative taxonomy."""
-    tax = taxonomy or load_domain_taxonomy()
+    tax = taxonomy or _default_taxonomy()
     return tax.normalize_unit(unit)
 
 
@@ -147,7 +153,7 @@ def normalize_dimension_slices(
     taxonomy: DomainTaxonomy | None = None,
 ) -> tuple[DimensionSlice, ...]:
     """Convert raw dimension mapping into sorted canonical DimensionSlice tuples."""
-    tax = taxonomy or load_domain_taxonomy()
+    tax = taxonomy or _default_taxonomy()
     slices: list[DimensionSlice] = []
     for axis, member in sorted(dimensions.items()):
         slices.append(
@@ -172,8 +178,9 @@ def normalize_fact(
         fact.start_date,
         fact.end_date,
     )
-    unit_coord = normalize_unit_class(fact.unit, taxonomy)
-    dim_slices = normalize_dimension_slices(fact.dimensions, taxonomy)
+    resolved = taxonomy if taxonomy is not None else _default_taxonomy()
+    unit_coord = normalize_unit_class(fact.unit, resolved)
+    dim_slices = normalize_dimension_slices(fact.dimensions, resolved)
 
     val: float | None = None
     if isinstance(fact.value, (int, float)):
