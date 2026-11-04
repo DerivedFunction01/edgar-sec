@@ -25,6 +25,15 @@ from edgar_sec.domain.forms.families.form_fwp.taxonomy import FORM_FWP_ITEMS
 from edgar_sec.domain.forms.families.form_ncsr.taxonomy import FORM_NCSR_ITEMS
 from edgar_sec.domain.forms.families.form_nq.taxonomy import FORM_NQ_ITEMS
 from edgar_sec.domain.forms.families.form_nsar.taxonomy import FORM_NSAR_ITEMS
+from edgar_sec.domain.forms.families.form_tender.taxonomy import (
+    SCHEDULE_13E3_ITEMS,
+    SCHEDULE_13E3_PRIOR_ITEMS,
+    SCHEDULE_13E4_ITEMS,
+    SCHEDULE_14D1F_ITEMS,
+    SCHEDULE_14D1_ITEMS,
+    SCHEDULE_14D9_ITEMS,
+    SCHEDULE_TO_ITEMS,
+)
 from edgar_sec.domain.forms.families.registration.evidence import (
     RegistrationEvidence,
 )
@@ -585,4 +594,86 @@ def build_form_497_profile(family: str = "497") -> CoverProfile:
                 *FORWARD_LOOKING_PHRASES,
             ),
         ),
+    )
+
+
+_TENDER_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "schedule to",
+    "tender offer statement",
+    "name of subject company",
+    "names of filing persons",
+    "name of filing person",
+    "name of person filing statement",
+    "title of class of securities",
+    "cusip number of class of securities",
+    "person authorized to receive notices and communications",
+    "calculation of filing fee",
+    "schedule 14d-9",
+    "solicitation/recommendation statement",
+    "schedule 13e-3",
+    "rule 13e-3 transaction statement",
+    "name of the issuer",
+    "name of issuer",
+    "names of persons filing statement",
+    "schedule 13e-4",
+    "issuer tender offer statement",
+    "schedule 14d-1f",
+    "check the appropriate boxes below to designate any transactions",
+)
+
+_TENDER_ITEM_SETS = (
+    SCHEDULE_TO_ITEMS,
+    SCHEDULE_14D9_ITEMS,
+    SCHEDULE_13E3_ITEMS,
+    SCHEDULE_13E3_PRIOR_ITEMS,
+    SCHEDULE_13E4_ITEMS,
+    SCHEDULE_14D1_ITEMS,
+    SCHEDULE_14D1F_ITEMS,
+)
+
+
+def build_form_tender_profile(family: str = "SC TO") -> CoverProfile:
+    """Cover profile for tender offer statements: the schedule facing
+    sheet (subject company, filing persons, class, CUSIP, designation
+    boxes) forms the cover; the body is the item sequence of its kind.
+    """
+    identifiers = tuple(
+        dict.fromkeys(d.item for items in _TENDER_ITEM_SETS for d in items)
+    )
+    titles = tuple(
+        dict.fromkeys(d.names[0] for items in _TENDER_ITEM_SETS for d in items)
+    )
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.TOC_TRANSITION,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_TENDER_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(
+                *COMMON_COVER_LABELS,
+                *COVER_EVIDENCE_TERMS,
+                *_TENDER_COVER_LABELS,
+            ),
+            labels=_TENDER_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=identifiers,
+            semantic_headings=(
+                *titles,
+                "signature",
+                "signatures",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+        unwrap_false_tables=False,
     )

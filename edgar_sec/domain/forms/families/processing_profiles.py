@@ -169,6 +169,11 @@ from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
     SCHEDULE_13D_ITEMS,
     SCHEDULE_13G_ITEMS,
 )
+from edgar_sec.domain.forms.families.form_tender.checkmarks import (
+    TENDER_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_tender.processing import PROFILE_TENDER
+from edgar_sec.domain.forms.families.form_tender.taxonomy import SCHEDULE_TO_ITEMS
 
 
 @dataclass(frozen=True, slots=True)
@@ -415,6 +420,12 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         family="13G",
         profile=PROFILE_SCHEDULE_13G,
         taxonomy_items=SCHEDULE_13G_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="SC TO",
+        profile=PROFILE_TENDER,
+        cover_checkbox_schema=TENDER_CHECKBOX_SCHEMA,
+        taxonomy_items=SCHEDULE_TO_ITEMS,
     ),
 )
 

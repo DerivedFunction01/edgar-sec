@@ -41,6 +41,11 @@ _SCHEMA_FAMILY_CASES = (
     ("S-4", "General instruction G", "instruction_g"),
     ("S-8", "Well-known seasoned issuer", "well_known_seasoned_issuer"),
     ("15", "Rule 12h-3(b)(1)(i)", "rule_12h3_b1_i"),
+    (
+        "SC TO",
+        "third-party tender offer subject to Rule 14d-1",
+        "third_party_tender_offer",
+    ),
     ("12B-25", "Form 10-K", "subject_10k"),
     ("14A", "Definitive Proxy Statement", "classification_definitive"),
     ("11-K", "Annual report pursuant to Section 15(d)", "report_annual"),

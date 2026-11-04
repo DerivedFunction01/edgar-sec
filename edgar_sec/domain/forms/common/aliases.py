@@ -391,6 +391,10 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "SC 14D1/A",
         "SC14D1F",
         "SC14D1F/A",
+        "SC 13E3",
+        "SC 13E3/A",
+        "SC 13E4",
+        "SC 13E4/A",
     ),
     "DRS": (
         "DRS",
