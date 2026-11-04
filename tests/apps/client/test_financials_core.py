@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import pytest
 
+from edgar_sec.apps.client.composition import CompositionResult, OperandResolution
+from edgar_sec.apps.client.facts import DisplayRecord
 from edgar_sec.apps.client.financials import XbrlFinancials
 from edgar_sec.apps.client.financials_core import FinancialsCore
 from edgar_sec.apps.client.kernel import FilingKernel
@@ -14,12 +16,14 @@ from edgar_sec.engine.xbrl.discovery.cohort import (
     canonical_seed_cohort_path,
     canonical_vintage_cohort_path,
 )
+from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import (
     CalculationArc,
     FilingXbrl,
     LinkbaseBundle,
     XbrlFact,
 )
+from edgar_sec.engine.xbrl.solve.query import QueryStatus
 from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
 from edgar_sec.pipelines.xbrl_review.bundles import load_filing, registry_filings
 from tests.support import bundle_dir
@@ -266,6 +270,8 @@ _ASX_20F = "0001193125-24-085380"
 _DB_6K = "0001193125-18-226042"
 _TAC_40F = "0001144800-22-000004"
 _TRI_40F = "0001193125-22-071339"
+_HSBC_6K = "0001089113-26-000025"
+_GROY_20F = "0000950170-22-027021"
 _WHK_S1 = "0001193125-26-410790"
 
 
@@ -313,20 +319,197 @@ def test_capex_excludes_sale_proceeds() -> None:
     assert hometrust.capex == 3_420_000.0
 
 
-def test_free_cash_flow_refuses_a_proceeds_chain_leg() -> None:
-    """A chain difference over a refused proceeds leg serves no FCF."""
-    for accession in (_ASX_20F, _DB_6K, _TAC_40F):
-        fin = _probe_facade(accession).financials
-        assert fin.capex is None
-        assert fin.free_cash_flow is None
-        assert fin.span_class("free_cash_flow") is None
+def test_capex_purchase_shape_serves_the_ifrs_specimens() -> None:
+    """ASX/DB/TAC file purchase-led PP&E lines only; capex and FCF serve."""
+    asx = _probe_facade(_ASX_20F).financials
+    assert asx.capex == 54_158_229_000.0
+    assert asx.free_cash_flow == asx.operating_cash_flow - asx.capex
+    db = _probe_facade(_DB_6K).financials
+    assert db.capex == 196_000_000.0
+    assert db.free_cash_flow == db.operating_cash_flow - db.capex
+    tac = _probe_facade(_TAC_40F).financials
+    assert tac.capex == 480_000_000.0
+    assert tac.free_cash_flow == tac.operating_cash_flow - tac.capex
 
 
-def test_free_cash_flow_zero_proceeds_leg_embeds_no_amount() -> None:
-    """TRI's refused leg files 0.0; the served FCF is the filed cfo fact."""
+def test_capex_serves_the_purchase_shape() -> None:
+    """TRI's only PP&E line is purchase-led; it serves, and FCF follows."""
     fin = _probe_facade(_TRI_40F).financials
+    assert fin.capex == 487_000_000.0
+    assert fin.capex_series == {"2020": 504_000_000.0, "2021": 487_000_000.0}
+    assert fin.free_cash_flow == 1_286_000_000.0
+    assert fin.free_cash_flow == fin.operating_cash_flow - fin.capex
+
+
+def test_capex_purchase_shape_on_hsbc_and_groy() -> None:
+    """HSBC's interim purchase line serves at its class; GROY's FCF verifies."""
+    hsbc = _probe_facade(_HSBC_6K).financials
+    assert hsbc.capex == 1_002_000_000.0
+    assert hsbc.span_class("capex") == "YTD_2Q"
+    assert hsbc.free_cash_flow == hsbc.operating_cash_flow - hsbc.capex
+    groy = _probe_facade(_GROY_20F).financials
+    assert groy.capex == 28_000.0
+    assert groy.free_cash_flow == -19_290_000.0
+    assert groy.free_cash_flow == groy.operating_cash_flow - groy.capex
+
+
+_PURCHASE_PPE_QNAME = (
+    "ifrs-full:PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities"
+)
+_SALE_MARKED_PURCHASE_QNAME = (
+    "acme:PurchaseAndSaleOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities"
+)
+
+
+def _fact_at(qname: str, value: float, start: str, end: str) -> XbrlFact:
+    """One undimensioned duration fact over an explicit span."""
+    return XbrlFact(
+        accession=AccessionNumber.from_any("0000000000-24-000000"),
+        concept_qname=qname,
+        value=value,
+        unit="USD",
+        period_type="duration",
+        start_date=start,
+        end_date=end,
+    )
+
+
+def test_capex_payments_coordinate_governs_shared_years() -> None:
+    """Both dialects filed: payments govern shared years, purchase fills."""
+    facts = (
+        _fact_at(
+            "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+            300.0,
+            "2023-01-01",
+            "2023-12-31",
+        ),
+        _fact_at(_PURCHASE_PPE_QNAME, 500.0, "2023-01-01", "2023-12-31"),
+        _fact_at(_PURCHASE_PPE_QNAME, 700.0, "2024-01-01", "2024-12-31"),
+    )
+    fin = _synthetic_financials(facts, ())
+    assert fin.capex_series == {"2023": 300.0, "2024": 700.0}
+    assert fin.capex == 700.0
+    assert fin.series("capex", length_class="ANNUAL") == {
+        "2023": 300.0,
+        "2024": 700.0,
+    }
+    assert fin.span_class("capex") == "ANNUAL"
+
+
+def test_capex_excludes_a_sale_marked_purchase_line() -> None:
+    """The sale exclusion keys on the marker at the purchase coordinate too."""
+    facts = (_duration_fact(_SALE_MARKED_PURCHASE_QNAME, 100.0),)
+    fin = _synthetic_financials(facts, ())
     assert fin.capex is None
-    assert fin.free_cash_flow == 1_841_000_000.0
+    assert fin.capex_series == {}
+
+
+_COMBINED_PURCHASE_QNAME = (
+    "ifrs-full:PurchaseOfPropertyPlantAndEquipmentIntangibleAssets"
+    "OtherThanGoodwillInvestmentPropertyAndOtherNoncurrentAssets"
+)
+_BARE_PURCHASE_QNAME = "acme:PurchaseOfPropertyPlantAndEquipment"
+_DISPOSAL_PROCEEDS_QNAME = (
+    "ifrs-full:ProceedsFromDisposalsOfPropertyPlantAndEquipment"
+    "IntangibleAssetsOtherThanGoodwillInvestmentPropertyAndOtherNoncurrentAssets"
+)
+
+
+def test_capex_purchase_act_shape_serves_the_combined_line() -> None:
+    """The combined unclassified purchase line serves (Barclays' shape)."""
+    facts = (
+        _fact_at(_COMBINED_PURCHASE_QNAME, 1_574_000_000.0, "2024-01-01", "2024-12-31"),
+        _fact_at(_COMBINED_PURCHASE_QNAME, 1_859_000_000.0, "2025-01-01", "2025-12-31"),
+    )
+    fin = _synthetic_financials(facts, ())
+    assert fin.capex_series == {"2024": 1_574_000_000.0, "2025": 1_859_000_000.0}
+    assert fin.capex == 1_859_000_000.0
+
+
+def test_capex_classified_shape_governs_the_purchase_act_shape() -> None:
+    """Both purchase shapes filed: the classified shape governs its years."""
+    facts = (
+        _fact_at(_BARE_PURCHASE_QNAME, 900.0, "2023-01-01", "2023-12-31"),
+        _fact_at(_PURCHASE_PPE_QNAME, 500.0, "2023-01-01", "2023-12-31"),
+        _fact_at(_BARE_PURCHASE_QNAME, 700.0, "2024-01-01", "2024-12-31"),
+    )
+    fin = _synthetic_financials(facts, ())
+    assert fin.capex_series == {"2023": 500.0, "2024": 700.0}
+    assert fin.capex == 700.0
+
+
+def test_capex_excludes_a_disposal_marked_proceeds_line() -> None:
+    """A disposal-proceeds line is not capex; the purchase line serves."""
+    facts = (
+        _fact_at(_DISPOSAL_PROCEEDS_QNAME, 400_000.0, "2025-01-01", "2025-12-31"),
+        _fact_at(_PURCHASE_PPE_QNAME, 485_210_000.0, "2025-01-01", "2025-12-31"),
+    )
+    fin = _synthetic_financials(facts, ())
+    assert fin.capex == 485_210_000.0
+    assert fin.capex_series == {"2025": 485_210_000.0}
+
+
+def test_capex_disposal_proceeds_alone_serve_nothing() -> None:
+    """A filing with only a disposal-proceeds line serves no capex."""
+    facts = (_fact_at(_DISPOSAL_PROCEEDS_QNAME, 400_000.0, "2025-01-01", "2025-12-31"),)
+    fin = _synthetic_financials(facts, ())
+    assert fin.capex is None
+    assert fin.capex_series == {}
+
+
+def _leg_financials() -> XbrlFinancials:
+    """Financials whose records carry both purchase-coordinate shapes."""
+    atoms = {
+        "acme:PurchaseOfPropertyPlantAndEquipment": Atom(
+            "H_ASSET", frozenset({"M_PPE_CAPEX", "M_INVESTING", "M_PURCHASE"})
+        ),
+        "acme:PurchaseAndSaleOfPropertyPlantAndEquipment": Atom(
+            "H_ASSET",
+            frozenset({"M_PPE_CAPEX", "M_INVESTING", "M_PURCHASE", "M_SALE"}),
+        ),
+    }
+    records = {
+        qname: DisplayRecord(qname=qname, atom=atom, presumed_atom=atom)
+        for qname, atom in atoms.items()
+    }
+    kernel = FilingKernel((), (), load_domain_taxonomy(), records=records)
+    return XbrlFinancials(kernel)
+
+
+def _capex_leg(qname: str, value: float) -> CompositionResult:
+    """A composed chain whose capex leg resolved to one concept."""
+    operand = OperandResolution(
+        sign="-",
+        term="capex",
+        status=QueryStatus.REPORTED,
+        value=value,
+        concept_qname=qname,
+    )
+    return CompositionResult(
+        status=QueryStatus.DERIVED, value=value, operands=(operand,)
+    )
+
+
+def test_chain_leg_refusal_covers_the_purchase_coordinate() -> None:
+    """The capex-leg refusal keys on the leg atom's markers, not its head."""
+    fin = _leg_financials()
+    sale_leg = _capex_leg("acme:PurchaseAndSaleOfPropertyPlantAndEquipment", 10.0)
+    clean_leg = _capex_leg("acme:PurchaseOfPropertyPlantAndEquipment", 10.0)
+    zero_leg = _capex_leg("acme:PurchaseAndSaleOfPropertyPlantAndEquipment", 0.0)
+    assert fin._chain_leg_refused(sale_leg)
+    assert not fin._chain_leg_refused(clean_leg)
+    assert not fin._chain_leg_refused(zero_leg)
+
+
+def test_chain_leg_refusal_covers_a_disposal_marked_leg() -> None:
+    """The widened exclusion refuses a disposal-marked chain capex leg."""
+    qname = "acme:ProceedsFromDisposalOfPropertyPlantAndEquipment"
+    atom = Atom("H_CASH", frozenset({"M_PPE_CAPEX", "M_DISPOSAL"}))
+    records = {qname: DisplayRecord(qname=qname, atom=atom, presumed_atom=atom)}
+    kernel = FilingKernel((), (), load_domain_taxonomy(), records=records)
+    fin = XbrlFinancials(kernel)
+    assert fin._chain_leg_refused(_capex_leg(qname, 10.0))
+    assert not fin._chain_leg_refused(_capex_leg(qname, 0.0))
 
 
 def test_free_cash_flow_is_the_served_operands_difference() -> None:
