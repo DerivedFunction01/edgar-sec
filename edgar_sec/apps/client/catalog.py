@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
+from functools import lru_cache
 from typing import TYPE_CHECKING
 
 from edgar_sec.engine.xbrl.discovery.placement_slices import tokenize_fact_concept
@@ -94,21 +95,32 @@ def build_catalog(kernel: FilingKernel) -> tuple[CatalogEntry, ...]:
     )
 
 
+@lru_cache(maxsize=64)
+def _catalog_index(
+    entries: tuple[CatalogEntry, ...],
+) -> tuple[dict[str, CatalogEntry], dict[str, CatalogEntry], dict[str, CatalogEntry]]:
+    """First-wins lookups by role URI, exact title, and casefolded title."""
+    by_role: dict[str, CatalogEntry] = {}
+    by_title: dict[str, CatalogEntry] = {}
+    by_folded: dict[str, CatalogEntry] = {}
+    for entry in entries:
+        by_role.setdefault(entry.role_uri, entry)
+        by_title.setdefault(entry.title, entry)
+        by_folded.setdefault(entry.title.casefold(), entry)
+    return by_role, by_title, by_folded
+
+
 def catalog_get(
     entries: tuple[CatalogEntry, ...], role_or_title: str
 ) -> CatalogEntry | None:
     """Resolve one entry by role URI, else by title (exact, then casefolded)."""
-    for entry in entries:
-        if entry.role_uri == role_or_title:
-            return entry
-    for entry in entries:
-        if entry.title == role_or_title:
-            return entry
-    folded = role_or_title.casefold()
-    for entry in entries:
-        if entry.title.casefold() == folded:
-            return entry
-    return None
+    by_role, by_title, by_folded = _catalog_index(entries)
+    found = by_role.get(role_or_title)
+    if found is None:
+        found = by_title.get(role_or_title)
+    if found is None:
+        found = by_folded.get(role_or_title.casefold())
+    return found
 
 
 def catalog_search(
