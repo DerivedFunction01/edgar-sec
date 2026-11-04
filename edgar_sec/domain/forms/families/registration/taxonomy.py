@@ -7,6 +7,19 @@ from edgar_sec.domain.forms.families.annual.taxonomy import build_taxonomy_deriv
 
 PARTS: tuple[str, ...] = ("PART I", "PART II")
 
+REGISTRATION_FORM_TYPES: tuple[str, ...] = (
+    "S-1",
+    "S-3",
+    "S-4",
+    "S-8",
+    "S-11",
+    "F-1",
+    "F-3",
+    "F-4",
+    "F-6",
+    "N-2",
+)
+
 FORM_S1_ITEMS: tuple[ItemDefinition, ...] = (
     ItemDefinition(
         "ITEM 1",
@@ -565,4 +578,5 @@ __all__ = [
     "FORM_S8_ITEMS",
     "ITEMS",
     "PARTS",
+    "REGISTRATION_FORM_TYPES",
 ]

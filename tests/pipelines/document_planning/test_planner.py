@@ -391,6 +391,161 @@ def test_corrupt_target_part_size_is_rejected(tmp_path: Path) -> None:
         read_published_plan(result.plan_id, paths)
 
 
+def _publish_catalog_forms(
+    paths, rows_by_form: dict[str, list[dict[str, Any]]]
+) -> None:
+    catalog_paths = resolve_catalog_paths(paths.artifacts_root)
+    root = catalog_paths.plan_dir("catalog-plan")
+    target_parts = []
+    counts = {}
+    total = 0
+    for form, rows in rows_by_form.items():
+        part = root / "targets" / f"form={form}" / "data.parquet"
+        part.parent.mkdir(parents=True, exist_ok=True)
+        table = pa.Table.from_pylist(rows, schema=TARGET_SCHEMA)
+        pq.write_table(table, part, compression="zstd")
+        target_parts.append(
+            {
+                "form": form,
+                "path": f"targets/form={form}/data.parquet",
+                "row_count": len(rows),
+                "byte_size": part.stat().st_size,
+                "sha256": file_sha256(part),
+            }
+        )
+        counts[form] = len(rows)
+        total += len(rows)
+    manifest = {
+        "plan_id": "catalog-plan",
+        "plan_schema_version": TARGET_PLAN_SCHEMA_VERSION,
+        "catalog_id": "catalog-snapshot",
+        "scope": "deterministic",
+        "plan_fingerprint": "catalog-fingerprint",
+        "forms": [],
+        "counts": counts,
+        "selected_rows": total,
+        "target_parts": target_parts,
+    }
+    (root / "plan.json").write_text(json.dumps(manifest), encoding="utf-8")
+
+
+_RELATION_TAILS = {
+    "accession, request_id": "targets",
+    "target_id, operation": "target_operations",
+    "operation_id, input_ordinal": "operation_inputs",
+    "source_request_id": "source_requests",
+}
+
+
+def _stream_sort_key(relation: str, row: dict[str, Any]) -> tuple:
+    if relation == "targets":
+        return (
+            row["partition_form"],
+            row["accession"],
+            row["request_id"],
+            row["inventory_entry_id"] is not None,
+            row["inventory_entry_id"] or "",
+            row["status"],
+        )
+    if relation == "target_operations":
+        return (row["partition_form"], row["target_id"], row["operation"])
+    if relation == "operation_inputs":
+        return (row["partition_form"], row["operation_id"], row["input_ordinal"])
+    return (row["partition_form"], row["source_request_id"])
+
+
+def _install_disordered_stream(monkeypatch: pytest.MonkeyPatch, transform) -> None:
+    # Replays the observed sort-stream disorder: locally sorted runs whose
+    # concatenation is not globally sorted. Post-fix code must not depend on it.
+    def fake_reader(_con, query, params=None, _batch_size=None):
+        relation = next(name for tail, name in _RELATION_TAILS.items() if tail in query)
+        table = pq.read_table(params[0])
+        rows = sorted(
+            table.to_pylist(), key=lambda row: _stream_sort_key(relation, row)
+        )
+        if relation == "operation_inputs":
+            rows = transform(rows)
+        return iter(pa.Table.from_pylist(rows, schema=table.schema).to_batches())
+
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_planning.planner.arrow_reader",
+        fake_reader,
+        raising=False,
+    )
+
+
+def _invert_adjacent(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    reordered = list(rows)
+    reordered[4], reordered[5] = reordered[5], reordered[4]
+    return reordered
+
+
+def _repeat_first_form(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    forms = sorted({row["partition_form"] for row in rows})
+    first = [row for row in rows if row["partition_form"] == forms[0]]
+    rest = [row for row in rows if row["partition_form"] != forms[0]]
+    half = len(first) // 2
+    return first[:half] + rest + first[half:]
+
+
+def test_plan_parts_stay_sorted_when_the_sort_stream_inverts_rows(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = _paths(tmp_path)
+    _write_profile(paths, [_target("primary", "primary")])
+    accessions = [f"00000000012400000{number}" for number in (1, 2, 3)]
+    rows = [
+        _catalog_row(
+            occurrence_id=f"occ-{index}",
+            accession=accession,
+            document_locator_key=f"locator-{index}",
+            archive_url=f"https://www.sec.gov/Archives/edgar/data/1/{accession}/primary.htm",
+        )
+        for index, accession in enumerate(accessions)
+    ]
+    _publish_catalog(paths, rows)
+    _install_disordered_stream(monkeypatch, _invert_adjacent)
+
+    result = create_document_plan("catalog-plan", "test-profile", paths=paths)
+    plan = read_published_plan(result.plan_id, paths)
+    keys = [
+        (row["operation_id"], row["input_ordinal"])
+        for row in _relation_rows(plan, "operation_inputs")
+    ]
+
+    assert keys == sorted(keys)
+    assert len(set(keys)) == len(keys) == 9
+
+
+def test_plan_parts_stay_valid_when_the_sort_stream_repeats_a_form(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    paths = _paths(tmp_path)
+    _write_profile(paths, [_target("primary", "primary")])
+
+    def row(index: int, form: str) -> dict[str, Any]:
+        accession = f"00000000012400000{index}"
+        return _catalog_row(
+            occurrence_id=f"occ-{index}",
+            accession=accession,
+            form=form,
+            document_locator_key=f"locator-{index}",
+            archive_url=f"https://www.sec.gov/Archives/edgar/data/1/{accession}/primary.htm",
+        )
+
+    _publish_catalog_forms(
+        paths, {"10-K": [row(1, "10-K"), row(2, "10-K")], "8-K": [row(3, "8-K")]}
+    )
+    _install_disordered_stream(monkeypatch, _repeat_first_form)
+
+    result = create_document_plan("catalog-plan", "test-profile", paths=paths)
+    plan = read_published_plan(result.plan_id, paths)
+    input_parts = _parts(plan.manifest, "operation_inputs")
+
+    assert len(input_parts) == 2
+    assert sum(part["rows"] for part in input_parts) == 9
+
+
 @pytest.mark.parametrize("mismatch", [False, True])
 def test_unindexed_is_unresolved_and_catalog_mismatch_refuses(
     tmp_path: Path,

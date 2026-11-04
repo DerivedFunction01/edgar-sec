@@ -197,6 +197,8 @@ FORM_10K_ITEMS: tuple[ItemDefinition, ...] = (
     ),
 )
 
+FORM_20F_TYPE = "20-F"
+
 FORM_20F_ITEMS: tuple[ItemDefinition, ...] = (
     ItemDefinition(
         "ITEM 1",
@@ -511,6 +513,7 @@ __all__ = [
     "FORM_10K_ITEMS",
     "FORM_20F_DERIVED",
     "FORM_20F_ITEMS",
+    "FORM_20F_TYPE",
     "ITEMS",
     "PARTS",
     "build_taxonomy_derived",

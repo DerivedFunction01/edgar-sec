@@ -19,7 +19,7 @@ from edgar_sec.foundation.hashing import file_sha256, sha256_text
 from edgar_sec.foundation.runtime.paths import part_file_name
 from edgar_sec.foundation.serialization import canonical_hash, canonical_json
 from edgar_sec.infra.storage.dag.catalog import DAGCatalog
-from edgar_sec.infra.storage.duckdb import arrow_reader, connect
+from edgar_sec.infra.storage.duckdb import connect, copy_query_to_parquet
 from edgar_sec.pipelines.document_planning.catalog_scope import (
     CatalogOccurrence,
     CatalogScope,
@@ -59,7 +59,10 @@ from edgar_sec.pipelines.document_planning.profiles import (
 )
 from edgar_sec.pipelines.document_planning.publication import publish_plan_bundle
 from edgar_sec.foundation.runtime.settings.runtime import resolve_read_batch_size
-from edgar_sec.foundation.runtime.settings.parquet import resolve_row_group_size
+from edgar_sec.foundation.runtime.settings.parquet import (
+    resolve_parquet_read_batch_size,
+    resolve_row_group_size,
+)
 from edgar_sec.infra.storage.parquet import DEFAULT_COMPRESSION
 from edgar_sec.pipelines.document_planning.schemas import (
     INVENTORY_RELATIONS,
@@ -542,7 +545,7 @@ def _sort_and_write_relation_parts(
     schema: pa.Schema,
     row_group_size: int,
 ) -> list[dict[str, Any]]:
-    read_batch_size = resolve_read_batch_size()
+    read_batch_size = resolve_parquet_read_batch_size()
     parts: list[dict[str, Any]] = []
     current_form: str | None = None
     buffered: list[pa.Table] = []
@@ -582,11 +585,21 @@ def _sort_and_write_relation_parts(
         buffered = []
         buffered_rows = 0
 
-    with connect() as con:
-        reader = arrow_reader(
-            con, _RELATION_QUERY[relation], [str(spool_path)], read_batch_size
-        )
-        for batch in reader:
+    # The sort is materialized through the COPY sink, whose output rows are
+    # in ORDER BY order; a streamed relation reader may instead emit
+    # parallel sort runs concatenated without a final merge.
+    sorted_path = spool_path.with_name(f"{spool_path.stem}.sorted.parquet")
+    try:
+        with connect() as con:
+            copy_query_to_parquet(
+                con,
+                _RELATION_QUERY[relation],
+                sorted_path,
+                row_group_size=row_group_size,
+                params=[str(spool_path)],
+            )
+        sorted_file = pq.ParquetFile(sorted_path)
+        for batch in sorted_file.iter_batches(batch_size=read_batch_size):
             forms = batch.column(
                 batch.schema.get_field_index("partition_form")
             ).to_pylist()
@@ -608,6 +621,8 @@ def _sort_and_write_relation_parts(
                     if buffered_rows == row_group_size:
                         flush()
                 offset = end
+    finally:
+        sorted_path.unlink(missing_ok=True)
     flush()
     parts.sort(key=lambda item: (item["form"], item["path"]))
     return parts

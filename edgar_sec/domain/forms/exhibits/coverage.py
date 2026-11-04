@@ -204,6 +204,19 @@ FORM_20F_ITEM_19: SourceRef = SourceRef(
     note="SEC Form 20-F Instructions as to Exhibits",
 )
 
+ABS_XML_SPEC_V31: SourceRef = SourceRef(
+    source_path="https://www.sec.gov/files/absxml-31.zip",
+    section_or_lines="EDGAR ABS XML Technical Specification v3.1",
+    note="SEC ABS XML specification: EX-102 / EX-103 asset-data exhibits",
+)
+
+# Companion-parsed by the form_abs_ee machinery; the anchor evaluator
+# does not score these codes, hence "partial".
+ABS_DESCRIPTIONS: dict[str, tuple[str, CoverageStatus]] = {
+    "102": ("Asset Data (Regulation AB)", "partial"),
+    "103": ("Asset Data, narrative (Regulation AB)", "partial"),
+}
+
 
 # Build lookup tables
 def _build_601_ledger() -> dict[tuple[str, str], CoverageEntry]:
@@ -240,9 +253,26 @@ def _build_20f_ledger() -> dict[tuple[str, str], CoverageEntry]:
     return {("form_20f", e.code): e for e in rows}
 
 
+def _build_abs_ledger() -> dict[tuple[str, str], CoverageEntry]:
+    """Build Regulation AB asset-data coverage ledger."""
+    rows: list[CoverageEntry] = []
+    for code, (title, status) in ABS_DESCRIPTIONS.items():
+        rows.append(
+            CoverageEntry(
+                authority_id="reg_ab",
+                code=code,
+                title=title,
+                coverage_status=status,
+                source_refs=ABS_XML_SPEC_V31,
+            )
+        )
+    return {("reg_ab", e.code): e for e in rows}
+
+
 _LOOKUP: dict[tuple[str, str], CoverageEntry] = {}
 _LOOKUP.update(_build_601_ledger())
 _LOOKUP.update(_build_20f_ledger())
+_LOOKUP.update(_build_abs_ledger())
 
 __all__ = [
     "CoverageEntry",

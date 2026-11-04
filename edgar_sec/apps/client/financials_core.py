@@ -18,7 +18,11 @@ from edgar_sec.engine.xbrl.normalize.decomposer import (
 from edgar_sec.engine.xbrl.normalize.normalization import normalize_time_coordinate
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import XbrlFact, split_concept_qname
-from edgar_sec.engine.xbrl.solve.identities import eps_identity_legs
+from edgar_sec.engine.xbrl.solve.identities import (
+    cleanest_facts,
+    eps_identity_legs,
+    unique_value,
+)
 from edgar_sec.engine.xbrl.taxonomy.archive import standard_prefixes
 
 
@@ -26,9 +30,6 @@ _FALLBACK_LENGTH_CLASSES = ("YTD_3Q", "YTD_2Q", "QUARTER")
 # Metric-definition exclusions at the scalar-selection seam: concepts
 # whose modifier shape names a different measure than the metric.
 REVENUE_EXCLUDED_MODS = frozenset({"M_PRO_FORMA", "M_DEPR_AMORT"})
-CAPEX_EXCLUDED_MODS = frozenset({"M_SALE", "M_DISPOSAL"})
-CAPEX_PURCHASE_MODS = frozenset({"M_PPE_CAPEX", "M_INVESTING"})
-CAPEX_PURCHASE_ACT_MODS = frozenset({"M_PPE_CAPEX", "M_PURCHASE"})
 OCF_EXCLUDED_MODS = frozenset({"M_NET_BOTTOMLINE"})
 _EPS_ATOMS: dict[bool, Atom] = {
     False: Atom("H_UNIT_RATE", frozenset({"V_BASIC"})),
@@ -214,67 +215,6 @@ class FinancialsCore:
                 return series, fallback
         return {}, None
 
-    def _capex_series_at_class(self, length_class: str) -> dict[str, float]:
-        """Capex magnitudes at one exact class over both coordinates.
-
-        The payments coordinate governs any year it serves; the purchase
-        coordinate fills the rest, classified shape before purchase-act.
-        """
-        cash = self._series_at_class(
-            "H_CASH",
-            {"M_PPE_CAPEX"},
-            CAPEX_EXCLUDED_MODS,
-            prefer_bare=True,
-            length_class=length_class,
-        )
-        asset = self._series_at_class(
-            "H_ASSET",
-            CAPEX_PURCHASE_MODS,
-            CAPEX_EXCLUDED_MODS,
-            prefer_bare=True,
-            length_class=length_class,
-        )
-        act = self._series_at_class(
-            "H_ASSET",
-            CAPEX_PURCHASE_ACT_MODS,
-            CAPEX_EXCLUDED_MODS,
-            prefer_bare=True,
-            length_class=length_class,
-        )
-        merged = {yr: abs(v) for yr, v in act.items()}
-        merged.update({yr: abs(v) for yr, v in asset.items()})
-        merged.update({yr: abs(v) for yr, v in cash.items()})
-        return merged
-
-    def _capex_series_served(
-        self, length_class: str = "ANNUAL"
-    ) -> tuple[dict[str, float], str | None]:
-        """Capex series plus its class, with the _series_served ladder."""
-        series = self._capex_series_at_class(length_class)
-        if series:
-            return series, length_class
-        if length_class != "ANNUAL":
-            return {}, None
-        for fallback in _FALLBACK_LENGTH_CLASSES:
-            series = self._capex_series_at_class(fallback)
-            if series:
-                return series, fallback
-        return {}, None
-
-    def _capex_served(
-        self,
-        *,
-        year: int | str | None = None,
-        length_class: str = "ANNUAL",
-    ) -> tuple[float | None, str | None]:
-        """A capex scalar plus the length class of its served span."""
-        series, cls = self._capex_series_served(length_class)
-        if year:
-            return series.get(str(year)), cls if str(year) in series else None
-        if not series:
-            return None, None
-        return series[sorted(series)[-1]], cls
-
     def _series_at_class(
         self,
         target_head: str,
@@ -314,6 +254,45 @@ class FinancialsCore:
         )
         return dict(computed)
 
+    def _series_winners_at_class(
+        self,
+        target_head: str,
+        target_mods: set[str] | frozenset[str] = frozenset(),
+        excluded_mods: set[str] | frozenset[str] = frozenset(),
+        *,
+        is_instant: bool = False,
+        valence: str | None = None,
+        is_monetary: bool = True,
+        prefer_bare: bool = False,
+        length_class: str,
+    ) -> dict[str, str]:
+        """Winning concept per year of one exact length class's series."""
+        key = (
+            "series_winners",
+            target_head,
+            frozenset(target_mods),
+            frozenset(excluded_mods),
+            is_instant,
+            valence,
+            is_monetary,
+            prefer_bare,
+            length_class,
+        )
+        computed = self._kernel.graph_once(
+            key,
+            lambda: self._compute_series_full(
+                target_head,
+                target_mods,
+                excluded_mods,
+                is_instant=is_instant,
+                valence=valence,
+                is_monetary=is_monetary,
+                prefer_bare=prefer_bare,
+                length_class=length_class,
+            )[1],
+        )
+        return dict(computed)
+
     def _compute_series(
         self,
         target_head: str,
@@ -326,9 +305,34 @@ class FinancialsCore:
         prefer_bare: bool = False,
         length_class: str = "ANNUAL",
     ) -> dict[str, float]:
+        series, _winners = self._compute_series_full(
+            target_head,
+            target_mods,
+            excluded_mods,
+            is_instant=is_instant,
+            valence=valence,
+            is_monetary=is_monetary,
+            prefer_bare=prefer_bare,
+            length_class=length_class,
+        )
+        return series
+
+    def _compute_series_full(
+        self,
+        target_head: str,
+        target_mods: set[str] | frozenset[str] = frozenset(),
+        excluded_mods: set[str] | frozenset[str] = frozenset(),
+        *,
+        is_instant: bool = False,
+        valence: str | None = None,
+        is_monetary: bool = True,
+        prefer_bare: bool = False,
+        length_class: str = "ANNUAL",
+    ) -> tuple[dict[str, float], dict[str, str]]:
+        """One exact class's series and the winning concept per year."""
         lex = self._taxonomy.token_lexicon
         if lex is None:
-            return {}
+            return {}, {}
         best = self._kernel.best_ranked(
             instant=is_instant,
             length_class=length_class,
@@ -363,7 +367,7 @@ class FinancialsCore:
                 winners[yr] = qname
         if target_head == "H_REVENUE" and not target_mods:
             self._serve_standard_ancestors(by_year, winners, pools)
-        return {yr: cand[2] for yr, cand in by_year.items()}
+        return {yr: cand[2] for yr, cand in by_year.items()}, winners
 
     def _serve_standard_ancestors(
         self,
@@ -401,6 +405,7 @@ class FinancialsCore:
             record = self._records.get(qname)
             mods = len(record.atom.modifiers) if record is not None else 0
             by_year[yr] = (mods, -abs(val), val)
+            winners[yr] = qname
 
     def _calc_children(self) -> dict[str, list[str]]:
         """Calc children by parent over the filer's own linkbase."""
@@ -623,30 +628,12 @@ class FinancialsCore:
     def _eps_slot_value(self, facts: tuple[XbrlFact, ...], atom: Atom) -> float | None:
         """The cleanest unique value among a period's facts at one atom.
 
-        Mirrors the identities route's slot semantics: exact atom match,
+        Slot cleaning is the identities route's own: exact atom match,
         fewest intent residuals, one context and one value or abstain.
         """
         atoms = self._eps_atoms()
         matches = [f for f in facts if atoms.get(f.concept_qname, (None, 0))[0] == atom]
-        if not matches:
-            return None
-        fewest = min(atoms[f.concept_qname][1] for f in matches)
-        cleanest = [f for f in matches if atoms[f.concept_qname][1] == fewest]
-        contexts = {
-            (
-                f.unit,
-                f.period_type,
-                f.start_date,
-                f.end_date,
-                f.instant_date,
-                tuple(sorted(f.dimensions.items())),
-            )
-            for f in cleanest
-        }
-        values = {float(f.value) for f in cleanest if isinstance(f.value, (int, float))}
-        if len(contexts) != 1 or len(values) != 1:
-            return None
-        return next(iter(values))
+        return unique_value(cleanest_facts(matches))
 
     def _eps_merge(
         self,
