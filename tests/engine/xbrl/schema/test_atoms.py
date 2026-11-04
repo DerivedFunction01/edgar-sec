@@ -1,5 +1,7 @@
 """Unit tests for Atom sub-atomic coordinates and subsumption lattice algebra."""
 
+import random
+
 from edgar_sec.engine.xbrl.schema.atoms import (
     Atom,
     prune_specialized,
@@ -57,3 +59,29 @@ def test_prune_subsumed_and_specialized() -> None:
 
     general_only = prune_specialized([parent, rd, sga])
     assert general_only == [parent]
+
+
+def test_atom_fast_path_matches_normalization() -> None:
+    """Generated raw forms and their normal forms build equal atoms."""
+    rng = random.Random(20261104)
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"
+    for _ in range(300):
+        core = "Z" + "".join(rng.choice(alphabet) for _ in range(rng.randint(1, 8)))
+        mods = frozenset(
+            "M_" + "".join(rng.choice(alphabet) for _ in range(rng.randint(1, 5)))
+            for _ in range(rng.randint(0, 4))
+        )
+        normal = Atom(f"H_{core}", mods)
+        assert normal.head == f"H_{core}"
+        assert normal.modifiers is mods
+        raw = Atom(core.lower(), {m.lower() for m in mods})
+        assert raw == normal
+        assert hash(raw) == hash(normal)
+        messy = Atom(f" {core} ", {f" {m.lower()} " for m in mods})
+        assert messy == normal
+
+
+def test_atom_slow_path_still_drops_falsy_modifiers() -> None:
+    """Unnormalized input keeps the full rebuild: falsy modifiers drop."""
+    atom = Atom("H_X", frozenset({"", "M_A"}))
+    assert atom.modifiers == frozenset({"M_A"})
