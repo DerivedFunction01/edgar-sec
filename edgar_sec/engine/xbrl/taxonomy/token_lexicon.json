@@ -652,13 +652,6 @@
   },
   {
     "phrase": [
-      "Costs"
-    ],
-    "claim": "modifier",
-    "direction": -1.0
-  },
-  {
-    "phrase": [
       "Proceeds",
       "From"
     ],
@@ -670,6 +663,16 @@
   {
     "phrase": [
       "Proceeds"
+    ],
+    "claim": "head",
+    "head": "H_CASH",
+    "claim_class": "PRIMARY",
+    "direction": 1.0
+  },
+  {
+    "phrase": [
+      "Receipts",
+      "From"
     ],
     "claim": "head",
     "head": "H_CASH",
@@ -986,15 +989,6 @@
   },
   {
     "phrase": [
-      "Share",
-      "Based",
-      "Compensation"
-    ],
-    "claim": "modifier",
-    "atom": "M_SBC"
-  },
-  {
-    "phrase": [
       "Depreciation",
       "And",
       "Amortization"
@@ -1008,15 +1002,6 @@
   },
   {
     "phrase": [
-      "Depreciation",
-      "And",
-      "Amortization"
-    ],
-    "claim": "modifier",
-    "atom": "M_DEPR_AMORT"
-  },
-  {
-    "phrase": [
       "Depreciation"
     ],
     "claim": "head",
@@ -1025,13 +1010,6 @@
     "carriage": [
       "M_DA_DEPLETION"
     ]
-  },
-  {
-    "phrase": [
-      "Depreciation"
-    ],
-    "claim": "modifier",
-    "atom": "M_DEPR_AMORT"
   },
   {
     "phrase": [
@@ -1088,28 +1066,6 @@
     "carriage": [
       "M_RECEIVABLE"
     ]
-  },
-  {
-    "phrase": [
-      "Accounts",
-      "Receivable"
-    ],
-    "claim": "modifier",
-    "atom": "M_RECEIVABLE"
-  },
-  {
-    "phrase": [
-      "Inventory"
-    ],
-    "claim": "modifier",
-    "atom": "M_INVENTORY"
-  },
-  {
-    "phrase": [
-      "Goodwill"
-    ],
-    "claim": "modifier",
-    "atom": "M_GOODWILL"
   },
   {
     "phrase": [
@@ -1174,14 +1130,6 @@
   },
   {
     "phrase": [
-      "Deferred",
-      "Revenue"
-    ],
-    "claim": "modifier",
-    "atom": "M_DEFERRED_REVENUE"
-  },
-  {
-    "phrase": [
       "Capital",
       "Lease"
     ],
@@ -1214,14 +1162,6 @@
   },
   {
     "phrase": [
-      "Retained",
-      "Earnings"
-    ],
-    "claim": "modifier",
-    "atom": "M_RETAINED_EARNINGS"
-  },
-  {
-    "phrase": [
       "Temporary",
       "Equity"
     ],
@@ -1234,14 +1174,6 @@
   },
   {
     "phrase": [
-      "Temporary",
-      "Equity"
-    ],
-    "claim": "modifier",
-    "atom": "M_TEMPORARY_MEZZANINE"
-  },
-  {
-    "phrase": [
       "Accumulated",
       "Other",
       "Comprehensive",
@@ -1251,35 +1183,6 @@
     "head": "H_EQUITY",
     "claim_class": "PRIMARY",
     "carriage": [
-      "M_OCI",
-      "M_ACCUMULATED"
-    ]
-  },
-  {
-    "phrase": [
-      "Accumulated",
-      "Other",
-      "Comprehensive",
-      "Income"
-    ],
-    "claim": "head",
-    "head": "H_EQUITY",
-    "claim_class": "PRIMARY",
-    "carriage": [
-      "M_OCI",
-      "M_ACCUMULATED"
-    ]
-  },
-  {
-    "phrase": [
-      "Accumulated",
-      "Other",
-      "Comprehensive",
-      "Income"
-    ],
-    "claim": "modifier",
-    "atom": "M_AOCI",
-    "also_asserts": [
       "M_OCI",
       "M_ACCUMULATED"
     ]
@@ -1306,16 +1209,6 @@
     "carriage": [
       "M_PPE_CAPEX"
     ]
-  },
-  {
-    "phrase": [
-      "Property",
-      "Plant",
-      "And",
-      "Equipment"
-    ],
-    "claim": "modifier",
-    "atom": "M_PPE_CAPEX"
   },
   {
     "phrase": [
@@ -1393,14 +1286,6 @@
   },
   {
     "phrase": [
-      "Treasury",
-      "Stock"
-    ],
-    "claim": "modifier",
-    "atom": "M_CONTRA_TREASURY"
-  },
-  {
-    "phrase": [
       "Remaining",
       "Performance",
       "Obligation"
@@ -1422,21 +1307,6 @@
     ],
     "claim": "modifier",
     "atom": "M_UNION_CBA"
-  },
-  {
-    "phrase": [
-      "Warrant"
-    ],
-    "claim": "modifier",
-    "atom": "M_WARRANT"
-  },
-  {
-    "phrase": [
-      "Exercise",
-      "Price"
-    ],
-    "claim": "modifier",
-    "atom": "M_EXERCISE_PRICE"
   },
   {
     "phrase": [
@@ -1911,15 +1781,6 @@
   },
   {
     "phrase": [
-      "Technology",
-      "And",
-      "Infrastructure"
-    ],
-    "claim": "modifier",
-    "atom": "M_TECH_INFRA"
-  },
-  {
-    "phrase": [
       "Shareholder",
       "Activism"
     ],
@@ -1938,15 +1799,6 @@
     "carriage": [
       "M_PENSION_DEFINED_BENEFIT"
     ]
-  },
-  {
-    "phrase": [
-      "Defined",
-      "Benefit",
-      "Plan"
-    ],
-    "claim": "modifier",
-    "atom": "M_PENSION_DEFINED_BENEFIT"
   },
   {
     "phrase": [
@@ -1975,15 +1827,6 @@
     "carriage": [
       "M_ROU_LEASE"
     ]
-  },
-  {
-    "phrase": [
-      "Contract",
-      "With",
-      "Customer"
-    ],
-    "claim": "modifier",
-    "atom": "M_CONTRACT_CUSTOMER"
   },
   {
     "phrase": [
@@ -2736,14 +2579,6 @@
     "carriage": [
       "M_NONCONTROLLING_INTEREST"
     ]
-  },
-  {
-    "phrase": [
-      "Noncontrolling",
-      "Interests"
-    ],
-    "claim": "modifier",
-    "atom": "M_NONCONTROLLING_INTEREST"
   },
   {
     "phrase": [
@@ -5355,14 +5190,6 @@
   },
   {
     "phrase": [
-      "Accounts",
-      "Payable"
-    ],
-    "claim": "modifier",
-    "atom": "M_ACCOUNTS_PAYABLE"
-  },
-  {
-    "phrase": [
       "Accrued",
       "Liabilities"
     ],
@@ -5372,14 +5199,6 @@
     "carriage": [
       "M_ACCRUED_LIABILITY"
     ]
-  },
-  {
-    "phrase": [
-      "Accrued",
-      "Liabilities"
-    ],
-    "claim": "modifier",
-    "atom": "M_ACCRUED_LIABILITY"
   },
   {
     "phrase": [
@@ -5395,14 +5214,6 @@
   },
   {
     "phrase": [
-      "Notes",
-      "Payable"
-    ],
-    "claim": "modifier",
-    "atom": "M_DEBT"
-  },
-  {
-    "phrase": [
       "Lease",
       "Liability"
     ],
@@ -5416,14 +5227,6 @@
   {
     "phrase": [
       "Lease",
-      "Liability"
-    ],
-    "claim": "modifier",
-    "atom": "M_LEASE_ROU"
-  },
-  {
-    "phrase": [
-      "Lease",
       "Liabilities"
     ],
     "claim": "head",
@@ -5432,14 +5235,6 @@
     "carriage": [
       "M_LEASE_ROU"
     ]
-  },
-  {
-    "phrase": [
-      "Lease",
-      "Liabilities"
-    ],
-    "claim": "modifier",
-    "atom": "M_LEASE_ROU"
   },
   {
     "phrase": [
@@ -5454,16 +5249,6 @@
     "carriage": [
       "M_PENSION_DEFINED_BENEFIT"
     ]
-  },
-  {
-    "phrase": [
-      "Defined",
-      "Benefit",
-      "Pension",
-      "Plan"
-    ],
-    "claim": "modifier",
-    "atom": "M_PENSION_DEFINED_BENEFIT"
   },
   {
     "phrase": [
@@ -5485,15 +5270,6 @@
     "carriage": [
       "M_EMPLOYEE_LIABILITY"
     ]
-  },
-  {
-    "phrase": [
-      "Employee",
-      "Related",
-      "Liabilities"
-    ],
-    "claim": "modifier",
-    "atom": "M_EMPLOYEE_LIABILITY"
   },
   {
     "phrase": [
@@ -5526,14 +5302,6 @@
   },
   {
     "phrase": [
-      "Loss",
-      "Contingencies"
-    ],
-    "claim": "modifier",
-    "atom": "M_LOSS_CONTINGENCY"
-  },
-  {
-    "phrase": [
       "Restructuring",
       "Reserve"
     ],
@@ -5543,14 +5311,6 @@
     "carriage": [
       "M_RESTRUCTURING"
     ]
-  },
-  {
-    "phrase": [
-      "Restructuring",
-      "Reserve"
-    ],
-    "claim": "modifier",
-    "atom": "M_RESTRUCTURING"
   },
   {
     "phrase": [
@@ -5566,14 +5326,6 @@
   },
   {
     "phrase": [
-      "Guarantee",
-      "Obligations"
-    ],
-    "claim": "modifier",
-    "atom": "M_GUARANTEE_OBLIGATION"
-  },
-  {
-    "phrase": [
       "Construction",
       "Payable"
     ],
@@ -5586,14 +5338,6 @@
   },
   {
     "phrase": [
-      "Construction",
-      "Payable"
-    ],
-    "claim": "modifier",
-    "atom": "M_ACCOUNTS_PAYABLE"
-  },
-  {
-    "phrase": [
       "Hedging",
       "Liabilities"
     ],
@@ -5603,14 +5347,6 @@
     "carriage": [
       "M_DERIVATIVE_HEDGE"
     ]
-  },
-  {
-    "phrase": [
-      "Hedging",
-      "Liabilities"
-    ],
-    "claim": "modifier",
-    "atom": "M_DERIVATIVE_HEDGE"
   },
   {
     "phrase": [
@@ -5634,14 +5370,6 @@
   {
     "phrase": [
       "Shares",
-      "Issued"
-    ],
-    "claim": "modifier",
-    "atom": "M_SHARES_ISSUED"
-  },
-  {
-    "phrase": [
-      "Shares",
       "Outstanding"
     ],
     "claim": "head",
@@ -5654,14 +5382,6 @@
   {
     "phrase": [
       "Shares",
-      "Outstanding"
-    ],
-    "claim": "modifier",
-    "atom": "M_SHARES_OUTSTANDING"
-  },
-  {
-    "phrase": [
-      "Shares",
       "Authorized"
     ],
     "claim": "head",
@@ -5670,14 +5390,6 @@
     "carriage": [
       "M_SHARES_AUTHORIZED"
     ]
-  },
-  {
-    "phrase": [
-      "Shares",
-      "Authorized"
-    ],
-    "claim": "modifier",
-    "atom": "M_SHARES_AUTHORIZED"
   },
   {
     "phrase": [
@@ -5720,14 +5432,6 @@
   },
   {
     "phrase": [
-      "Refund",
-      "Liability"
-    ],
-    "claim": "modifier",
-    "atom": "M_CONTRACT_CUSTOMER"
-  },
-  {
-    "phrase": [
       "Litigation",
       "Reserve"
     ],
@@ -5736,17 +5440,6 @@
     "claim_class": "PRIMARY",
     "carriage": [
       "M_LOSS_CONTINGENCY",
-      "M_LITIGATION"
-    ]
-  },
-  {
-    "phrase": [
-      "Litigation",
-      "Reserve"
-    ],
-    "claim": "modifier",
-    "atom": "M_LOSS_CONTINGENCY",
-    "also_asserts": [
       "M_LITIGATION"
     ]
   },
@@ -5773,15 +5466,6 @@
   },
   {
     "phrase": [
-      "Gas",
-      "Purchase",
-      "Payable"
-    ],
-    "claim": "modifier",
-    "atom": "M_ACCOUNTS_PAYABLE"
-  },
-  {
-    "phrase": [
       "Loans",
       "Payable"
     ],
@@ -5794,14 +5478,6 @@
   },
   {
     "phrase": [
-      "Loans",
-      "Payable"
-    ],
-    "claim": "modifier",
-    "atom": "M_DEBT"
-  },
-  {
-    "phrase": [
       "Share",
       "Repurchase"
     ],
@@ -5811,14 +5487,6 @@
     "carriage": [
       "M_TREASURY_REPURCHASE"
     ]
-  },
-  {
-    "phrase": [
-      "Share",
-      "Repurchase"
-    ],
-    "claim": "modifier",
-    "atom": "M_TREASURY_REPURCHASE"
   },
   {
     "phrase": [
@@ -6697,14 +6365,6 @@
   },
   {
     "phrase": [
-      "Benefit",
-      "Obligation"
-    ],
-    "claim": "modifier",
-    "atom": "M_BENEFIT_OBLIGATION"
-  },
-  {
-    "phrase": [
       "Accumulated",
       "Benefit",
       "Obligation"
@@ -6714,18 +6374,6 @@
     "claim_class": "PRIMARY",
     "carriage": [
       "M_ACCUMULATED_BENEFIT_OBLIGATION",
-      "M_ACCUMULATED"
-    ]
-  },
-  {
-    "phrase": [
-      "Accumulated",
-      "Benefit",
-      "Obligation"
-    ],
-    "claim": "modifier",
-    "atom": "M_ACCUMULATED_BENEFIT_OBLIGATION",
-    "also_asserts": [
       "M_ACCUMULATED"
     ]
   },
@@ -6741,15 +6389,6 @@
     "carriage": [
       "M_BENEFIT_OBLIGATION"
     ]
-  },
-  {
-    "phrase": [
-      "Projected",
-      "Benefit",
-      "Obligation"
-    ],
-    "claim": "modifier",
-    "atom": "M_BENEFIT_OBLIGATION"
   },
   {
     "phrase": [
@@ -6770,14 +6409,6 @@
     "carriage": [
       "M_PLAN_ASSETS"
     ]
-  },
-  {
-    "phrase": [
-      "Plan",
-      "Assets"
-    ],
-    "claim": "modifier",
-    "atom": "M_PLAN_ASSETS"
   },
   {
     "phrase": [
@@ -7937,14 +7568,6 @@
   },
   {
     "phrase": [
-      "Reclassification",
-      "Adjustments"
-    ],
-    "claim": "modifier",
-    "atom": "M_RECLASS_ADJUSTMENT"
-  },
-  {
-    "phrase": [
       "Leases"
     ],
     "claim": "modifier",
@@ -8109,6 +7732,16 @@
     "carriage": [
       "M_INTEREST"
     ]
+  },
+  {
+    "phrase": [
+      "Cash",
+      "Received"
+    ],
+    "claim": "head",
+    "head": "H_CASH",
+    "claim_class": "TAIL",
+    "direction": 1.0
   },
   {
     "phrase": [

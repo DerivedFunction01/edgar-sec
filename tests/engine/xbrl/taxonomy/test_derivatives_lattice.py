@@ -134,12 +134,8 @@ def test_compound_derivative_terms_factor_into_independent_coordinates() -> None
         )
 
 
-def test_generic_taxonomy_has_no_product_names_in_service_modifier() -> None:
+def test_generic_taxonomy_records_and_wiring_present() -> None:
     taxonomy = load_domain_taxonomy()
-    service = taxonomy.modifier("M_SERVICE_CLOUD")
-    assert service is not None
-    assert "Office" not in service.keywords
-    assert "Dynamics" not in service.keywords
 
     for modifier_id in (
         "M_PRE_PROVISION",

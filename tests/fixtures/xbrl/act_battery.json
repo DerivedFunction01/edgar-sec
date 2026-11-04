@@ -176,6 +176,22 @@
    ],
    "name": "ext:PurchaseOfFactoringReceivables",
    "note": "Frame consultation attaches the act and the outflow direction on the flow remainder."
+  },
+  {
+   "act": "receipts",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [],
+   "name": "ext:ReceiptsFromSolarCustomers",
+   "note": "The receipts head claim governs by construction; the novel source rides residual."
+  },
+  {
+   "act": "receipts",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [],
+   "name": "ext:CashReceivedFromSolarCustomers",
+   "note": "The Received form inside the cash phrase carries the inflow direction by claim."
   }
  ]
 }
