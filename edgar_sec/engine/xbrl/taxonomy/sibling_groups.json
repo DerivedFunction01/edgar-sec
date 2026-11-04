@@ -194,5 +194,63 @@
         ]
       }
     ]
+  },
+  {
+    "group": "OPTION_OUTCOME",
+    "members": [
+      "M_EXERCISE",
+      "M_EXPIRATION"
+    ],
+    "cardinality": "compoundable",
+    "exceptions": "Scoped to the option and share-award coordinates where exercise and expiration name the two outcomes of one instrument life; proceeds coordinates state no expiration sibling.",
+    "scope": [
+      {
+        "heads": [
+          "H_SHARE",
+          "H_EQUITY",
+          "H_EXPENSE",
+          "H_UNIT_RATE"
+        ],
+        "shared_modifiers": [
+          "M_SBC"
+        ]
+      },
+      {
+        "heads": [
+          "H_SHARE",
+          "H_EQUITY"
+        ],
+        "shared_modifiers": [
+          "M_OPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "group": "MARKET_SIDE",
+    "members": [
+      "V_FAVORABLE_SIDE",
+      "V_UNFAVORABLE_SIDE"
+    ],
+    "cardinality": "exclusive",
+    "exceptions": "A combined favorable-and-unfavorable name states both sides and is a name-faithful dual (none attested).",
+    "scope": [
+      {
+        "heads": [
+          "H_UNKNOWN"
+        ],
+        "shared_modifiers": [
+          "M_REGULATORY_ASC980"
+        ]
+      },
+      {
+        "heads": [
+          "H_UNKNOWN"
+        ],
+        "shared_modifiers": [
+          "M_LEASE"
+        ]
+      }
+    ]
   }
 ]

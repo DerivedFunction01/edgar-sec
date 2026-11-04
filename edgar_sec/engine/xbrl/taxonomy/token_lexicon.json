@@ -431,7 +431,8 @@
     "head": "H_EQUITY",
     "claim_class": "TAIL",
     "carriage": [
-      "M_OPTION"
+      "M_OPTION",
+      "M_EXERCISE"
     ]
   },
   {
@@ -10571,5 +10572,503 @@
     "also_asserts": [
       "M_TAX"
     ]
+  },
+  {
+    "phrase": [
+      "Origination"
+    ],
+    "claim": "modifier",
+    "atom": "M_ORIGINATION",
+    "scope_next": [
+      "Of"
+    ]
+  },
+  {
+    "phrase": [
+      "Payments",
+      "For",
+      "Origination"
+    ],
+    "claim": "head",
+    "head": "H_CASH",
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_ORIGINATION"
+    ],
+    "direction": -1.0
+  },
+  {
+    "phrase": [
+      "For",
+      "Origination"
+    ],
+    "claim": "modifier",
+    "atom": "M_ORIGINATION"
+  },
+  {
+    "phrase": [
+      "Through",
+      "Origination"
+    ],
+    "claim": "modifier",
+    "atom": "M_ORIGINATION"
+  },
+  {
+    "phrase": [
+      "Originations"
+    ],
+    "claim": "modifier",
+    "atom": "M_ORIGINATION"
+  },
+  {
+    "phrase": [
+      "Writeoff"
+    ],
+    "claim": "modifier",
+    "atom": "M_WRITE_OFF"
+  },
+  {
+    "phrase": [
+      "Writeoffs"
+    ],
+    "claim": "modifier",
+    "atom": "M_WRITE_OFF"
+  },
+  {
+    "phrase": [
+      "Write",
+      "Off"
+    ],
+    "claim": "modifier",
+    "atom": "M_WRITE_OFF"
+  },
+  {
+    "phrase": [
+      "Writedown"
+    ],
+    "claim": "modifier",
+    "atom": "M_WRITE_OFF"
+  },
+  {
+    "phrase": [
+      "Writedowns"
+    ],
+    "claim": "modifier",
+    "atom": "M_WRITE_OFF"
+  },
+  {
+    "phrase": [
+      "Write",
+      "Down"
+    ],
+    "claim": "modifier",
+    "atom": "M_WRITE_OFF"
+  },
+  {
+    "phrase": [
+      "Written",
+      "Off"
+    ],
+    "claim": "modifier",
+    "atom": "M_WRITE_OFF"
+  },
+  {
+    "phrase": [
+      "Collection"
+    ],
+    "claim": "modifier",
+    "atom": "M_COLLECTION",
+    "scope_next": [
+      "Of",
+      "From"
+    ]
+  },
+  {
+    "phrase": [
+      "Collections",
+      "Of"
+    ],
+    "claim": "modifier",
+    "atom": "M_COLLECTION"
+  },
+  {
+    "phrase": [
+      "Collections",
+      "Reinvested"
+    ],
+    "claim": "modifier",
+    "atom": "M_COLLECTION"
+  },
+  {
+    "phrase": [
+      "Principal",
+      "Collections"
+    ],
+    "claim": "modifier",
+    "atom": "M_COLLECTION"
+  },
+  {
+    "phrase": [
+      "Reversal"
+    ],
+    "claim": "modifier",
+    "atom": "M_REVERSAL",
+    "scope_next": [
+      "Of"
+    ]
+  },
+  {
+    "phrase": [
+      "Reversals"
+    ],
+    "claim": "modifier",
+    "atom": "M_REVERSAL",
+    "scope_next": [
+      "Of"
+    ]
+  },
+  {
+    "phrase": [
+      "Writedowns",
+      "Reversals"
+    ],
+    "claim": "modifier",
+    "atom": "M_REVERSAL",
+    "also_asserts": [
+      "M_WRITE_OFF"
+    ]
+  },
+  {
+    "phrase": [
+      "Revaluation"
+    ],
+    "claim": "modifier",
+    "atom": "M_REMEASUREMENT"
+  },
+  {
+    "phrase": [
+      "Revaluations"
+    ],
+    "claim": "modifier",
+    "atom": "M_REMEASUREMENT"
+  },
+  {
+    "phrase": [
+      "Remeasurement"
+    ],
+    "claim": "modifier",
+    "atom": "M_REMEASUREMENT"
+  },
+  {
+    "phrase": [
+      "Remeasurements"
+    ],
+    "claim": "modifier",
+    "atom": "M_REMEASUREMENT"
+  },
+  {
+    "phrase": [
+      "Redemption",
+      "Of"
+    ],
+    "claim": "modifier",
+    "atom": "M_REDEMPTION"
+  },
+  {
+    "phrase": [
+      "Redemptions",
+      "Of"
+    ],
+    "claim": "modifier",
+    "atom": "M_REDEMPTION"
+  },
+  {
+    "phrase": [
+      "From",
+      "Redemption"
+    ],
+    "claim": "modifier",
+    "atom": "M_REDEMPTION"
+  },
+  {
+    "phrase": [
+      "From",
+      "Redemptions"
+    ],
+    "claim": "modifier",
+    "atom": "M_REDEMPTION"
+  },
+  {
+    "phrase": [
+      "Redeem"
+    ],
+    "claim": "modifier",
+    "atom": "M_REDEMPTION"
+  },
+  {
+    "phrase": [
+      "Shares",
+      "Redeemed"
+    ],
+    "claim": "head",
+    "head": "H_SHARE",
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_REDEMPTION"
+    ]
+  },
+  {
+    "phrase": [
+      "Units",
+      "Redeemed"
+    ],
+    "claim": "modifier",
+    "atom": "M_REDEMPTION"
+  },
+  {
+    "phrase": [
+      "Stock",
+      "Redeemed"
+    ],
+    "claim": "modifier",
+    "atom": "M_REDEMPTION"
+  },
+  {
+    "phrase": [
+      "Account",
+      "Redemptions"
+    ],
+    "claim": "modifier",
+    "atom": "M_REDEMPTION"
+  },
+  {
+    "phrase": [
+      "On",
+      "Redemption"
+    ],
+    "claim": "modifier",
+    "atom": "M_REDEMPTION"
+  },
+  {
+    "phrase": [
+      "In",
+      "Kind",
+      "Redemption"
+    ],
+    "claim": "modifier",
+    "atom": "M_REDEMPTION"
+  },
+  {
+    "phrase": [
+      "Assumption",
+      "Of"
+    ],
+    "claim": "modifier",
+    "atom": "M_ASSUMPTION"
+  },
+  {
+    "phrase": [
+      "Per",
+      "Share",
+      "Declared"
+    ],
+    "claim": "head",
+    "head": "H_UNIT_RATE",
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_DECLARATION"
+    ]
+  },
+  {
+    "phrase": [
+      "Distributions",
+      "Declared"
+    ],
+    "claim": "modifier",
+    "atom": "M_DECLARATION"
+  },
+  {
+    "phrase": [
+      "Dividend",
+      "Declared"
+    ],
+    "claim": "modifier",
+    "atom": "M_DECLARATION",
+    "also_asserts": [
+      "M_DIVIDEND"
+    ]
+  },
+  {
+    "phrase": [
+      "Dividends",
+      "Declared"
+    ],
+    "claim": "modifier",
+    "atom": "M_DECLARATION",
+    "also_asserts": [
+      "M_DIVIDEND"
+    ]
+  },
+  {
+    "phrase": [
+      "Declared",
+      "For",
+      "Distribution"
+    ],
+    "claim": "modifier",
+    "atom": "M_DECLARATION",
+    "also_asserts": [
+      "M_DIVIDEND"
+    ]
+  },
+  {
+    "phrase": [
+      "Proposed",
+      "Or",
+      "Declared"
+    ],
+    "claim": "modifier",
+    "atom": "M_DECLARATION"
+  },
+  {
+    "phrase": [
+      "Forgiveness"
+    ],
+    "claim": "modifier",
+    "atom": "M_FORGIVENESS"
+  },
+  {
+    "phrase": [
+      "Recognition"
+    ],
+    "claim": "modifier",
+    "atom": "M_RECOGNITION",
+    "scope_next": [
+      "Of"
+    ]
+  },
+  {
+    "phrase": [
+      "Additional",
+      "Recognition"
+    ],
+    "claim": "modifier",
+    "atom": "M_RECOGNITION"
+  },
+  {
+    "phrase": [
+      "Exercise"
+    ],
+    "claim": "modifier",
+    "atom": "M_EXERCISE",
+    "scope_next": [
+      "Of"
+    ]
+  },
+  {
+    "phrase": [
+      "Exercised"
+    ],
+    "claim": "modifier",
+    "atom": "M_EXERCISE"
+  },
+  {
+    "phrase": [
+      "Exercises"
+    ],
+    "claim": "modifier",
+    "atom": "M_EXERCISE"
+  },
+  {
+    "phrase": [
+      "Expirations"
+    ],
+    "claim": "modifier",
+    "atom": "M_EXPIRATION"
+  },
+  {
+    "phrase": [
+      "Expired"
+    ],
+    "claim": "modifier",
+    "atom": "M_EXPIRATION"
+  },
+  {
+    "phrase": [
+      "Lapse",
+      "Of"
+    ],
+    "claim": "modifier",
+    "atom": "M_EXPIRATION"
+  },
+  {
+    "phrase": [
+      "Favorable"
+    ],
+    "claim": "modifier",
+    "atom": "V_FAVORABLE_SIDE"
+  },
+  {
+    "phrase": [
+      "Favourable"
+    ],
+    "claim": "modifier",
+    "atom": "V_FAVORABLE_SIDE"
+  },
+  {
+    "phrase": [
+      "Unfavorable"
+    ],
+    "claim": "modifier",
+    "atom": "V_UNFAVORABLE_SIDE"
+  },
+  {
+    "phrase": [
+      "Unfavourable"
+    ],
+    "claim": "modifier",
+    "atom": "V_UNFAVORABLE_SIDE"
+  },
+  {
+    "phrase": [
+      "Accretion"
+    ],
+    "claim": "modifier",
+    "atom": "M_ACCRETION"
+  },
+  {
+    "phrase": [
+      "Bargain",
+      "Purchase"
+    ],
+    "claim": "modifier",
+    "atom": "M_BUSINESS_COMBINATION"
+  },
+  {
+    "phrase": [
+      "Actuarial",
+      "Gains",
+      "Losses"
+    ],
+    "claim": "head",
+    "head": "H_INCOME",
+    "claim_class": "PRIMARY",
+    "carriage": [
+      "M_ACTUARIAL"
+    ]
+  },
+  {
+    "phrase": [
+      "Amortised"
+    ],
+    "claim": "modifier",
+    "atom": "M_AMORTISED_COST"
+  },
+  {
+    "phrase": [
+      "Heldtomaturity"
+    ],
+    "claim": "modifier",
+    "atom": "M_HELD_TO_MATURITY"
   }
 ]
