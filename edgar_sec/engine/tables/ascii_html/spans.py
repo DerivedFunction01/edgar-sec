@@ -37,17 +37,41 @@ _INDENT_STOP_TAGS: frozenset[str] = frozenset({"table", "tr", "td", "th"})
 _HTML_WHITESPACE_RE = re.compile(r"[\t\n\r\f ]+")
 
 
+_INDENT_CHARS = " \t\u00a0"
+
+
 def _extract_cell_text(
     cell: FastHtmlNode,
     *,
     preserve_whitespace: bool,
     browser_whitespace: bool,
-) -> str:
+) -> tuple[str, int]:
+    """Extract the cell text and the leading indent count of its raw text stream.
+    The count is the leading run of space/tab/NBSP over the document-order text
+    nodes, tracked on the raw chunks of the same walk that builds the text.
+    """
     if not browser_whitespace:
+        raw_txt = cell.text(separator=" ", strip=False)
+        indent_count = len(raw_txt) - len(raw_txt.lstrip(_INDENT_CHARS))
         text = cell.text(separator="\n", strip=True)
-        return normalize_cell_whitespace(text, preserve_newlines=preserve_whitespace)
+        return (
+            normalize_cell_whitespace(text, preserve_newlines=preserve_whitespace),
+            indent_count,
+        )
 
     chunks: list[str] = []
+    indent_run = 0
+    indent_open = True
+
+    def feed_indent(raw: str) -> None:
+        nonlocal indent_run, indent_open
+        if not indent_open:
+            return
+        stripped = raw.lstrip(_INDENT_CHARS)
+        indent_run += len(raw) - len(stripped)
+        if stripped:
+            indent_open = False
+
     raw_text = cell.raw_node.text(deep=True) or ""
     pre_newline_marker = "\ue002"
     while pre_newline_marker in raw_text:
@@ -76,11 +100,13 @@ def _extract_cell_text(
         chunks.append("\n")
 
     def walk(parent, in_preformatted: bool) -> None:
+        nonlocal indent_run, indent_open
         child = parent.child
         while child is not None:
             tag = (child.tag or "").lower()
             if tag == "-text":
                 text = child.text(deep=False)
+                feed_indent(text)
                 preserve = in_preformatted or preserve_whitespace
                 if not preserve:
                     text = _HTML_WHITESPACE_RE.sub(" ", text)
@@ -95,6 +121,8 @@ def _extract_cell_text(
                     text = text.replace("\n", pre_newline_marker)
                 chunks.append(text)
             elif tag == "br":
+                if indent_open:
+                    indent_run += 1
                 append_break(in_preformatted or preserve_whitespace)
             else:
                 child_preformatted = in_preformatted or tag == "pre"
@@ -109,6 +137,9 @@ def _extract_cell_text(
                 else:
                     label = superscript_footnote_label(child)
                     if label is not None:
+                        if indent_open:
+                            indent_run += 1
+                            indent_open = False
                         chunks.append(f" ({label})")
                     else:
                         walk(child, child_preformatted)
@@ -119,10 +150,13 @@ def _extract_cell_text(
     if not preserve_whitespace:
         text = text.strip()
     if preserve_whitespace:
-        return normalize_cell_whitespace(text, preserve_newlines=True)
+        return normalize_cell_whitespace(text, preserve_newlines=True), indent_run
     text = text.replace("\n\n", paragraph_marker)
     text = normalize_cell_whitespace(text)
-    return text.replace(paragraph_marker, "\n\n").replace(pre_newline_marker, "\n")
+    return (
+        text.replace(paragraph_marker, "\n\n").replace(pre_newline_marker, "\n"),
+        indent_run,
+    )
 
 
 def _iter_indent_descendants(cell: FastHtmlNode):
@@ -234,18 +268,14 @@ def extract_source_table(
             if indent_px >= 6.0:
                 css_indent = min(8, int((indent_px + 2.0) / 8.0) * 2)
 
-            raw_txt = child.text(separator=" ", strip=False)
-            lstrip_txt = raw_txt.lstrip(" \t\u00a0")
-            nbsp_count = len(raw_txt) - len(lstrip_txt)
-            nbsp_indent = min(8, (nbsp_count // 2) * 2) if nbsp_count >= 2 else 0
-
-            total_indent = max(css_indent, nbsp_indent)
             preserve_nl = cell_style.white_space in ("pre", "pre-wrap")
-            cell_text = _extract_cell_text(
+            cell_text, nbsp_count = _extract_cell_text(
                 child,
                 preserve_whitespace=preserve_nl,
                 browser_whitespace=browser_whitespace,
             )
+            nbsp_indent = min(8, (nbsp_count // 2) * 2) if nbsp_count >= 2 else 0
+            total_indent = max(css_indent, nbsp_indent)
             if is_numeric_cell(cell_text) or cell_style.text_align in (
                 HorizontalAlign.RIGHT,
                 HorizontalAlign.CENTER,
