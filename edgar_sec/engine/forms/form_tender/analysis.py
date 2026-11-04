@@ -236,6 +236,7 @@ def analyze_tender_review_case(
         form=resolved_form,
         family="SC TO",
         text=text,
+        detect_sections=False,
     )
     if rep is None:
         return None

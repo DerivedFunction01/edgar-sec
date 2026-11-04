@@ -20,7 +20,10 @@ from edgar_sec.engine.forms.cover.registrant import (
     parse_registrant_identity,
     previous_content_line,
 )
-from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
+from edgar_sec.engine.forms.sections.items.detector import (
+    SectionSequence,
+    detect_section_sequence,
+)
 from edgar_sec.engine.tables.protection.tags import find_table_spans
 from edgar_sec.foundation.regex.builder import build_alternation
 
@@ -181,10 +184,15 @@ def _name_before_label(lines: list[str], label_re: re.Pattern[str]) -> str | Non
     return None
 
 
-def _not_applicable_items(text: str, lines: list[str]) -> set[str]:
+def _not_applicable_items(
+    text: str, lines: list[str], sequence: SectionSequence | None = None
+) -> set[str]:
     """Items whose whole body is a not-applicable statement: printed
     on the face but carrying no disclosure of their own."""
-    sequence = detect_section_sequence(text, family="SD", taxonomy_items=FORM_SD_ITEMS)
+    if sequence is None:
+        sequence = detect_section_sequence(
+            text, family="SD", taxonomy_items=FORM_SD_ITEMS
+        )
     omitted: set[str] = set()
     for section in sequence.sections:
         end = section.end_line if section.end_line is not None else len(lines)
@@ -268,11 +276,14 @@ def analyze_sd_review_case(
     lines = text.splitlines()
     if find_table_spans(text):
         reinfer_unmasked_checkmarks(text, rep, family="SD")
+    full_sequence = None
     if not rep["taxonomy"]["detected_items"] and text:
         # Recovery pass: a fallback boundary can swallow a short SD
         # whole; adopted only when the body-slice pass found nothing.
-        full = detect_section_sequence(text, family="SD", taxonomy_items=FORM_SD_ITEMS)
-        detected = [section.item_identifier for section in full.sections]
+        full_sequence = detect_section_sequence(
+            text, family="SD", taxonomy_items=FORM_SD_ITEMS
+        )
+        detected = [section.item_identifier for section in full_sequence.sections]
         if detected:
             rep["taxonomy"] = {
                 "item_count": len(detected),
@@ -294,7 +305,9 @@ def analyze_sd_review_case(
     boxes_decide = states.get("rule_13p_1") == "checked" or (
         states.get("rule_13q_1") == "checked"
     )
-    na_items = set() if boxes_decide else _not_applicable_items(text, lines)
+    na_items = (
+        set() if boxes_decide else _not_applicable_items(text, lines, full_sequence)
+    )
     kind = _classify_kind(
         states, detected, rep_section_present=rep_section_present, na_items=na_items
     )

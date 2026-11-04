@@ -173,6 +173,7 @@ def analyze_form_case(
     form: str | None = None,
     family: str | None = None,
     text: str | None = None,
+    detect_sections: bool = True,
 ) -> dict[str, Any] | None:
     """Analyze a single review case directory producing common form diagnostics."""
     if text is None:
@@ -218,7 +219,12 @@ def analyze_form_case(
     body_text = "\n".join(body_lines)
 
     detected_items: list[str] = []
-    if entry and entry.profile.has_sections and entry.taxonomy_items:
+    if (
+        detect_sections
+        and entry
+        and entry.profile.has_sections
+        and entry.taxonomy_items
+    ):
         seq = detect_section_sequence(
             body_text,
             family=resolved_family,
@@ -261,7 +267,7 @@ def analyze_form_case(
                 "detail": f"cover span {cover_lines} lines exceeds typical facing sheet",
             }
         )
-    if entry and entry.profile.has_sections and not detected_items:
+    if detect_sections and entry and entry.profile.has_sections and not detected_items:
         anomalies.append(
             {
                 "kind": "no_items_detected",
