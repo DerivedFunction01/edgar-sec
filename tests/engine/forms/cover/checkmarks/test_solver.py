@@ -42,6 +42,7 @@ _SCHEMA_FAMILY_CASES = (
     ("S-8", "Well-known seasoned issuer", "well_known_seasoned_issuer"),
     ("15", "Rule 12h-3(b)(1)(i)", "rule_12h3_b1_i"),
     ("25", "17 CFR 240.12d2-2(a)(1)", "rule_12d2_2_a1"),
+    ("ABS", "Rule 15Ga-1 under the Exchange Act", "rule_15ga_1"),
     (
         "8-A",
         "registration of a class of securities pursuant to section 12(b)",
