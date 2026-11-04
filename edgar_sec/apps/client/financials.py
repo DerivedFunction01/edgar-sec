@@ -258,17 +258,11 @@ class XbrlFinancials(FinancialsCore):
     @property
     def capex(self) -> float | None:
         """Capital expenditures (payments to acquire PPE / productive assets)."""
-        val = self._scalar(
-            "H_CASH", {"M_PPE_CAPEX"}, CAPEX_EXCLUDED_MODS, prefer_bare=True
-        )
-        return abs(val) if val is not None else None
+        return self._capex_served()[0]
 
     @property
     def capex_series(self) -> dict[str, float]:
-        raw = self._series(
-            "H_CASH", {"M_PPE_CAPEX"}, CAPEX_EXCLUDED_MODS, prefer_bare=True
-        )
-        return {yr: abs(v) for yr, v in raw.items()}
+        return self._capex_series_served()[0]
 
     @property
     def free_cash_flow(self) -> float | None:
@@ -287,13 +281,8 @@ class XbrlFinancials(FinancialsCore):
             return self._classed_cash_difference(length_class)
         ocf, ocf_class, ocf_year = self._operating_cash_flow_served()
         if ocf is not None and ocf_class is not None and ocf_year is not None:
-            capex, capex_class = self._scalar_served(
-                "H_CASH",
-                {"M_PPE_CAPEX"},
-                CAPEX_EXCLUDED_MODS,
-                prefer_bare=True,
-                length_class=ocf_class,
-                year=ocf_year,
+            capex, capex_class = self._capex_served(
+                year=ocf_year, length_class=ocf_class
             )
             if capex is not None and capex_class == ocf_class:
                 return ocf - abs(capex), ocf_class
@@ -327,13 +316,7 @@ class XbrlFinancials(FinancialsCore):
         ocf_series = self._series_at_class(
             "H_CASH", {"M_OPERATING"}, OCF_EXCLUDED_MODS, length_class=length_class
         )
-        capex_series = self._series_at_class(
-            "H_CASH",
-            {"M_PPE_CAPEX"},
-            CAPEX_EXCLUDED_MODS,
-            prefer_bare=True,
-            length_class=length_class,
-        )
+        capex_series = self._capex_series_at_class(length_class)
         shared = sorted(set(ocf_series) & set(capex_series))
         if not shared:
             return None, None
@@ -343,9 +326,7 @@ class XbrlFinancials(FinancialsCore):
     def _span_consistent_difference(self) -> tuple[float | None, str | None]:
         """cfo - capex when both operands serve one non-annual span class."""
         cfo, cfo_class, _year = self._operating_cash_flow_served()
-        capex, capex_class = self._scalar_served(
-            "H_CASH", {"M_PPE_CAPEX"}, CAPEX_EXCLUDED_MODS, prefer_bare=True
-        )
+        capex, capex_class = self._capex_served()
         if cfo is None or capex is None:
             return None, None
         if capex_class in (None, "ANNUAL") or cfo_class != capex_class:
@@ -607,9 +588,7 @@ class XbrlFinancials(FinancialsCore):
                 self._scalar_served("H_COMMITMENT", {"M_RPO_BACKLOG"}, is_instant=True),
             )
         if metric == "capex":
-            return self._scalar_served(
-                "H_CASH", {"M_PPE_CAPEX"}, CAPEX_EXCLUDED_MODS, prefer_bare=True
-            )[1]
+            return self._capex_served()[1]
         if metric == "free_cash_flow":
             return self._free_cash_flow_served()[1]
         if metric == "uncommenced_leases":
