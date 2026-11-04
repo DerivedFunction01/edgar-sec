@@ -93,7 +93,7 @@ RE_PART = re.compile(
 # separator. TOC rows ("ITEM 1. BUSINESS ..... 1") fail because the title may
 # contain dot leaders or a trailing page number.
 RE_ITEM_EXACT = re.compile(
-    r"^\s*ITEMS?\s+(?:\d+[A-Z]?(?:\.\d{1,2})?)\b\s*(?:[.:;\-]+\s*)?"
+    r"^\s*ITEMS?\s+(?:\d+[A-Z]?(?:\.\d{1,2})?)\b\s*(?:[.:;\-\u2013\u2014]+\s*)?"
     r"(?:(?-i:[A-Z])[A-Za-z0-9,&'()\s-]*)?[:.]?\s*"
     r"(?:\(\s*continued\s*\))?\s*$",
     re.IGNORECASE,

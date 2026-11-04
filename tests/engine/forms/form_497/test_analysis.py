@@ -34,6 +34,32 @@ def test_analyze_case_header(tmp_path: Path) -> None:
     assert "missing_document_kind" not in kinds
 
 
+def test_analyze_case_kind_beyond_head_window(tmp_path: Path) -> None:
+    """A kind term named only in the body still classifies the document;
+    a document naming no kind term stays unclassified.
+    """
+    header = "\n".join(f"Header line {i} of a pricing release" for i in range(45))
+    body = "The offering is made only by means of a prospectus supplement."
+    case_dir = tmp_path / "pricing"
+    operations = case_dir / "operations"
+    operations.mkdir(parents=True)
+    (operations / "render_to_txt.txt").write_text(
+        header + "\n" + body, encoding="utf-8"
+    )
+    report = analyze_case(case_dir, {"form": "497"})
+    assert report is not None
+    assert report["form_497"]["document_kind"] == "prospectus_supplement"
+
+    bare_dir = tmp_path / "bare"
+    bare_ops = bare_dir / "operations"
+    bare_ops.mkdir(parents=True)
+    (bare_ops / "render_to_txt.txt").write_text(header, encoding="utf-8")
+    bare = analyze_case(bare_dir, {"form": "497"})
+    assert bare is not None
+    assert bare["form_497"]["document_kind"] is None
+    assert "missing_document_kind" in [a["kind"] for a in bare["anomalies"]]
+
+
 def test_summarize_cases(tmp_path: Path) -> None:
     """The summary builds the 497 scorecard from a real report."""
     report = analyze_case(_case(tmp_path), {"form": "497"})
