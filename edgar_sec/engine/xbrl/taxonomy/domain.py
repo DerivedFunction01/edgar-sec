@@ -478,6 +478,9 @@ def validate_domain_taxonomy(taxonomy: DomainTaxonomy) -> None:
                 f" {frame.act_modifier}"
             )
     head_ids = {h.head_id for h in taxonomy.prime_heads}
+    for frame in taxonomy.grammatical_frames:
+        if frame.head is not None and frame.head not in head_ids:
+            raise ValueError(f"frame {frame.frame_id} names unknown head {frame.head}")
     for alias in taxonomy.query_aliases:
         for target in alias.targets:
             if target.head not in head_ids:

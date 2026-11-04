@@ -5111,6 +5111,7 @@
     "claim": "head",
     "head": "H_CASH",
     "claim_class": "PRIMARY",
+    "direction": 1.0,
     "carriage": [
       "M_DEBT"
     ]
@@ -5126,6 +5127,7 @@
     "claim": "head",
     "head": "H_CASH",
     "claim_class": "PRIMARY",
+    "direction": 1.0,
     "carriage": [
       "M_CURRENT",
       "M_DEBT"
@@ -5143,6 +5145,7 @@
     "claim": "head",
     "head": "H_CASH",
     "claim_class": "PRIMARY",
+    "direction": 1.0,
     "carriage": [
       "M_CURRENT",
       "M_DEBT"
@@ -5158,6 +5161,7 @@
     "claim": "head",
     "head": "H_CASH",
     "claim_class": "PRIMARY",
+    "direction": 1.0,
     "carriage": [
       "M_CONVERTIBLE",
       "M_DEBT"
@@ -5174,9 +5178,64 @@
     "claim": "head",
     "head": "H_CASH",
     "claim_class": "PRIMARY",
+    "direction": 1.0,
     "carriage": [
       "M_RELATED_PARTY",
       "M_DEBT"
+    ]
+  },
+  {
+    "phrase": [
+      "Proceeds",
+      "From",
+      "Issue"
+    ],
+    "claim": "head",
+    "head": "H_CASH",
+    "claim_class": "PRIMARY",
+    "direction": 1.0,
+    "carriage": [
+      "M_ISSUANCE"
+    ]
+  },
+  {
+    "phrase": [
+      "Proceeds",
+      "From",
+      "Issuing"
+    ],
+    "claim": "head",
+    "head": "H_CASH",
+    "claim_class": "PRIMARY",
+    "direction": 1.0,
+    "carriage": [
+      "M_ISSUANCE"
+    ]
+  },
+  {
+    "phrase": [
+      "Sale",
+      "Proceeds"
+    ],
+    "claim": "head",
+    "head": "H_CASH",
+    "claim_class": "PRIMARY",
+    "direction": 1.0,
+    "carriage": [
+      "M_SALE"
+    ]
+  },
+  {
+    "phrase": [
+      "Annuities",
+      "And",
+      "Investment",
+      "Certificates"
+    ],
+    "claim": "modifier",
+    "atom": "M_INVESTMENT",
+    "also_asserts": [
+      "M_ISSUANCE"
     ]
   },
   {

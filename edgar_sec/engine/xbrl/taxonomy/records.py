@@ -148,6 +148,7 @@ class GrammaticalFrame:
     strip_tokens: tuple[str, ...] = ()
     description: str = ""
     act_modifier: str | None = None
+    head: str | None = None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> GrammaticalFrame:
@@ -164,6 +165,7 @@ class GrammaticalFrame:
             act_modifier=str(data["act_modifier"])
             if data.get("act_modifier")
             else None,
+            head=str(data["head"]) if data.get("head") else None,
         )
 
 

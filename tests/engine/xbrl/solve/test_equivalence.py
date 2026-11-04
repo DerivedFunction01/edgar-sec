@@ -1778,3 +1778,56 @@ def test_collection_and_sale_proceeds_carry_their_own_markers() -> None:
         )
         assert result.tier == UNRELATED
         assert result.via_bridge is False
+
+
+def test_proceeds_borrowings_dialects_meet_on_the_cash_head() -> None:
+    """The IFRS borrowings proceeds line meets its us-gaap issuance twin."""
+    tax = load_domain_taxonomy()
+    issuance = _atom("us-gaap:ProceedsFromIssuanceOfLongTermDebt")
+    borrowings = _atom("ifrs-full:ProceedsFromNoncurrentBorrowings")
+    for target, candidate in ((issuance, borrowings), (borrowings, issuance)):
+        result = classify_ladder_pair(
+            target,
+            candidate,
+            tax.default_coordinates,
+            tuple(tax.sibling_groups),
+            relations=tax.atom_relations,
+        )
+        assert result.tier == NEAR
+        assert result.rule == "single_modifier_difference"
+        assert result.modifier_distance == 1
+        assert result.via_bridge is False
+
+
+def test_payments_coordinate_squatters_leave_by_their_source_acts() -> None:
+    """Annuities and sold-not-yet-purchased proceeds no longer equal payments."""
+    tax = load_domain_taxonomy()
+    payments = _atom("us-gaap:PaymentsToAcquireOtherInvestments")
+    purchase = _atom(
+        "ifrs-full:PurchaseOfFinancialInstrumentsClassifiedAsInvestingActivities"
+    )
+    squatters = (
+        _atom("us-gaap:ProceedsFromAnnuitiesAndInvestmentCertificates"),
+        _atom("us-gaap:InvestmentSoldNotYetPurchasedSaleProceeds"),
+    )
+    for squatter in squatters:
+        for target, candidate in ((squatter, payments), (payments, squatter)):
+            result = classify_ladder_pair(
+                target,
+                candidate,
+                tax.default_coordinates,
+                tuple(tax.sibling_groups),
+                relations=tax.atom_relations,
+            )
+            assert result.tier == NEAR
+            assert result.rule == "single_modifier_difference"
+            assert result.via_bridge is False
+        result = classify_ladder_pair(
+            squatter,
+            purchase,
+            tax.default_coordinates,
+            tuple(tax.sibling_groups),
+            relations=tax.atom_relations,
+        )
+        assert result.tier == UNRELATED
+        assert result.via_bridge is False
