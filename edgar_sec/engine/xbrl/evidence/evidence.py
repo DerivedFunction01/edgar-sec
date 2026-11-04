@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections import deque
 from collections.abc import Sequence
 from dataclasses import dataclass, field
 import hashlib
@@ -67,6 +68,7 @@ class EvidenceKnowledgeBase:
     is_frozen: bool = False
     frozen_sha256: str | None = None
     _geo_parents: dict[str, set[str]] = field(default_factory=dict)
+    _geo_subsumption_memo: dict[tuple[str, str], bool] = field(default_factory=dict)
     _decompositions: dict[str, tuple[Atom, tuple[str, ...], float, tuple[str, ...]]] = (
         field(default_factory=dict)
     )
@@ -94,12 +96,21 @@ class EvidenceKnowledgeBase:
 
     def is_geo_subsumed(self, child: str, ancestor: str) -> bool:
         """Check if child node is topologically subsumed by ancestor in DAG."""
+        key = (child, ancestor)
+        cached = self._geo_subsumption_memo.get(key)
+        if cached is not None:
+            return cached
+        result = self._geo_reaches(child, ancestor)
+        self._geo_subsumption_memo[key] = result
+        return result
+
+    def _geo_reaches(self, child: str, ancestor: str) -> bool:
         if child == ancestor:
             return True
         visited: set[str] = set()
-        queue = [child]
+        queue = deque([child])
         while queue:
-            curr = queue.pop(0)
+            curr = queue.popleft()
             if curr in visited:
                 continue
             visited.add(curr)
