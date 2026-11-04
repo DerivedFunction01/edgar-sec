@@ -89,7 +89,23 @@
       "from",
       "of"
     ],
+    "head": "H_CASH",
     "description": "Cash inflow proceeds from financing/investing"
+  },
+  {
+    "frame_id": "FRAME_INFLOW_PROCEEDS",
+    "prefix_tokens": [
+      "proceeds"
+    ],
+    "direction": 1.0,
+    "polarity": "INFLOW",
+    "strip_tokens": [
+      "proceeds",
+      "from",
+      "of"
+    ],
+    "head": "H_CASH",
+    "description": "Cash inflow proceeds prefix (elided-from form)"
   },
   {
     "frame_id": "FRAME_INFLOW_RECEIPTS_FROM",

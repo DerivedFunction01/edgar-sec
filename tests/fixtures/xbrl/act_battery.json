@@ -1110,6 +1110,59 @@
    ],
    "name": "ext:ActuarialGainsLossesArisingFromExperienceAdjustments",
    "note": "The fused actuarial gains-losses pair asserts neither gain identity."
+  },
+  {
+   "act": "proceeds",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_DEBT"
+   ],
+   "name": "ext:ProceedsFromBorrowingsUnderSolarFacility",
+   "note": "Head guarantee: the frame claims H_CASH before the borrowings object phrase competes."
+  },
+  {
+   "act": "proceeds",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_DEBT",
+    "M_NONCURRENT"
+   ],
+   "name": "ext:ProceedsFromNoncurrentBorrowings",
+   "note": "Head guarantee: the IFRS borrowings form lands the proceeds head, not the debt stock."
+  },
+  {
+   "act": "issuance",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_DEBT",
+    "M_ISSUANCE"
+   ],
+   "name": "ext:ProceedsFromIssueOfGreenBonds",
+   "note": "The IFRS issue-of form carries the issuance act inside a proceeds name."
+  },
+  {
+   "act": "issuance",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_DEBT",
+    "M_ISSUANCE"
+   ],
+   "name": "ext:ProceedsFromIssuingGreenBonds",
+   "note": "The participial twin lands the identical atom."
+  },
+  {
+   "act": "proceeds",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_SALE"
+   ],
+   "name": "ext:SolarGenerationEquipmentSaleProceeds",
+   "note": "The trailing sale-proceeds form lands the led form's atom, sale act included."
   }
  ]
 }

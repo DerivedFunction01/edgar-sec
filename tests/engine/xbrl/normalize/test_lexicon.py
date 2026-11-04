@@ -168,3 +168,39 @@ def test_loaded_lexicon_wordform_twins_share_payloads() -> None:
     assert payload(("borrowing",)) == payload(("borrowings",))
     assert borrowing.scope_next == ("under", "from")
     assert borrowings.scope_next == ()
+
+
+def test_grammatical_frame_record_parses_head() -> None:
+    """A head-declaring frame record loads its head; others None."""
+    from edgar_sec.engine.xbrl.taxonomy.records import GrammaticalFrame
+
+    frame = GrammaticalFrame.from_dict(
+        {
+            "frame_id": "FRAME_INFLOW_PROCEEDS_FROM",
+            "prefix_tokens": ["proceeds", "from"],
+            "head": "H_CASH",
+        }
+    )
+    assert frame.head == "H_CASH"
+    plain = GrammaticalFrame.from_dict(
+        {"frame_id": "FRAME_OUTFLOW_PURCHASE", "prefix_tokens": ["purchase"]}
+    )
+    assert plain.head is None
+
+
+def test_loaded_taxonomy_attaches_proceeds_frames_with_heads() -> None:
+    """The shipped proceeds frames reach the lexicon with H_CASH declared."""
+    from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
+
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    led = tax.token_lexicon.match_grammatical_frame(("Proceeds", "From", "Borrowings"))
+    assert led is not None
+    assert led.frame_id == "FRAME_INFLOW_PROCEEDS_FROM"
+    assert led.head == "H_CASH"
+    elided = tax.token_lexicon.match_grammatical_frame(
+        ("Proceeds", "Accounts", "Receivable")
+    )
+    assert elided is not None
+    assert elided.frame_id == "FRAME_INFLOW_PROCEEDS"
+    assert elided.head == "H_CASH"

@@ -342,6 +342,9 @@ def decompose_concept_expression(
             ordinal_values,
             evidence,
         )
+        atom = _apply_frame_head_precedence(
+            tokens, lexicon, atom, declaration, text_rule
+        )
     atom = _with_type_coordinate(atom, declaration, text_rule)
     atom = _with_type_coordinate(atom, declaration, percent_rule)
     return ConceptExpression(
@@ -568,6 +571,31 @@ def _apply_grammatical_frame(
         temporal,
         tuple(LexiconMatch(m.start + prefix, m.end + prefix, m.entry) for m in matches),
     )
+
+
+def _apply_frame_head_precedence(
+    tokens: tuple[str, ...],
+    lexicon: TokenLexicon,
+    atom: Atom,
+    declaration: ConceptDeclaration | None,
+    text_rule: TextCoordinateRule | None,
+) -> Atom:
+    """Restore a frame-declared head the cover's pick outranked.
+
+    Only the head moves; instant and text-typed declarations refuse.
+    """
+    frame = lexicon.match_grammatical_frame(tokens)
+    if frame is None or frame.head is None or atom.head == frame.head:
+        return atom
+    if declaration is not None and declaration.period_type == "instant":
+        return atom
+    if (
+        declaration is not None
+        and text_rule is not None
+        and item_type_local(declaration.item_type) in text_rule.item_types
+    ):
+        return atom
+    return Atom(frame.head, atom.modifiers)
 
 
 def _decompose_flat_tokens(
