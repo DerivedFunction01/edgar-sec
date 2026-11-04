@@ -50,9 +50,7 @@ def _extract(document: pymupdf.Document) -> PdfConversion:
     page_count = document.page_count
     if not _has_text_layer(document, page_count):
         return PdfConversion("", page_count, True)
-    probed = {
-        page: document[page].get_text() for page in _probe_indices(page_count)
-    }
+    probed = {page: document[page].get_text() for page in _probe_indices(page_count)}
     if sum(len(text) for text in probed.values()) < _MIN_PROBE_YIELD:
         return PdfConversion("", page_count, True)
     text = _PAGE_SEPARATOR.join(

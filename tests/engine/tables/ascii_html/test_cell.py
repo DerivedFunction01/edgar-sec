@@ -147,7 +147,9 @@ def test_a_cell_with_no_attributes_gets_the_shared_default_style() -> None:
 
 
 def test_childless_cells_share_one_memoized_style_for_equal_attributes() -> None:
-    html = '<table><tr><td align="right" style="padding-left: 8px;">42</td></tr></table>'
+    html = (
+        '<table><tr><td align="right" style="padding-left: 8px;">42</td></tr></table>'
+    )
     first = _style_of(html)
     second = _style_of(html.replace("42", "43"))
     assert first is second

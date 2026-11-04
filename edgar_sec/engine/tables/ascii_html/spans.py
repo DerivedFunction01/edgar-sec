@@ -516,9 +516,7 @@ def distribute_multi_row_span_lines(
             else:
                 target_r = row_indices[0]
             for r in row_indices:
-                b_i = next(
-                    i for i, x in enumerate(all_row_blocks[r]) if x.cell is cell
-                )
+                b_i = next(i for i, x in enumerate(all_row_blocks[r]) if x.cell is cell)
                 all_block_lines[r][b_i] = full_lines if r == target_r else []
         else:
             cur_sum = sum(min_heights)
@@ -535,9 +533,7 @@ def distribute_multi_row_span_lines(
                 h = heights[i]
                 slice_l = full_lines[offset : offset + h]
                 offset += h
-                b_i = next(
-                    j for j, x in enumerate(all_row_blocks[r]) if x.cell is cell
-                )
+                b_i = next(j for j, x in enumerate(all_row_blocks[r]) if x.cell is cell)
                 all_block_lines[r][b_i] = slice_l
 
 

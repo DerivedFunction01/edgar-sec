@@ -174,7 +174,9 @@ def convert_html_tables_to_ascii_with_metadata(
         ],
     ] = {}
 
-    def _matrix_and_grid(idx: int, source: SourceTable) -> tuple[
+    def _matrix_and_grid(
+        idx: int, source: SourceTable
+    ) -> tuple[
         list[list[SourceCell | None]],
         list[SpanGroup],
         tuple[tuple[str, ...], ...],
