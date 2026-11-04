@@ -491,6 +491,7 @@ def build_form_ncsr_profile(family: str = "N-CSR") -> CoverProfile:
             signals=(
                 BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
                 BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.ITEM_FALLBACK,
                 BoundarySignal.BODY_PROSE_FALLBACK,
             )
         ),
@@ -537,6 +538,7 @@ def build_form_nq_profile(family: str = "N-Q") -> CoverProfile:
             signals=(
                 BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
                 BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.ITEM_FALLBACK,
                 BoundarySignal.BODY_PROSE_FALLBACK,
             )
         ),

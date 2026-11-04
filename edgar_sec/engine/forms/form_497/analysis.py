@@ -57,14 +57,32 @@ def _registrant_name(lines: list[str]) -> str | None:
     return None
 
 
-def _form_497_fields(text: str, lines: list[str]) -> dict[str, Any]:
-    head_text = "\n".join(lines[:40])
-    lowered_head = head_text.lower()
-    kind = None
+def _document_kind(lines: list[str]) -> str | None:
+    """The most specific prospectus kind the document names: the head
+    window first, then the whole document for genre documents whose
+    headers carry no kind term.
+    """
+    lowered_head = "\n".join(lines[:40]).lower()
     for term, label in _KIND_TERMS:
         if term in lowered_head:
-            kind = label
+            return label
+    found: set[str] = set()
+    for line in lines:
+        lowered = line.lower()
+        for term, label in _KIND_TERMS:
+            if term in lowered:
+                found.add(label)
+        if len(found) == len(_KIND_TERMS):
             break
+    for _term, label in _KIND_TERMS:
+        if label in found:
+            return label
+    return None
+
+
+def _form_497_fields(text: str, lines: list[str]) -> dict[str, Any]:
+    head_text = "\n".join(lines[:40])
+    kind = _document_kind(lines)
     rule = _RULE_497_RE.search(head_text)
     registration = _REGISTRATION_RE.search(head_text)
     return {
