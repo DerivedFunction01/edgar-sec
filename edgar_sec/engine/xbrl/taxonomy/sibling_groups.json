@@ -137,5 +137,34 @@
       "V_GROSS"
     ],
     "cardinality": "compoundable"
+  },
+  {
+    "group": "EXIT_ACT",
+    "members": [
+      "M_SALE",
+      "M_DISPOSAL"
+    ],
+    "cardinality": "compoundable",
+    "exceptions": "Scoped to the coordinates where the two exit verbs name the same exit slice: the disposal-gain identity, cash proceeds, and asset lines. Sparse liability and unknown-head coordinates state no such kinship.",
+    "scope": [
+      {
+        "heads": [
+          "H_INCOME"
+        ],
+        "shared_modifiers": [
+          "M_DISPOSAL_GAIN"
+        ]
+      },
+      {
+        "heads": [
+          "H_CASH"
+        ]
+      },
+      {
+        "heads": [
+          "H_ASSET"
+        ]
+      }
+    ]
   }
 ]

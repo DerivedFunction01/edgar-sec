@@ -48,6 +48,6 @@
     "algebraic_class": "DIALECT_EQUIVALENCE",
     "directionality": "BIDIRECTIONAL",
     "is_computed": false,
-    "description": "One transaction coordinate stated in two naming dialects: a payments coordinate (source) and a purchase coordinate (target). Ladder bridge entry only; asserts no algebra. Entry requires the purchase act on the purchase side and a payments side equal to the edge's declared source coordinate, carrying neither the purchase act nor a sale marker (M_PURPOSE_SALE / M_SALES_GOODS, the markers sale/sales-worded proceeds lines carry)."
+    "description": "One transaction coordinate stated in two naming dialects: a payments coordinate (source) and a purchase coordinate (target). Ladder bridge entry only; asserts no algebra. Entry requires the purchase act on the purchase side and a payments side equal to the edge's declared source coordinate, carrying neither the purchase act nor an exit-act marker (M_SALE / M_DISPOSAL, the markers exit-worded proceeds lines carry); a side carrying an exit-act marker is a proceeds coordinate, never a payments or purchase coordinate."
   }
 ]

@@ -1670,3 +1670,105 @@ def test_purchase_frame_leaves_payments_and_proceeds_untouched() -> None:
     assert atom.head == "H_CASH"
     assert "M_PURCHASE" not in atom.modifiers
     assert direction == 1.0
+
+
+def test_disposal_claims_assert_the_exit_identity() -> None:
+    """Disposal and derecognition forms carry M_DISPOSAL in every dialect."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    lex = tax.token_lexicon
+
+    atom, res, _, _ = decompose_concept(
+        "ifrs-full:ProceedsFromDisposalOfPropertyPlantAndEquipment", lex
+    )
+    assert atom.head == "H_CASH"
+    assert atom.modifiers == {"M_DISPOSAL", "M_PPE_CAPEX"}
+    assert "Disposal" not in res
+
+    atom, _, _, _ = decompose_concept(
+        "ifrs-full:ProceedsFromDisposalsOfPropertyPlantAndEquipment", lex
+    )
+    assert atom.modifiers == {"M_DISPOSAL", "M_PPE_CAPEX"}
+
+    atom, _, _, _ = decompose_concept(
+        "acme:ProceedsFromDerecognitionOfWindTurbines", lex
+    )
+    assert atom.head == "H_CASH"
+    assert "M_DISPOSAL" in atom.modifiers
+
+    atom, _, _, _ = decompose_concept("us-gaap:PropertyPlantAndEquipmentDisposals", lex)
+    assert atom.modifiers == {"M_DISPOSAL", "M_DISPOSAL_GROUP", "M_PPE_CAPEX"}
+
+
+def test_sale_act_separated_from_purpose_and_goods() -> None:
+    """Sale-as-act carries M_SALE; purpose and goods senses keep their markers."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    lex = tax.token_lexicon
+
+    atom, _, _, _ = decompose_concept("acme:SaleOfWindTurbines", lex)
+    assert "M_SALE" in atom.modifiers
+    assert "M_PURPOSE_SALE" not in atom.modifiers
+
+    atom, _, _, _ = decompose_concept("acme:AssetsHeldForSaleWindPortfolio", lex)
+    assert "M_PURPOSE_SALE" in atom.modifiers
+    assert "M_SALE" not in atom.modifiers
+
+    atom, _, _, _ = decompose_concept(
+        "us-gaap:ProceedsFromSaleOfPropertyPlantAndEquipment", lex
+    )
+    assert atom.modifiers == {"M_PPE_CAPEX", "M_SALE"}
+
+    atom, _, _, _ = decompose_concept(
+        "ifrs-full:ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+        lex,
+    )
+    assert "M_SALE" in atom.modifiers
+    assert "M_SALES_GOODS" not in atom.modifiers
+
+    atom, _, _, _ = decompose_concept("us-gaap:CostsApplicableToSales", lex)
+    assert "M_SALES_GOODS" in atom.modifiers
+    assert "M_SALE" not in atom.modifiers
+
+
+def test_gain_family_carries_the_disposal_gain_identity() -> None:
+    """Gain/loss on disposal, sale, or extinguishment carries M_DISPOSAL_GAIN."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    lex = tax.token_lexicon
+
+    atom, _, _, _ = decompose_concept("us-gaap:GainLossOnSaleOfBusiness", lex)
+    assert atom.head == "H_INCOME"
+    assert atom.modifiers == {"M_DISPOSAL_GAIN", "M_SALE"}
+
+    atom, _, _, _ = decompose_concept(
+        "ifrs-full:GainsLossesOnDisposalsOfPropertyPlantAndEquipment", lex
+    )
+    assert atom.modifiers == {"M_DISPOSAL", "M_DISPOSAL_GAIN", "M_PPE_CAPEX"}
+
+    atom, _, _, _ = decompose_concept("us-gaap:GainsLossesOnExtinguishmentOfDebt", lex)
+    assert atom.modifiers == {"M_DEBT", "M_DISPOSAL_GAIN"}
+
+    atom, _, _, _ = decompose_concept("acme:GainLossOnDisposalOfWindTurbines", lex)
+    assert atom.modifiers == {"M_DISPOSAL", "M_DISPOSAL_GAIN"}
+
+
+def test_financial_assets_object_claim() -> None:
+    """Financial-asset phrases assert the instrument object on purchase lines."""
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    lex = tax.token_lexicon
+
+    atom, _, direction, _ = decompose_concept(
+        "ifrs-full:PurchaseOfAvailableforsaleFinancialAssets", lex
+    )
+    assert atom.head == "H_ASSET"
+    assert atom.modifiers == {"M_FINANCIAL_INSTRUMENT", "M_PURCHASE"}
+    assert direction == -1.0
+
+    atom, _, _, _ = decompose_concept(
+        "ifrs-full:PurchaseOfFinancialAssetsMeasuredAtAmortisedCostClassifiedAsInvestingActivities",
+        lex,
+    )
+    assert "M_FINANCIAL_INSTRUMENT" in atom.modifiers
+    assert "M_PURCHASE" in atom.modifiers

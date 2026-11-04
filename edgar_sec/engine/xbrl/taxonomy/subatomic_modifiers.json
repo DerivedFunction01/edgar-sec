@@ -2884,6 +2884,37 @@
     ]
   },
   {
+    "modifier_id": "M_SALE",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Sale",
+      "Sales"
+    ],
+    "description": "The sale act: assets sold for consideration in flow lines (sale-led, proceeds-from-sale, gain/loss-on-sale), distinct from held-for-sale purpose and goods revenue",
+    "kinds": [
+      "IDENTITY"
+    ],
+    "sibling_groups": [
+      "EXIT_ACT"
+    ]
+  },
+  {
+    "modifier_id": "M_DISPOSAL",
+    "category": "FLOW_TYPE",
+    "keywords": [
+      "Disposal",
+      "Disposals",
+      "Derecognition"
+    ],
+    "description": "The disposal act: derecognition and other non-sale exits of assets in flow lines, the exit-act marker beside the sale act",
+    "kinds": [
+      "IDENTITY"
+    ],
+    "sibling_groups": [
+      "EXIT_ACT"
+    ]
+  },
+  {
     "modifier_id": "M_CURTAILMENT",
     "category": "EMPLOYEE_BENEFIT",
     "keywords": [
