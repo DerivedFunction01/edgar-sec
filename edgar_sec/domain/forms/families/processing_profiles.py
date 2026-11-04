@@ -184,6 +184,15 @@ from edgar_sec.domain.forms.families.form_12reg.processing import (
 )
 from edgar_sec.domain.forms.families.form_12reg.taxonomy import FORM_8A_ITEMS
 from edgar_sec.domain.forms.families.form_abs_ee.processing import PROFILE_ABS_EE
+from edgar_sec.domain.forms.families.form_abs_reports.checkmarks import (
+    ABS_REPORTS_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_abs_reports.processing import (
+    PROFILE_ABS_REPORTS,
+)
+from edgar_sec.domain.forms.families.form_abs_reports.taxonomy import (
+    ABS_REPORTS_ITEMS,
+)
 from edgar_sec.domain.forms.families.form_c.processing import PROFILE_FORM_C
 
 from edgar_sec.domain.forms.families.form_sd.checkmarks import SD_CHECKBOX_SCHEMA
@@ -485,6 +494,12 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
     ProcessingCatalogEntry(
         family="ABS-EE",
         profile=PROFILE_ABS_EE,
+    ),
+    ProcessingCatalogEntry(
+        family="ABS",
+        profile=PROFILE_ABS_REPORTS,
+        cover_checkbox_schema=ABS_REPORTS_CHECKBOX_SCHEMA,
+        taxonomy_items=ABS_REPORTS_ITEMS,
     ),
     ProcessingCatalogEntry(
         family="25",
