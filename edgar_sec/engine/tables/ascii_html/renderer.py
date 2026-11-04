@@ -42,7 +42,9 @@ from .model import (
     HorizontalAlign,
     RenderBudget,
     ResolvedGrid,
+    SourceCell,
     SourceTable,
+    SpanGroup,
     TableRenderResult,
     VerticalAlign,
 )
@@ -81,8 +83,12 @@ def render_source_table(
     *,
     render_ascii: bool = True,
     browser_whitespace: bool = True,
+    span_matrix: tuple[list[list[SourceCell | None]], list[SpanGroup]] | None = None,
 ) -> TableRenderResult:
-    """Render a single HTML <table> node or SourceTable into canonical ASCII table format."""
+    """Render a single HTML <table> node or SourceTable into canonical ASCII table format.
+    A caller that already built the span matrix for this source may pass it; the
+    render repairs and trims its own row copy, never the caller's matrix.
+    """
     if isinstance(table_input, SourceTable):
         source_table = table_input
     else:
@@ -94,7 +100,11 @@ def render_source_table(
     if not source_table.rows:
         return _empty_render_result("Empty source table")
 
-    grid_matrix, span_groups = build_span_matrix(source_table)
+    if span_matrix is not None:
+        grid_matrix = [list(row) for row in span_matrix[0]]
+        span_groups = list(span_matrix[1])
+    else:
+        grid_matrix, span_groups = build_span_matrix(source_table)
     repair_header_band_spans(grid_matrix)
     while grid_matrix and all(
         (cell is None or not cell.text.strip()) for cell in grid_matrix[0]
