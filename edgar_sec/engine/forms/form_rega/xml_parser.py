@@ -7,8 +7,8 @@ import xml.etree.ElementTree as ET
 from edgar_sec.domain.forms.families.form_rega.models import RegADocument, RegAKind
 from edgar_sec.domain.forms.families.form_rega.taxonomy import kind_of
 from edgar_sec.engine.forms.common.edgar_submission import (
+    edgar_header_from_root,
     edgar_submission_root,
-    parse_edgar_header,
 )
 from edgar_sec.engine.forms.common.extraction import local_name
 
@@ -36,27 +36,29 @@ def _find_path(parent: ET.Element, *tags: str) -> ET.Element | None:
     return current
 
 
-def _first_deep_text(parent: ET.Element, tag_name: str) -> str | None:
+def _deep_texts(
+    parent: ET.Element, tag_names: frozenset[str]
+) -> dict[str, tuple[str, ...]]:
+    """Non-empty texts of every wanted tag, in document order, in one pass."""
+    found: dict[str, list[str]] = {name: [] for name in tag_names}
     for elem in parent.iter():
-        if local_name(elem.tag) == tag_name:
-            text = _text(elem)
-            if text:
-                return text
-    return None
+        name = local_name(elem.tag)
+        if name not in found:
+            continue
+        text = _text(elem)
+        if text:
+            found[name].append(text)
+    return {name: tuple(texts) for name, texts in found.items()}
 
 
-def _all_deep_texts(parent: ET.Element, tag_name: str) -> tuple[str, ...]:
-    return tuple(
-        text
-        for text in (_text(e) for e in parent.iter() if local_name(e.tag) == tag_name)
-        if text
-    )
+def _first(texts: tuple[str, ...]) -> str | None:
+    return texts[0] if texts else None
 
 
 def parse_rega_xml(raw_bytes: bytes) -> RegADocument | None:
     """Parse a Reg A XML primary into the review model; None when absent."""
     root = edgar_submission_root(raw_bytes)
-    header = parse_edgar_header(raw_bytes)
+    header = edgar_header_from_root(root) if root is not None else None
     if root is None or header is None:
         return None
     kind = kind_of(header.submission_type)
@@ -65,12 +67,20 @@ def parse_rega_xml(raw_bytes: bytes) -> RegADocument | None:
         header_elem = root
     form_data = _find_first(root, "formData")
     scope = form_data if form_data is not None else root
-    header_ciks = _all_deep_texts(header_elem, "cik")
-    filer_ciks = header.filer_ciks or header_ciks
+    header_deep = _deep_texts(
+        header_elem, frozenset({"cik", "offeringFileNumber", "fileNumber"})
+    )
+    scope_deep = _deep_texts(
+        scope,
+        frozenset(
+            {"commissionFileNumber", "issuerName", "cik", "jurisdictionOrganization"}
+        ),
+    )
+    filer_ciks = header.filer_ciks or header_deep["cik"]
     file_number = (
-        _first_deep_text(scope, "commissionFileNumber")
-        or _first_deep_text(header_elem, "offeringFileNumber")
-        or _first_deep_text(header_elem, "fileNumber")
+        _first(scope_deep["commissionFileNumber"])
+        or _first(header_deep["offeringFileNumber"])
+        or _first(header_deep["fileNumber"])
     )
     tier = None
     total_aggregate = None
@@ -84,10 +94,10 @@ def parse_rega_xml(raw_bytes: bytes) -> RegADocument | None:
         kind=kind,
         live_test_flag=header.live_test_flag,
         filer_ciks=filer_ciks,
-        issuer_name=_first_deep_text(scope, "issuerName"),
-        issuer_cik=_first_deep_text(scope, "cik"),
+        issuer_name=_first(scope_deep["issuerName"]),
+        issuer_cik=_first(scope_deep["cik"]),
         commission_file_number=file_number,
-        jurisdiction=_first_deep_text(scope, "jurisdictionOrganization"),
+        jurisdiction=_first(scope_deep["jurisdictionOrganization"]),
         tier=tier,
         total_aggregate_offering=total_aggregate,
         has_summary_block=(

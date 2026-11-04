@@ -10,8 +10,8 @@ from edgar_sec.domain.forms.families.form_c.models import (
 )
 from edgar_sec.domain.forms.families.form_c.taxonomy import kind_of
 from edgar_sec.engine.forms.common.edgar_submission import (
+    edgar_header_from_root,
     edgar_submission_root,
-    parse_edgar_header,
 )
 from edgar_sec.engine.forms.common.extraction import local_name
 
@@ -39,22 +39,27 @@ def _find_path(parent: ET.Element, *tags: str) -> ET.Element | None:
     return current
 
 
-def _has_deep(parent: ET.Element, tag_name: str) -> bool:
-    return any(local_name(e.tag) == tag_name for e in parent.iter())
-
-
-def _count_deep(parent: ET.Element, tag_name: str) -> int:
-    return sum(1 for e in parent.iter() if local_name(e.tag) == tag_name)
+def _deep_counts(parent: ET.Element, tag_names: frozenset[str]) -> dict[str, int]:
+    counts = dict.fromkeys(tag_names, 0)
+    for elem in parent.iter():
+        name = local_name(elem.tag)
+        if name in counts:
+            counts[name] += 1
+    return counts
 
 
 def parse_form_c_xml(raw_bytes: bytes) -> FormCDocument | None:
     """Parse a Form C primary into the review model; None when absent."""
     root = edgar_submission_root(raw_bytes)
-    header = parse_edgar_header(raw_bytes)
+    header = edgar_header_from_root(root) if root is not None else None
     if root is None or header is None:
         return None
     form_data = _find_first(root, "formData")
     scope = form_data if form_data is not None else root
+    deep = _deep_counts(
+        scope,
+        frozenset({"coIssuerInfo", "progressUpdate", "totalAssetMostRecentFiscalYear"}),
+    )
     issuer_info = _find_path(scope, "issuerInformation", "issuerInfo")
     legal = _find_first(issuer_info, "legalStatus") if issuer_info is not None else None
     issuer = CIssuer(
@@ -76,7 +81,7 @@ def parse_form_c_xml(raw_bytes: bytes) -> FormCDocument | None:
         website=_text(_find_first(issuer_info, "issuerWebsite"))
         if issuer_info is not None
         else None,
-        co_issuer_count=_count_deep(scope, "coIssuerInfo"),
+        co_issuer_count=deep["coIssuerInfo"],
     )
     offering = _find_first(scope, "offeringInformation")
     return FormCDocument(
@@ -86,8 +91,8 @@ def parse_form_c_xml(raw_bytes: bytes) -> FormCDocument | None:
         filer_ciks=header.filer_ciks,
         issuer=issuer,
         has_offering_information=offering is not None,
-        has_progress_update=_has_deep(scope, "progressUpdate"),
-        has_annual_financials=_has_deep(scope, "totalAssetMostRecentFiscalYear"),
+        has_progress_update=deep["progressUpdate"] > 0,
+        has_annual_financials=deep["totalAssetMostRecentFiscalYear"] > 0,
         offering_amount=(
             _text(_find_first(offering, "offeringAmount"))
             if offering is not None

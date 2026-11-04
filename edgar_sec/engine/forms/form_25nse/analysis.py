@@ -54,14 +54,16 @@ def analyze_case(
     if not target_xml.exists():
         return _missing_report(case_dir.name, accession, "missing_extracted_xml")
     raw = target_xml.read_bytes()
-    try:
-        ET.fromstring(raw)
-    except ET.ParseError as exc:
-        report = _missing_report(case_dir.name, accession, f"xml_parse_error: {exc}")
-        report["review_signals"] = ["corrupt_xml"]
-        return report
     doc = parse_form_25nse_xml(raw)
     if doc is None:
+        try:
+            ET.fromstring(raw)
+        except ET.ParseError as exc:
+            report = _missing_report(
+                case_dir.name, accession, f"xml_parse_error: {exc}"
+            )
+            report["review_signals"] = ["corrupt_xml"]
+            return report
         return _missing_report(
             case_dir.name, accession, "missing_notification_document"
         )
