@@ -266,6 +266,399 @@
    ],
    "name": "ext:GainLossOnExtinguishmentOfDebt",
    "note": "Extinguishment closes inside the disposal-gain phrase family."
+  },
+  {
+   "act": "issuance",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_DEBT",
+    "M_ISSUANCE"
+   ],
+   "name": "ext:IssuanceOfSolarBonds",
+   "note": "The noun asserts M_ISSUANCE; the bond object supplies the debt stock head."
+  },
+  {
+   "act": "issuance",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_DEBT",
+    "M_ISSUANCE"
+   ],
+   "name": "ext:ProceedsFromIssuanceOfSolarBonds",
+   "note": "The issuance act is visible inside a proceeds name."
+  },
+  {
+   "act": "settlement",
+   "direction": 1.0,
+   "head": "H_UNKNOWN",
+   "modifiers": [
+    "M_INSURANCE_PREMIUM",
+    "M_SETTLEMENT"
+   ],
+   "name": "ext:SettlementOfInsuranceClaims",
+   "note": "The singular asserts M_SETTLEMENT, the plural's carrier."
+  },
+  {
+   "act": "settlement",
+   "direction": 1.0,
+   "head": "H_UNKNOWN",
+   "modifiers": [
+    "M_INSURANCE_PREMIUM",
+    "M_SETTLEMENT"
+   ],
+   "name": "ext:SettlementsOfInsuranceClaims",
+   "note": "Plural twin of the singular row: identical atom by construction."
+  },
+  {
+   "act": "distribution",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_DIVIDEND"
+   ],
+   "name": "ext:CashDistributionToMembers",
+   "note": "The singular asserts M_DIVIDEND, the plural's carrier."
+  },
+  {
+   "act": "distribution",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_DIVIDEND"
+   ],
+   "name": "ext:CashDistributionsToMembers",
+   "note": "Plural twin of the singular row: identical atom by construction."
+  },
+  {
+   "act": "transfer",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_TRANSFER"
+   ],
+   "name": "ext:TransferOfSolarAssets",
+   "note": "The singular asserts M_TRANSFER, the plural's carrier."
+  },
+  {
+   "act": "transfer",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_TRANSFER"
+   ],
+   "name": "ext:TransfersOfSolarAssets",
+   "note": "Plural twin of the singular row: identical atom by construction."
+  },
+  {
+   "act": "transfer",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_FAIR_VALUE",
+    "M_TRANSFER_IN"
+   ],
+   "name": "ext:TransferIntoLevel3SolarAssets",
+   "note": "The singular Into form asserts the Level-3 niche carrier."
+  },
+  {
+   "act": "transfer",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_FAIR_VALUE",
+    "M_TRANSFER_OUT"
+   ],
+   "name": "ext:TransferOutOfLevel3SolarAssets",
+   "note": "The singular Out Of form asserts the Level-3 niche carrier."
+  },
+  {
+   "act": "deferral",
+   "direction": 1.0,
+   "head": "H_REVENUE",
+   "modifiers": [
+    "M_DEFERRED",
+    "M_SERVICE"
+   ],
+   "name": "ext:DeferralOfSubscriptionRevenue",
+   "note": "The noun asserts M_DEFERRED, the adjective's carrier."
+  },
+  {
+   "act": "deferral",
+   "direction": 1.0,
+   "head": "H_REVENUE",
+   "modifiers": [
+    "M_DEFERRED",
+    "M_SERVICE"
+   ],
+   "name": "ext:DeferralsOfSubscriptionRevenue",
+   "note": "Plural noun twin of the singular row: identical atom by construction."
+  },
+  {
+   "act": "accrual",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_ACCRUED_LIABILITY"
+   ],
+   "name": "ext:SolarWarrantyAccrual",
+   "note": "The noun mirrors the Accruals TAIL head claim and its carriage."
+  },
+  {
+   "act": "accrual",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_ACCRUED_LIABILITY"
+   ],
+   "name": "ext:SolarWarrantyAccruals",
+   "note": "Plural twin of the singular row: identical atom by construction."
+  },
+  {
+   "act": "repayment",
+   "direction": -1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_LOAN"
+   ],
+   "name": "ext:RepaymentOfSolarLoans",
+   "note": "The singular Of form was already wired by its scoped head claim."
+  },
+  {
+   "act": "repayment",
+   "direction": -1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_LOAN"
+   ],
+   "name": "ext:RepaymentsOfSolarLoans",
+   "note": "Plural twin of the singular row: identical atom by construction."
+  },
+  {
+   "act": "borrowing",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_DEBT",
+    "M_FINANCING"
+   ],
+   "name": "ext:BorrowingUnderSolarFinancingFacility",
+   "note": "The gerund draw shape mirrors Borrowings under its scope guard."
+  },
+  {
+   "act": "impairment",
+   "direction": 1.0,
+   "head": "H_UNKNOWN",
+   "modifiers": [
+    "M_IMPAIRMENT",
+    "M_LOAN"
+   ],
+   "name": "ext:ImpairedSolarLoans",
+   "note": "The participial asserts the impairment descriptive tag."
+  },
+  {
+   "act": "amortisation",
+   "direction": 1.0,
+   "head": "H_EXPENSE",
+   "modifiers": [
+    "M_DEPR_AMORT",
+    "M_INTANGIBLE_GOODWILL"
+   ],
+   "name": "ext:AmortisationOfIntangibleAssets",
+   "note": "The British spelling lands the Amortization head claim's atom."
+  },
+  {
+   "act": "amortisation",
+   "direction": 1.0,
+   "head": "H_EXPENSE",
+   "modifiers": [
+    "M_DEPR_AMORT"
+   ],
+   "name": "ext:AmortisationExpense",
+   "note": "The bare spelling asserts M_DEPR_AMORT like its US twin."
+  },
+  {
+   "act": "availableforsale",
+   "direction": 1.0,
+   "head": "H_LIABILITY",
+   "modifiers": [
+    "M_AVAILABLE_FOR_SALE",
+    "M_DEBT"
+   ],
+   "name": "ext:AvailableforsaleSolarBonds",
+   "note": "The fused single token asserts the classification like the phrase."
+  },
+  {
+   "act": "disposal",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DISPOSAL",
+    "M_DISPOSAL_GAIN"
+   ],
+   "name": "ext:GainFromDisposalOfSolarGenerationEquipment",
+   "note": "The single-side From form carries the disposal act and the gain identity, like its On twin."
+  },
+  {
+   "act": "disposal",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DISPOSAL",
+    "M_DISPOSAL_GAIN"
+   ],
+   "name": "ext:LossFromDisposalOfSolarGenerationEquipment",
+   "note": "The loss-side From form lands the same fused atom as its On twin."
+  },
+  {
+   "act": "sale",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DISPOSAL_GAIN",
+    "M_SALE"
+   ],
+   "name": "ext:LossFromSaleOfSolarGenerationEquipment",
+   "note": "The single-side From sale form carries the sale act and the gain identity."
+  },
+  {
+   "act": "extinguishment",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DISPOSAL_GAIN"
+   ],
+   "name": "ext:GainsFromExtinguishmentOfSolarGenerationEquipment",
+   "note": "The From extinguishment form carries the gain identity; extinguishment has no act carrier."
+  },
+  {
+   "act": "sale",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DISPOSAL_GAIN",
+    "M_SALE"
+   ],
+   "name": "ext:GainLossFromSaleOfSolarGenerationEquipment",
+   "note": "The combined From sale form lands the fused atom of its On twin."
+  },
+  {
+   "act": "disposal",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DISPOSAL",
+    "M_DISPOSAL_GAIN"
+   ],
+   "name": "ext:SolarGenerationEquipmentDisposalGain",
+   "note": "The postfix DisposalGain form the gain record's keywords declare carries the identity."
+  },
+  {
+   "act": "disposal",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DISPOSAL",
+    "M_DISPOSAL_GAIN"
+   ],
+   "name": "ext:SolarGenerationEquipmentDisposalLoss",
+   "note": "The postfix DisposalLoss form lands the same fused atom."
+  },
+  {
+   "act": "sale",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DISPOSAL_GAIN",
+    "M_SALE"
+   ],
+   "name": "ext:GainArisingFromSaleOfSolarGenerationEquipment",
+   "note": "The arising-from sale form carries the sale act and the gain identity."
+  },
+  {
+   "act": "sale",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DISPOSAL_GAIN",
+    "M_SALE"
+   ],
+   "name": "ext:GainsLossesArisingFromSaleAndLeasebackTransactions",
+   "note": "The attested IFRS sale-and-leaseback shape carries the gain identity."
+  },
+  {
+   "act": "unrealized",
+   "direction": 1.0,
+   "head": "H_EQUITY",
+   "modifiers": [
+    "M_ACCUMULATED",
+    "M_DEBT",
+    "V_GAIN_SIDE",
+    "V_GROSS"
+   ],
+   "name": "ext:SolarBondPortfolioAccumulatedGrossUnrealizedGain",
+   "note": "The gain position carries the gain-side marker; it coexists with the loss position."
+  },
+  {
+   "act": "unrealized",
+   "direction": 1.0,
+   "head": "H_EQUITY",
+   "modifiers": [
+    "M_ACCUMULATED",
+    "M_DEBT",
+    "V_GROSS",
+    "V_LOSS_SIDE"
+   ],
+   "name": "ext:SolarBondPortfolioAccumulatedGrossUnrealizedLoss",
+   "note": "The loss position carries the loss-side marker."
+  },
+  {
+   "act": "unrealized",
+   "direction": 1.0,
+   "head": "H_EQUITY",
+   "modifiers": [
+    "M_ACCUMULATED",
+    "M_DEBT",
+    "V_GROSS"
+   ],
+   "name": "ext:SolarBondPortfolioAccumulatedGrossUnrealizedGainLoss",
+   "note": "The combined claim asserts neither side marker; fusion is preserved."
+  },
+  {
+   "act": "unrealized",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DEBT",
+    "V_GAIN_SIDE",
+    "V_GROSS"
+   ],
+   "name": "ext:GreenBondPortfolioGrossUnrealizedGain",
+   "note": "The bare gross-unrealized shape carries the gain-side marker too."
+  },
+  {
+   "act": "unrealized",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DEBT",
+    "V_GROSS",
+    "V_LOSS_SIDE"
+   ],
+   "name": "ext:GreenBondPortfolioGrossUnrealizedLoss",
+   "note": "The bare gross-unrealized shape carries the loss-side marker."
+  },
+  {
+   "act": "unrealized",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DEBT",
+    "V_GROSS"
+   ],
+   "name": "ext:GreenBondPortfolioGrossUnrealizedGainLoss",
+   "note": "The combined bare shape asserts neither side marker."
   }
  ]
 }

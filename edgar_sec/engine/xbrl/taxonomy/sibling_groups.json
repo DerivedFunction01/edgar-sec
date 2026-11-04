@@ -166,5 +166,33 @@
         ]
       }
     ]
+  },
+  {
+    "group": "POSITION_SIDE",
+    "members": [
+      "V_GAIN_SIDE",
+      "V_LOSS_SIDE"
+    ],
+    "cardinality": "exclusive",
+    "exceptions": "The combined GainLoss claims assert neither side; the fused position total stands one modifier apart from each side.",
+    "scope": [
+      {
+        "heads": [
+          "H_EQUITY"
+        ],
+        "shared_modifiers": [
+          "V_GROSS",
+          "M_ACCUMULATED"
+        ]
+      },
+      {
+        "heads": [
+          "H_INCOME"
+        ],
+        "shared_modifiers": [
+          "V_GROSS"
+        ]
+      }
+    ]
   }
 ]

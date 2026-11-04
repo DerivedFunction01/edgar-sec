@@ -1280,7 +1280,8 @@
     "modifier_id": "M_AVAILABLE_FOR_SALE",
     "category": "VALUATION_BASIS",
     "keywords": [
-      "AvailableForSale"
+      "AvailableForSale",
+      "Availableforsale"
     ],
     "description": "Securities classified available-for-sale (fair value through OCI)",
     "sibling_groups": [
@@ -1668,7 +1669,9 @@
     "modifier_id": "M_DEFERRED",
     "category": "WORKING_CAPITAL",
     "keywords": [
-      "Deferred"
+      "Deferred",
+      "Deferral",
+      "Deferrals"
     ],
     "description": "Amounts whose recognition is deferred to a later period",
     "sibling_groups": [
@@ -2004,6 +2007,36 @@
     ]
   },
   {
+    "modifier_id": "V_GAIN_SIDE",
+    "category": "POSITION_SIDE",
+    "keywords": [
+      "UnrealizedGain"
+    ],
+    "description": "Gain side of a gross unrealized holding position; a positive stock measure coexisting with the loss side",
+    "sibling_groups": [
+      "POSITION_SIDE"
+    ],
+    "kinds": [
+      "AXIS",
+      "VALUATION"
+    ]
+  },
+  {
+    "modifier_id": "V_LOSS_SIDE",
+    "category": "POSITION_SIDE",
+    "keywords": [
+      "UnrealizedLoss"
+    ],
+    "description": "Loss side of a gross unrealized holding position; a positive stock measure coexisting with the gain side",
+    "sibling_groups": [
+      "POSITION_SIDE"
+    ],
+    "kinds": [
+      "AXIS",
+      "VALUATION"
+    ]
+  },
+  {
     "modifier_id": "V_BASIC",
     "category": "EPS_BASIS",
     "keywords": [
@@ -2240,7 +2273,8 @@
     "category": "EXPENSE_NATURE",
     "keywords": [
       "Depreciation",
-      "Amortization"
+      "Amortization",
+      "Amortisation"
     ],
     "description": "Depreciation and amortization scope",
     "kinds": [
@@ -2528,7 +2562,8 @@
     "category": "DESCRIPTIVE_TAG",
     "keywords": [
       "Impairment",
-      "Impairments"
+      "Impairments",
+      "Impaired"
     ],
     "description": "Impairment write-down event or condition (descriptive topic tag)",
     "kinds": [
@@ -2819,6 +2854,7 @@
     "modifier_id": "M_TRANSFER_IN",
     "category": "FLOW_TYPE",
     "keywords": [
+      "TransferInto",
       "TransfersInto"
     ],
     "description": "Transfer into a measurement level or category",
@@ -2830,6 +2866,7 @@
     "modifier_id": "M_TRANSFER_OUT",
     "category": "FLOW_TYPE",
     "keywords": [
+      "TransferOut",
       "TransfersOut"
     ],
     "description": "Transfer out of a measurement level or category",
@@ -2841,6 +2878,7 @@
     "modifier_id": "M_TRANSFER",
     "category": "FLOW_TYPE",
     "keywords": [
+      "Transfer",
       "Transfers"
     ],
     "description": "Transfer between levels, categories, or parties",
@@ -2852,6 +2890,7 @@
     "modifier_id": "M_SETTLEMENT",
     "category": "FLOW_TYPE",
     "keywords": [
+      "Settlement",
       "Settlements"
     ],
     "description": "Settlement of an obligation or position",
@@ -2875,6 +2914,7 @@
     "modifier_id": "M_ISSUANCE",
     "category": "FLOW_TYPE",
     "keywords": [
+      "Issuance",
       "Issuances",
       "Issues"
     ],
