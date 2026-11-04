@@ -64,6 +64,15 @@ _SECURITIZER_CIK_RE = re.compile(
     r"central index key (?:number )?of securitizer[:\s]*" + _CIK_VALUE,
     re.IGNORECASE,
 )
+_SECURITIZER_FILE_BEFORE_CAPTION_RE = re.compile(
+    r"([0-9][0-9a-z]*(?:-[0-9a-z]+)+|[0-9]+)"
+    r"\s*\(\s*commission file number of securitizer\s*\)",
+    re.IGNORECASE,
+)
+_SECURITIZER_CIK_BEFORE_CAPTION_RE = re.compile(
+    r"([0-9]{7,10})\s*\(\s*central index key(?: number)? of securitizer\s*\)",
+    re.IGNORECASE,
+)
 _DATE = r"([a-z]+ \d{1,2}, \d{4})"
 _PERIOD_RE = re.compile(
     r"distribution period from[\s\S]{0,48}?" + _DATE + r"\s+to,?\s+" + _DATE,
@@ -85,6 +94,12 @@ _DATE_OF_REPORT_RE = re.compile(
     r"date of report \(date of earliest event reported\)[:\s]*" + _DATE,
     re.IGNORECASE,
 )
+_DATE_OF_REPORT_LOOSE_RE = re.compile(
+    r"date of report \(date of earliest event reported\)[:\s]*"
+    r"([a-z]+ ?\d{1,2}\s*[.,]\s*\d{4})",
+    re.IGNORECASE,
+)
+_DATE_PERIOD_SEP_RE = re.compile(r"\.\s*(?=\d{4}$)")
 _PAIR_ABOVE_CAPTION_RE = re.compile(r"(\d{1,3}-[0-9a-z-]+)\s+([0-9]{7,10})")
 _PART_CAPTION_RE = re.compile(
     r"\b(?:file|report)\s+(\d+)\s+of\s+(\d+)\b",
@@ -126,6 +141,14 @@ def _normalize_period_date(value: str) -> str:
     return _LETTER_DIGIT_RE.sub(r"\1 \2", collapsed)
 
 
+def _normalize_report_date(value: str) -> str:
+    """Canonical form for a date of report captured from era typesetting.
+
+    Era faces print the day/year separator as a period ("February 12. 2016").
+    """
+    return _DATE_PERIOD_SEP_RE.sub(", ", _normalize_period_date(value.strip()))
+
+
 def _first_group(pattern: re.Pattern[str], text: str) -> str | None:
     match = pattern.search(text)
     return match.group(1) if match else None
@@ -138,12 +161,25 @@ def _first_cik(pattern: re.Pattern[str], text: str) -> str | None:
 
 
 def _caption_pair_above(lines: list[str]) -> tuple[str | None, str | None]:
-    """File number / CIK printed as a value row above their captions."""
+    """File number / CIK printed as a value row above their captions.
+
+    Face-table captions wrap vertically in the render, so a caption block
+    starts at a line holding either phrase fragment and completes over the
+    following lines; wrapped columns interleave, so completion is the two
+    fragments plus either the joined phrase or the securitizer tail.
+    The value row sits above the block's first line.
+    """
     for index, line in enumerate(lines):
         lowered = line.lower()
-        if "commission file number" not in lowered:
+        if "commission file" not in lowered and "central index key" not in lowered:
             continue
-        if "central index key" not in lowered:
+        window = " ".join(lines[index : index + 4]).lower()
+        if "commission file" not in window or "central index key" not in window:
+            continue
+        if (
+            "commission file number" not in window
+            and "number of securitizer" not in window
+        ):
             continue
         substantive = 0
         for back in range(index - 1, max(index - 10, -1), -1):
@@ -275,9 +311,21 @@ def _analyze_securitizer(
         pair_file, pair_cik = _caption_pair_above(lines)
         file_number = file_number or pair_file
         cik = cik or pair_cik
+    if not file_number:
+        file_number = _first_group(
+            _SECURITIZER_FILE_BEFORE_CAPTION_RE, cover_text
+        ) or _first_group(_SECURITIZER_FILE_BEFORE_CAPTION_RE, text)
+    if not cik:
+        cik = _first_cik(_SECURITIZER_CIK_BEFORE_CAPTION_RE, cover_text) or _first_cik(
+            _SECURITIZER_CIK_BEFORE_CAPTION_RE, text
+        )
     fields["securitizer_file_number"] = file_number
     fields["securitizer_cik"] = cik
-    fields["date_of_report"] = _first_group(_DATE_OF_REPORT_RE, cover_text)
+    date_of_report = _first_group(_DATE_OF_REPORT_RE, cover_text)
+    if not date_of_report:
+        loose = _first_group(_DATE_OF_REPORT_LOOSE_RE, cover_text)
+        date_of_report = _normalize_report_date(loose) if loose else None
+    fields["date_of_report"] = date_of_report
     reporting = _REPORTING_PERIOD_RE.search(cover_text)
     fields["reporting_period"] = (
         {"from": reporting.group(1), "to": reporting.group(2)} if reporting else None
