@@ -218,7 +218,8 @@ def decompose_concept_expression(
     local_name = qname_local(concept_qname)
     raw_tokens = split_camel_case(local_name)
     tokens, number_values, ordinal_values = collapse_number_phrases(raw_tokens)
-    cover, _ = lexicon.select_cover(tokens, evidence=evidence)
+    candidates = lexicon.candidates(tokens, evidence)
+    cover, cover_residuals = lexicon.select_cover(tokens, candidates)
     operators = [
         match
         for match in cover
@@ -312,6 +313,7 @@ def decompose_concept_expression(
         evidence,
         declaration,
         text_rule,
+        candidates,
     )
     if framed is not None:
         (
@@ -341,6 +343,7 @@ def decompose_concept_expression(
             number_values,
             ordinal_values,
             evidence,
+            resolved=_finish_resolution(tokens, candidates, cover, cover_residuals),
         )
         atom = _apply_frame_head_precedence(
             tokens, lexicon, atom, declaration, text_rule
@@ -372,18 +375,18 @@ def _admit_coexisting(
     """
     admitted: list[LexiconMatch] = []
     cover_ids = {id(m) for m in cover}
+    cover_keys = [m.entry.phrase_key for m in cover]
     for cand in candidates:
         if id(cand) in cover_ids:
             continue
+        cand_key = cand.entry.phrase_key
+        cand_coexists = cand.entry.coexists_with
         partners = [
             m
-            for m in cover
+            for m, key in zip(cover, cover_keys, strict=True)
             if m.start < cand.end
             and cand.start < m.end
-            and (
-                m.entry.phrase_key in cand.entry.coexists_with
-                or cand.entry.phrase_key in m.entry.coexists_with
-            )
+            and (key in cand_coexists or cand_key in m.entry.coexists_with)
         ]
         if not partners:
             continue
@@ -401,14 +404,26 @@ def _resolve_matches(
     tokens: tuple[str, ...],
     lexicon: TokenLexicon,
     evidence: EvidenceContext | None = None,
+    candidates: list[LexiconMatch] | None = None,
 ) -> tuple[list[LexiconMatch], list[str]]:
     """Resolve candidates to the attributing match list, in span order.
 
     The cover comes first at any shared start; admitted coexistence
     claims follow their cover partners.
     """
-    candidates = lexicon.candidates(tokens, evidence)
+    if candidates is None:
+        candidates = lexicon.candidates(tokens, evidence)
     cover, residuals = lexicon.select_cover(tokens, candidates)
+    return _finish_resolution(tokens, candidates, cover, residuals)
+
+
+def _finish_resolution(
+    tokens: tuple[str, ...],
+    candidates: list[LexiconMatch],
+    cover: list[LexiconMatch],
+    residuals: list[str],
+) -> tuple[list[LexiconMatch], list[str]]:
+    """Admit coexisting candidates over a computed cover; recompute residuals."""
     admitted = _admit_coexisting(candidates, cover)
     if not admitted:
         return cover, residuals
@@ -494,6 +509,7 @@ def _apply_grammatical_frame(
     evidence: EvidenceContext | None,
     declaration: ConceptDeclaration | None,
     text_rule: TextCoordinateRule | None,
+    candidates: list[LexiconMatch],
 ) -> (
     tuple[
         Atom,
@@ -516,8 +532,7 @@ def _apply_grammatical_frame(
         return None
     prefix = len(frame.prefix_tokens)
     if any(
-        match.start == 0 and match.entry.direction is not None
-        for match in lexicon.candidates(tokens, evidence)
+        match.start == 0 and match.entry.direction is not None for match in candidates
     ):
         return None
     lowered = tuple(t.lower() for t in tokens)
@@ -529,10 +544,8 @@ def _apply_grammatical_frame(
     if object_start >= len(tokens):
         return None
     remainder = tokens[prefix:]
-    if any(
-        match.entry.direction is not None
-        for match in lexicon.candidates(remainder, evidence)
-    ):
+    remainder_candidates = lexicon.candidates(remainder, evidence)
+    if any(match.entry.direction is not None for match in remainder_candidates):
         return None
     values = {i - prefix: v for i, v in number_values.items() if i >= prefix}
     ordinals = {i - prefix: v for i, v in ordinal_values.items() if i >= prefix}
@@ -544,6 +557,7 @@ def _apply_grammatical_frame(
             values,
             ordinals,
             evidence,
+            candidates=remainder_candidates,
         )
     )
     if atom.head in _FRAME_STOCK_HEADS:
@@ -605,6 +619,8 @@ def _decompose_flat_tokens(
     number_values: dict[int, int] | None = None,
     ordinal_values: dict[int, int] | None = None,
     evidence: EvidenceContext | None = None,
+    candidates: list[LexiconMatch] | None = None,
+    resolved: tuple[list[LexiconMatch], list[str]] | None = None,
 ) -> tuple[
     Atom,
     tuple[str, ...],
@@ -615,7 +631,10 @@ def _decompose_flat_tokens(
     TemporalInterval | None,
     tuple[LexiconMatch, ...],
 ]:
-    matches, residuals = _resolve_matches(tokens, lexicon, evidence)
+    if resolved is not None:
+        matches, residuals = resolved
+    else:
+        matches, residuals = _resolve_matches(tokens, lexicon, evidence, candidates)
     temporal = extract_temporal(tokens, number_values or {}, ordinal_values or {})
     derived = derive_horizon(temporal)
 
