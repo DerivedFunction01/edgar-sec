@@ -17,22 +17,6 @@
     ]
   },
   {
-    "modifier_id": "M_SERVICE_CLOUD",
-    "category": "REVENUE_TYPE",
-    "keywords": [
-      "Service",
-      "Services",
-      "Cloud",
-      "Subscription",
-      "SaaS",
-      "Server"
-    ],
-    "description": "Cloud, subscription, or service revenue",
-    "kinds": [
-      "IDENTITY"
-    ]
-  },
-  {
     "modifier_id": "M_REAL_ESTATE",
     "category": "REVENUE_TYPE",
     "keywords": [
@@ -59,20 +43,6 @@
     "description": "Insurance earned premiums or underwriting",
     "kinds": [
       "IDENTITY"
-    ]
-  },
-  {
-    "modifier_id": "M_BANKING_INTEREST",
-    "category": "DOMAIN_VERTICAL",
-    "keywords": [
-      "InterestIncome",
-      "InterestExpense",
-      "Interest",
-      "NetInterest"
-    ],
-    "description": "Interest income, expense, or net interest margin",
-    "kinds": [
-      "CONTEXT"
     ]
   },
   {
@@ -157,39 +127,6 @@
     ]
   },
   {
-    "modifier_id": "M_REALIZED",
-    "category": "REALIZATION_STATE",
-    "keywords": [
-      "Realized",
-      "Recognized",
-      "SaleOf",
-      "Maturities",
-      "Paid",
-      "Received"
-    ],
-    "description": "Realized in cash or recognized in P&L",
-    "kinds": [
-      "IDENTITY"
-    ]
-  },
-  {
-    "modifier_id": "M_UNREALIZED",
-    "category": "REALIZATION_STATE",
-    "keywords": [
-      "Unrealized",
-      "Unrecognized",
-      "FairValue",
-      "Remeasurement",
-      "Translation",
-      "MarkToMarketGainLoss"
-    ],
-    "realization_state": "UNREALIZED_M2M",
-    "description": "Unrealized fair-value or OCI mark-to-market",
-    "kinds": [
-      "IDENTITY"
-    ]
-  },
-  {
     "modifier_id": "M_RECLASSIFIED_OCI",
     "category": "REALIZATION_STATE",
     "keywords": [
@@ -221,20 +158,6 @@
     ]
   },
   {
-    "modifier_id": "M_AFS_SECURITY",
-    "category": "INSTRUMENT_TYPE",
-    "keywords": [
-      "AvailableForSale",
-      "MarketableSecurities",
-      "DebtSecurities",
-      "Investments"
-    ],
-    "description": "Available-for-sale or marketable securities",
-    "kinds": [
-      "IDENTITY"
-    ]
-  },
-  {
     "modifier_id": "M_FX_CURRENCY",
     "category": "INSTRUMENT_TYPE",
     "keywords": [
@@ -257,20 +180,6 @@
       "VendorNonTrade"
     ],
     "description": "Trade, financing, or vendor non-trade receivables",
-    "kinds": [
-      "IDENTITY"
-    ]
-  },
-  {
-    "modifier_id": "M_INVENTORY",
-    "category": "WORKING_CAPITAL",
-    "keywords": [
-      "Inventory",
-      "Inventories",
-      "RawMaterials",
-      "Consumables"
-    ],
-    "description": "Merchandise, materials, or WIP inventory",
     "kinds": [
       "IDENTITY"
     ]
@@ -304,19 +213,6 @@
     ],
     "kinds": [
       "AXIS"
-    ]
-  },
-  {
-    "modifier_id": "M_CONTRACT_UNEARNED",
-    "category": "WORKING_CAPITAL",
-    "keywords": [
-      "ContractWithCustomerLiability",
-      "Unearned",
-      "DeferredRevenue"
-    ],
-    "description": "Unearned / deferred contract revenue",
-    "kinds": [
-      "IDENTITY"
     ]
   },
   {
@@ -436,52 +332,6 @@
       "Dividends"
     ],
     "description": "Common or preferred dividends",
-    "kinds": [
-      "IDENTITY"
-    ]
-  },
-  {
-    "modifier_id": "M_COMMON_DILUTION",
-    "category": "EQUITY_COMPONENT",
-    "keywords": [
-      "CommonStock",
-      "PaidInCapital",
-      "WeightedAverageNumber",
-      "Diluted",
-      "Basic"
-    ],
-    "description": "Common equity and share dilution",
-    "kinds": [
-      "IDENTITY"
-    ]
-  },
-  {
-    "modifier_id": "M_CURRENT_HORIZON",
-    "category": "MATURITY_HORIZON",
-    "keywords": [
-      "Current",
-      "ShortTerm",
-      "NinetyDays",
-      "ThreeMonths",
-      "YearOne"
-    ],
-    "description": "Current (<= 12 months) liquidity/maturity",
-    "kinds": [
-      "IDENTITY"
-    ]
-  },
-  {
-    "modifier_id": "M_NONCURRENT_HORIZON",
-    "category": "MATURITY_HORIZON",
-    "keywords": [
-      "Noncurrent",
-      "LongTerm",
-      "AfterYearOne",
-      "MoreThanOneYear",
-      "YearsTwoThroughFive",
-      "AfterFiveYears"
-    ],
-    "description": "Noncurrent (> 12 months) temporal maturity horizon",
     "kinds": [
       "IDENTITY"
     ]
@@ -1767,18 +1617,6 @@
     ]
   },
   {
-    "modifier_id": "M_COMMODITY_CARBON_CREDITS",
-    "category": "COMMODITY",
-    "keywords": [
-      "CarbonCredits",
-      "EmissionAllowances"
-    ],
-    "description": "Exposure to carbon credits or emissions allowances as a commodity instrument",
-    "kinds": [
-      "CONTEXT"
-    ]
-  },
-  {
     "modifier_id": "M_COMMODITY_RINS",
     "category": "COMMODITY",
     "keywords": [
@@ -2317,18 +2155,6 @@
     ]
   },
   {
-    "modifier_id": "M_AOCI",
-    "category": "EQUITY_COMPONENT",
-    "keywords": [
-      "AccumulatedOtherComprehensiveIncome",
-      "AOCI"
-    ],
-    "description": "Accumulated other comprehensive income balance",
-    "kinds": [
-      "IDENTITY"
-    ]
-  },
-  {
     "modifier_id": "M_COMPREHENSIVE",
     "category": "EQUITY_COMPONENT",
     "keywords": [
@@ -2653,18 +2479,6 @@
     ]
   },
   {
-    "modifier_id": "M_EXERCISE_PRICE",
-    "category": "OPERATIONAL_SCOPE",
-    "keywords": [
-      "ExercisePrice",
-      "StrikePrice"
-    ],
-    "description": "Exercise or strike price attribute of an option or warrant",
-    "kinds": [
-      "IDENTITY"
-    ]
-  },
-  {
     "modifier_id": "M_FREE_CASH_FLOW",
     "category": "FLOW_TYPE",
     "keywords": [
@@ -2705,18 +2519,6 @@
       "NotYetCommenced"
     ],
     "description": "Lease or contract not yet commenced at the reporting date",
-    "kinds": [
-      "IDENTITY"
-    ]
-  },
-  {
-    "modifier_id": "M_WARRANT",
-    "category": "INSTRUMENT_TYPE",
-    "keywords": [
-      "Warrant",
-      "Warrants"
-    ],
-    "description": "Warrant instrument scope",
     "kinds": [
       "IDENTITY"
     ]
