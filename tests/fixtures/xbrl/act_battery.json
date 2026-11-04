@@ -1163,6 +1163,67 @@
    ],
    "name": "ext:SolarGenerationEquipmentSaleProceeds",
    "note": "The trailing sale-proceeds form lands the led form's atom, sale act included."
+  },
+  {
+   "act": "receipts",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [],
+   "name": "ext:ReceiptsFromRoyaltiesFeesCommissionsAndOtherRevenue",
+   "note": "The attested defect's twin: the frame claims H_CASH before the revenue phrase competes."
+  },
+  {
+   "act": "receipts",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [],
+   "name": "ext:ReceiptsRoyaltiesAndFees",
+   "note": "The elided-from receipts form lands the cash head by the elided frame."
+  },
+  {
+   "act": "disposal",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DISPOSAL",
+    "M_DISPOSAL_GAIN",
+    "M_PPE_CAPEX"
+   ],
+   "name": "ext:PropertyPlantAndEquipmentDisposalGains",
+   "note": "The plural postfix form lands its singular twin's atom, object carriage included."
+  },
+  {
+   "act": "disposal",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DISPOSAL",
+    "M_DISPOSAL_GAIN"
+   ],
+   "name": "ext:GainFromDisposalsOfSolarGenerationEquipment",
+   "note": "The From-Disposals form carries the disposal act and the gain identity, like its On twin."
+  },
+  {
+   "act": "disposal",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DISPOSAL",
+    "M_DISPOSAL_GAIN"
+   ],
+   "name": "ext:GainFromDerecognitionOfSolarGenerationEquipment",
+   "note": "The From-Derecognition form carries the disposal act and the gain identity."
+  },
+  {
+   "act": "disposal",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DISPOSAL",
+    "M_DISPOSAL_GAIN"
+   ],
+   "name": "ext:LossFromDerecognitionOfSolarGenerationEquipment",
+   "note": "The loss-side From-Derecognition form lands the same fused atom."
   }
  ]
 }

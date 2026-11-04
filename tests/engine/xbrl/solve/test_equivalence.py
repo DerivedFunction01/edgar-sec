@@ -1590,6 +1590,29 @@ def test_gain_from_and_postfix_twins_classify_exact() -> None:
         assert classify_pair(_atom(from_form), _atom(on_form)) == EXACT
 
 
+def test_gain_plural_and_remaining_from_twins_classify_exact() -> None:
+    """Plural postfix and From-Disposals/Derecognition twins: EXACT."""
+    for from_form, on_form in (
+        (
+            "ext:SolarGenerationEquipmentDisposalGains",
+            "ext:GainOnDisposalOfSolarGenerationEquipment",
+        ),
+        (
+            "ext:GainFromDisposalsOfSolarGenerationEquipment",
+            "ext:GainOnDisposalOfSolarGenerationEquipment",
+        ),
+        (
+            "ext:GainFromDerecognitionOfSolarGenerationEquipment",
+            "ext:GainOnDisposalOfSolarGenerationEquipment",
+        ),
+        (
+            "ext:LossFromDerecognitionOfSolarGenerationEquipment",
+            "ext:LossOnDisposalOfSolarGenerationEquipment",
+        ),
+    ):
+        assert classify_pair(_atom(from_form), _atom(on_form)) == EXACT
+
+
 def test_gross_unrealized_side_twins_classify_near_by_swap() -> None:
     """Gross unrealized sides are NEAR by sibling swap, never EXACT."""
     tax = load_domain_taxonomy()

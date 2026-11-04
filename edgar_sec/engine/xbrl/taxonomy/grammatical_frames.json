@@ -120,6 +120,22 @@
       "from",
       "of"
     ],
-    "description": "Cash inflow receipts from customers"
+    "description": "Cash inflow receipts from customers",
+    "head": "H_CASH"
+  },
+  {
+    "frame_id": "FRAME_INFLOW_RECEIPTS",
+    "prefix_tokens": [
+      "receipts"
+    ],
+    "direction": 1.0,
+    "polarity": "INFLOW",
+    "strip_tokens": [
+      "receipts",
+      "from",
+      "of"
+    ],
+    "head": "H_CASH",
+    "description": "Cash inflow receipts prefix (elided-from form)"
   }
 ]
