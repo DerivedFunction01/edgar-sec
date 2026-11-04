@@ -33,18 +33,20 @@
    "direction": 1.0,
    "head": "H_CASH",
    "modifiers": [
-    "M_PURPOSE_SALE"
+    "M_SALE"
    ],
    "name": "ext:ProceedsFromSaleOfSolarGenerationEquipment",
-   "note": "Mainline sale-worded shape; the marker is the held-for-sale purpose sense."
+   "note": "Mainline sale-worded shape; the marker is the dedicated sale-act carrier."
   },
   {
    "act": "proceeds",
    "direction": 1.0,
    "head": "H_CASH",
-   "modifiers": [],
+   "modifiers": [
+    "M_DISPOSAL"
+   ],
    "name": "ext:ProceedsFromDisposalOfSolarGenerationEquipment",
-   "note": "Head and direction by construction; the disposal source act is unmarked."
+   "note": "Head and direction by construction; the disposal source act carries the exit marker."
   },
   {
    "act": "proceeds",
@@ -192,6 +194,78 @@
    "modifiers": [],
    "name": "ext:CashReceivedFromSolarCustomers",
    "note": "The Received form inside the cash phrase carries the inflow direction by claim."
+  },
+  {
+   "act": "sale",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_SALE"
+   ],
+   "name": "ext:SaleOfSolarGenerationEquipment",
+   "note": "Led sale-of flow name: the dedicated sale-act carrier, not the purpose marker."
+  },
+  {
+   "act": "sale",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_PURPOSE_SALE"
+   ],
+   "name": "ext:AssetsHeldForSaleSolarPortfolio",
+   "note": "Purpose twin of the sale act: held-for-sale classification keeps the purpose marker."
+  },
+  {
+   "act": "sale",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_SALE"
+   ],
+   "name": "ext:ProceedsFromSalesOfSolarGenerationEquipment",
+   "note": "IFRS sales-of proceeds: the sale act in the plural dialect form."
+  },
+  {
+   "act": "disposal",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DISPOSAL",
+    "M_DISPOSAL_GAIN"
+   ],
+   "name": "ext:GainLossOnDisposalOfSolarGenerationEquipment",
+   "note": "Gain/loss-on-disposal carries the disposal act and the gain identity."
+  },
+  {
+   "act": "disposal",
+   "direction": 1.0,
+   "head": "H_CASH",
+   "modifiers": [
+    "M_DISPOSAL"
+   ],
+   "name": "ext:ProceedsFromDerecognitionOfSolarGenerationEquipment",
+   "note": "Derecognition is the disposal act in IFRS dress; the line carries the exit marker."
+  },
+  {
+   "act": "disposal",
+   "direction": 1.0,
+   "head": "H_ASSET",
+   "modifiers": [
+    "M_DISPOSAL"
+   ],
+   "name": "ext:DisposalsOfSolarGenerationEquipment",
+   "note": "Plural disposal-led line carries the disposal identity."
+  },
+  {
+   "act": "extinguishment",
+   "direction": 1.0,
+   "head": "H_INCOME",
+   "modifiers": [
+    "M_DEBT",
+    "M_DISPOSAL_GAIN"
+   ],
+   "name": "ext:GainLossOnExtinguishmentOfDebt",
+   "note": "Extinguishment closes inside the disposal-gain phrase family."
   }
  ]
 }

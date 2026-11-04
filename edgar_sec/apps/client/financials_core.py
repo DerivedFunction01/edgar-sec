@@ -26,7 +26,7 @@ _FALLBACK_LENGTH_CLASSES = ("YTD_3Q", "YTD_2Q", "QUARTER")
 # Metric-definition exclusions at the scalar-selection seam: concepts
 # whose modifier shape names a different measure than the metric.
 REVENUE_EXCLUDED_MODS = frozenset({"M_PRO_FORMA", "M_DEPR_AMORT"})
-CAPEX_EXCLUDED_MODS = frozenset({"M_PURPOSE_SALE", "M_SALES_GOODS"})
+CAPEX_EXCLUDED_MODS = frozenset({"M_SALE"})
 OCF_EXCLUDED_MODS = frozenset({"M_NET_BOTTOMLINE"})
 _EPS_ATOMS: dict[bool, Atom] = {
     False: Atom("H_UNIT_RATE", frozenset({"V_BASIC"})),

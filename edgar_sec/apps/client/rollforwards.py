@@ -48,7 +48,7 @@ def _level3_role(atom: Atom, period_type: str) -> str | None:
         return "transfers_net"
     if atom.head == "H_INCOME":
         return "gains_oci" if "M_OCI" in mods else "gains_earnings"
-    if "M_SALES_GOODS" in mods:
+    if "M_SALE" in mods:
         return "sales"
     if "M_PURCHASE" in mods:
         return "purchases"

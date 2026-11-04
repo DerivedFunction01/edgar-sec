@@ -35,14 +35,17 @@ def test_renamed_revenue_concepts_are_near_equivalents() -> None:
 
 
 def test_extension_reconciliation_item_matches_us_gaap_atom() -> None:
-    """A firm extension lands on the same coordinate as us-gaap siblings."""
+    """A firm extension lands one modifier from its us-gaap sibling.
+
+    The sibling states its disposal subject; the extension states no act.
+    """
     extension = _atom(
         "aapl:EffectiveIncomeTaxRateReconciliationImpactOfTheStateAidDecisionAmount"
     )
     standard = _atom(
         "us-gaap:EffectiveIncomeTaxRateReconciliationDispositionOfBusiness"
     )
-    assert classify_pair(extension, standard) == EXACT
+    assert classify_pair(extension, standard) == NEAR
 
 
 def test_property_plant_and_equipment_head_is_modelled() -> None:
@@ -1307,7 +1310,7 @@ def test_dialect_bridge_constructed_extension_pair() -> None:
 def test_dialect_bridge_sale_worded_proceeds_gain_no_bridge() -> None:
     """Sale-worded proceeds keep their stated class, unbridged.
 
-    Scoped to the sale/sales-worded shape, which carries a sale marker.
+    The sale act marker on their atoms excludes them from bridge entry.
     """
     tax = load_domain_taxonomy()
     payments = _atom("us-gaap:PaymentsToAcquirePropertyPlantAndEquipment")
@@ -1398,14 +1401,15 @@ def test_dialect_bridge_ranks_purchase_above_sale_worded_proceeds() -> None:
     assert bridge.tier == NEAR and bridge.via_bridge is True
 
 
-def test_dialect_bridge_bare_disposal_shape_never_bridges() -> None:
-    """A constructed disposal-worded proceeds atom reaches no bridge.
+def test_dialect_bridge_excludes_exit_worded_proceeds() -> None:
+    """Exit-worded proceeds are excluded by their act markers, not bridged.
 
-    Its bare H_CASH atom names no declared object coordinate.
+    The disposal-worded line carries M_DISPOSAL, which bridge entry refuses.
     """
     tax = load_domain_taxonomy()
-    disposal = _atom("acme:ProceedsFromDisposalOfWindTurbines")
-    assert disposal == Atom("H_CASH")
+    constructed = _atom("acme:ProceedsFromDisposalOfWindTurbines")
+    assert constructed == Atom("H_CASH", frozenset({"M_DISPOSAL"}))
+    disposal = _atom("ifrs-full:ProceedsFromDisposalOfPropertyPlantAndEquipment")
     purchase = _atom(
         "ifrs-full:PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities"
     )
@@ -1427,8 +1431,37 @@ def test_dialect_bridge_bare_disposal_shape_never_bridges() -> None:
         tuple(tax.sibling_groups),
         relations=tax.atom_relations,
     )
-    assert stated.tier != EXACT
+    assert stated.tier == NEAR
+    assert stated.rule == "single_modifier_difference"
     assert stated.via_bridge is False
+
+
+def test_dialect_bridge_refuses_a_purchase_side_exit_marker() -> None:
+    """A purchase-side atom carrying an exit-act marker fails bridge entry."""
+    tax = load_domain_taxonomy()
+    payments = Atom("H_CASH", frozenset({"M_INVESTMENT"}))
+    clean = Atom("H_ASSET", frozenset({"M_FINANCIAL_INSTRUMENT", "M_PURCHASE"}))
+    marked = Atom(
+        "H_ASSET",
+        frozenset({"M_FINANCIAL_INSTRUMENT", "M_PURCHASE", "M_DISPOSAL"}),
+    )
+    control = classify_ladder_pair(
+        payments,
+        clean,
+        tax.default_coordinates,
+        tuple(tax.sibling_groups),
+        relations=tax.atom_relations,
+    )
+    assert control.tier == NEAR and control.via_bridge is True
+    refused = classify_ladder_pair(
+        payments,
+        marked,
+        tax.default_coordinates,
+        tuple(tax.sibling_groups),
+        relations=tax.atom_relations,
+    )
+    assert refused.tier == UNRELATED
+    assert refused.via_bridge is False
 
 
 def test_dialect_bridge_requires_the_bare_payments_coordinate() -> None:
@@ -1452,3 +1485,72 @@ def test_dialect_bridge_requires_the_bare_payments_coordinate() -> None:
         )
         assert result.tier == UNRELATED
         assert result.via_bridge is False
+
+
+def test_sale_and_disposal_gains_share_the_gain_identity() -> None:
+    """Sale-gain and disposal-gain atoms both carry M_DISPOSAL_GAIN."""
+    sale = _atom("us-gaap:GainLossOnSaleOfBusiness")
+    disposal = _atom(
+        "ifrs-full:AdjustmentsForGainLossOnDisposalOfInvestmentsInSubsidiariesJointVenturesAndAssociates"
+    )
+    assert "M_DISPOSAL_GAIN" in sale.modifiers
+    assert "M_DISPOSAL_GAIN" in disposal.modifiers
+    assert "M_SALE" in sale.modifiers
+    assert "M_DISPOSAL" in disposal.modifiers
+
+
+def test_exit_act_swap_scope() -> None:
+    """Exit twins swap on gain, cash, and asset coordinates only.
+
+    Sparse coordinates state no exit kinship and refuse the swap.
+    """
+    tax = load_domain_taxonomy()
+
+    def classify(target: str, candidate: str):
+        return classify_ladder_pair(
+            _atom(target),
+            _atom(candidate),
+            tax.default_coordinates,
+            tuple(tax.sibling_groups),
+            relations=tax.atom_relations,
+        )
+
+    gain = classify(
+        "acme:GainOnSaleOfWindTurbines", "acme:GainLossOnDisposalOfWindTurbines"
+    )
+    assert gain.tier == NEAR and gain.rule == "sibling_swap"
+    proceeds = classify(
+        "acme:ProceedsFromSaleOfWindTurbines",
+        "acme:ProceedsFromDisposalOfWindTurbines",
+    )
+    assert proceeds.tier == NEAR and proceeds.rule == "sibling_swap"
+    asset = classify(
+        "ext:SaleOfSolarGenerationEquipment", "ext:DisposalsOfSolarGenerationEquipment"
+    )
+    assert asset.tier == NEAR and asset.rule == "sibling_swap"
+    sparse = classify(
+        "srt:ProvedDevelopedAndUndevelopedReservesSalesOfMineralsInPlace",
+        "us-gaap:LiabilityForFuturePolicyBenefitExpectedFuturePolicyBenefitDerecognition",
+    )
+    assert sparse.tier == UNRELATED
+
+
+def test_dialect_bridge_reaches_securities_purchase_lines() -> None:
+    """The AFS and amortised-cost purchase lines bridge on their object claim."""
+    tax = load_domain_taxonomy()
+    payments = _atom("us-gaap:PaymentsToAcquireOtherInvestments")
+    for name in (
+        "ifrs-full:PurchaseOfAvailableforsaleFinancialAssets",
+        "ifrs-full:PurchaseOfFinancialAssetsMeasuredAtAmortisedCostClassifiedAsInvestingActivities",
+        "ifrs-full:PurchaseOfFinancialAssetsMeasuredAtFairValueThroughProfitOrLossClassifiedAsInvestingActivities",
+    ):
+        result = classify_ladder_pair(
+            payments,
+            _atom(name),
+            tax.default_coordinates,
+            tuple(tax.sibling_groups),
+            relations=tax.atom_relations,
+        )
+        assert result.tier == NEAR
+        assert result.rule == "dialect_bridge"
+        assert result.via_bridge is True

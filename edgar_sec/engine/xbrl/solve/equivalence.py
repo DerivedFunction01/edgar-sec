@@ -27,7 +27,7 @@ _PERCENT_MODIFIER = "M_PERCENT_TYPED"
 _HORIZON_AXIS = "MATURITY_HORIZON"
 _HORIZON_FALLBACK = frozenset({"M_CURRENT", "M_NONCURRENT"})
 _PURCHASE_ACT_MODIFIER = "M_PURCHASE"
-_SALE_MARKERS = frozenset({"M_PURPOSE_SALE", "M_SALES_GOODS"})
+_EXIT_ACT_MARKERS = frozenset({"M_SALE", "M_DISPOSAL"})
 _DIALECT_MARKERS = frozenset({_PURCHASE_ACT_MODIFIER, "M_INVESTING"})
 _DIALECT_RELATION_TYPE = "DIALECT_OF"
 
@@ -66,9 +66,9 @@ def _dialect_bridge(
     for payments, purchase in ((target, candidate), (candidate, target)):
         if _PURCHASE_ACT_MODIFIER not in purchase.modifiers:
             continue
-        if purchase.modifiers & _SALE_MARKERS:
+        if purchase.modifiers & _EXIT_ACT_MARKERS:
             continue
-        if payments.modifiers & (_SALE_MARKERS | {_PURCHASE_ACT_MODIFIER}):
+        if payments.modifiers & (_EXIT_ACT_MARKERS | {_PURCHASE_ACT_MODIFIER}):
             continue
         for edge in graph.relations:
             if edge.relation_type != _DIALECT_RELATION_TYPE:
