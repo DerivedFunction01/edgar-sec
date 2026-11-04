@@ -1554,3 +1554,75 @@ def test_dialect_bridge_reaches_securities_purchase_lines() -> None:
         assert result.tier == NEAR
         assert result.rule == "dialect_bridge"
         assert result.via_bridge is True
+
+
+def test_wordform_twins_classify_exact() -> None:
+    """Singular and plural forms of one novel line share an atom: EXACT."""
+    for singular, plural in (
+        ("ext:SettlementOfInsuranceClaims", "ext:SettlementsOfInsuranceClaims"),
+        ("ext:IssuanceOfSolarBonds", "ext:IssuancesOfSolarBonds"),
+        ("ext:TransferOfSolarAssets", "ext:TransfersOfSolarAssets"),
+        ("ext:SolarWarrantyAccrual", "ext:SolarWarrantyAccruals"),
+    ):
+        assert classify_pair(_atom(singular), _atom(plural)) == EXACT
+
+
+def test_gain_from_and_postfix_twins_classify_exact() -> None:
+    """From and postfix twins share their On twins' atoms: EXACT."""
+    for from_form, on_form in (
+        (
+            "ext:GainFromDisposalOfSolarGenerationEquipment",
+            "ext:GainOnDisposalOfSolarGenerationEquipment",
+        ),
+        (
+            "ext:LossFromSaleOfSolarGenerationEquipment",
+            "ext:LossOnSaleOfSolarGenerationEquipment",
+        ),
+        (
+            "ext:SolarGenerationEquipmentDisposalGain",
+            "ext:GainOnDisposalOfSolarGenerationEquipment",
+        ),
+        (
+            "ext:GainArisingFromSaleOfSolarGenerationEquipment",
+            "ext:GainOnSaleOfSolarGenerationEquipment",
+        ),
+    ):
+        assert classify_pair(_atom(from_form), _atom(on_form)) == EXACT
+
+
+def test_gross_unrealized_side_twins_classify_near_by_swap() -> None:
+    """Gross unrealized sides are NEAR by sibling swap, never EXACT."""
+    tax = load_domain_taxonomy()
+
+    def classify(target: str, candidate: str):
+        return classify_ladder_pair(
+            _atom(target),
+            _atom(candidate),
+            tax.default_coordinates,
+            tuple(tax.sibling_groups),
+            relations=tax.atom_relations,
+        )
+
+    gain = (
+        "us-gaap:AvailableForSaleDebtSecuritiesAccumulatedGrossUnrealizedGainBeforeTax"
+    )
+    loss = (
+        "us-gaap:AvailableForSaleDebtSecuritiesAccumulatedGrossUnrealizedLossBeforeTax"
+    )
+    combined = "us-gaap:DebtSecuritiesAvailableForSaleAccumulatedGrossUnrealizedGainLossBeforeTax"
+
+    result = classify(gain, loss)
+    assert result.tier == NEAR
+    assert result.rule == "sibling_swap"
+
+    for side in (gain, loss):
+        result = classify(side, combined)
+        assert result.tier == NEAR
+        assert result.rule == "single_modifier_difference"
+
+    bare = classify(
+        "us-gaap:AvailableForSaleDebtSecuritiesGrossUnrealizedGain",
+        "us-gaap:AvailableForSaleDebtSecuritiesGrossUnrealizedLoss",
+    )
+    assert bare.tier == NEAR
+    assert bare.rule == "sibling_swap"

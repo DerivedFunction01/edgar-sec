@@ -124,3 +124,47 @@ def test_loaded_taxonomy_attaches_purchase_frames_to_lexicon() -> None:
     assert frame is not None
     assert frame.act_modifier == "M_PURCHASE"
     assert frame.direction == -1.0
+
+
+def test_loaded_lexicon_wordform_twins_share_payloads() -> None:
+    """Each completed word form carries its wired twin's claim payload."""
+    from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
+
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    by_phrase = {entry.phrase: entry for entry in tax.token_lexicon.entries}
+
+    def payload(phrase: tuple[str, ...]) -> tuple:
+        entry = by_phrase[phrase]
+        return (
+            entry.claim,
+            entry.head,
+            entry.claim_class,
+            entry.carriage,
+            entry.atom,
+            entry.direction,
+        )
+
+    twins = (
+        (("issuance",), ("issuances",)),
+        (("settlement",), ("settlements",)),
+        (("distribution",), ("distributions",)),
+        (("transfer",), ("transfers",)),
+        (("transfer", "into"), ("transfers", "into")),
+        (("transfer", "out", "of"), ("transfers", "out", "of")),
+        (("transfer", "out"), ("transfers", "out")),
+        (("deferral",), ("deferred",)),
+        (("deferrals",), ("deferred",)),
+        (("accrual",), ("accruals",)),
+        (("impaired",), ("impairment",)),
+        (("amortisation",), ("amortization",)),
+        (("availableforsale",), ("available", "for", "sale")),
+    )
+    for completed, wired in twins:
+        assert payload(completed) == payload(wired), completed
+
+    borrowing = by_phrase[("borrowing",)]
+    borrowings = by_phrase[("borrowings",)]
+    assert payload(("borrowing",)) == payload(("borrowings",))
+    assert borrowing.scope_next == ("under", "from")
+    assert borrowings.scope_next == ()
