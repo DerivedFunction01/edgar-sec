@@ -159,12 +159,11 @@ def _caption_pair_above(lines: list[str]) -> tuple[str | None, str | None]:
     return None, None
 
 
-def _is_table_fragment(text: str, lines: list[str]) -> bool:
+def _is_table_fragment(lines: list[str], lowered: str) -> bool:
     """A continuation part: rep-and-warranty table with no form face."""
     head = "\n".join(lines[:60]).lower()
     if "form abs-15g" in head or "check the appropriate box" in head:
         return False
-    lowered = text.lower()
     if all(term in lowered for term in _TABLE_HEADER_TERMS):
         return True
     return _PART_CAPTION_RE.search("\n".join(lines[:5])) is not None
@@ -246,16 +245,16 @@ def _analyze_securitizer(
     lines: list[str],
     cover_text: str,
     text: str,
+    lowered: str,
 ) -> dict[str, Any]:
     states = rep["checkmarks"].get("candidate_states", {})
     for key in _RULE_KEYS:
         rep["checkmarks"][key] = states.get(key) == "checked"
-    lowered = text.lower()
     fields: dict[str, Any] = {
         "table_header_present": all(term in lowered for term in _TABLE_HEADER_TERMS),
         "item_201_detected": "ITEM 2.01" in rep["taxonomy"]["detected_items"],
     }
-    if _is_table_fragment(text, lines):
+    if _is_table_fragment(lines, lowered):
         fields["shape"] = "table_fragment"
         caption = _PART_CAPTION_RE.search("\n".join(lines[:60]))
         fields["part_caption"] = (
@@ -332,7 +331,7 @@ def analyze_form_abs_reports_review_case(
     if kind is FormAbsReportsKind.DISTRIBUTION:
         fields = _analyze_distribution(rep, lines, cover_text, text)
     else:
-        fields = _analyze_securitizer(rep, lines, cover_text, text)
+        fields = _analyze_securitizer(rep, lines, cover_text, text, text.lower())
     fields["kind"] = kind.value
     assessment = (record.get("processing") or {}).get("exhibit_assessment")
     fields["exhibit_assessment"] = assessment
