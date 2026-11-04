@@ -101,6 +101,7 @@ def _build_f_profile(
                 BoundarySignal.PART_FALLBACK,
                 BoundarySignal.ITEM_FALLBACK,
                 BoundarySignal.BODY_PROSE_FALLBACK,
+            BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=labels,
@@ -193,6 +194,7 @@ def build_form_mjds_profile(family: str = "F-10") -> CoverProfile:
                 BoundarySignal.PART_FALLBACK,
                 BoundarySignal.ITEM_FALLBACK,
                 BoundarySignal.BODY_PROSE_FALLBACK,
+            BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=labels,
@@ -250,6 +252,7 @@ def build_form_40f_profile(family: str = "40-F") -> CoverProfile:
                 BoundarySignal.PART_FALLBACK,
                 BoundarySignal.AMENDMENT_TRANSITION,
                 BoundarySignal.BODY_PROSE_FALLBACK,
+            BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=_40F_COVER_LABELS,
@@ -311,6 +314,7 @@ def build_form_f6_profile(family: str = "F-6") -> CoverProfile:
                 BoundarySignal.PART_FALLBACK,
                 BoundarySignal.ITEM_FALLBACK,
                 BoundarySignal.BODY_PROSE_FALLBACK,
+            BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=_F6_COVER_LABELS,
@@ -367,6 +371,7 @@ def build_form_suppl_profile(family: str = "SUPPL") -> CoverProfile:
                 BoundarySignal.PAGE_MARKERS,
                 BoundarySignal.TOC_TRANSITION,
                 BoundarySignal.BODY_PROSE_FALLBACK,
+            BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=_SUPPL_COVER_LABELS,
@@ -417,6 +422,7 @@ def build_form_fn_profile(family: str = "F-N") -> CoverProfile:
                 BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
                 BoundarySignal.PAGE_MARKERS,
                 BoundarySignal.BODY_PROSE_FALLBACK,
+            BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=_FN_COVER_LABELS,

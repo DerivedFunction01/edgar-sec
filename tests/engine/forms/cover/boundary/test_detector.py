@@ -207,3 +207,30 @@ def test_cover_matrix_rows_do_not_trigger_item_transition() -> None:
     policy = _policy(BoundarySignal.PAGE_MARKERS, BoundarySignal.ITEM_FALLBACK)
     boundary = find_cover_boundary(text, policy, cover_evidence=COVER_EVIDENCE)
     assert boundary.end_line == 9
+
+
+def test_a_giant_table_body_ends_the_cover_at_the_table_opening() -> None:
+    rows = "\n".join(f"31418DHM7 ACME {i} $1,000.00" for i in range(520))
+    text = COVER_HEAD + "<TABLE>\n" + rows + "\n</TABLE>\n"
+    policy = _policy(
+        BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+        BoundarySignal.TABLE_BODY_FALLBACK,
+    )
+    boundary = find_cover_boundary(text, policy, cover_evidence=COVER_EVIDENCE)
+    lines = text.splitlines()
+    assert boundary.method is BoundaryMethod.FALLBACK
+    assert lines[boundary.end_line] == "<TABLE>"
+    assert any(item.name == "table_body_start" for item in boundary.evidence)
+
+
+def test_a_cover_scale_table_never_ends_the_cover() -> None:
+    rows = "\n".join(f"row {i}" for i in range(10))
+    text = COVER_HEAD + "<TABLE>\n" + rows + "\n</TABLE>\n"
+    policy = _policy(
+        BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+        BoundarySignal.TABLE_BODY_FALLBACK,
+    )
+    boundary = find_cover_boundary(text, policy, cover_evidence=COVER_EVIDENCE)
+    assert boundary.method is BoundaryMethod.FALLBACK
+    assert boundary.continued_cover is True
+    assert not any(item.name == "table_body_start" for item in boundary.evidence)

@@ -21,6 +21,7 @@ class BoundarySignal(StrEnum):
     AMENDMENT_TRANSITION = "amendment_transition"
     ITEM_FALLBACK = "item_fallback"
     BODY_PROSE_FALLBACK = "body_prose_fallback"
+    TABLE_BODY_FALLBACK = "table_body_fallback"
 
 
 class BodyAnchorType(StrEnum):

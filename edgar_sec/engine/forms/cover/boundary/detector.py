@@ -80,6 +80,29 @@ from .corridor import (
 )
 from .transition import _first_body_semantic_line, _next_cover_transition
 
+# A single tagged table longer than this cannot be cover furniture; the
+# largest cover the analysis layer tolerates whole is 500 lines.
+_TABLE_BODY_MIN_SPAN_LINES = 500
+
+
+def _first_giant_table_line(
+    lines: list[str], scan_start: int, search_limit: int
+) -> int | None:
+    """First tagged-table opening in the window whose span exceeds cover scale.
+
+    The span test is bounded: the close need only fall beyond the span cap.
+    """
+    last = min(search_limit, len(lines))
+    for index in range(scan_start, last):
+        if "<TABLE" not in lines[index].upper():
+            continue
+        probe_end = min(len(lines), index + _TABLE_BODY_MIN_SPAN_LINES + 1)
+        if not any(
+            "</TABLE" in lines[j].upper() for j in range(index + 1, probe_end)
+        ):
+            return index
+    return None
+
 
 def find_cover_boundary(
     boundary_input: BoundaryInput | str,
@@ -426,6 +449,36 @@ def find_cover_boundary(
                 cover_start=cover_start,
                 lines=lines,
                 rules=rules,
+            )
+
+    if enabled(policy, BoundarySignal.TABLE_BODY_FALLBACK):
+        table_line = _first_giant_table_line(lines, scan_start, search_limit)
+        if (
+            table_line is not None
+            and cover_start.start_line is not None
+            and table_line > cover_start.start_line
+            and not (identity_count < 2 and first_page is None)
+        ):
+            evidence.append(
+                BoundaryEvidence(
+                    name="table_body_start",
+                    strength=0.65,
+                    line=table_line,
+                    details=(
+                        "a tagged table longer than any cover opens here; "
+                        "the body is the table itself"
+                    ),
+                )
+            )
+            return _finalize_boundary(
+                end_line=table_line,
+                method=BoundaryMethod.FALLBACK,
+                confidence=0.65,
+                evidence=evidence,
+                cover_start=cover_start,
+                lines=lines,
+                rules=rules,
+                confirm_backward=False,
             )
 
     if (

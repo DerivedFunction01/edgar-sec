@@ -362,6 +362,103 @@ ssu Reg rig
 """
 
 
+# Specimen-derived (accession 0000310522-12-000003): the face rides in
+# small tagged tables and the body is one giant table.
+_GIANT_TABLE_ROWS = "\n".join(
+    f"3130AH{i} ACME ORIGINATOR {i} $1,000.00 0 $0.00" for i in range(520)
+)
+_SAMPLE_15G_GIANT_TABLE_FACE = (
+    """\
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM ABS-15G
+ASSET-BACKED SECURITIZER
+REPORT PURSUANT TO SECTION 15G OF
+THE SECURITIES EXCHANGE ACT OF 1934
+Check the appropriate box to indicate the filing obligation to which this form is intended to satisfy:
+<TABLE>
+[X]  Rule 15Ga-1 under the Exchange Act (17 CFR 240.15Ga-1) for the reporting period January 1, 2009 to December 31, 2011
+[ ]  Rule 15Ga-2 under the Exchange Act (17 CFR 240.15Ga-2).
+</TABLE>
+Date of Report (Date of earliest event reported): February 8, 2012
+<TABLE>
+       025-14602                 0000310522
+-------------------------------------------------
+(Commission File Number)  (Central Index Key No.)
+</TABLE>
+Indicate by check mark whether the securitizer has no activity to report for the initial period pursuant to Rule 15Ga-1(c)(1): [ ]
+Indicate by check mark whether the securitizer has no activity to report for the quarterly period pursuant to Rule 15Ga-1(c)(2)(i): [ ]
+<TABLE>
+"""
+    + _GIANT_TABLE_ROWS
+    + "\n</TABLE>\n"
+)
+
+# Specimen-derived (accession 0000310522-12-000101): the part caption
+# survives only in the filename banner; the table headers are wrapped.
+_SAMPLE_15G_BANNER_FRAGMENT = """\
+ABS-15G/A
+1
+15GaFile_09_of_42_0107_0201.htm
+15GAFILE_09_OF_42_0107_0201
+ABS-15G
+Name of
+Originator
+Total
+Assets by Originator
+31418DHM7 ACME MORTGAGE CO. 1 $271,200.00 0 $0.00
+"""
+
+
+def test_analyze_abs_15g_giant_table_face(tmp_path: Path) -> None:
+    _write_case(tmp_path, _SAMPLE_15G_GIANT_TABLE_FACE)
+    result = analyze_case(
+        tmp_path, {"accession": "0000310522-12-000003", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["shape"] == "face"
+    assert fields["securitizer_file_number"] == "025-14602"
+    assert fields["securitizer_cik"] == "0000310522"
+    assert fields["date_of_report"] == "February 8, 2012"
+    assert result["boundary"]["method"] == "fallback"
+    kinds = {a["kind"] for a in result["anomalies"]}
+    assert "cover_too_short" not in kinds
+    assert "low_confidence_boundary" not in kinds
+    assert "no_obligation_checked" not in kinds
+    assert "missing_securitizer_file_number" not in kinds
+    assert "missing_securitizer_cik" not in kinds
+
+
+def test_analyze_abs_15g_banner_caption_fragment(tmp_path: Path) -> None:
+    _write_case(tmp_path, _SAMPLE_15G_BANNER_FRAGMENT)
+    result = analyze_case(
+        tmp_path, {"accession": "0000310522-12-000101", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["shape"] == "table_fragment"
+    assert fields["part_caption"] == {"index": 9, "count": 42}
+    kinds = {a["kind"] for a in result["anomalies"]}
+    assert "missing_securitizer_file_number" not in kinds
+    assert "missing_securitizer_cik" not in kinds
+    assert "no_obligation_checked" not in kinds
+
+
+def test_analyze_abs_15g_banner_on_a_face_stays_a_face(tmp_path: Path) -> None:
+    _write_case(
+        tmp_path, "15GaFile_01_of_42_0107_0201.htm\n" + _SAMPLE_15G_TEXT
+    )
+    result = analyze_case(
+        tmp_path, {"accession": "0000310522-12-000003", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["shape"] == "face"
+    assert fields["securitizer_file_number"] == "025-14602"
+
+
 def test_analyze_abs_15g_mangled_header_fragment(tmp_path: Path) -> None:
     _write_case(tmp_path, _SAMPLE_15G_MANGLED_FRAGMENT)
     result = analyze_case(

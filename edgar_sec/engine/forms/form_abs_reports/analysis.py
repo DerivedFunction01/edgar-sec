@@ -15,12 +15,14 @@ from edgar_sec.engine.forms.analysis import (
     analyze_form_case,
     anomaly_record,
     locate_text_artifact,
+    reinfer_unmasked_checkmarks,
     summarize_form_cases,
 )
 from edgar_sec.engine.forms.cover.registrant import (
     parse_registrant_identity,
     previous_content_line,
 )
+from edgar_sec.engine.tables.protection.tags import find_table_spans
 
 _RULE_KEYS = (
     "rule_15ga_1",
@@ -105,6 +107,7 @@ _PART_CAPTION_RE = re.compile(
     r"\b(?:file|report)\s+(\d+)\s+of\s+(\d+)\b",
     re.IGNORECASE,
 )
+_PART_BANNER_RE = re.compile(r"file_(\d+)_of_(\d+)", re.IGNORECASE)
 _ISSUING_NAME_LABEL_RE = re.compile(r"exact name of issuing entity", re.IGNORECASE)
 _DEPOSITOR_NAME_LABEL_RE = re.compile(r"exact name of depositor", re.IGNORECASE)
 _TABLE_HEADER_TERMS = ("name of originator", "total assets")
@@ -195,6 +198,12 @@ def _caption_pair_above(lines: list[str]) -> tuple[str | None, str | None]:
     return None, None
 
 
+def _part_caption_match(lines: list[str]) -> re.Match[str] | None:
+    """Part caption in whitespace form or in the underscore filename banner."""
+    head = "\n".join(lines[:60])
+    return _PART_CAPTION_RE.search(head) or _PART_BANNER_RE.search(head)
+
+
 def _is_table_fragment(text: str, lines: list[str]) -> bool:
     """A continuation part: rep-and-warranty table with no form face."""
     head = "\n".join(lines[:60]).lower()
@@ -203,7 +212,9 @@ def _is_table_fragment(text: str, lines: list[str]) -> bool:
     lowered = text.lower()
     if all(term in lowered for term in _TABLE_HEADER_TERMS):
         return True
-    return _PART_CAPTION_RE.search("\n".join(lines[:5])) is not None
+    if _PART_CAPTION_RE.search("\n".join(lines[:5])) is not None:
+        return True
+    return _PART_BANNER_RE.search("\n".join(lines[:10])) is not None
 
 
 def _analyze_distribution(
@@ -293,7 +304,7 @@ def _analyze_securitizer(
     }
     if _is_table_fragment(text, lines):
         fields["shape"] = "table_fragment"
-        caption = _PART_CAPTION_RE.search("\n".join(lines[:60]))
+        caption = _part_caption_match(lines)
         fields["part_caption"] = (
             {"index": int(caption.group(1)), "count": int(caption.group(2))}
             if caption
@@ -371,6 +382,8 @@ def analyze_form_abs_reports_review_case(
         else ""
     )
     lines = text.splitlines()
+    if find_table_spans(text):
+        reinfer_unmasked_checkmarks(text, rep, family=canonical)
     start = rep["boundary"]["start_line"] or 0
     end = rep["boundary"]["end_line"] or 0
     cover_text = "\n".join(lines[start:end]) if end > start else "\n".join(lines[:120])
