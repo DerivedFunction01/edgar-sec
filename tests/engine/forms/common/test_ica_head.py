@@ -73,6 +73,17 @@ def test_ica_file_number_caption_variants() -> None:
     assert fields["file_number"] == "811-4173"
 
 
+def test_ica_file_number_ica_caption_beats_generic() -> None:
+    """The ICA caption wins over an earlier generic file-number caption."""
+    fields = ica_cover_fields(
+        [
+            "File Number: 333-283139",
+            "Investment Company Act File Number: 811-23460",
+        ]
+    )
+    assert fields["file_number"] == "811-23460"
+
+
 def test_ica_registrant_name_blank_doubled_lookback() -> None:
     """Blanks and the file-number line do not consume the name horizon."""
     fields = ica_cover_fields(

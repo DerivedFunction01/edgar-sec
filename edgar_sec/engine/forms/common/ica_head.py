@@ -21,6 +21,11 @@ FILE_NUMBER_RE = re.compile(
     r"\s*:?\s*([0-9][0-9\u2011\- ]*[0-9]|[0-9])",
     re.IGNORECASE,
 )
+_FILE_NUMBER_ICA_RE = re.compile(
+    rf"(?:{build_alternation([_FILE_CAPTIONS[0]], auto_escape=True)})"
+    r"\s*:?\s*([0-9][0-9\u2011\- ]*[0-9]|[0-9])",
+    re.IGNORECASE,
+)
 _NAMED_DATE_RE = re.compile(rf"(?:{MONTH_PATTERN}) \d{{1,2}}, \d{{4}}", re.IGNORECASE)
 _PERIOD_ENDED_RE = re.compile(r"(?:period|fiscal year) ended\s+", re.IGNORECASE)
 _REPORTING_PERIOD_RE = re.compile(r"date of reporting period\s*:?\s*", re.IGNORECASE)
@@ -95,7 +100,7 @@ def ica_cover_fields(lines: list[str]) -> dict[str, Any]:
     """Extract file number, registrant name, and period from a cover."""
     head_text = "\n".join(lines[:40])
     file_number = None
-    match = FILE_NUMBER_RE.search(head_text)
+    match = _FILE_NUMBER_ICA_RE.search(head_text) or FILE_NUMBER_RE.search(head_text)
     if match:
         file_number = _normalize_file_number(match.group(1))
     period = _report_period(lines[:40])

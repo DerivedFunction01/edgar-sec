@@ -105,8 +105,19 @@ def test_composite_embedded_mentions_are_not_headings() -> None:
         "Risk Factors and Special Considerations                                      10",
         "Underwriters.",
         "Principal risks of the Fund             73",
+        "Use of Proceeds                         S-6",
+        "Underwriting (Conflicts of Interest)                               S-106",
     ]
     cands = extract_section_candidates(lines, taxonomy_items=FORM_497_ITEMS)
+    assert cands == []
+
+
+def test_composite_toc_row_with_status_qualifier_is_not_a_heading() -> None:
+    """A TOC row whose only signal is a status qualifier is not a heading."""
+    lines = ["Statement of Operations (Unaudited)                                    9"]
+    from edgar_sec.domain.forms.families.form_ncsr.taxonomy import FORM_NCSR_ITEMS
+
+    cands = extract_section_candidates(lines, taxonomy_items=FORM_NCSR_ITEMS)
     assert cands == []
 
 

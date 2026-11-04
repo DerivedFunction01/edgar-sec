@@ -88,6 +88,8 @@ def _is_signal_word(
     core = word.strip(_WORD_EDGE_CHARS)
     if not core:
         return False
+    if core.lower() in _FURNITURE_WORDS:
+        return False
     if MONTH_NAME_RE.match(core):
         return True
     if any(ch.isdigit() for ch in core) and "/" in core:
@@ -96,7 +98,7 @@ def _is_signal_word(
         return True
     if all_caps or mid_line:
         return False
-    return any(ch.isupper() for ch in core)
+    return sum(ch.isalpha() for ch in core) >= 2 and any(ch.isupper() for ch in core)
 
 
 _TOKEN_SPLIT_RE = re.compile(r"[\s\u2013\u2014]+")
@@ -149,6 +151,13 @@ def _match_composite_heading(
                 continue
             furniture = (*prefix, *suffix)
             if any("$" in word for word in furniture):
+                continue
+            if any(
+                "(" in word
+                and word.strip(_WORD_EDGE_CHARS).strip("()").lower()
+                not in _FURNITURE_WORDS
+                for word in furniture
+            ):
                 continue
             if not any(
                 any(ch.isdigit() for ch in word) or MONTH_NAME_RE.match(word)
