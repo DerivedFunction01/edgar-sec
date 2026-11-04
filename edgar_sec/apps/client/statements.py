@@ -63,6 +63,8 @@ class XbrlStatements:
         self._kernel = kernel
         self._catalog_entries: tuple[CatalogEntry, ...] | None = None
         self._plan_root_cache: tuple[str, str] | None = None
+        self._cover_cache: tuple[XbrlFact, ...] | None = None
+        self._plan_member_cache: dict[tuple[str | None, str, str], str | None] = {}
 
     def _catalog(self) -> tuple[CatalogEntry, ...]:
         if self._catalog_entries is None:
@@ -317,6 +319,17 @@ class XbrlStatements:
         The default is the qualifying member whose latest root value
         is largest; an explicit member carrying no root value refuses.
         """
+        key = (member_qname, root, period_type)
+        if key not in self._plan_member_cache:
+            self._plan_member_cache[key] = self._plan_member_pick(
+                member_qname, root, period_type
+            )
+        return self._plan_member_cache[key]
+
+    def _plan_member_pick(
+        self, member_qname: str | None, root: str, period_type: str
+    ) -> str | None:
+        """The uncached member pick behind _plan_member's memo."""
         kernel = self._kernel
         if member_qname is not None:
             members = (member_qname,)
@@ -427,19 +440,21 @@ class XbrlStatements:
 
     def cover(self) -> tuple[XbrlFact, ...]:
         """Return the filing's dei cover facts, sorted by concept."""
-        return tuple(
-            sorted(
-                (
-                    fact
-                    for fact in self._kernel.facts
-                    if split_concept_qname(fact.concept_qname)[0] == "dei"
-                ),
-                key=lambda fact: (
-                    fact.concept_qname,
-                    fact.instant_date or fact.end_date or fact.start_date or "",
-                ),
+        if self._cover_cache is None:
+            self._cover_cache = tuple(
+                sorted(
+                    (
+                        fact
+                        for fact in self._kernel.facts
+                        if split_concept_qname(fact.concept_qname)[0] == "dei"
+                    ),
+                    key=lambda fact: (
+                        fact.concept_qname,
+                        fact.instant_date or fact.end_date or fact.start_date or "",
+                    ),
+                )
             )
-        )
+        return self._cover_cache
 
     def derivatives(self) -> DerivativePortfolioView:
         """Resolve derivative exposures, risk categories, and netting."""

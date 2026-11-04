@@ -10,6 +10,7 @@ import pytest
 from edgar_sec.apps.client.comparison import compare_compositions
 from edgar_sec.apps.client.composition import (
     STATUS_ORDER,
+    arc_triples,
     evaluate_chain,
     resolve_operand,
 )
@@ -468,7 +469,7 @@ def _run_spec(spec: ChainSpec, seed_chain_context, tmp_path: Path, evidence_on: 
         facts, table, record, arcs = _fixture_chain_inputs(tmp_path, spec.firm)
     resolver_factory = _gated_resolver if spec.resolver == "gated" else _ladder_resolver
     resolver = resolver_factory(facts, table, record, evidence_on)
-    return evaluate_chain(resolver, spec.terms, arcs), record
+    return evaluate_chain(resolver, spec.terms, arc_triples(arcs)), record
 
 
 def _mediated(result, spec: ChainSpec):
