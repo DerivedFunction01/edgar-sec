@@ -152,6 +152,27 @@ DEFAULT_CAPABILITIES = ProcessingCapabilityRegistry(
             output_kind=HandlerOutputKind.XML,
         ),
         ProcessingCapability(
+            handler_id="form_25nse_to_xml",
+            handler_version="1",
+            operation="render_to_xml",
+            input_facts="native SEC Form 25-NSE XML submission",
+            output_kind=HandlerOutputKind.XML,
+        ),
+        ProcessingCapability(
+            handler_id="form_c_to_xml",
+            handler_version="1",
+            operation="render_to_xml",
+            input_facts="native SEC Form C XML submission",
+            output_kind=HandlerOutputKind.XML,
+        ),
+        ProcessingCapability(
+            handler_id="abs_ee_to_xml",
+            handler_version="1",
+            operation="render_to_xml",
+            input_facts="native SEC ABS asset-data XML (EX-102 / EX-103)",
+            output_kind=HandlerOutputKind.XML,
+        ),
+        ProcessingCapability(
             handler_id="form_nport_to_xml",
             handler_version="1",
             operation="render_to_xml",

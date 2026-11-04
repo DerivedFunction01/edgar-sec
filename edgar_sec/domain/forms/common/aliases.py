@@ -444,6 +444,10 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "ARS",
         "ARS/A",
     ),
+    "ABS-EE": (
+        "ABS-EE",
+        "ABS-EE/A",
+    ),
     "ABS": (
         "ABS-15G",
         "ABS-15G/A",

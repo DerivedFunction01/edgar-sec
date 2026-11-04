@@ -17,6 +17,7 @@ from edgar_sec.domain.forms.common.vocabulary import (
 from edgar_sec.domain.forms.families.form_11k.evidence import Form11KEvidence
 from edgar_sec.domain.forms.families.form_11k.taxonomy import FORM_11K_ITEMS
 from edgar_sec.domain.forms.families.form_12b25.taxonomy import FORM_12B25_ITEMS
+from edgar_sec.domain.forms.families.form_12reg.taxonomy import FORM_8A_ITEMS
 from edgar_sec.domain.forms.families.form_14a.evidence import Form14AEvidence
 from edgar_sec.domain.forms.families.form_14a.taxonomy import FORM_14A_ITEMS
 from edgar_sec.domain.forms.families.form_424b.taxonomy import FORM_424B_ITEMS
@@ -193,6 +194,56 @@ def build_form_12b25_profile(family: str = "12B-25") -> CoverProfile:
             semantic_headings=(
                 "narrative",
                 "other information",
+                "signature",
+                "signatures",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+        ),
+    )
+
+
+_FORM_12REG_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "notification of removal from listing and/or registration",
+    "exact name of issuer as specified in its charter",
+    "description of class of securities",
+    "for registration of certain classes of securities",
+    "title of each class",
+    "name of each exchange on which",
+    "securities to be registered pursuant to section 12(b)",
+    "securities to be registered pursuant to section 12(g)",
+    "information required in registration statement",
+)
+
+
+def build_form_12reg_profile(family: str) -> CoverProfile:
+    """Cover profile for the Section 12 cluster: the 25 notice face and
+    the 8-A / 8-B registration covers with their class tables.
+    """
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_FORM_12REG_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=_FORM_12REG_COVER_LABELS,
+            labels=_FORM_12REG_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=tuple(d.item for d in FORM_8A_ITEMS),
+            semantic_headings=(
+                "description of securities to be registered",
+                "description of registrant's securities to be registered",
+                "description of registrant’s securities to be registered",
+                "exhibits",
                 "signature",
                 "signatures",
                 *FORWARD_LOOKING_PHRASES,
@@ -408,6 +459,7 @@ def build_form_425_profile(family: str = "425") -> CoverProfile:
 __all__ = [
     "build_form_11k_profile",
     "build_form_12b25_profile",
+    "build_form_12reg_profile",
     "build_form_14a_profile",
     "build_form_15_profile",
     "build_form_424b_profile",
@@ -676,4 +728,71 @@ def build_form_tender_profile(family: str = "SC TO") -> CoverProfile:
             ),
         ),
         unwrap_false_tables=False,
+    )
+
+
+_DRS_COVER_LABELS: tuple[str, ...] = (
+    *COMMON_COVER_LABELS,
+    "as confidentially submitted",
+    "confidentially submitted",
+    "draft registration statement",
+    "confidential draft submission",
+    "has not been publicly filed",
+    "registration statement",
+    "form s-1",
+    "form s-3",
+    "form f-1",
+)
+
+
+def build_form_drs_profile(family: str = "DRS") -> CoverProfile:
+    """Cover profile for DRS submissions: the confidential banner heads
+    the cover; the face and body inside are the base form's own.
+    """
+    registration = RegistrationEvidence()
+    return _make_profile(
+        family=family,
+        boundary=CoverBoundaryPolicy(
+            signals=(
+                BoundarySignal.COVER_IDENTITY_AND_LAYOUT,
+                BoundarySignal.PAGE_MARKERS,
+                BoundarySignal.TOC_TRANSITION,
+                BoundarySignal.PART_FALLBACK,
+                BoundarySignal.ITEM_FALLBACK,
+                BoundarySignal.BODY_PROSE_FALLBACK,
+            )
+        ),
+        labels=_DRS_COVER_LABELS,
+        healing_rules=GENERIC_PHRASE_RULES,
+        cover_evidence=CoverEvidencePack(
+            identity_terms=COVER_START_IDENTITY_TERMS,
+            shape_terms=(
+                *COMMON_COVER_LABELS,
+                *COVER_EVIDENCE_TERMS,
+                *_DRS_COVER_LABELS,
+            ),
+            labels=_DRS_COVER_LABELS,
+        ),
+        body_evidence=BodyEvidencePack(
+            structural_headings=("PART I", "PART II"),
+            semantic_headings=(
+                "prospectus summary",
+                "risk factors",
+                "use of proceeds",
+                "dilution",
+                "capitalization",
+                "plan of distribution",
+                "underwriting",
+                "where you can find more information",
+                "preliminary prospectus",
+                "subject to completion",
+                "index to consolidated financial statements",
+                *FORWARD_LOOKING_PHRASES,
+            ),
+            body_ngrams=registration.body_ngrams,
+            body_verbs=registration.body_verbs,
+            body_terms=registration.body_terms,
+            cover_terms=registration.cover_terms,
+            lexical=registration.body_lexical,
+        ),
     )

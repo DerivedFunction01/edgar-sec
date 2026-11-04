@@ -41,6 +41,12 @@ _SCHEMA_FAMILY_CASES = (
     ("S-4", "General instruction G", "instruction_g"),
     ("S-8", "Well-known seasoned issuer", "well_known_seasoned_issuer"),
     ("15", "Rule 12h-3(b)(1)(i)", "rule_12h3_b1_i"),
+    ("25", "17 CFR 240.12d2-2(a)(1)", "rule_12d2_2_a1"),
+    (
+        "8-A",
+        "registration of a class of securities pursuant to section 12(b)",
+        "section_12b_effective",
+    ),
     (
         "SC TO",
         "third-party tender offer subject to Rule 14d-1",
@@ -374,12 +380,35 @@ def test_checkmark_schema_cases_cover_registered_profile_scope() -> None:
         "NSAR",
         "497",
         "SUPPL",
+        "DRS",
+        "C",
+        "ABS-EE",
+        "8-B",
+        "25-NSE",
     }
 
 
 @pytest.mark.parametrize(
     "family",
-    ("3", "4", "5", "144", "13D", "13G", "D", "13F", "424B", "FWP", "425", "SUPPL"),
+    (
+        "3",
+        "4",
+        "5",
+        "144",
+        "13D",
+        "13G",
+        "D",
+        "13F",
+        "424B",
+        "FWP",
+        "425",
+        "SUPPL",
+        "DRS",
+        "C",
+        "ABS-EE",
+        "8-B",
+        "25-NSE",
+    ),
 )
 def test_registered_profiles_without_checkmark_schemas_are_not_applicable(
     family: str,

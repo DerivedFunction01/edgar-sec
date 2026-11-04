@@ -463,11 +463,13 @@ def _build_profiles() -> dict[str, CoverProfile]:
     from edgar_sec.engine.forms.cover.family_profiles import (
         build_form_11k_profile,
         build_form_12b25_profile,
+        build_form_12reg_profile,
         build_form_14a_profile,
         build_form_15_profile,
         build_form_424b_profile,
         build_form_425_profile,
         build_form_497_profile,
+        build_form_drs_profile,
         build_form_fwp_profile,
         build_form_ncsr_profile,
         build_form_nq_profile,
@@ -524,6 +526,9 @@ def _build_profiles() -> dict[str, CoverProfile]:
     form_425 = build_form_425_profile("425")
     form_15 = build_form_15_profile("15")
     form_12b25 = build_form_12b25_profile("12B-25")
+    form_25 = build_form_12reg_profile("25")
+    form_8a = build_form_12reg_profile("8-A")
+    form_8b = build_form_12reg_profile("8-B")
     form_14a = build_form_14a_profile("14A")
     form_11k = build_form_11k_profile("11-K")
     form_ncsr = build_form_ncsr_profile("N-CSR")
@@ -531,6 +536,7 @@ def _build_profiles() -> dict[str, CoverProfile]:
     form_nsar = build_form_nsar_profile("NSAR")
     form_497 = build_form_497_profile("497")
     form_tender = build_form_tender_profile("SC TO")
+    form_drs = build_form_drs_profile("DRS")
     form_f1 = build_form_f1_profile("F-1")
     form_f2 = build_form_f1_profile("F-2")
     form_f3 = build_form_f3_profile("F-3")
@@ -558,11 +564,15 @@ def _build_profiles() -> dict[str, CoverProfile]:
         "13D": schedule13d,
         "13G": schedule13g,
         "SC TO": form_tender,
+        "DRS": form_drs,
         "424B": form_424b,
         "FWP": form_fwp,
         "425": form_425,
         "15": form_15,
         "12B-25": form_12b25,
+        "25": form_25,
+        "8-A": form_8a,
+        "8-B": form_8b,
         "14A": form_14a,
         "11-K": form_11k,
         "N-CSR": form_ncsr,

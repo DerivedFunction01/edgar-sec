@@ -211,6 +211,26 @@ def _form_13f_to_xml(
     return render_form_13f_to_xml(raw_bytes, context)
 
 
+def _form_25nse_to_xml(
+    raw_bytes: bytes, context: HandlerContext
+) -> bytes | HandlerOutput:
+    from edgar_sec.engine.forms.form_25nse.renderer import render_form_25nse_to_xml
+
+    return render_form_25nse_to_xml(raw_bytes, context)
+
+
+def _form_c_to_xml(raw_bytes: bytes, context: HandlerContext) -> bytes | HandlerOutput:
+    from edgar_sec.engine.forms.form_c.renderer import render_form_c_to_xml
+
+    return render_form_c_to_xml(raw_bytes, context)
+
+
+def _abs_ee_to_xml(raw_bytes: bytes, context: HandlerContext) -> bytes | HandlerOutput:
+    from edgar_sec.engine.forms.form_abs_ee.renderer import render_abs_ee_to_xml
+
+    return render_abs_ee_to_xml(raw_bytes, context)
+
+
 def _form_nport_to_xml(
     raw_bytes: bytes, context: HandlerContext
 ) -> bytes | HandlerOutput:
@@ -330,6 +350,30 @@ def default_handler_registry() -> HandlerRegistry:
         HandlerOutputKind.XML,
         _form_13f_to_xml,
         family="13F",
+    )
+    registry.register(
+        "form_25nse_to_xml",
+        "1",
+        "render_to_xml",
+        HandlerOutputKind.XML,
+        _form_25nse_to_xml,
+        family="25-NSE",
+    )
+    registry.register(
+        "form_c_to_xml",
+        "1",
+        "render_to_xml",
+        HandlerOutputKind.XML,
+        _form_c_to_xml,
+        family="C",
+    )
+    registry.register(
+        "abs_ee_to_xml",
+        "1",
+        "render_to_xml",
+        HandlerOutputKind.XML,
+        _abs_ee_to_xml,
+        family="ABS-EE",
     )
     registry.register(
         "form_nport_to_xml",

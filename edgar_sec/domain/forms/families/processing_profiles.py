@@ -172,6 +172,20 @@ from edgar_sec.domain.forms.families.beneficial_ownership.taxonomy import (
 from edgar_sec.domain.forms.families.form_tender.checkmarks import (
     TENDER_CHECKBOX_SCHEMA,
 )
+from edgar_sec.domain.forms.families.form_25nse.processing import PROFILE_FORM_25NSE
+from edgar_sec.domain.forms.families.form_12reg.checkmarks import (
+    FORM_25_CHECKBOX_SCHEMA,
+    FORM_8A_CHECKBOX_SCHEMA,
+)
+from edgar_sec.domain.forms.families.form_12reg.processing import (
+    PROFILE_FORM_25,
+    PROFILE_FORM_8A,
+    PROFILE_FORM_8B,
+)
+from edgar_sec.domain.forms.families.form_12reg.taxonomy import FORM_8A_ITEMS
+from edgar_sec.domain.forms.families.form_abs_ee.processing import PROFILE_ABS_EE
+from edgar_sec.domain.forms.families.form_c.processing import PROFILE_FORM_C
+from edgar_sec.domain.forms.families.form_drs.processing import PROFILE_DRS
 from edgar_sec.domain.forms.families.form_tender.processing import PROFILE_TENDER
 from edgar_sec.domain.forms.families.form_tender.taxonomy import SCHEDULE_TO_ITEMS
 
@@ -426,6 +440,38 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         profile=PROFILE_TENDER,
         cover_checkbox_schema=TENDER_CHECKBOX_SCHEMA,
         taxonomy_items=SCHEDULE_TO_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="DRS",
+        profile=PROFILE_DRS,
+    ),
+    ProcessingCatalogEntry(
+        family="25-NSE",
+        profile=PROFILE_FORM_25NSE,
+    ),
+    ProcessingCatalogEntry(
+        family="C",
+        profile=PROFILE_FORM_C,
+    ),
+    ProcessingCatalogEntry(
+        family="ABS-EE",
+        profile=PROFILE_ABS_EE,
+    ),
+    ProcessingCatalogEntry(
+        family="25",
+        profile=PROFILE_FORM_25,
+        cover_checkbox_schema=FORM_25_CHECKBOX_SCHEMA,
+    ),
+    ProcessingCatalogEntry(
+        family="8-A",
+        profile=PROFILE_FORM_8A,
+        cover_checkbox_schema=FORM_8A_CHECKBOX_SCHEMA,
+        taxonomy_items=FORM_8A_ITEMS,
+    ),
+    ProcessingCatalogEntry(
+        family="8-B",
+        profile=PROFILE_FORM_8B,
+        taxonomy_items=FORM_8A_ITEMS,
     ),
 )
 
