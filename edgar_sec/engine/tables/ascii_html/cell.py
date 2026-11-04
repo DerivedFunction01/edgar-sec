@@ -183,8 +183,27 @@ def _parse_vertical_align(val: str | None) -> VerticalAlign:
 _DEFAULT_CELL_STYLE = CellStyle()
 
 
+def _has_element_child(raw_node: Any) -> bool:
+    """Whether the node has any element child; text and comment children do not count."""
+    child = raw_node.child
+    while child is not None:
+        tag = child.tag
+        if tag and tag not in ("-text", "-comment", "_comment"):
+            return True
+        child = child.next
+    return False
+
+
+@lru_cache(maxsize=8192)
+def _childless_style(attrs_key: tuple[tuple[str, str], ...]) -> CellStyle:
+    return _compute_cell_style(dict(attrs_key), has_element_child=False, raw_node=None)
+
+
 def parse_style_and_attributes(node: Any) -> CellStyle:
-    """Extract and normalize all inline CSS properties and HTML attributes into a CellStyle."""
+    """Extract and normalize all inline CSS properties and HTML attributes into a CellStyle.
+    A node with no element children is memoized on its attribute set alone: descendants
+    can carry borders and typography, so a node with element children is never cached.
+    """
     raw_node = getattr(node, "raw_node", node)
     raw_attrs = raw_node.attributes or {}
     if not raw_attrs:
@@ -194,7 +213,14 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
         for k, v in raw_attrs.items()
         if k is not None and v is not None
     }
+    if not _has_element_child(raw_node):
+        return _childless_style(tuple(sorted(attrs.items())))
+    return _compute_cell_style(attrs, has_element_child=True, raw_node=raw_node)
 
+
+def _compute_cell_style(
+    attrs: dict[str, str], *, has_element_child: bool, raw_node: Any
+) -> CellStyle:
     w_attr, w_unit, is_pct = parse_dimension_px(attrs.get("width"))
     h_attr, _, _ = parse_dimension_px(attrs.get("height"))
     h_align = _parse_horizontal_align(attrs.get("align"))
@@ -369,17 +395,7 @@ def parse_style_and_attributes(node: Any) -> CellStyle:
             elif prop == "border-right-color":
                 b_right_c = val.lower()
 
-    # Fast inline check for element children: a text-only node skips the whole subtree walk.
-    _c = raw_node.child
-    _has_elem_child = False
-    while _c is not None:
-        _t = _c.tag
-        if _t and _t not in ("-text", "-comment", "_comment"):
-            _has_elem_child = True
-            break
-        _c = _c.next
-
-    if _has_elem_child:
+    if has_element_child:
         found_bold = False
         found_italic = False
         # Child tags and inline styles carry nested borders and typography.

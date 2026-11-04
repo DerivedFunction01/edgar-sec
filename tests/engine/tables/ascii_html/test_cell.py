@@ -146,6 +146,22 @@ def test_a_cell_with_no_attributes_gets_the_shared_default_style() -> None:
     assert style.background_color is None
 
 
+def test_childless_cells_share_one_memoized_style_for_equal_attributes() -> None:
+    html = '<table><tr><td align="right" style="padding-left: 8px;">42</td></tr></table>'
+    first = _style_of(html)
+    second = _style_of(html.replace("42", "43"))
+    assert first is second
+
+
+def test_a_cell_with_element_children_is_never_the_childless_cached_style() -> None:
+    attrs = 'align="right" style="padding-left: 8px;"'
+    childless = _style_of(f"<table><tr><td {attrs}>42</td></tr></table>")
+    with_child = _style_of(f"<table><tr><td {attrs}><b>42</b></td></tr></table>")
+    assert not childless.is_bold
+    assert with_child.is_bold
+    assert with_child is not childless
+
+
 def test_dot_leaders_collapse_so_they_cannot_eat_a_column_budget() -> None:
     assert normalize_cell_whitespace("Operating" + "." * 40) == "Operating..."
 
