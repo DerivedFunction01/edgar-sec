@@ -200,9 +200,11 @@ def find_toc_span(
     minimum_rows: int = 2,
     derived_taxonomy: dict | None = None,
     page_analysis: object | None = None,
+    lines: list[str] | None = None,
 ) -> TocSpan | None:
     """Find a conservative TOC span in text using headings, density, and anachronism."""
-    lines = text.splitlines()
+    if lines is None:
+        lines = text.splitlines()
     if not lines or start_line >= len(lines):
         return None
     limit = min(len(lines), max_lines or len(lines))

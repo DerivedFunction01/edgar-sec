@@ -89,6 +89,7 @@ def find_cover_boundary(
     *,
     cover_evidence: object | None = None,
     body_evidence: object | None = None,
+    lines: list[str] | None = None,
 ) -> CoverBoundary:
     """A conservative, exclusive end for cover-specific processing; an absent policy
     disables cover parsing.
@@ -97,7 +98,8 @@ def find_cover_boundary(
         return _unknown(BoundaryMethod.DISABLED)
 
     text = boundary_input if isinstance(boundary_input, str) else boundary_input.text
-    lines = text.splitlines()
+    if lines is None:
+        lines = text.splitlines()
     if not lines:
         return _unknown()
 
@@ -107,6 +109,7 @@ def find_cover_boundary(
         policy,
         cover_evidence=cover_evidence,
         body_evidence=body_evidence,
+        lines=lines,
     )
     scan_start = cover_start.start_line if cover_start.start_line is not None else 0
     search_limit = max(250, scan_start + 180, int(len(lines) * 0.25))
@@ -239,6 +242,7 @@ def find_cover_boundary(
             start_line=scan_start,
             max_lines=search_limit,
             page_analysis=page_analysis,
+            lines=lines,
         )
         if toc is not None and identity_count >= 2 and not toc.approximate:
             evidence.extend(
@@ -469,6 +473,8 @@ def find_cover_boundary(
 def find_cover_boundary_for_profile(
     boundary_input: BoundaryInput | str,
     profile: object,
+    *,
+    lines: list[str] | None = None,
 ) -> CoverBoundary:
     """Find a boundary using the resolved form profile's evidence packs."""
     return find_cover_boundary(
@@ -476,6 +482,7 @@ def find_cover_boundary_for_profile(
         getattr(profile, "boundary", None),
         cover_evidence=getattr(profile, "cover_evidence", None),
         body_evidence=getattr(profile, "body_evidence", None),
+        lines=lines,
     )
 
 

@@ -123,15 +123,16 @@ def analyze_form_fn_review_case(
     case_dir: Path, record: dict[str, Any]
 ) -> dict[str, Any] | None:
     """Analyze a single F-N review case producing field diagnostics."""
-    rep = analyze_form_case(case_dir, record, form="F-N", family="F-N")
+    text_path = locate_text_artifact(case_dir)
+    if text_path is None:
+        return None
+    try:
+        text = text_path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return None
+    rep = analyze_form_case(case_dir, record, form="F-N", family="F-N", text=text)
     if rep is None:
         return None
-    text_path = locate_text_artifact(case_dir)
-    text = (
-        text_path.read_text(encoding="utf-8", errors="ignore")
-        if text_path is not None
-        else ""
-    )
     lines = text.splitlines()
     if find_table_spans(text):
         reinfer_unmasked_checkmarks(text, rep, family="F-N")

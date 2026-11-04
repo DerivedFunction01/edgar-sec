@@ -63,15 +63,18 @@ def analyze_form_425_review_case(
 ) -> dict[str, Any] | None:
     """Analyze a single Rule 425 review case producing header diagnostics."""
     resolved_form = str(record.get("form") or record.get("family") or "425")
-    rep = analyze_form_case(case_dir, record, form=resolved_form, family="425")
+    text_path = locate_text_artifact(case_dir)
+    if text_path is None:
+        return None
+    try:
+        text = text_path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return None
+    rep = analyze_form_case(
+        case_dir, record, form=resolved_form, family="425", text=text
+    )
     if rep is None:
         return None
-    text_path = locate_text_artifact(case_dir)
-    text = (
-        text_path.read_text(encoding="utf-8", errors="ignore")
-        if text_path is not None
-        else ""
-    )
 
     fields = _form_425_fields(text)
     rep["form_425"] = fields

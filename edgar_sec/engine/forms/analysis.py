@@ -172,15 +172,17 @@ def analyze_form_case(
     *,
     form: str | None = None,
     family: str | None = None,
+    text: str | None = None,
 ) -> dict[str, Any] | None:
     """Analyze a single review case directory producing common form diagnostics."""
-    text_path = locate_text_artifact(case_dir)
-    if text_path is None:
-        return None
-    try:
-        text = text_path.read_text(encoding="utf-8", errors="ignore")
-    except OSError:
-        return None
+    if text is None:
+        text_path = locate_text_artifact(case_dir)
+        if text_path is None:
+            return None
+        try:
+            text = text_path.read_text(encoding="utf-8", errors="ignore")
+        except OSError:
+            return None
 
     accession = str(record.get("accession", case_dir.name))
     resolved_form = str(form or record.get("form") or family or "")
@@ -198,9 +200,11 @@ def analyze_form_case(
     resolved_family = str(family or cover_profile.family)
 
     entry = get_family_entry(resolved_family) or get_family_entry(resolved_form)
+    lines = text.splitlines()
     boundary = find_cover_boundary_for_profile(
         BoundaryInput(text, representation="text"),
         cover_profile,
+        lines=lines,
     )
     cm_result = infer_cover_checkmarks(
         text,
@@ -209,7 +213,6 @@ def analyze_form_case(
         schema=cover_profile.checkbox_schema,
     )
 
-    lines = text.splitlines()
     body_start = boundary.end_line or 0
     body_lines = lines[body_start:]
     body_text = "\n".join(body_lines)

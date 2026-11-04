@@ -63,15 +63,18 @@ def analyze_form_mjds_review_case(
     """Analyze a single MJDS review case producing cover-field diagnostics."""
     resolved_form = str(record.get("form") or record.get("family") or "F-10")
     family = resolve_alias(resolved_form) or resolved_form
-    rep = analyze_form_case(case_dir, record, form=resolved_form, family=family)
+    text_path = locate_text_artifact(case_dir)
+    if text_path is None:
+        return None
+    try:
+        text = text_path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return None
+    rep = analyze_form_case(
+        case_dir, record, form=resolved_form, family=family, text=text
+    )
     if rep is None:
         return None
-    text_path = locate_text_artifact(case_dir)
-    text = (
-        text_path.read_text(encoding="utf-8", errors="ignore")
-        if text_path is not None
-        else ""
-    )
     lines = text.splitlines()
     if find_table_spans(text):
         reinfer_unmasked_checkmarks(text, rep, family=family)
