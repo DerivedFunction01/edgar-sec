@@ -213,8 +213,11 @@ def decompose_html_structures(html: str) -> str:
     masked = _RE_SINGLE_BR.sub(" ", masked)
 
     for _ in range(3):
-        masked = _RE_NESTED_DIV_OPEN.sub("<div>", masked)
-        masked = _RE_NESTED_DIV_CLOSE.sub("</div>", masked)
+        collapsed = _RE_NESTED_DIV_OPEN.sub("<div>", masked)
+        collapsed = _RE_NESTED_DIV_CLOSE.sub("</div>", collapsed)
+        if collapsed == masked:
+            break
+        masked = collapsed
 
     masked = _RE_P_CONTAINER.sub(_clean_p_content, masked)
 
