@@ -395,8 +395,23 @@ Indicate by check mark whether the securitizer has no activity to report for the
     + "\n</TABLE>\n"
 )
 
-# Specimen-derived (accession 0000310522-12-000101): the part caption
-# survives only in the filename banner; the table headers are wrapped.
+# Specimen-derived (accession 0000310522-12-000101): the render is the
+# bare table from line 1; the part banner survives only in the record.
+_SAMPLE_15G_RECORD_BANNER_FRAGMENT = """\
+<TABLE>
+Nam  Che  Nam  Total Assets by   Assets that were subjected of
+of   k i  of      Originator                 Demand
+ssu  Reg  rig
+ng   ste  nat
+nti  ed   r
+y
+313       Una  227  $31,1  100        0              $0.00   NA
+7V3       ail       47,64
+1         ble        0.52
+</TABLE>
+"""
+
+# Variant: the part caption survives in the rendered text banner itself.
 _SAMPLE_15G_BANNER_FRAGMENT = """\
 ABS-15G/A
 1
@@ -444,6 +459,40 @@ def test_analyze_abs_15g_banner_caption_fragment(tmp_path: Path) -> None:
     assert "missing_securitizer_file_number" not in kinds
     assert "missing_securitizer_cik" not in kinds
     assert "no_obligation_checked" not in kinds
+
+
+def test_analyze_abs_15g_record_banner_fragment(tmp_path: Path) -> None:
+    _write_case(tmp_path, _SAMPLE_15G_RECORD_BANNER_FRAGMENT)
+    record = {
+        "accession": "0000310522-12-000101",
+        "form": "ABS-15G/A",
+        "processing": {"effective_path": "15GaFile_09_of_42_0107_0201.htm"},
+    }
+    result = analyze_case(tmp_path, record)
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["shape"] == "table_fragment"
+    assert fields["part_caption"] == {"index": 9, "count": 42}
+    kinds = {a["kind"] for a in result["anomalies"]}
+    assert "missing_securitizer_file_number" not in kinds
+    assert "missing_securitizer_cik" not in kinds
+    assert "no_obligation_checked" not in kinds
+
+
+def test_analyze_abs_15g_record_banner_on_a_face_stays_a_face(
+    tmp_path: Path,
+) -> None:
+    _write_case(tmp_path, _SAMPLE_15G_TEXT)
+    record = {
+        "accession": "0000310522-12-000003",
+        "form": "ABS-15G",
+        "processing": {"effective_path": "15GaFile_01_of_39_8207_9302.htm"},
+    }
+    result = analyze_case(tmp_path, record)
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["shape"] == "face"
+    assert fields["securitizer_file_number"] == "025-14602"
 
 
 def test_analyze_abs_15g_banner_on_a_face_stays_a_face(tmp_path: Path) -> None:

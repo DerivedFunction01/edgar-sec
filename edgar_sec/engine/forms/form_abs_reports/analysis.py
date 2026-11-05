@@ -201,7 +201,27 @@ def _part_caption_match(lines: list[str]) -> re.Match[str] | None:
     return _PART_CAPTION_RE.search(head) or _PART_BANNER_RE.search(head)
 
 
-def _is_table_fragment(text: str, lines: list[str]) -> bool:
+def _record_part_caption(record: dict[str, Any]) -> re.Match[str] | None:
+    """Part banner from the case record's document path, if it carries one."""
+    processing = record.get("processing") or {}
+    fixture = record.get("fixture") or {}
+    for candidate in (processing.get("effective_path"), fixture.get("target_url")):
+        if candidate:
+            match = _PART_BANNER_RE.search(str(candidate))
+            if match:
+                return match
+    return None
+
+
+def _starts_with_table(lines: list[str]) -> bool:
+    """Whether the first substantive rendered line opens a table."""
+    first = next((line for line in lines if line.strip()), "")
+    return first.strip().upper().startswith("<TABLE")
+
+
+def _is_table_fragment(
+    text: str, lines: list[str], record: dict[str, Any] | None = None
+) -> bool:
     """A continuation part: rep-and-warranty table with no form face."""
     head = "\n".join(lines[:60]).lower()
     if "form abs-15g" in head or "check the appropriate box" in head:
@@ -211,7 +231,11 @@ def _is_table_fragment(text: str, lines: list[str]) -> bool:
         return True
     if _PART_CAPTION_RE.search("\n".join(lines[:5])) is not None:
         return True
-    return _PART_BANNER_RE.search("\n".join(lines[:10])) is not None
+    if _PART_BANNER_RE.search("\n".join(lines[:10])) is not None:
+        return True
+    if record is not None and _record_part_caption(record) is not None:
+        return _starts_with_table(lines)
+    return False
 
 
 def _analyze_distribution(
@@ -290,6 +314,7 @@ def _analyze_securitizer(
     lines: list[str],
     cover_text: str,
     text: str,
+    record: dict[str, Any],
 ) -> dict[str, Any]:
     states = rep["checkmarks"].get("candidate_states", {})
     for key in _RULE_KEYS:
@@ -299,9 +324,9 @@ def _analyze_securitizer(
         "table_header_present": all(term in lowered for term in _TABLE_HEADER_TERMS),
         "item_201_detected": "ITEM 2.01" in rep["taxonomy"]["detected_items"],
     }
-    if _is_table_fragment(text, lines):
+    if _is_table_fragment(text, lines, record):
         fields["shape"] = "table_fragment"
-        caption = _part_caption_match(lines)
+        caption = _part_caption_match(lines) or _record_part_caption(record)
         fields["part_caption"] = (
             {"index": int(caption.group(1)), "count": int(caption.group(2))}
             if caption
@@ -387,7 +412,7 @@ def analyze_form_abs_reports_review_case(
     if kind is FormAbsReportsKind.DISTRIBUTION:
         fields = _analyze_distribution(rep, lines, cover_text, text)
     else:
-        fields = _analyze_securitizer(rep, lines, cover_text, text)
+        fields = _analyze_securitizer(rep, lines, cover_text, text, record)
     fields["kind"] = kind.value
     assessment = (record.get("processing") or {}).get("exhibit_assessment")
     fields["exhibit_assessment"] = assessment
