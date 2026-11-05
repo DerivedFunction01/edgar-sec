@@ -103,7 +103,7 @@ _DATE_OF_REPORT_LOOSE_RE = re.compile(
 )
 _DATE_PERIOD_SEP_RE = re.compile(r"\.\s*(?=\d{4}$)")
 _PAIR_ABOVE_CAPTION_RE = re.compile(r"(\d{1,3}-[0-9a-z-]+)\s+([0-9]{7,10})")
-_PAIR_ABOVE_CIK_ONLY_RE = re.compile(r"(?:N/A\s+)?(\d{10})")
+_PAIR_ABOVE_CIK_ONLY_RE = re.compile(r"(?:(?:N/A|none)\s+)?(\d{10})", re.IGNORECASE)
 _PART_CAPTION_RE = re.compile(
     r"\b(?:file|report)\s+(\d+)\s+of\s+(\d+)\b",
     re.IGNORECASE,

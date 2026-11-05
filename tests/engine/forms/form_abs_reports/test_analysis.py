@@ -581,6 +581,39 @@ def test_analyze_abs_15g_pair_index_number_caption(tmp_path: Path) -> None:
     assert fields["securitizer_cik"] == "0000009631"
 
 
+# Specimen-derived (accession 0001193125-21-009666): the wrapped caption
+# pair whose file slot reads "none"; only the CIK value is filed.
+_SAMPLE_15G_PAIR_NONE_SLOT_TEXT = """\
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM ABS-15G
+ASSET-BACKED SECURITIZER REPORT PURSUANT TO SECTION 15G OF THE SECURITIES EXCHANGE ACT OF 1934
+Check the appropriate box to indicate the filing obligation to which this form is intended to satisfy:
+[X]  Rule 15Ga-1 under the Exchange Act (17 CFR 240.15Ga-1) for the reporting period January 1, 2020 to December 31, 2020
+Date of Report (Date of earliest event reported): February 10, 2021
+ACME SECURITIZATION LLC
+(Exact Name of Securitizer as Specified in Charter)
+<TABLE>
+                  none                         0000750577
+(Commission File Number of securitizer)    (Central Index Key
+                                         Number of securitizer)
+</TABLE>
+Indicate by check mark whether the securitizer has no activity to report for the annual period pursuant to Rule 15Ga-1(c)(2)(ii) [ ]
+"""
+
+
+def test_analyze_abs_15g_pair_none_slot_yields_cik(tmp_path: Path) -> None:
+    _write_case(tmp_path, _SAMPLE_15G_PAIR_NONE_SLOT_TEXT)
+    result = analyze_case(
+        tmp_path, {"accession": "0001193125-21-009666", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["securitizer_cik"] == "0000750577"
+    assert fields["securitizer_file_number"] is None
+
+
 def test_analyze_abs_15g_pair_lone_cik_value(tmp_path: Path) -> None:
     _write_case(tmp_path, _SAMPLE_15G_PAIR_LONE_CIK_TEXT)
     result = analyze_case(
