@@ -8,7 +8,7 @@ This package resolves statutory Part/Item sections and Financial Statement Notes
 
 ## Contracts
 
-- **Monotonic progression invariant**: State transitions only forward ($O_{\text{next}} \ge O_{\text{current}}$); candidates with $O < O_{\text{current}}$ are rejected as anachronistic prose references without altering sequence position.
+- **Spine-plus-displacement assembly (items)**: The item sequence is the longest canonical-order run of genuine candidates (the spine) plus any genuine candidate whose exclusion is a single local fault — a pairwise inversion against a spine member or a displacement across the spine — carried in document order and marked `displaced`. Duplicate detections of one ordinal are resolved first (first disjoint claimant wins) and are never displacements. A stream whose faults do not decompose into independent local ones falls back to first-fit monotonic selection, unchanged, and marks the sequence `disordered`. Notes detection keeps first-fit monotonic progression throughout.
 - **Contiguity invariant for grouped headings**: Multi-item lists (`Items 1, 1A, and 1B` or `Notes 4 and 5`) must form a strictly adjacent chain in canonical order ($\Delta = 1$); lists with gaps ($\Delta > 1$) are rejected as disjoint prose references.
 - **Dense pseudo-TOC isolation**: Candidate runs with line spacing $\Delta_{\text{line}} \le 3$ and zero substantive prose are classified as navigation artifacts and excluded from section assignments.
 - **Omitted item monotonicity**: Sections marked with statutory omission markers (`[Omitted]`, `Not Applicable`, `None`, `[Reserved]`) advance sequence state with `is_omitted=True` without halting progression.

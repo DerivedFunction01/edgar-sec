@@ -2,9 +2,25 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from typing import Generic, TypeVar
 
 T = TypeVar("T")
+
+
+@dataclass(frozen=True, slots=True)
+class SequenceAssembly(Generic[T]):
+    """Spine / displaced / rejected partition of a candidate event stream.
+
+    Indices address the event list handed to assemble_sequence; a
+    disordered assembly carries no displaced set and the caller falls
+    back to first-fit selection over the same events.
+    """
+
+    spine: tuple[int, ...]
+    displaced: tuple[int, ...]
+    rejected: tuple[int, ...]
+    disordered: bool
 
 
 class MonotonicSequenceTracker(Generic[T]):
@@ -34,6 +50,124 @@ class MonotonicSequenceTracker(Generic[T]):
             if curr_ord is None or next_ord is None or next_ord - curr_ord != 1:
                 return False
         return True
+
+    def select_longest_run(self, events: list[tuple[T, ...]]) -> tuple[int, ...]:
+        """Indices of the longest subsequence of events monotonic in canonical
+        order (weighted by identifier count; ties keep earliest positions).
+        """
+        spans: list[tuple[int, int, int] | None] = []
+        for identifiers in events:
+            ordinals: list[int] = []
+            for item in identifiers:
+                ordn = self._order_map.get(item)
+                if ordn is None:
+                    break
+                ordinals.append(ordn)
+            if (
+                len(ordinals) == len(identifiers)
+                and ordinals
+                and all(b > a for a, b in zip(ordinals, ordinals[1:]))
+            ):
+                spans.append((ordinals[0], ordinals[-1], len(identifiers)))
+            else:
+                spans.append(None)
+        best: list[tuple[int, tuple[int, ...]] | None] = [None] * len(events)
+        for i, span in enumerate(spans):
+            if span is None:
+                continue
+            lo, _, weight = span
+            chosen = (weight, (i,))
+            for j in range(i):
+                prev = best[j]
+                prev_span = spans[j]
+                if prev is None or prev_span is None or prev_span[1] >= lo:
+                    continue
+                extended = (prev[0] + weight, prev[1] + (i,))
+                if extended[0] > chosen[0] or (
+                    extended[0] == chosen[0] and extended[1] < chosen[1]
+                ):
+                    chosen = extended
+            best[i] = chosen
+        result: tuple[int, tuple[int, ...]] | None = None
+        for entry in best:
+            if entry is None:
+                continue
+            if (
+                result is None
+                or entry[0] > result[0]
+                or (entry[0] == result[0] and entry[1] < result[1])
+            ):
+                result = entry
+        return result[1] if result is not None else ()
+
+    def _event_span(self, identifiers: tuple[T, ...]) -> tuple[int, int] | None:
+        """Ordinal span of one event, or None when it cannot be placed."""
+        if not identifiers:
+            return None
+        ordinals: list[int] = []
+        for item in identifiers:
+            ordn = self._order_map.get(item)
+            if ordn is None:
+                return None
+            ordinals.append(ordn)
+        if any(b <= a for a, b in zip(ordinals, ordinals[1:])):
+            return None
+        return ordinals[0], ordinals[-1]
+
+    def assemble_sequence(self, events: list[tuple[T, ...]]) -> SequenceAssembly[T]:
+        """Partition events into the canonical spine plus displaced items.
+
+        The first event (document order) whose ordinal set is disjoint
+        from every earlier admitted event claims those ordinals; later
+        events touching a claimed ordinal are duplicates, never
+        displacements. A non-spine event is displaced only when the
+        displaced set is itself canonically increasing and each member
+        inverts against the spine; otherwise the stream is disordered.
+        """
+        spans = [self._event_span(identifiers) for identifiers in events]
+        claimed: set[T] = set()
+        admitted: list[int] = []
+        rejected: list[int] = []
+        for pos, identifiers in enumerate(events):
+            if spans[pos] is None or any(item in claimed for item in identifiers):
+                rejected.append(pos)
+                continue
+            admitted.append(pos)
+            claimed.update(identifiers)
+        spine_sub = self.select_longest_run([events[pos] for pos in admitted])
+        spine = tuple(admitted[i] for i in spine_sub)
+        spine_set = set(spine)
+        displaced = tuple(pos for pos in admitted if pos not in spine_set)
+        spine_spans = [
+            (other, spans[other]) for other in spine if spans[other] is not None
+        ]
+        disordered = False
+        prev_hi: int | None = None
+        for pos in displaced:
+            span = spans[pos]
+            if span is None:  # admitted events always carry a span
+                disordered = True
+                break
+            if prev_hi is not None and span[0] <= prev_hi:
+                disordered = True
+                break
+            prev_hi = span[1]
+            inverts = any(
+                (pos < other and span[0] > other_span[1])
+                or (pos > other and span[1] < other_span[0])
+                for other, other_span in spine_spans
+            )
+            if not inverts:
+                disordered = True
+                break
+        if disordered:
+            displaced = ()
+        return SequenceAssembly(
+            spine=spine,
+            displaced=displaced,
+            rejected=tuple(rejected),
+            disordered=disordered,
+        )
 
     def accept(self, identifier: T) -> bool:
         """Advance state if strictly monotonic; reject anachronisms and repeats."""
