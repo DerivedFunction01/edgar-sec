@@ -1,0 +1,50 @@
+# edgar-sec package declaration: the single source of dependency truth.
+# init_venv.py builds the venv from this file; no other package list exists.
+# Pins carried verbatim from the former init_venv.py registry:
+#   duckdb>=1.5.6,<2.1 (version-sensitive behaviour observed at 1.5.6)
+#   pymupdf>=2.1,<2.2 (commissioned for the PDF path; PyMuPDF is AGPL-3.0)
+# selectolax is deliberately unpinned: both backends (modest, lexbor) are
+# supported indefinitely and the code falls back between them at import.
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "edgar-sec"
+dynamic = ["version"]
+description = "High-throughput, memory-safe SEC EDGAR extraction engine and pipeline"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "duckdb>=1.5.6,<2.1",
+    "fastapi",
+    "pandas",
+    "polars",
+    "psutil",
+    "pyarrow",
+    "pymupdf>=2.1,<2.2",
+    "requests",
+    "selectolax",
+    "tqdm",
+    "urllib3",
+    "uvicorn",
+    "zstandard",
+]
+
+[project.optional-dependencies]
+# Test/gate tooling. httpx2 is never imported directly: the FastAPI/Starlette
+# TestClient used by the viewer tests requires it as its transport.
+dev = [
+    "httpx2",
+    "pytest",
+    "pytest-timeout",
+    "pytest-xdist",
+    "ruff",
+]
+
+[tool.hatch.version]
+path = "edgar_sec/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["edgar_sec"]
