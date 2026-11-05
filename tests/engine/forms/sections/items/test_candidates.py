@@ -5,6 +5,7 @@ from __future__ import annotations
 from edgar_sec.domain.forms.families.annual.taxonomy import FORM_10K_ITEMS
 from edgar_sec.domain.forms.families.form_497.taxonomy import FORM_497_ITEMS
 from edgar_sec.domain.forms.families.form_nq.taxonomy import FORM_NQ_ITEMS
+from edgar_sec.domain.forms.families.form_sd.taxonomy import FORM_SD_ITEMS
 from edgar_sec.engine.forms.sections.items.candidates import extract_section_candidates
 from edgar_sec.engine.forms.sections.models import CandidateKind
 
@@ -65,6 +66,14 @@ def test_title_keyed_item_candidate_joins_by_title() -> None:
         ("CONTROLS AND PROCEDURES",),
         ("EXHIBITS",),
     ]
+
+
+def test_item_keyed_candidate_keeps_number_when_title_is_shared() -> None:
+    """SD items 1.02 and 3.01 share the title "Exhibits"; each ITEM
+    candidate keeps the filer's own number."""
+    lines = ["Item 1.02 Exhibits", "Item 3.01 Exhibits"]
+    cands = extract_section_candidates(lines, taxonomy_items=FORM_SD_ITEMS)
+    assert [c.identifiers for c in cands] == [("1.02",), ("3.01",)]
 
 
 def test_title_keyed_item_candidate_en_dash_separator() -> None:
