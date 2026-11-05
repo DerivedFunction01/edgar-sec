@@ -191,10 +191,8 @@ UNCHECKED_TOKENS = frozenset(RAW_UNCHECKED_TOKENS)
 BARE_MARK_TOKENS = ("x", "X", "o", "O", "þ", "ý", "\uf0a8", "r", "R")
 
 # Symbol-font remnants: in the filed corpora these glyphs appear only as
-# isolated mark tokens (a Wingdings ý is the checked mark, its \uf0a8 box the
-# unchecked one). The guard is the extraction boundary itself: CHECKMARK_MARK_RE
-# reaches a bare glyph only when no word character adjoins it, so a letter ý
-# embedded in a word is never classified.
+# isolated mark tokens. CHECKMARK_MARK_RE reaches a bare glyph only when no
+# word character adjoins it, so a letter ý inside a word is never classified.
 GUARDED_CHECKED_GLYPHS = ("ý", "þ")
 GUARDED_UNCHECKED_GLYPHS = ("\uf0a8",)
 
