@@ -111,4 +111,6 @@ def test_assembly_empty_and_singleton_streams() -> None:
     empty = _assemble([])
     assert empty.spine == () and empty.displaced == () and empty.disordered is False
     single = _assemble([("4",)])
-    assert single.spine == (0,) and single.displaced == () and single.disordered is False
+    assert (
+        single.spine == (0,) and single.displaced == () and single.disordered is False
+    )
