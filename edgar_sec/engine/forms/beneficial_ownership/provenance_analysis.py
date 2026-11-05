@@ -3,9 +3,7 @@ from __future__ import annotations
 import xml.etree.ElementTree as ET
 from typing import Any
 
-
-def _local_name(tag: str) -> str:
-    return tag.rsplit("}", 1)[-1]
+from edgar_sec.engine.forms.common.extraction import local_name
 
 
 def _field_target_exists(root: ET.Element, field_path: str) -> bool:
@@ -23,7 +21,7 @@ def _field_target_exists(root: ET.Element, field_path: str) -> bool:
             child
             for parent in current
             for child in parent
-            if _local_name(child.tag) == local_part
+            if local_name(child.tag) == local_part
         ]
         if index < 1 or index > len(candidates):
             return False
@@ -42,7 +40,7 @@ def _output_field_paths(root: ET.Element) -> list[tuple[str, str]]:
         counts: dict[str, int] = {}
         children = list(element)
         for child in children:
-            name = _local_name(child.tag)
+            name = local_name(child.tag)
             counts[name] = counts.get(name, 0) + 1
             part = (
                 f"{name}[{counts[name]}]"
@@ -91,10 +89,10 @@ def analyze_extraction_provenance(
 ) -> tuple[list[dict[str, Any]], dict[str, Any] | None]:
     anomalies: list[dict[str, Any]] = []
     extraction_nodes = [
-        node for node in root.iter() if _local_name(node.tag) == "extractionProvenance"
+        node for node in root.iter() if local_name(node.tag) == "extractionProvenance"
     ]
     unparsed_containers = [
-        node for node in root.iter() if _local_name(node.tag) == "unparsedSections"
+        node for node in root.iter() if local_name(node.tag) == "unparsedSections"
     ]
     if not extraction_nodes:
         if required:
@@ -133,7 +131,7 @@ def analyze_extraction_provenance(
                 {
                     "accession": accession,
                     "kind": "invalid_provenance_source_length",
-                    "detail": f"{_local_name(container.tag)} has no valid sourceLength",
+                    "detail": f"{local_name(container.tag)} has no valid sourceLength",
                 }
             )
     if len(source_lengths) > 1:
@@ -168,7 +166,7 @@ def analyze_extraction_provenance(
         child
         for container in extraction_nodes
         for child in container
-        if _local_name(child.tag) == "fieldExtraction"
+        if local_name(child.tag) == "fieldExtraction"
     ]
     mapped_paths = {
         _path_parts(element.attrib["fieldPath"])
@@ -182,7 +180,7 @@ def analyze_extraction_provenance(
             (
                 child.text or ""
                 for child in element
-                if _local_name(child.tag) == "sourceText"
+                if local_name(child.tag) == "sourceText"
             ),
             "",
         )
@@ -267,7 +265,7 @@ def analyze_extraction_provenance(
 
     for container in unparsed_containers:
         for element in container:
-            if _local_name(element.tag) != "unparsedSection":
+            if local_name(element.tag) != "unparsedSection":
                 continue
             span = _span(element, "startOffset", "endOffset")
             value = element.text or ""

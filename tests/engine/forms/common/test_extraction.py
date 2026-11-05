@@ -13,6 +13,7 @@ from edgar_sec.engine.forms.common.extraction import (
     count_deep_elements,
     extract_value,
     find_child_element,
+    find_child_elements,
     find_deep_elements,
     find_element_path,
     first_deep_text,
@@ -212,3 +213,13 @@ def test_shared_xml_navigation_helpers() -> None:
     assert has_deep_element(root, "nameOfIssuer")
     assert not has_deep_element(root, "absent")
     assert count_deep_elements(root, "filerCik") == 2
+    filer_info = find_child_element(header, "filerInfo")
+    assert len(find_child_elements(filer_info, "filer")) == 2
+    assert find_child_elements(root, "filerCik") == []
+    namespaced = ET.fromstring(
+        '<x:root xmlns:x="urn:probe"><x:item>1</x:item><x:item>2</x:item></x:root>'
+    )
+    assert [
+        xml_element_text_or_none(item)
+        for item in find_child_elements(namespaced, "item")
+    ] == ["1", "2"]

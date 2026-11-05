@@ -7,7 +7,10 @@ from pathlib import Path
 from typing import Any
 import xml.etree.ElementTree as ET
 
-from edgar_sec.engine.forms.common.extraction import local_name
+from edgar_sec.engine.forms.common.extraction import (
+    local_name,
+    xml_element_text_or_none,
+)
 
 _CORE_FIELDS = (
     "cik",
@@ -20,17 +23,10 @@ _CORE_FIELDS = (
 )
 
 
-def _text(elem: ET.Element | None) -> str | None:
-    if elem is None or elem.text is None:
-        return None
-    val = elem.text.strip()
-    return val if val else None
-
-
 def _first_text(elements_by_tag: dict[str, list[ET.Element]], tag: str) -> str | None:
     elems = elements_by_tag.get(tag, ())
     for elem in elems:
-        txt = _text(elem)
+        txt = xml_element_text_or_none(elem)
         if txt is not None:
             return txt
     return None
