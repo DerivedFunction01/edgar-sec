@@ -7,12 +7,20 @@ from edgar_sec.engine.forms.common.extraction import (
     FieldSpec,
     RequiredElement,
     add_field_element,
+    all_deep_texts,
     build_scalar_evidence_record,
     constraint_issue,
+    count_deep_elements,
     extract_value,
+    find_child_element,
+    find_deep_elements,
+    find_element_path,
+    first_deep_text,
+    has_deep_element,
     normalize_value,
     validate_xml_required,
     validate_xml_values,
+    xml_element_text_or_none,
 )
 from edgar_sec.engine.forms.common.numbers import normalize_schema_number
 
@@ -175,3 +183,32 @@ def test_unresolved_evidence_uses_one_record_shape_across_families() -> None:
     assert form_144["role"] == "normalization.unresolved:approxSaleDate"
     assert ownership["content_type"] == form_144["content_type"] == "text/plain"
     assert ownership["content"] == form_144["content"] == "05/15/24"
+
+
+def test_shared_xml_navigation_helpers() -> None:
+    root = ET.fromstring(
+        "<edgarSubmission><headerData><filerInfo>"
+        "<filer><filerCik> 123 </filerCik></filer>"
+        "<filer><filerCik>456</filerCik></filer>"
+        "</filerInfo><liveTestFlag> LIVE </liveTestFlag></headerData>"
+        "<formData><nameOfIssuer>Acme</nameOfIssuer><empty/></formData>"
+        "</edgarSubmission>"
+    )
+
+    header = find_child_element(root, "headerData")
+    assert header is not None
+    assert find_child_element(None, "headerData") is None
+    assert xml_element_text_or_none(find_child_element(header, "liveTestFlag")) == (
+        "LIVE"
+    )
+    assert xml_element_text_or_none(find_element_path(root, "formData", "empty")) is (
+        None
+    )
+    assert xml_element_text_or_none(None) is None
+    assert all_deep_texts(root, "filerCik") == ("123", "456")
+    assert first_deep_text(root, "filerCik") == "123"
+    assert first_deep_text(root, "absent") is None
+    assert len(find_deep_elements(root, "filer")) == 2
+    assert has_deep_element(root, "nameOfIssuer")
+    assert not has_deep_element(root, "absent")
+    assert count_deep_elements(root, "filerCik") == 2
