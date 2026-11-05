@@ -3,6 +3,8 @@
 # Pins carried verbatim from the former init_venv.py registry:
 #   duckdb>=1.5.6,<2.1 (version-sensitive behaviour observed at 1.5.6)
 #   pymupdf>=2.1,<2.2 (commissioned for the PDF path; PyMuPDF is AGPL-3.0)
+#   pyarrow>=26,<27 (23.0.1 proven to break string/dictionary field merges
+#   the pipelines rely on; 26.0.0 is the proven reference version)
 # selectolax is deliberately unpinned: both backends (modest, lexbor) are
 # supported indefinitely and the code falls back between them at import.
 
@@ -22,7 +24,7 @@ dependencies = [
     "pandas",
     "polars",
     "psutil",
-    "pyarrow",
+    "pyarrow>=26,<27",
     "pymupdf>=2.1,<2.2",
     "requests",
     "selectolax",
