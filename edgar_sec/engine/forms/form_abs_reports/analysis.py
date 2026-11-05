@@ -67,7 +67,7 @@ _SECURITIZER_CIK_RE = re.compile(
     re.IGNORECASE,
 )
 _SECURITIZER_FILE_BEFORE_CAPTION_RE = re.compile(
-    r"([0-9][0-9a-z]*(?:-[0-9a-z]+)+|[0-9]+)"
+    r"([0-9][0-9a-z]*(?:-[0-9a-z]+)+)"
     r"\s*\(\s*commission file number of securitizer\s*\)",
     re.IGNORECASE,
 )
@@ -103,6 +103,7 @@ _DATE_OF_REPORT_LOOSE_RE = re.compile(
 )
 _DATE_PERIOD_SEP_RE = re.compile(r"\.\s*(?=\d{4}$)")
 _PAIR_ABOVE_CAPTION_RE = re.compile(r"(\d{1,3}-[0-9a-z-]+)\s+([0-9]{7,10})")
+_PAIR_ABOVE_CIK_ONLY_RE = re.compile(r"(?:N/A\s+)?(\d{10})")
 _PART_CAPTION_RE = re.compile(
     r"\b(?:file|report)\s+(\d+)\s+of\s+(\d+)\b",
     re.IGNORECASE,
@@ -171,10 +172,12 @@ def _caption_pair_above(lines: list[str]) -> tuple[str | None, str | None]:
     """
     for index, line in enumerate(lines):
         lowered = line.lower()
-        if "commission file" not in lowered and "central index key" not in lowered:
+        if "commission file" not in lowered and "central index" not in lowered:
             continue
         window = " ".join(lines[index : index + 4]).lower()
-        if "commission file" not in window or "central index key" not in window:
+        if "commission file" not in window:
+            continue
+        if "central index key" not in window and "central index number" not in window:
             continue
         if (
             "commission file number" not in window
@@ -190,6 +193,9 @@ def _caption_pair_above(lines: list[str]) -> tuple[str | None, str | None]:
             match = _PAIR_ABOVE_CAPTION_RE.search(lines[back])
             if match:
                 return match.group(1), match.group(2).zfill(10)
+            cik_only = _PAIR_ABOVE_CIK_ONLY_RE.fullmatch(candidate)
+            if cik_only:
+                return None, cik_only.group(1)
             if substantive >= 2:
                 break
     return None, None
@@ -213,10 +219,13 @@ def _record_part_caption(record: dict[str, Any]) -> re.Match[str] | None:
     return None
 
 
-def _starts_with_table(lines: list[str]) -> bool:
-    """Whether the first substantive rendered line opens a table."""
-    first = next((line for line in lines if line.strip()), "")
-    return first.strip().upper().startswith("<TABLE")
+def _opens_with_table(text: str, lines: list[str]) -> bool:
+    """Whether the first substantive rendered line opens a tagged table."""
+    first = next((i for i, line in enumerate(lines) if line.strip()), None)
+    if first is None:
+        return False
+    spans = find_table_spans(text)
+    return bool(spans) and spans[0].start_line <= first
 
 
 def _is_table_fragment(
@@ -234,7 +243,7 @@ def _is_table_fragment(
     if _PART_BANNER_RE.search("\n".join(lines[:10])) is not None:
         return True
     if record is not None and _record_part_caption(record) is not None:
-        return _starts_with_table(lines)
+        return _opens_with_table(text, lines)
     return False
 
 
