@@ -26,6 +26,7 @@ from edgar_sec.apps.client.facts import (
 )
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.apps.client.display import filing_header
+from edgar_sec.apps.client.equivalence_scan import cached_default_years, facts_by_head
 from edgar_sec.apps.client.financials import XbrlFinancials
 from edgar_sec.apps.client.kernel import FilingKernel
 from edgar_sec.apps.client.location import (
@@ -146,6 +147,8 @@ class Xbrl:
         self._query_cache: dict[tuple[Any, ...], FinancialQueryResult] = {}
         self._compose_cache: dict[tuple[Any, ...], CompositionResult] = {}
         self._scope_accession_cache: str | None = None
+        self._head_index: dict[str | None, list[XbrlFact]] | None = None
+        self._default_years: dict[frozenset[str], frozenset[str]] = {}
         self._financials: XbrlFinancials | None = None
         self._arcs_deferred = arc_suppliers is not None
 
@@ -736,7 +739,9 @@ class Xbrl:
         required = {m for m in atom.modifiers if not m.startswith("V_")}
         by_year: dict[str, dict[str, list]] = {}
         instants: dict[str, list] = {}
-        for fact in self.facts:
+        if self._head_index is None:
+            self._head_index = facts_by_head(self.facts)
+        for fact in self._head_index.get(atom.head, ()):
             if fact.dimensions or not isinstance(fact.value, (int, float)):
                 continue
             if fact.unit in ("pure", "shares", "item", "ratio"):
@@ -757,10 +762,13 @@ class Xbrl:
                 continue
             if date and len(date[:4]) == 4 and date[:4].isdigit():
                 bucket.append((fact, record))
-        years = set(by_year) | set(instants)
-        if not years:
-            return None
-        year = str(fiscal_year) if fiscal_year is not None else max(years)
+        if fiscal_year is not None:
+            year = str(fiscal_year)
+        else:
+            years = cached_default_years(self._default_years, self.facts, classes)
+            if not years:
+                return None
+            year = max(years)
         pool: list = []
         for cls in _CLASS_LADDER:
             if cls in classes and by_year.get(year, {}).get(cls):
