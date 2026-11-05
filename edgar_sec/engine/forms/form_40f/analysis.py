@@ -85,7 +85,7 @@ def analyze_form_40f_review_case(
         return None
     lines = text.splitlines()
     if find_table_spans(text):
-        reinfer_unmasked_checkmarks(text, rep, family="40-F")
+        reinfer_unmasked_checkmarks(text, rep, family="40-F", case_dir=case_dir)
     start = rep["boundary"]["start_line"] or 0
     end = rep["boundary"]["end_line"] or 0
     cover_text = "\n".join(lines[start:end]) if end > start else ""

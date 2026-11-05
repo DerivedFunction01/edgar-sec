@@ -281,7 +281,7 @@ def analyze_sd_review_case(
         return None
     lines = text.splitlines()
     if find_table_spans(text):
-        reinfer_unmasked_checkmarks(text, rep, family="SD")
+        reinfer_unmasked_checkmarks(text, rep, family="SD", case_dir=case_dir)
     full_sequence = None
     if not rep["taxonomy"]["detected_items"] and text:
         # Recovery pass: a fallback boundary can swallow a short SD

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from collections import Counter
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -16,7 +17,11 @@ from edgar_sec.engine.forms.cover.models import BoundaryInput, BoundarySignal
 from edgar_sec.engine.forms.cover.profiles import get_profile
 from edgar_sec.engine.forms.sections.items.detector import detect_section_sequence
 from edgar_sec.engine.forms.sections.notes.detector import detect_notes_sequence
-from edgar_sec.engine.tables.protection.tags import strip_table_wrapper_tags
+from edgar_sec.engine.tables.ascii_html.model import TableGeometry
+from edgar_sec.engine.tables.protection.tags import (
+    find_table_spans,
+    strip_table_wrapper_tags,
+)
 
 import re
 
@@ -119,11 +124,71 @@ def analyze_boundary_corridor(
     }
 
 
-def reinfer_unmasked_checkmarks(text: str, rep: dict[str, Any], *, family: str) -> None:
-    """Re-run checkmark inference on wrapper-stripped text, merging new states.
+def _locate_raw_artifact(case_dir: Path) -> Path | None:
+    """Find the persisted raw source bytes for a review case, if any."""
+    ops_dir = case_dir / "operations"
+    if not ops_dir.is_dir():
+        return None
+    raw_path = ops_dir / "raw"
+    if raw_path.is_file():
+        return raw_path
+    for candidate in sorted(ops_dir.glob("raw.*")):
+        if candidate.is_file():
+            return candidate
+    return None
 
-    Tagged-table masking hides cover checkboxes inside table wrappers from
-    the line extractor; a state already resolved as checked never changes.
+
+@lru_cache(maxsize=32)
+def _replayed_normalization(
+    raw_path: str, _size: int, _mtime_ns: int, form: str | None
+) -> tuple[str, tuple[TableGeometry, ...]] | None:
+    """Replay production normalization for one raw artifact (process-cached)."""
+    from edgar_sec.engine.forms.normalize import normalize_document
+
+    path = Path(raw_path)
+    try:
+        result = normalize_document(
+            path.read_bytes(), form=form, document_path=path.name
+        )
+    except Exception:
+        return None
+    return result.text, result.table_geometries
+
+
+def rebuild_table_geometries(
+    case_dir: Path, text: str, *, form: str | None
+) -> tuple[TableGeometry, ...] | None:
+    """Rebuild production table geometries for a review case, or None.
+    Replays production normalization over the persisted raw bytes, returned
+    only when the replay reproduces the analyzed text byte-for-byte.
+    """
+    if not find_table_spans(text):
+        return None
+    raw_path = _locate_raw_artifact(case_dir)
+    if raw_path is None:
+        return None
+    try:
+        stat = raw_path.stat()
+    except OSError:
+        return None
+    replayed = _replayed_normalization(
+        str(raw_path), stat.st_size, stat.st_mtime_ns, form
+    )
+    if replayed is None or replayed[0] != text:
+        return None
+    return replayed[1]
+
+
+def reinfer_unmasked_checkmarks(
+    text: str,
+    rep: dict[str, Any],
+    *,
+    family: str,
+    case_dir: Path | None = None,
+) -> None:
+    """Re-run checkmark inference for table-masked cover checkboxes.
+    Rebuilt geometries drive inference when a case directory yields them,
+    else the extractor re-runs over wrapper-stripped text; checked never downgrades.
     """
     profile = get_profile(family)
     boundary = find_cover_boundary_for_profile(
@@ -131,12 +196,26 @@ def reinfer_unmasked_checkmarks(text: str, rep: dict[str, Any], *, family: str) 
     )
     if boundary.end_line is None:
         return
-    result = infer_cover_checkmarks(
-        strip_table_wrapper_tags(text),
-        boundary,
-        family=family,
-        schema=profile.checkbox_schema,
+    geometries = (
+        rebuild_table_geometries(case_dir, text, form=family)
+        if case_dir is not None
+        else None
     )
+    if geometries:
+        result = infer_cover_checkmarks(
+            text,
+            boundary,
+            family=family,
+            schema=profile.checkbox_schema,
+            table_geometries=geometries,
+        )
+    else:
+        result = infer_cover_checkmarks(
+            strip_table_wrapper_tags(text),
+            boundary,
+            family=family,
+            schema=profile.checkbox_schema,
+        )
     states = rep["checkmarks"].setdefault("candidate_states", {})
     for candidate in result.candidates:
         key = candidate.semantic_key
@@ -207,11 +286,13 @@ def analyze_form_case(
         cover_profile,
         lines=lines,
     )
+    geometries = rebuild_table_geometries(case_dir, text, form=resolved_form)
     cm_result = infer_cover_checkmarks(
         text,
         boundary,
         family=cover_profile.family,
         schema=cover_profile.checkbox_schema,
+        table_geometries=geometries or (),
     )
 
     body_start = boundary.end_line or 0
@@ -469,6 +550,7 @@ __all__ = [
     "analyze_form_case",
     "anomaly_record",
     "locate_text_artifact",
+    "rebuild_table_geometries",
     "summarize_cases",
     "summarize_form_cases",
 ]
