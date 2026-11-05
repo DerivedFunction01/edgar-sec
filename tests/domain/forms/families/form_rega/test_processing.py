@@ -32,6 +32,10 @@ def test_offering_profile_also_renders_text_for_withdrawal_letters() -> None:
     )
 
 
+def test_exit_profile_also_renders_text_for_withdrawal_letters() -> None:
+    assert AcquisitionOperation.RENDER_TO_TXT in PROFILE_REGA_EXIT.allowed_operations
+
+
 def test_text_profiles_prefer_text_with_sections() -> None:
     for profile, family in (
         (PROFILE_REGA_SEMI_ANNUAL, "1-SA"),

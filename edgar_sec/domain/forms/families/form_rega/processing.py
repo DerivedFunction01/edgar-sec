@@ -15,17 +15,18 @@ _XML_OPERATIONS = frozenset(
 _TEXT_OPERATIONS = frozenset(
     {AcquisitionOperation.RAW, AcquisitionOperation.RENDER_TO_TXT}
 )
+_DUAL_OPERATIONS = frozenset(
+    {
+        AcquisitionOperation.RAW,
+        AcquisitionOperation.RENDER_TO_XML,
+        AcquisitionOperation.RENDER_TO_TXT,
+    }
+)
 
 PROFILE_REGA_OFFERING = DocumentProcessingProfile(
     family="1-A",
     version="v1",
-    allowed_operations=frozenset(
-        {
-            AcquisitionOperation.RAW,
-            AcquisitionOperation.RENDER_TO_XML,
-            AcquisitionOperation.RENDER_TO_TXT,
-        }
-    ),
+    allowed_operations=_DUAL_OPERATIONS,
     report_class=RegAReport,
     preferred_operation=AcquisitionOperation.RENDER_TO_XML,
     review_analyzer=_ANALYZER,
@@ -43,7 +44,7 @@ PROFILE_REGA_ANNUAL = DocumentProcessingProfile(
 PROFILE_REGA_EXIT = DocumentProcessingProfile(
     family="1-Z",
     version="v1",
-    allowed_operations=_XML_OPERATIONS,
+    allowed_operations=_DUAL_OPERATIONS,
     report_class=RegAReport,
     preferred_operation=AcquisitionOperation.RENDER_TO_XML,
     review_analyzer=_ANALYZER,
