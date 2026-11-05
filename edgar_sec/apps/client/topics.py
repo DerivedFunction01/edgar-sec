@@ -32,13 +32,6 @@ from edgar_sec.engine.xbrl.taxonomy.domain import DomainTaxonomy
 _DEBT_MODS = {"M_DEBT", "M_DEBT_BORROWING", "M_COMMERCIAL_PAPER"}
 _LEASE_MODS = {"M_LEASE", "M_ROU_LEASE"}
 _MATURITY_MODS = {"M_MATURITY", "M_MATURITY_HORIZON"}
-_RISK_MODS = {
-    "M_RISK_IR": "interest_rate",
-    "M_RISK_FX": "foreign_exchange",
-    "M_RISK_CREDIT": "credit",
-    "M_RISK_COMMODITY": "commodity",
-    "M_RISK_EQUITY": "equity",
-}
 
 
 class _AtomSource:
@@ -180,9 +173,9 @@ def _classify_risk(
     for ax, mem in dimensions.items():
         mods.update(source.atom(ax).modifiers)
         mods.update(source.atom(mem).modifiers)
-    for mod, risk_type in _RISK_MODS.items():
-        if mod in mods:
-            return risk_type
+    risk = taxonomy.resolve_modifier_risk(mods)
+    if risk:
+        return risk
     return taxonomy.resolve_instrument_risk(concept_qname) or "other"
 
 
