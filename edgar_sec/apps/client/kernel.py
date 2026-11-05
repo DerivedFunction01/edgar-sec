@@ -9,6 +9,7 @@ from __future__ import annotations
 from collections.abc import Callable, Iterator, Mapping, Sequence
 from typing import Any
 
+from edgar_sec.apps.client.composition import arc_triples
 from edgar_sec.apps.client.equity_rollforward import build_equity_rollforward
 from edgar_sec.apps.client.facts import DisplayRecord
 from edgar_sec.apps.client.views import EquityRollforwardView
@@ -146,6 +147,9 @@ class FilingKernel:
         self._best_ranked_cache: dict[
             tuple[bool | None, str, bool],
             dict[tuple[str, str], tuple[tuple[int, int], float]],
+        ] = {}
+        self._best_ranked_concept_cache: dict[
+            tuple[bool | None, str, bool], dict[str, dict[str, float]]
         ] = {}
         self._series_cache: dict[tuple, dict[str, float]] = {}
         self._facts_by_qname: dict[str, tuple[XbrlFact, ...]] | None = None
@@ -288,6 +292,12 @@ class FilingKernel:
             self._composition_cache[key] = builder(period, year)
         return self._composition_cache[key]
 
+    def calculation_arc_triples(self) -> tuple[tuple[str, str, float], ...]:
+        """Calculation arcs as (parent, child, weight) triples, built once."""
+        return self.graph_once(
+            ("arc_triples",), lambda: arc_triples(self.calculation_arcs)
+        )
+
     def graph_once(self, key: tuple, build: Callable[[], Any]) -> Any:
         """Build a derived graph once per key and share the instance.
 
@@ -336,6 +346,32 @@ class FilingKernel:
                 best[fact_key] = (rank, float(f.value))
         self._best_ranked_cache[key] = best
         return best
+
+    def best_ranked_values(
+        self,
+        qname: str,
+        *,
+        instant: bool | None,
+        length_class: str,
+        monetary_only: bool,
+    ) -> dict[str, float]:
+        """One concept's {year: value} slice of the best-ranked map.
+
+        The grouped index over the best-ranked map is built once per
+        (instant, class, monetary) key; the slice is shared — read-only.
+        """
+        key = (instant, length_class, monetary_only)
+        if key not in self._best_ranked_concept_cache:
+            grouped: dict[str, dict[str, float]] = {}
+            best = self.best_ranked(
+                instant=instant,
+                length_class=length_class,
+                monetary_only=monetary_only,
+            )
+            for (concept, yr), (_rank, val) in best.items():
+                grouped.setdefault(concept, {})[yr] = val
+            self._best_ranked_concept_cache[key] = grouped
+        return self._best_ranked_concept_cache[key].get(qname, {})
 
     def series(
         self, key: tuple, compute: Callable[[], dict[str, float]]

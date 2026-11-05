@@ -1,5 +1,7 @@
 """Unit tests for compositional concept decomposer and sub-atomic parsing."""
 
+import pytest
+
 from edgar_sec.engine.xbrl.normalize.decomposer import (
     decompose_concept,
     decompose_concept_expression,
@@ -50,6 +52,36 @@ def test_decompose_concept_expression_is_cached() -> None:
     assert tax.token_lexicon is not None
     first = decompose_concept_expression("us-gaap:Revenues", tax.token_lexicon)
     assert decompose_concept_expression("us-gaap:Revenues", tax.token_lexicon) is first
+
+
+def test_plain_decomposition_computes_one_cover(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A plain-path decomposition computes candidates and cover exactly once."""
+    from edgar_sec.engine.xbrl.normalize.lexicon import TokenLexicon
+
+    tax = load_domain_taxonomy()
+    assert tax.token_lexicon is not None
+    counts = {"candidates": 0, "select_cover": 0}
+    real_candidates = TokenLexicon.candidates
+    real_select_cover = TokenLexicon.select_cover
+
+    def counting_candidates(self, tokens, evidence=None):
+        counts["candidates"] += 1
+        return real_candidates(self, tokens, evidence)
+
+    def counting_select_cover(self, tokens, candidates=None, evidence=None):
+        counts["select_cover"] += 1
+        return real_select_cover(self, tokens, candidates, evidence)
+
+    monkeypatch.setattr(TokenLexicon, "candidates", counting_candidates)
+    monkeypatch.setattr(TokenLexicon, "select_cover", counting_select_cover)
+    decompose_concept_expression.cache_clear()
+    try:
+        decompose_concept_expression("us-gaap:Revenues", tax.token_lexicon)
+    finally:
+        decompose_concept_expression.cache_clear()
+    assert counts == {"candidates": 1, "select_cover": 1}
 
 
 def test_subordinator_clause_boundary_splitting() -> None:

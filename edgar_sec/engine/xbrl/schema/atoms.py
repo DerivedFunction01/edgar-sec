@@ -16,10 +16,19 @@ class Atom:
 
     def __post_init__(self) -> None:
         """Enforce uppercase normalization for head and modifier symbols."""
-        norm_head = self.head.strip().upper()
+        head = self.head
+        mods = self.modifiers
+        if (
+            head.startswith("H_")
+            and head == head.strip().upper()
+            and isinstance(mods, frozenset)
+            and all(m and m == m.strip().upper() for m in mods)
+        ):
+            return
+        norm_head = head.strip().upper()
         if not norm_head.startswith("H_"):
             norm_head = f"H_{norm_head}"
-        norm_mods = frozenset(m.strip().upper() for m in self.modifiers if m)
+        norm_mods = frozenset(m.strip().upper() for m in mods if m)
         object.__setattr__(self, "head", norm_head)
         object.__setattr__(self, "modifiers", norm_mods)
 

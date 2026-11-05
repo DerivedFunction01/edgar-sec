@@ -57,7 +57,10 @@ def _default_relations() -> AtomRelationGraph:
 
 
 def _dialect_bridge(
-    target: Atom, candidate: Atom, graph: AtomRelationGraph
+    target: Atom,
+    candidate: Atom,
+    graph: AtomRelationGraph,
+    diff: frozenset[str] | None = None,
 ) -> int | None:
     """Object distance when a declared dialect edge bridges the pair.
 
@@ -74,7 +77,9 @@ def _dialect_bridge(
             if edge.relation_type != _DIALECT_RELATION_TYPE:
                 continue
             if payments == edge.source and purchase.is_a(edge.target):
-                return len((target.modifiers ^ candidate.modifiers) - _DIALECT_MARKERS)
+                if diff is None:
+                    diff = target.modifiers ^ candidate.modifiers
+                return len(diff - _DIALECT_MARKERS)
     return None
 
 
@@ -96,13 +101,19 @@ def _resolve_groups(
     )
 
 
-def _sibling_swap(left: Atom, right: Atom, groups: tuple[SiblingGroup, ...]) -> bool:
+def _sibling_swap(
+    left: Atom,
+    right: Atom,
+    groups: tuple[SiblingGroup, ...],
+    diff: frozenset[str] | None = None,
+) -> bool:
     """True when each atom holds exactly one side of an admitted sibling pair.
 
     The difference must sit inside one single group and that group's
     scope must admit the pair's head and shared modifiers.
     """
-    diff = left.modifiers ^ right.modifiers
+    if diff is None:
+        diff = left.modifiers ^ right.modifiers
     if len(diff) != 2:
         return False
     if len(left.modifiers & diff) != 1 or len(right.modifiers & diff) != 1:
@@ -112,11 +123,6 @@ def _sibling_swap(left: Atom, right: Atom, groups: tuple[SiblingGroup, ...]) -> 
         diff <= frozenset(group.members) and group.swap_admitted(left.head, shared)
         for group in groups
     )
-
-
-def _aggregate_scope_widening(left: Atom, right: Atom) -> bool:
-    """True when the atoms differ only by the aggregate scope modifier."""
-    return left.modifiers ^ right.modifiers == {_AGGREGATE_MODIFIER}
 
 
 def _text_barrier(left: Atom, right: Atom) -> bool:
@@ -138,6 +144,7 @@ def _classify_detail(
     *,
     same_qname: bool = False,
     atom_target: bool = False,
+    diff: frozenset[str] | None = None,
 ) -> tuple[str, str]:
     """Classify a pair, naming the deciding rule; specific rules first.
 
@@ -156,13 +163,15 @@ def _classify_detail(
         return UNRELATED, "text_barrier"
     if _percent_barrier(left, right):
         return UNRELATED, "percent_barrier"
-    if _aggregate_scope_widening(left, right):
+    if diff is None:
+        diff = left.modifiers ^ right.modifiers
+    if diff == {_AGGREGATE_MODIFIER}:
         return NEAR, "aggregate_widening"
-    if len(left.modifiers ^ right.modifiers) == 1:
+    if len(diff) == 1:
         return NEAR, "single_modifier_difference"
     if left.is_a(right) or right.is_a(left):
         return NEAR, "subsumption"
-    if _sibling_swap(left, right, groups):
+    if _sibling_swap(left, right, groups, diff):
         return NEAR, "sibling_swap"
     return UNRELATED, ""
 
@@ -206,6 +215,8 @@ def presumed_atom(
     atom: Atom,
     defaults: Iterable[DefaultCoordinate],
     sibling_groups: Iterable[SiblingGroup | Iterable[str]] | None = None,
+    *,
+    axis_cache: dict[DefaultCoordinate, frozenset[str]] | None = None,
 ) -> Atom:
     """Apply a presumed coordinate when the atom is silent on the entry's axis.
 
@@ -213,10 +224,15 @@ def presumed_atom(
     stating any axis value, or matching no entry, is returned unchanged.
     """
     groups = _resolve_groups(sibling_groups)
+    if axis_cache is None:
+        axis_cache = {}
     for entry in defaults:
         if entry.head != atom.head:
             continue
-        if atom.modifiers & _axis_members(groups, entry):
+        members = axis_cache.get(entry)
+        if members is None:
+            members = axis_cache[entry] = _axis_members(groups, entry)
+        if atom.modifiers & members:
             continue
         if frozenset(atom.modifiers) == frozenset(entry.identity_modifiers):
             return Atom(atom.head, atom.modifiers | {entry.presumed_modifier})
@@ -236,11 +252,13 @@ def _filing_local(
     derived_horizon: str | None,
     placement_horizon: str | None,
     groups: tuple[SiblingGroup, ...],
+    members: frozenset[str] | None = None,
 ) -> Atom:
     """Apply the filing-local rung; higher rungs' silence is its entry condition."""
     if placement_horizon is None:
         return atom
-    members = _horizon_members(groups)
+    if members is None:
+        members = _horizon_members(groups)
     if atom.modifiers & members:
         return atom
     if derived_horizon is not None:
@@ -272,16 +290,23 @@ def _ladder_atom(
     groups: tuple[SiblingGroup, ...],
     derived_horizon: str | None,
     placement_horizon: str | None,
+    *,
+    horizon_members: frozenset[str] | None = None,
+    axis_cache: dict[DefaultCoordinate, frozenset[str]] | None = None,
 ) -> tuple[Atom, str]:
     """One side's fully presumed atom and the rung that supplied it."""
-    members = _horizon_members(groups)
+    members = (
+        horizon_members if horizon_members is not None else _horizon_members(groups)
+    )
     if not atom.modifiers & members:
         if derived_horizon is not None and derived_horizon in members:
             return Atom(atom.head, atom.modifiers | {derived_horizon}), "derived"
-        placed = _filing_local(atom, derived_horizon, placement_horizon, groups)
+        placed = _filing_local(
+            atom, derived_horizon, placement_horizon, groups, members
+        )
         if placed != atom:
             return placed, "filing_local"
-    presumed = presumed_atom(atom, defaults, groups)
+    presumed = presumed_atom(atom, defaults, groups, axis_cache=axis_cache)
     if presumed != atom:
         return presumed, "default"
     return atom, ""
@@ -321,11 +346,73 @@ def classify_ladder_pair(
     """
     groups = _resolve_groups(sibling_groups)
     defaults = tuple(defaults)
+    horizon_members = _horizon_members(groups)
+    axis_cache: dict[DefaultCoordinate, frozenset[str]] = {}
+    stated_diff = target.modifiers ^ candidate.modifiers
     tier, rule = _classify_detail(
-        target, candidate, groups, same_qname=same_qname, atom_target=atom_target
+        target,
+        candidate,
+        groups,
+        same_qname=same_qname,
+        atom_target=atom_target,
+        diff=stated_diff,
     )
+    presumed_regime = bool(defaults) or any(
+        value is not None
+        for value in (
+            target_derived_horizon,
+            candidate_derived_horizon,
+            target_placement_horizon,
+            candidate_placement_horizon,
+        )
+    )
+    if (
+        tier == UNRELATED
+        and target.head != candidate.head
+        and _PURCHASE_ACT_MODIFIER not in target.modifiers
+        and _PURCHASE_ACT_MODIFIER not in candidate.modifiers
+    ):
+        # Presumption adds a modifier but never changes a head, and the
+        # bridge requires the purchase marker on one side: no later
+        # rung can relate this pair, so only the distance remains.
+        if presumed_regime:
+            target_atom, _rung = _ladder_atom(
+                target,
+                defaults,
+                groups,
+                target_derived_horizon,
+                target_placement_horizon,
+                horizon_members=horizon_members,
+                axis_cache=axis_cache,
+            )
+            candidate_atom, _rung = _ladder_atom(
+                candidate,
+                defaults,
+                groups,
+                candidate_derived_horizon,
+                candidate_placement_horizon,
+                horizon_members=horizon_members,
+                axis_cache=axis_cache,
+            )
+            distance = len(target_atom.modifiers ^ candidate_atom.modifiers)
+        else:
+            distance = len(stated_diff)
+        return LadderClassification(
+            tier=tier,
+            rule=rule,
+            via_default=False,
+            via_filing_local=False,
+            modifier_distance=distance,
+            direction="",
+        )
     target_atom, target_rung = _ladder_atom(
-        target, defaults, groups, target_derived_horizon, target_placement_horizon
+        target,
+        defaults,
+        groups,
+        target_derived_horizon,
+        target_placement_horizon,
+        horizon_members=horizon_members,
+        axis_cache=axis_cache,
     )
     candidate_atom, candidate_rung = _ladder_atom(
         candidate,
@@ -333,6 +420,13 @@ def classify_ladder_pair(
         groups,
         candidate_derived_horizon,
         candidate_placement_horizon,
+        horizon_members=horizon_members,
+        axis_cache=axis_cache,
+    )
+    presumed_diff = (
+        target_atom.modifiers ^ candidate_atom.modifiers
+        if presumed_regime
+        else stated_diff
     )
     via_default = False
     via_filing_local = False
@@ -340,7 +434,9 @@ def classify_ladder_pair(
     bridge_distance: int | None = None
     direction_target, direction_atom = target, candidate
     if tier == UNRELATED:
-        ladder_tier, ladder_rule = _classify_detail(target_atom, candidate_atom, groups)
+        ladder_tier, ladder_rule = _classify_detail(
+            target_atom, candidate_atom, groups, diff=presumed_diff
+        )
         if ladder_tier == NEAR:
             tier = NEAR
             via_filing_local = "filing_local" in (target_rung, candidate_rung)
@@ -354,25 +450,17 @@ def classify_ladder_pair(
             direction_target, direction_atom = target_atom, candidate_atom
     if tier == UNRELATED:
         graph = relations if relations is not None else _default_relations()
-        bridge_distance = _dialect_bridge(target, candidate, graph)
+        bridge_distance = _dialect_bridge(target, candidate, graph, stated_diff)
         if bridge_distance is not None:
             tier = NEAR
             rule = "dialect_bridge"
             via_bridge = True
     if bridge_distance is not None:
         distance = bridge_distance
-    elif defaults or any(
-        value is not None
-        for value in (
-            target_derived_horizon,
-            candidate_derived_horizon,
-            target_placement_horizon,
-            candidate_placement_horizon,
-        )
-    ):
-        distance = len(target_atom.modifiers ^ candidate_atom.modifiers)
+    elif presumed_regime:
+        distance = len(presumed_diff)
     else:
-        distance = len(target.modifiers ^ candidate.modifiers)
+        distance = len(stated_diff)
     return LadderClassification(
         tier=tier,
         rule=rule,

@@ -15,6 +15,11 @@ from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import (
     load_prime_heads,
     load_subatomic_modifiers,
 )
+from edgar_sec.engine.xbrl.taxonomy.records import (
+    AxisFamilyMapping,
+    MemberRoleMapping,
+    UnitMapping,
+)
 from tests.support import fixture_path
 
 
@@ -313,3 +318,59 @@ def test_prime_head_record_missing_classification_is_refused(tmp_path: Path) -> 
     )
     with pytest.raises(ValueError):
         load_prime_heads(csv_heads)
+
+
+def test_classify_axis_longest_match_from_precomputed_table() -> None:
+    """The load-time table keeps the longest-match rule; repeats hit the memo."""
+    taxonomy = DomainTaxonomy(
+        prime_heads=(),
+        subatomic_modifiers=(),
+        axis_families=(
+            AxisFamilyMapping(
+                axis_pattern="product",
+                axis_family="PRODUCT",
+                scope_tokens=("product", "product service"),
+            ),
+            AxisFamilyMapping(
+                axis_pattern="service",
+                axis_family="SERVICE",
+                scope_tokens=("service",),
+            ),
+        ),
+    )
+    axis = "us-gaap:ProductServiceAxis"
+    assert taxonomy._axis_table[0] == (("product",), "PRODUCT")
+    assert taxonomy.classify_axis(axis) == "PRODUCT"
+    assert taxonomy._axis_memo[axis] == "PRODUCT"
+    assert taxonomy.classify_axis(axis) == "PRODUCT"
+    assert taxonomy.classify_axis("us-gaap:UnrelatedAxis") == "OTHER"
+
+
+def test_load_indexes_keep_first_declared_record() -> None:
+    """Load-time indexes resolve like the scans they replace: first wins."""
+    head_a = PrimeHead("H_A", "A", "ASSET", "BS", "DEBIT", 0, "first")
+    head_b = PrimeHead("H_A", "A2", "ASSET", "BS", "DEBIT", 0, "second")
+    mod = SubatomicModifier("M_X", "CAT", (), "mod")
+    taxonomy = DomainTaxonomy(
+        prime_heads=(head_a, head_b),
+        subatomic_modifiers=(mod,),
+        units=(
+            UnitMapping(raw_unit="usd", unit_class="CURRENCY"),
+            UnitMapping(raw_unit="USD", unit_class="OTHER"),
+        ),
+        member_roles=(
+            MemberRoleMapping(pattern="foreign", role="FOREIGN"),
+            MemberRoleMapping(pattern="foreigncurrency", role="FX"),
+        ),
+    )
+    assert taxonomy.prime_head("H_A") is head_a
+    assert taxonomy.prime_head("H_MISSING") is None
+    assert taxonomy.modifier("M_X") is mod
+    assert taxonomy.modifier("M_MISSING") is None
+    assert taxonomy.normalize_unit(" USD ") == "CURRENCY"
+    assert taxonomy.normalize_unit("shares") == "SHARES"
+    assert taxonomy.normalize_unit(None) == "PURE"
+    member = "us-gaap:ForeignCurrencyMember"
+    assert taxonomy.classify_member_role(member) == "FOREIGN"
+    assert taxonomy._member_role_memo[member] == "FOREIGN"
+    assert taxonomy.classify_member_role("us-gaap:PlainMember") == "NORMAL"

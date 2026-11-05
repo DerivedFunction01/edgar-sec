@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from dataclasses import dataclass, field
+import io
 import xml.etree.ElementTree as ET
 
 from edgar_sec.domain.identity import AccessionNumber
@@ -13,7 +14,6 @@ from edgar_sec.engine.xbrl.schema.models import (
     split_concept_qname,
 )
 from edgar_sec.engine.xbrl.parsing.xml_parser import (
-    safe_parse_root,
     split_qname,
     strip_namespace,
 )
@@ -125,7 +125,6 @@ def extract_prefix_namespaces(xml_data: bytes | str) -> dict[str, str]:
     """Prefix -> namespace URI map declared by an instance document."""
     payload = xml_data.encode("utf-8") if isinstance(xml_data, str) else xml_data
     prefixes: dict[str, str] = {}
-    import io
 
     try:
         for _, (prefix, uri) in ET.iterparse(io.BytesIO(payload), events=("start-ns",)):
@@ -136,18 +135,31 @@ def extract_prefix_namespaces(xml_data: bytes | str) -> dict[str, str]:
     return prefixes
 
 
-def _extract_namespace_map(xml_data: bytes | str) -> dict[str, str]:
-    payload = xml_data.encode("utf-8") if isinstance(xml_data, str) else xml_data
-    ns_map: dict[str, str] = {}
-    import io
+def _parse_document(
+    xml_data: bytes | str,
+) -> tuple[ET.Element, dict[str, str], dict[str, str]]:
+    """One streaming pass: the root element plus both namespace maps.
 
-    try:
-        for _, (prefix, uri) in ET.iterparse(io.BytesIO(payload), events=("start-ns",)):
-            if prefix and uri and uri not in ns_map:
-                ns_map[uri] = prefix
-    except Exception:
-        pass
-    return ns_map
+    Both maps are first-declaration-wins, matching the standalone
+    extractors this pass replaces inside parse_instance_facts.
+    """
+    payload = xml_data.encode("utf-8") if isinstance(xml_data, str) else xml_data
+    root: ET.Element | None = None
+    ns_map: dict[str, str] = {}
+    prefixes: dict[str, str] = {}
+    for event, item in ET.iterparse(io.BytesIO(payload), events=("start-ns", "start")):
+        if event == "start-ns":
+            prefix, uri = item
+            if prefix and uri:
+                if uri not in ns_map:
+                    ns_map[uri] = prefix
+                if prefix not in prefixes:
+                    prefixes[prefix] = uri
+        elif root is None:
+            root = item
+    if root is None:
+        raise ET.ParseError("no element found")
+    return root, ns_map, prefixes
 
 
 def _resolve_qname(tag: str, ns_map: dict[str, str]) -> str:
@@ -214,10 +226,9 @@ def parse_instance_facts(
     """Parse XBRL instance XML and extract typed facts mapped to contexts and units.
     Declared non-numeric item types stay strings; undeclared concepts float-sniff.
     """
-    root = safe_parse_root(xml_data)
-    ns_map = _extract_namespace_map(xml_data)
+    root, ns_map, prefixes = _parse_document(xml_data)
     if item_types is None:
-        item_types = table_for_namespaces(extract_prefix_namespaces(xml_data))
+        item_types = table_for_namespaces(prefixes)
     acc = (
         accession
         if isinstance(accession, AccessionNumber)

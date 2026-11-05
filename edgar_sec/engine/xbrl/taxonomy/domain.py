@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -96,20 +96,60 @@ class DomainTaxonomy:
     subspace_invariants: tuple[SubspaceInvariant, ...] = ()
     default_coordinates: tuple[DefaultCoordinate, ...] = ()
     sibling_groups: tuple[SiblingGroup, ...] = ()
+    _axis_table: tuple[tuple[tuple[str, ...], str], ...] = field(
+        default=(), init=False, repr=False, compare=False
+    )
+    _axis_memo: dict[str, str] = field(
+        default_factory=dict, init=False, repr=False, compare=False
+    )
+    _prime_head_index: dict[str, PrimeHead] = field(
+        default_factory=dict, init=False, repr=False, compare=False
+    )
+    _modifier_index: dict[str, SubatomicModifier] = field(
+        default_factory=dict, init=False, repr=False, compare=False
+    )
+    _unit_index: dict[str, str] = field(
+        default_factory=dict, init=False, repr=False, compare=False
+    )
+    _member_role_table: tuple[tuple[str, str], ...] = field(
+        default=(), init=False, repr=False, compare=False
+    )
+    _member_role_memo: dict[str, str] = field(
+        default_factory=dict, init=False, repr=False, compare=False
+    )
+
+    def __post_init__(self) -> None:
+        table = tuple(
+            (tuple(entry.split(" ")), mapping.axis_family)
+            for mapping in self.axis_families
+            for entry in _classify_entries(mapping)
+        )
+        object.__setattr__(self, "_axis_table", table)
+        prime_heads: dict[str, PrimeHead] = {}
+        for head in self.prime_heads:
+            prime_heads.setdefault(head.head_id, head)
+        object.__setattr__(self, "_prime_head_index", prime_heads)
+        modifiers: dict[str, SubatomicModifier] = {}
+        for mod in self.subatomic_modifiers:
+            modifiers.setdefault(mod.modifier_id, mod)
+        object.__setattr__(self, "_modifier_index", modifiers)
+        units: dict[str, str] = {}
+        for mapping in self.units:
+            units.setdefault(mapping.raw_unit.upper(), mapping.unit_class)
+        object.__setattr__(self, "_unit_index", units)
+        object.__setattr__(
+            self,
+            "_member_role_table",
+            tuple((m.pattern, m.role) for m in self.member_roles),
+        )
 
     def prime_head(self, head_id: str) -> PrimeHead | None:
         """Lookup a prime head by unique identifier."""
-        for head in self.prime_heads:
-            if head.head_id == head_id:
-                return head
-        return None
+        return self._prime_head_index.get(head_id)
 
     def modifier(self, modifier_id: str) -> SubatomicModifier | None:
         """Lookup a modifier by unique identifier."""
-        for mod in self.subatomic_modifiers:
-            if mod.modifier_id == modifier_id:
-                return mod
-        return None
+        return self._modifier_index.get(modifier_id)
 
     def axis_group(self, group: str) -> SiblingGroup | None:
         """Lookup a declared sibling-axis group by name."""
@@ -136,22 +176,24 @@ class DomainTaxonomy:
         The longest matching entry wins across families, so a specific
         phrase outranks a generic embedded word; ties keep file order.
         """
+        cached = self._axis_memo.get(axis_qname)
+        if cached is not None:
+            return cached
         tokens = _axis_name_tokens(axis_qname)
         best_family: str | None = None
         best_width = 0
-        for mapping in self.axis_families:
-            for entry in _classify_entries(mapping):
-                parts = tuple(entry.split(" "))
-                width = len(parts)
-                if width <= best_width:
-                    continue
-                if any(
-                    tokens[k : k + width] == parts
-                    for k in range(len(tokens) - width + 1)
-                ):
-                    best_family = mapping.axis_family
-                    best_width = width
-        return best_family if best_family is not None else "OTHER"
+        for parts, family in self._axis_table:
+            width = len(parts)
+            if width <= best_width:
+                continue
+            if any(
+                tokens[k : k + width] == parts for k in range(len(tokens) - width + 1)
+            ):
+                best_family = family
+                best_width = width
+        result = best_family if best_family is not None else "OTHER"
+        self._axis_memo[axis_qname] = result
+        return result
 
     def query_alias_atoms(self, alias: str) -> tuple[Atom, ...]:
         """Declared atom-coordinate targets for a query alias term."""
@@ -292,11 +334,17 @@ class DomainTaxonomy:
 
     def classify_member_role(self, member_qname: str) -> str:
         """Classify dimension member role using declarative taxonomy patterns."""
+        cached = self._member_role_memo.get(member_qname)
+        if cached is not None:
+            return cached
         local = qname_local(member_qname).lower()
-        for mapping in self.member_roles:
-            if mapping.pattern in local:
-                return mapping.role
-        return "NORMAL"
+        result = "NORMAL"
+        for pattern, role in self._member_role_table:
+            if pattern in local:
+                result = role
+                break
+        self._member_role_memo[member_qname] = result
+        return result
 
     def is_instrument_subtype(self, child: str, parent: str) -> bool:
         """Check if child instrument is equal to or a subtype of parent instrument."""
@@ -411,10 +459,7 @@ class DomainTaxonomy:
         if not unit:
             return "PURE"
         u_clean = unit.strip().upper()
-        for mapping in self.units:
-            if mapping.raw_unit.upper() == u_clean:
-                return mapping.unit_class
-        return u_clean
+        return self._unit_index.get(u_clean, u_clean)
 
     def equivalent_concepts(self, concept: str) -> set[str]:
         """Find concepts equivalent by coordinate identity in the atom lattice."""

@@ -26,6 +26,7 @@ from edgar_sec.apps.client.facts import (
 )
 from edgar_sec.domain.identity import AccessionNumber, Cik
 from edgar_sec.apps.client.display import filing_header
+from edgar_sec.apps.client.equivalence_scan import cached_default_years, facts_by_head
 from edgar_sec.apps.client.financials import XbrlFinancials
 from edgar_sec.apps.client.kernel import FilingKernel
 from edgar_sec.apps.client.location import (
@@ -143,6 +144,11 @@ class Xbrl:
         self._taxonomy = taxonomy or load_domain_taxonomy()
         self._evidence_record = evidence_record
         self._axes_cache: tuple[AxisCoordinate, ...] | None = None
+        self._query_cache: dict[tuple[Any, ...], FinancialQueryResult] = {}
+        self._compose_cache: dict[tuple[Any, ...], CompositionResult] = {}
+        self._scope_accession_cache: str | None = None
+        self._head_index: dict[str | None, list[XbrlFact]] | None = None
+        self._default_years: dict[frozenset[str], frozenset[str]] = {}
         self._financials: XbrlFinancials | None = None
         self._arcs_deferred = arc_suppliers is not None
 
@@ -467,6 +473,49 @@ class Xbrl:
         """
         query_mode = self._parse_query_mode(mode)
         policy = self._parse_dimension_policy(dimension_policy)
+        key = (
+            term,
+            query_mode,
+            fiscal_year,
+            self._scope_key(scope),
+            length_class,
+            policy,
+        )
+        cached = self._query_cache.get(key)
+        if cached is not None:
+            return cached
+        result = self._query_compute(
+            term, query_mode, fiscal_year, scope, length_class, policy
+        )
+        self._query_cache[key] = result
+        return result
+
+    @staticmethod
+    def _scope_key(scope: FactScope | None) -> tuple[Any, ...] | None:
+        """Hashable projection of a scope; FactScope itself is unhashable."""
+        if scope is None:
+            return None
+        return (
+            scope.accession,
+            scope.instant_date,
+            scope.start_date,
+            scope.end_date,
+            scope.unit,
+            tuple(sorted(scope.dimensions.items())),
+            scope.include_all_dimensions,
+            scope.lineages,
+        )
+
+    def _query_compute(
+        self,
+        term: str,
+        query_mode: QueryMode,
+        fiscal_year: int | None,
+        scope: FactScope | None,
+        length_class: str | None,
+        policy: str | None,
+    ) -> FinancialQueryResult:
+        """Uncached query path: explicit scope verbatim, else fiscal-year scopes."""
         arcs = self._kernel.calculation_arcs
         if scope is not None:
             return self._execute_query(term, query_mode, scope, arcs)
@@ -499,7 +548,7 @@ class Xbrl:
         never feeds query() or solver results.
         """
         return search_facts(
-            term, tuple(self.facts), self.facts.records, self._taxonomy, limit=limit
+            term, self.facts, self.facts.records, self._taxonomy, limit=limit
         )
 
     def locate(self, qname: str, *, period: str | None = None) -> FactLocation:
@@ -545,10 +594,14 @@ class Xbrl:
         )
 
     def _scope_accession(self) -> str:
-        accessions = {str(fact.accession) for fact in self._filing.facts}
-        if len(accessions) == 1:
-            return accessions.pop()
-        return str(self._filing.accession)
+        if self._scope_accession_cache is None:
+            accessions = {str(fact.accession) for fact in self._filing.facts}
+            self._scope_accession_cache = (
+                accessions.pop()
+                if len(accessions) == 1
+                else str(self._filing.accession)
+            )
+        return self._scope_accession_cache
 
     def graph(
         self,
@@ -611,12 +664,17 @@ class Xbrl:
         """Evaluate a user-composed add/subtract chain over named operands."""
         query_mode = self._parse_query_mode(mode)
         policy = self._parse_dimension_policy(dimension_policy)
-        arcs = self._kernel.calculation_arcs
-        return evaluate_chain(
+        key = (tuple(tuple(t) for t in terms), fiscal_year, query_mode, policy)
+        cached = self._compose_cache.get(key)
+        if cached is not None:
+            return cached
+        result = evaluate_chain(
             lambda term: self._resolve_operand(term, query_mode, fiscal_year, policy),
             terms,
-            arcs,
+            self._kernel.calculation_arc_triples(),
         )
+        self._compose_cache[key] = result
+        return result
 
     def _resolve_operand(
         self,
@@ -652,7 +710,7 @@ class Xbrl:
         """Resolve an example fact (or alias target) by atom equivalence."""
         if self._taxonomy.token_lexicon is None or not self.facts.records:
             return None
-        tokenizer = ConceptTokenizer(self._taxonomy)
+        tokenizer = self._kernel._tokenizer or ConceptTokenizer(self._taxonomy)
         if ":" in term:
             target_atoms = (tokenizer.tokenize(term).atom,)
         else:
@@ -681,7 +739,9 @@ class Xbrl:
         required = {m for m in atom.modifiers if not m.startswith("V_")}
         by_year: dict[str, dict[str, list]] = {}
         instants: dict[str, list] = {}
-        for fact in self.facts:
+        if self._head_index is None:
+            self._head_index = facts_by_head(self.facts)
+        for fact in self._head_index.get(atom.head, ()):
             if fact.dimensions or not isinstance(fact.value, (int, float)):
                 continue
             if fact.unit in ("pure", "shares", "item", "ratio"):
@@ -702,10 +762,13 @@ class Xbrl:
                 continue
             if date and len(date[:4]) == 4 and date[:4].isdigit():
                 bucket.append((fact, record))
-        years = set(by_year) | set(instants)
-        if not years:
-            return None
-        year = str(fiscal_year) if fiscal_year is not None else max(years)
+        if fiscal_year is not None:
+            year = str(fiscal_year)
+        else:
+            years = cached_default_years(self._default_years, self.facts, classes)
+            if not years:
+                return None
+            year = max(years)
         pool: list = []
         for cls in _CLASS_LADDER:
             if cls in classes and by_year.get(year, {}).get(cls):

@@ -38,6 +38,7 @@ class DocumentCache:
             self.db_path = root / "cache" / "documents.sqlite"
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self._lock = threading.Lock()
+        self._conn: sqlite3.Connection | None = None
         self._init_db()
 
     def _connect(self) -> sqlite3.Connection:
@@ -52,50 +53,50 @@ class DocumentCache:
         conn.execute("PRAGMA busy_timeout = 30000")
         return conn
 
+    def _connection(self) -> sqlite3.Connection:
+        """The instance's one connection, opened lazily; caller holds the lock."""
+        if self._conn is None:
+            self._conn = self._connect()
+        return self._conn
+
     def _init_db(self) -> None:
         with self._lock:
-            conn = self._connect()
-            try:
-                conn.execute(
-                    """
-                    CREATE TABLE IF NOT EXISTS cached_documents (
-                        accession TEXT NOT NULL,
-                        cik INTEGER NOT NULL,
-                        form TEXT NOT NULL,
-                        filename TEXT NOT NULL,
-                        content_type TEXT NOT NULL,
-                        sha256 TEXT NOT NULL,
-                        byte_size INTEGER NOT NULL,
-                        content BLOB NOT NULL,
-                        cached_at TEXT NOT NULL,
-                        PRIMARY KEY (accession, filename)
-                    )
-                    """
+            conn = self._connection()
+            conn.execute(
+                """
+                CREATE TABLE IF NOT EXISTS cached_documents (
+                    accession TEXT NOT NULL,
+                    cik INTEGER NOT NULL,
+                    form TEXT NOT NULL,
+                    filename TEXT NOT NULL,
+                    content_type TEXT NOT NULL,
+                    sha256 TEXT NOT NULL,
+                    byte_size INTEGER NOT NULL,
+                    content BLOB NOT NULL,
+                    cached_at TEXT NOT NULL,
+                    PRIMARY KEY (accession, filename)
                 )
-                conn.execute(
-                    "CREATE INDEX IF NOT EXISTS idx_cached_docs_cik "
-                    "ON cached_documents (cik)"
-                )
-                conn.execute(
-                    "CREATE INDEX IF NOT EXISTS idx_cached_docs_accession "
-                    "ON cached_documents (accession)"
-                )
-            finally:
-                conn.close()
+                """
+            )
+            conn.execute(
+                "CREATE INDEX IF NOT EXISTS idx_cached_docs_cik "
+                "ON cached_documents (cik)"
+            )
+            conn.execute(
+                "CREATE INDEX IF NOT EXISTS idx_cached_docs_accession "
+                "ON cached_documents (accession)"
+            )
 
     def get(self, accession: str, filename: str) -> bytes | None:
         """Retrieve cached document bytes by accession and filename."""
-        conn = self._connect()
-        try:
-            cursor = conn.execute(
+        with self._lock:
+            cursor = self._connection().execute(
                 "SELECT content FROM cached_documents "
                 "WHERE accession = ? AND filename = ?",
                 (accession, filename),
             )
             row = cursor.fetchone()
             return bytes(row[0]) if row is not None else None
-        finally:
-            conn.close()
 
     def put(
         self,
@@ -112,35 +113,32 @@ class DocumentCache:
         byte_size = len(content)
         now_iso = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
         with self._lock:
-            conn = self._connect()
-            try:
-                conn.execute(
-                    """
-                    INSERT INTO cached_documents (
-                        accession, cik, form, filename, content_type,
-                        sha256, byte_size, content, cached_at
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    ON CONFLICT(accession, filename) DO UPDATE SET
-                        content_type = excluded.content_type,
-                        sha256 = excluded.sha256,
-                        byte_size = excluded.byte_size,
-                        content = excluded.content,
-                        cached_at = excluded.cached_at
-                    """,
-                    (
-                        accession,
-                        cik_int,
-                        form,
-                        filename,
-                        content_type,
-                        digest,
-                        byte_size,
-                        content,
-                        now_iso,
-                    ),
-                )
-            finally:
-                conn.close()
+            self._connection().execute(
+                """
+                INSERT INTO cached_documents (
+                    accession, cik, form, filename, content_type,
+                    sha256, byte_size, content, cached_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+
+                ON CONFLICT(accession, filename) DO UPDATE SET
+                    content_type = excluded.content_type,
+                    sha256 = excluded.sha256,
+                    byte_size = excluded.byte_size,
+                    content = excluded.content,
+                    cached_at = excluded.cached_at
+                """,
+                (
+                    accession,
+                    cik_int,
+                    form,
+                    filename,
+                    content_type,
+                    digest,
+                    byte_size,
+                    content,
+                    now_iso,
+                ),
+            )
 
     def clear(
         self,
@@ -149,23 +147,20 @@ class DocumentCache:
     ) -> int:
         """Delete cached documents by accession, CIK, or clear all."""
         with self._lock:
-            conn = self._connect()
-            try:
-                if accession is not None:
-                    cursor = conn.execute(
-                        "DELETE FROM cached_documents WHERE accession = ?",
-                        (accession,),
-                    )
-                elif cik is not None:
-                    cursor = conn.execute(
-                        "DELETE FROM cached_documents WHERE cik = ?",
-                        (int(cik),),
-                    )
-                else:
-                    cursor = conn.execute("DELETE FROM cached_documents")
-                return cursor.rowcount
-            finally:
-                conn.close()
+            conn = self._connection()
+            if accession is not None:
+                cursor = conn.execute(
+                    "DELETE FROM cached_documents WHERE accession = ?",
+                    (accession,),
+                )
+            elif cik is not None:
+                cursor = conn.execute(
+                    "DELETE FROM cached_documents WHERE cik = ?",
+                    (int(cik),),
+                )
+            else:
+                cursor = conn.execute("DELETE FROM cached_documents")
+            return cursor.rowcount
 
     def count(
         self,
@@ -173,8 +168,8 @@ class DocumentCache:
         cik: int | str | None = None,
     ) -> int:
         """Count cached documents matching the given filter."""
-        conn = self._connect()
-        try:
+        with self._lock:
+            conn = self._connection()
             if accession is not None:
                 cursor = conn.execute(
                     "SELECT COUNT(*) FROM cached_documents WHERE accession = ?",
@@ -189,8 +184,6 @@ class DocumentCache:
                 cursor = conn.execute("SELECT COUNT(*) FROM cached_documents")
             row = cursor.fetchone()
             return int(row[0]) if row else 0
-        finally:
-            conn.close()
 
     def export_files(
         self,
@@ -201,10 +194,10 @@ class DocumentCache:
         """Export cached documents into flat files under destination."""
         dest_dir = Path(destination).resolve()
         dest_dir.mkdir(parents=True, exist_ok=True)
-        conn = self._connect()
         written: list[Path] = []
         batch_size = resolve_read_batch_size()
-        try:
+        with self._lock:
+            conn = self._connection()
             if accession is not None:
                 cursor = conn.execute(
                     "SELECT accession, filename, content FROM cached_documents "
@@ -228,8 +221,6 @@ class DocumentCache:
                     out_path.write_bytes(content)
                     written.append(out_path)
             return written
-        finally:
-            conn.close()
 
     def export_zip(
         self,
@@ -240,9 +231,9 @@ class DocumentCache:
         """Export matching cached documents into a single ZIP archive."""
         target_zip = Path(zip_path).resolve()
         target_zip.parent.mkdir(parents=True, exist_ok=True)
-        conn = self._connect()
         batch_size = resolve_read_batch_size()
-        try:
+        with self._lock:
+            conn = self._connection()
             if accession is not None:
                 cursor = conn.execute(
                     "SELECT accession, filename, content FROM cached_documents "
@@ -266,8 +257,6 @@ class DocumentCache:
                     for acc, fname, content in rows:
                         archive.writestr(f"{acc}/{fname}", content)
             return target_zip
-        finally:
-            conn.close()
 
 
 def get_default_cache(

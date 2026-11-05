@@ -26,6 +26,22 @@ STATUS_ORDER: tuple[QueryStatus, ...] = (
 
 OperandResolver = Callable[[str], FinancialQueryResult]
 ChainTerms = Sequence[tuple[str, str]]
+ArcTriple = tuple[str, str, float]
+
+_SHARED_VALIDATOR = AntiChainValidator()
+
+
+def arc_triples(arcs: Sequence[CalculationArc]) -> tuple[ArcTriple, ...]:
+    """(parent, child, weight) triples over a set of calculation arcs."""
+    return tuple((a.parent_qname, a.child_qname, a.weight) for a in arcs)
+
+
+def antichain_violations(
+    selected: Sequence[str], triples: Sequence[ArcTriple]
+) -> tuple[str, ...]:
+    """Double-counting violations over the selected concepts, if any."""
+    outcome = _SHARED_VALIDATOR.verify_non_double_counting(selected, triples)
+    return outcome.violations
 
 
 @dataclass(frozen=True)
@@ -133,7 +149,7 @@ def resolve_operand(
 def evaluate_chain(
     resolver: OperandResolver,
     terms: ChainTerms,
-    arcs: Sequence[CalculationArc],
+    triples: Sequence[ArcTriple],
 ) -> CompositionResult:
     """Evaluate an add/subtract chain over resolved operands."""
     operands = tuple(resolve_operand(resolver, sign, term) for sign, term in terms)
@@ -143,16 +159,13 @@ def evaluate_chain(
 
     selected = [c for op in operands for c in op.chain]
     if selected:
-        outcome = AntiChainValidator().verify_non_double_counting(
-            selected,
-            [(a.parent_qname, a.child_qname, a.weight) for a in arcs],
-        )
-        if outcome.violations:
+        violations = antichain_violations(selected, triples)
+        if violations:
             return CompositionResult(
                 _worst([status, QueryStatus.CONFLICT]),
                 None,
                 operands,
-                "; ".join(outcome.violations),
+                "; ".join(violations),
             )
 
     valued = [op for op in operands if op.value is not None]

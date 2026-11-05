@@ -54,6 +54,10 @@ class ConceptTokenizer:
         self._sibling_groups = tuple(taxonomy.sibling_groups) or None
         self._text_rule = text_coordinate_rule(taxonomy)
         self._percent_rule = percent_coordinate_rule(taxonomy)
+        self._tokenized: dict[
+            tuple[str, ConceptDeclaration | None, EvidenceContext | None],
+            TokenizedFact,
+        ] = {}
 
     def tokenize(
         self,
@@ -66,6 +70,20 @@ class ConceptTokenizer:
         The presumed atom applies declared defaults for classification
         only; the record's atom is the decomposition as stated.
         """
+        key = (qname, declaration, evidence)
+        cached = self._tokenized.get(key)
+        if cached is not None:
+            return cached
+        record = self._tokenize_uncached(qname, declaration, evidence)
+        self._tokenized[key] = record
+        return record
+
+    def _tokenize_uncached(
+        self,
+        qname: str,
+        declaration: ConceptDeclaration | None = None,
+        evidence: EvidenceContext | None = None,
+    ) -> TokenizedFact:
         lexicon = self._taxonomy.token_lexicon
         assert lexicon is not None
         expression = decompose_concept_expression(
