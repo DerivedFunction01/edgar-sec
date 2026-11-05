@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import tempfile
 from collections.abc import Iterator
 from pathlib import Path
 from typing import Any
 
 import pyarrow as pa
+import pyarrow.parquet as pq
 
 from edgar_sec.domain.document.path_facts import DocumentPathFacts
 from edgar_sec.domain.document.route import document_route
@@ -14,7 +16,12 @@ from edgar_sec.engine.document_processing.acquisition_capabilities import (
 from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
 )
-from edgar_sec.infra.storage.duckdb import arrow_reader, connect, sql_path_list
+from edgar_sec.infra.storage.duckdb import (
+    arrow_reader,
+    connect,
+    copy_query_to_parquet,
+    sql_path_list,
+)
 from edgar_sec.pipelines.document_acquisition.arrow_schemas import (
     RESOLVED_OPERATION_SCHEMA,
 )
@@ -113,11 +120,28 @@ def resolve_operation_group(
     return sorted(resolved, key=lambda row: row["operation"])
 
 
+def _ordered_batches(query: str, spool_dir: Path | None) -> Iterator[pa.RecordBatch]:
+    # The ORDER BY is materialized through the COPY sink, whose rows are in
+    # sort order; a streamed reader may emit parallel sort runs concatenated,
+    # which would split one target's rows across two resolution groups.
+    with connect() as connection:
+        with tempfile.TemporaryDirectory(
+            dir=spool_dir, prefix="resolved-operations-"
+        ) as temporary:
+            sorted_path = Path(temporary) / "sorted.parquet"
+            copy_query_to_parquet(connection, query, sorted_path)
+            yield from pq.ParquetFile(sorted_path).iter_batches(
+                batch_size=resolve_parquet_read_batch_size()
+            )
+
+
 def iter_resolved_operation_batches(
     targets: tuple[Path, ...],
     operations: tuple[Path, ...],
     sources: tuple[Path, ...],
     inputs: tuple[Path, ...],
+    *,
+    spool_dir: Path | None = None,
 ) -> Iterator[pa.RecordBatch]:
     if not operations:
         return
@@ -140,81 +164,76 @@ def iter_resolved_operation_batches(
     LEFT JOIN {input_scan} i ON i.operation_id = o.operation_id
     LEFT JOIN {source_scan} s ON s.source_request_id = i.source_request_id
     ORDER BY t.target_id, o.operation"""
-    with connect() as connection:
-        reader = arrow_reader(
-            connection, query, batch_size=resolve_parquet_read_batch_size()
-        )
-        group_target: dict[str, Any] | None = None
-        group_operations: list[dict[str, Any]] = []
-        group_source: dict[str, Any] | None = None
-        group_inputs: list[dict[str, Any]] = []
-        output_rows: list[dict[str, Any]] = []
-        for batch in reader:
-            for row in batch.to_pylist():
-                target_id = row["target_id"]
-                if group_target is not None and target_id != group_target["target_id"]:
-                    output_rows.extend(
-                        resolve_operation_group(
-                            group_target,
-                            group_operations,
-                            group_source,
-                            group_inputs,
-                        )
+    reader = _ordered_batches(query, spool_dir)
+    group_target: dict[str, Any] | None = None
+    group_operations: list[dict[str, Any]] = []
+    group_source: dict[str, Any] | None = None
+    group_inputs: list[dict[str, Any]] = []
+    output_rows: list[dict[str, Any]] = []
+    for batch in reader:
+        for row in batch.to_pylist():
+            target_id = row["target_id"]
+            if group_target is not None and target_id != group_target["target_id"]:
+                output_rows.extend(
+                    resolve_operation_group(
+                        group_target,
+                        group_operations,
+                        group_source,
+                        group_inputs,
                     )
-                    if len(output_rows) >= resolve_parquet_read_batch_size():
-                        table = pa.Table.from_pylist(
-                            output_rows, schema=RESOLVED_OPERATION_SCHEMA
-                        )
-                        for output_batch in table.to_batches(
-                            max_chunksize=resolve_parquet_read_batch_size()
-                        ):
-                            yield output_batch
-                        output_rows = []
-                    group_operations = []
-                    group_source = None
-                    group_inputs = []
-                if group_target is None or target_id != group_target["target_id"]:
-                    group_target = {
-                        key: row[key]
-                        for key in ("target_id", "form", "target_role", "target_type")
-                    }
-                operation = {
-                    key: row[key]
-                    for key in (
-                        "operation_id",
-                        "target_id",
-                        "operation",
-                        "requested",
-                        "request_mode",
-                    )
-                }
-                group_operations.append(operation)
-                if row["source_request_id"] is not None:
-                    group_source = {
-                        "source_request_id": row["source_request_id"],
-                        "canonical_path": row["canonical_path"],
-                    }
-                if row["input_ordinal"] is not None:
-                    group_inputs.append(
-                        {
-                            "operation_id": operation["operation_id"],
-                            "input_ordinal": row["input_ordinal"],
-                            "source_request_id": row["source_request_id"],
-                            "input_role": row["input_role"],
-                        }
-                    )
-        if group_target is not None:
-            output_rows.extend(
-                resolve_operation_group(
-                    group_target, group_operations, group_source, group_inputs
                 )
+                if len(output_rows) >= resolve_parquet_read_batch_size():
+                    table = pa.Table.from_pylist(
+                        output_rows, schema=RESOLVED_OPERATION_SCHEMA
+                    )
+                    for output_batch in table.to_batches(
+                        max_chunksize=resolve_parquet_read_batch_size()
+                    ):
+                        yield output_batch
+                    output_rows = []
+                group_operations = []
+                group_source = None
+                group_inputs = []
+            if group_target is None or target_id != group_target["target_id"]:
+                group_target = {
+                    key: row[key]
+                    for key in ("target_id", "form", "target_role", "target_type")
+                }
+            operation = {
+                key: row[key]
+                for key in (
+                    "operation_id",
+                    "target_id",
+                    "operation",
+                    "requested",
+                    "request_mode",
+                )
+            }
+            group_operations.append(operation)
+            if row["source_request_id"] is not None:
+                group_source = {
+                    "source_request_id": row["source_request_id"],
+                    "canonical_path": row["canonical_path"],
+                }
+            if row["input_ordinal"] is not None:
+                group_inputs.append(
+                    {
+                        "operation_id": operation["operation_id"],
+                        "input_ordinal": row["input_ordinal"],
+                        "source_request_id": row["source_request_id"],
+                        "input_role": row["input_role"],
+                    }
+                )
+    if group_target is not None:
+        output_rows.extend(
+            resolve_operation_group(
+                group_target, group_operations, group_source, group_inputs
             )
-        if output_rows:
-            table = pa.Table.from_pylist(output_rows, schema=RESOLVED_OPERATION_SCHEMA)
-            for batch in table.to_batches(
-                max_chunksize=resolve_parquet_read_batch_size()
-            ):
-                yield batch
+        )
+    if output_rows:
+        table = pa.Table.from_pylist(output_rows, schema=RESOLVED_OPERATION_SCHEMA)
+        for batch in table.to_batches(max_chunksize=resolve_parquet_read_batch_size()):
+            yield batch
 
 
 def iter_resolved_operation_rows(
