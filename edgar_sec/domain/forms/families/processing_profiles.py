@@ -228,6 +228,30 @@ PROFILE_ARS = DocumentProcessingProfile(
 )
 
 
+# Raw-ride profiles (2026-11-05 disposition): the primary is a native
+# XML submission, so no text path exists and no family package is built.
+PROFILE_NCR = DocumentProcessingProfile(
+    family="N-CR",
+    version="v1",
+    allowed_operations=frozenset({AcquisitionOperation.RAW}),
+    preferred_operation=AcquisitionOperation.RAW,
+)
+
+PROFILE_ATSN = DocumentProcessingProfile(
+    family="ATS-N",
+    version="v1",
+    allowed_operations=frozenset({AcquisitionOperation.RAW}),
+    preferred_operation=AcquisitionOperation.RAW,
+)
+
+PROFILE_MAI = DocumentProcessingProfile(
+    family="MA-I",
+    version="v1",
+    allowed_operations=frozenset({AcquisitionOperation.RAW}),
+    preferred_operation=AcquisitionOperation.RAW,
+)
+
+
 @dataclass(frozen=True, slots=True)
 class ProcessingCatalogEntry:
     """Entry in the processing catalog."""
@@ -549,6 +573,18 @@ FAMILY_PROCESSING_PROFILES: tuple[ProcessingCatalogEntry, ...] = (
         family="ARS",
         profile=PROFILE_ARS,
     ),
+    ProcessingCatalogEntry(
+        family="N-CR",
+        profile=PROFILE_NCR,
+    ),
+    ProcessingCatalogEntry(
+        family="ATS-N",
+        profile=PROFILE_ATSN,
+    ),
+    ProcessingCatalogEntry(
+        family="MA-I",
+        profile=PROFILE_MAI,
+    ),
 )
 
 _FAMILY_ENTRY_BY_FAMILY = {entry.family: entry for entry in FAMILY_PROCESSING_PROFILES}
@@ -604,6 +640,9 @@ __all__ = [
     "FAMILY_PROCESSING_PROFILES",
     "LAZY_INDEX_FORM_FAMILIES",
     "PROFILE_ARS",
+    "PROFILE_ATSN",
+    "PROFILE_MAI",
+    "PROFILE_NCR",
     "ANNUAL_PROFILE",
     "QUARTERLY_PROFILE",
     "CURRENT_PROFILE",

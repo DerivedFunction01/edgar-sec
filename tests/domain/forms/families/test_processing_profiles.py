@@ -383,3 +383,25 @@ def test_ars_entry_registered_on_generic_segmentation_profile() -> None:
     assert entry.cover_checkbox_schema is None
     assert not entry.taxonomy_items
     assert get_family_entry("ARS/A") is entry
+
+
+@pytest.mark.parametrize(
+    "family,variant",
+    [
+        ("N-CR", "N-CR/A"),
+        ("ATS-N", "ATS-N/UA"),
+        ("MA-I", "MA-I/A"),
+    ],
+)
+def test_raw_ride_entries_offer_only_raw(family: str, variant: str) -> None:
+    from edgar_sec.domain.forms.common.processing import AcquisitionOperation
+
+    entry = get_family_entry(family)
+    assert entry is not None
+    assert entry.family == family
+    assert entry.profile.allowed_operations == frozenset({AcquisitionOperation.RAW})
+    assert entry.profile.preferred_operation is AcquisitionOperation.RAW
+    assert entry.profile.report_class is None
+    assert entry.cover_checkbox_schema is None
+    assert not entry.taxonomy_items
+    assert get_family_entry(variant) is entry
