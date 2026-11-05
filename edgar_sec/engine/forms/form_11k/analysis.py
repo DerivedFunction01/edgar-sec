@@ -140,7 +140,7 @@ def analyze_form_11k_review_case(
 
     states = rep["checkmarks"].get("candidate_states", {})
     if find_table_spans(text) and any(key not in states for key in _REPORT_KEYS):
-        reinfer_unmasked_checkmarks(text, rep, family="11-K")
+        reinfer_unmasked_checkmarks(text, rep, family="11-K", case_dir=case_dir)
         states = rep["checkmarks"].get("candidate_states", {})
     for key in _REPORT_KEYS:
         rep["checkmarks"][key] = states.get(key) == "checked"

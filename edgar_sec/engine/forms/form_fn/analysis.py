@@ -135,7 +135,7 @@ def analyze_form_fn_review_case(
         return None
     lines = text.splitlines()
     if find_table_spans(text):
-        reinfer_unmasked_checkmarks(text, rep, family="F-N")
+        reinfer_unmasked_checkmarks(text, rep, family="F-N", case_dir=case_dir)
     fields = _form_fields(text, lines)
     checked = set(rep["checkmarks"]["checked_keys"])
     fields["filing_kind"] = sorted(checked.intersection(_KIND_KEYS))

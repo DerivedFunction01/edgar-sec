@@ -419,7 +419,7 @@ def analyze_form_abs_reports_review_case(
         return None
     lines = text.splitlines()
     if find_table_spans(text):
-        reinfer_unmasked_checkmarks(text, rep, family=canonical)
+        reinfer_unmasked_checkmarks(text, rep, family=canonical, case_dir=case_dir)
     start = rep["boundary"]["start_line"] or 0
     end = rep["boundary"]["end_line"] or 0
     cover_text = "\n".join(lines[start:end]) if end > start else "\n".join(lines[:120])

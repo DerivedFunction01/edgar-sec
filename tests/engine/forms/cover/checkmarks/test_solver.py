@@ -397,6 +397,9 @@ def test_checkmark_schema_cases_cover_registered_profile_scope() -> None:
         "1-SA",
         "1-U",
         "ARS",
+        "ATS-N",
+        "MA-I",
+        "N-CR",
     }
 
 
