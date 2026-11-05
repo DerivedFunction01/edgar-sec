@@ -267,3 +267,18 @@ def test_screen_joint_tender_offer_matches_13d() -> None:
     assert screen.screen_result == "form_match"
     assert not screen.is_inversion
     assert screen.reason == "joint_tender_offer_13d_match"
+
+
+def test_screen_joint_tender_offer_matches_13d_via_observed_type() -> None:
+    """The joint-filing rule keys on the filed SGML type, on the observed-type path too."""
+    screen = screen_candidate_document("SC 13D", observed_sgml_type="SC TO-C")
+    assert screen.screen_result == "form_match"
+    assert not screen.is_inversion
+    assert screen.reason == "joint_tender_offer_13d_match"
+
+
+def test_screen_non_to_tender_type_still_mismatches_13d() -> None:
+    """Other tender-family codes (SC 14D9) are not joint Schedule TO filings."""
+    screen = screen_candidate_document("SC 13D", observed_sgml_type="SC 14D9")
+    assert screen.screen_result == "type_mismatch"
+    assert screen.is_inversion

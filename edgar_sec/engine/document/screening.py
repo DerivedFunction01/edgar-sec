@@ -106,7 +106,9 @@ def _screen_sgml_type(
             "form_match", False, "sgml_type", observed, "sgml_type_match"
         )
     if sgml_result == "type_mismatch":
-        if expected_family == "13D" and observed_family.startswith(("SC TO-", "TO-")):
+        if expected_family == "13D" and observed.strip().upper().startswith(
+            ("SC TO-", "TO-")
+        ):
             return CandidateScreen(
                 "form_match",
                 False,
