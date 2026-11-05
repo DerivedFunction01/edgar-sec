@@ -16,19 +16,16 @@ from edgar_sec.domain.forms.families.form_13f.models import (
 )
 from edgar_sec.engine.forms.common.extraction import (
     find_child_element,
+    find_child_elements,
     local_name,
-    xml_element_text,
+    xml_element_text_or_none,
 )
 
 _DOLLARS_ERA_START = (2023, 1, 1)
 
 
-def _text(elem: ET.Element | None) -> str | None:
-    return xml_element_text(elem) or None
-
-
 def _int(elem: ET.Element | None) -> int | None:
-    txt = _text(elem)
+    txt = xml_element_text_or_none(elem)
     if not txt:
         return None
     try:
@@ -38,14 +35,10 @@ def _int(elem: ET.Element | None) -> int | None:
 
 
 def _bool(elem: ET.Element | None) -> bool | None:
-    txt = _text(elem)
+    txt = xml_element_text_or_none(elem)
     if txt is None:
         return None
     return txt.lower() == "true"
-
-
-def _find_all(parent: ET.Element, tag_name: str) -> list[ET.Element]:
-    return [child for child in parent if local_name(child.tag) == tag_name]
 
 
 def _period_tuple(period: str | None) -> tuple[int, int, int] | None:
@@ -76,11 +69,11 @@ def _parse_address(addr_elem: ET.Element | None) -> ManagerAddress | None:
     if addr_elem is None:
         return None
     return ManagerAddress(
-        _text(find_child_element(addr_elem, "street1")) or "",
-        _text(find_child_element(addr_elem, "street2")),
-        _text(find_child_element(addr_elem, "city")) or "",
-        _text(find_child_element(addr_elem, "stateOrCountry")) or "",
-        _text(find_child_element(addr_elem, "zipCode")),
+        xml_element_text_or_none(find_child_element(addr_elem, "street1")) or "",
+        xml_element_text_or_none(find_child_element(addr_elem, "street2")),
+        xml_element_text_or_none(find_child_element(addr_elem, "city")) or "",
+        xml_element_text_or_none(find_child_element(addr_elem, "stateOrCountry")) or "",
+        xml_element_text_or_none(find_child_element(addr_elem, "zipCode")),
     )
 
 
@@ -89,9 +82,15 @@ def _parse_info_table_row(row_elem: ET.Element, scale: int) -> InfoTableRow:
     voting_elem = find_child_element(row_elem, "votingAuthority")
     value = _int(find_child_element(row_elem, "value"))
     return InfoTableRow(
-        name_of_issuer=_text(find_child_element(row_elem, "nameOfIssuer")) or "",
-        title_of_class=_text(find_child_element(row_elem, "titleOfClass")) or "",
-        cusip=_text(find_child_element(row_elem, "cusip")) or "",
+        name_of_issuer=xml_element_text_or_none(
+            find_child_element(row_elem, "nameOfIssuer")
+        )
+        or "",
+        title_of_class=xml_element_text_or_none(
+            find_child_element(row_elem, "titleOfClass")
+        )
+        or "",
+        cusip=xml_element_text_or_none(find_child_element(row_elem, "cusip")) or "",
         value=value * scale if value is not None else None,
         shares_or_principal=(
             _int(find_child_element(shares_elem, "sshPrnamt"))
@@ -99,11 +98,11 @@ def _parse_info_table_row(row_elem: ET.Element, scale: int) -> InfoTableRow:
             else None
         ),
         amount_type=(
-            _text(find_child_element(shares_elem, "sshPrnamtType"))
+            xml_element_text_or_none(find_child_element(shares_elem, "sshPrnamtType"))
             if shares_elem is not None
             else None
         ),
-        investment_discretion=_text(
+        investment_discretion=xml_element_text_or_none(
             find_child_element(row_elem, "investmentDiscretion")
         ),
         voting_sole=(
@@ -121,9 +120,11 @@ def _parse_info_table_row(row_elem: ET.Element, scale: int) -> InfoTableRow:
             if voting_elem is not None
             else None
         ),
-        figi=_text(find_child_element(row_elem, "figi")),
-        put_call=_text(find_child_element(row_elem, "putCall")),
-        other_managers=_text(find_child_element(row_elem, "otherManager")),
+        figi=xml_element_text_or_none(find_child_element(row_elem, "figi")),
+        put_call=xml_element_text_or_none(find_child_element(row_elem, "putCall")),
+        other_managers=xml_element_text_or_none(
+            find_child_element(row_elem, "otherManager")
+        ),
     )
 
 
@@ -138,7 +139,8 @@ def parse_form_13f_xml(
     root = ET.fromstring(raw_bytes)
     if local_name(root.tag) == "informationTable":
         rows = tuple(
-            _parse_info_table_row(row, 1) for row in _find_all(root, "infoTable")
+            _parse_info_table_row(row, 1)
+            for row in find_child_elements(root, "infoTable")
         )
         return Form13FDocument(submission_type="", manager_name="", holdings=rows)
 
@@ -146,7 +148,9 @@ def parse_form_13f_xml(
     filer_info = find_child_element(header, "filerInfo") if header is not None else None
     period = None
     if filer_info is not None:
-        period = _text(find_child_element(filer_info, "periodOfReport"))
+        period = xml_element_text_or_none(
+            find_child_element(filer_info, "periodOfReport")
+        )
     scale = _value_scale(period) if normalize_values else 1
     form_data = find_child_element(root, "formData")
     cover = (
@@ -159,9 +163,13 @@ def parse_form_13f_xml(
     submission_type = ""
     live_test_flag = None
     if header is not None:
-        submission_type = _text(find_child_element(header, "submissionType")) or ""
+        submission_type = (
+            xml_element_text_or_none(find_child_element(header, "submissionType")) or ""
+        )
     if filer_info is not None:
-        live_test_flag = _text(find_child_element(filer_info, "liveTestFlag"))
+        live_test_flag = xml_element_text_or_none(
+            find_child_element(filer_info, "liveTestFlag")
+        )
 
     manager_name = ""
     manager_address = None
@@ -176,20 +184,30 @@ def parse_form_13f_xml(
     if cover is not None:
         manager_elem = find_child_element(cover, "filingManager")
         if manager_elem is not None:
-            manager_name = _text(find_child_element(manager_elem, "name")) or ""
+            manager_name = (
+                xml_element_text_or_none(find_child_element(manager_elem, "name")) or ""
+            )
             manager_address = _parse_address(
                 find_child_element(manager_elem, "address")
             )
         amendment_number = _int(find_child_element(cover, "amendmentNo"))
         amend_info = find_child_element(cover, "amendmentInfo")
         if amend_info is not None:
-            amendment_type = _text(find_child_element(amend_info, "amendmentType"))
+            amendment_type = xml_element_text_or_none(
+                find_child_element(amend_info, "amendmentType")
+            )
         is_amendment = bool(_bool(find_child_element(cover, "isAmendment")))
-        report_quarter = _text(find_child_element(cover, "reportCalendarOrQuarter"))
-        report_type = _text(find_child_element(cover, "reportType"))
-        file_number = _text(find_child_element(cover, "form13FFileNumber"))
-        crd_number = _text(find_child_element(cover, "crdNumber"))
-        sec_file_number = _text(find_child_element(cover, "secFileNumber"))
+        report_quarter = xml_element_text_or_none(
+            find_child_element(cover, "reportCalendarOrQuarter")
+        )
+        report_type = xml_element_text_or_none(find_child_element(cover, "reportType"))
+        file_number = xml_element_text_or_none(
+            find_child_element(cover, "form13FFileNumber")
+        )
+        crd_number = xml_element_text_or_none(find_child_element(cover, "crdNumber"))
+        sec_file_number = xml_element_text_or_none(
+            find_child_element(cover, "secFileNumber")
+        )
 
     managers_count = None
     entry_total = None
@@ -208,7 +226,7 @@ def parse_form_13f_xml(
             if local_name(elem.tag) == "informationTable":
                 holdings = tuple(
                     _parse_info_table_row(row, scale)
-                    for row in _find_all(elem, "infoTable")
+                    for row in find_child_elements(elem, "infoTable")
                 )
                 break
 

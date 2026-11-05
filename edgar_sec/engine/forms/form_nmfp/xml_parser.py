@@ -13,17 +13,9 @@ from edgar_sec.domain.forms.families.form_nmfp.taxonomy import (
 )
 from edgar_sec.engine.forms.common.extraction import (
     find_child_element,
-    local_name,
-    xml_element_text,
+    find_child_elements,
+    xml_element_text_or_none,
 )
-
-
-def _text(elem: ET.Element | None) -> str | None:
-    return xml_element_text(elem) or None
-
-
-def _find_all(parent: ET.Element, tag_name: str) -> list[ET.Element]:
-    return [child for child in parent if local_name(child.tag) == tag_name]
 
 
 def _namespace_of(root: ET.Element) -> str:
@@ -38,31 +30,39 @@ def _parse_security(row_elem: ET.Element) -> NMfpSecurity:
     if cusip is None:
         cusip = find_child_element(row_elem, "cusipNumber")
     return NMfpSecurity(
-        issuer_name=_text(find_child_element(row_elem, "nameOfIssuer")) or "",
-        title=_text(find_child_element(row_elem, "titleOfIssuer")) or "",
-        cusip=_text(cusip) or "",
-        lei=_text(find_child_element(row_elem, "LEIID")),
-        isin=_text(find_child_element(row_elem, "ISINId")),
-        investment_category=_text(find_child_element(row_elem, "investmentCategory")),
-        maturity_date_wam=_text(
+        issuer_name=xml_element_text_or_none(
+            find_child_element(row_elem, "nameOfIssuer")
+        )
+        or "",
+        title=xml_element_text_or_none(find_child_element(row_elem, "titleOfIssuer"))
+        or "",
+        cusip=xml_element_text_or_none(cusip) or "",
+        lei=xml_element_text_or_none(find_child_element(row_elem, "LEIID")),
+        isin=xml_element_text_or_none(find_child_element(row_elem, "ISINId")),
+        investment_category=xml_element_text_or_none(
+            find_child_element(row_elem, "investmentCategory")
+        ),
+        maturity_date_wam=xml_element_text_or_none(
             find_child_element(row_elem, "investmentMaturityDateWAM")
         ),
-        maturity_date_wal=_text(
+        maturity_date_wal=xml_element_text_or_none(
             find_child_element(row_elem, "investmentMaturityDateWAL")
         ),
-        value_including_support=_text(
+        value_including_support=xml_element_text_or_none(
             find_child_element(row_elem, "includingValueOfAnySponsorSupport")
         ),
-        percent_of_net_assets=_text(
+        percent_of_net_assets=xml_element_text_or_none(
             find_child_element(row_elem, "percentageOfMoneyMarketFundNetAssets")
         ),
-        daily_liquid_asset=_text(
+        daily_liquid_asset=xml_element_text_or_none(
             find_child_element(row_elem, "dailyLiquidAssetSecurityFlag")
         ),
-        weekly_liquid_asset=_text(
+        weekly_liquid_asset=xml_element_text_or_none(
             find_child_element(row_elem, "weeklyLiquidAssetSecurityFlag")
         ),
-        illiquid=_text(find_child_element(row_elem, "illiquidSecurityFlag")),
+        illiquid=xml_element_text_or_none(
+            find_child_element(row_elem, "illiquidSecurityFlag")
+        ),
     )
 
 
@@ -83,53 +83,68 @@ def parse_nmfp_xml(raw_bytes: bytes) -> FormNMfpDocument:
     if generation in (2, 3) and form_data is not None:
         securities = tuple(
             _parse_security(row)
-            for row in _find_all(form_data, "scheduleOfPortfolioSecuritiesInfo")
+            for row in find_child_elements(
+                form_data, "scheduleOfPortfolioSecuritiesInfo"
+            )
         )
     classes = (
-        len(_find_all(form_data, "classLevelInfo")) if form_data is not None else 0
+        len(find_child_elements(form_data, "classLevelInfo"))
+        if form_data is not None
+        else 0
     )
-    series_name = _text(find_child_element(general, "nameOfSeries"))
+    series_name = xml_element_text_or_none(find_child_element(general, "nameOfSeries"))
     if series_name is None:
-        series_name = _text(find_child_element(general, "seriesName"))
+        series_name = xml_element_text_or_none(
+            find_child_element(general, "seriesName")
+        )
     if generation == 1:
         # Generation 1 files a flat header directly under the root.
         return FormNMfpDocument(
-            submission_type=_text(find_child_element(root, "submissionType")) or "",
+            submission_type=xml_element_text_or_none(
+                find_child_element(root, "submissionType")
+            )
+            or "",
             securities=(),
             generation=1,
-            report_date=_text(find_child_element(root, "DocumentPeriodEndDate")),
-            registrant_cik=_text(find_child_element(root, "EntityCentralIndexKey")),
-            series_id=_text(find_child_element(root, "seriesId")),
+            report_date=xml_element_text_or_none(
+                find_child_element(root, "DocumentPeriodEndDate")
+            ),
+            registrant_cik=xml_element_text_or_none(
+                find_child_element(root, "EntityCentralIndexKey")
+            ),
+            series_id=xml_element_text_or_none(find_child_element(root, "seriesId")),
         )
     return FormNMfpDocument(
         submission_type=(
-            _text(find_child_element(header, "submissionType")) or ""
+            xml_element_text_or_none(find_child_element(header, "submissionType")) or ""
             if header is not None
             else ""
         ),
         securities=securities,
         generation=generation,
         report_date=(
-            _text(find_child_element(general, "reportDate"))
+            xml_element_text_or_none(find_child_element(general, "reportDate"))
             if general is not None
             else None
         ),
         registrant_name=(
-            _text(find_child_element(general, "registrantFullName"))
+            xml_element_text_or_none(find_child_element(general, "registrantFullName"))
             if general is not None
             else None
         ),
         registrant_cik=(
-            _text(find_child_element(general, "cik")) if general is not None else None
+            xml_element_text_or_none(find_child_element(general, "cik"))
+            if general is not None
+            else None
         ),
         series_name=series_name,
         series_id=(
-            _text(find_child_element(general, "seriesId"))
+            xml_element_text_or_none(find_child_element(general, "seriesId"))
             if general is not None
             else None
         ),
         series_lei=(
-            _text(find_child_element(general, "leiOfSeries"))
+            xml_element_text_or_none(find_child_element(general, "leiOfSeries"))
             if general is not None
             else None
         ),

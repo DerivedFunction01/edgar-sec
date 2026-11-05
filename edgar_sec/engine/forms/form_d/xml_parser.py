@@ -12,18 +12,15 @@ from edgar_sec.domain.forms.families.form_d.models import (
     RelatedPerson,
     Signatory,
 )
-from edgar_sec.engine.forms.common.extraction import local_name
-
-
-def _text(elem: ET.Element | None) -> str | None:
-    if elem is None or elem.text is None:
-        return None
-    val = elem.text.strip()
-    return val if val else None
+from edgar_sec.engine.forms.common.extraction import (
+    find_child_element,
+    find_child_elements,
+    xml_element_text_or_none,
+)
 
 
 def _float(elem: ET.Element | None) -> float | None:
-    txt = _text(elem)
+    txt = xml_element_text_or_none(elem)
     if not txt:
         return None
     try:
@@ -32,47 +29,47 @@ def _float(elem: ET.Element | None) -> float | None:
         return None
 
 
-def _find_first(parent: ET.Element, tag_name: str) -> ET.Element | None:
-    for child in parent:
-        if local_name(child.tag) == tag_name:
-            return child
-    return None
-
-
-def _find_all(parent: ET.Element, tag_name: str) -> list[ET.Element]:
-    return [child for child in parent if local_name(child.tag) == tag_name]
-
-
 def _parse_address(addr_elem: ET.Element | None) -> IssuerAddress | None:
     if addr_elem is None:
         return None
-    s1 = _text(_find_first(addr_elem, "street1")) or ""
-    s2 = _text(_find_first(addr_elem, "street2"))
-    city = _text(_find_first(addr_elem, "city")) or ""
-    sc = _text(_find_first(addr_elem, "stateOrCountry")) or ""
-    sc_desc = _text(_find_first(addr_elem, "stateOrCountryDescription"))
-    zip_code = _text(_find_first(addr_elem, "zipCode"))
+    s1 = xml_element_text_or_none(find_child_element(addr_elem, "street1")) or ""
+    s2 = xml_element_text_or_none(find_child_element(addr_elem, "street2"))
+    city = xml_element_text_or_none(find_child_element(addr_elem, "city")) or ""
+    sc = xml_element_text_or_none(find_child_element(addr_elem, "stateOrCountry")) or ""
+    sc_desc = xml_element_text_or_none(
+        find_child_element(addr_elem, "stateOrCountryDescription")
+    )
+    zip_code = xml_element_text_or_none(find_child_element(addr_elem, "zipCode"))
     return IssuerAddress(s1, s2, city, sc, sc_desc, zip_code)
 
 
 def _parse_primary_issuer(pi_elem: ET.Element | None) -> PrimaryIssuer:
     if pi_elem is None:
         return PrimaryIssuer("", "", None, None, None, None, None)
-    cik = _text(_find_first(pi_elem, "cik")) or ""
-    entity_name = _text(_find_first(pi_elem, "entityName")) or ""
-    addr = _parse_address(_find_first(pi_elem, "issuerAddress"))
-    phone = _text(_find_first(pi_elem, "issuerPhoneNumber"))
-    jur = _text(_find_first(pi_elem, "jurisdictionOfInc"))
-    etype = _text(_find_first(pi_elem, "entityType"))
-    year_elem = _find_first(pi_elem, "yearOfInc")
+    cik = xml_element_text_or_none(find_child_element(pi_elem, "cik")) or ""
+    entity_name = (
+        xml_element_text_or_none(find_child_element(pi_elem, "entityName")) or ""
+    )
+    addr = _parse_address(find_child_element(pi_elem, "issuerAddress"))
+    phone = xml_element_text_or_none(find_child_element(pi_elem, "issuerPhoneNumber"))
+    jur = xml_element_text_or_none(find_child_element(pi_elem, "jurisdictionOfInc"))
+    etype = xml_element_text_or_none(find_child_element(pi_elem, "entityType"))
+    year_elem = find_child_element(pi_elem, "yearOfInc")
     year_str = None
     if year_elem is not None:
-        over5 = _find_first(year_elem, "overFiveYears")
-        if over5 is not None and (_text(over5) or "").lower() == "true":
+        over5 = find_child_element(year_elem, "overFiveYears")
+        if (
+            over5 is not None
+            and (xml_element_text_or_none(over5) or "").lower() == "true"
+        ):
             year_str = "Over Five Years"
         else:
-            w5 = _find_first(year_elem, "withinFiveYears")
-            year_str = _text(_find_first(w5, "value")) if w5 is not None else None
+            w5 = find_child_element(year_elem, "withinFiveYears")
+            year_str = (
+                xml_element_text_or_none(find_child_element(w5, "value"))
+                if w5 is not None
+                else None
+            )
     return PrimaryIssuer(cik, entity_name, addr, phone, jur, etype, year_str)
 
 
@@ -82,29 +79,37 @@ def _parse_related_persons(
     if rp_list_elem is None:
         return ()
     persons: list[RelatedPerson] = []
-    for info in _find_all(rp_list_elem, "relatedPersonInfo"):
-        name_elem = _find_first(info, "relatedPersonName")
+    for info in find_child_elements(rp_list_elem, "relatedPersonInfo"):
+        name_elem = find_child_element(info, "relatedPersonName")
         fn = (
-            _text(_find_first(name_elem, "firstName"))
+            xml_element_text_or_none(find_child_element(name_elem, "firstName"))
             if name_elem is not None
             else None
         )
         mn = (
-            _text(_find_first(name_elem, "middleName"))
+            xml_element_text_or_none(find_child_element(name_elem, "middleName"))
             if name_elem is not None
             else None
         )
         ln = (
-            _text(_find_first(name_elem, "lastName")) if name_elem is not None else None
+            xml_element_text_or_none(find_child_element(name_elem, "lastName"))
+            if name_elem is not None
+            else None
         )
-        addr = _parse_address(_find_first(info, "relatedPersonAddress"))
-        r_list = _find_first(info, "relatedPersonRelationshipList")
+        addr = _parse_address(find_child_element(info, "relatedPersonAddress"))
+        r_list = find_child_element(info, "relatedPersonRelationshipList")
         rels = tuple(
-            _text(r)
-            for r in (_find_all(r_list, "relationship") if r_list is not None else ())
-            if _text(r)
+            xml_element_text_or_none(r)
+            for r in (
+                find_child_elements(r_list, "relationship")
+                if r_list is not None
+                else ()
+            )
+            if xml_element_text_or_none(r)
         )
-        clar = _text(_find_first(info, "relationshipClarification"))
+        clar = xml_element_text_or_none(
+            find_child_element(info, "relationshipClarification")
+        )
         persons.append(RelatedPerson(fn, mn, ln, addr, rels, clar))
     return tuple(persons)
 
@@ -112,16 +117,16 @@ def _parse_related_persons(
 def _parse_offering_amounts(od_elem: ET.Element | None) -> OfferingSalesAmounts | None:
     if od_elem is None:
         return None
-    amt_elem = _find_first(od_elem, "offeringSalesAmounts")
+    amt_elem = find_child_element(od_elem, "offeringSalesAmounts")
     if amt_elem is None:
         return None
-    tot_elem = _find_first(amt_elem, "totalOfferingAmount")
-    sold_elem = _find_first(amt_elem, "totalAmountSold")
-    rem_elem = _find_first(amt_elem, "totalRemaining")
-    tot_txt = _text(tot_elem)
+    tot_elem = find_child_element(amt_elem, "totalOfferingAmount")
+    sold_elem = find_child_element(amt_elem, "totalAmountSold")
+    rem_elem = find_child_element(amt_elem, "totalRemaining")
+    tot_txt = xml_element_text_or_none(tot_elem)
     is_indefinite = bool(
         (tot_txt and tot_txt.lower() == "indefinite")
-        or _find_first(amt_elem, "isIndefinite") is not None
+        or find_child_element(amt_elem, "isIndefinite") is not None
     )
     tot = None if is_indefinite else _float(tot_elem)
     sold = _float(sold_elem)
@@ -132,16 +137,20 @@ def _parse_offering_amounts(od_elem: ET.Element | None) -> OfferingSalesAmounts 
 def _parse_signatures(od_elem: ET.Element | None) -> tuple[Signatory, ...]:
     if od_elem is None:
         return ()
-    sb_elem = _find_first(od_elem, "signatureBlock")
+    sb_elem = find_child_element(od_elem, "signatureBlock")
     if sb_elem is None:
         return ()
     sigs: list[Signatory] = []
-    for sig in _find_all(sb_elem, "signature"):
-        issuer = _text(_find_first(sig, "issuerName")) or ""
-        sign_name = _text(_find_first(sig, "signatureName")) or ""
-        name = _text(_find_first(sig, "nameOfSigner")) or ""
-        title = _text(_find_first(sig, "signatureTitle")) or ""
-        date = _text(_find_first(sig, "signatureDate")) or ""
+    for sig in find_child_elements(sb_elem, "signature"):
+        issuer = xml_element_text_or_none(find_child_element(sig, "issuerName")) or ""
+        sign_name = (
+            xml_element_text_or_none(find_child_element(sig, "signatureName")) or ""
+        )
+        name = xml_element_text_or_none(find_child_element(sig, "nameOfSigner")) or ""
+        title = (
+            xml_element_text_or_none(find_child_element(sig, "signatureTitle")) or ""
+        )
+        date = xml_element_text_or_none(find_child_element(sig, "signatureDate")) or ""
         sigs.append(Signatory(issuer, sign_name, name, title, date))
     return tuple(sigs)
 
@@ -149,24 +158,28 @@ def _parse_signatures(od_elem: ET.Element | None) -> tuple[Signatory, ...]:
 def parse_form_d_xml(raw_bytes: bytes) -> FormDDocument:
     """Parse raw Form D XML bytes into typed FormDDocument domain model."""
     root = ET.fromstring(raw_bytes)
-    sv = _text(_find_first(root, "schemaVersion")) or "X0101"
-    st = _text(_find_first(root, "submissionType")) or "D"
-    tl = _text(_find_first(root, "testOrLive")) or "LIVE"
-    pi = _parse_primary_issuer(_find_first(root, "primaryIssuer"))
-    rp = _parse_related_persons(_find_first(root, "relatedPersonsList"))
-    od = _find_first(root, "offeringData")
+    sv = xml_element_text_or_none(find_child_element(root, "schemaVersion")) or "X0101"
+    st = xml_element_text_or_none(find_child_element(root, "submissionType")) or "D"
+    tl = xml_element_text_or_none(find_child_element(root, "testOrLive")) or "LIVE"
+    pi = _parse_primary_issuer(find_child_element(root, "primaryIssuer"))
+    rp = _parse_related_persons(find_child_element(root, "relatedPersonsList"))
+    od = find_child_element(root, "offeringData")
     amounts = _parse_offering_amounts(od)
     sigs = _parse_signatures(od)
     ind_grp = None
     exemptions: tuple[str, ...] = ()
     if od is not None:
-        ig_elem = _find_first(od, "industryGroup")
+        ig_elem = find_child_element(od, "industryGroup")
         if ig_elem is not None:
-            ind_grp = _text(_find_first(ig_elem, "industryGroupType"))
-        fe_elem = _find_first(od, "federalExemptionsExclusions")
+            ind_grp = xml_element_text_or_none(
+                find_child_element(ig_elem, "industryGroupType")
+            )
+        fe_elem = find_child_element(od, "federalExemptionsExclusions")
         if fe_elem is not None:
             exemptions = tuple(
-                _text(it) for it in _find_all(fe_elem, "item") if _text(it)
+                xml_element_text_or_none(it)
+                for it in find_child_elements(fe_elem, "item")
+                if xml_element_text_or_none(it)
             )
     return FormDDocument(sv, st, tl, pi, rp, amounts, sigs, ind_grp, exemptions)
 

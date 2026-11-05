@@ -411,6 +411,11 @@ def find_child_element(parent: ET.Element | None, name: str) -> ET.Element | Non
     )
 
 
+def find_child_elements(parent: ET.Element, name: str) -> list[ET.Element]:
+    """Return every direct child by local name, ignoring namespace prefixes."""
+    return [element for element in parent if local_name(element.tag) == name]
+
+
 def child_element_index(parent: ET.Element | None) -> dict[str, ET.Element]:
     """Direct children keyed by local name; the first occurrence wins, as
     in find_child_element, so repeated lookups need no rescan."""
@@ -683,6 +688,7 @@ __all__ = [
     "extract_value",
     "child_element_index",
     "find_child_element",
+    "find_child_elements",
     "find_deep_elements",
     "find_element_path",
     "first_deep_text",
