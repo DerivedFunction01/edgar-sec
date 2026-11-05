@@ -332,6 +332,7 @@ def find_page_markers(
             ),
             marker.page_number,
             marker.page_count,
+            start_line=marker.start_line,
         )
         for marker in analysis.markers
         if marker.kind

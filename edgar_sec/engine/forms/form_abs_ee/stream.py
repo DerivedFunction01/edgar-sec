@@ -68,23 +68,22 @@ def _record_tag_for(root_local: str) -> str:
 
 def summarize_asset_data(path: Path) -> AssetDataSummary | None:
     """Stream one asset-data file into its summary; None when not asset data."""
-    root_info = probe_asset_data_root(path)
-    if root_info is None:
-        return None
-    classified = classify_asset_root(*root_info)
-    if classified is None:
-        return None
-    kind, asset_class = classified
-    record_tag = _record_tag_for(root_info[1])
     records = 0
     root: ET.Element | None = None
+    root_info: tuple[str, str] | None = None
+    classified: tuple[ExhibitKind, str | None] | None = None
+    record_tag = ""
     try:
         events = ET.iterparse(path, events=("start", "end"))
         for event, elem in events:
-            if event == "start" and root is None:
-                root = elem
-                continue
-            if event != "end":
+            if event == "start":
+                if root is None:
+                    root = elem
+                    root_info = _split_tag(elem.tag)
+                    classified = classify_asset_root(*root_info)
+                    if classified is None:
+                        return None
+                    record_tag = _record_tag_for(root_info[1])
                 continue
             if _split_tag(elem.tag)[1] == record_tag:
                 records += 1
@@ -92,6 +91,9 @@ def summarize_asset_data(path: Path) -> AssetDataSummary | None:
                     root.clear()
     except ET.ParseError:
         return None
+    if root_info is None or classified is None:
+        return None
+    kind, asset_class = classified
     comments, comment_chars, cdata_sections = _scan_lexical(path)
     return AssetDataSummary(
         kind=kind,

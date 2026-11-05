@@ -21,17 +21,18 @@ def analyze_form_f1_review_case(
     """Analyze a single F-1/F-2 review case producing cover-field diagnostics."""
     resolved_form = str(record.get("form") or record.get("family") or "F-1")
     resolved_family = str(record.get("family") or resolve_alias(resolved_form) or "F-1")
+    text_path = locate_text_artifact(case_dir)
+    if text_path is None:
+        return None
+    try:
+        text = text_path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return None
     rep = analyze_form_case(
-        case_dir, record, form=resolved_form, family=resolved_family
+        case_dir, record, form=resolved_form, family=resolved_family, text=text
     )
     if rep is None:
         return None
-    text_path = locate_text_artifact(case_dir)
-    text = (
-        text_path.read_text(encoding="utf-8", errors="ignore")
-        if text_path is not None
-        else ""
-    )
     lines = text.splitlines()
     start = rep["boundary"]["start_line"] or 0
     end = rep["boundary"]["end_line"] or 0

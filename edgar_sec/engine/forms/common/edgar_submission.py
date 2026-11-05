@@ -53,6 +53,13 @@ def parse_edgar_header(raw_bytes: bytes) -> EdgarHeader | None:
     root = edgar_submission_root(raw_bytes)
     if root is None:
         return None
+    return edgar_header_from_root(root)
+
+
+def edgar_header_from_root(root: ET.Element) -> EdgarHeader | None:
+    """Extract the header block from a parsed edgarSubmission root."""
+    if local_name(root.tag) != "edgarSubmission":
+        return None
     header = _find_first(root, "headerData") or root
     filer_info = _find_first(header, "filerInfo")
     scope = filer_info if filer_info is not None else header
@@ -78,4 +85,9 @@ def parse_edgar_header(raw_bytes: bytes) -> EdgarHeader | None:
     )
 
 
-__all__ = ["EdgarHeader", "edgar_submission_root", "parse_edgar_header"]
+__all__ = [
+    "EdgarHeader",
+    "edgar_header_from_root",
+    "edgar_submission_root",
+    "parse_edgar_header",
+]

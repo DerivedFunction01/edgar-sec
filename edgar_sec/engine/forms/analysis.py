@@ -172,15 +172,18 @@ def analyze_form_case(
     *,
     form: str | None = None,
     family: str | None = None,
+    text: str | None = None,
+    detect_sections: bool = True,
 ) -> dict[str, Any] | None:
     """Analyze a single review case directory producing common form diagnostics."""
-    text_path = locate_text_artifact(case_dir)
-    if text_path is None:
-        return None
-    try:
-        text = text_path.read_text(encoding="utf-8", errors="ignore")
-    except OSError:
-        return None
+    if text is None:
+        text_path = locate_text_artifact(case_dir)
+        if text_path is None:
+            return None
+        try:
+            text = text_path.read_text(encoding="utf-8", errors="ignore")
+        except OSError:
+            return None
 
     accession = str(record.get("accession", case_dir.name))
     resolved_form = str(form or record.get("form") or family or "")
@@ -198,9 +201,11 @@ def analyze_form_case(
     resolved_family = str(family or cover_profile.family)
 
     entry = get_family_entry(resolved_family) or get_family_entry(resolved_form)
+    lines = text.splitlines()
     boundary = find_cover_boundary_for_profile(
         BoundaryInput(text, representation="text"),
         cover_profile,
+        lines=lines,
     )
     cm_result = infer_cover_checkmarks(
         text,
@@ -209,13 +214,17 @@ def analyze_form_case(
         schema=cover_profile.checkbox_schema,
     )
 
-    lines = text.splitlines()
     body_start = boundary.end_line or 0
     body_lines = lines[body_start:]
     body_text = "\n".join(body_lines)
 
     detected_items: list[str] = []
-    if entry and entry.profile.has_sections and entry.taxonomy_items:
+    if (
+        detect_sections
+        and entry
+        and entry.profile.has_sections
+        and entry.taxonomy_items
+    ):
         seq = detect_section_sequence(
             body_text,
             family=resolved_family,
@@ -258,7 +267,7 @@ def analyze_form_case(
                 "detail": f"cover span {cover_lines} lines exceeds typical facing sheet",
             }
         )
-    if entry and entry.profile.has_sections and not detected_items:
+    if detect_sections and entry and entry.profile.has_sections and not detected_items:
         anomalies.append(
             {
                 "kind": "no_items_detected",

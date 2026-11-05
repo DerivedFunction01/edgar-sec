@@ -229,13 +229,15 @@ def _opens_with_table(text: str, lines: list[str]) -> bool:
 
 
 def _is_table_fragment(
-    text: str, lines: list[str], record: dict[str, Any] | None = None
+    text: str,
+    lines: list[str],
+    lowered: str,
+    record: dict[str, Any] | None = None,
 ) -> bool:
     """A continuation part: rep-and-warranty table with no form face."""
     head = "\n".join(lines[:60]).lower()
     if "form abs-15g" in head or "check the appropriate box" in head:
         return False
-    lowered = text.lower()
     if all(term in lowered for term in _TABLE_HEADER_TERMS):
         return True
     if _PART_CAPTION_RE.search("\n".join(lines[:5])) is not None:
@@ -323,17 +325,17 @@ def _analyze_securitizer(
     lines: list[str],
     cover_text: str,
     text: str,
+    lowered: str,
     record: dict[str, Any],
 ) -> dict[str, Any]:
     states = rep["checkmarks"].get("candidate_states", {})
     for key in _RULE_KEYS:
         rep["checkmarks"][key] = states.get(key) == "checked"
-    lowered = text.lower()
     fields: dict[str, Any] = {
         "table_header_present": all(term in lowered for term in _TABLE_HEADER_TERMS),
         "item_201_detected": "ITEM 2.01" in rep["taxonomy"]["detected_items"],
     }
-    if _is_table_fragment(text, lines, record):
+    if _is_table_fragment(text, lines, lowered, record):
         fields["shape"] = "table_fragment"
         caption = _part_caption_match(lines) or _record_part_caption(record)
         fields["part_caption"] = (
@@ -403,15 +405,18 @@ def analyze_form_abs_reports_review_case(
     resolved_form = str(record.get("form") or record.get("family") or "ABS-15G")
     canonical = resolve_alias(resolved_form) or resolved_form.strip().upper()
     kind = kind_of(resolved_form)
-    rep = analyze_form_case(case_dir, record, form=resolved_form, family=canonical)
+    text_path = locate_text_artifact(case_dir)
+    if text_path is None:
+        return None
+    try:
+        text = text_path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return None
+    rep = analyze_form_case(
+        case_dir, record, form=resolved_form, family=canonical, text=text
+    )
     if rep is None:
         return None
-    text_path = locate_text_artifact(case_dir)
-    text = (
-        text_path.read_text(encoding="utf-8", errors="ignore")
-        if text_path is not None
-        else ""
-    )
     lines = text.splitlines()
     if find_table_spans(text):
         reinfer_unmasked_checkmarks(text, rep, family=canonical)
@@ -421,7 +426,9 @@ def analyze_form_abs_reports_review_case(
     if kind is FormAbsReportsKind.DISTRIBUTION:
         fields = _analyze_distribution(rep, lines, cover_text, text)
     else:
-        fields = _analyze_securitizer(rep, lines, cover_text, text, record)
+        fields = _analyze_securitizer(
+            rep, lines, cover_text, text, text.lower(), record
+        )
     fields["kind"] = kind.value
     assessment = (record.get("processing") or {}).get("exhibit_assessment")
     fields["exhibit_assessment"] = assessment

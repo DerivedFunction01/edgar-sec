@@ -411,6 +411,19 @@ def find_child_element(parent: ET.Element | None, name: str) -> ET.Element | Non
     )
 
 
+def child_element_index(parent: ET.Element | None) -> dict[str, ET.Element]:
+    """Direct children keyed by local name; the first occurrence wins, as
+    in find_child_element, so repeated lookups need no rescan."""
+    if parent is None:
+        return {}
+    index: dict[str, ET.Element] = {}
+    for element in parent:
+        name = local_name(element.tag)
+        if name not in index:
+            index[name] = element
+    return index
+
+
 def xml_element_text(element: ET.Element | None) -> str:
     """Return the trimmed text of an element, ignoring namespace prefixes."""
     if element is None:
@@ -610,6 +623,7 @@ __all__ = [
     "constraint_issue",
     "emit_field_value",
     "extract_value",
+    "child_element_index",
     "find_child_element",
     "local_name",
     "find_xml_element",

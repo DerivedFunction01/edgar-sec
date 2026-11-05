@@ -253,6 +253,7 @@ def find_cover_start(
     *,
     cover_evidence: object | None = None,
     body_evidence: object | None = None,
+    lines: list[str] | None = None,
 ) -> CoverStart:
     """The inclusive start of a cover-shaped cluster; an unknown start unless
     COVER_IDENTITY_AND_LAYOUT is enabled.
@@ -263,7 +264,8 @@ def find_cover_start(
     rules = compile_cover_rules(cover_evidence, body_evidence)
 
     text = boundary_input if isinstance(boundary_input, str) else boundary_input.text
-    lines = text.splitlines()
+    if lines is None:
+        lines = text.splitlines()
     if not lines:
         return CoverStart(start_line=None, start_offset=None)
 

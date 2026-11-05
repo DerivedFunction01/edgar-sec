@@ -19,15 +19,18 @@ def analyze_form_ncsr_review_case(
 ) -> dict[str, Any] | None:
     """Analyze a single N-CSR review case producing cover diagnostics."""
     resolved_form = str(record.get("form") or record.get("family") or "N-CSR")
-    rep = analyze_form_case(case_dir, record, form=resolved_form, family="N-CSR")
+    text_path = locate_text_artifact(case_dir)
+    if text_path is None:
+        return None
+    try:
+        text = text_path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return None
+    rep = analyze_form_case(
+        case_dir, record, form=resolved_form, family="N-CSR", text=text
+    )
     if rep is None:
         return None
-    text_path = locate_text_artifact(case_dir)
-    text = (
-        text_path.read_text(encoding="utf-8", errors="ignore")
-        if text_path is not None
-        else ""
-    )
     fields = ica_cover_fields(text.splitlines())
     rep["form_ncsr"] = fields
 

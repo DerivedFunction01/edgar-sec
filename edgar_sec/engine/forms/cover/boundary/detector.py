@@ -5,6 +5,7 @@ which is why a profile that disables cover parsing never yields a boundary.
 
 from __future__ import annotations
 
+from bisect import bisect_right
 import re
 
 from edgar_sec.engine.document.page_markers.detector import (
@@ -66,6 +67,7 @@ _COVER_MATRIX_TERMS = (
 _RE_COVER_MATRIX_LINE = re.compile(
     rf"(?i)\b(?:{build_alternation(_COVER_MATRIX_TERMS)})\b"
 )
+_NEWLINE_RE = re.compile("\n")
 
 from .corridor import (
     _finalize_boundary,
@@ -108,6 +110,7 @@ def find_cover_boundary(
     *,
     cover_evidence: object | None = None,
     body_evidence: object | None = None,
+    lines: list[str] | None = None,
 ) -> CoverBoundary:
     """A conservative, exclusive end for cover-specific processing; an absent policy
     disables cover parsing.
@@ -116,7 +119,8 @@ def find_cover_boundary(
         return _unknown(BoundaryMethod.DISABLED)
 
     text = boundary_input if isinstance(boundary_input, str) else boundary_input.text
-    lines = text.splitlines()
+    if lines is None:
+        lines = text.splitlines()
     if not lines:
         return _unknown()
 
@@ -126,6 +130,7 @@ def find_cover_boundary(
         policy,
         cover_evidence=cover_evidence,
         body_evidence=body_evidence,
+        lines=lines,
     )
     scan_start = cover_start.start_line if cover_start.start_line is not None else 0
     search_limit = max(250, scan_start + 180, int(len(lines) * 0.25))
@@ -147,12 +152,16 @@ def find_cover_boundary(
             PageMarkerKind.REPEATING_FOOTER,
         }
     )
-    page_lines = {
-        getattr(marker, "start_line", None)
-        if getattr(marker, "start_line", None) is not None
-        else text.count("\n", 0, marker.start)
-        for marker in page_markers
-    }
+    page_lines: set[int] = set()
+    line_starts: list[int] | None = None
+    for marker in page_markers:
+        start_line = getattr(marker, "start_line", None)
+        if start_line is None:
+            if line_starts is None:
+                line_starts = [0]
+                line_starts.extend(m.end() for m in _NEWLINE_RE.finditer(text))
+            start_line = bisect_right(line_starts, marker.start) - 1
+        page_lines.add(start_line)
     for index, line in enumerate(lines[:search_limit]):
         if (
             enabled(policy, BoundarySignal.PAGE_MARKERS)
@@ -254,6 +263,7 @@ def find_cover_boundary(
             start_line=scan_start,
             max_lines=search_limit,
             page_analysis=page_analysis,
+            lines=lines,
         )
         if toc is not None and identity_count >= 2 and not toc.approximate:
             evidence.extend(
@@ -514,6 +524,8 @@ def find_cover_boundary(
 def find_cover_boundary_for_profile(
     boundary_input: BoundaryInput | str,
     profile: object,
+    *,
+    lines: list[str] | None = None,
 ) -> CoverBoundary:
     """Find a boundary using the resolved form profile's evidence packs."""
     return find_cover_boundary(
@@ -521,6 +533,7 @@ def find_cover_boundary_for_profile(
         getattr(profile, "boundary", None),
         cover_evidence=getattr(profile, "cover_evidence", None),
         body_evidence=getattr(profile, "body_evidence", None),
+        lines=lines,
     )
 
 
