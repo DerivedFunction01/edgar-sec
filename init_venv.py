@@ -240,6 +240,10 @@ def main() -> None:
         run_choice(args.choice)
         return
 
+    if not sys.stdin.isatty():
+        run_choice("0")
+        return
+
     while True:
         show_menu()
         choice = input("\nEnter your choice (0, 3 or 5): ").strip()
