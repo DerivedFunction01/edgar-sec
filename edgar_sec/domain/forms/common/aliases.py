@@ -74,6 +74,10 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "144",
         "144/A",
     ),
+    "MA-I": (
+        "MA-I",
+        "MA-I/A",
+    ),
     "D": (
         "D",
         "D/A",
@@ -262,6 +266,10 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "N-MFP2/A",
         "N-MFP3",
         "N-MFP3/A",
+    ),
+    "N-CR": (
+        "N-CR",
+        "N-CR/A",
     ),
     "N-CSR": (
         "N-CSR",
@@ -469,6 +477,14 @@ FORM_FAMILY_ALIASES: dict[str, tuple[str, ...]] = {
         "ABS-15G/A",
         "10-D",
         "10-D/A",
+    ),
+    "ATS-N": (
+        "ATS-N",
+        "ATS-N/CA",
+        "ATS-N/MA",
+        "ATS-N/OFA",
+        "ATS-N/UA",
+        "ATS-N-W",
     ),
     "18-K": (
         "18-K",

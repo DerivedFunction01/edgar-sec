@@ -137,6 +137,16 @@ from edgar_sec.domain.forms.common.aliases import (
         ("ABS-15G/A", "ABS"),
         ("10-D", "ABS"),
         ("18-K", "18-K"),
+        ("ATS-N", "ATS-N"),
+        ("ATS-N/CA", "ATS-N"),
+        ("ATS-N/MA", "ATS-N"),
+        ("ATS-N/OFA", "ATS-N"),
+        ("ATS-N/UA", "ATS-N"),
+        ("ATS-N-W", "ATS-N"),
+        ("MA-I", "MA-I"),
+        ("MA-I/A", "MA-I"),
+        ("N-CR", "N-CR"),
+        ("N-CR/A", "N-CR"),
         ("C", "C"),
         ("C/A", "C"),
         ("C-AR", "C"),
@@ -185,9 +195,7 @@ def test_every_alias_resolves_to_its_own_family() -> None:
         "NO ACT",
         "IRANNOTICE",
         "CERT",
-        # Disposition-only families (plan II Step 14 records, no alias).
-        "ATS-N",
-        "MA-I",
+        # Disposition-only family (plan II Step 14 records, no alias).
         "F-X",
     ],
 )
