@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from collections.abc import Collection
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -50,6 +51,21 @@ from edgar_sec.engine.xbrl.taxonomy.records import (
 
 _CAMEL_CASE_RE = re.compile(r"[A-Z]?[a-z]+|[A-Z]+(?=[A-Z][a-z]|\d|\W|$)|[0-9]+")
 _AXIS_NAME_FURNITURE = frozenset({"axis", "statement"})
+
+# Row order is the modifier-fallback precedence in risk classification.
+_RISK_VOCABULARY: tuple[tuple[str, str, str], ...] = (
+    ("IR", "M_RISK_IR", "interest_rate"),
+    ("FX", "M_RISK_FX", "foreign_exchange"),
+    ("CP", "M_RISK_CREDIT", "credit"),
+    ("CM", "M_RISK_COMMODITY", "commodity"),
+    ("EQ", "M_RISK_EQUITY", "equity"),
+)
+_RISK_BY_DAG_CODE: dict[str, str] = {
+    code: name for code, _token, name in _RISK_VOCABULARY
+}
+_RISK_BY_MODIFIER: tuple[tuple[str, str], ...] = tuple(
+    (token, name) for _code, token, name in _RISK_VOCABULARY
+)
 
 
 def _axis_name_tokens(axis_qname: str) -> tuple[str, ...]:
@@ -407,13 +423,6 @@ class DomainTaxonomy:
 
     def resolve_instrument_risk(self, instrument_or_member: str) -> str | None:
         """Resolve canonical underlying risk type via graph traversal on instruments DAG."""
-        risk_map = {
-            "IR": "interest_rate",
-            "FX": "foreign_exchange",
-            "CP": "credit",
-            "EQ": "equity",
-            "CM": "commodity",
-        }
         target = qname_local(instrument_or_member).lower()
         frontier = [target]
         visited = {target}
@@ -422,12 +431,19 @@ class DomainTaxonomy:
             for edge in self.instruments_dag:
                 c_clean = qname_local(edge.child_instrument).lower()
                 if c_clean == curr:
-                    if edge.underlying_risk in risk_map:
-                        return risk_map[edge.underlying_risk]
+                    if edge.underlying_risk in _RISK_BY_DAG_CODE:
+                        return _RISK_BY_DAG_CODE[edge.underlying_risk]
                     p_clean = qname_local(edge.parent_instrument).lower()
                     if p_clean not in visited:
                         visited.add(p_clean)
                         frontier.append(p_clean)
+        return None
+
+    def resolve_modifier_risk(self, modifiers: Collection[str]) -> str | None:
+        """Resolve the canonical risk type carried by tokenizer modifiers."""
+        for token, name in _RISK_BY_MODIFIER:
+            if token in modifiers:
+                return name
         return None
 
     def resolve_valuation_basis(self, member_qname: str) -> tuple[str, str]:
