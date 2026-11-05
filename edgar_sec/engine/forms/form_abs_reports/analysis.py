@@ -174,7 +174,7 @@ def _caption_pair_above(lines: list[str]) -> tuple[str | None, str | None]:
         lowered = line.lower()
         if "commission file" not in lowered and "central index" not in lowered:
             continue
-        window = " ".join(lines[index : index + 4]).lower()
+        window = " ".join(" ".join(lines[index : index + 4]).split()).lower()
         if "commission file" not in window:
             continue
         if "central index key" not in window and "central index number" not in window:
