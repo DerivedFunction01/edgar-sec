@@ -110,6 +110,43 @@ def test_unmodelled_family_keeps_raw_and_denies_render_to_xml() -> None:
     assert xml.pins is None
 
 
+def test_unmodelled_family_flat_xml_render_to_txt_is_not_applicable() -> None:
+    facts = DocumentPathFacts.from_archive_path("primary_doc.xml")
+    entry = resolve_acquisition_capability("F-X", "primary", "render_to_txt", facts)
+    assert entry.status is CapabilityStatus.NOT_APPLICABLE
+    assert entry.pins is None
+
+
+def test_unmodelled_family_flat_xml_keeps_raw_supported() -> None:
+    facts = DocumentPathFacts.from_archive_path("primary_doc.xml")
+    entry = resolve_acquisition_capability("F-X", "primary", "raw", facts)
+    assert entry.status is CapabilityStatus.SUPPORTED
+    assert entry.pins == ("raw.selected_source", "v1", "raw_identity", "1", "raw_bytes")
+
+
+def test_unmodelled_family_xsl_xml_keeps_rendered_markup() -> None:
+    facts = DocumentPathFacts.from_archive_path("xslF345X03/primary_doc.xml")
+    entry = resolve_acquisition_capability(
+        "F-X", "primary", "render_to_txt", facts, document_route(facts.path_context)
+    )
+    assert entry.status is CapabilityStatus.SUPPORTED
+    assert entry.capability_id == "text.rendered_markup"
+
+
+def test_unmodelled_family_xml_exhibit_stays_unsupported() -> None:
+    facts = DocumentPathFacts.from_archive_path("primary_doc.xml")
+    entry = resolve_acquisition_capability("F-X", "exhibit", "render_to_txt", facts)
+    assert entry.status is CapabilityStatus.UNSUPPORTED
+    assert entry.pins is None
+
+
+def test_registered_xml_family_profile_governs_render_to_txt() -> None:
+    facts = DocumentPathFacts.from_archive_path("primary_doc.xml")
+    entry = resolve_acquisition_capability("N-CR", "primary", "render_to_txt", facts)
+    assert entry.status is CapabilityStatus.UNSUPPORTED
+    assert entry.pins is None
+
+
 def test_unknown_operation_is_unsupported() -> None:
     facts = DocumentPathFacts.from_archive_path("filing.xml")
     entry = resolve_acquisition_capability("10-K", "primary", "unknown", facts)
