@@ -92,6 +92,71 @@ SIGNATURES
 Pursuant to the requirements of the Securities Exchange Act of 1934, the reporting entity has duly caused this report to be signed.
 """
 
+_SAMPLE_15G_BEFORE_CAPTION_TEXT = """\
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM ABS-15G
+ASSET-BACKED SECURITIZER REPORT PURSUANT TO SECTION 15G OF THE SECURITIES EXCHANGE ACT OF 1934
+Check the appropriate box to indicate the filing obligation to which this form is intended to satisfy:
+[X] Rule 15Ga-1 under the Exchange Act (17 CFR 240.15Ga-1) for the reporting period January 1, 2015 to December 31, 2015
+Date of Report (Date of earliest event reported):
+February 12. 2016
+Credit Acceptance Corporation
+(Exact name of securitizer as specified in its charter)
+<TABLE>
+000-20202 (Commission File Number of securitizer)  0000885550 (Central Index Key Number of securitizer)
+</TABLE>
+Indicate by check mark whether the securitizer has no activity to report for the initial period pursuant to Rule 15Ga-1(c)(1) [ ]
+Indicate by check mark whether the securitizer has no activity to report for the quarterly period pursuant to Rule 15Ga-1(c)(2)(i) [ ]
+Indicate by check mark whether the securitizer has no activity to report for the annual period pursuant to Rule 15Ga-1(c)(2)(ii) [X]
+SIGNATURES
+Pursuant to the requirements of the Securities Exchange Act of 1934, the reporting entity has duly caused this report to be signed.
+"""
+
+_SAMPLE_15G_WRAPPED_CAPTION_TEXT = """\
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM ABS-15G
+ASSET-BACKED SECURITIZER REPORT PURSUANT TO SECTION 15G OF THE SECURITIES EXCHANGE ACT OF 1934
+Check the appropriate box to indicate the filing obligation to which this form is intended to satisfy:
+[X]  Rule 15Ga-1 under the Exchange Act (17 CFR 240.15Ga-1) for the reporting period January 1, 2013 to December 31, 2013
+Date of Report (Date of earliest event reported): February 7, 2014
+FEDERAL AGRICULTURAL MORTGAGE CORPORATION
+(Exact Name of Securitizer as Specified in Charter)
+<TABLE>
+Federally chartered instrumentality of the United States        001-14951               0000845877
+     (State or Other Jurisdiction of Incorporation)          (Commission File       (Central Index Key
+                                                          Number of Securitizer)  Number of Securitizer)
+</TABLE>
+Indicate by check mark whether the securitizer has no activity to report for the initial period pursuant to Rule 15Ga-1(c)(1) [ ]
+Indicate by check mark whether the securitizer has no activity to report for the quarterly period pursuant to Rule 15Ga-1(c)(2)(i) [ ]
+Indicate by check mark whether the securitizer has no activity to report for the annual period pursuant to Rule 15Ga-1(c)(2)(ii) [X]
+SIGNATURES
+Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed.
+"""
+
+_SAMPLE_15G_BLANK_TEMPLATE_TEXT = """\
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM ABS-15G
+Asset-Backed Securitizer Report Pursuant to Section 15G of The Securities Exchange Act of 1934
+Check the appropriate box to indicate the filing obligation to which this form is intended to satisfy:
+[ ] Rule 15Ga-1 under the Exchange Act (17 CFR 240.15Ga-1) for the reporting period: ________ to _________.
+Date of Report (Date of earliest event reported): _________
+Commission File Number of securitizer: _________
+Central Index Key Number of securitizer: _________
+[X] Rule 15Ga-2 under the Exchange Act (17 CFR 240.15Ga-2).
+ACME CORPORATION
+(Exact name of securitizer as specified in its charter)
+Item 2.01 Findings and Conclusions of a Third Party Due Diligence Report Obtained by the Issuer
+Attached as Exhibit 99.1 is a due diligence report.
+SIGNATURES
+Pursuant to the requirements of the Securities Exchange Act of 1934, the reporting entity has duly caused this report to be signed.
+"""
+
 _SAMPLE_15G_FRAGMENT = """\
 File 02 of 12
 Name of Issuing Entity Check if Registered Name of Originator Total Assets by Originator Assets that Were Subject of Demand
@@ -209,6 +274,58 @@ def test_analyze_abs_15g_above_caption_pair(tmp_path: Path) -> None:
     assert "no_items_detected" not in kinds
 
 
+def test_analyze_abs_15g_value_before_caption(tmp_path: Path) -> None:
+    # Specimen-derived (Credit Acceptance faces): values precede their
+    # parenthetical captions on one rendered line inside the face table.
+    _write_case(tmp_path, _SAMPLE_15G_BEFORE_CAPTION_TEXT)
+    result = analyze_case(
+        tmp_path, {"accession": "0000885550-16-000084", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["shape"] == "face"
+    assert fields["securitizer_file_number"] == "000-20202"
+    assert fields["securitizer_cik"] == "0000885550"
+    assert fields["date_of_report"] == "February 12, 2016"
+    kinds = {a["kind"] for a in result["anomalies"]}
+    assert "missing_securitizer_file_number" not in kinds
+    assert "missing_securitizer_cik" not in kinds
+
+
+def test_analyze_abs_15g_wrapped_caption_pair(tmp_path: Path) -> None:
+    # Specimen-derived (Farmer Mac face): the three-column face table wraps
+    # its captions across lines, interleaving the two caption completions.
+    _write_case(tmp_path, _SAMPLE_15G_WRAPPED_CAPTION_TEXT)
+    result = analyze_case(
+        tmp_path, {"accession": "0000845877-14-000016", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["shape"] == "face"
+    assert fields["securitizer_file_number"] == "001-14951"
+    assert fields["securitizer_cik"] == "0000845877"
+    kinds = {a["kind"] for a in result["anomalies"]}
+    assert "missing_securitizer_file_number" not in kinds
+    assert "missing_securitizer_cik" not in kinds
+
+
+def test_analyze_abs_15g_blank_template_stays_absent(tmp_path: Path) -> None:
+    # Specimen-derived (15Ga-2 template faces): identity fields are
+    # underscores as filed, so absence is the filed fact, not a miss.
+    _write_case(tmp_path, _SAMPLE_15G_BLANK_TEMPLATE_TEXT)
+    result = analyze_case(
+        tmp_path, {"accession": "0000885550-16-000139", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["shape"] == "face"
+    assert fields["securitizer_file_number"] is None
+    assert fields["securitizer_cik"] is None
+    kinds = {a["kind"] for a in result["anomalies"]}
+    assert "missing_securitizer_file_number" in kinds
+    assert "no_obligation_checked" not in kinds
+
+
 def test_analyze_abs_15g_table_fragment(tmp_path: Path) -> None:
     _write_case(tmp_path, _SAMPLE_15G_FRAGMENT)
     result = analyze_case(
@@ -243,6 +360,315 @@ of k i of Originator
 ssu Reg rig
 313 ACME FIFTH THIRD MORTGAGE COMPANY 5 $1,514,370.00 0 $0.00
 """
+
+
+# Specimen-derived (accession 0000310522-12-000003): the face rides in
+# small tagged tables and the body is one giant table.
+_GIANT_TABLE_ROWS = "\n".join(
+    f"3130AH{i} ACME ORIGINATOR {i} $1,000.00 0 $0.00" for i in range(520)
+)
+_SAMPLE_15G_GIANT_TABLE_FACE = (
+    """\
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM ABS-15G
+ASSET-BACKED SECURITIZER
+REPORT PURSUANT TO SECTION 15G OF
+THE SECURITIES EXCHANGE ACT OF 1934
+Check the appropriate box to indicate the filing obligation to which this form is intended to satisfy:
+<TABLE>
+[X]  Rule 15Ga-1 under the Exchange Act (17 CFR 240.15Ga-1) for the reporting period January 1, 2009 to December 31, 2011
+[ ]  Rule 15Ga-2 under the Exchange Act (17 CFR 240.15Ga-2).
+</TABLE>
+Date of Report (Date of earliest event reported): February 8, 2012
+<TABLE>
+       025-14602                 0000310522
+-------------------------------------------------
+(Commission File Number)  (Central Index Key No.)
+</TABLE>
+Indicate by check mark whether the securitizer has no activity to report for the initial period pursuant to Rule 15Ga-1(c)(1): [ ]
+Indicate by check mark whether the securitizer has no activity to report for the quarterly period pursuant to Rule 15Ga-1(c)(2)(i): [ ]
+<TABLE>
+"""
+    + _GIANT_TABLE_ROWS
+    + "\n</TABLE>\n"
+)
+
+# Specimen-derived (accession 0000310522-12-000101): the render is the
+# bare table from line 1; the part banner survives only in the record.
+_SAMPLE_15G_RECORD_BANNER_FRAGMENT = """\
+<TABLE>
+Nam  Che  Nam  Total Assets by   Assets that were subjected of
+of   k i  of      Originator                 Demand
+ssu  Reg  rig
+ng   ste  nat
+nti  ed   r
+y
+313       Una  227  $31,1  100        0              $0.00   NA
+7V3       ail       47,64
+1         ble        0.52
+</TABLE>
+"""
+
+# Variant: the part caption survives in the rendered text banner itself.
+_SAMPLE_15G_BANNER_FRAGMENT = """\
+ABS-15G/A
+1
+15GaFile_09_of_42_0107_0201.htm
+15GAFILE_09_OF_42_0107_0201
+ABS-15G
+Name of
+Originator
+Total
+Assets by Originator
+31418DHM7 ACME MORTGAGE CO. 1 $271,200.00 0 $0.00
+"""
+
+
+def test_analyze_abs_15g_giant_table_face(tmp_path: Path) -> None:
+    _write_case(tmp_path, _SAMPLE_15G_GIANT_TABLE_FACE)
+    result = analyze_case(
+        tmp_path, {"accession": "0000310522-12-000003", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["shape"] == "face"
+    assert fields["securitizer_file_number"] == "025-14602"
+    assert fields["securitizer_cik"] == "0000310522"
+    assert fields["date_of_report"] == "February 8, 2012"
+    assert result["boundary"]["method"] == "fallback"
+    kinds = {a["kind"] for a in result["anomalies"]}
+    assert "cover_too_short" not in kinds
+    assert "low_confidence_boundary" not in kinds
+    assert "no_obligation_checked" not in kinds
+    assert "missing_securitizer_file_number" not in kinds
+    assert "missing_securitizer_cik" not in kinds
+
+
+def test_analyze_abs_15g_banner_caption_fragment(tmp_path: Path) -> None:
+    _write_case(tmp_path, _SAMPLE_15G_BANNER_FRAGMENT)
+    result = analyze_case(
+        tmp_path, {"accession": "0000310522-12-000101", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["shape"] == "table_fragment"
+    assert fields["part_caption"] == {"index": 9, "count": 42}
+    kinds = {a["kind"] for a in result["anomalies"]}
+    assert "missing_securitizer_file_number" not in kinds
+    assert "missing_securitizer_cik" not in kinds
+    assert "no_obligation_checked" not in kinds
+
+
+def test_analyze_abs_15g_record_banner_fragment(tmp_path: Path) -> None:
+    _write_case(tmp_path, _SAMPLE_15G_RECORD_BANNER_FRAGMENT)
+    record = {
+        "accession": "0000310522-12-000101",
+        "form": "ABS-15G/A",
+        "processing": {"effective_path": "15GaFile_09_of_42_0107_0201.htm"},
+    }
+    result = analyze_case(tmp_path, record)
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["shape"] == "table_fragment"
+    assert fields["part_caption"] == {"index": 9, "count": 42}
+    kinds = {a["kind"] for a in result["anomalies"]}
+    assert "missing_securitizer_file_number" not in kinds
+    assert "missing_securitizer_cik" not in kinds
+    assert "no_obligation_checked" not in kinds
+
+
+def test_analyze_abs_15g_record_banner_on_a_face_stays_a_face(
+    tmp_path: Path,
+) -> None:
+    _write_case(tmp_path, _SAMPLE_15G_TEXT)
+    record = {
+        "accession": "0000310522-12-000003",
+        "form": "ABS-15G",
+        "processing": {"effective_path": "15GaFile_01_of_39_8207_9302.htm"},
+    }
+    result = analyze_case(tmp_path, record)
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["shape"] == "face"
+    assert fields["securitizer_file_number"] == "025-14602"
+
+
+# Specimen-derived (accession 0000914121-22-001222): the wrapped caption
+# pair whose file-number slot is N/A; only the CIK value is filed.
+_SAMPLE_15G_PAIR_NA_SLOT_TEXT = """\
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM ABS-15G
+ASSET-BACKED SECURITIZER REPORT PURSUANT TO SECTION 15G OF THE SECURITIES EXCHANGE ACT OF 1934
+Check the appropriate box to indicate the filing obligation to which this form is intended to satisfy:
+[X]  Rule 15Ga-1 under the Exchange Act (17 CFR 240.15Ga-1) for the reporting period January 1, 2021 to December 31, 2021
+Date of Report (Date of earliest event reported): February 10, 2022
+ACME SECURITIZATION CORP
+(Exact Name of Securitizer as Specified in Charter)
+<TABLE>
+                   N/A                          0001332551
+(Commission File Number of securitizer)    (Central Index Key
+                                         Number of securitizer)
+</TABLE>
+Indicate by check mark whether the securitizer has no activity to report for the annual period pursuant to Rule 15Ga-1(c)(2)(ii) [ ]
+"""
+
+# Specimen-derived (accession 0000929638-22-000321): the wrapped caption
+# pair worded "Central Index Number" (no "Key") above both values.
+_SAMPLE_15G_PAIR_INDEX_NUMBER_TEXT = """\
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM ABS-15G
+ASSET-BACKED SECURITIZER REPORT PURSUANT TO SECTION 15G OF THE SECURITIES EXCHANGE ACT OF 1934
+Check the appropriate box to indicate the filing obligation to which this form is intended to satisfy:
+[X]  Rule 15Ga-1 under the Exchange Act (17 CFR 240.15Ga-1) for the reporting period January 1, 2021 to December 31, 2021
+Date of Report (Date of earliest event reported): February 10, 2022
+ACME BANK
+(Exact Name of Securitizer as Specified in Charter)
+<TABLE>
+                025-01410                       0000009631
+(Commission File Number of securitizer)  (Central Index Number
+                                         of securitizer)
+</TABLE>
+Indicate by check mark whether the securitizer has no activity to report for the annual period pursuant to Rule 15Ga-1(c)(2)(ii) [ ]
+"""
+
+# Specimen-derived (accession 0000950123-12-002542): the value row above
+# the wrapped captions carries the CIK alone; the file slot is empty.
+_SAMPLE_15G_PAIR_LONE_CIK_TEXT = """\
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM ABS-15G
+ASSET-BACKED SECURITIZER REPORT PURSUANT TO SECTION 15G OF THE SECURITIES EXCHANGE ACT OF 1934
+Check the appropriate box to indicate the filing obligation to which this form is intended to satisfy:
+[X]  Rule 15Ga-1 under the Exchange Act (17 CFR 240.15Ga-1) for the reporting period January 1, 2011 to December 31, 2011
+Date of Report (Date of earliest event reported): February 10, 2012
+ACME FUNDING LLC
+(Exact Name of Securitizer as Specified in Charter)
+<TABLE>
+                                               0001000275
+(Commission File Number of securitizer)    (Central Index Key
+                                         Number of securitizer)
+</TABLE>
+Indicate by check mark whether the securitizer has no activity to report for the annual period pursuant to Rule 15Ga-1(c)(2)(ii) [ ]
+"""
+
+
+def test_analyze_abs_15g_pair_na_slot_yields_cik(tmp_path: Path) -> None:
+    _write_case(tmp_path, _SAMPLE_15G_PAIR_NA_SLOT_TEXT)
+    result = analyze_case(
+        tmp_path, {"accession": "0000914121-22-001222", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["securitizer_cik"] == "0001332551"
+    assert fields["securitizer_file_number"] is None
+
+
+def test_analyze_abs_15g_pair_index_number_caption(tmp_path: Path) -> None:
+    _write_case(tmp_path, _SAMPLE_15G_PAIR_INDEX_NUMBER_TEXT)
+    result = analyze_case(
+        tmp_path, {"accession": "0000929638-22-000321", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["securitizer_file_number"] == "025-01410"
+    assert fields["securitizer_cik"] == "0000009631"
+
+
+# Specimen-derived (accession 0001193125-21-009666): the wrapped caption
+# pair whose file slot reads "none"; only the CIK value is filed.
+_SAMPLE_15G_PAIR_NONE_SLOT_TEXT = """\
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM ABS-15G
+ASSET-BACKED SECURITIZER REPORT PURSUANT TO SECTION 15G OF THE SECURITIES EXCHANGE ACT OF 1934
+Check the appropriate box to indicate the filing obligation to which this form is intended to satisfy:
+[X]  Rule 15Ga-1 under the Exchange Act (17 CFR 240.15Ga-1) for the reporting period January 1, 2020 to December 31, 2020
+Date of Report (Date of earliest event reported): February 10, 2021
+ACME SECURITIZATION LLC
+(Exact Name of Securitizer as Specified in Charter)
+<TABLE>
+                  none                         0000750577
+(Commission File Number of securitizer)    (Central Index Key
+                                         Number of securitizer)
+</TABLE>
+Indicate by check mark whether the securitizer has no activity to report for the annual period pursuant to Rule 15Ga-1(c)(2)(ii) [ ]
+"""
+
+
+# Specimen-derived (accession 0001562401-16-000043): both values above a
+# caption block wrapped over four lines with wide column padding.
+_SAMPLE_15G_PAIR_PADDED_WRAP_TEXT = """\
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM ABS-15G
+ASSET-BACKED SECURITIZER REPORT PURSUANT TO SECTION 15G OF THE SECURITIES EXCHANGE ACT OF 1934
+Check the appropriate box to indicate the filing obligation to which this form is intended to satisfy:
+[X]  Rule 15Ga-1 under the Exchange Act (17 CFR 240.15Ga-1) for the reporting period January 1, 2015 to December 31, 2015
+Date of Report (Date of earliest event reported): February 10, 2016
+ACME SECURITIZER INC
+(Exact Name of Securitizer as Specified in Charter)
+<TABLE>
+               001-36013                  0001562401
+(Commission File Number of Securitizer)    (Central
+                                          Index Key
+                                          Number of
+                                         Securitizer)
+</TABLE>
+Indicate by check mark whether the securitizer has no activity to report for the annual period pursuant to Rule 15Ga-1(c)(2)(ii) [ ]
+"""
+
+
+def test_analyze_abs_15g_pair_padded_wrap(tmp_path: Path) -> None:
+    _write_case(tmp_path, _SAMPLE_15G_PAIR_PADDED_WRAP_TEXT)
+    result = analyze_case(
+        tmp_path, {"accession": "0001562401-16-000043", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["securitizer_file_number"] == "001-36013"
+    assert fields["securitizer_cik"] == "0001562401"
+
+
+def test_analyze_abs_15g_pair_none_slot_yields_cik(tmp_path: Path) -> None:
+    _write_case(tmp_path, _SAMPLE_15G_PAIR_NONE_SLOT_TEXT)
+    result = analyze_case(
+        tmp_path, {"accession": "0001193125-21-009666", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["securitizer_cik"] == "0000750577"
+    assert fields["securitizer_file_number"] is None
+
+
+def test_analyze_abs_15g_pair_lone_cik_value(tmp_path: Path) -> None:
+    _write_case(tmp_path, _SAMPLE_15G_PAIR_LONE_CIK_TEXT)
+    result = analyze_case(
+        tmp_path, {"accession": "0000950123-12-002542", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["securitizer_cik"] == "0001000275"
+    assert fields["securitizer_file_number"] is None
+
+
+def test_analyze_abs_15g_banner_on_a_face_stays_a_face(tmp_path: Path) -> None:
+    _write_case(tmp_path, "15GaFile_01_of_42_0107_0201.htm\n" + _SAMPLE_15G_TEXT)
+    result = analyze_case(
+        tmp_path, {"accession": "0000310522-12-000003", "form": "ABS-15G"}
+    )
+    assert result is not None
+    fields = result["form_abs_reports"]
+    assert fields["shape"] == "face"
+    assert fields["securitizer_file_number"] == "025-14602"
 
 
 def test_analyze_abs_15g_mangled_header_fragment(tmp_path: Path) -> None:

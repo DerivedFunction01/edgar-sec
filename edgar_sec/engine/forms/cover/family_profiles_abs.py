@@ -61,6 +61,7 @@ def build_form_abs_reports_profile(family: str) -> CoverProfile:
                 BoundarySignal.PAGE_MARKERS,
                 BoundarySignal.ITEM_FALLBACK,
                 BoundarySignal.BODY_PROSE_FALLBACK,
+                BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=_ABS_REPORTS_COVER_LABELS,

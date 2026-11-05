@@ -32,6 +32,7 @@ def test_boundary_signal_values_are_the_profile_capability_vocabulary() -> None:
         "amendment_transition",
         "item_fallback",
         "body_prose_fallback",
+        "table_body_fallback",
     }
 
 

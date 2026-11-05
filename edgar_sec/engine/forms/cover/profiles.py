@@ -176,6 +176,7 @@ def build_annual_profile(family: str) -> CoverProfile:
                 BoundarySignal.AMENDMENT_TRANSITION,
                 BoundarySignal.ITEM_FALLBACK,
                 BoundarySignal.BODY_PROSE_FALLBACK,
+                BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=ANNUAL_COVER_LABELS,
@@ -232,6 +233,7 @@ def build_quarterly_profile(family: str) -> CoverProfile:
                 BoundarySignal.PART_FALLBACK,
                 BoundarySignal.ITEM_FALLBACK,
                 BoundarySignal.BODY_PROSE_FALLBACK,
+                BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=QUARTERLY_COVER_LABELS,
@@ -354,6 +356,7 @@ def build_registration_profile(family: str) -> CoverProfile:
                 BoundarySignal.PART_FALLBACK,
                 BoundarySignal.ITEM_FALLBACK,
                 BoundarySignal.BODY_PROSE_FALLBACK,
+                BoundarySignal.TABLE_BODY_FALLBACK,
             )
         ),
         labels=COMMON_COVER_LABELS,

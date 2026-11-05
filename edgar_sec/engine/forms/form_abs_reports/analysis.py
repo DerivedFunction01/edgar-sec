@@ -15,12 +15,14 @@ from edgar_sec.engine.forms.analysis import (
     analyze_form_case,
     anomaly_record,
     locate_text_artifact,
+    reinfer_unmasked_checkmarks,
     summarize_form_cases,
 )
 from edgar_sec.engine.forms.cover.registrant import (
     parse_registrant_identity,
     previous_content_line,
 )
+from edgar_sec.engine.tables.protection.tags import find_table_spans
 
 _RULE_KEYS = (
     "rule_15ga_1",
@@ -64,6 +66,15 @@ _SECURITIZER_CIK_RE = re.compile(
     r"central index key (?:number )?of securitizer[:\s]*" + _CIK_VALUE,
     re.IGNORECASE,
 )
+_SECURITIZER_FILE_BEFORE_CAPTION_RE = re.compile(
+    r"([0-9][0-9a-z]*(?:-[0-9a-z]+)+)"
+    r"\s*\(\s*commission file number of securitizer\s*\)",
+    re.IGNORECASE,
+)
+_SECURITIZER_CIK_BEFORE_CAPTION_RE = re.compile(
+    r"([0-9]{7,10})\s*\(\s*central index key(?: number)? of securitizer\s*\)",
+    re.IGNORECASE,
+)
 _DATE = r"([a-z]+ \d{1,2}, \d{4})"
 _PERIOD_RE = re.compile(
     r"distribution period from[\s\S]{0,48}?" + _DATE + r"\s+to,?\s+" + _DATE,
@@ -85,11 +96,19 @@ _DATE_OF_REPORT_RE = re.compile(
     r"date of report \(date of earliest event reported\)[:\s]*" + _DATE,
     re.IGNORECASE,
 )
+_DATE_OF_REPORT_LOOSE_RE = re.compile(
+    r"date of report \(date of earliest event reported\)[:\s]*"
+    r"([a-z]+ ?\d{1,2}\s*[.,]\s*\d{4})",
+    re.IGNORECASE,
+)
+_DATE_PERIOD_SEP_RE = re.compile(r"\.\s*(?=\d{4}$)")
 _PAIR_ABOVE_CAPTION_RE = re.compile(r"(\d{1,3}-[0-9a-z-]+)\s+([0-9]{7,10})")
+_PAIR_ABOVE_CIK_ONLY_RE = re.compile(r"(?:(?:N/A|none)\s+)?(\d{10})", re.IGNORECASE)
 _PART_CAPTION_RE = re.compile(
     r"\b(?:file|report)\s+(\d+)\s+of\s+(\d+)\b",
     re.IGNORECASE,
 )
+_PART_BANNER_RE = re.compile(r"file_(\d+)_of_(\d+)", re.IGNORECASE)
 _ISSUING_NAME_LABEL_RE = re.compile(r"exact name of issuing entity", re.IGNORECASE)
 _DEPOSITOR_NAME_LABEL_RE = re.compile(r"exact name of depositor", re.IGNORECASE)
 _TABLE_HEADER_TERMS = ("name of originator", "total assets")
@@ -126,6 +145,14 @@ def _normalize_period_date(value: str) -> str:
     return _LETTER_DIGIT_RE.sub(r"\1 \2", collapsed)
 
 
+def _normalize_report_date(value: str) -> str:
+    """Canonical form for a date of report captured from era typesetting.
+
+    Era faces print the day/year separator as a period ("February 12. 2016").
+    """
+    return _DATE_PERIOD_SEP_RE.sub(", ", _normalize_period_date(value.strip()))
+
+
 def _first_group(pattern: re.Pattern[str], text: str) -> str | None:
     match = pattern.search(text)
     return match.group(1) if match else None
@@ -138,12 +165,24 @@ def _first_cik(pattern: re.Pattern[str], text: str) -> str | None:
 
 
 def _caption_pair_above(lines: list[str]) -> tuple[str | None, str | None]:
-    """File number / CIK printed as a value row above their captions."""
+    """File number / CIK printed as a value row above their captions.
+
+    A caption block starts at either phrase fragment and completes over
+    the following lines; the value row sits above the block's first line.
+    """
     for index, line in enumerate(lines):
         lowered = line.lower()
-        if "commission file number" not in lowered:
+        if "commission file" not in lowered and "central index" not in lowered:
             continue
-        if "central index key" not in lowered:
+        window = " ".join(" ".join(lines[index : index + 4]).split()).lower()
+        if "commission file" not in window:
+            continue
+        if "central index key" not in window and "central index number" not in window:
+            continue
+        if (
+            "commission file number" not in window
+            and "number of securitizer" not in window
+        ):
             continue
         substantive = 0
         for back in range(index - 1, max(index - 10, -1), -1):
@@ -154,12 +193,44 @@ def _caption_pair_above(lines: list[str]) -> tuple[str | None, str | None]:
             match = _PAIR_ABOVE_CAPTION_RE.search(lines[back])
             if match:
                 return match.group(1), match.group(2).zfill(10)
+            cik_only = _PAIR_ABOVE_CIK_ONLY_RE.fullmatch(candidate)
+            if cik_only:
+                return None, cik_only.group(1)
             if substantive >= 2:
                 break
     return None, None
 
 
-def _is_table_fragment(text: str, lines: list[str]) -> bool:
+def _part_caption_match(lines: list[str]) -> re.Match[str] | None:
+    """Part caption in whitespace form or in the underscore filename banner."""
+    head = "\n".join(lines[:60])
+    return _PART_CAPTION_RE.search(head) or _PART_BANNER_RE.search(head)
+
+
+def _record_part_caption(record: dict[str, Any]) -> re.Match[str] | None:
+    """Part banner from the case record's document path, if it carries one."""
+    processing = record.get("processing") or {}
+    fixture = record.get("fixture") or {}
+    for candidate in (processing.get("effective_path"), fixture.get("target_url")):
+        if candidate:
+            match = _PART_BANNER_RE.search(str(candidate))
+            if match:
+                return match
+    return None
+
+
+def _opens_with_table(text: str, lines: list[str]) -> bool:
+    """Whether the first substantive rendered line opens a tagged table."""
+    first = next((i for i, line in enumerate(lines) if line.strip()), None)
+    if first is None:
+        return False
+    spans = find_table_spans(text)
+    return bool(spans) and spans[0].start_line <= first
+
+
+def _is_table_fragment(
+    text: str, lines: list[str], record: dict[str, Any] | None = None
+) -> bool:
     """A continuation part: rep-and-warranty table with no form face."""
     head = "\n".join(lines[:60]).lower()
     if "form abs-15g" in head or "check the appropriate box" in head:
@@ -167,7 +238,13 @@ def _is_table_fragment(text: str, lines: list[str]) -> bool:
     lowered = text.lower()
     if all(term in lowered for term in _TABLE_HEADER_TERMS):
         return True
-    return _PART_CAPTION_RE.search("\n".join(lines[:5])) is not None
+    if _PART_CAPTION_RE.search("\n".join(lines[:5])) is not None:
+        return True
+    if _PART_BANNER_RE.search("\n".join(lines[:10])) is not None:
+        return True
+    if record is not None and _record_part_caption(record) is not None:
+        return _opens_with_table(text, lines)
+    return False
 
 
 def _analyze_distribution(
@@ -246,6 +323,7 @@ def _analyze_securitizer(
     lines: list[str],
     cover_text: str,
     text: str,
+    record: dict[str, Any],
 ) -> dict[str, Any]:
     states = rep["checkmarks"].get("candidate_states", {})
     for key in _RULE_KEYS:
@@ -255,9 +333,9 @@ def _analyze_securitizer(
         "table_header_present": all(term in lowered for term in _TABLE_HEADER_TERMS),
         "item_201_detected": "ITEM 2.01" in rep["taxonomy"]["detected_items"],
     }
-    if _is_table_fragment(text, lines):
+    if _is_table_fragment(text, lines, record):
         fields["shape"] = "table_fragment"
-        caption = _PART_CAPTION_RE.search("\n".join(lines[:60]))
+        caption = _part_caption_match(lines) or _record_part_caption(record)
         fields["part_caption"] = (
             {"index": int(caption.group(1)), "count": int(caption.group(2))}
             if caption
@@ -275,9 +353,21 @@ def _analyze_securitizer(
         pair_file, pair_cik = _caption_pair_above(lines)
         file_number = file_number or pair_file
         cik = cik or pair_cik
+    if not file_number:
+        file_number = _first_group(
+            _SECURITIZER_FILE_BEFORE_CAPTION_RE, cover_text
+        ) or _first_group(_SECURITIZER_FILE_BEFORE_CAPTION_RE, text)
+    if not cik:
+        cik = _first_cik(_SECURITIZER_CIK_BEFORE_CAPTION_RE, cover_text) or _first_cik(
+            _SECURITIZER_CIK_BEFORE_CAPTION_RE, text
+        )
     fields["securitizer_file_number"] = file_number
     fields["securitizer_cik"] = cik
-    fields["date_of_report"] = _first_group(_DATE_OF_REPORT_RE, cover_text)
+    date_of_report = _first_group(_DATE_OF_REPORT_RE, cover_text)
+    if not date_of_report:
+        loose = _first_group(_DATE_OF_REPORT_LOOSE_RE, cover_text)
+        date_of_report = _normalize_report_date(loose) if loose else None
+    fields["date_of_report"] = date_of_report
     reporting = _REPORTING_PERIOD_RE.search(cover_text)
     fields["reporting_period"] = (
         {"from": reporting.group(1), "to": reporting.group(2)} if reporting else None
@@ -323,13 +413,15 @@ def analyze_form_abs_reports_review_case(
         else ""
     )
     lines = text.splitlines()
+    if find_table_spans(text):
+        reinfer_unmasked_checkmarks(text, rep, family=canonical)
     start = rep["boundary"]["start_line"] or 0
     end = rep["boundary"]["end_line"] or 0
     cover_text = "\n".join(lines[start:end]) if end > start else "\n".join(lines[:120])
     if kind is FormAbsReportsKind.DISTRIBUTION:
         fields = _analyze_distribution(rep, lines, cover_text, text)
     else:
-        fields = _analyze_securitizer(rep, lines, cover_text, text)
+        fields = _analyze_securitizer(rep, lines, cover_text, text, record)
     fields["kind"] = kind.value
     assessment = (record.get("processing") or {}).get("exhibit_assessment")
     fields["exhibit_assessment"] = assessment
