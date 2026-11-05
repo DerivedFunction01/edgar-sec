@@ -211,14 +211,16 @@ def extract_section_candidates(
             norm_name = " ".join(name.lower().split())
             if len(norm_name) >= 4:
                 title_to_item[norm_name] = item_def.item
-    # Canonical keys mirror the sequence tracker's own derivation: a
-    # title-keyed taxonomy joins ITEM candidates through their titles;
-    # an ITEM-keyed taxonomy keeps the filer's own number.
+    # Canonical keys are the sequence tracker's own derivation — every
+    # taxonomy item's key — unioned with the title-derived keys: a title
+    # shared by two items must not cost either item its own number.
     title_to_key: dict[str, str] = {
         norm_name: item.replace("ITEM", "").strip()
         for norm_name, item in title_to_item.items()
     }
-    canonical_keys = set(title_to_key.values())
+    canonical_keys = {
+        item_def.item.replace("ITEM", "").strip() for item_def in taxonomy_items
+    } | set(title_to_key.values())
     title_entries = sorted(
         title_to_key.items(), key=lambda entry: -len(entry[0].split())
     )
