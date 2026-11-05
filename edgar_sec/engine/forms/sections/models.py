@@ -45,6 +45,7 @@ class ResolvedSection:
     grouped_with: tuple[str, ...] = ()
     start_char: int | None = None
     end_char: int | None = None
+    displaced: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -56,6 +57,7 @@ class SectionSequence:
     missing_items: tuple[str, ...] = ()
     anachronistic_rejections: int = 0
     non_contiguous_rejections: int = 0
+    disordered: bool = False
     payload_sha256: str | None = None
     representation_id: str | None = None
     renderer_version: str | None = None

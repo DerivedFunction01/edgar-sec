@@ -75,6 +75,42 @@ def _filter_pseudo_toc_candidates(
     return filtered, toc_lines
 
 
+def _event_sections(
+    cand: SectionCandidate, *, displaced: bool
+) -> list[ResolvedSection]:
+    """Resolve one admitted candidate event into its sections."""
+    if cand.kind == CandidateKind.GROUPED:
+        return [
+            ResolvedSection(
+                item_identifier=f"ITEM {item_id}",
+                start_line=cand.line_number,
+                end_line=None,
+                title=cand.title,
+                raw_heading=cand.raw_text,
+                kind=CandidateKind.GROUPED,
+                confidence=0.9,
+                is_omitted=cand.is_omitted,
+                grouped_with=tuple(i for i in cand.identifiers if i != item_id),
+                displaced=displaced,
+            )
+            for item_id in cand.identifiers
+        ]
+    conf = 0.95 if cand.kind == CandidateKind.STANDARD else 0.85
+    return [
+        ResolvedSection(
+            item_identifier=f"ITEM {cand.identifiers[0]}",
+            start_line=cand.line_number,
+            end_line=None,
+            title=cand.title,
+            raw_heading=cand.raw_text,
+            kind=cand.kind,
+            confidence=conf,
+            is_omitted=cand.is_omitted,
+            displaced=displaced,
+        )
+    ]
+
+
 def detect_section_sequence(
     text: str,
     *,
@@ -85,7 +121,7 @@ def detect_section_sequence(
     representation_id: str | None = None,
     renderer_version: str | None = None,
 ) -> SectionSequence:
-    """Detect monotonic statutory Part/Item sections across a document."""
+    """Detect statutory Part/Item sections across a document, in document order."""
     lines = text.splitlines()
     total_lines = len(lines)
     offsets = line_offsets(lines)
@@ -113,10 +149,8 @@ def detect_section_sequence(
     )
     tracker = MonotonicSequenceTracker[str](canonical_order)
 
-    resolved: list[ResolvedSection] = []
-    anachronisms = 0
+    eligible: list[SectionCandidate] = []
     non_contiguous = 0
-
     for idx, cand in enumerate(refined_candidates):
         if cand.preceded_by_continuation and not (
             cand.kind == CandidateKind.STANDARD and cand.title
@@ -135,44 +169,48 @@ def detect_section_sequence(
                 )
                 if has_titled:
                     continue
-            if not tracker.accept_group(cand.identifiers):
+        eligible.append(cand)
+
+    # Assembly keeps the canonical spine plus genuine candidates whose
+    # exclusion is one local fault; a stream whose faults do not
+    # decompose falls back to first-fit selection, unchanged.
+    assembly = tracker.assemble_sequence([cand.identifiers for cand in eligible])
+    resolved: list[ResolvedSection] = []
+    anachronisms = 0
+    missing_labels: tuple[str, ...]
+    if assembly.disordered:
+        greedy = MonotonicSequenceTracker[str](canonical_order)
+        for cand in eligible:
+            if cand.kind == CandidateKind.GROUPED:
+                if not greedy.accept_group(cand.identifiers):
+                    anachronisms += 1
+                    continue
+            elif not greedy.accept(cand.identifiers[0]):
                 anachronisms += 1
                 continue
+            resolved.extend(_event_sections(cand, displaced=False))
+        missing_labels = tuple(
+            f"ITEM {m}" for m in greedy.missing_items(canonical_order)
+        )
+    else:
+        displaced_at = set(assembly.displaced)
+        chosen = set(assembly.spine) | displaced_at
+        resolved_ids: set[str] = set()
+        current_idx = -1
+        for pos, cand in enumerate(eligible):
+            if pos not in chosen:
+                anachronisms += 1
+                continue
+            resolved.extend(_event_sections(cand, displaced=pos in displaced_at))
             for item_id in cand.identifiers:
-                canon_label = f"ITEM {item_id}"
-                resolved.append(
-                    ResolvedSection(
-                        item_identifier=canon_label,
-                        start_line=cand.line_number,
-                        end_line=None,
-                        title=cand.title,
-                        raw_heading=cand.raw_text,
-                        kind=CandidateKind.GROUPED,
-                        confidence=0.9,
-                        is_omitted=cand.is_omitted,
-                        grouped_with=tuple(i for i in cand.identifiers if i != item_id),
-                    )
-                )
-            continue
-
-        item_id = cand.identifiers[0]
-        if not tracker.accept(item_id):
-            anachronisms += 1
-            continue
-
-        canon_label = f"ITEM {item_id}"
-        conf = 0.95 if cand.kind == CandidateKind.STANDARD else 0.85
-        resolved.append(
-            ResolvedSection(
-                item_identifier=canon_label,
-                start_line=cand.line_number,
-                end_line=None,
-                title=cand.title,
-                raw_heading=cand.raw_text,
-                kind=cand.kind,
-                confidence=conf,
-                is_omitted=cand.is_omitted,
-            )
+                resolved_ids.add(item_id)
+                ordn = tracker.get_ordinal(item_id)
+                if ordn is not None and ordn > current_idx:
+                    current_idx = ordn
+        missing_labels = tuple(
+            f"ITEM {item}"
+            for idx, item in enumerate(canonical_order)
+            if idx <= current_idx and item not in resolved_ids
         )
 
     # Compute bounding spans between consecutive distinct start lines
@@ -204,11 +242,9 @@ def detect_section_sequence(
                 grouped_with=sec.grouped_with,
                 start_char=start_char,
                 end_char=end_char,
+                displaced=sec.displaced,
             )
         )
-
-    missing = tracker.missing_items(canonical_order)
-    missing_labels = tuple(f"ITEM {m}" for m in missing)
 
     digest = payload_sha256 or (sha256_text(text) if text else None)
     return SectionSequence(
@@ -217,6 +253,7 @@ def detect_section_sequence(
         missing_items=missing_labels,
         anachronistic_rejections=anachronisms,
         non_contiguous_rejections=non_contiguous,
+        disordered=assembly.disordered,
         payload_sha256=digest,
         representation_id=representation_id,
         renderer_version=renderer_version,
