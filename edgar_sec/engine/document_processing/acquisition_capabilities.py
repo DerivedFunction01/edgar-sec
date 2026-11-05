@@ -92,6 +92,19 @@ def resolve_acquisition_capability(
         handler_id = "raw_identity"
     else:
         profile = get_family_profile(family)
+        if (
+            profile is None
+            and operation == "render_to_txt"
+            and role != "exhibit"
+            and facts.suffix_class is DocumentSuffixClass.XML
+            and not _is_rendered_markup_path(facts)
+        ):
+            return CapabilityEntry(
+                normalized_family,
+                role,
+                operation,
+                CapabilityStatus.NOT_APPLICABLE,
+            )
         try:
             operation_kind = AcquisitionOperation(operation)
             allowed_operations = allowed_operations_of(profile)
@@ -113,10 +126,8 @@ def resolve_acquisition_capability(
                     capability_id = "text.plain"
                 elif facts.suffix_class is DocumentSuffixClass.MARKUP:
                     capability_id = "text.markup"
-                elif (
-                    facts.suffix_class is DocumentSuffixClass.XML
-                    and facts.path_shape is DocumentPathShape.NESTED
-                    and facts.path_context.split("/", 1)[0].casefold().startswith("xsl")
+                elif facts.suffix_class is DocumentSuffixClass.XML and (
+                    _is_rendered_markup_path(facts)
                 ):
                     capability_id = "text.rendered_markup"
                 elif (
@@ -173,6 +184,12 @@ def resolve_acquisition_capability(
         output_kind=registration.output_kind.value,
         registration=registration,
     )
+
+
+def _is_rendered_markup_path(facts: DocumentPathFacts) -> bool:
+    return facts.path_shape is DocumentPathShape.NESTED and facts.path_context.split(
+        "/", 1
+    )[0].casefold().startswith("xsl")
 
 
 def _route_from_facts(facts: DocumentPathFacts) -> DocumentRoute:
