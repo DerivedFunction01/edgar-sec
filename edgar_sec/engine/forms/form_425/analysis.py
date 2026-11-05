@@ -18,7 +18,7 @@ _FILE_NUMBER_RE = re.compile(r"\b(\d{1,3}-\d{4,}(?:-\d{2})?)\b")
 _FILE_CAPTION_RE = re.compile(r"commission\s+file\s+(?:no\.?|number)", re.IGNORECASE)
 _FILED_BY_RE = re.compile(r"filed\s+by:?\s*\n?\s*([^\n]+)", re.IGNORECASE)
 _SUBJECT_RE = re.compile(r"subject\s+company:?\s*\n?\s*([^\n]+)", re.IGNORECASE)
-_RULE_425_RE = re.compile(r"rule\s*425\b", re.IGNORECASE)
+_RULE_425_RE = re.compile(r"rules?\s*(?:\d+\s*(?:and|,)\s*)?425\b", re.IGNORECASE)
 _RULE_14A12_RE = re.compile(r"14a-12")
 
 

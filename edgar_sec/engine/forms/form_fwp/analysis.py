@@ -21,7 +21,7 @@ from edgar_sec.engine.forms.cover.registrant import parse_registrant_identity
 _RULE_433_RE = re.compile(r"rule\s*433\b", re.IGNORECASE)
 _REGISTRATION_RE = re.compile(
     r"registration\s+(?:statement\s+)?nos?\.?[:\s]*"
-    r"((?:\d{3}-\d{3,}(?:-\d{2})?[\s,and]*)+)",
+    r"((?:\d{3}-\d{3,}(?:-\d{2})?[\s,and;]*)+)",
     re.IGNORECASE,
 )
 _NUMBER_RE = re.compile(r"\d{3}-\d{3,}(?:-\d{2})?")

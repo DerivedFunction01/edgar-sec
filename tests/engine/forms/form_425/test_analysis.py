@@ -51,6 +51,23 @@ def test_analyze_case_425_header(tmp_path: Path) -> None:
     assert "missing_rule_reference" not in kinds
 
 
+def test_analyze_case_plural_rules_legend(tmp_path: Path) -> None:
+    text = _SAMPLE_425_TEXT.replace(
+        "Pursuant to Rule 425 under the Securities Act of 1933",
+        "Pursuant to Rules 165 and 425 under the Securities Act of 1933",
+    )
+    _write_case(tmp_path, text)
+
+    result = analyze_case(
+        tmp_path, {"accession": "0000899140-01-000143", "form": "425"}
+    )
+    assert result is not None
+    fields = result["form_425"]
+    assert fields["rule_425"] is True
+    kinds = {a["kind"] for a in result["anomalies"]}
+    assert "missing_rule_reference" not in kinds
+
+
 def test_analyze_case_bare_text_flags_missing_fields(tmp_path: Path) -> None:
     _write_case(tmp_path, "A press release with no filing header block.\n")
 

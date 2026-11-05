@@ -60,6 +60,25 @@ def test_analyze_case_fwp_header(tmp_path: Path) -> None:
     assert "missing_registration_number" not in kinds
 
 
+def test_analyze_case_semicolon_joined_registration_numbers(
+    tmp_path: Path,
+) -> None:
+    text = _SAMPLE_FWP_TEXT.replace(
+        "Registration Statement Nos. 333-275079 and 333-275079-04",
+        "Registration Statement Nos. 333-250103; 333-250103-01",
+    )
+    _write_case(tmp_path, text)
+
+    result = analyze_case(
+        tmp_path, {"accession": "0000950103-23-007274", "form": "FWP"}
+    )
+    assert result is not None
+    fields = result["form_fwp"]
+    assert fields["registration_numbers"] == ["333-250103", "333-250103-01"]
+    kinds = {a["kind"] for a in result["anomalies"]}
+    assert "missing_registration_number" not in kinds
+
+
 def test_analyze_case_bare_text_flags_missing_fields(tmp_path: Path) -> None:
     _write_case(tmp_path, "A short communication with no header block.\n")
 
