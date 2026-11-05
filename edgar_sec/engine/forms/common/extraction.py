@@ -446,6 +446,62 @@ def find_xml_element(root: ET.Element, path: str) -> ET.Element | None:
     return current
 
 
+def xml_element_text_or_none(element: ET.Element | None) -> str | None:
+    """Return the trimmed text of an element, or None when it carries none."""
+    if element is None or element.text is None:
+        return None
+    value = element.text.strip()
+    return value if value else None
+
+
+def find_element_path(parent: ET.Element | None, *tags: str) -> ET.Element | None:
+    """Resolve a chain of direct children by local name."""
+    current = parent
+    for tag in tags:
+        if current is None:
+            return None
+        current = find_child_element(current, tag)
+    return current
+
+
+def find_deep_elements(parent: ET.Element, tag_name: str) -> list[ET.Element]:
+    """Return every element in the subtree carrying the local name."""
+    return [elem for elem in parent.iter() if local_name(elem.tag) == tag_name]
+
+
+def first_deep_text(parent: ET.Element, tag_name: str) -> str | None:
+    """Return the first non-empty subtree text carrying the local name."""
+    for elem in parent.iter():
+        if local_name(elem.tag) == tag_name:
+            text = xml_element_text_or_none(elem)
+            if text:
+                return text
+    return None
+
+
+def all_deep_texts(parent: ET.Element, tag_name: str) -> tuple[str, ...]:
+    """Return every non-empty subtree text carrying the local name."""
+    return tuple(
+        text
+        for text in (
+            xml_element_text_or_none(elem)
+            for elem in parent.iter()
+            if local_name(elem.tag) == tag_name
+        )
+        if text
+    )
+
+
+def has_deep_element(parent: ET.Element, tag_name: str) -> bool:
+    """Return whether any element in the subtree carries the local name."""
+    return any(local_name(elem.tag) == tag_name for elem in parent.iter())
+
+
+def count_deep_elements(parent: ET.Element, tag_name: str) -> int:
+    """Count the elements in the subtree carrying the local name."""
+    return sum(1 for elem in parent.iter() if local_name(elem.tag) == tag_name)
+
+
 def validate_xml_required(
     root: ET.Element,
     requirements: Sequence[RequiredElement],
@@ -622,9 +678,15 @@ __all__ = [
     "build_unresolved_record",
     "constraint_issue",
     "emit_field_value",
+    "all_deep_texts",
+    "count_deep_elements",
     "extract_value",
     "child_element_index",
     "find_child_element",
+    "find_deep_elements",
+    "find_element_path",
+    "first_deep_text",
+    "has_deep_element",
     "local_name",
     "find_xml_element",
     "format_field_value",
@@ -639,4 +701,5 @@ __all__ = [
     "validate_xml_values",
     "xml_date_is_valid",
     "xml_element_text",
+    "xml_element_text_or_none",
 ]

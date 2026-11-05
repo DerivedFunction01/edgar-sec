@@ -89,3 +89,28 @@ def test_filled_check_pattern_matches_only_a_symbol_in_a_slot() -> None:
 def test_mark_characters_cover_every_mark_glyph() -> None:
     for glyph in "☒☑✓✔✘☐□¨xXoOþýrR●■▪•&#9746;_-[](){}":
         assert glyph in MARK_CHARACTERS
+
+
+def test_root_and_box_glyphs_are_checked_symbols() -> None:
+    assert mark_token_state("√") == "checked"
+    assert mark_token_state("⌧") == "checked"
+    assert mark_token_state("[√]") == "checked"
+    assert mark_token_state("(⌧)") == "checked"
+    assert mark_token_state("___√____") == "checked"
+    assert "√" in MARK_CHARACTERS
+    assert "⌧" in MARK_CHARACTERS
+
+
+def test_symbol_font_remnants_need_the_bare_context() -> None:
+    assert mark_token_state("ý") is None
+    assert mark_token_state("þ") is None
+    assert mark_token_state("\uf0a8") is None
+    assert mark_token_state("ý", allow_bare=True) == "checked"
+    assert mark_token_state("þ", allow_bare=True) == "checked"
+    assert mark_token_state("\uf0a8", allow_bare=True) == "unchecked"
+    assert "\uf0a8" in MARK_CHARACTERS
+
+
+def test_a_letter_glyph_inside_a_word_is_never_a_mark() -> None:
+    assert CHECKMARK_MARK_RE.search("Novotný") is None
+    assert CHECKMARK_MARK_RE.search("Dvořák ý") is not None

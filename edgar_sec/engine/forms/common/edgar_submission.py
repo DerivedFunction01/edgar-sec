@@ -5,7 +5,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 import xml.etree.ElementTree as ET
 
-from edgar_sec.engine.forms.common.extraction import local_name
+from edgar_sec.engine.forms.common.extraction import (
+    find_child_element,
+    find_deep_elements,
+    local_name,
+    xml_element_text_or_none,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -17,24 +22,6 @@ class EdgarHeader:
     filer_ciks: tuple[str, ...]
     contact_name: str | None
     contact_email: str | None
-
-
-def _text(elem: ET.Element | None) -> str | None:
-    if elem is None or elem.text is None:
-        return None
-    val = elem.text.strip()
-    return val if val else None
-
-
-def _find_first(parent: ET.Element, tag_name: str) -> ET.Element | None:
-    for child in parent:
-        if local_name(child.tag) == tag_name:
-            return child
-    return None
-
-
-def _find_all_deep(parent: ET.Element, tag_name: str) -> list[ET.Element]:
-    return [e for e in parent.iter() if local_name(e.tag) == tag_name]
 
 
 def edgar_submission_root(raw_bytes: bytes) -> ET.Element | None:
@@ -60,27 +47,37 @@ def edgar_header_from_root(root: ET.Element) -> EdgarHeader | None:
     """Extract the header block from a parsed edgarSubmission root."""
     if local_name(root.tag) != "edgarSubmission":
         return None
-    header = _find_first(root, "headerData") or root
-    filer_info = _find_first(header, "filerInfo")
+    header = find_child_element(root, "headerData") or root
+    filer_info = find_child_element(header, "filerInfo")
     scope = filer_info if filer_info is not None else header
     ciks = tuple(
-        text for text in (_text(e) for e in _find_all_deep(scope, "filerCik")) if text
+        text
+        for text in (
+            xml_element_text_or_none(e) for e in find_deep_elements(scope, "filerCik")
+        )
+        if text
     )
-    contact = _find_first(scope, "contact")
+    contact = find_child_element(scope, "contact")
     live = (
-        _text(_find_first(scope, "liveTestFlag"))
-        or _text(_find_first(header, "liveTestFlag"))
-        or _text(_find_first(header, "testOrLive"))
+        xml_element_text_or_none(find_child_element(scope, "liveTestFlag"))
+        or xml_element_text_or_none(find_child_element(header, "liveTestFlag"))
+        or xml_element_text_or_none(find_child_element(header, "testOrLive"))
     )
     return EdgarHeader(
-        submission_type=_text(_find_first(header, "submissionType")),
+        submission_type=xml_element_text_or_none(
+            find_child_element(header, "submissionType")
+        ),
         live_test_flag=live,
         filer_ciks=ciks,
-        contact_name=_text(_find_first(contact, "contactName"))
+        contact_name=xml_element_text_or_none(
+            find_child_element(contact, "contactName")
+        )
         if contact is not None
         else None,
         contact_email=(
-            _text(_find_first(contact, "contactEmail")) if contact is not None else None
+            xml_element_text_or_none(find_child_element(contact, "contactEmail"))
+            if contact is not None
+            else None
         ),
     )
 

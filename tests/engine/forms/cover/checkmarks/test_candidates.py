@@ -350,3 +350,50 @@ def test_plural_report_labels_are_extracted() -> None:
     assert "transition" in by_key
     assert by_key["annual"].source_token == "ý"
     assert by_key["transition"].source_token == "o"
+
+
+_SD_13P = (
+    "Rule 13p-1 under the Securities Exchange Act (17 CFR 240.13p-1) "
+    "for the reporting period from January 1 to December 31, 2024."
+)
+_SD_13Q = (
+    "Rule 13q-1 under the Securities Exchange Act (17 CFR 240.13q-1) "
+    "for the fiscal year ended December 31, 2024."
+)
+
+
+def test_a_glyphless_sibling_line_never_inherits_a_mark() -> None:
+    marked_first = f"FORM SD\n[X] {_SD_13P}\n{_SD_13Q}\n"
+    marked_second = f"FORM SD\n{_SD_13Q}\n[X] {_SD_13P}\n"
+
+    for text in (marked_first, marked_second):
+        candidates = extract_cover_candidates(text, _boundary(text), family="SD")
+        by_key = {c.semantic_key: c for c in candidates}
+        assert set(by_key) == {"rule_13p_1"}
+        assert by_key["rule_13p_1"].known_state == "checked"
+
+
+def test_the_nearby_fallback_still_binds_an_unclaimed_mark() -> None:
+    text = f"FORM SD\n√ {_SD_13P}\n{_SD_13Q}\n[X]\n"
+    candidates = extract_cover_candidates(text, _boundary(text), family="SD")
+
+    by_key = {c.semantic_key: c for c in candidates}
+    assert by_key["rule_13p_1"].known_state == "checked"
+    assert by_key["rule_13q_1"].known_state == "checked"
+    assert by_key["rule_13q_1"].row == 2
+
+
+def test_sd_root_glyph_and_remnant_pair_resolve_their_states() -> None:
+    root = f"FORM SD\n√ {_SD_13P}\n{_SD_13Q}\n"
+    root_candidates = extract_cover_candidates(root, _boundary(root), family="SD")
+    root_by_key = {c.semantic_key: c for c in root_candidates}
+    assert root_by_key["rule_13p_1"].known_state == "checked"
+    assert "rule_13q_1" not in root_by_key
+
+    remnants = f"FORM SD\ný {_SD_13P}\n\uf0a8 {_SD_13Q}\n"
+    remnant_candidates = extract_cover_candidates(
+        remnants, _boundary(remnants), family="SD"
+    )
+    remnant_by_key = {c.semantic_key: c for c in remnant_candidates}
+    assert remnant_by_key["rule_13p_1"].known_state == "checked"
+    assert remnant_by_key["rule_13q_1"].known_state == "unchecked"

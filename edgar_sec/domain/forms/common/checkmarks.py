@@ -52,6 +52,8 @@ CHECKED_INNER = (
     "☑",
     "☒",
     "✘",
+    "√",
+    "⌧",
 )
 UNCHECKED_INNER = (" ", "  ", "_", " _ ", "&nbsp;", " &nbsp; ")
 
@@ -67,6 +69,8 @@ CHECKED_SYMBOLS = (
     "✓",
     "✔",
     "✘",
+    "√",
+    "⌧",
 )
 UNCHECKED_SYMBOLS = ("☐", "□", "¨")
 
@@ -184,7 +188,13 @@ RAW_UNCHECKED_TOKENS = (
 CHECKED_TOKENS = frozenset(RAW_CHECKED_TOKENS)
 UNCHECKED_TOKENS = frozenset(RAW_UNCHECKED_TOKENS)
 
-BARE_MARK_TOKENS = ("x", "X", "o", "O", "þ", "ý", "r", "R")
+BARE_MARK_TOKENS = ("x", "X", "o", "O", "þ", "ý", "\uf0a8", "r", "R")
+
+# Symbol-font remnants: in the filed corpora these glyphs appear only as
+# isolated mark tokens. CHECKMARK_MARK_RE reaches a bare glyph only when no
+# word character adjoins it, so a letter ý inside a word is never classified.
+GUARDED_CHECKED_GLYPHS = ("ý", "þ")
+GUARDED_UNCHECKED_GLYPHS = ("\uf0a8",)
 
 CHECKMARK_MARK_TOKENS = (
     *RAW_CHECKED_TOKENS,
@@ -205,7 +215,7 @@ _OTHER_MARK_TOKENS = tuple(
 
 MARK_OPEN = r"[\[\(\{]"
 MARK_CLOSE = r"[\]\)\}]"
-CHECKED_SYMBOL = r"[xX✓✔☑☒✘]"
+CHECKED_SYMBOL = r"[xX✓✔☑☒✘√⌧]"
 SPACED_BLANK = r"\s{1,8}"
 UNDERSCORE_RUN = r"_{1,8}"
 
@@ -323,6 +333,10 @@ def mark_token_state(value: str, *, allow_bare: bool = False) -> str | None:
         return "unchecked"
     if allow_bare and token in BARE_CHECKED_TOKENS:
         return "checked"
+    if allow_bare and token in GUARDED_CHECKED_GLYPHS:
+        return "checked"
+    if allow_bare and token in GUARDED_UNCHECKED_GLYPHS:
+        return "unchecked"
     return None
 
 
@@ -343,6 +357,8 @@ __all__ = [
     "FILLED_CHECKED_PATTERN",
     "FONT_BULLET_GLYPH_MAPPINGS",
     "FONT_GLYPH_MAPPINGS",
+    "GUARDED_CHECKED_GLYPHS",
+    "GUARDED_UNCHECKED_GLYPHS",
     "MARK_CHARACTERS",
     "RAW_CHECKED_TOKENS",
     "RAW_UNCHECKED_TOKENS",

@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 import shutil
+import tempfile
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
@@ -27,8 +28,8 @@ from edgar_sec.foundation.runtime.settings.parquet import (
     resolve_parquet_read_batch_size,
 )
 from edgar_sec.infra.storage.duckdb import (
-    arrow_reader,
     connect,
+    copy_query_to_parquet,
     sql_literal,
     sql_path_list,
 )
@@ -560,7 +561,7 @@ def _validate_target_plan(plan_dir: Path) -> _ValidatedPlan:
     return _ValidatedPlan(root, manifest, parts, relations)
 
 
-def _iter_projected_batches(parts: tuple[Path, ...]):
+def _iter_projected_batches(parts: tuple[Path, ...], spool_path: Path):
     if not parts:
         return
     batch_size = resolve_parquet_read_batch_size()
@@ -615,11 +616,11 @@ def _iter_projected_batches(parts: tuple[Path, ...]):
         "ORDER BY form, accession, request_id, "
         "COALESCE(inventory_entry_id, ''), status"
     )
+    # The ORDER BY is materialized through the COPY sink, whose rows are in
+    # sort order; a streamed reader may emit parallel sort runs concatenated.
     with connect() as con:
-        reader = arrow_reader(
-            con, query, batch_size=batch_size, schema=WORK_ORDER_SCHEMA
-        )
-        yield from reader
+        copy_query_to_parquet(con, query, spool_path, schema=WORK_ORDER_SCHEMA)
+    yield from pq.ParquetFile(spool_path).iter_batches(batch_size=batch_size)
 
 
 def load_acquisition_work_order(
@@ -643,8 +644,14 @@ def load_acquisition_work_order(
         **{name: [] for name in validated.relations},
         "resolved_operations": [],
     }
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    spool = tempfile.TemporaryDirectory(
+        dir=destination.parent, prefix=".work-order-spool-"
+    )
     try:
-        for batch in _iter_projected_batches(validated.parts):
+        for batch in _iter_projected_batches(
+            validated.parts, Path(spool.name) / "targets.parquet"
+        ):
             batch_executable_count = int(
                 pc.sum(
                     pc.cast(
@@ -689,6 +696,7 @@ def load_acquisition_work_order(
                 validated.relations["target_operations"],
                 validated.relations["source_requests"],
                 validated.relations["operation_inputs"],
+                spool_dir=Path(spool.name),
             ):
                 resolved_writer.write_batch(batch)
             resolved_writer.commit(
@@ -715,6 +723,8 @@ def load_acquisition_work_order(
             for descriptor in descriptors:
                 (destination.parent / descriptor["path"]).unlink(missing_ok=True)
         raise
+    finally:
+        spool.cleanup()
     relation_counts = {
         relation: sum(part["row_count"] for part in descriptors)
         for relation, descriptors in relation_parts.items()

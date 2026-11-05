@@ -627,6 +627,87 @@ def test_form_4_exact_form_selection_projects_lazy_index_trigger(
     assert table.column("lazy_index_trigger_version").to_pylist() == ["1"]
 
 
+def _work_order_sort_key(row: dict[str, Any]) -> tuple:
+    return (
+        row["form"],
+        row["accession"],
+        row["request_id"],
+        row["inventory_entry_id"] or "",
+        row["status"],
+    )
+
+
+def test_projection_is_sorted_and_byte_stable_across_runs(
+    target_plan_factory, tmp_path
+) -> None:
+    plan_root, source_rows = target_plan_factory()
+    outputs = []
+    for index in range(2):
+        result = load_acquisition_work_order(
+            plan_root, tmp_path / f"run-{index}" / "work-order.parquet"
+        )
+        outputs.append(result)
+        rows = pq.read_table(result.parquet_path).to_pylist()
+        keys = [_work_order_sort_key(row) for row in rows]
+        assert keys == sorted(keys)
+        assert len(rows) == len(source_rows)
+
+    first, second = outputs
+    assert first.relation_digests == second.relation_digests
+    for relation in ("targets", "resolved_operations"):
+        assert [p["sha256"] for p in first.relation_parts[relation]] == [
+            p["sha256"] for p in second.relation_parts[relation]
+        ]
+
+
+def test_projection_does_not_depend_on_the_streamed_sort(
+    target_plan_factory, tmp_path, monkeypatch
+) -> None:
+    # Replays the observed sort-stream disorder at the retired reader seam:
+    # locally sorted runs whose concatenation is not globally sorted, with
+    # one target's operation rows split across the run boundary.
+    from edgar_sec.infra.storage.duckdb import arrow_reader as real_reader
+
+    def fake_reader(con, query, batch_size=None, schema=None):
+        batches = list(real_reader(con, query, batch_size=batch_size, schema=schema))
+        table = pa.Table.from_batches(batches)
+        rows = table.to_pylist()
+        if "operation_id" in query:
+            boundary = next(
+                index
+                for index in range(1, len(rows))
+                if rows[index]["target_id"] != rows[0]["target_id"]
+            )
+            rows = rows[boundary + 1 :] + rows[: boundary + 1]
+        else:
+            rows = rows[len(rows) // 2 :] + rows[: len(rows) // 2]
+        return iter(pa.Table.from_pylist(rows, schema=table.schema).to_batches())
+
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_acquisition.plan_projection."
+        "operation_resolution.arrow_reader",
+        fake_reader,
+        raising=False,
+    )
+    monkeypatch.setattr(
+        "edgar_sec.pipelines.document_acquisition.plan_projection."
+        "target_plan.arrow_reader",
+        fake_reader,
+        raising=False,
+    )
+
+    plan_root, source_rows = target_plan_factory()
+    result = load_acquisition_work_order(plan_root, tmp_path / "work-order.parquet")
+
+    rows = pq.read_table(result.parquet_path).to_pylist()
+    keys = [_work_order_sort_key(row) for row in rows]
+    assert keys == sorted(keys)
+    resolved = pq.read_table(
+        tmp_path / result.relation_parts["resolved_operations"][0]["path"]
+    )
+    assert resolved.num_rows == 3 * len(source_rows)
+
+
 def _scan_row(**overrides):
     base = _rows("test_plan")[0]
     custom = dict(

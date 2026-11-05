@@ -2,57 +2,19 @@
 
 from __future__ import annotations
 
-import xml.etree.ElementTree as ET
-
 from edgar_sec.domain.forms.families.form_rega.models import RegADocument, RegAKind
 from edgar_sec.domain.forms.families.form_rega.taxonomy import kind_of
 from edgar_sec.engine.forms.common.edgar_submission import (
     edgar_header_from_root,
     edgar_submission_root,
 )
-from edgar_sec.engine.forms.common.extraction import local_name
-
-
-def _text(elem: ET.Element | None) -> str | None:
-    if elem is None or elem.text is None:
-        return None
-    val = elem.text.strip()
-    return val if val else None
-
-
-def _find_first(parent: ET.Element, tag_name: str) -> ET.Element | None:
-    for child in parent:
-        if local_name(child.tag) == tag_name:
-            return child
-    return None
-
-
-def _find_path(parent: ET.Element, *tags: str) -> ET.Element | None:
-    current: ET.Element | None = parent
-    for tag in tags:
-        if current is None:
-            return None
-        current = _find_first(current, tag)
-    return current
-
-
-def _deep_texts(
-    parent: ET.Element, tag_names: frozenset[str]
-) -> dict[str, tuple[str, ...]]:
-    """Non-empty texts of every wanted tag, in document order, in one pass."""
-    found: dict[str, list[str]] = {name: [] for name in tag_names}
-    for elem in parent.iter():
-        name = local_name(elem.tag)
-        if name not in found:
-            continue
-        text = _text(elem)
-        if text:
-            found[name].append(text)
-    return {name: tuple(texts) for name, texts in found.items()}
-
-
-def _first(texts: tuple[str, ...]) -> str | None:
-    return texts[0] if texts else None
+from edgar_sec.engine.forms.common.extraction import (
+    all_deep_texts,
+    find_child_element,
+    find_element_path,
+    first_deep_text,
+    xml_element_text_or_none,
+)
 
 
 def parse_rega_xml(raw_bytes: bytes) -> RegADocument | None:
@@ -62,49 +24,44 @@ def parse_rega_xml(raw_bytes: bytes) -> RegADocument | None:
     if root is None or header is None:
         return None
     kind = kind_of(header.submission_type)
-    header_elem = _find_first(root, "headerData")
+    header_elem = find_child_element(root, "headerData")
     if header_elem is None:
         header_elem = root
-    form_data = _find_first(root, "formData")
+    form_data = find_child_element(root, "formData")
     scope = form_data if form_data is not None else root
-    header_deep = _deep_texts(
-        header_elem, frozenset({"cik", "offeringFileNumber", "fileNumber"})
-    )
-    scope_deep = _deep_texts(
-        scope,
-        frozenset(
-            {"commissionFileNumber", "issuerName", "cik", "jurisdictionOrganization"}
-        ),
-    )
-    filer_ciks = header.filer_ciks or header_deep["cik"]
+    header_ciks = all_deep_texts(header_elem, "cik")
+    filer_ciks = header.filer_ciks or header_ciks
     file_number = (
-        _first(scope_deep["commissionFileNumber"])
-        or _first(header_deep["offeringFileNumber"])
-        or _first(header_deep["fileNumber"])
+        first_deep_text(scope, "commissionFileNumber")
+        or first_deep_text(header_elem, "offeringFileNumber")
+        or first_deep_text(header_elem, "fileNumber")
     )
     tier = None
     total_aggregate = None
     if kind is RegAKind.OFFERING:
-        tier = _text(_find_path(scope, "summaryInfo", "indicateTier1Tier2Offering"))
-        total_aggregate = _text(
-            _find_path(scope, "summaryInfo", "totalAggregateOffering")
+        tier = xml_element_text_or_none(
+            find_element_path(scope, "summaryInfo", "indicateTier1Tier2Offering")
+        )
+        total_aggregate = xml_element_text_or_none(
+            find_element_path(scope, "summaryInfo", "totalAggregateOffering")
         )
     return RegADocument(
         submission_type=header.submission_type,
         kind=kind,
         live_test_flag=header.live_test_flag,
         filer_ciks=filer_ciks,
-        issuer_name=_first(scope_deep["issuerName"]),
-        issuer_cik=_first(scope_deep["cik"]),
+        issuer_name=first_deep_text(scope, "issuerName"),
+        issuer_cik=first_deep_text(scope, "cik"),
         commission_file_number=file_number,
-        jurisdiction=_first(scope_deep["jurisdictionOrganization"]),
+        jurisdiction=first_deep_text(scope, "jurisdictionOrganization"),
         tier=tier,
         total_aggregate_offering=total_aggregate,
         has_summary_block=(
-            _find_first(scope, "summaryInfo") is not None
-            or _find_first(scope, "summaryInfoOffering") is not None
+            find_child_element(scope, "summaryInfo") is not None
+            or find_child_element(scope, "summaryInfoOffering") is not None
         ),
-        has_certification=_find_first(scope, "certificationSuspension") is not None,
+        has_certification=find_child_element(scope, "certificationSuspension")
+        is not None,
     )
 
 
