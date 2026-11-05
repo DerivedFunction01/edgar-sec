@@ -1854,3 +1854,70 @@ def test_payments_coordinate_squatters_leave_by_their_source_acts() -> None:
         )
         assert result.tier == UNRELATED
         assert result.via_bridge is False
+
+
+def test_head_mismatch_distance_uses_presumed_atoms_under_defaults() -> None:
+    """A head-mismatched pair stays UNRELATED; its distance counts presumption."""
+    from edgar_sec.engine.xbrl.taxonomy.defaults import DefaultCoordinate
+    from edgar_sec.engine.xbrl.taxonomy.heads_modifiers import SiblingGroup
+
+    entry = DefaultCoordinate(
+        head="H_EXPENSE",
+        identity_modifiers=("M_DEFERRED",),
+        axis="MATURITY_HORIZON",
+        presumed_modifier="M_CURRENT",
+        rationale="Synthetic: portion identity, horizon default.",
+        attestation_class="anticipated",
+    )
+    groups = (
+        SiblingGroup("MATURITY_HORIZON", ("M_CURRENT", "M_NONCURRENT"), "compoundable"),
+    )
+    target = Atom("H_EXPENSE", frozenset({"M_DEFERRED"}))
+    candidate = Atom("H_ASSET", frozenset({"M_TAX"}))
+    stated = classify_ladder_pair(target, candidate, sibling_groups=groups)
+    assert stated.tier == UNRELATED
+    assert stated.modifier_distance == 2
+    presumed = classify_ladder_pair(target, candidate, (entry,), sibling_groups=groups)
+    assert presumed.tier == UNRELATED
+    assert presumed.rule == ""
+    assert presumed.via_default is False
+    assert presumed.via_filing_local is False
+    assert presumed.via_bridge is False
+    assert presumed.direction == ""
+    assert presumed.modifier_distance == 3
+
+
+def test_head_mismatch_distance_counts_placement_horizon() -> None:
+    """A placement horizon presumed on one side enters the pair distance."""
+    target = Atom("H_ASSET", frozenset({"M_TAX"}))
+    candidate = Atom("H_LIABILITY", frozenset({"M_TAX"}))
+    plain = classify_ladder_pair(target, candidate)
+    assert plain.tier == UNRELATED
+    assert plain.modifier_distance == 0
+    placed = classify_ladder_pair(
+        target, candidate, candidate_placement_horizon="M_CURRENT"
+    )
+    assert placed.tier == UNRELATED
+    assert placed.via_filing_local is False
+    assert placed.modifier_distance == 1
+
+
+def test_head_mismatched_purchase_pair_still_reaches_the_bridge() -> None:
+    """The purchase marker keeps a head-mismatched pair out of the fast exit."""
+    from edgar_sec.engine.xbrl.schema.relations import AtomRelation, AtomRelationGraph
+
+    payments = Atom("H_CASH", frozenset({"M_PPE_CAPEX"}))
+    purchase = Atom("H_ASSET", frozenset({"M_PPE_CAPEX", "M_PURCHASE"}))
+    edge = AtomRelation(
+        edge_id="R_SYNTHETIC_DIALECT",
+        relation_type="DIALECT_OF",
+        source=payments,
+        target=purchase,
+    )
+    graph = AtomRelationGraph((edge,))
+    for target, candidate in ((payments, purchase), (purchase, payments)):
+        result = classify_ladder_pair(target, candidate, relations=graph)
+        assert result.tier == NEAR
+        assert result.rule == "dialect_bridge"
+        assert result.via_bridge is True
+        assert result.modifier_distance == 0
