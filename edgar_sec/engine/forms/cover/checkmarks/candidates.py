@@ -618,6 +618,55 @@ def extract_cover_candidates(
             )
         return bisect_right(unmasked_line_starts, offset) - 1
 
+    # A mark bound to a label on its own line is claimed: the nearby-line
+    # fallback, resolved after the scan, must never reuse it for a second
+    # label, or a glyph-less sibling line inherits the mark as its own.
+    claimed_marks: set[int] = set()
+    deferred: list[tuple[int, str, str, int, int, str]] = []
+
+    def _emit(
+        line_index: int,
+        line: str,
+        key: str,
+        phrase: str,
+        start: int,
+        end: int,
+        group: str,
+        mark_refs: list[tuple[int, re.Match[str]]],
+        date_valid: bool,
+    ) -> None:
+        row_text = " ".join(
+            [line]
+            + [
+                lines[nearby_index].rstrip("\r\n")
+                for nearby_index, _ in mark_refs
+                if nearby_index != line_index
+            ]
+        )
+        for mark_line, mark in mark_refs:
+            mark_start = masked_to_original(
+                masked_line_offsets[mark_line] + mark.start()
+            )
+            mark_end = masked_to_original(masked_line_offsets[mark_line] + mark.end())
+            candidates.append(
+                _candidate_from_match(
+                    key=key,
+                    group=group,
+                    token=mark,
+                    label=(phrase, start, end),
+                    row_text=row_text or line,
+                    source_region=f"line-{mark_line}-mark-{mark_start}",
+                    row=line_index,
+                    orientation=_orientation(
+                        _span_position(mark_line, None, 0, (mark.start(), mark.end())),
+                        _span_position(line_index, None, 0, (start, end)),
+                    ),
+                    mark_span=(mark_start, mark_end),
+                    answer_matches=_signals_for(mark_line).answers,
+                    date_valid=date_valid,
+                )
+            )
+
     for line_index, raw_line in enumerate(lines):
         line_offset = masked_line_offsets[line_index]
         unmasked_index = _unmasked_line_at(masked_to_original(line_offset))
@@ -626,14 +675,15 @@ def extract_cover_candidates(
         if unmasked_index < start_line:
             continue
         line = raw_line.rstrip("\r\n")
-        candidates.extend(
-            _line_yes_no_candidates(
-                line,
-                line_index=line_index,
-                line_offset=masked_to_original(line_offset),
-                signals=_signals_for(line_index),
-            )
+        yes_no = _line_yes_no_candidates(
+            line,
+            line_index=line_index,
+            line_offset=masked_to_original(line_offset),
+            signals=_signals_for(line_index),
         )
+        if yes_no:
+            claimed_marks.update(id(mark) for mark in _signals_for(line_index).marks)
+            candidates.extend(yes_no)
         signals = _signals_for(line_index)
         labels = signals.labels
         if not labels:
@@ -664,62 +714,55 @@ def extract_cover_candidates(
             else:
                 mark_refs = []
             used_line_marks.update(id(mark) for _, mark in mark_refs)
+            claimed_marks.update(id(mark) for _, mark in mark_refs)
             if not mark_refs:
                 if group == REPORT_PERIOD_GROUP:
                     continue
-                nearby_marks = [
-                    (nearby_index, mark)
-                    for nearby_index in range(
-                        max(0, line_index - 2),
-                        min(len(lines), line_index + 3),
-                    )
-                    if nearby_index != line_index
-                    for mark in _signals_for(nearby_index).marks
-                ]
-                selected = select_unique_nearest(
-                    _span_position(line_index, None, 0, (start, end)),
-                    nearby_marks,
-                    position_of=lambda item: _span_position(
-                        item[0], None, 0, (item[1].start(), item[1].end())
-                    ),
-                )
-                if selected is not None:
-                    mark_refs.append(selected)
-            row_text = " ".join(
-                [line]
-                + [
-                    lines[nearby_index].rstrip("\r\n")
-                    for nearby_index, _ in mark_refs
-                    if nearby_index != line_index
-                ]
+                deferred.append((line_index, key, phrase, start, end, group))
+                continue
+            _emit(
+                line_index,
+                line,
+                key,
+                phrase,
+                start,
+                end,
+                group,
+                mark_refs,
+                signals.date_present,
             )
-            for mark_line, mark in mark_refs:
-                mark_start = masked_to_original(
-                    masked_line_offsets[mark_line] + mark.start()
-                )
-                mark_end = masked_to_original(
-                    masked_line_offsets[mark_line] + mark.end()
-                )
-                candidates.append(
-                    _candidate_from_match(
-                        key=key,
-                        group=group,
-                        token=mark,
-                        label=(phrase, start, end),
-                        row_text=row_text or line,
-                        source_region=f"line-{mark_line}-mark-{mark_start}",
-                        row=line_index,
-                        orientation=_orientation(
-                            _span_position(
-                                mark_line, None, 0, (mark.start(), mark.end())
-                            ),
-                            _span_position(line_index, None, 0, (start, end)),
-                        ),
-                        mark_span=(mark_start, mark_end),
-                        answer_matches=_signals_for(mark_line).answers,
-                        date_valid=signals.date_present,
-                    )
-                )
+    for line_index, key, phrase, start, end, group in deferred:
+        nearby_marks = [
+            (nearby_index, mark)
+            for nearby_index in range(
+                max(0, line_index - 2),
+                min(len(lines), line_index + 3),
+            )
+            if nearby_index != line_index
+            for mark in _signals_for(nearby_index).marks
+            if id(mark) not in claimed_marks
+        ]
+        selected = select_unique_nearest(
+            _span_position(line_index, None, 0, (start, end)),
+            nearby_marks,
+            position_of=lambda item: _span_position(
+                item[0], None, 0, (item[1].start(), item[1].end())
+            ),
+        )
+        if selected is None:
+            continue
+        claimed_marks.add(id(selected[1]))
+        _emit(
+            line_index,
+            lines[line_index].rstrip("\r\n"),
+            key,
+            phrase,
+            start,
+            end,
+            group,
+            [selected],
+            _signals_for(line_index).date_present,
+        )
     return tuple(candidates)
 
 
