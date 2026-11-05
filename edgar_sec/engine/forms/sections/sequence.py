@@ -10,11 +10,10 @@ T = TypeVar("T")
 
 @dataclass(frozen=True, slots=True)
 class SequenceAssembly(Generic[T]):
-    """Spine / displaced / rejected partition of a candidate event stream.
+    """Spine / displaced / rejected partition of an event stream.
 
-    Indices address the event list handed to assemble_sequence; a
-    disordered assembly carries no displaced set and the caller falls
-    back to first-fit selection over the same events.
+    Indices address the assemble_sequence input; a disordered
+    assembly's caller falls back to first-fit selection.
     """
 
     spine: tuple[int, ...]
@@ -117,12 +116,8 @@ class MonotonicSequenceTracker(Generic[T]):
     def assemble_sequence(self, events: list[tuple[T, ...]]) -> SequenceAssembly[T]:
         """Partition events into the canonical spine plus displaced items.
 
-        The first event (document order) whose ordinal set is disjoint
-        from every earlier admitted event claims those ordinals; later
-        events touching a claimed ordinal are duplicates, never
-        displacements. A non-spine event is displaced only when the
-        displaced set is itself canonically increasing and each member
-        inverts against the spine; otherwise the stream is disordered.
+        First disjoint claimant wins an ordinal; later claimants are
+        duplicates. Displaced events rise canonically, inverting the spine.
         """
         spans = [self._event_span(identifiers) for identifiers in events]
         claimed: set[T] = set()
