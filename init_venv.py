@@ -149,30 +149,6 @@ def check_installation() -> None:
     subprocess.run([python_exec, "-c", parquet_code])
 
 
-def show_menu() -> None:
-    """Display interactive menu."""
-    print("\n" + "=" * 60)
-    print("🐍 INTERACTIVE ENVIRONMENT SETUP")
-    print("=" * 60)
-    venv_status = f"ACTIVE (in ./{VENV_DIR})" if USE_VENV else "INACTIVE (global)"
-    print(f"Virtual Environment : {venv_status}")
-    print(f"Package Manager     : {'uv ⚡' if USE_UV else 'pip'}")
-    platform_info = "Windows" if sys.platform == "win32" else "Linux/WSL/Mac"
-    print(f"Platform            : {platform_info}")
-    print("\nOptions:")
-    print("  0. Install edgar-sec + dev set from pyproject.toml")
-    print("  3. Check current installation")
-    print("  5. Exit")
-    print("-" * 60)
-
-
-_REMOVED = (
-    "Choices 1, 2 and 4 and the lettered bundles installed the torch/ML and "
-    "notebook stacks. Nothing in this codebase imports them, so they are not "
-    "declared in pyproject.toml and are no longer installed."
-)
-
-
 def main() -> None:
     global USE_VENV, UPGRADE
 
@@ -190,15 +166,9 @@ def main() -> None:
         help="Upgrade packages when installing.",
     )
     parser.add_argument(
-        "--reinstall-torch",
+        "--check",
         action="store_true",
-        help="Accepted for compatibility; torch is not part of this package.",
-    )
-    parser.add_argument(
-        "--choice",
-        type=str,
-        default=None,
-        help="Select a menu choice immediately (0, 3 or 5) and exit.",
+        help="Report the installed versions in the venv and exit.",
     )
     args = parser.parse_args()
 
@@ -207,43 +177,24 @@ def main() -> None:
     if args.upgrade:
         UPGRADE = True
 
+    if args.check:
+        if USE_VENV and not Path(_python_executable()).is_file():
+            print(f"❌ No virtual environment found at '{VENV_DIR}'.")
+            sys.exit(1)
+        check_installation()
+        return
+
     print("\n🔍 Detecting package manager...")
     detect_uv()
 
     if USE_VENV:
         create_venv()
 
-    def run_choice(choice: str) -> bool:
-        """Execute a menu action. Returns False to keep looping, True to exit."""
-        choice = choice.strip()
-        if not choice:
-            return False
-        if choice == "0":
-            print("\nInstalling edgar-sec (runtime + dev) from pyproject.toml...")
-            if install_project():
-                install_duckdb_extensions()
-                print("\n✅ Setup complete!")
-            sys.exit(0)
-        if choice == "3":
-            check_installation()
-            return False
-        if choice in ("5", "q", "exit"):
-            print("\n👋 Goodbye!")
-            sys.exit(0)
-        print(f"\n⚠️  Invalid or removed choice: '{choice}'.")
-        print(f"   {_REMOVED}")
-        if args.choice is not None:
-            sys.exit(2)
-        return False
-
-    if args.choice is not None:
-        run_choice(args.choice)
-        return
-
-    while True:
-        show_menu()
-        choice = input("\nEnter your choice (0, 3 or 5): ").strip()
-        run_choice(choice)
+    print("\nInstalling edgar-sec (runtime + dev) from pyproject.toml...")
+    if not install_project():
+        sys.exit(1)
+    install_duckdb_extensions()
+    print("\n✅ Setup complete!")
 
 
 if __name__ == "__main__":
