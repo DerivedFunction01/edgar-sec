@@ -1,7 +1,7 @@
 # edgar-sec package declaration: the single source of dependency truth.
 # init_venv.py builds the venv from this file; no other package list exists.
 # Pins carried verbatim from the former init_venv.py registry:
-#   duckdb>=1.5.6,<2.1 (version-sensitive behaviour observed at 1.5.6)
+#   duckdb>=2 (full suite verified on 2.0.0; floor raised 2026-11-05)
 #   pymupdf>=2.1,<2.2 (commissioned for the PDF path; PyMuPDF is AGPL-3.0)
 #   pyarrow>=26,<27 (23.0.1 proven to break string/dictionary field merges
 #   the pipelines rely on; 26.0.0 is the proven reference version)
@@ -19,7 +19,7 @@ description = "High-throughput, memory-safe SEC EDGAR extraction engine and pipe
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "duckdb>=1.5.6,<2.1",
+    "duckdb>=2",
     "fastapi",
     "pandas",
     "polars",
