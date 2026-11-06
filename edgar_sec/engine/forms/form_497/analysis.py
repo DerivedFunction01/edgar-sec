@@ -12,11 +12,11 @@ from edgar_sec.engine.forms.analysis import (
     locate_text_artifact,
     summarize_form_cases,
 )
-from edgar_sec.engine.forms.common.entities import (
-    NAME_FORM_TOKENS,
-    extract_cusip_near_caption,
+from edgar_sec.engine.forms.common.entities import extract_cusip_near_caption
+from edgar_sec.engine.forms.common.registrant_scan import (
+    FORM_497_SCAN,
+    scan_registrant_name,
 )
-from edgar_sec.engine.forms.cover.registrant import parse_registrant_identity
 
 _RULE_497_RE = re.compile(r"rule\s*497\s*\(\s*([a-z])\s*\)", re.IGNORECASE)
 _REGISTRATION_RE = re.compile(
@@ -28,33 +28,6 @@ _KIND_TERMS: tuple[tuple[str, str], ...] = (
     ("statement of additional information", "statement_of_additional_information"),
     ("prospectus", "prospectus"),
 )
-
-_SKIP_TOKENS: tuple[str, ...] = (
-    "filed pursuant",
-    "registration no",
-    "registration statement",
-    "prospectus supplement",
-    "prospectus",
-    "subject to completion",
-)
-
-
-def _registrant_name(lines: list[str]) -> str | None:
-    for line in lines[:20]:
-        stripped = line.strip()
-        if not 3 <= len(stripped) <= 80:
-            continue
-        lowered = stripped.lower()
-        if any(token in lowered for token in _SKIP_TOKENS):
-            continue
-        if "$" in stripped or not stripped[0].isalpha():
-            continue
-        if not any(token in lowered for token in NAME_FORM_TOKENS):
-            continue
-        identity = parse_registrant_identity(stripped)
-        if identity.name:
-            return stripped
-    return None
 
 
 def _document_kind(lines: list[str]) -> str | None:
@@ -85,8 +58,9 @@ def _form_497_fields(text: str, lines: list[str]) -> dict[str, Any]:
     kind = _document_kind(lines)
     rule = _RULE_497_RE.search(head_text)
     registration = _REGISTRATION_RE.search(head_text)
+    registrant = scan_registrant_name(lines, FORM_497_SCAN)
     return {
-        "registrant_name": _registrant_name(lines),
+        "registrant_name": registrant.raw if registrant else None,
         "rule_reference": f"497({rule.group(1).lower()})" if rule else None,
         "registration_numbers": [registration.group(1)] if registration else [],
         "document_kind": kind,

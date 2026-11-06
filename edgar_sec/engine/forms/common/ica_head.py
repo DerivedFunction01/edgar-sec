@@ -5,7 +5,10 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from edgar_sec.engine.forms.common.entities import NAME_FORM_TOKENS
+from edgar_sec.engine.forms.common.registrant_scan import (
+    ICA_HEAD_FALLBACK_SCAN,
+    scan_registrant_name,
+)
 from edgar_sec.engine.forms.cover.registrant import parse_registrant_identity
 from edgar_sec.foundation.regex.builder import build_alternation
 from edgar_sec.foundation.text.dates import MONTH_PATTERN, NUMERIC_DATE_RE
@@ -106,16 +109,8 @@ def ica_cover_fields(lines: list[str]) -> dict[str, Any]:
     period = _report_period(lines[:40])
     name = _registrant_name(lines)
     if name is None:
-        for line in lines[:12]:
-            stripped = line.strip()
-            if not 3 <= len(stripped) <= 80 or not stripped[0].isalpha():
-                continue
-            lowered = stripped.lower()
-            if any(token in lowered for token in NAME_FORM_TOKENS):
-                identity = parse_registrant_identity(stripped)
-                if identity.name:
-                    name = stripped
-                    break
+        fallback = scan_registrant_name(lines, ICA_HEAD_FALLBACK_SCAN)
+        name = fallback.raw if fallback else None
     return {
         "registrant_name": name,
         "file_number": file_number,
