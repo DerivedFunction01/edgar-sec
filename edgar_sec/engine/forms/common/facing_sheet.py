@@ -5,27 +5,15 @@ from __future__ import annotations
 from typing import Any
 
 from edgar_sec.engine.forms.common.entities import (
-    NAME_FORM_TOKENS,
     extract_cusip_near_caption,
     extract_registration_number,
 )
-from edgar_sec.engine.forms.cover.registrant import parse_registrant_identity
+from edgar_sec.engine.forms.common.registrant_scan import (
+    FACING_SHEET_SCAN,
+    scan_registrant_name,
+)
 
 FEE_TABLE_PHRASE = "calculation of registration fee"
-
-_SKIP_TOKENS: tuple[str, ...] = (
-    "securities and exchange commission",
-    "washington",
-    "form f-",
-    "registration statement under",
-    "securities act of 1933",
-    "registration no",
-    "file no",
-    "files nos",
-    "calculation of registration fee",
-    "check the appropriate box",
-    "check one",
-)
 
 
 def registration_document_kind(form: str) -> str:
@@ -44,30 +32,13 @@ def registration_document_kind(form: str) -> str:
     return "registration_statement"
 
 
-def _registrant_name(lines: list[str]) -> str | None:
-    for line in lines[:80]:
-        stripped = line.strip()
-        if not 3 <= len(stripped) <= 80:
-            continue
-        lowered = stripped.lower()
-        if any(token in lowered for token in _SKIP_TOKENS):
-            continue
-        if "$" in stripped or not stripped[0].isalpha():
-            continue
-        if not any(token in lowered for token in NAME_FORM_TOKENS):
-            continue
-        identity = parse_registrant_identity(stripped)
-        if identity.name:
-            return identity.name
-    return None
-
-
 def facing_sheet_fields(cover_text: str, lines: list[str], form: str) -> dict[str, Any]:
     """Extract the cover fields shared by the registration families."""
     head_text = "\n".join(lines[:120])
     primary = cover_text if len(cover_text.splitlines()) >= 4 else head_text
+    registrant = scan_registrant_name(lines, FACING_SHEET_SCAN)
     return {
-        "registrant_name": _registrant_name(lines),
+        "registrant_name": registrant.name if registrant else None,
         "registration_number": extract_registration_number(primary)
         or extract_registration_number(head_text)
         or extract_registration_number("\n".join(lines)),
