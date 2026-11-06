@@ -129,14 +129,10 @@ class XbrlPaths:
     def review_case_hypotheses_path(self, run_id: str, accession: str) -> Path:
         return self.review_case_dir(run_id, accession) / HYPOTHESES_FILE
 
-    def review_case_presentation_arcs_path(
-        self, run_id: str, accession: str
-    ) -> Path:
+    def review_case_presentation_arcs_path(self, run_id: str, accession: str) -> Path:
         return self.review_case_dir(run_id, accession) / PRESENTATION_ARCS_FILE
 
-    def review_case_calculation_arcs_path(
-        self, run_id: str, accession: str
-    ) -> Path:
+    def review_case_calculation_arcs_path(self, run_id: str, accession: str) -> Path:
         return self.review_case_dir(run_id, accession) / CALCULATION_ARCS_FILE
 
     @property
