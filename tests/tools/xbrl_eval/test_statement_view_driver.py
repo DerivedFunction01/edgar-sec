@@ -7,7 +7,13 @@ from typing import Any
 
 import pytest
 
-from edgar_sec.engine.xbrl.discovery.cohort import canonical_probe_cohort_path
+from edgar_sec.apps.client.xbrl import Xbrl
+from edgar_sec.engine.xbrl.discovery.cohort import (
+    canonical_probe_cohort_path,
+    canonical_seed_cohort_path,
+)
+from edgar_sec.engine.xbrl.taxonomy.domain import load_domain_taxonomy
+from edgar_sec.pipelines.xbrl_review.bundles import bundle_dir_for
 from edgar_sec.tools.xbrl_eval.statement_view_driver import (
     BLOCKED,
     FAITHFUL,
@@ -16,6 +22,7 @@ from edgar_sec.tools.xbrl_eval.statement_view_driver import (
     MECH_PARSE,
     MECH_ROOT,
     MECH_UNVERIFIED,
+    _segment_census,
     classify_record,
     merge_reports,
     run_driver,
@@ -182,3 +189,41 @@ def test_run_driver_smoke_over_smallest_probe_bundle() -> None:
         == HONEST
     )
     assert set(record["classification"]) == set(record["cells"])
+
+
+def test_run_driver_segment_census_wiring_and_cell_fields() -> None:
+    """The census flag records an empty census; the cell carries its fields."""
+    report = run_driver(
+        canonical_probe_cohort_path(),
+        folders=["dsgx_2023_6k"],
+        workers=1,
+        segment_census=True,
+    )
+    record = report["filings"]["dsgx_2023_6k"]
+    assert record["segment_census"] == []
+    cell = record["cells"]["financials.segment_breakdown"]
+    assert cell["classification"] is None
+    assert cell["basis"] is None
+    assert cell["alternates"] == 0
+    assert cell["filed_member_sum"] is None
+
+
+def test_segment_census_classifies_msft_overlap_with_declared_partitions() -> None:
+    """MSFT revenue files two partitions; both are role-declared, one on a face."""
+    xbrl = Xbrl.from_bundle(
+        bundle_dir_for("0000950170-24-087843", canonical_seed_cohort_path()),
+        load_domain_taxonomy(),
+    )
+    census = _segment_census(xbrl)
+    record = next(
+        row
+        for row in census
+        if row["concept"]
+        == "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax"
+        and row["axis"] == "srt:ProductOrServiceAxis"
+    )
+    assert record["class"] == "overlapping_partitions"
+    assert record["members_filed"] == 12
+    assert record["sum_ratio"] == 2.0
+    assert record["declared"] == 2
+    assert record["statement_declared"] == 1

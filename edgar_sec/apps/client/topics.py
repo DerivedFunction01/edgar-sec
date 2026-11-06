@@ -10,7 +10,14 @@ from __future__ import annotations
 from collections.abc import Mapping, Sequence
 from datetime import date, timedelta
 
+from edgar_sec.apps.client.catalog import STATEMENT, CatalogEntry
 from edgar_sec.apps.client.facts import DisplayRecord, member_display_name
+from edgar_sec.apps.client.presentation import declared_breakdown_members
+from edgar_sec.engine.xbrl.evidence.partitions import (
+    NESTED_MEMBERS,
+    OVERLAPPING_PARTITIONS,
+    classify_partitions,
+)
 from edgar_sec.engine.xbrl.evidence.subsumption import MemberSubsumption
 from edgar_sec.engine.xbrl.schema.atoms import Atom
 from edgar_sec.engine.xbrl.schema.models import CalculationArc, DefinitionArc, XbrlFact
@@ -466,6 +473,34 @@ def _period_key(fact: XbrlFact) -> _PeriodKey:
     return (fact.period_type, fact.start_date, fact.end_date, fact.instant_date)
 
 
+def _select_partition(
+    partitions: tuple[tuple[str, ...], ...],
+    declared: Sequence[tuple[str, frozenset[str]]],
+) -> tuple[str, ...]:
+    """The served partition: statement-declared, declared, then finest.
+
+    A declared tier serves only when it names exactly one partition;
+    the fallback orders by member count, then member-qname order.
+    """
+    tiers = (
+        lambda category: category == STATEMENT,
+        lambda category: True,
+    )
+    for tier in tiers:
+        matches = [
+            part
+            for part in partitions
+            if any(
+                frozenset(part) == members
+                for category, members in declared
+                if tier(category)
+            )
+        ]
+        if len(matches) == 1:
+            return matches[0]
+    return min(partitions, key=lambda part: (-len(part), part))
+
+
 def build_segment_breakdown(
     facts: Sequence[XbrlFact],
     records: Mapping[str, DisplayRecord],
@@ -476,6 +511,7 @@ def build_segment_breakdown(
     concept_qname: str | None = None,
     axis_qname: str | None = None,
     definition_arcs: Sequence[DefinitionArc] = (),
+    catalog_entries: Sequence[CatalogEntry] = (),
 ) -> SegmentBreakdownGraph:
     """Resolve one axis's members against the concept's reported total.
 
@@ -517,6 +553,14 @@ def build_segment_breakdown(
         _period_type, start, end, instant = period
         if target_year and (end or instant or "")[:4] != target_year:
             continue
+        total_value = float(total_fact.value)  # type: ignore[arg-type]
+        collapsed = {
+            member: float(fact.value)  # type: ignore[arg-type]
+            for member, fact in members.items()
+        }
+        classification = classify_partitions(
+            collapsed, total_value, axis=axis, subsumption=subsumption
+        )
         ordered = sorted(
             members.items(),
             key=lambda item: (-abs(float(item[1].value)), item[0]),  # type: ignore[arg-type]
@@ -526,23 +570,48 @@ def build_segment_breakdown(
             if frontier is not None:
                 keep = set(frontier)
                 ordered = [item for item in ordered if item[0] in keep]
+        nodes = {
+            member: SegmentMember(
+                member_qname=member,
+                label=member_display_name(member, labels),
+                value=float(fact.value),  # type: ignore[arg-type]
+            )
+            for member, fact in ordered
+        }
+        served = tuple(nodes[member] for member, _fact in ordered)
+        alternates: tuple[tuple[SegmentMember, ...], ...] = ()
+        if (
+            classification.kind
+            in (
+                OVERLAPPING_PARTITIONS,
+                NESTED_MEMBERS,
+            )
+            and classification.partitions
+        ):
+            declared = declared_breakdown_members(
+                catalog_entries, concept, axis, collapsed
+            )
+            chosen = _select_partition(classification.partitions, declared)
+            chosen_set = set(chosen)
+            served = tuple(node for node in served if node.member_qname in chosen_set)
+            alternates = tuple(
+                tuple(nodes[member] for member in part if member in nodes)
+                for part in classification.partitions
+                if set(part) != chosen_set
+            )
         candidates.append(
             SegmentBreakdownGraph(
                 concept_qname=concept,
                 axis_qname=axis,
-                total=float(total_fact.value),  # type: ignore[arg-type]
-                members=tuple(
-                    SegmentMember(
-                        member_qname=member,
-                        label=member_display_name(member, labels),
-                        value=float(fact.value),  # type: ignore[arg-type]
-                    )
-                    for member, fact in ordered
-                ),
+                total=total_value,
+                members=served,
                 start_date=start,
                 end_date=end,
                 instant_date=instant,
                 unit=unit,
+                classification=classification,
+                alternates=alternates,
+                filed_member_sum=sum(collapsed.values()),
             )
         )
     if not candidates:

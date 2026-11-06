@@ -16,6 +16,8 @@ from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 from typing import Any
 
+from edgar_sec.apps.client.catalog import STATEMENT, CatalogEntry
+from edgar_sec.apps.client.presentation import declared_breakdown_members
 from edgar_sec.apps.client.xbrl import Xbrl
 from edgar_sec.engine.xbrl.discovery.cohort import (
     canonical_probe_cohort_path,
@@ -196,15 +198,119 @@ def _topic_summary(name: str, view: Any) -> dict[str, Any]:
             ),
         }
     if name == "segment_breakdown":
+        graph = view.graph
+        record = graph.classification
         return {
             "concept": view.concept_qname,
             "axis": view.axis_qname,
             "total": view.total,
             "members": len(view.members),
             "verified": view.verified,
+            "classification": None if record is None else record.kind,
+            "basis": None if record is None else record.basis,
+            "alternates": len(graph.alternates),
+            "filed_member_sum": graph.filed_member_sum,
             "populated": view.total is not None or len(view.members) > 0,
         }
     raise ValueError(f"no topic summary for {name!r}")
+
+
+def _catalog_entries(xbrl: Xbrl) -> tuple[CatalogEntry, ...]:
+    """Every catalog entry of the filing, resolved by role URI."""
+    frame = xbrl.statements.list_available()
+    entries: list[CatalogEntry] = []
+    for role in frame["role"]:
+        entry = xbrl.statements.get(str(role))
+        if entry is not None:
+            entries.append(entry)
+    return tuple(entries)
+
+
+def _filed_members(facts: Sequence[Any], graph: Any) -> frozenset[str]:
+    """Distinct filed members in the group the served candidate came from."""
+    return frozenset(
+        fact.dimensions[graph.axis_qname]
+        for fact in facts
+        if fact.concept_qname == graph.concept_qname
+        and len(fact.dimensions) == 1
+        and graph.axis_qname in fact.dimensions
+        and fact.unit == graph.unit
+        and fact.start_date == graph.start_date
+        and fact.end_date == graph.end_date
+        and fact.instant_date == graph.instant_date
+    )
+
+
+def _segment_census(xbrl: Xbrl) -> list[dict[str, Any]]:
+    """Per-(concept, axis) served candidates with their classifications."""
+    facts = list(xbrl.facts)
+    totals = {fact.concept_qname for fact in facts if not fact.dimensions}
+    pairs = sorted(
+        {
+            (fact.concept_qname, axis)
+            for fact in facts
+            if len(fact.dimensions) == 1
+            for axis in fact.dimensions
+            if fact.concept_qname in totals
+        }
+    )
+    records: list[dict[str, Any]] = []
+    entries: tuple[CatalogEntry, ...] | None = None
+    for concept, axis in pairs:
+        view, error = _guard(
+            lambda c=concept, a=axis: xbrl.financials.segment_breakdown(
+                concept_qname=c, axis_qname=a
+            )
+        )
+        if error is not None:
+            records.append({"concept": concept, "axis": axis, "error": error})
+            continue
+        graph = view.graph
+        record = graph.classification
+        if graph.total is None or record is None:
+            continue
+        census: dict[str, Any] = {
+            "concept": concept,
+            "axis": axis,
+            "unit": graph.unit,
+            "members_filed": len(_filed_members(facts, graph)),
+            "members_served": len(graph.members),
+            "total": graph.total,
+            "filed_member_sum": graph.filed_member_sum,
+            "sum_ratio": (
+                None
+                if not graph.total or graph.filed_member_sum is None
+                else graph.filed_member_sum / graph.total
+            ),
+            "class": record.kind,
+            "basis": record.basis,
+            "capped": record.enumeration_capped,
+            "partitions": [list(part) for part in record.partitions],
+            "subsumed": list(record.subsumed),
+        }
+        if record.kind == "overlapping_partitions":
+            if entries is None:
+                entries = _catalog_entries(xbrl)
+            declared = declared_breakdown_members(
+                entries, concept, axis, _filed_members(facts, graph)
+            )
+            partition_sets = [frozenset(part) for part in record.partitions]
+            census["declared"] = sum(
+                1
+                for part in partition_sets
+                if any(part == members for _category, members in declared)
+            )
+            census["statement_declared"] = sum(
+                1
+                for part in partition_sets
+                if any(
+                    part == members
+                    for category, members in declared
+                    if category == STATEMENT
+                )
+            )
+        records.append(census)
+    return records
 
 
 def _in_filed(value: float, filed_values: Sequence[float]) -> bool:
@@ -405,6 +511,7 @@ def classify_record(record: dict[str, Any]) -> dict[str, Any]:
 
 _WORKER_TAXONOMY: DomainTaxonomy | None = None
 _WORKER_REGISTRY: Path | None = None
+_WORKER_SEGMENT_CENSUS = False
 
 
 def _worker_taxonomy() -> DomainTaxonomy:
@@ -433,6 +540,11 @@ def _filing_work(item: tuple[str, str]) -> tuple[str, dict[str, Any]]:
         record["analysis"] = analyze_facts(xbrl.facts)
         record["cells"] = _filing_cells(xbrl)
         record["classification"] = classify_record(record)
+        if _WORKER_SEGMENT_CENSUS:
+            census, census_error = _guard(lambda: _segment_census(xbrl))
+            record["segment_census"] = (
+                {"error": census_error} if census_error is not None else census
+            )
     record["seconds"] = round(time.perf_counter() - started, 3)
     return folder, record
 
@@ -452,10 +564,12 @@ def run_driver(
     shard: int = 0,
     of: int = 1,
     workers: int = 1,
+    segment_census: bool = False,
 ) -> dict[str, Any]:
     """Run the driver over one shard of the registry's filings."""
-    global _WORKER_REGISTRY
+    global _WORKER_REGISTRY, _WORKER_SEGMENT_CENSUS
     _WORKER_REGISTRY = registry_path
+    _WORKER_SEGMENT_CENSUS = segment_census
     seeds = load_seed_cohort(registry_path)
     by_accession = {str(seed.accession): seed for seed in seeds}
     selected = shard_filings(seeds, shard, of)
@@ -553,6 +667,11 @@ def _build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Score the report against the pinned statement-view expectations.",
     )
+    parser.add_argument(
+        "--segment-census",
+        action="store_true",
+        help="Also record each filing's per-(concept, axis) breakdown census.",
+    )
     return parser
 
 
@@ -587,6 +706,7 @@ def main(argv: list[str] | None = None) -> int:
             shard=args.shard,
             of=args.of,
             workers=args.workers,
+            segment_census=args.segment_census,
         )
     except Exception as exc:
         sys.stderr.write(f"statement-view driver failed: {type(exc).__name__}: {exc}\n")

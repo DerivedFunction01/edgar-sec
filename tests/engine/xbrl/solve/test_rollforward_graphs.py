@@ -26,6 +26,14 @@ def test_moved_graph_families_still_construct() -> None:
     assert PensionFundedStatusGraph().funded_verified is None
 
 
+def test_segment_breakdown_classification_fields_default_empty() -> None:
+    """Classification fields default to absent on a bare construction."""
+    graph = SegmentBreakdownGraph(total=10.0)
+    assert graph.classification is None
+    assert graph.alternates == ()
+    assert graph.filed_member_sum is None
+
+
 def test_equity_component_rollforward_identity() -> None:
     """A component verifies when opening plus movements reaches closing."""
     comp = EquityComponentRollforward(

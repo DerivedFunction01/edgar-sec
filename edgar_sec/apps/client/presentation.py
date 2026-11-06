@@ -240,6 +240,40 @@ def _breakdown_dimsets(
     return sorted(dimsets)
 
 
+def declared_breakdown_members(
+    entries: Iterable[CatalogEntry],
+    concept: str,
+    axis: str,
+    filed_members: Iterable[str],
+) -> tuple[tuple[str, frozenset[str]], ...]:
+    """(Category, member set) pairs role trees declare for one concept-axis.
+
+    A role declares the members of its presentation tree's axis subtree,
+    intersected with the members filed for the concept on the axis.
+    """
+    filed = frozenset(filed_members)
+    declared: list[tuple[str, frozenset[str]]] = []
+    for entry in entries:
+        concepts = entry.concepts
+        if axis not in concepts or concept not in concepts:
+            continue
+        children: dict[str, list[str]] = {}
+        for arc in entry.arcs:
+            children.setdefault(arc.parent_qname, []).append(arc.child_qname)
+        seen: set[str] = set()
+        stack = [axis]
+        while stack:
+            node = stack.pop()
+            if node in seen:
+                continue
+            seen.add(node)
+            stack.extend(children.get(node, ()))
+        members = frozenset(seen & filed)
+        if members:
+            declared.append((entry.category, members))
+    return tuple(declared)
+
+
 def _calculation_parents(kernel: FilingKernel, entry: CatalogEntry) -> dict[str, str]:
     """Displayed calc parent per concept: same-role arcs win, then any arc.
 

@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 
+from edgar_sec.engine.xbrl.evidence.partitions import PartitionClassification
 from edgar_sec.engine.xbrl.schema.models import qname_local
 from edgar_sec.engine.xbrl.solve.identities import (
     identity_discrepancy,
@@ -164,6 +165,9 @@ class SegmentBreakdownGraph:
     end_date: str | None = None
     instant_date: str | None = None
     unit: str | None = None
+    classification: PartitionClassification | None = None
+    alternates: tuple[tuple[SegmentMember, ...], ...] = ()
+    filed_member_sum: float | None = None
 
     @property
     def member_sum(self) -> float | None:

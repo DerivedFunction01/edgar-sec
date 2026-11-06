@@ -319,10 +319,20 @@ def render_segment_breakdown_ascii(graph: SegmentBreakdownGraph) -> str:
         f"  Verified: {graph.verified}",
         f"  Discrepancy: {f'${graph.discrepancy:,.0f}' if graph.discrepancy is not None else 'None'}",
     ]
+    if graph.classification is not None:
+        lines.append(f"  Classification: {graph.classification.kind}")
+    if graph.filed_member_sum is not None:
+        lines.append(f"  Filed Member Sum: ${graph.filed_member_sum:,.0f}")
     if graph.members:
         lines.append("  Members:")
         for member in graph.members:
             lines.append(f"    - {member.label}: ${member.value:,.0f}")
+    for alternate in graph.alternates:
+        alternate_sum = sum(member.value for member in alternate)
+        names = ", ".join(member.label for member in alternate)
+        lines.append(
+            f"  Alternate ({len(alternate)} members, ${alternate_sum:,.0f}): {names}"
+        )
     return "\n".join(lines)
 
 

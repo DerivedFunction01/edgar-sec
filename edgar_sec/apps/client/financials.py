@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Callable
 
+from edgar_sec.apps.client.catalog import build_catalog
 from edgar_sec.apps.client.comparison import DERIVED_MARGINS
 from edgar_sec.apps.client.financials_cash import CashFlowServing
 from edgar_sec.apps.client.financials_core import (
@@ -659,6 +660,9 @@ class XbrlFinancials(CashFlowServing):
                 concept_qname=concept_qname,
                 axis_qname=axis_qname,
                 definition_arcs=self._definition_arcs,
+                catalog_entries=self._kernel.graph_once(
+                    ("catalog_entries",), lambda: build_catalog(self._kernel)
+                ),
             ),
         )
         return SegmentBreakdownView(graph)

@@ -363,6 +363,18 @@ class SegmentBreakdownView:
         return self.graph.verified
 
     @property
+    def classification(self) -> Any:
+        return self.graph.classification
+
+    @property
+    def alternates(self) -> tuple[tuple[Any, ...], ...]:
+        return self.graph.alternates
+
+    @property
+    def filed_member_sum(self) -> float | None:
+        return self.graph.filed_member_sum
+
+    @property
     def values_by_member(self) -> dict[str, float]:
         return {member.member_qname: member.value for member in self.graph.members}
 
