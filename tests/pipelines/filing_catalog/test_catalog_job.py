@@ -683,3 +683,69 @@ def test_delta_materialize_anti_joins_existing_and_emits_new_filings(
     assert len(delta_targets) == 2
     emitted_docs = {r["document_path"] for r in delta_targets}
     assert emitted_docs == {"new_doc.htm", "brand_new.htm"}
+
+
+def test_materialize_result_records_the_source_snapshot_id(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    """The result names the snapshot it consumed; an artifact source has none."""
+    source_root = tmp_path / "art"
+    snapshot_id = _phase1_snapshot(sample_source, source_root)
+    from_snapshot = materialize(
+        None,
+        tmp_path / "out-a",
+        source_snapshot_id=snapshot_id,
+        source_artifacts_root=source_root,
+    )
+    assert from_snapshot["source_snapshot_id"] == snapshot_id
+
+    from_artifact = materialize(sample_source, tmp_path / "out-b")
+    assert from_artifact["source_snapshot_id"] == ""
+
+
+def test_delta_materialize_result_reports_the_delta_tally(
+    tmp_path: Path, sample_source: Path
+) -> None:
+    """A delta result tallies the delta's own occurrences, never the base's."""
+    art_root = tmp_path / "art"
+    base_res = materialize(sample_source, art_root)
+    base_id = base_res["catalog_id"]
+
+    full_table = pq.read_table(sample_source)
+    pylist = full_table.to_pylist()
+    refreshed_cik = pylist[0].copy()
+    existing_filings = list(refreshed_cik["filings"])
+    new_filing = existing_filings[0].copy()
+    new_filing["accession_number"] = "0000000001-99-999999"
+    new_filing["filing_date"] = "2026-01-01"
+    new_filing["primary_document"] = "new_doc.htm"
+    refreshed_cik["filings"] = existing_filings + [new_filing]
+
+    brand_new = pylist[0].copy()
+    brand_new["cik"] = "9999999999"
+    brand_new_filing = existing_filings[0].copy()
+    brand_new_filing["accession_number"] = "0000000002-99-999999"
+    brand_new_filing["primary_document"] = "brand_new.htm"
+    brand_new["filings"] = [brand_new_filing]
+
+    delta_table = pa.Table.from_pylist(
+        [refreshed_cik, brand_new], schema=full_table.schema
+    )
+    metadata_paths = resolve_metadata_paths(art_root)
+    delta_part = (
+        metadata_paths.snapshot_dir("snap-delta") / "parts" / "part-00000.parquet"
+    )
+    delta_part.parent.mkdir(parents=True, exist_ok=True)
+    pq.write_table(delta_table, delta_part)
+    _record_phase1_snapshot(art_root, "snap-delta", [delta_part], base_id)
+    result = materialize(
+        None,
+        art_root,
+        source_snapshot_id="snap-delta",
+        source_artifacts_root=art_root,
+    )
+    assert result["source_snapshot_id"] == "snap-delta"
+    assert result["target_row_count"] == 2
+    assert result["target_part_count"] == 1
+    expected_form = str(existing_filings[0]["form"]).strip()
+    assert result["form_counts"] == {expected_form: 2}

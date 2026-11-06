@@ -33,8 +33,8 @@ def cmd_materialize(args: argparse.Namespace) -> int:
             KeyValueRow("catalog_id", result.get("catalog_id", "")),
             KeyValueRow("source_snapshot_id", result.get("source_snapshot_id", "")),
             KeyValueRow("target_row_count", str(result.get("target_row_count", 0))),
-            KeyValueRow("form_count", str(result.get("form_count", 0))),
-            KeyValueRow("partition_count", str(result.get("partition_count", 0))),
+            KeyValueRow("form_count", str(len(result.get("form_counts", {})))),
+            KeyValueRow("partition_count", str(result.get("target_part_count", 0))),
         ],
         title=f"Catalog Materialized ({result.get('catalog_id', '')[:8]})",
     )

@@ -7,17 +7,31 @@ from pathlib import Path
 
 from typing import Any
 
+import pyarrow as pa
+import pyarrow.parquet as pq
 import pytest
 
+from edgar_sec.domain.submissions.schemas import (
+    SCHEMA_VERSION as SOURCE_SCHEMA_VERSION,
+)
+from edgar_sec.foundation.hashing import file_sha256
 from edgar_sec.infra.storage.cohort.catalog import CohortCatalog
+from edgar_sec.infra.storage.dag.catalog import DAGCatalog
+from edgar_sec.infra.storage.dag.manifest import (
+    DAGNodeManifest,
+    PartDescriptor,
+    ordered_parts_fingerprint,
+)
 from edgar_sec.pipelines.cohort.ingestion import ingest_file_to_cohort
 from edgar_sec.infra.storage.cohort.paths import resolve_cohort_paths
+from edgar_sec.pipelines.filing_catalog.catalog_job import materialize
 from edgar_sec.pipelines.filing_catalog.cli import (
     build_parser,
     cmd_expand,
     main,
 )
 from edgar_sec.pipelines.filing_catalog.paths import resolve_filing_catalog_paths
+from edgar_sec.pipelines.metadata_sync.paths import resolve_metadata_paths
 
 SAMPLE = "tests/fixtures/catalog/sample_submission_metadata.parquet"
 
@@ -490,3 +504,113 @@ def test_expand_reports_a_missing_parent_cleanly(tmp_path, capsys) -> None:
         == 1
     )
     assert "error:" in capsys.readouterr().err
+
+
+# --- materialize summary ----------------------------------------------------
+
+
+def _record_phase1_snapshot(
+    root: Path,
+    snapshot_id: str,
+    part_paths: list[Path],
+    parent_snapshot_id: str = "",
+) -> str:
+    metadata = resolve_metadata_paths(root)
+    snapshot_dir = metadata.snapshot_dir(snapshot_id)
+    descriptors = tuple(
+        PartDescriptor(
+            path=path.relative_to(snapshot_dir).as_posix(),
+            sha256=file_sha256(path),
+            row_count=pq.read_table(path, columns=["cik"]).num_rows,
+            byte_size=path.stat().st_size,
+        )
+        for path in part_paths
+    )
+    record = DAGNodeManifest(
+        snapshot_id=snapshot_id,
+        kind="checkpoint",
+        parents=(),
+        checkpoint_anchor_id=snapshot_id,
+        lineage_depth=0,
+        created_at="2026-10-09T00:00:00Z",
+        relations={"submissions": descriptors},
+        logical_fingerprint=ordered_parts_fingerprint(
+            [part.sha256 for part in descriptors]
+        ),
+        schema_versions={"submissions": SOURCE_SCHEMA_VERSION},
+        metadata={
+            "kind": "delta" if parent_snapshot_id else "full",
+            "plan_id": snapshot_id,
+            "row_count": sum(part.row_count for part in descriptors),
+            "parent_snapshot_id": parent_snapshot_id,
+        },
+    )
+    DAGCatalog(metadata.snapshots_root).record_node(record)
+    return snapshot_id
+
+
+def test_materialize_summary_reports_the_full_publish(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """The printed summary carries the publish's own counts, not defaults."""
+    artifacts = tmp_path / "art"
+    main(["materialize", "--source", SAMPLE, "--artifacts", str(artifacts)])
+    summary = _json_output(capsys)
+    truth = materialize(SAMPLE, tmp_path / "truth")
+    assert summary["form_count"] == len(truth["form_counts"])
+    assert summary["form_count"] > 0
+    assert summary["target_row_count"] == truth["target_row_count"]
+    assert summary["partition_count"] == truth["target_part_count"]
+
+
+def test_materialize_summary_reports_a_delta_publish(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """A delta summary names its source snapshot and tallies the delta shard."""
+    artifacts = tmp_path / "art"
+    main(["materialize", "--source", SAMPLE, "--artifacts", str(artifacts)])
+    base_id = _json_output(capsys)["catalog_id"]
+
+    table = pq.read_table(SAMPLE)
+    delta_rows: list[dict[str, Any]] = []
+    expected_rows = 0
+    expected_forms: set[str] = set()
+    for index, row in enumerate(table.to_pylist()[:2]):
+        row = row.copy()
+        row["cik"] = f"77777777{index:02d}"
+        filings = []
+        for offset, filing in enumerate(row["filings"]):
+            filing = filing.copy()
+            filing["accession_number"] = f"77777777{index:02d}-26-{offset:06d}"
+            filings.append(filing)
+            expected_rows += 1
+            expected_forms.add(str(filing["form"]).strip())
+        row["filings"] = filings
+        delta_rows.append(row)
+    delta_part = (
+        resolve_metadata_paths(artifacts).snapshot_dir("snap-delta-cli")
+        / "parts"
+        / "part-00000.parquet"
+    )
+    delta_part.parent.mkdir(parents=True, exist_ok=True)
+    pq.write_table(pa.Table.from_pylist(delta_rows, schema=table.schema), delta_part)
+    _record_phase1_snapshot(artifacts, "snap-delta-cli", [delta_part], base_id)
+
+    code = main(
+        [
+            "materialize",
+            "--source-snapshot",
+            "snap-delta-cli",
+            "--source-artifacts",
+            str(artifacts),
+            "--artifacts",
+            str(artifacts),
+        ]
+    )
+    assert code == 0
+    summary = _json_output(capsys)
+    assert summary["catalog_id"] == "snap-delta-cli"
+    assert summary["source_snapshot_id"] == "snap-delta-cli"
+    assert summary["target_row_count"] == expected_rows
+    assert summary["form_count"] == len(expected_forms)
+    assert summary["partition_count"] == 1

@@ -389,6 +389,7 @@ def materialize(
         "snapshot_kind": "filing_catalog",
         "catalog_id": catalog_id,
         "snapshot_id": snapshot_id,
+        "source_snapshot_id": str(handoff.get("snapshot_id") or ""),
         "source_artifact": str(source.first),
         "source_parts": [str(path) for path in source.paths],
         "source_part_count": source.part_count,
